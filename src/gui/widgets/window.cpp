@@ -606,8 +606,6 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 
 void window::draw()
 {
-	//const size_t start = SDL_GetTicks();
-
 	/***** ***** ***** ***** Init ***** ***** ***** *****/
 	// Prohibited from drawing?
 	if(suspend_drawing_) {
@@ -617,166 +615,24 @@ void window::draw()
 	// TODO: remove
 	surface& frame_buffer = video_.getSurface();
 
-	/***** ***** Layout and get dirty list ***** *****/
+	/***** ***** Layout ***** *****/
 	if(need_layout_) {
-		// Restore old surface. In the future this phase will not be needed
-		// since all will be redrawn when needed with dirty rects. Since that
-		// doesn't work yet we need to undraw the window.
-		//if(restore_ && restorer_) {
-		//	SDL_Rect rect = get_rectangle();
-		//	sdl_blit(restorer_, 0, frame_buffer, &rect);
-		//}
-
 		layout();
-
-		// Get new surface for restoring
-		//SDL_Rect rect = get_rectangle();
-
-		// We want the labels underneath the window so draw them and use them
-		// as restore point.
-		if(is_toplevel_) {
-			//font::draw_floating_labels(frame_buffer);
-		}
-
-		if(restore_) {
-			//restorer_ = get_surface_portion(frame_buffer, rect);
-		}
-
-		// Need full redraw so only set ourselves dirty.
-		//dirty_list_.emplace_back(1, this);
-
 		need_layout_ = false;
 	} else {
-
-		// Let widgets update themselves, which might dirty some things.
+		// Let widgets update themselves.
 		layout_children();
-#if 0
-		// Now find the widgets that are dirty.
-		std::vector<widget*> call_stack;
-		if(!new_widgets) {
-			populate_dirty_list(*this, call_stack);
-		} else {
-			/* Force to update and redraw the entire screen */
-			dirty_list_.clear();
-			dirty_list_.emplace_back(1, this);
-		}
-#endif
 	}
 
-	//if (dirty_list_.empty()) {
-	//	consecutive_changed_frames_ = 0u;
-	//	return;
-	//}
+	// Draw background.
+	this->draw_background(frame_buffer, 0, 0);
 
-	//++consecutive_changed_frames_;
-	//if(consecutive_changed_frames_ >= 100u && id_ == "title_screen") {
-	//	/* The title screen has changed in 100 consecutive frames, i.e. every
-	//	frame for two seconds. It looks like the screen is constantly changing
-	//	or at least marking widgets as dirty.
+	// Draw children.
+	this->draw_children(frame_buffer, 0, 0);
 
-	//	That's a severe problem. Every time the title screen changes, all
-	//	other GUI windows need to be fully redrawn, with huge CPU usage cost.
-	//	For that reason, this situation is a hard error. */
-	/	throw std::logic_error("The title screen is constantly changing, "
-	//		"which has a huge CPU usage cost. See the code comment.");
-	//}
-	for(auto & item : dirty_list_)
-	{
+	// Draw foreground.
+	this->draw_foreground(frame_buffer, 0, 0);
 
-		assert(!item.empty());
-
-		//const SDL_Rect dirty_rect
-		//		= new_widgets ? video().screen_area()
-		//					  : item.back()->get_dirty_rectangle();
-
-// For testing we disable the clipping rect and force the entire screen to
-// update. This way an item rendered at the wrong place is directly visible.
-#if 0
-		dirty_list_.clear();
-		dirty_list_.emplace_back(1, this);
-#else
-		//clip_rect_setter clip(frame_buffer, &dirty_rect);
-#endif
-
-		/*
-		 * The actual update routine does the following:
-		 * - Restore the background.
-		 *
-		 * - draw [begin, end) the back ground of all widgets.
-		 *
-		 * - draw the children of the last item in the list, if this item is
-		 *   a container it's children get a full redraw. If it's not a
-		 *   container nothing happens.
-		 *
-		 * - draw [rbegin, rend) the fore ground of all widgets. For items
-		 *   which have two layers eg window or panel it draws the foreground
-		 *   layer. For other widgets it's a nop.
-		 *
-		 * Before drawing there needs to be determined whether a dirty widget
-		 * really needs to be redrawn. If the widget doesn't need to be
-		 * redrawing either being not visibility::visible or has status
-		 * widget::redraw_action::none. If it's not drawn it's still set not
-		 * dirty to avoid it keep getting on the dirty list.
-		 */
-
-		for(std::vector<widget*>::iterator itor = item.begin();
-			itor != item.end();
-			++itor) {
-
-			if((**itor).get_visible() != widget::visibility::visible
-			   || (**itor).get_drawing_action()
-				  == widget::redraw_action::none) {
-
-				for(std::vector<widget*>::iterator citor = itor;
-					citor != item.end();
-					++citor) {
-
-					(**citor).set_is_dirty(false);
-				}
-
-				item.erase(itor, item.end());
-				break;
-			}
-		}
-
-		// Restore.
-		if(restore_) {
-			//SDL_Rect rect = get_rectangle();
-			//sdl_blit(restorer_, 0, frame_buffer, &rect);
-		}
-
-		// Background.
-		for(std::vector<widget*>::iterator itor = item.begin();
-			itor != item.end();
-			++itor) {
-
-			(**itor).draw_background(frame_buffer, 0, 0);
-		}
-
-		// Children.
-		if(!item.empty()) {
-			item.back()->draw_children(frame_buffer, 0, 0);
-		}
-
-		// Foreground.
-		for(std::vector<widget*>::reverse_iterator ritor = item.rbegin();
-			ritor != item.rend();
-			++ritor) {
-
-			(**ritor).draw_foreground(frame_buffer, 0, 0);
-			(**ritor).set_is_dirty(false);
-		}
-	}
-
-	dirty_list_.clear();
-
-	redraw_windows_on_top();
-
-	std::vector<widget*> call_stack;
-
-	//std::cerr << "draw took, " << (SDL_GetTicks() - start) << " ms" << std::endl;
-	//populate_dirty_list(*this, call_stack);
-	//assert(dirty_list_.empty());
 
 	if(callback_next_draw_ != nullptr) {
 		callback_next_draw_();
