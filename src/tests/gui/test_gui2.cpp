@@ -141,18 +141,14 @@ namespace dialogs {
 std::string unit_test_mark_as_tested(const modal_dialog& dialog)
 {
 	std::set<std::string>& list = unit_test_registered_window_list();
-	list.erase(
-			std::remove(list.begin(), list.end(), dialog.window_id())
-			, list.end());
+	list.erase(dialog.window_id());
 	return dialog.window_id();
 }
 
 std::string unit_test_mark_popup_as_tested(const modeless_dialog& dialog)
 {
 	std::set<std::string>& list = unit_test_registered_window_list();
-	list.erase(
-			std::remove(list.begin(), list.end(), dialog.window_id())
-			, list.end());
+	list.erase(dialog.window_id());
 	return dialog.window_id();
 }
 
@@ -284,9 +280,8 @@ namespace {
 
 			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
 
-			std::set<std::string>& list =
-					gui2::unit_test_registered_window_list();
-			list.erase(std::remove(list.begin(), list.end(), id), list.end());
+			std::set<std::string>& list = gui2::unit_test_registered_window_list();
+			list.erase(id);
 
 			std::string exception;
 			try {
@@ -517,8 +512,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"outro",
 		"mp_change_control", // Basically useless without a game_board object, so disabling
 	};
-	std::sort(list.begin(), list.end());
-	std::sort(omitted.begin(), omitted.end());
+
 	std::vector<std::string> missing;
 	std::set_difference(list.begin(), list.end(), omitted.begin(), omitted.end(), std::back_inserter(missing));
 
