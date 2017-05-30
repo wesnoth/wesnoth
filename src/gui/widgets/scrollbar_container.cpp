@@ -122,7 +122,7 @@ scrollbar_container::scrollbar_container()
 						_2,
 						_3,
 						_5,
-					    _6),
+						_6),
 			event::dispatcher::back_post_child);
 }
 

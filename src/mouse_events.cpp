@@ -733,7 +733,8 @@ void mouse_handler::select_or_action(bool browse)
 	
 	if ( clicked_u &&
 		 (!selected_u ||
-		  clicked_u->id() != selected_u->id()) )
+		  selected_u->side() != side_num_ ||
+ 		  (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id())) )
 	{
 		select_hex(last_hex_, false);
 	}
