@@ -252,7 +252,7 @@ int show_dialog(lua_State* L)
 		lua_call(L, 0, 0);
 	}
 
-	int v = scoped_dialog::current->window->show(true, 0);
+	int v = scoped_dialog::current->window->show(0);
 
 	if (!lua_isnoneornil(L, 3)) {
 		lua_pushvalue(L, 3);
