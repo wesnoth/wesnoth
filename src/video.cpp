@@ -239,7 +239,7 @@ void CVideo::init_window()
 	}
 
 	// Initialize window
-	window.reset(new sdl::window("", x, y, w, h, window_flags, SDL_RENDERER_SOFTWARE));
+	window.reset(new sdl::window("", x, y, w, h, window_flags, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE));
 
 	std::cerr << "Setting mode to " << w << "x" << h << std::endl;
 
