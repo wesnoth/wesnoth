@@ -1453,7 +1453,7 @@ void canvas::draw(const bool force)
 	is_dirty_ = false;
 }
 
-void canvas::blit(surface& /*surf*/, SDL_Rect rect)
+void canvas::render(SDL_Rect rect)
 {
 	SDL_RenderSetViewport(renderer_, &rect);
 
