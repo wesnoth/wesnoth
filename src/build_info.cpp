@@ -33,8 +33,10 @@
 
 #include <boost/version.hpp>
 
+#ifndef __APPLE__
 #include <openssl/crypto.h>
 #include <openssl/opensslv.h>
+#endif
 
 #include <pango/pangocairo.h>
 
@@ -72,6 +74,8 @@ std::string format_version(const SDL_version& v)
 						<< unsigned(v.minor) << '.'
 						<< unsigned(v.patch);
 }
+
+#ifndef __APPLE__
 
 std::string format_openssl_patch_level(uint8_t p)
 {
@@ -159,6 +163,8 @@ std::string format_openssl_version(long v)
 
 }
 
+#endif
+
 version_table_manager::version_table_manager()
 	: compiled(LIB_COUNT, "")
 	, linked(LIB_COUNT, "")
@@ -234,9 +240,11 @@ version_table_manager::version_table_manager()
 	// OpenSSL/libcrypto
 	//
 
+#ifndef __APPLE__
 	compiled[LIB_CRYPTO] = format_openssl_version(OPENSSL_VERSION_NUMBER);
 	linked[LIB_CRYPTO] = format_openssl_version(SSLeay());
 	names[LIB_CRYPTO] = "OpenSSL/libcrypto";
+#endif
 
 	//
 	// Cairo

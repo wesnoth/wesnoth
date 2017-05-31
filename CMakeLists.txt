@@ -68,7 +68,13 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package(GLEW REQUIRED)
 	find_package(SDL2 2.0.4 REQUIRED)
 endif(ENABLE_GAME OR ENABLE_TESTS)
-find_package(Crypto 1.0 REQUIRED)
+
+if(NOT APPLE)
+	find_package(Crypto 1.0 REQUIRED)
+else()
+	set(CRYPTO_LIBRARY "-framework Security")
+endif()
+
 find_package(Boost 1.56 REQUIRED COMPONENTS iostreams program_options regex system thread random)
 
 # no, gettext executables are not required when NLS is deactivated
