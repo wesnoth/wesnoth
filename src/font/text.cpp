@@ -676,6 +676,10 @@ void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const s
 	);
 
 	pango_cairo_show_layout(cr.get(), &layout);
+
+	// HACK: 'draw' text a second time in order to get desired output when copying w/ alpha blending.
+	// See bug #1744 for more info.
+	pango_cairo_show_layout(cr.get(), &layout);
 }
 
 void pango_text::rerender(const bool force)
