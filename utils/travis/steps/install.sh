@@ -26,8 +26,6 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
         travis_wait ./projectfiles/Xcode/Fix_Xcode_Dependencies
     else
         travis_wait ./utils/travis/install_deps.sh
-        export CXXFLAGS="-I/usr/local/opt/openssl/include $CFLAGS"
-        export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
     fi
 else
     docker build -t wesnoth-repo:"$LTS"-"$BRANCH" -f docker/Dockerfile-travis-"$LTS"-"$BRANCH" .

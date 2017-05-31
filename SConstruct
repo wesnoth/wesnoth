@@ -377,6 +377,10 @@ if env["prereqs"]:
         conf.CheckBoostLocaleBackends(["icu", "winapi"]) \
             or Warning("Only icu and winapi backends of Boost Locale are supported. Bugs/crashes are very likely with other backends")
 
+    if(have_server_prereqs and env["PLATFORM"] != 'darwin'):
+        # Otherwise, use Security.framework
+        have_server_prereqs = have_server_prereqs & conf.CheckLib("libcrypto")
+
     if env['harden']:
         env["have_fortify"] = conf.CheckFortifySource()
 
@@ -617,6 +621,7 @@ for env in [test_env, client_env, env]:
     if env["PLATFORM"] == 'darwin':            # Mac OS X
         env.Append(FRAMEWORKS = "Cocoa")            # Cocoa GUI
         env.Append(FRAMEWORKS = "IOKit")            # IOKit
+        env.Append(FRAMEWORKS = "Security")         # commonCrypto (after OpenSSL replacement on Mac)
 
 if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
