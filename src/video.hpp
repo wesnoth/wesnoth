@@ -17,6 +17,7 @@
 #include "events.hpp"
 #include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
+#include "ogl/context.hpp"
 
 #include <SDL_render.h>
 
@@ -245,6 +246,11 @@ private:
 
 	/** The SDL window object. */
 	std::unique_ptr<sdl::window> window;
+
+#ifdef USE_GL_RENDERING
+	/** The OpenGL context attached to the SDL window. */
+	std::unique_ptr<gl::context> gl_context;
+#endif
 
 	/** Initializes the SDL video subsystem. */
 	void initSDL();

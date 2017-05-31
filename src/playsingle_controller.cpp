@@ -35,6 +35,7 @@
 #include "log.hpp"
 #include "map/label.hpp"
 #include "map/map.hpp"
+#include "ogl/utils.hpp"
 #include "playturn.hpp"
 #include "random_deterministic.hpp"
 #include "replay_helper.hpp"
@@ -273,7 +274,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		const bool is_victory = get_end_level_data_const().is_victory;
 
 		if(gamestate().gamedata_.phase() <= game_data::PRESTART) {
+#ifdef USE_GL_RENDERING
+			gl::clear_screen();
+#else
 			gui_->video().clear_screen();
+#endif
 		}
 
 		ai_testing::log_game_end();
