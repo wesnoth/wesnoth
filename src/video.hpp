@@ -22,6 +22,7 @@
 
 #include <SDL_render.h>
 
+#include "ogl/context.hpp"
 #include "sdl/window.hpp"
 
 class surface;
@@ -174,6 +175,11 @@ private:
 	static CVideo* singleton_;
 
 	std::unique_ptr<sdl::window> window;
+
+#ifdef USE_GL_RENDERING
+	std::unique_ptr<gl::context> gl_context;
+#endif
+
 	class video_event_handler : public events::sdl_handler {
 	public:
 		virtual void handle_event(const SDL_Event &) {}

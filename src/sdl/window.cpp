@@ -12,9 +12,10 @@
    See the COPYING file for more details.
 */
 
-#include "sdl/surface.hpp"
 #include "sdl/window.hpp"
 
+#include "ogl/utils.hpp"
+#include "sdl/surface.hpp"
 #include "sdl/exception.hpp"
 
 #include <SDL_render.h>
@@ -36,6 +37,7 @@ window::window(const std::string& title,
 		throw exception("Failed to create a SDL_Window object.", true);
 	}
 
+#ifndef USE_GL_RENDERING
 	if(!SDL_CreateRenderer(window_, -1, render_flags)) {
 		throw exception("Failed to create a SDL_Renderer object.", true);
 	}
@@ -62,6 +64,7 @@ window::window(const std::string& title,
 	fill(0,0,0);
 
 	render();
+#endif
 }
 
 window::~window()
@@ -120,7 +123,11 @@ void window::fill(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 
 void window::render()
 {
+#ifdef USE_GL_RENDERING
+	SDL_GL_SwapWindow(*this);
+#else
 	SDL_RenderPresent(*this);
+#endif
 }
 
 void window::set_title(const std::string& title)
@@ -159,4 +166,3 @@ window::operator SDL_Renderer*()
 }
 
 } // namespace sdl
-
