@@ -33,6 +33,7 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/label.hpp"
+#include "ogl/utils.hpp"
 #include "font/standard_colors.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
@@ -81,7 +82,11 @@ game_display::game_display(game_board& board, std::weak_ptr<wb::manager> wb,
 		needs_rebuild_(false)
 {
 	replace_overlay_map(&overlay_map_);
+#ifdef USE_GL_RENDERING
+	gl::clear_screen();
+#else
 	video().clear_screen();
+#endif
 }
 
 game_display::~game_display()

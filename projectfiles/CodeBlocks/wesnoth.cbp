@@ -43,6 +43,7 @@
 			<Add option="-D_WIN32_WINDOWS" />
 			<Add option="-D_WIN32_WINNT=0x0501" />
 			<Add option="-D_WIN32_IE=0x0501" />
+			<Add option="-DGLEW_STATIC" />
 			<Add directory="../../src" />
 		</Compiler>
 		<Linker>
@@ -79,6 +80,8 @@
 			<Add library="libboost_zlib-mgw51-mt-1_64" />
 			<Add library="libcrypto-1_1" />
 			<Add library="winmm" />
+			<Add library="libglew32" />
+			<Add library="opengl32" />
 			<Add directory="./" />
 		</Linker>
 		<Unit filename="../../packaging/windows/wesnoth.rc">
@@ -736,6 +739,8 @@
 		<Unit filename="../../src/gui/widgets/list.hpp" />
 		<Unit filename="../../src/gui/widgets/listbox.cpp" />
 		<Unit filename="../../src/gui/widgets/listbox.hpp" />
+		<Unit filename="../../src/gui/widgets/map_viewer.cpp" />
+		<Unit filename="../../src/gui/widgets/map_viewer.hpp" />
 		<Unit filename="../../src/gui/widgets/matrix.cpp" />
 		<Unit filename="../../src/gui/widgets/matrix.hpp" />
 		<Unit filename="../../src/gui/widgets/menu_button.cpp" />
@@ -904,6 +909,10 @@
 		<Unit filename="../../src/multiplayer_error_codes.hpp" />
 		<Unit filename="../../src/network_asio.cpp" />
 		<Unit filename="../../src/network_asio.hpp" />
+		<Unit filename="../../src/ogl/context.cpp" />
+		<Unit filename="../../src/ogl/context.hpp" />
+		<Unit filename="../../src/ogl/utils.cpp" />
+		<Unit filename="../../src/ogl/utils.hpp" />
 		<Unit filename="../../src/overlay.hpp" />
 		<Unit filename="../../src/pathfind/astarsearch.cpp" />
 		<Unit filename="../../src/pathfind/pathfind.cpp" />

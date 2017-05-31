@@ -16,6 +16,7 @@
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "log.hpp"
+#include "ogl/utils.hpp"
 #include "quit_confirmation.hpp"
 #include "video.hpp"
 #include "sdl/userevent.hpp"
@@ -658,7 +659,11 @@ void pump()
 		const bool is_draw_event = event.type == DRAW_EVENT || event.type == DRAW_ALL_EVENT;
 
 		if(is_draw_event) {
+#ifdef USE_GL_RENDERING
+			gl::clear_screen();
+#else
 			CVideo::get_singleton().clear_screen();
+#endif
 		}
 
 		for(auto global_handler : event_contexts.front().handlers) {
