@@ -57,7 +57,6 @@
 		46F57086205FCE79007031BF /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
 		46F57087205FCF5D007031BF /* filesystem_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD71CB6BC3F00470BFE /* filesystem_sdl.cpp */; };
 		46F57088205FCF7E007031BF /* config_attribute_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0341DF1ECF46FE000F2E2B /* config_attribute_value.cpp */; };
-		46F57099205FD0BF007031BF /* libcrypto.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90BC845A1EDBD7B600A6630D /* libcrypto.1.1.dylib */; };
 		46F5709A205FE48C007031BF /* string_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AF0EC62181008DD061 /* string_utils.cpp */; };
 		46F570A6205FF856007031BF /* addon_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F5709E205FF856007031BF /* addon_utils.cpp */; };
 		46F570A7205FF856007031BF /* blacklist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F570A2205FF856007031BF /* blacklist.cpp */; };
@@ -493,11 +492,7 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		903F959C1ED5489500F1BDD3 /* credentials.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 903F959B1ED5489500F1BDD3 /* credentials.cpp */; };
 		903F959F1ED5496700F1BDD3 /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
-		905440871EE46ABC0091D1AE /* libcrypto.1.1.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 90BC845A1EDBD7B600A6630D /* libcrypto.1.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		90606A2B1D5599BA00719B40 /* libpcre.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90606A2A1D5599BA00719B40 /* libpcre.1.dylib */; };
-		90BC845B1EDBD7B600A6630D /* libcrypto.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90BC845A1EDBD7B600A6630D /* libcrypto.1.1.dylib */; };
-		90BC845C1EDBD7B600A6630D /* libcrypto.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90BC845A1EDBD7B600A6630D /* libcrypto.1.1.dylib */; };
-		90BC845D1EDBD7B600A6630D /* libcrypto.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90BC845A1EDBD7B600A6630D /* libcrypto.1.1.dylib */; };
 		9107AE181DB32899001927B0 /* lapi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1061879D17D00A3B0B1 /* lapi.cpp */; };
 		9107AE191DB3289D001927B0 /* lauxlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1071879D17D00A3B0B1 /* lauxlib.cpp */; };
 		9107AE1A1DB328A2001927B0 /* lbaselib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1081879D17D00A3B0B1 /* lbaselib.cpp */; };
@@ -1401,7 +1396,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				905440871EE46ABC0091D1AE /* libcrypto.1.1.dylib in Copy Frameworks */,
 				91B622011B76C0A600B00E0F /* libboost_filesystem-mt.dylib in Copy Frameworks */,
 				91B622021B76C0A600B00E0F /* libboost_iostreams-mt.dylib in Copy Frameworks */,
 				91B622031B76C0A600B00E0F /* libboost_locale-mt.dylib in Copy Frameworks */,
@@ -1452,6 +1446,7 @@
 
 /* Begin PBXFileReference section */
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		1C58BBDF21822A930078D25A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4638966F2034180800075E54 /* deprecation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = deprecation.hpp; sourceTree = "<group>"; };
 		463896702034180900075E54 /* deprecation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = deprecation.cpp; sourceTree = "<group>"; };
 		4649B879202886F000827CFB /* test_irdya_date.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_irdya_date.cpp; sourceTree = "<group>"; };
@@ -1969,7 +1964,6 @@
 		903F959B1ED5489500F1BDD3 /* credentials.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = credentials.cpp; path = preferences/credentials.cpp; sourceTree = "<group>"; };
 		903F959D1ED5489D00F1BDD3 /* credentials.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = credentials.hpp; path = preferences/credentials.hpp; sourceTree = "<group>"; };
 		90606A2A1D5599BA00719B40 /* libpcre.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcre.1.dylib; path = lib/libpcre.1.dylib; sourceTree = "<group>"; };
-		90BC845A1EDBD7B600A6630D /* libcrypto.1.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.1.dylib; path = lib/libcrypto.1.1.dylib; sourceTree = "<group>"; };
 		9107AE141DB32862001927B0 /* liblua.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblua.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9107AE551DB5BD3B001927B0 /* lprefix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lprefix.h; sourceTree = "<group>"; };
 		9107AE561DB5BD49001927B0 /* lutf8lib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lutf8lib.cpp; sourceTree = "<group>"; };
@@ -2800,7 +2794,6 @@
 				91B622211B76C0F400B00E0F /* libboost_random-mt.dylib in Frameworks */,
 				91B622221B76C0F400B00E0F /* libboost_regex-mt.dylib in Frameworks */,
 				91B622231B76C0F400B00E0F /* libboost_system-mt.dylib in Frameworks */,
-				90BC845B1EDBD7B600A6630D /* libcrypto.1.1.dylib in Frameworks */,
 				EC5C243B18EF07B4001FA499 /* libbz2.1.0.dylib in Frameworks */,
 				B513B2290ED36BFB0006E551 /* libcairo.2.dylib in Frameworks */,
 				EC5C243C18EF07B4001FA499 /* libexpat.1.dylib in Frameworks */,
@@ -2845,7 +2838,6 @@
 			files = (
 				91C548C31D8866ED00FE6A7B /* CoreFoundation.framework in Frameworks */,
 				91C548E21D886E9000FE6A7B /* libboost_system-mt.dylib in Frameworks */,
-				46F57099205FD0BF007031BF /* libcrypto.1.1.dylib in Frameworks */,
 				91C548E81D886F1E00FE6A7B /* libboost_locale-mt.dylib in Frameworks */,
 				91C548ED1D886FC500FE6A7B /* libboost_filesystem-mt.dylib in Frameworks */,
 				91C548EE1D886FCE00FE6A7B /* libboost_iostreams-mt.dylib in Frameworks */,
@@ -2874,7 +2866,6 @@
 				46F92F242174FF6700602C1C /* libboost_thread-mt.dylib in Frameworks */,
 				91A215DF1CAD99E000927AEA /* libboost_iostreams-mt.dylib in Frameworks */,
 				91A215E01CAD99E000927AEA /* libboost_system-mt.dylib in Frameworks */,
-				90BC845D1EDBD7B600A6630D /* libcrypto.1.1.dylib in Frameworks */,
 				46F92EBA2174F9AF00602C1C /* SDL2.framework in Frameworks */,
 				91A215E21CAD9B9000927AEA /* libpango-1.0.0.dylib in Frameworks */,
 				91A215E31CAD9B9000927AEA /* libpangocairo-1.0.0.dylib in Frameworks */,
@@ -2892,7 +2883,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				46F92EB92174F9AF00602C1C /* SDL2.framework in Frameworks */,
-				90BC845C1EDBD7B600A6630D /* libcrypto.1.1.dylib in Frameworks */,
 				F4D2A9D514DAED4200CAFF31 /* CoreFoundation.framework in Frameworks */,
 				ECF9D44119F4042700E6C9D9 /* libboost_filesystem-mt.dylib in Frameworks */,
 				F4EF0D4D13AD4D53003C701D /* libboost_iostreams-mt.dylib in Frameworks */,
@@ -2926,6 +2916,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked System Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1C58BBDF21822A930078D25A /* Security.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */,
 			);
@@ -3277,7 +3268,6 @@
 				91E355621CACA1CE00774252 /* libboost_unit_test_framework-mt.dylib */,
 				EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */,
 				B513B2270ED36BFB0006E551 /* libcairo.2.dylib */,
-				90BC845A1EDBD7B600A6630D /* libcrypto.1.1.dylib */,
 				EC5C242318EF07B4001FA499 /* libexpat.1.dylib */,
 				EC5C242418EF07B4001FA499 /* libffi.6.dylib */,
 				EC5C242518EF07B4001FA499 /* libfontconfig.1.dylib */,

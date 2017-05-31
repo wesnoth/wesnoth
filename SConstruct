@@ -360,7 +360,6 @@ if env["prereqs"]:
 
     have_server_prereqs = (\
         conf.CheckCPlusPlus(gcc_version = "4.8") & \
-        conf.CheckLib("libcrypto") & \
         conf.CheckBoost("iostreams", require_version = boost_version) & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \
@@ -378,6 +377,10 @@ if env["prereqs"]:
 
     if env['harden']:
         env["have_fortify"] = conf.CheckFortifySource()
+
+    if(env["PLATFORM"] != 'darwin'):
+        # Otherwise, use Security.framework
+        have_server_prereqs = have_server_prereqs & conf.CheckLib("libcrypto")
 
     env = conf.Finish()
 
@@ -618,6 +621,7 @@ for env in [test_env, client_env, env]:
 
     if env["PLATFORM"] == 'darwin':            # Mac OS X
         env.Append(FRAMEWORKS = "Cocoa")            # Cocoa GUI
+        env.Append(FRAMEWORKS = "Security")         # commonCrypto (after OpenSSL replacement on Mac)
 
 if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
