@@ -52,13 +52,13 @@
 			<Add library="ws2_32" />
 			<Add library="wsock32" />
 			<Add library="shlwapi" />
-			<Add library="libboost_iostreams-mgw51-mt-1_61.a" />
-			<Add library="libboost_bzip2-mgw51-mt-1_61.a" />
-			<Add library="libboost_filesystem-mgw51-mt-1_61.a" />
-			<Add library="libboost_locale-mgw51-mt-1_61.a" />
-			<Add library="libboost_random-mgw51-mt-1_61.a" />
-			<Add library="libboost_system-mgw51-mt-1_61.a" />
-			<Add library="libboost_zlib-mgw51-mt-1_61.a" />
+			<Add library="libboost_iostreams-mgw51-mt-1_64" />
+			<Add library="libboost_bzip2-mgw51-mt-1_64" />
+			<Add library="libboost_filesystem-mgw51-mt-1_64" />
+			<Add library="libboost_locale-mgw51-mt-1_64" />
+			<Add library="libboost_random-mgw51-mt-1_64" />
+			<Add library="libboost_system-mgw51-mt-1_64" />
+			<Add library="libboost_zlib-mgw51-mt-1_64" />
 		</Linker>
 		<Unit filename="../../packaging/windows/wesnothd.rc">
 			<Option compilerVar="WINDRES" />
@@ -69,6 +69,8 @@
 		<Unit filename="../../src/color_range.cpp" />
 		<Unit filename="../../src/config.cpp" />
 		<Unit filename="../../src/config.hpp" />
+		<Unit filename="../../src/config_attribute_value.cpp" />
+		<Unit filename="../../src/config_attribute_value.hpp" />
 		<Unit filename="../../src/filesystem.hpp" />
 		<Unit filename="../../src/filesystem_boost.cpp" />
 		<Unit filename="../../src/filesystem_common.cpp" />
