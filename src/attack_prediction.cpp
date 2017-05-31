@@ -845,11 +845,12 @@ void prob_matrix::merge_row(unsigned d_plane, unsigned s_plane, unsigned row, un
 void prob_matrix::merge_rows(unsigned d_plane, unsigned s_plane, unsigned d_col)
 {
 	auto cols_end = used_cols_[s_plane].end();
-	auto col_it = used_cols_[s_plane].begin();
+	// Exclude column zero.
+	auto cols_begin = std::next(used_cols_[s_plane].begin());
 
 	// Transfer the data, excluding column zero.
-	for(const unsigned& row : used_rows_[s_plane]) {
-		for(++col_it; col_it != cols_end; ++col_it) {
+	for(const unsigned row : used_rows_[s_plane]) {
+		for(auto col_it = cols_begin; col_it != cols_end; ++col_it) {
 			xfer(d_plane, s_plane, row, d_col, row, *col_it);
 		}
 	}
