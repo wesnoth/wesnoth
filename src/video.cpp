@@ -19,6 +19,7 @@
 #include "font/sdl_ttf.hpp"
 #include "image.hpp"
 #include "log.hpp"
+#include "ogl/utils.hpp"
 #include "preferences/general.hpp"
 #include "sdl/point.hpp"
 #include "sdl/render_utils.hpp"
@@ -86,6 +87,9 @@ void trigger_full_redraw()
 
 CVideo::CVideo(FAKE_TYPES type)
 	: window()
+#ifdef USE_GL_RENDERING
+	, gl_context()
+#endif
 	, fake_screen_(false)
 	, help_string_(0)
 	, updated_locked_(0)
@@ -200,6 +204,9 @@ void CVideo::init_window()
 
 	// Add any more default flags here
 	window_flags |= SDL_WINDOW_RESIZABLE;
+#ifdef USE_GL_RENDERING
+	video_flags |= SDL_WINDOW_OPENGL;
+#endif
 
 	if(preferences::fullscreen()) {
 		window_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
@@ -213,6 +220,14 @@ void CVideo::init_window()
 	std::cerr << "Setting mode to " << w << "x" << h << std::endl;
 
 	window->set_minimum_size(preferences::min_window_width, preferences::min_window_height);
+
+#ifdef USE_GL_RENDERING
+	// Initialize an OpenGL context for the window.
+	gl_context.reset(new gl::context(window.get()));
+
+	gl::clear_screen();
+	render_screen();
+#endif
 
 	event_handler_.join_global();
 }
