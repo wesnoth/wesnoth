@@ -409,16 +409,16 @@ public:
 		return max_experience_;
 	}
 
-	/**
-	 * Absolute difference between current and max experience points.
-	 *
-	 * This function can serve two purposes:
-	 * - If current XP < max XP, the result is the amount of XP needed to advance.
-	 * - If current XP > max XP, the result is how much XP the unit will retain once they advance.
-	 */
-	unsigned int experience_differential() const
+	/** The number of experience points this unit needs to level up, or 0 if current XP > max XP. */
+	unsigned int experience_to_advance() const
 	{
-		return std::abs(experience_ - max_experience_);
+		return std::max(0, max_experience_ - experience_);
+	}
+
+	/** The number of experience points over max this unit has, or 0 if current XP < max XP. */
+	unsigned int experience_overflow() const
+	{
+		return std::max(0, experience_ - max_experience_);
 	}
 
 	/** Sets the current experience point amount. */

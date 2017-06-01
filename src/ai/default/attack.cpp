@@ -180,11 +180,11 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		double advance_prob = 0.0;
 		// The reward for advancing a unit is to get a 'negative' loss of that unit
 		if (!up->advances_to().empty()) {
-			int xp_for_advance = up->experience_differential();
+			int xp_for_advance = up->experience_to_advance();
 
 			// See bug #6272... in some cases, unit already has got enough xp to advance,
 			// but hasn't (bug elsewhere?).  Can cause divide by zero.
-			if (xp_for_advance <= 0)
+			if (xp_for_advance == 0)
 				xp_for_advance = 1;
 
 			int fight_xp = defend_it->level();
@@ -235,7 +235,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	}
 
 	if (!defend_it->advances_to().empty() &&
-		def_avg_experience >= defend_it->experience_differential()) {
+		def_avg_experience >= defend_it->experience_to_advance()) {
 		// It's likely to advance: only if we can kill with first blow.
 		chance_to_kill = first_chance_kill;
 		// Negative average damage (it will advance).
