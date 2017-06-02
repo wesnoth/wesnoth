@@ -42,9 +42,9 @@ using string_view = boost::string_view;
 #include <cstring>
 #include <iosfwd>
 
-#if defined(BOOST_NO_CXX11_DEFAULTED_FUNCTIONS) || (defined(BOOST_GCC) && ((BOOST_GCC+0) / 100) <= 406)
-// GCC 4.6 cannot handle a defaulted function with noexcept specifier
-#define BOOST_STRING_VIEW_NO_CXX11_DEFAULTED_NOEXCEPT_FUNCTIONS
+
+#if BOOST_VERSION <= 105600
+# define BOOST_CXX14_CONSTEXPR
 #endif
 
 namespace utils {
@@ -60,7 +60,9 @@ public:
 };
 }
 
-template<typename charT, typename traits>  // traits defaulted in string_view_fwd.hpp
+template<typename charT, typename traits = std::char_traits<charT> > class basic_string_view;
+	
+template<typename charT, typename traits>
 class basic_string_view {
 public:
 	// types
@@ -84,23 +86,9 @@ public:
 
 	// by defaulting these functions, basic_string_ref becomes
 	//  trivially copy/move constructible.
-	BOOST_CONSTEXPR basic_string_view(const basic_string_view &rhs) BOOST_NOEXCEPT
-#ifndef BOOST_STRING_VIEW_NO_CXX11_DEFAULTED_NOEXCEPT_FUNCTIONS
-		= default;
-#else
-		: ptr_(rhs.ptr_), len_(rhs.len_) {}
-#endif
+	BOOST_CONSTEXPR basic_string_view(const basic_string_view &rhs) BOOST_NOEXCEPT = default;
 
-	basic_string_view& operator=(const basic_string_view &rhs) BOOST_NOEXCEPT
-#ifndef BOOST_STRING_VIEW_NO_CXX11_DEFAULTED_NOEXCEPT_FUNCTIONS
-		= default;
-#else
-	{
-		ptr_ = rhs.ptr_;
-		len_ = rhs.len_;
-		return *this;
-	}
-#endif
+	basic_string_view& operator=(const basic_string_view &rhs) BOOST_NOEXCEPT = default;
 
 	template<typename Allocator>
 	basic_string_view(const std::basic_string<charT, traits, Allocator>& str) BOOST_NOEXCEPT
