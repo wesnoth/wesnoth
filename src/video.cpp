@@ -226,7 +226,11 @@ void CVideo::init_window()
 	}
 
 	// Initialize window
+#ifdef SW_RENDERING_LEGACY_MODE
+	window.reset(new sdl::window("", x, y, w, h, video_flags, SDL_RENDERER_SOFTWARE | SDL_RENDERER_TARGETTEXTURE));
+#else
 	window.reset(new sdl::window("", x, y, w, h, video_flags, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE));
+#endif
 
 	std::cerr << "Setting mode to " << w << "x" << h << std::endl;
 

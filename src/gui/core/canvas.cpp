@@ -1171,6 +1171,9 @@ void image_shape::draw(
 						  << image_->h << " to " << w << ',' << h << ".\n";
 
 				// Textures are automatically scaled to size.
+#ifdef SW_RENDERING_LEGACY_MODE
+				surf = scale_surface(image_, w, h);
+#endif
 			}
 		}
 	}
@@ -1178,6 +1181,13 @@ void image_shape::draw(
 	if(!surf) {
 		surf = image_;
 	}
+
+#ifdef SW_RENDERING_LEGACY_MODE
+	/* HACK: not sure why, but SW rendering has some problems with copying the surface to the texture and
+	 * corrupts certain semi-transparent pixels. This is a hacky workaround.
+	 */
+	SDL_SetSurfaceAlphaMod(surf, 254);
+#endif
 
 	dst_clip.w = w ? w : surf->w;
 	dst_clip.h = h ? h : surf->h;
