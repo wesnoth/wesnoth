@@ -104,12 +104,10 @@ public:
 	/**
 	 * Copies the canvas texture to the screen renderer.
 	 *
-	 * It makes sure the image on the canvas is up to date. Also executes the
-	 * pre-blitting functions.
-	 *
-	 * @param rect                The place to blit to.
+	 * This will re-render the canvas texture if necessary (ie, if marked dirty).
+	 * It also executes the pre-commit functions such as blurring (@todo: reenable).
 	 */
-	void render(SDL_Rect rect);
+	void render();
 
 	/**
 	 * Sets the config.

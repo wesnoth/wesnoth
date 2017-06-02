@@ -1453,17 +1453,19 @@ void canvas::draw(const bool force)
 	is_dirty_ = false;
 }
 
-void canvas::render(SDL_Rect rect)
+void canvas::render()
 {
-	SDL_RenderSetViewport(renderer_, &rect);
+	/**
+	 * @note Both the clip rect and viewport should be set before this function is called.
+	 * The clip rect ensures the canvas texture is cropped appropriately, and the viewport sets the
+	 * origin for all the drawing operations, as well as specifying the area of the screen to which
+	 * this canvas applies.
+	 */
 
+	// Update the canvas texture, if necessary.
 	draw();
 
-	SDL_RenderCopy(renderer_, texture_, nullptr, nullptr);
-
-	SDL_RenderSetViewport(renderer_, nullptr);
-
-	// TODO: reenable
+	// TODO: reenable. Need a shader.
 #if 0
 	if(blur_depth_) {
 		/*
@@ -1482,6 +1484,9 @@ void canvas::render(SDL_Rect rect)
 		}
 	}
 #endif
+
+	// Copy the entire texture to the full viewport.
+	SDL_RenderCopy(renderer_, texture_, nullptr, nullptr);
 }
 
 void canvas::parse_cfg(const config& cfg)
