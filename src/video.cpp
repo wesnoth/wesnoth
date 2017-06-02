@@ -344,9 +344,9 @@ sdl::window *CVideo::get_window()
 	return window.get();
 }
 
-std::pair<int, int> CVideo::get_dpi_scale_factor() const
+std::pair<float, float> CVideo::get_dpi_scale_factor() const
 {
-	std::pair<int, int> result;
+	std::pair<float, float> result;
 
 	if(!window) {
 		return result;
@@ -380,7 +380,7 @@ std::vector<std::pair<int, int>> CVideo::get_available_resolutions(const bool in
 	const std::pair<int,int> min_res = std::make_pair(preferences::min_window_width, preferences::min_window_height);
 	const std::pair<int,int> current_res = current_resolution();
 
-	int scale_h, scale_v;
+	float scale_h, scale_v;
 	std::tie(scale_h, scale_v) = get_dpi_scale_factor();
 
 	SDL_DisplayMode mode;
