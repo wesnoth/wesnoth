@@ -32,7 +32,6 @@ using string_view = boost::string_view;
 
 #include <boost/config.hpp>
 #include <boost/detail/workaround.hpp>
-#include <boost/utility/string_view_fwd.hpp>
 #include <boost/throw_exception.hpp>
 
 #include <cstddef>
