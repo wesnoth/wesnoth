@@ -114,33 +114,13 @@ namespace
 const unsigned SHOW = debug_layout_graph::SHOW;
 const unsigned LAYOUT = debug_layout_graph::LAYOUT;
 #else
-// values are irrelavant when DEBUG_WINDOW_LAYOUT_GRAPHS is not defined.
+// values are irrelevant when DEBUG_WINDOW_LAYOUT_GRAPHS is not defined.
 const unsigned SHOW = 0;
 const unsigned LAYOUT = 0;
 #endif
 
 /**
- * Pushes a single draw event to the queue. To be used before calling
- * events::pump when drawing windows.
- *
- * @todo: in the future we should simply call draw functions directly
- * from events::pump and do away with the custom drawing events, but
- * that's a 1.15 target. For now, this will have to do.
- */
-static void push_draw_event()
-{
-	//	DBG_GUI_E << "Pushing draw event in queue.\n";
 
-	SDL_Event event;
-	sdl::UserEvent data(DRAW_EVENT);
-
-	event.type = DRAW_EVENT;
-	event.user = data;
-
-	SDL_PushEvent(&event);
-}
-
-/**
  * SDL_AddTimer() callback for delay_event.
  *
  * @param event                   The event to push in the event queue.
@@ -486,8 +466,6 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 	invalidate_layout();
 	suspend_drawing_ = false;
 
-	push_draw_event();
-
 	events::pump();
 }
 
@@ -535,8 +513,6 @@ int window::show(const unsigned auto_close_timeout)
 		// Start our loop drawing will happen here as well.
 		bool mouse_button_state_initialized = false;
 		for(status_ = SHOWING; status_ != CLOSED;) {
-			push_draw_event();
-
 			// process installed callback if valid, to allow e.g. network
 			// polling
 			events::pump();

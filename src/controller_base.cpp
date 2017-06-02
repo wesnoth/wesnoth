@@ -30,7 +30,8 @@ static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
 controller_base::controller_base(const config& game_config)
-	: game_config_(game_config)
+	: draw_layering(false)
+	, game_config_(game_config)
 	, key_()
 	, scrolling_(false)
 	, scroll_up_(false)
