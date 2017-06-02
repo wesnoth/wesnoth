@@ -378,10 +378,19 @@ std::vector<std::pair<int, int>> CVideo::get_available_resolutions(const bool in
 	}
 
 	const std::pair<int,int> min_res = std::make_pair(preferences::min_window_width, preferences::min_window_height);
+	const std::pair<int,int> current_res = current_resolution();
+
+	int scale_h, scale_v;
+	std::tie(scale_h, scale_v) = get_dpi_scale_factor();
 
 	SDL_DisplayMode mode;
 	for(int i = 0; i < modes; ++i) {
 		if(SDL_GetDisplayMode(display_index, i, &mode) == 0) {
+			// Exclude any results outside the range of the current DPI.
+			if(mode.w * scale_h > current_res.first && mode.h * scale_v > current_res.second) {
+				continue;
+			}
+
 			if(mode.w >= min_res.first && mode.h >= min_res.second) {
 				result.emplace_back(mode.w, mode.h);
 			}
@@ -393,7 +402,7 @@ std::vector<std::pair<int, int>> CVideo::get_available_resolutions(const bool in
 	}
 
 	if(include_current) {
-		result.push_back(current_resolution());
+		result.push_back(current_res);
 	}
 
 	std::sort(result.begin(), result.end());
