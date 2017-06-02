@@ -350,7 +350,9 @@ std::vector<std::pair<int, int>> CVideo::get_available_resolutions(const bool in
 		return result;
 	}
 
-	const int modes = SDL_GetNumDisplayModes(window->get_display_index());
+	const int display_index = window->get_display_index();
+
+	const int modes = SDL_GetNumDisplayModes(display_index);
 	if(modes <= 0) {
 		std::cerr << "No modes supported\n";
 		return result;
@@ -359,10 +361,11 @@ std::vector<std::pair<int, int>> CVideo::get_available_resolutions(const bool in
 	const std::pair<int,int> min_res = std::make_pair(preferences::min_window_width, preferences::min_window_height);
 
 	SDL_DisplayMode mode;
-	for (int i = 0; i < modes; ++i) {
-		if(SDL_GetDisplayMode(0, i, &mode) == 0) {
-			if(mode.w >= min_res.first && mode.h >= min_res.second)
+	for(int i = 0; i < modes; ++i) {
+		if(SDL_GetDisplayMode(display_index, i, &mode) == 0) {
+			if(mode.w >= min_res.first && mode.h >= min_res.second) {
 				result.emplace_back(mode.w, mode.h);
+			}
 		}
 	}
 
