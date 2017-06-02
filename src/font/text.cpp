@@ -21,7 +21,6 @@
 #include "font/pango/escape.hpp"
 #include "font/pango/font.hpp"
 #include "font/pango/hyperlink.hpp"
-#include "font/pango/iter.hpp"
 #include "font/pango/stream_ops.hpp"
 
 #include "gettext.hpp"
@@ -35,17 +34,19 @@
 
 #include <cassert>
 #include <cstring>
+#include <stdexcept>
 
 namespace font {
 
 pango_text::pango_text()
 #if PANGO_VERSION_CHECK(1,22,0)
-	: context_(pango_font_map_create_context(pango_cairo_font_map_get_default()))
+	: context_(pango_font_map_create_context(pango_cairo_font_map_get_default()), g_object_unref)
 #else
 	: context_(pango_cairo_font_map_create_context((
-		reinterpret_cast<PangoCairoFontMap*>(pango_cairo_font_map_get_default()))))
+		reinterpret_cast<PangoCairoFontMap*>(pango_cairo_font_map_get_default()))), g_object_unref)
 #endif
-	, layout_(pango_layout_new(context_))
+	, layout_(pango_layout_new(context_.get()), g_object_unref)
+	, sublayouts_()
 	, rect_()
 	, surface_()
 	, text_()
@@ -68,39 +69,28 @@ pango_text::pango_text()
 	, surface_buffer_()
 {
 	// With 72 dpi the sizes are the same as with SDL_TTF so hardcoded.
-	pango_cairo_context_set_resolution(context_, 72.0);
+	pango_cairo_context_set_resolution(context_.get(), 72.0);
 
-	pango_layout_set_ellipsize(layout_, ellipse_mode_);
-	pango_layout_set_alignment(layout_, alignment_);
-	pango_layout_set_wrap(layout_, PANGO_WRAP_WORD_CHAR);
+	pango_layout_set_ellipsize(layout_.get(), ellipse_mode_);
+	pango_layout_set_alignment(layout_.get(), alignment_);
+	pango_layout_set_wrap(layout_.get(), PANGO_WRAP_WORD_CHAR);
 
 	/*
 	 * Set the pango spacing a bit bigger since the default is deemed to small
 	 * http://www.wesnoth.org/forum/viewtopic.php?p=358832#p358832
 	 */
-	pango_layout_set_spacing(layout_, 4 * PANGO_SCALE);
+	pango_layout_set_spacing(layout_.get(), 4 * PANGO_SCALE);
 
 	cairo_font_options_t *fo = cairo_font_options_create();
 	cairo_font_options_set_hint_style(fo, CAIRO_HINT_STYLE_FULL);
 	cairo_font_options_set_hint_metrics(fo, CAIRO_HINT_METRICS_ON);
 	cairo_font_options_set_antialias(fo, CAIRO_ANTIALIAS_DEFAULT);
 
-	pango_cairo_context_set_font_options(context_, fo);
+	pango_cairo_context_set_font_options(context_.get(), fo);
 	cairo_font_options_destroy(fo);
 }
 
-pango_text::~pango_text()
-{
-	if(context_) {
-		g_object_unref(context_);
-	}
-	if(layout_) {
-		g_object_unref(layout_);
-	}
-	surface_.assign(nullptr);
-}
-
-surface& pango_text::render() const
+surface& pango_text::render()
 {
 	this->rerender();
 	return surface_;
@@ -128,7 +118,7 @@ bool pango_text::is_truncated() const
 {
 	this->recalculate();
 
-	return (pango_layout_is_ellipsized(layout_) != 0);
+	return (pango_layout_is_ellipsized(layout_.get()) != 0);
 }
 
 unsigned pango_text::insert_text(const unsigned offset, const std::string& text)
@@ -169,22 +159,23 @@ gui2::point pango_text::get_cursor_position(
 
 	// First we need to determine the byte offset, if more routines need it it
 	// would be a good idea to make it a separate function.
-	p_itor itor{layout_};
+	std::unique_ptr<PangoLayoutIter, std::function<void(PangoLayoutIter*)>> itor(
+		pango_layout_get_iter(layout_.get()), pango_layout_iter_free);
 
 	// Go the wanted line.
 	if(line != 0) {
-		if(pango_layout_get_line_count(layout_) >= static_cast<int>(line)) {
+		if(pango_layout_get_line_count(layout_.get()) >= static_cast<int>(line)) {
 			return gui2::point(0, 0);
 		}
 
 		for(size_t i = 0; i < line; ++i) {
-			pango_layout_iter_next_line(itor);
+			pango_layout_iter_next_line(itor.get());
 		}
 	}
 
 	// Go the wanted column.
 	for(size_t i = 0; i < column; ++i) {
-		if(!pango_layout_iter_next_char(itor)) {
+		if(!pango_layout_iter_next_char(itor.get())) {
 			// It seems that the documentation is wrong and causes and off by
 			// one error... the result should be false if already at the end of
 			// the data when started.
@@ -197,11 +188,11 @@ gui2::point pango_text::get_cursor_position(
 	}
 
 	// Get the byte offset
-	const int offset = pango_layout_iter_get_index(itor);
+	const int offset = pango_layout_iter_get_index(itor.get());
 
 	// Convert the byte offset in a position.
 	PangoRectangle rect;
-	pango_layout_get_cursor_pos(layout_, offset, &rect, nullptr);
+	pango_layout_get_cursor_pos(layout_.get(), offset, &rect, nullptr);
 
 	return gui2::point(PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y));
 }
@@ -212,12 +203,12 @@ std::string pango_text::get_token(const gui2::point & position, const char * del
 
 	// Get the index of the character.
 	int index, trailing;
-	if (!pango_layout_xy_to_index(layout_, position.x * PANGO_SCALE,
+	if (!pango_layout_xy_to_index(layout_.get(), position.x * PANGO_SCALE,
 		position.y * PANGO_SCALE, &index, &trailing)) {
 		return "";
 	}
 
-	std::string txt = pango_layout_get_text(layout_);
+	std::string txt = pango_layout_get_text(layout_.get());
 
 	std::string d(delim);
 
@@ -259,12 +250,12 @@ gui2::point pango_text::get_column_line(const gui2::point& position) const
 
 	// Get the index of the character.
 	int index, trailing;
-	pango_layout_xy_to_index(layout_, position.x * PANGO_SCALE,
+	pango_layout_xy_to_index(layout_.get(), position.x * PANGO_SCALE,
 		position.y * PANGO_SCALE, &index, &trailing);
 
 	// Extract the line and the offset in pixels in that line.
 	int line, offset;
-	pango_layout_index_to_line_x(layout_, index, trailing, &line, &offset);
+	pango_layout_index_to_line_x(layout_.get(), index, trailing, &line, &offset);
 	offset = PANGO_PIXELS(offset);
 
 	// Now convert this offset to a column, this way is a bit hacky but haven't
@@ -290,7 +281,10 @@ gui2::point pango_text::get_column_line(const gui2::point& position) const
 bool pango_text::set_text(const std::string& text, const bool markedup)
 {
 	if(markedup != markedup_text_ || text != text_) {
-		// assert(layout_);
+		sublayouts_.clear();
+		if(layout_ == nullptr) {
+			layout_.reset(pango_layout_new(context_.get()));
+		}
 
 		const ucs4::string wide = unicode_cast<ucs4::string>(text);
 		const std::string narrow = unicode_cast<utf8::string>(wide);
@@ -300,7 +294,7 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 					<< "' contains invalid utf-8, trimmed the invalid parts.\n";
 		}
 		if(markedup) {
-			if(!this->set_markup(narrow)) {
+			if(!this->set_markup(narrow, *layout_)) {
 				return false;
 			}
 		} else {
@@ -309,8 +303,8 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 			 * leave the layout in an undefined state regarding markup so
 			 * clear it unconditionally.
 			 */
-			pango_layout_set_attributes(layout_, nullptr);
-			pango_layout_set_text(layout_, narrow.c_str(), narrow.size());
+			pango_layout_set_attributes(layout_.get(), nullptr);
+			pango_layout_set_text(layout_.get(), narrow.c_str(), narrow.size());
 		}
 		text_ = narrow;
 		length_ = wide.size();
@@ -421,7 +415,7 @@ pango_text& pango_text::set_maximum_height(int height, bool multiline)
 	if(height != maximum_height_) {
 		// assert(context_);
 
-		pango_layout_set_height(layout_, !multiline ? -1 : height * PANGO_SCALE);
+		pango_layout_set_height(layout_.get(), !multiline ? -1 : height * PANGO_SCALE);
 		maximum_height_ = height;
 		calculation_dirty_ = true;
 		surface_dirty_ = true;
@@ -435,7 +429,7 @@ pango_text& pango_text::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 	if(ellipse_mode != ellipse_mode_) {
 		// assert(context_);
 
-		pango_layout_set_ellipsize(layout_, ellipse_mode);
+		pango_layout_set_ellipsize(layout_.get(), ellipse_mode);
 		ellipse_mode_ = ellipse_mode;
 		calculation_dirty_ = true;
 		surface_dirty_ = true;
@@ -447,7 +441,7 @@ pango_text& pango_text::set_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 pango_text &pango_text::set_alignment(const PangoAlignment alignment)
 {
 	if (alignment != alignment_) {
-		pango_layout_set_alignment(layout_, alignment);
+		pango_layout_set_alignment(layout_.get(), alignment);
 		alignment_ = alignment;
 		surface_dirty_ = true;
 	}
@@ -493,87 +487,96 @@ pango_text& pango_text::set_link_color(const color_t& color)
 void pango_text::recalculate(const bool force) const
 {
 	if(calculation_dirty_ || force) {
-		// assert(layout_);
+		assert(layout_ != nullptr);
 
 		calculation_dirty_ = false;
 		surface_dirty_ = true;
 
-		p_font font{get_font_families(font_class_), font_size_, font_style_};
-		pango_layout_set_font_description(layout_, font.get());
+		rect_ = calculate_size(*layout_);
+	}
+}
 
-		if(font_style_ & pango_text::STYLE_UNDERLINE) {
-			PangoAttrList *attribute_list = pango_attr_list_new();
-			pango_attr_list_insert(attribute_list
-					, pango_attr_underline_new(PANGO_UNDERLINE_SINGLE));
+PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
+{
+	PangoRectangle size;
 
-			pango_layout_set_attributes (layout_, attribute_list);
-			pango_attr_list_unref(attribute_list);
-		}
+	p_font font{ get_font_families(font_class_), font_size_, font_style_ };
+	pango_layout_set_font_description(&layout, font.get());
 
-		int maximum_width = 0;
-		if(characters_per_line_ != 0) {
-			PangoFont* f = pango_font_map_load_font(
-					  pango_cairo_font_map_get_default()
-					, context_
-					, font.get());
+	if(font_style_ & pango_text::STYLE_UNDERLINE) {
+		PangoAttrList *attribute_list = pango_attr_list_new();
+		pango_attr_list_insert(attribute_list
+			, pango_attr_underline_new(PANGO_UNDERLINE_SINGLE));
 
-			PangoFontMetrics* m = pango_font_get_metrics(f, nullptr);
+		pango_layout_set_attributes(&layout, attribute_list);
+		pango_attr_list_unref(attribute_list);
+	}
 
-			int w = pango_font_metrics_get_approximate_char_width(m);
-			w *= characters_per_line_;
+	int maximum_width = 0;
+	if(characters_per_line_ != 0) {
+		PangoFont* f = pango_font_map_load_font(
+			pango_cairo_font_map_get_default(),
+			context_.get(),
+			font.get());
 
-			maximum_width = ceil(pango_units_to_double(w));
-		} else {
-			maximum_width = maximum_width_;
-		}
+		PangoFontMetrics* m = pango_font_get_metrics(f, nullptr);
 
-		if(maximum_width_ != -1) {
-			maximum_width = std::min(maximum_width, maximum_width_);
-		}
+		int w = pango_font_metrics_get_approximate_char_width(m);
+		w *= characters_per_line_;
 
-		/*
-		 * See set_maximum_width for some more background info as well.
-		 * In order to fix the problem first set a width which seems to render
-		 * correctly then lower it to fit. For the campaigns the 4 does "the
-		 * right thing" for the terrain labels it should use the value 0 to set
-		 * the ellipse properly. Need to see whether this is a bug in pango or
-		 * a bug in my understanding of the pango api.
-		 */
-		int hack = 4;
-		do {
-			pango_layout_set_width(layout_, maximum_width == -1
-					? -1
-					: (maximum_width + hack) * PANGO_SCALE);
-			pango_layout_get_pixel_extents(layout_, nullptr, &rect_);
+		maximum_width = ceil(pango_units_to_double(w));
+	} else {
+		maximum_width = maximum_width_;
+	}
 
-			DBG_GUI_L << "pango_text::" << __func__
-					<< " text '" << gui2::debug_truncate(text_)
-					<< "' maximum_width " << maximum_width
-					<< " hack " << hack
-					<< " width " << rect_.x + rect_.width
-					<< ".\n";
+	if(maximum_width_ != -1) {
+		maximum_width = std::min(maximum_width, maximum_width_);
+	}
 
-			--hack;
-		} while(maximum_width != -1
-				&& hack >= 0 && rect_.x + rect_.width > maximum_width);
+	/*
+	 * See set_maximum_width for some more background info as well.
+	 * In order to fix the problem first set a width which seems to render
+	 * correctly then lower it to fit. For the campaigns the 4 does "the
+	 * right thing" for the terrain labels it should use the value 0 to set
+	 * the ellipse properly. Need to see whether this is a bug in pango or
+	 * a bug in my understanding of the pango api.
+	 */
+	int hack = 4;
+	do {
+		pango_layout_set_width(&layout, maximum_width == -1
+			? -1
+			: (maximum_width + hack) * PANGO_SCALE);
+		pango_layout_get_pixel_extents(&layout, nullptr, &size);
 
 		DBG_GUI_L << "pango_text::" << __func__
-				<< " text '" << gui2::debug_truncate(text_)
-				<< "' font_size " << font_size_
-				<< " markedup_text " << markedup_text_
-				<< " font_style " << std::hex << font_style_ << std::dec
-				<< " maximum_width " << maximum_width
-				<< " maximum_height " << maximum_height_
-				<< " result " <<  rect_
-				<< ".\n";
-		if(maximum_width != -1 && rect_.x + rect_.width > maximum_width) {
-			DBG_GUI_L << "pango_text::" << __func__
-					<< " text '" << gui2::debug_truncate(text_)
-					<< " ' width " << rect_.x + rect_.width
-					<< " greater as the wanted maximum of " << maximum_width
-					<< ".\n";
-		}
+			<< " text '" << gui2::debug_truncate(text_)
+			<< "' maximum_width " << maximum_width
+			<< " hack " << hack
+			<< " width " << size.x + size.width
+			<< ".\n";
+
+		--hack;
+	} while(maximum_width != -1
+		&& hack >= 0 && size.x + size.width > maximum_width);
+
+	DBG_GUI_L << "pango_text::" << __func__
+		<< " text '" << gui2::debug_truncate(text_)
+		<< "' font_size " << font_size_
+		<< " markedup_text " << markedup_text_
+		<< " font_style " << std::hex << font_style_ << std::dec
+		<< " maximum_width " << maximum_width
+		<< " maximum_height " << maximum_height_
+		<< " result " << size
+		<< ".\n";
+	if(maximum_width != -1 && size.x + size.width > maximum_width) {
+		DBG_GUI_L << "pango_text::" << __func__
+			<< " text '" << gui2::debug_truncate(text_)
+			<< " ' width " << size.x + size.width
+			<< " greater as the wanted maximum of " << maximum_width
+			<< ".\n";
 	}
+
+	return size;
 }
 
 /***
@@ -633,17 +636,56 @@ static void from_cairo_format(Uint32 & c)
 	c = (static_cast<Uint32>(a) << 24) | (static_cast<Uint32>(r) << 16) | (static_cast<Uint32>(g) << 8) | static_cast<Uint32>(b);
 }
 
-void pango_text::rerender(const bool force) const
+void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const size_t surface_buffer_offset, const unsigned stride)
+{
+	int width = rect.x + rect.width;
+	int height = rect.y + rect.height;
+	if(maximum_width_  > 0) { width = std::min(width, maximum_width_); }
+	if(maximum_height_ > 0) { height = std::min(height, maximum_height_); }
+
+	cairo_format_t format = CAIRO_FORMAT_ARGB32;
+
+	unsigned char* buffer = &surface_buffer_[surface_buffer_offset];
+	std::unique_ptr<cairo_surface_t, std::function<void(cairo_surface_t*)>> cairo_surface(
+		cairo_image_surface_create_for_data(buffer, format, width, height, stride), cairo_surface_destroy);
+	std::unique_ptr<cairo_t, std::function<void(cairo_t*)>> cr(cairo_create(cairo_surface.get()), cairo_destroy);
+
+	if(cairo_status(cr.get()) == CAIRO_STATUS_INVALID_SIZE) {
+		if(!is_surface_split()) {
+			split_surface();
+
+			PangoRectangle upper_rect = calculate_size(*sublayouts_[0]);
+			PangoRectangle lower_rect = calculate_size(*sublayouts_[1]);
+
+			render(*sublayouts_[0], upper_rect, 0u, stride);
+			render(*sublayouts_[1], lower_rect, upper_rect.height * stride, stride);
+
+			return;
+		} else {
+			// If this occurs in practice, it can be fixed by implementing recursive splitting.
+			throw std::length_error("Text is too long to render");
+		}
+	}
+
+	/* set color (used for foreground). */
+	cairo_set_source_rgba(cr.get(),
+		foreground_color_.r / 256.0,
+		foreground_color_.g / 256.0,
+		foreground_color_.b / 256.0,
+		foreground_color_.a / 256.0
+	);
+
+	pango_cairo_show_layout(cr.get(), &layout);
+}
+
+void pango_text::rerender(const bool force)
 {
 	if(surface_dirty_ || force) {
-		// assert(layout_);
+		assert(layout_.get());
 
 		this->recalculate(force);
 		surface_dirty_ = false;
 
-		// TODO: This looks broken to me. If rect_.x is negative, shouldn't that increase width?
-		// I think it maybe should be
-		// int width  = (-rect_.x) + rect_.width;
 		int width  = rect_.x + rect_.width;
 		int height = rect_.y + rect_.height;
 		if(maximum_width_  > 0) { width  = std::min(width, maximum_width_); }
@@ -655,23 +697,11 @@ void pango_text::rerender(const bool force) const
 		this->create_surface_buffer(stride * height);
 
 		if (!surface_buffer_.size()) {
-			// surface_.assign(nullptr);
 			surface_.assign(create_neutral_surface(0, 0));
 			return;
 		}
 
-		cairo_surface_t* cairo_surface = cairo_image_surface_create_for_data(&surface_buffer_[0], format, width, height, stride);
-		cairo_t* cr = cairo_create(cairo_surface);
-
-		/* set color (used for foreground). */
-		cairo_set_source_rgba(cr,
-			foreground_color_.r / 256.0,
-			foreground_color_.g / 256.0,
-			foreground_color_.b / 256.0,
-			foreground_color_.a / 256.0
-		);
-
-		pango_cairo_show_layout(cr, layout_);
+		render(*layout_, rect_, 0u, stride);
 
 		static_assert(sizeof(Uint32) == 4, "Something is wrong with our typedefs");
 
@@ -688,8 +718,6 @@ void pango_text::rerender(const bool force) const
 
 		surface_.assign(SDL_CreateRGBSurfaceFrom(
 			&surface_buffer_[0], width, height, 32, stride, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
-		cairo_destroy(cr);
-		cairo_surface_destroy(cairo_surface);
 	}
 }
 
@@ -704,8 +732,8 @@ void pango_text::create_surface_buffer(const size_t size) const
 	for (auto & c : surface_buffer_) { c = 0; }
 }
 
-bool pango_text::set_markup(const std::string & text) {
-	return this->set_markup_helper(link_aware_ ? this->format_link_tokens(text) : text);
+bool pango_text::set_markup(utils::string_view text, PangoLayout& layout) {
+	return this->set_markup_helper(link_aware_ ? this->format_link_tokens(text.to_string()) : text, layout);
 }
 
 std::string pango_text::format_link_tokens(const std::string & text) const {
@@ -739,13 +767,13 @@ std::string pango_text::handle_token(const std::string & token) const
 	}
 }
 
-bool pango_text::set_markup_helper(const std::string& text)
+bool pango_text::set_markup_helper(utils::string_view text, PangoLayout& layout)
 {
-	if(pango_parse_markup(text.c_str(), text.size()
-			, 0, nullptr, nullptr, nullptr, nullptr)) {
+	if(pango_parse_markup(text.data(), text.size(),
+		0, nullptr, nullptr, nullptr, nullptr)) {
 
 		/* Markup is valid so set it. */
-		pango_layout_set_markup(layout_, text.c_str(), text.size());
+		pango_layout_set_markup(&layout, text.data(), text.size());
 		return true;
 	}
 
@@ -757,7 +785,7 @@ bool pango_text::set_markup_helper(const std::string& text)
 	 * So only try to recover from broken ampersands, by simply replacing them
 	 * with the escaped version.
 	 */
-	std::string semi_escaped{semi_escape_text(text)};
+	std::string semi_escaped{semi_escape_text(text.to_string())};
 
 	/*
 	 * If at least one ampersand is replaced the semi-escaped string
@@ -773,7 +801,7 @@ bool pango_text::set_markup_helper(const std::string& text)
 				<< " text '" << text
 				<< "' has broken markup, set to normal text.\n";
 
-		this->set_text(_("The text contains invalid markup: ") + text, false);
+		this->set_text(_("The text contains invalid markup: ") + text.to_string(), false);
 		return false;
 	}
 
@@ -782,8 +810,34 @@ bool pango_text::set_markup_helper(const std::string& text)
 			<< " text '" << text
 			<< "' has unescaped ampersands '&', escaped them.\n";
 
-	pango_layout_set_markup(layout_, semi_escaped.c_str(), semi_escaped.size());
+	pango_layout_set_markup(&layout, semi_escaped.c_str(), semi_escaped.size());
 	return true;
+}
+
+void pango_text::split_surface()
+{
+	auto text_parts = utils::vertical_split(text_);
+
+	PangoLayout* upper_layout = pango_layout_new(context_.get());
+	PangoLayout* lower_layout = pango_layout_new(context_.get());
+
+	set_markup(text_parts.first, *upper_layout);
+	set_markup(text_parts.second, *lower_layout);
+
+	copy_layout_properties(*layout_, *upper_layout);
+	copy_layout_properties(*layout_, *lower_layout);
+
+	sublayouts_.emplace_back(upper_layout, g_object_unref);
+	sublayouts_.emplace_back(lower_layout, g_object_unref);
+
+	layout_.reset(nullptr);
+}
+
+void pango_text::copy_layout_properties(PangoLayout& src, PangoLayout& dst)
+{
+	pango_layout_set_alignment(&dst, pango_layout_get_alignment(&src));
+	pango_layout_set_height(&dst, pango_layout_get_height(&src));
+	pango_layout_set_ellipsize(&dst, pango_layout_get_ellipsize(&src));
 }
 
 } // namespace font

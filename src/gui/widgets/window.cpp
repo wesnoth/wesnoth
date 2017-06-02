@@ -840,6 +840,11 @@ void window::draw()
 	std::vector<widget*> call_stack;
 	populate_dirty_list(*this, call_stack);
 	assert(dirty_list_.empty());
+
+	if(callback_next_draw_ != nullptr) {
+		callback_next_draw_();
+		callback_next_draw_ = nullptr;
+	}
 }
 
 void window::undraw()

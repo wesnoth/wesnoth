@@ -26,6 +26,7 @@
 #include "utils/general.hpp"
 #include <cassert>
 #include <array>
+#include <stdexcept>
 
 #include <boost/algorithm/string.hpp>
 
@@ -379,6 +380,35 @@ std::vector<std::string> parenthetical_split(const std::string& val,
 	}
 
 	return res;
+}
+
+std::pair<string_view, string_view> vertical_split(const std::string& val)
+{
+	// Count the number of lines.
+	int num_lines = std::count(val.begin(), val.end(), '\n') + 1;
+
+	if(num_lines < 2) {
+		throw std::logic_error("utils::vertical_split: the string contains only one line");
+	}
+
+	// Split the string at the point where we have encountered
+	// (number of lines / 2 - 1) line separators.
+	int split_point = 0;
+	int num_found_line_separators = 0;
+	for(size_t i = 0; i < val.size(); ++i) {
+		if(val[i] == '\n') {
+			++num_found_line_separators;
+			if(num_found_line_separators >= num_lines / 2 - 1) {
+				split_point = i;
+				break;
+			}
+		}
+	}
+
+	assert(split_point != 0);
+
+	return { string_view(val.data(), split_point),
+		string_view(&val[split_point + 1], val.size() - (split_point + 1)) };
 }
 
 // Modify a number by string representing integer difference, or optionally %
