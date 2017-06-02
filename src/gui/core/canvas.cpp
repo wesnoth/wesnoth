@@ -708,8 +708,6 @@ void rectangle_shape::draw(
 	      && y     <  canvas_h
 	      && y + h <= canvas_h, _("Rectangle doesn't fit on canvas."));
 
-	surface_lock locker(canvas);
-
 	const color_t fill_color = fill_color_(variables);
 
 	// Fill the background, if applicable
@@ -824,8 +822,6 @@ void round_rectangle_shape::draw(
 		&& x + w <= canvas_w
 		&& y     <  canvas_h
 		&& y + h <= canvas_h, _("Rounded Rectangle doesn't fit on canvas."));
-
-	surface_lock locker(canvas);
 
 	const color_t fill_color = fill_color_(variables);
 
@@ -953,9 +949,6 @@ void circle_shape::draw(
 			_("Circle doesn't fit on canvas."),
 			formatter() << "y = " << y << ", radius = " << radius
 						 << "', canvas height = " << canvas_h << ".");
-
-	// lock the surface
-	surface_lock locker(canvas);
 
 	const color_t fill_color = fill_color_(variables);
 	if(!fill_color.null() && radius) {
