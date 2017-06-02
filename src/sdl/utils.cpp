@@ -2213,16 +2213,9 @@ void draw_centered_on_background(surface surf, const SDL_Rect& rect, const color
 	}
 }
 
-std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect)
-{
-	s << rect.x << ',' << rect.y << " x "  << rect.w << ',' << rect.h;
-	return s;
-}
-
 SDL_Color color_t::to_sdl() const {
 	return {r, g, b, a};
 }
-
 
 color_t::color_t(const SDL_Color& c)
 	: r(c.r)

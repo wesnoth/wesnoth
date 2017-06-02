@@ -86,3 +86,9 @@ bool operator!=(const SDL_Rect& a, const SDL_Rect& b)
 {
 	return !operator==(a,b);
 }
+
+std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect)
+{
+	s << "x: " << rect.x << ", y: " << rect.y << ", w: " << rect.w << ", h: " << rect.h;
+	return s;
+}
