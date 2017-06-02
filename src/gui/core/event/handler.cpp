@@ -541,10 +541,7 @@ void sdl_event_handler::draw()
 	/**
 	 * Clear the renderer before beginning the draw cycle.
 	 */
-	SDL_Renderer* renderer = *video.get_window();
-
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-	SDL_RenderClear(renderer);
+	video.clear_screen();
 
 	/**
 	 * @todo Need to evaluate which windows really to redraw.
