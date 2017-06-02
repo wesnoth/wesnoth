@@ -522,7 +522,7 @@ void sdl_event_handler::activate()
 	}
 }
 
-void sdl_event_handler::draw(const bool force)
+void sdl_event_handler::draw(const bool /*force*/)
 {
 	// Don't display this event since it floods the screen
 	// DBG_GUI_E << "Firing " << DRAW << ".\n";
