@@ -616,11 +616,16 @@ static int do_gameloop(const std::vector<std::string>& args)
 		return 1;
 	}
 
+	events::initialise();
+	events::pump();
+
 	res = image::update_from_preferences();
 	if(res == false) {
 		std::cerr << "could not initialize image preferences\n";
 		return 1;
 	}
+
+	events::pump();
 
 	if(preferences::joystick_support_enabled()) {
 		res = game->init_joystick();
@@ -632,6 +637,8 @@ static int do_gameloop(const std::vector<std::string>& args)
 	check_fpu();
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
+
+	events::pump();
 
 #if (defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);

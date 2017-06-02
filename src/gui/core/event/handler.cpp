@@ -532,13 +532,6 @@ void sdl_event_handler::draw(const bool /*force*/)
 		return;
 	}
 
-	CVideo& video = dynamic_cast<window&>(*dispatchers_.back()).video();
-
-	/**
-	 * Clear the renderer before beginning the draw cycle.
-	 */
-	video.clear_screen();
-
 	/**
 	 * @todo Need to evaluate which windows really to redraw.
 	 *
@@ -548,9 +541,6 @@ void sdl_event_handler::draw(const bool /*force*/)
 	{
 		dispatcher->fire(DRAW, dynamic_cast<widget&>(*dispatcher));
 	}
-
-	// Finally, render the screen.
-	video.render_screen();
 }
 
 void sdl_event_handler::video_resize(const point& new_size)

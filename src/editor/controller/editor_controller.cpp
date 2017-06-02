@@ -85,6 +85,8 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	get_current_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 
+	join();
+
 	gui().create_buttons();
 	gui().redraw_everything();
     events::raise_draw_event();

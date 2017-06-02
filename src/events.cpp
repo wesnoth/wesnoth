@@ -402,6 +402,54 @@ static bool remove_on_resize(const SDL_Event& a)
 	return false;
 }
 
+/**
+ * The interval between draw events.
+ *
+ * When the window is shown this value is set, the callback function always
+ * uses this value instead of the parameter send, that way the window can stop
+ * drawing when it wants.
+ */
+static int draw_interval = 0;
+
+SDL_TimerID draw_timer_id;
+
+/**
+ * SDL_AddTimer() callback for the draw event.
+ *
+ * When this callback is called it pushes a new draw event in the event queue.
+ *
+ * @returns                       The new timer interval, 0 to stop.
+ */
+static Uint32 draw_timer(Uint32, void*)
+{
+	//	DBG_GUI_E << "Pushing draw event in queue.\n";
+
+	SDL_Event event;
+	SDL_UserEvent data;
+
+	data.type = DRAW_EVENT;
+	data.code = 0;
+	data.data1 = NULL;
+	data.data2 = NULL;
+
+	event.type = DRAW_EVENT;
+	event.user = data;
+
+	SDL_PushEvent(&event);
+	return draw_interval;
+}
+
+void initialise()
+{
+	draw_interval = 20;
+	draw_timer_id = SDL_AddTimer(draw_interval, draw_timer, NULL);
+}
+
+void finalize()
+{
+	SDL_RemoveTimer(draw_timer_id);
+}
+
 // TODO: I'm uncertain if this is always safe to call at static init; maybe set in main() instead?
 static const boost::thread::id main_thread = boost::this_thread::get_id();
 
@@ -610,6 +658,12 @@ void pump()
 		}
 		}
 
+		const bool is_draw_event = event.type == DRAW_EVENT || event.type == DRAW_ALL_EVENT;
+
+		if(is_draw_event) {
+			CVideo::get_singleton().clear_screen();
+		}
+
 		for(auto global_handler : event_contexts.front().handlers) {
 			global_handler->handle_event(event);
 		}
@@ -618,6 +672,10 @@ void pump()
 			for(auto handler : event_contexts.back().handlers) {
 				handler->handle_event(event);
 			}
+		}
+
+		if(is_draw_event) {
+			CVideo::get_singleton().render_screen();
 		}
 	}
 
