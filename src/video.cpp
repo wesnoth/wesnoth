@@ -387,7 +387,7 @@ std::vector<std::pair<int, int>> CVideo::get_available_resolutions(const bool in
 	for(int i = 0; i < modes; ++i) {
 		if(SDL_GetDisplayMode(display_index, i, &mode) == 0) {
 			// Exclude any results outside the range of the current DPI.
-			if(mode.w * scale_h > current_res.first && mode.h * scale_v > current_res.second) {
+			if(mode.w > current_res.first * scale_h && mode.h > current_res.second * scale_v) {
 				continue;
 			}
 
