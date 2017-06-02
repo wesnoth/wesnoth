@@ -28,6 +28,8 @@ static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
 #define ERR_DP LOG_STREAM(err, log_display)
 
+#define MAGIC_DPI_SCALE_NUMBER 96
+
 CVideo* CVideo::singleton_ = nullptr;
 
 namespace {
@@ -340,6 +342,23 @@ void CVideo::clear_screen()
 sdl::window *CVideo::get_window()
 {
 	return window.get();
+}
+
+std::pair<int, int> CVideo::get_dpi_scale_factor() const
+{
+	std::pair<int, int> result;
+
+	if(!window) {
+		return result;
+	}
+
+	float hdpi, vdpi;
+	SDL_GetDisplayDPI(window->get_display_index(), nullptr, &hdpi, &vdpi);
+
+	result.first = hdpi / MAGIC_DPI_SCALE_NUMBER;
+	result.second = vdpi / MAGIC_DPI_SCALE_NUMBER;
+
+	return result;
 }
 
 std::vector<std::pair<int, int>> CVideo::get_available_resolutions(const bool include_current)

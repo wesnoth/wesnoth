@@ -80,6 +80,8 @@ public:
 	int getx() const;
 	int gety() const;
 
+	std::pair<int, int> get_dpi_scale_factor() const;
+
 	//blits a surface with black as alpha
 	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect=nullptr, SDL_Rect* clip_rect=nullptr);
 	void flip();
