@@ -736,7 +736,6 @@ void window::remove_linked_widget(const std::string& id, const widget* wgt)
 
 void window::layout()
 {
-	std::cerr << "calling layout" << std::endl;
 	/***** Initialize. *****/
 
 	const auto conf = cast_config_to<window_definition>();
