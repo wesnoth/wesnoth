@@ -387,7 +387,10 @@ surface& CVideo::getSurface()
 
 std::pair<int,int> CVideo::current_resolution()
 {
-	return std::make_pair(getSurface()->w, getSurface()->h);
+	SDL_DisplayMode mode;
+	SDL_GetCurrentDisplayMode(window->get_display_index(), &mode);
+
+	return std::make_pair(mode.w, mode.h);
 }
 
 bool CVideo::isFullScreen() const {
