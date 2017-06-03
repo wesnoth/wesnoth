@@ -478,7 +478,8 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 	// used to attack it
 	map_location dest;
 	unit_map::const_iterator dest_un;
-	{ // start planned unit map scope
+	/* start planned unit map scope */
+	{
 		wb::future_map_if_active raii;
 		if (attack_from.valid()) {
 			dest = attack_from;
@@ -526,12 +527,11 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 			pc_.get_whiteboard()->erase_temp_move();
 		}
 
-		unit_map::iterator iter = mouseover_unit;
-		if (iter)
-			un = iter.get_shared_ptr();
+		if (mouseover_unit)
+			un = mouseover_unit.get_shared_ptr();
 		else
 			un.reset();
-	} //end planned unit map scope
+	} /* end planned unit map scope */
 
 	if(!selected_hex_.valid() && un && current_paths_.destinations.empty() && !gui().fogged(un->get_location())) {
 		if (un->side() == side_num_) {
