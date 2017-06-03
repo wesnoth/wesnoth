@@ -397,7 +397,7 @@ int show_popup_dialog(lua_State *L, CVideo & video) {
  */
 int show_story(lua_State* L, CVideo& video) {
 	config story = luaW_checkconfig(L, 1);
-	std::string title = luaL_checkstring(L, 2);
+	t_string title = luaW_checktstring(L, 2);
 	gui2::dialogs::story_viewer::display(title, story, video);
 	return 0;
 }

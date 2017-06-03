@@ -928,7 +928,8 @@ function wesnoth.wml_actions.zoom(cfg)
 end
 
 function wesnoth.wml_actions.story(cfg)
-	wesnoth.show_story(cfg, cfg.title)
+	local title = cfg.title or helper.wml_error "Missing title key in [story] ActionWML"
+	wesnoth.show_story(cfg, title)
 end
 
 function wesnoth.wml_conditionals.proceed_to_next_scenario(cfg)
