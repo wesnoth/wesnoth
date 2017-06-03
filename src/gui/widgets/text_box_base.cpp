@@ -595,6 +595,12 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 void text_box_base::signal_handler_receive_keyboard_focus(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	
+	if(SDL_HasScreenKeyboardSupport() == SDL_TRUE) {
+		SDL_StartTextInput();
+		SDL_Rect r = get_rectangle();
+		SDL_SetTextInputRect(&r);
+	}
 
 	set_state(FOCUSED);
 }
@@ -602,6 +608,10 @@ void text_box_base::signal_handler_receive_keyboard_focus(const event::ui_event 
 void text_box_base::signal_handler_lose_keyboard_focus(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+
+	if(SDL_HasScreenKeyboardSupport() == SDL_TRUE) {
+		SDL_StopTextInput();
+	}
 
 	set_state(ENABLED);
 }
