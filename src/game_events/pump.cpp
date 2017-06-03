@@ -561,6 +561,9 @@ bool wml_event_pump::operator()()
 		{ // Block for context::scoped
 			context::scoped inner_evc(impl_->contexts_, false);
 			if(resources::lua_kernel->run_event(ev)) {
+				// TODO: since feeding was moved to lua we _always_ have a lua on_event handler so
+				//       lua_kernel->run_event always returns true. So maybe we shodul remove this
+				//       internal_wml_tracking thing (in particular the 'optimisation' in the movement code)?
 				++impl_->internal_wml_tracking;
 			}
 		}
