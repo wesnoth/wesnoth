@@ -16,12 +16,24 @@
 
 #include <iostream>
 #include <string>
+#include <SDL_platform.h>
+
+#if !defined(__IPHONEOS__)
 
 #include <openssl/sha.h>
 #include <openssl/md5.h>
 
 static_assert(utils::md5::DIGEST_SIZE == MD5_DIGEST_LENGTH, "Constants mismatch");
 static_assert(utils::sha1::DIGEST_SIZE == SHA_DIGEST_LENGTH, "Constants mismatch");
+
+#else
+
+#import <CommonCrypto/CommonDigest.h>
+
+static_assert(utils::md5::DIGEST_SIZE == CC_MD5_DIGEST_LENGTH, "Constants mismatch");
+static_assert(utils::sha1::DIGEST_SIZE == CC_SHA1_DIGEST_LENGTH, "Constants mismatch");
+
+#endif
 
 namespace {
 
@@ -57,10 +69,18 @@ std::string encode_hash(const std::array<uint8_t, len>& input) {
 namespace utils {
 
 md5::md5(const std::string& input) {
-	MD5_CTX md5_worker;
-	MD5_Init(&md5_worker);
-	MD5_Update(&md5_worker, input.data(), input.size());
-	MD5_Final(hash.data(), &md5_worker);
+
+#if !defined(__IPHONEOS__)
+    MD5_CTX md5_worker;
+    MD5_Init(&md5_worker);
+    MD5_Update(&md5_worker, input.data(), input.size());
+    MD5_Final(hash.data(), &md5_worker);
+#else
+    const char* p = input.data();
+    unsigned char md5Buffer[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(p, (CC_LONG) strlen(p), hash.data());
+#endif
+
 }
 
 int md5::get_iteration_count(const std::string& hash) {
@@ -98,10 +118,15 @@ std::string md5::hex_digest() const
 
 sha1::sha1(const std::string& str)
 {
+#if !defined(__IPHONEOS__)
 	SHA_CTX hasher;
 	SHA1_Init(&hasher);
 	SHA1_Update(&hasher, str.data(), str.size());
 	SHA1_Final(hash.data(), &hasher);
+#else
+	const char* p = str.c_str();
+    CC_MD5(p, (CC_LONG) strlen(p), hash.data());
+#endif
 }
 
 std::string sha1::hex_digest() const

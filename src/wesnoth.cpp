@@ -941,7 +941,7 @@ static void restart_process(const std::vector<std::string>& commandline)
 #define error_exit(res) return res
 #endif
 
-#ifdef __APPLE__
+#ifdef __IPHONEOS__
 extern "C" int wesnoth_main(int argc, char** argv);
 int wesnoth_main(int argc, char** argv)
 #else

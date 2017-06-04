@@ -422,9 +422,14 @@ if(ENABLE_GAME)
 		)
 	endif(ENABLE_TESTS)
 
-	add_executable(wesnoth WIN32
-		${wesnoth_SRC}
-	)
+	if (WINDOWS)
+		add_executable(wesnoth WIN32 ${wesnoth_SRC})
+	elseif(APPLE)
+		add_executable(wesnoth #MACOSX_BUNDLE
+				${wesnoth_SRC})
+	else()
+		add_executable(wesnoth ${wesnoth_SRC})
+	endif()
 
 	target_link_libraries(wesnoth
 		${wesnoth_LIB}

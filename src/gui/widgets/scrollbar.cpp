@@ -43,12 +43,19 @@ scrollbar_base::scrollbar_base()
 			&scrollbar_base::signal_handler_mouse_enter, this, _2, _3, _4));
 	connect_signal<event::MOUSE_MOTION>(std::bind(
 			&scrollbar_base::signal_handler_mouse_motion, this, _2, _3, _4, _5));
+	connect_signal<event::SDL_TOUCH_MOTION>(std::bind(
+			&scrollbar_base::signal_handler_mouse_motion, this, _2, _3, _4, _5));
 	connect_signal<event::MOUSE_LEAVE>(std::bind(
 			&scrollbar_base::signal_handler_mouse_leave, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
 			&scrollbar_base::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(std::bind(
 			&scrollbar_base::signal_handler_left_button_up, this, _2, _3));
+}
+
+void scrollbar_base::scroll_by(const int pixels)
+{
+	move_positioner(pixels);
 }
 
 void scrollbar_base::scroll(const scroll_mode scroll)

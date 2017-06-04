@@ -165,13 +165,17 @@ void show_help(CVideo& video, const section &toplevel_sec,
 	CVideo& screen = video;
 	const surface& scr = screen.getSurface();
 
+#ifndef __IPHONEOS__
 	const int width  = std::min<int>(font::relative_size(1200), scr->w - font::relative_size(20));
 	const int height = std::min<int>(font::relative_size(850), scr->h - font::relative_size(150));
+#else
+	const int width  = scr->w;
+	const int height = scr->h - font::relative_size(70);
+#endif
 	const int left_padding = font::relative_size(10);
 	const int right_padding = font::relative_size(10);
 	const int top_padding = font::relative_size(10);
 	const int bot_padding = font::relative_size(10);
-
 	// If not both locations were supplied, put the dialog in the middle
 	// of the screen.
 	if (yloc <= -1 || xloc <= -1) {

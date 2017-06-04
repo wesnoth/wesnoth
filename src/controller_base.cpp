@@ -39,6 +39,7 @@ controller_base::controller_base(
 	, scroll_left_(false)
 	, scroll_right_(false)
 	, joystick_manager_()
+	, last_mouse_is_touch_(false)
 {
 }
 
@@ -52,6 +53,8 @@ void controller_base::handle_event(const SDL_Event& event)
 		return;
 	}
 	static const hotkey::hotkey_command& quit_hotkey = hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_QUIT_GAME);
+
+	SDL_Event new_event;
 
 	switch(event.type) {
 	case SDL_TEXTINPUT:
@@ -80,40 +83,59 @@ void controller_base::handle_event(const SDL_Event& event)
 		hotkey::key_event(event, get_hotkey_command_executor());
 		break;
 	case SDL_JOYBUTTONDOWN:
-		process_keydown_event(event);
 		hotkey::jbutton_event(event, get_hotkey_command_executor());
 		break;
 	case SDL_JOYHATMOTION:
-		process_keydown_event(event);
 		hotkey::jhat_event(event, get_hotkey_command_executor());
 		break;
 	case SDL_MOUSEMOTION:
 		// Ignore old mouse motion events in the event queue
-		SDL_Event new_event;
 		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
 			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {};
-			get_mouse_handler_base().mouse_motion_event(new_event.motion, is_browsing());
+			if (new_event.motion.which != SDL_TOUCH_MOUSEID) {
+				get_mouse_handler_base().mouse_motion_event(new_event.motion, is_browsing());
+			}
 		} else {
-			get_mouse_handler_base().mouse_motion_event(event.motion, is_browsing());
+			if (new_event.motion.which != SDL_TOUCH_MOUSEID) {
+				get_mouse_handler_base().mouse_motion_event(event.motion, is_browsing());
+			}
+		}
+		break;
+	case SDL_FINGERMOTION:
+		// TODO: Support finger specifically, like in panning the map. For now, SDL's "shadow mouse" events will do.
+		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_FINGERMOTION, SDL_FINGERMOTION) > 0) {
+			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_FINGERMOTION, SDL_FINGERMOTION) > 0) {};
+			get_mouse_handler_base().touch_motion_event(new_event.tfinger, is_browsing());
+		} else {
+			get_mouse_handler_base().touch_motion_event(event.tfinger, is_browsing());
 		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
-		process_keydown_event(event);
+		last_mouse_is_touch_ = event.button.which == SDL_TOUCH_MOUSEID;
 		get_mouse_handler_base().mouse_press(event.button, is_browsing());
 		if (get_mouse_handler_base().get_show_menu()){
 			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
 		}
 		hotkey::mbutton_event(event, get_hotkey_command_executor());
 		break;
+	case SDL_FINGERDOWN:
+		// handled by mouse case
+		break;
 	case SDL_MOUSEBUTTONUP:
+		last_mouse_is_touch_ = event.button.which == SDL_TOUCH_MOUSEID;
 		get_mouse_handler_base().mouse_press(event.button, is_browsing());
 		if (get_mouse_handler_base().get_show_menu()){
 			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
 		}
 		break;
+	case SDL_FINGERUP:
+		// handled by mouse case
+		break;
 	case SDL_MOUSEWHEEL:
 		get_mouse_handler_base().mouse_wheel(event.wheel.x, event.wheel.y, is_browsing());
 		break;
+		
+	case SDL_MULTIGESTURE:
 	default:
 		break;
 	}
@@ -149,6 +171,17 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 		if (sdl::point_in_rect(mousex, mousey, m.get_location())) {
 			scroll_threshold = 0;
 		}
+	}
+
+#ifdef MOUSE_TOUCH_EMULATION
+	if ((mouse_flags & SDL_BUTTON_RMASK) != 0) {
+		return false;
+	}
+#endif
+	
+	// TODO: DO edge-scroll when dragging a unit. Wow, that will require more coupling.
+	if (last_mouse_is_touch_ && mouse_flags != 0) {
+		return false;
 	}
 
 	// apply keyboard scrolling

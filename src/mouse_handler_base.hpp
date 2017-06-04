@@ -55,6 +55,8 @@ public:
 	virtual int drag_threshold() const {return 0;}
 
 	void mouse_motion_event(const SDL_MouseMotionEvent& event, const bool browse);
+	
+	void touch_motion_event(const SDL_TouchFingerEvent& event, const bool browse);
 
 	/** update the mouse with a fake mouse motion */
 	void mouse_update(const bool browse, map_location loc);
@@ -73,11 +75,14 @@ public:
 	 * implementation, possibly using mouse_motion_default().
 	 */
 	virtual void mouse_motion(int x, int y, const bool browse, bool update=false, map_location new_loc = map_location::null_location()) = 0;
+	
+	virtual void touch_motion(int x, int y, const bool browse, bool update=false, map_location new_loc = map_location::null_location()) = 0;
 
 	virtual void mouse_press(const SDL_MouseButtonEvent& event, const bool browse);
 	bool is_left_click(const SDL_MouseButtonEvent& event) const;
 	bool is_middle_click(const SDL_MouseButtonEvent& event) const;
 	bool is_right_click(const SDL_MouseButtonEvent& event) const;
+	bool is_touch_click(const SDL_MouseButtonEvent& event) const;
 
 	/**
 	 * Called when scrolling with the mouse wheel.
@@ -104,6 +109,8 @@ public:
 	 * Overridden in derived class. Called on drag+drop movements.
 	 */
 	virtual void move_action(bool browse);
+	
+	virtual void touch_action(const map_location hex, bool browse);
 
 	/**
 	 * Called whenever the left mouse drag has "ended".
@@ -181,6 +188,7 @@ protected:
 	bool minimap_scrolling_;
 	/** LMB drag init flag */
 	bool dragging_left_;
+	bool dragging_touch_;
 	/** Actual drag flag */
 	bool dragging_started_;
 	/** RMB drag init flag */

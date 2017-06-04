@@ -193,7 +193,12 @@ hotkey_ptr load_from_config(const config& cfg)
 	if (!mouse_cfg.empty()) {
 		hotkey_mouse_ptr mouse(new hotkey_mouse());
 		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
-		mouse->set_button(cfg["button"].to_int());
+		if (mouse_cfg == "255") {
+			// Touch event
+			mouse->set_button(255);
+		} else {
+			mouse->set_button(cfg["button"].to_int());
+		}
 	}
 	// TODO: add joystick support back
 #if 0
@@ -251,7 +256,10 @@ hotkey_ptr load_from_config(const config& cfg)
 
 bool hotkey_mouse::matches_helper(const SDL_Event &event) const
 {
-	if (event.type != SDL_MOUSEBUTTONUP && event.type != SDL_MOUSEBUTTONDOWN) {
+	if (event.type != SDL_MOUSEBUTTONUP
+		&& event.type != SDL_MOUSEBUTTONDOWN
+		&& event.type != SDL_FINGERDOWN
+		&& event.type != SDL_FINGERUP) {
 		return false;
 	}
 
@@ -260,11 +268,11 @@ bool hotkey_mouse::matches_helper(const SDL_Event &event) const
 		return false;
 	}
 
-	if (event.button.button != button_) {
-		return false;
+	if (event.button.which == SDL_TOUCH_MOUSEID) {
+		return button_ == 255;
 	}
 
-	return true;
+	return event.button.button == button_;
 }
 
 const std::string hotkey_mouse::get_name_helper() const
