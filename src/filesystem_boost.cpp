@@ -40,6 +40,12 @@ using boost::uintmax_t;
 #include <shlwapi.h>
 #endif /* !_WIN32 */
 
+#include <boost/predef/os.h>
+
+#if BOOST_OS_IOS
+#include <SDL_filesystem.h>
+#endif
+
 #include "config.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
@@ -544,6 +550,14 @@ void set_user_data_dir(std::string newprefdir)
 #else /*_WIN32*/
 
 	std::string backupprefdir = ".wesnoth" + get_version_path_suffix();
+
+#if BOOST_OS_IOS
+	char *sdl_pref_path = SDL_GetPrefPath("wesnoth.org", "iWesnoth");
+	if(sdl_pref_path) {
+		backupprefdir = std::string(sdl_pref_path) + backupprefdir;
+		SDL_free(sdl_pref_path);
+	}
+#endif
 
 #ifdef _X11
 	const char *home_str = getenv("HOME");

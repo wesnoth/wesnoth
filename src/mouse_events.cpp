@@ -95,7 +95,251 @@ void mouse_handler::set_side(int side_number)
 
 int mouse_handler::drag_threshold() const
 {
+	// TODO: Use physical screen size.
 	return 14;
+}
+
+void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, map_location new_hex)
+{
+	// Frankensteining from mouse_motion(), as it has a lot in common, but a lot of differences too.
+	// Copy-pasted from everywhere. TODO: generalize the two.
+	SDL_GetMouseState(&x,&y);
+	
+	// This is from mouse_handler_base::mouse_motion_default()
+	tooltips::process(x, y);
+	
+	if(simple_warp_) {
+		return;
+	}
+	
+	if(minimap_scrolling_) {
+		const map_location& mini_loc = gui().minimap_location_on(x,y);
+		if(mini_loc.valid()) {
+			if(mini_loc != last_hex_) {
+				last_hex_ = mini_loc;
+				gui().scroll_to_tile(mini_loc,display::WARP,false);
+			}
+			return;
+		} else {
+			// clicking outside of the minimap will end minimap scrolling
+			minimap_scrolling_ = false;
+		}
+	}
+	
+	// Fire the drag & drop only after minimal drag distance
+	// While we check the mouse buttons state, we also grab fresh position data.
+	int mx = drag_from_x_; // some default value to prevent unlikely SDL bug
+	int my = drag_from_y_;
+	if (is_dragging() && !dragging_started_) {
+		if (dragging_touch_) {
+			SDL_GetMouseState(&mx, &my);
+			const double drag_distance = std::pow(static_cast<double>(drag_from_x_- mx), 2)
+										 + std::pow(static_cast<double>(drag_from_y_- my), 2);
+			if (drag_distance > drag_threshold()*drag_threshold()) {
+				dragging_started_ = true;
+			}
+		}
+	}
+	
+	// Not-so-smooth panning
+	const auto found_unit = find_unit(selected_hex_);
+	bool selected_hex_has_my_unit = found_unit.valid() && found_unit.get_shared_ptr()->side() == side_num_;
+	if((browse || !selected_hex_has_my_unit) && is_dragging() && dragging_started_) {
+		SDL_GetMouseState(&mx, &my);
+		
+		if(sdl::point_in_rect(x, y, gui().map_area())) {
+			int dx = drag_from_x_ - mx;
+			int dy = drag_from_y_ - my;
+			
+			gui().scroll(dx, dy);
+			drag_from_x_ = mx;
+			drag_from_y_ = my;
+		}
+		return;
+	}
+	
+	// now copy-pasting mouse_handler::mouse_motion()
+	
+	if (new_hex == map_location::null_location())
+		new_hex = gui().hex_clicked_on(x,y);
+	
+	if(new_hex != last_hex_) {
+//		if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
+//			lk->mouse_over_hex_callback(new_hex);
+//		}
+		update = true;
+		if ( pc_.get_map_const().on_board(last_hex_) ) {
+			// we store the previous hexes used to propose attack direction
+			previous_hex_ = last_hex_;
+			// the hex of the selected unit is also "free"
+			{ // start planned unit map scope
+				wb::future_map_if_active raii;
+				if (last_hex_ == selected_hex_ || !find_unit(last_hex_)) {
+					previous_free_hex_ = last_hex_;
+				}
+			} // end planned unit map scope
+		}
+		last_hex_ = new_hex;
+	}
+	
+	if (reachmap_invalid_) update = true;
+	
+	if (!update) return;
+	
+	if (reachmap_invalid_) {
+		reachmap_invalid_ = false;
+		if (!current_paths_.destinations.empty() && !show_partial_move_) {
+			{ // start planned unit map scope
+				wb::future_map_if_active planned_unit_map;
+				selected_hex_has_my_unit = found_unit.valid();
+			} // end planned unit map scope
+			if(selected_hex_.valid() && selected_hex_has_my_unit) {
+				// FIXME: vic: why doesn't this trigger when touch-dragging an unselected unit?
+				// reselect the unit without firing events (updates current_paths_)
+				select_hex(selected_hex_, true);
+			}
+			// we do never deselect here, mainly because of canceled attack-move
+		}
+	}
+	
+	// reset current_route_ and current_paths if not valid anymore
+	// we do it before cursor selection, because it uses current_paths_
+	if( !pc_.get_map_const().on_board(new_hex) ) {
+		current_route_.steps.clear();
+		gui().set_route(nullptr);
+		pc_.get_whiteboard()->erase_temp_move();
+	}
+	
+	if(unselected_paths_) {
+		unselected_paths_ = false;
+		current_paths_ = pathfind::paths();
+		gui().unhighlight_reach();
+	} else if(over_route_) {
+		over_route_ = false;
+		current_route_.steps.clear();
+		gui().set_route(nullptr);
+		pc_.get_whiteboard()->erase_temp_move();
+	}
+	
+	gui().highlight_hex(new_hex);
+	pc_.get_whiteboard()->on_mouseover_change(new_hex);
+	
+	unit_map::iterator selected_unit;
+	unit_map::iterator mouseover_unit;
+	map_location attack_from;
+	
+	{ // start planned unit map scope
+		wb::future_map_if_active planned_unit_map;
+		selected_unit = found_unit;
+		mouseover_unit = find_unit(new_hex);
+		
+		// we search if there is an attack possibility and where
+		attack_from = current_unit_attacks_from(new_hex);
+	} // end planned unit map scope
+	
+	// show (or cancel) the attack direction indicator
+	if (attack_from.valid() && (!browse || pc_.get_whiteboard()->is_active())) {
+		gui().set_attack_indicator(attack_from, new_hex);
+	} else {
+		gui().clear_attack_indicator();
+	}
+	
+	unit_ptr un; //will later point to unit at mouseover_hex_
+	
+	// the destination is the pointed hex or the adjacent hex
+	// used to attack it
+	game_board & board = pc_.gamestate().board_;
+	map_location dest;
+	unit_map::const_iterator dest_un;
+	{ // start planned unit map scope
+		wb::future_map_if_active raii;
+		if (attack_from.valid()) {
+			dest = attack_from;
+			dest_un = find_unit(dest);
+		}	else {
+			dest = new_hex;
+			dest_un = find_unit(new_hex);
+		}
+		
+		if(dest == selected_hex_ || dest_un) {
+			current_route_.steps.clear();
+			gui().set_route(nullptr);
+			pc_.get_whiteboard()->erase_temp_move();
+		}
+		else if (!current_paths_.destinations.empty() &&
+				 board.map().on_board(selected_hex_) && board.map().on_board(new_hex))
+		{
+			if (selected_unit && !selected_unit->incapacitated()) {
+				// Show the route from selected unit to mouseover hex
+				current_route_ = get_route(&*selected_unit, dest, viewing_team());
+				
+				pc_.get_whiteboard()->create_temp_move();
+				
+				if(!browse) {
+					gui().set_route(&current_route_);
+				}
+			}
+		}
+		
+		if(board.map().on_board(selected_hex_)
+		   && !selected_unit
+		   && mouseover_unit.valid()
+		   && mouseover_unit) {
+			// Show the route from selected hex to mouseover unit
+			current_route_ = get_route(&*mouseover_unit, selected_hex_, viewing_team());
+			
+			pc_.get_whiteboard()->create_temp_move();
+			
+			if(!browse) {
+				gui().set_route(&current_route_);
+			}
+		} else if (!selected_unit) {
+			current_route_.steps.clear();
+			gui().set_route(nullptr);
+			pc_.get_whiteboard()->erase_temp_move();
+		}
+		
+		unit_map::iterator iter = mouseover_unit;
+		if (iter)
+			un = iter.get_shared_ptr();
+		else
+			un.reset();
+	} //end planned unit map scope
+	
+	if ( (!selected_hex_.valid()) && un && current_paths_.destinations.empty() &&
+		 !gui().fogged(un->get_location()))
+	{
+		if (un->side() == side_num_) {
+			//unit is on our team, show path if the unit has one
+			const map_location go_to = un->get_goto();
+			if(board.map().on_board(go_to)) {
+				pathfind::marked_route route;
+				{ // start planned unit map scope
+					wb::future_map_if_active raii;
+					route = get_route(un.get(), go_to, current_team());
+				} // end planned unit map scope
+				gui().set_route(&route);
+			}
+			over_route_ = true;
+			
+			wb::future_map_if_active raii;
+			current_paths_ = pathfind::paths(*un, false, true,
+											 viewing_team(), path_turns_);
+		} else {
+			//unit under cursor is not on our team
+			//Note: planned unit map must be activated after this is done,
+			//since the future state includes changes to units' movement.
+			unit_movement_resetter move_reset(*un);
+			
+			wb::future_map_if_active raii;
+			current_paths_ = pathfind::paths(*un, false, true,
+											 viewing_team(), 1);
+		}
+		
+		unselected_paths_ = true;
+		gui().highlight_reach(current_paths_);
+	}
+	
 }
 
 void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, map_location new_hex)
@@ -234,7 +478,8 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 	// used to attack it
 	map_location dest;
 	unit_map::const_iterator dest_un;
-	{ // start planned unit map scope
+	/* start planned unit map scope */
+	{
 		wb::future_map_if_active raii;
 		if (attack_from.valid()) {
 			dest = attack_from;
@@ -282,16 +527,13 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 			pc_.get_whiteboard()->erase_temp_move();
 		}
 
-		unit_map::iterator iter = mouseover_unit;
-		if (iter)
-			un = iter.get_shared_ptr();
+		if (mouseover_unit)
+			un = mouseover_unit.get_shared_ptr();
 		else
 			un.reset();
-	} //end planned unit map scope
+	} /* end planned unit map scope */
 
-	if ( (!selected_hex_.valid()) && un && current_paths_.destinations.empty() &&
-			!gui().fogged(un->get_location()))
-	{
+	if(!selected_hex_.valid() && un && current_paths_.destinations.empty() && !gui().fogged(un->get_location())) {
 		if (un->side() == side_num_) {
 			//unit is on our team, show path if the unit has one
 			const map_location go_to = un->get_goto();
@@ -479,10 +721,16 @@ void mouse_handler::select_or_action(bool browse)
 
 	unit_map::iterator clicked_u = find_unit(last_hex_);
 	unit_map::iterator selected_u = find_unit(selected_hex_);
+	
+	if (clicked_u && clicked_u == selected_u) {
+		deselect_hex();
+		return;
+	}
+	
 	if ( clicked_u &&
 		 (!selected_u ||
 		  selected_u->side() != side_num_ ||
-		  (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id())) )
+ 		  (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id())) )
 	{
 		select_hex(last_hex_, false);
 	}
@@ -675,6 +923,17 @@ void mouse_handler::move_action(bool browse)
 	}
 }
 
+void mouse_handler::touch_action(const map_location touched_hex, bool browse)
+{
+	unit_map::iterator unit = find_unit(touched_hex);
+	
+	if (touched_hex.valid() && unit.valid() && !unit->get_hidden()) {
+		select_hex(touched_hex, browse);
+	} else {
+		deselect_hex();
+	}
+}
+
 void mouse_handler::select_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event) {
 
 	selected_hex_ = hex;
@@ -694,10 +953,9 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 	if (selected_hex_.valid() && unit.valid() && !unit->get_hidden()) {
 
 		next_unit_ = unit->get_location();
+		bool is_my = unit->side() == gui().viewing_side();
 
-		{
-			current_paths_ = pathfind::paths(*unit, false, true, viewing_team(), path_turns_);
-		}
+		current_paths_ = pathfind::paths(*unit, false, true, viewing_team(), is_my ? path_turns_ : 1);
 		if(highlight) {
 			show_attack_options(unit);
 			gui().highlight_reach(current_paths_);
@@ -708,7 +966,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		gui().set_route(nullptr);
 
 		// selection have impact only if we are not observing and it's our unit
-		if ((!commands_disabled || pc_.get_whiteboard()->is_active()) && unit->side() == gui().viewing_side()) {
+		if ((!commands_disabled || pc_.get_whiteboard()->is_active()) && is_my) {
 			if (!(browse || pc_.get_whiteboard()->unit_has_actions(&*unit)))
 			{
 				sound::play_UI_sound("select-unit.wav");

@@ -21,7 +21,13 @@ See the COPYING file for more details.
 
 #include <algorithm>
 #include <memory>
+#include <SDL_platform.h>
+
+#ifndef __IPHONEOS__
 #include <openssl/rc4.h>
+#else
+#include <CommonCrypto/CommonCryptor.h>
+#endif
 
 #ifdef _WIN32
 #include <boost/range/iterator_range.hpp>
@@ -254,12 +260,13 @@ secure_buffer build_key(const std::string& server, const std::string& login)
 
 static secure_buffer rc4_crypt(const secure_buffer& text, const secure_buffer& key)
 {
+	secure_buffer result(text.size(), '\0');
+#ifndef __IPHONEOS__
 	RC4_KEY cipher_key;
 	RC4_set_key(&cipher_key, key.size(), key.data());
 	const size_t block_size = key.size();
 	const size_t blocks = text.size() / block_size;
 	const size_t extra = text.size() % block_size;
-	secure_buffer result(text.size(), '\0');
 	for(size_t i = 0; i < blocks * block_size; i += block_size) {
 		RC4(&cipher_key, block_size, text.data() + i, result.data() + i);
 	}
@@ -267,6 +274,23 @@ static secure_buffer rc4_crypt(const secure_buffer& text, const secure_buffer& k
 		size_t i = blocks * block_size;
 		RC4(&cipher_key, extra, text.data() + i, result.data() + i);
 	}
+#else
+	size_t outWritten = 0;
+	CCCryptorStatus ccStatus = CCCrypt(kCCDecrypt,
+		kCCAlgorithmRC4,
+		kCCOptionPKCS7Padding,
+		key.data(),
+		key.size(),
+		nullptr,
+		text.data(),
+		text.size(),
+		result.data(),
+		result.size(),
+		&outWritten);
+	
+	assert(ccStatus == kCCSuccess);
+	assert(outWritten == text.size());
+#endif
 	return result;
 }
 

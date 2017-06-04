@@ -327,6 +327,9 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 		case HOTKEY_SELECT_AND_ACTION:
 			select_and_action();
 			break;
+		case HOTKEY_TOUCH_HEX:
+			touch_hex();
+			break;
 		case HOTKEY_ACCELERATED:
 			toggle_accelerated_speed();
 			break;
@@ -549,6 +552,7 @@ static void event_execute( const SDL_Event& event, command_executor* executor)
 	bool press = event.type == SDL_KEYDOWN ||
 			event.type == SDL_JOYBUTTONDOWN ||
 			event.type == SDL_MOUSEBUTTONDOWN ||
+			event.type == SDL_FINGERDOWN ||
 			event.type == SDL_TEXTINPUT;
 
 	execute_command(hotkey::get_hotkey_command(hk->get_command()), executor, -1, press);

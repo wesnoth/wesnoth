@@ -27,6 +27,7 @@
 
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
+#include <SDL_platform.h>
 
 static lg::log_domain log_cache("cache");
 #define ERR_CACHE LOG_STREAM(err, log_cache)
@@ -76,8 +77,17 @@ void config_cache::clear_defines()
 
 #ifdef __APPLE__
 	defines_map_["APPLE"] = preproc_define();
+
+#ifdef MOUSE_TOUCH_EMULATION
+	defines_map_["IPHONEOS"] = preproc_define();
 #endif
 
+#endif
+
+#ifdef __IPHONEOS__
+	defines_map_["IPHONEOS"] = preproc_define();
+#endif
+	
 	defines_map_["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
 }
 
