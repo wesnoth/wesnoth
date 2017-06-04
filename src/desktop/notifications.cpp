@@ -44,7 +44,14 @@ void send(const std::string& /*owner*/, const std::string& /*message*/, type /*t
 
 #else
 
-bool available() { return true; }
+bool available()
+{
+#ifdef __APPLE__
+	return apple_notifications::available();
+#else
+	return true;
+#endif
+}
 
 void send(const std::string& owner, const std::string& message, type t)
 {

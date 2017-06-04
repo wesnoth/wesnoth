@@ -35,6 +35,18 @@
 
 namespace apple_notifications {
 
+bool available() {
+	Class notificationClass = NSClassFromString(@"NSUserNotificationCenter");
+	if(notificationClass) {
+		return true;
+	}
+	notificationClass = NSClassFromString(@"GrowlApplicationBridge");
+	if(notificationClass) {
+		return true;
+	}
+	return false;
+}
+
 #ifdef HAVE_NS_USER_NOTIFICATION
 void send_cocoa_notification(const std::string& owner, const std::string& message);
 #endif
@@ -50,8 +62,8 @@ void send_notification(const std::string& owner, const std::string& message, con
         Class appleNotificationClass = NSClassFromString(@"NSUserNotificationCenter");
         if (appleNotificationClass) {
             send_cocoa_notification(owner, message);
-        } else {
 #ifdef HAVE_GROWL
+        } else {
             send_growl_notification(owner, message, note_type);
 #endif
         }
@@ -59,11 +71,11 @@ void send_notification(const std::string& owner, const std::string& message, con
 }
 #else // HAVE_NS_USER_NOTIFICATION
 void send_notification(const std::string& owner, const std::string& message, const desktop::notifications::type note_type) {
-    @autoreleasepool {
 #ifdef HAVE_GROWL
+    @autoreleasepool {
         send_growl_notification(owner, message, note_type);
-#endif
     }
+#endif
 }
 #endif //end else HAVE_NS_USER_NOTIFICATION
 #pragma clang diagnostic pop

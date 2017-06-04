@@ -65,7 +65,12 @@
 		62D24F351519995200350848 /* palette_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F341519995200350848 /* palette_manager.cpp */; };
 		62E48250154D865E001DD4FC /* pane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62E4824E154D865E001DD4FC /* pane.cpp */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		903F959C1ED5489500F1BDD3 /* credentials.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 903F959B1ED5489500F1BDD3 /* credentials.cpp */; };
+		903F959F1ED5496700F1BDD3 /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
 		90606A2B1D5599BA00719B40 /* libpcre.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90606A2A1D5599BA00719B40 /* libpcre.1.dylib */; };
+		90BC845B1EDBD7B600A6630D /* libcrypto.1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90BC845A1EDBD7B600A6630D /* libcrypto.1.0.0.dylib */; };
+		90BC845C1EDBD7B600A6630D /* libcrypto.1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90BC845A1EDBD7B600A6630D /* libcrypto.1.0.0.dylib */; };
+		90BC845D1EDBD7B600A6630D /* libcrypto.1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90BC845A1EDBD7B600A6630D /* libcrypto.1.0.0.dylib */; };
 		9107AE181DB32899001927B0 /* lapi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1061879D17D00A3B0B1 /* lapi.cpp */; };
 		9107AE191DB3289D001927B0 /* lauxlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1071879D17D00A3B0B1 /* lauxlib.cpp */; };
 		9107AE1A1DB328A2001927B0 /* lbaselib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1081879D17D00A3B0B1 /* lbaselib.cpp */; };
@@ -352,7 +357,6 @@
 		91A215B11CAD925D00927AEA /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
 		91A215B21CAD926900927AEA /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A020EC62181008DD061 /* log.cpp */; };
 		91A215B31CAD926F00927AEA /* map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A000EC62181008DD061 /* map.cpp */; };
-		91A215B41CAD927700927AEA /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999F00EC62181008DD061 /* md5.cpp */; };
 		91A215B51CAD928C00927AEA /* mt_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D7641A085F120092EF75 /* mt_rng.cpp */; };
 		91A215B71CAD92A100927AEA /* seed_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D75F1A085CE60092EF75 /* seed_rng.cpp */; };
 		91A215B81CAD92AA00927AEA /* type_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE17E111A0DD79F00B76473 /* type_data.cpp */; };
@@ -490,7 +494,6 @@
 		91C548E51D886EF300FE6A7B /* binary_or_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999A70EC62181008DD061 /* binary_or_text.cpp */; };
 		91C548E61D886F0700FE6A7B /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
 		91C548E81D886F1E00FE6A7B /* libboost_locale-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC4DF45919FEA838000EC086 /* libboost_locale-mt.dylib */; };
-		91C548E91D886F6800FE6A7B /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999F00EC62181008DD061 /* md5.cpp */; };
 		91C548EA1D886F7500FE6A7B /* game_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A800EC62181008DD061 /* game_config.cpp */; };
 		91C548EB1D886F8C00FE6A7B /* simple_wml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B6D0F893E7500444FBF /* simple_wml.cpp */; };
 		91C548EC1D886FA800FE6A7B /* filesystem_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */; };
@@ -881,7 +884,6 @@
 		B5599B240EC62181008DD061 /* mouse_events.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999EA0EC62181008DD061 /* mouse_events.cpp */; };
 		B5599B250EC62181008DD061 /* minimap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999EC0EC62181008DD061 /* minimap.cpp */; };
 		B5599B260EC62181008DD061 /* menu_events.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999EE0EC62181008DD061 /* menu_events.cpp */; };
-		B5599B270EC62181008DD061 /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999F00EC62181008DD061 /* md5.cpp */; };
 		B5599B280EC62181008DD061 /* marked-up_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999F20EC62181008DD061 /* marked-up_text.cpp */; };
 		B5599B2B0EC62181008DD061 /* location.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999F90EC62181008DD061 /* location.cpp */; };
 		B5599B2C0EC62181008DD061 /* label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999FB0EC62181008DD061 /* label.cpp */; };
@@ -1051,8 +1053,6 @@
 		EC218EA01A106648007C910C /* lua_common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC218E9E1A106648007C910C /* lua_common.cpp */; };
 		EC218EA11A106648007C910C /* lua_kernel_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC218E9F1A106648007C910C /* lua_kernel_base.cpp */; };
 		EC218EA31A106673007C910C /* game_lua_kernel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC218EA21A106673007C910C /* game_lua_kernel.cpp */; };
-		EC2194451960614000420969 /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2194431960614000420969 /* sha1.cpp */; };
-		EC2194461960614000420969 /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2194431960614000420969 /* sha1.cpp */; };
 		EC2194491960634100420969 /* game_launcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC2194471960634100420969 /* game_launcher.cpp */; };
 		EC21944F1960649000420969 /* display_chat_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC21944D1960649000420969 /* display_chat_manager.cpp */; };
 		EC219454196064C500420969 /* wesnoth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC219453196064C500420969 /* wesnoth.cpp */; };
@@ -1505,7 +1505,10 @@
 		62E4824F154D865E001DD4FC /* pane.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pane.hpp; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Wesnoth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wesnoth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		903F959B1ED5489500F1BDD3 /* credentials.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = credentials.cpp; path = preferences/credentials.cpp; sourceTree = "<group>"; };
+		903F959D1ED5489D00F1BDD3 /* credentials.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = credentials.hpp; path = preferences/credentials.hpp; sourceTree = "<group>"; };
 		90606A2A1D5599BA00719B40 /* libpcre.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcre.1.dylib; path = lib/libpcre.1.dylib; sourceTree = "<group>"; };
+		90BC845A1EDBD7B600A6630D /* libcrypto.1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.0.0.dylib; path = lib/libcrypto.1.0.0.dylib; sourceTree = "<group>"; };
 		9107AE141DB32862001927B0 /* liblua.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblua.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9107AE471DB3D8FE001927B0 /* standard_colors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = standard_colors.cpp; path = font/standard_colors.cpp; sourceTree = "<group>"; };
 		9107AE481DB3D8FE001927B0 /* standard_colors.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = standard_colors.hpp; path = font/standard_colors.hpp; sourceTree = "<group>"; };
@@ -2024,8 +2027,6 @@
 		B55999EC0EC62181008DD061 /* minimap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = minimap.cpp; sourceTree = "<group>"; };
 		B55999ED0EC62181008DD061 /* menu_events.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = menu_events.hpp; sourceTree = "<group>"; };
 		B55999EE0EC62181008DD061 /* menu_events.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = menu_events.cpp; sourceTree = "<group>"; };
-		B55999EF0EC62181008DD061 /* md5.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = md5.hpp; sourceTree = "<group>"; };
-		B55999F00EC62181008DD061 /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5.cpp; sourceTree = "<group>"; };
 		B55999F10EC62181008DD061 /* marked-up_text.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = "marked-up_text.hpp"; path = "font/marked-up_text.hpp"; sourceTree = "<group>"; };
 		B55999F20EC62181008DD061 /* marked-up_text.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "marked-up_text.cpp"; path = "font/marked-up_text.cpp"; sourceTree = "<group>"; };
 		B55999F80EC62181008DD061 /* location.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = location.hpp; sourceTree = "<group>"; };
@@ -2367,8 +2368,6 @@
 		EC218E9E1A106648007C910C /* lua_common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_common.cpp; sourceTree = "<group>"; };
 		EC218E9F1A106648007C910C /* lua_kernel_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_kernel_base.cpp; sourceTree = "<group>"; };
 		EC218EA21A106673007C910C /* game_lua_kernel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_lua_kernel.cpp; sourceTree = "<group>"; };
-		EC2194431960614000420969 /* sha1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sha1.cpp; path = utils/sha1.cpp; sourceTree = "<group>"; };
-		EC2194441960614000420969 /* sha1.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = sha1.hpp; path = utils/sha1.hpp; sourceTree = "<group>"; };
 		EC2194471960634100420969 /* game_launcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_launcher.cpp; sourceTree = "<group>"; };
 		EC2194481960634100420969 /* game_launcher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_launcher.hpp; sourceTree = "<group>"; };
 		EC21944D1960649000420969 /* display_chat_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = display_chat_manager.cpp; sourceTree = "<group>"; };
@@ -2716,6 +2715,7 @@
 				91B622221B76C0F400B00E0F /* libboost_regex-mt.dylib in Frameworks */,
 				91B622231B76C0F400B00E0F /* libboost_system-mt.dylib in Frameworks */,
 				91B622241B76C0F400B00E0F /* libboost_thread-mt.dylib in Frameworks */,
+				90BC845B1EDBD7B600A6630D /* libcrypto.1.0.0.dylib in Frameworks */,
 				EC5C243B18EF07B4001FA499 /* libbz2.1.0.dylib in Frameworks */,
 				B513B2290ED36BFB0006E551 /* libcairo.2.dylib in Frameworks */,
 				EC5C243C18EF07B4001FA499 /* libexpat.1.dylib in Frameworks */,
@@ -2785,6 +2785,7 @@
 				91A215DF1CAD99E000927AEA /* libboost_iostreams-mt.dylib in Frameworks */,
 				91A215E01CAD99E000927AEA /* libboost_system-mt.dylib in Frameworks */,
 				91A215E11CAD99E000927AEA /* libboost_thread-mt.dylib in Frameworks */,
+				90BC845D1EDBD7B600A6630D /* libcrypto.1.0.0.dylib in Frameworks */,
 				91A215E21CAD9B9000927AEA /* libpango-1.0.0.dylib in Frameworks */,
 				91A215E31CAD9B9000927AEA /* libpangocairo-1.0.0.dylib in Frameworks */,
 				916718EB1CADA88800B055A9 /* libgobject-2.0.0.dylib in Frameworks */,
@@ -2797,6 +2798,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90BC845C1EDBD7B600A6630D /* libcrypto.1.0.0.dylib in Frameworks */,
 				F4D2A9D514DAED4200CAFF31 /* CoreFoundation.framework in Frameworks */,
 				ECF9D44119F4042700E6C9D9 /* libboost_filesystem-mt.dylib in Frameworks */,
 				F4EF0D4D13AD4D53003C701D /* libboost_iostreams-mt.dylib in Frameworks */,
@@ -2993,8 +2995,6 @@
 				F419E44313354E620031448A /* lua_jailbreak_exception.hpp */,
 				91F16D501C9F34590041C047 /* map */,
 				918C8A1A1D05F9AA009744A0 /* map_command_handler.hpp */,
-				B55999F00EC62181008DD061 /* md5.cpp */,
-				B55999EF0EC62181008DD061 /* md5.hpp */,
 				B55999EE0EC62181008DD061 /* menu_events.cpp */,
 				B55999ED0EC62181008DD061 /* menu_events.hpp */,
 				B55999EC0EC62181008DD061 /* minimap.cpp */,
@@ -3072,8 +3072,6 @@
 				B55999A60EC62181008DD061 /* serialization */,
 				B55999A50EC62181008DD061 /* settings.cpp */,
 				B55999A40EC62181008DD061 /* settings.hpp */,
-				EC2194431960614000420969 /* sha1.cpp */,
-				EC2194441960614000420969 /* sha1.hpp */,
 				B55999A10EC62181008DD061 /* show_dialog.cpp */,
 				B55999A00EC62181008DD061 /* show_dialog.hpp */,
 				B5CE46F712A0417D00D665EE /* side_filter.cpp */,
@@ -3174,6 +3172,7 @@
 				91E355621CACA1CE00774252 /* libboost_unit_test_framework-mt.dylib */,
 				EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */,
 				B513B2270ED36BFB0006E551 /* libcairo.2.dylib */,
+				90BC845A1EDBD7B600A6630D /* libcrypto.1.0.0.dylib */,
 				EC5C242318EF07B4001FA499 /* libexpat.1.dylib */,
 				EC5C242418EF07B4001FA499 /* libffi.6.dylib */,
 				EC5C242518EF07B4001FA499 /* libfontconfig.1.dylib */,
@@ -4569,6 +4568,8 @@
 		EC54017A1EBE0C2B00AE66EE /* preferences */ = {
 			isa = PBXGroup;
 			children = (
+				903F959B1ED5489500F1BDD3 /* credentials.cpp */,
+				903F959D1ED5489D00F1BDD3 /* credentials.hpp */,
 				EC54017B1EBE0C4500AE66EE /* display.cpp */,
 				EC54017C1EBE0C4500AE66EE /* display.hpp */,
 				EC54017D1EBE0C4500AE66EE /* editor.cpp */,
@@ -5085,9 +5086,9 @@
 				ECA1E1011A12755B00426E00 /* mapgen_lua_kernel.cpp in Sources */,
 				B5599B280EC62181008DD061 /* marked-up_text.cpp in Sources */,
 				62579C831573E797003089D5 /* matrix.cpp in Sources */,
-				B5599B270EC62181008DD061 /* md5.cpp in Sources */,
 				B5599B260EC62181008DD061 /* menu_events.cpp in Sources */,
 				ECA5562A1E7B5E11006E907D /* addon_list.cpp in Sources */,
+				903F959C1ED5489500F1BDD3 /* credentials.cpp in Sources */,
 				EC44E382181DDAF90037A62F /* menu_item.cpp in Sources */,
 				B5599ADB0EC62181008DD061 /* menu_style.cpp in Sources */,
 				B5599ADA0EC62181008DD061 /* menu.cpp in Sources */,
@@ -5180,7 +5181,6 @@
 				EC64D7611A085CE60092EF75 /* seed_rng.cpp in Sources */,
 				B5599B030EC62181008DD061 /* settings.cpp in Sources */,
 				B5A9BD6B0ECA805A002BE442 /* settings.cpp in Sources */,
-				EC2194451960614000420969 /* sha1.cpp in Sources */,
 				B5599B010EC62181008DD061 /* show_dialog.cpp in Sources */,
 				ECAB84551B0C1934001A3EB7 /* shroud_clearing_action.cpp in Sources */,
 				B52EE91D12135AC300CFBDAB /* side_actions.cpp in Sources */,
@@ -5400,7 +5400,6 @@
 				91C548E41D886ECA00FE6A7B /* gettext_boost.cpp in Sources */,
 				91C548E61D886F0700FE6A7B /* hash.cpp in Sources */,
 				91C548DF1D886E2100FE6A7B /* log.cpp in Sources */,
-				91C548E91D886F6800FE6A7B /* md5.cpp in Sources */,
 				91C548F31D8870BB00FE6A7B /* parser.cpp in Sources */,
 				91C548F61D8870F800FE6A7B /* preprocessor.cpp in Sources */,
 				91C548DD1D886BE300FE6A7B /* server_base.cpp in Sources */,
@@ -5784,7 +5783,6 @@
 				91A215B11CAD925D00927AEA /* hash.cpp in Sources */,
 				91A215B21CAD926900927AEA /* log.cpp in Sources */,
 				91A215B31CAD926F00927AEA /* map.cpp in Sources */,
-				91A215B41CAD927700927AEA /* md5.cpp in Sources */,
 				91A215B51CAD928C00927AEA /* mt_rng.cpp in Sources */,
 				91A215B71CAD92A100927AEA /* seed_rng.cpp in Sources */,
 				91A215B81CAD92AA00927AEA /* type_data.cpp in Sources */,
@@ -5942,6 +5940,7 @@
 				B5BB6C860F8943F600444FBF /* config_cache.cpp in Sources */,
 				B5BB6B8D0F893F2300444FBF /* config.cpp in Sources */,
 				ECF9D43E19F3FF9400E6C9D9 /* filesystem_boost.cpp in Sources */,
+				903F959F1ED5496700F1BDD3 /* hash.cpp in Sources */,
 				EC5C70BD19EEB54900432CF4 /* filesystem_common.cpp in Sources */,
 				B5BB6B8A0F893E7500444FBF /* forum_user_handler.cpp in Sources */,
 				B5BB6C6F0F8941CD00444FBF /* game_config.cpp in Sources */,
@@ -5957,7 +5956,6 @@
 				B5BB6B850F893E7500444FBF /* sample_user_handler.cpp in Sources */,
 				EC64D7671A085F2F0092EF75 /* seed_rng.cpp in Sources */,
 				B5BB6B840F893E7500444FBF /* server.cpp in Sources */,
-				EC2194461960614000420969 /* sha1.cpp in Sources */,
 				B5BB6B820F893E7500444FBF /* simple_wml.cpp in Sources */,
 				B5BB6C910F89448200444FBF /* string_utils.cpp in Sources */,
 				B5BB6C920F89448300444FBF /* tokenizer.cpp in Sources */,
@@ -6164,6 +6162,14 @@
 					"$(OTHER_CFLAGS)",
 					"-include",
 					"../../src/boost-patched/bind/arg.hpp",
+					"-lcrypto",
+					"-I/usr/local/opt/openssl@1.1/include",
+				);
+				"OTHER_CPLUSPLUSFLAGS[arch=*]" = (
+					"$(OTHER_CFLAGS)",
+					"-include",
+					"../../src/boost-patched/bind/arg.hpp",
+					"-lcrypto",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -6198,6 +6204,8 @@
 					"$(OTHER_CFLAGS)",
 					"-include",
 					"../../src/boost-patched/bind/arg.hpp",
+					"-lcrypto",
+					"-I/usr/local/opt/openssl@1.1/include",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",

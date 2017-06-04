@@ -40,6 +40,16 @@
 #include <png.h>
 #endif
 
+#ifdef __APPLE__
+// apple_notification.mm uses Foundation.h, which is an Objective-C header;
+// but CoreFoundation.h is a C header which also defines these.
+#include <CoreFoundation/CoreFoundation.h>
+
+#if (defined MAC_OS_X_VERSION_10_8) && (MAC_OS_X_VERSION_10_8 <= MAC_OS_X_VERSION_MAX_ALLOWED)
+#define HAVE_NS_USER_NOTIFICATION
+#endif
+#endif
+
 namespace game_config
 {
 
