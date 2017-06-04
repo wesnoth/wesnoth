@@ -112,7 +112,7 @@ void controller_base::handle_event(const SDL_Event& event)
 		}
 		break;
 	case SDL_MOUSEWHEEL:
-		get_mouse_handler_base().mouse_wheel(event.wheel.x, event.wheel.y, is_browsing());
+		get_mouse_handler_base().mouse_wheel(-event.wheel.x, event.wheel.y, is_browsing());
 		break;
 	default:
 		break;
