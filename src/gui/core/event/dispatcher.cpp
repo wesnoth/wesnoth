@@ -81,6 +81,8 @@ bool dispatcher::has_event(const ui_event event, const event_queue_type event_ty
 			event, dispatcher_implementation::has_handler(event_type, *this))
 	    || find<set_event_keyboard>(
 			event, dispatcher_implementation::has_handler(event_type, *this))
+	    || find<set_event_text_input>(
+			event, dispatcher_implementation::has_handler(event_type, *this))
 	    || find<set_event_touch>(
 			event, dispatcher_implementation::has_handler(event_type, *this))
 	    || find<set_event_notification>(
@@ -156,6 +158,12 @@ bool dispatcher::fire(const ui_event event, widget& target, const SDL_Event& sdl
 {
 	assert(find<set_event_raw_event>(event, event_in_set()));
 	return fire_event<signal_raw_event_function>(event, this, &target, sdlevent);
+}
+
+bool dispatcher::fire(const ui_event event, widget& target, const std::string& text, int32_t start, int32_t len)
+{
+	assert(find<set_event_text_input>(event, event_in_set()));
+	return fire_event<signal_text_input_function>(event, this, &target, text, start, len);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, const point& pos, const point& distance)

@@ -137,6 +137,10 @@ void text_box::update_canvas()
 	const unsigned start = get_selection_start();
 	const int length = get_selection_length();
 
+	// Set the cursor info.
+	const unsigned edit_start = get_composition_start();
+	const int edit_length = get_composition_length();
+
 	set_maximum_length(max_input_length_);
 
 	PangoEllipsizeMode ellipse_mode = PANGO_ELLIPSIZE_NONE;
@@ -162,6 +166,19 @@ void text_box::update_canvas()
 		end_offset = get_cursor_position(start).x;
 	}
 
+	// Set the composition info
+	unsigned comp_start_offset = 0;
+	unsigned comp_end_offset = 0;
+	if(edit_length == 0) {
+		// No nothing.
+	} else if(edit_length > 0) {
+		comp_start_offset = get_cursor_position(edit_start).x;
+		comp_end_offset = get_cursor_position(edit_start + edit_length).x;
+	} else {
+		comp_start_offset = get_cursor_position(edit_start + edit_length).x;
+		comp_end_offset = get_cursor_position(edit_start).x;
+	}
+
 	/***** Set in all canvases *****/
 
 	const int max_width = get_text_maximum_width();
@@ -182,6 +199,9 @@ void text_box::update_canvas()
 		tmp.set_variable("selection_offset", wfl::variant(start_offset));
 		tmp.set_variable("selection_width", wfl::variant(end_offset - start_offset));
 		tmp.set_variable("text_wrap_mode", wfl::variant(ellipse_mode));
+
+		tmp.set_variable("composition_offset", wfl::variant(comp_start_offset));
+		tmp.set_variable("composition_width", wfl::variant(comp_end_offset - comp_start_offset));
 	}
 }
 
@@ -298,22 +318,14 @@ bool text_box::history_down()
 	return true;
 }
 
-void text_box::handle_key_default(bool& handled,
-								   SDL_Keycode key,
-								   SDL_Keymod modifier,
-								   const utf8::string& unicode)
+void text_box::handle_key_tab(SDL_Keymod modifier, bool& handled)
 {
-	if(key == SDLK_TAB && (modifier & KMOD_CTRL)) {
+	if(modifier & KMOD_CTRL) {
 		if(!(modifier & KMOD_SHIFT)) {
 			handled = history_up();
 		} else {
 			handled = history_down();
 		}
-	}
-
-	if(!handled) {
-		// Inherited.
-		text_box_base::handle_key_default(handled, key, modifier, unicode);
 	}
 }
 

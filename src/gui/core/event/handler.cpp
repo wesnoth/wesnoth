@@ -280,6 +280,15 @@ private:
 	void text_input(const std::string& unicode);
 
 	/**
+	 * Fires a text editing event.
+	 *
+	 * @param unicode                The unicode value for the text being edited.
+	 * @param start                  The start position for the text being edited.
+	 * @param len                    The selection length for the text being edited.
+	 */
+	void text_editing(const std::string& unicode, int32_t start, int32_t len);
+
+	/**
 	 * Fires a keyboard event which has no parameters.
 	 *
 	 * This can happen for example when the mouse wheel is used.
@@ -422,6 +431,10 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_TEXTINPUT:
 			text_input(event.text.text);
+			break;
+
+		case SDL_TEXTEDITING:
+			text_editing(event.edit.text, event.edit.start, event.edit.length);
 			break;
 
 		case SDL_FINGERMOTION:
@@ -719,6 +732,21 @@ void sdl_event_handler::key_down(const SDL_Event& event)
 void sdl_event_handler::text_input(const std::string& unicode)
 {
 	key_down(SDLK_UNKNOWN, static_cast<SDL_Keymod>(0), unicode);
+
+	if(dispatcher* dispatcher = keyboard_dispatcher()) {
+		dispatcher->fire(SDL_TEXT_INPUT,
+			dynamic_cast<widget&>(*dispatcher),
+			unicode, -1, -1);
+	}
+}
+
+void sdl_event_handler::text_editing(const std::string& unicode, int32_t start, int32_t end)
+{
+	if(dispatcher* dispatcher = keyboard_dispatcher()) {
+		dispatcher->fire(SDL_TEXT_EDITING,
+			dynamic_cast<widget&>(*dispatcher),
+			unicode, start, end);
+	}
 }
 
 bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr key)
