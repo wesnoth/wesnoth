@@ -17,7 +17,6 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <SDL_platform.h>
 
 #ifndef __IPHONEOS__
 

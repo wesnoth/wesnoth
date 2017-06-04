@@ -40,12 +40,8 @@ using boost::uintmax_t;
 #include <shlwapi.h>
 #endif /* !_WIN32 */
 
-// Copied from boost::predef, as it's there only since 1.55.
-#if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
-
-#define WESNOTH_BOOST_OS_IOS (__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__*1000)
+#ifdef __IPHONEOS__
 #include <SDL_filesystem.h>
-
 #endif
 
 #include "config.hpp"
@@ -553,7 +549,7 @@ void set_user_data_dir(std::string newprefdir)
 
 	std::string backupprefdir = ".wesnoth" + get_version_path_suffix();
 
-#ifdef WESNOTH_BOOST_OS_IOS
+#ifdef __IPHONEOS__
 	char *sdl_pref_path = SDL_GetPrefPath("wesnoth.org", "iWesnoth");
 	if(sdl_pref_path) {
 		backupprefdir = std::string(sdl_pref_path) + backupprefdir;

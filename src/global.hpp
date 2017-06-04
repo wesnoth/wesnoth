@@ -139,3 +139,8 @@
 #define FALLTHROUGH
 #endif
 #endif
+
+// Copied from boost::predef. Sadly, boost::predef has it only since 1.55.
+#if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
+#define __IPHONEOS__
+#endif

@@ -21,7 +21,6 @@ See the COPYING file for more details.
 
 #include <algorithm>
 #include <memory>
-#include <SDL_platform.h>
 
 #ifndef __IPHONEOS__
 #include <openssl/rc4.h>
