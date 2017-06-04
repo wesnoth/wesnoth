@@ -152,7 +152,6 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		if (event.state == SDL_PRESSED) {
 			cancel_dragging();
 			touch_timestamp = clock();
-//			touch_timestamp_cpp = high_resolution_clock::now();
 			init_dragging(dragging_touch_);
 			left_click(event.x, event.y, browse);
 		} else if (event.state == SDL_RELEASED) {
@@ -160,11 +159,6 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 
 			if (!dragging_started_ && touch_timestamp > 0) {
 				time_t dt = clock() - touch_timestamp;
-				// I couldn't make this work. Sorry for some C.
-//				auto dt_cpp = high_resolution_clock::now() - touch_timestamp_cpp;
-//				auto dt2 = duration_cast<milliseconds>(dt_cpp);
-//				auto menu_hold = milliseconds(300);
-//				if (dt2 > menu_hold) {
 				if (dt > CLOCKS_PER_SEC * 3 / 10) {
 					right_click(event.x, event.y, browse); // show_menu_ = true;
 				}
