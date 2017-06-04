@@ -28,7 +28,10 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
-#include <SDL_platform.h>
+
+#if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
+#define __IPHONEOS__
+#endif
 
 #include <boost/version.hpp>
 

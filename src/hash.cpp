@@ -16,7 +16,10 @@
 
 #include <iostream>
 #include <string>
-#include <SDL_platform.h>
+
+#if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
+#define __IPHONEOS__
+#endif
 
 #ifndef __IPHONEOS__
 
