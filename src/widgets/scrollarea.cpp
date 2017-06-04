@@ -198,8 +198,8 @@ void scrollarea::handle_event(const SDL_Event& event)
 			if (sdl::point_in_rect(swipe_origin_.x, swipe_origin_.y, inner_location())
 				&& abs(swipe_dy_) >= scrollbar_step)
 			{
-				unsigned int pos = (unsigned int) std::max(
-						(int) scrollbar_.get_position() - swipe_dy_ / scrollbar_step,
+				unsigned int pos = std::max(
+						static_cast<int>(scrollbar_.get_position() - swipe_dy_ / scrollbar_step),
 						0);
 				scrollbar_.set_position(pos);
 				swipe_dy_ %= scrollbar_step;
