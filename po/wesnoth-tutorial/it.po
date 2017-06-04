@@ -1,13 +1,13 @@
 # translation of it.po to Italian
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008, 2009, 2010, 2011.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2016.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-05-13 22:46 UTC\n"
-"PO-Revision-Date: 2016-05-16 14:59+0000\n"
+"PO-Revision-Date: 2017-06-03 19:11+0300\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:26
@@ -102,12 +102,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:159
-#, fuzzy
-#| msgid ""
-#| "For this tutorial, you are playing Li’sar. You are standing on the keep, "
-#| "and your mentor Delfador is on the east side of the river. you can move "
-#| "the mouse over a unit to see a summary of its abilities and stats on the "
-#| "right of the screen."
 msgid ""
 "For this tutorial, you are playing Li’sar. You are standing on the keep, and "
 "your mentor Delfador is on the east side of the river. You can move the "
@@ -381,7 +375,7 @@ msgstr ""
 "controllate da IA o da giocatori umani. Alcuni scenari devono essere "
 "completati in un certo numero di turni. Puoi vedere quale sia il turno "
 "attuale e quale sia l’eventuale limite di turni, nella parte alta dello "
-"schermo, vicino all'icona con la bandiera."
+"schermo, vicino all’icona con la bandiera."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:417
@@ -537,10 +531,10 @@ msgid ""
 msgstr ""
 "Sii certo di esaminare accuratamente le <i>caratteristiche</i> delle tue "
 "nuove reclute. Sono elencate sotto la razza, nella barra laterale. Le i "
-"tratti caratteristici possono possono alterare subdolamente l'utilizzo delle "
-"tue truppe. Ad esempio, le unità con la caratteristica <i>velocita</i> "
+"tratti caratteristici possono possono alterare subdolamente l’utilizzo delle "
+"tue truppe. Ad esempio, le unità con la caratteristica <i>velocità</i> "
 "possono muoversi per un esagono aggiuntivo ad ogni turno, oppure quelle con "
-"<i>intellienza</i> richiedono il 20% in meno di esperienza per avanzare di "
+"<i>intelligenza</i> richiedono il 20% in meno di esperienza per avanzare di "
 "livello. Una lista completa di tutte le possibili caratteristiche si trova "
 "nel manuale di aiuto."
 
@@ -578,29 +572,21 @@ msgstr ""
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:601
-#, fuzzy
-#| msgid "I’ll tell them to use the one that does the most damage!"
 msgid "I’ll tell them to use the one that does more damage!"
 msgstr "Ordinerò loro di usare l’attacco che provoca più danni!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:602
-#, fuzzy
-#| msgid "female^I’ll tell them to use the one that does the most damage!"
 msgid "female^I’ll tell them to use the one that does more damage!"
 msgstr "Ordinerò loro di usare l’attacco che provoca più danni!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:607
-#, fuzzy
-#| msgid ""
-#| "And which would that be? The sword (5–4) or the bow (3–3)? I suppose "
-#| "you’ll find out..."
 msgid ""
 "And which would that be? The sword (5×4) or the bow (3×3)? I suppose you’ll "
 "find out..."
 msgstr ""
-"E quale sarebbe? La spada (5-4) o l’arco (3-3)? Credo proprio che lo "
+"E quale sarebbe? La spada (5×4) o l’arco (3×3)? Credo proprio che lo "
 "scoprirai da te..."
 
 #. [event]
@@ -623,34 +609,24 @@ msgstr ""
 # Dopo questa stringa non dovrebbe comparire quella precedente? In realtà non lo fa neanche in inglese...
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:652
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a <i>melee</"
-#| "i> attack. The quintain defended with its melee attack (3–5). The ranged "
-#| "attack (the bow) would have been safer."
 msgid ""
 "Your elf used a sword (5×4; or 5 damage, 4 attacks), which is a <i>melee</i> "
 "attack. The quintain defended with its melee attack (3×5). The ranged attack "
 "(the bow) would have been safer."
 msgstr ""
-"Il tuo elfo ha usato una spada (5–4, cioè 5 punti di danno per 4 attacchi), "
+"Il tuo elfo ha usato una spada (5×4, cioè 5 punti di danno per 4 attacchi), "
 "sferrando un <i>attacco ravvicinato</i>. La quintana si è difesa con il suo "
-"attacco ravvicinato (3–5). Un attacco a distanza (con l’arco) sarebbe stato "
+"attacco ravvicinato (3×5). Un attacco a distanza (con l’arco) sarebbe stato "
 "più sicuro."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:664
-#, fuzzy
-#| msgid ""
-#| "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
-#| "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#| "could not defend itself."
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage, 3 "
 "attacks). The quintain has no ranged attack, only a melee attack, so it "
 "could not defend itself."
 msgstr ""
-"Il tuo elfo ha usato un arco (3–3, cioè 3 punti di danno per 3 attacchi), "
+"Il tuo elfo ha usato un arco (3×3, cioè 3 punti di danno per 3 attacchi), "
 "sferrando un <i>attacco a distanza</i>. La quintana possiede solo un attacco "
 "ravvicinato, ma non ha attacchi a distanza, perciò non ha potuto difendersi."
 
@@ -851,7 +827,7 @@ msgid ""
 "to the next scenario in the campaign."
 msgstr ""
 "Dopo la notifica della vittoria, la mappa verrà mostrata in grigio per "
-"indicare che lo scenario è finito: questo si chiama <i>modalità' ritardata</"
+"indicare che lo scenario è finito: questo si chiama <i>modalità ritardata</"
 "i>. Ti sarà comunque possibile esaminare le posizioni finali e lo stato "
 "delle tue truppe, così come gli eventuali nemici sopravvissuti. Una volta "
 "terminata l’operazione, premi il pulsante <b>Fine scenario</b> per avanzare "
@@ -1195,9 +1171,9 @@ msgstr ""
 "Le armi speciali sono dei modificatori speciali in attacco che ne potenziano "
 "gli effetti. Ancora una volta, in questo caso, le sciamane hanno la "
 "specialità Rallentamento nel loro attacco intrappolante. Quando viene "
-"utilizzato contro un nemico, dimezza i danni che questo può' infliggere per "
+"utilizzato contro un nemico, dimezza i danni che questo può infliggere per "
 "un turno. Altri esempi di armi speciali sono l’attacco improvviso, che "
-"permette ad una unità' di attaccare sempre per prima, senza rispettare le "
+"permette ad una unità di attaccare sempre per prima, senza rispettare le "
 "usuali convenzioni, e quello magico, che da un attacco il 70% fisso di "
 "probabilità di colpire.\n"
 "\n"
@@ -1726,6 +1702,8 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:651
 msgid "Hurry up and defeat the orcs before they become entrenched!"
 msgstr ""
+"Accelera le operazioni e sconfiggi gli orchi prima che riescano a "
+"trincerarsi!"
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:678
@@ -1859,7 +1837,7 @@ msgid ""
 msgstr ""
 "L’avanzamento di livello mi ha curato completamente! Ora sono in grado di "
 "curare otto punti ferita per ogni turno, invece di quattro e posso anche "
-"curare l'avvelenamento nel caso qualcuno non riesca a raggiungere un "
+"curare l’avvelenamento nel caso qualcuno non riesca a raggiungere un "
 "villaggio! Ho guadagnato anche un nuovo attacco <i>magico</i>, che ha sempre "
 "il 70% di probabilità di andare a segno, anche se non è potente come come "
 "quello della strega elfica."
@@ -1875,7 +1853,7 @@ msgid ""
 msgstr ""
 "’avanzamento di livello mi ha curato completamente! Ora non sono più in "
 "grado di curare le unità adiacenti, ma in compenso ho un nuovo, potente "
-"attacco di fuoco fatato che causa 7 punti danno per ugnuno dei quattro colpi "
+"attacco di fuoco fatato che causa 7 punti danno per ognuno dei quattro colpi "
 "che posso infliggere. Si tratta di un attacco speciale di tipo <i>magico</"
 "i>, che ha sempre il 70% di probabilità di andare a segno."
 
