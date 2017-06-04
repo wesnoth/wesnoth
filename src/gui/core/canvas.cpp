@@ -1438,7 +1438,10 @@ void canvas::draw(const bool force)
 	}
 
 	texture_ = SDL_CreateTexture(renderer_, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_TARGET, w_, h_);
-	assert(texture_);
+	if(!texture_) {
+		ERR_GUI_D << "Error when creating canvas texture: " << SDL_GetError() << std::endl;
+		return;
+	}
 
 	SDL_SetTextureBlendMode(texture_, SDL_BLENDMODE_BLEND);
 
