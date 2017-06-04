@@ -67,6 +67,7 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		903F959C1ED5489500F1BDD3 /* credentials.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 903F959B1ED5489500F1BDD3 /* credentials.cpp */; };
 		903F959F1ED5496700F1BDD3 /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
+		905440871EE46ABC0091D1AE /* libcrypto.1.0.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 90BC845A1EDBD7B600A6630D /* libcrypto.1.0.0.dylib */; };
 		90606A2B1D5599BA00719B40 /* libpcre.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90606A2A1D5599BA00719B40 /* libpcre.1.dylib */; };
 		90BC845B1EDBD7B600A6630D /* libcrypto.1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90BC845A1EDBD7B600A6630D /* libcrypto.1.0.0.dylib */; };
 		90BC845C1EDBD7B600A6630D /* libcrypto.1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90BC845A1EDBD7B600A6630D /* libcrypto.1.0.0.dylib */; };
@@ -1332,6 +1333,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				905440871EE46ABC0091D1AE /* libcrypto.1.0.0.dylib in Copy Frameworks */,
 				B508D15F10013F8100B12852 /* Growl.framework in Copy Frameworks */,
 				91B622011B76C0A600B00E0F /* libboost_filesystem-mt.dylib in Copy Frameworks */,
 				91B622021B76C0A600B00E0F /* libboost_iostreams-mt.dylib in Copy Frameworks */,
@@ -6162,14 +6164,12 @@
 					"$(OTHER_CFLAGS)",
 					"-include",
 					"../../src/boost-patched/bind/arg.hpp",
-					"-lcrypto",
 					"-I/usr/local/opt/openssl@1.1/include",
 				);
 				"OTHER_CPLUSPLUSFLAGS[arch=*]" = (
 					"$(OTHER_CFLAGS)",
 					"-include",
 					"../../src/boost-patched/bind/arg.hpp",
-					"-lcrypto",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -6204,7 +6204,6 @@
 					"$(OTHER_CFLAGS)",
 					"-include",
 					"../../src/boost-patched/bind/arg.hpp",
-					"-lcrypto",
 					"-I/usr/local/opt/openssl@1.1/include",
 				);
 				OTHER_LDFLAGS = (
