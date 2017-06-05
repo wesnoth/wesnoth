@@ -21,6 +21,7 @@
 #include <memory>
 
 class surface;
+class texture;
 struct point;
 
 namespace sdl
@@ -71,6 +72,9 @@ public:
 
 	/** Returns a pointer to the underlying SDL window. */
 	sdl::window* get_window();
+
+	/** Returns a pointer to the underlying window's renderer. */
+	SDL_Renderer* get_renderer();
 
 private:
 	enum MODE_EVENT { TO_RES, TO_FULLSCREEN, TO_WINDOWED, TO_MAXIMIZED_WINDOW };
@@ -165,7 +169,9 @@ public:
 	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect = nullptr, SDL_Rect* clip_rect = nullptr);
 
 	/** Renders the screen. Should normally not be called directly! */
-	void flip();
+	void render_screen();
+
+	void copy_to_screen(texture& txt, SDL_Rect* src_rect = nullptr, SDL_Rect* dst_rect = nullptr);
 
 	/**
 	 * Updates and ensures the framebuffer surface is valid.
