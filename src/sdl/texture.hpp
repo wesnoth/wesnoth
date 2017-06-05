@@ -80,17 +80,3 @@ private:
 
 	SDL_Texture* texture_;
 };
-
-/**
- * Small RAII helper class to temporarily set the renderer target to a texture.
- */
-class render_target_setter
-{
-public:
-	explicit render_target_setter(texture& t);
-
-	~render_target_setter();
-
-private:
-	SDL_Renderer* renderer_;
-};
