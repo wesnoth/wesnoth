@@ -23,6 +23,7 @@
 #include "sdl/window.hpp"
 
 class surface;
+class texture;
 
 SDL_Rect screen_area();
 
@@ -84,7 +85,10 @@ public:
 
 	//blits a surface with black as alpha
 	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect=nullptr, SDL_Rect* clip_rect=nullptr);
-	void flip();
+
+	void copy_to_screen(texture& txt, SDL_Rect* src_rect = nullptr, SDL_Rect* dst_rect = nullptr);
+
+	void render_screen();
 	static void delay(unsigned int milliseconds);
 
 	surface& getSurface();
@@ -161,6 +165,8 @@ public:
 	void clear_screen();
 
 	sdl::window *get_window();
+
+	SDL_Renderer* get_renderer();
 
 	/**
 	 * Returns the list of available screen resolutions.

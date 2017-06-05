@@ -550,7 +550,7 @@ void sdl_event_handler::draw(const bool /*force*/)
 	}
 
 	// Finally, render the screen.
-	video.flip();
+	video.render_screen();
 }
 
 void sdl_event_handler::video_resize(const point& new_size)

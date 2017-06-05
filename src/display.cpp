@@ -1336,7 +1336,7 @@ void display::flip()
 	font::draw_floating_labels(frameBuffer);
 	events::raise_volatile_draw_event();
 
-	video().flip();
+	video().render_screen();
 
 	events::raise_volatile_undraw_event();
 	font::undraw_floating_labels(frameBuffer);

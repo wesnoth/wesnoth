@@ -19,6 +19,7 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
+#include "sdl/texture.hpp"
 #include "sdl/window.hpp"
 
 #include <cassert>
@@ -290,6 +291,15 @@ int CVideo::gety() const
 	return frameBuffer->h;
 }
 
+SDL_Renderer* CVideo::get_renderer()
+{
+	if(!window) {
+		return nullptr;
+	}
+
+	return *window;
+}
+
 void CVideo::delay(unsigned int milliseconds)
 {
 	if(!game_config::no_delay) {
@@ -297,7 +307,16 @@ void CVideo::delay(unsigned int milliseconds)
 	}
 }
 
-void CVideo::flip()
+void CVideo::copy_to_screen(texture& txt, SDL_Rect* src_rect, SDL_Rect* dst_rect)
+{
+	if(!window) {
+		return;
+	}
+
+	SDL_RenderCopy(*window, txt, src_rect, dst_rect);
+}
+
+void CVideo::render_screen()
 {
 	if(fake_screen_ || flip_locked_ > 0) {
 		return;
