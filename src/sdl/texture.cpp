@@ -17,9 +17,6 @@
 #include "sdl/surface.hpp"
 #include "video.hpp"
 
-#include <cassert>
-#include <iostream>
-
 static lg::log_domain log_sdl("SDL");
 #define ERR_SDL LOG_STREAM(err, log_sdl)
 
@@ -111,22 +108,4 @@ texture::info::info(const texture& t)
 	, h(0)
 {
 	SDL_QueryTexture(t, &format, &access, &w, &h);
-}
-
-render_target_setter::render_target_setter(texture& t)
-	: renderer_(CVideo::get_singleton().get_renderer())
-{
-	if(renderer_) {
-		// Validate we can render to this texture.
-		assert(t.get_info().access == SDL_TEXTUREACCESS_TARGET);
-
-		SDL_SetRenderTarget(renderer_, t);
-	}
-}
-
-render_target_setter::~render_target_setter()
-{
-	if(renderer_) {
-		SDL_SetRenderTarget(renderer_, nullptr);
-	}
 }
