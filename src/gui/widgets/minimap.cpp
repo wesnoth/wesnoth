@@ -247,7 +247,10 @@ void minimap::impl_draw_background(int x_offset, int y_offset)
 
 	const ::surface surf = get_image(rect.w, rect.h);
 	if(surf) {
-		sdl_blit(surf, nullptr, CVideo::get_singleton().getSurface(), &rect);
+		SDL_Rect dst {0, 0, surf->w, surf->h};
+		texture txt(surf);
+
+		CVideo::get_singleton().copy_to_screen(txt, nullptr, &dst);
 	}
 }
 
