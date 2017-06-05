@@ -19,6 +19,7 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
+#include "sdl/render_utils.hpp"
 #include "sdl/texture.hpp"
 #include "sdl/window.hpp"
 
@@ -165,11 +166,12 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event &event)
 
 void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rect* clip_rect)
 {
-	surface& target(getSurface());
-	SDL_Rect dst {x, y, 0, 0};
+	texture txt(surf);
 
-	const clip_rect_setter clip_setter(target, clip_rect, clip_rect != nullptr);
-	sdl_blit(surf,srcrect,target,&dst);
+	render_clip_rect_setter crs(clip_rect);
+
+	SDL_Rect dst {x, y, surf->w, surf->h};
+	copy_to_screen(txt, srcrect, &dst);
 }
 
 void CVideo::make_fake()
