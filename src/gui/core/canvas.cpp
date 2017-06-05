@@ -31,6 +31,7 @@
 #include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/render_utils.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
 
