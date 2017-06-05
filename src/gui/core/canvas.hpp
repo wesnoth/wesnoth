@@ -23,7 +23,7 @@
 #include "config.hpp"
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
-#include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
 
 namespace wfl { class variant; }
 
@@ -198,7 +198,7 @@ private:
 	unsigned h_;
 
 	/** The texture onto which items are drawn. */
-	SDL_Texture* texture_;
+	texture texture_;
 
 	/** A pointer to the window renderer. */
 	SDL_Renderer* renderer_;

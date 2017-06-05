@@ -1171,15 +1171,13 @@ void image_shape::draw(
 	 * To work around that, we create a texture from the surface and copy it to the renderer. This cleanly
 	 * copies the surface to the canvas texture with the appropriate alpha blending.
 	 */
-	SDL_Texture* txt = SDL_CreateTextureFromSurface(renderer, surf);
+	texture txt(surf);
 
 	if(vertical_mirror_(local_variables)) {
 		SDL_RenderCopyEx(renderer, txt, nullptr, &dst_clip, 0, nullptr, SDL_FLIP_VERTICAL);
 	} else {
  		SDL_RenderCopy(renderer, txt, nullptr, &dst_clip);
 	}
-
-	SDL_DestroyTexture(txt);
 }
 
 image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_mode)
@@ -1369,10 +1367,9 @@ void text_shape::draw(
 	 * To work around that, we create a texture from the surface and copy it to the renderer. This cleanly
 	 * copies the surface to the canvas texture with the appropriate alpha blending.
 	 */
-	SDL_Texture* txt = SDL_CreateTextureFromSurface(renderer, surf);
- 	SDL_RenderCopy(renderer, txt, nullptr, &dst);
+	texture txt(surf);
 
- 	SDL_DestroyTexture(txt);
+	SDL_RenderCopy(renderer, txt, nullptr, &dst);
 }
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
@@ -1383,7 +1380,7 @@ canvas::canvas()
 	, w_(0)
 	, h_(0)
 	, texture_(nullptr)
-	, renderer_(*CVideo::get_singleton().get_window())
+	, renderer_(CVideo::get_singleton().get_renderer())
 	, variables_()
 	, functions_()
 	, is_dirty_(true)
@@ -1395,7 +1392,7 @@ canvas::canvas(canvas&& c)
 	, blur_depth_(c.blur_depth_)
 	, w_(c.w_)
 	, h_(c.h_)
-	, canvas_(std::move(c.canvas_))
+	, texture_(std::move(c.texture_))
 	, renderer_(c.renderer_)
 	, variables_(c.variables_)
 	, functions_(c.functions_)
@@ -1408,7 +1405,6 @@ canvas::canvas(canvas&& c)
 canvas::~canvas()
 {
 	SDL_SetRenderTarget(renderer_, nullptr);
-	SDL_DestroyTexture(texture_);
 }
 
 void canvas::draw(const bool force)
@@ -1437,20 +1433,13 @@ void canvas::draw(const bool force)
 	}
 #endif
 
-	// Recreate the texture.
-	if(texture_) {
-		SDL_DestroyTexture(texture_);
-	}
-
-	texture_ = SDL_CreateTexture(renderer_, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_TARGET, w_, h_);
+	// Recreate the texture. Will print an error if creation fails.
+	texture_.reset(w_, h_, SDL_TEXTUREACCESS_TARGET);
 	if(!texture_) {
-		ERR_GUI_D << "Error when creating canvas texture: " << SDL_GetError() << std::endl;
 		return;
 	}
 
-	SDL_SetTextureBlendMode(texture_, SDL_BLENDMODE_BLEND);
-
-	SDL_SetRenderTarget(renderer_, texture_);
+	render_target_setter target_setter(texture_);
 
 	// Draw items.
 	for(auto& shape : shapes_) {
@@ -1459,7 +1448,6 @@ void canvas::draw(const bool force)
 		shape->draw(w_, h_, renderer_, variables_);
 	}
 
-	SDL_SetRenderTarget(renderer_, nullptr);
 	// TODO: re-enable
 #if 0
 	// The shapes have been drawn and the draw result has been cached. Clear the list.

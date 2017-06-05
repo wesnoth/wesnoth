@@ -554,7 +554,7 @@ void sdl_event_handler::draw()
 	}
 
 	// Finally, render the screen.
-	video.flip();
+	video.render_screen();
 }
 
 void sdl_event_handler::draw_everything()

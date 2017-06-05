@@ -20,6 +20,7 @@
 #include "log.hpp"
 #include "preferences/general.hpp"
 #include "sdl/point.hpp"
+#include "sdl/texture.hpp"
 #include "sdl/userevent.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/window.hpp"
@@ -330,7 +331,7 @@ void CVideo::delay(unsigned int milliseconds)
 	}
 }
 
-void CVideo::flip()
+void CVideo::render_screen()
 {
 	if(fake_screen_ || flip_locked_ > 0) {
 		return;
@@ -338,6 +339,13 @@ void CVideo::flip()
 
 	if(window) {
 		window->render();
+	}
+}
+
+void CVideo::copy_to_screen(texture& txt, SDL_Rect* src_rect, SDL_Rect* dst_rect)
+{
+	if(window) {
+		SDL_RenderCopy(*window, txt, src_rect, dst_rect);;
 	}
 }
 
@@ -379,6 +387,15 @@ void CVideo::clear_screen()
 sdl::window* CVideo::get_window()
 {
 	return window.get();
+}
+
+SDL_Renderer* CVideo::get_renderer()
+{
+	if(!window) {
+		return nullptr;
+	}
+
+	return *window;
 }
 
 bool CVideo::window_has_flags(uint32_t flags) const

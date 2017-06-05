@@ -230,7 +230,7 @@ void show_help(const section &toplevel_sec,
 					return;
 				}
 			}
-			video.flip();
+			video.render_screen();
 			CVideo::delay(10);
 		}
 	}
