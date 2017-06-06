@@ -516,15 +516,23 @@ unsigned scrollbar_container::get_state() const
 widget* scrollbar_container::find_at(const point& coordinate,
 									   const bool must_be_active)
 {
-	return scrollbar_container_implementation::find_at<widget>(
+	widget* w = scrollbar_container_implementation::find_at<widget>(
 			*this, coordinate, must_be_active);
+	if(w == nullptr) {
+		w = widget::find_at(coordinate, must_be_active);
+	}
+	return w;
 }
 
 const widget* scrollbar_container::find_at(const point& coordinate,
 											 const bool must_be_active) const
 {
-	return scrollbar_container_implementation::find_at<const widget>(
+	const widget* w = scrollbar_container_implementation::find_at<const widget>(
 			*this, coordinate, must_be_active);
+	if(w == nullptr) {
+		w = widget::find_at(coordinate, must_be_active);
+	}
+	return w;
 }
 
 widget* scrollbar_container::find(const std::string& id,

@@ -306,12 +306,12 @@ build_event_chain(const ui_event event, widget* dispatcher, widget* w)
 	std::vector<std::pair<widget*, ui_event>> result;
 
 	while(w != dispatcher) {
-		w = w->parent();
-		assert(w);
-
 		if(w->has_event(event, dispatcher::event_queue_type(dispatcher::pre | dispatcher::post))) {
 			result.emplace_back(w, event);
 		}
+
+		w = w->parent();
+		assert(w);
 	}
 
 	return result;
