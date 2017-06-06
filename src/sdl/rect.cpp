@@ -56,7 +56,7 @@ SDL_Rect union_rects(const SDL_Rect& rect1, const SDL_Rect& rect2)
 
 void draw_rectangle(const SDL_Rect& rect, const color_t& color)
 {
-	SDL_Renderer* renderer = *CVideo::get_singleton().get_window();
+	SDL_Renderer* renderer = CVideo::get_singleton().get_renderer();
 
 	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
 	SDL_RenderDrawRect(renderer, &rect);
@@ -64,7 +64,7 @@ void draw_rectangle(const SDL_Rect& rect, const color_t& color)
 
 void fill_rectangle(const SDL_Rect& rect, const color_t& color)
 {
-	SDL_Renderer* renderer = *CVideo::get_singleton().get_window();
+	SDL_Renderer* renderer = CVideo::get_singleton().get_renderer();
 
 	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
 	SDL_RenderFillRect(renderer, &rect);
