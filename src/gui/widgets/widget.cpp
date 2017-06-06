@@ -372,7 +372,7 @@ class viewport_and_clip_rect_setter
 {
 public:
 	viewport_and_clip_rect_setter(const widget& widget, int x_offset, int y_offset)
-		: renderer_(*CVideo::get_singleton().get_window())
+		: renderer_(CVideo::get_singleton().get_renderer())
 	{
 		// Set viewport.
 		const SDL_Rect dst_rect = widget.calculate_blitting_rectangle(x_offset, y_offset);
