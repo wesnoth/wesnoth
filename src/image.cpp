@@ -31,6 +31,7 @@
 #include "preferences/general.hpp"
 #include "serialization/string_utils.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/texture.hpp"
 #include "utils/general.hpp"
 
 #ifdef HAVE_LIBPNG
@@ -163,6 +164,8 @@ image::locator::locator_finder_t locator_finder;
 /** Definition of all image maps */
 image::image_cache images_, scaled_to_zoom_, hexed_images_, scaled_to_hex_images_, tod_colored_images_,
 		brightened_images_;
+
+image::texture_cache textures_;
 
 // cache storing if each image fit in a hex
 image::bool_cache in_hex_info_;
@@ -1105,6 +1108,51 @@ surface get_image(const image::locator& i_locator, TYPE type)
 #pragma omp critical(image_cache)
 #endif //_OPENMP
 	i_locator.add_to_cache(*imap, res);
+
+	// Add the raw image to the texture cache.
+	if(type == UNSCALED && res != nullptr) {
+#ifdef _OPENMP
+#pragma omp critical(texture_cache)
+#endif //_OPENMP
+		i_locator.add_to_cache(textures_, texture(res));
+	}
+
+	return res;
+}
+
+texture get_texture(const image::locator& i_locator)
+{
+	// Returned the cached texture if applicable. If the image is already cached, the corresponding
+	// unscaled/unmodified surface has already been loaded from disk.
+	texture res;
+
+	if(i_locator.is_void()) {
+		return res;
+	}
+
+	bool in_cache;
+
+#ifdef _OPENMP
+#pragma omp critical(texture_cache)
+#endif //_OPENMP
+	in_cache = i_locator.in_cache(textures_);
+
+	if(in_cache) {
+#ifdef _OPENMP
+#pragma omp critical(texture_cache)
+#endif //_OPENMP
+		res = i_locator.locate_in_cache(textures_);
+		return res;
+	}
+
+	// Else, no texture was cached. Fetch the surface from disk, which adds the corresponding texture
+	// to the texture cache. We ignore the returned surface and fetch the cached surface to avoid
+	// creating a new texture in memory for the same surface twice.
+	get_image(i_locator);
+#ifdef _OPENMP
+#pragma omp critical(texture_cache)
+#endif //_OPENMP
+	res = i_locator.locate_in_cache(textures_);
 
 	return res;
 }
