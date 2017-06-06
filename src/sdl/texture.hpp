@@ -15,6 +15,8 @@
 
 #include <SDL_render.h>
 
+#include <memory>
+
 class surface;
 
 /**
@@ -27,6 +29,8 @@ public:
 	/** Default ctor. Texture will be a nullptr. */
 	texture();
 
+	texture(const texture&) = default;
+
 	/** Assigns the given texture to this one. */
 	explicit texture(SDL_Texture* txt);
 
@@ -35,8 +39,6 @@ public:
 
 	/** Construct a texture of the specified size and access type. */
 	texture(int w, int h, SDL_TextureAccess access);
-
-	~texture();
 
 	/** Small wrapper that queries metadata about the provided texture. */
 	struct info
@@ -58,14 +60,14 @@ public:
 	/** Destroys the managed texture and creates a new one. */
 	void reset(int w, int h, SDL_TextureAccess access);
 
-#if 0
+	texture& operator=(const texture& t) = default;
+
 	/** Move assignment. Frees the managed texture from the passed object. */
-	texture& operator=(texture&& t);
-#endif
+	texture& operator=(texture&& t) = default;
 
 	operator SDL_Texture*() const
 	{
-		return texture_;
+		return texture_.get();
 	}
 
 	bool null() const
@@ -78,5 +80,5 @@ private:
 
 	void destroy_texture();
 
-	SDL_Texture* texture_;
+	std::shared_ptr<SDL_Texture> texture_;
 };

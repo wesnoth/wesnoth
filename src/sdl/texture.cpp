@@ -20,16 +20,31 @@
 static lg::log_domain log_sdl("SDL");
 #define ERR_SDL LOG_STREAM(err, log_sdl)
 
+namespace
+{
 // The default pixel format to create textures with.
-static int default_texture_format = SDL_PIXELFORMAT_ARGB8888;
+int default_texture_format = SDL_PIXELFORMAT_ARGB8888;
+
+/**
+ * Constructs a new shared_ptr around the provided texture with the appropriate deleter.
+ * Should only be passed the result of texture creation functions or the texture might
+ * get destroys too early.
+ */
+std::shared_ptr<SDL_Texture> make_texture_ptr(SDL_Texture* tex)
+{
+	return std::shared_ptr<SDL_Texture>(tex, &SDL_DestroyTexture);
+}
+
+} // end anon namespace
 
 texture::texture()
 	: texture_(nullptr)
 {
 }
 
+// TODO: should we have this? See possible issues noted above.
 texture::texture(SDL_Texture* txt)
-	: texture_(txt)
+	: texture_(make_texture_ptr(txt))
 {
 	finalize();
 }
@@ -42,7 +57,7 @@ texture::texture(const surface& surf)
 		return;
 	}
 
-	texture_ = SDL_CreateTextureFromSurface(renderer, surf);
+	texture_ = make_texture_ptr(SDL_CreateTextureFromSurface(renderer, surf));
 	if(!texture_) {
 		ERR_SDL << "When creating texture from surface: " << SDL_GetError() << std::endl;
 	}
@@ -54,14 +69,9 @@ texture::texture(int w, int h, SDL_TextureAccess access)
 	reset(w, h, access);
 }
 
-texture::~texture()
-{
-	destroy_texture();
-}
-
 void texture::finalize()
 {
-	SDL_SetTextureBlendMode(texture_, SDL_BLENDMODE_BLEND);
+	SDL_SetTextureBlendMode(texture_.get(), SDL_BLENDMODE_BLEND);
 }
 
 void texture::reset(int w, int h, SDL_TextureAccess access)
@@ -74,7 +84,7 @@ void texture::reset(int w, int h, SDL_TextureAccess access)
 		return;
 	}
 
-	texture_ = SDL_CreateTexture(renderer, default_texture_format, access, w, h);
+	texture_ = make_texture_ptr(SDL_CreateTexture(renderer, default_texture_format, access, w, h));
 	if(!texture_) {
 		ERR_SDL << "When creating texture: " << SDL_GetError() << std::endl;
 	}
@@ -85,21 +95,9 @@ void texture::reset(int w, int h, SDL_TextureAccess access)
 void texture::destroy_texture()
 {
 	if(texture_) {
-		SDL_DestroyTexture(texture_);
+		texture_.reset();
 	}
 }
-
-#if 0
-texture& texture::operator=(texture&& t)
-{
-	destroy_texture();
-
-	texture_ = t.texture_;
-	t.texture_ = nullptr;
-
-	return *this;
-}
-#endif
 
 texture::info::info(const texture& t)
 	: format(0)
