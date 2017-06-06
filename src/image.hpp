@@ -22,6 +22,7 @@
 #include <unordered_map>
 
 class surface;
+class texture;
 
 ///this module manages the cache of images. With an image name, you can get
 ///the surface corresponding to that image.
@@ -123,8 +124,8 @@ namespace image {
 
 	surface load_from_disk(const locator &loc);
 
-
 	typedef cache_type<surface> image_cache;
+	typedef cache_type<texture> texture_cache;
 	typedef cache_type<bool> bool_cache;
 
 	typedef std::map<t_translation::terrain_code, surface> mini_terrain_cache_map;
@@ -190,6 +191,8 @@ namespace image {
 
 	///function to get the surface corresponding to an image.
 	surface get_image(const locator& i_locator, TYPE type=UNSCALED);
+
+	texture get_texture(const image::locator& i_locator);
 
 	///function to get the surface corresponding to an image.
 	///after applying the lightmap encoded in ls
