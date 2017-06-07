@@ -149,6 +149,7 @@ static std::string get_title_suffix(int side_num)
 bool unit_recall::unit_recall_default_compare(const unit_const_ptr first, const unit_const_ptr second)
 {
 	if (first->level() > second->level()) return true;
+	if (first->level() < second->level()) return false;
 	if (first->experience_to_advance() < second->experience_to_advance()) return true;
 	return false;
 }
@@ -248,7 +249,7 @@ void unit_recall::pre_show(window& window)
 
 	list.register_sorting_option(0, [this](const int i) { return recall_list_[i]->type_name().str(); });
 	list.register_sorting_option(1, [this](const int i) { return recall_list_[i]->name().str(); });
-	list.register_sorting_option(2, [this](const int i) { return recall_list_[i]->level(); });
+    list.register_sorting_option(2, [this](const int i) { return recall_list_[i]->level()*1000 - recall_list_[i]->experience_to_advance(); });
 	list.register_sorting_option(3, [this](const int i) { return recall_list_[i]->experience(); });
 	list.register_sorting_option(4, [this](const int i) {
 		return !recall_list_[i]->trait_names().empty() ? recall_list_[i]->trait_names().front().str() : "";
