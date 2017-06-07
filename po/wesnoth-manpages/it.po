@@ -4,12 +4,12 @@
 #
 # Automatically generated, 2006.
 # Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009, 2011.
-# Antonio 'Antro' Rosella <arosella@yahoo.com> 2012-2016
+# Antonio 'Antro' Rosella <arosella@yahoo.com> 2012-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2017-05-29 21:54+0200\n"
-"PO-Revision-Date: 2016-05-15 16:42+0000\n"
+"PO-Revision-Date: 2017-06-06 18:12+0300\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.7\n"
 
 # type: TH
 #. type: TH
@@ -155,10 +155,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:57
-#, fuzzy, no-wrap
-#| msgid "B<-c,\\ --campaign\\ [>I<id_campaign>B<]>"
+#, no-wrap
 msgid "B<-c[>I<id_campaign>B<],\\ --campaign[>I<=id_campaign>B<]>"
-msgstr "B<-c,\\ --campaign\\ [>I<id_campagna>B<]>"
+msgstr "B<-c[>I<id_campaign>B<],\\ --campaign[>I<=id_campagna>B<]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:61
@@ -171,10 +170,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:61
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-difficulty\\ [>I<difficulty>B<]>"
+#, no-wrap
 msgid "B<--campaign-difficulty[>I<=difficulty>B<]>"
-msgstr "B<--campaign-difficulty\\ [>I<difficoltà>B<]>"
+msgstr "B<--campaign-difficulty[>I<=difficoltà>B<]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:65
@@ -393,10 +391,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:129
-#, fuzzy, no-wrap
-#| msgid "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
+#, no-wrap
 msgid "B<--log-level=>I<domain1>B<,>I<domain2>B<,>I<...>"
-msgstr "B<--log->I<livello>B<=>I<dominio1>B<,>I<dominio2>B<,>I<...>"
+msgstr "B<--log-level=>I<dominio1>B<,>I<dominio2>B<,>I<...>"
 
 # type: Plain text
 #. type: Plain text
@@ -444,10 +441,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:147
-#, fuzzy, no-wrap
-#| msgid "B<--logdomains\\ [>I<filter>B<]>"
+#, no-wrap
 msgid "B<--logdomains[>I<=filter>B<]>"
-msgstr "B<--logdomains\\ [>I<filtro>B<]>"
+msgstr "B<--logdomains[>I<=filtro>B<]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:152
@@ -691,10 +687,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:216
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess-output-macros\\ [>I<target-file>B<]>"
+#, no-wrap
 msgid "B<--preprocess-output-macros[>I<=target-file>B<]>"
-msgstr "B<--preprocess-output-macros\\ [>I<file destinazione>B<]>"
+msgstr "B<--preprocess-output-macros[>I<=file-destinazione>B<]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:224
@@ -742,10 +737,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:231
-#, fuzzy, no-wrap
-#| msgid "B<port>"
+#, no-wrap
 msgid "B<-R,\\ --report>"
-msgstr "B<port>"
+msgstr "B<-R,\\ --report>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:234
@@ -753,6 +747,8 @@ msgid ""
 "initializes game directories, prints build information suitable for use in "
 "bug reports, and exits."
 msgstr ""
+"inizializza le cartelle di gioco, stampa le informazioni di compilazione "
+"utilizzate per i report dei bugs, indi esce."
 
 # type: TP
 #. type: TP
@@ -788,10 +784,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:242
-#, fuzzy, no-wrap
-#| msgid "B<-s,\\ --server\\ [>I<host>B<]>"
+#, no-wrap
 msgid "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
-msgstr "B<-s,\\ --server\\ [>I<host>B<]>"
+msgstr "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
 
 # type: Plain text
 #. type: Plain text
@@ -830,10 +825,9 @@ msgstr "errori di validazione sono trattati come errori fatali."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:253
-#, fuzzy, no-wrap
-#| msgid "B<-t,\\ --test\\ [>I<scenario_id>B<]>"
+#, no-wrap
 msgid "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
-msgstr "B<-t,\\ --test\\ [>I<id_scenario>B<]>"
+msgstr "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:259
@@ -841,7 +835,7 @@ msgid ""
 "runs the game in a small test scenario. The scenario should be one defined "
 "with a B<[test]> WML tag. The default is \"test\". Implies B<--nogui.>"
 msgstr ""
-"esegue il gioco in un picoclo scenario di test. Lo scenario dovrebbe essere "
+"esegue il gioco in un piccolo scenario di test. Lo scenario dovrebbe essere "
 "uno di quelli definiti con un tag WML B<[test]>. Lo scenario predefinito è "
 "\"test\". Implica B<--nogui.>"
 
@@ -937,7 +931,7 @@ msgid ""
 "uses E<lt>usernameE<gt> when connecting to a server, ignoring other "
 "preferences."
 msgstr ""
-"utlizza E<lt>usernameE<gt> per la connessione ad un server, ignorando le "
+"utilizza E<lt>usernameE<gt> per la connessione ad un server, ignorando le "
 "altre scelte."
 
 # type: TP
@@ -1143,7 +1137,7 @@ msgid ""
 "scriptable benchmarking."
 msgstr ""
 "ripete una partita multiplayer I<valore> volte. Preferibilmente da "
-"utilizzare insime a B<--nogui> per eseguire benchmark con script."
+"utilizzare insieme a B<--nogui> per eseguire benchmark con script."
 
 # type: TP
 #. type: TP
@@ -1803,7 +1797,7 @@ msgid ""
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
 "Il comando che il server utilizza per lanciare un muovo processo server "
-"cramite il comando B<restart>. Può essere inviato soltanto tramite la fifo. "
+"tramite il comando B<restart>. Può essere inviato soltanto tramite la fifo. "
 "Per dettagli, vedi i setaggi di B<allow_remote_shutdown>."
 
 # type: TP
@@ -1947,7 +1941,7 @@ msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
 msgstr ""
-"Una lista separata da virgole delle versioni daredirigere. Si comporta come "
+"Una lista separata da virgole delle versioni da redirigere. Si comporta come "
 "B<versions_accepted> per quello che riguarda lo schema dei caratteri jolly."
 
 # type: Plain text
@@ -1995,7 +1989,7 @@ msgstr ""
 "M (mesi) o Y (anni) e %d è un numero. Se non vengono specificati "
 "modificatori ri tempo, il valore si assume essere espresso in minuti (m). Ad "
 "esempio: B<time=\"1D12h30m\"> ha come risultato un periodo di messa al bando "
-"di 1 giorno, 12 ore e 30 minutei."
+"di 1 giorno, 12 ore e 30 minuti."
 
 # type: Plain text
 #. type: Plain text
