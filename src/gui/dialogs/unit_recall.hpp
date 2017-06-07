@@ -61,6 +61,9 @@ private:
 	void dismiss_unit(window& window);
 	void show_help(window& window);
 
+	/** Function to sort recall_list_ by default. */
+	bool unit_recall_default_compare(const unit &first, const unit &second);
+
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
