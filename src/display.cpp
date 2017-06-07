@@ -1769,11 +1769,8 @@ void display::draw_minimap()
 		}
 	}
 
-	const surface& screen(screen_.getSurface());
-	clip_rect_setter clip_setter(screen, &area);
-
 	color_t back_color {31,31,23,SDL_ALPHA_OPAQUE};
-	draw_centered_on_background(minimap_, area, back_color, screen);
+	draw_centered_on_background(minimap_, area, back_color);
 
 	//update the minimap location for mouse and units functions
 	minimap_location_.x = area.x + (area.w - minimap_->w) / 2;
