@@ -337,7 +337,7 @@ SDL_Rect get_non_transparent_portion(const surface &surf);
 void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, uint32_t pixel);
 uint32_t get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x, int y);
 
-// blit the image on the center of the rectangle
-// and a add a colored background
-void draw_centered_on_background(surface surf, const SDL_Rect& rect,
-	const color_t& color, surface target);
+/**
+ * Fills the provided rect with the provided color and draws the given image in the center.
+ */
+void draw_centered_on_background(surface surf, const SDL_Rect& rect, const color_t& color);
