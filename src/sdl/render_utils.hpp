@@ -13,6 +13,7 @@
 
 #pragma once
 
+#include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 #include "video.hpp"
 
@@ -78,7 +79,11 @@ public:
 	~render_raii_rect_setter_base()
 	{
 		if(renderer_ && operate_) {
-			(*S)(renderer_, &last_rect_);
+			if(last_rect_ != sdl::empty_rect) {
+				(*S)(renderer_, &last_rect_);
+			} else {
+				(*S)(renderer_, nullptr);
+			}
 		}
 	}
 
