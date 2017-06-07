@@ -19,6 +19,7 @@
 
 #include "sdl/utils.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/render_utils.hpp"
 #include "color.hpp"
 #include "xBRZ/xbrz.hpp"
 
@@ -2383,19 +2384,22 @@ SDL_Rect get_non_transparent_portion(const surface &surf)
 	return res;
 }
 
-void draw_centered_on_background(surface surf, const SDL_Rect& rect, const color_t& color, surface target)
+void draw_centered_on_background(surface surf, const SDL_Rect& rect, const color_t& color)
 {
-	clip_rect_setter clip_setter(target, &rect);
-
-	uint32_t col = SDL_MapRGBA(target->format, color.r, color.g, color.b, color.a);
-	//TODO: only draw background outside the image
 	SDL_Rect r = rect;
-	sdl::fill_surface_rect(target, &r, col);
 
-	if (surf != nullptr) {
-		r.x = rect.x + (rect.w-surf->w)/2;
-		r.y = rect.y + (rect.h-surf->h)/2;
-		sdl_blit(surf, nullptr, target, &r);
+	render_clip_rect_setter clip_setter(&r);
+
+	sdl::fill_rectangle(r, color);
+
+	if(surf != nullptr) {
+		r.x = rect.x + (rect.w - surf->w) / 2;
+		r.y = rect.y + (rect.h - surf->h) / 2;
+		r.w = surf->w;
+		r.h = surf->h;
+
+		texture tex(surf);
+		CVideo::get_singleton().copy_to_screen(tex, nullptr, &r);
 	}
 }
 
