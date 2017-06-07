@@ -94,12 +94,13 @@ static void add_widget(gui2::grid& grid
 static std::string set_event_order()
 {
 	return
-			"pre:root\n"
-			"pre:level 1\n"
-			"child:level 2\n"
-			"post:level 1\n"
-			"post:root\n";
-
+		"pre:root\n"
+		"pre:level 1\n"
+		"pre:level 2\n"
+		"child:level 2\n"
+		"post:level 2\n"
+		"post:level 1\n"
+		"post:root\n";
 }
 
 /** @todo Add the rest of the events. */
