@@ -146,11 +146,10 @@ static std::string get_title_suffix(int side_num)
 	return msg.str();
 }
 
-void unit_recall:unit_recall_default_compare(unit &first, unit &second) {
-	if ( first.level() > second.level() ) return true;
-	if ( first.experience_to_advance() > second.experience_to_advance() ) return true;
-	if ( first.experience() > second.experience() ) return true;
-	if ( first.max_hitpoints() > second.max_hitpoints() ) return true;
+bool unit_recall::unit_recall_default_compare(const unit_const_ptr first, const unit_const_ptr second)
+{
+	if (first->level() > second->level()) return true;
+	if (first->experience_to_advance() < second->experience_to_advance()) return true;
 	return false;
 }
 
