@@ -1113,8 +1113,7 @@ void image_shape::draw(
 			DBG_GUI_D << "Image: vertical stretch from " << image_->w << ','
 					  << image_->h << " to a height of " << h << ".\n";
 
-			// TODO: convert to texture handling.
-			surf = stretch_surface_vertical(image_, h);
+			// Textures are automatically scaled to size.
 			w = image_->w;
 		}
 		else if(h == 0 && resize_mode_ == stretch) {
@@ -1122,8 +1121,7 @@ void image_shape::draw(
 					  << ',' << image_->h << " to a width of " << w
 					  << ".\n";
 
-			// TODO: convert to texture handling.
-			surf = stretch_surface_horizontal(image_, w);
+			// Textures are automatically scaled to size.
 			h = image_->h;
 		}
 		else {
