@@ -1718,6 +1718,68 @@ void conditional_levelup(std::vector<double>& hp_dist, double kill_prob)
 	hp_dist.back() += kill_prob;
 }
 
+/* Calculates the probability that we will be poisoned or slowed after the fight. Parameters:
+ * initial_prob: how likely we are to be poisoned or slowed before the fight.
+ * enemy_gives: true if the enemy poisons/slows us.
+ * prob_touched: probability the enemy touches us.
+ * prob_stay_alive: probability we survive the fight alive.
+ * kill_heals: true if killing the enemy heals the poison/slow (in other words, we get a level-up).
+ * prob_kill: probability we kill the enemy.
+ */
+double calculate_probability_of_debuff(double initial_prob, bool enemy_gives, double prob_touched, double prob_stay_alive, bool kill_heals, double prob_kill)
+{
+	assert(initial_prob >= 0.0 && initial_prob <= 1.0);
+	assert(prob_touched >= 0.0 && prob_touched <= 1.0);
+	assert(prob_stay_alive >= 0.0 && prob_stay_alive <= 1.0);
+	assert(prob_kill >= 0.0 && prob_kill <= 1.0);
+
+	// Probability we are already debuffed and the enemy doesn't hit us.
+	const double prob_already_debuffed_not_touched = initial_prob * (1.0 - prob_touched);
+	// Probability we are already debuffed and the enemy hits us.
+	const double prob_already_debuffed_touched = initial_prob * prob_touched;
+	// Probability we aren't debuffed and the enemy doesn't hit us.
+	const double prob_initially_healthy_not_touched = (1.0 - initial_prob) * (1.0 - prob_touched);
+	// Probability we aren't debuffed and the enemy hits us.
+	const double prob_initially_healthy_touched = (1.0 - initial_prob) * prob_touched;
+
+	// Probability to survive if the enemy doesn't hit us.
+	const double prob_survive_if_not_hit = 1.0;
+	// Probability to survive if the enemy hits us.
+	const double prob_survive_if_hit = prob_touched > 0.0 ? (prob_stay_alive - (1.0 - prob_touched)) / prob_touched : 1.0;
+
+	// Probability to kill if we don't survive the fight.
+	const double prob_kill_if_not_survive = 0.0;
+	// Probability to kill if we survive the fight.
+	const double prob_kill_if_survive = prob_stay_alive > 0.0 ? prob_kill / prob_stay_alive : 0.0;
+
+	// Probability to be debuffed after the fight, calculated in multiple stages.
+	double prob_debuff = 0.0;
+
+	if(!kill_heals) {
+		prob_debuff += prob_already_debuffed_not_touched;
+	} else {
+		prob_debuff += prob_already_debuffed_not_touched * (1.0 - prob_survive_if_not_hit * prob_kill_if_survive);
+	}
+
+	if(!kill_heals) {
+		prob_debuff += prob_already_debuffed_touched;
+	} else {
+		prob_debuff += prob_already_debuffed_touched * (1.0 - prob_survive_if_hit * prob_kill_if_survive);
+	}
+
+	// "Originally not debuffed, not hit" situation never results in us getting debuffed. Skipping.
+
+	if(!enemy_gives) {
+		// Do nothing.
+	} else if(!kill_heals) {
+		prob_debuff += prob_initially_healthy_touched;
+	} else {
+		prob_debuff += prob_initially_healthy_touched * (1.0 - prob_survive_if_hit * prob_kill_if_survive);
+	}
+
+	return prob_debuff;
+}
+
 /**
  * Returns the smallest HP we could possibly have based on the provided
  * hit point distribution.
@@ -2170,12 +2232,12 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 		// A very complex fight. Use Monte Carlo simulation instead of exact
 		// probability calculations.
 		complex_fight(attack_prediction_mode::monte_carlo_simulation, u_, opponent.u_, u_.num_blows,
-				opponent.u_.num_blows, summary, opponent.summary, self_not_hit, opp_not_hit, levelup_considered, split,
-				opp_split, slowed, opponent.slowed);
+		              opponent.u_.num_blows, summary, opponent.summary, self_not_hit, opp_not_hit, levelup_considered, split,
+		              opp_split, slowed, opponent.slowed);
 	} else if(split.size() == 1 && opp_split.size() == 1) {
 		// No special treatment due to swarm is needed. Ignore the split.
 		do_fight(u_, opponent.u_, u_.num_blows, opponent.u_.num_blows, summary, opponent.summary, self_not_hit,
-				opp_not_hit, levelup_considered);
+		         opp_not_hit, levelup_considered);
 	} else {
 		// Storage for the accumulated hit point distributions.
 		summary_t summary_result, opp_summary_result;
@@ -2193,9 +2255,9 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 				init_slice_summary(sit_summary[0], summary[0], split[s].begin_hp, split[s].end_hp, split[s].prob);
 				init_slice_summary(sit_summary[1], summary[1], split[s].begin_hp, split[s].end_hp, split[s].prob);
 				init_slice_summary(sit_opp_summary[0], opponent.summary[0], opp_split[t].begin_hp, opp_split[t].end_hp,
-						opp_split[t].prob);
+					opp_split[t].prob);
 				init_slice_summary(sit_opp_summary[1], opponent.summary[1], opp_split[t].begin_hp, opp_split[t].end_hp,
-						opp_split[t].prob);
+					opp_split[t].prob);
 
 				// Scale the "not hit" chance for this situation by the chance that
 				// this situation applies.
@@ -2203,7 +2265,7 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 				double sit_opp_not_hit = sit_prob;
 
 				do_fight(u_, opponent.u_, split[s].strikes, opp_split[t].strikes, sit_summary, sit_opp_summary,
-						sit_self_not_hit, sit_opp_not_hit, levelup_considered);
+				         sit_self_not_hit, sit_opp_not_hit, levelup_considered);
 
 				// Collect the results.
 				self_not_hit += sit_self_not_hit;
@@ -2225,14 +2287,14 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 #if 0
 	assert(summary[0].size() == res.size());
 	assert(opponent.summary[0].size() == opp_res.size());
-	for (unsigned int i = 0; i < summary[0].size(); ++i) {
-		if (std::fabs(summary[0][i] - res[i]) > 0.000001) {
+	for(unsigned int i = 0; i < summary[0].size(); ++i) {
+		if(std::fabs(summary[0][i] - res[i]) > 0.000001) {
 			std::cerr << "Mismatch for " << i << " hp: " << summary[0][i] << " should have been " << res[i] << "\n";
 			assert(0);
 		}
 	}
-	for (unsigned int i = 0; i < opponent.summary[0].size(); ++i) {
-		if (std::fabs(opponent.summary[0][i] - opp_res[i])> 0.000001) {
+	for(unsigned int i = 0; i < opponent.summary[0].size(); ++i) {
+		if(std::fabs(opponent.summary[0][i] - opp_res[i]) > 0.000001) {
 			std::cerr << "Mismatch for " << i << " hp: " << opponent.summary[0][i] << " should have been " << opp_res[i] << "\n";
 			assert(0);
 		}
@@ -2261,22 +2323,17 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	// Chance that we / they were touched this time.
 	double touched = 1.0 - self_not_hit;
 	double opp_touched = 1.0 - opp_not_hit;
-	if(opponent.u_.poisons) {
-		poisoned += (1 - poisoned) * touched;
-	}
 
-	if(u_.poisons) {
-		opponent.poisoned += (1 - opponent.poisoned) * opp_touched;
-	}
+	poisoned = calculate_probability_of_debuff(poisoned, opponent.u_.poisons, touched, 1.0 - hp_dist[0],
+		u_.experience + game_config::kill_xp(opponent.u_.level) >= u_.max_experience, opponent.hp_dist[0]);
+	opponent.poisoned = calculate_probability_of_debuff(opponent.poisoned, u_.poisons, opp_touched, 1.0 - opponent.hp_dist[0],
+		opponent.u_.experience + game_config::kill_xp(u_.level) >= opponent.u_.max_experience, hp_dist[0]);
 
 	if(!use_monte_carlo_simulation) {
-		if(opponent.u_.slows) {
-			slowed += (1 - slowed) * touched;
-		}
-
-		if(u_.slows) {
-			opponent.slowed += (1 - opponent.slowed) * opp_touched;
-		}
+		slowed = calculate_probability_of_debuff(slowed, opponent.u_.slows, touched, 1.0 - hp_dist[0],
+			u_.experience + game_config::kill_xp(opponent.u_.level) >= u_.max_experience, opponent.hp_dist[0]);
+		opponent.slowed = calculate_probability_of_debuff(opponent.slowed, u_.slows, opp_touched, 1.0 - opponent.hp_dist[0],
+			opponent.u_.experience + game_config::kill_xp(u_.level) >= opponent.u_.max_experience, hp_dist[0]);
 	} else {
 		/* The slowed probability depends on in how many rounds
 		 * the combatant happened to be slowed.
@@ -2284,6 +2341,16 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 		 */
 		slowed = std::accumulate(summary[1].begin(), summary[1].end(), 0.0);
 		opponent.slowed = std::accumulate(opponent.summary[1].begin(), opponent.summary[1].end(), 0.0);
+	}
+
+	if(u_.experience + opponent.u_.level >= u_.max_experience) {
+		// We'll level up after the battle -> slow/poison will go away
+		poisoned = 0.0;
+		slowed = 0.0;
+	}
+	if(opponent.u_.experience + u_.level >= opponent.u_.max_experience) {
+		opponent.poisoned = 0.0;
+		opponent.slowed = 0.0;
 	}
 
 	untouched *= self_not_hit;
