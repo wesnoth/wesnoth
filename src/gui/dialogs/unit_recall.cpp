@@ -189,8 +189,6 @@ void unit_recall::pre_show(window& window)
 		find_widget<button>(&window, "show_help", false),
 		std::bind(&unit_recall::show_help, this, std::ref(window)));
 
-	std::sort(recall_list_.begin(), recall_list_.end(), unit_recall_default_compare);
-
 	for(const unit_const_ptr& unit : recall_list_) {
 		std::map<std::string, string_map> row_data;
 		string_map column;
