@@ -1738,7 +1738,7 @@ double calculate_probability_of_debuff(double initial_prob, bool enemy_gives, do
 	// Probability we are already debuffed and the enemy hits us.
 	const double prob_already_debuffed_touched = initial_prob * prob_touched;
 	// Probability we aren't debuffed and the enemy doesn't hit us.
-	const double prob_initially_healthy_not_touched = (1.0 - initial_prob) * (1.0 - prob_touched);
+	// const double prob_initially_healthy_not_touched = (1.0 - initial_prob) * (1.0 - prob_touched);
 	// Probability we aren't debuffed and the enemy hits us.
 	const double prob_initially_healthy_touched = (1.0 - initial_prob) * prob_touched;
 
@@ -1748,7 +1748,7 @@ double calculate_probability_of_debuff(double initial_prob, bool enemy_gives, do
 	const double prob_survive_if_hit = prob_touched > 0.0 ? (prob_stay_alive - (1.0 - prob_touched)) / prob_touched : 1.0;
 
 	// Probability to kill if we don't survive the fight.
-	const double prob_kill_if_not_survive = 0.0;
+	// const double prob_kill_if_not_survive = 0.0;
 	// Probability to kill if we survive the fight.
 	const double prob_kill_if_survive = prob_stay_alive > 0.0 ? prob_kill / prob_stay_alive : 0.0;
 
