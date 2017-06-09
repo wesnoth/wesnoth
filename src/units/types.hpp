@@ -36,6 +36,10 @@ class unit_animation;
 typedef std::map<std::string, movetype> movement_type_map;
 
 
+/**
+ * A single unit type that the player may recruit.
+ * Individual units are defined by the unit class.
+ */
 class unit_type
 {
 public:
