@@ -69,9 +69,9 @@ public:
 
 	/**
 	 * Validate the id argument.
-	 * Replaces invalid characters with underscores.
-	 * @param id the proposed id for a unit_type
-	 * @throw error if id starts with a space
+	 * Replaces invalid characters in the reference with underscores.
+	 * @param id The proposed id for a unit_type.
+	 * @throw error if id starts with a space.
 	 */
 	static void check_id(std::string& id);
 
@@ -105,8 +105,8 @@ public:
 	void add_advancement(const unit_type &advance_to,int experience);
 
 	/** Get the advancement tree
-	 *  @return a set of ids of all unit_type objects that this unit_type can
-	 *  advance to
+	 *  @return A set of ids of all unit_type objects that this unit_type can
+	 *  directly or indirectly advance to.
 	 */
 	std::set<std::string> advancement_tree() const;
 
