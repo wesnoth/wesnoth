@@ -66,7 +66,15 @@ public:
 	/// These are in order of increasing levels of being built.
 	/// HELP_INDEX is already defined in a windows header under some conditions.
 	enum BUILD_STATUS {NOT_BUILT, CREATED, VARIATIONS, HELP_INDEXED, FULL};
+
+	/**
+	 * Validate the id argument.
+	 * Replaces invalid characters with underscores.
+	 * @param id the proposed id for a unit_type
+	 * @throw error if id starts with a space
+	 */
 	static void check_id(std::string& id);
+
 private: // These will be called by build().
 	/// Load data into an empty unit_type (build to FULL).
 	void build_full(const movement_type_map &movement_types,
