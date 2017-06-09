@@ -227,6 +227,8 @@ const surface minimap::get_image(const int w, const int h) const
 
 void minimap::impl_draw_background(int x_offset, int y_offset)
 {
+	styled_widget::impl_draw_background(x_offset, y_offset);
+
 	if(!terrain_)
 		return;
 	assert(terrain_);
