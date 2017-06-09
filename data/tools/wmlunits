@@ -215,6 +215,13 @@ def list_contents():
             d3 = campaign.get_text_val("difficulties")
             if d3:
                 d += "," + d3.split(",")[0]
+            else:
+                difficulty = campaign.get_all(tag = "difficulty")
+                if difficulty:
+                    d3 = difficulty[0].get_text_val("define")
+                    if d3:
+                        d += "," + d3
+
             append(info, cid, d, c = campaign)
 
         return info
