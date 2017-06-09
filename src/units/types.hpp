@@ -105,7 +105,9 @@ public:
 	void add_advancement(const unit_type &advance_to,int experience);
 
 	/** Get the advancement tree
-	 *  Build a set of unit type's id of this unit type's advancement tree */
+	 *  @return a set of ids of all unit_type objects that this unit_type can
+	 *  advance to
+	 */
 	std::set<std::string> advancement_tree() const;
 
 	const std::vector<std::string>& advances_to() const { return advances_to_; }
