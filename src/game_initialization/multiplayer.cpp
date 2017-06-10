@@ -58,7 +58,7 @@ static wesnothd_connection_ptr open_connection(CVideo& video, const std::string&
 		dlg.show(video);
 
 		if(dlg.get_retval() != gui2::window::OK) {
-			return nullptr;
+			return wesnothd_connection_ptr();
 		}
 
 		h = preferences::network_host();
@@ -120,7 +120,7 @@ static wesnothd_connection_ptr open_connection(CVideo& video, const std::string&
 				throw wesnothd_error(_("Server-side redirect loop"));
 			}
 			shown_hosts.insert(hostpair(host, port));
-			sock.reset();
+			sock = wesnothd_connection_ptr();
 			sock = gui2::dialogs::network_transmission::wesnothd_connect_dialog(video, "redirect", host, port);
 			continue;
 		}
@@ -181,7 +181,7 @@ static wesnothd_connection_ptr open_connection(CVideo& video, const std::string&
 				warning_msg += _("Do you want to continue?");
 
 				if(gui2::show_message(video, _("Warning"), warning_msg, gui2::dialogs::message::yes_no_buttons) != gui2::window::OK) {
-					return 0;
+					return wesnothd_connection_ptr();
 				}
 			}
 
@@ -302,7 +302,7 @@ static wesnothd_connection_ptr open_connection(CVideo& video, const std::string&
 						break;
 					// Cancel
 					default:
-						return 0;
+						return wesnothd_connection_ptr();
 				}
 
 			// If we have got a new username we have to start all over again
@@ -323,7 +323,7 @@ static wesnothd_connection_ptr open_connection(CVideo& video, const std::string&
 		return sock;
 	}
 
-	return nullptr;
+	return wesnothd_connection_ptr();
 }
 
 /** Helper struct to manage the MP workflow arguments. */

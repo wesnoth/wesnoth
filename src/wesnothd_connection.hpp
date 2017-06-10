@@ -30,10 +30,18 @@
 #include <boost/asio.hpp>
 #include <deque>
 #include <list>
+#include <mutex>
+
 #include "exceptions.hpp"
 #include "wesnothd_connection_error.hpp"
 #include "configr_assign.hpp"
+namespace boost
+{
+	class thread;
+}
+
 class config;
+class wesnothd_connection_ptr;
 
 /** A class that represents a TCP/IP connection to the wesnothd server. */
 class wesnothd_connection : public std::enable_shared_from_this<wesnothd_connection>
@@ -43,14 +51,18 @@ public:
 
 	wesnothd_connection(const wesnothd_connection&) = delete;
 	wesnothd_connection& operator=(const wesnothd_connection&) = delete;
-
+	~wesnothd_connection();
+private:
 	/**
 	 * Constructor.
 	 *
+	 * May only be called via wesnothd_connection_ptr
 	 * @param host    Name of the host to connect to
 	 * @param service Service identifier such as "80" or "http"
 	 */
 	wesnothd_connection(const std::string& host, const std::string& service);
+public:
+	static wesnothd_connection_ptr create(const std::string& host, const std::string& service);
 
 	void send_data(const configr_of& request);
 
@@ -65,6 +77,8 @@ public:
 	 */
 
 	void cancel();
+	// Destroys this object.
+	void stop();
 
 	/** True if connected and no high-level operation is in progress */
 	bool handshake_finished() const { return handshake_finished_; }
@@ -94,6 +108,7 @@ public:
 		return !send_queue_.empty();
 	}
 private:
+	std::unique_ptr<boost::thread> worker_thread_;
 	boost::asio::io_service io_service_;
 	typedef boost::asio::ip::tcp::resolver resolver;
 	resolver resolver_;
@@ -132,9 +147,9 @@ private:
 	void send();
 	void recv();
 
-	std::list<boost::asio::streambuf> send_queue_;
+	std::list<std::shared_ptr<boost::asio::streambuf>> send_queue_;
 	std::list<config> recv_queue_;
-
+	std::mutex recv_queue_mutex_;
 	uint32_t payload_size_;
 	std::size_t bytes_to_write_;
 	std::size_t bytes_written_;
@@ -143,4 +158,44 @@ private:
 
 };
 
-using wesnothd_connection_ptr = std::shared_ptr<wesnothd_connection>;
+class wesnothd_connection_ptr
+{
+private:
+	friend class wesnothd_connection;
+	wesnothd_connection_ptr(std::shared_ptr<wesnothd_connection>&& ptr)
+		: ptr_(std::move(ptr))
+	{}
+public:
+	
+	wesnothd_connection_ptr() = default;
+	
+	wesnothd_connection_ptr(const wesnothd_connection_ptr&) = delete;
+	wesnothd_connection_ptr& operator=(const wesnothd_connection_ptr&) = delete;
+
+	wesnothd_connection_ptr(wesnothd_connection_ptr&&) = default;
+	wesnothd_connection_ptr& operator=(wesnothd_connection_ptr&&);
+	
+	~wesnothd_connection_ptr();
+
+	explicit operator bool() const {
+		return !!ptr_;
+	}
+	wesnothd_connection& operator*() {
+		return *ptr_;
+	}
+	const wesnothd_connection& operator*() const {
+		return *ptr_;
+	}
+	wesnothd_connection* operator->() {
+		return ptr_.get();
+	}
+	const wesnothd_connection* operator->() const {
+		return ptr_.get();
+	}
+	wesnothd_connection* get() const {
+		return ptr_.get();
+	}
+
+private:
+	std::shared_ptr<wesnothd_connection> ptr_;
+};

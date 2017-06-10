@@ -125,7 +125,7 @@ struct read_wesnothd_connection_data : public network_transmission::connection_d
 	virtual size_t current()  override { return conn_.bytes_read(); }
 	virtual bool finished() override { return conn_.has_data_received(); }
 	virtual void cancel() override { }
-	virtual void poll() override { conn_.poll(); }
+	virtual void poll() override { }
 	wesnothd_connection& conn_;
 };
 
@@ -149,7 +149,7 @@ struct connect_wesnothd_connection_data : public network_transmission::connectio
 wesnothd_connection_ptr network_transmission::wesnothd_connect_dialog(CVideo& video, const std::string& msg, const std::string& hostname, int port)
 {
 	assert(!msg.empty());
-	wesnothd_connection_ptr res(new wesnothd_connection(hostname, std::to_string(port)));
+	wesnothd_connection_ptr res = wesnothd_connection::create(hostname, std::to_string(port));
 	connect_wesnothd_connection_data gui_data(*res);
 	wesnothd_dialog(video, gui_data, msg);
 	return res;
