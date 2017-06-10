@@ -19,6 +19,8 @@ that class. */
 
 #pragma once
 
+#include <boost/version.hpp>
+
 #if BOOST_VERSION > 106100
 
 /* Boost string_view is available, so we can just use it. */
@@ -41,7 +43,6 @@ using string_view = boost::string_view;
 #include <string>
 #include <cstring>
 #include <iosfwd>
-
 
 #if BOOST_VERSION <= 105600
 # define BOOST_CXX14_CONSTEXPR
