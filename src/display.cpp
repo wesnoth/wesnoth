@@ -1193,126 +1193,19 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 	return res;
 }
 
-void display::drawing_buffer_add(const drawing_layer layer,
+void display::drawing_buffer_add(const drawing_buffer::drawing_layer layer,
 		const map_location& loc, int x, int y, const surface& surf,
 		const SDL_Rect &clip)
 {
-	drawing_buffer_.push_back(blit_helper(layer, loc, x, y, surf, clip));
+	drawing_buffer_.add_item(layer, loc, x, y, surf, clip);
 }
 
-void display::drawing_buffer_add(const drawing_layer layer,
+void display::drawing_buffer_add(const drawing_buffer::drawing_layer layer,
 		const map_location& loc, int x, int y,
 		const std::vector<surface> &surf,
 		const SDL_Rect &clip)
 {
-	drawing_buffer_.push_back(blit_helper(layer, loc, x, y, surf, clip));
-}
-
-// FIXME: temporary method. Group splitting should be made
-// public into the definition of drawing_layer
-//
-// The drawing is done per layer_group, the range per group is [low, high).
-const std::array<display::drawing_layer, 4> display::drawing_buffer_key::layer_groups {{
-	LAYER_TERRAIN_BG,
-	LAYER_UNIT_FIRST,
-	LAYER_UNIT_MOVE_DEFAULT,
-	// Make sure the movement doesn't show above fog and reachmap.
-	LAYER_REACHMAP
-}};
-
-enum {
-	// you may adjust the following when needed:
-
-	// maximum border. 3 should be safe even if a larger border is in use somewhere
-	MAX_BORDER           = 3,
-
-	// store x, y, and layer in one 32 bit integer
-	// 4 most significant bits == layer group   => 16
-	BITS_FOR_LAYER_GROUP = 4,
-
-	// 10 second most significant bits == y     => 1024
-	BITS_FOR_Y           = 10,
-
-	// 1 third most significant bit == x parity => 2
-	BITS_FOR_X_PARITY    = 1,
-
-	// 8 fourth most significant bits == layer   => 256
-	BITS_FOR_LAYER       = 8,
-
-	// 9 least significant bits == x / 2        => 512 (really 1024 for x)
-	BITS_FOR_X_OVER_2    = 9
-};
-
-inline display::drawing_buffer_key::drawing_buffer_key(const map_location &loc, drawing_layer layer)
-	: key_(0)
-{
-	// Start with the index of last group entry...
-	unsigned int group_i = layer_groups.size() - 1;
-
-	// ...and works backwards until the group containing the specified layer is found.
-	while(layer < layer_groups[group_i]) {
-		--group_i;
-	}
-
-	enum {
-		SHIFT_LAYER          = BITS_FOR_X_OVER_2,
-		SHIFT_X_PARITY       = BITS_FOR_LAYER + SHIFT_LAYER,
-		SHIFT_Y              = BITS_FOR_X_PARITY + SHIFT_X_PARITY,
-		SHIFT_LAYER_GROUP    = BITS_FOR_Y + SHIFT_Y
-	};
-	static_assert(SHIFT_LAYER_GROUP + BITS_FOR_LAYER_GROUP == sizeof(key_) * 8, "Bit field too small");
-
-	// the parity of x must be more significant than the layer but less significant than y.
-	// Thus basically every row is split in two: First the row containing all the odd x
-	// then the row containing all the even x. Since thus the least significant bit of x is
-	// not required for x ordering anymore it can be shifted out to the right.
-	const unsigned int x_parity = static_cast<unsigned int>(loc.x) & 1;
-	key_  = (group_i << SHIFT_LAYER_GROUP) | (static_cast<unsigned int>(loc.y + MAX_BORDER) << SHIFT_Y);
-	key_ |= (x_parity << SHIFT_X_PARITY);
-	key_ |= (static_cast<unsigned int>(layer) << SHIFT_LAYER) | static_cast<unsigned int>(loc.x + MAX_BORDER) / 2;
-}
-
-void display::drawing_buffer_commit()
-{
-	// std::list::sort() is a stable sort
-	drawing_buffer_.sort();
-
-	SDL_Rect clip_rect = map_area();
-	surface& screen = get_screen_surface();
-	clip_rect_setter set_clip_rect(screen, &clip_rect);
-
-	/*
-	 * Info regarding the rendering algorithm.
-	 *
-	 * In order to render a hex properly it needs to be rendered per row. On
-	 * this row several layers need to be drawn at the same time. Mainly the
-	 * unit and the background terrain. This is needed since both can spill
-	 * in the next hex. The foreground terrain needs to be drawn before to
-	 * avoid decapitation a unit.
-	 *
-	 * This ended in the following priority order:
-	 * layergroup > location > layer > 'blit_helper' > surface
-	 */
-
-	for (const blit_helper &blit : drawing_buffer_) {
-		for (const surface& surf : blit.surf()) {
-			// Note that dstrect can be changed by sdl_blit
-			// and so a new instance should be initialized
-			// to pass to each call to sdl_blit.
-			SDL_Rect dstrect {blit.x(), blit.y(), 0, 0};
-			SDL_Rect srcrect = blit.clip();
-			SDL_Rect *srcrectArg = (srcrect.x | srcrect.y | srcrect.w | srcrect.h)
-				? &srcrect : nullptr;
-			sdl_blit(surf, srcrectArg, screen, &dstrect);
-			//NOTE: the screen part should already be marked as 'to update'
-		}
-	}
-	drawing_buffer_clear();
-}
-
-void display::drawing_buffer_clear()
-{
-	drawing_buffer_.clear();
+	drawing_buffer_.add_item(layer, loc, x, y, surf, clip);
 }
 
 void display::toggle_benchmark()
@@ -1494,7 +1387,7 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 }
 
 void display::draw_text_in_hex(const map_location& loc,
-		const drawing_layer layer, const std::string& text,
+		const drawing_buffer::drawing_layer layer, const std::string& text,
 		size_t font_size, color_t color, double x_in_hex, double y_in_hex)
 {
 	if (text.empty()) return;
@@ -1518,7 +1411,7 @@ void display::draw_text_in_hex(const map_location& loc,
 }
 
 //TODO: convert this to use sdl::ttexture
-void display::render_image(int x, int y, const display::drawing_layer drawing_layer,
+void display::render_image(int x, int y, const drawing_buffer::drawing_layer drawing_layer,
 		const map_location& loc, surface image,
 		bool hreverse, bool greyscale, fixed_t alpha,
 		color_t blendto, double blend_ratio, double submerged, bool vreverse)
@@ -2444,7 +2337,7 @@ void display::draw(bool update,bool force) {
 			draw_invalidated();
 			invalidated_.clear();
 		}
-		drawing_buffer_commit();
+		drawing_buffer_.render_buffer();
 		post_commit();
 		draw_sidebar();
 
@@ -2525,21 +2418,21 @@ void display::draw_hex(const map_location& loc) {
 		num_images_bg = images_bg.size();
 
 		// unshrouded terrain (the normal case)
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, images_bg);
+		drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_BG, loc, xpos, ypos, images_bg);
 
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, images_fg);
+		drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_FG, loc, xpos, ypos, images_fg);
 
 		// Draw the grid, if that's been enabled
 		if(grid_) {
 			static const image::locator grid_top(game_config::images::grid_top);
-			drawing_buffer_add(LAYER_GRID_TOP, loc, xpos, ypos,
+			drawing_buffer_add(drawing_buffer::LAYER_GRID_TOP, loc, xpos, ypos,
 				image::get_image(grid_top, image::TOD_COLORED));
 			static const image::locator grid_bottom(game_config::images::grid_bottom);
-			drawing_buffer_add(LAYER_GRID_BOTTOM, loc, xpos, ypos,
+			drawing_buffer_add(drawing_buffer::LAYER_GRID_BOTTOM, loc, xpos, ypos,
 				image::get_image(grid_bottom, image::TOD_COLORED));
 		}
 		// village-control flags.
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
+		drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
 	}
 
 	if(!shrouded(loc)) {
@@ -2567,7 +2460,7 @@ void display::draw_hex(const map_location& loc) {
 					const std::string image = overlays.first->second.image;
 					const surface surf = image.find("~NO_TOD_SHIFT()") == std::string::npos ?
 						image::get_lighted_image(image, lt, image::SCALED_TO_HEX) : image::get_image(image, image::SCALED_TO_HEX);
-					drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
+					drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
 				}
 			}
 		}
@@ -2577,17 +2470,17 @@ void display::draw_hex(const map_location& loc) {
 	// tod may differ from tod if hex is illuminated.
 	const std::string& tod_hex_mask = tod.image_mask;
 	if(tod_hex_mask1 != nullptr || tod_hex_mask2 != nullptr) {
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask1);
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask2);
+		drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask1);
+		drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask2);
 	} else if(!tod_hex_mask.empty()) {
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos,
+		drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_FG, loc, xpos, ypos,
 			image::get_image(tod_hex_mask,image::SCALED_TO_HEX));
 	}
 
 	// Paint mouseover overlays
 	if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc)))
 			&& mouseover_hex_overlay_ != nullptr) {
-		drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, xpos, ypos, mouseover_hex_overlay_);
+		drawing_buffer_add(drawing_buffer::LAYER_MOUSEOVER_OVERLAY, loc, xpos, ypos, mouseover_hex_overlay_);
 	}
 
 	// Paint arrows
@@ -2604,16 +2497,16 @@ void display::draw_hex(const map_location& loc) {
 		// We apply void also on off-map tiles
 		// to shroud the half-hexes too
 		const std::string& shroud_image = get_variant(shroud_images_, loc);
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
+		drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, xpos, ypos,
 			image::get_image(shroud_image, image_type));
 	} else if(fogged(loc)) {
 		const std::string& fog_image = get_variant(fog_images_, loc);
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
+		drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, xpos, ypos,
 			image::get_image(fog_image, image_type));
 	}
 
 	if(!shrouded(loc)) {
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos, get_fog_shroud_images(loc, image_type));
+		drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, xpos, ypos, get_fog_shroud_images(loc, image_type));
 	}
 
 	if (on_map) {
@@ -2632,8 +2525,8 @@ void display::draw_hex(const map_location& loc) {
 			if (draw_num_of_bitmaps_) {
 				off_y -= text->h / 2;
 			}
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
+			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, text);
 		}
 		if (draw_terrain_codes_ && (game_config::debug || !shrouded(loc))) {
 			int off_x = xpos + hex_size()/2;
@@ -2649,8 +2542,8 @@ void display::draw_hex(const map_location& loc) {
 			} else if (draw_num_of_bitmaps_ && !draw_coordinates_) {
 				off_y -= text->h / 2;
 			}
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
+			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, text);
 		}
 		if (draw_num_of_bitmaps_) {
 			int off_x = xpos + hex_size()/2;
@@ -2667,13 +2560,13 @@ void display::draw_hex(const map_location& loc) {
 			if (draw_terrain_codes_) {
 				off_y += text->h / 2;
 			}
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
+			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, text);
 		}
 	}
 
 	if(debug_foreground) {
-		drawing_buffer_add(LAYER_UNIT_DEFAULT, loc, xpos, ypos,
+		drawing_buffer_add(drawing_buffer::LAYER_UNIT_DEFAULT, loc, xpos, ypos,
 			image::get_image("terrain/foreground.png", image_type));
 	}
 
@@ -3208,4 +3101,3 @@ void display::handle_event(const SDL_Event& event) {
 }
 
 display *display::singleton_ = nullptr;
-

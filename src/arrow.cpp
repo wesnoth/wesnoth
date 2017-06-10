@@ -32,7 +32,7 @@ static lg::log_domain log_arrows("arrows");
 #define SCREEN (static_cast<display*>(resources::screen))
 
 arrow::arrow(bool hidden)
-	: layer_(display::LAYER_ARROWS)
+	: layer_(drawing_buffer::LAYER_ARROWS)
 	, color_("red")
 	, style_(STYLE_STANDARD)
 	, path_()

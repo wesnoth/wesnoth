@@ -138,7 +138,7 @@ void suppose_dead::draw_hex(const map_location& hex)
 	if(hex == loc_) //add symbol to hex
 	{
 		//@todo: Possibly use a different layer
-		const display::drawing_layer layer = display::LAYER_ARROWS;
+		const drawing_buffer::drawing_layer layer = drawing_buffer::LAYER_ARROWS;
 
 		int xpos = resources::screen->get_location_x(loc_);
 		int ypos = resources::screen->get_location_y(loc_);
