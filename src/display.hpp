@@ -50,6 +50,7 @@ namespace wb {
 
 #include "animated.hpp"
 #include "display_context.hpp"
+#include "drawing_buffer.hpp"
 #include "font/sdl_ttf.hpp"
 #include "font/standard_colors.hpp"
 #include "image.hpp" //only needed for enums (!)
@@ -687,7 +688,7 @@ protected:
 	virtual void draw_invalidated();
 
 	/**
-	 * Hook for actions to take right after draw() calls drawing_buffer_commit
+	 * Hook for actions to take right after draw() renders the drawing buffer.
 	 * No action here by default.
 	 */
 	virtual void post_commit() {}
@@ -862,7 +863,7 @@ public:
 	 * submerged: the amount of the unit out of 1.0 that is submerged
 	 *            (presumably under water) and thus shouldn't be drawn
 	 */
-	void render_image(int x, int y, const display::drawing_layer drawing_layer,
+	void render_image(int x, int y, const drawing_buffer::drawing_layer drawing_layer,
 			const map_location& loc, surface image,
 			bool hreverse=false, bool greyscale=false,
 			fixed_t alpha=ftofxp(1.0), color_t blendto = {0,0,0},
@@ -873,7 +874,7 @@ public:
 	 * The font size is adjusted to the zoom factor.
 	 */
 	void draw_text_in_hex(const map_location& loc,
-		const drawing_layer layer, const std::string& text, size_t font_size,
+		const drawing_buffer::drawing_layer layer, const std::string& text, size_t font_size,
 		color_t color, double x_in_hex=0.5, double y_in_hex=0.5);
 
 protected:
@@ -881,87 +882,6 @@ protected:
 	//TODO sort
 	size_t activeTeam_;
 
-	/**
-	 * In order to render a hex properly it needs to be rendered per row. On
-	 * this row several layers need to be drawn at the same time. Mainly the
-	 * unit and the background terrain. This is needed since both can spill
-	 * in the next hex. The foreground terrain needs to be drawn before to
-	 * avoid decapitation a unit.
-	 *
-	 * In other words:
-	 * for every layer
-	 *   for every row (starting from the top)
-	 *     for every hex in the row
-	 *       ...
-	 *
-	 * this is modified to:
-	 * for every layer group
-	 *   for every row (starting from the top)
-	 *     for every layer in the group
-	 *       for every hex in the row
-	 *         ...
-	 *
-	 * * Surfaces are rendered per level in a map.
-	 * * Per level the items are rendered per location these locations are
-	 *   stored in the drawing order required for units.
-	 * * every location has a vector with surfaces, each with its own screen
-	 *   coordinate to render at.
-	 * * every vector element has a vector with surfaces to render.
-	 */
-	class drawing_buffer_key
-	{
-	private:
-		unsigned int key_;
-
-		static const std::array<drawing_layer, 4> layer_groups;
-
-	public:
-		drawing_buffer_key(const map_location &loc, drawing_layer layer);
-
-		bool operator<(const drawing_buffer_key &rhs) const { return key_ < rhs.key_; }
-	};
-
-	/** Helper structure for rendering the terrains. */
-	class blit_helper
-	{
-	public:
-		// We don't want to copy this.
-		// It's expensive when done frequently due to the surface vector.
-		blit_helper(const blit_helper&) = delete;
-
-		blit_helper(const drawing_layer layer, const map_location& loc,
-				const int x, const int y, const surface& surf,
-				const SDL_Rect& clip)
-			: x_(x), y_(y), surf_(1, surf), clip_(clip),
-			key_(loc, layer)
-		{}
-
-		blit_helper(const drawing_layer layer, const map_location& loc,
-				const int x, const int y, const std::vector<surface>& surf,
-				const SDL_Rect& clip)
-			: x_(x), y_(y), surf_(surf), clip_(clip),
-			key_(loc, layer)
-		{}
-
-		int x() const { return x_; }
-		int y() const { return y_; }
-		const std::vector<surface> &surf() const { return surf_; }
-		const SDL_Rect &clip() const { return clip_; }
-
-		bool operator<(const blit_helper &rhs) const { return key_ < rhs.key_; }
-
-	private:
-		int x_;                      /**< x screen coordinate to render at. */
-		int y_;                      /**< y screen coordinate to render at. */
-		std::vector<surface> surf_;  /**< surface(s) to render. */
-		SDL_Rect clip_;              /**<
-									  * The clipping area of the source if
-									  * omitted the entire source is used.
-									  */
-		drawing_buffer_key key_;
-	};
-
-	typedef std::list<blit_helper> drawing_buffer;
 	drawing_buffer drawing_buffer_;
 
 public:
@@ -972,26 +892,18 @@ public:
 	 * @param loc                The hex the image belongs to, needed for the
 	 *                           drawing order.
 	 */
-	void drawing_buffer_add(const drawing_layer layer,
+	void drawing_buffer_add(const drawing_buffer::drawing_layer layer,
 			const map_location& loc, int x, int y, const surface& surf,
 			const SDL_Rect &clip = SDL_Rect());
 
-	void drawing_buffer_add(const drawing_layer layer,
+	void drawing_buffer_add(const drawing_buffer::drawing_layer layer,
 			const map_location& loc, int x, int y,
 			const std::vector<surface> &surf,
 			const SDL_Rect &clip = SDL_Rect());
 
 protected:
-
-	/** Draws the drawing_buffer_ and clears it. */
-	void drawing_buffer_commit();
-
-	/** Clears the drawing buffer. */
-	void drawing_buffer_clear();
-
 	/** redraw all panels associated with the map display */
 	void draw_all_panels();
-
 
 	/**
 	 * Initiate a redraw.

@@ -469,7 +469,7 @@ static void draw_numbers(const map_location& hex, side_actions::numbers_t number
 		color_t color = team::get_side_color(static_cast<int>(team_numbers[i]+1));
 		const double x_in_hex = x_origin + x_offset;
 		const double y_in_hex = y_origin + y_offset;
-		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+		display::get_singleton()->draw_text_in_hex(hex, drawing_buffer::LAYER_ACTIONS_NUMBERING,
 				number_text, font_size, color, x_in_hex, y_in_hex);
 		x_offset += x_offset_base;
 		y_offset += y_offset_base;

@@ -37,7 +37,7 @@ frame_parameters::frame_parameters()
 	, auto_vflip(boost::logic::indeterminate)
 	, auto_hflip(boost::logic::indeterminate)
 	, primary_frame(boost::logic::indeterminate)
-	, drawing_layer(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST)
+	, drawing_layer(drawing_buffer::LAYER_UNIT_DEFAULT - drawing_buffer::LAYER_UNIT_FIRST)
 {}
 
 frame_builder::frame_builder()
@@ -45,7 +45,7 @@ frame_builder::frame_builder()
 	, auto_vflip_(boost::logic::indeterminate)
 	, auto_hflip_(boost::logic::indeterminate)
 	, primary_frame_(boost::logic::indeterminate)
-	, drawing_layer_(std::to_string(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST))
+	, drawing_layer_(std::to_string(drawing_buffer::LAYER_UNIT_DEFAULT - drawing_buffer::LAYER_UNIT_FIRST))
 {}
 
 frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
@@ -313,7 +313,7 @@ const frame_parameters frame_parsed_parameters::parameters(int current_time) con
 	result.auto_vflip = auto_vflip_;
 	result.auto_hflip = auto_hflip_;
 	result.primary_frame = primary_frame_;
-	result.drawing_layer = drawing_layer_.get_current_element(current_time,display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
+	result.drawing_layer = drawing_layer_.get_current_element(current_time,drawing_buffer::LAYER_UNIT_DEFAULT-drawing_buffer::LAYER_UNIT_FIRST);
 	return result;
 }
 
@@ -552,7 +552,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 		}
 
 		display::get_singleton()->render_image(my_x, my_y,
-			static_cast<display::drawing_layer>(display::LAYER_UNIT_FIRST + current_data.drawing_layer),
+			static_cast<drawing_buffer::drawing_layer>(drawing_buffer::LAYER_UNIT_FIRST + current_data.drawing_layer),
 			src, image, facing_west, false,
 			ftofxp(current_data.highlight_ratio), current_data.blend_with ? *current_data.blend_with : color_t(),
 			current_data.blend_ratio, current_data.submerge, !facing_north);
@@ -866,8 +866,8 @@ const frame_parameters unit_frame::merge_parameters(int current_time, const fram
 	assert(engine_val.directional_y == 0);
 	result.directional_y = current_val.directional_y ? current_val.directional_y : animation_val.directional_y;
 
-	assert(engine_val.drawing_layer == display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST);
-	result.drawing_layer = current_val.drawing_layer != display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST
+	assert(engine_val.drawing_layer == drawing_buffer::LAYER_UNIT_DEFAULT - drawing_buffer::LAYER_UNIT_FIRST);
+	result.drawing_layer = current_val.drawing_layer != drawing_buffer::LAYER_UNIT_DEFAULT-drawing_buffer::LAYER_UNIT_FIRST
 		? current_val.drawing_layer
 		: animation_val.drawing_layer;
 

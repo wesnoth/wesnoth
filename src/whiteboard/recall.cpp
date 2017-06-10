@@ -191,7 +191,7 @@ void recall::draw_hex(const map_location& hex)
 		}
 		size_t font_size = 16;
 		color_t color {255, 0, 0}; //red
-		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+		display::get_singleton()->draw_text_in_hex(hex, drawing_buffer::LAYER_ACTIONS_NUMBERING,
 						number_text.str(), font_size, color, x_offset, y_offset);
 	}
 }

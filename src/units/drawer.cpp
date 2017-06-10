@@ -212,14 +212,14 @@ void unit_drawer::redraw_unit (const unit & u) const
 		}
 	}
 	if (ellipse_back != nullptr) {
-		//disp.drawing_buffer_add(display::LAYER_UNIT_BG, loc,
-		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
+		//disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_BG, loc,
+		disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_FIRST, loc,
 			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_back);
 	}
 
 	if (ellipse_front != nullptr) {
-		//disp.drawing_buffer_add(display::LAYER_UNIT_FG, loc,
-		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
+		//disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_FG, loc,
+		disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_FIRST, loc,
 			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front);
 	}
 	if(draw_bars) {
@@ -272,7 +272,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 		if (orb_img != nullptr) {
 			surface orb(image::get_image(*orb_img,image::SCALED_TO_ZOOM));
-			disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
+			disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_BAR,
 				loc, xsrc + xoff, ysrc + yoff + adjusted_params.y, orb);
 		}
 
@@ -303,7 +303,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 				//if(bar_alpha != ftofxp(1.0)) {
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
 				//}
-				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
+				disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_BAR,
 					loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, crown);
 			}
 		}
@@ -311,7 +311,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 		for(const std::string& ov : u.overlays()) {
 			const surface ov_img(image::get_image(ov, image::SCALED_TO_ZOOM));
 			if(ov_img != nullptr) {
-				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
+				disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_BAR,
 					loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, ov_img);
 			}
 		}
@@ -390,8 +390,8 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 	SDL_Rect bot = sdl::create_rect(0, bar_loc.y + skip_rows, surf->w, 0);
 	bot.h = surf->w - bot.y;
 
-	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos, ypos, surf, top);
-	disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos, ypos + top.h, surf, bot);
+	disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_BAR, loc, xpos, ypos, surf, top);
+	disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_BAR, loc, xpos, ypos + top.h, surf, bot);
 
 	size_t unfilled = static_cast<size_t>(height * (1.0 - filled));
 
@@ -400,7 +400,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = sdl::create_rect(0, 0, bar_loc.w, height-unfilled);
 		sdl::fill_surface_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
-		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf);
+		disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf);
 	}
 }
 
