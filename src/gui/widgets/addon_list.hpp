@@ -165,6 +165,9 @@ private:
 
 	void finalize_setup();
 
+	/** Needed because otherwise the add-on with the first ID would be initially selected. */
+	void select_first_addon();
+
 	/** See @ref control::get_control_type. */
 	const std::string& get_control_type() const override
 	{

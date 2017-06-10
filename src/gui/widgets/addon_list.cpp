@@ -282,6 +282,8 @@ void addon_list::set_addons(const addons_list& addons)
 			install_update_stack.select_layer(static_cast<int>(is_updatable));
 		}
 	}
+
+	select_first_addon();
 }
 
 const addon_info* addon_list::get_selected_addon() const
@@ -348,6 +350,20 @@ void addon_list::finalize_setup()
 	list.register_sorting_option(2, [this](const int i) { return addon_vector_[i]->size; });
 	list.register_sorting_option(3, [this](const int i) { return addon_vector_[i]->downloads; });
 	list.register_sorting_option(4, [this](const int i) { return addon_vector_[i]->display_type(); });
+
+	auto order = std::make_pair(0, gui2::listbox::SORT_ASCENDING);
+	list.set_active_sorting_option(order);
+}
+
+void addon_list::select_first_addon()
+{
+	const addon_info* first_addon = addon_vector_[0];
+	for(const addon_info* a : addon_vector_) {
+		if(a->display_title().compare(first_addon->display_title()) < 0) {
+			first_addon = a;
+		}
+	}
+	select_addon(first_addon->id);
 }
 
 addon_list_definition::addon_list_definition(const config& cfg) :
