@@ -357,7 +357,12 @@ void addon_list::finalize_setup()
 
 void addon_list::select_first_addon()
 {
-	const addon_info* first_addon = addon_vector_[0];
+	if(addon_vector_.empty()) {
+		// Happens in the dialog unit test.
+		return;
+	}
+
+	const addon_info* first_addon = addon_vector_.at(0);
 	for(const addon_info* a : addon_vector_) {
 		if(a->display_title().compare(first_addon->display_title()) < 0) {
 			first_addon = a;
