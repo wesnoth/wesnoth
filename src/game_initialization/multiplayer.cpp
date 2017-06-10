@@ -48,7 +48,7 @@ static lg::log_domain log_mp("mp/main");
 #define DBG_MP LOG_STREAM(debug, log_mp)
 
 /** Opens a new server connection and prompts the client for login credentials, if necessary. */
-static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const std::string& original_host)
+static wesnothd_connection_ptr open_connection(CVideo& video, const std::string& original_host)
 {
 	DBG_MP << "opening connection" << std::endl;
 
@@ -64,7 +64,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 		h = preferences::network_host();
 	}
 
-	std::unique_ptr<wesnothd_connection> sock;
+	wesnothd_connection_ptr sock;
 
 	const int colon_index = h.find_first_of(":");
 	std::string host;
@@ -120,7 +120,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 				throw wesnothd_error(_("Server-side redirect loop"));
 			}
 			shown_hosts.insert(hostpair(host, port));
-			sock.release();
+			sock.reset();
 			sock = gui2::dialogs::network_transmission::wesnothd_connect_dialog(video, "redirect", host, port);
 			continue;
 		}
@@ -545,7 +545,7 @@ void start_client(CVideo& video, const config& game_config,	saved_game& state, c
 
 	preferences::admin_authentication_reset r;
 
-	std::unique_ptr<wesnothd_connection> connection = open_connection(video, host);
+	wesnothd_connection_ptr connection = open_connection(video, host);
 	if(!connection) {
 		return;
 	}

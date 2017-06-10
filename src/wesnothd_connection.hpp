@@ -36,7 +36,7 @@
 class config;
 
 /** A class that represents a TCP/IP connection to the wesnothd server. */
-class wesnothd_connection
+class wesnothd_connection : public std::enable_shared_from_this<wesnothd_connection>
 {
 public:
 	using error = wesnothd_connection_error;
@@ -142,3 +142,5 @@ private:
 	std::size_t bytes_read_;
 
 };
+
+using wesnothd_connection_ptr = std::shared_ptr<wesnothd_connection>;
