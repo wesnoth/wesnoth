@@ -635,7 +635,7 @@ void listbox::set_active_sorting_option(const order_pair& sort_by, const bool se
 
 	order_by_column(sort_by.first, dynamic_cast<widget&>(wgt));
 
-	if(select_first) {
+	if(select_first && generator_->get_item_count() > 0) {
 		select_row(generator_->get_item_at_ordered(0));
 	}
 }
