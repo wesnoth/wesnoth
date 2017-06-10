@@ -424,16 +424,24 @@ void text_box_base::handle_editing(bool& handled, const utf8::string& unicode, i
 {
 	if(unicode.size() > 1 || unicode[0] != 0) {
 		handled = true;
+		size_t new_len = utf8::size(unicode);
 		if(!ime_in_progress_) {
 			ime_in_progress_ = true;
 			delete_selection();
 			ime_start_point_ = selection_start_;
 			text_cached_ = text_.text();
 			SDL_Rect rect = get_rectangle();
+			if(new_len > 0) {
+				rect.x += get_cursor_position(ime_start_point_).x;
+				rect.w = get_cursor_position(ime_start_point_ + new_len).x - rect.x;
+			} else {
+				rect.x += get_cursor_position(ime_start_point_ + new_len).x;
+				rect.w = get_cursor_position(ime_start_point_).x - rect.x;
+			}
 			SDL_SetTextInputRect(&rect);
 		}
 		ime_cursor_ = start;
-		ime_length_ = utf8::size(unicode);
+		ime_length_ = new_len;
 		std::string new_text(text_cached_);
 		new_text.insert(ime_start_point_, unicode);
 		text_.set_text(new_text, false);

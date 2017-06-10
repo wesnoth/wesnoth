@@ -957,6 +957,12 @@ std::ostream& operator<<(std::ostream& stream, const ui_event event)
 		case SDL_KEY_DOWN:
 			stream << "SDL key down";
 			break;
+		case SDL_TEXT_INPUT:
+			stream << "SDL text input";
+			break;
+		case SDL_TEXT_EDITING:
+			stream << "SDL text editing";
+			break;
 
 		case NOTIFY_REMOVAL:
 			stream << "notify removal";
