@@ -182,6 +182,10 @@ bool loadgame::load_game()
 	read_save_file(load_data_.filename, load_data_.load_config, &error_log);
 
 	convert_old_saves(load_data_.load_config);
+	
+	for (config& side : load_data_.load_config.child_range("side")) {
+		side.remove_attribute("is_local");
+	}
 
 	if(!error_log.empty()) {
         try {
