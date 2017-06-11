@@ -168,7 +168,7 @@ void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rec
 	render_clip_rect_setter crs(clip_rect);
 
 	SDL_Rect dst {x, y, surf->w, surf->h};
-	copy_to_screen(txt, srcrect, &dst);
+	render_copy(txt, srcrect, &dst);
 }
 
 void CVideo::make_fake()
@@ -344,7 +344,7 @@ void CVideo::render_screen()
 	}
 }
 
-void CVideo::copy_to_screen(texture& txt, SDL_Rect* src_rect, SDL_Rect* dst_rect)
+void CVideo::render_copy(const texture& txt, SDL_Rect* src_rect, SDL_Rect* dst_rect)
 {
 	if(window) {
 		SDL_RenderCopy(*window, txt, src_rect, dst_rect);;

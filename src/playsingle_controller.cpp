@@ -242,7 +242,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 	}
 
 	// FIXME
-	gui2::dialogs::game_ui::display(gui_->video());
+	//gui2::dialogs::game_ui::display(gui_->video());
 
 	gui_->labels().read(level);
 

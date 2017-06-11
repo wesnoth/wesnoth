@@ -83,13 +83,13 @@ void editor_display::draw_hex(const map_location& loc)
 	if (map().on_board_with_border(loc)) {
 		if (map().in_selection(loc)) {
 			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, xpos, ypos,
-				image::get_image("editor/selection-overlay.png", image::TOD_COLORED));
+				image::get_texture("editor/selection-overlay.png"));
 		}
 
 		if (brush_locations_.find(loc) != brush_locations_.end()) {
 			static const image::locator brush(game_config::images::editor_brush);
 			drawing_buffer_add(drawing_buffer::LAYER_SELECTED_HEX, loc, xpos, ypos,
-					image::get_image(brush, image::SCALED_TO_HEX));
+					image::get_texture(brush));
 		}
 	}
 }

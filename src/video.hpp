@@ -18,6 +18,8 @@
 #include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
 
+#include <SDL_render.h>
+
 #include <memory>
 
 class surface;
@@ -171,7 +173,7 @@ public:
 	/** Renders the screen. Should normally not be called directly! */
 	void render_screen();
 
-	void copy_to_screen(texture& txt, SDL_Rect* src_rect = nullptr, SDL_Rect* dst_rect = nullptr);
+	void render_copy(const texture& txt, SDL_Rect* src_rect = nullptr, SDL_Rect* dst_rect = nullptr);
 
 	/**
 	 * Updates and ensures the framebuffer surface is valid.

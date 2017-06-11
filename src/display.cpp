@@ -50,6 +50,8 @@
 #include "whiteboard/manager.hpp"
 #include "show_dialog.hpp"
 #include "gui/dialogs/loading_screen.hpp"
+#include "sdl/render_utils.hpp"
+#include "sdl/texture.hpp"
 
 #include <SDL_image.h>
 
@@ -255,6 +257,13 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 		create_buttons();
 	}
 
+	rebuild_all();
+	assert(builder_);
+	//builder_->rebuild_cache_all();
+	invalidate_all();
+
+	//invalidate_locations_in_rect(map_area());
+
 }
 
 display::~display()
@@ -352,24 +361,27 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 	}
 }
 
-surface display::get_flag(const map_location& loc)
+texture display::get_flag(const map_location& loc)
 {
 	if(!get_map().is_village(loc)) {
-		return surface(nullptr);
+		return texture(nullptr);
 	}
 
-	for (const team& t : dc_->teams()) {
-		if (t.owns_village(loc) && (!fogged(loc) || !dc_->get_team(viewing_side()).is_enemy(t.side())))
-		{
+	for(const team& t : dc_->teams()) {
+		if(t.owns_village(loc) && (!fogged(loc) || !dc_->get_team(viewing_side()).is_enemy(t.side()))) {
 			auto& flag = flags_[t.side() - 1];
 			flag.update_last_draw_time();
-			const image::locator &image_flag = animate_map_ ?
-				flag.get_current_frame() : flag.get_first_frame();
-			return image::get_image(image_flag, image::TOD_COLORED);
+
+			// TODO: move this if-animated check to a helper function.
+			const image::locator& image_flag = animate_map_
+				? flag.get_current_frame()
+				: flag.get_first_frame();
+
+			return image::get_texture(image_flag); // TODO: ToD coloring
 		}
 	}
 
-	return surface(nullptr);
+	return texture(nullptr);
 }
 
 void display::set_team(size_t teamindex, bool show_everything)
@@ -661,7 +673,7 @@ const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
 	if (r.w<=0 || r.h<=0) {
 		// empty rect, return dummy values giving begin=end
 		res.left = 0;
-		res.right = -1; // end is right+1
+		res.right = -1; // end is right + 1
 		res.top[0] = 0;
 		res.top[1] = 0;
 		res.bottom[0] = 0;
@@ -670,29 +682,33 @@ const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
 	}
 
 	SDL_Rect map_rect = map_area();
+
 	// translate rect coordinates from screen-based to map_area-based
 	int x = xpos_ - map_rect.x + r.x;
 	int y = ypos_ - map_rect.y + r.y;
+
 	// we use the "double" type to avoid important rounding error (size of an hex!)
 	// we will also need to use std::floor to avoid bad rounding at border (negative values)
 	double tile_width = hex_width();
 	double tile_size = hex_size();
 	double border = theme_.border().size;
+
 	// we minus "0.(3)", for horizontal imbrication.
 	// reason is: two adjacent hexes each overlap 1/4 of their width, so for
 	// grid calculation 3/4 of tile width is used, which by default gives
 	// 18/54=0.(3). Note that, while tile_width is zoom dependent, 0.(3) is not.
 	res.left = static_cast<int>(std::floor(-border + x / tile_width - 0.3333333));
+
 	// we remove 1 pixel of the rectangle dimensions
 	// (the rounded division take one pixel more than needed)
-	res.right = static_cast<int>(std::floor(-border + (x + r.w-1) / tile_width));
+	res.right = static_cast<int>(std::floor(-border + (x + r.w - 1) / tile_width));
 
 	// for odd x, we must shift up one half-hex. Since x will vary along the edge,
 	// we store here the y values for even and odd x, respectively
 	res.top[0] = static_cast<int>(std::floor(-border + y / tile_size));
 	res.top[1] = static_cast<int>(std::floor(-border + y / tile_size - 0.5));
-	res.bottom[0] = static_cast<int>(std::floor(-border + (y + r.h-1) / tile_size));
-	res.bottom[1] = static_cast<int>(std::floor(-border + (y + r.h-1) / tile_size - 0.5));
+	res.bottom[0] = static_cast<int>(std::floor(-border + (y + r.h - 1) / tile_size));
+	res.bottom[1] = static_cast<int>(std::floor(-border + (y + r.h - 1) / tile_size - 0.5));
 
 	// TODO: in some rare cases (1/16), a corner of the big rect is on a tile
 	// (the 72x72 rectangle containing the hex) but not on the hex itself
@@ -1056,19 +1072,20 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 
 void display::get_terrain_images(const map_location &loc,
 	const std::string& timeid,
-	TERRAIN_TYPE terrain_type)
-{
+	TERRAIN_TYPE terrain_type){
 	terrain_image_vector_.clear();
 
-	terrain_builder::TERRAIN_TYPE builder_terrain_type =
-	      (terrain_type == FOREGROUND ?
-		  terrain_builder::FOREGROUND : terrain_builder::BACKGROUND);
+	terrain_builder::TERRAIN_TYPE builder_terrain_type = terrain_type == FOREGROUND
+		? terrain_builder::FOREGROUND
+		: terrain_builder::BACKGROUND;
 
-	const terrain_builder::imagelist* const terrains = builder_->get_terrain_at(loc,
-			timeid, builder_terrain_type);
+	assert(builder_);
+	const terrain_builder::imagelist* const terrains = builder_->get_terrain_at(loc, timeid, builder_terrain_type);
 
+	//assert(terrains);
 	image::light_string lt;
 
+#if 0
 	const time_of_day& tod = get_time_of_day(loc);
 
 	//get all the light transitions
@@ -1171,23 +1188,28 @@ void display::get_terrain_images(const map_location &loc,
 			lt = image::get_light_string(-1, col.r, col.g, col.b);
 		}
 	}
+#endif
 
 	if(terrains != nullptr) {
+	//	assert(terrains);
 		// Cache the offmap name.
 		// Since it is themeable it can change,
 		// so don't make it static.
 		const std::string off_map_name = "terrain/" + theme_.border().tile_image;
 		for(const auto& terrain : *terrains) {
-			const image::locator &image = animate_map_ ?
-				terrain.get_current_frame() : terrain.get_first_frame();
+			const image::locator &image = animate_map_
+				? terrain.get_current_frame()
+				: terrain.get_first_frame();
 
 			// We prevent ToD coloring and brightening of off-map tiles,
 			// We need to test for the tile to be rendered and
 			// not the location, since the transitions are rendered
 			// over the offmap-terrain and these need a ToD coloring.
-			surface surf;
-			const bool off_map = (image.get_filename() == off_map_name || image.get_modifications().find("NO_TOD_SHIFT()") != std::string::npos);
+			texture tex = image::get_texture(image);
+			//assert(tex);
+			//const bool off_map = (image.get_filename() == off_map_name || image.get_modifications().find("NO_TOD_SHIFT()") != std::string::npos);
 
+#if 0
 			if(off_map) {
 				surf = image::get_image(image, image::SCALED_TO_HEX);
 			} else if(lt.empty()) {
@@ -1196,26 +1218,61 @@ void display::get_terrain_images(const map_location &loc,
 				surf = image::get_lighted_image(image, lt, image::SCALED_TO_HEX);
 			}
 
-			if (!surf.null()) {
-				terrain_image_vector_.push_back(std::move(surf));
+			if (!tex.null()) {
+				terrain_image_vector_.push_back(std::move(tex));
 			}
 		}
 	}
 }
 
 void display::drawing_buffer_add(const drawing_buffer::drawing_layer layer,
-		const map_location& loc, int x, int y, const surface& surf,
+		const map_location& loc, int x, int y, const texture& tex,
 		const SDL_Rect &clip)
 {
-	drawing_buffer_.add_item(layer, loc, x, y, surf, clip);
+	//drawing_buffer_.add_item(layer, loc, x, y, tex, clip);
 }
 
 void display::drawing_buffer_add(const drawing_buffer::drawing_layer layer,
 		const map_location& loc, int x, int y,
-		const std::vector<surface> &surf,
+		const std::vector<texture>& tex,
 		const SDL_Rect &clip)
 {
-	drawing_buffer_.add_item(layer, loc, x, y, surf, clip);
+	//std::cerr << "adding texture vec to buffer" << std::endl;
+
+	//std::vector<texture> v = tex;
+
+	//if(v.empty()) {
+	//	std::cerr << "vec empty"<< std::endl;
+	//}
+	//drawing_buffer_.add_item(layer, loc, x, y, v, clip);
+}
+
+void display::drawing_buffer_add(const drawing_buffer::drawing_layer layer,
+		const map_location& loc, int x, int y, const surface& surf,
+		const SDL_Rect &clip)
+{
+	if(!surf) {
+		return;
+	}
+
+	//drawing_buffer_.add_item(layer, loc, x, y, texture(surf), clip);
+}
+
+void display::drawing_buffer_add(const drawing_buffer::drawing_layer layer,
+		const map_location& loc, int x, int y,
+		const std::vector<surface>& surf,
+		const SDL_Rect &clip)
+{
+	//std::vector<texture> res;
+	//for(const auto& s : surf) {
+	//	if(!s) {
+	//		continue;
+	//	}
+
+	//	res.emplace_back(s);
+	//}
+
+	//drawing_buffer_.add_item(layer, loc, x, y, res, clip);
 }
 
 void display::toggle_benchmark()
@@ -1239,7 +1296,7 @@ void display::flip()
 	font::draw_floating_labels(frameBuffer);
 	events::raise_volatile_draw_event();
 
-	video().render_screen();
+	//video().render_screen();
 
 	events::raise_volatile_undraw_event();
 	font::undraw_floating_labels(frameBuffer);
@@ -1307,7 +1364,7 @@ static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<std
 	//log_scope("draw panel");
 	DBG_DP << "drawing panel " << panel.get_id() << "\n";
 
-	surface surf(image::get_image(panel.image()));
+	texture tex(image::get_texture(panel.image()));
 
 	const SDL_Rect screen = video.screen_area();
 	SDL_Rect& loc = panel.location(screen);
@@ -1315,11 +1372,9 @@ static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<std
 	DBG_DP << "panel location: x=" << loc.x << ", y=" << loc.y
 			<< ", w=" << loc.w << ", h=" << loc.h << "\n";
 
-	if(!surf.null()) {
-		if(surf->w != loc.w || surf->h != loc.h) {
-			surf.assign(tile_surface(surf,loc.w,loc.h));
-		}
-		video.blit_surface(loc.x, loc.y, surf);
+	if(!tex.null()) {
+		// TODO: should probably tile this as before.
+		video.render_copy(tex, nullptr, &loc);
 	}
 }
 
@@ -1370,7 +1425,7 @@ void display::draw_all_panels()
 	 * The minimap is also a panel, force it to update its contents.
 	 * This is required when the size of the minimap has been modified.
 	 */
-	recalculate_minimap();
+	//recalculate_minimap();
 
 	for(const auto& panel : theme_.panels()) {
 		draw_panel(video(), panel, menu_buttons_);
@@ -1383,7 +1438,7 @@ void display::draw_all_panels()
 	render_buttons();
 }
 
-static void draw_background(surface screen, const SDL_Rect& area, const std::string& image)
+static void draw_background(const SDL_Rect& area, const std::string& image)
 {
 	// No background image, just fill in black.
 	if(image.empty()) {
@@ -1391,23 +1446,14 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 		return;
 	}
 
-	const surface background(image::get_image(image));
+	const texture background(image::get_texture(image));
 	if(background.null()) {
 		return;
 	}
 
-	const unsigned int width = background->w;
-	const unsigned int height = background->h;
-
-	const unsigned int w_count = static_cast<int>(std::ceil(static_cast<double>(area.w) / static_cast<double>(width)));
-	const unsigned int h_count = static_cast<int>(std::ceil(static_cast<double>(area.h) / static_cast<double>(height)));
-
-	for(unsigned int w = 0, w_off = area.x; w < w_count; ++w, w_off += width) {
-		for(unsigned int h = 0, h_off = area.y; h < h_count; ++h, h_off += height) {
-			SDL_Rect clip = sdl::create_rect(w_off, h_off, 0, 0);
-			sdl_blit(background, nullptr, screen, &clip);
-		}
-	}
+	// TODO: should probably tile this as before.
+	SDL_Rect a = area;
+	CVideo::get_singleton().render_copy(background, nullptr, &a);
 }
 
 void display::draw_text_in_hex(const map_location& loc,
@@ -1558,7 +1604,7 @@ void display::draw_init()
 		const surface& screen = get_screen_surface();
 		clip_rect_setter set_clip_rect(screen, &clip_rect);
 		SDL_FillRect(screen, &clip_rect, 0x00000000);
-		draw_background(screen, clip_rect, theme_.border().background_image);
+		draw_background(clip_rect, theme_.border().background_image);
 		redraw_background_ = false;
 
 		// Force a full map redraw
@@ -1850,10 +1896,10 @@ bool display::scroll(int xmove, int ymove, bool force)
 
 		// This is a workaround for a SDL2 bug when blitting on overlapping surfaces. The bug
 		// only strikes during scrolling, but will then duplicate textures across the entire map.
-		surface screen_copy = make_neutral_surface(screen);
+		//surface screen_copy = make_neutral_surface(screen);
 
-		SDL_SetSurfaceBlendMode(screen_copy, SDL_BLENDMODE_NONE);
-		SDL_BlitSurface(screen_copy, &srcrect, screen, &dstrect);
+		//SDL_SetSurfaceBlendMode(screen_copy, SDL_BLENDMODE_NONE);
+		//SDL_BlitSurface(screen_copy, &srcrect, screen, &dstrect);
 	}
 
 	if(diff_y != 0) {
@@ -2289,6 +2335,7 @@ void display::set_idle_anim_rate(int rate)
 
 void display::redraw_everything()
 {
+	std::cerr << "calling redraw everything" << std::endl;
 	if(screen_.update_locked())
 		return;
 
@@ -2357,7 +2404,10 @@ void display::draw(bool update) {
 }
 
 
-void display::draw(bool update,bool force) {
+void display::draw(bool update,bool force)
+{
+	return;
+
 //	log_scope("display::draw");
 
 	if (screen_.update_locked()) {
@@ -2391,6 +2441,7 @@ void display::draw(bool update,bool force) {
 		 * draw_invalidated() also invalidates the halos, so also needs to be
 		 * ran if invalidated_.empty() == true.
 		 */
+		//drawing_buffer_.set_clip_rect(map_area());
 		if(!invalidated_.empty() || preferences::show_haloes()) {
 			draw_invalidated();
 			invalidated_.clear();
@@ -2426,7 +2477,7 @@ void display::draw_invalidated() {
 	SDL_Rect clip_rect = get_clip_rect();
 	surface& screen = get_screen_surface();
 	clip_rect_setter set_clip_rect(screen, &clip_rect);
-	for (const map_location& loc : invalidated_) {
+	for (const map_location& loc : get_visible_hexes()) {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
 
@@ -2458,6 +2509,31 @@ void display::draw_invalidated() {
 
 }
 
+static bool populated = false;
+void display::populate_terrain_cache()
+{
+	if(populated) {
+		return;
+	}
+	//SDL_Rect clip_rect = get_clip_rect();
+//	surface& screen = get_screen_surface();
+	//clip_rect_setter set_clip_rect(screen, &clip_rect);
+	for (const map_location& loc : get_visible_hexes()) {
+		//int xpos = get_location_x(loc);
+		//int ypos = get_location_y(loc);
+
+		//const bool on_map = get_map().on_board(loc);
+		//SDL_Rect hex_rect = sdl::create_rect(xpos, ypos, zoom_, zoom_);
+		//if(!sdl::rects_overlap(hex_rect,clip_rect)) {
+		//	continue;
+		//}
+		draw_hex(loc);
+		//drawn_hexes_+=1;
+	}
+
+	populated= true;
+}
+
 void display::draw_hex(const map_location& loc) {
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
@@ -2468,7 +2544,7 @@ void display::draw_hex(const map_location& loc) {
 	int num_images_fg = 0;
 	int num_images_bg = 0;
 
-	if(!shrouded(loc)) {
+	//if(!shrouded(loc)) {
 		// unshrouded terrain (the normal case)
 		get_terrain_images(loc, tod.id, BACKGROUND); // updates terrain_image_vector_
 		drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_BG, loc, xpos, ypos, terrain_image_vector_);
@@ -2482,14 +2558,17 @@ void display::draw_hex(const map_location& loc) {
 		if(grid_) {
 			static const image::locator grid_top(game_config::images::grid_top);
 			drawing_buffer_add(drawing_buffer::LAYER_GRID_TOP, loc, xpos, ypos,
-				image::get_image(grid_top, image::TOD_COLORED));
+				image::get_texture(grid_top));
 			static const image::locator grid_bottom(game_config::images::grid_bottom);
 			drawing_buffer_add(drawing_buffer::LAYER_GRID_BOTTOM, loc, xpos, ypos,
-				image::get_image(grid_bottom, image::TOD_COLORED));
+				image::get_texture(grid_bottom));
 		}
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
-	}
+		// village-control flags.
+		//drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
+	//}
 
+
+#if 0
 	if(!shrouded(loc)) {
 		typedef overlay_map::const_iterator Itor;
 		std::pair<Itor,Itor> overlays = overlays_->equal_range(loc);
@@ -2512,11 +2591,6 @@ void display::draw_hex(const map_location& loc) {
 				}
 			}
 		}
-	}
-
-	if(!shrouded(loc)) {
-		// village-control flags.
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
 	}
 
 	// Draw the time-of-day mask on top of the terrain in the hex.
@@ -2622,7 +2696,12 @@ void display::draw_hex(const map_location& loc) {
 		drawing_buffer_add(drawing_buffer::LAYER_UNIT_DEFAULT, loc, xpos, ypos,
 			image::get_image("terrain/foreground.png", image_type));
 	}
+#endif
+}
 
+void display::draw_hex_cursor(const map_location& /*loc*/)
+{
+	/** DO NOTHING */
 }
 
 image::TYPE display::get_image_type(const map_location& /*loc*/) {
@@ -3143,27 +3222,115 @@ void display::process_reachmap_changes()
 	reach_map_changed_ = false;
 }
 
-void display::handle_window_event(const SDL_Event& event) {
-	if (event.type == SDL_WINDOWEVENT) {
-			switch (event.window.event) {
-				case SDL_WINDOWEVENT_RESIZED:
-				case SDL_WINDOWEVENT_RESTORED:
-				case SDL_WINDOWEVENT_EXPOSED:
-					dirty_ = true;
+// TODO: decide whether to move this to CVideo.
+//       Also maybe a better name and/or additional functionality.
+void display::render_texture_original_size(const texture& tex, const int x_pos, const int y_pos)
+{
+	texture::info info = tex.get_info();
 
-					break;
-			}
-	}
-
-
+	SDL_Rect dst {x_pos, y_pos, info.w, info.h};
+	screen_.render_copy(tex, nullptr, &dst);
 }
 
-void display::handle_event(const SDL_Event& event) {
-	if (gui2::dialogs::loading_screen::displaying()) {
+void display::draw_gamemap()
+{
+	SDL_Rect area = map_area();
+	render_clip_rect_setter setter(&area);
+
+	// TODO: ToD coloring
+
+	invalidate_animations();
+
+	unit_drawer drawer = unit_drawer(*this);
+
+	for(const map_location& loc : get_visible_hexes()) {
+		int xpos = get_location_x(loc);
+		int ypos = get_location_y(loc);
+
+		image::TYPE image_type = get_image_type(loc);
+
+		const bool on_map = get_map().on_board(loc);
+		const time_of_day& tod = get_time_of_day(loc);
+
+		// TODO:
+		//if(shrouded(loc))) {
+		//	return;
+		//}
+
+
+		//
+		// Background terrains
+		//
+		get_terrain_images(loc, tod.id, image_type, FOREGROUND);
+		for(const texture& t : terrain_image_vector_) {
+			render_texture_original_size(t, xpos, ypos);
+		}
+
+		//
+		// Village flags
+		//
+		texture flag = get_flag(loc);
+		if(flag) {
+			render_texture_original_size(flag, xpos, ypos);
+		}
+
+		//
+		// Units
+		//
+		auto u_it = dc_->units().find(loc);
+		auto request = exclusive_unit_draw_requests_.find(loc);
+		if(u_it != dc_->units().end() && (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id())) {
+			drawer.redraw_unit(*u_it);
+		}
+
+		//
+		// Foreground terrains
+		//
+		get_terrain_images(loc, tod.id, image_type, BACKGROUND);
+		for(const texture& t : terrain_image_vector_) {
+			render_texture_original_size(t, xpos, ypos);
+		}
+	}
+}
+
+void display::draw_new()
+{
+	const SDL_Rect area = map_outside_area();
+	draw_background(area, theme_.border().background_image);
+
+	draw_gamemap();
+
+	draw_all_panels();
+	draw_minimap();
+}
+
+void display::handle_window_event(const SDL_Event& event)
+{
+	if(event.type == SDL_WINDOWEVENT) {
+		switch(event.window.event) {
+		case SDL_WINDOWEVENT_RESIZED:
+		case SDL_WINDOWEVENT_RESTORED:
+		case SDL_WINDOWEVENT_EXPOSED:
+			dirty_ = true;
+
+			break;
+		}
+	}
+}
+
+void display::handle_event(const SDL_Event& event)
+{
+	if(gui2::dialogs::loading_screen::displaying()) {
 		return;
 	}
-	if (event.type == DRAW_ALL_EVENT) {
-		draw();
+
+	switch(event.type) {
+	case DRAW_EVENT:
+	case DRAW_ALL_EVENT:
+		draw_new();
+		break;
+	default:
+		break;
 	}
 }
 
