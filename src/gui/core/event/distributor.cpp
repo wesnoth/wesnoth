@@ -22,6 +22,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
+#include "gui/widgets/text_box_base.hpp"
 
 #include "utils/functional.hpp"
 
@@ -563,6 +564,12 @@ distributor::distributor(widget& owner,
 	owner_.connect_signal<event::SDL_KEY_DOWN>(std::bind(
 			&distributor::signal_handler_sdl_key_down, this, _5, _6, _7));
 
+	owner_.connect_signal<event::SDL_TEXT_INPUT>(std::bind(
+			&distributor::signal_handler_sdl_text_input, this, _5, _6, _7));
+
+	owner_.connect_signal<event::SDL_TEXT_EDITING>(std::bind(
+			&distributor::signal_handler_sdl_text_editing, this, _5, _6, _7));
+
 	owner_.connect_signal<event::NOTIFY_REMOVAL>(std::bind(
 			&distributor::signal_handler_notify_removal, this, _1, _2));
 
@@ -573,6 +580,12 @@ distributor::~distributor()
 {
 	owner_.disconnect_signal<event::SDL_KEY_DOWN>(std::bind(
 			&distributor::signal_handler_sdl_key_down, this, _5, _6, _7));
+
+	owner_.disconnect_signal<event::SDL_TEXT_INPUT>(std::bind(
+			&distributor::signal_handler_sdl_text_input, this, _5, _6, _7));
+
+	owner_.disconnect_signal<event::SDL_TEXT_EDITING>(std::bind(
+			&distributor::signal_handler_sdl_text_editing, this, _5, _6, _7));
 
 	owner_.disconnect_signal<event::NOTIFY_REMOVAL>(std::bind(
 			&distributor::signal_handler_notify_removal, this, _1, _2));
@@ -634,13 +647,12 @@ void distributor::keyboard_remove_from_chain(widget* w)
 	}
 }
 
-void distributor::signal_handler_sdl_key_down(const SDL_Keycode key,
-											   const SDL_Keymod modifier,
-											   const utf8::string& unicode)
+template<typename Fcn, typename P1, typename P2, typename P3>
+void distributor::signal_handler_keyboard_internal(event::ui_event evt, P1&& p1, P2&& p2, P3&& p3)
 {
 	/** @todo Test whether recursion protection is needed. */
 
-	DBG_GUI_E << LOG_HEADER << event::SDL_KEY_DOWN << ".\n";
+	DBG_GUI_E << LOG_HEADER << evt << ".\n";
 
 	if(keyboard_focus_) {
 		// Attempt to cast to styled_widget, to avoid sending events if the
@@ -648,14 +660,15 @@ void distributor::signal_handler_sdl_key_down(const SDL_Keycode key,
 		// is enabled and ready to receive events.
 		styled_widget* control = dynamic_cast<styled_widget*>(keyboard_focus_);
 		if(!control || control->get_active()) {
-			DBG_GUI_E << LOG_HEADER << "Firing: " << event::SDL_KEY_DOWN
+			DBG_GUI_E << LOG_HEADER << "Firing: " << evt
 					  << ".\n";
-			if(owner_.fire(event::SDL_KEY_DOWN,
-						   *keyboard_focus_,
-						   key,
-						   modifier,
-						   unicode)) {
+			if(owner_.fire(evt, *keyboard_focus_, p1, p2, p3)) {
 				return;
+			}
+		}
+		if(text_box_base* tb = dynamic_cast<text_box_base*>(keyboard_focus_)) {
+			if(tb->is_composing()) {
+				return; // Skip the keyboard chain if composition is in progress.
 			}
 		}
 	}
@@ -691,12 +704,27 @@ void distributor::signal_handler_sdl_key_down(const SDL_Keycode key,
 			continue;
 		}
 
-		DBG_GUI_E << LOG_HEADER << "Firing: " << event::SDL_KEY_DOWN << ".\n";
-		if(owner_.fire(event::SDL_KEY_DOWN, **ritor, key, modifier, unicode)) {
+		DBG_GUI_E << LOG_HEADER << "Firing: " << evt << ".\n";
+		if(owner_.fire(evt, **ritor, p1, p2, p3)) {
 
 			return;
 		}
 	}
+}
+
+void distributor::signal_handler_sdl_key_down(const SDL_Keycode key, const SDL_Keymod modifier, const utf8::string& unicode)
+{
+	signal_handler_keyboard_internal<signal_keyboard_function>(event::SDL_KEY_DOWN, key, modifier, unicode);
+}
+
+void distributor::signal_handler_sdl_text_input(const utf8::string& unicode, int32_t start, int32_t end)
+{
+	signal_handler_keyboard_internal<signal_text_input_function>(event::SDL_TEXT_INPUT, unicode, start, end);
+}
+
+void distributor::signal_handler_sdl_text_editing(const utf8::string& unicode, int32_t start, int32_t end)
+{
+	signal_handler_keyboard_internal<signal_text_input_function>(event::SDL_TEXT_EDITING, unicode, start, end);
 }
 
 void distributor::signal_handler_notify_removal(dispatcher& w,

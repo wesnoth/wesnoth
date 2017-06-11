@@ -250,6 +250,23 @@ protected:
 	}
 	void set_selection_length(const int selection_length);
 
+	size_t get_composition_start() const
+	{
+		return ime_start_point_;
+	}
+
+	size_t get_composition_length() const
+	{
+		return ime_length_;
+	}
+
+public:
+	bool is_composing() const
+	{
+		return ime_in_progress_;
+	}
+	
+	void interrupt_composition();
 
 private:
 	/** Note the order of the states must be the same as defined in
@@ -280,6 +297,9 @@ private:
 	/** The text entered in the widget. */
 	font::pango_text text_;
 
+	/** Cached version of the text without any pending IME modifications. */
+	std::string text_cached_;
+
 	/** Start of the selected text. */
 	size_t selection_start_;
 
@@ -291,6 +311,12 @@ private:
 	 * * selection_len_ == 0 means no selection.
 	 */
 	int selection_length_;
+
+	// Values to support input method editors
+	bool ime_in_progress_;
+	int ime_start_point_;
+	int ime_cursor_;
+	int ime_length_;
 
 	size_t cursor_timer_;
 
@@ -441,23 +467,24 @@ private:
 	{
 	}
 
-protected:
 	/**
-	 * Default key handler if none of the above functions is called.
+	 * Tab key.
 	 *
-	 * Unmodified                 If invalid unicode it's ignored.
-	 *                            Else if text selected the selected text is
-	 *                            replaced with the unicode character send.
-	 *                            Else the unicode character is inserted after
-	 *                            the cursor.
-	 * Control                    Ignored.
-	 * Shift                      Ignored (already in the unicode value).
-	 * Alt                        Ignored.
+	 * Unmodified                 Implementation defined.
+	 * Control                    Implementation defined.
+	 * Shift                      Implementation defined.
+	 * Alt                        Implementation defined.
 	 */
-	virtual void handle_key_default(bool& handled,
-									SDL_Keycode key,
-									SDL_Keymod modifier,
+	virtual void handle_key_tab(SDL_Keymod /*modifier*/, bool& /*handled*/)
+	{
+	}
+
+protected:
+	virtual void handle_commit(bool& handled,
 									const utf8::string& unicode);
+	virtual void handle_editing(bool& handled,
+								const utf8::string& unicode,
+								int32_t start, int32_t len);
 
 private:
 	/**
@@ -479,8 +506,13 @@ private:
 	void signal_handler_sdl_key_down(const event::ui_event event,
 									 bool& handled,
 									 const SDL_Keycode key,
-									 SDL_Keymod modifier,
-									 const utf8::string& unicode);
+									 SDL_Keymod modifier);
+
+	void signal_handler_sdl_text_input(const event::ui_event event,
+									   bool& handled,
+									   const utf8::string& unicode,
+									   int32_t start,
+									   int32_t len);
 
 	void signal_handler_receive_keyboard_focus(const event::ui_event event);
 	void signal_handler_lose_keyboard_focus(const event::ui_event event);

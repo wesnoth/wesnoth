@@ -115,16 +115,29 @@ typedef std::function<void(dispatcher& dispatcher,
 							 bool& halt,
 							 message& message)> signal_message_function;
 
-	/**
+/**
  * Callback function signature.
  *
- * This function is used for the callbacks in set_event_message.
+ * This function is used for the callbacks in set_event_raw_event.
  */
 typedef std::function<void(dispatcher& dispatcher,
 						   const ui_event event,
 						   bool& handled,
 						   bool& halt,
 						   const SDL_Event& sdlevent)> signal_raw_event_function;
+
+/**
+ * Callback function signature.
+ *
+ * This function is used for the callbacks in set_event_text_input.
+ */
+typedef std::function<void(dispatcher& dispatcher,
+						   const ui_event event,
+						   bool& handled,
+						   bool& halt,
+						   const std::string& text,
+						   int32_t current_pos,
+						   int32_t select_len)> signal_text_input_function;
 
 /** Hotkey function handler signature. */
 typedef std::function<bool(dispatcher& dispatcher,
@@ -266,6 +279,22 @@ public:
 	bool fire(const ui_event event,
 			  widget& target,
 			  const SDL_Event& sdlevent);
+
+	/**
+	 * Fires an event which takes text input parameters
+	 * @param event 				The event to fire.
+	 * @param target 				The widget that should receive the event.
+	 *                              Normally this is the window holding the
+ 	 *                              widget.
+	 * @param text                  The text involved in the event
+	 * @param start                 The start point for IME editing
+	 * @param len                   The selection length for IME editing
+	 */
+	bool fire(const ui_event event,
+			  widget& target,
+			  const std::string& text,
+			  int32_t start,
+			  int32_t len);
 
 	/**
 	 * The position where to add a new callback in the signal handler.
@@ -570,6 +599,39 @@ public:
 	}
 
 	/**
+	 * Connect a signal for callback in set_text_input.
+	 *
+	 * @tparam E                     The event the callback needs to react to.
+	 * @param signal                 The callback function.
+	 * @param position               The position to place the callback.
+	 */
+	template <ui_event E>
+	utils::enable_if_t<has_key<set_event_text_input, E>::value>
+	connect_signal(const signal_text_input_function& signal,
+				   const queue_position position = back_child)
+	{
+		signal_text_input_queue_.connect_signal(E, position, signal);
+	}
+
+	/**
+	 * Disconnect a signal for callback in set_text_input.
+	 *
+	 * @tparam E                     The event the callback was used for.
+	 * @param signal                 The callback function.
+	 * @param position               The place where the function was added.
+	 *                               Needed remove the event from the right
+	 *                               place. (The function doesn't care whether
+	 *                               was added in front or back.)
+	 */
+	template <ui_event E>
+	utils::enable_if_t<has_key<set_event_text_input, E>::value>
+	disconnect_signal(const signal_text_input_function& signal,
+					  const queue_position position = back_child)
+	{
+		signal_text_input_queue_.disconnect_signal(E, position, signal);
+	}
+
+	/**
 	 * The behavior of the mouse events.
 	 *
 	 * Normally for mouse events there's first checked whether a dispatcher has
@@ -775,6 +837,9 @@ private:
 
 	/** Signal queue for callbacks in set_raw_event. */
 	signal_queue<signal_raw_event_function> signal_raw_event_queue_;
+
+	/** Signal queue for callbacks in set_event_text_input. */
+	signal_queue<signal_text_input_function> signal_text_input_queue_;
 
 	/** Are we connected to the event handler. */
 	bool connected_;

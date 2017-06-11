@@ -38,6 +38,7 @@ text_box_base::text_box_base()
 	, text_()
 	, selection_start_(0)
 	, selection_length_(0)
+	, ime_in_progress_(false)
 	, cursor_timer_(0)
 	, cursor_alpha_(0)
 	, cursor_blink_rate_ms_(750)
@@ -51,8 +52,10 @@ text_box_base::text_box_base()
 #endif
 
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
-			&text_box_base::signal_handler_sdl_key_down, this, _2, _3, _5, _6, _7));
-
+			&text_box_base::signal_handler_sdl_key_down, this, _2, _3, _5, _6));
+	connect_signal<event::SDL_TEXT_INPUT>(std::bind(&text_box_base::handle_commit, this, _3, _5));
+	connect_signal<event::SDL_TEXT_EDITING>(std::bind(&text_box_base::handle_editing, this, _3, _5, _6, _7));
+	
 	connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(std::bind(
 			&text_box_base::signal_handler_receive_keyboard_focus, this, _2));
 	connect_signal<event::LOSE_KEYBOARD_FOCUS>(
@@ -158,6 +161,15 @@ void text_box_base::insert_char(const utf8::string& unicode)
 		update_canvas();
 		set_is_dirty(true);
 	}
+}
+
+void text_box_base::interrupt_composition()
+{
+	ime_in_progress_ = false;
+	ime_length_ = 0;
+	// We need to inform the IME that text input is no longer in progress.
+	SDL_StopTextInput();
+	SDL_StartTextInput();
 }
 
 void text_box_base::copy_selection(const bool mouse)
@@ -386,17 +398,60 @@ void text_box_base::handle_key_delete(SDL_Keymod /*modifier*/, bool& handled)
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
-void text_box_base::handle_key_default(bool& handled,
-								SDL_Keycode /*key*/,
-								SDL_Keymod /*modifier*/,
-								const utf8::string& unicode)
+void text_box_base::handle_commit(bool& handled, const utf8::string& unicode)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
 	if(unicode.size() > 1 || unicode[0] != 0) {
 		handled = true;
+		if(ime_in_progress_) {
+			selection_start_ = ime_start_point_;
+			selection_length_ = ime_length_;
+			ime_in_progress_ = false;
+			ime_length_ = 0;
+		}
 		insert_char(unicode);
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+
+		if(text_changed_callback_) {
+			text_changed_callback_(this, this->text());
+		}
+	}
+}
+
+void text_box_base::handle_editing(bool& handled, const utf8::string& unicode, int32_t start, int32_t len)
+{
+	if(unicode.size() > 1 || unicode[0] != 0) {
+		handled = true;
+		size_t new_len = utf8::size(unicode);
+		if(!ime_in_progress_) {
+			ime_in_progress_ = true;
+			delete_selection();
+			ime_start_point_ = selection_start_;
+			text_cached_ = text_.text();
+			SDL_Rect rect = get_rectangle();
+			if(new_len > 0) {
+				rect.x += get_cursor_position(ime_start_point_).x;
+				rect.w = get_cursor_position(ime_start_point_ + new_len).x - rect.x;
+			} else {
+				rect.x += get_cursor_position(ime_start_point_ + new_len).x;
+				rect.w = get_cursor_position(ime_start_point_).x - rect.x;
+			}
+			SDL_SetTextInputRect(&rect);
+		}
+		ime_cursor_ = start;
+		ime_length_ = new_len;
+		std::string new_text(text_cached_);
+		new_text.insert(ime_start_point_, unicode);
+		text_.set_text(new_text, false);
+
+		// Update status
+		set_cursor(ime_start_point_ + ime_cursor_, false);
+		if(len > 0) {
+			set_cursor(ime_start_point_ + ime_cursor_ + len, true);
+		}
+		update_canvas();
+		set_is_dirty(true);
 	}
 }
 
@@ -413,8 +468,7 @@ void text_box_base::signal_handler_middle_button_click(const event::ui_event eve
 void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 										 bool& handled,
 										 const SDL_Keycode key,
-										 SDL_Keymod modifier,
-										 const utf8::string& unicode)
+										 SDL_Keymod modifier)
 {
 
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -456,8 +510,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 		case SDLK_a:
 			if(!(modifier & KMOD_CTRL)) {
-				handle_key_default(handled, key, modifier, unicode);
-				break;
+				return;
 			}
 
 			// If ctrl-a is used for home drop the styled_widget modifier
@@ -470,8 +523,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 		case SDLK_e:
 			if(!(modifier & KMOD_CTRL)) {
-				handle_key_default(handled, key, modifier, unicode);
-				break;
+				return;
 			}
 
 			// If ctrl-e is used for end drop the styled_widget modifier
@@ -487,11 +539,10 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_u:
-			if(modifier & KMOD_CTRL) {
-				handle_key_clear_line(modifier, handled);
-			} else {
-				handle_key_default(handled, key, modifier, unicode);
+			if(!(modifier & KMOD_CTRL)) {
+				return;
 			}
+			handle_key_clear_line(modifier, handled);
 			break;
 
 		case SDLK_DELETE:
@@ -500,8 +551,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 		case SDLK_c:
 			if(!(modifier & copypaste_modifier)) {
-				handle_key_default(handled, key, modifier, unicode);
-				break;
+				return;
 			}
 
 			// atm we don't care whether there is something to copy or paste
@@ -512,8 +562,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 		case SDLK_x:
 			if(!(modifier & copypaste_modifier)) {
-				handle_key_default(handled, key, modifier, unicode);
-				break;
+				return;
 			}
 
 			copy_selection(false);
@@ -523,16 +572,33 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 		case SDLK_v:
 			if(!(modifier & copypaste_modifier)) {
-				handle_key_default(handled, key, modifier, unicode);
-				break;
+				return;
 			}
 
 			paste_selection(false);
 			handled = true;
 			break;
 
+		case SDLK_RETURN:
+		case SDLK_KP_ENTER:
+			if(!ime_in_progress_ || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT))) {
+				return;
+			}
+			// The IME will handle it, we just need to make sure nothing else handles it too.
+			handled = true;
+			break;
+		
+		case SDLK_ESCAPE:
+			if(!ime_in_progress_ || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT))) {
+				return;
+			}
+			interrupt_composition();
+			handled = true;
+			break;
+		
 		default:
-			handle_key_default(handled, key, modifier, unicode);
+			// Don't call the text changed callback if nothing happened.
+			return;
 	}
 
 	if(text_changed_callback_) {

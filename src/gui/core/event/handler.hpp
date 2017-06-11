@@ -89,6 +89,8 @@ enum ui_event {
 	SDL_WHEEL_UP,                   /**< An SDL wheel up event. */
 	SDL_WHEEL_DOWN,                 /**< An SDL wheel down event. */
 	SDL_KEY_DOWN,                   /**< An SDL key down event. */
+	SDL_TEXT_INPUT,                 /**< An SDL text input (commit) event. */
+	SDL_TEXT_EDITING,               /**< An SDL text editing (IME) event. */
 
 	NOTIFY_REMOVAL,                 /**< Sent by a widget to notify others it's being destroyed. */
 	NOTIFY_MODIFIED,                /**<
@@ -221,6 +223,15 @@ set_event_message;
  * This version is for callbacks of raw events.
  */
 typedef boost::mpl::set<boost::mpl::int_<SDL_RAW_EVENT> > set_event_raw_event;
+
+/**
+ * Helper for catching use error of dispatcher::connect_signal.
+ *
+ * This version is for callbacks of text input events.
+ */
+typedef boost::mpl::set<boost::mpl::int_<SDL_TEXT_INPUT>,
+                        boost::mpl::int_<SDL_TEXT_EDITING>>
+set_event_text_input;
 
 /**
  * Connects a dispatcher to the event handler.

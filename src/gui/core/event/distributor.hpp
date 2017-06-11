@@ -356,6 +356,12 @@ private:
 									 const SDL_Keymod modifier,
 									 const utf8::string& unicode);
 
+	void signal_handler_sdl_text_input(const utf8::string& unicode, int32_t start, int32_t len);
+	void signal_handler_sdl_text_editing(const utf8::string& unicode, int32_t start, int32_t len);
+
+	template<typename Fcn, typename P1, typename P2, typename P3>
+	void signal_handler_keyboard_internal(event::ui_event evt, P1&& p1, P2&& p2, P3&& p3);
+
 	void signal_handler_notify_removal(dispatcher& widget, const ui_event event);
 };
 

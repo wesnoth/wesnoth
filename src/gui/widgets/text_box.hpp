@@ -247,10 +247,7 @@ private:
 	bool history_down();
 
 	/** Inherited from text_box_base. */
-	void handle_key_default(bool& handled,
-							SDL_Keycode key,
-							SDL_Keymod modifier,
-							const utf8::string& unicode) override;
+	void handle_key_tab(SDL_Keymod modifier, bool& handled) override;
 
 	/** Inherited from text_box_base. */
 	void handle_key_clear_line(SDL_Keymod modifier, bool& handled) override;

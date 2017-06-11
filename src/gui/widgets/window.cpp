@@ -42,6 +42,7 @@
 #include "gui/dialogs/tooltip.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/container_base.hpp"
+#include "gui/widgets/text_box_base.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/helper.hpp"
@@ -685,6 +686,10 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 		SDL_Rect rect = get_rectangle();
 		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
 		font::undraw_floating_labels(video_.getSurface());
+	}
+
+	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())) {
+		tb->interrupt_composition();
 	}
 
 	return retval_;
@@ -1405,6 +1410,15 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
+	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())) {
+		if(tb->is_composing()) {
+			if(handle_tab && !tab_order.empty() && key == SDLK_TAB) {
+				tb->interrupt_composition();
+			} else {
+				return;
+			}
+		}
+	}
 	if(!enter_disabled_ && (key == SDLK_KP_ENTER || key == SDLK_RETURN)) {
 		set_retval(OK);
 		handled = true;
