@@ -37,11 +37,11 @@ public:
 
 	static void display(const std::string& scenario_name, const config& story, CVideo& video)
 	{
-		if(!story.has_child("part")) {
-			return;
-		}
 		try {
-			story_viewer(scenario_name, story).show(video);
+			story_viewer viewer(scenario_name, story);
+			if(viewer.controller_.max_parts() > 0) {
+				viewer.show(video);
+			}
 		} catch(std::out_of_range&) {}
 	}
 
