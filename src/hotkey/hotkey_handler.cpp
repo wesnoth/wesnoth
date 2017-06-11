@@ -253,13 +253,12 @@ bool play_controller::hotkey_handler::execute_command(const hotkey::hotkey_comma
 		}
 	}
 	int prefixlen = wml_menu_hotkey_prefix.length();
-	if(command == hotkey::HOTKEY_WML && cmd.command.compare(0, prefixlen, wml_menu_hotkey_prefix) == 0)
+	if(press && command == hotkey::HOTKEY_WML && cmd.command.compare(0, prefixlen, wml_menu_hotkey_prefix) == 0)
 	{
 		std::string name = cmd.command.substr(prefixlen);
 		const map_location& hex = mouse_handler_.get_last_hex();
 
-		gamestate().get_wml_menu_items().fire_item(name, hex, gamestate().gamedata_, gamestate(), gamestate().board_.units_);
-		/// @todo Shouldn't the function return at this point?
+		return gamestate().get_wml_menu_items().fire_item(name, hex, gamestate().gamedata_, gamestate(), gamestate().board_.units_);
 	}
 	return command_executor::execute_command(cmd, index, press);
 }
