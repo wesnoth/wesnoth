@@ -112,6 +112,7 @@ public:
 
 	/// A vector of unit_type ids that this unit_type can advance to.
 	const std::vector<std::string>& advances_to() const { return advances_to_; }
+	/// A vector of unit_type ids that can advance to this unit_type.
 	const std::vector<std::string> advances_from() const;
 
 	config::const_child_itors modification_advancements() const
