@@ -110,6 +110,7 @@ public:
 	 */
 	std::set<std::string> advancement_tree() const;
 
+	/// A vector of unit_type ids that this unit_type can advance to.
 	const std::vector<std::string>& advances_to() const { return advances_to_; }
 	const std::vector<std::string> advances_from() const;
 
