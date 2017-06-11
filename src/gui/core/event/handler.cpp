@@ -430,7 +430,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			break;
 
 		case SDL_TEXTINPUT:
-			text_input(event.text.text);
+			key_down(event);
 			break;
 
 		case SDL_TEXTEDITING:
@@ -725,7 +725,11 @@ void sdl_event_handler::key_down(const SDL_Event& event)
 		done = hotkey_pressed(hk);
 	}
 	if(!done) {
-		key_down(event.key.keysym.sym, static_cast<const SDL_Keymod>(event.key.keysym.mod), "");
+		if(event.type == SDL_TEXTINPUT) {
+			text_input(event.text.text);
+		} else {
+			key_down(event.key.keysym.sym, static_cast<const SDL_Keymod>(event.key.keysym.mod), "");
+		}
 	}
 }
 
