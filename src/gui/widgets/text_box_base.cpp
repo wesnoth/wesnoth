@@ -168,7 +168,6 @@ void text_box_base::interrupt_composition()
 	ime_in_progress_ = false;
 	ime_length_ = 0;
 	// We need to inform the IME that text input is no longer in progress.
-	// Unfortunately, this does not seem to work. :(
 	SDL_StopTextInput();
 	SDL_StartTextInput();
 }

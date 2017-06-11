@@ -22,6 +22,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
+#include "gui/widgets/text_box_base.hpp"
 
 #include "utils/functional.hpp"
 
@@ -663,6 +664,11 @@ void distributor::signal_handler_keyboard_internal(event::ui_event evt, P1&& p1,
 					  << ".\n";
 			if(owner_.fire(evt, *keyboard_focus_, p1, p2, p3)) {
 				return;
+			}
+		}
+		if(text_box_base* tb = dynamic_cast<text_box_base*>(keyboard_focus_)) {
+			if(tb->is_composing()) {
+				return; // Skip the keyboard chain if composition is in progress.
 			}
 		}
 	}
