@@ -70,14 +70,5 @@ public:
 
 private:
 	/** draw a health/xp bar of a unit */
-	void draw_bar(const std::string& image, int xpos, int ypos,
-		const map_location& loc, size_t height, double filled,
-		const color_t& col, fixed_t alpha) const;
-
-	/**
-	 * Finds the start and end rows on the energy bar image.
-	 *
-	 * White pixels are substituted for the color of the energy.
-	 */
-	const SDL_Rect& calculate_energy_bar(surface surf) const;
+	void draw_bar(int xpos, int ypos, size_t height, double filled, color_t col, fixed_t alpha) const;
 };
