@@ -551,6 +551,15 @@ static void event_execute( const SDL_Event& event, command_executor* executor)
 			event.type == SDL_MOUSEBUTTONDOWN ||
 			event.type == SDL_TEXTINPUT;
 
+	if(event.type == SDL_KEYDOWN) {
+		unsigned mods = event.key.keysym.mod;
+		if(!CKey::is_uncomposable(event.key) && !(mods & KMOD_CTRL) && !(mods & KMOD_ALT) && !(mods & KMOD_GUI)) {
+				return;
+		}
+	} else if(event.type == SDL_TEXTINPUT && strnlen(event.text.text, 32) != 1) {
+		return;
+	}
+
 	execute_command(hotkey::get_hotkey_command(hk->get_command()), executor, -1, press);
 	executor->set_button_state();
 }
