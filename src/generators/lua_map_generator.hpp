@@ -21,18 +21,11 @@
 
 #include <string>
 
-struct lua_State;
-class CVideo;
-
-// TODO: Add support for user configurability (via defining a gui2 dialog in lua)
-// What's missing is that you need access to the 'wesnoth' object to call show dialog
-// at the moment.
-
 class lua_map_generator : public map_generator {
 public:
 	lua_map_generator(const config & cfg);
 
-	bool allow_user_config() const override { return false; }
+	bool allow_user_config() const override { return !user_config_.empty(); }
 
 	std::string name() const override { return "lua"; }
 
