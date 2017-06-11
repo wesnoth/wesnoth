@@ -515,9 +515,9 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 		image_loc = image::locator(current_data.image, current_data.image_mod);
 	}
 
-	surface image;
+	texture image;
 	if(!image_loc.is_void() && !image_loc.get_filename().empty()) { // invalid diag image, or not diagonal
-		image=image::get_image(image_loc, image::SCALED_TO_ZOOM);
+		image = image::get_texture(image_loc /*, image::SCALED_TO_ZOOM*/);
 	}
 
 	const int d2 = display::get_singleton()->hex_size() / 2;
@@ -538,8 +538,10 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 		if(!current_data.auto_hflip) { facing_west = false; }
 		if(!current_data.auto_vflip) { facing_north = true; }
 
-		int my_x = x + current_data.x - image->w / 2;
-		int my_y = y + current_data.y - image->h / 2;
+		const texture::info info = image.get_info();
+	
+		int my_x = x + current_data.x - info.w / 2;
+		int my_y = y + current_data.y - info.h / 2;
 
 		if(facing_west) {
 			my_x -= current_data.directional_x;
@@ -553,11 +555,14 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 			my_y -= current_data.directional_y;
 		}
 
-		game_display::get_singleton()->render_image(my_x, my_y,
+		game_disp->render_texture_original_size(image, my_x, my_y);
+#if 0
+		game_disp->render_image(my_x, my_y,
 			static_cast<drawing_buffer::drawing_layer>(drawing_buffer::LAYER_UNIT_FIRST + current_data.drawing_layer),
 			src, image, facing_west, false,
 			ftofxp(current_data.highlight_ratio), current_data.blend_with ? *current_data.blend_with : color_t(),
 			current_data.blend_ratio, current_data.submerge, !facing_north);
+#endif
 	}
 
 	halo_id = halo::handle(); //halo::NO_HALO;

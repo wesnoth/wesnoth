@@ -143,7 +143,7 @@ void suppose_dead::draw_hex(const map_location& hex)
 		int xpos = resources::screen->get_location_x(loc_);
 		int ypos = resources::screen->get_location_y(loc_);
 		resources::screen->drawing_buffer_add(layer, loc_, xpos, ypos,
-				image::get_image("whiteboard/suppose_dead.png", image::SCALED_TO_HEX));
+				image::get_texture("whiteboard/suppose_dead.png"));
 	}
 }
 

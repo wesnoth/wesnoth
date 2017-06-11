@@ -88,6 +88,8 @@ public:
 
 	const gamemap& get_map() const { return dc_->map(); }
 
+	void populate_terrain_cache();
+
 	const std::vector<team>& get_teams() const {return dc_->teams();}
 
 	/** The playing team is the team whose turn it is. */
@@ -577,6 +579,8 @@ public:
 
 	void draw(bool update, bool force);
 
+	void draw_new();
+
 	map_labels& labels();
 	const map_labels& labels() const;
 
@@ -621,6 +625,10 @@ public:
 	{
 		reports_object_ = &reports_object;
 	}
+
+	// TODO: decide whether to move this to CVideo.
+	void render_texture_original_size(const texture& tex, const int x_pos, const int y_pos);
+
 private:
 	void init_flags_for_side_internal(size_t side, const std::string& side_color);
 
@@ -675,6 +683,8 @@ protected:
 	 */
 	virtual void draw_hex(const map_location& loc);
 
+	virtual void draw_hex_cursor(const map_location& loc);
+
 	/**
 	 * @returns the image type to be used for the passed hex
 	 */
@@ -686,11 +696,13 @@ protected:
 	 */
 	virtual void draw_sidebar() {}
 
+	void draw_gamemap();
+
 	void draw_minimap();
 
 	enum TERRAIN_TYPE { BACKGROUND, FOREGROUND};
 
-	std::vector<surface> get_terrain_images(const map_location &loc,
+	std::vector<texture> get_terrain_images(const map_location &loc,
 					const std::string& timeid,
 					image::TYPE type,
 					TERRAIN_TYPE terrain_type);
@@ -771,61 +783,12 @@ protected:
 
 private:
 
-	// This surface must be freed by the caller
-	surface get_flag(const map_location& loc);
+	texture get_flag(const map_location& loc);
 
 	/** Animated flags for each team */
 	std::vector<animated<image::locator> > flags_;
 
 public:
-	/**
-	 * The layers to render something on. This value should never be stored
-	 * it's the internal drawing order and adding removing and reordering
-	 * the layers should be safe.
-	 * If needed in WML use the name and map that to the enum value.
-	 */
-	enum drawing_layer {
-		LAYER_TERRAIN_BG,          /**<
-		                            * Layer for the terrain drawn behind the
-		                            * unit.
-		                            */
-		LAYER_GRID_TOP,            /**< Top half part of grid image */
-		LAYER_MOUSEOVER_OVERLAY,   /**< Mouseover overlay used by editor*/
-		LAYER_FOOTSTEPS,           /**< Footsteps showing path from unit to mouse */
-		LAYER_MOUSEOVER_TOP,       /**< Top half of image following the mouse */
-		LAYER_UNIT_FIRST,          /**< Reserve layers to be selected for WML. */
-		LAYER_UNIT_BG = LAYER_UNIT_FIRST+10,             /**< Used for the ellipse behind the unit. */
-		LAYER_UNIT_DEFAULT=LAYER_UNIT_FIRST+40,/**<default layer for drawing units */
-		LAYER_TERRAIN_FG = LAYER_UNIT_FIRST+50, /**<
-		                            * Layer for the terrain drawn in front of
-		                            * the unit.
-		                            */
-		LAYER_GRID_BOTTOM,         /**<
-		                            * Used for the bottom half part of grid image.
-		                            * Should be under moving units, to avoid masking south move.
-		                            */
-		LAYER_UNIT_MOVE_DEFAULT=LAYER_UNIT_FIRST+60/**<default layer for drawing moving units */,
-		LAYER_UNIT_FG =  LAYER_UNIT_FIRST+80, /**<
-		                            * Used for the ellipse in front of the
-		                            * unit.
-		                            */
-		LAYER_UNIT_MISSILE_DEFAULT = LAYER_UNIT_FIRST+90, /**< default layer for missile frames*/
-		LAYER_UNIT_LAST=LAYER_UNIT_FIRST+100,
-		LAYER_REACHMAP,            /**< "black stripes" on unreachable hexes. */
-		LAYER_MOUSEOVER_BOTTOM,    /**< Bottom half of image following the mouse */
-		LAYER_FOG_SHROUD,          /**< Fog and shroud. */
-		LAYER_ARROWS,              /**< Arrows from the arrows framework. Used for planned moves display. */
-		LAYER_ACTIONS_NUMBERING,   /**< Move numbering for the whiteboard. */
-		LAYER_SELECTED_HEX,        /**< Image on the selected unit */
-		LAYER_ATTACK_INDICATOR,    /**< Layer which holds the attack indicator. */
-		LAYER_UNIT_BAR,            /**<
-		                            * Unit bars and overlays are drawn on this
-		                            * layer (for testing here).
-		                            */
-		LAYER_MOVE_INFO,           /**< Movement info (defense%, etc...). */
-		LAYER_LINGER_OVERLAY,      /**< The overlay used for the linger mode. */
-		LAYER_BORDER,              /**< The border of the map. */
-	};
 
 	/**
 	 * Draw an image at a certain location.
@@ -860,6 +823,11 @@ protected:
 	drawing_buffer drawing_buffer_;
 
 public:
+	drawing_buffer& get_drawing_buffer()
+	{
+		return drawing_buffer_;
+	}
+
 	/**
 	 * Add an item to the drawing buffer. You need to update screen on affected area
 	 *
@@ -868,12 +836,21 @@ public:
 	 *                           drawing order.
 	 */
 	void drawing_buffer_add(const drawing_buffer::drawing_layer layer,
+			const map_location& loc, int x, int y, const texture& tex,
+			const SDL_Rect &clip = SDL_Rect());
+
+	void drawing_buffer_add(const drawing_buffer::drawing_layer layer,
+			const map_location& loc, int x, int y,
+			const std::vector<texture>& tex,
+			const SDL_Rect &clip = SDL_Rect());
+
+	void drawing_buffer_add(const drawing_buffer::drawing_layer layer,
 			const map_location& loc, int x, int y, const surface& surf,
 			const SDL_Rect &clip = SDL_Rect());
 
 	void drawing_buffer_add(const drawing_buffer::drawing_layer layer,
 			const map_location& loc, int x, int y,
-			const std::vector<surface> &surf,
+			const std::vector<surface>& surf,
 			const SDL_Rect &clip = SDL_Rect());
 
 protected:

@@ -2355,7 +2355,7 @@ void draw_centered_on_background(surface surf, const SDL_Rect& rect, const color
 		r.h = surf->h;
 
 		texture tex(surf);
-		CVideo::get_singleton().copy_to_screen(tex, nullptr, &r);
+		CVideo::get_singleton().render_copy(tex, nullptr, &r);
 	}
 }
 
