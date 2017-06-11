@@ -1798,7 +1798,7 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 			// Unlike others, decreasing experience is a *GOOD* thing
 			return vgettext(
 				"<span color=\"$color\">$number_or_percent</span> XP to advance",
-				{{"number_or_percent</span>", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "green" : "red"}});
+				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "green" : "red"}});
 		} else if(apply_to == "max_attacks") {
 			return VNGETTEXT(
 					"<span color=\"$color\">$number_or_percent</span> attack per turn",
