@@ -116,6 +116,7 @@ private:
 	typedef boost::asio::ip::tcp::socket socket;
 	socket socket_;
 
+	boost::system::error_code last_error_;
 	bool handshake_finished_;
 
 	boost::asio::streambuf read_buf_;
@@ -151,6 +152,7 @@ private:
 	std::list<config> recv_queue_;
 	std::mutex recv_queue_mutex_;
 	uint32_t payload_size_;
+	// TODO: do i need to guard the follwing 4 values with a mutex?
 	std::size_t bytes_to_write_;
 	std::size_t bytes_written_;
 	std::size_t bytes_to_read_;

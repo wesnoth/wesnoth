@@ -56,6 +56,7 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 	, io_service_()
 	, resolver_(io_service_)
 	, socket_(io_service_)
+	, last_error_()
 	, handshake_finished_(false)
 	, read_buf_()
 	, handshake_response_()
@@ -150,7 +151,7 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 		// worker thread
 		std::shared_ptr<wesnothd_connection> this_ptr = this->shared_from_this();
 		io_service_.run();
-		WRN_NW << "Process:" << getpid() << " Thread:" << boost::this_thread::get_id() << " io_service_.run finished\n";		
+		LOG_NW << "wesnothd_connection::io_service::run() returned\n";		
 	} ));
 }
 
@@ -198,9 +199,11 @@ void wesnothd_connection::stop()
 std::size_t wesnothd_connection::is_write_complete(const boost::system::error_code& ec, size_t bytes_transferred)
 {
 	MPTEST_LOG;
+	last_error_ = ec;
 	if(ec) {
-		LOG_NW << __func__ << " Throwing: " << ec << "\n";
-		throw system_error(ec);
+		LOG_NW << __func__ << " Error: " << ec << "\n";
+		io_service_.stop();
+		return bytes_to_write_ - bytes_transferred;
 	}
 	bytes_written_ = bytes_transferred;
 	return bytes_to_write_ - bytes_transferred;
@@ -215,9 +218,11 @@ void wesnothd_connection::handle_write(
 	MPTEST_LOG;
 	DBG_NW << "Written " << bytes_transferred << " bytes.\n";
 	send_queue_.pop_front();
-	if (ec) {
-		LOG_NW << __func__ << " Throwing: " << ec << "\n";
-		throw system_error(ec);
+	last_error_ = ec;
+	if(ec) {
+		LOG_NW << __func__ << " Error: " << ec << "\n";
+		io_service_.stop();
+		return;
 	}
 	if (!send_queue_.empty()) {
 		send();
@@ -233,9 +238,11 @@ std::size_t wesnothd_connection::is_read_complete(
 	//We use custom is_write/read_complete function to be able to see the current progress of the upload/download
 	MPTEST_LOG;
 
+	last_error_ = ec;
 	if(ec) {
-		LOG_NW << __func__ << " Throwing: " << ec << "\n";
-		throw system_error(ec);
+		LOG_NW << __func__ << " Error: " << ec << "\n";
+		io_service_.stop();
+		return bytes_to_read_ - bytes_transferred;
 	}
 	bytes_read_ = bytes_transferred;
 	if(bytes_transferred < 4) {
@@ -263,10 +270,15 @@ void wesnothd_connection::handle_read(
 	MPTEST_LOG;
 	DBG_NW << "Read " << bytes_transferred << " bytes.\n";
 	bytes_to_read_ = 0;
-	if(ec && ec != boost::asio::error::eof) {
-		LOG_NW << __func__ << " Throwing: " << ec << "\n";
-		throw system_error(ec);
+		
+	last_error_ = ec != boost::asio::error::eof ? ec : boost::system::error_code();
+
+	if(last_error_) {
+		LOG_NW << __func__ << " Error: " << ec << "\n";
+		io_service_.stop();
+		return;
 	}
+
 	std::istream is(&read_buf_);
 	config data;
 	read_gz(data, is);
@@ -328,6 +340,11 @@ std::size_t wesnothd_connection::poll()
 bool wesnothd_connection::receive_data(config& result)
 {
 	MPTEST_LOG;
+
+	if (last_error_) {
+		throw error(last_error_);
+	}
+
 	std::lock_guard<std::mutex> lock(recv_queue_mutex_);
 	if (recv_queue_.empty()) {
 		return false;
