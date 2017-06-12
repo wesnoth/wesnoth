@@ -173,7 +173,11 @@ public:
 	/** Renders the screen. Should normally not be called directly! */
 	void render_screen();
 
-	void render_copy(const texture& txt, SDL_Rect* src_rect = nullptr, SDL_Rect* dst_rect = nullptr);
+	void render_copy(const texture& txt,
+		SDL_Rect* src_rect = nullptr,
+		SDL_Rect* dst_rect = nullptr,
+		const bool flip_h = false,
+		const bool flip_v = false);
 
 	/**
 	 * Updates and ensures the framebuffer surface is valid.
