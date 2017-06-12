@@ -44,16 +44,6 @@
  * their own window, therefore the code will be cleaned up after that has been
  * determined.
  */
-
-/*
- * At some point in the future this event handler should become the main event
- * handler. This switch controls the experimental switch for that change.
- */
-//#define MAIN_EVENT_HANDLER
-
-/* Since this code is still very experimental it's not enabled yet. */
-//#define ENABLE
-
 namespace gui2
 {
 
@@ -62,34 +52,12 @@ namespace event
 
 /***** Static data. *****/
 static std::unique_ptr<class sdl_event_handler> handler_ = nullptr;
-static events::event_context* event_context = nullptr;
 
-#ifdef MAIN_EVENT_HANDLER
-static unsigned draw_interval = 0;
+// TODO: note sure if this is useful for something so I'm leaving it here.
+#if 0
 static unsigned event_poll_interval = 0;
 
 /***** Static functions. *****/
-
-/**
- * SDL_AddTimer() callback for the draw event.
- *
- * When this callback is called it pushes a new draw event in the event queue.
- *
- * @returns                       The new timer interval, 0 to stop.
- */
-static uint32_t timer_sdl_draw_event(uint32_t, void*)
-{
-	// DBG_GUI_E << "Pushing draw event in queue.\n";
-
-	SDL_Event event;
-	sdl::UserEvent data(DRAW_EVENT);
-
-	event.type = DRAW_EVENT;
-	event.user = data;
-
-	SDL_PushEvent(&event);
-	return draw_interval;
-}
 
 /**
  * SDL_AddTimer() callback for the poll event.
@@ -338,17 +306,14 @@ sdl_event_handler::sdl_event_handler()
 		}
 	}
 
-// The event context is created now we join it.
-#ifdef ENABLE
-	join();
-#endif
+	// The event context is created now we join it.
+	// TODO: shouldn't this be the correct time to join the context not in connect()?
+	//join();
 }
 
 sdl_event_handler::~sdl_event_handler()
 {
-#ifdef ENABLE
-	leave();
-#endif
+	//leave();
 }
 
 void sdl_event_handler::handle_event(const SDL_Event& event)
@@ -482,7 +447,6 @@ void sdl_event_handler::connect(dispatcher* dispatcher)
 		   == dispatchers_.end());
 
 	if(dispatchers_.empty()) {
-		event_context = new events::event_context();
 		join();
 	}
 
@@ -513,8 +477,6 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 
 	if(dispatchers_.empty()) {
 		leave();
-		delete event_context;
-		event_context = nullptr;
 	}
 }
 
@@ -791,10 +753,7 @@ manager::manager()
 {
 	handler_.reset(new sdl_event_handler());
 
-#ifdef MAIN_EVENT_HANDLER
-	draw_interval = 30;
-	SDL_AddTimer(draw_interval, timer_sdl_draw_event, nullptr);
-
+#if 0
 	event_poll_interval = 10;
 	SDL_AddTimer(event_poll_interval, timer_sdl_poll_events, nullptr);
 #endif
@@ -804,10 +763,10 @@ manager::~manager()
 {
 	handler_.reset(nullptr);
 
-#ifdef MAIN_EVENT_HANDLER
-	draw_interval = 0;
+#if 0
 	event_poll_interval = 0;
 #endif
+
 }
 
 /***** free functions class. *****/
