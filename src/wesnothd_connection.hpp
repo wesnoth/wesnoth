@@ -117,6 +117,7 @@ private:
 	socket socket_;
 
 	boost::system::error_code last_error_;
+	std::mutex last_error_mutex_;
 	bool handshake_finished_;
 
 	boost::asio::streambuf read_buf_;
