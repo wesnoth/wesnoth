@@ -309,13 +309,37 @@ void CVideo::delay(unsigned int milliseconds)
 	}
 }
 
-void CVideo::render_copy(const texture& txt, SDL_Rect* src_rect, SDL_Rect* dst_rect)
+void CVideo::render_copy(
+		const texture& txt, SDL_Rect* src_rect, SDL_Rect* dst_rect, const bool flip_h, const bool flip_v)
 {
 	if(!window) {
 		return;
 	}
 
-	SDL_RenderCopy(*window, txt, src_rect, dst_rect);
+	// If no additional data was provided, render immediately.
+	if(!flip_h && !flip_v) {
+		SDL_RenderCopy(*window, txt, src_rect, dst_rect);
+		return;
+	}
+
+	// Calculate flipping mode.
+	int fmode = SDL_FLIP_NONE;
+
+	if(flip_h && flip_v) {
+		fmode = SDL_FLIP_HORIZONTAL | SDL_FLIP_VERTICAL;
+	} else if(flip_h) {
+		fmode = SDL_FLIP_HORIZONTAL;
+	} else if(flip_v) {
+		fmode = SDL_FLIP_VERTICAL;
+	}
+
+	SDL_RendererFlip flip_mode = static_cast<SDL_RendererFlip>(fmode);
+
+	// TODO: add handling of rotations.
+	static const double rotate_angle = 0;
+	static const SDL_Point* center = nullptr;
+
+	SDL_RenderCopyEx(*window, txt, src_rect, dst_rect, rotate_angle, center, flip_mode);
 }
 
 void CVideo::render_screen()

@@ -88,7 +88,11 @@ public:
 	//blits a surface with black as alpha
 	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect=nullptr, SDL_Rect* clip_rect=nullptr);
 
-	void render_copy(const texture& txt, SDL_Rect* src_rect = nullptr, SDL_Rect* dst_rect = nullptr);
+	void render_copy(const texture& txt,
+		SDL_Rect* src_rect = nullptr,
+		SDL_Rect* dst_rect = nullptr,
+		const bool flip_h = false,
+		const bool flip_v = false);
 
 	void render_screen();
 	static void delay(unsigned int milliseconds);
