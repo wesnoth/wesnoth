@@ -1044,7 +1044,7 @@ void image_shape::dimension_validation(unsigned value, const std::string& name, 
 void image_shape::draw(
 		const int /*canvas_w*/,
 		const int /*canvas_h*/,
-		SDL_Renderer* renderer,
+		SDL_Renderer* /*renderer*/,
 		wfl::map_formula_callable& variables)
 {
 	DBG_GUI_D << "Image: draw.\n";
@@ -1161,6 +1161,8 @@ void image_shape::draw(
 		surf = image_;
 	}
 
+	const bool flip_v = vertical_mirror_(local_variables);
+
 	dst_clip.w = w ? w : surf->w;
 	dst_clip.h = h ? h : surf->h;
 
@@ -1172,11 +1174,7 @@ void image_shape::draw(
 	 */
 	texture txt(surf);
 
-	if(vertical_mirror_(local_variables)) {
-		SDL_RenderCopyEx(renderer, txt, nullptr, &dst_clip, 0, nullptr, SDL_FLIP_VERTICAL);
-	} else {
- 		SDL_RenderCopy(renderer, txt, nullptr, &dst_clip);
-	}
+	CVideo::get_singleton().render_copy(txt, nullptr, &dst_clip, false, flip_v);
 }
 
 image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_mode)
@@ -1280,7 +1278,7 @@ text_shape::text_shape(const config& cfg)
 void text_shape::draw(
 		const int canvas_w,
 		const int canvas_h,
-		SDL_Renderer* renderer,
+		SDL_Renderer* /*renderer*/,
 		wfl::map_formula_callable& variables)
 {
 	assert(variables.has_key("text"));
@@ -1368,7 +1366,7 @@ void text_shape::draw(
 	 */
 	texture txt(surf);
 
-	SDL_RenderCopy(renderer, txt, nullptr, &dst);
+	CVideo::get_singleton().render_copy(txt, nullptr, &dst);
 }
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
@@ -1490,7 +1488,7 @@ void canvas::render()
 #endif
 
 	// Copy the entire texture to the full viewport.
-	SDL_RenderCopy(renderer_, texture_, nullptr, nullptr);
+	CVideo::get_singleton().render_copy(texture_);
 }
 
 void canvas::parse_cfg(const config& cfg)
