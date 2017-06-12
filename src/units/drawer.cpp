@@ -51,7 +51,7 @@ unit_drawer::unit_drawer(display& thedisp)
 }
 
 // NOTE: surfaces were scaled to zoom
-void unit_drawer::redraw_unit (const unit & u) const
+void unit_drawer::redraw_unit(const unit & u) const
 {
 	unit_animation_component & ac = u.anim_comp();
 	map_location loc = u.get_location();
@@ -247,6 +247,26 @@ void unit_drawer::redraw_unit (const unit & u) const
 		disp.render_texture_original_size(ellipse_front, xsrc, ysrc + adjusted_params.y - ellipse_floating);
 	}
 
+	// Smooth unit movements from terrain of different elevation.
+	// TODO: see if having this here actually makes the healthbars bob up and and down.
+
+	const t_translation::terrain_code terrain_dst = map.get_terrain(dst);
+	const terrain_type& terrain_dst_info = map.get_terrain_info(terrain_dst);
+
+	int height_adjust_unit = static_cast<int>((
+		terrain_info.unit_height_adjust()     * (1.0 - adjusted_params.offset) +
+		terrain_dst_info.unit_height_adjust() *        adjusted_params.offset
+	) * zoom_factor);
+
+	if(is_flying && height_adjust_unit < 0) {
+		height_adjust_unit = 0;
+	}
+
+	params.y -= height_adjust_unit - height_adjust;
+	params.halo_y -= height_adjust_unit - height_adjust;
+
+	ac.anim_->redraw(params, halo_man);
+
 	if(draw_bars) {
 		const texture unit_img = image::get_texture(u.default_anim_image());
 
@@ -354,25 +374,6 @@ void unit_drawer::redraw_unit (const unit & u) const
 		}
 	}
 
-	// Smooth unit movements from terrain of different elevation.
-	// Do this separately from above so that the health bar doesn't go up and down.
-
-	const t_translation::terrain_code terrain_dst = map.get_terrain(dst);
-	const terrain_type& terrain_dst_info = map.get_terrain_info(terrain_dst);
-
-	int height_adjust_unit = static_cast<int>((
-		terrain_info.unit_height_adjust()     * (1.0 - adjusted_params.offset) +
-		terrain_dst_info.unit_height_adjust() *        adjusted_params.offset
-	) * zoom_factor);
-
-	if(is_flying && height_adjust_unit < 0) {
-		height_adjust_unit = 0;
-	}
-
-	params.y -= height_adjust_unit - height_adjust;
-	params.halo_y -= height_adjust_unit - height_adjust;
-
-	ac.anim_->redraw(params, halo_man);
 	ac.refreshing_ = false;
 }
 
