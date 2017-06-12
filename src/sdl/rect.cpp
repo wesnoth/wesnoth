@@ -20,7 +20,12 @@ namespace sdl
 {
 bool point_in_rect(int x, int y, const SDL_Rect& rect)
 {
+#if SDL_VERSION_ATLEAST(2, 0, 4)
+	SDL_Point p {x, y};
+	return SDL_PointInRect(&p, &rect);
+#else
 	return x >= rect.x && y >= rect.y && x < rect.x + rect.w && y < rect.y + rect.h;
+#endif
 }
 
 bool point_in_rect(const gui2::point& point, const SDL_Rect& rect)
@@ -37,25 +42,18 @@ bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2)
 SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
 {
 	SDL_Rect res;
-	res.x = std::max<int>(rect1.x, rect2.x);
-	res.y = std::max<int>(rect1.y, rect2.y);
-	int w = std::min<int>(rect1.x + rect1.w, rect2.x + rect2.w) - res.x;
-	int h = std::min<int>(rect1.y + rect1.h, rect2.y + rect2.h) - res.y;
-	if (w <= 0 || h <= 0) return empty_rect;
-	res.w = w;
-	res.h = h;
+	if(!SDL_IntersectRect(&rect1, &rect2, &res)) {
+		return empty_rect;
+	}
+
 	return res;
 }
 
 SDL_Rect union_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
 {
-	if (rect1.w == 0 || rect1.h == 0) return rect2;
-	if (rect2.w == 0 || rect2.h == 0) return rect1;
 	SDL_Rect res;
-	res.x = std::min<int>(rect1.x, rect2.x);
-	res.y = std::min<int>(rect1.y, rect2.y);
-	res.w = std::max<int>(rect1.x + rect1.w, rect2.x + rect2.w) - res.x;
-	res.h = std::max<int>(rect1.y + rect1.h, rect2.y + rect2.h) - res.y;
+	SDL_UnionRect(&rect1, &rect2, &res);
+
 	return res;
 }
 
@@ -79,7 +77,7 @@ void fill_rectangle(const SDL_Rect& rect, const color_t& color)
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b)
 {
-	return a.x == b.x && a.y == b.y && a.w == b.w && a.h == b.h;
+	return SDL_RectEquals(&a, &b);
 }
 
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b)
