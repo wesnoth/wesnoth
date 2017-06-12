@@ -65,6 +65,7 @@ bool CKey::is_uncomposable(const SDL_KeyboardEvent &event) {
 		case SDLK_DOWN:
 		case SDLK_LEFT:
 		case SDLK_RIGHT:
+		case SDLK_SPACE:
 
 			return true;
 		default:
