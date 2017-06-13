@@ -138,8 +138,11 @@ void arrow::draw_hex(const map_location& hex)
 	if(path_contains(hex))
 	{
 		display* disp = display::get_singleton();
-		disp->render_image(disp->get_location_x(hex), disp->get_location_y(hex), layer_,
-					hex, image::get_image(symbols_map_[hex], image::SCALED_TO_ZOOM));
+		disp->render_scaled_to_zoom(
+			image::get_texture(symbols_map_[hex] /*, image::SCALED_TO_ZOOM*/),
+			disp->get_location_x(hex),
+			disp->get_location_y(hex)
+		);
 	}
 }
 

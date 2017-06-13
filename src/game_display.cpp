@@ -248,8 +248,48 @@ void game_display::post_commit()
 	halo_man_->render();
 }
 
+void game_display::draw_hex_cursor(const map_location& loc)
+{
+	const int xpos = get_location_x(loc);
+	const int ypos = get_location_y(loc);
+
+	const unit* u = resources::gameboard->get_visible_unit(loc, dc_->teams()[viewing_team()]);
+
+	std::string bg_path;
+	std::string fg_path;
+
+	// image::SCALED_TO_HEX
+
+	// TODO: should probably cache these results in this class.
+
+	if(u == nullptr) {
+		bg_path = "misc/hover-hex-top.png~RC(magenta>gold)";
+		fg_path = "misc/hover-hex-bottom.png~RC(magenta>gold)";
+	} else if(dc_->teams()[currentTeam_].is_enemy(u->side())) {
+		bg_path = "misc/hover-hex-enemy-top.png~RC(magenta>red)";
+		fg_path = "misc/hover-hex-enemy-bottom.png~RC(magenta>red)";
+	} else if(dc_->teams()[currentTeam_].side() == u->side()) {
+		bg_path = "misc/hover-hex-top.png~RC(magenta>green)";
+		fg_path = "misc/hover-hex-bottom.png~RC(magenta>green)";
+	} else {
+		bg_path = "misc/hover-hex-top.png~RC(magenta>lightblue)";
+		fg_path = "misc/hover-hex-bottom.png~RC(magenta>lightblue)";
+	}
+
+	texture cursor_bg = image::get_texture(image::locator(bg_path));
+	if(cursor_bg) {
+		render_scaled_to_zoom(cursor_bg, xpos, ypos);
+	}
+
+	texture cursor_fg = image::get_texture(image::locator(fg_path));
+	if(cursor_fg) {
+		render_scaled_to_zoom(cursor_fg, xpos, ypos);
+	}
+}
+
 void game_display::draw_hex(const map_location& loc)
 {
+	return;
 	const bool on_map = get_map().on_board(loc);
 	const bool is_shrouded = shrouded(loc);
 //	const bool is_fogged = fogged(loc);
@@ -265,6 +305,7 @@ void game_display::draw_hex(const map_location& loc)
 		return;
 	}
 
+#if 0
 	if(on_map && loc == mouseoverHex_) {
 		drawing_buffer::drawing_layer hex_top_layer = drawing_buffer::LAYER_MOUSEOVER_BOTTOM;
 		const unit *u = resources::gameboard->get_visible_unit(loc, dc_->teams()[viewing_team()] );
@@ -293,7 +334,7 @@ void game_display::draw_hex(const map_location& loc)
 					image::get_image("misc/hover-hex-bottom.png~RC(magenta>lightblue)", image::SCALED_TO_HEX));
 		}
 	}
-
+#endif
 
 
 	// Draw reach_map information.

@@ -156,53 +156,22 @@ surface floating_label::create_surface()
 	return surf_;
 }
 
-void floating_label::draw(surface screen)
+void floating_label::draw()
 {
-	if(!visible_) {
-		buf_.assign(nullptr);
-		return;
-	}
-
-	if(screen == nullptr) {
-		return;
-	}
-
 	create_surface();
 	if(surf_ == nullptr) {
 		return;
 	}
 
-	if(buf_ == nullptr) {
-		buf_.assign(create_compatible_surface(screen, surf_->w, surf_->h));
-		if(buf_ == nullptr) {
-			return;
-		}
-	}
-
 	SDL_Rect rect = sdl::create_rect(xpos(surf_->w), ypos_, surf_->w, surf_->h);
-	const clip_rect_setter clip_setter(screen, &clip_rect_);
-	sdl_copy_portion(screen,&rect,buf_,nullptr);
-	sdl_blit(surf_,nullptr,screen,&rect);
+
+	// TODO: cache?
+	texture tex(surf_);
+
+	CVideo::get_singleton().render_copy(tex, nullptr, &rect);
 }
 
-void floating_label::undraw(surface screen)
-{
-	if(screen == nullptr || buf_ == nullptr) {
-		return;
-	}
-	SDL_Rect rect = sdl::create_rect(xpos(surf_->w), ypos_, surf_->w, surf_->h);
-	const clip_rect_setter clip_setter(screen, &clip_rect_);
-	sdl_blit(buf_,nullptr,screen,&rect);
-
-	move(xmove_,ymove_);
-	if(lifetime_ > 0) {
-		--lifetime_;
-		if(alpha_change_ != 0 && (xmove_ != 0.0 || ymove_ != 0.0) && surf_ != nullptr) {
-			// fade out moving floating labels
-			surf_.assign(adjust_surface_alpha_add(surf_,alpha_change_));
-		}
-	}
-}
+// NOTE: there used to be a "fade out moving floating labels" effect here.
 
 int add_floating_label(const floating_label& flabel)
 {
@@ -283,7 +252,7 @@ floating_label_context::~floating_label_context()
 	label_contexts.pop();
 }
 
-void draw_floating_labels(surface screen)
+void draw_floating_labels()
 {
 	if(label_contexts.empty()) {
 		return;
@@ -295,36 +264,9 @@ void draw_floating_labels(surface screen)
 	// are displayed over earlier added labels.
 	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i) {
 		if(context.count(i->first) > 0) {
-			i->second.draw(screen);
+			i->second.draw();
 		}
 	}
 }
 
-void undraw_floating_labels(surface screen)
-{
-	if(label_contexts.empty()) {
-		return;
-	}
-
-	std::set<int>& context = label_contexts.top();
-
-	//undraw labels in reverse order, so that a LIFO process occurs, and the screen is restored
-	//into the exact state it started in.
-	for(label_map::reverse_iterator i = labels.rbegin(); i != labels.rend(); ++i) {
-		if(context.count(i->first) > 0) {
-			i->second.undraw(screen);
-		}
-	}
-
-	//remove expired labels
-	for(label_map::iterator j = labels.begin(); j != labels.end(); ) {
-		if(context.count(j->first) > 0 && j->second.expired()) {
-			context.erase(j->first);
-			labels.erase(j++);
-		} else {
-			++j;
-		}
-	}
 }
-}
-
