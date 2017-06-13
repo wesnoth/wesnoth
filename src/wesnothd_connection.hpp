@@ -174,10 +174,13 @@ public:
 	
 	wesnothd_connection_ptr(const wesnothd_connection_ptr&) = delete;
 	wesnothd_connection_ptr& operator=(const wesnothd_connection_ptr&) = delete;
-
+#if defined(_MSC_VER) &&_MSC_VER == 1800
+	wesnothd_connection_ptr(wesnothd_connection_ptr&& other) : ptr_(std::move(other.ptr_))  {}
+	wesnothd_connection_ptr& operator=(wesnothd_connection_ptr&& other) { ptr_ = std::move(other.ptr_); return *this; }
+#else
 	wesnothd_connection_ptr(wesnothd_connection_ptr&&) = default;
 	wesnothd_connection_ptr& operator=(wesnothd_connection_ptr&&);
-	
+#endif
 	~wesnothd_connection_ptr();
 
 	explicit operator bool() const {
