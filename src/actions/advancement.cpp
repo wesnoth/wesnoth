@@ -143,12 +143,10 @@ namespace
 			animator.wait_for_end();
 			animator.set_all_standing();
 			resources::screen->invalidate(loc);
-			resources::screen->draw();
 			events::pump();
 		}
 
 		resources::screen->invalidate_all();
-		resources::screen->draw();
 
 		return true;
 	}

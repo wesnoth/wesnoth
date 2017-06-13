@@ -306,7 +306,6 @@ void mouse_handler_base::mouse_wheel_right(int /*x*/, int /*y*/, const bool /*br
 bool mouse_handler_base::right_click(int x, int y, const bool browse)
 {
 	if (right_click_show_menu(x, y, browse)) {
-		gui().draw(); // redraw highlight (and maybe some more)
 		const theme::menu* const m = gui().get_theme().context_menu();
 		if (m != nullptr) {
 			show_menu_ = true;

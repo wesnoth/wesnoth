@@ -138,7 +138,6 @@ void playsingle_controller::init_gui(){
 	}
 
 	update_locker lock_display(gui_->video(), is_skipping_replay());
-	gui_->draw();
 	get_hotkey_command_executor()->set_button_state();
 	events::raise_draw_event();
 }
@@ -359,7 +358,6 @@ void playsingle_controller::play_idle_loop()
 {
 	while(!should_return_to_play_side()) {
 		play_slice_catch();
-		gui_->draw();
 		SDL_Delay(10);
 	}
 }
@@ -470,7 +468,6 @@ void playsingle_controller::play_human_turn() {
 	while(!should_return_to_play_side()) {
 		check_objectives();
 		play_slice_catch();
-		gui_->draw();
 	}
 
 }
@@ -498,7 +495,6 @@ void playsingle_controller::linger()
 		end_turn_ = END_TURN_NONE;
 		while(end_turn_ == END_TURN_NONE) {
 			play_slice();
-			gui_->draw();
 		}
 	} catch(const savegame::load_game_exception &) {
 		// Loading a new game is effectively a quit.
@@ -576,7 +572,6 @@ void playsingle_controller::play_ai_turn()
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
 	gui_->invalidate_all();
-	gui_->draw();
 }
 
 

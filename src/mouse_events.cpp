@@ -873,7 +873,6 @@ void mouse_handler::save_whiteboard_attack(const map_location& attacker_loc, con
 
 		// gui().highlight_hex(map_location());
 
-		gui().draw();
 		gui().unhighlight_reach();
 		gui().clear_attack_indicator();
 
@@ -1004,7 +1003,6 @@ void mouse_handler::attack_enemy_(const map_location& att_loc
 	gui().highlight_hex(map_location());
 	gui().clear_attack_indicator();
 	gui().unhighlight_reach();
-	gui().draw();
 
 	current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
 	///@todo change ToD to be location specific for the defender

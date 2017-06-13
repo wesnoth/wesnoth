@@ -244,8 +244,6 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 
 		if (animate) {
 			unit_display::unit_recruited(loc);
-		} else if (show) {
-			resources::screen->draw();
 		}
 	}
 }

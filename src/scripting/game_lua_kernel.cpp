@@ -3761,7 +3761,6 @@ int game_lua_kernel::intf_teleport(lua_State *L)
 	}
 
 	game_display_->invalidate_unit_after_move(src_loc, vacant_dst);
-	game_display_->draw();
 
 	// Sighted events.
 	clearer.fire_events();
