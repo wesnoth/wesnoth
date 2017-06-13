@@ -115,6 +115,7 @@ public:
 	/// A vector of unit_type ids that can advance to this unit_type.
 	const std::vector<std::string> advances_from() const;
 
+	/// Returns two iterators pointing to a range of AMLA configs.
 	config::const_child_itors modification_advancements() const
 	{ return cfg_.child_range("advancement"); }
 
