@@ -315,7 +315,8 @@ void controller_base::play_slice(bool is_delay_enabled)
 		scrolling_ = true;
 	}
 
-	// be nice when window is not visible	// NOTE should be handled by display instead, to only disable drawing
+	// be nice when window is not visible
+	// NOTE should be handled by display instead, to only disable drawing
 	if(is_delay_enabled && !CVideo::get_singleton().window_has_flags(SDL_WINDOW_SHOWN)) {
 		CVideo::delay(200);
 	}
