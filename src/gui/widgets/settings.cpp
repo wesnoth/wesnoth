@@ -585,7 +585,7 @@ const builder_window::window_resolution& get_window_builder(const std::string& t
 
 	VALIDATE(!resolutions.empty(), formatter() << "Window '" << type << "' has no resolutions.\n");
 
-	builder_window::window_resolution* best_resolution = nullptr;
+	const builder_window::window_resolution* best_resolution = nullptr;
 	int best_resolution_score = 0;
 
 	for(const auto& res : resolutions) {
