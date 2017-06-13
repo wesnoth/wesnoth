@@ -236,7 +236,7 @@ void unit_drawer::redraw_unit(const unit & u) const
 		//disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_FIRST, loc,
 		//	xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_back);
 
-		disp.render_texture_original_size(ellipse_back, xsrc, ysrc + adjusted_params.y - ellipse_floating);
+		disp.render_scaled_to_zoom(ellipse_back, xsrc, ysrc + adjusted_params.y - ellipse_floating);
 	}
 
 	if(ellipse_front != nullptr) {
@@ -244,7 +244,7 @@ void unit_drawer::redraw_unit(const unit & u) const
 		//disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_FIRST, loc,
 		//	xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front);
 
-		disp.render_texture_original_size(ellipse_front, xsrc, ysrc + adjusted_params.y - ellipse_floating);
+		disp.render_scaled_to_zoom(ellipse_front, xsrc, ysrc + adjusted_params.y - ellipse_floating);
 	}
 
 	// Smooth unit movements from terrain of different elevation.
@@ -320,7 +320,7 @@ void unit_drawer::redraw_unit(const unit & u) const
 			texture orb(image::get_texture(*orb_img));
 			//disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_BAR,
 			//	loc, xsrc + xoff, ysrc + yoff + adjusted_params.y, orb);
-			disp.render_texture_original_size(orb, xsrc + xoff, ysrc + yoff + adjusted_params.y);
+			disp.render_scaled_to_zoom(orb, xsrc + xoff, ysrc + yoff + adjusted_params.y);
 		}
 
 		double unit_energy = 0.0;
@@ -361,7 +361,7 @@ void unit_drawer::redraw_unit(const unit & u) const
 				//}
 				//disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_BAR,
 				//	loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, crown);
-				disp.render_texture_original_size(crown, xsrc + xoff, ysrc + yoff + adjusted_params.y);
+				disp.render_scaled_to_zoom(crown, xsrc + xoff, ysrc + yoff + adjusted_params.y);
 			}
 		}
 
@@ -370,7 +370,7 @@ void unit_drawer::redraw_unit(const unit & u) const
 			if(ov_img != nullptr) {
 				//disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_BAR,
 				//	loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, ov_img);
-				disp.render_texture_original_size(ov_img, xsrc + xoff, ysrc + yoff + adjusted_params.y);
+				disp.render_scaled_to_zoom(ov_img, xsrc + xoff, ysrc + yoff + adjusted_params.y);
 			}
 		}
 	}
