@@ -342,7 +342,7 @@ void mp_lobby::update_gamelist_diff()
 				LOG_LB << "Modifying game in listbox " << game.id << " (row " << list_i << ")\n";
 				grid* grid = gamelistbox_->get_row_grid(list_i);
 				modify_grid_with_data(grid, make_game_row_data(game));
-				adjust_game_row_contents(game, list_i, grid);
+				adjust_game_row_contents(game, list_i, grid, false);
 				++list_i;
 				next_gamelist_id_at_row.push_back(game.id);
 			} else if(game.display_status == mp::game_info::DELETED) {
@@ -450,7 +450,7 @@ std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_in
 
 void mp_lobby::adjust_game_row_contents(const mp::game_info& game,
 										   int idx,
-										   grid* grid)
+										   grid* grid, bool add_callbacks)
 {
 	find_widget<styled_widget>(grid, "name", false).set_use_markup(true);
 	find_widget<styled_widget>(grid, "status", false).set_use_markup(true);
@@ -474,6 +474,15 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game,
 	set_visible_if_exists(grid, "registered_only",    game.registered_users_only);
 	set_visible_if_exists(grid, "no_era",            !game.have_era);
 
+	if(minimap* map = dynamic_cast<minimap*>(grid->find("minimap", false))) {
+		map->set_config(&game_config_);
+		map->set_map_data(game.map_data);
+	}
+	
+	if(!add_callbacks) {
+		return;
+	}
+		
 	if(button* join_button = dynamic_cast<button*>(grid->find("join", false))) {
 		connect_signal_mouse_left_click(
 				*join_button,
@@ -492,10 +501,6 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game,
 		observe_button->set_active(game.can_observe());
 	}
 
-	if(minimap* map = dynamic_cast<minimap*>(grid->find("minimap", false))) {
-		map->set_config(&game_config_);
-		map->set_map_data(game.map_data);
-	}
 }
 
 void mp_lobby::update_gamelist_filter()
