@@ -119,8 +119,14 @@ public:
 	config::const_child_itors modification_advancements() const
 	{ return cfg_.child_range("advancement"); }
 
+	/**
+	 * Returns a gendered variant of this unit_type.
+	 * @param gender "male" or "female".
+	 */
 	const unit_type& get_gender_unit_type(std::string gender) const;
+	/// Returns a gendered variant of this unit_type based on the given parameter.
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
+
 	const unit_type& get_variation(const std::string& id) const;
 	/** Info on the type of unit that the unit reanimates as. */
 	const std::string& undead_variation() const { return undead_variation_; }
