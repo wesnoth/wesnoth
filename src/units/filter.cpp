@@ -487,20 +487,86 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 		return false;
 	}
 
-	if (!vcfg["recall_cost"].blank() && vcfg["recall_cost"].to_int(-1) != u.recall_cost()) {
-		return false;
+	if (!vcfg["recall_cost"].blank()) {
+		bool match_found = false;
+		for(auto cost : utils::parse_ranges(vcfg["recall_cost"])) {
+			if(cost.first <= u.recall_cost() && u.recall_cost() <= cost.second) {
+				match_found = true;
+				break;
+			}
+		}
+		if(!match_found) {
+			return false;
+		}
 	}
 
-	if (!vcfg["level"].blank() && vcfg["level"].to_int(-1) != u.level()) {
-		return false;
+	if(!vcfg["level"].blank()) {
+		bool match_found = false;
+		for(auto lvl : utils::parse_ranges(vcfg["level"])) {
+			if(lvl.first <= u.level() && u.level() <= lvl.second) {
+				match_found = true;
+				break;
+			}
+		}
+		if(!match_found) {
+			return false;
+		}
 	}
 
-	if (!vcfg["defense"].blank() && vcfg["defense"].to_int(-1) != u.defense_modifier(fc_.get_disp_context().map().get_terrain(loc))) {
-		return false;
+	if(!vcfg["defense"].blank()) {
+		bool match_found = false;
+		int actual_defense = u.defense_modifier(fc_.get_disp_context().map().get_terrain(loc));
+		for(auto def : utils::parse_ranges(vcfg["defense"])) {
+			if(def.first <= actual_defense && actual_defense <= def.second) {
+				match_found = true;
+				break;
+			}
+		}
+		if(!match_found) {
+			return false;
+		}
 	}
 
-	if (!vcfg["movement_cost"].blank() && vcfg["movement_cost"].to_int(-1) != u.movement_cost(fc_.get_disp_context().map().get_terrain(loc))) {
-		return false;
+	if(!vcfg["movement_cost"].blank()) {
+		bool match_found = false;
+		int actual_cost = u.movement_cost(fc_.get_disp_context().map().get_terrain(loc));
+		for(auto cost : utils::parse_ranges(vcfg["movement_cost"])) {
+			if(cost.first <= actual_cost && actual_cost <= cost.second) {
+				match_found = true;
+				break;
+			}
+		}
+		if(!match_found) {
+			return false;
+		}
+	}
+
+	if(!vcfg["vision_cost"].blank()) {
+		bool match_found = false;
+		int actual_cost = u.vision_cost(fc_.get_disp_context().map().get_terrain(loc));
+		for(auto cost : utils::parse_ranges(vcfg["vision_cost"])) {
+			if(cost.first <= actual_cost && actual_cost <= cost.second) {
+				match_found = true;
+				break;
+			}
+		}
+		if(!match_found) {
+			return false;
+		}
+	}
+
+	if(!vcfg["jamming_cost"].blank()) {
+		bool match_found = false;
+		int actual_cost = u.jamming_cost(fc_.get_disp_context().map().get_terrain(loc));
+		for(auto cost : utils::parse_ranges(vcfg["jamming_cost"])) {
+			if(cost.first <= actual_cost && actual_cost <= cost.second) {
+				match_found = true;
+				break;
+			}
+		}
+		if(!match_found) {
+			return false;
+		}
 	}
 
 	// Now start with the new WML based comparison.
