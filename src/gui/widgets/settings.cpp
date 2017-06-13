@@ -590,11 +590,13 @@ const builder_window::window_resolution& get_window_builder(const std::string& t
 
 	for(const auto& res : resolutions) {
 		
-		int w = res.window_width ? res.window_width : settings::screen_width;
-		int h = res.window_height ? res.window_height : settings::screen_height;
+		int screen_w = settings::screen_width;
+		int screen_h = settings::screen_height;
+		int w = res.window_width ? res.window_width : screen_w;
+		int h = res.window_height ? res.window_height : screen_h;
 		int score = w * h;
 		
-		if(score >= best_resolution_score && w <= settings::screen_width && h <= settings::screen_height) {
+		if(score >= best_resolution_score && w <= screen_w && h <= settings::screen_h) {
 			best_resolution = &res;
 			best_resolution_score = score;
 		}
