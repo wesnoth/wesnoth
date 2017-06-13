@@ -48,7 +48,7 @@ static lg::log_domain log_mp("mp/main");
 #define DBG_MP LOG_STREAM(debug, log_mp)
 
 /** Opens a new server connection and prompts the client for login credentials, if necessary. */
-static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const std::string& original_host)
+static wesnothd_connection_ptr open_connection(CVideo& video, const std::string& original_host)
 {
 	DBG_MP << "opening connection" << std::endl;
 
@@ -58,13 +58,13 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 		dlg.show(video);
 
 		if(dlg.get_retval() != gui2::window::OK) {
-			return nullptr;
+			return wesnothd_connection_ptr();
 		}
 
 		h = preferences::network_host();
 	}
 
-	std::unique_ptr<wesnothd_connection> sock;
+	wesnothd_connection_ptr sock;
 
 	const int colon_index = h.find_first_of(":");
 	std::string host;
@@ -120,7 +120,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 				throw wesnothd_error(_("Server-side redirect loop"));
 			}
 			shown_hosts.insert(hostpair(host, port));
-			sock.release();
+			sock = wesnothd_connection_ptr();
 			sock = gui2::dialogs::network_transmission::wesnothd_connect_dialog(video, "redirect", host, port);
 			continue;
 		}
@@ -181,7 +181,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 				warning_msg += _("Do you want to continue?");
 
 				if(gui2::show_message(video, _("Warning"), warning_msg, gui2::dialogs::message::yes_no_buttons) != gui2::window::OK) {
-					return 0;
+					return wesnothd_connection_ptr();
 				}
 			}
 
@@ -302,7 +302,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 						break;
 					// Cancel
 					default:
-						return 0;
+						return wesnothd_connection_ptr();
 				}
 
 			// If we have got a new username we have to start all over again
@@ -323,7 +323,7 @@ static std::unique_ptr<wesnothd_connection> open_connection(CVideo& video, const
 		return sock;
 	}
 
-	return nullptr;
+	return wesnothd_connection_ptr();
 }
 
 /** Helper struct to manage the MP workflow arguments. */
@@ -545,7 +545,7 @@ void start_client(CVideo& video, const config& game_config,	saved_game& state, c
 
 	preferences::admin_authentication_reset r;
 
-	std::unique_ptr<wesnothd_connection> connection = open_connection(video, host);
+	wesnothd_connection_ptr connection = open_connection(video, host);
 	if(!connection) {
 		return;
 	}

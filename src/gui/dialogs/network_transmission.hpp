@@ -19,8 +19,7 @@
 #include "network_asio.hpp"
 #include <boost/optional.hpp>
 #include "events.hpp"
-
-class wesnothd_connection;
+#include <wesnothd_connection.hpp>
 
 namespace gui2
 {
@@ -50,7 +49,7 @@ public:
 	};
 
 	static bool wesnothd_receive_dialog(CVideo& video, const std::string& msg, config& cfg, wesnothd_connection& connection);
-	static std::unique_ptr<wesnothd_connection> wesnothd_connect_dialog(CVideo& video, const std::string& msg, const std::string& hostname, int port);
+	static wesnothd_connection_ptr wesnothd_connect_dialog(CVideo& video, const std::string& msg, const std::string& hostname, int port);
 
 private:
 	static void wesnothd_dialog(CVideo& video, connection_data& conn, const std::string& msg);
