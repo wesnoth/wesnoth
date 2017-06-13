@@ -331,6 +331,7 @@ void unit_drawer::redraw_unit(const unit & u) const
 		const int bar_shift = static_cast<int>(-5*zoom_factor);
 		const int hp_bar_height = static_cast<int>(max_hitpoints * u.hp_bar_scaling());
 
+		// TODO: stop using fixed-point stuff.
 		const fixed_t bar_alpha = (loc == mouse_hex || loc == sel_hex) ? ftofxp(1.0): ftofxp(0.8);
 
 		// HP bar
@@ -391,7 +392,7 @@ void unit_drawer::draw_bar(int xpos, int ypos, size_t height, double filled, col
 	static const color_t bar_color_border {213, 213, 213, 200};
 
 	// Override the filled area's color's alpha.
-	col.a = alpha;
+	col.a = std::min<unsigned>(alpha, 255);
 
 	// Bar dimensions.
 	// Note about the magic x, y additions: we used to use an image for the bar instead of drawing
