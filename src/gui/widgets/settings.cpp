@@ -585,14 +585,25 @@ const builder_window::window_resolution& get_window_builder(const std::string& t
 
 	VALIDATE(!resolutions.empty(), formatter() << "Window '" << type << "' has no resolutions.\n");
 
+	const builder_window::window_resolution* best_resolution = nullptr;
+	int best_resolution_score = 0;
+
 	for(const auto& res : resolutions) {
-		if(settings::screen_width <= res.window_width && settings::screen_height <= res.window_height) {
-			return res;
+		
+		int screen_w = settings::screen_width;
+		int screen_h = settings::screen_height;
+		int w = res.window_width ? res.window_width : screen_w;
+		int h = res.window_height ? res.window_height : screen_h;
+		int score = w * h;
+		
+		if(score >= best_resolution_score && w <= screen_w && h <= screen_h) {
+			best_resolution = &res;
+			best_resolution_score = score;
 		}
 	}
 
 	// If no matching resolution was found, return the last builder.
-	return resolutions.back();
+	return best_resolution ? *best_resolution : resolutions.back();
 }
 
 /*WIKI
