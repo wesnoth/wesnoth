@@ -91,8 +91,6 @@ public:
 
 	const gamemap& get_map() const { return dc_->map(); }
 
-	void populate_terrain_cache();
-
 	const std::vector<team>& get_teams() const {return dc_->teams();}
 
 	/** The playing team is the team whose turn it is. */
@@ -195,10 +193,10 @@ public:
 
 
 	/** Gets the underlying screen object. */
-	CVideo& video() { return screen_; }
+	CVideo& video() { return video_; }
 
 	/** return the screen surface or the surface used for map_screenshot. */
-	surface& get_screen_surface() { return map_screenshot_ ? map_screenshot_surf_ : screen_.getSurface();}
+	surface& get_screen_surface() { return map_screenshot_ ? map_screenshot_surf_ : video_.getSurface();}
 
 	virtual bool in_game() const { return false; }
 	virtual bool in_editor() const { return false; }
@@ -370,10 +368,16 @@ public:
 	void redraw_everything();
 
 	/** Adds a redraw observer, a function object to be called when redraw_everything is used */
-	void add_redraw_observer(std::function<void(display&)> f);
+	void add_redraw_observer(std::function<void(display&)> f)
+	{
+		redraw_observers_.push_back(f);
+	}
 
 	/** Clear the redraw observers */
-	void clear_redraw_observers();
+	void clear_redraw_observers()
+	{
+		redraw_observers_.clear();
+	}
 
 	theme& get_theme() { return theme_; }
 	void set_theme(config theme_cfg);
@@ -457,10 +461,7 @@ public:
 
 	terrain_builder& get_builder() {return *builder_;}
 
-	void flip();
-
-	/** Copy the backbuffer to the framebuffer. */
-	void update_display();
+	void draw_debugging_aids();
 
 	/** Rebuild all dynamic terrain. */
 	void rebuild_all();
@@ -648,8 +649,33 @@ public:
 		reports_object_ = &reports_object;
 	}
 
-	// TODO: decide whether to move this to CVideo.
-	void render_texture_original_size(const texture& tex, const int x_pos, const int y_pos);
+	/**
+	 * Renders a texture directly to the screen (or current rendering target) scaled to the
+	 * current zoom factor.
+	 *
+	 * @param tex              The texture to render.
+	 * @param x_pos            The x coordinate to render at.
+	 * @param y_pos            The y coordinate to render at.
+	 * @param extra_args       Any additional arguments to pass to @ref CVideo::render_copy.
+	 *                         This should not contain the texture or source/destination rects.
+	 */
+	template<typename... T>
+	void render_scaled_to_zoom(const texture& tex, const int x_pos, const int y_pos, T&&... extra_args)
+	{
+		texture::info info = tex.get_info();
+
+		// Scale the coordinates to the appropriate zoom factor.
+		const double zoom_factor = get_zoom_factor();
+
+		SDL_Rect dst {
+			x_pos,
+			y_pos,
+			static_cast<int>(info.w * zoom_factor),
+			static_cast<int>(info.h * zoom_factor),
+		};
+
+		video_.render_copy(tex, nullptr, &dst, std::forward<T>(extra_args)...);
+	}
 
 private:
 	void init_flags_for_side_internal(size_t side, const std::string& side_color);
@@ -739,7 +765,7 @@ protected:
 
 	static const std::string& get_variant(const std::vector<std::string>& variants, const map_location &loc);
 
-	CVideo& screen_;
+	CVideo& video_;
 	size_t currentTeam_;
 	bool dont_show_all_; //const team *viewpoint_;
 	int xpos_, ypos_;
@@ -816,23 +842,6 @@ private:
 public:
 
 	/**
-	 * Draw an image at a certain location.
-	 * x,y: pixel location on screen to draw the image
-	 * image: the image to draw
-	 * reverse: if the image should be flipped across the x axis
-	 * greyscale: used for instance to give the petrified appearance to a unit image
-	 * alpha: the merging to use with the background
-	 * blendto: blend to this color using blend_ratio
-	 * submerged: the amount of the unit out of 1.0 that is submerged
-	 *            (presumably under water) and thus shouldn't be drawn
-	 */
-	void render_image(int x, int y, const drawing_buffer::drawing_layer drawing_layer,
-			const map_location& loc, surface image,
-			bool hreverse=false, bool greyscale=false,
-			fixed_t alpha=ftofxp(1.0), color_t blendto = {0,0,0},
-			double blend_ratio=0, double submerged=0.0,bool vreverse =false);
-
-	/**
 	 * Draw text on a hex. (0.5, 0.5) is the center.
 	 * The font size is adjusted to the zoom factor.
 	 */
@@ -860,23 +869,21 @@ public:
 	 * @param loc                The hex the image belongs to, needed for the
 	 *                           drawing order.
 	 */
-	void drawing_buffer_add(const drawing_buffer::drawing_layer layer,
-			const map_location& loc, int x, int y, const texture& tex,
-			const SDL_Rect &clip = SDL_Rect());
 
-	void drawing_buffer_add(const drawing_buffer::drawing_layer layer,
-			const map_location& loc, int x, int y,
-			const std::vector<texture>& tex,
-			const SDL_Rect &clip = SDL_Rect());
+	void drawing_buffer_add(const drawing_buffer::drawing_layer,
+			const map_location&, int, int, const surface&,
+			const SDL_Rect &clip = SDL_Rect())
+	{
+		UNUSED(clip);
+	}
 
-	void drawing_buffer_add(const drawing_buffer::drawing_layer layer,
-			const map_location& loc, int x, int y, const surface& surf,
-			const SDL_Rect &clip = SDL_Rect());
-
-	void drawing_buffer_add(const drawing_buffer::drawing_layer layer,
-			const map_location& loc, int x, int y,
-			const std::vector<surface>& surf,
-			const SDL_Rect &clip = SDL_Rect());
+	void drawing_buffer_add(const drawing_buffer::drawing_layer,
+			const map_location&, int, int,
+			const std::vector<surface>&,
+			const SDL_Rect &clip = SDL_Rect())
+	{
+		UNUSED(clip);
+	}
 
 protected:
 	/** redraw all panels associated with the map display */
