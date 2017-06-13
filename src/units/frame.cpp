@@ -555,14 +555,62 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 			my_y -= current_data.directional_y;
 		}
 
-		game_disp->render_texture_original_size(image, my_x, my_y);
+		//
+		// Begin unit drawing routine.
+		//
+
 #if 0
-		game_disp->render_image(my_x, my_y,
-			static_cast<drawing_buffer::drawing_layer>(drawing_buffer::LAYER_UNIT_FIRST + current_data.drawing_layer),
-			src, image, facing_west, false,
-			ftofxp(current_data.highlight_ratio), current_data.blend_with ? *current_data.blend_with : color_t(),
-			current_data.blend_ratio, current_data.submerge, !facing_north);
+		fixed_t alpha = ftofxp(current_data.highlight_ratio);
+
+		surface surf(image);
+
+		color_t blend_to = current_data.blend_with ? *current_data.blend_with : color_t();
+
+		if(current_data.blend_ratio != 0) {
+			surf = blend_surface(surf, current_data.blend_ratio, blend_to);
+		}
+	
+		if(alpha > ftofxp(1.0)) {
+			surf = brighten_image(surf, alpha);
+		//} else if(alpha != 1.0 && blendto != 0) {
+		//	surf.assign(blend_surface(surf,1.0-alpha,blendto));
+		} else if(alpha != ftofxp(1.0)) {
+			surface temp = make_neutral_surface(surf);
+			adjust_surface_alpha(temp, alpha);
+			surf = temp;
+		}
+
+		if(surf == nullptr) {
+			ERR_DP << "surface lost..." << std::endl;
+			return;
+		}
+
+		if(current_data.submerge > 0.0) {
+			// Divide the surface into 2 parts
+			const int submerge_height = std::max<int>(0, surf->h*(1.0-current_data.submerge));
+			const int depth = surf->h - submerge_height;
+		
+			SDL_Rect srcrect {0, 0, surf->w, submerge_height};
+		
+			//drawing_buffer_add(drawing_layer, loc, x, y, surf, srcrect);
+
+			if(submerge_height != surf->h) {
+				//the lower part will be transparent
+				float alpha_base = 0.3f; // 30% alpha at surface of water
+				float alpha_delta = 0.015f; // lose 1.5% per pixel depth
+				alpha_delta *= zoom_ / DefaultZoom; // adjust with zoom
+				surf = submerge_alpha(surf, depth, alpha_base, alpha_delta);
+
+				srcrect.y = submerge_height;
+				srcrect.h = surf->h-submerge_height;
+				y += submerge_height;
+
+				//drawing_buffer_add(drawing_layer, loc, x, y, surf, srcrect);
+			}
+		}
 #endif
+
+		game_disp->render_scaled_to_zoom(image, my_x, my_y, facing_west, !facing_north);
 	}
 
 	halo_id = halo::handle(); //halo::NO_HALO;

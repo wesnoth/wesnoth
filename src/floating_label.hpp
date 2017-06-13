@@ -69,8 +69,7 @@ public:
 	void use_markup(bool b) {use_markup_ = b;}
 
 	void move(double xmove, double ymove);
-	void draw(surface screen);
-	void undraw(surface screen);
+	void draw();
 
 	surface create_surface();
 
@@ -120,7 +119,6 @@ void remove_floating_label(int handle);
 void show_floating_label(int handle, bool show);
 
 SDL_Rect get_floating_label_rect(int handle);
-void draw_floating_labels(surface screen);
-void undraw_floating_labels(surface screen);
+void draw_floating_labels();
 
 } // end namespace font

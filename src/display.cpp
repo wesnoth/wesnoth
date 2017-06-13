@@ -148,76 +148,83 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 	}
 }
 
-display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::manager> wb, reports & reports_object, const config& theme_cfg, const config& level, bool auto_join) :
-	video2::draw_layering(auto_join),
-	dc_(dc),
-	halo_man_(new halo::manager(*this)),
-	wb_(wb),
-	exclusive_unit_draw_requests_(),
-	screen_(video),
-	currentTeam_(0),
-	dont_show_all_(false),
-	xpos_(0),
-	ypos_(0),
-	view_locked_(false),
-	theme_(theme_cfg, screen_area()),
-	zoom_index_(0),
-	fake_unit_man_(new fake_unit_manager(*this)),
-	builder_(new terrain_builder(level, &dc_->map(), theme_.border().tile_image)),
-	minimap_(nullptr),
-	minimap_location_(sdl::empty_rect),
-	redrawMinimap_(false),
-	redraw_background_(true),
-	invalidateAll_(true),
-	grid_(false),
-	diagnostic_label_(0),
-	panelsDrawn_(false),
-	turbo_speed_(2),
-	turbo_(false),
-	invalidateGameStatus_(true),
-	map_labels_(new map_labels(0)),
-	reports_object_(&reports_object),
-	scroll_event_("scrolled"),
-	complete_redraw_event_("completely_redrawn"),
-	nextDraw_(0),
-	reportRects_(),
-	reportSurfaces_(),
-	reports_(),
-	menu_buttons_(),
-	action_buttons_(),
-	invalidated_(),
-	previous_invalidated_(),
-	mouseover_hex_overlay_(nullptr),
-	tod_hex_mask1(nullptr),
-	tod_hex_mask2(nullptr),
-	fog_images_(),
-	shroud_images_(),
-	selectedHex_(),
-	mouseoverHex_(),
-	keys_(),
-	animate_map_(true),
-	animate_water_(true),
-	flags_(),
-	activeTeam_(0),
-	drawing_buffer_(),
-	map_screenshot_(false),
-	reach_map_(),
-	reach_map_old_(),
-	reach_map_changed_(true),
-	overlays_(nullptr),
-	fps_handle_(0),
-	invalidated_hexes_(0),
-	drawn_hexes_(0),
-	idle_anim_(preferences::idle_anim()),
-	idle_anim_rate_(1.0),
-	map_screenshot_surf_(nullptr),
-	redraw_observers_(),
-	draw_coordinates_(false),
-	draw_terrain_codes_(false),
-	draw_num_of_bitmaps_(false),
-	arrows_map_(),
-	color_adjust_(),
-	dirty_()
+
+display::display(const display_context* dc,
+		CVideo& video,
+		std::weak_ptr<wb::manager> wb,
+		reports& reports_object,
+		const config& theme_cfg,
+		const config& level,
+		bool auto_join)
+	: video2::draw_layering(auto_join)
+	, dc_(dc)
+	, halo_man_(new halo::manager(*this))
+	, wb_(wb)
+	, exclusive_unit_draw_requests_()
+	, video_(video)
+	, currentTeam_(0)
+	, dont_show_all_(false)
+	, xpos_(0)
+	, ypos_(0)
+	, view_locked_(false)
+	, theme_(theme_cfg, screen_area())
+	, zoom_index_(0)
+	, fake_unit_man_(new fake_unit_manager(*this))
+	, builder_(new terrain_builder(level, &dc_->map(), theme_.border().tile_image))
+	, minimap_(nullptr)
+	, minimap_location_(sdl::empty_rect)
+	, redrawMinimap_(false)
+	, redraw_background_(true)
+	, invalidateAll_(true)
+	, grid_(false)
+	, diagnostic_label_(0)
+	, panelsDrawn_(false)
+	, turbo_speed_(2)
+	, turbo_(false)
+	, invalidateGameStatus_(true)
+	, map_labels_(new map_labels(0))
+	, reports_object_(&reports_object)
+	, scroll_event_("scrolled")
+	, complete_redraw_event_("completely_redrawn")
+	, nextDraw_(0)
+	, reportRects_()
+	, reportSurfaces_()
+	, reports_()
+	, menu_buttons_()
+	, action_buttons_()
+	, invalidated_()
+	, previous_invalidated_()
+	, mouseover_hex_overlay_(nullptr)
+	, tod_hex_mask1(nullptr)
+	, tod_hex_mask2(nullptr)
+	, fog_images_()
+	, shroud_images_()
+	, selectedHex_()
+	, mouseoverHex_()
+	, keys_()
+	, animate_map_(true)
+	, animate_water_(true)
+	, flags_()
+	, activeTeam_(0)
+	, drawing_buffer_()
+	, map_screenshot_(false)
+	, reach_map_()
+	, reach_map_old_()
+	, reach_map_changed_(true)
+	, overlays_(nullptr)
+	, fps_handle_(0)
+	, invalidated_hexes_(0)
+	, drawn_hexes_(0)
+	, idle_anim_(preferences::idle_anim())
+	, idle_anim_rate_(1.0)
+	, map_screenshot_surf_(nullptr)
+	, redraw_observers_()
+	, draw_coordinates_(false)
+	, draw_terrain_codes_(false)
+	, draw_num_of_bitmaps_(false)
+	, arrows_map_()
+	, color_adjust_()
+	, dirty_()
 {
 	//The following assertion fails when starting a campaign
 	assert(singleton_ == nullptr);
@@ -232,7 +239,7 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 	if(video.non_interactive()
 		&& (video.getSurface() != nullptr
 		&& video.faked())) {
-		screen_.lock_updates(true);
+		video_.lock_updates(true);
 	}
 
 	fill_images_list(game_config::fog_prefix, fog_images_);
@@ -773,7 +780,7 @@ bool display::screenshot(const std::string& filename, bool map_screenshot)
 	bool res = false;
 
 	if (!map_screenshot) {
-		surface& screenshot_surf = screen_.getSurface();
+		surface& screenshot_surf = video_.getSurface();
 
 		res = image::save_image(screenshot_surf, filename);
 #if 0
@@ -791,7 +798,7 @@ bool display::screenshot(const std::string& filename, bool map_screenshot)
 		}
 
 		SDL_Rect area = max_map_area();
-		map_screenshot_surf_ = create_compatible_surface(screen_.getSurface(), area.w, area.h);
+		map_screenshot_surf_ = create_compatible_surface(video_.getSurface(), area.w, area.h);
 
 		if (map_screenshot_surf_ == nullptr) {
 			// Memory problem ?
@@ -897,7 +904,7 @@ void display::create_buttons()
 	for(const auto& menu : theme_.menus()) {
 		if (!menu.is_button()) continue;
 
-		std::shared_ptr<gui::button> b(new gui::button(screen_, menu.title(), gui::button::TYPE_PRESS, menu.image(),
+ 		std::shared_ptr<gui::button> b(new gui::button(video_, menu.title(), gui::button::TYPE_PRESS, menu.image(),
 				gui::button::DEFAULT_SPACE, false, menu.overlay()));
 		DBG_DP << "drawing button " << menu.get_id() << "\n";
 		b->join_same(this);
@@ -916,7 +923,7 @@ void display::create_buttons()
 
 	DBG_DP << "creating action buttons...\n";
 	for(const auto& action : theme_.actions()) {
-		std::shared_ptr<gui::button> b(new gui::button(screen_, action.title(), string_to_button_type(action.type()), action.image(),
+		std::shared_ptr<gui::button> b(new gui::button(video_, action.title(), string_to_button_type(action.type()), action.image(),
 				gui::button::DEFAULT_SPACE, false, action.overlay()));
 
 		DBG_DP << "drawing button " << action.get_id() << "\n";
@@ -1061,9 +1068,10 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 	return res;
 }
 
-std::vector<texture> display::get_terrain_images(const map_location &loc,
-						     const std::string& timeid,
-		image::TYPE image_type,
+std::vector<texture> display::get_terrain_images(
+		const map_location& loc,
+		const std::string& timeid,
+		image::TYPE /*image_type*/,
 		TERRAIN_TYPE terrain_type)
 {
 	std::vector<texture> res;
@@ -1075,10 +1083,9 @@ std::vector<texture> display::get_terrain_images(const map_location &loc,
 	assert(builder_);
 	const terrain_builder::imagelist* const terrains = builder_->get_terrain_at(loc, timeid, builder_terrain_type);
 
-	//assert(terrains);
+#if 0
 	image::light_string lt;
 
-#if 0
 	const time_of_day& tod = get_time_of_day(loc);
 
 	//get all the light transitions
@@ -1180,11 +1187,14 @@ std::vector<texture> display::get_terrain_images(const map_location &loc,
 #endif
 
 	if(terrains != nullptr) {
-	//	assert(terrains);
+		// Pre-allocate storage appropriately.
+		// Since this function is called extremely often this should save some time.
+		res.reserve(terrains->size());
+
 		// Cache the offmap name.
-		// Since it is themeable it can change,
-		// so don't make it static.
+		// Since it is themeable it can change, so don't make it static.
 		const std::string off_map_name = "terrain/" + theme_.border().tile_image;
+
 		for(const auto& terrain : *terrains) {
 			const image::locator &image = animate_map_
 				? terrain.get_current_frame()
@@ -1195,9 +1205,8 @@ std::vector<texture> display::get_terrain_images(const map_location &loc,
 			// not the location, since the transitions are rendered
 			// over the offmap-terrain and these need a ToD coloring.
 			texture tex = image::get_texture(image);
-			//assert(tex);
-			//const bool off_map = (image.get_filename() == off_map_name || image.get_modifications().find("NO_TOD_SHIFT()") != std::string::npos);
 
+			//const bool off_map = (image.get_filename() == off_map_name || image.get_modifications().find("NO_TOD_SHIFT()") != std::string::npos);
 #if 0
 			if(off_map) {
 				surf = image::get_image(image, off_map ? image::SCALED_TO_HEX : image_type);
@@ -1207,63 +1216,13 @@ std::vector<texture> display::get_terrain_images(const map_location &loc,
 				surf = image::get_lighted_image(image, lt, image::SCALED_TO_HEX);
 			}
 #endif
-			if (!tex.null()) {
-				res.push_back(tex);
+			if(!tex.null()) {
+				res.push_back(std::move(tex));
 			}
 		}
 	}
 
 	return res;
-}
-
-void display::drawing_buffer_add(const drawing_buffer::drawing_layer layer,
-		const map_location& loc, int x, int y, const texture& tex,
-		const SDL_Rect &clip)
-{
-	//drawing_buffer_.add_item(layer, loc, x, y, tex, clip);
-}
-
-void display::drawing_buffer_add(const drawing_buffer::drawing_layer layer,
-		const map_location& loc, int x, int y,
-		const std::vector<texture>& tex,
-		const SDL_Rect &clip)
-{
-	//std::cerr << "adding texture vec to buffer" << std::endl;
-
-	//std::vector<texture> v = tex;
-
-	//if(v.empty()) {
-	//	std::cerr << "vec empty"<< std::endl;
-	//}
-	//drawing_buffer_.add_item(layer, loc, x, y, v, clip);
-}
-
-void display::drawing_buffer_add(const drawing_buffer::drawing_layer layer,
-		const map_location& loc, int x, int y, const surface& surf,
-		const SDL_Rect &clip)
-{
-	if(!surf) {
-		return;
-	}
-
-	//drawing_buffer_.add_item(layer, loc, x, y, texture(surf), clip);
-}
-
-void display::drawing_buffer_add(const drawing_buffer::drawing_layer layer,
-		const map_location& loc, int x, int y,
-		const std::vector<surface>& surf,
-		const SDL_Rect &clip)
-{
-	//std::vector<texture> res;
-	//for(const auto& s : surf) {
-	//	if(!s) {
-	//		continue;
-	//	}
-
-	//	res.emplace_back(s);
-	//}
-
-	//drawing_buffer_.add_item(layer, loc, x, y, res, clip);
 }
 
 void display::toggle_benchmark()
@@ -1276,26 +1235,12 @@ void display::toggle_debug_foreground()
 	debug_foreground = !debug_foreground;
 }
 
-void display::flip()
+void display::draw_debugging_aids()
 {
-	if(video().faked()) {
-		return;
-	}
+	// TODO: enable.
+	return;
 
-	surface& frameBuffer = video().getSurface();
-
-	font::draw_floating_labels(frameBuffer);
-	events::raise_volatile_draw_event();
-
-	//video().render_screen();
-
-	events::raise_volatile_undraw_event();
-	font::undraw_floating_labels(frameBuffer);
-}
-
-void display::update_display()
-{
-	if (screen_.update_locked()) {
+	if(video_.update_locked()) {
 		return;
 	}
 
@@ -1303,6 +1248,7 @@ void display::update_display()
 		static int last_sample = SDL_GetTicks();
 		static int frames = 0;
 		++frames;
+
 		const int sample_freq = 10;
 		if(frames == sample_freq) {
 			const int this_sample = SDL_GetTicks();
@@ -1315,13 +1261,17 @@ void display::update_display()
 				font::remove_floating_label(fps_handle_);
 				fps_handle_ = 0;
 			}
+
 			std::ostringstream stream;
 			stream << "fps: " << fps;
-			if (game_config::debug) {
-				stream << "\nhex: " << drawn_hexes_*1.0/sample_freq;
-				if (drawn_hexes_ != invalidated_hexes_)
-					stream << " (" << (invalidated_hexes_-drawn_hexes_)*1.0/sample_freq << ")";
+			if(game_config::debug) {
+				stream << "\nhex: " << drawn_hexes_ * 1.0 / sample_freq;
+
+				if(drawn_hexes_ != invalidated_hexes_) {
+					stream << " (" << (invalidated_hexes_ - drawn_hexes_) * 1.0 / sample_freq << ")";
+				}
 			}
+
 			drawn_hexes_ = 0;
 			invalidated_hexes_ = 0;
 
@@ -1339,9 +1289,8 @@ void display::update_display()
 		drawn_hexes_ = 0;
 		invalidated_hexes_ = 0;
 	}
-
-	flip();
 }
+
 static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<std::shared_ptr<gui::button>>& /*buttons*/)
 {
 	//log_scope("draw panel");
@@ -1402,7 +1351,7 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 
 void display::draw_all_panels()
 {
-	surface& screen(screen_.getSurface());
+	surface& screen(video_.getSurface());
 
 	/*
 	 * The minimap is also a panel, force it to update its contents.
@@ -1458,76 +1407,6 @@ void display::draw_text_in_hex(const map_location& loc,
 	drawing_buffer_add(layer, loc, x, y, text_surf);
 }
 
-//TODO: convert this to use sdl::ttexture
-void display::render_image(int x, int y, const drawing_buffer::drawing_layer drawing_layer,
-		const map_location& loc, surface image,
-		bool hreverse, bool greyscale, fixed_t alpha,
-		color_t blendto, double blend_ratio, double submerged, bool vreverse)
-{
-	if (image==nullptr)
-		return;
-
-	SDL_Rect image_rect {x, y, image->w, image->h};
-	SDL_Rect clip_rect = map_area();
-	if (!sdl::rects_overlap(image_rect, clip_rect))
-		return;
-
-	surface surf(image);
-
-	if(hreverse) {
-		surf = image::reverse_image(surf);
-	}
-	if(vreverse) {
-		surf = flop_surface(surf);
-	}
-
-	if(greyscale) {
-		surf = greyscale_image(surf);
-	}
-
-	if(blend_ratio != 0) {
-		surf = blend_surface(surf, blend_ratio, blendto);
-	}
-	if(alpha > ftofxp(1.0)) {
-		surf = brighten_image(surf, alpha);
-	//} else if(alpha != 1.0 && blendto != 0) {
-	//	surf.assign(blend_surface(surf,1.0-alpha,blendto));
-	} else if(alpha != ftofxp(1.0)) {
-		surface temp = make_neutral_surface(surf);
-		adjust_surface_alpha(temp, alpha);
-		surf = temp;
-	}
-
-	if(surf == nullptr) {
-		ERR_DP << "surface lost..." << std::endl;
-		return;
-	}
-
-	if(submerged > 0.0) {
-		// divide the surface into 2 parts
-		const int submerge_height = std::max<int>(0, surf->h*(1.0-submerged));
-		const int depth = surf->h - submerge_height;
-		SDL_Rect srcrect {0, 0, surf->w, submerge_height};
-		drawing_buffer_add(drawing_layer, loc, x, y, surf, srcrect);
-
-		if(submerge_height != surf->h) {
-			//the lower part will be transparent
-			float alpha_base = 0.3f; // 30% alpha at surface of water
-			float alpha_delta = 0.015f; // lose 1.5% per pixel depth
-			alpha_delta *= zoom_ / DefaultZoom; // adjust with zoom
-			surf = submerge_alpha(surf, depth, alpha_base, alpha_delta);
-
-			srcrect.y = submerge_height;
-			srcrect.h = surf->h-submerge_height;
-			y += submerge_height;
-
-			drawing_buffer_add(drawing_layer, loc, x, y, surf, srcrect);
-		}
-	} else {
-		// simple blit
-		drawing_buffer_add(drawing_layer, loc, x, y, surf);
-	}
-}
 void display::select_hex(map_location hex)
 {
 	invalidate(selectedHex_);
@@ -1563,6 +1442,9 @@ void display::set_diagnostic(const std::string& msg)
 
 void display::draw_init()
 {
+	// DONE WITH THIS
+	return;
+
 	if (get_map().empty()) {
 		return;
 	}
@@ -1602,6 +1484,10 @@ void display::draw_init()
 
 void display::draw_wrap(bool update, bool force)
 {
+	// DONE, except for this next-draw stuff maybe?
+
+	return;
+
 	static const int time_between_draws = preferences::draw_delay();
 	const int current_time = SDL_GetTicks();
 	const int wait_time = nextDraw_ - current_time;
@@ -1612,7 +1498,7 @@ void display::draw_wrap(bool update, bool force)
 	}
 
 	if(update) {
-		update_display();
+		draw_debugging_aids();
 		if(!force && !benchmark && wait_time > 0) {
 			// If it's not time yet to draw, delay until it is
 			SDL_Delay(wait_time);
@@ -1723,17 +1609,19 @@ void display::draw_minimap()
 
 	// calculate the visible portion of the map:
 	// scaling between minimap and full map images
-	double xscaling = 1.0*minimap_->w / (get_map().w()*hex_width());
-	double yscaling = 1.0*minimap_->h / (get_map().h()*hex_size());
+	double xscaling = 1.0 * minimap_->w / (get_map().w() * hex_width());
+	double yscaling = 1.0  *minimap_->h / (get_map().h() * hex_size());
 
 	// we need to shift with the border size
 	// and the 0.25 from the minimap balanced drawing
 	// and the possible difference between real map and outside off-map
 	SDL_Rect map_rect = map_area();
 	SDL_Rect map_out_rect = map_outside_area();
+
 	double border = theme_.border().size;
-	double shift_x = - border*hex_width() - (map_out_rect.w - map_rect.w) / 2;
-	double shift_y = - (border+0.25)*hex_size() - (map_out_rect.h - map_rect.h) / 2;
+
+	double shift_x = -  border         * hex_width() - (map_out_rect.w - map_rect.w) / 2;
+	double shift_y = - (border + 0.25) * hex_size()  - (map_out_rect.h - map_rect.h) / 2;
 
 	int view_x = static_cast<int>((xpos_ + shift_x) * xscaling);
 	int view_y = static_cast<int>((ypos_ + shift_y) * yscaling);
@@ -1826,7 +1714,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 	font::scroll_floating_labels(dx, dy);
 	labels().recalculate_shroud();
 
-	surface& screen(screen_.getSurface());
+	//surface& screen(video_.getSurface());
 
 	SDL_Rect dstrect = map_area();
 	dstrect.x += dx;
@@ -1836,7 +1724,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 	SDL_Rect srcrect = dstrect;
 	srcrect.x -= dx;
 	srcrect.y -= dy;
-	if (!screen_.update_locked()) {
+	if (!video_.update_locked()) {
 
 		/* TODO: This is a workaround for a SDL2 bug when blitting on overlapping surfaces.
 		 * The bug only strikes during scrolling, but will then duplicate textures across
@@ -1975,7 +1863,7 @@ bool display::tile_nearly_on_screen(const map_location& loc) const
 void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type, bool force)
 {
 	if(!force && (view_locked_ || !preferences::scroll_to_action())) return;
-	if(screen_.update_locked()) {
+	if(video_.update_locked()) {
 		return;
 	}
 	const SDL_Rect area = map_area();
@@ -2255,150 +2143,17 @@ double display::turbo_speed() const
 		res = !res;
 	}
 
-	res |= screen_.faked();
-	if (res)
+	res |= video_.faked();
+	if(res) {
 		return turbo_speed_;
-	else
-		return 1.0;
+	}
+
+	return 1.0;
 }
 
 void display::set_idle_anim_rate(int rate)
 {
 	idle_anim_rate_ = std::pow(2.0, -rate/10.0);
-}
-
-void display::redraw_everything()
-{
-	std::cerr << "calling redraw everything" << std::endl;
-	if(screen_.update_locked())
-		return;
-
-	invalidateGameStatus_ = true;
-
-	reportRects_.clear();
-	reportSurfaces_.clear();
-	reports_.clear();
-
-	bounds_check_position();
-
-	tooltips::clear_tooltips();
-
-	theme_.set_resolution(screen_area());
-
-	if(!menu_buttons_.empty() || !action_buttons_.empty()) {
-		create_buttons();
-	}
-
-	if(resources::controller) {
-		hotkey::command_executor* command_executor = resources::controller->get_hotkey_command_executor();
-		if(command_executor != nullptr)	{
-			// This function adds button overlays,
-			// it needs to be run after recreating the buttons.
-			command_executor->set_button_state();
-		}
-	}
-
-	panelsDrawn_ = false;
-	if (!gui::in_dialog()) {
-		labels().recalculate_labels();
-	}
-
-	redraw_background_ = true;
-
-	for(std::function<void(display&)> f : redraw_observers_) {
-		f(*this);
-	}
-
-	int ticks1 = SDL_GetTicks();
-	invalidate_all();
-	int ticks2 = SDL_GetTicks();
-	draw(true,true);
-	int ticks3 = SDL_GetTicks();
-	LOG_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
-
-	complete_redraw_event_.notify_observers();
-}
-
-void display::add_redraw_observer(std::function<void(display&)> f)
-{
-	redraw_observers_.push_back(f);
-}
-
-void display::clear_redraw_observers()
-{
-	redraw_observers_.clear();
-}
-
-void display::draw() {
-	draw(true, false);
-}
-
-void display::draw(bool update) {
-	draw(update, false);
-}
-
-
-void display::draw(bool update,bool force)
-{
-	return;
-
-//	log_scope("display::draw");
-
-	if (screen_.update_locked()) {
-		return;
-	}
-
-	if (dirty_) {
-		flip_locker flip_lock(screen_);
-		dirty_ = false;
-		redraw_everything();
-		return;
-	}
-
-	// Trigger cache rebuild when preference gets changed
-	if (animate_water_ != preferences::animate_water()) {
-		animate_water_ = preferences::animate_water();
-		builder_->rebuild_cache_all();
-	}
-
-	set_scontext_unsynced leave_synced_context;
-
-	draw_init();
-	pre_draw();
-	// invalidate all that needs to be invalidated
-	invalidate_animations();
-	// at this stage we have everything that needs to be invalidated for this redraw
-	// save it as the previous invalidated, and merge with the previous invalidated_
-	// we merge with the previous redraw because if a hex had a unit last redraw but
-	// not this one, nobody will tell us to redraw (cleanup)
-	previous_invalidated_.swap(invalidated_);
-	invalidated_.insert(previous_invalidated_.begin(),previous_invalidated_.end());
-	// these new invalidations cannot cause any propagation because
-	// if a hex was invalidated last turn but not this turn, then
-	// * case of no unit in neighbor hex=> no propagation
-	// * case of unit in hex but was there last turn=>its hexes are invalidated too
-	// * case of unit in hex not there last turn => it moved, so was invalidated previously
-	if(!get_map().empty()) {
-		//int simulate_delay = 0;
-
-		/*
-		 * draw_invalidated() also invalidates the halos, so also needs to be
-		 * ran if invalidated_.empty() == true.
-		 */
-		//drawing_buffer_.set_clip_rect(map_area());
-		if(!invalidated_.empty() || preferences::show_haloes()) {
-			draw_invalidated();
-			invalidated_.clear();
-		}
-		drawing_buffer_.render_buffer();
-		post_commit();
-		draw_sidebar();
-
-		// Simulate slow PC:
-		//SDL_Delay(2*simulate_delay + rand() % 20);
-	}
-	draw_wrap(update, force);
-	post_draw();
 }
 
 map_labels& display::labels()
@@ -2416,271 +2171,16 @@ const SDL_Rect& display::get_clip_rect()
 	return map_area();
 }
 
-void display::draw_invalidated() {
-//	log_scope("display::draw_invalidated");
-	SDL_Rect clip_rect = get_clip_rect();
-	surface& screen = get_screen_surface();
-	clip_rect_setter set_clip_rect(screen, &clip_rect);
-	for (const map_location& loc : get_visible_hexes()) {
-		int xpos = get_location_x(loc);
-		int ypos = get_location_y(loc);
-
-		//const bool on_map = get_map().on_board(loc);
-		SDL_Rect hex_rect = sdl::create_rect(xpos, ypos, zoom_, zoom_);
-		if(!sdl::rects_overlap(hex_rect,clip_rect)) {
-			continue;
-		}
-		draw_hex(loc);
-		drawn_hexes_+=1;
-	}
-	invalidated_hexes_ += invalidated_.size();
-
-	if (dc_->teams().empty())
-	{
-		// The unit drawer can't function without teams
-		return;
-	}
-
-	unit_drawer drawer = unit_drawer(*this);
-
-	for (const map_location& loc : invalidated_) {
-		unit_map::const_iterator u_it = dc_->units().find(loc);
-		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
-		if (u_it != dc_->units().end()
-				&& (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id()))
-			drawer.redraw_unit(*u_it);
-	}
-
-}
-
-static bool populated = false;
-void display::populate_terrain_cache()
-{
-	if(populated) {
-		return;
-	}
-	//SDL_Rect clip_rect = get_clip_rect();
-//	surface& screen = get_screen_surface();
-	//clip_rect_setter set_clip_rect(screen, &clip_rect);
-	for (const map_location& loc : get_visible_hexes()) {
-		//int xpos = get_location_x(loc);
-		//int ypos = get_location_y(loc);
-
-		//const bool on_map = get_map().on_board(loc);
-		//SDL_Rect hex_rect = sdl::create_rect(xpos, ypos, zoom_, zoom_);
-		//if(!sdl::rects_overlap(hex_rect,clip_rect)) {
-		//	continue;
-		//}
-		draw_hex(loc);
-		//drawn_hexes_+=1;
-	}
-
-	populated= true;
-}
-
-void display::draw_hex(const map_location& loc) {
-	int xpos = get_location_x(loc);
-	int ypos = get_location_y(loc);
-	image::TYPE image_type = get_image_type(loc);
-	const bool on_map = get_map().on_board(loc);
-	const time_of_day& tod = get_time_of_day(loc);
-
-	int num_images_fg = 0;
-	int num_images_bg = 0;
-
-	//if(!shrouded(loc)) {
-		std::vector<texture> images_fg = get_terrain_images(loc,tod.id, image_type, FOREGROUND);
-		std::vector<texture> images_bg = get_terrain_images(loc,tod.id, image_type, BACKGROUND);
-
-		if(images_fg.empty() && images_bg.empty()) {
-			return;
-		}
-		num_images_fg = images_fg.size();
-		num_images_bg = images_bg.size();
-
-		for(auto& t : images_bg) {
-			//assert(t);
-		}
-		for(auto& t : images_fg) {
-			//assert(t);
-		}
-		// unshrouded terrain (the normal case)
-		if(!images_bg.empty()) {
-			drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_BG, loc, xpos, ypos, images_bg);
-		} else {
-			//std::cerr << "bg images empty" << std::endl;
-		}
-
-		if(!images_fg.empty()) {
-			drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_FG, loc, xpos, ypos, images_fg);
-		} else {
-			//std::cerr << "fg images empty" << std::endl;
-		}
-
-		// Draw the grid, if that's been enabled
-		if(grid_) {
-			static const image::locator grid_top(game_config::images::grid_top);
-			drawing_buffer_add(drawing_buffer::LAYER_GRID_TOP, loc, xpos, ypos,
-				image::get_texture(grid_top));
-			static const image::locator grid_bottom(game_config::images::grid_bottom);
-			drawing_buffer_add(drawing_buffer::LAYER_GRID_BOTTOM, loc, xpos, ypos,
-				image::get_texture(grid_bottom));
-		}
-		// village-control flags.
-		//drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
-	//}
-
-
-#if 0
-	if(!shrouded(loc)) {
-		typedef overlay_map::const_iterator Itor;
-		std::pair<Itor,Itor> overlays = overlays_->equal_range(loc);
-		const bool have_overlays = overlays.first != overlays.second;
-
-		image::light_string lt;
-
-		if(have_overlays) {
-			tod_color tod_col = tod.color;
-
-			if(tod_col != get_time_of_day().color) {
-				tod_col = tod_col + color_adjust_;
-			}
-
-			lt = image::get_light_string(0, tod_col.r, tod_col.g, tod_col.b);
-
-			for( ; overlays.first != overlays.second; ++overlays.first) {
-				if ((overlays.first->second.team_name == "" ||
-						overlays.first->second.team_name.find(dc_->teams()[viewing_team()].team_name()) != std::string::npos)
-						&& !(fogged(loc) && !overlays.first->second.visible_in_fog))
-				{
-
-					const std::string image = overlays.first->second.image;
-					const surface surf = image.find("~NO_TOD_SHIFT()") == std::string::npos ?
-						image::get_lighted_image(image, lt, image::SCALED_TO_HEX) : image::get_image(image, image::SCALED_TO_HEX);
-					drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
-				}
-			}
-		}
-	}
-
-	// Draw the time-of-day mask on top of the terrain in the hex.
-	// tod may differ from tod if hex is illuminated.
-	const std::string& tod_hex_mask = tod.image_mask;
-	if(tod_hex_mask1 != nullptr || tod_hex_mask2 != nullptr) {
-		drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask1);
-		drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask2);
-	} else if(!tod_hex_mask.empty()) {
-		drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_FG, loc, xpos, ypos,
-			image::get_image(tod_hex_mask,image::SCALED_TO_HEX));
-	}
-
-	// Paint mouseover overlays
-	if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc)))
-			&& mouseover_hex_overlay_ != nullptr) {
-		drawing_buffer_add(drawing_buffer::LAYER_MOUSEOVER_OVERLAY, loc, xpos, ypos, mouseover_hex_overlay_);
-	}
-
-	// Paint arrows
-	arrows_map_t::const_iterator arrows_in_hex = arrows_map_.find(loc);
-	if(arrows_in_hex != arrows_map_.end()) {
-		for (arrow* const a : arrows_in_hex->second) {
-			a->draw_hex(loc);
-		}
-	}
-
-	// Apply shroud, fog and linger overlay
-
-	if(shrouded(loc)) {
-		// We apply void also on off-map tiles
-		// to shroud the half-hexes too
-		const std::string& shroud_image = get_variant(shroud_images_, loc);
-		drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, xpos, ypos,
-			image::get_image(shroud_image, image_type));
-	} else if(fogged(loc)) {
-		const std::string& fog_image = get_variant(fog_images_, loc);
-		drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, xpos, ypos,
-			image::get_image(fog_image, image_type));
-	}
-
-	if(!shrouded(loc)) {
-		drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, xpos, ypos, get_fog_shroud_images(loc, image_type));
-	}
-
-	if (on_map) {
-		if (draw_coordinates_) {
-			int off_x = xpos + hex_size()/2;
-			int off_y = ypos + hex_size()/2;
-			surface text = font::get_rendered_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
-			surface bg = create_neutral_surface(text->w, text->h);
-			SDL_Rect bg_rect {0, 0, text->w, text->h};
-			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
-			off_x -= text->w / 2;
-			off_y -= text->h / 2;
-			if (draw_terrain_codes_) {
-				off_y -= text->h / 2;
-			}
-			if (draw_num_of_bitmaps_) {
-				off_y -= text->h / 2;
-			}
-			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
-			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, text);
-		}
-		if (draw_terrain_codes_ && (game_config::debug || !shrouded(loc))) {
-			int off_x = xpos + hex_size()/2;
-			int off_y = ypos + hex_size()/2;
-			surface text = font::get_rendered_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
-			surface bg = create_neutral_surface(text->w, text->h);
-			SDL_Rect bg_rect {0, 0, text->w, text->h};
-			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
-			off_x -= text->w / 2;
-			off_y -= text->h / 2;
-			if (draw_coordinates_ && !draw_num_of_bitmaps_) {
-				off_y += text->h / 2;
-			} else if (draw_num_of_bitmaps_ && !draw_coordinates_) {
-				off_y -= text->h / 2;
-			}
-			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
-			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, text);
-		}
-		if (draw_num_of_bitmaps_) {
-			int off_x = xpos + hex_size()/2;
-			int off_y = ypos + hex_size()/2;
-			surface text = font::get_rendered_text(lexical_cast<std::string>(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
-			surface bg = create_neutral_surface(text->w, text->h);
-			SDL_Rect bg_rect {0, 0, text->w, text->h};
-			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
-			off_x -= text->w / 2;
-			off_y -= text->h / 2;
-			if (draw_coordinates_) {
-				off_y += text->h / 2;
-			}
-			if (draw_terrain_codes_) {
-				off_y += text->h / 2;
-			}
-			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
-			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, text);
-		}
-	}
-
-	if(debug_foreground) {
-		drawing_buffer_add(drawing_buffer::LAYER_UNIT_DEFAULT, loc, xpos, ypos,
-			image::get_image("terrain/foreground.png", image_type));
-	}
-#endif
-}
 
 void display::draw_hex_cursor(const map_location& /*loc*/)
 {
 	/** DO NOTHING */
 }
 
-image::TYPE display::get_image_type(const map_location& /*loc*/) {
+image::TYPE display::get_image_type(const map_location& /*loc*/)
+{
 	return image::TOD_COLORED;
 }
-
-/*void display::draw_sidebar() {
-
-}*/
 
 void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 {
@@ -2705,13 +2205,13 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 			target.h = visible_area.h;
 		}
 
-		sdl_blit(img,&visible_area,screen_.getSurface(),&target);
+		sdl_blit(img,&visible_area,video_.getSurface(),&target);
 	} else {
 		if(img->w != rect.w || img->h != rect.h) {
 			img.assign(scale_surface(img,rect.w,rect.h));
 		}
 
-		sdl_blit(img,nullptr,screen_.getSurface(),&target);
+		sdl_blit(img,nullptr,video_.getSurface(),&target);
 	}
 }
 
@@ -2756,7 +2256,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 	report = *new_cfg;
 
 	if (surf) {
-		sdl_blit(surf, nullptr, screen_.getSurface(), &rect);
+		sdl_blit(surf, nullptr, video_.getSurface(), &rect);
 	}
 
 	// If the rectangle has just changed, assign the surface to it
@@ -2770,7 +2270,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		// (Images generally won't need backing up,
 		// unless they are transparent, but that is done later).
 		if (rect.w > 0 && rect.h > 0) {
-			surf.assign(get_surface_portion(screen_.getSurface(), rect));
+			surf.assign(get_surface_portion(video_.getSurface(), rect));
 			if (reportSurfaces_[report_name] == nullptr) {
 				ERR_DP << "Could not backup background for report!" << std::endl;
 			}
@@ -2853,7 +2353,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 				ellipsis_area.h = s->h;
 			}
 
-			screen_.blit_surface(x, y, s);
+			video_.blit_surface(x, y, s);
 			area.w = s->w;
 			area.h = s->h;
 			if (area.h > tallest) {
@@ -3025,12 +2525,15 @@ void display::invalidate_animations_location(const map_location& loc) {
 void display::invalidate_animations()
 {
 	new_animation_frame();
+
 	animate_map_ = preferences::animate_map();
-	if (animate_map_) {
-		for (const map_location &loc : get_visible_hexes())
-		{
-			if (shrouded(loc)) continue;
-			if (builder_->update_animation(loc)) {
+	if(animate_map_) {
+		for(const map_location& loc : get_visible_hexes()) {
+			if(shrouded(loc)) {
+				continue;
+			}
+
+			if(builder_->update_animation(loc)) {
 				invalidate(loc);
 			} else {
 				invalidate_animations_location(loc);
@@ -3039,56 +2542,56 @@ void display::invalidate_animations()
 	}
 
 #ifndef _OPENMP
-	for (const unit & u : dc_->units()) {
+	for(const unit& u : dc_->units()) {
 		u.anim_comp().refresh();
 	}
-	for (const unit* u : *fake_unit_man_) {
+
+	for(const unit* u : *fake_unit_man_) {
 		u->anim_comp().refresh();
 	}
 #else
-	std::vector<const unit *> open_mp_list;
-	for (const unit & u : dc_->units()) {
+	std::vector<const unit*> open_mp_list;
+	for(const unit& u : dc_->units()) {
 		open_mp_list.push_back(&u);
 	}
-	// Note that it is an important assumption of the
-	// system that the fake units are added to the list
-	// after the real units, so that e.g. whiteboard
-	// planned moves are drawn over the real units.
-	for (const unit* u : *fake_unit_man_) {
+
+	// Note that it is an important assumption of the system that the fake units are added to the list
+	// after the real units, so that e.g. whiteboard planned moves are drawn over the real units.
+	for(const unit* u : *fake_unit_man_) {
 		open_mp_list.push_back(u);
 	}
 
 	// openMP can't iterate over size_t
 	const int omp_iterations = open_mp_list.size();
-	//#pragma omp parallel for shared(open_mp_list)
-	//this loop must not be parallelized. refresh is not thread-safe,
-	//for one, unit filters are not thread safe. this is because,
-	//adding new "scoped" wml variables is not thread safe. lua itself
-	//is not thread safe. when this loop was parallelized, assertion
-	//failures were reported in windows openmp builds.
-	for (int i = 0; i < omp_iterations; i++) {
+	// #pragma omp parallel for shared(open_mp_list)
+
+	// This loop must not be parallelized. Refresh is not thread-safe; for one, unit filters are not thread safe.
+	// This is because, adding new "scoped" wml variables is not thread safe. Lua itself is not thread safe.
+	// When this loop was parallelized, assertion failures were reported in windows openmp builds.
+	for(int i = 0; i < omp_iterations; i++) {
 		open_mp_list[i]->anim_comp().refresh();
 	}
 #endif
 
-
 	bool new_inval;
 	do {
 		new_inval = false;
+
 #ifndef _OPENMP
-		for (const unit & u : dc_->units()) {
-			new_inval |=  u.anim_comp().invalidate(*this);
+		for(const unit& u : dc_->units()) {
+			new_inval |= u.anim_comp().invalidate(*this);
 		}
-		for (const unit* u : *fake_unit_man_) {
-			new_inval |=  u->anim_comp().invalidate(*this);
+
+		for(const unit* u : *fake_unit_man_) {
+			new_inval |= u->anim_comp().invalidate(*this);
 		}
 #else
-	#pragma omp parallel for reduction(|:new_inval) shared(open_mp_list)
-		for (int i = 0; i < omp_iterations; i++) {
-				new_inval |= open_mp_list[i]->anim_comp().invalidate(*this);
+#pragma omp parallel for reduction(| : new_inval) shared(open_mp_list)
+		for(int i = 0; i < omp_iterations; i++) {
+			new_inval |= open_mp_list[i]->anim_comp().invalidate(*this);
 		}
 #endif
-	} while (new_inval);
+	} while(new_inval);
 }
 
 void display::add_arrow(arrow& arrow)
@@ -3178,30 +2681,411 @@ void display::process_reachmap_changes()
 	reach_map_changed_ = false;
 }
 
-// TODO: decide whether to move this to CVideo.
-//       Also maybe a better name and/or additional functionality.
-void display::render_texture_original_size(const texture& tex, const int x_pos, const int y_pos)
-{
-	texture::info info = tex.get_info();
 
-	SDL_Rect dst {x_pos, y_pos, info.w, info.h};
-	screen_.render_copy(tex, nullptr, &dst);
+/* Debugging aid to slow things down a bit. Don't ever enable this in a release! */
+#ifdef SLOW_THINGS_DOWN
+#undef SLOW_THINGS_DOWN
+#endif
+
+// #define SLOW_THINGS_DOWN
+
+void display::draw()
+{
+	draw(true, false);
 }
+
+void display::draw(bool update)
+{
+	draw(update, false);
+}
+
+void display::draw(bool update, bool force)
+{
+	return;
+
+	// log_scope("display::draw");
+
+	if(video_.update_locked()) {
+		return;
+	}
+
+	if (dirty_) {
+		flip_locker flip_lock(video_);
+		dirty_ = false;
+		redraw_everything();
+		return;
+	}
+
+	// Trigger cache rebuild when preference gets changed
+	if (animate_water_ != preferences::animate_water()) {
+		animate_water_ = preferences::animate_water();
+		builder_->rebuild_cache_all();
+	}
+
+	set_scontext_unsynced leave_synced_context;
+
+	draw_init();
+
+	pre_draw();
+
+	// invalidate all that needs to be invalidated
+	invalidate_animations();
+	// at this stage we have everything that needs to be invalidated for this redraw
+	// save it as the previous invalidated, and merge with the previous invalidated_
+	// we merge with the previous redraw because if a hex had a unit last redraw but
+	// not this one, nobody will tell us to redraw (cleanup)
+	previous_invalidated_.swap(invalidated_);
+	invalidated_.insert(previous_invalidated_.begin(),previous_invalidated_.end());
+	// these new invalidations cannot cause any propagation because
+	// if a hex was invalidated last turn but not this turn, then
+	// * case of no unit in neighbor hex=> no propagation
+	// * case of unit in hex but was there last turn=>its hexes are invalidated too
+	// * case of unit in hex not there last turn => it moved, so was invalidated previously
+	if(!get_map().empty()) {
+#ifdef SLOW_THINGS_DOWN
+		int simulate_delay = 0;
+#endif
+
+		/*
+		 * draw_invalidated() also invalidates the halos, so also needs to be
+		 * ran if invalidated_.empty() == true.
+		 */
+		//drawing_buffer_.set_clip_rect(map_area());
+		if(!invalidated_.empty() || preferences::show_haloes()) {
+			draw_invalidated();
+			invalidated_.clear();
+		}
+
+		//drawing_buffer_.render_buffer();
+
+		post_commit();
+		draw_sidebar();
+
+#ifdef SLOW_THINGS_DOWN
+		SDL_Delay(2 * simulate_delay + rand() % 20);
+#endif
+	}
+
+	draw_wrap(update, force);
+
+	post_draw();
+}
+
+void display::redraw_everything()
+{
+	if(video_.update_locked()) {
+		return;
+	}
+
+	invalidateGameStatus_ = true;
+
+	reportRects_.clear();
+	reportSurfaces_.clear();
+	reports_.clear();
+
+	bounds_check_position();
+
+	tooltips::clear_tooltips();
+
+	theme_.set_resolution(screen_area());
+
+	if(!menu_buttons_.empty() || !action_buttons_.empty()) {
+		create_buttons();
+	}
+
+	if(resources::controller) {
+		hotkey::command_executor* command_executor = resources::controller->get_hotkey_command_executor();
+		if(command_executor != nullptr)	{
+			// This function adds button overlays,
+			// it needs to be run after recreating the buttons.
+			command_executor->set_button_state();
+		}
+	}
+
+	panelsDrawn_ = false;
+	if (!gui::in_dialog()) {
+		labels().recalculate_labels();
+	}
+
+	redraw_background_ = true;
+
+	for(std::function<void(display&)> f : redraw_observers_) {
+		f(*this);
+	}
+
+	int ticks1 = SDL_GetTicks();
+	invalidate_all();
+	int ticks2 = SDL_GetTicks();
+	draw(true,true);
+	int ticks3 = SDL_GetTicks();
+	LOG_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
+
+	complete_redraw_event_.notify_observers();
+}
+
+
+void display::draw_invalidated() {
+	return;
+//	log_scope("display::draw_invalidated");
+	SDL_Rect clip_rect = get_clip_rect();
+	surface& screen = get_screen_surface();
+	clip_rect_setter set_clip_rect(screen, &clip_rect);
+	for (const map_location& loc : get_visible_hexes()) {
+		int xpos = get_location_x(loc);
+		int ypos = get_location_y(loc);
+
+		//const bool on_map = get_map().on_board(loc);
+		SDL_Rect hex_rect = sdl::create_rect(xpos, ypos, zoom_, zoom_);
+		if(!sdl::rects_overlap(hex_rect,clip_rect)) {
+			continue;
+		}
+		draw_hex(loc);
+		drawn_hexes_+=1;
+	}
+	invalidated_hexes_ += invalidated_.size();
+
+	if (dc_->teams().empty())
+	{
+		// The unit drawer can't function without teams
+		return;
+	}
+
+	unit_drawer drawer = unit_drawer(*this);
+
+	for (const map_location& loc : invalidated_) {
+		unit_map::const_iterator u_it = dc_->units().find(loc);
+		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
+		if (u_it != dc_->units().end()
+				&& (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id()))
+			drawer.redraw_unit(*u_it);
+	}
+}
+
+void display::draw_hex(const map_location& /*loc*/)
+{
+	return;
+
+	//int xpos = get_location_x(loc);
+	//int ypos = get_location_y(loc);
+
+	//image::TYPE image_type = get_image_type(loc);
+
+	//const bool on_map = get_map().on_board(loc);
+	//const time_of_day& tod = get_time_of_day(loc);
+
+	//int num_images_fg = 0;
+	//int num_images_bg = 0;
+
+	//if(!shrouded(loc)) {
+#if 0
+		std::vector<texture> images_fg = get_terrain_images(loc,tod.id, image_type, FOREGROUND);
+		std::vector<texture> images_bg = get_terrain_images(loc,tod.id, image_type, BACKGROUND);
+
+		if(images_fg.empty() && images_bg.empty()) {
+			return;
+		}
+		num_images_fg = images_fg.size();
+		num_images_bg = images_bg.size();
+
+		for(auto& t : images_bg) {
+			//assert(t);
+		}
+		for(auto& t : images_fg) {
+			//assert(t);
+		}
+		// unshrouded terrain (the normal case)
+		if(!images_bg.empty()) {
+			drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_BG, loc, xpos, ypos, images_bg);
+		} else {
+			//std::cerr << "bg images empty" << std::endl;
+		}
+
+		if(!images_fg.empty()) {
+			drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_FG, loc, xpos, ypos, images_fg);
+		} else {
+			//std::cerr << "fg images empty" << std::endl;
+		}
+
+		// Draw the grid, if that's been enabled
+		if(grid_) {
+			static const image::locator grid_top(game_config::images::grid_top);
+			drawing_buffer_add(drawing_buffer::LAYER_GRID_TOP, loc, xpos, ypos,
+				image::get_texture(grid_top));
+			static const image::locator grid_bottom(game_config::images::grid_bottom);
+			drawing_buffer_add(drawing_buffer::LAYER_GRID_BOTTOM, loc, xpos, ypos,
+				image::get_texture(grid_bottom));
+		}
+		// village-control flags.
+		//drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
+	//}
+#endif
+
+#if 0
+	if(!shrouded(loc)) {
+		typedef overlay_map::const_iterator Itor;
+		std::pair<Itor,Itor> overlays = overlays_->equal_range(loc);
+		const bool have_overlays = overlays.first != overlays.second;
+
+		image::light_string lt;
+
+		if(have_overlays) {
+			tod_color tod_col = tod.color;
+
+			if(tod_col != get_time_of_day().color) {
+				tod_col = tod_col + color_adjust_;
+			}
+
+			lt = image::get_light_string(0, tod_col.r, tod_col.g, tod_col.b);
+
+			for( ; overlays.first != overlays.second; ++overlays.first) {
+				if ((overlays.first->second.team_name == "" ||
+						overlays.first->second.team_name.find(dc_->teams()[viewing_team()].team_name()) != std::string::npos)
+						&& !(fogged(loc) && !overlays.first->second.visible_in_fog))
+				{
+
+					const std::string image = overlays.first->second.image;
+					const surface surf = image.find("~NO_TOD_SHIFT()") == std::string::npos ?
+						image::get_lighted_image(image, lt, image::SCALED_TO_HEX) : image::get_image(image, image::SCALED_TO_HEX);
+					drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
+				}
+			}
+		}
+	}
+
+	// Draw the time-of-day mask on top of the terrain in the hex.
+	// tod may differ from tod if hex is illuminated.
+	const std::string& tod_hex_mask = tod.image_mask;
+	if(tod_hex_mask1 != nullptr || tod_hex_mask2 != nullptr) {
+		drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask1);
+		drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask2);
+	} else if(!tod_hex_mask.empty()) {
+		drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_FG, loc, xpos, ypos,
+			image::get_image(tod_hex_mask,image::SCALED_TO_HEX));
+	}
+
+	// Paint mouseover overlays
+	if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc)))
+			&& mouseover_hex_overlay_ != nullptr) {
+		drawing_buffer_add(drawing_buffer::LAYER_MOUSEOVER_OVERLAY, loc, xpos, ypos, mouseover_hex_overlay_);
+	}
+
+	// Paint arrows
+	arrows_map_t::const_iterator arrows_in_hex = arrows_map_.find(loc);
+	if(arrows_in_hex != arrows_map_.end()) {
+		for (arrow* const a : arrows_in_hex->second) {
+			a->draw_hex(loc);
+		}
+	}
+
+	// Apply shroud, fog and linger overlay
+
+	if(shrouded(loc)) {
+		// We apply void also on off-map tiles
+		// to shroud the half-hexes too
+		const std::string& shroud_image = get_variant(shroud_images_, loc);
+		drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, xpos, ypos,
+			image::get_image(shroud_image, image_type));
+	} else if(fogged(loc)) {
+		const std::string& fog_image = get_variant(fog_images_, loc);
+		drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, xpos, ypos,
+			image::get_image(fog_image, image_type));
+	}
+
+	if(!shrouded(loc)) {
+		drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, xpos, ypos, get_fog_shroud_images(loc, image_type));
+	}
+
+	if (on_map) {
+		if (draw_coordinates_) {
+			int off_x = xpos + hex_size()/2;
+			int off_y = ypos + hex_size()/2;
+			surface text = font::get_rendered_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
+			surface bg = create_neutral_surface(text->w, text->h);
+			SDL_Rect bg_rect {0, 0, text->w, text->h};
+			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
+			off_x -= text->w / 2;
+			off_y -= text->h / 2;
+			if (draw_terrain_codes_) {
+				off_y -= text->h / 2;
+			}
+			if (draw_num_of_bitmaps_) {
+				off_y -= text->h / 2;
+			}
+			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
+			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+		}
+		if (draw_terrain_codes_ && (game_config::debug || !shrouded(loc))) {
+			int off_x = xpos + hex_size()/2;
+			int off_y = ypos + hex_size()/2;
+			surface text = font::get_rendered_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
+			surface bg = create_neutral_surface(text->w, text->h);
+			SDL_Rect bg_rect {0, 0, text->w, text->h};
+			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
+			off_x -= text->w / 2;
+			off_y -= text->h / 2;
+			if (draw_coordinates_ && !draw_num_of_bitmaps_) {
+				off_y += text->h / 2;
+			} else if (draw_num_of_bitmaps_ && !draw_coordinates_) {
+				off_y -= text->h / 2;
+			}
+			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
+			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+		}
+		if (draw_num_of_bitmaps_) {
+			int off_x = xpos + hex_size()/2;
+			int off_y = ypos + hex_size()/2;
+			surface text = font::get_rendered_text(lexical_cast<std::string>(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
+			surface bg = create_neutral_surface(text->w, text->h);
+			SDL_Rect bg_rect {0, 0, text->w, text->h};
+			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
+			off_x -= text->w / 2;
+			off_y -= text->h / 2;
+			if (draw_coordinates_) {
+				off_y += text->h / 2;
+			}
+			if (draw_terrain_codes_) {
+				off_y += text->h / 2;
+			}
+			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
+			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+		}
+	}
+
+	if(debug_foreground) {
+		drawing_buffer_add(drawing_buffer::LAYER_UNIT_DEFAULT, loc, xpos, ypos,
+			image::get_image("terrain/foreground.png", image_type));
+	}
+#endif
+}
+
+
+//
+// NEW RENDERING CODE =========================================================================
+//
+
+//template<typename... T>
+////void display::render_scaled_to_zoom(const texture& tex, const int x_pos, const int y_pos, T&&... extra_args)
+
 
 void display::draw_gamemap()
 {
 	SDL_Rect area = map_area();
 	render_clip_rect_setter setter(&area);
 
-	// TODO: ToD coloring
+	// TODO: ToD coloring of terrains.
 
-	invalidate_animations();
+	// The unit drawer can't function without teams.
+	// FIXME
+	if(dc_->teams().empty()) {
+		//return;
+	}
 
+	// TODO: why is this created every time?
 	unit_drawer drawer = unit_drawer(*this);
 
 	for(const map_location& loc : get_visible_hexes()) {
-		int xpos = get_location_x(loc);
-		int ypos = get_location_y(loc);
+		const int xpos = get_location_x(loc);
+		const int ypos = get_location_y(loc);
 
 		image::TYPE image_type = get_image_type(loc);
 
@@ -3220,7 +3104,7 @@ void display::draw_gamemap()
 		// Background terrains
 		//
 		for(const texture& t : images_bg) {
-			render_texture_original_size(t, xpos, ypos);
+			render_scaled_to_zoom(t, xpos, ypos);
 		}
 
 		//
@@ -3228,7 +3112,7 @@ void display::draw_gamemap()
 		//
 		texture flag = get_flag(loc);
 		if(flag) {
-			render_texture_original_size(flag, xpos, ypos);
+			render_scaled_to_zoom(flag, xpos, ypos);
 		}
 
 		//
@@ -3236,28 +3120,93 @@ void display::draw_gamemap()
 		//
 		auto u_it = dc_->units().find(loc);
 		auto request = exclusive_unit_draw_requests_.find(loc);
+
+		// Real units
 		if(u_it != dc_->units().end() && (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id())) {
 			drawer.redraw_unit(*u_it);
+		}
+
+		// Fake (moving) units
+		for(const unit* temp_unit : *fake_unit_man_) {
+			if(request == exclusive_unit_draw_requests_.end() || request->second == temp_unit->id()) {
+				drawer.redraw_unit(*temp_unit);
+			}
 		}
 
 		//
 		// Foreground terrains
 		//
 		for(const texture& t : images_fg) {
-			render_texture_original_size(t, xpos, ypos);
+			render_scaled_to_zoom(t, xpos, ypos);
+		}
+
+		//
+		// Mouseover overlays
+		//
+#if 0
+		if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc)))
+			&& mouseover_hex_overlay_ != nullptr)
+		{
+			render_scaled_to_zoom(mouseover_hex_overlay_, xpos, ypos);
+		}
+#endif
+
+		//
+		// Arrows
+		//
+		auto arrows_in_hex = arrows_map_.find(loc);
+		if(arrows_in_hex != arrows_map_.end()) {
+			for(arrow* const a : arrows_in_hex->second) {
+				a->draw_hex(loc);
+			}
+		}
+
+		//
+		// Hex cursor (TODO: split into layers)
+		//
+		if(on_map && loc == mouseoverHex_) {
+			draw_hex_cursor(loc);
 		}
 	}
 }
 
 void display::draw_new()
 {
+	// Execute any pre-draw actions from derived classes.
+	pre_draw();
+
+	// Draw theme background.
 	const SDL_Rect area = map_outside_area();
 	draw_background(area, theme_.border().background_image);
 
+	// Progress animations.
+	invalidate_animations();
+
+	// Draw the gamemap and its contents (units, etc);
 	draw_gamemap();
+
+	post_commit();
 
 	draw_all_panels();
 	draw_minimap();
+
+	// Draw map labels.
+	font::draw_floating_labels();
+
+	// TODO: what dis?
+	//events::raise_volatile_draw_event();
+	//events::raise_volatile_undraw_event();
+
+	// Draw debugging aids such as the FPS counter.
+	draw_debugging_aids();
+
+	// Call any redraw observers.
+	for(std::function<void(display&)> f : redraw_observers_) {
+		f(*this);
+	}
+
+	// Execute any post-draw actions from derived classes.
+	post_draw();
 }
 
 void display::handle_window_event(const SDL_Event& event)
@@ -3267,8 +3216,7 @@ void display::handle_window_event(const SDL_Event& event)
 		case SDL_WINDOWEVENT_RESIZED:
 		case SDL_WINDOWEVENT_RESTORED:
 		case SDL_WINDOWEVENT_EXPOSED:
-			dirty_ = true;
-
+			// TODO: add additional handling here if needed.
 			break;
 		}
 	}
@@ -3282,7 +3230,7 @@ void display::handle_event(const SDL_Event& event)
 
 	switch(event.type) {
 	case DRAW_EVENT:
-	case DRAW_ALL_EVENT:
+	// case DRAW_ALL_EVENT:
 		draw_new();
 		break;
 	default:

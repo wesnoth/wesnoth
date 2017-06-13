@@ -105,19 +105,19 @@ image::TYPE editor_display::get_image_type(const map_location& loc)
 
 void editor_display::draw_hex(const map_location& loc)
 {
-	int xpos = get_location_x(loc);
-	int ypos = get_location_y(loc);
+	//int xpos = get_location_x(loc);
+	//int ypos = get_location_y(loc);
 	display::draw_hex(loc);
 	if (map().on_board_with_border(loc)) {
 		if (map().in_selection(loc)) {
-			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, xpos, ypos,
-				image::get_texture("editor/selection-overlay.png"));
+			//drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, xpos, ypos,
+			//	image::get_texture("editor/selection-overlay.png"));
 		}
 
 		if (brush_locations_.find(loc) != brush_locations_.end()) {
 			static const image::locator brush(game_config::images::editor_brush);
-			drawing_buffer_add(drawing_buffer::LAYER_SELECTED_HEX, loc, xpos, ypos,
-					image::get_texture(brush));
+			//drawing_buffer_add(drawing_buffer::LAYER_SELECTED_HEX, loc, xpos, ypos,
+			//		image::get_texture(brush));
 		}
 	}
 }

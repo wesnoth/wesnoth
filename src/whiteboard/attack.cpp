@@ -208,11 +208,11 @@ void attack::draw_hex(const map_location& hex)
 		}
 		else if (hex == target_hex_) //add symbol to defender hex
 		{
-			int xpos = resources::screen->get_location_x(target_hex_);
-			int ypos = resources::screen->get_location_y(target_hex_);
+			//int xpos = resources::screen->get_location_x(target_hex_);
+			//int ypos = resources::screen->get_location_y(target_hex_);
 
-			resources::screen->drawing_buffer_add(layer, target_hex_, xpos, ypos,
-					image::get_texture("whiteboard/attack-indicator-dst-" + direction_text + ".png"));
+			//resources::screen->drawing_buffer_add(layer, target_hex_, xpos, ypos,
+			//		image::get_texture("whiteboard/attack-indicator-dst-" + direction_text + ".png"));
 		}
 	}
 }

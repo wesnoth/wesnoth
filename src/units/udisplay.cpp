@@ -95,7 +95,7 @@ static void teleport_unit_between(const map_location& a, const map_location& b,
 	}
 
 	temp_unit.anim_comp().set_standing();
-	disp.update_display();
+	disp.draw_debugging_aids();
 	events::pump();
 }
 

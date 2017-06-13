@@ -136,12 +136,15 @@ bool arrow::path_contains(map_location const& hex) const
 	return contains;
 }
 
-void arrow::draw_hex(map_location const& hex)
+void arrow::draw_hex(const map_location& hex)
 {
 	if(path_contains(hex))
 	{
-		SCREEN->render_image(SCREEN->get_location_x(hex), SCREEN->get_location_y(hex), layer_,
-					hex, image::get_image(symbols_map_[hex], image::SCALED_TO_ZOOM));
+		SCREEN->render_scaled_to_zoom(
+			image::get_texture(symbols_map_[hex] /*, image::SCALED_TO_ZOOM*/),
+			SCREEN->get_location_x(hex),
+			SCREEN->get_location_y(hex)
+		);
 	}
 }
 
