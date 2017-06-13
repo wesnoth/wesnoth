@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-05-29 21:55+0200\n"
-"PO-Revision-Date: 2016-12-12 12:52+0800\n"
+"PO-Revision-Date: 2017-05-28 11:03+0800\n"
 "Last-Translator: Brian lee <haiyuan.2007@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 2.0.2\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -32,24 +32,23 @@ msgstr "试验性AI"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
-#, fuzzy
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr "开发AI：默认+旧征募规则"
+msgstr "开发用AI：默认AI（RCA）及替代用征募规则"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (Formula AI)"
-msgstr "多人游戏_AI^Dev AI:默认 + 实验性招募(Formula AI)"
+msgstr "开发用AI：默认 + 试验性征募规则（公式AI）"
 
 #. [ai]: id=formula_ai_poisoning
 #: data/ai/dev/formula_ai_poisoning.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
-msgstr "多人游戏_AI^Dev AI: Default + 中毒  (Formula AI)"
+msgstr "开发用AI：默认 + 使毒（公式AI）"
 
 #. [ai]: id=idle_ai
 #: data/ai/dev/idle_ai.cfg:4
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "多人游戏_AI^Dev AI: 空闲 AI"
+msgstr "开发用AI：空闲AI"
 
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
@@ -91,7 +90,7 @@ msgstr "乌鲁戈-特尔法"
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:130
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:24
 msgid "Orcs"
-msgstr " 兽人"
+msgstr "兽人"
 
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:105
@@ -111,19 +110,19 @@ msgstr "伽尔德拉德"
 #. [side]: type=Elvish Shyde, id=Chantal
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:159
 msgid "Chantal"
-msgstr "香黛儿"
+msgstr "香黛尔"
 
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:209
 msgid ""
 "Master Delfador! Look, there are orcs coming from all directions! What shall "
 "we do?"
-msgstr "主人黎伐多！看 ！兽人们正从所有的方向过来了！我们该怎么做？"
+msgstr "德法多大师！看，兽人们正从四面八方攻来！我们该怎么办？"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:213
 msgid "There are too many to fight, far too many. We must escape!"
-msgstr "太多了，我们必须逃！"
+msgstr "他们太多了，实在太多了。我们必须逃离！"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:216
@@ -139,40 +138,47 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
-"剧本再现，主要战役王座继承者之精灵受困,AI 正控制科纳德一方。目标是移动科纳德"
-"到西北的指示牌。同时保持科纳德和黎伐多生还。同样的AI在场景保卫 Unit中被使用"
+"这是主线战役<b>王座继承人</b>中<b>精灵受困</b>场景的再演绎，区别只在于此处是"
+"AI在控制科纳德的阵营。目标是将科纳德移动到西北方的路标处，同时要确保科纳德和"
+"德法多存活。此处使用的AI与<b>保护单位<b>场景中使用的AI相同。\n"
+"\n"
+"注：保护单位AI是作为微AI来编写的。微AI可以只使用WML和[micro_ai]标签来加入到场"
+"景中，并根据场景的需要进行适配。请参阅http://wiki.wesnoth.org/Micro_AIs处的"
+"<span color='#00A000'>微AI维基页面</span>以获得更多信息。"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:222
 msgid "Move Konrad here"
-msgstr "移动科纳德到这儿"
+msgstr "将科纳德移动到此处"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:238
 msgid "Very well, we have made it this far! But where do we go next?"
-msgstr "太棒了，我们走了这么远了，但下一步我们去哪？"
+msgstr "很好，我们走了这么远了！但下一步我们去哪？"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:243
 msgid ""
 "In HttT, we would travel north now, and try to make it to the Isle of "
 "Alduin. But for this demo campaign, we'll call it good here."
-msgstr "在HttT中，现在我们需要往北走，试着去安度云岛。但我们假装这儿不错"
+msgstr ""
+"在王座继承人中，现在我们将会往北走，试图到达奥渡因岛。但在这个演示战役中，我"
+"们走到这儿就行了。"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:268
 msgid "I... I don’t think I can make it anymore."
-msgstr "我。。。我快撑不住了。"
+msgstr "我……我想我走不到那儿了。"
 
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:272
 msgid "Prince... you must keep fighting! Nooooooo!"
-msgstr "王子！你要挺住继续战斗！不！"
+msgstr "王子……您必须坚持战斗！不！！！！！"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:276
 msgid "It is over. I am doomed..."
-msgstr "结束了。我要死了。。。"
+msgstr "结束了。我完了……"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:290

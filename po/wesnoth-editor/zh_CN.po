@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-05-29 21:55+0200\n"
-"PO-Revision-Date: 2017-01-29 15:47+0800\n"
+"PO-Revision-Date: 2017-05-23 22:26+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -18,22 +18,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.2\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
 msgid "Single Hex"
-msgstr "单个格子"
+msgstr "单格"
 
 #. [brush]: id=brush-2
 #: data/core/editor/brushes.cfg:16
 msgid "Radius 1 Hex"
-msgstr "半径为1的格子"
+msgstr "半径为1的格"
 
 #. [brush]: id=brush-3
 #: data/core/editor/brushes.cfg:26
 msgid "Radius 2 Hex"
-msgstr "半径为2的格子"
+msgstr "半径为2的格"
 
 #. [brush]: id=brush-nw-se
 #: data/core/editor/brushes.cfg:47
@@ -331,16 +331,12 @@ msgid "No Recent Files"
 msgstr "没有最近文件"
 
 #: src/editor/map/context_manager.cpp:385
-#, fuzzy
-#| msgid "(Unnamed Area)"
 msgid "Unnamed Area"
-msgstr "（未命名区域）"
+msgstr "未命名区域"
 
 #: src/editor/map/context_manager.cpp:416
-#, fuzzy
-#| msgid "(New Side)"
 msgid "New Side"
-msgstr "（新阵营）"
+msgstr "新阵营"
 
 #: src/editor/map/context_manager.cpp:472
 msgid "Apply Mask"
@@ -447,7 +443,7 @@ msgstr "空文件"
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
-msgstr "此地图文件看起来像是一个场景，但是map_data的值指向了一个不存在的文件。"
+msgstr "此地图文件看起来像是一个场景，但是map_data的值指向了一个不存在的文件"
 
 #: src/editor/map/map_context.cpp:555
 msgid "Could not save the scenario: $msg"
@@ -499,7 +495,7 @@ msgstr "背景："
 
 #: src/gui/dialogs/editor/custom_tod.cpp:139
 msgid "Clipboard support not found, contact your packager"
-msgstr ""
+msgstr "未找到剪贴板支持，请联系你的打包者"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:203
 msgid "Choose File"
@@ -516,9 +512,3 @@ msgstr "无"
 #: src/gui/dialogs/editor/set_starting_position.cpp:101
 msgid "Player $player_number"
 msgstr "玩家$player_number"
-
-#~ msgid "(New Map)"
-#~ msgstr "（新地图）"
-
-#~ msgid "(New Scenario)"
-#~ msgstr "（新场景）"

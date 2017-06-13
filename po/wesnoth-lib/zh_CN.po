@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-05-29 21:55+0200\n"
-"PO-Revision-Date: 2017-04-15 16:14+0800\n"
+"PO-Revision-Date: 2017-05-28 11:49+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.2\n"
 
 #. [terrain_type]: id=fence
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
@@ -1811,25 +1811,21 @@ msgstr "类型"
 #. [button]: id=install
 #: data/gui/widget/addon_list.cfg:363 data/gui/window/addon_manager.cfg:202
 msgid "Install add-on"
-msgstr ""
+msgstr "安装附加组件"
 
 #. [button]: id=single_update
 #. [button]: id=update
 #: data/gui/widget/addon_list.cfg:386 data/gui/window/addon_manager.cfg:224
-#, fuzzy
-#| msgid "Update All"
 msgid "Update add-on"
-msgstr "全部升级"
+msgstr "升级附加组件"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:409 data/gui/window/addon_manager.cfg:246
 #: src/gui/dialogs/addon/manager.cpp:707
-#, fuzzy
-#| msgid "Searching for installed add-ons"
 msgid "Uninstall add-on"
-msgstr "正在搜索已安装的附加组件"
+msgstr "卸载附加组件"
 
 #. [label]: id=room
 #: data/gui/widget/chatbox.cfg:22
@@ -1966,14 +1962,12 @@ msgstr "没有可用的描述。"
 #. [button]: id=publish
 #: data/gui/window/addon_manager.cfg:269 src/gui/widgets/addon_list.cpp:253
 msgid "Publish add-on"
-msgstr ""
+msgstr "发布附加组件"
 
 #. [button]: id=delete
 #: data/gui/window/addon_manager.cfg:283
-#, fuzzy
-#| msgid "Delete ToD"
 msgid "Delete add-on"
-msgstr "删除时段"
+msgstr "删除附加组件"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:317 data/gui/window/addon_manager.cfg:731
@@ -1982,8 +1976,6 @@ msgstr "类型："
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:343
-#, fuzzy
-#| msgid "date^First uploaded:"
 msgid "date^Uploaded:"
 msgstr "首次上传于："
 
@@ -1994,8 +1986,6 @@ msgstr "状态："
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:406
-#, fuzzy
-#| msgid "date^Last updated:"
 msgid "date^Updated:"
 msgstr "最后更新于："
 
@@ -2079,10 +2069,8 @@ msgstr "获取附加组件"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:921 src/gui/dialogs/addon/manager.cpp:449
-#, fuzzy
-#| msgid "Details:"
 msgid "Addon Details"
-msgstr "详细："
+msgstr "附加组件细节"
 
 #. [button]: id=update_all
 #: data/gui/window/addon_manager.cfg:935 data/gui/window/addon_manager.cfg:1096
@@ -2207,24 +2195,18 @@ msgstr "基础伤害"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:84
-#, fuzzy
-#| msgid "Time of day"
 msgid "Time of day modifier"
-msgstr "时段"
+msgstr "时段修正"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:85
-#, fuzzy
-#| msgid "Leadership"
 msgid "Leadership bonus"
-msgstr "领导"
+msgstr "领导力加成"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:86
-#, fuzzy
-#| msgid "Slowed"
 msgid "Slowed penalty"
-msgstr "减速"
+msgstr "减速惩罚"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:90
@@ -2234,17 +2216,17 @@ msgstr "总伤害"
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:94
 msgid "Chance to hit"
-msgstr ""
+msgstr "命中率"
 
 #. [grid]
 #: data/gui/window/attack_predictions.cfg:95
 msgid "Chance of being unscathed"
-msgstr "毫发无伤的几率"
+msgstr "毫发无伤率"
 
 #. [label]
 #: data/gui/window/attack_predictions.cfg:185
 msgid "Expected Battle Result (HP)"
-msgstr ""
+msgstr "期望战斗结果（HP）"
 
 #. [label]: id=title
 #: data/gui/window/attack_predictions.cfg:249
@@ -2378,10 +2360,8 @@ msgstr "使用文件管理器浏览此位置"
 
 #. [label]
 #: data/gui/window/custom_tod.cfg:147
-#, fuzzy
-#| msgid "Custom Time Schedule"
 msgid "Edit Time Schedule"
-msgstr "自定义日程表"
+msgstr "编辑日程表"
 
 #. [label]
 #: data/gui/window/custom_tod.cfg:177
@@ -2400,24 +2380,18 @@ msgstr "ID："
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:285
-#, fuzzy
-#| msgid "Image"
 msgid "Image:"
-msgstr "图片"
+msgstr "图片："
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:286
-#, fuzzy
-#| msgid "Mask"
 msgid "Mask:"
-msgstr "遮罩"
+msgstr "遮罩："
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:287
-#, fuzzy
-#| msgid "Sound"
 msgid "Sound:"
-msgstr "声音"
+msgstr "声音："
 
 #. [label]
 #: data/gui/window/custom_tod.cfg:316
@@ -2931,20 +2905,18 @@ msgstr "不再显示"
 
 #. [grid]
 #: data/gui/window/game_load.cfg:108
-#, fuzzy
-#| msgid "Scroll Left"
 msgid "Gold Left:"
-msgstr "向左滚屏"
+msgstr "剩余金币："
 
 #. [grid]
 #: data/gui/window/game_load.cfg:111
 msgid "Active Troops:"
-msgstr ""
+msgstr "出战部队数："
 
 #. [grid]
 #: data/gui/window/game_load.cfg:114
 msgid "Reserve Troops:"
-msgstr ""
+msgstr "后备部队数："
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/game_load.cfg:169
@@ -3288,10 +3260,8 @@ msgstr "显示标签"
 
 #. [label]
 #: data/gui/window/help_browser.cfg:116
-#, fuzzy
-#| msgid "Show Battle for Wesnoth help"
 msgid "Battle For Wesnoth Help"
-msgstr "显示韦诺之战帮助"
+msgstr "韦诺之战帮助"
 
 #. [label]
 #: data/gui/window/hotkey_bind.cfg:35
@@ -3864,8 +3834,6 @@ msgstr "单位升级所需的经验值"
 
 #. [toggle_button]: id=fog
 #: data/gui/window/mp_create_game.cfg:372
-#, fuzzy
-#| msgid "Fog of war"
 msgid "Fog of War"
 msgstr "战争迷雾"
 
@@ -3881,8 +3849,6 @@ msgstr "地图未知，直到你的单位探索到为止"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/window/mp_create_game.cfg:405
-#, fuzzy
-#| msgid "Random start time"
 msgid "Random Start Time"
 msgstr "随机起始时段"
 
@@ -4234,33 +4200,27 @@ msgstr "选择"
 #. [button]: id=select_leader
 #: data/gui/window/mp_staging.cfg:70
 msgid "Select the faction and leader for this side"
-msgstr ""
+msgstr "选择此阵营的派系和首领"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:231
-#, fuzzy
-#| msgid "Change the music volume"
 msgid "Change the side's controller"
-msgstr "改变音乐的音量大小"
+msgstr "改变阵营的控制者"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:247
-#, fuzzy
-#| msgid "Change the music volume"
 msgid "Change the AI side's behaviour"
-msgstr "改变音乐的音量大小"
+msgstr "改变AI阵营的行为"
 
 #. [menu_button]: id=side_team
 #: data/gui/window/mp_staging.cfg:274
 msgid "Which team this side belongs to"
-msgstr ""
+msgstr "此阵营所属的队伍"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:290
-#, fuzzy
-#| msgid "Show team colors"
 msgid "The team color"
-msgstr "显示团队颜色"
+msgstr "队伍颜色"
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:494
@@ -4415,8 +4375,6 @@ msgstr "管理游戏的WML缓存"
 
 #. [label]
 #: data/gui/window/preferences/02_hotkeys.cfg:25
-#, fuzzy
-#| msgid "Category:"
 msgid "Categories:"
 msgstr "类别："
 
@@ -4897,7 +4855,7 @@ msgstr "战役"
 #. [button]: id=cancel
 #: data/gui/window/story_viewer.cfg:131
 msgid "Skip"
-msgstr ""
+msgstr "跳过"
 
 #. [label]: id=lblTitle
 #: data/gui/window/synced_choice_wait.cfg:40
@@ -5273,13 +5231,17 @@ msgstr "此文本中有非法的标记："
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:250
+#, fuzzy
+#| msgid "multimenu^$first and $second"
 msgid "conjunct pair^$first and $second"
-msgstr ""
+msgstr "$first|及$second"
 
 #. TRANSLATORS: Formats the first two elements of a conjunctive list.
 #: src/formula/string_utils.cpp:253
+#, fuzzy
+#| msgid "multimenu^$first, $second"
 msgid "conjunct start^$first, $second"
-msgstr ""
+msgstr "$first，$second"
 
 #. TRANSLATORS: Formats successive elements of a conjunctive list.
 #: src/formula/string_utils.cpp:257
@@ -5293,13 +5255,17 @@ msgstr ""
 
 #. TRANSLATORS: Formats a two-element disjunctive list.
 #: src/formula/string_utils.cpp:268
+#, fuzzy
+#| msgid "multimenu^$first and $second"
 msgid "disjunct pair^$first or $second"
-msgstr ""
+msgstr "$first|及$second"
 
 #. TRANSLATORS: Formats the first two elements of a disjunctive list.
 #: src/formula/string_utils.cpp:271
+#, fuzzy
+#| msgid "multimenu^$first, $second"
 msgid "disjunct start^$first, $second"
-msgstr ""
+msgstr "$first，$second"
 
 #. TRANSLATORS: Formats successive elements of a disjunctive list.
 #: src/formula/string_utils.cpp:275
@@ -5320,10 +5286,8 @@ msgid "Rectangle doesn't fit on canvas."
 msgstr "矩形不适应画布大小。"
 
 #: src/gui/core/canvas.cpp:822
-#, fuzzy
-#| msgid "Rectangle doesn't fit on canvas."
 msgid "Rounded Rectangle doesn't fit on canvas."
-msgstr "矩形不适应画布大小。"
+msgstr "圆角矩形不适应画布大小。"
 
 #: src/gui/core/canvas.cpp:931 src/gui/core/canvas.cpp:936
 #: src/gui/core/canvas.cpp:941 src/gui/core/canvas.cpp:947
@@ -5332,7 +5296,7 @@ msgstr "圆形不适应画布大小。"
 
 #: src/gui/core/canvas.cpp:1047
 msgid "Image doesn't fit on canvas."
-msgstr "图像不适应画布大小。"
+msgstr "图片不适应画布大小。"
 
 #: src/gui/core/canvas.cpp:1269
 msgid "Text has a font size of 0."
@@ -5512,7 +5476,7 @@ msgstr "未找到剪贴板支持，请联系你的打包者"
 
 #: src/gui/dialogs/addon/manager.cpp:446
 msgid "addons^Back to List"
-msgstr ""
+msgstr "回退到列表"
 
 #: src/gui/dialogs/addon/manager.cpp:462
 msgid "An error occurred while downloading the add-ons list from the server."
@@ -5573,10 +5537,8 @@ msgstr ""
 "吗？"
 
 #: src/gui/dialogs/addon/manager.cpp:708
-#, fuzzy
-#| msgid "Do you want to open this link?"
 msgid "Do you want to uninstall '$addon|'?"
-msgstr "你要打开此链接吗？"
+msgstr "你要卸载’$addon|’吗？"
 
 #: src/gui/dialogs/addon/manager.cpp:792 src/gui/dialogs/addon/manager.cpp:806
 #: src/gui/dialogs/campaign_selection.cpp:181
@@ -5593,11 +5555,11 @@ msgstr "没有可用的武器"
 
 #: src/gui/dialogs/attack_predictions.cpp:188
 msgid "Defender resistance vs"
-msgstr ""
+msgstr "防守方抗性"
 
 #: src/gui/dialogs/attack_predictions.cpp:190
 msgid "Attacker vulnerability vs"
-msgstr ""
+msgstr "进攻方弱点"
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:66
 msgid "$requester requires the following modifications to be enabled:"
@@ -5767,16 +5729,12 @@ msgid "Version: "
 msgstr "版本："
 
 #: src/gui/dialogs/game_stats.cpp:78
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Computer"
-msgstr "无"
+msgstr "计算机"
 
 #: src/gui/dialogs/game_stats.cpp:78
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Idle"
-msgstr "无"
+msgstr "空闲"
 
 #: src/gui/dialogs/game_stats.cpp:114 src/gui/dialogs/label_settings.cpp:72
 msgid "Unknown"
@@ -6068,7 +6026,7 @@ msgstr "正在等待玩家选择派系……"
 
 #: src/gui/dialogs/outro.cpp:42
 msgid "The End"
-msgstr ""
+msgstr "完结"
 
 #: src/gui/dialogs/preferences_dialog.cpp:100
 msgid "Saved Games"
@@ -6200,10 +6158,8 @@ msgid "Taken"
 msgstr "点受到的伤害"
 
 #: src/gui/dialogs/title_screen.cpp:239
-#, fuzzy
-#| msgid "Choose Theme"
 msgid "Choose Test"
-msgstr "选择主题"
+msgstr "选择测试"
 
 #: src/gui/dialogs/unit_recall.cpp:265
 msgid "This unit is loyal and requires no upkeep."
@@ -6248,14 +6204,12 @@ msgid "addon_state^Published, outdated on server"
 msgstr "已发布，服务器上的版本已过时"
 
 #: src/gui/widgets/addon_list.cpp:266
-#, fuzzy
-#| msgid "Connecting to server"
 msgid "Send new version to server"
-msgstr "正在连接服务器"
+msgstr "发送新版本至服务器"
 
 #: src/gui/widgets/addon_list.cpp:279
 msgid "Delete add-on from server"
-msgstr ""
+msgstr "从服务器上删除附加组件"
 
 #: src/gui/widgets/chatbox.cpp:264
 msgid "whisper to $receiver"
@@ -6318,18 +6272,21 @@ msgstr "没有已定义的页面。"
 
 #: src/gui/widgets/multimenu_button.cpp:180
 msgid "multimenu^All Selected"
-msgstr ""
+msgstr "全部选中"
 
 #: src/gui/widgets/multimenu_button.cpp:185
+#, fuzzy
+#| msgid "multimenu^$first and 1 other"
+#| msgid_plural "multimenu^$first and $excess others"
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$first|及另1个"
+msgstr[1] "$first|及另$excess|个"
 
 #: src/gui/widgets/multimenu_button.cpp:187
 #: src/gui/widgets/multimenu_button.cpp:248
 msgid "multimenu^None Selected"
-msgstr ""
+msgstr "未选中"
 
 #: src/gui/widgets/pane.cpp:432
 msgid "Need at least 1 parallel item."
@@ -6616,7 +6573,7 @@ msgstr "继续联机游戏"
 
 #: src/hotkey/hotkey_command.cpp:94
 msgid "Quit to Titlescreen"
-msgstr "退回标题画面"
+msgstr "退出至标题画面"
 
 #: src/hotkey/hotkey_command.cpp:95
 msgid "Set Team Label"
@@ -6719,7 +6676,7 @@ msgstr "认为已死亡"
 
 #: src/hotkey/hotkey_command.cpp:128
 msgid "Quit to Desktop"
-msgstr "退回到桌面"
+msgstr "退出至桌面"
 
 #: src/hotkey/hotkey_command.cpp:129
 msgid "Close Map"
@@ -7216,10 +7173,8 @@ msgid "Show Credits"
 msgstr "显示制作者名单"
 
 #: src/hotkey/hotkey_command.cpp:264
-#, fuzzy
-#| msgid "Test scenario"
 msgid "Start Test Scenario"
-msgstr "测试场景"
+msgstr "开始测试场景"
 
 #: src/hotkey/hotkey_command.cpp:266
 msgid "Show Helptip"
@@ -7325,39 +7280,3 @@ msgstr ""
 
 #~ msgid "player"
 #~ msgstr "玩家"
-
-#~ msgid "Advanced Settings"
-#~ msgstr "高级设置"
-
-#~ msgid "Additional dialogs:"
-#~ msgstr "额外对话框："
-
-#~ msgid "Configure sides"
-#~ msgstr "配置阵营"
-
-#~ msgid "Metadata:"
-#~ msgstr "元数据："
-
-#~ msgid "The new theme will take effect after loading or starting a new game."
-#~ msgstr "新主题会在下一次新建或载入游戏时生效。"
-
-#~ msgid ""
-#~ "Era:\n"
-#~ "\n"
-#~ "Not allowed."
-#~ msgstr ""
-#~ "时代：\n"
-#~ "\n"
-#~ "不允许使用。"
-
-#~ msgid ""
-#~ "Modifications:\n"
-#~ "\n"
-#~ "None found."
-#~ msgstr ""
-#~ "模组：\n"
-#~ "\n"
-#~ "未找到。"
-
-#~ msgid "Modifiers"
-#~ msgstr "修正"

@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-05-29 21:55+0200\n"
-"PO-Revision-Date: 2017-04-15 18:11+0800\n"
+"PO-Revision-Date: 2017-05-28 11:03+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -7334,7 +7334,7 @@ msgstr "调试模式关闭！"
 
 #: src/menu_events.cpp:1720
 msgid "WARNING! Unsafe Lua Mode"
-msgstr ""
+msgstr "警告！不安全Lua模式"
 
 #: src/menu_events.cpp:1721
 msgid ""
@@ -7344,6 +7344,10 @@ msgid ""
 "\n"
 "Do not continue unless you really know what you are doing."
 msgstr ""
+"以此方式执行Lua代码将可能使得你的计算机遇到来自任意的恶意附加组件或你所安装的"
+"其他程序的潜在安全威胁。\n"
+"\n"
+"除非你确实知道自己在做什么，请不要继续。"
 
 #: src/menu_events.cpp:1726
 msgid "Unsafe mode enabled!"
@@ -8226,56 +8230,3 @@ msgstr "白板选项"
 #, fuzzy
 #~ msgid "$percent|% accuracy"
 #~ msgstr "$percent|%命中"
-
-#~ msgid "Not implemented yet."
-#~ msgstr "尚未实现。"
-
-#~ msgid "Help"
-#~ msgstr "帮助"
-
-#~ msgid "The End"
-#~ msgstr "结束"
-
-#~ msgid "Unsafe Lua scripts."
-#~ msgstr "不安全的Lua脚本。"
-
-#~ msgid ""
-#~ "You are about to open a security breach in Wesnoth. Are you sure you want "
-#~ "to continue? If you have downloaded add-ons, do not click 'ok'! They "
-#~ "would instantly take over your computer. You have been warned."
-#~ msgstr ""
-#~ "你的操作即将破坏韦诺的安全性。你真的确定要继续吗？如果你下载过附加组件，请"
-#~ "不要点击“确定”！它们将完全控制你的计算机！我们已经警告过你了。"
-
-#~ msgid "Skip"
-#~ msgstr "跳过"
-
-#~ msgid "Attacker"
-#~ msgstr "进攻方"
-
-#~ msgid "Defender"
-#~ msgstr "防御方"
-
-#~ msgid "Expected Battle Result (HP)"
-#~ msgstr "战斗结果期望（生命值）"
-
-#~ msgid "Time of day"
-#~ msgstr "时段"
-
-#~ msgid "Leadership"
-#~ msgstr "领导"
-
-#~ msgid " resistance vs "
-#~ msgstr " 有效防御"
-
-#~ msgid " vulnerability vs "
-#~ msgstr " 不擅防御"
-
-#~ msgid "Slowed"
-#~ msgstr "减速"
-
-#~ msgid "No usable weapon"
-#~ msgstr "没有可用武器"
-
-#~ msgid "Chance of being unscathed"
-#~ msgstr "不受伤几率"
