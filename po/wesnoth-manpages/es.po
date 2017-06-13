@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "POT-Creation-Date: 2017-05-29 21:54+0200\n"
-"PO-Revision-Date: 2017-03-27 20:38+0200\n"
+"PO-Revision-Date: 2017-06-11 15:56+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -143,10 +143,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:57
-#, fuzzy, no-wrap
-#| msgid "B<-c,\\ --campaign\\ [>I<id_campaign>B<]>"
+#, no-wrap
 msgid "B<-c[>I<id_campaign>B<],\\ --campaign[>I<=id_campaign>B<]>"
-msgstr "B<-c,\\ --campaign\\ [>I<id_de_campaña>B<]>"
+msgstr "B<-c[>I<id_de_campaña>B<],\\ --campaign[>I<=id_de_campaña>B<]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:61
@@ -159,10 +158,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:61
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-difficulty\\ [>I<difficulty>B<]>"
+#, no-wrap
 msgid "B<--campaign-difficulty[>I<=difficulty>B<]>"
-msgstr "B<--campaign-difficulty\\ [>I<dificultad>B<]>"
+msgstr "B<--campaign-difficulty[>I<=difficulty>B<]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:65
@@ -357,10 +355,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:129
-#, fuzzy, no-wrap
-#| msgid "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
+#, no-wrap
 msgid "B<--log-level=>I<domain1>B<,>I<domain2>B<,>I<...>"
-msgstr "B<--log->I<nivel>B<=>I<dominio1>B<,>I<dominio2>B<,>I<...>"
+msgstr "B<--log-level=>I<dominio1>B<,>I<dominio2>B<,>I<...>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:138
@@ -406,10 +403,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:147
-#, fuzzy, no-wrap
-#| msgid "B<--logdomains\\ [>I<filter>B<]>"
+#, no-wrap
 msgid "B<--logdomains[>I<=filter>B<]>"
-msgstr "B<--logdomains\\ [>I<filtro>B<]>"
+msgstr "B<--logdomains[>I<=filtro>B<]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:152
@@ -634,10 +630,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:216
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess-output-macros\\ [>I<target-file>B<]>"
+#, no-wrap
 msgid "B<--preprocess-output-macros[>I<=target-file>B<]>"
-msgstr "B<--preprocess-output-macros\\ [>I<target-file>B<]>"
+msgstr "B<--preprocess-output-macros[>I<=target-file>B<]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:224
@@ -682,10 +677,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:231
-#, fuzzy, no-wrap
-#| msgid "B<port>"
+#, no-wrap
 msgid "B<-R,\\ --report>"
-msgstr "B<port>"
+msgstr "B<-R,\\ --report>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:234
@@ -693,6 +687,8 @@ msgid ""
 "initializes game directories, prints build information suitable for use in "
 "bug reports, and exits."
 msgstr ""
+"inicializa los directorios del juego, imprime la información necesaria para "
+"su uso en informes de error, y sale."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:234
@@ -726,10 +722,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:242
-#, fuzzy, no-wrap
-#| msgid "B<-s,\\ --server\\ [>I<host>B<]>"
+#, no-wrap
 msgid "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
-msgstr "B<-s,\\ --server\\ [>I<host>B<]>"
+msgstr "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:246
@@ -767,10 +762,9 @@ msgstr "trata los errores de validación como fatales."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:253
-#, fuzzy, no-wrap
-#| msgid "B<-t,\\ --test\\ [>I<scenario_id>B<]>"
+#, no-wrap
 msgid "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
-msgstr "B<-t,\\ --test\\ [>I<scenario_id>B<]>"
+msgstr "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:259

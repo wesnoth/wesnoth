@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-05-29 21:55+0200\n"
-"PO-Revision-Date: 2017-03-27 20:32+0200\n"
+"PO-Revision-Date: 2017-05-22 09:52+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -1901,25 +1901,21 @@ msgstr "Tipo"
 #. [button]: id=install
 #: data/gui/widget/addon_list.cfg:363 data/gui/window/addon_manager.cfg:202
 msgid "Install add-on"
-msgstr ""
+msgstr "Instalar el complemento"
 
 #. [button]: id=single_update
 #. [button]: id=update
 #: data/gui/widget/addon_list.cfg:386 data/gui/window/addon_manager.cfg:224
-#, fuzzy
-#| msgid "Update All"
 msgid "Update add-on"
-msgstr "Actualizar todo"
+msgstr "Actualizar el complemento"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:409 data/gui/window/addon_manager.cfg:246
 #: src/gui/dialogs/addon/manager.cpp:707
-#, fuzzy
-#| msgid "Searching for installed add-ons"
 msgid "Uninstall add-on"
-msgstr "Buscando complementos instalados"
+msgstr "Desinstalar el complemento"
 
 #. [label]: id=room
 #: data/gui/widget/chatbox.cfg:22
@@ -2056,14 +2052,12 @@ msgstr "No hay una descripción disponible."
 #. [button]: id=publish
 #: data/gui/window/addon_manager.cfg:269 src/gui/widgets/addon_list.cpp:253
 msgid "Publish add-on"
-msgstr ""
+msgstr "Publicar el complemento"
 
 #. [button]: id=delete
 #: data/gui/window/addon_manager.cfg:283
-#, fuzzy
-#| msgid "Delete ToD"
 msgid "Delete add-on"
-msgstr "Borrar ToD"
+msgstr "Borrar el complemento"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:317 data/gui/window/addon_manager.cfg:731
@@ -2165,10 +2159,8 @@ msgstr "Obtener complementos"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
 #: data/gui/window/addon_manager.cfg:921 src/gui/dialogs/addon/manager.cpp:449
-#, fuzzy
-#| msgid "Details:"
 msgid "Addon Details"
-msgstr "Detalles:"
+msgstr "Detalles del complemento"
 
 #. [button]: id=update_all
 #: data/gui/window/addon_manager.cfg:935 data/gui/window/addon_manager.cfg:1096
@@ -2449,21 +2441,19 @@ msgstr "Copiar esta dirección de los archivos al porta-papeles"
 #: data/gui/window/custom_tod.cfg:66 data/gui/window/game_cache_options.cfg:126
 #: data/gui/window/game_version.cfg:62
 msgid "filesystem^Browse"
-msgstr "Buscar"
+msgstr "Explorar"
 
 #. [button]: id=browse_
 #. [button]: id=browse
 #: data/gui/window/custom_tod.cfg:67 data/gui/window/game_cache_options.cfg:127
 #: data/gui/window/game_version.cfg:63
 msgid "Browse this location using a file manager"
-msgstr "Buscar esta dirección usando un administrador de archivos"
+msgstr "Explorar esta dirección usando un administrador de archivos"
 
 #. [label]
 #: data/gui/window/custom_tod.cfg:147
-#, fuzzy
-#| msgid "Custom Time Schedule"
 msgid "Edit Time Schedule"
-msgstr "Planificar fases horarias del día personalizadas"
+msgstr "Editar fases horarias del día"
 
 #. [label]
 #: data/gui/window/custom_tod.cfg:177
@@ -2482,24 +2472,18 @@ msgstr "ID:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:285
-#, fuzzy
-#| msgid "Image"
 msgid "Image:"
-msgstr "Imagen"
+msgstr "Imagen:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:286
-#, fuzzy
-#| msgid "Mask"
 msgid "Mask:"
-msgstr "Mascara"
+msgstr "Mascara:"
 
 #. [grid]
 #: data/gui/window/custom_tod.cfg:287
-#, fuzzy
-#| msgid "Sound"
 msgid "Sound:"
-msgstr "Sonido"
+msgstr "Sonido:"
 
 #. [label]
 #: data/gui/window/custom_tod.cfg:316
@@ -3016,20 +3000,18 @@ msgstr "No mostrar de nuevo"
 
 #. [grid]
 #: data/gui/window/game_load.cfg:108
-#, fuzzy
-#| msgid "Scroll Left"
 msgid "Gold Left:"
-msgstr "Desplazamiento a la izquierda"
+msgstr "Oro restante:"
 
 #. [grid]
 #: data/gui/window/game_load.cfg:111
 msgid "Active Troops:"
-msgstr ""
+msgstr "Tropas activas:"
 
 #. [grid]
 #: data/gui/window/game_load.cfg:114
 msgid "Reserve Troops:"
-msgstr ""
+msgstr "Tropas de reserva:"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/game_load.cfg:169
@@ -3379,10 +3361,8 @@ msgstr "Mostrar etiquetas"
 
 #. [label]
 #: data/gui/window/help_browser.cfg:116
-#, fuzzy
-#| msgid "Show Battle for Wesnoth help"
 msgid "Battle For Wesnoth Help"
-msgstr "Mostrar la ayuda de «La batalla por Wesnoth»"
+msgstr "Ayuda para La batalla por Wesnoth"
 
 #. [label]
 #: data/gui/window/hotkey_bind.cfg:35
@@ -3958,8 +3938,6 @@ msgstr "La cantidad de experiencia que necesita una unidad para promocionar"
 
 #. [toggle_button]: id=fog
 #: data/gui/window/mp_create_game.cfg:372
-#, fuzzy
-#| msgid "Fog of war"
 msgid "Fog of War"
 msgstr "Niebla de guerra"
 
@@ -3977,8 +3955,6 @@ msgstr "El mapa se desconoce hasta que sus unidades lo exploren"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/window/mp_create_game.cfg:405
-#, fuzzy
-#| msgid "Random start time"
 msgid "Random Start Time"
 msgstr "Hora de inicio aleatoria"
 
@@ -4339,33 +4315,27 @@ msgstr "Seleccionar"
 #. [button]: id=select_leader
 #: data/gui/window/mp_staging.cfg:70
 msgid "Select the faction and leader for this side"
-msgstr ""
+msgstr "Seleccionar la facción y el líder para este bando"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:231
-#, fuzzy
-#| msgid "Change the music volume"
 msgid "Change the side's controller"
-msgstr "Cambiar el volumen de la música"
+msgstr "Cambiar el mando del bando"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:247
-#, fuzzy
-#| msgid "Change the music volume"
 msgid "Change the AI side's behaviour"
-msgstr "Cambiar el volumen de la música"
+msgstr "Cambiar el funcionamiento de la IA del bando"
 
 #. [menu_button]: id=side_team
 #: data/gui/window/mp_staging.cfg:274
 msgid "Which team this side belongs to"
-msgstr ""
+msgstr "A qué equipo pertenece este bando"
 
 #. [menu_button]: id=side_color
 #: data/gui/window/mp_staging.cfg:290
-#, fuzzy
-#| msgid "Show team colors"
 msgid "The team color"
-msgstr "Mostrar colores de equipo"
+msgstr "El color del equipo"
 
 #. [button]: id=ok
 #: data/gui/window/mp_staging.cfg:494
@@ -4526,10 +4496,8 @@ msgstr "Manejo del caché de WML del juego"
 
 #. [label]
 #: data/gui/window/preferences/02_hotkeys.cfg:25
-#, fuzzy
-#| msgid "Category:"
 msgid "Categories:"
-msgstr "Categoría:"
+msgstr "Categorías:"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/window/preferences/02_hotkeys.cfg:81
@@ -5024,7 +4992,7 @@ msgstr "Campaña"
 #. [button]: id=cancel
 #: data/gui/window/story_viewer.cfg:131
 msgid "Skip"
-msgstr ""
+msgstr "Omitir"
 
 #. [label]: id=lblTitle
 #: data/gui/window/synced_choice_wait.cfg:40
@@ -5403,13 +5371,17 @@ msgstr "El texto contiene marcado inválido: "
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:250
+#, fuzzy
+#| msgid "multimenu^$first and $second"
 msgid "conjunct pair^$first and $second"
-msgstr ""
+msgstr "multimenu^$first y $second"
 
 #. TRANSLATORS: Formats the first two elements of a conjunctive list.
 #: src/formula/string_utils.cpp:253
+#, fuzzy
+#| msgid "multimenu^$first, $second"
 msgid "conjunct start^$first, $second"
-msgstr ""
+msgstr "multimenu^$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a conjunctive list.
 #: src/formula/string_utils.cpp:257
@@ -5423,13 +5395,17 @@ msgstr ""
 
 #. TRANSLATORS: Formats a two-element disjunctive list.
 #: src/formula/string_utils.cpp:268
+#, fuzzy
+#| msgid "multimenu^$first and $second"
 msgid "disjunct pair^$first or $second"
-msgstr ""
+msgstr "multimenu^$first y $second"
 
 #. TRANSLATORS: Formats the first two elements of a disjunctive list.
 #: src/formula/string_utils.cpp:271
+#, fuzzy
+#| msgid "multimenu^$first, $second"
 msgid "disjunct start^$first, $second"
-msgstr ""
+msgstr "multimenu^$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a disjunctive list.
 #: src/formula/string_utils.cpp:275
@@ -5450,10 +5426,8 @@ msgid "Rectangle doesn't fit on canvas."
 msgstr "El rectángulo no cabe en el lienzo."
 
 #: src/gui/core/canvas.cpp:822
-#, fuzzy
-#| msgid "Rectangle doesn't fit on canvas."
 msgid "Rounded Rectangle doesn't fit on canvas."
-msgstr "El rectángulo no cabe en el lienzo."
+msgstr "El rectángulo redondeado no cabe en el lienzo."
 
 #: src/gui/core/canvas.cpp:931 src/gui/core/canvas.cpp:936
 #: src/gui/core/canvas.cpp:941 src/gui/core/canvas.cpp:947
@@ -5643,7 +5617,7 @@ msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:446
 msgid "addons^Back to List"
-msgstr ""
+msgstr "Volver a la lista"
 
 #: src/gui/dialogs/addon/manager.cpp:462
 msgid "An error occurred while downloading the add-ons list from the server."
@@ -5712,10 +5686,8 @@ msgstr ""
 "bajadas en el servidor de complementos. ¿Desea continuar?"
 
 #: src/gui/dialogs/addon/manager.cpp:708
-#, fuzzy
-#| msgid "Do you want to open this link?"
 msgid "Do you want to uninstall '$addon|'?"
-msgstr "¿Quiere abrir este enlace?"
+msgstr "¿Desea desinstalar '$addon|'?"
 
 #: src/gui/dialogs/addon/manager.cpp:792 src/gui/dialogs/addon/manager.cpp:806
 #: src/gui/dialogs/campaign_selection.cpp:181
@@ -5910,16 +5882,12 @@ msgid "Version: "
 msgstr "Versión: "
 
 #: src/gui/dialogs/game_stats.cpp:78
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Computer"
-msgstr "Nadie"
+msgstr "Computadora"
 
 #: src/gui/dialogs/game_stats.cpp:78
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Idle"
-msgstr "Nadie"
+msgstr "Inactivo"
 
 # o desconocida
 #: src/gui/dialogs/game_stats.cpp:114 src/gui/dialogs/label_settings.cpp:72
@@ -6217,7 +6185,7 @@ msgstr "Esperando a que los jugadores elijan facciones..."
 
 #: src/gui/dialogs/outro.cpp:42
 msgid "The End"
-msgstr ""
+msgstr "Fin"
 
 #: src/gui/dialogs/preferences_dialog.cpp:100
 msgid "Saved Games"
@@ -6350,10 +6318,8 @@ msgid "Taken"
 msgstr "Recibidas"
 
 #: src/gui/dialogs/title_screen.cpp:239
-#, fuzzy
-#| msgid "Choose Theme"
 msgid "Choose Test"
-msgstr "Elegir tema"
+msgstr "Elegir prueba"
 
 #: src/gui/dialogs/unit_recall.cpp:265
 msgid "This unit is loyal and requires no upkeep."
@@ -6398,14 +6364,12 @@ msgid "addon_state^Published, outdated on server"
 msgstr "Publicado, sin actualizar en el servidor"
 
 #: src/gui/widgets/addon_list.cpp:266
-#, fuzzy
-#| msgid "Connecting to server"
 msgid "Send new version to server"
-msgstr "Conectando al servidor"
+msgstr "Enviar la nueva versión al servidor"
 
 #: src/gui/widgets/addon_list.cpp:279
 msgid "Delete add-on from server"
-msgstr ""
+msgstr "Borrar el complemento del servidor"
 
 #: src/gui/widgets/chatbox.cpp:264
 msgid "whisper to $receiver"
@@ -6471,18 +6435,21 @@ msgstr "No se ha definido ninguna página."
 
 #: src/gui/widgets/multimenu_button.cpp:180
 msgid "multimenu^All Selected"
-msgstr ""
+msgstr "Seleccionar todos"
 
 #: src/gui/widgets/multimenu_button.cpp:185
+#, fuzzy
+#| msgid "multimenu^$first and 1 other"
+#| msgid_plural "multimenu^$first and $excess others"
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "multimenu^$first y otro"
+msgstr[1] "multimenu^$first y $excess otros"
 
 #: src/gui/widgets/multimenu_button.cpp:187
 #: src/gui/widgets/multimenu_button.cpp:248
 msgid "multimenu^None Selected"
-msgstr ""
+msgstr "No seleccionar ninguno"
 
 #: src/gui/widgets/pane.cpp:432
 msgid "Need at least 1 parallel item."
@@ -7389,10 +7356,8 @@ msgid "Show Credits"
 msgstr "Mostrar los créditos"
 
 #: src/hotkey/hotkey_command.cpp:264
-#, fuzzy
-#| msgid "Test scenario"
 msgid "Start Test Scenario"
-msgstr "Escenario de prueba"
+msgstr "Iniciar Escenario de pruebas"
 
 #: src/hotkey/hotkey_command.cpp:266
 msgid "Show Helptip"

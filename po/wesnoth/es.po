@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-05-29 21:55+0200\n"
-"PO-Revision-Date: 2017-03-27 22:37+0200\n"
+"PO-Revision-Date: 2017-05-24 20:26+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -3188,6 +3188,7 @@ msgstr ""
 "suffix=men|drum|tor|num|lad|de|ak|lol|dum|tam|nur|dium|deum|bil|rook|relm|"
 "dium|numm|dan|doom|tum|din\n"
 
+# Por lo que me han comentado en el foro. Esta línea ya no se usa para generar nombres aleatorios pseudo españoles. Ahora se usa una fórmula en otra línea. Dejaré un comentario en la misma.
 #: data/core/macros/names.cfg:271
 msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
@@ -3204,6 +3205,7 @@ msgstr ""
 "Simas,Soles,Sustos,Silvanos,Sirenas,Tejos,Tilos,Tocones,Topos,Tortas,"
 "Talentos,Vacas,Varas,Vides,Viñas,Vistas,Zarza,Zorros,Zumos,Zotes"
 
+# Esto tiene su truco. En primer lugar he obtenido una lista de códigos postales con todas las poblaciones españolas. Con una hoja de cálculo he reducido los nombres a una sola palabra y he quitado espacios, guiones y otros símbolos. Con las palabras resultantes he calculado los 30 prefijos de dos o tres letras más comunes. Luego he hecho lo mismo con los sufijos. Los he añadido a la fórmula y ahora se generan nombres aleatorios pseudo españoles en los mapas generados para partidas multijugador.
 #. Generator for the base names of features assigned by the random map generator; see for <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:273
 msgid ""
@@ -3215,9 +3217,11 @@ msgid ""
 msgstr ""
 "\n"
 "main={prefix}{middle}{suffix}\n"
-"prefix=B|C|D|E|F|Fr|Wat|G|H|K|N|O|R|S|T|W|Y|Ro\n"
+"prefix=Al|Ar|Es|Vil|Or|Car|Mon|Bar|Ol|Alb|An|Ll|Alc|Cas|Tor|Ab|Val|Alm|Ben|"
+"Sal|Cor\n"
 "middle=a|e|o|u|i\n"
-"suffix=l|m|rn|x|w|ld|ck|k|rk\n"
+"suffix=ra|la|na|da|lla|sa|ta|lo|te|ro|les|do|za|res|nes|ca|llo|ga|no|ña|go|"
+"ja|va|las|ria|ros|ras|co|ba|re\n"
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:6
@@ -3758,6 +3762,7 @@ msgstr "de frío"
 msgid "arcane"
 msgstr "arcano"
 
+# Hay que cambiar el orden de las palabras para que tenga sentido en castellano. Lo mismo para las líneas siguientes.
 #. [naming]
 #: data/english.cfg:37
 msgid ""
@@ -3771,6 +3776,7 @@ msgstr ""
 "\t\tmain={bridge_type} $base|{bridge_type} de $base{!}\n"
 "\t"
 
+# Orden cambiado
 #. [naming]
 #: data/english.cfg:41
 msgid ""
@@ -3781,7 +3787,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\troad_type=Calzada|Paso|Sendero|Carretera|Vía|Rastro\n"
-"\t\tmain={road_type} $base{!}|$base de {road_type}\n"
+"\t\tmain={road_type} $base{!}|{road_type} $base{!}\n"
 "\t"
 
 #. [naming]
@@ -3797,6 +3803,7 @@ msgstr ""
 "\t\tmain=$base del {river_type}|{river_type} $base\n"
 "\t"
 
+# Se cambia el orden de las palabras
 #. [naming]
 #: data/english.cfg:49
 msgid ""
@@ -3810,6 +3817,7 @@ msgstr ""
 "\t\tmain={forest_type} $base|{forest_type} de $base{!}|{forest_type} $base\n"
 "\t"
 
+# Cambiamos el orden
 #. [naming]
 #: data/english.cfg:53
 msgid ""
@@ -3823,6 +3831,7 @@ msgstr ""
 "\t\tmain={lake_type} de $base|{lake_type} $base\n"
 "\t"
 
+# Cambiamos el orden
 #. [naming]
 #: data/english.cfg:57
 msgid ""
@@ -3834,6 +3843,7 @@ msgstr ""
 "\t\tmain=Pico de $base{!}|Pico $base|Monte $base|Montaña $base\n"
 "\t"
 
+# Cambiamos el orden
 #. [naming]
 #: data/english.cfg:60
 msgid ""
@@ -3843,10 +3853,11 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix= de la Ciénaga| del marjal| de la marisma\n"
-"\t\tmain=$base{!}{suffix}\n"
+"\t\tsuffix=Ciénaga |Marjal |Marisma \n"
+"\t\tmain={suffix}$base{!}\n"
 "\t"
 
+# Se cambian los sufijos por formas de nombrar una población en castellano a discreción. Se cambia el orden
 #. [village_naming]
 #: data/english.cfg:67
 msgid ""
@@ -3856,8 +3867,8 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix=burgo| del Burgo| Vieja| Nueva| de la Villa\n"
-"\t\tmain=$base{!}{suffix}\n"
+"\t\tsuffix=Burgo de |Burgo de |Aldea |Ciudad |Villa \n"
+"\t\tmain={suffix}$base{!}\n"
 "\t"
 
 #. [village_naming]
@@ -3875,6 +3886,7 @@ msgstr ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
+# Accidentes geográficos en corrientes de agua
 #. [village_naming]
 #: data/english.cfg:76
 msgid ""
@@ -3888,10 +3900,11 @@ msgstr ""
 "\n"
 "\t\tprefix=$river{!}|$base{!}\n"
 "\t\triver=$river{!}|del Río\n"
-"\t\tsuffix= del Lecho| del Vado| del Cruce| de {river} \n"
+"\t\tsuffix= del Lecho| del Vado| del Cruce| {river} \n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
+# Cruces para corrientes de agua
 #. [village_naming]
 #: data/english.cfg:82
 msgid ""
@@ -3907,6 +3920,7 @@ msgstr ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
+# Palabras inventadas a discreción. Digamos que solo campo está traducida.
 #. [village_naming]
 #: data/english.cfg:87
 msgid ""
@@ -3920,6 +3934,7 @@ msgstr ""
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 
+# Tipos variados de bosques
 #. [village_naming]
 #: data/english.cfg:91
 msgid ""
@@ -3935,6 +3950,7 @@ msgstr ""
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
+# Aquí los ingleses usan una serie de sufijos para crear nombres aleatorios que en castellano no tienen ningún significado. Los que lo tienen quedan muy incoherentes. Así que lo que queda feo en el mapa se cambia por otra palabra más o menos adecuada. Muchas de las palabras en inglés se refieren a cementerios, tumbas, restos y otras desgracias que en castellano quedan fatal si se traducen directamente.
 #. [village_naming]
 #: data/english.cfg:96
 msgid ""
@@ -3944,8 +3960,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix= del los Restos| del Túmulo| de la Tumba| de la Colina| de la "
-"Cima\n"
+"\t\tsuffix= del Pozo| del Túmulo| de las Flores| de la Colina| de la Cima\n"
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 
@@ -3960,10 +3975,11 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$mountain{!}\n"
-"\t\tsuffix= del Monte| del Desfiladero| de la Sepultura| de los Restos\n"
+"\t\tsuffix= del Monte| del Desfiladero| del Túmulo| del Foso\n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
+# Los túmulos y tumbas, si resultan excesivos se podrían sustituir por cualquier otra cosa más neutral: flores, cabras, estrellas, etc.
 #. [village_naming]
 #: data/english.cfg:105
 msgid ""
@@ -3973,11 +3989,12 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t\tsuffix= de los Restos| del Enterramiento| de la Tumba| del Monte| de la "
-"Montaña| del Desfiladero| del Barranco\n"
+"\t\tsuffix= del Foso| del Túmulo| de la Tumba| del Monte| de la Montaña| del "
+"Desfiladero| del Barranco\n"
 "\t\tmain=$base{!}{suffix}\n"
 "\t"
 
+# Accidentes geográficos en los caminos. Bury en general es un cementerio así que se cambia por algo más adecuado en castellano. Lo mismo con cualquier otra palabra intraducible o poco útil en castellano. Cambiamos el orden de las palabras para castellanizarlo.
 #. [village_naming]
 #: data/english.cfg:109
 msgid ""
@@ -3989,11 +4006,11 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$road{!}|$road{!}|$base{!}\n"
-"\t\tsuffix= de la Parada| del Apeadero| del Enterramiento| del Cementerio| "
-"de los Restos| de los despojos\n"
-"\t\tmain={prefix}{suffix}\n"
+"\t\tsuffix=Parada |Apeadero |Puesto |Posada |Mirador |Cenador \n"
+"\t\tmain={suffix}{prefix}\n"
 "\t"
 
+# Esto serían algún tipo de accidente geográfico de las marismas o pantanos. Así que el tema de las tumbas se podría cambiar por algo más adecuado.
 #. [village_naming]
 #: data/english.cfg:114
 msgid ""
@@ -4005,7 +4022,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t\tprefix=$base{!}|$swamp{!}\n"
-"\t\tsuffix= del Cementerio| de los Restos| de las tumbas\n"
+"\t\tsuffix= del Túmulo| del Foso| de la Tumba\n"
 "\t\tmain={prefix}{suffix}\n"
 "\t"
 
@@ -6522,11 +6539,11 @@ msgstr "Plan"
 
 #: src/help/help_impl.cpp:475
 msgid "<header>text='Units with this special attack'</header>"
-msgstr "<header>text=«Unidades con este ataque especial»</header>"
+msgstr "<header>text='Unidades con este ataque especial'</header>"
 
 #: src/help/help_impl.cpp:541
 msgid "<header>text='Units with this ability'</header>"
-msgstr "<header>text=«Unidades con esta habilidad»</header>"
+msgstr "<header>text='Unidades con esta habilidad'</header>"
 
 #: src/help/help_impl.cpp:569
 msgid "Era:"
@@ -6576,7 +6593,7 @@ msgstr "Alineamiento: "
 
 #: src/help/help_impl.cpp:988
 msgid "<header>text='Units of this race'</header>"
-msgstr "<header>text=«Unidades con esta raza»</header>"
+msgstr "<header>text='Unidades con esta raza'</header>"
 
 #: src/help/help_impl.cpp:1343
 msgid "corrupted original file"
@@ -7263,7 +7280,7 @@ msgstr "¡Modo de depuración desactivado!"
 
 #: src/menu_events.cpp:1720
 msgid "WARNING! Unsafe Lua Mode"
-msgstr ""
+msgstr "¡AVISO! Modo de Lua inseguro"
 
 #: src/menu_events.cpp:1721
 msgid ""
@@ -7273,6 +7290,11 @@ msgid ""
 "\n"
 "Do not continue unless you really know what you are doing."
 msgstr ""
+"Ejecutar de este modo un código Lua expone a su computadora a violaciones "
+"potenciales de la seguridad por parte de cualquier complemento malicioso o "
+"de otros programas que pueda usted tener instalados.\n"
+"\n"
+"No continúe a no ser qué realmente sepa lo que está haciendo."
 
 #: src/menu_events.cpp:1726
 msgid "Unsafe mode enabled!"
