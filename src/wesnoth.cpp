@@ -1098,9 +1098,9 @@ int main(int argc, char** argv)
 		std::cerr << "Ran out of memory. Aborted.\n";
 		error_exit(ENOMEM);
 #if !defined(NO_CATCH_AT_GAME_END)
-	} catch(std::exception & e) {
+	} catch(const std::exception & e) {
 		// Try to catch unexpected exceptions.
-		std::cerr << "Caught general exception:\n" << e.what() << std::endl;
+		std::cerr << "Caught general '" << typeid(e).name() << "' exception:\n" << e.what() << std::endl;
 		error_exit(1);
 	} catch(std::string & e) {
 		std::cerr << "Caught a string thrown as an exception:\n" << e << std::endl;
