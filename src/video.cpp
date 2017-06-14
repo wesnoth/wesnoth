@@ -65,8 +65,8 @@ void trigger_full_redraw()
 	SDL_Event event;
 	event.type = SDL_WINDOWEVENT;
 	event.window.event = SDL_WINDOWEVENT_RESIZED;
-	event.window.data1 = (*frameBuffer).h;
-	event.window.data2 = (*frameBuffer).w;
+	event.window.data1 = CVideo::get_singleton().getx();
+	event.window.data2 = CVideo::get_singleton().gety();
 
 	for(const auto& layer : draw_layers) {
 		layer->handle_window_event(event);
@@ -174,50 +174,15 @@ void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rec
 void CVideo::make_fake()
 {
 	fake_screen_ = true;
-	refresh_rate_ = 1;
-
-#if SDL_VERSION_ATLEAST(2, 0, 6)
-	frameBuffer = SDL_CreateRGBSurfaceWithFormat(0, 16, 16, 24, SDL_PIXELFORMAT_BGR888);
-#else
-	frameBuffer = SDL_CreateRGBSurface(0, 16, 16, 24, 0xFF0000, 0xFF00, 0xFF, 0);
-#endif
 
 	image::set_pixel_format(frameBuffer->format);
 }
 
 void CVideo::make_test_fake(const unsigned width, const unsigned height)
 {
-#if SDL_VERSION_ATLEAST(2, 0, 6)
-	frameBuffer = SDL_CreateRGBSurfaceWithFormat(0, width, height, 32, SDL_PIXELFORMAT_BGR888);
-#else
-	frameBuffer = SDL_CreateRGBSurface(0, width, height, 32, 0xFF0000, 0xFF00, 0xFF, 0);
-#endif
-
-	image::set_pixel_format(frameBuffer->format);
-
 	fake_interactive = true;
-	refresh_rate_ = 1;
 }
 
-void CVideo::update_framebuffer()
-{
-	if(!window) {
-		return;
-	}
-
-	surface fb = SDL_GetWindowSurface(*window);
-	if(!frameBuffer) {
-		frameBuffer = fb;
-	} else {
-		if(sdl_get_version() >= version_info(2, 0, 6)) {
-			// Because SDL has already freed the old framebuffer,
-			// ensure that we won't attempt to free it.
-			frameBuffer.clear_without_free();
-		}
-
-		frameBuffer.assign(fb);
-	}
-}
 
 void CVideo::init_window()
 {
@@ -248,16 +213,7 @@ void CVideo::init_window()
 
 	window->set_minimum_size(preferences::min_window_width, preferences::min_window_height);
 
-	SDL_DisplayMode currentDisplayMode;
-	SDL_GetCurrentDisplayMode(window->get_display_index(), &currentDisplayMode);
-	refresh_rate_ = currentDisplayMode.refresh_rate != 0 ? currentDisplayMode.refresh_rate : 60;
-
 	event_handler_.join_global();
-
-	update_framebuffer();
-	if(frameBuffer) {
-		image::set_pixel_format(frameBuffer->format);
-	}
 }
 
 void CVideo::set_window_mode(const MODE_EVENT mode, const point& size)
@@ -287,11 +243,6 @@ void CVideo::set_window_mode(const MODE_EVENT mode, const point& size)
 		window->set_size(size.x, size.y);
 		window->center();
 		break;
-	}
-
-	update_framebuffer();
-	if(frameBuffer) {
-		image::set_pixel_format(frameBuffer->format);
 	}
 }
 
@@ -511,6 +462,7 @@ std::vector<point> CVideo::get_available_resolutions(const bool include_current)
 	return result;
 }
 
+// TODO: REMOVE ASAP
 surface& CVideo::getSurface()
 {
 	return frameBuffer;
