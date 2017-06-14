@@ -266,7 +266,6 @@ void replay_controller::update_gui()
 	controller_.get_display().recalculate_minimap();
 	controller_.get_display().redraw_minimap();
 	controller_.get_display().invalidate_all();
-	events::raise_draw_event();
 	controller_.get_display().draw();
 }
 

@@ -89,7 +89,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 
 	gui().create_buttons();
 	gui().redraw_everything();
-    events::raise_draw_event();
 }
 
 void editor_controller::init_gui()
