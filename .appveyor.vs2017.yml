@@ -26,8 +26,4 @@ on_failure:
   - "python utils\\appveyor\\irc-notify.py wesnoth-dev {bold}{project_name} - {configuration_name} {color_green}{author}{plain} {bold}{short_commit}: {plain}{message} {color_red}Failed,{bold}Details: {plain}{build_url}"
 
 artifacts:
-  # not sure whether it accepts relertive paths
   - path: wesnoth.exe
-    name: wesnoth_1
-  - path: C:\projects\wesnoth\wesnoth.exe
-    name: wesnoth_2
