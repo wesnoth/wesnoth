@@ -179,12 +179,6 @@ public:
 		const bool flip_h = false,
 		const bool flip_v = false);
 
-	/**
-	 * Updates and ensures the framebuffer surface is valid.
-	 * This needs to be invoked immediately after a resize event or the game will crash.
-	 */
-	void update_framebuffer();
-
 	/** Clear the screen contents */
 	void clear_screen();
 
