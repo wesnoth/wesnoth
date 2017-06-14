@@ -412,7 +412,6 @@ void pump()
 		return;
 	}
 
-	SDL_PumpEvents();
 	peek_for_resize();
 	pump_info info;
 
