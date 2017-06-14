@@ -22,7 +22,7 @@ function backstab_defender_filter(defender)
 	local defender_x = defender.x
 	local defender_y = defender.y
 	
-	local adjacent = {wesnoth.map.get_adjacent_tiles(x, y)}
+	local adjacent = {wesnoth.map.get_adjacent_tiles(defender_x, defender_y)}
 
 	local attacker_pos_index = nil
 	for i,v in ipairs(adjacent) do
