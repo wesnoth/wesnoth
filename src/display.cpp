@@ -982,18 +982,17 @@ static const std::string& get_direction(size_t n)
 	return dirs[n >= dirs.size() ? 0 : n];
 }
 
-std::vector<texture> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
+std::vector<texture> display::get_fog_shroud_images(const map_location& loc, image::TYPE /*image_type*/)
 {
 	std::vector<std::string> names;
 
 	adjacent_loc_array_t adjacent;
 	get_adjacent_tiles(loc, adjacent.data());
 
-	enum visibility {FOG=0, SHROUD=1, CLEAR=2};
+	enum visibility {FOG = 0, SHROUD = 1, CLEAR = 2};
 	visibility tiles[6];
 
-	const std::string* image_prefix[] =
-		{ &game_config::fog_prefix, &game_config::shroud_prefix};
+	const std::string* image_prefix[] { &game_config::fog_prefix, &game_config::shroud_prefix};
 
 	for(int i = 0; i < 6; ++i) {
 		if(shrouded(adjacent[i])) {
@@ -1015,34 +1014,34 @@ std::vector<texture> display::get_fog_shroud_images(const map_location& loc, ima
 		}
 
 		if(start == 6) {
-			// Completely surrounded by fog or shroud. This might have
-			// a special graphic.
+			// Completely surrounded by fog or shroud. This might have a special graphic.
 			const std::string name = *image_prefix[v] + "-all.png";
-			if ( image::exists(name) ) {
+			if(image::exists(name)) {
 				names.push_back(name);
 				// Proceed to the next visibility (fog -> shroud -> clear).
 				continue;
 			}
+
 			// No special graphic found. We'll just combine some other images
 			// and hope it works out.
 			start = 0;
 		}
 
 		// Find all the directions overlap occurs from
-		for (int i = (start+1)%6, cap1 = 0;  i != start && cap1 != 6;  ++cap1) {
+		for(int i = (start + 1) %6, cap1 = 0; i != start && cap1 != 6; ++cap1) {
 			if(tiles[i] == v) {
 				std::ostringstream stream;
-				std::string name;
 				stream << *image_prefix[v];
 
-				for (int cap2 = 0;  v == tiles[i] && cap2 != 6;  i = (i+1)%6, ++cap2) {
+				std::string name;
+				for(int cap2 = 0; v == tiles[i] && cap2 != 6; i = (i + 1) % 6, ++cap2) {
 					stream << get_direction(i);
 
 					if(!image::exists(stream.str() + ".png")) {
 						// If we don't have any surface at all,
 						// then move onto the next overlapped area
 						if(name.empty()) {
-							i = (i+1)%6;
+							i = (i + 1) % 6;
 						}
 						break;
 					} else {
@@ -1054,7 +1053,7 @@ std::vector<texture> display::get_fog_shroud_images(const map_location& loc, ima
 					names.push_back(name + ".png");
 				}
 			} else {
-				i = (i+1)%6;
+				i = (i + 1) % 6;
 			}
 		}
 	}
@@ -2936,20 +2935,12 @@ void display::draw_hex(const map_location& loc)
 	const bool is_shrouded = shrouded(loc);
 	const bool is_fogged = fogged(loc);
 
-	// FIXME
-	if(dc_->teams().empty()) {
-		//return;
-	}
-
-	// TODO: why is this created every time?
-	unit_drawer drawer = unit_drawer(*this);
-
 	std::vector<texture> images_fg = get_terrain_images(loc, tod.id, image_type, FOREGROUND);
 	std::vector<texture> images_bg = get_terrain_images(loc, tod.id, image_type, BACKGROUND);
 
-	// Some debug output
-	const int num_images_fg = images_fg.size();
-	const int num_images_bg = images_bg.size();
+	// Some debug output (TODO)
+	//const int num_images_fg = images_fg.size();
+	//const int num_images_bg = images_bg.size();
 
 	if(!is_shrouded) {
 		//
@@ -2971,18 +2962,23 @@ void display::draw_hex(const map_location& loc)
 	//
 	// Units
 	//
-	auto u_it = dc_->units().find(loc);
-	auto request = exclusive_unit_draw_requests_.find(loc);
+	if(!dc_->teams().empty()) {
+		// TODO: why is this created every time?
+		unit_drawer drawer = unit_drawer(*this);
 
-	// Real units
-	if(u_it != dc_->units().end() && (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id())) {
-		drawer.redraw_unit(*u_it);
-	}
+		auto u_it = dc_->units().find(loc);
+		auto request = exclusive_unit_draw_requests_.find(loc);
 
-	// Fake (moving) units
-	for(const unit* temp_unit : *fake_unit_man_) {
-		if(request == exclusive_unit_draw_requests_.end() || request->second == temp_unit->id()) {
-			drawer.redraw_unit(*temp_unit);
+		// Real units
+		if(u_it != dc_->units().end() && (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id())) {
+			drawer.redraw_unit(*u_it);
+		}
+
+		// Fake (moving) units
+		for(const unit* temp_unit : *fake_unit_man_) {
+			if(request == exclusive_unit_draw_requests_.end() || request->second == temp_unit->id()) {
+				drawer.redraw_unit(*temp_unit);
+			}
 		}
 	}
 
@@ -2996,7 +2992,7 @@ void display::draw_hex(const map_location& loc)
 	}
 
 	//
-	// Shroud and fog
+	// Shroud and fog, main images.
 	//
 	if(is_shrouded || is_fogged) {
 
@@ -3009,9 +3005,13 @@ void display::draw_hex(const map_location& loc)
 		render_scaled_to_zoom(image::get_texture(weather_image), xpos, ypos);
 	}
 
+	//
+	// Shroud and fog, transitions to main hexes.
+	//
 	if(!is_shrouded) {
-		// TODO:
-		// std::vector<texture> fog_shroud_images = get_fog_shroud_images(loc, image_type);
+		for(const texture& t : get_fog_shroud_images(loc, image_type)) {
+			render_scaled_to_zoom(t, xpos, ypos);
+		}
 	}
 
 	//
@@ -3026,7 +3026,7 @@ void display::draw_hex(const map_location& loc)
 #endif
 
 	//
-	// Arrows
+	// Arrows (whiteboard?)
 	//
 	auto arrows_in_hex = arrows_map_.find(loc);
 	if(arrows_in_hex != arrows_map_.end()) {
@@ -3036,62 +3036,56 @@ void display::draw_hex(const map_location& loc)
 	}
 
 	//
-	// Hex cursor (TODO: split into layers)
+	// Draw the grid overlay, if that's been enabled
 	//
-	if(on_map && loc == mouseoverHex_) {
-		draw_hex_cursor(loc);
+	if(!is_shrouded && grid_) {
+		// TODO: split into drawing layers?
+		static const texture grid_top = image::get_texture(game_config::images::grid_top);
+		render_scaled_to_zoom(grid_top, xpos, ypos);
+
+		static const texture grid_bottom = image::get_texture(game_config::images::grid_bottom);
+		render_scaled_to_zoom(grid_bottom, xpos, ypos);
 	}
 
 	//
-	// TODO
+	// On-map overlays, such as [item]s.
 	//
-	//if(!shrouded(loc)) {
-#if 0
+	if(!is_shrouded) {
+		//typedef overlay_map::const_iterator Itor;
+		auto overlays = overlays_->equal_range(loc);
 
-		// Draw the grid, if that's been enabled
-		if(grid_) {
-			static const image::locator grid_top(game_config::images::grid_top);
-			drawing_buffer_add(drawing_buffer::LAYER_GRID_TOP, loc, xpos, ypos,
-				image::get_texture(grid_top));
-			static const image::locator grid_bottom(game_config::images::grid_bottom);
-			drawing_buffer_add(drawing_buffer::LAYER_GRID_BOTTOM, loc, xpos, ypos,
-				image::get_texture(grid_bottom));
-		}
-		// village-control flags.
-		//drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
-	//}
+		//image::light_string lt;
 
-	if(!shrouded(loc)) {
-		typedef overlay_map::const_iterator Itor;
-		std::pair<Itor,Itor> overlays = overlays_->equal_range(loc);
 		const bool have_overlays = overlays.first != overlays.second;
-
-		image::light_string lt;
-
 		if(have_overlays) {
-			tod_color tod_col = tod.color;
+			// TODO:
+			//tod_color tod_col = tod.color;
 
-			if(tod_col != get_time_of_day().color) {
-				tod_col = tod_col + color_adjust_;
-			}
+			//if(tod_col != get_time_of_day().color) {
+			//	tod_col = tod_col + color_adjust_;
+			//}
 
-			lt = image::get_light_string(0, tod_col.r, tod_col.g, tod_col.b);
+			//lt = image::get_light_string(0, tod_col.r, tod_col.g, tod_col.b);
 
-			for( ; overlays.first != overlays.second; ++overlays.first) {
-				if ((overlays.first->second.team_name == "" ||
-						overlays.first->second.team_name.find(dc_->teams()[viewing_team()].team_name()) != std::string::npos)
-						&& !(fogged(loc) && !overlays.first->second.visible_in_fog))
+			for(; overlays.first != overlays.second; ++overlays.first) {
+				if((overlays.first->second.team_name == "" ||
+					overlays.first->second.team_name.find(dc_->teams()[viewing_team()].team_name()) != std::string::npos)
+						&& !(is_fogged && !overlays.first->second.visible_in_fog))
 				{
+					const std::string& image = overlays.first->second.image;
 
-					const std::string image = overlays.first->second.image;
-					const surface surf = image.find("~NO_TOD_SHIFT()") == std::string::npos ?
-						image::get_lighted_image(image, lt, image::SCALED_TO_HEX) : image::get_image(image, image::SCALED_TO_HEX);
-					drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_BG, loc, xpos, ypos, surf);
+					const texture tex = image.find("~NO_TOD_SHIFT()") == std::string::npos
+						? image::get_texture(image) // TODO
+						: image::get_texture(image);
+
+					// was: SCALED_TO_HEX
+					render_scaled_to_zoom(tex, xpos, ypos);
 				}
 			}
 		}
 	}
 
+#if 0
 	// Draw the time-of-day mask on top of the terrain in the hex.
 	// tod may differ from tod if hex is illuminated.
 	const std::string& tod_hex_mask = tod.image_mask;
@@ -3102,11 +3096,21 @@ void display::draw_hex(const map_location& loc)
 		drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_FG, loc, xpos, ypos,
 			image::get_image(tod_hex_mask,image::SCALED_TO_HEX));
 	}
+#endif
 
-	// Apply shroud, fog and linger overlay
+	//
+	// Hex cursor (TODO: split into layers)
+	//
+	if(on_map && loc == mouseoverHex_) {
+		draw_hex_cursor(loc);
+	}
 
-	if (on_map) {
-		if (draw_coordinates_) {
+#if 0
+	//
+	// Debugging output - coordinates, etc.
+	//
+	if(on_map) {
+		if(draw_coordinates_) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
 			surface text = font::get_rendered_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
@@ -3124,7 +3128,8 @@ void display::draw_hex(const map_location& loc)
 			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
 			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, text);
 		}
-		if (draw_terrain_codes_ && (game_config::debug || !shrouded(loc))) {
+
+		if(draw_terrain_codes_ && (game_config::debug || !shrouded(loc))) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
 			surface text = font::get_rendered_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
@@ -3141,7 +3146,8 @@ void display::draw_hex(const map_location& loc)
 			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
 			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, text);
 		}
-		if (draw_num_of_bitmaps_) {
+
+		if(draw_num_of_bitmaps_) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
 			surface text = font::get_rendered_text(lexical_cast<std::string>(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
