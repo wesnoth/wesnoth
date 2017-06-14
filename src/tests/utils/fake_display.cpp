@@ -80,7 +80,7 @@ namespace test_utils {
 				fake_display_manager::get_manager()->get_display();
 
 		if(width >= 0 && height >= 0) {
-			display.video().make_test_fake(width, height);
+			display.video().make_test_fake();
 		}
 
 		return display;

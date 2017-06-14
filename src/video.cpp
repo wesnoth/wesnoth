@@ -180,7 +180,7 @@ void CVideo::make_fake()
 	image::set_pixel_format(frameBuffer->format);
 }
 
-void CVideo::make_test_fake(const unsigned width, const unsigned height)
+void CVideo::make_test_fake()
 {
 	fake_interactive = true;
 	refresh_rate_ = 1;
