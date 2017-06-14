@@ -226,11 +226,14 @@ void game_display::scroll_to_leader(int side, SCROLL_TYPE scroll_type,bool force
 	}
 }
 
-void game_display::pre_draw() {
-	if (std::shared_ptr<wb::manager> w = wb_.lock()) {
+void game_display::pre_draw()
+{
+	if(std::shared_ptr<wb::manager> w = wb_.lock()) {
 		w->pre_draw();
 	}
+
 	process_reachmap_changes();
+
 	/**
 	 * @todo FIXME: must modify changed, but best to do it at the
 	 * floating_label level
@@ -238,8 +241,8 @@ void game_display::pre_draw() {
 	chat_man_->prune_chat_messages();
 }
 
-
-void game_display::post_draw() {
+void game_display::post_draw()
+{
 	if (std::shared_ptr<wb::manager> w = wb_.lock()) {
 		w->post_draw();
 	}
@@ -247,6 +250,8 @@ void game_display::post_draw() {
 
 void game_display::draw_invalidated()
 {
+	return; // DONE
+
 	halo_man_->unrender(invalidated_);
 	display::draw_invalidated();
 	if (fake_unit_man_->empty()) {
@@ -296,12 +301,12 @@ void game_display::draw_hex_cursor(const map_location& loc)
 		fg_path = "misc/hover-hex-bottom.png~RC(magenta>lightblue)";
 	}
 
-	texture cursor_bg = image::get_texture(image::locator(bg_path));
+	texture cursor_bg = image::get_texture(bg_path);
 	if(cursor_bg) {
 		render_scaled_to_zoom(cursor_bg, xpos, ypos);
 	}
 
-	texture cursor_fg = image::get_texture(image::locator(fg_path));
+	texture cursor_fg = image::get_texture(fg_path);
 	if(cursor_fg) {
 		render_scaled_to_zoom(cursor_fg, xpos, ypos);
 	}
@@ -309,16 +314,17 @@ void game_display::draw_hex_cursor(const map_location& loc)
 
 void game_display::draw_hex(const map_location& loc)
 {
-	return;
+	// Inherited.
+	display::draw_hex(loc);
+
 	const bool on_map = get_map().on_board(loc);
 	const bool is_shrouded = shrouded(loc);
-//	const bool is_fogged = fogged(loc);
+	//const bool is_fogged = fogged(loc);
+
 	const int xpos = get_location_x(loc);
 	const int ypos = get_location_y(loc);
 
-//	image::TYPE image_type = get_image_type(loc);
-
-	display::draw_hex(loc);
+	//image::TYPE image_type = get_image_type(loc);
 
 	if(cursor::get() == cursor::WAIT) {
 		// Interaction is disabled, so we don't need anything else
@@ -356,17 +362,19 @@ void game_display::draw_hex(const map_location& loc)
 	}
 #endif
 
-
 	// Draw reach_map information.
-	// We remove the reachability mask of the unit
-	// that we want to attack.
-	if (!is_shrouded && !reach_map_.empty()
-			&& reach_map_.find(loc) == reach_map_.end() && loc != attack_indicator_dst_) {
-		static const image::locator unreachable(game_config::images::unreachable);
-		drawing_buffer_add(drawing_buffer::LAYER_REACHMAP, loc, xpos, ypos,
-				image::get_image(unreachable,image::SCALED_TO_HEX));
+	// We remove the reachability mask of the unit that we want to attack.
+	if(!is_shrouded && !reach_map_.empty()
+			&& reach_map_.find(loc) == reach_map_.end() && loc != attack_indicator_dst_)
+	{
+		static texture unreachable = image::get_texture(game_config::images::unreachable);
+		static texture::info info = unreachable.get_info();
+
+		SDL_Rect dst {xpos, ypos, info.w, info.h};
+		video().render_copy(unreachable, nullptr, &dst); // SCALED_TO_HEX
 	}
 
+#if 0
 	if (std::shared_ptr<wb::manager> w = wb_.lock()) {
 		w->draw_hex(loc);
 
@@ -378,29 +386,43 @@ void game_display::draw_hex(const map_location& loc)
 			}
 		}
 	}
+#endif
+
 	// Draw the attack direction indicator
+	// TODO: SCALED_TO_HEX
 	if(on_map && loc == attack_indicator_src_) {
-		drawing_buffer_add(drawing_buffer::LAYER_ATTACK_INDICATOR, loc, xpos, ypos,
-			image::get_image("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::SCALED_TO_HEX));
-	} else if (on_map && loc == attack_indicator_dst_) {
-		drawing_buffer_add(drawing_buffer::LAYER_ATTACK_INDICATOR, loc, xpos, ypos,
-			image::get_image("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::SCALED_TO_HEX));
+		texture indicator = image::get_texture("misc/attack-indicator-src-" + attack_indicator_direction() + ".png");
+		texture::info info = indicator.get_info();
+
+		SDL_Rect dst {xpos, ypos, info.w, info.h};
+		video().render_copy(indicator, nullptr, &dst);
+	} else if(on_map && loc == attack_indicator_dst_) {
+		texture indicator = image::get_texture("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png");
+		texture::info info = indicator.get_info();
+
+		SDL_Rect dst {xpos, ypos, info.w, info.h};
+		video().render_copy(indicator, nullptr, &dst);
 	}
 
 	// Linger overlay unconditionally otherwise it might give glitches
 	// so it's drawn over the shroud and fog.
 	if(mode_ != RUNNING) {
-		static const image::locator linger(game_config::images::linger);
-		drawing_buffer_add(drawing_buffer::LAYER_LINGER_OVERLAY, loc, xpos, ypos,
-			image::get_image(linger, image::TOD_COLORED));
+		static texture linger = image::get_texture(game_config::images::linger);
+		static texture::info info = linger.get_info();
+
+		SDL_Rect dst {xpos, ypos, info.w, info.h};
+		video().render_copy(linger, nullptr, &dst); // TOD_COLORED
 	}
 
 	if(on_map && loc == selectedHex_ && !game_config::images::selected.empty()) {
-		static const image::locator selected(game_config::images::selected);
-		drawing_buffer_add(drawing_buffer::LAYER_SELECTED_HEX, loc, xpos, ypos,
-				image::get_image(selected, image::SCALED_TO_HEX));
+		static texture selected = image::get_texture(game_config::images::selected);
+		static texture::info info = selected.get_info();
+
+		SDL_Rect dst {xpos, ypos, info.w, info.h};
+		video().render_copy(selected, nullptr, &dst); // SCALED_TO_HEX
 	}
 
+#if 0
 	// Show def% and turn to reach info
 	if(!is_shrouded && on_map) {
 		draw_movement_info(loc);
@@ -413,7 +435,9 @@ void game_display::draw_hex(const map_location& loc)
 			draw_text_in_hex(loc, drawing_buffer::LAYER_MOVE_INFO, txt, 18, font::BAD_COLOR);
 		}
 	}
+
 	//simulate_delay += 1;
+#endif
 }
 
 const time_of_day& game_display::get_time_of_day(const map_location& loc) const
@@ -447,7 +471,6 @@ void game_display::draw_sidebar()
 	}
 }
 
-
 void game_display::set_game_mode(const game_mode mode)
 {
 	if(mode != mode_) {
@@ -464,11 +487,11 @@ void game_display::draw_movement_info(const map_location& loc)
 	std::shared_ptr<wb::manager> wb = wb_.lock();
 
 	// Don't use empty route or the first step (the unit will be there)
-	if(w != route_.marks.end()
-				&& !route_.steps.empty() && route_.steps.front() != loc) {
-		const unit_map::const_iterator un =
-				(wb && wb->get_temp_move_unit().valid()) ?
-						wb->get_temp_move_unit() : dc_->units().find(route_.steps.front());
+	if(w != route_.marks.end() && !route_.steps.empty() && route_.steps.front() != loc) {
+		const unit_map::const_iterator un = (wb && wb->get_temp_move_unit().valid())
+			? wb->get_temp_move_unit()
+			: dc_->units().find(route_.steps.front());
+
 		if(un != dc_->units().end()) {
 			// Display the def% of this terrain
 			int def =  100 - un->defense_modifier(get_map().get_terrain(loc));
@@ -509,6 +532,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			return;
 		}
 	}
+
 	// When out-of-turn, it's still interesting to check out the terrain defs of the selected unit
 	else if (selectedHex_.valid() && loc == mouseoverHex_)
 	{
@@ -528,9 +552,9 @@ void game_display::draw_movement_info(const map_location& loc)
 		}
 	}
 
-	if (!reach_map_.empty()) {
+	if(!reach_map_.empty()) {
 		reach_map::iterator reach = reach_map_.find(loc);
-		if (reach != reach_map_.end() && reach->second > 1) {
+		if(reach != reach_map_.end() && reach->second > 1) {
 			const std::string num = std::to_string(reach->second);
 			draw_text_in_hex(loc, drawing_buffer::LAYER_MOVE_INFO, num, 16, font::YELLOW_COLOR);
 		}

@@ -979,7 +979,7 @@ static const std::string& get_direction(size_t n)
 	return dirs[n >= dirs.size() ? 0 : n];
 }
 
-std::vector<surface> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
+std::vector<texture> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
 {
 	std::vector<std::string> names;
 
@@ -1057,12 +1057,14 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 	}
 
 	// now get the surfaces
-	std::vector<surface> res;
+	std::vector<texture> res;
+	res.reserve(names.size());
 
-	for (std::string& name : names) {
-		const surface surf(image::get_image(name, image_type));
-		if (surf)
-			res.push_back(surf);
+	for(std::string& name : names) {
+		texture tex(image::get_texture(name)); // TODO: image_type
+		if(tex) {
+			res.push_back(std::move(tex));
+		}
 	}
 
 	return res;
@@ -1404,6 +1406,7 @@ void display::draw_text_in_hex(const map_location& loc,
 			}
 		}
 	}
+
 	drawing_buffer_add(layer, loc, x, y, text_surf);
 }
 
@@ -1569,6 +1572,7 @@ void display::enable_menu(const std::string& item, bool enable)
 void display::announce(const std::string& message, const color_t& color, int lifetime)
 {
 	font::remove_floating_label(prevLabel);
+
 	font::floating_label flabel(message);
 	flabel.set_font_size(font::SIZE_XLARGE);
 	flabel.set_color(color);
@@ -2861,50 +2865,135 @@ void display::draw_invalidated() {
 	}
 }
 
-void display::draw_hex(const map_location& /*loc*/)
+
+//
+// NEW RENDERING CODE =========================================================================
+//
+
+void display::draw_hex(const map_location& loc)
 {
-	return;
+	const int xpos = get_location_x(loc);
+	const int ypos = get_location_y(loc);
 
-	//int xpos = get_location_x(loc);
-	//int ypos = get_location_y(loc);
+	image::TYPE image_type = get_image_type(loc);
 
-	//image::TYPE image_type = get_image_type(loc);
+	const bool on_map = get_map().on_board(loc);
+	const time_of_day& tod = get_time_of_day(loc);
 
-	//const bool on_map = get_map().on_board(loc);
-	//const time_of_day& tod = get_time_of_day(loc);
+	const bool is_shrouded = shrouded(loc);
+	const bool is_fogged = fogged(loc);
 
-	//int num_images_fg = 0;
-	//int num_images_bg = 0;
+	// FIXME
+	if(dc_->teams().empty()) {
+		//return;
+	}
 
+	// TODO: why is this created every time?
+	unit_drawer drawer = unit_drawer(*this);
+
+	std::vector<texture> images_fg = get_terrain_images(loc, tod.id, image_type, FOREGROUND);
+	std::vector<texture> images_bg = get_terrain_images(loc, tod.id, image_type, BACKGROUND);
+
+	// Some debug output
+	const int num_images_fg = images_fg.size();
+	const int num_images_bg = images_bg.size();
+
+	if(!is_shrouded) {
+		//
+		// Background terrains
+		//
+		for(const texture& t : images_bg) {
+			render_scaled_to_zoom(t, xpos, ypos);
+		}
+
+		//
+		// Village flags
+		//
+		const texture& flag = get_flag(loc);
+		if(flag) {
+			render_scaled_to_zoom(flag, xpos, ypos);
+		}
+	}
+
+	//
+	// Units
+	//
+	auto u_it = dc_->units().find(loc);
+	auto request = exclusive_unit_draw_requests_.find(loc);
+
+	// Real units
+	if(u_it != dc_->units().end() && (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id())) {
+		drawer.redraw_unit(*u_it);
+	}
+
+	// Fake (moving) units
+	for(const unit* temp_unit : *fake_unit_man_) {
+		if(request == exclusive_unit_draw_requests_.end() || request->second == temp_unit->id()) {
+			drawer.redraw_unit(*temp_unit);
+		}
+	}
+
+	//
+	// Foreground terrains
+	//
+	if(!is_shrouded) {
+		for(const texture& t : images_fg) {
+			render_scaled_to_zoom(t, xpos, ypos);
+		}
+	}
+
+	//
+	// Shroud and fog
+	//
+	if(is_shrouded || is_fogged) {
+
+		// If is_shrouded is false, is_fogged is true
+		const std::string& weather_image = is_shrouded
+			? get_variant(shroud_images_, loc)
+			: get_variant(fog_images_, loc);
+
+		// TODO: image type
+		render_scaled_to_zoom(image::get_texture(weather_image), xpos, ypos);
+	}
+
+	if(!is_shrouded) {
+		// TODO:
+		// std::vector<texture> fog_shroud_images = get_fog_shroud_images(loc, image_type);
+	}
+
+	//
+	// Mouseover overlays (TODO: delegate to editor)
+	//
+#if 0
+	if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc)))
+		&& mouseover_hex_overlay_ != nullptr)
+	{
+		render_scaled_to_zoom(mouseover_hex_overlay_, xpos, ypos);
+	}
+#endif
+
+	//
+	// Arrows
+	//
+	auto arrows_in_hex = arrows_map_.find(loc);
+	if(arrows_in_hex != arrows_map_.end()) {
+		for(arrow* const a : arrows_in_hex->second) {
+			a->draw_hex(loc);
+		}
+	}
+
+	//
+	// Hex cursor (TODO: split into layers)
+	//
+	if(on_map && loc == mouseoverHex_) {
+		draw_hex_cursor(loc);
+	}
+
+	//
+	// TODO
+	//
 	//if(!shrouded(loc)) {
 #if 0
-		std::vector<texture> images_fg = get_terrain_images(loc,tod.id, image_type, FOREGROUND);
-		std::vector<texture> images_bg = get_terrain_images(loc,tod.id, image_type, BACKGROUND);
-
-		if(images_fg.empty() && images_bg.empty()) {
-			return;
-		}
-		num_images_fg = images_fg.size();
-		num_images_bg = images_bg.size();
-
-		for(auto& t : images_bg) {
-			//assert(t);
-		}
-		for(auto& t : images_fg) {
-			//assert(t);
-		}
-		// unshrouded terrain (the normal case)
-		if(!images_bg.empty()) {
-			drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_BG, loc, xpos, ypos, images_bg);
-		} else {
-			//std::cerr << "bg images empty" << std::endl;
-		}
-
-		if(!images_fg.empty()) {
-			drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_FG, loc, xpos, ypos, images_fg);
-		} else {
-			//std::cerr << "fg images empty" << std::endl;
-		}
 
 		// Draw the grid, if that's been enabled
 		if(grid_) {
@@ -2918,9 +3007,7 @@ void display::draw_hex(const map_location& /*loc*/)
 		// village-control flags.
 		//drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
 	//}
-#endif
 
-#if 0
 	if(!shrouded(loc)) {
 		typedef overlay_map::const_iterator Itor;
 		std::pair<Itor,Itor> overlays = overlays_->equal_range(loc);
@@ -2963,37 +3050,7 @@ void display::draw_hex(const map_location& /*loc*/)
 			image::get_image(tod_hex_mask,image::SCALED_TO_HEX));
 	}
 
-	// Paint mouseover overlays
-	if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc)))
-			&& mouseover_hex_overlay_ != nullptr) {
-		drawing_buffer_add(drawing_buffer::LAYER_MOUSEOVER_OVERLAY, loc, xpos, ypos, mouseover_hex_overlay_);
-	}
-
-	// Paint arrows
-	arrows_map_t::const_iterator arrows_in_hex = arrows_map_.find(loc);
-	if(arrows_in_hex != arrows_map_.end()) {
-		for (arrow* const a : arrows_in_hex->second) {
-			a->draw_hex(loc);
-		}
-	}
-
 	// Apply shroud, fog and linger overlay
-
-	if(shrouded(loc)) {
-		// We apply void also on off-map tiles
-		// to shroud the half-hexes too
-		const std::string& shroud_image = get_variant(shroud_images_, loc);
-		drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, xpos, ypos,
-			image::get_image(shroud_image, image_type));
-	} else if(fogged(loc)) {
-		const std::string& fog_image = get_variant(fog_images_, loc);
-		drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, xpos, ypos,
-			image::get_image(fog_image, image_type));
-	}
-
-	if(!shrouded(loc)) {
-		drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, xpos, ypos, get_fog_shroud_images(loc, image_type));
-	}
 
 	if (on_map) {
 		if (draw_coordinates_) {
@@ -3058,137 +3115,30 @@ void display::draw_hex(const map_location& /*loc*/)
 #endif
 }
 
-
-//
-// NEW RENDERING CODE =========================================================================
-//
-
-//template<typename... T>
-////void display::render_scaled_to_zoom(const texture& tex, const int x_pos, const int y_pos, T&&... extra_args)
-
-
-void display::draw_gamemap()
-{
-	SDL_Rect area = map_area();
-	render_clip_rect_setter setter(&area);
-
-	// TODO: ToD coloring of terrains.
-
-	// The unit drawer can't function without teams.
-	// FIXME
-	if(dc_->teams().empty()) {
-		//return;
-	}
-
-	// TODO: why is this created every time?
-	unit_drawer drawer = unit_drawer(*this);
-
-	for(const map_location& loc : get_visible_hexes()) {
-		const int xpos = get_location_x(loc);
-		const int ypos = get_location_y(loc);
-
-		image::TYPE image_type = get_image_type(loc);
-
-		const bool on_map = get_map().on_board(loc);
-		const time_of_day& tod = get_time_of_day(loc);
-
-		// TODO:
-		//if(shrouded(loc))) {
-		//	return;
-		//}
-
-		std::vector<texture> images_fg = get_terrain_images(loc, tod.id, image_type, FOREGROUND);
-		std::vector<texture> images_bg = get_terrain_images(loc, tod.id, image_type, BACKGROUND);
-
-		//
-		// Background terrains
-		//
-		for(const texture& t : images_bg) {
-			render_scaled_to_zoom(t, xpos, ypos);
-		}
-
-		//
-		// Village flags
-		//
-		texture flag = get_flag(loc);
-		if(flag) {
-			render_scaled_to_zoom(flag, xpos, ypos);
-		}
-
-		//
-		// Units
-		//
-		auto u_it = dc_->units().find(loc);
-		auto request = exclusive_unit_draw_requests_.find(loc);
-
-		// Real units
-		if(u_it != dc_->units().end() && (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id())) {
-			drawer.redraw_unit(*u_it);
-		}
-
-		// Fake (moving) units
-		for(const unit* temp_unit : *fake_unit_man_) {
-			if(request == exclusive_unit_draw_requests_.end() || request->second == temp_unit->id()) {
-				drawer.redraw_unit(*temp_unit);
-			}
-		}
-
-		//
-		// Foreground terrains
-		//
-		for(const texture& t : images_fg) {
-			render_scaled_to_zoom(t, xpos, ypos);
-		}
-
-		//
-		// Mouseover overlays
-		//
-#if 0
-		if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc)))
-			&& mouseover_hex_overlay_ != nullptr)
-		{
-			render_scaled_to_zoom(mouseover_hex_overlay_, xpos, ypos);
-		}
-#endif
-
-		//
-		// Arrows
-		//
-		auto arrows_in_hex = arrows_map_.find(loc);
-		if(arrows_in_hex != arrows_map_.end()) {
-			for(arrow* const a : arrows_in_hex->second) {
-				a->draw_hex(loc);
-			}
-		}
-
-		//
-		// Hex cursor (TODO: split into layers)
-		//
-		if(on_map && loc == mouseoverHex_) {
-			draw_hex_cursor(loc);
-		}
-	}
-}
-
 void display::draw_new()
 {
 	// Execute any pre-draw actions from derived classes.
 	pre_draw();
 
 	// Draw theme background.
-	const SDL_Rect area = map_outside_area();
-	draw_background(area, theme_.border().background_image);
+	const SDL_Rect outside_area = map_outside_area();
+	draw_background(outside_area, theme_.border().background_image);
 
 	// Progress animations.
 	invalidate_animations();
 
-	// Draw the gamemap and its contents (units, etc);
-	draw_gamemap();
-
-	post_commit();
-
 	draw_all_panels();
 	draw_minimap();
+
+	SDL_Rect map_area_rect = map_area();
+	render_clip_rect_setter setter(&map_area_rect);
+
+	// Draw the gamemap and its contents (units, etc);
+	for(const map_location& loc : get_visible_hexes()) {
+		draw_hex(loc);
+	}
+
+	post_commit();
 
 	// Draw map labels.
 	font::draw_floating_labels();
@@ -3201,8 +3151,9 @@ void display::draw_new()
 	draw_debugging_aids();
 
 	// Call any redraw observers.
+	// FIXME: makes the editor slow.
 	for(std::function<void(display&)> f : redraw_observers_) {
-		f(*this);
+	//	f(*this);
 	}
 
 	// Execute any post-draw actions from derived classes.
