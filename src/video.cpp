@@ -133,7 +133,13 @@ bool CVideo::non_interactive() const
 
 SDL_Rect screen_area()
 {
-	return {0, 0, frameBuffer->w, frameBuffer->h};
+	sdl::window* w = CVideo::get_singleton().get_window();
+	if(!w) {
+		return sdl::empty_rect;
+	}
+
+	SDL_Point size = w->get_output_size();
+	return {0, 0, size.x, size.y};
 }
 
 void CVideo::video_event_handler::handle_window_event(const SDL_Event &event)
@@ -285,12 +291,20 @@ void CVideo::setMode(int x, int y, const MODE_EVENT mode)
 
 int CVideo::getx() const
 {
-	return frameBuffer->w;
+	if(!window) {
+		return 0;
+	}
+
+	return window->get_output_size().x;
 }
 
 int CVideo::gety() const
 {
-	return frameBuffer->h;
+	if(!window) {
+		return 0;
+	}
+
+	return window->get_output_size().y;
 }
 
 SDL_Renderer* CVideo::get_renderer()
