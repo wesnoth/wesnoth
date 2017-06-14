@@ -150,9 +150,6 @@ public:
 	void lock_updates(bool value);
 	bool update_locked() const;
 
-	//this needs to be invoked immediately after a resize event or the game will crash.
-	void update_framebuffer();
-
 	/**
 	 * Sets the title of the main window.
 	 *

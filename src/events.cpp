@@ -792,13 +792,15 @@ void discard_input()
 
 void peek_for_resize()
 {
+#if 0
 	SDL_Event events[100];
 	int num = SDL_PeepEvents(events, 100, SDL_PEEKEVENT, SDL_WINDOWEVENT, SDL_WINDOWEVENT);
 	for(int i = 0; i < num; ++i) {
 		if(events[i].type == SDL_WINDOWEVENT && events[i].window.event == SDL_WINDOWEVENT_RESIZED) {
-			CVideo::get_singleton().update_framebuffer();
+			// Add something here if needed.
 		}
 	}
+#endif
 }
 
 void call_in_main_thread(const std::function<void(void)>& f)

@@ -60,8 +60,8 @@ void trigger_full_redraw() {
 	SDL_Event event;
 	event.type = SDL_WINDOWEVENT;
 	event.window.event = SDL_WINDOWEVENT_RESIZED;
-	event.window.data1 = (*frameBuffer).h;
-	event.window.data2 = (*frameBuffer).w;
+	event.window.data1 = CVideo::get_singleton().getx();
+	event.window.data2 = CVideo::get_singleton().gety();
 
 	for(const auto& layer : draw_layers) {
 		layer->handle_window_event(event);
@@ -183,30 +183,11 @@ void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rec
 void CVideo::make_fake()
 {
 	fake_screen_ = true;
-	frameBuffer = SDL_CreateRGBSurface(0, 16, 16, 24, 0xFF0000, 0xFF00, 0xFF, 0);
-	image::set_pixel_format(frameBuffer->format);
 }
 
 void CVideo::make_test_fake(const unsigned width, const unsigned height, const unsigned bpp)
 {
-	frameBuffer = SDL_CreateRGBSurface(0, width, height, bpp, 0xFF0000, 0xFF00, 0xFF, 0);
-	image::set_pixel_format(frameBuffer->format);
-
 	fake_interactive = true;
-}
-
-void CVideo::update_framebuffer()
-{
-	if(!window) {
-		return;
-	}
-
-	surface fb = SDL_GetWindowSurface(*window);
-	if(!frameBuffer) {
-		frameBuffer = fb;
-	} else {
-		frameBuffer.assign(fb);
-	}
 }
 
 /**
@@ -249,11 +230,6 @@ void CVideo::init_window()
 	);
 
 	event_handler_.join_global();
-
-	update_framebuffer();
-	if(frameBuffer) {
-		image::set_pixel_format(frameBuffer->format);
-	}
 }
 
 void CVideo::setMode(int x, int y, const MODE_EVENT mode)
@@ -281,11 +257,6 @@ void CVideo::setMode(int x, int y, const MODE_EVENT mode)
 			window->set_size(x, y);
 			window->center();
 			break;
-	}
-
-	update_framebuffer();
-	if(frameBuffer) {
-		image::set_pixel_format(frameBuffer->format);
 	}
 }
 
@@ -480,6 +451,7 @@ std::vector<std::pair<int, int>> CVideo::get_available_resolutions(const bool in
 	return result;
 }
 
+// TODO: REMOVE ASAP
 surface& CVideo::getSurface()
 {
 	return frameBuffer;
