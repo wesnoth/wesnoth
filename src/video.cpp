@@ -185,7 +185,7 @@ void CVideo::make_fake()
 	fake_screen_ = true;
 }
 
-void CVideo::make_test_fake(const unsigned width, const unsigned height, const unsigned bpp)
+void CVideo::make_test_fake()
 {
 	fake_interactive = true;
 }

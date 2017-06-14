@@ -54,8 +54,6 @@ public:
 
 	bool non_interactive() const;
 
-	const static int DefaultBpp = 32;
-
 	/**
 	 * Initializes a new window, taking into account any preiously saved states.
 	 */
@@ -124,15 +122,9 @@ public:
 	//functions to allow changing video modes when 16BPP is emulated
 
 	void make_fake();
-	/**
-	 * Creates a fake frame buffer for the unit tests.
-	 *
-	 * @param width               The width of the buffer.
-	 * @param height              The height of the buffer.
-	 * @param bpp                 The bpp of the buffer.
-	 */
-	void make_test_fake(const unsigned width = 1024,
-			const unsigned height = 768, const unsigned bpp = DefaultBpp);
+
+	void make_test_fake();
+
 	bool faked() const { return fake_screen_; }
 
 	//functions to set and clear 'help strings'. A 'help string' is like a tooltip, but it appears
