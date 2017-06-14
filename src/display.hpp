@@ -745,8 +745,6 @@ protected:
 	 */
 	virtual void draw_sidebar() {}
 
-	void draw_gamemap();
-
 	void draw_minimap();
 
 	enum TERRAIN_TYPE { BACKGROUND, FOREGROUND};
@@ -755,7 +753,7 @@ protected:
 					const std::string& timeid,
 					TERRAIN_TYPE terrain_type);
 
-	std::vector<surface> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);
+	std::vector<texture> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);
 
 	void draw_image_for_report(surface& img, SDL_Rect& rect);
 

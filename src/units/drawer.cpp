@@ -226,8 +226,8 @@ void unit_drawer::redraw_unit(const unit & u) const
 				ellipse << "-" << leader << nozoc << selected << "bottom.png~RC(ellipse_red>" << tc << ")";
 
 			// Load the ellipse parts recolored to match team color
-			ellipse_back = image::get_texture(image::locator(ellipse_top) /*, image::SCALED_TO_ZOOM)*/);
-			ellipse_front = image::get_texture(image::locator(ellipse_bot) /*, image::SCALED_TO_ZOOM)*/);
+			ellipse_back = image::get_texture(ellipse_top /*, image::SCALED_TO_ZOOM)*/);
+			ellipse_front = image::get_texture(ellipse_bot /*, image::SCALED_TO_ZOOM)*/);
 		}
 	}
 
