@@ -36,6 +36,10 @@ class unit_animation;
 typedef std::map<std::string, movetype> movement_type_map;
 
 
+/**
+ * A single unit type that the player may recruit.
+ * Individual units are defined by the unit class.
+ */
 class unit_type
 {
 public:
@@ -62,7 +66,15 @@ public:
 	/// These are in order of increasing levels of being built.
 	/// HELP_INDEX is already defined in a windows header under some conditions.
 	enum BUILD_STATUS {NOT_BUILT, CREATED, VARIATIONS, HELP_INDEXED, FULL};
+
+	/**
+	 * Validate the id argument.
+	 * Replaces invalid characters in the reference with underscores.
+	 * @param id The proposed id for a unit_type.
+	 * @throw error if id starts with a space.
+	 */
 	static void check_id(std::string& id);
+
 private: // These will be called by build().
 	/// Load data into an empty unit_type (build to FULL).
 	void build_full(const movement_type_map &movement_types,
@@ -93,17 +105,28 @@ public:
 	void add_advancement(const unit_type &advance_to,int experience);
 
 	/** Get the advancement tree
-	 *  Build a set of unit type's id of this unit type's advancement tree */
+	 *  @return A set of ids of all unit_type objects that this unit_type can
+	 *  directly or indirectly advance to.
+	 */
 	std::set<std::string> advancement_tree() const;
 
+	/// A vector of unit_type ids that this unit_type can advance to.
 	const std::vector<std::string>& advances_to() const { return advances_to_; }
+	/// A vector of unit_type ids that can advance to this unit_type.
 	const std::vector<std::string> advances_from() const;
 
+	/// Returns two iterators pointing to a range of AMLA configs.
 	config::const_child_itors modification_advancements() const
 	{ return cfg_.child_range("advancement"); }
 
+	/**
+	 * Returns a gendered variant of this unit_type.
+	 * @param gender "male" or "female".
+	 */
 	const unit_type& get_gender_unit_type(std::string gender) const;
+	/// Returns a gendered variant of this unit_type based on the given parameter.
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
+
 	const unit_type& get_variation(const std::string& id) const;
 	/** Info on the type of unit that the unit reanimates as. */
 	const std::string& undead_variation() const { return undead_variation_; }

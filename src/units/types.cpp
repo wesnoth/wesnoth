@@ -1294,14 +1294,14 @@ void unit_type::check_id(std::string& id)
 	if (id[0] == ' ') {
 		throw error("Found unit type id with a leading whitespace \"" + id + "\"");
 	}
-	bool gave_wanrning = false;
+	bool gave_warning = false;
 	for (size_t pos = 0; pos < id.size(); ++pos) {
 		const char c = id[pos];
 		const bool valid = c == '_' || c == ' ' || (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9');
 		if (!valid) {
-			if (!gave_wanrning) {
+			if (!gave_warning) {
 				ERR_UT << "Found unit type id with invalid chracters: \"" << id << "\"\n";
-				gave_wanrning = true;
+				gave_warning = true;
 			}
 			id[pos] = '_';
 		}
