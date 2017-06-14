@@ -407,8 +407,8 @@ void unit_drawer::draw_bar(int xpos, int ypos, size_t height, double filled, col
 
 	// Filled area dimensions.
 	SDL_Rect fill_rect;
-	fill_rect.x = bar_rect.x + unfilled;
-	fill_rect.y = bar_rect.y;
+	fill_rect.x = bar_rect.x;
+	fill_rect.y = bar_rect.y + unfilled;
 	fill_rect.w = bar_rect.w;
 	fill_rect.h = bar_rect.h - unfilled;
 
