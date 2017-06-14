@@ -84,6 +84,11 @@ public:
 	void set_size(const int w, const int h);
 
 	/**
+	 * Gets the Window's output size, in pixels.
+	 */
+	SDL_Point get_output_size();
+
+	/**
 	 * Dummy function for centering the window.
 	 */
 	void center();
