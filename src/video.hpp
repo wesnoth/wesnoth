@@ -54,11 +54,8 @@ public:
 
 	/**
 	 * Creates a fake frame buffer for the unit tests.
-	 *
-	 * @param width               The width of the buffer.
-	 * @param height              The height of the buffer.
 	 */
-	void make_test_fake(const unsigned width = 1024, const unsigned height = 768);
+	void make_test_fake();
 
 	bool faked() const
 	{
