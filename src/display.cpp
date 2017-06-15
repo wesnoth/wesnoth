@@ -1922,60 +1922,91 @@ bool display::scroll(int xmove, int ymove, bool force)
 		return false;
 	}
 
-	const int orig_x = xpos_;
-	const int orig_y = ypos_;
-	xpos_ += xmove;
-	ypos_ += ymove;
-	bounds_check_position();
-	const int dx = orig_x - xpos_; // dx = -xmove
-	const int dy = orig_y - ypos_; // dy = -ymove
-
-	// Only invalidate if we've actually moved
-	if(dx == 0 && dy == 0)
+	// No move offset, do nothing.
+	if(xmove == 0 && ymove == 0) {
 		return false;
+	}
 
-	font::scroll_floating_labels(dx, dy);
+	int new_x = xpos_ + xmove;
+	int new_y = ypos_ + ymove;
+
+	bounds_check_position(new_x, new_y);
+
+	// Camera position doesn't change, exit.
+	if(xpos_ == new_x && ypos_ == new_y) {
+		return false;
+	}
+
+	const int diff_x = xpos_ - new_x;
+	const int diff_y = ypos_ - new_y;
+
+	xpos_ = new_x;
+	ypos_ = new_y;
+
+	/* Adjust floating label positions. This only affects labels whose position is anchored
+	 * to the map instead of the screen. In order to do that, we want to adjust their drawing
+	 * coordinates in the opposite direction of the screen scroll.
+	 *
+	 * The check a few lines up prevents any scrolling from happening if the camera position
+	 * doesn't change. Without that, the label still scroll even when the map edge is reached.
+	 * If that's removed, the following formula should work instead:
+	 *
+	 * const int label_[x,y]_adjust = [x,y]pos_ - new_[x,y];
+	 */
+	font::scroll_floating_labels(-xmove, -ymove);
+
 	labels().recalculate_shroud();
 
-	surface& screen(screen_.getSurface());
+	//
+	// NOTE: the next three blocks can be removed once we switch to accelerated rendering.
+	//
 
-	SDL_Rect dstrect = map_area();
-	dstrect.x += dx;
-	dstrect.y += dy;
-	dstrect = sdl::intersect_rects(dstrect, map_area());
+	if(!screen_.update_locked()) {
+		surface& screen(screen_.getSurface());
 
-	SDL_Rect srcrect = dstrect;
-	srcrect.x -= dx;
-	srcrect.y -= dy;
-	if (!screen_.update_locked()) {
+		SDL_Rect dstrect = map_area();
+		dstrect.x += diff_x;
+		dstrect.y += diff_y;
+		dstrect = sdl::intersect_rects(dstrect, map_area());
 
-		/* TODO: This is a workaround for a SDL2 bug when blitting on overlapping surfaces.
-		 * The bug only strikes during scrolling, but will then duplicate textures across
-		 * the entire map. */
+		SDL_Rect srcrect = dstrect;
+		srcrect.x -= diff_x;
+		srcrect.y -= diff_y;
+
+		// This is a workaround for a SDL2 bug when blitting on overlapping surfaces. The bug
+		// only strikes during scrolling, but will then duplicate textures across the entire map.
 		surface screen_copy = make_neutral_surface(screen);
+
 		SDL_SetSurfaceBlendMode(screen_copy, SDL_BLENDMODE_NONE);
-		SDL_BlitSurface(screen_copy,&srcrect,screen,&dstrect);
+		SDL_BlitSurface(screen_copy, &srcrect, screen, &dstrect);
 	}
 
-	// Invalidate locations in the newly visible rects
+	if(diff_y != 0) {
+		SDL_Rect r = map_area();
 
-	if (dy != 0) {
-		SDL_Rect r = map_area();
-		if(dy < 0)
-			r.y = r.y + r.h + dy;
-		r.h = std::abs(dy);
+		if(diff_y < 0) {
+			r.y = r.y + r.h + diff_y;
+		}
+
+		r.h = std::abs(diff_y);
 		invalidate_locations_in_rect(r);
 	}
-	if (dx != 0) {
+
+	if(diff_x != 0) {
 		SDL_Rect r = map_area();
-		if (dx < 0)
-			r.x = r.x + r.w + dx;
-		r.w = std::abs(dx);
+
+		if(diff_x < 0) {
+			r.x = r.x + r.w + diff_x;
+		}
+
+		r.w = std::abs(diff_x);
 		invalidate_locations_in_rect(r);
 	}
+
 	scroll_event_.notify_observers();
 
 	redrawMinimap_ = true;
+
 	return true;
 }
 
