@@ -11,6 +11,7 @@ from pywmlx.state.lua_states import setup_luastates
 from pywmlx.state.wml_states import setup_wmlstates
 
 import pywmlx.nodemanip
+import pdb
 
 
 
@@ -335,53 +336,100 @@ def run(*, filebuf, fileref, fileno, startstate, waitwml=True):
     _currentdomain = _initialdomain
     pywmlx.nodemanip.newfile(fileref, fileno)
     # debug_cs = startstate
-    for xline in filebuf:
-        xline = xline.strip('\n\r')
-        _current_lineno += 1
-        # on new line, debug file will write another marker
-        if _debugmode:
-            print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@',
-                  file=_fdebug)
-        while xline is not None:
-            # print debug infos (if debugmode is on)
+    try:
+        for xline in filebuf:
+            xline = xline.strip('\n\r')
+            _current_lineno += 1
+            # on new line, debug file will write another marker
             if _debugmode:
-                lno = '%05d' % _current_lineno
-                print('------------------------------------------------------',
+                print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@',
                       file=_fdebug)
-                print('LINE', lno, '|', xline, file=_fdebug)
-            # action number is used to know what function we should run    
-            action = 0
-            v = None
-            m = None
-            if cs.regex is None:
-                # action = 1 --> execute state.run
-                action = 1
+            while xline is not None:
+                # print debug infos (if debugmode is on)
                 if _debugmode:
-                    print('ALWAYS-RUN x', cs_debug, file=_fdebug)
-            else:
-                # m is match
-                m = re.match(cs.regex, xline)
-                if m:
+                    lno = '%05d' % _current_lineno
+                    print('---------------------------------------------------',
+                          file=_fdebug)
+                    print('LINE', lno, '|', xline, file=_fdebug)
+                # action number is used to know what function we should run    
+                action = 0
+                v = None
+                m = None
+                if cs.regex is None:
                     # action = 1 --> execute state.run
                     action = 1
                     if _debugmode:
-                        print('RUN state  \\', cs_debug, file=_fdebug)
+                        print('ALWAYS-RUN x', cs_debug, file=_fdebug)
                 else:
-                    # action = 2 --> change to the state pointed by 
-                    #                state.iffail
-                    action = 2
-                    if _debugmode:
-                        print('FAIL state |', cs_debug, file=_fdebug)
-            if action == 1:
-                # xline, ns: xline --> override xline with new value
-                #            ns --> value of next state
-                xline, ns = cs.run(xline, _current_lineno, m)
-                cs_debug = ns
-                cs = _states.get(ns)
-            else:
-                cs_debug = cs.iffail
-                cs = _states.get(cs.iffail)
-        # end while xline
-    # end for xline
+                    # m is match
+                    m = re.match(cs.regex, xline)
+                    if m:
+                        # action = 1 --> execute state.run
+                        action = 1
+                        if _debugmode:
+                            print('RUN state  \\', cs_debug, file=_fdebug)
+                    else:
+                        # action = 2 --> change to the state pointed by 
+                        #                state.iffail
+                        action = 2
+                        if _debugmode:
+                            print('FAIL state |', cs_debug, file=_fdebug)
+                if action == 1:
+                    # xline, ns: xline --> override xline with new value
+                    #            ns --> value of next state
+                    xline, ns = cs.run(xline, _current_lineno, m)
+                    cs_debug = ns
+                    cs = _states.get(ns)
+                else:
+                    cs_debug = cs.iffail
+                    cs = _states.get(cs.iffail)
+            # end while xline
+        # end for xline
+    except UnicodeDecodeError as e:
+        errpos = int(e.start)  # error position on file object with UTF-8 error
+        errbval = hex(e.object[errpos]) # value of byte wich causes UTF-8 error
+        # well... when exception occurred, the _current_lineno valie 
+        # was not updated at all due to the failure of the try block. 
+        # (it is = 0)
+        # this means we need to make a workaround to obtain in what line of the
+        # file the problem happened.
+        # In order to perform this task (and not only) we create a temporary
+        # string wich contains all the file text UNTIL the UTF-8
+        untilerr_buf = e.object[0:errpos] # buffer containing file text
+        untilerr = "".join(map(chr, untilerr_buf))
+        # splituntil will be a array of strings (each item is a line of text).
+        # the last item will show the point where the invalid UTF-8 character
+        # was found.
+        splituntil = untilerr.split('\n')
+        # error line is equal of lines of text until error occurs (number of
+        # items on splituntil string array)
+        errlineno = len(splituntil)
+        # finally we can know the actual file info
+        finfo = pywmlx.nodemanip.fileref + ":" + str(errlineno)
+        errmsg = ( 
+            "UTF-8 Format error.\nCan't decode byte " + str(errbval) + ' (' +
+            e.reason + ').\n' +
+            'You must edit the file, replacing that byte with a valid ' +
+            'UTF-8 character.\n\n' +
+            'Text preceding the invalid byte (line ' + str(errlineno) + 
+            '):\n' + splituntil[-1] + '\n'   
+        )
+        '''
+        xbytes = None
+        xbytes = []
+        for i in range ((errpos -100), errpos):
+            xbytes.append(e.object[i])
+        errmsg2 = "".join(map(chr, xbytes))
+        errmsg = errmsg + errmsg2 + '\n\n'
+        '''
+        with open('debuglogf.log', 'w', encoding='utf-8') as debff:
+            print('encoding =', e.encoding, file=debff)
+            print('end =', e.end, file=debff)
+            print('reason =', e.reason, file=debff)
+            print('start =', e.start, file=debff)
+            xstart = int(e.start)
+            print('\n\nobj[', xstart, '] =', hex(e.object[xstart]), file=debff)
+            print('\n\nsplituntil = ', splituntil, file=debff)
+        wmlerr(finfo, errmsg)
     pywmlx.nodemanip.closefile(_dictionary, _current_lineno)
 
