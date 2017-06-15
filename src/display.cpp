@@ -1205,7 +1205,7 @@ std::vector<texture> display::get_terrain_images(
 			// We need to test for the tile to be rendered and
 			// not the location, since the transitions are rendered
 			// over the offmap-terrain and these need a ToD coloring.
-			texture tex = image::get_texture(image);
+			texture tex = image::get_texture(image, image::HEXED); // TODO: scaled to hex?
 
 			//const bool off_map = (image.get_filename() == off_map_name || image.get_modifications().find("NO_TOD_SHIFT()") != std::string::npos);
 #if 0
