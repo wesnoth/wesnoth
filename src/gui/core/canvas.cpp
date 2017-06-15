@@ -1161,7 +1161,8 @@ void image_shape::draw(
 		surf = image_;
 	}
 
-	const bool flip_v = vertical_mirror_(local_variables);
+	// Flip on the vertical axis - ie, a horizontal flip.
+	const bool mirror = vertical_mirror_(local_variables);
 
 	dst_clip.w = w ? w : surf->w;
 	dst_clip.h = h ? h : surf->h;
@@ -1174,7 +1175,7 @@ void image_shape::draw(
 	 */
 	texture txt(surf);
 
-	CVideo::get_singleton().render_copy(txt, nullptr, &dst_clip, false, flip_v);
+	CVideo::get_singleton().render_copy(txt, nullptr, &dst_clip, mirror, false);
 }
 
 image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_mode)
