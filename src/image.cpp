@@ -168,10 +168,22 @@ namespace
 image::locator::locator_finder_t locator_finder;
 
 /** Definition of all image maps */
-image::image_cache images_, scaled_to_zoom_, hexed_images_, scaled_to_hex_images_, tod_colored_images_,
-		brightened_images_;
+image::image_cache
+	images_,
+	scaled_to_zoom_,
+	hexed_images_,
+	scaled_to_hex_images_,
+	tod_colored_images_,
+	brightened_images_;
 
-image::texture_cache textures_;
+/**
+ * Texture caches.
+ * Note that the latter two are temporary and should be removed once we have OGL and shader support.
+ */
+image::texture_cache
+	textures_,
+	textures_hexed_,
+	texture_tod_colored_;
 
 // cache storing if each image fit in a hex
 image::bool_cache in_hex_info_;
@@ -181,6 +193,7 @@ image::bool_cache is_empty_hex_;
 
 // caches storing the different lighted cases for each image
 image::lit_cache lit_images_, lit_scaled_images_;
+
 // caches storing each lightmap generated
 image::lit_variants lightmaps_;
 
@@ -1007,51 +1020,6 @@ surface get_image(const image::locator& i_locator, TYPE type)
 #endif //_OPENMP
 	i_locator.add_to_cache(*imap, res);
 
-	// Add the raw image to the texture cache.
-	if(type == UNSCALED && res != nullptr) {
-#ifdef _OPENMP
-#pragma omp critical(texture_cache)
-#endif //_OPENMP
-		i_locator.add_to_cache(textures_, texture(res));
-	}
-
-	return res;
-}
-
-texture get_texture(const image::locator& i_locator)
-{
-	// Returned the cached texture if applicable. If the image is already cached, the corresponding
-	// unscaled/unmodified surface has already been loaded from disk.
-	texture res;
-
-	if(i_locator.is_void()) {
-		return res;
-	}
-
-	bool in_cache;
-
-#ifdef _OPENMP
-#pragma omp critical(texture_cache)
-#endif //_OPENMP
-	in_cache = i_locator.in_cache(textures_);
-
-	if(in_cache) {
-#ifdef _OPENMP
-#pragma omp critical(texture_cache)
-#endif //_OPENMP
-		res = i_locator.locate_in_cache(textures_);
-		return res;
-	}
-
-	// Else, no texture was cached. Fetch the surface from disk, which adds the corresponding texture
-	// to the texture cache. We ignore the returned surface and fetch the cached surface to avoid
-	// creating a new texture in memory for the same surface twice.
-	get_image(i_locator);
-#ifdef _OPENMP
-#pragma omp critical(texture_cache)
-#endif //_OPENMP
-	res = i_locator.locate_in_cache(textures_);
-
 	return res;
 }
 
@@ -1294,6 +1262,179 @@ bool update_from_preferences()
 	scale_to_zoom_func = select_algorithm(algo);
 
 	return true;
+}
+
+/*
+ * TEXTURE INTERFACE ======================================================================
+ *
+ * I'm keeping this seperate from the surface-based handling above since the two approaches
+ * are so different. Might move this to a file of its own in the future.
+ */
+
+/** Loads a new texture directly from disk. */
+static texture load_texture_from_disk(const image::locator& loc)
+{
+	texture res;
+
+	// We need the window renderer to load the texture.
+	SDL_Renderer* renderer = CVideo::get_singleton().get_renderer();
+	if(!renderer) {
+		return res;
+	}
+
+	std::string location = filesystem::get_binary_file_location("images", loc.get_filename());
+
+	if(!location.empty()) {
+#if 0
+		// Check if there is a localized image.
+		const std::string loc_location = get_localized_path(location);
+		if(!loc_location.empty()) {
+			location = loc_location;
+		}
+#endif
+
+		// TODO: do we need SDL_RWops after all? Not sure if SDL_image even has a RWops load
+		// function for textures?
+		{
+			texture temp(IMG_LoadTexture(renderer, location.c_str()));
+			res = temp;
+		}
+
+		// TODO: decide what to do about this.
+#if 0
+		// If there was no standalone localized image, check if there is an overlay.
+		if(!res.null() && loc_location.empty()) {
+			const std::string ovr_location = get_localized_path(location, "--overlay");
+			if(!ovr_location.empty()) {
+				add_localized_overlay(ovr_location, res);
+			}
+		}
+#endif
+	}
+
+	if(res.null() && !loc.get_filename().empty()) {
+		ERR_DP << "Could not load texture for image '" << loc.get_filename() << "'" << std::endl;
+
+		// Also decide what to do here.
+#if 0
+		if(game_config::debug && loc.get_filename() != game_config::images::missing) {
+			return get_texture(game_config::images::missing, UNSCALED);
+		}
+#endif
+	}
+
+	return res;
+}
+
+/**
+ * Small wrapper for creating a texture after applying a specific type of surface op.
+ * Won't be necessary once we get shader support.
+ */
+static texture create_texture_post_surface_op(const image::locator& i_locator, TYPE type)
+{
+	surface surf = get_image(i_locator, type);
+	if(!surf) {
+		return texture();
+	}
+
+	return texture(surf);
+}
+
+/** Returns a texture for the corresponding image. */
+texture get_texture(const image::locator& i_locator, TYPE type)
+{
+	texture res;
+
+	if(i_locator.is_void()) {
+		return res;
+	}
+
+	// FIXME
+	//type = simplify_type(i_locator, type);
+
+	//
+	// Select the appropriate cache. We don't need caches for every single image types,
+	// since some types can be handled by render-time operations.
+	//
+	texture_cache* cache = nullptr;
+
+	switch(type) {
+	case HEXED:
+		cache = &textures_hexed_;
+		break;
+	case TOD_COLORED:
+		cache = &texture_tod_colored_;
+		break;
+	default:
+		cache = &textures_;
+	}
+
+	//
+	// Now attempt to find a cached texture. If found, return it.
+	//
+	bool in_cache = false;
+
+#ifdef _OPENMP
+#pragma omp critical(texture_cache)
+#endif
+	in_cache = i_locator.in_cache(*cache);
+
+	if(in_cache) {
+#ifdef _OPENMP
+#pragma omp critical(texture_cache)
+#endif
+		res = i_locator.locate_in_cache(*cache);
+		return res;
+	}
+
+	//
+	// No texture was cached. In that case, create a new one. The explicit cases require special 
+	// handling with surfaces in order to generate the desired effect. This shouldn't be the case
+	// once we get OGL and shader support.
+	//
+	switch(type) {
+	case TOD_COLORED:
+	case HEXED:
+		res = create_texture_post_surface_op(i_locator, type);
+		break;
+	default:
+		res = load_texture_from_disk(i_locator);
+	}
+
+	// If the texture is null at this point, return without any further action (like caching).
+	if(!res) {
+		return res;
+	}
+
+	//
+	// Apply the appropriate render flags. (TODO)
+	//
+#if 0
+	switch(type) {
+	case SCALED_TO_ZOOM:
+
+		break;
+	case SCALED_TO_HEX:
+
+		break;
+	case BRIGHTENED:
+
+		break;
+	default:
+		// Ignore other types.
+		break;
+	}
+#endif
+
+	//
+	// And finally add the texture to the cache.
+	//
+#ifdef _OPENMP
+#pragma omp critical(texture_cache)
+#endif
+	i_locator.add_to_cache(*cache, res);
+
+	return res;
 }
 
 } // end namespace image

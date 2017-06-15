@@ -192,7 +192,7 @@ namespace image {
 	///function to get the surface corresponding to an image.
 	surface get_image(const locator& i_locator, TYPE type=UNSCALED);
 
-	texture get_texture(const image::locator& i_locator);
+	texture get_texture(const image::locator& i_locator, TYPE type = UNSCALED);
 
 	///function to get the surface corresponding to an image.
 	///after applying the lightmap encoded in ls
