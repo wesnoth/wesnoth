@@ -1180,7 +1180,8 @@ void image_shape::draw(
 		surf = image_;
 	}
 
-	const bool flip_v = vertical_mirror_(local_variables);
+	// Flip on the vertical axis - ie, a horizontal flip.
+	const bool mirror = vertical_mirror_(local_variables);
 
 #ifdef SW_RENDERING_LEGACY_MODE
 	/* HACK: not sure why, but SW rendering has some problems with copying the surface to the texture and
@@ -1200,7 +1201,7 @@ void image_shape::draw(
 	 */
 	texture txt(surf);
 
-	CVideo::get_singleton().render_copy(txt, nullptr, &dst_clip, false, flip_v);
+	CVideo::get_singleton().render_copy(txt, nullptr, &dst_clip, mirror, false);
 }
 
 image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_mode)
