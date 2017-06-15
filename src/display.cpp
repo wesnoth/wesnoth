@@ -1698,64 +1698,29 @@ void display::draw_minimap_units()
 
 bool display::scroll(int xmove, int ymove, bool force)
 {
-	if(view_locked_ && !force) {
+	if(view_locked_ && !force /**&& !video_.update_locked()*/) {
 		return false;
 	}
 
-	const int orig_x = xpos_;
-	const int orig_y = ypos_;
-	xpos_ += xmove;
-	ypos_ += ymove;
-	bounds_check_position();
-	const int dx = orig_x - xpos_; // dx = -xmove
-	const int dy = orig_y - ypos_; // dy = -ymove
+	int new_x = xpos_ += xmove;
+	int new_y = ypos_ += ymove;
 
-	// Only invalidate if we've actually moved
-	if(dx == 0 && dy == 0)
-		return false;
+	bounds_check_position(new_x, new_y);
+
+	xpos_ = new_x;
+	ypos_ = new_y;
+
+	const int dx = xpos_ - orig_x; // dx = -xmove
+	const int dy = ypos_ - orig_y; // dy = -ymove
 
 	font::scroll_floating_labels(dx, dy);
+
 	labels().recalculate_shroud();
 
-	//surface& screen(video_.getSurface());
-
-	SDL_Rect dstrect = map_area();
-	dstrect.x += dx;
-	dstrect.y += dy;
-	dstrect = sdl::intersect_rects(dstrect, map_area());
-
-	SDL_Rect srcrect = dstrect;
-	srcrect.x -= dx;
-	srcrect.y -= dy;
-	if (!video_.update_locked()) {
-
-		/* TODO: This is a workaround for a SDL2 bug when blitting on overlapping surfaces.
-		 * The bug only strikes during scrolling, but will then duplicate textures across
-		 * the entire map. */
-		//surface screen_copy = make_neutral_surface(screen);
-		//SDL_SetSurfaceBlendMode(screen_copy, SDL_BLENDMODE_NONE);
-		//SDL_BlitSurface(screen_copy,&srcrect,screen,&dstrect);
-	}
-
-	// Invalidate locations in the newly visible rects
-
-	if (dy != 0) {
-		SDL_Rect r = map_area();
-		if(dy < 0)
-			r.y = r.y + r.h + dy;
-		r.h = std::abs(dy);
-		invalidate_locations_in_rect(r);
-	}
-	if (dx != 0) {
-		SDL_Rect r = map_area();
-		if (dx < 0)
-			r.x = r.x + r.w + dx;
-		r.w = std::abs(dx);
-		invalidate_locations_in_rect(r);
-	}
 	scroll_event_.notify_observers();
 
-	redrawMinimap_ = true;
+	// redrawMinimap_ = true;
+
 	return true;
 }
 
