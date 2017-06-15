@@ -1698,22 +1698,25 @@ void display::draw_minimap_units()
 
 bool display::scroll(int xmove, int ymove, bool force)
 {
-	if(view_locked_ && !force /**&& !video_.update_locked()*/) {
+	if(view_locked_ && !force /*&& !video_.update_locked()*/) {
 		return false;
 	}
 
 	int new_x = xpos_ += xmove;
 	int new_y = ypos_ += ymove;
 
+	// Validate the new coordinates.
 	bounds_check_position(new_x, new_y);
 
+	// Set the new camera position.
 	xpos_ = new_x;
 	ypos_ = new_y;
 
-	const int dx = xpos_ - orig_x; // dx = -xmove
-	const int dy = ypos_ - orig_y; // dy = -ymove
+	// Get offset to adjust map labels by.
+	//const int dx = xpos_ - orig_x ; // dx = -xmove;
+	//const int dy = ypos_ - orig_y ; // dy = -ymove;
 
-	font::scroll_floating_labels(dx, dy);
+	//font::scroll_floating_labels(dx, dy);
 
 	labels().recalculate_shroud();
 
