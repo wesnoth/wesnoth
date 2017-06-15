@@ -414,22 +414,6 @@ def run(*, filebuf, fileref, fileno, startstate, waitwml=True):
             'Text preceding the invalid byte (line ' + str(errlineno) + 
             '):\n' + splituntil[-1] + '\n'   
         )
-        '''
-        xbytes = None
-        xbytes = []
-        for i in range ((errpos -100), errpos):
-            xbytes.append(e.object[i])
-        errmsg2 = "".join(map(chr, xbytes))
-        errmsg = errmsg + errmsg2 + '\n\n'
-        '''
-        with open('debuglogf.log', 'w', encoding='utf-8') as debff:
-            print('encoding =', e.encoding, file=debff)
-            print('end =', e.end, file=debff)
-            print('reason =', e.reason, file=debff)
-            print('start =', e.start, file=debff)
-            xstart = int(e.start)
-            print('\n\nobj[', xstart, '] =', hex(e.object[xstart]), file=debff)
-            print('\n\nsplituntil = ', splituntil, file=debff)
         wmlerr(finfo, errmsg)
     pywmlx.nodemanip.closefile(_dictionary, _current_lineno)
 
