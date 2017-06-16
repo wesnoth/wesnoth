@@ -631,6 +631,7 @@ void addon_manager::update_all_addons(window& window)
 		}
 	}
 
+	need_wml_cache_refresh_ = true;
 	load_addon_list(window);
 }
 
