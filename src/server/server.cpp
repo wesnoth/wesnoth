@@ -784,6 +784,7 @@ void server::send_password_request(socket_ptr socket, const std::string& msg,
 								 "cannot log in due to an error in the hashing algorithm. "
 								 "Logging into your forum account on http://forum.wesnoth.org "
 								 "may fix this problem.");
+		login(socket);
 		return;
 	}
 
