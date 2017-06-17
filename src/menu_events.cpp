@@ -1041,11 +1041,6 @@ protected:
 		chmap::register_command(cmd, h, help, usage, flags + "N"); // add chat commands as network_only
 	}
 
-	virtual void assert_existence(const std::string& cmd)
-	{
-		chmap::assert_existence(cmd);
-	}
-
 	virtual void register_alias(const std::string& to_cmd, const std::string& cmd)
 	{
 		chmap::register_alias(to_cmd, cmd);
