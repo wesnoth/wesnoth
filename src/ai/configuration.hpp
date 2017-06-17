@@ -105,7 +105,7 @@ public:
 	 * @retval true success
 	 * @retval false failure
 	 */
-	static bool parse_side_config(side_number side, const config& cfg, config &parsed_cfg);
+	static bool parse_side_config(side_number side, const config& original_cfg, config &cfg);
 
 
 	/**
