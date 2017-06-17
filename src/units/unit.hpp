@@ -54,11 +54,20 @@ using unit_ability = std::pair<const config*, map_location>;
 class unit_ability_list
 {
 public:
-	unit_ability_list() : cfgs_() {}
+	unit_ability_list(const map_location& loc = map_location()) : cfgs_() , loc_(loc) {}
 
 	// Implemented in unit_abilities.cpp
-	std::pair<int, map_location> highest(const std::string& key, int def=0) const;
-	std::pair<int, map_location> lowest(const std::string& key, int def=0) const;
+	std::pair<int, map_location> highest(const std::string& key, int def=0) const
+	{
+		return highest_impl(key, def, std::less<int>());
+	}
+	std::pair<int, map_location> lowest(const std::string& key, int def=0) const
+	{
+		return highest_impl(key, def, std::greater<int>());
+	}
+
+	template<typename TComp>
+	std::pair<int, map_location> highest_impl(const std::string& key, int def, const TComp& comp) const;
 
 	// The following make this class usable with standard library algorithms and such
 	typedef std::vector<unit_ability>::iterator       iterator;
@@ -79,9 +88,11 @@ public:
 	iterator erase(const iterator& erase_it)  { return cfgs_.erase(erase_it); }
 	void push_back(const unit_ability& ability)  { cfgs_.push_back(ability); }
 
+	const map_location& loc() const { return loc_; }
 private:
 	// Data
 	std::vector<unit_ability> cfgs_;
+	map_location loc_;
 };
 
 /**
