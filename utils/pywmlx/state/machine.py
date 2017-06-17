@@ -388,7 +388,7 @@ def run(*, filebuf, fileref, fileno, startstate, waitwml=True):
     except UnicodeDecodeError as e:
         errpos = int(e.start)  # error position on file object with UTF-8 error
         errbval = hex(e.object[errpos]) # value of byte wich causes UTF-8 error
-        # well... when exception occurred, the _current_lineno valie 
+        # well... when exception occurred, the _current_lineno value 
         # was not updated at all due to the failure of the try block. 
         # (it is = 0)
         # this means we need to make a workaround to obtain in what line of the
@@ -409,10 +409,13 @@ def run(*, filebuf, fileref, fileno, startstate, waitwml=True):
         errmsg = ( 
             "UTF-8 Format error.\nCan't decode byte " + str(errbval) + ' (' +
             e.reason + ').\n' +
-            'You must edit the file, replacing that byte with a valid ' +
-            'UTF-8 character.\n\n' +
-            'Text preceding the invalid byte (line ' + str(errlineno) + 
-            '):\n' + splituntil[-1] + '\n'   
+            'Probably your file is not encoded with UTF-8 encoding: you ' + 
+            'should open the file with an advanced text editor, and re-save ' +
+            'it with UTF-8 encoding.\n' +
+            'To avoid this problem in the future, you might want to set ' +
+            'the default encoding of your editor to UTF-8.\n\n' +
+            'Text preceding the invalid byte (source file, line ' + 
+            str(errlineno) + '):\n' + splituntil[-1] + '\n'   
         )
         wmlerr(finfo, errmsg)
     pywmlx.nodemanip.closefile(_dictionary, _current_lineno)
