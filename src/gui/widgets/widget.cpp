@@ -385,14 +385,12 @@ public:
 
 		SDL_Rect clip_rect = widget.calculate_clipping_rectangle(x_offset, y_offset);
 
-#ifndef SW_RENDERING_LEGACY_MODE
 		// Adjust clip rect origin to match the viewport origin. Currently, the both rects are mapped to
 		// absolute screen coordinates. However, setting the viewport essentially moves the screen origin,
 		// meaning if both the viewport rect and clip rect have x = 100, then clipping will actually
 		// happen at x = 200.
 		clip_rect.x -= dst_rect.x;
 		clip_rect.y -= dst_rect.y;
-#endif
 
 		SDL_RenderSetClipRect(renderer_, &clip_rect);
 	}
