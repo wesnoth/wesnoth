@@ -204,11 +204,11 @@ private:
 			w_,			   /**< The width of the image. */
 			h_;			   /**< The height of the image. */
 
-	/** Contains the size of the image. */
-	SDL_Rect src_clip_;
-
-	/** The image is cached in this surface. */
-	surface image_;
+	/**
+	 * The image texture. Since formulas may return different values each draw cycle, this is reassigned
+	 * each time, so this is mostly here to avoid constantly allocating a new textures.
+	 */
+	texture image_;
 
 	/**
 	 * Name of the image.

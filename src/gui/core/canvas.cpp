@@ -1019,7 +1019,6 @@ image_shape::image_shape(const config& cfg, wfl::action_function_symbol_table& f
 	, y_(cfg["y"])
 	, w_(cfg["w"])
 	, h_(cfg["h"])
-	, src_clip_()
 	, image_()
 	, image_name_(cfg["name"])
 	, resize_mode_(get_resize_mode(cfg["resize_mode"]))
@@ -1061,23 +1060,21 @@ void image_shape::draw(
 		return;
 	}
 
-	/*
-	 * The locator might return a different surface for every call so we can't
-	 * cache the output, also not if no formula is used.
-	 */
-	image_.assign(make_neutral_surface(image::get_image(image::locator(name))));
+	image_ = image::get_texture(name);
 
 	if(!image_) {
 		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn." << std::endl;
 		return;
 	}
 
-	assert(image_);
-	src_clip_ = {0, 0, image_->w, image_->h};
+	//
+	// Calculate dimensions and set WFL variables.
+	//
+	const texture::info info = image_.get_info();
 
 	wfl::map_formula_callable local_variables(variables);
-	local_variables.add("image_original_width", wfl::variant(image_->w));
-	local_variables.add("image_original_height", wfl::variant(image_->h));
+	local_variables.add("image_original_width", wfl::variant(info.w));
+	local_variables.add("image_original_height", wfl::variant(info.h));
 
 	unsigned w = w_(local_variables);
 	dimension_validation(w, name, "w");
@@ -1085,8 +1082,8 @@ void image_shape::draw(
 	unsigned h = h_(local_variables);
 	dimension_validation(h, name, "h");
 
-	local_variables.add("image_width", wfl::variant(w ? w : image_->w));
-	local_variables.add("image_height", wfl::variant(h ? h : image_->h));
+	local_variables.add("image_width", wfl::variant(w ? w : info.w));
+	local_variables.add("image_height", wfl::variant(h ? h : info.h));
 
 	const unsigned clip_x = x_(local_variables);
 	dimension_validation(clip_x, name, "x");
@@ -1100,82 +1097,58 @@ void image_shape::draw(
 	// Execute the provided actions for this context.
 	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
 
-	// Copy the data to local variables to avoid overwriting the originals.
-	SDL_Rect dst_clip = sdl::create_rect(clip_x, clip_y, 0, 0);
-	surface surf(nullptr);
-
-	// Test whether we need to scale and do the scaling if needed.
-	if ((w == 0) && (h == 0)) {
-		surf = image_;
-	}
-	else { // assert((w != 0) || (h != 0))
-		if(w == 0 && resize_mode_ == stretch) {
-			DBG_GUI_D << "Image: vertical stretch from " << image_->w << ','
-					  << image_->h << " to a height of " << h << ".\n";
-
-			// Textures are automatically scaled to size.
-			w = image_->w;
-		}
-		else if(h == 0 && resize_mode_ == stretch) {
-			DBG_GUI_D << "Image: horizontal stretch from " << image_->w
-					  << ',' << image_->h << " to a width of " << w
-					  << ".\n";
-
-			// Textures are automatically scaled to size.
-			h = image_->h;
-		}
-		else {
-			if(w == 0) {
-				w = image_->w;
-			}
-			if(h == 0) {
-				h = image_->h;
-			}
-			if(resize_mode_ == tile) {
-				DBG_GUI_D << "Image: tiling from " << image_->w << ','
-						  << image_->h << " to " << w << ',' << h << ".\n";
-
-				// TODO: convert to texture handling.
-				surf = tile_surface(image_, w, h, false);
-			} else if(resize_mode_ == tile_center) {
-				DBG_GUI_D << "Image: tiling centrally from " << image_->w << ','
-						  << image_->h << " to " << w << ',' << h << ".\n";
-
-				// TODO: convert to texture handling.
-				surf = tile_surface(image_, w, h, true);
-			} else {
-				if(resize_mode_ == stretch) {
-					ERR_GUI_D << "Image: failed to stretch image, "
-								 "fall back to scaling.\n";
-				}
-
-				DBG_GUI_D << "Image: scaling from " << image_->w << ','
-						  << image_->h << " to " << w << ',' << h << ".\n";
-
-				// Textures are automatically scaled to size.
-			}
-		}
-	}
-
-	if(!surf) {
-		surf = image_;
-	}
+	//
+	// Copy image texture to canvas texture (which should be the current rendering target)/
+	//
+	CVideo& video = CVideo::get_singleton();
 
 	// Flip on the vertical axis - ie, a horizontal flip.
 	const bool mirror = vertical_mirror_(local_variables);
 
-	dst_clip.w = w ? w : surf->w;
-	dst_clip.h = h ? h : surf->h;
+	SDL_Rect dst_clip = sdl::create_rect(clip_x, clip_y, 0, 0);
 
-	/* NOTE: we cannot use SDL_UpdateTexture to copy the surface pixel data directly to the canvas texture
-	 * since no alpha blending occurs; values (even pure alpha) totally overwrite the underlying pixel data.
-	 *
-	 * To work around that, we create a texture from the surface and copy it to the renderer. This cleanly
-	 * copies the surface to the canvas texture with the appropriate alpha blending.
-	 */
-	texture txt(surf);
+	const unsigned int dst_w = w ? w : info.w;
+	const unsigned int dst_h = h ? h : info.h;
 
-	CVideo::get_singleton().render_copy(txt, nullptr, &dst_clip, mirror, false);
+	// TODO: remove stretch mode
+	switch(resize_mode_) {
+	case scale:
+	case stretch: {
+		DBG_GUI_D << "Image: scaling from " << info.w << ',' << info.h << " to " << w << ',' << h << std::endl;
+
+		dst_clip.w = dst_w;
+		dst_clip.h = dst_h;
+
+		video.render_copy(image_, nullptr, &dst_clip, mirror, false);
+		break;
+	}
+
+	// TODO: move this to a more general place.
+	case tile: {
+		DBG_GUI_D << "Image: tiling from " << info.w << ',' << info.h << " to " << w << ',' << h << std::endl;
+
+		const unsigned int w_count = static_cast<int>(std::ceil(static_cast<double>(dst_w) / static_cast<double>(info.w)));
+		const unsigned int h_count = static_cast<int>(std::ceil(static_cast<double>(dst_h) / static_cast<double>(info.h)));
+
+		for(unsigned int xi = 0, current_x = dst_clip.x; xi < w_count; ++xi, current_x += info.w) {
+			for(unsigned int iy = 0, current_y = dst_clip.y; iy < h_count; ++iy, current_y += info.h) {
+				SDL_Rect area = sdl::create_rect(current_x, current_y, info.w, info.h);
+				video.render_copy(image_, nullptr, &area, mirror, false);
+			}
+		}
+
+		break;
+	}
+
+	case tile_center: {
+		DBG_GUI_D << "Image: tiling centrally from " << info.w << ',' << info.h << " to " << w << ',' << h << std::endl;
+		break;
+	}
+
+	default:
+		// TODO: text description
+		ERR_GUI_D << "Unknown resize mode option: " << resize_mode_ << std::endl;
+	}
 }
 
 image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_mode)
