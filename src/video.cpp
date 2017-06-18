@@ -107,7 +107,7 @@ CVideo::CVideo(FAKE_TYPES type)
 
 void CVideo::initSDL()
 {
-	const int res = SDL_InitSubSystem(SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
+	const int res = SDL_InitSubSystem(SDL_INIT_VIDEO);
 
 	if(res < 0) {
 		ERR_DP << "Could not initialize SDL_video: " << SDL_GetError() << std::endl;
