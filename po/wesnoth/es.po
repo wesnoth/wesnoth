@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-05-29 21:55+0200\n"
-"PO-Revision-Date: 2017-05-24 20:26+0200\n"
+"PO-Revision-Date: 2017-06-13 21:49+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -6458,8 +6458,6 @@ msgstr ""
 "máximo de colinas»)"
 
 #: src/gui/core/linked_group_definition.cpp:40
-#, fuzzy
-#| msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 "El grupo '$id' vinculado necesita una clave de 'fixed_width' o "
@@ -8014,13 +8012,10 @@ msgstr "¡Esta hora del día es solo mínima!"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:349
-#, fuzzy
-#| msgid "$number_or_percent damage"
-#| msgid_plural "$number_or_percent damage"
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
-msgstr[0] "$number_or_percent daño"
-msgstr[1] "$number_or_percent daños"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> daño"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> daños"
 
 #: src/units/attack_type.cpp:358
 msgid "$number damage"
@@ -8030,13 +8025,10 @@ msgstr[1] "$number daños"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:367
-#, fuzzy
-#| msgid "$number_or_percent strike"
-#| msgid_plural "$number_or_percent strikes"
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
-msgstr[0] "$number_or_percent golpe"
-msgstr[1] "$number_or_percent golpes"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> golpe"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> golpes"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:376
@@ -8047,15 +8039,13 @@ msgstr[1] "$number golpes"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:385
-#, fuzzy
-#| msgid "$number parry"
 msgid "$number| accuracy"
-msgstr "$number bloqueo"
+msgstr "$number| precisión"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:392
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
-msgstr ""
+msgstr "<span color=\"$color\">$number_or_percent|%</span> precisión"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:399
@@ -8064,10 +8054,8 @@ msgstr "$number bloqueo"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:406
-#, fuzzy
-#| msgid "$number_or_percent parry"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
-msgstr "$number_or_percent bloqueo"
+msgstr "<span color=\"$color\">$number_or_percent</span> bloqueo"
 
 #. TRANSLATORS: Current value for WML code set_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:413
@@ -8078,13 +8066,13 @@ msgstr[1] "$number puntos de movimiento"
 
 #. TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:422
-#, fuzzy
-#| msgid "$number_or_percent movement point"
-#| msgid_plural "$number_or_percent movement points"
 msgid "<span color=\"$color\">$number_or_percent movement</span> point"
 msgid_plural "<span color=\"$color\">$number_or_percent movement</span> points"
-msgstr[0] "$number_or_percent punto de movimiento"
-msgstr[1] "$number_or_percent puntos de movimiento"
+msgstr[0] ""
+"<span color=\"$color\">$number_or_percent movement</span> punto de movimiento"
+msgstr[1] ""
+"<span color=\"$color\">$number_or_percent movement</span> puntos de "
+"movimiento"
 
 #: src/units/types.cpp:462
 msgid "No description available."
@@ -8131,47 +8119,34 @@ msgid "wesnoth"
 msgstr "wesnoth"
 
 #: src/units/unit.cpp:1785
-#, fuzzy
-#| msgid "$number_or_percent move"
-#| msgid_plural "$number_or_percent moves"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
-msgstr[0] "$number_or_percent movimiento"
-msgstr[1] "$number_or_percent movimientos"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> movimiento"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> movimientos"
 
 #: src/units/unit.cpp:1791
-#, fuzzy
-#| msgid "$number_or_percent vision"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
-msgstr "$number_or_percent vista"
+msgstr "<span color=\"$color\">$number_or_percent</span> vista"
 
 #: src/units/unit.cpp:1795
-#, fuzzy
-#| msgid "$number_or_percent jamming"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
-msgstr "$number_or_percent interferencia"
+msgstr "<span color=\"$color\">$number_or_percent</span> interferencia"
 
 #: src/units/unit.cpp:1800
-#, fuzzy
-#| msgid "$number_or_percent XP to advance"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
-msgstr "$number_or_percent PX para promoción"
+msgstr "<span color=\"$color\">$number_or_percent</span> PX para promoción"
 
 #: src/units/unit.cpp:1804
-#, fuzzy
-#| msgid "$number_or_percent attack per turn"
-#| msgid_plural "$number_or_percent attacks per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
-msgstr[0] "$number_or_percent ataque por turno"
-msgstr[1] "$number_or_percent ataques por turno"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> ataque por turno"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> ataques por turno"
 
 #: src/units/unit.cpp:1811
-#, fuzzy
-#| msgid "$number_or_percent cost to recall"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
-msgstr "$number_or_percent coste de reincorporación"
+msgstr ""
+"<span color=\"$color\">$number_or_percent</span> coste de reincorporación"
 
 #: src/units/unit.cpp:2215
 msgid "$effect_description per level"

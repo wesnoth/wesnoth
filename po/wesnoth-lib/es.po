@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-05-29 21:55+0200\n"
-"PO-Revision-Date: 2017-05-22 09:52+0200\n"
+"PO-Revision-Date: 2017-06-13 21:39+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -4229,10 +4229,8 @@ msgstr "Nombre de usuario:"
 #. [toggle_button]: id=remember_password
 #: data/gui/window/mp_login.cfg:199
 #: data/gui/window/preferences/05_multiplayer.cfg:68
-#, fuzzy
-#| msgid "Save password to preferences (clear text)"
 msgid "Save password locally (encrypted)"
-msgstr "Guardar contraseña en preferencias (no cifrada)"
+msgstr "Guardar contraseña localmente (cifrada)"
 
 #. [button]: id=password_reminder
 #: data/gui/window/mp_login.cfg:257
@@ -5371,51 +5369,43 @@ msgstr "El texto contiene marcado inválido: "
 
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:250
-#, fuzzy
-#| msgid "multimenu^$first and $second"
 msgid "conjunct pair^$first and $second"
-msgstr "multimenu^$first y $second"
+msgstr "conjunct pair^$first y $second"
 
 #. TRANSLATORS: Formats the first two elements of a conjunctive list.
 #: src/formula/string_utils.cpp:253
-#, fuzzy
-#| msgid "multimenu^$first, $second"
 msgid "conjunct start^$first, $second"
-msgstr "multimenu^$first, $second"
+msgstr "conjunct start^$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a conjunctive list.
 #: src/formula/string_utils.cpp:257
 msgid "conjunct mid^$prefix, $next"
-msgstr ""
+msgstr "conjunct mid^$prefix, $next"
 
 #. TRANSLATORS: Formats the final element of a conjunctive list.
 #: src/formula/string_utils.cpp:260
 msgid "conjunct end^$prefix, and $last"
-msgstr ""
+msgstr "conjunct end^$prefix, y $last"
 
 #. TRANSLATORS: Formats a two-element disjunctive list.
 #: src/formula/string_utils.cpp:268
-#, fuzzy
-#| msgid "multimenu^$first and $second"
 msgid "disjunct pair^$first or $second"
-msgstr "multimenu^$first y $second"
+msgstr "disjunct pair^$first o $second"
 
 #. TRANSLATORS: Formats the first two elements of a disjunctive list.
 #: src/formula/string_utils.cpp:271
-#, fuzzy
-#| msgid "multimenu^$first, $second"
 msgid "disjunct start^$first, $second"
-msgstr "multimenu^$first, $second"
+msgstr "disjunct start^$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a disjunctive list.
 #: src/formula/string_utils.cpp:275
 msgid "disjunct mid^$prefix, $next"
-msgstr ""
+msgstr "disjunct mid^$prefix, $next"
 
 #. TRANSLATORS: Formats the final element of a disjunctive list.
 #: src/formula/string_utils.cpp:278
 msgid "disjunct end^$prefix, or $last"
-msgstr ""
+msgstr "disjunct end^$prefix, o $last"
 
 #: src/gui/core/canvas.cpp:620
 msgid "Line doesn't fit on canvas."
@@ -6438,13 +6428,10 @@ msgid "multimenu^All Selected"
 msgstr "Seleccionar todos"
 
 #: src/gui/widgets/multimenu_button.cpp:185
-#, fuzzy
-#| msgid "multimenu^$first and 1 other"
-#| msgid_plural "multimenu^$first and $excess others"
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
-msgstr[0] "multimenu^$first y otro"
-msgstr[1] "multimenu^$first y $excess otros"
+msgstr[0] "multimenu^$excess otro"
+msgstr[1] "$excess otros"
 
 #: src/gui/widgets/multimenu_button.cpp:187
 #: src/gui/widgets/multimenu_button.cpp:248
