@@ -8,14 +8,14 @@
 # Automatically generated, 2004.
 # Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008, 2009, 2010, 2011.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2016.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-03-19 00:05+0300\n"
-"PO-Revision-Date: 2016-05-17 11:11+0000\n"
+"PO-Revision-Date: 2017-06-07 19:06+0300\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [time]: id=underground
@@ -155,7 +155,7 @@ msgstr "Editor Mappe e Scenari"
 #. [topic]: id=editor_brush
 #: data/core/editor/help.cfg:13
 msgid "Editor Brush"
-msgstr ""
+msgstr "Editor Pennello"
 
 #. [topic]: id=editor_brush
 #. [topic]: id=editor_clipboard
@@ -292,7 +292,7 @@ msgstr ""
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:130
 msgid "Playlist Manager"
-msgstr ""
+msgstr "Gestore Scalette"
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:131
@@ -301,6 +301,11 @@ msgid ""
 "\n"
 "Have a look at the addon server for easy to use additional music tracks."
 msgstr ""
+"Salva un elenco di tracce musicali definendo una scaletta casuale per lo "
+"scenario.\n"
+"\n"
+"Dai un’occhiata al server delle estensioni per utilizzare con facilità "
+"ulteriori tracce musicali."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:140
@@ -316,6 +321,13 @@ msgid ""
 "\n"
 "The editor can be launched from the <italic>text='Map Editor'</italic>"
 msgstr ""
+"L'Editor di Mappe e Scenari di Wesnoth permette agli utenti di creare e "
+"modificare le mappe sulle quali viene svolto ogni scenario del gioco. "
+"Fornisce anche un limitato insieme di caratteristiche per impostare unso "
+"scenario di base.\n"
+"\n"
+"L’editor piò essere lanciato cliccando su <italic>text='Editor Mappe'</"
+"italic>"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:144
@@ -345,6 +357,15 @@ msgid ""
 "\n"
 "• <ref>dst='editor_playlist' text='Playlist Manager'</ref>"
 msgstr ""
+"\n"
+"\n"
+"• <ref>dst='editor_terrain' text='Editor Terreni'</ref>\n"
+"Un editor per mappe semplice da utilizzare, simile ad una applicazione di "
+"disegno.\n"
+"\n"
+"• Editor Scenario\n"
+"\n"
+"• <ref>dst='editor_playlist' text='Gestore Scalette'</ref>"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:153
@@ -355,6 +376,12 @@ msgid ""
 "• Time Schedule Editor\n"
 "\n"
 msgstr ""
+"\n"
+"Imposta la scaletta musicale predefinita di uno scenario.\n"
+"\n"
+"• Editor Andamento Temporale\n"
+"\n"
+"\n"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:158
@@ -380,7 +407,6 @@ msgstr ""
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:172
-#, fuzzy
 msgid ""
 "\n"
 "• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
@@ -405,11 +431,6 @@ msgstr "Modalità di gioco"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -417,7 +438,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Risorse per i progettisti'</header>"
+"<header>text='Modalità Pura Mappa'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
@@ -466,11 +487,6 @@ msgstr ""
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:198
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -478,7 +494,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Risorse per i progettisti'</header>"
+"<header>text='Modalità Scenario'</header>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:200
@@ -548,7 +564,7 @@ msgstr ""
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:250
 msgid "Time Schedule Editor"
-msgstr ""
+msgstr "Editor Andamento Temporale"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:258
@@ -1105,8 +1121,6 @@ msgstr ""
 
 #. [section]: id=schedule
 #: data/core/help.cfg:10
-#, fuzzy
-#| msgid "Time of Day"
 msgid "Time of Day Schedule"
 msgstr "Periodo della giornata"
 
@@ -1657,10 +1671,8 @@ msgstr ""
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:244
-#, fuzzy
-#| msgid "Advances to: "
 msgid "Advancement"
-msgstr "Avanza come: "
+msgstr "Avanzamento"
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:245
@@ -1931,17 +1943,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:283
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "The attacker gets the first strike, then the defender retaliates. Each "
-#| "strike either hits, doing a given amount of damage, or misses, doing no "
-#| "damage at all. Strikes alternate until each unit has used up all of its "
-#| "strikes. The number of strikes a unit has varies; for instance, an elvish "
-#| "fighter with a 5–4 attack may strike 4 times, each successful strike "
-#| "dealing 5 damage, while an orcish grunt with a 9–2 attack can only strike "
-#| "twice (but at 9 damage for each hit)."
 msgid ""
 "\n"
 "\n"
@@ -1959,9 +1960,9 @@ msgstr ""
 "a segno, causando un certo ammontare di danni, o mancare il bersaglio senza "
 "causare alcun danno. Gli attacchi si alternano fino a quando entrambe le "
 "unità esauriscono i colpi a disposizione. Il numero degli attacchi di "
-"un’unità varia: per esempio, un elfo combattente con un attacco da 5–4 può "
+"un’unità varia: per esempio, un elfo combattente con un attacco da 5×4 può "
 "colpire 4 volte infliggendo 5 punti danno per ogni colpo andato a segno, "
-"mentre un orco recluta con un attacco da 9–2 colpisce solo 2 volte (causando "
+"mentre un orco recluta con un attacco da 9×2 colpisce solo 2 volte (causando "
 "però 9 punti danno per colpo)."
 
 #. [topic]: id=combat
@@ -2034,17 +2035,6 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:293
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Each strike which hits causes a base amount of damage depending on the "
-#| "attack type. For instance, an elvish fighter with a 5–4 attack does 5 "
-#| "base damage. This is usually modified by two things: "
-#| "<ref>dst='damage_types_and_resistance' text='resistance'</ref> and "
-#| "<ref>dst='time_of_day' text='time of day'</ref>. To see how base damage "
-#| "is modified by the circumstances, select <bold>text='Damage "
-#| "Calculations'</bold> in the attack selection menu."
 msgid ""
 "\n"
 "\n"
@@ -2059,7 +2049,7 @@ msgstr ""
 "\n"
 "\n"
 "Ogni colpo che va a segno causa un ammontare di danno base a seconda del "
-"tipo di attacco. Per esempio, un elfo combattente con un attacco da 5–4 "
+"tipo di attacco. Per esempio, un elfo combattente con un attacco da 5×4 "
 "causa un danno base di 5. Questo valore viene di solito modificato da due "
 "fattori: dalla <ref>dst='damage_types_and_resistance' text='resistenza'</"
 "ref> e dal <ref>dst='time_of_day' text='periodo della giornata'</ref>. Per "
@@ -2437,6 +2427,9 @@ msgid ""
 "\n"
 "<bold>text='Advanced'</bold>"
 msgstr ""
+"\n"
+"\n"
+"<bold>text='Avanzato'</bold>"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:370
@@ -2558,6 +2551,10 @@ msgid ""
 "Terrains come in two types: <italic>text='basic'</italic> and "
 "<italic>text='mixed'</italic>."
 msgstr ""
+"\n"
+"\n"
+"Esistono due tipi di terreno: <italic>text='base'</italic> e "
+"<italic>text='misti'</italic>."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:413
@@ -2570,11 +2567,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:415
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2582,7 +2574,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Risorse per i progettisti'</header>"
+"<header>text='Tipi di terreno - base'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:417
@@ -2594,6 +2586,13 @@ msgid ""
 "discovered can be found at the end of this page.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"I terreni base comprendono Pianura, Collina, Montagna, Sabbia, Acqua e "
+"Palude. Ce ne sono molti altri oltre questi — una lista dei tipi di terreno "
+"che hai scoperto può essere trovata in fondo a questa pagina\n"
+" \n"
+"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:421
@@ -2604,14 +2603,15 @@ msgid ""
 "terrain types, and these values are listed in the unit’s help page. Basic "
 "terrain types may have unique properties like illumination effects as well."
 msgstr ""
+"\n"
+"\n"
+"Ogni unità ha una percentuale di difesa e un costo di movimento per ogni "
+"tipo di terreno base, e questi valori vengono elencati nella pagina di aiuto "
+"dell’unità stessa. I tipi di terreno base possono avere delle peculiari "
+"caratteristiche, quali gli effetti luminosi."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:423
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2619,7 +2619,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Risorse per i progettisti'</header>"
+"<header>text='Tipi di terreno - misti'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:425
@@ -2671,6 +2671,13 @@ msgid ""
 "Instead, they count only as water tiles.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Infine, i villaggi acquatici sono generalmente inospitali per le unità "
+"terrestri, e non danno nessuno dei beneficio in difesa o di movimento "
+"eventualmente associato a quel tipo di terreno. Invero, vengono conteggiati "
+"come un esagono acquatico.\n"
+"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:441
@@ -2681,6 +2688,11 @@ msgid ""
 "its hex and checking the terrain type icons displayed in the upper right, "
 "(under the default theme)."
 msgstr ""
+"\n"
+"\n"
+"Puoi vedere la lista dei terreni base di un terreno misto muovendo il mouse "
+"sopra un esagono e controllando il tipo di icona terreno mostrata in alto a "
+"destra (sotto il tema di default)."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:443
@@ -2695,11 +2707,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:445
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2707,7 +2714,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Risorse per i progettisti'</header>"
+"<header>text='Limite Percentuale Difesa'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:447
@@ -2718,6 +2725,12 @@ msgid ""
 "terrain type. These units suffer a penalty on mixed terrains with that type "
 "— their defense cannot exceed the cap."
 msgstr ""
+"\n"
+"\n"
+"Alcune unità hanno <italic>text='limite percentuale di difesa' per un "
+"particolare tipo di terreno base. Queste unità soffrono di una penalità "
+"anche su un tipo di terreno misto che abbia quel tipo, in quanto la lodo "
+"difesa non può superare il limite imposto"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:449
@@ -2745,11 +2758,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:453
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Creator Resources'</header>"
 msgid ""
 "\n"
 "\n"
@@ -2758,7 +2766,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Risorse per i progettisti'</header>"
+"<header>text='Tipi di terreno - base'</header>\n"
+"\n"
 
 #. [topic]: id=..addons
 #: data/core/help.cfg:466
@@ -3462,15 +3471,6 @@ msgstr ""
 
 #. [heals]: id=healing
 #: data/core/macros/abilities.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Allows the unit to heal adjacent allied units at the beginning of our "
-#| "turn.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -3484,21 +3484,11 @@ msgstr ""
 "\n"
 "L’unità di cui si occupa il guaritore potrà recuperare fino a 4 PF per "
 "turno, oppure vedrà annullati per quel turno gli effetti del veleno.\n"
-"I guaritori non possono curare dal veleno un’unità avvelenata, perciò questa "
-"dovrà cercare l’assistenza di un villaggio o di un’unità con l’abilità "
-"“cura”."
+"Questa abilità non permette di curare un’unità avvelenata, ma soltanto di "
+"ritardare gli effetti del veleno."
 
 #. [heals]: id=healing
 #: data/core/macros/abilities.cfg:30
-#, fuzzy
-#| msgid ""
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -3513,9 +3503,8 @@ msgstr ""
 "\n"
 "L’unità di cui si occupa il guaritore potrà recuperare fino a 8 PF per turno "
 "oppure vedrà annullati per quel turno gli effetti del veleno.\n"
-"I guaritori non possono curare dal veleno un’unità avvelenata, perciò questa "
-"dovrà cercare l’assistenza di un villaggio o di un’unità con l’abilità "
-"“cura”."
+"Questa abilità non permette di curare un’unità avvelenata, ma di soltanto "
+"ritardare gli effetti del veleno."
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:47
@@ -3818,11 +3807,6 @@ msgstr "contagio"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:379
-#, fuzzy
-#| msgid ""
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
@@ -4775,6 +4759,12 @@ msgid ""
 "more per level. They will also heal 2 hitpoints each turn, regardless of "
 "whether they engaged in combat the turn before."
 msgstr ""
+"\n"
+"\n"
+"Le unità con caretteristica <italic>text='Sano'</italic> hanno un punto "
+"ferita addizionale, e guadagnano un punto addizionale ad ogni passaggio di "
+"livello. Guariscono inoltre 2 punti ferita ad ogni turno, anche se non hanno "
+"riposato il turno precedente."
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:200
@@ -6196,680 +6186,3 @@ msgstr "Aiuto per The Battle for Wesnoth"
 #: src/help/help.cpp:240
 msgid "Parse error when parsing help text: "
 msgstr "Errore di parsing durante l’analisi del testo della sezione Aiuto: "
-
-#~ msgid ""
-#~ "When a unit is killed by a Plague attack, that unit is replaced with a "
-#~ "unit identical to and on the same side as the unit with the Plague "
-#~ "attack. This doesn’t work on Undead or units in villages."
-#~ msgstr ""
-#~ "Quando un’unità viene uccisa da un attacco “contagio”, viene sostituita "
-#~ "da un’unità identica che si schiera a fianco dell’unità che ha sferrato "
-#~ "tale attacco. Non funziona sui non-morti e sulle unità nei villaggi."
-
-#~ msgid "Intelligent"
-#~ msgstr "Intelligente"
-
-#~ msgid "Quick"
-#~ msgstr "Veloce"
-
-#~ msgid "Resilient"
-#~ msgstr "Resistente"
-
-#~ msgid "Strong"
-#~ msgstr "Forte"
-
-#~ msgid "Fearless"
-#~ msgstr "Impavido"
-
-#~ msgid "Feral"
-#~ msgstr "Selvatico"
-
-#~ msgid "Loyal"
-#~ msgstr "Leale"
-
-#~ msgid "trait^Undead"
-#~ msgstr "Non-morto"
-
-#~ msgid "trait^Mechanical"
-#~ msgstr "Meccanico"
-
-#~ msgid "trait^Elemental"
-#~ msgstr "Elementale"
-
-# v. WIF, Glossario generale
-#~ msgid "Dextrous"
-#~ msgstr "Accurato"
-
-#~ msgid "Healthy"
-#~ msgstr "Sano"
-
-#~ msgid "Dim"
-#~ msgstr "Ottuso"
-
-#~ msgid "Slow"
-#~ msgstr "Lento"
-
-#~ msgid "Weak"
-#~ msgstr "Debole"
-
-#~ msgid "trait^Aged"
-#~ msgstr "Invecchiato"
-
-#, fuzzy
-#~| msgid ""
-#~| "In combat, your units will inevitably take damage. When a unit "
-#~| "<ref>dst='experience_and_advancement' text='advances'</ref>, it will "
-#~| "heal fully. This can happen as you finish fighting an enemy, whether it "
-#~| "is your turn or not. Wesnoth offers several other ways for your units to "
-#~| "heal, all of which take place at the beginning of your turn, before you "
-#~| "take action."
-#~ msgid ""
-#~ "In combat, your units will inevitably take damage. When a unit "
-#~ "<ref>dst='advancement' text='advances'</ref>, it will heal fully. This "
-#~ "can happen as you finish fighting an enemy, whether it is your turn or "
-#~ "not. Wesnoth offers several other ways for your units to heal, all of "
-#~ "which take place at the beginning of your turn, before you take action."
-#~ msgstr ""
-#~ "Durante la battaglia le tue unità subiranno inevitabilmente dei danni. "
-#~ "Quando un’unità <ref>dst='experience_and_advancement' text='avanza'</ref> "
-#~ "di livello, verrà guarita completamente. Ciò può accadere dopo un "
-#~ "combattimento contro un nemico, che sia il tuo turno o no. Wesnoth offre "
-#~ "molti altri modi per guarire le tue unità: tutti generano i loro effetti "
-#~ "all’inizio del tuo turno, prima che inizi l’azione."
-
-#~ msgid "Factions"
-#~ msgstr "Fazioni"
-
-#~ msgid "Overview"
-#~ msgstr "Introduzione"
-
-#~ msgid "Fundamentals of Gameplay"
-#~ msgstr "Fondamenti del gioco"
-
-# modificare il titolo se lo localizziamo
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "To begin with, it’s best to click the <bold>text='Tutorial'</bold> button "
-#~ "at the main menu. This will take you to the interactive tutorial, which "
-#~ "will teach you the basics of Wesnoth. After this, it is recommended that "
-#~ "you play the Heir to the Throne campaign first — click "
-#~ "<bold>text='Campaign'</bold> then <italic>text='Heir to the Throne'</"
-#~ "italic>. As <italic>text='Battle for Wesnoth'</italic> can be quite "
-#~ "challenging, you may wish to start on easy."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Per iniziare, la cosa migliore è fare clic sul pulsante "
-#~ "<bold>text='Introduzione'</bold> nel menù principale. Questo ti porterà "
-#~ "alla missione introduttiva, che ti insegnerà le basi di Wesnoth. Dopo "
-#~ "averla terminata, è consigliabile giocare per prima la campagna «L’erede "
-#~ "al trono» – fai clic su <bold>text='Campagna'</bold> e poi su "
-#~ "<italic>text='L’erede al trono'</italic>. Dal momento che "
-#~ "<italic>text='Battle for Wesnoth'</italic> può risultare assai "
-#~ "impegnativo, potresti voler iniziare al livello di difficoltà “facile”."
-
-# modificare il titolo se lo localizziamo
-#~ msgid ""
-#~ "These pages outline all you need to know to play <italic>text='Battle for "
-#~ "Wesnoth'</italic>. They cover how to play and the basic mechanics behind "
-#~ "the game. As you play the game, new information is added to these pages "
-#~ "as you come across new aspects of the game. For more detailed information "
-#~ "on special situations and exceptions, please follow the links included."
-#~ msgstr ""
-#~ "In queste pagine sarà trattato tutto ciò che devi sapere per giocare a "
-#~ "<italic>text='Battle for Wesnoth'</italic>. Qui vengono spiegate le "
-#~ "regole e i meccanismi alla base del gioco. Durante una partita, nel "
-#~ "momento in cui scoprirai nuovi aspetti del gioco, le nuove informazioni "
-#~ "saranno aggiunte su queste pagine. Per informazioni più dettagliate su "
-#~ "situazioni particolari ed eccezioni, ti preghiamo di seguire i "
-#~ "collegamenti inclusi."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<italic>text='Campaigns'</italic> consist of multiple scenarios that "
-#~ "follow on from each other, telling a story. In a campaign, you often need "
-#~ "to play more carefully, preserving your best troops so that they can be "
-#~ "used again in later scenarios in the campaign."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Le <italic>text='campagne'</italic> consistono in una serie di scenari "
-#~ "che si susseguono raccontando una storia. Nel corso di una campagna è "
-#~ "spesso necessaria una maggiore attenzione nel preservare le truppe "
-#~ "migliori, in modo da poterle usare negli scenari successivi della "
-#~ "campagna."
-
-#~ msgid ""
-#~ "The game takes place over a series of battles, called "
-#~ "<italic>text='scenarios'</italic>. Each scenario pits your troops against "
-#~ "the troops of one or more adversaries. You can play against the computer, "
-#~ "or with friends who each take turns sitting at the computer (hotseat "
-#~ "play). If your computer is connected to a computer network, you can also "
-#~ "play against other people connected to that network. If your computer has "
-#~ "a connection to the Internet, you can play against other people across "
-#~ "the Internet."
-#~ msgstr ""
-#~ "Il gioco si snoda lungo una serie di battaglie, chiamate "
-#~ "<italic>text='scenari'</italic>. Ogni scenario contrappone le tue truppe "
-#~ "a quelle di uno o più avversari. Puoi giocare contro il computer o con i "
-#~ "tuoi amici dandovi il cambio al computer (partita multigiocatore in "
-#~ "locale). Inoltre, se il computer è connesso a una rete, potrai giocare "
-#~ "contro altri giocatori connessi alla stessa rete. Se il computer è "
-#~ "provvisto di un collegamento ad Internet, potrai giocare contro altri "
-#~ "giocatori connessi ad Internet."
-
-#~ msgid "Experience and Advancement"
-#~ msgstr "Esperienza e avanzamento di livello"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<italic>text='Healthy'</italic> units have 1 HP plus 1 HP per level more "
-#~ "than usual and rest heal the usual 2 HP after each turn they did not "
-#~ "fight. They also suffer a quarter less damage from poison."
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Le unità <italic>text='sane'</italic> hanno 1 PF più 1 PF per livello in "
-#~ "più del consueto e, dopo ogni turno in cui non hanno combattuto, "
-#~ "recuperano i canonici 2 PF come se avessero riposato. Inoltre, tali unità "
-#~ "subiscono un quarto di danni da veleno in meno."
-
-#~ msgid "Help"
-#~ msgstr "Aiuto"
-
-#~ msgid "<header>text='Units having this special attack'</header>"
-#~ msgstr "<header>text='Unità dotate di questo attacco speciale'</header>"
-
-#~ msgid "<header>text='Units having this ability'</header>"
-#~ msgstr "<header>text='Unità dotate di quest’abilità'</header>"
-
-#~ msgid "Leaders:"
-#~ msgstr "Condottieri:"
-
-#~ msgid "Recruits:"
-#~ msgstr "Reclutamenti:"
-
-#~ msgid "Era:"
-#~ msgstr "Era:"
-
-#~ msgid "Factions:"
-#~ msgstr "Fazioni:"
-
-#~ msgid "Factions are only used in multiplayer"
-#~ msgstr "Le fazioni si usano solo in modalità multigiocatore."
-
-#~ msgid "Base Terrain: "
-#~ msgstr "Terreno di base: "
-
-#~ msgid "level"
-#~ msgstr "Livello"
-
-#~ msgid "Advances from: "
-#~ msgstr "Avanza da: "
-
-#~ msgid "Base unit: "
-#~ msgstr "Unità di base: "
-
-# in italiano rimane invariato
-#~ msgid "Base units: "
-#~ msgstr "Unità di base: "
-
-#~ msgid "Variations: "
-#~ msgstr "Varianti: "
-
-#~ msgid "race^Miscellaneous"
-#~ msgstr "Razza mista"
-
-#~ msgid "Race: "
-#~ msgstr "Razza: "
-
-#~ msgid "Abilities: "
-#~ msgstr "Abilità: "
-
-#~ msgid "Ability Upgrades: "
-#~ msgstr "Potenziamenti delle abilità: "
-
-#~ msgid "HP: "
-#~ msgstr "PF: "
-
-#~ msgid "Moves: "
-#~ msgstr "Mosse: "
-
-#~ msgid "Vision: "
-#~ msgstr "Visione: "
-
-#~ msgid "Jamming: "
-#~ msgstr "Disturbo visione: "
-
-#~ msgid "Cost: "
-#~ msgstr "Costo: "
-
-#~ msgid "Alignment: "
-#~ msgstr "Allineamento: "
-
-#~ msgid "Required XP: "
-#~ msgstr "PE richiesti: "
-
-#~ msgid "unit help^Attacks"
-#~ msgstr "Attacchi"
-
-#~ msgid "unit help^Name"
-#~ msgstr "Nome"
-
-#~ msgid "Type"
-#~ msgstr "Tipo"
-
-#~ msgid "Strikes"
-#~ msgstr "Colpi"
-
-#~ msgid "Range"
-#~ msgstr "Portata"
-
-#~ msgid "Special"
-#~ msgstr "Attacchi speciali"
-
-#~ msgid "Resistances"
-#~ msgstr "Resistenze"
-
-#~ msgid "Attack Type"
-#~ msgstr "Tipo di attacco"
-
-#~ msgid "Resistance"
-#~ msgstr "Resistenza"
-
-#~ msgid "Terrain"
-#~ msgstr "Terreno"
-
-#~ msgid "Defense"
-#~ msgstr "Difesa"
-
-#~ msgid "Movement Cost"
-#~ msgstr "Costo di movimento"
-
-#~ msgid "Vision Cost"
-#~ msgstr "Costo di visione"
-
-#~ msgid "Jamming Cost"
-#~ msgstr "Costo di disturbo visione"
-
-#~ msgid " < Back"
-#~ msgstr " < Indietro"
-
-#~ msgid "Forward >"
-#~ msgstr "Avanti >"
-
-#~ msgid "Reference to unknown topic: "
-#~ msgstr "Riferimento ad un argomento sconosciuto: "
-
-#~ msgid "corrupted original file"
-#~ msgstr "file originale danneggiato"
-
-#~ msgid "Caste"
-#~ msgstr "Casta"
-
-#~ msgid ""
-#~ "One of the variant forms of the drake: either be a <ref>dst='unit_Drake "
-#~ "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' "
-#~ "text='Drake Fighter'</ref>."
-#~ msgstr ""
-#~ "Una delle forme alternative del drago: <ref>dst='unit_Drake Clasher' "
-#~ "text='drago distruttore'</ref> oppure <ref>dst='unit_Drake Fighter' "
-#~ "text='drago combattente'</ref>."
-
-#~ msgid "Aerie"
-#~ msgstr "Nido"
-
-#~ msgid ""
-#~ "A very large castle-like structure that is home to a <ref>dst='flight' "
-#~ "text='flight'</ref>. It contains the <ref>dst='breeding_pen' "
-#~ "text='breeding pens'</ref>."
-#~ msgstr ""
-#~ "Enorme struttura simile a un castello che ospita uno <ref>dst='flight' "
-#~ "text='stormo'</ref> di draghi. Contiene i <ref>dst='breeding_pen' "
-#~ "text='recinti di riproduzione'</ref>."
-
-#~ msgid "Breeding Pen"
-#~ msgstr "Recinto di riproduzione"
-
-#~ msgid ""
-#~ "The portion of an <ref>dst='aerie' text='aerie'</ref> where the "
-#~ "nonsentient <ref>dst='breeder' text='Breeders'</ref> live under the "
-#~ "<ref>dst='dominant' text='Dominant'</ref>’s eye."
-#~ msgstr ""
-#~ "La porzione di un <ref>dst='aerie' text='nido'</ref> dove le "
-#~ "<ref>dst='breeder' text='fattrici'</ref> non-senzienti vivono sotto "
-#~ "l’occhio del <ref>dst='dominant' text='dominante'</ref>."
-
-#~ msgid "Breeding Cycle"
-#~ msgstr "Ciclo di riproduzione"
-
-#~ msgid ""
-#~ "The time that passes between one <ref>dst=egg text='egg'</ref> laying to "
-#~ "the next."
-#~ msgstr ""
-#~ "Il tempo che trascorre tra la posa di un <ref>dst=egg text='uovo'</ref> e "
-#~ "la successiva."
-
-#~ msgid "World Ocean"
-#~ msgstr "Oceano del Mondo"
-
-#~ msgid ""
-#~ "The World Ocean is the name of the open seas that surround the "
-#~ "archipelago of <ref>dst='morogor' text='Morogor'</ref>. The drakes "
-#~ "believe it to end at the <ref>dst='abyss' text='Abyss'</ref>, a vast and "
-#~ "deadly waterfall."
-#~ msgstr ""
-#~ "L’Oceano del Mondo è il nome dei mari aperti che circondano l’arcipelago "
-#~ "di <ref>dst='morogor' text='Morogor'</ref>. I draghi credono che finisca "
-#~ "nell’<ref>dst='abyss' text='Abisso'</ref>, un’immensa cascata mortale."
-
-#~ msgid "New Continent"
-#~ msgstr "Nuovo Continente "
-
-#~ msgid ""
-#~ "The great continent to the east of <ref>dst='morogor' text='Morogor'</"
-#~ "ref>. Its existence is unknown to the drakes until the flight of Galun."
-#~ msgstr ""
-#~ "Il grande continente a est di <ref>dst='morogor' text='Morogor'</ref>. La "
-#~ "sua esistenza era sconosciuta ai draghi fino all’epoca del viaggio di "
-#~ "Galun."
-
-#~ msgid "Abyss"
-#~ msgstr "Abisso"
-
-#~ msgid ""
-#~ "In the cosmology of the Drakes, a vast and deadly waterfall where the "
-#~ "ocean falls off the world-disc."
-#~ msgstr ""
-#~ "Nella cosmologia dei draghi, un’immensa cascata mortale in cui l’acqua "
-#~ "dell’oceano cade dal disco che costituisce il mondo."
-
-#~ msgid "Spiral Path"
-#~ msgstr "La Strada a Spirale"
-
-#~ msgid ""
-#~ "A quasi-secret organization among the drakes devoted to avoiding a "
-#~ "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
-#~ "Path'</ref>"
-#~ msgstr ""
-#~ "Un’organizzazione semi-segreta diffusa tra i draghi, volta ad evitare la "
-#~ "«guerra finale» teorizzata da Thomas Malthus. Si veda anche alla voce "
-#~ "<ref>dst='straight_path' text='Strada Diritta'</ref>."
-
-#~ msgid "Straight Path"
-#~ msgstr "La Strada Diritta"
-
-#~ msgid ""
-#~ "The drakish tradition of perpetual expansion and conquest. This term is "
-#~ "mostly used by the members of the <ref>dst='spiral_path' text='Spiral "
-#~ "Path'</ref>."
-#~ msgstr ""
-#~ "La tradizione dei draghi, basata su espansioni e conquiste incessanti. "
-#~ "Quest’espressione è perlopiù usata dai membri della "
-#~ "<ref>dst='spiral_path' text='Strada a Spirale'</ref>."
-
-#~ msgid "Dominant"
-#~ msgstr "Dominante"
-
-#~ msgid ""
-#~ "The <ref>dst='aspirant' text='Aspirant'</ref> that emerges as the drake "
-#~ "leader, the only drake in the tribe that is allowed to reproduce with the "
-#~ "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
-#~ "privileges on others."
-#~ msgstr ""
-#~ "L’<ref>dst='aspirant' text='aspirante'</ref> che emerge come leader dei "
-#~ "draghi, l’unico della tribù al quale è permessa la riproduzione con le "
-#~ "<ref>dst='breeder' text='fattrici'</ref>. In rari casi può conferire i "
-#~ "privilegi dell’accoppiamento ad altri draghi."
-
-#~ msgid "Vulcaniad"
-#~ msgstr "Vulcaniade"
-
-#~ msgid ""
-#~ "The (irregular) period between consecutive eruptions of "
-#~ "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
-#~ "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
-#~ msgstr ""
-#~ "Il periodo (irregolare) che intercorre tra due eruzioni successive del "
-#~ "<ref>dst='mount_morogor' text='Monte Morogor'</ref>. Su di essa si basa "
-#~ "il calendario della <ref>dst='long_count' text='Lunga Conta'</ref>."
-
-#~ msgid "Recorder"
-#~ msgstr "Cronista"
-
-#~ msgid ""
-#~ "A Recorder is a Drakish scrollkeeper who has mastered the drakish "
-#~ "<ref>dst='drakish_script' text='script'</ref>. The recorders are the only "
-#~ "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: "
-#~ "they recruit their members from all of the other castes."
-#~ msgstr ""
-#~ "Un cronista è un drago archivista che padroneggia la "
-#~ "<ref>dst='drakish_script' text='scrittura'</ref> draghesca. I cronisti "
-#~ "sono la sola <ref>dst='caste' text='casta'</ref> dei draghi non "
-#~ "determinata biologicamente: essi reclutano i propri membri tra quelli di "
-#~ "tutte le altre caste."
-
-#~ msgid "Laying"
-#~ msgstr "Posa"
-
-#~ msgid ""
-#~ "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
-#~ msgstr ""
-#~ "Un periodo del <ref>dst='breeding_cycle' text='ciclo di riproduzione'</"
-#~ "ref>."
-
-#~ msgid "Hatching"
-#~ msgstr "Schiusa"
-
-#~ msgid "Hatchling"
-#~ msgstr "Nidiaceo"
-
-#~ msgid ""
-#~ "A young drake that has not yet seen another generation hatch. The younger "
-#~ "of the current generation of hatchlings are the most aggressive is the "
-#~ "behavior of the <ref>dst='flight' text='flight'</ref>."
-#~ msgstr ""
-#~ "Un giovane drago che non ha visto schiudersi altre nidiate. Più giovane è "
-#~ "la generazione corrente di nidiacei, più aggressivo è il comportamento "
-#~ "dello <ref>dst='flight' text='stormo'</ref> di draghi."
-
-#~ msgid "Fledgling"
-#~ msgstr "Matricola"
-
-#~ msgid ""
-#~ "A young drake that has seen another generation hatch. If the "
-#~ "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
-#~ "they start the <ref>dst='swarming' text='Swarming'</ref>."
-#~ msgstr ""
-#~ "Un giovane drago che ha visto schiudersi la nidiata della generazione "
-#~ "successiva. Se lo <ref>dst='flight' text='stormo'</ref> è in grado di "
-#~ "reggere la perdita di un’intera generazione, le matricole iniziano a "
-#~ "<ref>dst='swarming' text='sciamare'</ref>."
-
-#~ msgid "Breeder"
-#~ msgstr "Fattrice"
-
-#~ msgid ""
-#~ "The female drake. They are rare since <ref>dst='egg' text='eggs'</ref> "
-#~ "that become breeders have to be handled with extra care. The number of "
-#~ "breeders is also limited by the amounts of non-breeders around, since "
-#~ "breeders can't take care of their food for themselves when laying. Drake "
-#~ "breeders become fertile after the next <ref>dst='hatching' "
-#~ "text='hatching'</ref>."
-#~ msgstr ""
-#~ "La femmina di drago. Le fattrici sono rare, poiché le <ref>dst='egg' "
-#~ "text='uova'</ref> da cui nascono devono essere trattate con particolare "
-#~ "cura. Anche il numero dei draghi non-fattrici limita quello delle "
-#~ "fattrici, dal momento che queste ultime non possono nutrirsi da sole "
-#~ "mentre covano. Le fattrici diventano fertili dopo la <ref>dst='hatching' "
-#~ "text='schiusa'</ref> successiva."
-
-#~ msgid "Egg, Drake"
-#~ msgstr "Uovo di drago"
-
-#~ msgid ""
-#~ "The <ref>dst=caste text='caste'</ref> the <ref>dst='hatchling' "
-#~ "text='Hatchling'</ref> will belongs to is determined by the time it is "
-#~ "laid and to some extent the ambient temperature."
-#~ msgstr ""
-#~ "La <ref>dst=caste text='casta'</ref> a cui apparterrà il "
-#~ "<ref>dst='hatchling' text='nidiaceo'</ref> è determinata dal periodo "
-#~ "della posa e, in una certa misura, anche dalla temperatura ambientale."
-
-#~ msgid "Flight"
-#~ msgstr "Stormo"
-
-#~ msgid ""
-#~ "Tribe of Drakes, lives in an <ref>dst='aerie' text='Aerie'</ref>, "
-#~ "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
-#~ "text='Dominant'</ref>, who confers mating privileges."
-#~ msgstr ""
-#~ "La tribù dei draghi che vive in un <ref>dst='aerie' text='nido'</ref> e "
-#~ "controlla una zona di caccia. Ogni tribù comprende un <ref>dst='dominant' "
-#~ "text='dominante'</ref>, il quale conferisce i privilegi "
-#~ "dell’accoppiamento."
-
-#~ msgid "Aspirant"
-#~ msgstr "Aspirante"
-
-#~ msgid ""
-#~ "Male drake that has passed through a hormonal metamorphosis that makes "
-#~ "him able to mate with the <ref>dst='breeder' text='breeders'</ref>. The "
-#~ "secretion of the hormone is caused by hunt and combat actions in which "
-#~ "the drake is involved."
-#~ msgstr ""
-#~ "Il drago maschio che ha già subito una metamorfosi ormonale, il che gli "
-#~ "permette di accoppiarsi con le <ref>dst='breeder' text='fattrici'</ref>. "
-#~ "La secrezione dell’ormone è dovuta alle battute di caccia e agli scontri "
-#~ "in cui il drago è coinvolto."
-
-#~ msgid "Ascendant"
-#~ msgstr "Ascendente"
-
-#~ msgid ""
-#~ "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
-#~ msgstr ""
-#~ "Il nome usato dai draghi riferendosi ad un vero <ref>dst='unit_Fire "
-#~ "Dragon' text='dragone'</ref>."
-
-#~ msgid "Intendant"
-#~ msgstr "Attendente"
-
-#~ msgid ""
-#~ "One of the <ref>dst='aspirant' text='Aspirant'</ref> lieutenants of a "
-#~ "<ref>dst='dominant' text='Dominant'</ref>. Traditionally he has one of "
-#~ "each <ref>dst=caste text='caste'</ref> other than his own. Additional "
-#~ "'Intendants' are sometimes designated for special duties. Intendants are "
-#~ "likeliest to be granted mating privileges, especially after a notable "
-#~ "service."
-#~ msgstr ""
-#~ "Uno degli <ref>dst='aspirant' text='aspiranti'</ref> in servizio come "
-#~ "tenenti di un <ref>dst='dominant' text='dominante'</ref>. "
-#~ "Tradizionalmente, un dominante ne ha uno per ogni <ref>dst=caste "
-#~ "text='casta'</ref> diversa da quella di appartenenza. Per lo svolgimento "
-#~ "di compiti particolari, vengono talvolta designati degli “attendenti” "
-#~ "addizionali. Gli attendenti hanno ottime probabilità di vedersi concessi "
-#~ "i privilegi dell’accoppiamento, specialmente dopo un servizio degno di "
-#~ "nota."
-
-#~ msgid "Swarm"
-#~ msgstr "Sciame"
-
-#~ msgid ""
-#~ "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
-#~ "<ref>dst='aerie' text='aerie'</ref> to found a new one."
-#~ msgstr ""
-#~ "L’insieme dei maschi che <ref>dst='swarmlings' text='sciamano'</ref>, "
-#~ "cioè hanno lasciato il proprio <ref>dst='aerie' text='nido'</ref> per "
-#~ "fondarne uno nuovo."
-
-#~ msgid "Swarming"
-#~ msgstr "Sciamare"
-
-#~ msgid ""
-#~ " The <ref>dst='flight' text='flight'</ref> for a new drake "
-#~ "<ref>dst='aerie' text='aerie'</ref> that recurs every "
-#~ "<ref>dst='breeding_cycle' text='breeding cycle'</ref>. See "
-#~ "<ref>dst='swarm' text='Swarm'</ref>"
-#~ msgstr ""
-#~ "La formazione di un nuovo <ref>dst='aerie' text='nido'</ref> da parte di "
-#~ "uno <ref>dst='flight' text='stormo'</ref> di draghi, che si ripete ad "
-#~ "ogni <ref>dst='breeding_cycle' text='ciclo di riproduzione'</ref>. Si "
-#~ "veda alla voce <ref>dst='swarm' text='Sciame'</ref>."
-
-#~ msgid "Runners"
-#~ msgstr "Corridori"
-
-#~ msgid "Drakish term for escaped slaves hunted as game."
-#~ msgstr ""
-#~ "Termine usato dai draghi riferendosi agli schiavi fuggiaschi cacciati "
-#~ "come selvaggina."
-
-#~ msgid "Mount Morogor"
-#~ msgstr "Monte Morogor"
-
-#~ msgid ""
-#~ "Volcanic mountain on the central island of the archipelago "
-#~ "<ref>dst='morogor' text='Morogor'</ref>."
-#~ msgstr ""
-#~ "Montagna vulcanica situata sull’isola centrale dell’arcipelago di "
-#~ "<ref>dst='morogor' text='Morogor'</ref>."
-
-#~ msgid "Long Count"
-#~ msgstr "Lunga Conta"
-
-#~ msgid ""
-#~ "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> "
-#~ "and <ref>dst=breeding_cycle text='Breeding cycles'</ref>."
-#~ msgstr ""
-#~ "Il calendario dei draghi, basato sulle <ref>dst='vulcaniad' "
-#~ "text='vulcaniadi'</ref> e sui <ref>dst=breeding_cycle text='cicli di "
-#~ "riproduzione'</ref>."
-
-#~ msgid "Long Pig"
-#~ msgstr "Maiale alto"
-
-#~ msgid ""
-#~ "South Seas pidgin for human meat, used to translate a Drakish word with "
-#~ "the same meaning."
-#~ msgstr ""
-#~ "Termine locale dell’area dei Mari del Sud riferito alla carne umana, "
-#~ "usato per tradurre un termine della lingua dei draghi dallo stesso "
-#~ "significato."
-
-#~ msgid "Ceramics"
-#~ msgstr "Ceramiche"
-
-#~ msgid ""
-#~ "The drakes work metal, but are are masters in the craftsmanship of making "
-#~ "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
-#~ "generate the amount of heat to cure the pieces to full strength."
-#~ msgstr ""
-#~ "I draghi lavorano i metalli, ma sono anche maestri nell’arte della "
-#~ "creazione di ceramiche. Solo i <ref>dst='unit_Drake Burner' text='draghi "
-#~ "inceneritori'</ref> possono produrre la quantità di calore necessaria per "
-#~ "vulcanizzare i pezzi alla massima potenza."
-
-#~ msgid "Drakish, script"
-#~ msgstr "Draghesco, scrittura"
-
-#~ msgid ""
-#~ "The scripted language of the drakes. Stored on <ref>dst='ceramic' "
-#~ "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
-#~ "text='Recorder'</ref> vocation."
-#~ msgstr ""
-#~ "Il linguaggio scritto dei draghi, custodito su tavolette di "
-#~ "<ref>dst='ceramic' text='ceramica'</ref> dai membri della corporazione "
-#~ "dei <ref>dst='recorder' text='cronisti'</ref>."
-
-#~ msgid "Drakish, language"
-#~ msgstr "Draghesco, lingua"
-
-#~ msgid "The language spoken by the drakes."
-#~ msgstr "La lingua parlata dai draghi."
-
-#~ msgid "Flat"
-#~ msgstr "Pianura"
