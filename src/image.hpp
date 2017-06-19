@@ -125,6 +125,7 @@ namespace image {
 	};
 
 	surface load_from_disk(const locator &loc);
+	texture create_texture_from_disk(const locator& loc);
 
 	typedef cache_type<surface> image_cache;
 	typedef cache_type<texture> texture_cache;
