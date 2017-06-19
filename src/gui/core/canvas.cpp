@@ -1118,14 +1118,18 @@ void image_shape::draw(
 	const unsigned int dst_w = w ? w : info.w;
 	const unsigned int dst_h = h ? h : info.h;
 
+	dst_clip.w = dst_w;
+	dst_clip.h = dst_h;
+
 	// TODO: remove stretch mode
 	switch(resize_mode_) {
 	case scale:
 	case stretch: {
 		DBG_GUI_D << "Image: scaling from " << info.w << ',' << info.h << " to " << w << ',' << h << std::endl;
 
-		dst_clip.w = dst_w;
-		dst_clip.h = dst_h;
+		//
+		// Textures are automatically sized to the dst rect.
+		//
 
 		video.render_copy(image_, nullptr, &dst_clip, mirror, false);
 		break;
@@ -1134,6 +1138,8 @@ void image_shape::draw(
 	// TODO: move this to a more general place.
 	case tile: {
 		DBG_GUI_D << "Image: tiling from " << info.w << ',' << info.h << " to " << w << ',' << h << std::endl;
+
+		render_clip_rect_setter tile_clip_setter(&dst_clip);
 
 		const unsigned int w_count = static_cast<int>(std::ceil(static_cast<double>(dst_w) / static_cast<double>(info.w)));
 		const unsigned int h_count = static_cast<int>(std::ceil(static_cast<double>(dst_h) / static_cast<double>(info.h)));
