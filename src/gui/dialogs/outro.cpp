@@ -96,7 +96,6 @@ void outro::draw_callback(window& window)
 	canvas& window_canvas = window.get_canvas(0);
 
 	window_canvas.set_variable("fade_step", wfl::variant(fade_step_));
-	window_canvas.set_is_dirty(true);
 
 	if(fading_in_) {
 		fade_step_ ++;

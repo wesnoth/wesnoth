@@ -197,9 +197,6 @@ void story_viewer::display_part(window& window)
 
 	window_canvas.set_cfg(cfg);
 
-	// Needed to make the background redraw correctly.
-	window_canvas.set_is_dirty(true);
-
 	//
 	// Title
 	//
