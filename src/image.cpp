@@ -1272,7 +1272,7 @@ bool update_from_preferences()
  */
 
 /** Loads a new texture directly from disk. */
-static texture load_texture_from_disk(const image::locator& loc)
+static texture create_texture_from_file(const image::locator& loc)
 {
 	texture res;
 
@@ -1293,8 +1293,7 @@ static texture load_texture_from_disk(const image::locator& loc)
 		}
 #endif
 
-		// TODO: do we need SDL_RWops after all? Not sure if SDL_image even has a RWops load
-		// function for textures?
+		// TODO: if we need to use SDL_RWops we should use IMG_LoadTexture_RW here instead.
 		{
 			texture temp(IMG_LoadTexture(renderer, location.c_str()));
 			res = temp;
@@ -1324,6 +1323,83 @@ static texture load_texture_from_disk(const image::locator& loc)
 	}
 
 	return res;
+}
+
+/**
+ * Handle IPF manipulation. Since we don't have shaders yet, we need to use the surface
+ * modification code for now. It appears each result is saved in the relevant cache,
+ * so this should hopefully only result in a small slowdown when first processing the
+ * results.
+ */
+static texture create_texture_from_sub_file(const image::locator& loc)
+{
+	surface surf = get_image(loc.get_filename(), UNSCALED);
+	if(surf == nullptr) {
+		return texture();
+	}
+
+	modification_queue mods = modification::decode(loc.get_modifications());
+
+	while(!mods.empty()) {
+		modification* mod = mods.top();
+
+		try {
+			surf = (*mod)(surf);
+		} catch(const image::modification::imod_exception& e) {
+			ERR_CFG << "Failed to apply a modification to an image:\n"
+					<< "Image: " << loc.get_filename() << ".\n"
+					<< "Modifications: " << loc.get_modifications() << ".\n"
+					<< "Error: " << e.message;
+		}
+
+		// NOTE: do this *after* applying the mod or you'll get crashes!
+		mods.pop();
+	}
+
+#if 0
+	if(loc.get_loc().valid()) {
+		SDL_Rect srcrect = sdl::create_rect(
+			((tile_size * 3) / 4)                           *  loc.get_loc().x,
+			  tile_size * loc.get_loc().y + (tile_size / 2) * (loc.get_loc().x % 2),
+			  tile_size,
+			  tile_size
+		);
+
+		if(loc.get_center_x() >= 0 && loc.get_center_y() >= 0) {
+			srcrect.x += surf->w / 2 - loc.get_center_x();
+			srcrect.y += surf->h / 2 - loc.get_center_y();
+		}
+
+		// cut and hex mask, but also check and cache if empty result
+		surface cut(cut_surface(surf, srcrect));
+		bool is_empty = false;
+		surf = mask_surface(cut, get_hexmask(), &is_empty);
+
+		// discard empty images to free memory
+		if(is_empty) {
+			// Safe because those images are only used by terrain rendering
+			// and it filters them out.
+			// A safer and more general way would be to keep only one copy of it
+			surf = nullptr;
+		}
+
+		loc.add_to_cache(is_empty_hex_, is_empty);
+	}
+#endif
+
+	return texture(surf);
+}
+
+texture create_texture_from_disk(const locator& loc)
+{
+	switch(loc.get_type()) {
+	case locator::FILE:
+		return create_texture_from_file(loc);
+	case locator::SUB_FILE:
+		return create_texture_from_sub_file(loc);
+	default:
+		return texture();
+	}
 }
 
 /**
@@ -1398,7 +1474,7 @@ texture get_texture(const image::locator& i_locator, TYPE type)
 		res = create_texture_post_surface_op(i_locator, type);
 		break;
 	default:
-		res = load_texture_from_disk(i_locator);
+		res = create_texture_from_disk(i_locator);
 	}
 
 	// If the texture is null at this point, return without any further action (like caching).
