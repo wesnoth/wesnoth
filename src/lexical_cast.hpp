@@ -147,7 +147,7 @@ struct lexical_caster
 	{
 		DEBUG_THROW("generic");
 
-		To result;
+		To result = To();
 		std::stringstream sstr;
 
 		if(!(sstr << value && sstr >> result)) {
