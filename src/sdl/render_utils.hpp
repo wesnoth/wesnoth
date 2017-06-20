@@ -106,3 +106,24 @@ using render_clip_rect_setter = render_raii_rect_setter_base<
 using render_viewport_setter = render_raii_rect_setter_base<
 	&SDL_RenderGetViewport,
 	&SDL_RenderSetViewport>;
+
+
+/*
+ * TEXTURE SETTERS =========================================================================
+ * Need to decide if these need their own file.
+ */
+
+inline void set_texture_alpha(texture& t, uint8_t amount)
+{
+	SDL_SetTextureAlphaMod(t, amount);
+}
+
+inline void set_texture_blend_color(texture& t, uint8_t r, uint8_t g, uint8_t b)
+{
+	SDL_SetTextureColorMod(t, r, g, b);
+}
+
+inline void set_texture_blend_mode(texture& t, SDL_BlendMode mode)
+{
+	SDL_SetTextureBlendMode(t, mode);
+}
