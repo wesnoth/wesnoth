@@ -35,6 +35,7 @@ Version 1.13.8+dev:
  * WFL Engine
    * Add owner key to terrain space callable, for villages
    * Location formulas in [tunnel] now have a teleport_unit variable
+   * Fix a crash when attempting to call a non-existent function
  * WML Engine
    * If ai_algorithm is used in [modify_side][ai], it now replaces the whole AI
      with the contents of [modify_side][ai], instead of appending these parameters.

@@ -1596,7 +1596,7 @@ public:
 #define FUNCTION(name) add_function(#name, formula_function_ptr( \
 	new builtin_formula_function<name##_function>(#name)))
 
-ai_function_symbol_table::ai_function_symbol_table(ai::formula_ai& ai) : function_symbol_table(new action_function_symbol_table) {
+ai_function_symbol_table::ai_function_symbol_table(ai::formula_ai& ai) : function_symbol_table(std::make_shared<action_function_symbol_table>()) {
 	FUNCTION(outcomes);
 	//AI_FUNCTION(evaluate_for_position);
 	FUNCTION(move);
