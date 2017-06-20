@@ -97,7 +97,7 @@ namespace actions {
 		{
 		}
 		virtual const char* get_type() const { return "dummy"; }
-		virtual ~undo_dummy_action () {};
+		virtual ~undo_dummy_action () {}
 		/// Undoes this action.
 		virtual bool undo(int)
 		{

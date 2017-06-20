@@ -66,7 +66,7 @@ public:
 	virtual bool get_active() const override;
 
 	/** See @ref styled_widget::get_state. */
-	virtual unsigned get_state() const override { return 0; };
+	virtual unsigned get_state() const override { return 0; }
 
 	void send_to_server(const ::config& cfg) override;
 

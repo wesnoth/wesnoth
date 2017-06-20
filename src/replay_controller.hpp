@@ -32,7 +32,7 @@ public:
 		virtual bool should_stop() { return true; }
 		virtual ~replay_stop_condition(){}
 	};
-	static void nop() {};
+	static void nop() {}
 	replay_controller(play_controller& controller, bool control_view, const std::shared_ptr<config>& reset_state, const std::function<void()>& on_end_replay = nop);
 	~replay_controller();
 
@@ -49,7 +49,7 @@ public:
 	bool can_execute_command(const hotkey::hotkey_command& cmd, int index) const;
 	bool is_controlling_view() const { return vision_.is_initialized(); }
 	bool allow_reset_replay() const { return reset_state_.get() != nullptr; }
-	const std::shared_ptr<config>& get_reset_state() const { return reset_state_; };
+	const std::shared_ptr<config>& get_reset_state() const { return reset_state_; }
 	void return_to_play_side(bool r = true) { return_to_play_side_ = r; }
 	void replay_show_everything();
 	void replay_show_each();

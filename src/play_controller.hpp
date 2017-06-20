@@ -332,8 +332,8 @@ protected:
 	std::unique_ptr<game_display> gui_;
 	const std::unique_ptr<unit_experience_accelerator> xp_mod_;
 	const std::unique_ptr<const statistics::scenario_context> statistics_context_;
-	actions::undo_list& undo_stack() { return *gamestate().undo_stack_; };
-	const actions::undo_list& undo_stack() const { return *gamestate().undo_stack_; };
+	actions::undo_list& undo_stack() { return *gamestate().undo_stack_; }
+	const actions::undo_list& undo_stack() const { return *gamestate().undo_stack_; }
 	std::unique_ptr<replay> replay_;
 
 	bool skip_replay_;
@@ -361,7 +361,7 @@ private:
 protected:
 	mutable bool ignore_replay_errors_;
 	bool player_type_changed_;
-	virtual void sync_end_turn() {};
+	virtual void sync_end_turn() {}
 	virtual void check_time_over();
 	virtual void update_viewing_player() = 0;
 	void play_turn();
