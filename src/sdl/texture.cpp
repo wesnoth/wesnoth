@@ -14,6 +14,7 @@
 #include "sdl/texture.hpp"
 
 #include "log.hpp"
+#include "sdl/render_utils.hpp"
 #include "sdl/surface.hpp"
 #include "video.hpp"
 
@@ -71,7 +72,7 @@ texture::texture(int w, int h, SDL_TextureAccess access)
 
 void texture::finalize()
 {
-	SDL_SetTextureBlendMode(texture_.get(), SDL_BLENDMODE_BLEND);
+	set_texture_blend_mode(*this, SDL_BLENDMODE_BLEND);
 }
 
 void texture::reset(int w, int h, SDL_TextureAccess access)
