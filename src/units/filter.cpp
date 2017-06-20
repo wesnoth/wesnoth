@@ -242,13 +242,25 @@ bool basic_unit_filter_impl::matches(const unit & u, const map_location& loc, co
 	for (size_t i = 0; i < cond_children_.size(); i++) {
 		switch (cond_child_types_[i].v) {
 			case conditional::TYPE::AND:
-				matches = matches && cond_children_[i].matches(u,loc);
+				if(u2) {
+					matches = matches && cond_children_[i].matches(u,loc,*u2);
+				} else {
+					matches = matches && cond_children_[i].matches(u,loc);
+				}
 				break;
 			case conditional::TYPE::OR:
-				matches = matches || cond_children_[i].matches(u,loc);
+				if(u2) {
+					matches = matches || cond_children_[i].matches(u,loc,*u2);
+				} else {
+					matches = matches || cond_children_[i].matches(u,loc);
+				}
 				break;
 			case conditional::TYPE::NOT:
-				matches = matches && !cond_children_[i].matches(u,loc);
+				if(u2) {
+					matches = matches && !cond_children_[i].matches(u,loc,*u2);
+				} else {
+					matches = matches && !cond_children_[i].matches(u,loc);
+				}
 		}
 	}
 	return matches;
