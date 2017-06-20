@@ -108,9 +108,7 @@ inline std::size_t bit_width() {
  *
  *     sizeof(x) * std::numeric_limits<unsigned char>::digits
  *
- * @tparam T The type of `x`.
- *
- * @param x The return value is the size, in bits, of this object.
+ * @tparam T The return value is the size, in bits, of the type of this object.
  *
  * @returns the size, in bits, of an instance of type `T`.
  */

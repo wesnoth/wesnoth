@@ -260,7 +260,7 @@ public:
 	 * @param target                 The widget that should receive the event.
 	 *                               Normally this is the window holding the
 	 *                               widget.
-	 * @param message                The extra information needed for a window
+	 * @param msg                    The extra information needed for a window
 	 *                               (or another widget in the chain) to handle
 	 *                               the message.
 	 */

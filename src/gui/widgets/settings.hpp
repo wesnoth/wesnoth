@@ -80,7 +80,7 @@ using widget_parser_t = std::function<styled_widget_definition_ptr(const config&
  * regarding the static initialization problem.
  *
  * @param id                      The id of the widget to register.
- * @param functor                 The function to parse the definition config.
+ * @param f                       The function to parse the definition config.
  * @param key                     The tagname from which to read the widget's definition in the game config.
  *                                If nullptr the default [<id>_definition] is used.
  */
@@ -89,7 +89,7 @@ void register_widget(const std::string& id, widget_parser_t f, const char* key =
 /**
  * Loads the definitions of a widget.
  *
- * @param gui_definition          The gui definition the widget definition
+ * @param gui                     The gui definition the widget definition
  *                                belongs to.
  * @param definition_type         The type of the widget whose definitions are
  *                                to be loaded.

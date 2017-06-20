@@ -245,7 +245,7 @@ public:
 
 	/**
 	 * Set the keycode associated with this class.
-	 * @param keycode_ The SDL_Keycode that this hotkey should be associated with
+	 * @param keycode The SDL_Keycode that this hotkey should be associated with
 	 */
 	void set_keycode(SDL_Keycode keycode)
 	{

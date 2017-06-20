@@ -270,9 +270,9 @@ private:
 	/**
      * The color to render links in.
      *
-     * Links are formatted using pango <span> as follows:
+     * Links are formatted using pango &lt;span> as follows:
      *
-     * "<span underline=\'single\' color=\'" + link_color_ + "\'>"
+     * &lt;span underline="single" color=" + link_color_ + ">
      */
 	color_t link_color_;
 
