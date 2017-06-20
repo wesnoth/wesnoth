@@ -18,8 +18,6 @@
 #include "sdl/surface.hpp"
 #include "sdl/exception.hpp"
 
-#include <SDL_render.h>
-
 namespace sdl
 {
 
@@ -31,7 +29,7 @@ window::window(const std::string& title,
 				 const Uint32 window_flags,
 				 const Uint32 render_flags)
 	: window_(SDL_CreateWindow(title.c_str(), x, y, w, h, window_flags))
-	, pixel_format_(SDL_PIXELFORMAT_UNKNOWN)
+	, info_()
 {
 	if(!window_) {
 		throw exception("Failed to create a SDL_Window object.", true);
@@ -42,13 +40,12 @@ window::window(const std::string& title,
 		throw exception("Failed to create a SDL_Renderer object.", true);
 	}
 
-	SDL_RendererInfo info;
-	if(SDL_GetRendererInfo(*this, &info) != 0) {
+	if(SDL_GetRendererInfo(*this, &info_) != 0) {
 		throw exception("Failed to retrieve the information of the renderer.",
 						 true);
 	}
 
-	if(info.num_texture_formats == 0) {
+	if(info_.num_texture_formats == 0) {
 		throw exception("The renderer has no texture information available.\n",
 						 false);
 	}
@@ -58,8 +55,6 @@ window::window(const std::string& title,
 
 	// Use linear scaling when rendering, if applicable.
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
-
-	pixel_format_ = info.texture_formats[0];
 
 	fill(0,0,0);
 

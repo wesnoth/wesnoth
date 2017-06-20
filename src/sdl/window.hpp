@@ -19,6 +19,7 @@
  * Contains a wrapper class for the @ref SDL_Window class.
  */
 
+#include <SDL_render.h>
 #include <SDL_video.h>
 
 #include <string>
@@ -157,6 +158,12 @@ public:
 
 	int get_display_index();
 
+	/** Gets the renderer info for this window. */
+	const SDL_RendererInfo& get_renderer_info() const
+	{
+		return info_;
+	}
+
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 
 	/**
@@ -175,8 +182,8 @@ private:
 	/** The @ref SDL_Window we own. */
 	SDL_Window* window_;
 
-	/** The preferred pixel format for the renderer. */
-	Uint32 pixel_format_;
+	/** Info about the current renderer. */
+	SDL_RendererInfo info_;
 };
 
 } // namespace sdl
