@@ -40,6 +40,8 @@ Version 1.13.8+dev:
      in filter formulas (SUF, SLF, SSF, SWF):
 	 adjacent_locs, location_in_radius, get_unit_type, unit_at, defense_on,
 	 chance_to_hit, movement_cost
+   * New builtin functions for manipulating locations (available to all formulas):
+     adjacent_locs, are_adjacent, relative_dir, direction_from, rotate_loc_around
  * WML Engine
    * If ai_algorithm is used in [modify_side][ai], it now replaces the whole AI
      with the contents of [modify_side][ai], instead of appending these parameters.

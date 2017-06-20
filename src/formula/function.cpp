@@ -1451,6 +1451,80 @@ private:
 	}
 };
 
+class adjacent_locs_function : public function_expression {
+public:
+	adjacent_locs_function(const args_list& args)
+		: function_expression("adjacent_locs", args, 1, 1) {}
+
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const map_location loc = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "adjacent_locs:location")).convert_to<location_callable>()->loc();
+		map_location adj[6];
+		get_adjacent_tiles(loc, adj);
+
+		std::vector<variant> v;
+		for(int n = 0; n != 6; ++n) {
+			v.emplace_back(std::make_shared<location_callable>(adj[n]));
+		}
+
+		return variant(v);
+	}
+};
+
+class are_adjacent_function : public function_expression {
+public:
+	are_adjacent_function(const args_list& args)
+		: function_expression("are_adjacent", args, 2, 2) {}
+
+private:
+	variant execute(const formula_callable& variables, formula_debugger* fdb) const {
+		const map_location loc1 = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "are_adjacent:location_A")).convert_to<location_callable>()->loc();
+		const map_location loc2 = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "are_adjacent:location_B")).convert_to<location_callable>()->loc();
+		return variant(tiles_adjacent(loc1, loc2) ? 1 : 0);
+	}
+};
+
+class relative_dir_function : public function_expression {
+public:
+	relative_dir_function(const args_list& args)
+		: function_expression("relative_dir", args, 2, 2) {}
+
+private:
+	variant execute(const formula_callable& variables, formula_debugger* fdb) const {
+		const map_location loc1 = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "relative_dir:location_A")).convert_to<location_callable>()->loc();
+		const map_location loc2 = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "relative_dir:location_B")).convert_to<location_callable>()->loc();
+		return variant(map_location::write_direction(loc1.get_relative_dir(loc2)));
+	}
+};
+
+class direction_from_function : public function_expression {
+public:
+	direction_from_function(const args_list& args)
+		: function_expression("direction_from", args, 2, 3) {}
+
+private:
+	variant execute(const formula_callable& variables, formula_debugger* fdb) const {
+		const map_location loc = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "direction_from:location")).convert_to<location_callable>()->loc();
+		const std::string dir_str = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "direction_from:dir")).as_string();
+		int n = args().size() == 3 ? args()[2]->evaluate(variables, add_debug_info(fdb, 2, "direction_from:count")).as_int() : 1;
+		return variant(std::make_shared<location_callable>(loc.get_direction(map_location::parse_direction(dir_str), n)));
+	}
+};
+
+class rotate_loc_around_function : public function_expression {
+public:
+	rotate_loc_around_function(const args_list& args)
+		: function_expression("rotate_loc_around", args, 2, 3) {}
+
+private:
+	variant execute(const formula_callable& variables, formula_debugger* fdb) const {
+		const map_location center = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "direction_from:center")).convert_to<location_callable>()->loc();
+		const map_location loc = args()[0]->evaluate(variables, add_debug_info(fdb, 1, "direction_from:location")).convert_to<location_callable>()->loc();
+		int n = args().size() == 3 ? args()[2]->evaluate(variables, add_debug_info(fdb, 2, "direction_from:count")).as_int() : 1;
+		return variant(std::make_shared<location_callable>(loc.rotate_right_around_center(center, n)));
+	}
+};
+
 
 class type_function : public function_expression {
 public:
@@ -1649,6 +1723,11 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins() {
 		DECLARE_WFL_FUNCTION(pair);
 		DECLARE_WFL_FUNCTION(loc);
 		DECLARE_WFL_FUNCTION(distance_between);
+		DECLARE_WFL_FUNCTION(adjacent_locs);
+		DECLARE_WFL_FUNCTION(are_adjacent);
+		DECLARE_WFL_FUNCTION(relative_dir);
+		DECLARE_WFL_FUNCTION(direction_from);
+		DECLARE_WFL_FUNCTION(rotate_loc_around);
 		DECLARE_WFL_FUNCTION(index_of);
 		DECLARE_WFL_FUNCTION(keys);
 		DECLARE_WFL_FUNCTION(values);

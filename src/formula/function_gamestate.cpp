@@ -268,7 +268,7 @@ gamestate_function_symbol_table::gamestate_function_symbol_table(std::shared_ptr
 	DECLARE_WFL_FUNCTION(defense_on);
 	DECLARE_WFL_FUNCTION(chance_to_hit);
 	DECLARE_WFL_FUNCTION(movement_cost);
-	DECLARE_WFL_FUNCTION(adjacent_locs);
+	DECLARE_WFL_FUNCTION(adjacent_locs); // This is deliberately duplicated here; this form excludes off-map locations, while the core form does not
 	DECLARE_WFL_FUNCTION(locations_in_radius);
 }
 
