@@ -42,6 +42,8 @@ Version 1.13.8+dev:
 	 chance_to_hit, movement_cost
    * New builtin functions for manipulating locations (available to all formulas):
      adjacent_locs, are_adjacent, relative_dir, direction_from, rotate_loc_around
+   * New enemy_of function checks if its second argument is an enemy of the first
+     Arguments can be side or unit objects, or integer side indices (1..n)
  * WML Engine
    * If ai_algorithm is used in [modify_side][ai], it now replaces the whole AI
      with the contents of [modify_side][ai], instead of appending these parameters.

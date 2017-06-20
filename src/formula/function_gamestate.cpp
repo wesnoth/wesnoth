@@ -258,6 +258,46 @@ private:
 	}
 };
 
+
+class enemy_of_function : public function_expression
+{
+public:
+	enemy_of_function(const args_list& args)
+		: function_expression("enemy_of", args, 2, 2)
+	{}
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const
+	{
+		variant self_v = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "enemy_of:self"));
+		variant other_v = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "enemy_of:other"));
+		int self, other;
+
+		if(auto uc = self_v.try_convert<unit_callable>()) {
+			// For some obscure, bizarre reason, the unit callable returns a 0-indexed side. :|
+			self = uc->get_value("side").as_int() + 1;
+		} else if(auto tc = self_v.try_convert<team_callable>()) {
+			self = tc->get_value("side").as_int();
+		} else {
+			self = self_v.as_int();
+		}
+
+		if(auto uc = other_v.try_convert<unit_callable>()) {
+			// For some obscure, bizarre reason, the unit callable returns a 0-indexed side. :|
+			other = uc->get_value("side").as_int() + 1;
+		} else if(auto tc = other_v.try_convert<team_callable>()) {
+			other = tc->get_value("side").as_int();
+		} else {
+			other = other_v.as_int();
+		}
+
+		int num_teams = resources::gameboard->teams().size();
+		if(self < 1 || self > num_teams || other < 1 || other > num_teams) {
+			return variant(0);
+		}
+		return variant(resources::gameboard->get_team(self).is_enemy(other) ? 1 : 0);
+	}
+};
+
 } // namespace gamestate
 
 gamestate_function_symbol_table::gamestate_function_symbol_table(std::shared_ptr<function_symbol_table> parent) : function_symbol_table(parent) {
@@ -270,6 +310,7 @@ gamestate_function_symbol_table::gamestate_function_symbol_table(std::shared_ptr
 	DECLARE_WFL_FUNCTION(movement_cost);
 	DECLARE_WFL_FUNCTION(adjacent_locs); // This is deliberately duplicated here; this form excludes off-map locations, while the core form does not
 	DECLARE_WFL_FUNCTION(locations_in_radius);
+	DECLARE_WFL_FUNCTION(enemy_of);
 }
 
 }
