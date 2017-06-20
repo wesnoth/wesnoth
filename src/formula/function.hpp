@@ -154,8 +154,13 @@ public:
 
 class action_function_symbol_table : public function_symbol_table {
 public:
-	action_function_symbol_table();
+	action_function_symbol_table(std::shared_ptr<function_symbol_table> parent = nullptr);
 };
+
+/// Declares a function `name` in the local function table `functions_table`.
+/// The function must be defined by a `name_function` class which is accessible in the current scope.
+#define DECLARE_WFL_FUNCTION(name) functions_table.add_function(#name, \
+	formula_function_ptr(new builtin_formula_function<name##_function>(#name)))
 
 class wrapper_formula : public formula_expression {
 public:

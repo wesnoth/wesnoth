@@ -36,6 +36,10 @@ Version 1.13.8+dev:
    * Add owner key to terrain space callable, for villages
    * Location formulas in [tunnel] now have a teleport_unit variable
    * Fix a crash when attempting to call a non-existent function
+   * The following previously FormulaAI-exclusive functions are now also available
+     in filter formulas (SUF, SLF, SSF, SWF):
+	 adjacent_locs, location_in_radius, get_unit_type, unit_at, defense_on,
+	 chance_to_hit, movement_cost
  * WML Engine
    * If ai_algorithm is used in [modify_side][ai], it now replaces the whole AI
      with the contents of [modify_side][ai], instead of appending these parameters.

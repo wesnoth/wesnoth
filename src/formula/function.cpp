@@ -1606,85 +1606,82 @@ std::set<std::string> function_symbol_table::get_function_names() const
 	return res;
 }
 
-#define FUNCTION(name) functions_table.add_function(#name, \
-			formula_function_ptr(new builtin_formula_function<name##_function>(#name)))
-
 std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins() {
 	static function_symbol_table functions_table(builtins_tag);
 
 	if(functions_table.empty()) {
 		functions_table.parent = nullptr;
 		using namespace builtins;
-		FUNCTION(debug);
-		FUNCTION(dir);
-		FUNCTION(if);
-		FUNCTION(switch);
-		FUNCTION(abs);
-		FUNCTION(min);
-		FUNCTION(max);
-		FUNCTION(choose);
-		FUNCTION(debug_float);
-		FUNCTION(debug_print);
-		FUNCTION(debug_profile);
-		FUNCTION(wave);
-		FUNCTION(sort);
-		FUNCTION(contains_string);
-		FUNCTION(find_string);
-		FUNCTION(reverse);
-		FUNCTION(filter);
-		FUNCTION(find);
-		FUNCTION(map);
-		FUNCTION(zip);
-		FUNCTION(take_while);
-		FUNCTION(reduce);
-		FUNCTION(sum);
-		FUNCTION(head);
-		FUNCTION(tail);
-		FUNCTION(size);
-		FUNCTION(null);
-		FUNCTION(ceil);
-		FUNCTION(floor);
-		FUNCTION(trunc);
-		FUNCTION(frac);
-		FUNCTION(sgn);
-		FUNCTION(round);
-		FUNCTION(as_decimal);
-		FUNCTION(pair);
-		FUNCTION(loc);
-		FUNCTION(distance_between);
-		FUNCTION(index_of);
-		FUNCTION(keys);
-		FUNCTION(values);
-		FUNCTION(tolist);
-		FUNCTION(tomap);
-		FUNCTION(substring);
-		FUNCTION(replace);
-		FUNCTION(length);
-		FUNCTION(concatenate);
-		FUNCTION(sin);
-		FUNCTION(cos);
-		FUNCTION(tan);
-		FUNCTION(asin);
-		FUNCTION(acos);
-		FUNCTION(atan);
-		FUNCTION(sqrt);
-		FUNCTION(cbrt);
-		FUNCTION(root);
-		FUNCTION(log);
-		FUNCTION(exp);
-		FUNCTION(pi);
-		FUNCTION(hypot);
-		FUNCTION(type);
+		DECLARE_WFL_FUNCTION(debug);
+		DECLARE_WFL_FUNCTION(dir);
+		DECLARE_WFL_FUNCTION(if);
+		DECLARE_WFL_FUNCTION(switch);
+		DECLARE_WFL_FUNCTION(abs);
+		DECLARE_WFL_FUNCTION(min);
+		DECLARE_WFL_FUNCTION(max);
+		DECLARE_WFL_FUNCTION(choose);
+		DECLARE_WFL_FUNCTION(debug_float);
+		DECLARE_WFL_FUNCTION(debug_print);
+		DECLARE_WFL_FUNCTION(debug_profile);
+		DECLARE_WFL_FUNCTION(wave);
+		DECLARE_WFL_FUNCTION(sort);
+		DECLARE_WFL_FUNCTION(contains_string);
+		DECLARE_WFL_FUNCTION(find_string);
+		DECLARE_WFL_FUNCTION(reverse);
+		DECLARE_WFL_FUNCTION(filter);
+		DECLARE_WFL_FUNCTION(find);
+		DECLARE_WFL_FUNCTION(map);
+		DECLARE_WFL_FUNCTION(zip);
+		DECLARE_WFL_FUNCTION(take_while);
+		DECLARE_WFL_FUNCTION(reduce);
+		DECLARE_WFL_FUNCTION(sum);
+		DECLARE_WFL_FUNCTION(head);
+		DECLARE_WFL_FUNCTION(tail);
+		DECLARE_WFL_FUNCTION(size);
+		DECLARE_WFL_FUNCTION(null);
+		DECLARE_WFL_FUNCTION(ceil);
+		DECLARE_WFL_FUNCTION(floor);
+		DECLARE_WFL_FUNCTION(trunc);
+		DECLARE_WFL_FUNCTION(frac);
+		DECLARE_WFL_FUNCTION(sgn);
+		DECLARE_WFL_FUNCTION(round);
+		DECLARE_WFL_FUNCTION(as_decimal);
+		DECLARE_WFL_FUNCTION(pair);
+		DECLARE_WFL_FUNCTION(loc);
+		DECLARE_WFL_FUNCTION(distance_between);
+		DECLARE_WFL_FUNCTION(index_of);
+		DECLARE_WFL_FUNCTION(keys);
+		DECLARE_WFL_FUNCTION(values);
+		DECLARE_WFL_FUNCTION(tolist);
+		DECLARE_WFL_FUNCTION(tomap);
+		DECLARE_WFL_FUNCTION(substring);
+		DECLARE_WFL_FUNCTION(replace);
+		DECLARE_WFL_FUNCTION(length);
+		DECLARE_WFL_FUNCTION(concatenate);
+		DECLARE_WFL_FUNCTION(sin);
+		DECLARE_WFL_FUNCTION(cos);
+		DECLARE_WFL_FUNCTION(tan);
+		DECLARE_WFL_FUNCTION(asin);
+		DECLARE_WFL_FUNCTION(acos);
+		DECLARE_WFL_FUNCTION(atan);
+		DECLARE_WFL_FUNCTION(sqrt);
+		DECLARE_WFL_FUNCTION(cbrt);
+		DECLARE_WFL_FUNCTION(root);
+		DECLARE_WFL_FUNCTION(log);
+		DECLARE_WFL_FUNCTION(exp);
+		DECLARE_WFL_FUNCTION(pi);
+		DECLARE_WFL_FUNCTION(hypot);
+		DECLARE_WFL_FUNCTION(type);
 	}
 
 	return std::shared_ptr<function_symbol_table>(&functions_table, [](function_symbol_table*){});
 }
 
-action_function_symbol_table::action_function_symbol_table() {
+action_function_symbol_table::action_function_symbol_table(std::shared_ptr<function_symbol_table> parent) : function_symbol_table(parent) {
 	using namespace actions;
 	function_symbol_table& functions_table = *this;
-	FUNCTION(safe_call);
-	FUNCTION(set_var);
+	DECLARE_WFL_FUNCTION(safe_call);
+	DECLARE_WFL_FUNCTION(set_var);
 }
 
 }

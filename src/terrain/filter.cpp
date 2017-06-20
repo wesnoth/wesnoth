@@ -30,6 +30,7 @@
 #include "variable.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
+#include "formula/function_gamestate.hpp"
 #include "scripting/game_lua_kernel.hpp"
 
 #include <boost/range/adaptor/transformed.hpp>
@@ -333,7 +334,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 				callable.add("teleport_unit", wfl::variant(ref));
 				// It's not destroyed upon scope exit because the variant holds a reference
 			}
-			const wfl::formula form(cfg_["formula"]);
+			const wfl::formula form(cfg_["formula"], new wfl::gamestate_function_symbol_table);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
 			}

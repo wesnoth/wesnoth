@@ -36,6 +36,7 @@
 #include "wml_exception.hpp" // needed for FAIL
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
+#include "formula/function_gamestate.hpp"
 
 #include <boost/optional.hpp>
 
@@ -699,7 +700,7 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 				callable.add("other", wfl::variant(secondary));
 				// It's not destroyed upon scope exit because the variant holds a reference
 			}
-			const wfl::formula form(vcfg["formula"]);
+			const wfl::formula form(vcfg["formula"], new wfl::gamestate_function_symbol_table);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
 			}

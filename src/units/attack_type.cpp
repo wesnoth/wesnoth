@@ -21,6 +21,7 @@
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/string_utils.hpp"
+#include "formula/function_gamestate.hpp"
 
 #include "lexical_cast.hpp"
 #include "log.hpp"
@@ -138,7 +139,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if (!filter_formula.empty()) {
 		try {
 			const wfl::attack_type_callable callable(attack);
-			const wfl::formula form(filter_formula);
+			const wfl::formula form(filter_formula, new wfl::gamestate_function_symbol_table);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
 			}
