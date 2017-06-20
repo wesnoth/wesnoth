@@ -109,8 +109,6 @@ void teleport_group::get_teleport_pair(
 		, const unit& u
 		, const bool ignore_units) const
 {
-	const map_location &loc = u.get_location();
-
 	const filter_context * fc = resources::filter_con;
 	assert(fc);
 
@@ -122,15 +120,12 @@ void teleport_group::get_teleport_pair(
 	vconfig source(cfg_.child_or_empty("source"), true);
 	vconfig target(cfg_.child_or_empty("target"), true);
 	const unit_filter ufilt(filter, resources::filter_con); //Note: Don't use the ignore units filter context here, only for the terrain filters. (That's how it worked before the filter contexts were introduced)
-	if (ufilt.matches(u, loc)) {
-
-		scoped_xy_unit teleport_unit("teleport_unit", loc, resources::gameboard->units());
-
+	if (ufilt.matches(u)) {
 		terrain_filter source_filter(source, fc);
-		source_filter.get_locations(reversed_ ? loc_pair.second : loc_pair.first);
+		source_filter.get_locations(reversed_ ? loc_pair.second : loc_pair.first, u);
 
 		terrain_filter target_filter(target, fc);
-		target_filter.get_locations(reversed_ ? loc_pair.first : loc_pair.second);
+		target_filter.get_locations(reversed_ ? loc_pair.first : loc_pair.second, u);
 	}
 
 	if (ignore_units) {

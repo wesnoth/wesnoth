@@ -97,7 +97,7 @@ namespace {
 	};
 } //end anonymous namespace
 
-bool terrain_filter::match_internal(const map_location& loc, const bool ignore_xy) const
+bool terrain_filter::match_internal(const map_location& loc, const unit* ref_unit, const bool ignore_xy) const
 {
 	if (!this->fc_->get_disp_context().map().on_board_with_border(loc)) {
 		return false;
@@ -326,7 +326,13 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 
 	if(cfg_.has_attribute("formula")) {
 		try {
-			const wfl::terrain_callable callable(fc_->get_disp_context(), loc);
+			const wfl::terrain_callable main(fc_->get_disp_context(), loc);
+			wfl::map_formula_callable callable(main.fake_ptr());
+			if(ref_unit) {
+				std::shared_ptr<wfl::unit_callable> ref(new wfl::unit_callable(*ref_unit));
+				callable.add("teleport_unit", wfl::variant(ref));
+				// It's not destroyed upon scope exit because the variant holds a reference
+			}
 			const wfl::formula form(cfg_["formula"]);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
@@ -342,13 +348,32 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	return true;
 }
 
-bool terrain_filter::match(const map_location& loc) const
+class filter_with_unit : public xy_pred {
+	const terrain_filter& filt_;
+	const unit& ref_;
+public:
+	filter_with_unit(const terrain_filter& filt, const unit& ref) : filt_(filt), ref_(ref) {}
+	bool operator()(const map_location& loc) const override {
+		return filt_.match(loc, ref_);
+	}
+};
+
+bool terrain_filter::match_impl(const map_location& loc, const unit* ref_unit) const
 {
 	if(cfg_["x"] == "recall" && cfg_["y"] == "recall") {
 		return !fc_->get_disp_context().map().on_board(loc);
 	}
 	std::set<map_location> hexes;
 	std::vector<map_location> loc_vec(1, loc);
+
+	std::unique_ptr<scoped_wml_variable> ref_unit_var;
+	if(ref_unit) {
+		if(fc_->get_disp_context().map().on_board(ref_unit->get_location())) {
+			ref_unit_var.reset(new scoped_xy_unit("teleport_unit", ref_unit->get_location(), fc_->get_disp_context().units()));
+		} else {
+			// Possible TODO: Support recall list units?
+		}
+	}
 
 	//handle radius
 	size_t radius = cfg_["radius"].to_size_t(0);
@@ -361,7 +386,11 @@ bool terrain_filter::match(const map_location& loc) const
 		hexes.insert(loc_vec.begin(), loc_vec.end());
 	else if ( cfg_.has_child("filter_radius") ) {
 		terrain_filter r_filter(cfg_.child("filter_radius"), *this);
-		get_tiles_radius(fc_->get_disp_context().map(), loc_vec, radius, hexes, false, r_filter);
+		if(ref_unit) {
+			get_tiles_radius(fc_->get_disp_context().map(), loc_vec, radius, hexes, false, filter_with_unit(r_filter, *ref_unit));
+		} else {
+			get_tiles_radius(fc_->get_disp_context().map(), loc_vec, radius, hexes, false, r_filter);
+		}
 	} else {
 		get_tiles_radius(fc_->get_disp_context().map(), loc_vec, radius, hexes);
 	}
@@ -369,7 +398,7 @@ bool terrain_filter::match(const map_location& loc) const
 	size_t loop_count = 0;
 	std::set<map_location>::const_iterator i;
 	for(i = hexes.begin(); i != hexes.end(); ++i) {
-		bool matches = match_internal(*i, false);
+		bool matches = match_internal(*i, ref_unit, false);
 
 		//handle [and], [or], and [not] with in-order precedence
 		vconfig::all_children_iterator cond = cfg_.ordered_begin();
@@ -382,17 +411,17 @@ bool terrain_filter::match(const map_location& loc) const
 			//handle [and]
 			if(cond_name == "and")
 			{
-				matches = matches && terrain_filter(cond_cfg, *this)(*i);
+				matches = matches && terrain_filter(cond_cfg, *this).match_impl(*i, ref_unit);
 			}
 			//handle [or]
 			else if(cond_name == "or")
 			{
-				matches = matches || terrain_filter(cond_cfg, *this)(*i);
+				matches = matches || terrain_filter(cond_cfg, *this).match_impl(*i, ref_unit);
 			}
 			//handle [not]
 			else if(cond_name == "not")
 			{
-				matches = matches && !terrain_filter(cond_cfg, *this)(*i);
+				matches = matches && !terrain_filter(cond_cfg, *this).match_impl(*i, ref_unit);
 			}
 			++cond;
 		}
@@ -473,8 +502,17 @@ struct cfg_to_loc
 	map_location operator()(const config& cfg) const { return map_location(cfg, nullptr); }
 	typedef map_location result_type;
 };
-void terrain_filter::get_locations(std::set<map_location>& locs, bool with_border) const
+void terrain_filter::get_locs_impl(std::set<map_location>& locs, const unit* ref_unit, bool with_border) const
 {
+	std::unique_ptr<scoped_wml_variable> ref_unit_var;
+	if(ref_unit) {
+		if(fc_->get_disp_context().map().on_board(ref_unit->get_location())) {
+			ref_unit_var.reset(new scoped_xy_unit("teleport_unit", ref_unit->get_location(), fc_->get_disp_context().units()));
+		} else {
+			// Possible TODO: Support recall list units?
+		}
+	}
+
 	std::set<map_location> match_set;
 
 	// See if the caller provided an override to with_border
@@ -540,10 +578,10 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 	}
 	std::set<map_location>::iterator loc_itor = match_set.begin();
 	while(loc_itor != match_set.end()) {
-		if(match_internal(*loc_itor, true)) {
+		if(match_internal(*loc_itor, ref_unit, true)) {
 			++loc_itor;
 		} else {
-			match_set.erase(loc_itor++);
+			loc_itor = match_set.erase(loc_itor);
 		}
 	}
 
