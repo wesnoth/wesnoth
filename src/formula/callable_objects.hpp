@@ -21,6 +21,7 @@
 
 class team;
 class terrain_type;
+class display_context;
 
 namespace wfl
 {
@@ -28,10 +29,7 @@ namespace wfl
 class terrain_callable : public formula_callable
 {
 public:
-	terrain_callable(const terrain_type& t, const map_location& loc) : loc_(loc), t_(t)
-	{
-		type_ = TERRAIN_C;
-	}
+	terrain_callable(const display_context& m, const map_location& loc);
 
 	variant get_value(const std::string& key) const override;
 	void get_inputs(formula_input_vector& inputs) const override;
@@ -41,21 +39,22 @@ public:
 private:
 	const map_location loc_;
 	const terrain_type& t_;
+	const int owner_;
 };
 
 class gamemap_callable : public formula_callable
 {
 public:
-	explicit gamemap_callable(const gamemap& g) : gamemap_(g)
+	explicit gamemap_callable(const display_context& g) : board_(g)
 	{}
 
 	void get_inputs(formula_input_vector& inputs) const override;
 	variant get_value(const std::string& key) const override;
 
-	const gamemap& get_gamemap() const { return gamemap_; }
+	const gamemap& get_gamemap() const;
 
 private:
-	const gamemap& gamemap_;
+	const display_context& board_;
 };
 
 class location_callable : public formula_callable
