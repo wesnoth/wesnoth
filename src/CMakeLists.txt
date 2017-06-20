@@ -469,6 +469,7 @@ if(ENABLE_CAMPAIGN_SERVER)
   target_link_libraries(campaignd
 	  wesnoth-core
 	  ${server-external-libs}
+	  ${CRYPTO_LIBRARY}
 	  ${Boost_RANDOM_LIBRARY}
 	  ${LIBRT}
 	  )
