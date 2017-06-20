@@ -352,7 +352,7 @@ struct lexical_caster<
 
 		try {
 			long double res = std::stold(value);
-			if(std::numeric_limits<To>::lowest() <= res && std::numeric_limits<To>::max() >= res) {
+			if((static_cast<long double>(std::numeric_limits<To>::lowest()) <= res) && (static_cast<long double>(std::numeric_limits<To>::max()) >= res)) {
 				return static_cast<To>(res);
 			}
 		} catch(std::invalid_argument&) {
