@@ -286,7 +286,7 @@ if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 	set_property(SOURCE
 		SOURCE ${libwesnoth-lua_STAT_SRC}
 		APPEND_STRING PROPERTY COMPILE_FLAGS
-			" -x c++ -Wno-parentheses-equality"
+			" -x c++ -Wno-parentheses-equality -Wno-conditional-uninitialized"
 	)
 endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 
