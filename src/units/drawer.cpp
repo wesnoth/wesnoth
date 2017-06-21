@@ -183,7 +183,7 @@ void unit_drawer::redraw_unit(const unit & u) const
 
 	if(has_halo && u.image_halo().empty()) {
 		halo_man.remove(ac.unit_halo_);
-		ac.unit_halo_ = halo::handle(); //halo::NO_HALO;
+		ac.unit_halo_.reset();
 	} else if(has_halo) {
 		halo_man.set_location(ac.unit_halo_, x, y - height_adjust);
 	}
