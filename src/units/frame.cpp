@@ -17,6 +17,7 @@
 #include "color.hpp"
 #include "game_display.hpp"
 #include "log.hpp"
+#include "sdl/render_utils.hpp"
 #include "sound.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -537,7 +538,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 		if(!current_data.auto_vflip) { facing_north = true; }
 
 		const texture::info info = image.get_info();
-	
+
 		int my_x = x + current_data.x - info.w / 2;
 		int my_y = y + current_data.y - info.h / 2;
 
@@ -557,9 +558,15 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 		// Begin unit drawing routine.
 		//
 
-#if 0
 		fixed_t alpha = ftofxp(current_data.highlight_ratio);
 
+		// FIXME: this has a problem where multiple units of the same type (so, same texture)
+		// all get this applied to them. Not sure how to fix...
+		if(alpha < ftofxp(1.0)) {
+			set_texture_alpha(image, alpha);
+		}
+
+#if 0
 		surface surf(image);
 
 		color_t blend_to = current_data.blend_with ? *current_data.blend_with : color_t();
@@ -567,7 +574,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 		if(current_data.blend_ratio != 0) {
 			surf = blend_surface(surf, current_data.blend_ratio, blend_to);
 		}
-	
+
 		if(alpha > ftofxp(1.0)) {
 			surf = brighten_image(surf, alpha);
 		//} else if(alpha != 1.0 && blendto != 0) {
@@ -587,9 +594,9 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 			// Divide the surface into 2 parts
 			const int submerge_height = std::max<int>(0, surf->h*(1.0-current_data.submerge));
 			const int depth = surf->h - submerge_height;
-		
+
 			SDL_Rect srcrect {0, 0, surf->w, submerge_height};
-		
+
 			//drawing_buffer_add(drawing_layer, loc, x, y, surf, srcrect);
 
 			if(submerge_height != surf->h) {
