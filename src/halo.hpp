@@ -39,7 +39,7 @@ const int NO_HALO = 0;
 class manager
 {
 public:
-	manager(display& screen);
+	manager();
 
 	/**
 	 * Add a haloing effect using 'image centered on (x,y).
@@ -59,13 +59,7 @@ public:
 	/** Remove the halo with the given handle. */
 	void remove(const handle & h);
 
-	/**
-	 * Render and unrender haloes.
-	 *
-	 * Which haloes are rendered is determined by invalidated_locations and the
-	 * internal state in the control sets (in halo.cpp).
-	 */
-	void unrender(std::set<map_location> invalidated_locations);
+	/** Render managed halos. */
 	void render();
 
 private:
