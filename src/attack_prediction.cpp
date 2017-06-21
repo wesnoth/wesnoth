@@ -280,6 +280,10 @@ public:
 
 	/// What is the chance that an indicated combatant (one of them) is at zero?
 	double prob_of_zero(bool check_a, bool check_b) const;
+	/// Sums the values in the specified row.
+	double row_sum(unsigned plane, unsigned row) const;
+	/// Sums the values in the specified column.
+	double col_sum(unsigned plane, unsigned column) const;
 	/// Sums the values in the specified plane.
 	void sum(unsigned plane, std::vector<double>& row_sums, std::vector<double>& col_sums) const;
 
@@ -937,6 +941,30 @@ double prob_matrix::prob_of_zero(bool check_a, bool check_b) const
 }
 
 /**
+ * Sums the values in the specified row.
+ */
+double prob_matrix::row_sum(unsigned plane, unsigned row) const
+{
+	double sum = 0.0;
+	for(unsigned col : used_cols_[plane]) {
+		sum += val(plane, row, col);
+	}
+	return sum;
+}
+
+/**
+ * Sums the values in the specified column.
+ */
+double prob_matrix::col_sum(unsigned plane, unsigned column) const
+{
+	double sum = 0.0;
+	for(unsigned row : used_rows_[plane]) {
+		sum += val(plane, row, column);
+	}
+	return sum;
+}
+
+/**
  * Sums the values in the specified plane.
  * The sum of each row is added to the corresponding entry in row_sums.
  * The sum of each column is added to the corresponding entry in col_sums.
@@ -1018,6 +1046,9 @@ public:
 
 	void forced_levelup_b();
 	void conditional_levelup_b();
+
+	using prob_matrix::row_sum;
+	using prob_matrix::col_sum;
 
 	// Its over, and here's the bill.
 	virtual void extract_results(
@@ -1816,6 +1847,15 @@ unsigned int fight_complexity(unsigned int num_slices,
 		   * ((opp_stats.slows || stats.is_slowed) ? 2 : 1) * stats.max_hp * opp_stats.max_hp;
 }
 
+/**
+ * Returns the plane index for the slow/no-slow state of the combatants.
+ */
+unsigned int plane_index(const battle_context_unit_stats& stats,
+	const battle_context_unit_stats& opp_stats)
+{
+	return (stats.is_slowed ? 1 : 0) | (opp_stats.is_slowed ? 2 : 0);
+}
+
 // Combat without chance of death, berserk, slow or drain is simple.
 void no_death_fight(const battle_context_unit_stats& stats,
 		const battle_context_unit_stats& opp_stats,
@@ -2057,6 +2097,19 @@ void complex_fight(attack_prediction_mode mode,
 			debug(("Combat ends:\n"));
 			pm->dump();
 		} while(--rounds && pm->dead_prob() < 0.99);
+
+		if(stats.slows) {
+			/* The calculation method for the "not hit" probability above is incorrect if either unit can slow.
+			 * Because a slowed unit deals less damage, it is more likely for the slowing unit to be alive if it
+			 * has hit the other unit. In that situation, the "not hit" probability can no longer be calculated
+			 * with a simple multiplication.
+			 * Instead, just fetch the probability from the combat matrix.
+			 */
+			opp_not_hit = pm->col_sum(plane_index(stats, opp_stats), opp_stats.hp);
+		}
+		if(opp_stats.slows) {
+			self_not_hit = pm->row_sum(plane_index(stats, opp_stats), stats.hp);
+		}
 	} else {
 		debug(("Using Monte Carlo simulation.\n"));
 
