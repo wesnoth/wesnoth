@@ -53,9 +53,6 @@ window::window(const std::string& title,
 	// Set default blend mode to blend.
 	SDL_SetRenderDrawBlendMode(*this, SDL_BLENDMODE_BLEND);
 
-	// Use linear scaling when rendering, if applicable.
-	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
-
 	fill(0,0,0);
 
 	render();

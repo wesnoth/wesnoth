@@ -190,10 +190,13 @@ namespace image {
 	/// BRIGHTENED  : same as TOD_COLORED but also brightened
 	enum TYPE { UNSCALED, SCALED_TO_ZOOM, HEXED, SCALED_TO_HEX, TOD_COLORED, BRIGHTENED};
 
+	enum SCALE_QUALITY { NEAREST, LINEAR };
+
 	///function to get the surface corresponding to an image.
 	surface get_image(const locator& i_locator, TYPE type=UNSCALED);
 
 	texture get_texture(const image::locator& i_locator, TYPE type = UNSCALED);
+	texture get_texture(const image::locator& i_locator, SCALE_QUALITY quality, TYPE type = UNSCALED);
 
 	///function to get the surface corresponding to an image.
 	///after applying the lightmap encoded in ls

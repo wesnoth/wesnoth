@@ -1068,7 +1068,8 @@ void image_shape::draw(
 		return;
 	}
 
-	image_ = image::get_texture(name);
+	// NOTE: if we need a key to specify NN scaling it can be added later.
+	image_ = image::get_texture(name, image::LINEAR);
 
 	if(!image_) {
 		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn." << std::endl;
