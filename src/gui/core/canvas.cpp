@@ -1274,7 +1274,7 @@ void text_shape::draw(
 		return;
 	}
 
-	static font::pango_text text_renderer;
+	font::pango_text& text_renderer = font::get_text_renderer();
 
 	text_renderer
 		.set_link_aware(link_aware_(variables))
