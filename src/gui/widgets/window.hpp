@@ -175,11 +175,6 @@ public:
 	 */
 	void draw();
 
-	/**
-	 * Undraws the window.
-	 */
-	void undraw();
-
 	/** The status of the window. */
 	enum status {
 		NEW,		   /**< The window is new and not yet shown. */

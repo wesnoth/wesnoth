@@ -608,18 +608,6 @@ void window::draw()
 	}
 }
 
-void window::undraw()
-{
-#if 0
-	if(restore_ && restorer_) {
-		SDL_Rect rect = get_rectangle();
-		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-		// Since the old area might be bigger as the new one, invalidate
-		// it.
-	}
-#endif // 0
-}
-
 window::invalidate_layout_blocker::invalidate_layout_blocker(window& window)
 	: window_(window)
 {

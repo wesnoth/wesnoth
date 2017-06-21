@@ -59,7 +59,7 @@ private:
 
 	void color_slider_callback(window& window);
 
-	void update_tod_display(window& window);
+	void update_tod_display();
 
 	void update_lawful_bonus(window& window);
 

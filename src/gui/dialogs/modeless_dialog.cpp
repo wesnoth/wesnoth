@@ -63,7 +63,6 @@ void modeless_dialog::hide()
 			remove_from_window_stack(window_.get());
 		}
 
-		window_->undraw();
 		window_.reset(nullptr);	}
 }
 
