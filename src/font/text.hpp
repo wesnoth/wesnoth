@@ -438,4 +438,13 @@ private:
 	std::string handle_token(const std::string & token) const;
 };
 
+/**
+ * Returns a reference to a static pango_text object.
+ *
+ * Since the class is essentially a render pipeline, there's no need for individual
+ * areas of the game to own their own renderers. Not to mention it isn't a trivial
+ * class; constructing one is likely to be expensive.
+ */
+pango_text& get_text_renderer();
+
 } // namespace font

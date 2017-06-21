@@ -844,4 +844,10 @@ void pango_text::copy_layout_properties(PangoLayout& src, PangoLayout& dst)
 	pango_layout_set_ellipsize(&dst, pango_layout_get_ellipsize(&src));
 }
 
+pango_text& get_text_renderer()
+{
+	static pango_text text_renderer;
+	return text_renderer;
+}
+
 } // namespace font

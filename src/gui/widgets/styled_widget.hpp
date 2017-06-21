@@ -492,10 +492,11 @@ private:
 	}
 
 	/**
-	 * Contains a helper cache for the rendering.
+	 * Text renderer object used for size calculations.
 	 *
-	 * Creating a pango_text object is quite expensive and is done on various
-	 * occasions so it's cached here.
+	 * Note this is *not* used to actually render any text, only to get the dimensions of the text for
+	 * layout purposes. The actual text rendering happens in the canvas. This is kept as a class member
+	 * since creating a pango_text object is quite expensive.
 	 *
 	 * @todo Maybe if still too slow we might also copy this cache to the
 	 * canvas so it can reuse our results, but for now it seems fast enough.
