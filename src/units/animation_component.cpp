@@ -151,7 +151,7 @@ void unit_animation_component::refresh()
 
 void unit_animation_component::clear_haloes ()
 {
-	unit_halo_ = halo::handle(); //halo::NO_HALO; <-- Removes it from the halo manager automatically.
+	unit_halo_.reset();
 	if(anim_ ) anim_->clear_haloes();
 }
 

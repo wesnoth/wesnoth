@@ -560,7 +560,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 			current_data.blend_ratio, current_data.submerge, !facing_north);
 	}
 
-	halo_id = halo::handle(); //halo::NO_HALO;
+	halo_id.reset();
 
 	if(!in_scope_of_frame) { //check after frame as first/last frame image used in defense/attack anims
 		return;

@@ -1269,7 +1269,7 @@ void unit_animation::particle::redraw(const frame_parameters& value,const map_lo
 
 void unit_animation::particle::clear_halo()
 {
-	halo_id_ = halo::handle(); // halo::NO_HALO
+	halo_id_.reset();
 }
 
 std::set<map_location> unit_animation::particle::get_overlaped_hex(const frame_parameters& value, const map_location& src, const map_location& dst)
@@ -1281,12 +1281,12 @@ std::set<map_location> unit_animation::particle::get_overlaped_hex(const frame_p
 
 unit_animation::particle::~particle()
 {
-	halo_id_ = halo::handle(); // halo::NO_HALO
+	halo_id_.reset();
 }
 
 void unit_animation::particle::start_animation(int start_time)
 {
-	halo_id_ = halo::handle(); // halo::NO_HALO
+	halo_id_.reset();
 	parameters_.override(get_animation_duration());
 	animated<unit_frame>::start_animation(start_time,cycles_);
 	last_frame_begin_time_ = get_begin_time() -1;
