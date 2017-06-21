@@ -103,7 +103,6 @@ loading_screen::loading_screen(std::function<void()> f)
 void loading_screen::close()
 {
 	if(window_) {
-		window_->undraw();
 		delete window_;
 		window_ = nullptr;
 	}

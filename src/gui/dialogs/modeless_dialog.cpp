@@ -69,7 +69,6 @@ void modeless_dialog::hide()
 				break;
 			}
 		}
-		window_->undraw();
 		delete window_;
 		window_ = nullptr;
 	}

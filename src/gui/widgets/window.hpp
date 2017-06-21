@@ -200,11 +200,6 @@ public:
 	void draw();
 
 	/**
-	 * Undraws the window.
-	 */
-	void undraw();
-
-	/**
 	 * Adds an item to the dirty_list_.
 	 *
 	 * @param call_stack          The list of widgets traversed to get to the
