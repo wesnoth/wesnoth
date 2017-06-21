@@ -31,6 +31,7 @@
 #include "preferences/general.hpp"
 #include "serialization/string_utils.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/render_utils.hpp"
 #include "sdl/texture.hpp"
 #include "utils/general.hpp"
 
@@ -174,7 +175,9 @@ image::image_cache
  * Texture caches.
  * Note that the latter two are temporary and should be removed once we have OGL and shader support.
  */
-image::texture_cache
+using texture_cache_map = std::map<image::SCALE_QUALITY, image::texture_cache>;
+
+texture_cache_map
 	textures_,
 	textures_hexed_,
 	texture_tod_colored_;
@@ -1376,6 +1379,15 @@ bool update_from_preferences()
  * are so different. Might move this to a file of its own in the future.
  */
 
+/** Sets the texture scale quality hint. Must be called *before* creating textures! */
+static void set_scale_quality_pre_texture_creation(SCALE_QUALITY quality)
+{
+	static const std::string n_scale_str = "nearest";
+	static const std::string l_scale_str = "linear";
+
+	set_texture_scale_quality(quality == NEAREST ? n_scale_str : l_scale_str);
+}
+
 /** Loads a new texture directly from disk. */
 static texture create_texture_from_file(const image::locator& loc)
 {
@@ -1521,8 +1533,13 @@ static texture create_texture_post_surface_op(const image::locator& i_locator, T
 	return texture(surf);
 }
 
-/** Returns a texture for the corresponding image. */
 texture get_texture(const image::locator& i_locator, TYPE type)
+{
+	return get_texture(i_locator, NEAREST, type);
+}
+
+/** Returns a texture for the corresponding image. */
+texture get_texture(const image::locator& i_locator, SCALE_QUALITY quality, TYPE type)
 {
 	texture res;
 
@@ -1541,13 +1558,13 @@ texture get_texture(const image::locator& i_locator, TYPE type)
 
 	switch(type) {
 	case HEXED:
-		cache = &textures_hexed_;
+		cache = &textures_hexed_[quality];
 		break;
 	case TOD_COLORED:
-		cache = &texture_tod_colored_;
+		cache = &texture_tod_colored_[quality];
 		break;
 	default:
-		cache = &textures_;
+		cache = &textures_[quality];
 	}
 
 	//
@@ -1569,10 +1586,12 @@ texture get_texture(const image::locator& i_locator, TYPE type)
 	}
 
 	//
-	// No texture was cached. In that case, create a new one. The explicit cases require special 
+	// No texture was cached. In that case, create a new one. The explicit cases require special
 	// handling with surfaces in order to generate the desired effect. This shouldn't be the case
 	// once we get OGL and shader support.
 	//
+	set_scale_quality_pre_texture_creation(quality);
+
 	switch(type) {
 	case TOD_COLORED:
 	case HEXED:
