@@ -1762,7 +1762,9 @@ double calculate_probability_of_debuff(double initial_prob, bool enemy_gives, do
 	assert(initial_prob >= 0.0 && initial_prob <= 1.0);
 	assert(prob_touched >= 0.0 && prob_touched <= 1.0);
 	assert(prob_stay_alive >= 0.0 && prob_stay_alive <= 1.0);
-	assert(prob_kill >= 0.0 && prob_kill <= 1.0);
+	// Prob_kill can creep a bit above 100 % if the AI simulates an unit being attacked by multiple units in a row, due to rounding error.
+	// Simply limit it to suitable range.
+	prob_kill = std::min(prob_kill, 1.0);
 
 	// Probability we are already debuffed and the enemy doesn't hit us.
 	const double prob_already_debuffed_not_touched = initial_prob * (1.0 - prob_touched);
