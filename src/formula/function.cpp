@@ -202,11 +202,17 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		variant res = args()[0]->evaluate(variables, fdb);
 		if(res.is_list()) {
+			if(res.is_empty()) {
+				throw formula_error("min(list): list is empty", "", "", 0);
+			}
 			res = *std::min_element(res.begin(), res.end());
 		}
 		for(size_t n = 1; n < args().size(); ++n) {
 			variant v = args()[n]->evaluate(variables,fdb);
 			if(v.is_list()) {
+				if(v.is_empty()) {
+					continue;
+				}
 				v = *std::min_element(v.begin(), v.end());
 			}
 			if(res.is_null() || v < res) {
@@ -228,11 +234,17 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		variant res = args()[0]->evaluate(variables, fdb);
 		if(res.is_list()) {
+			if(res.is_empty()) {
+				throw formula_error("max(list): list is empty", "", "", 0);
+			}
 			res = *std::max_element(res.begin(), res.end());
 		}
 		for(size_t n = 1; n < args().size(); ++n) {
 			variant v = args()[n]->evaluate(variables, fdb);
 			if(v.is_list()) {
+				if(v.is_empty()) {
+					continue;
+				}
 				v = *std::max_element(v.begin(), v.end());
 			}
 			if(res.is_null() || v > res) {
