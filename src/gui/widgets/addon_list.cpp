@@ -129,8 +129,6 @@ void addon_list::set_addons(const addons_list& addons)
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		item["use_markup"] = "true";
-
 		if(!tracking_info.can_publish) {
 			item["label"] = addon.display_icon();
 			data.emplace("icon", item);
