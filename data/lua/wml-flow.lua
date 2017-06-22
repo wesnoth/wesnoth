@@ -99,19 +99,17 @@ wesnoth.wml_actions["for"] = function(cfg)
 		local cfg_lit = helper.literal(cfg)
 		first = cfg.start or 0
 		loop_lim.last = cfg_lit["end"] or first
-		if cfg.step then loop_lim.step = cfg_lit.step end
+		loop_lim.step = cfg_lit.step or 1
 	end
 	loop_lim = wesnoth.tovconfig(loop_lim)
 	if loop_lim.step == 0 then -- Sanity check
 		helper.wml_error("[for] has a step of 0!")
 	end
-	if loop_lim.step ~= nil then
-		if (first < loop_lim.last and loop_lim.step <= 0)
-				or (first > loop_lim.last and loop_lim.step >= 0) then
-			-- Sanity check: If they specify something like start,end,step=1,4,-1
-			-- then we do nothing
-			return
-		end
+	if (first < loop_lim.last and loop_lim.step <= 0)
+			or (first > loop_lim.last and loop_lim.step >= 0) then
+		-- Sanity check: If they specify something like start,end,step=1,4,-1
+		-- then we do nothing
+		return
 	end
 	local i_var = cfg.variable or "i"
 	local save_i = utils.start_var_scope(i_var)
