@@ -73,7 +73,6 @@ playsingle_controller::playsingle_controller(const config& level,
 	CVideo& video, bool skip_replay)
 	: play_controller(level, state_of_game, game_config, tdata, video, skip_replay)
 	, cursor_setter_(cursor::NORMAL)
-	, textbox_info_()
 	, replay_sender_(*resources::recorder)
 	, network_reader_([this](config& cfg) {return recieve_from_wesnothd(cfg);})
 	, turn_data_(replay_sender_, network_reader_)

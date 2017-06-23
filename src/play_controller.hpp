@@ -276,8 +276,7 @@ protected:
 	};
 	friend struct scoped_savegame_snapshot;
 	void play_slice_catch();
-	bool have_keyboard_focus() override;
-	void process_focus_keydown_event(const SDL_Event& event) override;
+
 	void process_keydown_event(const SDL_Event& event) override;
 	void process_keyup_event(const SDL_Event& event) override;
 
@@ -291,10 +290,6 @@ protected:
 	void finish_side_turn();
 	void finish_turn(); //this should not throw an end turn or end level exception
 	bool enemies_visible() const;
-
-	void enter_textbox();
-	void tab();
-
 
 	bool is_team_visible(int team_num, bool observer) const;
 	/// returns 0 if no such team was found.
