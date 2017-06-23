@@ -101,7 +101,8 @@ surface scale_surface_xbrz(const surface & surf, size_t z);
  */
 surface scale_surface_nn(const surface & surf, int w, int h);
 
-/** Scale a surface
+/** Scale a surface using alpha-weighted modified bilinear filtering
+ *  Note: causes artifacts with alpha gradients, for example in some portraits
  *  @param surf              The source surface.
  *  @param w                 The width of the resulting surface.
  *  @param h                 The height of the resulting surface.
@@ -110,6 +111,17 @@ surface scale_surface_nn(const surface & surf, int w, int h);
  *  @retval surf             Returned if w == surf->w and h == surf->h.
  */
 surface scale_surface(const surface &surf, int w, int h);
+
+/** Scale a surface using simple bilinear filtering (discarding rgb from source
+    pixels with 0 alpha)
+ *  @param surf              The source surface.
+ *  @param w                 The width of the resulting surface.
+ *  @param h                 The height of the resulting surface.
+ *  @return                  A surface containing the scaled version of the source.
+ *  @retval 0                Returned upon error.
+ *  @retval surf             Returned if w == surf->w and h == surf->h.
+ */
+surface scale_surface_legacy(const surface &surf, int w, int h);
 
 /** Scale a surface using modified nearest neighbour algorithm. Use only if
  * preserving sharp edges is a priority (e.g. minimap).

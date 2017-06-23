@@ -465,7 +465,7 @@ surface scale_modification::operator()(const surface& src) const
 	if(nn_) {
 		return scale_surface_sharp(src, sz.first, sz.second);
 	} else {
-		return scale_surface(src, sz.first, sz.second);
+		return scale_surface_legacy(src, sz.first, sz.second);
 	}
 }
 

@@ -1160,7 +1160,7 @@ void image_shape::draw(surface& canvas,
 				DBG_GUI_D << "Image: scaling from " << image_->w << ','
 						  << image_->h << " to " << w << ',' << h << ".\n";
 
-				surf = scale_surface(image_, w, h);
+				surf = scale_surface_legacy(image_, w, h);
 			}
 		}
 		src_clip.w = w;
