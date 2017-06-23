@@ -2071,7 +2071,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		return 0; // Don't fire event when unit is only erase
 	}
 
-	if(unit_arg != 1 || luaW_toboolean(L, 3)) {
+	if(luaW_toboolean(L, 3)) {
 		play_controller_.pump().fire("unit_placed", loc);
 	}
 	return 0;
