@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Thomas Baumhauer
+   Copyright (C) 2009 - 2017 by Thomas Baumhauer
    <thomas.baumhauer@NOSPAMgmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_MP_CMD_WRAPPER_HPP_INCLUDED
-#define GUI_DIALOGS_MP_CMD_WRAPPER_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "tstring.hpp"
@@ -60,13 +59,11 @@ private:
 	std::string time_;
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 };
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif // GUI_DIALOGS_MP_CMD_WRAPPER_HPP_INCLUDED

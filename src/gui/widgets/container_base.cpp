@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,6 +17,9 @@
 #include "gui/widgets/container_base.hpp"
 
 #include "gui/core/log.hpp"
+#include "gui/widgets/window.hpp"
+
+#include <algorithm>
 
 #define LOG_SCOPE_HEADER                                                       \
 	"tcontainer(" + get_control_type() + ") [" + id() + "] " + __func__
@@ -25,27 +28,60 @@
 namespace gui2
 {
 
+container_base::container_base()
+	: styled_widget(), grid_()
+{
+	grid_.set_parent(this);
+	connect_signal<event::REQUEST_PLACEMENT>(
+		std::bind(&container_base::clear_layout_size, this),
+		event::dispatcher::back_pre_child);
+}
+
 SDL_Rect container_base::get_client_rect() const
 {
 	return get_rectangle();
 }
 
-void container_base::layout_initialise(const bool full_initialisation)
+void container_base::layout_initialize(const bool full_initialization)
 {
 	// Inherited.
-	styled_widget::layout_initialise(full_initialisation);
+	styled_widget::layout_initialize(full_initialization);
 
-	grid_.layout_initialise(full_initialisation);
+	inject_linked_groups();
+
+	grid_.layout_initialize(full_initialization);
 }
 
 void container_base::reduce_width(const unsigned maximum_width)
 {
-	grid_.reduce_width(maximum_width - border_space().x);
+	point size = get_best_size();
+	point grid_size = grid_.get_best_size();
+	if(static_cast<int>(maximum_width) - border_space().x < grid_size.x) {
+		grid_.reduce_width(maximum_width - border_space().x);
+		grid_size = grid_.get_best_size();
+		size.x = grid_size.x + border_space().x;
+		size.y = std::max(size.y, grid_size.y + border_space().y);
+	} else {
+		size.x = maximum_width;
+	}
+
+	set_layout_size(size);
 }
 
 void container_base::request_reduce_width(const unsigned maximum_width)
 {
-	grid_.request_reduce_width(maximum_width - border_space().x);
+	point size = get_best_size();
+	point grid_size = grid_.get_best_size();
+	if(static_cast<int>(maximum_width) - border_space().x < grid_size.x) {
+		grid_.request_reduce_width(maximum_width - border_space().x);
+		grid_size = grid_.get_best_size();
+		size.x = grid_size.x + border_space().x;
+		size.y = std::max(size.y, grid_size.y + border_space().y);
+	} else {
+		size.x = maximum_width;
+	}
+
+	set_layout_size(size);
 }
 
 void container_base::demand_reduce_width(const unsigned maximum_width)
@@ -55,12 +91,32 @@ void container_base::demand_reduce_width(const unsigned maximum_width)
 
 void container_base::reduce_height(const unsigned maximum_height)
 {
-	grid_.reduce_height(maximum_height - border_space().y);
+	point size = get_best_size();
+	point grid_size = grid_.get_best_size();
+	if(static_cast<int>(maximum_height) - border_space().y < grid_size.y) {
+		grid_.reduce_height(maximum_height - border_space().y);
+		grid_size = grid_.get_best_size();
+		size.y = grid_size.y + border_space().y;
+	} else {
+		size.y = maximum_height;
+	}
+
+	set_layout_size(size);
 }
 
 void container_base::request_reduce_height(const unsigned maximum_height)
 {
-	grid_.request_reduce_height(maximum_height - border_space().y);
+	point size = get_best_size();
+	point grid_size = grid_.get_best_size();
+	if(static_cast<int>(maximum_height) - border_space().y < grid_size.y) {
+		grid_.request_reduce_height(maximum_height - border_space().y);
+		grid_size = grid_.get_best_size();
+		size.y = grid_size.y + border_space().y;
+	} else {
+		size.y = maximum_height;
+	}
+
+	set_layout_size(size);
 }
 
 void container_base::demand_reduce_height(const unsigned maximum_height)
@@ -94,22 +150,22 @@ point container_base::calculate_best_size() const
 
 	point result(grid_.get_best_size());
 	const point border_size = border_space();
-	const point minimum_size = get_config_minimum_size();
+	const point default_size = get_config_default_size();
 
 	// If the best size has a value of 0 it's means no limit so don't
 	// add the border_size might set a very small best size.
 	if(result.x) {
 		result.x += border_size.x;
 	}
-	if(minimum_size.x != 0 && result.x < minimum_size.x) {
-		result.x = minimum_size.x;
+	if(default_size.x != 0 && result.x < default_size.x) {
+		result.x = default_size.x;
 	}
 
 	if(result.y) {
 		result.y += border_size.y;
 	}
-	if(minimum_size.y != 0 && result.y < minimum_size.y) {
-		result.y = minimum_size.y;
+	if(default_size.y != 0 && result.y < default_size.y) {
+		result.y = default_size.y;
 	}
 
 
@@ -218,6 +274,15 @@ container_base::init_grid(const std::shared_ptr<builder_grid>& grid_builder)
 point container_base::border_space() const
 {
 	return point();
+}
+
+void container_base::inject_linked_groups()
+{
+	for(const auto& lg : config()->linked_groups) {
+		if(!get_window()->has_linked_size_group(lg.id)) {
+			get_window()->init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
+		}
+	}
 }
 
 } // namespace gui2

@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2016 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2017 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef ATTACK_HPP_
-#define ATTACK_HPP_
+#pragma once
 
 #include "move.hpp"
 
@@ -89,5 +88,3 @@ std::ostream& operator<<(std::ostream &s, attack_ptr attack);
 std::ostream& operator<<(std::ostream &s, attack_const_ptr attack);
 
 } // end namespace wb
-
-#endif /* ATTACK_HPP_ */

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,8 +22,7 @@
  * The actions not implemented in this module are implemented in Lua.
  */
 
-#ifndef GAME_EVENTS_ACTION_WML_H_INCLUDED
-#define GAME_EVENTS_ACTION_WML_H_INCLUDED
+#pragma once
 
 #include "terrain/type_data.hpp"
 #include <map>
@@ -73,6 +72,3 @@ namespace game_events
 	void change_terrain(const map_location &loc, const t_translation::terrain_code &t,
 	                    terrain_type_data::merge_mode mode, bool replace_if_failed);
 }
-
-#endif // GAME_EVENTS_ACTION_WML_H_INCLUDED
-

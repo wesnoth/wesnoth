@@ -1,6 +1,6 @@
-local helper = wesnoth.require "lua/helper.lua"
-local MG = wesnoth.require "lua/mapgen_helper.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local helper = wesnoth.require "helper"
+local MG = wesnoth.require "mapgen_helper"
+local LS = wesnoth.require "location_set"
 local T = helper.set_wml_tag_metatable {}
 local random = wesnoth.random
 
@@ -153,7 +153,7 @@ function callbacks.generate_map(params)
 				if MG.is_valid_transform(t) then
 					table.insert(transforms, t)
 				else
-					error("Unknown transformation '" .. t .. "'")
+					helper.wml_error("Unknown transformation '" .. t .. "'")
 				end
 			end
 			map[transforms[random(#transforms)]](map)

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,8 +15,6 @@
 #include "scripting/plugins/context.hpp"
 
 #include "scripting/plugins/manager.hpp"
-
-#include "config_assign.hpp"
 
 #include <cassert>
 #include <utility>
@@ -40,12 +38,12 @@ void plugins_context::initialize(const std::vector<Reg>& callbacks, const std::v
 {
 	for (const Reg& l : callbacks) {  /* fill the table with given functions */
 		if (l.name != nullptr) {
-			callbacks_.insert(std::make_pair(l.name, l.func));
+			callbacks_.emplace(l.name, l.func);
 		}
 	}
 	for (const aReg& r : accessors) {  /* fill the table with given functions */
 		if (r.name != nullptr) {
-			accessors_.insert(std::make_pair(r.name, r.func));
+			accessors_.emplace(r.name, r.func);
 		}
 	}
 }
@@ -74,12 +72,12 @@ void plugins_context::set_accessor(const std::string & name, accessor_function f
 
 void plugins_context::set_accessor_string(const std::string & name, std::function<std::string(config)> func)
 {
-	set_accessor(name, [func, name](const config& cfg) { return config_of(name, func(cfg)); });
+	set_accessor(name, [func, name](const config& cfg) { return config {name, func(cfg)}; });
 }
 
 void plugins_context::set_accessor_int(const std::string & name, std::function<int(config)> func)
 {
-	set_accessor(name, [func, name](const config& cfg) { return config_of(name, func(cfg)); });
+	set_accessor(name, [func, name](const config& cfg) { return config {name, func(cfg)}; });
 }
 
 

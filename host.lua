@@ -11,8 +11,6 @@ local function plugin()
 
   local events, context, info
 
-  local helper = wesnoth.require("lua/helper.lua")
-
   local function idle_text(text)
     counter = counter + 1
     if counter >= 100 then

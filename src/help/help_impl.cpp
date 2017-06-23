@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,7 +19,7 @@
 #include "display_context.hpp"          // for display_context
 #include "game_config.hpp"              // for debug, menu_contract, etc
 #include "game_config_manager.hpp"      // for game_config_manager
-#include "game_preferences.hpp"         // for encountered_terrains, etc
+#include "preferences/game.hpp"         // for encountered_terrains, etc
 #include "gettext.hpp"                  // for _, gettext, N_
 #include "help/help_topic_generators.hpp"
 #include "hotkey/hotkey_command.hpp"    // for is_scope_active, etc
@@ -31,7 +31,7 @@
 #include "font/standard_colors.hpp"     // for NORMAL_COLOR
 #include "units/race.hpp"               // for unit_race, etc
 #include "resources.hpp"                // for tod_manager, config_manager
-#include "sdl/utils.hpp"                // for surface
+#include "sdl/surface.hpp"                // for surface
 #include "serialization/string_utils.hpp"  // for split, quoted_split, etc
 #include "serialization/unicode_cast.hpp"  // for unicode_cast
 #include "serialization/unicode_types.hpp"  // for char_t, etc
@@ -43,7 +43,7 @@
 #include "tstring.hpp"                  // for t_string, operator<<
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
 #include "serialization/unicode.hpp"    // for iterator
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include <cassert>                     // for assert
 #include <algorithm>                    // for sort, find, transform, etc
@@ -364,7 +364,7 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 
 	if (! resources::tod_manager) {
 		toplevel << N_("Only available during a scenario.");
-		topics.push_back( topic("Time of Day Schedule", "..schedule", toplevel.str()) );
+		topics.emplace_back("Time of Day Schedule", "..schedule", toplevel.str());
 		return topics;
 	}
 	const std::vector<time_of_day>& times = resources::tod_manager->times();
@@ -382,10 +382,10 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 				"Lawful Bonus: " << time.lawful_bonus << '\n' <<
 				'\n' << make_link(N_("Schedule"), "..schedule");
 
-		topics.push_back( topic(time.name.str(), id, text.str()) );
+		topics.emplace_back(time.name.str(), id, text.str());
 	}
 
-	topics.push_back( topic("Time of Day Schedule", "..schedule", toplevel.str()) );
+	topics.emplace_back("Time of Day Schedule", "..schedule", toplevel.str());
 	return topics;
 }
 
@@ -409,7 +409,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 			std::vector<std::pair<t_string, t_string> > specials = atk.special_tooltips();
 			for ( size_t i = 0; i != specials.size(); ++i )
 			{
-				special_description.insert(std::make_pair(specials[i].first, specials[i].second));
+				special_description.emplace(specials[i].first, specials[i].second);
 
 				if (!type.hide_help()) {
 					//add a link in the list of units having this special
@@ -430,7 +430,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 				if(effect["apply_to"] == "new_attack" && effect.has_child("specials")) {
 					for(config::any_child spec : effect.child("specials").all_children_range()) {
 						if(!spec.cfg["name"].empty()) {
-							special_description.insert(std::make_pair(spec.cfg["name"].t_str(), spec.cfg["description"].t_str()));
+							special_description.emplace(spec.cfg["name"].t_str(), spec.cfg["description"].t_str());
 							if(!type.hide_help()) {
 								//add a link in the list of units having this special
 								std::string type_name = type.type_name();
@@ -447,7 +447,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 				} else if(effect["apply_to"] == "attack" && effect.has_child("set_specials")) {
 					for(config::any_child spec : effect.child("set_specials").all_children_range()) {
 						if(!spec.cfg["name"].empty()) {
-							special_description.insert(std::make_pair(spec.cfg["name"].t_str(), spec.cfg["description"].t_str()));
+							special_description.emplace(spec.cfg["name"].t_str(), spec.cfg["description"].t_str());
 							if(!type.hide_help()) {
 								//add a link in the list of units having this special
 								std::string type_name = type.type_name();
@@ -475,10 +475,10 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		text << "\n\n" << _("<header>text='Units with this special attack'</header>") << "\n";
 		std::set<std::string, string_less> &units = special_units[s->first];
 		for (std::set<std::string, string_less>::iterator u = units.begin(); u != units.end(); ++u) {
-			text << "• " << (*u) << "\n";
+			text << font::unicode_bullet << " " << (*u) << "\n";
 		}
 
-		topics.push_back( topic(s->first, id, text.str()) );
+		topics.emplace_back(s->first, id, text.str());
 	}
 
 	if (sort_generated)
@@ -517,7 +517,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 					const std::string abil_desc =
 						j >= desc_vec.size() ? "" : desc_vec[j].str();
 
-					ability_description.insert(std::make_pair(abil_name, abil_desc));
+					ability_description.emplace(abil_name, abil_desc);
 
 					if (!type.hide_help()) {
 						//add a link in the list of units with this ability
@@ -541,10 +541,10 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 		text << "\n\n" << _("<header>text='Units with this ability'</header>") << "\n";
 		std::set<std::string, string_less> &units = ability_units[a->first];
 		for (std::set<std::string, string_less>::iterator u = units.begin(); u != units.end(); ++u) {
-			text << "• " << (*u) << "\n";
+			text << font::unicode_bullet << " " << (*u) << "\n";
 		}
 
-		topics.push_back( topic(a->first, id, text.str()) );
+		topics.emplace_back(a->first, id, text.str());
 	}
 
 	if (sort_generated)
@@ -578,7 +578,7 @@ std::vector<topic> generate_era_topics(const bool sort_generated, const std::str
 
 		std::sort(faction_links.begin(), faction_links.end());
 		for (const std::string &link : faction_links) {
-			text << "• " << link << "\n";
+			text << font::unicode_bullet << " " << link << "\n";
 		}
 
 		topic era_topic(era["name"], ".." + era_prefix + era["id"].str(), text.str());
@@ -643,7 +643,7 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 		const std::vector<std::string> leaders =
 				make_unit_links_list( utils::split(f["leader"]), true );
 		for (const std::string &link : leaders) {
-			text << "• " << link << "\n";
+			text << font::unicode_bullet << " " << link << "\n";
 		}
 
 		text << "\n";
@@ -652,12 +652,12 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 		const std::vector<std::string> recruit_links =
 				make_unit_links_list( recruit_ids, true );
 		for (const std::string &link : recruit_links) {
-			text << "• " << link << "\n";
+			text << font::unicode_bullet << " " << link << "\n";
 		}
 
 		const std::string name = f["name"];
-		const std::string ref_id = faction_prefix + id;
-		topics.push_back( topic(name, ref_id, text.str()) );
+		const std::string ref_id = faction_prefix + era["id"] + "_" + id;
+		topics.emplace_back(name, ref_id, text.str());
 	}
 	if (sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
@@ -671,7 +671,7 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 
 	for (const config & trait : unit_types.traits()) {
 		const std::string trait_id = trait["id"];
-		trait_list.insert(std::make_pair(trait_id, trait));
+		trait_list.emplace(trait_id, trait);
 	}
 
 
@@ -682,13 +682,13 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 			if (config::const_child_itors traits = type.possible_traits()) {
 				for (const config & trait : traits) {
 					const std::string trait_id = trait["id"];
-					trait_list.insert(std::make_pair(trait_id, trait));
+					trait_list.emplace(trait_id, trait);
 				}
 			}
 			if (const unit_race *r = unit_types.find_race(type.race_id())) {
 				for (const config & trait : r->additional_traits()) {
 					const std::string trait_id = trait["id"];
-					trait_list.insert(std::make_pair(trait_id, trait));
+					trait_list.emplace(trait_id, trait);
 				}
 			}
 		}
@@ -713,7 +713,7 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 		if (name.empty()) name = trait["female_name"].str();
 		if (name.empty()) name = trait["name"].str();
 
-		topics.push_back( topic(name, id, text.str()) );
+		topics.emplace_back(name, id, text.str());
 	}
 
 	if (sort_generated)
@@ -961,7 +961,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		    std::string title = additional_topic["title"];
 		    std::string text = additional_topic["text"];
 		    //topic additional_topic(title, id, text);
-		    topics.push_back(topic(title,id,text));
+		    topics.emplace_back(title,id,text);
 			std::string link = make_link(title, id);
 			race_topics.insert(link);
 		  }
@@ -987,10 +987,10 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 
 	text << _("<header>text='Units of this race'</header>") << "\n";
 	for (std::set<std::string, string_less>::iterator u = race_units.begin(); u != race_units.end(); ++u) {
-		text << "• " << (*u) << "\n";
+		text << font::unicode_bullet << " " << (*u) << "\n";
 	}
 
-	topics.push_back(topic(race_name, race_id, text.str()) );
+	topics.emplace_back(race_name, race_id, text.str());
 
 	if (sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
@@ -1045,7 +1045,7 @@ std::string generate_contents_links(const std::string& section_name, config cons
 			if (config const &topic_cfg = help_cfg->find_child("topic", "id", *t)) {
 				std::string id = topic_cfg["id"];
 				if (is_visible_id(id))
-					topics_links.push_back(link(topic_cfg["title"], id));
+					topics_links.emplace_back(topic_cfg["title"], id);
 			}
 		}
 
@@ -1056,7 +1056,7 @@ std::string generate_contents_links(const std::string& section_name, config cons
 		std::vector<link>::iterator l;
 		for (l = topics_links.begin(); l != topics_links.end(); ++l) {
 			std::string link = make_link(l->first, l->second);
-			res << "• " << link << "\n";
+			res << font::unicode_bullet << " " << link << "\n";
 		}
 
 		return res.str();
@@ -1070,7 +1070,7 @@ std::string generate_contents_links(const section &sec, const std::vector<topic>
 		for (s = sec.sections.begin(); s != sec.sections.end(); ++s) {
 			if (is_visible_id((*s)->id)) {
 				std::string link = make_link((*s)->title, ".."+(*s)->id);
-				res << "• " << link << "\n";
+				res << font::unicode_bullet << " " << link << "\n";
 			}
 		}
 
@@ -1078,7 +1078,7 @@ std::string generate_contents_links(const section &sec, const std::vector<topic>
 		for (t = topics.begin(); t != topics.end(); ++t) {
 			if (is_visible_id(t->id)) {
 				std::string link = make_link(t->title, t->id);
-				res << "• " << link << "\n";
+				res << font::unicode_bullet << " " << link << "\n";
 			}
 		}
 		return res.str();
@@ -1459,13 +1459,13 @@ bool is_valid_id(const std::string &id) {
 	if (id == "toplevel") {
 		return false;
 	}
-	if (id.find(unit_prefix) == 0 || id.find(hidden_symbol() + unit_prefix) == 0) {
+	if (id.compare(0, unit_prefix.length(), unit_prefix) == 0 || id.compare(hidden_symbol().length(), unit_prefix.length(), unit_prefix) == 0) {
 		return false;
 	}
-	if (id.find("ability_") == 0) {
+	if (id.compare(0, 8, "ability_") == 0) {
 		return false;
 	}
-	if (id.find("weaponspecial_") == 0) {
+	if (id.compare(0, 14, "weaponspecial_") == 0) {
 		return false;
 	}
 	if (id == "hidden") {
@@ -1488,7 +1488,7 @@ unsigned image_width(const std::string &filename)
 
 void push_tab_pair(std::vector<std::pair<std::string, unsigned int> > &v, const std::string &s)
 {
-	v.push_back(std::make_pair(s, font::line_width(s, normal_font_size)));
+	v.emplace_back(s, font::line_width(s, normal_font_size));
 }
 
 std::string generate_table(const table_spec &tab, const unsigned int spacing)

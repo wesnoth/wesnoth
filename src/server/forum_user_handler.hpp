@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+   Copyright (C) 2008 - 2017 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORUM_USER_HANDLER_HPP_INCLUDED
-#define FORUM_USER_HANDLER_HPP_INCLUDED
+#pragma once
 
 #include "user_handler.hpp"
 
@@ -96,22 +95,20 @@ class fuh : public user_handler {
 
 		typedef std::unique_ptr<MYSQL_RES, decltype(&mysql_free_result)> mysql_result;
 
-		// Throws user_handler::error
-		mysql_result db_query(const std::string& query);
-
-		// Throws user_handler::error via db_query()
-		std::string db_query_to_string(const std::string& query);
 		MYSQL *conn;
 
+		template<typename T, typename... Args>
+		inline T prepared_statement(const std::string& sql, Args&&...);
 		// Query a detail for a particular user from the database
-		std::string get_detail_for_user(const std::string& name, const std::string& detail);
-		std::string get_writable_detail_for_user(const std::string& name, const std::string& detail);
+		template<typename T>
+		T get_detail_for_user(const std::string& name, const std::string& detail);
+		template<typename T>
+		T get_writable_detail_for_user(const std::string& name, const std::string& detail);
 
 		// Write something to the write table
-		void write_detail(const std::string& name, const std::string& detail, const std::string& value);
+		template<typename T>
+		void write_detail(const std::string& name, const std::string& detail, T&& value);
 
 		// Same as user_exists() but checks if we have a row for this user in the extra table
 		bool extra_row_exists(const std::string& name);
 };
-
-#endif //FORUM_USER_HANDLER_HPP_INCLUDED

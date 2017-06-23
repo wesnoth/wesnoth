@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,6 +19,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/generator.hpp"
 
 #include "gettext.hpp"
@@ -32,24 +33,45 @@ namespace gui2
 
 REGISTER_WIDGET(multi_page)
 multi_page::multi_page()
-	: container_base(0)
+	: container_base()
 	, generator_(
 			  generator_base::build(true, true, generator_base::independent, false))
-	, page_builder_(nullptr)
+	, page_builders_()
 {
 }
 
-void multi_page::add_page(const string_map& item)
+grid& multi_page::add_page(const string_map& item)
 {
 	assert(generator_);
-	generator_->create_item(-1, page_builder_, item, nullptr);
+	grid& page = generator_->create_item(-1, page_builders_.begin()->second, item, nullptr);
+
+	return page;
 }
 
-void multi_page::add_page(
-		const std::map<std::string /* widget id */, string_map>& data)
+grid& multi_page::add_page(const std::string& type, int insert_pos, const string_map& item)
 {
 	assert(generator_);
-	generator_->create_item(-1, page_builder_, data, nullptr);
+	auto it_builder = page_builders_.find(type);
+	VALIDATE(it_builder != page_builders_.end(), "invalid page type '" + type + "'");
+	return generator_->create_item(insert_pos, it_builder->second, item, nullptr);
+}
+
+grid& multi_page::add_page(
+	const std::map<std::string /* widget id */, string_map>& data)
+{
+	assert(generator_);
+	grid& page = generator_->create_item(-1, page_builders_.begin()->second, data, nullptr);
+
+	return page;
+}
+
+grid& multi_page::add_page(
+	const std::string& type, int insert_pos, const std::map<std::string /* widget id */, string_map>& data)
+{
+	assert(generator_);
+	auto it_builder = page_builders_.find(type);
+	VALIDATE(it_builder != page_builders_.end(), "invalid page type '" + type + "'");
+	return generator_->create_item(insert_pos, it_builder->second, data, nullptr);
 }
 
 void multi_page::remove_page(const unsigned page, unsigned count)
@@ -115,46 +137,10 @@ unsigned multi_page::get_state() const
 	return 0;
 }
 
-namespace
-{
-
-/**
- * Swaps an item in a grid for another one.*/
-void swap_grid(grid* g,
-			   grid* content_grid,
-			   widget* widget,
-			   const std::string& id)
-{
-	assert(content_grid);
-	assert(widget);
-
-	// Make sure the new child has same id.
-	widget->set_id(id);
-
-	// Get the container containing the wanted widget.
-	grid* parent_grid = nullptr;
-	if(g) {
-		parent_grid = find_widget<grid>(g, id, false, false);
-	}
-	if(!parent_grid) {
-		parent_grid = find_widget<grid>(content_grid, id, true, false);
-	}
-	parent_grid = dynamic_cast<grid*>(parent_grid->parent());
-	assert(parent_grid);
-
-	// Replace the child.
-	widget = parent_grid->swap_child(id, widget, false);
-	assert(widget);
-
-	delete widget;
-}
-
-} // namespace
-
 void multi_page::finalize(const std::vector<string_map>& page_data)
 {
 	assert(generator_);
-	generator_->create_items(-1, page_builder_, page_data, nullptr);
+	generator_->create_items(-1, page_builders_.begin()->second, page_data, nullptr);
 	swap_grid(nullptr, &get_grid(), generator_, "_content_grid");
 }
 
@@ -267,13 +253,15 @@ namespace implementation
 {
 
 builder_multi_page::builder_multi_page(const config& cfg)
-	: implementation::builder_styled_widget(cfg), builder(nullptr), data()
+	: implementation::builder_styled_widget(cfg), builders(), data()
 {
-	const config& page = cfg.child("page_definition");
-
-	VALIDATE(page, _("No page defined."));
-	builder = std::make_shared<builder_grid>(page);
-	assert(builder);
+	for (const config& page : cfg.child_range("page_definition"))
+	{
+		auto builder = std::make_shared<builder_grid>(page);
+		assert(builder);
+		builders[page["id"]] = builder;
+	}
+	VALIDATE(!builders.empty(), _("No page defined."));
 
 	/** @todo This part is untested. */
 	const config& d = cfg.child("page_data");
@@ -281,13 +269,14 @@ builder_multi_page::builder_multi_page(const config& cfg)
 		return;
 	}
 
+	auto builder = builders.begin()->second;
 	for(const auto & row : d.child_range("row"))
 	{
 		unsigned col = 0;
 
 		for(const auto & column : row.child_range("column"))
 		{
-			data.push_back(string_map());
+			data.emplace_back();
 			for(const auto & i : column.attribute_range())
 			{
 				data.back()[i.first] = i.second;
@@ -307,7 +296,7 @@ widget* builder_multi_page::build() const
 
 	init_control(widget);
 
-	widget->set_page_builder(builder);
+	widget->set_page_builders(builders);
 
 	DBG_GUI_G << "Window builder: placed multi_page '" << id
 			  << "' with definition '" << definition << "'.\n";

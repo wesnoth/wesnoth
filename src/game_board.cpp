@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,7 +14,7 @@
 
 #include "config.hpp"
 #include "game_board.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "recall_list_manager.hpp"
@@ -43,6 +43,7 @@ game_board::game_board(const ter_data_cache & tdata, const config & level)
 
 game_board::game_board(const game_board & other)
 	: teams_(other.teams_)
+	, labels_(other.labels_)
 	, map_(new gamemap(*(other.map_)))
 	, unit_id_manager_(other.unit_id_manager_)
 	, units_(other.units_) {}
@@ -110,7 +111,7 @@ void game_board::check_victory(bool & continue_level, bool & found_player, bool 
 	for (const unit & i : units())
 	{
 		DBG_EE << "Found a unit: " << i.id() << " on side " << i.side() << std::endl;
-		const team& tm = teams()[i.side()-1];
+		const team& tm = get_team(i.side());
 		DBG_EE << "That team's defeat condition is: " << tm.defeat_condition() << std::endl;
 		if (i.can_recruit() && tm.defeat_condition() == team::DEFEAT_CONDITION::NO_LEADER) {
 			not_defeated.insert(i.side());
@@ -349,21 +350,17 @@ void game_board::write_config(config & cfg) const
 		side["side"] = std::to_string(side_num);
 
 		//current units
-		{
-			for (const unit & i : units_) {
-				if (i.side() == side_num) {
-					config& u = side.add_child("unit");
-					i.get_location().write(u);
-					i.write(u);
-				}
+		for(const unit & i : units_) {
+			if(i.side() == side_num) {
+				config& u = side.add_child("unit");
+				i.get_location().write(u);
+				i.write(u);
 			}
 		}
 		//recall list
-		{
-			for (const unit_const_ptr & j : t->recall_list()) {
-				config& u = side.add_child("unit");
-				j->write(u);
-			}
+		for(const unit_const_ptr & j : t->recall_list()) {
+			config& u = side.add_child("unit");
+			j->write(u);
 		}
 	}
 

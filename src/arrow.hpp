@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2016 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2017 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * Arrows destined to be drawn on the map. Created for the whiteboard project.
  */
 
-#ifndef ARROW_HPP_INCLUDED
-#define ARROW_HPP_INCLUDED
+#pragma once
 
 #include "display.hpp"
 
@@ -61,7 +60,7 @@ public:
 	 * If it doesn't exist or has missing images, you'll get "under construction"
 	 * symbols instead of arrow graphics.
 	 */
-	std::string get_style() {return style_;}
+	std::string get_style() const {return style_;}
 	void set_style(const std::string& style);
 	///If you add more styles, you should look at move::update_arrow_style()
 	static const std::string STYLE_STANDARD;
@@ -105,4 +104,3 @@ protected:
 
 	bool hidden_;
 };
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * Placement helper for the horizontal list.
  */
 
-#ifndef GUI_AUXILIARY_PLACER_HORIZONTAL_LIST_HPP_INCLUDED
-#define GUI_AUXILIARY_PLACER_HORIZONTAL_LIST_HPP_INCLUDED
+#pragma once
 
 #include "gui/core/placer.hpp"
 
@@ -46,7 +45,7 @@ public:
 
 	/***** ***** Inherited operations. ***** *****/
 
-	virtual void initialise();
+	virtual void initialize();
 
 	virtual void add_item(const point& size);
 
@@ -88,5 +87,3 @@ private:
 } // namespace implementation
 
 } // namespace gui2
-
-#endif

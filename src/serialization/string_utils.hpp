@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,16 +13,18 @@
    See the COPYING file for more details.
 */
 
-#ifndef SERIALIZATION_STRING_UTILS_HPP_INCLUDED
-#define SERIALIZATION_STRING_UTILS_HPP_INCLUDED
+#pragma once
 
 #include "font/constants.hpp"
+#include "serialization/string_view.hpp"
 
 #include <algorithm>
 #include <map>
+#include <ostream>
 #include <set>
 #include <sstream>
 #include <string>
+#include <utility>
 #include <vector>
 
 class t_string;
@@ -146,6 +148,19 @@ std::vector<std::string> square_parenthetical_split(
 	const int flags = REMOVE_EMPTY | STRIP_SPACES);
 
 /**
+ * Splits a string into two parts as evenly as possible based on lines.
+ * For example, if the string contains 3288 lines, then both parts will
+ * be 1644 lines long.
+ *
+ * The line separator in between won't be in either of the parts the
+ * function returns.
+ *
+ * Because this function is intended for extremely long strings
+ * (kilobytes long), it returns string_views for performance.
+ */
+std::pair<string_view, string_view> vertical_split(const std::string& val);
+
+/**
  * Generates a new string joining container items in a list.
  *
  * @param v A container with elements.
@@ -263,6 +278,9 @@ inline std::string quote(const std::string &str)
 /** Convert no, false, off, 0, 0.0 to false, empty to def, and others to true */
 bool string_bool(const std::string& str,bool def=false);
 
+/** Converts a bool value to 'true' or 'false' */
+std::string bool_string(const bool value);
+
 /** Convert into a signed value (using the Unicode "−" and +0 convention */
 std::string signed_value(int val);
 
@@ -281,7 +299,7 @@ inline std::string signed_percent(int val) {return signed_value(val) + "%";}
  *
  * There are no default values because they would not be translatable.
  */
-std::string si_string(double input, bool base2, std::string unit);
+std::string si_string(double input, bool base2, const std::string& unit);
 
 /**
  * Try to complete the last word of 'text' with the 'wordlist'.
@@ -329,5 +347,3 @@ bool isvalid_wildcard(const std::string& login);
 void ellipsis_truncate(std::string& str, const size_t size);
 
 } // end namespace utils
-
-#endif

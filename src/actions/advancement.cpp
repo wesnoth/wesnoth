@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,16 +21,14 @@
 #include "actions/vision.hpp"
 
 #include "ai/lua/aspect_advancements.hpp"
-#include "game_display.hpp"
-#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "game_data.hpp" //resources::gamedata->phase()
 #include "gui/dialogs/unit_advance.hpp"
 #include "gui/widgets/window.hpp" //gui2::window::OK
 #include "log.hpp"
 #include "play_controller.hpp" //resources::controller
-#include "random_new.hpp"
+#include "random.hpp"
 #include "resources.hpp"
 #include "statistics.hpp"
 #include "synced_user_choice.hpp"
@@ -39,7 +37,6 @@
 #include "units/animation_component.hpp"
 #include "units/udisplay.hpp"
 #include "units/helper.hpp" //number_of_possible_advances
-#include "units/map.hpp" //resources::units
 #include "whiteboard/manager.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -59,7 +56,7 @@ namespace
 {
 	int advance_unit_dialog(const map_location &loc)
 	{
-		const unit& u = *resources::units->find(loc);
+		const unit& u = *resources::gameboard->units().find(loc);
 		std::vector<unit_const_ptr> previews;
 
 		for (const std::string& advance : u.advances_to()) {
@@ -97,8 +94,8 @@ namespace
 	{
 		const events::command_disabler cmd_disabler;
 
-		unit_map::iterator u = resources::units->find(loc);
-		if (u == resources::units->end()) {
+		unit_map::iterator u = resources::gameboard->units().find(loc);
+		if (u == resources::gameboard->units().end()) {
 			LOG_DP << "animate_unit_advancement suppressed: invalid unit\n";
 			return false;
 		}
@@ -136,10 +133,10 @@ namespace
 			::advance_unit(loc, &mod_option, fire_event);
 		}
 
-		u = resources::units->find(loc);
+		u = resources::gameboard->units().find(loc);
 		resources::screen->invalidate_unit();
 
-		if (animate && u != resources::units->end() && !resources::screen->video().update_locked()) {
+		if (animate && u != resources::gameboard->units().end() && !resources::screen->video().update_locked()) {
 			unit_animator animator;
 			animator.add_animation(&*u, "levelin", u->get_location(), map_location(), 0, true);
 			animator.start_animations();
@@ -172,7 +169,7 @@ namespace
 		{
 			//the 'side' parameter might differ from side_num_-
 			int res = 0;
-			team t = resources::gameboard->teams()[side_num_ - 1];
+			team t = resources::gameboard->get_team(side_num_);
 			//i wonder how this got included here ?
 			bool is_mp = resources::controller->is_networked_mp();
 			bool is_current_side = resources::controller->current_side() == side_num_;
@@ -192,7 +189,7 @@ namespace
 				//have no effect because get_advancements returns an empty list.
 				if(ai_advancement_ != nullptr)
 				{
-					unit_map::iterator u = resources::units->find(loc_);
+					unit_map::iterator u = resources::gameboard->units().find(loc_);
 					const std::vector<std::string>& options = u->advances_to();
 					const std::vector<std::string>& allowed = ai_advancement_->get_advancements(u);
 
@@ -209,8 +206,8 @@ namespace
 			{
 				//we are in the situation, that the unit is owned by a human, but he's not allowed to do this decision.
 				//because it's a mp game and it's not his turn.
-				//note that it doesn't matter whether we call random_new::generator->next_random() or rand().
-				res = random_new::generator->get_random_int(0, nb_options_-1);
+				//note that it doesn't matter whether we call randomness::generator->next_random() or rand().
+				res = randomness::generator->get_random_int(0, nb_options_-1);
 			}
 			LOG_NG << "unit at position " << loc_ << "choose advancement number " << res << "\n";
 			config retv;
@@ -246,7 +243,7 @@ void advance_unit_at(const advance_unit_params& params)
 	// the 20 is picked rather randomly.
 	for(int advacment_number = 0; advacment_number < 20; advacment_number++)
 	{
-		unit_map::iterator u = resources::units->find(params.loc_);
+		unit_map::iterator u = resources::gameboard->units().find(params.loc_);
 		//this implies u.valid()
 		if(!unit_helper::will_certainly_advance(u)) {
 			return;
@@ -257,7 +254,7 @@ void advance_unit_at(const advance_unit_params& params)
 			LOG_NG << "Firing pre advance event at " << params.loc_ <<".\n";
 			resources::game_events->pump().fire("pre_advance", params.loc_);
 			//TODO: maybe use id instead of location here ?.
-			u = resources::units->find(params.loc_);
+			u = resources::gameboard->units().find(params.loc_);
 			if(!unit_helper::will_certainly_advance(u))
 			{
 				LOG_NG << "pre advance event aborted advancing.\n";
@@ -272,7 +269,7 @@ void advance_unit_at(const advance_unit_params& params)
 		bool result = animate_unit_advancement(params.loc_, selected["value"], params.fire_events_, params.animate_);
 
 		DBG_NG << "animate_unit_advancement result = " << result << std::endl;
-		u = resources::units->find(params.loc_);
+		u = resources::gameboard->units().find(params.loc_);
 		// level 10 unit gives 80 XP and the highest mainline is level 5
 		if (u.valid() && u->experience() > 80)
 		{
@@ -290,9 +287,9 @@ unit_ptr get_advanced_unit(const unit &u, const std::string& advance_to)
 			" to: " + advance_to);
 	}
 	unit_ptr new_unit(new unit(u));
-	new_unit->set_experience(new_unit->experience() - new_unit->max_experience());
+	new_unit->set_experience(new_unit->experience_overflow());
 	new_unit->advance_to(*new_type);
-	new_unit->heal_all();
+	new_unit->heal_fully();
 	new_unit->set_state(unit::STATE_POISONED, false);
 	new_unit->set_state(unit::STATE_SLOWED, false);
 	new_unit->set_state(unit::STATE_PETRIFIED, false);
@@ -308,7 +305,7 @@ unit_ptr get_advanced_unit(const unit &u, const std::string& advance_to)
 unit_ptr get_amla_unit(const unit &u, const config &mod_option)
 {
 	unit_ptr amla_unit(new unit(u));
-	amla_unit->set_experience(amla_unit->experience() - amla_unit->max_experience());
+	amla_unit->set_experience(amla_unit->experience_overflow());
 	amla_unit->add_modification("advancement", mod_option);
 	return amla_unit;
 }
@@ -316,7 +313,7 @@ unit_ptr get_amla_unit(const unit &u, const config &mod_option)
 
 void advance_unit(map_location loc, const advancement_option &advance_to, bool fire_event)
 {
-	unit_map::unit_iterator u = resources::units->find(loc);
+	unit_map::unit_iterator u = resources::gameboard->units().find(loc);
 	if(!u.valid()) {
 		return;
 	}
@@ -348,13 +345,15 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	bool use_amla = boost::get<std::string>(&advance_to) == nullptr;
 	unit_ptr new_unit = use_amla ? get_amla_unit(*u, *boost::get<const config*>(advance_to)) :
 	                           get_advanced_unit(*u, boost::get<std::string>(advance_to));
+	new_unit->set_location(loc);
 	if ( !use_amla )
 	{
 		statistics::advance_unit(*new_unit);
 		preferences::encountered_units().insert(new_unit->type_id());
 		LOG_CF << "Added '" << new_unit->type_id() << "' to the encountered units.\n";
 	}
-	u = resources::units->replace(loc, *new_unit).first;
+	resources::gameboard->units().erase(loc);
+	u = resources::gameboard->units().insert(new_unit).first;
 
 	// Update fog/shroud.
 	actions::shroud_clearer clearer;

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,13 +12,11 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "log.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 
@@ -101,14 +99,13 @@ bool load_language_list()
 	}
 
 	known_languages.clear();
-	known_languages.push_back(
-		language_def("", t_string(N_("System default language"), "wesnoth"), "ltr", "", "A"));
+	known_languages.emplace_back("", t_string(N_("System default language"), "wesnoth"), "ltr", "", "A");
 
 	for (const config &lang : cfg.child_range("locale"))
 	{
-		known_languages.push_back(
-			language_def(lang["locale"], lang["name"], lang["dir"],
-			             lang["alternates"], lang["sort_name"]));
+		known_languages.emplace_back(
+			lang["locale"], lang["name"], lang["dir"],
+			lang["alternates"], lang["sort_name"]);
 	}
 
 	return true;
@@ -172,7 +169,7 @@ static void wesnoth_setlocale(int category, const std::string& slocale,
 		 * The "" is the last item to work-around a problem in glibc picking
 		 * the non utf8 locale instead an utf8 version if available.
 		 */
-		char const *encoding[] = { ".utf-8", ".UTF-8", "" };
+		char const *encoding[] { ".utf-8", ".UTF-8", "" };
 		for (int j = 0; j != 3; ++j)
 		{
 			locale = lang + encoding[j] + extra;

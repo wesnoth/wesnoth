@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,9 +13,8 @@
 */
 
 #include "desktop/notifications.hpp"
-#include "global.hpp"
 
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 
 #include "video.hpp" //CVideo::get_singleton().window_state()
@@ -45,17 +44,29 @@ void send(const std::string& /*owner*/, const std::string& /*message*/, type /*t
 
 #else
 
-bool available() { return true; }
+bool available()
+{
+#ifdef __APPLE__
+	return apple_notifications::available();
+#else
+	return true;
+#endif
+}
 
 void send(const std::string& owner, const std::string& message, type t)
 {
-	Uint8 app_state = CVideo::get_singleton().window_state();
+	sdl::window* window = CVideo::get_singleton().get_window();
+	if(window == nullptr) {
+		return;
+	}
+
+	int app_state = window->get_flags();
 
 	// Do not show notifications when the window is visible...
-	if ((app_state & SDL_APPACTIVE) != 0)
+	if ((app_state & SDL_WINDOW_SHOWN) != 0)
 	{
 		// ... and it has a focus.
-		if ((app_state & (SDL_APPMOUSEFOCUS | SDL_APPINPUTFOCUS)) != 0) {
+		if ((app_state & (SDL_WINDOW_MOUSE_FOCUS | SDL_WINDOW_INPUT_FOCUS)) != 0) {
 			return;
 		}
 	}

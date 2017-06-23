@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2009 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,6 +24,7 @@
 #include "scripting/game_lua_kernel.hpp"
 #include "units/unit.hpp"
 #include "units/map.hpp"
+#include "units/animation_component.hpp"
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"                    // for lua_State, lua_settop, etc
@@ -45,9 +46,9 @@ unit* lua_unit::get()
 	if (ptr) return ptr.get();
 	if (c_ptr) return c_ptr;
 	if (side) {
-		return resources::gameboard->teams()[side - 1].recall_list().find_if_matches_underlying_id(uid).get();
+		return resources::gameboard->get_team(side).recall_list().find_if_matches_underlying_id(uid).get();
 	}
-	unit_map::unit_iterator ui = resources::units->find(uid);
+	unit_map::unit_iterator ui = resources::gameboard->units().find(uid);
 	if (!ui.valid()) return nullptr;
 	return ui.get_shared_ptr().get(); //&*ui would not be legal, must get new shared_ptr by copy ctor because the unit_map itself is holding a boost shared pointer.
 }
@@ -55,9 +56,9 @@ unit_ptr lua_unit::get_shared()
 {
 	if (ptr) return ptr;
 	if (side) {
-		return resources::gameboard->teams()[side - 1].recall_list().find_if_matches_underlying_id(uid);
+		return resources::gameboard->get_team(side).recall_list().find_if_matches_underlying_id(uid);
 	}
-	unit_map::unit_iterator ui = resources::units->find(uid);
+	unit_map::unit_iterator ui = resources::gameboard->units().find(uid);
 	if (!ui.valid()) return unit_ptr();
 	return ui.get_shared_ptr(); //&*ui would not be legal, must get new shared_ptr by copy ctor because the unit_map itself is holding a boost shared pointer.
 }
@@ -69,9 +70,7 @@ unit_ptr lua_unit::get_shared()
 bool lua_unit::put_map(const map_location &loc)
 {
 	if (ptr) {
-		ptr->set_location(loc);
-		resources::units->erase(loc);
-		std::pair<unit_map::unit_iterator, bool> res = resources::units->insert(ptr);
+		std::pair<unit_map::unit_iterator, bool> res = resources::gameboard->units().replace(loc, ptr);
 		if (res.second) {
 			ptr.reset();
 			uid = res.first->underlying_id();
@@ -80,22 +79,22 @@ bool lua_unit::put_map(const map_location &loc)
 			return false;
 		}
 	} else if (side) { // recall list
-		unit_ptr it = resources::gameboard->teams()[side - 1].recall_list().extract_if_matches_underlying_id(uid);
+		unit_ptr it = resources::gameboard->get_team(side).recall_list().extract_if_matches_underlying_id(uid);
 		if (it) {
 			side = 0;
 			// uid may be changed by unit_map on insertion
-			uid = resources::units->replace(loc, *it).first->underlying_id();
+			uid = resources::gameboard->units().replace(loc, it).first->underlying_id();
 		} else {
 			ERR_LUA << "Could not find unit " << uid << " on recall list of side " << side << '\n';
 			return false;
 		}
 	} else { // on map
-		unit_map::unit_iterator ui = resources::units->find(uid);
-		if (ui != resources::units->end()) {
+		unit_map::unit_iterator ui = resources::gameboard->units().find(uid);
+		if (ui != resources::gameboard->units().end()) {
 			map_location from = ui->get_location();
 			if (from != loc) { // This check is redundant in current usage
-				resources::units->erase(loc);
-				resources::units->move(from, loc);
+				resources::gameboard->units().erase(loc);
+				resources::gameboard->units().move(from, loc);
 			}
 			// No need to change our contents
 		} else {
@@ -166,10 +165,13 @@ static void unit_show_error(lua_State *L, int index, int error)
 	switch(error) {
 		case LU_NOT_UNIT:
 			luaW_type_error(L, index, "unit");
+			break;
 		case LU_NOT_VALID:
 			luaL_argerror(L, index, "unit not found");
+			break;
 		case LU_NOT_ON_MAP:
 			luaL_argerror(L, index, "unit not found on map");
+			break;
 	}
 }
 
@@ -300,13 +302,15 @@ static int impl_unit_get(lua_State *L)
 
 	if(strcmp(m, "upkeep") == 0) {
 		unit::upkeep_t upkeep = u.upkeep_raw();
-		if(boost::get<unit::upkeep_full>(&upkeep) != nullptr){
-			lua_pushstring(L, "full");
-		} else if(boost::get<unit::upkeep_loyal>(&upkeep) != nullptr){
-			lua_pushstring(L, "loyal");
+
+		// Need to keep these seperate in order to ensure an int value is always used if applicable.
+		if(int* v = boost::get<int>(&upkeep)) {
+			lua_push(L, *v);
 		} else {
-			lua_push(L, boost::get<int>(upkeep));
+			const std::string type = boost::apply_visitor(unit::upkeep_type_visitor(), upkeep);
+			lua_push(L, type);
 		}
+
 		return 1;
 	}
 	if(strcmp(m, "advancements") == 0) {
@@ -343,6 +347,7 @@ static int impl_unit_get(lua_State *L)
 		push_unit_attacks_table(L, 1);
 		return 1;
 	}
+	return_vector_string_attrib("animations", u.anim_comp().get_flags());
 	return_cfg_attrib("recall_filter", cfg = u.recall_filter());
 	return_bool_attrib("hidden", u.get_hidden());
 	return_bool_attrib("petrified", u.incapacitated());
@@ -393,8 +398,8 @@ static int impl_unit_set(lua_State *L)
 	modify_bool_attrib("zoc", u.set_emit_zoc(value));
 	modify_bool_attrib("canrecruit", u.set_can_recruit(value));
 
-	modify_vector_string_attrib("extra_recruit", u.set_recruits(vector));
-	modify_vector_string_attrib("advances_to", u.set_advances_to(vector));
+	modify_vector_string_attrib("extra_recruit", u.set_recruits(value));
+	modify_vector_string_attrib("advances_to", u.set_advances_to(value));
 	if(strcmp(m, "alignment") == 0) {
 		u.set_alignment(lua_check<unit_type::ALIGNMENT>(L, 3));
 		return 0;
@@ -489,7 +494,7 @@ static int impl_unit_variables_get(lua_State *L)
 	lua_rawgeti(L, 1, 1);
 	const unit* u = luaW_tounit(L, -1);
 	if(!u) {
-		return luaL_argerror(L, 1, "unknown unit");
+		return luaL_argerror(L, 2, "unknown unit");
 	}
 	char const *m = luaL_checkstring(L, 2);
 	return_cfgref_attrib("__cfg", u->variables());
@@ -512,14 +517,22 @@ static int impl_unit_variables_set(lua_State *L)
 	lua_rawgeti(L, 1, 1);
 	unit* u = luaW_tounit(L, -1);
 	if(!u) {
-		return luaL_argerror(L, 1, "unknown unit");
+		return luaL_argerror(L, 2, "unknown unit");
 	}
 	char const *m = luaL_checkstring(L, 2);
 	if(strcmp(m, "__cfg") == 0) {
 		u->variables() = luaW_checkconfig(L, 3);
 		return 0;
 	}
-	variable_access_create v(m, u->variables());
+	config& vars = u->variables();
+	if(lua_isnoneornil(L, 3)) {
+		try {
+			variable_access_throw(m, vars).clear(false);
+		} catch(const invalid_variablename_exception&) {
+		}
+		return 0;
+	}
+	variable_access_create v(m, vars);
 	luaW_checkvariable(L, v, 3);
 	return 0;
 }

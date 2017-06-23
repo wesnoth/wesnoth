@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 - 2016 by the Battle for Wesnoth Project
+   Copyright (C) 2015 - 2017 by the Battle for Wesnoth Project
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,8 +11,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "replay_controller.hpp"
 
 #include "game_config_manager.hpp"
@@ -20,7 +18,6 @@
 #include "log.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
-#include "config_assign.hpp"
 #include "playsingle_controller.hpp"
 
 static lg::log_domain log_engine("engine");

@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:28 UTC\n"
-"PO-Revision-Date: 2016-05-13 17:23+0000\n"
+"POT-Creation-Date: 2017-05-29 21:55+0200\n"
+"PO-Revision-Date: 2017-05-19 18:44+0300\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <>\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:47
@@ -389,32 +389,32 @@ msgstr "Velon"
 msgid "T’baran"
 msgstr "T’baran"
 
-#. [side]: id=Tbaran, type=Orcish Warrior
-#. [side]: id=Wrulf, type=Orcish Warrior
-#. [side]: type=Orcish Warrior, id=Qumseh
-#. [side]: type=Orcish Warrior, id=Graur-Tan
-#. [modify_side]
-#. [side]: type=Troll Hero, type=Great Troll, id=Grugl
+#. [side]: type=Saurian Flanker, id=Huurgh
+#. [side]: type=Saurian Oracle, id=Shhar
+#. [side]: type=Arch Mage, id=Aquagar
+#. [side]: type=Troll Warrior, id=Trigrul
+#. [side]: type=Troll Warrior, id=Tafrul
+#. [side]: type=Orcish Warlord, id=Kior-Pur
+#. [side]: type=Orcish Warlord, id=Mbiran
+#. [side]: type=Orcish Warlord, id=Tan-Durr
 #. [side]
-#. [side]: type=Saurian Ambusher, id=Shurm
-#. [side]: type=Saurian Ambusher, id=Trigr
+#. [side]: type=Saurian Flanker, id=Spahr
+#. [side]: type=Saurian Flanker, id=Hgyr
+#. [modify_side]
+#. [side]: type=Elvish Marshal, id=Crintil
+#. [side]: type=Elvish Captain, id=Oblil
 #. [side]: id=Hraurg, type=Saurian Ambusher
 #. [side]: type=Saurian Ambusher, id=Spahr
 #. [side]: type=Orcish Warlord, id=Urug-Tar
 #. [side]: type=Orcish Warlord, id=Graur-Tan
 #. [side]: type=Troll Warrior, id=Traur
-#. [side]: type=Troll Warrior, id=Tafrul
-#. [side]: type=Arch Mage, id=Aquagar
-#. [side]: type=Troll Warrior, id=Trigrul
-#. [side]: type=Saurian Flanker, id=Huurgh
-#. [side]: type=Saurian Oracle, id=Shhar
-#. [side]: type=Orcish Warlord, id=Kior-Pur
-#. [side]: type=Orcish Warlord, id=Mbiran
-#. [side]: type=Orcish Warlord, id=Tan-Durr
-#. [side]: type=Saurian Flanker, id=Spahr
-#. [side]: type=Saurian Flanker, id=Hgyr
-#. [side]: type=Elvish Marshal, id=Crintil
-#. [side]: type=Elvish Captain, id=Oblil
+#. [side]: type=Saurian Ambusher, id=Shurm
+#. [side]: type=Saurian Ambusher, id=Trigr
+#. [side]: type=Troll Hero, type=Great Troll, id=Grugl
+#. [side]: id=Tbaran, type=Orcish Warrior
+#. [side]: id=Wrulf, type=Orcish Warrior
+#. [side]: type=Orcish Warrior, id=Qumseh
+#. [side]: type=Orcish Warrior, id=Graur-Tan
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:198
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:236
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:272
@@ -464,8 +464,8 @@ msgstr "Wrulf"
 msgid "Qumseh"
 msgstr "Qumseh"
 
-#. [side]: type=Orcish Warrior, id=Graur-Tan
 #. [side]: type=Orcish Warlord, id=Graur-Tan
+#. [side]: type=Orcish Warrior, id=Graur-Tan
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:314
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/06_Acquaintance_in_Need.cfg:163
 msgid "Graur-Tan"
@@ -1388,8 +1388,8 @@ msgstr ""
 msgid "Hraurg"
 msgstr "Hraurg"
 
-#. [side]: type=Saurian Ambusher, id=Spahr
 #. [side]: type=Saurian Flanker, id=Spahr
+#. [side]: type=Saurian Ambusher, id=Spahr
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:179
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:122
 msgid "Spahr"
@@ -1952,8 +1952,8 @@ msgstr ""
 " ha lasciato l’oro recuperato nella tesoreria degli elfi. Inizierai il "
 "prossimo scenario con un quantitativo prefissato di oro."
 
-#. [message]: speaker=narrator
 #. [part]
+#. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:576
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:42
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:52
@@ -1995,8 +1995,8 @@ msgstr ""
 msgid "Kalenz"
 msgstr "Kalenz"
 
-#. [message]: speaker=narrator
 #. [part]
+#. [message]: speaker=narrator
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:582
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:62
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:82
@@ -2366,8 +2366,8 @@ msgstr "Huurgh"
 msgid "Shhar"
 msgstr "Shhar"
 
-#. [side]: type=Gryphon, id=Gryphon Leader
 #. [side]
+#. [side]: type=Gryphon, id=Gryphon Leader
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:196
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/10_Cliffs_of_Thoria.cfg:152
 msgid "Creatures"
@@ -2710,8 +2710,8 @@ msgstr "Accelerando il loro passo, elfi e nani corsero verso il fumo...."
 msgid "Aquagar"
 msgstr "Aquagar"
 
-#. [side]: type=Elder Mage, id=Crelanu
 #. [part]
+#. [side]: type=Elder Mage, id=Crelanu
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/11_Battle_of_the_Book.cfg:127
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:22
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:32
@@ -4942,16 +4942,16 @@ msgstr "Sopravvivi per sei giorni"
 
 #. [objective]: condition=lose
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:322
-#, fuzzy
-#| msgid "Survive for six days"
 msgid "Kalenz survives for six days"
-msgstr "Sopravvivi per sei giorni"
+msgstr "Kalenz sopravvive per sei giorni"
 
 #. [note]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:333
 msgid ""
 "If you lose you still have a chance to defeat Kalenz in the next scenario."
 msgstr ""
+"Nel caso perdessi, hai ancora la possibilità di sconfiggere Kalenz nel "
+"prossimo scenario."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/22_Northern_Battle.cfg:342
@@ -5213,11 +5213,6 @@ msgstr ""
 "grandi di un uomo e deformi. Sebbene possano essere facilmente battuti sia "
 "in velocità' che in astuzia, la loro forza non va affatto sottovalutata."
 
-#. [attack]: type=blade
-#: data/campaigns/Legend_of_Wesmere/units/ogres/Great_Ogre.cfg:39
-msgid "cleaver"
-msgstr "mannaia"
-
 #. [leadership]: id=elates_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:10
 msgid "elates Kalenz"
@@ -5407,6 +5402,9 @@ msgstr "Addio $unit.name. Il tuo leale servizio non sarà dimenticato."
 #: data/campaigns/Legend_of_Wesmere/utils/deaths.cfg:140
 msgid "Oh, no! We are too late..."
 msgstr "Oh, no! Siamo arrivati tardi..."
+
+#~ msgid "cleaver"
+#~ msgstr "mannaia"
 
 #~ msgid "This is a stub!"
 #~ msgstr "Segnaposto!"

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef MOUSE_HANDLER_BASE_H_INCLUDED
-#define MOUSE_HANDLER_BASE_H_INCLUDED
+#pragma once
 
 #include "map/location.hpp"
 #include <SDL_events.h>
@@ -168,8 +167,8 @@ public:
 	 * Called when the middle click scrolling
 	 */
 	void set_scroll_start (int x, int y) { scroll_start_x_ = x; scroll_start_y_ = y; }
-	const SDL_Point get_scroll_start() { return{ scroll_start_x_, scroll_start_y_ }; }
-	bool scroll_started() { return scroll_started_; }
+	const SDL_Point get_scroll_start() const { return{ scroll_start_x_, scroll_start_y_ }; }
+	bool scroll_started() const { return scroll_started_; }
 
 protected:
 	void cancel_dragging();
@@ -206,5 +205,3 @@ protected:
 };
 
 } // end namespace events
-
-#endif

@@ -55,21 +55,21 @@ sufixo «.bz2». Borrarase o \fIficheiro_de_entrada.bz2\fP.
 Comprime un ficheiro en formato BZip2, gárdao coma
 \fIficheiro_de_entrada\fP.bz2 e borra o \fIficheiro_de_entrada\fP.
 .TP 
-\fB\-c,\ \-\-campaign\ [\fP\fIidentificador_de_campaña\fP\fB]\fP
+\fB\-c[\fP\fIid_campaign\fP\fB],\ \-\-campaign[\fP\fI=id_campaign\fP\fB]\fP
 Vai directamente á campaña co identificador
 <identificador_de_campaña>. Se non indica un identificador, aparece
 un menú de escolla.
 .TP 
-\fB\-\-core\fP\fI\ identificador_de_núcleo\fP
-Substitúe o núcleo cargado polo núcleo co identificador indicado.
-.TP 
-\fB\-\-campaign\-difficulty\ [\fP\fIdificultade\fP\fB]\fP
+\fB\-\-campaign\-difficulty[\fP\fI=difficulty\fP\fB]\fP
 A dificultade da campaña indicada (do 1 ao máximo). Se non se especificase,
 aparecería un diálogo de escolla da dificultade da campaña.
 .TP 
 \fB\-\-campaign\-scenario\fP\fI\ identificador_de_escenario\fP
 O identificador do escenario da campaña indicada. De omitirse o parámetro,
 empregarase o primeiro escenario.
+.TP 
+\fB\-\-core\fP\fI\ identificador_de_núcleo\fP
+Substitúe o núcleo cargado polo núcleo co identificador indicado.
 .TP 
 \fB\-\-data\-dir\fP\fI\ cartafol\fP
 Substitúe o directorio dos datos polo directorio indicado.
@@ -114,7 +114,7 @@ carga de mapas aberto en dito directorio.
 Usa o idioma \fIidioma\fP (código) durante esta sesión. Por exemplo:
 \fB\-\-language gl\fP.
 .TP 
-\fB\-\-log\-\fP\fInivel\fP\fB=\fP\fIdominio_1\fP\fB,\fP\fIdominio_2\fP\fB,\fP\fI…\fP
+\fB\-\-log\-level=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 Establece o nivel de severidade dos dominios do rexistro.  Pódese usar
 \fBall\fP para referirse a calquera dominio do rexistro. Os niveis dispoñíbeis
 son os seguintes: \fBerror\fP (erro),\ \fBwarning\fP (aviso),\ \fBinfo\fP
@@ -128,7 +128,7 @@ Define o nivel de rexistro. Calquera mensaxe enviada con este nivel de
 rexistro ou un nivel superior fará que a proba unitaria falle aínda que o
 resultado sexa o esperado. Só é relevante cando se usa con \fB\-u\fP.
 .TP 
-\fB\-\-logdomains\ [\fP\fIfiltro\fP\fB]\fP
+\fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 Devolve os dominios do rexistro definidos (só os que conteñan o \fBfiltro\fP se
 se usa).
 .TP 
@@ -193,7 +193,7 @@ directorio «data/core».
 Só o emprega a orde «\-\-preprocess». Especifica un ficheiro con definicións
 para antes do preprocesamento.
 .TP 
-\fB\-\-preprocess\-output\-macros\ [\fP\fIficheiro_de_destino\fP\fB]\fP
+\fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
 Só o emprega a orde «\-\-preprocess». Devolve todos os macros preprocesados do
 ficheiro obxectivo. Se non se especifica un ficheiro devolverá os do
 ficheiro «_MACROS_.cfg» do directorio obxectivo da orde «\-\-preprocess». O
@@ -207,6 +207,10 @@ Establece a resolución do xogo. Por exemplo: \fB\-r 800x600\fP.
 Recibe unha «cadea de ruta de imaxe» de A batalla polo Noroeste con funcións
 de rutas de imaxes, e xera un ficheiro BMP de Windows.
 .TP 
+\fB\-R,\ \-\-report\fP
+initializes game directories, prints build information suitable for use in
+bug reports, and exits.
+.TP 
 \fB\-\-rng\-seed\fP\fI\ semente\fP
 Usa o número <semente> como semente para o xerador de números
 aleatorios. Por exemplo: \fB\-\-rng\-seed 0\fP.
@@ -215,7 +219,7 @@ aleatorios. Por exemplo: \fB\-\-rng\-seed 0\fP.
 Garda unha captura de pantalla do <mapa> na <saída> sen
 preparar unha pantalla.
 .TP 
-\fB\-s,\ \-\-server\ [\fP\fIservidor\fP\fB]\fP
+\fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 Conéctase á máquina especificada se existe, senón conéctase ao primeiro
 servidor da configuración. Por exemplo: \fB\-\-server server.wesnoth.org\fP.
 .TP 
@@ -226,7 +230,7 @@ implícito.
 \fB\-\-strict\-validation\fP
 Os erros de corrección trátanse coma erros graves.
 .TP 
-\fB\-t,\ \-\-test\ [\fP\fIidentificador_de_escenario\fP\fB]\fP
+\fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
 Executa o xogo nun pequeno escenario de probas. O escenario debería ser un
 definido cunha etiqueta WML \fB[test]\fP. O predeterminado é «test». O uso de
 \fB\-\-nogui\fP vai implícito.

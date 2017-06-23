@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2009 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef RESOURCES_H_
-#define RESOURCES_H_
+#pragma once
 
 #include <memory>
 #include <vector>
@@ -56,7 +55,6 @@ namespace resources
 	extern game_classification    *classification;
 	extern game_display           *screen;
 	extern filter_context	      *filter_con;
-	extern const mp_game_settings *mp_settings;
 	extern soundsource::manager   *soundsources;
 	extern replay                 *recorder;
 	extern fake_unit_manager      *fake_units;
@@ -67,5 +65,3 @@ namespace resources
 	extern std::shared_ptr<wb::manager> whiteboard;
 	extern bool                   simulation_;
 }
-
-#endif

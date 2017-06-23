@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Daniel Franke.
+   Copyright (C) 2009 - 2017 by Daniel Franke.
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SAVE_BLOCKER_H_INCLUDED
-#define SAVE_BLOCKER_H_INCLUDED
+#pragma once
 
 #include <SDL_mutex.h>
 
@@ -69,5 +68,3 @@ private:
 	static void (play_controller::*callback_)();
 	static SDL_sem* sem_;
 };
-
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 Jyrki Vesterinen <sandgtx@gmail.com>
+   Copyright (C) 2016 - 2017 Jyrki Vesterinen <sandgtx@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -93,7 +93,7 @@ size_lock_definition::resolution::resolution(const config& cfg) :
 {
 	// Add a dummy state since every widget needs a state.
 	static config dummy("draw");
-	state.push_back(state_definition(dummy));
+	state.emplace_back(dummy);
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
@@ -149,7 +149,7 @@ widget* builder_size_lock::build() const
 
 	widget->init_grid(conf->grid);
 
-	game_logic::map_formula_callable size = get_screen_size_variables();
+	wfl::map_formula_callable size = get_screen_size_variables();
 
 	const unsigned width = width_(size);
 	const unsigned height = height_(size);

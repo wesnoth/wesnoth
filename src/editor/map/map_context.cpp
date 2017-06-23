@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,17 +14,15 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor/action/action.hpp"
-#include "editor/editor_preferences.hpp"
+#include "preferences/editor.hpp"
 #include "editor/map/map_context.hpp"
 
-#include "config_assign.hpp"
 #include "display.hpp"
 #include "filesystem.hpp"
 #include "game_board.hpp"
 #include "gettext.hpp"
 #include "map/exception.hpp"
 #include "map/label.hpp"
-#include "resources.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "terrain/type_data.hpp"
@@ -59,7 +57,7 @@ editor_team_info::editor_team_info(const team& t)
 
 const size_t map_context::max_action_stack_size_ = 100;
 
-map_context::map_context(const editor_map& map, const display& disp, bool pure_map, const config& schedule)
+map_context::map_context(const editor_map& map, bool pure_map, const config& schedule)
 	: filename_()
 	, map_data_key_()
 	, embedded_(false)
@@ -81,7 +79,7 @@ map_context::map_context(const editor_map& map, const display& disp, bool pure_m
     , victory_defeated_(true)
 	, random_time_(false)
 	, active_area_(-1)
-	, labels_(disp, nullptr)
+	, labels_(nullptr)
 	, units_()
 	, teams_()
 	, tod_manager_(new tod_manager(schedule))
@@ -91,7 +89,7 @@ map_context::map_context(const editor_map& map, const display& disp, bool pure_m
 {
 }
 
-map_context::map_context(const config& game_config, const std::string& filename, const display& disp)
+map_context::map_context(const config& game_config, const std::string& filename)
 	: filename_(filename)
 	, map_data_key_()
 	, embedded_(false)
@@ -113,7 +111,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	, victory_defeated_(true)
 	, random_time_(false)
 	, active_area_(-1)
-	, labels_(disp, nullptr)
+	, labels_(nullptr)
 	, units_()
 	, teams_()
 	, tod_manager_(new tod_manager(game_config.find_child("editor_times", "id", "default")))
@@ -177,7 +175,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	if (!boost::regex_search(map_data, matched_macro, rexpression_macro)) {
 		// We have a map_data string but no macro ---> embedded or scenario
 
-		boost::regex rexpression_scenario(R"""(\[(scenario|test|multiplayer)\])""");
+		boost::regex rexpression_scenario(R"""(\[(scenario|test|multiplayer|tutorial)\])""");
 		if (!boost::regex_search(file_string, rexpression_scenario)) {
 			LOG_ED << "Loading generated scenario file" << std::endl;
 			// 4.0 editor generated scenario
@@ -201,7 +199,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	const std::string& macro_argument = matched_macro[1];
 	LOG_ED << "Map looks like a scenario, trying {" << macro_argument << "}" << std::endl;
 	std::string new_filename = filesystem::get_wml_location(macro_argument,
-			filesystem::directory_name(macro_argument));
+			filesystem::directory_name(filesystem::get_short_wml_path(filename_)));
 	if (new_filename.empty()) {
 		std::string message = _("The map file looks like a scenario, "
 				"but the map_data value does not point to an existing file")
@@ -215,6 +213,20 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	pure_map_ = true;
 
 	add_to_recent_files();
+}
+
+void map_context::new_side()
+{
+	teams_.emplace_back();
+
+	config cfg;
+	cfg["side"] = teams_.size(); // side is 1-indexed, so we can just use size()
+	cfg["hidden"] = false;
+
+	// TODO: build might be slight overkill here just to set the side...
+	teams_.back().build(cfg, get_map());
+
+	actions_since_save_++;
 }
 
 void map_context::set_side_setup(editor_team_info& info)
@@ -309,21 +321,20 @@ void map_context::load_scenario(const config& game_config)
 
 	for(const config& item : scenario.child_range("item")) {
 		const map_location loc(item);
-		overlays_.insert(std::pair<map_location,
-				overlay>(loc, overlay(item) ));
+		overlays_.emplace(loc, overlay(item));
 	}
 
 	for(const config& music : scenario.child_range("music")) {
-		music_tracks_.insert(std::pair<std::string, sound::music_track>(music["name"], sound::music_track(music)));
+		music_tracks_.emplace(music["name"], sound::music_track(music));
 	}
 
 	int i = 1;
 	for(config &side : scenario.child_range("side"))
 	{
-		team t;
+		teams_.emplace_back();
+
 		side["side"] = i;
-		t.build(side, map_);
-		teams_.push_back(t);
+		teams_.back().build(side, map_);
 
 		for(config &a_unit : side.child_range("unit")) {
 			map_location loc(a_unit, nullptr);
@@ -506,7 +517,10 @@ config map_context::to_config()
 				u["type"] = i->type_id();
 				u["canrecruit"] = i->can_recruit();
 				u["unrenamable"] = i->unrenamable();
-				u["id"] = i->id();
+    				if(!boost::regex_match(i->id(), boost::regex(".*-[0-9]+")))
+    				{
+					u["id"] = i->id();
+    				}
 				u["name"] = i->name();
 				u["extra_recruit"] = utils::join(i->recruits());
 				u["facing"] = map_location::write_direction(i->facing());
@@ -711,7 +725,7 @@ void map_context::partial_undo()
 		delete undo_chain;
 		undo_stack_.pop_back();
 	}
-	redo_stack_.push_back(first_action_in_chain.get()->perform(*this));
+	redo_stack_.push_back(first_action_in_chain->perform(*this));
 	//actions_since_save_ -= last_redo_action()->action_count();
 }
 
@@ -745,6 +759,11 @@ void map_context::perform_action_between_stacks(action_stack& from, action_stack
 	editor_action* reverse_action = action->perform(*this);
 	to.push_back(reverse_action);
 	trim_stack(to);
+}
+
+const t_string  map_context::get_default_context_name() const
+{
+	return is_pure_map() ? _("New Map") : _("New Scenario");
 }
 
 } //end namespace editor

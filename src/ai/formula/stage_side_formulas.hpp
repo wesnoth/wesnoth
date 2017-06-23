@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,9 +17,7 @@
  * Stage which executes side formulas
  * */
 
-
-#ifndef AI_FORMULA_STAGE_SIDE_FORMULAS_HPP_INCLUDED
-#define AI_FORMULA_STAGE_SIDE_FORMULAS_HPP_INCLUDED
+#pragma once
 
 #include "ai/composite/stage.hpp"
 #include "formula/formula_fwd.hpp"
@@ -49,7 +47,7 @@ public:
 private:
         const config &cfg_;
 	formula_ai &fai_;
-	game_logic::const_formula_ptr move_formula_;
+	wfl::const_formula_ptr move_formula_;
 
 };
 
@@ -57,6 +55,4 @@ private:
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

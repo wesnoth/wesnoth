@@ -1,4 +1,3 @@
-local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f_next_waypoint.lua"
@@ -30,10 +29,10 @@ function ca_messenger_move:execution(cfg)
     if (not next_hop) then next_hop = { messenger.x, messenger.y } end
 
     -- Compare this to the "ideal path"
-    local path = wesnoth.find_path(messenger, x, y, { ignore_units = 'yes' })
+    local path = AH.find_path_with_shroud(messenger, x, y, { ignore_units = 'yes' })
     local optimum_hop, optimum_cost = { messenger.x, messenger.y }, 0
     for _,step in ipairs(path) do
-        local sub_path, sub_cost = wesnoth.find_path(messenger, step[1], step[2])
+        local sub_path, sub_cost = AH.find_path_with_shroud(messenger, step[1], step[2])
         if sub_cost > messenger.moves then
             break
         else
@@ -61,14 +60,14 @@ function ca_messenger_move:execution(cfg)
     if unit_in_way then wesnoth.extract_unit(unit_in_way) end
 
     wesnoth.put_unit(messenger, next_hop[1], next_hop[2])
-    local _, cost1 = wesnoth.find_path(messenger, x, y, { ignore_units = 'yes' })
+    local _, cost1 = AH.find_path_with_shroud(messenger, x, y, { ignore_units = 'yes' })
 
     local unit_in_way2 = wesnoth.get_unit(optimum_hop[1], optimum_hop[2])
     if (unit_in_way2 == messenger) then unit_in_way2 = nil end
     if unit_in_way2 then wesnoth.extract_unit(unit_in_way2) end
 
     wesnoth.put_unit(messenger, optimum_hop[1], optimum_hop[2])
-    local _, cost2 = wesnoth.find_path(messenger, x, y, { ignore_units = 'yes' })
+    local _, cost2 = AH.find_path_with_shroud(messenger, x, y, { ignore_units = 'yes' })
 
     wesnoth.put_unit(messenger, x_current, y_current)
     if unit_in_way then wesnoth.put_unit(unit_in_way) end

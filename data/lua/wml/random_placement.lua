@@ -1,5 +1,5 @@
-local helper = wesnoth.require "lua/helper.lua"
-local utils = wesnoth.require "lua/wml-utils.lua"
+local helper = wesnoth.require "helper"
+local utils = wesnoth.require "wml-utils"
 
 wesnoth.wml_actions.random_placement = function(cfg)
 	local parsed = helper.shallow_parsed(cfg)
@@ -32,6 +32,7 @@ wesnoth.wml_actions.random_placement = function(cfg)
 		wesnoth.set_variable(variable .. ".x", point[1])
 		wesnoth.set_variable(variable .. ".y", point[2])
 		wesnoth.set_variable(variable .. ".n", i)
+		wesnoth.set_variable(variable .. ".terrain", wesnoth.get_terrain(point[1], point[2]))
 		if distance < 0 then
 			-- optimisation: nothing to do for distance < 0
 		elseif distance == 0 then
@@ -46,7 +47,7 @@ wesnoth.wml_actions.random_placement = function(cfg)
 				local y1 = locs[j][2]
 				local x2 = point[1]
 				local y2 = point[2]
-				-- optimisation: same effect as "if helper.distance_between(x1,y1,x2,y2) <= distance then goto continue; end" but faster.
+				-- optimisation: same effect as "if wesnoth.map.distance_between(x1,y1,x2,y2) <= distance then goto continue; end" but faster.
 				local d_x = math_abs(x1-x2)
 				if d_x > distance then
 					goto continue

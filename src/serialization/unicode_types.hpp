@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SERIALIZATION_UNICODE_TYPES_HPP_INCLUDED
-#define SERIALIZATION_UNICODE_TYPES_HPP_INCLUDED
+#pragma once
 
 #include <string>
 #include <vector>
@@ -49,5 +48,3 @@ namespace utf16 {
 	typedef wchar_t char_t;
 	typedef std::vector<char_t> string;
 }
-
-#endif

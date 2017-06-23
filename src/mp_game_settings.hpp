@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by Jörg Hinrichs
+   Copyright (C) 2003 - 2017 by Jörg Hinrichs
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef MP_GAME_SETTINGS_HPP_INCLUDED
-#define MP_GAME_SETTINGS_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "gettext.hpp"
@@ -89,5 +88,3 @@ struct mp_game_settings
 	// and adds this as a requirement, updating the min_version if there was already an entry for this addon_id.
 	void update_addon_requirements(const config & addon_cfg);
 };
-
-#endif

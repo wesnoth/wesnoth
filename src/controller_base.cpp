@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -18,7 +18,7 @@
 #include "show_dialog.hpp" //gui::in_dialog
 #include "display.hpp"
 #include "events.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "log.hpp"
@@ -54,6 +54,11 @@ void controller_base::handle_event(const SDL_Event& event)
 	static const hotkey::hotkey_command& quit_hotkey = hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_QUIT_GAME);
 
 	switch(event.type) {
+	case SDL_TEXTINPUT:
+		if(have_keyboard_focus()) {
+			hotkey::key_event(event, get_hotkey_command_executor());
+		}
+		break;
 	case SDL_KEYDOWN:
 		// Detect key press events, unless there something that has keyboard focus
 		// in which case the key press events should go only to it.
@@ -107,7 +112,7 @@ void controller_base::handle_event(const SDL_Event& event)
 		}
 		break;
 	case SDL_MOUSEWHEEL:
-		get_mouse_handler_base().mouse_wheel(event.wheel.x, event.wheel.y, is_browsing());
+		get_mouse_handler_base().mouse_wheel(-event.wheel.x, event.wheel.y, is_browsing());
 		break;
 	default:
 		break;
@@ -133,7 +138,8 @@ void controller_base::process_keyup_event(const SDL_Event& /*event*/) {
 
 bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, double x_axis, double y_axis)
 {
-	bool mouse_in_window = (CVideo::get_singleton().window_state() & SDL_APPMOUSEFOCUS) != 0
+	sdl::window* window = CVideo::get_singleton().get_window();
+	bool mouse_in_window = (window != nullptr && (window->get_flags() & SDL_WINDOW_MOUSE_FOCUS) != 0)
 		|| preferences::get("scroll_when_mouse_outside", true);
 	int scroll_speed = preferences::scroll_speed();
 	int dx = 0, dy = 0;
@@ -276,7 +282,8 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	// be nice when window is not visible
 	// NOTE should be handled by display instead, to only disable drawing
-	if (is_delay_enabled && (CVideo::get_singleton().window_state() & SDL_APPACTIVE) == 0) {
+	sdl::window* window = CVideo::get_singleton().get_window();
+	if (window != nullptr && is_delay_enabled && (window->get_flags() & SDL_WINDOW_SHOWN) == 0) {
 		CVideo::delay(200);
 	}
 
@@ -286,26 +293,27 @@ void controller_base::play_slice(bool is_delay_enabled)
 	}
 }
 
-void controller_base::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
+void controller_base::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
-	hotkey::command_executor * cmd_exec = get_hotkey_command_executor();
-	if (!cmd_exec) {
+	hotkey::command_executor* cmd_exec = get_hotkey_command_executor();
+	if(!cmd_exec) {
 		return;
 	}
 
-	std::vector<std::string> items = items_arg;
-	std::vector<std::string>::iterator i = items.begin();
-	while(i != items.end()) {
-		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(*i);
-		if(!cmd_exec->can_execute_command(command)
-			|| (context_menu && !in_context_menu(command.id))) {
-			i = items.erase(i);
-			continue;
+	std::vector<config> items;
+	for(const config& c : items_arg) {
+		const std::string& id = c["id"];
+		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
+
+		if(cmd_exec->can_execute_command(command) && (!context_menu || in_context_menu(command.id))) {
+			items.emplace_back(config {"id", id});
 		}
-		++i;
 	}
-	if(items.empty())
+
+	if(items.empty()) {
 		return;
+	}
+
 	cmd_exec->show_menu(items, xloc, yloc, context_menu, disp);
 }
 

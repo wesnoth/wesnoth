@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2017 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of thie Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,6 @@
 #include "tests/utils/game_config_manager.hpp"
 #include "tests/utils/fake_display.hpp"
 
-#include "config_assign.hpp"
 #include "game_display.hpp"
 #include "saved_game.hpp"
 #include "game_initialization/playcampaign.hpp"

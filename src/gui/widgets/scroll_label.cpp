@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -39,16 +39,24 @@ namespace gui2
 
 REGISTER_WIDGET(scroll_label)
 
-scroll_label::scroll_label(bool wrap, const std::string& text_alignment)
-	: scrollbar_container(COUNT)
+scroll_label::scroll_label(bool wrap, const PangoAlignment text_alignment)
+	: scrollbar_container()
 	, state_(ENABLED)
-	, wrap_on(wrap)
-	, text_alignment(text_alignment)
+	, wrap_on_(wrap)
+	, text_alignment_(text_alignment)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-			std::bind(
-					&scroll_label::signal_handler_left_button_down, this, _2),
-			event::dispatcher::back_pre_child);
+		std::bind(&scroll_label::signal_handler_left_button_down, this, _2),
+		event::dispatcher::back_pre_child);
+}
+
+label* scroll_label::get_internal_label()
+{
+	if(content_grid()) {
+		return dynamic_cast<label*>(content_grid()->find("_label", false));
+	}
+
+	return nullptr;
 }
 
 void scroll_label::set_label(const t_string& lbl)
@@ -56,15 +64,25 @@ void scroll_label::set_label(const t_string& lbl)
 	// Inherit.
 	styled_widget::set_label(lbl);
 
-	if(content_grid()) {
-		label* widget
-				= find_widget<label>(content_grid(), "_label", false, true);
+	if(label* widget = get_internal_label()) {
 		widget->set_label(lbl);
 
-		// We want the width to stay cosistent
-		widget->request_reduce_width(widget->get_size().x);
+		bool resize_needed = !content_resize_request();
+		if(resize_needed && get_size() != point()) {
+			place(get_origin(), get_size());
+		}
+	}
+}
 
-		content_resize_request();
+void scroll_label::set_text_alignment(const PangoAlignment text_alignment)
+{
+	// Inherit.
+	styled_widget::set_text_alignment(text_alignment);
+
+	text_alignment_ = text_alignment;
+
+	if(label* widget = get_internal_label()) {
+		widget->set_text_alignment(text_alignment_);
 	}
 }
 
@@ -73,10 +91,22 @@ void scroll_label::set_use_markup(bool use_markup)
 	// Inherit.
 	styled_widget::set_use_markup(use_markup);
 
-	if(content_grid()) {
-		label* widget
-				= find_widget<label>(content_grid(), "_label", false, true);
+	if(label* widget = get_internal_label()) {
 		widget->set_use_markup(use_markup);
+	}
+}
+
+void scroll_label::set_text_alpha(unsigned short alpha)
+{
+	if(label* widget = get_internal_label()) {
+		widget->set_text_alpha(alpha);
+	}
+}
+
+void scroll_label::set_link_aware(bool l)
+{
+	if(label* widget = get_internal_label()) {
+		widget->set_link_aware(l);
 	}
 }
 
@@ -97,28 +127,27 @@ unsigned scroll_label::get_state() const
 
 void scroll_label::finalize_subclass()
 {
-	assert(content_grid());
-	label* lbl = dynamic_cast<label*>(content_grid()->find("_label", false));
-
+	label* lbl = get_internal_label();
 	assert(lbl);
+
 	lbl->set_label(get_label());
-	lbl->set_can_wrap(wrap_on);
-	lbl->set_text_alignment(decode_text_alignment(text_alignment));
+	lbl->set_can_wrap(wrap_on_);
+	lbl->set_text_alignment(text_alignment_);
+	lbl->set_use_markup(get_use_markup());
 }
 
 void scroll_label::set_can_wrap(bool can_wrap)
 {
-	assert(content_grid());
-	label* lbl = dynamic_cast<label*>(content_grid()->find("_label", false));
-
+	label* lbl = get_internal_label();
 	assert(lbl);
-	wrap_on = can_wrap;
-	lbl->set_can_wrap(wrap_on);
+
+	wrap_on_ = can_wrap;
+	lbl->set_can_wrap(wrap_on_);
 }
 
 bool scroll_label::can_wrap() const
 {
-	return wrap_on;
+	return wrap_on_;
 }
 
 const std::string& scroll_label::get_control_type() const
@@ -190,8 +219,8 @@ scroll_label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is scroll_label.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
-	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(cfg.child("state_disabled"));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
@@ -239,12 +268,10 @@ namespace implementation
 
 builder_scroll_label::builder_scroll_label(const config& cfg)
 	: implementation::builder_styled_widget(cfg)
-	, vertical_scrollbar_mode(
-			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
-	, horizontal_scrollbar_mode(
-			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
+	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, wrap_on(cfg["wrap"].to_bool(true))
-	, text_alignment(cfg["text_alignment"])
+	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 {
 }
 
@@ -258,8 +285,7 @@ widget* builder_scroll_label::build() const
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
 	std::shared_ptr<const scroll_label_definition::resolution>
-	conf = std::static_pointer_cast<const scroll_label_definition::resolution>(
-					widget->config());
+	conf = std::static_pointer_cast<const scroll_label_definition::resolution>(widget->config());
 	assert(conf);
 
 	widget->init_grid(conf->grid);

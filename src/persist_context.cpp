@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Jody Northup
+   Copyright (C) 2010 - 2017 by Jody Northup
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,15 +12,13 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "filesystem.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "persist_context.hpp"
 #include "persist_manager.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
-#include "util.hpp"
 
 config pack_scalar(const std::string &name, const t_string &val)
 {

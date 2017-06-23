@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * Composite AI with turn sequence which is a vector of stages
  */
 
-#ifndef AI_COMPOSITE_AI_HPP_INCLUDED
-#define AI_COMPOSITE_AI_HPP_INCLUDED
+#pragma once
 
 #include "ai/composite/contexts.hpp"
 #include "ai/composite/component.hpp"
@@ -108,7 +107,7 @@ public:
 	virtual std::string get_id() const;
 	virtual std::string get_name() const;
 	virtual std::string get_engine() const;
-	
+
 	static config preparse_cfg(ai_context& ctx, const config& cfg);
 
 protected:
@@ -135,6 +134,4 @@ protected:
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

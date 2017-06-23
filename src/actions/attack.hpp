@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,8 +19,7 @@
  * result of combat.
  */
 
-#ifndef ACTIONS_ATTACK_H_INCLUDED
-#define ACTIONS_ATTACK_H_INCLUDED
+#pragma once
 
 struct combatant;
 struct map_location;
@@ -48,7 +47,7 @@ inline unsigned swarm_blows(unsigned min_blows, unsigned max_blows, unsigned hp,
 /** Structure describing the statistics of a unit involved in the battle. */
 struct battle_context_unit_stats
 {
-	const attack_type *weapon;	/**< The weapon used by the unit to attack the opponent, or nullptr if there is none. */
+	const_attack_ptr weapon;	/**< The weapon used by the unit to attack the opponent, or nullptr if there is none. */
 	int attack_num;			/**< Index into unit->attacks() or -1 for none. */
 	bool is_attacker;		/**< True if the unit is the attacker. */
 	bool is_poisoned;		/**< True if the unit is poisoned at the beginning of the battle. */
@@ -85,13 +84,13 @@ struct battle_context_unit_stats
 	battle_context_unit_stats(const unit &u, const map_location& u_loc,
 		   int u_attack_num, bool attacking,
 		   const unit &opp, const map_location& opp_loc,
-		   const attack_type *opp_weapon,
+		   const_attack_ptr opp_weapon,
 		   const unit_map& units);
 
 	/** Used by AI for combat analysis */
 	battle_context_unit_stats(const unit_type* u_type,
-		   const attack_type* att_weapon, bool attacking,
-		   const unit_type* opp_type, const attack_type* opp_weapon,
+		   const_attack_ptr att_weapon, bool attacking,
+		   const unit_type* opp_type, const_attack_ptr opp_weapon,
 		   unsigned int opp_terrain_defense,
 		   int lawful_bonus = 0);
 
@@ -203,14 +202,13 @@ void attack_unit_and_advance(const map_location &attacker, const map_location &d
 				 const ai::unit_advancements_aspect& ai_advancement = ai::unit_advancements_aspect());
 
 /**
- * function which tests if the unit at loc is currently affected by leadership.
- * (i.e. has a higher-level 'leadership' unit next to it).
- * If it does, then the location of the leader unit will be returned,
- * Otherwise map_location::null_location() will be returned.
- * If 'bonus' is not nullptr, the % bonus will be stored in it.
+ * Tests if the unit at loc is currently affected by leadership.
+ * (i.e. has a higher-level unit with the 'leadership' ability next to it).
+ *
+ * Returns a pair of bonus percentage and the leader's location if the unit is affected,
+ * or 0 and map_location::null_location() otherwise.
  */
-map_location under_leadership(const unit_map& units, const map_location& loc,
-                              int* bonus=nullptr);
+std::pair<int, map_location> under_leadership(const unit_map& units, const map_location& loc);
 
 /**
  * Returns the amount that a unit's damage should be multiplied by
@@ -240,5 +238,3 @@ int generic_combat_modifier(int lawful_bonus, unit_type::ALIGNMENT alignment,
 bool backstab_check(const map_location& attacker_loc,
                     const map_location& defender_loc,
                     const unit_map& units, const std::vector<team>& teams);
-
-#endif

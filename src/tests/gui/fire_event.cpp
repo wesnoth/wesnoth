@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -94,12 +94,13 @@ static void add_widget(gui2::grid& grid
 static std::string set_event_order()
 {
 	return
-			"pre:root\n"
-			"pre:level 1\n"
-			"child:level 2\n"
-			"post:level 1\n"
-			"post:root\n";
-
+		"pre:root\n"
+		"pre:level 1\n"
+		"pre:level 2\n"
+		"child:level 2\n"
+		"post:level 2\n"
+		"post:level 1\n"
+		"post:root\n";
 }
 
 /** @todo Add the rest of the events. */

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,13 +11,14 @@
 
    See the COPYING file for more details.
 */
-#ifndef GAME_CONFIG_H_INCLUDED
-#define GAME_CONFIG_H_INCLUDED
+
+#pragma once
 
 class config;
 class version_info;
 class color_range;
 
+#include "color.hpp"
 #include "tstring.hpp"
 
 #include <vector>
@@ -34,13 +35,15 @@ namespace game_config
 	extern int rest_heal_amount;
 	extern int recall_cost;
 	extern int kill_experience;
-	extern int tile_size;
+	extern unsigned int tile_size;
 	extern unsigned lobby_network_timer;
 	extern unsigned lobby_refresh;
 	extern const std::string version;
 	extern const std::string revision;
 	extern const std::string default_title_string;
 	extern std::string default_terrain;
+
+	extern std::vector<unsigned int> zoom_levels;
 
 	inline int kill_xp(int level)
 	{
@@ -68,9 +71,10 @@ namespace game_config
 	extern std::vector<server_info> server_list;
 
 	extern std::string title_music,
-			lobby_music,
-			default_victory_music,
-			default_defeat_music;
+		lobby_music;
+
+	extern std::vector<std::string> default_defeat_music;
+	extern std::vector<std::string> default_victory_music;
 
 	namespace colors {
 	extern std::string unmoved_orb_color,
@@ -127,15 +131,15 @@ namespace game_config
 	extern double hex_semi_brightening;
 
 	extern std::string flag_rgb, unit_rgb;
-	extern std::vector<uint32_t> red_green_scale;
-	extern std::vector<uint32_t> red_green_scale_text;
+	extern std::vector<color_t> red_green_scale;
+	extern std::vector<color_t> red_green_scale_text;
 
 	extern std::vector<std::string> foot_speed_prefix;
 	extern std::string foot_teleport_enter, foot_teleport_exit;
 
 	extern std::map<std::string, color_range> team_rgb_range;
 	extern std::map<std::string, t_string> team_rgb_name;
-	extern std::map<std::string, std::vector<uint32_t> > team_rgb_colors;
+	extern std::map<std::string, std::vector<color_t>> team_rgb_colors;
 
 	extern std::vector<std::string> default_colors;
 
@@ -165,7 +169,8 @@ namespace game_config
 	void load_config(const config &cfg);
 
 	void add_color_info(const config& v);
-	const std::vector<uint32_t>& tc_info(const std::string& name);
+	void reset_color_info();
+	const std::vector<color_t>& tc_info(const std::string& name);
 	const color_range& color_info(const std::string& name);
 
 	/**
@@ -175,8 +180,8 @@ namespace game_config
 	 * red_green_scale and red_green_scale_text
 	 */
 
-	uint32_t red_to_green(int val, bool for_text = true);
-	uint32_t blue_to_white(int val, bool for_text = true);
+	color_t red_to_green(int val, bool for_text = true);
+	color_t blue_to_white(int val, bool for_text = true);
 
 	extern const version_info wesnoth_version;
 	extern const version_info min_savegame_version;
@@ -184,5 +189,3 @@ namespace game_config
 
 	std::string get_default_title_string();
 }
-
-#endif

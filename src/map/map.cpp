@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,8 +18,6 @@
  */
 
 #include "map/map.hpp"
-
-#include "global.hpp"
 
 #include "config.hpp"
 #include "formula/string_utils.hpp"
@@ -445,7 +443,7 @@ std::vector<map_location> gamemap::parse_location_range(const std::string &x, co
 
 		for(int x2 = xrange.first; x2 <= xrange.second; ++x2) {
 			for(int y2 = yrange.first; y2 <= yrange.second; ++y2) {
-				res.push_back(map_location(x2-1,y2-1));
+				res.emplace_back(x2-1,y2-1);
 			}
 		}
 	}

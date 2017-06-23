@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef TEAM_H_INCLUDED
-#define TEAM_H_INCLUDED
+
+#pragma once
 
 #include "color_range.hpp"
 #include "game_config.hpp"
@@ -20,7 +20,6 @@
 #include "map/location.hpp"
 #include "recall_list_manager.hpp"
 #include "units/ptr.hpp"
-#include "util.hpp"
 #include "config.hpp"
 
 #include <set>
@@ -361,9 +360,9 @@ public:
 
 	//function which, when given a 1-based side will return the color used by that side.
 	static const color_range get_side_color_range(int side);
-	static uint32_t get_side_rgb(int side) { return(get_side_color_range(side).mid()); }
-	static uint32_t get_side_rgb_max(int side) { return(get_side_color_range(side).max()); }
-	static uint32_t get_side_rgb_min(int side) { return(get_side_color_range(side).min()); }
+	static color_t get_side_rgb(int side) { return(get_side_color_range(side).mid()); }
+	static color_t get_side_rgb_max(int side) { return(get_side_color_range(side).max()); }
+	static color_t get_side_rgb_min(int side) { return(get_side_color_range(side).min()); }
 	static color_t get_side_color(int side);
 	static color_t get_minimap_color(int side);
 	static std::string get_side_color_index(int side);
@@ -433,6 +432,3 @@ private:
 //function which will validate a side. Throws game::game_error
 //if the side is invalid
 void validate_side(int side); //throw game::game_error
-
-#endif
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_LABEL_HPP_INCLUDED
-#define GUI_WIDGETS_LABEL_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/styled_widget.hpp"
 
@@ -41,7 +40,7 @@ public:
 	virtual bool get_link_aware() const override;
 
 	/** See @ref styled_widget::get_link_aware. */
-	virtual std::string get_link_color() const override;
+	virtual color_t get_link_color() const override;
 
 	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;
@@ -66,9 +65,17 @@ public:
 
 	void set_link_aware(bool l);
 
-	void set_link_color(const std::string & color);
+	void set_link_color(const color_t& color);
 
 	virtual bool can_mouse_focus() const override { return !tooltip().empty(); }
+
+	void set_can_shrink(bool can_shrink)
+	{
+		can_shrink_ = can_shrink;
+	}
+
+	void set_text_alpha(unsigned short alpha);
+
 private:
 	/**
 	 * Possible states of the widget.
@@ -78,7 +85,6 @@ private:
 	enum state_t {
 		ENABLED,
 		DISABLED,
-		COUNT
 	};
 
 	void set_state(const state_t state);
@@ -110,7 +116,17 @@ private:
 	/**
 	 * What color links will be rendered in.
 	 */
-	std::string link_color_;
+	color_t link_color_;
+
+	bool can_shrink_;
+
+	unsigned short text_alpha_;
+
+	/** Inherited from styled_widget. */
+	virtual bool text_can_shrink() override
+	{
+		return can_shrink_;
+	}
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
@@ -143,7 +159,7 @@ struct label_definition : public styled_widget_definition
 		explicit resolution(const config& cfg);
 
 		bool link_aware;
-		std::string link_color;
+		color_t link_color;
 	};
 };
 
@@ -165,6 +181,8 @@ struct builder_label : public builder_styled_widget
 	unsigned characters_per_line;
 
 	PangoAlignment text_alignment;
+
+	bool can_shrink;
 };
 
 } // namespace implementation
@@ -172,5 +190,3 @@ struct builder_label : public builder_styled_widget
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

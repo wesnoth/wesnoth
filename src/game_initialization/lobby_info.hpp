@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2009 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef INC_LOBBY_INFO
-#define INC_LOBBY_INFO
+#pragma once
 
 #include "config.hpp"
 #include "game_initialization/lobby_data.hpp"
@@ -75,7 +74,7 @@ public:
 	room_info* get_room(const std::string& name);
 	const room_info* get_room(const std::string& name) const;
 
-	user_info& get_user(const std::string& name);
+	user_info* get_user(const std::string& name);
 
 	chat_session& get_whisper_log(const std::string& name);
 
@@ -139,4 +138,3 @@ void do_notify(notify_mode mode, const std::string & sender, const std::string &
 inline void do_notify(notify_mode mode) { do_notify(mode, "", ""); }
 
 }
-#endif

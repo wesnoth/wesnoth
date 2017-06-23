@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -39,7 +39,7 @@
 #include "actions/attack.hpp"
 #include "actions/create.hpp"
 #include "attack_prediction.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "mouse_handler_base.hpp"
@@ -166,7 +166,7 @@ game_info& action_result::get_info() const
 
 team& action_result::get_my_team() const
 {
-	return resources::gameboard->teams()[side_-1];
+	return resources::gameboard->get_team(side_);
 }
 
 
@@ -178,17 +178,17 @@ attack_result::attack_result( side_number side, const map_location& attacker_loc
 void attack_result::do_check_before()
 {
 	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
-	const unit_map::const_iterator attacker = resources::units->find(attacker_loc_);
-	const unit_map::const_iterator defender = resources::units->find(defender_loc_);
+	const unit_map::const_iterator attacker = resources::gameboard->units().find(attacker_loc_);
+	const unit_map::const_iterator defender = resources::gameboard->units().find(defender_loc_);
 
-	if(attacker==resources::units->end())
+	if(attacker==resources::gameboard->units().end())
 	{
 		LOG_AI_ACTIONS << "attempt to attack without attacker\n";
 		set_error(E_EMPTY_ATTACKER);
 		return;
 	}
 
-	if (defender==resources::units->end())
+	if (defender==resources::gameboard->units().end())
 	{
 		LOG_AI_ACTIONS << "attempt to attack without defender\n";
 		set_error(E_EMPTY_DEFENDER);
@@ -263,7 +263,7 @@ void attack_result::do_execute()
 	// Stop the user from issuing any commands while the unit is attacking
 	const events::command_disabler disable_commands;
 	//@note: yes, this is a decision done here. It's that way because we want to allow a simpler attack 'with whatever weapon is considered best', and because we want to allow the defender to pick it's weapon. That's why aggression is needed. a cleaner solution is needed.
-	battle_context bc(*resources::units, attacker_loc_,
+	battle_context bc(resources::gameboard->units(), attacker_loc_,
 		defender_loc_, attacker_weapon_, -1, aggression_);
 
 	int attacker_weapon = bc.get_attacker_stats().attack_num;
@@ -274,8 +274,8 @@ void attack_result::do_execute()
 		return;
 	}
 
-	const unit_map::const_iterator a_ = resources::units->find(attacker_loc_);
-	const unit_map::const_iterator d_ = resources::units->find(defender_loc_);
+	const unit_map::const_iterator a_ = resources::gameboard->units().find(attacker_loc_);
+	const unit_map::const_iterator d_ = resources::gameboard->units().find(defender_loc_);
 
 	if(resources::simulation_){
 		bool gamestate_changed = simulated_attack(attacker_loc_, defender_loc_, bc.get_attacker_combatant().average_hp(), bc.get_defender_combatant().average_hp());
@@ -340,8 +340,8 @@ move_result::move_result(side_number side, const map_location& from,
 
 const unit *move_result::get_unit()
 {
-	unit_map::const_iterator un = resources::units->find(from_);
-	if (un==resources::units->end()){
+	unit_map::const_iterator un = resources::gameboard->units().find(from_);
+	if (un==resources::gameboard->units().end()){
 		set_error(E_NO_UNIT);
 		return nullptr;
 	}
@@ -456,7 +456,7 @@ void move_result::do_execute()
 			assert(remove_movement_);
 		}
 
-		unit_map::const_iterator un = resources::units->find(unit_location_);
+		unit_map::const_iterator un = resources::gameboard->units().find(unit_location_);
 		if(remove_movement_ && un->movement_left() > 0 && unit_location_ == to_){
 			gamestate_changed = simulated_stopunit(unit_location_, true, false);
 		}
@@ -466,8 +466,8 @@ void move_result::do_execute()
 		return;
 	}
 
-	::actions::move_unit_spectator move_spectator(*resources::units);
-	move_spectator.set_unit(resources::units->find(from_));
+	::actions::move_unit_spectator move_spectator(resources::gameboard->units());
+	move_spectator.set_unit(resources::gameboard->units().find(from_));
 
 	if (from_ != to_) {
 		size_t num_steps = ::actions::move_unit_and_record(
@@ -571,9 +571,7 @@ void recall_result::do_check_before()
 	}
 
 	// Leader available for recalling?
-	switch ( ::actions::check_recall_location(get_side(), recall_location_,
-	                                          recall_from_, *to_recall) )
-	{
+	switch(::actions::check_recall_location(get_side(), recall_location_, recall_from_, *to_recall)) {
 	case ::actions::RECRUIT_NO_LEADER:
 	case ::actions::RECRUIT_NO_ABLE_LEADER:
 		set_error(E_NO_LEADER);
@@ -588,11 +586,11 @@ void recall_result::do_check_before()
 		return;
 
 	case ::actions::RECRUIT_ALTERNATE_LOCATION:
-		if ( location_specified ) {
+		if(location_specified) {
 			set_error(E_BAD_RECALL_LOCATION);
 			return;
 		}
-		// No break. If the location was not specified, this counts as "OK".
+		FALLTHROUGH; // If the location was not specified, this counts as "OK".
 	case ::actions::RECRUIT_OK:
 		location_checked_ = true;
 	}
@@ -605,8 +603,8 @@ void recall_result::do_check_after()
 		return;
 	}
 
-	unit_map::const_iterator unit = resources::units->find(recall_location_);
-	if (unit==resources::units->end()){
+	unit_map::const_iterator unit = resources::gameboard->units().find(recall_location_);
+	if (unit==resources::gameboard->units().end()){
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
@@ -723,9 +721,7 @@ void recruit_result::do_check_before()
 	}
 
 	// Leader available for recruiting?
-	switch ( ::actions::check_recruit_location(get_side(), recruit_location_,
-	                                           recruit_from_, unit_name_) )
-	{
+	switch(::actions::check_recruit_location(get_side(), recruit_location_, recruit_from_, unit_name_)) {
 	case ::actions::RECRUIT_NO_LEADER:
 	case ::actions::RECRUIT_NO_ABLE_LEADER:
 		set_error(E_NO_LEADER);
@@ -740,11 +736,11 @@ void recruit_result::do_check_before()
 		return;
 
 	case ::actions::RECRUIT_ALTERNATE_LOCATION:
-		if ( location_specified ) {
+		if(location_specified) {
 			set_error(E_BAD_RECRUIT_LOCATION);
 			return;
 		}
-		// No break. If the location was not specified, this counts as "OK".
+		FALLTHROUGH; // If the location was not specified, this counts as "OK".
 	case ::actions::RECRUIT_OK:
 		location_checked_ = true;
 	}
@@ -757,8 +753,8 @@ void recruit_result::do_check_after()
 		return;
 	}
 
-	unit_map::const_iterator unit = resources::units->find(recruit_location_);
-	if (unit==resources::units->end()) {
+	unit_map::const_iterator unit = resources::gameboard->units().find(recruit_location_);
+	if (unit==resources::gameboard->units().end()) {
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
@@ -831,8 +827,8 @@ stopunit_result::stopunit_result( side_number side, const map_location& unit_loc
 
 const unit *stopunit_result::get_unit()
 {
-	unit_map::const_iterator un = resources::units->find(unit_location_);
-	if (un==resources::units->end()){
+	unit_map::const_iterator un = resources::gameboard->units().find(unit_location_);
+	if (un==resources::gameboard->units().end()){
 		set_error(E_NO_UNIT);
 		return nullptr;
 	}
@@ -859,8 +855,8 @@ void stopunit_result::do_check_before()
 
 void stopunit_result::do_check_after()
 {
-	unit_map::const_iterator un = resources::units->find(unit_location_);
-	if (un==resources::units->end()){
+	unit_map::const_iterator un = resources::gameboard->units().find(unit_location_);
+	if (un==resources::gameboard->units().end()){
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
@@ -897,7 +893,7 @@ void stopunit_result::do_execute()
 {
 	LOG_AI_ACTIONS << "start of execution of: " << *this << std::endl;
 	assert(is_success());
-	unit_map::iterator un = resources::units->find(unit_location_);
+	unit_map::iterator un = resources::gameboard->units().find(unit_location_);
 
 	if(resources::simulation_){
 		bool gamestate_changed = simulated_stopunit(unit_location_, remove_movement_, remove_attacks_);
@@ -1063,46 +1059,46 @@ synced_command_result_ptr actions::execute_synced_command_action( side_number si
 const std::string& actions::get_error_name(int error_code)
 {
 	if (error_names_.empty()){
-		error_names_.insert(std::make_pair(action_result::AI_ACTION_SUCCESS,"action_result::AI_ACTION_SUCCESS"));
-		error_names_.insert(std::make_pair(action_result::AI_ACTION_STARTED,"action_result::AI_ACTION_STARTED"));
-		error_names_.insert(std::make_pair(action_result::AI_ACTION_FAILURE,"action_result::AI_ACTION_FAILURE"));
+		error_names_.emplace(action_result::AI_ACTION_SUCCESS, "action_result::AI_ACTION_SUCCESS");
+		error_names_.emplace(action_result::AI_ACTION_STARTED, "action_result::AI_ACTION_STARTED");
+		error_names_.emplace(action_result::AI_ACTION_FAILURE, "action_result::AI_ACTION_FAILURE");
 
-		error_names_.insert(std::make_pair(attack_result::E_EMPTY_ATTACKER,"attack_result::E_EMPTY_ATTACKER"));
-		error_names_.insert(std::make_pair(attack_result::E_EMPTY_DEFENDER,"attack_result::E_EMPTY_DEFENDER"));
-		error_names_.insert(std::make_pair(attack_result::E_INCAPACITATED_ATTACKER,"attack_result::E_INCAPACITATED_ATTACKER"));
-		error_names_.insert(std::make_pair(attack_result::E_INCAPACITATED_DEFENDER,"attack_result::E_INCAPACITATED_DEFENDER"));
-		error_names_.insert(std::make_pair(attack_result::E_NOT_OWN_ATTACKER,"attack_result::E_NOT_OWN_ATTACKER"));
-		error_names_.insert(std::make_pair(attack_result::E_NOT_ENEMY_DEFENDER,"attack_result::E_NOT_ENEMY_DEFENDER"));
-		error_names_.insert(std::make_pair(attack_result::E_NO_ATTACKS_LEFT,"attack_result::E_NO_ATTACKS_LEFT"));
-		error_names_.insert(std::make_pair(attack_result::E_WRONG_ATTACKER_WEAPON,"attack_result::E_WRONG_ATTACKER_WEAPON"));
-		error_names_.insert(std::make_pair(attack_result::E_UNABLE_TO_CHOOSE_ATTACKER_WEAPON,"attack_result::E_UNABLE_TO_CHOOSE_ATTACKER_WEAPON"));
-		error_names_.insert(std::make_pair(attack_result::E_ATTACKER_AND_DEFENDER_NOT_ADJACENT,"attack_result::E_ATTACKER_AND_DEFENDER_NOT_ADJACENT"));
+		error_names_.emplace(attack_result::E_EMPTY_ATTACKER, "attack_result::E_EMPTY_ATTACKER");
+		error_names_.emplace(attack_result::E_EMPTY_DEFENDER, "attack_result::E_EMPTY_DEFENDER");
+		error_names_.emplace(attack_result::E_INCAPACITATED_ATTACKER, "attack_result::E_INCAPACITATED_ATTACKER");
+		error_names_.emplace(attack_result::E_INCAPACITATED_DEFENDER, "attack_result::E_INCAPACITATED_DEFENDER");
+		error_names_.emplace(attack_result::E_NOT_OWN_ATTACKER, "attack_result::E_NOT_OWN_ATTACKER");
+		error_names_.emplace(attack_result::E_NOT_ENEMY_DEFENDER, "attack_result::E_NOT_ENEMY_DEFENDER");
+		error_names_.emplace(attack_result::E_NO_ATTACKS_LEFT, "attack_result::E_NO_ATTACKS_LEFT");
+		error_names_.emplace(attack_result::E_WRONG_ATTACKER_WEAPON, "attack_result::E_WRONG_ATTACKER_WEAPON");
+		error_names_.emplace(attack_result::E_UNABLE_TO_CHOOSE_ATTACKER_WEAPON, "attack_result::E_UNABLE_TO_CHOOSE_ATTACKER_WEAPON");
+		error_names_.emplace(attack_result::E_ATTACKER_AND_DEFENDER_NOT_ADJACENT," attack_result::E_ATTACKER_AND_DEFENDER_NOT_ADJACENT");
 
-		error_names_.insert(std::make_pair(move_result::E_EMPTY_MOVE,"move_result::E_EMPTY_MOVE"));
-		error_names_.insert(std::make_pair(move_result::E_NO_UNIT,"move_result::E_NO_UNIT"));
-		error_names_.insert(std::make_pair(move_result::E_NOT_OWN_UNIT,"move_result::E_NOT_OWN_UNIT"));
-		error_names_.insert(std::make_pair(move_result::E_INCAPACITATED_UNIT,"move_result::E_INCAPACITATED_UNIT"));
-		error_names_.insert(std::make_pair(move_result::E_AMBUSHED,"move_result::E_AMBUSHED"));
-		error_names_.insert(std::make_pair(move_result::E_FAILED_TELEPORT,"move_result::E_FAILED_TELEPORT"));
-		error_names_.insert(std::make_pair(move_result::E_NOT_REACHED_DESTINATION,"move_result::E_NOT_REACHED_DESTINATION"));
-		error_names_.insert(std::make_pair(move_result::E_NO_ROUTE,"move_result::E_NO_ROUTE"));
+		error_names_.emplace(move_result::E_EMPTY_MOVE, "move_result::E_EMPTY_MOVE");
+		error_names_.emplace(move_result::E_NO_UNIT, "move_result::E_NO_UNIT");
+		error_names_.emplace(move_result::E_NOT_OWN_UNIT, "move_result::E_NOT_OWN_UNIT");
+		error_names_.emplace(move_result::E_INCAPACITATED_UNIT, "move_result::E_INCAPACITATED_UNIT");
+		error_names_.emplace(move_result::E_AMBUSHED, "move_result::E_AMBUSHED");
+		error_names_.emplace(move_result::E_FAILED_TELEPORT, "move_result::E_FAILED_TELEPORT");
+		error_names_.emplace(move_result::E_NOT_REACHED_DESTINATION, "move_result::E_NOT_REACHED_DESTINATION");
+		error_names_.emplace(move_result::E_NO_ROUTE, "move_result::E_NO_ROUTE");
 
-		error_names_.insert(std::make_pair(recall_result::E_NOT_AVAILABLE_FOR_RECALLING,"recall_result::E_NOT_AVAILABLE_FOR_RECALLING"));
-		error_names_.insert(std::make_pair(recall_result::E_NO_GOLD,"recall_result::E_NO_GOLD"));
-		error_names_.insert(std::make_pair(recall_result::E_NO_LEADER,"recall_result::E_NO_LEADER"));
-		error_names_.insert(std::make_pair(recall_result::E_LEADER_NOT_ON_KEEP,"recall_result::E_LEADER_NOT_ON_KEEP"));
-		error_names_.insert(std::make_pair(recall_result::E_BAD_RECALL_LOCATION,"recall_result::E_BAD_RECALL_LOCATION"));
+		error_names_.emplace(recall_result::E_NOT_AVAILABLE_FOR_RECALLING, "recall_result::E_NOT_AVAILABLE_FOR_RECALLING");
+		error_names_.emplace(recall_result::E_NO_GOLD, "recall_result::E_NO_GOLD");
+		error_names_.emplace(recall_result::E_NO_LEADER," recall_result::E_NO_LEADER");
+		error_names_.emplace(recall_result::E_LEADER_NOT_ON_KEEP, "recall_result::E_LEADER_NOT_ON_KEEP");
+		error_names_.emplace(recall_result::E_BAD_RECALL_LOCATION, "recall_result::E_BAD_RECALL_LOCATION");
 
-		error_names_.insert(std::make_pair(recruit_result::E_NOT_AVAILABLE_FOR_RECRUITING,"recruit_result::E_NOT_AVAILABLE_FOR_RECRUITING"));
-		error_names_.insert(std::make_pair(recruit_result::E_UNKNOWN_OR_DUMMY_UNIT_TYPE,"recruit_result::E_UNKNOWN_OR_DUMMY_UNIT_TYPE"));
-		error_names_.insert(std::make_pair(recruit_result::E_NO_GOLD,"recruit_result::E_NO_GOLD"));
-		error_names_.insert(std::make_pair(recruit_result::E_NO_LEADER,"recruit_result::E_NO_LEADER"));
-		error_names_.insert(std::make_pair(recruit_result::E_LEADER_NOT_ON_KEEP,"recruit_result::E_LEADER_NOT_ON_KEEP"));
-		error_names_.insert(std::make_pair(recruit_result::E_BAD_RECRUIT_LOCATION,"recruit_result::E_BAD_RECRUIT_LOCATION"));
+		error_names_.emplace(recruit_result::E_NOT_AVAILABLE_FOR_RECRUITING, "recruit_result::E_NOT_AVAILABLE_FOR_RECRUITING");
+		error_names_.emplace(recruit_result::E_UNKNOWN_OR_DUMMY_UNIT_TYPE, "recruit_result::E_UNKNOWN_OR_DUMMY_UNIT_TYPE");
+		error_names_.emplace(recruit_result::E_NO_GOLD, "recruit_result::E_NO_GOLD");
+		error_names_.emplace(recruit_result::E_NO_LEADER, "recruit_result::E_NO_LEADER");
+		error_names_.emplace(recruit_result::E_LEADER_NOT_ON_KEEP, "recruit_result::E_LEADER_NOT_ON_KEEP");
+		error_names_.emplace(recruit_result::E_BAD_RECRUIT_LOCATION, "recruit_result::E_BAD_RECRUIT_LOCATION");
 
-		error_names_.insert(std::make_pair(stopunit_result::E_NO_UNIT,"stopunit_result::E_NO_UNIT"));
-		error_names_.insert(std::make_pair(stopunit_result::E_NOT_OWN_UNIT,"stopunit_result::E_NOT_OWN_UNIT"));
-		error_names_.insert(std::make_pair(stopunit_result::E_INCAPACITATED_UNIT,"stopunit_result::E_INCAPACITATED_UNIT"));
+		error_names_.emplace(stopunit_result::E_NO_UNIT, "stopunit_result::E_NO_UNIT");
+		error_names_.emplace(stopunit_result::E_NOT_OWN_UNIT, "stopunit_result::E_NOT_OWN_UNIT");
+		error_names_.emplace(stopunit_result::E_INCAPACITATED_UNIT, "stopunit_result::E_INCAPACITATED_UNIT");
 	}
 	std::map<int,std::string>::iterator i = error_names_.find(error_code);
 	if (i==error_names_.end()){

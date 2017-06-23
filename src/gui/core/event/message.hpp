@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,12 +19,11 @@
  * The class is used in the @ref gui2::event::signal_message_function
  */
 
-#ifndef GUI_WIDGETS_AUXILIARY_EVENT_MESSAGE_HPP_INCLUDED
-#define GUI_WIDGETS_AUXILIARY_EVENT_MESSAGE_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/helper.hpp"
 
-#include <SDL.h>
+#include <SDL_rect.h>
 
 namespace gui2
 {
@@ -46,6 +45,11 @@ namespace event
  */
 struct message
 {
+	message() = default;
+
+	// Disallow copying because constructing a copy loses the exact type.
+	message(const message&) = delete;
+
 	virtual ~message()
 	{
 	}
@@ -90,5 +94,3 @@ struct message_show_helptip : public message
 } // namespace event
 
 } // namespace gui2
-
-#endif

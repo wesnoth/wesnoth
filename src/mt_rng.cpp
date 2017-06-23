@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,7 @@ static lg::log_domain log_random("random");
 #define ERR_RND LOG_STREAM(err, log_random)
 
 
-namespace rand_rng
+namespace randomness
 {
 
 mt_rng::mt_rng() :
@@ -80,7 +80,8 @@ void mt_rng::seed_random(const uint32_t seed, const unsigned int call_count)
 {
 	random_seed_ = seed;
 	mt_.seed(random_seed_);
-	discard(call_count); //mt_.discard(call_count);
+	mt_.discard(call_count);
+	random_calls_ += call_count;
 	DBG_RND << "Seeded random with " << std::hex << random_seed_ << std::dec << " with "
 		<< random_calls_ << " calls." << std::endl;
 }
@@ -105,12 +106,5 @@ std::string mt_rng::get_random_seed_str() const {
 	return stream.str();
 }
 
-void mt_rng::discard(const unsigned int call_count)
-{
-	for(unsigned int i = 0; i < call_count; ++i) {
-		get_next_random();
-	}
-}
-
-} // ends rand_rng namespace
+} // ends randomness namespace
 

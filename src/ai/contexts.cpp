@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,8 +19,6 @@
  */
 
 #include "ai/contexts.hpp"
-
-#include "global.hpp"
 
 #include "actions/attack.hpp"
 
@@ -50,7 +48,7 @@
 #include "terrain/translation.hpp"      // for terrain_code
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"           // for tod_manager
-#include "units/unit.hpp"                  // for unit, intrusive_ptr_release, etc
+#include "units/unit.hpp"                  // for unit
 #include "units/map.hpp"  // for unit_map::iterator_base, etc
 #include "units/ptr.hpp"                 // for unit_ptr
 #include "units/types.hpp"  // for attack_type, unit_type, etc
@@ -106,11 +104,11 @@ void readwrite_context_impl::raise_gamestate_changed() const
 
 team& readwrite_context_impl::current_team_w()
 {
-	return resources::gameboard->teams()[get_side()-1];
+	return resources::gameboard->get_team(get_side());
 }
 
 attack_result_ptr readwrite_context_impl::execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
-	unit_map::iterator i = resources::units->find(attacker_loc);
+	unit_map::iterator i = resources::gameboard->units().find(attacker_loc);
 	double m_aggression = i.valid() && i->can_recruit() ? get_leader_aggression() : get_aggression();
 	const unit_advancements_aspect& m_advancements = get_advancements();
 	return actions::execute_attack_action(get_side(),true,attacker_loc,defender_loc,attacker_weapon, m_aggression, m_advancements);
@@ -118,7 +116,7 @@ attack_result_ptr readwrite_context_impl::execute_attack_action(const map_locati
 
 
 attack_result_ptr readonly_context_impl::check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
-	unit_map::iterator i = resources::units->find(attacker_loc);
+	unit_map::iterator i = resources::gameboard->units().find(attacker_loc);
 	double m_aggression = i.valid() && i->can_recruit() ? get_leader_aggression() : get_aggression();
 	const unit_advancements_aspect& m_advancements = get_advancements();
 	return actions::execute_attack_action(get_side(),false,attacker_loc,defender_loc,attacker_weapon, m_aggression, m_advancements);
@@ -179,7 +177,7 @@ template<typename T>
 void readonly_context_impl::add_known_aspect(const std::string &name, std::shared_ptr< typesafe_aspect <T> > &where)
 {
 	std::shared_ptr< typesafe_known_aspect <T> > ka_ptr(new typesafe_known_aspect<T>(name,where,aspects_));
-	known_aspects_.insert(make_pair(name,ka_ptr));
+	known_aspects_.emplace(name,ka_ptr);
 }
 
 readonly_context_impl::readonly_context_impl(side_context &context, const config &cfg)
@@ -335,7 +333,7 @@ void readonly_context_impl::diagnostic(const std::string& msg)
 
 const team& readonly_context_impl::current_team() const
 {
-	return resources::gameboard->teams()[get_side()-1];
+	return resources::gameboard->get_team(get_side());
 }
 
 
@@ -352,7 +350,7 @@ void readonly_context_impl::calculate_possible_moves(std::map<map_location,pathf
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
 		const terrain_filter* remove_destinations) const
 {
-  calculate_moves(*resources::units,res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
+  calculate_moves(resources::gameboard->units(),res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
 }
 
 void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_location,pathfind::paths>& res, move_map& srcdst,
@@ -393,18 +391,16 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 		/**
 		 * @todo This is where support for a speculative unit map is incomplete.
 		 *       There are several places (deep) within the paths constructor
-		 *       where *resources::units is assumed to be the unit map. Rather
+		 *       where resources::gameboard->units() is assumed to be the unit map. Rather
 		 *       than introduce a new parameter to numerous functions, a better
 		 *       solution may be for the creator of the speculative map (if one
-		 *       is used in the future) to cause resources::units to point to
+		 *       is used in the future) to cause resources::gameboard->units() to point to
 		 *       that map (and restore the "real" pointer when the speculating
 		 *       is completed). If that approach is adopted, calculate_moves()
 		 *       and calculate_possible_moves() become redundant, and one of
 		 *       them should probably be eliminated.
 		 */
-		res.insert(std::pair<map_location,pathfind::paths>(
-			un_it->get_location(), pathfind::paths(
-				*un_it, false, true, current_team(), 0, see_all)));
+		res.emplace(un_it->get_location(), pathfind::paths(*un_it, false, true, current_team(), 0, see_all));
 	}
 
 	// deactivate terrain filtering if it's just the dummy 'matches nothing'
@@ -443,9 +439,9 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 				continue;
 			}
 
-			if(src != dst && (resources::gameboard->find_visible_unit(dst, current_team()) == resources::units->end()) ) {
-				srcdst.insert(std::pair<map_location,map_location>(src,dst));
-				dstsrc.insert(std::pair<map_location,map_location>(dst,src));
+			if(src != dst && (resources::gameboard->find_visible_unit(dst, current_team()) == resources::gameboard->units().end()) ) {
+				srcdst.emplace(src, dst);
+				dstsrc.emplace(dst, src);
 			}
 		}
 	}
@@ -478,8 +474,8 @@ void readonly_context_impl::add_facet(const std::string &id, const config &cfg) 
 const defensive_position& readonly_context_impl::best_defensive_position(const map_location& loc,
 		const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const
 {
-	const unit_map::const_iterator itor = resources::units->find(loc);
-	if(itor == resources::units->end()) {
+	const unit_map::const_iterator itor = resources::gameboard->units().find(loc);
+	if(itor == resources::gameboard->units().end()) {
 		static defensive_position pos;
 		pos.chance_to_hit = 0;
 		pos.vulnerability = pos.support = 0;
@@ -517,7 +513,7 @@ const defensive_position& readonly_context_impl::best_defensive_position(const m
 		}
 	}
 
-	defensive_position_cache_.insert(std::pair<map_location,defensive_position>(loc,pos));
+	defensive_position_cache_.emplace(loc, pos);
 	return defensive_position_cache_[loc];
 }
 
@@ -579,12 +575,12 @@ const attacks_vector& readonly_context_impl::get_attacks() const
 }
 
 
-const variant& readonly_context_impl::get_attacks_as_variant() const
+const wfl::variant& readonly_context_impl::get_attacks_as_variant() const
 {
 	if (attacks_) {
 		return attacks_->get_variant();
 	}
-	static variant v;///@todo 1.9: replace with variant::null_variant;
+	static wfl::variant v;///@todo 1.9: replace with variant::null_variant;
 	return v;
 }
 
@@ -1004,8 +1000,8 @@ const std::set<map_location>& keeps_cache::get()
 
 bool readonly_context_impl::leader_can_reach_keep() const
 {
-	const unit_map::iterator leader = resources::units->find_leader(get_side());
-	if(leader == resources::units->end() || leader->incapacitated()) {
+	const unit_map::iterator leader = resources::gameboard->units().find_leader(get_side());
+	if(leader == resources::gameboard->units().end() || leader->incapacitated()) {
 		return false;
 	}
 
@@ -1066,7 +1062,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 	get_adjacent_tiles(loc,locs);
 
 	const gamemap& map_ = resources::gameboard->map();
-	unit_map& units_ = *resources::units;
+	unit_map& units_ = resources::gameboard->units();
 
 	int res = 0;
 
@@ -1123,8 +1119,8 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			}
 
 			// The 0.5 power avoids underestimating too much the damage of a wounded unit.
-			int hp = int(sqrt(double(un.hitpoints()) / un.max_hitpoints()) * 1000);
-			int most_damage = 0;
+			int64_t hp = int(sqrt(double(un.hitpoints()) / un.max_hitpoints()) * 1000);
+			int64_t most_damage = 0;
 			for(const attack_type &att : un.attacks())
 			{
 				int damage = att.damage() * att.num_attacks() * (100 + tod_modifier);
@@ -1133,9 +1129,13 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 				}
 			}
 
-			int village_bonus = map_.is_village(terrain) ? 3 : 2;
-			int defense = 100 - un.defense_modifier(terrain);
-			int rating = hp * defense * most_damage * village_bonus / 200;
+			int64_t village_bonus = map_.is_village(terrain) ? 3 : 2;
+			int64_t defense = 100 - un.defense_modifier(terrain);
+			int64_t rating_64 = hp * defense * most_damage * village_bonus / 200;
+			int rating = rating_64;
+			if(static_cast<int64_t>(rating) != rating_64) {
+				WRN_AI << "overflow in ai attack calculation\n";
+			}
 			if(rating > best_rating) {
 				map_location *pos = std::find(beg_used, end_used, it->second);
 				// Check if the spot is the same or better than an older one.
@@ -1174,7 +1174,7 @@ void readonly_context_impl::recalculate_move_maps() const
 	srcdst_ = move_map();
 	calculate_possible_moves(possible_moves_,srcdst_,dstsrc_,false,false,&get_avoid());
 	if (get_passive_leader()||get_passive_leader_shares_keep()) {
-		unit_map::iterator i = resources::units->find_leader(get_side());
+		unit_map::iterator i = resources::gameboard->units().find_leader(get_side());
 		if (i.valid()) {
 			map_location loc = i->get_location();
 			srcdst_.erase(loc);
@@ -1246,7 +1246,7 @@ const map_location& readonly_context_impl::suitable_keep(const map_location& lea
 		if (keeps().find(loc)!=keeps().end()){
 
 			const int move_left_at_loc = dest.move_left;
-			if (resources::units->count(loc) == 0) {
+			if (resources::gameboard->units().count(loc) == 0) {
 				if ((*best_free_keep==map_location::null_location())||(move_left_at_loc>move_left_at_best_free_keep)){
 					best_free_keep = &loc;
 					move_left_at_best_free_keep = move_left_at_loc;

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -38,12 +38,11 @@ namespace gui2
 REGISTER_WIDGET(tree_view)
 
 tree_view::tree_view(const std::vector<node_definition>& node_definitions)
-	: scrollbar_container(2)
+	: scrollbar_container()
 	, node_definitions_(node_definitions)
 	, indentation_step_size_(0)
 	, need_layout_(false)
 	, root_node_(new tree_view_node("root",
-									 node_definitions_,
 									 nullptr,
 									 *this,
 									 std::map<std::string, string_map>()))
@@ -71,20 +70,23 @@ tree_view_node& tree_view::add_node(
 int tree_view::remove_node(tree_view_node* node)
 {
 	assert(node && node != root_node_ && node->parent_node_);
+	const point node_size = node->get_size();
 
 	tree_view_node::node_children_vector& siblings = node->parent_node_->children_;
 
-	auto itor = std::find(siblings.begin(), siblings.end(), *node);
-	assert(itor != siblings.end());
+	auto node_itor = std::find(siblings.begin(), siblings.end(), *node);
+	assert(node_itor != siblings.end());
 
-	siblings.erase(itor);
+	const int position = node_itor - siblings.begin();
+
+	siblings.erase(node_itor);
 
 	if(get_size() != point()) {
 		// Don't shrink the width, need to think about a good algorithm to do so.
-		resize_content(0, -node->get_size().y);
+		resize_content(0, -node_size.y);
 	}
 
-	return itor - siblings.begin();
+	return position;
 }
 
 void tree_view::clear()
@@ -305,8 +307,8 @@ tree_view_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is listbox.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
-	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(cfg.child("state_disabled"));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
@@ -384,7 +386,7 @@ builder_tree_view::builder_tree_view(const config& cfg)
 
 	for(const auto & node : cfg.child_range("node"))
 	{
-		nodes.push_back(tree_node(node));
+		nodes.emplace_back(node);
 	}
 
 	VALIDATE(!nodes.empty(), _("No nodes defined for a tree view."));

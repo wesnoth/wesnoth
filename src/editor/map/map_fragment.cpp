@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,6 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor/map/map_fragment.hpp"
-
-#include "util.hpp"
 
 namespace editor {
 
@@ -35,7 +33,7 @@ map_fragment::map_fragment(const gamemap& map, const std::set<map_location>& are
 void map_fragment::add_tile(const gamemap& map, const map_location& loc)
 {
 	if (area_.find(loc) == area_.end()) {
-		items_.push_back(tile_info(map, loc));
+		items_.emplace_back(map, loc);
 		area_.insert(loc);
 	}
 }

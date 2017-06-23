@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2017 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * to speed up startup
  ***/
 
-#ifndef CONFIG_CACHE_HPP_INCLUDED
-#define CONFIG_CACHE_HPP_INCLUDED
+#pragma once
 
 #include <cassert>
 #include <list>
@@ -279,4 +278,3 @@ class fake_transaction
 };
 
 }
-#endif

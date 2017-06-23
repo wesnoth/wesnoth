@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2009 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SCRIPTING_LUA_UNIT_ATTACKS_HPP
-#define SCRIPTING_LUA_UNIT_ATTACKS_HPP
+#pragma once
 
 #include <string>
 
@@ -32,5 +31,3 @@ void luaW_pushweapon(lua_State* L, attack_ptr weapon);
 void luaW_pushweapon(lua_State* L, const_attack_ptr weapon);
 const_attack_ptr luaW_toweapon(lua_State* L, int idx);
 attack_type& luaW_checkweapon(lua_State* L, int idx);
-
-#endif

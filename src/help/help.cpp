@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,20 +19,19 @@
 
 #define GETTEXT_DOMAIN "wesnoth-help"
 
-#include "global.hpp"
 #include "help/help.hpp"
 
 #include "config.hpp"                   // for config, etc
 #include "events.hpp"                   // for raise_draw_event, pump, etc
 #include "font/constants.hpp"           // for relative_size
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/transient_message.hpp"
 #include "help/help_browser.hpp"             // for help_browser
 #include "help/help_impl.hpp"                // for hidden_symbol, toplevel, etc
 #include "key.hpp"                      // for CKey
 #include "log.hpp"                      // for LOG_STREAM, log_domain
-#include "sdl/utils.hpp"                // for surface
+#include "sdl/surface.hpp"                // for surface
 #include "show_dialog.hpp"              // for dialog_frame, etc
 #include "terrain/terrain.hpp"                  // for terrain_type
 #include "units/unit.hpp"                     // for unit

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2013 - 2017 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -310,32 +310,7 @@ void game_version::report_copy_callback()
 
 void game_version::generate_plain_text_report()
 {
-	std::ostringstream o;
-
-	o << "The Battle for Wesnoth version " << game_config::revision << '\n'
-	  << "Running on " << desktop::os_version() << '\n'
-	  << '\n'
-	  << "Game paths\n"
-	  << "==========\n"
-	  << '\n'
-	  << "Data dir:        " << path_map_["datadir"] << '\n'
-	  << "User config dir: " << path_map_["config"] << '\n'
-	  << "User data dir:   " << path_map_["userdata"] << '\n'
-	  << "Saves dir:       " << path_map_["saves"] << '\n'
-	  << "Add-ons dir:     " << path_map_["addons"] << '\n'
-	  << "Cache dir:       " << path_map_["cache"] << '\n'
-	  << '\n'
-	  << "Libraries\n"
-	  << "=========\n"
-	  << '\n'
-	  << game_config::library_versions_report()
-	  << '\n'
-	  << "Features\n"
-	  << "========\n"
-	  << '\n'
-	  << game_config::optional_features_report();
-
-	report_ = o.str();
+	report_ = game_config::full_build_report();
 }
 
 } // namespace dialogs

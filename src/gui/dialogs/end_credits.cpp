@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "font/marked-up_text.hpp"
+#include "gettext.hpp"
 
 #include "utils/functional.hpp"
 
@@ -56,45 +56,57 @@ end_credits::~end_credits()
 	}
 }
 
-static void parse_about_tags(const config& cfg, std::stringstream& ss)
+static void parse_about_tag(const config& cfg, std::stringstream& ss)
 {
-	for(const auto& about : cfg.child_range("about")) {
-		if(!about.has_child("entry")) {
-			continue;
-		}
+	if(!cfg.has_child("entry")) {
+		return;
+	}
 
-		ss << "\n" << "<span size='x-large'>" << about["title"] << "</span>" << "\n";
+	ss << "\n" << "<span size='x-large'>" << cfg["title"] << "</span>" << "\n";
 
-		for(const auto& entry : about.child_range("entry")) {
-			ss << entry["name"] << "\n";
-		}
+	for(const auto& entry : cfg.child_range("entry")) {
+		ss << entry["name"] << "\n";
 	}
 }
 
 void end_credits::pre_show(window& window)
 {
-	timer_id_ = add_timer(10, std::bind(&end_credits::timer_callback, this), true);
+	window.set_callback_next_draw([this]()
+	{
+		timer_id_ = add_timer(10, std::bind(&end_credits::timer_callback, this), true);
+		// Delay a little before beginning the scrolling
+		last_scroll_ = SDL_GetTicks() + 3000;
+	});
 
-	// Delay a little before beginning the scrolling
-	last_scroll_ = SDL_GetTicks() + 3000;
-
-	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, _3, _4, _5));
+	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, _5));
 
 	std::stringstream ss;
 	std::stringstream focus_ss;
 
 	const config& credits_config = about::get_about_config();
 
-	// First, parse all the toplevel [about] tags
-	parse_about_tags(credits_config, ss);
-
-	// Next, parse all the grouped [about] tags (usually by campaign)
 	for(const auto& group : credits_config.child_range("credits_group")) {
 		std::stringstream& group_stream = (group["id"] == focus_on_) ? focus_ss : ss;
 
-		group_stream << "\n" << "<span size='xx-large'>" << group["title"] << "</span>" << "\n";
+		group_stream << "\n";
+		if(group.has_attribute("title")) {
+			group_stream << "<span size='xx-large'>" << group["title"] << "</span>" << "\n";
+		}
 
-		parse_about_tags(group, group_stream);
+		if(group["sort"].to_bool(false)) {
+			auto sections = group.child_range("about");
+			std::vector<config> sorted(sections.begin(), sections.end());
+			std::sort(sorted.begin(), sorted.end(), [](const config& entry1, const config& entry2) {
+				return translation::compare(entry1["title"].str(), entry2["title"].str()) < 0;
+			});
+			for(const auto& about : sorted) {
+				parse_about_tag(about, group_stream);
+			}
+		} else {
+			for(const auto& about : group.child_range("about")) {
+				parse_about_tag(about, group_stream);
+			}
+		}
 	}
 
 	// If a section is focused, move it to the top
@@ -110,11 +122,12 @@ void end_credits::pre_show(window& window)
 	}
 
 	// TODO: implement showing all available images as the credits scroll
-	window.get_canvas()[0].set_variable("background_image", variant(backgrounds_[0]));
+	window.get_canvas(0).set_variable("background_image", wfl::variant(backgrounds_[0]));
 
 	text_widget_ = find_widget<scroll_label>(&window, "text", false, true);
 
 	text_widget_->set_use_markup(true);
+	text_widget_->set_link_aware(false);
 	text_widget_->set_label((focus_ss.str().empty() ? ss : focus_ss).str());
 
 	// HACK: always hide the scrollbar, even if it's needed.
@@ -122,8 +135,10 @@ void end_credits::pre_show(window& window)
 	// Also, for some reason hiding the whole grid doesn't work, and the elements need to be hidden manually
 	if(grid* v_grid = dynamic_cast<grid*>(text_widget_->find("_vertical_scrollbar_grid", false))) {
 		find_widget<scrollbar_base>(v_grid, "_vertical_scrollbar", false).set_visible(widget::visibility::hidden);
-		find_widget<repeating_button>(v_grid, "_half_page_up", false).set_visible(widget::visibility::hidden);
-		find_widget<repeating_button>(v_grid, "_half_page_down", false).set_visible(widget::visibility::hidden);
+
+		// TODO: enable again if e24336afeb7 is reverted.
+		//find_widget<repeating_button>(v_grid, "_half_page_up", false).set_visible(widget::visibility::hidden);
+		//find_widget<repeating_button>(v_grid, "_half_page_down", false).set_visible(widget::visibility::hidden);
 	}
 }
 
@@ -151,7 +166,7 @@ void end_credits::timer_callback()
 	}
 }
 
-void end_credits::key_press_callback(bool&, bool&, const SDL_Keycode key)
+void end_credits::key_press_callback(const SDL_Keycode key)
 {
 	if(key == SDLK_UP && scroll_speed_ < 400) {
 		scroll_speed_ <<= 1;

@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2016 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2017 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -17,9 +17,7 @@
  * Contains typedefs for the whiteboard.
  */
 
-
-#ifndef WB_TYPEDEFS_HPP_
-#define WB_TYPEDEFS_HPP_
+#pragma once
 
 #include "log.hpp"
 static lg::log_domain log_whiteboard("whiteboard");
@@ -79,5 +77,3 @@ typedef std::shared_ptr<suppose_dead> suppose_dead_ptr;
 typedef std::shared_ptr<suppose_dead const> suppose_dead_const_ptr;
 
 } // end namespace wb
-
-#endif /* WB_TYPEDEFS_HPP_ */

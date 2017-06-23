@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2015 - 2017 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,6 +16,9 @@
 
 #include "build_info.hpp"
 
+#include "desktop/version.hpp"
+#include "game_config.hpp"
+#include "filesystem.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
 
@@ -28,10 +31,23 @@
 
 #include <boost/version.hpp>
 
+#include <openssl/crypto.h>
+#include <openssl/opensslv.h>
+
 #include <pango/pangocairo.h>
 
 #ifdef HAVE_LIBPNG
 #include <png.h>
+#endif
+
+#ifdef __APPLE__
+// apple_notification.mm uses Foundation.h, which is an Objective-C header;
+// but CoreFoundation.h is a C header which also defines these.
+#include <CoreFoundation/CoreFoundation.h>
+
+#if (defined MAC_OS_X_VERSION_10_8) && (MAC_OS_X_VERSION_10_8 <= MAC_OS_X_VERSION_MAX_ALLOWED)
+#define HAVE_NS_USER_NOTIFICATION
+#endif
 #endif
 
 namespace game_config
@@ -61,6 +77,92 @@ std::string format_version(const SDL_version& v)
 	return formatter() << unsigned(v.major) << '.'
 			    		<< unsigned(v.minor) << '.'
 						<< unsigned(v.patch);
+}
+
+std::string format_openssl_patch_level(uint8_t p)
+{
+	return p <= 26
+		? std::string(1, 'a' + char(p) - 1)
+		: "patch" + std::to_string(p);
+}
+
+std::string format_openssl_version(long v)
+{
+	int major, minor, fix, patch, status;
+	std::ostringstream fmt;
+
+	//
+	// The people who maintain OpenSSL are not from this world. I suppose it's
+	// only fair that I'm the one who gets to try to make sense of their version
+	// encoding scheme.  -- shadowm
+	//
+
+	if(v < 0x0930L) {
+		// Pre-0.9.3 seems simpler times overall.
+		minor = v & 0x0F00L >> 8;
+		fix   = v & 0x00F0L >> 4;
+		patch = v & 0x000FL;
+
+		fmt << "0." << minor << '.' << fix;
+		if(patch) {
+			fmt << format_openssl_patch_level(patch);
+		}
+	} else {
+		//
+		// Note that they either assume the major version will never be greater than
+		// 9, they plan to use hexadecimal digits for versions 10.x.x through
+		// 15.x.x, or they expect long to be always > 32-bits by then. Who the hell
+		// knows, really.
+		//
+		major  = (v & 0xF0000000L) >> 28;
+		minor  = (v & 0x0FF00000L) >> 20;
+		fix    = (v & 0x000FF000L) >> 12;
+		patch  = (v & 0x00000FF0L) >> 4;
+		status = (v & 0x0000000FL);
+
+		if(v < 0x00905100L) {
+			//
+			// From wiki.openssl.org (also mentioned in opensslv.h, in the most oblique
+			// fashion possible):
+			//
+			// "Versions between 0.9.3 and 0.9.5 had a version identifier with this interpretation:
+			// MMNNFFRBB major minor fix final beta/patch"
+			//
+			// Both the wiki and opensslv.h fail to accurately list actual version
+			// numbers that ended up used in the wild -- e.g. 0.9.3a is supposedly
+			// 0x0090301f when it really was 0x00903101.
+			//
+			const uint8_t is_final = (v & 0xF00L) >> 8;
+			status = is_final ? 0xF : 0;
+			patch = v & 0xFFL;
+		} else if(v < 0x00906000L) {
+			//
+			// Quoth opensslv.h:
+			//
+			// "For continuity reasons (because 0.9.5 is already out, and is coded
+			// 0x00905100), between 0.9.5 and 0.9.6 the coding of the patch level
+			// part is slightly different, by setting the highest bit. This means
+			// that 0.9.5a looks like this: 0x0090581f. At 0.9.6, we can start
+			// with 0x0090600S..."
+			//
+			patch ^= 1 << 7;
+		}
+
+		fmt << major << '.' << minor << '.' << fix;
+
+		if(patch) {
+			fmt << format_openssl_patch_level(patch);
+		}
+
+		if(status == 0x0) {
+			fmt << "-dev";
+		} else if(status < 0xF) {
+			fmt << "-beta" << status;
+		}
+	}
+
+	return fmt.str();
+
 }
 
 version_table_manager::version_table_manager()
@@ -136,6 +238,14 @@ version_table_manager::version_table_manager()
 	names[LIB_BOOST] = "Boost";
 
 	//
+	// OpenSSL/libcrypto
+	//
+
+	compiled[LIB_CRYPTO] = format_openssl_version(OPENSSL_VERSION_NUMBER);
+	linked[LIB_CRYPTO] = format_openssl_version(SSLeay());
+	names[LIB_CRYPTO] = "OpenSSL/libcrypto";
+
+	//
 	// Cairo
 	//
 
@@ -165,29 +275,29 @@ version_table_manager::version_table_manager()
 	// Features table.
 	//
 
-	features.push_back(N_("feature^Experimental OpenMP support"));
+	features.emplace_back(N_("feature^Experimental OpenMP support"));
 #ifdef _OPENMP
 	features.back().enabled = true;
 #endif
 
-	features.push_back(N_("feature^PNG screenshots"));
+	features.emplace_back(N_("feature^PNG screenshots"));
 #ifdef HAVE_LIBPNG
 	features.back().enabled = true;
 #endif
 
-	features.push_back(N_("feature^Lua console completion"));
+	features.emplace_back(N_("feature^Lua console completion"));
 #ifdef HAVE_HISTORY
 	features.back().enabled = true;
 #endif
 
-	features.push_back(N_("feature^Legacy bidirectional rendering"));
+	features.emplace_back(N_("feature^Legacy bidirectional rendering"));
 #ifdef HAVE_FRIBIDI
 	features.back().enabled = true;
 #endif
 
 #ifdef _X11
 
-	features.push_back(N_("feature^D-Bus notifications back end"));
+	features.emplace_back(N_("feature^D-Bus notifications back end"));
 #ifdef HAVE_LIBDBUS
 	features.back().enabled = true;
 #endif
@@ -196,18 +306,18 @@ version_table_manager::version_table_manager()
 
 #ifdef _WIN32
 	// Always compiled in.
-	features.push_back(N_("feature^Win32 notifications back end"));
+	features.emplace_back(N_("feature^Win32 notifications back end"));
 	features.back().enabled = true;
 #endif
 
 #ifdef __APPLE__
 
-	features.push_back(N_("feature^Cocoa notifications back end"));
+	features.emplace_back(N_("feature^Cocoa notifications back end"));
 #ifdef HAVE_NS_USER_NOTIFICATION
 	features.back().enabled = true;
 #endif
 
-	features.push_back(N_("feature^Growl notifications back end"));
+	features.emplace_back(N_("feature^Growl notifications back end"));
 #ifdef HAVE_GROWL
 	features.back().enabled = true;
 #endif
@@ -341,6 +451,36 @@ std::string optional_features_report()
 
 		o << (f.enabled ? "yes" : "no") << '\n';
 	}
+
+	return o.str();
+}
+
+std::string full_build_report()
+{
+	std::ostringstream o;
+
+	o << "The Battle for Wesnoth version " << game_config::revision << '\n'
+	  << "Running on " << desktop::os_version() << '\n'
+	  << '\n'
+	  << "Game paths\n"
+	  << "==========\n"
+	  << '\n'
+	  << "Data dir:        " << game_config::path << '\n'
+	  << "User config dir: " << filesystem::get_user_config_dir() << '\n'
+	  << "User data dir:   " << filesystem::get_user_data_dir() << '\n'
+	  << "Saves dir:       " << filesystem::get_saves_dir() << '\n'
+	  << "Add-ons dir:     " << filesystem::get_addons_dir() << '\n'
+	  << "Cache dir:       " << filesystem::get_cache_dir() << '\n'
+	  << '\n'
+	  << "Libraries\n"
+	  << "=========\n"
+	  << '\n'
+	  << game_config::library_versions_report()
+	  << '\n'
+	  << "Features\n"
+	  << "========\n"
+	  << '\n'
+	  << game_config::optional_features_report();
 
 	return o.str();
 }

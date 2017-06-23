@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2008 - 2017 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,7 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "game_config.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "game_classification.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/core/log.hpp"
@@ -42,6 +42,7 @@
 #include "image.hpp"
 #include "language.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/general.hpp"
 
 #include <cctype>
 #include "utils/functional.hpp"
@@ -104,6 +105,9 @@ game_load::game_load(const config& cache_config, savegame::load_game_metadata& d
 
 void game_load::pre_show(window& window)
 {
+	// Allow deleting saves with the Delete key.
+	connect_signal_pre_key_press(window, std::bind(&game_load::key_press_callback, this, std::ref(window), _5));
+
 	find_widget<minimap>(&window, "minimap", false).set_config(&cache_config_);
 
 	text_box* filter = find_widget<text_box>(&window, "txtFilter", false, true);
@@ -196,6 +200,15 @@ void game_load::display_savegame(window& window)
 
 		item["label"] = leader["leader_name"];
 		data.emplace("leader_name", item);
+
+		item["label"] = leader["gold"];
+		data.emplace("leader_gold", item);
+
+		item["label"] = leader["units"];
+		data.emplace("leader_troops", item);
+
+		item["label"] = leader["recall_units"];
+		data.emplace("leader_reserves", item);
 
 		leader_list.add_row(data);
 	}
@@ -375,6 +388,13 @@ void game_load::delete_button_callback(window& window)
 		}
 
 		display_savegame(window);
+	}
+}
+
+void game_load::key_press_callback(window& window, const SDL_Keycode key)
+{
+	if(key == SDLK_DELETE) {
+		delete_button_callback(window);
 	}
 }
 

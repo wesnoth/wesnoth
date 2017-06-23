@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by Chris Beck<render787@gmail.com>
+   Copyright (C) 2016 - 2017 by Chris Beck<render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef FONT_FONT_CONFIG_HPP_INCLUDED
-#define FONT_FONT_CONFIG_HPP_INCLUDED
+
+#pragma once
 
 /***
  * The font::manager initializes cairo and font_config in order to figure out
@@ -63,5 +63,3 @@ const t_string& get_font_families(family_class fclass = FONT_SANS_SERIF);
 bool check_font_file(std::string name);
 
 } // end namespace font
-
-#endif

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:28 UTC\n"
+"POT-Creation-Date: 2017-05-29 21:55+0200\n"
 "PO-Revision-Date: 2016-02-06 20:48+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
@@ -490,14 +490,14 @@ msgstr ""
 msgid "Civil Disobedience"
 msgstr "Desobediencia civil"
 
+#. [side]: type=Highwayman, id=Baldras
 #. [side]: type=Bandit_Peasant, id=Baldras
 #. [side]
 #. [side]: type=Bandit, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
+#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=Shadow Lord, id=Helicrom
-#. [side]: type=Highwayman, id=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:26
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:61
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:27
@@ -520,12 +520,12 @@ msgstr "Rebeldes"
 msgid "Tarwen"
 msgstr "Targüen"
 
+#. [side]: type=Royal Guard, id=Archarel
+#. [side]: type=Iron Mauler, id=Linneus
 #. [side]: type=Cavalier, id=Tarwen
 #. [side]: type=General, id=Kestrel
 #. [side]: type=Master Bowman, id=Quentin
 #. [side]
-#. [side]: type=Royal Guard, id=Archarel
-#. [side]: type=Iron Mauler, id=Linneus
 #. [side]: type=General, id=Dommel
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:40
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:80
@@ -2487,16 +2487,9 @@ msgstr ""
 "seus esqueléticos cabalos foron erguidos desde o chan mediante unha terríbel "
 "maxia para espallar o medo e a destrución."
 
-# machado FIXADO
-#. [attack]: type=blade
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:30
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:40
-msgid "axe"
-msgstr "machado"
-
 # patear FIXADO
 #. [attack]: type=impact
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:39
+#: data/campaigns/Liberty/units/Bone_Knight.cfg:41
 msgid "trample"
 msgstr "patear"
 
@@ -2521,12 +2514,6 @@ msgstr ""
 "proceso recollen unha boa parte do poder do cabaleiro, incluída a súa "
 "habilidade para dirixir aos inferiores."
 
-# espada FIXADO
-#. [attack]: type=blade
-#: data/campaigns/Liberty/units/Death_Squire.cfg:31
-msgid "sword"
-msgstr "espada"
-
 # Mago pícaro FIXADO
 #. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
@@ -2534,7 +2521,7 @@ msgid "Rogue Mage"
 msgstr "Mago pícaro"
 
 #. [unit_type]: id=Rogue Mage, race=human
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:18
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:17
 msgid ""
 "Some mages are thrown out of the mage’s guild for attempting to practice "
 "forbidden arts. Now completely outside the law, these rogue mages do "
@@ -2549,16 +2536,9 @@ msgstr ""
 "pode resultar bastante mortífera, e a súa condición de bandidos supúxolles "
 "mellorar lixeiramente a súa habilidade coa espada curta."
 
-# espada curta FIXADO
-#. [attack]: type=blade
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:23
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:32
-msgid "short sword"
-msgstr "espada curta"
-
 # explosión de xeo FIXADA
 #. [attack]: type=cold
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:32
+#: data/campaigns/Liberty/units/Rogue_Mage.cfg:33
 msgid "ice blast"
 msgstr "explosión de xeo"
 
@@ -2569,7 +2549,7 @@ msgid "Shadow Lord"
 msgstr "Señor sombrío"
 
 #. [unit_type]: id=Shadow Lord, race=human
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:22
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:21
 msgid ""
 "Few humans fathom the secrets of light and dark magic and retain their "
 "sanity. Those that can master that balance become Shadow Lords, fully "
@@ -2585,20 +2565,20 @@ msgstr ""
 
 # espada astral FIXADO
 #. [attack]: type=blade
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:34
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:33
 msgid "astral blade"
 msgstr "espada astral"
 
 # raio sombrío FIXADO
 #. [attack]: type=cold
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:45
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:44
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:44
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:45
 msgid "shadow bolt"
 msgstr "raio sombrío"
 
 # explosión sombría FIXADO
 #. [attack]: type=impact
-#: data/campaigns/Liberty/units/Shadow_Lord.cfg:57
+#: data/campaigns/Liberty/units/Shadow_Lord.cfg:56
 msgid "shadow blast"
 msgstr "explosión sombría"
 
@@ -2609,7 +2589,7 @@ msgid "Shadow Mage"
 msgstr "Mago sombrío"
 
 #. [unit_type]: id=Shadow Mage, race=human
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:21
+#: data/campaigns/Liberty/units/Shadow_Mage.cfg:20
 msgid ""
 "Years of violence and brutality to support the study of forbidden magical "
 "arts have turned the shadow mages into feared fighters. Now completely "
@@ -2851,6 +2831,18 @@ msgstr ""
 "paradeiro descoñecido os poucos que sobreviviran. Foi unha verdadeira "
 "desgraza, pero vivirían para ver desgrazas peores a medida que a ira de "
 "Axevier se desatase."
+
+# machado FIXADO
+#~ msgid "axe"
+#~ msgstr "machado"
+
+# espada FIXADO
+#~ msgid "sword"
+#~ msgstr "espada"
+
+# espada curta FIXADO
+#~ msgid "short sword"
+#~ msgstr "espada curta"
 
 # Amuleto sagrado FIXADO
 #~ msgid "Holy Ankh"

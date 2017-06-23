@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef LUA_GUI2_HPP_INCLUDED
-#define LUA_GUI2_HPP_INCLUDED
+#pragma once
 
 struct lua_State;
 class CVideo;
@@ -33,14 +32,15 @@ int intf_set_dialog_focus(lua_State *L);
 int intf_set_dialog_active(lua_State *L);
 int intf_set_dialog_visible(lua_State *L);
 int intf_add_dialog_tree_node(lua_State *L);
+int intf_add_widget_definition(lua_State *L);
 int show_dialog(lua_State *L, CVideo & video);
 int show_message_dialog(lua_State *L, CVideo & video);
 int show_popup_dialog(lua_State *L, CVideo & video);
 int show_menu(lua_State* L, CVideo& video);
+int show_story(lua_State* L, CVideo& video);
+int show_message_box(lua_State* L, CVideo& video);
 int show_lua_console(lua_State*L, CVideo & video, lua_kernel_base * lk);
 int show_gamestate_inspector(CVideo& video, const vconfig& cfg, const game_data& data, const game_state& state);
 int intf_remove_dialog_item(lua_State *L);
 
 } // end namespace lua_gui2
-
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2009 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,14 +14,10 @@
 
 #ifdef DEBUG_LUA
 
-#ifndef DEBUG_LUA_HPP_INCLUDED
-#define DEBUG_LUA_HPP_INCLUDED
+#pragma once
 
 #include "lua/lualib.h"
 
-
 void ds(lua_State *L, const bool verbose_table = true);
-
-#endif
 
 #endif

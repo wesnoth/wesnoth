@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Karol Kozub <karol.alt@gmail.com>
+   Copyright (C) 2011 - 2017 by Karol Kozub <karol.alt@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -68,7 +68,7 @@ private:
 	 *
 	 * This is required by TC modification
 	 */
-	void set_up_team_colors()
+	static void set_up_team_colors()
 	{
 		std::vector<std::string> tc;
 
@@ -93,7 +93,7 @@ private:
 		paths_manager_.set_paths(cfg);
 	}
 
-	config create_color_range(const std::string& id,
+	static config create_color_range(const std::string& id,
 				  const std::string& rgb,
 				  const std::string& name)
 	{
@@ -106,7 +106,7 @@ private:
 		return cfg;
 	}
 
-	config create_path_config(const std::string& path)
+	static config create_path_config(const std::string& path)
 	{
 		config cfg;
 
@@ -147,6 +147,9 @@ BOOST_AUTO_TEST_CASE(test_modificaiton_queue_order)
 	BOOST_CHECK_EQUAL(queue.top(), low_priority_mod);
 	queue.pop();
 
+	low_priority_mod = new fl_modification();
+	high_priority_mod = new rc_modification();
+
 	// reverse insertion order now
 	queue.push(high_priority_mod);
 	queue.push(low_priority_mod);
@@ -157,9 +160,6 @@ BOOST_AUTO_TEST_CASE(test_modificaiton_queue_order)
 	queue.pop();
 	BOOST_CHECK_EQUAL(queue.top(), low_priority_mod);
 	queue.pop();
-
-	delete low_priority_mod;
-	delete high_priority_mod;
 }
 
 /// Tests if the TC modification is correctly decoded
@@ -176,14 +176,12 @@ BOOST_AUTO_TEST_CASE(test_tc_modification_decoding)
 	// The dynamic_cast returns nullptr if the argument doesn't match the type
 	BOOST_REQUIRE(mod != nullptr);
 
-	const std::vector<Uint32>& old_color = game_config::tc_info("blue");
+	const std::vector<color_t>& old_color = game_config::tc_info("blue");
 	// The first team color is red
 	const color_range& new_color = game_config::color_info("red");
-	std::map<Uint32, Uint32> expected = recolor_range(new_color, old_color);
+	color_range_map expected = recolor_range(new_color, old_color);
 
 	BOOST_CHECK(expected == mod->map());
-
-	delete mod;
 }
 
 /// Tests if the TC modification with invalid arguments is ignored
@@ -210,13 +208,11 @@ BOOST_AUTO_TEST_CASE(test_rc_modification_decoding)
 	// The dynamic_cast returns nullptr if the argument doesn't match the type
 	BOOST_REQUIRE(mod != nullptr);
 
-	const std::vector<Uint32>& old_color = game_config::tc_info("red");
+	const std::vector<color_t>& old_color = game_config::tc_info("red");
 	const color_range& new_color = game_config::color_info("blue");
-	std::map<Uint32, Uint32> expected = recolor_range(new_color, old_color);
+	color_range_map expected = recolor_range(new_color, old_color);
 
 	BOOST_CHECK(expected == mod->map());
-
-	delete mod;
 }
 
 /// Tests if the RC modification with invalid arguments is ignored
@@ -244,9 +240,9 @@ BOOST_AUTO_TEST_CASE(test_pal_modification_decoding)
 	// The dynamic_cast returns nullptr if the argument doesn't match the type
 	BOOST_REQUIRE(mod != nullptr);
 
-	std::vector<Uint32> const& old_palette = game_config::tc_info("000000,005000");
-	std::vector<Uint32> const& new_palette = game_config::tc_info("FFFFFF,FF00FF");
-	std::map<Uint32, Uint32> expected;
+	std::vector<color_t> const& old_palette = game_config::tc_info("000000,005000");
+	std::vector<color_t> const& new_palette = game_config::tc_info("FFFFFF,FF00FF");
+	color_range_map expected;
 
 	for(size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
 	environment_setup env_setup;
@@ -255,8 +251,6 @@ BOOST_AUTO_TEST_CASE(test_pal_modification_decoding)
 	}
 
 	BOOST_CHECK(expected == mod->map());
-
-	delete mod;
 }
 
 /// Tests if the PAL modification with invalid arguments is ignored
@@ -286,8 +280,6 @@ BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_default)
 
 	BOOST_CHECK(mod->get_horiz());
 	BOOST_CHECK(!mod->get_vert());
-
-	delete mod;
 }
 
 /// Tests if the FL modification is correctly decoded with the horiz argument
@@ -306,8 +298,6 @@ BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_horiz)
 
 	BOOST_CHECK(mod->get_horiz());
 	BOOST_CHECK(!mod->get_vert());
-
-	delete mod;
 }
 
 /// Tests if the FL modification is correctly decoded with the vert argument
@@ -326,8 +316,6 @@ BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_vert)
 
 	BOOST_CHECK(!mod->get_horiz());
 	BOOST_CHECK(mod->get_vert());
-
-	delete mod;
 }
 
 /// Tests if the FL modification is correctly decoded with both horiz and vert
@@ -346,8 +334,6 @@ BOOST_AUTO_TEST_CASE(test_fl_modification_decoding_horiz_and_vert)
 
 	BOOST_CHECK(mod->get_horiz());
 	BOOST_CHECK(mod->get_vert());
-
-	delete mod;
 }
 
 /// Tests if the GS modification is correctly decoded
@@ -363,8 +349,6 @@ BOOST_AUTO_TEST_CASE(test_gs_modification_decoding)
 
 	// The dynamic_cast returns nullptr if the argument doesn't match the type
 	BOOST_CHECK(mod != nullptr);
-
-	delete mod;
 }
 
 /// Tests if the CROP modification without arguments is ignored
@@ -397,8 +381,6 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_1_arg)
 	BOOST_CHECK_EQUAL(slice.y, 0);
 	BOOST_CHECK_EQUAL(slice.w, 0);
 	BOOST_CHECK_EQUAL(slice.h, 0);
-
-	delete mod;
 }
 
 /// Tests if the CROP modification is correctly decoded when given two args
@@ -421,8 +403,6 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_2_args)
 	BOOST_CHECK_EQUAL(slice.y, 2);
 	BOOST_CHECK_EQUAL(slice.w, 0);
 	BOOST_CHECK_EQUAL(slice.h, 0);
-
-	delete mod;
 }
 
 /// Tests if the CROP modification is correctly decoded when given three args
@@ -445,8 +425,6 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_3_args)
 	BOOST_CHECK_EQUAL(slice.y, 2);
 	BOOST_CHECK_EQUAL(slice.w, 3);
 	BOOST_CHECK_EQUAL(slice.h, 0);
-
-	delete mod;
 }
 
 /// Tests if the CROP modification is correctly decoded when given four args
@@ -469,8 +447,6 @@ BOOST_AUTO_TEST_CASE(test_crop_modification_decoding_4_args)
 	BOOST_CHECK_EQUAL(slice.y, 2);
 	BOOST_CHECK_EQUAL(slice.w, 3);
 	BOOST_CHECK_EQUAL(slice.h, 4);
-
-	delete mod;
 }
 
 /** Tests if the BLIT modification with one argument is correctly decoded
@@ -493,8 +469,6 @@ BOOST_AUTO_TEST_CASE(test_blit_modification_decoding_1_arg)
 	BOOST_CHECK(!mod->get_surface().null());
 	BOOST_CHECK_EQUAL(mod->get_x(), 0);
 	BOOST_CHECK_EQUAL(mod->get_y(), 0);
-
-	delete mod;
 }
 
 /** Tests if the BLIT modification with three arguments is correctly decoded
@@ -517,8 +491,6 @@ BOOST_AUTO_TEST_CASE(test_blit_modification_decoding_3_args)
 	BOOST_CHECK(!mod->get_surface().null());
 	BOOST_CHECK_EQUAL(mod->get_x(), 1);
 	BOOST_CHECK_EQUAL(mod->get_y(), 2);
-
-	delete mod;
 }
 
 /// Tests if the BLIT modification with invalid arguments is ignored
@@ -555,8 +527,6 @@ BOOST_AUTO_TEST_CASE(test_mask_modification_decoding_1_arg)
 	BOOST_CHECK(!mod->get_mask().null());
 	BOOST_CHECK_EQUAL(mod->get_x(), 0);
 	BOOST_CHECK_EQUAL(mod->get_y(), 0);
-
-	delete mod;
 }
 
 /** Tests if the MASK modification with three arguments is correctly decoded
@@ -579,8 +549,6 @@ BOOST_AUTO_TEST_CASE(test_mask_modification_decoding_3_args)
 	BOOST_CHECK(!mod->get_mask().null());
 	BOOST_CHECK_EQUAL(mod->get_x(), 3);
 	BOOST_CHECK_EQUAL(mod->get_y(), 4);
-
-	delete mod;
 }
 
 /// Tests if the MASK modification with invalid arguments is ignored
@@ -625,8 +593,6 @@ BOOST_AUTO_TEST_CASE(test_l_modification_decoding_1_arg)
 	BOOST_REQUIRE(mod != nullptr);
 
 	BOOST_CHECK(!mod->get_surface().null());
-
-	delete mod;
 }
 
 /// Tests if the SCALE modification without arguments is ignored
@@ -655,8 +621,6 @@ BOOST_AUTO_TEST_CASE(test_scale_modification_decoding_1_arg)
 
 	BOOST_CHECK_EQUAL(mod->get_w(), 3);
 	BOOST_CHECK_EQUAL(mod->get_h(), 0);
-
-	delete mod;
 }
 
 /// Tests if the SCALE modification with two arguments is correctly decoded
@@ -675,8 +639,6 @@ BOOST_AUTO_TEST_CASE(test_scale_modification_decoding_2_args)
 
 	BOOST_CHECK_EQUAL(mod->get_w(), 4);
 	BOOST_CHECK_EQUAL(mod->get_h(), 5);
-
-	delete mod;
 }
 
 /// Tests if the O modification with a percent argument is correctly decoded
@@ -695,8 +657,6 @@ BOOST_AUTO_TEST_CASE(test_o_modification_decoding_percent_args)
 
 	BOOST_CHECK(mod->get_opacity() > 0.44f);
 	BOOST_CHECK(mod->get_opacity() < 0.46f);
-
-	delete mod;
 }
 
 /// Tests if the O modification with a fraction argument is correctly decoded
@@ -715,8 +675,6 @@ BOOST_AUTO_TEST_CASE(test_o_modification_decoding_fraction_args)
 
 	BOOST_CHECK(mod->get_opacity() > 0.33f);
 	BOOST_CHECK(mod->get_opacity() < 0.35f);
-
-	delete mod;
 }
 
 /// Tests if the BL modification without arguments is correctly decoded
@@ -734,8 +692,6 @@ BOOST_AUTO_TEST_CASE(test_bl_modification_decoding_no_args)
 	BOOST_REQUIRE(mod != nullptr);
 
 	BOOST_CHECK_EQUAL(mod->get_depth(), 0);
-
-	delete mod;
 }
 
 /// Tests if the BL modification with one argument is correctly decoded
@@ -753,8 +709,6 @@ BOOST_AUTO_TEST_CASE(test_bl_modification_decoding)
 	BOOST_REQUIRE(mod != nullptr);
 
 	BOOST_CHECK_EQUAL(mod->get_depth(), 2);
-
-	delete mod;
 }
 
 /// Tests if the R, G and B modifications without args are correctly decoded
@@ -779,8 +733,6 @@ BOOST_AUTO_TEST_CASE(test_rgb_modification_decoding_no_args)
 		BOOST_CHECK_EQUAL(mod->get_b(), 0);
 
 		queue.pop();
-
-		delete mod;
 	}
 }
 
@@ -801,8 +753,6 @@ BOOST_AUTO_TEST_CASE(test_r_modification_decoding)
 	BOOST_CHECK_EQUAL(mod->get_r(), 123);
 	BOOST_CHECK_EQUAL(mod->get_g(), 0);
 	BOOST_CHECK_EQUAL(mod->get_b(), 0);
-
-	delete mod;
 }
 
 /// Tests if the G modification with one argument is correctly decoded
@@ -822,8 +772,6 @@ BOOST_AUTO_TEST_CASE(test_g_modification_decoding)
 	BOOST_CHECK_EQUAL(mod->get_r(), 0);
 	BOOST_CHECK_EQUAL(mod->get_g(), 132);
 	BOOST_CHECK_EQUAL(mod->get_b(), 0);
-
-	delete mod;
 }
 
 /// Tests if the B modification with one argument is correctly decoded
@@ -843,42 +791,6 @@ BOOST_AUTO_TEST_CASE(test_b_modification_decoding)
 	BOOST_CHECK_EQUAL(mod->get_r(), 0);
 	BOOST_CHECK_EQUAL(mod->get_g(), 0);
 	BOOST_CHECK_EQUAL(mod->get_b(), 312);
-
-	delete mod;
-}
-
-/// Tests if the BRIGHTEN modification is correctly decoded
-BOOST_AUTO_TEST_CASE(test_brighten_modification_decoding)
-{
-	environment_setup env_setup;
-
-	modification_queue queue = modification::decode("~BRIGHTEN()");
-
-	BOOST_REQUIRE_EQUAL(queue.size(), 1);
-
-	brighten_modification* mod = dynamic_cast<brighten_modification*>(queue.top());
-
-	// The dynamic_cast returns nullptr if the argument doesn't match the type
-	BOOST_CHECK(mod != nullptr);
-
-	delete mod;
-}
-
-/// Tests if the DARKEN modification is correctly decoded
-BOOST_AUTO_TEST_CASE(test_draken_modification_decoding)
-{
-	environment_setup env_setup;
-
-	modification_queue queue = modification::decode("~DARKEN()");
-
-	BOOST_REQUIRE_EQUAL(queue.size(), 1);
-
-	darken_modification* mod = dynamic_cast<darken_modification*>(queue.top());
-
-	// The dynamic_cast returns nullptr if the argument doesn't match the type
-	BOOST_CHECK(mod != nullptr);
-
-	delete mod;
 }
 
 /// Tests if the BG modification without arguments is correctly decoded
@@ -899,8 +811,6 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_no_args)
 	BOOST_CHECK_EQUAL(mod->get_color().g, 0);
 	BOOST_CHECK_EQUAL(mod->get_color().b, 0);
 	BOOST_CHECK_EQUAL(mod->get_color().a, SDL_ALPHA_OPAQUE);
-
-	delete mod;
 }
 
 /// Tests if the BG modification with one argument is correctly decoded
@@ -921,8 +831,6 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_1_arg)
 	BOOST_CHECK_EQUAL(mod->get_color().g, 0);
 	BOOST_CHECK_EQUAL(mod->get_color().b, 0);
 	BOOST_CHECK_EQUAL(mod->get_color().a, SDL_ALPHA_OPAQUE);
-
-	delete mod;
 }
 
 /// Tests if the BG modification with two arguments is correctly decoded
@@ -943,8 +851,6 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_2_args)
 	BOOST_CHECK_EQUAL(mod->get_color().g, 2);
 	BOOST_CHECK_EQUAL(mod->get_color().b, 0);
 	BOOST_CHECK_EQUAL(mod->get_color().a, SDL_ALPHA_OPAQUE);
-
-	delete mod;
 }
 
 /// Tests if the BG modification with three arguments is correctly decoded
@@ -965,8 +871,6 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_3_args)
 	BOOST_CHECK_EQUAL(mod->get_color().g, 2);
 	BOOST_CHECK_EQUAL(mod->get_color().b, 3);
 	BOOST_CHECK_EQUAL(mod->get_color().a, SDL_ALPHA_OPAQUE);
-
-	delete mod;
 }
 
 /// Tests if the BG modification with four arguments is correctly decoded
@@ -987,8 +891,6 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_4_args)
 	BOOST_CHECK_EQUAL(mod->get_color().g, 2);
 	BOOST_CHECK_EQUAL(mod->get_color().b, 3);
 	BOOST_CHECK_EQUAL(mod->get_color().a, 4);
-
-	delete mod;
 }
 
 BOOST_AUTO_TEST_SUITE_END()

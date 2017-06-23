@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -40,7 +40,7 @@ namespace gui2
 
 REGISTER_WIDGET(button)
 
-button::button() : styled_widget(COUNT), clickable_item(), state_(ENABLED), retval_(0)
+button::button() : styled_widget(), clickable_item(), state_(ENABLED), retval_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(
 			std::bind(&button::signal_handler_mouse_enter, this, _2, _3));
@@ -188,10 +188,10 @@ button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in button.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
-	state.push_back(state_definition(cfg.child("state_disabled")));
-	state.push_back(state_definition(cfg.child("state_pressed")));
-	state.push_back(state_definition(cfg.child("state_focused")));
+	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(cfg.child("state_disabled"));
+	state.emplace_back(cfg.child("state_pressed"));
+	state.emplace_back(cfg.child("state_focused"));
 }
 
 // }---------- BUILDER -----------{

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -43,12 +43,11 @@ walker_base::state_t widget::next(const level level)
 			if(widget_) {
 				widget_ = nullptr;
 				return invalid;
-			} else {
-				/* FALL DOWN */
 			}
-		case internal:  /* FALL DOWN */
-		case child: /* FALL DOWN */
-			;
+			FALLTHROUGH;
+		case internal:
+		case child:
+			break;
 	}
 
 	assert(false);
@@ -60,7 +59,7 @@ bool widget::at_end(const level level) const
 	switch(level) {
 		case self:
 			return widget_ == nullptr;
-		case internal: /* FALL DOWN */
+		case internal:
 		case child:
 			return true;
 	}
@@ -74,7 +73,7 @@ gui2::widget* widget::get(const level level)
 	switch(level) {
 		case self:
 			return widget_;
-		case internal: /* FALL DOWN */
+		case internal:
 		case child:
 			return nullptr;
 	}

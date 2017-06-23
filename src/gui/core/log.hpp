@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * Define the common log macros for the gui toolkit.
  */
 
-#ifndef GUI_AUXILIARY_LOG_HPP_INCLUDED
-#define GUI_AUXILIARY_LOG_HPP_INCLUDED
+#pragma once
 
 #include "../../log.hpp" // We want the file in src/
 
@@ -72,5 +71,3 @@ extern lg::log_domain log_gui_parse;
 #define ERR_GUI_P LOG_STREAM_INDENT(err, gui2::log_gui_parse)
 
 } // namespace gui2
-
-#endif

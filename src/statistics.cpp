@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,6 @@
  *  Manage statistics: recruitments, recalls, kills, losses, etc.
  */
 
-#include "global.hpp"
 #include "game_board.hpp"
 #include "statistics.hpp"
 #include "log.hpp"
@@ -25,7 +24,6 @@
 #include "serialization/binary_or_text.hpp"
 #include "team.hpp" // Needed to get team save_id
 #include "units/unit.hpp"
-#include "util.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -43,7 +41,7 @@ typedef std::map<std::string,stats> team_stats_t;
 std::string get_team_save_id(const unit & u)
 {
 	assert(resources::gameboard);
-	return resources::gameboard->teams().at(u.side()-1).save_id();
+	return resources::gameboard->get_team(u.side()).save_id();
 }
 
 struct scenario_stats
@@ -99,7 +97,7 @@ std::vector<scenario_stats> master_stats;
 static stats &get_stats(const std::string &save_id)
 {
 	if(master_stats.empty()) {
-		master_stats.push_back(scenario_stats(std::string()));
+		master_stats.emplace_back(std::string());
 	}
 
 	team_stats_t& team_stats = master_stats.back().team_stats;
@@ -398,7 +396,7 @@ void stats::read(const config& cfg)
 scenario_context::scenario_context(const std::string& name)
 {
 	if(!mid_scenario || master_stats.empty()) {
-		master_stats.push_back(scenario_stats(name));
+		master_stats.emplace_back(name);
 	}
 
 	mid_scenario = true;
@@ -594,14 +592,13 @@ levels level_stats(const std::string & save_id)
 
 		team_stats_t::const_iterator find_it = team_stats.find(save_id);
 		if ( find_it != team_stats.end() )
-			level_list.push_back(make_pair(&master_stats[level].scenario_name,
-			                               &find_it->second));
+			level_list.emplace_back(&master_stats[level].scenario_name, &find_it->second);
 	}
 
 	// Make sure we do return something (so other code does not have to deal
 	// with an empty list).
 	if ( level_list.empty() )
-			level_list.push_back(make_pair(&null_name, &null_stats));
+			level_list.emplace_back(&null_name, &null_stats);
 
 	return level_list;
 }
@@ -636,7 +633,7 @@ void read_stats(const config& cfg)
 	mid_scenario = cfg["mid_scenario"].to_bool();
 
 	for(const config &s : cfg.child_range("scenario")) {
-		master_stats.push_back(scenario_stats(s));
+		master_stats.emplace_back(s);
 	}
 }
 

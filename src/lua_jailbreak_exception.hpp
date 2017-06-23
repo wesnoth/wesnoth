@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef LUA_JAILBREAK_EXCEPTION
-#define LUA_JAILBREAK_EXCEPTION
+#pragma once
 
 #include "global.hpp"
 
@@ -26,10 +25,10 @@
 class lua_jailbreak_exception
 {
 public:
-	virtual ~lua_jailbreak_exception() throw() {}
+	virtual ~lua_jailbreak_exception() NOEXCEPT {}
 
 	/** Stores a copy the current exception to be rethrown. */
-	void store() const throw();
+	void store() const NOEXCEPT;
 
 	/**
 	 * Rethrows the stored exception.
@@ -46,7 +45,7 @@ protected:
 private:
 
 	/** Clears the current exception. */
-	static void clear() throw();
+	static void clear() NOEXCEPT;
 
 	/**
 	 * Creates a copy of the current exception.
@@ -94,6 +93,3 @@ private:
 		type exception(dynamic_cast<type&>(*jailbreak_exception));   \
 		throw exception;                                             \
 	}
-
-#endif
-

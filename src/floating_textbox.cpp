@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -13,14 +13,13 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
 #include "floating_textbox.hpp"
 
 #include "display_chat_manager.hpp"
 #include "floating_label.hpp"
 #include "font/standard_colors.hpp"
 #include "game_display.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 
@@ -90,11 +89,12 @@ namespace gui{
 
 		if(box_ != nullptr) {
 			box_->set_volatile(true);
-			const SDL_Rect rect = sdl::create_rect(
+			const SDL_Rect rect {
 				  area.x + label_area.w + border_size * 2
 				, ypos
 				, textbox_width
-				, box_->height());
+				, box_->height()
+			};
 
 			box_->set_location(rect);
 		}

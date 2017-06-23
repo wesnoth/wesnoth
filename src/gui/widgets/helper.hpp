@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,12 +12,10 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_HELPER_HPP_INCLUDED
-#define GUI_WIDGETS_HELPER_HPP_INCLUDED
+#pragma once
 
+#include "color.hpp"
 #include "font/text.hpp"
-#include "global.hpp"
-#include "sdl/color.hpp"
 
 #include <pango/pango-layout.h>
 
@@ -25,17 +23,15 @@
 #include <string>
 
 struct SDL_Rect;
-class surface;
 class t_string;
 
-namespace game_logic
+namespace wfl
 {
 class map_formula_callable;
-} // namespace game_logic
+} // namespace wfl
 
 namespace gui2
 {
-
 struct point;
 
 /**
@@ -59,7 +55,7 @@ SDL_Rect create_rect(const point& origin, const point& size);
 /**
  * Converts a color string to a color.
  *
- * @param color                  A color string see
+ * @param color                   A color string see
  *                                http://www.wesnoth.org/wiki/GUIVariable for
  *                                more info.
  *
@@ -81,7 +77,7 @@ PangoAlignment decode_text_alignment(const std::string& alignment);
 /**
  * Converts a text alignment to its string representation.
  *
- * @param alignment              An alignment.
+ * @param alignment               An alignment.
  *
  * @returns                       An alignment string see
  *                                http://www.wesnoth.org/wiki/GUIVariable for
@@ -117,7 +113,7 @@ t_string missing_widget(const std::string& id);
  *                                current values of these in settings. It
  *                                modifies the object send.
  */
-void get_screen_size_variables(game_logic::map_formula_callable& variable);
+void get_screen_size_variables(wfl::map_formula_callable& variable);
 
 /**
  * Gets a formula object with the screen size.
@@ -127,7 +123,7 @@ void get_screen_size_variables(game_logic::map_formula_callable& variable);
  *                                gamemap_height variable set to the current
  *                                values of these in settings.
  */
-game_logic::map_formula_callable get_screen_size_variables();
+wfl::map_formula_callable get_screen_size_variables();
 
 /** Returns the current mouse position. */
 point get_mouse_position();
@@ -145,5 +141,3 @@ point get_mouse_position();
 std::string debug_truncate(const std::string& text);
 
 } // namespace gui2
-
-#endif

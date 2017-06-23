@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * A component of the AI framework
  */
 
-#ifndef AI_COMPOSITE_COMPONENT_HPP_INCLUDED
-#define AI_COMPOSITE_COMPONENT_HPP_INCLUDED
+#pragma once
 
 class config;
 
@@ -96,6 +95,4 @@ std::ostream &operator<<(std::ostream &o, const ai::path_element &e);
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

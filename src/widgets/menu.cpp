@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include "widgets/menu.hpp"
 
 #include "game_config.hpp"
@@ -26,6 +24,7 @@
 #include "font/marked-up_text.hpp"
 #include "sdl/rect.hpp"
 #include "sound.hpp"
+#include "utils/general.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"
 
@@ -80,7 +79,7 @@ menu::basic_sorter& menu::basic_sorter::set_id_sort(int column)
 menu::basic_sorter& menu::basic_sorter::set_redirect_sort(int column, int to)
 {
 	if(column != to) {
-		redirect_sort_.insert(std::pair<int,int>(column,to));
+		redirect_sort_.emplace(column, to);
 	}
 
 	return *this;
@@ -320,14 +319,14 @@ void menu::create_help_strings()
 		i->help.clear();
 		for(std::vector<std::string>::iterator j = i->fields.begin(); j != i->fields.end(); ++j) {
 			if(std::find(j->begin(),j->end(),static_cast<char>(HELP_STRING_SEPARATOR)) == j->end()) {
-				i->help.push_back("");
+				i->help.emplace_back();
 			} else {
 				const std::vector<std::string>& items = utils::split(*j, HELP_STRING_SEPARATOR, 0);
 				if(items.size() >= 2) {
 					*j = items.front();
 					i->help.push_back(items.back());
 				} else {
-					i->help.push_back("");
+					i->help.emplace_back();
 				}
 			}
 		}
@@ -802,7 +801,7 @@ void menu::sort_by(int column)
 }
 
 SDL_Rect menu::style::item_size(const std::string& item) const {
-	SDL_Rect res = {0,0,0,0};
+	SDL_Rect res {0,0,0,0};
 	std::vector<std::string> img_text_items = utils::split(item, IMG_TEXT_SEPARATOR, utils::REMOVE_EMPTY);
 	for (std::vector<std::string>::const_iterator it = img_text_items.begin();
 		 it != img_text_items.end(); ++it) {
@@ -820,7 +819,7 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 			}
 		}
 		else {
-			const SDL_Rect area = {0,0,10000,10000};
+			const SDL_Rect area {0,0,10000,10000};
 			const SDL_Rect font_size =
 				font::draw_text(nullptr,area,get_font_size(),font::NORMAL_COLOR,str,0,0);
 			res.w += font_size.w;
@@ -852,9 +851,11 @@ void menu::style::draw_row_bg(menu& menu_ref, const size_t /*row_index*/, const 
 		break;
 	}
 
-	sdl::draw_solid_tinted_rectangle(rect.x, rect.y, rect.w, rect.h,
-					(rgb&0xff0000) >> 16,(rgb&0xff00) >> 8,rgb&0xff,alpha,
-					menu_ref.video().getSurface());
+	// FIXME: make this clearer
+	color_t c((rgb & 0xff0000) >> 16, (rgb & 0xff00) >> 8, rgb & 0xff);
+	c.a = 255 * alpha;
+
+	sdl::fill_rectangle(rect, c);
 }
 
 void menu::style::draw_row(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
@@ -936,10 +937,17 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 		if(lang_rtl)
 			xpos -= widths[i];
 		if(type == HEADING_ROW) {
+			SDL_Rect draw_rect {
+				xpos,
+				rect.y,
+				widths[i],
+				rect.h
+			};
+
 			if(highlight_heading_ == int(i)) {
-				sdl::draw_solid_tinted_rectangle(xpos,rect.y,widths[i],rect.h,255,255,255,0.3,video().getSurface());
+				sdl::fill_rectangle(draw_rect, {255,255,255,77});
 			} else if(sortby_ == int(i)) {
-				sdl::draw_solid_tinted_rectangle(xpos,rect.y,widths[i],rect.h,255,255,255,0.1,video().getSurface());
+				sdl::fill_rectangle(draw_rect, {255,255,255,26});
 			}
 		}
 
@@ -1035,14 +1043,12 @@ void menu::draw()
 				heading_rect.h = heading_height();
 				bg_restore(heading_rect);
 				style_->draw_row(*this,0,heading_rect,HEADING_ROW);
-				update_rect(heading_rect);
 			} else if(*i >= 0 && *i < int(item_pos_.size())) {
 				const unsigned int pos = item_pos_[*i];
 				const SDL_Rect& rect = get_item_rect(*i);
 				bg_restore(rect);
 				style_->draw_row(*this,pos,rect,
 					(!out_ && pos == selected_) ? SELECTED_ROW : NORMAL_ROW);
-				update_rect(rect);
 			}
 		}
 
@@ -1059,7 +1065,6 @@ void menu::draw()
 
 	draw_contents();
 
-	update_rect(location());
 	set_dirty(false);
 }
 
@@ -1159,7 +1164,7 @@ SDL_Rect menu::get_item_rect_internal(size_t item) const
 	//only insert into the cache if the menu's co-ordinates have
 	//been initialized
 	if (loc.x > 0 && loc.y > 0)
-		itemRects_.insert(std::pair<int,SDL_Rect>(item,res));
+		itemRects_.emplace(item, res);
 
 	return res;
 }

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
+   Copyright (C) 2011 - 2017 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef COMMANDLINE_OPTIONS_HPP_INCLUDED
-#define COMMANDLINE_OPTIONS_HPP_INCLUDED
+#pragma once
 
 #include <boost/optional.hpp>           // for optional
 #include <boost/program_options/options_description.hpp>
@@ -208,6 +207,8 @@ public:
 	bool validcache;
 	/// True if --version was given on the command line. Prints version and exits.
 	bool version;
+	/// True if --report was given on the command line. Prints a bug report-style info dump and exits.
+	bool report;
 	/// True if --windowed was given on the command line. Starts Wesnoth in windowed mode.
 	bool windowed;
 	/// True if --with-replay was given on the command line. Shows replay of the loaded file.
@@ -226,5 +227,3 @@ private:
 	boost::program_options::options_description visible_;
 	boost::program_options::options_description hidden_;
 };
-
-#endif

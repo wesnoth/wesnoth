@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,8 +23,6 @@
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "gui/dialogs/drop_down_menu.hpp"
-#include "config_assign.hpp"
 #include "sound.hpp"
 
 #include "utils/functional.hpp"
@@ -40,14 +38,16 @@ namespace gui2
 REGISTER_WIDGET(menu_button)
 
 menu_button::menu_button()
-	: styled_widget(COUNT)
+	: styled_widget()
 	, selectable_item()
 	, state_(ENABLED)
 	, retval_(0)
 	, values_()
 	, selected_()
+	, keep_open_(false)
+	, droplist_(nullptr)
 {
-	values_.push_back(config_of("label", this->get_label()));
+	values_.emplace_back(::config {"label", this->get_label()});
 
 	connect_signal<event::MOUSE_ENTER>(
 			std::bind(&menu_button::signal_handler_mouse_enter, this, _2, _3));
@@ -93,8 +93,7 @@ const std::string& menu_button::get_control_type() const
 	return type;
 }
 
-void menu_button::signal_handler_mouse_enter(const event::ui_event event,
-										 bool& handled)
+void menu_button::signal_handler_mouse_enter(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -102,8 +101,7 @@ void menu_button::signal_handler_mouse_enter(const event::ui_event event,
 	handled = true;
 }
 
-void menu_button::signal_handler_mouse_leave(const event::ui_event event,
-										 bool& handled)
+void menu_button::signal_handler_mouse_leave(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -111,8 +109,7 @@ void menu_button::signal_handler_mouse_leave(const event::ui_event event,
 	handled = true;
 }
 
-void menu_button::signal_handler_left_button_down(const event::ui_event event,
-											  bool& handled)
+void menu_button::signal_handler_left_button_down(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -125,8 +122,7 @@ void menu_button::signal_handler_left_button_down(const event::ui_event event,
 	handled = true;
 }
 
-void menu_button::signal_handler_left_button_up(const event::ui_event event,
-											bool& handled)
+void menu_button::signal_handler_left_button_up(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -134,8 +130,7 @@ void menu_button::signal_handler_left_button_up(const event::ui_event event,
 	handled = true;
 }
 
-void menu_button::signal_handler_left_button_click(const event::ui_event event,
-											   bool& handled)
+void menu_button::signal_handler_left_button_click(const event::ui_event event, bool& handled)
 {
 	assert(get_window());
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
@@ -143,9 +138,14 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event,
 	sound::play_UI_sound(settings::sound_button_click);
 
 	// If a button has a retval do the default handling.
-	dialogs::drop_down_menu droplist(this->get_rectangle(), this->values_, this->selected_, this->get_use_markup());
+	dialogs::drop_down_menu droplist(this->get_rectangle(), this->values_, this->selected_, this->get_use_markup(), this->keep_open_,
+		nullptr);
+
+	droplist_ = &droplist;
 
 	if(droplist.show(get_window()->video())) {
+		droplist_ = nullptr;
+
 		const int selected = droplist.selected_item();
 
 		// Saftey check. If the user clicks a selection in the dropdown and moves their mouse away too
@@ -172,6 +172,8 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event,
 		}
 	}
 
+	droplist_ = nullptr;
+
 	handled = true;
 }
 
@@ -179,21 +181,28 @@ void menu_button::set_values(const std::vector<::config>& values, int selected)
 {
 	assert(static_cast<size_t>(selected) < values.size());
 	assert(static_cast<size_t>(selected_) < values_.size());
+
 	if(values[selected]["label"] != values_[selected_]["label"]) {
 		set_is_dirty(true);
 	}
+
 	values_ = values;
 	selected_ = selected;
+
 	set_label(values_[selected_]["label"]);
 }
+
 void menu_button::set_selected(int selected)
 {
 	assert(static_cast<size_t>(selected) < values_.size());
 	assert(static_cast<size_t>(selected_) < values_.size());
+
 	if(selected != selected_) {
 		set_is_dirty(true);
 	}
+
 	selected_ = selected;
+
 	set_label(values_[selected_]["label"]);
 }
 
@@ -239,10 +248,10 @@ menu_button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in menu_button.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
-	state.push_back(state_definition(cfg.child("state_disabled")));
-	state.push_back(state_definition(cfg.child("state_pressed")));
-	state.push_back(state_definition(cfg.child("state_focused")));
+	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(cfg.child("state_disabled"));
+	state.emplace_back(cfg.child("state_pressed"));
+	state.emplace_back(cfg.child("state_focused"));
 }
 
 // }---------- BUILDER -----------{
@@ -308,8 +317,9 @@ widget* builder_menu_button::build() const
 	if(!options_.empty()) {
 		widget->set_values(options_);
 	}
+
 	DBG_GUI_G << "Window builder: placed menu_button '" << id
-			  << "' with definition '" << definition << "'.\n";
+	          << "' with definition '" << definition << "'.\n";
 
 	return widget;
 }

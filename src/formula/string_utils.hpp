@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORMULA_STRING_UTILS_HPP_INCLUDED
-#define FORMULA_STRING_UTILS_HPP_INCLUDED
+#pragma once
 
 #include "serialization/string_utils.hpp"
 
@@ -52,6 +51,22 @@ std::string interpolate_variables_into_string(const std::string &str, const vari
  */
 t_string interpolate_variables_into_tstring(const t_string &str, const variable_set& variables);
 
+/**
+ * Format a conjunctive list.
+ * @param empty The string to return for an empty list
+ * @param elems The list of entries in the list
+ * @return The elements of the list joined by "and".
+ */
+std::string format_conjunct_list(const t_string& empty, const std::vector<t_string>& elems);
+
+/**
+ * Format a disjunctive list.
+ * @param empty The string to return for an empty list
+ * @param elems The list of entries in the list
+ * @return The elements of the list joined or "and".
+ */
+std::string format_disjunct_list(const t_string& empty, const std::vector<t_string>& elems);
+
 }
 
 /** Handy wrappers around interpolate_variables_into_string and gettext. */
@@ -62,6 +77,8 @@ std::string vgettext(const char* domain
 
 std::string vngettext(const char*, const char*, int, const utils::string_map&);
 
+std::string vngettext(const char*, const char*, const char*, int, const utils::string_map&);
+
 /**
  * @todo Convert all functions.
  *
@@ -71,9 +88,9 @@ std::string vngettext(const char*, const char*, int, const utils::string_map&);
  */
 
 #ifdef GETTEXT_DOMAIN
-#define	VGETTEXT(msgid, symbols) vgettext(GETTEXT_DOMAIN, msgid, symbols)
+#define	VGETTEXT(msgid, ...) vgettext(GETTEXT_DOMAIN, msgid, __VA_ARGS__)
+#define	VNGETTEXT(msgid, msgid_plural, count, ...) vngettext(GETTEXT_DOMAIN, msgid, msgid_plural, count, __VA_ARGS__)
 #else
-#define	VGETTEXT(msgid, symbols) vgettext(msgid, symbols)
-#endif
-
+#define	VGETTEXT(msgid, ...) vgettext(msgid, __VA_ARGS__)
+#define	VNGETTEXT(msgid, msgid_plural, count, ...) vngettext(msgid, msgid_plural, count, __VA_ARGS__)
 #endif

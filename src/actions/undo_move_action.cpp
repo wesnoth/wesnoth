@@ -1,3 +1,16 @@
+/*
+   Copyright (C) 2017 the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
 #include "actions/undo_move_action.hpp"
 #include "actions/move.hpp"
 
@@ -42,7 +55,7 @@ void move_action::write(config & cfg) const
 bool move_action::undo(int)
 {
 	game_display & gui = *resources::screen;
-	unit_map &   units = *resources::units;
+	unit_map &   units = resources::gameboard->units();
 
 	// Copy some of our stored data.
 	const int saved_moves = starting_moves;
@@ -79,46 +92,6 @@ bool move_action::undo(int)
 	return true;
 }
 
-/**
- * Redoes this action.
- * @return true on success; false on an error.
- */
-bool move_action::redo(int)
-{
-	game_display & gui = *resources::screen;
-	unit_map &   units = *resources::units;
-
-	// Check units.
-	unit_map::iterator u = units.find(route.front());
-	if ( u == units.end() ) {
-		ERR_NG << "Illegal movement 'redo'." << std::endl;
-		assert(false);
-		return false;
-	}
-
-	// Adjust starting moves.
-	const int saved_moves = starting_moves;
-	starting_moves = u->movement_left();
-
-	// Move the unit.
-	unit_display::move_unit(route, u.get_shared_ptr());
-	units.move(u->get_location(), route.back());
-	u = units.find(route.back());
-	unit::clear_status_caches();
-
-	// Set the unit's state.
-	u->set_goto(goto_hex);
-	u->set_movement(saved_moves, true);
-	u->anim_comp().set_standing();
-	
-	this->take_village();
-
-	gui.invalidate_unit_after_move(route.front(), route.back());
-	resources::recorder->redo(replay_data);
-	replay_data.clear();
-	execute_redo_umc_wml();
-	return true;
-}
 
 }
 }

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef APPLE_NOTIFICATION_HPP_
-#define APPLE_NOTIFICATION_HPP_
+#pragma once
 
 #include <string>
 
@@ -21,6 +20,5 @@
 
 namespace apple_notifications {
     void send_notification(const std::string& owner, const std::string& message, const desktop::notifications::type note_type);
+	bool available();
 }
-
-#endif

@@ -1,3 +1,12 @@
+
+set(CXX_FLAGS_PROJECT "${CXX_FLAGS_PROJECT} -include boost-patched/bind/arg.hpp")
+
+# store the specified sources list in the specified variable
+function(GetSources source_list store_in_var)
+  file(STRINGS "../source_lists/${source_list}" sources)
+  set(${store_in_var} ${sources} PARENT_SCOPE)
+endfunction()
+
 ## some includes ##
 if(MSVC)
 	# This seems to break on some Linux systems in combination with strict
@@ -84,6 +93,7 @@ set(common-external-libs
 
 set(game-external-libs
 	${common-external-libs}
+	${CRYPTO_LIBRARY}
 	${Boost_SYSTEM_LIBRARIES}
 	${Boost_RANDOM_LIBRARY}
 	${Boost_THREAD_LIBRARY}
@@ -207,30 +217,7 @@ endif(ENABLE_SHARED_LIBRARIES)
 
 ########### libwesnoth-core ###############
 
-set(libwesnoth-core_STAT_SRC
-	color_range.cpp
-	config.cpp
-	filesystem_boost.cpp
-	filesystem_common.cpp
-	font/constants.cpp
-	game_config.cpp
-	gettext_boost.cpp
-	hash.cpp
-	log.cpp
-	md5.cpp
-	mt_rng.cpp
-	seed_rng.cpp
-	tstring.cpp
-	util.cpp
-	version.cpp
-	serialization/binary_or_text.cpp
-	serialization/parser.cpp
-	serialization/preprocessor.cpp
-	serialization/string_utils.cpp
-	serialization/tokenizer.cpp
-	serialization/unicode.cpp
-	serialization/validator.cpp
-)
+GetSources("libwesnoth_core" libwesnoth-core_STAT_SRC)
 
 if(WIN32)
 	set(libwesnoth-core_STAT_SRC
@@ -252,8 +239,8 @@ target_link_libraries(wesnoth-core ${Boost_FILESYSTEM_LIBRARY})
 if(ENABLE_DISPLAY_REVISION)
 	add_custom_target(wesnoth-revision_dummy
 		COMMAND
-			${CMAKE_SOURCE_DIR}/utils/autorevision
-				-th
+			${CMAKE_SOURCE_DIR}/utils/autorevision.sh
+				-t h
 				> ${CMAKE_CURRENT_BINARY_DIR}/revision.dummy
 		WORKING_DIRECTORY
 			${CMAKE_SOURCE_DIR}
@@ -279,41 +266,8 @@ endif()
 
 ########### libwesnoth-lua ###############
 
-set(libwesnoth-lua_STAT_SRC
-	lua_jailbreak_exception.cpp
-	lua/lapi.cpp
-	lua/lbitlib.cpp
-	lua/lcode.cpp
-	lua/lcorolib.cpp
-	lua/lctype.cpp
-	lua/ldebug.cpp
-	lua/ldo.cpp
-	lua/ldump.cpp
-	lua/lfunc.cpp
-	lua/lgc.cpp
-	lua/llex.cpp
-	lua/lmem.cpp
-	lua/lobject.cpp
-	lua/lopcodes.cpp
-	lua/lparser.cpp
-	lua/lstate.cpp
-	lua/lstring.cpp
-	lua/ltable.cpp
-	lua/ltm.cpp
-	lua/lundump.cpp
-	lua/lvm.cpp
-	lua/lzio.cpp
-	lua/lauxlib.cpp
-	lua/lbaselib.cpp
-	lua/ldblib.cpp
-	lua/liolib.cpp
-	lua/lmathlib.cpp
-	lua/loslib.cpp
-	lua/ltablib.cpp
-	lua/lstrlib.cpp
-	lua/loadlib.cpp
-	lua/lutf8lib.cpp
-)
+GetSources("lua" libwesnoth-lua_STAT_SRC)
+
 # We explicitly want lua compiled as C++ version, so this line is required:
 set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES LANGUAGE CXX)
 
@@ -362,14 +316,7 @@ set_target_properties(wesnoth-lua
 
 ########### Helper libraries ###############
 
-set(wesnoth-sdl_SRC
-	sdl/color.cpp
-	sdl/exception.cpp
-	sdl/rect.cpp
-	sdl/window.cpp
-	sdl/utils.cpp
-	xBRZ/xbrz.cpp
-)
+GetSources("libwesnoth_sdl" wesnoth-sdl_SRC)
 
 # If requested, compile and link this file also to be able to save png files
 if(ENABLE_LIBPNG AND PNG_FOUND)
@@ -391,210 +338,6 @@ target_link_libraries(wesnoth-sdl
 	${sdl_image-lib}
 )
 
-# The main library is rather huge especially in debug mode, causing quite a bit
-# of overhead packing objects that haven't been changed for quite a while.
-# Attempting to solve the issue with several smaller libraries when adding new
-# files.
-
-##### Gui types
-
-# This library contains the basic types for the gui library.
-# - Public Enumerates
-# - Small structs
-set(wesnoth-gui_types_SRC
-	gui/core/point.cpp
-)
-
-add_library(wesnoth-gui_types
-   	${LIBRARY_TYPE}
-	EXCLUDE_FROM_ALL
-	${wesnoth-gui_types_SRC}
-)
-
-##### Gui event
-
-# This library contains the basic event handling for the gui library. It
-# converts the SDL events to internal events and allows other code to
-# connect to the events based on slots.
-set(wesnoth-gui_event_SRC
-	gui/core/event/dispatcher.cpp
-	gui/core/event/distributor.cpp
-	gui/core/event/handler.cpp
-)
-
-add_library(wesnoth-gui_event
-   	${LIBRARY_TYPE}
-	EXCLUDE_FROM_ALL
-	${wesnoth-gui_event_SRC}
-)
-
-
-##### Gui iterator
-
-# This library contains the basic iterator for the gui library.
-# It is used to create visitors for the GUI widget tree in a window.
-set(wesnoth-gui_iterator_SRC
-	gui/auxiliary/iterator/iterator.cpp
-	gui/auxiliary/iterator/walker_grid.cpp
-	gui/auxiliary/iterator/walker_widget.cpp
-	gui/auxiliary/iterator/walker_tree_node.cpp
-)
-
-add_library(wesnoth-gui_iterator
-   	${LIBRARY_TYPE}
-	EXCLUDE_FROM_ALL
-	${wesnoth-gui_iterator_SRC}
-)
-
-
-##### Gui placer
-
-# This library contains the basic placer for the gui library.
-# The placer is used is some widgets to determine how to place its content.
-set(wesnoth-gui_placer_SRC
-	gui/core/placer.cpp
-	gui/core/placer/horizontal_list.cpp
-	gui/core/placer/vertical_list.cpp
-)
-
-add_library(wesnoth-gui_placer
-   	${LIBRARY_TYPE}
-	EXCLUDE_FROM_ALL
-	${wesnoth-gui_placer_SRC}
-)
-
-
-##### GUI tooltip
-
-# This library contains the tooltip handling code.
-set(wesnoth-gui_tooltip_SRC
-	gui/auxiliary/tips.cpp
-	gui/dialogs/tooltip.cpp
-)
-
-add_library(wesnoth-gui_tooltip
-   	${LIBRARY_TYPE}
-	EXCLUDE_FROM_ALL
-	${wesnoth-gui_tooltip_SRC}
-)
-
-
-##### GUI widget
-
-# This library contains the widget code.
-# It contains the core code of the wigets which determines the
-# behavior of the widgets. It also contains the builder code
-# for the widgets since the code has inter dependencies.
-set(wesnoth-gui_widget_SRC
-	gui/dialogs/drop_down_menu.cpp
-	gui/widgets/button.cpp
-	gui/widgets/chatbox.cpp
-	gui/widgets/container_base.cpp
-	gui/widgets/debug.cpp
-	gui/widgets/drawing.cpp
-	gui/widgets/generator.cpp
-	gui/widgets/grid.cpp
-	gui/widgets/helper.cpp
-	gui/widgets/horizontal_scrollbar.cpp
-	gui/widgets/image.cpp
-	gui/widgets/label.cpp
-	gui/widgets/list.cpp
-	gui/widgets/listbox.cpp
-	gui/widgets/matrix.cpp
-	gui/widgets/menu_button.cpp
-	gui/widgets/minimap.cpp
-	gui/widgets/multi_page.cpp
-	gui/widgets/pane.cpp
-	gui/widgets/panel.cpp
-	gui/widgets/password_box.cpp
-	gui/widgets/progress_bar.cpp
-	gui/widgets/repeating_button.cpp
-	gui/widgets/scroll_label.cpp
-	gui/widgets/scrollbar.cpp
-	gui/widgets/scrollbar_container.cpp
-	gui/widgets/scrollbar_panel.cpp
-	gui/widgets/settings.cpp
-	gui/widgets/size_lock.cpp
-	gui/widgets/slider.cpp
-	gui/widgets/spacer.cpp
-	gui/widgets/stacked_widget.cpp
-	gui/widgets/styled_widget.cpp
-	gui/widgets/text_box_base.cpp
-	gui/widgets/text_box.cpp
-	gui/widgets/toggle_button.cpp
-	gui/widgets/toggle_panel.cpp
-	gui/widgets/tree_view.cpp
-	gui/widgets/tree_view_node.cpp
-	gui/widgets/unit_preview_pane.cpp
-	gui/widgets/vertical_scrollbar.cpp
-	gui/widgets/viewport.cpp
-	gui/widgets/widget.cpp
-	gui/widgets/window.cpp
-	gui/core/window_builder.cpp
-	gui/core/window_builder/helper.cpp
-	gui/core/window_builder/instance.cpp
-)
-
-add_library(wesnoth-gui_widget
-   	${LIBRARY_TYPE}
-	EXCLUDE_FROM_ALL
-	${wesnoth-gui_widget_SRC}
-)
-
-target_link_libraries(wesnoth-gui_widget
-	wesnoth-gui_event
-	wesnoth-gui_iterator
-	wesnoth-gui_placer
-	wesnoth-gui_tooltip
-	wesnoth-gui_types
-)
-
-
-##### Gui widget definition
-
-# This library contains the widget definitions for the gui library.
-# The widget definitions serialise the widget definition WML code into
-# its own structures. The definitions define the looks of the widgets.
-set(wesnoth-gui_widget_definition_SRC
-	gui/core/widget_definition.cpp
-)
-
-add_library(wesnoth-gui_widget_definition
-   	${LIBRARY_TYPE}
-	EXCLUDE_FROM_ALL
-	${wesnoth-gui_widget_definition_SRC}
-)
-
-
-##### GUI1 widgets
-
-# This library contains the widgets from gui1.
-set(wesnoth-gui1_widgets_SRC
-	widgets/scrollpane.cpp
-)
-
-add_library(wesnoth-gui1_widgets
-   	${LIBRARY_TYPE}
-	EXCLUDE_FROM_ALL
-	${wesnoth-gui1_widgets_SRC}
-)
-
-
-##### GUI1 widgets
-
-# This library contains the schema validator.
-set(wesnoth-schema_validator_SRC
-	serialization/schema_validator.cpp
-	tools/schema/tag.cpp
-)
-
-add_library(wesnoth-schema_validator
-   	${LIBRARY_TYPE}
-	EXCLUDE_FROM_ALL
-	${wesnoth-schema_validator_SRC}
-)
-
-
 ########### Wesnoth main source files ###############
 
 # Depending on whether the game or the game and the tests are build the main
@@ -603,423 +346,12 @@ add_library(wesnoth-schema_validator
 # the library is faster (especially if the user doesn't use ccache (or
 # something similar)).
 
-set(wesnoth-main_SRC
-	about.cpp
-	actions/advancement.cpp
-	actions/attack.cpp
-	actions/create.cpp
-	actions/heal.cpp
-	actions/move.cpp
-	actions/shroud_clearing_action.cpp
-	actions/undo.cpp
-	actions/undo_action.cpp
-	actions/undo_dismiss_action.cpp
-	actions/undo_move_action.cpp
-	actions/undo_recall_action.cpp
-	actions/undo_recruit_action.cpp
-	actions/undo_update_shroud_action.cpp
-	actions/unit_creator.cpp
-	actions/vision.cpp
-	addon/client.cpp
-	addon/info.cpp
-	addon/manager_old.cpp
-	addon/manager_ui.cpp
-	addon/state.cpp
-	addon/validation.cpp
-	ai/actions.cpp
-	ai/composite/ai.cpp
-	ai/composite/aspect.cpp
-	ai/composite/component.cpp
-	ai/composite/contexts.cpp
-	ai/composite/engine.cpp
-	ai/composite/goal.cpp
-	ai/composite/rca.cpp
-	ai/composite/stage.cpp
-	ai/configuration.cpp
-	ai/contexts.cpp
-	ai/default/aspect_attacks.cpp
-	ai/default/attack.cpp
-	ai/default/ca.cpp
-	ai/default/ca_move_to_targets.cpp
-	ai/default/contexts.cpp
-	ai/default/engine_cpp.cpp
-	ai/default/recruitment.cpp
-	ai/default/stage_rca.cpp
-	ai/formula/ai.cpp
-	ai/formula/callable_objects.cpp
-	ai/formula/candidates.cpp
-	ai/formula/engine_fai.cpp
-	ai/formula/function_table.cpp
-	ai/formula/stage_side_formulas.cpp
-	ai/formula/stage_unit_formulas.cpp
-	ai/game_info.cpp
-	ai/gamestate_observer.cpp
-	ai/lua/core.cpp
-	ai/lua/engine_lua.cpp
-	ai/lua/lua_object.cpp
-	ai/lua/aspect_advancements.cpp
-	ai/manager.cpp
-	ai/registry.cpp
-	ai/simulated_actions.cpp
-	ai/testing.cpp
-	animated_game.cpp
-	attack_prediction.cpp
-	attack_prediction_display.cpp
-	build_info.cpp
-	carryover.cpp
-	chat_command_handler.cpp
-	chat_events.cpp
-	commandline_options.cpp
-	config_cache.cpp
-	game_initialization/configure_engine.cpp
-	game_initialization/connect_engine.cpp
-	game_initialization/lobby_data.cpp
-	game_initialization/lobby_info.cpp
-	controller_base.cpp
-	countdown_clock.cpp
-	game_initialization/create_engine.cpp
-	game_initialization/depcheck.cpp
-	desktop/notifications.cpp
-	desktop/open.cpp
-	desktop/paths.cpp
-	desktop/version.cpp
-	display_chat_manager.cpp
-	editor/action/action.cpp
-	editor/action/action_item.cpp
-	editor/action/action_label.cpp
-	editor/action/action_unit.cpp
-	editor/action/action_village.cpp
-	editor/action/action_select.cpp
-	editor/action/mouse/mouse_action.cpp
-	editor/action/mouse/mouse_action_item.cpp
-	editor/action/mouse/mouse_action_map_label.cpp
-	editor/action/mouse/mouse_action_unit.cpp
-	editor/action/mouse/mouse_action_village.cpp
-	editor/action/mouse/mouse_action_select.cpp
-	editor/controller/editor_controller.cpp
-	editor/map/editor_map.cpp
-	editor/map/map_context.cpp
-	editor/map/map_fragment.cpp
-	editor/palette/palette_manager.cpp
-	editor/palette/tristate_button.cpp
-	editor/toolkit/brush.cpp
-	editor/palette/editor_palettes.cpp
-	editor/palette/item_palette.cpp
-	editor/palette/location_palette.cpp
-	editor/palette/terrain_palettes.cpp
-	editor/palette/unit_palette.cpp
-	editor/editor_display.cpp
-	editor/editor_main.cpp
-	editor/editor_preferences.cpp
-	editor/toolkit/editor_toolkit.cpp
-	editor/map/context_manager.cpp
-	fake_unit_manager.cpp
-	fake_unit_ptr.cpp
-	filesystem_sdl.cpp
-	game_initialization/flg_manager.cpp
-	floating_textbox.cpp
-	formula/callable_objects.cpp
-	formula/formula.cpp
-	formula/debugger.cpp
-	formula/debugger_fwd.cpp
-	formula/function.cpp
-	formula/string_utils.cpp
-	formula/tokenizer.cpp
-	formula/variant.cpp
-	game_board.cpp
-	game_classification.cpp
-	game_config_manager.cpp
-	game_data.cpp
-	game_display.cpp
-	game_errors.cpp
-	game_events/action_wml.cpp
-	game_events/conditional_wml.cpp
-	game_events/entity_location.cpp
-	game_events/handlers.cpp
-	game_events/manager.cpp
-	game_events/manager_impl.cpp
-	game_events/menu_item.cpp
-	game_events/pump.cpp
-	game_events/wmi_container.cpp
-	game_launcher.cpp
-	game_preferences.cpp
-	game_state.cpp
-	generic_event.cpp
-	gui/core/canvas.cpp
-	gui/core/log.cpp
-	gui/auxiliary/old_markup.cpp
-	gui/core/timer.cpp
-	gui/dialogs/addon/description.cpp
-	gui/dialogs/addon/filter_options.cpp
-	gui/dialogs/addon/uninstall_list.cpp
-	gui/dialogs/addon/connect.cpp
-	gui/dialogs/addon/manager.cpp
-	gui/dialogs/advanced_graphics_options.cpp
-	gui/dialogs/campaign_difficulty.cpp
-	gui/dialogs/campaign_selection.cpp
-	gui/dialogs/campaign_settings.cpp
-	gui/dialogs/core_selection.cpp
-	gui/dialogs/chat_log.cpp
-	gui/dialogs/debug_clock.cpp
-	gui/dialogs/depcheck_confirm_change.cpp
-	gui/dialogs/depcheck_select_new.cpp
-	gui/dialogs/edit_label.cpp
-	gui/dialogs/editor/custom_tod.cpp
-	gui/dialogs/editor/edit_label.cpp
-	gui/dialogs/editor/edit_side.cpp
-	gui/dialogs/editor/edit_scenario.cpp
-	gui/dialogs/editor/generate_map.cpp
-	gui/dialogs/editor/generator_settings.cpp
-	gui/dialogs/editor/new_map.cpp
-	gui/dialogs/editor/resize_map.cpp
-	gui/dialogs/editor/set_starting_position.cpp
-	gui/dialogs/end_credits.cpp
-	gui/dialogs/file_dialog.cpp
-	gui/dialogs/folder_create.cpp
-	gui/dialogs/formula_debugger.cpp
-	gui/dialogs/game_cache_options.cpp
-	gui/dialogs/game_delete.cpp
-	gui/dialogs/game_load.cpp
-	gui/dialogs/game_save.cpp
-	gui/dialogs/game_stats.cpp
-	gui/dialogs/game_version.cpp
-	gui/dialogs/gamestate_inspector.cpp
-	gui/dialogs/label_settings.cpp
-	gui/dialogs/language_selection.cpp
-	gui/dialogs/loading_screen.cpp
-	gui/dialogs/lobby/lobby.cpp
-	gui/dialogs/lobby/player_info.cpp
-	gui/dialogs/log_settings.cpp
-	gui/dialogs/lua_interpreter.cpp
-	gui/dialogs/message.cpp
-	gui/dialogs/modal_dialog.cpp
-	gui/dialogs/modeless_dialog.cpp
-	gui/dialogs/multiplayer/faction_select.cpp
-	gui/dialogs/multiplayer/mp_alerts_options.cpp
-	gui/dialogs/multiplayer/mp_change_control.cpp
-	gui/dialogs/multiplayer/mp_cmd_wrapper.cpp
-	gui/dialogs/multiplayer/mp_connect.cpp
-	gui/dialogs/multiplayer/mp_create_game.cpp
-	gui/dialogs/multiplayer/mp_host_game_prompt.cpp
-	gui/dialogs/multiplayer/mp_join_game.cpp
-	gui/dialogs/multiplayer/mp_join_game_password_prompt.cpp
-	gui/dialogs/multiplayer/mp_login.cpp
-	gui/dialogs/multiplayer/mp_method_selection.cpp
-	gui/dialogs/multiplayer/mp_options_helper.cpp
-	gui/dialogs/multiplayer/mp_staging.cpp
-	gui/dialogs/network_transmission.cpp
-	gui/dialogs/preferences_dialog.cpp
-	gui/dialogs/edit_text.cpp
-	gui/dialogs/screenshot_notification.cpp
-	gui/dialogs/select_orb_colors.cpp
-	gui/dialogs/simple_item_selector.cpp
-	gui/dialogs/sp_options_configure.cpp
-	gui/dialogs/statistics_dialog.cpp
-	gui/dialogs/multiplayer/synced_choice_wait.cpp
-	gui/dialogs/theme_list.cpp
-	gui/dialogs/terrain_layers.cpp
-	gui/dialogs/title_screen.cpp
-	gui/dialogs/transient_message.cpp
-	gui/dialogs/unit_advance.cpp
-	gui/dialogs/unit_attack.cpp
-	gui/dialogs/unit_create.cpp
-	gui/dialogs/unit_list.cpp
-	gui/dialogs/unit_recall.cpp
-	gui/dialogs/unit_recruit.cpp
-	gui/dialogs/wml_error.cpp
-	gui/dialogs/wml_message.cpp
-	halo.cpp
-	help/help.cpp
-	help/help_browser.cpp
-	help/help_button.cpp
-	help/help_impl.cpp
-	help/help_menu.cpp
-	help/help_text_area.cpp
-	help/help_topic_generators.cpp
-	hotkey/hotkey_preferences_display.cpp
-	hotkey/hotkey_handler.cpp
-	hotkey/hotkey_handler_sp.cpp
-	hotkey/hotkey_handler_mp.cpp
-	intro.cpp
-	map/map.cpp
-	map/location.cpp
-	menu_events.cpp
-	mouse_events.cpp
-	mouse_handler_base.cpp
-	movetype.cpp
-	mp_game_settings.cpp
-	game_initialization/mp_game_utils.cpp
-	mp_ui_alerts.cpp
-	game_initialization/multiplayer.cpp
-	network_asio.cpp
-	pathfind/pathfind.cpp
-	pathfind/teleport.cpp
-	persist_context.cpp
-	persist_manager.cpp
-	persist_var.cpp
-	play_controller.cpp
-	game_initialization/playcampaign.cpp
-	playmp_controller.cpp
-	playsingle_controller.cpp
-	playturn.cpp
-	playturn_network_adapter.cpp
-	random_new.cpp
-	random_new_deterministic.cpp
-	random_new_synced.cpp
-	recall_list_manager.cpp
-	replay.cpp
-	replay_helper.cpp
-	replay_controller.cpp
-	replay_recorder_base.cpp
-	resources.cpp
-	save_blocker.cpp
-	save_index.cpp
-	saved_game.cpp
-	savegame.cpp
-	scripting/application_lua_kernel.cpp
-	scripting/debug_lua.cpp
-	scripting/game_lua_kernel.cpp
-	scripting/lua_common.cpp
-	scripting/lua_cpp_function.cpp
-	scripting/lua_fileops.cpp
-	scripting/lua_formula_bridge.cpp
-	scripting/lua_gui2.cpp
-	scripting/lua_kernel_base.cpp
-	scripting/lua_map_location_ops.cpp
-	scripting/lua_preferences.cpp
-	scripting/lua_race.cpp
-	scripting/lua_rng.cpp
-	scripting/lua_team.cpp
-	scripting/lua_unit.cpp
-	scripting/lua_unit_attacks.cpp
-	scripting/lua_unit_type.cpp
-	scripting/mapgen_lua_kernel.cpp
-	scripting/plugins/context.cpp
-	scripting/plugins/manager.cpp
-	settings.cpp
-	side_filter.cpp
-	game_initialization/singleplayer.cpp
-	statistics.cpp
-	storyscreen/controller.cpp
-	storyscreen/interface.cpp
-	storyscreen/part.cpp
-	storyscreen/render.cpp
-	strftime.cpp
-	synced_checkup.cpp
-	synced_context.cpp
-	synced_commands.cpp
-	synced_user_choice.cpp
-	syncmp_handler.cpp
-	team.cpp
-	teambuilder.cpp
-	terrain/type_data.cpp
-	terrain/filter.cpp
-	tod_manager.cpp
-	tooltips.cpp
-	units/unit.cpp
-	units/abilities.cpp
-	units/animation.cpp
-	units/animation_component.cpp
-	units/attack_type.cpp
-	units/udisplay.cpp
-	units/drawer.cpp
-	units/filter.cpp
-	units/formula_manager.cpp
-	units/frame.cpp
-	units/helper.cpp
-	units/id.cpp
-	units/map.cpp
-	units/race.cpp
-	units/types.cpp
-	utils/sha1.cpp
-	utils/context_free_grammar_generator.cpp
-	utils/markov_generator.cpp
-	utils/name_generator_factory.cpp
-	variable.cpp
-	variable_info.cpp
-	wesnothd_connection.cpp
-	whiteboard/action.cpp
-	whiteboard/attack.cpp
-	whiteboard/highlighter.cpp
-	whiteboard/manager.cpp
-	whiteboard/mapbuilder.cpp
-	whiteboard/move.cpp
-	whiteboard/recall.cpp
-	whiteboard/recruit.cpp
-	whiteboard/side_actions.cpp
-	whiteboard/suppose_dead.cpp
-	whiteboard/utility.cpp
-)
+GetSources("wesnoth" wesnoth-main_SRC)
 
 ########### libwesnoth-game ###############
 # rename libwesnoth.a to libwesnoth-game.a to have clearer targets
 
-set(libwesnoth-game_STAT_SRC
-	arrow.cpp
-	desktop/clipboard.cpp
-	construct_dialog.cpp
-	cursor.cpp
-	display.cpp
-	display_context.cpp
-	events.cpp
-	floating_label.cpp
-	font/font_config.cpp
-	font/marked-up_text.cpp
-	font/sdl_ttf.cpp
-	font/standard_colors.cpp
-	font/text.cpp
-	font/text_cache.cpp
-	font/text_formatting.cpp
-	font/text_surface.cpp
-	format_time_summary.cpp
-  	generators/cave_map_generator.cpp
-	generators/map_create.cpp
-	generators/map_generator.cpp
-	generators/default_map_generator.cpp
-	generators/default_map_generator_job.cpp
-	generators/lua_map_generator.cpp
-	hotkey/command_executor.cpp
-	hotkey/hotkey_item.cpp
-	hotkey/hotkey_command.cpp
-	hotkey/hotkey_manager.cpp
-	image.cpp
-	image_modifications.cpp
-	joystick.cpp
-	game_end_exceptions.cpp
-	key.cpp
-	language.cpp
-	lobby_preferences.cpp
-	utils/make_enum.cpp
-	map/label.cpp
-	minimap.cpp
-	pathfind/astarsearch.cpp
-	pathutils.cpp
-	preferences.cpp
-	preferences_display.cpp
-	quit_confirmation.cpp
-	reports.cpp
-	show_dialog.cpp
-	sound.cpp
-	soundsource.cpp
-	sound_music_track.cpp
-	terrain/terrain.cpp
-	terrain/builder.cpp
-	terrain/translation.cpp
-	time_of_day.cpp
-	tracer.cpp
-	video.cpp
-	theme.cpp
-	widgets/button.cpp
-	widgets/label.cpp
-	widgets/menu.cpp
-	widgets/menu_style.cpp
-	widgets/scrollarea.cpp
-	widgets/scrollbar.cpp
-	widgets/slider.cpp
-	widgets/textbox.cpp
-	widgets/widget.cpp
-	wml_exception.cpp
-)
+GetSources("libwesnoth" libwesnoth-game_STAT_SRC)
 
 # On windows only, this file needs to be linked, as its header is included #ifdef win32.
 if(WIN32)
@@ -1028,6 +360,15 @@ if(WIN32)
 		desktop/windows_tray_notification.cpp
 	)
 endif(WIN32)
+
+# On apple only
+if(APPLE)
+	set(libwesnoth-game_STAT_SRC
+		${libwesnoth-game_STAT_SRC}
+		desktop/apple_notification.mm
+	)
+endif(APPLE)
+
 
 # For libdbus (essentially just for linux), this file needs to be linked, as its header is included #ifdef HAVE_LIBDBUS
 if(LIBDBUS_FOUND)
@@ -1063,16 +404,6 @@ if(ENABLE_GAME)
 			wesnoth.cpp
 		)
 		set(wesnoth_LIB
-			wesnoth-game
-			wesnoth-gui_types
-			wesnoth-gui_event
-			wesnoth-gui_iterator
-			wesnoth-gui_placer
-			wesnoth-gui_tooltip
-			wesnoth-gui_widget
-			wesnoth-gui_widget_definition
-			wesnoth-gui1_widgets
-			wesnoth-schema_validator
 			wesnoth-core
 			wesnoth-lua
 			wesnoth-game
@@ -1081,15 +412,6 @@ if(ENABLE_GAME)
 	else(ENABLE_TESTS)
 		set(wesnoth_SRC
 			wesnoth.cpp
-			${wesnoth-gui_types_SRC}
-			${wesnoth-gui_event_SRC}
-			${wesnoth-gui_iterator_SRC}
-			${wesnoth-gui_placer_SRC}
-			${wesnoth-gui_tooltip_SRC}
-			${wesnoth-gui_widget_SRC}
-			${wesnoth-gui_widget_definition_SRC}
-			${wesnoth-gui1_widgets_SRC}
-			${wesnoth-schema_validator_SRC}
 			${wesnoth-main_SRC}
 		)
 		set(wesnoth_LIB
@@ -1119,247 +441,61 @@ endif(ENABLE_GAME)
 
 if(ENABLE_SERVER)
 
-set(wesnothd_SRC
-	server/ban.cpp
-	server/game.cpp
-	server/metrics.cpp
-	server/player.cpp
-	server/player_connection.cpp
-	server/player_network.cpp
-	server/server.cpp
-	server/server_base.cpp
-	server/simple_wml.cpp
-	server/user_handler.cpp
-	server/forum_user_handler.cpp
-	server/sample_user_handler.cpp
-)
+  GetSources("wesnothd" wesnothd_SRC)
 
-add_executable(wesnothd WIN32
-	${wesnothd_SRC}
-)
+  add_executable(wesnothd WIN32
+	  ${wesnothd_SRC}
+  )
 
-target_link_libraries(wesnothd wesnoth-core ${server-external-libs} ${Boost_RANDOM_LIBRARY})
-set_target_properties(wesnothd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnothd${BINARY_SUFFIX})
+  target_link_libraries(wesnothd wesnoth-core ${server-external-libs} ${Boost_RANDOM_LIBRARY})
+  set_target_properties(wesnothd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnothd${BINARY_SUFFIX})
 
-install(TARGETS wesnothd DESTINATION ${BINDIR})
+  install(TARGETS wesnothd DESTINATION ${BINDIR})
 
 endif(ENABLE_SERVER)
 
 ########### Campaign Server ###############
 
 if(ENABLE_CAMPAIGN_SERVER)
+  
+  GetSources("campaignd" campaignd_SRC)
 
-set(campaignd_SRC
-	addon/validation.cpp
-	campaign_server/addon_utils.cpp
-	campaign_server/blacklist.cpp
-	campaign_server/campaign_server.cpp
-	server/server_base.cpp
-	server/simple_wml.cpp
-)
+  check_library_exists(rt clock_gettime "time.h" HAVE_CLOCK_GETTIME_RT)
+  if(HAVE_CLOCK_GETTIME_RT)
+	  set(LIBRT rt)
+  endif()
 
-check_library_exists(rt clock_gettime "time.h" HAVE_CLOCK_GETTIME_RT)
-if(HAVE_CLOCK_GETTIME_RT)
-	set(LIBRT rt)
-endif()
+  add_executable(campaignd ${campaignd_SRC})
+  target_link_libraries(campaignd
+	  wesnoth-core
+	  ${server-external-libs}
+	  ${Boost_RANDOM_LIBRARY}
+	  ${LIBRT}
+	  )
+  set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd${BINARY_SUFFIX})
 
-add_executable(campaignd ${campaignd_SRC})
-target_link_libraries(campaignd
-	wesnoth-core
-	${server-external-libs}
-	${Boost_RANDOM_LIBRARY}
-	${LIBRT}
-	)
-set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd${BINARY_SUFFIX})
-
-install(TARGETS campaignd DESTINATION ${BINDIR})
+  install(TARGETS campaignd DESTINATION ${BINDIR})
 
 endif(ENABLE_CAMPAIGN_SERVER)
-
-########### Castle building helpers ###############
-
-if(ENABLE_TOOLS)
-
-set(exploder_SRC
-	tools/exploder.cpp
-	tools/exploder_utils.cpp
-	tools/exploder_cutter.cpp
-	tools/exploder_composer.cpp
-	tools/dummy_video.cpp
-	sdl/utils.cpp
-	tracer.cpp
-)
-
-add_executable(exploder ${exploder_SRC})
-target_link_libraries(exploder
-	wesnoth-core
-	wesnoth-sdl
-	png
-	${tools-external-libs}
-)
-set_target_properties(exploder PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}exploder${BINARY_SUFFIX})
-
-install(TARGETS exploder DESTINATION ${BINDIR})
-
-set(cutter_SRC
-	tools/cutter.cpp
-	tools/exploder_utils.cpp
-	tools/exploder_cutter.cpp
-	tools/dummy_video.cpp
-	sdl/utils.cpp
-	tracer.cpp
-)
-
-add_executable(cutter ${cutter_SRC})
-target_link_libraries(cutter
-	wesnoth-core
-	wesnoth-sdl
-	png
-	${tools-external-libs}
-)
-set_target_properties(cutter PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}cutter${BINARY_SUFFIX})
-
-install(TARGETS cutter DESTINATION ${BINDIR})
-
-set(schema_generator_SRC
-	tools/dummy_video.cpp
-	tools/schema/schema_generator.cpp
-	tools/schema/sourceparser.cpp
-	tools/schema/error_container.cpp
-	tools/schema/tag.cpp
-	filesystem_boost.cpp
-	filesystem_common.cpp
-)
-
-add_executable(schema_generator ${schema_generator_SRC})
-target_link_libraries(schema_generator
-	wesnoth-core
-	wesnoth-sdl
-	${tools-external-libs}
-	${Boost_REGEX_LIBRARY}
-)
-set_target_properties(schema_generator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}schema_generator${BINARY_SUFFIX})
-
-install(TARGETS schema_generator DESTINATION ${BINDIR})
-
-set(schema_validator_SRC
-	tools/validator/validator_tool.cpp
-	serialization/schema_validator.cpp
-	serialization/validator.cpp
-	tools/dummy_video.cpp
-	tools/schema/tag.cpp
-	filesystem_boost.cpp
-	filesystem_common.cpp
-	config_cache.cpp
-	utils/sha1.cpp
-)
-
-add_executable(schema_validator ${schema_validator_SRC})
-target_link_libraries(schema_validator
-	wesnoth-core
-	wesnoth-sdl
-	${common-external-libs}
-	${Boost_SYSTEM_LIBRARIES}
-	${Boost_RANDOM_LIBRARY}
-)
-set_target_properties(schema_validator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}schema_validator${BINARY_SUFFIX}
-							COMPILE_DEFINITIONS VALIDATION_ERRORS_LOG)
-
-install(TARGETS schema_validator DESTINATION ${BINDIR})
-
-set(wesmage_SRC
-	wesmage/wesmage.cpp
-	wesmage/exit.cpp
-	wesmage/filter.cpp
-	wesmage/options.cpp
-	tools/dummy_video.cpp
-	tools/exploder_utils.cpp
-	sdl/utils.cpp
-	tracer.cpp
-)
-
-add_executable(wesmage ${wesmage_SRC})
-target_link_libraries(wesmage
-	wesnoth-core
-	wesnoth-sdl
-	png
-	${tools-external-libs}
-)
-set_target_properties(wesmage PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesmage${BINARY_SUFFIX})
-
-install(TARGETS wesmage DESTINATION ${BINDIR})
-
-endif(ENABLE_TOOLS)
-
 
 ########### Unit tests ###############
 
 if(ENABLE_TESTS)
 
 	add_definitions(-DBOOST_TEST_DYN_LINK)
-
-	set(test_SRC
-		tests/gui/iterator.cpp
-		tests/gui/fire_event.cpp
-		tests/gui/test_gui2.cpp
-		tests/gui/test_save_dialog.cpp
-		tests/gui/visitor.cpp
-		tests/main.cpp
-		tests/test_addons.cpp
-		tests/test_commandline_options.cpp
-		tests/test_config.cpp
-		tests/test_config_cache.cpp
-		tests/test_filesystem.cpp
-		tests/test_formula_ai.cpp
-		tests/test_formula_core.cpp
-		tests/test_formula_function.cpp
-		tests/test_image_modifications.cpp
-		tests/test_lexical_cast.cpp
-		tests/test_map_location.cpp
-		tests/test_make_enum.cpp
-		tests/test_recall_list.cpp
-		tests/test_rng.cpp
-		tests/test_mp_connect.cpp
-		tests/test_sdl_utils.cpp
-		tests/test_serialization.cpp
-		tests/test_team.cpp
-		tests/test_unit_map.cpp
-		tests/test_util.cpp
-		tests/test_version.cpp
-		tests/test_whiteboard_side_actions.cpp
-		tests/utils/fake_display.cpp
-		tests/utils/fake_event_source.cpp
-		tests/utils/game_config_manager.cpp
-		tests/utils/play_scenario.cpp
-	)
+  
+  GetSources("test" test_SRC)
+  
 	if(ENABLE_GAME)
 		set(test_LIB
 			wesnoth-core
 			wesnoth-game
-			wesnoth-gui_types
-			wesnoth-gui_event
-			wesnoth-gui_iterator
-			wesnoth-gui_placer
-			wesnoth-gui_tooltip
-			wesnoth-gui_widget
-			wesnoth-gui_widget_definition
-			wesnoth-gui1_widgets
-			wesnoth-schema_validator
 			wesnoth-sdl
 			wesnoth-lua
 		)
 	else(ENABLE_GAME)
 		set(test_SRC
 			${test_SRC}
-			${wesnoth-gui_types_SRC}
-			${wesnoth-gui_event_SRC}
-			${wesnoth-gui_iterator_SRC}
-			${wesnoth-gui_placer_SRC}
-			${wesnoth-gui_widget_definition_SRC}
-			${wesnoth-gui_tooltip_SRC}
-			${wesnoth-gui_widget_SRC}
-			${wesnoth-gui1_widgets_SRC}
-			${wesnoth-schema_validator_SRC}
 			${wesnoth-main_SRC}
 		)
 		set(test_LIB
@@ -1388,27 +524,6 @@ if(ENABLE_TESTS)
 	set_target_properties(test
 		PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}test${BINARY_SUFFIX}
 	)
-
-	if(ENABLE_TOOLS)
-		# This tool is used to create the images for the sdl_utils unit test.
-		# Due to its unique nature the program is never installed.
-		set(create_images_SRC
-			tests/create_images.cpp
-			tools/dummy_video.cpp
-			tools/exploder_utils.cpp
-			sdl/utils.cpp
-			tracer.cpp
-		)
-
-		add_executable(create_images ${create_images_SRC})
-		target_link_libraries(create_images
-			wesnoth-core
-			wesnoth-sdl
-			png
-			${tools-external-libs}
-		)
-		set_target_properties(create_images PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}create_images${BINARY_SUFFIX})
-	endif(ENABLE_TOOLS)
 
 endif(ENABLE_TESTS)
 

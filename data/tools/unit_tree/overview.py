@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 import glob, os, sys, time, re
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from . import html_output

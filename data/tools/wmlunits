@@ -215,6 +215,13 @@ def list_contents():
             d3 = campaign.get_text_val("difficulties")
             if d3:
                 d += "," + d3.split(",")[0]
+            else:
+                difficulty = campaign.get_all(tag = "difficulty")
+                if difficulty:
+                    d3 = difficulty[0].get_text_val("define")
+                    if d3:
+                        d += "," + d3
+
             append(info, cid, d, c = campaign)
 
         return info
@@ -317,7 +324,7 @@ def list_contents():
                 continue
             info["parsed"] = False
             info["dependencies"] = get_dependencies(addon)
-            parse("{core}{multiplayer}{~add-ons}", "MULTIPLAYER,SKIP_CORE")
+            parse("{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "MULTIPLAYER,SKIP_CORE")
             info["eras"] = list_eras(batchlist, addon)
             info["campaigns"] = list_campaigns(batchlist, addon)
             info["version"] = version
@@ -372,7 +379,7 @@ def process_campaign_or_era(addon, cid, define, batchlist):
     wesnoth.add_units("mainline")
     
     if define == "MULTIPLAYER":
-        wesnoth.parser.parse_text("{core}{multiplayer}{~add-ons}", "MULTIPLAYER,SKIP_CORE")
+        wesnoth.parser.parse_text("{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "MULTIPLAYER,SKIP_CORE")
         wesnoth.add_units(cid)
     else:
         if addon == "mainline":

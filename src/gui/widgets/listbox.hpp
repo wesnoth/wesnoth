@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_LISTBOX_HPP_INCLUDED
-#define GUI_WIDGETS_LISTBOX_HPP_INCLUDED
+#pragma once
 
 #ifndef GUI2_EXPERIMENTAL_LISTBOX
 
@@ -177,18 +176,25 @@ public:
 	grid* get_row_grid(const unsigned row);
 
 	/**
-	 * Selectes a row.
+	 * Selects a row.
 	 *
 	 * @param row                 The row to select.
 	 * @param select              Select or deselect the row.
+	 * @returns                   True if the operation succeeded.
 	 */
 	bool select_row(const unsigned row, const bool select = true);
 
 	/**
+	 * Check if a row is selected
+	 * @param row                 The row to test
+	 * @returns                   True if it is selected.
+	 */
+	bool row_selected(const unsigned row);
+
+	/**
 	 * Returns the first selected row
 	 *
-	 * @returns                   The first selected row.
-	 * @retval -1                 No row selected.
+	 * @returns                   The first selected row, or -1 if no row is selected.
 	 */
 	int get_selected_row() const;
 
@@ -498,5 +504,4 @@ struct builder_grid_listbox : public builder_styled_widget
 
 } // namespace gui2
 
-#endif
 #endif

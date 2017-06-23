@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,14 +12,13 @@
    See the COPYING file for more details.
 */
 
-#ifndef HELP_TEXT_AREA_HPP
-#define HELP_TEXT_AREA_HPP
+#pragma once
 
 #include <list>                         // for list
 #include <string>                       // for string
 #include <utility>                      // for pair
 #include "font/standard_colors.hpp"     // for NORMAL_COLOR
-#include "sdl/utils.hpp"                // for surface
+#include "sdl/surface.hpp"                // for surface
 #include "widgets/scrollarea.hpp"       // for scrollarea
 class CVideo;
 class config;
@@ -165,5 +164,3 @@ private:
 };
 
 } // end namespace help
-
-#endif

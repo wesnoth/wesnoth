@@ -5,13 +5,12 @@
    The contents of this file are placed in the public domain.
  */
 
+#pragma once
+
 #include <exception>
 #include <cerrno>
 #include <cstring>
 #include <string>
-
-#ifndef LIBC_ERROR_HPP_INCLUDED
-#define LIBC_ERROR_HPP_INCLUDED
 
 /**
  * Exception type used to propagate C runtime errors across functions.
@@ -26,7 +25,7 @@ public:
 	{
 	}
 
-	virtual ~libc_error() throw()
+	virtual ~libc_error() NOEXCEPT
 	{
 	}
 
@@ -43,7 +42,7 @@ public:
 	}
 
 	/** Returns an explanatory string describing the exception. */
-	const char* what() const throw()
+	const char* what() const NOEXCEPT
 	{
 		return msg_.c_str();
 	}
@@ -53,5 +52,3 @@ private:
 	std::string desc_;
 	std::string msg_;
 };
-
-#endif

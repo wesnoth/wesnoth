@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2016 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2017 by Philippe Plantier <ayin@anathas.org>
 
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -19,11 +19,8 @@
  *  Manage WML-variables.
  */
 
-#include "global.hpp"
-
 #include "variable.hpp"
 
-#include "config_assign.hpp"
 #include "formula/string_utils.hpp"
 #include "game_board.hpp"
 #include "game_data.hpp"
@@ -41,20 +38,30 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 namespace
 {
-	const config as_nonempty_range_default = config_of("_", config());
+	const config as_nonempty_range_default("_");
 	config::const_child_itors as_nonempty_range(const std::string& varname)
 	{
-		assert(resources::gamedata);
-		config::const_child_itors range = resources::gamedata->get_variable_access_read(varname).as_array();
+		config::const_child_itors range = as_nonempty_range_default.child_range("_");
 
-		if(range.empty())
-		{
-			return as_nonempty_range_default.child_range("_");
+		if(resources::gamedata) {
+			config::const_child_itors temp_range = resources::gamedata->get_variable_access_read(varname).as_array();
+
+			if(!temp_range.empty()) {
+				range = temp_range;
+			}
 		}
-		else
-		{
-			return range;
-		}
+
+		return range;
+	}
+}
+
+config_attribute_value config_variable_set::get_variable_const(const std::string &id) const {
+	try {
+		variable_access_const variable(id, cfg_);
+		return variable.as_scalar();
+	} catch(const invalid_variablename_exception&) {
+		ERR_NG << "invalid variablename " << id << "\n";
+		return config::attribute_value();
 	}
 }
 
@@ -144,8 +151,8 @@ config vconfig::get_parsed_config() const
 	{
 		if (child.key == "insert_tag") {
 			vconfig insert_cfg(child.cfg);
-			const t_string& name = insert_cfg["name"];
-			const t_string& vname = insert_cfg["variable"];
+			std::string name = insert_cfg["name"];
+			std::string vname = insert_cfg["variable"];
 			if(!vconfig_recursion.insert(vname).second) {
 				throw recursion_error("vconfig::get_parsed_config() infinite recursion detected, aborting");
 			}
@@ -324,7 +331,7 @@ vconfig::attribute_iterator::pointer vconfig::attribute_iterator::operator->() c
 	if(resources::gamedata) {
 		val.second.apply_visitor(vconfig_expand_visitor(val.second));
 	}
-	pointer_proxy p = {val};
+	pointer_proxy p {val};
 	return p;
 }
 
@@ -396,7 +403,7 @@ vconfig::all_children_iterator::reference vconfig::all_children_iterator::operat
 
 vconfig::all_children_iterator::pointer vconfig::all_children_iterator::operator->() const
 {
-	pointer_proxy p = { value_type(get_key(), get_child()) };
+	pointer_proxy p { value_type(get_key(), get_child()) };
 	return p;
 }
 
@@ -476,7 +483,9 @@ config &scoped_wml_variable::store(const config &var_value)
 
 scoped_wml_variable::~scoped_wml_variable()
 {
-	assert(resources::gamedata);
+	if(!resources::gamedata) {
+		return;
+	}
 
 	if(activated_) {
 		resources::gamedata->clear_variable_cfg(var_name_);
@@ -524,11 +533,7 @@ void scoped_recall_unit::activate()
 
 	const std::vector<team>& teams = resources::gameboard->teams();
 
-	std::vector<team>::const_iterator team_it;
-	for (team_it = teams.begin(); team_it != teams.end(); ++team_it) {
-		if (team_it->save_id() == player_ )
-			break;
-	}
+	std::vector<team>::const_iterator team_it = std::find_if(teams.begin(), teams.end(), [&](const team& t) { return t.save_id() == player_; });
 
 	if(team_it != teams.end()) {
 		if(team_it->recall_list().size() > recall_index_) {

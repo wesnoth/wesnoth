@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2012 - 2017 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,10 +16,9 @@
  * Manage the unit-palette in the editor.
  */
 
-#ifndef UNIT_PALETTES_H_INCLUDED
-#define UNIT_PALETTES_H_INCLUDED
+#pragma once
 
-#include "editor_palettes.hpp"
+#include "editor/palette/editor_palettes.hpp"
 
 #include "units/types.hpp"
 
@@ -60,4 +59,3 @@ private:
 };
 
 }
-#endif

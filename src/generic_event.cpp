@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 
 namespace events{
 
-generic_event::generic_event(std::string name) :
+generic_event::generic_event(const std::string& name) :
 	name_(name),
 	observers_(),
 	change_handler_(false),

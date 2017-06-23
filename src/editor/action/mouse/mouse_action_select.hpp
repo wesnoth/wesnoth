@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2008 - 2017 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,10 +12,9 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_MOUSE_ACTION_SELECT_HPP
-#define EDITOR_MOUSE_ACTION_SELECT_HPP
+#pragma once
 
-#include "mouse_action.hpp"
+#include "editor/action/mouse/mouse_action.hpp"
 
 class CKey;
 class empty_palette;
@@ -67,5 +66,3 @@ public:
 };
 
 } //end namespace editor
-
-#endif

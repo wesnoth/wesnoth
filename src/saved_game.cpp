@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -49,17 +49,16 @@
 
 #include "saved_game.hpp"
 #include "carryover.hpp"
-#include "config_assign.hpp"
 #include "cursor.hpp"
 #include "log.hpp"
 #include "game_config_manager.hpp"
 #include "generators/map_create.hpp"
 #include "statistics.hpp"
 #include "serialization/binary_or_text.hpp"
-#include "util.hpp"
 #include "variable_info.hpp"
 #include "formula/string_utils.hpp"
-#include "config.hpp" //Also for variable_set
+#include "config.hpp"
+#include "variable.hpp" // for config_variable_set
 
 #include <boost/range/adaptors.hpp>
 #include <boost/range/algorithm/copy.hpp>
@@ -168,7 +167,7 @@ void saved_game::set_defaults()
 {
 	const bool is_loaded_game = this->starting_pos_type_ != STARTINGPOS_SCENARIO;
 	const bool is_multiplayer_tag = classification().get_tagname() == "multiplayer";
-	static const std::vector<std::string> team_defaults = {
+	static const std::vector<std::string> team_defaults {
 		"carryover_percentage",
 		"carryover_add",
 	};
@@ -217,7 +216,7 @@ void saved_game::expand_scenario()
 
 			// Add addon_id information if it exists.
 			if (!scenario["addon_id"].empty() && scenario["require_scenario"].to_bool(false)) {
-				mp_settings_.update_addon_requirements(config_of("id",scenario["addon_id"])("version", scenario["addon_version"])("min_version", scenario["addon_min_version"]));
+				mp_settings_.update_addon_requirements(config {"id",scenario["addon_id"], "version", scenario["addon_version"], "min_version", scenario["addon_min_version"]});
 			}
 
 			update_label();
@@ -230,27 +229,9 @@ void saved_game::expand_scenario()
 		}
 	}
 }
+
 namespace
 {
-	struct config_variable_set : public variable_set
-	{
-		const config& cfg_;
-		config_variable_set(const config& cfg) : cfg_(cfg) {}
-		virtual config::attribute_value get_variable_const(const std::string &id) const
-		{
-			try
-			{
-				variable_access_const variable(id, cfg_);
-				return variable.as_scalar();
-			}
-			catch(const invalid_variablename_exception&)
-			{
-				ERR_NG << "invalid variablename " << id << "\n";
-				return config::attribute_value();
-			}
-		};
-	};
-
 	bool variable_to_bool(const config& vars, const std::string& expression)
 	{
 		std::string res = utils::interpolate_variables_into_string(expression, config_variable_set(vars));
@@ -287,7 +268,7 @@ void saved_game::load_mod(const std::string& type, const std::string& id)
 		std::string require_attr = "require_" + type;
 		bool require_default = (type == "era"); // By default, eras have "require_era = true", and mods have "require_modification = false"
 		if (!cfg["addon_id"].empty() && cfg[require_attr].to_bool(require_default)) {
-			mp_settings_.update_addon_requirements(config_of("id",cfg["addon_id"])("version", cfg["addon_version"])("min_version", cfg["addon_min_version"]));
+			mp_settings_.update_addon_requirements(config {"id",cfg["addon_id"], "version", cfg["addon_version"], "min_version", cfg["addon_min_version"]});
 		}
 
 		// Copy events
@@ -329,9 +310,9 @@ void saved_game::expand_mp_events()
 			| boost::adaptors::transformed(modevents_entry_for("modification"))
 			, std::back_inserter(mods) );
 		if(mp_settings_.mp_era != "") //We don't want the error message below if there is no era (= if this is a sp game)
-		{ mods.push_back(modevents_entry("era", mp_settings_.mp_era)); }
+		{ mods.emplace_back("era", mp_settings_.mp_era); }
 		if(classification_.campaign != "")
-		{ mods.push_back(modevents_entry("campaign", classification_.campaign)); }
+		{ mods.emplace_back("campaign", classification_.campaign); }
 
 		// In the first iteration mod contains no [resource]s in all other iterations, mods contains only [resource]s
 		do {
@@ -343,7 +324,7 @@ void saved_game::expand_mp_events()
 			for(const config& cfg : starting_pos_.child_range("load_resource"))
 			{
 				if(loaded_resources.find(cfg["id"].str()) == loaded_resources.end()) {
-					mods.push_back(modevents_entry("resource", cfg["id"].str()));
+					mods.emplace_back("resource", cfg["id"].str());
 					loaded_resources.insert(cfg["id"].str());
 				}
 			}
@@ -362,9 +343,9 @@ void saved_game::expand_mp_options()
 		boost::copy( mp_settings_.active_mods
 			| boost::adaptors::transformed(modevents_entry_for("modification"))
 			, std::back_inserter(mods) );
-		mods.push_back(modevents_entry("era", mp_settings_.mp_era));
-		mods.push_back(modevents_entry("multiplayer", get_scenario_id()));
-		mods.push_back(modevents_entry("campaign", classification().campaign));
+		mods.emplace_back("era", mp_settings_.mp_era);
+		mods.emplace_back("multiplayer", get_scenario_id());
+		mods.emplace_back("campaign", classification().campaign);
 
 		config& variables = carryover_.child_or_add("variables");
 		for(modevents_entry& mod : mods)
@@ -373,7 +354,14 @@ void saved_game::expand_mp_options()
 			{
 				for(const config& option : cfg.child_range("option"))
 				{
-					variables[option["id"]] = option["value"];
+					try
+					{
+						variable_access_create(option["id"], variables).as_scalar() = option["value"];
+					}
+					catch(const invalid_variablename_exception&)
+					{
+						ERR_NG << "variable " << option["id"] << "cannot be set to " << option["value"] << std::endl;
+					}
 				}
 			}
 			else
@@ -443,7 +431,7 @@ void saved_game::expand_carryover()
 	}
 }
 
-bool saved_game::valid()
+bool saved_game::valid() const
 {
 	return this->starting_pos_type_ != STARTINGPOS_INVALID;
 }

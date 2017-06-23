@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2016 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2017 by Philippe Plantier <ayin@anathas.org>
 
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -13,85 +13,145 @@
 
    See the COPYING file for more details.
 */
-#ifndef VARIABLE_INFO_DETAIL_HPP_INCLUDED
-#define VARIABLE_INFO_DETAIL_HPP_INCLUDED
+
+#pragma once
+
+#include "config.hpp"
+#include "utils/const_clone.hpp"
 
 #include <string>
-#include "config.hpp"
+#include <type_traits>
 
-namespace variable_info_detail
+namespace variable_info_implementation
 {
-	enum variable_info_type {vit_const, vit_create_if_not_existent, vit_throw_if_not_existent,  };
-	enum variable_info_state_type {
-		state_start = 0, // for internal use
-		                 // only used at the 'starting_pos' of the variable_info::calculate_value algorithm
-		state_named,     // the result of .someval this can eigher man an attribute value or an
-		                 // child range
-		state_indexed,   // the result of .someval[index] this is never an attribute value,
-		                 // this is always a single config.
-		state_temporary, // the result of .length this value can never be written, it can only be read.
+/**
+ * The variable_info policy classes.
+ *
+ * Each of these classes describes a different behavior for reading data from a variable
+ * and should implement two functions:
+ *
+ * - get_child_at           Describes the desired behavior when reading variable info.
+ * - error_message          Error message regarding policy behavior.
+ */
 
-	};
-
-	//Special case of std::enable_if
-	template<const variable_info_type vit>
-	struct enable_if_non_const
+/** Takes a const reference and is guaranteed to not change the config. */
+class vi_policy_const
+{
+public:
+	static const config& get_child_at(const config& cfg, const std::string& key, int index)
 	{
-		typedef enable_if_non_const<vit> type;
-	};
-
-	template<>
-	struct enable_if_non_const<vit_const>
-	{
-	};
-
-	template<const variable_info_type vit, typename T>
-	struct maybe_const
-	{
-		typedef T type;
-	};
-
-	template <class T>
-	struct maybe_const<vit_const, T>
-	{
-		typedef const T type;
-	};
-
-	template <>
-	struct maybe_const<vit_const, config::child_itors>
-	{
-		typedef config::const_child_itors type;
-	};
-
-
-	template<const variable_info_type vit>
-	struct variable_info_state
-	{
-		typedef typename maybe_const<vit,config>::type child_t;
-
-		variable_info_state(child_t& vars)
-			: child_(&vars)
-			, key_()
-			, index_(0)
-			, temp_val_()
-			, type_(state_start)
-		{
-			child_ = &vars;
+		assert(index >= 0);
+		// cfg.child_or_empty does not support index parameter
+		if(const config& child = cfg.child(key, index)) {
+			return child;
 		}
 
-		// The meaning of the following 3 depends on 'type_', but usualy the case is:
-		// the current config is  child_->child_at(key_, index_).
-		child_t* child_;
-		std::string key_;
-		int index_;
+		static const config empty_const_cfg;
+		return empty_const_cfg;
+	}
 
-		// If we have a temporary value like .length
-		// Then we store the result here.
-		config::attribute_value temp_val_;
+	static std::string error_message(const std::string& name)
+	{
+		return "Cannot resolve variable '" + name + "' for reading.";
+	}
+};
 
-		// See the definition of 'variable_info_state_type'
-		variable_info_state_type type_;
-	};
-}
+/** Creates a child table when resolving name if it doesn't exist yet. */
+class vi_policy_create
+{
+public:
+	static config& get_child_at(config& cfg, const std::string& key, int index)
+	{
+		assert(index >= 0);
+		// the 'create_if_not_existent' logic.
+		while(static_cast<int>(cfg.child_count(key)) <= index) {
+			cfg.add_child(key);
+		}
 
-#endif
+		return cfg.child(key, index);
+	}
+
+	static std::string error_message(const std::string& name)
+	{
+		return "Cannot resolve variable '" + name + "' for writing.";
+	}
+};
+
+/**
+ * Will throw an exception when trying to access a nonexistent table.
+ * Note that the other types can throw too if name is invlid, such as '..[[[a'.
+ */
+class vi_policy_throw
+{
+public:
+	static config& get_child_at(config& cfg, const std::string& key, int index)
+	{
+		assert(index >= 0);
+		if(config& child = cfg.child(key, index)) {
+			return child;
+		}
+
+		throw invalid_variablename_exception();
+	}
+
+	static std::string error_message(const std::string& name)
+	{
+		return "Cannot resolve variable '" + name + "' for writing without creating new children.";
+	}
+};
+
+// ==================================================================
+// Other implementation details.
+// ==================================================================
+
+template<typename T, typename V>
+struct maybe_const : public utils::const_clone<T, V>
+{
+	// Meta type aliases provided by const_clone
+};
+
+template<>
+struct maybe_const<config::child_itors, const vi_policy_const>
+{
+	using type = config::const_child_itors;
+};
+
+enum variable_info_state_type {
+	state_start = 0, /**< Represents the initial variable state before processing. */
+	state_named,     /**< The result of .someval. This can either mean an attribute value or a child range. */
+	state_indexed,   /**< The result of .someval[index]. This is never an attribute value and is always a single config. */
+	state_temporary, /**< The result of .length. This value can never be written, it can only be read. */
+};
+
+template<typename V>
+struct variable_info_state
+{
+	using child_t = typename maybe_const<config, V>::type;
+
+	variable_info_state(child_t& vars)
+		: child_(&vars)
+		, key_()
+		, index_(0)
+		, temp_val_()
+		, type_(state_start)
+	{
+		child_ = &vars;
+	}
+
+	// The meaning of the following 3 depends on 'type_', but the current config is usually
+	// child_->child_at(key_, index_).
+	child_t* child_;
+	std::string key_;
+	int index_;
+
+	// If we have a temporary value like .length we store the result here.
+	config::attribute_value temp_val_;
+
+	// See @ref variable_info_state_type
+	variable_info_state_type type_;
+};
+} // end namespace variable_info_implementation
+
+/** Helper template alias for maybe_const, defined at global scope for convenience. */
+template<typename T, typename V>
+using maybe_const_t = typename variable_info_implementation::maybe_const<T, V>::type;

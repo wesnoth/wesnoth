@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Felix Bauer
+   Copyright (C) 2013 - 2017 by Felix Bauer
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,8 +18,7 @@
  * See http://wiki.wesnoth.org/AI_Recruitment
  */
 
-#ifndef AI_DEFAULT_RECRUITMENT_HPP_INCLUDED
-#define AI_DEFAULT_RECRUITMENT_HPP_INCLUDED
+#pragma once
 
 #include "ai/composite/aspect.hpp"
 #include "ai/composite/rca.hpp"
@@ -293,6 +292,4 @@ private:
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,10 +21,11 @@
  *
  **/
 
-#ifndef DRAWABLE_UNIT_H_INCLUDED
-#define DRAWABLE_UNIT_H_INCLUDED
+#pragma once
 
 #include "map/location.hpp"
+#include "utils/math.hpp"
+
 #include <map>
 #include <vector>
 
@@ -39,13 +40,10 @@ struct color_t;
 struct SDL_Rect;
 class surface;
 
-# include <SDL_types.h>
-typedef Sint32 fixed_t;
-
 class unit_drawer
 {
 public:
-	unit_drawer(display & thedisp, std::map<surface,SDL_Rect> & bar_rects);
+	explicit unit_drawer(display & thedisp);
 
 private:
 	display & disp;
@@ -53,7 +51,6 @@ private:
 	const gamemap & map;
 	const std::vector<team> & teams;
 	halo::manager & halo_man;
-	std::map<surface,SDL_Rect> & energy_bar_rects_;
 	size_t viewing_team;
 	size_t playing_team;
 	const team & viewing_team_ref;
@@ -84,4 +81,3 @@ private:
 	 */
 	const SDL_Rect& calculate_energy_bar(surface surf) const;
 };
-#endif

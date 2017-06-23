@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,6 @@
  * @file
  * Various pathfinding functions and utilities.
  */
-
-#include "global.hpp"
 
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
@@ -121,7 +119,7 @@ map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
 map_location find_vacant_castle(const unit & leader)
 {
 	return find_vacant_tile(leader.get_location(), VACANT_CASTLE,
-	                        nullptr, &resources::gameboard->teams()[leader.side()-1]);
+	                        nullptr, &resources::gameboard->get_team(leader.side()));
 }
 
 
@@ -474,7 +472,7 @@ void paths::dest_vect::insert(const map_location &loc)
 {
 	iterator i = std::lower_bound(begin(), end(), loc, step_compare);
 	if (i != end() && i->curr == loc) return;
-	paths::step s = { loc, map_location(), 0 };
+	paths::step s { loc, map_location(), 0 };
 	std::vector<step>::insert(i, s);
 }
 
@@ -587,7 +585,7 @@ vision_path::vision_path(const movetype::terrain_costs & view_costs, bool slowed
 	// The three nullptr parameters indicate (in order):
 	// ignore units, ignore ZoC (no effect), and don't build a cost_map.
 	team const& viewing_team = resources::gameboard->teams()[resources::screen->viewing_team()];
-	const unit_map::const_iterator u = resources::units->find(loc);
+	const unit_map::const_iterator u = resources::gameboard->units().find(loc);
 	find_routes(loc, view_costs, slowed, sight_range, sight_range, 0,
 	            destinations, &edges, u.valid() ? &*u : nullptr, nullptr, nullptr, &viewing_team, &jamming_map, nullptr, true);
 }
@@ -631,13 +629,13 @@ marked_route mark_route(const plain_route &rt)
 	if (rt.steps.empty()) return marked_route();
 	res.route = rt;
 
-	unit_map::const_iterator it = resources::units->find(rt.steps.front());
-	if (it == resources::units->end()) return marked_route();
+	unit_map::const_iterator it = resources::gameboard->units().find(rt.steps.front());
+	if (it == resources::gameboard->units().end()) return marked_route();
 	unit const& u = *it;
 
 	int turns = 0;
 	int movement = u.movement_left();
-	const team& unit_team = resources::gameboard->teams()[u.side()-1];
+	const team& unit_team = resources::gameboard->get_team(u.side());
 	bool zoc = false;
 
 	std::vector<map_location>::const_iterator i = rt.steps.begin();

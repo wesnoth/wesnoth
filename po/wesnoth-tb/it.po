@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:23 UTC\n"
-"PO-Revision-Date: 2016-05-13 14:49+0000\n"
+"POT-Creation-Date: 2017-05-29 21:55+0200\n"
+"PO-Revision-Date: 2017-05-19 20:52+0300\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:12
@@ -221,10 +221,10 @@ msgstr ""
 msgid "Humans"
 msgstr "Umani"
 
-#. [side]: type=Orcish Warlord, id=Tairach
 #. [side]: type=Dark Sorcerer, id=Mordak
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
+#. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:114
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:131
@@ -553,10 +553,8 @@ msgstr "Nil-Galion"
 
 #. [side]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:170
-#, fuzzy
-#| msgid "Catch the kidnappers"
 msgid "Kidnappers"
-msgstr "Cattura i rapitori"
+msgstr "Rapitori"
 
 #. [side]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:174
@@ -719,19 +717,14 @@ msgstr "Katklagad"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:453
-#, fuzzy
-#| msgid ""
-#| "Three days ride to the northeast, in a deserted castle. The passwords to "
-#| "the guards are $first_password_$first_password_number and "
-#| "$second_password_$second_password_number|."
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
 "guards are $first_password_$first_password and $second_password_"
 "$second_password|."
 msgstr ""
 "Tre giorni di cammino a nord-est, in un castello deserto. Le parole d’ordine "
-"da dire alle guardie sono $first_password_$first_password_number e "
-"$second_password_$second_password_number|."
+"da dire alle guardie sono $first_password_$first_password e $second_password_"
+"$second_password|."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:461
@@ -1011,31 +1004,23 @@ msgstr "La parola d’ordine è"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:361
-#, fuzzy
-#| msgid "Sithrak"
 msgid "Sithrak!"
-msgstr "Sithrak"
+msgstr "Sithrak!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:364
-#, fuzzy
-#| msgid "Eleben"
 msgid "Eleben!"
-msgstr "Eleben"
+msgstr "Eleben!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:367
-#, fuzzy
-#| msgid "Jarlom"
 msgid "Jarlom!"
-msgstr "Jarlom"
+msgstr "Jarlom!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:370
-#, fuzzy
-#| msgid "Hamik"
 msgid "Hamik!"
-msgstr "Hamik"
+msgstr "Hamik!"
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:383
@@ -1112,31 +1097,23 @@ msgstr "Oh, certamente. L’avevo quasi dimenticata."
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:576
-#, fuzzy
-#| msgid "Akranbral"
 msgid "Akranbral!"
-msgstr "Akranbral"
+msgstr "Akranbral!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:579
-#, fuzzy
-#| msgid "Drakanal"
 msgid "Drakanal!"
-msgstr "Drakanal"
+msgstr "Drakanal!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:582
-#, fuzzy
-#| msgid "Xaskanat"
 msgid "Xaskanat!"
-msgstr "Xaskanat"
+msgstr "Xaskanat!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:585
-#, fuzzy
-#| msgid "Katklagad"
 msgid "Katklagad!"
-msgstr "Katklagad"
+msgstr "Katklagad!"
 
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:598
@@ -1225,7 +1202,7 @@ msgid ""
 "enhanced iron gate. It can only be opened with the correct key. You must get "
 "it from him to free me."
 msgstr ""
-"Quel maledetto stregone nero Rotharik mi ha imprigionato dietro questo "
+"Rotharik, quel maledetto stregone nero, mi ha imprigionato dietro questo "
 "cancello di ferro magico. Può essere aperto solo con la chiave giusta. Devi "
 "rubargli la chiave per liberarmi."
 
@@ -1235,6 +1212,8 @@ msgid ""
 "I have already met, and killed, the sorcerer. Is this the key to which you "
 "referred?"
 msgstr ""
+"Ho già incontrato ed ucciso lo stregone. É questa la chiave di cui stai "
+"parlando?"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:799
@@ -1242,6 +1221,8 @@ msgid ""
 "Yes, it is. Come, unlock this cell door, and let us depart this place, "
 "brother!"
 msgstr ""
+"Sì, è quella. Vieni ad aprire questa porta e andiamocene insieme da questo "
+"posto, fratello!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:853
@@ -1289,7 +1270,7 @@ msgstr "Grazie per avermi aiutato. Torniamo al villaggio."
 #. [unit]: id=Rotharik, type=Orcish Assassin
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:912
 msgid "Minion of Tairach"
-msgstr ""
+msgstr "Tirapiedi di Tairach"
 
 #. [message]: speaker=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:924

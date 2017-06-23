@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  *  General settings and defaults for scenarios.
  */
 
-#ifndef SETTINGS_HPP_INCLUDED
-#define SETTINGS_HPP_INCLUDED
+#pragma once
 
 #include <string>
 #include "game_classification.hpp"
@@ -85,5 +84,3 @@ namespace settings {
 	int get_xp_modifier(const std::string& value);
 
 } // namespace settings
-
-#endif

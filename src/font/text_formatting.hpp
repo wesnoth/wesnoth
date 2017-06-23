@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,12 +11,14 @@
    See the COPYING file for more details.
 */
 
-#ifndef TEXT_FORMATTING_HPP_INCLUDED
-#define TEXT_FORMATTING_HPP_INCLUDED
+#pragma once
 
-#include "sdl/color.hpp"
+#include "color.hpp"
 
-#include <SDL.h>
+// This file isn't needed by any of these functions, but this allows any
+// standard color to be passed to span_color without an extra include.
+#include "font/standard_colors.hpp"
+
 #include <string>
 
 /**
@@ -50,5 +52,3 @@ std::string get_pango_color_from_id(const std::string& id);
 std::string get_color_string_pango(const std::string& id);
 
 }
-
-#endif

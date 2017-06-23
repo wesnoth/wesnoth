@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,11 +12,10 @@
    See the COPYING file for more details.
 */
 
-#ifndef SERIALIZATION_UCS4_CONVERT_IMPL_HPP_INCLUDED
-#define SERIALIZATION_UCS4_CONVERT_IMPL_HPP_INCLUDED
+#pragma once
 
 #include "unicode_types.hpp"
-#include "util.hpp"
+#include "utils/math.hpp"
 #include <cassert>
 
 namespace ucs4_convert_impl
@@ -234,5 +233,3 @@ namespace ucs4_convert_impl
 		typedef utf32_impl type;
 	};
 }
-
-#endif

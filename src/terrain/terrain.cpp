@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,13 +12,10 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "terrain/terrain.hpp"
-#include "util.hpp"
 
 #include <set>
 
@@ -324,7 +321,7 @@ void create_terrain_maps(const config::const_child_itors &cfgs,
 			<< terrain.id() << " " << terrain.name() << " : " << terrain.editor_group() << "\n";
 
 		std::pair<std::map<t_translation::terrain_code, terrain_type>::iterator, bool> res;
-		res = letter_to_terrain.insert(std::make_pair(terrain.number(), terrain));
+		res = letter_to_terrain.emplace(terrain.number(), terrain);
 		if (!res.second) {
 			terrain_type& curr = res.first->second;
 			if(terrain == curr) {

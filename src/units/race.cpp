@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,8 +16,6 @@
  *  @file
  *  Generate race-specific unit-names.
  */
-
-#include "global.hpp"
 
 #include "units/race.hpp"
 
@@ -65,6 +63,7 @@ unit_race::unit_race() :
 unit_race::unit_race(const config& cfg) :
 		cfg_(cfg),
 		id_(cfg["id"]),
+		icon_(cfg["editor_icon"]),
 		plural_name_(cfg["plural_name"].t_str()),
 		description_(cfg["description"].t_str()),
 		ntraits_(cfg["num_traits"]),

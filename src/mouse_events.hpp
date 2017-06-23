@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef MOUSE_EVENTS_H_INCLUDED
-#define MOUSE_EVENTS_H_INCLUDED
+#pragma once
 
 #include "game_display.hpp"             // for game_display -> display conversion.
 #include "map/location.hpp"             // for map_location
@@ -88,12 +87,6 @@ public:
 
 	void select_or_action(bool browse);
 
-	void left_mouse_up(int x, int y, const bool /*browse*/);
-	void mouse_wheel_up(int x, int y, const bool /*browse*/);
-	void mouse_wheel_down(int x, int y, const bool /*browse*/);
-	void mouse_wheel_left(int x, int y, const bool /*browse*/);
-	void mouse_wheel_right(int x, int y, const bool /*browse*/);
-
 protected:
 	/**
 	 * Due to the way this class is constructed we can assume that the
@@ -155,5 +148,3 @@ private:
 };
 
 }
-
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef COMMAND_EXECUTOR_HPP_INCLUDED
-#define COMMAND_EXECUTOR_HPP_INCLUDED
+#pragma once
 
 #include "hotkey_command.hpp"
 #include "game_end_exceptions.hpp"
@@ -130,9 +129,9 @@ public:
 	// Returns the appropriate menu image. Checkable items will get a checked/unchecked image.
 	std::string get_menu_image(display& disp, const std::string& command, int index=-1) const;
 	// Returns a vector of images for a given menu.
-	std::vector<config> get_menu_images(display &, const std::vector<std::string>& items_arg);
+	void get_menu_images(display &, std::vector<config>& items);
 
-	virtual void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
+	virtual void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
 	void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
 
 	virtual bool can_execute_command(const hotkey_command& command, int index=-1) const = 0;
@@ -141,7 +140,6 @@ public:
 class command_executor_default : public command_executor
 {
 protected:
-	static const int zoom_amount = 4;
 	virtual display& get_display() = 0;
 public:
 	CVideo& get_video();
@@ -184,4 +182,3 @@ private:
 
 
 }
-#endif

@@ -14,8 +14,8 @@
 
 #pragma once
 
-#include "sdl/color.hpp"
-#include "sdl/utils.hpp"
+#include "color.hpp"
+#include "sdl/surface.hpp"
 #include <string>
 
 namespace font {

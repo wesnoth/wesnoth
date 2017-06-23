@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef IMAGE_HPP_INCLUDED
-#define IMAGE_HPP_INCLUDED
+#pragma once
 
 #include "map/location.hpp"
 #include "terrain/translation.hpp"
@@ -136,7 +135,11 @@ namespace image {
 	///light_string store colors info of central and adjacent hexes.
 	///The structure is one or several 4 chars blocks (L,R,G,B)
 	///where RGB is the color and L is the lightmap to use:
-	///(-1:none, 0-5:transition in each direction, 6:full hex)
+    ///   -1: none
+    ///    0: full hex
+    ///  1-6: concave corners
+    /// 7-12: convex half-corners 1
+    ///13-19: convex half-corners 2
 	typedef std::basic_string<signed char> light_string;
 	///return light_string of one light operation(see above)
 	light_string get_light_string(int op, int r, int g, int b);
@@ -162,15 +165,6 @@ namespace image {
 	///for representing day/night. Invalidates all scaled images.
 	void set_color_adjustment(int r, int g, int b);
 
-	class color_adjustment_resetter
-	{
-		public:
-			color_adjustment_resetter();
-			void reset();
-		private:
-			int r_, g_, b_;
-	};
-
 	///set the team colors used by the TC image modification
 	///use a vector with one string for each team
 	///using nullptr will reset to default TC
@@ -184,7 +178,7 @@ namespace image {
 
 	///sets the amount scaled images should be scaled. Invalidates all
 	///scaled images.
-	void set_zoom(int zoom);
+	void set_zoom(unsigned int zoom);
 
 	/// UNSCALED : image will be drawn "as is" without changing size, even in case of redraw
 	/// SCALED_TO_ZOOM : image will be scaled taking zoom into account
@@ -230,6 +224,3 @@ namespace image {
 	bool save_image(const locator& i_locator, const std::string& outfile);
 	bool save_image(const surface& surf, const std::string& outfile);
 }
-
-#endif
-

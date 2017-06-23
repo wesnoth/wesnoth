@@ -1,0 +1,30 @@
+version: Wesnoth-VS2017-{branch}-{build}
+clone_folder: C:\projects\wesnoth
+image: Visual Studio 2017
+configuration:
+ - Release
+ - Debug
+platform: win32
+skip_branch_with_pr: true
+shallow_clone: true
+before_build:
+  - cd ..
+  - ps: wget https://github.com/aquileia/external/archive/VC15.zip -O VC15.zip
+  - 7z x VC15.ZIP
+  - ren external-VC15 external
+  - cd wesnoth
+  - mkdir projectfiles\VC15
+  - xcopy /E /I /H /Y projectfiles\VC12 projectfiles\VC15
+  - cd projectfiles\VC15
+  - "\"c:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe\" wesnoth.sln /upgrade"
+  - cd ..\..
+  - set PATH=C:\projects\external\dll;%PATH%
+build_script:
+  - msbuild projectfiles\VC15\wesnoth.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+
+on_failure:
+  - "python utils\\appveyor\\irc-notify.py wesnoth-dev {bold}{project_name} - {configuration_name} {color_green}{author}{plain} {bold}{short_commit}: {plain}{message} {color_red}Failed,{bold}Details: {plain}{build_url}"
+
+artifacts:
+  - path: wesnoth.exe
+  - path: wesnothd.exe

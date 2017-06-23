@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,12 +17,10 @@
  * Define the common filters for the @ref gui2::pane class.
  */
 
-#ifndef GUI_AUXILIARY_FILTER_HPP_INCLUDED
-#define GUI_AUXILIARY_FILTER_HPP_INCLUDED
+#pragma once
 
-#include "global.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "util.hpp"
+#include "lexical_cast.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 
@@ -72,5 +70,3 @@ inline bool contains(const pane::item& item,
 }
 
 } // namespace gui2
-
-#endif

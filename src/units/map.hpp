@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2006 - 2009 by Rusty Russell <rusty@rustcorp.com.au>
-   Copyright (C) 2010 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2010 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,8 +15,7 @@
 
 /** @file */
 
-#ifndef UNIT_MAP_H_INCLUDED
-#define UNIT_MAP_H_INCLUDED
+#pragma once
 
 #include "utils/reference_counter.hpp"
 #include "map/location.hpp"
@@ -354,7 +353,7 @@ public:
 	 @return std::pair<unit_iterator, bool>  a bool indicating success and
 	 an iterator pointing to the new unit, or the unit already occupying location.
 	 */
-	std::pair<unit_iterator, bool> replace(const map_location &l, const unit &u);
+	std::pair<unit_iterator, bool> replace(const map_location &l, unit_ptr p);
 
 	/**
 	 * Erases the unit at location @a l, if any.
@@ -438,7 +437,3 @@ size_t unit_map::erase(const T& iter) {
 
 	return erase(iter->get_location());
 }
-
-
-
-#endif	// UNIT_MAP_H_INCLUDED

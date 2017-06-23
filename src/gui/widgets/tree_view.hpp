@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_TREE_VIEW_HPP_INCLUDED
-#define GUI_WIDGETS_TREE_VIEW_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/scrollbar_container.hpp"
 
@@ -99,6 +98,11 @@ public:
 		selection_change_callback_ = callback;
 	}
 
+	const std::vector<node_definition>& get_node_definitions() const
+	{
+		return node_definitions_;
+	}
+
 protected:
 /***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 	/** Inherited from scrollbar_container. */
@@ -166,7 +170,7 @@ private:
 
 	template<tree_view_node* (tree_view_node::*func) ()>
 	tree_view_node* get_next_node();
-	
+
 	template<tree_view_node* (tree_view_node::*func) ()>
 	bool handle_up_down_arrow();
 };
@@ -225,5 +229,3 @@ struct builder_tree_view : public builder_styled_widget
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -37,7 +37,7 @@
 #include <numeric>
 #include <boost/dynamic_bitset.hpp>
 
-#include <SDL.h>
+#include <SDL_timer.h>
 
 static lg::log_domain log_ai_testing_ai_default("ai/ca/testing_ai_default");
 #define DBG_AI_TESTING_AI_DEFAULT LOG_STREAM(debug, log_ai_testing_ai_default)
@@ -66,7 +66,7 @@ double goto_phase::evaluate()
 {
 	// Execute goto-movements - first collect gotos in a list
 	std::vector<map_location> gotos;
-	unit_map &units_ = *resources::units;
+	unit_map &units_ = resources::gameboard->units();
 	const gamemap &map_ = resources::gameboard->map();
 
 	for(unit_map::iterator ui = units_.begin(); ui != units_.end(); ++ui) {
@@ -280,7 +280,7 @@ double move_leader_to_goals_phase::evaluate()
 		return BAD_SCORE;
 	}
 
-	const unit_map::iterator leader = resources::units->find_leader(get_side());
+	const unit_map::iterator leader = resources::gameboard->units().find_leader(get_side());
 	if (!leader.valid() || leader->incapacitated()) {
 		WRN_AI_TESTING_AI_DEFAULT << "Leader not found" << std::endl;
 		return BAD_SCORE;
@@ -312,7 +312,7 @@ double move_leader_to_goals_phase::evaluate()
 	const pathfind::paths leader_paths(*leader, false, true, current_team());
 
 	std::map<map_location,pathfind::paths> possible_moves;
-	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->get_location(), leader_paths));
+	possible_moves.emplace(leader->get_location(), leader_paths);
 
 	map_location loc;
 	for (const map_location &l : route.steps)
@@ -387,7 +387,7 @@ double move_leader_to_keep_phase::evaluate()
 	// 6. Save move_ for execution
 
 	// 1.
-	const unit_map &units_ = *resources::units;
+	const unit_map &units_ = resources::gameboard->units();
 	const std::vector<unit_map::const_iterator> leaders = units_.find_leaders(get_side());
 	if (leaders.empty()) {
 		return BAD_SCORE;
@@ -474,14 +474,14 @@ double move_leader_to_keep_phase::evaluate()
 		return BAD_SCORE;
 	}
 	//define the next hop to have the lowest cost (0)
-	moves_toward_keep.insert(std::make_pair(0, next_hop));
+	moves_toward_keep.emplace(0, next_hop);
 
 	for (const pathfind::paths::step &dest : leader_paths.destinations) {
 		if (!units_.find(dest.curr).valid()) {
 			route = pathfind::a_star_search(dest.curr, next_hop, 10000.0, calc,
 					resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 			if (route.move_cost < next_hop_cost) {
-				moves_toward_keep.insert(std::make_pair(route.move_cost, dest.curr));
+				moves_toward_keep.emplace(route.move_cost, dest.curr);
 			}
 		}
 	}
@@ -527,7 +527,7 @@ get_villages_phase::~get_villages_phase()
 double get_villages_phase::evaluate()
 {
 	moves_.clear();
-	unit_map::const_iterator leader = resources::units->find_leader(get_side());
+	unit_map::const_iterator leader = resources::gameboard->units().find_leader(get_side());
 	get_villages(get_dstsrc(),get_enemy_dstsrc(),leader);
 	if (!moves_.empty()) {
 		return get_score();
@@ -538,7 +538,7 @@ double get_villages_phase::evaluate()
 
 void get_villages_phase::execute()
 {
-	unit_map &units_ = *resources::units;
+	unit_map &units_ = resources::gameboard->units();
 	unit_map::const_iterator leader = units_.find_leader(get_side());
 	// Move all the units to get villages, however move the leader last,
 	// so that the castle will be cleared if it wants to stop to recruit along the way.
@@ -592,7 +592,7 @@ void get_villages_phase::get_villages(
 		unit_map::const_iterator &leader)
 {
 	DBG_AI_TESTING_AI_DEFAULT << "deciding which villages we want...\n";
-	unit_map &units_ = *resources::units;
+	unit_map &units_ = resources::gameboard->units();
 	const int ticks = SDL_GetTicks();
 	best_leader_loc_ = map_location::null_location();
 	if(leader != units_.end()) {
@@ -613,7 +613,7 @@ void get_villages_phase::get_villages(
 			continue;
 		}
 		if(u_itor->side() == get_side() && u_itor->movement_left()) {
-			reachmap.insert(std::make_pair(u_itor->get_location(),	std::vector<map_location>()));
+			reachmap.emplace(u_itor->get_location(),	std::vector<map_location>());
 		}
 	}
 
@@ -720,11 +720,11 @@ void get_villages_phase::find_villages(
 			threat = vuln->second;
 		} else {
 			threat = power_projection(current_loc,enemy_dstsrc);
-			vulnerability.insert(std::pair<map_location,double>(current_loc,threat));
+			vulnerability.emplace(current_loc, threat);
 		}
 
-		const unit_map::const_iterator u = resources::units->find(j->second);
-		if (u == resources::units->end() || u->get_state("guardian")) {
+		const unit_map::const_iterator u = resources::gameboard->units().find(j->second);
+		if (u == resources::gameboard->units().end() || u->get_state("guardian")) {
 			continue;
 		}
 
@@ -752,7 +752,7 @@ void get_villages_phase::find_villages(
 			move_result_ptr move_check_res = check_move_action(j->second,j->first,true);
 			if (move_check_res->is_ok()) {
 				DBG_AI_TESTING_AI_DEFAULT << "Dispatched unit at " << j->second << " to village " << j->first << '\n';
-				moves.push_back(std::make_pair(j->first, j->second));
+				moves.emplace_back(j->first, j->second);
 			}
 			reachmap.erase(j->second);
 			dispatched_units.push_back(j->second);
@@ -837,7 +837,7 @@ bool get_villages_phase::dispatch_unit_simple(treachmap& reachmap, tmoves& moves
 			result = true;
 
 			DBG_AI_TESTING_AI_DEFAULT << "Dispatched unit at " << itor->first << " to village " << village << '\n';
-			moves.push_back(std::make_pair(village, itor->first));
+			moves.emplace_back(village, itor->first);
 			reachmap.erase(itor++);
 
 			if(remove_village(reachmap, moves, village)) {
@@ -860,8 +860,7 @@ bool get_villages_phase::dispatch_unit_simple(treachmap& reachmap, tmoves& moves
 		DBG_AI_TESTING_AI_DEFAULT << "Dispatched _last_ unit at " << reachmap.begin()->first
 			<< " to village " << reachmap.begin()->second[0] << '\n';
 
-		moves.push_back(std::make_pair(
-			reachmap.begin()->second[0], reachmap.begin()->first));
+		moves.emplace_back(reachmap.begin()->second[0], reachmap.begin()->first);
 
 		reachmap.clear();
 		// We're done.
@@ -907,7 +906,7 @@ bool get_villages_phase::dispatch_village_simple(
 				result = true;
 
 				DBG_AI_TESTING_AI_DEFAULT << "Dispatched unit at " << itor->second[0] << " to village " << itor->first << '\n';
-				moves.push_back(std::make_pair(itor->first, itor->second[0]));
+				moves.emplace_back(itor->first, itor->second[0]);
 
 				reachmap.erase(itor->second[0]);
 				remove_village(reachmap, moves, village);
@@ -949,7 +948,7 @@ get_villages_phase::treachmap::iterator get_villages_phase::remove_unit(
 		DBG_AI_TESTING_AI_DEFAULT << "Dispatch leader at " << leader_loc_ << " closer to the keep at "
 			<< best_leader_loc_ << '\n';
 
-		moves.push_back(std::make_pair(best_leader_loc_, leader_loc_));
+		moves.emplace_back(best_leader_loc_, leader_loc_);
 	}
 
 	reachmap.erase(unit++);
@@ -990,7 +989,7 @@ void get_villages_phase::dispatch_complex(
 	for(size_t u = 0; u < unit_count; ++u, ++itor) {
 		units[u] = itor->first;
 		villages_per_unit[u] = itor->second.size();
-		unit_lookup.insert(std::make_pair(villages_per_unit[u], u));
+		unit_lookup.emplace(villages_per_unit[u], u);
 
 		assert(itor->second.size() >= 2);
 
@@ -1092,11 +1091,11 @@ void get_villages_phase::dispatch_complex(
 				// Dispatch
 				DBG_AI_TESTING_AI_DEFAULT << "Found a square.\nDispatched unit at " << units[src_itor->second]
 						<< " to village " << village1 << '\n';
-				moves.push_back(std::make_pair(village1, units[src_itor->second]));
+				moves.emplace_back(village1, units[src_itor->second]);
 
 				DBG_AI_TESTING_AI_DEFAULT << "Dispatched unit at " << units[dst_itor->second]
 						<< " to village " << village2 << '\n';
-				moves.push_back(std::make_pair(village2, units[dst_itor->second]));
+				moves.emplace_back(village2, units[dst_itor->second]);
 
 				// Remove the units
 				reachmap.erase(units[src_itor->second]);
@@ -1157,7 +1156,7 @@ void get_villages_phase::dispatch_complex(
 			std::vector<std::pair<map_location,map_location> > result;
 			for(size_t u = 0; u < max_options; ++u) {
 				if(matrix[u][perm[u]]) {
-					result.push_back(std::make_pair(villages[perm[u]], units[u]));
+					result.emplace_back(villages[perm[u]], units[u]);
 
 				}
 			}
@@ -1195,7 +1194,7 @@ void get_villages_phase::dispatch_complex(
 			std::vector<std::pair<map_location,map_location> > result;
 			for(size_t u = 0; u < unit_count; ++u) {
 				if(matrix[u][perm[u]]) {
-					result.push_back(std::make_pair(villages[perm[u]], units[u]));
+					result.emplace_back(villages[perm[u]], units[u]);
 
 				}
 			}
@@ -1237,7 +1236,7 @@ void get_villages_phase::dispatch_complex(
 			std::vector<std::pair<map_location,map_location> > result;
 			for(size_t v = 0; v < village_count; ++v) {
 				if(matrix[perm[v]][v]) {
-					result.push_back(std::make_pair(villages[v], units[perm[v]]));
+					result.emplace_back(villages[v], units[perm[v]]);
 
 				}
 			}
@@ -1274,7 +1273,7 @@ void get_villages_phase::full_dispatch(treachmap& reachmap, tmoves& moves)
 	for(size_t i = 0; i < reachmap.size(); ++i, ++itor) {
 		DBG_AI_TESTING_AI_DEFAULT << "Dispatched unit at " << itor->first
 				<< " to village " << itor->second[i] << '\n';
-		moves.push_back(std::make_pair(itor->second[i], itor->first));
+		moves.emplace_back(itor->second[i], itor->first);
 	}
 }
 
@@ -1318,7 +1317,7 @@ get_healing_phase::~get_healing_phase()
 double get_healing_phase::evaluate()
 {
 	// Find units in need of healing.
-	unit_map &units_ = *resources::units;
+	unit_map &units_ = resources::gameboard->units();
 	unit_map::iterator u_it = units_.begin();
 	for(; u_it != units_.end(); ++u_it) {
 		unit &u = *u_it;
@@ -1396,7 +1395,7 @@ double retreat_phase::evaluate()
 
 
 	// Get versions of the move map that assume that all units are at full movement
-	const unit_map& units_ = *resources::units;
+	const unit_map& units_ = resources::gameboard->units();
 
 	//unit_map::const_iterator leader = units_.find_leader(get_side());
 	std::vector<unit_map::const_iterator> leaders = units_.find_leaders(get_side());
@@ -1591,7 +1590,7 @@ double leader_shares_keep_phase::evaluate()
 	bool allied_leaders_available = false;
 	for(team &tmp_team : resources::gameboard->teams()) {
 		if(!current_team().is_enemy(tmp_team.side())){
-			std::vector<unit_map::unit_iterator> allied_leaders = resources::units->find_leaders(get_side());
+			std::vector<unit_map::unit_iterator> allied_leaders = resources::gameboard->units().find_leaders(get_side());
 			if (!allied_leaders.empty()){
 				allied_leaders_available = true;
 				break;
@@ -1607,13 +1606,13 @@ double leader_shares_keep_phase::evaluate()
 void leader_shares_keep_phase::execute()
 {
 	//get all AI leaders
-	std::vector<unit_map::unit_iterator> ai_leaders = resources::units->find_leaders(get_side());
+	std::vector<unit_map::unit_iterator> ai_leaders = resources::gameboard->units().find_leaders(get_side());
 
 	//calculate all possible moves (AI + allies)
 	typedef std::map<map_location, pathfind::paths> path_map;
 	path_map possible_moves;
 	move_map friends_srcdst, friends_dstsrc;
-	calculate_moves(*resources::units, possible_moves, friends_srcdst, friends_dstsrc, false, true);
+	calculate_moves(resources::gameboard->units(), possible_moves, friends_srcdst, friends_dstsrc, false, true);
 
 	//check for each ai leader if he should move away from his keep
 	for (unit_map::unit_iterator &ai_leader : ai_leaders) {
@@ -1630,9 +1629,9 @@ void leader_shares_keep_phase::execute()
 
 		//for each leader, check if he's allied and can reach our keep
 		for(path_map::const_iterator i = possible_moves.begin(); i != possible_moves.end(); ++i){
-			const unit_map::const_iterator itor = resources::units->find(i->first);
-			team &leader_team = resources::gameboard->teams()[itor->side() - 1];
-			if(itor != resources::units->end() && itor->can_recruit() && itor->side() != get_side() && (leader_team.total_income() + leader_team.gold() > leader_team.minimum_recruit_price())){
+			const unit_map::const_iterator itor = resources::gameboard->units().find(i->first);
+			team &leader_team = resources::gameboard->get_team(itor->side());
+			if(itor != resources::gameboard->units().end() && itor->can_recruit() && itor->side() != get_side() && (leader_team.total_income() + leader_team.gold() > leader_team.minimum_recruit_price())){
 				pathfind::paths::dest_vect::const_iterator tokeep = i->second.destinations.find(keep);
 				if(tokeep != i->second.destinations.end()){
 					friend_can_reach_keep = true;

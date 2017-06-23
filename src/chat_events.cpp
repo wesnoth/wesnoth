@@ -1,15 +1,27 @@
-#include "chat_events.hpp"
-#include "global.hpp"
+/*
+   Copyright (C) 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
-#include "config_assign.hpp"
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
+#include "chat_events.hpp"
+
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map_command_handler.hpp"
 #include "chat_command_handler.hpp"
-#include "preferences.hpp"
-#include "game_preferences.hpp"
+#include "preferences/credentials.hpp"
+#include "preferences/general.hpp"
+#include "preferences/game.hpp"
 
 #include <boost/range/algorithm/find_if.hpp>
 

@@ -6,13 +6,14 @@ return {
 
         -- More generic grunt rush (and can, in fact, be used with other unit types as well)
 
-        local H = wesnoth.require "lua/helper.lua"
+        local H = wesnoth.require "helper"
         local W = H.set_wml_action_metatable {}
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local BC = wesnoth.require "ai/lua/battle_calcs.lua"
-        local LS = wesnoth.require "lua/location_set.lua"
+        local LS = wesnoth.require "location_set"
         local HS = wesnoth.require "ai/micro_ais/cas/ca_healer_move.lua"
         local R = wesnoth.require "ai/lua/retreat.lua"
+        local M = wesnoth.map
 
         local function print_time(...)
             if generic_rush.data.turn_start_time then
@@ -154,7 +155,7 @@ return {
                 if turns <= 2 then
                     score = 1/turns
                     for j,e in ipairs(enemy_leaders) do
-                        score = score + 1 / H.distance_between(loc[1], loc[2], e.x, e.y)
+                        score = score + 1 / M.distance_between(loc[1], loc[2], e.x, e.y)
                     end
 
                     if score > best_score then
@@ -180,7 +181,7 @@ return {
                     local score = 1/best_turns
                     for j,e in ipairs(enemy_leaders) do
                         -- count all distances as three less than they actually are
-                        score = score + 1 / (H.distance_between(leader.x, leader.y, e.x, e.y) - 3)
+                        score = score + 1 / (M.distance_between(leader.x, leader.y, e.x, e.y) - 3)
                     end
 
                     if score > best_score then
@@ -340,7 +341,7 @@ return {
                     if (not village_occupied) then
                         -- Path finding is expensive, so we do a first cut simply by distance
                         -- There is no way a unit can get to the village if the distance is greater than its moves
-                        local dist = H.distance_between(u.x, u.y, v[1], v[2])
+                        local dist = M.distance_between(u.x, u.y, v[1], v[2])
                         if (dist <= u.moves) then
                             local path, cost = wesnoth.find_path(u, v[1], v[2])
                             if (cost <= u.moves) then

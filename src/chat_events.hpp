@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -13,10 +13,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef CHAT_EVENTS_H_INCLUDED
-#define CHAT_EVENTS_H_INCLUDED
+#pragma once
 
-#include "global.hpp"
 class config;
 #include <ctime>
 #include <string>
@@ -69,4 +67,3 @@ protected:
 };
 
 }
-#endif

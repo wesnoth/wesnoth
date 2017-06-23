@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # encoding: utf-8
 
 """
@@ -362,7 +362,7 @@ class Parser:
                 self.handle_attribute(line)
         else:
             for i, segment in enumerate(line.split("+")):
-                segment = segment.lstrip(" ")
+                segment = segment.lstrip(" \t")
 
                 if i > 0:
                     # If the last segment is empty (there was a plus sign
@@ -371,7 +371,7 @@ class Parser:
 
                 if not segment: continue
 
-                if segment[0] == "_":
+                if segment.rstrip() == '_':
                     self.translatable = True
                     segment = segment[1:].lstrip(" ")
                     if not segment: continue
@@ -685,6 +685,18 @@ x = _ "abc" + {X}
     x=_<B>'abc' .. _<A>'abc'
 [/test]
 """, "textdomain")
+
+        test(
+"""
+[test]
+x,y = _1,_2
+[/test]
+""", """
+[test]
+    x='_1'
+    y='_2'
+[/test]
+""", "underscores")
 
         test(
 """

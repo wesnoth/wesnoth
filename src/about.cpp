@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,8 +27,8 @@ namespace about
 {
 
 static config about_list;
-static std::map<std::string, std::string> images;
-static std::string images_default;
+static std::map<std::string, std::vector<std::string>> images;
+static std::vector<std::string> images_default;
 
 const config& get_about_config()
 {
@@ -37,15 +37,19 @@ const config& get_about_config()
 
 std::vector<std::string> get_background_images(const std::string& campaign)
 {
-	std::vector<std::string> image_list;
-
 	if(!campaign.empty() && !images[campaign].empty()){
-		image_list = utils::parenthetical_split(images[campaign], ',');
-	} else{
-		image_list = utils::parenthetical_split(images_default, ',');
+		return images[campaign];
 	}
 
-	return image_list;
+	return images_default;
+}
+
+static void gather_images(const config& from, std::vector<std::string>& to)
+{
+	const auto& im = utils::parenthetical_split(from["images"], ',');
+	if(!im.empty()) {
+		to.insert(to.end(), im.begin(), im.end());
+	}
 }
 
 void set_about(const config &cfg)
@@ -55,17 +59,24 @@ void set_about(const config &cfg)
 	images.clear();
 	images_default.clear();
 
-	for(const config& about : cfg.child_range("about")) {
-		about_list.add_child("about", about);
-
-		const std::string& im = about["images"];
-		if(!im.empty()) {
-			if(images_default.empty()) {
-				images_default = im;
-			} else {
-				images_default += ',' + im;
-			}
+	for(const config& group : cfg.child_range("credits_group")) {
+		if(!group.has_child("about")) {
+			continue;
 		}
+		about_list.add_child("credits_group", group);
+		gather_images(group, images_default);
+		for(const config& about : group.child_range("about")) {
+			gather_images(about, images_default);
+		}
+	}
+
+	config misc;
+	for(const config& about : cfg.child_range("about")) {
+		misc.add_child("about", about);
+		gather_images(about, images_default);
+	}
+	if(!misc.empty()) {
+		about_list.add_child("credits_group", misc);
 	}
 
 	for(const config& campaign : cfg.child_range("campaign")) {
@@ -79,22 +90,10 @@ void set_about(const config &cfg)
 		temp["title"] = campaign["name"];
 		temp["id"] = id;
 
-		std::string campaign_images;
-
 		for(const config& about : campaign.child_range("about")) {
 			temp.add_child("about", about);
-
-			const std::string& im = about["images"];
-			if(!im.empty())	{
-				if(campaign_images.empty()) {
-					campaign_images = im;
-				} else {
-					campaign_images += ',' + im;
-				}
-			}
+			gather_images(about, images[id]);
 		}
-
-		images[id] = campaign_images;
 
 		about_list.add_child("credits_group", temp);
 	}

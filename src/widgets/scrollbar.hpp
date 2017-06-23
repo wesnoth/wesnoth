@@ -15,8 +15,7 @@
 
 /** @file */
 
-#ifndef SCROLLBAR_HPP_INCLUDED
-#define SCROLLBAR_HPP_INCLUDED
+#pragma once
 
 #include "button.hpp"
 
@@ -102,5 +101,3 @@ private:
 };
 
 } // end namespace gui
-
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2011 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -33,9 +33,8 @@
 #include "font/pango/escape.hpp"
 #include "desktop/clipboard.hpp"
 #include "serialization/unicode.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "log.hpp"
-#include "resources.hpp"
 #include "replay.hpp"
 #include "gettext.hpp"
 
@@ -106,7 +105,7 @@ public:
 		msg_label->set_label("");
 	}
 
-	int count_of_pages()
+	int count_of_pages() const
 	{
 		int size = chat_log_history.size();
 		return (size % COUNT_PER_PAGE == 0) ? (size / COUNT_PER_PAGE)

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_SCROLLBAR_CONTAINER_PRIVATE_HPP_INCLUDED
-#define GUI_WIDGETS_SCROLLBAR_CONTAINER_PRIVATE_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/scrollbar_container.hpp"
 
@@ -54,7 +53,7 @@ struct scrollbar_container_implementation
 	 */
 	template <class W>
 	static W*
-	find_at(typename utils::const_clone<scrollbar_container, W>::reference
+	find_at(utils::const_clone_ref<scrollbar_container, W>
 					scrollbar_container,
 			const point& coordinate,
 			const bool must_be_active)
@@ -83,7 +82,7 @@ struct scrollbar_container_implementation
 	 */
 	template <class W>
 	static W*
-	find(typename utils::const_clone<scrollbar_container, W>::reference
+	find(utils::const_clone_ref<scrollbar_container, W>
 				 scrollbar_container,
 		 const std::string& id,
 		 const bool must_be_active)
@@ -102,5 +101,3 @@ struct scrollbar_container_implementation
 };
 
 } // namespace gui2
-
-#endif

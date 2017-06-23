@@ -1,29 +1,21 @@
-local H = wesnoth.require "lua/helper.lua"
-local W = H.set_wml_action_metatable {}
+local H = wesnoth.require "helper"
 
 local function handle_default_recruitment(cfg)
 	-- Also need to delete/add the default recruitment CA
 	if cfg.action == 'add' then
-		W.modify_ai {
-			side = cfg.side,
-			action = "try_delete",
-			path = "stage[main_loop].candidate_action[recruitment]"
-		}
+		wesnoth.delete_ai_component(cfg.side, "stage[main_loop].candidate_action[recruitment]")
 	elseif cfg.action == 'delete' then
 		-- We need to add the recruitment CA back in
 		-- This works even if it was not removed, it simply overwrites the existing CA
-		W.modify_ai {
-			side = cfg.side,
-			action = "add",
-			path = "stage[main_loop].candidate_action",
-			{ "candidate_action", {
+		wesnoth.add_ai_component(cfg.side, "stage[main_loop].candidate_action",
+			{
 				id="recruitment",
 				engine="cpp",
 				name="ai_default_rca::aspect_recruitment_phase",
 				max_score=180000,
 				score=180000
-			} }
-		}
+			}
+		)
 	end
 end
 

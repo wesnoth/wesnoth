@@ -1,4 +1,4 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local W = H.set_wml_action_metatable {}
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
@@ -64,6 +64,10 @@ function ca_forest_animals_new_rabbit:execution(cfg)
             ..  cfg.rabbit_type
             .. "' }, x1, y1)"
         ai.synced_command(command, x, y)
+    end
+
+    if wesnoth.sides[wesnoth.current.side].shroud then
+        wesnoth.wml_actions.redraw { side = wesnoth.current.side }
     end
 end
 

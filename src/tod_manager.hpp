@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Eugen Jiresch
+   Copyright (C) 2009 - 2017 by Eugen Jiresch
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
  */
-#ifndef TOD_MANAGER_HPP_INCLUDED
-#define TOD_MANAGER_HPP_INCLUDED
+
+#pragma once
 
 #include "map/location.hpp"
 #include "config.hpp"
@@ -22,7 +22,7 @@ class gamemap;
 class unit_map;
 class game_data;
 
-namespace random_new
+namespace randomness
 {
 	class rng;
 }
@@ -39,7 +39,7 @@ class tod_manager
 		/**
 			handles random_start_time, should be called before the game starts.
 		*/
-		void resolve_random(random_new::rng& r);
+		void resolve_random(randomness::rng& r);
 		int get_current_time(const map_location& loc = map_location::null_location()) const;
 
 		void set_current_time(int time);
@@ -171,12 +171,12 @@ class tod_manager
 		 *
 		 * @returns                   True if time has not expired.
 		 */
-		bool is_time_left();
-		bool has_turn_event_fired()
+		bool is_time_left() const;
+		bool has_turn_event_fired() const
 		{ return has_turn_event_fired_; }
 		void turn_event_fired()
 		{ has_turn_event_fired_ = true; }
-		bool has_tod_bonus_changed()
+		bool has_tod_bonus_changed() const
 		{ return has_tod_bonus_changed_; }
 	private:
 
@@ -240,4 +240,3 @@ class tod_manager
 		//
 		config::attribute_value random_tod_;
 };
-#endif

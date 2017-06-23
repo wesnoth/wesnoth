@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,12 +11,16 @@
 
    See the COPYING file for more details.
 */
+#if defined(_MSC_VER)
+#pragma warning(disable: 4714)
+#endif
 
 #include "global.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "filesystem.hpp"
 
+#include <iomanip>
 #include <iostream>
 #include <fstream>
 #include <locale>
@@ -25,13 +29,18 @@
 #include <boost/thread.hpp>
 #include <set>
 
-#ifdef __GNUC__
+#if defined(__GNUC__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+#elif defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4459)
 #endif
 #include "spirit_po.hpp"
-#ifdef __GNUC__
+#if defined(__GNUC__)
 #pragma GCC diagnostic pop
+#elif defined(_MSC_VER)
+#pragma warning(pop)
 #endif
 
 #define DBG_G LOG_STREAM(debug, lg::general())
@@ -134,7 +143,7 @@ namespace
 					extra_messages_.emplace(get_base().domain(domain), cat);
 				} catch(spirit_po::catalog_exception& e) {
 					throw_po_error(lang_name_long, domain, e.what());
-				} catch(std::ios::failure& e) {
+				} catch(std::ios::failure&) {
 					throw_po_error(lang_name_long, domain, strerror(errno));
 				}
 			}
@@ -148,18 +157,18 @@ namespace
 			throw game::error(err.str());
 		}
 
-		const char* get(int domain_id, const char* ctx, const char* id) const override
+		const char* get(int domain_id, const char* ctx, const char* msg_id) const override
 		{
 			auto& base = get_base();
-			const char* msg = base.get(domain_id, ctx, id);
+			const char* msg = base.get(domain_id, ctx, msg_id);
 			if(msg == nullptr) {
 				auto iter = extra_messages_.find(domain_id);
 				if(iter == extra_messages_.end()) {
 					return nullptr;
 				}
 				auto& catalog = iter->second;
-				const char* lookup = ctx ? catalog.pgettext(ctx, id) : catalog.gettext(id);
-				if(lookup != id) {
+				const char* lookup = ctx ? catalog.pgettext(ctx, msg_id) : catalog.gettext(msg_id);
+				if(lookup != msg_id) {
 					// (p)gettext returns the input pointer if the string was not found
 					msg = lookup;
 				}
@@ -427,7 +436,12 @@ std::string strftime(const std::string& format, const std::tm* time)
 {
 	std::basic_ostringstream<char> dummy;
 	dummy.imbue(get_manager().get_locale());
+	// See utils/io.hpp for explanation of this check
+#if HAVE_PUT_TIME
+	dummy << std::put_time(time, format.c_str());
+#else
 	dummy << bl::as::ftime(format) << mktime(const_cast<std::tm*>(time));
+#endif
 
 	return dummy.str();
 }

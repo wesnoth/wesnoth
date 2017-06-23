@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_LIB_TYPES_POINT_HPP_INCLUDED
-#define GUI_LIB_TYPES_POINT_HPP_INCLUDED
+#pragma once
 
 #include <iosfwd>
 
@@ -74,5 +73,3 @@ std::ostream& operator<<(std::ostream& stream, const point& point);
 
 
 } // namespace gui2
-
-#endif

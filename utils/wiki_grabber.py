@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:
 
 """
@@ -194,7 +194,7 @@ if __name__ == "__main__":
         if is_empty(res, data):
             return "Empty table."
 
-        result = '{| border="1"'
+        result = '{| class="wikitable"'
         result += "\n!key\n!type\n!default\n!description\n"
         for i in res:
             result += "|-\n"
@@ -229,7 +229,7 @@ if __name__ == "__main__":
         if is_empty(res, data):
             return "Empty table."
 
-        result = '{| border="1"'
+        result = '{| class="wikitable"'
         result += "\n!Variable\n!type\n!description\n"
         for i in res:
             result += "|-\n"
@@ -255,7 +255,7 @@ if __name__ == "__main__":
         if is_empty(res, data):
             return "Empty table."
 
-        result = '{| border="1"'
+        result = '{| class="wikitable"'
         result += "\n!Variable\n!description\n"
         for i in res:
             result += "|-\n"
@@ -279,7 +279,7 @@ if __name__ == "__main__":
         if is_empty(res, data):
             return "Empty table."
 
-        result = '{| border="1"'
+        result = '{| class="wikitable"'
         result += "\n!Section\n!Description\n"
         for i in res:
             result += "|-\n"
@@ -308,7 +308,7 @@ if __name__ == "__main__":
         if is_empty(res, data):
             return "Empty table."
 
-        result = '{| border="1"'
+        result = '{| class="wikitable"'
         result += "\n!Section\n!Description\n"
         for i in res:
             result += "|-\n"
@@ -341,7 +341,7 @@ if __name__ == "__main__":
         if is_empty(res, data):
             return "Empty table."
 
-        result = '{| border="1"'
+        result = '{| class="wikitable"'
         result += "\n!ID (return value)\n!Type\n!Mandatory\n!Description\n"
         for i in res:
             result += "|-\n| " + "&nbsp;" * len(i[0]) * 8

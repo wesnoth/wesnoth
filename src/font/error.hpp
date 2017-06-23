@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by Chris Beck<render787@gmail.com>
+   Copyright (C) 2016 - 2017 by Chris Beck<render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FONT_ERROR_HPP
-#define FONT_ERROR_HPP
+#pragma once
 
 #include "exceptions.hpp"
 #include <string>
@@ -21,9 +20,7 @@
 namespace font {
 
 struct error : public game::error {
-	error(std::string str = "Font initialization failed") : game::error(str) {}
+	error(const std::string& str = "Font initialization failed") : game::error(str) {}
 };
 
 } // end namespace font
-
-#endif

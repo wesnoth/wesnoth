@@ -1,4 +1,4 @@
-local helper = wesnoth.require "lua/helper.lua"
+local helper = wesnoth.require "helper"
 local wml_actions = wesnoth.wml_actions
 local game_events = wesnoth.game_events
 
@@ -170,6 +170,7 @@ end
 local function remove_ssf_info_from(cfg)
 	cfg.side = nil
 	cfg.team_name = nil
+	cfg.silent = nil -- Not technically SSF info, but still unwanted
 	for i, v in ipairs(cfg) do
 		if v[1] == "has_unit" or v[1] == "enemy_of" or v[1] == "allied_with" then
 			table.remove(cfg, i)
@@ -178,36 +179,46 @@ local function remove_ssf_info_from(cfg)
 end
 
 function wml_actions.objectives(cfg)
-	cfg = helper.parsed(cfg)
+	if cfg.delayed_variable_substitution ~= true then
+		cfg = helper.parsed(cfg)
+	end
 
 	local sides = wesnoth.get_sides(cfg)
 	local silent = cfg.silent
 
-	remove_ssf_info_from(cfg)
-	cfg.silent = nil
-
 	local objectives = generate_objectives(cfg)
 	local function set_objectives(sides, save)
+		local cfg2 = helper.literal(cfg)
+		remove_ssf_info_from(cfg2)
 		for i, team in ipairs(sides) do
-			if save then scenario_objectives[team.side] = cfg end
+			if save then scenario_objectives[team.side] = cfg2 end
 			team.objectives = objectives
 			team.objectives_changed = not silent
 		end
 	end
 	if #sides == #wesnoth.sides or #sides == 0 then
-		scenario_objectives[0] = cfg
+		scenario_objectives[0] = helper.literal(cfg)
+		remove_ssf_info_from(scenario_objectives[0])
 		set_objectives(wesnoth.sides)
 	else
 		set_objectives(sides, true)
 	end
 end
 
+local function maybe_parsed(cfg)
+	if cfg == nil then return nil end
+	if cfg.delayed_variable_substitution == true then
+		return wesnoth.tovconfig(cfg)
+	end
+	return cfg
+end
+
 function wml_actions.show_objectives(cfg)
-	local cfg0 = scenario_objectives[0]
+	local cfg0 = maybe_parsed(scenario_objectives[0])
 	local function local_show_objectives(sides)
 		local objectives0 = cfg0 and generate_objectives(cfg0)
 		for i, team in ipairs(sides) do
-			cfg = scenario_objectives[team.side]
+			cfg = maybe_parsed(scenario_objectives[team.side])
 			local objectives = (cfg and generate_objectives(cfg)) or objectives0
 			if objectives then team.objectives = objectives end
 			team.objectives_changed = true

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2011, 2015 by Ignacio R. Morelle <shadowm2006@gmail.com>
-   Copyright (C) 2016 by Charles Dang <exodia339gmail.com>
+   Copyright (C) 2016 - 2017 by Charles Dang <exodia339gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,22 +17,23 @@
 
 #include "gui/dialogs/preferences_dialog.hpp"
 
-#include "config_assign.hpp"
 #include "gettext.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
-#include "lobby_preferences.hpp"
-#include "preferences.hpp"
-#include "preferences_display.hpp"
+#include "preferences/credentials.hpp"
+#include "preferences/lobby.hpp"
+#include "preferences/general.hpp"
+#include "preferences/display.hpp"
 #include "video.hpp"
 
 // Sub-dialog includes
 #include "gui/dialogs/advanced_graphics_options.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
+#include "gui/dialogs/hotkey_bind.hpp"
 #include "gui/dialogs/log_settings.hpp"
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
@@ -43,6 +44,7 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/menu_button.hpp"
+#include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
@@ -59,7 +61,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
-#include "util.hpp"
+#include "lexical_cast.hpp"
 
 #include "utils/functional.hpp"
 #include <boost/math/common_factor_rt.hpp>
@@ -79,6 +81,7 @@ preferences_dialog::preferences_dialog(CVideo& video, const config& game_cfg, co
 	, last_selected_item_(0)
 	, accl_speeds_({0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 3, 4, 8, 16})
 	, visible_hotkeys_()
+	, cat_names_()
 	, initial_index_(pef_view_map[initial_view])
 {
 	for(const config& adv : game_cfg.child_range("advanced_preference")) {
@@ -89,6 +92,25 @@ preferences_dialog::preferences_dialog(CVideo& video, const config& game_cfg, co
 		[](const config& lhs, const config& rhs) {
 			return lhs["name"].t_str().str() < rhs["name"].t_str().str();
 		});
+
+	cat_names_ = {
+		// TODO: This list needs to be synchronized with the hotkey::HOTKEY_CATEGORY enum
+		// Find some way to do that automatically
+		_("General"),
+		_("Saved Games"),
+		_("Map Commands"),
+		_("Unit Commands"),
+		_("Player Chat"),
+		_("Replay Control"),
+		_("Planning Mode"),
+		_("Scenario Editor"),
+		_("Editor Palettes"),
+		_("Editor Tools"),
+		_("Editor Clipboard"),
+		_("Debug Commands"),
+		_("Custom WML Commands"),
+		// HKCAT_PLACEHOLDER intentionally excluded (it shouldn't have any anyway)
+	};
 }
 
 // Helper function to refresh resolution list
@@ -103,7 +125,7 @@ void preferences_dialog::set_resolution_list(menu_button& res_list, CVideo& vide
 		option["label"] = formatter() << res.first << font::unicode_multiplication_sign << res.second;
 
 		const int div = boost::math::gcd(res.first, res.second);
-		const int ratio[2] = {res.first/div, res.second/div};
+		const int ratio[2] {res.first/div, res.second/div};
 		if(ratio[0] <= 10 || ratio[1] <= 10) {
 			option["details"] = formatter() << "<span color='#777777'>(" << ratio[0] << ':' << ratio[1] << ")</span>";
 		}
@@ -582,7 +604,7 @@ void preferences_dialog::post_build(window& window)
 			}
 
 			case ADVANCED_PREF_TYPE::SLIDER: {
-				slider* setter_widget = new slider;
+				slider* setter_widget = new slider();
 				setter_widget->set_definition("minimal");
 				setter_widget->set_id("setter");
 				// Maximum must be set first or this will assert
@@ -591,7 +613,7 @@ void preferences_dialog::post_build(window& window)
 				setter_widget->set_step_size(
 					option["step"].empty() ? 1 : option["step"].to_int());
 
-				delete details_grid.swap_child("setter", setter_widget, true);
+				details_grid.swap_child("setter", setter_widget, true);
 
 				slider& slide = find_widget<slider>(&details_grid, "setter", false);
 
@@ -625,11 +647,11 @@ void preferences_dialog::post_build(window& window)
 				const unsigned selected = std::find(option_ids.begin(), option_ids.end(),
 					get(pref_name, option["default"].str())) - option_ids.begin();
 
-				menu_button* setter_widget = new menu_button;
+				menu_button* setter_widget = new menu_button();
 				setter_widget->set_definition("default");
 				setter_widget->set_id("setter");
 
-				delete details_grid.swap_child("setter", setter_widget, true);
+				details_grid.swap_child("setter", setter_widget, true);
 
 				menu_button& menu = find_widget<menu_button>(&details_grid, "setter", false);
 
@@ -649,11 +671,11 @@ void preferences_dialog::post_build(window& window)
 			case ADVANCED_PREF_TYPE::SPECIAL: {
 				//main_grid->remove_child("setter");
 
-				image* value_widget = new image;
+				image* value_widget = new image();
 				value_widget->set_definition("default");
 				value_widget->set_label("icons/arrows/arrows_blank_right_25.png~CROP(3,3,18,18)");
 
-				delete main_grid->swap_child("value", value_widget, true);
+				main_grid->swap_child("value", value_widget, true);
 
 				break;
 			}
@@ -678,58 +700,17 @@ void preferences_dialog::post_build(window& window)
 	// HOTKEYS PANEL
 	//
 
-	row_data.clear();
-
-	listbox& hotkey_categories = find_widget<listbox>(&window, "list_categories", false);
-
-	const std::string cat_names[] = {
-		// TODO: This list needs to be synchronized with the hotkey::HOTKEY_CATEGORY enum
-		// Find some way to do that automatically
-		_("General"),
-		_("Saved Games"),
-		_("Map Commands"),
-		_("Unit Commands"),
-		_("Player Chat"),
-		_("Replay Control"),
-		_("Planning Mode"),
-		_("Scenario Editor"),
-		_("Editor Palettes"),
-		_("Editor Tools"),
-		_("Editor Clipboard"),
-		_("Debug Commands"),
-		_("Custom WML Commands"),
-		// HKCAT_PLACEHOLDER intentionally excluded (it shouldn't have any anyway)
-	};
-
-	for(int i = 0; i < hotkey::HKCAT_PLACEHOLDER; i++) {
-		row_data["cat_label"]["label"] = cat_names[i];
-		hotkey_categories.add_row(row_data);
-		hotkey_categories.select_row(hotkey_categories.get_item_count() - 1);
+	std::vector<config> hotkey_category_entries;
+	for(const auto& name : cat_names_) {
+		hotkey_category_entries.emplace_back(config {"label", name, "checkbox", false});
 	}
 
-	setup_hotkey_list(window);
+	multimenu_button& hotkey_menu = find_widget<multimenu_button>(&window, "hotkey_category_menu", false);
 
-	listbox& hotkey_list = find_widget<listbox>(&window, "list_hotkeys", false);
+	hotkey_menu.set_values(hotkey_category_entries);
+	hotkey_menu.set_callback_toggle_state_change(std::bind(&preferences_dialog::hotkey_type_filter_callback, this, std::ref(window)));
 
-	hotkey_categories.set_callback_item_change([this, &hotkey_list, &hotkey_categories](size_t i) {
-		if(i >= hotkey::HKCAT_PLACEHOLDER) {
-			return;
-		}
-
-		hotkey::HOTKEY_CATEGORY cat = hotkey::HOTKEY_CATEGORY(i);
-
-		// For listboxes that allow multiple selection, get_selected_row() returns the most
-		// recently selected row. Thus, if it returns i, this row was just selected.
-		// Otherwise, it must have been deselected.
-		bool show = hotkey_categories.get_selected_row() == int(i);
-		boost::dynamic_bitset<> mask = hotkey_list.get_rows_shown();
-		for(size_t j = 0; j < visible_hotkeys_.size(); j++) {
-			if(visible_hotkeys_[j]->category == cat) {
-				mask[j] = show;
-			}
-		}
-		hotkey_list.set_row_shown(mask);
-	});
+	listbox& hotkey_list = setup_hotkey_list(window);
 
 	// Action column
 	hotkey_list.register_sorting_option(0, [this](const int i) { return visible_hotkeys_[i]->description.str(); });
@@ -763,7 +744,7 @@ void preferences_dialog::post_build(window& window)
 			std::ref(window)));
 }
 
-void preferences_dialog::setup_hotkey_list(window& window)
+listbox& preferences_dialog::setup_hotkey_list(window& window)
 {
 	const std::string& default_icon = "misc/empty.png~CROP(0,0,15,15)";
 
@@ -811,6 +792,8 @@ void preferences_dialog::setup_hotkey_list(window& window)
 
 		hotkey_list.add_row(row_data);
 	}
+
+	return hotkey_list;
 }
 
 void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
@@ -818,7 +801,11 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 	CVideo& video = hotkeys.get_window()->video();
 	int row_number = hotkeys.get_selected_row();
 	const hotkey::hotkey_command& hotkey_item = *visible_hotkeys_[row_number];
-	hotkey::hotkey_ptr newhk = hotkey::show_binding_dialog(video, hotkey_item.command);
+
+	gui2::dialogs::hotkey_bind bind_dlg(hotkey_item.command);
+	bind_dlg.show(video);
+
+	hotkey::hotkey_ptr newhk = bind_dlg.get_new_binding();
 	hotkey::hotkey_ptr oldhk;
 
 	// only if not cancelled.
@@ -839,7 +826,7 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 		return;
 	}
 
-	if(oldhk) {
+	if(oldhk && oldhk->get_command() != "null") {
 		const std::string text = vgettext("“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\nDo you wish to reassign it to “<b>$new_hotkey_action|</b>”?", {
 			{"hotkey_sequence",   oldhk->get_name()},
 			{"old_hotkey_action", hotkey::get_description(oldhk->get_command())},
@@ -865,9 +852,14 @@ void preferences_dialog::default_hotkey_callback(window& window)
 {
 	gui2::show_transient_message(window.video(), _("Hotkeys Reset"), _("All hotkeys have been reset to their default values."),
 			std::string(), false, false, true);
+
 	clear_hotkeys();
-	setup_hotkey_list(window);
-	window.invalidate_layout();
+
+	// Set up the list again and reselect the default sorting option.
+	listbox& hotkey_list = setup_hotkey_list(window);
+	hotkey_list.set_active_sorting_option({0, listbox::SORT_ASCENDING}, true);
+
+	find_widget<multimenu_button>(&window, "hotkey_category_menu", false).reset_toggle_states();
 }
 
 void preferences_dialog::remove_hotkey_callback(listbox& hotkeys)
@@ -876,6 +868,36 @@ void preferences_dialog::remove_hotkey_callback(listbox& hotkeys)
 	const hotkey::hotkey_command& hotkey_item = *visible_hotkeys_[row_number];
 	hotkey::clear_hotkeys(hotkey_item.command);
 	find_widget<label>(hotkeys.get_row_grid(row_number), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item.command));
+}
+
+void preferences_dialog::hotkey_type_filter_callback(window& window) const
+{
+	const multimenu_button& hotkey_menu = find_widget<const multimenu_button>(&window, "hotkey_category_menu", false);
+
+	boost::dynamic_bitset<> toggle_states = hotkey_menu.get_toggle_states();
+	boost::dynamic_bitset<> res(visible_hotkeys_.size());
+
+	if(!toggle_states.none()) {
+		for(size_t h = 0; h < visible_hotkeys_.size(); ++h) {
+			int index = 0;
+
+			for(size_t i = 0; i < cat_names_.size(); ++i) {
+				hotkey::HOTKEY_CATEGORY cat = hotkey::HOTKEY_CATEGORY(i);
+
+				if(visible_hotkeys_[h]->category == cat) {
+					index = i;
+					break;
+				}
+			}
+
+			res[h] = toggle_states[index];
+		}
+	} else {
+		// Nothing selected. It means that *all* categories are shown.
+		res = ~res;
+	}
+
+	find_widget<listbox>(&window, "list_hotkeys", false).set_row_shown(res);
 }
 
 void preferences_dialog::on_advanced_prefs_list_select(listbox& list, window& window)
@@ -1045,11 +1067,6 @@ void preferences_dialog::on_page_select(window& window)
 	const int selected_row =
 		std::max(0, find_widget<listbox>(&window, "selector", false).get_selected_row());
 	set_visible_page(window, static_cast<unsigned int>(selected_row), "pager");
-	// FIXME: This is a hack to ensure that the hotkey categories bar doesn't take up extra vertical space
-	// It should be removed if the matrix placement policy can be fixed.
-	if(selected_row == 1) {
-		window.invalidate_layout();
-	}
 }
 
 void preferences_dialog::on_tab_select(window& window)

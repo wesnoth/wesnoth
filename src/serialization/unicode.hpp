@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SERIALIZATION_UNICODE_HPP_INCLUDED
-#define SERIALIZATION_UNICODE_HPP_INCLUDED
+#pragma once
 
 #include "ucs4_iterator_base.hpp"
 #include "unicode_types.hpp"
@@ -95,5 +94,3 @@ namespace utf8 {
 	 */
 	void truncate_as_ucs4(utf8::string& str, const size_t size);
 } // end namespace utf8
-
-#endif

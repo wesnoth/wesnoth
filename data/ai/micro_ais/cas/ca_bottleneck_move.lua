@@ -1,8 +1,9 @@
-local H = wesnoth.require "lua/helper.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local H = wesnoth.require "helper"
+local LS = wesnoth.require "location_set"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local MAISD = wesnoth.require "ai/micro_ais/micro_ai_self_data.lua"
+local M = wesnoth.map
 
 local function bottleneck_is_my_territory(map, enemy_map)
     -- Create map that contains 'true' for all hexes that are
@@ -26,7 +27,7 @@ local function bottleneck_is_my_territory(map, enemy_map)
                 -- Find lowest movement cost to own front-line hexes
                 local min_cost, best_path = 9e99
                 map:iter(function(xm, ym, v)
-                    local path, cost = wesnoth.find_path(dummy_unit, xm, ym, { ignore_units = true })
+                    local path, cost = AH.find_path_with_shroud(dummy_unit, xm, ym, { ignore_units = true })
                     if (cost < min_cost) then
                        min_cost, best_path = cost, path
                     end
@@ -35,7 +36,7 @@ local function bottleneck_is_my_territory(map, enemy_map)
                 -- And the same to the enemy front line
                 local min_cost_enemy, best_path_enemy = 9e99
                 enemy_map:iter(function(xm, ym, v)
-                    local path, cost = wesnoth.find_path(dummy_unit, xm, ym, { ignore_units = true })
+                    local path, cost = AH.find_path_with_shroud(dummy_unit, xm, ym, { ignore_units = true })
                     if (cost < min_cost_enemy) then
                        min_cost_enemy, best_path_enemy = cost, path
                     end
@@ -78,7 +79,7 @@ local function bottleneck_triple_from_keys(key_x, key_y, max_value)
         i = i + 1
     end
 
-    return AH.LS_of_triples(coords)
+    return LS.of_triples(coords)
 end
 
 local function bottleneck_create_positioning_map(max_value, data)
@@ -101,10 +102,10 @@ local function bottleneck_create_positioning_map(max_value, data)
     end)
 
     -- We need to sort the map, and assign descending values
-    local locs = AH.LS_to_triples(map)
+    local locs = map:to_triples()
     table.sort(locs, function(a, b) return a[3] > b[3] end)
     for i,loc in ipairs(locs) do loc[3] = max_value + 10 - i * 10 end
-    map = AH.LS_of_triples(locs)
+    map = LS.of_triples(locs)
 
     -- We merge the defense map into this, as healers/leaders (by default)
     -- can take position on the front line
@@ -163,7 +164,7 @@ local function bottleneck_get_rating(unit, x, y, has_leadership, is_healer, data
     if (rating <= 0) and data.BD_is_my_territory:get(x, y) then
         local combined_dist = 0
         data.BD_def_map:iter(function(x_def, y_def, v)
-            combined_dist = combined_dist + H.distance_between(x, y, x_def, y_def)
+            combined_dist = combined_dist + M.distance_between(x, y, x_def, y_def)
         end)
         combined_dist = combined_dist / data.BD_def_map:size()
         rating = 1000 - combined_dist * 10.
@@ -274,7 +275,7 @@ function ca_bottleneck_move:evaluation(cfg, data)
             if data.BD_is_my_territory:get(xa, ya) then
                 local min_dist = 9e99
                 data.BD_def_map:iter( function(xd, yd, vd)
-                    local dist_line = H.distance_between(xa, ya, xd, yd)
+                    local dist_line = M.distance_between(xa, ya, xd, yd)
                     if (dist_line < min_dist) then min_dist = dist_line end
                 end)
                 if (min_dist > 0) then

@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug_with_VLD|Win32">
-      <Configuration>Debug_with_VLD</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
@@ -29,11 +25,6 @@
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
-    <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <PlatformToolset>v120</PlatformToolset>
@@ -51,9 +42,6 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'" Label="PropertySheets">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -69,10 +57,6 @@
     <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
@@ -123,27 +107,6 @@
       <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_with_VLD|Win32'">
-    <BuildLog>
-      <Path>$(IntDir)BuildLog.htm</Path>
-    </BuildLog>
-    <ClCompile>
-      <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\src;..\..\..\external\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_DEBUG;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <OpenMPSupport>true</OpenMPSupport>
-      <WarningLevel>Level4</WarningLevel>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <DisableSpecificWarnings>4503;4127;4512;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <ForcedIncludeFiles>boost-patched/bind/arg.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
-    </ClCompile>
-    <Lib>
-      <AdditionalLibraryDirectories>..\..\..\external\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Lib>
-  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">
     <BuildLog>
       <Path>$(IntDir)BuildLog-wesnothlib.htm</Path>
@@ -167,8 +130,10 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\color.cpp" />
     <ClCompile Include="..\..\src\color_range.cpp" />
     <ClCompile Include="..\..\src\config.cpp" />
+    <ClCompile Include="..\..\src\config_attribute_value.cpp" />
     <ClCompile Include="..\..\src\filesystem_boost.cpp" />
     <ClCompile Include="..\..\src\filesystem_common.cpp" />
     <ClCompile Include="..\..\src\font\constants.cpp" />
@@ -192,14 +157,16 @@
     <ClCompile Include="..\..\src\version.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\about.hpp" />
+    <ClInclude Include="..\..\src\color.hpp" />
+    <ClInclude Include="..\..\src\color_range.hpp" />
     <ClInclude Include="..\..\src\config.hpp" />
-    <ClInclude Include="..\..\src\config_assign.hpp" />
+    <ClInclude Include="..\..\src\config_attribute_value.hpp" />
     <ClInclude Include="..\..\src\filesystem.hpp" />
     <ClInclude Include="..\..\src\font\constants.hpp" />
     <ClInclude Include="..\..\src\game_config.hpp" />
     <ClInclude Include="..\..\src\gettext.hpp" />
     <ClInclude Include="..\..\src\global.hpp" />
+    <ClInclude Include="..\..\src\lexical_cast.hpp" />
     <ClInclude Include="..\..\src\libc_error.hpp" />
     <ClInclude Include="..\..\src\log.hpp" />
     <ClInclude Include="..\..\src\log_windows.hpp" />
@@ -208,6 +175,7 @@
     <ClInclude Include="..\..\src\serialization\preprocessor.hpp" />
     <ClInclude Include="..\..\src\serialization\schema_validator.hpp" />
     <ClInclude Include="..\..\src\serialization\string_utils.hpp" />
+    <ClInclude Include="..\..\src\serialization\string_view.hpp" />
     <ClInclude Include="..\..\src\serialization\tokenizer.hpp" />
     <ClInclude Include="..\..\src\serialization\unicode.hpp" />
     <ClInclude Include="..\..\src\serialization\validator.hpp" />
@@ -222,6 +190,7 @@
     <ClInclude Include="..\..\src\spirit_po\po_message_adapted.hpp" />
     <ClInclude Include="..\..\src\spirit_po\version.hpp" />
     <ClInclude Include="..\..\src\tstring.hpp" />
+    <ClInclude Include="..\..\src\utils\type_trait_aliases.hpp" />
     <ClInclude Include="..\..\src\version.hpp" />
     <ClInclude Include="..\..\src\wesconfig.h" />
   </ItemGroup>

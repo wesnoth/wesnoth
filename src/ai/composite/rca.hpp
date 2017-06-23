@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * candidate action framework
  */
 
-#ifndef AI_COMPOSITE_RCA_HPP_INCLUDED
-#define AI_COMPOSITE_RCA_HPP_INCLUDED
+#pragma once
 
 #include "ai/composite/component.hpp"
 #include "ai/composite/contexts.hpp"
@@ -172,7 +171,7 @@ public:
 			return;
 		}
 		factory_ptr ptr_to_this(this);
-		get_list().insert(make_pair(name,ptr_to_this));
+		get_list().emplace(name,ptr_to_this);
 	}
 
 	virtual ~candidate_action_factory() {}
@@ -200,6 +199,4 @@ std::ostream &operator<<(std::ostream &s, ai::candidate_action const &ca);
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
                  2013 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef CAMPAIGN_SERVER_ADDON_UTILS_HPP_INCLUDED
-#define CAMPAIGN_SERVER_ADDON_UTILS_HPP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -80,5 +79,3 @@ void find_translations(const config& base_dir, config& addon);
 void add_license(config& cfg);
 
 }
-
-#endif

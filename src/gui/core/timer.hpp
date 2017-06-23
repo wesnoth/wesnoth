@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,8 +27,7 @@
  * object it's possible to make the callback as fancy as wanted.
  */
 
-#ifndef GUI_WIDGETS_AUXILIARY_TIMER_HPP_INCLUDED
-#define GUI_WIDGETS_AUXILIARY_TIMER_HPP_INCLUDED
+#pragma once
 
 #include "utils/functional.hpp"
 
@@ -84,5 +83,3 @@ bool remove_timer(const size_t id);
 bool execute_timer(const size_t id);
 
 } // namespace gui2
-
-#endif

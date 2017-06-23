@@ -1,6 +1,8 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local W = H.set_wml_action_metatable {}
-local LS = wesnoth.require "lua/location_set.lua"
+local LS = wesnoth.require "location_set"
+local F = wesnoth.require "functional"
+local M = wesnoth.map
 
 -- This is a collection of Lua functions used for custom AI development.
 -- Note that this is still work in progress with significant changes occurring
@@ -22,6 +24,13 @@ local LS = wesnoth.require "lua/location_set.lua"
 --   - If omitted and the function takes no such input, viewing_side is made a
 --     required parameter in order to avoid mismatches between the default values
 --     of different functions.
+--
+-- Path finding:
+-- All ai_helper functions disregard shroud for path finding (while still ignoring
+-- hidden units correctly) as of Wesnoth 1.13.7. This is consistent with default
+-- Wesnoth AI behavior and ensures that Lua AIs, including the Micro AIs, can be
+-- used for AI sides with shroud=yes. It is accomplished by using
+-- ai_helper.find_path_with_shroud() instead of wesnoth.find_path().
 
 local ai_helper = {}
 
@@ -178,7 +187,7 @@ end
 
 function ai_helper.checked_action_error(action, error_code)
     if wesnoth.game_config.debug then
-        error(action .. ' could not be executed. Error code: ' .. error_code)
+        error(action .. ' could not be executed. Error code: ' .. error_code, 3)
     end
 end
 
@@ -450,32 +459,11 @@ end
 ----- General functionality and maths helper functions ------
 
 function ai_helper.filter(input, condition)
-    -- Equivalent of filter() function in Formula AI
-
-    local filtered_table = {}
-
-    for _,v in ipairs(input) do
-        if condition(v) then
-            table.insert(filtered_table, v)
-        end
-    end
-
-    return filtered_table
+    return F.filter(input, condition)
 end
 
 function ai_helper.choose(input, value)
-    -- Equivalent of choose() function in Formula AI
-    -- Returns element of a table with the largest @value (a function)
-    -- Also returns the max value and the index
-
-    local max_value, best_input, best_key = -9e99
-    for k,v in pairs(input) do
-        if value(v) > max_value then
-            max_value, best_input, best_key = value(v), v, k
-        end
-    end
-
-    return best_input, max_value, best_key
+    return F.choose(input, value)
 end
 
 function ai_helper.table_copy(t)
@@ -512,7 +500,7 @@ function ai_helper.serialize(input)
         end
         str = str .. "}"
     else
-        error("cannot serialize a " .. type(input))
+        error("cannot serialize a " .. type(input), 2)
     end
 
     return str
@@ -538,38 +526,6 @@ function ai_helper.get_LS_xy(index)
     local xy = tmp_set:to_pairs()[1]
 
     return xy[1], xy[2]
-end
-
-function ai_helper.LS_of_triples(table)
-    -- Create a location set from a table of 3-element tables
-    -- Elements 1 and 2 are x,y coordinates, #3 is value to be inserted
-
-    local set = LS.create()
-    for k,v in pairs(table) do
-        set:insert(v[1], v[2], v[3])
-    end
-    return set
-end
-
-function ai_helper.LS_to_triples(set)
-    local res = {}
-    set:iter(function(x, y, v) table.insert(res, { x, y, v }) end)
-    return res
-end
-
-function ai_helper.LS_random_hex(map)
-    -- Select a random hex from the hexes in location set @map
-    -- This seems "inelegant", but I can't come up with another way without creating an extra array
-    -- Return -1, -1 if @map is empty
-
-    local r = math.random(map:size())
-    local i, xr, yr = 1, -1, -1
-    map:iter( function(x, y, v)
-        if (i == r) then xr, yr = x, y end
-        i = i + 1
-    end)
-
-    return xr, yr
 end
 
 --------- Location, position or hex related helper functions ----------
@@ -638,7 +594,7 @@ function ai_helper.find_opposite_hex_adjacent(hex, center_hex)
     --   (or no opposite hex is found, e.g. for hexes on border)
 
     -- If the two input hexes are not adjacent, return nil
-    if (H.distance_between(hex[1], hex[2], center_hex[1], center_hex[2]) ~= 1) then return nil end
+    if (M.distance_between(hex[1], hex[2], center_hex[1], center_hex[2]) ~= 1) then return nil end
 
     -- Finding the opposite x position is easy
     local opp_x = center_hex[1] + (center_hex[1] - hex[1])
@@ -693,13 +649,13 @@ function ai_helper.get_closest_location(hex, location_filter, unit)
     -- Find the maximum distance from 'hex' that's possible on the map
     local max_distance = 0
     local width, height = wesnoth.get_map_size()
-    local to_top_left = H.distance_between(hex[1], hex[2], 0, 0)
+    local to_top_left = M.distance_between(hex[1], hex[2], 0, 0)
     if (to_top_left > max_distance) then max_distance = to_top_left end
-    local to_top_right = H.distance_between(hex[1], hex[2], width+1, 0)
+    local to_top_right = M.distance_between(hex[1], hex[2], width+1, 0)
     if (to_top_right > max_distance) then max_distance = to_top_right end
-    local to_bottom_left = H.distance_between(hex[1], hex[2], 0, height+1)
+    local to_bottom_left = M.distance_between(hex[1], hex[2], 0, height+1)
     if (to_bottom_left > max_distance) then max_distance = to_bottom_left end
-    local to_bottom_right = H.distance_between(hex[1], hex[2], width+1, height+1)
+    local to_bottom_right = M.distance_between(hex[1], hex[2], width+1, height+1)
     if (to_bottom_right > max_distance) then max_distance = to_bottom_right end
 
     local radius = 0
@@ -773,7 +729,7 @@ function ai_helper.distance_map(units, map)
         map:iter(function(x, y, data)
             local dist = 0
             for _,unit in ipairs(units) do
-                dist = dist + H.distance_between(unit.x, unit.y, x, y)
+                dist = dist + M.distance_between(unit.x, unit.y, x, y)
             end
             DM:insert(x, y, dist)
         end)
@@ -783,7 +739,7 @@ function ai_helper.distance_map(units, map)
             for y = 1,height do
                 local dist = 0
                 for _,unit in ipairs(units) do
-                    dist = dist + H.distance_between(unit.x, unit.y, x, y)
+                    dist = dist + M.distance_between(unit.x, unit.y, x, y)
                 end
                 DM:insert(x, y, dist)
             end
@@ -803,7 +759,7 @@ function ai_helper.inverse_distance_map(units, map)
         map:iter(function(x, y, data)
             local dist = 0
             for _,unit in ipairs(units) do
-                dist = dist + 1. / (H.distance_between(unit.x, unit.y, x, y) + 1)
+                dist = dist + 1. / (M.distance_between(unit.x, unit.y, x, y) + 1)
             end
             IDM:insert(x, y, dist)
         end)
@@ -813,7 +769,7 @@ function ai_helper.inverse_distance_map(units, map)
             for y = 1,height do
                 local dist = 0
                 for _,unit in ipairs(units) do
-                    dist = dist + 1. / (H.distance_between(unit.x, unit.y, x, y) + 1)
+                    dist = dist + 1. / (M.distance_between(unit.x, unit.y, x, y) + 1)
                 end
                 IDM:insert(x, y, dist)
             end
@@ -835,7 +791,7 @@ function ai_helper.generalized_distance(x1, y1, x2, y2)
     if (not y2) then return math.abs(x1 - x2) end
 
     -- Otherwise, return standard distance
-    return H.distance_between(x1, y1, x2, y2)
+    return M.distance_between(x1, y1, x2, y2)
 end
 
 function ai_helper.xyoff(x, y, ori, hex)
@@ -990,10 +946,10 @@ function ai_helper.get_visible_units(viewing_side, filter)
     --   Example 2: { { "filter_location", { x = 10, y = 12, radius = 5 } } }
 
     if (not viewing_side) then
-        error('ai_helper.get_visible_units() is missing required parameter viewing_side.')
+        error('ai_helper.get_visible_units() is missing required parameter viewing_side.', 2)
     end
     if (type(viewing_side) ~= 'number') then
-        error('ai_helper.get_visible_units(): parameter viewing_side must be a number.')
+        error('ai_helper.get_visible_units(): parameter viewing_side must be a number., 2')
     end
 
     local filter_plus_vision = {}
@@ -1021,10 +977,10 @@ function ai_helper.is_visible_unit(viewing_side, unit)
     -- @unit: unit proxy table
 
     if (not viewing_side) then
-        error('ai_helper.is_visible_unit() is missing required parameter viewing_side.')
+        error('ai_helper.is_visible_unit() is missing required parameter viewing_side.', 2)
     end
     if (type(viewing_side) ~= 'number') then
-        error('ai_helper.is_visible_unit(): parameter viewing_side must be a number.')
+        error('ai_helper.is_visible_unit(): parameter viewing_side must be a number.', 2)
     end
 
     if (not unit) then return false end
@@ -1123,7 +1079,7 @@ function ai_helper.get_closest_enemy(loc, side, cfg)
 
     local closest_distance, location = 9e99
     for _,enemy in ipairs(enemies) do
-        enemy_distance = H.distance_between(x, y, enemy.x, enemy.y)
+        enemy_distance = M.distance_between(x, y, enemy.x, enemy.y)
         if (enemy_distance < closest_distance) then
             closest_distance = enemy_distance
             location = { x = enemy.x, y = enemy.y}
@@ -1283,7 +1239,7 @@ function ai_helper.next_hop(unit, x, y, cfg)
     --   plus:
     --     ignore_own_units: if set to true, then own units that can move out of the way are ignored
 
-    local path, cost = wesnoth.find_path(unit, x, y, cfg)
+    local path, cost = ai_helper.find_path_with_shroud(unit, x, y, cfg)
 
     if cost >= ai_helper.no_path then return nil, cost end
 
@@ -1293,7 +1249,7 @@ function ai_helper.next_hop(unit, x, y, cfg)
     -- Go through loop to find reachable, unoccupied hex along the path
     -- Start at second index, as first is just the unit position itself
     for i = 2,#path do
-        local sub_path, sub_cost = wesnoth.find_path(unit, path[i][1], path[i][2], cfg)
+        local sub_path, sub_cost = ai_helper.find_path_with_shroud(unit, path[i][1], path[i][2], cfg)
 
         if sub_cost <= unit.moves then
             -- Check for unit in way only if cfg.ignore_units is not set
@@ -1367,7 +1323,7 @@ function ai_helper.can_reach(unit, x, y, cfg)
     if (cfg.moves == 'max') then unit.moves = unit.max_moves end
 
     local can_reach = false
-    local path, cost = wesnoth.find_path(unit, x, y, cfg)
+    local path, cost = ai_helper.find_path_with_shroud(unit, x, y, cfg)
     if (cost <= unit.moves) then can_reach = true end
 
     unit.moves = old_moves
@@ -1407,6 +1363,51 @@ function ai_helper.get_reachable_unocc(unit, cfg)
     unit.moves = old_moves
 
     return reach
+end
+
+function ai_helper.find_path_with_shroud(unit, x, y, cfg)
+    -- Same as wesnoth.find_path, just that it works under shroud as well while still
+    -- ignoring invisible units. It does this by using viewing_side=0 and taking
+    -- invisible units off the map for the path finding process.
+    --
+    -- Notes on some of the optional parameters that can be passed in @cfg:
+    --  - viewing_side: If not given, use side of the unit (not the current side!)
+    --    for determining which units are hidden and need to be extracted, as that
+    --    is what the path_finder code uses. If set to an invalid side, we can use
+    --    default path finding as shroud is ignored then anyway.
+    --  - ignore_units: if true, hidden units do not need to be extracted because
+    --    all units are ignored anyway
+
+    local viewing_side = (cfg and cfg.viewing_side) or unit.side
+
+    local path, cost
+    if wesnoth.sides[viewing_side] and wesnoth.sides[viewing_side].shroud then
+        local extracted_units = {}
+        if (not cfg) or (not cfg.ignore_units) then
+            local all_units = wesnoth.get_units()
+            for _,u in ipairs(all_units) do
+                if (u.side ~= viewing_side)
+                    and (not ai_helper.is_visible_unit(viewing_side, u))
+                then
+                    wesnoth.extract_unit(u)
+                    table.insert(extracted_units, u)
+                end
+            end
+        end
+
+        local cfg_copy = {}
+        if cfg then cfg_copy = ai_helper.table_copy(cfg) end
+        cfg_copy.viewing_side = 0
+        path, cost = wesnoth.find_path(unit, x, y, cfg_copy)
+
+        for _,extracted_unit in ipairs(extracted_units) do
+            wesnoth.put_unit(extracted_unit)
+        end
+    else
+        path, cost = wesnoth.find_path(unit, x, y, cfg)
+    end
+
+    return path, cost
 end
 
 function ai_helper.find_best_move(units, rating_function, cfg)
@@ -1541,7 +1542,7 @@ function ai_helper.movefull_outofway_stopunit(ai, unit, x, y, cfg)
     end
 
     -- Only move unit out of way if the main unit can get there
-    local path, cost = wesnoth.find_path(unit, x, y, cfg)
+    local path, cost = ai_helper.find_path_with_shroud(unit, x, y, cfg)
     if (cost <= unit.moves) then
         local unit_in_way = wesnoth.get_unit(x, y)
         if unit_in_way and (unit_in_way ~= unit)
@@ -1847,15 +1848,15 @@ function ai_helper.get_attack_combos(units, enemy, cfg)
         for _,unit in ipairs(units) do
             if ((unit.x == xa) and (unit.y == ya)) or (not blocked_hexes:get(xa, ya)) then
 
-                -- helper.distance_between() is much faster than wesnoth.find_path()
+                -- wesnoth.map.distance_between() is much faster than wesnoth.find_path()
                 --> pre-filter using the former
-                local cost = H.distance_between(unit.x, unit.y, xa, ya)
+                local cost = M.distance_between(unit.x, unit.y, xa, ya)
 
                 -- If the distance is <= the unit's MP, then see if it can actually get there
                 -- This also means that only short paths have to be evaluated (in most situations)
                 if (cost <= unit.moves) then
                     local path  -- since cost is already defined outside this block
-                    path, cost = wesnoth.find_path(unit, xa, ya, cfg)
+                    path, cost = ai_helper.find_path_with_shroud(unit, xa, ya, cfg)
                 end
 
                 if (cost <= unit.moves) then

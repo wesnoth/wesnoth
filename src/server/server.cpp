@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,10 +19,9 @@
 
 #include "server/server.hpp"
 
-#include "global.hpp"
-
 #include "config.hpp"
 #include "game_config.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "filesystem.hpp"
 #include "multiplayer_error_codes.hpp"
@@ -30,7 +29,6 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "util.hpp"
 #include "utils/iterable_pair.hpp"
 
 #include "server/game.hpp"
@@ -786,6 +784,7 @@ void server::send_password_request(socket_ptr socket, const std::string& msg,
 								 "cannot log in due to an error in the hashing algorithm. "
 								 "Logging into your forum account on http://forum.wesnoth.org "
 								 "may fix this problem.");
+		login(socket);
 		return;
 	}
 
@@ -912,7 +911,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 	// Commands a player may issue.
 	if (command == "status") {
 		response << process_command(command + " " + player.name(), player.name());
-	} else if (command.find("adminmsg") == 0 || command.find("report") == 0
+	} else if (command.compare(0, 8, "adminmsg") == 0 || command.compare(0, 6, "report") == 0
 			   || command == "games"
 			   || command == "metrics"
 			   || command == "motd"
@@ -945,7 +944,7 @@ void server::handle_query(socket_ptr socket, simple_wml::node& query)
 		}
 	} else if (command == "help" || command.empty()) {
 		response << query_help_msg;
-	} else if (command == "admin" || command.find("admin ") == 0) {
+	} else if (command == "admin" || command.compare(0, 6, "admin ") == 0) {
 		if (admin_passwd_.empty()) {
 			send_server_message(socket, "No password set.");
 			return;
@@ -1174,10 +1173,12 @@ void server::handle_join_game(socket_ptr socket, simple_wml::node& join)
 	int game_id = join["id"].to_int();
 
 	auto g_iter = player_connections_.get<game_t>().find(game_id);
-	const std::shared_ptr<game> g = g_iter->get_game();
+	std::shared_ptr<game> g;
+	if(g_iter != player_connections_.get<game_t>().end())
+		g = g_iter->get_game();
 
 	static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
-	if (g_iter == player_connections_.get<game_t>().end()) {
+	if (!g) {
 		WRN_SERVER << client_address(socket) << "\t" << player_connections_.find(socket)->info().name()
 				   << "\tattempted to join unknown game:\t" << game_id << ".\n";
 		async_send_doc(socket, leave_game_doc);
@@ -1286,7 +1287,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			}
 
 			g.set_description(&desc);
-			desc.set_attr_dup("id", lexical_cast_default<std::string>(g.id()).c_str());
+			desc.set_attr_dup("id", lexical_cast<std::string>(g.id()).c_str());
 		} else {
 			WRN_SERVER << client_address(socket) << "\t" << player.name()
 					   << "\tsent scenario data in game:\t\"" << g.name() << "\" ("

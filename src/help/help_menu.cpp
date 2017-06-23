@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -74,7 +74,7 @@ void help_menu::update_visible_items(const section &sec, unsigned level)
 	for (sec_it = sec.sections.begin(); sec_it != sec.sections.end(); ++sec_it) {
 		if (is_visible_id((*sec_it)->id)) {
 			const std::string vis_string = get_string_to_show(*(*sec_it), level + 1);
-			visible_items_.push_back(visible_item(*sec_it, vis_string));
+			visible_items_.emplace_back(*sec_it, vis_string);
 			if (expanded(*(*sec_it))) {
 				update_visible_items(*(*sec_it), level + 1);
 			}
@@ -84,7 +84,7 @@ void help_menu::update_visible_items(const section &sec, unsigned level)
 	for (topic_it = sec.topics.begin(); topic_it != sec.topics.end(); ++topic_it) {
 		if (is_visible_id(topic_it->id)) {
 			const std::string vis_string = get_string_to_show(*topic_it, level + 1);
-			visible_items_.push_back(visible_item(&(*topic_it), vis_string));
+			visible_items_.emplace_back(&(*topic_it), vis_string);
 		}
 	}
 }

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_MOUSE_ACTION_HPP
-#define EDITOR_MOUSE_ACTION_HPP
+#pragma once
 
 #include "editor/action/action_base.hpp"
 #include "editor/map/editor_map.hpp"
@@ -22,8 +21,6 @@
 #include "editor/palette/terrain_palettes.hpp"
 #include "editor/palette/location_palette.hpp"
 #include "editor/palette/empty_palette.hpp"
-
-#include <SDL_video.h>
 
 class CKey;
 
@@ -399,5 +396,3 @@ private:
 
 
 } //end namespace editor
-
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,32 +11,31 @@
 
    See the COPYING file for more details.
 */
-#ifndef UNIT_ATTACK_TYPE_H_INCLUDED
-#define UNIT_ATTACK_TYPE_H_INCLUDED
+
+#pragma once
 
 #include "map/location.hpp"
-#include "util.hpp"
 #include "tstring.hpp"
 #include "config.hpp"
 #include <string>
 #include <vector>
+#include <cassert>
 
 #include <boost/iterator/indirect_iterator.hpp>
 #include <boost/range/iterator_range.hpp>
-#include <boost/smart_ptr/intrusive_ptr.hpp>
 #include <boost/dynamic_bitset_fwd.hpp>
+
+#include "units/ptr.hpp" // for attack_ptr
 
 class unit_ability_list;
 
 //the 'attack type' is the type of attack, how many times it strikes,
 //and how much damage it does.
-class attack_type
+class attack_type : public std::enable_shared_from_this<attack_type>
 {
 public:
 
 	explicit attack_type(const config& cfg);
-	/** Default implementation, but defined out-of-line for efficiency reasons. */
-	~attack_type();
 	const t_string& name() const { return description_; }
 	const std::string& id() const { return id_; }
 	const std::string& type() const { return type_; }
@@ -74,7 +73,7 @@ public:
 	std::vector<std::pair<t_string, t_string> > special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials(bool only_active=false, bool is_backstab=false) const;
 	void set_specials_context(const map_location& unit_loc, const map_location& other_loc,
-	                          bool attacking, const attack_type *other_attack) const;
+	                          bool attacking, const_attack_ptr other_attack) const;
 	void set_specials_context(const map_location& loc, bool attacking = true) const;
 	void set_specials_context_for_listing() const;
 
@@ -108,7 +107,7 @@ private:
 	// considered active.
 	mutable map_location self_loc_, other_loc_;
 	mutable bool is_attacker_;
-	mutable const attack_type* other_attack_;
+	mutable const_attack_ptr other_attack_;
 	mutable bool is_for_listing_ = false;
 
 	t_string description_;
@@ -126,21 +125,8 @@ private:
 	int movement_used_;
 	int parry_;
 	config specials_;
-	mutable size_t ref_count = 0;
-
-	friend void intrusive_ptr_add_ref(const attack_type* atk) {
-		++atk->ref_count;
-	}
-
-	friend void intrusive_ptr_release(const attack_type* atk) {
-		if(--atk->ref_count == 0) {
-			delete atk;
-		}
-	}
 };
 
-using attack_ptr = boost::intrusive_ptr<attack_type>;
-using const_attack_ptr = boost::intrusive_ptr<const attack_type>;
 using attack_list = std::vector<attack_ptr>;
 using attack_itors = boost::iterator_range<boost::indirect_iterator<attack_list::iterator>>;
 using const_attack_itors = boost::iterator_range<boost::indirect_iterator<attack_list::const_iterator>>;
@@ -152,5 +138,3 @@ inline attack_itors make_attack_itors(attack_list& atks) {
 inline const_attack_itors make_attack_itors(const attack_list& atks) {
 	return boost::make_iterator_range(boost::make_indirect_iterator(atks.begin()), boost::make_indirect_iterator(atks.end()));
 }
-
-#endif

@@ -12,7 +12,7 @@ DIR="$(dirname $0)"
 TIMEOUT=${TIMEOUT:-20}
 SOURCES=/usr/src/wesnoth
 ADDONS=$DIR/addons
-EXE=$DIR/build/wesnoth
+EXE=$DIR/wesnoth
 CONFIG=$DIR/config
 SRC=$SOURCES/$VERSION
 DATA=$SRC
@@ -40,8 +40,8 @@ rm -rf $TEMP/*
 
 # we only need the parser, but have to build the game executable for that
 echo BUILDING
-make -C $BUILD wesnoth > /dev/null 2>&1 || true
-make -C $BUILD mo-update > /dev/null 2>&1
+cd $DIR # the scons build places the wesnoth executable in the current directory
+TRAVIS=1 TRAVIS_OS_NAME=Linux scons -Y "$SRC" --option-cache="$BUILD/.scons-option-cache"
 
 # later can just rebuild updated campaigns, but for now rebuild everything
 rm -f $DIR/overview.txt

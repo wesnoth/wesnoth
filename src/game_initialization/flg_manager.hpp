@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2017 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,29 +11,25 @@
 
    See the COPYING file for more details.
 */
-#ifndef FLG_MANAGER_HPP_INCLUDED
-#define FLG_MANAGER_HPP_INCLUDED
+
+#pragma once
 
 #include <string>
 #include <vector>
 
 class config;
-namespace rand_rng { class mt_rng; }
+namespace randomness { class mt_rng; }
 
 namespace ng {
 
 const std::string random_enemy_picture("units/random-dice.png");
-
-std::string get_RC_suffix(const std::string& unit_color, const std::string& color);
 
 /// FLG stands for faction, leader and gender.
 class flg_manager
 {
 public:
 	flg_manager(const std::vector<const config*>& era_factions,
-		const config& side, const bool faction_lock, const bool leader_lock,
-		const bool saved_game);
-	~flg_manager();
+		const config& side, const bool faction_lock, const bool leader_lock, const bool saved_game);
 
 	void set_current_faction(const unsigned index);
 	void set_current_faction(const std::string& id);
@@ -47,7 +43,10 @@ public:
 	void set_current_gender(const std::string& gender);
 
 	bool is_random_faction();
-	void resolve_random(rand_rng::mt_rng & rng, const std::vector<std::string> & avoid); //Second Argument is a list of faction ids we don't want to match, used to implement random faction modes. If it is not possible to resolve then we just proceed anyways rather than give an error.
+
+	// Second Argument is a list of faction ids we don't want to match, used to implement random faction modes.
+	// If it is not possible to resolve then we just proceed anyways rather than give an error.
+	void resolve_random(randomness::mt_rng & rng, const std::vector<std::string> & avoid);
 
 	bool is_saved_game() const
 	{
@@ -82,8 +81,8 @@ public:
 		{ return gender_index(current_gender_); }
 
 private:
-	flg_manager(const flg_manager&);
-	void operator=(const flg_manager&);
+	flg_manager(const flg_manager&) = delete;
+	void operator=(const flg_manager&) = delete;
 
 	void update_available_factions();
 	void update_available_leaders();
@@ -92,8 +91,7 @@ private:
 	void update_choosable_leaders();
 	void update_choosable_genders();
 
-	// Append leaders from a given faction
-	// to a choosable factions.
+	// Append leaders from a given faction to a choosable factions.
 	void append_leaders_from_faction(const config* faction);
 
 	int faction_index(const config& faction) const;
@@ -106,7 +104,6 @@ private:
 
 	const config& side_;
 
-	const bool use_map_settings_;
 	const bool saved_game_;
 	const bool has_no_recruits_;
 
@@ -129,10 +126,9 @@ private:
 	std::string default_leader_type_;
 	std::string default_leader_gender_;
 	const config* default_leader_cfg_;
+
 	static std::vector<std::string> get_original_recruits(const config& cfg);
 	static const config& get_default_faction(const config& cfg);
 };
 
 } // end namespace ng
-
-#endif

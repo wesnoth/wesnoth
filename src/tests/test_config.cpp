@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,6 @@
 #include <cmath>
 
 #include "config.hpp"
-#include "config_assign.hpp"
 #include "variable_info.hpp"
 
 BOOST_AUTO_TEST_SUITE ( test_config )
@@ -227,17 +226,18 @@ BOOST_AUTO_TEST_CASE ( test_variable_info )
 		BOOST_CHECK_THROW(access.as_scalar(), invalid_variablename_exception);
 	}
 	{
-		const config nonempty = config_of
-			("tag1", config())
-			("tag1", config_of
-				("tag2", config())
-				("tag2", config())
-				("tag2", config_of
-					("atribute1", 88)
-					("atribute2", "value")
-				)
-			)
-			("tag1", config());
+		const config nonempty {
+			"tag1", config(),
+			"tag1", config {
+				"tag2", config(),
+				"tag2", config(),
+				"tag2", config {
+					"atribute1", 88,
+					"atribute2", "value",
+				},
+			},
+			"tag1", config(),
+		};
 		/** This is the config:
 		[tag1]
 		[/tag1]

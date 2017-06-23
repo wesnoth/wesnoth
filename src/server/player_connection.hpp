@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2016 by Sergey Popov <loonycyborg@gmail.com>
+   Copyright (C) 2016 - 2017 by Sergey Popov <loonycyborg@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SERVER_PLAYER_CONNECTION_HPP_INCLUDED
-#define SERVER_PLAYER_CONNECTION_HPP_INCLUDED
+#pragma once
 
 #include "simple_wml.hpp"
 #include "player.hpp"
@@ -86,5 +85,3 @@ void send_to_players(simple_wml::document& data, const Container& players, socke
 void send_server_message(socket_ptr socket, const std::string& message);
 
 } // namespace wesnothd
-
-#endif

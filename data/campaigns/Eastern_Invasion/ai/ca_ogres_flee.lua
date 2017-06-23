@@ -1,7 +1,7 @@
-local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
---local LS = wesnoth.require "lua/location_set.lua"
+--local LS = wesnoth.require "location_set"
+local M = wesnoth.map
 
 local ca_ogres_flee = {}
 
@@ -43,8 +43,8 @@ function ca_ogres_flee:execution()
                 -- First rating is distance from a map edge
                 local dist_left = r[1] - 1
                 local dist_right = width - r[1]
-                local dist_top_left = H.distance_between(r[1], r[2], 4, 1)
-                local dist_top_right = H.distance_between(r[1], r[2], 40, 1)
+                local dist_top_left = M.distance_between(r[1], r[2], 4, 1)
+                local dist_top_right = M.distance_between(r[1], r[2], 40, 1)
                 local dist_bottom = height - r[2]
                 local dist = math.min(dist_left, dist_right, dist_top_left, dist_top_right, dist_bottom)
 
@@ -58,7 +58,7 @@ function ca_ogres_flee:execution()
 
                 local enemy_rating = 0
                 for k,e in ipairs(enemies) do
-                    local dist = H.distance_between(r[1], r[2], e.x, e.y)
+                    local dist = M.distance_between(r[1], r[2], e.x, e.y)
                     enemy_rating = enemy_rating + math.sqrt(dist)
                 end
 
@@ -68,7 +68,7 @@ function ca_ogres_flee:execution()
                 local own_unit_weight = 0.5
                 local own_unit_rating = 0
                 for k,u_noMP in ipairs(units_noMP) do
-                    local dist = H.distance_between(r[1], r[2], u_noMP.x, u_noMP.y)
+                    local dist = M.distance_between(r[1], r[2], u_noMP.x, u_noMP.y)
                     own_unit_rating = own_unit_rating + math.sqrt(dist)
                 end
 

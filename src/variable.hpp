@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2016 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2017 by Philippe Plantier <ayin@anathas.org>
 
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -13,8 +13,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef VARIABLE_H_INCLUDED
-#define VARIABLE_H_INCLUDED
+
+#pragma once
 
 #include "config.hpp"
 #include "map/location.hpp"
@@ -22,6 +22,13 @@
 #include <utility>
 
 class unit_map;
+
+class config_variable_set : public variable_set {
+	const config& cfg_;
+public:
+	config_variable_set(const config& cfg) : cfg_(cfg) {}
+	virtual config::attribute_value get_variable_const(const std::string &id) const;
+};
 
 /**
  * A variable-expanding proxy for the config class. This class roughly behaves
@@ -255,5 +262,3 @@ private:
 	const std::string player_;
 	unsigned int recall_index_;
 };
-
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -97,7 +97,7 @@ mp_game_settings::mp_game_settings(const config& cfg)
 {
 	for (const config & a : cfg.child_range("addon")) {
 		if (!a["id"].empty()) {
-			addons.insert(std::make_pair(a["id"].str(), addon_version_info(a)));
+			addons.emplace(a["id"].str(), addon_version_info(a));
 		}
 	}
 }
@@ -195,6 +195,6 @@ void mp_game_settings::update_addon_requirements(const config & cfg) {
 		}
 	} else {
 		// Didn't find this addon-id in the map, so make a new entry.
-		addons.insert(std::make_pair(cfg["id"].str(), new_data));
+		addons.emplace(cfg["id"].str(), new_data);
 	}
 }

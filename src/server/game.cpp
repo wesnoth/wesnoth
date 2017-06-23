@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,16 +12,15 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "filesystem.hpp"
 #include "game_config.hpp" // game_config::observer_team_name
+#include "lexical_cast.hpp"
 #include "log.hpp"
 
 #include "server/game.hpp"
 #include "server/player_network.hpp"
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
+#include "preferences/credentials.hpp"
 
 #include <sstream>
 #include <iomanip>
@@ -172,14 +171,15 @@ bool game::is_player(const socket_ptr player) const {
 namespace {
 std::string describe_turns(int turn, int num_turns)
 {
-	char buf[100];
+	std::ostringstream buf;
+	buf << turn << '/';
 
 	if(num_turns == -1) {
-		snprintf(buf, sizeof(buf), "%d/-", turn);
+		buf << '-';
 	} else {
-		snprintf(buf, sizeof(buf), "%d/%d", turn, num_turns);
+		buf << num_turns;
 	}
-	return buf;
+	return buf.str();
 }
 
 }//anon namespace
@@ -616,11 +616,12 @@ bool game::describe_slots() {
 			++available_slots;
 		}
 	}
-	char buf[50];
-	snprintf(buf,sizeof(buf), "%d/%d", available_slots, num_sides);
+	std::ostringstream buf;
+	buf << available_slots << '/' << num_sides;
+	std::string descr = buf.str();
 
-	if ((*description_)["slots"] != buf) {
-		description_->set_attr_dup("slots", buf);
+	if ((*description_)["slots"] != descr) {
+		description_->set_attr_dup("slots", descr.c_str());
 		return true;
 	} else {
 		return false;

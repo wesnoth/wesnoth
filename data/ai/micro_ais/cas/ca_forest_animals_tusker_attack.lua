@@ -1,5 +1,5 @@
-local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local M = wesnoth.map
 
 local function get_tuskers(cfg)
     local tuskers = AH.get_units_with_moves {
@@ -35,7 +35,7 @@ function ca_forest_animals_tusker_attack:execution(cfg)
     local min_dist, attacker, target = 9e99
     for _,tusker in ipairs(tuskers) do
         for _,enemy in ipairs(adjacent_enemies) do
-            local dist = H.distance_between(tusker.x, tusker.y, enemy.x, enemy.y)
+            local dist = M.distance_between(tusker.x, tusker.y, enemy.x, enemy.y)
             if (dist < min_dist) then
                 min_dist, attacker, target = dist, tusker, enemy
             end
@@ -51,9 +51,9 @@ function ca_forest_animals_tusker_attack:execution(cfg)
     }
 
     local best_hex = AH.find_best_move(attacker, function(x, y)
-        local rating = - H.distance_between(x, y, target.x, target.y)
+        local rating = -M.distance_between(x, y, target.x, target.y)
         for _,tusklet in ipairs(adj_tusklets) do
-            if (H.distance_between(x, y, tusklet.x, tusklet.y) == 1) then rating = rating + 0.1 end
+            if (M.distance_between(x, y, tusklet.x, tusklet.y) == 1) then rating = rating + 0.1 end
         end
 
         return rating

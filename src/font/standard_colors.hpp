@@ -1,21 +1,20 @@
 /*
- * Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+ * Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
  * Part of the Battle for Wesnoth Project http://www.wesnoth.org/
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY.
- * 
+ *
  * See the COPYING file for more details.
  */
 
-#ifndef FONT_STANDARD_COLORS_HPP
-#define FONT_STANDARD_COLORS_HPP
+#pragma once
 
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 namespace font {
 
@@ -49,5 +48,3 @@ extern const color_t
 	unit_type_color,
 	race_color;
 }
-
-#endif

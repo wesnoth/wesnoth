@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.19+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-07-24 20:26 UTC\n"
+"POT-Creation-Date: 2017-05-29 21:55+0200\n"
 "PO-Revision-Date: 2009-05-08 16:09+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: none\n"
@@ -173,11 +173,11 @@ msgstr "精靈"
 msgid "Lomarfel"
 msgstr "羅摩福"
 
-#. [side]: type=Orcish Warrior, id=Urugha
-#. [side]: type=Orcish Slayer, id=Gharlsa
+#. [side]: type=Orcish Sovereign, id=Rualsha
 #. [side]: type=Orcish Warlord, id=Gnargha
 #. [side]: type=Orcish Warlord, id=Krughnar
-#. [side]: type=Orcish Sovereign, id=Rualsha
+#. [side]: type=Orcish Warrior, id=Urugha
+#. [side]: type=Orcish Slayer, id=Gharlsa
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:88
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:59
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:66
@@ -1059,7 +1059,13 @@ msgid "Death of Linaera"
 msgstr "萊鈉艾爾之死"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:127
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:121
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:89
+msgid "Linaera is a leader and can recruit mages when standing on a keep."
+msgstr ""
+
+#. [objectives]
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:129
 #, fuzzy
 msgid ""
 "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-run "
@@ -1069,12 +1075,12 @@ msgstr ""
 "善用精靈斥候的機動力以及萊鈉艾爾的傳送之術發動打帶跑戰術。"
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:141
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:143
 msgid "Report."
 msgstr "報告。"
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:146
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:148
 #, fuzzy
 msgid ""
 "A warband of orcs, no women or children among them, besieges a tower. It’s "
@@ -1085,7 +1091,7 @@ msgstr ""
 "離條約上劃給人類居住地很遠。"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:151
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:153
 msgid ""
 "Under the letter of the treaty, it is so. But this country is too cold and "
 "barren for us. I wonder, what manner of human would choose to live here, far "
@@ -1095,12 +1101,12 @@ msgstr ""
 "的人類，遠離自己的同類，選擇居住在此呢？"
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:156
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:158
 msgid "It trespasses, and should be driven out!"
 msgstr "這是一個侵入的行為，應該把他們趕出去的！"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:161
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:163
 msgid ""
 "Hold. It is only one human, or a few of them at most. Time enough to speak "
 "of driving it out when we have no enemies in common."
@@ -1109,7 +1115,7 @@ msgstr ""
 "不要輕舉望動。"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:166
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:168
 msgid ""
 "Tell me: I see no bridge over the chasm around that keep. Is there any sign "
 "that one has been withdrawn by the defenders?"
@@ -1118,7 +1124,7 @@ msgstr ""
 "收起來了嗎？"
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:171
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:173
 msgid ""
 "No, lord. No traces of any construction. It looks like no bridge has ever "
 "existed there. There must be other, hidden means of access to the tower."
@@ -1127,7 +1133,7 @@ msgstr ""
 "這裡一定有一個祕密通道直通這座高塔。"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:176
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:178
 #, fuzzy
 msgid ""
 "Interesting... Go to my personal stores and bring me a bottle of wine. And a "
@@ -1135,13 +1141,13 @@ msgid ""
 msgstr "有意思...去我個人收藏裡哪瓶酒來。 還有酒杯。"
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:181
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:183
 #, fuzzy
 msgid "... Glasses?"
 msgstr "...酒杯？"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:186
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:188
 msgid "Do it. We’ll have a guest soon."
 msgstr "快去。 我們馬上就會有貴客到臨。"
 
@@ -1154,7 +1160,7 @@ msgstr "快去。 我們馬上就會有貴客到臨。"
 #. deliberately unclear whether Faerie is a place that is
 #. the source of magical power or a label for the inner
 #. nonhuman/magical nature of the Elves. Translate freely.
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:200
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:202
 msgid ""
 "Erlornas closed his eyes and brought his hands forward, joined palms forming "
 "a cup open to the sky. Soon they began to glow, then to flare like a brazier "
@@ -1169,12 +1175,12 @@ msgstr ""
 "了。 "
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:210
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:212
 msgid "Some time later..."
 msgstr "不久之後..."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:233
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:235
 #, fuzzy
 msgid ""
 "So you decided to accept the invitation. Good. Welcome, I am lord Erlornas "
@@ -1184,7 +1190,7 @@ msgstr ""
 "樣的場景遇到你...感到驚訝。"
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:238
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:240
 msgid ""
 "Scarcely less than I find yours, my lord elf, but I would welcome your aid "
 "against these orcs. They have been besieging my tower for weeks."
@@ -1193,7 +1199,7 @@ msgstr ""
 "們已經包圍我的塔好幾個禮拜了。"
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:243
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:245
 msgid ""
 "I wish their foul kind driven as far as possible from my borders, not to "
 "return. It would be no bad thing if an ally of the elves kept watch over "
@@ -1203,19 +1209,19 @@ msgstr ""
 "友守衛著這個國家真是一件好事。"
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:248
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:250
 msgid "Count me an ally, then, lord Erlornas. We can defeat them together."
 msgstr "爾嶁那思領主， 視我為盟友吧。 我們一起擊敗這些獸人吧。"
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:262
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:264
 msgid ""
 "My lord... humans cannot be trusted! They shift their allegiances with the "
 "changing of the wind!"
 msgstr "我的領主... 人類是不能被相信的！ 他們翻臉像翻書一樣！"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:267
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:269
 msgid ""
 "That may be, but I do not think this one will betray us to the orcs. And we "
 "may need her assistance, too: that is a powerful force of orcs ahead."
@@ -1224,7 +1230,7 @@ msgstr ""
 "她的幫助: 迎面而來的是一股強大的獸人軍團。"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:276
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:278
 #, fuzzy
 msgid ""
 "And that is well ended. But, Linaera, there is somewhat else that concerns "
@@ -1235,7 +1241,7 @@ msgstr ""
 "裡以東有一點說不出來的...不對勁？"
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:281
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:283
 msgid ""
 "I do indeed. Something evil has recently made a nest in the next valley "
 "over; its servants have been sniffing at the edges of my domain. I had meant "
@@ -1247,7 +1253,7 @@ msgstr ""
 "色的大地，你們也像我一樣想把他們給消滅掉吧。"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:286
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:288
 msgid "We are of one mind, then. Let us go to it."
 msgstr "妳我一條心。 走吧，讓我們出發吧。"
 
@@ -1272,7 +1278,7 @@ msgid "Defeat Keremal"
 msgstr "擊敗科瑞姆"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:89
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:90
 #, fuzzy
 #| msgid ""
 #| "Hint:\n"
@@ -1286,7 +1292,7 @@ msgstr ""
 "不死族對物理攻擊是有抵抗性的。 用法師攻急不死族，再以精靈從旁輔助與保護法師。"
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:106
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:107
 msgid ""
 "The evil spirits who have settled in this wetland have turned it into a vile "
 "bog. My apprentices and I have the power to dispel them, but you must "
@@ -1296,7 +1302,7 @@ msgstr ""
 "的法力，但是你們得保護我們免於他們的武器攻擊。"
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:117
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:118
 msgid ""
 "Thank you, Erlornas... now I can return to my tower in peace. But I think "
 "some of my apprentices wish to follow you north in pursuit of the orcs."
@@ -1305,7 +1311,7 @@ msgstr ""
 "們想要跟你們往北追擊獸人。"
 
 #. [message]: role=mage
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:122
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:123
 msgid ""
 "I have always wished to see elves, and now I have fought alongside them! May "
 "I please travel with you?"
@@ -1313,7 +1319,7 @@ msgstr ""
 "我總是盼望著遇見精靈，想不到我現在居然語你們一起並肩作戰！ 我可以加入你們嗎？"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:127
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:128
 msgid "Certainly... I shall be glad of your help."
 msgstr "當然... 我們很高興有你的加入。"
 

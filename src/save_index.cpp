@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by Jörg Hinrichs, refactored from various
+   Copyright (C) 2003 - 2017 by Jörg Hinrichs, refactored from various
    places formerly created by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -21,7 +21,7 @@
 #include "formula/string_utils.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_errors.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/binary_or_text.hpp"
@@ -203,7 +203,7 @@ std::string save_info::format_time_local() const
 std::string save_info::format_time_summary() const
 {
 	time_t t = modified();
-	return util::format_time_summary(t);
+	return utils::format_time_summary(t);
 }
 
 bool save_info_less_time::operator() (const save_info& a, const save_info& b) const {
@@ -225,17 +225,15 @@ bool save_info_less_time::operator() (const save_info& a, const save_info& b) co
 	}
 }
 
-static std::istream* find_save_file(const std::string &name, const std::string &alt_name, const std::vector<std::string> &suffixes) {
+static filesystem::scoped_istream find_save_file(const std::string &name, const std::string &alt_name, const std::vector<std::string> &suffixes) {
 	for (const std::string &suf : suffixes) {
-		std::istream *file_stream = filesystem::istream_file(filesystem::get_saves_dir() + "/" + name + suf);
+		filesystem::scoped_istream file_stream = filesystem::istream_file(filesystem::get_saves_dir() + "/" + name + suf);
 		if (file_stream->fail()) {
-			delete file_stream;
 			file_stream = filesystem::istream_file(filesystem::get_saves_dir() + "/" + alt_name + suf);
 		}
-		if (!file_stream->fail())
+		if (!file_stream->fail()) {
 			return file_stream;
-		else
-			delete file_stream;
+		}
 	}
 	LOG_SAVE << "Could not open supplied filename '" << name << "'\n";
 	throw game::load_game_failed();
@@ -246,7 +244,7 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 	std::string modified_name = name;
 	replace_space2underbar(modified_name);
 
-	static const std::vector<std::string> suffixes = {"", ".gz", ".bz2"};
+	static const std::vector<std::string> suffixes {"", ".gz", ".bz2"};
 	filesystem::scoped_istream file_stream = find_save_file(modified_name, name, suffixes);
 
 	cfg.clear();
@@ -375,6 +373,8 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			std::string leader_image;
 			std::string leader_image_tc_modifier;
 			std::string leader_name;
+			int gold = side["gold"];
+			int units = 0, recall_units = 0;
 
 			if(side["controller"] != team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN)) {
 				continue;
@@ -385,16 +385,23 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			}
 
 			for(const config &u : side.child_range("unit")) {
-				if(!u["canrecruit"].to_bool()) {
+				if(u.has_attribute("x") && u.has_attribute("y")) {
+					units++;
+				} else {
+					recall_units++;
+				}
+
+				// Only take the first leader
+				if(!leader.empty() || !u["canrecruit"].to_bool()) {
 					continue;
 				}
 
+				// Don't count it among the troops
+				units--;
 				leader = u["id"].str();
 				leader_name = u["name"].str();
 				leader_image = u["image"].str();
 				leader_image_tc_modifier = "~RC(" + u["flag_rgb"].str() + ">" + u["side"].str() + ")";
-
-				break;
 			}
 
 			// We need a binary path-independent path to the leader image here so it can be displayed
@@ -415,6 +422,9 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			leader_config["leader_name"] = leader_name;
 			leader_config["leader_image"] = leader_image;
 			leader_config["leader_image_tc_modifier"] = leader_image_tc_modifier;
+			leader_config["gold"] = gold;
+			leader_config["units"] = units;
+			leader_config["recall_units"] = recall_units;
 
 			cfg_summary.add_child("leader", leader_config);
 		}

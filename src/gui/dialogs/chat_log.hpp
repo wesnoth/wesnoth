@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2011 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_CHAT_LOG_HPP_INCLUDED
-#define GUI_DIALOGS_CHAT_LOG_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "variable.hpp"
@@ -37,17 +36,15 @@ public:
 	window* build_window(CVideo& video);
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	std::shared_ptr<view> get_view();
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	std::shared_ptr<view> view_;
 };
 } // namespace dialogs
 } // namespace gui2
-
-#endif /* ! GUI_DIALOGS_CHAT_LOG_HPP_INCLUDED */

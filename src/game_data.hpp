@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef GAME_DATA_HPP_INCLUDED
-#define GAME_DATA_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "game_end_exceptions.hpp"
@@ -28,7 +27,6 @@ class t_string;
 
 class game_data  : public variable_set  {
 public:
-	game_data();
 	explicit game_data(const config& level);
 	game_data(const game_data& data);
 
@@ -64,8 +62,8 @@ public:
 	/// does nothing if varname is no valid variable name.
 	void clear_variable_cfg(const std::string& varname);
 
-	const rand_rng::mt_rng& rng() const { return rng_; }
-	rand_rng::mt_rng& rng() { return rng_; }
+	const randomness::mt_rng& rng() const { return rng_; }
+	randomness::mt_rng& rng() { return rng_; }
 
 	enum PHASE {
 		INITIAL,
@@ -89,6 +87,18 @@ public:
 	const std::string& next_scenario() const { return next_scenario_; }
 	void set_next_scenario(const std::string& next_scenario) { next_scenario_ = next_scenario; }
 
+	const std::string& get_id() const { return id_; }
+	void set_id(const std::string& value) { id_ = value; }
+
+	const std::string& get_theme() const { return theme_; }
+	void set_theme(const std::string& value) { theme_ = value; }
+
+	const std::vector<std::string>& get_defeat_music() const { return defeat_music_; }
+	void set_defeat_music(std::vector<std::string> value) { defeat_music_ = std::move(value); }
+
+	const std::vector<std::string>& get_victory_music() const { return victory_music_; }
+	void set_victory_music(std::vector<std::string> value) { victory_music_ = std::move(value); }
+
 private:
 	void activate_scope_variable(std::string var_name) const;
 	///Used to delete variables.
@@ -98,11 +108,15 @@ private:
 		return variable_access_throw(varname, variables_);
 	}
 
-	rand_rng::mt_rng rng_;
+	randomness::mt_rng rng_;
 	config variables_;
 	PHASE phase_;
 	bool can_end_turn_;
-	std::string next_scenario_;                       /**< the scenario coming next (for campaigns) */
+	/// the scenario coming next (for campaigns)
+	std::string next_scenario_;
+	// the id of a scenario cannot change during a scenario
+	std::string id_;
+	std::string theme_;
+	std::vector<std::string> defeat_music_;
+	std::vector<std::string> victory_music_;
 };
-
-#endif

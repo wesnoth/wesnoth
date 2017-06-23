@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:32 UTC\n"
-"PO-Revision-Date: 2014-10-10 23:12+0100\n"
+"POT-Creation-Date: 2017-05-29 21:55+0200\n"
+"PO-Revision-Date: 2016-12-02 19:12+0100\n"
 "Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
 "Language: cs\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -82,10 +82,10 @@ msgstr "Delfador"
 msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
+#. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:98
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:112
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:130
@@ -330,8 +330,8 @@ msgstr ""
 "druhých nevšímají, což ukazuje na neskutečnou schopnost sebeovládání dobře "
 "vycvičeného ovčáckého psa."
 
-#. [test]: id=animals
 #. [event]
+#. [test]: id=animals
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:45
 msgid "Animals"
@@ -342,10 +342,10 @@ msgstr "Zvířata"
 msgid "Rutburt"
 msgstr "Rutburt"
 
-#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
+#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
@@ -374,8 +374,8 @@ msgstr "Pavouci"
 msgid "Yetis"
 msgstr "Sněžní muži"
 
-#. [side]
 #. [event]
+#. [side]
 #. [test]: id=wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:119
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:48
@@ -389,11 +389,11 @@ msgid "Whelps"
 msgstr "Štěňata"
 
 # !!!!
-#. [set_menu_item]: id=m01_end_animals
-#. [event]
 #. [set_menu_item]: id=m01_end_swarm
-#. [set_menu_item]: id=m01_end_wolves
+#. [event]
 #. [set_menu_item]: id=m04_end_animals
+#. [set_menu_item]: id=m01_end_animals
+#. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:382
@@ -542,19 +542,19 @@ msgstr "Obrana průsmyku"
 #. [side]: type=Orcish Leader, id=Big Bad Orc
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:38
 msgid "Big Bad Orc"
-msgstr ""
+msgstr "Velký zlý skřřet"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:85
 msgid "All right, chaps. Those orcs need to be stopped."
-msgstr ""
+msgstr "Dobře chlapi. Tyhle skřety musíme zastavit."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:87
 #: data/ai/micro_ais/scenarios/guardians.cfg:514
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:135
 msgid "They there!  We them get!"
-msgstr ""
+msgstr "Oni tam! My je dostat!"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:90
@@ -569,6 +569,15 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Musíme udržet průchod co nejdéle to půjde. Postavme naše nejsilnější "
+"bojovníky do přední linie a zraněné jednotky stáhněte dozadu, aby se mohly "
+"uzdravit. Když budeme opatrní, můžeme tuto bitvu vyhrát. Připojím se k vám "
+"jakmile naverbuji a taky se zapojím do boje.\n"
+"\n"
+"Poznámka: Obrana úzkého hrdla AI je naprogramovaná jako Mikro AI. Mikro AI "
+"se může přidat a přizpůsobit pro potřeby scénáře jen s použitím WML a tagu "
+"[micro_ai]. Pro více informací navštivte wiki stránku <span "
+"color='#00A000'>Mikro AI</span> na adrese http://wiki.wesnoth.org/Micro_AIs."
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:100
@@ -578,74 +587,78 @@ msgid ""
 "possible. Do you want to play the orc side or let the default (RCA) AI do "
 "that?"
 msgstr ""
+"V tomto tažení se AI hrající za lidi na východě snaží vytvořit obrannou "
+"linii v úžině a bránit ji před skřety tak dlouho, jak jen to půjde. Chceš "
+"hrát za skřety nebo necháš kontrolu nad skřety výchozí (RCA) AI?"
 
 #. [option]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:102
 msgid "<span font='16'>I'll watch the two AIs fight it out.</span>"
-msgstr ""
+msgstr "<span font='16'>Budu se dívat, jak si to ty dvě AI vyřídí.</span>"
 
 #. [option]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:105
 msgid "<span font='16'>I'll play the orcs.</span>"
-msgstr ""
+msgstr "<span font='16'>Chci ovládat skřety.</span>"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:116
 msgid "Take the pass"
-msgstr ""
+msgstr "Zabrat průsmyk"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:118
 msgid "Defeat all humans"
-msgstr ""
+msgstr "Porazit všechny lidi"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:122
 msgid "Death of Big Bad Orc"
-msgstr ""
+msgstr "Poraz Velkého zlého skřeta"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:126
 msgid "Only one orc remains"
-msgstr ""
+msgstr "Zbývá jen jeden skřet"
 
 #. [then]
 #: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:151
 msgid ""
 "I may have fallen, but we will continue to defend the pass to the last man!"
 msgstr ""
+"Možná jsem padnul, ale mí vojáci budou bránit průsmyk do posledního muže!"
 
 #. [test]: id=dragon
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:54
 msgid "Dragon"
-msgstr ""
+msgstr "Drak"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/dragon.cfg:21
 msgid "team_name^Rowck"
-msgstr ""
+msgstr "Rowck"
 
 #. [side]: type=Dread Bat, id=Dreadful Bat
 #: data/ai/micro_ais/scenarios/dragon.cfg:33
 msgid "Dreadful Bat"
-msgstr ""
+msgstr "Strašlivý netopýr"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:51
 msgid "Rowck's Home"
-msgstr ""
+msgstr "Rowckův domov"
 
 #. [unit]: id=Rowck, type=Fire Dragon
 #: data/ai/micro_ais/scenarios/dragon.cfg:55
 msgid "Rowck"
-msgstr ""
+msgstr "Rowck"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:81
 msgid "Be careful to stay out of the way of that dragon. He's a mean one."
-msgstr ""
+msgstr "Buď opatrný a vyhýbej se drakovi. Je velmi naštvaný."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:84
@@ -669,36 +682,52 @@ msgid ""
 "tag. Check out the <span color='#00A000'>Micro AI wiki page</span> at http://"
 "wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
+"Ahoj, jmenuji se Rowck a umím toto:\n"
+"Když mám hlad, náhodně se toulám po mapě do doby, než na někoho narazím. "
+"Když jsou nepřátelé v dosahu, Zaútočím a nejslabšího pozřu. Potom se vracím "
+"do pelíšku, kde nějakou dobu odpočívám, dokud se zcela neuzdravím.\n"
+"Několik detailů (vlastností, nikoliv chyb, ale je možné je změnit, pokud by "
+"někdo chtěl):\n"
+"- Pokud mi na cestě do pelíšku někdo stojí v cestě, kontrolu nade mnou "
+"převezme RCA AI.\n"
+"- Pokud mi při návratu někdo zabírá pelíšek, zaútočím na něj.\n"
+"- Po zabití se vracím do pelíšku jen pokud jsem já byl útočník.\n"
+"- Občas se během kola nikam nepohnu (drak musí taky někdy odpočívat)\n"
+"\n"
+"Poznámka: AI Lovec je naprogramovaná jako Mikro AI. Mikro AI se může přidat "
+"a přizpůsobit pro potřeby scénáře jen s použitím WML a tagu [micro_ai]. Pro "
+"více informací navštivte wiki stránku <span color='#00A000'>Mikro AI</span> "
+"na adrese http://wiki.wesnoth.org/Micro_AIs."
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/dragon.cfg:96
 msgid "Move the bats around to explore how Rowck reacts"
-msgstr ""
+msgstr "Přesunuj netopýry po okolí a pozoruj Rowckovy reakce"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/dragon.cfg:98
 msgid "Defeat Rowck"
-msgstr ""
+msgstr "Poraz Rowcka"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/dragon.cfg:102
 msgid "Move the lead bat to the signpost"
-msgstr ""
+msgstr "Přesuň vedoucího netopýra k ukazateli"
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/dragon.cfg:106
 msgid "Death of the bat leader"
-msgstr ""
+msgstr "Smrt netopýřího velitele"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:139
 msgid "I'm out of here."
-msgstr ""
+msgstr "Jdu pryč."
 
 #. [test]: id=fast
 #: data/ai/micro_ais/scenarios/fast.cfg:5
 msgid "Fast"
-msgstr ""
+msgstr "Rychle"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/fast.cfg:64
@@ -974,8 +1003,8 @@ msgstr ""
 msgid "We're back together, let's head out to the corners again."
 msgstr ""
 
-#. [event]
 #. [test]: id=guardians
+#. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:17
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:57
 msgid "Guardians"
@@ -1633,8 +1662,8 @@ msgstr "Zvládl jsem to! Teď už budou naši lidé v bezpečí."
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr "Neee ! Vše je ztraceno. Teď už skřety nikdy nezastavíme!"
 
-#. [test]: id=patrols
 #. [event]
+#. [test]: id=patrols
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
@@ -1839,8 +1868,8 @@ msgstr ""
 msgid "Let's go home, chaps."
 msgstr "Jdeme domů, chlapi."
 
-#. [test]: id=protect_unit
 #. [event]
+#. [test]: id=protect_unit
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
@@ -2000,8 +2029,8 @@ msgstr "Držel jsem se tak dlouho, jak jen bylo možné."
 msgid "I made it"
 msgstr "Zvládl jsem to"
 
-#. [test]: id=recruiting
 #. [event]
+#. [test]: id=recruiting
 #: data/ai/micro_ais/scenarios/recruiting.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:78
 msgid "Recruiting"
@@ -2087,8 +2116,8 @@ msgstr "Grnk Slabý"
 msgid "team_name^Grnk"
 msgstr "Grnk"
 
-#. [event]
 #. [test]: id=swarm
+#. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:51
 #: data/ai/micro_ais/scenarios/swarm.cfg:5
 msgid "Swarm"

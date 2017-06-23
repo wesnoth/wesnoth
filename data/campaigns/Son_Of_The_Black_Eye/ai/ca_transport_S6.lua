@@ -1,5 +1,6 @@
-local H = wesnoth.require "lua/helper.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local H = wesnoth.require "helper"
+local LS = wesnoth.require "location_set"
+local M = wesnoth.map
 
 local ca_transport = {}
 
@@ -14,8 +15,7 @@ function ca_transport:evaluation()
     local units = wesnoth.get_units { side = wesnoth.current.side, formula = 'movement_left > 0' }
 
     for i,u in ipairs(units) do
-        local vars = H.get_child(u.__cfg, "variables")
-        if vars.destination_x and vars.destination_y then
+        if u.variables.destination_x and u.variables.destination_y then
             return 300000
         end
     end
@@ -57,14 +57,14 @@ function ca_transport:execution()
     for i,u in ipairs(transports) do
         local dst = { u.variables.destination_x, u.variables.destination_y }
 
-        if (not u.variables.landed) and (H.distance_between(u.x, u.y, dst[1], dst[2]) <= u.moves) then
+        if (not u.variables.landed) and (M.distance_between(u.x, u.y, dst[1], dst[2]) <= u.moves) then
             local reach = wesnoth.find_reach(u)
 
             for i,r in ipairs(reach) do
                 if landing_site_map:get(r[1], r[2]) and (not unit_map:get(r[1], r[2]))
                 then
                     -- Distance from destination is minor rating
-                    local rating = -H.distance_between(r[1], r[2], dst[1], dst[2]) / 100.
+                    local rating = -M.distance_between(r[1], r[2], dst[1], dst[2]) / 100.
 
                     -- Main rating is number of unoccupied land hexes and
                     -- water hexes next to land hexes
@@ -153,7 +153,7 @@ function ca_transport:execution()
         local max_rating_unit, best_hex_unit = -9e99, {}
         for i,r in ipairs(reach) do
             if deep_water_map:get(r[1], r[2]) and (not blocked_hex_map:get(r[1], r[2])) then
-                local rating = -H.distance_between(r[1], r[2], dst[1], dst[2])
+                local rating = -M.distance_between(r[1], r[2], dst[1], dst[2])
                 -- If possible, also move in a straight line
                 rating = rating - math.abs(r[1] - dst[1]) / 100.
                 rating = rating - math.abs(r[2] - dst[2]) / 100.

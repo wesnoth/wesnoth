@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2008 - 2017 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,10 +23,9 @@
  *   need to ensure the pointer is deleted.
  */
 
-#ifndef EDITOR_ACTION_SELECT_HPP
-#define EDITOR_ACTION_SELECT_HPP
+#pragma once
 
-#include "action.hpp"
+#include "editor/action/action.hpp"
 
 
 namespace editor {
@@ -112,5 +111,3 @@ class editor_action_select_inverse : public editor_action
 
 
 } //end namespace editor
-
-#endif

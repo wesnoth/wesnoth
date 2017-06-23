@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2017 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,13 +13,13 @@
 */
 
 #include "config.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "filesystem.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "util.hpp"
 
 #include "server/ban.hpp"
 

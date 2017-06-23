@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -95,7 +95,7 @@ namespace lua_race {
 	{
 		luaL_newmetatable(L, Race);
 
-		static luaL_Reg const callbacks[] = {
+		static luaL_Reg const callbacks[] {
 			{ "__index", 	    &impl_race_get},
 			{ nullptr, nullptr }
 		};

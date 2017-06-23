@@ -25,7 +25,7 @@ if(DOMAIN STREQUAL ${DEFAULT_DOMAIN})
 				-E touch ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES.in
 
 		# Find all cpp files which are not in a .git directory.
-		COMMAND find src  -name .git -prune -o -name '*cpp' -print |
+		COMMAND find src  -name .git -prune -o -name '*.[hc]pp' -print |
 				sort |
 				while read file\; do
 					# If the file doesn't contain a GETTEXT_DOMAIN

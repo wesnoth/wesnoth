@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2017 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,11 +14,11 @@
 #include "game_initialization/connect_engine.hpp"
 
 #include "ai/configuration.hpp"
-#include "config_assign.hpp"
 #include "formula/string_utils.hpp"
 #include "game_initialization/mp_game_utils.hpp"
 #include "game_initialization/playcampaign.hpp"
-#include "game_preferences.hpp"
+#include "preferences/credentials.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -42,7 +42,7 @@ static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
 
-static const std::string controller_names[] = {
+static const std::string controller_names[] {
 	"human",
 	"human",
 	"ai",
@@ -50,7 +50,7 @@ static const std::string controller_names[] = {
 	"reserved"
 };
 
-static const std::string attributes_to_trim[] = {
+static const std::string attributes_to_trim[] {
 	"side",
 	"type",
 	"gender",
@@ -64,7 +64,8 @@ static const std::string attributes_to_trim[] = {
 	"color",
 	"gold",
 	"income",
-	"allow_changes"
+	"allow_changes",
+	"faction"
 };
 
 namespace ng {
@@ -366,7 +367,7 @@ std::multimap<std::string, config> side_engine::get_side_children()
 
 	for(const std::string& children_to_swap : get_children_to_swap()) {
 		for(const config& child : cfg_.child_range(children_to_swap)) {
-			children.insert(std::pair<std::string, config>(children_to_swap, child));
+			children.emplace(children_to_swap, child);
 		}
 	}
 
@@ -390,7 +391,7 @@ void connect_engine::start_game()
 
 	// Resolves the "random faction", "random gender" and "random message"
 	// Must be done before shuffle sides, or some cases will cause errors
-	rand_rng::mt_rng rng; // Make an RNG for all the shuffling and random faction operations
+	randomness::mt_rng rng; // Make an RNG for all the shuffling and random faction operations
 	for(side_engine_ptr side : side_engines_) {
 		std::vector<std::string> avoid_faction_ids;
 
@@ -478,7 +479,7 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 
 	typedef std::tuple<unsigned int, std::string> mp_option;
 
-	rand_rng::mt_rng rng;
+	randomness::mt_rng rng;
 
 	unsigned num = 0;
 	for(side_engine_ptr side : side_engines_) {
@@ -763,15 +764,15 @@ void connect_engine::send_level_data() const
 {
 	// Send initial information.
 	if(first_scenario_) {
-		send_to_server(config_of
-			("create_game", config_of
-				("name", params_.name)
-				("password", params_.password)
-			)
-		);
+		send_to_server(config {
+			"create_game", config {
+				"name", params_.name,
+				"password", params_.password,
+			},
+		});
 		send_to_server(level_);
 	} else {
-		send_to_server(config_of("update_game", config()));
+		send_to_server(config {"update_game", config()});
 		config next_level;
 		next_level.add_child("store_next_scenario", level_);
 		send_to_server(next_level);
@@ -871,12 +872,12 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 {
 	// Save default attributes that could be overwirtten by the faction, so that correct faction lists would be
 	// initialized by flg_manager when the new side config is sent over network.
-	cfg_.add_child("default_faction", config_of
-		("type",    cfg_["type"])
-		("gender",  cfg_["gender"])
-		("faction", cfg_["faction"])
-		("recruit", cfg_["recruit"])
-	);
+	cfg_.add_child("default_faction", config {
+		"type",    cfg_["type"],
+		"gender",  cfg_["gender"],
+		"faction", cfg_["faction"],
+		"recruit", cfg_["recruit"],
+	});
 
 	if(cfg_["side"].to_int(index_ + 1) != index_ + 1) {
 		ERR_CF << "found invalid side=" << cfg_["side"].to_int(index_ + 1) << " in definition of side number " << index_ + 1 << std::endl;
@@ -900,16 +901,16 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 		cfg_["save_id"] = parent_.scenario()["id"].str() + "_" + std::to_string(index);
 	}
 
+	if(cfg_["controller"] != "human" && cfg_["controller"] != "ai" && cfg_["controller"] != "null") {
+		//an invalid contoller type was specified. Remove it to prevent asertion failures later.
+		cfg_.remove_attribute("controller");
+	}
+
 	update_controller_options();
 
 	// Tweak the controllers.
 	if(parent_.state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::SCENARIO && cfg_["controller"].blank()) {
 		cfg_["controller"] = "ai";
-	}
-
-	if(cfg_["controller"] != "human" && cfg_["controller"] != "ai" && cfg_["controller"] != "null") {
-		//an invalid contoller type was specified. Remove it to prevent asertion failures later.
-		cfg_.remove_attribute("controller");
 	}
 
 	if(cfg_["controller"] == "null") {
@@ -994,11 +995,14 @@ config side_engine::new_config() const
 {
 	config res = cfg_;
 
-	// If the user is allowed to change type, faction, leader etc,
-	// then import their new values in the config.
+	// In case of 'shuffle sides' the side index in cfg_ might be wrong which will confuse the team constuctor later.
+	res["side"] = index_ + 1;
+
+	// If the user is allowed to change type, faction, leader etc,  then import their new values in the config.
 	if(!parent_.params_.saved_game) {
 		// Merge the faction data to res.
 		config faction = flg_.current_faction();
+		LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " faction=" << faction["id"] << " recruit=" << faction["recruit"] << "\n";
 		res["faction_name"] = faction["name"];
 		res["faction"] = faction["id"];
 		faction.remove_attributes("id", "name", "image", "gender", "type");
@@ -1006,22 +1010,30 @@ config side_engine::new_config() const
 	}
 
 	res["controller"] = controller_names[controller_];
-	// the hosts recieves the serversided controller tweaks after the start event, but
+
+	// The hosts receives the serversided controller tweaks after the start event, but
 	// for mp sync it's very important that the controller types are correct
-	// during the start/prestart event (otherwse random unit creation during prestart fails).
+	// during the start/prestart event (otherwise random unit creation during prestart fails).
 	res["is_local"] = player_id_ == preferences::login() || controller_ == CNTR_COMPUTER || controller_ == CNTR_LOCAL;
+
+	// This function (new_config) is only meant to be called by the host's machine, which is why this check
+	// works. It essentially certifies that whatever side has the player_id that matches the host's login
+	// will be flagged. The reason we cannot check mp_campaign_info::is_host is because that flag is *always*
+	// true on the host's machine, meaning this flag would be set to true for every side.
+	res["is_host"] = player_id_ == preferences::login();
 
 	std::string desc = user_description();
 	if(!desc.empty()) {
 		res["user_description"] = t_string(desc, "wesnoth");
-		desc = vgettext(
-			"$playername $side",
-				{std::make_pair("playername", _(desc.c_str())),
-				std::make_pair("side", res["side"].str())}
-		);
+
+		desc = vgettext("$playername $side", {
+			{"playername", _(desc.c_str())},
+			{"side", res["side"].str()}
+		});
 	} else if(!player_id_.empty()) {
 		desc = player_id_;
 	}
+
 	if(res["name"].str().empty() && !desc.empty()) {
 		//TODO: maybe we should add this in to the leaders config instead of the side config?
 		res["name"] = desc;
@@ -1030,19 +1042,17 @@ config side_engine::new_config() const
 	assert(controller_ != CNTR_LAST);
 	if(controller_ == CNTR_COMPUTER && allow_player_) {
 		// Do not import default ai cfg otherwise - all is set by scenario config.
-		res.add_child_at("ai", config_of("ai_algorithm", ai_algorithm_), 0);
+		res.add_child_at("ai", config {"ai_algorithm", ai_algorithm_}, 0);
 	}
 
 	if(controller_ == CNTR_EMPTY) {
 		res["no_leader"] = true;
 	}
 
-	// Side's "current_player" is the player which is currently taken that side
-	// or the one which is reserved to it.
-	// "player_id" is the id of the client who controlls that side,
-	// that always the host for Local players and AIs
-	// any always empty for free/reserved sides or null controlled sides.
-	// especialy you can use !res["player_id"].empty() to check whether a side is already taken.
+	// A side's "current_player" is the player which has currently taken that side or the one for which it is reserved.
+	// The "player_id" is the id of the client who controls that side. It's always the host for Local and AI players and
+	// always empty for free/reserved sides or null controlled sides. You can use !res["player_id"].empty() to check
+	// whether a side is already taken.
 	assert(!preferences::login().empty());
 	if(controller_ == CNTR_LOCAL) {
 		res["player_id"] = preferences::login();
@@ -1051,7 +1061,7 @@ config side_engine::new_config() const
 		res.remove_attribute("player_id");
 		res["current_player"] = reserved_for_;
 	} else if(controller_ == CNTR_COMPUTER) {
-		//TODO what is the content of player_id_ here ?
+		// TODO: what is the content of player_id_ here ?
 		res["current_player"] = desc;
 		res["player_id"] = preferences::login();
 	} else if(!player_id_.empty()) {
@@ -1063,29 +1073,41 @@ config side_engine::new_config() const
 	res["chose_random"] = chose_random_;
 
 	if(!parent_.params_.saved_game) {
-		// Find a config where a default leader is and set a new type
-		// and gender values for it.
+		// Find a config where a default leader is and set a new type and gender values for it.
 		config* leader = &res;
+
 		if(flg_.default_leader_cfg() != nullptr) {
 			for(config& side_unit : res.child_range("unit")) {
-				if(*flg_.default_leader_cfg() == side_unit) {
-					leader = &side_unit;
-					if(flg_.current_leader() != (*leader)["type"]) {
-						// If a new leader type was selected from carryover,
-						// make sure that we reset the leader.
-						std::string leader_id = (*leader)["id"];
-						leader->clear();
-						if(!leader_id.empty()) {
-							(*leader)["id"] = leader_id;
-						}
-					}
-
-					break;
+				if(*flg_.default_leader_cfg() != side_unit) {
+					continue;
 				}
+
+				leader = &side_unit;
+
+				if(flg_.current_leader() != (*leader)["type"]) {
+					// If a new leader type was selected from carryover, make sure that we reset the leader.
+					std::string leader_id = (*leader)["id"];
+					leader->clear();
+
+					if(!leader_id.empty()) {
+						(*leader)["id"] = leader_id;
+					}
+				}
+
+				break;
 			}
 		}
-		(*leader)["type"] = flg_.current_leader();
-		(*leader)["gender"] = flg_.current_gender();
+
+		// NOTE: the presence of a type= key overrides no_leader
+		if(controller_ != CNTR_EMPTY) {
+			(*leader)["type"] = flg_.current_leader();
+			(*leader)["gender"] = flg_.current_gender();
+			LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " type=" << (*leader)["type"] << " gender=" << (*leader)["gender"] << "\n";
+		} else {
+			// TODO: FIX THIS SHIT! We shouldn't have a special string to denote no-leader-ness...
+			(*leader)["type"] = "null";
+			(*leader)["gender"] = "null";
+		}
 
 		res["team_name"] = parent_.team_names_[team_];
 
@@ -1121,8 +1143,8 @@ config side_engine::new_config() const
 		//
 		// If, by now, you get the impression this is a kludged-together mess which cries
 		// out for an honest design and a thoughtful implementation, you're correct! But
-		// I'm tired, and I'm cranky from wasting a over day on this, and so I'm excersizing
-		// my perogative as a grey-beard and leaving this for someone else to clean up.
+		// I'm tired, and I'm cranky from wasting a over day on this, and so I'm exercising
+		// my prerogative as a grey-beard and leaving this for someone else to clean up.
 		if(res["user_team_name"].empty() || !parent_.params_.use_map_settings) {
 			res["user_team_name"] = parent_.user_team_names_[team_];
 		}
@@ -1201,40 +1223,7 @@ bool side_engine::available_for_user(const std::string& name) const
 	return false;
 }
 
-bool side_engine::swap_sides_on_drop_target(const unsigned drop_target) {
-	assert(drop_target < parent_.side_engines_.size());
-	side_engine& target = *parent_.side_engines_[drop_target];
-
-	const std::string target_id = target.player_id_;
-	const ng::controller target_controller = target.controller_;
-	const std::string target_ai = target.ai_algorithm_;
-
-	if((controller_lock_ || target.controller_lock_) &&
-		(controller_options_ != target.controller_options_)) {
-
-		return false;
-	}
-
-	target.ai_algorithm_ = ai_algorithm_;
-	if(player_id_.empty()) {
-		target.player_id_.clear();
-		target.set_controller(controller_);
-	} else {
-		target.place_user(player_id_);
-	}
-
-	ai_algorithm_ = target_ai;
-	if(target_id.empty()) {
-		player_id_.clear();
-		set_controller(target_controller);
-	} else {
-		place_user(target_id);
-	}
-
-	return true;
-}
-
-void side_engine::resolve_random(rand_rng::mt_rng & rng, const std::vector<std::string> & avoid_faction_ids)
+void side_engine::resolve_random(randomness::mt_rng & rng, const std::vector<std::string> & avoid_faction_ids)
 {
 	if(parent_.params_.saved_game) {
 		return;
@@ -1387,7 +1376,7 @@ void side_engine::add_controller_option(ng::controller controller,
 		return;
 	}
 
-	controller_options_.push_back(std::make_pair(controller, name));
+	controller_options_.emplace_back(controller, name);
 }
 
 } // end namespace ng

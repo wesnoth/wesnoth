@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2015 - 2017 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_MP_JOIN_GAME_PASSWORD_PROMPT_HPP_INCLUDED
-#define GUI_DIALOGS_MP_JOIN_GAME_PASSWORD_PROMPT_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 
@@ -44,10 +43,8 @@ public:
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 };
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif /* ! GUI_DIALOGS_MP_JOIN_GAME_PASSWORD_PROMPT_HPP_INCLUDED */

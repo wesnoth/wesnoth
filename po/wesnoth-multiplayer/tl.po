@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:28 UTC\n"
+"POT-Creation-Date: 2017-05-29 21:55+0200\n"
 "PO-Revision-Date: 2006-05-05 16:30+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -85,24 +85,24 @@ msgid ""
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:65
+#: data/multiplayer/eras.lua:62
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:81
+#: data/multiplayer/eras.lua:76
 msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:81
+#: data/multiplayer/eras.lua:76
 msgid "Grand total: <b>%d</b>"
 msgstr ""
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:91
+#: data/multiplayer/eras.lua:87
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr ""
 
@@ -269,20 +269,28 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:53
+#: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:23
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:22
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:37
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:34
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:22
+#: data/multiplayer/scenarios/2p_Hellhole.cfg:54
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:48
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:47
+#: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:23
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:21
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:67
+#: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:23
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:22
+#: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:23
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:67
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:132
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:21
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:20
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:20
 #: data/multiplayer/scenarios/3p_Morituri.cfg:20
+#: data/multiplayer/scenarios/4p_Geothermal.cfg:31
+#: data/multiplayer/scenarios/4p_Geothermal.cfg:57
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:21
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:57
 #: data/multiplayer/scenarios/4p_Morituri.cfg:18
@@ -302,17 +310,25 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:34
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:65
+#: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:36
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:35
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:26
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:22
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:33
+#: data/multiplayer/scenarios/2p_Hellhole.cfg:43
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:60
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:36
+#: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:34
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:32
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:55
+#: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:34
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:33
+#: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:36
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:55
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:120
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:32
+#: data/multiplayer/scenarios/4p_Geothermal.cfg:20
+#: data/multiplayer/scenarios/4p_Geothermal.cfg:42
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:33
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:45
 #: data/multiplayer/scenarios/4p_Morituri.cfg:29
@@ -326,25 +342,30 @@ msgstr ""
 msgid "teamname^South"
 msgstr ""
 
-#. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
-msgid "Aethermaw — Created by Doc Paterson"
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:289
+msgid "Defeat enemy leader(s)"
 msgstr ""
 
-#. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
+#. [note]
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:293
 msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
-"demands that you amuse her by doing battle.\n"
-"\n"
-"<span color='red'>Note:</span>\n"
-"\n"
-"<span color='green'>Units may not move into a hex with a rock cairn. They "
-"may, however, be recruited to, and move from, such hexes.</span>\n"
-"\n"
-"<span color='green'>Beginning on turn 4, the Great Mage Sulla will begin to "
-"unite the two halves of the battlefield. The process will be complete by the "
-"end of turn 6.</span>\n"
+"demands that you amuse her by doing battle."
+msgstr ""
+
+#. [note]
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:296
+msgid ""
+"Units may not move into a hex with a rock cairn. They may, however, be "
+"recruited to, and move from, such hexes."
+msgstr ""
+
+#. [note]
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:299
+msgid ""
+"Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
+"of the battlefield. The process will be complete by the end of turn 6."
 msgstr ""
 
 #. [message]: speaker=narrator
@@ -383,11 +404,14 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:33
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:35
+#: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:40
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:32
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:31
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
 #: data/multiplayer/scenarios/3p_Morituri.cfg:31
+#: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:20
+#: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:53
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:20
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
 #: data/multiplayer/scenarios/4p_Clash.cfg:29
@@ -413,11 +437,14 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:35
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:22
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:24
+#: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:24
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:21
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:42
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
 #: data/multiplayer/scenarios/3p_Morituri.cfg:42
+#: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:31
+#: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:42
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:31
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
 #: data/multiplayer/scenarios/4p_Clash.cfg:18
@@ -726,6 +753,23 @@ msgid ""
 "(inscribed by MJQ)"
 msgstr ""
 
+#. [multiplayer]: id=multiplayer_Clearing_Gushes
+#: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:7
+msgid "2p — Clearing Gushes"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Clearing_Gushes
+#: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:8
+msgid ""
+"The banks of the Great River make for some of the most fertile land in all "
+"the known world. The spring and summer bring floods all along its length, "
+"making the soil rich and providing bountiful harvests each autumn. The "
+"Kingdom of Wesnoth has turned this land into the engine of their wealth and "
+"prosperity — making it the target of countless raids and attacks. The "
+"rigorous discipline and organization of Wesnoth's armies are in no small "
+"part driven by a constant need to patrol and defend these prosperous lands."
+msgstr ""
+
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:6
 msgid "2p — Cynsaun Battlefield"
@@ -947,12 +991,12 @@ msgid "Underground"
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:7
 msgid "2p — Fallenstar Lake"
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:8
 msgid ""
 "Long ago, a great star fell from the heavens, leaving its mark on this "
 "coniferous region."
@@ -970,6 +1014,23 @@ msgid ""
 "subtly parceled battlefield. Designed by Doc Paterson."
 msgstr ""
 
+#. [multiplayer]: id=multiplayer_Hellhole
+#: data/multiplayer/scenarios/2p_Hellhole.cfg:7
+msgid "2p — Hellhole"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Hellhole
+#: data/multiplayer/scenarios/2p_Hellhole.cfg:8
+msgid ""
+"Once, the town of Myrilel was a tranquil village at the easternmost reaches "
+"of humankind. This changed forever upon the rise of the lich warlord Mal-"
+"Ravanal, who ripped a gate of unspeakable dark sorcery in the center of town "
+"as the first gathering point for his armies of death. Though Mal-Ravanal was "
+"defeated, Myrilel remains a place made desolate and ruined, the gate an "
+"eternal scar on the land that to this day summons forth legions of wandering "
+"undead."
+msgstr ""
+
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:26
 msgid "2p — Hornshark Island"
@@ -982,102 +1043,101 @@ msgid ""
 "survive on this most unusual of islands. Designed by Doc Paterson."
 msgstr ""
 
-#. [unit]: type=Young Ogre, id=Baby Baby Bo
-#. [unit]: type=Young Ogre, id=Big Baby Bo
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:90
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:170
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:211
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:284
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:338
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:474
+#. [unit]: type=Young Ogre
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:89
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:166
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:205
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:277
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:330
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:462
 msgid "Big Baby Bo"
 msgstr ""
 
-#. [unit]: type=Drake Fighter, id=Rawffus the Dim
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:104
+#. [unit]: type=Drake Fighter
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:102
 msgid "Rawffus the Dim"
 msgstr ""
 
-#. [unit]: type=Dwarvish Scout, id=Kolbur
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:157
+#. [unit]: type=Dwarvish Scout
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:154
 msgid "Kolbur"
 msgstr ""
 
-#. [unit]: type=Dwarvish Scout, id=Vilhelm Viskitynnyri
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:184
+#. [unit]: type=Dwarvish Scout
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:179
 msgid "Vilhelm Viskitynnyri"
 msgstr ""
 
 #. [unit]: type=Woodsman
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:245
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:256
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:703
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:714
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:239
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:250
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:684
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:695
 msgid "Clockwork Boy"
 msgstr ""
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:309
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:302
 msgid "Neki the Brutal"
 msgstr ""
 
-#. [unit]: type=Elvish Fighter, id=Drowsk Calbeht
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:352
+#. [unit]: type=Elvish Fighter
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:343
 msgid "Drowsk Calbeht"
 msgstr ""
 
-#. [unit]: id=Rzrrt the Dauntless, type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:415
+#. [unit]: type=Soulless
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:405
 msgid "Rzrrt the Dauntless"
 msgstr ""
 
-#. [unit]: id=Sorrek, Chosen of Death, type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:456
+#. [unit]: type=Skeleton
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:445
 msgid "Sorrek, Chosen of Death"
 msgstr ""
 
-#. [unit]: type=Young Ogre, id=Baby Baby Dro
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:548
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:628
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:669
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:742
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:796
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:932
+#. [unit]: type=Young Ogre
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:534
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:611
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:650
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:722
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:774
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:906
 msgid "Big Baby Dro"
 msgstr ""
 
-#. [unit]: type=Drake Fighter, id=Gawffus the Dim
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:562
+#. [unit]: type=Drake Fighter
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:547
 msgid "Gawffus the Dim"
 msgstr ""
 
-#. [unit]: type=Dwarvish Scout, id=Rublok
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:615
+#. [unit]: type=Dwarvish Scout
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:599
 msgid "Rublok"
 msgstr ""
 
-#. [unit]: type=Dwarvish Scout, id=Ulysses Mantyjuuri
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:642
+#. [unit]: type=Dwarvish Scout
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:624
 msgid "Ulysses Mantyjuuri"
 msgstr ""
 
-#. [unit]: type=Orcish Leader, id=Neki the Brute
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:767
+#. [unit]: type=Orcish Leader
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:746
 msgid "Neki the Brute"
 msgstr ""
 
-#. [unit]: type=Elvish Fighter, id=Claiomh Dubh
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:810
+#. [unit]: type=Elvish Fighter
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:787
 msgid "Claiomh Dubh"
 msgstr ""
 
-#. [unit]: id=Tyxrrn the Dauntless, type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:873
+#. [unit]: type=Soulless
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:849
 msgid "Tyxrrn the Dauntless"
 msgstr ""
 
-#. [unit]: id=Rukhos, Chosen of Death, type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:914
+#. [unit]: type=Skeleton
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:889
 msgid "Rukhos, Chosen of Death"
 msgstr ""
 
@@ -1091,6 +1151,36 @@ msgstr ""
 msgid ""
 "Little remains of this once wealthy mining colony, now a haven for raiders "
 "and thieves."
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Ruined_Passage
+#: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:7
+msgid "2p — Ruined Passage"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Ruined_Passage
+#: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:8
+msgid ""
+"The distant west has long been fabled as the homeland of all living things "
+"before it was ruined by a deluge of disasters. Legends tell of the ingenuity "
+"of the ancients in their final hours as they struggled to fight back violent "
+"storms of fire and ash. Only recently have secretive expeditions to this "
+"land revealed the truth of these stories — most strikingly, a channel of "
+"immense enchanted walls. Between intense volcanic islands and vast seas of "
+"molten brimstone lies land kept pristine and untouched — yet mysteriously "
+"abandoned nonetheless."
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Ruphus_Isle
+#: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:7
+msgid "2p — Ruphus Isle"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Ruphus_Isle
+#: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:8
+msgid ""
+"Players must navigate the dispersive terrain of this small but "
+"topographically dense island."
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
@@ -1197,6 +1287,26 @@ msgstr ""
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
 msgstr ""
 
+#. [multiplayer]: id=multiplayer_Swamp_of_Dread
+#: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:7
+msgid "2p — Swamp of Dread"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Swamp_of_Dread
+#: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:8
+msgid ""
+"North of the Great River lies the Swamp of Dread, a vast, inhospitable mire "
+"cursed by foul magic. There exist only a few routes that aren't nearly "
+"guaranteed entrapment and death. Nonetheless, they are highly sought after "
+"as lucrative bridges between the southern flatlands and the rugged north, "
+"and intrepid explorers traverse the perilous bogs in search of profitable "
+"places to set up trading posts. The largest of these routes, Areth's Pass, "
+"is a long-disputed and well-known crossing since the first ancient wars "
+"between elves and dwarves. Despite poor land and limited resources, its "
+"great strategic value means it is fiercely contested by all with military "
+"aims in the Great Continent's heart."
+msgstr ""
+
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:6
 msgid "2p — The Freelands"
@@ -1211,6 +1321,26 @@ msgid ""
 "people of the Freelands have been battling would-be conquerors of their land "
 "for hundreds of years, repelling great beasts from their western borders, "
 "and Carorathian Imperialists from their eastern borders."
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_The_Walls_of_Pyrennis
+#: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:7
+msgid "2p — The Walls of Pyrennis"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_The_Walls_of_Pyrennis
+#: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:8
+msgid ""
+"When the orcish hordes first began arriving in droves on the Great "
+"Continent, one intrepid ruler by the name of Iron-King Olgor set about first "
+"uniting the bickering orcish tribes. He sought to conquer the whole of the "
+"Continent under the rule of orcs, and commanded the construction of the "
+"immense fortress of Pyrennis as a monument to his power. But it was this "
+"very citadel that was his undoing — his vassals, unwilling to finish "
+"building without their destined conquest complete, turned on Olgor and "
+"slayed him, scattering the orcish hosts for centuries to come. The walls of "
+"Pyrennis have proved astoundingly indestructible both to time and war — that "
+"is, what scattered segments of it were actually completed."
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
@@ -1293,6 +1423,35 @@ msgstr ""
 msgid "Statue"
 msgstr ""
 
+#. [multiplayer]: id=multiplayer_Tombs_of_Kesorak
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:7
+msgid "2p — Tombs of Kesorak"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Tombs_of_Kesorak
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:8
+msgid ""
+"Hundreds of years ago, the defeated Sorcerer Kesorak was entombed here, "
+"along with a number of his followers. An unholy chill now encircles the "
+"tombs, and many believe that the voice of Kesorak can still be heard, "
+"whispering amongst the withered trees of this barren landscape. Unconcerned "
+"by their gloomy surroundings, your leaders have chosen this place to clash."
+msgstr ""
+
+#. [note]
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:179
+msgid ""
+"The map contains mausoleums and campfires that shift the time of the day by "
+"one step toward night and day, respectively."
+msgstr ""
+
+#. [note]
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:182
+msgid ""
+"The tile in the centre, which contains the casket of the titular "
+"necromancer, is always covered in pitch black fog."
+msgstr ""
+
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
 msgid "2p — Weldyn Channel"
@@ -1310,19 +1469,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr ""
 
-#. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
-#. [multiplayer]: id=multiplayer_Clash
-#. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_4p_Morituri
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_3p_Morituri
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_4p_Hamlets
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #. [multiplayer]: id=multiplayer_8p_Morituri
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -1352,8 +1511,8 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 msgid ""
-"Controlling the central island is often the key to victory in this 21x21hex "
-"3 player free for all map."
+"Controlling the central island is often the key to victory in this 3 player "
+"free for all map."
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
@@ -1366,6 +1525,24 @@ msgstr ""
 msgid ""
 "Only one faction will emerge victorious from this tightly bordered three-"
 "player map."
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Bath_of_Glory
+#: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:7
+msgid "4p — Bath of Glory"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Bath_of_Glory
+#: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:9
+msgid ""
+"The distant, legendary city of Malisat is famed for many great works — among "
+"its most prized being the enormous complex known as the Bath of Glory. Made "
+"to be a relaxing paradise to weary soldiers returning home, the Bath is a "
+"stunning oasis built where once was nothing but sand. In time, it has become "
+"a city unto its own, with arts and music flourishing about the wild culture "
+"centered on the baths. The complex's vastness means flared tempers between "
+"wealthy nobles can turn into veritable battlegrounds — but even this has "
+"become a form of entertainment woven into the allure of the Bath."
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
@@ -1428,6 +1605,21 @@ msgstr ""
 msgid "Small map for 2 vs. 2."
 msgstr ""
 
+#. [multiplayer]: id=multiplayer_Geothermal
+#: data/multiplayer/scenarios/4p_Geothermal.cfg:7
+msgid "4p — Geothermal"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Geothermal
+#: data/multiplayer/scenarios/4p_Geothermal.cfg:9
+msgid ""
+"The western reaches of the Heart Mountains make a land of striking contrasts "
+"— boiling volcanic cauldrons weaving deep blue rivers between stark, snowy "
+"mountains, dotted with fields of verdant green. This land, though sometimes "
+"perilous and unstable, is nonetheless rich thanks to numerous foundries "
+"using the heat of volcanoes and hot springs to fuel their forges."
+msgstr ""
+
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
 msgid "4p — Hamlets"
@@ -1450,7 +1642,7 @@ msgstr ""
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
-"1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
+"1+4 vs. 2+3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
 "villages."
 msgstr ""
 
@@ -1497,8 +1689,8 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
 msgid ""
-"Controlling the area around the central keep is very lucrative in this 36X36 "
-"4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
+"Controlling the area around the central keep is very lucrative in this 4 "
+"player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
 
 #. [side]
@@ -1531,8 +1723,8 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
 msgid ""
-"A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
-"Designed for players 1&4 vs. 2&3. There are 28 villages."
+"2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
+"for players 1+4 vs. 2+3. There are 28 villages."
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
@@ -1558,8 +1750,8 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
 msgid ""
-"A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
-"played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
+"A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
+"east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
@@ -1571,7 +1763,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:7
 msgid ""
 "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
-"Large multi-fronted 2vs2 set in a vast underground complex."
+"Large multi-fronted 2 vs. 2 set in a vast underground complex."
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
@@ -1582,7 +1774,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
 msgid ""
-"36X36 4 player map where 4 mighty castles face off at the convergence of two "
+"A 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
 
@@ -1604,8 +1796,8 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
 msgid ""
-"A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
-"center common."
+"A 2 vs. 2 map with auxiliary keeps, and a large messy battle in the center "
+"common."
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_Auction-X
@@ -1616,7 +1808,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
 msgid ""
-"4 players surround a central keep, play vs the AI survival style, or as a "
+"4 players surround a central keep, play vs. the AI survival style, or as a "
 "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or FFA, "
 "and the best way to determine how much is an auction, LOWEST bid wins. It is "
 "a very small map so 75 gold is recommended for the other players."
@@ -1642,8 +1834,8 @@ msgstr ""
 msgid "5p — The Wilderlands"
 msgstr ""
 
-#. [multiplayer]: id=multiplayer_The_Wilderlands
 #. [multiplayer]: id=multiplayer_Crusaders_Field
+#. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
@@ -1763,8 +1955,7 @@ msgstr ""
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:516
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
-"impossible. Frankly, I haven’t got a clue as to how you did it, so send me "
-"the replay by mail to: roze@roze.mine.nu. Thank You!"
+"impossible!"
 msgstr ""
 
 #. [message]: speaker=narrator
@@ -1787,10 +1978,10 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:10
 msgid ""
-"A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
+"A 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
-"extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
-"starting gold, has 33 villages."
+"extended. Teams set for players 145 vs. 236 (east vs. west). Designed for "
+"100 starting gold, has 33 villages."
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_Volcano
@@ -1801,7 +1992,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9
 msgid ""
-"A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
+"A 3 vs. 3 battle to control the ashes of a kingdom long ago collapsed from a "
 "volcanic eruption. It has 36 villages."
 msgstr ""
 
@@ -1813,10 +2004,10 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
 msgid ""
-"A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
-"avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
-"south), but having players 146 or 136 as a team is also interesting. "
-"Designed for 150 starting gold, has 44 villages."
+"A 3 vs. 3 map. Flexible coordination of your alliance is required to avoid "
+"being outnumbered. Teams set for players 145 vs. 236 (north vs. south), but "
+"having players 146 or 136 as a team is also interesting. Designed for 150 "
+"starting gold, has 44 villages."
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie

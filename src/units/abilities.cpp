@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Dominic Bolin <dominic.bolin@exong.net>
+   Copyright (C) 2006 - 2017 by Dominic Bolin <dominic.bolin@exong.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -138,7 +138,9 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		}
 	}
 
+	assert(resources::units);
 	const unit_map& units = *resources::units;
+
 	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	for(int i = 0; i != 6; ++i) {
@@ -167,8 +169,6 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 }
 unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
 {
-	assert(resources::gameboard);
-
 	unit_ability_list res;
 
 	for (const config &i : this->abilities_.child_range(tag_name)) {
@@ -179,7 +179,9 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		}
 	}
 
+	assert(resources::units);
 	const unit_map& units = *resources::units;
+
 	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	for(int i = 0; i != 6; ++i) {
@@ -249,15 +251,6 @@ namespace {
 	}
 }
 
-/**
- * Returns names and descriptions of the unit's abilities.
- * The returned triples consist of (in order) base name, male or female name as
- * appropriate for the unit, and description.
- * @param active_list  If nullptr, then all abilities are forced active. If not
- *                     null, this vector will be the same length as the returned
- *                     one and will indicate whether or not the corresponding
- *                     ability is active.
- */
 std::vector<std::tuple<t_string, t_string, t_string> > unit::ability_tooltips(boost::dynamic_bitset<>* active_list) const
 {
 	std::vector<std::tuple<t_string,t_string,t_string> > res;
@@ -272,10 +265,10 @@ std::vector<std::tuple<t_string, t_string, t_string> > unit::ability_tooltips(bo
 				gender_value(ab.cfg, gender_, "name", "female_name", "name").t_str();
 
 			if (!name.empty()) {
-				res.push_back(std::make_tuple(
+				res.emplace_back(
 						ab.cfg["name"].t_str(),
 						name,
-						ab.cfg["description"].t_str() ));
+						ab.cfg["description"].t_str() );
 				if ( active_list )
 					active_list->push_back(true);
 			}
@@ -290,10 +283,10 @@ std::vector<std::tuple<t_string, t_string, t_string> > unit::ability_tooltips(bo
 				gender_value(ab.cfg, gender_, "name", "female_name", "name").t_str();
 
 			if (!name.empty()) {
-				res.push_back(std::make_tuple(
+				res.emplace_back(
 						default_value(ab.cfg, "name_inactive", "name").t_str(),
 						name,
-						default_value(ab.cfg, "description_inactive", "description").t_str() ));
+						default_value(ab.cfg, "description_inactive", "description").t_str() );
 				active_list->push_back(false);
 			}
 		}
@@ -301,15 +294,9 @@ std::vector<std::tuple<t_string, t_string, t_string> > unit::ability_tooltips(bo
 	return res;
 }
 
-/*
- *
- * cfg: an ability WML structure
- *
- */
 bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	bool illuminates = ability == "illuminates";
-	assert(resources::units && resources::gameboard && resources::tod_manager);
 
 	if (const config &afilter = cfg.child("filter"))
 		if ( !unit_filter(vconfig(afilter), resources::filter_con, illuminates).matches(*this, loc) )
@@ -317,6 +304,8 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 
 	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
+
+	assert(resources::units);
 	const unit_map& units = *resources::units;
 
 	for (const config &i : cfg.child_range("filter_adjacent"))
@@ -335,7 +324,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 				return false;
 			if (i.has_attribute("is_enemy")) {
 				const display_context& dc = resources::filter_con->get_disp_context();
-				if (i["is_enemy"].to_bool() != dc.teams()[unit->side() - 1].is_enemy(side_)) {
+				if (i["is_enemy"].to_bool() != dc.get_team(unit->side()).is_enemy(side_)) {
 					continue;
 				}
 			}
@@ -375,11 +364,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 	}
 	return true;
 }
-/*
- *
- * cfg: an ability WML structure
- *
- */
+
 bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg,int dir,const map_location& loc,const unit& from) const
 {
 	bool illuminates = ability == "illuminates";
@@ -403,11 +388,7 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 	}
 	return false;
 }
-/*
- *
- * cfg: an ability WML structure
- *
- */
+
 bool unit::ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	const config &filter = cfg.child("filter_self");
@@ -621,15 +602,14 @@ std::vector<std::pair<t_string, t_string> > attack_type::special_tooltips(
 		if ( !active_list || special_active(sp.cfg, AFFECT_EITHER) ) {
 			const t_string &name = sp.cfg["name"];
 			if (!name.empty()) {
-				res.push_back(std::make_pair(name, sp.cfg["description"].t_str() ));
+				res.emplace_back(name, sp.cfg["description"].t_str() );
 				if ( active_list )
 					active_list->push_back(true);
 			}
 		} else {
 			t_string const &name = default_value(sp.cfg, "name_inactive", "name").t_str();
 			if (!name.empty()) {
-				res.push_back(std::make_pair(
-					name, default_value(sp.cfg, "description_inactive", "description").t_str() ));
+				res.emplace_back(name, default_value(sp.cfg, "description_inactive", "description").t_str() );
 				active_list->push_back(false);
 			}
 		}
@@ -676,7 +656,7 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 void attack_type::set_specials_context(const map_location& unit_loc,
                                        const map_location& other_loc,
                                        bool attacking,
-                                       const attack_type *other_attack) const
+                                       const_attack_ptr other_attack) const
 {
 	self_loc_ = unit_loc;
 	other_loc_ = other_loc;
@@ -805,7 +785,7 @@ namespace { // Helpers for attack_type::special_active()
 	static bool special_unit_matches(const unit_map::const_iterator & un_it,
 									 const unit_map::const_iterator & u2,
 		                             const map_location & loc,
-		                             const attack_type * weapon,
+		                             const_attack_ptr weapon,
 		                             const config & filter,
 									 const bool for_listing,
 		                             const std::string & child_tag)
@@ -891,7 +871,9 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	}
 
 	// Get the units involved.
-	const unit_map & units = *resources::units;
+	assert(resources::units);
+	const unit_map& units = *resources::units;
+
 	unit_map::const_iterator self  = units.find(self_loc_);
 	unit_map::const_iterator other = units.find(other_loc_);
 
@@ -904,11 +886,11 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	unit_map::const_iterator & def = is_attacker_ ? other : self;
 	const map_location & att_loc   = is_attacker_ ? self_loc_ : other_loc_;
 	const map_location & def_loc   = is_attacker_ ? other_loc_ : self_loc_;
-	const attack_type * att_weapon = is_attacker_ ? this : other_attack_;
-	const attack_type * def_weapon = is_attacker_ ? other_attack_ : this;
+	const_attack_ptr att_weapon = is_attacker_ ? shared_from_this() : other_attack_;
+	const_attack_ptr def_weapon = is_attacker_ ? other_attack_ : shared_from_this();
 
 	// Filter the units involved.
-	if (!special_unit_matches(self, other, self_loc_, this, special, is_for_listing_, "filter_self"))
+	if (!special_unit_matches(self, other, self_loc_, shared_from_this(), special, is_for_listing_, "filter_self"))
 		return false;
 	if (!special_unit_matches(other, self, other_loc_, other_attack_, special, is_for_listing_, "filter_opponent"))
 		return false;
@@ -935,7 +917,7 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 				return false;
 			if (i.has_attribute("is_enemy")) {
 				const display_context& dc = resources::filter_con->get_disp_context();
-				if (i["is_enemy"].to_bool() != dc.teams()[unit->side() - 1].is_enemy(self->side())) {
+				if (i["is_enemy"].to_bool() != dc.get_team(unit->side()).is_enemy(self->side())) {
 					continue;
 				}
 			}

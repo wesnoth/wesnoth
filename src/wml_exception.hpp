@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,8 +18,7 @@
  * doesn't contain any problems that might crash the game.
  */
 
-#ifndef WML_EXCEPTION_HPP_INCLUDED
-#define WML_EXCEPTION_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "lua_jailbreak_exception.hpp"
@@ -101,7 +100,7 @@ struct wml_exception
 	{
 	}
 
-	~wml_exception() throw() {}
+	~wml_exception() NOEXCEPT {}
 
 	/**
 	 *  The message for the user explaining what went wrong. This message can
@@ -198,6 +197,3 @@ const config::attribute_value& get_renamed_config_attribute(
 		, const std::string& deprecated_key
 		, const std::string& key
 		, const std::string& removal_version);
-
-#endif
-

@@ -1,6 +1,7 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
+local M = wesnoth.map
 
 local function get_wolves(cfg)
     local wolves = AH.get_units_with_moves {
@@ -38,7 +39,7 @@ function ca_wolves_move:execution(cfg)
     for _,prey_unit in ipairs(prey) do
         local dist = 0
         for _,wolf in ipairs(wolves) do
-            dist = dist + H.distance_between(wolf.x, wolf.y, prey_unit.x, prey_unit.y)
+            dist = dist + M.distance_between(wolf.x, wolf.y, prey_unit.x, prey_unit.y)
         end
         if (dist < min_dist) then
             min_dist, target = dist, prey_unit
@@ -47,13 +48,13 @@ function ca_wolves_move:execution(cfg)
 
     -- Now sort wolf from farthest to closest
     table.sort(wolves, function(a, b)
-        return H.distance_between(a.x, a.y, target.x, target.y) > H.distance_between(b.x, b.y, target.x, target.y)
+        return M.distance_between(a.x, a.y, target.x, target.y) > M.distance_between(b.x, b.y, target.x, target.y)
     end)
 
     -- First wolf moves toward target, but tries to stay away from map edges
     local width, height = wesnoth.get_map_size()
     local wolf1 = AH.find_best_move(wolves[1], function(x, y)
-        local dist_1t = H.distance_between(x, y, target.x, target.y)
+        local dist_1t = M.distance_between(x, y, target.x, target.y)
         local rating = - dist_1t
         if (x <= 5) then rating = rating - (6 - x) / 1.4 end
         if (y <= 5) then rating = rating - (6 - y) / 1.4 end
@@ -80,13 +81,13 @@ function ca_wolves_move:execution(cfg)
             -- We ideally want wolves to be 2-3 hexes from each other
             -- but this requirement gets weaker and weaker with increasing wolf number
             for j = 1,i-1 do
-                local dst = H.distance_between(x, y, wolves[j].x, wolves[j].y)
+                local dst = M.distance_between(x, y, wolves[j].x, wolves[j].y)
                 rating = rating - (dst - 2.7 * j)^2 / j
             end
 
             -- Same distance from Wolf 1 and target for all the wolves
-            local dist_t = H.distance_between(x, y, target.x, target.y)
-            local dist_1t = H.distance_between(wolf1[1], wolf1[2], target.x, target.y)
+            local dist_t = M.distance_between(x, y, target.x, target.y)
+            local dist_1t = M.distance_between(wolf1[1], wolf1[2], target.x, target.y)
             rating = rating - (dist_t - dist_1t)^2
 
             -- Hexes that avoid_type units can reach get a massive penalty

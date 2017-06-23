@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,14 +17,14 @@
  * Declarations for File-IO.
  */
 
-#ifndef FILESYSTEM_HPP_INCLUDED
-#define FILESYSTEM_HPP_INCLUDED
+#pragma once
 
 #include <ctime>
 
 #include <iosfwd>
 #include <string>
 #include <vector>
+#include <memory>
 
 #include "exceptions.hpp"
 
@@ -33,6 +33,9 @@ class config;
 struct SDL_RWops;
 
 namespace filesystem {
+
+using scoped_istream = std::unique_ptr<std::istream>;
+using scoped_ostream = std::unique_ptr<std::ostream>;
 
 SDL_RWops* load_RWops(const std::string &path);
 
@@ -70,6 +73,7 @@ std::string get_dir(const std::string &dir);
 
 // The location of various important files:
 std::string get_prefs_file();
+std::string get_credentials_file();
 std::string get_default_prefs_file();
 std::string get_save_index_file();
 std::string get_saves_dir();
@@ -82,7 +86,7 @@ std::string get_addons_dir();
  * maximum 1000 files then start always giving 999
  */
 std::string get_next_filename(const std::string& name, const std::string& extension);
-void set_user_config_dir(std::string path);
+void set_user_config_dir(const std::string& path);
 void set_user_data_dir(std::string path);
 
 std::string get_user_config_dir();
@@ -102,8 +106,8 @@ bool looks_like_pbl(const std::string& file);
 
 /** Basic disk I/O - read file. */
 std::string read_file(const std::string &fname);
-std::istream *istream_file(const std::string& fname, bool treat_failure_as_error = true);
-std::ostream *ostream_file(const std::string& fname, bool create_directory = true);
+filesystem::scoped_istream istream_file(const std::string& fname, bool treat_failure_as_error = true);
+filesystem::scoped_ostream ostream_file(const std::string& fname, bool create_directory = true);
 /** Throws io_exception if an error occurs. */
 void write_file(const std::string& fname, const std::string& data);
 
@@ -330,26 +334,5 @@ std::string get_independent_image_path(const std::string &filename);
  */
 std::string get_program_invocation(const std::string &program_name);
 
-class scoped_istream {
-	std::istream *stream;
-public:
-	scoped_istream(std::istream *s): stream(s) {}
-	scoped_istream& operator=(std::istream *);
-	std::istream &operator*() { return *stream; }
-	std::istream *operator->() { return stream; }
-	~scoped_istream();
-};
-
-class scoped_ostream {
-	std::ostream *stream;
-public:
-	scoped_ostream(std::ostream *s): stream(s) {}
-	scoped_ostream& operator=(std::ostream *);
-	std::ostream &operator*() { return *stream; }
-	std::ostream *operator->() { return stream; }
-	~scoped_ostream();
-};
 
 }
-
-#endif

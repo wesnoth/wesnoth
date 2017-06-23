@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Bartosz Waresiak <dragonking@o2.pl>
+   Copyright (C) 2009 - 2017 by Bartosz Waresiak <dragonking@o2.pl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORMULA_AI_FUNCTION_TABLE_HPP_INCLUDED
-#define FORMULA_AI_FUNCTION_TABLE_HPP_INCLUDED
+#pragma once
 
 #include "formula/function.hpp"
 
@@ -23,7 +22,7 @@ namespace ai {
 	class formula_ai;
 }
 
-namespace game_logic {
+namespace wfl {
 
 class ai_function_symbol_table : public function_symbol_table {
 
@@ -32,6 +31,3 @@ public:
 };
 
 }
-
-#endif	/* FORMULA_AI_FUNCTION_TABLE_HPP_INCLUDED */
-

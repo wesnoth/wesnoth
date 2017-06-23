@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Felix Bauer
+   Copyright (C) 2013 - 2017 by Felix Bauer
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -33,16 +33,15 @@
 #include "map/label.hpp"
 #include "pathfind/pathfind.hpp"
 #include "pathutils.hpp"
+#include "random.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "tod_manager.hpp"
 #include "units/filter.hpp"
 #include "units/map.hpp"
 #include "units/types.hpp"
-#include "util.hpp"
 #include "variable.hpp"
 #include "wml_exception.hpp"
-#include "config_assign.hpp"
 
 #include <cmath>
 
@@ -165,11 +164,11 @@ double recruitment::evaluate() {
 		return BAD_SCORE;
 	}
 
-	const unit_map& units = *resources::units;
+	const unit_map& units = resources::gameboard->units();
 	const std::vector<unit_map::const_iterator> leaders = units.find_leaders(get_side());
 
 	for (const unit_map::const_iterator& leader : leaders) {
-		if (leader == resources::units->end()) {
+		if (leader == resources::gameboard->units().end()) {
 			return BAD_SCORE;
 		}
 		// Check Gold. But proceed if there is a unit with cost <= 0 (WML can do that)
@@ -197,7 +196,7 @@ void recruitment::execute() {
 	 * Check which leaders can recruit and collect them in leader_data.
 	 */
 
-	const unit_map& units = *resources::units;
+	const unit_map& units = resources::gameboard->units();
 	const gamemap& map = resources::gameboard->map();
 	const std::vector<unit_map::const_iterator> leaders = units.find_leaders(get_side());
 
@@ -528,7 +527,7 @@ data* recruitment::get_best_leader_from_ratio_scores(std::vector<data>& leader_d
 	assert(ratio_score_sum > 0.0);
 
 	// Shuffle leader_data to break ties randomly.
-	std::random_shuffle(leader_data.begin(), leader_data.end());
+	std::shuffle(leader_data.begin(), leader_data.end(), randomness::rng::default_instance());
 
 	// Find which leader should recruit according to ratio_scores.
 	data* best_leader_data = nullptr;
@@ -676,8 +675,8 @@ double recruitment::get_average_defense(const std::string& u_type) const {
  * for all units of side.
  */
 const  pathfind::full_cost_map recruitment::get_cost_map_of_side(int side) const {
-	const unit_map& units = *resources::units;
-	const team& team = resources::gameboard->teams()[side - 1];
+	const unit_map& units = resources::gameboard->units();
+	const team& team = resources::gameboard->get_team(side);
 
 	pathfind::full_cost_map cost_map(true, true, team, true, true);
 
@@ -748,7 +747,7 @@ void recruitment::update_average_lawful_bonus() {
 void recruitment::update_average_local_cost() {
 	average_local_cost_.clear();
 	const gamemap& map = resources::gameboard->map();
-	const team& team = resources::gameboard->teams()[get_side() - 1];
+	const team& team = resources::gameboard->get_team(get_side());
 
 	for(int x = 0; x < map.w(); ++x) {
 		for (int y = 0; y < map.h(); ++y) {
@@ -782,7 +781,7 @@ void recruitment::update_important_hexes() {
 
 	update_average_local_cost();
 	const gamemap& map = resources::gameboard->map();
-	const unit_map& units = *resources::units;
+	const unit_map& units = resources::gameboard->units();
 
 	// Mark battle areas as important
 	// This are locations where one of my units is adjacent
@@ -919,7 +918,7 @@ double recruitment::compare_unit_types(const std::string& a, const std::string& 
  * the scores.
  */
 void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
-	const unit_map& units = *resources::units;
+	const unit_map& units = resources::gameboard->units();
 
 	// Collect all enemy units (and their hp) we want to take into account in enemy_units.
 	typedef std::vector<std::pair<std::string, int> > unit_hp_vector;
@@ -928,7 +927,7 @@ void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
 		if (!current_team().is_enemy(unit.side()) || unit.incapacitated()) {
 			continue;
 		}
-		enemy_units.push_back(std::make_pair(unit.type_id(), unit.hitpoints()));
+		enemy_units.emplace_back(unit.type_id(), unit.hitpoints());
 	}
 	if (enemy_units.size() < UNIT_THRESHOLD) {
 		// Use also enemies recruitment lists and insert units into enemy_units.
@@ -949,7 +948,7 @@ void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
 				const unit_type* recruit_type = unit_types.find(possible_recruit);
 				if (recruit_type) {
 					int hp = recruit_type->hitpoints();
-					enemy_units.push_back(std::make_pair(possible_recruit, hp));
+					enemy_units.emplace_back(possible_recruit, hp);
 				}
 			}
 		}
@@ -1057,7 +1056,7 @@ struct attack_simulation {
 
 	attack_simulation(const unit_type* attacker, const unit_type* defender,
 			double attacker_defense, double defender_defense,
-			const attack_type* att_weapon, const attack_type* def_weapon,
+			const_attack_ptr att_weapon, const_attack_ptr def_weapon,
 			int average_lawful_bonus) :
 			attacker_type(attacker),
 			defender_type(defender),
@@ -1134,7 +1133,7 @@ void recruitment::simulate_attack(
 			std::shared_ptr<attack_simulation> simulation(new attack_simulation(
 					attacker, defender,
 					attacker_defense, defender_defense,
-					&att_weapon, &def_weapon, average_lawful_bonus_));
+					att_weapon.shared_from_this(), def_weapon.shared_from_this(), average_lawful_bonus_));
 			if (!best_def_response || simulation->better_result(best_def_response.get(), true)) {
 				best_def_response = simulation;
 			}
@@ -1145,7 +1144,7 @@ void recruitment::simulate_attack(
 			best_def_response.reset(new attack_simulation(
 					attacker, defender,
 					attacker_defense, defender_defense,
-					&att_weapon, nullptr, average_lawful_bonus_));
+					att_weapon.shared_from_this(), nullptr, average_lawful_bonus_));
 		}
 		if (!best_att_attack || best_def_response->better_result(best_att_attack.get(), false)) {
 			best_att_attack = best_def_response;
@@ -1411,7 +1410,7 @@ bool recruitment::remove_job_if_no_blocker(config* job) {
  * positive or negative.
  */
 double recruitment::get_estimated_income(int turns) const {
-	const team& team = resources::gameboard->teams()[get_side() - 1];
+	const team& team = resources::gameboard->get_team(get_side());
 	const size_t own_villages = team.villages().size();
 	const double village_gain = get_estimated_village_gain();
 	const double unit_gain = get_estimated_unit_gain();
@@ -1455,7 +1454,7 @@ double recruitment::get_estimated_village_gain() const {
  * Returns our_total_unit_costs / enemy_total_unit_costs.
  */
 double recruitment::get_unit_ratio() const {
-	const unit_map& units = *resources::units;
+	const unit_map& units = resources::gameboard->units();
 	double own_total_value = 0.;
 	double team_total_value = 0.;
 	double enemy_total_value = 0.;
@@ -1657,7 +1656,7 @@ void recruitment::handle_recruitment_more(std::vector<data>* leader_data) const 
  * Returns true if there is a enemy within the radius.
  */
 bool recruitment::is_enemy_in_radius(const map_location& loc, int radius) const {
-	const unit_map& units = *resources::units;
+	const unit_map& units = resources::gameboard->units();
 	std::vector<map_location> surrounding;
 	get_tiles_in_radius(loc, radius, surrounding);
 	if (surrounding.empty()) {
@@ -1684,7 +1683,7 @@ bool recruitment::is_enemy_in_radius(const map_location& loc, int radius) const 
 void recruitment::update_own_units_count() {
 	own_units_count_.clear();
 	total_own_units_ = 0;
-	const unit_map& units = *resources::units;
+	const unit_map& units = resources::gameboard->units();
 	for (const unit& unit : units) {
 		if (unit.side() != get_side() || unit.can_recruit() ||
 				unit.incapacitated() || unit.total_movement() <= 0) {
@@ -1792,7 +1791,7 @@ recruitment_aspect::recruitment_aspect(readonly_context &context, const config &
 	parsed_cfg.clear_children("pattern", "total");
 	// Then, if there's no [recruit], add one.
 	if (!parsed_cfg.has_child("recruit")) {
-		parsed_cfg.add_child("recruit", config_of("importance", 0));
+		parsed_cfg.add_child("recruit", config {"importance", 0});
 	}
 	// Finally, populate our lists
 	for (config job : parsed_cfg.child_range("recruit")) {

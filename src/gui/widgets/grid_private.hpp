@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_GRID_PRIVATE_HPP_INCLUDED
-#define GUI_WIDGETS_GRID_PRIVATE_HPP_INCLUDED
+#pragma once
 
 /**
  * @file
@@ -52,11 +51,11 @@ struct grid_implementation
 	 * @tparam W                  widget or const widget.
 	 */
 	template <class W>
-	static W* find_at(typename utils::const_clone<grid, W>::reference grid,
+	static W* find_at(utils::const_clone_ref<grid, W> grid,
 					  const point& coordinate,
 					  const bool must_be_active)
 	{
-		typedef typename utils::const_clone<grid::child, W>::type hack;
+		typedef utils::const_clone_t<grid::child, W> hack;
 		for(hack & child : grid.children_)
 		{
 
@@ -82,7 +81,7 @@ struct grid_implementation
 	 * @tparam W                  widget or const widget.
 	 */
 	template <class W>
-	static W* find(typename utils::const_clone<grid, W>::reference grid,
+	static W* find(utils::const_clone_ref<grid, W> grid,
 				   const std::string& id,
 				   const bool must_be_active)
 	{
@@ -92,7 +91,7 @@ struct grid_implementation
 			return widget;
 		}
 
-		typedef typename utils::const_clone<grid::child, W>::type hack;
+		typedef utils::const_clone_t<grid::child, W> hack;
 		for(hack & child : grid.children_)
 		{
 
@@ -157,5 +156,3 @@ private:
 };
 
 } // namespace gui2
-
-#endif

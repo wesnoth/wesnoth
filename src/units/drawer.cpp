@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,25 +17,27 @@
 #include "display.hpp"
 #include "display_context.hpp"
 #include "formatter.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "halo.hpp"
 #include "map/map.hpp"
 #include "map/location.hpp"
-#include "sdl/color.hpp"
-#include "sdl/utils.hpp"
+#include "color.hpp"
+#include "sdl/surface.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
 #include "units/animation.hpp"
 #include "units/animation_component.hpp"
 #include "units/frame.hpp"
 
-unit_drawer::unit_drawer(display & thedisp, std::map<surface,SDL_Rect> & bar_rects) :
+// Map of different energy bar surfaces and their dimensions.
+static std::map<surface, SDL_Rect> energy_bar_rects;
+
+unit_drawer::unit_drawer(display & thedisp) :
 	disp(thedisp),
 	dc(disp.get_disp_context()),
 	map(dc.map()),
 	teams(dc.teams()),
 	halo_man(thedisp.get_halo_manager()),
-	energy_bar_rects_(bar_rects),
 	viewing_team(disp.viewing_team()),
 	playing_team(disp.playing_team()),
 	viewing_team_ref(teams[viewing_team]),
@@ -104,8 +106,8 @@ void unit_drawer::redraw_unit (const unit & u) const
 	params.submerge= is_flying ? -1.0 : terrain_info.unit_submerge();
 
 	if (u.invisible(loc, dc) &&
-			params.highlight_ratio > 0.5) {
-		params.highlight_ratio = 0.5;
+			params.highlight_ratio > 0.6) {
+		params.highlight_ratio = 0.6;
 	}
 	if (loc == sel_hex && params.highlight_ratio == 1.0) {
 		params.highlight_ratio = 1.5;
@@ -134,7 +136,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 		tints += 1;
 	}
 	if(tints > 0) {
-		params.blend_with = color_t((red/tints),(green/tints),(blue/tints)).to_argb_bytes();
+		params.blend_with = color_t((red/tints),(green/tints),(blue/tints));
 		params.blend_ratio = ((blend_ratio/tints));
 	}
 
@@ -147,7 +149,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 
 	if(u.incapacitated()) params.image_mod +="~GS()";
-	params.primary_frame = t_true;
+	params.primary_frame = true;
 
 
 	const frame_parameters adjusted_params = ac.anim_->get_current_params(params);
@@ -175,7 +177,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 	// We draw bars only if wanted, visible on the map view
 	bool draw_bars = ac.draw_bars_ ;
 	if (draw_bars) {
-		SDL_Rect unit_rect = sdl::create_rect(xsrc, ysrc +adjusted_params.y, hex_size, hex_size);
+		SDL_Rect unit_rect {xsrc, ysrc +adjusted_params.y, hex_size, hex_size};
 		draw_bars = sdl::rects_overlap(unit_rect, disp.map_outside_area());
 	}
 	surface ellipse_front(nullptr);
@@ -362,11 +364,12 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 	else {
 		const fixed_t xratio = fxpdiv(surf->w,bar_surf->w);
 		const fixed_t yratio = fxpdiv(surf->h,bar_surf->h);
-		const SDL_Rect scaled_bar_loc = sdl::create_rect(
+		const SDL_Rect scaled_bar_loc {
 			    fxptoi(unscaled_bar_loc. x * xratio)
 			  , fxptoi(unscaled_bar_loc. y * yratio + 127)
 			  , fxptoi(unscaled_bar_loc. w * xratio + 255)
-			  , fxptoi(unscaled_bar_loc. h * yratio + 255));
+			  , fxptoi(unscaled_bar_loc. h * yratio + 255)
+		};
 		bar_loc = scaled_bar_loc;
 	}
 
@@ -383,7 +386,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 
 	const size_t skip_rows = bar_loc.h - height;
 
-	SDL_Rect top = sdl::create_rect(0, 0, surf->w, bar_loc.y);
+	SDL_Rect top {0, 0, surf->w, bar_loc.y};
 	SDL_Rect bot = sdl::create_rect(0, bar_loc.y + skip_rows, surf->w, 0);
 	bot.h = surf->w - bot.y;
 
@@ -396,7 +399,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 		const Uint8 r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
 		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = sdl::create_rect(0, 0, bar_loc.w, height-unfilled);
-		sdl::fill_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
+		sdl::fill_surface_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
 		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf);
 	}
 }
@@ -410,8 +413,8 @@ struct is_energy_color {
 
 const SDL_Rect& unit_drawer::calculate_energy_bar(surface surf) const
 {
-	const std::map<surface,SDL_Rect>::const_iterator i = energy_bar_rects_.find(surf);
-	if(i != energy_bar_rects_.end()) {
+	const std::map<surface,SDL_Rect>::const_iterator i = energy_bar_rects.find(surf);
+	if(i != energy_bar_rects.end()) {
 		return i->second;
 	}
 
@@ -439,11 +442,13 @@ const SDL_Rect& unit_drawer::calculate_energy_bar(surface surf) const
 		}
 	}
 
-	const SDL_Rect res = sdl::create_rect(first_col
+	const SDL_Rect res {
+			  first_col
 			, first_row
 			, last_col-first_col
-			, last_row+1-first_row);
-	energy_bar_rects_.insert(std::pair<surface,SDL_Rect>(surf,res));
+			, last_row+1-first_row
+	};
+	energy_bar_rects.emplace(surf, res);
 	return calculate_energy_bar(surf);
 }
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_MESSAGE_HPP_INCLUDED
-#define GUI_DIALOGS_MESSAGE_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/styled_widget.hpp"
@@ -40,12 +39,14 @@ public:
 	message(const std::string& title,
 			 const std::string& message,
 			 const bool auto_close,
-			 const bool message_use_markup)
+			 const bool message_use_markup,
+			 const bool title_use_markup)
 		: title_(title)
 		, image_()
 		, message_(message)
 		, auto_close_(auto_close)
 		, message_use_markup_(message_use_markup)
+		, title_use_markup_(title_use_markup)
 		, buttons_(count)
 	{
 	}
@@ -110,10 +111,10 @@ public:
 
 protected:
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog. */
-	void post_show(window& window);
+	virtual void post_show(window& window) override;
 
 private:
 	/** The title for the dialog. */
@@ -138,9 +139,12 @@ private:
 	/** Whether to enable formatting markup for the dialog message. */
 	bool message_use_markup_;
 
-	struct tbutton_status
+	/** Whether to enable formatting markup for the dialog title. */
+	bool title_use_markup_;
+
+	struct button_status
 	{
-		tbutton_status();
+		button_status();
 
 		button* ptr;
 		std::string caption;
@@ -149,10 +153,10 @@ private:
 	};
 
 	/** Holds a pointer to the buttons. */
-	std::vector<tbutton_status> buttons_;
+	std::vector<button_status> buttons_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 };
 } // namespace dialogs
 
@@ -169,13 +173,16 @@ private:
  * @param auto_close          When true the window will hide the ok button
  *                            when the message doesn't need a scrollbar to
  *                            show itself.
+ * @param message_use_markup  Use markup for the message?
+ * @param title_use_markup    Use markup for the title?
  */
 void show_message(CVideo& video,
 				  const std::string& title,
 				  const std::string& message,
 				  const std::string& button_caption = "",
 				  const bool auto_close = true,
-				  const bool message_use_markup = false);
+				  const bool message_use_markup = false,
+				  const bool title_use_markup = false);
 
 /**
  * Shows a message to the user.
@@ -213,5 +220,3 @@ void show_error_message(CVideo& video,
 						bool message_use_markup = false);
 
 } // namespace gui2
-
-#endif

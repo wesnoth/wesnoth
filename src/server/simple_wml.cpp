@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2008 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -15,13 +15,19 @@
 #include <iostream>
 #include <sstream>
 
-#include "global.hpp"
-
 #include <boost/iostreams/copy.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/bzip2.hpp>
 #include <boost/iostreams/filter/counter.hpp>
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4456)
+#pragma warning(disable: 4458)
+#endif
 #include <boost/iostreams/filter/gzip.hpp>
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 
 #include "server/simple_wml.hpp"
 
@@ -31,6 +37,8 @@ static lg::log_domain log_config("config");
 #define ERR_SWML LOG_STREAM(err, log_config)
 
 namespace simple_wml {
+
+size_t document::document_size_limit = 40000000;
 
 namespace {
 
@@ -62,8 +70,8 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 		size_t len = 0;
 		size_t pos = 0;
 		while(filter.good() && (len = filter.read(&buf[pos], chunk_size).gcount()) == chunk_size) {
-			if(pos + chunk_size > 40000000) {
-				throw error("WML document exceeds 40MB limit");
+			if(pos + chunk_size > document::document_size_limit) {
+				throw error("WML document exceeded size limit during decompression");
 			}
 
 			pos += len;
@@ -258,7 +266,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			s = end + 1;
 
 			children_[list_index].second.push_back(new node(doc, this, str, depth+1));
-			ordered_children_.push_back(node_pos(list_index, children_[list_index].second.size() - 1));
+			ordered_children_.emplace_back(list_index, children_[list_index].second.size() - 1);
 			check_ordered_children();
 
 			break;
@@ -351,7 +359,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 
 			s = end + 1;
 
-			attr_.push_back(attribute(name, value));
+			attr_.emplace_back(name, value);
 		}
 		}
 	}
@@ -469,7 +477,7 @@ node& node::add_child(const char* name)
 	check_ordered_children();
 	child_list& list = children_[list_index].second;
 	list.push_back(new node(*doc_, this));
-	ordered_children_.push_back(node_pos(list_index, list.size() - 1));
+	ordered_children_.emplace_back(list_index, list.size() - 1);
 	check_ordered_children();
 	return *list.back();
 }
@@ -518,7 +526,7 @@ void node::insert_ordered_child(int child_map_index, int child_list_index)
 	}
 
 	if(!inserted) {
-		ordered_children_.push_back(node_pos(child_map_index, child_list_index));
+		ordered_children_.emplace_back(child_map_index, child_list_index);
 	}
 }
 
@@ -655,7 +663,7 @@ int node::get_children(const string_span& name)
 		}
 	}
 
-	children_.push_back(child_pair(string_span(name), child_list()));
+	children_.emplace_back(string_span(name), child_list());
 	return children_.size() - 1;
 }
 

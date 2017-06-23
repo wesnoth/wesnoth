@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "config.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_config("config");
@@ -35,7 +35,7 @@ namespace {
 	hk_scopes scope_editor(1 << SCOPE_EDITOR);
 	hk_scopes scope_main(1 << SCOPE_MAIN_MENU);
 // this contains all static hotkeys
-hotkey_command_temp hotkey_list_[] = {
+hotkey_command_temp hotkey_list_[] {
 	{ HOTKEY_SCROLL_UP, "scroll-up", N_("Scroll Up"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_SCROLL_DOWN, "scroll-down", N_("Scroll Down"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_SCROLL_LEFT, "scroll-left", N_("Scroll Left"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
@@ -261,6 +261,7 @@ hotkey_command_temp hotkey_list_[] = {
 	{ TITLE_SCREEN__CORES, "title_screen__cores", N_("Manage Cores"), false	, scope_main, HKCAT_GENERAL, "" },
 	{ TITLE_SCREEN__EDITOR, "title_screen__editor", N_("Start Editor"), false, scope_main, HKCAT_GENERAL, "" },
 	{ TITLE_SCREEN__CREDITS, "title_screen__credits", N_("Show Credits"), false	, scope_main, HKCAT_GENERAL, "" },
+	{ TITLE_SCREEN__TEST, "title_screen__test", N_("Start Test Scenario"), false	, scope_main, HKCAT_GENERAL, "" },
 
 	{ GLOBAL__HELPTIP, "global__helptip", N_("Show Helptip"), false, scope_game | scope_editor | scope_main, HKCAT_GENERAL, "" },
 

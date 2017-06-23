@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,70 +12,90 @@
    See the COPYING file for more details.
 */
 
-#ifndef GAME_EVENTS_MANAGER_IMPL_HPP
-#define GAME_EVENTS_MANAGER_IMPL_HPP
+#pragma once
 
 #include "game_events/handlers.hpp"
 
 #include <memory>
 #include <unordered_map>
 
-namespace game_events {
+namespace game_events
+{
+// event_handlers is essentially the implementation details of the manager
+class event_handlers
+{
+private:
+	typedef std::unordered_map<std::string, handler_list> map_t;
+	typedef std::unordered_map<std::string, std::weak_ptr<event_handler>> id_map_t;
 
-	//event_handlers is essentially the implementation details of the manager
-	class event_handlers {
-		typedef std::unordered_map<std::string, handler_list> map_t;
-		typedef std::unordered_map<std::string, std::weak_ptr<event_handler> > id_map_t;
+	/**
+	 * Active event handlers. Will not have elements removed unless the event_handlers is clear()ed.
+	 * This is the only container that actually 'owns' any events in the form of shared_ptrs. The other
+	 * three storage methods own weak_ptrs.
+	 */
+	handler_vec active_;
 
-	public:
-		typedef handler_vec::iterator iterator;
-		typedef handler_vec::const_iterator const_iterator;
+	/** Active event handlers with fixed event names, organized by event name. */
+	map_t by_name_;
 
-	private:
-		handler_vec  active_;  /// Active event handlers. Will not have elements removed unless the event_handlers is clear()ed.
-		map_t        by_name_; /// Active event handlers with fixed event names, organized by event name.
-		handler_list dynamic_; /// Active event handlers with variables in their event names.
-		id_map_t     id_map_;  /// Allows quick locating of handlers by id.
+	/** Active event handlers with variables in their event names. */
+	handler_list dynamic_;
 
+	/** Allows quick locating of handlers by id. */
+	id_map_t id_map_;
 
-		void log_handlers();
-		/// Utility to standardize the event names used in by_name_.
-		static std::string standardize_name(const std::string & name);
+	void log_handlers();
 
-	public:
-		typedef handler_vec::size_type size_type;
+	/** Utility to standardize the event names used in by_name_. */
+	static std::string standardize_name(const std::string& name);
 
-		event_handlers()
-			: active_()
-			, by_name_()
-			, dynamic_()
-			, id_map_()
-		{}
+public:
+	// TODO: remove
+	typedef handler_vec::size_type size_type;
 
-		/// Read-only access to the handlers with varying event names.
-		const handler_list & get() const { return dynamic_; }
-		/// Read-only access to the handlers with fixed event names, by event name.
-		const handler_list & get(const std::string & name) const;
+	event_handlers()
+		: active_()
+		, by_name_()
+		, dynamic_()
+		, id_map_()
+	{
+	}
 
-		/// Adds an event handler.
-		void add_event_handler(const config & cfg, manager & man, bool is_menu_item=false);
-		/// Removes an event handler, identified by its ID.
-		void remove_event_handler(const std::string& id);
-		/// Gets an event handler, identified by its ID.
-		const handler_ptr get_event_handler_by_id(const std::string & id);
+	/** Read-only access to the handlers with varying event names. */
+	const handler_list& get_dynamic() const
+	{
+		return dynamic_;
+	}
 
-		iterator begin() { return active_.begin(); }
-		const_iterator begin() const { return active_.begin(); }
+	/** Read-only access to the active event handlers. Essentially gives all events. */
+	const handler_vec& get_active() const
+	{
+		return active_;
+	}
 
-		iterator end() { return active_.end(); }
-		const_iterator end() const { return active_.end(); }
+	/** Read-only access to the handlers with fixed event names, by event name. */
+	const handler_list& get(const std::string& name) const;
 
-		/// The number of active event handlers.
-		size_type size() const { return active_.size(); }
-		/// Access to active event handlers by index.
-		handler_ptr & operator[](size_type index) { return active_[index]; }
-	};//event_handlers
+	/** Adds an event handler. */
+	void add_event_handler(const config& cfg, manager& man, bool is_menu_item = false);
 
-} //end namespace game_events
+	/** Removes an event handler, identified by its ID. */
+	void remove_event_handler(const std::string& id);
 
-#endif
+	/** Gets an event handler, identified by its ID. */
+	const handler_ptr get_event_handler_by_id(const std::string& id);
+
+	/** The number of active event handlers. */
+	size_type size() const
+	{
+		return active_.size();
+	}
+
+	/** Access to active event handlers by index. */
+	handler_ptr& operator[](size_type index)
+	{
+		return active_[index];
+	}
+};
+
+} // end namespace game_events

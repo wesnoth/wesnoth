@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,6 +22,7 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view.hpp"
+#include "sdl/rect.hpp"
 
 #include "utils/functional.hpp"
 
@@ -33,7 +34,6 @@ namespace gui2
 
 tree_view_node::tree_view_node(
 		const std::string& id,
-		const std::vector<node_definition>& node_definitions,
 		tree_view_node* parent_node,
 		tree_view& parent_tree_view,
 		const std::map<std::string /* widget id */, string_map>& data)
@@ -42,7 +42,6 @@ tree_view_node::tree_view_node(
 	, tree_view_(&parent_tree_view)
 	, grid_()
 	, children_()
-	, node_definitions_(node_definitions)
 	, toggle_(nullptr)
 	, label_(nullptr)
 	, unfolded_(false)
@@ -58,7 +57,7 @@ tree_view_node::tree_view_node(
 		return;
 	}
 
-	for(const auto& node_definition : node_definitions_) {
+	for(const auto& node_definition : get_tree_view().get_node_definitions()) {
 		if(node_definition.id != id) {
 			continue;
 		}
@@ -74,7 +73,7 @@ tree_view_node::tree_view_node(
 			unfolded_ = true;
 		}
 
-		widget* toggle_widget = grid_.find("tree_view_node_icon", false);
+		widget* toggle_widget = grid_.find("tree_view_node_toggle", false);
 		toggle_ = dynamic_cast<selectable_item*>(toggle_widget);
 
 		if(toggle_) {
@@ -141,7 +140,7 @@ tree_view_node& tree_view_node::add_child(
 		itor = children_.begin() + index;
 	}
 
-	itor = children_.insert(itor, new tree_view_node(id, node_definitions_, this, get_tree_view(), data));
+	itor = children_.insert(itor, new tree_view_node(id, this, get_tree_view(), data));
 
 	if(is_folded() /*|| is_root_node()*/) {
 		return *itor;
@@ -167,6 +166,10 @@ tree_view_node& tree_view_node::add_child(
 	// For this, we only increase height if the best size of the tree (that is, the size with the new node)
 	// is larger than its current size. This prevents the scrollbar being reserved even when there's obviously
 	// enough visual space.
+
+	// Throw away cached best size to force a recomputation.
+	get_tree_view().layout_initialize(false);
+
 	const point tree_best_size = get_tree_view().get_best_size();
 
 	const int height_modification = tree_best_size.y > current_size.y && get_tree_view().layout_size() == point()
@@ -317,7 +320,7 @@ private:
 
 public:
 	template <class W>
-	static W* find_at(typename utils::const_clone<tree_view_node, W>::reference tree_view_node,
+	static W* find_at(utils::const_clone_ref<tree_view_node, W> tree_view_node,
 					  const point& coordinate,
 					  const bool must_be_active)
 	{
@@ -349,13 +352,45 @@ const widget* tree_view_node::find_at(const point& coordinate, const bool must_b
 widget* tree_view_node::find(const std::string& id, const bool must_be_active)
 {
 	widget* result = widget::find(id, must_be_active);
-	return result ? result : grid_.find(id, must_be_active);
+	if(result) {
+		return result;
+	}
+
+	result = grid_.find(id, must_be_active);
+	if(result) {
+		return result;
+	}
+
+	for(tree_view_node& child : children_) {
+		result = child.find(id, must_be_active);
+		if(result) {
+			return result;
+		}
+	}
+
+	return nullptr;
 }
 
 const widget* tree_view_node::find(const std::string& id, const bool must_be_active) const
 {
 	const widget* result = widget::find(id, must_be_active);
-	return result ? result : grid_.find(id, must_be_active);
+	if(result) {
+		return result;
+	}
+
+	result = grid_.find(id, must_be_active);
+	if(result) {
+		return result;
+	}
+
+	for(const tree_view_node& child : children_) {
+		result = child.find(id, must_be_active);
+		if(result) {
+			return result;
+		}
+	}
+
+	return nullptr;
 }
 
 void tree_view_node::impl_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack)
@@ -766,10 +801,17 @@ tree_view_node* tree_view_node::get_selectable_node_below()
 	return below;
 }
 
-void tree_view_node::select_node()
+void tree_view_node::select_node(bool expand_parents)
 {
 	if(!label_ || label_->get_value_bool()) {
 		return;
+	}
+
+	if(expand_parents) {
+		tree_view_node* root = &get_tree_view().get_root_node();
+		for(tree_view_node* cur = parent_node_; cur != root; cur = cur->parent_node_) {
+			cur->unfold();
+		}
 	}
 
 	if(get_tree_view().selected_item_ && get_tree_view().selected_item_->label_) {
@@ -783,15 +825,15 @@ void tree_view_node::select_node()
 	label_->set_value_bool(true);
 }
 
-void tree_view_node::layout_initialise(const bool full_initialisation)
+void tree_view_node::layout_initialize(const bool full_initialization)
 {
 	// Inherited.
-	widget::layout_initialise(full_initialisation);
-	grid_.layout_initialise(full_initialisation);
+	widget::layout_initialize(full_initialization);
+	grid_.layout_initialize(full_initialization);
 
 	// Clear child caches.
 	for(auto & child : children_) {
-		child.layout_initialise(full_initialisation);
+		child.layout_initialize(full_initialization);
 	}
 }
 

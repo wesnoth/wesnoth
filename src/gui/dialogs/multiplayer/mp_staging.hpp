@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2008 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_MP_STAGING_HPP_INCLUDED
-#define GUI_DIALOGS_MP_STAGING_HPP_INCLUDED
+#pragma once
 
 #include "ai/configuration.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
@@ -44,13 +43,13 @@ public:
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog. */
-	void post_show(window& window);
+	virtual void post_show(window& window) override;
 
 	void add_side_node(window& window, ng::side_engine_ptr side);
 
@@ -93,5 +92,3 @@ private:
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif

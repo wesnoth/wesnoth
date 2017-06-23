@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,8 +13,6 @@
 */
 
 #include "carryover.hpp"
-
-#include "global.hpp"
 
 #include "config.hpp"
 #include "team.hpp"
@@ -48,7 +46,7 @@ carryover::carryover(const team& t, const int gold, const bool add)
 		, variables_(t.variables())
 {
 	for(const unit_const_ptr & u : t.recall_list()) {
-		recall_list_.push_back(config());
+		recall_list_.emplace_back();
 		u->write(recall_list_.back());
 	}
 }
@@ -136,7 +134,7 @@ carryover_info::carryover_info(const config& cfg, bool from_snpashot)
 			assert(from_snpashot);
 			continue;
 		}
-		this->carryover_sides_.push_back(carryover(side));
+		this->carryover_sides_.emplace_back(side);
 	}
 	for(const config& item : cfg.child_range("menu_item"))
 	{
@@ -149,7 +147,7 @@ std::vector<carryover>& carryover_info::get_all_sides() {
 }
 
 void carryover_info::add_side(const config& cfg) {
-	carryover_sides_.push_back(carryover(cfg));
+	carryover_sides_.emplace_back(cfg);
 }
 
 void carryover_info::remove_side(const std::string& id) {
@@ -165,8 +163,8 @@ void carryover_info::remove_side(const std::string& id) {
 
 struct save_id_equals
 {
-	save_id_equals(std::string val) : value (val) {}
-	bool operator () (carryover& v2)
+	save_id_equals(const std::string& val) : value (val) {}
+	bool operator () (carryover& v2) const
 	{
 		return value == v2.get_save_id();
 	}
@@ -252,7 +250,7 @@ const config carryover_info::to_config()
 	return cfg;
 }
 
-carryover* carryover_info::get_side(std::string save_id){
+carryover* carryover_info::get_side(const std::string& save_id){
 	for(carryover& side : carryover_sides_) {
 		if(side.get_save_id() == save_id){
 			return &side;

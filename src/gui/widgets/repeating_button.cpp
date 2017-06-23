@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -36,7 +36,7 @@ namespace gui2
 REGISTER_WIDGET(repeating_button)
 
 repeating_button::repeating_button()
-	: styled_widget(COUNT), clickable_item(), state_(ENABLED), repeat_timer_(0)
+	: styled_widget(), clickable_item(), state_(ENABLED), repeat_timer_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(std::bind(
 			&repeating_button::signal_handler_mouse_enter, this, _2, _3));
@@ -137,8 +137,8 @@ repeating_button::signal_handler_left_button_down(const event::ui_event event,
 		window* window = get_window();
 		if(window) {
 			repeat_timer_ = add_timer(settings::repeat_button_repeat_time,
-									  [this, window](unsigned int) { 
-											window->fire(event::LEFT_BUTTON_DOWN, *this); 
+									  [this, window](unsigned int) {
+											window->fire(event::LEFT_BUTTON_DOWN, *this);
 									  },true);
 
 			window->mouse_capture();
@@ -209,10 +209,10 @@ repeating_button_definition::resolution::resolution(const config& cfg)
 {
 	// Note the order should be the same as the enum state_t in
 	// repeating_button.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
-	state.push_back(state_definition(cfg.child("state_disabled")));
-	state.push_back(state_definition(cfg.child("state_pressed")));
-	state.push_back(state_definition(cfg.child("state_focused")));
+	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(cfg.child("state_disabled"));
+	state.emplace_back(cfg.child("state_pressed"));
+	state.emplace_back(cfg.child("state_focused"));
 }
 
 // }---------- BUILDER -----------{

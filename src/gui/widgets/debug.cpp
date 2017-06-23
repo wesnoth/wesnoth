@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -29,6 +29,7 @@
 #include "gui/widgets/scrollbar_container.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/io.hpp"
 
 #include <fstream>
 #include <iostream>
@@ -82,16 +83,17 @@ std::string get_child_widget_id(const std::string& parent_id,
 /** Gets the prefix of the filename. */
 std::string get_base_filename()
 {
-	char buf[17] = { 0 };
+	std::ostringstream ss;
+
 	time_t t = time(nullptr);
-	tm* lt = localtime(&t);
-	if(lt) {
-		strftime(buf, sizeof(buf), "%Y%m%d_%H%M%S", lt);
-	}
+	ss << utils::put_time(std::localtime(&t), "%Y%m%d_%H%M%S");
+
 	static unsigned counter = 0;
 	++counter;
 
-	return formatter() << buf << '_' << counter << '_';
+	ss << '_' << counter << '_';
+
+	return ss.str();
 }
 /***** ***** ***** ***** FLAGS ***** ***** ***** *****/
 

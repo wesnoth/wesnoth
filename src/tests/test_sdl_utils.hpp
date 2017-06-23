@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,10 +12,9 @@
    See the COPYING file for more details.
 */
 
-#ifndef TESTS_TEST_SDL_UTILS_HPP_INCLUDED
-#define TESTS_TEST_SDL_UTILS_HPP_INCLUDED
+#pragma once
 
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
 
 #include "utils/functional.hpp"
 
@@ -48,5 +47,3 @@ blend_get_filename(std::string root, const Uint8 amount, const Uint32 color)
 
 	return root + filename;
 }
-
-#endif

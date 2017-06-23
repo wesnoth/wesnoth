@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -40,12 +40,12 @@ bool display_context::would_be_discovered(const map_location & loc, int side_num
 			continue;
 		}
 		const unit & u = *u_it;
-		if (teams()[side_num-1].is_enemy(u.side()) && !u.incapacitated()) {
+		if (get_team(side_num).is_enemy(u.side()) && !u.incapacitated()) {
 			// Enemy spotted in adjacent tiles, check if we can see him.
 			// Watch out to call invisible with see_all=true to avoid infinite recursive calls!
 			if(see_all) {
 				return true;
-			} else if (!teams()[side_num-1].fogged(u_loc)
+			} else if (!get_team(side_num).fogged(u_loc)
 			&& !u.invisible(u_loc, *this, true)) {
 				return true;
 			}
@@ -80,7 +80,7 @@ bool display_context::unit_can_move(const unit &u) const
 		return false;
 	}
 
-	const team &current_team = teams()[u.side() - 1];
+	const team &current_team = get_team(u.side());
 
 	map_location locs[6];
 	get_adjacent_tiles(u.get_location(), locs);
@@ -158,11 +158,11 @@ int display_context::side_upkeep(int side) const
 	return res;
 }
 
-team_data display_context::calculate_team_data(const team& tm, int side) const
+team_data display_context::calculate_team_data(const team& tm) const
 {
 	team_data res;
-	res.units = side_units(side);
-	res.upkeep = side_upkeep(side);
+	res.units = side_units(tm.side());
+	res.upkeep = side_upkeep(tm.side());
 	res.villages = tm.villages().size();
 	res.expenses = std::max<int>(0,res.upkeep - tm.support());
 	res.net_income = tm.total_income() - res.expenses;

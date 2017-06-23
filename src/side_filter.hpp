@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2010 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SIDE_FILTER_H_INCLUDED
-#define SIDE_FILTER_H_INCLUDED
+#pragma once
 
 #include "variable.hpp"
 
@@ -61,6 +60,3 @@ private:
 	mutable std::unique_ptr<side_filter> has_ally_filter_;
 	mutable std::unique_ptr<side_filter> has_enemy_filter_;
 };
-
-#endif
-

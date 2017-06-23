@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Sergey Popov <loonycyborg@gmail.com>
+   Copyright (C) 2011 - 2017 by Sergey Popov <loonycyborg@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,16 +12,14 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_NETWORK_RECEIVE_HPP_INCLUDED
-#define GUI_DIALOGS_NETWORK_RECEIVE_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "network_asio.hpp"
 #include <boost/optional.hpp>
 #include "events.hpp"
-
-class wesnothd_connection;
+#include <wesnothd_connection.hpp>
 
 namespace gui2
 {
@@ -39,7 +37,7 @@ class network_transmission : public modal_dialog
 {
 public:
 	//A wrapper of either a wesnothd_connection or a network_asio::connection
-	class connection_data 
+	class connection_data
 	{
 	public:
 		virtual size_t total() { return 0; }
@@ -51,7 +49,7 @@ public:
 	};
 
 	static bool wesnothd_receive_dialog(CVideo& video, const std::string& msg, config& cfg, wesnothd_connection& connection);
-	static std::unique_ptr<wesnothd_connection> wesnothd_connect_dialog(CVideo& video, const std::string& msg, const std::string& hostname, int port);
+	static wesnothd_connection_ptr wesnothd_connect_dialog(CVideo& video, const std::string& msg, const std::string& hostname, int port);
 
 private:
 	static void wesnothd_dialog(CVideo& video, connection_data& conn, const std::string& msg);
@@ -84,10 +82,10 @@ public:
 
 protected:
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog. */
-	void post_show(window& window);
+	virtual void post_show(window& window) override;
 
 private:
 	/**
@@ -99,10 +97,8 @@ private:
 	std::string subtitle_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 };
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif

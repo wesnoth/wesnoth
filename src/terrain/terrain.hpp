@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,12 +11,12 @@
 
    See the COPYING file for more details.
 */
-#ifndef TERRAIN_H_INCLUDED
-#define TERRAIN_H_INCLUDED
+
+#pragma once
 
 #include "config.hpp"
 #include "terrain/translation.hpp"
-#include "util.hpp"
+#include "utils/math.hpp"
 
 class terrain_type
 {
@@ -140,5 +140,3 @@ void create_terrain_maps(const config::const_child_itors &cfgs,
                          std::map<t_translation::terrain_code, terrain_type>& letter_to_terrain);
 
 void merge_alias_lists(t_translation::ter_list& first, const t_translation::ter_list& second);
-
-#endif

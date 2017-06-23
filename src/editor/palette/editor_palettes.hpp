@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,12 +12,11 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_PALETTES_H_INCLUDED
-#define EDITOR_PALETTES_H_INCLUDED
+#pragma once
 
 #include "editor/editor_display.hpp"
-#include "common_palette.hpp"
-#include "tristate_button.hpp"
+#include "editor/palette/common_palette.hpp"
+#include "editor/palette/tristate_button.hpp"
 
 namespace editor {
 
@@ -63,8 +62,7 @@ public:
 	size_t start_num(void) override { return items_start_; }
 
 	/** Menu expanding for palette group list */
-	void expand_palette_groups_menu(std::vector< std::pair<std::string, std::string> >& items) override;
-	void expand_palette_groups_menu(std::vector<std::string>& items) override;
+	void expand_palette_groups_menu(std::vector<config>& items, int i) override;
 
 	void set_group(size_t index) override;
 //	int active_group();
@@ -106,12 +104,6 @@ public:
 private:
 
 	size_t active_group_index();
-
-	/** Scroll the editor-palette to the top. */
-	void scroll_top();
-
-	/** Scroll the editor-palette to the bottom. */
-	void scroll_bottom();
 
 	virtual void draw_item(const Item& item, surface& item_image, std::stringstream& tooltip) = 0;
 
@@ -194,5 +186,3 @@ private:
 
 
 } //end namespace editor
-#endif // EDITOR_PALETTES_H_INCLUDED
-

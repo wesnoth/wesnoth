@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:32 UTC\n"
-"PO-Revision-Date: 2016-03-05 11:25+0100\n"
+"POT-Creation-Date: 2017-05-29 21:55+0200\n"
+"PO-Revision-Date: 2016-12-30 18:50+0100\n"
 "Last-Translator: daMark <daMark@arcor.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -80,10 +81,10 @@ msgstr "Delfador"
 msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
+#. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
-#. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:98
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:112
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:130
@@ -331,8 +332,8 @@ msgstr ""
 "lassen einander in Ruhe, was die außerordentliche Selbstkontrolle eines gut "
 "trainierten Schäferhundes zeigt."
 
-#. [test]: id=animals
 #. [event]
+#. [test]: id=animals
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:45
 msgid "Animals"
@@ -343,10 +344,10 @@ msgstr "Tiere"
 msgid "Rutburt"
 msgstr "Rutburt"
 
-#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
+#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
@@ -375,8 +376,8 @@ msgstr "Spinnen"
 msgid "Yetis"
 msgstr "Yetis"
 
-#. [side]
 #. [event]
+#. [side]
 #. [test]: id=wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:119
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:48
@@ -390,11 +391,11 @@ msgstr "Wölfe"
 msgid "Whelps"
 msgstr "Welpen"
 
-#. [set_menu_item]: id=m01_end_animals
-#. [event]
 #. [set_menu_item]: id=m01_end_swarm
-#. [set_menu_item]: id=m01_end_wolves
+#. [event]
 #. [set_menu_item]: id=m04_end_animals
+#. [set_menu_item]: id=m01_end_animals
+#. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:382
@@ -471,9 +472,9 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
-"Es ist möglich eine von einem menschlichen Spieler kontrollierte „Gruppe 1“ "
-"einzufügen. In diesem Fall hält die Simulation einmal in jeder Runde an, so "
-"dass man sich umsehen kann (oder im Debugmodus mit Einstellungen spielen "
+"Es ist möglich eine von einem menschlichen Spieler kontrollierte „Fraktion "
+"1“ einzufügen. In diesem Fall hält die Simulation einmal in jeder Runde an, "
+"so dass man sich umsehen kann (oder im Debugmodus mit Einstellungen spielen "
 "kann).\n"
 "\n"
 "Man sollte daran denken, dass dieses Szenario kein Ende hat. Zu "
@@ -484,7 +485,7 @@ msgstr ""
 "Spieler eingefügt wurde. Im reinen KI-Modus muss man „Esc“ benutzen oder "
 "einen gespeicherten Spielstand laden lassen.\n"
 "\n"
-"Zusätzlich gilt, dass die Tier-KIs als Mikro-KIs programmiert sind. Eine "
+"Zusätzlich gilt, dass die Tier-KIs als Mikro-KI programmiert sind. Eine "
 "Mikro-KI kann, abgestimmt auf die Anforderungen eines Szenarios, einfach "
 "eingesetzt und angepasst werden. Dazu benötigt man nur WML Code und die "
 "Markierung [micro-ai]. Weitergehende Informationen finden sich auf der <span "
@@ -500,7 +501,7 @@ msgstr "<span font='16'>Ich will nur die Tiere beobachten.</span>"
 #: data/ai/micro_ais/scenarios/animals.cfg:379
 #: data/ai/micro_ais/scenarios/wolves.cfg:224
 msgid "<span font='16'>I want to have control of Side 1.</span>"
-msgstr "<span font='16'>Ich will die „Gruppe 1“ kontrollieren.</span>"
+msgstr "<span font='16'>Ich will die „Fraktion 1“ kontrollieren.</span>"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/animals.cfg:385
@@ -766,8 +767,8 @@ msgstr ""
 "dass es eine merkliche Verzögerung (so ungefähr ein paar Sekunden) vor jedem "
 "Zug durch die Standard KI gibt. Im Gegensatz dazu hat die Micro KI eine "
 "wesentlich kleinere Verzögerung. Um den Unterschied zu demonstrieren wird "
-"die Gruppe 1 durch die schnelle Mikro KI und die Gruppe 2 durch die Standard "
-"(RCA) KI gesteuert.\n"
+"die Fraktion 1 durch die schnelle Mikro KI und die Fraktion 2 durch die "
+"Standard (RCA) KI gesteuert.\n"
 "\n"
 "Es gibt hier nichts zu tun. Man schaut nur zu oder benutzt dieses Szenario "
 "als eine Vorlage für seine eigenen Tests."
@@ -827,7 +828,7 @@ msgstr "Feldwebel Aethubry"
 #. [set_menu_item]: id=m01_new_footpad
 #: data/ai/micro_ais/scenarios/goto.cfg:339
 msgid "Place Side 1 Footpad"
-msgstr "Platz Gruppe 1 Wegelagerer"
+msgstr "Platz Fraktion 1 Wegelagerer"
 
 #. [set_menu_item]: id=m05_kill_unit
 #. [set_menu_item]: id=m02_kill_unit
@@ -841,7 +842,7 @@ msgstr "Töte die Einheit unter dem Cursor"
 #: data/ai/micro_ais/scenarios/goto.cfg:363
 msgid "Turn off human control of Side 1"
 msgstr ""
-"Schalte die Kontrolle durch einen menschlichen Spieler für die Gruppe 1 ab"
+"Schalte die Kontrolle durch einen menschlichen Spieler für die Fraktion 1 ab"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:413
@@ -861,15 +862,15 @@ msgid ""
 "wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
 "Dieses Szenario demonstriert verschiedene Anwendungen der „Ziel“ Mikro-Ki. "
-"Alle KI Gruppen werden von dieser M-KI in der einen oder anderen Weise "
+"Alle KI Fraktionen werden von dieser M-KI in der einen oder anderen Weise "
 "kontrolliert (Ausnahme sind die Saurianer, die von der Schleicher Mikro-KI "
 "gesteuert werden). Während des Szenarios werden laufend Nachrichten "
 "angezeigt um zu zeigendes die Einheiten tun.\n"
 "\n"
-"Der Spieler kontrolliert die Gruppe 1. Per Rechtsklick kann man auf ein Menü "
-"zugreifen mit dem man für die Gruppe 1 der Karte Einheiten hinzufügen und "
-"wieder entfernen kann. Das ist vor allem nützlich um zu beobachten wie die "
-"Wächter der Gruppe 3 reagieren.\n"
+"Der Spieler kontrolliert die Fraktion 1. Per Rechtsklick kann man auf ein "
+"Menü zugreifen mit dem man für die Fraktion 1 der Karte Einheiten hinzufügen "
+"und wieder entfernen kann. Das ist vor allem nützlich um zu beobachten wie "
+"die Wächter der Fraktion 3 reagieren.\n"
 "\n"
 "Bemerkung: Die „Ziel“-KI ist als Mikro-KI programmiert. Eine Mikro-KI kann, "
 "abgestimmt auf die Anforderungen eines Szenarios, einfach eingesetzt und "
@@ -1102,8 +1103,8 @@ msgid "We're back together, let's head out to the corners again."
 msgstr ""
 "Wir sind wieder zusammengekommen. Lasst und wieder zu den Ecken ausschwärmen."
 
-#. [event]
 #. [test]: id=guardians
+#. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:17
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:57
 msgid "Guardians"
@@ -1318,8 +1319,8 @@ msgstr ""
 "LUA KI bei einer Einheit kombiniert. Der Hartnäckige Wacher ist mit "
 "formelbasierter KI geschrieben während der ortstreue und der stationierte "
 "Wächter sowie die Feiglinge mit LUA KI geschrieben sind. Ansonsten nutzen "
-"die nicht als Wächter programmierten Einheiten der Gruppe die Standard-KI um "
-"ihr Verhalten zu steuern."
+"die nicht als Wächter programmierten Einheiten der Fraktion die Standard-KI "
+"um ihr Verhalten zu steuern."
 
 #. [command]
 #. [set_menu_item]: id=m04_stationed
@@ -1551,8 +1552,8 @@ msgstr ""
 "Wir müssen uns beeilen oder wir werden ihn nie erwischen.\n"
 "\n"
 "Bemerkung: Dieses Szenario benutzt eine Kombination zweier Mikro-KIs. Die "
-"Bleiben-Mikro-KI, die dafür sorgt, dass Einheiten der Gruppe 2 für zwei Züge "
-"in der Nähe des Bergfrieds bleiben (wobei sie die Felder der Burg frei "
+"Bleiben-Mikro-KI, die dafür sorgt, dass Einheiten der Fraktion 2 für zwei "
+"Züge in der Nähe des Bergfrieds bleiben (wobei sie die Felder der Burg frei "
 "machen um das Rekrutieren weiterer Einheiten zu ermöglichen) sowie die Boten-"
 "Eskorte KI, die danach die Kontrolle übernimmt. Eine Mikro-KI kann, "
 "abgestimmt auf die Anforderungen eines Szenarios, einfach eingesetzt und "
@@ -1635,13 +1636,13 @@ msgid ""
 "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
 "In diesem Szenario wird der Gebrauch der „Heiler Unterstützung“ Mikro-KI "
-"demonstriert. Diese KI bewirkt, dass die Heiler einer Gruppe hinter den "
+"demonstriert. Diese KI bewirkt, dass die Heiler einer Fraktion hinter den "
 "Kampflinien bleiben und Verletzte und/oder bedrohte Einheiten heilen anstatt "
 "sich unter allen Umständen an den Angriffen zu beteiligen. Sie beinhaltet "
-"mehrere konfigurierbare Optionen (die für die zwei Gruppen dieses Szenarios "
-"unterschiedlich eingestellt sind). Sie bestimmen wie aggressiv/vorsichtig "
-"die Heiler sind, ob sie auch angreifen, wie viel Risiko sie bereit sind "
-"einzugehen, und so weiter.\n"
+"mehrere konfigurierbare Optionen (die für die zwei Fraktionen dieses "
+"Szenarios unterschiedlich eingestellt sind). Sie bestimmen wie aggressiv/"
+"vorsichtig die Heiler sind, ob sie auch angreifen, wie viel Risiko sie "
+"bereit sind einzugehen, und so weiter.\n"
 "\n"
 "Um dies klarer zu machen, kündigt jeder Heiler seinen bevorstehenden Zug an. "
 "Wenn Ihr das nicht jedes mal sehen wollt, drückt einfach »ESC«, wenn die "
@@ -1702,27 +1703,27 @@ msgstr "Formelbasierte KI Schleicher (Saurianer)"
 #. [set_menu_item]: id=m01_menu_lurker2
 #: data/ai/micro_ais/scenarios/lurkers.cfg:387
 msgid "Place a Side 2 lurker"
-msgstr "Platziere einen Schleicher der Gruppe 2"
+msgstr "Platziere einen Schleicher der Fraktion 2"
 
 #. [set_menu_item]: id=m01_menu_lurker3
 #: data/ai/micro_ais/scenarios/lurkers.cfg:399
 msgid "Place a Side 3 lurker"
-msgstr "Platziere einen Schleicher der Gruppe 3"
+msgstr "Platziere einen Schleicher der Fraktion 3"
 
 #. [set_menu_item]: id=m01_menu_lurker4
 #: data/ai/micro_ais/scenarios/lurkers.cfg:411
 msgid "Place a Side 4 lurker"
-msgstr "Platziere einen Schleicher der Gruppe 4"
+msgstr "Platziere einen Schleicher der Fraktion 4"
 
 #. [set_menu_item]: id=m01_menu_lurker5
 #: data/ai/micro_ais/scenarios/lurkers.cfg:423
 msgid "Place a Side 5 lurker"
-msgstr "Platziere einen Schleicher der Gruppe 5"
+msgstr "Platziere einen Schleicher der Fraktion 5"
 
 #. [set_menu_item]: id=m01_menu_lurker6
 #: data/ai/micro_ais/scenarios/lurkers.cfg:435
 msgid "Place a Side 6 lurker"
-msgstr "Platziere einen Schleicher der Gruppe 6"
+msgstr "Platziere einen Schleicher der Fraktion 6"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/lurkers.cfg:450
@@ -1768,18 +1769,18 @@ msgstr ""
 "Drei verschiedene Verhaltensweisen für Schleicher werden hier eingestellt "
 "indem beim [micro_ai] Schalter unterschiedliche Parameter gesetzt werden:\n"
 "\n"
-"Gruppe 2 (Blau): Saurianer, die nur aus dem Sumpf heraus angreifen. Wenn "
+"Fraktion 2 (Blau): Saurianer, die nur aus dem Sumpf heraus angreifen. Wenn "
 "kein Feind in der Nähe ist, bewegen sie sich nicht.\n"
 "\n"
-"Gruppe 3 (Grün): Saurianer, die nur aus dem Sumpf heraus angreifen. Wenn "
+"Fraktion 3 (Grün): Saurianer, die nur aus dem Sumpf heraus angreifen. Wenn "
 "kein Feind in der Nähe ist, bewegen sie sich auf zufälligen Wegen (nur in "
 "den Sümpfen).\n"
 "\n"
-"Gruppe 4 (Lila): Naga, die sich nur im Wasser bewegen, aber sowohl aus dem "
+"Fraktion 4 (Lila): Naga, die sich nur im Wasser bewegen, aber sowohl aus dem "
 "Wasser als auch aus dem Sumpf angreifen.\n"
 "\n"
-"Wir haben auch zwei weitere Gruppen eingerichtet, die das Verhalten von "
-"Schleichern demonstrieren wenn sie mit WML (Gruppe 5, Grau) und "
+"Wir haben auch zwei weitere Fraktionen eingerichtet, die das Verhalten von "
+"Schleichern demonstrieren wenn sie mit WML (Fraktion 5, Grau) und "
 "formelbasierter KI programmiert sind."
 
 #. [event]
@@ -1967,8 +1968,8 @@ msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr ""
 "Neiiiin! Alles ist verloren. Wir werden die Orks jetzt niemals stoppen!"
 
-#. [test]: id=patrols
 #. [event]
+#. [test]: id=patrols
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
@@ -2076,7 +2077,7 @@ msgstr ""
 "Im Unterschied dazu bin ich ein Gebietsschützer, der auf seine Weise im "
 "südlichen Teil der Karte patrouilliert. Diese KI wird durch die Verwendung "
 "der Wächter [micro_ai] Marke programmiert. Überwiegend  soll dies zeigen, "
-"wie man verschiedene Mikro-KI für die selbe Gruppe verwendet. Für weitere "
+"wie man verschiedene Mikro-KI für die selbe Fraktion verwendet. Für weitere "
 "Details der verschiedenen Ausprägungen der Wächter-KI gibt es ein eigenes "
 "Test Szenario, das sich damit beschäftigt."
 
@@ -2094,7 +2095,7 @@ msgstr ""
 "unter die Hälfte des Maximums sinken oder in meinem fünften Zug, je nachdem "
 "was zuerst eintritt.\n"
 "\n"
-"Das ist eine von den Patrouillen der Gruppe 2 getrennte KI."
+"Das ist eine von den Patrouillen der Fraktion 2 getrennte KI."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:217
@@ -2144,8 +2145,8 @@ msgstr ""
 "diesen Wegpunkt auslassen wenn sie nahe genug herankommen und zum nächsten "
 "Punkt weitergehen.\n"
 "\n"
-"Die Patrouille-KI für die Gruppe 2 ist als Mikro-KI programmiert. Eine Mikro-"
-"KI kann, abgestimmt auf die Anforderungen eines Szenarios, einfach "
+"Die Patrouille-KI für die Fraktion 2 ist als Mikro-KI programmiert. Eine "
+"Mikro-KI kann, abgestimmt auf die Anforderungen eines Szenarios, einfach "
 "eingesetzt und angepasst werden. Dazu benötigt man nur WML Code und die "
 "Markierung [micro-ai]. Weitergehende Informationen finden sich auf der <span "
 "color='#00A000'>Micro AI wiki page</span> unter http://wiki.wesnoth.org/"
@@ -2180,8 +2181,8 @@ msgstr ""
 msgid "Let's go home, chaps."
 msgstr "Lasst uns nach Hause gehen, Kameraden."
 
-#. [test]: id=protect_unit
 #. [event]
+#. [test]: id=protect_unit
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
@@ -2264,8 +2265,8 @@ msgstr ""
 "die Aufgabe den Zauberer Rossauba zu beschützen und ihn sicher zum Wegweiser "
 "zu bringen. Die Einheiten von Koorzhar auf der anderen Seite (im Westen) "
 "werden bevorzugt Rossauba angreifen, selbst wenn ein lohnenderes Ziel "
-"erreichbar ist. Möchtet Ihr eine von beiden Gruppen steuern oder die beiden "
-"KIs den Kampf untereinander ausfechten lassen?\n"
+"erreichbar ist. Möchtet Ihr eine von beiden Fraktionen steuern oder die "
+"beiden KIs den Kampf untereinander ausfechten lassen?\n"
 "\n"
 "Bemerkung: Die „Beschütze die Einheit“ KI ist als Mikro-KI programmiert. "
 "Eine Mikro-KI kann, abgestimmt auf die Anforderungen eines Szenarios, "
@@ -2287,7 +2288,7 @@ msgid ""
 "<span font='16'>I'll play Langzhar's side (to see how Koorzhar's units "
 "target Rossauba)</span>"
 msgstr ""
-"<span font='16'>Ich werde die Gruppe von Langzhar steuern (um zu sehen wie "
+"<span font='16'>Ich werde die Fraktion von Langzhar steuern (um zu sehen wie "
 "Koorzhars Einheiten Rossauba ins Visier nehmen)</span>"
 
 #. [option]
@@ -2296,7 +2297,7 @@ msgid ""
 "<span font='16'>I'll play Koorzhar's side (to see how Langzhar's units "
 "protect Rossauba)</span>"
 msgstr ""
-"<span font='16'>Ich werde die Gruppe von Koorzhar steuern (um zu sehen wie "
+"<span font='16'>Ich werde die Fraktion von Koorzhar steuern (um zu sehen wie "
 "Langzhars Einheiten Rossauba beschützen)</span>"
 
 #. [objectives]
@@ -2346,8 +2347,8 @@ msgstr "Ich habe so lange durchgehalten wie ich konnte."
 msgid "I made it"
 msgstr "Ich habe es geschafft"
 
-#. [test]: id=recruiting
 #. [event]
+#. [test]: id=recruiting
 #: data/ai/micro_ais/scenarios/recruiting.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:78
 msgid "Recruiting"
@@ -2369,9 +2370,9 @@ msgid ""
 "expect. The recruitment lists cover level 0 to level 2 units, in order to "
 "make differences more obvious."
 msgstr ""
-"Beobachtet, wie beide Gruppen Einheiten einberufen und entscheidet, ob es so "
-"ist wie Ihr es erwarten würdet. Es stehen Einheiten mit den Rängen 0 bis 2 "
-"zum Einberufen bereit um die Unterschiede deutlicher zu machen."
+"Beobachtet, wie beide Fraktionen Einheiten einberufen und entscheidet, ob es "
+"so ist wie Ihr es erwarten würdet. Es stehen Einheiten mit den Rängen 0 bis "
+"2 zum Einberufen bereit um die Unterschiede deutlicher zu machen."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:90
@@ -2391,14 +2392,14 @@ msgid ""
 "information."
 msgstr ""
 "Wenn Ihr am Programm für dieses Szenario nichts geändert habt, benutzt "
-"Gruppe 1 die Mikro-KI für zufälliges Einberufen. Dabei wurde den "
+"Fraktion 1 die Mikro-KI für zufälliges Einberufen. Dabei wurde den "
 "Schwertkämpfern und Bauern eine höhere Wahrscheinlichkeit zugeordnet als "
 "anderen Einheiten und Magiern eine mittlere Wahrscheinlichkeit. Dies soll "
 "keine besonders ausgefeilte Regel für das Einberufen sein, sondern "
 "demonstriert einfach wie die KI verwendet wird.\n"
 "\n"
-"Die Gruppe 2 benutzt die Mikro-Ki für schnelles Einberufen (die auch von der "
-"experimentellen KI benutzt wird).\n"
+"Die Fraktion 2 benutzt die Mikro-Ki für schnelles Einberufen (die auch von "
+"der experimentellen KI benutzt wird).\n"
 "\n"
 "Eine Mikro-KI kann, abgestimmt auf die Anforderungen eines Szenarios, "
 "einfach eingesetzt und angepasst werden. Dazu benötigt man nur WML Code und "
@@ -2421,8 +2422,8 @@ msgstr "Grnk der Schwache"
 msgid "team_name^Grnk"
 msgstr "Grnk"
 
-#. [event]
 #. [test]: id=swarm
+#. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:51
 #: data/ai/micro_ais/scenarios/swarm.cfg:5
 msgid "Swarm"
@@ -2484,9 +2485,9 @@ msgid ""
 "side."
 msgstr ""
 "Im Szenario für die Mikro-KI zur Verteidigung eines Engpasses soll eine "
-"kleine Gruppe menschlicher Soldaten einen Pass gegen eine große Gruppe von "
+"kleine Gruppe menschlicher Soldaten einen Pass gegen eine große Horde von "
 "Orks verteidigen. Ihr könnt zusehen, wie sie gegen die Standard RCA KI "
-"antreten oder die Gruppe der Orks übernehmen."
+"antreten oder die Fraktion der Orks übernehmen."
 
 #. [command]
 #. [set_menu_item]: id=m02_swamp_lurkers
@@ -2576,12 +2577,12 @@ msgid ""
 "is available. You can watch the two AIs fight it out, or take control of "
 "either side to explore how the opposing AI behaves."
 msgstr ""
-"Dieses Szenario zeigt, wie eine Gruppe einen Zauberer beschützt, während sie "
-"ihn zu einer Zielposition begleitet. Zugleich wurde die andere Gruppe "
+"Dieses Szenario zeigt, wie eine Fraktion einen Zauberer beschützt, während "
+"sie ihn zu einer Zielposition begleitet. Zugleich wurde die andere Fraktion "
 "modifiziert, so dass sie bevorzugt den Zauberer angreift, selbst wenn (nach "
 "den Standardkriterien der KI) ein besseres Ziel verfügbar wäre. Ihr könnt "
-"die zwei KIs beobachten wie sie kämpfen oder die Kontrolle einer Gruppe "
-"übernehmen, um zu testen, wie sich die andere Gruppe verhält."
+"die zwei KIs beobachten wie sie kämpfen oder die Kontrolle einer Fraktion "
+"übernehmen, um zu testen, wie sich die andere Fraktion verhält."
 
 #. [command]
 #. [set_menu_item]: id=m06a_protect
@@ -2704,8 +2705,8 @@ msgid ""
 "circumstances."
 msgstr ""
 "Dieses Szenario beinhaltet eine einfache Demonstration wie man eine „Heiler "
-"Unterstützung“ Mikro-KI einrichtet, die die Heiler einer Gruppe benutzt um "
-"verletzte oder bedrohte Einheiten absichert anstatt sie unter allen "
+"Unterstützung“ Mikro-KI einrichtet, die die Heiler einer Fraktion benutzt um "
+"verletzte oder bedrohte Einheiten abzusichern anstatt sie unter allen "
 "Umständen in die Kämpfe eingreifen zu lassen."
 
 #. [command]
@@ -2752,9 +2753,9 @@ msgstr ""
 "Dieses Szenario ist ein Beispiel für die Bleibe Mikro-KI, die Einheiten im "
 "Umfeld einer (anpassbaren) Position hält bis eine (anpassbare) Bedingung "
 "erfüllt ist. Danach sind die Einheiten frei für die Steuerung durch andere "
-"KI Regeln. Das Szenario zeigt auch wie zwei Mikro-KI für die gleiche Gruppe "
-"kombiniert werden können indem die Boten Geleitschutz Mikro-KI die Steuerung "
-"zur gegebenen Zeit übernimmt. "
+"KI Regeln. Das Szenario zeigt auch wie zwei Mikro-KI für die gleiche "
+"Fraktion kombiniert werden können indem die Boten Geleitschutz Mikro-KI die "
+"Steuerung zur gegebenen Zeit übernimmt. "
 
 #. [command]
 #. [set_menu_item]: id=m15_simple_attack
@@ -2913,7 +2914,7 @@ msgstr ""
 "geschont werden. Ich habe den Ausdruck „Wegwerfeinheiten“ auf eine ganz neue "
 "Ebene gebracht. Beobachtet es mit Ehrfurcht !!\n"
 "\n"
-"<i>Übersetzung: Die Gruppe der Untoten benutzt zwei Ausprägungen der "
+"<i>Übersetzung: Die Fraktion der Untoten benutzt zwei Ausprägungen der "
 "Einfacher Angriff Mikro-KI. Die erste veranlasst die Seelenlosen alle "
 "Einheiten anzugreifen, die einen Erfahrungspunkt vor dem Aufstieg sind, so "
 "dass sie nachher vernichtet werden können. Die zweite steuert alle weiteren "
@@ -2939,12 +2940,12 @@ msgstr "Fledermäuse"
 #. [set_menu_item]: id=m02_new_gryphon
 #: data/ai/micro_ais/scenarios/swarm.cfg:91
 msgid "Place Side 1 Gryphon"
-msgstr "Platz Gruppe 1 Greif"
+msgstr "Platz Fraktion 1 Greif"
 
 #. [set_menu_item]: id=m03_new_bat
 #: data/ai/micro_ais/scenarios/swarm.cfg:102
 msgid "Place Side 2 Bat"
-msgstr "Platz Gruppe 2 Fledermaus"
+msgstr "Platz Fraktion 2 Fledermaus"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/swarm.cfg:137
@@ -2979,7 +2980,7 @@ msgstr ""
 "zurück finden. Es ist ebenfalls möglich, dass sich einzelne Fledermäuse "
 "(oder kleine Gruppen) zeitweise vom Hauptschwarm trennen.\n"
 "\n"
-"Der Spieler kontrolliert eine Gruppe von Greifen von denen jeder 99 Züge "
+"Der Spieler kontrolliert eine Fraktion von Greifen von denen jeder 99 Züge "
 "hat, so dass die Reaktion des Schwarms auf Feine einfach getestet werden "
 "kann. Es gibt auch diverse Rechtsklick Optionen: Zum Beispiel, um "
 "Fledermäuse oder Greifen hinzuzufügen oder Einheiten von der Karte zu "
@@ -3022,17 +3023,17 @@ msgstr "Mehr Wölfe"
 #. [set_menu_item]: id=m02_new_peasant
 #: data/ai/micro_ais/scenarios/wolves.cfg:120
 msgid "Place Side 1 Peasant"
-msgstr "Platz Gruppe 1 Bauer"
+msgstr "Platz Fraktion 1 Bauer"
 
 #. [set_menu_item]: id=m03_new_wolf2
 #: data/ai/micro_ais/scenarios/wolves.cfg:131
 msgid "Place Side 2 Wolf"
-msgstr "Platz Gruppe 2 Wolf"
+msgstr "Platz Fraktion 2 Wolf"
 
 #. [set_menu_item]: id=m04_new_wolf3
 #: data/ai/micro_ais/scenarios/wolves.cfg:142
 msgid "Place Side 3 Wolf"
-msgstr "Platz Gruppe 3 Wolf"
+msgstr "Platz Fraktion 3 Wolf"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/wolves.cfg:188
@@ -3060,14 +3061,15 @@ msgid ""
 msgstr ""
 "Dieses Szenario demonstriert einen anderen Typ von Verhalten für Wölfe aus "
 "„Tiere“. Zum Einen kann es eine willkürliche Anzahl von Wolfsrudeln geben "
-"und die Größe der Rudel in jeder Gruppe ist ein bestimmbarer Parameter (der "
-"in diesem Szenario für Gruppe 2 auf 3 und für Gruppe 3 auf 4 gesetzt ist). "
-"Zu Beginn des Szenarios werden Wölfe, die nahe beieinander sind, nach einem "
-"semi-methodischen Verfahren zu Rudeln zusammengefasst. Wölfe des gleichen "
-"Rudels beginnen sich auf der Karte zu versammeln. Danach bleiben sie "
-"zusammen bis nur noch ein Wolf übrig ist. Dieser versucht dann sich anderen "
-"unvollständigen Rudeln oder anderen einzelnen Wölfen anzuschließen. Einzelne "
-"Wölfe, die während des Szenarios dazukommen, verhalten sich genauso.\n"
+"und die Größe der Rudel in jeder Fraktion ist ein bestimmbarer Parameter "
+"(der in diesem Szenario für Fraktion 2 auf 3 und für Fraktion 3 auf 4 "
+"gesetzt ist). Zu Beginn des Szenarios werden Wölfe, die nahe beieinander "
+"sind, nach einem semi-methodischen Verfahren zu Rudeln zusammengefasst. "
+"Wölfe des gleichen Rudels beginnen sich auf der Karte zu versammeln. Danach "
+"bleiben sie zusammen bis nur noch ein Wolf übrig ist. Dieser versucht dann "
+"sich anderen unvollständigen Rudeln oder anderen einzelnen Wölfen "
+"anzuschließen. Einzelne Wölfe, die während des Szenarios dazukommen, "
+"verhalten sich genauso.\n"
 "\n"
 "Zum Anderen jagen Wölfe hier nicht aktiv. Die meiste Zeit streifen sie nur "
 "herum (oft über weite Strecken). Jedoch greift das Rudel jeden Feind wütend "
@@ -3079,7 +3081,7 @@ msgstr ""
 "\n"
 "Um zu zeigen, welcher Wolf zu welchem Rudel gehört, wird die Nummer des "
 "Rudels in diesem Szenario unter jedem Wolf dargestellt sobald die KI zum "
-"ersten Mal die Kontrolle über die Gruppe übernommen hat."
+"ersten Mal die Kontrolle über die Fraktion übernommen hat."
 
 #. [message]: speaker=narrator
 #: data/ai/micro_ais/scenarios/wolves.cfg:199
@@ -3101,15 +3103,15 @@ msgid ""
 "[micro_ai] tag. Check out the <span color='#00A000'>Micro AI wiki page</"
 "span> at http://wiki.wesnoth.org/Micro_AIs for more information."
 msgstr ""
-"Es ist möglich, eine von einem menschlichen Spieler kontrollierte Gruppe 1 "
+"Es ist möglich, eine von einem menschlichen Spieler kontrollierte Fraktion 1 "
 "einzufügen, so dass der Ablauf einmal pro Zug anhält um sich umzuschauen "
 "(oder um Dinge um Debugmodus zu untersuchen). In diesem Modus sind per "
 "Rechtsklick diverse Optionen verfügbar: Das Hinzufügen weiterer Wölfe zu "
-"jeder Gruppe, das Hinzufügen von Bauern zu der vom Menschen kontrollierten "
-"Gruppe oder das Beenden des Szenarios. Dies ermöglicht das einfache "
+"jeder Fraktion, das Hinzufügen von Bauern zu der vom Menschen kontrollierten "
+"Fraktion oder das Beenden des Szenarios. Dies ermöglicht das einfache "
 "erforschen des KI Verhalten der Wölfe unter den diversen Bedingungen.\n"
 "\n"
-"Beachtet, dass der Anführer der menschlich kontrollierten Gruppe, Rutburt, "
+"Beachtet, dass der Anführer der menschlich kontrollierten Fraktion, Rutburt, "
 "sich 99 Felder weit bewegen kann. Damit ist es immer möglich ihn aus der "
 "Gefahrenzone zu bringen.\n"
 "\n"
@@ -3248,7 +3250,7 @@ msgstr "Welche KI wollt Ihr benutzen, oh mächtiger KI Entwickler?"
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:178
 msgid "I am happy with the current AI of team 2, [$test_path_to_ai]"
 msgstr ""
-"Ich bin zufrieden mit der aktuellen KI der Gruppe 2, [$test_path_to_ai]"
+"Ich bin zufrieden mit der aktuellen KI der Fraktion 2, [$test_path_to_ai]"
 
 #. [option]
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:181

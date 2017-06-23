@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_AUXILIARY_WALKER_VISITOR_GRID_HPP_INCLUDED
-#define GUI_WIDGETS_AUXILIARY_WALKER_VISITOR_GRID_HPP_INCLUDED
+#pragma once
 
 #include "gui/auxiliary/iterator/walker.hpp"
 
@@ -72,5 +71,3 @@ private:
 } // namespace iteration
 
 } // namespace gui2
-
-#endif

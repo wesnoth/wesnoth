@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,8 +18,6 @@
  * WML preprocessor.
  */
 
-#include "global.hpp"
-
 #include "buffered_istream.hpp"
 #include "config.hpp"
 #include "filesystem.hpp"
@@ -30,7 +28,6 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/parser.hpp"
 #include "filesystem.hpp"
-#include "util.hpp"
 #include "version.hpp"
 
 #include <stdexcept>
@@ -569,13 +566,12 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, const std::strin
 		}
 	}
 	else {
-		std::istream * file_stream = filesystem::istream_file(name);
+		filesystem::scoped_istream file_stream = filesystem::istream_file(name);
 		if (!file_stream->good()) {
 			ERR_PREPROC << "Could not open file " << name << std::endl;
-			delete file_stream;
 		}
 		else
-			new preprocessor_data(t, file_stream, "", filesystem::get_short_wml_path(name),
+			new preprocessor_data(t, file_stream.release(), "", filesystem::get_short_wml_path(name),
 				1, filesystem::directory_name(name), t.textdomain_, nullptr);
 	}
 	pos_ = files_.begin();
@@ -696,7 +692,7 @@ void preprocessor_data::pop_token()
 		   prepare for it. */
 		if (inner_type == token_desc::MACRO_SPACE || inner_type == token_desc::MACRO_CHUNK) {
 			strings_.erase(strings_.begin() + stack_pos, strings_.end());
-			strings_.push_back(std::string());
+			strings_.emplace_back();
 		}
 		assert(stack_pos + 1 == strings_.size());
 		outer_type = token_desc::MACRO_CHUNK;
@@ -884,12 +880,13 @@ bool preprocessor_data::get_chunk()
 			skip_spaces();
 			int linenum = linenum_;
 			std::vector< std::string > items = utils::split(read_line(), ' ');
+			std::map< std::string, std::string> optargs;
 			if (items.empty()) {
 				target_.error("No macro name found after #define directive", linenum);
 			}
 			std::string symbol = items.front();
 			items.erase(items.begin());
-			int found_enddef = 0;
+			int found_arg = 0, found_enddef = 0;
 			std::string buffer;
 			for(;;) {
 				if (in_.eof())
@@ -898,10 +895,49 @@ bool preprocessor_data::get_chunk()
 				if (d == '\n')
 					++linenum_;
 				buffer += d;
-				if (d == '#')
-					found_enddef = 1;
-				else if (found_enddef > 0)
-					if (++found_enddef == 7) {
+				if (d == '#') {
+					if (in_.peek() == 'a') {
+						found_arg = 1;
+					} else {
+						found_enddef = 1;
+					}
+				} else {
+					if (found_arg > 0 && ++found_arg == 4) {
+						if (std::equal(buffer.end() - 3, buffer.end(), "arg")) {
+							buffer.erase(buffer.end() - 4, buffer.end());
+
+							skip_spaces();
+							std::string argname = read_word();
+							skip_eol();
+
+							std::string argbuffer;
+
+							int found_endarg = 0;
+							for(;;) {
+								if (in_.eof())
+									break;
+								char e = in_.get();
+								if (e == '\n')
+									++linenum_;
+								argbuffer += e;
+
+								if (e == '#') {
+									found_endarg = 1;
+								} else if (found_endarg > 0 && ++found_endarg == 7) {
+									if (std::equal(argbuffer.end() - 6, argbuffer.end(), "endarg")) {
+										argbuffer.erase(argbuffer.end() - 7, argbuffer.end());
+										optargs[argname] = argbuffer;
+										skip_eol();
+										break;
+									} else {
+										target_.error("Unterminated #arg definition", linenum_);
+									}
+								}
+							}
+						}
+					}
+
+					if (found_enddef > 0 && ++found_enddef == 7) {
 						if (std::equal(buffer.end() - 6, buffer.end(), "enddef"))
 							break;
 						else {
@@ -911,6 +947,7 @@ bool preprocessor_data::get_chunk()
 							}
 						}
 					}
+				}
 			}
 			if (found_enddef != 7) {
 				target_.error("Unterminated preprocessor definition", linenum_);
@@ -932,7 +969,7 @@ bool preprocessor_data::get_chunk()
 				}
 
 				buffer.erase(buffer.end() - 7, buffer.end());
-				(*target_.defines_)[symbol] = preproc_define(buffer, items, target_.textdomain_,
+				(*target_.defines_)[symbol] = preproc_define(buffer, items, optargs, target_.textdomain_,
 					                       linenum, target_.location_);
 				LOG_PREPROC << "defining macro " << symbol << " (location " << get_location(target_.location_) << ")\n";
 			}
@@ -1124,26 +1161,85 @@ bool preprocessor_data::get_chunk()
 			}
 			else if (target_.depth_ < 100 && (macro = target_.defines_->find(symbol)) != target_.defines_->end())
 			{
-				preproc_define const &val = macro->second;
+				const preproc_define &val = macro->second;
 				size_t nb_arg = strings_.size() - token.stack_pos - 1;
-				if (nb_arg != val.arguments.size())
+				size_t optional_arg_num = 0;
+
+				std::map<std::string, std::string> *defines = new std::map<std::string, std::string>;
+				const std::string& dir = filesystem::directory_name(val.location.substr(0, val.location.find(' ')));
+
+				for (size_t i = 0; i < nb_arg; ++i) {
+					if (i < val.arguments.size()) {
+						// Normal mandatory arguments
+
+						(*defines)[val.arguments[i]] = strings_[token.stack_pos + i + 1];
+					} else {
+						// These should be optional argument overrides
+
+						std::string str = strings_[token.stack_pos + i + 1];
+						size_t equals_pos = str.find_first_of("=");
+
+						if (equals_pos != std::string::npos) {
+							size_t argname_pos = str.substr(0, equals_pos).find_last_of(" \n") + 1;
+
+							std::string argname = str.substr(argname_pos, equals_pos - argname_pos);
+
+							if (val.optional_arguments.find(argname) != val.optional_arguments.end()) {
+								(*defines)[argname] = str.substr(equals_pos + 1);
+
+								optional_arg_num++;
+
+								DBG_PREPROC << "Found override for " << argname << " in call to macro " << symbol << "\n";
+							} else {
+								std::ostringstream warning;
+								warning << "Unrecognized optional argument passed to macro '" << symbol << "': '" << argname << "'";
+								target_.warning(warning.str(), linenum_);
+
+								optional_arg_num++; // To prevent the argument number check from blowing up
+							}
+						}
+					}
+				}
+
+				// If the macro definition has any optional arguments, insert their defaults
+				if (val.optional_arguments.size() > 0) {
+					for (const auto &argument : val.optional_arguments) {
+						if (defines->find(argument.first) == defines->end()) {
+							std::ostringstream res;
+							preprocessor_streambuf *buf = new preprocessor_streambuf(target_);
+
+							buf->textdomain_ = target_.textdomain_;
+							std::istream in(buf);
+
+							std::istringstream *buffer = new std::istringstream(argument.second);
+
+							std::map<std::string, std::string> *temp_defines = new std::map<std::string, std::string>;
+							temp_defines->insert(defines->begin(), defines->end());
+
+							new preprocessor_data(*buf, buffer, val.location, "", val.linenum, dir, val.textdomain, temp_defines, false);
+							res << in.rdbuf();
+
+							DBG_PREPROC << "Setting default for optional argument " << argument.first << " in macro " << symbol << "\n";
+
+							(*defines)[argument.first] = res.str();
+
+							delete buf;
+						}
+					}
+				}
+
+				if (nb_arg - optional_arg_num != val.arguments.size())
 				{
 					const std::vector<std::string>& locations = utils::quoted_split(val.location, ' ');
 					std::ostringstream error;
 					error << "Preprocessor symbol '" << symbol << "' defined at "
 					      << get_filename(locations[0]) << ":" << val.linenum << " expects "
 					      << val.arguments.size() << " arguments, but has "
-					      << nb_arg << " arguments";
+					      << nb_arg - optional_arg_num << " arguments";
 					target_.error(error.str(), linenum_);
 				}
 				std::istringstream *buffer = new std::istringstream(val.value);
-				std::map<std::string, std::string> *defines =
-					new std::map<std::string, std::string>;
-				for (size_t i = 0; i < nb_arg; ++i) {
-					(*defines)[val.arguments[i]] = strings_[token.stack_pos + i + 1];
-				}
 				pop_token();
-				const std::string& dir = filesystem::directory_name(val.location.substr(0, val.location.find(' ')));
 				if (!slowpath_) {
 					DBG_PREPROC << "substituting macro " << symbol << '\n';
 					new preprocessor_data(target_, buffer, val.location, "",
@@ -1234,7 +1330,7 @@ preprocessor_deleter::~preprocessor_deleter()
 	delete defines_;
 }
 
-std::istream *preprocess_file(const std::string& fname, preproc_map *defines)
+filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map *defines)
 {
 	log_scope("preprocessing file " + fname + " ...");
 	preproc_map *owned_defines = nullptr;
@@ -1249,11 +1345,11 @@ std::istream *preprocess_file(const std::string& fname, preproc_map *defines)
 	preprocessor_streambuf *buf = new preprocessor_streambuf(defines);
 
 	new preprocessor_file(*buf, fname);
-	return new preprocessor_deleter(buf, owned_defines);
+	return filesystem::scoped_istream(new preprocessor_deleter(buf, owned_defines));
 }
 
 void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
-			 bool write_cfg, bool write_plain_cfg,std::string target_directory)
+			 bool write_cfg, bool write_plain_cfg,const std::string& target_directory)
 {
 	if (filesystem::is_directory(res_name))
 	{

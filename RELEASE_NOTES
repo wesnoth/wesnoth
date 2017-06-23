@@ -14,37 +14,16 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
-[rasection="Example section title"]
-Example contents.
-[/rasection]
-
-
-[rasection="Additions and changes to the AI"]
+[rasection="User Interface"]
 [list]
-[*]A new candidate action (CA), called [wiki=RCA_AI#The_Candidate_Actions_.28CAs.29_of_the_main_loop_Stage_in_the_RCA_AI]high XP attack[/wiki], has been added to all general Wesnoth AIs in mainline, fixing a short-coming in the default AI's combat CA. Previously, the AI would only attack units 1 experience point (XP) from leveling under very specific and rarely occurring circumstances. It was possible to exploit this, for example, for blocking vital passages or keeping key units alive without these units ever being attacked, making scenarios much easier than they were intended.
-
-The new CA fixes this hole and will generally, but not blindly, attack such units now. The attack logic is explained [url=https://github.com/wesnoth/wesnoth/blob/master/data/ai/lua/ca_high_xp_attack.lua#L5]here[/url]. Since the new behavior is accomplished not by changing the existing attack code, but by adding a new candidate action, the previous behavior can be restored by removing the high_xp_attack CA, in case this is desired in specific scenarios.
-[*] Significantly improved move times for AI sides with many guardians
-[*]For content creators, a [wiki=Micro_AIs#Assassin_Squad_Micro_AI_.28ai_type.3Dassassin.29]new Micro AI[/wiki], controlling individual assassins or an entire assassin squad has been added. It is already being used in Heir to the Throne scenario 8, 'The Princess of Wesnoth'.
-[*]Many changes to the ai_helper utility function library, including bug fixes, making the functions deal correctly and consistently with hidden units and the addition of several new functions, as well as a variety of other AI bug fixes.
-[/list]
-[/rasection]
-
-
-[rasection="Tunnel functionality expanded"]
-Tunnel functionality was expanded and the default behavior was altered in order to make moves through tunnels consistent with all other moves:
-[list]
-[*]Vison through tunnels is now possible and enabled by default. It can be turned off by setting allow_vision=no in the [tunnel] tag.
-[*]Own and allied units on tunnel exits do not block the tunnel any more. The blocking behavior can be reenabled by setting pass_allied_units=no in the [tunnel] tag.
+[*]Most text boxes now support advanced Input Method Editors (in-game chat does not, however).
 [/list]
 [/rasection]
 
 
 [rawarn="Deprecations and breaking changes"]
 [list]
-[*]The built-in cave map generator (used with [c]scenario_generation=cave[/c]) is now deprecated and will be removed in 1.14 or 1.15. Scenarios that previously used it should change to the new Lua cave map generator. To do this, use [c]map_generation=lua[/c] with [c]create_map = << return wesnoth.require("lua/cave_map_generator.lua").generate_map(...) >>[/c].
-[*]The AI functions that return aspects (eg, [c]get_aggression()[/c]) are now deprecated. Use the [c]ai.aspects[/c] table instead to fetch these aspects. As an exception, [c]ai.get_attacks()[/c] is not deprecated and works the same as before. (AI get_* functions that do not return aspects, such as [c]get_targets()[/c], are unaffected.)
-[*]The metatables used by the [i]helper.lua[/i] module are now protected from external access. If anyone used [c]getmetatable()[/c] to alter these metatables, their code will no longer work. (You shouldn't have been doing that in the first place, though.)
+[*] example entry
 [/list]
 [/rawarn]
 
@@ -57,12 +36,7 @@ KNOWN BUGS
 [b]General bugs:[/b]
 
 [list]
-[*]Crashes may occur during the loading screen. If those crashes happen to you, you can disable the loading screen animation by addding disable_loading screen_animation=yes in your preferences file.
 [*]The MP server has trouble with Local player types in campaigns (bug [bug]21965[/bug]). We have decided to postpone dealing with this. In the meantime, you might try assigning such sides to the host, or running multiple instances of Wesnoth.
-[*]Wesnoth does not exist on the panel (bug [bug]24202[/bug]).
-[*]"Name of Game" bleeds onto "Player/Type" label when leaving/entering the app (bug [bug]24437[/bug]).
-[*]Inconsistent transparency on credits screen (bug [bug]24428[/bug]).
-[*]Dialog In Replay Clearing Issue (bug [bug]24491[/bug]).
 [/list]
 [/raissue]
 

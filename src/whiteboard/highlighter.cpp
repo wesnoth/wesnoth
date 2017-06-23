@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2016 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2017 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -30,7 +30,6 @@
 #include "whiteboard/move.hpp"
 #include "whiteboard/recall.hpp"
 #include "whiteboard/recruit.hpp"
-#include "resources.hpp"
 #include "whiteboard/side_actions.hpp"
 #include "whiteboard/suppose_dead.hpp"
 #include "whiteboard/utility.hpp"
@@ -86,7 +85,7 @@ void highlighter::set_mouseover_hex(const map_location& hex)
 	if(it != get_unit_map().end()) {
 		selection_candidate_ = it.get_shared_ptr();
 
-		if(resources::gameboard->teams().at(it->side()-1).get_side_actions()->unit_has_actions(*it)) {
+		if(resources::gameboard->get_team(it->side()).get_side_actions()->unit_has_actions(*it)) {
 			owner_unit_ = it.get_shared_ptr();
 		}
 
@@ -367,8 +366,8 @@ void highlighter::unhighlight_visitor::visit(recall_ptr recall)
 }
 unit_map& highlighter::get_unit_map()
 {
-	assert(resources::units);
-	return *resources::units;
+	assert(resources::gameboard);
+	return resources::gameboard->units();
 }
 
 } // end namespace wb

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef CAMPAIGN_SERVER_HPP_INCLUDED
-#define CAMPAIGN_SERVER_HPP_INCLUDED
+#pragma once
 
 #include "campaign_server/blacklist.hpp"
 #include "server/server_base.hpp"
@@ -84,6 +83,9 @@ private:
 
 	bool read_only_;
 	int compress_level_; /**< Used for add-on archives. */
+
+	/** Default upload size limit in bytes. */
+	static const size_t default_document_size_limit = 100 * 1024 * 1024;
 
 	std::map<std::string, std::string> hooks_;
 	request_handlers_table handlers_;
@@ -161,17 +163,6 @@ private:
 	 */
 	void register_handlers();
 
-	/**
-	 * Registers a single request handler.
-	 *
-	 * @param cmd  The request command, corresponding to the name of the [tag}
-	 *             with the request body (e.g. "handle_request_terms").
-	 * @param func The request function. This should be a class method passed
-	 *             as a @a std::bind function object that takes a single
-	 *             parameter of type @a request.
-	 */
-	void register_handler(const std::string& cmd, const request_handler& func);
-
 	void handle_request_campaign_list(const request&);
 	void handle_request_campaign(const request&);
 	void handle_request_terms(const request&);
@@ -199,5 +190,3 @@ private:
 };
 
 } // end namespace campaignd
-
-#endif

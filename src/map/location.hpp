@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef MAP_LOCATION_H_INCLUDED
-#define MAP_LOCATION_H_INCLUDED
+#pragma once
 
 class config;
 class variable_set;
@@ -399,6 +398,3 @@ inline size_t distance_between(const map_location& a, const map_location& b)
 
 	return std::max<int>(hdistance, std::abs(a.y - b.y) + vpenalty + hdistance/2);
 }
-
-
-#endif

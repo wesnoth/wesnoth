@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2016 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2017 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef WB_ACTION_HPP_
-#define WB_ACTION_HPP_
+#pragma once
 
 #include "typedefs.hpp"
 #include "map/location.hpp"
@@ -145,5 +144,3 @@ std::ostream& operator<<(std::ostream& s, action_ptr action);
 std::ostream& operator<<(std::ostream& s, action_const_ptr action);
 
 } // end namespace wb
-
-#endif /* WB_ACTION_HPP_ */

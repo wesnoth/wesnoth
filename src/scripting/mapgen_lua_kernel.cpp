@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -43,7 +43,7 @@ struct lua_State;
  */
 static int intf_random(lua_State *L)
 {
-	boost::mt19937& rng = lua_kernel_base::get_lua_kernel<mapgen_lua_kernel>(L).get_default_rng();
+	std::mt19937& rng = lua_kernel_base::get_lua_kernel<mapgen_lua_kernel>(L).get_default_rng();
 	if(lua_isnoneornil(L, 1)) {
 		double r = double (rng());
 		double r_max = double (rng.max());
@@ -87,7 +87,7 @@ static int intf_find_path(lua_State *L)
 	src.set_wml_y(luaL_checkinteger(L, 2));
 	dst.set_wml_x(luaL_checkinteger(L, 3));
 	dst.set_wml_y(luaL_checkinteger(L, 4));
-	if(lua_isfunction(L, arg)) { 
+	if(lua_isfunction(L, arg)) {
 		const char *msg = lua_pushfstring(L, "%s expected, got %s", lua_typename(L, LUA_TFUNCTION), luaL_typename(L, 5));
 		return luaL_argerror(L, 5, msg);
 	}
@@ -132,7 +132,7 @@ mapgen_lua_kernel::mapgen_lua_kernel()
 
 	lua_settop(L, 0);
 
-	static luaL_Reg const callbacks[] = {
+	static luaL_Reg const callbacks[] {
 		{ "find_path",           &intf_find_path           },
 		{ "random",              &intf_random              },
 		{ nullptr, nullptr }
@@ -201,10 +201,10 @@ uint32_t mapgen_lua_kernel::get_random_seed()
 	}
 }
 
-boost::mt19937& mapgen_lua_kernel::get_default_rng()
+std::mt19937& mapgen_lua_kernel::get_default_rng()
 {
 	if(!default_rng_) {
-		default_rng_ = boost::mt19937(get_random_seed());
+		default_rng_ = std::mt19937(get_random_seed());
 	}
 	return *default_rng_;
 }

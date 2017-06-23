@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2010 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,8 +11,10 @@
 
    See the COPYING file for more details.
 */
-#ifndef EXCEPTIONS_HPP_INCLUDED
-#define EXCEPTIONS_HPP_INCLUDED
+
+#pragma once
+
+#include "global.hpp"
 
 #include <exception>
 #include <string>
@@ -30,14 +32,12 @@ struct error : std::exception
 
 	error() : message() {}
 	error(const std::string &msg) : message(msg) {}
-	~error() throw() {}
+	~error() NOEXCEPT {}
 
-	const char *what() const throw()
+	const char *what() const NOEXCEPT
 	{
 		return message.c_str();
 	}
 };
 
 }
-
-#endif

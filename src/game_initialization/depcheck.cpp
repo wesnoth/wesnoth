@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Boldizsár Lipka <lipkab@zoho.com>
+   Copyright (C) 2012 - 2017 by Boldizsár Lipka <lipkab@zoho.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,6 +19,7 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "utils/general.hpp"
 
 #include "gui/dialogs/depcheck_confirm_change.hpp"
 #include "gui/dialogs/depcheck_select_new.hpp"
@@ -186,7 +187,7 @@ std::vector<std::string> manager::get_required_not_enabled(const elem& e) const
 	std::vector<std::string> result;
 
 	for (std::string str : required) {
-		if ( !util::contains(mods_, str) ) {
+		if ( !utils::contains(mods_, str) ) {
 			result.push_back(str);
 		}
 	}
@@ -227,7 +228,7 @@ bool manager::conflicts(const elem& elem1, const elem& elem2, bool directonly) c
 		std::vector<std::string> ignored =
 						utils::split(data1["ignore_incompatible_" + elem2.type]);
 
-		if ( util::contains(ignored, elem2.id) ) {
+		if ( utils::contains(ignored, elem2.id) ) {
 			return false;
 		}
 	}
@@ -236,7 +237,7 @@ bool manager::conflicts(const elem& elem1, const elem& elem2, bool directonly) c
 		std::vector<std::string> ignored =
 						utils::split(data2["ignore_incompatible_" + elem1.type]);
 
-		if ( util::contains(ignored, elem1.id) ) {
+		if ( utils::contains(ignored, elem1.id) ) {
 			return false;
 		}
 	}
@@ -248,24 +249,24 @@ bool manager::conflicts(const elem& elem1, const elem& elem2, bool directonly) c
 		std::vector<std::string> allowed =
 						utils::split(data1["allow_" + elem2.type]);
 
-		result = !util::contains(allowed, elem2.id) && !requires(elem1, elem2);
+		result = !utils::contains(allowed, elem2.id) && !requires(elem1, elem2);
 	} else if (data1.has_attribute("disallow_" + elem2.type)) {
 		std::vector<std::string> disallowed =
 						utils::split(data1["disallow_" + elem2.type]);
 
-		result = util::contains(disallowed, elem2.id);
+		result = utils::contains(disallowed, elem2.id);
 	}
 
 	if (data2.has_attribute("allow_" + elem1.type)) {
 		std::vector<std::string> allowed =
 						utils::split(data2["allow_" + elem1.type]);
 
-		result = result || (!util::contains(allowed, elem1.id) && !requires(elem2, elem1));
+		result = result || (!utils::contains(allowed, elem1.id) && !requires(elem2, elem1));
 	} else if (data2.has_attribute("disallow_" + elem1.type)) {
 		std::vector<std::string> disallowed =
 						utils::split(data2["disallow_" + elem1.type]);
 
-		result = result || util::contains(disallowed, elem1.id);
+		result = result || utils::contains(disallowed, elem1.id);
 	}
 
 	if (result) {
@@ -322,7 +323,7 @@ bool manager::requires(const elem& elem1, const elem& elem2) const
 		std::vector<std::string> required =
 							utils::split(data["force_modification"]);
 
-		return util::contains(required, elem2.id);
+		return utils::contains(required, elem2.id);
 	}
 
 	return false;
@@ -546,7 +547,7 @@ bool manager::change_scenario(const std::string& id)
 
 	std::vector<std::string> newmods = req;
 	for (const std::string& i : mods_) {
-		if ( !util::contains(con, i) ) {
+		if ( !utils::contains(con, i) ) {
 			newmods.push_back(i);
 		}
 	}
@@ -616,7 +617,7 @@ bool manager::change_era(const std::string& id)
 
 	std::vector<std::string> newmods = req;
 	for (const std::string& i : mods_) {
-		if ( !util::contains(con, i) ) {
+		if ( !utils::contains(con, i) ) {
 			newmods.push_back(i);
 		}
 	}
@@ -689,7 +690,7 @@ bool manager::change_modifications
 		}
 	}
 
-	if ( !util::contains(compatible, era_) ) {
+	if ( !utils::contains(compatible, era_) ) {
 		if (!compatible.empty()) {
 			era_ = change_era_dialog(compatible);
 		} else {
@@ -726,7 +727,7 @@ bool manager::change_modifications
 		}
 	}
 
-	if ( !util::contains(compatible, scenario_) ) {
+	if ( !utils::contains(compatible, scenario_) ) {
 		if (!compatible.empty()) {
 			scenario_ = change_scenario_dialog(compatible);
 		} else {

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_AUXILIARY_EVENT_DISTRIBUTOR_HPP_INCLUDED
-#define GUI_WIDGETS_AUXILIARY_EVENT_DISTRIBUTOR_HPP_INCLUDED
+#pragma once
 
 /**
  * @file
@@ -151,12 +150,28 @@ private:
 
 /***** ***** ***** ***** mouse_button ***** ***** ***** ***** *****/
 
-template <ui_event sdl_button_down,
-		  ui_event sdl_button_up,
-		  ui_event button_down,
-		  ui_event button_up,
-		  ui_event button_click,
-		  ui_event button_double_click>
+/**
+ * Small helper metastruct to specialize mouse_button with and provide ui_event type
+ * aliases without needing to make mouse_button take a million template types.
+ */
+template<
+		ui_event sdl_button_down,
+		ui_event sdl_button_up,
+		ui_event button_down,
+		ui_event button_up,
+		ui_event button_click,
+		ui_event button_double_click>
+struct mouse_button_event_types_wrapper
+{
+	static const ui_event sdl_button_down_event     = sdl_button_down;
+	static const ui_event sdl_button_up_event       = sdl_button_up;
+	static const ui_event button_down_event         = button_down;
+	static const ui_event button_up_event           = button_up;
+	static const ui_event button_click_event        = button_click;
+	static const ui_event button_double_click_event = button_double_click;
+};
+
+template<typename T>
 class mouse_button : public virtual mouse_motion
 {
 public:
@@ -209,32 +224,42 @@ private:
 
 /***** ***** ***** ***** distributor ***** ***** ***** ***** *****/
 
-typedef mouse_button<SDL_LEFT_BUTTON_DOWN,
-					  SDL_LEFT_BUTTON_UP,
-					  LEFT_BUTTON_DOWN,
-					  LEFT_BUTTON_UP,
-					  LEFT_BUTTON_CLICK,
-					  LEFT_BUTTON_DOUBLE_CLICK> mouse_button_left;
+using mouse_button_left = mouse_button<
+	mouse_button_event_types_wrapper<
+		SDL_LEFT_BUTTON_DOWN,
+		SDL_LEFT_BUTTON_UP,
+		LEFT_BUTTON_DOWN,
+		LEFT_BUTTON_UP,
+		LEFT_BUTTON_CLICK,
+		LEFT_BUTTON_DOUBLE_CLICK>
+	>;
 
-typedef mouse_button<SDL_MIDDLE_BUTTON_DOWN,
-					  SDL_MIDDLE_BUTTON_UP,
-					  MIDDLE_BUTTON_DOWN,
-					  MIDDLE_BUTTON_UP,
-					  MIDDLE_BUTTON_CLICK,
-					  MIDDLE_BUTTON_DOUBLE_CLICK> mouse_button_middle;
+using mouse_button_middle = mouse_button<
+	mouse_button_event_types_wrapper<
+		SDL_MIDDLE_BUTTON_DOWN,
+		SDL_MIDDLE_BUTTON_UP,
+		MIDDLE_BUTTON_DOWN,
+		MIDDLE_BUTTON_UP,
+		MIDDLE_BUTTON_CLICK,
+		MIDDLE_BUTTON_DOUBLE_CLICK>
+	>;
 
-typedef mouse_button<SDL_RIGHT_BUTTON_DOWN,
-					  SDL_RIGHT_BUTTON_UP,
-					  RIGHT_BUTTON_DOWN,
-					  RIGHT_BUTTON_UP,
-					  RIGHT_BUTTON_CLICK,
-					  RIGHT_BUTTON_DOUBLE_CLICK> mouse_button_right;
+using mouse_button_right = mouse_button<
+	mouse_button_event_types_wrapper<
+		SDL_RIGHT_BUTTON_DOWN,
+		SDL_RIGHT_BUTTON_UP,
+		RIGHT_BUTTON_DOWN,
+		RIGHT_BUTTON_UP,
+		RIGHT_BUTTON_CLICK,
+		RIGHT_BUTTON_DOUBLE_CLICK>
+	>;
 
 
 /** The event handler class for the widget library. */
-class distributor : public mouse_button_left,
-					 public mouse_button_middle,
-					 public mouse_button_right
+class distributor :
+	public mouse_button_left,
+	public mouse_button_middle,
+	public mouse_button_right
 {
 public:
 	distributor(widget& owner, const dispatcher::queue_position queue_position);
@@ -271,6 +296,11 @@ public:
 	 * @param widget              The widget to be removed from the chain.
 	 */
 	void keyboard_remove_from_chain(widget* widget);
+
+	/**
+	 * Return the widget currently capturing keyboard input.
+	 */
+	widget* keyboard_focus() const;
 
 private:
 	class layer : public video2::draw_layering
@@ -326,11 +356,15 @@ private:
 									 const SDL_Keymod modifier,
 									 const utf8::string& unicode);
 
+	void signal_handler_sdl_text_input(const utf8::string& unicode, int32_t start, int32_t len);
+	void signal_handler_sdl_text_editing(const utf8::string& unicode, int32_t start, int32_t len);
+
+	template<typename Fcn, typename P1, typename P2, typename P3>
+	void signal_handler_keyboard_internal(event::ui_event evt, P1&& p1, P2&& p2, P3&& p3);
+
 	void signal_handler_notify_removal(dispatcher& widget, const ui_event event);
 };
 
 } // namespace event
 
 } // namespace gui2
-
-#endif

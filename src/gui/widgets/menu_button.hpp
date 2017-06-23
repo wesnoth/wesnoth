@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,12 @@
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 
+#include "gui/dialogs/drop_down_menu.hpp"
+
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/selectable_item.hpp"
+
+#include <boost/dynamic_bitset.hpp>
 
 class config;
 
@@ -64,11 +68,10 @@ public:
 	{
 		retval_ = retval;
 	}
-	void set_values(const std::vector<::config>& values, int selected = 0);
-	void set_selected(int selected);
 
-	/** See selectable_item::set_callback_state_change. */
-	std::function<void(widget&)> callback_state_change_;
+	void set_values(const std::vector<::config>& values, int selected = 0);
+
+	void set_selected(int selected);
 
 	/** Inherited from selectable_item */
 	virtual unsigned get_value() const override { return selected_; }
@@ -86,7 +89,15 @@ public:
 	}
 
 	/** Returns the value of the selected row */
-	std::string get_value_string() const { return values_[selected_]["label"]; }
+	std::string get_value_string() const
+	{
+		return values_[selected_]["label"];
+	}
+
+	void set_keep_open(const bool keep_open)
+	{
+		keep_open_ = keep_open;
+	}
 
 private:
 	/**
@@ -99,10 +110,10 @@ private:
 		DISABLED,
 		PRESSED,
 		FOCUSED,
-		COUNT
 	};
 
 	void set_state(const state_t state);
+
 	/**
 	 * Current state of the widget.
 	 *
@@ -118,12 +129,17 @@ private:
 	 * the window and the window closes itself.
 	 */
 	int retval_;
-	/**
-	 */
+
 	std::vector<::config> values_;
-	/**
-	 */
+
 	int selected_;
+
+	bool keep_open_;
+
+	dialogs::drop_down_menu* droplist_;
+
+	/** See selectable_item::set_callback_state_change. */
+	std::function<void(widget&)> callback_state_change_;
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
@@ -134,14 +150,11 @@ private:
 
 	void signal_handler_mouse_leave(const event::ui_event event, bool& handled);
 
-	void signal_handler_left_button_down(const event::ui_event event,
-										 bool& handled);
+	void signal_handler_left_button_down(const event::ui_event event, bool& handled);
 
-	void signal_handler_left_button_up(const event::ui_event event,
-									   bool& handled);
+	void signal_handler_left_button_up(const event::ui_event event, bool& handled);
 
-	void signal_handler_left_button_click(const event::ui_event event,
-										  bool& handled);
+	void signal_handler_left_button_click(const event::ui_event event, bool& handled);
 };
 
 // }---------- DEFINITION ---------{

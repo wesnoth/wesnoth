@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Sytyi Nick <nsytyi@gmail.com>
+   Copyright (C) 2011 - 2017 by Sytyi Nick <nsytyi@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,16 +12,13 @@
    See the COPYING file for more details.
 */
 
-#ifndef SCHEMA_VALIDATOR_HPP
-#define SCHEMA_VALIDATOR_HPP
+#pragma once
 
 #include "serialization/validator.hpp"
-#include "tools/schema/tag.hpp"
+#include "serialization/tag.hpp"
 
 #include "config_cache.hpp"
 #include "serialization/parser.hpp"
-
-
 
 #include <boost/regex.hpp>
 
@@ -149,5 +146,3 @@ private:
 	 std::map<std::string,boost::regex> types_;
 };
 }//namespace schema_validation{
-
-#endif // SCHEMA_VALIDATOR_HPP

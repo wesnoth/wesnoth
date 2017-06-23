@@ -1,6 +1,6 @@
 
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,8 +18,7 @@
  * Composite AI contexts
  */
 
-#ifndef AI_COMPOSITE_CONTEXTS_HPP_INCLUDED
-#define AI_COMPOSITE_CONTEXTS_HPP_INCLUDED
+#pragma once
 
 #include "ai/default/contexts.hpp"
 
@@ -160,7 +159,4 @@ private:
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
-
 #endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2012 - 2017 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -32,16 +32,13 @@ std::string item_palette::get_help_string()
 
 void item_palette::setup(const config& cfg)
 {
+	for(const config& group : cfg.child_range("item_group")) {
+		groups_.emplace_back(group);
 
-	for (const config& group : cfg.child_range("item_group")) {
-
-		groups_.push_back(item_group(group));
-
-		for (const config& item : group.child_range("item")) {
-
-			item_map_.insert(std::pair<std::string, overlay>(item["id"], overlay(item)));
+		for(const config& item : group.child_range("item")) {
+			item_map_.emplace(item["id"], overlay(item));
 			group_map_[group["id"]].push_back(item["id"]);
-			if (!group["core"].to_bool(false))
+			if(!group["core"].to_bool(false))
 				non_core_items_.insert(item["id"]);
 		}
 		nmax_items_ = std::max<int>(nmax_items_, group_map_[group["id"]].size());
@@ -60,26 +57,25 @@ void item_palette::setup(const config& cfg)
 
 void item_palette::draw_item(const overlay& item, surface& image, std::stringstream& tooltip_text)
 {
-
 	std::stringstream filename;
 	filename << item.image;
-	if (item.image.empty())
+	if(item.image.empty()) {
 		filename << item.halo;
+	}
 
 	image = image::get_image(filename.str());
 	if(image == nullptr) {
 		tooltip_text << "IMAGE NOT FOUND\n";
 		ERR_ED << "image for item type: '" << filename.str() << "' not found" << std::endl;
 		image = image::get_image(game_config::images::missing);
-		if (image == nullptr) {
+		if(image == nullptr) {
 			ERR_ED << "Placeholder image not found" << std::endl;
 			return;
 		}
 	}
 
 	if(image->w != item_size_ || image->h != item_size_) {
-		image.assign(scale_surface(image,
-				item_size_, item_size_));
+		image.assign(scale_surface(image, item_size_, item_size_));
 	}
 
 	tooltip_text << item.name;

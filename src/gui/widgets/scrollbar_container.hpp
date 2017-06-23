@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_SCROLLBAR_CONTAINER_HPP_INCLUDED
-#define GUI_WIDGETS_SCROLLBAR_CONTAINER_HPP_INCLUDED
+#pragma once
 
 #include "gui/core/notifiee.hpp"
 #include "gui/widgets/container_base.hpp"
@@ -51,7 +50,7 @@ class scrollbar_container : public container_base
 	friend struct scrollbar_container_implementation;
 
 public:
-	explicit scrollbar_container(const unsigned canvas_count);
+	scrollbar_container();
 
 	~scrollbar_container()
 	{
@@ -88,8 +87,8 @@ public:
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
-	/** See @ref widget::layout_initialise. */
-	virtual void layout_initialise(const bool full_initialisation) override;
+	/** See @ref widget::layout_initialize. */
+	virtual void layout_initialize(const bool full_initialization) override;
 
 	/** See @ref widget::request_reduce_height. */
 	virtual void request_reduce_height(const unsigned maximum_height) override;
@@ -456,7 +455,6 @@ private:
 	enum state_t {
 		ENABLED,
 		DISABLED,
-		COUNT
 	};
 
 	/**
@@ -574,5 +572,3 @@ public:
 };
 
 } // namespace gui2
-
-#endif

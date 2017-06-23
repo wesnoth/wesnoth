@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,8 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_AUXILIARY_EVENT_HANDLER_HPP_INCLUDED
-#define GUI_WIDGETS_AUXILIARY_EVENT_HANDLER_HPP_INCLUDED
+#pragma once
+
 #ifdef BOOST_MPL_LIMIT_SET_SIZE
 #undef BOOST_MPL_LIMIT_SET_SIZE
 #endif
@@ -27,12 +27,10 @@
 
 namespace gui2
 {
-
 class window;
 
 namespace event
 {
-
 class dispatcher;
 
 class manager
@@ -55,131 +53,71 @@ public:
  * @note When adding a new entry to the enum also add a unit test.
  */
 enum ui_event {
-	DRAW /**< Periodic redraw request. */
-	,
-	CLOSE_WINDOW /**< A request to close the current window. */
-	,
-	SDL_VIDEO_RESIZE /**<
-					  * A SDL resize request, coordinate is the
-					  * new window size.
-					  */
-	,
-	SDL_MOUSE_MOTION /**< A SDL mouse motion event. */
-	,
-	MOUSE_ENTER /**< A mouse enter event for a widget. */
-	,
-	MOUSE_MOTION /**< A mouse motion event for a widget. */
-	,
-	MOUSE_LEAVE /**< A mouse leave event for a widget. */
-	,
-	SDL_LEFT_BUTTON_DOWN /**< A SDL left mouse button down event. */
-	,
-	SDL_LEFT_BUTTON_UP /**< A SDL left mouse button up event. */
-	,
-	LEFT_BUTTON_DOWN /**<
-					  * A left mouse button down event for a widget.
-					  */
-	,
-	LEFT_BUTTON_UP /**<
-					* A left mouse button up event for a widget.
-					*/
-	,
-	LEFT_BUTTON_CLICK /**<
-					   * A left mouse button click event for a
-					   * widget.
-					   */
-	,
-	LEFT_BUTTON_DOUBLE_CLICK /**<
-							  * A left mouse button double click event for
-							  * a widget.
-							  */
-	,
-	SDL_MIDDLE_BUTTON_DOWN /**< A SDL middle mouse button down event. */
-	,
-	SDL_MIDDLE_BUTTON_UP /**< A SDL middle mouse button up event. */
-	,
-	MIDDLE_BUTTON_DOWN /**< See LEFT_BUTTON_DOWN. */
-	,
-	MIDDLE_BUTTON_UP /**< See LEFT_BUTTON_UP. */
-	,
-	MIDDLE_BUTTON_CLICK /**< See LEFT_BUTTON_CLICK. */
-	,
-	MIDDLE_BUTTON_DOUBLE_CLICK /**< See LEFT_BUTTON_DOUBLE_CLICK. */
-	,
-	SDL_RIGHT_BUTTON_DOWN /**< A SDL right mouse button down event. */
-	,
-	SDL_RIGHT_BUTTON_UP /**< A SDL right mouse button up event. */
-	,
-	RIGHT_BUTTON_DOWN /**< See LEFT_BUTTON_DOWN. */
-	,
-	RIGHT_BUTTON_UP /**< See LEFT_BUTTON_UP. */
-	,
-	RIGHT_BUTTON_CLICK /**< See LEFT_BUTTON_CLICK. */
-	,
-	RIGHT_BUTTON_DOUBLE_CLICK /**< See LEFT_BUTTON_DOUBLE_CLICK. */
-	,
-	SDL_WHEEL_LEFT /**< A SDL wheel left event. */
-	,
-	SDL_WHEEL_RIGHT /**< A SDL wheel right event. */
-	,
-	SDL_WHEEL_UP /**< A SDL wheel up event. */
-	,
-	SDL_WHEEL_DOWN /**< A SDL wheel down event. */
-	,
-	SDL_KEY_DOWN /**< A SDL key down event. */
-	,
-	NOTIFY_REMOVAL /**<
-					* Send by a widget to notify others it's
-					* being destroyed.
-					*/
-	,
-	NOTIFY_MODIFIED /**<
-					 * Send by a widget to notify others its
-					 * contents or state are modified.
-					 *
-					 * What modified means is documented per
-					 * widget. If not documented the modified
-					 * means nothing.
-					 */
-	,
-	RECEIVE_KEYBOARD_FOCUS /**< Widget gets keyboard focus. */
-	,
-	LOSE_KEYBOARD_FOCUS /**< Widget loses keyboard focus. */
-	,
-	SHOW_TOOLTIP /**<
-				  * Request the widget to show its hover
-				  * tooltip.
-				  */
-	,
-	NOTIFY_REMOVE_TOOLTIP /**<
-						   * Request the widget to show its hover
-						   * tooltip.
-						   */
-	,
-	SDL_ACTIVATE /**<
-				  * The main application window is activated.
-				  */
-	,
-	MESSAGE_SHOW_TOOLTIP /**<
-						  * Request for somebody to show the tooltip
-						  * based on the data send.
-						  */
-	,
-	SHOW_HELPTIP /**<
-				  * Request the widget to show its hover
-				  * helptip.
-				  */
-	,
-	MESSAGE_SHOW_HELPTIP /**<
-						  * Request for somebody to show the helptip
-						  * based on the data send.
-						  */
-	,
-	REQUEST_PLACEMENT /**<
-					   * Request for somebody to place the widget.
-					   * This may also cause updating of more
-					   * layout parts.
-					   */
+	SDL_ACTIVATE,                   /**< The main application window is activated. */
+	DRAW,                           /**< Periodic redraw request. */
+	CLOSE_WINDOW,                   /**< A request to close the current window. */
+	SDL_VIDEO_RESIZE,               /**< An SDL resize request, coordinate is the new window size. */
+
+	SDL_MOUSE_MOTION,               /**< An SDL mouse motion event. */
+	MOUSE_ENTER,                    /**< A mouse enter event for a widget. */
+	MOUSE_MOTION,                   /**< A mouse motion event for a widget. */
+	MOUSE_LEAVE,                    /**< A mouse leave event for a widget. */
+
+	SDL_LEFT_BUTTON_DOWN,           /**< An SDL left mouse button down event. */
+	SDL_LEFT_BUTTON_UP,             /**< An SDL left mouse button up event. */
+	LEFT_BUTTON_DOWN,               /**< A left mouse button down event for a widget. */
+	LEFT_BUTTON_UP,                 /**< A left mouse button up event for a widget. */
+	LEFT_BUTTON_CLICK,              /**< A left mouse button click event for a widget. */
+	LEFT_BUTTON_DOUBLE_CLICK,       /**< A left mouse button double click event for a widget. */
+
+	SDL_MIDDLE_BUTTON_DOWN,         /**< An SDL middle mouse button down event. */
+	SDL_MIDDLE_BUTTON_UP,           /**< An SDL middle mouse button up event. */
+	MIDDLE_BUTTON_DOWN,             /**< See LEFT_BUTTON_DOWN. */
+	MIDDLE_BUTTON_UP,               /**< See LEFT_BUTTON_UP. */
+	MIDDLE_BUTTON_CLICK,            /**< See LEFT_BUTTON_CLICK. */
+	MIDDLE_BUTTON_DOUBLE_CLICK,     /**< See LEFT_BUTTON_DOUBLE_CLICK. */
+
+	SDL_RIGHT_BUTTON_DOWN,          /**< An SDL right mouse button down event. */
+	SDL_RIGHT_BUTTON_UP,            /**< An SDL right mouse button up event. */
+	RIGHT_BUTTON_DOWN,              /**< See LEFT_BUTTON_DOWN. */
+	RIGHT_BUTTON_UP,                /**< See LEFT_BUTTON_UP. */
+	RIGHT_BUTTON_CLICK,             /**< See LEFT_BUTTON_CLICK. */
+	RIGHT_BUTTON_DOUBLE_CLICK,      /**< See LEFT_BUTTON_DOUBLE_CLICK. */
+
+	SDL_WHEEL_LEFT,                 /**< An SDL wheel left event. */
+	SDL_WHEEL_RIGHT,                /**< An SDL wheel right event. */
+	SDL_WHEEL_UP,                   /**< An SDL wheel up event. */
+	SDL_WHEEL_DOWN,                 /**< An SDL wheel down event. */
+	SDL_KEY_DOWN,                   /**< An SDL key down event. */
+	SDL_TEXT_INPUT,                 /**< An SDL text input (commit) event. */
+	SDL_TEXT_EDITING,               /**< An SDL text editing (IME) event. */
+
+	NOTIFY_REMOVAL,                 /**< Sent by a widget to notify others it's being destroyed. */
+	NOTIFY_MODIFIED,                /**<
+	                                 * Sent by a widget to notify others its contents or state are modified.
+	                                 *
+	                                 * What modified means is documented per widget. If not documented the request
+	                                 * means nothing.
+	                                 */
+	REQUEST_PLACEMENT,              /**<
+	                                 * Request to place the widget. This may also trigger an update of other
+	                                 * layout components.
+	                                 */
+
+	RECEIVE_KEYBOARD_FOCUS,         /**< Widget gains keyboard focus. */
+	LOSE_KEYBOARD_FOCUS,            /**< Widget loses keyboard focus. */
+
+	SHOW_TOOLTIP,                   /**< Request the widget to show its hover tooltip. */
+	NOTIFY_REMOVE_TOOLTIP,          /**< Request the widget to remove its hover tooltip. */
+	MESSAGE_SHOW_TOOLTIP,           /**< Request to show a tooltip based on the data sent. */
+	SHOW_HELPTIP,                   /**< Request the widget to show its hover helptip. */
+	MESSAGE_SHOW_HELPTIP,           /**< Request to show a helptip based on the data sent. */
+
+	SDL_TOUCH_MOTION,
+	SDL_TOUCH_UP,
+	SDL_TOUCH_DOWN,
+
+	SDL_RAW_EVENT					/**< Raw SDL event. */
 };
 
 /**
@@ -243,6 +181,16 @@ typedef boost::mpl::set<boost::mpl::int_<SDL_KEY_DOWN> > set_event_keyboard;
 /**
  * Helper for catching use error of dispatcher::connect_signal.
  *
+ * This version is for callbacks of touch events.
+ */
+typedef boost::mpl::set<boost::mpl::int_<SDL_TOUCH_MOTION>,
+						boost::mpl::int_<SDL_TOUCH_UP>,
+						boost::mpl::int_<SDL_TOUCH_DOWN> >
+set_event_touch;
+
+/**
+ * Helper for catching use error of dispatcher::connect_signal.
+ *
  * This version is for callbacks with a sender aka notification messages. Like
  *the
  * ones in set_event it has no extra parameters, but this version is only
@@ -268,6 +216,22 @@ typedef boost::mpl::set<boost::mpl::int_<MESSAGE_SHOW_TOOLTIP>,
 						boost::mpl::int_<MESSAGE_SHOW_HELPTIP>,
 						boost::mpl::int_<REQUEST_PLACEMENT> >
 set_event_message;
+
+/**
+ * Helper for catching use error of dispatcher::connect_signal.
+ *
+ * This version is for callbacks of raw events.
+ */
+typedef boost::mpl::set<boost::mpl::int_<SDL_RAW_EVENT> > set_event_raw_event;
+
+/**
+ * Helper for catching use error of dispatcher::connect_signal.
+ *
+ * This version is for callbacks of text input events.
+ */
+typedef boost::mpl::set<boost::mpl::int_<SDL_TEXT_INPUT>,
+                        boost::mpl::int_<SDL_TEXT_EDITING>>
+set_event_text_input;
 
 /**
  * Connects a dispatcher to the event handler.
@@ -341,5 +305,3 @@ extern std::vector<window*> open_window_stack;
 bool is_in_dialog();
 
 } // namespace gui2
-
-#endif

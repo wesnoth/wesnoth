@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,10 +18,8 @@
  * excluding conditional action WML.
  */
 
-#include "global.hpp"
 #include "game_events/action_wml.hpp"
 #include "game_events/conditional_wml.hpp"
-#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 
 #include "actions/attack.hpp"
@@ -29,12 +27,11 @@
 #include "actions/move.hpp"
 #include "actions/vision.hpp"
 #include "ai/manager.hpp"
-#include "config_assign.hpp"
 #include "fake_unit_ptr.hpp"
 #include "filesystem.hpp"
 #include "game_classification.hpp"
 #include "game_display.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
@@ -48,7 +45,7 @@
 #include "play_controller.hpp"
 #include "recall_list_manager.hpp"
 #include "replay.hpp"
-#include "random_new.hpp"
+#include "random.hpp"
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "side_filter.hpp"
@@ -113,8 +110,9 @@ namespace { // Support functions
 		std::string img_mods = cfg["image_mods"];
 
 		size_t side_num = cfg["side"].to_int(1);
-		if ( side_num == 0  ||  side_num > resources::gameboard->teams().size() )
+		if (!resources::gameboard->has_team(side_num)) {
 			side_num = 1;
+		}
 
 		unit_race::GENDER gender = string_gender(cfg["gender"]);
 		const unit_type *ut = unit_types.find(type);
@@ -163,7 +161,7 @@ namespace { // Support functions
 				continue;
 			}
 			pathfind::shortest_path_calculator calc(fake_unit,
-					resources::gameboard->teams()[fake_unit.side()-1],
+					resources::gameboard->get_team(fake_unit.side()),
 					resources::gameboard->teams(),
 					*game_map);
 
@@ -283,12 +281,17 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 		return;
 	}
 
-	static const std::set<std::string> allowed_tags = {"attack", "move", "recruit", "recall", "disband", "fire_event", "lua_ai"};
+	static const std::set<std::string> allowed_tags {"attack", "move", "recruit", "recall", "disband", "fire_event", "lua_ai"};
 
 	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
 	if(is_too_early)
 	{
 		ERR_NG << "[do_command] called too early, only allowed at START or later" << std::endl;
+		return;
+	}
+	if(!resources::controller->current_team().is_local() && synced_context::get_synced_state() == synced_context::UNSYNCED)
+	{
+		ERR_NG << "[do_command] can only be used from clients that control the currently playing side" << std::endl;
 		return;
 	}
 	for(vconfig::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i)
@@ -300,6 +303,9 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 			ERR_NG << "allowed tags: " << o.str() << std::endl;
 			continue;
 		}
+		// TODO: afaik run_in_synced_context_if_not_already thows exceptions when the executed action end the scenario or the turn.
+		//       This could cause problems, specially when its unclear whether that excetion is caught by lua or not...
+
 		//Note that this fires related events and everthing else that also happen normally.
 		//have to watch out with the undo stack, therefore forbid [auto_shroud] and [update_shroud] here...
 		synced_context::run_in_synced_context_if_not_already(
@@ -449,7 +455,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 		}
 
 		recall_list_manager & avail = resources::gameboard->teams()[index].recall_list();
-		std::vector<unit_map::unit_iterator> leaders = resources::units->find_leaders(index + 1);
+		std::vector<unit_map::unit_iterator> leaders = resources::gameboard->units().find_leaders(index + 1);
 
 		const unit_filter ufilt(unit_filter_cfg, resources::filter_con);
 		const unit_filter lfilt(leader_filter, resources::filter_con); // Note that if leader_filter is null, this correctly gives a null filter that matches all units.
@@ -472,7 +478,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 						DBG_NG << "...matched the leader filter and is able to recall the unit.\n";
 						if(!resources::gameboard->map().on_board(loc))
 							loc = leader->get_location();
-						if(pass_check || (resources::units->count(loc) > 0))
+						if(pass_check || (resources::gameboard->units().count(loc) > 0))
 							loc = pathfind::find_vacant_tile(loc, pathfind::VACANT_ANY, pass_check);
 						if(resources::gameboard->map().on_board(loc)) {
 							DBG_NG << "...valid location for the recall found. Recalling.\n";
@@ -486,7 +492,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 				}
 				if (resources::gameboard->map().on_board(cfg_loc)) {
 					map_location loc = cfg_loc;
-					if(pass_check || (resources::units->count(loc) > 0))
+					if(pass_check || (resources::gameboard->units().count(loc) > 0))
 						loc = pathfind::find_vacant_tile(loc, pathfind::VACANT_ANY, pass_check);
 					// Check if we still have a valid location
 					if (resources::gameboard->map().on_board(loc)) {
@@ -674,7 +680,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 
 				for(std::vector<std::string>::iterator i=split_vector.begin(); i!=split_vector.end(); ++i)
 				{
-					data.push_back(config_of(key_name, *i));
+					data.emplace_back(config {key_name, *i});
 				}
 			}
 		}
@@ -850,6 +856,7 @@ WML_HANDLER_FUNCTION(terrain_mask,, cfg)
 WML_HANDLER_FUNCTION(tunnel,, cfg)
 {
 	const bool remove = cfg["remove"].to_bool(false);
+	const bool delay = cfg["delayed_variable_substitution"].to_bool(true);
 	if (remove) {
 		const std::vector<std::string> ids = utils::split(cfg["id"]);
 		for (const std::string &id : ids) {
@@ -861,11 +868,11 @@ WML_HANDLER_FUNCTION(tunnel,, cfg)
 		ERR_WML << "[tunnel] is missing a mandatory tag:\n"
 			 << cfg.get_config().debug();
 	} else {
-		pathfind::teleport_group tunnel(cfg, false);
+		pathfind::teleport_group tunnel(delay ? cfg : vconfig(cfg.get_parsed_config()), false);
 		resources::tunnels->add(tunnel);
 
 		if(cfg["bidirectional"].to_bool(true)) {
-			tunnel = pathfind::teleport_group(cfg, true);
+			tunnel = pathfind::teleport_group(delay ? cfg : vconfig(cfg.get_parsed_config()), true);
 			resources::tunnels->add(tunnel);
 		}
 	}
@@ -905,7 +912,7 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 		DBG_NG << parsed_cfg.debug();
 		return;
 	}
-	team &tm = resources::gameboard->teams().at(side-1);
+	team &tm = resources::gameboard->get_team(side);
 
 	unit_creator uc(tm,resources::gameboard->map().starting_position(side));
 
@@ -921,34 +928,6 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 
 }
 
-WML_HANDLER_FUNCTION(volume,, cfg)
-{
-
-	int vol;
-	float rel;
-	std::string music = cfg["music"];
-	std::string sound = cfg["sound"];
-
-	if(!music.empty()) {
-		vol = preferences::music_volume();
-		rel = atof(music.c_str());
-		if (rel >= 0.0f && rel < 100.0f) {
-			vol = static_cast<int>(rel*vol/100.0f);
-		}
-		sound::set_music_volume(vol);
-	}
-
-	if(!sound.empty()) {
-		vol = preferences::sound_volume();
-		rel = atof(sound.c_str());
-		if (rel >= 0.0f && rel < 100.0f) {
-			vol = static_cast<int>(rel*vol/100.0f);
-		}
-		sound::set_sound_volume(vol);
-	}
-
-}
-
 WML_HANDLER_FUNCTION(on_undo, event_info, cfg)
 {
 	if(cfg["delayed_variable_substitution"].to_bool(false)) {
@@ -958,13 +937,8 @@ WML_HANDLER_FUNCTION(on_undo, event_info, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(on_redo, event_info, cfg)
+WML_HANDLER_FUNCTION(on_redo, , )
 {
-	if(cfg["delayed_variable_substitution"].to_bool(false)) {
-		synced_context::add_redo_commands(cfg.get_config(), event_info);
-	} else {
-		synced_context::add_redo_commands(cfg.get_parsed_config(), event_info);
-	}
 }
 
 } // end namespace game_events

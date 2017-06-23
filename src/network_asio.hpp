@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Sergey Popov <loonycyborg@gmail.com>
+   Copyright (C) 2011 - 2017 by Sergey Popov <loonycyborg@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef NETWORK_ASIO_HPP_INCLUDED
-#define NETWORK_ASIO_HPP_INCLUDED
+#pragma once
 
 #ifdef _WIN32
 # define BOOST_ASIO_DISABLE_IOCP
@@ -150,5 +149,3 @@ class connection
 };
 
 }
-
-#endif

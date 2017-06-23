@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2017 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of thie Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -40,7 +40,7 @@ public:
 namespace {
 
 std::unique_ptr<saved_game> state;
-std::unique_ptr<rand_rng::mt_rng> rng;
+std::unique_ptr<randomness::mt_rng> rng;
 
 }
 
@@ -71,7 +71,7 @@ struct mp_connect_fixture {
 
 		state->mp_settings().num_turns = state->get_starting_pos()["turns"];
 
-		rng.reset(new rand_rng::mt_rng());
+		rng.reset(new randomness::mt_rng());
 	}
 	~mp_connect_fixture()
 	{

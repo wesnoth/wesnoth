@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,11 +12,12 @@
    See the COPYING file for more details.
 */
 
-#ifndef WIDGET_HPP_INCLUDED
-#define WIDGET_HPP_INCLUDED
+#pragma once
 
 #include "events.hpp"
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
+
+#include <string>
 
 class CVideo;
 
@@ -82,7 +83,9 @@ protected:
 
 	CVideo& video() const { return *video_; }
 
+public:
 	virtual void draw();
+protected:
 	virtual void draw_contents() {}
 	virtual void update_location(SDL_Rect const &rect);
 
@@ -124,10 +127,7 @@ private:
 	bool mouse_lock_local_;
 	static bool mouse_lock_;
 
-	friend class scrollpane;
 	friend class dialog;
 };
 
 }
-
-#endif

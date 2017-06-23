@@ -1,4 +1,4 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 
 function wesnoth.micro_ais.messenger_escort(cfg)
 	if (cfg.action ~= 'delete') and (not cfg.id) and (not H.get_child(cfg, "filter")) then

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,8 +18,7 @@
  * and placed units).
  */
 
-#ifndef ACTIONS_CREATE_H_INCLUDED
-#define ACTIONS_CREATE_H_INCLUDED
+#pragma once
 
 class config;
 class team;
@@ -177,5 +176,3 @@ bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
                  bool show=true, bool use_undo=true);
 }//namespace actions
-
-#endif

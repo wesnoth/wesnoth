@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,7 +13,6 @@
 */
 
 #include "playturn.hpp"
-#include "global.hpp"
 
 #include "actions/undo.hpp"             // for undo_list
 #include "chat_events.hpp"              // for chat_handler, etc
@@ -30,13 +29,12 @@
 #include "map/label.hpp"
 #include "play_controller.hpp"          // for play_controller
 #include "playturn_network_adapter.hpp"  // for playturn_network_adapter
-#include "preferences.hpp"              // for message_bell
+#include "preferences/general.hpp"              // for message_bell
 #include "replay.hpp"                   // for replay, recorder, do_replay, etc
 #include "resources.hpp"                // for gameboard, screen, etc
 #include "serialization/string_utils.hpp"  // for string_map
 #include "team.hpp"                     // for team, team::CONTROLLER::AI, etc
 #include "tstring.hpp"                  // for operator==
-#include "util.hpp"                     // for lexical_cast
 #include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"       // for manager
 #include "widgets/button.hpp"           // for button
@@ -223,7 +221,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			ERR_NW << "unknown controller type issued from server on side drop: " << side_drop_c["controller"] << std::endl;
 			throw ingame_wesnothd_error("");
 		}
-		
+
 		if (ctrl == team::CONTROLLER::AI) {
 			resources::gameboard->side_drop_to(side_drop, ctrl);
 			return restart ? PROCESS_RESTART_TURN:PROCESS_CONTINUE;
@@ -262,7 +260,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				//if you want that) and not ai or empty and if it is not the dropping side itself,
 				//get this team in as well
 				t_vars["player"] = t->current_player();
-				options.push_back(vgettext("Give control to their ally $player", t_vars));
+				options.emplace_back(vgettext("Give control to their ally $player", t_vars));
 				control_change_options++;
 			}
 
@@ -271,15 +269,15 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			//get all observers in as options to transfer control
 			for (const std::string &screen_observers : resources::screen->observers()) {
 				t_vars["player"] = screen_observers;
-				options.push_back(vgettext("Give control to observer $player", t_vars));
+				options.emplace_back(vgettext("Give control to observer $player", t_vars));
 				observers.push_back(screen_observers);
 				control_change_options++;
 			}
 
-			options.push_back(_("Replace with AI"));
-			options.push_back(_("Replace with local player"));
-			options.push_back(_("Set side to idle"));
-			options.push_back(_("Save and abort game"));
+			options.emplace_back(_("Replace with AI"));
+			options.emplace_back(_("Replace with local player"));
+			options.emplace_back(_("Set side to idle"));
+			options.emplace_back(_("Save and abort game"));
 
 			t_vars["player"] = tm.current_player();
 			const std::string gettext_message =  vgettext("$player has left the game. What do you want to do?", t_vars);
@@ -299,7 +297,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 		if (action < control_change_options) {
 			// Grant control to selected ally
-			
+
 			{
 				// Server thinks this side is ours now so in case of error transferring side we have to make local state to same as what server thinks it is.
 				resources::gameboard->side_drop_to(side_drop, team::CONTROLLER::HUMAN, team::PROXY_CONTROLLER::PROXY_IDLE);

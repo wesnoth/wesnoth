@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef PLAYSINGLE_CONTROLLER_H_INCLUDED
-#define PLAYSINGLE_CONTROLLER_H_INCLUDED
+#pragma once
 
 #include "play_controller.hpp"
 
@@ -59,7 +58,7 @@ public:
 
 	bool get_player_type_changed() const { return player_type_changed_; }
 	void set_player_type_changed() { player_type_changed_ = true; }
-	virtual bool should_return_to_play_side() override;
+	virtual bool should_return_to_play_side() const override;
 	replay_controller * get_replay_controller() { return replay_.get(); }
 	bool is_replay() override { return get_replay_controller() != nullptr; }
 	void enable_replay(bool is_unit_test = false);
@@ -94,13 +93,10 @@ protected:
 		END_TURN_SYNCED,
 	};
 	END_TURN_STATE end_turn_;
-	bool skip_next_turn_;
+	bool skip_next_turn_, ai_fallback_;
 	std::unique_ptr<replay_controller> replay_;
 	void linger();
 	void sync_end_turn() override;
 	void update_viewing_player() override;
 	void reset_replay();
 };
-
-
-#endif

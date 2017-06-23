@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,9 +24,8 @@
 #include "config.hpp"
 #include "filter_context.hpp"
 #include "game_board.hpp"
-#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "game_data.hpp" // for resources::gamedata conversion variable_set
 #include "gettext.hpp"
 #include "log.hpp"
@@ -43,6 +42,7 @@
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
+#define WARN_NG LOG_STREAM(warn, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
 
 unit_creator::unit_creator(team &tm, const map_location &start_pos, game_board* board)
@@ -110,6 +110,9 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 	placements.push_back("map");
 	placements.push_back("recall");
 
+	bool pass = cfg["passable"].to_bool(false);
+	bool vacant = !cfg["overwrite"].to_bool(false);
+
 	for (const std::string& place : placements)
 	{
 		map_location loc;
@@ -126,19 +129,31 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 			} else {
 				loc = start_pos_;
 			}
+			if(place == "leader_passable") {
+				WARN_NG << "placement=leader_passable is deprecated; please use placement=leader and passable=yes instead\n";
+				pass = true;
+			}
 		}
 
 		// "map", "map_passable", and "map_overwrite".
-		else if ( place == "map"  ||  place.compare(0, 4, "map_") == 0 ) {
-			loc = map_location(cfg, resources::gamedata);
-		}
-		else {
-			loc = board_->map().special_location(place);
+		else if(place == "map"  ||  place == "map_passable" || place == "map_overwrite") {
+			if(cfg.has_attribute("location_id")) {
+				loc = board_->map().special_location(cfg["location_id"]);
+			}
+			if(!loc.valid()) {
+				loc = map_location(cfg, resources::gamedata);
+			}
+			if(place == "map_passable") {
+				WARN_NG << "placement=map_passable is deprecated; please use placement=map and passable=yes instead\n";
+				pass = true;
+			} else if(place == "map_overwrite") {
+				WARN_NG << "placement=map_overwrite is deprecated; please use placement=map and overwrite=yes instead\n";
+				vacant = false;
+			}
 		}
 
 		if(loc.valid() && board_->map().on_board(loc)) {
-			const bool pass((place == "leader_passable") || (place == "map_passable"));
-			if ( place != "map_overwrite" ) {
+			if(vacant) {
 				loc = find_vacant_tile(loc, pathfind::VACANT_ANY,
 				                       pass ? pass_check : nullptr, nullptr, board_);
 			}
@@ -170,7 +185,7 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 		map_location loc = find_location(temp_cfg, new_unit.get());
 		if ( loc.valid() ) {
 			//add the new unit to map
-			board_->units().replace(loc, *new_unit);
+			board_->units().replace(loc, new_unit);
 			LOG_NG << "inserting unit for side " << new_unit->side() << "\n";
 			post_create(loc,*(board_->units().find(loc)),animate);
 		}
@@ -184,7 +199,7 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 		//get unit from recall list
 		map_location loc = find_location(temp_cfg, recall_list_element.get());
 		if ( loc.valid() ) {
-			board_->units().replace(loc, *recall_list_element);
+			board_->units().replace(loc, recall_list_element);
 			LOG_NG << "inserting unit from recall list for side " << recall_list_element->side()<< " with id="<< id << "\n";
 			post_create(loc,*(board_->units().find(loc)),animate);
 			//if id is not empty, delete units with this ID from recall list

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -44,7 +44,7 @@ struct viewport_implementation
 	 * @tparam W                  A pointer to the pane.
 	 */
 	template <class W>
-	static typename utils::const_clone<widget, W>::pointer
+	static utils::const_clone_ptr<widget, W>
 	find_at(W viewport, point coordinate, const bool must_be_active)
 	{
 
@@ -66,7 +66,7 @@ struct viewport_implementation
 	}
 
 	template <class W>
-	static typename utils::const_clone<widget, W>::pointer
+	static utils::const_clone_ptr<widget, W>
 	find(W viewport, const std::string& id, const bool must_be_active)
 	{
 		if(viewport->widget::find(id, must_be_active)) {
@@ -111,12 +111,12 @@ void viewport::place(const point& origin, const point& size)
 	widget_.place(point(), widget_.get_best_size());
 }
 
-void viewport::layout_initialise(const bool full_initialisation)
+void viewport::layout_initialize(const bool full_initialization)
 {
-	widget::layout_initialise(full_initialisation);
+	widget::layout_initialize(full_initialization);
 
 	if(widget_.get_visible() != widget::visibility::invisible) {
-		widget_.layout_initialise(full_initialisation);
+		widget_.layout_initialize(full_initialization);
 	}
 }
 

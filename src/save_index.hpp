@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by Jörg Hinrichs, refactored from various
+   Copyright (C) 2003 - 2017 by Jörg Hinrichs, refactored from various
    places formerly created by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SAVE_INDEX_H_INCLUDED
-#define SAVE_INDEX_H_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "serialization/compression.hpp"
@@ -100,5 +99,3 @@ extern save_index_class save_index_manager;
 
 void replace_underbar2space(std::string &name);
 void replace_space2underbar(std::string &name);
-
-#endif

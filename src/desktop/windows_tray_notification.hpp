@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Maxim Biro <nurupo.contributions@gmail.com>
+   Copyright (C) 2013 - 2017 by Maxim Biro <nurupo.contributions@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef WINDOWS_TRAY_NOTIFICATION_HPP_INCLUDED
-#define WINDOWS_TRAY_NOTIFICATION_HPP_INCLUDED
+#pragma once
 
 #include <SDL.h>
 #include <string>
@@ -81,5 +80,3 @@ private:
 	windows_tray_notification(const windows_tray_notification& w);
 	windows_tray_notification& operator=(const windows_tray_notification& w);
 };
-
-#endif // WINDOWS_TRAY_NOTIFICATION_HPP_INCLUDED

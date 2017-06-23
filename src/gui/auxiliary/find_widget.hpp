@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_AUXILIARY_FIND_WIDGET_TPP_INCLUDED
-#define GUI_AUXILIARY_FIND_WIDGET_TPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/widget.hpp"
@@ -66,7 +65,7 @@ T& get_parent(widget& child)
  * @returns                   The widget with the id.
  */
 template <class T>
-T* find_widget(typename utils::const_clone<widget, T>::pointer widget,
+T* find_widget(utils::const_clone_ptr<widget, T> widget,
 			   const std::string& id,
 			   const bool must_be_active,
 			   const bool must_exist)
@@ -93,7 +92,7 @@ T* find_widget(typename utils::const_clone<widget, T>::pointer widget,
  * @returns                   The widget with the id.
  */
 template <class T>
-T& find_widget(typename utils::const_clone<widget, T>::pointer widget,
+T& find_widget(utils::const_clone_ptr<widget, T> widget,
 			   const std::string& id,
 			   const bool must_be_active)
 {
@@ -101,5 +100,3 @@ T& find_widget(typename utils::const_clone<widget, T>::pointer widget,
 }
 
 } // namespace gui2
-
-#endif

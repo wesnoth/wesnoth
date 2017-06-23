@@ -1,5 +1,5 @@
-local helper = wesnoth.require "lua/helper.lua"
-local utils = wesnoth.require "lua/wml-utils.lua"
+local helper = wesnoth.require "helper"
+local utils = wesnoth.require "wml-utils"
 
 function wesnoth.wml_actions.find_path(cfg)
 	local filter_unit = helper.get_child(cfg, "traveler") or helper.wml_error("[find_path] missing required [traveler] tag")
@@ -40,7 +40,7 @@ function wesnoth.wml_actions.find_path(cfg)
 		-- we test if location passed to pathfinder is invalid (border); if is, do nothing, do not return and continue the cycle
 		if location[1] == 0 or location[1] == ( width + 1 ) or location[2] == 0 or location[2] == ( heigth + 1 ) then
 		else
-			local distance = helper.distance_between ( unit.x, unit.y, location[1], location[2] )
+			local distance = wesnoth.map.distance_between ( unit.x, unit.y, location[1], location[2] )
 			-- if we pass an unreachable locations an high value will be returned
 			local path, cost = wesnoth.find_path( unit, location[1], location[2], { max_cost = max_cost, ignore_units = ignore_units, ignore_teleport = ignore_teleport, viewing_side = viewing_side } )
 

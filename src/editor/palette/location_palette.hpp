@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,8 +15,8 @@
 #pragma once
 
 #include "editor/editor_display.hpp"
-#include "common_palette.hpp"
-#include "tristate_button.hpp"
+#include "editor/palette/common_palette.hpp"
+#include "editor/palette/tristate_button.hpp"
 
 #include <boost/ptr_container/ptr_vector.hpp>
 
@@ -42,8 +42,10 @@ public:
 	size_t start_num(void) override { return items_start_; }
 
 	/** Menu expanding for palette group list */
-	void expand_palette_groups_menu(std::vector< std::pair<std::string, std::string> >&) override {}
-	void expand_palette_groups_menu(std::vector<std::string>&) override {}
+	void expand_palette_groups_menu(std::vector<config>& items, int i) override
+	{
+		items.erase(items.begin() + i);
+	}
 
 	virtual void set_group(size_t /*index*/) override {}
 	virtual void next_group() override {}

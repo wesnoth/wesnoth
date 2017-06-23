@@ -1,5 +1,17 @@
+/*
+   Copyright (C) 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
 #include "playturn_network_adapter.hpp"
-#include "config_assign.hpp"
 #include "log.hpp"
 
 #include "utils/functional.hpp"
@@ -15,7 +27,7 @@ void playturn_network_adapter::read_from_network()
 {
 	assert(!data_.empty());
 
-	this->data_.push_back(config());
+	this->data_.emplace_back();
 	config& back = data_.back();
 	bool has_data = false;
 	try
@@ -42,7 +54,7 @@ void playturn_network_adapter::read_from_network()
 		config child;
 		child["side_num"] = back["side_drop"];
 		child["controller"] = back["controller"];
-		this->data_.push_back(config_of("side_drop", child));
+		this->data_.emplace_back(config {"side_drop", child});
 		back.remove_attribute("side_drop");
 		back.remove_attribute("controller");
 	}

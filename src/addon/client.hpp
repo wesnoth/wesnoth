@@ -13,13 +13,11 @@
    See the COPYING file for more details.
 */
 
-#ifndef ADDON_CLIENT_HPP_INCLUDED
-#define ADDON_CLIENT_HPP_INCLUDED
+#pragma once
 
+#include "addon/info.hpp"
 #include "gui/dialogs/network_transmission.hpp"
 #include "network_asio.hpp"
-
-struct addon_info;
 
 /**
  * Add-ons (campaignd) client class.
@@ -31,6 +29,14 @@ struct addon_info;
 class addons_client
 {
 public:
+	enum class install_outcome {success, failure, abort};
+
+	struct install_result
+	{
+		install_outcome outcome;
+		bool wml_changed;
+	};
+
 	struct invalid_server_address {};
 	struct not_connected_to_server {};
 	struct user_exit {};
@@ -72,37 +78,13 @@ public:
 	bool request_distribution_terms(std::string& terms);
 
 	/**
-	 * Downloads the specified add-on from the server.
-	 *
-	 * @return @a true on success, @a false on failure. Retrieve the error message with @a get_last_server_error.
-	 *
-	 * @todo FIXME Refactor this again once I figure out a better way
-	 * to not transfer so much information in the method signature! Perhaps
-	 * we'd reask the server for the add-ons list and extract the information
-	 * from there again, since there isn't any way to request info for a
-	 * single entry atm.
-	 *
-	 * @param id          Add-on id.
-	 * @param title       Add-on title, used for status display.
-	 * @param archive_cfg Config object to hold the downloaded add-on archive data.
-	 * @param increase_downloads Whether to request the server to increase the add-on's
-	 *                           download count or not (e.g. when upgrading).
-	 */
-	bool download_addon(config& archive_cfg, const std::string& id, const std::string& title, bool increase_downloads = true);
-
-	/**
-	 * Installs the specified add-on using an archive received from the server.
-	 *
-	 * An _info.cfg file will be added to the local directory for the add-on
-	 * to keep track of version and dependency information.
-	 *
-	 * @todo FIXME Refactor this again once I figure out a better way
-	 * to not transfer so much information in the method signature! Perhaps
-	 * we'd reask the server for the add-ons list and extract the information
-	 * from there again, since there isn't any way to request info for a
-	 * single entry atm.
-	 */
-	bool install_addon(config& archive_cfg, const addon_info& info);
+	* Do a 'smart' fetch of an add-on, checking to avoid overwrites for devs and resolving dependencies, using gui interaction to handle issues that arise
+	* Returns: outcome: abort in case the user chose to abort because of an issue
+	*                   failure in case we resolved checks and dependencies, but fetching this particular add-on failed
+	*                   success otherwise
+	*          wml_changed: indicates if new wml content was installed at any point
+	*/
+	install_result install_addon_with_checks(const addons_list& addons, const addon_info& addon);
 
 	/**
 	 * Requests the specified add-on to be uploaded.
@@ -143,6 +125,41 @@ private:
 	network_asio::connection* conn_;
 	gui2::dialogs::network_transmission* stat_;
 	std::string last_error_;
+
+	/**
+	* Downloads the specified add-on from the server.
+	*
+	* @return @a true on success, @a false on failure. Retrieve the error message with @a get_last_server_error.
+	*
+	* @param id          Add-on id.
+	* @param title       Add-on title, used for status display.
+	* @param archive_cfg Config object to hold the downloaded add-on archive data.
+	* @param increase_downloads Whether to request the server to increase the add-on's
+	*                           download count or not (e.g. when upgrading).
+	*/
+	bool download_addon(config& archive_cfg, const std::string& id, const std::string& title, bool increase_downloads = true);
+
+	/**
+	* Installs the specified add-on using an archive received from the server.
+	*
+	* An _info.cfg file will be added to the local directory for the add-on
+	* to keep track of version and dependency information.
+	*/
+	bool install_addon(config& archive_cfg, const addon_info& info);
+
+	// Asks the client to download and install an addon, reporting errors in a gui dialog. Returns true if new content was installed, false otherwise.
+	bool try_fetch_addon(const addon_info& addon);
+
+	/**
+	* Warns the user about unresolved dependencies and installs them if they choose to do so.
+	* Returns: outcome: abort in case the user chose to abort because of an issue
+	*                   success otherwise
+	*          wml_change: indicates if new wml content was installed
+	*/
+	install_result do_resolve_addon_dependencies(const addons_list& addons, const addon_info& addon);
+
+	/** Checks whether the given add-on has local .pbl or VCS information and asks before overwriting it. */
+	bool do_check_before_overwriting_addon(const addon_info& addon);
 
 	/** Makes sure the add-ons server connection is working. */
 	void check_connected() const;
@@ -186,7 +203,3 @@ private:
 
 	bool update_last_error(config& response_cfg);
 };
-
-#endif
-
-

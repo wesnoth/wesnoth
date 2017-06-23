@@ -1,7 +1,7 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local LS = wesnoth.require "location_set"
 
 local function get_wolves(cfg)
     local wolves = AH.get_units_with_moves {
@@ -47,7 +47,7 @@ function ca_wolves_wander:execution(cfg)
     for _,wolf in ipairs(wolves) do
         -- For each wolf, we need to check that goal hex is reachable, and out of harm's way
         local best_hex = AH.find_best_move(wolf, function(x, y)
-            local rating = - H.distance_between(x, y, goal_hex[1], goal_hex[2])
+            local rating = -wesnoth.map.distance_between(x, y, goal_hex[1], goal_hex[2])
             if avoid_map:get(x, y) then rating = rating - 1000 end
             return rating
         end)

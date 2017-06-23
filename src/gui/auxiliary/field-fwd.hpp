@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * Contains all forward declarations for field.hpp.
  */
 
-#ifndef GUI_DIALOGS_FIELD_FORWARD_HPP_INCLUDED
-#define GUI_DIALOGS_FIELD_FORWARD_HPP_INCLUDED
+#pragma once
 
 namespace gui2
 {
@@ -38,5 +37,3 @@ class integer_selector;
 typedef field<int, integer_selector> field_integer;
 
 } // namespace gui2
-
-#endif

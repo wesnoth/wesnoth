@@ -1,4 +1,4 @@
-//  (C) Copyright 2015 - 2016 Christopher Beck
+//  (C) Copyright 2015 - 2017 Christopher Beck
 
 //  Distributed under the Boost Software License, Version 1.0. (See accompanying
 //  file LICENSE or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -32,7 +32,7 @@ struct po_message {
 
   // Check if message is plural. We do this for now by testing msgid_plural.size().
   // Recommended to use this method in case we change it in the future.
-  bool is_plural() const { return static_cast<bool>(id_plural().size()); } 
+  bool is_plural() const { return (id_plural().size() != 0); } 
 };
 
 /***

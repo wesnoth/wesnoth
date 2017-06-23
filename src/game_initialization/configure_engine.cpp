@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2013 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,6 +17,7 @@
 #include "mp_game_settings.hpp"
 #include "settings.hpp"
 #include "tod_manager.hpp"
+#include "preferences/credentials.hpp"
 
 #include <cassert>
 #include <sstream>
@@ -95,7 +96,7 @@ void configure_engine::set_shuffle_sides(bool val) { parameters_.shuffle_sides =
 void configure_engine::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE val) { parameters_.random_faction_mode = val;}
 void configure_engine::set_options(const config& cfg) { parameters_.options = cfg; }
 
-std::string configure_engine::game_name_default() const {
+std::string configure_engine::game_name_default() {
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
 	return vgettext("$login|’s game", i18n_symbols);

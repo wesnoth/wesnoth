@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2009 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SCRIPTING_LUA_HPP
-#define SCRIPTING_LUA_HPP
+#pragma once
 
 #include "scripting/lua_kernel_base.hpp" // for lua_kernel_base
 
@@ -53,7 +52,6 @@ class game_lua_kernel : public lua_kernel_base
 	reports & reports_;
 
 	// Private functions to ease access to parts of game_state
-	game_board & board();
 	unit_map & units();
 	game_data & gamedata();
 	tod_manager & tod_man();
@@ -101,8 +99,8 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_mouseover_tile(lua_State *L);
 	int intf_get_selected_tile(lua_State *L);
 	int intf_get_starting_location(lua_State* L);
-	int impl_game_config_get(lua_State *L);
-	int impl_game_config_set(lua_State *L);
+	int impl_game_config_get(lua_State *L) override;
+	int impl_game_config_set(lua_State *L) override;
 	int impl_current_get(lua_State *L);
 	int intf_clear_messages(lua_State*);
 	int intf_end_level(lua_State*);
@@ -141,8 +139,8 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_villages(lua_State *L);
 	int intf_match_location(lua_State *L);
 	int intf_match_side(lua_State *L);
+	int intf_set_side_id(lua_State *L);
 	int intf_modify_ai_wml(lua_State *L);
-	int intf_modify_side(lua_State *L);
 	int intf_get_sides(lua_State* L);
 	int intf_add_tile_overlay(lua_State *L);
 	int intf_remove_tile_overlay(lua_State *L);
@@ -150,7 +148,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_remove_event(lua_State *L);
 	int intf_color_adjust(lua_State *L);
 	int intf_delay(lua_State *L);
-	int intf_kill(lua_State *L);
 	int intf_label(lua_State *L);
 	int intf_redraw(lua_State *L);
 	int intf_replace_schedule(lua_State *l);
@@ -170,6 +167,9 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_sound_source(lua_State *L);
 	int intf_log(lua_State *L);
 	int intf_toggle_fog(lua_State *L, const bool clear);
+	int intf_get_fog_or_shroud(lua_State *L, bool fog);
+	int intf_log_replay(lua_State* L);
+	int intf_zoom(lua_State* L);
 
 	//private helpers
 	std::string synced_state();
@@ -177,6 +177,7 @@ class game_lua_kernel : public lua_kernel_base
 	std::vector<int> get_sides_vector(const vconfig& cfg);
 
 public:
+	game_board & board();
 	std::vector<team> & teams();
 	const gamemap & map() const;
 	/**
@@ -192,7 +193,7 @@ public:
 
 	void set_game_display(game_display * gd);
 
-	virtual std::string my_name() { return "Game Lua Kernel"; }
+	virtual std::string my_name() override { return "Game Lua Kernel"; }
 
 	std::string apply_effect(const std::string& name, unit& u, const config& cfg, bool need_apply);
 	void initialize(const config& level);
@@ -209,7 +210,7 @@ public:
 	bool run_filter(char const *name, int nArgs);
 	bool run_wml_conditional(const std::string&, vconfig const &);
 
-	virtual void log_error(char const* msg, char const* context = "Lua error");
+	virtual void log_error(char const* msg, char const* context = "Lua error") override;
 
 	ai::lua_ai_context* create_lua_ai_context(char const *code, ai::engine_lua *engine);
 	ai::lua_ai_action_handler* create_lua_ai_action_handler(char const *code, ai::lua_ai_context &context);
@@ -217,5 +218,3 @@ public:
 	void mouse_over_hex_callback(const map_location& loc);
 	void select_hex_callback(const map_location& loc);
 };
-
-#endif

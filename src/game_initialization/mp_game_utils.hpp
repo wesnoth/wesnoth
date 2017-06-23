@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2017 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef MP_GAME_UTILS_HPP_INCLUDED
-#define MP_GAME_UTILS_HPP_INCLUDED
+
+#pragma once
 
 #include "mp_game_settings.hpp"
 
@@ -28,6 +28,3 @@ void level_to_gamestate(const config& level, saved_game& state);
 void check_response(bool res, const config& data);
 
 } // end namespace mp
-
-#endif
-

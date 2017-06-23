@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2016 - 2017 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * Desktop paths, storage media and bookmark functions.
  */
 
-#ifndef DESKTOP_PATHS_HPP_INCLUDED
-#define DESKTOP_PATHS_HPP_INCLUDED
+#pragma once
 
 #include "tstring.hpp"
 
@@ -103,5 +102,3 @@ void remove_user_bookmark(unsigned index);
 std::vector<bookmark_info> user_bookmarks();
 
 } // namespace desktop
-
-#endif

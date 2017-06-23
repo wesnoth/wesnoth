@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Karol Nowak <grzywacz@sul.uni.lodz.pl>
+   Copyright (C) 2006 - 2017 by Karol Nowak <grzywacz@sul.uni.lodz.pl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,16 +12,13 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
-
 #include "display.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
 
-#include <SDL.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL_sound.h>
+#include <SDL_timer.h>
 
 namespace soundsource {
 
@@ -41,10 +38,6 @@ manager::manager(const display &disp) :
 
 manager::~manager()
 {
-	for(positional_source_iterator it = sources_.begin(); it != sources_.end(); ++it) {
-		delete (*it).second;
-	}
-
 	sources_.clear();
 }
 
@@ -56,14 +49,7 @@ void manager::handle_generic_event(const std::string &event_name)
 
 void manager::add(const sourcespec &spec)
 {
-	positional_source_iterator it;
-
-	if((it = sources_.find(spec.id())) == sources_.end()) {
-		sources_[spec.id()] = new positional_source(spec);
-	} else {
-		delete (*it).second;
-		(*it).second = new positional_source(spec);
-	}
+	sources_[spec.id()].reset(new positional_source(spec));
 }
 
 config manager::get(const std::string &id)
@@ -83,7 +69,6 @@ void manager::remove(const std::string &id)
 	if((it = sources_.find(id)) == sources_.end())
 		return;
 	else {
-		delete (*it).second;
 		sources_.erase(it);
 	}
 }
@@ -136,10 +121,10 @@ positional_source::positional_source(const sourcespec &spec) :
 
 positional_source::~positional_source()
 {
-	sound::reposition_sound(id_, DISTANCE_SILENT);
+	sound::stop_sound(id_);
 }
 
-bool positional_source::is_global()
+bool positional_source::is_global() const
 {
 	return locations_.empty();
 }

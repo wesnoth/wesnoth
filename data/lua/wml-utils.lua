@@ -1,5 +1,5 @@
 
-local helper = wesnoth.require "lua/helper.lua"
+local helper = wesnoth.require "helper"
 local utils = {vwriter = {}}
 
 function utils.trim(s)
@@ -50,21 +50,29 @@ function utils.vwriter.write(self, container)
 	self.index = self.index + 1
 end
 
+function utils.get_sides(cfg, key_name, filter_name)
+	key_name = key_name or "side"
+	filter_name = filter_name or "filter_side"
+	local filter = helper.get_child(cfg, filter_name)
+	if filter then
+		if cfg[key_name] then
+			wesnoth.log('warn', "ignoring duplicate side filter information (inline side=)")
+		end
+		return wesnoth.get_sides(filter)
+	else
+		return wesnoth.get_sides{side = cfg[key_name]}
+	end
+end
+
 function utils.optional_side_filter(cfg, key_name, filter_name)
 	local key_name = key_name or "side"
-	local sides = cfg[key_name]
 	local filter_name = filter_name or "filter_side"
-	local filter_side = helper.get_child(cfg, filter_name)
-	if filter_side then
-		sides = wesnoth.get_sides(filter_side)
-	elseif sides then
-		local dummy_cfg = {side=sides}
-		sides = wesnoth.get_sides(dummy_cfg)
-	else
+	if cfg[key_name] == nil and helper.get_child(cfg, filter_name) == nil then
 		return true
 	end
+	local sides = utils.get_sides(cfg, key_name, filter_name)
 	for index,side in ipairs(sides) do
-		if side.controller == "human" then
+		if side.controller == "human" and side.is_local then
 			return true
 		end
 	end
@@ -146,8 +154,6 @@ function utils.handle_event_commands(cfg, scope_type)
 		end
 		current_exit = "none"
 	end
-	-- Apply music alterations once all the commands have been processed.
-	wesnoth.set_music()
 	return current_exit
 end
 

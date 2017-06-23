@@ -14,7 +14,52 @@ sound_extensions = ("ogg", "wav")
 vc_directories = (".git", ".svn")
 l10n_directories = ("l10n",)
 resource_extensions = map_extensions + image_extensions + sound_extensions
-image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(png|jpe?g)(?=(~.*)?)"
+image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.\-\[\]~\*,]*\.(png|jpe?g)(?=(~.*)?)"
+
+class Substitution(object):
+    __slots__ = ["sub", "start", "end"]
+    def __init__(self, sub, start, end):
+        self.sub = sub
+        self.start = int(start)
+        self.end = int(end)
+    def __repr__(self):
+        return "<Class Substitution, sub={}, start={:d}, end={:d}>".format(self.sub, self.start, self.end)
+
+def expand_square_braces(path):
+    """Expands the square brackets notation to normal file names.
+Yields the expanded file names, or the original path itself
+if no expansion could be performed"""
+    if "[" not in path: # clearly, no expansion can be done in this case
+        yield path
+    else:
+        substitutions = [] # a matrix that will hold all the substitutions to be performed
+
+        for i, match in enumerate(re.finditer(r"\[(.*?)\]", path)): # stop on the first closed square braces, to allow multiple substitutions
+            substitutions.append([]) # a new list which will host all the substitutions for the current expansion
+            for token in match.group(1).split(","):
+                match_mult = re.match("(.+)\*(\d+)", token) # repeat syntax, eg. [melee*3]
+                if match_mult:
+                    substitutions[i].extend([Substitution(match_mult.group(1), match.start(0), match.end(0))] *
+                                         int(match_mult.group(2)))
+                    continue
+                match_range = re.match("(\d+)~(\d+)", token) # range syntax, eg [1~4]
+                if match_range:
+                    before, after = int(match_range.group(1)), int(match_range.group(2))
+                    incr = 1 if before <= after else -1 # to allow iterating in reversed order, eg. [4~1]
+                    substitutions[i].extend([Substitution(str(n), match.start(0), match.end(0)) for n in range(before, after + incr, incr)])
+                    continue
+                substitutions[i].append(Substitution(token, match.start(0), match.end(0))) # no operator found
+
+        # the purpose is to have all the subs "increasing" simultaneously
+        # in other words, if a string has two square braces blocks, like [1~3] and [melee*2,ranged]
+        # we want to expand them as (1,melee), (2,melee), (3,ranged)
+        # for this reason we need to transpose the matrix
+        substitutions = zip(*substitutions)
+
+        for sub_array in substitutions:
+            new_string = path
+            for sub in reversed(sub_array): # to avoid creating "holes" in the strings
+                yield new_string[:sub.start] + sub.sub + new_string[sub.end:] # these are the expanded strings
 
 def is_root(dirname):
     "Is the specified path the filesystem root?"
@@ -432,7 +477,7 @@ class Reference:
 
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Za-z0-9_:]*)(?!\.)\b")
-    file_reference =  re.compile(r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.@-]*\.(" + "|".join(resource_extensions) + ")(?=(~.*)?)")
+    file_reference = re.compile(r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.@\-\[\],~\*]*(" + "|".join(resource_extensions) + ")(?=(~.*)?)")
     tag_parse = re.compile("\s*([a-z_]+)\s*=(.*)")
     def mark_matching_resources(self, pattern, fn, n):
         "Mark all definitions matching a specified pattern with a reference."
@@ -708,36 +753,36 @@ class CrossRef:
                             continue
                         # Find references to resource files
                         for match in re.finditer(CrossRef.file_reference, line):
-                            name = match.group(0)
-                            # Catches maps that look like macro names.
-                            if (name.endswith(".map") or name.endswith(".mask")) and name[0] == '{':
-                                name = name[1:]
-                            if os.sep == "\\":
-                                name = name.replace("/", "\\")
-                            key = None
-                            # If name is already in our resource list, it's easy.
-                            if name in self.fileref and self.visible_from(name, fn, n):
-                                self.fileref[name].append(fn, n+1)
-                                continue
-                            # If the name contains substitutable parts, count
-                            # it as a reference to everything the substitutions
-                            # could potentially match.
-                            elif '{' in name or '@' in name:
-                                pattern = re.sub(r"(\{[^}]*\}|@R0|@V)", '.*', name)
-                                key = self.mark_matching_resources(pattern, fn,n+1)
-                                if key:
-                                    self.fileref[key].append(fn, n+1)
-                            else:
-                                candidates = []
-                                for trial in self.fileref:
-                                    if trial.endswith(os.sep + name) and self.visible_from(trial, fn, n):
-                                        key = trial
-                                        self.fileref[trial].append(fn, n+1)
-                                        candidates.append(trial)
-                                if len(candidates) > 1:
-                                    print("%s: more than one resource matching %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates)))
-                            if not key:
-                                self.missing.append((name, Reference(ns,fn,n+1)))
+                            for name in expand_square_braces(match.group(0)):
+                                # Catches maps that look like macro names.
+                                if (name.endswith(".map") or name.endswith(".mask")) and name[0] == '{':
+                                    name = name[1:]
+                                if os.sep == "\\":
+                                    name = name.replace("/", "\\")
+                                key = None
+                                # If name is already in our resource list, it's easy.
+                                if name in self.fileref and self.visible_from(name, fn, n):
+                                    self.fileref[name].append(fn, n+1)
+                                    continue
+                                # If the name contains substitutable parts, count
+                                # it as a reference to everything the substitutions
+                                # could potentially match.
+                                elif '{' in name or '@' in name:
+                                    pattern = re.sub(r"(\{[^}]*\}|@R0|@V)", '.*', name)
+                                    key = self.mark_matching_resources(pattern, fn,n+1)
+                                    if key:
+                                        self.fileref[key].append(fn, n+1)
+                                else:
+                                    candidates = []
+                                    for trial in self.fileref:
+                                        if trial.endswith(os.sep + name) and self.visible_from(trial, fn, n):
+                                            key = trial
+                                            self.fileref[trial].append(fn, n+1)
+                                            candidates.append(trial)
+                                    if len(candidates) > 1:
+                                        print("%s: more than one resource matching %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates)))
+                                if not key:
+                                    self.missing.append((name, Reference(ns,fn,n+1)))
                         # Notice implicit references through attacks
                         if state == "outside":
                             if "[attack]" in line:

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -29,7 +29,6 @@
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
-#include "config_assign.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
 #include "units/types.hpp"
@@ -100,8 +99,10 @@ void faction_select::pre_show(window& window)
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		// TODO: don't hardcode magenta?
-		item["label"] = (formatter() << side["image"] << "~RC(magenta>" << tc_color_ << ")").str();
+		// flag_rgb here is unrelated to any handling in the unit class
+		const std::string flag_rgb = !side["flag_rgb"].empty() ? side["flag_rgb"].str() : "magenta";
+
+		item["label"] = (formatter() << side["image"] << "~RC(" << flag_rgb << ">" << tc_color_ << ")").str();
 		data.emplace("faction_image", item);
 
 		item["label"] = side["name"];
@@ -136,13 +137,13 @@ void faction_select::on_faction_select(window& window)
 
 		if(unit) {
 			const std::string icon = formatter() << unit->image() << "~RC(" << unit->flag_rgb() << ">" << tc_color_ << ")";
-			leaders.push_back(config_of("label", unit->type_name())("icon", icon));
+			leaders.emplace_back(config {"label", unit->type_name(), "icon", icon});
 		} else if(leader == "random") {
-			leaders.push_back(config_of("label", _("Random"))("icon", "units/random-dice.png"));
+			leaders.emplace_back(config {"label", _("Random"), "icon", ng::random_enemy_picture});
 		} else if(leader == "null") {
-			leaders.push_back(config_of("label", font::unicode_em_dash));
+			leaders.emplace_back(config {"label", font::unicode_em_dash});
 		} else {
-			leaders.push_back(config_of("label", "?"));
+			leaders.emplace_back(config {"label", "?"});
 		}
 	}
 
@@ -159,7 +160,7 @@ void faction_select::on_faction_select(window& window)
 
 	for(const auto& recruit : recruit_list) {
 		if(const unit_type* rt = unit_types.find(recruit)) {
-			recruit_names.push_back("• " + rt->type_name());
+			recruit_names.push_back(font::unicode_bullet + " " + rt->type_name());
 		}
 	}
 
@@ -194,7 +195,7 @@ void faction_select::on_gender_select(window& window)
 
 void faction_select::update_leader_image(window& window)
 {
-	std::string leader_image = "units/random-dice.png";
+	std::string leader_image = ng::random_enemy_picture;
 
 	if(const unit_type* ut = unit_types.find(flg_manager_.current_leader())) {
 		const unit_type& utg = ut->get_gender_unit_type(flg_manager_.current_gender());

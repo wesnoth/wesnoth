@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,7 +27,7 @@ namespace gui2
 namespace implementation
 {
 
-static std::map<std::string, scrollbar_mode> scrollbar_mode_map = {
+static std::map<std::string, scrollbar_mode> scrollbar_mode_map {
 	{ "always",        scrollbar_mode::ALWAYS_VISIBLE },
 	{ "never",         scrollbar_mode::ALWAYS_INVISIBLE },
 	{ "auto",          scrollbar_mode::AUTO_VISIBLE },

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef SERIALIZATION_UNICODE_CAST_HPP_INCLUDED
-#define SERIALIZATION_UNICODE_CAST_HPP_INCLUDED
+
+#pragma once
 
 #include "ucs4_convert_impl.hpp"
 #include <iostream>   //for std::cerr
@@ -112,4 +112,3 @@ TD unicode_cast(ucs4::char_t onechar)
 	}
 	return res;
 }
-#endif

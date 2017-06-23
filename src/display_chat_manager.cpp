@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,21 +13,20 @@
 */
 
 #include "display_chat_manager.hpp"
-#include "global.hpp"
 
 #include "desktop/notifications.hpp"
 #include "display.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp" // <-- only needed for is_observer()
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "log.hpp"
 #include "font/marked-up_text.hpp"
 #include "mp_ui_alerts.hpp"
 #include "serialization/string_utils.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
+#include "preferences/credentials.hpp"
 
 #include <SDL_timer.h>
-#include <SDL_video.h>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -35,8 +34,8 @@ static lg::log_domain log_engine("engine");
 namespace {
 	const int chat_message_border = 5;
 	const int chat_message_x = 10;
-	const color_t chat_message_color = {255,255,255,SDL_ALPHA_OPAQUE};
-	const color_t chat_message_bg     = {0,0,0,140};
+	const color_t chat_message_color {255,255,255,SDL_ALPHA_OPAQUE};
+	const color_t chat_message_bg    {0,0,0,140};
 }
 
 display_chat_manager::chat_message::chat_message(int speaker, int h)
@@ -94,17 +93,17 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 
 	std::string msg;
 
-	if (message.find("/me ") == 0) {
+	if (message.compare(0,4,"/me ") == 0) {
 		msg.assign(message, 4, message.size());
 		action = true;
 	} else {
-		msg += message;
+		msg = message;
 	}
 
 	try {
 		// We've had a joker who send an invalid utf-8 message to crash clients
 		// so now catch the exception and ignore the message.
-		msg = my_disp_.video().faked() ? "" : font::word_wrap_text(msg,font::SIZE_SMALL,my_disp_.map_outside_area().w*3/4);
+		msg = my_disp_.video().faked() ? "" : font::word_wrap_text(msg,font::SIZE_NORMAL,my_disp_.map_outside_area().w*3/4);
 	} catch (utf8::invalid_utf8_exception&) {
 		ERR_NG << "Invalid utf-8 found, chat message is ignored." << std::endl;
 		return;
@@ -115,9 +114,9 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 		ypos += std::max(font::get_floating_label_rect(m->handle).h,
 			font::get_floating_label_rect(m->speaker_handle).h);
 	}
-	color_t speaker_color = {255,255,255,SDL_ALPHA_OPAQUE};
+	color_t speaker_color {255,255,255,SDL_ALPHA_OPAQUE};
 	if(side >= 1) {
-		speaker_color = color_t::from_argb_bytes(team::get_side_color_range(side).mid());
+		speaker_color = team::get_side_color_range(side).mid();
 	}
 
 	color_t message_color = chat_message_color;
@@ -153,7 +152,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	const SDL_Rect rect = my_disp_.map_outside_area();
 
 	font::floating_label spk_flabel(message_complete.str());
-	spk_flabel.set_font_size(font::SIZE_SMALL);
+	spk_flabel.set_font_size(font::SIZE_NORMAL);
 	spk_flabel.set_color(speaker_color);
 	spk_flabel.set_position(rect.x + chat_message_x, rect.y + ypos);
 	spk_flabel.set_clip_rect(rect);
@@ -165,7 +164,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 	int speaker_handle = font::add_floating_label(spk_flabel);
 
 	font::floating_label msg_flabel(message_str.str());
-	msg_flabel.set_font_size(font::SIZE_SMALL);
+	msg_flabel.set_font_size(font::SIZE_NORMAL);
 	msg_flabel.set_color(message_color);
 	msg_flabel.set_position(rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,
 	rect.y + ypos);
@@ -177,7 +176,7 @@ void display_chat_manager::add_chat_message(const time_t& time, const std::strin
 
 	int message_handle = font::add_floating_label(msg_flabel);
 
-	chat_messages_.push_back(chat_message(speaker_handle,message_handle));
+	chat_messages_.emplace_back(speaker_handle,message_handle);
 
 	prune_chat_messages();
 }

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Nathan Walker <nathan.b.walker@vanderbilt.edu>
+   Copyright (C) 2014 - 2017 by Nathan Walker <nathan.b.walker@vanderbilt.edu>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,11 +12,10 @@
    See the COPYING file for more details.
 */
 
-#ifndef MULTIPLAYER_CONFIGURE_ENGINE_INCLUDED
-#define MULTIPLAYER_CONFIGURE_ENGINE_INCLUDED
+#pragma once
 
 #include "gettext.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "mp_game_settings.hpp"
 #include "saved_game.hpp"
 
@@ -84,7 +83,7 @@ public:
 	void set_options(const config& cfg);
 
 	// parameter defaults
-	std::string game_name_default() const;
+	static std::string game_name_default();
 	int num_turns_default() const;
 	int village_gold_default() const;
 	int village_support_default() const;
@@ -137,5 +136,3 @@ private:
 };
 
 } // end namespace ng
-#endif
-

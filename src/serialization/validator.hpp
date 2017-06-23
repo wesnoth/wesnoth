@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Sytyi Nick <nsytyi@gmail.com>
+   Copyright (C) 2011 - 2017 by Sytyi Nick <nsytyi@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,8 +16,7 @@
  * This file contains information about validation abstract level interface.
  */
 
-#ifndef SERIALIZATION_VALIDATOR_HPP_INCLUDED
-#define SERIALIZATION_VALIDATOR_HPP_INCLUDED
+#pragma once
 
 #include "exceptions.hpp"
 
@@ -93,4 +92,3 @@ public:
 		error(const std::string& message) : game::error(message) {}
 	};
 };
-#endif // SERIALIZATION_VALIDATOR_HPP_INCLUDED

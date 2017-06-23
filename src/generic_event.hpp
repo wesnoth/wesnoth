@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,10 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GENERIC_EVENT_HPP_INCLUDED
-#define GENERIC_EVENT_HPP_INCLUDED
-
-#include "global.hpp"
+#pragma once
 
 #include <string>
 #include <vector>
@@ -45,7 +42,7 @@ This is the class that notifies the observers and maintains a list of them.
 */
 class generic_event{
 public:
-	generic_event(std::string name);
+	generic_event(const std::string& name);
 	virtual ~generic_event() {}
 
 	virtual bool attach_handler(observer* obs);
@@ -67,5 +64,3 @@ private:
 	bool notify_active_;
 };
 }
-
-#endif

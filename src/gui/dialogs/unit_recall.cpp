@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -43,6 +43,7 @@
 #include "units/types.hpp"
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
+#include "utils/general.hpp"
 
 #include "utils/functional.hpp"
 #include <boost/dynamic_bitset.hpp>
@@ -56,8 +57,8 @@ namespace dialogs
 {
 
 // Index 2 is by-level
-static listbox::order_pair sort_last    = {-1, listbox::SORT_NONE};
-static listbox::order_pair sort_default = { 2, listbox::SORT_DESCENDING};
+static listbox::order_pair sort_last    {-1, listbox::SORT_NONE};
+static listbox::order_pair sort_default { 2, listbox::SORT_DESCENDING};
 
 REGISTER_DIALOG(unit_recall)
 
@@ -121,11 +122,11 @@ static std::string format_cost_string(int unit_recall_cost, const int team_recal
 
 static std::string get_title_suffix(int side_num)
 {
-	if(!resources::gameboard || !resources::units) {
+	if(!resources::gameboard) {
 		return "";
 	}
 
-	unit_map& units = *resources::units;
+	unit_map& units = resources::gameboard->units();
 
 	int controlled_recruiters = 0;
 	for(const auto& team : resources::gameboard->teams()) {
@@ -136,13 +137,21 @@ static std::string get_title_suffix(int side_num)
 
 	std::stringstream msg;
 	if(controlled_recruiters >= 2) {
-		unit_map::const_iterator leader = resources::units->find_leader(side_num);
-		if(leader != resources::units->end() && !leader->name().empty()) {
+		unit_map::const_iterator leader = resources::gameboard->units().find_leader(side_num);
+		if(leader != resources::gameboard->units().end() && !leader->name().empty()) {
 			msg << " (" << leader->name(); msg << ")";
 		}
 	}
 
 	return msg.str();
+}
+
+bool unit_recall::unit_recall_default_compare(const unit_const_ptr first, const unit_const_ptr second)
+{
+	if (first->level() > second->level()) return true;
+	if (first->level() < second->level()) return false;
+	if (first->experience_to_advance() < second->experience_to_advance()) return true;
+	return false;
 }
 
 void unit_recall::pre_show(window& window)
@@ -238,7 +247,10 @@ void unit_recall::pre_show(window& window)
 
 	list.register_sorting_option(0, [this](const int i) { return recall_list_[i]->type_name().str(); });
 	list.register_sorting_option(1, [this](const int i) { return recall_list_[i]->name().str(); });
-	list.register_sorting_option(2, [this](const int i) { return recall_list_[i]->level(); });
+	list.set_column_order(2, {{
+			[this](int lhs, int rhs) { return unit_recall_default_compare(recall_list_[rhs], recall_list_[lhs]); },
+			[this](int lhs, int rhs) { return unit_recall_default_compare(recall_list_[lhs], recall_list_[rhs]); }
+	}});
 	list.register_sorting_option(3, [this](const int i) { return recall_list_[i]->experience(); });
 	list.register_sorting_option(4, [this](const int i) {
 		return !recall_list_[i]->trait_names().empty() ? recall_list_[i]->trait_names().front().str() : "";

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -71,15 +71,15 @@ private:
 
 	window* build_window(CVideo& video) const;
 
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	void timer_callback(window& window);
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog. */
-	void post_show(window& window);
+	virtual void post_show(window& window) override;
 
 	label* progress_stage_label_;
 	label* animation_label_;
@@ -94,6 +94,8 @@ private:
 	std::map<std::string, t_string> visible_stages_;
 	std::vector<t_string> animation_stages_;
 	std::map<std::string, t_string>::const_iterator current_visible_stage_;
+
+	bool is_worker_running_;
 };
 
 } // namespace dialogs

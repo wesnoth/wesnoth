@@ -1,5 +1,15 @@
+/*
+   Copyright (C) 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
-#include "global.hpp"
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
 
 #include <fstream>
 
@@ -11,7 +21,6 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "util.hpp"
 
 static lg::log_domain log_filesystem("filesystem");
 #define LOG_FS LOG_STREAM(info, log_filesystem)
@@ -20,34 +29,14 @@ static lg::log_domain log_filesystem("filesystem");
 namespace filesystem
 {
 
-
-scoped_istream& scoped_istream::operator=(std::istream *s)
-{
-	delete stream;
-	stream = s;
-	return *this;
-}
-
-scoped_istream::~scoped_istream()
-{
-	delete stream;
-}
-
-scoped_ostream& scoped_ostream::operator=(std::ostream *s)
-{
-	delete stream;
-	stream = s;
-	return *this;
-}
-
-scoped_ostream::~scoped_ostream()
-{
-	delete stream;
-}
-
 std::string get_prefs_file()
 {
 	return get_user_config_dir() + "/preferences";
+}
+
+std::string get_credentials_file()
+{
+	return get_user_config_dir() + "/credentials";
 }
 
 std::string get_default_prefs_file()

@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2016 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2017 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef WB_HIGHLIGHTER_HPP_
-#define WB_HIGHLIGHTER_HPP_
+#pragma once
 
 #include "visitor.hpp"
 #include "map/location.hpp"
@@ -127,5 +126,3 @@ private:
 };
 
 } // end namespace wb
-
-#endif /* WB_HIGHLIGHTER_HPP_ */

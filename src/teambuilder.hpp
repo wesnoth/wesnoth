@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,10 +12,7 @@
    See the COPYING file for more details.
 */
 
-
-
-#ifndef TEAMBUILDER_HPP_INCLUDED
-#define TEAMBUILDER_HPP_INCLUDED
+#pragma once
 
 #include <memory>
 #include <vector>
@@ -37,5 +34,3 @@ void build_team_stage_one(team_builder_ptr tb_ptr);
 
 //do second stage of team initialization (unit placement)
 void build_team_stage_two(team_builder_ptr tb_ptr);
-
-#endif

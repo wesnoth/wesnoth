@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -31,7 +31,7 @@ static lg::log_domain log_lua("scripting/lua");
 // Begin lua rng bindings
 namespace lua_rng {
 
-using rand_rng::mt_rng;
+using randomness::mt_rng;
 
 static const char * Rng = "Rng";
 
@@ -81,7 +81,7 @@ void load_tables(lua_State* L)
 {
 	luaL_newmetatable(L, Rng);
 
-	static luaL_Reg const callbacks[] = {
+	static luaL_Reg const callbacks[] {
 		{ "create",         &impl_rng_create},
 		{ "__gc",           &impl_rng_destroy},
 		{ "seed", 	    &impl_rng_seed},

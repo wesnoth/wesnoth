@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -147,7 +147,7 @@ readonly_context& engine::get_readonly_context()
 {
 	return ai_;
 }
-	
+
 // This is defined in the source file so that it can easily access the logger
 bool engine_factory::is_duplicate(const std::string& name)
 {

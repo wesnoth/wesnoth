@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2008 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,9 +12,7 @@
    See the COPYING file for more details.
 */
 
-
-#ifndef UNIT_ID_HPP_INCLUDED
-#define UNIT_ID_HPP_INCLUDED
+#pragma once
 
 #include <ctime>
 
@@ -63,5 +61,3 @@ namespace n_unit {
 	};
 
 }
-
-#endif

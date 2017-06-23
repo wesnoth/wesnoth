@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -68,15 +68,16 @@
  * bad_lexical_cast does not provide any details about the error.
  *
  * It is recommended to use MAKE_ENUM types with the built-in versions of
- * lexical_cast or lexical_cast_default provided by Wesnoth (see util.hpp).
+ * lexical_cast or lexical_cast_default provided by Wesnoth (see lexical_cast.hpp).
  * However, if you do <b>not</b> want wml_exception to be thrown under any
  * circumstances, use the string_to_enumname functions instead.
  *
  * See src/tests/test_make_enum.cpp for example code.
  */
 
-#ifndef MAKE_ENUM_HPP
-#define MAKE_ENUM_HPP
+#pragma once
+
+#include "global.hpp"
 
 #include <cassert>
 #include <exception>
@@ -98,19 +99,19 @@ public:
 		, bad_val(str)
 	{}
 
-	virtual ~bad_enum_cast() throw() {}
+	virtual ~bad_enum_cast() NOEXCEPT {}
 
-	const char * what() const throw()
+	const char * what() const NOEXCEPT
 	{
 		return message.c_str();
 	}
-	
-	const char * type() const throw()
+
+	const char * type() const NOEXCEPT
 	{
 		return name.c_str();
 	}
-	
-	const char * value() const throw()
+
+	const char * value() const NOEXCEPT
 	{
 		return bad_val.c_str();
 	}
@@ -292,6 +293,3 @@ private: \
 	/* template<typename T, typename = typename boost::enable_if<Cond>::type> \
 	operator T(); */\
 };
-
-
-#endif

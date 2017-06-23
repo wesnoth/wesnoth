@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef PLAY_CONTROLLER_H_INCLUDED
-#define PLAY_CONTROLLER_H_INCLUDED
+#pragma once
 
 #include "controller_base.hpp"
 #include "floating_label.hpp"
@@ -99,6 +98,7 @@ public:
 	void save_replay();
 	void save_replay_auto(const std::string& filename);
 	void save_map();
+	replay& get_replay();
 
 	void init_side_begin();
 
@@ -195,7 +195,7 @@ public:
 	events::mouse_handler& get_mouse_handler_base() override;
 	events::menu_handler& get_menu_handler() { return menu_handler_; }
 
-	std::shared_ptr<wb::manager> get_whiteboard();
+	std::shared_ptr<wb::manager> get_whiteboard() const;
 	const mp_game_settings& get_mp_settings();
 	game_classification& get_classification();
 	int get_server_request_number() const { return gamestate().server_request_number_; }
@@ -203,7 +203,7 @@ public:
 
 	game_events::wml_event_pump& pump();
 
-	int get_ticks();
+	int get_ticks() const;
 
 	virtual soundsource::manager* get_soundsource_man() override;
 	virtual plugins_context* get_plugins_context() override;
@@ -230,10 +230,10 @@ public:
 
 	std::string theme() const
 	{
-		return level_["theme"].str();
+		return gamestate_->get_game_data()->get_theme();
 	}
 
-	virtual bool should_return_to_play_side()
+	virtual bool should_return_to_play_side() const
 	{
 		return is_regular_game_end();
 	}
@@ -343,10 +343,7 @@ protected:
 	 * (false = we did init sides before we reloaded the game).
 	 */
 	bool init_side_done_now_;
-	const std::string& select_victory_music() const;
-	const std::string& select_defeat_music()  const;
-	void set_victory_music_list(const std::string& list);
-	void set_defeat_music_list(const std::string& list);
+	const std::string& select_music(bool victory) const;
 
 	void reset_gamestate(const config& level, int replay_pos);
 
@@ -369,6 +366,3 @@ protected:
 	virtual void update_viewing_player() = 0;
 	void play_turn();
 };
-
-
-#endif

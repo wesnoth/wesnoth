@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,11 +12,10 @@
    See the COPYING file for more details.
 */
 
-#ifndef TOOLTIPS_HPP_INCLUDED
-#define TOOLTIPS_HPP_INCLUDED
+#pragma once
 
 #include <string>
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
 
 class CVideo;
 struct SDL_Rect;
@@ -45,5 +44,3 @@ void process(int mousex, int mousey);
 bool click(int mousex, int mousey);
 
 }
-
-#endif

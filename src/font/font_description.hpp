@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 - 2016 by Chris Beck<render787@gmail.com>
+   Copyright (C) 2015 - 2017 by Chris Beck<render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,11 +12,10 @@
    See the COPYING file for more details.
 */
 
-#ifndef FONT_FONT_DESCRIPTION_HPP
-#define FONT_FONT_DESCRIPTION_HPP
+#pragma once
 
 #include "config.hpp"
-#include "util.hpp"
+#include "lexical_cast.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <boost/optional.hpp>
@@ -60,12 +59,12 @@ struct subset_descriptor
 			std::vector<std::string> r = utils::split(i, '-');
 			if(r.size() == 1) {
 				size_t r1 = lexical_cast_default<size_t>(r[0], 0);
-				present_codepoints.push_back(std::pair<size_t, size_t>(r1, r1));
+				present_codepoints.emplace_back(r1, r1);
 			} else if(r.size() == 2) {
 				size_t r1 = lexical_cast_default<size_t>(r[0], 0);
 				size_t r2 = lexical_cast_default<size_t>(r[1], 0);
 
-				present_codepoints.push_back(std::pair<size_t, size_t>(r1, r2));
+				present_codepoints.emplace_back(r1, r2);
 			}
 		}
 	}
@@ -79,4 +78,3 @@ struct subset_descriptor
 };
 
 } // end namespace font
-#endif

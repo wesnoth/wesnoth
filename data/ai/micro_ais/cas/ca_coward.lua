@@ -1,4 +1,4 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local function get_coward(cfg)
@@ -45,7 +45,7 @@ function ca_coward:execution(cfg)
         then
             local rating = 0
             for _,enemy in ipairs(enemies) do
-                local dist = H.distance_between(hex[1], hex[2], enemy.x, enemy.y)
+                local dist = wesnoth.map.distance_between(hex[1], hex[2], enemy.x, enemy.y)
                 rating = rating - 1 / dist^2
             end
 

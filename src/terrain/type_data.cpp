@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,8 +13,6 @@
 */
 
 #include "terrain/type_data.hpp"
-
-#include "global.hpp"
 
 #include "terrain/terrain.hpp"
 
@@ -167,8 +165,7 @@ bool terrain_type_data::try_merge_terrains(const t_translation::terrain_code & t
 
 		terrain_type new_terrain(base_iter->second, overlay_iter->second);
 		terrainList_.push_back(new_terrain.number());
-		tcodeToTerrain_.insert(std::pair<t_translation::terrain_code, terrain_type>(
-								   new_terrain.number(), new_terrain));
+		tcodeToTerrain_.emplace(new_terrain.number(), new_terrain);
 		return true;
 	}
 	return true; // Terrain already exists, nothing to do

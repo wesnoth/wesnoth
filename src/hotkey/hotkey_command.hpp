@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef HOTKEY_COMMAND_HPP_INCLUDED
-#define HOTKEY_COMMAND_HPP_INCLUDED
+#pragma once
 
 #include "tooltips.hpp"
 #include "tstring.hpp"
@@ -100,6 +99,7 @@ enum HOTKEY_COMMAND {
 	TITLE_SCREEN__CORES,
 	TITLE_SCREEN__EDITOR,
 	TITLE_SCREEN__CREDITS,
+	TITLE_SCREEN__TEST,
 	GLOBAL__HELPTIP,
 	LUA_CONSOLE,
 
@@ -303,5 +303,3 @@ void clear_hotkey_commands();
 /// returns get_hotkey_command(command).id
 HOTKEY_COMMAND get_id(const std::string& command);
 }
-
-#endif

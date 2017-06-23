@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_GENERATOR_SETTINGS_HPP_INCLUDED
-#define GUI_DIALOGS_GENERATOR_SETTINGS_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "generators/default_map_generator.hpp"
@@ -38,12 +37,12 @@ public:
 	}
 
 private:
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	void adjust_minimum_size_by_players(window& window);
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** We need to own these fields to access the underlying widget */
 	field_integer* players_;
@@ -55,5 +54,3 @@ private:
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif /* ! GUI_DIALOGS_GENERATOR_SETTINGS_HPP_INCLUDED */

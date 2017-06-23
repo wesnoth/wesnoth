@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Sytyi Nick <nsytyi@gmail.com>
+   Copyright (C) 2011 - 2017 by Sytyi Nick <nsytyi@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -229,17 +229,13 @@ void schema_validator::validate(const config & cfg, const std::string & name,
 			 tag != p.second ; ++tag){
 			int cnt = counter_.top()[tag->first].cnt;
 			if (tag->second.get_min() > cnt){
-				cache_.top()[&cfg].push_back(
-						message_info(MISSING_TAG,file,start_line,
-									 tag->second.get_min(),tag->first,"",
-									 name));
+				cache_.top()[&cfg].emplace_back(
+					MISSING_TAG,file,start_line,tag->second.get_min(),tag->first,"",name);
 				continue;
 			}
 			if (tag->second.get_max() < cnt){
-				cache_.top()[&cfg].push_back(
-						message_info(EXTRA_TAG,file,start_line,
-									 tag->second.get_max(),tag->first,"",
-									 name));
+				cache_.top()[&cfg].emplace_back(
+					EXTRA_TAG,file,start_line,tag->second.get_max(),tag->first,"",name);
 			}
 		}
 		// Checking if all mandatory keys are present
@@ -248,9 +244,8 @@ void schema_validator::validate(const config & cfg, const std::string & name,
 			 key != k.second ; ++key){
 			if (key->second.is_mandatory()){
 				if (cfg.get(key->first) == nullptr){
-					cache_.top()[&cfg].push_back(
-							message_info(MISSING_KEY,file,start_line,0,
-										 name,key->first ));
+					cache_.top()[&cfg].emplace_back(
+						MISSING_KEY,file,start_line,0,name,key->first );
 				}
 			}
 		}
@@ -273,17 +268,14 @@ void schema_validator::validate_key(const config & cfg,
 				boost::smatch sub;
 				bool res = boost::regex_match(value,sub,itt->second);
 				if (!res ) {
-					cache_.top()[&cfg].push_back(
-							message_info(WRONG_VALUE,file,start_line,0,
-										 stack_.top()->get_name(),
-										 name,value));
+					cache_.top()[&cfg].emplace_back(
+						WRONG_VALUE,file,start_line,0,stack_.top()->get_name(),name,value);
 				}
 			}
 		}
 		else{
-			cache_.top()[&cfg].push_back(
-					message_info(EXTRA_KEY,file,start_line,0,
-								 stack_.top()->get_name(),name));
+			cache_.top()[&cfg].emplace_back(
+				EXTRA_KEY,file,start_line,0, stack_.top()->get_name(),name);
 		}
 
 	}

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef DEFAULT_MAP_GENERATOR_JOB_HPP_INCLUDED
-#define DEFAULT_MAP_GENERATOR_JOB_HPP_INCLUDED
+#pragma once
 
 class config;
 
@@ -23,10 +22,9 @@ class config;
 #include "map/location.hpp"
 #include "serialization/string_utils.hpp"
 #include "terrain/translation.hpp"
-#include "util.hpp"
 #include "utils/name_generator.hpp"
 
-#include <boost/random.hpp>
+#include <random>
 #include <cstdint>
 #include <map>
 #include <memory>
@@ -57,8 +55,7 @@ private:
 	bool generate_lake(t_translation::ter_map& terrain, int x, int y, int lake_fall_off, std::set<map_location>& locs_touched);
 	map_location random_point_at_side(size_t width, size_t height);
 
-	boost::random::mt19937 rng_;
+	std::mt19937 rng_;
 	const config& game_config_;
 
 };
-#endif

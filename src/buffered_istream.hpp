@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,12 +17,12 @@
  * Helper class for buffering a @c std::istream.
  */
 
-#ifndef BUFFERED_ISTREAM_HPP_INCLUDED
-#define BUFFERED_ISTREAM_HPP_INCLUDED
+#pragma once
 
-#include "util.hpp"
+#include "utils/general.hpp"
 
 #include <cstdio>
+#include <sstream>
 
 /**
  * Helper class for buffering a @c std::istream.
@@ -171,5 +171,3 @@ private:
 		}
 	}
 };
-
-#endif

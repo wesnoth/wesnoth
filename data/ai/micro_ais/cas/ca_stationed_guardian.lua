@@ -1,5 +1,6 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local M = wesnoth.map
 
 local function get_guardian(cfg)
     local filter = H.get_child(cfg, "filter") or { id = cfg.id }
@@ -38,8 +39,8 @@ function ca_stationed_guardian:execution(cfg)
     -- simultaneously for guardian to attack
     local min_dist, target = 9e99
     for _,enemy in ipairs(enemies) do
-        local dist_s = H.distance_between(cfg.station_x, cfg.station_y, enemy.x, enemy.y)
-        local dist_g = H.distance_between(cfg.guard_x or cfg.station_x, cfg.guard_y or cfg.station_y, enemy.x, enemy.y)
+        local dist_s = M.distance_between(cfg.station_x, cfg.station_y, enemy.x, enemy.y)
+        local dist_g = M.distance_between(cfg.guard_x or cfg.station_x, cfg.guard_y or cfg.station_y, enemy.x, enemy.y)
 
         -- If valid target found, save the one with the shortest distance from (g_x, g_y)
         if (dist_s <= cfg.distance) and (dist_g <= cfg.distance) and (dist_g < min_dist) then
@@ -83,7 +84,7 @@ function ca_stationed_guardian:execution(cfg)
                 if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way))
                     or (unit_in_way == guardian)
                 then
-                    local dist = H.distance_between(hex[1], hex[2], target.x, target.y)
+                    local dist = M.distance_between(hex[1], hex[2], target.x, target.y)
                     if (dist < min_dist) then
                         min_dist, nh = dist, { hex[1], hex[2] }
                     end

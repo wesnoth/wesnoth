@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2014 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,12 +11,11 @@
 
    See the COPYING file for more details.
 */
-#include "global.hpp"
+
 #include "synced_checkup.hpp"
 #include "log.hpp"
 #include "replay.hpp"
 #include "synced_user_choice.hpp"
-#include "resources.hpp"
 
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)

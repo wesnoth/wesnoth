@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2009 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_FACTION_SELECT_HPP_INCLUDED
-#define GUI_DIALOGS_FACTION_SELECT_HPP_INCLUDED
+#pragma once
 
 #include "game_initialization/flg_manager.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
@@ -41,10 +40,10 @@ private:
 	group<std::string> gender_toggle_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Callbacks */
 	void on_faction_select(window& window);
@@ -58,5 +57,3 @@ private:
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif /* ! GUI_DIALOGS_FACTION_SELECT_HPP_INCLUDED */

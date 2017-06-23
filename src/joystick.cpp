@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Fabian Mueller
+   Copyright (C) 2011 - 2017 by Fabian Mueller
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,9 +13,10 @@
 */
 
 #include "joystick.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "log.hpp"
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
+#include "utils/math.hpp"
 #include <boost/math/constants/constants.hpp>
 using namespace boost::math::constants;
 

@@ -1,6 +1,6 @@
 /*
 
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,8 +15,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include "widgets/widget.hpp"
 #include "video.hpp"
 #include "sdl/rect.hpp"
@@ -25,7 +23,7 @@
 #include <cassert>
 
 namespace {
-	const SDL_Rect EmptyRect = {-1234,-1234,0,0};
+	const SDL_Rect EmptyRect {-1234,-1234,0,0};
 }
 
 namespace gui {
@@ -108,27 +106,27 @@ const SDL_Rect* widget::clip_rect() const
 
 void widget::bg_register(SDL_Rect const &rect)
 {
-	restorer_.push_back(surface_restorer(&video(), rect));
+	restorer_.emplace_back(&video(), rect);
 }
 
 void widget::set_location(int x, int y)
 {
-	set_location(sdl::create_rect(x, y, rect_.w, rect_.h));
+	set_location({x, y, rect_.w, rect_.h});
 }
 
 void widget::set_width(int w)
 {
-	set_location(sdl::create_rect(rect_.x, rect_.y, w, rect_.h));
+	set_location({rect_.x, rect_.y, w, rect_.h});
 }
 
 void widget::set_height(int h)
 {
-	set_location(sdl::create_rect(rect_.x, rect_.y, rect_.w, h));
+	set_location({rect_.x, rect_.y, rect_.w, h});
 }
 
 void widget::set_measurements(int w, int h)
 {
-	set_location(sdl::create_rect(rect_.x, rect_.y, w, h));
+	set_location({rect_.x, rect_.y, w, h});
 }
 
 int widget::width() const
@@ -257,10 +255,6 @@ void widget::bg_restore() const
 		    i_end = restorer_.end(); i != i_end; ++i)
 			i->restore();
 		needs_restore_ = false;
-	} else {
-		//this function should be able to be relied upon to update the rectangle,
-		//so do that even if we don't restore
-		update_rect(rect_);
 	}
 }
 
@@ -291,7 +285,6 @@ void widget::draw()
 
 	draw_contents();
 
-	update_rect(rect_);
 	set_dirty(false);
 }
 

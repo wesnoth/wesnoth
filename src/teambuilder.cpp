@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -126,7 +126,7 @@ protected:
 			throw game::load_game_failed("Map not found");
 		}
 
-		DBG_NG_TC << "snapshot: "<< (player_exists_ ? "true" : "false") <<std::endl;
+		DBG_NG_TC << "snapshot: " << utils::bool_string(player_exists_) <<std::endl;
 
 		unit_configs_.clear();
 		seen_ids_.clear();
@@ -246,7 +246,7 @@ protected:
 		// this hack shall be removed, since it messes up with 'multiple leaders'
 
 		// If this side tag describes the leader of the side
-		if (side_cfg_.has_attribute("type") && side_cfg_["type"] != "null" ) {
+		if (!side_cfg_["type"].empty() && side_cfg_["type"] != "null" ) {
 			handle_leader(side_cfg_);
 		}
 		for (const config &l : side_cfg_.child_range("leader")) {

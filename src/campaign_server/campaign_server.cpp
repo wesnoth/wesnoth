@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,6 +22,7 @@
 #include "campaign_server/campaign_server.hpp"
 
 #include "filesystem.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
@@ -33,7 +34,6 @@
 #include "campaign_server/blacklist.hpp"
 #include "campaign_server/control.hpp"
 #include "version.hpp"
-#include "util.hpp"
 #include "hash.hpp"
 
 #include <csignal>
@@ -70,7 +70,7 @@ namespace {
 /* Secure password storage functions */
 bool authenticate(config& campaign, const config::attribute_value& passphrase)
 {
-	return util::create_hash(passphrase, campaign["passsalt"]) == campaign["passhash"];
+	return utils::md5(passphrase, campaign["passsalt"]).hex_digest() == campaign["passhash"];
 }
 
 std::string generate_salt(size_t len)
@@ -92,7 +92,7 @@ void set_passphrase(config& campaign, std::string passphrase)
 {
 	std::string salt = generate_salt(16);
 	campaign["passsalt"] = salt;
-	campaign["passhash"] = util::create_hash(passphrase, salt);
+	campaign["passhash"] = utils::md5(passphrase, salt).hex_digest();
 }
 
 } // end anonymous namespace
@@ -177,14 +177,14 @@ void server::load_config()
 	load_blacklist();
 
 	// Load any configured hooks.
-	hooks_.insert(std::make_pair(std::string("hook_post_upload"), cfg_["hook_post_upload"]));
-	hooks_.insert(std::make_pair(std::string("hook_post_erase"), cfg_["hook_post_erase"]));
+	hooks_.emplace(std::string("hook_post_upload"), cfg_["hook_post_upload"]);
+	hooks_.emplace(std::string("hook_post_erase"), cfg_["hook_post_erase"]);
 
+#ifndef _WIN32
 	// Open the control socket if enabled.
 	if(!cfg_["control_socket"].empty()) {
 		const std::string& path = cfg_["control_socket"].str();
 
-#ifndef _WIN32
 		if(path != fifo_path_) {
 			const int res = mkfifo(path.c_str(),0660);
 			if(res != 0 && errno != EEXIST) {
@@ -198,8 +198,8 @@ void server::load_config()
 				fifo_path_ = path;
 			}
 		}
-#endif
 	}
+#endif
 
 	// Ensure the campaigns list WML exists even if empty, other functions
 	// depend on its existence.
@@ -212,6 +212,12 @@ void server::load_config()
 
 	// But not the listening port number.
 	port_ = cfg_["port"].to_int(default_campaignd_port);
+
+	// Limit the max size of WML documents received from the net to prevent the
+	// possible excessive use of resources due to malformed packets received.
+	// Since an addon is sent in a single WML document this essentially limits
+	// the maximum size of an addon that can be uploaded.
+	simple_wml::document::document_size_limit = cfg_["document_size_limit"].to_int(default_document_size_limit);
 }
 
 void server::handle_new_client(socket_ptr socket)
@@ -429,13 +435,9 @@ void server::send_error(const std::string& msg, socket_ptr sock)
 	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
 }
 
-void server::register_handler(const std::string& cmd, const request_handler& func)
-{
-	handlers_[cmd] = func;
-}
-
 #define REGISTER_CAMPAIGND_HANDLER(req_id) \
-	register_handler(#req_id, &server::handle_##req_id)
+	handlers_[#req_id] = std::bind(&server::handle_##req_id, \
+		std::placeholders::_1, std::placeholders::_2)
 
 void server::register_handlers()
 {
@@ -584,7 +586,7 @@ void server::handle_request_terms(const server::request& req)
 	}
 
 	LOG_CS << "sending terms " << req.addr << "\n";
-	send_message("All add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so.", req.sock);
+	send_message("All content within add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL), with the sole exception of graphics and audio explicitly denoted as released under a Creative Commons license either in a) a combined toplevel file, e.g. `add-ons/My_Addon/ART_LICENSE`, or b) a file with the same path as the asset with `.license` appended, e.g. `add-ons/My_Addon/images/units/axeman.png.license`. By uploading content to this server, you certify that you have the right a) to release all included art and audio explicitly denoted with a Creative Commons license in the proscribed manner under that license, and b) to release all other included content under the terms of the GPL; and that you choose to do so.", req.sock);
 	LOG_CS << " Done\n";
 }
 

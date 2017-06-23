@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef LUA_TEAM_HPP_INCLUDED
-#define LUA_TEAM_HPP_INCLUDED
+#pragma once
 
 class team;
 struct lua_State;
@@ -36,5 +35,3 @@ team* luaW_toteam(lua_State*, int);
 
 /// Test if the top stack element is a team, and if not, error
 team& luaW_checkteam(lua_State*, int);
-
-#endif

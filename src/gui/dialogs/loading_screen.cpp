@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@
 #include "cursor.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "utils/functional.hpp"
 #include <boost/thread.hpp>
 
@@ -86,6 +86,7 @@ loading_screen::loading_screen(std::function<void()> f)
 	, visible_stages_()
 	, animation_stages_()
 	, current_visible_stage_()
+	, is_worker_running_(false)
 {
 	for (const auto& pair : stages) {
 		visible_stages_[pair.first] = t_string(pair.second, "wesnoth-lib") + "...";
@@ -117,19 +118,21 @@ void loading_screen::pre_show(window& window)
 {
 	if (work_) {
 		worker_.reset(new boost::thread([this]() {
+			is_worker_running_ = true;
 			try {
 				work_();
 			} catch(...) {
 				//TODO: guard this with a mutex.
 				exception_ = std::current_exception();
 			}
+			is_worker_running_ = false;
 		}));
 	}
 	timer_id_ = add_timer(100, std::bind(&loading_screen::timer_callback, this, std::ref(window)), true);
 	cursor_setter_.reset(new cursor::setter(cursor::WAIT));
 	progress_stage_label_ = &find_widget<label>(&window, "status", false);
 	animation_label_ = &find_widget<label>(&window, "test_animation", false);
-	
+
 	window.set_enter_disabled(true);
 	window.set_escape_disabled(true);
 }
@@ -194,6 +197,16 @@ void loading_screen::timer_callback(window& window)
 
 loading_screen::~loading_screen()
 {
+	if (is_worker_running_) {
+		// The worker thread is running, exit the application to prevent memory corruption.
+		// TODO: this is still not optimal, the main problem is that this code here assumes
+		// that this happened becasue the window was closed which is not necessarily the case
+		// (other possibilities migth be a 'dialog doesn't fit on screen' exception casued by resizing the window)
+
+		// Another approach migth be to add exit points ( boost::this_thread::interruption_point() ) to the worker
+		// functions (filesystem.cpp config parsing code etc. ) and then use that to end the thread faster.
+		std::exit(0);
+	}
 	clear_timer();
 	close();
 	current_load = nullptr;

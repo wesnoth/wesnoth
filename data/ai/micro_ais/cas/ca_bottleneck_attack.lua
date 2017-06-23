@@ -1,5 +1,4 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local H = wesnoth.require "lua/helper.lua"
 
 local ca_bottleneck_attack = {}
 

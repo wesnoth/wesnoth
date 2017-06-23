@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 by Jyrki Vesterinen <sandgtx@gmail.com>
+ * Copyright (C) 2016 - 2017 by Jyrki Vesterinen <sandgtx@gmail.com>
  * Part of the Battle for Wesnoth Project http://www.wesnoth.org/
  *
  * This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,7 @@
 #include "config.hpp"
 #include "lua/lua.h"
 #include "lua/lauxlib.h"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "scripting/lua_common.hpp"
 
 /**

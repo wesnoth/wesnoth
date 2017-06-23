@@ -46,7 +46,7 @@ def OptionalPath(key, val, env):
 
 opts.AddVariables(
     ListVariable('default_targets', 'Targets that will be built if no target is specified in command line.',
-        "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd cutter exploder test")),
+        "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd test")),
     EnumVariable('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["optimized", "release", "debug", "glibcxx_debug", "profile", "base"]),
     PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
     ('extra_flags_config', "Extra compiler and linker flags to use for configuration and all builds. Whether they're compiler or linker is determined by env.ParseFlags. Unknown flags are compile flags by default. This applies to all extra_flags_* variables", ""),
@@ -201,18 +201,16 @@ Important switches include:
 With no arguments, the recipe builds wesnoth and wesnothd.  Available
 build targets include the individual binaries:
 
-    wesnoth wesnothd campaignd exploder cutter test
+    wesnoth wesnothd campaignd test
 
 You can make the following special build targets:
 
-    all = wesnoth exploder cutter wesnothd campaignd test (*).
+    all = wesnoth wesnothd campaignd test (*).
     TAGS = build tags for Emacs (*).
     wesnoth-deps.png = project dependency graph
     install = install all executables that currently exist, and any data needed
     install-wesnothd = install the Wesnoth multiplayer server.
     install-campaignd = install the Wesnoth campaign server.
-    install-cutter = install the castle cutter
-    install-exploder = install the castle exploder
     install-pytools = install all Python tools and modules
     uninstall = uninstall all executables, tools, modules, and servers.
     pot-update = generate gettext message catalog templates and merge them with localized message catalogs
@@ -308,7 +306,7 @@ def Warning(message):
 
 from metasconf import init_metasconf
 configure_args = dict(
-    custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango", "pkgconfig", "gettext", "lua"]),
+    custom_tests = init_metasconf(env, ["ieee_754", "cplusplus", "python_devel", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext", "lua"]),
     config_h = "$build_dir/config.h",
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
@@ -321,6 +319,11 @@ if env["multilib_arch"]:
 # Some tests need to load parts of boost
 env.PrependENVPath('LD_LIBRARY_PATH', env["boostlibdir"])
 
+# Some tests require at least C++11
+if "gcc" in env["TOOLS"]:
+    env.AppendUnique(CCFLAGS = Split("-W -Wall"), CFLAGS = ["-std=c99"])
+    env.AppendUnique(CXXFLAGS = "-std=c++" + env["cxx_std"])
+
 if env["prereqs"]:
     conf = env.Configure(**configure_args)
 
@@ -332,6 +335,13 @@ if env["prereqs"]:
             conf.CheckFunc("sendfile")
     conf.CheckLib("m")
     conf.CheckFunc("round")
+
+    def CheckIEEE754(conf):
+        if not env["host"]:
+            return conf.CheckIEEE754()
+        else:
+            Warning("You are cross-compiling. Skipping IEEE 754 test.")
+            return True
 
     def CheckAsio(conf):
         if env["PLATFORM"] == 'win32':
@@ -351,7 +361,9 @@ if env["prereqs"]:
             conf.CheckSDL("SDL2_image", header_file = "SDL_image")
 
     have_server_prereqs = (\
+        CheckIEEE754(conf) & \
         conf.CheckCPlusPlus(gcc_version = "4.8") & \
+        conf.CheckLib("libcrypto") & \
         conf.CheckBoost("iostreams", require_version = boost_version) & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \
@@ -373,12 +385,13 @@ if env["prereqs"]:
         conf.CheckOgg())) & \
         conf.CheckPNG() & \
         conf.CheckJPG() & \
+        conf.CheckCairo(min_version = "1.10") & \
         conf.CheckPango("cairo", require_version = "1.21.3") & \
         conf.CheckPKG("fontconfig") & \
         conf.CheckBoost("program_options", require_version = boost_version) & \
         conf.CheckBoost("thread") & \
         conf.CheckBoost("regex") \
-            or Warning("Client prerequisites are not met. wesnoth, cutter and exploder cannot be built")
+            or Warning("Client prerequisites are not met. wesnoth cannot be built")
 
     have_X = False
     if have_client_prereqs:
@@ -457,10 +470,6 @@ for env in [test_env, client_env, env]:
     env.Append(CPPDEFINES = ["HAVE_CONFIG_H"])
 
     if "gcc" in env["TOOLS"]:
-        env.AppendUnique(CCFLAGS = Split("-W -Wall"), CFLAGS = ["-std=c99"])
-
-        env.AppendUnique(CXXFLAGS = "-std=c++" + env["cxx_std"])
-
         if env['openmp']:
             env.AppendUnique(CXXFLAGS = ["-fopenmp"], LIBS = ["gomp"])
 
@@ -489,7 +498,7 @@ for env in [test_env, client_env, env]:
 
     if "clang" in env["CXX"]:
         # Silence warnings about unused -I options and unknown warning switches.
-        env.AppendUnique(CCFLAGS = Split("-Qunused-arguments -Wno-unknown-warning-option"))
+        env.AppendUnique(CCFLAGS = Split("-Qunused-arguments -Wno-unknown-warning-option -Werror=non-virtual-dtor"))
 
     if "suncc" in env["TOOLS"]:
         env["OPT_FLAGS"] = "-g0"
@@ -516,7 +525,7 @@ if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
 
 try:
-    if call(env.subst("utils/autorevision -t h > $build_dir/revision.h"), shell=True) == 0:
+    if call(env.subst("utils/autorevision.sh -t h > $build_dir/revision.h"), shell=True) == 0:
         env["have_autorevision"] = True
         if not call(env.subst("cmp -s $build_dir/revision.h src/revision.h"), shell=True) == 0:
             call(env.subst("cp $build_dir/revision.h src/revision.h"), shell=True)
@@ -526,14 +535,14 @@ except:
 Export(Split("env client_env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
 SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 
-binaries = Split("wesnoth wesnothd cutter exploder campaignd test")
+binaries = Split("wesnoth wesnothd campaignd test")
 builds = {
-    "base"          : dict(CCFLAGS   = Split("$OPT_FLAGS")),    # Don't build in subdirectory
-    "debug"         : dict(CCFLAGS   = Split("$DEBUG_FLAGS")),
+    "base"          : dict(CCFLAGS    = Split("$OPT_FLAGS")),    # Don't build in subdirectory
+    "debug"         : dict(CCFLAGS    = Split("$DEBUG_FLAGS")),
     "glibcxx_debug" : dict(CPPDEFINES = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")),
-    "release"       : dict(CCFLAGS   = Split("$OPT_FLAGS")),
-    "profile"       : dict(CCFLAGS   = "-pg", LINKFLAGS = "-pg"),
-    "optimized"      : dict(CCFLAGS   = Split("$HIGH_OPT_COMP_FLAGS"), LINKFLAGS=Split("$HIGH_OPT_LINK_FLAGS"))
+    "release"       : dict(CCFLAGS    = Split("$OPT_FLAGS")),
+    "profile"       : dict(CCFLAGS    = "-pg", LINKFLAGS = "-pg"),
+    "optimized"     : dict(CCFLAGS    = Split("$HIGH_OPT_COMP_FLAGS"), LINKFLAGS=Split("$HIGH_OPT_LINK_FLAGS"))
     }
 builds["glibcxx_debug"].update(builds["debug"])
 build = env["build"]
@@ -643,15 +652,10 @@ if env["systemd"]:
 # Wesnoth campaign server
 env.InstallBinary(campaignd)
 
-# And the artists' tools
-env.InstallBinary(cutter)
-env.InstallBinary(exploder)
-
 # Compute things for default install based on which targets have been created.
 install = env.Alias('install', [])
 for installable in ('wesnoth',
-                    'wesnothd', 'campaignd',
-                    'exploder', 'cutter'):
+                    'wesnothd', 'campaignd'):
     if os.path.exists(installable + build_suffix) or installable in COMMAND_LINE_TARGETS or "all" in COMMAND_LINE_TARGETS:
         env.Alias('install', env.Alias('install-'+installable))
 

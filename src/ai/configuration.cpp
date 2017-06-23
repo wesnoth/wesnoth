@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,7 +25,6 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "wml_exception.hpp"
-#include "config_assign.hpp"
 
 #include <vector>
 #include <deque>
@@ -70,7 +69,7 @@ void configuration::init(const config &game_config)
 		desc.text = ai_configuration["description"].t_str();
 		desc.cfg=ai_configuration;
 
-		ai_configurations_.insert(std::make_pair(id,desc));
+		ai_configurations_.emplace(id, desc);
 		LOG_AI_CONFIGURATION << "loaded AI config: " << ai_configuration["description"] << std::endl;
 	}
 }
@@ -95,7 +94,7 @@ void extract_ai_configurations(std::map<std::string, description> &storage, cons
 		desc.text = ai_configuration["description"].t_str();
 		desc.cfg=ai_configuration;
 
-		storage.insert(std::make_pair(id,desc));
+		storage.emplace(id, desc);
 		LOG_AI_CONFIGURATION << "loaded AI config: " << ai_configuration["description"] << std::endl;
 	}
 }
@@ -244,10 +243,10 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	return true;
 
 }
-	
-static const std::set<std::string> non_aspect_attributes = {"turns", "time_of_day", "engine", "ai_algorithm", "id", "description"};
-static const std::set<std::string> just_copy_tags = {"engine", "stage", "aspect", "goal", "modify_ai"};
-static const std::set<std::string> old_goal_tags = {"target", "target_location", "protect_unit", "protect_location"};
+
+static const std::set<std::string> non_aspect_attributes {"turns", "time_of_day", "engine", "ai_algorithm", "id", "description"};
+static const std::set<std::string> just_copy_tags {"engine", "stage", "aspect", "goal", "modify_ai"};
+static const std::set<std::string> old_goal_tags {"target", "target_location", "protect_unit", "protect_location"};
 
 void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 	std::string algorithm;
@@ -282,7 +281,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			facet_config["turns"] = turns;
 			facet_config["time_of_day"] = time_of_day;
 			facet_config["value"] = attr.second;
-			facet_configs.push_back(std::make_pair(attr.first, facet_config));
+			facet_configs.emplace_back(attr.first, facet_config);
 		}
 		for (const config::any_child &child : aiparam.all_children_range()) {
 			if (just_copy_tags.count(child.key)) {
@@ -310,7 +309,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			// then it can be copied verbatim as a [facet] tag.
 			// Otherwise, it needs to be placed as a [value] within a [facet] tag.
 			if (child.key == "attacks" || child.cfg.has_attribute("value") || child.cfg.has_child("value")) {
-				facet_configs.push_back(std::make_pair(child.key, child.cfg));
+				facet_configs.emplace_back(child.key, child.cfg);
 			} else {
 				config facet_config;
 				facet_config["engine"] = engine;
@@ -325,7 +324,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 						facet_config["id"] = child.cfg["id"];
 					}
 				}
-				facet_configs.push_back(std::make_pair(child.key, facet_config));
+				facet_configs.emplace_back(child.key, facet_config);
 			}
 		}
 		std::map<std::string, config> aspect_configs;
@@ -340,6 +339,12 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 		typedef std::map<std::string, config>::value_type aspect_pair;
 		for (const aspect_pair& p : aspect_configs) {
 			parsed_config.add_child("aspect", p.second);
+		}
+	}
+	// Support old recruitment aspect syntax
+	for(auto& child : parsed_config.child_range("aspect")) {
+		if(child["id"] == "recruitment") {
+			child["id"] = "recruitment_instructions";
 		}
 	}
 	if (algorithm.empty() && !parsed_config.has_child("stage")) {

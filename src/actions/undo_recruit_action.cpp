@@ -1,3 +1,16 @@
+/*
+   Copyright (C) 2017 the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
 #include "actions/undo_recruit_action.hpp"
 #include "actions/create.hpp"
 
@@ -40,8 +53,8 @@ void recruit_action::write(config & cfg) const
 bool recruit_action::undo(int side)
 {
 	game_display & gui = *resources::screen;
-	unit_map &   units = *resources::units;
-	team &current_team = resources::gameboard->teams()[side-1];
+	unit_map &   units = resources::gameboard->units();
+	team &current_team = resources::gameboard->get_team(side);
 
 	const map_location & recruit_loc = route.front();
 	unit_map::iterator un_it = units.find(recruit_loc);
@@ -65,52 +78,5 @@ bool recruit_action::undo(int side)
 	return true;
 }
 
-/**
- * Redoes this action.
- * @return true on success; false on an error.
- */
-bool recruit_action::redo(int side)
-{
-	game_display & gui = *resources::screen;
-	team &current_team = resources::gameboard->teams()[side-1];
-
-	map_location loc = route.front();
-	map_location from = recruit_from;
-	const std::string & name = u_type.base_id();
-
-	//search for the unit to be recruited in recruits
-	if ( !util::contains(get_recruits(side, loc), name) ) {
-		ERR_NG << "Trying to redo a recruit for side " << side
-			<< ", which does not recruit type \"" << name << "\"\n";
-		assert(false);
-		return false;
-	}
-
-	current_team.last_recruit(name);
-	const std::string &msg = find_recruit_location(side, loc, from, name);
-	if ( msg.empty() ) {
-		//MP_COUNTDOWN: restore recruitment bonus
-		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
-		resources::recorder->redo(replay_data);
-		replay_data.clear();
-		set_scontext_synced sync;
-		recruit_unit(u_type, side, loc, from, true, false);
-
-		// Quick error check. (Abuse of [allow_undo]?)
-		if ( loc != route.front() ) {
-			ERR_NG << "When redoing a recruit at " << route.front()
-			       << ", the location was moved to " << loc << ".\n";
-			// Not really fatal, I suppose. Just update the action so
-			// undoing this works.
-			route.front() = loc;
-		}
-		sync.do_final_checkup();
-	} else {
-		gui2::show_transient_message(gui.video(), "", msg);
-		return false;
-	}
-
-	return true;
-}
 }
 }

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_GRID_HPP_INCLUDED
-#define GUI_WIDGETS_GRID_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/widget.hpp"
 
@@ -37,27 +36,25 @@ public:
 	virtual ~grid();
 
 	/***** ***** ***** ***** LAYOUT FLAGS ***** ***** ***** *****/
-	static const unsigned VERTICAL_SHIFT = 0;
-	static const unsigned VERTICAL_GROW_SEND_TO_CLIENT = 1 << VERTICAL_SHIFT;
-	static const unsigned VERTICAL_ALIGN_TOP = 2 << VERTICAL_SHIFT;
-	static const unsigned VERTICAL_ALIGN_CENTER = 3 << VERTICAL_SHIFT;
-	static const unsigned VERTICAL_ALIGN_BOTTOM = 4 << VERTICAL_SHIFT;
-	static const unsigned VERTICAL_MASK = 7 << VERTICAL_SHIFT;
+	static const unsigned VERTICAL_SHIFT                 = 0;
+	static const unsigned VERTICAL_GROW_SEND_TO_CLIENT   = 1 << VERTICAL_SHIFT;
+	static const unsigned VERTICAL_ALIGN_TOP             = 2 << VERTICAL_SHIFT;
+	static const unsigned VERTICAL_ALIGN_CENTER          = 3 << VERTICAL_SHIFT;
+	static const unsigned VERTICAL_ALIGN_BOTTOM          = 4 << VERTICAL_SHIFT;
+	static const unsigned VERTICAL_MASK                  = 7 << VERTICAL_SHIFT;
 
-	static const unsigned HORIZONTAL_SHIFT = 3;
-	static const unsigned HORIZONTAL_GROW_SEND_TO_CLIENT = 1
-														   << HORIZONTAL_SHIFT;
-	static const unsigned HORIZONTAL_ALIGN_LEFT = 2 << HORIZONTAL_SHIFT;
-	static const unsigned HORIZONTAL_ALIGN_CENTER = 3 << HORIZONTAL_SHIFT;
-	static const unsigned HORIZONTAL_ALIGN_RIGHT = 4 << HORIZONTAL_SHIFT;
-	static const unsigned HORIZONTAL_MASK = 7 << HORIZONTAL_SHIFT;
+	static const unsigned HORIZONTAL_SHIFT               = 3;
+	static const unsigned HORIZONTAL_GROW_SEND_TO_CLIENT = 1 << HORIZONTAL_SHIFT;
+	static const unsigned HORIZONTAL_ALIGN_LEFT          = 2 << HORIZONTAL_SHIFT;
+	static const unsigned HORIZONTAL_ALIGN_CENTER        = 3 << HORIZONTAL_SHIFT;
+	static const unsigned HORIZONTAL_ALIGN_RIGHT         = 4 << HORIZONTAL_SHIFT;
+	static const unsigned HORIZONTAL_MASK                = 7 << HORIZONTAL_SHIFT;
 
-	static const unsigned BORDER_TOP = 1 << 6;
-	static const unsigned BORDER_BOTTOM = 1 << 7;
-	static const unsigned BORDER_LEFT = 1 << 8;
-	static const unsigned BORDER_RIGHT = 1 << 9;
-	static const unsigned BORDER_ALL = BORDER_TOP | BORDER_BOTTOM | BORDER_LEFT
-									   | BORDER_RIGHT;
+	static const unsigned BORDER_TOP                     = 1 << 6;
+	static const unsigned BORDER_BOTTOM                  = 1 << 7;
+	static const unsigned BORDER_LEFT                    = 1 << 8;
+	static const unsigned BORDER_RIGHT                   = 1 << 9;
+	static const unsigned BORDER_ALL = BORDER_TOP | BORDER_BOTTOM | BORDER_LEFT | BORDER_RIGHT;
 
 	/***** ***** ***** ***** ROW COLUMN MANIPULATION ***** ***** ***** *****/
 
@@ -112,7 +109,7 @@ public:
 	 *
 	 * @param widget              The widget to put in the grid.
 	 * @param row                 The row of the cell.
-	 * @param col                 The columnof the cell.
+	 * @param col                 The column of the cell.
 	 * @param flags               The flags for the widget in the cell.
 	 * @param border_size         The size of the border for the cell, how the
 	 *                            border is applied depends on the flags.
@@ -138,7 +135,7 @@ public:
 	 *                            the widget is cleared). If no widget found
 	 *                            and thus not replace nullptr will returned.
 	 */
-	widget* swap_child(const std::string& id,
+	std::unique_ptr<widget> swap_child(const std::string& id,
 						widget* w,
 						const bool recurse,
 						widget* new_parent = nullptr);
@@ -147,7 +144,7 @@ public:
 	 * Removes and frees a widget in a cell.
 	 *
 	 * @param row                 The row of the cell.
-	 * @param col                 The columnof the cell.
+	 * @param col                 The column of the cell.
 	 */
 	void remove_child(const unsigned row, const unsigned col);
 
@@ -171,7 +168,6 @@ public:
 	 */
 	void set_active(const bool active);
 
-
 	/** Returns the widget in the selected cell. */
 	const widget* get_widget(const unsigned row, const unsigned col) const
 	{
@@ -187,8 +183,8 @@ public:
 	virtual bool can_mouse_focus() const override { return false; }
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
-	/** See @ref widget::layout_initialise. */
-	virtual void layout_initialise(const bool full_initialisation) override;
+	/** See @ref widget::layout_initialize. */
+	virtual void layout_initialize(const bool full_initialization) override;
 
 	/**
 	 * Tries to reduce the width of a container.
@@ -230,9 +226,24 @@ public:
 	 */
 	point recalculate_best_size();
 
+	/**
+	 * Modifies the widget alignment data of a child cell containing a specific widget.
+	 *
+	 * @param widget              The widget whose cell to modify.
+	 * @param set_flag            The alignment flag to set.
+	 * @param mask                Whether to affect horizontal or vertical alignment.
+	 *                            Use either HORIZONTAL_MASK or VERTICAL_MASK
+	 */
+	void set_child_alignment(widget* widget, unsigned set_flag, unsigned mode_mask);
+
 private:
 	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
+
+	/**
+	* Attempts to lay out the grid without laying out the entire window.
+	*/
+	void request_placement(dispatcher& dispatcher, const event::ui_event event, bool& handled, bool& halt);
 
 public:
 	/** See @ref widget::can_wrap. */
@@ -329,8 +340,8 @@ private:
 		 */
 		void place(point origin, point size);
 
-		/** Forwards @ref grid::layout_initialise to the cell. */
-		void layout_initialise(const bool full_initialisation);
+		/** Forwards @ref grid::layout_initialize to the cell. */
+		void layout_initialize(const bool full_initialization);
 
 		/** Returns the can_wrap for the cell. */
 		bool can_wrap() const
@@ -474,14 +485,42 @@ private:
 	 * is: rows_ * col + row. All other vectors use the same access formula.
 	 */
 	std::vector<child> children_;
-	const child& get_child(const unsigned row, const unsigned col) const
+
+	/**
+	 * Gets the grid child in the specified cell.
+	 *
+	 * @param row                 The row of the cell.
+	 * @param col                 The column of the cell.
+	 *
+	 * @returns                   A const reference to the specified grid child.
+	 */
+	const grid::child& get_child(const unsigned row, const unsigned col) const
 	{
 		return children_[rows_ * col + row];
 	}
-	child& get_child(const unsigned row, const unsigned col)
+
+	/**
+	 * Gets the grid child in the specified cell.
+	 *
+	 * @param row                 The row of the cell.
+	 * @param col                 The column of the cell.
+	 *
+	 * @returns                   A const reference to the specified grid child.
+	 */
+	grid::child& get_child(const unsigned row, const unsigned col)
 	{
 		return children_[rows_ * col + row];
 	}
+
+	/**
+	 * Gets the grid child containing the specified widget.
+	 *
+	 * @param w                   The widget to search for.
+	 *
+	 * @returns                   A pointer to the relevant grid child, or nullptr
+	 *                            if no grid cell 'owns' the given widget.
+	 */
+	grid::child* get_child(widget* w);
 
 	/** Layouts the children in the grid. */
 	void layout(const point& origin);
@@ -504,5 +543,3 @@ private:
 void set_single_child(grid& grid, widget* widget);
 
 } // namespace gui2
-
-#endif

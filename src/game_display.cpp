@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,6 @@
  * During a game, show map & info-panels at top+right.
  */
 
-#include "global.hpp"
 #include "game_display.hpp"
 
 #include "gettext.hpp"
@@ -29,17 +28,16 @@
 #include "fake_unit_ptr.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "halo.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/label.hpp"
-#include "font/marked-up_text.hpp"
 #include "font/standard_colors.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
 #include "tod_manager.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "sound.hpp"
 #include "synced_context.hpp"
 #include "terrain/type_data.hpp"
@@ -85,7 +83,7 @@ game_display::game_display(game_board& board, CVideo& video, std::weak_ptr<wb::m
 		needs_rebuild_(false)
 {
 	replace_overlay_map(&overlay_map_);
-	clear_screen();
+	video.clear_screen();
 }
 
 game_display* game_display::create_dummy_display(CVideo& video)
@@ -254,7 +252,7 @@ void game_display::draw_invalidated()
 	if (fake_unit_man_->empty()) {
 		return;
 	}
-	unit_drawer drawer = unit_drawer(*this, energy_bar_rects_);
+	unit_drawer drawer = unit_drawer(*this);
 
 	for (const unit* temp_unit : *fake_unit_man_) {
 		const map_location& loc = temp_unit->get_location();
@@ -436,7 +434,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			std::stringstream def_text;
 			def_text << def << "%";
 
-			color_t color = color_t::from_argb_bytes(game_config::red_to_green(def, false));
+			color_t color = game_config::red_to_green(def, false);
 
 			// simple mark (no turn point) use smaller font
 			int def_font = w->second.turns > 0 ? 18 : 16;
@@ -481,7 +479,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			std::stringstream def_text;
 			def_text << def << "%";
 
-			color_t color = color_t::from_argb_bytes(game_config::red_to_green(def, false));
+			color_t color = game_config::red_to_green(def, false);
 
 			// use small font
 			int def_font = 16;

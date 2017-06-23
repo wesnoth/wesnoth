@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2016 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2017 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef WB_MOVE_HPP_
-#define WB_MOVE_HPP_
+#pragma once
 
 #include "action.hpp"
 
@@ -129,5 +128,3 @@ std::ostream &operator<<(std::ostream &s, move_ptr move);
 std::ostream &operator<<(std::ostream &s, move_const_ptr move);
 
 } // end namespace wb
-
-#endif /* WB_MOVE_HPP_ */

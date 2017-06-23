@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2014 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SDL_RECT_HPP_INCLUDED
-#define SDL_RECT_HPP_INCLUDED
+#pragma once
 
 /**
  * @file
@@ -32,15 +31,18 @@ namespace gui2 {
 namespace sdl
 {
 
-CONSTEXPR const SDL_Rect empty_rect = { 0, 0, 0, 0 };
+CONSTEXPR const SDL_Rect empty_rect { 0, 0, 0, 0 };
 
 /**
- * Creates an empty SDL_Rect.
+ * Creates an SDL_Rect with the given dimensions.
  *
- * Since SDL_Rect doesn't have a constructor it's not possible to create it as
- * a temporary for a function parameter. This functions overcomes this limit.
+ * This is a simple wrapper in order to avoid the narrowing conversion warnings
+ * that occur when using aggregate initialization and non-int values.
  */
-SDL_Rect create_rect(const int x, const int y, const int w, const int h);
+inline SDL_Rect create_rect(const int x, const int y, const int w, const int h)
+{
+	return {x, y, w, h};
+}
 
 /**
  * Tests whether a point is inside a rectangle.
@@ -90,44 +92,20 @@ SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2);
 SDL_Rect union_rects(const SDL_Rect &rect1, const SDL_Rect &rect2);
 
 /**
- * Fills a specified area of a surface with a given color and opacity.
+ * Draw a rectangle outline.
  *
- * @param rect                    The area that should be filled.
- * @param color                   The color to fill with.
- * @param alpha                   Opacity.
- * @param target                  The surface to operate on.
- */
-void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, surface target);
-
-/**
- * Draw a colored rectangle on a surface.
- *
- * @param x                       The x coordinate of the rectangle.
- * @param y                       The y coordinate of the rectangle.
- * @param w                       The width of the rectangle.
- * @param h                       The height of the rectangle.
+ * @param rect                    The dimensions of the rectangle.
  * @param color                   The color of the rectangle.
- * @param tg                      The surface to operate on.
  */
-void draw_rectangle(int x, int y, int w, int h, Uint32 color, surface tg);
+void draw_rectangle(const SDL_Rect& rect, const color_t& color);
 
 /**
- * Fills a specified rectangle area of a surface with a given color and opacity.
- * Shortcut for fill_rect_alpha().
+ * Draws a filled rectangle.
  *
- * @param x                       The x coordinate of the rectangle.
- * @param y                       The y coordinate of the rectangle.
- * @param w                       The width of the rectangle.
- * @param h                       The height of the rectangle.
- * @param r                       The red value of the color to be used.
- * @param g                       The green value of the color to be used.
- * @param b                       The blue value of the color to be used.
- * @param alpha                   Opacity for filling.
- * @param target                  The surface to operate on.
+ * @param rect                    The dimensions of the rectangle.
+ * @param color                   The color of the rectangle.
  */
-void draw_solid_tinted_rectangle(int x, int y, int w, int h,
-								 int r, int g, int b,
-								 double alpha, surface target);
+void fill_rectangle(const SDL_Rect& rect, const color_t& color);
 
 /**
  * Fill a rectangle on a given surface. Alias for SDL_FillRect.
@@ -136,7 +114,7 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
  * @param dst_rect                The rectangle to fill.
  * @param color                   Color of the rectangle.
  */
-inline void fill_rect(surface& dst, SDL_Rect* dst_rect, const Uint32 color)
+inline void fill_surface_rect(surface& dst, SDL_Rect* dst_rect, const Uint32 color)
 {
 	SDL_FillRect(dst, dst_rect, color);
 }
@@ -146,4 +124,4 @@ inline void fill_rect(surface& dst, SDL_Rect* dst_rect, const Uint32 color)
 bool operator==(const SDL_Rect& a, const SDL_Rect& b);
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b);
 
-#endif
+std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect);

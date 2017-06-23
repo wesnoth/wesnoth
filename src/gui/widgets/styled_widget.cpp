@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,14 +23,15 @@
 #include "gui/dialogs/tooltip.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "font/marked-up_text.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
+#include "sdl/rect.hpp"
 #include "wml_exception.hpp"
 
 #include "utils/functional.hpp"
 
+#include <algorithm>
 #include <iomanip>
 
 #define LOG_SCOPE_HEADER                                                       \
@@ -42,18 +43,19 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-styled_widget::styled_widget(const unsigned canvas_count)
+styled_widget::styled_widget()
 	: definition_("default")
 	, label_()
 	, use_markup_(false)
 	, use_tooltip_on_label_overflow_(true)
 	, tooltip_()
 	, help_message_()
-	, canvas_(canvas_count)
+	, canvas_()
 	, config_(nullptr)
 	, renderer_()
 	, text_maximum_width_(0)
 	, text_alignment_(PANGO_ALIGN_LEFT)
+	, text_ellipse_mode_(PANGO_ELLIPSIZE_END)
 	, shrunken_(false)
 {
 	connect_signal<event::SHOW_TOOLTIP>(std::bind(
@@ -67,7 +69,6 @@ styled_widget::styled_widget(const unsigned canvas_count)
 }
 
 styled_widget::styled_widget(const implementation::builder_styled_widget& builder,
-				   const unsigned canvas_count,
 				   const std::string& control_type)
 	: widget(builder)
 	, definition_(builder.definition)
@@ -76,11 +77,12 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 	, use_tooltip_on_label_overflow_(builder.use_tooltip_on_label_overflow)
 	, tooltip_(builder.tooltip)
 	, help_message_(builder.help)
-	, canvas_(canvas_count)
+	, canvas_()
 	, config_(nullptr)
 	, renderer_()
 	, text_maximum_width_(0)
 	, text_alignment_(PANGO_ALIGN_LEFT)
+	, text_ellipse_mode_(PANGO_ELLIPSIZE_END)
 	, shrunken_(false)
 {
 	definition_load_configuration(control_type);
@@ -185,17 +187,17 @@ bool styled_widget::get_link_aware() const
 	return false;
 }
 
-std::string styled_widget::get_link_color() const
+color_t styled_widget::get_link_color() const
 {
-	return "#ffff00";
+	return color_t::from_hex_string("ffff00");
 }
 
-void styled_widget::layout_initialise(const bool full_initialisation)
+void styled_widget::layout_initialize(const bool full_initialization)
 {
 	// Inherited.
-	widget::layout_initialise(full_initialisation);
+	widget::layout_initialize(full_initialization);
 
-	if(full_initialisation) {
+	if(full_initialization) {
 		shrunken_ = false;
 	}
 }
@@ -218,9 +220,34 @@ void styled_widget::request_reduce_width(const unsigned maximum_width)
 				  << "' maximum_width " << maximum_width << " result " << size
 				  << ".\n";
 
+	} else if(label_.empty() || text_can_shrink()) {
+		point size = get_best_size();
+		point min_size = get_config_minimum_size();
+		size.x = std::min(size.x, std::max<int>(maximum_width, min_size.x));
+		set_layout_size(size);
+
+		DBG_GUI_L << LOG_HEADER << " styled_widget " << id()
+		          << " maximum_width " << maximum_width << " result " << size
+		          << ".\n";
 	} else {
 		DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
 				  << "' failed; either no label or wrapping not allowed.\n";
+	}
+}
+
+void styled_widget::request_reduce_height(const unsigned maximum_height)
+{
+	if(!label_.empty()) {
+		// Do nothing
+	} else {
+		point size = get_best_size();
+		point min_size = get_config_minimum_size();
+		size.y = std::min(size.y, std::max<int>(maximum_height, min_size.y));
+		set_layout_size(size);
+
+		DBG_GUI_L << LOG_HEADER << " styled_widget " << id()
+		          << " maximum_height " << maximum_height << " result " << size
+		          << ".\n";
 	}
 }
 
@@ -359,6 +386,17 @@ void styled_widget::set_text_alignment(const PangoAlignment text_alignment)
 	set_is_dirty(true);
 }
 
+void styled_widget::set_text_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
+{
+	if(text_ellipse_mode_ == ellipse_mode) {
+		return;
+	}
+
+	text_ellipse_mode_ = ellipse_mode;
+	update_canvas();
+	set_is_dirty(true);
+}
+
 void styled_widget::update_canvas()
 {
 	const int max_width = get_text_maximum_width();
@@ -367,19 +405,20 @@ void styled_widget::update_canvas()
 	// set label in canvases
 	for(auto & canvas : canvas_)
 	{
-		canvas.set_variable("text", variant(label_));
-		canvas.set_variable("text_markup", variant(use_markup_));
-		canvas.set_variable("text_link_aware", variant(get_link_aware()));
-		canvas.set_variable("text_link_color", variant(get_link_color()));
+		canvas.set_variable("text", wfl::variant(label_));
+		canvas.set_variable("text_markup", wfl::variant(use_markup_));
+		canvas.set_variable("text_link_aware", wfl::variant(get_link_aware()));
+		// Possible TODO: Consider making a formula_callable for colours
+		color_t link_color = get_link_color();
+		std::vector<wfl::variant> link_color_as_list{wfl::variant(link_color.r), wfl::variant(link_color.g), wfl::variant(link_color.b), wfl::variant(link_color.a)};
+		canvas.set_variable("text_link_color", wfl::variant(link_color_as_list));
 		canvas.set_variable("text_alignment",
-							variant(encode_text_alignment(text_alignment_)));
-		canvas.set_variable("text_maximum_width", variant(max_width));
-		canvas.set_variable("text_maximum_height", variant(max_height));
-		canvas.set_variable("text_wrap_mode",
-							variant(can_wrap() ? PANGO_ELLIPSIZE_NONE
-											   : PANGO_ELLIPSIZE_END));
+							wfl::variant(encode_text_alignment(text_alignment_)));
+		canvas.set_variable("text_maximum_width", wfl::variant(max_width));
+		canvas.set_variable("text_maximum_height", wfl::variant(max_height));
+		canvas.set_variable("text_wrap_mode", wfl::variant(get_text_ellipse_mode()));
 		canvas.set_variable("text_characters_per_line",
-							variant(get_characters_per_line()));
+							wfl::variant(get_characters_per_line()));
 	}
 }
 
@@ -420,18 +459,18 @@ void styled_widget::impl_draw_foreground(surface& /*frame_buffer*/
 
 void styled_widget::definition_load_configuration(const std::string& control_type)
 {
-	assert(!config());
+	assert(!config_);
 
 	set_config(get_control(control_type, definition_));
-	if(get_canvas().size() != config()->state.size())
-	{
-		// TODO: Some widgets (toggle panel, toggle button) have a variable canvas count which is determined by its definition.
-		// I think we should remove the canvas_count from tcontrols constructor and always read it from the definition.
-		DBG_GUI_L << "Corrected canvas count to " << config()->state.size() << std::endl;
-		get_canvas() = std::vector<canvas>(config()->state.size());
-	}
-	for(size_t i = 0; i < get_canvas().size(); ++i) {
-		get_canvas(i) = config()->state[i].canvas_;
+
+	/**
+	 * Fill in each canvas from the widget state definitons.
+	 *
+	 * Most widgets have a single canvas. However, some widgets such as toggle_panel
+	 * and toggle_button have a variable canvas count determined by their definitions.
+	 */
+	for(const auto& widget_state : config_->state) {
+		canvas_.emplace_back(std::move(widget_state.canvas_));
 	}
 
 	update_canvas();
@@ -463,9 +502,7 @@ point styled_widget::get_best_text_size(point minimum_size,
 
 	renderer_.set_maximum_width(maximum_width);
 
-	if(can_wrap()) {
-		renderer_.set_ellipse_mode(PANGO_ELLIPSIZE_NONE);
-	}
+	renderer_.set_ellipse_mode(get_text_ellipse_mode());
 
 	renderer_.set_characters_per_line(get_characters_per_line());
 	if(get_characters_per_line() != 0 && !can_wrap()) {

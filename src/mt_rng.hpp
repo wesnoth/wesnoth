@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,20 +12,18 @@
    See the COPYING file for more details.
 */
 
-#ifndef MT_RNG_HPP_INCLUDED
-#define MT_RNG_HPP_INCLUDED
+#pragma once
 
 #include <cstdint>
-#include <boost/random/mersenne_twister.hpp>
+#include <random>
 
 class config;
 
-namespace rand_rng
+namespace randomness
 {
 
 /*
-   This class provides an interface, similar to simple_rng, to the
-   boost mt19937 generator.
+   This class provides an interface, similar to simple_rng, to the mt19937 generator.
 */
 
 class mt_rng
@@ -65,17 +63,11 @@ private:
 	/** Initial seed for the pool. */
 	uint32_t random_seed_;
 
-	/** State for the random pool (boost mersenne twister random generator). */
-	boost::mt19937 mt_;
+	/** State for the random pool (mersenne twister random generator). */
+	std::mt19937 mt_;
 
 	/** Number of time a random number is generated. */
 	unsigned int random_calls_;
-
-	/** On my local version of boost::random, I can use mt_.discard to discard a number of rng results.
-	In older versions this seems to be unavailable. I'm implementing as a private method of mt_rng,
-	following description here: http://www.boost.org/doc/libs/1_51_0/doc/html/boost/random/mersenne_twister_engine.html#id1408119-bb
-	*/
-	void discard(const unsigned int call_count);
 
 	/**
 	 *  Seeds the random pool. This is the old version, I would like to mark this private.
@@ -89,6 +81,4 @@ private:
 	void seed_random(const uint32_t seed, const unsigned int call_count = 0);
 };
 
-} // ends rand_rng namespace
-
-#endif
+} // ends randomness namespace

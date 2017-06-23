@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,8 +19,10 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/generator.hpp"
 #include "gettext.hpp"
+#include "utils/general.hpp"
 
 #include "utils/functional.hpp"
 
@@ -32,9 +34,8 @@ namespace gui2
 REGISTER_WIDGET(stacked_widget)
 
 stacked_widget::stacked_widget()
-	: container_base(1)
-	, generator_(
-			  generator_base::build(false, false, generator_base::independent, false))
+	: container_base()
+	, generator_(generator_base::build(false, false, generator_base::independent, false))
 	, selected_layer_(-1)
 {
 }
@@ -56,42 +57,6 @@ void stacked_widget::layout_children()
 		generator_->item(i).layout_children();
 	}
 }
-
-namespace
-{
-
-/**
- * Swaps an item in a grid for another one.*/
-void swap_grid(grid* g,
-			   grid* content_grid,
-			   widget* widget,
-			   const std::string& id)
-{
-	assert(content_grid);
-	assert(widget);
-
-	// Make sure the new child has same id.
-	widget->set_id(id);
-
-	// Get the container containing the wanted widget.
-	grid* parent_grid = nullptr;
-	if(g) {
-		parent_grid = find_widget<grid>(g, id, false, false);
-	}
-	if(!parent_grid) {
-		parent_grid = find_widget<grid>(content_grid, id, true, false);
-	}
-	parent_grid = dynamic_cast<grid*>(parent_grid->parent());
-	assert(parent_grid);
-
-	// Replace the child.
-	widget = parent_grid->swap_child(id, widget, false);
-	assert(widget);
-
-	delete widget;
-}
-
-} // namespace
 
 void
 stacked_widget::finalize(std::vector<builder_grid_const_ptr> widget_builder)
@@ -118,34 +83,76 @@ void stacked_widget::set_self_active(const bool /*active*/)
 	/* DO NOTHING */
 }
 
-void stacked_widget::select_layer_internal(const unsigned int layer, const bool select) const
+void stacked_widget::select_layer_impl(std::function<bool(unsigned int i)> display_condition)
 {
-	// Selecting a layer that's already selected appears to actually deselect
-	// it, so make sure to only perform changes we want.
-	if(generator_->is_selected(layer) != select) {
-		generator_->select_item(layer, select);
+	const unsigned int num_layers = get_layer_count();
+
+	// Deselect all layers except the chosen ones.
+	for(unsigned int i = 0; i < num_layers; ++i) {
+		const bool selected = display_condition(i);
+
+		/* Selecting a previously selected item will deselect it, regardless of the what is passed to
+		 * select_item. This causes issues if this function is called when all layers are visible (for
+		 * example, initialization). For layers other than the chosen one, this is the desired behavior.
+		 * However the chosen layer could *also* be deselected undesirably due to the conditions outlined
+		 * above, and as this widget's generator does not stipulate a minimum selection, it's possible to
+		 * end up with no layers visible at all.
+		 *
+		 * This works around that by performing no selection unless necessary to change states.
+		 */
+		if(generator_->is_selected(i) != selected) {
+			generator_->select_item(i, selected);
+		}
 	}
+
+	// If we already have our chosen layers, exit.
+	if(selected_layer_ >= 0) {
+		return;
+	}
+
+	// Else, re-show all layers.
+	for(unsigned int i = 0; i < num_layers; ++i) {
+		/* By design, only the last selected item will receive events even if multiple items are visible
+		 * and said item is not at the top of the stack. If this point is reached, all layers have already
+		 * been hidden by the loop above, so the last layer selected will be the top-most one, as desired.
+		 */
+		generator_->select_item(i, true);
+	}
+}
+
+void stacked_widget::update_selected_layer_index(const int i)
+{
+	selected_layer_ = utils::clamp<int>(i, -1, get_layer_count() - 1);
+}
+
+bool stacked_widget::layer_selected(const unsigned layer)
+{
+	assert(layer < get_layer_count());
+	return generator_->is_selected(layer);
 }
 
 void stacked_widget::select_layer(const int layer)
 {
-	const unsigned int num_layers = generator_->get_item_count();
-	selected_layer_ = std::max(-1, std::min<int>(layer, num_layers - 1));
+	update_selected_layer_index(layer);
 
-	for(unsigned int i = 0; i < num_layers; ++i) {
-		if(selected_layer_ >= 0) {
-			const bool selected = i == static_cast<unsigned int>(selected_layer_);
-			// Select current layer, leave the rest unselected.
-			select_layer_internal(i, selected);
-			generator_->item(i).set_visible(selected
-											? widget::visibility::visible
-											: widget::visibility::hidden);
-		} else {
-			// Select everything.
-			select_layer_internal(i, true);
-			generator_->item(i).set_visible(widget::visibility::visible);
+	select_layer_impl([this](unsigned int i)
+	{
+		return i == static_cast<unsigned int>(selected_layer_);
+	});
+}
+
+void stacked_widget::select_layers(const boost::dynamic_bitset<>& mask)
+{
+	assert(mask.size() == get_layer_count());
+
+	select_layer_impl([&](unsigned int i)
+	{
+		if(mask[i]) {
+			update_selected_layer_index(i);
 		}
-	}
+
+		return mask[i];
+	});
 }
 
 unsigned int stacked_widget::get_layer_count() const
@@ -194,7 +201,7 @@ stacked_widget_definition::resolution::resolution(const config& cfg)
 {
 	// Add a dummy state since every widget needs a state.
 	static config dummy("draw");
-	state.push_back(state_definition(dummy));
+	state.emplace_back(dummy);
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
@@ -237,7 +244,7 @@ builder_stacked_widget::builder_stacked_widget(const config& real_cfg)
 	VALIDATE(cfg.has_child("layer"), _("No stack layers defined."));
 	for(const auto & layer : cfg.child_range("layer"))
 	{
-		stack.push_back(std::make_shared<builder_grid>(layer));
+		stack.emplace_back(std::make_shared<builder_grid>(layer));
 	}
 }
 

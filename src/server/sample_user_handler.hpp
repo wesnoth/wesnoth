@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+   Copyright (C) 2008 - 2017 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SAMPLE_USER_HANDLER_HPP_INCLUDED
-#define SAMPLE_USER_HANDLER_HPP_INCLUDED
+#pragma once
 
 #include "user_handler.hpp"
 
@@ -93,5 +92,3 @@ class suh : public user_handler {
 		std::map <std::string,user> users_;
 		std::vector<std::string> users();
 };
-
-#endif //SAMPLE_USER_HANDLER_HPP_INCLUDED

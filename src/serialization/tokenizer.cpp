@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2004 - 2009 by Philippe Plantier <ayin@anathas.org>
-   Copyright (C) 2010 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2010 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,6 @@
 */
 
 /** @file */
-
-#include "global.hpp"
 
 #include "wesconfig.h"
 #include "serialization/tokenizer.hpp"
@@ -136,7 +134,7 @@ const token &tokenizer::next_token()
 			token_.value = current_;
 			break;
 		}
-		// no break
+		FALLTHROUGH;
 
 	default:
 		if (is_alnum(current_)) {

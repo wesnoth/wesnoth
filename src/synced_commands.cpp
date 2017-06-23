@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2014 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,6 @@
 #include <cassert>
 
 #include "log.hpp"
-#include "resources.hpp"
 #include "map/location.hpp"
 #include "game_data.hpp"
 #include "units/unit.hpp"
@@ -26,9 +25,8 @@
 #include "actions/attack.hpp"
 #include "actions/move.hpp"
 #include "actions/undo.hpp"
-#include "preferences.hpp"
-#include "game_preferences.hpp"
-#include "game_events/manager.hpp"
+#include "preferences/general.hpp"
+#include "preferences/game.hpp"
 #include "game_events/pump.hpp"
 #include "map/map.hpp"
 #include "units/helper.hpp"
@@ -68,7 +66,7 @@ synced_command::map& synced_command::registry()
 SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
 {
 	int current_team_num = resources::controller->current_side();
-	team &current_team = resources::gameboard->teams()[current_team_num - 1];
+	team &current_team = resources::gameboard->get_team(current_team_num);
 
 	map_location loc(child, resources::gamedata);
 	map_location from(child.child_or_empty("from"), resources::gamedata);
@@ -79,7 +77,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
 		// EDIT:  we borke compability with 1.11.2 anyway so we should give an error.
 		error_handler("Missing leader location for recruitment.\n", false);
 	}
-	else if ( resources::units->find(from) == resources::units->end() ) {
+	else if ( resources::gameboard->units().find(from) == resources::gameboard->units().end() ) {
 		// Sync problem?
 		std::stringstream errbuf;
 		errbuf << "Recruiting leader not found at " << from << ".\n";
@@ -133,7 +131,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, use_undo, show, error_handler)
 {
 
 	int current_team_num = resources::controller->current_side();
-	team &current_team = resources::gameboard->teams()[current_team_num - 1];
+	team &current_team = resources::gameboard->get_team(current_team_num);
 
 	const std::string& unit_id = child["value"];
 	map_location loc(child, resources::gamedata);
@@ -181,7 +179,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 		def_weapon_num = -1;
 	}
 
-	unit_map::iterator u = resources::units->find(src);
+	unit_map::iterator u = resources::gameboard->units().find(src);
 	if (!u.valid()) {
 		error_handler("unfound location for source of attack\n", true);
 		return false;
@@ -199,7 +197,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 		return false;
 	}
 
-	unit_map::const_iterator tgt = resources::units->find(dst);
+	unit_map::const_iterator tgt = resources::gameboard->units().find(dst);
 
 	if (!tgt.valid()) {
 		std::stringstream errbuf;
@@ -232,7 +230,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_ha
 {
 
 	int current_team_num = resources::controller->current_side();
-	team &current_team = resources::gameboard->teams()[current_team_num - 1];
+	team &current_team = resources::gameboard->get_team(current_team_num);
 
 	const std::string& unit_id = child["value"];
 	size_t old_size = current_team.recall_list().size();
@@ -255,7 +253,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_ha
 SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 {
 	int current_team_num = resources::controller->current_side();
-	team &current_team = resources::gameboard->teams()[current_team_num - 1];
+	team &current_team = resources::gameboard->get_team(current_team_num);
 
 	std::vector<map_location> steps;
 
@@ -289,7 +287,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 		// 'event' doesn't mean wml event but rather it means 'hidden' units form the movers point of view.
 	}
 
-	u = resources::units->find(src);
+	u = resources::gameboard->units().find(src);
 	if (!u.valid()) {
 		std::stringstream errbuf;
 		errbuf << "unfound location for source of movement: "
@@ -406,8 +404,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 	const std::string name = child["name"];
 	const std::string value = child["value"];
 
-	unit_map::iterator i = resources::units->find(loc);
-	if (i == resources::units->end()) {
+	unit_map::iterator i = resources::gameboard->units().find(loc);
+	if (i == resources::gameboard->units().end()) {
 		return false;
 	}
 	if (name == "advances" ) {
@@ -416,7 +414,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 			i->set_experience(i->max_experience());
 
 			advance_unit_at(advance_unit_params(loc).force_dialog(true));
-			i = resources::units->find(loc);
+			i = resources::gameboard->units().find(loc);
 			if (!i.valid()) {
 				break;
 			}
@@ -436,10 +434,20 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 	} else {
 		config cfg;
 		i->write(cfg);
-		resources::units->erase(loc);
 		cfg[name] = value;
-		unit new_u(cfg, true);
-		resources::units->add(loc, new_u);
+
+		// Attempt to create a new unit. If there are error (such an invalid type key), exit.
+		try{
+			unit_ptr new_u(new unit(cfg, true));
+			new_u->set_location(loc);
+			// Don't remove the unit until after we've verified there are no errors in creating the new one,
+			// or else the unit would simply be removed from the map with no replacement.
+			resources::gameboard->units().erase(loc);
+			resources::gameboard->units().insert(new_u);
+		} catch(unit_type::error& e) {
+			ERR_REPLAY << e.what() << std::endl; // TODO: more appropriate error message log
+			return false;
+		}
 	}
 	if (name == "fail") { //testcase for bug #18488
 		assert(i.valid());
@@ -468,22 +476,21 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 			? resources::controller->current_side() : 1;
 
 	// Create the unit.
-	unit created(*u_type, side_num, true, gender);
-	created.new_turn();
-
+	unit_ptr created(new unit(*u_type, side_num, true, gender));
+	created->new_turn();
 	// Add the unit to the board.
-	std::pair<unit_map::iterator, bool> add_result = resources::units->replace(loc, created);
+	std::pair<unit_map::iterator, bool> add_result = resources::gameboard->units().replace(loc, created);
 	resources::screen->invalidate_unit();
 	resources::game_events->pump().fire("unit_placed", loc);
 	unit_display::unit_recruited(loc);
 
 	// Village capture?
 	if ( resources::gameboard->map().is_village(loc) )
-		actions::get_village(loc, created.side());
+		actions::get_village(loc, created->side());
 
 	// Update fog/shroud.
 	actions::shroud_clearer clearer;
-	clearer.clear_unit(loc, created);
+	clearer.clear_unit(loc, *created);
 	clearer.fire_events();
 	if ( add_result.first.valid() ) // In case sighted events messed with the unit.
 		actions::actor_sighted(*add_result.first);
@@ -509,20 +516,22 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 		resources::undo_stack->clear();
 	}
 	debug_notification("kill debug command was used during turn of $player");
-	
+
 	const map_location loc(child["x"].to_int(), child["y"].to_int(), wml_loc());
-	const unit_map::iterator i = resources::units->find(loc);
-	if (i != resources::units->end()) {
+	const unit_map::iterator i = resources::gameboard->units().find(loc);
+	if (i != resources::gameboard->units().end()) {
 		const int dying_side = i->side();
 		resources::controller->pump().fire("last_breath", loc, loc);
 		if (i.valid()) {
 			unit_display::unit_die(loc, *i);
 		}
 		resources::screen->redraw_minimap();
-		i->set_hitpoints(0);
+		if (i.valid()) {
+			i->set_hitpoints(0);
+		}
 		resources::controller->pump().fire("die", loc, loc);
 		if (i.valid()) {
-			resources::units->erase(i);
+			resources::gameboard->units().erase(i);
 		}
 		actions::recalculate_fog(dying_side);
 	}

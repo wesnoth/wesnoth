@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,10 +17,7 @@
  * Gather statistics important for AI testing and output them
  */
 
-#ifndef AI_TESTING_HPP_INCLUDED
-#define AI_TESTING_HPP_INCLUDED
-
-#include "global.hpp"
+#pragma once
 
 #include <vector>
 
@@ -66,5 +63,3 @@ protected:
 	static void log_turn( const char *msg, unsigned int side );
 
 };
-
-#endif

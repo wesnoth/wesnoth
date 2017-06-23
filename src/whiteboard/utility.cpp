@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2016 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2017 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -57,7 +57,7 @@ side_actions_ptr viewer_actions()
 side_actions_ptr current_side_actions()
 {
 	side_actions_ptr side_actions =
-			resources::gameboard->teams()[resources::controller->current_side() - 1].get_side_actions();
+			resources::gameboard->get_team(resources::controller->current_side()).get_side_actions();
 	return side_actions;
 }
 
@@ -65,7 +65,7 @@ unit_const_ptr find_backup_leader(const unit & leader)
 {
 	assert(leader.can_recruit());
 	assert(resources::gameboard->map().is_keep(leader.get_location()));
-	for (unit_map::const_iterator unit = resources::units->begin(); unit != resources::units->end(); unit++)
+	for (unit_map::const_iterator unit = resources::gameboard->units().begin(); unit != resources::gameboard->units().end(); unit++)
 	{
 		if (unit->can_recruit() && unit->id() != leader.id())
 		{
@@ -81,7 +81,7 @@ unit* find_recruiter(size_t team_index, map_location const& hex)
 	if ( !resources::gameboard->map().is_castle(hex) )
 		return nullptr;
 
-	for(unit& u : *resources::units)
+	for(unit& u : resources::gameboard->units())
 		if(u.can_recruit()
 				&& u.side() == static_cast<int>(team_index+1)
 				&& dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(u, hex))
@@ -98,7 +98,7 @@ unit* future_visible_unit(map_location hex, int viewer_side)
 		return nullptr;
 	}
 	//use global method get_visible_unit
-	return resources::gameboard->get_visible_unit(hex, resources::gameboard->teams().at(viewer_side - 1), false);
+	return resources::gameboard->get_visible_unit(hex, resources::gameboard->get_team(viewer_side), false);
 }
 
 unit* future_visible_unit(int on_side, map_location hex, int viewer_side)
@@ -115,7 +115,7 @@ int path_cost(std::vector<map_location> const& path, unit const& u)
 	if(path.size() < 2)
 		return 0;
 
-	team const& u_team = resources::gameboard->teams().at(u.side()-1);
+	team const& u_team = resources::gameboard->get_team(u.side());
 	map_location const& dest = path.back();
 	if ( (resources::gameboard->map().is_village(dest) && !u_team.owns_village(dest))
 	     || pathfind::enemy_zoc(u_team, dest, u_team) )
@@ -209,7 +209,7 @@ action_ptr find_action_at(map_location hex, team_filter team_filter)
 
 std::deque<action_ptr> find_actions_of(unit const &target)
 {
-	return resources::gameboard->teams()[target.side()-1].get_side_actions()->actions_of(target);
+	return resources::gameboard->get_team(target.side()).get_side_actions()->actions_of(target);
 }
 
 } //end namespace wb

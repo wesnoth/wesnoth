@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,10 +18,9 @@
  * Examples: white mage, lighthouse.
  */
 
-#include "global.hpp"
 #include "animated.hpp"
 #include "display.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "halo.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -57,7 +56,7 @@ public:
 	void add_overlay_location(std::set<map_location>& locations);
 private:
 
-	const image::locator& current_image() { return images_.get_current_frame(); }
+	const image::locator& current_image() const { return images_.get_current_frame(); }
 
 	animated<image::locator> images_;
 
@@ -113,7 +112,7 @@ public:
  * impl's of exposed functions
  */
 
-halo_impl(display & screen) :
+explicit halo_impl(display & screen) :
 	disp(&screen),
 	haloes(),
 	halo_id(1),
@@ -219,7 +218,7 @@ bool halo_impl::effect::render()
 	const int xpos = x_ + screenx - surf_->w/2;
 	const int ypos = y_ + screeny - surf_->h/2;
 
-	SDL_Rect rect = sdl::create_rect(xpos, ypos, surf_->w, surf_->h);
+	SDL_Rect rect {xpos, ypos, surf_->w, surf_->h};
 	rect_ = rect;
 	SDL_Rect clip_rect = disp->map_outside_area();
 
@@ -250,8 +249,6 @@ bool halo_impl::effect::render()
 	}
 
 	sdl_blit(surf_,nullptr,screen,&rect);
-
-	update_rect(rect_);
 
 	return true;
 }
@@ -284,9 +281,8 @@ void halo_impl::effect::unrender()
 	const int xpos = x_ + screenx - surf_->w/2;
 	const int ypos = y_ + screeny - surf_->h/2;
 
-	SDL_Rect rect = sdl::create_rect(xpos, ypos, surf_->w, surf_->h);
+	SDL_Rect rect {xpos, ypos, surf_->w, surf_->h};
 	sdl_blit(buffer_,nullptr,screen,&rect);
-	update_rect(rect);
 }
 
 bool halo_impl::effect::on_location(const std::set<map_location>& locations) const
@@ -339,7 +335,7 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 		image_vector.push_back(animated<image::locator>::frame_description(time,image::locator(str)));
 
 	}
-	haloes.insert(std::pair<int,effect>(id,effect(disp,x,y,image_vector,loc,orientation,infinite)));
+	haloes.emplace(id, effect(disp, x, y, image_vector, loc, orientation, infinite));
 	new_haloes.insert(id);
 	if(haloes.find(id)->second.does_change() || !infinite) {
 		changing_haloes.insert(id);

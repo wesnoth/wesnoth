@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2012 - 2017 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,9 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_TOOLKIT_H_INCLUDED
-#define EDITOR_TOOLKIT_H_INCLUDED
-
+#pragma once
 
 #include "editor/map/context_manager.hpp"
 #include "editor/palette/palette_manager.hpp"
@@ -112,5 +110,3 @@ private:
 };
 
 }
-
-#endif

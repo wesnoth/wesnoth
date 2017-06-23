@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2010 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -342,6 +342,11 @@ static int cfun_ai_execute_recall(lua_State *L)
 static int cfun_ai_check_recall(lua_State *L)
 {
 	return ai_recall(L, false);
+}
+
+static int cfun_ai_fallback_human(lua_State*)
+{
+	throw fallback_ai_to_human_exception();
 }
 
 // Goals and targets
@@ -797,7 +802,7 @@ static int impl_ai_aspect_get(lua_State* L)
 	if(iter == aspects.end()) {
 		return 0;
 	}
-	
+
 	typedef std::vector<std::string> string_list;
 	if(typesafe_aspect<bool>* aspect_as_bool = try_aspect_as<bool>(iter->second)) {
 		lua_pushboolean(L, aspect_as_bool->get());
@@ -824,7 +829,7 @@ static int impl_ai_aspect_get(lua_State* L)
 		}
 		int my_side = get_engine(L).get_readonly_context().get_side();
 		std::vector<unit_const_ptr> attackers, enemies;
-		for(unit_map::const_iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
+		for(unit_map::const_iterator u = resources::gameboard->units().begin(); u != resources::gameboard->units().end(); ++u) {
 			if(!u.valid()) {
 				continue;
 			}
@@ -853,7 +858,7 @@ static int impl_ai_aspect_get(lua_State* L)
 		int my_side = get_engine(L).get_readonly_context().get_side();
 		lua_newtable(L);
 		std::hash<map_location> lhash;
-		for (unit_map::const_iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
+		for (unit_map::const_iterator u = resources::gameboard->units().begin(); u != resources::gameboard->units().end(); ++u) {
 			if (!u.valid() || u->side() != my_side) {
 				continue;
 			}
@@ -971,6 +976,7 @@ static int impl_ai_get(lua_State* L)
 			{ "stopunit_attacks", &cfun_ai_execute_stopunit_attacks },
 			{ "stopunit_moves", &cfun_ai_execute_stopunit_moves },
 			{ "synced_command", &cfun_ai_execute_synced_command },
+			{ "fallback_human", &cfun_ai_fallback_human},
 			{ nullptr, nullptr } };
 	for (const luaL_Reg* p = mutating_callbacks; p->name; ++p) {
 		if(m == p->name) {
@@ -1030,20 +1036,20 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 void lua_ai_context::update_state()
 {
 	lua_ai_load ctx(*this, true); // [-1: AI state table]
-	
+
 	// Load the AI code and arguments
 	lua_getfield(L, -1, "update_self"); // [-1: AI code  -2: AI state]
 	lua_getfield(L, -2, "params"); // [-1: Arguments  -2: AI code  -3: AI state]
 	lua_getfield(L, -3, "data"); // [-1: Persistent data  -2: Arguments  -3: AI code  -4: AI state]
-	
+
 	// Call the function
 	if (!luaW_pcall(L, 2, 1, true)) { // [-1: Result  -2: AI state]
 		return; // return with stack size 0 []
 	}
-	
+
 	// Store the state for use by components
 	lua_setfield(L, -2, "self"); // [-1: AI state]
-	
+
 	// And return with empty stack.
 	lua_pop(L, 1);
 }
@@ -1094,7 +1100,7 @@ lua_ai_load::lua_ai_load(lua_ai_context& ctx, bool read_only) : L(ctx.L), was_re
 	lua_getfield(L, LUA_REGISTRYINDEX, aisKey); // [-1: AI registry]
 	lua_rawgeti(L, -1, ctx.num_); // [-1: AI state  -2: AI registry]
 	lua_remove(L,-2); // [-1: AI state]
-	
+
 	// Load the AI functions table into global scope
 	lua_getfield(L, -1, "ai"); // [-1: AI functions  -2: AI state]
 	lua_pushstring(L, "read_only"); // [-1: key  -2: AI functions  -3: AI state]
@@ -1132,7 +1138,7 @@ lua_ai_context::~lua_ai_context()
 void lua_ai_action_handler::handle(const config &cfg, bool read_only, lua_object_ptr l_obj)
 {
 	int initial_top = lua_gettop(L);//get the old stack size
-	
+
 	// Load the context
 	lua_ai_load ctx(context_, read_only); // [-1: AI state table]
 
@@ -1140,13 +1146,13 @@ void lua_ai_action_handler::handle(const config &cfg, bool read_only, lua_object
 	lua_getfield(L, LUA_REGISTRYINDEX, aisKey); // [-1: AI registry  -2: AI state]
 	lua_rawgeti(L, -1, num_); // [-1: AI action  -2: AI registry  -3: AI state]
 	lua_remove(L, -2); // [-1: AI action  -2: AI state]
-	
+
 	// Load the arguments
 	int iState = lua_absindex(L, -2);
 	lua_getfield(L, iState, "self");
 	luaW_pushconfig(L, cfg);
 	lua_getfield(L, iState, "data");
-	
+
 	// Call the function
 	luaW_pcall(L, 3, l_obj ? 1 : 0, true);
 	if (l_obj) {

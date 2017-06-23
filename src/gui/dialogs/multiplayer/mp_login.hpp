@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,33 +12,39 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_MP_LOGIN_HPP_INCLUDED
-#define GUI_DIALOGS_MP_LOGIN_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 
 namespace gui2
 {
+class field_text;
+
 namespace dialogs
 {
 
 class mp_login : public modal_dialog
 {
 public:
-	mp_login(const std::string& label, const bool focus_password);
+	mp_login(const std::string& host, const std::string& label, const bool focus_password);
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog. */
-	void post_show(window& window);
+	virtual void post_show(window& window) override;
+
+	void load_password(window& win) const;
+	void save_password(window& win) const;
+
+	const std::string host_;
+	field_text* username_;
+	bool focus_password_;
 };
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif

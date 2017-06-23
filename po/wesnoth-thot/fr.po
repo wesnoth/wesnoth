@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The_Hammer_of_Thursagan-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:31 UTC\n"
+"POT-Creation-Date: 2017-05-29 21:55+0200\n"
 "PO-Revision-Date: 2013-01-12 12:43+0100\n"
 "Last-Translator: Guigou Guillaume <guillaume.guigou@orange.fr>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
@@ -100,12 +100,12 @@ msgid "Art"
 msgstr "Graphisme"
 
 #. [about]
-#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:48
+#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:52
 msgid "Brainstorming, playtesting, and spousal support"
 msgstr "Conception, tests, support conjugal"
 
 #. [about]
-#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:54
+#: data/campaigns/The_Hammer_of_Thursagan/_main.cfg:58
 msgid "Campaign Maintenance"
 msgstr ""
 
@@ -155,9 +155,9 @@ msgstr ""
 "qu'une bande d'orcs approchait."
 
 #. [side]
-#. [side]: type=Dwarvish Lord, id=Hamel
 #. [side]: type=Orcish Warrior, id=Marth-Tak
 #. [side]: type=Great Mage, id=Master Perrin
+#. [side]: type=Dwarvish Lord, id=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:43
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:33
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:47
@@ -185,13 +185,13 @@ msgstr "Alliance"
 msgid "Pelmathidrol"
 msgstr "Pelmathridol"
 
-#. [side]: type=Orcish Warrior, id=Bashnark
 #. [side]: type=Orcish Warlord, id=Tan-Malgar
 #. [side]: type=Orcish Warlord, id=Tan-Grolak
 #. [side]: type=Orcish Warlord, id=Tan-Uthkar
 #. [side]: type=Orcish Warlord, id=Tan-Morgh
 #. [side]: type=Orcish Warlord, id=Tan-Garukh
 #. [side]: type=Orcish Warlord, id=Tan-Wagran
+#. [side]: type=Orcish Warrior, id=Bashnark
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:71
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:54
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Invaders.cfg:92
@@ -1245,6 +1245,11 @@ msgid "Fear"
 msgstr "La peur"
 
 #. [event]
+#. [unit]: type={TYPE}
+#. [side]: type=Dwarvish Masked Steelclad, id=Dufon
+#. [side]: type=Dwarvish Masked Lord, id=Aragoth
+#. [side]: type=Dwarvish Masked Lord, id=Dranath
+#. [side]: type=Dwarvish Masked Steelclad, id=Sashaon
 #. [unit]: type=Dwarvish Ulfserker, id={ID_STRING}
 #. [unit]: type=Dwarvish Masked Steelclad
 #. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
@@ -1252,11 +1257,6 @@ msgstr "La peur"
 #. [unit]: type=Dwarvish Masked Steelclad, id=Magog
 #. [unit]: type=Dwarvish Ulfserker, id=Hekyll
 #. [unit]: type=Dwarvish Ulfserker, id=Jekyll
-#. [unit]: type={TYPE}
-#. [side]: type=Dwarvish Masked Steelclad, id=Dufon
-#. [side]: type=Dwarvish Masked Lord, id=Aragoth
-#. [side]: type=Dwarvish Masked Lord, id=Dranath
-#. [side]: type=Dwarvish Masked Steelclad, id=Sashaon
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:47
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:64
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:87
@@ -1273,12 +1273,12 @@ msgstr "La peur"
 msgid "Masked Dwarf"
 msgstr "Nain masqué"
 
-#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #. [side]
 #. [side]: type=Dwarvish Masked Steelclad, id=Dufon
 #. [side]: type=Dwarvish Masked Lord, id=Aragoth
 #. [side]: type=Dwarvish Masked Lord, id=Dranath
 #. [side]: type=Dwarvish Masked Steelclad, id=Sashaon
+#. [side]: type=Dwarvish Masked Steelclad, id=Masked Dwarf Leader
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_Fear.cfg:59
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:77
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:132
@@ -2474,7 +2474,7 @@ msgid "Dwarvish Annalist"
 msgstr "Annaliste nain"
 
 #. [unit_type]: id=Dwarvish Annalist, race=dwarf
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:21
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:22
 msgid ""
 "Dwarvish Annalists are the historians of this ancient and proud race. They "
 "are few in number, and their very existence is not generally known to the "
@@ -2488,16 +2488,9 @@ msgstr ""
 "des minéraux."
 
 #. [attack]: type=impact
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:32
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:35
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:37
-msgid "morningstar"
-msgstr "étoile du matin"
-
-#. [attack]: type=impact
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:56
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:60
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:61
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:62
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:65
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:67
 msgid "bolas"
 msgstr "bolas"
 
@@ -2507,7 +2500,7 @@ msgid "Dwarvish Loremaster"
 msgstr "Maître du savoir nain"
 
 #. [unit_type]: id=Dwarvish Loremaster, race=dwarf
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:23
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:24
 msgid ""
 "Loremasters are the sages of the dwarvish race. Their counsel is greatly "
 "valued by war-leaders and chieftains, and they are viewed with awe by "
@@ -2606,7 +2599,7 @@ msgid "Dwarvish Witness"
 msgstr "Témoin nain"
 
 #. [unit_type]: id=Dwarvish Witness, race=dwarf
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:27
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:28
 msgid ""
 "A Witness functions as the eyes of the dwarves’ history, a deep lore that "
 "they never share with outsiders. The presence of a Witness inspires dwarvish "
@@ -2749,6 +2742,9 @@ msgid ""
 "darkness!"
 msgstr ""
 "Aaarrgh ! Je meurs, mais le feu vertueux vous enverra dans les ténèbres !"
+
+#~ msgid "morningstar"
+#~ msgstr "étoile du matin"
 
 #~ msgid "No bandits in this village."
 #~ msgstr "Il n'y a pas de bandits dans ce village."

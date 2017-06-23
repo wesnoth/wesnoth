@@ -1,7 +1,8 @@
-local H = wesnoth.require "lua/helper.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local H = wesnoth.require "helper"
+local LS = wesnoth.require "location_set"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
+local M = wesnoth.map
 
 local ca_healer_move, best_healer, best_hex = {}
 
@@ -43,7 +44,7 @@ function ca_healer_move:evaluation(cfg, data)
                 if (not is_village) then
                     local is_healee = true
                     for _,healer in ipairs(healers_noMP) do
-                        if (H.distance_between(healee.x, healee.y, healer.x, healer.y) == 1) then
+                        if (M.distance_between(healee.x, healee.y, healer.x, healer.y) == 1) then
                             is_healee = false
                             break
                         end
@@ -77,7 +78,7 @@ function ca_healer_move:evaluation(cfg, data)
                 local unit_in_way = wesnoth.get_unit(loc[1], loc[2])
                 if (not unit_in_way) or (unit_in_way == healer) then
                     for _,healee in ipairs(healees) do
-                        if (H.distance_between(healee.x, healee.y, loc[1], loc[2]) == 1) then
+                        if (M.distance_between(healee.x, healee.y, loc[1], loc[2]) == 1) then
                             -- Note: These ratings have to be positive or the method doesn't work
                             rating = rating + healee.max_hitpoints - healee.hitpoints
 

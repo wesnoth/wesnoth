@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -48,6 +48,7 @@ plugins_manager::plugins_manager(application_lua_kernel * kernel)
 	assert(!singleton);
 	singleton = this;
 
+	kernel_->load_core();
 	add_plugin("Null Plugin", "return function() end");
 	start_plugin(0);
 }

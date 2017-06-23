@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,12 +14,11 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "attack_prediction_display.hpp"
-
 #include "gui/dialogs/unit_attack.hpp"
 
 #include "font/text_formatting.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/dialogs/attack_predictions.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/image.hpp"
@@ -36,9 +35,7 @@
 #include "gettext.hpp"
 #include "help/help.hpp"
 #include "language.hpp"
-#include "font/marked-up_text.hpp"
-#include "resources.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
 
@@ -91,13 +88,8 @@ unit_attack::unit_attack(const unit_map::iterator& attacker_itor,
 
 void unit_attack::damage_calc_callback(window& window)
 {
-	const size_t index
-		= find_widget<listbox>(&window, "weapon_list", false).get_selected_row();
-
-	battle_prediction_pane battle_pane(weapons_[index], (*attacker_itor_).get_location(), (*defender_itor_).get_location());
-	std::vector<gui::preview_pane*> preview_panes = {&battle_pane};
-
-	gui::show_dialog(resources::screen->video(), nullptr, _("Damage Calculations"), "", gui::OK_ONLY, nullptr, &preview_panes);
+	const size_t index = find_widget<listbox>(&window, "weapon_list", false).get_selected_row();
+	attack_predictions::display(weapons_[index], *attacker_itor_, *defender_itor_, window.video());
 }
 
 void unit_attack::pre_show(window& window)
@@ -117,8 +109,9 @@ void unit_attack::pre_show(window& window)
 	listbox& weapon_list = find_widget<listbox>(&window, "weapon_list", false);
 	window.keyboard_capture(&weapon_list);
 
-	const config empty;
-	const attack_type no_weapon(empty);
+	// Possible TODO: If a "blank weapon" is generally useful, add it as a static member in attack_type.
+	static const config empty;
+	static const_attack_ptr no_weapon(new attack_type(empty));
 
 	for(const auto & weapon : weapons_) {
 		const battle_context_unit_stats& attacker = weapon.get_attacker_stats();
@@ -127,17 +120,15 @@ void unit_attack::pre_show(window& window)
 		const attack_type& attacker_weapon =
 			*attacker.weapon;
 		const attack_type& defender_weapon = defender.weapon ?
-			*defender.weapon : no_weapon;
+			*defender.weapon : *no_weapon;
 
 		// Don't show if the atacker's weapon has at least one active "disable" special.
 		if(attacker_weapon.get_special_bool("disable")) {
 			continue;
 		}
 
-		const color_t a_cth_color =
-			color_t::from_argb_bytes(game_config::red_to_green(attacker.chance_to_hit));
-		const color_t d_cth_color =
-			color_t::from_argb_bytes(game_config::red_to_green(defender.chance_to_hit));
+		const color_t a_cth_color = game_config::red_to_green(attacker.chance_to_hit);
+		const color_t d_cth_color = game_config::red_to_green(defender.chance_to_hit);
 
 		const std::string attw_name = !attacker_weapon.name().empty() ? attacker_weapon.name() : " ";
 		const std::string defw_name = !defender_weapon.name().empty() ? defender_weapon.name() : " ";

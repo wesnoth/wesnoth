@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef PATHUTILS_H_INCLUDED
-#define PATHUTILS_H_INCLUDED
+#pragma once
 
 #include "map/location.hpp"
 
@@ -71,6 +70,3 @@ void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
 void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
                       size_t radius, std::set<map_location>& result,
                       bool with_border, const xy_pred &pred);
-
-#endif
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,8 +24,7 @@
  * include this header file.
  */
 
-#ifndef EDITOR_ACTION_BASE_HPP_INCLUDED
-#define EDITOR_ACTION_BASE_HPP_INCLUDED
+#pragma once
 
 #include "editor/editor_common.hpp"
 
@@ -110,5 +109,3 @@ struct editor_action_exception : public editor_exception
 };
 
 } //end namespace editor
-
-#endif

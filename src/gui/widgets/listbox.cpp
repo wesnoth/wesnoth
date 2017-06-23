@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,6 +28,8 @@
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/selectable_item.hpp"
+#include "gui/widgets/widget_helpers.hpp"
+#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/viewport.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -46,8 +48,8 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 REGISTER_WIDGET(listbox)
-REGISTER_WIDGET3(listbox_definition, horizontal_listbox, _4)
-REGISTER_WIDGET3(listbox_definition, grid_listbox, _4)
+REGISTER_WIDGET3(listbox_definition, horizontal_listbox, nullptr)
+REGISTER_WIDGET3(listbox_definition, grid_listbox, nullptr)
 
 namespace
 {
@@ -62,7 +64,7 @@ listbox::listbox(const bool has_minimum,
 				   const bool has_maximum,
 				   const generator_base::placement placement,
 				   const bool select)
-	: scrollbar_container(2) // FIXME magic number
+	: scrollbar_container()
 	, generator_(generator_base::build(has_minimum, has_maximum, placement, select))
 	, is_horizonal_(placement == generator_base::horizontal_list)
 	, list_builder_(nullptr)
@@ -134,9 +136,8 @@ void listbox::remove_row(const unsigned row, unsigned count)
 
 void listbox::clear()
 {
-	// Due to the removing from the linked group, don't use
-	// generator_->clear() directly.
-	remove_row(0, 0);
+	generator_->clear();
+	update_content_size();
 }
 
 unsigned listbox::get_item_count() const
@@ -160,7 +161,7 @@ void listbox::set_row_shown(const unsigned row, const bool shown)
 
 	const int selected_row = get_selected_row();
 
-	bool resize_needed;
+	bool resize_needed = false;
 	{
 		window::invalidate_layout_blocker invalidate_layout_blocker(*window);
 
@@ -198,7 +199,7 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 
 	const int selected_row = get_selected_row();
 
-	bool resize_needed;
+	bool resize_needed = false;
 	{
 		window::invalidate_layout_blocker invalidate_layout_blocker(*window);
 
@@ -254,9 +255,17 @@ bool listbox::select_row(const unsigned row, const bool select)
 {
 	assert(generator_);
 
+	unsigned int before = generator_->get_selected_item_count();
 	generator_->select_item(row, select);
 
-	return true; // FIXME test what result should have been!!!
+	return before != generator_->get_selected_item_count();
+}
+
+bool listbox::row_selected(const unsigned row)
+{
+	assert(generator_);
+
+	return generator_->is_selected(row);
 }
 
 int listbox::get_selected_row() const
@@ -276,7 +285,13 @@ void listbox::list_item_clicked(widget& caller)
 	for(size_t i = 0; i < generator_->get_item_count(); ++i) {
 
 		if(generator_->item(i).has_widget(caller)) {
-			generator_->toggle_item(i);
+			toggle_button* checkbox = dynamic_cast<toggle_button*>(&caller);
+			if(checkbox != nullptr) {
+				generator_->select_item(i, checkbox->get_value_bool());
+			} else {
+				generator_->toggle_item(i);
+			}
+
 			if(callback_item_changed_) {
 				callback_item_changed_(i);
 			}
@@ -534,42 +549,6 @@ void listbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 	}
 }
 
-namespace
-{
-
-/**
- * Swaps an item in a grid for another one.*/
-void swap_grid(grid* g,
-			   grid* content_grid,
-			   widget* wgt,
-			   const std::string& id)
-{
-	assert(content_grid);
-	assert(wgt);
-
-	// Make sure the new child has same id.
-	wgt->set_id(id);
-
-	// Get the container containing the wanted widget.
-	grid* parent_grid = nullptr;
-	if(g) {
-		parent_grid = find_widget<grid>(g, id, false, false);
-	}
-	if(!parent_grid) {
-		parent_grid = find_widget<grid>(content_grid, id, true, false);
-	}
-	parent_grid = dynamic_cast<grid*>(parent_grid->parent());
-	assert(parent_grid);
-
-	// Replace the child.
-	wgt = parent_grid->swap_child(id, wgt, false);
-	assert(wgt);
-
-	delete wgt;
-}
-
-} // namespace
-
 void listbox::finalize(builder_grid_const_ptr header,
 						builder_grid_const_ptr footer,
 						const std::vector<std::map<std::string, string_map>>& list_data)
@@ -656,7 +635,7 @@ void listbox::set_active_sorting_option(const order_pair& sort_by, const bool se
 
 	order_by_column(sort_by.first, dynamic_cast<widget&>(wgt));
 
-	if(select_first) {
+	if(select_first && generator_->get_item_count() > 0) {
 		select_row(generator_->get_item_at_ordered(0));
 	}
 }
@@ -690,10 +669,23 @@ void listbox::layout_children(const bool force)
 	assert(content_grid());
 
 	if(need_layout_ || force) {
+		const int selected_item = generator_->get_selected_item();
+
 		content_grid()->place(content_grid()->get_origin(),
 							  content_grid()->get_size());
 
-		content_grid()->set_visible_rectangle(content_visible_area_);
+		const SDL_Rect& visible = content_visible_area_;
+
+		content_grid()->set_visible_rectangle(visible);
+
+		if(selected_item != -1) {
+			SDL_Rect rect = generator_->item(selected_item).get_rectangle();
+
+			rect.x = visible.x;
+			rect.w = visible.w;
+
+			show_content_rect(rect);
+		}
 
 		need_layout_ = false;
 		set_is_dirty(true);
@@ -799,8 +791,8 @@ listbox_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t in listbox.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
-	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(cfg.child("state_disabled"));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
@@ -979,34 +971,6 @@ widget* builder_listbox::build() const
 	}
 	return widget;
 #else
-	if(new_widgets) {
-
-		pane* p = new pane(list_builder);
-		p->set_id(id);
-
-
-		grid* g = new grid();
-		g->set_rows_cols(1, 1);
-#if 0
-		g->set_child(
-				  p
-				, 0
-				, 0
-				, grid::VERTICAL_GROW_SEND_TO_CLIENT
-					| grid::HORIZONTAL_GROW_SEND_TO_CLIENT
-				, grid::BORDER_ALL);
-#else
-		viewport* view = new viewport(*p);
-		g->set_child(view,
-						0,
-						0,
-						grid::VERTICAL_GROW_SEND_TO_CLIENT
-						| grid::HORIZONTAL_GROW_SEND_TO_CLIENT,
-						grid::BORDER_ALL);
-#endif
-		return g;
-	}
-
 	listbox* widget
 			= new listbox(has_minimum_, has_maximum_, generator_base::vertical_list, true);
 

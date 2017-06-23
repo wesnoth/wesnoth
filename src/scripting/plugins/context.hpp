@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * application is context switching.
  */
 
-#ifndef INCLUDED_PLUGINS_CONTEXT_HPP_
-#define INCLUDED_PLUGINS_CONTEXT_HPP_
+#pragma once
 
 #include "utils/functional.hpp"
 
@@ -81,5 +80,3 @@ private:
 	accessor_list accessors_;
 	std::string name_;
 };
-
-#endif

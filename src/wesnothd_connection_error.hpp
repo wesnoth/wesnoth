@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Sergey Popov <loonycyborg@gmail.com>
+   Copyright (C) 2011 - 2017 by Sergey Popov <loonycyborg@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,7 +23,7 @@ struct wesnothd_error : public game::error
 	wesnothd_error(const std::string& error) : game::error(error) {}
 };
 
-///We received invalid data from wesnothd during a game 
+///We received invalid data from wesnothd during a game
 ///This means we cannot continue with the game but we can stay connected to wesnothd and start a new game
 ///TODO: find a short name
 struct ingame_wesnothd_error : public wesnothd_error ,public lua_jailbreak_exception

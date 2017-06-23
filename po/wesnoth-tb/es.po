@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:23 UTC\n"
-"PO-Revision-Date: 2014-10-19 21:37+0100\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
+"PO-Revision-Date: 2017-03-27 20:46+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:12
@@ -37,10 +37,8 @@ msgstr "UCsDH"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:17
-#, fuzzy
-#| msgid "(Beginner)"
 msgid "Beginner"
-msgstr "(Principiante)"
+msgstr "Principiante"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:17
@@ -49,10 +47,8 @@ msgstr "Jinete"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Desafiante)"
+msgstr "Desafiante"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
@@ -235,10 +231,10 @@ msgstr ""
 msgid "Humans"
 msgstr "Humanos"
 
-#. [side]: type=Orcish Warlord, id=Tairach
 #. [side]: type=Dark Sorcerer, id=Mordak
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
+#. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:114
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:131
@@ -570,10 +566,8 @@ msgstr "Nil-Galion"
 
 #. [side]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:170
-#, fuzzy
-#| msgid "Catch the kidnappers"
 msgid "Kidnappers"
-msgstr "Atrape a los secuestradores"
+msgstr "Secuestradores"
 
 #. [side]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:174
@@ -737,19 +731,14 @@ msgstr "Katklagad"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:453
-#, fuzzy
-#| msgid ""
-#| "Three days ride to the northeast, in a deserted castle. The passwords to "
-#| "the guards are $first_password_$first_password_number and "
-#| "$second_password_$second_password_number|."
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
 "guards are $first_password_$first_password and $second_password_"
 "$second_password|."
 msgstr ""
 "Al noreste tres jornadas a caballo, un castillo abandonado. Las consignas "
-"para los guardias son $first_password_$first_password_number y "
-"$second_password_$second_password_number|."
+"para los guardias son $first_password_$first_password y $second_password_"
+"$second_password|."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:461
@@ -881,26 +870,6 @@ msgstr "Castillo custodiado"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:26
-#, fuzzy
-#| msgid ""
-#| "19 IV, 363 YW\n"
-#| "Excerpt from the journal of Rotharik the Clanless\n"
-#| "\n"
-#| "The last of Mordak’s servants arrived this morning bearing the news of "
-#| "his death, as well as a bundle so well-bound it was barely recognizable "
-#| "as a man. Mordak was always reckless. This whole desperate scheme was "
-#| "his, and I suppose I could blame him for everything that we have suffered "
-#| "through if it still mattered. It was he who brought the wrath of the orcs "
-#| "down on us, too. But all the same, he managed to accomplish what he set "
-#| "out to do. I still cannot believe the finality of what has happened; "
-#| "until now we had always managed to make it through somehow.\n"
-#| "\n"
-#| "We had hoped to deliver the mage to Tairach in return for our lives. I do "
-#| "not know what the warlord wants with this man, but he matches the "
-#| "description. I suppose that Mordak’s plan would have worked perfectly if "
-#| "not for the appearance of the horse warriors. Now they are coming here, "
-#| "led by a man rumored to be this mage’s brother. If that is true, he will "
-#| "stop at nothing, no more than would I if they held Mordak."
 msgid ""
 "19 V, 363 YW\n"
 "Excerpt from the journal of Rotharik the Clanless\n"
@@ -921,18 +890,18 @@ msgid ""
 "man rumored to be this mage’s brother. If that is true, he will stop at "
 "nothing, no more than would I if they held Mordak."
 msgstr ""
-"19 IV, 363 AñW\n"
+"19 V, 363 AñW\n"
 "Extracto del diario de Rotharik el Sinclan\n"
 "\n"
 "Los sirvientes restantes de Mordak llegaron por la mañana trayendo nuevas de "
 "su muerte, y a un paquete tan metódicamente atado que apenas se podía "
 "reconocer que era un hombre. Mordak siempre fue un imprudente. Todas estas "
-"maquinaciones desesperadas han sido obras suya, supongo que podría culparle "
+"maquinaciones desesperadas han sido obra suya, supongo que podría culparle "
 "por todo lo que hemos sufrido si acaso eso importase ahora. Él también fue "
 "quien atrajo la ira de los orcos contra nosotros. Pero daba igual, conseguía "
 "hacer lo que se proponía. Aún no me puedo creer que todo esto haya acabado "
-"así, que no haya vuelta a atrás; hasta hoy, de una manera u otra, siempre "
-"hemos conseguido salir de apuros.\n"
+"así; hasta hoy, de una manera u otra, siempre hemos conseguido salir de "
+"apuros.\n"
 "\n"
 "Teníamos la esperanza de entregar al mago a Tairach a cambio de nuestras "
 "vidas. No sé lo que ese señor de la guerra quiere de él, pero encaja con la "
@@ -940,26 +909,11 @@ msgstr ""
 "si no hubiesen aparecido esos guerreros montados. Ahora son ellos los que se "
 "dirigen hacia aquí, guiados por el hombre que, se rumorea, es el hermano del "
 "mago. Si eso es cierto, nada le detendrá, al menos, nada que no me hubiese "
-"detenido a mi si ellos hubieran capturado a Mordak."
+"detenido a mí si ellos hubieran capturado a Mordak."
 
 # Batir es sinónimo de explorar y rastrear.
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:34
-#, fuzzy
-#| msgid ""
-#| "19 IV, 363 YW\n"
-#| "Excerpt from the journal of Rotharik the Clanless\n"
-#| "\n"
-#| "I have done what I can to fortify this dilapidated castle. The orcs who "
-#| "came with us stand guard at the gates, and I am gathering all of my "
-#| "servants to me in the inner sanctum. But ill fate awaits. Whether I "
-#| "defeat this horse-warrior or no, the orcs will still come for me; they "
-#| "have been scouring the borderlands and raiding the northern farm country "
-#| "in search of us.\n"
-#| "\n"
-#| "Yet for some reason I fear these brothers more. If Mordak were here it "
-#| "would be different, but we are broken... and these two men are whole. In "
-#| "each other, in the ties that bind them, they have strength."
 msgid ""
 "19 V, 363 YW\n"
 "Excerpt from the journal of Rotharik the Clanless\n"
@@ -974,20 +928,20 @@ msgid ""
 "be different, but we are broken... and these two men are whole. In each "
 "other, in the ties that bind them, they have strength."
 msgstr ""
-"19 IV, 363 AñW\n"
+"19 V, 363 AñW\n"
 "Extracto del diario de Rotharik el Sinclan\n"
 "\n"
 "He hecho todo lo que estaba en mis manos para fortificar este castillo "
 "ruinoso. Los orcos que nos acompañaron hacen guardia en el portón, y estoy "
 "agrupando a mis sirvientes en el santuario interior. Oscuro destino se "
-"cierne sobre mi. Aún sea o no que derrote a este guerrero montado, los orcos "
-"vendrán por mí; ya están batiendo las tierras limítrofes y saqueando campos "
-"de cultivo al norte en nuestra busca.\n"
+"cierne sobre mi. Aunque derrote a este guerrero montado, los orcos vendrán a "
+"por mí; ya están batiendo las tierras limítrofes y saqueando campos de "
+"cultivo al norte en nuestra busca.\n"
 "\n"
-"Y por alguna razón, temo más a los hermanos. Si Mordak estuviese, todo "
-"habría sido diferente, pero estamos separados, nuestra unión, rota... y "
-"estos dos hombres son uno sólo. Sacan fuerza el uno del otro gracias a los "
-"férreos lazos que los atan."
+"Y por alguna razón, temo más a los hermanos. Si Mordak aún estuviese, todo "
+"habría sido diferente, pero  nuestra unión ha sido rota... y estos dos "
+"hombres son uno sólo. Sacan fuerza el uno del otro gracias a los férreos "
+"lazos que los atan."
 
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:86
@@ -1067,31 +1021,23 @@ msgstr "La contraseña es"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:361
-#, fuzzy
-#| msgid "Sithrak"
 msgid "Sithrak!"
-msgstr "Sithrak"
+msgstr "¡Sithrak!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:364
-#, fuzzy
-#| msgid "Eleben"
 msgid "Eleben!"
-msgstr "Eleben"
+msgstr "¡Eleben!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:367
-#, fuzzy
-#| msgid "Jarlom"
 msgid "Jarlom!"
-msgstr "Jarlom"
+msgstr "¡Jarlom!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:370
-#, fuzzy
-#| msgid "Hamik"
 msgid "Hamik!"
-msgstr "Hamik"
+msgstr "¡Hamik!"
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:383
@@ -1167,31 +1113,23 @@ msgstr "Oh, por supuesto. Casi me había olvidado."
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:576
-#, fuzzy
-#| msgid "Akranbral"
 msgid "Akranbral!"
-msgstr "Akranbral"
+msgstr "¡Akranbral!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:579
-#, fuzzy
-#| msgid "Drakanal"
 msgid "Drakanal!"
-msgstr "Drakanal"
+msgstr "¡Drakanal!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:582
-#, fuzzy
-#| msgid "Xaskanat"
 msgid "Xaskanat!"
-msgstr "Xaskanat"
+msgstr "¡Xaskanat!"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:585
-#, fuzzy
-#| msgid "Katklagad"
 msgid "Katklagad!"
-msgstr "Katklagad"
+msgstr "¡Katklagad!"
 
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:598
@@ -1288,6 +1226,8 @@ msgid ""
 "I have already met, and killed, the sorcerer. Is this the key to which you "
 "referred?"
 msgstr ""
+"Ya he encontrado y matado al hechicero. ¿Es esta la llave a la que te "
+"refieres?"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:799
@@ -1295,6 +1235,8 @@ msgid ""
 "Yes, it is. Come, unlock this cell door, and let us depart this place, "
 "brother!"
 msgstr ""
+"Sí, lo es. Venga, abre el cerrojo de esta celda y dejemos este lugar, "
+"¡hermano!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:853
@@ -1342,7 +1284,7 @@ msgstr "Gracias por venir en mi ayuda. Volvamos a la aldea."
 #. [unit]: id=Rotharik, type=Orcish Assassin
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:912
 msgid "Minion of Tairach"
-msgstr ""
+msgstr "Sirviente de Tairach"
 
 #. [message]: speaker=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:924

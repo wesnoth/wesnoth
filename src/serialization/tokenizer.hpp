@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2004 - 2009 by Philippe Plantier <ayin@anathas.org>
-   Copyright (C) 2010 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2010 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TOKENIZER_H_INCLUDED
-#define TOKENIZER_H_INCLUDED
+#pragma once
 
 //#define DEBUG_TOKENIZER
 
@@ -177,6 +176,3 @@ private:
 	buffered_istream in_;
 	char char_types_[128];
 };
-
-#endif
-

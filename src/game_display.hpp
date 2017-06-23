@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef GAME_DISPLAY_H_INCLUDED
-#define GAME_DISPLAY_H_INCLUDED
+#pragma once
 
 class config;
 class tod_manager;
@@ -23,7 +22,6 @@ class team;
 class unit_map;
 class game_board;
 
-#include "animated.hpp"
 #include "chat_events.hpp"
 #include "display.hpp"
 #include "display_chat_manager.hpp"
@@ -263,5 +261,3 @@ private:
 	bool needs_rebuild_;
 
 };
-
-#endif

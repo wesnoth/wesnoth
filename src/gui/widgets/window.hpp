@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,8 +18,7 @@
  *  which has the event management as well.
  */
 
-#ifndef GUI_WIDGETS_WINDOW_HPP_INCLUDED
-#define GUI_WIDGETS_WINDOW_HPP_INCLUDED
+#pragma once
 
 #include "cursor.hpp"
 #include "formula/callable.hpp"
@@ -29,7 +28,9 @@
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/panel.hpp"
 
+#include <functional>
 #include <map>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -73,7 +74,7 @@ public:
 			typed_formula<unsigned> w,
 			typed_formula<unsigned> h,
 			typed_formula<bool> reevaluate_best_size,
-			const game_logic::function_symbol_table& functions,
+			const wfl::function_symbol_table& functions,
 			const bool automatic_placement,
 			const unsigned horizontal_placement,
 			const unsigned vertical_placement,
@@ -255,6 +256,12 @@ public:
 	private:
 		window& window_;
 	};
+
+	/** Is invalidate_layout blocked, see invalidate_layout_blocker. */
+	bool invalidate_layout_blocked() const
+	{
+		return invalidate_layout_blocked_;
+	}
 
 	/**
 	 * Updates the size of the window.
@@ -440,17 +447,12 @@ public:
 		click_dismiss_ = click_dismiss;
 	}
 
-	static void set_sunset(const unsigned interval)
-	{
-		sunset_ = interval ? interval : 5;
-	}
-
 	bool get_need_layout() const
 	{
 		return need_layout_;
 	}
 
-	void set_variable(const std::string& key, const variant& value)
+	void set_variable(const std::string& key, const wfl::variant& value)
 	{
 		variables_.add(key, value);
 		set_is_dirty(true);
@@ -489,6 +491,17 @@ public:
 		};
 	}
 
+	/**
+	 * Sets a callback that will be called after the window is drawn next time.
+	 * The callback is automatically removed after calling it once.
+	 * Useful if you need to do something after the window is drawn for the first time
+	 * and it's timing-sensitive (i.e. pre_show is too early).
+	 */
+	void set_callback_next_draw(std::function<void()> func)
+	{
+		callback_next_draw_ = func;
+	}
+
 private:
 	/** Needed so we can change what's drawn on the screen. */
 	CVideo& video_;
@@ -524,9 +537,9 @@ private:
 	bool need_layout_;
 
 	/** The variables of the canvas. */
-	game_logic::map_formula_callable variables_;
+	wfl::map_formula_callable variables_;
 
-	/** Is invalidate layout blocked see invalidate_layout_blocker. */
+	/** Is invalidate_layout blocked, see invalidate_layout_blocker. */
 	bool invalidate_layout_blocked_;
 
 	/** Avoid drawing the window.  */
@@ -534,6 +547,9 @@ private:
 
 	/** Whether the window should undraw the window using restorer_ */
 	bool restore_;
+
+	/** Whether the window has other windows behind it */
+	bool is_toplevel_;
 
 	/** When the window closes this surface is used to undraw the window. */
 	surface restorer_;
@@ -579,7 +595,7 @@ private:
 	typed_formula<bool> reevaluate_best_size_;
 
 	/** The formula definitions available for the calulation formulas. */
-	game_logic::function_symbol_table functions_;
+	wfl::function_symbol_table functions_;
 
 	/** The settings for the tooltip. */
 	builder_window::window_resolution::tooltip_info tooltip_;
@@ -613,15 +629,6 @@ private:
 	bool escape_disabled_;
 
 	/**
-	 * Controls the sunset feature.
-	 *
-	 * If this value is not 0 it will darken the entire screen every
-	 * sunset_th drawing request that nothing has been modified. It's a debug
-	 * feature.
-	 */
-	static unsigned sunset_;
-
-	/**
 	 * Helper struct to force widgets the have the same size.
 	 *
 	 * Widget which are linked will get the same width and/or height. This
@@ -647,6 +654,9 @@ private:
 
 	/** List of the widgets, whose size are linked together. */
 	std::map<std::string, linked_size> linked_size_;
+
+	/** List of widgets in the tabbing order. */
+	std::vector<widget*> tab_order;
 
 	/**
 	 * Layouts the window.
@@ -675,7 +685,7 @@ private:
 	 * @return                    Whether the event should be considered as
 	 *                            handled.
 	 */
-	bool click_dismiss(const Uint8 mouse_button_mask);
+	bool click_dismiss(const int mouse_button_mask);
 
 	/**
 	 * The state of the mouse button.
@@ -693,7 +703,7 @@ private:
 	 *
 	 * [1] https://gna.org/bugs/index.php?18970
 	 */
-	Uint8 mouse_button_state_;
+	int mouse_button_state_;
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
@@ -727,7 +737,7 @@ private:
 	}
 #endif
 
-	event::distributor* event_distributor_;
+	std::unique_ptr<event::distributor> event_distributor_;
 
 public:
 	// mouse and keyboard_capture should be renamed and stored in the
@@ -754,6 +764,13 @@ public:
 	 */
 	void remove_from_keyboard_chain(widget* widget);
 
+	/**
+	 * Add the widget to the tabbing order
+	 * @param widget              The widget to be added to the tabbing order
+	 * @param at                  A hint for where to place the widget in the tabbing order
+	 */
+	void add_to_tab_order(widget* widget, int at = -1);
+
 private:
 	/***** ***** ***** signal handlers ***** ****** *****/
 
@@ -772,11 +789,13 @@ private:
 	void signal_handler_click_dismiss(const event::ui_event event,
 									  bool& handled,
 									  bool& halt,
-									  const Uint8 mouse_button_mask);
+									  const int mouse_button_mask);
 
 	void signal_handler_sdl_key_down(const event::ui_event event,
 									 bool& handled,
-									 const SDL_Keycode key);
+									 const SDL_Keycode key,
+									 const SDL_Keymod mod,
+									 bool handle_tab);
 
 	void signal_handler_message_show_tooltip(const event::ui_event event,
 											 bool& handled,
@@ -790,6 +809,7 @@ private:
 										  bool& handled);
 
 	std::function<bool(window&)> exit_hook_ = [](window&)->bool { return true; };
+	std::function<void()> callback_next_draw_;
 };
 
 // }---------- DEFINITION ---------{
@@ -809,5 +829,3 @@ struct window_definition : public styled_widget_definition
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

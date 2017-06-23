@@ -1,13 +1,13 @@
 /*
  Copyright (C) by the Battle for Wesnoth Project http://www.wesnoth.org/
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
  (at your option) any later version.
  This program is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY.
- 
+
  See the COPYING file for more details.
  */
 
@@ -15,8 +15,7 @@
  * Wrapper header to allow use of placeholder variables without a namespace.
  */
 
-#ifndef INCL_FUNCTIONAL_HPP_
-#define INCL_FUNCTIONAL_HPP_
+#pragma once
 
 #include "global.hpp"
 #include <functional>
@@ -36,54 +35,55 @@ namespace detail {
 	template<typename Ret, typename... T>
 	struct apply {
 		using result_type = void;
-		apply(std::function<Ret(T...)> fcn) : fcn(fcn) {}
+		apply(const std::function<Ret(T...)>& fcn) : fcn(fcn) {}
+		apply(Ret(*fcn)(T...)) : fcn(fcn) {}
 		void operator()(T... params) {
 			fcn(std::forward<T>(params)...);
 		}
 	private:
 		std::function<Ret(T...)> fcn;
 	};
-	
+
 	template<typename Ret, typename... T>
 	apply<Ret, T...> make_apply(std::function<Ret(T...)> fcn) {
 		return apply<Ret, T...>(fcn);
 	}
-	
+
 	template<typename F>
 	struct function_base {
 		using type = typename function_base<decltype(&F::operator())>::type;
 	};
-	
+
 	template<typename Ret, typename... P>
 	struct function_base<Ret(P...)> {
 		typedef Ret type(P...);
 	};
-	
+
 	template<typename Ret, typename... P>
 	struct function_base<Ret(*)(P...)> {
 		typedef Ret type(P...);
 	};
-	
+
 	template<typename Ret, typename Class, typename... P>
 	struct function_base<Ret(Class::*)(P...)> {
 		typedef Ret type(Class,P...);
 	};
-	
+
 	template<typename Ret, typename Class, typename... P>
 	struct function_base<Ret(Class::*)(P...)const> {
 		typedef Ret type(const Class,P...);
 	};
-	
+
 	template<typename Ret, typename Class, typename... P>
 	struct function_base<Ret(Class::*)(P...)volatile > {
 		typedef Ret type(volatile Class,P...);
 	};
-	
+
 	template<typename Ret, typename Class, typename... P>
 	struct function_base<Ret(Class::*)(P...)const volatile> {
 		typedef Ret type(const volatile Class,P...);
 	};
-	
+
 	template<typename Ret, typename... P>
 	struct function_base<std::function<Ret(P...)>> {
 		typedef Ret type(P...);
@@ -114,5 +114,3 @@ This is also relied upon in several places.
 If behaviour #1 is needed, we can use boost::bind, though a lambda with unused arguments may be better.
 For behaviour #2, the bind_void function is provided.
 */
-
-#endif

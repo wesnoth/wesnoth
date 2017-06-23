@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 
 lua_jailbreak_exception *lua_jailbreak_exception::jailbreak_exception = nullptr;
 
-void lua_jailbreak_exception::store() const throw()
+void lua_jailbreak_exception::store() const NOEXCEPT
 {
 	/*
 	 * It should not be  possible to call this function with an exception still
@@ -54,7 +54,7 @@ void lua_jailbreak_exception::rethrow()
 	assert(false);
 }
 
-void lua_jailbreak_exception::clear() throw()
+void lua_jailbreak_exception::clear() NOEXCEPT
 {
 	delete jailbreak_exception;
 	jailbreak_exception = nullptr;

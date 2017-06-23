@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 The Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 The Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -32,11 +32,10 @@
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
-#include "font/marked-up_text.hpp"
 #include "wesnothd_connection.hpp"
-#include "config_assign.hpp"
-#include "game_preferences.hpp"
-#include "lobby_preferences.hpp"
+#include "preferences/credentials.hpp"
+#include "preferences/game.hpp"
+#include "preferences/lobby.hpp"
 #include "log.hpp"
 #include "scripting/plugins/manager.hpp"
 
@@ -54,7 +53,7 @@ namespace gui2
 REGISTER_WIDGET(chatbox)
 
 chatbox::chatbox()
-	: container_base(1)
+	: container_base()
 	, roomlistbox_(nullptr)
 	, chat_log_container_(nullptr)
 	, chat_input_(nullptr)
@@ -229,7 +228,7 @@ void chatbox::set_self_active(const bool /*active*/)
 void chatbox::send_chat_message(const std::string& message,
 	bool /*allies_only*/)
 {
-	::config c = config_of("message", config_of("message", message)("sender", preferences::login()));
+	::config c {"message", ::config {"message", message, "sender", preferences::login()}};
 	add_chat_message(time(nullptr), preferences::login(), 0, message);
 
 	if(wesnothd_connection_) {
@@ -739,8 +738,8 @@ chatbox_definition::chatbox_definition(const config& cfg)
 chatbox_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
-	state.push_back(state_definition(cfg.child("background")));
-	state.push_back(state_definition(cfg.child("foreground")));
+	state.emplace_back(cfg.child("background"));
+	state.emplace_back(cfg.child("foreground"));
 
 	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));

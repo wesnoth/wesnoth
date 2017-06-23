@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef UNIT_TYPES_H_INCLUDED
-#define UNIT_TYPES_H_INCLUDED
+
+#pragma once
 
 #include "gettext.hpp"
 #include "utils/make_enum.hpp"
@@ -20,9 +20,10 @@
 #include "movetype.hpp"
 #include "units/race.hpp"
 #include "units/attack_type.hpp"
-#include "util.hpp"
+#include "utils/math.hpp"
 #include "game_errors.hpp"
 
+#include <array>
 #include <map>
 #include <set>
 #include <string>
@@ -35,6 +36,10 @@ class unit_animation;
 typedef std::map<std::string, movetype> movement_type_map;
 
 
+/**
+ * A single unit type that the player may recruit.
+ * Individual units are defined by the unit class.
+ */
 class unit_type
 {
 public:
@@ -61,7 +66,15 @@ public:
 	/// These are in order of increasing levels of being built.
 	/// HELP_INDEX is already defined in a windows header under some conditions.
 	enum BUILD_STATUS {NOT_BUILT, CREATED, VARIATIONS, HELP_INDEXED, FULL};
+
+	/**
+	 * Validate the id argument.
+	 * Replaces invalid characters in the reference with underscores.
+	 * @param id The proposed id for a unit_type.
+	 * @throw error if id starts with a space.
+	 */
 	static void check_id(std::string& id);
+
 private: // These will be called by build().
 	/// Load data into an empty unit_type (build to FULL).
 	void build_full(const movement_type_map &movement_types,
@@ -92,17 +105,28 @@ public:
 	void add_advancement(const unit_type &advance_to,int experience);
 
 	/** Get the advancement tree
-	 *  Build a set of unit type's id of this unit type's advancement tree */
+	 *  @return A set of ids of all unit_type objects that this unit_type can
+	 *  directly or indirectly advance to.
+	 */
 	std::set<std::string> advancement_tree() const;
 
+	/// A vector of unit_type ids that this unit_type can advance to.
 	const std::vector<std::string>& advances_to() const { return advances_to_; }
+	/// A vector of unit_type ids that can advance to this unit_type.
 	const std::vector<std::string> advances_from() const;
 
+	/// Returns two iterators pointing to a range of AMLA configs.
 	config::const_child_itors modification_advancements() const
 	{ return cfg_.child_range("advancement"); }
 
+	/**
+	 * Returns a gendered variant of this unit_type.
+	 * @param gender "male" or "female".
+	 */
 	const unit_type& get_gender_unit_type(std::string gender) const;
+	/// Returns a gendered variant of this unit_type based on the given parameter.
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
+
 	const unit_type& get_variation(const std::string& id) const;
 	/** Info on the type of unit that the unit reanimates as. */
 	const std::string& undead_variation() const { return undead_variation_; }
@@ -161,8 +185,6 @@ public:
 
 	ALIGNMENT alignment() const { return alignment_; }
 	static std::string alignment_description(ALIGNMENT align, unit_race::GENDER gender = unit_race::MALE);
-
-	fixed_t alpha() const { return alpha_; }
 
 	const std::vector<t_string>& abilities() const { return abilities_; }
 	const std::vector<t_string>& ability_tooltips() const { return ability_tooltips_; }
@@ -275,15 +297,13 @@ private:
 
 	unsigned int num_traits_;
 
-	unit_type* gender_types_[2];
+	std::array<std::unique_ptr<unit_type>, 2> gender_types_;
 
 	variations_map variations_;
 	std::string default_variation_;
 	std::string variation_name_;
 
 	const unit_race* race_;	/// Never nullptr, but may point to the null race.
-
-	fixed_t alpha_;
 
 	std::vector<t_string> abilities_, adv_abilities_;
 	std::vector<t_string> ability_tooltips_, adv_ability_tooltips_;
@@ -342,7 +362,6 @@ private:
 	/** Parses the [hide_help] tag. */
 	void read_hide_help(const config &cfg);
 
-	std::pair<unit_type_map::iterator, bool> insert(const std::pair<std::string, unit_type> &utype) { return types_.insert(utype); }
 	void clear();
 
 	void add_advancefrom(const config& unit_cfg) const;
@@ -373,5 +392,3 @@ struct unit_experience_accelerator {
 private:
 	int old_value_;
 };
-
-#endif

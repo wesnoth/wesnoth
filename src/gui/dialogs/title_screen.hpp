@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_TITLE_SCREEN_HPP_INCLUDED
-#define GUI_DIALOGS_TITLE_SCREEN_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 
@@ -47,6 +46,8 @@ public:
 	 * Actions that merely show a dialog are not included here.
 	 */
 	enum result {
+		// Window was resized, so needs redrawing
+		REDRAW_BACKGROUND = 0, // Needs to be 0, the value of gui2::window::NONE
 		// Start playing a single-player game, such as the tutorial or a campaign
 		LAUNCH_GAME,
 		// Connect to an MP server
@@ -65,26 +66,19 @@ public:
 		RELOAD_GAME_DATA,
 	};
 
-	bool redraw_background() const
-	{
-		return redraw_background_;
-	}
-
 private:
 	game_launcher& game_;
 
-	bool redraw_background_;
-
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	void on_resize(window& window);
 
 	/** Holds the debug clock dialog. */
-	modeless_dialog* debug_clock_;
+	std::unique_ptr<modeless_dialog> debug_clock_;
 
 	/**
 	 * Updates the tip of day widget.
@@ -100,5 +94,3 @@ private:
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif

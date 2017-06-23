@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2006 - 2009 by Rusty Russell <rusty@rustcorp.com.au>
-   Copyright (C) 2010 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2010 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -96,12 +96,12 @@ std::pair<unit_map::unit_iterator, bool> unit_map::move(const map_location &src,
 
 	lmap_.erase(i);
 
-	std::pair<lmap::iterator,bool> res = lmap_.insert(std::make_pair(dst, uit));
+	std::pair<lmap::iterator,bool> res = lmap_.emplace(dst, uit);
 
 	//Fail and don't move if the destination is already occupied
 	if(res.second == false) {
 		p->set_location(src);
-		lmap_.insert(std::make_pair(src, uit));
+		lmap_.emplace(src, uit);
 		return std::make_pair(make_unit_iterator(uit), false);
 	}
 
@@ -142,7 +142,7 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit_ptr p) {
 	DBG_NG << "Adding unit " << p->underlying_id() << " - " << p->id()
 		<< " to location: (" << loc << ")\n";
 
-	std::pair<umap::iterator, bool> uinsert = umap_.insert(std::make_pair(unit_id, upod ));
+	std::pair<umap::iterator, bool> uinsert = umap_.emplace(unit_id, upod);
 
 	if (! uinsert.second) {
 		//If the pod is empty reinsert the unit in the same list element
@@ -164,7 +164,7 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit_ptr p) {
 				   << p->underlying_id()
 				   << " to prevent duplicate id conflicts.\n";
 
-			uinsert = umap_.insert(std::make_pair(p->underlying_id(), upod ));
+			uinsert = umap_.emplace(p->underlying_id(), upod);
 			int guard(0);
 			while (!uinsert.second && (++guard < 1e6) ) {
 				if(guard % 10 == 9){
@@ -176,13 +176,13 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit_ptr p) {
 						"\nThank you for your help in fixing this bug.\n";
 				}
 				p->clone(false);
-				uinsert = umap_.insert(std::make_pair(p->underlying_id(), upod )); }
+				uinsert = umap_.emplace(p->underlying_id(), upod); }
 			if (!uinsert.second) {
 				throw game::error("One million collisions in unit_map"); }
 		}
 	}
 
-	std::pair<lmap::iterator,bool> linsert = lmap_.insert(std::make_pair(loc, uinsert.first ));
+	std::pair<lmap::iterator,bool> linsert = lmap_.emplace(loc, uinsert.first);
 
 	//Fail if the location is occupied
 	if(! linsert.second) {
@@ -204,16 +204,14 @@ std::pair<unit_map::unit_iterator, bool> unit_map::insert(unit_ptr p) {
 	return std::make_pair( make_unit_iterator( uinsert.first ), true);
 }
 
-std::pair<unit_map::unit_iterator, bool> unit_map::replace(const map_location &l, const unit &u) {
+std::pair<unit_map::unit_iterator, bool> unit_map::replace(const map_location &l, unit_ptr p)
+{
 	self_check();
-	//when 'l' is the reference to map_location that is part
-	//of that unit iterator which is to be deleted by erase,
-	// 'l' is invalidated by erase, too. Thus, 'add(l,u)' fails.
-	// So, we need to make a copy of that map_location.
-	map_location loc = l;
-	erase(loc);
-	return add(loc, u);
+	p->set_location(l);
+	erase(l);
+	return insert(p);
 }
+
 
 size_t unit_map::num_iters() const  {
 	///Add up number of extant iterators

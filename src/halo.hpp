@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef HALO_HPP_INCLUDED
-#define HALO_HPP_INCLUDED
+#pragma once
 
 class display;
 
@@ -40,7 +39,7 @@ const int NO_HALO = 0;
 class manager
 {
 public:
-	manager(display& disp);
+	manager(display& screen);
 
 	/**
 	 * Add a haloing effect using 'image centered on (x,y).
@@ -81,7 +80,7 @@ class halo_record
 public:
 	halo_record(const halo_record&) = delete;
 	halo_record& operator=(const halo_record&) = delete;
-	
+
 	halo_record();
 	halo_record(int id, const std::shared_ptr<halo_impl> & my_manager);
 	~halo_record();
@@ -98,5 +97,3 @@ private:
 };
 
 } // end namespace halo
-
-#endif

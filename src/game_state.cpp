@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,8 +23,8 @@
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
 #include "play_controller.hpp"
-#include "game_preferences.hpp"
-#include "random_new_deterministic.hpp"
+#include "preferences/game.hpp"
+#include "random_deterministic.hpp"
 #include "reports.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "teambuilder.hpp"
@@ -59,6 +59,7 @@ game_state::game_state(const config & level, play_controller & pc, const ter_dat
 	server_request_number_(level["server_request_number"].to_int()),
 	first_human_team_(-1)
 {
+	lua_kernel_->load_core();
 	if(const config& endlevel_cfg = level.child("end_level_data")) {
 		end_level_data el_data;
 		el_data.read(endlevel_cfg);
@@ -80,6 +81,7 @@ game_state::game_state(const config & level, play_controller & pc, game_board& b
 	init_side_done_(level["init_side_done"].to_bool(false)),
 	first_human_team_(-1)
 {
+	lua_kernel_->load_core();
 	events_manager_->read_scenario(level);
 	if(const config& endlevel_cfg = level.child("end_level_data")) {
 		end_level_data el_data;
@@ -203,9 +205,9 @@ void game_state::init(const config& level, play_controller & pc)
 
 	{
 		//sync traits of start units and the random start time.
-		random_new::set_random_determinstic deterministic(gamedata_.rng());
+		randomness::set_random_determinstic deterministic(gamedata_.rng());
 
-		tod_manager_.resolve_random(*random_new::generator);
+		tod_manager_.resolve_random(*randomness::generator);
 
 		for(team_builder_ptr tb_ptr : team_builders)
 		{
@@ -342,7 +344,7 @@ bool game_state::can_recruit_on(const map_location& leader_loc, const map_locati
 		// that comes to pass, just return.
 		return false;
 	}
-	const team & view_team = board_.teams()[side-1];
+	const team & view_team = board_.get_team(side);
 
 	if ( view_team.shrouded(recruit_loc) )
 		return false;
@@ -382,12 +384,12 @@ bool game_state::side_can_recruit_on(int side, map_location hex) const
 	return false;
 }
 
-game_events::wmi_container& game_state::get_wml_menu_items()
+game_events::wmi_manager& game_state::get_wml_menu_items()
 {
-	return this->events_manager_->wml_menu_items_;
+	return this->events_manager_->wml_menu_items();
 }
 
-const game_events::wmi_container& game_state::get_wml_menu_items() const
+const game_events::wmi_manager& game_state::get_wml_menu_items() const
 {
-	return this->events_manager_->wml_menu_items_;
+	return this->events_manager_->wml_menu_items();
 }

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,8 +23,7 @@
  *   need to ensure the pointer is deleted.
  */
 
-#ifndef EDITOR_ACTION_HPP
-#define EDITOR_ACTION_HPP
+#pragma once
 
 #include "editor/action/action_base.hpp"
 #include "editor/map/map_fragment.hpp"
@@ -366,5 +365,3 @@ class editor_action_shuffle_area : public editor_action_area
 
 
 } //end namespace editor
-
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -26,12 +26,12 @@
 #include "actions/vision.hpp"
 #include "ai/manager.hpp"
 #include "ai/testing.hpp"
+#include "preferences/credentials.hpp"
 #include "display_chat_manager.hpp"
 #include "formula/string_utils.hpp"
-#include "game_events/manager.hpp"
 #include "game_events/menu_item.hpp"
 #include "game_events/pump.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "game_state.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "hotkey/hotkey_handler.hpp"
@@ -42,7 +42,7 @@
 #include "hotkey/command_executor.hpp"
 #include "log.hpp"
 #include "pathfind/teleport.hpp"
-#include "preferences_display.hpp"
+#include "preferences/display.hpp"
 #include "replay.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
@@ -86,21 +86,16 @@ static lg::log_domain log_engine_enemies("engine/enemies");
  */
 static void copy_persistent(const config& src, config& dst)
 {
-	static const std::set<std::string> attrs = {
-			"id",
-			"theme",
-			"next_scenario",
+	static const std::set<std::string> attrs {
 			"description",
 			"name",
-			"defeat_music",
-			"victory_music",
 			"victory_when_enemies_defeated",
 			"remove_from_carryover_on_defeat",
 			"disallow_recall",
 			"experience_modifier",
 			"require_scenario"};
 
-	static const std::set<std::string> tags = {
+	static const std::set<std::string> tags {
 			"terrain_graphics",
 			"lua"};
 
@@ -133,7 +128,6 @@ static void clear_resources()
 	resources::units = nullptr;
 	resources::whiteboard.reset();
 	resources::classification = nullptr;
-	resources::mp_settings = nullptr;
 }
 
 play_controller::play_controller(const config& level, saved_game& state_of_game,
@@ -179,13 +173,8 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	resources::recorder = replay_.get();
 
 	resources::classification = &saved_game_.classification();
-	resources::mp_settings = &saved_game_.mp_settings();
 
 	persist_.start_transaction();
-
-	// Setup victory and defeat music
-	set_victory_music_list(level_["victory_music"]);
-	set_defeat_music_list(level_["defeat_music"]);
 
 	game_config::add_color_info(level);
 	hotkey::deactivate_all_scopes();
@@ -206,7 +195,7 @@ play_controller::~play_controller()
 
 struct throw_end_level
 {
-	void operator()(const config&)
+	void operator()(const config&) const
 	{
 		throw_quit_game_exception();
 	}
@@ -244,7 +233,7 @@ void play_controller::init(CVideo& video, const config& level)
 
 		LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks()) << std::endl;
 		gui2::dialogs::loading_screen::progress("init theme");
-		const config& theme_cfg = controller_base::get_theme(game_config_, level["theme"]);
+		const config& theme_cfg = controller_base::get_theme(game_config_, theme());
 
 		LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks()) << std::endl;
 		gui2::dialogs::loading_screen::progress("build terrain");
@@ -277,12 +266,11 @@ void play_controller::init(CVideo& video, const config& level)
 			// Find first team that is allowed to be observed.
 			// If not set here observer would be without fog until
 			// the first turn of observable side
-			size_t i;
-			for (i=0;i < gamestate().board_.teams().size();++i)
+			for (const team& t : gamestate().board_.teams())
 			{
-				if (!gamestate().board_.teams()[i].get_disallow_observers())
+				if (!t.get_disallow_observers())
 				{
-					gui_->set_team(i);
+					gui_->set_team(t.side() - 1);
 				}
 			}
 		}
@@ -635,7 +623,7 @@ void play_controller::tab()
 	{
 		std::vector<std::string> commands = menu_handler_.get_commands_list();
 		dictionary.insert(commands.begin(), commands.end());
-		// no break here, we also want player names from the next case
+		FALLTHROUGH; // we also want player names from the next case
 	}
 	case gui::TEXTBOX_MESSAGE:
 	{
@@ -676,14 +664,14 @@ void play_controller::tab()
 
 team& play_controller::current_team()
 {
-	assert(current_side() > 0 && current_side() <= int(gamestate().board_.teams().size()));
-	return gamestate().board_.teams_[current_side() - 1];
+	assert(gamestate().board_.has_team(current_side()));
+	return gamestate().board_.get_team(current_side());
 }
 
 const team& play_controller::current_team() const
 {
-	assert(current_side() > 0 && current_side() <= int(gamestate().board_.teams().size()));
-	return gamestate().board_.teams()[current_side() - 1];
+	assert(gamestate().board_.has_team(current_side()));
+	return gamestate().board_.get_team(current_side());
 }
 
 /// @returns: the number n in [min, min+mod ) so that (n - num) is a multiple of mod.
@@ -703,7 +691,7 @@ static int modulo(int num, int mod, int min)
 
 bool play_controller::is_team_visible(int team_num, bool observer) const
 {
-	const team& t = gamestate().board_.teams()[team_num - 1];
+	const team& t = gamestate().board_.get_team(team_num);
 	if(observer) {
 		return !t.get_disallow_observers() && !t.is_empty();
 	}
@@ -732,7 +720,7 @@ events::mouse_handler& play_controller::get_mouse_handler_base()
 	return mouse_handler_;
 }
 
-std::shared_ptr<wb::manager> play_controller::get_whiteboard()
+std::shared_ptr<wb::manager> play_controller::get_whiteboard() const
 {
 	return whiteboard_manager_;
 }
@@ -803,11 +791,16 @@ void play_controller::process_keyup_event(const SDL_Event& event)
 
 		}
 	} else if (event.key.keysym.sym == SDLK_TAB) {
-		static CKey keys;
+		CKey keys;
 		if (!keys[SDLK_TAB]) {
 			whiteboard_manager_->set_invert_behavior(false);
 		}
 	}
+}
+
+replay& play_controller::get_replay() {
+	assert(replay_);
+	return *replay_.get();
 }
 
 void play_controller::save_game()
@@ -895,32 +888,15 @@ namespace {
 	static const std::string empty_str = "";
 }
 
-const std::string& play_controller::select_victory_music() const
+const std::string& play_controller::select_music(bool victory) const
 {
-	if(victory_music_.empty())
+	const std::vector<std::string>& music_list = victory
+		? (gamestate_->get_game_data()->get_victory_music().empty() ? game_config::default_victory_music : gamestate_->get_game_data()->get_victory_music())
+		: (gamestate_->get_game_data()->get_defeat_music().empty() ? game_config::default_defeat_music : gamestate_->get_game_data()->get_defeat_music());
+
+	if(music_list.empty())
 		return empty_str;
-	return victory_music_[rand() % victory_music_.size()];
-}
-
-const std::string& play_controller::select_defeat_music() const
-{
-	if(defeat_music_.empty())
-		return empty_str;
-	return defeat_music_[rand() % defeat_music_.size()];
-}
-
-void play_controller::set_victory_music_list(const std::string& list)
-{
-	victory_music_ = utils::split(list);
-	if(victory_music_.empty())
-		victory_music_ = utils::split(game_config::default_victory_music);
-}
-
-void play_controller::set_defeat_music_list(const std::string& list)
-{
-	defeat_music_  = utils::split(list);
-	if(defeat_music_.empty())
-		defeat_music_ = utils::split(game_config::default_defeat_music);
+	return music_list[rand() % music_list.size()];
 }
 
 void play_controller::check_victory()
@@ -1030,7 +1006,7 @@ game_events::wml_event_pump& play_controller::pump()
 	return gamestate().events_manager_->pump();
 }
 
-int play_controller::get_ticks()
+int play_controller::get_ticks() const
 {
 	return ticks_;
 }
@@ -1091,8 +1067,9 @@ void play_controller::start_game()
 			return;
 		}
 
-		for ( int side = gamestate().board_.teams().size(); side != 0; --side )
-			actions::clear_shroud(side, false, false);
+		for (const team& t : gamestate().board_.teams()) {
+			actions::clear_shroud(t.side(), false, false);
+		}
 
 		init_gui();
 		LOG_NG << "first_time..." << (is_skipping_replay() ? "skipping" : "no skip") << "\n";
@@ -1155,7 +1132,7 @@ void play_controller::play_side()
 		// This flag can be set by derived classes (in overridden functions).
 		player_type_changed_ = false;
 
-		statistics::reset_turn_stats(gamestate().board_.teams()[current_side() - 1].save_id());
+		statistics::reset_turn_stats(gamestate().board_.get_team(current_side()).save_id());
 
 		play_side_impl();
 
@@ -1264,7 +1241,7 @@ void play_controller::show_objectives() const
 {
 	const team& t = gamestate().board_.teams()[gui_->viewing_team()];
 	static const std::string no_objectives(_("No objectives available"));
-	std::string objectives = t.objectives();
+	std::string objectives = utils::interpolate_variables_into_string(t.objectives(), *gamestate_->get_game_data());
 	gui2::show_transient_message(gui_->video(), get_scenario_name(), (objectives.empty() ? no_objectives : objectives), "", true);
 	t.reset_objectives_changed();
 }

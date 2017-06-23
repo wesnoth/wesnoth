@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Boldizsár Lipka <lipkab@zoho.com>
+   Copyright (C) 2012 - 2017 by Boldizsár Lipka <lipkab@zoho.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef MP_DEPCHECK_HPP_INCLUDED
-#define MP_DEPCHECK_HPP_INCLUDED
+#pragma once
 
 #include <string>
 #include <vector>
@@ -380,5 +379,3 @@ private:
 } //namespace depcheck
 
 } //namespace ng
-
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2006 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef TERRAIN_TRANSLATION_H_INCLUDED
-#define TERRAIN_TRANSLATION_H_INCLUDED
+#pragma once
 
 #include <vector>
 #include <map>
@@ -23,7 +22,14 @@
 #include <boost/bimap.hpp>
 #include <boost/bimap/set_of.hpp>
 #include <boost/bimap/multiset_of.hpp>
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4459)
+#endif
 #include <boost/multi_array.hpp>
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 #include "exceptions.hpp"
 #include "map/location.hpp"
 
@@ -157,6 +163,7 @@ namespace t_translation {
 	extern const terrain_code STAR;	// *
 	extern const terrain_code BASE;	// references the base terrain in movement/defense aliases
 
+    extern const ter_match ALL_OFF_MAP;
 	extern const ter_match ALL_FORESTS;
 	extern const ter_match ALL_HILLS;
 	extern const ter_match ALL_MOUNTAINS; //excluding impassable mountains
@@ -365,5 +372,3 @@ namespace t_translation {
 	ter_map read_builder_map(const std::string& str);
 
 } // end namespace t_translation
-
-#endif

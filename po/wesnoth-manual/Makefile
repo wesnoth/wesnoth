@@ -26,5 +26,5 @@ MSGFMT = msgfmt
 # generate .gmo files for po4a manpages
 .po.gmo:
 	@lang=`echo $* | sed -e 's,.*/,,'`; \
-	echo "$(MSGFMT) --check-format --check-domain --statistics -o /dev/null $${lang}.po"; \
-	$(MSGFMT) --check-format --check-domain --statistics -o /dev/null $${lang}.po
+	echo "$(MSGFMT) --check-domain --statistics -o /dev/null $${lang}.po"; \
+	$(MSGFMT) --check-domain --statistics -o /dev/null $${lang}.po

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,12 +12,11 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_FORMULA_DEBUGGER_HPP_INCLUDED
-#define GUI_DIALOGS_FORMULA_DEBUGGER_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace game_logic
+namespace wfl
 {
 class formula_debugger;
 }
@@ -30,16 +29,16 @@ namespace dialogs
 class formula_debugger : public modal_dialog
 {
 public:
-	explicit formula_debugger(game_logic::formula_debugger& fdb) : fdb_(fdb)
+	explicit formula_debugger(wfl::formula_debugger& fdb) : fdb_(fdb)
 	{
 	}
 
 private:
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/***** ***** button callbacks ***** *****/
 	void callback_continue_button(window& window);
@@ -50,10 +49,8 @@ private:
 
 	void callback_stepout_button(window& window);
 
-	game_logic::formula_debugger& fdb_;
+	wfl::formula_debugger& fdb_;
 };
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif /* ! GUI_DIALOGS_FORMULA_DEBUGGER_HPP_INCLUDED */

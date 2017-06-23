@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
-   Copyright (C) 2009 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
+   Copyright (C) 2009 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SERVER_PLAYER_NETWORK_HPP_INCLUDED
-#define SERVER_PLAYER_NETWORK_HPP_INCLUDED
+#pragma once
 
 #include "player.hpp"
 #include "simple_wml.hpp"
@@ -34,5 +33,3 @@ namespace chat_message {
 } // end chat_message namespace
 
 } //end namespace wesnothd
-
-#endif

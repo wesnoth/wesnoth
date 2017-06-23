@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,8 +25,7 @@
  * game.
  */
 
-#ifndef CONFIG_HPP_INCLUDED
-#define CONFIG_HPP_INCLUDED
+#pragma once
 
 #include "global.hpp"
 
@@ -39,12 +38,14 @@
 #include <utility>
 #include <vector>
 #include <type_traits>
+#include <memory>
 
 #include <boost/exception/exception.hpp>
 #include <boost/variant/apply_visitor.hpp>
 #include <boost/variant/variant.hpp>
 #include <boost/range/iterator_range.hpp>
 
+#include "config_attribute_value.hpp"
 #include "exceptions.hpp"
 #include "tstring.hpp"
 
@@ -66,6 +67,18 @@
 
 #if defined(_MSC_VER) && _MSC_VER >= 1900 // MSVC 2015
 #	define USE_HETEROGENOUS_LOOKUPS
+#endif
+
+#ifdef USE_HETEROGENOUS_LOOKUPS
+#if BOOST_VERSION > 106100
+#include <boost/utility/string_view.hpp>
+using config_key_type = boost::string_view;
+#else
+#include <boost/utility/string_ref.hpp>
+using config_key_type = boost::string_ref;
+#endif
+#else
+using config_key_type = const std::string &;
 #endif
 
 class config;
@@ -106,17 +119,25 @@ public:
 	/**
 	 * Creates a config object with an empty child of name @a child.
 	 */
-	explicit config(const std::string &child);
+	explicit config(config_key_type child);
+
+	/**
+	 * Creates a config with several attributes and children.
+	 * Pass the keys/tags and values/children alternately.
+	 * @example config("key", 42, "value", config())
+	 */
+	template<typename... T>
+	explicit config(config_key_type first, T&&... args);
 
 	~config();
 
 	// Verifies that the string can be used as an attribute or tag name
-	static bool valid_id(const std::string& id);
+	static bool valid_id(config_key_type id);
 
 	explicit operator bool() const
 	{ return this != &invalid; }
 
-	typedef std::vector<config*> child_list;
+	typedef std::vector<std::unique_ptr<config>> child_list;
 	typedef std::map<std::string, child_list
 #ifdef USE_HETEROGENOUS_LOOKUPS
 		, std::less<>
@@ -220,168 +241,7 @@ public:
 	 * @note The blank variant is only used when querying missing attributes.
 	 *       It is not stored in config objects.
 	 */
-	class attribute_value
-	{
-		/// A wrapper for bool to get the correct streaming ("true"/"false").
-		/// Most visitors can simply treat this as bool.
-	public:
-		class true_false
-		{
-			bool value_;
-		public:
-			explicit true_false(bool value = false) : value_(value) {}
-			operator bool() const { return value_; }
-
-			const std::string & str() const
-			{ return value_ ? config::attribute_value::s_true :
-			                  config::attribute_value::s_false; }
-		};
-		friend std::ostream& operator<<(std::ostream &os, const true_false &v);
-
-		/// A wrapper for bool to get the correct streaming ("yes"/"no").
-		/// Most visitors can simply treat this as bool.
-		class yes_no
-		{
-			bool value_;
-		public:
-			explicit yes_no(bool value = false) : value_(value) {}
-			operator bool() const { return value_; }
-
-			const std::string & str() const
-			{ return value_ ? config::attribute_value::s_yes :
-			                  config::attribute_value::s_no; }
-		};
-		friend std::ostream& operator<<(std::ostream &os, const yes_no &v);
-	private:
-		/// Visitor for checking equality.
-		class equality_visitor;
-		/// Visitor for converting a variant to a string.
-		class string_visitor;
-
-		// Data will be stored in a variant, allowing for the possibility of
-		// boolean, numeric, and translatable data in addition to basic string
-		// data. For most purposes, int is the preferred type for numeric data
-		// as it is fast (often natural word size). While it is desirable to
-		// use few types (to keep the overhead low), we do have use cases for
-		// fractions (double) and huge numbers (up to the larger of LLONG_MAX
-		// and SIZE_MAX).
-		typedef boost::variant<boost::blank,
-		                       true_false, yes_no,
-		                       int, unsigned long long, double,
-		                       std::string, t_string
-		                      > value_type;
-		/// The stored value will always use the first type from the variant
-		/// definition that can represent it and that can be streamed to the
-		/// correct string representation (if applicable).
-		/// This is enforced upon assignment.
-		value_type value_;
-
-	public:
-		/// Default implementation, but defined out-of-line for efficiency reasons.
-		attribute_value();
-		/// Default implementation, but defined out-of-line for efficiency reasons.
-		~attribute_value();
-		/// Default implementation, but defined out-of-line for efficiency reasons.
-		attribute_value(const attribute_value &);
-		/// Default implementation, but defined out-of-line for efficiency reasons.
-		attribute_value &operator=(const attribute_value &);
-
-		// Numeric assignments:
-		attribute_value &operator=(bool v);
-		attribute_value &operator=(int v);
-		attribute_value &operator=(long v)          { return operator=(static_cast<long long>(v)); }
-		attribute_value &operator=(long long v);
-		attribute_value &operator=(unsigned v)      { return operator=(static_cast<unsigned long long>(v)); }
-		attribute_value &operator=(unsigned long v) { return operator=(static_cast<unsigned long long>(v)); }
-		attribute_value &operator=(unsigned long long v);
-		attribute_value &operator=(double v);
-
-		// String assignments:
-		attribute_value &operator=(const char *v)   { return operator=(std::string(v)); }
-		attribute_value &operator=(const std::string &v);
-		attribute_value &operator=(const t_string &v);
-		template<typename T>
-		typename std::enable_if<std::is_base_of<enum_tag, T>::value, attribute_value &>::type operator=(const T &v)
-		{
-			return operator=(T::enum_to_string(v));
-		}
-		// Extracting as a specific type:
-		bool to_bool(bool def = false) const;
-		int to_int(int def = 0) const;
-		long long to_long_long(long long def = 0) const;
-		unsigned to_unsigned(unsigned def = 0) const;
-		size_t to_size_t(size_t def = 0) const;
-		time_t to_time_t(time_t def = 0) const;
-		double to_double(double def = 0.) const;
-		std::string str() const;
-		t_string t_str() const;
-		/**
-			@param T a type created with MAKE_ENUM macro
-			NOTE: since T::VALUE constants is not of type T but of the underlying enum type you must specify the template parameter explicitly
-			TODO: Fix this in c++11 using constexpr types.
-		*/
-		template<typename T>
-		typename std::enable_if<std::is_base_of<enum_tag, T>::value, T>::type to_enum(const T &v) const
-		{
-			return T::string_to_enum(this->str(), v);
-		}
-
-		// Implicit conversions:
-		operator int() const { return to_int(); }
-		operator std::string() const { return str(); }
-		operator t_string() const { return t_str(); }
-
-		/// Tests for an attribute that was never set.
-		bool blank() const;
-		/// Tests for an attribute that either was never set or was set to "".
-		bool empty() const;
-
-
-		// Comparisons:
-		bool operator==(const attribute_value &other) const;
-		bool operator!=(const attribute_value &other) const
-		{ return !operator==(other); }
-
-		bool equals(const std::string& str) const;
-		// These function prevent t_string creation in case of c["a"] == "b" comparisons.
-		// The templates are needed to prevent using these function in case of c["a"] == 0 comparisons.
-		template<typename T>
-		typename std::enable_if<std::is_same<const std::string, typename std::add_const<T>::type>::value, bool>::type
-		friend operator==(const attribute_value &val, const T &str)
-		{ return val.equals(str); }
-
-		template<typename T>
-		typename std::enable_if<std::is_same<const char*, T>::value, bool>::type
-		friend operator==(const attribute_value &val, T str)
-		{ return val.equals(std::string(str)); }
-
-		template<typename T>
-		bool friend operator==(const T &str, const attribute_value &val)
-		{ return val == str; }
-
-		template<typename T>
-		bool friend operator!=(const attribute_value &val, const T &str)
-		{ return !(val == str); }
-
-		template<typename T>
-		bool friend operator!=(const T &str, const attribute_value &val)
-		{ return !(val == str); }
-
-		// Streaming:
-		friend std::ostream& operator<<(std::ostream &os, const attribute_value &v);
-
-		// Visitor support:
-		/// Applies a visitor to the underlying variant.
-		/// (See the documentation for Boost.Variant.)
-		template <typename V>
-		typename V::result_type apply_visitor(const V & visitor) const
-		{ return boost::apply_visitor(visitor, value_); }
-
-	private:
-		// Special strings.
-		static const std::string s_yes, s_no;
-		static const std::string s_true, s_false;
-	};
+	using attribute_value = config_attribute_value;
 
 	typedef std::map<
 		std::string
@@ -453,9 +313,9 @@ public:
 	typedef boost::iterator_range<const_attribute_iterator> const_attr_itors;
 	typedef boost::iterator_range<attribute_iterator> attr_itors;
 
-	child_itors child_range(const std::string& key);
-	const_child_itors child_range(const std::string& key) const;
-	unsigned child_count(const std::string &key) const;
+	child_itors child_range(config_key_type key);
+	const_child_itors child_range(config_key_type key) const;
+	unsigned child_count(config_key_type key) const;
 	unsigned all_children_count() const;
 	/** Count the number of non-blank attributes */
 	unsigned attribute_count() const;
@@ -467,12 +327,12 @@ public:
 	 *
 	 * @returns                   Whether a child is available.
 	 */
-	bool has_child(const std::string& key) const;
+	bool has_child(config_key_type key) const;
 
 	/**
 	 * Returns the first child with the given @a key, or an empty config if there is none.
 	 */
-	const config & child_or_empty(const std::string &key) const;
+	const config & child_or_empty(config_key_type key) const;
 
 	/**
 	 * Returns the nth child with the given @a key, or
@@ -480,30 +340,16 @@ public:
 	 * @note A negative @a n accesses from the end of the object.
 	 *       For instance, -1 is the index of the last child.
 	 */
-	config &child(const std::string& key, int n = 0);
+	config &child(config_key_type key, int n = 0);
 
-#ifdef USE_HETEROGENOUS_LOOKUPS
-	template<int N>
-	config &child(const char(&key)[N], int n = 0)
-	{ return child_impl(key, N - 1, n); }
-private:
-	config &child_impl(const char* key, int len, int n = 0);
-public:
-#endif
 	/**
 	 * Returns the nth child with the given @a key, or
 	 * a reference to an invalid config if there is none.
 	 * @note A negative @a n accesses from the end of the object.
 	 *       For instance, -1 is the index of the last child.
 	 */
-	const config &child(const std::string& key, int n = 0) const
+	const config& child(config_key_type key, int n = 0) const
 	{ return const_cast<config *>(this)->child(key, n); }
-
-#ifdef USE_HETEROGENOUS_LOOKUPS
-	template<int N>
-	const config &child(const char(&key)[N], int n = 0) const
-	{ return const_cast<config *>(this)->child_impl(key, N- 1, n); }
-#endif
 	/**
 	 * Returns a mandatory child node.
 	 *
@@ -518,7 +364,7 @@ public:
 	 *
 	 * @returns                   The wanted child node.
 	 */
-	config& child(const std::string& key, const std::string& parent);
+	config& child(config_key_type key, const std::string& parent);
 
 	/**
 	 * Returns a mandatory child node.
@@ -535,72 +381,104 @@ public:
 	 * @returns                   The wanted child node.
 	 */
 	const config& child(
-			  const std::string& key
+		config_key_type key
 			, const std::string& parent) const;
 
-	config& add_child(const std::string& key);
-	config& add_child(const std::string& key, const config& val);
-	config& add_child_at(const std::string &key, const config &val, unsigned index);
+	config& add_child(config_key_type key);
+	config& add_child(config_key_type key, const config& val);
+	config& add_child_at(config_key_type key, const config &val, unsigned index);
 
-	config &add_child(const std::string &key, config &&val);
+	config &add_child(config_key_type key, config &&val);
 
 	/**
 	 * Returns a reference to the attribute with the given @a key.
 	 * Creates it if it does not exist.
 	 */
-	attribute_value &operator[](const std::string &key);
+	attribute_value& operator[](config_key_type key);
 
 	/**
 	 * Returns a reference to the attribute with the given @a key
 	 * or to a dummy empty attribute if it does not exist.
 	 */
-	const attribute_value &operator[](const std::string &key) const;
+	const attribute_value& operator[](config_key_type key) const;
 
 #ifdef USE_HETEROGENOUS_LOOKUPS
 	/**
-	 * Returns a reference to the attribute with the given @a key
-	 * or to a dummy empty attribute if it does not exist.
-	 */
-	template<int N>
-	inline const attribute_value &operator[](const char (&key)[N]) const
+	* Returns a reference to the attribute with the given @a key.
+	* Creates it if it does not exist.
+	*/
+	attribute_value& operator[](const std::string& key)
 	{
-		//-1 for the terminating null character.
-		return get_attribute(key, N - 1);
+		return operator[](config_key_type(key));
 	}
 
-	template<int N>
-	inline attribute_value& operator[](const char (&key)[N])
+	/**
+	* Returns a reference to the attribute with the given @a key
+	* or to a dummy empty attribute if it does not exist.
+	*/
+	const attribute_value& operator[](const std::string& key) const
 	{
-		return (*this)[std::string(key)];
+		return operator[](config_key_type(key));
 	}
 #endif
+
+	/**
+	* Returns a reference to the attribute with the given @a key.
+	* Creates it if it does not exist.
+	*/
+	attribute_value& operator[](const char* key)
+	{
+		return operator[](config_key_type(key));
+	}
+
+	/**
+	* Returns a reference to the attribute with the given @a key
+	* or to a dummy empty attribute if it does not exist.
+	*/
+	const attribute_value& operator[](const char* key) const
+	{
+		return operator[](config_key_type(key));
+	}
+
 	/**
 	 * Returns a pointer to the attribute with the given @a key
 	 * or nullptr if it does not exist.
 	 */
-	const attribute_value *get(const std::string &key) const;
+	const attribute_value *get(config_key_type key) const;
 
 	/**
 	 * Function to handle backward compatibility
 	 * Get the value of key and if missing try old_key
 	 * and log msg as a WML error (if not empty)
 	*/
-	const attribute_value &get_old_attribute(const std::string &key, const std::string &old_key, const std::string& msg = "") const;
+	const attribute_value &get_old_attribute(config_key_type key, const std::string &old_key, const std::string& msg = "") const;
 	/**
 	 * Returns a reference to the first child with the given @a key.
 	 * Creates the child if it does not yet exist.
 	 */
-	config &child_or_add(const std::string &key);
 
-	bool has_attribute(const std::string &key) const;
+	/**
+	 * Inserts an attribute into the config
+	 * @param key The name of the attribute
+	 * @param value The attribute value
+	 */
+	template<typename T>
+	void insert(config_key_type key, T&& value)
+	{
+		operator[](key) = std::forward<T>(value);
+	}
+
+	config &child_or_add(config_key_type key);
+
+	bool has_attribute(config_key_type key) const;
 	/**
 	 * Function to handle backward compatibility
 	 * Check if has key or old_key
 	 * and log msg as a WML error (if not empty)
 	*/
-	bool has_old_attribute(const std::string &key, const std::string &old_key, const std::string& msg = "") const;
+	bool has_old_attribute(config_key_type key, const std::string &old_key, const std::string& msg = "") const;
 
-	void remove_attribute(const std::string &key);
+	void remove_attribute(config_key_type key);
 	void merge_attributes(const config &);
 	template<typename... T>
 	void remove_attributes(T... keys) {
@@ -616,18 +494,18 @@ public:
 	 * Returns the first child of tag @a key with a @a name attribute
 	 * containing @a value.
 	 */
-	config &find_child(const std::string &key, const std::string &name,
+	config& find_child(config_key_type key, const std::string &name,
 		const std::string &value);
 
-	const config &find_child(const std::string &key, const std::string &name,
+	const config& find_child(config_key_type key, const std::string &name,
 		const std::string &value) const
 	{ return const_cast<config *>(this)->find_child(key, name, value); }
 
-	void clear_children(const std::string& key);
+	void clear_children_impl(config_key_type key);
 	template<typename... T>
 	void clear_children(T... keys) {
-		for(std::string key : {keys...}) {
-			clear_children(key);
+		for(auto key : {keys...}) {
+			clear_children_impl(key);
 		}
 	}
 
@@ -636,8 +514,8 @@ public:
 	 */
 	void splice_children(config &src, const std::string &key);
 
-	void remove_child(const std::string &key, unsigned index);
-	void recursive_clear_value(const std::string& key);
+	void remove_child(config_key_type key, unsigned index);
+	void recursive_clear_value(config_key_type key);
 
 	void clear();
 	bool empty() const;
@@ -707,7 +585,7 @@ public:
 		this_type& operator+=(difference_type n) { i_ += n; return *this; }
 		this_type& operator-=(difference_type n) { i_ -= n; return *this; }
 
-		reference operator[](difference_type n) const { return any_child(&i_[n].pos->first, i_[n].pos->second[i_->index]); }
+		reference operator[](difference_type n) const { return any_child(&i_[n].pos->first, i_[n].pos->second[i_->index].get()); }
 		friend difference_type operator-(const this_type& a, const this_type& b) { return a.i_ - b.i_; }
 		friend this_type operator-(const this_type& a, difference_type n) { return this_type(a.i_ - n); }
 		friend this_type operator+(const this_type& a, difference_type n) { return this_type(a.i_ + n); }
@@ -760,7 +638,7 @@ public:
 		this_type& operator+=(difference_type n) { i_ += n; return *this; }
 		this_type& operator-=(difference_type n) { i_ -= n; return *this; }
 
-		reference operator[](difference_type n) const { return any_child(&i_[n].pos->first, i_[n].pos->second[i_->index]); }
+		reference operator[](difference_type n) const { return any_child(&i_[n].pos->first, i_[n].pos->second[i_->index].get()); }
 		friend difference_type operator-(const this_type& a, const this_type& b) { return a.i_ - b.i_; }
 		friend this_type operator-(const this_type& a, difference_type n) { return this_type(a.i_ - n); }
 		friend this_type operator+(const this_type& a, difference_type n) { return this_type(a.i_ + n); }
@@ -872,22 +750,73 @@ public:
 	void swap(config& cfg);
 
 private:
-#ifdef USE_HETEROGENOUS_LOOKUPS
-	const attribute_value& get_attribute(const char* key, int len) const;
-#endif
 	/**
 	 * Removes the child at position @a pos of @a l.
 	 */
 	std::vector<child_pos>::iterator remove_child(const child_map::iterator &l, unsigned pos);
 
 	/** All the attributes of this node. */
-	attribute_map values;
+	attribute_map values_;
 
 	/** A list of all children of this node. */
-	child_map children;
+	child_map children_;
 
 	std::vector<child_pos> ordered_children;
 };
+
+namespace detail {
+	template<typename... T>
+	struct config_construct_unpacker;
+
+	template<>
+	struct config_construct_unpacker<>
+	{
+		void visit(config&) {}
+	};
+
+	template<typename K, typename V, typename... Rest>
+	struct config_construct_unpacker<K, V, Rest...>
+	{
+		template<typename K2 = K, typename V2 = V>
+		void visit(config& cfg, K2&& key, V2&& val, Rest... fwd)
+		{
+			cfg.insert(std::forward<K>(key), std::forward<V>(val));
+			config_construct_unpacker<Rest...> unpack;
+			unpack.visit(cfg, std::forward<Rest>(fwd)...);
+		}
+	};
+
+	template<typename T, typename... Rest>
+	struct config_construct_unpacker<T, config, Rest...>
+	{
+		template<typename T2 = T, typename C = config>
+		void visit(config& cfg, T2&& tag, C&& child, Rest... fwd)
+		{
+			cfg.add_child(std::forward<T>(tag), std::forward<config>(child));
+			config_construct_unpacker<Rest...> unpack;
+			unpack.visit(cfg, std::forward<Rest>(fwd)...);
+		}
+	};
+
+	template<typename T, typename... Rest>
+	struct config_construct_unpacker<T, config&, Rest...>
+	{
+		template<typename T2 = T>
+		void visit(config& cfg, T2&& tag, config& child, Rest... fwd)
+		{
+			cfg.add_child(std::forward<T>(tag), std::forward<config>(child));
+			config_construct_unpacker<Rest...> unpack;
+			unpack.visit(cfg, std::forward<Rest>(fwd)...);
+		}
+	};
+}
+
+template<typename... T>
+inline config::config(config_key_type first, T&&... args)
+{
+	detail::config_construct_unpacker<config_key_type, T...> unpack;
+	unpack.visit(*this, first, std::forward<T>(args)...);
+}
 
 class variable_set
 {
@@ -896,7 +825,3 @@ public:
 	virtual config::attribute_value get_variable_const(const std::string &id) const = 0;
 };
 
-inline std::ostream &operator<<(std::ostream &os, const config::attribute_value::true_false &v) { return os << v.str(); }
-inline std::ostream &operator<<(std::ostream &os, const config::attribute_value::yes_no &v)     { return os << v.str(); }
-
-#endif

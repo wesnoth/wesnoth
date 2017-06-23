@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2008 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SIMPLE_WML_HPP_INCLUDED
-#define SIMPLE_WML_HPP_INCLUDED
+#pragma once
 
 #include <cstring>
 
@@ -283,6 +282,7 @@ public:
 
 	static std::string stats();
 
+	static size_t document_size_limit;
 private:
 	void generate_root();
 	document(const document&);
@@ -301,5 +301,3 @@ private:
 };
 
 }
-
-#endif

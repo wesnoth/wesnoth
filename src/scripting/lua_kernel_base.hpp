@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SCRIPTING_LUA_KERNEL_BASE_HPP
-#define SCRIPTING_LUA_KERNEL_BASE_HPP
+#pragma once
 
 #include <sstream>
 #include <string>
@@ -44,6 +43,10 @@ public:
 
 	/** Loads the `package` library into lua environment. Only in allow in `unsafe` modes. */
 	void load_package();
+	/** Loads the "core" library into the Lua environment. Without this, most Wesnoth Lua won't work.
+	 * Cannot be called from the constructor because it needs to call virtual functions.
+	 */
+	void load_core();
 
 	/** Get tab completion strings */
 	std::vector<std::string> get_global_var_names();
@@ -73,6 +76,7 @@ public:
 
 	virtual uint32_t get_random_seed();
 	lua_State * get_state() { return mState; }
+	void add_widget_definition(const std::string& type, const std::string& id) { registered_widget_definitions_.emplace_back(type, id); }
 protected:
 	lua_State *mState;
 
@@ -133,8 +137,12 @@ protected:
 
 	// require (using lua_fileops, protected_call)
 	int intf_require(lua_State * L);
+
+	int intf_kernel_type(lua_State* L);
+
+	virtual int impl_game_config_get(lua_State* L);
+	virtual int impl_game_config_set(lua_State* L);
 private:
 	static lua_kernel_base*& get_lua_kernel_base_ptr(lua_State *L);
+	std::vector<std::tuple<std::string, std::string>> registered_widget_definitions_;
 };
-
-#endif

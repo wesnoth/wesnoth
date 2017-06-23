@@ -1,9 +1,10 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local LS = wesnoth.require "location_set"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local MAISD = wesnoth.require "ai/micro_ais/micro_ai_self_data.lua"
+local M = wesnoth.map
 
 local function custom_cost(x, y, unit, enemy_map, enemy_attack_map, multiplier)
     local terrain = wesnoth.get_terrain(x, y)
@@ -123,10 +124,10 @@ function ca_goto:execution(cfg, data)
             -- hex to the goal that the unit can get to
             if cfg.use_straight_line then
                 local hex, _, rating = AH.find_best_move(unit, function(x, y)
-                    local r = - H.distance_between(x, y, loc[1], loc[2])
+                    local r = -M.distance_between(x, y, loc[1], loc[2])
                     -- Also add distance from unit as very small rating component
                     -- This is mostly here to keep unit in place when no better hexes are available
-                    r = r - H.distance_between(x, y, unit.x, unit.y) / 1000.
+                    r = r - M.distance_between(x, y, unit.x, unit.y) / 1000.
                     return r
                 end, { no_random = true })
 
@@ -152,7 +153,7 @@ function ca_goto:execution(cfg, data)
                             enemy_at_goal = nil
                         end
                     end
-                    path, cost = wesnoth.find_path(unit, loc[1], loc[2], { ignore_units = cfg.ignore_units })
+                    path, cost = AH.find_path_with_shroud(unit, loc[1], loc[2], { ignore_units = cfg.ignore_units })
                     if enemy_at_goal then
                         wesnoth.put_unit(enemy_at_goal)
                         --- Give massive penalty for this goal hex
@@ -193,13 +194,13 @@ function ca_goto:execution(cfg, data)
     -- rather than using ai_helper.next_hop for standard pathfinding
     -- Also, straight-line does not produce a path, so we do that first
     if not best_path then
-        best_path = wesnoth.find_path(best_unit, closest_hex[1], closest_hex[2])
+        best_path = AH.find_path_with_shroud(best_unit, closest_hex[1], closest_hex[2])
     end
 
     -- Now go through the hexes along that path, use normal path finding
     closest_hex = best_path[1]
     for i = 2,#best_path do
-        local sub_path, sub_cost = wesnoth.find_path(best_unit, best_path[i][1], best_path[i][2], cfg)
+        local sub_path, sub_cost = AH.find_path_with_shroud(best_unit, best_path[i][1], best_path[i][2], cfg)
         if sub_cost <= best_unit.moves then
             local unit_in_way = wesnoth.get_unit(best_path[i][1], best_path[i][2])
             if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then

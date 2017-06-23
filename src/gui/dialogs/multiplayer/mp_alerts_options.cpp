@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,7 @@
 #include "gui/widgets/window.hpp"
 
 #include "mp_ui_alerts.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "formula/string_utils.hpp"
 
 #include "utils/functional.hpp"
@@ -73,10 +73,7 @@ static toggle_button * setup_pref_toggle_button(const std::string & id, bool def
 		preferences::set(id, def);
 	}
 
-	//Needed to disambiguate overloaded function
-	void (*set) (const std::string &, bool) = &preferences::set;
-
-	connect_signal_mouse_left_click(*b, std::bind(set, id, std::bind(&toggle_button::get_value_bool, b)));
+	connect_signal_mouse_left_click(*b, std::bind([&, id]() { preferences::set(id, b->get_value_bool()); }));
 
 	return b;
 }

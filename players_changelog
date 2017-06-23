@@ -2,9 +2,85 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog
 
-Version 1.13.6+dev:
+Version 1.13.8+dev:
+ * Campaigns:
+   * Secrets of the Ancients:
+     * Fix delay when additional enemies appear in S21 (issue #1706)
  * Language and i18n:
-   * Updated translations: British English, Portuguese (Brazil).
+   * Updated translations: British English, Chinese (Simplified), Italian,
+     Polish, Scottish Gaelic, Slovak, Spanish.
+ * Multiplayer:
+   * When set to remember your password, Wesnoth now encrypts it. It is still
+     possible to obtain the password from preferences, but it's no longer as
+     trivial as before.
+ * User Interface:
+   * Unit recall dialog now sorts the units by both level and required XP for
+     their next level-up (issue #1738).
+   * Fixed team selection screen often ignoring attempts to scroll (bug #1632).
+
+Version 1.13.8:
+  * Under the Burning Suns:
+     * New sprites for Quenoth Youth (Kaleh and Nym) and Human Commander.
+
+ * Graphics:
+   * Portraits for many Walking Corpse and Soulless race variants.
+   * New animations: Dwarvish Fighter idle.
+
+ * Language and i18n:
+   * Updated translations: British English, Chinese (Simplified), Lithuanian,
+     Slovak, Spanish.
+
+ * User Interface:
+   * Double-clicking an add-on now installs, updates, uninstalls or publishes it
+     depending on the situation.
+   * Load Game dialog now shows current gold and number of units.
+
+ * Miscellaneous and bug fixes:
+   * Fixed base animation showing on walking corpse & soulless bats (bug #25673)
+
+Version 1.13.7:
+ * AI:
+   * Fix a performance regression in complex combat situations such as the
+     "Oath of Allegiance" UMC campaign.
+
+ * Campaigns:
+   * Eastern Invasion:
+     * In 'Weldyn Besieged', redesigned the way in which revealing the
+       identities of the liches works.
+   * Heir to the Throne:
+     * Fixed bug allowing the wrong person to receive the Sceptre of Fire.
+     * Fixed inconsistencies in Li'sar's sprites and animations when she has the
+       scepter.
+   * Secrets of the Ancients:
+     * New campaign added to mainline (Intermediate level, 21 scenarios).
+   * The Hammer of Thursagan:
+     * New sprites for Dwarvish Witness line.
+   * Under the Burning Suns:
+     * Fixed difficulty levels with the original units not working.
+     * Various balancing changes, bug fixes and improvements to the new units;
+       see full changelog for more details.
+
+ * Graphics:
+   * New or improved sprites: Royal Warrior, Walking Corpse line wolf variation.
+   * Improved terrain graphics: lava, volcano, lightbeam.
+   * Fixed glitches between various mountain tiles (introduced in 1.13.3).
+
+ * Language and i18n:
+   * Updated translations: British English, Czech, German, Portuguese (Brazil),
+     Scottish Gaelic.
+
+ * Multiplayer:
+   * New maps: 2p Clearing Gushes, 2p Hellhole, 2p Ruined Passage,
+     2p Ruphus Isle, 2p Swamp of Dread, 2p The Walls of Pyrennis,
+     2p Tombs of Kesorak, 4p Bath of Glory, 4p Geothermal.
+   * Updated maps: Fallenstar Lake.
+
+ * User Interface:
+   * List boxes now keep the selected item visible when you change the sorting
+     option.
+
+ * Miscellaneous and bug fixes:
+   * Fixed severe lag/freeze on slow PCs (bug #25356)
 
 
 Version 1.13.6:

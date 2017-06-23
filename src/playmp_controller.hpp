@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef PLAYMP_CONTROLLER_H_INCLUDED
-#define PLAYMP_CONTROLLER_H_INCLUDED
+#pragma once
 
 #include "playsingle_controller.hpp"
 #include "syncmp_handler.hpp"
@@ -72,5 +71,3 @@ private:
 	void process_network_data();
 	mp_campaign_info* mp_info_;
 };
-
-#endif

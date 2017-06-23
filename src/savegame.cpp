@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by Jörg Hinrichs, refactored from various
+   Copyright (C) 2003 - 2017 by Jörg Hinrichs, refactored from various
    places formerly created by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -19,14 +19,13 @@
 
 #include "save_index.hpp"
 #include "carryover.hpp"
-#include "config_assign.hpp"
 #include "format_time_summary.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_errors.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/game_load.hpp"
 #include "gui/dialogs/game_save.hpp"
@@ -183,6 +182,10 @@ bool loadgame::load_game()
 	read_save_file(load_data_.filename, load_data_.load_config, &error_log);
 
 	convert_old_saves(load_data_.load_config);
+	
+	for (config& side : load_data_.load_config.child_range("side")) {
+		side.remove_attribute("is_local");
+	}
 
 	if(!error_log.empty()) {
         try {
@@ -773,12 +776,12 @@ static void convert_old_saves_1_13_0(config& cfg)
 	}
 	//This code is needed because for example otherwise it won't find the (empty) era
 	if(!cfg.has_child("multiplayer")) {
-		cfg.add_child("multiplayer", config_of
-			("mp_era", "era_blank")
-			("show_connect", false)
-			("show_configure", false)
-			("mp_use_map_settings", true)
-		);
+		cfg.add_child("multiplayer", config {
+			"mp_era", "era_blank",
+			"show_connect", false,
+			"show_configure", false,
+			"mp_use_map_settings", true,
+		});
 	}
 }
 

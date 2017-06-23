@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2017 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,28 +11,55 @@
 
    See the COPYING file for more details.
 */
-#ifndef MULTIPLAYER_CREATE_ENGINE_HPP_INCLUDED
-#define MULTIPLAYER_CREATE_ENGINE_HPP_INCLUDED
+
+#pragma once
 
 #include "config.hpp"
-#include "utils/make_enum.hpp"
+#include "game_initialization/depcheck.hpp"
+#include "generators/map_generator.hpp"
 #include "mp_game_settings.hpp"
+#include "utils/make_enum.hpp"
 
+#include <numeric>
 #include <string>
 #include <utility>
+#include <cctype>
 
 class CVideo;
 class saved_game;
-class map_generator;
 class gamemap;
 
 namespace ng {
-namespace depcheck { class manager; }
+
+static bool contains_ignore_case(const std::string& str1, const std::string& str2)
+{
+	if(str2.size() > str1.size()) {
+		return false;
+	}
+
+	for(size_t i = 0; i < str1.size() - str2.size() + 1; i++) {
+		bool ok = true;
+		for(size_t j = 0; j < str2.size(); j++) {
+			if(std::tolower(str1[i + j]) != std::tolower(str2[j])) {
+				ok = false;
+				break;
+			}
+		}
+
+		if(ok) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+/** Base class for all level type classes. */
 class level
 {
 public:
 	level(const config& data);
-	virtual ~level() {}
+	virtual ~level() = default;
 
 	MAKE_ENUM(TYPE,
 		(SCENARIO,      "scenario")
@@ -43,40 +70,79 @@ public:
 		(SP_CAMPAIGN,   "sp_campaign")
 	)
 
-	virtual bool can_launch_game() const = 0;
-
 	virtual void set_metadata() = 0;
 
-	virtual std::string name() const;
-	virtual std::string icon() const;
-	virtual std::string description() const;
-	virtual std::string id() const;
-	virtual bool allow_era_choice() const;
+	virtual bool can_launch_game() const = 0;
+	virtual bool player_count_filter(int player_count) const = 0;
 
-	void set_data(const config& data);
-	const config& data() const;
-	config& data();
+	virtual std::string id() const
+	{
+		return data_["id"];
+	}
+
+	virtual std::string name() const
+	{
+		return data_["name"];
+	}
+
+	virtual std::string icon() const
+	{
+		return data_["icon"];
+	}
+
+	virtual std::string description() const
+	{
+		return data_["description"];
+	}
+
+	virtual bool allow_era_choice() const
+	{
+		return data_["allow_era_choice"].to_bool(true);
+	}
+
+	void set_data(const config& data)
+	{
+		data_ = data;
+	}
+
+	const config& data() const
+	{
+		return data_;
+	}
+
+	config& data()
+	{
+		return data_;
+	}
 
 protected:
 	config data_;
 
 private:
-	level(const level&);
-	void operator=(const level&);
+	level(const level&) = delete;
+	void operator=(const level&) = delete;
 };
 
 class scenario : public level
 {
 public:
 	scenario(const config& data);
-	virtual ~scenario();
 
 	bool can_launch_game() const;
 
 	void set_metadata();
 
-	int num_players() const;
+	int num_players() const
+	{
+		return num_players_;
+	}
+
 	std::string map_size() const;
+
+	bool player_count_filter(int player_count) const
+	{
+		return num_players_ == player_count;
+	}
 
 protected:
 	void set_sides();
@@ -96,17 +162,25 @@ class user_map : public scenario
 {
 public:
 	user_map(const config& data, const std::string& name, gamemap* map);
-	virtual ~user_map();
 
 	void set_metadata();
 
-	std::string name() const;
+	/** For user maps, the id and name are the same. */
+	std::string id() const
+	{
+		return name_;
+	}
+
+	std::string name() const
+	{
+		return name_;
+	}
+
 	std::string description() const;
-	std::string id() const;
 
 private:
-	user_map(const user_map&);
-	void operator=(const user_map&);
+	user_map(const user_map&) = delete;
+	void operator=(const user_map&) = delete;
 
 	std::string name_;
 };
@@ -115,22 +189,27 @@ class random_map : public scenario
 {
 public:
 	random_map(const config& data);
-	virtual ~random_map();
 
-	const config& generator_data() const;
+	const config& generator_data() const
+	{
+		return generator_data_;
+	}
 
-	std::string name() const;
-	std::string description() const;
-	std::string id() const;
-	std::string generator_name() const;
+	std::string generator_name() const
+		{
+		return generator_name_;
+	}
 
-	map_generator * create_map_generator() const;
+	map_generator* create_map_generator() const;
 
-	bool generate_whole_scenario() const;
+	bool generate_whole_scenario() const
+	{
+		return generate_whole_scenario_;
+	}
 
 private:
-	random_map(const random_map&);
-	void operator=(const random_map&);
+	random_map(const random_map&) = delete;
+	void operator=(const random_map&) = delete;
 
 	config generator_data_;
 
@@ -142,7 +221,6 @@ class campaign : public level
 {
 public:
 	campaign(const config& data);
-	virtual ~campaign();
 
 	bool can_launch_game() const;
 
@@ -150,16 +228,34 @@ public:
 
 	void mark_if_completed();
 
-	std::string id() const;
+	std::string id() const
+	{
+		return id_;
+	}
 
-	bool allow_era_choice() const;
+	bool allow_era_choice() const
+	{
+		return allow_era_choice_;
+	}
 
-	int min_players() const;
-	int max_players() const;
+	int min_players() const
+	{
+		return min_players_;
+	}
+
+	int max_players() const
+	{
+		return max_players_;
+	}
+
+	bool player_count_filter(int player_count) const
+	{
+		return min_players_ <= player_count && max_players_ >= player_count;
+	}
 
 private:
-	campaign(const campaign&);
-	void operator=(const campaign&);
+	campaign(const campaign&) = delete;
+	void operator=(const campaign&) = delete;
 
 	std::string id_;
 	bool allow_era_choice_;
@@ -172,7 +268,6 @@ class create_engine
 {
 public:
 	create_engine(CVideo& v, saved_game& state);
-	~create_engine();
 
 	enum MP_EXTRA { ERA, MOD };
 
@@ -199,45 +294,85 @@ public:
 	void prepare_for_scenario();
 	void prepare_for_campaign(const std::string& difficulty = "");
 	void prepare_for_saved_game();
-	//random maps, user maps
+	// random maps, user maps
 	void prepare_for_other();
 
+	/**
+	 * select_campaign_difficulty
+	 *
+	 * Launches difficulty selection gui and returns selected difficulty name.
+	 *
+	 * The gui can be bypassed by supplying a number from 1 to the number of
+	 * difficulties available, corresponding to a choice of difficulty.
+	 * This is useful for specifying difficulty via command line.
+	 *
+	 * @param	set_value Preselected difficulty number. The default -1 launches the gui.
+	 * @return	Selected difficulty. Returns "FAIL" if set_value is invalid,
+	 *	        and "CANCEL" if the gui is canceled.
+	 */
 	std::string select_campaign_difficulty(int set_value = -1);
-	std::string get_selected_campaign_difficulty();
+	std::string get_selected_campaign_difficulty() const
+	{
+		return selected_campaign_difficulty_;
+	}
 
 	void apply_level_filter(const std::string& name);
 	void apply_level_filter(int players);
 	void reset_level_filters();
 
-	const std::string& level_name_filter() const;
-	int player_num_filter() const;
+	const std::string& level_name_filter() const
+	{
+		return level_name_filter_;
+	}
+
+	int player_num_filter() const
+	{
+		return player_count_filter_;
+	}
 
 	std::vector<level_ptr> get_levels_by_type_unfiltered(level::TYPE type) const;
 	std::vector<level_ptr> get_levels_by_type(level::TYPE type) const;
 
 	std::vector<size_t> get_filtered_level_indices(level::TYPE type) const;
 
+	/** DEPRECATED */
 	std::vector<std::string> extras_menu_item_names(const MP_EXTRA extra_type) const;
 
 	level& current_level() const;
 	const extras_metadata& current_extra(const MP_EXTRA extra_type) const;
 
-	void set_current_level_type(const level::TYPE);
-	level::TYPE current_level_type() const;
+	void set_current_level_type(const level::TYPE type)
+	{
+		current_level_type_ = type;
+	}
+
+	level::TYPE current_level_type() const
+	{
+		return current_level_type_;
+	}
 
 	void set_current_level(const size_t index);
 
 	void set_current_era_index(const size_t index, bool force = false);
-	void set_current_mod_index(const size_t index);
+	void set_current_mod_index(const size_t index)
+	{
+		current_mod_index_ = index;
+	}
 
-	size_t current_era_index() const;
+	size_t current_era_index() const
+	{
+		return current_era_index_;
+	}
+
+	size_t current_mod_index() const
+	{
+		return current_mod_index_;
+	}
+
 	const config& curent_era_cfg() const;
-	size_t current_mod_index() const;
 
-	const std::vector<extras_metadata_ptr>&
-		get_const_extras_by_type(const MP_EXTRA extra_type) const;
-	std::vector<extras_metadata_ptr>&
-		get_extras_by_type(const MP_EXTRA extra_type);
+	const std::vector<extras_metadata_ptr>& get_const_extras_by_type(const MP_EXTRA extra_type) const;
+	std::vector<extras_metadata_ptr>& get_extras_by_type(const MP_EXTRA extra_type);
 
 	bool toggle_current_mod(bool force = false);
 
@@ -249,9 +384,13 @@ public:
 	int find_extra_by_id(const MP_EXTRA extra_type, const std::string& id) const;
 	level::TYPE find_level_type_by_id(const std::string& id) const;
 
-	const depcheck::manager& dependency_manager() const;
+	const depcheck::manager& dependency_manager() const
+	{
+		return *dependency_manager_;
+	}
 
 	void init_active_mods();
+
 	std::vector<std::string>& active_mods();
 	std::vector<extras_metadata_ptr> active_mods_data();
 
@@ -260,8 +399,8 @@ public:
 	saved_game& get_state();
 
 private:
-	create_engine(const create_engine&);
-	void operator=(const create_engine&);
+	create_engine(const create_engine&) = delete;
+	void operator=(const create_engine&) = delete;
 
 	void init_all_levels();
 	void init_extras(const MP_EXTRA extra_type);
@@ -278,19 +417,34 @@ private:
 	std::string level_name_filter_;
 	int player_count_filter_;
 
-	std::vector<scenario_ptr> scenarios_;
-	std::vector<user_map_ptr> user_maps_;
-	std::vector<scenario_ptr> user_scenarios_;
-	std::vector<campaign_ptr> campaigns_;
-	std::vector<campaign_ptr> sp_campaigns_;
-	std::vector<random_map_ptr> random_maps_;
+	struct type_list
+	{
+		explicit type_list() : games(), games_filtered() {}
 
-	std::vector<size_t> scenarios_filtered_;
-	std::vector<size_t> user_maps_filtered_;
-	std::vector<size_t> user_scenarios_filtered_;
-	std::vector<size_t> campaigns_filtered_;
-	std::vector<size_t> sp_campaigns_filtered_;
-	std::vector<size_t> random_maps_filtered_;
+		std::vector<level_ptr> games;
+		std::vector<size_t> games_filtered;
+
+		void apply_filter(const int player_count, const std::string& name_filter)
+		{
+			games_filtered.clear();
+
+			for(size_t i = 0; i < games.size(); i++) {
+				const bool num_players_match = player_count == 1 || games[i]->player_count_filter(player_count);
+
+				if(contains_ignore_case(games[i]->name(), name_filter) && num_players_match) {
+					games_filtered.push_back(i);
+				}
+			}
+		}
+
+		void reset_filter()
+		{
+			games_filtered.resize(games.size());
+			std::iota(games_filtered.begin(), games_filtered.end(), 0);
+		}
+	};
+
+	std::map<level::TYPE, type_list> type_map_;
 
 	std::vector<std::string> user_map_names_;
 	std::vector<std::string> user_scenario_names_;
@@ -301,7 +455,8 @@ private:
 	saved_game& state_;
 
 	CVideo& video_;
-	//Never nullptr
+
+	// Never nullptr
 	std::unique_ptr<depcheck::manager> dependency_manager_;
 
 	std::unique_ptr<map_generator> generator_;
@@ -310,4 +465,3 @@ private:
 };
 
 } // end namespace ng
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by Ján Dugáček
+   Copyright (C) 2016 - 2017 by Ján Dugáček
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,7 @@
 #include "utils/context_free_grammar_generator.hpp"
 
 #include "log.hpp"
-#include "random_new.hpp"
+#include "random.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <algorithm>
@@ -47,7 +47,7 @@ context_free_grammar_generator::context_free_grammar_generator(const std::string
 				throw name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: nonterminals (, ! and ) may not be overridden");
 			}
 			current = &nonterminals_[key];
-			current->possibilities_.push_back(std::vector<std::string>());
+			current->possibilities_.emplace_back();
 			filled = &current->possibilities_.back();
 			buf.clear();
 		} else if (*reading == '\n') {
@@ -61,7 +61,7 @@ context_free_grammar_generator::context_free_grammar_generator(const std::string
 				throw name_generator_invalid_exception("[context_free_grammar_generator] Parsing error: misplaced | symbol");
 			}
 			filled->push_back(buf);
-			current->possibilities_.push_back(std::vector<std::string>());
+			current->possibilities_.emplace_back();
 			filled = &current->possibilities_.back();
 			buf.clear();
 		} else if (*reading == '\\' && reading[1] == 'n') {
@@ -171,6 +171,6 @@ std::string context_free_grammar_generator::generate() const {
 
 void context_free_grammar_generator::init_seed(uint32_t seed[]) const {
 	for (unsigned short int i = 0; i < seed_size; i++) {
-		seed[i] = random_new::generator->next_random();
+		seed[i] = randomness::generator->next_random();
 	}
 }

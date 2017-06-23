@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef INCL_FAKE_UNIT_MGR_HPP_
-#define INCL_FAKE_UNIT_MGR_HPP_
+#pragma once
 
 #include <deque>
 
@@ -56,5 +55,3 @@ private:
 	std::deque<internal_ptr_type> fake_units_;
 	display & my_display_; //!< Reference to my display
 };
-
-#endif

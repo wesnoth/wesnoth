@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,6 @@
  *  Handle unit-type specific attributes, animations, advancement.
  */
 
-#include "global.hpp"
-
 #include "units/types.hpp"
 
 #include "game_config.hpp"
@@ -29,7 +27,6 @@
 #include "units/unit.hpp"
 #include "units/abilities.hpp"
 #include "units/animation.hpp"
-#include "util.hpp"
 #include "utils/iterable_pair.hpp"
 
 #include "gui/auxiliary/typed_formula.hpp"
@@ -80,8 +77,8 @@ unit_type::unit_type(const unit_type& o) :
 	num_traits_(o.num_traits_),
 	variations_(o.variations_),
 	default_variation_(o.default_variation_),
+	variation_name_(o.variation_name_),
 	race_(o.race_),
-	alpha_(o.alpha_),
 	abilities_(o.abilities_),
 	adv_abilities_(o.adv_abilities_),
 	ability_tooltips_(o.ability_tooltips_),
@@ -99,8 +96,8 @@ unit_type::unit_type(const unit_type& o) :
 	animations_(o.animations_),
     build_status_(o.build_status_)
 {
-	gender_types_[0] = o.gender_types_[0] != nullptr ? new unit_type(*o.gender_types_[0]) : nullptr;
-	gender_types_[1] = o.gender_types_[1] != nullptr ? new unit_type(*o.gender_types_[1]) : nullptr;
+	gender_types_[0].reset(gender_types_[0] != nullptr ? new unit_type(*o.gender_types_[0]) : nullptr);
+	gender_types_[1].reset(gender_types_[1] != nullptr ? new unit_type(*o.gender_types_[1]) : nullptr);
 }
 
 
@@ -136,7 +133,6 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	default_variation_(cfg_["variation"]),
 	variation_name_(cfg_["variation_name"].t_str()),
 	race_(&unit_race::null_race),
-	alpha_(ftofxp(1.0)),
 	abilities_(),
 	adv_abilities_(),
 	ability_tooltips_(),
@@ -156,14 +152,10 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 {
 	check_id(id_);
 	check_id(base_id_);
-	gender_types_[0] = nullptr;
-	gender_types_[1] = nullptr;
 }
 
 unit_type::~unit_type()
 {
-	delete gender_types_[0];
-	delete gender_types_[1];
 }
 
 /**
@@ -179,8 +171,9 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	build_help_index(mv_types, races, traits);
 
 	for (int i = 0; i < 2; ++i) {
-		if (gender_types_[i])
+		if (gender_types_[i]) {
 			gender_types_[i]->build_full(mv_types, races, traits);
+		}
 	}
 
 	if ( race_ != &unit_race::null_race )
@@ -191,11 +184,6 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	}
 
 	zoc_ = cfg_["zoc"].to_bool(level_ > 0);
-
-	const config::attribute_value & alpha_blend = cfg_["alpha"];
-	if(alpha_blend.empty() == false) {
-		alpha_ = ftofxp(alpha_blend.to_double());
-	}
 
 	game_config::add_color_info(cfg_);
 
@@ -375,22 +363,23 @@ void unit_type::build_created(const movement_type_map &mv_types,
 	// There is no preceding build level (other than being constructed).
 
 	// These should still be nullptr from the constructor.
-	assert(gender_types_[0] == nullptr);
-	assert(gender_types_[1] == nullptr);
+	assert(!gender_types_[0]);
+	assert(!gender_types_[1]);
 
 	if ( const config &male_cfg = cfg_.child("male") ) {
-		gender_types_[0] = new unit_type(male_cfg, id_);
+		gender_types_[0].reset(new unit_type(male_cfg, id_));
 		gender_types_[0]->debug_id_ = debug_id_ + " (male)";
 	}
 
 	if ( const config &female_cfg = cfg_.child("female") ) {
-		gender_types_[1] = new unit_type(female_cfg, id_);
+		gender_types_[1].reset(new unit_type(female_cfg, id_));
 		gender_types_[1]->debug_id_ = debug_id_ + " (female)";
 	}
 
-	for (int i = 0; i < 2; ++i) {
-		if (gender_types_[i])
+	for (unsigned i = 0; i < gender_types_.size(); ++i) {
+		if (gender_types_[i]) {
 			gender_types_[i]->build_created(mv_types, races, traits);
+		}
 	}
 
     const std::string& advances_to_val = cfg_["advances_to"];
@@ -450,8 +439,7 @@ const unit_type& unit_type::get_gender_unit_type(std::string gender) const
 const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
 {
 	const size_t i = gender;
-	if(i < sizeof(gender_types_)/sizeof(*gender_types_)
-	&& gender_types_[i] != nullptr) {
+	if(i < gender_types_.size() && gender_types_[i] != nullptr) {
 		return *gender_types_[i];
 	}
 
@@ -530,8 +518,8 @@ int unit_type::experience_needed(bool with_acceleration) const
 /*
 const char* unit_type::alignment_description(unit_type::ALIGNMENT align, unit_race::GENDER gender)
 {
-	static const char* aligns[] = { N_("lawful"), N_("neutral"), N_("chaotic"), N_("liminal") };
-	static const char* aligns_female[] = { N_("female^lawful"), N_("female^neutral"), N_("female^chaotic"), N_("female^liminal") };
+	static const char* aligns[] { N_("lawful"), N_("neutral"), N_("chaotic"), N_("liminal") };
+	static const char* aligns_female[] { N_("female^lawful"), N_("female^neutral"), N_("female^chaotic"), N_("female^liminal") };
 	const char** tlist = (gender == unit_race::MALE ? aligns : aligns_female);
 
 	return (translation::sgettext(tlist[align]));
@@ -607,13 +595,15 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 
 	// Add advancements to gendered subtypes, if supported by to_unit
 	for(int gender=0; gender<=1; ++gender) {
-		if(gender_types_[gender] == nullptr) continue;
-		if(to_unit.gender_types_[gender] == nullptr) {
+		if(!gender_types_[gender]) {
+			continue;
+		}
+		if(!to_unit.gender_types_[gender]) {
 			WRN_CF << to_unit.log_id() << " does not support gender " << gender << std::endl;
 			continue;
 		}
 		LOG_CONFIG << "gendered advancement " << gender << ": ";
-		gender_types_[gender]->add_advancement(*(to_unit.gender_types_[gender]),xp);
+		gender_types_[gender]->add_advancement(*(to_unit.gender_types_[gender]), xp);
 	}
 
 	if ( cfg_.has_child("variation") ) {
@@ -769,7 +759,7 @@ const config & unit_type::build_unit_cfg() const
 
 	// Remove "pure" unit_type attributes (attributes that do not get directly
 	// copied to units; some do get copied, but under different keys).
-	static char const *unit_type_attrs[] = { "attacks", "base_ids", "die_sound",
+	static char const *unit_type_attrs[] { "attacks", "base_ids", "die_sound",
 		"experience", "flies", "healed_sound", "hide_help", "hitpoints",
 		"id", "ignore_race_traits", "inherit", "movement", "movement_type",
 		"name", "num_traits", "variation_id", "variation_name", "recall_cost",
@@ -993,11 +983,11 @@ namespace { // Helpers for set_config()
 			return;
 		}
 		gui2::typed_formula<int> formula(formula_str);
-		game_logic::map_formula_callable original;
+		wfl::map_formula_callable original;
 		boost::sregex_iterator m(formula_str.begin(), formula_str.end(), fai_identifier);
 		for (const boost::sregex_iterator::value_type& p : std::make_pair(m, boost::sregex_iterator())) {
 			const std::string var_name = p.str();
-			variant val(original_cfg[var_name].to_int(default_val));
+			wfl::variant val(original_cfg[var_name].to_int(default_val));
 			original.add(var_name, val);
 		}
 		temp_cfg[new_key] = formula(original);
@@ -1019,14 +1009,14 @@ void unit_type_data::set_config(config &cfg)
 
 	for (const config &mt : cfg.child_range("movetype"))
 	{
-		movement_types_.insert(std::make_pair(mt["name"].str(), movetype(mt)));
+		movement_types_.emplace(mt["name"].str(), movetype(mt));
 		gui2::dialogs::loading_screen::progress();
 	}
 
 	for (const config &r : cfg.child_range("race"))
 	{
 		const unit_race race(r);
-		races_.insert(std::pair<std::string,unit_race>(race.id(),race));
+		races_.emplace(race.id(), race);
 		gui2::dialogs::loading_screen::progress();
 	}
 
@@ -1058,7 +1048,7 @@ void unit_type_data::set_config(config &cfg)
 	{
 		const std::string& ter_type = terrain["id"];
 		config temp_cfg;
-		static const std::string terrain_info_tags[] = {"movement", "vision", "jamming", "defense"};
+		static const std::string terrain_info_tags[] {"movement", "vision", "jamming", "defense"};
 		for (const std::string &tag : terrain_info_tags) {
 			if (!terrain.has_child(tag)) {
 				continue;
@@ -1138,7 +1128,7 @@ void unit_type_data::set_config(config &cfg)
 		handle_variations(ut);
 
 		// Record this unit type.
-		if ( insert(std::make_pair(id, unit_type(ut))).second ) {
+		if(types_.emplace(id, unit_type(ut)).second) {
 			LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
 		} else {
 			ERR_CF << "Multiple [unit_type]s with id=" << id << " encountered." << std::endl;
@@ -1228,8 +1218,8 @@ void unit_type_data::read_hide_help(const config& cfg)
 	if (!cfg)
 		return;
 
-	hide_help_race_.push_back(std::set<std::string>());
-	hide_help_type_.push_back(std::set<std::string>());
+	hide_help_race_.emplace_back();
+	hide_help_type_.emplace_back();
 
 	std::vector<std::string> races = utils::split(cfg["race"]);
 	hide_help_race_.back().insert(races.begin(), races.end());
@@ -1304,14 +1294,14 @@ void unit_type::check_id(std::string& id)
 	if (id[0] == ' ') {
 		throw error("Found unit type id with a leading whitespace \"" + id + "\"");
 	}
-	bool gave_wanrning = false;
+	bool gave_warning = false;
 	for (size_t pos = 0; pos < id.size(); ++pos) {
 		const char c = id[pos];
 		const bool valid = c == '_' || c == ' ' || (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9');
 		if (!valid) {
-			if (!gave_wanrning) {
+			if (!gave_warning) {
 				ERR_UT << "Found unit type id with invalid chracters: \"" << id << "\"\n";
-				gave_wanrning = true;
+				gave_warning = true;
 			}
 			id[pos] = '_';
 		}

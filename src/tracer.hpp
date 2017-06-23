@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * Contains code for tracing the code.
  */
 
-#ifndef TRACER_HPP_INCLUDED
-#define TRACER_HPP_INCLUDED
+#pragma once
 
 #include <map>
 #include <string>
@@ -102,5 +101,3 @@ struct tracer
 	do {                                                                     \
 		++tracer.counters[std::make_pair(__LINE__, marker)];                 \
 	} while(0)
-
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,7 @@
 
 // This class encapsulates the animation functionality of unit.
 
-#ifndef UNIT_ANIM_COMP_HPP
-#define UNIT_ANIM_COMP_HPP
+#pragma once
 
 #include "halo.hpp"
 #include "units/animation.hpp" //Note: only needed for enum
@@ -64,7 +63,7 @@ public:
 			const map_location& second_loc = map_location::null_location(),
 			const int damage=0,
 			const unit_animation::hit_type hit_type = unit_animation::hit_type::INVALID,
-			const attack_type* attack=nullptr,const attack_type* second_attack = nullptr,
+			const_attack_ptr attack=nullptr,const_attack_ptr second_attack = nullptr,
 			int swing_num =0);
 
 	/** Sets the animation state to standing. */
@@ -85,7 +84,7 @@ public:
 	/** Begin an animation. */
 	void start_animation (int start_time, const unit_animation *animation,
 		bool with_bars,  const std::string &text = "",
-		Uint32 text_color = 0, STATE state = STATE_ANIM);
+		color_t text_color = {}, STATE state = STATE_ANIM);
 
 	/** Invalidates an animation with respect to a display object, preparing it for redraw. */
 	bool invalidate(const display & disp);
@@ -105,6 +104,9 @@ public:
 	/** Get a pointer to the current animation. */
 	unit_animation* get_animation() const { return anim_.get(); }
 
+	/** Get the flags of all registered animations. */
+	std::vector<std::string> get_flags();
+
 	friend class unit;
 	friend class unit_drawer;
 private:
@@ -123,5 +125,3 @@ private:
 
 	halo::handle unit_halo_; //!< handle to the halo of this unit
 };
-
-#endif

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2011, 2015 by Ignacio R. Morelle <shadowm2006@gmail.com>
-   Copyright (C) 2016 by Charles Dang <exodia339gmail.com>
+   Copyright (C) 2016 - 2017 by Charles Dang <exodia339gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,14 +13,15 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_PREFERENCES_DIALOG_HPP_INCLUDED
-#define GUI_DIALOGS_PREFERENCES_DIALOG_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "utils/make_enum.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
+
+#include <boost/dynamic_bitset.hpp>
 
 // This file is not named preferences.hpp in order -I conflicts with
 // src/preferences.hpp.
@@ -46,7 +47,7 @@ namespace preferences {
 	 * widget would allow specifying page by string id, but that would require changes to
 	 * generator. It's something to look into, however.
 	 */
-	static std::map<PREFERENCE_VIEW, std::pair<int,int>> pef_view_map = {
+	static std::map<PREFERENCE_VIEW, std::pair<int,int>> pef_view_map {
 		{VIEW_DEFAULT, {0,0}},
 		{VIEW_FRIENDS, {4,1}}
 	};
@@ -80,17 +81,17 @@ public:
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 
 	/** Inherited from modal_dialog. */
-	void post_build(window& window);
-	void pre_show(window& window);
-	void post_show(window& /*window*/);
+	virtual void post_build(window& window) override;
+	virtual void pre_show(window& window) override;
+	virtual void post_show(window& /*window*/) override;
 
 	/** Initializers */
 	void initialize_tabs(window& window, listbox& selector);
 	void set_resolution_list(menu_button& res_list, CVideo& video);
-	void setup_hotkey_list(window& window);
+	listbox& setup_hotkey_list(window& window);
 
 	std::map<std::string, string_map> get_friends_list_row_data(const preferences::acquaintance& entry);
 
@@ -113,6 +114,7 @@ private:
 	void add_hotkey_callback(listbox& hotkeys);
 	void remove_hotkey_callback(listbox& hotkeys);
 	void default_hotkey_callback(window& window);
+	void hotkey_type_filter_callback(window& window) const;
 
 	group<preferences::LOBBY_JOINS> lobby_joins_group;
 
@@ -131,11 +133,11 @@ private:
 	std::vector<double> accl_speeds_;
 	t_visible_hotkeys visible_hotkeys_;
 
+	std::vector<t_string> cat_names_;
+
 	// The page/tab index pairs for setting visible pages
 	const std::pair<int, int>& initial_index_;
 };
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif /* ! GUI_DIALOGS_PREFERENCES_DIALOG_HPP_INCLUDED */

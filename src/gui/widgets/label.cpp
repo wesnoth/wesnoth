@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -41,12 +41,14 @@ namespace gui2
 REGISTER_WIDGET(label)
 
 label::label()
-		: styled_widget(COUNT)
+		: styled_widget()
 		, state_(ENABLED)
 		, can_wrap_(false)
 		, characters_per_line_(0)
 		, link_aware_(false)
-		, link_color_("#ffff00")
+		, link_color_(color_t::from_hex_string("ffff00"))
+		, can_shrink_(false)
+		, text_alpha_(255)
 {
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(&label::signal_handler_left_button_click, this, _2, _3));
 	connect_signal<event::RIGHT_BUTTON_CLICK>(std::bind(&label::signal_handler_right_button_click, this, _2, _3));
@@ -67,9 +69,20 @@ bool label::get_link_aware() const
 	return link_aware_;
 }
 
-std::string label::get_link_color() const
+color_t label::get_link_color() const
 {
 	return link_color_;
+}
+
+void label::set_text_alpha(unsigned short alpha)
+{
+	text_alpha_ = alpha;
+
+	for(auto& tmp : get_canvases()) {
+		tmp.set_variable("text_alpha", wfl::variant(text_alpha_));
+	}
+
+	set_is_dirty(true);
 }
 
 void label::set_active(const bool active)
@@ -110,7 +123,7 @@ void label::set_link_aware(bool link_aware)
 	set_is_dirty(true);
 }
 
-void label::set_link_color(const std::string & color)
+void label::set_link_color(const color_t& color)
 {
 	if(color == link_color_) {
 		return;
@@ -264,11 +277,11 @@ label_definition::label_definition(const config& cfg)
 label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 	, link_aware(cfg["link_aware"].to_bool(false))
-	, link_color(cfg["link_color"].str().size() > 0 ? cfg["link_color"].str() : "#ffff00")
+	, link_color(cfg["link_color"].empty() ? color_t::from_hex_string("ffff00") : color_t::from_rgba_string(cfg["link_color"].str()))
 {
 	// Note the order should be the same as the enum state_t is label.hpp.
-	state.push_back(state_definition(cfg.child("state_enabled")));
-	state.push_back(state_definition(cfg.child("state_disabled")));
+	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(cfg.child("state_disabled"));
 }
 
 // }---------- BUILDER -----------{
@@ -318,6 +331,7 @@ builder_label::builder_label(const config& cfg)
 	, wrap(cfg["wrap"].to_bool())
 	, characters_per_line(cfg["characters_per_line"])
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
+	, can_shrink(cfg["can_shrink"].to_bool(false))
 {
 }
 
@@ -330,6 +344,8 @@ widget* builder_label::build() const
 	lbl->set_can_wrap(wrap);
 	lbl->set_characters_per_line(characters_per_line);
 	lbl->set_text_alignment(text_alignment);
+	lbl->set_text_alpha(ALPHA_OPAQUE);
+	lbl->set_can_shrink(can_shrink);
 
 	DBG_GUI_G << "Window builder: placed label '" << id << "' with definition '"
 			  << definition << "'.\n";

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,10 +21,8 @@
  * for the items and the best size for the children.
  */
 
-#ifndef GUI_AUXILIARY_PLACER_HPP_INCLUDED
-#define GUI_AUXILIARY_PLACER_HPP_INCLUDED
+#pragma once
 
-#include "global.hpp"
 #include "utils/make_enum.hpp"
 
 namespace gui2
@@ -36,7 +34,7 @@ struct point;
  * Base class for the placement helper.
  *
  * The normal operation for the usage of the class is:
- * * Call @ref initialise().
+ * * Call @ref initialize().
  * * For every visible child item call @ref add_item() with the wanted size of
  *   the widget.
  * Once this is done the required size for all children can be retrieved with
@@ -92,7 +90,7 @@ public:
 	 * reset, items are placed, removed or changed visibility causing the old
 	 * placement to be invalid.
 	 */
-	virtual void initialise() = 0;
+	virtual void initialize() = 0;
 
 	/**
 	 * Adds a item to be placed.
@@ -121,5 +119,3 @@ public:
 };
 
 } // namespace gui2
-
-#endif

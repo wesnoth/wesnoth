@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef LUA_MAP_GENERATOR_HPP_INCLUDED
-#define LUA_MAP_GENERATOR_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "map_generator.hpp"
@@ -22,18 +21,11 @@
 
 #include <string>
 
-struct lua_State;
-class CVideo;
-
-// TODO: Add support for user configurability (via defining a gui2 dialog in lua)
-// What's missing is that you need access to the 'wesnoth' object to call show dialog
-// at the moment.
-
 class lua_map_generator : public map_generator {
 public:
 	lua_map_generator(const config & cfg);
 
-	bool allow_user_config() const override { return false; }
+	bool allow_user_config() const override { return !user_config_.empty(); }
 
 	std::string name() const override { return "lua"; }
 
@@ -56,5 +48,3 @@ private:
 
 	config generator_data_;
 };
-
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2009 - 2017 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,24 +12,27 @@
    See the COPYING file for more details.
 */
 
-/** @file */
+#pragma once
 
-#ifndef IMAGE_MODIFICATIONS_HPP_INCLUDED
-#define IMAGE_MODIFICATIONS_HPP_INCLUDED
-
+#include "color_range.hpp"
 #include "lua_jailbreak_exception.hpp"
+#include "sdl/surface.hpp"
 #include "sdl/utils.hpp"
+
+#include <functional>
+#include <map>
+#include <memory>
 #include <queue>
 
 namespace image {
 
 class modification;
 
-
 /// A modified priority queue used to order image modifications.
 /// The priorities for this queue are to order modifications by priority(),
 /// then by the order they are added to the queue.
-class modification_queue {
+class modification_queue
+{
 	// Invariant for this class:
 	// At the beginning and end of each member function call, there
 	// are no empty vectors in priorities_.
@@ -39,21 +42,18 @@ public:
 	{
 	}
 
-	~modification_queue() {}
-
 	bool empty() const  { return priorities_.empty(); }
 	void push(modification * mod);
 	void pop();
 	size_t size() const;
 	modification * top() const;
 
-private: // data
+private:
 	/// Map from a mod's priority() to the mods having that priority.
-	typedef std::map<int, std::vector<modification *>, std::greater<int> > map_type;
+	typedef std::map<int, std::vector<std::shared_ptr<modification>>, std::greater<int>> map_type;
 	/// Map from a mod's priority() to the mods having that priority.
 	map_type priorities_;
 };
-
 
 /// Base abstract class for an image-path modification
 class modification
@@ -84,7 +84,7 @@ public:
 		 */
 		imod_exception(const std::string& message);
 
-		~imod_exception() throw() {}
+		~imod_exception() NOEXCEPT {}
 
 		/** The error message regarding the failed operation. */
 		const std::string message;
@@ -125,7 +125,7 @@ public:
 	 * RC-map based constructor.
 	 * @param recolor_map The palette switch map.
 	 */
-	rc_modification(const std::map<Uint32, Uint32>& recolor_map)
+	rc_modification(const color_range_map& recolor_map)
 		: rc_map_(recolor_map)
 	{}
 	virtual surface operator()(const surface& src) const;
@@ -135,11 +135,11 @@ public:
 
 	bool no_op() const { return rc_map_.empty(); }
 
-	const std::map<Uint32, Uint32>& map() const { return rc_map_;}
-	std::map<Uint32, Uint32>& map() { return rc_map_;}
+	const color_range_map& map() const { return rc_map_;}
+	color_range_map& map() { return rc_map_;}
 
 private:
-	std::map<Uint32, Uint32> rc_map_;
+	color_range_map rc_map_;
 };
 
 /**
@@ -247,11 +247,11 @@ struct sepia_modification : modification
  */
 class negative_modification : public modification
 {
-	public:
-		negative_modification(int r, int g, int b): red_(r), green_(g), blue_(b) {}
-		virtual surface operator()(const surface &src) const;
-	private:
-		int red_, green_, blue_;
+public:
+	negative_modification(int r, int g, int b): red_(r), green_(g), blue_(b) {}
+	virtual surface operator()(const surface &src) const;
+private:
+	int red_, green_, blue_;
 };
 
 /**
@@ -289,6 +289,35 @@ private:
 };
 
 /**
+ * Adjust Channels (CHAN) modification
+ */
+class adjust_channels_modification : public modification
+{
+public:
+	adjust_channels_modification(const std::vector<std::string>& formulas)
+		: formulas_(formulas)
+	{
+		if(formulas_.size() == 0) {
+			formulas_.push_back("red");
+		}
+		if(formulas_.size() == 1) {
+			formulas_.push_back("green");
+		}
+		if(formulas_.size() == 2) {
+			formulas_.push_back("blue");
+		}
+		if(formulas_.size() == 3) {
+			formulas_.push_back("alpha");
+		}
+	}
+
+	virtual surface operator()(const surface& src) const;
+
+private:
+	std::vector<std::string> formulas_;
+};
+
+/**
  * Crop (CROP) modification.
  */
 class crop_modification : public modification
@@ -299,7 +328,10 @@ public:
 	{}
 	virtual surface operator()(const surface& src) const;
 
-	const SDL_Rect& get_slice() const;
+	const SDL_Rect& get_slice() const
+	{
+		return slice_;
+	}
 
 private:
 	SDL_Rect slice_;
@@ -317,9 +349,20 @@ public:
 	{}
 	virtual surface operator()(const surface& src) const;
 
-	const surface& get_surface() const;
-	int get_x() const;
-	int get_y() const;
+	const surface& get_surface() const
+	{
+		return surf_;
+	}
+
+	int get_x() const
+	{
+		return x_;
+	}
+
+	int get_y() const
+	{
+		return y_;
+	}
 
 private:
 	surface surf_;
@@ -339,9 +382,20 @@ public:
 	{}
 	virtual surface operator()(const surface& src) const;
 
-	const surface& get_mask() const;
-	int get_x() const;
-	int get_y() const;
+	const surface& get_mask() const
+	{
+		return mask_;
+	}
+
+	int get_x() const
+	{
+		return x_;
+	}
+
+	int get_y() const
+	{
+		return y_;
+	}
 
 private:
 	surface mask_;
@@ -361,7 +415,10 @@ public:
 	{}
 	virtual surface operator()(const surface& src) const;
 
-	const surface& get_surface() const;
+	const surface& get_surface() const
+	{
+		return surf_;
+	}
 
 private:
 	surface surf_;
@@ -373,17 +430,26 @@ private:
 class scale_modification : public modification
 {
 public:
-	scale_modification(int width, int height, std::string fn, bool use_nn)
+	scale_modification(int width, int height, const std::string& fn, bool use_nn)
 		: w_(width), h_(height), nn_(use_nn), fn_(fn)
 	{}
 	virtual surface operator()(const surface& src) const;
 	virtual std::pair<int,int> calculate_size(const surface& src) const = 0;
-	int get_w() const;
-	int get_h() const;
+
+	int get_w() const
+	{
+		return w_;
+	}
+
+	int get_h() const
+	{
+		return h_;
+	}
 
 private:
 	int w_, h_;
 	bool nn_;
+
 protected:
 	const std::string fn_;
 };
@@ -394,7 +460,7 @@ protected:
 class scale_exact_modification : public scale_modification
 {
 public:
-	scale_exact_modification(int width, int height, std::string fn, bool use_nn)
+	scale_exact_modification(int width, int height, const std::string& fn, bool use_nn)
 		: scale_modification(width, height, fn, use_nn)
 	{}
 	virtual std::pair<int,int> calculate_size(const surface& src) const;
@@ -407,7 +473,7 @@ public:
 class scale_into_modification : public scale_modification
 {
 public:
-	scale_into_modification(int width, int height, std::string fn, bool use_nn)
+	scale_into_modification(int width, int height, const std::string& fn, bool use_nn)
 		: scale_modification(width, height, fn, use_nn)
 	{}
 	virtual std::pair<int,int> calculate_size(const surface& src) const;
@@ -439,7 +505,11 @@ public:
 		: opacity_(opacity)
 	{}
 	virtual surface operator()(const surface& src) const;
-	float get_opacity() const;
+
+	float get_opacity() const
+	{
+		return opacity_;
+	}
 
 private:
 	float opacity_;
@@ -455,9 +525,10 @@ public:
 		: r_(r), g_(g), b_(b)
 	{}
 	virtual surface operator()(const surface& src) const;
-	int get_r() const;
-	int get_g() const;
-	int get_b() const;
+
+	int get_r() const { return r_; }
+	int get_g() const { return g_; }
+	int get_b() const { return b_; }
 
 private:
 	int r_, g_, b_;
@@ -473,10 +544,11 @@ public:
 		: r_(r), g_(g), b_(b), a_(a)
 	{}
 	virtual surface operator()(const surface& src) const;
-	int get_r() const;
-	int get_g() const;
-	int get_b() const;
-	float get_a() const;
+
+	int   get_r() const { return r_; }
+	int   get_g() const { return g_; }
+	int   get_b() const { return b_; }
+	float get_a() const { return a_; }
 
 private:
 	int r_, g_, b_;
@@ -493,26 +565,14 @@ public:
 		: depth_(depth)
 	{}
 	virtual surface operator()(const surface& src) const;
-	int get_depth() const;
+
+	int get_depth() const
+	{
+		return depth_;
+	}
 
 private:
 	int depth_;
-};
-
-/**
- * Overlay with ToD brightening (BRIGHTEN).
- */
-struct brighten_modification : modification
-{
-	virtual surface operator()(const surface &src) const;
-};
-
-/**
- * Overlay with ToD darkening (DARKEN).
- */
-struct darken_modification : modification
-{
-	virtual surface operator()(const surface &src) const;
 };
 
 /**
@@ -522,7 +582,11 @@ struct background_modification : modification
 {
 	background_modification(color_t const &c): color_(c) {}
 	virtual surface operator()(const surface &src) const;
-	const color_t& get_color() const;
+
+	const color_t& get_color() const
+	{
+		return color_;
+	}
 
 private:
 	color_t color_;
@@ -544,5 +608,3 @@ private:
 };
 
 } /* end namespace image */
-
-#endif /* !defined(IMAGE_MODIFICATIONS_HPP_INCLUDED) */

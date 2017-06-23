@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -122,8 +122,7 @@
  * upvalues will find them at upvalue indices 2 and 3, and should not touch upvalue 1.
  */
 
-#ifndef LUA_CPP_FUNCTION_HPP_INCLUDED
-#define LUA_CPP_FUNCTION_HPP_INCLUDED
+#pragma once
 
 #include "utils/functional.hpp"
 
@@ -212,5 +211,3 @@ void set_functions( lua_State* L, const lua_cpp::Reg(& functions)[N], int nup)
 }
 
 } // end namespace lua_cpp_func
-
-#endif

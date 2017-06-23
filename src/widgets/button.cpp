@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,8 +15,6 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "widgets/button.hpp"
-
-#include "global.hpp"
 
 #include "filesystem.hpp"
 #include "font/sdl_ttf.hpp"
@@ -389,8 +387,6 @@ void button::draw_contents()
 		clipArea.h -= 2*offset;
 		font::draw_text(&video(), clipArea, font_size, button_color, label_text_, textx, texty);
 	}
-
-	update_rect(loc);
 }
 
 bool button::hit(int x, int y) const
@@ -413,7 +409,8 @@ void button::set_image(const std::string& image_file)
 
 void button::set_overlay(const std::string& image_file)
 {
-	if(!is_valid_image(image_file)) {
+	// We allow empty paths for overlays
+	if(image_file[0] == IMAGE_PREFIX) {
 		return;
 	}
 

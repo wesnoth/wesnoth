@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * This file contains the settings handling of the widget library.
  */
 
-#ifndef GUI_WIDGETS_SETTING_HPP_INCLUDED
-#define GUI_WIDGETS_SETTING_HPP_INCLUDED
+#pragma once
 
 #include "utils/functional.hpp"
 #include "config.hpp"
@@ -32,7 +31,7 @@
 namespace gui2
 {
 
-struct gui_definition;
+class gui_definition;
 class game_tip;
 
 /** Do we wish to use the new library or not. */
@@ -62,14 +61,17 @@ void register_window(const std::string& id);
  */
 class unit_test_access_only
 {
-	friend std::vector<std::string>& unit_test_registered_window_list();
+	friend std::set<std::string>& unit_test_registered_window_list();
 
 	/** Returns a copy of the list of registered windows. */
-	static std::vector<std::string> get_registered_window_list();
+	static std::set<std::string> get_registered_window_list();
 };
 
+/** Function type alias for @ref register_widget. */
+using widget_parser_t = std::function<styled_widget_definition_ptr(const config&)>;
+
 /**
- * Registers a widgets.
+ * Registers a widget.
  *
  * This function registers the available widgets defined in WML. All widgets
  * need to register themselves before @ref gui2::init) is called.
@@ -78,13 +80,11 @@ class unit_test_access_only
  * regarding the static initialization problem.
  *
  * @param id                      The id of the widget to register.
- * @param functor                 The function to load the definitions.
+ * @param functor                 The function to parse the definition config.
+ * @param key                     The tagname from which to read the widget's definition in the game config.
+ *                                If nullptr the default [<id>_definition] is used.
  */
-void register_widget(const std::string& id,
-					 std::function<void(gui_definition& gui,
-										  const std::string& definition_type,
-										  const config& cfg,
-										  const char* key)> functor);
+void register_widget(const std::string& id, widget_parser_t f, const char* key = nullptr);
 
 /**
  * Loads the definitions of a widget.
@@ -101,42 +101,12 @@ void load_widget_definitions(
 		const std::string& definition_type,
 		const std::vector<styled_widget_definition_ptr>& definitions);
 
-/**
- * Loads the definitions of a widget.
- *
- * This function is templated and kept small so only loads the definitions from
- * the config and then lets the real job be done by the @ref
- * load_widget_definitions above.
- *
- * @param gui_definition          The gui definition the widget definition
- *                                belongs to.
- * @param definition_type         The type of the widget whose definitions are
- *                                to be loaded.
- * @param cfg                     The config to serialise the definitions
- *                                from.
- * @param key                     Optional id of the definition to load.
- */
-template <class T>
-void load_widget_definitions(gui_definition& gui,
-							 const std::string& definition_type,
-							 const config& cfg,
-							 const char* key)
-{
-	std::vector<styled_widget_definition_ptr> definitions;
-
-	for (const auto & definition :
-			cfg.child_range(key ? key : definition_type + "_definition"))
-	{
-
-		definitions.push_back(std::make_shared<T>(definition));
-	}
-
-	load_widget_definitions(gui, definition_type, definitions);
-}
-
-
 resolution_definition_ptr get_control(const std::string& control_type,
 									   const std::string& definition);
+
+bool add_single_widget_definition(const std::string& widget_type, const std::string& definition_id, const config& cfg);
+
+void remove_single_widget_definition(const std::string& widget_type, const std::string& definition_id);
 
 /** Helper struct to signal that get_window_builder failed. */
 struct window_builder_invalid_id
@@ -144,10 +114,9 @@ struct window_builder_invalid_id
 };
 
 /**
- * Returns an interator to the requested builder.
+ * Returns an reference to the requested builder.
  *
- * The builder is determined by the @p type and the current screen
- * resolution.
+ * The builder is determined by the @p type and the current screen resolution.
  *
  * @pre                       There is a valid builder for @p type at the
  *                            current resolution.
@@ -159,8 +128,7 @@ struct window_builder_invalid_id
  *
  * @returns                   An iterator to the requested builder.
  */
-std::vector<builder_window::window_resolution>::const_iterator
-get_window_builder(const std::string& type);
+const builder_window::window_resolution& get_window_builder(const std::string& type);
 
 /** Loads the setting for the theme. */
 void load_settings();
@@ -206,5 +174,3 @@ std::vector<game_tip> get_tips();
 }
 
 } // namespace gui2
-
-#endif

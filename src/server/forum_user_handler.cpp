@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+   Copyright (C) 2008 - 2017 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,6 +15,7 @@
 #ifdef HAVE_MYSQLPP
 
 #include "server/forum_user_handler.hpp"
+#include "server/mysql_prepared_statement.ipp"
 #include "hash.hpp"
 #include "log.hpp"
 #include "config.hpp"
@@ -74,12 +75,12 @@ bool fuh::login(const std::string& name, const std::string& password, const std:
 	}
 
 	// Check hash prefix, if different than $H$ hash is invalid
-	if(!util::is_valid_hash(hash)) {
+	if(!utils::md5::is_valid_hash(hash)) {
 		ERR_UH << "Invalid hash for user '" << name << "'" << std::endl;
 		return false;
 	}
 
-	std::string valid_hash = util::create_hash(hash.substr(12,34), seed);
+	std::string valid_hash = utils::md5(hash.substr(12,34), seed).hex_digest();
 
 	if(password == valid_hash) return true;
 
@@ -102,7 +103,7 @@ std::string fuh::create_pepper(const std::string& name) {
 		return "";
 	}
 
-	if(!util::is_valid_hash(hash)) return "";
+	if(!utils::md5::is_valid_hash(hash)) return "";
 
 	return hash.substr(0,12);
 }
@@ -115,9 +116,8 @@ bool fuh::user_exists(const std::string& name) {
 
 	// Make a test query for this username
 	try {
-		mysql_result res = db_query("SELECT username FROM " + db_users_table_ + " WHERE UPPER(username)=UPPER('" + name + "')");
-		return mysql_fetch_row(res.get());
-	} catch (error& e) {
+		return prepared_statement<bool>("SELECT 1 FROM `" + db_users_table_ + "` WHERE UPPER(username)=UPPER(?)", name);
+	} catch (sql_error& e) {
 		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		// If the database is down just let all usernames log in
 		return false;
@@ -126,9 +126,9 @@ bool fuh::user_exists(const std::string& name) {
 
 bool fuh::user_is_active(const std::string& name) {
 	try {
-		int user_type = std::stoi(get_detail_for_user(name, "user_type"));
+		int user_type = get_detail_for_user<int>(name, "user_type");
 		return user_type != USER_INACTIVE && user_type != USER_IGNORE;
-	} catch (error& e) {
+	} catch (sql_error& e) {
 		ERR_UH << "Could not retrieve user type for user '" << name << "' :" << e.message << std::endl;
 		return false;
 	}
@@ -139,8 +139,8 @@ bool fuh::user_is_moderator(const std::string& name) {
 	if(!user_exists(name)) return false;
 
 	try {
-		return get_writable_detail_for_user(name, "user_is_moderator") == "1";
-	} catch (error& e) {
+		return get_writable_detail_for_user<int>(name, "user_is_moderator") == 1;
+	} catch (sql_error& e) {
 		ERR_UH << "Could not query user_is_moderator for user '" << name << "' :" << e.message << std::endl;
 		// If the database is down mark nobody as a mod
 		return false;
@@ -152,8 +152,8 @@ void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
 	if(!user_exists(name)) return;
 
 	try {
-		write_detail(name, "user_is_moderator", is_moderator ? "1" : "0");
-	} catch (error& e) {
+		write_detail(name, "user_is_moderator", int(is_moderator));
+	} catch (sql_error& e) {
 		ERR_UH << "Could not set is_moderator for user '" << name << "' :" << e.message << std::endl;
 	}
 }
@@ -201,8 +201,8 @@ std::string fuh::get_valid_details() {
 
 std::string fuh::get_hash(const std::string& user) {
 	try {
-		return get_detail_for_user(user, "user_password");
-	} catch (error& e) {
+		return get_detail_for_user<std::string>(user, "user_password");
+	} catch (sql_error& e) {
 		ERR_UH << "Could not retrieve password for user '" << user << "' :" << e.message << std::endl;
 		return "";
 	}
@@ -210,8 +210,8 @@ std::string fuh::get_hash(const std::string& user) {
 
 std::string fuh::get_mail(const std::string& user) {
 	try {
-		return get_detail_for_user(user, "user_email");
-	} catch (error& e) {
+		return get_detail_for_user<std::string>(user, "user_email");
+	} catch (sql_error& e) {
 		ERR_UH << "Could not retrieve email for user '" << user << "' :" << e.message << std::endl;
 		return "";
 	}
@@ -219,9 +219,9 @@ std::string fuh::get_mail(const std::string& user) {
 
 time_t fuh::get_lastlogin(const std::string& user) {
 	try {
-		int time_int = std::stoi(get_writable_detail_for_user(user, "user_lastvisit"));
+		int time_int = get_writable_detail_for_user<int>(user, "user_lastvisit");
 		return time_t(time_int);
-	} catch (error& e) {
+	} catch (sql_error& e) {
 		ERR_UH << "Could not retrieve last visit for user '" << user << "' :" << e.message << std::endl;
 		return time_t(0);
 	}
@@ -229,9 +229,9 @@ time_t fuh::get_lastlogin(const std::string& user) {
 
 time_t fuh::get_registrationdate(const std::string& user) {
 	try {
-		int time_int = std::stoi(get_detail_for_user(user, "user_regdate"));
+		int time_int = get_detail_for_user<int>(user, "user_regdate");
 		return time_t(time_int);
-	} catch (error& e) {
+	} catch (sql_error& e) {
 		ERR_UH << "Could not retrieve registration date for user '" << user << "' :" << e.message << std::endl;
 		return time_t(0);
 	}
@@ -239,53 +239,54 @@ time_t fuh::get_registrationdate(const std::string& user) {
 
 void fuh::set_lastlogin(const std::string& user, const time_t& lastlogin) {
 
-	std::stringstream ss;
-	ss << lastlogin;
-
 	try {
-		write_detail(user, "user_lastvisit", ss.str());
-	} catch (error& e) {
+		write_detail(user, "user_lastvisit", int(lastlogin));
+	} catch (sql_error& e) {
 		ERR_UH << "Could not set last visit for user '" << user << "' :" << e.message << std::endl;
 	}
 }
 
-fuh::mysql_result fuh::db_query(const std::string& sql) {
-	if(mysql_query(conn, sql.c_str())) {
-		WRN_UH << "not connected to database, reconnecting..." << std::endl;
+template<typename T, typename... Args>
+inline T fuh::prepared_statement(const std::string& sql, Args&&... args)
+{
+	try {
+		return ::prepared_statement<T>(conn, sql, std::forward<Args>(args)...);
+	} catch (sql_error&) {
+		WRN_UH << "caught sql error, trying to reconnect and retry..." << std::endl;
 		//Try to reconnect and execute query again
-		if(!mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, nullptr, 0)
-				|| mysql_query(conn, sql.c_str())) {
+		if(!mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, nullptr, 0)) {
 			ERR_UH << "Could not connect to database: " << mysql_errno(conn) << ": " << mysql_error(conn) << std::endl;
-			throw error("Error querying database.");
+			throw sql_error("Error querying database.");
 		}
 	}
-	return mysql_result(mysql_store_result(conn), mysql_free_result);
+	return ::prepared_statement<T>(conn, sql, std::forward<Args>(args)...);
 }
 
-std::string fuh::db_query_to_string(const std::string& sql) {
-	mysql_result res = db_query(sql);
-	return std::string(mysql_fetch_row(res.get())[0]);
+template<typename T>
+T fuh::get_detail_for_user(const std::string& name, const std::string& detail) {
+	return prepared_statement<T>(
+		"SELECT `" + detail + "` FROM `" + db_users_table_ + "` WHERE UPPER(username)=UPPER(?)",
+		name);
 }
 
-
-std::string fuh::get_detail_for_user(const std::string& name, const std::string& detail) {
-	return db_query_to_string("SELECT " + detail + " FROM " + db_users_table_ + " WHERE UPPER(username)=UPPER('" + name + "')");
+template<typename T>
+T fuh::get_writable_detail_for_user(const std::string& name, const std::string& detail) {
+	if(!extra_row_exists(name)) throw sql_error("row doesn't exist");
+	return prepared_statement<T>(
+		"SELECT `" + detail + "` FROM `" + db_extra_table_ + "` WHERE UPPER(username)=UPPER(?)",
+		name);
 }
 
-std::string fuh::get_writable_detail_for_user(const std::string& name, const std::string& detail) {
-	if(!extra_row_exists(name)) return "";
-	return db_query_to_string("SELECT " + detail + " FROM " + db_extra_table_ + " WHERE UPPER(username)=UPPER('" + name + "')");
-}
-
-void fuh::write_detail(const std::string& name, const std::string& detail, const std::string& value) {
+template<typename T>
+void fuh::write_detail(const std::string& name, const std::string& detail, T&& value) {
 	try {
 		// Check if we do already have a row for this user in the extra table
 		if(!extra_row_exists(name)) {
 			// If not create the row
-			db_query("INSERT INTO " + db_extra_table_ + " VALUES('" + name + "','" + value + "','0')");
+			prepared_statement<void>("INSERT INTO `" + db_extra_table_ + "` VALUES(?,?,'0')", name, std::forward<T>(value));
 		}
-		db_query("UPDATE " + db_extra_table_ + " SET " + detail + "='" + value + "' WHERE UPPER(username)=UPPER('" + name + "')");
-	} catch (error& e) {
+		prepared_statement<void>("UPDATE `" + db_extra_table_ + "` SET " + detail + "=? WHERE UPPER(username)=UPPER(?)", std::forward<T>(value), name);
+	} catch (sql_error& e) {
 		ERR_UH << "Could not set detail for user '" << name << "': " << e.message << std::endl;
 	}
 }
@@ -294,9 +295,8 @@ bool fuh::extra_row_exists(const std::string& name) {
 
 	// Make a test query for this username
 	try {
-		mysql_result res = db_query("SELECT username FROM " + db_extra_table_ + " WHERE UPPER(username)=UPPER('" + name + "')");
-		return mysql_fetch_row(res.get());
-	} catch (error& e) {
+		return prepared_statement<bool>("SELECT 1 FROM `" + db_extra_table_ + "` WHERE UPPER(username)=UPPER(?)", name);
+	} catch (sql_error& e) {
 		ERR_UH << "Could not execute test query for user '" << name << "' :" << e.message << std::endl;
 		return false;
 	}

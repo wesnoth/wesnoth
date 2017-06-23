@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,16 +14,17 @@
 
 /** @file */
 
-#ifndef MARKED_UP_TEXT_HPP_INCLUDED
-#define MARKED_UP_TEXT_HPP_INCLUDED
+#pragma once
 
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 class CVideo;
 class surface;
 
 #include <string>
 #include "serialization/unicode_types.hpp"
+
+#include <SDL_rect.h>
 
 namespace font {
 
@@ -90,9 +91,6 @@ bool is_format_char(char c);
  */
 bool is_cjk_char(const ucs4::char_t ch);
 
-/** Create string of color-markup, such as "<255,255,0>" for yellow. */
-std::string color2markup(const color_t &color);
-
 /**
  * Wrap text.
  *
@@ -104,6 +102,3 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 	int max_width, int max_height = -1, int max_lines = -1, bool partial_line = false);
 
 } // end namespace font
-
-#endif // MARKED_UP_TEXT_HPP_INCLUDED
-

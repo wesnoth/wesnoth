@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2017 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -24,21 +24,19 @@
 #include "ai/manager.hpp"
 #include "ai/game_info.hpp"
 #include "ai/testing.hpp"
-#include "config_assign.hpp"
 #include "display_chat_manager.hpp"
 #include "game_end_exceptions.hpp"
-#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/story_viewer.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "hotkey/hotkey_handler_sp.hpp"
 #include "log.hpp"
 #include "map/label.hpp"
 #include "map/map.hpp"
-#include "font/marked-up_text.hpp"
 #include "playturn.hpp"
-#include "random_new_deterministic.hpp"
+#include "random_deterministic.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
@@ -50,9 +48,7 @@
 #include "scripting/plugins/context.hpp"
 #include "soundsource.hpp"
 #include "statistics.hpp"
-#include "storyscreen/interface.hpp"
 #include "units/unit.hpp"
-#include "util.hpp"
 #include "wesnothd_connection_error.hpp"
 #include "whiteboard/manager.hpp"
 #include "hotkey/hotkey_item.hpp"
@@ -81,6 +77,7 @@ playsingle_controller::playsingle_controller(const config& level,
 	, turn_data_(replay_sender_, network_reader_)
 	, end_turn_(END_TURN_NONE)
 	, skip_next_turn_(false)
+	, ai_fallback_(false)
 	, replay_()
 {
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_)); //upgrade hotkey handler to the sp (whiteboard enabled) version
@@ -236,7 +233,16 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 	sound::commit_music_changes();
 
 	if(!this->is_skipping_replay()) {
-		show_story(gui_->video(), get_scenario_name(), level.child_range("story"));
+		// Combine all the [story] tags into a single config. Handle this here since
+		// storyscreen::controller doesn't have a default constructor.
+		config cfg;
+		for(const auto& iter : level.child_range("story")) {
+			cfg.append_children(iter);
+		}
+
+		if(!cfg.empty()) {
+			gui2::dialogs::story_viewer::display(get_scenario_name(), cfg, gui_->video());
+		}
 	}
 	gui_->labels().read(level);
 
@@ -267,23 +273,12 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		const bool is_victory = get_end_level_data_const().is_victory;
 
 		if(gamestate().gamedata_.phase() <= game_data::PRESTART) {
-			sdl::draw_solid_tinted_rectangle(
-				0, 0, gui_->video().getx(), gui_->video().gety(), 0, 0, 0, 1.0,
-				gui_->video().getSurface()
-				);
-			update_rect(0, 0, gui_->video().getx(), gui_->video().gety());
+			gui_->video().clear_screen();
 		}
 
 		ai_testing::log_game_end();
 
 		const end_level_data& end_level = get_end_level_data_const();
-		if (!end_level.transient.custom_endlevel_music.empty()) {
-			if (!is_victory) {
-				set_defeat_music_list(end_level.transient.custom_endlevel_music);
-			} else {
-				set_victory_music_list(end_level.transient.custom_endlevel_music);
-			}
-		}
 
 		if (gamestate().board_.teams().empty())
 		{
@@ -316,12 +311,13 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		}
 		// If we're a player, and the result is victory/defeat, then send
 		// a message to notify the server of the reason for the game ending.
-		send_to_wesnothd(config_of
-			("info", config_of
-				("type", "termination")
-				("condition", "game over")
-				("result", is_victory ? "victory" : "defeat")
-			));
+		send_to_wesnothd(config {
+			"info", config {
+				"type", "termination",
+				"condition", "game over",
+				"result", is_victory ? "victory" : "defeat",
+			},
+		});
 		// Play victory music once all victory events
 		// are finished, if we aren't observers and the
 		// carryover dialog isn't disabled.
@@ -330,8 +326,9 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		// result for something that is not story-wise
 		// a victory, so let them use [music] tags
 		// instead should they want special music.
-		const std::string& end_music = is_victory ? select_victory_music() : select_defeat_music();
+		const std::string& end_music = select_music(is_victory);
 		if((!is_victory || end_level.transient.carryover_report) && !end_music.empty()) {
+			sound::empty_playlist();
 			sound::play_music_once(end_music);
 		}
 		persist_.end_transaction();
@@ -436,7 +433,7 @@ void playsingle_controller::show_turn_dialog(){
 		gui_->recalculate_minimap();
 		std::string message = _("It is now $name|’s turn");
 		utils::string_map symbols;
-		symbols["name"] = gamestate().board_.teams()[current_side() - 1].side_name();
+		symbols["name"] = gamestate().board_.get_team(current_side()).side_name();
 		message = utils::interpolate_variables_into_string(message, &symbols);
 		gui2::show_transient_message(gui_->video(), "", message);
 	}
@@ -559,6 +556,7 @@ void playsingle_controller::play_ai_turn()
 		catch (fallback_ai_to_human_exception&) {
 			current_team().make_human();
 			player_type_changed_ = true;
+			ai_fallback_ = true;
 		}
 	}
 	catch(...) {
@@ -652,6 +650,11 @@ void playsingle_controller::sync_end_turn()
 
 	assert(end_turn_ == END_TURN_SYNCED);
 	skip_next_turn_ = false;
+
+	if(ai_fallback_) {
+		current_team().make_ai();
+		ai_fallback_ = false;
+	}
 }
 
 void playsingle_controller::update_viewing_player()
@@ -686,7 +689,7 @@ void playsingle_controller::enable_replay(bool is_unit_test)
 	}
 }
 
-bool playsingle_controller::should_return_to_play_side()
+bool playsingle_controller::should_return_to_play_side() const
 {
 	if(player_type_changed_ || is_regular_game_end()) {
 		return true;

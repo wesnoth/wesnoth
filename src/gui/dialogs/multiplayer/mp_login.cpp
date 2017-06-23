@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,8 +16,9 @@
 
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 
-#include "game_preferences.hpp"
+#include "preferences/credentials.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/auxiliary/field.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/password_box.hpp"
 #include "gui/widgets/settings.hpp"
@@ -64,49 +65,60 @@ namespace dialogs
 
 REGISTER_DIALOG(mp_login)
 
-mp_login::mp_login(const std::string& label, const bool focus_password)
+mp_login::mp_login(const std::string& host, const std::string& label, const bool focus_password)
+	: host_(host), focus_password_(focus_password)
 {
 	register_label("login_label", false, label);
-	register_text("user_name",
-				  true,
-				  &preferences::login,
-				  &preferences::set_login,
-				  !focus_password);
+	username_ = register_text("user_name", true,
+		&preferences::login,
+		&preferences::set_login,
+		!focus_password);
 
-	register_text("password",
-				  true,
-				  &preferences::password,
-				  nullptr /* The password box returns '*' as value. */
-				  ,
-				  focus_password);
+	register_bool("remember_password", false,
+		&preferences::remember_password,
+		&preferences::set_remember_password);
+}
 
-	register_bool("remember_password",
-				  false,
-				  &preferences::remember_password,
-				  &preferences::set_remember_password);
+void mp_login::load_password(window& win) const
+{
+	text_box& pwd = find_widget<text_box>(&win, "password", false);
+	pwd.set_value(preferences::password(host_, username_->get_widget_value(win)));
+}
+
+void mp_login::save_password(window& win) const
+{
+	password_box& pwd = find_widget<password_box>(&win, "password", false);
+	preferences::set_password(host_, username_->get_widget_value(win), pwd.get_real_value());
 }
 
 void mp_login::pre_show(window& win)
 {
-	if(button* btn
-	   = find_widget<button>(&win, "password_reminder", false, false)) {
+	if(button* btn = find_widget<button>(&win, "password_reminder", false, false)) {
 
 		btn->set_retval(1);
 	}
 
-	if(button* btn
-	   = find_widget<button>(&win, "change_username", false, false)) {
+	if(button* btn = find_widget<button>(&win, "change_username", false, false)) {
 
 		btn->set_retval(2);
 	}
+
+	text_box& login = find_widget<text_box>(&win, "user_name", false);
+	login.connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(std::bind(&mp_login::load_password, this, std::ref(win)));
+
+	load_password(win);
+
+	if(focus_password_) {
+		win.keyboard_capture(find_widget<text_box>(&win, "password", false, true));
+	}
+	
+	win.add_to_tab_order(&login);
+	win.add_to_tab_order(find_widget<text_box>(&win, "password", false, false));
 }
 
-void mp_login::post_show(window& win)
-{
+void mp_login::post_show(window& win) {
 	if(get_retval() == window::OK) {
-		preferences::set_password(
-				find_widget<password_box>(&win, "password", false)
-						.get_real_value());
+		save_password(win);
 	}
 }
 

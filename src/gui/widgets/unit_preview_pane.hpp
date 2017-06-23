@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_UNIT_PREVIEW_PANE_HPP_INCLUDED
-#define GUI_WIDGETS_UNIT_PREVIEW_PANE_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/container_base.hpp"
 
@@ -43,7 +42,7 @@ class unit_preview_pane : public container_base
 
 public:
 	unit_preview_pane()
-		: container_base(1)
+		: container_base()
 		, current_type_()
 		, icon_type_(nullptr)
 		, icon_race_(nullptr)
@@ -52,7 +51,6 @@ public:
 		, label_level_(nullptr)
 		, label_race_(nullptr)
 		, label_details_(nullptr)
-		, label_details_minimal_(nullptr)
 		, tree_details_(nullptr)
 		, button_profile_(nullptr)
 		, image_mods_()
@@ -100,7 +98,6 @@ private:
 	label* label_race_;
 
 	styled_widget* label_details_;
-	styled_widget* label_details_minimal_;
 	tree_view* tree_details_;
 
 	button* button_profile_;
@@ -160,5 +157,3 @@ private:
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

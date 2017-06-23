@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -321,12 +321,12 @@ void editor_map::expand_top(int count, const t_translation::terrain_code & fille
 	h_ += count;
 	for (int x = 0, x_end = tiles_.w; x != x_end; ++x) {
 		for (int y = 0, y_end = tiles_.h; y != y_end; ++y) {
-			tiles_new.get(x, y) = tiles_.get(x, y);
+			tiles_new.get(x, y + count) = tiles_.get(x, y);
 		}
 	}
 	for (int x = 0, x_end = tiles_.w; x != x_end; ++x) {
-		for (int y = tiles_.h, y_end = tiles_.h + count; y != y_end; ++y) {
-			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles_.get(x, tiles_.h - 1) : filler;
+		for (int y = 0, y_end = count; y != y_end; ++y) {
+			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles_.get(x, 0) : filler;
 		}
 	}
 	tiles_ = std::move(tiles_new);
@@ -342,8 +342,8 @@ void editor_map::expand_bottom(int count, const t_translation::terrain_code & fi
 		}
 	}
 	for (int x = 0, x_end = tiles_.w; x != x_end; ++x) {
-		for (int y = 0, y_end = count; y != y_end; ++y) {
-			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles_.get(x, 0) : filler;
+		for (int y = tiles_.h, y_end = tiles_.h + count; y != y_end; ++y) {
+			tiles_new.get(x, y) = filler == t_translation::NONE_TERRAIN ? tiles_.get(x, tiles_.h - 1) : filler;
 		}
 	}
 	tiles_ = std::move(tiles_new);

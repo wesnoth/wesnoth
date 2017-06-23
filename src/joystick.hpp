@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Fabian Mueller
+   Copyright (C) 2011 - 2017 by Fabian Mueller
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef JOYSTICK_HPP_
-#define JOYSTICK_HPP_
+#pragma once
 
 #include <vector>
 #include "map/location.hpp"
@@ -97,5 +96,3 @@ private:
 	int joystick_area_;
 	int counter_;
 };
-
-#endif /* JOYSTICK_HPP_ */

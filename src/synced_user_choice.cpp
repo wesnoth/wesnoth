@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 - 2016 by the Battle for Wesnoth Project
+   Copyright (C) 2015 - 2017 by the Battle for Wesnoth Project
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,7 +15,6 @@
 #include "synced_user_choice.hpp"
 
 #include "actions/undo.hpp"
-#include "config_assign.hpp"
 #include "floating_label.hpp"
 #include "game_display.hpp"
 #include "game_data.hpp"
@@ -121,7 +120,7 @@ std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &
 	for(int side : sides)
 	{
 		assert(1 <= side && side <= max_side);
-		if( resources::gameboard->teams()[side-1].is_empty())
+		if( resources::gameboard->get_team(side).is_empty())
 		{
 			empty_sides.insert(side);
 		}
@@ -187,7 +186,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 		side = resources::controller->current_side();
 		LOG_REPLAY << " side changed to " << side << "\n";
 	}
-	is_side_null_controlled = resources::gameboard->teams()[side-1].is_empty();
+	is_side_null_controlled = resources::gameboard->get_team(side).is_empty();
 
 	LOG_REPLAY << "get_user_choice_called with"
 			<< " name=" << name
@@ -201,9 +200,9 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 		//most likely we are in a start event with an empty side 1
 		//but calling [set_global_variable] to an empty side might also cause this.
 		//i think in that case we should better use uch.random_choice(),
-		//which could return something like config_of("invalid", true);
+		//which could return something like config {"invalid", true};
 		side = 1;
-		while ( side <= max_side  &&  resources::gameboard->teams()[side-1].is_empty() )
+		while ( side <= max_side  &&  resources::gameboard->get_team(side).is_empty() )
 			side++;
 		assert(side <= max_side);
 	}
@@ -222,7 +221,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 	return retv[side];
 }
 
-user_choice_manager::user_choice_manager(const std::string &name, const mp_sync::user_choice &uch, std::set<int> sides)
+user_choice_manager::user_choice_manager(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides)
 	: required_(sides)
 	, res_()
 	, local_choice_(0)
@@ -239,7 +238,7 @@ user_choice_manager::user_choice_manager(const std::string &name, const mp_sync:
 	for(int side : required_)
 	{
 		assert(1 <= side && side <= max_side);
-		const team& t = resources::gameboard->teams()[side-1];
+		const team& t = resources::gameboard->get_team(side);
 		assert(!t.is_empty());
 		if(side != current_side_)
 		{
@@ -318,7 +317,7 @@ void user_choice_manager::update_local_choice()
 			sides_str += " ";
 			sides_str += std::to_string(side);
 			//and it is local
-			if(resources::gameboard->teams()[side-1].is_local() && !resources::gameboard->teams()[side-1].is_idle())
+			if(resources::gameboard->get_team(side).is_local() && !resources::gameboard->get_team(side).is_idle())
 			{
 				//then we have to make a local choice.
 				local_choice_ = side;
@@ -326,7 +325,7 @@ void user_choice_manager::update_local_choice()
 			}
 		}
 	}
-	wait_message_ = vgettext("waiting for $desc from side(s)$sides", {std::make_pair("desc", uch_.description()), std::make_pair("sides", sides_str)});
+	wait_message_ = vgettext("waiting for $desc from side(s) $sides", {std::make_pair("desc", uch_.description()), std::make_pair("sides", sides_str)});
 	if(local_choice_prev != local_choice_) {
 		changed_event_.notify_observers();
 	}

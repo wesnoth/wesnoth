@@ -18,8 +18,6 @@
  * File-IO
  */
 
-#include "global.hpp"
-
 #include "filesystem.hpp"
 #include "serialization/unicode.hpp"
 
@@ -45,7 +43,6 @@ using boost::uintmax_t;
 #include "config.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
-#include "util.hpp"
 #include "version.hpp"
 
 static lg::log_domain log_filesystem("filesystem");
@@ -116,9 +113,9 @@ namespace {
 	public:
 
 		//Not used by boost filesystem
-		int do_encoding() const throw() { return 0; }
+		int do_encoding() const NOEXCEPT { return 0; }
 		//Not used by boost filesystem
-		bool do_always_noconv() const throw() { return false; }
+		bool do_always_noconv() const NOEXCEPT { return false; }
 		int do_length( std::mbstate_t& /*state*/,
 			const char* /*from*/,
 			const char* /*from_end*/,
@@ -597,7 +594,7 @@ static void set_user_config_path(path newconfig)
 	}
 }
 
-void set_user_config_dir(std::string newconfigdir)
+void set_user_config_dir(const std::string& newconfigdir)
 {
 	set_user_config_path(newconfigdir);
 }
@@ -764,12 +761,12 @@ std::string read_file(const std::string &fname)
 	return ss.str();
 }
 
-std::istream *istream_file(const std::string &fname, bool treat_failure_as_error)
+filesystem::scoped_istream istream_file(const std::string &fname, bool treat_failure_as_error)
 {
 	LOG_FS << "Streaming " << fname << " for reading.\n";
 	if (fname.empty()) {
 		ERR_FS << "Trying to open file with empty name.\n";
-		bfs::ifstream *s = new bfs::ifstream();
+		filesystem::scoped_istream s(new bfs::ifstream());
 		s->clear(std::ios_base::failbit);
 		return s;
 	}
@@ -783,7 +780,7 @@ std::istream *istream_file(const std::string &fname, bool treat_failure_as_error
 		if (!fd.is_open() && treat_failure_as_error) {
 			ERR_FS << "Could not open '" << fname << "' for reading.\n";
 		}
-		return new boost::iostreams::stream<boost::iostreams::file_descriptor_source>(fd, 4096, 0);
+		return filesystem::scoped_istream(new boost::iostreams::stream<boost::iostreams::file_descriptor_source>(fd, 4096, 0));
 	}
 	catch(const std::exception ex)
 	{
@@ -791,20 +788,20 @@ std::istream *istream_file(const std::string &fname, bool treat_failure_as_error
 		{
 			ERR_FS << "Could not open '" << fname << "' for reading.\n";
 		}
-		bfs::ifstream *s = new bfs::ifstream();
+		filesystem::scoped_istream s(new bfs::ifstream());
 		s->clear(std::ios_base::failbit);
 		return s;
 	}
 }
 
-std::ostream *ostream_file(const std::string& fname, bool create_directory)
+filesystem::scoped_ostream ostream_file(const std::string& fname, bool create_directory)
 {
 	LOG_FS << "streaming " << fname << " for writing.\n";
 #if 1
 	try
 	{
 		boost::iostreams::file_descriptor_sink fd(bfs::path(fname), std::ios_base::binary);
-		return new boost::iostreams::stream<boost::iostreams::file_descriptor_sink>(fd, 4096, 0);
+		return filesystem::scoped_ostream(new boost::iostreams::stream<boost::iostreams::file_descriptor_sink>(fd, 4096, 0));
 	}
 	catch(BOOST_IOSTREAMS_FAILURE& e)
 	{
@@ -1265,11 +1262,11 @@ std::string get_short_wml_path(const std::string &filename)
 
 	path partial = subtract_path(full_path, get_user_data_path() / "data");
 	if (!partial.empty())
-		return "~" + partial.string();
+		return "~" + partial.generic_string();
 
 	partial = subtract_path(full_path, path(game_config::path) / "data");
 	if (!partial.empty())
-		return partial.string();
+		return partial.generic_string();
 
 	return filename;
 }

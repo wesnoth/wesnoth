@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-07-24 20:26 UTC\n"
-"PO-Revision-Date: 2011-11-28 18:50+0100\n"
+"POT-Creation-Date: 2017-05-29 21:55+0200\n"
+"PO-Revision-Date: 2016-12-02 08:36+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "Language: cs\n"
@@ -24,9 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\\\n"
-"X-Poedit-Language: Czech\n"
-"X-Poedit-Country: CZECH REPUBLIC\n"
+"X-Poedit-Basepath: D:/Dev/wesnoth-trunk\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:11
@@ -56,10 +55,8 @@ msgstr "(Obtížnost: začátečník, 7 scénářů)"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:20
-#, fuzzy
-#| msgid "(Beginner)"
 msgid "Beginner"
-msgstr "(lehoučká)"
+msgstr "Lehoučká"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:20
@@ -73,17 +70,13 @@ msgstr "Lord"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:21
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "(normální)"
+msgstr "Normální"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:22
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(nelehká)"
+msgstr "Nelehká"
 
 #. [campaign]: id=An_Orcish_Incursion
 #: data/campaigns/An_Orcish_Incursion/_main.cfg:22
@@ -193,11 +186,11 @@ msgstr "Elfové"
 msgid "Lomarfel"
 msgstr "Lomarfel"
 
-#. [side]: type=Orcish Warrior, id=Urugha
-#. [side]: type=Orcish Slayer, id=Gharlsa
+#. [side]: type=Orcish Sovereign, id=Rualsha
 #. [side]: type=Orcish Warlord, id=Gnargha
 #. [side]: type=Orcish Warlord, id=Krughnar
-#. [side]: type=Orcish Sovereign, id=Rualsha
+#. [side]: type=Orcish Warrior, id=Urugha
+#. [side]: type=Orcish Slayer, id=Gharlsa
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:88
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:59
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:66
@@ -229,16 +222,10 @@ msgstr "Erlornas zemře"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/01_Defend_the_Forest.cfg:129
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Elves can move quickly and safely among the trees. Pick off the enemy "
-#| "grunts with your archers from the safety of the forest."
 msgid ""
 "Elves can move quickly and safely among the trees. Pick off the enemy grunts "
 "with your archers from the safety of the forest."
 msgstr ""
-"Tip:\n"
 "Elfové se dokáží pohybovat mezi stromy rychle a bezpečně. Ostřeluj svými "
 "lučištníky nepřátelské pěšáky z bezpečí lesa."
 
@@ -429,18 +416,11 @@ msgstr "Poraz Gharlšu"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/02_Assassins.cfg:114
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Assassins are hard to hit, and their poison is insidious. Stay close to "
-#| "the villages, where poisoning can be cured, and force your enemies to "
-#| "attack you from the river."
 msgid ""
 "Assassins are hard to hit, and their poison is insidious. Stay close to the "
 "villages, where poisoning can be cured, and force your enemies to attack you "
 "from the river."
 msgstr ""
-"Tip:\n"
 "Vrazi jsou těžko zasažitelní a jejich jed je zrádný. Zůstávej poblíž vesnic, "
 "kde můžeš vyléčit otravu, a přinuť své nepřátele, aby na tebe útočili z řeky."
 
@@ -591,16 +571,10 @@ msgstr "Poraz Gnarghu"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/03_Wasteland.cfg:103
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "There are no villages in this scenario — you must use healers instead. "
-#| "Use hit-and-run tactics to weaken enemy units who cannot heal themselves."
 msgid ""
 "There are no villages in this scenario — you must use healers instead. Use "
 "hit-and-run tactics to weaken enemy units who cannot heal themselves."
 msgstr ""
-"Tip:\n"
 "Na této mapě nejsou žádné vesnice — musíš místo nich použít léčitele. Použij "
 "taktiku „udeř a uteč“ k oslabení nepřátelských jednotek, které se nemohou "
 "léčit."
@@ -847,16 +821,10 @@ msgstr "Poraz všechny nepřátelské vůdce"
 
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/04_Valley_of_Trolls.cfg:170
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Trolls are poor fighters when not on rugged terrain and fare even worse "
-#| "during the daytime. Lure them out of the hills and attack in the sunlight."
 msgid ""
 "Trolls are poor fighters when not on rugged terrain and fare even worse "
 "during the daytime. Lure them out of the hills and attack in the sunlight."
 msgstr ""
-"Tip:\n"
 "Trollové jsou chabými bojovníky pokud se nenacházejí na zvrásněném terénu a "
 "přemisťují se ještě hůře během dne. Vylákej je z kopců a zaútoč za denního "
 "světla."
@@ -1099,7 +1067,7 @@ msgstr "Krughnar"
 #. [side]
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:89
 msgid "Mages"
-msgstr ""
+msgstr "Mágové"
 
 #. [objective]: condition=win
 #: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:107
@@ -1113,27 +1081,27 @@ msgid "Death of Linaera"
 msgstr "Linaera zemře"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:127
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-"
-#| "run attacks."
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:121
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:89
+msgid "Linaera is a leader and can recruit mages when standing on a keep."
+msgstr ""
+
+#. [objectives]
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:129
 msgid ""
 "Use Elven Scouts and Linaera’s power of teleportation to mount hit-and-run "
 "attacks."
 msgstr ""
-"Tip:\n"
 "Využij elfí průzkumníky a Linaeřinu schopnost teleportace k útokům typu "
 "„udeř a stáhni se“."
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:141
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:143
 msgid "Report."
 msgstr "Hlášení."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:146
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:148
 msgid ""
 "A warband of orcs, no women or children among them, besieges a tower. It’s "
 "of human design... but we are far from the lands granted to humans by "
@@ -1144,7 +1112,7 @@ msgstr ""
 "smlouvou podstoupeno lidem, můj lorde Erlornasi."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:151
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:153
 msgid ""
 "Under the letter of the treaty, it is so. But this country is too cold and "
 "barren for us. I wonder, what manner of human would choose to live here, far "
@@ -1155,12 +1123,12 @@ msgstr ""
 "svých? Hmm..."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:156
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:158
 msgid "It trespasses, and should be driven out!"
 msgstr "Nepatří sem a měl by být vyhnán!"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:161
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:163
 msgid ""
 "Hold. It is only one human, or a few of them at most. Time enough to speak "
 "of driving it out when we have no enemies in common."
@@ -1169,7 +1137,7 @@ msgstr ""
 "se skřety, bude dost času zabývat se jím."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:166
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:168
 msgid ""
 "Tell me: I see no bridge over the chasm around that keep. Is there any sign "
 "that one has been withdrawn by the defenders?"
@@ -1178,7 +1146,7 @@ msgstr ""
 "známky toho, že byl obránci stržen?"
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:171
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:173
 msgid ""
 "No, lord. No traces of any construction. It looks like no bridge has ever "
 "existed there. There must be other, hidden means of access to the tower."
@@ -1187,7 +1155,7 @@ msgstr ""
 "Musí tu být jiný, myslím tím skrytý přístup do věže."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:176
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:178
 msgid ""
 "Interesting... Go to my personal stores and bring me a bottle of wine. And a "
 "couple of glasses."
@@ -1196,12 +1164,12 @@ msgstr ""
 "sklenice."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:181
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:183
 msgid "... Glasses?"
 msgstr "... Sklenice?"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:186
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:188
 msgid "Do it. We’ll have a guest soon."
 msgstr "Udělej to. Brzy budeme mít návštěvu."
 
@@ -1214,7 +1182,7 @@ msgstr "Udělej to. Brzy budeme mít návštěvu."
 #. deliberately unclear whether Faerie is a place that is
 #. the source of magical power or a label for the inner
 #. nonhuman/magical nature of the Elves. Translate freely.
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:200
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:202
 msgid ""
 "Erlornas closed his eyes and brought his hands forward, joined palms forming "
 "a cup open to the sky. Soon they began to glow, then to flare like a brazier "
@@ -1231,12 +1199,12 @@ msgstr ""
 "vše zas vypadalo jako obvykle."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:210
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:212
 msgid "Some time later..."
 msgstr "Po nějaké době..."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:233
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:235
 msgid ""
 "So you decided to accept the invitation. Good. Welcome, I am lord Erlornas "
 "of Wesmere. I find your presence here... surprising."
@@ -1245,7 +1213,7 @@ msgstr ""
 "Wesmérie. Tvá přítomnost zde je... překvapující."
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:238
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:240
 msgid ""
 "Scarcely less than I find yours, my lord elf, but I would welcome your aid "
 "against these orcs. They have been besieging my tower for weeks."
@@ -1254,7 +1222,7 @@ msgstr ""
 "těmto skřetům. Obléhají mou věž už týdny."
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:243
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:245
 msgid ""
 "I wish their foul kind driven as far as possible from my borders, not to "
 "return. It would be no bad thing if an ally of the elves kept watch over "
@@ -1265,13 +1233,13 @@ msgstr ""
 "dohlédl."
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:248
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:250
 msgid "Count me an ally, then, lord Erlornas. We can defeat them together."
 msgstr ""
 "Pak mě můžeš považovat za spojence, lorde Erlornasi. Spolu je můžem porazit."
 
 #. [message]: role=advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:262
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:264
 msgid ""
 "My lord... humans cannot be trusted! They shift their allegiances with the "
 "changing of the wind!"
@@ -1279,7 +1247,7 @@ msgstr ""
 "Můj pane... lidé jsou nedůvěryhodní! Mění svá spojenectví jako se mění vítr."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:267
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:269
 msgid ""
 "That may be, but I do not think this one will betray us to the orcs. And we "
 "may need her assistance, too: that is a powerful force of orcs ahead."
@@ -1288,7 +1256,7 @@ msgstr ""
 "mohli potřebovat její pomoc: před námi čeká velké vojsko skřetů."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:276
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:278
 msgid ""
 "And that is well ended. But, Linaera, there is somewhat else that concerns "
 "me. You are a mage; do you not feel something... wrong... to the east of "
@@ -1298,7 +1266,7 @@ msgstr ""
 "jsi čarodějka; cožpak necítíš něco...špatného...na východ odtud?"
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:281
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:283
 msgid ""
 "I do indeed. Something evil has recently made a nest in the next valley "
 "over; its servants have been sniffing at the edges of my domain. I had meant "
@@ -1311,7 +1279,7 @@ msgstr ""
 "zájmu to zničit."
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:286
+#: data/campaigns/An_Orcish_Incursion/scenarios/05_Linaera_the_Quick.cfg:288
 msgid "We are of one mind, then. Let us go to it."
 msgstr "Jsme tedy za jedno. Pojďme na to."
 
@@ -1323,7 +1291,7 @@ msgstr "Oklika přes bažinu"
 #. [side]: type=Lich, id=Keremal
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:45
 msgid "Undead"
-msgstr ""
+msgstr "Nemrtví"
 
 #. [side]: type=Lich, id=Keremal
 #: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:50
@@ -1336,22 +1304,16 @@ msgid "Defeat Keremal"
 msgstr "Poraz Keremala"
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:89
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Undead are resistant to physical attack. Use mages to attack the undead, "
-#| "and elves to protect and support the mages."
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:90
 msgid ""
 "Undead are resistant to physical attack. Use mages to attack the undead, and "
 "elves to protect and support the mages."
 msgstr ""
-"Tip:\n"
 "Nemrtví jsou odolní vůči fyzickým útokům. Použij mágy k útokům na nemrtvé a "
 "elfy k ochraně a podpoře mágů."
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:106
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:107
 msgid ""
 "The evil spirits who have settled in this wetland have turned it into a vile "
 "bog. My apprentices and I have the power to dispel them, but you must "
@@ -1362,7 +1324,7 @@ msgstr ""
 "jejich zbraněmi."
 
 #. [message]: speaker=Linaera
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:117
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:118
 msgid ""
 "Thank you, Erlornas... now I can return to my tower in peace. But I think "
 "some of my apprentices wish to follow you north in pursuit of the orcs."
@@ -1372,7 +1334,7 @@ msgstr ""
 "skřety."
 
 #. [message]: role=mage
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:122
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:123
 msgid ""
 "I have always wished to see elves, and now I have fought alongside them! May "
 "I please travel with you?"
@@ -1381,7 +1343,7 @@ msgstr ""
 "prosím, jít s vámi?"
 
 #. [message]: speaker=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:127
+#: data/campaigns/An_Orcish_Incursion/scenarios/06_A_Detour_through_the_Swamp.cfg:128
 msgid "Certainly... I shall be glad of your help."
 msgstr "Jistě... Potěší mě tvá pomoc."
 
@@ -1403,38 +1365,32 @@ msgstr "Poraz Rualšu"
 # je mount v tomto případě jízdní?
 #. [objectives]
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:102
-#, fuzzy
-#| msgid ""
-#| "Hint:\n"
-#| "Your enemy is well-defended against attacks from the south. Use rangers "
-#| "to sneak through the forest and mount a surprise attack from the north."
 msgid ""
 "Your enemy is well-defended against attacks from the south. Use rangers to "
 "sneak through the forest and mount a surprise attack from the north."
 msgstr ""
-"Tip:\n"
 "Tvůj nepřítel je dobře chráněn proti útokům z jihu. Použij hraničáře, aby "
 "jsi proklouzl lesem, a podnikni překvapivý útok ze severu."
 
 #. [unit]: type=Elvish Ranger, id=Celodith
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:139
 msgid "Celodith"
-msgstr ""
+msgstr "Celodith"
 
 #. [unit]: type=Elvish Ranger, id=Earanduil
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:159
 msgid "Earanduil"
-msgstr ""
+msgstr "Earanduil"
 
 #. [unit]: type=Elvish Ranger, id=Elvyniel
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:179
 msgid "Elvyniel"
-msgstr ""
+msgstr "Elvyniel"
 
 #. [unit]: type=Elvish Ranger, id=Delorfilith
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:199
 msgid "Delorfilith"
-msgstr ""
+msgstr "Delorfilith"
 
 #. [message]: speaker=Lomarfel
 #: data/campaigns/An_Orcish_Incursion/scenarios/07_Showdown.cfg:212
@@ -1532,10 +1488,6 @@ msgstr "Erlornasi, běda, zklamal jsem..."
 
 #. [message]: speaker=Erlornas
 #: data/campaigns/An_Orcish_Incursion/utils/deaths.cfg:49
-#, fuzzy
-#| msgid ""
-#| "All is lost! Without Linaera’s help, I cannot hope to defeat these "
-#| "horrifying apparitions!"
 msgid ""
 "All is lost! Without Linaera’s help, I cannot hope to defeat these "
 "abominations!"
@@ -1545,7 +1497,7 @@ msgstr ""
 
 #: data/campaigns/An_Orcish_Incursion/utils/macros.cfg:4
 msgid "Hint:"
-msgstr ""
+msgstr "Tip:"
 
 #~ msgid "Wizards"
 #~ msgstr "Kouzelníci"

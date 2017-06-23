@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by Sergey Popov <dave@whitevine.net>
+   Copyright (C) 2016 - 2017 by Sergey Popov <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -14,10 +14,9 @@
 
 #include "server/server_base.hpp"
 
+#include "lexical_cast.hpp"
 #include "log.hpp"
-#include "util.hpp"
 #include "utils/functional.hpp"
-
 
 static lg::log_domain log_server("server");
 #define ERR_SERVER LOG_STREAM(err, log_server)

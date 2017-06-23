@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,15 +11,13 @@
 
    See the COPYING file for more details.
 */
-#ifndef GAME_LAUNCHER_H_INCLUDED
-#define GAME_LAUNCHER_H_INCLUDED
 
-#include "global.hpp"
+#pragma once
 
 #include "editor/editor_main.hpp"       // for EXIT_STATUS
 #include "events.hpp"                   // for event_context
 #include "font/font_config.hpp"         // for manager
-#include "game_preferences.hpp"         // for manager
+#include "preferences/game.hpp"         // for manager
 #include "hotkey/hotkey_manager.hpp"    // for manager
 #include "image.hpp"                    // for manager
 #include "saved_game.hpp"               // for saved_game
@@ -35,7 +33,7 @@ namespace savegame { struct load_game_metadata; }
 struct jump_to_campaign_info
 {
 public:
-	jump_to_campaign_info(bool jump,int difficulty, std::string campaign_id,std::string scenario_id)
+	jump_to_campaign_info(bool jump,int difficulty, const std::string& campaign_id,const std::string& scenario_id)
 		: jump_(jump)
 		, difficulty_(difficulty)
 		, campaign_id_(campaign_id)
@@ -71,6 +69,7 @@ public:
 	void clear_loaded_game();
 	bool load_game();
 	void set_tutorial();
+	void set_test(const std::string& id);
 
 	std::string jump_to_campaign_id() const;
 	bool new_campaign();
@@ -130,5 +129,3 @@ private:
 	bool jump_to_editor_;
 	std::unique_ptr<savegame::load_game_metadata> load_data_;
 };
-
-#endif

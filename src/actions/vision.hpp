@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * Various functions implementing vision (through fog of war and shroud).
  */
 
-#ifndef ACTIONS_VISION_H_INCLUDED
-#define ACTIONS_VISION_H_INCLUDED
+#pragma once
 
 #include "movetype.hpp"
 
@@ -58,7 +57,8 @@ class shroud_clearer {
 public:
 	shroud_clearer(const shroud_clearer&) = delete;
 	shroud_clearer& operator=(const shroud_clearer&) = delete;
-	shroud_clearer();
+
+	shroud_clearer();
 	~shroud_clearer();
 
 	/// Function to be called if units have moved or otherwise changed.
@@ -155,5 +155,3 @@ bool clear_shroud(int side, bool reset_fog = false, bool fire_events = true);
 
 
 }//namespace actions
-
-#endif

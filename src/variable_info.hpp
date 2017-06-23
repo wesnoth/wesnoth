@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2016 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2017 by Philippe Plantier <ayin@anathas.org>
 
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -14,103 +14,139 @@
    See the COPYING file for more details.
 */
 
-#ifndef VARIABLE_INFO_HPP
-#define VARIABLE_INFO_HPP
+#pragma once
 
-/** Information on a WML variable. */
-#include <string>
 #include "config.hpp"
-#include "variable_info_detail.hpp"
+#include "utils/type_trait_aliases.hpp"
+
+#include <string>
+#include <type_traits>
 
 class invalid_variablename_exception : public std::exception
 {
 public:
 	invalid_variablename_exception() : std::exception() {}
-	const char* what() const throw()
+
+	const char* what() const NOEXCEPT
 	{
 		return "invalid_variablename_exception";
 	}
 };
 
-template<const variable_info_detail::variable_info_type vit>
+// NOTE: the detail file needs invalid_variablename_exception to be available,
+// so include this after declaring it.
+#include "variable_info_detail.hpp"
+
+/** Information on a WML variable. */
+template<typename V>
 class variable_info
 {
 public:
+	variable_info(const std::string& varname, maybe_const_t<config, V>& vars) NOEXCEPT;
 
-	typedef typename variable_info_detail::maybe_const<vit,config>::type config_var;
-	/// Doesn't throw
-	variable_info(const std::string& varname, config_var& vars);
-	~variable_info();
 	std::string get_error_message() const;
-	/// Doesn't throw
-	bool explicit_index() const;
-	/// might throw invalid_variablename_exception
+
+	bool explicit_index() const NOEXCEPT;
+
+	/** @throws                 invalid_variablename_exception */
 	bool exists_as_attribute() const;
-	/// might throw invalid_variablename_exception
+
+	/** @throws                 invalid_variablename_exception */
 	bool exists_as_container() const;
 
 	/**
-		might throw invalid_variablename_exception
-		NOTE:
-			If vit == vit_const, then the lifime of the returned const attribute_value& might end with the lifetime of this object.
-	*/
-	typename variable_info_detail::maybe_const<vit, config::attribute_value>::type &as_scalar() const;
-	/// might throw invalid_variablename_exception
-	typename variable_info_detail::maybe_const<vit, config>::type & as_container() const;
-	/// might throw invalid_variablename_exception
-	typename variable_info_detail::maybe_const<vit, config::child_itors>::type as_array() const; //range may be empty
+	 * If instantiated with vi_policy_const, the lifetime of the returned
+	 * const attribute_value reference might end with the lifetime of this object.
+	 *
+	 * @throws                  invalid_variablename_exception
+	 */
+	maybe_const_t<config::attribute_value, V>& as_scalar() const;
+
+	/**
+	 * If instantiated with vi_policy_const, the lifetime of the returned
+	 * const attribute_value reference might end with the lifetime of this object.
+	 *
+	 * @throws                  invalid_variablename_exception
+	 */
+	maybe_const_t<config, V>& as_container() const;
+
+	/**
+	 * If instantiated with vi_policy_const, the lifetime of the returned
+	 * const attribute_value reference might end with the lifetime of this object.
+	 *
+	 * Range may be empty
+	 * @throws                  invalid_variablename_exception
+	 */
+	maybe_const_t<config::child_itors, V> as_array() const;
 
 protected:
 	std::string name_;
-	variable_info_detail::variable_info_state<vit> state_;
-	void throw_on_invalid() const;
+	variable_info_implementation::variable_info_state<V> state_;
 	bool valid_;
+
+	void throw_on_invalid() const;
 	void calculate_value();
 };
 
-/// Extends variable_info with methods that can only be applied if vit != vit_const
-template<const variable_info_detail::variable_info_type vit>
-class non_const_variable_info : public variable_info<vit>, variable_info_detail::enable_if_non_const<vit>::type
+/**
+ * Additional functionality for a non-const variable_info.
+ * @todo: should these functions take a reference?
+ */
+template<typename V>
+class variable_info_mutable : public variable_info<V>
 {
 public:
-	non_const_variable_info(const std::string& name, config& game_vars) : variable_info<vit>(name, game_vars) {}
-	~non_const_variable_info() {}
+	variable_info_mutable(const std::string& name, config& game_vars)
+		: variable_info<V>(name, game_vars)
+	{
+		static_assert(!std::is_same<
+			variable_info_implementation::vi_policy_const, utils::remove_const_t<V>>::value,
+			"variable_info_mutable cannot be specialized with 'vi_policy_const'"
+		);
+	}
 
-	/// clears the vale this object points to
-	/// if only_tables = true it will not clear attribute values.
-	/// might throw invalid_variablename_exception
+	/**
+	 * @returns                 The new appended range.
+	 * @throws                  invalid_variablename_exception
+	 */
+	config::child_itors append_array(std::vector<config> children) const;
+
+	/**
+	 * @returns                 The new inserted range.
+	 * @throws                  invalid_variablename_exception
+	 */
+	config::child_itors insert_array(std::vector<config> children) const;
+
+	/**
+	 * @returns                 The new range.
+	 * @throws                  invalid_variablename_exception
+	 */
+	config::child_itors replace_array(std::vector<config> children) const;
+
+	/**
+	 * @throws                  invalid_variablename_exception
+	 */
+	void merge_array(std::vector<config> children) const;
+
+	/**
+	 * Clears the value this object points to.
+	 *
+	 * @param only_tables       If true, will not clear attribute values.
+	 * @throws                  invalid_variablename_exception
+	 */
 	void clear(bool only_tables = false) const;
-
-	// the following 4 functions are used by [set_variables]
-	// they destroy the passed vector. (make it empty).
-
-	/// @return: the new appended range
-	/// might throw invalid_variablename_exception
-	config::child_itors append_array(std::vector<config> childs) const;
-	/// @return: the new inserted range
-	/// might throw invalid_variablename_exception
-	config::child_itors insert_array(std::vector<config> childs) const;
-	/// @return: the new range
-	/// might throw invalid_variablename_exception
-	config::child_itors replace_array(std::vector<config> childs) const;
-	/// merges
-	/// might throw invalid_variablename_exception
-	void merge_array(std::vector<config> childs) const;
 };
 
+/** 'Create if nonexistent' access. */
+using variable_access_create = variable_info_mutable<variable_info_implementation::vi_policy_create>;
+
+/** 'Throw if nonexistent' access. */
+using variable_access_throw  = variable_info_mutable<variable_info_implementation::vi_policy_throw>;
 
 /**
-	this variable accessor will create a childtable when resolving name if it doesn't exist yet.
-*/
-typedef non_const_variable_info<variable_info_detail::vit_create_if_not_existent> variable_access_create;
-/**
-	this variable accessor will throw an exception when trying to access a non existent table.
-	Note that the other types can throw too if name is invlid like '..[[[a'.
-*/
-typedef non_const_variable_info<variable_info_detail::vit_throw_if_not_existent>  variable_access_throw;
-/**
-	this variable accessor is takes a const reference and is guaranteed to not change the config.
-*/
-typedef variable_info<variable_info_detail::vit_const>                            variable_access_const;
-
-#endif
+ * Read-only access.
+ *
+ * NOTE: in order to easily mark certain types in this specialization as const we specify
+ * the policy as const here. This allows the use of const_clone.
+ */
+using variable_access_const  = variable_info<const variable_info_implementation::vi_policy_const>;

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2003 - 2017 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef OVERLAY_INCLUDED
-#define OVERLAY_INCLUDED
+#pragma once
 
 #include "halo.hpp"
 
@@ -43,6 +42,3 @@ struct overlay
 	bool visible_in_fog;
 
 };
-
-
-#endif

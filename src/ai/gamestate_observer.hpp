@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2010 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * A helper class to observe the game state
  */
 
-#ifndef AI_GAMESTATE_OBSERVER_HPP_INCLUDED
-#define AI_GAMESTATE_OBSERVER_HPP_INCLUDED
+#pragma once
 
 #include "generic_event.hpp"
 
@@ -55,5 +54,3 @@ private:
 };
 
 } //of namespace ai
-
-#endif

@@ -96,6 +96,8 @@ class Translation:
                 # not sure why, but this happens within the
                 # gettext.translation call sometimes
                 self.catalog[textdomain] = self.dummy
+            except ValueError:
+                self.catalog[textdomain] = self.dummy
 
         r = self.catalog[textdomain].gettext(string)
 
@@ -198,7 +200,7 @@ class HTMLOutput:
             new_units_added = {}
             for uid, u in list(units_added.items()):
                 for auid in u.advance:
-                    if not auid in units_added:
+                    if not auid in forest.lookup:
                         try:
                             au = self.wesnoth.unit_lookup[auid]
                         except KeyError:

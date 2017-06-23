@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -77,17 +77,28 @@ void terrain_palette::setup(const config& cfg)
 
 	// Get the available groups and add them to the structure
 	std::set<std::string> group_names;
-	for (const config &group : cfg.child_range("editor_group"))
-	{
-		if (group_names.find(group["id"]) == group_names.end()) {
+	for(const config &group : cfg.child_range("terrain_group")) {
+		if(group_names.count(group["id"]) == 0) {
+			config group_cfg;
+			group_cfg["id"] = group["id"];
+			group_cfg["name"] = group["name"];
 
+			group_cfg["icon"] = group["icon"].str();
+			group_cfg["core"] = group["core"];
+			groups_.emplace_back(group_cfg);
+
+			group_names.insert(groups_.back().id);
+		}
+	}
+	for(const config &group : cfg.child_range("editor_group")) {
+		if(group_names.count(group["id"]) == 0) {
 			config group_cfg;
 			group_cfg["id"] = group["id"];
 			group_cfg["name"] = group["name"];
 
 			group_cfg["icon"] = "icons/terrain/terrain_" + group["icon"].str();
 			group_cfg["core"] = group["core"];
-			groups_.push_back(item_group(group_cfg));
+			groups_.emplace_back(group_cfg);
 
 			group_names.insert(groups_.back().id);
 		}
@@ -95,7 +106,7 @@ void terrain_palette::setup(const config& cfg)
 
 	std::map<std::string, item_group*> id_to_group;
 	for (item_group& group : groups_) {
-		id_to_group.insert(std::make_pair(group.id, &group));
+		id_to_group.emplace(group.id, &group);
 	}
 
 	// add the groups for all terrains to the map
@@ -132,9 +143,9 @@ void terrain_palette::setup(const config& cfg)
 		// A terrain is considered core iff it appears in at least
 		// one core terrain group
 		if (core) {
-		// Add the terrain to the default group
+			// Add the terrain to the default group
 			group_map_["all"].push_back(get_id(t));
-		nmax_items_ = std::max<int>(nmax_items_, group_map_["all"].size());
+			nmax_items_ = std::max<int>(nmax_items_, group_map_["all"].size());
 		} else {
 			non_core_items_.insert(get_id(t));
 		}
@@ -156,8 +167,7 @@ void terrain_palette::setup(const config& cfg)
 void terrain_palette::draw_item(const t_translation::terrain_code& terrain,
 		surface& image, std::stringstream& tooltip_text) {
 
-	const t_translation::terrain_code base_terrain =
-			map().get_terrain_info(terrain).default_base();
+	const t_translation::terrain_code base_terrain = map().get_terrain_info(terrain).default_base();
 
 	//Draw default base for overlay terrains
 	if(base_terrain != t_translation::NONE_TERRAIN) {
@@ -168,7 +178,7 @@ void terrain_palette::draw_item(const t_translation::terrain_code& terrain,
 			tooltip_text << "BASE IMAGE NOT FOUND\n";
 			ERR_ED << "image for terrain : '" << base_filename << "' not found" << std::endl;
 			base_image = image::get_image(game_config::images::missing);
-			if (base_image == nullptr) {
+			if(base_image == nullptr) {
 				ERR_ED << "Placeholder image not found" << std::endl;
 				return;
 			}
@@ -176,7 +186,7 @@ void terrain_palette::draw_item(const t_translation::terrain_code& terrain,
 
 		if(base_image->w != item_size_ || base_image->h != item_size_) {
 			base_image.assign(scale_surface(base_image,
-					item_size_, item_size_));
+				item_size_, item_size_));
 		}
 	}
 
@@ -186,7 +196,7 @@ void terrain_palette::draw_item(const t_translation::terrain_code& terrain,
 		tooltip_text << "IMAGE NOT FOUND\n";
 		ERR_ED << "image for terrain: '" << filename << "' not found" << std::endl;
 		image = image::get_image(game_config::images::missing);
-		if (image == nullptr) {
+		if(image == nullptr) {
 			ERR_ED << "Placeholder image not found" << std::endl;
 			return;
 		}
@@ -194,17 +204,16 @@ void terrain_palette::draw_item(const t_translation::terrain_code& terrain,
 
 	if(image->w != item_size_ || image->h != item_size_) {
 		image.assign(scale_surface(image,
-				item_size_, item_size_));
+			item_size_, item_size_));
 	}
 
 	tooltip_text << map().get_terrain_editor_string(terrain);
-	if (gui_.get_draw_terrain_codes()) {
+	if(gui_.get_draw_terrain_codes()) {
 		tooltip_text << " " + font::unicode_em_dash + " " << terrain;
 	}
 }
 
-terrain_palette::terrain_palette(editor_display &gui, const config& cfg,
-                                 editor_toolkit &toolkit)
+terrain_palette::terrain_palette(editor_display &gui, const config& cfg, editor_toolkit &toolkit)
 //TODO avoid magic numbers
 	:	editor_palette<t_translation::terrain_code>(gui, cfg, 36, 4, toolkit)
 {

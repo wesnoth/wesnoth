@@ -51,20 +51,20 @@ the .bz2 suffix. The \fIinfile.bz2\fP will be removed.
 compresses a file in bzip2 format, stores it as \fIinfile\fP.bz2 and removes
 \fIinfile\fP.
 .TP 
-\fB\-c,\ \-\-campaign\ [\fP\fIid_campaign\fP\fB]\fP
+\fB\-c[\fP\fIid_campaign\fP\fB],\ \-\-campaign[\fP\fI=id_campaign\fP\fB]\fP
 goes directly to the campaign with id <id_campaign>. A selection
 menu will appear if no id was specified.
 .TP 
-\fB\-\-core\fP\fI\ id_core\fP
-overrides the loaded core with the one whose id is specified.
-.TP 
-\fB\-\-campaign\-difficulty\ [\fP\fIdifficulty\fP\fB]\fP
+\fB\-\-campaign\-difficulty[\fP\fI=difficulty\fP\fB]\fP
 The difficulty of the specified campaign (1 to max). If none specified, the
 campaign difficulty selection widget will appear.
 .TP 
 \fB\-\-campaign\-scenario\fP\fI\ id_scenario\fP
 The id of the scenario from the specified campaign. The default is the first
 scenario.
+.TP 
+\fB\-\-core\fP\fI\ id_core\fP
+overrides the loaded core with the one whose id is specified.
 .TP 
 \fB\-\-data\-dir\fP\fI\ directory\fP
 overrides the data directory with the one specified
@@ -109,7 +109,7 @@ map dialog opened there.
 uses language \fIlang\fP (symbol) this session.  Example: \fB\-\-language
 ang_GB@latin\fP
 .TP 
-\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+\fB\-\-log\-level=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 sets the severity level of the log domains.  \fBall\fP can be used to match any
 log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.
 By default the \fBerror\fP level is used.
@@ -122,7 +122,7 @@ sets the strict level of the logger. Any messages sent to log domains of
 this level or more severe will cause the unit test to fail regardless of the
 victory result. Only relevant when used with \fB\-u\fP.
 .TP 
-\fB\-\-logdomains\ [\fP\fIfilter\fP\fB]\fP
+\fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 lists defined log domains (only the ones containing \fBfilter\fP if used) and
 exits
 .TP 
@@ -187,7 +187,7 @@ preprocessed.
 used only by the '\-\-preprocess' command.  Specifies a file that contains
 [preproc_define]s to be included before preprocessing.
 .TP 
-\fB\-\-preprocess\-output\-macros\ [\fP\fItarget\-file\fP\fB]\fP
+\fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
 used only by the '\-\-preprocess' command.  Will output all preprocessed
 macros in the target file. If the file is not specified the output will be
 file '_MACROS_.cfg' in the target directory of preprocess's command.  The
@@ -201,6 +201,10 @@ sets the screen resolution. Example: \fB\-r 800x600\fP
 takes a valid wesnoth 'image path string' with image path functions, and
 outputs to a windows .bmp file.
 .TP 
+\fB\-R,\ \-\-report\fP
+initializes game directories, prints build information suitable for use in
+bug reports, and exits.
+.TP 
 \fB\-\-rng\-seed\fP\fI\ seed\fP
 seeds the random number generator with number <arg>.  Example:
 \fB\-\-rng\-seed 0\fP
@@ -209,7 +213,7 @@ seeds the random number generator with number <arg>.  Example:
 saves a screenshot of <map> to <output> without initializing
 a screen.
 .TP 
-\fB\-s,\ \-\-server\ [\fP\fIhost\fP\fB]\fP
+\fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 connects to the specified host if any, otherwise connect to the first server
 in preferences. Example: \fB\-\-server server.wesnoth.org\fP
 .TP 
@@ -219,7 +223,7 @@ runs the game with the GUI, overriding any implicit \fB\-\-nogui.\fP
 \fB\-\-strict\-validation\fP
 validation errors are treated as fatal errors.
 .TP 
-\fB\-t,\ \-\-test\ [\fP\fIscenario_id\fP\fB]\fP
+\fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
 runs the game in a small test scenario. The scenario should be one defined
 with a \fB[test]\fP WML tag. The default is "test". Implies \fB\-\-nogui.\fP
 .TP 

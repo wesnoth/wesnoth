@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2006 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,12 +19,11 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
 #include "gettext.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "terrain/translation.hpp"
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
 #include "wml_exception.hpp"
 
 
@@ -142,6 +141,7 @@ const terrain_code NOT = string_to_number_("!");
 const terrain_code STAR = string_to_number_("*");
 const terrain_code BASE = string_to_number_("_bas");
 
+const ter_match ALL_OFF_MAP("_off^_usr,*^_fme");
 const ter_match ALL_FORESTS("F*,*^F*");
 const ter_match ALL_HILLS("!,*^V*,!,H*");
 const ter_match ALL_MOUNTAINS("!,*^V*,!,M*"); //excluding impassable mountains
@@ -789,7 +789,7 @@ static std::string number_to_string_(terrain_code terrain, const std::string& st
 	 * some uninitialized fields might be used. Its analysis are wrong, but
 	 * Initialize to keep it happy.
 	 */
-	unsigned char tcode[9] = {0};
+	unsigned char tcode[9] {0};
 	// Insert the terrain tcode
 	tcode[0] = ((terrain.base & 0xFF000000) >> 24);
 	tcode[1] = ((terrain.base & 0x00FF0000) >> 16);

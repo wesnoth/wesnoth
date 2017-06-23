@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gettext.hpp"
+#include "sdl/rect.hpp"
 #include "wml_exception.hpp"
 
 #include "utils/functional.hpp"
@@ -70,6 +71,8 @@ void panel::impl_draw_background(surface& frame_buffer, int x_offset, int y_offs
 
 void panel::impl_draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
 {
+	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
+
 	get_canvas(1).blit(frame_buffer,
 				   calculate_blitting_rectangle(x_offset, y_offset));
 }
@@ -151,8 +154,8 @@ panel_definition::resolution::resolution(const config& cfg)
 	, right_border(cfg["right_border"])
 {
 	// The panel needs to know the order.
-	state.push_back(state_definition(cfg.child("background")));
-	state.push_back(state_definition(cfg.child("foreground")));
+	state.emplace_back(cfg.child("background"));
+	state.emplace_back(cfg.child("foreground"));
 }
 
 // }---------- BUILDER -----------{

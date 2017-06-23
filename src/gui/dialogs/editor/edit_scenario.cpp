@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Fabian Müller <fabianmueller5@gmx.de>
+   Copyright (C) 2010 - 2017 by Fabian Müller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,10 @@
 
 #include "gui/dialogs/editor/edit_scenario.hpp"
 
+#include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/text_box.hpp"
+#include "gui/widgets/window.hpp"
 
 namespace gui2
 {
@@ -58,8 +61,8 @@ editor_edit_scenario::editor_edit_scenario(
 		bool& random_start_time)
 {
 	register_text("id", true, id, true);
-	register_text("name", true, name, true);
-	register_text("description", true, description, true);
+	register_text("name", true, name, false);
+	register_text("description", true, description, false);
 	register_integer("turns", true, turns);
 	register_integer("experience_modifier", true, experience_modifier);
 	register_bool("victory_when_enemies_defeated",
@@ -67,5 +70,13 @@ editor_edit_scenario::editor_edit_scenario(
 				  victory_when_enemies_defeated);
 	register_bool("random_start_time", true, random_start_time);
 }
+
+void editor_edit_scenario::pre_show(window& win)
+{
+	win.add_to_tab_order(find_widget<text_box>(&win, "id", false, false));
+	win.add_to_tab_order(find_widget<text_box>(&win, "name", false, false));
+	win.add_to_tab_order(find_widget<text_box>(&win, "description", false, false));
+}
+
 } // namespace dialogs
 } // namespace gui2

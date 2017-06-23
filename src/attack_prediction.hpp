@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2007 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,13 +14,10 @@
 
 /** @file */
 
-#ifndef ATTACK_PREDICTION_H_INCLUDED
-#define ATTACK_PREDICTION_H_INCLUDED
-
-#include "global.hpp"
+#pragma once
 
 #include <vector>
-
+#include <array>
 #include <cstring>
 
 struct battle_context_unit_stats;
@@ -63,13 +60,11 @@ struct combatant
 #endif
 
 private:
-	static const unsigned int MONTE_CARLO_SIMULATION_THRESHOLD = 5000u;
+	static const unsigned int MONTE_CARLO_SIMULATION_THRESHOLD = 50000u;
 
 	const battle_context_unit_stats &u_;
 
 	/** Summary of matrix used to calculate last battle (unslowed & slowed).
 	 *  Invariant: summary[1].size() == summary[0].size() or summary[1].empty() */
-	std::vector<double> summary[2];
+	std::array<std::vector<double>, 2> summary;
 };
-
-#endif

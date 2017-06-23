@@ -127,7 +127,7 @@ class ImageCollector:
             cdir = os.path.normpath(options.config_dir + "/data/add-ons")
             if ipath.startswith(cdir):
                 ipath = os.path.join(options.addons, ipath[len(cdir):].lstrip("/"))
-            if ipath and os.path.exists(ipath):
+            if ipath and os.path.exists(ipath) and not os.path.isdir(ipath):
                 if no_tc:
                     shutil.copy2(ipath, opath)
                 else:

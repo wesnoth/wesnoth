@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_PANEL_HPP_INCLUDED
-#define GUI_WIDGETS_PANEL_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/container_base.hpp"
 
@@ -37,10 +36,8 @@ class panel : public container_base
 public:
 	/**
 	 * Constructor.
-	 *
-	 * @param canvas_count        The canvas count for styled_widget.
 	 */
-	explicit panel(const unsigned canvas_count = 2) : container_base(canvas_count)
+	panel() : container_base()
 	{
 	}
 
@@ -113,5 +110,3 @@ struct builder_panel : public builder_styled_widget
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

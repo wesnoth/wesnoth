@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,6 @@
 #include <boost/test/unit_test.hpp>
 
 #include "config.hpp"
-#include "config_assign.hpp"
 #include "recall_list_manager.hpp"
 #include "tests/utils/game_config_manager.hpp"
 #include "units/unit.hpp"
@@ -26,10 +25,11 @@ BOOST_AUTO_TEST_SUITE( recall_list_suite )
 BOOST_AUTO_TEST_CASE( test_1 ) {
 	config game_config(test_utils::get_test_config());
 
-	config orc_config = config_of
-		("id",			"Orcish Grunt")
-		("random_traits", 	false)
-		("animate",		false);
+	config orc_config {
+		"id",			"Orcish Grunt",
+		"random_traits", 	false,
+		"animate",		false,
+	};
 
 	unit_type orc_type(orc_config);
 

@@ -107,12 +107,11 @@ surface floating_label::create_surface()
 
 			if (background == nullptr) {
 				ERR_FT << "could not create tooltip box" << std::endl;
-				adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
 				return surf_ = foreground;
 			}
 
 			Uint32 color = SDL_MapRGBA(foreground->format, bgcolor_.r,bgcolor_.g, bgcolor_.b, bgalpha_);
-			sdl::fill_rect(background,nullptr, color);
+			sdl::fill_surface_rect(background,nullptr, color);
 
 			// we make the text less transparent, because the blitting on the
 			// dark background will darken the anti-aliased part.
@@ -120,33 +119,26 @@ surface floating_label::create_surface()
 			// (where the text was blitted directly on screen)
 			adjust_surface_alpha(foreground, ftofxp(1.13));
 
-			SDL_Rect r = sdl::create_rect( border_, border_, 0, 0);
+			SDL_Rect r {border_, border_, 0, 0};
 			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
 			sdl_blit(foreground, nullptr, background, &r);
 
-			adjust_surface_alpha(background, SDL_ALPHA_OPAQUE);
 			surf_ = background;
-			// RLE compression seems less efficient for big semi-transparent area
-			// so, remove it for this case, but keep the optimized display format
-			adjust_surface_alpha(surf_, SDL_ALPHA_OPAQUE);
 		}
 		else {
 			// background is blurred shadow of the text
 			surface background = create_neutral_surface
 				(foreground->w + 4, foreground->h + 4);
-			sdl::fill_rect(background, nullptr, 0);
-			SDL_Rect r = { 2, 2, 0, 0 };
+			sdl::fill_surface_rect(background, nullptr, 0);
+			SDL_Rect r { 2, 2, 0, 0 };
 			sdl_blit(foreground, nullptr, background, &r);
-			background = shadow_image(background, false);
+			background = shadow_image(background);
 
 			if (background == nullptr) {
 				ERR_FT << "could not create floating label's shadow" << std::endl;
-				adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
 				return surf_ = foreground;
 			}
-			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
 			sdl_blit(foreground, nullptr, background, &r);
-			adjust_surface_alpha(background, SDL_ALPHA_OPAQUE);
 			surf_ = background;
 		}
 	}
@@ -181,8 +173,6 @@ void floating_label::draw(surface screen)
 	const clip_rect_setter clip_setter(screen, &clip_rect_);
 	sdl_copy_portion(screen,&rect,buf_,nullptr);
 	sdl_blit(surf_,nullptr,screen,&rect);
-
-	update_rect(rect);
 }
 
 void floating_label::undraw(surface screen)
@@ -194,15 +184,12 @@ void floating_label::undraw(surface screen)
 	const clip_rect_setter clip_setter(screen, &clip_rect_);
 	sdl_blit(buf_,nullptr,screen,&rect);
 
-	update_rect(rect);
-
 	move(xmove_,ymove_);
 	if(lifetime_ > 0) {
 		--lifetime_;
 		if(alpha_change_ != 0 && (xmove_ != 0.0 || ymove_ != 0.0) && surf_ != nullptr) {
 			// fade out moving floating labels
-			// note that we don't optimize these surfaces since they will always change
-			surf_.assign(adjust_surface_alpha_add(surf_,alpha_change_,false));
+			surf_.assign(adjust_surface_alpha_add(surf_,alpha_change_));
 		}
 	}
 }
@@ -214,7 +201,7 @@ int add_floating_label(const floating_label& flabel)
 	}
 
 	++label_id;
-	labels.insert(std::pair<int, floating_label>(label_id, flabel));
+	labels.emplace(label_id, flabel);
 	label_contexts.top().insert(label_id);
 	return label_id;
 }
@@ -262,7 +249,7 @@ SDL_Rect get_floating_label_rect(int handle)
 	if(i != labels.end()) {
 		const surface surf = i->second.create_surface();
 		if(surf != nullptr) {
-			return sdl::create_rect(0, 0, surf->w, surf->h);
+			return {0, 0, surf->w, surf->h};
 		}
 	}
 	return sdl::empty_rect;
@@ -270,10 +257,7 @@ SDL_Rect get_floating_label_rect(int handle)
 
 floating_label_context::floating_label_context()
 {
-	surface const screen = nullptr;
-	if(screen != nullptr) {
-		draw_floating_labels(screen);
-	}
+	const surface screen = nullptr;
 
 	label_contexts.push(std::set<int>());
 }
@@ -290,10 +274,7 @@ floating_label_context::~floating_label_context()
 
 	label_contexts.pop();
 
-	surface const screen = nullptr;
-	if(screen != nullptr) {
-		undraw_floating_labels(screen);
-	}
+	const surface screen = nullptr;
 }
 
 void draw_floating_labels(surface screen)

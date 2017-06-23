@@ -35,64 +35,6 @@ function helper.all_teams()
 	return f, { i = 1 }
 end
 
---! Returns the first subtag of @a cfg with the given @a name.
---! If @a id is not nil, the "id" attribute of the subtag has to match too.
---! The function also returns the index of the subtag in the array.
-function helper.get_child(cfg, name, id)
-	for i,v in ipairs(cfg) do
-		if v[1] == name then
-			local w = v[2]
-			if not id or w.id == id then return w, i end
-		end
-	end
-end
-
---! Returns the nth subtag of @a cfg with the given @a name.
---! (Indices start at 1, as always with Lua.)
---! The function also returns the index of the subtag in the array.
-function helper.get_nth_child(cfg, name, n)
-	for i,v in ipairs(cfg) do
-		if v[1] == name then
-			n = n - 1
-			if n == 0 then return v[2], i end
-		end
-	end
-end
-
---! Returns the number of subtags of @a with the given @a name.
-function helper.child_count(cfg, name)
-	local n = 0
-	for i,v in ipairs(cfg) do
-		if v[1] == name then
-			n = n + 1
-		end
-	end
-	return n
-end
-
---! Returns an iterator over all the subtags of @a cfg with the given @a name.
-function helper.child_range(cfg, tag)
-	local iter, state, i = ipairs(cfg)
-	local function f(s)
-		local c
-		repeat
-			i,c = iter(s,i)
-			if not c then return end
-		until c[1] == tag
-		return c[2]
-	end
-	return f, state
-end
-
---! Returns an array from the subtags of @a cfg with the given @a name
-function helper.child_array(cfg, tag)
-	local result = {}
-	for val in helper.child_range(cfg, tag) do
-		table.insert(result, val)
-	end
-	return result
-end
-
 --! Modifies all the units satisfying the given @a filter.
 --! @param vars key/value pairs that need changing.
 --! @note Usable only during WML actions.
@@ -157,67 +99,15 @@ function helper.move_unit_fake(filter, to_x, to_y)
 	wesnoth.set_variable("LUA_move_unit")
 end
 
-local variable_mt = {
-	__metatable = "WML variable proxy"
-}
-
-local function get_variable_proxy(k)
-	local v = wesnoth.get_variable(k, true)
-	if type(v) == "table" then
-		v = setmetatable({ __varname = k }, variable_mt)
-	end
-	return v
-end
-
-local function set_variable_proxy(k, v)
-	if getmetatable(v) == variable_mt then
-		v = wesnoth.get_variable(v.__varname)
-	end
-	wesnoth.set_variable(k, v)
-end
-
-function variable_mt.__index(t, k)
-	local i = tonumber(k)
-	if i then
-		k = t.__varname .. '[' .. i .. ']'
-	else
-		k = t.__varname .. '.' .. k
-	end
-	return get_variable_proxy(k)
-end
-
-function variable_mt.__newindex(t, k, v)
-	local i = tonumber(k)
-	if i then
-		k = t.__varname .. '[' .. i .. ']'
-	else
-		k = t.__varname .. '.' .. k
-	end
-	set_variable_proxy(k, v)
-end
-
-local root_variable_mt = {
+-- Metatable that redirects access to wml.variable.proxy
+local proxy_var_mt = {
 	__metatable = "WML variables",
-	__index    = function(t, k)    return get_variable_proxy(k)    end,
-	__newindex = function(t, k, v)
-		if type(v) == "function" then
-			-- User-friendliness when _G is overloaded early.
-			-- FIXME: It should be disabled outside the "preload" event.
-			rawset(t, k, v)
-		else
-			set_variable_proxy(k, v)
-		end
-	end
+	__index    = function(t, k) return wml.variable.proxy[k] end,
+	__newindex = function(t, k, v) wml.variable.proxy[k] = v end,
 }
 
---! Sets the metatable of @a t so that it can be used to access WML variables.
---! @return @a t.
---! @code
---! helper.set_wml_var_metatable(_G)
---! my_persistent_variable = 42
---! @endcode
 function helper.set_wml_var_metatable(t)
-	return setmetatable(t, root_variable_mt)
+	return setmetatable(t, proxy_var_mt)
 end
 
 local fire_action_mt = {
@@ -237,51 +127,14 @@ function helper.set_wml_action_metatable(t)
 	return setmetatable(t, fire_action_mt)
 end
 
-local create_tag_mt = {
+-- Metatable that redirects to wml.tag
+local proxy_tag_mt = {
 	__metatable = "WML tag builder",
-	__index = function(t, n)
-		return function(cfg) return { n, cfg } end
-	end
+	__index = function(t, n) return wml.tag[n] end
 }
 
---! Sets the metatable of @a t so that it can be used to create subtags with less brackets.
---! @return @a t.
---! @code
---! T = helper.set_wml_tag_metatable {}
---! W.event { name = "new turn", T.message { speaker = "narrator", message = "?" } }
---! @endcode
 function helper.set_wml_tag_metatable(t)
-	return setmetatable(t, create_tag_mt)
-end
-
---! Fetches all the WML container variables with name @a var.
---! @returns a table containing all the variables (starting at index 1).
-function helper.get_variable_array(var)
-	local result = {}
-	for i = 1, wesnoth.get_variable(var .. ".length") do
-		result[i] = wesnoth.get_variable(string.format("%s[%d]", var, i - 1))
-	end
-	return result
-end
-
---! Puts all the elements of table @a t inside a WML container with name @a var.
-function helper.set_variable_array(var, t)
-	wesnoth.set_variable(var)
-	for i, v in ipairs(t) do
-		wesnoth.set_variable(string.format("%s[%d]", var, i - 1), v)
-	end
-end
-
---! Creates proxies for all the WML container variables with name @a var.
---! This is similar to helper.get_variable_array, except that the elements
---! can be used for writing too.
---! @returns a table containing all the variable proxies (starting at index 1).
-function helper.get_variable_proxy_array(var)
-	local result = {}
-	for i = 1, wesnoth.get_variable(var .. ".length") do
-		result[i] = get_variable_proxy(string.format("%s[%d]", var, i - 1))
-	end
-	return result
+	return setmetatable(t, proxy_tag_mt)
 end
 
 --! Displays a WML message box with attributes from table @attr and options
@@ -311,24 +164,14 @@ function helper.get_user_choice(attr, options)
 	return result
 end
 
-local function is_even(v) return v % 2 == 0 end
-
---! Returns the distance between two tiles given by their WML coordinates.
-function helper.distance_between(x1, y1, x2, y2)
-	local hdist = math.abs(x1 - x2)
-	local vdist = math.abs(y1 - y2)
-	if (y1 < y2 and not is_even(x1) and is_even(x2)) or
-	   (y2 < y1 and not is_even(x2) and is_even(x1))
-	then vdist = vdist + 1 end
-	return math.max(hdist, vdist + math.floor(hdist / 2))
-end
-
 local adjacent_offset = {
 	[false] = { {0,-1}, {1,-1}, {1,0}, {0,1}, {-1,0}, {-1,-1} },
 	[true] = { {0,-1}, {1,0}, {1,1}, {0,1}, {-1,1}, {-1,0} }
 }
 
 --! Returns an iterator over adjacent locations that can be used in a for-in loop.
+-- Not deprecated because, unlike wesnoth.map.get_adjacent_tiles,
+-- this verifies that the locations are on the map.
 function helper.adjacent_tiles(x, y, with_borders)
 	local x1,y1,x2,y2,b = 1,1,wesnoth.get_map_size()
 	if with_borders then
@@ -337,13 +180,12 @@ function helper.adjacent_tiles(x, y, with_borders)
 		x2 = x2 + b
 		y2 = y2 + b
 	end
-	local offset = adjacent_offset[is_even(x)]
-	local i = 1
+	local adj = {wesnoth.map.get_adjacent_tiles(x, y)}
+	local i = 0
 	return function()
-		while i <= 6 do
-			local o = offset[i]
+		while i < #adj do
 			i = i + 1
-			local u, v = o[1] + x, o[2] + y
+			local u, v = adj[i][1], adj[i][2]
 			if u >= x1 and u <= x2 and v >= y1 and v <= y2 then
 				return u, v
 			end
@@ -352,39 +194,8 @@ function helper.adjacent_tiles(x, y, with_borders)
 	end
 end
 
-function helper.literal(cfg)
-	if type(cfg) == "userdata" then
-		return cfg.__literal
-	else
-		return cfg or {}
-	end
-end
-
-function helper.parsed(cfg)
-	if type(cfg) == "userdata" then
-		return cfg.__parsed
-	else
-		return cfg or {}
-	end
-end
-
-function helper.shallow_literal(cfg)
-	if type(cfg) == "userdata" then
-		return cfg.__shallow_literal
-	else
-		return cfg or {}
-	end
-end
-
-function helper.shallow_parsed(cfg)
-	if type(cfg) == "userdata" then
-		return cfg.__shallow_parsed
-	else
-		return cfg or {}
-	end
-end
-
-function helper.rand (possible_values)
+function helper.rand (possible_values, random_func)
+	random_func = random_func or wesnoth.random
 	assert(type(possible_values) == "table" or type(possible_values) == "string", string.format("helper.rand expects a string or table as parameter, got %s instead", type(possible_values)))
 
 	local items = {}
@@ -442,7 +253,7 @@ function helper.rand (possible_values)
 		end
 	end
 
-	local idx = wesnoth.random(1, num_choices)
+	local idx = random_func(1, num_choices)
 
 	for i, item in ipairs(items) do
 		if type(item) == "table" then -- that's a range
@@ -466,7 +277,7 @@ end
 function helper.deprecate(msg, f)
 	return function(...)
 		if msg then
-			wesnoth.message("warning", msg)
+			wesnoth.log("warn", msg, wesnoth.game_config.debug)
 			-- trigger the message only once
 			msg = nil
 		end
@@ -497,5 +308,79 @@ function helper.shuffle( t, random_func)
 		t[index], t[random] = t[random], t[index]
 	end
 end
+
+function helper.find_attack(unit, filter)
+	for i, atk in ipairs(unit.attacks) do
+		if atk:matches(filter) then return atk end
+	end
+end
+
+-- Compatibility and deprecations
+
+helper.distance_between = wesnoth.map.distance_between
+helper.get_child = wml.get_child
+helper.get_nth_child = wml.get_nth_child
+helper.child_count = wml.child_count
+helper.child_range = wml.child_range
+helper.child_array = wml.child_array
+if wesnoth.kernel_type() == "Game Lua Kernel" then
+	helper.get_variable_array = wml.variable.get_array
+	helper.set_variable_array = wml.variable.set_array
+	helper.get_variable_proxy_array = wml.variable.get_proxy_array
+end
+helper.literal = wml.literal
+helper.parsed = wml.parsed
+helper.shallow_literal = wml.shallow_literal
+helper.shallow_parsed = wml.shallow_parsed
+
+--[[ Uncomment after 1.14
+helper.distance_between = helper.deprecate(
+	"helper.distance_between is deprecated; use wesnoth.map.distance_between instead",
+	wesnoth.map.distance_between)
+helper.get_child = helper.deprecate(
+	"helper.get_child is deprecated; use wml.get_child instead", wml.get_child)
+helper.get_nth_child = helper.deprecate(
+	"helper.get_nth_child is deprecated; use wml.get_nth_child instead", wml.get_nth_child)
+helper.child_count = helper.deprecate(
+	"helper.child_count is deprecated; use wml.child_count instead", wml.child_count)
+helper.child_range = helper.deprecate(
+	"helper.child_range is deprecated; use wml.child_range instead", wml.child_range)
+helper.child_array = helper.deprecate(
+	"helper.child_array is deprecated; use wml.child_array instead", wml.child_array)
+helper.get_variable_array = helper.deprecate(
+	"helper.get_variable_array is deprecated; use wml.variable.get_array instead",
+	wml.variable.get_array)
+helper.set_variable_array = helper.deprecate(
+	"helper.set_variable_array is deprecated; use wml.variable.set_array instead",
+	wml.variable.set_array)
+helper.get_variable_proxy_array = helper.deprecate(
+	"helper.get_variable_proxy_array is deprecated; use wml.variable.get_proxy_array instead",
+	wml.variable.get_proxy_array)
+helper.literal = helper.deprecate(
+	"helper.literal is deprecated; use wml.literal instead", wml.literal)
+helper.parsed = helper.deprecate(
+	"helper.parsed is deprecated; use wml.parsed instead", wml.parsed)
+helper.shallow_literal = helper.deprecate(
+	"helper.shallow_literal is deprecated; use wml.shallow_literal instead", wml.shallow_literal)
+helper.shallow_parsed = helper.deprecate(
+	"helper.shallow_parsed is deprecated; use wml.shallow_parsed instead", wml.shallow_parsed)
+helper.set_wml_var_metatable = helper.deprecate(
+	"helper.set_wml_var_metatable is deprecated; use wml.variable.proxy instead " ..
+	"which has the metatable already set", helper.set_wml_var_metatable)
+helper.set_wml_tag_metatable = helper.deprecate(
+	"helper.set_wml_tag_metatable is deprecated; use wml.tag instead " ..
+	"which has the metatable already set", helper.set_wml_tag_metatable)
+
+wesnoth.get_variable = helper.deprecate(
+	"wesnoth.get_variable is deprecated; use wml.variable.get instead", wesnoth.get_variable)
+wesnoth.set_variable = helper.deprecate(
+	"wesnoth.set_variable is deprecated; use wml.variable.set instead", wesnoth.set_variable)
+wesnoth.get_all_vars = helper.deprecate(
+	"wesnoth.get_all_vars is deprecated; use wml.variable.get_all instead", wesnoth.get_all_vars)
+wesnoth.tovconfig = helper.deprecate(
+	"wesnoth.tovconfig is deprecated; use wml.tovconfig instead", wesnoth.tovconfig)
+wesnoth.debug = helper.deprecate(
+	"wesnoth.debug is deprecated; use wml.tostring instead", wesnoth.debug)
+--]]
 
 return helper

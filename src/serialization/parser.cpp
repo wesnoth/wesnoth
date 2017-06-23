@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
    Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Copyright (C) 2005 - 2016 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2017 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -36,7 +36,15 @@
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/bzip2.hpp>
+#if defined(_MSC_VER)
+#pragma warning(push)
+#pragma warning(disable: 4456)
+#pragma warning(disable: 4458)
+#endif
 #include <boost/iostreams/filter/gzip.hpp>
+#if defined(_MSC_VER)
+#pragma warning(pop)
+#endif
 #include <boost/variant/static_visitor.hpp>
 
 static lg::log_domain log_config("config");
@@ -228,7 +236,7 @@ void parser::parse_variable()
 {
 	config& cfg = *elements.top().cfg;
 	std::vector<std::string> variables;
-	variables.push_back("");
+	variables.emplace_back();
 
 	while (tok_.current_token().type != '=') {
 		switch(tok_.current_token().type) {
@@ -241,7 +249,7 @@ void parser::parse_variable()
 			if(variables.back().empty()) {
 				error(_("Empty variable name"));
 			} else {
-				variables.push_back("");
+				variables.emplace_back();
 			}
 			break;
 		default:
@@ -303,8 +311,10 @@ void parser::parse_variable()
 			ignore_next_newlines = true;
 			continue;
 		case token::STRING:
-			if (previous_string) buffer += " ";
-			//nobreak
+			if(previous_string) {
+				buffer += " ";
+			}
+			FALLTHROUGH;
 		default:
 			buffer += tok_.current_token().value;
 			break;
@@ -315,8 +325,10 @@ void parser::parse_variable()
 			error(_("Unterminated quoted string"));
 			break;
 		case token::LF:
-			if (ignore_next_newlines) continue;
-			//nobreak
+			if(ignore_next_newlines) {
+				continue;
+			}
+			FALLTHROUGH;
 		case token::END:
 			goto finish;
 		}

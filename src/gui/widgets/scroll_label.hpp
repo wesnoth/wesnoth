@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_SCROLL_LABEL_HPP_INCLUDED
-#define GUI_WIDGETS_SCROLL_LABEL_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/scrollbar_container.hpp"
 
@@ -45,10 +44,13 @@ class scroll_label : public scrollbar_container
 	friend struct implementation::builder_scroll_label;
 
 public:
-	scroll_label(bool wrap, const std::string& text_alignment);
+	scroll_label(bool wrap, const PangoAlignment text_alignment);
 
 	/** See @ref styled_widget::set_label. */
 	virtual void set_label(const t_string& label) override;
+
+	/** See @ref styled_widget::set_text_alignment. */
+	virtual void set_text_alignment(const PangoAlignment text_alignment) override;
 
 	/** See @ref styled_widget::set_use_markup. */
 	virtual void set_use_markup(bool use_markup) override;
@@ -63,9 +65,13 @@ public:
 
 	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
-	
+
 	bool can_wrap() const override;
 	void set_can_wrap(bool can_wrap);
+
+	void set_text_alpha(unsigned short alpha);
+
+	void set_link_aware(bool l);
 
 private:
 	/**
@@ -76,7 +82,6 @@ private:
 	enum state_t {
 		ENABLED,
 		DISABLED,
-		COUNT
 	};
 
 	// It's not needed for now so keep it disabled, no definition exists yet.
@@ -89,11 +94,14 @@ private:
 	 * reacts to certain 'events'.
 	 */
 	state_t state_;
-	bool wrap_on;
 
-	const std::string text_alignment;
+	bool wrap_on_;
+
+	PangoAlignment text_alignment_;
 
 	void finalize_subclass() override;
+
+	label* get_internal_label();
 
 	/***** ***** ***** inherited ****** *****/
 
@@ -135,7 +143,7 @@ struct builder_scroll_label : public builder_styled_widget
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
 	bool wrap_on;
-	const std::string text_alignment;
+	const PangoAlignment text_alignment;
 };
 
 } // namespace implementation
@@ -143,5 +151,3 @@ struct builder_scroll_label : public builder_styled_widget
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2009 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,7 @@
 #include "game_initialization/lobby_info.hpp"
 
 #include "config.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -174,7 +174,7 @@ bool lobby_info::process_gamelist_diff(const config& data)
 		const std::string& diff_result = c[config::diff_track_attribute];
 		if(diff_result == "new" || diff_result == "modified") {
 			if(current_i == games_by_id_.end()) {
-				games_by_id_.insert({game_id, new game_info(c, game_config_, installed_addons_)});
+				games_by_id_.emplace(game_id, new game_info(c, game_config_, installed_addons_));
 				continue;
 			}
 
@@ -190,6 +190,8 @@ bool lobby_info::process_gamelist_diff(const config& data)
 			if(current_i->second->display_status == game_info::NEW) {
 				// This means the game never made it through to the user interface,
 				// so just deleting it is fine
+				// TODO: use std::unique_ptr instead of deleting manually.
+				delete current_i->second;
 				games_by_id_.erase(current_i);
 			} else {
 				current_i->second->display_status = game_info::DELETED;
@@ -217,7 +219,7 @@ void lobby_info::process_userlist()
 	SCOPE_LB;
 	users_.clear();
 	for(const auto & c : gamelist_.child_range("user")) {
-		users_.push_back(user_info(c));
+		users_.emplace_back(c);
 	}
 
 	for(auto & ui : users_) {
@@ -252,6 +254,7 @@ void lobby_info::sync_games_display_status()
 	game_info_map::iterator i = games_by_id_.begin();
 	while(i != games_by_id_.end()) {
 		if(i->second->display_status == game_info::DELETED) {
+			delete i->second;
 			i = games_by_id_.erase(i);
 		} else {
 			i->second->display_status = game_info::CLEAN;
@@ -301,6 +304,17 @@ bool lobby_info::has_room(const std::string& name) const
 	return get_room(name) != nullptr;
 }
 
+user_info* lobby_info::get_user(const std::string& name)
+{
+	for(auto& user : users_) {
+		if(user.name == name) {
+			return &user;
+		}
+	}
+
+	return nullptr;
+}
+
 chat_session& lobby_info::get_whisper_log(const std::string& name)
 {
 	return whispers_[name];
@@ -309,7 +323,7 @@ chat_session& lobby_info::get_whisper_log(const std::string& name)
 void lobby_info::open_room(const std::string& name)
 {
 	if(!has_room(name)) {
-		rooms_.push_back(room_info(name));
+		rooms_.emplace_back(name);
 	}
 }
 

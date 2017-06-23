@@ -23,10 +23,11 @@ return {
         end
         math.randomseed(os.time())
 
-        local H = wesnoth.require "lua/helper.lua"
+        local H = wesnoth.require "helper"
         local W = H.set_wml_action_metatable {}
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
-        local LS = wesnoth.require "lua/location_set.lua"
+        local LS = wesnoth.require "location_set"
+        local M = wesnoth.map
 
         local function print_time(...)
             if turn_start_time then
@@ -623,10 +624,10 @@ return {
                     local unit = wesnoth.get_unit(c[1], c[2])
                     if (not AH.is_visible_unit(wesnoth.current.side, unit)) then
                         for j,e in ipairs(enemy_leaders) do
-                            rating = rating + 1 / H.distance_between(c[1], c[2], e.x, e.y) ^ 2.
+                            rating = rating + 1 / M.distance_between(c[1], c[2], e.x, e.y) ^ 2.
                         end
                         if closest_enemy_location then
-                            rating = rating + 1 / H.distance_between(c[1], c[2], closest_enemy_location.x, closest_enemy_location.y) ^ 2.
+                            rating = rating + 1 / M.distance_between(c[1], c[2], closest_enemy_location.x, closest_enemy_location.y) ^ 2.
                         end
                         if (rating > max_rating) then
                             max_rating, best_hex = rating, { c[1], c[2] }
@@ -867,7 +868,7 @@ return {
                 c_index = c[1] + c[2]*1000
                 total_village_distance[c_index] = 0
                 for i,v in ipairs(villages) do
-                    total_village_distance[c_index] = total_village_distance[c_index] + H.distance_between(c[1], c[2], v[1], v[2])
+                    total_village_distance[c_index] = total_village_distance[c_index] + M.distance_between(c[1], c[2], v[1], v[2])
                 end
             end
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2009 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 #include "units/unit.hpp"
 #include "units/attack_type.hpp"
 #include "utils/const_clone.hpp"
+#include "utils/type_trait_aliases.hpp"
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"                    // for lua_State, lua_settop, etc
@@ -81,11 +82,11 @@ attack_type& luaW_checkweapon(lua_State* L, int idx)
 }
 
 template<typename T>
-using attack_ptr_in = boost::intrusive_ptr<typename utils::const_clone<attack_type, typename std::remove_pointer<T>::type>::type>;
+using attack_ptr_in = std::shared_ptr<utils::const_clone_t<attack_type, utils::remove_pointer_t<T>>>;
 
 // Note that these two templates are designed on the assumption that T is either unit or unit_type
 template<typename T>
-auto find_attack(T* u, std::string id) -> attack_ptr_in<T>
+auto find_attack(T* u, const std::string& id) -> attack_ptr_in<T>
 {
 	auto attacks = u->attacks();
 	for(auto at = attacks.begin(); at != attacks.end(); ++at) {
@@ -139,7 +140,7 @@ static attack_itors::iterator get_attack_iter(unit& u, attack_ptr atk)
 {
 	// This is slightly inefficient since it walks the attack list a second time...
 	return std::find_if(u.attacks().begin(), u.attacks().end(), [&atk](const attack_type& atk2) {
-		return &atk2 == atk;
+		return &atk2 == atk.get();
 	});
 }
 
@@ -321,6 +322,13 @@ static int impl_unit_attack_collect(lua_State* L)
 	return 0;
 }
 
+static int intf_create_attack(lua_State* L)
+{
+	auto atk = std::make_shared<attack_type>(luaW_checkconfig(L, 1));
+	luaW_pushweapon(L, atk);
+	return 1;
+}
+
 namespace lua_units {
 	std::string register_attacks_metatables(lua_State* L)
 	{
@@ -355,6 +363,12 @@ namespace lua_units {
 		lua_setfield(L, -2, "__metatable");
 		lua_pushcfunction(L, impl_unit_attack_match);
 		lua_setfield(L, -2, "matches");
+
+		// Add create_attack
+		luaW_getglobal(L, "wesnoth");
+		lua_pushcfunction(L, intf_create_attack);
+		lua_setfield(L, -2, "create_weapon");
+		lua_pop(L, 1);
 
 		return cmd_out.str();
 	}

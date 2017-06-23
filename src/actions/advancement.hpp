@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -67,7 +67,7 @@ using advancement_option = boost::variant<std::string /*change type*/, const con
 
 /**
  * Function which will advance the unit at @a loc to 'advance_to'.
- * which is eigher a type to advance to or a config containing the 
+ * which is eigher a type to advance to or a config containing the
  * [advancement] to perform an amla.
  * Note that 'loc' is not a reference, because if it were a reference,
  * we couldn't safely pass in a reference to the item in the map

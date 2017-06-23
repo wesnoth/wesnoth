@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -43,7 +43,7 @@ list_view::list_view(const bool has_minimum,
 			 const generator_base::tplacement placement,
 			 const bool select,
 			 const builder_grid_const_ptr list_builder)
-	: container_base(2) // FIXME magic number
+	: container_base()
 	, state_(ENABLED)
 	, generator_(nullptr)
 	, list_builder_(list_builder)
@@ -72,7 +72,7 @@ void list_view::add_row(const string_map& item, const int index)
 {
 	std::map<std::string, string_map> data;
 
-	data.insert(std::make_pair("", item));
+	data.emplace("", item);
 	add_row(data, index);
 }
 

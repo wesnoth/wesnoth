@@ -1,7 +1,7 @@
 -- Used for the bandit villages in S5. Much more specific than the village spawn implementations elsewhere,
 -- since there are a lot more specific things needed (mostly the boss mechanics and village spreading)
 
-local helper = wesnoth.require "lua/helper.lua"
+local helper = wesnoth.require "helper"
 local wml_actions = wesnoth.wml_actions
 local _ = wesnoth.textdomain "wesnoth-ei"
 local T = helper.set_wml_tag_metatable {}

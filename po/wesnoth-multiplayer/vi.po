@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:28 UTC\n"
+"POT-Creation-Date: 2017-05-29 21:55+0200\n"
 "PO-Revision-Date: 2014-06-05 18:06+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -102,12 +102,12 @@ msgstr ""
 "đề nào xảy ra."
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:65
+#: data/multiplayer/eras.lua:62
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Phe %d</span>"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:81
+#: data/multiplayer/eras.lua:76
 msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
@@ -116,12 +116,12 @@ msgstr ""
 "đơn vị = %d  Vàng = %d"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:81
+#: data/multiplayer/eras.lua:76
 msgid "Grand total: <b>%d</b>"
 msgstr "Tổng cộng: <b>%d</b>"
 
 #. [lua]: f
-#: data/multiplayer/eras.lua:91
+#: data/multiplayer/eras.lua:87
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr "<span foreground='%s'>Phe %d</span> có lợi thế."
 
@@ -299,20 +299,28 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:53
+#: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:23
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:22
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:37
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:34
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:22
+#: data/multiplayer/scenarios/2p_Hellhole.cfg:54
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:48
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:47
+#: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:23
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:21
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:67
+#: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:23
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:22
+#: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:23
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:67
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:132
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:21
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:20
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:20
 #: data/multiplayer/scenarios/3p_Morituri.cfg:20
+#: data/multiplayer/scenarios/4p_Geothermal.cfg:31
+#: data/multiplayer/scenarios/4p_Geothermal.cfg:57
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:21
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:57
 #: data/multiplayer/scenarios/4p_Morituri.cfg:18
@@ -332,17 +340,25 @@ msgstr "Bắc"
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:34
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:65
+#: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:36
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:35
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:26
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:22
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:33
+#: data/multiplayer/scenarios/2p_Hellhole.cfg:43
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:60
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:36
+#: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:34
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:32
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:55
+#: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:34
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:33
+#: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:36
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:55
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:120
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:32
+#: data/multiplayer/scenarios/4p_Geothermal.cfg:20
+#: data/multiplayer/scenarios/4p_Geothermal.cfg:42
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:33
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:45
 #: data/multiplayer/scenarios/4p_Morituri.cfg:29
@@ -356,56 +372,33 @@ msgstr "Bắc"
 msgid "teamname^South"
 msgstr "Nam"
 
-#. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
-msgid "Aethermaw — Created by Doc Paterson"
-msgstr "Aethermaw - Tạo bởi Doc Paterson."
-
-#. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:289
 #, fuzzy
-#| msgid ""
-#| "The Great Mage Sulla has transported your armies to this bizarre nexus, "
-#| "and demands that you amuse her by doing battle.\n"
-#| "\n"
-#| "\n"
-#| "\n"
-#| "\n"
-#| "<span color='red'>Note:</span>\n"
-#| "\n"
-#| "<span color='green'>Units may not move into a hex with a rock cairn. They "
-#| "may, however, be recruited to, and move from, such hexes.</span>\n"
-#| "\n"
-#| "<span color='green'>Beginning on turn 4, the Great Mage Sulla will begin "
-#| "to unite the two halves of the battlefield. The process will be complete "
-#| "by the end of turn 6.</span>\n"
+#| msgid "Death of your team leaders"
+msgid "Defeat enemy leader(s)"
+msgstr "Những người chỉ huy đội của bạn chết"
+
+#. [note]
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:293
 msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
-"demands that you amuse her by doing battle.\n"
-"\n"
-"<span color='red'>Note:</span>\n"
-"\n"
-"<span color='green'>Units may not move into a hex with a rock cairn. They "
-"may, however, be recruited to, and move from, such hexes.</span>\n"
-"\n"
-"<span color='green'>Beginning on turn 4, the Great Mage Sulla will begin to "
-"unite the two halves of the battlefield. The process will be complete by the "
-"end of turn 6.</span>\n"
+"demands that you amuse her by doing battle."
 msgstr ""
-"Đại pháp sư Sulla đã đưa quân đội của bạn đến vùng đất kỳ quái này, và yêu "
-"cầu bạn mua vui cho bà ta bằng cách chiến đấu.\n"
-"\n"
-"\n"
-"\n"
-"\n"
-"<span color='red'>Ghi chú:</span>\n"
-"\n"
-"<span color='green'>Các đơn vị không thể di chuyển vào ô lục giác có ụ đá. "
-"Tuy nhiên, chúng có thể được tuyển vào, hoặc di chuyển từ các ô như thế.</"
-"span>\n"
-"\n"
-"<span color='green'>Ở đầu lượt 4, Đại pháp sư Sulla sẽ bắt đầu hợp nhất hai "
-"nửa chiến trường. Quá trình sẽ hoàn thành trước cuối lượt 6.</span>\n"
+
+#. [note]
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:296
+msgid ""
+"Units may not move into a hex with a rock cairn. They may, however, be "
+"recruited to, and move from, such hexes."
+msgstr ""
+
+#. [note]
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:299
+msgid ""
+"Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
+"of the battlefield. The process will be complete by the end of turn 6."
+msgstr ""
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
@@ -461,11 +454,14 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:33
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:35
+#: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:40
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:32
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:31
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
 #: data/multiplayer/scenarios/3p_Morituri.cfg:31
+#: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:20
+#: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:53
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:20
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:53
 #: data/multiplayer/scenarios/4p_Clash.cfg:29
@@ -491,11 +487,14 @@ msgstr "Đông"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:35
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:22
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:24
+#: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:24
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:21
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:42
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
 #: data/multiplayer/scenarios/3p_Morituri.cfg:42
+#: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:31
+#: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:42
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:31
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:42
 #: data/multiplayer/scenarios/4p_Clash.cfg:18
@@ -963,6 +962,25 @@ msgstr ""
 "\n"
 "(đề bởi MJQ)"
 
+#. [multiplayer]: id=multiplayer_Clearing_Gushes
+#: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:7
+#, fuzzy
+#| msgid "4p — Clash"
+msgid "2p — Clearing Gushes"
+msgstr "4nc - Giao chiến"
+
+#. [multiplayer]: id=multiplayer_Clearing_Gushes
+#: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:8
+msgid ""
+"The banks of the Great River make for some of the most fertile land in all "
+"the known world. The spring and summer bring floods all along its length, "
+"making the soil rich and providing bountiful harvests each autumn. The "
+"Kingdom of Wesnoth has turned this land into the engine of their wealth and "
+"prosperity — making it the target of countless raids and attacks. The "
+"rigorous discipline and organization of Wesnoth's armies are in no small "
+"part driven by a constant need to patrol and defend these prosperous lands."
+msgstr ""
+
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:6
 msgid "2p — Cynsaun Battlefield"
@@ -1248,12 +1266,12 @@ msgid "Underground"
 msgstr "Dưới lòng đất"
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:5
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:7
 msgid "2p — Fallenstar Lake"
 msgstr "2nc - Hồ Sao Băng"
 
 #. [multiplayer]: id=multiplayer_Fallenstar_Lake
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:6
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:8
 msgid ""
 "Long ago, a great star fell from the heavens, leaving its mark on this "
 "coniferous region."
@@ -1275,6 +1293,25 @@ msgstr ""
 "Chiến tranh biến những trang trại và làng mạc đơn sơ của một vùng quê yên "
 "bình thành một chiến trường tan hoang. Thiết kế bởi Doc Paterson."
 
+#. [multiplayer]: id=multiplayer_Hellhole
+#: data/multiplayer/scenarios/2p_Hellhole.cfg:7
+#, fuzzy
+#| msgid "2p — Hamlets"
+msgid "2p — Hellhole"
+msgstr "2nc - Thôn làng"
+
+#. [multiplayer]: id=multiplayer_Hellhole
+#: data/multiplayer/scenarios/2p_Hellhole.cfg:8
+msgid ""
+"Once, the town of Myrilel was a tranquil village at the easternmost reaches "
+"of humankind. This changed forever upon the rise of the lich warlord Mal-"
+"Ravanal, who ripped a gate of unspeakable dark sorcery in the center of town "
+"as the first gathering point for his armies of death. Though Mal-Ravanal was "
+"defeated, Myrilel remains a place made desolate and ruined, the gate an "
+"eternal scar on the land that to this day summons forth legions of wandering "
+"undead."
+msgstr ""
+
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:26
 msgid "2p — Hornshark Island"
@@ -1289,102 +1326,101 @@ msgstr ""
 "Các người chơi phải tìm cách liên minh với các cư dân địa phương, để sống "
 "sót trên hòn đảo khác thường này. Thiết kế bởi Doc Paterson."
 
-#. [unit]: type=Young Ogre, id=Baby Baby Bo
-#. [unit]: type=Young Ogre, id=Big Baby Bo
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:90
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:170
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:211
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:284
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:338
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:474
+#. [unit]: type=Young Ogre
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:89
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:166
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:205
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:277
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:330
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:462
 msgid "Big Baby Bo"
 msgstr "Bé Bự Bo"
 
-#. [unit]: type=Drake Fighter, id=Rawffus the Dim
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:104
+#. [unit]: type=Drake Fighter
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:102
 msgid "Rawffus the Dim"
 msgstr "Rawffus Đen Tối"
 
-#. [unit]: type=Dwarvish Scout, id=Kolbur
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:157
+#. [unit]: type=Dwarvish Scout
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:154
 msgid "Kolbur"
 msgstr "Kolbur"
 
-#. [unit]: type=Dwarvish Scout, id=Vilhelm Viskitynnyri
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:184
+#. [unit]: type=Dwarvish Scout
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:179
 msgid "Vilhelm Viskitynnyri"
 msgstr "Vilhelm Viskitynnyri"
 
 #. [unit]: type=Woodsman
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:245
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:256
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:703
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:714
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:239
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:250
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:684
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:695
 msgid "Clockwork Boy"
 msgstr "Chàng thợ đồng hồ"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:309
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:302
 msgid "Neki the Brutal"
 msgstr "Neki Hung Bạo"
 
-#. [unit]: type=Elvish Fighter, id=Drowsk Calbeht
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:352
+#. [unit]: type=Elvish Fighter
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:343
 msgid "Drowsk Calbeht"
 msgstr "Drowsk Calbeht"
 
-#. [unit]: id=Rzrrt the Dauntless, type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:415
+#. [unit]: type=Soulless
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:405
 msgid "Rzrrt the Dauntless"
 msgstr "Rzrrt Bất Khuất"
 
-#. [unit]: id=Sorrek, Chosen of Death, type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:456
+#. [unit]: type=Skeleton
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:445
 msgid "Sorrek, Chosen of Death"
 msgstr "Sorrek, Đại Diện Thần Chết"
 
-#. [unit]: type=Young Ogre, id=Baby Baby Dro
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:548
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:628
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:669
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:742
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:796
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:932
+#. [unit]: type=Young Ogre
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:534
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:611
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:650
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:722
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:774
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:906
 msgid "Big Baby Dro"
 msgstr "Dro Bé Bự"
 
-#. [unit]: type=Drake Fighter, id=Gawffus the Dim
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:562
+#. [unit]: type=Drake Fighter
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:547
 msgid "Gawffus the Dim"
 msgstr "Gawffus Đen Tối"
 
-#. [unit]: type=Dwarvish Scout, id=Rublok
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:615
+#. [unit]: type=Dwarvish Scout
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:599
 msgid "Rublok"
 msgstr "Rublok"
 
-#. [unit]: type=Dwarvish Scout, id=Ulysses Mantyjuuri
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:642
+#. [unit]: type=Dwarvish Scout
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:624
 msgid "Ulysses Mantyjuuri"
 msgstr "Ulysses Mantyjuuri"
 
-#. [unit]: type=Orcish Leader, id=Neki the Brute
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:767
+#. [unit]: type=Orcish Leader
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:746
 msgid "Neki the Brute"
 msgstr "Neki Hung Bạo"
 
-#. [unit]: type=Elvish Fighter, id=Claiomh Dubh
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:810
+#. [unit]: type=Elvish Fighter
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:787
 msgid "Claiomh Dubh"
 msgstr "Claiomh Dubh"
 
-#. [unit]: id=Tyxrrn the Dauntless, type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:873
+#. [unit]: type=Soulless
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:849
 msgid "Tyxrrn the Dauntless"
 msgstr "Tyxrrn Bất Khuất"
 
-#. [unit]: id=Rukhos, Chosen of Death, type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:914
+#. [unit]: type=Skeleton
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:889
 msgid "Rukhos, Chosen of Death"
 msgstr "Rukhos, Đại Diện Thần Chết"
 
@@ -1401,6 +1437,38 @@ msgid ""
 msgstr ""
 "Những tàn dư ít ỏi còn sót lại trên thuộc địa khai thác giàu có một thời "
 "này, giờ chỉ là nơi ẩn náu cho những kẻ cướp bóc và trộm cắp."
+
+#. [multiplayer]: id=multiplayer_Ruined_Passage
+#: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:7
+msgid "2p — Ruined Passage"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Ruined_Passage
+#: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:8
+msgid ""
+"The distant west has long been fabled as the homeland of all living things "
+"before it was ruined by a deluge of disasters. Legends tell of the ingenuity "
+"of the ancients in their final hours as they struggled to fight back violent "
+"storms of fire and ash. Only recently have secretive expeditions to this "
+"land revealed the truth of these stories — most strikingly, a channel of "
+"immense enchanted walls. Between intense volcanic islands and vast seas of "
+"molten brimstone lies land kept pristine and untouched — yet mysteriously "
+"abandoned nonetheless."
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Ruphus_Isle
+#: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:7
+msgid "2p — Ruphus Isle"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_Ruphus_Isle
+#: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:8
+msgid ""
+"Players must navigate the dispersive terrain of this small but "
+"topographically dense island."
+msgstr ""
+"Các người chơi phải di chuyển trên địa thế phân tán của hòn đảo nhỏ nhưng "
+"dày đặc địa hình này."
 
 #. [multiplayer]: id=multiplayer_Sablestone_Delta
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:5
@@ -1516,6 +1584,28 @@ msgstr "Tượng Lo-bsang"
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
 msgstr "Chân dung tạc bằng đá của Lo-bsang, người hầu của Sulla."
 
+#. [multiplayer]: id=multiplayer_Swamp_of_Dread
+#: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:7
+#, fuzzy
+#| msgid "2p — Sablestone Delta"
+msgid "2p — Swamp of Dread"
+msgstr "2nc - Châu thổ Đá Đen"
+
+#. [multiplayer]: id=multiplayer_Swamp_of_Dread
+#: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:8
+msgid ""
+"North of the Great River lies the Swamp of Dread, a vast, inhospitable mire "
+"cursed by foul magic. There exist only a few routes that aren't nearly "
+"guaranteed entrapment and death. Nonetheless, they are highly sought after "
+"as lucrative bridges between the southern flatlands and the rugged north, "
+"and intrepid explorers traverse the perilous bogs in search of profitable "
+"places to set up trading posts. The largest of these routes, Areth's Pass, "
+"is a long-disputed and well-known crossing since the first ancient wars "
+"between elves and dwarves. Despite poor land and limited resources, its "
+"great strategic value means it is fiercely contested by all with military "
+"aims in the Great Continent's heart."
+msgstr ""
+
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:6
 msgid "2p — The Freelands"
@@ -1537,6 +1627,28 @@ msgstr ""
 "tự do đã chiến đấu, trở thành những người chinh phục trong hàng trăm năm, "
 "xua đuổi loài thú vật khỏi biên giới phía tây, và những tên đế quốc Carorath "
 "khỏi biên giới phía đông."
+
+#. [multiplayer]: id=multiplayer_The_Walls_of_Pyrennis
+#: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:7
+#, fuzzy
+#| msgid "2p — Den of Onis"
+msgid "2p — The Walls of Pyrennis"
+msgstr "2nc - Sào huyệt Oni"
+
+#. [multiplayer]: id=multiplayer_The_Walls_of_Pyrennis
+#: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:8
+msgid ""
+"When the orcish hordes first began arriving in droves on the Great "
+"Continent, one intrepid ruler by the name of Iron-King Olgor set about first "
+"uniting the bickering orcish tribes. He sought to conquer the whole of the "
+"Continent under the rule of orcs, and commanded the construction of the "
+"immense fortress of Pyrennis as a monument to his power. But it was this "
+"very citadel that was his undoing — his vassals, unwilling to finish "
+"building without their destined conquest complete, turned on Olgor and "
+"slayed him, scattering the orcish hosts for centuries to come. The walls of "
+"Pyrennis have proved astoundingly indestructible both to time and war — that "
+"is, what scattered segments of it were actually completed."
+msgstr ""
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:37
@@ -1618,6 +1730,37 @@ msgstr "Một nơi kỳ lạ. Thiết kế bởi Doc Paterson"
 msgid "Statue"
 msgstr "Tượng"
 
+#. [multiplayer]: id=multiplayer_Tombs_of_Kesorak
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:7
+#, fuzzy
+#| msgid "5p — Forest of Fear"
+msgid "2p — Tombs of Kesorak"
+msgstr "5nc - Khu rừng sợ hãi"
+
+#. [multiplayer]: id=multiplayer_Tombs_of_Kesorak
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:8
+msgid ""
+"Hundreds of years ago, the defeated Sorcerer Kesorak was entombed here, "
+"along with a number of his followers. An unholy chill now encircles the "
+"tombs, and many believe that the voice of Kesorak can still be heard, "
+"whispering amongst the withered trees of this barren landscape. Unconcerned "
+"by their gloomy surroundings, your leaders have chosen this place to clash."
+msgstr ""
+
+#. [note]
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:179
+msgid ""
+"The map contains mausoleums and campfires that shift the time of the day by "
+"one step toward night and day, respectively."
+msgstr ""
+
+#. [note]
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:182
+msgid ""
+"The tile in the centre, which contains the casket of the titular "
+"necromancer, is always covered in pitch black fog."
+msgstr ""
+
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
 msgid "2p — Weldyn Channel"
@@ -1637,19 +1780,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3nc - Đầm lầy Alirok"
 
-#. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
-#. [multiplayer]: id=multiplayer_Clash
-#. [multiplayer]: id=multiplayer_4p_Hamlets
-#. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_4p_Morituri
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_3p_Morituri
+#. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Blue_Water_Province
+#. [multiplayer]: id=multiplayer_Alirok_Marsh
+#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_4p_Hamlets
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #. [multiplayer]: id=multiplayer_8p_Morituri
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_Clash
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -1678,9 +1821,13 @@ msgstr "3nc - Đảo Horatii"
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
+#, fuzzy
+#| msgid ""
+#| "Controlling the central island is often the key to victory in this "
+#| "21x21hex 3 player free for all map."
 msgid ""
-"Controlling the central island is often the key to victory in this 21x21hex "
-"3 player free for all map."
+"Controlling the central island is often the key to victory in this 3 player "
+"free for all map."
 msgstr ""
 "Kiểm soát hòn đảo trung tâm thường là chìa khóa để chiến thắng trên bản đồ "
 "ba người chơi tự do có hình lục giác kích thước 21x21 này."
@@ -1697,6 +1844,26 @@ msgid ""
 "player map."
 msgstr ""
 "Chỉ một phe sẽ giành chiến thắng trên bản đồ ba người chơi chật hẹp này."
+
+#. [multiplayer]: id=multiplayer_Bath_of_Glory
+#: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:7
+#, fuzzy
+#| msgid "4p — Paths of Daggers"
+msgid "4p — Bath of Glory"
+msgstr "4nc - Những con đường dao găm"
+
+#. [multiplayer]: id=multiplayer_Bath_of_Glory
+#: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:9
+msgid ""
+"The distant, legendary city of Malisat is famed for many great works — among "
+"its most prized being the enormous complex known as the Bath of Glory. Made "
+"to be a relaxing paradise to weary soldiers returning home, the Bath is a "
+"stunning oasis built where once was nothing but sand. In time, it has become "
+"a city unto its own, with arts and music flourishing about the wild culture "
+"centered on the baths. The complex's vastness means flared tempers between "
+"wealthy nobles can turn into veritable battlegrounds — but even this has "
+"become a form of entertainment woven into the allure of the Bath."
+msgstr ""
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
@@ -1763,6 +1930,23 @@ msgstr "4nc - Giao chiến"
 msgid "Small map for 2 vs. 2."
 msgstr "Bản đồ 2 đấu với 2 loại nhỏ."
 
+#. [multiplayer]: id=multiplayer_Geothermal
+#: data/multiplayer/scenarios/4p_Geothermal.cfg:7
+#, fuzzy
+#| msgid "2p — Aethermaw"
+msgid "4p — Geothermal"
+msgstr "2nc - Aethermaw"
+
+#. [multiplayer]: id=multiplayer_Geothermal
+#: data/multiplayer/scenarios/4p_Geothermal.cfg:9
+msgid ""
+"The western reaches of the Heart Mountains make a land of striking contrasts "
+"— boiling volcanic cauldrons weaving deep blue rivers between stark, snowy "
+"mountains, dotted with fields of verdant green. This land, though sometimes "
+"perilous and unstable, is nonetheless rich thanks to numerous foundries "
+"using the heat of volcanoes and hot springs to fuel their forges."
+msgstr ""
+
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
 msgid "4p — Hamlets"
@@ -1784,10 +1968,16 @@ msgstr "4nc - Giao lộ Isar"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A very small 2 vs. 2 map. Close quarters fighting means the successful "
+#| "rotation of units and planning of moves is important. Teams set for "
+#| "players 1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting "
+#| "gold, 20 villages."
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
-"1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
+"1+4 vs. 2+3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
 "villages."
 msgstr ""
 "Bản đồ 2 đấu với 2 rất nhỏ. Chiến đấu trong phạm vi nhỏ hẹp nghĩa là việc "
@@ -1839,9 +2029,13 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
+#, fuzzy
+#| msgid ""
+#| "Controlling the area around the central keep is very lucrative in this "
+#| "36X36 4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgid ""
-"Controlling the area around the central keep is very lucrative in this 36X36 "
-"4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
+"Controlling the area around the central keep is very lucrative in this 4 "
+"player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
 "Kiểm soát vùng xung quanh pháo đài trung tâm rất có lợi trên bản đồ 4 người "
 "chơi tự do kích thước 36x36 này. Cũng hoạt động tốt cho 2 đấu với 2. Có 36 "
@@ -1876,9 +2070,13 @@ msgstr "4nc - Sông Loris"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 25x25 2 vs. 2 map centered around a river with keeps in opposite "
+#| "corners. Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgid ""
-"A 25x25 2 vs. 2 map centered around a river with keeps in opposite corners. "
-"Designed for players 1&4 vs. 2&3. There are 28 villages."
+"2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
+"for players 1+4 vs. 2+3. There are 28 villages."
 msgstr ""
 "Bản đồ 2 đấu với 2 kích thước 25x25 tập trung quanh một dòng sông với các "
 "pháo đài ở các góc đối diện. Được thiết kế cho các người chơi 1&4 đấu với "
@@ -1906,9 +2104,13 @@ msgstr " Thiết lập khuyến cáo là 2 lượng vàng mỗi ngôi làng, 28 
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
+#| "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
 msgid ""
-"A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
-"played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
+"A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
+"east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
 msgstr ""
 "Bản đồ 2 đấu với 2 kích thước 35x27 với 5 con đường giao chiến riêng biệt. "
 "Cân bằng khi chơi Đông đấu với Tây (1&4 đấu với 2&3), nhưng cũng hoạt động "
@@ -1921,9 +2123,13 @@ msgstr "4nc - Tàn tích Terra-Dwelve"
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:7
+#, fuzzy
+#| msgid ""
+#| "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
+#| "Large multi-fronted 2vs2 set in a vast underground complex."
 msgid ""
 "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
-"Large multi-fronted 2vs2 set in a vast underground complex."
+"Large multi-fronted 2 vs. 2 set in a vast underground complex."
 msgstr ""
 "Trận chiến tranh giành kho báu truyền thuyết trong của tàn tích cổ Terra-"
 "Dwelve. Bản đồ nhiều mặt trận 2 đấu với 2 trong một tổ hợp rộng lớn dưới "
@@ -1936,8 +2142,13 @@ msgstr "4nc - Bao vây lâu đài"
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
+#, fuzzy
+#| msgid ""
+#| "36X36 4 player map where 4 mighty castles face off at the convergence of "
+#| "two rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 "
+#| "villages."
 msgid ""
-"36X36 4 player map where 4 mighty castles face off at the convergence of two "
+"A 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
 "Bản đồ 36x36 cho 4 người chơi trong đó 4 lâu đài hùng mạnh quay mặt vào điểm "
@@ -1961,9 +2172,13 @@ msgstr "4nc - Hỗn loạn ở Xanthe"
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
+#| "center common."
 msgid ""
-"A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
-"center common."
+"A 2 vs. 2 map with auxiliary keeps, and a large messy battle in the center "
+"common."
 msgstr ""
 "Bản đồ 2 đấu với 2 kích thước 24x28 với các pháo đài phụ và một trận chiến "
 "hỗn độn lớn ở vùng trung tâm."
@@ -1975,8 +2190,15 @@ msgstr "5nc - Đấu giá-X"
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
+#, fuzzy
+#| msgid ""
+#| "4 players surround a central keep, play vs the AI survival style, or as a "
+#| "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or "
+#| "FFA, and the best way to determine how much is an auction, LOWEST bid "
+#| "wins. It is a very small map so 75 gold is recommended for the other "
+#| "players."
 msgid ""
-"4 players surround a central keep, play vs the AI survival style, or as a "
+"4 players surround a central keep, play vs. the AI survival style, or as a "
 "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or FFA, "
 "and the best way to determine how much is an auction, LOWEST bid wins. It is "
 "a very small map so 75 gold is recommended for the other players."
@@ -2008,8 +2230,8 @@ msgstr ""
 msgid "5p — The Wilderlands"
 msgstr "5nc - Vùng đất hoang vu"
 
-#. [multiplayer]: id=multiplayer_The_Wilderlands
 #. [multiplayer]: id=multiplayer_Crusaders_Field
+#. [multiplayer]: id=multiplayer_The_Wilderlands
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:38
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
@@ -2135,12 +2357,8 @@ msgstr "Thần tiên"
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:516
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
-"impossible. Frankly, I haven’t got a clue as to how you did it, so send me "
-"the replay by mail to: roze@roze.mine.nu. Thank You!"
+"impossible!"
 msgstr ""
-"Chúc mừng bạn đã sống sót trên bản đồ mà nhiều người cho rằng không thể. "
-"Thẳng thắn mà nói, tôi cũng không biết bạn đã làm thế nào, vì thế hãy gửi "
-"cho tôi bản phát lại qua thư đến: roze@roze.mine.nu. Cảm ơn bạn!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:530
@@ -2163,11 +2381,17 @@ msgstr "6nc - Những cái bẫy Manzivan"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:10
+#, fuzzy
+#| msgid ""
+#| "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult "
+#| "and confusing area of terrain where it is easy to end up out of position "
+#| "or over extended. Teams set for players 145 vs. 236 (east vs west). "
+#| "Designed for 100 starting gold, has 33 villages."
 msgid ""
-"A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
+"A 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
-"extended. Teams set for players 145 vs. 236 (east vs west). Designed for 100 "
-"starting gold, has 33 villages."
+"extended. Teams set for players 145 vs. 236 (east vs. west). Designed for "
+"100 starting gold, has 33 villages."
 msgstr ""
 "Bản đồ 3 đấu với 3 kích thước 40x20. Những cái bẫy Manzivan được nhiều người "
 "biết đến là một vùng địa hình khó khăn và gây bối rối, nơi dễ dàng bỏ mạng "
@@ -2182,8 +2406,12 @@ msgstr "6nc - Núi lửa"
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
+#| "volcanic eruption. It has 36 villages."
 msgid ""
-"A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
+"A 3 vs. 3 battle to control the ashes of a kingdom long ago collapsed from a "
 "volcanic eruption. It has 36 villages."
 msgstr ""
 "Một trận chiến 3 đấu với 3 nhằm kiểm soát những phế tích của một vương quốc "
@@ -2196,11 +2424,17 @@ msgstr "6nc - Hoàng hôn Waterloo"
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
+#, fuzzy
+#| msgid ""
+#| "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required "
+#| "to avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
+#| "south), but having players 146 or 136 as a team is also interesting. "
+#| "Designed for 150 starting gold, has 44 villages."
 msgid ""
-"A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required to "
-"avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
-"south), but having players 146 or 136 as a team is also interesting. "
-"Designed for 150 starting gold, has 44 villages."
+"A 3 vs. 3 map. Flexible coordination of your alliance is required to avoid "
+"being outnumbered. Teams set for players 145 vs. 236 (north vs. south), but "
+"having players 146 or 136 as a team is also interesting. Designed for 150 "
+"starting gold, has 44 villages."
 msgstr ""
 "Bản đồ 3 đấu với 3 kích thước 40x30. Cần phối hợp linh động với đồng minh để "
 "tránh bị đàn áp. Đội chơi được thiết lập cho các người chơi 145 đấu với 236 "
@@ -2367,6 +2601,62 @@ msgstr ""
 "Kiểm nghiệm wesnoth, sử dụng --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
 
+#~ msgid "Aethermaw — Created by Doc Paterson"
+#~ msgstr "Aethermaw - Tạo bởi Doc Paterson."
+
+#, fuzzy
+#~| msgid ""
+#~| "The Great Mage Sulla has transported your armies to this bizarre nexus, "
+#~| "and demands that you amuse her by doing battle.\n"
+#~| "\n"
+#~| "\n"
+#~| "\n"
+#~| "\n"
+#~| "<span color='red'>Note:</span>\n"
+#~| "\n"
+#~| "<span color='green'>Units may not move into a hex with a rock cairn. "
+#~| "They may, however, be recruited to, and move from, such hexes.</span>\n"
+#~| "\n"
+#~| "<span color='green'>Beginning on turn 4, the Great Mage Sulla will begin "
+#~| "to unite the two halves of the battlefield. The process will be complete "
+#~| "by the end of turn 6.</span>\n"
+#~ msgid ""
+#~ "The Great Mage Sulla has transported your armies to this bizarre nexus, "
+#~ "and demands that you amuse her by doing battle.\n"
+#~ "\n"
+#~ "<span color='red'>Note:</span>\n"
+#~ "\n"
+#~ "<span color='green'>Units may not move into a hex with a rock cairn. They "
+#~ "may, however, be recruited to, and move from, such hexes.</span>\n"
+#~ "\n"
+#~ "<span color='green'>Beginning on turn 4, the Great Mage Sulla will begin "
+#~ "to unite the two halves of the battlefield. The process will be complete "
+#~ "by the end of turn 6.</span>\n"
+#~ msgstr ""
+#~ "Đại pháp sư Sulla đã đưa quân đội của bạn đến vùng đất kỳ quái này, và "
+#~ "yêu cầu bạn mua vui cho bà ta bằng cách chiến đấu.\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "\n"
+#~ "<span color='red'>Ghi chú:</span>\n"
+#~ "\n"
+#~ "<span color='green'>Các đơn vị không thể di chuyển vào ô lục giác có ụ "
+#~ "đá. Tuy nhiên, chúng có thể được tuyển vào, hoặc di chuyển từ các ô như "
+#~ "thế.</span>\n"
+#~ "\n"
+#~ "<span color='green'>Ở đầu lượt 4, Đại pháp sư Sulla sẽ bắt đầu hợp nhất "
+#~ "hai nửa chiến trường. Quá trình sẽ hoàn thành trước cuối lượt 6.</span>\n"
+
+#~ msgid ""
+#~ "Congratulations for surviving the map that so many people claim is "
+#~ "impossible. Frankly, I haven’t got a clue as to how you did it, so send "
+#~ "me the replay by mail to: roze@roze.mine.nu. Thank You!"
+#~ msgstr ""
+#~ "Chúc mừng bạn đã sống sót trên bản đồ mà nhiều người cho rằng không thể. "
+#~ "Thẳng thắn mà nói, tôi cũng không biết bạn đã làm thế nào, vì thế hãy gửi "
+#~ "cho tôi bản phát lại qua thư đến: roze@roze.mine.nu. Cảm ơn bạn!"
+
 #~ msgid "Random map by YAMG"
 #~ msgstr "Bản đồ ngẫu nhiên của YAMG"
 
@@ -2404,13 +2694,6 @@ msgstr ""
 #~ "Thành trì Arcanclave là pháo đài trung tâm của vùng Arcanclave. Nó được "
 #~ "hoàn thành vào năm Wesnoth 968, và được dùng làm tổng hành dinh quân sự "
 #~ "cho Cynsaun Đệ Nhất. Thiết kế bởi Doc Paterson."
-
-#~ msgid ""
-#~ "Players must navigate the dispersive terrain of this small but "
-#~ "topographically dense island."
-#~ msgstr ""
-#~ "Các người chơi phải di chuyển trên địa thế phân tán của hòn đảo nhỏ nhưng "
-#~ "dày đặc địa hình này."
 
 #~ msgid "teamname^South-West"
 #~ msgstr "Tây Nam"

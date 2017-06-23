@@ -1,7 +1,7 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local FAU = wesnoth.require "ai/micro_ais/cas/ca_fast_attack_utils.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local LS = wesnoth.require "location_set"
 
 local ca_fast_combat_leader = {}
 
@@ -81,7 +81,7 @@ function ca_fast_combat_leader:evaluation(cfg, data)
 
     for _,enemy in ipairs(enemies) do
         -- Only need to consider enemies that are close enough
-        if (H.distance_between(leader.x, leader.y, enemy.x, enemy.y) <= (enemy.max_moves + leader.max_moves + 1)) then
+        if (wesnoth.map.distance_between(leader.x, leader.y, enemy.x, enemy.y) <= (enemy.max_moves + leader.max_moves + 1)) then
             enemy_power = enemy.hitpoints
 
             local old_moves = enemy.moves

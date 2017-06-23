@@ -23,9 +23,17 @@
 #include <sys/sendfile.h>
 #endif
 
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 #include "server_base.hpp"
 #include "simple_wml.hpp"
 #include "filesystem.hpp"
+#include "serialization/unicode_cast.hpp" //only used in windows specific code.
+
+#include <memory>
+#include <stdexcept>
 
 template<typename Handler, typename ErrorHandler>
 struct handle_doc
@@ -161,6 +169,101 @@ void async_send_file(socket_ptr socket, const std::string& filename, Handler han
 	async_write(*socket, buffers, op);
 }
 
+#elif defined(_WIN32)
+
+template<typename Handler, typename ErrorHandler>
+struct sendfile_op
+{
+	socket_ptr sock_;
+	HANDLE file_;
+	OVERLAPPED overlap_;
+	Handler handler_;
+	ErrorHandler error_handler_;
+	bool pending_;
+	std::shared_ptr<handle_doc<Handler, ErrorHandler>> handle_send_doc_;
+
+	void operator()(boost::system::error_code ec, std::size_t)
+	{
+		bool failed = false;
+		if (!pending_)
+		{
+			BOOL success = TransmitFile(sock_->native_handle(), file_, 0, 0, &overlap_, nullptr, 0);
+			if (!success)
+			{
+				int winsock_ec = WSAGetLastError();
+				if (winsock_ec == WSA_IO_PENDING || winsock_ec == ERROR_IO_PENDING)
+				{
+					// The request is pending. Wait until it completes.
+					pending_ = true;
+					sock_->async_write_some(boost::asio::null_buffers(), *this);
+					return;
+				}
+				else
+				{
+					failed = true;
+				}
+			}
+		}
+		else
+		{
+			DWORD win_ec = GetLastError();
+			if (win_ec != ERROR_IO_PENDING && win_ec != ERROR_SUCCESS)
+			{
+				failed = true;
+			}
+			else if (!HasOverlappedIoCompleted(&overlap_))
+			{
+				// Keep waiting.
+				sock_->async_write_some(boost::asio::null_buffers(), *this);
+				return;
+			}
+		}
+
+		CloseHandle(file_);
+		CloseHandle(overlap_.hEvent);
+
+		if (!failed)
+		{
+			handler_(sock_);
+		}
+		else
+		{
+			error_handler_(sock_);
+		}
+	}
+};
+
+template<typename Handler, typename ErrorHandler>
+void async_send_file(socket_ptr socket, const std::string& filename, Handler handler, ErrorHandler error_handler)
+{
+	std::vector<boost::asio::const_buffer> buffers;
+
+	SetLastError(ERROR_SUCCESS);
+
+	size_t filesize = filesystem::file_size(filename);
+	std::wstring filename_ucs2 = unicode_cast<std::wstring>(filename);
+	HANDLE in_file = CreateFileW(filename_ucs2.c_str(), GENERIC_READ, FILE_SHARE_READ, nullptr, OPEN_EXISTING,
+		FILE_FLAG_SEQUENTIAL_SCAN, nullptr);
+	if (GetLastError() != ERROR_SUCCESS)
+	{
+		throw std::runtime_error("Failed to open the file");
+	}
+
+	sendfile_op<Handler, ErrorHandler> op = { socket, in_file, OVERLAPPED(), handler, error_handler, false };
+
+	HANDLE event = CreateEvent(nullptr, TRUE, TRUE, nullptr);
+	if (GetLastError() != ERROR_SUCCESS)
+	{
+		throw std::runtime_error("Failed to create an event");
+	}
+
+	op.overlap_.hEvent = event;
+	op.handle_send_doc_.reset(new handle_doc<Handler, ErrorHandler>(socket, handler, error_handler, filesize, nullptr));
+
+	buffers.push_back(boost::asio::buffer(op.handle_send_doc_->data_size->buf, 4));
+	async_write(*socket, buffers, op);
+}
+
 #else
 
 // TODO: Implement this for systems without sendfile()
@@ -200,6 +303,22 @@ struct handle_receive_doc : public handle_doc<Handler, ErrorHandler>
 		if(!this->buffer) {
 			assert(size == 4);
 			buf_size = ntohl(this->data_size->size);
+
+			if(buf_size == 0) {
+				ERR_SERVER <<
+							  client_address(this->socket) <<
+							  "\treceived invalid packet with payload size 0" << std::endl;
+				this->error_handler(this->socket);
+				return;
+			}
+			if(buf_size > simple_wml::document::document_size_limit) {
+				ERR_SERVER <<
+							  client_address(this->socket) <<
+							  "\treceived packet with payload size over size limit" << std::endl;
+				this->error_handler(this->socket);
+				return;
+			}
+
 			this->buffer = boost::shared_array<char>(new char[buf_size]);
 			async_read(*(this->socket), boost::asio::buffer(this->buffer.get(), buf_size), *this);
 		} else {

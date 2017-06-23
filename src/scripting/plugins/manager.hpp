@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * as coroutines, running in various engine contexts.
  */
 
-#ifndef INCLUDED_PLUGINS_MANAGER_HPP_
-#define INCLUDED_PLUGINS_MANAGER_HPP_
+#pragma once
 
 #include "config.hpp"
 #include "utils/make_enum.hpp"
@@ -72,5 +71,3 @@ private:
 	std::shared_ptr<bool> playing_;
 	std::unique_ptr<application_lua_kernel> kernel_;
 };
-
-#endif

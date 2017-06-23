@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,13 +12,12 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_WIDGET_HPP_INCLUDED
-#define GUI_WIDGETS_WIDGET_HPP_INCLUDED
+#pragma once
 
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/core/point.hpp"
 #include "gui/widgets/event_executor.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include <string>
 
@@ -32,6 +31,7 @@ namespace gui2
 struct builder_widget;
 namespace dialogs { class modal_dialog; }
 class window;
+class grid;
 
 namespace iteration
 {
@@ -176,12 +176,20 @@ public:
 	 * Get the parent window.
 	 *
 	 * @returns                   Pointer to parent window.
-	 * @retval nullptr               No parent window found.
+	 * @retval nullptr            No parent window found.
 	 */
 	window* get_window();
 
 	/** The constant version of @ref get_window. */
 	const window* get_window() const;
+
+	/**
+	 * Get the parent grid.
+	 *
+	 * @returns                 Pointer to parent grid.
+	 * @retval nullptr          No parent grid found.
+	 */
+	grid* get_parent_grid();
 
 	/**
 	 * Returns the top-level dialog.
@@ -194,7 +202,7 @@ public:
 	 * function will be removed.
 	 *
 	 * @returns                   The top-level dialog.
-	 * @retval nullptr               No top-level window or the top-level window is
+	 * @retval nullptr            No top-level window or the top-level window is
 	 *                            not owned by a dialog.
 	 */
 	dialogs::modal_dialog* dialog();
@@ -224,7 +232,7 @@ public:
 	 *
 	 * Every widget has a member @ref layout_size_ which holds the best size in
 	 * the current layout phase. When the windows starts the layout phase it
-	 * calls @ref layout_initialise which resets this value.
+	 * calls @ref layout_initialize which resets this value.
 	 *
 	 * Every widget has two function to get the best size. @ref get_best_size
 	 * tests whether layout_size_ is set and if so returns that value otherwise
@@ -243,12 +251,12 @@ public:
 	 *
 	 * See @ref layout_algorithm for more information.
 	 *
-	 * @param full_initialisation For widgets with scrollbars it hides them
+	 * @param full_initialization For widgets with scrollbars it hides them
 	 *                            unless the mode is
 	 *                            @ref scrollbar_mode::ALWAYS_VISIBLE. For
 	 *                            other widgets this flag is a @em NOP.
 	 */
-	virtual void layout_initialise(const bool full_initialisation);
+	virtual void layout_initialize(const bool full_initialization);
 
 	/**
 	 * Tries to reduce the width of a widget.
@@ -393,6 +401,20 @@ public:
 	virtual void move(const int x_offset, const int y_offset);
 
 	/**
+	 * Sets the horizontal alignment of the widget within its parent grid.
+	 *
+	 * @param alignment           The new alignment.
+	 */
+	virtual void set_horizontal_alignment(const std::string& alignment);
+
+	/**
+	 * Sets the horizontal alignment of the widget within its parent grid.
+	 *
+	 * @param alignment           The new alignment.
+	 */
+	virtual void set_vertical_alignment(const std::string& alignment);
+
+	/**
 	 * Allows a widget to update its children.
 	 *
 	 * Before the window is populating the dirty list the widgets can update
@@ -437,6 +459,15 @@ protected:
 	void set_layout_size(const point& size);
 	const point& layout_size() const;
 
+	/**
+	* Throws away @ref layout_size_.
+	*
+	* Use with care: this function does not recurse to child widgets.
+	*
+	* See @ref layout_algorithm for more information.
+	*/
+	void clear_layout_size() { set_layout_size(point()); }
+
 public:
 	void set_linked_group(const std::string& linked_group);
 
@@ -461,6 +492,9 @@ private:
 	 * When 0,0 the real best size is returned, but in the layout phase a
 	 * wrapping or a scrollbar might change the best size for that widget.
 	 * This variable holds that best value.
+	 *
+	 * If the widget size hasn't been changed from the default that
+	 * calculate_best_size() returns, layout_size_ is (0,0).
 	 */
 	point layout_size_;
 
@@ -479,8 +513,8 @@ private:
 	/**
 	 * The linked group the widget belongs to.
 	 *
-	 * @todo For now the linked group is initialised when the layout of the
-	 * widget is initialised. The best time to set it would be upon adding the
+	 * @todo For now the linked group is initialized when the layout of the
+	 * widget is initialized. The best time to set it would be upon adding the
 	 * widget in the window. Need to look whether it is possible in a clean way.
 	 * Maybe a signal just prior to showing a window where the widget can do
 	 * some of it's on things, would also be nice for widgets that need a
@@ -707,8 +741,8 @@ private:
 	/** The color for the debug border. */
 	color_t debug_border_color_;
 
-	void draw_debug_border(surface& frame_buffer);
-	void draw_debug_border(surface& frame_buffer, int x_offset, int y_offset);
+	void draw_debug_border();
+	void draw_debug_border(int x_offset, int y_offset);
 
 	/***** ***** ***** ***** Query functions ***** ***** ***** *****/
 
@@ -809,5 +843,3 @@ public:
 };
 
 } // namespace gui2
-
-#endif

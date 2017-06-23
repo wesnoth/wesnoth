@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "generators/default_map_generator.hpp"
@@ -23,7 +21,6 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
-#include "font/marked-up_text.hpp"
 #include "seed_rng.hpp"
 #include "video.hpp"
 

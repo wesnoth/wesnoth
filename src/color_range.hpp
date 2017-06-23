@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,14 @@
 
 /** @file */
 
-#ifndef COLOR_RANGE_H_INCLUDED
-#define COLOR_RANGE_H_INCLUDED
+#pragma once
+
+#include "color.hpp"
+
+#include <cstdint>
+#include <string>
+#include <unordered_map>
+#include <vector>
 
 //These macros interfere with MS VC++
 #ifdef _MSC_VER
@@ -23,16 +29,7 @@
 	#undef min
 #endif
 
-#include "global.hpp"
-#include <map>
-#include <string>
-#include <vector>
-#include <cstdint>
-
-/* Convert comma separated string into rgb values.
- * Return false and empty result on error.
- */
-bool string2rgb(const std::string& s, std::vector<uint32_t>& result);
+using color_range_map = std::unordered_map<color_t, color_t>;
 
 /**
  * A color range definition is made of four reference RGB colors, used
@@ -53,73 +50,86 @@ bool string2rgb(const std::string& s, std::vector<uint32_t>& result);
 class color_range
 {
 public:
- /**
-  * Constructor, which expects four reference RGB colors.
-  * @param mid Average color shade.
-  * @param max Maximum (highlight) color shade
-  * @param min Minimum color shade
-  * @param rep High-contrast reference color
-  */
-  color_range(uint32_t mid , uint32_t max = 0x00FFFFFF , uint32_t min = 0x00000000 , uint32_t rep = 0x00808080):mid_(mid),max_(max),min_(min),rep_(rep){}
+	/**
+	* Constructor, which expects four reference RGB colors.
+	* @param mid Average color shade.
+	* @param max Maximum (highlight) color shade
+	* @param min Minimum color shade
+	* @param rep High-contrast reference color
+	*/
+	color_range(color_t mid, color_t max = {255, 255, 255}, color_t min = {0, 0, 0}, color_t rep = {128, 128, 128})
+		: mid_(mid)
+		, max_(max)
+		, min_(min)
+		, rep_(rep)
+	{}
 
-  /**
-   * Constructor, which expects four reference RGB colors.
-   * @param v STL vector with the four reference colors in order.
-   */
-  color_range(const std::vector<uint32_t>& v)
-    : mid_(v.size()     ? v[0] : 0x00808080),
-      max_(v.size() > 1 ? v[1] : 0x00FFFFFF),
-      min_(v.size() > 2 ? v[2] : 0x00000000),
-      rep_(v.size() > 3 ? v[3] : mid_)
-  {
-  }
+	/**
+	* Constructor, which expects four reference RGB colors.
+	* @param v STL vector with the four reference colors in order.
+	*/
+	color_range(const std::vector<color_t>& v)
+		: mid_(v.size()     ? v[0] : color_t(128, 128, 128))
+		, max_(v.size() > 1 ? v[1] : color_t(255, 255, 255))
+		, min_(v.size() > 2 ? v[2] : color_t(0  , 0  , 0  ))
+		, rep_(v.size() > 3 ? v[3] : mid_)
+	{}
 
-  /** Default constructor. */
-  color_range() : mid_(0x00808080), max_(0x00FFFFFF), min_(0x00000000), rep_(0x00808080) {}
+	/** Default constructor. */
+	color_range()
+		: mid_(128, 128, 128)
+		, max_(255, 255, 255)
+		, min_()
+		, rep_(128, 128, 128)
+	{}
 
-  /** Average color shade. */
-  uint32_t mid() const{return(mid_);}
-  /** Maximum color shade. */
-  uint32_t max() const{return(max_);}
-  /** Minimum color shade. */
-  uint32_t min() const{return(min_);}
-  /** High-contrast shade, intended for the minimap markers. */
-  uint32_t rep() const{return(rep_);}
+	/** Average color shade. */
+	color_t mid() const { return mid_; }
 
-  bool operator<(const color_range& b) const
-  {
-    if(mid_ != b.mid()) return(mid_ < b.mid());
-    if(max_ != b.max()) return(max_ < b.max());
-    if(min_ != b.min()) return(min_ < b.min());
-    return(rep_ < b.rep());
-  }
+	/** Maximum color shade. */
+	color_t max() const { return max_; }
 
-  bool operator==(const color_range& b) const
-  {
-    return(mid_ == b.mid() && max_ == b.max() && min_ == b.min() && rep_ == b.rep());
-  }
+	/** Minimum color shade. */
+	color_t min() const { return min_; }
 
-  /** Return a string describing the color range for debug output. */
-  std::string debug() const;
+	/** High-contrast shade, intended for the minimap markers. */
+	color_t rep() const { return rep_; }
+
+	bool operator==(const color_range& b) const
+	{
+		return mid_ == b.mid() && max_ == b.max() && min_ == b.min() && rep_ == b.rep();
+	}
+
+	bool operator<(const color_range& b) const
+	{
+		if(mid_ != b.mid()) { return mid_.to_rgba_bytes() < b.mid().to_rgba_bytes(); }
+		if(max_ != b.max()) { return max_.to_rgba_bytes() < b.max().to_rgba_bytes(); }
+		if(min_ != b.min()) { return min_.to_rgba_bytes() < b.min().to_rgba_bytes(); }
+
+		return rep_.to_rgba_bytes() < b.rep().to_rgba_bytes();
+	}
+
+	/** Return a string describing the color range for debug output. */
+	std::string debug() const;
 
 private:
-  uint32_t mid_ , max_ , min_ , rep_;
+	color_t mid_ , max_ , min_ , rep_;
 };
 
 /**
  * Creates a reference color palette from a color range.
  */
-std::vector<uint32_t> palette(color_range cr);
+std::vector<color_t> palette(const color_range& cr);
 
 /**
  * Converts a source palette using the specified color_range object.
- * This holds the main interface for range-based team coloring. The output is
- * used with the recolor_image() method to do the actual recoloring.
- * @param new_rgb Specifies parameters for the conversion.
- * @param old_rgb Source palette.
- * @return A STL map of colors, with the keys being source palette elements, and the values
- *         are the result of applying the color range conversion on it.
+ * This holds the main interface for range-based team coloring. The output is used with the recolor_image()
+*  method to do the actual recoloring.
+ *
+ * @param        new_rgb Specifies parameters for the conversion.
+ * @param        old_rgb Source palette.
+ *
+ * @return       A STL map of colors, with the keys being source palette elements, and the values
+ *               are the result of applying the color range conversion on it.
  */
-std::map<uint32_t, uint32_t> recolor_range(const color_range& new_rgb, const std::vector<uint32_t>& old_rgb);
-
-#endif
+color_range_map recolor_range(const color_range& new_rgb, const std::vector<color_t>& old_rgb);

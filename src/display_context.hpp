@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,8 +19,7 @@
  *
  **/
 
-#ifndef DISPLAY_CONTEXT_HPP_INCLUDED
-#define DISPLAY_CONTEXT_HPP_INCLUDED
+#pragma once
 
 #include <string>
 #include <vector>
@@ -58,6 +57,13 @@ public:
 	std::vector<std::string> & hidden_label_categories_ref();
 	const team& get_team(int side) const;
 
+	// this one is only a template function to prevent compilation erros when class team is an incomplete type.
+	template<typename T = void>
+	bool has_team(int side) const
+	{
+		return side > 0 && side <= static_cast<int>(teams().size());
+	}
+
 	// Helper for is_visible_to_team
 
 	/**
@@ -93,7 +99,7 @@ public:
 
 	int side_upkeep(int side_num) const ;
 
-	team_data calculate_team_data(const class team& tm, int side) const;
+	team_data calculate_team_data(const class team& tm) const;
 
 	// Accessor from team.cpp
 
@@ -104,6 +110,3 @@ public:
 
 	virtual ~display_context() {}
 };
-
-
-#endif

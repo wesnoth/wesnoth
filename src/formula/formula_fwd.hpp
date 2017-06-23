@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2008 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,10 +12,9 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORMULA_FWD_HPP_INCLUDED
-#define FORMULA_FWD_HPP_INCLUDED
+#pragma once
 
-namespace game_logic {
+namespace wfl {
 
 class formula_debugger;
 
@@ -24,5 +23,3 @@ typedef std::shared_ptr<formula> formula_ptr;
 typedef std::shared_ptr<const formula> const_formula_ptr;
 
 }
-
-#endif

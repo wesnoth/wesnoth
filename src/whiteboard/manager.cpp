@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2016 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2017 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -36,7 +36,7 @@
 #include "fake_unit_ptr.hpp"
 #include "formula/string_utils.hpp"
 #include "game_board.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "game_state.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
@@ -520,7 +520,7 @@ void manager::pre_draw()
 		units_owning_moves_ = move_finder.get_units_owning_moves();
 
 		for (size_t unit_id : units_owning_moves_) {
-			unit_map::iterator unit_iter = resources::units->find(unit_id);
+			unit_map::iterator unit_iter = resources::gameboard->units().find(unit_id);
 			assert(unit_iter.valid());
 			ghost_owner_unit(&*unit_iter);
 		}
@@ -531,7 +531,7 @@ void manager::post_draw()
 {
 	for (size_t unit_id : units_owning_moves_)
 	{
-		unit_map::iterator unit_iter = resources::units->find(unit_id);
+		unit_map::iterator unit_iter = resources::gameboard->units().find(unit_id);
 		if (unit_iter.valid()) {
 			unghost_owner_unit(&*unit_iter);
 		}
@@ -571,7 +571,7 @@ void manager::on_mouseover_change(const map_location& hex)
 	map_location selected_hex = resources::controller->get_mouse_handler_base().get_selected_hex();
 	bool hex_has_unit;
 	{ wb::future_map future; // start planned unit map scope
-		hex_has_unit = resources::units->find(selected_hex) != resources::units->end();
+		hex_has_unit = resources::gameboard->units().find(selected_hex) != resources::gameboard->units().end();
 	} // end planned unit map scope
 	if (!((selected_hex.valid() && hex_has_unit)
 			|| has_temp_move() || wait_for_side_init_ || executing_actions_))
@@ -628,7 +628,7 @@ void manager::process_network_data(config const& cfg)
 		size_t count = wb_cfg.child_count("net_cmd");
 		LOG_WB << "Received wb data (" << count << ").\n";
 
-		team& team_from = resources::gameboard->teams().at(wb_cfg["side"]-1);
+		team& team_from = resources::gameboard->get_team(wb_cfg["side"]);
 		for(side_actions::net_cmd const& cmd : wb_cfg.child_range("net_cmd"))
 			team_from.get_side_actions()->execute_net_cmd(cmd);
 	}
@@ -794,7 +794,7 @@ void manager::save_temp_move()
 
 unit_map::iterator manager::get_temp_move_unit() const
 {
-	return resources::units->find(temp_move_unit_underlying_id_);
+	return resources::gameboard->units().find(temp_move_unit_underlying_id_);
 }
 
 void manager::save_temp_attack(const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice)
@@ -1067,7 +1067,7 @@ int manager::get_spent_gold_for(int side)
 	if(wait_for_side_init_)
 		return 0;
 
-	return resources::gameboard->teams().at(side - 1).get_side_actions()->get_gold_spent();
+	return resources::gameboard->get_team(side).get_side_actions()->get_gold_spent();
 }
 
 void manager::options_dlg()
@@ -1080,8 +1080,8 @@ void manager::options_dlg()
 	std::vector<std::string> options;
 	utils::string_map t_vars;
 
-	options.push_back(_("SHOW ALL allies’ plans"));
-	options.push_back(_("HIDE ALL allies’ plans"));
+	options.emplace_back(_("SHOW ALL allies’ plans"));
+	options.emplace_back(_("HIDE ALL allies’ plans"));
 
 	//populate list of networked allies
 	for(team &t : resources::gameboard->teams())
@@ -1095,9 +1095,9 @@ void manager::options_dlg()
 		t_vars["player"] = t.current_player();
 		size_t t_index = t.side()-1;
 		if(team_plans_hidden_[t_index])
-			options.push_back(vgettext("Show plans for $player", t_vars));
+			options.emplace_back(vgettext("Show plans for $player", t_vars));
 		else
-			options.push_back(vgettext("Hide plans for $player", t_vars));
+			options.emplace_back(vgettext("Hide plans for $player", t_vars));
 	}
 
 	gui2::dialogs::simple_item_selector dlg("", _("Whiteboard Options"), options);
@@ -1149,7 +1149,7 @@ void manager::set_planned_unit_map()
 	}
 
 	log_scope2("whiteboard", "Building planned unit map");
-	mapbuilder_.reset(new mapbuilder(*resources::units));
+	mapbuilder_.reset(new mapbuilder(resources::gameboard->units()));
 	mapbuilder_->build_map();
 
 	planned_unit_map_active_ = true;

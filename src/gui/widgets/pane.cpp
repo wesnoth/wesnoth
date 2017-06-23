@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,6 +23,7 @@
 #include "utils/const_clone.hpp"
 #include "gui/core/event/message.hpp"
 #include "gettext.hpp"
+#include "lexical_cast.hpp"
 
 #include "utils/functional.hpp"
 
@@ -50,7 +51,7 @@ struct pane_implementation
 	 * @tparam W                  A pointer to the pane.
 	 */
 	template <class W>
-	static typename utils::const_clone<widget, W>::pointer
+	static utils::const_clone_ptr<widget, W>
 	find_at(W pane, point coordinate, const bool must_be_active)
 	{
 
@@ -91,7 +92,7 @@ struct pane_implementation
 	 * @tparam W                  A pointer to the pane.
 	 */
 	template <class W>
-	static typename utils::const_clone<grid, W>::pointer
+	static utils::const_clone_ptr<grid, W>
 	get_grid(W pane, const unsigned id)
 	{
 		for(auto item : pane->items_)
@@ -173,16 +174,16 @@ void pane::place(const point& origin, const point& size)
 	place_children();
 }
 
-void pane::layout_initialise(const bool full_initialisation)
+void pane::layout_initialize(const bool full_initialization)
 {
 	DBG_GUI_D << LOG_HEADER << '\n';
 
-	widget::layout_initialise(full_initialisation);
+	widget::layout_initialize(full_initialization);
 
 	for(auto & item : items_)
 	{
 		if(item.item_grid->get_visible() != widget::visibility::invisible) {
-			item.item_grid->layout_initialise(full_initialisation);
+			item.item_grid->layout_initialize(full_initialization);
 		}
 	}
 }
@@ -328,7 +329,7 @@ void pane::place_or_set_origin_children()
 void pane::prepare_placement() const
 {
 	assert(placer_.get());
-	placer_->initialise();
+	placer_->initialize();
 
 	for(const auto & item : items_)
 	{
@@ -359,7 +360,7 @@ void pane::signal_handler_request_placement(dispatcher& dispatcher,
 					 * addon_list. This code can use some more tuning,
 					 * polishing and testing.
 					 */
-					item.item_grid->layout_initialise(false);
+					item.item_grid->layout_initialize(false);
 					get_window()->layout_linked_widgets();
 
 					/*

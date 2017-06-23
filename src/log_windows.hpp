@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2014 - 2017 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef DESKTOP_WINDOWS_LOG_HPP_INCLUDED
-#define DESKTOP_WINDOWS_LOG_HPP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -87,5 +86,3 @@ void enable_native_console_output();
 bool using_own_console();
 
 }
-
-#endif

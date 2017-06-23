@@ -1,12 +1,12 @@
 # translation of it.po to Italian
-# Antonio Rosella <arosella@yahoo.com>, 2011-2016
+# Antonio Rosella <arosella@yahoo.com>, 2011-2017
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:23 UTC\n"
-"PO-Revision-Date: 2016-05-13 17:36+0000\n"
+"POT-Creation-Date: 2017-05-29 21:55+0200\n"
+"PO-Revision-Date: 2017-06-03 19:02+0300\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:22
@@ -67,7 +67,7 @@ msgid ""
 msgstr ""
 "Wesnoth scivola inesorabilmente nel caos, mentre gli orchi si riversano "
 "verso sud attraverso il Grande Fiume e creature misteriose e letali vagano "
-"nel buio della notte. Chi è l’oscuro Ihiah-Malal? Riuscirai a sconfiggerlo "
+"nel buio della notte. Chi è l’oscuro Iliah-Malal? Riuscirai a sconfiggerlo "
 "prima che distrugga tutta la vita a Wesnoth?\n"
 "\n"
 
@@ -115,10 +115,8 @@ msgstr "Ouverture"
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:24
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:23
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:196
-#, fuzzy
-#| msgid "Mage"
 msgid "Mages"
-msgstr "Mago"
+msgstr "Maghi"
 
 #. [side]: type=Mage of Light, id=Marshal
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_Overture.cfg:29
@@ -331,19 +329,19 @@ msgstr "Questa valle è mia"
 msgid "Grogor-Tuk"
 msgstr "Grogor-Tuk"
 
-#. [side]: type=Goblin Pillager, id=Grogor-Tuk
-#. [side]: type=Orcish Warrior, id=Urthaka-Tan
 #. [side]: type=Orcish Slayer, id=Hagha-Tan
-#. [side]: type=Orcish Warrior, id=Tan-Garthak
-#. [side]: type=Orcish Warlord, id=Tish Golub
 #. [side]: type=Orcish Warlord, id=Knafa-ord
 #. [side]: type=Orcish Warlord, id=Tan-drul
 #. [side]: type=Orcish Warlord, id=Krardul
+#. [side]: type=Goblin Pillager, id=Grogor-Tuk
+#. [side]: type=Orcish Warrior, id=Urthaka-Tan
+#. [side]: type=Orcish Warlord, id=Upgar
+#. [side]: type=Orcish Warlord, id=Tish Golub
 #. [side]: type=Orcish Sovereign, id=Zorlan
 #. [side]: type=Orcish Warrior, id=T'bhan
 #. [side]: type=Orcish Warrior, id=Qgthun
 #. [side]: type=Great Troll, type=Troll Hero, id=Trgrau
-#. [side]: type=Orcish Warlord, id=Upgar
+#. [side]: type=Orcish Warrior, id=Tan-Garthak
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:46
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:42
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:76
@@ -358,7 +356,7 @@ msgstr "Grogor-Tuk"
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:142
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_Save_the_King.cfg:168
 msgid "Pillagers"
-msgstr ""
+msgstr "Saccheggiatori"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:56
@@ -445,7 +443,7 @@ msgstr "Sconfiggi Grogor-Tuk"
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:92
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:101
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:119
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:305
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:110
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:65
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:117
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:278
@@ -540,8 +538,6 @@ msgstr "Forte Miryen"
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_The_Road_to_Weldyn.cfg:79
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:274
-#, fuzzy
-#| msgid "Defeat enemy leader"
 msgid "Defeat the enemy leader"
 msgstr "Sconfiggi il comandante nemico"
 
@@ -657,24 +653,24 @@ msgstr "Leollyn"
 msgid "Hagha-Tan"
 msgstr "Hagha-Tan"
 
-#. [side]: type=Arch Mage, id=Leollyn
-#. [side]: type=Journeyman Mage
-#. [side]: type=King of Wesnoth, id=Garard
 #. [modify_side]
-#. [side]: type=King of Wesnoth, id=Garard II
-#. [side]: type=Mage Commander
-#. [side]
-#. [side]: type=General, id=Eldred
-#. [side]: type=General, id=Lowel
+#. [side]: type=Journeyman Mage
+#. [side]: type=Arch Mage, id=Leollyn
 #. [side]: type=General, id=Pilafman
 #. [side]: type=Lieutenant, id=Niktor
+#. [side]: type=King of Wesnoth, id=Garard
+#. [side]: type=Mage Commander
+#. [side]
+#. [side]: type=King of Wesnoth, id=Garard II
+#. [side]: type=General, id=Eldred
+#. [side]: type=General, id=Lowel
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:97
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg:20
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_Council_in_Weldyn.cfg:31
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:25
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:37
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:27
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:210
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:23
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:21
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:25
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:90
@@ -691,7 +687,7 @@ msgstr "Hagha-Tan"
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_Prince_of_Wesnoth.cfg:120
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:90
 msgid "Loyalists"
-msgstr ""
+msgstr "Lealisti"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:115
@@ -776,17 +772,13 @@ msgstr "Sei un uomo coraggioso, giovane amico."
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:227
-#, fuzzy
-#| msgid "I’ve told you, all of you have to be extra careful!"
 msgid "All of you have to be extra careful!"
 msgstr "Ve l’ho detto, dovete essere tutti estremamente cauti!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:231
-#, fuzzy
-#| msgid "Kill them all! For our murdered friends."
 msgid "Kill them all! For our murdered friend."
-msgstr "Sterminateli tutti! Per il nostro amico assassinato."
+msgstr "Sterminateli tutti! Per i nostri amici assassinati."
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:242
@@ -1051,7 +1043,7 @@ msgstr "Garrath"
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:45
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:62
 msgid "Bandits"
-msgstr ""
+msgstr "Banditi"
 
 #. [side]: type=Bandit, id=Harold
 #: data/campaigns/Delfadors_Memoirs/scenarios/06_Swamps_of_Illuven.cfg:57
@@ -1161,22 +1153,22 @@ msgstr ""
 msgid "Night in the Swamp"
 msgstr "Notte nella palude"
 
-#. [side]
-#. [side]: type=Death Knight, id=Arakar
 #. [side]: type=Death Knight, id=Rudimil
 #. [side]: type=Necromancer, id=Roth-Malal
 #. [side]: type=Necromancer, id=Barth-Malal
-#. [side]: type=Necromancer, id=Gruv-Malal
+#. [side]: type=Death Knight, id=Arakar
 #. [side]: type=Death Knight, id=Prepolur
 #. [side]: type=Dark Adept, id=Unuvim
-#. [side]: type=Lich, id=Iliah-Malal
-#. [side]: type=Necromancer, id=Maldun
-#. [side]: type=Death Knight, id=Alderoth
+#. [side]: type=Necromancer, id=Gruv-Malal
 #. [side]: type=Lich, id=Sagus
 #. [side]: type=Necromancer, id=Iliah-Malal
 #. [side]: type=Death Knight, id=Dirator
+#. [side]
+#. [side]: type=Lich, id=Iliah-Malal
+#. [side]: type=Necromancer, id=Maldun
+#. [side]: type=Death Knight, id=Alderoth
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:45
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:222
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:35
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:35
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:137
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:52
@@ -1190,7 +1182,7 @@ msgstr "Notte nella palude"
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:118
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:50
 msgid "Undead"
-msgstr ""
+msgstr "Non-morti"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:81
@@ -1280,7 +1272,7 @@ msgstr "Ur-Thorodor"
 #. [side]: type=Ancient Wose, id=Ur-Thorodor
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:48
 msgid "Wose"
-msgstr ""
+msgstr "Wose"
 
 #. [side]: type=Orcish Warrior, id=Tan-Garthak
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_Ur_Thorodor.cfg:61
@@ -1485,72 +1477,18 @@ msgstr "Sarà facile scoprirlo... colpiscilo e guarda se si sveglia!"
 msgid "<i>Thump</i>!"
 msgstr "<i>Thump</i>!"
 
-#. [message]: speaker={STRING}
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:59
-msgid "Do you serve Iliah-Malal, living man?"
-msgstr "Servi Ihiah-Malal, vivente?"
-
-#. [option]
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:61
-msgid "Yes, I serve him."
-msgstr "Sì, è il mio padrone."
-
-#. [message]: speaker={STRING}
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:65
-msgid "Then you will not mind if we kill you! Hahahahah!"
-msgstr "Allora non ti importa se ti uccideremo! Ah, ah, ah, ah!"
-
-#. [option]
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:70
-msgid "No, I do not."
-msgstr "No, non mi importa."
-
-#. [message]: speaker={STRING}
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:74
-msgid "Then you will die forever!"
-msgstr "Allora morirai una volta per tutte!"
-
-#. [message]: speaker={STRING}
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:106
-msgid "Iliah-Malal commands your death!"
-msgstr "Ihiah-Malal ti ordina di morire!"
-
-#. [message]: speaker=Arakar
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:133
-msgid "Destroy the intruder, my minions!"
-msgstr "Distruggete l’intruso, miei servi!"
-
-#. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:150
-msgid "Something does not feel right about those villages..."
-msgstr "Qualcosa non va in questi villaggi..."
-
-#. [message]: id=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:183
-msgid ""
-"I must find that artifact of which the ghost spoke; it sounds too powerful a "
-"thing to be left in Iliah-Malal’s hands."
-msgstr ""
-"Devo trovare l’artefatto di cui ha parlato lo spirito, sembra una cosa "
-"troppa potente da essere lasciata nelle mani di Iliah-Malal."
-
 #. [scenario]: id=09_Houses_of_the_Dead
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:191
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:4
 msgid "Houses of the Dead"
 msgstr "Le case dei morti"
 
 #. [side]
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:252
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:65
 msgid "Undead Followers"
-msgstr ""
-
-#. [unit]: id=Rorthin, type=Ghost
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:277
-msgid "Rorthin"
-msgstr "Rorthin"
+msgstr "Seguaci dei Non-morti"
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:287
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:92
 msgid ""
 "It was one of those moments that altered the destiny of the world. The orc "
 "warrior held many possibilities in his hand. He could simply have taken "
@@ -1567,7 +1505,7 @@ msgstr ""
 "con il suo pugno."
 
 #. [part]
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:290
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:95
 msgid ""
 "The blow interrupted Delfador’s meditation. He began to topple over to the "
 "ground, but before his head reached it he vanished as though he had never "
@@ -1578,34 +1516,77 @@ msgstr ""
 "lì. "
 
 #. [objective]: condition=win
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:301
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:106
 msgid "Move Delfador to the signpost"
 msgstr "Conduci Delfador al cartello"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:327
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:145
 msgid ""
 "Delfador opens his eyes and realizes he is <i>alone</i> in the <i>dark</i>."
 msgstr ""
 "Delfador apre gli occhi e capisce che è <i>da solo</i> nel <i>buio</i>."
 
-#. [scenario]: id=09_Houses_of_the_Dead
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:338
-msgid "Rattles"
-msgstr "Sonagli"
+#. [message]: speaker=Delfador
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:150
+msgid ""
+"This is surely the land of the dead... and it seems I am still alive. But "
+"then, as Leollyn warned, I can never return! I suppose I may as well explore."
+msgstr ""
+"Questa è senz’altro il regno dei morti... e sembra che io sia ancora vivo. "
+"Ma allora, se quello che mi ha detto Leollyn è vero, non potrò più tornare "
+"indietro! Suppongo che almeno potrei dare un’occhiata in giro."
+
+#. [unit]: id=Rorthin, type=Ghost
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:233
+msgid "Rorthin"
+msgstr "Rorthin"
+
+#. [message]: speaker=Rorthin
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:241
+msgid "A living man... so it is as Iliah-Malal says..."
+msgstr "Un uomo vivo... allora è come aveva detto Iliah-Malal..."
+
+#. [message]: speaker=Delfador
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:245
+msgid "Speak again, spirit! Tell me of yourself. Who is this Iliah-Malal?"
+msgstr "Parla ancora, spirito! Parlami di te. Chi è questo Iliah-Malal?"
+
+#. [message]: speaker=Rorthin
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:249
+msgid ""
+"My name is Rorthin. I died long ago, in a great battle... I have almost "
+"forgotten... Iliah-Malal is a living man, like you, who walks among the "
+"dead. He promises life to all those who follow him."
+msgstr ""
+"Mi chiamo Roland. Sono morto tanto tempo fa nel corso di una grande "
+"battaglia... me ne ero quasi dimenticato... Iliah-Malal è un uomo vivo, come "
+"te, che si muove tra i morti. Ha promesso una nuova vita a tutti coloro che "
+"lo seguiranno."
+
+#. [message]: speaker=Delfador
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:253
+msgid "I would very much like to meet Iliah-Malal. Where can I find him?"
+msgstr "Mi piacerebbe molto incontrare Iliah-Malal. Dove posso trovarlo?"
+
+#. [message]: speaker=Rorthin
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:257
+msgid ""
+"Follow the dry river, then the road to the signpost in the north. I will "
+"guide you. Enter the houses of the dead as you pass, for others here may "
+"help you."
+msgstr ""
+"Segui il fiume prosciugato, poi prendi la strada per il cartello a nord. Ti "
+"guiderò io. Entra nelle case dei morti quando passi, potresti trovare "
+"qualche altro disposto ad aiutarti."
 
 #. [scenario]: id=09_Houses_of_the_Dead
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:339
-msgid "Bones"
-msgstr "Ossa"
-
-#. [scenario]: id=09_Houses_of_the_Dead
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:344
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:289
 msgid "Penella"
 msgstr "Penella"
 
 #. [message]: speaker=Penella
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:347
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:292
 msgid ""
 "Do not fear me, Delfador. It is my doom to appear as you see me. I was a "
 "serf of a cruel lord. He demanded great taxes to fight many wars... then "
@@ -1618,12 +1599,12 @@ msgstr ""
 "fui costretto a mangiare la carne dei morti."
 
 #. [scenario]: id=09_Houses_of_the_Dead
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:354
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:299
 msgid "Roddry"
 msgstr "Roddry"
 
 #. [message]: speaker=Roddry
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:357
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:302
 msgid ""
 "Have you encountered the skeletons? Their castle lies north of here. It is "
 "difficult to attack, but there is a secret entrance in the valley beyond "
@@ -1633,35 +1614,35 @@ msgstr ""
 "da attaccare, ma c’è un ingresso segreto nella valle dietro al villaggio di "
 "Sythan."
 
-#. [scenario]: id=09_Houses_of_the_Dead
 #. [unit]: id=Nameless, type=Spectre
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:360
+#. [scenario]: id=09_Houses_of_the_Dead
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:305
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:186
 msgid "Nameless"
 msgstr "Innominato"
 
 #. [message]: speaker=Nameless
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:363
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:308
 msgid "I died a long time ago. I have forgotten my name."
 msgstr "Sono morto tanto tempo fa. Ho dimenticato il mio nome."
 
 #. [scenario]: id=09_Houses_of_the_Dead
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:366
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:311
 msgid "Melinna"
 msgstr "Melinna"
 
 #. [message]: speaker=Melinna
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:369
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:314
 msgid ""
 "Iliah-Malal says that he can open a portal to the world of the living. Those "
 "who follow him will walk the earth as they did in life."
 msgstr ""
-"Ihiah-Malal dice che è in grado di aprire un portale che conduce al mondo "
+"Iliah-Malal dice che è in grado di aprire un portale che conduce al mondo "
 "dei vivi. I suoi seguaci torneranno a muoversi sulla terra così come "
 "facevano quando erano in vita."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:373
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:318
 msgid ""
 "Why are the dead so restless? This should be a place of rest and peace for "
 "you."
@@ -1670,35 +1651,35 @@ msgstr ""
 "cui riposare in pace."
 
 #. [message]: speaker=Melinna
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:377
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:322
 msgid ""
 "Once, I was happy here, but Iliah-Malal made me see this land as the eyes of "
 "the living see it... a place of rock and dust."
 msgstr ""
-"Una volta ero felice qui, ma Ihiah-Malal mi ha fatto vedere questa terra nel "
+"Una volta ero felice qui, ma Iliah-Malal mi ha fatto vedere questa terra nel "
 "modo in cui i vivi la vedono.... una zona di rocce e polvere."
 
 #. [scenario]: id=09_Houses_of_the_Dead
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:380
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:325
 msgid "Sythan"
 msgstr "Sythan"
 
 #. [message]: speaker=Sythan
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:383
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:328
 msgid ""
 "I was once a great lord... I commanded armies! Iliah-Malal promised I would "
 "lead again."
 msgstr ""
-"Una volta ero un grande signore.... ho comandato degli eserciti! Ihiah-Malal "
+"Una volta ero un grande signore.... ho comandato degli eserciti! Iliah-Malal "
 "mi ha promesso che guiderò di nuovo eserciti."
 
 #. [scenario]: id=09_Houses_of_the_Dead
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:386
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:331
 msgid "Hereld"
 msgstr "Hereld"
 
 #. [message]: speaker=Hereld
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:389
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:334
 msgid ""
 "Beware the skeletons! They are not the spirits of dead men, but the "
 "creations of evil magic."
@@ -1707,12 +1688,12 @@ msgstr ""
 "derivate dall’uso della magia nera."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:393
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:338
 msgid "What else do you know of the skeletons?"
 msgstr "Cos’altro sai sugli scheletri?"
 
 #. [message]: speaker=Hereld
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:397
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:342
 msgid ""
 "It is said that they guard a powerful magical artifact. Roddry knows more "
 "than I do; he lives to the west."
@@ -1720,72 +1701,78 @@ msgstr ""
 "Si dice che sono i guardiani di un potente manufatto magico. Roderick ne sa "
 "più di me; vive a ovest."
 
+#. [message]: id=Delfador
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:371
+msgid ""
+"I must find that artifact of which the ghost spoke; it sounds too powerful a "
+"thing to be left in Iliah-Malal’s hands."
+msgstr ""
+"Devo trovare l’artefatto di cui ha parlato lo spirito, sembra una cosa "
+"troppa potente da essere lasciata nelle mani di Iliah-Malal."
+
 #. [message]: speaker=Delfador
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:398
+msgid "Something does not feel right about those villages..."
+msgstr "Qualcosa non va in questi villaggi..."
+
+#. [unit]: type=Skeleton, id=Rattles
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:412
+msgid "Rattles"
+msgstr "Sonagli"
+
+#. [message]: speaker=Rattles
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:423
+msgid "Do you serve Iliah-Malal, living man?"
+msgstr "Servi Iliah-Malal, vivente?"
+
+#. [option]
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:425
+msgid "Yes, I serve him."
+msgstr "Sì, è il mio padrone."
+
+#. [message]: speaker=Rattles
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:429
+msgid "Then you will not mind if we kill you! Hahahahah!"
+msgstr "Allora non ti importa se ti uccideremo! Ah, ah, ah, ah!"
+
+#. [option]
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:434
-msgid ""
-"This is surely the land of the dead... and it seems I am still alive. But "
-"then, as Leollyn warned, I can never return! I suppose I may as well explore."
-msgstr ""
-"Questa è senz’altro il regno dei morti... e sembra che io sia ancora vivo. "
-"Ma allora, se quello che mi ha detto Leollyn è vero, non potrò più tornare "
-"indietro! Suppongo che almeno potrei dare un’occhiata in giro."
+msgid "No, I do not."
+msgstr "No, non mi importa."
 
-#. [message]: speaker=Rorthin
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:464
-msgid "A living man... so it is as Iliah-Malal says..."
-msgstr "Un uomo vivo... allora è come aveva detto Ihiah-Malal..."
+#. [message]: speaker=Rattles
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:438
+msgid "Then you will die forever!"
+msgstr "Allora morirai una volta per tutte!"
 
-#. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:468
-msgid "Speak again, spirit! Tell me of yourself. Who is this Iliah-Malal?"
-msgstr "Parla ancora, spirito! Parlami di te. Chi è questo Ihiah-Malal?"
+#. [unit]: type=Skeleton, id=Bones
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:455
+msgid "Bones"
+msgstr "Ossa"
 
-#. [message]: speaker=Rorthin
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:472
-msgid ""
-"My name is Rorthin. I died long ago, in a great battle... I have almost "
-"forgotten... Iliah-Malal is a living man, like you, who walks among the "
-"dead. He promises life to all those who follow him."
-msgstr ""
-"Mi chiamo Roland. Sono morto tanto tempo fa nel corso di una grande "
-"battaglia... me ne ero quasi dimenticato... Ihiah-Malal è un uomo vivo, come "
-"te, che si muove tra i morti. Ha promesso una nuova vita a tutti coloro che "
-"lo seguiranno."
-
-#. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:476
-msgid "I would very much like to meet Iliah-Malal. Where can I find him?"
-msgstr "Mi piacerebbe molto incontrare Iliah-Malal. Dove posso trovarlo?"
-
-#. [message]: speaker=Rorthin
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:480
-msgid ""
-"Follow the dry river, then the road to the signpost in the north. I will "
-"guide you. Enter the houses of the dead as you pass, for others here may "
-"help you."
-msgstr ""
-"Segui il fiume prosciugato, poi prendi la strada per il cartello a nord. Ti "
-"guiderò io. Entra nelle case dei morti quando passi, potresti trovare "
-"qualche altro disposto ad aiutarti."
+#. [message]: speaker=Bones
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:466
+msgid "Iliah-Malal commands your death!"
+msgstr "Iliah-Malal ti ordina di morire!"
 
 #. [message]: speaker=narrator
 #. The Tomb Guardian's dialogue should sound especially archaic
 #. and imperious. If your language has special forms for superior
 #. addressing inferior, use them here.
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:507
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:484
 msgid "WHO ENTERS THE TOMB OF AN-USRUKHAR?"
 msgstr "CHI ENTRA NELLA TOMBA DI AN-USRUKHAR?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:512
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:489
 msgid "I... I am Delfador, a mage of Wesnoth."
-msgstr "Io... io sono Delfor, un mago di Wesnoth."
+msgstr "Io... io sono Delfador, un mago di Wesnoth."
 
 #. [message]: speaker=narrator
 #. "bestrode" = past tense of archaic verb "bestride", literally
 #. meaning to straddle but with a secondary sense of "to
 #. dominate", and connotations of gigantism.
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:519
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:496
 msgid ""
 "I am the will of An-Usrukhar, greatest of mages, he who bestrode Irdya in "
 "the morning of time, who sleeps now in a death beyond death until the "
@@ -1796,7 +1783,7 @@ msgstr ""
 "alla fine del mondo."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:524
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:501
 msgid ""
 "I am only a man, a living man seeking a way home from the house of the dead."
 msgstr ""
@@ -1804,7 +1791,7 @@ msgstr ""
 "morti."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:528
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:505
 msgid ""
 "Living...? I see that it is so. Your breath stirs dust that has lain "
 "untouched since the Primal Aeon. And it was foretold that one like you would "
@@ -1814,7 +1801,7 @@ msgstr ""
 "intoccata dalla Prima Era. Ed era predetto che uno come te sarebbe venuto."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:533
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:510
 msgid "Foretold?"
 msgstr "Predetto?"
 
@@ -1822,7 +1809,7 @@ msgstr "Predetto?"
 #. "Aeon" is a variant form of the word English word "eon", used
 #. for a long and indefinite span of time. The variant has
 #. mystical connotations.
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:540
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:517
 msgid ""
 "Foretold in the Primal Aeon, years past beyond your counting. An-Usrukhar "
 "the Great, he of whom I am but the tiniest shade and fragment, foresaw in "
@@ -1838,7 +1825,7 @@ msgstr ""
 #. "coil" is an archaism. In the English of around 1600, it was
 #. used to refer to a difficulty or entanglement. Translate
 #. freely.
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:548
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:525
 msgid ""
 "I have felt the coils of prophecy on me before. I am beginning to dislike "
 "them."
@@ -1847,7 +1834,7 @@ msgstr ""
 "dispiacermene."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:552
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:529
 msgid ""
 "It is only given to the small not to feel the hand of fate on their "
 "shoulder; the great must suffer its weight whether they will or no. "
@@ -1858,7 +1845,7 @@ msgstr ""
 "mago di Wesnoth, SEI TU UN SERVITORE DELLA LUCE?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:557
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:534
 msgid "I serve my king and my kingdom."
 msgstr "Servo il mio re e il mio regno."
 
@@ -1867,7 +1854,7 @@ msgstr "Servo il mio re e il mio regno."
 #. Delfador can possibly know. It is now 470YW; in 501YW,
 #. Garard II will be murdered by his wife and son, and the
 #. usurpation of Asheviere will begin.
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:565
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:542
 msgid ""
 "Your king will die in an eyeblink and your kingdom in the drawing of a "
 "breath. Delfador, I ask you again, ARE YOU A SERVANT OF THE LIGHT?"
@@ -1876,7 +1863,7 @@ msgstr ""
 "respiro. Delfador, te lo chiedo di nuovo, SEI TU UN SERVITORE DELLA LUCE?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:570
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:547
 msgid "I serve my people and my land."
 msgstr "Servo la mia gente e la mia terra."
 
@@ -1884,7 +1871,7 @@ msgstr "Servo la mia gente e la mia terra."
 #. "matter" is used here with an archaic meaning, roughly
 #. that of "ground" or "essence".  This sense survives in
 #. modern English in constructions like "It matters a lot."
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:577
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:554
 msgid ""
 "Peoples vanish and lands wither under the pitiless gaze of eternity; the "
 "true matter of the world is deeper. Delfador, I ask you a third time, and on "
@@ -1896,7 +1883,7 @@ msgstr ""
 "UN SERVITORE DELLA LUCE?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:582
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:559
 msgid ""
 "I... I serve life against death. Love against fear. Light against darkness."
 msgstr ""
@@ -1904,7 +1891,7 @@ msgstr ""
 "contro l’oscurità."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:590
+#: data/campaigns/Delfadors_Memoirs/scenarios/09_Houses_of_the_Undead.cfg:567
 msgid ""
 "IT IS WELL. Take up, O servant of light, the Staff of An-Usrukhar. The "
 "trials before you will be great. So is its power."
@@ -1918,8 +1905,8 @@ msgid "The Gate Between Worlds"
 msgstr "Il Portale Tra i Mondi"
 
 #. [unit]: id=Iliah-Malal, type=Lich
-#. [side]: type=Lich, id=Iliah-Malal
 #. [side]: type=Necromancer, id=Iliah-Malal
+#. [side]: type=Lich, id=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_The_Gate_Between_Worlds.cfg:29
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_The_Portal_of_Doom.cfg:154
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:62
@@ -2009,7 +1996,7 @@ msgid ""
 "This portal Iliah-Malal has created is a great and terrible work of magic. I "
 "must catch him, and somehow force him to close it!"
 msgstr ""
-"Questo portale che Ihiah-Malal ha creato è una magia grande e terribile. "
+"Questo portale che Iliah-Malal ha creato è una magia grande e terribile. "
 "Devo catturarlo e in qualche modo costringerlo a chiuderlo!"
 
 #. [scenario]: id=11_Wasteland
@@ -2022,16 +2009,16 @@ msgstr "Landa Desolata"
 msgid "Tish Golub"
 msgstr "Tish Golub"
 
-#. [side]: type=Elvish Druid
 #. [side]: id=Delfador
 #. [side]: type=Elvish Captain, id=Clartakis
+#. [side]: type=Elvish Druid
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:52
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:42
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:178
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_Shadows.cfg:36
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_Prince_of_Wesnoth.cfg:53
 msgid "Elves"
-msgstr ""
+msgstr "Elfi"
 
 #. [side]: type=Elvish Druid
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_Wasteland.cfg:60
@@ -2052,7 +2039,7 @@ msgid ""
 "necromancer’s footsteps in a thick layer of snow. Eventually, even these "
 "became indistinct."
 msgstr ""
-"Dopo che Delfador ebbe seguito Ihiah-Malal attraverso il portale, si alzò un "
+"Dopo che Delfador ebbe seguito Iliah-Malal attraverso il portale, si alzò un "
 "vento gelido e l’aria divenne più densa con spettri che cercavano di farsi "
 "strada verso il regno dei vivi. Il terreno divenne di ghiaccio e ben presto "
 "Delfador dovette seguire le impronte del negromante in una spessa coltre di "
@@ -2064,7 +2051,7 @@ msgid ""
 "It’s hopeless, I’ve lost all track of Iliah-Malal... and I shall freeze "
 "unless I find shelter soon. Perhaps in that forest to the north..."
 msgstr ""
-"Non è possibile, ho perso le tracce di Ihiah-Malal... e diventerò un "
+"Non è possibile, ho perso le tracce di Iliah-Malal... e diventerò un "
 "ghiacciolo a meno che non trovi riparo al più presto. Forse in quella "
 "foresta a nord..."
 
@@ -2444,14 +2431,8 @@ msgstr "Obbedisco alla voce del Re. I miei uomini sono al tuo comando."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:474
-#, fuzzy
-#| msgid ""
-#| "To wake up the mages, move a unit that is currently out of sight of their "
-#| "tower to within visual range of it."
 msgid "To wake up the mages, move a unit near their tower."
-msgstr ""
-"Per svegliare i maghi, muovi un’unita che è attualmente fuori dalla vista "
-"della loro torre fino all’interno del raggio visivo di essa."
+msgstr "Per svegliare i maghi, muovi un’unità vicino alla loro torre."
 
 #. [message]: role=Teacher
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:587
@@ -3064,7 +3045,7 @@ msgstr ""
 "attraverso la Terra della Morte non semplicemente vivo ma puro. Ci ha "
 "aiutati a sconfiggere gli orchi quando minacciavano Lintanir, e ho "
 "combattuto i non-morti con lui al Guado di Parthyn. Sono venuta a nord anche "
-"perché pensavo di prendere il Libro di Crenulanu per portarlo da lui."
+"perché pensavo di prendere il Libro di Crelanu per portarlo da lui."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:294
@@ -3700,8 +3681,8 @@ msgstr ""
 "Penso che il nostro giovane e inesperto amico sopravvaluti il potere del "
 "nemico. Sono sicuro che non potranno resistere alle truppe di Wesnoth."
 
-#. [part]
 #. [side]: type=Lich, id=Sagus
+#. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_Dark_Sky_Over_Weldyn.cfg:59
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:44
 msgid "Sagus"
@@ -3910,7 +3891,7 @@ msgstr "Udrin"
 #. [side]: type=Dwarvish Lord
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:65
 msgid "Dwarves"
-msgstr ""
+msgstr "Nani"
 
 #. [side]: type=Necromancer, id=Gruv-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_A_New_Ally.cfg:71
@@ -4290,7 +4271,7 @@ msgid ""
 "Lionel marched north to join Delfador for the battle that would decide the "
 "fate of Wesnoth."
 msgstr ""
-"Usando i messaggeri nani e elfi, Delfafor fu in grado di comunicare le "
+"Usando i messaggeri nani e elfi, Delfador fu in grado di comunicare le "
 "notizie al Re e di chiedergli aiuto. Radunando tutte le truppe che poté "
 "trovare, Lionel marciò a nord per unirsi a Delfador nella battaglia che "
 "avrebbe deciso il destino di Wesnoth."
@@ -4747,13 +4728,13 @@ msgstr ""
 "Potrebbe essere. Ora penso che dovrei tornare a Palazzo più velocemente di "
 "quanto sia arrivato qui, anche se ho dovuto uccidere tre cavalli per farlo."
 
-#. [modify_side]
 #. [side]: type=Journeyman Mage
+#. [modify_side]
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_Prince_of_Wesnoth.cfg:240
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:51
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:34
 msgid "Rebels"
-msgstr ""
+msgstr "Ribelli"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_Prince_of_Wesnoth.cfg:248
@@ -5115,13 +5096,6 @@ msgstr ""
 "adiacente al mago combattono in modo più efficiente. Inoltre ha la capacità "
 "di guarire gli altri durante il combattimento."
 
-#. [attack]: type=impact
-#: data/campaigns/Delfadors_Memoirs/units/Mage_Commander.cfg:20
-#: data/campaigns/Delfadors_Memoirs/units/Mage_Leader.cfg:18
-#: data/campaigns/Delfadors_Memoirs/units/Mage_Magister.cfg:23
-msgid "staff"
-msgstr "bastone"
-
 #. [unit_type]: id=Mage Leader
 #: data/campaigns/Delfadors_Memoirs/units/Mage_Leader.cfg:7
 msgid "Mage Leader"
@@ -5165,16 +5139,6 @@ msgid ""
 msgstr ""
 "Questi wose sono capaci di comandare le piante della foresta come le viti e "
 "i rovi al fine di intrappolare i loro nemici."
-
-#. [attack]: type=impact
-#: data/campaigns/Delfadors_Memoirs/units/Wose_Shaman.cfg:32
-msgid "crush"
-msgstr "impatto"
-
-#. [attack]: type=impact
-#: data/campaigns/Delfadors_Memoirs/units/Wose_Shaman.cfg:41
-msgid "entangle"
-msgstr "rallentare"
 
 #: data/campaigns/Delfadors_Memoirs/utils/characters.cfg:4
 msgid "Kalenz"
@@ -5260,11 +5224,6 @@ msgstr "Solo un potente mago può impugnarlo."
 msgid "staff of power"
 msgstr "bastone del potere"
 
-#. [effect]: type=fire
-#: data/campaigns/Delfadors_Memoirs/utils/items.cfg:71
-msgid "lightning"
-msgstr "fulmine"
-
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/utils/misc.cfg:37
 msgid "A secret passage... I wonder where it leads..."
@@ -5314,6 +5273,21 @@ msgstr "Droni"
 #: data/campaigns/Delfadors_Memoirs/utils/sides.cfg:329
 msgid "Artor"
 msgstr "Artor"
+
+#~ msgid "Destroy the intruder, my minions!"
+#~ msgstr "Distruggete l’intruso, miei servi!"
+
+#~ msgid "staff"
+#~ msgstr "bastone"
+
+#~ msgid "crush"
+#~ msgstr "impatto"
+
+#~ msgid "entangle"
+#~ msgstr "rallentare"
+
+#~ msgid "lightning"
+#~ msgstr "fulmine"
 
 #~ msgid "Player"
 #~ msgstr "Giocatore"

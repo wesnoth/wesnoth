@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,24 +12,19 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #include "actions/attack.hpp"
 #include "attack_prediction.hpp"
-//#include "editor/editor_controller.hpp"
-//#include "editor/palette/terrain_palettes.hpp"
 #include "font/pango/escape.hpp"
-#include "font/standard_colors.hpp"
 #include "font/text_formatting.hpp"
-#include "game_preferences.hpp"
+#include "formatter.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
 #include "map/map.hpp"
 #include "font/marked-up_text.hpp"
 #include "mouse_events.hpp"
 #include "reports.hpp"
-#include "sdl/color.hpp"
-#include "strftime.hpp"
+#include "color.hpp"
 #include "team.hpp"
 #include "tod_manager.hpp"
 #include "units/unit.hpp"
@@ -38,7 +33,10 @@
 
 #include <cassert>
 #include <ctime>
+#include <iomanip>
 #include <boost/dynamic_bitset.hpp>
+
+#include "utils/io.hpp"
 
 static void add_text(config &report, const std::string &text,
 	const std::string &tooltip, const std::string &help = "")
@@ -204,7 +202,7 @@ static config unit_side(reports::context & rc, const unit* u)
 	if (!u) return config();
 
 	config report;
-	const team &u_team = rc.teams()[u->side() - 1];
+	const team &u_team = rc.dc().get_team(u->side());
 	std::string flag_icon = u_team.flag_icon();
 	std::string old_rgb = game_config::flag_rgb;
 	std::string new_rgb = u_team.color();
@@ -519,7 +517,7 @@ static config unit_defense(reports::context & rc, const unit* u, const map_locat
 
 	const t_translation::terrain_code &terrain = map[displayed_unit_hex];
 	int def = 100 - u->defense_modifier(terrain);
-	color_t color = color_t::from_argb_bytes(game_config::red_to_green(def));
+	color_t color = game_config::red_to_green(def);
 	str << span_color(color) << def << '%' << naps;
 	tooltip << _("Terrain: ") << "<b>" << map.get_terrain_info(terrain).description() << "</b>\n";
 
@@ -535,7 +533,7 @@ static config unit_defense(reports::context & rc, const unit* u, const map_locat
 				revert = false;
 			} else {
 				int t_def = 100 - u->defense_modifier(t);
-				color_t t_color = color_t::from_argb_bytes(game_config::red_to_green(t_def));
+				color_t t_color = game_config::red_to_green(t_def);
 				tooltip << '\t' << map.get_terrain_info(t).description() << ": "
 					<< span_color(t_color) << t_def << '%' << naps
 					<< (revert ? _("maximum^max.") : _("minimum^min.")) << '\n';
@@ -598,7 +596,7 @@ static config unit_moves(reports::context & rc, const unit* u)
 	for (; terrain_it != preferences::encountered_terrains().end();
 			++terrain_it) {
 		const t_translation::terrain_code terrain = *terrain_it;
-		if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER)
+		if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
 			continue;
 
 		const terrain_type& info = rc.map().get_terrain_info(terrain);
@@ -657,8 +655,8 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	int damage_multiplier = 100;
 	int tod_bonus = combat_modifier(rc.units(), rc.map(), displayed_unit_hex, u.alignment(), u.is_fearless());
 	damage_multiplier += tod_bonus;
-	int leader_bonus = 0;
-	if (under_leadership(rc.units(), displayed_unit_hex, &leader_bonus).valid())
+	int leader_bonus = under_leadership(rc.units(), displayed_unit_hex).first;
+	if (leader_bonus != 0)
 		damage_multiplier += leader_bonus;
 
 	bool slowed = u.get_state(unit::STATE_SLOWED);
@@ -755,7 +753,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	// We want weak resistances (= good damage) first.
 	std::map<int, std::set<std::string>, std::greater<int> > resistances;
 	std::set<std::string> seen_types;
-	const team &unit_team = rc.teams()[u.side() - 1];
+	const team &unit_team = rc.dc().get_team(u.side());
 	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
 	for (const unit &enemy : rc.units())
 	{
@@ -826,31 +824,21 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 }
 
 // Conversion routine for both unscathed and damage change percentage.
-static void format_prob(char str_buf[10], double prob)
+static std::string format_prob(double prob)
 {
-
 	if(prob > 0.9995) {
-		snprintf(str_buf, 10, "100 %%");
-	} else if(prob >= 0.1) {
-		snprintf(str_buf, 10, "%4.1f %%", 100.0 * prob);
-	} else {
-		snprintf(str_buf, 10, " %3.1f %%", 100.0 * prob);
+		return "100%";
 	}
-
-	str_buf[9] = '\0';  //prevents _snprintf error
+	std::ostringstream res;
+	res << std::setprecision(1) << std::setw(4) << 100.0 * prob << "%";
+	return res.str();
 }
 
-static void format_hp(char str_buf[10], int hp)
+static std::string format_hp(unsigned hp)
 {
-	if(hp < 10) {
-		snprintf(str_buf, 10, "   %i", hp);
-	} else if(hp < 99) {
-		snprintf(str_buf, 10, "  %i", hp);
-	} else {
-		snprintf(str_buf, 10, " %i", hp);
-	}
-
-	str_buf[9] = '\0';  //prevents _snprintf error
+	std::ostringstream res;
+	res << ' ' << std::setw(3) << hp;
+	return res.str();
 }
 
 static config unit_weapons(reports::context & rc, const unit *attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
@@ -906,7 +894,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 				<< _("Damage: ") << "<b>" << "0" << "</b>\n";
 		}
 
-		color_t chance_color = color_t::from_argb_bytes(game_config::red_to_green(chance_to_hit));
+		color_t chance_color = game_config::red_to_green(chance_to_hit);
 
 		// Total damage.
 		str << "  " << span_color(dmg_color) << total_damage << naps << span_color(font::weapon_color)
@@ -931,7 +919,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 
 			// We keep only values above 0.1%.
 			if(prob > 0.001)
-				prob_hp_vector.push_back(std::pair<double, int>(prob, i));
+				prob_hp_vector.emplace_back(prob, i);
 		}
 
 		std::sort(prob_hp_vector.begin(), prob_hp_vector.end());
@@ -945,8 +933,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 		for(i = prob_hp_vector.size() - nb_elem;
 				i < static_cast<int>(prob_hp_vector.size()); i++) {
 
-			hp_prob_vector.push_back(std::pair<int, double>
-			(prob_hp_vector[i].second, prob_hp_vector[i].first));
+			hp_prob_vector.emplace_back(prob_hp_vector[i].second, prob_hp_vector[i].first);
 		}
 
 		// Then, we sort the hitpoint values in ascending order.
@@ -954,23 +941,16 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 		// And reverse the order. Might be doable in a better manor.
 		std::reverse(hp_prob_vector.begin(), hp_prob_vector.end());
 
-		for(i = 0;
-				i < static_cast<int>(hp_prob_vector.size()); i++) {
+		for(i = 0; i < static_cast<int>(hp_prob_vector.size()); i++) {
 
 			int hp = hp_prob_vector[i].first;
 			double prob = hp_prob_vector[i].second;
-
-			char prob_buf[10];
-			format_prob(prob_buf, prob);
-			char hp_buf[10];
-			format_hp(hp_buf, hp);
-
-			color_t prob_color = color_t::from_argb_bytes(game_config::blue_to_white(prob * 100.0, true));
+			color_t prob_color = game_config::blue_to_white(prob * 100.0, true);
 
 			str		<< span_color(font::weapon_details_color) << "  " << "  "
-					<< span_color(u->hp_color(hp)) << hp_buf << naps
+					<< span_color(u->hp_color(hp)) << format_hp(hp) << naps
 					<< " " << font::weapon_numbers_sep << " "
-					<< span_color(prob_color) << prob_buf << naps
+					<< span_color(prob_color) << format_prob(prob) << naps
 					<< naps << "\n";
 		}
 
@@ -1131,8 +1111,11 @@ static config time_of_day_at(reports::context & rc, const map_location& mouseove
 		<< utils::signed_percent(-(std::abs(b))) << "</span>\n";
 
 	std::string tod_image = tod.image;
-	if (tod.bonus_modified > 0) tod_image += "~BRIGHTEN()";
-	else if (tod.bonus_modified < 0) tod_image += "~DARKEN()";
+	if(tod.bonus_modified > 0) {
+		tod_image += (formatter() << "~BLIT(" << game_config::images::tod_bright << ")").str();
+	} else if(tod.bonus_modified < 0) {
+		tod_image += (formatter() << "~BLIT(" << game_config::images::tod_dark << ")").str();
+	}
 
 	return image_report(tod_image, tooltip.str(), "time_of_day_" + tod.id);
 }
@@ -1187,7 +1170,7 @@ static config unit_box_at(reports::context & rc, const map_location& mouseover_h
 	const gamemap &map = rc.map();
 	t_translation::terrain_code terrain = map.get_terrain(mouseover_hex);
 
-	//if (terrain == t_translation::OFF_MAP_USER)
+	//if (t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
 	//	return config();
 
 	//if (map.is_keep(mouseover_hex)) {
@@ -1238,7 +1221,7 @@ REPORT_GENERATOR(gold, rc)
 	std::ostringstream str;
 	int viewing_side = rc.screen().viewing_side();
 	// Suppose the full unit map is applied.
-	int fake_gold = rc.teams()[viewing_side - 1].gold();
+	int fake_gold = rc.dc().get_team(viewing_side).gold();
 
 	if (rc.wb())
 		fake_gold -= rc.wb()->get_spent_gold_for(viewing_side);
@@ -1260,8 +1243,8 @@ REPORT_GENERATOR(villages, rc)
 {
 	std::ostringstream str;
 	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.teams()[viewing_side - 1];
-	team_data td = rc.dc().calculate_team_data(viewing_team, viewing_side);
+	const team &viewing_team = rc.dc().get_team(viewing_side);
+	team_data td = rc.dc().calculate_team_data(viewing_team);
 	str << td.villages << '/';
 	if (viewing_team.uses_shroud()) {
 		int unshrouded_villages = 0;
@@ -1285,8 +1268,8 @@ REPORT_GENERATOR(upkeep, rc)
 {
 	std::ostringstream str;
 	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.teams()[viewing_side - 1];
-	team_data td = rc.dc().calculate_team_data(viewing_team, viewing_side);
+	const team &viewing_team = rc.dc().get_team(viewing_side);
+	team_data td = rc.dc().calculate_team_data(viewing_team);
 	str << td.expenses << " (" << td.upkeep << ")";
 	return gray_inactive(rc,str.str());
 }
@@ -1294,8 +1277,8 @@ REPORT_GENERATOR(upkeep, rc)
 REPORT_GENERATOR(expenses, rc)
 {
 	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.teams()[viewing_side - 1];
-	team_data td = rc.dc().calculate_team_data(viewing_team, rc.screen().viewing_side());
+	const team &viewing_team = rc.dc().get_team(viewing_side);
+	team_data td = rc.dc().calculate_team_data(viewing_team);
 	return gray_inactive(rc,std::to_string(td.expenses));
 }
 
@@ -1303,8 +1286,8 @@ REPORT_GENERATOR(income, rc)
 {
 	std::ostringstream str;
 	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.teams()[viewing_side - 1];
-	team_data td = rc.dc().calculate_team_data(viewing_team, viewing_side);
+	const team &viewing_team = rc.dc().get_team(viewing_side);
+	team_data td = rc.dc().calculate_team_data(viewing_team);
 	char const *end = naps;
 	if (viewing_side != rc.screen().playing_side()) {
 		if (td.net_income < 0) {
@@ -1349,7 +1332,7 @@ REPORT_GENERATOR(terrain_info, rc)
 		return config();
 
 	t_translation::terrain_code terrain = map.get_terrain(mouseover_hex);
-	if (terrain == t_translation::OFF_MAP_USER)
+	if (t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
 		return config();
 
 	config cfg;
@@ -1371,7 +1354,7 @@ REPORT_GENERATOR(terrain_info, rc)
 	const t_translation::ter_list& underlying_terrains = map.underlying_union_terrain(terrain);
 	for (const t_translation::terrain_code& underlying_terrain : underlying_terrains) {
 
-		if (underlying_terrain == t_translation::OFF_MAP_USER)
+		if (t_translation::terrain_matches(underlying_terrain, t_translation::ALL_OFF_MAP))
 			continue;
 		const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
 		const std::string& terrain_name = map.get_terrain_string(underlying_terrain);
@@ -1387,13 +1370,13 @@ REPORT_GENERATOR(terrain, rc)
 {
 	const gamemap &map = rc.map();
 	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.teams()[viewing_side - 1];
+	const team &viewing_team = rc.dc().get_team(viewing_side);
 	map_location mouseover_hex = rc.screen().mouseover_hex();
 	if (!map.on_board(mouseover_hex) || viewing_team.shrouded(mouseover_hex))
 		return config();
 
 	t_translation::terrain_code terrain = map.get_terrain(mouseover_hex);
-	if (terrain == t_translation::OFF_MAP_USER)
+	if (t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
 		return config();
 
 	std::ostringstream str;
@@ -1448,7 +1431,7 @@ REPORT_GENERATOR(position, rc)
 	}
 
 	t_translation::terrain_code terrain = map[mouseover_hex];
-	if (terrain == t_translation::OFF_MAP_USER)
+	if (t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
 		return config();
 
 	std::ostringstream str;
@@ -1524,21 +1507,22 @@ REPORT_GENERATOR(edit_left_button_function)
 
 REPORT_GENERATOR(report_clock, /*rc*/)
 {
-	time_t t = std::time(nullptr);
-	struct tm *lt = std::localtime(&t);
-	if (!lt) return config();
-	char temp[15];
-	size_t s = util::strftime(temp, 15,
-		(preferences::use_twelve_hour_clock_format() ? _("%I:%M %p") : _("%H:%M")),
-		lt);
-	return s ? text_report(temp) : config();
+	std::ostringstream ss;
 
+	const char* format = preferences::use_twelve_hour_clock_format()
+		? "%I:%M %p"
+		: "%H:%M";
+
+	time_t t = std::time(nullptr);
+	ss << utils::put_time(std::localtime(&t), format);
+
+	return text_report(ss.str());
 }
 
 REPORT_GENERATOR(report_countdown, rc)
 {
 	int viewing_side = rc.screen().viewing_side();
-	const team &viewing_team = rc.teams()[viewing_side - 1];
+	const team &viewing_team = rc.dc().get_team(viewing_side);
 	int min, sec;
 	if (viewing_team.countdown_time() == 0)
 		return report_report_clock(rc);

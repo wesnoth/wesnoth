@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TERRAIN_FILTER_H_INCLUDED
-#define TERRAIN_FILTER_H_INCLUDED
+#pragma once
 
 #include "game_config.hpp"
 #include "pathutils.hpp"
@@ -85,6 +84,3 @@ private:
 	size_t max_loop_;
 	bool flat_;
 };
-
-#endif
-

@@ -69,12 +69,14 @@ def appveyor_vars():
 
     appveyor_url = environ.get('APPVEYOR_URL')
     message_extended = environ.get('APPVEYOR_REPO_COMMIT_MESSAGE_EXTENDED')
+    configuration_name = environ.get('CONFIGURATION')
     branch = environ.get('APPVEYOR_REPO_BRANCH')
     author = environ.get('APPVEYOR_REPO_COMMIT_AUTHOR')
     author_email = environ.get('APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL')
     timestamp = environ.get('APPVEYOR_REPO_COMMIT_TIMESTAMP')
     repo_provider = environ.get('APPVEYOR_REPO_PROVIDER')
     project_name = environ.get('APPVEYOR_PROJECT_NAME')
+    project_slug = environ.get('APPVEYOR_PROJECT_SLUG')
     pull_request_title = environ.get('APPVEYOR_PULL_REQUEST_TITLE')
     build_version = environ.get('APPVEYOR_BUILD_VERSION')
     commit = environ.get('APPVEYOR_REPO_COMMIT')
@@ -84,13 +86,14 @@ def appveyor_vars():
     repo_name = environ.get('APPVEYOR_REPO_NAME')
 
     short_commit = commit[:7]
-    build_url = '{appveyor_url}/project/{account_name}/{project_name}/build/{build_version}'.format(**locals())
+    build_url = '{appveyor_url}/project/{account_name}/{project_slug}/build/{build_version}'.format(**locals())
     commit_url = 'https://{repo_provider}.com/{repo_name}/commit/{commit}'.format(**locals())
 
     vars = dict(
         appveyor_url=appveyor_url,
         account_name=account_name,
         project_name=project_name,
+        project_slug=project_slug,
         build_version=build_version,
 
         build_url=build_url,
@@ -98,6 +101,7 @@ def appveyor_vars():
         repo_provider=repo_provider,
         repo_name=repo_name,
         branch=branch,
+        configuration_name=configuration_name,
         author=author,
         author_email=author_email,
         timestamp=timestamp,
@@ -113,6 +117,9 @@ def appveyor_vars():
 
         color_green='\x033',
         color_red='\x034',
+        bold='\x02',
+        underline='\x1f',
+        plain='\x0f',
     )
     return vars
 
@@ -129,32 +136,37 @@ if __name__ == '__main__':
     irc_username = 'Appveyor'
     irc_nick = irc_username + str(random.randint(1, 9999))
 
-    # establish connection
-    irc_sock = ssl.wrap_socket(socket.socket(socket.AF_INET, socket.SOCK_STREAM))
-    irc_sock.connect((socket.gethostbyname('chat.freenode.net'), 6697))
-    irc_sock.send('NICK {0}\r\nUSER {0} * 0 :{0}\r\n'.format(irc_username).encode())
-    irc_file = irc_sock.makefile()
+    try:
+        # establish connection
+        irc_sock = ssl.wrap_socket(socket.socket(socket.AF_INET, socket.SOCK_STREAM))
+        irc_sock.connect((socket.gethostbyname('chat.freenode.net'), 6697))
+        irc_sock.send('NICK {0}\r\nUSER {0} * 0 :{0}\r\n'.format(irc_username).encode('utf_8'))
+        irc_file = irc_sock.makefile()
 
-    while irc_file:
-        line = irc_file.readline()
-        print(line.rstrip())
-        response = line.split()
+        while irc_file:
+            line = irc_file.readline()
+            print(line.rstrip())
+            response = line.split()
 
-        if response[0] == 'PING':
-            irc_file.send('PONG {}\r\n'.format(reponse[1]).encode())
+            if response[0] == 'PING':
+                irc_file.send('PONG {}\r\n'.format(reponse[1]).encode('utf_8'))
 
-        elif response[1] == '433':
-            irc_sock.send('NICK {}\r\n'.format(irc_nick).encode())
+            elif response[1] == '433':
+                irc_sock.send('NICK {}\r\n'.format(irc_nick).encode('utf_8'))
 
-        elif response[1] == '001':
-            time.sleep(5)
-            # join the channel
-            irc_sock.send('JOIN {}\r\n'.format(channel).encode())
-            # send messages
-            for msg in messages:
-                print('NOTICE #{} :{}'.format(channel, msg))
-                irc_sock.send('NOTICE #{} :{}\r\n'.format(channel, msg).encode())
-            time.sleep(5)
-            # leave the channel
-            irc_sock.send('PART {}\r\n'.format(channel).encode())
-            sys.exit()
+            elif response[1] == '001':
+                time.sleep(5)
+                # join the channel
+                irc_sock.send('JOIN #{}\r\n'.format(channel).encode('utf_8'))
+                # send messages
+                for msg in messages:
+                    print('PRIVMSG #{} :{}'.format(channel, msg))
+                    irc_sock.send('PRIVMSG #{} :{}\r\n'.format(channel, msg).encode('utf_8'))
+                time.sleep(5)
+                # leave the channel
+                irc_sock.send('PART #{}\r\n'.format(channel).encode('utf_8'))
+                sys.exit()
+    except:
+        e = sys.exc_info()[0]
+        print(e)
+        sys.exit()

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -164,6 +164,9 @@ private:
 
 	/***** Handlers *****/
 
+	/** Fires a raw SDL event. */
+	void raw_event(const SDL_Event &event);
+
 	/** Fires a draw event. */
 	using events::sdl_handler::draw;
 	void draw(const bool force);
@@ -219,6 +222,14 @@ private:
 	dispatcher* keyboard_dispatcher();
 
 	/**
+	 * Fires a generic touch event.
+	 *
+	 * @param position               The position touched.
+	 * @param distance               The distance moved.
+	 */
+	void touch_motion(const point& position, const point& distance);
+
+	/**
 	 * Handles a hat motion event.
 	 *
 	 * @param event                  The SDL joystick hat event triggered.
@@ -267,6 +278,15 @@ private:
 	 * @param unicode                The unicode value for the text entered.
 	 */
 	void text_input(const std::string& unicode);
+
+	/**
+	 * Fires a text editing event.
+	 *
+	 * @param unicode                The unicode value for the text being edited.
+	 * @param start                  The start position for the text being edited.
+	 * @param len                    The selection length for the text being edited.
+	 */
+	void text_editing(const std::string& unicode, int32_t start, int32_t len);
 
 	/**
 	 * Fires a keyboard event which has no parameters.
@@ -410,7 +430,15 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			break;
 
 		case SDL_TEXTINPUT:
-			text_input(event.text.text);
+			key_down(event);
+			break;
+
+		case SDL_TEXTEDITING:
+			text_editing(event.edit.text, event.edit.start, event.edit.length);
+			break;
+
+		case SDL_FINGERMOTION:
+			touch_motion(point(event.tfinger.x, event.tfinger.y), point(event.tfinger.dx, event.tfinger.dy));
 			break;
 
 #if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
@@ -422,6 +450,8 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		// Silently ignored events.
 		case SDL_KEYUP:
 		case DOUBLE_CLICK_EVENT:
+		case SDL_FINGERUP:
+		case SDL_FINGERDOWN:
 			break;
 
 		default:
@@ -431,6 +461,8 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 #endif
 			break;
 	}
+
+	raw_event(event);
 }
 
 void sdl_event_handler::handle_window_event(const SDL_Event& event)
@@ -545,6 +577,15 @@ void sdl_event_handler::video_resize(const point& new_size)
 	}
 }
 
+void sdl_event_handler::raw_event(const SDL_Event& event) {
+	DBG_GUI_E << "Firing raw event\n";
+
+	for(auto dispatcher : dispatchers_)
+	{
+		dispatcher->fire(SDL_RAW_EVENT, dynamic_cast<widget&>(*dispatcher), event);
+	}
+}
+
 void sdl_event_handler::mouse(const ui_event event, const point& position)
 {
 	DBG_GUI_E << "Firing: " << event << ".\n";
@@ -594,9 +635,6 @@ void sdl_event_handler::mouse_button_up(const point& position, const Uint8 butto
 
 void sdl_event_handler::mouse_button_down(const point& position, const Uint8 button)
 {
-	// NOTE: despite previous code and observations to the contrary, I can no longer seem
-	//       to cause unhandled  event warnings to appear when clicking with the mouse wheel.
-	//       -- vultraz 11/30/16
 	switch(button) {
 		case SDL_BUTTON_LEFT:
 			mouse(SDL_LEFT_BUTTON_DOWN, position);
@@ -646,6 +684,13 @@ dispatcher* sdl_event_handler::keyboard_dispatcher()
 	return nullptr;
 }
 
+void sdl_event_handler::touch_motion(const point& position, const point& distance)
+{
+	for(auto& dispatcher : boost::adaptors::reverse(dispatchers_)) {
+		dispatcher->fire(SDL_TOUCH_MOTION , dynamic_cast<widget&>(*dispatcher), position, distance);
+	}
+}
+
 void sdl_event_handler::hat_motion(const SDL_Event& event)
 {
 	const hotkey::hotkey_ptr& hk = hotkey::get_hotkey(event);
@@ -680,13 +725,32 @@ void sdl_event_handler::key_down(const SDL_Event& event)
 		done = hotkey_pressed(hk);
 	}
 	if(!done) {
-		key_down(event.key.keysym.sym, static_cast<const SDL_Keymod>(event.key.keysym.mod), "");
+		if(event.type == SDL_TEXTINPUT) {
+			text_input(event.text.text);
+		} else {
+			key_down(event.key.keysym.sym, static_cast<const SDL_Keymod>(event.key.keysym.mod), "");
+		}
 	}
 }
 
 void sdl_event_handler::text_input(const std::string& unicode)
 {
 	key_down(SDLK_UNKNOWN, static_cast<SDL_Keymod>(0), unicode);
+
+	if(dispatcher* dispatcher = keyboard_dispatcher()) {
+		dispatcher->fire(SDL_TEXT_INPUT,
+			dynamic_cast<widget&>(*dispatcher),
+			unicode, -1, -1);
+	}
+}
+
+void sdl_event_handler::text_editing(const std::string& unicode, int32_t start, int32_t end)
+{
+	if(dispatcher* dispatcher = keyboard_dispatcher()) {
+		dispatcher->fire(SDL_TEXT_EDITING,
+			dynamic_cast<widget&>(*dispatcher),
+			unicode, start, end);
+	}
 }
 
 bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr key)
@@ -897,6 +961,12 @@ std::ostream& operator<<(std::ostream& stream, const ui_event event)
 		case SDL_KEY_DOWN:
 			stream << "SDL key down";
 			break;
+		case SDL_TEXT_INPUT:
+			stream << "SDL text input";
+			break;
+		case SDL_TEXT_EDITING:
+			stream << "SDL text editing";
+			break;
 
 		case NOTIFY_REMOVAL:
 			stream << "notify removal";
@@ -930,6 +1000,18 @@ std::ostream& operator<<(std::ostream& stream, const ui_event event)
 			break;
 		case REQUEST_PLACEMENT:
 			stream << "request placement";
+			break;
+		case SDL_TOUCH_MOTION:
+			stream << "SDL touch motion";
+			break;
+		case SDL_TOUCH_UP:
+			stream << "SDL touch up";
+			break;
+		case SDL_TOUCH_DOWN:
+			stream << "SDL touch down";
+			break;
+		case SDL_RAW_EVENT:
+			stream << "SDL raw event";
 			break;
 	}
 

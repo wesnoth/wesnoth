@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,8 +13,6 @@
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
-
-#include "global.hpp"
 
 #include "widgets/textbox.hpp"
 
@@ -109,10 +107,12 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const color
 	sdl_blit(text_image_,nullptr,new_surface,nullptr);
 	SDL_SetSurfaceBlendMode(text_image_, SDL_BLENDMODE_BLEND);
 
-	SDL_Rect target = sdl::create_rect(0
+	SDL_Rect target {
+			  0
 			, text_image_->h
 			, new_text->w
-			, new_text->h);
+			, new_text->h
+	};
 	SDL_SetSurfaceBlendMode(new_text, SDL_BLENDMODE_NONE);
 	sdl_blit(new_text,nullptr,new_surface,&target);
 	text_image_.assign(new_surface);
@@ -168,16 +168,17 @@ void textbox::set_cursor_pos(const int cursor_pos)
 	set_dirty(true);
 }
 
-void textbox::draw_cursor(int pos, CVideo &video) const
+void textbox::draw_cursor(int pos) const
 {
 	if(show_cursor_ && editable_ && enabled()) {
-		SDL_Rect rect = sdl::create_rect(location().x + pos
+		SDL_Rect rect {
+				  location().x + pos
 				, location().y
 				, 1
-				, location().h);
+				, location().h
+		};
 
-		surface frame_buffer = video.getSurface();
-		sdl::fill_rect(frame_buffer,&rect,SDL_MapRGB(frame_buffer->format,255,255,255));
+		sdl::fill_rectangle(rect, {255, 255, 255, 255});
 	}
 }
 
@@ -186,8 +187,13 @@ void textbox::draw_contents()
 	SDL_Rect const &loc = inner_location();
 
 	surface& surf = video().getSurface();
-	sdl::draw_solid_tinted_rectangle(loc.x,loc.y,loc.w,loc.h,0,0,0,
-				    focus(nullptr) ? alpha_focus_ : alpha_, surf);
+
+	color_t c(0, 0, 0);
+
+	double& alpha = focus(nullptr) ? alpha_focus_ : alpha_;
+	c.a = 255 * alpha;
+
+	sdl::fill_rectangle(loc, c);
 
 	SDL_Rect src;
 
@@ -226,8 +232,8 @@ void textbox::draw_contents()
 
 				const clip_rect_setter clipper(surf, &loc);
 
-				Uint32 color = SDL_MapRGB(surf->format, 0, 0, 160);
-				sdl::fill_rect_alpha(rect, color, 140, surf);
+				color_t c2(0, 0, 160, 140);
+				sdl::fill_rectangle(rect, c2);
 
 				starty += int(line_height_);
 				startx = 0;
@@ -246,9 +252,7 @@ void textbox::draw_contents()
 		}
 	}
 
-	draw_cursor((cursor_pos_ == 0 ? 0 : cursor_pos_ - 1), video());
-
-	update_rect(loc);
+	draw_cursor(cursor_pos_ == 0 ? 0 : cursor_pos_ - 1);
 }
 
 void textbox::set_editable(bool value)

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2010 - 2017 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,12 +12,11 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_EDITOR_EDIT_LABEL_HPP_INCLUDED
-#define GUI_DIALOGS_EDITOR_EDIT_LABEL_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "map/label.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 namespace gui2
 {
@@ -62,9 +61,9 @@ private:
 	void save_color_component(uint8_t color_t::* component, const int value);
 	void register_color_component(std::string widget_id, uint8_t color_t::* component);
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
+	/** Inherited from modal_dialog. */
+	virtual void pre_show(window& window) override;
 };
 } // namespace dialogs
 } // namespace gui2
-
-#endif /* ! GUI_DIALOGS_EDIT_LABEL_INCLUDED */

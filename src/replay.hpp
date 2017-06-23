@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  *  Replay control code.
  */
 
-#ifndef REPLAY_H_INCLUDED
-#define REPLAY_H_INCLUDED
+#pragma once
 
 #include "map/location.hpp"
 
@@ -96,7 +95,7 @@ public:
 	//undoable data includes moves such as placing a label or speaking, which is
 	//ignored by the undo system.
 	enum DATA_TYPE { ALL_DATA, NON_UNDO_DATA };
-	config get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type=ALL_DATA);
+	config get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type=ALL_DATA) const;
 
 	void undo();
 	/*
@@ -108,7 +107,7 @@ public:
 	/*
 		puts the given config which was cut with undo_cut back in the replay.
 	*/
-	void redo(const config& dst);
+	void redo(const config& dst, bool set_to_end = false);
 
 	void start_replay();
 	void revert_action();
@@ -117,7 +116,7 @@ public:
 	bool at_end() const;
 	void set_to_end();
 
-	bool empty();
+	bool empty() const;
 
 	enum MARK_SENT { MARK_AS_UNSENT, MARK_AS_SENT };
 	void add_config(const config& cfg, MARK_SENT mark=MARK_AS_UNSENT);
@@ -179,5 +178,3 @@ private:
 	replay& obj_;
 	int upto_;
 };
-
-#endif

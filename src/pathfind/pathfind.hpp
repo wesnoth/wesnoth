@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * This module contains various pathfinding functions and utilities.
  */
 
-#ifndef PATHFIND_H_INCLUDED
-#define PATHFIND_H_INCLUDED
+#pragma once
 
 class gamemap;
 class team;
@@ -303,5 +302,3 @@ private:
 	const bool ignore_units_;
 };
 }
-
-#endif

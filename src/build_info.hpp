@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 - 2016 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2015 - 2017 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef BUILD_CONFIG_HPP_INCLUDED
-#define BUILD_CONFIG_HPP_INCLUDED
+#pragma once
 
 #include <string>
 #include <vector>
@@ -25,6 +24,8 @@ enum LIBRARY_ID
 {
 	LIB_BOOST,
 
+	LIB_CRYPTO,
+
 	LIB_CAIRO,
 	LIB_PANGO,
 
@@ -32,7 +33,6 @@ enum LIBRARY_ID
 	LIB_SDL_IMAGE,
 	LIB_SDL_MIXER,
 	LIB_SDL_TTF,
-	LIB_SDL_NET,
 	LIB_PNG,
 
 	LIB_COUNT
@@ -76,6 +76,9 @@ const std::string& library_name(LIBRARY_ID lib);
  */
 std::string library_versions_report();
 
-} // end namespace game_config
+/**
+ * Produce a bug report-style info dump.
+ */
+std::string full_build_report();
 
-#endif
+} // end namespace game_config

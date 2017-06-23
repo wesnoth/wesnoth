@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 from subprocess import Popen, PIPE
 from time import clock, time
 import datetime

@@ -1,5 +1,5 @@
 /*
-   wesnoth menu styles Copyright (C) 2006 - 2016 by Patrick Parker <patrick_x99@hotmail.com>
+   wesnoth menu styles Copyright (C) 2006 - 2017 by Patrick Parker <patrick_x99@hotmail.com>
    wesnoth menu Copyright (C) 2003-5 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -15,12 +15,11 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include "widgets/menu.hpp"
 
 #include "font/sdl_ttf.hpp"
 #include "image.hpp"
+#include "sdl/utils.hpp"
 #include "video.hpp"
 
 namespace gui {

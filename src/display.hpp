@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,8 +30,7 @@
  *   for the current unit.
  */
 
-#ifndef DISPLAY_H_INCLUDED
-#define DISPLAY_H_INCLUDED
+#pragma once
 
 class config;
 class fake_unit_manager;
@@ -61,7 +60,6 @@ namespace wb {
 #include "theme.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
-#include "widgets/slider.hpp"
 
 #include "overlay.hpp"
 
@@ -172,10 +170,14 @@ public:
 	halo::manager & get_halo_manager() { return *halo_man_; }
 
 	/**
-	 * Add r,g,b from tod_manager to the map
+	 * Applies r,g,b coloring to the map.
 	 *
+	 * The color is usually taken from @ref get_time_of_day unless @a tod_override is given, in which
+	 * case that color is used.
+	 *
+	 * @param tod_override             The ToD to apply to the map instead of that of the current ToD's.
 	 */
-	void update_tod();
+	void update_tod(const time_of_day* tod_override = nullptr);
 
 	/**
 	 * Add r,g,b to the colors for all images displayed on the map.
@@ -214,7 +216,7 @@ public:
 		{ return theme_.unit_image_location(screen_area()); }
 
 	SDL_Rect screen_area() const
-		{ return sdl::create_rect(0, 0, w(), h()); }
+		{ return {0, 0, w(), h()}; }
 
 	/**
 	 * Returns the maximum area used for the map
@@ -372,6 +374,7 @@ public:
 	void clear_redraw_observers();
 
 	theme& get_theme() { return theme_; }
+	void set_theme(config theme_cfg);
 
 	/**
 	 * Retrieves a pointer to a theme UI button.
@@ -385,7 +388,6 @@ public:
 	 */
 	std::shared_ptr<gui::button> find_action_button(const std::string& id);
 	std::shared_ptr<gui::button> find_menu_button(const std::string& id);
-	std::shared_ptr<gui::zoom_slider> find_slider(const std::string& id);
 
 	gui::button::TYPE string_to_button_type(std::string type);
 	void create_buttons();
@@ -438,15 +440,6 @@ public:
 
 	void clear_mouseover_hex_overlay()
 		{ mouseover_hex_overlay_ = nullptr; }
-
-	/**
-	 * Debug function to toggle the "sunset" mode.
-	 * The map area become progressively darker,
-	 * except where hexes are refreshed.
-	 * delay is the number of frames between each darkening
-	 * (0 to toggle).
-	 */
-	static void sunset(const size_t delay = 0);
 
 	/** Toggle to continuously redraw the screen. */
 	static void toggle_benchmark();
@@ -505,14 +498,11 @@ public:
 	 */
 	bool scroll(int xmov, int ymov, bool force = false);
 
-	/**
-	 * Zooms the display by the specified amount.
-	 * Negative values zoom out.
-	 * Note the amount should be a multiple of four,
-	 * otherwise the images might start to look odd
-	 * (hex_width() gets rounding errors).
-	 */
-	bool set_zoom(int amount, bool absolute = false);
+	/** Zooms the display in (true) or out (false). */
+	bool set_zoom(bool increase);
+
+	/** Sets the display zoom to the specified amount. */
+	bool set_zoom(unsigned int amount, const bool validate_value_and_set_index = true);
 
 	bool zoom_at_max() const;
 	bool zoom_at_min() const;
@@ -568,7 +558,7 @@ public:
 	events::generic_event& complete_redraw_event() { return complete_redraw_event_; }
 
 	/** Check if a tile is fully visible on screen. */
-	bool tile_fully_on_screen(const map_location& loc);
+	bool tile_fully_on_screen(const map_location& loc) const;
 
 	/** Checks if location @a loc or one of the adjacent tiles is visible on screen. */
 	bool tile_nearly_on_screen(const map_location &loc) const;
@@ -645,10 +635,6 @@ protected:
 	/// map of hexes where only one unit should be drawn, the one identified by the associated id string
 	exclusive_unit_draw_requests_t exclusive_unit_draw_requests_;
 
-
-	/** Clear the screen contents */
-	void clear_screen();
-
 	/**
 	 * Called near the beginning of each draw() call.
 	 * Derived classes can use this to add extra actions before redrawing
@@ -699,19 +685,6 @@ protected:
 	 */
 	virtual void draw_sidebar() {}
 
-	/**
-	 * Draws the border tile overlay.
-	 * The routine determines by itself which border it is on
-	 * and draws an overlay accordingly. The definition of the
-	 * border is stored in the 'main_map_border' part of the theme.
-	 *
-	 * @param loc	the map location of the tile
-	 * @param xpos	the on-screen pixels x coordinate of the tile
-	 * @param ypos	the on-screen pixels y coordinate of the tile
-	 */
-	virtual void draw_border(const map_location& loc,
-		const int xpos, const int ypos);
-
 	void draw_minimap();
 
 	enum TERRAIN_TYPE { BACKGROUND, FOREGROUND};
@@ -734,12 +707,12 @@ protected:
 	CVideo& screen_;
 	size_t currentTeam_;
 	bool dont_show_all_; //const team *viewpoint_;
-	std::map<surface,SDL_Rect> energy_bar_rects_;
 	int xpos_, ypos_;
 	bool view_locked_;
 	theme theme_;
-	int zoom_;
-	static int last_zoom_;
+	static unsigned int zoom_;
+	int zoom_index_;
+	static unsigned int last_zoom_;
 	const std::unique_ptr<fake_unit_manager> fake_unit_man_;
 	const std::unique_ptr<terrain_builder> builder_;
 	surface minimap_;
@@ -776,7 +749,6 @@ protected:
 	std::map<std::string, surface> reportSurfaces_;
 	std::map<std::string, config> reports_;
 	std::vector<std::shared_ptr<gui::button>> menu_buttons_, action_buttons_;
-	std::vector<std::shared_ptr<gui::zoom_slider>> sliders_;
 	std::set<map_location> invalidated_;
 	std::set<map_location> previous_invalidated_;
 	surface mouseover_hex_overlay_;
@@ -811,7 +783,7 @@ public:
 	 * the layers should be safe.
 	 * If needed in WML use the name and map that to the enum value.
 	 */
-	enum drawing_layer{
+	enum drawing_layer {
 		LAYER_TERRAIN_BG,          /**<
 		                            * Layer for the terrain drawn behind the
 		                            * unit.
@@ -852,12 +824,7 @@ public:
 		LAYER_MOVE_INFO,           /**< Movement info (defense%, etc...). */
 		LAYER_LINGER_OVERLAY,      /**< The overlay used for the linger mode. */
 		LAYER_BORDER,              /**< The border of the map. */
-
-		LAYER_LAST_LAYER           /**<
-		                            * Don't draw to this layer it's a dummy to
-		                            * size the vector.
-		                            */
-		};
+	};
 
 	/**
 	 * Draw an image at a certain location.
@@ -873,7 +840,7 @@ public:
 	void render_image(int x, int y, const display::drawing_layer drawing_layer,
 			const map_location& loc, surface image,
 			bool hreverse=false, bool greyscale=false,
-			fixed_t alpha=ftofxp(1.0), Uint32 blendto=0,
+			fixed_t alpha=ftofxp(1.0), color_t blendto = {0,0,0},
 			double blend_ratio=0, double submerged=0.0,bool vreverse =false);
 
 	/**
@@ -921,8 +888,7 @@ protected:
 	private:
 		unsigned int key_;
 
-		static const drawing_layer layer_groups[];
-		static const unsigned int max_layer_group;
+		static const std::array<drawing_layer, 4> layer_groups;
 
 	public:
 		drawing_buffer_key(const map_location &loc, drawing_layer layer);
@@ -1096,7 +1062,3 @@ private:
 	display& display_;
 	bool blind;
 };
-
-
-#endif
-

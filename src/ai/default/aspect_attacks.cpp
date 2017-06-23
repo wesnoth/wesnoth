@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -78,7 +78,7 @@ std::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
 		const move_map& enemy_dstsrc = get_enemy_dstsrc();
 
 		std::shared_ptr<attacks_vector> res(new attacks_vector());
-		unit_map& units_ = *resources::units;
+		unit_map& units_ = resources::gameboard->units();
 
 		std::vector<map_location> unit_locs;
 		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
@@ -146,7 +146,7 @@ void aspect_attacks_base::do_attack_analysis(
 		return;
 	}
 	const gamemap &map_ = resources::gameboard->map();
-	unit_map &units_ = *resources::units;
+	unit_map &units_ = resources::gameboard->units();
 	std::vector<team> &teams_ = resources::gameboard->teams();
 
 
@@ -322,7 +322,7 @@ void aspect_attacks_base::do_attack_analysis(
 		if(cur_position != -1) {
 			units.erase(units.begin() + i);
 
-			cur_analysis.movements.push_back(std::pair<map_location,map_location>(current_unit,tiles[cur_position]));
+			cur_analysis.movements.emplace_back(current_unit,tiles[cur_position]);
 
 			cur_analysis.vulnerability += best_vulnerability;
 

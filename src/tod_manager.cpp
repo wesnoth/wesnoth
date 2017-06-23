@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Eugen Jiresch
+   Copyright (C) 2009 - 2017 by Eugen Jiresch
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,12 +21,11 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
-#include "random_new.hpp"
+#include "random.hpp"
 #include "units/unit.hpp"
 #include "units/abilities.hpp"
 #include "wml_exception.hpp"
 #include "resources.hpp"
-#include "config_assign.hpp"
 
 #include <algorithm>
 #include <iterator>
@@ -69,10 +68,15 @@ tod_manager& tod_manager::operator=(const tod_manager& manager)
 	turn_ = manager.turn_;
 	num_turns_ = manager.num_turns_;
 
+	has_turn_event_fired_ = manager.has_turn_event_fired_;
+	has_tod_bonus_changed_= manager.has_tod_bonus_changed_;
+
+	random_tod_ = manager.random_tod_;
+
 	return *this;
 }
 
-void tod_manager::resolve_random(random_new::rng& r)
+void tod_manager::resolve_random(randomness::rng& r)
 {
 	//process the random_start_time string, which can be boolean yes/no true/false or a
 	//comma-separated string of integers >= 1 referring to the times_ array indices
@@ -339,7 +343,7 @@ const std::set<map_location>& tod_manager::get_area_by_index(int index) const
 
 void tod_manager::add_time_area(const gamemap & map, const config& cfg)
 {
-	areas_.push_back(area_time_of_day());
+	areas_.emplace_back();
 	area_time_of_day &area = areas_.back();
 	area.id = cfg["id"].str();
 	area.xsrc = cfg["x"].str();
@@ -354,7 +358,7 @@ void tod_manager::add_time_area(const gamemap & map, const config& cfg)
 void tod_manager::add_time_area(const std::string& id, const std::set<map_location>& locs,
 		const config& time_cfg)
 {
-	areas_.push_back(area_time_of_day());
+	areas_.emplace_back();
 	area_time_of_day& area = areas_.back();
 	area.id = id;
 	area.hexes = locs;
@@ -410,12 +414,12 @@ void tod_manager::update_server_information() const
 		//NOTE: The current implementation does not guarnateee that the server gets informed
 		// about those changes in 100% of cases. But that is ok because the information is only
 		// used to display the turn limit in the lobby (as opposed to things that cause OOS).
-		resources::controller->send_to_wesnothd(config_of
-			("change_turns_wml", config_of
-				("current", turn_)
-				("max", num_turns_)
-			)
-		);
+		resources::controller->send_to_wesnothd(config {
+			"change_turns_wml", config {
+				"current", turn_,
+				"max", num_turns_,
+			},
+		});
 	}
 }
 void tod_manager::modify_turns_by_wml(const std::string& mod)
@@ -511,7 +515,7 @@ bool tod_manager::next_turn(game_data* vars)
 }
 
 
-bool tod_manager::is_time_left()
+bool tod_manager::is_time_left() const
 {
 	return num_turns_ == -1 || turn_ <= num_turns_;
 }

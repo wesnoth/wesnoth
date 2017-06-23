@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,10 +11,11 @@
 
    See the COPYING file for more details.
 */
-#ifndef SOUND_HPP_INCLUDED
-#define SOUND_HPP_INCLUDED
+
+#pragma once
 
 #include "events.hpp"
+#include "sound_music_track.hpp"
 
 #include <string>
 
@@ -41,7 +42,7 @@ void stop_UI_sound();
 void stop_bell();
 
 // Read config entry, alter track list accordingly.
-void play_music_config(const config &music_node);
+void play_music_config(const config &music_node, int i = -1);
 // Act on any track list changes from above.
 void commit_music_changes();
 
@@ -96,11 +97,17 @@ public:
 // Save music playlist for snapshot
 void write_music_play_list(config& snapshot);
 
+int get_music_volume();
+int get_sound_volume();
 void set_music_volume(int vol);
 void set_sound_volume(int vol);
 void set_bell_volume(int vol);
 void set_UI_volume(int vol);
 
-}
+unsigned int get_current_track();
+std::shared_ptr<sound::music_track> get_previous_music_track();
+unsigned int get_num_tracks();
+void remove_track(unsigned int i);
+void play_track(unsigned int i);
 
-#endif
+}

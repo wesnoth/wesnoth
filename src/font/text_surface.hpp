@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by Chris Beck<render787@gmail.com>
+   Copyright (C) 2016 - 2017 by Chris Beck<render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,11 +12,10 @@
    See the COPYING file for more details.
 */
 
-#ifndef FONT_TEXT_SURFACE_HPP
-#define FONT_TEXT_SURFACE_HPP
+#pragma once
 
 #include "font_id.hpp" // for text_chunk
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include <SDL_ttf.h>
 
@@ -65,5 +64,3 @@ private:
 };
 
 } // end namespace font
-
-#endif

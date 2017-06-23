@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * for various mp server events, depending on the preference configuration.
  */
 
-#ifndef INCL_MP_UI_SOUNDS_HPP_
-#define INCL_MP_UI_SOUNDS_HPP_
+#pragma once
 
 #include<string>
 #include<vector>
@@ -45,5 +44,3 @@ namespace mp_ui_alerts {
 	// Note, this list of items must match those ids defined in data/gui/dialogs/mp_alerts_options.cfg
 	extern const std::vector<std::string> items;
 }
-
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,6 +16,8 @@
 
 #include "scripting/lua_common.hpp"
 #include "team.hpp"
+#include "resources.hpp" // for gameboard
+#include "game_board.hpp"
 
 #include <string>
 
@@ -64,14 +66,15 @@ static int impl_side_get(lua_State *L)
 	return_bool_attrib("shroud", t.uses_shroud());
 	return_bool_attrib("hidden", t.hidden());
 	return_bool_attrib("scroll_to_leader", t.get_scroll_to_leader());
-	return_string_attrib("flag", t.flag());
-	return_string_attrib("flag_icon", t.flag_icon());
+	return_string_attrib("flag", t.flag().empty() ? game_config::images::flag : t.flag());
+	return_string_attrib("flag_icon", t.flag_icon().empty() ? game_config::images::flag_icon : t.flag_icon());
 	return_tstring_attrib("user_team_name", t.user_team_name());
 	return_string_attrib("team_name", t.team_name());
 	return_string_attrib("faction", t.faction());
 	return_tstring_attrib("faction_name", t.faction_name());
 	return_string_attrib("color", t.color());
 	return_cstring_attrib("controller", t.controller().to_string().c_str());
+	return_bool_attrib("is_local", t.is_local());
 	return_string_attrib("defeat_condition", t.defeat_condition().to_string());
 	return_string_attrib("share_vision", t.share_vision().to_string());
 	return_float_attrib("carryover_bonus", t.carryover_bonus());
@@ -79,6 +82,10 @@ static int impl_side_get(lua_State *L)
 	return_bool_attrib("carryover_add", t.carryover_add());
 	return_bool_attrib("lost", t.lost());
 	return_bool_attrib("persistent", t.persistent());
+	return_bool_attrib("suppress_end_turn_confirmation", t.no_turn_confirmation());
+	return_string_attrib("share_vision", t.share_vision().to_string());
+	return_bool_attrib("share_maps", t.share_maps());
+	return_bool_attrib("share_view", t.share_view());
 
 	if (strcmp(m, "recruit") == 0) {
 		std::set<std::string> const &recruits = t.recruits();
@@ -90,6 +97,15 @@ static int impl_side_get(lua_State *L)
 		}
 		return 1;
 	}
+
+	// These are blocked together because they are all part of the team_data struct.
+	// Some of these values involve iterating over the units map to calculate them.
+	auto d = [&](){ return resources::gameboard->calculate_team_data(t); };
+	return_int_attrib("num_units", d().units);
+	return_int_attrib("total_upkeep", d().upkeep);
+	return_int_attrib("num_villages", d().villages);
+	return_int_attrib("expenses", d().expenses);
+	return_int_attrib("net_income", d().net_income);
 
 	return_cfg_attrib("__cfg", t.write(cfg));
 	if(luaW_getmetafield(L, 1, m)) {
@@ -130,6 +146,18 @@ static int impl_side_set(lua_State *L)
 	modify_bool_attrib("carryover_add", t.set_carryover_add(value));
 	modify_bool_attrib("lost", t.set_lost(value));
 	modify_bool_attrib("persistent", t.set_persistent(value));
+	modify_bool_attrib("suppress_end_turn_confirmation", t.set_no_turn_confirmation(value));
+	modify_bool_attrib("shroud", t.set_shroud(value));
+	modify_bool_attrib("fog", t.set_fog(value));
+	modify_string_attrib("flag_icon", t.set_flag_icon(value));
+	modify_string_attrib("share_vision", {
+		team::SHARE_VISION v;
+		if(v.parse(value)) {
+			t.set_share_vision(v);
+		} else {
+			return luaL_argerror(L, 3, "Invalid share_vision value (should be 'all', 'none', or 'shroud')");
+		}
+	});
 
 	if (strcmp(m, "carryover_bonus") == 0) {
 		t.set_carryover_bonus(luaL_checknumber(L, 3));
@@ -171,7 +199,7 @@ namespace lua_team {
 	{
 		luaL_newmetatable(L, Team);
 
-		static luaL_Reg const callbacks[] = {
+		static luaL_Reg const callbacks[] {
 			{ "__index", 	    &impl_side_get},
 			{ "__newindex",	    &impl_side_set},
 			{ "__eq",	        &impl_side_equal},
@@ -179,7 +207,7 @@ namespace lua_team {
 		};
 		luaL_setfuncs(L, callbacks, 0);
 
-		lua_pushstring(L, "side");
+		lua_pushstring(L, Team);
 		lua_setfield(L, -2, "__metatable");
 		// Side methods
 		luaW_getglobal(L, "wesnoth", "match_side");

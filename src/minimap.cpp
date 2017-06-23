@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,7 +14,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
 #include "minimap.hpp"
 
 #include "game_board.hpp"
@@ -23,8 +22,8 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "resources.hpp"
-#include "sdl/color.hpp"
-#include "sdl/utils.hpp"
+#include "color.hpp"
+#include "sdl/surface.hpp"
 #include "team.hpp"
 #include "terrain/type_data.hpp"
 #include "wml_exception.hpp"
@@ -32,7 +31,7 @@
 
 #include "game_display.hpp"
 
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 
 static lg::log_domain log_display("display");
 #define DBG_DP LOG_STREAM(debug, log_display)
@@ -99,11 +98,12 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 			// if not, only the bottom half-hexes are clipped
 			// and it looks asymmetrical.
 
-			SDL_Rect maprect = sdl::create_rect(
+			SDL_Rect maprect {
 					x * scale * 3 / 4 - (scale / 4)
 					, y * scale + scale / 4 * (is_odd(x) ? 1 : -1) - (scale / 4)
 					, 0
-					, 0);
+					, 0
+			};
 
 			if (preferences_minimap_draw_terrain) {
 
@@ -149,7 +149,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 							if(overlay != nullptr && overlay != tile) {
 								surface combined = create_neutral_surface(tile->w, tile->h);
-								SDL_Rect r = sdl::create_rect(0,0,0,0);
+								SDL_Rect r {0,0,0,0};
 								sdl_blit(tile, nullptr, combined, &r);
 								r.x = std::max(0, (tile->w - overlay->w)/2);
 								r.y = std::max(0, (tile->h - overlay->h)/2);
@@ -189,7 +189,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 					if (it == game_config::team_rgb_range.end()) {
 						col = color_t(0,0,0,0);
 					} else
-						col = color_t::from_argb_bytes(it->second.rep());
+						col = it->second.rep();
 
 					bool first = true;
 					const t_translation::ter_list& underlying_terrains = tdata.underlying_union_terrain(terrain);
@@ -200,7 +200,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 						if (it == game_config::team_rgb_range.end())
 							continue;
 
-						color_t tmp = color_t::from_argb_bytes(it->second.rep());
+						color_t tmp = it->second.rep();
 
 						if (fogged) {
 							if (tmp.b < 50) tmp.b = 0;
@@ -229,9 +229,9 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 							col.b = col.b - (col.b - tmp.b)/2;
 						}
 					}
-					SDL_Rect fillrect = sdl::create_rect(maprect.x, maprect.y, scale * 3/4, scale);
+					SDL_Rect fillrect {maprect.x, maprect.y, scale * 3/4, scale};
 					const Uint32 mapped_col = SDL_MapRGB(minimap->format,col.r,col.g,col.b);
-					sdl::fill_rect(minimap, &fillrect, mapped_col);
+					sdl::fill_surface_rect(minimap, &fillrect, mapped_col);
 				}
 			}
 
@@ -239,7 +239,12 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 				int side = (resources::gameboard ? resources::gameboard->village_owner(loc) : -1); //check needed for mp create dialog
 
-				color_t col = color_t::from_argb_bytes(game_config::team_rgb_range.find("white")->second.min());
+				// TODO: Add a key to [game_config][colors] for this
+				auto iter = game_config::team_rgb_range.find("white");
+				color_t col(255,255,255);
+				if(iter != game_config::team_rgb_range.end()) {
+					col = iter->second.min();
+				}
 
 				if (!fogged) {
 					if (side > -1) {
@@ -249,24 +254,24 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 						} else {
 
 							if (vw->owns_village(loc))
-								col = color_t::from_argb_bytes(game_config::color_info(preferences::unmoved_color()).rep());
+								col = game_config::color_info(preferences::unmoved_color()).rep();
 							else if (vw->is_enemy(side + 1))
-								col = color_t::from_argb_bytes(game_config::color_info(preferences::enemy_color()).rep());
+								col = game_config::color_info(preferences::enemy_color()).rep();
 							else
-								col = color_t::from_argb_bytes(game_config::color_info(preferences::allied_color()).rep());
+								col = game_config::color_info(preferences::allied_color()).rep();
 						}
 					}
 				}
 
-				SDL_Rect fillrect = sdl::create_rect(
+				SDL_Rect fillrect {
 						maprect.x
 						, maprect.y
 						, scale * 3/4
 						, scale
-				);
+				};
 
 				const Uint32 mapped_col = SDL_MapRGB(minimap->format,col.r,col.g,col.b);
-				sdl::fill_rect(minimap, &fillrect, mapped_col);
+				sdl::fill_surface_rect(minimap, &fillrect, mapped_col);
 
 			}
 

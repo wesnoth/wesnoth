@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:23 UTC\n"
-"PO-Revision-Date: 2014-10-19 21:37+0100\n"
+"POT-Creation-Date: 2017-03-23 08:11+0100\n"
+"PO-Revision-Date: 2017-03-27 20:45+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:9
@@ -34,10 +34,8 @@ msgstr "HdO"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:15
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(Desafiante)"
+msgstr "Desafiante"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:15
@@ -46,10 +44,8 @@ msgstr "Soldado raso"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
-#, fuzzy
-#| msgid "(Difficult)"
 msgid "Difficult"
-msgstr "(Difícil)"
+msgstr "Difícil"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
@@ -58,10 +54,8 @@ msgstr "Guerrero"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:17
-#, fuzzy
-#| msgid "(Nightmare)"
 msgid "Nightmare"
-msgstr "(Pesadilla)"
+msgstr "Pesadilla"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:17
@@ -150,11 +144,11 @@ msgid "Death of Kapou’e"
 msgstr "Muerte de Kapou'e"
 
 #. [side]: id=Kapou'e, type=Orcish Leader
-#. [side]
-#. [side]: type=General, id=Howgarth III
 #. [side]: type=Orcish Leader, id=Kapou'e
-#. [side]: type=Orcish Slayer, id=Rugh
+#. [side]
 #. [side]: id=Grüü, type=Great Troll
+#. [side]: type=General, id=Howgarth III
+#. [side]: type=Orcish Slayer, id=Rugh
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:64
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:43
@@ -190,11 +184,11 @@ msgstr "Kapou’e"
 msgid "Alber"
 msgstr "Alber"
 
-#. [side]: type=General, id=Lanbec'h
 #. [side]: type=Lieutenant, id=Alber
 #. [side]: type=General, id=Slowhand
 #. [side]
 #. [side]: type=General, id=Harman
+#. [side]: type=General, id=Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:82
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:61
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:34
@@ -242,16 +236,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:108
-#, fuzzy
-#| msgid ""
-#| "The peace treaty still held however, partially because the treaty — "
-#| "although arranged by the Northern Alliance — was between the local earls "
-#| "and the orcish tribes and didn’t have any direct connection with the "
-#| "Northern Alliance. The other — and perhaps the main — reason why the "
-#| "treaty held was that with the death of the Black Eye, the unity of the "
-#| "orcs was shattered and they once again descended into inner squabbling. "
-#| "Thus the years that followed were relatively peaceful and prosperous — at "
-#| "least for the humans."
 msgid ""
 "The peace treaty still held however, partially because the treaty — although "
 "arranged by the Northern Alliance — was between the local earls and the "
@@ -1445,10 +1429,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/05_To_the_Harbor_of_Tirigaz.cfg:138
-#, fuzzy
-#| msgid ""
-#| "Leaving most of his people at Barag Gór, Kapou’e, accompanied by the "
-#| "shamans and his warriors set off to Tirigaz."
 msgid ""
 "Leaving most of his people at Barag Gór, Kapou’e, accompanied by the shamans "
 "and his warriors, set off to Tirigaz."
@@ -1781,10 +1761,8 @@ msgstr "El desierto de la muerte"
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:20
-#, fuzzy
-#| msgid "Reach the Oasis"
 msgid "Reach the Oasis in the Southeast"
-msgstr "Llegue al oasis"
+msgstr "Alcance el oasis en el sureste"
 
 #. [side]: type=Assassin, type=Rogue, id=Ar-Dant
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:83
@@ -1793,18 +1771,18 @@ msgstr "Ar-Dant"
 
 #. [side]: type=Assassin, type=Rogue, id=Ar-Dant
 #. [side]: type=Giant Scorpion
-#. [side]: type=Dwarvish Steelclad, id=Darstang
-#. [side]: type=Bandit, id=Sagmar
-#. [side]: type=Grand Marshal, id=Earl Lanbec'h
-#. [side]: type=Orcish Warlord, id=Shan Taum
-#. [side]: type=General, id=Arthain
-#. [side]: type=Lieutenant, id=Hanak
 #. [side]: type=Elvish Champion, id=Thelarion
+#. [side]: type=Dwarvish Steelclad, id=Darstang
 #. [side]: type=General, id=Earl Lanbec'h
 #. [side]
+#. [side]: type=General, id=Arthain
+#. [side]: type=Lieutenant, id=Hanak
 #. [side]: type=General, id=Telthys
 #. [side]: type=General, id=Fredor
 #. [side]: type=General, id=Georan
+#. [side]: type=Grand Marshal, id=Earl Lanbec'h
+#. [side]: type=Orcish Warlord, id=Shan Taum
+#. [side]: type=Bandit, id=Sagmar
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:86
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:97
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
@@ -2160,14 +2138,9 @@ msgstr ""
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:200
-#, fuzzy
-#| msgid ""
-#| "Elves! You were right, Gork, this place is infested with the skinny "
-#| "weaklings."
 msgid "Elves! I was right, this place is infested with the skinny weaklings."
 msgstr ""
-"¡Elfos! Teníais razón, Gork, este lugar está infestado con los flacuchos "
-"enclenques."
+"¡Elfos! Tenía razón, este lugar está infestado con los flacuchos enclenques."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:206
@@ -2388,8 +2361,8 @@ msgstr ""
 "¡Por fin, las colinas de los lamentos! Ahora sólo podemos confiar en que "
 "todo salga bien."
 
-#. [message]: speaker=Grüü
 #. [message]: role=cannonfodder
+#. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:110
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:293
 msgid "Why?"
@@ -2543,19 +2516,13 @@ msgstr ""
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:201
-#, fuzzy
-#| msgid ""
-#| "Leave your people here Kapou’e — they are safe for the moment — and go "
-#| "defend Prestim. In the meantime, now that the council is complete again, "
-#| "we will decide. We may have to form the Great Horde again, and give you "
-#| "the leadership on it."
 msgid ""
 "Leave your people here Kapou’e — they are safe for the moment — and go "
 "defend Prestim. In the meantime, now that the council is complete again, we "
 "will decide. We may have to form the Great Horde again, and give you the "
 "leadership of it."
 msgstr ""
-"Dejad a vuestra gente aquí, Kapou'e - estarán a salvo por el momento - y "
+"Dejad a vuestra gente aquí, Kapou'e — estarán a salvo por el momento — y "
 "corred a defender Prestim. Mientras tanto, ahora que el consejo está "
 "completo de nuevo, decidiremos. Tal vez tendríamos que formar la Gran Horda "
 "de nuevo y daros el mando sobre ella."
@@ -2590,13 +2557,11 @@ msgstr ""
 
 #. [note]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:65
-#, fuzzy
-#| msgid "Note: whoever detonates the bridge will die."
 msgid "Whoever detonates the bridge will die."
-msgstr "Nota: quien quiera que vuele el puente morirá."
+msgstr "Quienquiera que vuele el puente morirá."
 
-#. [unit]: type=Elvish Champion, id=Thelarion
 #. [side]: type=Elvish Champion, id=Thelarion
+#. [unit]: type=Elvish Champion, id=Thelarion
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:88
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:62
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_The_Dwarvish_Stand.cfg:189
@@ -2832,9 +2797,9 @@ msgstr ""
 "¡Nadie podrá decir que los elfos fueron más valientes que nosotros, todos al "
 "ataque!"
 
-#. [side]: type=Grand Marshal, id=Earl Lanbec'h
-#. [unit]: type=General, id=Earl Lanbec'h
 #. [side]: type=General, id=Earl Lanbec'h
+#. [unit]: type=General, id=Earl Lanbec'h
+#. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:658
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:143
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:88
@@ -3758,7 +3723,7 @@ msgstr "Tiradlo al lago. Si se congela hasta morir, mucho mejor."
 #. [message]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:769
 msgid "You retrieve $amount_gold of Grüü's leftover gold."
-msgstr ""
+msgstr "Recibe $amount_gold del oro sobrante de Grüü."
 
 #. [scenario]: id=15_Civil_War
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/15_Civil_War.cfg:4
@@ -4097,14 +4062,6 @@ msgstr "¿Logros?"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:234
-#, fuzzy
-#| msgid ""
-#| "Well let’s see, first he betrays the trust of his sworn sovereign and "
-#| "becomes no less than a boot-licking spy for the humans. Then goes on to "
-#| "engineer the death of half of the Great Council and in doing so makes "
-#| "himself directly responsible for the deaths of hundreds of orcs. And best "
-#| "of all, he is directly responsible for a bloody civil war right at the "
-#| "time when his people are on the edge of total extermination!"
 msgid ""
 "Well let’s see, first he betrays the trust of his sworn sovereign and "
 "becomes no less than a boot-licking spy for the humans. Then he goes on to "
@@ -4114,12 +4071,11 @@ msgid ""
 "when his people are on the edge of total extermination!"
 msgstr ""
 "Bueno, veamos, primero traiciona la confianza del soberano al que prestó "
-"juramento y se vuelve nada más que un espía lame-botas de los humanos. "
+"juramento y se vuelve nada menos que un espía lame-botas de los humanos. "
 "Entonces continúa para tramar la muerte de la mitad del gran consejo y "
-"haciéndolo se vuelve directamente responsable por la muerte de cientos de "
-"orcos. Y lo mejor de todo, ¡él es directamente responsable por una "
-"sangrienta guerra civil justo cuando su gente está en el borde de la "
-"exterminación total!"
+"haciéndolo se vuelve directamente responsable de la muerte de cientos de "
+"orcos. Y lo mejor de todo, ¡es directamente responsable de una sangrienta "
+"guerra civil justo cuando su gente está al borde de la exterminación total!"
 
 #. [message]: speaker=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:240
@@ -4299,8 +4255,8 @@ msgstr "Hemos llegado, mi señor."
 msgid "Ahhh, perfect, more reinforcements."
 msgstr "Ahhh, perfecto, más refuerzos."
 
-#. [unit]: type=General, id=Howgarth III
 #. [side]: type=General, id=Howgarth III
+#. [unit]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:390
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:154
 msgid "Howgarth III"
@@ -4797,20 +4753,6 @@ msgstr ""
 "Los chamanes principiantes todavía son jóvenes y vigorosos, pero sus "
 "habilidades para lanzar hechizos aún necesita mejorar."
 
-#. [attack]: type=impact
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:25
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:25
-#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:25
-msgid "staff"
-msgstr "bastón"
-
-#. [attack]: type=pierce
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:34
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:34
-#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:34
-msgid "curse"
-msgstr "maldición"
-
 #. [unit_type]: id=Old Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:4
 msgid "Old Orcish Shaman"
@@ -4904,6 +4846,12 @@ msgstr "Flar’Tar"
 #: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:104
 msgid "The Great Horde: upkeep cost of every unit decreased by one."
 msgstr "La Gran Horda: costo de manutención de cada unidad disminuido por uno."
+
+#~ msgid "staff"
+#~ msgstr "bastón"
+
+#~ msgid "curse"
+#~ msgstr "maldición"
 
 #~ msgid "At the dawn of the third day, still more human forces arrived."
 #~ msgstr "Al amanecer del tercer día, aún más fuerzas humanas arribaban."

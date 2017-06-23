@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -49,20 +49,26 @@ void modeless_dialog::show(CVideo& video,
 
 	pre_show(*window_);
 
-	open_window_stack.push_back(window_);
-
 	if(allow_interaction) {
+		open_window_stack.push_back(window_);
 		window_->show_non_modal();
 	} else {
 		window_->show_tooltip(/*auto_close_time*/);
 	}
-
-	open_window_stack.pop_back();
 }
 
 void modeless_dialog::hide()
 {
 	if(window_) {
+		// Possible TODO: Only run through this loop if the window's show_mode_ == modal
+		// (For some reason, non-modal windows still have show_mode_ = modal.)
+		// Don't bother if show_mode_ == tooltip, because in that case we didn't add it anyway.
+		for(auto iter = open_window_stack.rbegin(); iter != open_window_stack.rend(); iter++) {
+			if(*iter == window_) {
+				open_window_stack.erase(std::next(iter).base());
+				break;
+			}
+		}
 		window_->undraw();
 		delete window_;
 		window_ = nullptr;

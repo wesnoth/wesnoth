@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -40,7 +40,7 @@ void one_item::set_item_shown(const unsigned index, const bool show)
 		do_deselect_item(index);
 
 		for(unsigned i = 1; i < get_item_count(); ++i) {
-			unsigned new_index = (index + i) % get_item_count(); 
+			unsigned new_index = (index + i) % get_item_count();
 			if(get_item_shown(new_index)) {
 				do_select_item(new_index);
 				break;

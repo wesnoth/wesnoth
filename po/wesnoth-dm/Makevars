@@ -8,7 +8,7 @@ subdir = po/$(DOMAIN)
 top_builddir = ../..
 
 # These options get passed to xgettext.
-XGETTEXT_OPTIONS = --from-code=UTF-8 --sort-by-file --keyword=sgettext --keyword=vgettext --keyword=_n:1,2 --keyword=sngettext:1,2 --keyword=vngettext:1,2
+XGETTEXT_OPTIONS = --from-code=UTF-8 --sort-by-file --keyword=sgettext --keyword=vgettext --keyword=_n:1,2 --keyword=sngettext:1,2 --keyword=vngettext:1,2 --add-comments=TRANSLATORS:
 
 # This is the copyright holder that gets inserted into the header of the
 # $(DOMAIN).pot file.  Set this to the copyright holder of the surrounding

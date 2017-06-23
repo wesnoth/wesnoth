@@ -19,8 +19,6 @@
  * See also the command line switches --logdomains and --log-@<level@>="domain".
  */
 
-#include "global.hpp"
-
 #include "log.hpp"
 
 #include <boost/date_time.hpp>
@@ -28,6 +26,8 @@
 #include <map>
 #include <sstream>
 #include <ctime>
+
+#include "utils/io.hpp"
 
 namespace {
 
@@ -172,28 +172,27 @@ bool broke_strict() {
 }
 
 std::string get_timestamp(const time_t& t, const std::string& format) {
-	char buf[100] = {0};
-	tm* lt = localtime(&t);
-	if (lt) {
-		strftime(buf, 100, format.c_str(), lt);
-	}
-	return buf;
+	std::ostringstream ss;
+
+	ss << utils::put_time(std::localtime(&t), format.c_str());
+
+	return ss.str();
 }
 std::string get_timespan(const time_t& t) {
-	char buf[100];
+	std::ostringstream sout;
 	// There doesn't seem to be any library function for this
 	const time_t minutes = t / 60;
 	const time_t days = minutes / 60 / 24;
 	if(t <= 0) {
-		strncpy(buf, "expired", 100);
+		sout << "expired";
 	} else if(minutes == 0) {
-		snprintf(buf, 100, "%ld seconds", t);
+		sout << t << " seconds";
 	} else if(days == 0) {
-		snprintf(buf, 100, "%ld hours, %ld minutes", minutes / 60, minutes % 60);
+		sout << minutes / 60 << " hours, " << minutes % 60 << " minutes";
 	} else {
-		snprintf(buf, 100, "%ld days, %ld hours, %ld minutes", days, (minutes / 60) % 24, minutes % 60);
+		sout << days << " days, " << (minutes / 60) % 24 << " hours, " << minutes % 60 << " minutes";
 	}
-	return buf;
+	return sout.str();
 }
 
 static void print_precise_timestamp(std::ostream & out)

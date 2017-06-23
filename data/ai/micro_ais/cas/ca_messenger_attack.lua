@@ -1,4 +1,4 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f_next_waypoint.lua"
@@ -10,7 +10,7 @@ local function messenger_find_enemies_in_way(messenger, goal_x, goal_y)
     -- @goal_x,@goal_y: coordinates of the goal toward which the messenger moves
     -- Returns proxy table for the first unit found, or nil if none was found
 
-    local path, cost = wesnoth.find_path(messenger, goal_x, goal_y, { ignore_units = true })
+    local path, cost = AH.find_path_with_shroud(messenger, goal_x, goal_y, { ignore_units = true })
     if cost >= 42424242 then return end
 
     -- The second path hex is the first that is important for the following analysis
@@ -23,7 +23,7 @@ local function messenger_find_enemies_in_way(messenger, goal_x, goal_y)
 
     -- After that, go through adjacent hexes of all the other path hexes
     for i = 2,#path do
-        local sub_path, sub_cost = wesnoth.find_path(messenger, path[i][1], path[i][2], { ignore_units = true })
+        local sub_path, sub_cost = AH.find_path_with_shroud(messenger, path[i][1], path[i][2], { ignore_units = true })
         if (sub_cost <= messenger.moves) then
             for xa,ya in H.adjacent_tiles(path[i][1], path[i][2]) do
                 local enemy = wesnoth.get_unit(xa, ya)
@@ -78,7 +78,7 @@ local function messenger_find_clearing_attack(messenger, goal_x, goal_y, cfg)
 
         -- Give a huge bonus for closeness to enemy_in_way
         local tmp_defender = wesnoth.get_unit(attack.target.x, attack.target.y)
-        local dist = H.distance_between(enemy_in_way.x, enemy_in_way.y, tmp_defender.x, tmp_defender.y)
+        local dist = wesnoth.map.distance_between(enemy_in_way.x, enemy_in_way.y, tmp_defender.x, tmp_defender.y)
 
         rating = rating + 100. / dist
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -74,7 +74,7 @@ void unit_advance::pre_show(window& window)
 		string_map column;
 
 		std::string image_string, name = sample.type_name();
-		
+
 		// This checks if we've finished iterating over the last unit type advancements
 		// and are into the modification-based advancements.
 		if(i >= last_real_advancement_) {

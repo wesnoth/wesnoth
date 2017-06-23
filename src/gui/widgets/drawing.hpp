@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,13 +12,14 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_DRAWING_HPP_INCLUDED
-#define GUI_WIDGETS_DRAWING_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/styled_widget.hpp"
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
+
+class config;
 
 namespace gui2
 {
@@ -34,11 +35,32 @@ namespace gui2
 class drawing : public styled_widget
 {
 public:
-	drawing() : styled_widget(COUNT), best_size_(0, 0)
+	drawing() : styled_widget(), best_size_(0, 0)
 	{
 	}
 
+	canvas& get_drawing_canvas()
+	{
+		return get_canvas(0);
+	}
+
+	void set_drawing_data(const ::config& cfg)
+	{
+		get_drawing_canvas().set_cfg(cfg);
+	}
+
+	void append_drawing_data(const ::config& cfg)
+	{
+		get_drawing_canvas().append_cfg(cfg);
+	}
+
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
+
+	/** See @ref widget::request_reduce_width. */
+	virtual void request_reduce_width(const unsigned maximum_width) override;
+
+	/** See @ref widget::request_reduce_height. */
+	virtual void request_reduce_height(const unsigned maximum_height) override;
 
 private:
 	/** See @ref widget::calculate_best_size. */
@@ -75,7 +97,6 @@ private:
 	 */
 	enum state_t {
 		ENABLED,
-		COUNT
 	};
 
 	/** When we're used as a fixed size item, this holds the best size. */
@@ -125,5 +146,3 @@ struct builder_drawing : public builder_styled_widget
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

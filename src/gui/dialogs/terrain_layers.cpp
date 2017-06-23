@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -87,19 +87,19 @@ void terrain_layers::pre_show(window& window)
 		std::ostringstream image_steam;
 
 		const int tz = game_config::tile_size;
-		SDL_Rect r = sdl::create_rect(0,0,tz,tz);
+		SDL_Rect r {0,0,tz,tz};
 
 		surface surf = image::get_image(img.get_filename());
 
 		// calculate which part of the image the terrain engine uses
 		if(loc_cut.valid()) {
 			// copied from image.cpp : load_image_sub_file()
-			r = sdl::create_rect(
+			r = {
 				((tz * 3) / 4) * loc_cut.x
 				, tz           * loc_cut.y + (tz / 2) * (loc_cut.x % 2)
 				, tz
 				, tz
-			);
+			};
 
 			if(img.get_center_x() >= 0 && img.get_center_y() >= 0) {
 				r.x += surf->w / 2 - img.get_center_x();
@@ -112,7 +112,7 @@ void terrain_layers::pre_show(window& window)
 		// Cut and mask the image
 		// ~CROP and ~BLIT have limitations, we do some math to avoid them
 		// TODO: ^ eh? what limitations?
-		SDL_Rect r2 = sdl::intersect_rects(r, sdl::create_rect(0,0,surf->w,surf->h));
+		SDL_Rect r2 = sdl::intersect_rects(r, {0,0,surf->w,surf->h});
 		if(r2.w > 0 && r2.h > 0) {
 			image_steam
 				<< "~BLIT(" << name

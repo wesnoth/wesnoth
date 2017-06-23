@@ -1,5 +1,6 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local M = wesnoth.map
 
 local herding_area = wesnoth.require "ai/micro_ais/cas/ca_herding_f_herding_area.lua"
 
@@ -46,21 +47,21 @@ function ca_herding_herd_sheep:execution(cfg)
     local c_x, c_y = cfg.herd_x, cfg.herd_y
     for _,single_sheep in ipairs(sheep_to_herd) do
         -- Farthest sheep goes first
-        local sheep_rating = H.distance_between(c_x, c_y, single_sheep.x, single_sheep.y) / 10.
+        local sheep_rating = M.distance_between(c_x, c_y, single_sheep.x, single_sheep.y) / 10.
         -- Sheep with no movement left gets big hit
         if (single_sheep.moves == 0) then sheep_rating = sheep_rating - 100. end
 
         for _,dog in ipairs(dogs) do
             local reach_map = AH.get_reachable_unocc(dog)
             reach_map:iter( function(x, y, v)
-                local dist = H.distance_between(x, y, single_sheep.x, single_sheep.y)
+                local dist = M.distance_between(x, y, single_sheep.x, single_sheep.y)
                 local rating = sheep_rating - dist
                 -- Needs to be on "far side" of sheep, wrt center for adjacent hexes
-                if (H.distance_between(x, y, c_x, c_y) <= H.distance_between(single_sheep.x, single_sheep.y, c_x, c_y))
+                if (M.distance_between(x, y, c_x, c_y) <= M.distance_between(single_sheep.x, single_sheep.y, c_x, c_y))
                     and (dist == 1)
                 then rating = rating - 1000 end
                 -- And the closer dog goes first (so that it might be able to chase another sheep afterward)
-                rating = rating - H.distance_between(x, y, dog.x, dog.y) / 100.
+                rating = rating - M.distance_between(x, y, dog.x, dog.y) / 100.
                 -- Finally, prefer to stay on path, if possible
                 if (wesnoth.match_location(x, y, H.get_child(cfg, "filter_location")) ) then rating = rating + 0.001 end
 

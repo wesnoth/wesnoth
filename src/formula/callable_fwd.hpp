@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2008 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,16 +12,35 @@
    See the COPYING file for more details.
 */
 
-#ifndef FORMULA_CALLABLE_FWD_HPP_INCLUDED
-#define FORMULA_CALLABLE_FWD_HPP_INCLUDED
+#pragma once
 
-namespace game_logic {
+#include <memory>
+#include <vector>
+#include <string>
 
+namespace wfl
+{
 class formula_callable;
 class formula_debugger;
-typedef std::shared_ptr<formula_callable> formula_callable_ptr;
-typedef std::shared_ptr<const formula_callable> const_formula_callable_ptr;
+
+struct callable_die_subscriber {
+	virtual void notify_dead() {}
+	virtual ~callable_die_subscriber() {}
+};
+
+enum FORMULA_ACCESS_TYPE { FORMULA_READ_ONLY, FORMULA_WRITE_ONLY, FORMULA_READ_WRITE };
+
+struct formula_input {
+	explicit formula_input(const std::string& name, FORMULA_ACCESS_TYPE access = FORMULA_READ_WRITE)
+		: name(name), access(access) {}
+
+	std::string name;
+	FORMULA_ACCESS_TYPE access;
+};
+
+using formula_input_vector = std::vector<formula_input>;
+using formula_callable_ptr       = std::shared_ptr<formula_callable>;
+using const_formula_callable_ptr = std::shared_ptr<const formula_callable>;
+using formula_seen_stack = std::vector<const_formula_callable_ptr>;
 
 }
-
-#endif

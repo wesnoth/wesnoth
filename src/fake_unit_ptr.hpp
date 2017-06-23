@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef INCL_FAKE_UNIT_HPP_
-#define INCL_FAKE_UNIT_HPP_
+#pragma once
 
 #include "units/ptr.hpp"
 
@@ -72,5 +71,3 @@ public:
 	explicit operator bool() const
 	{ return unit_.get() != nullptr; }
 };
-
-#endif

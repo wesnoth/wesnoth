@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2016 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2017 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -190,7 +190,7 @@ void recall::draw_hex(map_location const& hex)
 			number_text << font::unicode_minus << cost;
 		}
 		size_t font_size = 16;
-		color_t color; color.r = 255; color.g = 0; color.b = 0; //red
+		color_t color {255, 0, 0}; //red
 		resources::screen->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
 						number_text.str(), font_size, color, x_offset, y_offset);
 	}
@@ -204,7 +204,7 @@ void recall::redraw()
 action::error recall::check_validity() const
 {
 	//Check that destination hex is still free
-	if(resources::units->find(recall_hex_) != resources::units->end()) {
+	if(resources::gameboard->units().find(recall_hex_) != resources::gameboard->units().end()) {
 		return LOCATION_OCCUPIED;
 	}
 	//Check that unit to recall is still in side's recall list

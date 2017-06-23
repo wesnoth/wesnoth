@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -35,7 +35,6 @@
 #include "formatter.hpp"
 #include "game_board.hpp"
 #include "game_classification.hpp"
-#include "font/marked-up_text.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
@@ -60,7 +59,7 @@ game_stats::game_stats(const display_context& board, const int viewing_team, int
 	, selected_index_(selected_index)
 {
 	for(const auto& team : board_.teams()) {
-		team_data_.push_back(board_.calculate_team_data(team, team.side()));
+		team_data_.push_back(board_.calculate_team_data(team));
 	}
 }
 
@@ -73,6 +72,11 @@ unit_const_ptr game_stats::get_leader(const int side)
 	}
 
 	return nullptr;
+}
+
+static std::string controller_name(const team& t) {
+	static const t_string names[3] {_("controller^Human"), _("controller^Computer"), _("controller^Idle")};
+	return "    <span color='#808080'>(" + names[t.controller().v] + ")</span>";
 }
 
 void game_stats::pre_show(window& window)
@@ -127,7 +131,7 @@ void game_stats::pre_show(window& window)
 		column_stats["label"] = leader_image;
 		row_data_stats.emplace("team_leader_image", column_stats);
 
-		column_stats["label"] = leader_name;
+		column_stats["label"] = leader_name + "\n" + controller_name(team);
 		row_data_stats.emplace("team_leader_name", column_stats);
 
 		column_stats["label"] = data.teamname.empty() ? team.team_name() : data.teamname;
@@ -140,7 +144,7 @@ void game_stats::pre_show(window& window)
 				gold_str = utils::half_signed_value(data.gold);
 			}
 
-			column_stats["label"] = gold_str;
+			column_stats["label"] = data.gold < 0 ? "<span color='#ff0000'>" + gold_str + "</span>" : gold_str;
 			row_data_stats.emplace("team_gold", column_stats);
 
 			std::string village_count = std::to_string(data.villages);
@@ -175,7 +179,7 @@ void game_stats::pre_show(window& window)
 		column_settings["label"] = leader_image;
 		row_data_settings.emplace("team_leader_image", column_settings);
 
-		column_settings["label"] = leader_name;
+		column_settings["label"] = leader_name + "\n" + controller_name(team);
 		row_data_settings.emplace("team_leader_name", column_settings);
 
 		column_settings["label"] = std::to_string(team.side());

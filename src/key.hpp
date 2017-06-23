@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,10 +12,10 @@
    See the COPYING file for more details.
 */
 
-#ifndef KEY_HPP_INCLUDED
-#define KEY_HPP_INCLUDED
+#pragma once
 
 #include <cstdint>
+#include <SDL.h>
 
 /**
  * Class that keeps track of all the keys on the keyboard.
@@ -31,6 +31,5 @@ class CKey
 public:
 	CKey();
 	bool operator[](int k) const;
+	static bool is_uncomposable(const SDL_KeyboardEvent &event);
 };
-
-#endif

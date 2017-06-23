@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2017 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef GAME_CONFIG_MANAGER_HPP_INCLUDED
-#define GAME_CONFIG_MANAGER_HPP_INCLUDED
+
+#pragma once
 
 #include "commandline_options.hpp"
 #include "config_cache.hpp"
@@ -48,7 +48,7 @@ public:
 
 	void load_game_config_for_editor();
 	void load_game_config_for_game(const game_classification& classification);
-	void load_game_config_for_create(bool is_mp);
+	void load_game_config_for_create(bool is_mp, bool is_test = false);
 
 	static game_config_manager * get();
 
@@ -65,7 +65,6 @@ private:
 	// load_game_config() helper functions.
 	void load_addons_cfg();
 	void set_multiplayer_hashes();
-	void set_color_info();
 	void set_unit_data();
 
 	const commandline_options& cmdline_opts_;
@@ -82,5 +81,3 @@ private:
 
 	ter_data_cache tdata_;
 };
-
-#endif

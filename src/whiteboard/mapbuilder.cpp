@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2016 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2017 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -62,14 +62,14 @@ void mapbuilder::pre_build()
 	}
 
 	int current_side = resources::controller->current_side();
-	for (unit& u : *resources::units) {
+	for (unit& u : resources::gameboard->units()) {
 		bool on_current_side = (u.side() == current_side);
 
 		//Remove any unit the current side cannot see to avoid their detection by planning
 		//Units will be restored to the unit map by destruction of removers_
 
 		if(!on_current_side && !u.is_visible_to_team(resources::gameboard->teams()[viewer_team()], *resources::gameboard, false)) {
-			removers_.push_back(new temporary_unit_remover(*resources::units, u.get_location()));
+			removers_.push_back(new temporary_unit_remover(resources::gameboard->units(), u.get_location()));
 
 			//Don't do anything else to the removed unit!
 			continue;

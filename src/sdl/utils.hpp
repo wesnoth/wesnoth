@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,90 +14,18 @@
 
 /** @file */
 
-#ifndef SDL_UTILS_INCLUDED
-#define SDL_UTILS_INCLUDED
+#pragma once
 
-#include "sdl/color.hpp"
-#include "util.hpp"
+#include "color_range.hpp"
+#include "color.hpp"
+#include "sdl/surface.hpp"
+#include "utils/math.hpp"
 
 #include <SDL.h>
 
 #include <cstdlib>
-#include <iosfwd>
 #include <map>
 #include <string>
-
-SDL_Keycode sdl_keysym_from_name(const std::string& keyname);
-
-class surface
-{
-public:
-	surface() : surface_(nullptr)
-	{}
-
-	surface(SDL_Surface* surf) : surface_(surf)
-	{}
-
-	surface(const surface& s) : surface_(s.get())
-	{
-		add_surface_ref(surface_);
-	}
-
-	~surface()
-	{
-		free_surface();
-	}
-
-	void assign(SDL_Surface* surf)
-	{
-		assign_surface_internal(surf);
-	}
-
-	void assign(const surface& s)
-	{
-		assign_surface_internal(s.get());
-	}
-
-	surface& operator=(const surface& s)
-	{
-		assign(s);
-		return *this;
-	}
-
-	operator SDL_Surface*() const { return surface_; }
-
-	SDL_Surface* get() const { return surface_; }
-
-	SDL_Surface* operator->() const { return surface_; }
-
-	bool null() const { return surface_ == nullptr; }
-
-private:
-	static void add_surface_ref(SDL_Surface* surf)
-	{
-		if(surf) {
-			++surf->refcount;
-		}
-	}
-
-	void assign_surface_internal(SDL_Surface* surf)
-	{
-		add_surface_ref(surf); // Needs to be done before assignment to avoid corruption on "a = a;"
-		free_surface();
-		surface_ = surf;
-	}
-
-	void free_surface()
-	{
-		if(surface_) {
-			SDL_FreeSurface(surface_);
-		}
-	}
-
-	SDL_Surface* surface_;
-};
-
-bool operator<(const surface& a, const surface& b);
 
 inline void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* dst_rect){
 	SDL_BlitSurface(src, src_rect, dst, dst_rect);
@@ -109,16 +37,6 @@ inline void sdl_copy_portion(const surface& screen, SDL_Rect* screen_rect, surfa
 	SDL_BlitSurface(screen, screen_rect, dst, dst_rect);
 	SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_BLEND);
 }
-
-/**
- * This method blends a RGBA color. The method takes as input a surface,
- * the RGB color to blend and a value specifying how much blending to apply.
- * The blended color is returned.
- * Caution: if you use a transparent color,
- * make sure the resulting color is not equal to the transparent color.
- */
-Uint32 blend_rgba(const surface& surf, unsigned char r, unsigned char g, unsigned char b,
-		unsigned char a, unsigned char drop);
 
 /**
  * Check that the surface is neutral bpp 32.
@@ -142,16 +60,14 @@ surface create_neutral_surface(int w, int h);
  *  This means only the first column of the original is used for the destination.
  *  @param surf              The source surface.
  *  @param w                 The width of the resulting surface.
- *  @param optimize          Should the return surface be RLE optimized.
  *
- *  @return                  An optimized surface.
+ *  @return                  A surface.
  *                           returned.
  *  @retval 0                Returned upon error.
- *  @retval surf             Returned if w == surf->w, note this ignores the
- *                           optimize flag.
+ *  @retval surf             Returned if w == surf->w.
  */
 surface stretch_surface_horizontal(
-	const surface& surf, const unsigned w, const bool optimize = true);
+	const surface& surf, const unsigned w);
 
 /**
  *  Stretches a surface in the vertical direction.
@@ -161,21 +77,19 @@ surface stretch_surface_horizontal(
  *  This means only the first row of the original is used for the destination.
  *  @param surf              The source surface.
  *  @param h                 The height of the resulting surface.
- *  @param optimize          Should the return surface be RLE optimized.
  *
- *  @return                  An optimized surface.
+ *  @return                  A surface.
  *                           returned.
  *
- *  @retval surf             Returned if h == surf->h, note this ignores the
- *                           optimize flag.
+ *  @retval surf             Returned if h == surf->h.
  */
 surface stretch_surface_vertical(
-	const surface& surf, const unsigned h, const bool optimize = true);
+	const surface& surf, const unsigned h);
 
 /** Scale a surface using xBRZ algorithm
  *  @param surf		     The source surface
  *  @param z                 The scaling factor. Should be an integer 2-5 (1 is tolerated).
- *  @return		     The scaled (optimized) surface
+ *  @return		     The scaled surface
  */
 surface scale_surface_xbrz(const surface & surf, size_t z);
 
@@ -187,57 +101,62 @@ surface scale_surface_xbrz(const surface & surf, size_t z);
  */
 surface scale_surface_nn(const surface & surf, int w, int h);
 
-/** Scale a surface
+/** Scale a surface using alpha-weighted modified bilinear filtering
+ *  Note: causes artifacts with alpha gradients, for example in some portraits
  *  @param surf              The source surface.
  *  @param w                 The width of the resulting surface.
  *  @param h                 The height of the resulting surface.
- *  @param optimize          Should the return surface be RLE optimized.
  *  @return                  A surface containing the scaled version of the source.
  *  @retval 0                Returned upon error.
- *  @retval surf             Returned if w == surf->w and h == surf->h
- *                           note this ignores the optimize flag.
+ *  @retval surf             Returned if w == surf->w and h == surf->h.
  */
-surface scale_surface(const surface &surf, int w, int h, bool optimize /*=true*/);
 surface scale_surface(const surface &surf, int w, int h);
-//commenting out the default parameter so that it is possible to make function pointers to the 3 parameter version
+
+/** Scale a surface using simple bilinear filtering (discarding rgb from source
+    pixels with 0 alpha)
+ *  @param surf              The source surface.
+ *  @param w                 The width of the resulting surface.
+ *  @param h                 The height of the resulting surface.
+ *  @return                  A surface containing the scaled version of the source.
+ *  @retval 0                Returned upon error.
+ *  @retval surf             Returned if w == surf->w and h == surf->h.
+ */
+surface scale_surface_legacy(const surface &surf, int w, int h);
 
 /** Scale a surface using modified nearest neighbour algorithm. Use only if
  * preserving sharp edges is a priority (e.g. minimap).
  *  @param surf              The source surface.
  *  @param w                 The width of the resulting surface.
  *  @param h                 The height of the resulting surface.
- *  @param optimize          Should the return surface be RLE optimized.
  *  @return                  A surface containing the scaled version of the source.
  *  @retval 0                Returned upon error.
- *  @retval surf             Returned if w == surf->w and h == surf->h
- *                           note this ignores the optimize flag.
+ *  @retval surf             Returned if w == surf->w and h == surf->h.
  */
-surface scale_surface_sharp(const surface& surf, int w, int h, bool optimize=true);
+surface scale_surface_sharp(const surface& surf, int w, int h);
 
 /** Tile a surface
  * @param surf               The source surface.
  * @param w                  The width of the resulting surface.
  * @param h                  The height of the resulting surface.
- * @param optimize           Should the return surface be RLE optimized
+ * @param centered           Whether to tile from the center outwards or from the top left (origin).
  * @return                   A surface containing the tiled version of the source.
  * @retval 0                 Returned upon error
- * @retval surf              Returned if w == surf->w and h == surf->h
- *                           note this ignores the optimize flag.
+ * @retval surf              Returned if w == surf->w and h == surf->h.
  */
-surface tile_surface(const surface &surf, int w, int h, bool optimize=true);
+surface tile_surface(const surface &surf, int w, int h, bool centered = true);
 
-surface adjust_surface_color(const surface &surf, int r, int g, int b, bool optimize=true);
-surface greyscale_image(const surface &surf, bool optimize=true);
-surface monochrome_image(const surface &surf, const int threshold, bool optimize=true);
-surface sepia_image(const surface &surf, bool optimize=true);
-surface negative_image(const surface &surf, const int thresholdR, const int thresholdG, const int thresholdB, bool optimize=true);
-surface alpha_to_greyscale(const surface & surf, bool optimize=true);
-surface wipe_alpha(const surface & surf, bool optimize=true);
+surface adjust_surface_color(const surface &surf, int r, int g, int b);
+surface greyscale_image(const surface &surf);
+surface monochrome_image(const surface &surf, const int threshold);
+surface sepia_image(const surface &surf);
+surface negative_image(const surface &surf, const int thresholdR, const int thresholdG, const int thresholdB);
+surface alpha_to_greyscale(const surface & surf);
+surface wipe_alpha(const surface & surf);
 /** create an heavy shadow of the image, by blurring, increasing alpha and darkening */
-surface shadow_image(const surface &surf, bool optimize=true);
+surface shadow_image(const surface &surf);
 
 enum channel { RED, GREEN, BLUE, ALPHA };
-surface swap_channels_image(const surface& surf, channel r, channel g, channel b, channel a, bool optimize=true);
+surface swap_channels_image(const surface& surf, channel r, channel g, channel b, channel a);
 
 /**
  * Recolors a surface using a map with source and converted palette values.
@@ -246,16 +165,12 @@ surface swap_channels_image(const surface& surf, channel r, channel g, channel b
  * @param surf               The source surface.
  * @param map_rgb            Map of color values, with the keys corresponding to the
  *                           source palette, and the values to the recolored palette.
- * @param optimize           Whether the new surface should be RLE encoded. Only
- *                           useful when the source is not the screen and it is
- *                           going to be used multiple times.
  * @return                   A recolored surface, or a null surface if there are
  *                           problems with the source.
  */
-surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb,
-	bool optimize=true);
+surface recolor_image(surface surf, const color_range_map& map_rgb);
 
-surface brighten_image(const surface &surf, fixed_t amount, bool optimize=true);
+surface brighten_image(const surface &surf, fixed_t amount);
 
 /** Get a portion of the screen.
  *  Send nullptr if the portion is outside of the screen.
@@ -268,8 +183,7 @@ surface brighten_image(const surface &surf, fixed_t amount, bool optimize=true);
 surface get_surface_portion(const surface &surf, SDL_Rect &rect);
 
 void adjust_surface_alpha(surface& surf, fixed_t amount);
-surface adjust_surface_alpha_add(const surface &surf, int amount, bool optimize=true);
-surface adjust_surface_alpha_formula(const surface &surf, const std::string& formula, bool optimize=true);
+surface adjust_surface_alpha_add(const surface &surf, int amount);
 
 /** Applies a mask on a surface. */
 surface mask_surface(const surface &surf, const surface &mask, bool* empty_result = nullptr, const std::string& filename = std::string());
@@ -282,9 +196,8 @@ bool in_mask_surface(const surface &surf, const surface &mask);
  *  @param depth             The height of the bottom part in pixels
  *  @param alpha_base        The alpha adjustment at the interface
  *  @param alpha_delta       The alpha adjustment reduction rate by pixel depth
- *  @param optimize          Optimize by converting to result to display
 */
-surface submerge_alpha(const surface &surf, int depth, float alpha_base, float alpha_delta, bool optimize=true);
+surface submerge_alpha(const surface &surf, int depth, float alpha_base, float alpha_delta);
 
 /**
  * Light surf using lightmap
@@ -293,18 +206,16 @@ surface submerge_alpha(const surface &surf, int depth, float alpha_base, float a
  *                           but RGB values are converted to (X-128)*2
  *                           to cover the full (-256,256) spectrum.
  *                           Should already be neutral
- * @param optimize           Whether the new surface should be RLE encoded.
 */
-surface light_surface(const surface &surf, const surface &lightmap, bool optimize=true);
+surface light_surface(const surface &surf, const surface &lightmap);
 
 /** Cross-fades a surface. */
-surface blur_surface(const surface &surf, int depth = 1, bool optimize=true);
+surface blur_surface(const surface &surf, int depth = 1);
 
 /**
  * Cross-fades a surface in place.
  *
- * @param surf                    The surface to blur, must be not optimized
- *                                and have 32 bits per pixel.
+ * @param surf                    The surface to blur, must have 32 bits per pixel.
  * @param rect                    The part of the surface to blur.
  * @param depth                   The depth of the blurring.
  */
@@ -316,7 +227,7 @@ void blur_surface(surface& surf, SDL_Rect rect, int depth = 1);
  * @todo FIXME: This is just an adapted copy-paste
  * of the normal blur but with blur alpha channel too
  */
-surface blur_alpha_surface(const surface &surf, int depth = 1, bool optimize=true);
+surface blur_alpha_surface(const surface &surf, int depth = 1);
 
 /** Cuts a rectangle from a surface. */
 surface cut_surface(const surface &surf, SDL_Rect const &r);
@@ -333,15 +244,13 @@ surface cut_surface(const surface &surf, SDL_Rect const &r);
  *                                [0, 1].
  * @param color                   The color to blend width, note its alpha
  *                                channel is ignored.
- * @param optimize                Should the return surface be RLE optimized.
  *
  * @return                        The blended surface.
  */
 surface blend_surface(
 		  const surface &surf
 		, const double amount
-		, const Uint32 color
-		, const bool optimize = true);
+		, const color_t color);
 
 /**
  * Rotates a surface by any degrees.
@@ -353,22 +262,20 @@ surface blend_surface(
  * @param angle                   The angle of rotation.
  * @param zoom                    Which zoom level to use for calculating the result.
  * @param offset                  Pixel offset when scanning the zoomed source.
- * @param optimize                Should the return surface be RLE optimized.
  *
  * @return                        The rotated surface.
  */
 surface rotate_any_surface(const surface& surf, float angle,
-		int zoom, int offset, bool optimize=true);
+		int zoom, int offset);
 
 /**
  * Rotates a surface 180 degrees.
  *
  * @param surf                    The surface to rotate.
- * @param optimize                Should the return surface be RLE optimized.
  *
  * @return                        The rotated surface.
  */
-surface rotate_180_surface(const surface &surf, bool optimize=true);
+surface rotate_180_surface(const surface &surf);
 
 /**
  * Rotates a surface 90 degrees.
@@ -376,14 +283,13 @@ surface rotate_180_surface(const surface &surf, bool optimize=true);
  * @param surf                    The surface to rotate.
  * @param clockwise               Whether the rotation should be clockwise (true)
  *                                or counter-clockwise (false).
- * @param optimize                Should the return surface be RLE optimized.
  *
  * @return                        The rotated surface.
  */
-surface rotate_90_surface(const surface &surf, bool clockwise, bool optimize=true);
+surface rotate_90_surface(const surface &surf, bool clockwise);
 
-surface flip_surface(const surface &surf, bool optimize=true);
-surface flop_surface(const surface &surf, bool optimize=true);
+surface flip_surface(const surface &surf);
+surface flop_surface(const surface &surf);
 surface create_compatible_surface(const surface &surf, int width = -1, int height = -1);
 
 /**
@@ -409,35 +315,6 @@ void blit_surface(const surface& src,
 
 SDL_Rect get_non_transparent_portion(const surface &surf);
 
-color_t inverse(const color_t& color);
-
-/**
- * Helper class for pinning SDL surfaces into memory.
- * @note This class should be used only with neutral surfaces, so that
- *       the pointer returned by #pixels is meaningful.
- */
-struct surface_lock
-{
-	surface_lock(surface &surf);
-	~surface_lock();
-
-	Uint32* pixels() { return reinterpret_cast<Uint32*>(surface_->pixels); }
-private:
-	surface& surface_;
-	bool locked_;
-};
-
-struct const_surface_lock
-{
-	const_surface_lock(const surface &surf);
-	~const_surface_lock();
-
-	const Uint32* pixels() const { return reinterpret_cast<const Uint32*>(surface_->pixels); }
-private:
-	const surface& surface_;
-	bool locked_;
-};
-
 /**
  * Helper methods for setting/getting a single pixel in an image.
  * Lifted from http://sdl.beuc.net/sdl.wiki/Pixel_Access
@@ -450,52 +327,7 @@ private:
 void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, Uint32 pixel);
 Uint32 get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x, int y);
 
-struct surface_restorer
-{
-	surface_restorer();
-	surface_restorer(class CVideo* target, const SDL_Rect& rect);
-	~surface_restorer();
-
-	void restore() const;
-	void restore(SDL_Rect const &dst) const;
-	void update();
-	void cancel();
-
-	const SDL_Rect& area() const { return rect_; }
-
-private:
-	class CVideo* target_;
-	SDL_Rect rect_;
-	surface surface_;
-};
-
-struct clip_rect_setter
-{
-	// if r is nullptr, clip to the full size of the surface.
-	clip_rect_setter(const surface &surf, const SDL_Rect* r, bool operate = true) : surface_(surf), rect_(), operate_(operate)
-	{
-		if(operate_){
-			SDL_GetClipRect(surface_, &rect_);
-			SDL_SetClipRect(surface_, r);
-		}
-	}
-
-	~clip_rect_setter() {
-		if (operate_)
-			SDL_SetClipRect(surface_, &rect_);
-	}
-
-private:
-	surface surface_;
-	SDL_Rect rect_;
-	const bool operate_;
-};
-
 // blit the image on the center of the rectangle
 // and a add a colored background
 void draw_centered_on_background(surface surf, const SDL_Rect& rect,
 	const color_t& color, surface target);
-
-std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect);
-
-#endif

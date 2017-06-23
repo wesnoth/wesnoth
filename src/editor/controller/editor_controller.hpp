@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_EDITOR_CONTROLLER_HPP_INCLUDED
-#define EDITOR_EDITOR_CONTROLLER_HPP_INCLUDED
+#pragma once
 
 #include "editor/editor_display.hpp"
 #include "editor/editor_main.hpp"
@@ -112,7 +111,7 @@ class editor_controller : public controller_base,
 		bool execute_command(const hotkey::hotkey_command& command, int index = -1, bool press=true) override;
 
 		/** controller_base override */
-		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp) override;
+		void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp) override;
 
 		void show_help() override;
 		void status_table() override;
@@ -167,6 +166,11 @@ class editor_controller : public controller_base,
 		void right_mouse_up(int x, int y, const bool browse) override;
 
 		virtual hotkey::command_executor * get_hotkey_command_executor() override;
+
+		map_context& get_current_map_context() const
+		{
+			return context_manager_->get_map_context();
+		}
 
 	protected:
 		/* controller_base overrides */
@@ -257,5 +261,3 @@ class editor_controller : public controller_base,
 };
 
 } //end namespace editor
-
-#endif

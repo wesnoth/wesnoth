@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_LUA_INT_HPP_INCLUDED
-#define GUI_DIALOGS_LUA_INT_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
 
@@ -38,7 +37,7 @@ public:
 	window* build_window(CVideo& video);
 
 	/** Inherited from modal_dialog. */
-	void pre_show(window& window);
+	virtual void pre_show(window& window) override;
 
 	enum WHICH_KERNEL { APP, GAME };
 	static void display(CVideo& video, lua_kernel_base * lk);
@@ -47,10 +46,8 @@ private:
 	const std::unique_ptr<controller> controller_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 };
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif /* ! GUI_DIALOGS_LUA_INT_HPP_INCLUDED */

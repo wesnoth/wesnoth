@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,18 +22,16 @@
 #include "ai/manager.hpp"
 #include "font/text_formatting.hpp"
 #include "formula/string_utils.hpp"
-#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "game_data.hpp"
 #include "map/map.hpp"
 #include "resources.hpp"
 #include "play_controller.hpp"
-#include "game_preferences.hpp"
-#include "sdl/color.hpp"
+#include "preferences/game.hpp"
+#include "color.hpp"
 #include "units/types.hpp"
 #include "synced_context.hpp"
 #include "whiteboard/side_actions.hpp"
-#include "config_assign.hpp"
 #include "serialization/string_utils.hpp"
 #include <boost/dynamic_bitset.hpp>
 
@@ -53,7 +51,7 @@ const int team::default_team_gold_ = 100;
 
 // Update this list of attributes if you change what is used to define a side
 // (excluding those attributes used to define the side's leader).
-const std::set<std::string> team::attributes = {"ai_config",
+const std::set<std::string> team::attributes {"ai_config",
 	"carryover_add", "carryover_percentage", "color", "controller", "current_player", "defeat_condition", "flag",
 	"flag_icon", "fog", "fog_data", "gold", "hidden", "income",
 	"no_leader", "objectives", "objectives_changed", "persistent", "lost",
@@ -62,7 +60,7 @@ const std::set<std::string> team::attributes = {"ai_config",
 	"suppress_end_turn_confirmation",
 	"team_name", "user_team_name", "side_name", "village_gold", "village_support", "is_local",
 	// Multiplayer attributes.
-	"player_id", "action_bonus_count", "allow_changes", "allow_player", "color_lock",
+	"player_id", "is_host","action_bonus_count", "allow_changes", "allow_player", "color_lock",
 	"countdown_time", "disallow_observers", "faction",
 	"faction_from_recruit", "faction_name", "gold_lock", "income_lock",
 	"leader", "random_leader", "team_lock", "terrain_liked",
@@ -105,7 +103,7 @@ team::team_info::team_info() :
 	hidden(true),
 	no_turn_confirmation(false),
 	color(),
-	side(0),
+	side(1),
 	persistent(false),
 	lost(false),
 	carryover_percentage(game_config::gold_carryover_percentage),
@@ -275,7 +273,10 @@ void team::team_info::write(config& cfg) const
 	cfg["carryover_bonus"] = carryover_bonus;
 	cfg["carryover_gold"] = carryover_gold;
 
-	cfg.add_child("variables", variables);
+	if(!variables.empty()) {
+		cfg.add_child("variables", variables);
+	}
+
 	cfg.add_child("ai", ai::manager::to_config(side));
 }
 
@@ -486,15 +487,16 @@ namespace
 		/// We are in a game with no mp server and need to do this choice locally
 		virtual config local_choice() const
 		{
-			return config_of("controller", new_controller_)("is_local", true);
+			return config {"controller", new_controller_, "is_local", true};
 		}
 		/// the request which is sended to the mp server.
 		virtual config request() const
 		{
-			return config_of
-				("new_controller", new_controller_)
-				("old_controller", team_.controller())
-				("side", team_.side());
+			return config {
+				"new_controller", new_controller_,
+				"old_controller", team_.controller(),
+				"side", team_.side(),
+			};
 		}
 		virtual const char* name() const
 		{
@@ -820,19 +822,19 @@ const color_range team::get_side_color_range(int side)
 		return(gp->second);
 	}
 
-	return(color_range(0x00FF0000,0x00FFFFFF,0x00000000,0x00FF0000));
+	return color_range({255, 0, 0}, {255, 255, 255}, {0, 0, 0}, {255, 0, 0});
 }
 
 color_t team::get_side_color(int side)
 {
-	return color_t::from_argb_bytes(get_side_color_range(side).mid());
+	return get_side_color_range(side).mid();
 }
 
 color_t team::get_minimap_color(int side)
 {
 	// Note: use mid() instead of rep() unless
 	// high contrast is needed over a map or minimap!
-	return color_t::from_argb_bytes(get_side_color_range(side).rep());
+	return get_side_color_range(side).rep();
 }
 
 std::string team::get_side_color_index(int side)
@@ -850,7 +852,7 @@ std::string team::get_side_color_index(int side)
 
 std::string team::get_side_highlight_pango(int side)
 {
-	return color_t::from_argb_bytes(get_side_color_range(side + 1).mid()).to_hex_string();
+	return get_side_color_range(side + 1).mid().to_hex_string();
 }
 
 void team::log_recruitable() const {

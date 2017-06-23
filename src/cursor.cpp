@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,9 +19,9 @@
 
 #include "cursor.hpp"
 
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "image.hpp"
-#include "preferences_display.hpp"
+#include "preferences/display.hpp"
 #include "sdl/rect.hpp"
 
 #include <iostream>
@@ -82,8 +82,8 @@ static SDL_Cursor* create_cursor(surface surf)
 
 namespace {
 
-SDL_Cursor* cache[cursor::NUM_CURSORS] = { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
-tribool cache_color[cursor::NUM_CURSORS] = {
+SDL_Cursor* cache[cursor::NUM_CURSORS] { nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
+tribool cache_color[cursor::NUM_CURSORS] {
 	indeterminate, indeterminate, indeterminate, indeterminate,
 	indeterminate, indeterminate, indeterminate, indeterminate,
 };
@@ -91,17 +91,17 @@ tribool cache_color[cursor::NUM_CURSORS] = {
 // This array must have members corresponding to cursor::CURSOR_TYPE enum members
 // Apple need 16x16 b&w cursors
 #ifdef __APPLE__
-const std::string bw_images[cursor::NUM_CURSORS] = { "normal.png", "wait-alt.png", "move.png", "attack.png", "select.png", "move_drag_alt.png" , "attack_drag_alt.png", "no_cursor.png"};
+const std::string bw_images[cursor::NUM_CURSORS] { "normal.png", "wait-alt.png", "move.png", "attack.png", "select.png", "move_drag_alt.png" , "attack_drag_alt.png", "no_cursor.png"};
 #else
-const std::string bw_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", "no_cursor.png"};
+const std::string bw_images[cursor::NUM_CURSORS] { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", "no_cursor.png"};
 #endif
 
-const std::string color_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", ""};
+const std::string color_images[cursor::NUM_CURSORS] { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", ""};
 
 // Position of the hotspot of the cursor, from the normal topleft
 // These are only for the color cursors
-const int shift_x[cursor::NUM_CURSORS] = {0, 0, 0, 0, 0, 2, 3, 0};
-const int shift_y[cursor::NUM_CURSORS] = {0, 0, 0, 0, 0, 20, 22, 0};
+const int shift_x[cursor::NUM_CURSORS] {0, 0, 0, 0, 0, 2, 3, 0};
+const int shift_y[cursor::NUM_CURSORS] {0, 0, 0, 0, 0, 20, 22, 0};
 
 cursor::CURSOR_TYPE current_cursor = cursor::NORMAL;
 

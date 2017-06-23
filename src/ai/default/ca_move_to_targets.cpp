@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -136,7 +136,7 @@ double move_to_targets_phase::evaluate()
 
 void move_to_targets_phase::execute()
 {
-	unit_map::const_iterator leader = resources::units->find_leader(get_side());
+	unit_map::const_iterator leader = resources::gameboard->units().find_leader(get_side());
 	LOG_AI << "finding targets...\n";
 	std::vector<target> targets;
 	for(;;) {
@@ -273,7 +273,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	log_scope2(log_ai_testing_ca_move_to_targets, "choosing move");
 
 	raise_user_interact();
-	unit_map &units_ = *resources::units;
+	unit_map &units_ = resources::gameboard->units();
 	const gamemap &map_ = resources::gameboard->map();
 
 	unit_map::iterator u;
@@ -314,7 +314,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 	for(std::vector<target>::iterator tg = targets.begin(); tg != targets.end(); ++tg) {
 		// passing a dummy route to have the maximal rating
 		double max_rating = rate_target(*tg, u, dstsrc, enemy_dstsrc, dummy_route);
-		rated_targets.push_back( rated_target(tg, max_rating) );
+		rated_targets.emplace_back(tg, max_rating);
 	}
 
 	//use stable_sort for the moment to preserve old AI behavior
@@ -563,7 +563,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 			for(std::set<map_location>::const_iterator j = mass_locations.begin(); j != mass_locations.end(); ++j) {
 				if(*j != best_loc && distance_between(*j,best_loc) < 3) {
 					LOG_AI << "found mass-to-attack target... " << *j << " with value: " << value*4.0 << "\n";
-					targets.push_back(target(*j,value*4.0,target::TYPE::MASS));
+					targets.emplace_back(*j,value*4.0,target::TYPE::MASS);
 					best_target = targets.end() - 1;
 				}
 			}
@@ -592,7 +592,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 						//try to take the target
 						if(is_dangerous) {
 							LOG_AI << "found reinforcement target... " << its.first->first << " with value: " << value*2.0 << "\n";
-							targets.push_back(target(its.first->first,value*2.0,target::TYPE::BATTLE_AID));
+							targets.emplace_back(its.first->first,value*2.0,target::TYPE::BATTLE_AID);
 						}
 
 						best_target->value = value;
@@ -618,7 +618,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 		//this sounds like the road ahead might be dangerous, and that's why we don't advance.
 		//create this as a target, attempting to rally units around
-		targets.push_back(target(best->get_location(), best_target->value));
+		targets.emplace_back(best->get_location(), best_target->value);
 		best_target = targets.end() - 1;
 		return std::make_pair(best->get_location(), best->get_location());
 	}
@@ -629,7 +629,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 void move_to_targets_phase::access_points(const move_map& srcdst, const map_location& u, const map_location& dst, std::vector<map_location>& out)
 {
-	unit_map &units_ = *resources::units;
+	unit_map &units_ = resources::gameboard->units();
 	const gamemap &map_ = resources::gameboard->map();
 	const unit_map::const_iterator u_it = units_.find(u);
 	if(u_it == units_.end()) {
@@ -678,7 +678,7 @@ void move_to_targets_phase::enemies_along_path(const std::vector<map_location>& 
 
 map_location move_to_targets_phase::form_group(const std::vector<map_location>& route, const move_map& dstsrc, std::set<map_location>& res)
 {
-	unit_map &units_ = *resources::units;
+	unit_map &units_ = resources::gameboard->units();
 	if(route.empty()) {
 		return map_location();
 	}
@@ -721,7 +721,7 @@ map_location move_to_targets_phase::form_group(const std::vector<map_location>& 
 
 bool move_to_targets_phase::move_group(const map_location& dst, const std::vector<map_location>& route, const std::set<map_location>& units)
 {
-	unit_map &units_ = *resources::units;
+	unit_map &units_ = resources::gameboard->units();
 	const gamemap &map_ = resources::gameboard->map();
 
 	const std::vector<map_location>::const_iterator itor = std::find(route.begin(),route.end(),dst);
@@ -823,7 +823,7 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 
 double move_to_targets_phase::rate_group(const std::set<map_location>& group, const std::vector<map_location>& battlefield) const
 {
-	unit_map &units_ = *resources::units;
+	unit_map &units_ = resources::gameboard->units();
 	const gamemap &map_ = resources::gameboard->map();
 
 	double strength = 0.0;

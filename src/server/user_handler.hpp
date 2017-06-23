@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+   Copyright (C) 2008 - 2017 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,13 +12,11 @@
    See the COPYING file for more details.
 */
 
-#ifndef USER_HANDLER_HPP_INCLUDED
-#define USER_HANDLER_HPP_INCLUDED
+#pragma once
 
 class config;
 
 #include "exceptions.hpp"
-#include "global.hpp"
 
 #include <string>
 
@@ -158,5 +156,3 @@ class user_handler {
 		 */
 		virtual std::string get_mail(const std::string& user) =0;
 };
-
-#endif //USER_HANDLER_HPP_INCLUDED

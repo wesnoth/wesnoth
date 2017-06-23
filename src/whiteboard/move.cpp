@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2016 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2017 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -100,8 +100,8 @@ move::move(config const& cfg, bool hidden)
 	, fake_unit_hidden_(false)
 {
 	// Construct and validate unit_
-	unit_map::iterator unit_itor = resources::units->find(cfg["unit_"]);
-	if(unit_itor == resources::units->end())
+	unit_map::iterator unit_itor = resources::gameboard->units().find(cfg["unit_"]);
+	if(unit_itor == resources::gameboard->units().end())
 		throw action::ctor_err("move: Invalid underlying_id");
 	unit_underlying_id_ = unit_itor->underlying_id();
 
@@ -111,7 +111,7 @@ move::move(config const& cfg, bool hidden)
 		throw action::ctor_err("move: Invalid route_");
 	route_->move_cost = route_cfg["move_cost"];
 	for(config const& loc_cfg : route_cfg.child_range("step")) {
-		route_->steps.push_back(map_location(loc_cfg["x"],loc_cfg["y"], wml_loc()));
+		route_->steps.emplace_back(loc_cfg["x"],loc_cfg["y"], wml_loc());
 	}
 	for(config const& mark_cfg : route_cfg.child_range("mark")) {
 		route_->marks[map_location(mark_cfg["x"],mark_cfg["y"], wml_loc())]
@@ -237,7 +237,7 @@ void move::execute(bool& success, bool& complete)
 		throw; // we rely on the caller to delete this action
 	}
 	const map_location & final_location = steps[num_steps];
-	unit_map::const_iterator unit_it = resources::units->find(final_location);
+	unit_map::const_iterator unit_it = resources::gameboard->units().find(final_location);
 
 	if ( num_steps == 0 )
 	{
@@ -245,7 +245,7 @@ void move::execute(bool& success, bool& complete)
 		success = false;
 		complete = true;
 	}
-	else if ( unit_it == resources::units->end()  ||  unit_it->id() != unit_id_ )
+	else if ( unit_it == resources::gameboard->units().end()  ||  unit_it->id() != unit_id_ )
 	{
 		WRN_WB << "Unit disappeared from map during move execution." << std::endl;
 		success = false;
@@ -286,7 +286,7 @@ void move::execute(bool& success, bool& complete)
 
 unit_ptr move::get_unit() const
 {
-	unit_map::iterator itor = resources::units->find(unit_underlying_id_);
+	unit_map::iterator itor = resources::gameboard->units().find(unit_underlying_id_);
 	if (itor.valid())
 		return itor.get_shared_ptr();
 	else
@@ -371,8 +371,8 @@ void move::remove_temp_modifier(unit_map&)
 	{
 		unit* unit;
 		{
-			unit_map::iterator unit_it = resources::units->find(get_dest_hex());
-			assert(unit_it != resources::units->end());
+			unit_map::iterator unit_it = resources::gameboard->units().find(get_dest_hex());
+			assert(unit_it != resources::gameboard->units().end());
 			unit = &*unit_it;
 		}
 		DBG_WB << "Move: Movement points for unit " << unit->name() << " [" << unit->id()
@@ -459,8 +459,8 @@ action::error move::check_validity() const
 
 	//Check that the unit still exists in the source hex
 	unit_map::iterator unit_it;
-	unit_it = resources::units->find(get_source_hex());
-	if(unit_it == resources::units->end()) {
+	unit_it = resources::gameboard->units().find(get_source_hex());
+	if(unit_it == resources::gameboard->units().end()) {
 		return NO_UNIT;
 	}
 

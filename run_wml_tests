@@ -133,7 +133,7 @@ run_test()
 
   preopts=""
   binary="$BinPath"
-  opts="-u $2 "
+  opts="-u$2 "
 
   timer=$basetimer
 
@@ -153,7 +153,9 @@ run_test()
   # Add a timeout using unix timeout utility
   if [ $timer -gt 0 ]; then
     # Some versions might not support the --kill-after option
-    if timeout --kill-after=5 1 read 2> /dev/null; then
+    timeout --kill-after=5 1 true
+    # Exit code of timeout is 125 if the command itself fails, like if we passed a bad argument  
+    if [ $? -ne 125 ]; then
       timer1=$((timer+1))
       preopts+="timeout --kill-after=$timer1 $timer "
     else

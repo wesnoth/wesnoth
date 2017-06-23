@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,7 +24,6 @@
 #include "editor/toolkit/editor_toolkit.hpp"
 #include "gui/dialogs/edit_text.hpp"
 
-#include "wml_separators.hpp"
 #include "formula/string_utils.hpp"
 class location_palette_item : public gui::widget
 {
@@ -51,10 +50,10 @@ public:
 	void draw_contents() override
 	{
 		if (state_.mouseover) {
-			sdl::draw_solid_tinted_rectangle(location().x, location().y, location().w, location().h, 200, 200, 200, 0.1, video().getSurface());
+			sdl::fill_rectangle(location(), {200, 200, 200, 26});
 		}
 		if (state_.selected) {
-			sdl::draw_rectangle(location().x, location().y, location().w, location().h, 0xFFFFFFFU, video().getSurface());
+			sdl::draw_rectangle(location(), {255, 255, 255, 255});
 		}
 		font::draw_text(&video(), location(), 16, font::NORMAL_COLOR, desc_.empty() ? id_ : desc_, location().x + 2, location().y, 0);
 	}
@@ -188,15 +187,17 @@ sdl_handler_vector location_palette::handler_members()
 	return h;
 }
 
-void location_palette::hide(bool hidden) {
+void location_palette::hide(bool hidden)
+{
 	widget::hide(hidden);
-	if (!hidden) {
-		help_handle_ = disp_.video().set_help_string(get_help_string());
-	}
-	else {
-		disp_.video().clear_help_string(help_handle_);
-	}
-	for (auto& w : handler_members()) {
+
+	disp_.video().clear_help_string(help_handle_);
+
+	std::shared_ptr<gui::button> palette_menu_button = disp_.find_menu_button("menu-editor-terrain");
+	palette_menu_button->set_overlay("");
+	palette_menu_button->enable(false);
+
+	for(auto& w : handler_members()) {
 		static_cast<gui::widget&>(*w).hide(hidden);
 	}
 }
@@ -240,28 +241,29 @@ void location_palette::adjust_size(const SDL_Rect& target)
 {
 	palette_x_ = target.x;
 	palette_y_ = target.y;
-	const int button_height = 30;
+	const int button_height = 22;
+	const int button_y = 30;
 	int bottom = target.y + target.h;
 	if (!button_goto_) {
-		button_goto_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Go To"), [this]() {
+		button_goto_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Go To"), [this]() {
 			//static_cast<mouse_action_starting_position&>(toolkit_.get_mouse_action()). ??
 			map_location pos = disp_.get_map().special_location(selected_item_);
 			if (pos.valid()) {
 				disp_.scroll_to_tile(pos, display::WARP);
 			}
 		}));
-		button_add_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Add"), [this]() {
+		button_add_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Add"), [this]() {
 			std::string newid;
 			if (gui2::dialogs::edit_text::execute(_("New Location Identifer"), "", newid, video())) {
 				add_item(newid);
 			}
 		}));
-		button_delete_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height }, _("Delete"), nullptr));
+		button_delete_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Delete"), nullptr));
 	}
 	else {
-		button_goto_->set_location(SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height });
-		button_add_->set_location(SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height });
-		button_delete_->set_location(SDL_Rect{ target.x , bottom -= button_height, target.w - 10, button_height });
+		button_goto_->set_location(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height });
+		button_add_->set_location(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height });
+		button_delete_->set_location(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height });
 	}
 
 	const int space_for_items = bottom - target.y;
@@ -358,7 +360,6 @@ void location_palette::draw_contents()
 		// Adjust location
 		y += item_space_;
 	}
-	update_rect(location());
 }
 
 std::vector<std::string> location_palette::action_pressed() const

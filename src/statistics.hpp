@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,7 @@
 
 /** @file */
 
-#ifndef STATISTICS_HPP_INCLUDED
-#define STATISTICS_HPP_INCLUDED
+#pragma once
 
 class config;
 class config_writer;
@@ -116,5 +115,3 @@ namespace statistics
 	/// Returns a list of names and stats for each scenario in the current campaign.
 	levels level_stats(const std::string & save_id);
 } // end namespace statistics
-
-#endif

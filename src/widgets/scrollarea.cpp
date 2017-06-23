@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2004 - 2016 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2004 - 2017 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,8 +15,6 @@
 /** @file */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
-
-#include "global.hpp"
 
 #include "widgets/scrollarea.hpp"
 #include "sdl/rect.hpp"

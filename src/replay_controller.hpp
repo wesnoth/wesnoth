@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 - 2016 by the Battle for Wesnoth Project
+   Copyright (C) 2015 - 2017 by the Battle for Wesnoth Project
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,7 +13,6 @@
 
 #pragma once
 
-#include "global.hpp"
 #include "play_controller.hpp"
 #include "replay.hpp"
 #include "mouse_handler_base.hpp" //events::command_disabler
@@ -50,7 +49,7 @@ public:
 	bool can_execute_command(const hotkey::hotkey_command& cmd, int index) const;
 	bool is_controlling_view() const { return vision_.is_initialized(); }
 	bool allow_reset_replay() const { return reset_state_.get() != nullptr; }
-	const std::shared_ptr<config>& get_reset_state() { return reset_state_; };
+	const std::shared_ptr<config>& get_reset_state() const { return reset_state_; };
 	void return_to_play_side(bool r = true) { return_to_play_side_ = r; }
 	void replay_show_everything();
 	void replay_show_each();

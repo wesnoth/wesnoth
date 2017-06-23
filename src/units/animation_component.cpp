@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,13 +17,15 @@
 #include "config.hpp"
 #include "display.hpp"
 #include "map/map.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
 
+#include <set>
+
 const unit_animation* unit_animation_component::choose_animation(const display& disp, const map_location& loc,const std::string& event,
 		const map_location& second_loc,const int value,const unit_animation::hit_type hit,
-		const attack_type* attack, const attack_type* second_attack, int swing_num)
+		const_attack_ptr attack, const_attack_ptr second_attack, int swing_num)
 {
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
@@ -48,19 +50,20 @@ const unit_animation* unit_animation_component::choose_animation(const display& 
 void unit_animation_component::set_standing(bool with_bars)
 {
 	display *disp = display::get_singleton();
+	if(disp == nullptr) return;
 	if (preferences::show_standing_animations()&& !u_.incapacitated()) {
 		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "standing"),
-			with_bars,  "", 0, STATE_STANDING);
+			with_bars,  "", {0,0,0}, STATE_STANDING);
 	} else {
 		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "_disabled_"),
-			with_bars,  "", 0, STATE_STANDING);
+			with_bars,  "", {0,0,0}, STATE_STANDING);
 	}
 }
 
 void unit_animation_component::set_ghosted(bool with_bars)
 {
 	display *disp = display::get_singleton();
-	start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "ghosted"),
+	start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "_ghosted_"),
 			with_bars);
 	anim_->pause_animation();
 }
@@ -68,7 +71,7 @@ void unit_animation_component::set_ghosted(bool with_bars)
 void unit_animation_component::set_disabled_ghosted(bool with_bars)
 {
 	display *disp = display::get_singleton();
-	start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "disabled_ghosted"),
+	start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "_disabled_ghosted_"),
 			with_bars);
 }
 
@@ -76,7 +79,7 @@ void unit_animation_component::set_idling()
 {
 	display *disp = display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "idling"),
-		true, "", 0, STATE_FORGET);
+		true, "", {0,0,0}, STATE_FORGET);
 }
 
 void unit_animation_component::set_selecting()
@@ -84,15 +87,15 @@ void unit_animation_component::set_selecting()
 	const display *disp =  display::get_singleton();
 	if (preferences::show_standing_animations() && !u_.incapacitated()) {
 		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "selected"),
-			true, "", 0, STATE_FORGET);
+			true, "", {0,0,0}, STATE_FORGET);
 	} else {
 		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "_disabled_selected_"),
-			true, "", 0, STATE_FORGET);
+			true, "", {0,0,0}, STATE_FORGET);
 	}
 }
 
 void unit_animation_component::start_animation (int start_time, const unit_animation *animation,
-	bool with_bars,  const std::string &text, Uint32 text_color, STATE state)
+	bool with_bars,  const std::string &text, color_t text_color, STATE state)
 {
 	const display * disp =  display::get_singleton();
 	if (!animation) {
@@ -201,4 +204,15 @@ void unit_animation_component::apply_new_animation_effect(const config & effect)
 		}
 		animations_.insert(animations_.end(),built.begin(),built.end());
 	}
+}
+
+std::vector<std::string> unit_animation_component::get_flags() {
+	std::set<std::string> result;
+	for(const auto& anim : animations_) {
+		const std::vector<std::string>& flags = anim.get_flags();
+		std::copy_if(flags.begin(), flags.end(), std::inserter(result, result.begin()), [](const std::string flag) {
+			return !(flag.empty() || (flag.front() == '_' && flag.back() == '_'));
+		});
+	}
+	return std::vector<std::string>(result.begin(), result.end());
 }

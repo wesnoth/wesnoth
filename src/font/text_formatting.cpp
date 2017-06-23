@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2003 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
 #include "formatter.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include <iomanip>
 
@@ -31,7 +31,7 @@ std::string get_pango_color_from_id(const std::string& id)
 {
 	const auto color = game_config::team_rgb_colors.find(id);
 	if(color != game_config::team_rgb_colors.end()) {
-		return color_t::from_argb_bytes(color->second[0]).to_hex_string();
+		return (color->second[0]).to_hex_string();
 	}
 
 	return "";

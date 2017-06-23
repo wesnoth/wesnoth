@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2016 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
+   Copyright (C) 2011 - 2017 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -13,13 +13,12 @@
 */
 
 #include "commandline_options.hpp"
-#include "global.hpp"
 
 #include "config.hpp"
 #include "formatter.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"                      // for logger, set_strict_severity, etc
 #include "serialization/string_utils.hpp"  // for split
-#include "util.hpp"                     // for lexical_cast
 
 #include <boost/any.hpp>                // for any
 #include <boost/program_options/cmdline.hpp>
@@ -134,6 +133,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	userdata_dir(),
 	validcache(false),
 	version(false),
+	report(false),
 	windowed(false),
 	with_replay(false),
 	args_(args.begin() + 1 , args.end()),
@@ -178,6 +178,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		 " Implies --wconsole."
 #endif // _WIN32
 		 )
+		("report,R", "initializes game directories, prints build information suitable for use in bug reports, and exits.")
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
 		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work."
 #ifdef _WIN32
@@ -436,6 +437,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		username = vm["username"].as<std::string>();
 	if (vm.count("password"))
 		password = vm["password"].as<std::string>();
+	if (vm.count("report"))
+		report = true;
 	if (vm.count("side"))
 		multiplayer_side = parse_to_uint_string_tuples_(vm["side"].as<std::vector<std::string> >());
 	if (vm.count("test"))
@@ -480,12 +483,12 @@ void commandline_options::parse_log_domains_(const std::string &domains_string, 
 	{
 		if (!log)
 			log = std::vector<std::pair<int, std::string> >();
-		log->push_back(std::make_pair(severity, domain));
+		log->emplace_back(severity, domain);
 	}
 }
 
 void commandline_options::parse_log_strictness (const std::string & severity ) {
-	static lg::logger const *loggers[] = { &lg::err(), &lg::warn(), &lg::info(), &lg::debug() };
+	static lg::logger const *loggers[] { &lg::err(), &lg::warn(), &lg::info(), &lg::debug() };
 	for (const lg::logger * l : loggers ) {
 		if (severity == l->get_name()) {
 			lg::set_strict_severity(*l);
@@ -535,7 +538,7 @@ std::vector<std::pair<unsigned int,std::string> > commandline_options::parse_to_
 			throw bad_commandline_tuple(s, expected_format);
 		}
 
-		vec.push_back(std::make_pair(temp, tokens[1]));
+		vec.emplace_back(temp, tokens[1]);
 	}
 	return vec;
 }
@@ -543,7 +546,6 @@ std::vector<std::pair<unsigned int,std::string> > commandline_options::parse_to_
 std::vector<std::tuple<unsigned int,std::string,std::string> > commandline_options::parse_to_uint_string_string_tuples_(const std::vector<std::string> &strings, char separator)
 {
 	std::vector<std::tuple<unsigned int,std::string,std::string> > vec;
-	std::tuple<unsigned int,std::string,std::string> elem;
 	const std::string& expected_format
 			= std::string() + "UINT" + separator + "STRING" + separator + "STRING";
 
@@ -560,10 +562,8 @@ std::vector<std::tuple<unsigned int,std::string,std::string> > commandline_optio
 		} catch (bad_lexical_cast &) {
 			throw bad_commandline_tuple(s, expected_format);
 		}
-		std::get<0>(elem) = temp;
-		std::get<1>(elem) = tokens[1];
-		std::get<2>(elem) = tokens[2];
-		vec.push_back(elem);
+
+		vec.emplace_back(temp, tokens[1], tokens[2]);
 	}
 	return vec;
 }

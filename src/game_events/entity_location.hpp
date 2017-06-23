@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,7 @@
  * Define locations as used by the game's events mechanism.
  */
 
-#ifndef GAME_EVENTS_ENTITY_LOCATION_H_INCLUDED
-#define GAME_EVENTS_ENTITY_LOCATION_H_INCLUDED
+#pragma once
 
 #include "map/location.hpp"
 #include "units/map.hpp"
@@ -55,6 +54,3 @@ namespace game_events
 		map_location filter_loc_;
 	};
 }
-
-#endif // GAME_EVENTS_ENTITY_LOCATION_H_INCLUDED
-

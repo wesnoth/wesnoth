@@ -20,6 +20,7 @@ set(NORMAL_DOMAINS
 	wesnoth-multiplayer
 	wesnoth-nr
 	wesnoth-sof
+	wesnoth-sota
 	wesnoth-sotbe
 	wesnoth-tb
 	wesnoth-test
@@ -216,7 +217,7 @@ endif(ENABLE_POT_UPDATE_TARGET)
 
 if(ENABLE_NLS)
 
-	set(GETTEXT_MSGFMT_PARAMETER --check-format --check-domain )
+	set(GETTEXT_MSGFMT_PARAMETER --check-domain )
 
 	if(ENABLE_POT_UPDATE_TARGET)
 		# Only set the verbose flag for maintainers.

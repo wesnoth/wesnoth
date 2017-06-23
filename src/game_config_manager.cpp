@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2017 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,9 +14,10 @@
 #include "game_config_manager.hpp"
 
 #include "about.hpp"
-#include "addon/manager_old.hpp"
+#include "addon/manager.hpp"
 #include "ai/configuration.hpp"
 #include "cursor.hpp"
+#include "events.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "game_classification.hpp"
@@ -26,7 +27,7 @@
 #include "hotkey/hotkey_command.hpp"
 #include "language.hpp"
 #include "log.hpp"
-#include "preferences.hpp"
+#include "preferences/general.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "terrain/builder.hpp"
 #include "terrain/type_data.hpp"
@@ -86,6 +87,7 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	game_config::scoped_preproc_define title_screen("TITLE_SCREEN",
 		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !jump_to_editor_);
 
+	game_config::reset_color_info();
 	load_game_config_with_loadscreen(force_reload);
 
 	game_config::load_config(game_config_.child("game_config"));
@@ -290,8 +292,8 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		game_config_.splice_children(core_terrain_rules, "terrain_graphics");
 
 		set_multiplayer_hashes();
-		set_color_info();
 		set_unit_data();
+		game_config::add_color_info(game_config_);
 
 		terrain_builder::set_terrain_rules_cfg(game_config());
 		tdata_ = std::make_shared<terrain_type_data>(game_config_);
@@ -412,11 +414,11 @@ void game_config_manager::load_addons_cfg()
 			cache_.get_config(addon.main_cfg, umc_cfg);
 
 			// Annotate "era", "modification", and scenario tags with addon_id info
-			const char * tags_with_addon_id [] = { "era", "modification", "multiplayer", "scenario", "campaign", nullptr };
+			static const std::set<std::string> tags_with_addon_id { "era", "modification", "multiplayer", "scenario", "campaign" };
 
-			for (const char ** type = tags_with_addon_id; *type; type++)
-			{
-				for (config & cfg : umc_cfg.child_range(*type)) {
+			for(auto child : umc_cfg.all_children_range()) {
+				if(tags_with_addon_id.count(child.key) > 0) {
+					auto& cfg = child.cfg;
 					cfg["addon_id"] = addon.addon_id;
 					// Note that this may reformat the string in a canonical form.
 					cfg["addon_version"] = addon.version.str();
@@ -451,9 +453,9 @@ void game_config_manager::load_addons_cfg()
 			   n);
 
 		const std::string& report = utils::join(error_log, "\n\n");
-
-		gui2::dialogs::wml_error::display(msg1, msg2, error_addons, report,
-								  video_);
+		events::call_in_main_thread([&]() {
+			gui2::dialogs::wml_error::display(msg1, msg2, error_addons, report, video_);
+		});
 	}
 }
 
@@ -461,16 +463,8 @@ void game_config_manager::set_multiplayer_hashes()
 {
 	config& hashes = game_config_.add_child("multiplayer_hashes");
 	for (const config &ch : game_config_.child_range("multiplayer")) {
-		hashes[ch["id"]] = ch.hash();
+		hashes[ch["id"].str()] = ch.hash();
 	}
-}
-
-void game_config_manager::set_color_info()
-{
-	config colorsys_info;
-	colorsys_info.splice_children(game_config_, "color_range");
-	colorsys_info.splice_children(game_config_, "color_palette");
-	game_config::add_color_info(colorsys_info);
 }
 
 void game_config_manager::set_unit_data()
@@ -545,9 +539,10 @@ void game_config_manager::load_game_config_for_game(
 		throw;
 	}
 }
-void game_config_manager::load_game_config_for_create(bool is_mp)
+void game_config_manager::load_game_config_for_create(bool is_mp, bool is_test)
 {
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER", is_mp);
+	game_config::scoped_preproc_define test("TEST", is_test);
 	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest && is_mp);
 ///During an mp game the default difficuly define is also defined so better already load it now if we alreeady must reload config cache.
 	game_config::scoped_preproc_define normal(DEFAULT_DIFFICULTY, !map_includes(old_defines_map_, cache_.get_preproc_map()));

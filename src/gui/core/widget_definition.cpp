@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,6 +23,34 @@
 
 namespace gui2
 {
+
+/*WIKI
+ * @page = GUIToolkitWML
+ * @order = 1_widget
+ *
+ * == State ==
+ *
+ * @begin{parent}{name="generic/"}
+ * @begin{tag}{name="state"}{min=0}{max=1}
+ * Definition of a state. A state contains the info what to do in a state.
+ * Atm this is rather focused on the drawing part, might change later.
+ * Keys:
+ * @begin{table}{config}
+ *     draw & section & &                 Section with drawing directions for a
+ *canvas. $
+ * @end{table}
+ * @end{tag}{name="state"}
+ * @end{parent}{name="generic/"}
+ *
+ */
+state_definition::state_definition(const config& cfg) : canvas_()
+{
+	const config& draw = *(cfg ? &cfg.child("draw") : &cfg);
+
+	VALIDATE(draw, _("No state or draw section defined."));
+
+	canvas_.set_cfg(draw);
+}
 
 /*WIKI
  * @page = GUIToolkitWML
@@ -98,6 +126,7 @@ resolution_definition::resolution_definition(const config& cfg)
 	, default_height(cfg["default_height"])
 	, max_width(cfg["max_width"])
 	, max_height(cfg["max_height"])
+	, linked_groups()
 	, text_extra_width(cfg["text_extra_width"])
 	, text_extra_height(cfg["text_extra_height"])
 	, text_font_size(cfg["text_font_size"])
@@ -107,6 +136,8 @@ resolution_definition::resolution_definition(const config& cfg)
 {
 	DBG_GUI_P << "Parsing resolution " << window_width << ", " << window_height
 			  << '\n';
+
+	linked_groups = parse_linked_group_definitions(cfg);
 }
 
 /*WIKI

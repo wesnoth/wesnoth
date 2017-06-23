@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2014 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef COMPRESSION_HPP_INCLUDED
-#define COMPRESSION_HPP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -37,5 +36,3 @@ namespace compression {
 		return "";
 	}
 }
-
-#endif

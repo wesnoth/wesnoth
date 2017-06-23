@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2009 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
 
 #include "utils/functional.hpp"
@@ -112,6 +112,8 @@ void lobby_player_info::pre_show(window& window)
 
 	time_ = find_widget<text_box>(&window, "time", false, true);
 	reason_ = find_widget<text_box>(&window, "reason", false, true);
+	window.add_to_tab_order(reason_);
+	window.add_to_tab_order(time_);
 
 	find_widget<label>(&window, "location_info", false).set_label(loc.str());
 

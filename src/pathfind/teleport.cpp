@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2010 - 2017 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -124,7 +124,7 @@ void teleport_group::get_teleport_pair(
 	const unit_filter ufilt(filter, resources::filter_con); //Note: Don't use the ignore units filter context here, only for the terrain filters. (That's how it worked before the filter contexts were introduced)
 	if (ufilt.matches(u, loc)) {
 
-		scoped_xy_unit teleport_unit("teleport_unit", loc, *resources::units);
+		scoped_xy_unit teleport_unit("teleport_unit", loc, resources::gameboard->units());
 
 		terrain_filter source_filter(source, fc);
 		source_filter.get_locations(reversed_ ? loc_pair.second : loc_pair.first);
@@ -202,11 +202,11 @@ teleport_map::teleport_map(
 			while(loc != locations.second.end()) {
 				unit_map::iterator u;
 				if (see_all) {
-					u = resources::units->find(*loc);
+					u = resources::gameboard->units().find(*loc);
 				} else {
 					u = resources::gameboard->find_visible_unit(*loc, viewing_team);
 				}
-				if (u != resources::units->end()) {
+				if (u != resources::gameboard->units().end()) {
 					loc = locations.second.erase(loc);
 				} else {
 					++loc;
@@ -220,13 +220,13 @@ teleport_map::teleport_map(
 			if(teleport_map_.count(*source_it) == 0) {
 				std::set<std::string> id_set;
 				id_set.insert(teleport_id);
-				teleport_map_.insert(std::make_pair(*source_it, id_set));
+				teleport_map_.emplace(*source_it, id_set);
 			} else {
 				(teleport_map_.find(*source_it)->second).insert(teleport_id);
 			}
 		}
-		sources_.insert(std::make_pair(teleport_id, locations.first));
-		targets_.insert(std::make_pair(teleport_id, locations.second));
+		sources_.emplace(teleport_id, locations.first);
+		targets_.emplace(teleport_id, locations.second);
 	}
 }
 
@@ -272,7 +272,7 @@ const teleport_map get_teleport_locations(const unit &u,
 			const int tunnel_count = (teleport.first)->child_count("tunnel");
 			for(int i = 0; i < tunnel_count; ++i) {
 				config teleport_group_cfg = (teleport.first)->child("tunnel", i);
-				groups.push_back(teleport_group(vconfig(teleport_group_cfg, true), false));
+				groups.emplace_back(vconfig(teleport_group_cfg, true), false);
 			}
 		}
 	}

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,10 +12,10 @@
    See the COPYING file for more details.
 */
 
-#ifndef NAME_GENERATOR_HPP_INCLUDED
-#define NAME_GENERATOR_HPP_INCLUDED
+#pragma once
 
 #include "global.hpp"
+
 #include <string>
 #include <map>
 #include <exception>
@@ -23,7 +23,7 @@
 class name_generator_invalid_exception : public std::exception {
 public:
 	name_generator_invalid_exception(const char* errMessage):errMessage_(errMessage) {}
-	const char* what() const throw() { return errMessage_; }
+	const char* what() const NOEXCEPT { return errMessage_; }
 
 private:
 	const char* errMessage_;
@@ -45,5 +45,3 @@ public:
 	proxy_name_generator(const name_generator& b) : base(b) {}
 	std::string generate() const override { return base.generate(); }
 };
-
-#endif

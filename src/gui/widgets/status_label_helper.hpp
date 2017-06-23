@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2010 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -11,8 +11,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_STATUS_LABEL_HELPER_HPP_INCLUDED
-#define GUI_WIDGETS_STATUS_LABEL_HELPER_HPP_INCLUDED
+#pragma once
 
 #include "gettext.hpp"
 #include "gui/core/event/dispatcher.hpp"
@@ -21,6 +20,7 @@
 #include "gui/widgets/selectable_item.hpp"
 
 #include "utils/functional.hpp"
+#include "utils/type_trait_aliases.hpp"
 
 namespace gui2 {
 
@@ -28,7 +28,7 @@ namespace gui2 {
  * Default value getter for selectable widgets (like toggle buttons)
  */
 template<typename T>
-static inline typename std::enable_if<std::is_base_of<selectable_item, T>::value, std::string>::type
+static inline utils::enable_if_t<std::is_base_of<selectable_item, T>::value, std::string>
 default_value_getter(T& w)
 {
 	return w.get_value_bool() ? _("yes") : _("no");
@@ -38,7 +38,7 @@ default_value_getter(T& w)
  * Default value getter for integer-based widgets (like sliders)
  */
 template<typename T>
-static inline typename std::enable_if<std::is_base_of<integer_selector, T>::value, std::string>::type
+static inline utils::enable_if_t<std::is_base_of<integer_selector, T>::value, std::string>
 default_value_getter(T& w)
 {
 	return w.get_value_label();
@@ -78,5 +78,3 @@ std::function<void()> bind_status_label(widget& find_in, const std::string& id,
 }
 
 } // namespace gui2
-
-#endif

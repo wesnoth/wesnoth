@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,13 +12,14 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_STACKED_WIDGET_HPP_INCLUDED
-#define GUI_WIDGETS_STACKED_WIDGET_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/container_base.hpp"
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
+
+#include <boost/dynamic_bitset.hpp>
 
 namespace gui2
 {
@@ -57,22 +58,53 @@ public:
 	 * The current layer number will be -1 if all layers are currently visible.
 	 * In this case, only the topmost (highest-numbered) layer will receive
 	 * events.
+	 *
+	 * If more than one but not all layers are visible, this will be the number of
+	 * the last one made visible.
+	 *
+	 * @returns       The most recently shown layer
 	 */
 	int current_layer() const { return selected_layer_; }
+
+	/**
+	 * Tests if the specified layer is selected (ie, visible).
+	 *
+	 * @param layer    The layer to test
+	 * @returns        True if the specified layer is selected
+	 */
+	bool layer_selected(const unsigned layer);
 
 	/**
 	 * Selects and displays a particular layer.
 	 *
 	 * If layer -1 is selected, all layers will be displayed but only the
 	 * topmost (highest-numbered) layer will receive events.
+	 *
+	 * @param layer     The layer to select
 	 */
 	void select_layer(const int layer);
 
 	/**
+	 * Selects and displays multiple layers based on the state of the provided dynamic_bitset.
+	 *
+	 * @param mask      A mask specifying which layers to select and deselect
+	 */
+	void select_layers(const boost::dynamic_bitset<>& mask);
+
+	/**
 	 * Gets the total number of layers.
+	 *
+	 * @returns         The total number of layers
 	 */
 	unsigned int get_layer_count() const;
 
+	/**
+	 * Gets the grid for a specified layer.
+	 * This can be used to search for widgets in a hidden layer.
+	 *
+	 * @param           The layer to retrieve
+	 * @returns         The grid for the specified layer.
+	 */
 	grid* get_layer_grid(unsigned int i);
 
 private:
@@ -90,6 +122,17 @@ private:
 	 * The pointer is not owned by this class, it's stored in the content_grid_
 	 * of the scrollbar_container super class and freed when it's grid is
 	 * freed.
+	 *
+	 * NOTE: the generator is initialized with has_minimum (first arg) as false,
+	 * which seems a little counter-intuitive at first. After all, shouldn't the
+	 * stack always have at least one layer visible? However, this allows select_layer
+	 * to function correctly.
+	 *
+	 * If has_minimum is true, the generator policy selected (one_item) can leave
+	 * multiple layers selected when selecting a new one. This is most likely due to
+	 * cases where the new chosen layer comes *after* the currently selected one.
+	 * In that case, the generator would not allow the interim state where no layer
+	 * before the new chosen layer is reached in the loop.
 	 */
 	generator_base* generator_;
 
@@ -98,10 +141,10 @@ private:
 	 */
 	int selected_layer_;
 
-	/**
-	 * Helper to ensure the correct state is set when selecting a layer.
-	 */
-	void select_layer_internal(const unsigned int layer, const bool select) const;
+	void update_selected_layer_index(const int i);
+
+	/** Internal implementation detail for selecting layers. */
+	void select_layer_impl(std::function<bool(unsigned int i)> display_condition);
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
@@ -146,5 +189,3 @@ struct builder_stacked_widget : public builder_styled_widget
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

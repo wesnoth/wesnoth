@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2011 - 2016 by Tommy Schmitz
+ Copyright (C) 2011 - 2017 by Tommy Schmitz
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -73,8 +73,8 @@ suppose_dead::suppose_dead(config const& cfg, bool hidden)
 	, loc_(cfg.child("loc_")["x"],cfg.child("loc_")["y"], wml_loc())
 {
 	// Construct and validate unit_
-	unit_map::iterator unit_itor = resources::units->find(cfg["unit_"]);
-	if(unit_itor == resources::units->end())
+	unit_map::iterator unit_itor = resources::gameboard->units().find(cfg["unit_"]);
+	if(unit_itor == resources::gameboard->units().end())
 		throw action::ctor_err("suppose_dead: Invalid underlying_id");
 
 	unit_underlying_id_ = unit_itor->underlying_id();
@@ -97,7 +97,7 @@ suppose_dead::~suppose_dead()
 
 unit_ptr suppose_dead::get_unit() const
 {
-	unit_map::iterator itor = resources::units->find(unit_underlying_id_);
+	unit_map::iterator itor = resources::gameboard->units().find(unit_underlying_id_);
 	if (itor.valid())
 		return itor.get_shared_ptr();
 	else
@@ -126,8 +126,8 @@ void suppose_dead::apply_temp_modifier(unit_map& unit_map)
 void suppose_dead::remove_temp_modifier(unit_map& unit_map)
 {
 	// Just check to make sure the hex is empty
-	unit_map::iterator unit_it = resources::units->find(loc_);
-	assert(unit_it == resources::units->end());
+	unit_map::iterator unit_it = resources::gameboard->units().find(loc_);
+	assert(unit_it == resources::gameboard->units().end());
 
 	// Restore the unit
 	unit_map.insert(get_unit());
@@ -158,8 +158,8 @@ action::error suppose_dead::check_validity() const
 		return INVALID_LOCATION;
 	}
 	//Check that the unit still exists in the source hex
-	unit_map::const_iterator unit_it = resources::units->find(get_source_hex());
-	if(unit_it == resources::units->end()) {
+	unit_map::const_iterator unit_it = resources::gameboard->units().find(get_source_hex());
+	if(unit_it == resources::gameboard->units().end()) {
 		return NO_UNIT;
 	}
 	//check if the unit in the source hex has the same unit id as before,

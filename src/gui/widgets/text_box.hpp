@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_TEXT_BOX_HPP_INCLUDED
-#define GUI_WIDGETS_TEXT_BOX_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/text_box_base.hpp"
 
@@ -248,10 +247,7 @@ private:
 	bool history_down();
 
 	/** Inherited from text_box_base. */
-	void handle_key_default(bool& handled,
-							SDL_Keycode key,
-							SDL_Keymod modifier,
-							const utf8::string& unicode) override;
+	void handle_key_tab(SDL_Keymod modifier, bool& handled) override;
 
 	/** Inherited from text_box_base. */
 	void handle_key_clear_line(SDL_Keymod modifier, bool& handled) override;
@@ -317,5 +313,3 @@ public:
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

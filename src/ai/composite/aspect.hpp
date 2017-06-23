@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,8 +16,7 @@
  * @file
  */
 
-#ifndef AI_COMPOSITE_ASPECT_HPP_INCLUDED
-#define AI_COMPOSITE_ASPECT_HPP_INCLUDED
+#pragma once
 
 #include "ai/composite/property_handler.hpp"
 #include "ai/composite/value_translator.hpp"
@@ -26,7 +25,6 @@
 #include "scripting/game_lua_kernel.hpp"
 
 #include "log.hpp"
-#include "util.hpp"
 
 #include "utils/functional.hpp"
 
@@ -54,10 +52,10 @@ public:
 	}
 
 
-	virtual const variant& get_variant() const = 0;
+	virtual const wfl::variant& get_variant() const = 0;
 
 
-	virtual std::shared_ptr<variant> get_variant_ptr() const = 0;
+	virtual std::shared_ptr<wfl::variant> get_variant_ptr() const = 0;
 
 
 	virtual void recalculate() const = 0;
@@ -135,12 +133,12 @@ public:
 	}
 
 
-	virtual const variant& get_variant() const
+	virtual const wfl::variant& get_variant() const
 	{
 		return *get_variant_ptr();
 	}
 
-	virtual std::shared_ptr<variant> get_variant_ptr() const
+	virtual std::shared_ptr<wfl::variant> get_variant_ptr() const
 	{
 		if (!valid_variant_) {
 			if (!valid_) {
@@ -148,11 +146,11 @@ public:
 			}
 
 			if (!valid_variant_ && valid_ ) {
-				value_variant_ = std::shared_ptr<variant>(new variant(variant_value_translator<T>::value_to_variant(this->get())));
+				value_variant_ = std::shared_ptr<wfl::variant>(new wfl::variant(variant_value_translator<T>::value_to_variant(this->get())));
 				valid_variant_ = true;
 			} else if (!valid_variant_ && valid_lua_) {
 				value_ = value_lua_->get();
-				value_variant_ = std::shared_ptr<variant>(new variant(variant_value_translator<T>::value_to_variant(this->get())));
+				value_variant_ = std::shared_ptr<wfl::variant>(new wfl::variant(variant_value_translator<T>::value_to_variant(this->get())));
 				valid_variant_ = true; // @note: temporary workaround
 			} else {
 				assert(valid_variant_);
@@ -188,7 +186,7 @@ public:
 
 protected:
 	mutable std::shared_ptr<T> value_;
-	mutable std::shared_ptr<variant> value_variant_;
+	mutable std::shared_ptr<wfl::variant> value_variant_;
 	mutable std::shared_ptr< lua_object<T> > value_lua_;
 };
 
@@ -231,7 +229,7 @@ public:
 		if (c) {
 			assert (c->get_id()== this->get_name());
 			where_ = c;
-			aspects_.insert(make_pair(this->get_name(),c));
+			aspects_.emplace(this->get_name(),c);
 		} else {
 			LOG_STREAM(debug, aspect::log()) << "typesafe_known_aspect [" << this->get_name() << "] : while setting aspect, got null. this might be caused by invalid [aspect] WML" << std::endl;
 		}
@@ -413,7 +411,7 @@ public:
 class lua_aspect_visitor : public boost::static_visitor<std::string> {
 	static std::string quote_string(const std::string& s);
 public:
-	std::string operator()(bool b) const {return b ? "true" : "false";}
+	std::string operator()(bool b) const {return utils::bool_string(b);}
 	std::string operator()(int i) const {return std::to_string(i);}
 	std::string operator()(unsigned long long i) const {return std::to_string(i);}
 	std::string operator()(double i) const {return std::to_string(i);}
@@ -494,7 +492,7 @@ public:
 			return;
 		}
 		factory_ptr ptr_to_this(this);
-		get_list().insert(make_pair(name,ptr_to_this));
+		get_list().emplace(name,ptr_to_this);
 	}
 
 	virtual ~aspect_factory() {}
@@ -537,7 +535,7 @@ public:
 	lua_aspect_factory( const std::string &name )
 	{
 		factory_ptr ptr_to_this(this);
-		get_list().insert(make_pair(name,ptr_to_this));
+		get_list().emplace(name,ptr_to_this);
 	}
 
 	virtual ~lua_aspect_factory() {}
@@ -565,6 +563,4 @@ public:
 
 #ifdef _MSC_VER
 #pragma warning(pop)
-#endif
-
 #endif

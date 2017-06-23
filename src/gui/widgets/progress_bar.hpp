@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_PROGRESS_BAR_HPP_INCLUDED
-#define GUI_WIDGETS_PROGRESS_BAR_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/styled_widget.hpp"
 
@@ -28,7 +27,7 @@ namespace gui2
 class progress_bar : public styled_widget
 {
 public:
-	progress_bar() : styled_widget(COUNT), percentage_(static_cast<unsigned>(-1))
+	progress_bar() : styled_widget(), percentage_(static_cast<unsigned>(-1))
 	{
 		// Force canvas update
 		set_percentage(0);
@@ -65,7 +64,6 @@ private:
 	 */
 	enum state_t {
 		ENABLED,
-		COUNT
 	};
 
 	/** The percentage done. */
@@ -107,5 +105,3 @@ struct builder_progress_bar : public builder_styled_widget
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

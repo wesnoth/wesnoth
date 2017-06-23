@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_BRUSH_HPP_INCLUDED
-#define EDITOR_BRUSH_HPP_INCLUDED
+#pragma once
 
 #include "editor/map/editor_map.hpp"
 
@@ -69,5 +68,3 @@ protected:
 
 
 } //end namespace editor
-
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2017 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -40,8 +40,7 @@ static lg::log_domain log_network("network");
 
 namespace mp {
 
-// To remove radundant informaion in the clientside internal programmflow
-// I want to remove these values from mp_settings so i need to readd them here
+// This is for the wesnothd server, it expects a more detailed summary in [multiplayer]
 static void add_multiplayer_classification(config& multiplayer, saved_game& state)
 {
 	multiplayer["mp_scenario"] = state.get_scenario_id();
@@ -59,6 +58,10 @@ config initial_level_config(saved_game& state)
 	state.expand_random_scenario();
 	state.expand_mp_events();
 	state.expand_mp_options();
+
+	if(!state.valid()) {
+		throw config::error("Failed to load the scenario");
+	}
 
 	config& scenario = state.get_starting_pos();
 	if(!state.mp_settings().saved_game)

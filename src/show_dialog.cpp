@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,13 +12,10 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "show_dialog.hpp"
 
-#include "construct_dialog.hpp"
 #include "floating_label.hpp"
 #include "font/sdl_ttf.hpp"
 #include "image.hpp"
@@ -279,8 +276,6 @@ void dialog_frame::draw_border()
 		video_.blit_surface(dim_.interior.x + dim_.interior.w, dim_.interior.y, right_image);
 	}
 
-	update_rect(dim_.exterior);
-
 	if(top_left_ == nullptr || bot_left_ == nullptr || top_right_ == nullptr || bot_right_ == nullptr) {
 		return;
 	}
@@ -306,7 +301,7 @@ void dialog_frame::draw_background()
 
 	if (dialog_style_.blur_radius) {
 		surface surf = ::get_surface_portion(video_.getSurface(), dim_.exterior);
-		surf = blur_surface(surf, dialog_style_.blur_radius, false);
+		surf = blur_surface(surf, dialog_style_.blur_radius);
 		sdl_blit(surf, nullptr, video_.getSurface(), &dim_.exterior);
 	}
 
@@ -316,7 +311,7 @@ void dialog_frame::draw_background()
 	}
 	for(int i = 0; i < dim_.interior.w; i += bg_->w) {
 		for(int j = 0; j < dim_.interior.h; j += bg_->h) {
-			SDL_Rect src = {0,0,0,0};
+			SDL_Rect src {0,0,0,0};
 			src.w = std::min(dim_.interior.w - i, bg_->w);
 			src.h = std::min(dim_.interior.h - j, bg_->h);
 			SDL_Rect dst = src;
@@ -367,70 +362,6 @@ void dialog_frame::draw()
 	}
 
 	dirty_ = false;
-}
-
-int show_dialog(CVideo& video, surface image,
-				const std::string& caption, const std::string& message,
-				DIALOG_TYPE type,
-				const std::vector<std::string>* menu_items,
-				const std::vector<preview_pane*>* preview_panes,
-				const std::string& text_widget_label,
-				std::string* text_widget_text,
-				const int text_widget_max_chars,
-				std::vector<check_item>* options,
-				int xloc,
-				int yloc,
-				const dialog_frame::style* dialog_style,
-				std::vector<dialog_button_info>* action_buttons,
-				const menu::sorter* sorter,
-				menu::style* menu_style)
-{
-	std::string title;
-	if (image.null()) title = caption;
-	const dialog::style& style = (dialog_style)? *dialog_style : dialog::default_style;
-
-	gui::dialog d(video, title, message, type, style);
-
-	//add the components
-	if(!image.null()) {
-		d.set_image(image, caption);
-	}
-	if(menu_items) {
-		d.set_menu( new gui::menu(video,*menu_items,type == MESSAGE,-1,dialog::max_menu_width,sorter,menu_style,false));
-	}
-	if(preview_panes) {
-		for(unsigned int i=0; i < preview_panes->size(); ++i) {
-			d.add_pane((*preview_panes)[i]);
-		}
-	}
-	if(text_widget_text) {
-		d.set_textbox(text_widget_label,*text_widget_text, text_widget_max_chars);
-	}
-	if(options) {
-		for(unsigned int i=0; i < options->size(); ++i) {
-			check_item& item = (*options)[i];
-			d.add_option(item.label, item.checked);
-		}
-	}
-	if(action_buttons) {
-		for(unsigned int i=0; i < action_buttons->size(); ++i) {
-			d.add_button((*action_buttons)[i]);
-		}
-	}
-	//enter the dialog loop
-	d.show(xloc, yloc);
-
-	//send back results
-	if(options) {
-		for(unsigned int i=0; i < options->size(); ++i)
-		{
-			(*options)[i].checked = d.option_checked(i);
-		}
-	}
-	if(text_widget_text) {
-		*text_widget_text = d.textbox_text();
-	}
-	return d.result();
 }
 
 }

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 Jyrki Vesterinen <sandgtx@gmail.com>
+   Copyright (C) 2016 - 2017 Jyrki Vesterinen <sandgtx@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_SIZE_FIXATER_HPP_INCLUDED
-#define GUI_WIDGETS_SIZE_FIXATER_HPP_INCLUDED
+#pragma once
 
 #include <gui/widgets/container_base.hpp>
 
@@ -38,7 +37,7 @@ class size_lock : public container_base
 
 public:
 	size_lock() :
-		container_base(1),
+		container_base(),
 		widget_(nullptr)
 	{}
 
@@ -133,5 +132,3 @@ private:
 };
 }
 }
-
-#endif

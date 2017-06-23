@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_SCROLLBAR_PANEL_HPP_INCLUDED
-#define GUI_WIDGETS_SCROLLBAR_PANEL_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/scrollbar_container.hpp"
 
@@ -43,11 +42,9 @@ class scrollbar_panel : public scrollbar_container
 public:
 	/**
 	 * Constructor.
-	 *
-	 * @param canvas_count        The canvas count for styled_widget.
 	 */
-	explicit scrollbar_panel(const unsigned canvas_count = 2)
-		: scrollbar_container(canvas_count)
+	scrollbar_panel()
+		: scrollbar_container()
 	{
 	}
 
@@ -104,5 +101,3 @@ struct builder_scrollbar_panel : public builder_styled_widget
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

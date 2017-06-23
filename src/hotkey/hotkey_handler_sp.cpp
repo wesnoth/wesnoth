@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,7 +23,7 @@
 #include "playsingle_controller.hpp"
 #include "whiteboard/manager.hpp"
 #include "game_events/menu_item.hpp"
-#include "game_events/wmi_container.hpp"
+#include "game_events/wmi_manager.hpp"
 #include "map/map.hpp"
 #include "save_index.hpp"
 #include "gui/dialogs/message.hpp"
@@ -204,12 +204,13 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 			if(cmd.command.compare(0, prefixlen, wml_menu_hotkey_prefix) != 0) {
 				return false;
 			}
-			game_events::wmi_container::const_iterator it = gamestate().get_wml_menu_items().find(cmd.command.substr(prefixlen));
-			if(it == gamestate().get_wml_menu_items().end()) {
+
+			game_events::wmi_manager::item_ptr item = gamestate().get_wml_menu_items().get_item(cmd.command.substr(prefixlen));
+			if(!item) {
 				return false;
 			}
 
-			return !(**it).is_synced() || play_controller_.can_use_synced_wml_menu();
+			return !item->is_synced() || play_controller_.can_use_synced_wml_menu();
 		}
 		case hotkey::HOTKEY_UNIT_HOLD_POSITION:
 		case hotkey::HOTKEY_END_UNIT_TURN:

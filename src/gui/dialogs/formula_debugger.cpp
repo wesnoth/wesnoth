@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -112,7 +112,7 @@ void formula_debugger::pre_show(window& window)
 						   << "</span>: \"<span color=\"yellow\">" << font::escape_text(i.name())
 						   << "</span>\": (" << font::escape_text(i.str()) << ") = "
 						   << "<span color=\"orange\">"
-						   << font::escape_text(i.value().to_debug_string(nullptr, false))
+						   << font::escape_text(i.value().to_debug_string())
 						   << "</span>" << std::endl;
 		}
 	}

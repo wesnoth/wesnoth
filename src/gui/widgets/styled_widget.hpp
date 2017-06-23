@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_CONTROL_HPP_INCLUDED
-#define GUI_WIDGETS_CONTROL_HPP_INCLUDED
+#pragma once
 
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
@@ -37,18 +36,15 @@ class styled_widget : public widget
 
 public:
 	/** @deprecated Used the second overload. */
-	explicit styled_widget(const unsigned canvas_count);
+	styled_widget();
 
 	/**
 	 * Constructor.
 	 *
 	 * @param builder             The builder object with the settings for the
 	 *                            object.
-	 *
-	 * @param canvas_count        The number of canvasses in the styled_widget.
 	 */
 	styled_widget(const implementation::builder_styled_widget& builder,
-			 const unsigned canvas_count,
 			 const std::string& control_type);
 
 	/**
@@ -163,18 +159,21 @@ public:
 	 * @returns		      The link color string. This impl returns "#ffff00".
 	 *
 	 */
-	virtual std::string get_link_color() const;
+	virtual color_t get_link_color() const;
 
 	/**
-	 * See @ref widget::layout_initialise.
+	 * See @ref widget::layout_initialize.
 	 *
 	 * @todo Also handle the tooltip state.
 	 * Handle if shrunken_ && use_tooltip_on_label_overflow_.
 	 */
-	virtual void layout_initialise(const bool full_initialisation) override;
+	virtual void layout_initialize(const bool full_initialization) override;
 
 	/** See @ref widget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) override;
+
+	/** See @ref widget::request_reduce_height. */
+	virtual void request_reduce_height(const unsigned maximum_height) override;
 
 protected:
 	/** See @ref widget::calculate_best_size. */
@@ -240,6 +239,7 @@ public:
 	{
 		return use_tooltip_on_label_overflow_;
 	}
+
 	void set_use_tooltip_on_label_overflow(const bool use_tooltip = true)
 	{
 		use_tooltip_on_label_overflow_ = use_tooltip;
@@ -261,6 +261,7 @@ public:
 	{
 		return tooltip_;
 	}
+
 	// Note setting the tooltip_ doesn't dirty an object.
 	void set_tooltip(const t_string& tooltip)
 	{
@@ -272,6 +273,7 @@ public:
 	{
 		return help_message_;
 	}
+
 	// Note setting the help_message_ doesn't dirty an object.
 	void set_help_message(const t_string& help_message)
 	{
@@ -279,20 +281,33 @@ public:
 	}
 
 	// const versions will be added when needed
-	std::vector<canvas>& get_canvas()
+	std::vector<canvas>& get_canvases()
 	{
 		return canvas_;
 	}
+
 	canvas& get_canvas(const unsigned index)
 	{
 		assert(index < canvas_.size());
 		return canvas_[index];
 	}
 
-	void set_text_alignment(const PangoAlignment text_alignment);
+	virtual void set_text_alignment(const PangoAlignment text_alignment);
 	PangoAlignment get_text_alignment() const
 	{
 		return text_alignment_;
+	}
+
+	void set_text_ellipse_mode(const PangoEllipsizeMode ellipse_mode);
+
+	/**
+	 * Get the text's ellipsize mode.
+	 *
+	 * Note that if can_wrap is true, it override the manual setting.
+	 */
+	PangoEllipsizeMode get_text_ellipse_mode() const
+	{
+		return can_wrap() ? PANGO_ELLIPSIZE_NONE : text_ellipse_mode_;
 	}
 
 protected:
@@ -300,6 +315,7 @@ protected:
 	{
 		return config_;
 	}
+
 	resolution_definition_const_ptr config() const
 	{
 		return config_;
@@ -472,6 +488,14 @@ private:
 							  point maximum_size = {0, 0}) const;
 
 	/**
+	 * Gets whether a widget can shrink past its optimal size even if it's text-based (such as labels);
+	 */
+	virtual bool text_can_shrink()
+	{
+		return false;
+	}
+
+	/**
 	 * Contains a helper cache for the rendering.
 	 *
 	 * Creating a pango_text object is quite expensive and is done on various
@@ -489,6 +513,9 @@ private:
 
 	/** The alignment of the text in a styled_widget. */
 	PangoAlignment text_alignment_;
+
+	/** The ellipsize mode of the text in a styled_widget. */
+	PangoEllipsizeMode text_ellipse_mode_;
 
 	/** Is the widget smaller as it's best size? */
 	bool shrunken_;
@@ -540,5 +567,3 @@ public:
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

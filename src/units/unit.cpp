@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,41 +18,40 @@
  */
 
 #include "units/unit.hpp"
-#include "global.hpp"
 
+#include "color.hpp"
 #include "display_context.hpp"
 #include "formatter.hpp"
-#include "formula/string_utils.hpp"     // for vgettext
-#include "game_board.hpp"               // for game_board
+#include "formula/string_utils.hpp" // for vgettext
+#include "game_board.hpp"			// for game_board
+#include "game_config.hpp"			// for add_color_info, etc
 #include "game_data.hpp"
-#include "game_config.hpp"              // for add_color_info, etc
-#include "game_errors.hpp"              // for game_error
-#include "game_events/manager.hpp"     // for add_events
-#include "game_preferences.hpp"         // for encountered_units
-#include "gettext.hpp"                  // for N_
-#include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "utils/make_enum.hpp"                // for operator<<, operator>>
-#include "map/map.hpp"       // for gamemap
-#include "random_new.hpp"               // for generator, rng
-#include "resources.hpp"                // for units, gameboard, teams, etc
-#include "scripting/game_lua_kernel.hpp"            // for game_lua_kernel
-#include "sdl/color.hpp"
+#include "game_errors.hpp"		   // for game_error
+#include "game_events/manager.hpp" // for add_events
+#include "preferences/game.hpp"	// for encountered_units
+#include "gettext.hpp"			   // for N_
+#include "lexical_cast.hpp"
+#include "log.hpp"						 // for LOG_STREAM, logger, etc
+#include "map/map.hpp"					 // for gamemap
+#include "random.hpp"				 // for generator, rng
+#include "resources.hpp"				 // for units, gameboard, teams, etc
+#include "scripting/game_lua_kernel.hpp" // for game_lua_kernel
+#include "side_filter.hpp"				 // for side_filter
 #include "synced_context.hpp"
-#include "side_filter.hpp"              // for side_filter
-#include "team.hpp"                     // for team, get_teams, etc
-#include "terrain/filter.hpp"           // for terrain_filter
-#include "units/abilities.hpp"           // for effect, filter_base_matches
-#include "units/animation.hpp"           // for unit_animation
-#include "units/animation_component.hpp"  // for unit_animation_component
+#include "team.hpp"						 // for team, get_teams, etc
+#include "terrain/filter.hpp"			 // for terrain_filter
+#include "units/abilities.hpp"			 // for effect, filter_base_matches
+#include "units/animation.hpp"			 // for unit_animation
+#include "units/animation_component.hpp" // for unit_animation_component
 #include "units/filter.hpp"
-#include "units/formula_manager.hpp"     // for unit_formula_manager
+#include "units/formula_manager.hpp" // for unit_formula_manager
 #include "units/id.hpp"
-#include "units/map.hpp"      // for unit_map, etc
-#include "variable.hpp"                 // for vconfig, etc
+#include "units/map.hpp"	   // for unit_map, etc
+#include "variable.hpp"		   // for vconfig, etc
 
 #include "utils/functional.hpp"
-#include <boost/function_output_iterator.hpp>
 #include <boost/dynamic_bitset.hpp>
+#include <boost/function_output_iterator.hpp>
 
 #ifdef _MSC_VER
 #pragma warning (push)
@@ -62,6 +61,7 @@
 #ifdef _MSC_VER
 #pragma warning (pop)
 #endif
+
 #include <cassert>                     // for assert
 #include <cstdlib>                     // for rand
 #include <exception>                    // for exception
@@ -77,31 +77,21 @@ static lg::log_domain log_unit("unit");
 #define WRN_UT LOG_STREAM(warn, log_unit)
 #define ERR_UT LOG_STREAM(err, log_unit)
 
-static lg::log_domain log_engine("engine");
-#define ERR_NG LOG_STREAM(err, log_engine)
-
-static lg::log_domain log_config("config");
-#define WRN_CF LOG_STREAM(warn, log_config)
-#define ERR_CONFIG LOG_STREAM(err, log_config)
-
-static lg::log_domain log_enginerefac("enginerefac");
-#define LOG_RG LOG_STREAM(info, log_enginerefac)
-
-namespace {
+namespace
+{
 	// "advance" only kept around for backwards compatibility; only "advancement" should be used
-	const std::string ModificationTypes[] = { "advancement", "advance", "trait", "object" };
-	const size_t NumModificationTypes = sizeof(ModificationTypes)/
-										sizeof(*ModificationTypes);
+	const std::array<std::string, 4> ModificationTypes {{ "advancement", "advance", "trait", "object" }};
 
 	/**
 	 * Pointers to units which have data in their internal caches. The
 	 * destructor of an unit removes itself from the cache, so the pointers are
 	 * always valid.
 	 */
-	static std::vector<const unit *> units_with_cache;
+	static std::vector<const unit*> units_with_cache;
 
-	const std::string leader_crown_path = "misc/leader-crown.png";
-	static std::string internalized_attrs[] = { "type", "id", "name",
+	static const std::string leader_crown_path = "misc/leader-crown.png";
+	static std::string internalized_attrs[] {
+		"type", "id", "name",
 		"gender", "random_gender", "variation", "role", "ai_special",
 		"side", "underlying_id", "overlays", "facing", "race",
 		"level", "recall_cost", "undead_variation", "max_attacks",
@@ -111,25 +101,32 @@ namespace {
 		"experience", "resting", "unrenamable", "alignment",
 		"canrecruit", "extra_recruit", "x", "y", "placement",
 		"parent_type", "description", "usage", "halo", "ellipse",
-		"random_taits", "upkeep", "random_traits", "generate_name",
+		"upkeep", "random_traits", "generate_name",
 		"profile", "small_profile",
+		"passable", "overwrite", "location_id",
 		// Useless attributes created when saving units to WML:
 		"flag_rgb", "language_name", "image", "image_icon"
 	};
-	//Sort the array to make set_difference below work.
-	struct internalized_attrs_sorter {
+
+	struct internalized_attrs_sorter
+	{
 		internalized_attrs_sorter()
 		{
 			std::sort(std::begin(internalized_attrs), std::end(internalized_attrs));
 		}
-	} internalized_attrs_sorter;
+	};
+
+	// Sort the array to make set_difference below work.
+	internalized_attrs_sorter sorter;
 
 	void warn_unknown_attribute(const config::const_attr_itors& cfg)
 	{
 		config::const_attribute_iterator cur = cfg.begin();
 		config::const_attribute_iterator end = cfg.end();
+
 		const std::string* cur_known = std::begin(internalized_attrs);
 		const std::string* end_known = std::end(internalized_attrs);
+
 		while(cur_known != end_known) {
 			if(cur == end) {
 				return;
@@ -139,7 +136,7 @@ namespace {
 				WRN_UT << "Unknown attribute '" << cur->first << "' discarded." << std::endl;
 				++cur;
 			}
-			else if (comp == 0) {
+			else if(comp == 0) {
 				++cur;
 				++cur_known;
 			}
@@ -147,19 +144,26 @@ namespace {
 				++cur_known;
 			}
 		}
+
 		while(cur != end) {
 			WRN_UT << "Unknown attribute '" << cur->first << "' discarded." << std::endl;
 			++cur;
 		}
 	}
-}
+
+	template<typename T>
+	T* copy_or_null(const std::unique_ptr<T>& ptr)
+	{
+		return ptr ? new T(*ptr) : nullptr;
+	}
+} // end anon namespace
 
 /**
  * Intrusive Pointer interface
  *
  **/
 
-void intrusive_ptr_add_ref(const unit * u)
+void intrusive_ptr_add_ref(const unit* u)
 {
 	assert(u->ref_count_ >= 0);
 	// the next code line is to notice possible wrongly initialized units.
@@ -169,18 +173,18 @@ void intrusive_ptr_add_ref(const unit * u)
 	// then feel free to remove the next line
 	assert(u->ref_count_ < 100000);
 	LOG_UT << "Adding a reference to a unit: id = " << u->id() << ", uid = " << u->underlying_id() << ", refcount = " << u->ref_count() << " ptr:" << u << std::endl;
-	if (u->ref_count_ == 0) {
+	if(u->ref_count_ == 0) {
 		LOG_UT << "Freshly constructed" << std::endl;
 	}
 	++(u->ref_count_);
 }
 
-void intrusive_ptr_release(const unit * u)
+void intrusive_ptr_release(const unit* u)
 {
 	assert(u->ref_count_ >= 1);
 	assert(u->ref_count_ < 100000); //See comment in intrusive_ptr_add_ref
 	LOG_UT << "Removing a reference to a unit: id = " << u->id() << ", uid = " << u->underlying_id() << ", refcount = " << u->ref_count() << " ptr:" << u << std::endl;
-	if (--(u->ref_count_) == 0)
+	if(--(u->ref_count_) == 0)
 	{
 		LOG_UT << "Deleting a unit: id = " << u->id() << ", uid = " << u->underlying_id() << std::endl;
 		delete u;
@@ -191,27 +195,27 @@ void intrusive_ptr_release(const unit * u)
  * Converts a string ID to a unit_type.
  * Throws a game_error exception if the string does not correspond to a type.
  */
-static const unit_type &get_unit_type(const std::string &type_id)
+static const unit_type& get_unit_type(const std::string& type_id)
 {
-	if (type_id.empty()) {
+	if(type_id.empty()) {
 		throw unit_type::error("creating unit with an empty type field");
 	}
 	std::string new_id = type_id;
 	unit_type::check_id(new_id);
-	const unit_type *i = unit_types.find(new_id);
-	if (!i) throw unit_type::error("unknown unit type: " + type_id);
+	const unit_type* i = unit_types.find(new_id);
+	if(!i) throw unit_type::error("unknown unit type: " + type_id);
 	return *i;
 }
 
-static unit_race::GENDER generate_gender(const unit_type & type, bool random_gender)
+static unit_race::GENDER generate_gender(const unit_type& type, bool random_gender)
 {
 	const std::vector<unit_race::GENDER>& genders = type.genders();
-	assert( genders.size() > 0 );
+	assert(genders.size() > 0);
 
-	if ( random_gender == false  ||  genders.size() == 1 ) {
+	if(random_gender == false  ||  genders.size() == 1) {
 		return genders.front();
 	} else {
-		return genders[random_new::generator->get_random_int(0,genders.size()-1)];
+		return genders[randomness::generator->get_random_int(0,genders.size()-1)];
 		// Note: genders is guaranteed to be non-empty, so this is not a
 		// potential division by zero.
 		// Note: Whoever wrote this code, you should have used an assertion, to save others hours of work...
@@ -220,26 +224,29 @@ static unit_race::GENDER generate_gender(const unit_type & type, bool random_gen
 	}
 }
 
-static unit_race::GENDER generate_gender(const unit_type & u_type, const config &cfg)
+static unit_race::GENDER generate_gender(const unit_type& u_type, const config& cfg)
 {
 	const std::string& gender = cfg["gender"];
-	if(!gender.empty())
+	if(!gender.empty()) {
 		return string_gender(gender);
+	}
 
 	return generate_gender(u_type, cfg["random_gender"].to_bool());
 }
 
-const std::string& unit::leader_crown()
+struct ptr_vector_pushback
 {
-	return leader_crown_path;
-}
-namespace {
-	template<typename T>
-	T* copy_or_null(const std::unique_ptr<T>& ptr)
+	ptr_vector_pushback(boost::ptr_vector<config>& vec) : vec_(&vec) {}
+
+	void operator()(const config& cfg)
 	{
-		return ptr ? new T(*ptr) : nullptr;
+		vec_->push_back(new config(cfg));
 	}
-}
+
+	//Dont use reference to be copyable.
+	boost::ptr_vector<config>* vec_;
+};
+
 // Copy constructor
 unit::unit(const unit& o)
 	: ref_count_(0)
@@ -267,7 +274,6 @@ unit::unit(const unit& o)
 	, unrenamable_(o.unrenamable_)
 	, side_(o.side_)
 	, gender_(o.gender_)
-	, alpha_(o.alpha_)
 	, formula_man_(new unit_formula_manager(o.formula_manager()))
 	, movement_(o.movement_)
 	, max_movement_(o.max_movement_)
@@ -322,18 +328,7 @@ unit::unit(const unit& o)
 	}
 }
 
-struct ptr_vector_pushback
-{
-	ptr_vector_pushback(boost::ptr_vector<config>&  vec) : vec_(&vec) {}
-	void operator()(const config& cfg)
-	{
-		vec_->push_back(new config(cfg));
-	}
-	//Dont use reference to be copyable.
-	boost::ptr_vector<config>* vec_;
-};
-
-unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
+unit::unit(const config& cfg, bool use_traits, const vconfig* vcfg)
 	: ref_count_(0)
 	, loc_(cfg["x"], cfg["y"], wml_loc())
 	, advances_to_()
@@ -359,7 +354,6 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 	, unrenamable_(false)
 	, side_(0)
 	, gender_(generate_gender(*type_, cfg))
-	, alpha_()
 	, formula_man_(new unit_formula_manager())
 	, movement_(0)
 	, max_movement_(0)
@@ -419,7 +413,8 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 	if(overlays_.size() == 1 && overlays_.front() == "") {
 		overlays_.clear();
 	}
-	if (const config &variables = cfg.child("variables")) {
+
+	if(const config& variables = cfg.child("variables")) {
 		variables_ = variables;
 	}
 
@@ -432,9 +427,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 		for(const vconfig& e : events) {
 			events_.add_child("event", e.get_config());
 		}
-	}
-	else
-	{
+	} else {
 		filter_recall_ = cfg.child_or_empty("filter_recall");
 
 		for(const config& unit_event : cfg.child_range("event")) {
@@ -442,7 +435,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 		}
 	}
 
-	if (resources::game_events) {
+	if(resources::game_events) {
 		resources::game_events->add_events(events_.child_range("event"));
 	}
 
@@ -450,57 +443,66 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 	facing_ = map_location::parse_direction(cfg["facing"]);
 	if(facing_ == map_location::NDIRECTIONS) facing_ = static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS);
 
-	if (const config &mods = cfg.child("modifications")) {
+	if(const config& mods = cfg.child("modifications")) {
 		modifications_ = mods;
 	}
+
 	generate_name_ = cfg["generate_name"].to_bool(true);
+
 	// Apply the unit type's data to this unit.
 	advance_to(*type_, use_traits);
 
-	if (const config::attribute_value *v = cfg.get("race")) {
-		if (const unit_race *r = unit_types.find_race(*v)) {
+	if(const config::attribute_value* v = cfg.get("race")) {
+		if(const unit_race *r = unit_types.find_race(*v)) {
 			race_ = r;
 		} else {
 			race_ = &unit_race::null_race;
 		}
 	}
+
 	level_ = cfg["level"].to_int(level_);
-	if (const config::attribute_value *v = cfg.get("undead_variation")) {
+
+	if(const config::attribute_value* v = cfg.get("undead_variation")) {
 		undead_variation_ = v->str();
 	}
-	if(const config::attribute_value *v = cfg.get("max_attacks")) {
+
+	if(const config::attribute_value* v = cfg.get("max_attacks")) {
 		max_attacks_ = std::max(0, v->to_int(1));
 	}
+
 	attacks_left_ = std::max(0, cfg["attacks_left"].to_int(max_attacks_));
 
-	if (const config::attribute_value *v = cfg.get("alpha")) {
-		alpha_ = lexical_cast_default<fixed_t>(*v);
-	}
-	if (const config::attribute_value *v = cfg.get("zoc")) {
+	if(const config::attribute_value* v = cfg.get("zoc")) {
 		emit_zoc_ = v->to_bool(level_ > 0);
 	}
-	if (const config::attribute_value *v = cfg.get("description")) {
+
+	if(const config::attribute_value* v = cfg.get("description")) {
 		description_ = *v;
 	}
-	if (const config::attribute_value *v = cfg.get("cost")) {
+
+	if(const config::attribute_value* v = cfg.get("cost")) {
 		unit_value_ = *v;
 	}
-	if (const config::attribute_value *v = cfg.get("ellipse")) {
+
+	if(const config::attribute_value* v = cfg.get("ellipse")) {
 		set_image_ellipse(*v);
 	}
-	if (const config::attribute_value *v = cfg.get("halo")) {
+
+	if(const config::attribute_value* v = cfg.get("halo")) {
 		set_image_halo(*v);
 	}
-	if (const config::attribute_value *v = cfg.get("usage")) {
+
+	if(const config::attribute_value* v = cfg.get("usage")) {
 		set_usage(*v);
 	}
 
-	if (const config::attribute_value *v = cfg.get("profile")) {
+	if(const config::attribute_value* v = cfg.get("profile")) {
 		std::string profile = (*v).str();
 		adjust_profile(profile);
 		profile_ = profile;
 	}
-	if (const config::attribute_value *v = cfg.get("small_profile")) {
+
+	if(const config::attribute_value* v = cfg.get("small_profile")) {
 		small_profile_ = (*v).str();
 	}
 
@@ -513,35 +515,33 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 	std::vector<std::string> temp_advances = utils::split(cfg["advances_to"]);
 	if(temp_advances.size() == 1 && temp_advances.front() == "null") {
 		advances_to_.clear();
-	}else if(temp_advances.size() >= 1 && temp_advances.front() != "") {
+	} else if(temp_advances.size() >= 1 && temp_advances.front() != "") {
 		advances_to_ = temp_advances;
 	}
 
-	if (const config &ai = cfg.child("ai"))
-	{
+	if(const config& ai = cfg.child("ai")) {
 		formula_man_->read(ai);
 	}
 
-	//don't use the unit_type's attacks if this config has its own defined
+	// Don't use the unit_type's attacks if this config has its own defined
 	if(config::const_child_itors cfg_range = cfg.child_range("attack")) {
 		attacks_.clear();
-		for (const config& c : cfg_range) {
+		for(const config& c : cfg_range) {
 			attacks_.emplace_back(new attack_type(c));
 		}
 	}
 
-	//If cfg specifies [advancement]s, replace this [advancement]s with them.
-	if(cfg.has_child("advancement"))
-	{
+	// If cfg specifies [advancement]s, replace this [advancement]s with them.
+	if(cfg.has_child("advancement")) {
 		this->advancements_.clear();
-		boost::copy( cfg.child_range("advancement"), boost::make_function_output_iterator(ptr_vector_pushback(advancements_)));
+		boost::copy(cfg.child_range("advancement"), boost::make_function_output_iterator(ptr_vector_pushback(advancements_)));
 	}
 
-	//don't use the unit_type's abilities if this config has its own defined
-	//Why do we allow multiple [abilities] tags?
-	if (config::const_child_itors cfg_range = cfg.child_range("abilities")) {
+	// Don't use the unit_type's abilities if this config has its own defined
+	// Why do we allow multiple [abilities] tags?
+	if(config::const_child_itors cfg_range = cfg.child_range("abilities")) {
 		abilities_.clear();
-		for (const config& abilities : cfg_range) {
+		for(const config& abilities : cfg_range) {
 			this->abilities_.append(abilities);
 		}
 	}
@@ -550,33 +550,32 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 	// flying status if this config has its own defined.
 	movement_type_.merge(cfg);
 
-	if (const config &status_flags = cfg.child("status"))
-	{
+	if(const config& status_flags = cfg.child("status")) {
 		for(const config::attribute &st : status_flags.attribute_range()) {
-			if (st.second.to_bool()) {
+			if(st.second.to_bool()) {
 				set_state(st.first, true);
 			}
 		}
 	}
+
 	if(cfg["ai_special"] == "guardian") {
 		set_state(STATE_GUARDIAN, true);
 	}
 
-	if (const config::attribute_value *v = cfg.get("hitpoints")) {
+	if(const config::attribute_value* v = cfg.get("hitpoints")) {
 		hit_points_ = *v;
 	} else {
 		hit_points_ = max_hit_points_;
 	}
 
-	if (const config::attribute_value *v = cfg.get("invulnerable"))
-	{
+	if(const config::attribute_value* v = cfg.get("invulnerable")) {
 		set_state("invulnerable", v->to_bool());
 	}
 
 	goto_.set_wml_x(cfg["goto_x"].to_int());
 	goto_.set_wml_y(cfg["goto_y"].to_int());
 
-	if (const config::attribute_value *v = cfg.get("moves")) {
+	if(const config::attribute_value* v = cfg.get("moves")) {
 		movement_ = *v;
 		if(movement_ < 0) {
 			attacks_left_ = 0;
@@ -585,12 +584,13 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 	} else {
 		movement_ = max_movement_;
 	}
+
 	experience_ = cfg["experience"];
 	resting_ = cfg["resting"].to_bool();
 	unrenamable_ = cfg["unrenamable"].to_bool();
 
-	/* We need to check to make sure that the cfg is not blank and if it
-	isn't pull that value otherwise it goes with the default of -1.  */
+	// We need to check to make sure that the cfg is not blank and if it
+	// isn't pull that value otherwise it goes with the default of -1.
 	if(!cfg["recall_cost"].blank()) {
 		recall_cost_ = cfg["recall_cost"].to_int(recall_cost_);
 	}
@@ -605,23 +605,25 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg)
 
 	game_config::add_color_info(cfg);
 	warn_unknown_attribute(cfg.attribute_range());
-	//debug unit animations for units as they appear in game
-	/*for(std::vector<unit_animation>::const_iterator i = anim_comp_->animations_.begin(); i != anim_comp_->animations_.end(); ++i) {
-		std::cout << (*i).debug();
-	}*/
+
+#if 0
+	// Debug unit animations for units as they appear in game
+	for(const auto& anim : anim_comp_->animations_) {
+		std::cout << anim.debug() << std::endl;
+	}
+#endif
 }
 
 void unit::clear_status_caches()
 {
-	for(std::vector<const unit *>::const_iterator itor = units_with_cache.begin();
-			itor != units_with_cache.end(); ++itor) {
-		(*itor)->clear_visibility_cache();
+	for(auto& u : units_with_cache) {
+		u->clear_visibility_cache();
 	}
 
 	units_with_cache.clear();
 }
 
-unit::unit(const unit_type &u_type, int side, bool real_unit, unit_race::GENDER gender)
+unit::unit(const unit_type& u_type, int side, bool real_unit, unit_race::GENDER gender)
 	: ref_count_(0)
 	, loc_()
 	, advances_to_()
@@ -645,9 +647,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit, unit_race::GENDER 
 	, image_mods_()
 	, unrenamable_(false)
 	, side_(side)
-	, gender_(gender != unit_race::NUM_GENDERS ?
-		gender : generate_gender(u_type, real_unit))
-	, alpha_()
+	, gender_(gender != unit_race::NUM_GENDERS ? gender : generate_gender(u_type, real_unit))
 	, formula_man_(new unit_formula_manager())
 	, movement_(0)
 	, max_movement_(0)
@@ -668,7 +668,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit, unit_race::GENDER 
 	, overlays_()
 	, role_()
 	, attacks_()
-	, facing_(static_cast<map_location::DIRECTION>(rand()%map_location::NDIRECTIONS))
+	, facing_(static_cast<map_location::DIRECTION>(rand() % map_location::NDIRECTIONS))
 	, trait_names_()
 	, trait_descriptions_()
 	, unit_value_()
@@ -700,6 +700,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit, unit_race::GENDER 
 	if(real_unit) {
 		generate_name();
 	}
+
 	set_underlying_id(resources::gameboard ? resources::gameboard->unit_id_manager() : n_unit::id_manager::global_instance());
 
 	// Set these after traits and modifications have set the maximums.
@@ -711,18 +712,17 @@ unit::unit(const unit_type &u_type, int side, bool real_unit, unit_race::GENDER 
 unit::~unit()
 {
 	try {
-	anim_comp_->clear_haloes();
+		anim_comp_->clear_haloes();
 
-	// Remove us from the status cache
-	std::vector<const unit *>::iterator itor =
-	std::find(units_with_cache.begin(), units_with_cache.end(), this);
+		// Remove us from the status cache
+		auto itor = std::find(units_with_cache.begin(), units_with_cache.end(), this);
 
-	if(itor != units_with_cache.end()) {
-		units_with_cache.erase(itor);
-	}
-	} catch (std::exception & e) {
+		if(itor != units_with_cache.end()) {
+			units_with_cache.erase(itor);
+		}
+	} catch(std::exception & e) {
 		ERR_UT << "Caught exception when destroying unit: " << e.what() << std::endl;
-	} catch (...) {}
+	} catch(...) {}
 }
 
 /**
@@ -757,7 +757,6 @@ void unit::swap(unit & o)
 	swap(unrenamable_, o.unrenamable_);
 	swap(side_, o.side_);
 	swap(gender_, o.gender_);
-	swap(alpha_, o.alpha_);
 	swap(formula_man_, o.formula_man_);
 	swap(movement_, o.movement_);
 	swap(max_movement_, o.max_movement_);
@@ -803,57 +802,42 @@ unit& unit::operator=(unit other)
 	return *this;
 }
 
-
 void unit::generate_name()
 {
-	if (!name_.empty() || !generate_name_) {
+	if(!name_.empty() || !generate_name_) {
 		return;
 	}
 	name_ = race_->generate_name(gender_);
 	generate_name_ = false;
 }
 
-
-/**
- * Apply mandatory traits (e.g. undead, mechanical) to a unit and then
- * fill out with available (leaders have a restricted set of available traits)
- * traits until no more are available or the unit has its maximum number
- * of traits.
- * This routine does not apply the effects of added traits to a unit.
- * That must be done by the caller.
- * Note that random numbers used in config files don't work in multiplayer,
- * so that leaders should be barred from all random traits until that
- * is fixed. Later the restrictions will be based on play balance.
- * @a musthaveonly is true when you don't want to generate random traits or
- * you don't want to give any optional traits to a unit.
- */
-void unit::generate_traits(bool musthaveonly)
+void unit::generate_traits(bool must_have_only)
 {
-	LOG_UT << "Generating a trait for unit type " << type().log_id() << " with musthaveonly " << musthaveonly << "\n";
-	const unit_type &u_type = type();
+	LOG_UT << "Generating a trait for unit type " << type().log_id() << " with must_have_only " << must_have_only  << std::endl;
+	const unit_type& u_type = type();
 
 	// Calculate the unit's traits
 	config::const_child_itors current_traits = modifications_.child_range("trait");
 	std::vector<const config*> candidate_traits;
 
-	for (const config &t : u_type.possible_traits())
-	{
+	for(const config& t : u_type.possible_traits()) {
 		// Skip the trait if the unit already has it.
-		const std::string &tid = t["id"];
+		const std::string& tid = t["id"];
 		bool already = false;
-		for (const config &mod : current_traits)
-		{
-			if (mod["id"] == tid) {
+		for(const config& mod : current_traits) {
+			if(mod["id"] == tid) {
 				already = true;
 				break;
 			}
 		}
-		if (already) continue;
+
+		if(already) {
+			continue;
+		}
 
 		// Add the trait if it is mandatory.
-		const std::string &avl = t["availability"];
-		if (avl == "musthave")
-		{
+		const std::string& avl = t["availability"];
+		if(avl == "musthave") {
 			modifications_.add_child("trait", t);
 			current_traits = modifications_.child_range("trait");
 			continue;
@@ -861,19 +845,20 @@ void unit::generate_traits(bool musthaveonly)
 
 		// The trait is still available, mark it as a candidate for randomizing.
 		// For leaders, only traits with availability "any" are considered.
-		if (!musthaveonly && (!can_recruit() || avl == "any"))
+		if(!must_have_only && (!can_recruit() || avl == "any")) {
 			candidate_traits.push_back(&t);
+		}
 	}
 
-	if (musthaveonly) return;
+	if(must_have_only) return;
 
 	// Now randomly fill out to the number of traits required or until
 	// there aren't any more traits.
 	int nb_traits = current_traits.size();
 	int max_traits = u_type.num_traits();
-	for (; nb_traits < max_traits && !candidate_traits.empty(); ++nb_traits)
+	for(; nb_traits < max_traits && !candidate_traits.empty(); ++nb_traits)
 	{
-		int num = random_new::generator->get_random_int(0,candidate_traits.size()-1);
+		int num = randomness::generator->get_random_int(0,candidate_traits.size()-1);
 		modifications_.add_child("trait", *candidate_traits[num]);
 		candidate_traits.erase(candidate_traits.begin() + num);
 	}
@@ -887,7 +872,7 @@ std::vector<std::string> unit::get_traits_list() const
 {
 	std::vector<std::string> res;
 
-	for (const config &mod : modifications_.child_range("trait"))
+	for(const config& mod : modifications_.child_range("trait"))
 	{
 			// Make sure to return empty id trait strings as otherwise
 			// names will not match in length (Bug #21967)
@@ -903,13 +888,12 @@ std::vector<std::string> unit::get_traits_list() const
  * Current hit point total is left unchanged unless it would violate max HP.
  * Assumes gender_ and variation_ are set to their correct values.
  */
-void unit::advance_to(const unit_type &u_type,
-	bool use_traits)
+void unit::advance_to(const unit_type& u_type, bool use_traits)
 {
 	// For reference, the type before this advancement.
-	const unit_type & old_type = type();
+	const unit_type& old_type = type();
 	// Adjust the new type for gender and variation.
-	const unit_type & new_type = u_type.get_gender_unit_type(gender_).get_variation(variation_);
+	const unit_type& new_type = u_type.get_gender_unit_type(gender_).get_variation(variation_);
 
 	// Reset the scalar values first
 	trait_names_.clear();
@@ -926,20 +910,25 @@ void unit::advance_to(const unit_type &u_type,
 	if(!new_type.usage().empty()) {
 		 set_usage(new_type.usage());
 	}
+
 	set_image_halo(new_type.halo());
-	if (!new_type.ellipse().empty()) {
+	if(!new_type.ellipse().empty()) {
 		set_image_ellipse(new_type.ellipse());
 	}
+
 	generate_name_ &= new_type.generate_name();
 	abilities_ = new_type.abilities_cfg();
 	advancements_.clear();
+
 	for(const config& advancement : new_type.advancements()) {
 		advancements_.push_back(new config(advancement));
 	}
+
  	// If unit has specific profile, remember it and keep it after advancing
 	if(small_profile_.empty() || small_profile_ == old_type.small_profile()) {
 		small_profile_ = new_type.small_profile();
 	}
+
 	if(profile_.empty() || profile_ == old_type.big_profile()) {
 		profile_ = new_type.big_profile();
 	}
@@ -956,14 +945,15 @@ void unit::advance_to(const unit_type &u_type,
 	max_experience_ = new_type.experience_needed(false);
 	level_ = new_type.level();
 	recall_cost_ = new_type.recall_cost();
+
 	/* Need to add a check to see if the unit's old cost is equal
 	to the unit's old unit_type cost first.  If it is change the cost
 	otherwise keep the old cost. */
 	if(old_type.recall_cost() == recall_cost_) {
 		recall_cost_ = new_type.recall_cost();
 	}
+
 	alignment_ = new_type.alignment();
-	alpha_ = new_type.alpha();
 	max_hit_points_ = new_type.hitpoints();
 	hp_bar_scaling_ = new_type.hp_bar_scaling();
 	xp_bar_scaling_ = new_type.xp_bar_scaling();
@@ -974,7 +964,7 @@ void unit::advance_to(const unit_type &u_type,
 	emit_zoc_ = new_type.has_zoc();
 	attacks_.clear();
 	std::transform(new_type.attacks().begin(), new_type.attacks().end(), std::back_inserter(attacks_), [](const attack_type& atk) {
-		return new attack_type(atk);
+		return std::make_shared<attack_type>(atk);
 	});
 	unit_value_ = new_type.cost();
 
@@ -984,7 +974,7 @@ void unit::advance_to(const unit_type &u_type,
 
 	anim_comp_->reset_after_advance(&new_type);
 
-	if (random_traits_) {
+	if(random_traits_) {
 		generate_traits(!use_traits);
 	} else {
 		// This will add any "musthave" traits to the new unit that it doesn't already have.
@@ -1002,50 +992,60 @@ void unit::advance_to(const unit_type &u_type,
 
 	// Now that modifications are done modifying traits, check if poison should
 	// be cleared.
-	if ( get_state("unpoisonable") )
+	if(get_state("unpoisonable")) {
 		set_state(STATE_POISONED, false);
+	}
 
 	// Now that modifications are done modifying the maximum hit points,
 	// enforce this maximum.
-	if ( hit_points_ > max_hit_points_ )
+	if(hit_points_ > max_hit_points_) {
 		hit_points_ = max_hit_points_;
+	}
 
 	// In case the unit carries EventWML, apply it now
-	if (resources::game_events) {
+	if(resources::game_events) {
 		resources::game_events->add_events(new_type.events(), new_type.id());
 	}
 }
 
 std::string unit::big_profile() const
 {
-	if (!profile_.empty() && profile_ != "unit_image") {
+	if(!profile_.empty() && profile_ != "unit_image") {
 		return profile_;
 	}
+
 	return absolute_image();
 }
 
 std::string unit::small_profile() const
 {
-	if (!small_profile_.empty() && small_profile_ != "unit_image") {
+	if(!small_profile_.empty() && small_profile_ != "unit_image") {
 		return small_profile_;
 	}
+
 	return absolute_image();
 }
 
-const std::string& unit::team_color() const {
+const std::string& unit::leader_crown()
+{
+	return leader_crown_path;
+}
+
+const std::string& unit::flag_rgb() const
+{
 	return flag_rgb_.empty() ? game_config::unit_rgb : flag_rgb_;
 }
 
-static color_t hp_color_(int hitpoints, int max_hitpoints)
+static color_t hp_color_impl(int hitpoints, int max_hitpoints)
 {
 	double unit_energy = 0.0;
-	color_t energy_color = {0,0,0,0};
+	color_t energy_color {0,0,0,0};
 
 	if(max_hitpoints > 0) {
 		unit_energy = double(hitpoints)/double(max_hitpoints);
 	}
 
-	if(1.0 == unit_energy){
+	if(1.0 == unit_energy) {
 		energy_color.r = 33;
 		energy_color.g = 225;
 		energy_color.b = 0;
@@ -1070,34 +1070,37 @@ static color_t hp_color_(int hitpoints, int max_hitpoints)
 		energy_color.g = 0;
 		energy_color.b = 0;
 	}
+
 	return energy_color;
 }
 
 color_t unit::hp_color() const
 {
-	return hp_color_(hitpoints(), max_hitpoints());
+	return hp_color_impl(hitpoints(), max_hitpoints());
 }
 
 color_t unit::hp_color(int new_hitpoints) const
 {
-	return hp_color_(new_hitpoints, hitpoints());
+	return hp_color_impl(new_hitpoints, hitpoints());
 }
 
 color_t unit::xp_color() const
 {
-	const color_t near_advance_color = {255,255,255,0};
-	const color_t mid_advance_color  = {150,255,255,0};
-	const color_t far_advance_color  = {0,205,205,0};
-	const color_t normal_color	  = {0,160,225,0};
-	const color_t near_amla_color	  = {225,0,255,0};
-	const color_t mid_amla_color	  = {169,30,255,0};
-	const color_t far_amla_color	  = {139,0,237,0};
-	const color_t amla_color		  = {170,0,255,0};
-	const bool near_advance = max_experience() - experience() <= game_config::kill_experience;
-	const bool mid_advance  = max_experience() - experience() <= game_config::kill_experience*2;
-	const bool far_advance  = max_experience() - experience() <= game_config::kill_experience*3;
+	const color_t near_advance_color {255,255,255,0};
+	const color_t mid_advance_color  {150,255,255,0};
+	const color_t far_advance_color  {0,205,205,0};
+	const color_t normal_color       {0,160,225,0};
+	const color_t near_amla_color    {225,0,255,0};
+	const color_t mid_amla_color     {169,30,255,0};
+	const color_t far_amla_color     {139,0,237,0};
+	const color_t amla_color         {170,0,255,0};
 
-	color_t color=normal_color;
+	const bool near_advance = static_cast<int>(experience_to_advance()) <= game_config::kill_experience;
+	const bool mid_advance  = static_cast<int>(experience_to_advance()) <= game_config::kill_experience*2;
+	const bool far_advance  = static_cast<int>(experience_to_advance()) <= game_config::kill_experience*3;
+
+	color_t color = normal_color;
+
 	if(advances_to().size()){
 		if(near_advance){
 			color=near_advance_color;
@@ -1106,7 +1109,7 @@ color_t unit::xp_color() const
 		} else if(far_advance){
 			color=far_advance_color;
 		}
-	} else if (get_modification_advances().size()){
+	} else if(get_modification_advances().size()){
 		if(near_advance){
 			color=near_amla_color;
 		} else if(mid_advance){
@@ -1117,6 +1120,7 @@ color_t unit::xp_color() const
 			color=amla_color;
 		}
 	}
+
 	return(color);
 }
 
@@ -1132,15 +1136,15 @@ void unit::set_recruits(const std::vector<std::string>& recruits)
 const std::vector<std::string> unit::advances_to_translated() const
 {
 	std::vector<std::string> result;
-	for (std::string adv_type_id : advances_to_)
-	{
-		const unit_type *adv_type = unit_types.find(adv_type_id);
-		if ( adv_type )
+	for(const std::string& adv_type_id : advances_to_) {
+		if(const unit_type* adv_type = unit_types.find(adv_type_id)) {
 			result.push_back(adv_type->type_name());
-		else
+		} else {
 			WRN_UT << "unknown unit in advances_to list of type "
-			<< type().log_id() << ": " << adv_type_id << "\n";
+			<< type().log_id() << ": " << adv_type_id << std::endl;
+		}
 	}
+
 	return result;
 }
 
@@ -1150,21 +1154,15 @@ void unit::set_advances_to(const std::vector<std::string>& advances_to)
 	advances_to_ = advances_to;
 }
 
-/**
- * Set the unit's remaining movement to @a moves.
- * If @a unit_action is set to true, then additionally the "end turn" and
- * "hold position" flags will be cleared (as they should be if a unit acts,
- * as opposed to the movement being set by the engine for other reasons).
- */
 void unit::set_movement(int moves, bool unit_action)
 {
 	// If this was because the unit acted, clear its "not acting" flags.
-	if ( unit_action )
+	if(unit_action) {
 		end_turn_ = hold_position_ = false;
+	}
 
 	movement_ = std::max<int>(0, moves);
 }
-
 
 /**
  * Determines if @a mod_dur "matches" @a goal_dur.
@@ -1172,56 +1170,49 @@ void unit::set_movement(int moves, bool unit_action)
  * If goal_dur is empty, they match if mod_dur is neither empty nor "forever".
  * Helper function for expire_modifications().
  */
-inline bool mod_duration_match(const std::string & mod_dur,
-                               const std::string & goal_dur)
+inline bool mod_duration_match(const std::string& mod_dur, const std::string& goal_dur)
 {
-	if ( goal_dur.empty() )
+	if(goal_dur.empty()) {
 		// Default is all temporary modifications.
-		return !mod_dur.empty()  &&  mod_dur != "forever";
-	else
-		return mod_dur == goal_dur;
+		return !mod_dur.empty() && mod_dur != "forever";
+	}
+
+	return mod_dur == goal_dur;
 }
 
-/**
- * Clears those modifications whose duration has expired.
- * If @a duration is empty, then all temporary modifications (those not
- * lasting forever) have expired. Otherwise, modifications whose duration
- * equals @a duration have expired.
- */
-void unit::expire_modifications(const std::string & duration)
+void unit::expire_modifications(const std::string& duration)
 {
 	// If any modifications expire, then we will need to rebuild the unit.
-	const unit_type * rebuild_from = nullptr;
+	const unit_type* rebuild_from = nullptr;
 
 	// Loop through all types of modifications.
-	for(unsigned int i = 0; i != NumModificationTypes; ++i) {
-		const std::string& mod_name = ModificationTypes[i];
+	for(const auto& mod_name : ModificationTypes) {
 		// Loop through all modifications of this type.
 		// Looping in reverse since we may delete the current modification.
-		for (int j = modifications_.child_count(mod_name)-1; j >= 0; --j)
+		for(int j = modifications_.child_count(mod_name)-1; j >= 0; --j)
 		{
-			const config &mod = modifications_.child(mod_name, j);
+			const config& mod = modifications_.child(mod_name, j);
 
-			if ( mod_duration_match(mod["duration"], duration) ) {
+			if(mod_duration_match(mod["duration"], duration)) {
 				// If removing this mod means reverting the unit's type:
-				if ( const config::attribute_value *v = mod.get("prev_type") ) {
+				if(const config::attribute_value* v = mod.get("prev_type")) {
 					rebuild_from = &get_unit_type(v->str());
 				}
 				// Else, if we have not already specified a type to build from:
-				else if ( rebuild_from == nullptr )
+				else if(rebuild_from == nullptr) {
 					rebuild_from = &type();
+				}
 
 				modifications_.remove_child(mod_name, j);
 			}
 		}
 	}
 
-	if ( rebuild_from != nullptr ) {
+	if(rebuild_from != nullptr) {
 		anim_comp_->clear_haloes();
 		advance_to(*rebuild_from);
 	}
 }
-
 
 void unit::new_turn()
 {
@@ -1241,6 +1232,7 @@ void unit::end_turn()
 	if((movement_ != total_movement()) && !(get_state(STATE_NOT_MOVED))) {
 		resting_ = false;
 	}
+
 	set_state(STATE_NOT_MOVED,false);
 	// Clear interrupted move
 	set_interrupted_move(map_location());
@@ -1254,7 +1246,7 @@ void unit::new_scenario()
 	// Expire all temporary modifications.
 	expire_modifications("");
 
-	heal_all();
+	heal_fully();
 	set_state(STATE_SLOWED, false);
 	set_state(STATE_POISONED, false);
 	set_state(STATE_PETRIFIED, false);
@@ -1264,12 +1256,14 @@ void unit::new_scenario()
 void unit::heal(int amount)
 {
 	int max_hp = max_hitpoints();
-	if (hit_points_ < max_hp) {
+	if(hit_points_ < max_hp) {
 		hit_points_ += amount;
-		if (hit_points_ > max_hp) {
+
+		if(hit_points_ > max_hp) {
 			hit_points_ = max_hp;
 		}
 	}
+
 	if(hit_points_<1) {
 		hit_points_ = 1;
 	}
@@ -1278,33 +1272,35 @@ void unit::heal(int amount)
 const std::set<std::string> unit::get_states() const
 {
 	std::set<std::string> all_states = states_;
-	for (std::map<std::string, state_t>::const_iterator i = known_boolean_state_names_.begin(),
-	     i_end = known_boolean_state_names_.end(); i != i_end; ++i)
-	{
-		if (get_state(i->second)) {
-			all_states.insert(i->first);
+	for(const auto& state : known_boolean_state_names_) {
+		if(get_state(state.second)) {
+			all_states.insert(state.first);
 		}
-
 	}
+
 	// Backwards compatibility for not_living. Don't remove before 1.12
 	if(all_states.count("undrainable") && all_states.count("unpoisonable") && all_states.count("unplagueable")) {
 		all_states.insert("not_living");
 	}
+
 	return all_states;
 }
 
-bool unit::get_state(const std::string &state) const
+bool unit::get_state(const std::string& state) const
 {
 	state_t known_boolean_state_id = get_known_boolean_state_id(state);
-	if (known_boolean_state_id!=STATE_UNKNOWN){
+	if(known_boolean_state_id!=STATE_UNKNOWN){
 		return get_state(known_boolean_state_id);
 	}
+
 	// Backwards compatibility for not_living. Don't remove before 1.12
-	if (state == "not_living") {
-		return get_state("undrainable") &&
+	if(state == "not_living") {
+		return
+			get_state("undrainable")  &&
 			get_state("unpoisonable") &&
 			get_state("unplagueable");
 	}
+
 	return states_.find(state) != states_.end();
 }
 
@@ -1318,15 +1314,17 @@ bool unit::get_state(state_t state) const
 	return known_boolean_states_[state];
 }
 
-unit::state_t unit::get_known_boolean_state_id(const std::string &state) {
-	std::map<std::string, state_t>::const_iterator i = known_boolean_state_names_.find(state);
-	if (i != known_boolean_state_names_.end()) {
+unit::state_t unit::get_known_boolean_state_id(const std::string& state)
+{
+	auto i = known_boolean_state_names_.find(state);
+	if(i != known_boolean_state_names_.end()) {
 		return i->second;
 	}
+
 	return STATE_UNKNOWN;
 }
 
-std::map<std::string, unit::state_t> unit::known_boolean_state_names_ = {
+std::map<std::string, unit::state_t> unit::known_boolean_state_names_ {
 	{"slowed",     STATE_SLOWED},
 	{"poisoned",   STATE_POISONED},
 	{"petrified",  STATE_PETRIFIED},
@@ -1336,41 +1334,44 @@ std::map<std::string, unit::state_t> unit::known_boolean_state_names_ = {
 	{"guardian",   STATE_GUARDIAN},
 };
 
-void unit::set_state(const std::string &state, bool value)
+void unit::set_state(const std::string& state, bool value)
 {
 	state_t known_boolean_state_id = get_known_boolean_state_id(state);
-	if (known_boolean_state_id != STATE_UNKNOWN) {
+	if(known_boolean_state_id != STATE_UNKNOWN) {
 		set_state(known_boolean_state_id, value);
 		return;
 	}
+
 	// Backwards compatibility for not_living. Don't remove before 1.12
-	if (state == "not_living") {
+	if(state == "not_living") {
 		set_state("undrainable", value);
 		set_state("unpoisonable", value);
 		set_state("unplagueable", value);
 	}
-	if (value)
-		states_.insert(state);
-	else
-		states_.erase(state);
-}
 
+	if(value) {
+		states_.insert(state);
+	} else {
+		states_.erase(state);
+	}
+}
 
 bool unit::has_ability_by_id(const std::string& ability) const
 {
-	for (const config::any_child &ab : this->abilities_.all_children_range()) {
-		if (ab.cfg["id"] == ability) {
+	for(const config::any_child &ab : this->abilities_.all_children_range()) {
+		if(ab.cfg["id"] == ability) {
 			return true;
 		}
 	}
+
 	return false;
 }
 
-void unit::remove_ability_by_id(const std::string &ability)
+void unit::remove_ability_by_id(const std::string& ability)
 {
 	config::all_children_iterator i = this->abilities_.ordered_begin();
 	while (i != this->abilities_.ordered_end()) {
-		if (i->cfg["id"] == ability) {
+		if(i->cfg["id"] == ability) {
 			i = this->abilities_.erase(i);
 		} else {
 			++i;
@@ -1380,22 +1381,37 @@ void unit::remove_ability_by_id(const std::string &ability)
 
 void unit::write(config& cfg) const
 {
+	auto write_subtag = [&cfg](const std::string& key, const config& child)
+	{
+		cfg.clear_children(key);
+
+		if(!child.empty()) {
+			cfg.add_child(key, child);
+		}
+	};
+
 	movement_type_.write(cfg);
 	cfg["small_profile"] = small_profile_;
 	cfg["profile"] = profile_;
-	if ( description_ != type().unit_description() ) {
+
+	if(description_ != type().unit_description()) {
 		cfg["description"] = description_;
 	}
+
 	if(halo_.get()) {
 		cfg["halo"] = *halo_;
 	}
+
 	if(ellipse_.get()) {
 		cfg["ellipse"] = *ellipse_;
 	}
+
 	if(usage_.get()) {
 		cfg["usage"] = *usage_;
 	}
+
 	write_upkeep(cfg["upkeep"]);
+
 	cfg["hitpoints"] = hit_points_;
 	cfg["max_hitpoints"] = max_hit_points_;
 
@@ -1410,13 +1426,13 @@ void unit::write(config& cfg) const
 	cfg["side"] = side_;
 
 	cfg["type"] = type_id();
-	if ( type_id() != type().base_id() )
+
+	if(type_id() != type().base_id()) {
 		cfg["parent_type"] = type().base_id();
+	}
 
-	//support for unit formulas in [ai] and unit-specific variables in [ai] [vars]
-
+	// Support for unit formulas in [ai] and unit-specific variables in [ai] [vars]
 	formula_man_->write(cfg);
-
 
 	cfg["gender"] = gender_string(gender_);
 	cfg["variation"] = variation_;
@@ -1427,22 +1443,22 @@ void unit::write(config& cfg) const
 		status_flags[state] = true;
 	}
 
-	cfg.clear_children("variables");
-	cfg.add_child("variables",variables_);
+	write_subtag("variables", variables_);
+	write_subtag("filter_recall", filter_recall_);
+	write_subtag("status", status_flags);
+
 	cfg.clear_children("events");
 	cfg.append(events_);
-	cfg.clear_children("filter_recall");
-	cfg.add_child("filter_recall", filter_recall_);
-	cfg.clear_children("status");
-	cfg.add_child("status",status_flags);
 
 	cfg["overlays"] = utils::join(overlays_);
 
 	cfg["name"] = name_;
 	cfg["id"] = id_;
 	cfg["underlying_id"] = underlying_id_.value;
-	if(can_recruit())
+
+	if(can_recruit()) {
 		cfg["canrecruit"] = true;
+	}
 
 	cfg["extra_recruit"] = utils::join(recruit_list_);
 
@@ -1467,29 +1483,31 @@ void unit::write(config& cfg) const
 	cfg["alignment"] = alignment_.to_string();
 	cfg["flag_rgb"] = flag_rgb_;
 	cfg["unrenamable"] = unrenamable_;
-	cfg["alpha"] = std::to_string(alpha_);
 
 	cfg["attacks_left"] = attacks_left_;
 	cfg["max_attacks"] = max_attacks_;
 	cfg["zoc"] = emit_zoc_;
+
 	cfg.clear_children("attack");
 	for(attack_ptr i : attacks_) {
 		i->write(cfg.add_child("attack"));
 	}
-	cfg["cost"] = unit_value_;
-	cfg.clear_children("modifications");
-	cfg.add_child("modifications", modifications_);
-	cfg.clear_children("abilities");
-	cfg.add_child("abilities", abilities_);
-	cfg.clear_children("advancement");
-	for(const config& advancement : this->advancements_)
-	{
-		cfg.add_child("advancement", advancement);
-	}
 
+	cfg["cost"] = unit_value_;
+
+	write_subtag("modifications", modifications_);
+	write_subtag("abilities", abilities_);
+
+	cfg.clear_children("advancement");
+	for(const config& advancement : this->advancements_) {
+		if(!advancement.empty()) {
+			cfg.add_child("advancement", advancement);
+		}
+	}
 }
 
-void unit::set_facing(map_location::DIRECTION dir) const {
+void unit::set_facing(map_location::DIRECTION dir) const
+{
 	if(dir != map_location::NDIRECTIONS) {
 		facing_ = dir;
 	}
@@ -1502,15 +1520,8 @@ int unit::upkeep() const
 	if(can_recruit()) {
 		return 0;
 	}
-	else if(boost::get<upkeep_full>(&upkeep_) != nullptr) {
-		return level();
-	}
-	else if(boost::get<upkeep_loyal>(&upkeep_) != nullptr) {
-		return 0;
-	}
-	else {
-		return boost::get<int>(upkeep_);
-	}
+
+	return boost::apply_visitor(upkeep_value_visitor(*this), upkeep_);
 }
 
 bool unit::loyal() const
@@ -1525,7 +1536,7 @@ int unit::defense_modifier(const t_translation::terrain_code & terrain) const
 	// A [defense] ability is too costly and doesn't take into account target locations.
 	// Left as a comment in case someone ever wonders why it isn't a good idea.
 	unit_ability_list defense_abilities = get_abilities("defense");
-	if (!defense_abilities.empty()) {
+	if(!defense_abilities.empty()) {
 		unit_abilities::effect defense_effect(defense_abilities, def, false);
 		def = defense_effect.get_composite_value();
 	}
@@ -1535,14 +1546,15 @@ int unit::defense_modifier(const t_translation::terrain_code & terrain) const
 
 bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const
 {
-	if(!(cfg["active_on"].empty() || (attacker && cfg["active_on"]=="offense") || (!attacker && cfg["active_on"]=="defense"))) {
+	if(!(cfg["active_on"].empty() || (attacker && cfg["active_on"] == "offense") || (!attacker && cfg["active_on"] == "defense"))) {
 		return false;
 	}
+
 	const std::string& apply_to = cfg["apply_to"];
 	if(!apply_to.empty()) {
 		if(damage_name != apply_to) {
-			if ( apply_to.find(',') != std::string::npos  &&
-			     apply_to.find(damage_name) != std::string::npos ) {
+			if(apply_to.find(',') != std::string::npos  &&
+			     apply_to.find(damage_name) != std::string::npos) {
 				const std::vector<std::string>& vals = utils::split(apply_to);
 				if(std::find(vals.begin(),vals.end(),damage_name) == vals.end()) {
 					return false;
@@ -1552,130 +1564,149 @@ bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std
 			}
 		}
 	}
-	if (!unit_abilities::filter_base_matches(cfg, res)) return false;
+
+	if(!unit_abilities::filter_base_matches(cfg, res)) {
+		return false;
+	}
+
 	return true;
 }
-
 
 int unit::resistance_against(const std::string& damage_name,bool attacker,const map_location& loc) const
 {
 	int res = movement_type_.resistance_against(damage_name);
 
 	unit_ability_list resistance_abilities = get_abilities("resistance",loc);
-	for (unit_ability_list::iterator i = resistance_abilities.begin(); i != resistance_abilities.end();) {
+	for(unit_ability_list::iterator i = resistance_abilities.begin(); i != resistance_abilities.end();) {
 		if(!resistance_filter_matches(*i->first, attacker, damage_name, 100-res)) {
 			i = resistance_abilities.erase(i);
 		} else {
 			++i;
 		}
 	}
+
 	if(!resistance_abilities.empty()) {
 		unit_abilities::effect resist_effect(resistance_abilities, 100-res, false);
 
-		res = 100 - std::min<int>(resist_effect.get_composite_value(),
-		                          resistance_abilities.highest("max_value").first);
+		res = 100 - std::min<int>(
+			resist_effect.get_composite_value(),
+			resistance_abilities.highest("max_value").first
+		);
 	}
+
 	return res;
 }
 
-std::map<std::string,std::string> unit::advancement_icons() const
+std::map<std::string, std::string> unit::advancement_icons() const
 {
 	std::map<std::string,std::string> temp;
-	if (!can_advance())
+	if(!can_advance()) {
 		return temp;
+	}
 
-	if (!advances_to_.empty())
-	{
+	if(!advances_to_.empty()) {
 		std::ostringstream tooltip;
-		const std::string &image = game_config::images::level;
-		for (const std::string &s : advances_to())
-		{
-			if (!s.empty())
-				tooltip << s << '\n';
+		const std::string& image = game_config::images::level;
+
+		for(const std::string& s : advances_to()) {
+			if(!s.empty()) {
+				tooltip << s << std::endl;
+			}
 		}
+
 		temp[image] = tooltip.str();
 	}
 
-	for (const config &adv : get_modification_advances())
-	{
-		const std::string &image = adv["image"];
-		if (image.empty()) continue;
+	for(const config& adv : get_modification_advances()) {
+		const std::string& image = adv["image"];
+		if(image.empty()) {
+			continue;
+		}
+
 		std::ostringstream tooltip;
 		tooltip << temp[image];
-		const std::string &tt = adv["description"];
-		if (!tt.empty())
-			tooltip << tt << '\n';
+
+		const std::string& tt = adv["description"];
+		if(!tt.empty()) {
+			tooltip << tt << std::endl;
+		}
+
 		temp[image] = tooltip.str();
 	}
+
 	return(temp);
 }
-std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
-{
-	std::vector<std::pair<std::string,std::string> > temp;
-	std::pair<std::string,std::string> icon; // <image,tooltip>
 
-	for (const config &adv : get_modification_advances())
-	{
+std::vector<std::pair<std::string, std::string>> unit::amla_icons() const
+{
+	std::vector<std::pair<std::string, std::string>> temp;
+	std::pair<std::string, std::string> icon; // <image,tooltip>
+
+	for(const config& adv : get_modification_advances()) {
 		icon.first = adv["icon"].str();
 		icon.second = adv["description"].str();
 
-		for (unsigned j = 0, j_count = modification_count("advancement", adv["id"]);
-		     j < j_count; ++j)
-		{
+		for(unsigned j = 0, j_count = modification_count("advancement", adv["id"]); j < j_count; ++j) {
 			temp.push_back(icon);
 		}
 	}
+
 	return(temp);
 }
 
 std::vector<config> unit::get_modification_advances() const
 {
 	std::vector<config> res;
-	for (const config &adv : modification_advancements())
-	{
-		if (adv["strict_amla"].to_bool() && !advances_to_.empty())
+	for(const config& adv : modification_advancements()) {
+		if(adv["strict_amla"].to_bool() && !advances_to_.empty()) {
 			continue;
-		if (modification_count("advancement", adv["id"]) >= unsigned(adv["max_times"].to_int(1)))
+		}
+
+		if(modification_count("advancement", adv["id"]) >= unsigned(adv["max_times"].to_int(1))) {
 			continue;
+		}
 
 		std::vector<std::string> temp_require = utils::split(adv["require_amla"]);
 		std::vector<std::string> temp_exclude = utils::split(adv["exclude_amla"]);
-		if (temp_require.empty() && temp_exclude.empty()) {
+
+		if(temp_require.empty() && temp_exclude.empty()) {
 			res.push_back(adv);
 			continue;
 		}
 
 		std::sort(temp_require.begin(), temp_require.end());
 		std::sort(temp_exclude.begin(), temp_exclude.end());
+
 		std::vector<std::string> uniq_require, uniq_exclude;
+
 		std::unique_copy(temp_require.begin(), temp_require.end(), std::back_inserter(uniq_require));
 		std::unique_copy(temp_exclude.begin(), temp_exclude.end(), std::back_inserter(uniq_exclude));
 
 		bool exclusion_found = false;
-		for (const std::string &s : uniq_exclude)
-		{
+		for(const std::string& s : uniq_exclude) {
 			int max_num = std::count(temp_exclude.begin(), temp_exclude.end(), s);
 			int mod_num = modification_count("advancement", s);
-			if (mod_num >= max_num) {
+			if(mod_num >= max_num) {
 				exclusion_found = true;
 				break;
 			}
 		}
-		if (exclusion_found) {
+
+		if(exclusion_found) {
 			continue;
 		}
 
 		bool requirements_done = true;
-		for (const std::string &s : uniq_require)
-		{
+		for(const std::string& s : uniq_require) {
 			int required_num = std::count(temp_require.begin(), temp_require.end(), s);
 			int mod_num = modification_count("advancement", s);
-			if (required_num > mod_num) {
+			if(required_num > mod_num) {
 				requirements_done = false;
 				break;
 			}
 		}
-		if (requirements_done) {
+
+		if(requirements_done) {
 			res.push_back(adv);
 		}
 	}
@@ -1686,8 +1717,7 @@ std::vector<config> unit::get_modification_advances() const
 void unit::set_advancements(std::vector<config> advancements)
 {
 	this->advancements_.clear();
-	for (config& advancement : advancements)
-	{
+	for(config& advancement : advancements) {
 		this->advancements_.push_back(new config());
 		this->advancements_.back().swap(advancement);
 	}
@@ -1696,146 +1726,133 @@ void unit::set_advancements(std::vector<config> advancements)
 size_t unit::modification_count(const std::string& mod_type, const std::string& id) const
 {
 	size_t res = 0;
-	for (const config &item : modifications_.child_range(mod_type)) {
-		if (item["id"] == id) {
+	for(const config& item : modifications_.child_range(mod_type)) {
+		if(item["id"] == id) {
 			++res;
 		}
 	}
 
 	// For backwards compatibility, if asked for "advancement", also count "advance"
-	if (mod_type == "advancement") {
+	if(mod_type == "advancement") {
 		res += modification_count("advance", id);
 	}
 
 	return res;
 }
 
-const std::set<std::string> unit::builtin_effects = {
+const std::set<std::string> unit::builtin_effects {
 	"alignment", "attack", "defense", "ellipse", "experience", "fearless",
 	"halo", "healthy", "hitpoints", "image_mod", "jamming", "jamming_costs",
 	"loyal", "max_attacks", "max_experience", "movement", "movement_costs",
 	"new_ability", "new_advancement", "new_animation", "new_attack", "overlay", "profile",
 	"recall_cost", "remove_ability", "remove_advancement", "remove_attacks", "resistance",
-	"status", "type", "variation", "vision", "vision_costs", "zoc"};
+	"status", "type", "variation", "vision", "vision_costs", "zoc"
+};
 
 std::string unit::describe_builtin_effect(std::string apply_to, const config& effect)
 {
 	if(apply_to == "attack") {
-		std::string attack_names;
-		bool first_attack = true;
+		std::vector<t_string> attack_names;
 
 		std::string desc;
 		for(attack_ptr a : attacks_) {
 			bool affected = a->describe_modification(effect, &desc);
 			if(affected && desc != "") {
-				if(first_attack) {
-					first_attack = false;
-				} else {
-					attack_names += t_string(N_(" and "), "wesnoth");
-				}
-
-				attack_names += t_string(a->name(), "wesnoth-units");
+				attack_names.emplace_back(a->name(), "wesnoth-units");
 			}
 		}
-		if (!attack_names.empty()) {
+		if(!attack_names.empty()) {
 			utils::string_map symbols;
-			symbols["attack_list"] = attack_names;
+			symbols["attack_list"] = utils::format_conjunct_list("", attack_names);
 			symbols["effect_description"] = desc;
 			return vgettext("$attack_list|: $effect_description", symbols);
 		}
 	} else if(apply_to == "hitpoints") {
-		const std::string &increase_total = effect["increase_total"];
-
+		const std::string& increase_total = effect["increase_total"];
 		if(!increase_total.empty()) {
-			return utils::print_modifier(increase_total) + " " +
-			t_string(N_("HP"), "wesnoth");
+			return vgettext(
+				"wesnoth",
+				"<span color=\"$color\">$number_or_percent</span> HP",
+				{{"number_or_percent", utils::print_modifier(increase_total)}, {"color", increase_total[0] == '-' ? "red" : "green"}});
 		}
-	} else if(apply_to == "movement") {
-		const std::string &increase = effect["increase"];
-
-		if(!increase.empty()) {
-			int n = std::stoi(increase);
-			return utils::print_modifier(increase) + " " +
-				_n("move", "moves", n);
+	} else {
+		const std::string& increase = effect["increase"];
+		if(increase.empty()) {
+			return "";
 		}
-	} else if(apply_to == "vision") {
-		const std::string &increase = effect["increase"];
-
-		if(!increase.empty()) {
-			return utils::print_modifier(increase) + " " + t_string(N_("vision"), "wesnoth");
+		if(apply_to == "movement") {
+			return VNGETTEXT(
+				"<span color=\"$color\">$number_or_percent</span> move",
+				"<span color=\"$color\">$number_or_percent</span> moves",
+				std::stoi(increase),
+				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
+		} else if(apply_to == "vision") {
+			return vgettext(
+				"<span color=\"$color\">$number_or_percent</span> vision",
+				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
+		} else if(apply_to == "jamming") {
+			return vgettext(
+				"<span color=\"$color\">$number_or_percent</span> jamming",
+				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
+		} else if(apply_to == "max_experience") {
+			// Unlike others, decreasing experience is a *GOOD* thing
+			return vgettext(
+				"<span color=\"$color\">$number_or_percent</span> XP to advance",
+				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "green" : "red"}});
+		} else if(apply_to == "max_attacks") {
+			return VNGETTEXT(
+					"<span color=\"$color\">$number_or_percent</span> attack per turn",
+					"<span color=\"$color\">$number_or_percent</span> attacks per turn",
+					std::stoi(increase),
+					{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "red" : "green"}});
+		} else if(apply_to == "recall_cost") {
+			// Unlike others, decreasing recall cost is a *GOOD* thing
+			return vgettext(
+				"<span color=\"$color\">$number_or_percent</span> cost to recall",
+				{{"number_or_percent", utils::print_modifier(increase)}, {"color", increase[0] == '-' ? "green" : "red"}});
 		}
-	} else if(apply_to == "jamming") {
-		const std::string &increase = effect["increase"];
-
-		if(!increase.empty()) {
-			return utils::print_modifier(increase) + " " + t_string(N_("jamming"), "wesnoth");
-		}
-	} else if(apply_to == "max_experience") {
-		const std::string &increase = effect["increase"];
-
-		if(!increase.empty()) {
-			return utils::print_modifier(increase) + " " +
-			t_string(N_("XP to advance"), "wesnoth");
-		}
-	} else if (apply_to == "max_attacks") {
-		const std::string &increase = effect["increase"];
-
-		std::string description = utils::print_modifier(increase) + " ";
-		const char* const singular = N_("attack per turn");
-		const char* const plural = N_("attacks per turn");
-		if (increase[increase.size()-1] == '%' || std::abs(std::stoi(increase)) != 1) {
-			description += t_string(plural, "wesnoth");
-		} else {
-			description += t_string(singular, "wesnoth");
-		}
-		return description;
-	} else if (apply_to == "recall_cost") {
-		const std::string &increase = effect["increase"];
-		return utils::print_modifier(increase) + " " +
-				t_string(N_("cost to recall"), "wesnoth");
 	}
 	return "";
 }
 
 void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 {
-	if(apply_to == "fearless")
-	{
+	if(apply_to == "fearless") {
 		is_fearless_ = effect["set"].to_bool(true);
-	}
-	else if(apply_to == "healthy")
-	{
+	} else if(apply_to == "healthy") {
 		is_healthy_ = effect["set"].to_bool(true);
-	}
-	else if(apply_to == "profile") {
-		if (const config::attribute_value *v = effect.get("portrait")) {
+	} else if(apply_to == "profile") {
+		if(const config::attribute_value* v = effect.get("portrait")) {
 			std::string portrait = (*v).str();
 			adjust_profile(portrait);
 			profile_ = portrait;
 		}
-		if (const config::attribute_value *v = effect.get("small_portrait")) {
+
+		if(const config::attribute_value* v = effect.get("small_portrait")) {
 			small_profile_ = (*v).str();
 		}
-		if (const config::attribute_value *v = effect.get("description")) {
+
+		if(const config::attribute_value* v = effect.get("description")) {
 			description_ = *v;
 		}
 	} else if(apply_to == "new_attack") {
 		attacks_.emplace_back(new attack_type(effect));
 	} else if(apply_to == "remove_attacks") {
-		auto iter = std::remove_if(attacks_.begin(), attacks_.end(), [&effect](attack_ptr a){
+		auto iter = std::remove_if(attacks_.begin(), attacks_.end(), [&effect](attack_ptr a) {
 			return a->matches_filter(effect);
 		});
+
 		attacks_.erase(iter, attacks_.end());
 	} else if(apply_to == "attack") {
 		for(attack_ptr a : attacks_) {
 			a->apply_modification(effect);
 		}
 	} else if(apply_to == "hitpoints") {
-		LOG_UT << "applying hitpoint mod..." << hit_points_ << "/" << max_hit_points_ << "\n";
-		const std::string &increase_hp = effect["increase"];
-		const std::string &increase_total = effect["increase_total"];
-		const std::string &set_hp = effect["set"];
-		const std::string &set_total = effect["set_total"];
+		LOG_UT << "applying hitpoint mod..." << hit_points_ << "/" << max_hit_points_ << std::endl;
+		const std::string& increase_hp = effect["increase"];
+		const std::string& increase_total = effect["increase_total"];
+		const std::string& set_hp = effect["set"];
+		const std::string& set_total = effect["set_total"];
 
 		// If the hitpoints are allowed to end up greater than max hitpoints
 		const bool violate_max = effect["violate_maximum"].to_bool();
@@ -1847,6 +1864,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 				hit_points_ = lexical_cast_default<int>(set_hp);
 			}
 		}
+
 		if(!set_total.empty()) {
 			if(set_total[set_total.size()-1] == '%') {
 				max_hit_points_ = lexical_cast_default<int>(set_total)*max_hit_points_/100;
@@ -1863,24 +1881,25 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		if(max_hit_points_ < 1)
 			max_hit_points_ = 1;
 
-		if (effect["heal_full"].to_bool()) {
-			heal_all();
+		if(effect["heal_full"].to_bool()) {
+			heal_fully();
 		}
 
 		if(!increase_hp.empty()) {
 			hit_points_ = utils::apply_modifier(hit_points_, increase_hp);
 		}
 
-		LOG_UT << "modded to " << hit_points_ << "/" << max_hit_points_ << "\n";
+		LOG_UT << "modded to " << hit_points_ << "/" << max_hit_points_ << std::endl;
 		if(hit_points_ > max_hit_points_ && !violate_max) {
-			LOG_UT << "resetting hp to max\n";
+			LOG_UT << "resetting hp to max" << std::endl;
 			hit_points_ = max_hit_points_;
 		}
 
-		if(hit_points_ < 1)
+		if(hit_points_ < 1) {
 			hit_points_ = 1;
+		}
 	} else if(apply_to == "movement") {
-		const std::string &increase = effect["increase"];
+		const std::string& increase = effect["increase"];
 
 		if(!increase.empty()) {
 			max_movement_ = utils::apply_modifier(max_movement_, increase, 1);
@@ -1888,10 +1907,11 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 
 		max_movement_ = effect["set"].to_int(max_movement_);
 
-		if(movement_ > max_movement_)
+		if(movement_ > max_movement_) {
 			movement_ = max_movement_;
+		}
 	} else if(apply_to == "vision") {
-		const std::string &increase = effect["increase"];
+		const std::string& increase = effect["increase"];
 
 		if(!increase.empty()) {
 			const int current_vision = vision_ < 0 ? max_movement_ : vision_;
@@ -1900,7 +1920,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 
 		vision_ = effect["set"].to_int(vision_);
 	} else if(apply_to == "jamming") {
-		const std::string &increase = effect["increase"];
+		const std::string& increase = effect["increase"];
 
 		if(!increase.empty()) {
 			jamming_ = utils::apply_modifier(jamming_, increase, 1);
@@ -1908,8 +1928,8 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 
 		jamming_ = effect["set"].to_int(jamming_);
 	} else if(apply_to == "experience") {
-		const std::string &increase = effect["increase"];
-		const std::string &set = effect["set"];
+		const std::string& increase = effect["increase"];
+		const std::string& set = effect["set"];
 
 		if(!set.empty()) {
 			if(set[set.size()-1] == '%') {
@@ -1923,8 +1943,8 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			experience_ = utils::apply_modifier(experience_, increase, 1);
 		}
 	} else if(apply_to == "max_experience") {
-		const std::string &increase = effect["increase"];
-		const std::string &set = effect["set"];
+		const std::string& increase = effect["increase"];
+		const std::string& set = effect["set"];
 
 		if(set.empty() == false) {
 			if(set[set.size()-1] == '%') {
@@ -1937,72 +1957,72 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		if(increase.empty() == false) {
 			max_experience_ = utils::apply_modifier(max_experience_, increase, 1);
 		}
-	} else if(apply_to == "loyal") {
+	} else if(apply_to == upkeep_loyal::type()) {
 		upkeep_ = upkeep_loyal();;
 	} else if(apply_to == "status") {
 		const std::string& add = effect["add"];
 		const std::string& remove = effect["remove"];
 
-		for (const std::string& to_add : utils::split(add))
+		for(const std::string& to_add : utils::split(add))
 		{
 			set_state(to_add, true);
 		}
 
-		for (const std::string& to_remove : utils::split(remove))
+		for(const std::string& to_remove : utils::split(remove))
 		{
 			set_state(to_remove, false);
 		}
 	// Note: It would not be hard to define a new "applies_to=" that
 	//       combines the next five options (the movetype effects).
-	} else if (apply_to == "movement_costs") {
-		if (const config &ap = effect.child("movement_costs")) {
+	} else if(apply_to == "movement_costs") {
+		if(const config& ap = effect.child("movement_costs")) {
 			movement_type_.get_movement().merge(ap, effect["replace"].to_bool());
 		}
-	} else if (apply_to == "vision_costs") {
-		if (const config &ap = effect.child("vision_costs")) {
+	} else if(apply_to == "vision_costs") {
+		if(const config& ap = effect.child("vision_costs")) {
 			movement_type_.get_vision().merge(ap, effect["replace"].to_bool());
 		}
-	} else if (apply_to == "jamming_costs") {
-		if (const config &ap = effect.child("jamming_costs")) {
+	} else if(apply_to == "jamming_costs") {
+		if(const config& ap = effect.child("jamming_costs")) {
 			movement_type_.get_jamming().merge(ap, effect["replace"].to_bool());
 		}
-	} else if (apply_to == "defense") {
-		if (const config &ap = effect.child("defense")) {
+	} else if(apply_to == "defense") {
+		if(const config& ap = effect.child("defense")) {
 			movement_type_.get_defense().merge(ap, effect["replace"].to_bool());
 		}
-	} else if (apply_to == "resistance") {
-		if (const config &ap = effect.child("resistance")) {
+	} else if(apply_to == "resistance") {
+		if(const config& ap = effect.child("resistance")) {
 			movement_type_.get_resistances().merge(ap, effect["replace"].to_bool());
 		}
-	} else if (apply_to == "zoc") {
-		if (const config::attribute_value *v = effect.get("value")) {
+	} else if(apply_to == "zoc") {
+		if(const config::attribute_value* v = effect.get("value")) {
 			emit_zoc_ = v->to_bool();
 		}
-	} else if (apply_to == "new_ability") {
-		if (const config &ab_effect = effect.child("abilities")) {
+	} else if(apply_to == "new_ability") {
+		if(const config& ab_effect = effect.child("abilities")) {
 			config to_append;
-			for (const config::any_child &ab : ab_effect.all_children_range()) {
+			for(const config::any_child &ab : ab_effect.all_children_range()) {
 				if(!has_ability_by_id(ab.cfg["id"])) {
 					to_append.add_child(ab.key, ab.cfg);
 				}
 			}
 			this->abilities_.append(to_append);
 		}
-	} else if (apply_to == "remove_ability") {
-		if (const config &ab_effect = effect.child("abilities")) {
-			for (const config::any_child &ab : ab_effect.all_children_range()) {
+	} else if(apply_to == "remove_ability") {
+		if(const config& ab_effect = effect.child("abilities")) {
+			for(const config::any_child &ab : ab_effect.all_children_range()) {
 				remove_ability_by_id(ab.cfg["id"]);
 			}
 		}
-	} else if (apply_to == "image_mod") {
-		LOG_UT << "applying image_mod \n";
+	} else if(apply_to == "image_mod") {
+		LOG_UT << "applying image_mod" << std::endl;
 		std::string mod = effect["replace"];
-		if (!mod.empty()){
+		if(!mod.empty()){
 			image_mods_ = mod;
 		}
-		LOG_UT << "applying image_mod \n";
+		LOG_UT << "applying image_mod" << std::endl;
 		mod = effect["add"].str();
-		if (!mod.empty()){
+		if(!mod.empty()){
 			if(!image_mods_.empty()) {
 				image_mods_ += '~';
 			}
@@ -2011,33 +2031,33 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		}
 
 		game_config::add_color_info(effect);
-		LOG_UT << "applying image_mod \n";
-	} else if (apply_to == "new_animation") {
+		LOG_UT << "applying image_mod" << std::endl;
+	} else if(apply_to == "new_animation") {
 		anim_comp_->apply_new_animation_effect(effect);
-	} else if (apply_to == "ellipse") {
+	} else if(apply_to == "ellipse") {
 		set_image_ellipse(effect["ellipse"]);
-	} else if (apply_to == "halo") {
+	} else if(apply_to == "halo") {
 		set_image_halo(effect["halo"]);
-	} else if (apply_to == "overlay") {
-		const std::string &add = effect["add"];
-		const std::string &replace = effect["replace"];
+	} else if(apply_to == "overlay") {
+		const std::string& add = effect["add"];
+		const std::string& replace = effect["replace"];
 
-		if (!add.empty()) {
+		if(!add.empty()) {
 			std::vector<std::string> temp_overlays = utils::parenthetical_split(add, ',');
 			std::vector<std::string>::iterator it;
-			for (it=temp_overlays.begin();it<temp_overlays.end();++it) {
-				overlays_.push_back( *it );
+			for(it=temp_overlays.begin();it<temp_overlays.end();++it) {
+				overlays_.push_back(*it);
 			}
 		}
-		else if (!replace.empty()) {
+		else if(!replace.empty()) {
 			overlays_ = utils::parenthetical_split(replace, ',');
 		}
-	} else if (apply_to == "new_advancement") {
-		const std::string &types = effect["types"];
+	} else if(apply_to == "new_advancement") {
+		const std::string& types = effect["types"];
 		const bool replace = effect["replace"].to_bool(false);
 
-		if (!types.empty()) {
-			if (replace) {
+		if(!types.empty()) {
+			if(replace) {
 				advances_to_ = utils::parenthetical_split(types, ',');
 			} else {
 				std::vector<std::string> temp_advances = utils::parenthetical_split(types, ',');
@@ -2045,48 +2065,48 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			}
 		}
 
-		if (effect.has_child("advancement")) {
-			if (replace) {
+		if(effect.has_child("advancement")) {
+			if(replace) {
 				advancements_.clear();
 			}
+
 			config temp = effect;
 			boost::copy(effect.child_range("advancement"), boost::make_function_output_iterator(ptr_vector_pushback(advancements_)));
 		}
-	} else if (apply_to == "remove_advancement") {
-		const std::string &types = effect["types"];
-		const std::string &amlas = effect["amlas"];
+	} else if(apply_to == "remove_advancement") {
+		const std::string& types = effect["types"];
+		const std::string& amlas = effect["amlas"];
 
 		std::vector<std::string> temp_advances = utils::parenthetical_split(types, ',');
 		std::vector<std::string>::iterator iter;
-		for (const std::string& unit : temp_advances) {
+		for(const std::string& unit : temp_advances) {
 			iter = std::find(advances_to_.begin(), advances_to_.end(), unit);
-			if (iter != advances_to_.end()) {
+			if(iter != advances_to_.end()) {
 				advances_to_.erase(iter);
 			}
 		}
 
 		temp_advances = utils::parenthetical_split(amlas, ',');
-		std::vector<size_t> remove_indices;
 
 		for(int i = advancements_.size() - 1; i >= 0; i--) {
 			if(std::find(temp_advances.begin(), temp_advances.end(), advancements_[i]["id"]) != temp_advances.end()) {
 				advancements_.erase(advancements_.begin() + i);
 			}
 		}
-	} else if (apply_to == "alignment") {
+	} else if(apply_to == "alignment") {
 		unit_type::ALIGNMENT new_align;
 		if(new_align.parse(effect["set"])) {
 			alignment_ = new_align;
 		}
-	} else if (apply_to == "max_attacks") {
-		const std::string &increase = effect["increase"];
+	} else if(apply_to == "max_attacks") {
+		const std::string& increase = effect["increase"];
 
 		if(!increase.empty()) {
 			max_attacks_ = utils::apply_modifier(max_attacks_, increase, 1);
 		}
-	} else if (apply_to == "recall_cost") {
-		const std::string &increase = effect["increase"];
-		const std::string &set = effect["set"];
+	} else if(apply_to == "recall_cost") {
+		const std::string& increase = effect["increase"];
+		const std::string& set = effect["set"];
 		const int recall_cost = recall_cost_ < 0 ? resources::gameboard->teams().at(side_).recall_cost() : recall_cost_;
 
 		if(!set.empty()) {
@@ -2100,24 +2120,24 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		if(!increase.empty()) {
 			recall_cost_ = utils::apply_modifier(recall_cost, increase, 1);
 		}
-	} else if (effect["apply_to"] == "variation") {
+	} else if(effect["apply_to"] == "variation") {
 		variation_ = effect["name"].str();
-		const unit_type * base_type = unit_types.find(type().base_id());
+		const unit_type*  base_type = unit_types.find(type().base_id());
 		assert(base_type != nullptr);
 		advance_to(*base_type);
-	} else if (effect["apply_to"] == "type") {
+	} else if(effect["apply_to"] == "type") {
 		std::string prev_type = effect["prev_type"];
-		if (prev_type.empty()) {
+		if(prev_type.empty()) {
 			prev_type = type().base_id();
 		}
 		const std::string& new_type_id = effect["name"];
 		const unit_type* new_type = unit_types.find(new_type_id);
-		if (new_type) {
+		if(new_type) {
 			const bool heal_full = effect["heal_full"].to_bool(false);
 			advance_to(*new_type);
 			preferences::encountered_units().insert(new_type_id);
 			if(heal_full) {
-				heal_all();
+				heal_fully();
 			}
 		} else {
 			WRN_UT << "unknown type= in [effect]apply_to=type, ignoring" << std::endl;
@@ -2132,81 +2152,84 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 	if(no_add == false) {
 		modifications_.add_child(mod_type, mod);
 	}
+
 	bool set_poisoned = false; // Tracks if the poisoned state was set after the type or variation was changed.
 	config last_effect;
 	std::vector<t_string> effects_description;
-	for (const config &effect : mod.child_range("effect"))
-	{
+	for(const config& effect : mod.child_range("effect")) {
 		// Apply SUF.
-		if (const config &afilter = effect.child("filter")) {
+		if(const config& afilter = effect.child("filter")) {
 			// @FIXME: during gamestate construction resources::filter_con is not available
-			if (resources::filter_con && !unit_filter(vconfig(afilter), resources::filter_con).matches(*this, loc_)) continue;
+			if(resources::filter_con && !unit_filter(vconfig(afilter), resources::filter_con).matches(*this, loc_)) {
+				continue;
+			}
 		}
-		const std::string &apply_to = effect["apply_to"];
+		const std::string& apply_to = effect["apply_to"];
 		int times = effect["times"].to_int(1);
 		t_string description;
 
-		if (effect["times"] == "per level")
+		if(effect["times"] == "per level") {
 			times = level_;
+		}
 
-		if (times) {
+		if(times) {
 			while (times > 0) {
 				times --;
 
 				bool was_poisoned = get_state(STATE_POISONED);
-				if (apply_to == "variation" || apply_to == "type") {
+				if(apply_to == "variation" || apply_to == "type") {
 					// Apply unit type/variation changes last to avoid double applying effects on advance.
 					set_poisoned = false;
 					last_effect = effect;
 					continue;
 				}
+
 				std::string description_component;
-				if (resources::lua_kernel) {
+				if(resources::lua_kernel) {
 					description_component = resources::lua_kernel->apply_effect(apply_to, *this, effect, true);
-				} else if (builtin_effects.count(apply_to)) {
+				} else if(builtin_effects.count(apply_to)) {
 					// Normally, the built-in effects are dispatched through Lua so that a user
 					// can override them if desired. However, since they're built-in, we can still
 					// apply them if the lua kernel is unavailable.
 					apply_builtin_effect(apply_to, effect);
 					description_component = describe_builtin_effect(apply_to, effect);
 				}
-				if (!times) {
+				if(!times) {
 					description += description_component;
 				}
-				if (!was_poisoned && get_state(STATE_POISONED)) {
+				if(!was_poisoned && get_state(STATE_POISONED)) {
 					set_poisoned = true;
 				} else if(was_poisoned && !get_state(STATE_POISONED)) {
 					set_poisoned = false;
 				}
 			} // end while
 		} else { // for times = per level & level = 0 we still need to rebuild the descriptions
-			if (resources::lua_kernel) {
+			if(resources::lua_kernel) {
 				description += resources::lua_kernel->apply_effect(apply_to, *this, effect, false);
 			} else if(builtin_effects.count(apply_to)) {
 				description += describe_builtin_effect(apply_to, effect);
 			}
 		}
 
-		if (effect["times"] == "per level" && !times) {
-			utils::string_map symbols;
-			symbols["effect_description"] = description;
-			description = vgettext("$effect_description per level", symbols);
+		if(effect["times"] == "per level" && !times) {
+			description = vgettext("$effect_description per level", {{"effect_description", description}});
 		}
-		if(!description.empty())
-			effects_description.push_back(description);
 
+		if(!description.empty()) {
+			effects_description.push_back(description);
+		}
 	}
 	// Apply variations -- only apply if we are adding this for the first time.
-	if (!last_effect.empty() && no_add == false) {
+	if(!last_effect.empty() && no_add == false) {
 		std::string description;
-		if (resources::lua_kernel) {
+		if(resources::lua_kernel) {
 			description = resources::lua_kernel->apply_effect(last_effect["apply_to"], *this, last_effect, true);
-		} else if (builtin_effects.count(last_effect["apply_to"])) {
+		} else if(builtin_effects.count(last_effect["apply_to"])) {
 			apply_builtin_effect(last_effect["apply_to"], last_effect);
 			description = describe_builtin_effect(last_effect["apply_to"], last_effect);
 		}
 		effects_description.push_back(description);
-		if ( set_poisoned )
+		if(set_poisoned)
 			// An effect explicitly set the poisoned state, and this
 			// should override the unit being immune to poison.
 			set_state(STATE_POISONED, true);
@@ -2215,27 +2238,22 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 	t_string description;
 
 	const t_string& mod_description = mod["description"];
-	if (!mod_description.empty()) {
+	if(!mod_description.empty()) {
 		description = mod_description;
 	}
 
 	// Punctuation should be translatable: not all languages use Latin punctuation.
 	// (However, there maybe is a better way to do it)
-	if(effects_description.empty() == false && generate_description == true) {
-		if (!mod_description.empty()) description += "\n";
-		for(std::vector<t_string>::const_iterator i = effects_description.begin();
-				i != effects_description.end(); ++i) {
-			if (i->empty()) {
-				continue;
-			}
-			description += *i;
-			if(i+1 != effects_description.end())
-				description += t_string(N_(" and "), "wesnoth");
+	if(generate_description && !effects_description.empty()) {
+		if(!mod_description.empty()) {
+			description += "\n";
 		}
+
+		description += utils::format_conjunct_list("", effects_description);
 	}
 
 	// store trait info
-	if ( mod_type == "trait" ) {
+	if(mod_type == "trait") {
 		add_trait_description(mod, description);
 	}
 
@@ -2255,12 +2273,13 @@ void unit::add_trait_description(const config& trait, const t_string& descriptio
 	}
 }
 
-std::string unit::absolute_image() const {
-
+std::string unit::absolute_image() const
+{
 	return type().icon().empty() ? type().image() : type().icon();
 }
 
-std::string unit::default_anim_image() const {
+std::string unit::default_anim_image() const
+{
 	return type().image().empty() ? type().icon() : type().image();
 }
 
@@ -2268,32 +2287,33 @@ void unit::apply_modifications()
 {
 	log_scope("apply mods");
 
-	for(size_t i = 0; i != NumModificationTypes; ++i) {
-		const std::string& mod = ModificationTypes[i];
+	for(const auto& mod : ModificationTypes) {
 		if(mod == "advance" && modifications_.has_child(mod)) {
-			lg::wml_error() << "[modifications][advance] is deprecated, use [advancement] instead\n";
+			lg::wml_error() << "[modifications][advance] is deprecated, use [advancement] instead" << std::endl;
 		}
-		for(const config &m : modifications_.child_range(mod)) {
-			log_scope("add mod");
-			add_modification(ModificationTypes[i], m, true);
+
+		for(const config& m : modifications_.child_range(mod)) {
+			lg::scope_logger inner_scope_logging_object__(lg::general(), "add mod");
+			add_modification(mod, m, true);
 		}
 	}
 
-	//apply the experience acceleration last
+	// Apply the experience acceleration last
 	int exp_accel = unit_experience_accelerator::get_acceleration();
 	max_experience_ = std::max<int>(1, (max_experience_ * exp_accel + 50)/100);
 }
 
 bool unit::invisible(const map_location& loc, const display_context& dc, bool see_all) const
 {
-	if (loc != get_location()) {
+	if(loc != get_location()) {
 		DBG_UT << "unit::invisible called: id = " << id() << " loc = " << loc << " get_loc = " << get_location() << std::endl;
 	}
 
 	// This is a quick condition to check, and it does not depend on the
 	// location (so might as well bypass the location-based cache).
-	if ( get_state(STATE_UNCOVERED) )
+	if(get_state(STATE_UNCOVERED)) {
 		return false;
+	}
 
 	// Fetch from cache
 	/**
@@ -2301,7 +2321,7 @@ bool unit::invisible(const map_location& loc, const display_context& dc, bool se
 	 * Maybe add a second cache if the see_all=false become more frequent.
 	 */
 	if(see_all) {
-		std::map<map_location, bool>::const_iterator itor = invisibility_cache_.find(loc);
+		const auto itor = invisibility_cache_.find(loc);
 		if(itor != invisibility_cache_.end()) {
 			return itor->second;
 		}
@@ -2319,42 +2339,51 @@ bool unit::invisible(const map_location& loc, const display_context& dc, bool se
 		if(invisibility_cache_.empty()) {
 			units_with_cache.push_back(this);
 		}
+
 		invisibility_cache_[loc] = is_inv;
 	}
 
 	return is_inv;
 }
 
-
-bool unit::is_visible_to_team(team const& team, display_context const& dc, bool const see_all) const
+bool unit::is_visible_to_team(const team& team,const  display_context& dc, bool const see_all) const
 {
 	map_location const& loc = get_location();
-	if (!dc.map().on_board(loc))
+	if(!dc.map().on_board(loc)) {
 		return false;
-	if (see_all)
+	}
+
+	if(see_all) {
 		return true;
-	if (team.is_enemy(side()) && invisible(loc, dc))
+	}
+
+	if(team.is_enemy(side()) && invisible(loc, dc)) {
 		return false;
+	}
+
 	// allied planned moves are also visible under fog. (we assume that fake units on the map are always whiteboard markers)
-	if (!team.is_enemy(side()) && underlying_id_.is_fake())
+	if(!team.is_enemy(side()) && underlying_id_.is_fake()) {
 		return true;
-	if (team.fogged(loc))
+	}
+
+	if(team.fogged(loc)) {
 		return false;
+	}
+
 	return true;
 }
 
 void unit::set_underlying_id(n_unit::id_manager& id_manager)
 {
 	if(underlying_id_.value == 0) {
-
 		if(synced_context::is_synced() || !resources::gamedata || resources::gamedata->phase() == game_data::INITIAL) {
 			underlying_id_ = id_manager.next_id();
-		}
-		else {
+		} else {
 			underlying_id_ = id_manager.next_fake_id();
 		}
 	}
-	if (id_.empty() /*&& !underlying_id_.is_fake()*/) {
+
+	if(id_.empty() /*&& !underlying_id_.is_fake()*/) {
 		std::stringstream ss;
 		ss << (type_id().empty() ? "Unit" : type_id()) << "-" << underlying_id_.value;
 		id_ = ss.str();
@@ -2386,50 +2415,43 @@ unit& unit::clone(bool is_temporary)
 }
 
 
-unit_movement_resetter::unit_movement_resetter(const unit &u, bool operate) :
-	u_(const_cast<unit&>(u)), moves_(u.movement_left(true))
+unit_movement_resetter::unit_movement_resetter(const unit &u, bool operate)
+	: u_(const_cast<unit&>(u))
+	, moves_(u.movement_left(true))
 {
-	if (operate) {
+	if(operate) {
 		u_.set_movement(u_.total_movement());
 	}
 }
 
 unit_movement_resetter::~unit_movement_resetter()
 {
-	assert(resources::units);
+	assert(resources::gameboard);
 	try {
+		if(!resources::gameboard->units().has_unit(&u_)) {
+			/*
+			* It might be valid that the unit is not in the unit map.
+			* It might also mean a no longer valid unit will be assigned to.
+			*/
+			DBG_UT << "The unit to be removed is not in the unit map." << std::endl;
+		}
 
-	if(!resources::units->has_unit(&u_)) {
-		/*
-		 * It might be valid that the unit is not in the unit map.
-		 * It might also mean a no longer valid unit will be assigned to.
-		 */
-		DBG_UT << "The unit to be removed is not in the unit map.\n";
-	}
-	u_.set_movement(moves_);
-
-	} catch (...) {}
+		u_.set_movement(moves_);
+	} catch(...) {}
 }
 
-bool unit::matches_id(const std::string& unit_id) const
+std::string unit::TC_image_mods() const
 {
-	return id_ == unit_id;
+	return formatter() << "~RC(" << flag_rgb() << ">" << team::get_side_color_index(side()) << ")";
 }
 
-
-std::string unit::TC_image_mods() const {
-	return formatter() << "~RC(" << team_color() << ">" << team::get_side_color_index(side()) << ")";
-}
-std::string unit::image_mods() const {
+std::string unit::image_mods() const
+{
 	if(!image_mods_.empty()) {
 		return formatter() << "~" << image_mods_ << TC_image_mods();
 	}
 
 	return TC_image_mods();
-}
-
-const std::string& unit::effect_image_mods() const{
-	return image_mods_;
 }
 
 // Called by the Lua API after resetting an attack pointer.
@@ -2445,24 +2467,29 @@ bool unit::remove_attack(attack_ptr atk)
 
 void unit::remove_attacks_ai()
 {
-	if (attacks_left_ == max_attacks_) {
+	if(attacks_left_ == max_attacks_) {
 		//TODO: add state_not_attacked
 	}
+
 	set_attacks(0);
 }
 
 void unit::remove_movement_ai()
 {
-	if (movement_left() == total_movement()) {
+	if(movement_left() == total_movement()) {
 		set_state(STATE_NOT_MOVED,true);
 	}
+
 	set_movement(0, true);
 }
 
-
-void unit::set_hidden(bool state) const {
+void unit::set_hidden(bool state) const
+{
 	hidden_ = state;
-	if(!state) return;
+	if(!state) {
+		return;
+	}
+
 	// We need to get rid of haloes immediately to avoid display glitches
 	anim_comp_->clear_haloes();
 }
@@ -2473,50 +2500,41 @@ void unit::set_image_halo(const std::string& halo)
 	halo_.reset(new std::string(halo));
 }
 
-
-
 void unit::parse_upkeep(const config::attribute_value& upkeep)
 {
-	if (upkeep.empty()) {
+	if(upkeep.empty()) {
 		return;
 	}
-	//TODO: create abetter way to check whether it is actually an int.
+
+	// TODO: create abetter way to check whether it is actually an int.
 	int upkeep_int = upkeep.to_int(-99);
 	if(upkeep_int != -99) {
 		upkeep_ = upkeep_int;
-	}
-	else if(upkeep == "loyal" || upkeep == "free") {
+	} else if(upkeep == upkeep_loyal::type() || upkeep == "free") {
 		upkeep_ = upkeep_loyal();
-	}
-	else if(upkeep == "full") {
+	} else if(upkeep == upkeep_full::type()) {
 		upkeep_ = upkeep_full();
-	}
-	else {
-		WRN_UT << "Fund invalid upkeep=\"" << upkeep <<  "\" in a unit\n";
+	} else {
+		WRN_UT << "Fund invalid upkeep=\"" << upkeep <<  "\" in a unit" << std::endl;
 		upkeep_ = upkeep_full();
 	}
 }
+
 void unit::write_upkeep(config::attribute_value& upkeep) const
 {
-	if(boost::get<upkeep_full>(&upkeep_) != nullptr) {
-		upkeep = "full";
-	}
-	else if(boost::get<upkeep_loyal>(&upkeep_) != nullptr) {
-		upkeep = "loyal";
-	}
-	else {
-		upkeep = boost::get<int>(upkeep_);
-	}
+	upkeep = boost::apply_visitor(upkeep_type_visitor(), upkeep_);
 }
 
 // Filters unimportant stats from the unit config and returns a checksum of
 // the remaining config.
-std::string get_checksum(const unit& u) {
+std::string get_checksum(const unit& u)
+{
 	config unit_config;
 	config wcfg;
 	u.write(unit_config);
-	const std::string main_keys[] =
-		{ "advances_to",
+
+	const std::string main_keys[] {
+		"advances_to",
 		"alignment",
 		"cost",
 		"experience",
@@ -2538,59 +2556,70 @@ std::string get_checksum(const unit& u) {
 		"undead_variation",
 		"upkeep",
 		"zoc",
-		""};
+		""
+	};
 
-	for (int i = 0; !main_keys[i].empty(); ++i)
-	{
+	for(int i = 0; !main_keys[i].empty(); ++i) {
 		wcfg[main_keys[i]] = unit_config[main_keys[i]];
 	}
-	const std::string attack_keys[] =
-		{ "name",
-		  "type",
-		  "range",
-		  "damage",
-		  "number",
-		  ""};
 
-	for (const config &att : unit_config.child_range("attack"))
-	{
+	const std::string attack_keys[] {
+		"name",
+		"type",
+		"range",
+		"damage",
+		"number",
+		""
+	};
+
+	for(const config& att : unit_config.child_range("attack")) {
 		config& child = wcfg.add_child("attack");
-		for (int i = 0; !attack_keys[i].empty(); ++i) {
+
+		for(int i = 0; !attack_keys[i].empty(); ++i) {
 			child[attack_keys[i]] = att[attack_keys[i]];
 		}
-		for (const config &spec : att.child_range("specials")) {
+
+		for(const config& spec : att.child_range("specials")) {
 			config& child_spec = child.add_child("specials", spec);
+
 			child_spec.recursive_clear_value("description");
 		}
-
 	}
 
-	for (const config &abi : unit_config.child_range("abilities"))
-	{
+	for(const config& abi : unit_config.child_range("abilities")) {
 		config& child = wcfg.add_child("abilities", abi);
+
 		child.recursive_clear_value("description");
 		child.recursive_clear_value("description_inactive");
 		child.recursive_clear_value("name");
 		child.recursive_clear_value("name_inactive");
 	}
 
-	for (const config &trait : unit_config.child_range("trait"))
-	{
+	for(const config& trait : unit_config.child_range("trait")) {
 		config& child = wcfg.add_child("trait", trait);
+
 		child.recursive_clear_value("description");
 		child.recursive_clear_value("male_name");
 		child.recursive_clear_value("female_name");
 		child.recursive_clear_value("name");
 	}
 
-	const std::string child_keys[] = {"advance_from", "defense", "movement_costs", "vision_costs", "jamming_costs", "resistance", ""};
+	const std::string child_keys[] {
+		"advance_from",
+		"defense",
+		"movement_costs",
+		"vision_costs",
+		"jamming_costs",
+		"resistance",
+		""
+	};
 
-	for (int i = 0; !child_keys[i].empty(); ++i)
-	{
-		for (const config &c : unit_config.child_range(child_keys[i])) {
+	for(int i = 0; !child_keys[i].empty(); ++i) {
+		for(const config& c : unit_config.child_range(child_keys[i])) {
 			wcfg.add_child(child_keys[i], c);
 		}
 	}
+
 	DBG_UT << wcfg;
 
 	return wcfg.hash();

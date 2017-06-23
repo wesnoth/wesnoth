@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2014 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "sdl/utils.hpp"
+#include "sdl/surface.hpp"
 #include "sdl/window.hpp"
 
 #include "sdl/exception.hpp"
@@ -50,6 +50,9 @@ window::window(const std::string& title,
 		throw exception("The renderer has no texture information available.\n",
 						 false);
 	}
+
+	// Set default blend mode to blend.
+	SDL_SetRenderDrawBlendMode(*this, SDL_BLENDMODE_BLEND);
 
 	pixel_format_ = info.texture_formats[0];
 
@@ -127,6 +130,11 @@ int window::get_flags()
 void window::set_minimum_size(int min_w, int min_h)
 {
 	SDL_SetWindowMinimumSize(window_, min_w, min_h);
+}
+
+int window::get_display_index()
+{
+	return SDL_GetWindowDisplayIndex(window_);
 }
 
 window::operator SDL_Window*()

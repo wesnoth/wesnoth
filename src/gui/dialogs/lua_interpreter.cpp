@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -37,6 +37,7 @@
 #include "scripting/lua_kernel_base.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "font/pango/escape.hpp"
 
@@ -222,7 +223,7 @@ public:
 		} catch (...) { std::cerr << "Swallowed an exception when trying to write lua command line history\n";}
 	}
 #endif
-	void add_to_history (std::string str) {
+	void add_to_history (const std::string& str) {
 		prefix_ = "";
 		(void) str;
 #ifdef HAVE_HISTORY
@@ -379,6 +380,7 @@ private:
 public:
 	controller(lua_kernel_base & lk)
 		: copy_button(nullptr)
+		, clear_button(nullptr)
 		, text_entry(nullptr)
 		, text_entry_()
 		, lua_model_(new lua_interpreter::lua_model(lk))
@@ -504,7 +506,7 @@ void lua_interpreter::controller::handle_clear_button_clicked(window & /*window*
 void lua_interpreter::controller::input_keypress_callback(bool& handled,
 							   bool& halt,
 							   const SDL_Keycode key,
-							   window& /*window*/)
+							   window& window)
 {
 	assert(lua_model_);
 	assert(text_entry);
@@ -515,6 +517,11 @@ void lua_interpreter::controller::input_keypress_callback(bool& handled,
 		execute();
 		handled = true;
 		halt = true;
+
+		// Commands such as `wesnoth.zoom` might cause the display to redraw and leave the window half-drawn.
+		// This preempts that.
+		window.set_is_dirty(true);
+
 		LOG_LUA << "finished executing\n";
 	} else if(key == SDLK_TAB) {	// handle tab completion
 		tab();
@@ -537,7 +544,6 @@ void lua_interpreter::controller::input_keypress_callback(bool& handled,
 		handled = true;
 		halt = true;
 	}
-
 }
 
 void lua_interpreter::controller::execute()
@@ -587,27 +593,31 @@ void lua_interpreter::controller::tab()
 		text = text.substr(prefix_end_pos + 1);
 	}
 
+	static std::vector<std::string> static_matches {
+		"and",
+		"break",
+		"else",
+		"elseif",
+		"end",
+		"false",
+		"for",
+		"function",
+		"local",
+		"nil",
+		"not",
+		"repeat",
+		"return",
+		"then",
+		"true",
+		"until",
+		"while"
+	};
+
 	std::vector<std::string> matches;
 
 	if (text.find('.') == std::string::npos) {
 		matches = lua_model_->get_globals();
-		matches.push_back("and");
-		matches.push_back("break");
-		matches.push_back("else");
-		matches.push_back("elseif");
-		matches.push_back("end");
-		matches.push_back("false");
-		matches.push_back("for");
-		matches.push_back("function");
-		matches.push_back("local");
-		matches.push_back("nil");
-		matches.push_back("not");
-		matches.push_back("repeat");
-		matches.push_back("return");
-		matches.push_back("then");
-		matches.push_back("true");
-		matches.push_back("until");
-		matches.push_back("while");
+		matches.insert(matches.end(), static_matches.begin(), static_matches.end());
 	} else {
 		matches = lua_model_->get_attribute_names(text);
 	}

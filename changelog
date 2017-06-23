@@ -1,9 +1,373 @@
-Version 1.13.6+dev:
+Version 1.13.8+dev:
+ * Campaigns:
+   * Secrets of the Ancients:
+     * Fix delay when additional enemies appear in S21 (issue #1706)
  * Language and i18n:
-   * Updated translations: British English, Portuguese (Brazil)
+   * Updated translations: British English, Chinese (Simplified), Italian,
+     Polish, Scottish Gaelic, Slovak, Spanish
+ * Lua API:
+   * Add wesnoth.format function to substitute variables into a string.
+   * Add wesnoth.format_conjunct_list and wesnoth.format_disjunct_list.
+   * New global "wml" table groups together all the functions for working
+     with WML tables, and its subtable "wml.variable" groups functions
+	 for working with WML variables. Most of these are functions previously
+	 found only in helper.lua; they no longer need a require to use.
+   * Warnings for using deprecated Lua functions now only appear in debug mode.
+   * wesnoth.game_config is now accessible in application and mapgen kernels,
+     though some of its contents are missing.
+ * Multiplayer:
+   * When set to remember your password, Wesnoth now encrypts it. It is still
+     possible to obtain the password from preferences, but it's no longer as
+     trivial as before.
+ * User Interface:
+   * Unit recall dialog now sorts the units by both level and required XP for
+     their next level-up (issue #1738).
+   * Enable the use of tab to switch between text fields in most dialogs.
+   * Color-code modifiers in trait tooltips
+   * Translation teams in credits are now listed in alphabetical order of the
+     localized language name (rather than the English language name).
+   * Allow deleting saves with the Delete key in the Load dialog.
+   * Fixed team selection screen often ignoring attempts to scroll (bug #1632).
+   * Input Method Editor support in most textboxes (except in-game chat)
+ * Miscellaneous and Bug Fixes:
+   * Add --report/-R command line switch for printing the same report from the
+     Game Version dialog's clipboard function to stdout.
+ * WML Engine
+   * If ai_algorithm is used in [modify_side][ai], it now replaces the whole AI
+     with the contents of [modify_side][ai], instead of appending these parameters.
+   * New [credits_group] tag can be used by non-campaign addons to group several
+     [about] tags under a single header. This is a toplevel tag, not a subtag
+	 of [era] or [modification].
+   * An empty id key in SUF no longer matches all units; instead, it matches none.
+   * Fix [primary_attack] and [secondary_attack] in [kill]
+   * Fix [kill] not affecting recall list units
+   * Fix [scroll] with omitted x or y
+   * Fix [story] not showing if all parts are conditional
+   * Fix some hotkeys not working (issues #1737 and #1769)
+   * New vision_cost and jamming_cost keys in SUF
+   * Integer SUF keys (eg level) now accept a list of ranges
+
+Version 1.13.8:
+  * Campaigns:
+   * Son of the Black-Eye:
+     * Balancing changes for 'Silent Forest'.
+   * Under the Burning Suns:
+     * New sprites for Quenoth Youth (Kaleh and Nym) and Human Commander.
+     * Applied a color shift to the human units in S8 and S9 to give them a more
+       unique look.
+ * Editor:
+   * Fixed a crash when placing units.
+   * Restored the ability to preview different ToDs. Note this still does not
+     work when invoked form the Custom ToD window.
+   * Fixed editor sides not having the correct side number.
+   * Redesigned Windows, Areas, and Sides menus.
+   * The Windows menu will now display maps starting from 1 rather than 0.
+     This is likewise reflected in the default map filename.
+   * Scenario names are now displayed in more places if available.
+ * Formula Engine:
+   * Fixed garbage data showing up in stack traces in the event of an error.
+   * Object types can now be used in contexts where previously only a list or
+     map was accepted - for example in the filter() function. They will be
+     treated as a map in such cases.
+ * Graphics:
+   * Fixed items not receiving ToD lighting.
+   * Portraits for many Walking Corpse and Soulless race variants.
+   * New animations: Dwarvish Fighter idle.
+ * Language and i18n:
+   * Updated translations: British English, Chinese (Simplified), Lithuanian,
+     Slovak, Spanish
+ * Lua Engine:
+   * Add wesnoth.log_replay which exposes a little-used functionality of
+     injecting arbitrary logging data into a saved game.
+   * Small change to animator API - facing parameter replaced with target and
+     required to be a space adjacent to the unit.
+   * New modifiable theme attribute in wesnoth.game_config
+   * New wesnoth.zoom() function allows changing the zoom level
+   * The wesnoth.scroll function scrolls the screen by an offset, similar to
+     [scroll]. For example, wesnoth.scroll(5, -2)
+   * New is_local attribute in side proxy table allows you to detect whether
+     or not the side is controlled by a network player. Note that use of this
+     has the potential for OOS errors.
+   * New wesnoth.music_list table which allows controlling the music playlist:
+     * wesnoth.music_list[1] etc returns mutable information about a specific
+       track on the playlist
+     * #wesnoth.music_list counts the number of tracks on the playlist
+     * wesnoth.music_list.current returns mutable information about the
+       currently-playing track
+     * wesnoth.music_list.current_i returns the index of the current track on
+       the list. It is writable, allowing you to switch to any track on the
+       list. This respects fade values.
+     * wesnoth.music_list.all returns a copy of the playlist that can be
+       stored in a variable.
+     * wesnoth.music_list.play plays a specific track (as [music]play_once=yes)
+     * wesnoth.music_list.add appends a track to the playlist (as
+       [music]append=yes)
+     * wesnoth.music_list.clear clears the current playlist
+     * wesnoth.music_list.next fades out the current track and moves to a new
+       track on the playlist
+     * wesnoth.music_list.force_refresh forces any pending playlist changes
+       to be immediately applied
+     * wesnoth.music_list.volume attribute gets/sets the current music
+       volume, as [volume]music=
+     * Each track has modifiable shuffle, once, ms_before, ms_after
+       attributes and read-only append, immediate, name, title attributes.
+       They are also comparable with == or ~=
+   * wesnoth.set_music is now deprecated, in favour of the above new API
+   * New wesnoth.sound_volume function gets/sets the current sound volume, as
+     [volume]sound=
+   * New wesnoth.show_story function launches the storyscreen viewer
+   * wesnoth.dofile now forwards any excess arguments to the file in the
+     "..." argument
+   * wesnoth.require can now load all modules in a directory and accepts some
+     shortened paths, for example omitting the ".lua" file extension and
+     searching in the current directory.
+   * When you require a package that has no return value, you now get a table
+     that errors on any access to it, rather than nil.
+   * New wesnoth.create_weapon function to make a weapon that's not attached
+     to a unit (which could be useful for animations)
+   * New wesnoth.show_message function shows a simple alert dialog, possibly
+     with a choice
+   * New wesnoth.alert and wesnoth.confirm functions - simple shortcuts for
+     the above.
+   * Functions for working with hex locations have been added under wesnoth.map
+     In particular, helper.distance_between is deprecated in favour of
+     wesnoth.map.distance_between
+   * The following existing functions now also work in plugins and map
+     generators: wesnoth.log, wesnoth.get_time_stamp, wesnoth.get_image_size
+   * Several error messages now point more accurately to the actual location
+     of the error.
+   * wesnoth.simulate_combat output has additional keys:
+     * untouched (in first two return values) indicates whether the unit took
+       any damage
+     * number (in second two return values) contains the Lua index of the
+       attack, as opposed to attack_num which contains the WML index.
+     * weapon (in second two return values) contains the actual weapon userdata
+   * New methods in location_set: of_triples, to_triples, random
+   * New animations key in Lua unit proxy returns a list of defined flags for
+     animation
+   * New functional.lua file implements a number of higher-order functions
+     from WFL
+   * The length operator now works on translatable strings, returning the
+     length of the translation.
+   * wesnoth.set_side_variable and unit.variables can now clear variables
+   * helper.get_variable_array and helper.set_variable_array now work on
+     units and sides (pass a unit, side, or side number as an extra parameter)
+     Note: helper.get_variable_proxy_array does *not* work on units and sides
+   * helper.rand now has a second parameter that defaults to wesnoth.random
+   * Add wesnoth.game_config.victory_music and wesnoth.game_config.defeat_music
+     setters
+   * Add wesnoth.game_config.scenario_id getter
+   * wesnoth.set_next_scenario() was replaced with
+     wesnoth.game_config.next_scenario setter/getter
+   * wesnoth.set_dialog_value can now (un-) fold GUI2 tree view nodes
+ * Multiplayer:
+   * Fixed statistics being lost when reloading an MP game.
+ * Performance:
+   * Greatly speeded up switching between add-ons in the add-on manager
+     (bug #25523)
+ * User Interface:
+   * Updated Attack Predictions dialog to GUI2.
+   * Updated Story screen to GUI2.
+   * Double-clicking an add-on now installs, updates, uninstalls or publishes
+     it depending on the situation.
+   * Fixed file path being truncated on the wrong side in the File Browser.
+   * Improved Hotkey category sorting interface in Preferences.
+   * Improved Addon Manager and MP Staging interfaces at low resolutions.
+   * Fixed bug that allows you to use the minimap to bypass view locking
+   * You can now change the theme (in preferences) while a game is in progress.
+   * Fixed units moving after in game help exit. (#24644)
+   * Fixed a bug that caused rapid announce messages to overlap each other.
+     (bug #21634)
+   * Fix buttons disappearing while menus are open.
+   * Fix map labels disappearing when a dialog is open.
+   * Improve tooltip placement.
+   * Move recruit/recall to top of context menu
+   * Add a hotkey to launch test scenarios from the titlescreen
+   * Added a Cutscene and Minimal Cutscene theme for UMC authors to use.
+   * Improve layout of MP Create at low resolutions.
+   * Game Load screen now lists the gold and total number of units for each
+     side.
+   * Textboxes now have a blinking cursor when focused.
+   * multi pages can now contain different types of pages
  * WML Engine:
+   * Add base_income key to [store_side]
+   * Fix issues with alpha animations on hidden units (#14503)
+   * Extensions to GUI2 Canvas ([drawing] tag in dialogs):
+     * New [round_rectangle] shape - a rectangle plus corner_radius
+     * [circle] shape can now be drawn filled; color key is now border_color
+     * [image] has new resize_mode=tile_center
+     * Canvas colors can now be expressed as formulas. The formula must return
+       the color as a list of its components, eg "([r, g, b, a])"
+   * Empty tags are no longer written to the configs of [unit]s and [side]s.
+   * New [change_theme] tag to change the theme mid-scenario
+   * New [zoom] tag allows changing the zoom level from an event
+   * [kill]animate=yes now plays victory animations if applicable
+   * [kill] now supports [primary_attack] and [secondary_attack] for the
+     animation
+   * Fix [volume] not accepting 100% as the new volume.
+   * New concat_to_* keys in unit_type inheritance allow amending keys
+   * Accept [story] as ActionWML in events
+   * Added a ~NO_TOD_SHIFT() ImagePathFunction which can be used on terrain and
+     item images to prevent them from being affected by ToD lighting.
+   * [unit]placement=name is now [unit]location_id=name and also honours the
+     new overwrite and passable keys, deprecating placement=map_overwrite etc.
+   * New zoom_levels key in [game_config] defines the allowed zoom levels.
+   * The default color list is now defined via a default key in [color_range],
+     rather than the default_color_list key in [game_config][colors].
+   * Standard Unit Filter has new ability_type_active and trait keys
+   * Standard Weapon Filter has new special_active key
+   * [animate_unit] now raises an error if the flag key is missing
+   * Fix [set_variable][join] not working with translatable strings
+   * [sound_source] now starts playing the sound immediately
+   * New voice key in [message] and [story][part]
+   * [objectives] now supports delayed_variable_substitution=yes and also
+     delayed substitution with $|variable syntax.
+   * Items in [options] now support container variables again.
+ * Miscellaneous and bug fixes:
+   * Fixed base animation showing on walking corpse & soulless bats
+     (bug #25673)
+
+Version 1.13.7:
+ * AI:
+   * Fix a performance regression in complex combat situations such as the
+     "Oath of Allegiance" UMC campaign.
+   * Fix some Micro AIs and AI helper functions not working correctly for AI
+     sides under shroud
+   * New function ai_helper.find_path_with_shroud()
+ * Campaigns:
+   * Eastern Invasion:
+     * In 'Weldyn Besieged', redesigned the way in which revealing the
+       identities of the liches works.
+  * Descent Into Darkness:
+     * Fixed certain units not having the 'guardian' special in 'Descent into
+       Darkness'.
+   * Heir to the Throne:
+     * Fixed bug allowing the wrong person to receive the Sceptre of Fire.
+     * Fixed inconsistencies in Li'sar's sprites and animations when she has the
+       scepter.
+     * New death animation for Asheviere.
+   * Secrets of the Ancients:
+     * New campaign added to mainline (Intermediate level, 21 scenarios).
+   * The Hammer of Thursagan:
+     * New sprites for Dwarvish Witness line.
+   * Under the Burning Suns:
+     * Fixed difficulty levels with the original units not working.
+     * New sprites and animations for Spider Lich.
+     * Various balancing changes, bug fixes and improvements to the new units.
+       * Major changes:
+         * Kaleh and Nym movement points increased from 5 to 6.
+         * Moon Singer branch removed.
+         * Added winged lvl4 advancement for Quenoth Druid.
+         * Support ability now only lowers adjacent upkeep costs by 1.
+ * Graphics:
+   * New or improved sprites: Royal Warrior, Walking Corpse line wolf variation.
+   * Improved terrain graphics: lava, volcano, lightbeam.
+   * Improved the fake map border terrain so that it now connects with the real
+     map borders and can better be used to change the apparent shape of the map.
+   * Smoother fade transitions between differently colored time areas.
+   * Adjacent castles of different types now have fewer glitches between them.
+   * Fixed glitches between various mountain tiles (introduced in 1.13.3).
+   * Fixed units getting submerged on some bridge types when placed over water.
+   * Updated Mermaid Initiate portrait.
+ * Language and i18n:
+   * Updated translations: British English, Czech, German, Portuguese (Brazil),
+     Scottish Gaelic
+ * Lua API:
+   * New wesnoth.set_side_id function can change flag, color, or both; it automatically
+     updates cached flag info for you (but you may still need to redraw to see it).
+   * The wesnoth.place_shroud and wesnoth.clear_shroud functions can alter shroud data
+     for a single side. They accept a list of locations, a shroud data string, or the
+     special value "all".
+   * New wesnoth.is_fogged and wesnoth.is_shrouded calls test the visibility level
+     of a hex for a particular side.
+   * New wesnoth.create_animator call produces an object that can be used to run
+     animations for a group of units
+   * New Lua API functions for altering AI:
+     * wesnoth.switch_ai replaces the entire AI with a definition from a file
+     * wesnoth.append_ai appends AI parameters to the configuration; supports goals,
+       stages, and simple aspects.
+       (Aspect tags are not fully parsed; only the id and facet subtags are used.)
+     * wesnoth.add_ai_component, delete_ai_component, change_ai_component
+       These do the work of the [modify_ai] tag for a single side.
+   * Side proxy changes:
+     * flag and flag_icon are never an empty string
+     * New mutable keys: suppress_end_turn_confirmation, share_vision
+     * New read-only keys: share_maps, share_view
+       num_units, num_villages, total_upkeep, expenses, net_income
+     * Existing keys made mutable: shroud, fog, flag, flag_icon
+   * wesnoth.scroll_to_tile now accepts a third boolean argument - if true, the scroll
+     is skipped when the tile is already visible onscreen.
+   * The config accessors in the helper module now give a sensible error message if
+     something other than a config is passed as the first argument.
+   * wesnoth.deselect_hex no longer deselects units; it only unhighlights the hex.
+   * wesnoth.select_unit with no argument (or nil argument) now deselects any unit.
+   * Fix lua side:matches always iterating over all units on the map.
+ * Multiplayer:
+   * New maps: 2p Clearing Gushes, 2p Hellhole, 2p Ruined Passage,
+     2p Ruphus Isle, 2p Swamp of Dread, 2p The Walls of Pyrennis,
+     2p Tombs of Kesorak, 4p Bath of Glory, 4p Geothermal.
+   * Updated maps: Fallenstar Lake.
+ * Units:
+   * Several changes to names of attacks:
+     * Shock Trooper, Iron Mauler, Mage of Light: maces and morning stars
+       changed to flails.
+     * Arif, Ghazi, Khalid, Shuja: long sword changed to sword.
+     * Mighwar, Monawish: long sword changed to longsword.
+   * Updated unit descriptions: Orcish Grunt line, Merman Fighter line,
+     Sergeant, Lieutenant, General, Peasant, Royal Warrior, Ancient Lich,
+     Dwarvish Steelclad.
+   * Changed (mainly reduced) recruit costs of many high-level units:
+     * Dwarvish Lord, Direwolf Rider, Troll Warior, Banebow, Draug.
+     * Elvish Avenger, Champion, Hero, High Lord, Marksman, Marshall,
+       Ranger, Sharpshooter.
+     * Mage of Light, Fugitive, Huntsman, Ranger.
+     * Batal, Hadaf, Mighwar, Mufariq, Rasikh, Shuja, Tineen.
+ * User Interface:
+   * List boxes now keep the selected item visible when you change the sorting
+     option.
+   * The Addon Manager has a brand new interface.
+   * Modification selection is now always available when selecting a SP campaign.
+   * Scrolling the Editor palette no longer also scrolls the map.
+   * Removed the old GUI1 MP screens.
+   * Ensured dialogs with unit preview panes start with some extra space.
+   * Fixed an issue where certain long labels would cause scrollbars to appear.
+   * Greatly reduced the number of zoom levels available.
+   * Experimental change: removed scrollbar up/down buttons.
+   * Converted Hotkey Bind popup to GUI2.
+   * Fixed TC color in Faction Select sometimes not matching the side's selection.
+   * Ensured sides are always ordered by index in MP Staging.
+ * Wesnoth Formula Engine:
+   * New str_upper and str_lower functions for case transformations
+ * WML Engine:
+   * Update [store_side] to store everything in corresponding wesnoth.sides[*].__cfg
+     and additional keys: num_units, num_villages, total_upkeep, expenses, net_income
    * Removed LOW_MEM option when building.
    * Add color= attribute to [floating_text]
+   * Add ~CHAN() IPF that allows altering images according to formulas
+     It takes up to 4 WFL formulas, one for each channel (red, green,
+     blue, alpha); each works the same as the ~ADJUST_ALPHA() formula.
+   * New ability_type key in standard unit filters matches if the unit has any
+     ability of the specified type (tag name).
+   * Terrain flags "_border" and "_board" are now automatically set for every
+     tile, indicating whether it is on the map border or not.
+   * SUF type_tree renamed to type_adv_tree for consistency with [hide_help]
+   * [message]s no longer trigger a scroll if the unit is onscreen.
+   * Removed the ~DARKEN() and ~BRIGHTEN() IPFs.
+   * {SOUND_POISON} and {SOUND_SLOW} have been deprecated and replaced with empty
+     macros.
+   * [tunnel] now accepts delayed_variable_substitution=yes/no.
+   * [on_redo] is now deprecated and does nothing if used
+ * Miscellaneous and bug fixes:
+   * Fixed severe lag/freeze on slow PCs (bug #25356)
+   * Updated wmlscope to handle the square braces syntax in file paths
+   * Fixed an issue preventing quick replay when joining multiplayer matches
+   * Resolved crash on Help when font scaling set to 115% or greater (bug #25292)
+   * Resolved crash when viewing Help in CJK languages (bug #253334)
+   * Fixed [campaign][option] tags not being properly considered.
+   * Fixed an issue where team names could get corrupted in SP.
+   * Zoom levels no longer get reset between loading games.
+   * Do not load the Markov name generator if a CFG generator could be loaded.
+   * Exit "quick replay" mode in MP games once the game is caught up.
 
 Version 1.13.6:
  * AI:
@@ -227,6 +591,8 @@ Version 1.13.6:
      supported) keys
    * Individual [terrain_graphics] rotations can now be skipped entirely by
      using "skip" in the rotations= list.
+   * WML macros can now include optional arguments with default values that the
+     caller can override.
  * Miscellaneous and bug fixes:
    * A new way to make units invulnerable for debugging: select the unit and type
      ";unit invulnerable=yes". This method operates by decreasing the opponent's hit

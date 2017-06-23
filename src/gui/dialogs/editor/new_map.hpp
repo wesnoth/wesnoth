@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,10 +12,11 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_DIALOGS_EDITOR_NEW_MAP_HPP_INCLUDED
-#define GUI_DIALOGS_EDITOR_NEW_MAP_HPP_INCLUDED
+#pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
+
+#include "tstring.hpp"
 
 namespace gui2
 {
@@ -28,6 +29,7 @@ public:
 	/**
 	 * Constructor.
 	 *
+	 * @param title               The title of the dialog.
 	 * @param [in, out] width     The parameter's usage is:
 	 *                            - Input: The initial width of the map.
 	 *                            - Output: The selected width of the map if
@@ -39,20 +41,18 @@ public:
 	 *                              the dialog returns @ref window::OK
 	 *                              undefined otherwise.
 	 */
-	editor_new_map(int& width, int& height);
+	editor_new_map(const t_string& title, int& width, int& height);
 
 	/** The execute function see @ref modal_dialog for more information. */
-	static bool execute(int& width, int& height, CVideo& video)
+	static bool execute(const t_string& title, int& width, int& height, CVideo& video)
 	{
-		return editor_new_map(width, height).show(video);
+		return editor_new_map(title, width, height).show(video);
 	}
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const;
+	virtual const std::string& window_id() const override;
 };
 
 } // namespace dialogs
 } // namespace gui2
-
-#endif

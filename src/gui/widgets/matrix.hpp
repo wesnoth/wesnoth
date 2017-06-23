@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_MATRIX_HPP_INCLUDED
-#define GUI_WIDGETS_MATRIX_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/pane.hpp"
@@ -52,7 +51,6 @@ protected:
 	enum state_t {
 		ENABLED,
 		DISABLED,
-		COUNT
 	};
 
 private:
@@ -71,7 +69,7 @@ class control_NEW : public styled_widget, public STATE
 public:
 	control_NEW(const implementation::builder_styled_widget& builder,
 				 const std::string& control_type)
-		: styled_widget(builder, STATE::COUNT, control_type)
+		: styled_widget(builder, control_type)
 
 	{
 	}
@@ -119,8 +117,8 @@ public:
 	/** See @ref widget::place. */
 	virtual void place(const point& origin, const point& size) override;
 
-	/** See @ref widget::layout_initialise. */
-	virtual void layout_initialise(const bool full_initialisation) override;
+	/** See @ref widget::layout_initialize. */
+	virtual void layout_initialize(const bool full_initialization) override;
 
 	/** See @ref widget::impl_draw_children. */
 	virtual void impl_draw_children(surface& frame_buffer,
@@ -275,5 +273,3 @@ struct builder_matrix : public builder_styled_widget
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

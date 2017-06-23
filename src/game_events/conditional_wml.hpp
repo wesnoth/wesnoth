@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,8 +18,7 @@
  * a.k.a. conditional actions WML.
  */
 
-#ifndef GAME_EVENTS_CONDITIONAL_WML_H_INCLUDED
-#define GAME_EVENTS_CONDITIONAL_WML_H_INCLUDED
+#pragma once
 
 class  config;
 class vconfig;
@@ -36,6 +35,3 @@ namespace game_events
 		bool variable_matches(const vconfig& cfg);
 	}
 }
-
-#endif // GAME_EVENTS_CONDITIONAL_WML_H_INCLUDED
-

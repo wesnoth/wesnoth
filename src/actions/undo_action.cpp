@@ -1,9 +1,24 @@
+/*
+   Copyright (C) 2017 the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
 #include "actions/undo_action.hpp"
+#include "game_board.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "resources.hpp"
 #include "variable.hpp" // vconfig
 #include "game_data.hpp"
 #include "units/unit.hpp"
+#include "sound.hpp"
 
 #include <cassert>
 #include <iterator>
@@ -48,33 +63,27 @@ undo_event::undo_event(const config& first, const config& second, const config& 
 
 undo_action::undo_action()
 	: undo_action_base()
-	, replay_data()
 	, unit_id_diff(synced_context::get_unit_id_diff())
 {
 	auto& undo = synced_context::get_undo_commands();
-	auto& redo = synced_context::get_redo_commands();
 	auto command_transformer = [](const std::pair<config, game_events::queued_event>& p) {
 		return undo_event(p.first, p.second);
 	};
 	std::transform(undo.begin(), undo.end(), std::back_inserter(umc_commands_undo), command_transformer);
-	std::transform(redo.begin(), redo.end(), std::back_inserter(umc_commands_redo), command_transformer);
 	undo.clear();
-	redo.clear();
 }
 
 undo_action::undo_action(const config& cfg)
 	: undo_action_base()
-	, replay_data(cfg.child_or_empty("replay_data"))
 	, unit_id_diff(cfg["unit_id_diff"])
 {
 	read_event_vector(umc_commands_undo, cfg, "undo_actions");
-	read_event_vector(umc_commands_redo, cfg, "redo_actions");
 }
 
 namespace {
 	unit_ptr get_unit(size_t uid, const std::string& id) {
-		assert(resources::units);
-		auto iter = resources::units->find(uid);
+		assert(resources::gameboard);
+		auto iter = resources::gameboard->units().find(uid);
 		if(!iter.valid() || iter->id() != id) {
 			return nullptr;
 		}
@@ -94,10 +103,10 @@ namespace {
 
 		std::unique_ptr<scoped_xy_unit> u1, u2;
 		if(unit_ptr who = get_unit(e.uid1, e.id1)) {
-			u1.reset(new scoped_xy_unit("unit", who->get_location(), *resources::units));
+			u1.reset(new scoped_xy_unit("unit", who->get_location(), resources::gameboard->units()));
 		}
 		if(unit_ptr who = get_unit(e.uid2, e.id2)) {
-			u2.reset(new scoped_xy_unit("unit", who->get_location(), *resources::units));
+			u2.reset(new scoped_xy_unit("unit", who->get_location(), resources::gameboard->units()));
 		}
 
 		scoped_weapon_info w1("weapon", e.data.child("first"));
@@ -105,6 +114,7 @@ namespace {
 
 		game_events::queued_event q(tag, "", map_location(x1, y1, wml_loc()), map_location(x2, y2, wml_loc()), e.data);
 		resources::lua_kernel->run_wml_action("command", vconfig(e.commands), q);
+		sound::commit_music_changes();
 
 		x1 = oldx1; y1 = oldy1;
 		x2 = oldx2; y2 = oldy2;
@@ -119,22 +129,11 @@ void undo_action::execute_undo_umc_wml()
 	}
 }
 
-void undo_action::execute_redo_umc_wml()
-{
-	assert(resources::lua_kernel);
-	assert(resources::gamedata);
-	for(const undo_event& e : umc_commands_redo)
-	{
-		execute_event(e, "redo");
-	}
-}
 
 void undo_action::write(config & cfg) const
 {
-	cfg.add_child("replay_data", replay_data);
 	cfg["unit_id_diff"] = unit_id_diff;
 	write_event_vector(umc_commands_undo, cfg, "undo_actions");
-	write_event_vector(umc_commands_redo, cfg, "redo_actions");
 	undo_action_base::write(cfg);
 }
 

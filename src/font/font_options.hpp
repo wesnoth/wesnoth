@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2015 - 2016 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2015 - 2017 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef FONT_OPTIONS_HPP_INCLUDED
-#define FONT_OPTIONS_HPP_INCLUDED
+#pragma once
 
 #include <string>
 
@@ -39,5 +38,3 @@ inline family_class str_to_family_class(const std::string& str)
 }
 
 } // end namespace font
-
-#endif /* FONT_OPTIONS_HPP_INCLUDED */

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,15 +17,17 @@
  *  Handle unit-type specific attributes, animations, advancement.
  */
 
-#include "global.hpp"
-
 #include "units/attack_type.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
+#include "formula/string_utils.hpp"
 
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "gettext.hpp"
+
+#include <cassert>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -69,10 +71,6 @@ attack_type::attack_type(const config& cfg) :
 	}
 }
 
-attack_type::~attack_type()
-{
-}
-
 std::string attack_type::accuracy_parry_description() const
 {
 	if(accuracy_ == 0 && parry_ == 0) {
@@ -104,6 +102,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::vector<std::string> filter_name = utils::split(filter["name"]);
 	const std::vector<std::string> filter_type = utils::split(filter["type"]);
 	const std::string filter_special = filter["special"];
+	const std::string filter_special_active = filter["special_active"];
 	const std::string filter_formula = filter["formula"];
 
 	if ( !filter_range.empty() && std::find(filter_range.begin(), filter_range.end(), attack.range()) == filter_range.end() )
@@ -114,13 +113,13 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 
 	if (!filter_attacks.empty() && !in_ranges(attack.num_attacks(), utils::parse_ranges(filter_attacks)))
 		return false;
-	
+
 	if (!filter_accuracy.empty() && !in_ranges(attack.accuracy(), utils::parse_ranges(filter_accuracy)))
 		return false;
-	
+
 	if (!filter_parry.empty() && !in_ranges(attack.parry(), utils::parse_ranges(filter_parry)))
 		return false;
-	
+
 	if (!filter_movement.empty() && !in_ranges(attack.movement_used(), utils::parse_ranges(filter_movement)))
 		return false;
 
@@ -132,15 +131,18 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 
 	if ( !filter_special.empty() && !attack.get_special_bool(filter_special, true) )
 		return false;
-	
+
+	if ( !filter_special_active.empty() && !attack.get_special_bool(filter_special_active, false) )
+		return false;
+
 	if (!filter_formula.empty()) {
 		try {
-			const attack_type_callable callable(attack);
-			const game_logic::formula form(filter_formula);
+			const wfl::attack_type_callable callable(attack);
+			const wfl::formula form(filter_formula);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
 			}
-		} catch(game_logic::formula_error& e) {
+		} catch(wfl::formula_error& e) {
 			lg::wml_error() << "Formula error in weapon filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
 			// Formulae with syntax errors match nothing
 			return false;
@@ -176,13 +178,6 @@ bool attack_type::matches_filter(const config& filter) const
 	}
 
 	return matches;
-}
-
-namespace {
-	void add_and(std::stringstream &ss) {
-		if(ss.tellp() > 0)
-			ss << t_string(N_(" and "), "wesnoth");
-	}
 }
 
 /**
@@ -275,7 +270,7 @@ bool attack_type::apply_modification(const config& cfg)
 		if (num_attacks_ < 0) {
 			num_attacks_ = 0;
 		}
-		
+
 	}
 
 	if(increase_attacks.empty() == false) {
@@ -346,78 +341,91 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		const std::string& increase_movement = cfg["increase_movement_used"];
 		const std::string& set_movement = cfg["set_movement_used"];
 
-		std::stringstream desc;
+		std::vector<t_string> desc;
 
-		if(increase_damage.empty() == false) {
-			add_and(desc);
-			int inc_damage = std::stoi(increase_damage);
-			desc << utils::print_modifier(increase_damage) << " "
-				 << _n("damage","damage", inc_damage);
+		if(!increase_damage.empty()) {
+			desc.emplace_back(VNGETTEXT(
+				// TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
+				"<span color=\"$color\">$number_or_percent</span> damage",
+				"<span color=\"$color\">$number_or_percent</span> damage",
+				std::stoi(increase_damage),
+				{{"number_or_percent", utils::print_modifier(increase_damage)}, {"color", increase_damage[0] == '-' ? "red" : "green"}}));
 		}
 
-		if(set_damage.empty() == false) {
-			add_and(desc);
-			int damage = std::stoi(increase_damage);
-			desc << set_damage << " " << _n("damage","damage", damage);
+		if(!set_damage.empty()) {
+			// TRANSLATORS: Current value for WML code set_damage, documented in https://wiki.wesnoth.org/EffectWML
+			desc.emplace_back(VNGETTEXT(
+				"$number damage",
+				"$number damage",
+				std::stoi(set_damage),
+				{{"number", set_damage}}));
 		}
 
-		if(increase_attacks.empty() == false) {
-			add_and(desc);
-			int inc_attacks = std::stoi(increase_attacks);
-			desc << utils::print_modifier(increase_attacks) << " "
-				 << _n("strike", "strikes", inc_attacks);
+		if(!increase_attacks.empty()) {
+			desc.emplace_back(VNGETTEXT(
+				// TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
+				"<span color=\"$color\">$number_or_percent</span> strike",
+				"<span color=\"$color\">$number_or_percent</span> strikes",
+				std::stoi(increase_attacks),
+				{{"number_or_percent", utils::print_modifier(increase_attacks)}, {"color", increase_attacks[0] == '-' ? "red" : "green"}}));
 		}
 
-		if(set_attacks.empty() == false) {
-			int num_attacks = std::stoi(set_attacks);
-			add_and(desc);
-			desc << set_attacks << " " << _n("strike", "strikes", num_attacks);
+		if(!set_attacks.empty()) {
+			desc.emplace_back(VNGETTEXT(
+				// TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
+				"$number strike",
+				"$number strikes",
+				std::stoi(set_attacks),
+				{{"number", set_attacks}}));
 		}
 
-		if(set_accuracy.empty() == false) {
-			int accuracy = std::stoi(set_accuracy);
-
-			add_and(desc);
-			// xgettext:no-c-format
-			desc << accuracy << " " << _("% accuracy");
+		if(!set_accuracy.empty()) {
+			desc.emplace_back(VGETTEXT(
+				// TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
+				"$number| accuracy",
+				{{"number", set_accuracy}}));
 		}
 
-		if(increase_accuracy.empty() == false) {
-			add_and(desc);
-			int inc_acc = std::stoi(increase_accuracy);
-			// Help xgettext with a directive to recognize the string as a non C printf-like string
-			// xgettext:no-c-format
-			desc << utils::signed_value(inc_acc) << _("% accuracy");
+		if(!increase_accuracy.empty()) {
+			desc.emplace_back(VGETTEXT(
+				// TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
+				"<span color=\"$color\">$number_or_percent|%</span> accuracy",
+				{{"number_or_percent", utils::print_modifier(increase_accuracy)}, {"color", increase_accuracy[0] == '-' ? "red" : "green"}}));
 		}
 
-		if(set_parry.empty() == false) {
-			int parry = std::stoi(set_parry);
-
-			add_and(desc);
-			desc << parry << _(" parry");
+		if(!set_parry.empty()) {
+			desc.emplace_back(VGETTEXT(
+				// TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
+				"$number parry",
+				{{"number", set_parry}}));
 		}
 
-		if(increase_parry.empty() == false) {
-			add_and(desc);
-			int inc_parry = std::stoi(increase_parry);
-			// xgettext:no-c-format
-			desc << utils::signed_value(inc_parry) << _("% parry");
+		if(!increase_parry.empty()) {
+			desc.emplace_back(VGETTEXT(
+				// TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
+				"<span color=\"$color\">$number_or_percent</span> parry",
+				{{"number_or_percent", utils::print_modifier(increase_parry)}, {"color", increase_parry[0] == '-' ? "red" : "green"}}));
 		}
 
-		if(set_movement.empty() == false) {
-			int movement_used = std::stoi(set_movement);
-
-			add_and(desc);
-			desc << movement_used << " " << _n("movement point","movement points",movement_used);
+		if(!set_movement.empty()) {
+			desc.emplace_back(VNGETTEXT(
+				// TRANSLATORS: Current value for WML code set_movement, documented in https://wiki.wesnoth.org/EffectWML
+				"$number movement point",
+				"$number movement points",
+				std::stoi(set_movement),
+				{{"number", set_movement}}));
 		}
 
-		if(increase_movement.empty() == false) {
-			add_and(desc);
-			int inc_move = std::stoi(increase_movement);
-			desc << increase_movement << " " << _n("movement point","movement points",inc_move);
+		if(!increase_movement.empty()) {
+			desc.emplace_back(VNGETTEXT(
+				// TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
+				"<span color=\"$color\">$number_or_percent movement</span> point",
+				"<span color=\"$color\">$number_or_percent movement</span> points",
+				std::stoi(increase_movement),
+				{{"number_or_percent", utils::print_modifier(increase_movement)}, {"color", increase_movement[0] == '-' ? "red" : "green"}}));
 		}
 
-		*description = desc.str();
+		*description = utils::format_conjunct_list("", desc);
 	}
 
 	return true;

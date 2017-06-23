@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,20 +21,23 @@
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "game_launcher.hpp"
-#include "game_preferences.hpp"
+#include "preferences/game.hpp"
 #include "gettext.hpp"
-#include "log.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/tips.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
 #include "gui/dialogs/game_version.hpp"
+#include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
+#include "game_config_manager.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/multiplayer/mp_method_selection.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
+#include "gui/dialogs/multiplayer/mp_method_selection.hpp"
+#include "log.hpp"
 //#define DEBUG_TOOLTIP
 #ifdef DEBUG_TOOLTIP
 #include "gui/dialogs/tooltip.hpp"
@@ -135,8 +138,7 @@ bool show_debug_clock_button = false;
 
 title_screen::title_screen(game_launcher& game)
 	: game_(game)
-	, redraw_background_(true)
-	, debug_clock_(nullptr)
+	, debug_clock_()
 {
 	set_restore(false);
 
@@ -146,7 +148,6 @@ title_screen::title_screen(game_launcher& game)
 
 title_screen::~title_screen()
 {
-	delete debug_clock_;
 }
 
 using btn_callback = std::function<void(window&)>;
@@ -210,9 +211,6 @@ void title_screen::pre_show(window& win)
 	win.set_enter_disabled(true);
 	win.set_escape_disabled(true);
 
-	// Each time the dialog shows, we set this to false
-	redraw_background_ = false;
-
 #ifdef DEBUG_TOOLTIP
 	win.connect_signal<event::SDL_MOUSE_MOTION>(
 			std::bind(debug_tooltip, std::ref(win), _3, _5),
@@ -224,8 +222,27 @@ void title_screen::pre_show(window& win)
 	//
 	// General hotkeys
 	//
-	win.register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML, [this](event::dispatcher& w, hotkey::HOTKEY_COMMAND) {
+	win.register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML, [](event::dispatcher& w, hotkey::HOTKEY_COMMAND) {
 		dynamic_cast<window&>(w).set_retval(RELOAD_GAME_DATA);
+		return true;
+	});
+
+	win.register_hotkey(hotkey::TITLE_SCREEN__TEST, [this](event::dispatcher& w, hotkey::HOTKEY_COMMAND) {
+		game_config_manager::get()->load_game_config_for_create(false, true);
+		std::vector<std::string> options;
+		for(const config &sc : game_config_manager::get()->game_config().child_range("test")) {
+			if(!sc["is_unit_test"].to_bool(false)) {
+				options.emplace_back(sc["id"]);
+			}
+		}
+		std::sort(options.begin(), options.end());
+		gui2::dialogs::simple_item_selector dlg(_("Choose Test"), "", options);
+		dlg.show(game_.video());
+		int choice = dlg.selected_index();
+		if(choice >= 0) {
+			game_.set_test(options[choice]);
+			dynamic_cast<window&>(w).set_retval(LAUNCH_GAME);
+		}
 		return true;
 	});
 
@@ -237,15 +254,15 @@ void title_screen::pre_show(window& win)
 	//
 	if(game_config::images::game_title.empty()) {
 		ERR_CF << "No title image defined" << std::endl;
-	} else {
-		win.get_canvas()[0].set_variable("title_image", variant(game_config::images::game_title));
 	}
+
+	win.get_canvas(0).set_variable("title_image", wfl::variant(game_config::images::game_title));
 
 	if(game_config::images::game_title_background.empty()) {
 		ERR_CF << "No title background image defined" << std::endl;
-	} else {
-		win.get_canvas()[0].set_variable("background_image", variant(game_config::images::game_title_background));
 	}
+
+	win.get_canvas(0).set_variable("background_image", wfl::variant(game_config::images::game_title_background));
 
 	find_widget<image>(&win, "logo-bg", false).set_image(game_config::images::game_logo_background);
 	find_widget<image>(&win, "logo", false).set_image(game_config::images::game_logo);
@@ -259,7 +276,7 @@ void title_screen::pre_show(window& win)
 		version_label->set_label(version_string);
 	}
 
-	win.get_canvas()[0].set_variable("revision_number", variant(version_string));
+	win.get_canvas(0).set_variable("revision_number", wfl::variant(version_string));
 
 	//
 	// Tip-of-the-day browser
@@ -296,9 +313,13 @@ void title_screen::pre_show(window& win)
 	//
 	// Help
 	//
-	register_button(win, "help", hotkey::HOTKEY_HELP, [this](window&) {
+	register_button(win, "help", hotkey::HOTKEY_HELP, [](window& w) {
+		if(gui2::new_widgets) {
+			gui2::dialogs::help_browser::display(w.video());
+		}
+
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
-		help::show_help(game_.video());
+		help::show_help(w.video());
 	});
 
 	//
@@ -318,8 +339,12 @@ void title_screen::pre_show(window& win)
 	// Campaign
 	//
 	register_button(win, "campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this](window& w) {
-		if(game_.new_campaign()) {
-			w.set_retval(LAUNCH_GAME);
+		try{
+			if(game_.new_campaign()) {
+				w.set_retval(LAUNCH_GAME);
+			}
+		} catch (const config::error& e) {
+			gui2::show_error_message(w.video(), e.what());
 		}
 	});
 
@@ -329,7 +354,7 @@ void title_screen::pre_show(window& win)
 	register_button(win, "multiplayer", hotkey::TITLE_SCREEN__MULTIPLAYER, [this](window& w) {
 		while(true) {
 			gui2::dialogs::mp_method_selection dlg;
-			dlg.show(game_.video());
+			dlg.show(w.video());
 
 			if(dlg.get_retval() != gui2::window::OK) {
 				return;
@@ -338,7 +363,7 @@ void title_screen::pre_show(window& win)
 			const int res = dlg.get_choice();
 
 			if(res == 2 && preferences::mp_server_warning_disabled() < 2) {
-				if(!gui2::dialogs::mp_host_game_prompt::execute(game_.video())) {
+				if(!gui2::dialogs::mp_host_game_prompt::execute(w.video())) {
 					continue;
 				}
 			}
@@ -379,11 +404,11 @@ void title_screen::pre_show(window& win)
 	//
 	// Addons
 	//
-	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, [this](window&) {
+	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, [](window& w) {
 		// NOTE: we need the help_manager to get access to the Add-ons section in the game help!
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
 
-		if(manage_addons(game_.video())) {
+		if(manage_addons(w.video())) {
 			game_config_manager::get()->reload_changed_game_config();
 		}
 	});
@@ -396,7 +421,7 @@ void title_screen::pre_show(window& win)
 	//
 	// Cores
 	//
-	register_button(win, "cores", hotkey::TITLE_SCREEN__CORES, [this](window&) {
+	register_button(win, "cores", hotkey::TITLE_SCREEN__CORES, [](window& w) {
 		int current = 0;
 		std::vector<config> cores;
 		for(const config& core : game_config_manager::get()->game_config().child_range("core")) {
@@ -408,7 +433,7 @@ void title_screen::pre_show(window& win)
 		}
 
 		gui2::dialogs::core_selection core_dlg(cores, current);
-		if(core_dlg.show(game_.video())) {
+		if(core_dlg.show(w.video())) {
 			const std::string& core_id = cores[core_dlg.get_choice()]["id"];
 
 			preferences::set_core_id(core_id);
@@ -431,7 +456,7 @@ void title_screen::pre_show(window& win)
 				on_resize(w);
 			}
 		} catch(std::runtime_error& e) {
-			gui2::show_error_message(game_.video(), e.what());
+			gui2::show_error_message(w.video(), e.what());
 		}
 	});
 
@@ -463,8 +488,7 @@ void title_screen::pre_show(window& win)
 
 void title_screen::on_resize(window& win)
 {
-	redraw_background_ = true;
-	win.close();
+	win.set_retval(REDRAW_BACKGROUND);
 }
 
 void title_screen::update_tip(window& win, const bool previous)
@@ -504,10 +528,9 @@ void title_screen::show_debug_clock_window(CVideo& video)
 	assert(show_debug_clock_button);
 
 	if(debug_clock_) {
-		delete debug_clock_;
-		debug_clock_ = nullptr;
+		debug_clock_.reset(nullptr);
 	} else {
-		debug_clock_ = new debug_clock();
+		debug_clock_.reset(new debug_clock());
 		debug_clock_->show(video, true);
 	}
 }

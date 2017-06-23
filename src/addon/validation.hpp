@@ -13,8 +13,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef ADDON_VALIDATION_HPP_INCLUDED
-#define ADDON_VALIDATION_HPP_INCLUDED
+#pragma once
 
 #include <vector>
 #include <string>
@@ -70,5 +69,3 @@ bool check_names_legal(const config& dir);
 std::string encode_binary(const std::string& str);
 std::string unencode_binary(const std::string& str);
 bool needs_escaping(char c);
-
-#endif /* !ADDON_CHECKS_HPP_INCLUDED */

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -15,7 +15,6 @@
 
 #include "gui/dialogs/statistics_dialog.hpp"
 
-#include "config_assign.hpp"
 #include "font/constants.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
@@ -52,6 +51,7 @@ statistics_dialog::statistics_dialog(const team& current_team)
 	, scenario_index_(scenarios_.size() - 1)
 	, main_stat_table_()
 {
+	set_restore(true);
 }
 
 void statistics_dialog::pre_show(window& window)
@@ -67,7 +67,7 @@ void statistics_dialog::pre_show(window& window)
 	//
 	std::vector<config> menu_items;
 	for(const auto& scenario : scenarios_) {
-		menu_items.push_back(config_of("label", *scenario.first));
+		menu_items.emplace_back(config {"label", *scenario.first});
 	}
 
 	menu_button& scenario_menu = find_widget<menu_button>(&window, "scenario_menu", false);

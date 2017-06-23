@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,16 +18,13 @@
  *
  */
 
-#ifndef FORMULA_DEBUGGER_HPP_INCLUDED
-#define FORMULA_DEBUGGER_HPP_INCLUDED
-
-#include "global.hpp"
+#pragma once
 
 #include "formula/variant.hpp"
 #include "formula/debugger_fwd.hpp"
-#include <deque>
+#include <list>
 
-namespace game_logic {
+namespace wfl {
 
 class formula_expression;
 class formula_callable;
@@ -99,13 +96,13 @@ public:
 	void check_breakpoints();
 
 
-	const std::deque<debug_info>& get_call_stack() const;
+	const std::list<debug_info>& get_call_stack() const;
 
 
 	const breakpoint_ptr get_current_breakpoint() const;
 
 
-	const std::deque<debug_info>& get_execution_trace() const;
+	const std::list<debug_info>& get_execution_trace() const;
 
 
 	variant evaluate_arg_callback(const formula_expression &expression, const formula_callable &variables);
@@ -144,11 +141,11 @@ public:
 	}
 
 private:
-	std::deque<debug_info> call_stack_;
+	std::list<debug_info> call_stack_;
 	int counter_;
 	breakpoint_ptr current_breakpoint_;
-	std::deque< breakpoint_ptr > breakpoints_;
-	std::deque<debug_info> execution_trace_;
+	std::list< breakpoint_ptr > breakpoints_;
+	std::list<debug_info> execution_trace_;
 	int arg_number_extra_debug_info;
 	std::string f_name_extra_debug_info;
 
@@ -157,6 +154,4 @@ private:
 
 
 
-} // end of namespace game_logic
-
-#endif
+} // end of namespace wfl

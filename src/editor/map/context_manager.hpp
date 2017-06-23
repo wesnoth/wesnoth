@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,48 +12,44 @@
    See the COPYING file for more details.
 */
 
-#ifndef CONTEXT_MANAGER_HPP_INCLUDED
-#define CONTEXT_MANAGER_HPP_INCLUDED
+#pragma once
 
 #include "editor/map/map_context.hpp"
-#include "editor/editor_preferences.hpp"
+#include "preferences/editor.hpp"
 #include "editor/map/map_fragment.hpp"
+
 class map_generator;
 
-namespace editor {
+namespace editor
+{
 
-map_labels* get_current_labels();
-
-class context_manager {
-
+class context_manager
+{
 public:
+	using context_ptr = std::unique_ptr<map_context>;
+
+	context_manager(editor_display& gui, const config& game_config);
+	~context_manager();
 
 	bool is_active_transitions_hotkey(const std::string& item);
 
 	size_t modified_maps(std::string& modified);
 
-	void set_update_trasitions_mode(int mode) {
+	void set_update_transitions_mode(int mode)
+	{
 		auto_update_transitions_ = mode;
 		preferences::editor::set_auto_update_transitions(mode);
 	}
 
-	bool toggle_update_transitions() {
-		auto_update_transitions_ = (auto_update_transitions_ + 1)
-				% preferences::editor::TransitionUpdateMode::count;
-		preferences::editor::set_auto_update_transitions(
-				auto_update_transitions_);
-		if (auto_update_transitions_
-				!= preferences::editor::TransitionUpdateMode::on) {
-			return true;
-		}
-		return false;
-	}
+	bool toggle_update_transitions();
 
-	bool clipboard_empty() {
+	bool clipboard_empty()
+	{
 		return clipboard_.empty();
 	}
 
-	map_fragment& get_clipboard() {
+	map_fragment& get_clipboard()
+	{
 		return clipboard_;
 	}
 
@@ -61,15 +57,13 @@ public:
 	void fill_selection();
 
 	/** Index into the map_contexts_ array */
-	int current_context_index() {
+	int current_context_index()
+	{
 		return current_context_index_;
 	}
 
-public:
-	context_manager(editor_display& gui, const config& game_config);
-	~context_manager();
-
-	size_t open_maps(void) {
+	size_t open_maps(void)
+	{
 		return map_contexts_.size();
 	}
 
@@ -88,7 +82,8 @@ public:
 	/** Save the map, open dialog if not named yet. */
 	void save_map();
 
-	editor_display& gui() {
+	editor_display& gui()
+	{
 		return gui_;
 	}
 
@@ -107,22 +102,22 @@ public:
 	void rename_area_dialog();
 
 	/** Menu expanding for open maps list */
-	void expand_open_maps_menu(std::vector<std::string>& items);
+	void expand_open_maps_menu(std::vector<config>& items, int i);
 
 	/** Menu expanding for most recent loaded list */
-	void expand_load_mru_menu(std::vector<std::string>& items);
+	void expand_load_mru_menu(std::vector<config>& items, int i);
 
 	/** Menu expanding for the map's player sides */
-	void expand_sides_menu(std::vector<std::string>& items);
+	void expand_sides_menu(std::vector<config>& items, int i);
 
 	/** Menu expanding for the map's defined areas */
-	void expand_areas_menu(std::vector<std::string>& items);
+	void expand_areas_menu(std::vector<config>& items, int i);
 
 	/** Menu expanding for the map's defined areas */
-	void expand_time_menu(std::vector<std::string>& items);
+	void expand_time_menu(std::vector<config>& items, int i);
 
 	/** Menu expanding for the map's defined areas */
-	void expand_local_time_menu(std::vector<std::string>& items);
+	void expand_local_time_menu(std::vector<config>& items, int i);
 
 	/** Display a load map dialog and process user input. */
 	void load_map_dialog(bool force_same_context = false);
@@ -154,28 +149,35 @@ public:
 	/** Display a load map dialog and process user input. */
 	void resize_map_dialog();
 
-	size_t size() {
+	size_t size()
+	{
 		return map_contexts_.size();
 	}
 
 	/** Get the current map context object */
-	map_context& get_map_context() {
+	map_context& get_map_context()
+	{
 		return *map_contexts_[current_context_index_];
 	}
+
 	/** Get the map from the current map context object - const version*/
-	const editor_map& get_map() const {
+	const editor_map& get_map() const
+	{
 		return get_map_context().get_map();
 	}
 
+	map_labels& get_labels()
+	{
+		return get_map_context().get_labels();
+	}
+
 	/** Set the default dir (where the filebrowser is pointing at when there is no map file opened) */
-	void set_default_dir(const std::string& str);
+	void set_default_dir(const std::string& str)
+	{
+		default_dir_ = str;
+	}
 
 private:
-
-	/**
-	 * Replace the current map context and refresh accordingly
-	 */
-	void replace_map_context(map_context* new_mc);
 	/** init available random map generators */
 	void init_map_generators(const config& game_config);
 
@@ -186,16 +188,27 @@ private:
 	bool confirm_discard();
 
 	/** Get the current map context object - const version */
-	const map_context& get_map_context() const {
+	const map_context& get_map_context() const
+	{
 		return *map_contexts_[current_context_index_];
 	}
-
 
 	/**
 	 * Add a map context. The controller assumes ownership.
 	 * @return the index of the added map context in the map_contexts_ array
 	 */
-	int add_map_context(map_context* mc);
+	template<typename... T>
+	int add_map_context(const T&... args);
+
+	int add_map_context_of(context_ptr&& mc);
+
+	/**
+	 * Replace the current map context and refresh accordingly
+	 */
+	template<typename... T>
+	void replace_map_context(const T&... args);
+
+	void replace_map_context_with(context_ptr&& mc);
 
 	/**
 	 * Creates a default map context object, used to ensure there is always at least one.
@@ -211,7 +224,8 @@ public:
 	void refresh_after_action(bool drag_part = false);
 
 	/** Get the map from the current map context object */
-	editor_map& get_map() {
+	editor_map& get_map()
+	{
 		return get_map_context().get_map();
 	}
 
@@ -240,14 +254,12 @@ private:
 	/**
 	 * Create a new map.
 	 */
-	void new_map(int width, int height, const t_translation::terrain_code & fill,
-			bool new_context);
+	void new_map(int width, int height, const t_translation::terrain_code & fill, bool new_context);
 
 	/**
 	 * Create a new scenario.
 	 */
-	void new_scenario(int width, int height, const t_translation::terrain_code & fill,
-			bool new_context);
+	void new_scenario(int width, int height, const t_translation::terrain_code & fill, bool new_context);
 
 	/**
 	 * Check if a map is already open.
@@ -266,6 +278,7 @@ private:
 	 * Displays the specified map name in the window titlebar
 	 */
 	void set_window_title();
+
 public:
 	/**
 	 * Load a map given the filename
@@ -284,7 +297,6 @@ public:
 	void reload_map();
 
 private:
-
 	editor_display& gui_;
 
 	const config& game_config_;
@@ -293,7 +305,7 @@ private:
 	std::string default_dir_;
 
 	/** Available random map generators */
-	std::vector<map_generator*> map_generators_;
+	std::vector<std::unique_ptr<map_generator>> map_generators_;
 	map_generator* last_map_generator_;
 
 	int current_context_index_;
@@ -301,14 +313,11 @@ private:
 	/** Flag to rebuild terrain on every terrain change */
 	int auto_update_transitions_;
 
-
 	/** The currently opened map context object */
-	std::vector<map_context*> map_contexts_;
+	std::vector<context_ptr> map_contexts_;
 
 	/** Clipboard map_fragment -- used for copy-paste. */
 	map_fragment clipboard_;
 };
 
 }
-
-#endif

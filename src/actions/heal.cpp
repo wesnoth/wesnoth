@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,8 +19,6 @@
 
 #include "actions/heal.hpp"
 
-#include "game_board.hpp"
-#include "game_display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -85,7 +83,7 @@ namespace {
 	                              std::vector<unit *> & healers)
 	{
 		const std::vector<team> &teams = resources::gameboard->teams();
-		unit_map &units = *resources::units;
+		unit_map &units = resources::gameboard->units();
 
 		POISON_STATUS curing = POISON_NORMAL;
 
@@ -180,7 +178,7 @@ namespace {
 	 */
 	int heal_amount(int side, const unit & patient, std::vector<unit *> & healers)
 	{
-		unit_map &units = *resources::units;
+		unit_map &units = resources::gameboard->units();
 
 		int healing = 0;
 		int harming = 0;
@@ -298,7 +296,7 @@ void calculate_healing(int side, bool update_display)
 	std::list<heal_unit> unit_list;
 
 	// We look for all allied units, then we see if our healer is near them.
-	for (unit &patient : *resources::units) {
+	for (unit &patient : resources::gameboard->units()) {
 
 		if ( patient.get_state("unhealable") || patient.incapacitated() ) {
 			if ( patient.side() == side )
@@ -353,7 +351,7 @@ void calculate_healing(int side, bool update_display)
 		if (!resources::controller->is_skipping_replay() && update_display &&
 		    patient.is_visible_to_team(viewing_team, *resources::gameboard, false) )
 		{
-			unit_list.push_front(heal_unit(patient, healers, healing, curing == POISON_CURE));
+			unit_list.emplace_front(patient, healers, healing, curing == POISON_CURE);
 		}
 		else
 		{

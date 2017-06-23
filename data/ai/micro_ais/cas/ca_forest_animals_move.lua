@@ -1,7 +1,8 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local W = H.set_wml_action_metatable {}
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local LS = wesnoth.require "location_set"
+local M = wesnoth.map
 
 local function get_forest_animals(cfg)
     -- We want the deer/rabbits to move first, tuskers afterward
@@ -65,7 +66,7 @@ function ca_forest_animals_move:execution(cfg)
     -- Behavior is different depending on whether a predator is close or not
     local close_enemies = {}
     for _,enemy in ipairs(enemies) do
-        if (H.distance_between(unit.x, unit.y, enemy.x, enemy.y) <= unit.max_moves+1) then
+        if (M.distance_between(unit.x, unit.y, enemy.x, enemy.y) <= unit.max_moves+1) then
             table.insert(close_enemies, enemy)
         end
     end
@@ -99,7 +100,7 @@ function ca_forest_animals_move:execution(cfg)
         else  -- Or if no close reachable terrain was found, move toward the closest
             local min_dist, best_hex = 9e99
             for _,loc in ipairs(wander_locs) do
-                local dist = H.distance_between(loc[1], loc[2], unit.x, unit.y)
+                local dist = M.distance_between(loc[1], loc[2], unit.x, unit.y)
                 if dist < min_dist then
                     best_hex, min_dist = loc, dist
                 end
@@ -123,7 +124,7 @@ function ca_forest_animals_move:execution(cfg)
         enemies = AH.get_attackable_enemies()
         close_enemies = {}
         for _,enemy in ipairs(enemies) do
-            if (H.distance_between(unit.x, unit.y, enemy.x, enemy.y) <= unit.max_moves+1) then
+            if (M.distance_between(unit.x, unit.y, enemy.x, enemy.y) <= unit.max_moves+1) then
                 table.insert(close_enemies, enemy)
             end
         end
@@ -137,7 +138,7 @@ function ca_forest_animals_move:execution(cfg)
         local farthest_hex = AH.find_best_move(unit, function(x, y)
             local rating = 0
             for _,enemy in ipairs(close_enemies) do
-                local dist = H.distance_between(enemy.x, enemy.y, x, y)
+                local dist = M.distance_between(enemy.x, enemy.y, x, y)
                 rating = rating - 1 / dist^2
             end
 

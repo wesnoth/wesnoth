@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2013 - 2017 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "global.hpp"
-
 #include "editor/palette/tristate_button.hpp"
 
 #include "font/constants.hpp"
@@ -29,7 +27,6 @@
 #include "serialization/string_utils.hpp"
 #include "sound.hpp"
 #include "video.hpp"
-#include "wml_separators.hpp"
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -244,7 +241,7 @@ void tristate_button::draw_contents() {
 	surface nbase = make_neutral_surface(base);
 
 	//TODO avoid magic numbers
-	SDL_Rect r = sdl::create_rect(1, 1, 0, 0);
+	SDL_Rect r {1, 1, 0, 0};
 	sdl_blit(nitem, nullptr, nbase, &r);
 
 	if (!overlay.null()) {
@@ -252,11 +249,6 @@ void tristate_button::draw_contents() {
 		sdl_blit(noverlay, nullptr, nbase, nullptr);
 	}
 
-//  TODO for later reference
-//	adjust_surface_alpha(nbase, SDL_ALPHA_OPAQUE);
-//	adjust_surface_alpha(image, SDL_ALPHA_TRANSPARENT);
-//
-//	TODO might be needed.
 	bg_restore();
 
 	image = nbase;
@@ -268,8 +260,6 @@ void tristate_button::draw_contents() {
 	clipArea.h -= 2 * offset;
 	font::draw_text(&video(), clipArea, font_size, button_color, label_, textx,
 			texty);
-
-	update_rect(loc);
 }
 
 //TODO move to widget

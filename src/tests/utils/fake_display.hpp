@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2017 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TESTS_UTILS_FAKE_DISPLAY_HPP_INCLUDED
-#define TESTS_UTILS_FAKE_DISPLAY_HPP_INCLUDED
+#pragma once
 
 class game_display;
 
@@ -35,4 +34,3 @@ namespace test_utils {
 
 
 }
-#endif

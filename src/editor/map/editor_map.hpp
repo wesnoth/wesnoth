@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_EDITOR_MAP_HPP_INCLUDED
-#define EDITOR_EDITOR_MAP_HPP_INCLUDED
+#pragma once
 
 #include "editor/editor_common.hpp"
 
@@ -45,7 +44,7 @@ struct editor_map_load_exception : public editor_exception
 	: editor_exception(msg), filename(fn)
 	{
 	}
-	~editor_map_load_exception() throw() {}
+	~editor_map_load_exception() NOEXCEPT {}
 	std::string filename;
 };
 
@@ -55,7 +54,7 @@ struct editor_map_save_exception : public editor_exception
 	: editor_exception(msg)
 	{
 	}
-	~editor_map_save_exception() throw() {}
+	~editor_map_save_exception() NOEXCEPT {}
 };
 
 
@@ -207,5 +206,3 @@ protected:
 
 
 } //end namespace editor
-
-#endif

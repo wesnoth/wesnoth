@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:31 UTC\n"
+"POT-Creation-Date: 2017-05-29 21:55+0200\n"
 "PO-Revision-Date: 2016-05-13 07:28+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
@@ -155,13 +155,13 @@ msgstr "Haldric II"
 msgid "Glildur"
 msgstr "Glindur"
 
+#. [side]
+#. [side]: type=Elvish Captain, id=Glindur
 #. [side]: type=Elvish Marshal, id=Gaenlar
 #. [side]: type=Elvish Marshal, id=Glinan
 #. [side]: type=Elvish Captain, id=Kalnar
-#. [side]: type=Elvish Captain, id=Glildur
-#. [side]: type=Elvish Captain, id=Glindur
-#. [side]
 #. [side]: type=Elvish Marshal, id=Crintil
+#. [side]: type=Elvish Captain, id=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:76
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:42
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:41
@@ -3860,11 +3860,6 @@ msgstr "Rei"
 msgid "King of Wesnoth."
 msgstr "Rei do Noroeste"
 
-#. [attack]: type=blade
-#: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:25
-msgid "sword"
-msgstr "espada"
-
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:22
 msgid "Gahahh..."
@@ -3884,6 +3879,9 @@ msgstr "Ahg…"
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:71
 msgid "Kraa..."
 msgstr "Craa…"
+
+#~ msgid "sword"
+#~ msgstr "espada"
 
 #, fuzzy
 #~ msgid "sceptre of fire"

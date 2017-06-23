@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef RACE_HPP_INCLUDED
-#define RACE_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"
 #include "utils/name_generator.hpp"
@@ -31,6 +30,7 @@ public:
 
 	const config& get_cfg() const { return cfg_; }
 	const std::string& id() const { return id_; }
+	const std::string& editor_icon() const { return icon_; }
 	const t_string& name(GENDER gender=MALE) const { return name_[gender]; }
 	const t_string& plural_name() const { return plural_name_; }
 	const t_string& description() const { return description_; }
@@ -55,6 +55,7 @@ private:
 	const config cfg_;
 
 	std::string id_;
+	std::string icon_;
 	t_string name_[NUM_GENDERS];
 	t_string plural_name_;
 	t_string description_;
@@ -71,5 +72,3 @@ unit_race::GENDER string_gender(const std::string& str,unit_race::GENDER def=uni
 const std::string& gender_string(unit_race::GENDER gender);
 
 typedef std::map<std::string,unit_race> race_map;
-
-#endif

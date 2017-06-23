@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,12 +12,12 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_AUXILIARY_WINDOW_BUILDER_HPP_INCLUDED
-#define GUI_AUXILIARY_WINDOW_BUILDER_HPP_INCLUDED
+#pragma once
 
 #include "gui/auxiliary/typed_formula.hpp"
+#include "gui/core/linked_group_definition.hpp"
 #include "gui/widgets/grid.hpp"
-#include "sdl/color.hpp"
+#include "color.hpp"
 
 #include "utils/functional.hpp"
 
@@ -150,11 +150,13 @@ typedef std::shared_ptr<const builder_grid> builder_grid_const_ptr;
 class builder_window
 {
 public:
-	builder_window() : resolutions(), id_(), description_()
+	explicit builder_window(const config& cfg)
+		: resolutions()
+		, id_(cfg["id"])
+		, description_(cfg["description"])
 	{
+		read(cfg);
 	}
-
-	const std::string& read(const config& cfg);
 
 	struct window_resolution
 	{
@@ -172,7 +174,7 @@ public:
 		typed_formula<unsigned> height;
 		typed_formula<bool> reevaluate_best_size;
 
-		game_logic::function_symbol_table functions;
+		wfl::function_symbol_table functions;
 
 		unsigned vertical_placement;
 		unsigned horizontal_placement;
@@ -184,18 +186,7 @@ public:
 
 		std::string definition;
 
-		struct linked_group
-		{
-			linked_group() : id(), fixed_width(false), fixed_height(false)
-			{
-			}
-
-			std::string id;
-			bool fixed_width;
-			bool fixed_height;
-		};
-
-		std::vector<linked_group> linked_groups;
+		std::vector<linked_group_definition> linked_groups;
 
 		/** Helper struct to store information about the tips. */
 		struct tooltip_info
@@ -214,6 +205,8 @@ public:
 	std::vector<window_resolution> resolutions;
 
 private:
+	void read(const config& cfg);
+
 	std::string id_;
 	std::string description_;
 };
@@ -224,5 +217,3 @@ private:
 window* build(CVideo& video, const builder_window::window_resolution* res);
 
 } // namespace gui2
-
-#endif

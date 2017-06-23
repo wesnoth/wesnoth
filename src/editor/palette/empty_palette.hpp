@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2012 - 2017 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,10 +16,9 @@
  * Manage the empty-palette in the editor.
  */
 
-#ifndef EMPTY_PALETTE_H_INCLUDED
-#define EMPTY_PALETTE_H_INCLUDED
+#pragma once
 
-#include "editor_palettes.hpp"
+#include "editor/palette/editor_palettes.hpp"
 
 namespace editor {
 
@@ -30,7 +29,7 @@ public:
 
 	empty_palette(display& gui) :
 		common_palette(gui.video()),
-		gui_(gui), empty_() {}
+		gui_(gui) {}
 
 	//event handling
 	virtual bool mouse_click() { return false;}
@@ -44,23 +43,15 @@ public:
 	virtual void adjust_size(const SDL_Rect& /*target*/) override {}
 	virtual void draw() override {}
 
-	void hide(bool hidden) override {
-		if (!hidden) {
-			std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
-			upscroll_button->enable(false);
-			std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
-			downscroll_button->enable(false);
-			std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
-			palette_menu_button->set_overlay("");
-			palette_menu_button->enable(false);
-		} else {
-			std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
-			upscroll_button->enable(true);
-			std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
-			downscroll_button->enable(true);
-			std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
-			palette_menu_button->enable(true);
-		}
+	void hide(bool /*hidden*/) override
+	{
+		std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
+		upscroll_button->enable(false);
+		std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
+		downscroll_button->enable(false);
+		std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
+		palette_menu_button->set_overlay("");
+		palette_menu_button->enable(false);
 	}
 
 	std::vector<gui::widget>* get_widgets() { return nullptr; }
@@ -69,11 +60,13 @@ public:
 	virtual void set_group(size_t /*index*/) override {}
 	virtual void next_group() override {}
 	virtual void prev_group() override {}
-	virtual const std::vector<item_group>& get_groups() const override { return empty_; }
+	virtual const std::vector<item_group>& get_groups() const override { static const std::vector<item_group> empty; return empty; }
 
 	/** Menu expanding for palette group list */
-	virtual void expand_palette_groups_menu(std::vector< std::pair< std::string, std::string> >& /*items*/) override {}
-	virtual void expand_palette_groups_menu(std::vector< std::string> & /*items*/) override {}
+	virtual void expand_palette_groups_menu(std::vector<config>& items, int i) override
+	{
+		items.erase(items.begin() + i);
+	}
 
     //item
 	virtual int num_items() override {return 0;}
@@ -84,9 +77,6 @@ public:
 
 private:
 	display& gui_;
-	std::vector<item_group> empty_;
 };
 
-
 }
-#endif

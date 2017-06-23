@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,8 +14,7 @@
 
 /// This class encapsulates the recall list of a team.
 
-#ifndef RECALL_LIST_MGR_HPP
-#define RECALL_LIST_MGR_HPP
+#pragma once
 
 #include "units/ptr.hpp"
 
@@ -64,5 +63,3 @@ private:
 
 	friend class ai::readonly_context_impl; //!< Friend AI module for ease of implementation there.
 };
-
-#endif

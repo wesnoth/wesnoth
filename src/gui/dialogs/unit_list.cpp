@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 by the Battle for Wesnoth Project http://www.wesnoth.org/
+   Copyright (C) 2016 - 2017 by the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -199,7 +199,7 @@ void unit_list::post_show(window& window)
 	if(get_retval() == window::OK) {
 		const int selected_row = find_widget<listbox>(&window, "units_list", false).get_selected_row();
 
-		scroll_to_ = unit_list_[selected_row].get()->get_location();
+		scroll_to_ = unit_list_[selected_row]->get_location();
 	}
 }
 

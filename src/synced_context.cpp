@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2014 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,14 +16,12 @@
 
 #include "actions/undo.hpp"
 #include "ai/manager.hpp"
-#include "global.hpp"
 #include "config.hpp"
-#include "config_assign.hpp"
 #include "game_classification.hpp"
 #include "replay.hpp"
-#include "random_new.hpp"
-#include "random_new_synced.hpp"
-#include "random_new_deterministic.hpp"
+#include "random.hpp"
+#include "random_synced.hpp"
+#include "random_deterministic.hpp"
 #include "resources.hpp"
 #include "synced_checkup.hpp"
 #include "game_data.hpp"
@@ -52,7 +50,6 @@ static lg::log_domain log_replay("replay");
 synced_context::synced_state synced_context::state_ = synced_context::UNSYNCED;
 int synced_context::last_unit_id_ = 0;
 synced_context::event_list synced_context::undo_commands_;
-synced_context::event_list synced_context::redo_commands_;
 bool synced_context::is_simultaneously_ = false;
 
 bool synced_context::run(const std::string& commandname, const config& data, bool use_undo, bool show, synced_command::error_handler_function error_handler)
@@ -187,7 +184,7 @@ namespace
 		/// We are in a game with no mp server and need to do this choice locally
 		virtual config local_choice() const
 		{
-			return config_of("new_seed", seed_rng::next_seed_str());
+			return config {"new_seed", seed_rng::next_seed_str()};
 		}
 		/// the request which is sended to the mp server.
 		virtual config request() const
@@ -229,7 +226,7 @@ bool synced_context::can_undo()
 	//this method should only works in a synced context.
 	assert(is_synced());
 	//if we called the rng or if we sended data of this action over the network already, undoing is impossible.
-	return (!is_simultaneously_) && (random_new::generator->get_random_calls() == 0);
+	return (!is_simultaneously_) && (randomness::generator->get_random_calls() == 0);
 }
 
 void synced_context::set_last_unit_id(int id)
@@ -255,27 +252,27 @@ void synced_context::send_user_choice()
 	syncmp_registry::send_user_choice();
 }
 
-std::shared_ptr<random_new::rng> synced_context::get_rng_for_action()
+std::shared_ptr<randomness::rng> synced_context::get_rng_for_action()
 {
 	const std::string& mode = resources::classification->random_mode;
 	if(mode == "deterministic")
 	{
-		return std::shared_ptr<random_new::rng>(new random_new::rng_deterministic(resources::gamedata->rng()));
+		return std::shared_ptr<randomness::rng>(new randomness::rng_deterministic(resources::gamedata->rng()));
 	}
 	else
 	{
-		return std::shared_ptr<random_new::rng>(new random_new::synced_rng(generate_random_seed));
+		return std::shared_ptr<randomness::rng>(new randomness::synced_rng(generate_random_seed));
 	}
 }
 
 void synced_context::server_choice::send_request() const
 {
-	resources::controller->send_to_wesnothd(config_of
-		("request_choice", config_of
-			("request_id", resources::controller->get_server_request_number())
-			(name(), request())
-		)
-	);
+	resources::controller->send_to_wesnothd(config {
+		"request_choice", config {
+			"request_id", resources::controller->get_server_request_number(),
+			name(), request(),
+		},
+	});
 }
 
 
@@ -372,24 +369,14 @@ void synced_context::add_undo_commands(const config& commands, const game_events
 	undo_commands_.emplace_front(commands, ctx);
 }
 
-void synced_context::add_redo_commands(const config& commands, const game_events::queued_event& ctx)
-{
-	redo_commands_.emplace_front(commands, ctx);
-}
-
 void synced_context::reset_undo_commands()
 {
 	undo_commands_.clear();
 }
 
-void synced_context::reset_redo_commands()
-{
-	redo_commands_.clear();
-}
-
 set_scontext_synced_base::set_scontext_synced_base()
 	: new_rng_(synced_context::get_rng_for_action())
-	, old_rng_(random_new::generator)
+	, old_rng_(randomness::generator)
 {
 	LOG_REPLAY << "set_scontext_synced_base::set_scontext_synced_base\n";
 	assert(!resources::whiteboard->has_planned_unit_map());
@@ -398,15 +385,14 @@ set_scontext_synced_base::set_scontext_synced_base()
 	synced_context::reset_is_simultaneously();
 	synced_context::set_last_unit_id(resources::gameboard->unit_id_manager().get_save_id());
 	synced_context::reset_undo_commands();
-	synced_context::reset_redo_commands();
-	old_rng_ = random_new::generator;
-	random_new::generator = new_rng_.get();
+	old_rng_ = randomness::generator;
+	randomness::generator = new_rng_.get();
 }
 set_scontext_synced_base::~set_scontext_synced_base()
 {
 	LOG_REPLAY << "set_scontext_synced_base:: destructor\n";
 	assert(synced_context::get_synced_state() == synced_context::SYNCED);
-	random_new::generator = old_rng_;
+	randomness::generator = old_rng_;
 	synced_context::set_synced_state(synced_context::UNSYNCED);
 }
 
@@ -452,9 +438,10 @@ void set_scontext_synced::do_final_checkup(bool dont_throw)
 	assert(!did_final_checkup_);
 	std::stringstream msg;
 	config co;
-	config cn = config_of
-		("random_calls", new_rng_->get_random_calls())
-		("next_unit_id", resources::gameboard->unit_id_manager().get_save_id() + 1);
+	config cn {
+		"random_calls", new_rng_->get_random_calls(),
+		"next_unit_id", resources::gameboard->unit_id_manager().get_save_id() + 1,
+	};
 	if(checkup_instance->local_checkup(cn, co))
 	{
 		return;
@@ -505,21 +492,21 @@ int set_scontext_synced::get_random_calls()
 
 
 leave_synced_context::leave_synced_context()
-	: old_rng_(random_new::generator)
+	: old_rng_(randomness::generator)
 {
 	assert(synced_context::get_synced_state() == synced_context::SYNCED);
 	synced_context::set_synced_state(synced_context::LOCAL_CHOICE);
 
 	//calling the synced rng form inside a local_choice would cause oos.
 	//TODO: should we also reset the synced checkup?
-	random_new::generator = &random_new::rng::default_instance();
+	randomness::generator = &randomness::rng::default_instance();
 }
 
 leave_synced_context::~leave_synced_context()
 {
 	assert(synced_context::get_synced_state() == synced_context::LOCAL_CHOICE);
 	synced_context::set_synced_state(synced_context::SYNCED);
-	random_new::generator = old_rng_;
+	randomness::generator = old_rng_;
 }
 
 set_scontext_unsynced::set_scontext_unsynced()

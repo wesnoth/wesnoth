@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef INCL_GAME_STATE_HPP_
-#define INCL_GAME_STATE_HPP_
+#pragma once
 
 class config;
 
@@ -28,7 +27,7 @@ class play_controller;
 class game_lua_kernel;
 class reports;
 
-namespace game_events { class manager; class wmi_container; }
+namespace game_events { class manager; class wmi_manager; }
 namespace game_events { struct event_context; }
 
 namespace pathfind { class manager; }
@@ -63,8 +62,8 @@ public:
 	bool& init_side_done() { return init_side_done_; }
 
 
-	game_events::wmi_container& get_wml_menu_items();
-	const game_events::wmi_container& get_wml_menu_items() const;
+	game_events::wmi_manager& get_wml_menu_items();
+	const game_events::wmi_manager& get_wml_menu_items() const;
 	int first_human_team_; //needed to initialize the viewpoint during setup
 	bool has_human_sides() const { return first_human_team_ != -1; }
 
@@ -103,5 +102,3 @@ public:
 	/// Checks if any of the sides leaders can recruit at a location
 	bool side_can_recruit_on(int side, map_location loc) const;
 };
-
-#endif

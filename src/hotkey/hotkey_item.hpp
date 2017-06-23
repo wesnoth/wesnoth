@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,15 +12,14 @@
    See the COPYING file for more details.
 */
 
-
-#ifndef HOTKEY_ITEM_HPP_INCLUDED
-#define HOTKEY_ITEM_HPP_INCLUDED
+#pragma once
 
 #include <SDL_events.h>
 #include <SDL.h>
 #include <memory>
 #include <vector>
 #include <string>
+#include <boost/algorithm/string.hpp>
 
 class config;
 class CVideo;
@@ -241,16 +240,22 @@ public:
 	/**
 	 * Initialise new instance of this class that has no key associated with is.
 	 */
-	hotkey_keyboard() : hotkey_base(), scancode_(SDL_SCANCODE_UNKNOWN)
+	hotkey_keyboard() : hotkey_base(), keycode_(SDLK_UNKNOWN), text_("")
 	{}
 
 	/**
-	 * Set the scancode associated with this class.
-	 * @param scancode The SDL_Scancode that this hotkey should be associated with
+	 * Set the keycode associated with this class.
+	 * @param keycode_ The SDL_Keycode that this hotkey should be associated with
 	 */
-	void set_scancode(SDL_Scancode scancode)
+	void set_keycode(SDL_Keycode keycode)
 	{
-		scancode_ = scancode;
+		keycode_ = keycode;
+	}
+
+	void set_text(std::string text)
+	{
+		text_ = text;
+		boost::algorithm::to_lower(text_);
 	}
 
 	/**
@@ -259,11 +264,12 @@ public:
 	 */
 	virtual bool valid() const
 	{
-		return scancode_ != SDL_SCANCODE_UNKNOWN;
+		return keycode_ != SDLK_UNKNOWN && text_ != "";
 	}
 
 protected:
-	SDL_Scancode scancode_;
+	SDL_Keycode keycode_;
+	std::string text_;
 
 	virtual void save_helper(config& cfg) const;
 	virtual const std::string get_name_helper() const;
@@ -376,7 +382,7 @@ void del_hotkey(const hotkey_ptr item);
  * @param id The command to bind to.
  * @param event The SDL_Event to base the creation on.
  */
-hotkey_ptr create_hotkey(const std::string &id, SDL_Event &event);
+hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event);
 
 /**
  * Iterate through the list of hotkeys and return a hotkey that matches
@@ -422,7 +428,7 @@ void clear_hotkeys();
  * "ctrl+l" or "n" or "mouse 1". The comman separated string is of the form "ctrl+l,n,mouse 1".
  * @return The comma separated string of hotkey names.
  */
-std::string get_names(std::string id);
+std::string get_names(const std::string& id);
 
 /**
  * Save the non-default hotkeys to the config.
@@ -430,8 +436,6 @@ std::string get_names(std::string id);
  */
 void save_hotkeys(config& cfg);
 
-hotkey_ptr show_binding_dialog(CVideo& video, const std::string& id);
+bool is_hotkeyable_event(const SDL_Event &event);
 
 }
-
-#endif

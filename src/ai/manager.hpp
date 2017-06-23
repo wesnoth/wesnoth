@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,11 +19,9 @@
  * @todo 1.9 AI Interface command to clear the history.
  */
 
-#ifndef AI_MANAGER_HPP_INCLUDED
-#define AI_MANAGER_HPP_INCLUDED
+#pragma once
 
 #include "config.hpp"                // for config, etc
-#include "global.hpp"
 #include "ai/game_info.hpp"                // for side_number, ai_ptr
 
 #include <deque>                        // for deque
@@ -64,7 +62,9 @@ public:
 	config to_config() const;
 
 	void modify_ai(const config& cfg);
-	void modify_side_ai_config(config cfg);
+
+
+	void append_ai(const config& cfg);
 
 
 	const std::string get_ai_overview();
@@ -429,18 +429,6 @@ public:
 	// SET active AI parameters
 	// =======================================================================
 
-
-	/**
-	 * Modifies AI parameters for active AI of the given @a side.
-	 * This function is provided for backward-compatibility with [modify_side][ai]...[/ai][/modify_side]
-	 * It can only add new facets to aspects
-	 * @param side side_number (1-based, as in game_info).
-	 * @param ai_parameters AI parameters to be modified.
-	 */
-	static void modify_active_ai_config_old_for_side ( side_number side, const config::const_child_itors &ai_parameters );
-
-
-
 	/**
 	 * Modifies AI parameters for active AI of the given @a side.
 	 * This function is a backend for [modify_ai] tag
@@ -449,6 +437,15 @@ public:
 	 */
 
 	static void modify_active_ai_for_side( ai::side_number side, const config &cfg );
+
+	/**
+	 * Appends AI parameters to active AI of the given @a side.
+	 * This function is a backend for [modify_side][ai] tag
+	 * @param side side_number (1-based, as in game_info).
+	 * @param cfg - content of [modify_side][ai] tag
+	 */
+
+	static void append_active_ai_for_side( ai::side_number side, const config &cfg );
 
 	// =======================================================================
 	// PROXY
@@ -539,5 +536,3 @@ private:
 };
 
 } //end of namespace ai
-
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -35,6 +35,24 @@ point drawing::calculate_best_size() const
 {
 	return best_size_ != point() ? best_size_
 									  : styled_widget::calculate_best_size();
+}
+
+void drawing::request_reduce_width(const unsigned maximum_width)
+{
+	if(best_size_ != point()) {
+		// This drawing is of fixed size, do nothing.
+	} else {
+		styled_widget::request_reduce_width(maximum_width);
+	}
+}
+
+void drawing::request_reduce_height(const unsigned maximum_height)
+{
+	if(best_size_ != point()) {
+		// This drawing is of fixed size, do nothing.
+	} else {
+		styled_widget::request_reduce_height(maximum_height);
+	}
 }
 
 void drawing::set_active(const bool /*active*/)
@@ -106,7 +124,7 @@ drawing_definition::resolution::resolution(const config& cfg)
 	 * original draw section is ignored, so send a dummy.
 	 */
 	static const config dummy("draw");
-	state.push_back(state_definition(dummy));
+	state.emplace_back(dummy);
 }
 
 // }---------- BUILDER -----------{
@@ -163,7 +181,7 @@ widget* builder_drawing::build() const
 
 	init_control(widget);
 
-	const game_logic::map_formula_callable& size = get_screen_size_variables();
+	const wfl::map_formula_callable& size = get_screen_size_variables();
 
 	const unsigned w = width(size);
 	const unsigned h = height(size);
@@ -172,7 +190,7 @@ widget* builder_drawing::build() const
 		widget->set_best_size(point(w, h));
 	}
 
-	widget->get_canvas().front().set_cfg(draw);
+	widget->set_drawing_data(draw);
 
 	DBG_GUI_G << "Window builder: placed drawing '" << id
 			  << "' with definition '" << definition << "'.\n";

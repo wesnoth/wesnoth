@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2009 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,16 +15,19 @@
 #include "game_initialization/lobby_data.hpp"
 
 #include "config.hpp"
-#include "game_preferences.hpp"
+#include "preferences/credentials.hpp"
+#include "preferences/game.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/exception.hpp"
 #include "terrain/type_data.hpp"
+#include "utils/general.hpp"
 #include "wml_exception.hpp"
 #include "version.hpp"
 
@@ -59,7 +62,7 @@ void chat_session::add_message(const time_t& timestamp,
 						   const std::string& user,
 						   const std::string& message)
 {
-	history_.push_back(chat_message(timestamp, user, message));
+	history_.emplace_back(timestamp, user, message);
 }
 
 
@@ -442,7 +445,7 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 	}
 
 	if(const config& game_req = game.find_child("addon", "id", local_item["addon_id"])) {
-		required_addon r = {local_item["addon_id"].str(), SATISFIED, ""};
+		required_addon r {local_item["addon_id"].str(), SATISFIED, ""};
 
 		// Local version
 		const version_info local_ver(local_item["addon_version"].str());

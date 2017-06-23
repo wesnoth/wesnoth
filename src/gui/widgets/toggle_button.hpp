@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_TOGGLE_BUTTON_HPP_INCLUDED
-#define GUI_WIDGETS_TOGGLE_BUTTON_HPP_INCLUDED
+#pragma once
 
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/selectable_item.hpp"
@@ -81,7 +80,6 @@ public:
 		return icon_name_;
 	}
 
-private:
 	/**
 	 * Possible states of the widget.
 	 *
@@ -96,6 +94,8 @@ private:
 		FOCUSED,
 		COUNT
 	};
+
+private:
 
 	void set_state(const state_t state);
 
@@ -179,5 +179,3 @@ private:
 // }------------ END --------------
 
 } // namespace gui2
-
-#endif

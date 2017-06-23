@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,8 +21,7 @@
  *
  **/
 
-#ifndef FILTER_CONTEXT_HPP_INCLUDED
-#define FILTER_CONTEXT_HPP_INCLUDED
+#pragma once
 
 #include <vector>
 
@@ -44,5 +43,3 @@ public:
 
 	virtual ~filter_context() {}
 };
-
-#endif

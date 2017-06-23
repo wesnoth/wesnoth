@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2016 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2017 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -69,7 +69,7 @@ default_ai_context_impl::~default_ai_context_impl()
 int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc, std::set<map_location> &checked_hexes)
 {
 	int ret = 0;
-	unit_map &units_ = *resources::units;
+	unit_map &units_ = resources::gameboard->units();
 	map_location adj[6];
 	get_adjacent_tiles(loc,adj);
 	for(size_t n = 0; n != 6; ++n) {
@@ -82,7 +82,7 @@ int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc,
 			if (u == units_.end()
 				|| (current_team().is_enemy(u->side())
 					&& u->invisible(adj[n], *resources::gameboard))
-				|| ((&resources::gameboard->teams()[u->side() - 1]) == &current_team()
+				|| ((&resources::gameboard->get_team(u->side()) == &current_team())
 					&& u->movement_left() > 0)) {
 				ret += 1;
 			}
@@ -132,7 +132,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 {
 
 	log_scope2(log_ai, "finding targets...");
-	unit_map &units_ = *resources::units;
+	unit_map &units_ = resources::gameboard->units();
 	unit_map::iterator leader = units_.find_leader(get_side());
 	const gamemap &map_ = resources::gameboard->map();
 	std::vector<team> teams_ = resources::gameboard->teams();
@@ -167,7 +167,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 			const double value = threat/double(threats.size());
 			for(std::set<map_location>::const_iterator i = threats.begin(); i != threats.end(); ++i) {
 				LOG_AI << "found threat target... " << *i << " with value: " << value << "\n";
-				targets.push_back(target(*i,value,target::TYPE::THREAT));
+				targets.emplace_back(*i,value,target::TYPE::THREAT);
 			}
 		}
 	}
@@ -215,7 +215,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 				LOG_AI << "found village target... " << *t
 					<< " with value: " << value
 					<< " distance: " << leader_distance << '\n';
-				targets.push_back(target(*t,value,target::TYPE::VILLAGE));
+				targets.emplace_back(*t,value,target::TYPE::VILLAGE);
 			}
 		}
 	}
@@ -231,7 +231,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 			    && !u->invisible(u->get_location(), *resources::gameboard)) {
 				assert(map_.on_board(u->get_location()));
 				LOG_AI << "found enemy leader (side: " << u->side() << ") target... " << u->get_location() << " with value: " << get_leader_value() << "\n";
-				targets.push_back(target(u->get_location(), get_leader_value(), target::TYPE::LEADER));
+				targets.emplace_back(u->get_location(), get_leader_value(), target::TYPE::LEADER);
 			}
 		}
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,8 +18,7 @@
  * MP wesnoth features like network traffic
  */
 
-#ifndef HOTKEY_HANDLER_MP_HPP_INCL_
-#define HOTKEY_HANDLER_MP_HPP_INCL_
+#pragma once
 
 #include "playmp_controller.hpp"
 #include "hotkey/hotkey_handler_sp.hpp"
@@ -41,5 +40,3 @@ public:
 	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const override;
 
 };
-
-#endif

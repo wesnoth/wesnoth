@@ -2,7 +2,7 @@ return {
     init = function()
         local priority_target = {}
 
-        local H = wesnoth.require "lua/helper.lua"
+        local H = wesnoth.require "helper"
         local W = H.set_wml_action_metatable {}
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
@@ -39,44 +39,26 @@ return {
             end
 
             -- Always delete the attacks aspect first, so that we do not end up with 100 copies of the facet
-            W.modify_ai {
-                side = wesnoth.current.side,
-                action = "try_delete",
-                path = "aspect[attacks].facet[limited_attack]"
-            }
+            wesnoth.delete_ai_component(wesnoth.current.side, "aspect[attacks].facet[limited_attack]")
 
             -- Also delete aggression, caution - for the same reason
-            W.modify_ai {
-                side = wesnoth.current.side,
-                action = "try_delete",
-                path = "aspect[aggression].facet[*]"
-            }
-            W.modify_ai {
-                side = wesnoth.current.side,
-                action = "try_delete",
-                path = "aspect[caution].facet[*]"
-            }
+            wesnoth.delete_ai_component(wesnoth.current.side, "aspect[aggression].facet[*]")
+            wesnoth.delete_ai_component(wesnoth.current.side, "aspect[caution].facet[*]")
 
             -- If the target can be attacked, set the attacks aspect accordingly
             if attack_locs[1] then
-                W.modify_ai {
-                    side = wesnoth.current.side,
-                    action = "add",
-                    path = "aspect[attacks].facet",
-                    { "facet", {
+                wesnoth.add_ai_component(wesnoth.current.side, "aspect[attacks].facet",
+                    {
                        name = "ai_default_rca::aspect_attacks",
                        id = "limited_attack",
                        invalidate_on_gamestate_change = "yes",
                        { "filter_enemy", { id = target_id } }
-                    } }
-                }
+                    }
+                )
 
                 -- We also want to set aggression=1 and caution=0,
                 -- otherwise there could be turns on which nothing happens
-                W.modify_side {
-                        side = wesnoth.current.side,
-                        { "ai", { aggression = 1, caution = 0 } }
-                }
+                wesnoth.append_ai{ aggression = 1, caution = 0 }
             end
 
             return 0

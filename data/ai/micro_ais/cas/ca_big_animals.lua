@@ -1,6 +1,6 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local LS = wesnoth.require "location_set"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local function get_big_animals(cfg)
@@ -60,7 +60,7 @@ function ca_big_animals:execution(cfg)
     -- Now find the one of these hexes that is closest to the goal
     local max_rating, best_hex = -9e99
     reach_map:iter( function(x, y, v)
-        local rating = - H.distance_between(x, y, goal.goal_x, goal.goal_y)
+        local rating = -wesnoth.map.distance_between(x, y, goal.goal_x, goal.goal_y)
 
         -- Proximity to an enemy unit is a plus
         local enemy_hp = 500

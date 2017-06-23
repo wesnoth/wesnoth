@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,6 +28,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "generators/map_generator.hpp"
+#include "lexical_cast.hpp"
 
 #include "utils/functional.hpp"
 
@@ -63,8 +64,8 @@ namespace dialogs
 
 REGISTER_DIALOG(editor_generate_map)
 
-editor_generate_map::editor_generate_map()
-	: map_generators_()
+editor_generate_map::editor_generate_map(std::vector<std::unique_ptr<map_generator>>& mg)
+	: map_generators_(mg)
 	, last_map_generator_(nullptr)
 	, current_map_generator_(0)
 	, random_seed_()
@@ -95,7 +96,7 @@ map_generator* editor_generate_map::get_selected_map_generator()
 {
 	assert(static_cast<size_t>(current_map_generator_)
 		   < map_generators_.size());
-	return map_generators_[current_map_generator_];
+	return map_generators_[current_map_generator_].get();
 }
 
 void editor_generate_map::select_map_generator(map_generator* mg)
@@ -121,7 +122,7 @@ void editor_generate_map::pre_show(window& window)
 
 		list.add_row(lrow);
 
-		if(gen == last_map_generator_) {
+		if(gen.get() == last_map_generator_) {
 			list.select_row(list.get_item_count() - 1);
 		}
 	}

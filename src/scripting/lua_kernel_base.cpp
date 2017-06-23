@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,14 +14,13 @@
 
 #include "scripting/lua_kernel_base.hpp"
 
-#include "global.hpp"
-
 #include "exceptions.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
+#include "gui/widgets/settings.hpp"
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"  // for lua_jailbreak_exception
-#include "random_new.hpp"
+#include "random.hpp"
 #include "seed_rng.hpp"
 
 #ifdef DEBUG_LUA
@@ -39,12 +38,15 @@
 
 #include "version.hpp"                  // for do_version_check, etc
 #include "video.hpp"
+#include "image.hpp"
 
+#include "formula/string_utils.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/functional.hpp"
 #include "utils/name_generator.hpp"
 #include "utils/markov_generator.hpp"
 #include "utils/context_free_grammar_generator.hpp"
+#include "variable.hpp" // for config_variable_set
 
 #include <cstring>
 #include <exception>
@@ -58,6 +60,7 @@
 #include "lua/lualib.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
+static lg::log_domain log_user("scripting/lua/user");
 #define DBG_LUA LOG_STREAM(debug, log_scripting_lua)
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
@@ -220,7 +223,7 @@ static int intf_name_generator(lua_State *L)
 static int intf_random(lua_State *L)
 {
 	if (lua_isnoneornil(L, 1)) {
-		double r = double(random_new::generator->next_random());
+		double r = double(randomness::generator->next_random());
 		double r_max = double(std::numeric_limits<uint32_t>::max());
 		lua_push(L, r / (r_max + 1));
 		return 1;
@@ -239,7 +242,7 @@ static int intf_random(lua_State *L)
 		if (min > max) {
 			return luaL_argerror(L, 1, "min > max");
 		}
-		lua_push(L, random_new::generator->get_random_int(min, max));
+		lua_push(L, randomness::generator->get_random_int(min, max));
 		return 1;
 	}
 }
@@ -249,6 +252,78 @@ static int intf_wml_matches_filter(lua_State* L)
 	config cfg = luaW_checkconfig(L, 1);
 	config filter = luaW_checkconfig(L, 2);
 	lua_pushboolean(L, cfg.matches(filter));
+	return 1;
+}
+
+/**
+* Logs a message
+* Arg 1: (optional) Logger
+* Arg 2: Message
+*/
+int intf_log(lua_State *L) {
+	const std::string& logger = lua_isstring(L, 2) ? luaL_checkstring(L, 1) : "";
+	std::string msg = lua_isstring(L, 2) ? luaL_checkstring(L, 2) : luaL_checkstring(L, 1);
+	if(msg.empty() || msg[msg.size() - 1] != '\n') {
+		msg += '\n';
+	}
+
+	if(logger == "err" || logger == "error") {
+		LOG_STREAM(err, log_user) << msg;
+	} else if(logger == "warn" || logger == "wrn" || logger == "warning") {
+		LOG_STREAM(warn, log_user) << msg;
+	} else if((logger == "debug" || logger == "dbg")) {
+		LOG_STREAM(debug, log_user) << msg;
+	} else {
+		LOG_STREAM(info, log_user) << msg;
+	}
+	return 0;
+}
+
+/**
+* Gets the dimension of an image.
+* - Arg 1: string.
+* - Ret 1: width.
+* - Ret 2: height.
+*/
+static int intf_get_image_size(lua_State *L) {
+	char const *m = luaL_checkstring(L, 1);
+	image::locator img(m);
+	if(!img.file_exists()) return 0;
+	surface s = get_image(img);
+	lua_pushinteger(L, s->w);
+	lua_pushinteger(L, s->h);
+	return 2;
+}
+
+/**
+* Returns the time stamp, exactly as [set_variable] time=stamp does.
+* - Ret 1: integer
+*/
+static int intf_get_time_stamp(lua_State *L) {
+	lua_pushinteger(L, SDL_GetTicks());
+	return 1;
+}
+
+static int intf_format(lua_State* L)
+{
+	config cfg = luaW_checkconfig(L, 2);
+	config_variable_set variables(cfg);
+	if(lua_isstring(L, 1)) {
+		std::string str = lua_tostring(L, 1);
+		lua_push(L, utils::interpolate_variables_into_string(str, variables));
+		return 1;
+	}
+	t_string str = luaW_checktstring(L, 1);
+	lua_push(L, utils::interpolate_variables_into_tstring(str, variables));
+	return 1;
+}
+
+template<bool conjunct>
+static int intf_format_list(lua_State* L)
+{
+	const t_string empty = luaW_checktstring(L, 1);
+	auto values = lua_check<std::vector<t_string>>(L, 2);
+	lua_push(L, (conjunct ? utils::format_conjunct_list : utils::format_disjunct_list)(empty, values));
 	return 1;
 }
 
@@ -276,7 +351,7 @@ lua_kernel_base::lua_kernel_base()
 	// Debug and OS are not, but most of their functions will be disabled below.
 	cmd_log_ << "Adding standard libs...\n";
 
-	static const luaL_Reg safe_libs[] = {
+	static const luaL_Reg safe_libs[] {
 		{ "",       luaopen_base   },
 		{ "table",  luaopen_table  },
 		{ "string", luaopen_string },
@@ -345,7 +420,7 @@ lua_kernel_base::lua_kernel_base()
 	// Add some callback from the wesnoth lib
 	cmd_log_ << "Registering basic wesnoth API...\n";
 
-	static luaL_Reg const callbacks[] = {
+	static luaL_Reg const callbacks[] {
 		{ "compare_versions",         &intf_compare_versions         		},
 		{ "have_file",                &lua_fileops::intf_have_file          },
 		{ "read_file",                &lua_fileops::intf_read_file          },
@@ -355,6 +430,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "set_dialog_active",        &lua_gui2::intf_set_dialog_active		},
 		{ "set_dialog_visible",       &lua_gui2::intf_set_dialog_visible    },
 		{ "add_dialog_tree_node",     &lua_gui2::intf_add_dialog_tree_node	},
+		{ "add_widget_definition",    &lua_gui2::intf_add_widget_definition },
 		{ "set_dialog_callback",      &lua_gui2::intf_set_dialog_callback	},
 		{ "set_dialog_canvas",        &lua_gui2::intf_set_dialog_canvas		},
 		{ "set_dialog_focus",         &lua_gui2::intf_set_dialog_focus      },
@@ -363,16 +439,25 @@ lua_kernel_base::lua_kernel_base()
 		{ "remove_dialog_item",       &lua_gui2::intf_remove_dialog_item    },
 		{ "dofile", 		      &dispatch<&lua_kernel_base::intf_dofile>           },
 		{ "require", 		      &dispatch<&lua_kernel_base::intf_require>          },
+		{ "kernel_type",	      &dispatch<&lua_kernel_base::intf_kernel_type>          },
 		{ "show_dialog",	      &video_dispatch<lua_gui2::show_dialog>   },
 		{ "show_menu",               &video_dispatch<lua_gui2::show_menu>  },
 		{ "show_message_dialog",     &video_dispatch<lua_gui2::show_message_dialog> },
 		{ "show_popup_dialog",       &video_dispatch<lua_gui2::show_popup_dialog>   },
+		{ "show_story",              &video_dispatch<lua_gui2::show_story>          },
+		{ "show_message_box",        &video_dispatch<lua_gui2::show_message_box>    },
 		{ "show_lua_console",	      &dispatch<&lua_kernel_base::intf_show_lua_console> },
 		{ "compile_formula",          &lua_formula_bridge::intf_compile_formula},
 		{ "eval_formula",             &lua_formula_bridge::intf_eval_formula},
 		{ "name_generator",           &intf_name_generator           },
 		{ "random",                   &intf_random                   },
 		{ "wml_matches_filter",       &intf_wml_matches_filter       },
+		{ "log",                      &intf_log                      },
+		{ "get_image_size",           &intf_get_image_size           },
+		{ "get_time_stamp",           &intf_get_time_stamp           },
+		{ "format",                   &intf_format                   },
+		{ "format_conjunct_list",     &intf_format_list<true>        },
+		{ "format_disjunct_list",     &intf_format_list<false>       },
 		{ nullptr, nullptr }
 	};
 
@@ -394,28 +479,33 @@ lua_kernel_base::lua_kernel_base()
 	lua_pushcfunction(L, &dispatch<&lua_kernel_base::intf_print>);
 	lua_setglobal(L, "print");
 
+	cmd_log_ << "Initializing package repository...\n";
 	// Create the package table.
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
 	lua_setfield(L, -2, "package");
 	lua_pop(L, 1);
+	lua_settop(L, 0);
+	lua_pushstring(L, "lua/package.lua");
+	int res = intf_require(L);
+	if(res != 1) {
+		cmd_log_ << "Error: Failed to initialize package repository. Falling back to less flexible C++ implementation.\n";
+	}
 
 	// Get some callbacks for map locations
-	cmd_log_ << "Adding map_location table...\n";
+	cmd_log_ << "Adding map table...\n";
 
-	static luaL_Reg const map_callbacks[] = {
+	static luaL_Reg const map_callbacks[] {
 		{ "get_direction",		&lua_map_location::intf_get_direction         		},
 		{ "vector_sum",			&lua_map_location::intf_vector_sum			},
+		{ "vector_diff",			&lua_map_location::intf_vector_diff			},
 		{ "vector_negation",		&lua_map_location::intf_vector_negation			},
-		{ "zero",			&lua_map_location::intf_vector_zero			},
 		{ "rotate_right_around_center",	&lua_map_location::intf_rotate_right_around_center	},
 		{ "tiles_adjacent",		&lua_map_location::intf_tiles_adjacent			},
 		{ "get_adjacent_tiles",		&lua_map_location::intf_get_adjacent_tiles		},
 		{ "distance_between",		&lua_map_location::intf_distance_between		},
 		{ "get_in_basis_N_NE",		&lua_map_location::intf_get_in_basis_N_NE		},
 		{ "get_relative_dir",		&lua_map_location::intf_get_relative_dir		},
-		{ "parse_direction",		&lua_map_location::intf_parse_direction			},
-		{ "write_direction",		&lua_map_location::intf_write_direction			},
 		{ nullptr, nullptr }
 	};
 
@@ -423,7 +513,23 @@ lua_kernel_base::lua_kernel_base()
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
 	luaL_setfuncs(L, map_callbacks, 0);
-	lua_setfield(L, -2, "map_location");
+	lua_setfield(L, -2, "map");
+	lua_pop(L, 1);
+
+	// Create the game_config variable with its metatable.
+	cmd_log_ << "Adding game_config table...\n";
+
+	lua_getglobal(L, "wesnoth");
+	lua_newuserdata(L, 0);
+	lua_createtable(L, 0, 3);
+	lua_pushcfunction(L, &dispatch<&lua_kernel_base::impl_game_config_get>);
+	lua_setfield(L, -2, "__index");
+	lua_pushcfunction(L, &dispatch<&lua_kernel_base::impl_game_config_set>);
+	lua_setfield(L, -2, "__newindex");
+	lua_pushstring(L, "game config");
+	lua_setfield(L, -2, "__metatable");
+	lua_setmetatable(L, -2);
+	lua_setfield(L, -2, "game_config");
 	lua_pop(L, 1);
 
 	// Add mersenne twister rng wrapper
@@ -432,7 +538,7 @@ lua_kernel_base::lua_kernel_base()
 
 	cmd_log_ << "Adding name generator metatable...\n";
 	luaL_newmetatable(L, Gen);
-	static luaL_Reg const generator[] = {
+	static luaL_Reg const generator[] {
 		{ "__call", &impl_name_generator_call},
 		{ "__gc", &impl_name_generator_collect},
 		{ nullptr, nullptr}
@@ -446,9 +552,9 @@ lua_kernel_base::lua_kernel_base()
 	cmd_log_ << "Loading ilua...\n";
 
 	lua_settop(L, 0);
+	luaW_getglobal(L, "wesnoth", "require");
 	lua_pushstring(L, "lua/ilua.lua");
-	int result = intf_require(L);
-	if (result == 1) {
+	if(protected_call(1, 1)) {
 		//run "ilua.set_strict()"
 		lua_pushstring(L, "set_strict");
 		lua_gettable(L, -2);
@@ -467,12 +573,15 @@ lua_kernel_base::lua_kernel_base()
 
 lua_kernel_base::~lua_kernel_base()
 {
+	for (const auto& pair : this->registered_widget_definitions_) {
+		gui2::remove_single_widget_definition(std::get<0>(pair), std::get<1>(pair));
+	}
 	lua_close(mState);
 }
 
 void lua_kernel_base::log_error(char const * msg, char const * context)
 {
-	ERR_LUA << context << ": " << msg;
+	ERR_LUA << context << ": " << msg << '\n';
 }
 
 void lua_kernel_base::throw_exception(char const * msg, char const * context)
@@ -506,17 +615,21 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_
 
 		std::string context = "When executing, ";
 		if (errcode == LUA_ERRRUN) {
-			context += "Lua runtime error";
+			context += "Lua runtime error: ";
 		} else if (errcode == LUA_ERRERR) {
-			context += "Lua error in attached debugger";
+			context += "Lua error in attached debugger: ";
 		} else if (errcode == LUA_ERRMEM) {
-			context += "Lua out of memory error";
+			context += "Lua out of memory error: ";
 		} else if (errcode == LUA_ERRGCMM) {
-			context += "Lua error in garbage collection metamethod";
+			context += "Lua error in garbage collection metamethod: ";
 		} else {
-			context += "unknown lua error";
+			context += "unknown lua error: ";
 		}
-		context +=  msg ? msg : "null string";
+		if(lua_isstring(L, -1)) {
+			context +=  msg ? msg : "null string";
+		} else {
+			context += lua_typename(L, lua_type(L, -1));
+		}
 
 		lua_pop(L, 1);
 
@@ -613,11 +726,15 @@ void lua_kernel_base::interactive_run(char const * prog) {
  */
 int lua_kernel_base::intf_dofile(lua_State* L)
 {
+	luaL_checkstring(L, 1);
+	lua_rotate(L, 1, -1);
 	if (lua_fileops::load_file(L) != 1) return 0;
 	//^ should end with the file contents loaded on the stack. actually it will call lua_error otherwise, the return 0 is redundant.
-
-	error_handler eh = std::bind(&lua_kernel_base::log_error, this, _1, _2 );
-	this->protected_call(0, LUA_MULTRET, eh);
+	lua_rotate(L, 1, 1);
+	// Using a non-protected call here appears to fix an issue in plugins.
+	// The protected call isn't technically necessary anyway, because this function is called from Lua code,
+	// which should already be in a protected environment.
+	lua_call(L, lua_gettop(L) - 1, LUA_MULTRET);
 	return lua_gettop(L);
 }
 
@@ -670,6 +787,33 @@ int lua_kernel_base::intf_require(lua_State* L)
 	// stack is now [packagename] [wesnoth] [package] [results]
 	return 1;
 }
+int lua_kernel_base::intf_kernel_type(lua_State* L)
+{
+	lua_push(L, my_name());
+	return 1;
+}
+int lua_kernel_base::impl_game_config_get(lua_State* L)
+{
+	char const *m = luaL_checkstring(L, 2);
+	return_int_attrib("base_income", game_config::base_income);
+	return_int_attrib("village_income", game_config::village_income);
+	return_int_attrib("village_support", game_config::village_support);
+	return_int_attrib("poison_amount", game_config::poison_amount);
+	return_int_attrib("rest_heal_amount", game_config::rest_heal_amount);
+	return_int_attrib("recall_cost", game_config::recall_cost);
+	return_int_attrib("kill_experience", game_config::kill_experience);
+	return_string_attrib("version", game_config::version);
+	return_bool_attrib("debug", game_config::debug);
+	return_bool_attrib("debug_lua", game_config::debug_lua);
+	return_bool_attrib("mp_debug", game_config::mp_debug);
+	return 0;
+}
+int lua_kernel_base::impl_game_config_set(lua_State* L)
+{
+	std::string err_msg = "unknown modifiable property of game_config: ";
+	err_msg += luaL_checkstring(L, 2);
+	return luaL_argerror(L, 2, err_msg.c_str());
+}
 /**
  * Loads the "package" package into the Lua environment.
  * This action is inherently unsafe, as Lua scripts will now be able to
@@ -682,6 +826,19 @@ void lua_kernel_base::load_package()
 	lua_pushcfunction(L, luaopen_package);
 	lua_pushstring(L, "package");
 	lua_call(L, 1, 0);
+}
+
+void lua_kernel_base::load_core()
+{
+	lua_State* L = mState;
+	lua_settop(L, 0);
+	cmd_log_ << "Loading core...\n";
+	luaW_getglobal(L, "wesnoth", "require");
+	lua_pushstring(L, "lua/core.lua");
+	if(!protected_call(1, 1)) {
+		cmd_log_ << "Error: Failed to load core.\n";
+	}
+	lua_settop(L, 0);
 }
 
 /**

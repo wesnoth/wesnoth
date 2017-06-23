@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,8 +22,6 @@
 #include "actions/move.hpp"
 
 #include "config.hpp"
-#include "game_display.hpp"
-#include "game_events/manager.hpp"
 #include "game_events/pump.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -57,7 +55,7 @@ static void create_jamming_map(std::map<map_location, int> & jamming,
 	jamming.clear();
 
 	// Build the map.
-	for (const unit &u : *resources::units)
+	for (const unit &u : resources::gameboard->units())
 	{
 		if ( u.jamming() < 1  ||  !view_team.is_enemy(u.side()) )
 			continue;
@@ -84,7 +82,7 @@ static bool can_see(const unit & viewer, const map_location & loc,
 	// Make sure we have a "jamming" map.
 	std::map<map_location, int> local_jamming;
 	if ( jamming == nullptr ) {
-		create_jamming_map(local_jamming, resources::gameboard->teams()[viewer.side()-1]);
+		create_jamming_map(local_jamming, resources::gameboard->get_team(viewer.side()));
 		jamming = &local_jamming;
 	}
 
@@ -161,8 +159,7 @@ inline void shroud_clearer::record_sighting(
 	const unit & seen, const map_location & seen_loc,
 	size_t sighter_id, const map_location & sighter_loc)
 {
-	sightings_.push_back(sight_data(seen.underlying_id(), seen_loc,
-	                                sighter_id, sighter_loc));
+	sightings_.emplace_back(seen.underlying_id(), seen_loc, sighter_id, sighter_loc);
 }
 
 
@@ -434,8 +431,8 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
                                 const clearer_info &viewer, bool instant)
 {
 	// Locate the unit in question.
-	unit_map::const_iterator find_it = resources::units->find(viewer.underlying_id);
-	const map_location & real_loc = find_it == resources::units->end() ?
+	unit_map::const_iterator find_it = resources::gameboard->units().find(viewer.underlying_id);
+	const map_location & real_loc = find_it == resources::gameboard->units().end() ?
 		                                map_location::null_location() :
 		                                find_it->get_location();
 
@@ -464,7 +461,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 bool shroud_clearer::clear_unit(const map_location &view_loc, const unit &viewer,
                                 bool can_delay, bool invalidate, bool instant)
 {
-	team & viewing_team = resources::gameboard->teams()[viewer.side()-1];
+	team & viewing_team = resources::gameboard->get_team(viewer.side());
 
 	// Abort if there is nothing to clear.
 	if ( !viewing_team.fog_or_shroud() )
@@ -496,7 +493,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, const unit &viewer
  */
 bool shroud_clearer::clear_dest(const map_location &dest, const unit &viewer)
 {
-	team & viewing_team = resources::gameboard->teams()[viewer.side()-1];
+	team & viewing_team = resources::gameboard->get_team(viewer.side());
 	// A pair of dummy variables needed to simplify some logic.
 	size_t enemies, friends;
 
@@ -548,7 +545,7 @@ void shroud_clearer::drop_events()
  */
 bool shroud_clearer::fire_events()
 {
-	const unit_map & units = *resources::units;
+	const unit_map & units = resources::gameboard->units();
 
 	// Possible/probable quick abort.
 	if ( sightings_.empty() )
@@ -660,7 +657,7 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
 	// Look for units that can be used as the second unit in sighted events.
 	std::vector<const unit *> second_units(teams_size, nullptr);
 	std::vector<size_t> distances(teams_size, UINT_MAX);
-	for (const unit & viewer : *resources::units) {
+	for (const unit & viewer : resources::gameboard->units()) {
 		const size_t index = viewer.side() - 1;
 		// Does viewer belong to a team for which we still need a unit?
 		if ( needs_event[index]  &&  distances[index] != 0 ) {
@@ -707,14 +704,14 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
  */
 void recalculate_fog(int side)
 {
-	team &tm = resources::gameboard->teams()[side - 1];
+	team &tm = resources::gameboard->get_team(side);
 
 	if (!tm.uses_fog())
 		return;
 
 	// Exclude currently seen units from sighted events.
 	std::set<map_location> visible_locs;
-	for (const unit &u : *resources::units) {
+	for (const unit &u : resources::gameboard->units()) {
 		const map_location & u_location = u.get_location();
 
 		if ( !tm.fogged(u_location) )
@@ -727,7 +724,7 @@ void recalculate_fog(int side)
 	resources::screen->invalidate_all();
 
 	shroud_clearer clearer;
-	for (const unit &u : *resources::units)
+	for (const unit &u : resources::gameboard->units())
 	{
 		if ( u.side() == side )
 			clearer.clear_unit(u.get_location(), u, tm, &visible_locs);
@@ -756,14 +753,14 @@ void recalculate_fog(int side)
  */
 bool clear_shroud(int side, bool reset_fog, bool fire_events)
 {
-	team &tm = resources::gameboard->teams()[side - 1];
+	team &tm = resources::gameboard->get_team(side);
 	if (!tm.uses_shroud() && !tm.uses_fog())
 		return false;
 
 	bool result = false;
 
 	shroud_clearer clearer;
-	for (const unit &u : *resources::units)
+	for (const unit &u : resources::gameboard->units())
 	{
 		if ( u.side() == side )
 			result |= clearer.clear_unit(u.get_location(), u, tm);

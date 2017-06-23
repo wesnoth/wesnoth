@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2005 - 2016 Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2017 Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef MULTIPLAYER_HPP_INCLUDED
-#define MULTIPLAYER_HPP_INCLUDED
+
+#pragma once
 
 #include "commandline_options.hpp"
 #include "connect_engine.hpp"
@@ -61,7 +61,7 @@ void start_client(CVideo& video, const config& game_config,
  * changes made.
  */
 bool goto_mp_connect(CVideo& video, ng::connect_engine& engine,
-	const config& game_config, wesnothd_connection* connection, const std::string& game_name);
+	const config& game_config, wesnothd_connection* connection);
 
 /**
  * Opens mp::wait screen and sets game state according to the
@@ -70,4 +70,3 @@ bool goto_mp_connect(CVideo& video, ng::connect_engine& engine,
 bool goto_mp_wait(CVideo& video, saved_game& state, const config& game_config, wesnothd_connection* connection, bool observe);
 
 }
-#endif

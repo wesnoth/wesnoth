@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Chris Beck <render787@gmail.com>
+   Copyright (C) 2014 - 2017 by Chris Beck <render787@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,8 +22,6 @@
  */
 
 #include "scripting/lua_common.hpp"
-
-#include "global.hpp"
 
 #include "config.hpp"
 #include "scripting/lua_unit.hpp"
@@ -134,6 +132,13 @@ static int impl_tstring_concat(lua_State *L)
 	tstring_concat_aux(L, *t, 1);
 	tstring_concat_aux(L, *t, 2);
 
+	return 1;
+}
+
+static int impl_tstring_len(lua_State* L)
+{
+	t_string* t = static_cast<t_string*>(lua_touserdata(L, 1));
+	lua_pushnumber(L, t->size());
 	return 1;
 }
 
@@ -385,7 +390,7 @@ std::string register_gettext_metatable(lua_State *L)
 {
 	luaL_newmetatable(L, gettextKey);
 
-	static luaL_Reg const callbacks[] = {
+	static luaL_Reg const callbacks[] {
 		{ "__call", 	    &impl_gettext},
 		{ nullptr, nullptr }
 	};
@@ -404,10 +409,11 @@ std::string register_tstring_metatable(lua_State *L)
 {
 	luaL_newmetatable(L, tstringKey);
 
-	static luaL_Reg const callbacks[] = {
+	static luaL_Reg const callbacks[] {
 		{ "__concat", 	    &impl_tstring_concat},
 		{ "__gc",           &impl_tstring_collect},
 		{ "__tostring",	    &impl_tstring_tostring},
+		{ "__len",          &impl_tstring_len},
 		{ "__lt",	        &impl_tstring_lt},
 		{ "__le",	        &impl_tstring_le},
 		{ "__eq",	        &impl_tstring_eq},
@@ -428,7 +434,7 @@ std::string register_vconfig_metatable(lua_State *L)
 {
 	luaL_newmetatable(L, vconfigKey);
 
-	static luaL_Reg const callbacks[] = {
+	static luaL_Reg const callbacks[] {
 		{ "__gc",           &impl_vconfig_collect},
 		{ "__index",        &impl_vconfig_get},
 		{ "__len",          &impl_vconfig_size},
@@ -632,11 +638,11 @@ bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
 		// Need this special check because luaW_tovconfig returns true in this case
 		return false;
 	}
-	
+
 	vconfig dummy_vcfg = vconfig::unconstructed_vconfig();
-	
+
 	index = lua_absindex(L, index);
-	
+
 	if (lua_istable(L, index) || luaW_tounit(L, index) || luaW_tovconfig(L, index, dummy_vcfg)) {
 		map_location result;
 		int x_was_num = 0, y_was_num = 0;
@@ -855,8 +861,7 @@ bool luaW_pushvariable(lua_State *L, variable_access_const& v)
 		else if(v.exists_as_container())
 		{
 			lua_newtable(L);
-			if (luaW_toboolean(L, 2))
-				luaW_filltable(L, v.as_container());
+			luaW_filltable(L, v.as_container());
 			return true;
 		}
 		else
@@ -900,7 +905,7 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 				if (luaW_toconfig(L, n, cfg)) {
 					return true;
 				}
-				// no break
+				FALLTHROUGH;
 			}
 		default:
 		default_explicit:
@@ -992,7 +997,15 @@ bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error)
 
 // Originally luaL_typerror, now deprecated.
 // Easier to define it for Wesnoth and not have to worry about it if we update Lua.
-int luaW_type_error (lua_State *L, int narg, const char *tname) {
+int luaW_type_error(lua_State *L, int narg, const char *tname) {
 	const char *msg = lua_pushfstring(L, "%s expected, got %s", tname, luaL_typename(L, narg));
+	return luaL_argerror(L, narg, msg);
+}
+
+// An alternate version which raises an error for a key in a table.
+// In this version, narg should refer to the stack index of the table rather than the stack index of the key.
+// kpath should be the key name or a string such as "key[idx].key2" specifying a path to the key.
+int luaW_type_error (lua_State *L, int narg, const char* kpath, const char *tname) {
+	const char *msg = lua_pushfstring(L, "%s expected for '%s', got %s", tname, kpath, luaL_typename(L, narg));
 	return luaL_argerror(L, narg, msg);
 }

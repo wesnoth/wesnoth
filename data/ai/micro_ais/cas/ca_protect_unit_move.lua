@@ -1,5 +1,5 @@
-local H = wesnoth.require "lua/helper.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local H = wesnoth.require "helper"
+local LS = wesnoth.require "location_set"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 
@@ -52,7 +52,7 @@ function ca_protect_unit_move:execution(cfg, data)
 
     local goal_distance_map = LS.create()
     reach_map:iter(function(x, y, data)
-        goal_distance_map:insert(x, y, H.distance_between(x, y, goal[1], goal[2]))
+        goal_distance_map:insert(x, y, wesnoth.map.distance_between(x, y, goal[1], goal[2]))
     end)
 
     -- Configuration parameters (no option to change these enabled at the moment)

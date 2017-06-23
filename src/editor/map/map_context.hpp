@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2016 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,10 +12,9 @@
    See the COPYING file for more details.
 */
 
-#ifndef EDITOR_MAP_CONTEXT_HPP_INCLUDED
-#define EDITOR_MAP_CONTEXT_HPP_INCLUDED
+#pragma once
 
-#include "editor_map.hpp"
+#include "editor/map/editor_map.hpp"
 #include "game_classification.hpp"
 #include "map/label.hpp"
 #include "mp_game_settings.hpp"
@@ -64,7 +63,7 @@ public:
 	 * empty, indicating a new map.
 	 * Marked "explicit" to avoid automatic conversions.
 	 */
-	explicit map_context(const editor_map& map, const display& disp, bool pure_map, const config& schedule);
+	explicit map_context(const editor_map& map, bool pure_map, const config& schedule);
 
 	/**
 	 * Create map_context from a map file. If the map cannot be loaded, an
@@ -74,7 +73,7 @@ public:
 	 * inside scenarios do not change the filename, but set the "embedded" flag
 	 * instead.
 	 */
-	map_context(const config& game_config, const std::string& filename, const display& disp);
+	map_context(const config& game_config, const std::string& filename);
 
 	/**
 	 * Map context destructor
@@ -98,12 +97,7 @@ public:
 	const editor_map& get_map() const { return map_; }
 
 	/** Adds a new side to the map */
-	void new_side() {
-		team t;
-		t.set_hidden(false);
-    	teams_.push_back(t);
-    	actions_since_save_++;
-    }
+	void new_side();
 
 	/** removes the last side from the scenario */
 	void remove_side() {
@@ -207,7 +201,7 @@ public:
 	void add_to_playlist(const sound::music_track& track) {
 
 		if (music_tracks_.find(track.id()) == music_tracks_.end())
-				music_tracks_.insert(std::pair<std::string, sound::music_track>(track.id(), track));
+				music_tracks_.emplace(track.id(), track);
 		else music_tracks_.erase(track.id());
 	}
 
@@ -297,6 +291,8 @@ public:
 	const std::string& get_id() const { return scenario_id_; }
 	const std::string& get_description() const { return scenario_description_; }
 	const std::string& get_name() const { return scenario_name_; }
+
+	const t_string get_default_context_name() const;
 
 	int get_xp_mod() const { return xp_mod_; }
 
@@ -519,5 +515,3 @@ public:
 
 
 } //end namespace editor
-
-#endif

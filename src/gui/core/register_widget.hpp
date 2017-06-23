@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef GUI_WIDGETS_DETAIL_REGISTER_TPP_INCLUDED
-#define GUI_WIDGETS_DETAIL_REGISTER_TPP_INCLUDED
+#pragma once
 
 /**
  * Registers a widget.
@@ -30,41 +29,28 @@
  * @param id                      Id of the widget
  * @param key                     The id to load if differs from id.
  */
-#define REGISTER_WIDGET3(type, id, key)                                        \
-	namespace                                                                  \
-	{                                                                          \
-                                                                               \
-	namespace ns_##type##id                                                    \
-	{                                                                          \
-                                                                               \
-		struct register_helper                                                 \
-		{                                                                      \
-			register_helper()                                                  \
-			{                                                                  \
-				register_widget(#id,                                           \
-								std::bind(load_widget_definitions<type>,       \
-											_1,                                \
-											_2,                                \
-											_3,                                \
-											key));                             \
-                                                                               \
-				register_builder_widget(                                       \
-						#id,                                                   \
-						std::bind(                                             \
-								build_widget<implementation::builder_##id>,    \
-								_1));                                          \
-			}                                                                  \
-		};                                                                     \
-                                                                               \
-		static struct register_helper register_helper;                         \
-	}                                                                          \
+#define REGISTER_WIDGET3(type, id, key)                                                                                \
+	namespace                                                                                                          \
+	{                                                                                                                  \
+	namespace ns_##type##id                                                                                            \
+	{                                                                                                                  \
+		struct register_helper                                                                                         \
+		{                                                                                                              \
+			register_helper()                                                                                          \
+			{                                                                                                          \
+				register_widget(#id, [](const config& cfg) { return std::make_shared<type>(cfg); }, key);              \
+                                                                                                                       \
+				register_builder_widget(#id, &build_widget<implementation::builder_##id>);                             \
+			}                                                                                                          \
+		};                                                                                                             \
+                                                                                                                       \
+		static struct register_helper register_helper;                                                                 \
+	}                                                                                                                  \
 	}
 
 /**
  * Wrapper for REGISTER_WIDGET3.
  *
- * "Calls" REGISTER_WIDGET3(id_definition, id, _4)
+ * "Calls" REGISTER_WIDGET3(id_definition, id, nullptr)
  */
-#define REGISTER_WIDGET(id) REGISTER_WIDGET3(id##_definition, id, _4)
-
-#endif
+#define REGISTER_WIDGET(id) REGISTER_WIDGET3(id##_definition, id, nullptr)

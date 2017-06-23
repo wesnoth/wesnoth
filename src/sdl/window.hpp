@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2014 - 2016 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2014 - 2017 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef SDL_WINDOW_HPP_INCLUDED
-#define SDL_WINDOW_HPP_INCLUDED
+#pragma once
 
 /**
  * @file
@@ -151,6 +150,8 @@ public:
 	 */
 	void set_minimum_size(int min_w, int min_h);
 
+	int get_display_index();
+
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 
 	/**
@@ -158,15 +159,12 @@ public:
 	 */
 	operator SDL_Window*();
 
-
-private:
 	/**
 	 * Conversion operator to a SDL_Renderer*.
-	 *
-	 * @todo Evaluate whether the function should become public or not.
 	 */
 	operator SDL_Renderer*();
 
+private:
 	/***** ***** ***** Members. ***** ***** *****/
 
 	/** The @ref SDL_Window we own. */
@@ -177,6 +175,3 @@ private:
 };
 
 } // namespace sdl
-
-
-#endif

@@ -55,14 +55,27 @@ option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
 option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)" ON)
 option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
+if(NOT CMAKE_CROSSCOMPILING)
+	try_run(IEEE754_TEST_RETURN_CODE IEEE754_TEST_COMPILED ${CMAKE_BINARY_DIR} ${CMAKE_SOURCE_DIR}/src/compile_time_tests/ieee_754.cpp
+		CMAKE_FLAGS "-DCMAKE_CXX_STANDARD=11" COMPILE_OUTPUT_VARIABLE IEEE754_TEST_COMPILE_OUTPUT)
+	if(NOT IEEE754_TEST_COMPILED)
+		message(WARNING "Failed to compile the IEEE 754 test. Skipping it.")
+		message(${IEEE754_TEST_COMPILE_OUTPUT})
+	elseif(NOT IEEE754_TEST_RETURN_CODE EQUAL 0)
+		message(FATAL_ERROR "Your platform does not represent floating point numbers in the IEEE 754 format.")
+	endif()
+else()
+	message(WARNING "You are cross-compiling. Skipping IEEE 754 test.")
+endif()
+
 if(DEFINED ENV{TRAVIS})
 	find_package(SDL2 2.0.2 REQUIRED)
 else()
 	find_package(SDL2 2.0.4 REQUIRED)
 endif()
 
-find_package(Boost 1.36 REQUIRED COMPONENTS iostreams program_options regex system thread)
-find_package(Boost 1.40 REQUIRED COMPONENTS random)
+find_package(Crypto 1.0 REQUIRED)
+find_package(Boost 1.48 REQUIRED COMPONENTS iostreams program_options regex system thread random)
 
 # no, gettext executables are not required when NLS is deactivated
 find_package(Gettext)
@@ -137,8 +150,8 @@ if(NOT DEFINED ENABLE_DISPLAY_REVISION)
 	# the display of revision numbers by default.
 	execute_process(
 		COMMAND
-			${CMAKE_SOURCE_DIR}/utils/autorevision
-				-th
+			${CMAKE_SOURCE_DIR}/utils/autorevision.sh
+				-t h
 				> ${CMAKE_CURRENT_BINARY_DIR}/revision.dummy
 		WORKING_DIRECTORY
 			${CMAKE_SOURCE_DIR}
@@ -462,8 +475,6 @@ check_compiler_has_flag(
 	HAS_COMPILER_FLAG_WCONDITIONAL_INITIALIZED
 )
 
-set(CXX_FLAGS_PROJECT "${CXX_FLAGS_PROJECT} -include boost-patched/bind/arg.hpp")
-
 ### Set the final compiler flags.
 
 set(COMPILER_FLAGS "${CXX_FLAGS_PROJECT}")
@@ -625,13 +636,14 @@ if(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
 endif(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
 if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package( SDL2_mixer 2.0.0 REQUIRED )
-	find_package( SDL2_ttf 2.0.8 REQUIRED )
+	find_package( SDL2_ttf 2.0.12 REQUIRED )
 	if(NOT MSVC)
 		find_package(VorbisFile REQUIRED)
 		find_package( PkgConfig REQUIRED )
+		pkg_check_modules( CAIRO REQUIRED cairo>=1.10 )
 		pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.21.3 )
 		pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.1 )
-	pkg_check_modules( SYSTEMD systemd )
+		pkg_check_modules( SYSTEMD systemd )
 	endif(NOT MSVC)
 
 endif(ENABLE_GAME OR ENABLE_TESTS)
@@ -680,7 +692,7 @@ if(ENABLE_GAME)
 endif(ENABLE_GAME)
 
 if(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_TOOLS OR ENABLE_TESTS)
-	find_package( Boost 1.44 REQUIRED COMPONENTS filesystem )
+	find_package( Boost 1.48 REQUIRED COMPONENTS filesystem )
 
 	find_package( Boost 1.48 REQUIRED COMPONENTS locale )
 endif(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_TOOLS OR ENABLE_TESTS)

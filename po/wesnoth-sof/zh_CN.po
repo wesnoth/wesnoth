@@ -1,13 +1,13 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2015 Wesnoth development team
+# Copyright (C) 2005-2017 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.12\n"
+"Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2016-11-05 23:31 UTC\n"
-"PO-Revision-Date: 2015-02-07 13:11+0800\n"
+"POT-Creation-Date: 2017-05-29 21:55+0200\n"
+"PO-Revision-Date: 2017-05-23 22:54+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 1.7.4\n"
+"X-Generator: Poedit 2.0.2\n"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
@@ -34,17 +34,13 @@ msgstr "战士"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:18
-#, fuzzy
-#| msgid "(Normal)"
 msgid "Normal"
-msgstr "（普通）"
+msgstr "普通"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:19
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "（挑战）"
+msgstr "挑战"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:19
@@ -53,10 +49,8 @@ msgstr "铁甲兵"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:20
-#, fuzzy
-#| msgid "(Difficult)"
 msgid "Difficult"
-msgstr "（困难）"
+msgstr "困难"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:20
@@ -65,17 +59,6 @@ msgstr "领主"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:23
-#, fuzzy
-#| msgid ""
-#| "The land of Wesnoth’s banner bold\n"
-#| "Comes not from its own land;\n"
-#| "It comes from Dwarfdom, grim and old\n"
-#| "Made by a runesmith’s hand.\n"
-#| "So now I tell from whence it came —\n"
-#| "The Fire-sceptre great —\n"
-#| "And of the makers of the same,\n"
-#| "Their tale I now relate...\n"
-#| "\n"
 msgid ""
 "<i>The land of Wesnoth’s banner bold\n"
 "Comes not from its own land;\n"
@@ -87,14 +70,12 @@ msgid ""
 "Their tale I now relate...</i>\n"
 "\n"
 msgstr ""
-"韦诺之信，源出异邦，\n"
+"<b>韦诺之信，源出异邦，\n"
 "矮人之国，古旧之乡。\n"
-"\n"
 "符文术师，手艺非常，\n"
 "往昔旧事，历历难忘。\n"
-"\n"
 "追本溯源，且听我讲，\n"
-"伟哉大哉，圣火权杖。\n"
+"伟哉大哉，圣火权杖……</b>\n"
 "\n"
 
 #. [campaign]: id=Sceptre_of_Fire
@@ -164,13 +145,13 @@ msgstr "哈德里克二世"
 msgid "Glildur"
 msgstr "基利达"
 
+#. [side]
+#. [side]: type=Elvish Captain, id=Glindur
 #. [side]: type=Elvish Marshal, id=Gaenlar
 #. [side]: type=Elvish Marshal, id=Glinan
 #. [side]: type=Elvish Captain, id=Kalnar
-#. [side]: type=Elvish Captain, id=Glildur
-#. [side]: type=Elvish Captain, id=Glindur
-#. [side]
 #. [side]: type=Elvish Marshal, id=Crintil
+#. [side]: type=Elvish Captain, id=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:76
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:42
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:41
@@ -400,10 +381,6 @@ msgstr ""
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:262
-#, fuzzy
-#| msgid ""
-#| "Uh, no, wait! Lets talk business — how much will you pay us to do this "
-#| "for you?"
 msgid ""
 "Uh, no, wait! Let’s talk business — how much will you pay us to do this for "
 "you?"
@@ -532,7 +509,7 @@ msgid ""
 "I was never among those who agreed to that treaty. Not all of us elves are "
 "as low as Kalenz, or make deals with those who betrayed us."
 msgstr ""
-"我从来就不是那些承认协约的家伙的一份子。并不是我们所有的精灵都象卡伦茨那么低"
+"我从来就不是那些承认协约的家伙的一份子。并不是我们所有的精灵都象卡雷兹那么低"
 "贱，也不是所有的精灵都会和叛徒缔约。"
 
 #. [message]: speaker=Haldric II
@@ -1347,7 +1324,7 @@ msgstr "死开！你们这些鸟！不然我就把你们变成空中烤鸟！"
 msgid ""
 "He doesn’t want to talk to the gryphons, apparently. I think we’ll have to "
 "get someone there he will talk to..."
-msgstr "貌似他不怎么想搭理狮鹫……我觉得我们得找个他愿意搭理的人去……"
+msgstr "看上去他不怎么想搭理狮鹫。我觉得我们得找个他愿意搭理的人去……"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:510
@@ -2523,12 +2500,6 @@ msgstr ""
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:271
-#, fuzzy
-#| msgid ""
-#| "You don’t have authority over me, Durstorn. And I wouldn’t give the "
-#| "Sceptre to them even if you did. It’s not yours to give, its mine, and "
-#| "Rugnur’s, and Baglur’s. Krawg’s done more for its existence than you "
-#| "have! And yet, you still get the profits from selling it to Haldric."
 msgid ""
 "You don’t have authority over me, Durstorn. And I wouldn’t give the Sceptre "
 "to them even if you did. It’s not yours to give, it’s mine, and Rugnur’s, "
@@ -2536,8 +2507,8 @@ msgid ""
 "you still get the profits from selling it to Haldric."
 msgstr ""
 "你无权命令我，达司拓恩。就算你有这权力，我也不会把权杖给他们。这要给的东西不"
-"是你的，这是我的，是拉格纳的，是巴格拉的。就是克拉格对它的贡献都比你多！而"
-"且，你还是可以把它卖给哈德里克换来收益。"
+"是你的，这是我的，是拉格纳的，是巴格拉的。就是克拉格对它的贡献都比你多！即便"
+"如此，把它卖给哈德里克换来的收益还是你的。"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:275
@@ -2666,11 +2637,6 @@ msgstr "……然后向南骑，直到抵达你们的某个边境岗哨。"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:426
-#, fuzzy
-#| msgid ""
-#| "I’m not going to do that, its suicide! And in any case, I’ve been with "
-#| "you for ten years, almost as long as I was in the Wesnothian army; I’d "
-#| "prefer to fight with you."
 msgid ""
 "I’m not going to do that, it’s suicide! And in any case, I’ve been with you "
 "for ten years, almost as long as I was in the Wesnothian army; I’d prefer to "
@@ -2701,11 +2667,6 @@ msgstr "出来投降！矮人！不然就死在洞里，看着办吧。"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:472
-#, fuzzy
-#| msgid ""
-#| "Alanin, ride as fast as you can south. Tell Haldric we are heading "
-#| "northeast, towards the old eastern mines, and if he wants his precious "
-#| "sceptre he should send forces to meet us there as soon as he can!"
 msgid ""
 "Alanin, ride south as fast as you can. Tell Haldric we are heading "
 "northeast, towards the old eastern mines, and if he wants his precious "
@@ -3552,7 +3513,7 @@ msgid ""
 "of the Northlands, unfound but undestroyed, moved around by Orcs who never "
 "understood its true power."
 msgstr ""
-"哈德里克二世身后历经数代，却都没能找到权杖，直到黑暗女王艾斯威勒时期。在这段"
+"哈德里克二世身后历经数代，却都没能找到权杖，直到黑暗女王艾什薇尔时期。在这段"
 "岁月里，它在北陆洞穴之中，没被发现，但也没被毁坏。兽人们将它四处移动，但他们"
 "却未能认识到权杖真正的力量。"
 
@@ -3609,11 +3570,6 @@ msgstr "国王"
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:21
 msgid "King of Wesnoth."
 msgstr "韦诺之王。"
-
-#. [attack]: type=blade
-#: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:25
-msgid "sword"
-msgstr "剑"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:22

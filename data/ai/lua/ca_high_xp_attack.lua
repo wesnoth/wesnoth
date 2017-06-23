@@ -1,6 +1,7 @@
-local H = wesnoth.require "lua/helper.lua"
+local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local LS = wesnoth.require "lua/location_set.lua"
+local LS = wesnoth.require "location_set"
+local M = wesnoth.map
 
 -- Evaluation process:
 --
@@ -57,7 +58,7 @@ function ca_attack_highxp:evaluation(cfg, data)
                 local potential_target = false
                 local ind_attackers, ind_other_units = {}, {}
                 for i_u,unit in ipairs(units) do
-                    if (H.distance_between(enemy.x, enemy.y, unit.x, unit.y) <= unit.moves + 1) then
+                    if (M.distance_between(enemy.x, enemy.y, unit.x, unit.y) <= unit.moves + 1) then
                         if (unit.level >= XP_to_levelup) then
                             potential_target = true
                             table.insert(ind_attackers, i_u)

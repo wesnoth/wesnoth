@@ -1,7 +1,7 @@
 
-local helper = wesnoth.require "lua/helper.lua"
-local utils = wesnoth.require "lua/wml-utils.lua"
-local location_set = wesnoth.require "lua/location_set.lua"
+local helper = wesnoth.require "helper"
+local utils = wesnoth.require "wml-utils"
+local location_set = wesnoth.require "location_set"
 local _ = wesnoth.textdomain "wesnoth"
 
 local function log(msg, level)
@@ -12,7 +12,7 @@ local function get_image(cfg, speaker)
 	local image = cfg.image
 	local left_side = true
 
-	if speaker and (image == nil or image == "") then
+	if speaker and (image == nil or image == "") and (cfg.second_image == nil or cfg.second_image == "") then
 		image = speaker.portrait
 	end
 
@@ -191,7 +191,7 @@ local function get_speaker(cfg)
 	return speaker
 end
 
-local function message_user_choice(cfg, speaker, options, text_input)
+local function message_user_choice(cfg, speaker, options, text_input, sound, voice)
 	local image, left_side = get_image(cfg, speaker)
 	local caption = get_caption(cfg, speaker)
 
@@ -234,7 +234,26 @@ local function message_user_choice(cfg, speaker, options, text_input)
 	end
 
 	return function()
+		if sound then wesnoth.play_sound(sound) end
+		if voice then
+			local speech = {
+				id = "wml_message_speaker",
+				sounds = voice,
+				loops = 0,
+				delay = 0,
+			}
+			if speaker then
+				speech.x = speaker.x
+				speech.y = speaker.y
+			end
+			wesnoth.add_sound_source(speech)
+		end
+
 		local option_chosen, ti_content = wesnoth.show_message_dialog(msg_cfg, options, text_input)
+
+		if voice then
+			wesnoth.remove_sound_source("wml_message_speaker")
+		end
 
 		if option_chosen == -2 then -- Pressed Escape (only if no input)
 			wesnoth.skip_messages()
@@ -326,7 +345,7 @@ function wesnoth.wml_actions.message(cfg)
 		-- Sanity checks on side number and controller
 		for side in utils.split(sides_for) do
 			side = tonumber(side)
-			if side > 0 and side < #wesnoth.sides and wesnoth.sides[side].controller == "human" then
+			if side > 0 and side < #wesnoth.sides and wesnoth.sides[side].controller == "human" and wesnoth.sides[side].is_local then
 				show_for_side = true
 				break
 			end
@@ -354,16 +373,14 @@ function wesnoth.wml_actions.message(cfg)
 	else
 		-- Check ~= false, because the default if omitted should be true
 		if cfg.scroll ~= false then
-			wesnoth.scroll_to_tile(speaker.x, speaker.y)
+			wesnoth.scroll_to_tile(speaker.x, speaker.y, false, false, true)
 		end
 
 		wesnoth.highlight_hex(speaker.x, speaker.y)
 		wesnoth.fire("redraw")
 	end
 
-	if cfg.sound then wesnoth.play_sound(cfg.sound) end
-
-	local msg_dlg = message_user_choice(cfg, speaker, options, text_input)
+	local msg_dlg = message_user_choice(cfg, speaker, options, text_input, cfg.sound, cfg.voice)
 
 	local option_chosen
 	if not has_input then

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2016 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2012 - 2017 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,16 +16,15 @@
  * Manages all the palettes in the editor.
  */
 
-#ifndef PALETTE_MANAGER_H_INCLUDED
-#define PALETTE_MANAGER_H_INCLUDED
+#pragma once
 
-#include "common_palette.hpp"
+#include "editor/palette/common_palette.hpp"
 
-#include "empty_palette.hpp"
-#include "terrain_palettes.hpp"
-#include "unit_palette.hpp"
-#include "item_palette.hpp"
-#include "location_palette.hpp"
+#include "editor/palette/empty_palette.hpp"
+#include "editor/palette/terrain_palettes.hpp"
+#include "editor/palette/unit_palette.hpp"
+#include "editor/palette/item_palette.hpp"
+#include "editor/palette/location_palette.hpp"
 
 namespace editor {
 
@@ -50,7 +49,7 @@ public:
 	bool can_scroll_down();
 
 	void scroll_top();
-	void resrote_palete_bg(bool scroll_top);
+	void restore_palette_bg(bool scroll_top);
 	void scroll_bottom();
 
 //TODO
@@ -90,5 +89,3 @@ public:
 };
 
 }
-
-#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,8 +11,8 @@
 
    See the COPYING file for more details.
 */
-#ifndef VIDEO_HPP_INCLUDED
-#define VIDEO_HPP_INCLUDED
+
+#pragma once
 
 #include "events.hpp"
 #include "exceptions.hpp"
@@ -24,22 +24,7 @@
 
 class surface;
 
-//possible flags when setting video modes
-#define SDL_APPMOUSEFOCUS	0x01		/**< The app has mouse coverage */
-#define SDL_APPINPUTFOCUS	0x02		/**< The app has input focus */
-#define SDL_APPACTIVE		0x04		/**< The application is active */
-
-
-surface& get_video_surface();
-
-
 SDL_Rect screen_area();
-
-
-
-//which areas of the screen will be updated when the buffer is flipped?
-void update_rect(size_t x, size_t y, size_t w, size_t h);
-void update_rect(const SDL_Rect& rect);
 
 class CVideo {
 public:
@@ -64,14 +49,14 @@ public:
 
 	static CVideo& get_singleton() { return *singleton_; }
 
-	bool non_interactive();
+	bool non_interactive() const;
 
 	const static int DefaultBpp = 32;
 
 	/**
 	 * Initializes a new window, taking into account any preiously saved states.
 	 */
-	bool init_window();
+	void init_window();
 
 	void setMode( int x, int y, const MODE_EVENT mode );
 
@@ -91,12 +76,11 @@ public:
 
 	std::pair<int,int> current_resolution();
 
-	//did the mode change, since the last call to the modeChanged() method?
-	bool modeChanged();
-
 	//functions to get the dimensions of the current video-mode
 	int getx() const;
 	int gety() const;
+
+	std::pair<float, float> get_dpi_scale_factor() const;
 
 	//blits a surface with black as alpha
 	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect=nullptr, SDL_Rect* clip_rect=nullptr);
@@ -160,11 +144,6 @@ public:
 	void update_framebuffer();
 
 	/**
-	 * Wrapper for CVideo::get_singleton().window_state.
-	 */
-	Uint8 window_state();
-
-	/**
 	 * Sets the title of the main window.
 	 *
 	 * @param title               The new title for the window.
@@ -177,6 +156,9 @@ public:
 	 * @param icon                The new icon for the window.
 	 */
 	void set_window_icon(surface& icon);
+
+	/** Clear the screen contents */
+	void clear_screen();
 
 	sdl::window *get_window();
 
@@ -201,9 +183,6 @@ private:
 	};
 
 	void initSDL();
-
-	bool mode_changed_;
-
 
 	//if there is no display at all, but we 'fake' it for clients
 	bool fake_screen_;
@@ -265,4 +244,3 @@ protected:
 };
 void trigger_full_redraw();
 }
-#endif

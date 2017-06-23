@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,15 +17,11 @@
  * Map-generator for caves.
  */
 
-#include "global.hpp"
-
 #include "generators/cave_map_generator.hpp"
-#include "config_assign.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "serialization/string_utils.hpp"
-#include "util.hpp"
 #include "seed_rng.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -97,12 +93,12 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 	, res_(params.cfg_.child_or_empty("settings"))
 	, rng_() //initialises with rand()
 {
-	res_.add_child("event", config_of
-		("name", "start")
-		("message", config_of
-			("message", "scenario_generation=cave is deprecated and will be removed soon.")
-		)
-	);
+	res_.add_child("event", config {
+		"name", "start",
+		"message", config {
+			"message", "scenario_generation=cave is deprecated and will be removed soon.",
+		},
+	});
 	uint32_t seed = randomseed.get_ptr() ? *randomseed.get_ptr() : seed_rng::next_seed();
 	rng_.seed(seed);
 	LOG_NG << "creating random cave with seed: " << seed << '\n';
@@ -212,7 +208,7 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 
 			assert(itor->second < chambers_.size());
 
-			passages_.push_back(passage(new_chamber.center, chambers_[itor->second].center, p));
+			passages_.emplace_back(new_chamber.center, chambers_[itor->second].center, p);
 		}
 	}
 }
@@ -282,7 +278,7 @@ struct passage_path_calculator : pathfind::cost_calculator
 	passage_path_calculator(const t_translation::ter_map& mapdata,
 	                        const t_translation::terrain_code & wall,
 	                        double laziness, size_t windiness,
-							boost::random::mt19937& rng) :
+							std::mt19937& rng) :
 		map_(mapdata), wall_(wall), laziness_(laziness), windiness_(windiness), rng_(rng)
 	{}
 
@@ -292,7 +288,7 @@ private:
 	t_translation::terrain_code wall_;
 	double laziness_;
 	size_t windiness_;
-	boost::random::mt19937& rng_;
+	std::mt19937& rng_;
 };
 
 double passage_path_calculator::cost(const map_location& loc, const double) const

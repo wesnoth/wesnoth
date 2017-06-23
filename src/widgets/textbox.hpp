@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2016 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#ifndef TEXTBOX_HPP_INCLUDED
-#define TEXTBOX_HPP_INCLUDED
+#pragma once
 
 #include "serialization/unicode.hpp"
 #include "font/constants.hpp"
@@ -105,7 +104,7 @@ private:
 
 	void pass_event_to_target(const SDL_Event& event);
 
-	void draw_cursor(int pos, CVideo &video) const;
+	void draw_cursor(int pos) const;
 	void update_text_cache(bool reset = false, const color_t& color =font::NORMAL_COLOR);
 	surface add_text_line(const ucs4::string& text, const color_t& color =font::NORMAL_COLOR);
 	bool is_selection();
@@ -121,5 +120,3 @@ private:
 };
 
 }
-
-#endif
