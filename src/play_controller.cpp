@@ -52,6 +52,7 @@
 #include "save_blocker.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
+#include "show_dialog.hpp" //gui::in_dialog
 #include "sound.hpp"
 #include "soundsource.hpp"
 #include "statistics.hpp"
@@ -585,39 +586,8 @@ bool play_controller::enemies_visible() const
 	return false;
 }
 
-void play_controller::enter_textbox()
-{
-	if(menu_handler_.get_textbox().active() == false) {
-		return;
-	}
-
-	const std::string str = menu_handler_.get_textbox().box()->text();
-	const unsigned int team_num = current_side();
-	events::mouse_handler& mousehandler = mouse_handler_;
-
-	switch(menu_handler_.get_textbox().mode()) {
-	case gui::TEXTBOX_SEARCH:
-		menu_handler_.do_search(str);
-		menu_handler_.get_textbox().close(*gui_);
-		break;
-	case gui::TEXTBOX_MESSAGE:
-		menu_handler_.do_speak();
-		menu_handler_.get_textbox().close(*gui_);  //need to close that one after executing do_speak() !
-		break;
-	case gui::TEXTBOX_COMMAND:
-		menu_handler_.get_textbox().close(*gui_);
-		menu_handler_.do_command(str);
-		break;
-	case gui::TEXTBOX_AI:
-		menu_handler_.get_textbox().close(*gui_);
-		menu_handler_.do_ai_formula(str, team_num, mousehandler);
-		break;
-	default:
-		menu_handler_.get_textbox().close(*gui_);
-		ERR_DP << "unknown textbox mode" << std::endl;
-	}
-}
-
+// TODO: implement in GUI2 command console dialog
+#if 0
 void play_controller::tab()
 {
 	gui::TEXTBOX_MODE mode = menu_handler_.get_textbox().mode();
@@ -677,6 +647,7 @@ void play_controller::tab()
 
 	menu_handler_.get_textbox().tab(dictionary);
 }
+#endif
 
 team& play_controller::current_team()
 {
@@ -754,22 +725,6 @@ game_classification& play_controller::get_classification()
 game_display& play_controller::get_display()
 {
 	return *gui_;
-}
-
-bool play_controller::have_keyboard_focus()
-{
-	return !menu_handler_.get_textbox().active();
-}
-
-void play_controller::process_focus_keydown_event(const SDL_Event& event)
-{
-	if(event.key.keysym.sym == SDLK_ESCAPE) {
-		menu_handler_.get_textbox().close(*gui_);
-	} else if(event.key.keysym.sym == SDLK_TAB) {
-		tab();
-	} else if(event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER) {
-		enter_textbox();
-	}
 }
 
 void play_controller::process_keydown_event(const SDL_Event& event)

@@ -77,7 +77,6 @@ protected:
 	virtual void init_gui() override;
 
 	const cursor::setter cursor_setter_;
-	gui::floating_textbox textbox_info_;
 
 	replay_network_sender replay_sender_;
 	playturn_network_adapter network_reader_;

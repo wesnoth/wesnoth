@@ -16,7 +16,7 @@
 #pragma once
 
 #include "chat_events.hpp"
-#include "floating_textbox.hpp"
+#include "game_display.hpp"
 #include "lua_jailbreak_exception.hpp"
 #include "units/map.hpp"
 
@@ -48,7 +48,6 @@ public:
 	menu_handler(game_display* gui, play_controller& pc, const config& game_config);
 	virtual ~menu_handler();
 
-	gui::floating_textbox& get_textbox();
 	void set_gui(game_display* gui)
 	{
 		gui_ = gui;
@@ -110,10 +109,10 @@ public:
 
 	///@return Whether or not the recruit was successful
 	bool do_recruit(const std::string& name, int side_num, const map_location& last_hex);
-	void do_speak();
+	void do_speak(const std::string& message);
 	void do_search(const std::string& new_search);
 	void do_command(const std::string& str);
-	void do_ai_formula(const std::string& str, int side_num, mouse_handler& mousehandler);
+	void do_ai_formula(const std::string& str, int side_num);
 	void send_to_server(const config& cfg) override;
 
 	game_state& gamestate() const;
@@ -145,7 +144,6 @@ private:
 
 	const config& game_config_;
 
-	gui::floating_textbox textbox_info_;
 	std::string last_search_;
 	map_location last_search_hit_;
 };
