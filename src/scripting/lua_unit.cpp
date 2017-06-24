@@ -416,9 +416,9 @@ static int impl_unit_set(lua_State *L)
 			return 0;
 		}
 		const char* v = luaL_checkstring(L, 3);
-		if(strcmp(m, "loyal") == 0) {
+		if((strcmp(v, "loyal") == 0) || (strcmp(v, "free") == 0)) {
 			u.set_upkeep(unit::upkeep_loyal());
-		} else if(strcmp(m, "full") == 0) {
+		} else if(strcmp(v, "full") == 0) {
 			u.set_upkeep(unit::upkeep_full());
 		} else {
 			std::string err_msg = "unknown upkeep value of unit: ";
