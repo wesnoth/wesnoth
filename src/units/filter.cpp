@@ -80,7 +80,7 @@ public:
 	virtual bool matches(const unit & /*u*/, const map_location & /*loc*/, const unit *) const {
 		return true;
 	}
-	virtual std::vector<const unit *> all_matches_on_map(unsigned max_matches) const {
+	virtual std::vector<const unit *> all_matches_on_map(unsigned max_matches, const map_location* = nullptr, const unit* = nullptr) const {
 		std::vector<const unit *> ret;
 		for(const unit & u : fc_.get_disp_context().units()) {
 			--max_matches;
@@ -168,7 +168,7 @@ public:
 	}
 
 	virtual bool matches(const unit & u, const map_location & loc, const unit * u2) const;
-	virtual std::vector<const unit *> all_matches_on_map(unsigned max_matches) const;
+	virtual std::vector<const unit *> all_matches_on_map(unsigned max_matches, const map_location* loc = nullptr, const unit* u2 = nullptr) const;
 	virtual unit_const_ptr first_match_on_map() const;
 	config to_config() const {
 		return vcfg.get_config();
@@ -722,10 +722,10 @@ bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_l
 	return true;
 }
 
-std::vector<const unit *> basic_unit_filter_impl::all_matches_on_map(unsigned max_matches) const {
+std::vector<const unit *> basic_unit_filter_impl::all_matches_on_map(unsigned max_matches, const map_location* loc, const unit* u2) const {
 	std::vector<const unit *> ret;
 	for (const unit & u : fc_.get_disp_context().units()) {
-		if (matches(u, u.get_location(), nullptr)) {
+		if (matches(u, loc ? *loc : u.get_location(), u2)) {
 			if(max_matches == 0) {
 				return ret;
 			}
