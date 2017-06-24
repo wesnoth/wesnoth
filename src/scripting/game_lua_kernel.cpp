@@ -2808,6 +2808,7 @@ static int intf_do_unsynced(lua_State *L)
 /**
  * Gets all the locations matching a given filter.
  * - Arg 1: WML table.
+ * - Arg 2: Optional reference unit (teleport_unit)
  * - Ret 1: array of integer pairs.
  */
 int game_lua_kernel::intf_get_locations(lua_State *L)
@@ -2817,7 +2818,11 @@ int game_lua_kernel::intf_get_locations(lua_State *L)
 	std::set<map_location> res;
 	filter_context & fc = game_state_;
 	const terrain_filter t_filter(filter, &fc);
-	t_filter.get_locations(res, true);
+	if(luaW_isunit(L, 2)) {
+		t_filter.get_locations(res, *luaW_tounit(L, 2), true);
+	} else {
+		t_filter.get_locations(res, true);
+	}
 
 	lua_createtable(L, res.size(), 0);
 	int i = 1;
@@ -2867,6 +2872,7 @@ int game_lua_kernel::intf_get_villages(lua_State *L)
  * Matches a location against the given filter.
  * - Arg 1: location.
  * - Arg 2: WML table.
+ * - Arg 3: Optional reference unit (teleport_unit)
  * - Ret 1: boolean.
  */
 int game_lua_kernel::intf_match_location(lua_State *L)
@@ -2881,7 +2887,11 @@ int game_lua_kernel::intf_match_location(lua_State *L)
 
 	filter_context & fc = game_state_;
 	const terrain_filter t_filter(filter, &fc);
-	lua_pushboolean(L, t_filter.match(loc));
+	if(luaW_isunit(L, 3)) {
+		lua_pushboolean(L, t_filter.match(loc, *luaW_tounit(L, 3)));
+	} else {
+		lua_pushboolean(L, t_filter.match(loc));
+	}
 	return 1;
 }
 

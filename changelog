@@ -15,6 +15,8 @@ Version 1.13.8+dev:
    * Warnings for using deprecated Lua functions now only appear in debug mode.
    * wesnoth.game_config is now accessible in application and mapgen kernels,
      though some of its contents are missing.
+   * New extra argument to wesnoth.match_location and wesnoth.get_locations
+     allows specifying the teleport_unit.
  * Multiplayer:
    * When set to remember your password, Wesnoth now encrypts it. It is still
      possible to obtain the password from preferences, but it's no longer as
