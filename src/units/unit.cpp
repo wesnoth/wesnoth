@@ -102,7 +102,7 @@ namespace
 		"canrecruit", "extra_recruit", "x", "y", "placement",
 		"parent_type", "description", "usage", "halo", "ellipse",
 		"upkeep", "random_traits", "generate_name",
-		"profile", "small_profile",
+		"profile", "small_profile", "fire_event",
 		"passable", "overwrite", "location_id",
 		// Useless attributes created when saving units to WML:
 		"flag_rgb", "language_name", "image", "image_icon"
