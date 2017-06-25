@@ -44,23 +44,28 @@ import pywmlx
 def commandline(args):
     parser = argparse.ArgumentParser(
         description='Generate .po from WML/lua file list.',
-        usage='''wmlxgettext --domain=DOMAIN [--directory=START_PATH]
+        usage='''wmlxgettext --domain=DOMAIN -o OUTPUT_FILE
+                   [--directory=START_PATH]
                    [--recursive] [--initialdomain=INITIALDOMAIN]
                    [--package-version=PACKAGE_VERSION]
-                   [--no-text-colors] [--fuzzy] [--warnall] [-o OUTPUT_FILE]
+                   [--no-text-colors] [--fuzzy] [--warnall]
                    FILE1 FILE2 ... FILEN'''
     )
     parser.add_argument(
         '--version',
         action='version',
-        version='wmlxgettext 2016.10.03.py3'
+        version='wmlxgettext 2017.06.25.py3'
     )
     parser.add_argument(
         '-o',
+        required=True,
         default=None,
         dest='outfile',
-        help= ('Destination file. By default the output '
-               'will be printed on stdout')
+        help= ('Destination file. In some special situation you could want to '
+               'write the output to STDOUT write an actual file. In that case '
+               'you can use "-o -" to write the pot file to STDOUT on purpose '
+               '(wich it is something you normally would avoid, becouse it can '
+               'lead to encoding problems). [**REQUIRED ARGUMENT**]')
     )
     parser.add_argument(
         '--domain', 
@@ -156,16 +161,12 @@ def main():
     sentlist = dict()
     fileno = 0
     fdebug = None
+    if args.outfile == '-':
+        args.outfile = None
     if args.debugmode:
         fdebug = open('debug.txt', 'w', encoding='utf-8')
     pywmlx.statemachine.setup(sentlist, args.initdom, args.domain, 
                               args.warnall, fdebug)
-    if args.warnall is True and args.outfile is None:
-        pywmlx.wmlwarn('command line warning', 'Writing the output to stdout '
-                       '(and then eventually redirect that output to a file) '
-                       'is a deprecated usage. Please, consider to use the '
-                       '"-o <outfile.po>" option, instead of using the '
-                       'output redirection')
     filelist = None
     if args.recursive is False and args.filelist is None:
         pywmlx.wmlerr("bad command line", "FILELIST must not be empty. "
