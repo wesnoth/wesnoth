@@ -426,9 +426,8 @@ public:
 	T operator()(t_string const &)     const { return def_; }
 	T operator()(const std::string& s) const
 	{
-		utils::string_view formula_prefix("formula:");
-		if (boost::starts_with(s, formula_prefix)) {
-			return formula_handler_(s.substr(formula_prefix.size()));
+		if(s.size() >= 2 && s[0] == '(') {
+			return formula_handler_(s);
 		}
 		return lexical_cast_default<T>(s, def_);
 	}
@@ -448,16 +447,16 @@ T get_single_ability_value(const config::attribute_value& v, T def, const map_lo
 	return v.apply_visitor(make_get_ability_value_visitor(def, [&](const std::string& s) {
 		
 			try {
-				wfl::map_formula_callable callable;
-
 				assert(resources::units);
 				auto u_itor = resources::units->find(sender_loc);
-				if(u_itor != resources::units->end()) {
-					callable.add("sender", wfl::variant(std::make_shared<wfl::unit_callable>(*u_itor)));
+
+				if(u_itor == resources::units->end()) {
+					return def;
 				}
+				wfl::map_formula_callable callable(std::make_shared<wfl::unit_callable>(*u_itor));
 				u_itor = resources::units->find(receiver_loc);
 				if(u_itor != resources::units->end()) {
-					callable.add("receiver", wfl::variant(std::make_shared<wfl::unit_callable>(*u_itor)));
+					callable.add("other", wfl::variant(std::make_shared<wfl::unit_callable>(*u_itor)));
 				}
 				return formula_handler(wfl::formula(s), callable);
 			} catch(wfl::formula_error& e) {
@@ -469,7 +468,7 @@ T get_single_ability_value(const config::attribute_value& v, T def, const map_lo
 }
 
 template<typename TComp>
-std::pair<int,map_location> unit_ability_list::highest_impl(const std::string& key, int def, const TComp& comp) const
+std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& key, int def, const TComp& comp) const
 {
 	if ( cfgs_.empty() ) {
 		return std::make_pair(def, map_location());
@@ -503,8 +502,8 @@ std::pair<int,map_location> unit_ability_list::highest_impl(const std::string& k
 	return std::make_pair(flat + stack, best_loc);
 }
 
-template std::pair<int, map_location> unit_ability_list::highest_impl<std::less<int>>(const std::string& key, int def, const std::less<int>& comp) const;
-template std::pair<int, map_location> unit_ability_list::highest_impl<std::greater<int>>(const std::string& key, int def, const std::greater<int>& comp) const;
+template std::pair<int, map_location> unit_ability_list::get_extremum<std::less<int>>(const std::string& key, int def, const std::less<int>& comp) const;
+template std::pair<int, map_location> unit_ability_list::get_extremum<std::greater<int>>(const std::string& key, int def, const std::greater<int>& comp) const;
 
 /*
  *

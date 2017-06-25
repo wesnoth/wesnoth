@@ -59,15 +59,15 @@ public:
 	// Implemented in unit_abilities.cpp
 	std::pair<int, map_location> highest(const std::string& key, int def=0) const
 	{
-		return highest_impl(key, def, std::less<int>());
+		return get_extremum(key, def, std::less<int>());
 	}
 	std::pair<int, map_location> lowest(const std::string& key, int def=0) const
 	{
-		return highest_impl(key, def, std::greater<int>());
+		return get_extremum(key, def, std::greater<int>());
 	}
 
 	template<typename TComp>
-	std::pair<int, map_location> highest_impl(const std::string& key, int def, const TComp& comp) const;
+	std::pair<int, map_location> get_extremum(const std::string& key, int def, const TComp& comp) const;
 
 	// The following make this class usable with standard library algorithms and such
 	typedef std::vector<unit_ability>::iterator       iterator;
