@@ -2092,7 +2092,9 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		return 0; // Don't fire event when unit is only erase
 	}
 
-	if(unit_arg != 1 || luaW_toboolean(L, 3)) {
+	// Fire event if using the deprecated version or if the final argument is not false
+	// If the final boolean argument is omitted, the actual final argument (the unit or location) will always yield true.
+	if(unit_arg != 1 || luaW_toboolean(L, -1)) {
 		play_controller_.pump().fire("unit_placed", loc);
 	}
 	return 0;
