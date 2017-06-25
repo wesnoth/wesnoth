@@ -53,7 +53,7 @@ public:
 	void add_unit(const config &cfg, const vconfig* vcfg = nullptr);
 
 private:
-	void post_create(const map_location &loc, const unit &new_unit, bool anim);
+	void post_create(const map_location &loc, const unit &new_unit, bool anim, bool fire_event);
 
 	bool add_to_recall_;
 	bool discover_;

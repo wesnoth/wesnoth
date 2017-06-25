@@ -175,6 +175,7 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 
 	const std::string& id =(cfg)["id"];
 	bool animate = temp_cfg["animate"].to_bool();
+	bool fire_event = temp_cfg["fire_event"].to_bool(true);
 	temp_cfg.remove_attribute("animate");
 
 	unit_ptr recall_list_element = team_.recall_list().find_if_matches_id(id);
@@ -187,7 +188,7 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 			//add the new unit to map
 			board_->units().replace(loc, new_unit);
 			LOG_NG << "inserting unit for side " << new_unit->side() << "\n";
-			post_create(loc,*(board_->units().find(loc)),animate);
+			post_create(loc,*(board_->units().find(loc)),animate,fire_event);
 		}
 		else if ( add_to_recall_ ) {
 			//add to recall list
@@ -201,7 +202,7 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 		if ( loc.valid() ) {
 			board_->units().replace(loc, recall_list_element);
 			LOG_NG << "inserting unit from recall list for side " << recall_list_element->side()<< " with id="<< id << "\n";
-			post_create(loc,*(board_->units().find(loc)),animate);
+			post_create(loc,*(board_->units().find(loc)),animate,fire_event);
 			//if id is not empty, delete units with this ID from recall list
 			team_.recall_list().erase_if_matches_id( id);
 		}
@@ -213,7 +214,7 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 }
 
 
-void unit_creator::post_create(const map_location &loc, const unit &new_unit, bool anim)
+void unit_creator::post_create(const map_location &loc, const unit &new_unit, bool anim, bool fire_event)
 {
 
 	if (discover_) {
@@ -231,7 +232,7 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 	}
 
 	// Only fire the events if it's safe; it's not if we're in the middle of play_controller::reset_gamestate()
-	if (resources::lua_kernel != nullptr) {
+	if (fire_event && resources::lua_kernel != nullptr) {
 		resources::game_events->pump().fire("unit_placed", loc);
 	}
 
