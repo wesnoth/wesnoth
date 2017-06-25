@@ -15,6 +15,9 @@ Version 1.13.8+dev:
    * Warnings for using deprecated Lua functions now only appear in debug mode.
    * wesnoth.game_config is now accessible in application and mapgen kernels,
      though some of its contents are missing.
+   * New extra argument to wesnoth.match_location and wesnoth.get_locations
+     allows specifying the teleport_unit.
+   * Support the extra wesnoth.match_unit arguments also in wesnoth.get_units
  * Multiplayer:
    * When set to remember your password, Wesnoth now encrypts it. It is still
      possible to obtain the password from preferences, but it's no longer as
@@ -32,6 +35,18 @@ Version 1.13.8+dev:
  * Miscellaneous and Bug Fixes:
    * Add --report/-R command line switch for printing the same report from the
      Game Version dialog's clipboard function to stdout.
+ * WFL Engine
+   * Add owner key to terrain space callable, for villages
+   * Location formulas in [tunnel] now have a teleport_unit variable
+   * Fix a crash when attempting to call a non-existent function
+   * The following previously FormulaAI-exclusive functions are now also available
+     in filter formulas (SUF, SLF, SSF, SWF):
+	 adjacent_locs, location_in_radius, get_unit_type, unit_at, defense_on,
+	 chance_to_hit, movement_cost
+   * New builtin functions for manipulating locations (available to all formulas):
+     adjacent_locs, are_adjacent, relative_dir, direction_from, rotate_loc_around
+   * New enemy_of function checks if its second argument is an enemy of the first
+     Arguments can be side or unit objects, or integer side indices (1..n)
  * WML Engine
    * If ai_algorithm is used in [modify_side][ai], it now replaces the whole AI
      with the contents of [modify_side][ai], instead of appending these parameters.
@@ -46,6 +61,8 @@ Version 1.13.8+dev:
    * Fix some hotkeys not working (issues #1737 and #1769)
    * New vision_cost and jamming_cost keys in SUF
    * Integer SUF keys (eg level) now accept a list of ranges
+   * Fix $other_unit variable in SUF not being available in nested [and] [or] [not]
+   * Unit ability values can now be specified with WFL
 
 Version 1.13.8:
   * Campaigns:

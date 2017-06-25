@@ -1463,6 +1463,80 @@ private:
 	}
 };
 
+class adjacent_locs_function : public function_expression {
+public:
+	adjacent_locs_function(const args_list& args)
+		: function_expression("adjacent_locs", args, 1, 1) {}
+
+private:
+	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
+		const map_location loc = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "adjacent_locs:location")).convert_to<location_callable>()->loc();
+		map_location adj[6];
+		get_adjacent_tiles(loc, adj);
+
+		std::vector<variant> v;
+		for(int n = 0; n != 6; ++n) {
+			v.emplace_back(std::make_shared<location_callable>(adj[n]));
+		}
+
+		return variant(v);
+	}
+};
+
+class are_adjacent_function : public function_expression {
+public:
+	are_adjacent_function(const args_list& args)
+		: function_expression("are_adjacent", args, 2, 2) {}
+
+private:
+	variant execute(const formula_callable& variables, formula_debugger* fdb) const {
+		const map_location loc1 = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "are_adjacent:location_A")).convert_to<location_callable>()->loc();
+		const map_location loc2 = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "are_adjacent:location_B")).convert_to<location_callable>()->loc();
+		return variant(tiles_adjacent(loc1, loc2) ? 1 : 0);
+	}
+};
+
+class relative_dir_function : public function_expression {
+public:
+	relative_dir_function(const args_list& args)
+		: function_expression("relative_dir", args, 2, 2) {}
+
+private:
+	variant execute(const formula_callable& variables, formula_debugger* fdb) const {
+		const map_location loc1 = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "relative_dir:location_A")).convert_to<location_callable>()->loc();
+		const map_location loc2 = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "relative_dir:location_B")).convert_to<location_callable>()->loc();
+		return variant(map_location::write_direction(loc1.get_relative_dir(loc2)));
+	}
+};
+
+class direction_from_function : public function_expression {
+public:
+	direction_from_function(const args_list& args)
+		: function_expression("direction_from", args, 2, 3) {}
+
+private:
+	variant execute(const formula_callable& variables, formula_debugger* fdb) const {
+		const map_location loc = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "direction_from:location")).convert_to<location_callable>()->loc();
+		const std::string dir_str = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "direction_from:dir")).as_string();
+		int n = args().size() == 3 ? args()[2]->evaluate(variables, add_debug_info(fdb, 2, "direction_from:count")).as_int() : 1;
+		return variant(std::make_shared<location_callable>(loc.get_direction(map_location::parse_direction(dir_str), n)));
+	}
+};
+
+class rotate_loc_around_function : public function_expression {
+public:
+	rotate_loc_around_function(const args_list& args)
+		: function_expression("rotate_loc_around", args, 2, 3) {}
+
+private:
+	variant execute(const formula_callable& variables, formula_debugger* fdb) const {
+		const map_location center = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "direction_from:center")).convert_to<location_callable>()->loc();
+		const map_location loc = args()[0]->evaluate(variables, add_debug_info(fdb, 1, "direction_from:location")).convert_to<location_callable>()->loc();
+		int n = args().size() == 3 ? args()[2]->evaluate(variables, add_debug_info(fdb, 2, "direction_from:count")).as_int() : 1;
+		return variant(std::make_shared<location_callable>(loc.rotate_right_around_center(center, n)));
+	}
+};
+
 
 class type_function : public function_expression {
 public:
@@ -1582,11 +1656,7 @@ function_expression_ptr user_formula_function::generate_function_expression(cons
 	return function_expression_ptr(new formula_function_expression(name_, args, formula_, precondition_, args_));
 }
 
-function_symbol_table::function_symbol_table(function_symbol_table* parent) : parent(parent) {}
-
-function_symbol_table::~function_symbol_table() {
-	if(parent) delete parent;
-}
+function_symbol_table::function_symbol_table(std::shared_ptr<function_symbol_table> parent) : parent(parent ? parent : get_builtins()) {}
 
 void function_symbol_table::add_function(const std::string& name, formula_function_ptr fcn)
 {
@@ -1600,9 +1670,11 @@ expression_ptr function_symbol_table::create_function(const std::string& fn, con
 		return i->second->generate_function_expression(args);
 	}
 
-	expression_ptr res((parent ? parent : get_builtins())->create_function(fn, args));
-	if(res) {
-		return res;
+	if(parent) {
+		expression_ptr res(parent->create_function(fn, args));
+		if(res) {
+			return res;
+		}
 	}
 
 	throw formula_error("Unknown function: " + fn, "", "", 0);
@@ -1613,8 +1685,6 @@ std::set<std::string> function_symbol_table::get_function_names() const
 	std::set<std::string> res;
 	if(parent) {
 		res = parent->get_function_names();
-	} else if(this != get_builtins()) {
-		res = get_builtins()->get_function_names();
 	}
 	for(functions_map::const_iterator iter = custom_formulas_.begin(); iter != custom_formulas_.end(); ++iter ) {
 		res.insert((*iter).first);
@@ -1622,84 +1692,87 @@ std::set<std::string> function_symbol_table::get_function_names() const
 	return res;
 }
 
-#define FUNCTION(name) functions_table.add_function(#name, \
-			formula_function_ptr(new builtin_formula_function<name##_function>(#name)))
-
-function_symbol_table* function_symbol_table::get_builtins() {
-	static function_symbol_table functions_table;
+std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins() {
+	static function_symbol_table functions_table(builtins_tag);
 
 	if(functions_table.empty()) {
+		functions_table.parent = nullptr;
 		using namespace builtins;
-		FUNCTION(debug);
-		FUNCTION(dir);
-		FUNCTION(if);
-		FUNCTION(switch);
-		FUNCTION(abs);
-		FUNCTION(min);
-		FUNCTION(max);
-		FUNCTION(choose);
-		FUNCTION(debug_float);
-		FUNCTION(debug_print);
-		FUNCTION(debug_profile);
-		FUNCTION(wave);
-		FUNCTION(sort);
-		FUNCTION(contains_string);
-		FUNCTION(find_string);
-		FUNCTION(reverse);
-		FUNCTION(filter);
-		FUNCTION(find);
-		FUNCTION(map);
-		FUNCTION(zip);
-		FUNCTION(take_while);
-		FUNCTION(reduce);
-		FUNCTION(sum);
-		FUNCTION(head);
-		FUNCTION(tail);
-		FUNCTION(size);
-		FUNCTION(null);
-		FUNCTION(ceil);
-		FUNCTION(floor);
-		FUNCTION(trunc);
-		FUNCTION(frac);
-		FUNCTION(sgn);
-		FUNCTION(round);
-		FUNCTION(as_decimal);
-		FUNCTION(pair);
-		FUNCTION(loc);
-		FUNCTION(distance_between);
-		FUNCTION(index_of);
-		FUNCTION(keys);
-		FUNCTION(values);
-		FUNCTION(tolist);
-		FUNCTION(tomap);
-		FUNCTION(substring);
-		FUNCTION(replace);
-		FUNCTION(length);
-		FUNCTION(concatenate);
-		FUNCTION(sin);
-		FUNCTION(cos);
-		FUNCTION(tan);
-		FUNCTION(asin);
-		FUNCTION(acos);
-		FUNCTION(atan);
-		FUNCTION(sqrt);
-		FUNCTION(cbrt);
-		FUNCTION(root);
-		FUNCTION(log);
-		FUNCTION(exp);
-		FUNCTION(pi);
-		FUNCTION(hypot);
-		FUNCTION(type);
+		DECLARE_WFL_FUNCTION(debug);
+		DECLARE_WFL_FUNCTION(dir);
+		DECLARE_WFL_FUNCTION(if);
+		DECLARE_WFL_FUNCTION(switch);
+		DECLARE_WFL_FUNCTION(abs);
+		DECLARE_WFL_FUNCTION(min);
+		DECLARE_WFL_FUNCTION(max);
+		DECLARE_WFL_FUNCTION(choose);
+		DECLARE_WFL_FUNCTION(debug_float);
+		DECLARE_WFL_FUNCTION(debug_print);
+		DECLARE_WFL_FUNCTION(debug_profile);
+		DECLARE_WFL_FUNCTION(wave);
+		DECLARE_WFL_FUNCTION(sort);
+		DECLARE_WFL_FUNCTION(contains_string);
+		DECLARE_WFL_FUNCTION(find_string);
+		DECLARE_WFL_FUNCTION(reverse);
+		DECLARE_WFL_FUNCTION(filter);
+		DECLARE_WFL_FUNCTION(find);
+		DECLARE_WFL_FUNCTION(map);
+		DECLARE_WFL_FUNCTION(zip);
+		DECLARE_WFL_FUNCTION(take_while);
+		DECLARE_WFL_FUNCTION(reduce);
+		DECLARE_WFL_FUNCTION(sum);
+		DECLARE_WFL_FUNCTION(head);
+		DECLARE_WFL_FUNCTION(tail);
+		DECLARE_WFL_FUNCTION(size);
+		DECLARE_WFL_FUNCTION(null);
+		DECLARE_WFL_FUNCTION(ceil);
+		DECLARE_WFL_FUNCTION(floor);
+		DECLARE_WFL_FUNCTION(trunc);
+		DECLARE_WFL_FUNCTION(frac);
+		DECLARE_WFL_FUNCTION(sgn);
+		DECLARE_WFL_FUNCTION(round);
+		DECLARE_WFL_FUNCTION(as_decimal);
+		DECLARE_WFL_FUNCTION(pair);
+		DECLARE_WFL_FUNCTION(loc);
+		DECLARE_WFL_FUNCTION(distance_between);
+		DECLARE_WFL_FUNCTION(adjacent_locs);
+		DECLARE_WFL_FUNCTION(are_adjacent);
+		DECLARE_WFL_FUNCTION(relative_dir);
+		DECLARE_WFL_FUNCTION(direction_from);
+		DECLARE_WFL_FUNCTION(rotate_loc_around);
+		DECLARE_WFL_FUNCTION(index_of);
+		DECLARE_WFL_FUNCTION(keys);
+		DECLARE_WFL_FUNCTION(values);
+		DECLARE_WFL_FUNCTION(tolist);
+		DECLARE_WFL_FUNCTION(tomap);
+		DECLARE_WFL_FUNCTION(substring);
+		DECLARE_WFL_FUNCTION(replace);
+		DECLARE_WFL_FUNCTION(length);
+		DECLARE_WFL_FUNCTION(concatenate);
+		DECLARE_WFL_FUNCTION(sin);
+		DECLARE_WFL_FUNCTION(cos);
+		DECLARE_WFL_FUNCTION(tan);
+		DECLARE_WFL_FUNCTION(asin);
+		DECLARE_WFL_FUNCTION(acos);
+		DECLARE_WFL_FUNCTION(atan);
+		DECLARE_WFL_FUNCTION(sqrt);
+		DECLARE_WFL_FUNCTION(cbrt);
+		DECLARE_WFL_FUNCTION(root);
+		DECLARE_WFL_FUNCTION(log);
+		DECLARE_WFL_FUNCTION(exp);
+		DECLARE_WFL_FUNCTION(pi);
+		DECLARE_WFL_FUNCTION(hypot);
+		DECLARE_WFL_FUNCTION(type);
 	}
 
-	return &functions_table;
+	return std::shared_ptr<function_symbol_table>(&functions_table, [](function_symbol_table*){});
 }
 
-action_function_symbol_table::action_function_symbol_table() {
+action_function_symbol_table::action_function_symbol_table(std::shared_ptr<function_symbol_table> parent) : function_symbol_table(parent) {
 	using namespace actions;
 	function_symbol_table& functions_table = *this;
-	FUNCTION(safe_call);
-	FUNCTION(set_var);
+	DECLARE_WFL_FUNCTION(safe_call);
+	DECLARE_WFL_FUNCTION(set_var);
 }
 
 }

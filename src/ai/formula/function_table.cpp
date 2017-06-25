@@ -24,6 +24,7 @@
 
 #include "ai/default/contexts.hpp"
 
+#include "formula/function_gamestate.hpp"
 #include "attack_prediction.hpp"
 #include "filesystem.hpp"
 #include "game_board.hpp"
@@ -403,67 +404,6 @@ private:
 			return variant(std::make_shared<location_callable>(items[best_i].convert_to<location_callable>()->loc()));
 		else
 			return variant();
-	}
-};
-
-
-class adjacent_locs_function : public function_expression {
-public:
-	adjacent_locs_function(const args_list& args)
-	  : function_expression("adjacent_locs", args, 1, 1)
-	{
-	}
-
-private:
-	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const map_location loc = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "adjacent_locs:location")).convert_to<location_callable>()->loc();
-		map_location adj[6];
-		get_adjacent_tiles(loc, adj);
-
-		std::vector<variant> v;
-		for(int n = 0; n != 6; ++n) {
-                        if (resources::gameboard->map().on_board(adj[n]) )
-                            v.emplace_back(std::make_shared<location_callable>(adj[n]));
-		}
-
-		return variant(v);
-	}
-};
-
-
-class locations_in_radius_function : public function_expression {
-public:
-	locations_in_radius_function(const args_list& args)
-	  : function_expression("locations_in_radius", args, 2, 2)
-	{
-	}
-
-private:
-	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const map_location loc = args()[0]->evaluate(variables,fdb).convert_to<location_callable>()->loc();
-
-		int range = args()[1]->evaluate(variables,fdb).as_int();
-
-		if( range < 0 )
-			return variant();
-
-		if(!range)
-			return variant(std::make_shared<location_callable>(loc));
-
-		std::vector<map_location> res;
-
-		get_tiles_in_radius( loc, range, res);
-
-		std::vector<variant> v;
-		v.reserve(res.size()+1);
-		v.emplace_back(std::make_shared<location_callable>(loc));
-
-		for(size_t n = 0; n != res.size(); ++n) {
-                        if (resources::gameboard->map().on_board(res[n]) )
-                            v.emplace_back(std::make_shared<location_callable>(res[n]));
-		}
-
-		return variant(v);
 	}
 };
 
@@ -861,24 +801,6 @@ private:
 //	formula_ai& ai_;
 //};
 
-class get_unit_type_function : public function_expression {
-public:
-	explicit get_unit_type_function(const args_list& args)
-	  : function_expression("get_unit_type", args, 1, 1)
-	{}
-private:
-	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		const std::string type = args()[0]->evaluate(variables,add_debug_info(fdb,0,"get_unit_type:name")).as_string();
-
-		const unit_type *ut = unit_types.find(type);
-		if(ut) {
-			return variant(std::make_shared<unit_type_callable>(*ut));
-		}
-
-		return variant();
-	}
-};
-
 
 
 class rate_action_function : public function_expression {
@@ -1273,28 +1195,6 @@ private:
 };
 
 
-class unit_at_function : public function_expression {
-public:
-	unit_at_function(const args_list& args)
-	  : function_expression("unit_at", args, 1, 1)
-	{}
-private:
-	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		variant loc_var = args()[0]->evaluate(variables,add_debug_info(fdb,0,"unit_at:location"));
-		if (loc_var.is_null()) {
-			return variant();
-		}
-		auto loc = loc_var.convert_to<location_callable>();
-		const unit_map::const_iterator i = resources::gameboard->units().find(loc->loc());
-		if(i != resources::gameboard->units().end()) {
-			return variant(std::make_shared<unit_callable>(*i));
-		} else {
-			return variant();
-		}
-	}
-};
-
-
 class unit_moves_function : public function_expression {
 public:
 	unit_moves_function(const args_list& args, const formula_ai& ai_object)
@@ -1344,144 +1244,6 @@ private:
 		}
 
 		return variant(vars);
-	}
-};
-
-
-class defense_on_function : public function_expression {
-public:
-	defense_on_function(const args_list& args)
-	  : function_expression("defense_on", args, 2, 2)
-	{}
-private:
-	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		variant u = args()[0]->evaluate(variables,add_debug_info(fdb,0,"defense_on:unit"));
-		variant loc_var = args()[1]->evaluate(variables,add_debug_info(fdb,1,"defense_on:location"));
-		if(u.is_null() || loc_var.is_null()) {
-			return variant();
-		}
-
-		auto u_call = u.try_convert<unit_callable>();
-		auto u_type = u.try_convert<unit_type_callable>();
-		const map_location& loc = loc_var.convert_to<location_callable>()->loc();
-
-		if (u_call)
-		{
-			const unit& un = u_call->get_unit();
-
-                        if( un.total_movement() < un.movement_cost( (resources::gameboard->map())[loc]) )
-                            return variant();
-
-			if(!resources::gameboard->map().on_board(loc)) {
-				return variant();
-			}
-
-			return variant(100 - un.defense_modifier((resources::gameboard->map())[loc]));
-		}
-
-		if (u_type)
-		{
-			const unit_type& un = u_type->get_unit_type();
-
-			if( un.movement() < un.movement_type().movement_cost((resources::gameboard->map())[loc]) )
-				return variant();
-
-			if(!resources::gameboard->map().on_board(loc)) {
-				return variant();
-			}
-
-			return variant(100 - un.movement_type().defense_modifier((resources::gameboard->map())[loc]));
-		}
-
-		return variant();
-	}
-};
-
-
-class chance_to_hit_function : public function_expression {
-public:
-	chance_to_hit_function(const args_list& args)
-	  : function_expression("chance_to_hit", args, 2, 2)
-	{}
-private:
-	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		variant u = args()[0]->evaluate(variables,add_debug_info(fdb,0,"chance_to_hit:unit"));
-		variant loc_var = args()[1]->evaluate(variables,add_debug_info(fdb,1,"chance_to_hit:location"));
-		if(u.is_null() || loc_var.is_null()) {
-			return variant();
-		}
-
-		auto u_call = u.try_convert<unit_callable>();
-		auto u_type = u.try_convert<unit_type_callable>();
-		const map_location& loc = loc_var.convert_to<location_callable>()->loc();
-
-		if (u_call)
-		{
-			const unit& un = u_call->get_unit();
-
-			if(!resources::gameboard->map().on_board(loc)) {
-				return variant();
-			}
-
-			return variant(un.defense_modifier((resources::gameboard->map())[loc]));
-		}
-
-		if (u_type)
-		{
-			const unit_type& un = u_type->get_unit_type();
-
-			if(!resources::gameboard->map().on_board(loc)) {
-				return variant();
-			}
-
-			return variant(un.movement_type().defense_modifier((resources::gameboard->map())[loc]));
-		}
-
-		return variant();
-	}
-};
-
-
-class movement_cost_function : public function_expression {
-public:
-	movement_cost_function(const args_list& args)
-	  : function_expression("movement_cost", args, 2, 2)
-	{}
-private:
-	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		variant u = args()[0]->evaluate(variables,add_debug_info(fdb,0,"movement_cost:unit"));
-		variant loc_var = args()[1]->evaluate(variables,add_debug_info(fdb,0,"movement_cost:location"));
-		if(u.is_null() || loc_var.is_null()) {
-			return variant();
-		}
-		//we can pass to this function either unit_callable or unit_type callable
-		auto u_call = u.try_convert<unit_callable>();
-		auto u_type = u.try_convert<unit_type_callable>();
-		const map_location& loc = loc_var.convert_to<location_callable>()->loc();
-
-		if (u_call)
-		{
-			const unit& un = u_call->get_unit();
-
-			if(!resources::gameboard->map().on_board(loc)) {
-				return variant();
-			}
-
-			return variant(un.movement_cost((resources::gameboard->map())[loc]));
-		}
-
-		if (u_type)
-		{
-			const unit_type& un = u_type->get_unit_type();
-
-			if(!resources::gameboard->map().on_board(loc)) {
-				return variant();
-			}
-
-			return variant(un.movement_type().movement_cost((resources::gameboard->map())[loc]));
-		}
-
-		return variant();
 	}
 };
 
@@ -1589,54 +1351,48 @@ public:
 
 }
 
-// First macro is for functions taking an additional formula_ai argument.
-// Functions using the second macro could potentially be made core.
-#define AI_FUNCTION(name) add_function(#name, formula_function_ptr( \
+// This macro is for functions taking an additional formula_ai argument.
+// Functions using the other macro could potentially be made core.
+#define DECLARE_FAI_FUNCTION(name) add_function(#name, formula_function_ptr( \
 	new ai_formula_function<name##_function>(#name, ai)))
-#define FUNCTION(name) add_function(#name, formula_function_ptr( \
-	new builtin_formula_function<name##_function>(#name)))
 
-ai_function_symbol_table::ai_function_symbol_table(ai::formula_ai& ai) : function_symbol_table(new action_function_symbol_table) {
-	FUNCTION(outcomes);
-	//AI_FUNCTION(evaluate_for_position);
-	FUNCTION(move);
-	FUNCTION(move_partial);
-	FUNCTION(attack);
-	AI_FUNCTION(rate_action);
-	FUNCTION(recall);
-	FUNCTION(recruit);
-	FUNCTION(get_unit_type);
-	AI_FUNCTION(is_avoided_location);
-	FUNCTION(is_village);
-	AI_FUNCTION(is_unowned_village);
-	FUNCTION(unit_at);
-	AI_FUNCTION(unit_moves);
-	FUNCTION(set_unit_var);
-	FUNCTION(fallback);
-	FUNCTION(units_can_reach);
-	AI_FUNCTION(debug_label);
-	FUNCTION(defense_on);
-	FUNCTION(chance_to_hit);
-	FUNCTION(movement_cost);
-	FUNCTION(max_possible_damage);
-	FUNCTION(max_possible_damage_with_retaliation);
-	AI_FUNCTION(next_hop);
-	FUNCTION(adjacent_locs);
-	FUNCTION(locations_in_radius);
-	FUNCTION(castle_locs);
-	FUNCTION(timeofday_modifier);
-	AI_FUNCTION(distance_to_nearest_unowned_village);
-	AI_FUNCTION(shortest_path);
-	AI_FUNCTION(simplest_path);
-	AI_FUNCTION(nearest_keep);
-	AI_FUNCTION(suitable_keep);
-	FUNCTION(nearest_loc);
-	AI_FUNCTION(find_shroud);
-	AI_FUNCTION(close_enemies);
-	FUNCTION(calculate_outcome);
-	AI_FUNCTION(run_file);
-	AI_FUNCTION(calculate_map_ownership);
+ai_function_symbol_table::ai_function_symbol_table(ai::formula_ai& ai)
+	: function_symbol_table(std::make_shared<gamestate_function_symbol_table>(std::make_shared<action_function_symbol_table>()))
+{
+	function_symbol_table& functions_table = *this;
+	DECLARE_WFL_FUNCTION(outcomes);
+	//DECLARE_FAI_FUNCTION(evaluate_for_position);
+	DECLARE_WFL_FUNCTION(move);
+	DECLARE_WFL_FUNCTION(move_partial);
+	DECLARE_WFL_FUNCTION(attack);
+	DECLARE_FAI_FUNCTION(rate_action);
+	DECLARE_WFL_FUNCTION(recall);
+	DECLARE_WFL_FUNCTION(recruit);
+	DECLARE_FAI_FUNCTION(is_avoided_location);
+	DECLARE_WFL_FUNCTION(is_village);
+	DECLARE_FAI_FUNCTION(is_unowned_village);
+	DECLARE_FAI_FUNCTION(unit_moves);
+	DECLARE_WFL_FUNCTION(set_unit_var);
+	DECLARE_WFL_FUNCTION(fallback);
+	DECLARE_WFL_FUNCTION(units_can_reach);
+	DECLARE_FAI_FUNCTION(debug_label);
+	DECLARE_WFL_FUNCTION(max_possible_damage);
+	DECLARE_WFL_FUNCTION(max_possible_damage_with_retaliation);
+	DECLARE_FAI_FUNCTION(next_hop);
+	DECLARE_WFL_FUNCTION(castle_locs);
+	DECLARE_WFL_FUNCTION(timeofday_modifier);
+	DECLARE_FAI_FUNCTION(distance_to_nearest_unowned_village);
+	DECLARE_FAI_FUNCTION(shortest_path);
+	DECLARE_FAI_FUNCTION(simplest_path);
+	DECLARE_FAI_FUNCTION(nearest_keep);
+	DECLARE_FAI_FUNCTION(suitable_keep);
+	DECLARE_WFL_FUNCTION(nearest_loc);
+	DECLARE_FAI_FUNCTION(find_shroud);
+	DECLARE_FAI_FUNCTION(close_enemies);
+	DECLARE_WFL_FUNCTION(calculate_outcome);
+	DECLARE_FAI_FUNCTION(run_file);
+	DECLARE_FAI_FUNCTION(calculate_map_ownership);
 }
-#undef FUNCTION
+#undef DECLARE_WFL_FUNCTION
 
 }

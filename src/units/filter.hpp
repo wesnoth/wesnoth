@@ -39,7 +39,7 @@ struct map_location;
 class unit_filter_abstract_impl {
 public:
 	virtual bool matches(const unit & u, const map_location & loc, const unit * u2 = nullptr) const = 0;
-	virtual std::vector<const unit*> all_matches_on_map(unsigned max_matches) const = 0;
+	virtual std::vector<const unit*> all_matches_on_map(unsigned max_matches, const map_location* loc = nullptr, const unit* u2 = nullptr) const = 0;
 	virtual unit_const_ptr first_match_on_map() const = 0;
 	virtual config to_config() const = 0;
 	virtual bool empty() const {return false;}
@@ -93,6 +93,18 @@ public:
 
 	std::vector<const unit *> all_matches_on_map() const {
 		return impl_->all_matches_on_map(max_matches_);
+	}
+
+	std::vector<const unit*> all_matches_at(const map_location& loc) const {
+		return impl_->all_matches_on_map(max_matches_, &loc);
+	}
+
+	std::vector<const unit*> all_matches_with_unit(const unit& u) const {
+		return impl_->all_matches_on_map(max_matches_, nullptr, &u);
+	}
+
+	std::vector<const unit*> all_matches_with_unit_at(const unit& u, const map_location& loc) const {
+		return impl_->all_matches_on_map(max_matches_, &loc, &u);
 	}
 
 	unit_const_ptr first_match_on_map() const {

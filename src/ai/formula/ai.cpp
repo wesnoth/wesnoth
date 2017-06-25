@@ -534,7 +534,7 @@ variant formula_ai::get_value(const std::string& key) const
 		return get_keeps();
 	} else if(key == "map")
 	{
-		return variant(std::make_shared<gamemap_callable>(resources::gameboard->map()));
+		return variant(std::make_shared<gamemap_callable>(*resources::gameboard));
 	} else if(key == "villages")
 	{
 		return villages_from_set(resources::gameboard->map().villages());

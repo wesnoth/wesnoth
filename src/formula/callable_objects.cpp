@@ -17,6 +17,7 @@
 #include "config.hpp"
 #include "formula/function.hpp"
 #include "map/map.hpp"
+#include "display_context.hpp"
 #include "team.hpp"
 #include "units/formula_manager.hpp"
 #include "log.hpp"
@@ -484,6 +485,11 @@ int config_callable::do_compare(const formula_callable* callable) const
 	return cfg_.hash().compare(cfg_callable->get_config().hash());
 }
 
+terrain_callable::terrain_callable(const display_context& dc, const map_location& loc) : loc_(loc), t_(dc.map().get_terrain_info(loc)), owner_(dc.village_owner(loc))
+{
+	type_ = TERRAIN_C;
+}
+
 variant terrain_callable::get_value(const std::string& key) const
 {
 	if(key == "x") {
@@ -512,6 +518,8 @@ variant terrain_callable::get_value(const std::string& key) const
 		return variant(t_.is_keep());
 	} else if(key == "healing") {
 		return variant(t_.gives_healing());
+	} else if(key == "owner") {
+		return variant(owner_);
 	}
 
 	return variant();
@@ -532,6 +540,7 @@ void terrain_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "castle");
 	add_input(inputs, "keep");
 	add_input(inputs, "healing");
+	add_input(inputs, "owner");
 }
 
 int terrain_callable::do_compare(const formula_callable* callable) const
@@ -545,6 +554,10 @@ int terrain_callable::do_compare(const formula_callable* callable) const
 	return loc_.do_compare(other_loc);
 }
 
+const gamemap& gamemap_callable::get_gamemap() const {
+	return board_.map();
+}
+
 void gamemap_callable::get_inputs(formula_input_vector& inputs) const
 {
 	add_input(inputs, "gamemap");
@@ -556,22 +569,22 @@ void gamemap_callable::get_inputs(formula_input_vector& inputs) const
 variant gamemap_callable::get_value(const std::string& key) const
 {
 	if(key == "terrain") {
-		int w = gamemap_.w();
-		int h = gamemap_.h();
+		int w = get_gamemap().w();
+		int h = get_gamemap().h();
 
 		std::vector<variant> vars;
 		for(int i = 0; i < w; i++) {
 			for(int j = 0; j < h; j++) {
 				const map_location loc(i, j);
-				vars.emplace_back(std::make_shared<terrain_callable>(gamemap_.get_terrain_info(loc), loc));
+				vars.emplace_back(std::make_shared<terrain_callable>(board_, loc));
 			}
 		}
 
 		return variant(vars);
 	} else if(key == "w") {
-		return variant(gamemap_.w());
+		return variant(get_gamemap().w());
 	} else if(key == "h") {
-		return variant(gamemap_.h());
+		return variant(get_gamemap().h());
 	} else {
 		return variant();
 	}

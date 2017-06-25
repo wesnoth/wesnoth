@@ -19,6 +19,7 @@
 
 #include "display_context.hpp"
 #include "game_board.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 #include "team.hpp"
@@ -28,7 +29,12 @@
 #include "units/filter.hpp"
 #include "units/map.hpp"
 #include "filter_context.hpp"
+#include "formula/callable_objects.hpp"
+#include "formula/formula.hpp"
+#include "serialization/string_view.hpp"
+
 #include <boost/dynamic_bitset.hpp>
+#include <boost/algorithm/string/predicate.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -169,7 +175,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 }
 unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
 {
-	unit_ability_list res;
+	unit_ability_list res(loc_);
 
 	for (const config &i : this->abilities_.child_range(tag_name)) {
 		if (ability_active(tag_name, i, loc) &&
@@ -402,8 +408,67 @@ bool unit::has_ability_type(const std::string& ability) const
 	return !abilities_.child_range(ability).empty();
 }
 
+namespace {
+	
+	
+template<typename T, typename TFuncFormula>
+class get_ability_value_visitor : public boost::static_visitor<T>
+{
+public:
+	// Constructor stores the default value.
+	get_ability_value_visitor(T def, const TFuncFormula& formula_handler) : def_(def), formula_handler_(formula_handler) {}
 
-std::pair<int,map_location> unit_ability_list::highest(const std::string& key, int def) const
+	T operator()(boost::blank const &) const { return def_; }
+	T operator()(bool)                 const { return def_; }
+	T operator()(int i)                const { return static_cast<T>(i); }
+	T operator()(unsigned long long u) const { return static_cast<T>(u); }
+	T operator()(double d)             const { return static_cast<T>(d); }
+	T operator()(t_string const &)     const { return def_; }
+	T operator()(const std::string& s) const
+	{
+		if(s.size() >= 2 && s[0] == '(') {
+			return formula_handler_(s);
+		}
+		return lexical_cast_default<T>(s, def_);
+	}
+
+private:
+	const T def_;
+	const TFuncFormula& formula_handler_;
+};
+template<typename T, typename TFuncFormula>
+get_ability_value_visitor<T, TFuncFormula> make_get_ability_value_visitor(T def, const TFuncFormula& formula_handler)
+{
+	return get_ability_value_visitor<T, TFuncFormula>(def, formula_handler);
+}
+template<typename T, typename TFuncFormula>
+T get_single_ability_value(const config::attribute_value& v, T def, const map_location& sender_loc, const map_location& receiver_loc, const TFuncFormula& formula_handler)
+{
+	return v.apply_visitor(make_get_ability_value_visitor(def, [&](const std::string& s) {
+		
+			try {
+				assert(resources::units);
+				auto u_itor = resources::units->find(sender_loc);
+
+				if(u_itor == resources::units->end()) {
+					return def;
+				}
+				wfl::map_formula_callable callable(std::make_shared<wfl::unit_callable>(*u_itor));
+				u_itor = resources::units->find(receiver_loc);
+				if(u_itor != resources::units->end()) {
+					callable.add("other", wfl::variant(std::make_shared<wfl::unit_callable>(*u_itor)));
+				}
+				return formula_handler(wfl::formula(s), callable);
+			} catch(wfl::formula_error& e) {
+				lg::wml_error() << "Formula error in ability or weapon special: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+				return def;
+			}
+	}));
+}
+}
+
+template<typename TComp>
+std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& key, int def, const TComp& comp) const
 {
 	if ( cfgs_.empty() ) {
 		return std::make_pair(def, map_location());
@@ -417,15 +482,18 @@ std::pair<int,map_location> unit_ability_list::highest(const std::string& key, i
 	int stack = 0;
 	for (unit_ability const &p : cfgs_)
 	{
-		int value = (*p.first)[key].to_int(def);
+		int value = get_single_ability_value((*p.first)[key], def, p.second, loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+			return formula.evaluate(callable).as_int();
+		});
+
 		if ((*p.first)["cumulative"].to_bool()) {
 			stack += value;
 			if (value < 0) value = -value;
-			if (only_cumulative && value >= abs_max) {
+			if (only_cumulative && !comp(value, abs_max)) {
 				abs_max = value;
 				best_loc = p.second;
 			}
-		} else if (only_cumulative || value > flat) {
+		} else if (only_cumulative || comp(flat, value)) {
 			only_cumulative = false;
 			flat = value;
 			best_loc = p.second;
@@ -434,36 +502,8 @@ std::pair<int,map_location> unit_ability_list::highest(const std::string& key, i
 	return std::make_pair(flat + stack, best_loc);
 }
 
-std::pair<int,map_location> unit_ability_list::lowest(const std::string& key, int def) const
-{
-	if ( cfgs_.empty() ) {
-		return std::make_pair(def, map_location());
-	}
-	// The returned location is the best non-cumulative one, if any,
-	// the best absolute cumulative one otherwise.
-	map_location best_loc;
-	bool only_cumulative = true;
-	int abs_max = 0;
-	int flat = 0;
-	int stack = 0;
-	for (unit_ability const &p : cfgs_)
-	{
-		int value = (*p.first)[key].to_int(def);
-		if ((*p.first)["cumulative"].to_bool()) {
-			stack += value;
-			if (value < 0) value = -value;
-			if (only_cumulative && value <= abs_max) {
-				abs_max = value;
-				best_loc = p.second;
-			}
-		} else if (only_cumulative || value < flat) {
-			only_cumulative = false;
-			flat = value;
-			best_loc = p.second;
-		}
-	}
-	return std::make_pair(flat + stack, best_loc);
-}
+template std::pair<int, map_location> unit_ability_list::get_extremum<std::less<int>>(const std::string& key, int def, const std::less<int>& comp) const;
+template std::pair<int, map_location> unit_ability_list::get_extremum<std::greater<int>>(const std::string& key, int def, const std::greater<int>& comp) const;
 
 /*
  *
@@ -567,7 +607,7 @@ bool attack_type::get_special_bool(const std::string& special, bool simple_check
 unit_ability_list attack_type::get_specials(const std::string& special) const
 {
 	//log_scope("get_specials");
-	unit_ability_list res;
+	unit_ability_list res(self_loc_);
 	for (const config &i : specials_.child_range(special)) {
 		if ( special_active(i, AFFECT_SELF) )
 			res.push_back(unit_ability(&i, self_loc_));
@@ -1016,7 +1056,11 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			continue;
 
 		if (const config::attribute_value *v = cfg.get("value")) {
-			int value = *v;
+			int value = get_single_ability_value(*v, def, ability.second, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+				callable.add("base_value", wfl::variant(def));
+				return formula.evaluate(callable).as_int();
+			});
+	
 			bool cumulative = cfg["cumulative"].to_bool();
 			if (!value_is_set && !cumulative) {
 				value_set = value;
@@ -1032,32 +1076,45 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		}
 
 		if (const config::attribute_value *v = cfg.get("add")) {
-			int add = *v;
+			int add = get_single_ability_value(*v, def, ability.second, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+				callable.add("base_value", wfl::variant(def));
+				return formula.evaluate(callable).as_int();
+			});
 			std::map<std::string,individual_effect>::iterator add_effect = values_add.find(effect_id);
 			if(add_effect == values_add.end() || add > add_effect->second.value) {
 				values_add[effect_id].set(ADD, add, ability.first, ability.second);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("sub")) {
-			int sub = - *v;
+			int sub = - get_single_ability_value(*v, def, ability.second, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+				callable.add("base_value", wfl::variant(def));
+				return formula.evaluate(callable).as_int();
+			});
 			std::map<std::string,individual_effect>::iterator sub_effect = values_add.find(effect_id);
 			if(sub_effect == values_add.end() || sub > sub_effect->second.value) {
 				values_add[effect_id].set(ADD, sub, ability.first, ability.second);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("multiply")) {
-			int multiply = int(v->to_double() * 100);
+			int multiply = static_cast<int>(get_single_ability_value(*v, static_cast<double>(def), ability.second, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+				callable.add("base_value", wfl::variant(def));
+				return formula.evaluate(callable).as_decimal() / 1000.0 ;
+			}) * 100);
 			std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
 			if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
 				values_mul[effect_id].set(MUL, multiply, ability.first, ability.second);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("divide")) {
-			if (*v == 0) {
+			int divide = static_cast<int>(get_single_ability_value(*v, static_cast<double>(def), ability.second, list.loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+				callable.add("base_value", wfl::variant(def));
+				return formula.evaluate(callable).as_decimal() / 1000.0 ;
+			}) * 100);
+
+			if (divide == 0) {
 				ERR_NG << "division by zero with divide= in ability/weapon special " << effect_id << std::endl;
 			}
 			else {
-				int divide = int(v->to_double() * 100);
 				std::map<std::string,individual_effect>::iterator div_effect = values_div.find(effect_id);
 				if(div_effect == values_div.end() || divide > div_effect->second.value) {
 					values_div[effect_id].set(DIV, divide, ability.first, ability.second);

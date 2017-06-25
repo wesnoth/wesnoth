@@ -32,6 +32,7 @@
 #include "variable.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
+#include "formula/function_gamestate.hpp"
 
 static lg::log_domain log_engine_sf("engine/side_filter");
 #define ERR_NG LOG_STREAM(err, log_engine_sf)
@@ -228,7 +229,7 @@ bool side_filter::match_internal(const team &t) const
 	if (cfg_.has_attribute("formula")) {
 		try {
 			const wfl::team_callable callable(t);
-			const wfl::formula form(cfg_["formula"]);
+			const wfl::formula form(cfg_["formula"], new wfl::gamestate_function_symbol_table);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
 			}

@@ -139,22 +139,28 @@ typedef std::shared_ptr<formula_function> formula_function_ptr;
 typedef std::map<std::string, formula_function_ptr> functions_map;
 
 class function_symbol_table {
-	function_symbol_table* parent = nullptr;
+	std::shared_ptr<function_symbol_table> parent;
 	functions_map custom_formulas_;
+	enum builtins_tag_t {builtins_tag};
+	function_symbol_table(builtins_tag_t) {}
 public:
-	explicit function_symbol_table(function_symbol_table* parent = nullptr);
-	~function_symbol_table();
+	explicit function_symbol_table(std::shared_ptr<function_symbol_table> parent = nullptr);
 	void add_function(const std::string& name, formula_function_ptr fcn);
 	expression_ptr create_function(const std::string& fn, const std::vector<expression_ptr>& args) const;
 	std::set<std::string> get_function_names() const;
-	bool empty() {return custom_formulas_.empty();}
-	static function_symbol_table* get_builtins();
+	bool empty() {return custom_formulas_.empty() && (parent == nullptr || parent->empty());}
+	static std::shared_ptr<function_symbol_table> get_builtins();
 };
 
 class action_function_symbol_table : public function_symbol_table {
 public:
-	action_function_symbol_table();
+	action_function_symbol_table(std::shared_ptr<function_symbol_table> parent = nullptr);
 };
+
+/// Declares a function `name` in the local function table `functions_table`.
+/// The function must be defined by a `name_function` class which is accessible in the current scope.
+#define DECLARE_WFL_FUNCTION(name) functions_table.add_function(#name, \
+	formula_function_ptr(new builtin_formula_function<name##_function>(#name)))
 
 class wrapper_formula : public formula_expression {
 public:
