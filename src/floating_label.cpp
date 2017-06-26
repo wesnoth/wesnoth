@@ -20,7 +20,6 @@
 #include "font/text.hpp"
 #include "log.hpp"
 
-
 #include <map>
 #include <set>
 #include <stack>
@@ -31,33 +30,45 @@ static lg::log_domain log_font("font");
 #define WRN_FT LOG_STREAM(warn, log_font)
 #define ERR_FT LOG_STREAM(err, log_font)
 
-namespace {
-
+namespace
+{
 typedef std::map<int, font::floating_label> label_map;
 label_map labels;
 int label_id = 1;
 
-std::stack<std::set<int> > label_contexts;
+std::stack<std::set<int>> label_contexts;
 }
 
-namespace font {
-
+namespace font
+{
 floating_label::floating_label(const std::string& text, const surface& surf)
 #if 0
-		: img_(),
+	: img_(),
 #else
-		: surf_(surf), buf_(nullptr),
+	: surf_(surf)
+	, buf_(nullptr)
 #endif
-		text_(text),
-		font_size_(SIZE_NORMAL),
-		color_(NORMAL_COLOR),	bgcolor_(), bgalpha_(0),
-		xpos_(0), ypos_(0),
-		xmove_(0), ymove_(0), lifetime_(-1),
-		width_(-1), height_(-1),
-		clip_rect_(screen_area()),
-		alpha_change_(0), visible_(true), align_(CENTER_ALIGN),
-		border_(0), scroll_(ANCHOR_LABEL_SCREEN), use_markup_(true)
-{}
+	, text_(text)
+	, font_size_(SIZE_NORMAL)
+	, color_(NORMAL_COLOR)
+	, bgcolor_()
+	, bgalpha_(0)
+	, xpos_(0)
+	, ypos_(0)
+	, xmove_(0)
+	, ymove_(0)
+	, lifetime_(-1)
+	, width_(-1)
+	, height_(-1)
+	, clip_rect_(screen_area())
+	, alpha_change_(0)
+	, visible_(true)
+	, align_(CENTER_ALIGN)
+	, border_(0)
+	, scroll_(ANCHOR_LABEL_SCREEN)
+	, use_markup_(true)
+{
+}
 
 void floating_label::move(double xmove, double ymove)
 {
@@ -69,7 +80,7 @@ int floating_label::xpos(size_t width) const
 {
 	int xpos = int(xpos_);
 	if(align_ == font::CENTER_ALIGN) {
-		xpos -= width/2;
+		xpos -= width / 2;
 	} else if(align_ == font::RIGHT_ALIGN) {
 		xpos -= width;
 	}
@@ -79,16 +90,16 @@ int floating_label::xpos(size_t width) const
 
 surface floating_label::create_surface()
 {
-	if (surf_.null()) {
+	if(surf_.null()) {
 		font::pango_text text;
 		text.set_foreground_color(color_);
 		text.set_font_size(font_size_);
 		text.set_maximum_width(width_ < 0 ? clip_rect_.w : width_);
 		text.set_maximum_height(height_ < 0 ? clip_rect_.h : height_, true);
 
-		//ignore last '\n'
-		if(!text_.empty() && *(text_.rbegin()) == '\n'){
-			text.set_text(std::string(text_.begin(), text_.end()-1), use_markup_);
+		// ignore last '\n'
+		if(!text_.empty() && *(text_.rbegin()) == '\n') {
+			text.set_text(std::string(text_.begin(), text_.end() - 1), use_markup_);
 		} else {
 			text.set_text(text_, use_markup_);
 		}
@@ -103,15 +114,15 @@ surface floating_label::create_surface()
 		// combine foreground text with its background
 		if(bgalpha_ != 0) {
 			// background is a dark tooltip box
-			surface background = create_neutral_surface(foreground->w + border_*2, foreground->h + border_*2);
+			surface background = create_neutral_surface(foreground->w + border_ * 2, foreground->h + border_ * 2);
 
-			if (background == nullptr) {
+			if(background == nullptr) {
 				ERR_FT << "could not create tooltip box" << std::endl;
 				return surf_ = foreground;
 			}
 
-			Uint32 color = SDL_MapRGBA(foreground->format, bgcolor_.r,bgcolor_.g, bgcolor_.b, bgalpha_);
-			sdl::fill_surface_rect(background,nullptr, color);
+			Uint32 color = SDL_MapRGBA(foreground->format, bgcolor_.r, bgcolor_.g, bgcolor_.b, bgalpha_);
+			sdl::fill_surface_rect(background, nullptr, color);
 
 			// we make the text less transparent, because the blitting on the
 			// dark background will darken the anti-aliased part.
@@ -119,22 +130,20 @@ surface floating_label::create_surface()
 			// (where the text was blitted directly on screen)
 			adjust_surface_alpha(foreground, ftofxp(1.13));
 
-			SDL_Rect r {border_, border_, 0, 0};
+			SDL_Rect r{border_, border_, 0, 0};
 			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
 			sdl_blit(foreground, nullptr, background, &r);
 
 			surf_ = background;
-		}
-		else {
+		} else {
 			// background is blurred shadow of the text
-			surface background = create_neutral_surface
-				(foreground->w + 4, foreground->h + 4);
+			surface background = create_neutral_surface(foreground->w + 4, foreground->h + 4);
 			sdl::fill_surface_rect(background, nullptr, 0);
-			SDL_Rect r { 2, 2, 0, 0 };
+			SDL_Rect r{2, 2, 0, 0};
 			sdl_blit(foreground, nullptr, background, &r);
 			background = shadow_image(background);
 
-			if (background == nullptr) {
+			if(background == nullptr) {
 				ERR_FT << "could not create floating label's shadow" << std::endl;
 				return surf_ = foreground;
 			}
@@ -210,7 +219,7 @@ void move_floating_label(int handle, double xmove, double ymove)
 {
 	const label_map::iterator i = labels.find(handle);
 	if(i != labels.end()) {
-		i->second.move(xmove,ymove);
+		i->second.move(xmove, ymove);
 	}
 }
 
@@ -218,7 +227,7 @@ void scroll_floating_labels(double xmove, double ymove)
 {
 	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i) {
 		if(i->second.scroll() == ANCHOR_LABEL_MAP) {
-			i->second.move(xmove,ymove);
+			i->second.move(xmove, ymove);
 		}
 	}
 }
@@ -281,8 +290,8 @@ void draw_floating_labels(surface screen)
 
 	const std::set<int>& context = label_contexts.top();
 
-	//draw the labels in the order they were added, so later added labels (likely to be tooltips)
-	//are displayed over earlier added labels.
+	// draw the labels in the order they were added, so later added labels (likely to be tooltips)
+	// are displayed over earlier added labels.
 	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i) {
 		if(context.count(i->first) > 0) {
 			i->second.draw(screen);
