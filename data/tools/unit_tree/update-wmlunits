@@ -9,8 +9,10 @@ set -e -u
 # must run from the correct directory
 DIR="$(dirname $0)"
 
+EXTRA_ADDON_OPTIONS=${EXTRA_ADDON_OPTIONS:-}
+EXTRA_WMLUNITS_OPTIONS=${EXTRA_WMLUNITS_OPTIONS:-}
 TIMEOUT=${TIMEOUT:-20}
-SOURCES=/usr/src/wesnoth
+SOURCES=${SOURCES:-/usr/src/wesnoth}
 ADDONS=$DIR/addons
 EXE=$DIR/wesnoth
 CONFIG=$DIR/config
@@ -18,7 +20,7 @@ SRC=$SOURCES/$VERSION
 DATA=$SRC
 LOG=$DIR/logs
 TMPOUT=$DIR/output
-OUT="elias@192.168.1.2:/srv/www/html/units/$VERSION"
+OUT=${OUT:-"elias@192.168.1.2:/srv/www/html/units/$VERSION"}
 TRANS=$DIR/translations
 BUILD=$DIR/build
 # always using the master version
@@ -47,9 +49,11 @@ TRAVIS=1 TRAVIS_OS_NAME=Linux scons -Y "$SRC" --option-cache="$BUILD/.scons-opti
 rm -f $DIR/overview.txt
 
 echo DOWNLOADING
-$TOOLS/wesnoth_addon_manager -p $PORT -d '.*' -c $ADDONS > $LOG/wesnoth_addon_manager.txt 2>&1
+$TOOLS/wesnoth_addon_manager -p $PORT -d '.*' -c $ADDONS $EXTRA_ADDON_OPTIONS > $LOG/wesnoth_addon_manager.txt 2>&1
 echo WORKING
-python3 -u $TOOLS/wmlunits -t $TRANS -D $DATA -o $TMPOUT -w $EXE -C $CONFIG -a $ADDONS -L $DIR/overview.txt -B $DIR/overview.txt -T $TIMEOUT > $LOG/wmlunits.txt 2>&1
+python3 -u $TOOLS/wmlunits -t $TRANS -D $DATA -o $TMPOUT -w $EXE \
+    -C $CONFIG -a $ADDONS -L $DIR/overview.txt -B $DIR/overview.txt \
+    -T $TIMEOUT $EXTRA_WMLUNITS_OPTIONS > $LOG/wmlunits.txt 2>&1
 test -f $TMPOUT/mainline/en_US/mainline.html
 test -f $TMPOUT/'pics/core$images$units$woses$wose.png'
 rsync -vaz --delete $TMPOUT/ $OUT > $LOG/rsync.txt 2>&1
