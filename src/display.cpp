@@ -3104,12 +3104,14 @@ void display::draw_new()
 	draw_all_panels();
 	draw_minimap();
 
-	SDL_Rect map_area_rect = map_area();
-	render_clip_rect_setter setter(&map_area_rect);
+	{
+		SDL_Rect map_area_rect = map_area();
+		render_clip_rect_setter setter(&map_area_rect);
 
-	// Draw the gamemap and its contents (units, etc);
-	for(const map_location& loc : get_visible_hexes()) {
-		draw_hex(loc);
+		// Draw the gamemap and its contents (units, etc);
+		for(const map_location& loc : get_visible_hexes()) {
+			draw_hex(loc);
+		}
 	}
 
 	post_commit();
