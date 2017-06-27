@@ -142,7 +142,7 @@ SDL_Rect screen_area()
 		return sdl::empty_rect;
 	}
 
-	SDL_Point size = w->get_output_size();
+	SDL_Point size = w->get_size();
 	return {0, 0, size.x, size.y};
 }
 
@@ -277,7 +277,7 @@ int CVideo::getx() const
 		return 0;
 	}
 
-	return window->get_output_size().x;
+	return window->get_size().x;
 }
 
 int CVideo::gety() const
@@ -286,7 +286,7 @@ int CVideo::gety() const
 		return 0;
 	}
 
-	return window->get_output_size().y;
+	return window->get_size().y;
 }
 
 SDL_Renderer* CVideo::get_renderer()
@@ -431,14 +431,23 @@ std::vector<std::pair<int, int>> CVideo::get_available_resolutions(const bool in
 	const std::pair<int,int> min_res = std::make_pair(preferences::min_window_width, preferences::min_window_height);
 	const std::pair<int,int> current_res = current_resolution();
 
+#if 0
+	// DPI scale factor.
 	float scale_h, scale_v;
 	std::tie(scale_h, scale_v) = get_dpi_scale_factor();
+#endif
+
+	// The maximum size to which this window can be set. For some reason this won't
+	// pop up as a display mode of its own.
+	SDL_Rect bounds;
+	SDL_GetDisplayBounds(display_index, &bounds);
 
 	SDL_DisplayMode mode;
+
 	for(int i = 0; i < modes; ++i) {
 		if(SDL_GetDisplayMode(display_index, i, &mode) == 0) {
 			// Exclude any results outside the range of the current DPI.
-			if(mode.w > current_res.first * scale_h && mode.h > current_res.second * scale_v) {
+			if(mode.w > bounds.w && mode.h > bounds.h) {
 				continue;
 			}
 
@@ -470,10 +479,9 @@ surface& CVideo::getSurface()
 
 std::pair<int,int> CVideo::current_resolution()
 {
-	SDL_DisplayMode mode;
-	SDL_GetCurrentDisplayMode(window->get_display_index(), &mode);
+	SDL_Point size = window->get_size();
 
-	return std::make_pair(mode.w, mode.h);
+	return std::make_pair(size.x, size.y);
 }
 
 bool CVideo::isFullScreen() const {

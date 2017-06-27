@@ -71,6 +71,14 @@ void window::set_size(const int w, const int h)
 	SDL_SetWindowSize(window_, w, h);
 }
 
+SDL_Point window::get_size()
+{
+	SDL_Point res;
+	SDL_GetWindowSize(*this, &res.x, &res.y);
+
+	return res;
+}
+
 SDL_Point window::get_output_size()
 {
 	SDL_Point res;
