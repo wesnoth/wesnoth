@@ -15,7 +15,8 @@
 #pragma once
 
 #include "color.hpp"
-#include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
+
 #include <string>
 
 namespace font {
@@ -35,7 +36,7 @@ enum LABEL_SCROLL_MODE { ANCHOR_LABEL_SCREEN, ANCHOR_LABEL_MAP };
 class floating_label
 {
 public:
-	floating_label(const std::string& text, const surface& surface = nullptr);
+	explicit floating_label(const std::string& text);
 
 	void set_font_size(int font_size) {font_size_ = font_size;}
 
@@ -57,7 +58,7 @@ public:
 	void set_color(const color_t& color) {color_ = color;}
 	void set_bg_color(const color_t& bg_color) {
 		bgcolor_ = bg_color;
-		bgalpha_ = bg_color.a;
+		fill_background_ = bgcolor_.a != 255;
 	}
 	void set_border_size(int border) {border_ = border;}
 	// set width for word wrapping (use -1 to disable it)
@@ -71,7 +72,7 @@ public:
 	void move(double xmove, double ymove);
 	void draw();
 
-	surface create_surface();
+	texture create_texture();
 
 	bool expired() const { return lifetime_ == 0; }
 
@@ -82,11 +83,12 @@ public:
 private:
 
 	int xpos(size_t width) const;
-	surface surf_, buf_;
+
+	texture texture_;
 	std::string text_;
 	int font_size_;
 	color_t color_, bgcolor_;
-	int bgalpha_;
+	unsigned int current_alpha_;
 	double xpos_, ypos_, xmove_, ymove_;
 	int lifetime_;
 	int width_, height_;
@@ -97,6 +99,8 @@ private:
 	int border_;
 	LABEL_SCROLL_MODE scroll_;
 	bool use_markup_;
+
+	bool fill_background_;
 };
 
 
