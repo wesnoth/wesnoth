@@ -211,7 +211,7 @@ void CVideo::init_window()
 	int video_flags = 0;
 
 	// Add any more default flags here
-	video_flags |= SDL_WINDOW_RESIZABLE;
+	video_flags |= SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI;
 #ifdef USE_GL_RENDERING
 	video_flags |= SDL_WINDOW_OPENGL;
 #endif
