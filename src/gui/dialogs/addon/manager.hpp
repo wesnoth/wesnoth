@@ -60,6 +60,7 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
+	void fetch_addons_list(window& window);
 	void load_addon_list(window& window);
 
 	void reload_list_and_reselect_item(const std::string id, window& window);

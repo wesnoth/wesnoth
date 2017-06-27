@@ -348,6 +348,7 @@ void addon_manager::pre_show(window& window)
 		dialog_callback<addon_manager, &addon_manager::on_addon_select>);
 #endif
 
+	fetch_addons_list(window);
 	load_addon_list(window);
 
 	menu_button& status_filter = find_widget<menu_button>(&window, "install_status_filter", false);
@@ -451,16 +452,19 @@ void addon_manager::toggle_details(button& btn, stacked_widget& stk)
 	}
 }
 
-void addon_manager::load_addon_list(window& window)
+void addon_manager::fetch_addons_list(window& window)
 {
-	if(need_wml_cache_refresh_) {
-		refresh_addon_version_info_cache();
-	}
-
 	client_.request_addons_list(cfg_);
 	if(!cfg_) {
 		show_error_message(window.video(), _("An error occurred while downloading the add-ons list from the server."));
 		window.close();
+	}
+}
+
+void addon_manager::load_addon_list(window& window)
+{
+	if(need_wml_cache_refresh_) {
+		refresh_addon_version_info_cache();
 	}
 
 	read_addons_list(cfg_, addons_);
