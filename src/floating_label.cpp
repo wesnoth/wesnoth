@@ -14,11 +14,14 @@
 
 #include "floating_label.hpp"
 
-#include "display.hpp"
-#include "font/sdl_ttf.hpp"
 #include "font/standard_colors.hpp"
 #include "font/text.hpp"
 #include "log.hpp"
+#include "sdl/render_utils.hpp"
+#include "sdl/surface.hpp"
+#include "utils/general.hpp"
+
+#include <boost/algorithm/string.hpp>
 
 #include <map>
 #include <set>
@@ -32,8 +35,8 @@ static lg::log_domain log_font("font");
 
 namespace
 {
-typedef std::map<int, font::floating_label> label_map;
-label_map labels;
+std::map<int, font::floating_label> labels;
+
 int label_id = 1;
 
 std::stack<std::set<int>> label_contexts;
@@ -41,18 +44,13 @@ std::stack<std::set<int>> label_contexts;
 
 namespace font
 {
-floating_label::floating_label(const std::string& text, const surface& surf)
-#if 0
-	: img_(),
-#else
-	: surf_(surf)
-	, buf_(nullptr)
-#endif
+floating_label::floating_label(const std::string& text)
+	: texture_(nullptr)
 	, text_(text)
 	, font_size_(SIZE_NORMAL)
 	, color_(NORMAL_COLOR)
 	, bgcolor_()
-	, bgalpha_(0)
+	, current_alpha_(255)
 	, xpos_(0)
 	, ypos_(0)
 	, xmove_(0)
@@ -60,13 +58,14 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 	, lifetime_(-1)
 	, width_(-1)
 	, height_(-1)
-	, clip_rect_(CVideo::get_singleton().screen_area())
+	, clip_rect_(screen_area())
 	, alpha_change_(0)
 	, visible_(true)
 	, align_(CENTER_ALIGN)
 	, border_(0)
 	, scroll_(ANCHOR_LABEL_SCREEN)
 	, use_markup_(true)
+	, fill_background_(false)
 {
 }
 
@@ -78,7 +77,8 @@ void floating_label::move(double xmove, double ymove)
 
 int floating_label::xpos(size_t width) const
 {
-	int xpos = int(xpos_);
+	int xpos = static_cast<int>(xpos_);
+
 	if(align_ == font::CENTER_ALIGN) {
 		xpos -= width / 2;
 	} else if(align_ == font::RIGHT_ALIGN) {
@@ -88,89 +88,103 @@ int floating_label::xpos(size_t width) const
 	return xpos;
 }
 
-surface floating_label::create_surface()
+texture floating_label::create_texture()
 {
-	if(surf_.null()) {
-		font::pango_text text;
-		text.set_foreground_color(color_);
-		text.set_font_size(font_size_);
-		text.set_maximum_width(width_ < 0 ? clip_rect_.w : width_);
-		text.set_maximum_height(height_ < 0 ? clip_rect_.h : height_, true);
+	if(texture_.null()) {
+		//
+		// Render text
+		//
 
-		// ignore last '\n'
-		if(!text_.empty() && *(text_.rbegin()) == '\n') {
-			text.set_text(std::string(text_.begin(), text_.end() - 1), use_markup_);
-		} else {
-			text.set_text(text_, use_markup_);
-		}
+		// TODO: figure out why the global text renderer object gives too large a size.
+		font::pango_text renderer;
 
-		surface foreground = text.render();
+		renderer.set_foreground_color(color_);
+		renderer.set_font_size(font_size_);
+		renderer.set_maximum_width(width_ < 0 ? clip_rect_.w : width_);
+		renderer.set_maximum_height(height_ < 0 ? clip_rect_.h : height_, true);
+
+		// Strip trailing newlines.
+		boost::trim_right(text_);
+
+		renderer.set_text(text_, use_markup_);
+
+		surface& foreground = renderer.render();
 
 		if(foreground == nullptr) {
 			ERR_FT << "could not create floating label's text" << std::endl;
-			return nullptr;
+			return texture();
 		}
 
-		// combine foreground text with its background
-		if(bgalpha_ != 0) {
-			// background is a dark tooltip box
-			surface background = create_neutral_surface(foreground->w + border_ * 2, foreground->h + border_ * 2);
-
-			if(background == nullptr) {
-				ERR_FT << "could not create tooltip box" << std::endl;
-				return surf_ = foreground;
-			}
-
-			uint32_t color = SDL_MapRGBA(foreground->format, bgcolor_.r, bgcolor_.g, bgcolor_.b, bgalpha_);
-			sdl::fill_surface_rect(background, nullptr, color);
-
-			// we make the text less transparent, because the blitting on the
-			// dark background will darken the anti-aliased part.
-			// This 1.13 value seems to restore the brightness of version 1.4
-			// (where the text was blitted directly on screen)
-			adjust_surface_alpha(foreground, ftofxp(1.13));
-
-			SDL_Rect r{border_, border_, 0, 0};
-			adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
-			sdl_blit(foreground, nullptr, background, &r);
-
-			surf_ = background;
-		} else {
-			// background is blurred shadow of the text
+		//
+		// Add some text shadow if we're not drawing the background.
+		//
+		if(!fill_background_) {
 			surface background = create_neutral_surface(foreground->w + 4, foreground->h + 4);
 			sdl::fill_surface_rect(background, nullptr, 0);
-			SDL_Rect r{2, 2, 0, 0};
+
+			SDL_Rect r {2, 2, 0, 0};
 			sdl_blit(foreground, nullptr, background, &r);
+
 			background = shadow_image(background);
 
 			if(background == nullptr) {
 				ERR_FT << "could not create floating label's shadow" << std::endl;
-				return surf_ = foreground;
+				return texture_ = texture(foreground);
 			}
+
 			sdl_blit(foreground, nullptr, background, &r);
-			surf_ = background;
+
+			texture_ = texture(background);
+		} else {
+			texture_ = texture(foreground);
 		}
 	}
 
-	return surf_;
+	return texture_;
 }
 
 void floating_label::draw()
 {
-	create_surface();
-	if(surf_ == nullptr) {
+	// No-op if texture is valid
+	create_texture();
+
+	if(texture_ == nullptr) {
 		return;
 	}
 
-	SDL_Rect rect = sdl::create_rect(xpos(surf_->w), ypos_, surf_->w, surf_->h);
+	const texture::info info = texture_.get_info();
+	SDL_Rect rect = sdl::create_rect(xpos(info.w), ypos_, info.w, info.h);
 
-	// TODO: cache?
-	texture tex(surf_);
+	move(xmove_, ymove_);
 
-	CVideo::get_singleton().render_copy(tex, nullptr, &rect);
+	// Fade out moving floating labels
+	if(lifetime_ > 0) {
+		--lifetime_;
+
+		if(alpha_change_ != 0 && (xmove_ != 0.0 || ymove_ != 0.0)) {
+			current_alpha_ = utils::clamp<unsigned int>(current_alpha_ + alpha_change_, 0, 255);
+			set_texture_alpha(texture_, current_alpha_);
+		}
+	}
+
+	// Draw a semi-transparent background background alpha provided.
+	// NOTE: doing this this way instead of embedding it as part of label texture itself does
+	// have the side effect of removing the background from the fadeout effect. However, in
+	// practical use only the non-background versions are used with the fadeout effect. I can do
+	// some alpha fadeout on the background later too if relevant.
+	if(fill_background_) {
+		SDL_Rect bg_rect {
+			rect.x -  border_,
+			rect.y -  border_,
+			rect.w + (border_ * 2),
+			rect.h + (border_ * 2)
+		};
+
+		sdl::fill_rectangle(bg_rect, bgcolor_);
+	}
+
+	CVideo::get_singleton().render_copy(texture_, nullptr, &rect);
 }
-
-// NOTE: there used to be a "fade out moving floating labels" effect here.
 
 int add_floating_label(const floating_label& flabel)
 {
@@ -186,7 +200,7 @@ int add_floating_label(const floating_label& flabel)
 
 void move_floating_label(int handle, double xmove, double ymove)
 {
-	const label_map::iterator i = labels.find(handle);
+	const auto i = labels.find(handle);
 	if(i != labels.end()) {
 		i->second.move(xmove, ymove);
 	}
@@ -194,16 +208,16 @@ void move_floating_label(int handle, double xmove, double ymove)
 
 void scroll_floating_labels(double xmove, double ymove)
 {
-	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i) {
-		if(i->second.scroll() == ANCHOR_LABEL_MAP) {
-			i->second.move(xmove, ymove);
+	for(auto& label : labels) {
+		if(label.second.scroll() == ANCHOR_LABEL_MAP) {
+			label.second.move(xmove, ymove);
 		}
 	}
 }
 
 void remove_floating_label(int handle)
 {
-	const label_map::iterator i = labels.find(handle);
+	const auto i = labels.find(handle);
 	if(i != labels.end()) {
 		labels.erase(i);
 	}
@@ -215,7 +229,7 @@ void remove_floating_label(int handle)
 
 void show_floating_label(int handle, bool value)
 {
-	const label_map::iterator i = labels.find(handle);
+	const auto i = labels.find(handle);
 	if(i != labels.end()) {
 		i->second.show(value);
 	}
@@ -223,25 +237,27 @@ void show_floating_label(int handle, bool value)
 
 SDL_Rect get_floating_label_rect(int handle)
 {
-	const label_map::iterator i = labels.find(handle);
+	const auto i = labels.find(handle);
 	if(i != labels.end()) {
-		const surface surf = i->second.create_surface();
-		if(surf != nullptr) {
-			return {0, 0, surf->w, surf->h};
+		const texture& tex = i->second.create_texture();
+		if(tex != nullptr) {
+			const texture::info info = tex.get_info();
+
+			return {0, 0, info.w, info.h};
 		}
 	}
+
 	return sdl::empty_rect;
 }
 
 floating_label_context::floating_label_context()
 {
-	label_contexts.emplace();
+	label_contexts.push(std::set<int>());
 }
 
 floating_label_context::~floating_label_context()
 {
 	const std::set<int>& context = label_contexts.top();
-
 	while(!context.empty()) {
 		// Remove_floating_label removes the passed label from the context.
 		// This loop removes a different label in every iteration.
@@ -257,15 +273,24 @@ void draw_floating_labels()
 		return;
 	}
 
-	const std::set<int>& context = label_contexts.top();
+	std::set<int>& context = label_contexts.top();
 
-	// draw the labels in the order they were added, so later added labels (likely to be tooltips)
+	// Remove expired labels.
+	for(auto itor = labels.begin(); itor != labels.end(); /* Handle increment in loop*/) {
+		if(context.count(itor->first) > 0 && itor->second.expired()) {
+			context.erase(itor->first);
+			labels.erase(itor++);
+		} else {
+			++itor;
+		}
+	}
+
+	// Draw the labels in the order they were added, so later added labels (likely to be tooltips)
 	// are displayed over earlier added labels.
-	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i) {
-		if(context.count(i->first) > 0) {
-			i->second.draw();
+	for(auto& label : labels) {
+		if(context.count(label.first) > 0) {
+			label.second.draw();
 		}
 	}
 }
-
 }
