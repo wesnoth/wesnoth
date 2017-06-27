@@ -75,7 +75,7 @@ static void show_tooltip(const tooltip& tip)
 
 	unsigned int border = 10;
 
-	font::floating_label flabel(tip.message, tip.foreground);
+	font::floating_label flabel(tip.message/*, tip.foreground*/);
 	flabel.use_markup(tip.markup);
 	flabel.set_font_size(font_size);
 	flabel.set_color(font::NORMAL_COLOR);
