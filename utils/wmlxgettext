@@ -61,10 +61,11 @@ def commandline(args):
         required=True,
         default=None,
         dest='outfile',
-        help= ('Destination file. In some special situation you could want to '
-               'write the output to STDOUT write an actual file. In that case '
-               'you can use "-o -" to write the pot file to STDOUT on purpose '
-               '(wich it is something you normally would avoid, becouse it can '
+        help= ('Destination file. In some special situation you you might want '
+               'to write the output to STDOUT instead of writing '
+               'an actual file. In that case, you can use "-o -" to write '
+               'the pot file to STDOUT on purpose '
+               '(wich is something you would normally avoid, becouse it can '
                'lead to encoding problems). [**REQUIRED ARGUMENT**]')
     )
     parser.add_argument(
