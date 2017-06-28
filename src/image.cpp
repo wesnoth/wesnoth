@@ -630,10 +630,17 @@ static surface load_image_sub_file(const image::locator& loc)
 		try {
 			surf = (*mod)(surf);
 		} catch(const image::modification::imod_exception& e) {
+			std::ostringstream ss;
+			ss << "\n";
+
+			for(const std::string& mod : utils::parenthetical_split(loc.get_modifications(), '~')) {
+				ss << "\t" << mod << "\n";
+			}
+
 			ERR_CFG << "Failed to apply a modification to an image:\n"
-					<< "Image: " << loc.get_filename() << ".\n"
-					<< "Modifications: " << loc.get_modifications() << ".\n"
-					<< "Error: " << e.message;
+					<< "Image: " << loc.get_filename() << "\n"
+					<< "Modifications: " << ss.str() << "\n"
+					<< "Error: " << e.message << "\n";
 		}
 
 		// NOTE: do this *after* applying the mod or you'll get crashes!
@@ -1463,10 +1470,17 @@ static texture create_texture_from_sub_file(const image::locator& loc)
 		try {
 			surf = (*mod)(surf);
 		} catch(const image::modification::imod_exception& e) {
+			std::ostringstream ss;
+			ss << "\n";
+
+			for(const std::string& mod : utils::parenthetical_split(loc.get_modifications(), '~')) {
+				ss << "\t" << mod << "\n";
+			}
+
 			ERR_CFG << "Failed to apply a modification to an image:\n"
-					<< "Image: " << loc.get_filename() << ".\n"
-					<< "Modifications: " << loc.get_modifications() << ".\n"
-					<< "Error: " << e.message;
+					<< "Image: " << loc.get_filename() << "\n"
+					<< "Modifications: " << ss.str() << "\n"
+					<< "Error: " << e.message << "\n";
 		}
 
 		// NOTE: do this *after* applying the mod or you'll get crashes!
