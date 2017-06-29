@@ -133,8 +133,7 @@ private:
 	void raw_event(const SDL_Event &event);
 
 	/** Fires a draw event. */
-	using events::sdl_handler::draw;
-	void draw(const bool force);
+	virtual void draw() override;
 
 	/**
 	 * Fires a video resize event.
@@ -334,13 +333,6 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			// remove_popup();
 			break;
 
-		case DRAW_EVENT:
-			draw(false);
-			break;
-		case DRAW_ALL_EVENT:
-			draw(true);
-			break;
-
 		case TIMER_EVENT:
 			execute_timer(reinterpret_cast<size_t>(event.user.data1));
 			break;
@@ -376,7 +368,6 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		case SDL_WINDOWEVENT:
 			switch(event.window.event) {
 				case SDL_WINDOWEVENT_EXPOSED:
-					draw(true);
 					break;
 
 				case SDL_WINDOWEVENT_RESIZED:
@@ -479,7 +470,7 @@ void sdl_event_handler::activate()
 	}
 }
 
-void sdl_event_handler::draw(const bool /*force*/)
+void sdl_event_handler::draw()
 {
 	// Don't display this event since it floods the screen
 	// DBG_GUI_E << "Firing " << DRAW << ".\n";

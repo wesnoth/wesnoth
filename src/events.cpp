@@ -160,6 +160,10 @@ void context::set_focus(const sdl_handler* ptr)
 
 void context::add_staging_handlers()
 {
+	if(staging_handlers.empty()) {
+		return;
+	}
+
 	std::copy(staging_handlers.begin(), staging_handlers.end(), std::back_inserter(handlers));
 	staging_handlers.clear();
 }
@@ -384,10 +388,6 @@ bool last_resize_event_used = true;
 
 static bool remove_on_resize(const SDL_Event& a)
 {
-	if(a.type == DRAW_EVENT || a.type == DRAW_ALL_EVENT) {
-		return true;
-	}
-
 	if(a.type == SHOW_HELPTIP_EVENT) {
 		return true;
 	}
@@ -403,52 +403,14 @@ static bool remove_on_resize(const SDL_Event& a)
 	return false;
 }
 
-/**
- * The interval between draw events.
- *
- * When the window is shown this value is set, the callback function always
- * uses this value instead of the parameter send, that way the window can stop
- * drawing when it wants.
- */
-static int draw_interval = 0;
-
-SDL_TimerID draw_timer_id;
-
-/**
- * SDL_AddTimer() callback for the draw event.
- *
- * When this callback is called it pushes a new draw event in the event queue.
- *
- * @returns                       The new timer interval, 0 to stop.
- */
-static Uint32 draw_timer(Uint32, void*)
-{
-	//	DBG_GUI_E << "Pushing draw event in queue.\n";
-
-	SDL_Event event;
-	SDL_UserEvent data;
-
-	data.type = DRAW_EVENT;
-	data.code = 0;
-	data.data1 = NULL;
-	data.data2 = NULL;
-
-	event.type = DRAW_EVENT;
-	event.user = data;
-
-	SDL_PushEvent(&event);
-	return draw_interval;
-}
-
 void initialise()
 {
-	draw_interval = 20;
-	draw_timer_id = SDL_AddTimer(draw_interval, draw_timer, NULL);
+	// Add things as necessary.
 }
 
 void finalize()
 {
-	SDL_RemoveTimer(draw_timer_id);
+	// Add things as necessary.
 }
 
 // TODO: I'm uncertain if this is always safe to call at static init; maybe set in main() instead?
@@ -523,16 +485,6 @@ void pump()
 	} else if(SDL_GetTicks() > last_resize_event.window.timestamp + resize_timeout && !last_resize_event_used) {
 		events.insert(events.begin(), last_resize_event);
 		last_resize_event_used = true;
-	}
-
-	// Move all draw events to the end of the queue
-	auto first_draw_event = std::stable_partition(events.begin(), events.end(),
-		[](const SDL_Event& e) { return e.type != DRAW_EVENT; }
-	);
-
-	if(first_draw_event != events.end()) {
-		// Remove all draw events except one
-		events.erase(first_draw_event + 1, events.end());
 	}
 
 	ev_end = events.end();
@@ -612,20 +564,6 @@ void pump()
 			break;
 		}
 
-		case DRAW_ALL_EVENT: {
-			flip_locker flip_lock(CVideo::get_singleton());
-
-			/* Iterate backwards as the most recent things will be at the top */
-			// FIXME? ^ that isn't happening here.
-			for(auto& context : event_contexts) {
-				for(auto handler : context.handlers) {
-					handler->handle_event(event);
-				}
-			}
-
-			continue; // do not do further handling here
-		}
-
 #ifndef __APPLE__
 		case SDL_KEYDOWN: {
 			if(event.key.keysym.sym == SDLK_F4 &&
@@ -659,16 +597,6 @@ void pump()
 		}
 		}
 
-		const bool is_draw_event = event.type == DRAW_EVENT || event.type == DRAW_ALL_EVENT;
-
-		if(is_draw_event) {
-#ifdef USE_GL_RENDERING
-			gl::clear_screen();
-#else
-			CVideo::get_singleton().clear_screen();
-#endif
-		}
-
 		for(auto global_handler : event_contexts.front().handlers) {
 			global_handler->handle_event(event);
 		}
@@ -678,11 +606,22 @@ void pump()
 				handler->handle_event(event);
 			}
 		}
-
-		if(is_draw_event) {
-			CVideo::get_singleton().render_screen();
-		}
 	}
+
+	//
+	// Draw things. This is the code that actually makes anything appear on the screen.
+	//
+	CVideo& video = CVideo::get_singleton();
+
+#ifdef USE_GL_RENDERING
+	gl::clear_screen();
+#else
+	video.clear_screen();
+#endif
+
+	raise_draw_event();
+
+	video.render_screen();
 
 	// Inform the pump monitors that an events::pump() has occurred
 	for(auto monitor : pump_monitors) {

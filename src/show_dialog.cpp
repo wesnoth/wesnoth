@@ -144,8 +144,8 @@ void dialog_frame::handle_window_event(const SDL_Event& event) {
 	}
 }
 
-void dialog_frame::handle_event(const SDL_Event& event) {
-
+void dialog_frame::handle_event(const SDL_Event& /*event*/) {
+#if 0
 	if (event.type == DRAW_ALL_EVENT) {
 		set_dirty();
 
@@ -155,10 +155,7 @@ void dialog_frame::handle_event(const SDL_Event& event) {
 			}
 		}
 	}
-
-	if (event.type == DRAW_EVENT || event.type == DRAW_ALL_EVENT) {
-		draw();
-	}
+#endif
 }
 
 int dialog_frame::bottom_padding() const {

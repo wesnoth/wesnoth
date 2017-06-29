@@ -2662,7 +2662,8 @@ void display::process_reachmap_changes()
 
 void display::draw()
 {
-	draw(true, false);
+	draw_new();
+	//draw(true, false);
 }
 
 void display::draw(bool update)
@@ -3149,19 +3150,10 @@ void display::handle_window_event(const SDL_Event& event)
 	}
 }
 
-void display::handle_event(const SDL_Event& event)
+void display::handle_event(const SDL_Event& /*event*/)
 {
 	if(gui2::dialogs::loading_screen::displaying()) {
 		return;
-	}
-
-	switch(event.type) {
-	case DRAW_EVENT:
-	// case DRAW_ALL_EVENT:
-		draw_new();
-		break;
-	default:
-		break;
 	}
 }
 

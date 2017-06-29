@@ -249,5 +249,4 @@ protected:
 	draw_layering(const bool auto_join=true);
 	virtual ~draw_layering();
 };
-void trigger_full_redraw();
 }
