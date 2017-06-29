@@ -341,5 +341,4 @@ protected:
 	virtual ~draw_layering();
 };
 
-void trigger_full_redraw();
 }
