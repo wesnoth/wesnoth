@@ -57,30 +57,8 @@ draw_layering::draw_layering(const bool auto_join)
 draw_layering::~draw_layering()
 {
 	draw_layers.remove(this);
-
-	video2::trigger_full_redraw();
 }
 
-void trigger_full_redraw()
-{
-	SDL_Event event;
-	event.type = SDL_WINDOWEVENT;
-	event.window.event = SDL_WINDOWEVENT_RESIZED;
-	event.window.data1 = CVideo::get_singleton().getx();
-	event.window.data2 = CVideo::get_singleton().gety();
-
-	for(const auto& layer : draw_layers) {
-		layer->handle_window_event(event);
-	}
-
-	SDL_Event drawEvent;
-	sdl::UserEvent data(DRAW_ALL_EVENT);
-
-	drawEvent.type = DRAW_ALL_EVENT;
-	drawEvent.user = data;
-	SDL_FlushEvent(DRAW_ALL_EVENT);
-	SDL_PushEvent(&drawEvent);
-}
 
 } // video2
 
@@ -150,16 +128,6 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
 		case SDL_WINDOWEVENT_RESTORED:
 		case SDL_WINDOWEVENT_SHOWN:
 		case SDL_WINDOWEVENT_EXPOSED:
-			// if(display::get_singleton())
-			// display::get_singleton()->redraw_everything();
-			SDL_Event drawEvent;
-			sdl::UserEvent data(DRAW_ALL_EVENT);
-
-			drawEvent.type = DRAW_ALL_EVENT;
-			drawEvent.user = data;
-
-			SDL_FlushEvent(DRAW_ALL_EVENT);
-			SDL_PushEvent(&drawEvent);
 			break;
 		}
 	}

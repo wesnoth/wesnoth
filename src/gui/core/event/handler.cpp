@@ -139,9 +139,7 @@ private:
 	void raw_event(const SDL_Event &event);
 
 	/** Fires a draw event. */
-	using events::sdl_handler::draw;
-	void draw();
-	void draw_everything();
+	virtual void draw() override;
 
 	/**
 	 * Fires a video resize event.
@@ -348,14 +346,6 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			// remove_popup();
 			break;
 
-		case DRAW_EVENT:
-			draw();
-			break;
-
-		case DRAW_ALL_EVENT:
-			draw_everything();
-			break;
-
 		case TIMER_EVENT:
 			execute_timer(reinterpret_cast<size_t>(event.user.data1));
 			break;
@@ -507,15 +497,6 @@ void sdl_event_handler::draw()
 	{
 		dispatcher->fire(DRAW, dynamic_cast<widget&>(*dispatcher));
 	}
-}
-
-void sdl_event_handler::draw_everything()
-{
-	for(auto dispatcher : dispatchers_) {
-		dynamic_cast<widget&>(*dispatcher).set_is_dirty(true);
-	}
-
-	draw();
 }
 
 void sdl_event_handler::video_resize(const point& new_size)

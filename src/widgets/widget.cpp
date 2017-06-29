@@ -335,11 +335,7 @@ void widget::process_tooltip_string(int mousex, int mousey)
 	}
 }
 
-void widget::handle_event(const SDL_Event& event) {
-	if (event.type == DRAW_ALL_EVENT) {
-		set_dirty();
-		draw();
-	}
+void widget::handle_event(SDL_Event const &/*event*/) {
 }
 
 void widget::handle_window_event(const SDL_Event& event) {
