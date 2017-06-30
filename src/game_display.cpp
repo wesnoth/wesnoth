@@ -317,30 +317,30 @@ void game_display::draw_hex(const map_location& loc)
 
 #if 0
 	if(on_map && loc == mouseoverHex_) {
-		drawing_buffer::drawing_layer hex_top_layer = drawing_buffer::LAYER_MOUSEOVER_BOTTOM;
+		drawing_queue::layer hex_top_layer = drawing_queue::LAYER_MOUSEOVER_BOTTOM;
 		const unit *u = resources::gameboard->get_visible_unit(loc, dc_->teams()[viewing_team()] );
 		if( u != nullptr ) {
-			hex_top_layer = drawing_buffer::LAYER_MOUSEOVER_TOP;
+			hex_top_layer = drawing_queue::LAYER_MOUSEOVER_TOP;
 		}
 		if(u == nullptr) {
-			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
+			drawing_queue_add( hex_top_layer, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-top.png~RC(magenta>gold)", image::SCALED_TO_HEX));
-			drawing_buffer_add(drawing_buffer::LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
+			drawing_queue_add(drawing_queue::LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-bottom.png~RC(magenta>gold)", image::SCALED_TO_HEX));
 		} else if(dc_->teams()[currentTeam_].is_enemy(u->side())) {
-			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
+			drawing_queue_add( hex_top_layer, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-enemy-top.png~RC(magenta>red)", image::SCALED_TO_HEX));
-			drawing_buffer_add(drawing_buffer::LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
+			drawing_queue_add(drawing_queue::LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-enemy-bottom.png~RC(magenta>red)", image::SCALED_TO_HEX));
 		} else if(dc_->teams()[currentTeam_].side() == u->side()) {
-			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
+			drawing_queue_add( hex_top_layer, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-top.png~RC(magenta>green)", image::SCALED_TO_HEX));
-			drawing_buffer_add(drawing_buffer::LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
+			drawing_queue_add(drawing_queue::LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-bottom.png~RC(magenta>green)", image::SCALED_TO_HEX));
 		} else {
-			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
+			drawing_queue_add( hex_top_layer, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-top.png~RC(magenta>lightblue)", image::SCALED_TO_HEX));
-			drawing_buffer_add(drawing_buffer::LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
+			drawing_queue_add(drawing_queue::LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-bottom.png~RC(magenta>lightblue)", image::SCALED_TO_HEX));
 		}
 	}
@@ -366,7 +366,7 @@ void game_display::draw_hex(const map_location& loc)
 		{
 			std::vector<surface> footstepImages = footsteps_images(loc, route_, dc_);
 			if (!footstepImages.empty()) {
-				drawing_buffer_add(drawing_buffer::LAYER_FOOTSTEPS, loc, xpos, ypos, footsteps_images(loc, route_, dc_));
+				drawing_queue_add(drawing_queue::LAYER_FOOTSTEPS, loc, xpos, ypos, footsteps_images(loc, route_, dc_));
 			}
 		}
 	}
@@ -416,7 +416,7 @@ void game_display::draw_hex(const map_location& loc)
 		int debugH = debugHighlights_[loc];
 		if (debugH) {
 			std::string txt = std::to_string(debugH);
-			draw_text_in_hex(loc, drawing_buffer::LAYER_MOVE_INFO, txt, 18, font::BAD_COLOR);
+			draw_text_in_hex(loc, drawing_queue::LAYER_MOVE_INFO, txt, 18, font::BAD_COLOR);
 		}
 	}
 
@@ -488,22 +488,22 @@ void game_display::draw_movement_info(const map_location& loc)
 
 			// simple mark (no turn point) use smaller font
 			int def_font = w->second.turns > 0 ? 18 : 16;
-			draw_text_in_hex(loc, drawing_buffer::LAYER_MOVE_INFO, def_text.str(), def_font, color);
+			draw_text_in_hex(loc, drawing_queue::LAYER_MOVE_INFO, def_text.str(), def_font, color);
 
 			int xpos = get_location_x(loc);
 			int ypos = get_location_y(loc);
 			if (w->second.invisible) {
-				drawing_buffer_add(drawing_buffer::LAYER_MOVE_INFO, loc, xpos, ypos,
+				drawing_queue_add(drawing_queue::LAYER_MOVE_INFO, loc, xpos, ypos,
 					image::get_image("misc/hidden.png", image::SCALED_TO_HEX));
 			}
 
 			if (w->second.zoc) {
-				drawing_buffer_add(drawing_buffer::LAYER_MOVE_INFO, loc, xpos, ypos,
+				drawing_queue_add(drawing_queue::LAYER_MOVE_INFO, loc, xpos, ypos,
 					image::get_image("misc/zoc.png", image::SCALED_TO_HEX));
 			}
 
 			if (w->second.capture) {
-				drawing_buffer_add(drawing_buffer::LAYER_MOVE_INFO, loc, xpos, ypos,
+				drawing_queue_add(drawing_queue::LAYER_MOVE_INFO, loc, xpos, ypos,
 					image::get_image("misc/capture.png", image::SCALED_TO_HEX));
 			}
 
@@ -511,7 +511,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			if (w->second.turns > 1 || (w->second.turns == 1 && loc != route_.steps.back())) {
 				std::stringstream turns_text;
 				turns_text << w->second.turns;
-				draw_text_in_hex(loc, drawing_buffer::LAYER_MOVE_INFO, turns_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
+				draw_text_in_hex(loc, drawing_queue::LAYER_MOVE_INFO, turns_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
 			}
 
 			// The hex is full now, so skip the "show enemy moves"
@@ -536,7 +536,7 @@ void game_display::draw_movement_info(const map_location& loc)
 
 			// use small font
 			int def_font = 16;
-			draw_text_in_hex(loc, drawing_buffer::LAYER_MOVE_INFO, def_text.str(), def_font, color);
+			draw_text_in_hex(loc, drawing_queue::LAYER_MOVE_INFO, def_text.str(), def_font, color);
 		}
 	}
 
@@ -544,7 +544,7 @@ void game_display::draw_movement_info(const map_location& loc)
 		reach_map::iterator reach = reach_map_.find(loc);
 		if(reach != reach_map_.end() && reach->second > 1) {
 			const std::string num = std::to_string(reach->second);
-			draw_text_in_hex(loc, drawing_buffer::LAYER_MOVE_INFO, num, 16, font::YELLOW_COLOR);
+			draw_text_in_hex(loc, drawing_queue::LAYER_MOVE_INFO, num, 16, font::YELLOW_COLOR);
 		}
 	}
 }

@@ -138,11 +138,11 @@ void suppose_dead::draw_hex(const map_location& hex)
 	if(hex == loc_) //add symbol to hex
 	{
 		//@todo: Possibly use a different layer
-		//const drawing_buffer::drawing_layer layer = drawing_buffer::LAYER_ARROWS;
+		//const drawing_queue::layer layer = drawing_queue::LAYER_ARROWS;
 
 		//int xpos = display::get_singleton()->get_location_x(loc_);
 		//int ypos = display::get_singleton()->get_location_y(loc_);
-		//display::get_singleton()->drawing_buffer_add(layer, loc_, xpos, ypos,
+		//display::get_singleton()->drawing_queue_add(layer, loc_, xpos, ypos,
 		//		image::get_texture("whiteboard/suppose_dead.png"));
 	}
 }

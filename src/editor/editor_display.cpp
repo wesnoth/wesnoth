@@ -87,13 +87,13 @@ void editor_display::draw_hex(const map_location& loc)
 	display::draw_hex(loc);
 	if (map().on_board_with_border(loc)) {
 		if (map().in_selection(loc)) {
-			//drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, xpos, ypos,
+			//drawing_queue_add(drawing_queue::LAYER_FOG_SHROUD, loc, xpos, ypos,
 			//	image::get_texture("editor/selection-overlay.png"));
 		}
 
 		if (brush_locations_.find(loc) != brush_locations_.end()) {
 			static const image::locator brush(game_config::images::editor_brush);
-			//drawing_buffer_add(drawing_buffer::LAYER_SELECTED_HEX, loc, xpos, ypos,
+			//drawing_queue_add(drawing_queue::LAYER_SELECTED_HEX, loc, xpos, ypos,
 			//		image::get_texture(brush));
 		}
 	}

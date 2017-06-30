@@ -232,16 +232,16 @@ void unit_drawer::redraw_unit(const unit & u) const
 	}
 
 	if(ellipse_back != nullptr) {
-		//disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_BG, loc,
-		//disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_FIRST, loc,
+		//disp.drawing_queue_add(drawing_queue::LAYER_UNIT_BG, loc,
+		//disp.drawing_queue_add(drawing_queue::LAYER_UNIT_FIRST, loc,
 		//	xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_back);
 
 		disp.render_scaled_to_zoom(ellipse_back, xsrc, ysrc + adjusted_params.y - ellipse_floating);
 	}
 
 	if(ellipse_front != nullptr) {
-		//disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_FG, loc,
-		//disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_FIRST, loc,
+		//disp.drawing_queue_add(drawing_queue::LAYER_UNIT_FG, loc,
+		//disp.drawing_queue_add(drawing_queue::LAYER_UNIT_FIRST, loc,
 		//	xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front);
 
 		disp.render_scaled_to_zoom(ellipse_front, xsrc, ysrc + adjusted_params.y - ellipse_floating);
@@ -318,7 +318,7 @@ void unit_drawer::redraw_unit(const unit & u) const
 
 		if(orb_img != nullptr) {
 			texture orb(image::get_texture(*orb_img));
-			//disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_BAR,
+			//disp.drawing_queue_add(drawing_queue::LAYER_UNIT_BAR,
 			//	loc, xsrc + xoff, ysrc + yoff + adjusted_params.y, orb);
 			disp.render_scaled_to_zoom(orb, xsrc + xoff, ysrc + yoff + adjusted_params.y);
 		}
@@ -359,7 +359,7 @@ void unit_drawer::redraw_unit(const unit & u) const
 				//if(bar_alpha != ftofxp(1.0)) {
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
 				//}
-				//disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_BAR,
+				//disp.drawing_queue_add(drawing_queue::LAYER_UNIT_BAR,
 				//	loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, crown);
 				disp.render_scaled_to_zoom(crown, xsrc + xoff, ysrc + yoff + adjusted_params.y);
 			}
@@ -368,7 +368,7 @@ void unit_drawer::redraw_unit(const unit & u) const
 		for(const std::string& ov : u.overlays()) {
 			const texture ov_img(image::get_texture(ov));
 			if(ov_img != nullptr) {
-				//disp.drawing_buffer_add(drawing_buffer::LAYER_UNIT_BAR,
+				//disp.drawing_queue_add(drawing_queue::LAYER_UNIT_BAR,
 				//	loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, ov_img);
 				disp.render_scaled_to_zoom(ov_img, xsrc + xoff, ysrc + yoff + adjusted_params.y);
 			}
