@@ -191,7 +191,7 @@ void recall::draw_hex(map_location const& hex)
 		}
 		size_t font_size = 16;
 		color_t color {255, 0, 0}; //red
-		resources::screen->draw_text_in_hex(hex, drawing_buffer::LAYER_ACTIONS_NUMBERING,
+		resources::screen->draw_text_in_hex(hex, drawing_queue::LAYER_ACTIONS_NUMBERING,
 						number_text.str(), font_size, color, x_offset, y_offset);
 	}
 }

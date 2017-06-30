@@ -38,7 +38,7 @@ frame_parameters::frame_parameters()
 	, auto_vflip(boost::logic::indeterminate)
 	, auto_hflip(boost::logic::indeterminate)
 	, primary_frame(boost::logic::indeterminate)
-	, drawing_layer(drawing_buffer::LAYER_UNIT_DEFAULT - drawing_buffer::LAYER_UNIT_FIRST)
+	, layer(drawing_queue::LAYER_UNIT_DEFAULT - drawing_queue::LAYER_UNIT_FIRST)
 {}
 
 frame_builder::frame_builder()
@@ -46,7 +46,7 @@ frame_builder::frame_builder()
 	, auto_vflip_(boost::logic::indeterminate)
 	, auto_hflip_(boost::logic::indeterminate)
 	, primary_frame_(boost::logic::indeterminate)
-	, drawing_layer_(std::to_string(drawing_buffer::LAYER_UNIT_DEFAULT - drawing_buffer::LAYER_UNIT_FIRST))
+	, layer_(std::to_string(drawing_queue::LAYER_UNIT_DEFAULT - drawing_queue::LAYER_UNIT_FIRST))
 {}
 
 frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
@@ -71,7 +71,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 	, auto_vflip_(boost::logic::indeterminate)
 	, auto_hflip_(boost::logic::indeterminate)
 	, primary_frame_(boost::logic::indeterminate)
-	, drawing_layer_(cfg[frame_string + "layer"])
+	, layer_(cfg[frame_string + "layer"])
 {
 	if(!cfg.has_attribute(frame_string + "auto_vflip")) {
 		auto_vflip_ = boost::logic::indeterminate;
@@ -233,9 +233,9 @@ frame_builder& frame_builder::primary_frame(const bool primary_frame)
 	return *this;
 }
 
-frame_builder& frame_builder::drawing_layer(const std::string& drawing_layer)
+frame_builder& frame_builder::layer(const std::string& layer)
 {
-	drawing_layer_=drawing_layer;
+	layer_=layer;
 	return *this;
 }
 
@@ -263,7 +263,7 @@ frame_parsed_parameters::frame_parsed_parameters(const frame_builder& builder, i
 	, auto_vflip_(builder.auto_vflip_)
 	, auto_hflip_(builder.auto_hflip_)
 	, primary_frame_(builder.primary_frame_)
-	, drawing_layer_(builder.drawing_layer_,duration_)
+	, layer_(builder.layer_,duration_)
 {}
 
 bool frame_parsed_parameters::does_not_change() const
@@ -282,7 +282,7 @@ bool frame_parsed_parameters::does_not_change() const
 		y_.does_not_change() &&
 		directional_x_.does_not_change() &&
 		directional_y_.does_not_change() &&
-		drawing_layer_.does_not_change();
+		layer_.does_not_change();
 }
 
 bool frame_parsed_parameters::need_update() const
@@ -316,7 +316,7 @@ const frame_parameters frame_parsed_parameters::parameters(int current_time) con
 	result.auto_vflip = auto_vflip_;
 	result.auto_hflip = auto_hflip_;
 	result.primary_frame = primary_frame_;
-	result.drawing_layer = drawing_layer_.get_current_element(current_time,drawing_buffer::LAYER_UNIT_DEFAULT-drawing_buffer::LAYER_UNIT_FIRST);
+	result.layer = layer_.get_current_element(current_time,drawing_queue::LAYER_UNIT_DEFAULT-drawing_queue::LAYER_UNIT_FIRST);
 	return result;
 }
 
@@ -348,9 +348,9 @@ void frame_parsed_parameters::override(int duration,
 	}
 
 	if(!layer.empty()) {
-		drawing_layer_ = progressive_int(layer,duration);
+		layer_ = progressive_int(layer,duration);
 	} else if(duration != duration_){
-		drawing_layer_ = progressive_int(drawing_layer_.get_original(),duration);
+		layer_ = progressive_int(layer_.get_original(),duration);
 	}
 
 	if(!modifiers.empty()) {
@@ -468,8 +468,8 @@ std::vector<std::string> frame_parsed_parameters::debug_strings() const
 		v.emplace_back("primary_frame=" + utils::bool_string(primary_frame_));
 	}
 
-	if(!drawing_layer_.get_original().empty()) {
-		v.emplace_back("drawing_layer=" + drawing_layer_.get_original());
+	if(!layer_.get_original().empty()) {
+		v.emplace_back("layer=" + layer_.get_original());
 	}
 
 	return v;
@@ -599,7 +599,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 
 			SDL_Rect srcrect {0, 0, surf->w, submerge_height};
 
-			//drawing_buffer_add(drawing_layer, loc, x, y, surf, srcrect);
+			//drawing_queue_add(layer, loc, x, y, surf, srcrect);
 
 			if(submerge_height != surf->h) {
 				//the lower part will be transparent
@@ -612,7 +612,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 				srcrect.h = surf->h-submerge_height;
 				y += submerge_height;
 
-				//drawing_buffer_add(drawing_layer, loc, x, y, surf, srcrect);
+				//drawing_queue_add(layer, loc, x, y, surf, srcrect);
 			}
 		}
 #endif
@@ -928,10 +928,10 @@ const frame_parameters unit_frame::merge_parameters(int current_time, const fram
 	assert(engine_val.directional_y == 0);
 	result.directional_y = current_val.directional_y ? current_val.directional_y : animation_val.directional_y;
 
-	assert(engine_val.drawing_layer == drawing_buffer::LAYER_UNIT_DEFAULT - drawing_buffer::LAYER_UNIT_FIRST);
-	result.drawing_layer = current_val.drawing_layer != drawing_buffer::LAYER_UNIT_DEFAULT-drawing_buffer::LAYER_UNIT_FIRST
-		? current_val.drawing_layer
-		: animation_val.drawing_layer;
+	assert(engine_val.layer == drawing_queue::LAYER_UNIT_DEFAULT - drawing_queue::LAYER_UNIT_FIRST);
+	result.layer = current_val.layer != drawing_queue::LAYER_UNIT_DEFAULT-drawing_queue::LAYER_UNIT_FIRST
+		? current_val.layer
+		: animation_val.layer;
 
 	/** The engine provides us with a default value to compare to. Update if different */
 	result.auto_hflip = engine_val.auto_hflip;

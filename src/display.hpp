@@ -50,7 +50,7 @@ namespace wb {
 
 #include "animated.hpp"
 #include "display_context.hpp"
-#include "drawing_buffer.hpp"
+#include "drawing_queue.hpp"
 #include "filter_context.hpp"
 #include "font/sdl_ttf.hpp"
 #include "font/standard_colors.hpp"
@@ -819,7 +819,7 @@ public:
 	 * The font size is adjusted to the zoom factor.
 	 */
 	void draw_text_in_hex(const map_location& loc,
-		const drawing_buffer::drawing_layer layer, const std::string& text, size_t font_size,
+		const drawing_queue::layer layer, const std::string& text, size_t font_size,
 		color_t color, double x_in_hex=0.5, double y_in_hex=0.5);
 
 protected:
@@ -827,12 +827,12 @@ protected:
 	//TODO sort
 	size_t activeTeam_;
 
-	drawing_buffer drawing_buffer_;
+	drawing_queue drawing_queue_;
 
 public:
-	drawing_buffer& get_drawing_buffer()
+	drawing_queue& get_drawing_queue()
 	{
-		return drawing_buffer_;
+		return drawing_queue_;
 	}
 
 	/**
@@ -843,14 +843,14 @@ public:
 	 *                           drawing order.
 	 */
 
-	void drawing_buffer_add(const drawing_buffer::drawing_layer,
+	void drawing_queue_add(const drawing_queue::layer,
 			const map_location&, int, int, const surface&,
 			const SDL_Rect &clip = SDL_Rect())
 	{
 		UNUSED(clip);
 	}
 
-	void drawing_buffer_add(const drawing_buffer::drawing_layer,
+	void drawing_queue_add(const drawing_queue::layer,
 			const map_location&, int, int,
 			const std::vector<surface>&,
 			const SDL_Rect &clip = SDL_Rect())

@@ -192,7 +192,7 @@ void attack::draw_hex(const map_location& hex)
 	{
 		//@todo: replace this by either the use of transparency + LAYER_ATTACK_INDICATOR,
 		//or a dedicated layer
-		const drawing_buffer::drawing_layer layer = drawing_buffer::LAYER_FOOTSTEPS;
+		const drawing_queue::layer layer = drawing_queue::LAYER_FOOTSTEPS;
 
 		//calculate direction (valid for both hexes)
 		std::string direction_text = map_location::write_direction(
@@ -203,7 +203,7 @@ void attack::draw_hex(const map_location& hex)
 			int xpos = resources::screen->get_location_x(get_dest_hex());
 			int ypos = resources::screen->get_location_y(get_dest_hex());
 
-			resources::screen->drawing_buffer_add(layer, get_dest_hex(), xpos, ypos,
+			resources::screen->drawing_queue_add(layer, get_dest_hex(), xpos, ypos,
 					image::get_image("whiteboard/attack-indicator-src-" + direction_text + ".png"));
 		}
 		else if (hex == target_hex_) //add symbol to defender hex
@@ -211,7 +211,7 @@ void attack::draw_hex(const map_location& hex)
 			//int xpos = resources::screen->get_location_x(target_hex_);
 			//int ypos = resources::screen->get_location_y(target_hex_);
 
-			//resources::screen->drawing_buffer_add(layer, target_hex_, xpos, ypos,
+			//resources::screen->drawing_queue_add(layer, target_hex_, xpos, ypos,
 			//		image::get_texture("whiteboard/attack-indicator-dst-" + direction_text + ".png"));
 		}
 	}

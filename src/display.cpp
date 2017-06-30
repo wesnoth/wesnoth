@@ -206,7 +206,7 @@ display::display(const display_context* dc,
 	, animate_water_(true)
 	, flags_()
 	, activeTeam_(0)
-	, drawing_buffer_()
+	, drawing_queue_()
 	, map_screenshot_(false)
 	, reach_map_()
 	, reach_map_old_()
@@ -1385,7 +1385,7 @@ static void draw_background(const SDL_Rect& area, const std::string& image)
 }
 
 void display::draw_text_in_hex(const map_location& loc,
-		const drawing_buffer::drawing_layer layer, const std::string& text,
+		const drawing_queue::layer layer, const std::string& text,
 		size_t font_size, color_t color, double x_in_hex, double y_in_hex)
 {
 	if (text.empty()) return;
@@ -1401,12 +1401,12 @@ void display::draw_text_in_hex(const map_location& loc,
 	for (int dy=-1; dy <= 1; ++dy) {
 		for (int dx=-1; dx <= 1; ++dx) {
 			if (dx!=0 || dy!=0) {
-				drawing_buffer_add(layer, loc, x + dx, y + dy, back_surf);
+				drawing_queue_add(layer, loc, x + dx, y + dy, back_surf);
 			}
 		}
 	}
 
-	drawing_buffer_add(layer, loc, x, y, text_surf);
+	drawing_queue_add(layer, loc, x, y, text_surf);
 }
 
 void display::select_hex(map_location hex)
@@ -2722,13 +2722,13 @@ void display::draw(bool update, bool force)
 		 * draw_invalidated() also invalidates the halos, so also needs to be
 		 * ran if invalidated_.empty() == true.
 		 */
-		//drawing_buffer_.set_clip_rect(map_area());
+		//drawing_queue_.set_clip_rect(map_area());
 		if(!invalidated_.empty() || preferences::show_haloes()) {
 			draw_invalidated();
 			invalidated_.clear();
 		}
 
-		//drawing_buffer_.render_buffer();
+		//drawing_queue_.render_buffer();
 
 		post_commit();
 		draw_sidebar();
@@ -3006,10 +3006,10 @@ void display::draw_hex(const map_location& loc)
 	// tod may differ from tod if hex is illuminated.
 	const std::string& tod_hex_mask = tod.image_mask;
 	if(tod_hex_mask1 != nullptr || tod_hex_mask2 != nullptr) {
-		drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask1);
-		drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask2);
+		drawing_queue_add(drawing_queue::LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask1);
+		drawing_queue_add(drawing_queue::LAYER_TERRAIN_FG, loc, xpos, ypos, tod_hex_mask2);
 	} else if(!tod_hex_mask.empty()) {
-		drawing_buffer_add(drawing_buffer::LAYER_TERRAIN_FG, loc, xpos, ypos,
+		drawing_queue_add(drawing_queue::LAYER_TERRAIN_FG, loc, xpos, ypos,
 			image::get_image(tod_hex_mask,image::SCALED_TO_HEX));
 	}
 #endif
@@ -3041,8 +3041,8 @@ void display::draw_hex(const map_location& loc)
 			if (draw_num_of_bitmaps_) {
 				off_y -= text->h / 2;
 			}
-			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
-			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+			drawing_queue_add(drawing_queue::LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
+			drawing_queue_add(drawing_queue::LAYER_FOG_SHROUD, loc, off_x, off_y, text);
 		}
 
 		if(draw_terrain_codes_ && (game_config::debug || !shrouded(loc))) {
@@ -3059,8 +3059,8 @@ void display::draw_hex(const map_location& loc)
 			} else if (draw_num_of_bitmaps_ && !draw_coordinates_) {
 				off_y -= text->h / 2;
 			}
-			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
-			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+			drawing_queue_add(drawing_queue::LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
+			drawing_queue_add(drawing_queue::LAYER_FOG_SHROUD, loc, off_x, off_y, text);
 		}
 
 		if(draw_num_of_bitmaps_) {
@@ -3078,13 +3078,13 @@ void display::draw_hex(const map_location& loc)
 			if (draw_terrain_codes_) {
 				off_y += text->h / 2;
 			}
-			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
-			drawing_buffer_add(drawing_buffer::LAYER_FOG_SHROUD, loc, off_x, off_y, text);
+			drawing_queue_add(drawing_queue::LAYER_FOG_SHROUD, loc, off_x, off_y, bg);
+			drawing_queue_add(drawing_queue::LAYER_FOG_SHROUD, loc, off_x, off_y, text);
 		}
 	}
 
 	if(debug_foreground) {
-		drawing_buffer_add(drawing_buffer::LAYER_UNIT_DEFAULT, loc, xpos, ypos,
+		drawing_queue_add(drawing_queue::LAYER_UNIT_DEFAULT, loc, xpos, ypos,
 			image::get_image("terrain/foreground.png", image_type));
 	}
 #endif

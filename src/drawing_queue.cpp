@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "drawing_buffer.hpp"
+#include "drawing_queue.hpp"
 
 #include "display.hpp"
 #include "sdl/surface.hpp"
@@ -45,7 +45,7 @@ enum {
 
 } // end anon namespace
 
-drawing_buffer::buffer_key::layer_group_array drawing_buffer::buffer_key::layer_groups {{
+drawing_queue::buffer_key::layer_group_array drawing_queue::buffer_key::layer_groups {{
 	LAYER_TERRAIN_BG,
 	LAYER_UNIT_FIRST,
 	LAYER_UNIT_MOVE_DEFAULT,
@@ -53,7 +53,7 @@ drawing_buffer::buffer_key::layer_group_array drawing_buffer::buffer_key::layer_
 	LAYER_REACHMAP
 }};
 
-drawing_buffer::buffer_key::buffer_key(const map_location &loc, drawing_layer layer)
+drawing_queue::buffer_key::buffer_key(const map_location &loc, layer layer)
 	: key_(0)
 {
 	// Start with the index of last group entry...
@@ -85,7 +85,7 @@ drawing_buffer::buffer_key::buffer_key(const map_location &loc, drawing_layer la
 	key_ |= (static_cast<unsigned int>(layer) << SHIFT_LAYER) | static_cast<unsigned int>(loc.x + MAX_BORDER) / 2;
 }
 
-void drawing_buffer::render_buffer()
+void drawing_queue::render_buffer()
 {
 	// std::list::sort() is a stable sort
 	buffer_.sort();
