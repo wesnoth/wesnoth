@@ -29,7 +29,7 @@ static lg::log_domain log_arrows("arrows");
 #define DBG_ARR LOG_STREAM(debug, log_arrows)
 
 arrow::arrow(bool hidden)
-	: layer_(drawing_buffer::LAYER_ARROWS)
+	: layer_(drawing_queue::LAYER_ARROWS)
 	, color_("red")
 	, style_(STYLE_STANDARD)
 	, path_()

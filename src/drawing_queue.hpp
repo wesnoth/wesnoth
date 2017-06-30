@@ -23,10 +23,10 @@
 #include <list>
 #include <vector>
 
-class drawing_buffer
+class drawing_queue
 {
 public:
-	drawing_buffer()
+	drawing_queue()
 		: buffer_()
 	{
 	}
@@ -44,7 +44,7 @@ public:
 	/**
 	 * The various map rendering layers. This controls the internal rendering order.
 	 */
-	enum drawing_layer {
+	enum layer {
 		/** Layer for the terrain drawn behind units. */
 		LAYER_TERRAIN_BG,
 
@@ -151,7 +151,7 @@ private:
 	class buffer_key
 	{
 	public:
-		buffer_key(const map_location& loc, drawing_layer layer);
+		buffer_key(const map_location& loc, layer layer);
 
 		bool operator<(const buffer_key& rhs) const
 		{
@@ -161,7 +161,7 @@ private:
 	private:
 		unsigned int key_;
 
-		using layer_group_array = const std::array<drawing_layer, 4>;
+		using layer_group_array = const std::array<layer, 4>;
 
 		// The drawing is done per layer_group, with the range per group being [low, high].
 		// FIXME: better documentation.
@@ -172,7 +172,7 @@ private:
 	class blit_helper
 	{
 	public:
-		blit_helper(const drawing_layer layer,
+		blit_helper(const layer layer,
 				const map_location& loc,
 				const int x,
 				const int y,
@@ -186,7 +186,7 @@ private:
 		{
 		}
 
-		blit_helper(const drawing_layer layer,
+		blit_helper(const layer layer,
 				const map_location& loc,
 				const int x,
 				const int y,
