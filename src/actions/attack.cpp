@@ -1155,6 +1155,7 @@ namespace {
 				unit_ptr newunit(new unit(*reanimator, attacker.get_unit().side(), true, unit_race::MALE));
 				newunit->set_attacks(0);
 				newunit->set_movement(0, true);
+				newunit->set_facing(map_location::get_opposite_dir(attacker.get_unit().facing()));
 				// Apply variation
 				if (undead_variation != "null")
 				{
