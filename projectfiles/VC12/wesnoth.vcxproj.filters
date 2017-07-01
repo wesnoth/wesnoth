@@ -1316,6 +1316,9 @@
     <ClCompile Include="..\..\src\formula\function.cpp">
       <Filter>Formula</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\formula\function_gamestate.cpp">
+      <Filter>Formula</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\formula\string_utils.cpp">
       <Filter>Formula</Filter>
     </ClCompile>
@@ -1537,9 +1540,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\formula\function_gamestate.cpp">
-      <Filter>Formula</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2716,6 +2716,9 @@
     <ClInclude Include="..\..\src\formula\function.hpp">
       <Filter>Formula</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\formula\function_gamestate.hpp">
+      <Filter>Formula</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\formula\string_utils.hpp">
       <Filter>Formula</Filter>
     </ClInclude>
@@ -2984,9 +2987,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\preferences\lobby.hpp">
       <Filter>Preferences</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\formula\function_gamestate.hpp">
-      <Filter>Formula</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
