@@ -1,7 +1,18 @@
 Version 1.13.8+dev:
  * Campaigns:
+   * Heir to the Throne:
+     * Fixed thieves in 'Siege of Elensefar' getting duplicated.
+     * Fixed Void Armor not doing anything.
    * Secrets of the Ancients:
      * Fix delay when additional enemies appear in S21 (issue #1706)
+   * Under the Burning Suns:
+     * Fixed crash in 'Out of the Frying Pan'.
+     * Fixed Ethereal Shadow and Ethereal Nightgaunt having nightstalk even when
+       they shouldn't.
+ * Graphics:
+   * Added portrait for Giant Rat.
+   * Fixed transparency artifacts in scaled portraits and other message images
+     (issue #1570).
  * Language and i18n:
    * Updated translations: British English, Chinese (Simplified), Italian,
      Polish, Scottish Gaelic, Slovak, Spanish
@@ -22,6 +33,8 @@ Version 1.13.8+dev:
    * When set to remember your password, Wesnoth now encrypts it. It is still
      possible to obtain the password from preferences, but it's no longer as
      trivial as before.
+ * Units:
+   * Added new lvl0 Giant Scorpling, leveling into the Giant Scorpion.
  * User Interface:
    * Unit recall dialog now sorts the units by both level and required XP for
      their next level-up (issue #1738).
