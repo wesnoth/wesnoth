@@ -2462,26 +2462,6 @@ void display::invalidate_animations()
 		open_mp_list[i]->anim_comp().refresh();
 	}
 #endif
-
-	bool new_inval;
-	do {
-		new_inval = false;
-
-#ifndef _OPENMP
-		for(const unit& u : dc_->units()) {
-			new_inval |= u.anim_comp().invalidate(*this);
-		}
-
-		for(const unit* u : *fake_unit_man_) {
-			new_inval |= u->anim_comp().invalidate(*this);
-		}
-#else
-#pragma omp parallel for reduction(| : new_inval) shared(open_mp_list)
-		for(int i = 0; i < omp_iterations; i++) {
-			new_inval |= open_mp_list[i]->anim_comp().invalidate(*this);
-		}
-#endif
-	} while(new_inval);
 }
 
 void display::reset_standing_animations()

@@ -268,9 +268,7 @@ unit_animation::unit_animation(int start_time,
 	, unit_anim_(start_time,builder)
 	, src_()
 	, dst_()
-	, invalidated_(false)
 	, play_offscreen_(true)
-	, overlaped_hex_()
 {
 	add_frame(frame.duration(),frame,!frame.does_not_change());
 }
@@ -292,9 +290,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	, unit_anim_(cfg,frame_string)
 	, src_()
 	, dst_()
-	, invalidated_(false)
 	, play_offscreen_(true)
-	, overlaped_hex_()
 {
 	//if(!cfg["debug"].empty()) printf("DEBUG WML: FINAL\n%s\n\n",cfg.debug().c_str());
 
@@ -1082,9 +1078,6 @@ void unit_animation::restart_animation()
 
 void unit_animation::redraw(frame_parameters& value, halo::manager& halo_man)
 {
-	invalidated_ = false;
-	overlaped_hex_.clear();
-
 	value.primary_frame = true;
 	unit_anim_.redraw(value,src_,dst_, halo_man);
 
@@ -1100,48 +1093,6 @@ void unit_animation::clear_haloes()
 
 	for(auto& anim : sub_anims_) {
 		anim.second.clear_halo();
-	}
-}
-
-// TODO: see if this function can be removed!
-bool unit_animation::invalidate(frame_parameters& value)
-{
-	if(invalidated_) return false;
-
-	display* disp = display::get_singleton();
-	const bool complete_redraw = disp->tile_nearly_on_screen(src_) || disp->tile_nearly_on_screen(dst_);
-
-	if(overlaped_hex_.empty()) {
-		if(complete_redraw) {
-			value.primary_frame = true;
-			overlaped_hex_ = unit_anim_.get_overlaped_hex(value, src_, dst_);
-			value.primary_frame = false;
-
-			for(auto& anim : sub_anims_) {
-				std::set<map_location> tmp = anim.second.get_overlaped_hex(value, src_, dst_);
-				overlaped_hex_.insert(tmp.begin(), tmp.end());
-			}
-		} else {
-			// Offscreen animations only invalidate their own hex, no propagation,
-			// but we still need this to play sounds
-			overlaped_hex_.insert(src_);
-		}
-	}
-
-	if(complete_redraw) {
-		if( need_update()) {
-			invalidated_ = true;
-			return true;
-		} else {
-			return invalidated_;
-		}
-	} else {
-		if(need_minimal_update()) {
-			invalidated_ = true;
-			return true;
-		} else {
-			return false;
-		}
 	}
 }
 
