@@ -894,7 +894,6 @@ int game_lua_kernel::intf_shroud_op(lua_State *L, bool place_shroud)
 
 	game_display_->labels().recalculate_shroud();
 	game_display_->recalculate_minimap();
-	game_display_->invalidate_all();
 
 	return 0;
 }
@@ -2041,10 +2040,6 @@ int game_lua_kernel::intf_print(lua_State *L) {
 
 void game_lua_kernel::put_unit_helper(const map_location& loc)
 {
-	if(game_display_) {
-		game_display_->invalidate(loc);
-	}
-
 	units().erase(loc);
 	resources::whiteboard->on_kill_unit();
 }
@@ -3292,7 +3287,6 @@ int game_lua_kernel::intf_color_adjust(lua_State *L)
 		vconfig cfg(luaW_checkvconfig(L, 1));
 
 		game_display_->adjust_color_overlay(cfg["red"], cfg["green"], cfg["blue"]);
-		game_display_->invalidate_all();
 		game_display_->draw(true,true);
 	}
 	return 0;
@@ -3345,24 +3339,12 @@ int game_lua_kernel::intf_redraw(lua_State *L)
 		vconfig cfg(luaW_checkvconfig(L, 1));
 		bool clear_shroud(luaW_toboolean(L, 2));
 
-		// We do this twice so any applicable redraws happen both before and after
-		// any events caused by redrawing shroud are fired
-		bool result = screen.maybe_rebuild();
-		if (!result) {
-			screen.invalidate_all();
-		}
-
 		if (clear_shroud) {
 			side_filter filter(cfg, &game_state_);
 			for (const int side : filter.get_teams()){
 				actions::clear_shroud(side);
 			}
 			screen.recalculate_minimap();
-		}
-
-		result = screen.maybe_rebuild();
-		if (!result) {
-			screen.invalidate_all();
 		}
 
 		screen.draw(true,true);
@@ -3941,7 +3923,6 @@ int game_lua_kernel::intf_toggle_fog(lua_State *L, const bool clear)
 
 	// Flag a screen update.
 	game_display_->recalculate_minimap();
-	game_display_->invalidate_all();
 	return 0;
 }
 

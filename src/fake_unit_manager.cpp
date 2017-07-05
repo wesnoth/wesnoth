@@ -34,7 +34,6 @@ void fake_unit_manager::place_temporary_unit(internal_ptr_type u)
 		ERR_NG << "In fake_unit_manager::place_temporary_unit: attempt to add duplicate fake unit." << std::endl;
 	} else {
 		fake_units_.push_back(u);
-		my_display_.invalidate(u->get_location());
 	}
 }
 
@@ -50,7 +49,6 @@ int fake_unit_manager::remove_temporary_unit(internal_ptr_type u)
 		removed = std::distance(it, fake_units_.end());
 		//std::remove doesn't remove anything without using erase afterwards.
 		fake_units_.erase(it, fake_units_.end());
-		my_display_.invalidate(u->get_location());
 		// Redraw with no location to get rid of haloes
 		u->anim_comp().clear_haloes();
 	}

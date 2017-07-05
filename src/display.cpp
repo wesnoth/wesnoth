@@ -86,24 +86,6 @@ namespace {
 unsigned int display::zoom_ = DefaultZoom;
 unsigned int display::last_zoom_ = SmallZoom;
 
-void display::parse_team_overlays()
-{
-	const team& curr_team = dc_->teams()[playing_team()];
-	const team& prev_team = playing_team() == 0
-		? dc_->teams().back()
-		: dc_->get_team(playing_team());
-	for (const game_display::overlay_map::value_type i : *overlays_) {
-		const overlay& ov = i.second;
-		if (!ov.team_name.empty() &&
-			((ov.team_name.find(curr_team.team_name()) + 1) != 0) !=
-			((ov.team_name.find(prev_team.team_name()) + 1) != 0))
-		{
-			invalidate(i.first);
-		}
-	}
-}
-
-
 void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo, const std::string& team_name, const std::string& item_id, bool visible_under_fog)
 {
 	if (halo_man_) {
@@ -173,7 +155,6 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	, minimap_location_(sdl::empty_rect)
 	, redrawMinimap_(false)
 	, redraw_background_(true)
-	, invalidateAll_(true)
 	, grid_(false)
 	, diagnostic_label_(0)
 	, panelsDrawn_(false)
@@ -193,7 +174,6 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	, reports_()
 	, menu_buttons_()
 	, action_buttons_()
-	, invalidated_()
 	, mouseover_hex_overlay_(nullptr)
 	, tod_hex_mask1(nullptr)
 	, tod_hex_mask2(nullptr)
@@ -213,7 +193,6 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	, reach_map_changed_(true)
 	, overlays_(nullptr)
 	, fps_handle_(0)
-	, invalidated_hexes_(0)
 	, drawn_hexes_(0)
 	, idle_anim_(preferences::idle_anim())
 	, idle_anim_rate_(1.0)
@@ -261,10 +240,6 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	rebuild_all();
 	assert(builder_);
 	//builder_->rebuild_cache_all();
-	invalidate_all();
-
-	//invalidate_locations_in_rect(map_area());
-
 }
 
 display::~display()
@@ -812,7 +787,6 @@ bool display::screenshot(const std::string& filename, bool map_screenshot)
 
 		// we reroute render output to the screenshot surface and invalidate all
 		map_screenshot_= true ;
-		invalidateAll_ = true;
 		DBG_DP << "draw() with map_screenshot\n";
 		draw(true,true);
 
@@ -1272,14 +1246,9 @@ void display::draw_debugging_aids()
 			stream << "<tt>Time: " << std::setfill(' ') << std::setw(3) << *minmax_it.first << '/' << std::setw(3) << render_avg << '/' << std::setw(3) << *minmax_it.second << " ms</tt>\n";
 			if(game_config::debug) {
 				stream << "\nhex: " << drawn_hexes_ * 1.0 / sample_freq;
-
-				if(drawn_hexes_ != invalidated_hexes_) {
-					stream << " (" << (invalidated_hexes_ - drawn_hexes_) * 1.0 / sample_freq << ")";
-				}
 			}
 
 			drawn_hexes_ = 0;
-			invalidated_hexes_ = 0;
 
 			font::floating_label flabel(stream.str());
 			flabel.set_font_size(12);
@@ -1293,7 +1262,6 @@ void display::draw_debugging_aids()
 		font::remove_floating_label(fps_handle_);
 		fps_handle_ = 0;
 		drawn_hexes_ = 0;
-		invalidated_hexes_ = 0;
 	}
 }
 
@@ -1421,17 +1389,13 @@ void display::draw_text_in_hex(const map_location& loc,
 
 void display::select_hex(map_location hex)
 {
-	invalidate(selectedHex_);
 	selectedHex_ = hex;
-	invalidate(selectedHex_);
 	recalculate_minimap();
 }
 
 void display::highlight_hex(map_location hex)
 {
-	invalidate(mouseoverHex_);
 	mouseoverHex_ = hex;
-	invalidate(mouseoverHex_);
 }
 
 void display::set_diagnostic(const std::string& msg)
@@ -1461,10 +1425,6 @@ void display::draw_init()
 		return;
 	}
 
-	if(benchmark) {
-		invalidateAll_ = true;
-	}
-
 	if(!panelsDrawn_) {
 		draw_all_panels();
 		panelsDrawn_ = true;
@@ -1478,19 +1438,6 @@ void display::draw_init()
 		SDL_FillRect(screen, &clip_rect, 0x00000000);
 		draw_background(clip_rect, theme_.border().background_image);
 		redraw_background_ = false;
-
-		// Force a full map redraw
-		invalidateAll_ = true;
-	}
-
-	if(invalidateAll_) {
-		DBG_DP << "draw() with invalidateAll\n";
-
-		// toggle invalidateAll_ first to allow regular invalidations
-		invalidateAll_ = false;
-		invalidate_locations_in_rect(map_area());
-
-		redrawMinimap_ = true;
 	}
 }
 
@@ -1864,7 +1811,6 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 
 	labels().recalculate_labels();
 	redraw_background_ = true;
-	invalidate_all();
 
 	// Forces a redraw after zooming.
 	// This prevents some graphic glitches from occurring.
@@ -2470,100 +2416,6 @@ void display::refresh_report(const std::string& report_name, const config * new_
 	}
 }
 
-void display::invalidate_all()
-{
-	DBG_DP << "invalidate_all()\n";
-	invalidateAll_ = true;
-#ifdef _OPENMP
-#pragma omp critical(invalidated_)
-#endif //_OPENMP
-	invalidated_.clear();
-}
-
-bool display::invalidate(const map_location& loc)
-{
-	if(invalidateAll_)
-		return false;
-
-	bool tmp;
-#ifdef _OPENMP
-#pragma omp critical(invalidated_)
-#endif //_OPENMP
-	tmp = invalidated_.insert(loc).second;
-	return tmp;
-}
-
-bool display::invalidate(const std::set<map_location>& locs)
-{
-	if(invalidateAll_)
-		return false;
-	bool ret = false;
-	for (const map_location& loc : locs) {
-#ifdef _OPENMP
-#pragma omp critical(invalidated_)
-#endif //_OPENMP
-		ret = invalidated_.insert(loc).second || ret;
-	}
-	return ret;
-}
-
-bool display::propagate_invalidation(const std::set<map_location>& locs)
-{
-	if(invalidateAll_)
-		return false;
-
-	if(locs.size()<=1)
-		return false; // propagation never needed
-
-	bool result = false;
-#ifdef _OPENMP
-#pragma omp critical(invalidated_)
-#endif //_OPENMP
-	{
-		// search the first hex invalidated (if any)
-		std::set<map_location>::const_iterator i = locs.begin();
-		for(; i != locs.end() && invalidated_.count(*i) == 0 ; ++i) {}
-
-		if (i != locs.end()) {
-
-			// propagate invalidation
-			// 'i' is already in, but I suspect that splitting the range is bad
-			// especially because locs are often adjacents
-			size_t previous_size = invalidated_.size();
-			invalidated_.insert(locs.begin(), locs.end());
-			result = previous_size < invalidated_.size();
-		}
-	}
-	return result;
-}
-
-bool display::invalidate_visible_locations_in_rect(const SDL_Rect& rect)
-{
-	return invalidate_locations_in_rect(sdl::intersect_rects(map_area(),rect));
-}
-
-bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
-{
-	if(invalidateAll_)
-		return false;
-
-	bool result = false;
-	for (const map_location &loc : hexes_under_rect(rect)) {
-		result |= invalidate(loc);
-	}
-	return result;
-}
-
-void display::invalidate_animations_location(const map_location& loc) {
-	if (get_map().is_village(loc)) {
-		const int owner = dc_->village_owner(loc);
-		if (owner >= 0 && flags_[owner].need_update()
-		&& (!fogged(loc) || !dc_->teams()[currentTeam_].is_enemy(owner+1))) {
-			invalidate(loc);
-		}
-	}
-}
-
 void display::invalidate_animations()
 {
 	new_animation_frame();
@@ -2575,11 +2427,7 @@ void display::invalidate_animations()
 				continue;
 			}
 
-			if(builder_->update_animation(loc)) {
-				invalidate(loc);
-			} else {
-				invalidate_animations_location(loc);
-			}
+			builder_->update_animation(loc);
 		}
 	}
 
@@ -2698,46 +2546,6 @@ void display::read(const config& cfg)
 	color_adjust_.b = cfg["color_adjust_blue"].to_int(0);
 }
 
-void display::process_reachmap_changes()
-{
-	if (!reach_map_changed_) return;
-	if (reach_map_.empty() != reach_map_old_.empty()) {
-		// Invalidate everything except the non-darkened tiles
-		reach_map &full = reach_map_.empty() ? reach_map_old_ : reach_map_;
-
-		for (const auto& hex : get_visible_hexes()) {
-			reach_map::iterator reach = full.find(hex);
-			if (reach == full.end()) {
-				// Location needs to be darkened or brightened
-				invalidate(hex);
-			} else if (reach->second != 1) {
-				// Number needs to be displayed or cleared
-				invalidate(hex);
-			}
-		}
-	} else if (!reach_map_.empty()) {
-		// Invalidate only changes
-		reach_map::iterator reach, reach_old;
-		for (reach = reach_map_.begin(); reach != reach_map_.end(); ++reach) {
-			reach_old = reach_map_old_.find(reach->first);
-			if (reach_old == reach_map_old_.end()) {
-				invalidate(reach->first);
-			} else {
-				if (reach_old->second != reach->second) {
-					invalidate(reach->first);
-				}
-				reach_map_old_.erase(reach_old);
-			}
-		}
-		for (reach_old = reach_map_old_.begin(); reach_old != reach_map_old_.end(); ++reach_old) {
-			invalidate(reach_old->first);
-		}
-	}
-	reach_map_old_ = reach_map_;
-	reach_map_changed_ = false;
-}
-
-
 /* Debugging aid to slow things down a bit. Don't ever enable this in a release! */
 #ifdef SLOW_THINGS_DOWN
 #undef SLOW_THINGS_DOWN
@@ -2791,8 +2599,7 @@ void display::draw(bool update, bool force)
 	// save it as the previous invalidated, and merge with the previous invalidated_
 	// we merge with the previous redraw because if a hex had a unit last redraw but
 	// not this one, nobody will tell us to redraw (cleanup)
-	previous_invalidated_.swap(invalidated_);
-	invalidated_.insert(previous_invalidated_.begin(),previous_invalidated_.end());
+
 	// these new invalidations cannot cause any propagation because
 	// if a hex was invalidated last turn but not this turn, then
 	// * case of no unit in neighbor hex=> no propagation
@@ -2802,19 +2609,6 @@ void display::draw(bool update, bool force)
 #ifdef SLOW_THINGS_DOWN
 		int simulate_delay = 0;
 #endif
-
-		/*
-		 * draw_invalidated() also invalidates the halos, so also needs to be
-		 * ran if invalidated_.empty() == true.
-		 */
-		//drawing_queue_.set_clip_rect(map_area());
-		if(!invalidated_.empty() || preferences::show_haloes()) {
-			draw_invalidated();
-			invalidated_.clear();
-		}
-
-		//drawing_queue_.render_buffer();
-
 		post_commit();
 		draw_sidebar();
 
@@ -2871,51 +2665,13 @@ void display::redraw_everything()
 	}
 
 	int ticks1 = SDL_GetTicks();
-	invalidate_all();
+	//invalidate_all();
 	int ticks2 = SDL_GetTicks();
 	draw(true,true);
 	int ticks3 = SDL_GetTicks();
 	LOG_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
 
 	complete_redraw_event_.notify_observers();
-}
-
-
-void display::draw_invalidated() {
-	return;
-//	log_scope("display::draw_invalidated");
-	SDL_Rect clip_rect = get_clip_rect();
-	surface& screen = get_screen_surface();
-	clip_rect_setter set_clip_rect(screen, &clip_rect);
-	for (const map_location& loc : get_visible_hexes()) {
-		int xpos = get_location_x(loc);
-		int ypos = get_location_y(loc);
-
-		//const bool on_map = get_map().on_board(loc);
-		SDL_Rect hex_rect = sdl::create_rect(xpos, ypos, zoom_, zoom_);
-		if(!sdl::rects_overlap(hex_rect,clip_rect)) {
-			continue;
-		}
-		draw_hex(loc);
-		drawn_hexes_+=1;
-	}
-	invalidated_hexes_ += invalidated_.size();
-
-	if (dc_->teams().empty())
-	{
-		// The unit drawer can't function without teams
-		return;
-	}
-
-	unit_drawer drawer = unit_drawer(*this);
-
-	for (const map_location& loc : invalidated_) {
-		unit_map::const_iterator u_it = dc_->units().find(loc);
-		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
-		if (u_it != dc_->units().end()
-				&& (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id()))
-			drawer.redraw_unit(*u_it);
-	}
 }
 
 

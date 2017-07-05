@@ -555,8 +555,6 @@ void move::calculate_move_cost()
 
 void move::redraw()
 {
-	display::get_singleton()->invalidate(get_source_hex());
-	display::get_singleton()->invalidate(get_dest_hex());
 	update_arrow_style();
 }
 

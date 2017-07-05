@@ -142,11 +142,8 @@ namespace
 			animator.start_animations();
 			animator.wait_for_end();
 			animator.set_all_standing();
-			display::get_singleton()->invalidate(loc);
 			events::pump();
 		}
-
-		display::get_singleton()->invalidate_all();
 
 		return true;
 	}
