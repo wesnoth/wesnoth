@@ -99,7 +99,7 @@ public:
 	}
 	void redraw(frame_parameters& value, halo::manager& halo_man);
 	void clear_haloes();
-	bool invalidate(frame_parameters& value );
+
 	std::string debug() const;
 	friend std::ostream& operator << (std::ostream& outstream, const unit_animation& u_animation);
 
@@ -182,9 +182,7 @@ private:
 	map_location src_;
 	map_location dst_;
 	// optimization
-	bool invalidated_;
 	bool play_offscreen_;
-	std::set<map_location> overlaped_hex_;
 };
 
 class unit_animator
