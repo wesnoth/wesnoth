@@ -77,9 +77,6 @@ protected:
 	size_t unit_underlying_id_;
 	std::string unit_id_;
 	map_location loc_;
-
-private:
-	void init();
 };
 
 /** Dumps a suppose_dead on a stream, for debug purposes. */

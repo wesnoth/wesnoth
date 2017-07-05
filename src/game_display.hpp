@@ -136,8 +136,6 @@ protected:
 	 */
 	virtual void post_draw() override;
 
-	virtual void draw_invalidated() override;
-
 	virtual void post_commit() override;
 
 	virtual void draw_hex(const map_location& loc) override;
@@ -215,8 +213,6 @@ private:
 	map_location attack_indicator_dst_;
 
 	pathfind::marked_route route_;
-
-	void invalidate_route();
 
 	map_location displayedUnitHex_;
 

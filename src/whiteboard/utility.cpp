@@ -142,13 +142,11 @@ temporary_unit_hider::~temporary_unit_hider()
 void ghost_owner_unit(unit* unit)
 {
 	unit->anim_comp().set_disabled_ghosted(false);
-	display::get_singleton()->invalidate(unit->get_location());
 }
 
 void unghost_owner_unit(unit* unit)
 {
 	unit->anim_comp().set_standing(true);
-	display::get_singleton()->invalidate(unit->get_location());
 }
 
 bool has_actions()

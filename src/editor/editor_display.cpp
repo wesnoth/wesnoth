@@ -42,26 +42,21 @@ editor_display::editor_display(editor_controller& controller, reports& reports_o
 void editor_display::add_brush_loc(const map_location& hex)
 {
 	brush_locations_.insert(hex);
-	invalidate(hex);
 }
 
 void editor_display::set_brush_locs(const std::set<map_location>& hexes)
 {
-	invalidate(brush_locations_);
 	brush_locations_ = hexes;
-	invalidate(brush_locations_);
 }
 
 void editor_display::clear_brush_locs()
 {
-	invalidate(brush_locations_);
 	brush_locations_.clear();
 }
 
 void editor_display::remove_brush_loc(const map_location& hex)
 {
 	brush_locations_.erase(hex);
-	invalidate(hex);
 }
 
 void editor_display::rebuild_terrain(const map_location &loc) {

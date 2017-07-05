@@ -265,7 +265,6 @@ void replay_controller::update_gui()
 {
 	controller_.get_display().recalculate_minimap();
 	controller_.get_display().redraw_minimap();
-	controller_.get_display().invalidate_all();
 }
 
 void replay_controller::handle_generic_event(const std::string& name)
@@ -371,7 +370,6 @@ void replay_controller::replay_show_team1()
 void replay_controller::update_teams()
 {
 	update_viewing_player();
-	controller_.get_display().invalidate_all();
 	update_gui();
 }
 

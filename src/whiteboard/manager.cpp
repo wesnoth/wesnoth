@@ -847,8 +847,6 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 
 		print_help_once();
 
-		display::get_singleton()->invalidate(defender_loc);
-		display::get_singleton()->invalidate(attacker_loc);
 		erase_temp_move();
 		LOG_WB << *viewer_actions() << "\n";
 	}

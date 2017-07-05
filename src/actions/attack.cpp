@@ -1248,7 +1248,6 @@ void attack::unit_killed(unit_info& attacker,
 	attacker.xp_ = game_config::kill_xp(defender.get_unit().level());
 	defender.xp_ = 0;
 
-	display::get_singleton()->invalidate(attacker.loc_);
 
 	game_events::entity_location death_loc(defender.loc_, defender.id_);
 	game_events::entity_location attacker_loc(attacker.loc_, attacker.id_);
@@ -1340,10 +1339,6 @@ void attack::unit_killed(unit_info& attacker,
 			resources::game_events->pump().fire("unit_placed", reanim_loc);
 
 			preferences::encountered_units().insert(newunit->type_id());
-
-			if(update_display_) {
-				display::get_singleton()->invalidate(death_loc);
-			}
 		}
 	} else {
 		LOG_NG << "unit not reanimated\n";
@@ -1492,11 +1487,6 @@ void attack::perform()
 	unit_display::unit_sheath_weapon(a_.loc_, a_.valid() ? &a_.get_unit() : nullptr, a_stats_->weapon, d_stats_->weapon,
 			d_.loc_, d_.valid() ? &d_.get_unit() : nullptr);
 
-	if(update_display_) {
-		game_display::get_singleton()->invalidate_unit();
-		display::get_singleton()->invalidate(a_.loc_);
-		display::get_singleton()->invalidate(d_.loc_);
-	}
 
 	if(OOS_error_) {
 		replay::process_error(errbuf_.str());

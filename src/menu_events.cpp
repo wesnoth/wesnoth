@@ -963,13 +963,11 @@ void menu_handler::execute_gotos(mouse_handler& mousehandler, int side)
 void menu_handler::toggle_ellipses()
 {
 	preferences::set_ellipses(!preferences::ellipses());
-	gui_->invalidate_all();
 }
 
 void menu_handler::toggle_grid()
 {
 	preferences::set_grid(!preferences::grid());
-	gui_->invalidate_all();
 }
 
 void menu_handler::unit_hold_position(mouse_handler& mousehandler, int side_num)
@@ -977,7 +975,6 @@ void menu_handler::unit_hold_position(mouse_handler& mousehandler, int side_num)
 	const unit_map::iterator un = units().find(mousehandler.get_selected_hex());
 	if(un != units().end() && un->side() == side_num && un->movement_left() >= 0) {
 		un->toggle_hold_position();
-		gui_->invalidate(mousehandler.get_selected_hex());
 
 		mousehandler.set_current_paths(pathfind::paths());
 
@@ -992,7 +989,6 @@ void menu_handler::end_unit_turn(mouse_handler& mousehandler, int side_num)
 	const unit_map::iterator un = units().find(mousehandler.get_selected_hex());
 	if(un != units().end() && un->side() == side_num && un->movement_left() >= 0) {
 		un->toggle_user_end_turn();
-		gui_->invalidate(mousehandler.get_selected_hex());
 
 		mousehandler.set_current_paths(pathfind::paths());
 
@@ -1927,18 +1923,15 @@ void console_handler::do_event()
 void console_handler::do_toggle_draw_coordinates()
 {
 	menu_handler_.gui_->set_draw_coordinates(!menu_handler_.gui_->get_draw_coordinates());
-	menu_handler_.gui_->invalidate_all();
 }
 void console_handler::do_toggle_draw_terrain_codes()
 {
 	menu_handler_.gui_->set_draw_terrain_codes(!menu_handler_.gui_->get_draw_terrain_codes());
-	menu_handler_.gui_->invalidate_all();
 }
 
 void console_handler::do_toggle_draw_num_of_bitmaps()
 {
 	menu_handler_.gui_->set_draw_num_of_bitmaps(!menu_handler_.gui_->get_draw_num_of_bitmaps());
-	menu_handler_.gui_->invalidate_all();
 }
 
 void console_handler::do_toggle_whiteboard()

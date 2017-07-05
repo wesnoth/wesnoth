@@ -196,11 +196,6 @@ void recall::draw_hex(const map_location& hex)
 	}
 }
 
-void recall::redraw()
-{
-	display::get_singleton()->invalidate(recall_hex_);
-}
-
 action::error recall::check_validity() const
 {
 	//Check that destination hex is still free

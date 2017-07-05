@@ -456,7 +456,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 	if (name == "fail") { //testcase for bug #18488
 		assert(i.valid());
 	}
-	display::get_singleton()->invalidate(loc);
+
 	game_display::get_singleton()->invalidate_unit();
 
 	return true;

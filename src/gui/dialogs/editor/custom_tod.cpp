@@ -291,9 +291,6 @@ void custom_tod::update_tod_display()
 
 	disp->update_tod(&get_selected_tod());
 
-	// invalidate all tiles so they are redrawn with the new ToD tint next
-	disp->invalidate_all();
-
 	// redraw tiles
 	disp->draw(false);
 }

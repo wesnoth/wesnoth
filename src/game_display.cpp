@@ -125,7 +125,6 @@ void game_display::new_turn()
 					tod_hex_mask2.assign(new_mask);
 				}
 
-				invalidate_all();
 
 				const int cur_ticks = SDL_GetTicks();
 				const int wanted_ticks = starting_ticks + i*frame_time;
@@ -143,7 +142,6 @@ void game_display::new_turn()
 
 	display::update_tod();
 
-	invalidate_all();
 }
 
 void game_display::select_hex(map_location hex)
@@ -217,8 +215,6 @@ void game_display::pre_draw()
 		w->pre_draw();
 	}
 
-	process_reachmap_changes();
-
 	/**
 	 * @todo FIXME: must modify changed, but best to do it at the
 	 * floating_label level
@@ -230,25 +226,6 @@ void game_display::post_draw()
 {
 	if (std::shared_ptr<wb::manager> w = wb_.lock()) {
 		w->post_draw();
-	}
-}
-
-void game_display::draw_invalidated()
-{
-	return; // DONE
-
-	display::draw_invalidated();
-	if (fake_unit_man_->empty()) {
-		return;
-	}
-	unit_drawer drawer = unit_drawer(*this);
-
-	for (const unit* temp_unit : *fake_unit_man_) {
-		const map_location& loc = temp_unit->get_location();
-		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
-		if (invalidated_.find(loc) != invalidated_.end()
-				&& (request == exclusive_unit_draw_requests_.end() || request->second == temp_unit->id()))
-			drawer.redraw_unit(*temp_unit);
 	}
 }
 
@@ -459,7 +436,6 @@ void game_display::set_game_mode(const game_mode mode)
 {
 	if(mode != mode_) {
 		mode_ = mode;
-		invalidate_all();
 	}
 }
 
@@ -645,26 +621,14 @@ bool game_display::unhighlight_reach()
 	}
 }
 
-void game_display::invalidate_route()
-{
-	for(std::vector<map_location>::const_iterator i = route_.steps.begin();
-	    i != route_.steps.end(); ++i) {
-		invalidate(*i);
-	}
-}
-
 void game_display::set_route(const pathfind::marked_route *route)
 {
-	invalidate_route();
-
 	if(route != nullptr) {
 		route_ = *route;
 	} else {
 		route_.steps.clear();
 		route_.marks.clear();
 	}
-
-	invalidate_route();
 }
 
 void game_display::float_label(const map_location& loc, const std::string& text, const color_t& color)
@@ -693,14 +657,8 @@ int& game_display::debug_highlight(const map_location& loc)
 void game_display::set_attack_indicator(const map_location& src, const map_location& dst)
 {
 	if (attack_indicator_src_ != src || attack_indicator_dst_ != dst) {
-		invalidate(attack_indicator_src_);
-		invalidate(attack_indicator_dst_);
-
 		attack_indicator_src_ = src;
 		attack_indicator_dst_ = dst;
-
-		invalidate(attack_indicator_src_);
-		invalidate(attack_indicator_dst_);
 	}
 }
 
@@ -722,7 +680,6 @@ void game_display::begin_game()
 {
 	in_game_ = true;
 	create_buttons();
-	invalidate_all();
 }
 
 void game_display::needs_rebuild(bool b) {
@@ -735,7 +692,6 @@ bool game_display::maybe_rebuild() {
 	if (needs_rebuild_) {
 		needs_rebuild_ = false;
 		recalculate_minimap();
-		invalidate_all();
 		rebuild_all();
 		return true;
 	}
