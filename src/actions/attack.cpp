@@ -856,7 +856,6 @@ namespace {
 			actions::recalculate_fog(defender_side);
 			if (update_display_){
 				resources::screen->redraw_minimap();
-				resources::screen->draw(true, true);
 			}
 			fire_event("attack_end");
 			throw attack_end_exception();
@@ -1319,7 +1318,6 @@ namespace {
 
 		if (update_display_){
 			resources::screen->invalidate_unit();
-			resources::screen->draw(true, true);
 		}
 
 		if(OOS_error_) {

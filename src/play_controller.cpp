@@ -926,7 +926,6 @@ void play_controller::update_gui_to_player(const int team_index, const bool obse
 {
 	gui_->set_team(team_index, observe);
 	gui_->recalculate_minimap();
-	gui_->draw(true,true);
 }
 
 void play_controller::do_autosave()

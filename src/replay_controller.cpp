@@ -265,7 +265,6 @@ void replay_controller::update_gui()
 {
 	controller_.get_display().recalculate_minimap();
 	controller_.get_display().redraw_minimap();
-	controller_.get_display().draw();
 }
 
 void replay_controller::handle_generic_event(const std::string& name)

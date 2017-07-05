@@ -290,9 +290,6 @@ void custom_tod::update_tod_display()
 	// redraw_everything() instead.
 
 	disp->update_tod(&get_selected_tod());
-
-	// redraw tiles
-	disp->draw(false);
 }
 
 void custom_tod::update_lawful_bonus(window& window)

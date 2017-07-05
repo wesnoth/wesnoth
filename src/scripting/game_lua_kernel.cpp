@@ -3265,7 +3265,6 @@ int game_lua_kernel::intf_color_adjust(lua_State *L)
 		vconfig cfg(luaW_checkvconfig(L, 1));
 
 		game_display_->adjust_color_overlay(cfg["red"], cfg["green"], cfg["blue"]);
-		game_display_->draw(true,true);
 	}
 	return 0;
 }
@@ -3323,8 +3322,6 @@ int game_lua_kernel::intf_redraw(lua_State *L)
 			}
 			screen.recalculate_minimap();
 		}
-
-		screen.draw(true,true);
 	}
 	return 0;
 }
@@ -3616,7 +3613,6 @@ int game_lua_kernel::intf_scroll(lua_State * L)
 
 	if (game_display_) {
 		game_display_->scroll(x, y, true);
-		game_display_->draw(true, true);
 	}
 
 	return 0;
