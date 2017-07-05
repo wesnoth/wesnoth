@@ -1702,21 +1702,37 @@ bool display::scroll(int xmove, int ymove, bool force)
 		return false;
 	}
 
-	int new_x = xpos_ += xmove;
-	int new_y = ypos_ += ymove;
+	// No move offset, do nothing.
+	if(xmove == 0 && ymove == 0) {
+		return false;
+	}
+
+	int new_x = xpos_ + xmove;
+	int new_y = ypos_ + ymove;
 
 	// Validate the new coordinates.
 	bounds_check_position(new_x, new_y);
+
+	// Camera position doesn't change, exit.
+	if(xpos_ == new_x && ypos_ == new_y) {
+		return false;
+	}
 
 	// Set the new camera position.
 	xpos_ = new_x;
 	ypos_ = new_y;
 
-	// Get offset to adjust map labels by.
-	//const int dx = xpos_ - orig_x ; // dx = -xmove;
-	//const int dy = ypos_ - orig_y ; // dy = -ymove;
-
-	//font::scroll_floating_labels(dx, dy);
+	/* Adjust floating label positions. This only affects labels whose position is anchored
+	 * to the map instead of the screen. In order to do that, we want to adjust their drawing
+	 * coordinates in the opposite direction of the screen scroll.
+	 *
+	 * The check a few lines up prevents any scrolling from happening if the camera position
+	 * doesn't change. Without that, the label still scroll even when the map edge is reached.
+	 * If that's removed, the following formula should work instead:
+	 *
+	 * const int label_[x,y]_adjust = [x,y]pos_ - new_[x,y];
+	 */
+	font::scroll_floating_labels(-xmove, -ymove);
 
 	labels().recalculate_shroud();
 
