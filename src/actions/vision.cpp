@@ -325,8 +325,8 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
                                 move_unit_spectator * spectator, bool instant)
 {
 	// Give animations a chance to progress; see bug #20324.
-	if ( !instant  && display::get_singleton() )
-		display::get_singleton()->draw(true);
+	// TODO: ^ is this something we need to worry about now that external draw calls are removed?
+	// vultraz, 7/5/2017
 
 	bool cleared_something = false;
 	// Dummy variables to make some logic simpler.
@@ -340,15 +340,15 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 	if ( view_team_ != &view_team ) {
 		calculate_jamming(&view_team);
 		// Give animations a chance to progress; see bug #20324.
-		if ( !instant  && display::get_singleton() )
-			display::get_singleton()->draw(true);
+		// TODO: ^ is this something we need to worry about now that external draw calls are removed?
+		// vultraz, 7/5/2017
 	}
 
 	// Determine the hexes to clear.
 	pathfind::vision_path sight(costs, slowed, sight_range, view_loc, jamming_);
 	// Give animations a chance to progress; see bug #20324.
-	if ( !instant  && display::get_singleton() )
-		display::get_singleton()->draw(true);
+	// TODO: ^ is this something we need to worry about now that external draw calls are removed?
+	// vultraz, 7/5/2017
 
 	// Clear the fog.
 	for (const pathfind::paths::step &dest : sight.destinations) {

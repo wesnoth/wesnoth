@@ -692,7 +692,6 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 		disp->scroll_to_tile(loc,game_display::ONSCREEN,true,false);
 	}
 
-	disp->draw();
 	u->set_hidden(false);
 	animator.add_animation(&*u, "recruited", loc, leader_loc);
 	animator.start_animations();

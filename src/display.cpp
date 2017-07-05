@@ -788,7 +788,7 @@ bool display::screenshot(const std::string& filename, bool map_screenshot)
 		// we reroute render output to the screenshot surface and invalidate all
 		map_screenshot_= true ;
 		DBG_DP << "draw() with map_screenshot\n";
-		draw(true,true);
+		//draw(true,true);
 
 		// finally save the image on disk
 		res = image::save_image(map_screenshot_surf_,filename);
@@ -1814,7 +1814,7 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 
 	// Forces a redraw after zooming.
 	// This prevents some graphic glitches from occurring.
-	draw();
+	//draw();
 
 	return true;
 }
@@ -1866,7 +1866,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 
 	if(scroll_type == WARP || scroll_type == ONSCREEN_WARP || turbo_speed() > 2.0 || preferences::scroll_speed() > 99) {
 		scroll(xmove,ymove,true);
-		draw();
+		//draw();
 		return;
 	}
 
@@ -1923,7 +1923,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 		scroll(dx,dy,true);
 		x_old += dx;
 		y_old += dy;
-		draw();
+		//draw();
 	}
 }
 
@@ -2533,75 +2533,6 @@ void display::read(const config& cfg)
 
 // #define SLOW_THINGS_DOWN
 
-void display::draw()
-{
-	draw_new();
-	//draw(true, false);
-}
-
-void display::draw(bool update)
-{
-	draw(update, false);
-}
-
-void display::draw(bool update, bool force)
-{
-	return;
-
-	// log_scope("display::draw");
-
-	if(video_.update_locked()) {
-		return;
-	}
-
-	if (dirty_) {
-		flip_locker flip_lock(video_);
-		dirty_ = false;
-		redraw_everything();
-		return;
-	}
-
-	// Trigger cache rebuild when preference gets changed
-	if (animate_water_ != preferences::animate_water()) {
-		animate_water_ = preferences::animate_water();
-		builder_->rebuild_cache_all();
-	}
-
-	set_scontext_unsynced leave_synced_context;
-
-	draw_init();
-
-	pre_draw();
-
-	// invalidate all that needs to be invalidated
-	invalidate_animations();
-	// at this stage we have everything that needs to be invalidated for this redraw
-	// save it as the previous invalidated, and merge with the previous invalidated_
-	// we merge with the previous redraw because if a hex had a unit last redraw but
-	// not this one, nobody will tell us to redraw (cleanup)
-
-	// these new invalidations cannot cause any propagation because
-	// if a hex was invalidated last turn but not this turn, then
-	// * case of no unit in neighbor hex=> no propagation
-	// * case of unit in hex but was there last turn=>its hexes are invalidated too
-	// * case of unit in hex not there last turn => it moved, so was invalidated previously
-	if(!get_map().empty()) {
-#ifdef SLOW_THINGS_DOWN
-		int simulate_delay = 0;
-#endif
-		post_commit();
-		draw_sidebar();
-
-#ifdef SLOW_THINGS_DOWN
-		SDL_Delay(2 * simulate_delay + rand() % 20);
-#endif
-	}
-
-	draw_wrap(update, force);
-
-	post_draw();
-}
-
 void display::redraw_everything()
 {
 	if(video_.update_locked()) {
@@ -2647,7 +2578,7 @@ void display::redraw_everything()
 	int ticks1 = SDL_GetTicks();
 	//invalidate_all();
 	int ticks2 = SDL_GetTicks();
-	draw(true,true);
+	//draw(true,true);
 	int ticks3 = SDL_GetTicks();
 	LOG_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
 
@@ -2888,7 +2819,7 @@ void display::draw_hex(const map_location& loc)
 #endif
 }
 
-void display::draw_new()
+void display::draw()
 {
 	// Execute any pre-draw actions from derived classes.
 	pre_draw();
