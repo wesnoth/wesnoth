@@ -156,34 +156,6 @@ void unit_animation_component::clear_haloes ()
 	if(anim_ ) anim_->clear_haloes();
 }
 
-bool unit_animation_component::invalidate (const display & disp)
-{
-	bool result = false;
-
-	// Very early calls, anim not initialized yet
-	if(get_animation()) {
-		frame_parameters params;
-		const gamemap & map = disp.get_map();
-		const t_translation::terrain_code terrain = map.get_terrain(u_.loc_);
-		const terrain_type& terrain_info = map.get_terrain_info(terrain);
-
-		int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
-		if (u_.is_flying() && height_adjust < 0) {
-			height_adjust = 0;
-		}
-		params.y -= height_adjust;
-		params.halo_y -= height_adjust;
-		params.image_mod = u_.image_mods();
-		params.halo_mod = u_.TC_image_mods();
-		params.image= u_.default_anim_image();
-
-		result |= get_animation()->invalidate(params);
-	}
-
-	return result;
-
-}
-
 void unit_animation_component::reset_after_advance(const unit_type * newtype)
 {
 	if (newtype) {

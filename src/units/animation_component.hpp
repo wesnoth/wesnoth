@@ -86,9 +86,6 @@ public:
 		bool with_bars,  const std::string &text = "",
 		color_t text_color = {}, STATE state = STATE_ANIM);
 
-	/** Invalidates an animation with respect to a display object, preparing it for redraw. */
-	bool invalidate(const display & disp);
-
 	/** Intermittently activates the idling animations in place of the standing animations. Used by display object. */
 	void refresh();
 
