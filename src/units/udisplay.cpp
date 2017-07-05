@@ -74,7 +74,6 @@ static void teleport_unit_between(const map_location& a, const map_location& b,
 
 	temp_unit.set_location(a);
 	if ( !disp.fogged(a) ) { // teleport
-		disp.invalidate(a);
 		temp_unit.set_facing(a.get_relative_dir(b));
 		disp.scroll_to_tiles(a, b, game_display::ONSCREEN, true, 0.0, false);
 		unit_animator animator;
@@ -85,7 +84,6 @@ static void teleport_unit_between(const map_location& a, const map_location& b,
 
 	temp_unit.set_location(b);
 	if ( !disp.fogged(b) ) { // teleport
-		disp.invalidate(b);
 		temp_unit.set_facing(a.get_relative_dir(b));
 		disp.scroll_to_tiles(b, a, game_display::ONSCREEN, true, 0.0, false);
 		unit_animator animator;
@@ -125,7 +123,6 @@ static int move_unit_between(const map_location& a, const map_location& b,
 	}
 
 	temp_unit->set_location(a);
-	disp.invalidate(a);
 	temp_unit->set_facing(a.get_relative_dir(b));
 	animator.replace_anim_if_invalid(temp_unit.get(),"movement",a,b,step_num,
 			false,"",{0,0,0},unit_animation::hit_type::INVALID,nullptr,nullptr,step_left);
@@ -264,7 +261,6 @@ void unit_mover::start(unit_ptr u)
 	temp_unit_ptr_->set_location(path_[0]);
 	temp_unit_ptr_->set_facing(path_[0].get_relative_dir(path_[1]));
 	temp_unit_ptr_->anim_comp().set_standing(false);
-	disp_->invalidate(path_[0]);
 
 	// If the unit can be seen here by the viewing side:
 	if ( !is_enemy_ || !temp_unit_ptr_->invisible(path_[0], disp_->get_disp_context()) ) {
@@ -347,7 +343,6 @@ void unit_mover::proceed_to(unit_ptr u, size_t path_index, bool update, bool wai
 			{
 				// prevent the unit from disappearing if we scroll here with i == 0
 				temp_unit_ptr_->set_location(path_[current_]);
-				disp_->invalidate(path_[current_]);
 				// scroll in as much of the remaining path as possible
 				if ( temp_unit_ptr_->anim_comp().get_animation() )
 					temp_unit_ptr_->anim_comp().get_animation()->pause_animation();
@@ -394,19 +389,6 @@ void unit_mover::wait_for_anims()
 		animator_.wait_until(wait_until_);
 		// debug code, see unit_frame::redraw()
 		// std::cout << "   end\n";
-		/// @todo For wesnoth 1.14+: check if efficient for redrawing?
-		/// Check with large animated units too make sure artifacts are
-		/// not left on screen after unit movement in particular.
-		if ( disp_ ) { // Should always be true if we get here.
-			// Invalidate the hexes around the move that prompted this wait.
-			map_location arr[6];
-			get_adjacent_tiles(path_[current_-1], arr);
-			for ( unsigned i = 0; i < 6; ++i )
-				disp_->invalidate(arr[i]);
-			get_adjacent_tiles(path_[current_], arr);
-			for ( unsigned i = 0; i < 6; ++i )
-				disp_->invalidate(arr[i]);
-		}
 	}
 
 	// Reset data.
@@ -473,10 +455,6 @@ void unit_mover::finish(unit_ptr u, map_location::DIRECTION dir)
 	// Facing gets set even when not animating.
 	u->set_facing(dir == map_location::NDIRECTIONS ? final_dir : dir);
 	u->anim_comp().set_standing(true);	// Need to reset u's animation so the new facing takes effect.
-
-	// Redraw path ends (even if not animating).
-	disp_->invalidate(path_.front());
-	disp_->invalidate(end_loc);
 }
 
 

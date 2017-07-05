@@ -236,14 +236,7 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 		resources::game_events->pump().fire("unit_placed", loc);
 	}
 
-	if (resources::screen!=nullptr) {
-
-		if (invalidate_ ) {
-			resources::screen->invalidate(loc);
-		}
-
-		if (animate) {
-			unit_display::unit_recruited(loc);
-		}
+	if (animate) {
+		unit_display::unit_recruited(loc);
 	}
 }

@@ -143,8 +143,6 @@ protected:
 	 */
 	void post_draw();
 
-	void draw_invalidated();
-
 	void post_commit();
 
 	void draw_hex(const map_location& loc);
@@ -243,8 +241,6 @@ private:
 	pathfind::marked_route route_;
 
 	const tod_manager* tod_manager_;
-
-	void invalidate_route();
 
 	map_location displayedUnitHex_;
 

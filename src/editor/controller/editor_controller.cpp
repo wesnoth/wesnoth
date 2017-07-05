@@ -970,17 +970,14 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_EDITOR_DRAW_COORDINATES:
 			gui().set_draw_coordinates(!gui().get_draw_coordinates());
 			preferences::editor::set_draw_hex_coordinates(gui().get_draw_coordinates());
-			gui().invalidate_all();
 			return true;
 		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
 			gui().set_draw_terrain_codes(!gui().get_draw_terrain_codes());
 			preferences::editor::set_draw_terrain_codes(gui().get_draw_terrain_codes());
-			gui().invalidate_all();
 			return true;
 		case HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS:
 			gui().set_draw_num_of_bitmaps(!gui().get_draw_num_of_bitmaps());
 			preferences::editor::set_draw_num_of_bitmaps(gui().get_draw_num_of_bitmaps());
-			gui().invalidate_all();
 			return true;
 		case HOTKEY_EDITOR_REMOVE_LOCATION: {
 			location_palette* lp = dynamic_cast<location_palette*>(&toolkit_->get_palette_manager()->active_palette());
@@ -1109,7 +1106,6 @@ void editor_controller::preferences()
 void editor_controller::toggle_grid()
 {
 	preferences::set_grid(!preferences::grid());
-	gui_->invalidate_all();
 }
 
 void editor_controller::unit_description()

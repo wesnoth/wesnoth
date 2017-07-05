@@ -57,7 +57,6 @@ void arrow::hide()
 
 	if (SCREEN)
 	{
-		invalidate_arrow_path(path_);
 		SCREEN->remove_arrow(*this);
 	}
 }
@@ -81,7 +80,6 @@ void arrow::set_path(arrow_path_t const& path)
 		update_symbols();
 		if(!hidden_)
 		{
-			invalidate_arrow_path(previous_path_);
 			notify_arrow_changed();
 		}
 	}
@@ -89,8 +87,6 @@ void arrow::set_path(arrow_path_t const& path)
 
 void arrow::reset()
 {
-	invalidate_arrow_path(previous_path_);
-	invalidate_arrow_path(path_);
 	previous_path_.clear();
 	path_.clear();
 	symbols_map_.clear();
@@ -165,7 +161,6 @@ void arrow::update_symbols()
 	}
 
 	symbols_map_.clear();
-	invalidate_arrow_path(path_);
 
 	const std::string mods = "~RC(FF00FF>"+ color_ + ")"; //magenta to current color
 
@@ -283,16 +278,6 @@ void arrow::update_symbols()
 			image = image::locator(game_config::images::missing);
 		}
 		symbols_map_[*hex] = image;
-	}
-}
-
-void arrow::invalidate_arrow_path(arrow_path_t const& path)
-{
-	if(!SCREEN) return;
-
-	for (map_location const& loc : path)
-	{
-		SCREEN->invalidate(loc);
 	}
 }
 

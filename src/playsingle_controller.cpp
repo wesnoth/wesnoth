@@ -574,7 +574,6 @@ void playsingle_controller::play_ai_turn()
 	gui_->recalculate_minimap();
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
-	gui_->invalidate_all();
 }
 
 

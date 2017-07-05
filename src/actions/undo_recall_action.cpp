@@ -51,7 +51,6 @@ void recall_action::write(config & cfg) const
  */
 bool recall_action::undo(int side)
 {
-	game_display & gui = *resources::screen;
 	unit_map &   units = resources::gameboard->units();
 	team &current_team = resources::gameboard->get_team(side);
 
@@ -76,9 +75,7 @@ bool recall_action::undo(int side)
 	}
 
 	current_team.recall_list().add(un);
-	// invalidate before erasing allow us
-	// to also do the overlapped hexes
-	gui.invalidate(recall_loc);
+
 	units.erase(recall_loc);
 	this->return_village();
 	execute_undo_umc_wml();

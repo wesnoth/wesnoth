@@ -52,7 +52,6 @@ void recruit_action::write(config & cfg) const
  */
 bool recruit_action::undo(int side)
 {
-	game_display & gui = *resources::screen;
 	unit_map &   units = resources::gameboard->units();
 	team &current_team = resources::gameboard->get_team(side);
 
@@ -69,9 +68,6 @@ bool recruit_action::undo(int side)
 	//MP_COUNTDOWN take away recruit bonus
 	current_team.set_action_bonus_count(current_team.action_bonus_count() - 1);
 
-	// invalidate before erasing allow us
-	// to also do the overlapped hexes
-	gui.invalidate(recruit_loc);
 	units.erase(recruit_loc);
 	this->return_village();
 	execute_undo_umc_wml();

@@ -172,9 +172,6 @@ bool get_village(const map_location& loc, int side, bool *action_timebonus, bool
 	}
 
 	if(not_defeated) {
-		if (resources::screen != nullptr) {
-			resources::screen->invalidate(loc);
-		}
 		return t->get_village(loc, old_owner_side, fire_event ? resources::gamedata : nullptr);
 	}
 
@@ -537,7 +534,6 @@ namespace { // Private helpers for move_unit()
 			// but it works.
 			move_it_->anim_comp().set_standing(false);
 			disp.invalidate_unit_after_move(*move_loc_, *step_to);
-			disp.invalidate(*step_to);
 			move_loc_ = step_to;
 
 			// Show this move.
@@ -917,8 +913,6 @@ namespace { // Private helpers for move_unit()
 				}
 			}
 
-			// Make sure this hex is drawn correctly.
-			disp.invalidate(hex);
 			// Fire sighted events.
 			event_mutated_ |= actor_sighted(*ambusher, &sight_cache);
 			post_wml();

@@ -1095,7 +1095,6 @@ namespace {
 	{
 		attacker.xp_ = game_config::kill_xp(defender.get_unit().level());
 		defender.xp_ = 0;
-		resources::screen->invalidate(attacker.loc_);
 
 		game_events::entity_location death_loc(defender.loc_, defender.id_);
 		game_events::entity_location attacker_loc(attacker.loc_, attacker.id_);
@@ -1173,9 +1172,6 @@ namespace {
 				resources::game_events->pump().fire("unit_placed", reanim_loc);
 
 				preferences::encountered_units().insert(newunit->type_id());
-				if (update_display_) {
-					resources::screen->invalidate(death_loc);
-				}
 			}
 		}
 		else
@@ -1323,8 +1319,6 @@ namespace {
 
 		if (update_display_){
 			resources::screen->invalidate_unit();
-			resources::screen->invalidate(a_.loc_);
-			resources::screen->invalidate(d_.loc_);
 			resources::screen->draw(true, true);
 		}
 

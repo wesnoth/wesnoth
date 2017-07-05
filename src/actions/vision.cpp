@@ -270,17 +270,6 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
 		}
 	}
 
-	// Possible screen invalidation.
-	if ( was_fogged ) {
-		resources::screen->invalidate(loc);
-		// Need to also invalidate adjacent hexes to get rid of the
-		// "fog edge" graphics.
-		map_location adjacent[6];
-		get_adjacent_tiles(loc, adjacent);
-		for ( int i = 0; i != 6; ++i )
-			resources::screen->invalidate(adjacent[i]);
-	}
-
 	// Check for units?
 	if ( result  &&  check_units  &&  loc != event_non_loc ) {
 		// Uncovered a unit?
@@ -719,9 +708,6 @@ void recalculate_fog(int side)
 	}
 
 	tm.refog();
-	// Invalidate the screen before clearing the shroud.
-	// This speeds up the invalidations within clear_shroud_unit().
-	resources::screen->invalidate_all();
 
 	shroud_clearer clearer;
 	for (const unit &u : resources::gameboard->units())

@@ -659,7 +659,6 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 	// Make sure the unit appears (if either !show or the animation is suppressed).
 	new_unit_itor->set_hidden(false);
 	if ( resources::screen != nullptr ) {
-		resources::screen->invalidate(current_loc);
 		resources::screen->redraw_minimap();
 	}
 

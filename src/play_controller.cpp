@@ -489,10 +489,6 @@ void play_controller::init_side_end()
 	if (current_side() == 1 || !init_side_done_now_)
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 
-	if (!is_skipping_replay()){
-		gui_->invalidate_all();
-	}
-
 	if (!is_skipping_replay() && current_team().get_scroll_to_leader()){
 		gui_->scroll_to_leader(current_side(), game_display::ONSCREEN,false);
 	}
@@ -871,10 +867,6 @@ void play_controller::check_victory()
 
 	gamestate().board_.check_victory(continue_level, found_player, found_network_player, invalidate_all, not_defeated, remove_from_carryover_on_defeat_);
 
-	if (invalidate_all) {
-		gui_->invalidate_all();
-	}
-
 	if (continue_level) {
 		return ;
 	}
@@ -934,7 +926,6 @@ void play_controller::update_gui_to_player(const int team_index, const bool obse
 {
 	gui_->set_team(team_index, observe);
 	gui_->recalculate_minimap();
-	gui_->invalidate_all();
 	gui_->draw(true,true);
 }
 
@@ -1073,8 +1064,6 @@ std::set<std::string> play_controller::all_players() const
 
 void play_controller::play_side()
 {
-	//check for team-specific items in the scenario
-	gui_->parse_team_overlays();
 	do {
 		update_viewing_player();
 		{

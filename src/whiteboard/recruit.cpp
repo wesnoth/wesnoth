@@ -160,12 +160,6 @@ void recruit::draw_hex(map_location const& hex)
 	}
 }
 
-void recruit::redraw()
-{
-	resources::screen->invalidate(recruit_hex_);
-}
-
-
 unit_ptr recruit::create_corresponding_unit()
 {
 	unit_type const* type = unit_types.find(unit_name_);

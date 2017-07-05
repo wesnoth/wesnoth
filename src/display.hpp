@@ -133,12 +133,6 @@ public:
 	std::string remove_exclusive_draw(const map_location& loc);
 
 	/**
-	 * Check the overlay_map for proper team-specific overlays to be
-	 * displayed/hidden
-	 */
-	void parse_team_overlays();
-
-	/**
 	 * Functions to add and remove overlays from locations.
 	 *
 	 * An overlay is an image that is displayed on top of the tile.
@@ -409,34 +403,10 @@ public:
 
 	void draw_minimap_units();
 
-	/** Function to invalidate all tiles. */
-	void invalidate_all();
-
-	/** Function to invalidate a specific tile for redrawing. */
-	bool invalidate(const map_location& loc);
-
-	bool invalidate(const std::set<map_location>& locs);
-
-	/**
-	 * If this set is partially invalidated, invalidate all its hexes.
-	 * Returns if any new invalidation was needed
-	 */
-	bool propagate_invalidation(const std::set<map_location>& locs);
-
-	/** invalidate all hexes under the rectangle rect (in screen coordinates) */
-	bool invalidate_locations_in_rect(const SDL_Rect& rect);
-	bool invalidate_visible_locations_in_rect(const SDL_Rect& rect);
-
 	/**
 	 * Function to invalidate animated terrains and units which may have changed.
 	 */
 	void invalidate_animations();
-
-	/**
-	 * Per-location invalidation called by invalidate_animations()
-	 * Extra game per-location invalidation (village ownership)
-	 */
-	void invalidate_animations_location(const map_location& loc);
 
 	/**
 	 * mouseover_hex_overlay_ require a prerendered surface
@@ -691,14 +661,6 @@ protected:
 	virtual const SDL_Rect& get_clip_rect();
 
 	/**
-	 * Only called when there's actual redrawing to do. Loops through
-	 * invalidated locations and redraws them. Derived classes can override
-	 * this, possibly to insert pre- or post-processing around a call to the
-	 * base class's function.
-	 */
-	virtual void draw_invalidated();
-
-	/**
 	 * Hook for actions to take right after draw() renders the drawing buffer.
 	 * No action here by default.
 	 */
@@ -756,7 +718,6 @@ protected:
 	SDL_Rect minimap_location_;
 	bool redrawMinimap_;
 	bool redraw_background_;
-	bool invalidateAll_;
 	bool grid_;
 	int diagnostic_label_;
 	bool panelsDrawn_;
@@ -786,8 +747,6 @@ protected:
 	std::map<std::string, surface> reportSurfaces_;
 	std::map<std::string, config> reports_;
 	std::vector<std::shared_ptr<gui::button>> menu_buttons_, action_buttons_;
-	std::set<map_location> invalidated_;
-	std::set<map_location> previous_invalidated_;
 	surface mouseover_hex_overlay_;
 	// If we're transitioning from one time of day to the next,
 	// then we will use these two masks on top of all hexes when we blit.
@@ -890,7 +849,6 @@ protected:
 	reach_map reach_map_;
 	reach_map reach_map_old_;
 	bool reach_map_changed_;
-	void process_reachmap_changes();
 
 	typedef std::multimap<map_location, overlay> overlay_map;
 
@@ -902,7 +860,6 @@ private:
 	/** Handle for the label which displays frames per second. */
 	int fps_handle_;
 	/** Count work done for the debug info displayed under fps */
-	int invalidated_hexes_;
 	int drawn_hexes_;
 
 	bool idle_anim_;

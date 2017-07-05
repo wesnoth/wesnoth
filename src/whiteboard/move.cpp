@@ -555,8 +555,6 @@ void move::calculate_move_cost()
 
 void move::redraw()
 {
-	resources::screen->invalidate(get_source_hex());
-	resources::screen->invalidate(get_dest_hex());
 	update_arrow_style();
 }
 

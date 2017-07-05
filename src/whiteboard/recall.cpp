@@ -196,11 +196,6 @@ void recall::draw_hex(map_location const& hex)
 	}
 }
 
-void recall::redraw()
-{
-	resources::screen->invalidate(recall_hex_);
-}
-
 action::error recall::check_validity() const
 {
 	//Check that destination hex is still free

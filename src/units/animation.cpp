@@ -1102,6 +1102,7 @@ void unit_animation::clear_haloes()
 	}
 }
 
+// TODO: see if this function can be removed!
 bool unit_animation::invalidate(frame_parameters& value)
 {
 	if(invalidated_) return false;
@@ -1128,16 +1129,13 @@ bool unit_animation::invalidate(frame_parameters& value)
 
 	if(complete_redraw) {
 		if( need_update()) {
-			disp->invalidate(overlaped_hex_);
 			invalidated_ = true;
 			return true;
 		} else {
-			invalidated_ = disp->propagate_invalidation(overlaped_hex_);
 			return invalidated_;
 		}
 	} else {
 		if(need_minimal_update()) {
-			disp->invalidate(overlaped_hex_);
 			invalidated_ = true;
 			return true;
 		} else {

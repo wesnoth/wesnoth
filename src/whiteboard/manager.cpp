@@ -840,8 +840,6 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 
 		print_help_once();
 
-		resources::screen->invalidate(defender_loc);
-		resources::screen->invalidate(attacker_loc);
 		erase_temp_move();
 		LOG_WB << *viewer_actions() << "\n";
 	}

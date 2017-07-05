@@ -140,7 +140,6 @@ void context_manager::refresh_all()
 	gui_.rebuild_all();
 	get_map_context().set_needs_terrain_rebuild(false);
 	gui_.create_buttons();
-	gui_.invalidate_all();
 	gui_.draw(false);
 	get_map_context().clear_changed_locations();
 	gui_.recalculate_minimap();
@@ -546,18 +545,10 @@ void context_manager::refresh_after_action(bool drag_part)
 		{
 			gui_.rebuild_all();
 			get_map_context().set_needs_terrain_rebuild(false);
-			gui_.invalidate_all();
 		} else {
 			for(const map_location& loc : changed_locs) {
 				gui_.rebuild_terrain(loc);
 			}
-			gui_.invalidate(changed_locs);
-		}
-	} else {
-		if(get_map_context().everything_changed()) {
-			gui_.invalidate_all();
-		} else {
-			gui_.invalidate(changed_locs);
 		}
 	}
 

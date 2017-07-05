@@ -452,7 +452,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 	if (name == "fail") { //testcase for bug #18488
 		assert(i.valid());
 	}
-	resources::screen->invalidate(loc);
 	resources::screen->invalidate_unit();
 
 	return true;
