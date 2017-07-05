@@ -2908,29 +2908,6 @@ void display::draw_hex(const map_location& loc)
 	}
 
 	//
-	// Shroud and fog, main images.
-	//
-	if(is_shrouded || is_fogged) {
-
-		// If is_shrouded is false, is_fogged is true
-		const std::string& weather_image = is_shrouded
-			? get_variant(shroud_images_, loc)
-			: get_variant(fog_images_, loc);
-
-		// TODO: image type
-		render_scaled_to_zoom(image::get_texture(weather_image), xpos, ypos);
-	}
-
-	//
-	// Shroud and fog, transitions to main hexes.
-	//
-	if(!is_shrouded) {
-		for(const texture& t : get_fog_shroud_images(loc, image_type)) {
-			render_scaled_to_zoom(t, xpos, ypos);
-		}
-	}
-
-	//
 	// Mouseover overlays (TODO: delegate to editor)
 	//
 #if 0
@@ -3105,17 +3082,55 @@ void display::draw_new()
 	draw_all_panels();
 	draw_minimap();
 
+	// Draw the gamemap and its contents (units, etc)
 	{
 		SDL_Rect map_area_rect = map_area();
 		render_clip_rect_setter setter(&map_area_rect);
 
-		// Draw the gamemap and its contents (units, etc);
-		for(const map_location& loc : get_visible_hexes()) {
+		const rect_of_hexes& visible_hexes = get_visible_hexes();
+
+		// First render pass.
+		for(const map_location& loc : visible_hexes) {
 			draw_hex(loc);
 		}
-	}
 
-	post_commit();
+		// Right now just handles halos - see game_display.
+		post_commit();
+
+		// Second render pass.
+		for(const map_location& loc : visible_hexes) {
+			const int xpos = get_location_x(loc);
+			const int ypos = get_location_y(loc);
+
+			image::TYPE image_type = get_image_type(loc);
+
+			const bool is_shrouded = shrouded(loc);
+			const bool is_fogged = fogged(loc);
+
+			//
+			// Shroud and fog, main images.
+			//
+			if(is_shrouded || is_fogged) {
+
+				// If is_shrouded is false, is_fogged is true
+				const std::string& weather_image = is_shrouded
+					? get_variant(shroud_images_, loc)
+					: get_variant(fog_images_, loc);
+
+				// TODO: image type
+				render_scaled_to_zoom(image::get_texture(weather_image), xpos, ypos);
+			}
+
+			//
+			// Shroud and fog, transitions to main hexes.
+			//
+			if(!is_shrouded) {
+				for(const texture& t : get_fog_shroud_images(loc, image_type)) {
+					render_scaled_to_zoom(t, xpos, ypos);
+				}
+			}
+		}
+	}
 
 	// Draw map labels.
 	font::draw_floating_labels();
@@ -3129,9 +3144,11 @@ void display::draw_new()
 
 	// Call any redraw observers.
 	// FIXME: makes the editor slow.
+#if 0
 	for(std::function<void(display&)> f : redraw_observers_) {
-	//	f(*this);
+		f(*this);
 	}
+#endif
 
 	// Execute any post-draw actions from derived classes.
 	post_draw();
