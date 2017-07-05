@@ -60,7 +60,6 @@ attack::attack(size_t team_index, bool hidden, unit& u, const map_location& targ
 	attack_movement_cost_(get_unit()->attacks()[weapon_choice_].movement_used()),
 	temp_movement_subtracted_(0)
 {
-	this->init();
 }
 
 attack::attack(const config& cfg, bool hidden)
@@ -80,34 +79,15 @@ attack::attack(const config& cfg, bool hidden)
 
 	// Construct attack_movement_cost_
 	attack_movement_cost_ = get_unit()->attacks()[weapon_choice_].movement_used();
-
-	this->init();
-}
-
-void attack::init()
-{
-	display::get_singleton()->invalidate(target_hex_);
 }
 
 attack::~attack()
 {
-	invalidate();
 }
 
 void attack::accept(visitor& v)
 {
 	v.visit(shared_from_this());
-}
-
-/* private */
-void attack::invalidate()
-{
-	if(display::get_singleton())
-	{
-		//invalidate dest and target hex so attack indicator is properly cleared
-		display::get_singleton()->invalidate(get_dest_hex());
-		display::get_singleton()->invalidate(target_hex_);
-	}
 }
 
 void attack::execute(bool& success, bool& complete)
@@ -220,7 +200,6 @@ void attack::draw_hex(const map_location& hex)
 void attack::redraw()
 {
 	move::redraw();
-	display::get_singleton()->invalidate(target_hex_);
 }
 
 action::error attack::check_validity() const
