@@ -50,6 +50,10 @@ window::window(const std::string& title,
 						 false);
 	}
 
+	if(!(info_.flags & SDL_RENDERER_TARGETTEXTURE)) {
+		throw exception("Render-to-texture not supported or enabled!", false);
+	}
+
 	// Set default blend mode to blend.
 	SDL_SetRenderDrawBlendMode(*this, SDL_BLENDMODE_BLEND);
 
