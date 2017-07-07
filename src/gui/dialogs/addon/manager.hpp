@@ -125,6 +125,7 @@ private:
 	void apply_filters(window& window);
 	void show_help(window& window);
 
+	boost::dynamic_bitset<> get_name_filter_visibility(const window& window) const;
 	boost::dynamic_bitset<> get_status_filter_visibility(const window& window) const;
 	boost::dynamic_bitset<> get_type_filter_visibility(const window& window) const;
 
