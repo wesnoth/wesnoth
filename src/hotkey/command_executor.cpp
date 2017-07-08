@@ -556,7 +556,11 @@ static void event_execute( const SDL_Event& event, command_executor* executor)
 		if(!CKey::is_uncomposable(event.key) && !(mods & KMOD_CTRL) && !(mods & KMOD_ALT) && !(mods & KMOD_GUI)) {
 				return;
 		}
-	} else if(event.type == SDL_TEXTINPUT && strnlen(event.text.text, 32) != 1) {
+	} else if(event.type == SDL_TEXTINPUT && (
+		(event.text.text[0] <= '\0') ||
+		(event.text.text[0] > '\x7F') ||
+		(event.text.text[1] != '\0')))
+	{
 		return;
 	}
 
