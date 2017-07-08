@@ -47,7 +47,7 @@ public:
 	}
 
 private:
-	void on_filtertext_changed(text_box_base* textbox, const std::string& text);
+	void on_filtertext_changed(text_box_base* textbox);
 
 	std::vector<selectable_item*> orders_;
 

@@ -244,7 +244,7 @@ addon_manager::addon_manager(addons_client& client)
 {
 }
 
-void addon_manager::on_filtertext_changed(text_box_base* textbox, const std::string& text)
+void addon_manager::on_filtertext_changed(text_box_base* textbox)
 {
 	apply_filters(*textbox->get_window());
 }
@@ -309,7 +309,7 @@ void addon_manager::pre_show(window& window)
 	addon_list& list = find_widget<addon_list>(&window, "addons", false);
 
 	text_box& filter = find_widget<text_box>(&window, "filter", false);
-	filter.set_text_changed_callback(std::bind(&addon_manager::on_filtertext_changed, this, _1, _2));
+	filter.set_text_changed_callback(std::bind(&addon_manager::on_filtertext_changed, this, _1));
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(list,
