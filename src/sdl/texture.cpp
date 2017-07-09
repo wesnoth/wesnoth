@@ -100,7 +100,7 @@ void texture::destroy_texture()
 	}
 }
 
-texture::info::info(const texture& t)
+texture::info::info(SDL_Texture* t)
 	: format(0)
 	, access(0)
 	, w(0)
