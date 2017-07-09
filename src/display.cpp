@@ -2111,12 +2111,6 @@ const SDL_Rect& display::get_clip_rect()
 	return map_area();
 }
 
-
-void display::draw_hex_cursor(const map_location& /*loc*/)
-{
-	/** DO NOTHING */
-}
-
 image::TYPE display::get_image_type(const map_location& /*loc*/)
 {
 	return image::TOD_COLORED;
@@ -2527,11 +2521,6 @@ void display::redraw_everything()
 //
 // NEW RENDERING CODE =========================================================================
 //
-
-void display::draw_hex(const map_location& /*loc*/)
-{
-	// DO NOTHING
-}
 
 void display::draw_hex_overlays()
 {

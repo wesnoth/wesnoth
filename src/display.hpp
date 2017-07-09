@@ -40,12 +40,14 @@ class arrow;
 class reports;
 class team;
 
-namespace halo {
-	class manager;
+namespace halo
+{
+class manager;
 }
 
-namespace wb {
-	class manager;
+namespace wb
+{
+class manager;
 }
 
 #include "animated.hpp"
@@ -56,15 +58,13 @@ namespace wb {
 #include "font/standard_colors.hpp"
 #include "image.hpp" //only needed for enums (!)
 #include "key.hpp"
-#include "time_of_day.hpp"
+#include "overlay.hpp"
 #include "sdl/rect.hpp"
 #include "theme.hpp"
+#include "time_of_day.hpp"
+#include "utils/functional.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
-
-#include "overlay.hpp"
-
-#include "utils/functional.hpp"
 
 #include <SDL_rect.h>
 
@@ -78,47 +78,83 @@ class gamemap;
 class display : public filter_context, public video2::draw_layering
 {
 public:
-	display(const display_context * dc, CVideo& video, std::weak_ptr<wb::manager> wb,
-			reports & reports_object,
-			const config& theme_cfg, const config& level, bool auto_join=true);
+	display(const display_context* dc,
+			CVideo& video,
+			std::weak_ptr<wb::manager> wb,
+			reports& reports_object,
+			const config& theme_cfg,
+			const config& level,
+			bool auto_join = true);
+
 	virtual ~display();
-	/// Returns the display object if a display object exists. Otherwise it returns nullptr.
-	/// the display object represents the game gui which handles themewml and drawing the map.
-	/// A display object only exists during a game or while the mapeditor is running.
-	static display* get_singleton() { return singleton_ ;}
 
-	bool show_everything() const { return !dont_show_all_ && !is_blindfolded(); }
+	/**
+	 * Returns the display object if a display object exists. Otherwise it returns nullptr.
+	 * Rhe display object represents the game gui which handles ThemeWML and drawing the map.
+	 * A display object only exists during a game or while the map editor is running.
+	 */
+	static display* get_singleton()
+	{
+		return singleton_;
+	}
 
-	const gamemap& get_map() const { return dc_->map(); }
+	bool show_everything() const
+	{
+		return !dont_show_all_ && !is_blindfolded();
+	}
 
-	const std::vector<team>& get_teams() const {return dc_->teams();}
+	const gamemap& get_map() const
+	{
+		return dc_->map();
+	}
+
+	const std::vector<team>& get_teams() const
+	{
+		return dc_->teams();
+	}
 
 	/** The playing team is the team whose turn it is. */
-	size_t playing_team() const { return activeTeam_; }
+	size_t playing_team() const
+	{
+		return activeTeam_;
+	}
 
 	bool team_valid() const;
 
 	/** The viewing team is the team currently viewing the game. */
-	size_t viewing_team() const { return currentTeam_; }
-	int viewing_side() const { return currentTeam_ + 1; }
+	size_t viewing_team() const
+	{
+		return currentTeam_;
+	}
+
+	int viewing_side() const
+	{
+		return currentTeam_ + 1;
+	}
 
 	/**
 	 * Sets the team controlled by the player using the computer.
 	 * Data from this team will be displayed in the game status.
 	 */
-	void set_team(size_t team, bool observe=false);
+	void set_team(size_t team, bool observe = false);
 
 	/**
 	 * set_playing_team sets the team whose turn it currently is
 	 */
 	void set_playing_team(size_t team);
 
-
 	/**
 	 * Cancels all the exclusive draw requests.
 	 */
-	void clear_exclusive_draws() { exclusive_unit_draw_requests_.clear(); }
-	const unit_map& get_units() const {return dc_->units();}
+	void clear_exclusive_draws()
+	{
+		exclusive_unit_draw_requests_.clear();
+	}
+
+	const unit_map& get_units() const
+	{
+		return dc_->units();
+	}
 
 	/**
 	 * Allows a unit to request to be the only one drawn in its hex. Useful for situations where
@@ -128,6 +164,7 @@ public:
 	 * @return false if there's already an exclusive draw request for this location.
 	 */
 	bool add_exclusive_draw(const map_location& loc, unit& unit);
+
 	/**
 	 * Cancels an exclusive draw request.
 	 * @return The id of the unit whose exclusive draw request was canceled, or else
@@ -141,9 +178,12 @@ public:
 	 * An overlay is an image that is displayed on top of the tile.
 	 * One tile may have multiple overlays.
 	 */
-	void add_overlay(const map_location& loc, const std::string& image,
-		const std::string& halo="", const std::string& team_name="",const std::string& item_id="",
-		bool visible_under_fog = true);
+	void add_overlay(const map_location& loc,
+			const std::string& image,
+			const std::string& halo = "",
+			const std::string& team_name = "",
+			const std::string& item_id = "",
+			bool visible_under_fog = true);
 
 	/** remove_overlay will remove all overlays on a tile. */
 	void remove_overlay(const map_location& loc);
@@ -157,15 +197,43 @@ public:
 	 */
 	void reload_map();
 
-	void change_display_context(const display_context * dc);
-	const display_context & get_disp_context() const { return *dc_; }
-	virtual const tod_manager & get_tod_man() const; //!< This is implemented properly in game_display. The display:: impl could be pure virtual here but we decide not to.
-	virtual const game_data * get_game_data() const { return nullptr; }
-	virtual game_lua_kernel * get_lua_kernel() const { return nullptr; } //!< TODO: display should not work as a filter context, this was only done for expedience so that the unit animation code can have a convenient and correct filter context readily available. a more correct solution is most likely to pass it a filter context from unit_animator when it needs to be matched. (it's not possible to store filter contexts with animations, because animations are cached across scenarios.) Note that after these lines which return nullptr, unit filters used in animations will not be able to make use of wml variables or lua scripting (but the latter was a bad idea anyways because it would be slow to constantly recompile the script.)
+	void change_display_context(const display_context* dc);
+
+	const display_context& get_disp_context() const
+	{
+		return *dc_;
+	}
+
+	/** This is implemented properly in game_display. The display:: impl could be pure virtual here but we decide not to. */
+	virtual const tod_manager& get_tod_man() const;
+
+	virtual const game_data* get_game_data() const
+	{
+		return nullptr;
+	}
+
+	/**
+	 * TODO: display should not work as a filter context, this was only done for expedience so that the unit
+	 * animation code can have a convenient and correct filter context readily available. a more correct solution is
+	 * most likely to pass it a filter context from unit_animator when it needs to be matched. (it's not possible to
+	 * store filter contexts with animations, because animations are cached across scenarios.) Note that after these
+	 * lines which return nullptr, unit filters used in animations will not be able to make use of wml variables or
+	 * lua scripting (but the latter was a bad idea anyways because it would be slow to constantly recompile the
+	 * script.)
+	 */
+	virtual game_lua_kernel* get_lua_kernel() const
+	{
+		return nullptr;
+	}
 
 	void reset_halo_manager();
-	void reset_halo_manager(halo::manager & hm);
-	halo::manager & get_halo_manager() { return *halo_man_; }
+
+	void reset_halo_manager(halo::manager& hm);
+
+	halo::manager& get_halo_manager()
+	{
+		return *halo_man_;
+	}
 
 	/**
 	 * Applies r,g,b coloring to the map.
@@ -184,59 +252,101 @@ public:
 	 */
 	void adjust_color_overlay(int r, int g, int b);
 
-
 	/** Gets the underlying screen object. */
-	CVideo& video() { return video_; }
+	CVideo& video()
+	{
+		return video_;
+	}
 
 	/** return the screen surface or the surface used for map_screenshot. */
-	surface& get_screen_surface() { return map_screenshot_ ? map_screenshot_surf_ : video_.getSurface();}
+	surface& get_screen_surface()
+	{
+		return map_screenshot_ ? map_screenshot_surf_ : video_.getSurface();
+	}
 
-	virtual bool in_game() const { return false; }
-	virtual bool in_editor() const { return false; }
+	virtual bool in_game() const
+	{
+		return false;
+	}
+	virtual bool in_editor() const
+	{
+		return false;
+	}
 
-	/** Virtual functions shadowed in game_display. These are needed to generate reports easily, without dynamic casting. Hope to factor out eventually. */
-	virtual const map_location & displayed_unit_hex() const { return map_location::null_location(); }
-	virtual int playing_side() const { return -100; } //In this case give an obviously wrong answer to fail fast, since this could actually cause a big bug. */
-	virtual const std::set<std::string>& observers() const { static const std::set<std::string> fake_obs = std::set<std::string> (); return fake_obs; }
+	/** Virtual functions shadowed in game_display. These are needed to generate reports easily, without dynamic
+	 * casting. Hope to factor out eventually. */
+	virtual const map_location& displayed_unit_hex() const
+	{
+		return map_location::null_location();
+	}
+
+	/** In this case give an obviously wrong answer to fail fast, since this could actually cause a big bug. */
+	virtual int playing_side() const
+	{
+		return -100;
+	}
+
+	virtual const std::set<std::string>& observers() const
+	{
+		static const std::set<std::string> fake_obs = std::set<std::string>();
+		return fake_obs;
+	}
 
 	/**
 	 * the dimensions of the display. x and y are width/height.
 	 * mapx is the width of the portion of the display which shows the game area.
 	 * Between mapx and x is the sidebar region.
 	 */
-	int w() const { return video_.getx(); }	/**< width */
-	int h() const { return video_.gety(); }	/**< height */
+
+	/** Screen width */
+	int w() const
+	{
+		return video_.getx();
+	}
+
+	/** Screen height */
+	int h() const
+	{
+		return video_.gety();
+	}
+
 	const SDL_Rect& minimap_area() const
-		{ return theme_.mini_map_location(screen_area()); }
+	{
+		return theme_.mini_map_location(screen_area());
+	}
+
 	const SDL_Rect& palette_area() const
-		{ return theme_.palette_location(screen_area()); }
+	{
+		return theme_.palette_location(screen_area());
+	}
+
 	const SDL_Rect& unit_image_area() const
-		{ return theme_.unit_image_location(screen_area()); }
+	{
+		return theme_.unit_image_location(screen_area());
+	}
 
 	SDL_Rect screen_area() const
-		{ return {0, 0, w(), h()}; }
+	{
+		return {0, 0, w(), h()};
+	}
 
-	/**
-	 * Returns the maximum area used for the map
-	 * regardless to resolution and view size
-	 */
+	/** Returns the maximum area used for the map regardless to resolution and view size */
 	const SDL_Rect& max_map_area() const;
 
-	/**
-	 * Returns the area used for the map
-	 */
+	/** Returns the area used for the map */
 	const SDL_Rect& map_area() const;
 
 	/**
-	 * Returns the available area for a map, this may differ
-	 * from the above. This area will get the background area
-	 * applied to it.
+	 * Returns the available area for a map, this may differ from the above.
+	 * This area will get the background area applied to it.
 	 */
-	const SDL_Rect& map_outside_area() const { return map_screenshot_ ?
-		max_map_area() : theme_.main_map_location(screen_area()); }
+	const SDL_Rect& map_outside_area() const
+	{
+		return map_screenshot_ ? max_map_area() : theme_.main_map_location(screen_area());
+	}
 
 	/** Check if the bbox of the hex at x,y has pixels outside the area rectangle. */
-	bool outside_area(const SDL_Rect& area, const int x,const int y) const;
+	bool outside_area(const SDL_Rect& area, const int x, const int y) const;
 
 	/**
 	 * Function which returns the width of a hex in pixels,
@@ -244,16 +354,25 @@ public:
 	 * (i.e. not entirely from tip to tip -- use hex_size()
 	 * to get the distance from tip to tip)
 	 */
-	int hex_width() const { return (zoom_*3)/4; }
+	int hex_width() const
+	{
+		return (zoom_ * 3) / 4;
+	}
 
 	/**
 	 * Function which returns the size of a hex in pixels
 	 * (from top tip to bottom tip or left edge to right edge).
 	 */
-	int hex_size() const { return zoom_; }
+	int hex_size() const
+	{
+		return zoom_;
+	}
 
 	/** Returns the current zoom factor. */
-	double get_zoom_factor() const { return double(zoom_)/double(game_config::tile_size); }
+	double get_zoom_factor() const
+	{
+		return double(zoom_) / double(game_config::tile_size);
+	}
 
 	/**
 	 * given x,y co-ordinates of an onscreen pixel, will return the
@@ -276,14 +395,25 @@ public:
 	 */
 	map_location minimap_location_on(int x, int y);
 
-	const map_location& selected_hex() const { return selectedHex_; }
-	const map_location& mouseover_hex() const { return mouseoverHex_; }
+	const map_location& selected_hex() const
+	{
+		return selectedHex_;
+	}
+
+	const map_location& mouseover_hex() const
+	{
+		return mouseoverHex_;
+	}
 
 	virtual void select_hex(map_location hex);
+
 	virtual void highlight_hex(map_location hex);
 
 	/** Function to invalidate the game status displayed on the sidebar. */
-	void invalidate_game_status() { invalidateGameStatus_ = true; }
+	void invalidate_game_status()
+	{
+		invalidateGameStatus_ = true;
+	}
 
 	/** Functions to get the on-screen positions of hexes. */
 	int get_location_x(const map_location& loc) const;
@@ -301,33 +431,50 @@ public:
 	 * Rectangular area of hexes, allowing to decide how the top and bottom
 	 * edges handles the vertical shift for each parity of the x coordinate
 	 */
-	struct rect_of_hexes{
+	struct rect_of_hexes
+	{
 		int left;
 		int right;
 		int top[2]; // for even and odd values of x, respectively
 		int bottom[2];
 
 		/**  very simple iterator to walk into the rect_of_hexes */
-		struct iterator {
-			iterator(const map_location &loc, const rect_of_hexes &rect)
-				: loc_(loc), rect_(rect){}
+		struct iterator
+		{
+			iterator(const map_location& loc, const rect_of_hexes& rect)
+				: loc_(loc)
+				, rect_(rect)
+			{
+			}
 
 			/** increment y first, then when reaching bottom, increment x */
 			iterator& operator++();
-			bool operator==(const iterator &that) const { return that.loc_ == loc_; }
-			bool operator!=(const iterator &that) const { return that.loc_ != loc_; }
-			const map_location& operator*() const {return loc_;}
+			bool operator==(const iterator& that) const
+			{
+				return that.loc_ == loc_;
+			}
+
+			bool operator!=(const iterator& that) const
+			{
+				return that.loc_ != loc_;
+			}
+
+			const map_location& operator*() const
+			{
+				return loc_;
+			}
 
 			typedef std::forward_iterator_tag iterator_category;
 			typedef map_location value_type;
 			typedef int difference_type;
-			typedef const map_location *pointer;
-			typedef const map_location &reference;
+			typedef const map_location* pointer;
+			typedef const map_location& reference;
 
-			private:
-				map_location loc_;
-				const rect_of_hexes &rect_;
+		private:
+			map_location loc_;
+			const rect_of_hexes& rect_;
 		};
+
 		typedef iterator const_iterator;
 
 		iterator begin() const;
@@ -353,22 +500,46 @@ public:
 	 * Determines whether a grid should be overlayed on the game board.
 	 * (to more clearly show where hexes are)
 	 */
-	void set_grid(const bool grid) { grid_ = grid; }
+	void set_grid(const bool grid)
+	{
+		grid_ = grid;
+	}
 
 	/** Getter for the x,y debug overlay on tiles */
-	bool get_draw_coordinates() const { return draw_coordinates_; }
+	bool get_draw_coordinates() const
+	{
+		return draw_coordinates_;
+	}
+
 	/** Setter for the x,y debug overlay on tiles */
-	void set_draw_coordinates(bool value) { draw_coordinates_ = value; }
+	void set_draw_coordinates(bool value)
+	{
+		draw_coordinates_ = value;
+	}
 
 	/** Getter for the terrain code debug overlay on tiles */
-	bool get_draw_terrain_codes() const { return draw_terrain_codes_; }
+	bool get_draw_terrain_codes() const
+	{
+		return draw_terrain_codes_;
+	}
+
 	/** Setter for the terrain code debug overlay on tiles */
-	void set_draw_terrain_codes(bool value) { draw_terrain_codes_ = value; }
+	void set_draw_terrain_codes(bool value)
+	{
+		draw_terrain_codes_ = value;
+	}
 
 	/** Getter for the number of bitmaps debug overlay on tiles */
-	bool get_draw_num_of_bitmaps() const { return draw_num_of_bitmaps_; }
+	bool get_draw_num_of_bitmaps() const
+	{
+		return draw_num_of_bitmaps_;
+	}
+
 	/** Setter for the terrain code debug overlay on tiles */
-	void set_draw_num_of_bitmaps(bool value) { draw_num_of_bitmaps_ = value; }
+	void set_draw_num_of_bitmaps(bool value)
+	{
+		draw_num_of_bitmaps_ = value;
+	}
 
 	/** Save a (map-)screenshot and return whether the operation succeeded. */
 	bool screenshot(const std::string& filename, bool map_screenshot = false);
@@ -388,7 +559,11 @@ public:
 		redraw_observers_.clear();
 	}
 
-	theme& get_theme() { return theme_; }
+	theme& get_theme()
+	{
+		return theme_;
+	}
+
 	void set_theme(config theme_cfg);
 
 	/**
@@ -411,9 +586,12 @@ public:
 
 	void render_buttons();
 
-	void invalidate_theme() { panelsDrawn_ = false; }
+	void invalidate_theme()
+	{
+		panelsDrawn_ = false;
+	}
 
-	void refresh_report(const std::string& report_name, const config * new_cfg=nullptr);
+	void refresh_report(const std::string& report_name, const config* new_cfg = nullptr);
 
 	void draw_minimap_units();
 
@@ -427,10 +605,14 @@ public:
 	 * and is drawn underneath the mouse's location
 	 */
 	void set_mouseover_hex_overlay(const surface& image)
-		{ mouseover_hex_overlay_ = image; }
+	{
+		mouseover_hex_overlay_ = image;
+	}
 
 	void clear_mouseover_hex_overlay()
-		{ mouseover_hex_overlay_ = nullptr; }
+	{
+		mouseover_hex_overlay_ = nullptr;
+	}
 
 	/** Toggle to continuously redraw the screen. */
 	static void toggle_benchmark();
@@ -442,15 +624,16 @@ public:
 	 */
 	static void toggle_debug_foreground();
 
-	terrain_builder& get_builder() {return *builder_;}
-
-	void draw_debugging_aids();
+	terrain_builder& get_builder()
+	{
+		return *builder_;
+	}
 
 	/** Rebuild all dynamic terrain. */
 	void rebuild_all();
 
 	const theme::action* action_pressed();
-	const theme::menu*   menu_pressed();
+	const theme::menu* menu_pressed();
 
 	/**
 	 * Finds the menu which has a given item in it,
@@ -464,17 +647,34 @@ public:
 	 * Set/Get whether 'turbo' mode is on.
 	 * When turbo mode is on, everything moves much faster.
 	 */
-	void set_turbo(const bool turbo) { turbo_ = turbo; }
+	void set_turbo(const bool turbo)
+	{
+		turbo_ = turbo;
+	}
 
 	double turbo_speed() const;
 
-	void set_turbo_speed(const double speed) { turbo_speed_ = speed; }
+	void set_turbo_speed(const double speed)
+	{
+		turbo_speed_ = speed;
+	}
 
 	/** control unit idle animations and their frequency */
-	void set_idle_anim(bool ison) { idle_anim_ = ison; }
-	bool idle_anim() const { return idle_anim_; }
+	void set_idle_anim(bool ison)
+	{
+		idle_anim_ = ison;
+	}
+
+	bool idle_anim() const
+	{
+		return idle_anim_;
+	}
+
 	void set_idle_anim_rate(int rate);
-	double idle_anim_rate() const { return idle_anim_rate_; }
+	double idle_anim_rate() const
+	{
+		return idle_anim_rate_;
+	}
 
 	void bounds_check_position();
 	void bounds_check_position(int& xpos, int& ypos);
@@ -498,10 +698,16 @@ public:
 	/** Sets the zoom amount to the default. */
 	void set_default_zoom();
 
-	bool view_locked() const { return view_locked_; }
+	bool view_locked() const
+	{
+		return view_locked_;
+	}
 
 	/** Sets whether the map view is locked (e.g. so the user can't scroll away) */
-	void set_view_locked(bool value) { view_locked_ = value; }
+	void set_view_locked(bool value)
+	{
+		view_locked_ = value;
+	}
 
 	enum SCROLL_TYPE { SCROLL, WARP, ONSCREEN, ONSCREEN_WARP };
 
@@ -512,7 +718,8 @@ public:
 	 * force : scroll even if preferences tell us not to,
 	 * or the view is locked.
 	 */
-	void scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,bool force = true);
+	void scroll_to_tile(
+			const map_location& loc, SCROLL_TYPE scroll_type = ONSCREEN, bool check_fogged = true, bool force = true);
 
 	/**
 	 * Scroll such that location loc1 is on-screen.
@@ -520,83 +727,91 @@ public:
 	 * but this is not guaranteed. For ONSCREEN scrolls add_spacing
 	 * sets the desired minimum distance from the border in hexes.
 	 */
-	void scroll_to_tiles(map_location loc1, map_location loc2,
-	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,
-	                     double add_spacing=0.0, bool force=true);
+	void scroll_to_tiles(map_location loc1,
+			map_location loc2,
+			SCROLL_TYPE scroll_type = ONSCREEN,
+			bool check_fogged = true,
+			double add_spacing = 0.0,
+			bool force = true);
 
 	/** Scroll to fit as many locations on-screen as possible, starting with the first. */
-	void scroll_to_tiles(const std::vector<map_location>::const_iterator & begin,
-	                     const std::vector<map_location>::const_iterator & end,
-	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,
-	                     bool only_if_possible=false, double add_spacing=0.0,
-	                     bool force=true);
+	void scroll_to_tiles(const std::vector<map_location>::const_iterator& begin,
+			const std::vector<map_location>::const_iterator& end,
+			SCROLL_TYPE scroll_type = ONSCREEN,
+			bool check_fogged = true,
+			bool only_if_possible = false,
+			double add_spacing = 0.0,
+			bool force = true);
+
 	/** Scroll to fit as many locations on-screen as possible, starting with the first. */
 	void scroll_to_tiles(const std::vector<map_location>& locs,
-	                     SCROLL_TYPE scroll_type=ONSCREEN, bool check_fogged=true,
-	                     bool only_if_possible=false,
-	                     double add_spacing=0.0, bool force=true)
+			SCROLL_TYPE scroll_type = ONSCREEN,
+			bool check_fogged = true,
+			bool only_if_possible = false,
+			double add_spacing = 0.0,
+			bool force = true)
 	{
-		scroll_to_tiles(locs.begin(), locs.end(), scroll_type, check_fogged,
-		                only_if_possible, add_spacing, force);
+		scroll_to_tiles(locs.begin(), locs.end(), scroll_type, check_fogged, only_if_possible, add_spacing, force);
 	}
 
 	/** Expose the event, so observers can be notified about map scrolling. */
-	events::generic_event &scroll_event() const { return scroll_event_; }
+	events::generic_event& scroll_event() const
+	{
+		return scroll_event_;
+	}
 
-	events::generic_event& complete_redraw_event() { return complete_redraw_event_; }
+	events::generic_event& complete_redraw_event()
+	{
+		return complete_redraw_event_;
+	}
 
 	/** Check if a tile is fully visible on screen. */
 	bool tile_fully_on_screen(const map_location& loc) const;
 
 	/** Checks if location @a loc or one of the adjacent tiles is visible on screen. */
-	bool tile_nearly_on_screen(const map_location &loc) const;
+	bool tile_nearly_on_screen(const map_location& loc) const;
 
-	/**
-	 * Draws invalidated items.
-	 * If update is true, will also copy the display to the frame buffer.
-	 * If force is true, will not skip frames, even if running behind.
-	 * Not virtual, since it gathers common actions. Calls various protected
-	 * virtuals (further below) to allow specialized behavior in derived classes.
-	 */
-	virtual void draw() override;
+	enum TERRAIN_TYPE { BACKGROUND, FOREGROUND };
 
-	enum TERRAIN_TYPE { BACKGROUND, FOREGROUND};
-
-private:
-	void draw_visible_hexes(const rect_of_hexes& visible_hexes, TERRAIN_TYPE terrain_type);
-
-	void draw_gamemap();
-
-public:
 	map_labels& labels();
 	const map_labels& labels() const;
 
 	/** Announce a message prominently. */
-	void announce(const std::string& msg,
-		       const color_t& color = font::GOOD_COLOR, int lifetime = 100);
+	void announce(const std::string& msg, const color_t& color = font::GOOD_COLOR, int lifetime = 100);
 
 	/**
 	 * Schedule the minimap for recalculation.
 	 * Useful if any terrain in the map has changed.
 	 */
-	void recalculate_minimap() {minimap_ = nullptr; redrawMinimap_ = true; }
+	void recalculate_minimap()
+	{
+		minimap_ = nullptr;
+		redrawMinimap_ = true;
+	}
 
 	/**
 	 * Schedule the minimap to be redrawn.
 	 * Useful if units have moved about on the map.
 	 */
-	void redraw_minimap() { redrawMinimap_ = true; }
+	void redraw_minimap()
+	{
+		redrawMinimap_ = true;
+	}
 
 	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location()) const;
 
-	virtual bool has_time_area() const {return false;}
+	virtual bool has_time_area() const
+	{
+		return false;
+	}
 
 	void blindfold(bool flag);
+
 	bool is_blindfolded() const;
 
 	void write(config& cfg) const;
 
-	virtual void handle_event(const SDL_Event& );
+	virtual void handle_event(const SDL_Event&);
 	virtual void handle_window_event(const SDL_Event& event);
 
 private:
@@ -608,10 +823,112 @@ public:
 
 	/** Rebuild the flag list (not team colors) for a single side. */
 	void reinit_flags_for_side(size_t side);
+
 	void reset_reports(reports& reports_object)
 	{
 		reports_object_ = &reports_object;
 	}
+
+private:
+	void init_flags_for_side_internal(size_t side, const std::string& side_color);
+
+	int blindfold_ctr_;
+
+protected:
+	// TODO sort
+	const display_context* dc_;
+
+	std::unique_ptr<halo::manager> halo_man_;
+
+	std::weak_ptr<wb::manager> wb_;
+
+	// =====================================================================================
+	// DRAWING CODE
+	//=====================================================================================
+
+	/**
+	 * Main drawing function.
+	 *
+	 * This handles drawing everything in this class and is called each draw cycle.
+	 * It also calls the various protected virtual functions declared below to allow specialized
+	 * behavior in derived classes.
+	 *
+	 * Inherited from events::sdl_handler.
+	 */
+	virtual void draw() override;
+
+	/**
+	 * Called at the beginning of each draw cycle.
+	 * Derived classes can use this to add extra actions before any drawing takes place.
+	 * No action here by default.
+	 */
+	virtual void pre_draw()
+	{
+	}
+
+	/**
+	 * Hook for actions to take right after draw() renders the drawing buffer.
+	 * No action here by default.
+	 */
+	DEPRECATED() virtual void post_commit()
+	{
+	}
+
+	/**
+	 * Called at the end of each draw cycle.
+	 * Derived classes can use this to add extra actions after all drawing takes place.
+	 * No action here by default.
+	 */
+	virtual void post_draw()
+	{
+	}
+
+	/**
+	 * Initiate a redraw.
+	 *
+	 * Invalidate controls and panels when changed after they have been drawn
+	 * initially. Useful for dynamic theme modification.
+	 */
+	DEPRECATED() void draw_init();
+	DEPRECATED() void draw_wrap(bool update, bool force);
+
+	/**
+	 * Called near the end of a draw operation, derived classes can use this
+	 * to render a specific sidebar. Very similar to post_commit.
+	 */
+	virtual void draw_sidebar()
+	{
+	}
+
+	/** Redraw all panels associated with the map display */
+	void draw_all_panels();
+
+	/** Draws the minimap. */
+	void draw_minimap();
+
+private:
+	/** Draws the visible map hex terrains. Used by @ref draw_gamemap. */
+	void draw_visible_hexes(const rect_of_hexes& visible_hexes, TERRAIN_TYPE terrain_type);
+
+	/** Draws the gamemap itself and its various components, such as units, items, fog/shroud, etc. */
+	void draw_gamemap();
+
+protected:
+	/** Draws a single gamemap location. */
+	DEPRECATED() virtual void draw_hex(const map_location& /*loc*/)
+	{
+	}
+
+	/** Draws the map's hex cursor. No action here by default. */
+	virtual void draw_hex_cursor(const map_location& /*loc*/)
+	{
+	}
+
+	/** Draws various map overlays such as game reachmap. */
+	virtual void draw_hex_overlays();
+
+public:
+	void draw_debugging_aids();
 
 	/**
 	 * Renders a texture directly to the screen (or current rendering target) scaled to the
@@ -658,34 +975,21 @@ public:
 		render_scaled_to_zoom(tex, origin.x, origin.y, std::forward<T>(extra_args)...);
 	}
 
-private:
-	void init_flags_for_side_internal(size_t side, const std::string& side_color);
-
-	int blindfold_ctr_;
+	/**
+	 * Draw text on a hex. (0.5, 0.5) is the center.
+	 * The font size is adjusted to the zoom factor.
+	 */
+	void draw_text_in_hex(const map_location& loc,
+			const drawing_queue::layer layer,
+			const std::string& text,
+			size_t font_size,
+			color_t color,
+			double x_in_hex = 0.5,
+			double y_in_hex = 0.5);
 
 protected:
-	//TODO sort
-	const display_context * dc_;
-	std::unique_ptr<halo::manager> halo_man_;
-	std::weak_ptr<wb::manager> wb_;
-
-	typedef std::map<map_location, std::string> exclusive_unit_draw_requests_t;
-	/// map of hexes where only one unit should be drawn, the one identified by the associated id string
-	exclusive_unit_draw_requests_t exclusive_unit_draw_requests_;
-
-	/**
-	 * Called near the beginning of each draw() call.
-	 * Derived classes can use this to add extra actions before redrawing
-	 * invalidated hexes takes place. No action here by default.
-	 */
-	virtual void pre_draw() {}
-
-	/**
-	 * Called at the very end of each draw() call.
-	 * Derived classes can use this to add extra actions after redrawing
-	 * invalidated hexes takes place. No action here by default.
-	 */
-	virtual void post_draw() {}
+	/** @returns the image type to be used for the passed hex */
+	virtual image::TYPE get_image_type(const map_location& loc);
 
 	/**
 	 * Get the clipping rectangle for drawing.
@@ -693,54 +997,31 @@ protected:
 	 */
 	virtual const SDL_Rect& get_clip_rect();
 
-	/**
-	 * Hook for actions to take right after draw() renders the drawing buffer.
-	 * No action here by default.
-	 */
-	virtual void post_commit() {}
+	/** Gets all the associated terrain textures for a specific hex. */
+	std::vector<texture> get_terrain_images(
+			const map_location& loc, const std::string& timeid, image::TYPE type, TERRAIN_TYPE terrain_type);
 
-	/**
-	 * Redraws a single gamemap location.
-	 */
-	virtual void draw_hex(const map_location& loc);
-
-	virtual void draw_hex_cursor(const map_location& loc);
-
-	virtual void draw_hex_overlays();
-
-	/**
-	 * @returns the image type to be used for the passed hex
-	 */
-	virtual image::TYPE get_image_type(const map_location& loc);
-
-	/**
-	 * Called near the end of a draw operation, derived classes can use this
-	 * to render a specific sidebar. Very similar to post_commit.
-	 */
-	virtual void draw_sidebar() {}
-
-	void draw_minimap();
-
-	std::vector<texture> get_terrain_images(const map_location &loc,
-					const std::string& timeid,
-					image::TYPE type,
-					TERRAIN_TYPE terrain_type);
-
+	/** Gets the appropriate fog or shroud images for a specific hex. */
 	std::vector<texture> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);
 
 	void draw_image_for_report(surface& img, SDL_Rect& rect);
 
-	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type,bool force = true);
+	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type, bool force = true);
 
 	void fill_images_list(const std::string& prefix, std::vector<std::string>& images);
 
-	const std::string& get_variant(const std::vector<std::string>& variants, const map_location &loc) const;
+	const std::string& get_variant(const std::vector<std::string>& variants, const map_location& loc) const;
+
+	using exclusive_unit_draw_requests_t = std::map<map_location, std::string>;
+
+	/// map of hexes where only one unit should be drawn, the one identified by the associated id string
+	exclusive_unit_draw_requests_t exclusive_unit_draw_requests_;
 
 	CVideo& video_;
 	size_t currentTeam_;
-	bool dont_show_all_; //const team *viewpoint_;
+	bool dont_show_all_; // const team *viewpoint_;
 	int xpos_, ypos_;
-	//camera_controller camera_controller_;
+	// camera_controller camera_controller_;
 	bool view_locked_;
 	theme theme_;
 	static unsigned int zoom_;
@@ -759,7 +1040,7 @@ protected:
 	bool turbo_;
 	bool invalidateGameStatus_;
 	const std::unique_ptr<map_labels> map_labels_;
-	reports * reports_object_;
+	reports* reports_object_;
 
 	/** Event raised when the map is being scrolled */
 	mutable events::generic_event scroll_event_;
@@ -799,25 +1080,13 @@ protected:
 	bool animate_water_;
 
 private:
-
 	texture get_flag(const map_location& loc);
 
 	/** Animated flags for each team */
-	std::vector<animated<image::locator> > flags_;
-
-public:
-
-	/**
-	 * Draw text on a hex. (0.5, 0.5) is the center.
-	 * The font size is adjusted to the zoom factor.
-	 */
-	void draw_text_in_hex(const map_location& loc,
-		const drawing_queue::layer layer, const std::string& text, size_t font_size,
-		color_t color, double x_in_hex=0.5, double y_in_hex=0.5);
+	std::vector<animated<image::locator>> flags_;
 
 protected:
-
-	//TODO sort
+	// TODO sort
 	size_t activeTeam_;
 
 	drawing_queue drawing_queue_;
@@ -837,49 +1106,41 @@ public:
 	 */
 
 	void drawing_queue_add(const drawing_queue::layer,
-			const map_location&, int, int, const surface&,
-			const SDL_Rect &clip = SDL_Rect())
+			const map_location&,
+			int,
+			int,
+			const surface&,
+			const SDL_Rect& clip = SDL_Rect())
 	{
 		UNUSED(clip);
 	}
 
 	void drawing_queue_add(const drawing_queue::layer,
-			const map_location&, int, int,
+			const map_location&,
+			int,
+			int,
 			const std::vector<surface>&,
-			const SDL_Rect &clip = SDL_Rect())
+			const SDL_Rect& clip = SDL_Rect())
 	{
 		UNUSED(clip);
 	}
 
 protected:
-	/** redraw all panels associated with the map display */
-	void draw_all_panels();
-
-	/**
-	 * Initiate a redraw.
-	 *
-	 * Invalidate controls and panels when changed after they have been drawn
-	 * initially. Useful for dynamic theme modification.
-	 */
-	void draw_init();
-	void draw_wrap(bool update,bool force);
 
 	/** Used to indicate to drawing functions that we are doing a map screenshot */
 	bool map_screenshot_;
 
-public: //operations for the arrow framework
-
+public: // operations for the arrow framework
 	void add_arrow(arrow&);
 
 	void remove_arrow(arrow&);
 
 	/** Called by arrow objects when they change. You should not need to call this directly. */
-	void update_arrow(arrow & a);
+	void update_arrow(arrow& a);
 
 protected:
-
 	// Tiles lit for showing where unit(s) can reach
-	typedef std::map<map_location,unsigned int> reach_map;
+	typedef std::map<map_location, unsigned int> reach_map;
 	reach_map reach_map_;
 	reach_map reach_map_old_;
 	bool reach_map_changed_;
@@ -887,8 +1148,6 @@ protected:
 	typedef std::multimap<map_location, overlay> overlay_map;
 
 private:
-
-
 	overlay_map* overlays_;
 
 	/** Handle for the label which displays frames per second. */
@@ -901,17 +1160,19 @@ private:
 
 	surface map_screenshot_surf_;
 
-	std::vector<std::function<void(display&)> > redraw_observers_;
+	std::vector<std::function<void(display&)>> redraw_observers_;
 
 	/** Debug flag - overlay x,y coords on tiles */
 	bool draw_coordinates_;
+
 	/** Debug flag - overlay terrain codes on tiles */
 	bool draw_terrain_codes_;
+
 	/** Debug flag - overlay number of bitmaps on tiles */
 	bool draw_num_of_bitmaps_;
 
 	typedef std::list<arrow*> arrows_list_t;
-	typedef std::map<map_location, arrows_list_t > arrows_map_t;
+	typedef std::map<map_location, arrows_list_t> arrows_map_t;
 	/** Maps the list of arrows for each location */
 	arrows_map_t arrows_map_;
 
@@ -919,28 +1180,34 @@ private:
 
 	bool dirty_;
 
-
-
 public:
-	void replace_overlay_map(overlay_map* overlays) { overlays_ = overlays; }
+	void replace_overlay_map(overlay_map* overlays)
+	{
+		overlays_ = overlays;
+	}
 
 protected:
-	static display * singleton_;
+	static display* singleton_;
 };
 
 struct blindfold
 {
-	blindfold(display& d, bool lock=true) : display_(d), blind(lock) {
+	blindfold(display& d, bool lock = true)
+		: display_(d)
+		, blind(lock)
+	{
 		if(blind) {
 			display_.blindfold(true);
 		}
 	}
 
-	~blindfold() {
+	~blindfold()
+	{
 		unblind();
 	}
 
-	void unblind() {
+	void unblind()
+	{
 		if(blind) {
 			display_.blindfold(false);
 			blind = false;
