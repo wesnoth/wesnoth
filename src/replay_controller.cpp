@@ -76,7 +76,6 @@ replay_controller::replay_controller(play_controller& controller, bool control_v
 	}
 	controller_.get_display().get_theme().theme_reset_event().attach_handler(this);
 	controller_.get_display().create_buttons();
-	controller_.get_display().redraw_everything();
 }
 replay_controller::~replay_controller()
 {
@@ -85,7 +84,6 @@ replay_controller::~replay_controller()
 	}
 	controller_.get_display().get_theme().theme_reset_event().detach_handler(this);
 	controller_.get_display().create_buttons();
-	controller_.get_display().redraw_everything();
 	controller_.get_display().create_buttons();
 }
 void replay_controller::add_replay_theme()
