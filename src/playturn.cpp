@@ -188,11 +188,9 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 		if (resources::gameboard->is_observer() || (resources::gameboard->teams())[resources::screen->playing_team()].is_local_human()) {
 			resources::screen->set_team(resources::screen->playing_team());
-			resources::screen->redraw_everything();
 			resources::screen->recalculate_minimap();
 		} else if (tm.is_local_human()) {
 			resources::screen->set_team(side - 1);
-			resources::screen->redraw_everything();
 			resources::screen->recalculate_minimap();
 		}
 

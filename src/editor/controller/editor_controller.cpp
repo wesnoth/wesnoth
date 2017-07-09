@@ -88,7 +88,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	join();
 
 	gui().create_buttons();
-	gui().redraw_everything();
 }
 
 void editor_controller::init_gui()
@@ -1097,8 +1096,6 @@ void editor_controller::preferences()
 {
 	gui_->video().clear_all_help_strings();
 	gui2::dialogs::preferences_dialog::display(gui_->video(), game_config_);
-
-	gui_->redraw_everything();
 }
 
 void editor_controller::toggle_grid()

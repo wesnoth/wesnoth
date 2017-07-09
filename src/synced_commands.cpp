@@ -570,7 +570,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn_limit, child, use_undo, /*show*/, /*e
 	debug_notification(":turn_limit debug command was used during turn of $player");
 
 	resources::tod_manager->set_number_of_turns(child["turn_limit"].to_int(-1));
-	resources::screen->redraw_everything();
 	return true;
 }
 
@@ -585,7 +584,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn, child, use_undo, /*show*/, /*error_h
 	resources::tod_manager->set_turn(child["turn"].to_int(1), resources::gamedata);
 
 	resources::screen->new_turn();
-	resources::screen->redraw_everything();
 
 	return true;
 }
@@ -617,7 +615,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_gold, child, use_undo, /*show*/, /*error_h
 	debug_notification(":gold debug command was used during turn of $player");
 
 	resources::controller->current_team().spend_gold(-child["gold"].to_int(0));
-	resources::screen->redraw_everything();
 	return true;
 }
 
@@ -631,7 +628,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_event, child, use_undo, /*show*/, /*error_
 	debug_notification(":throw debug command was used during turn of $player");
 
 	resources::controller->pump().fire(child["eventname"]);
-	resources::screen->redraw_everything();
 
 	return true;
 }
@@ -650,7 +646,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_fog, /*child*/, use_undo, /*show*/, /*erro
 	actions::recalculate_fog(current_team.side());
 
 	resources::screen->recalculate_minimap();
-	resources::screen->redraw_everything();
 
 	return true;
 }
@@ -669,7 +664,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_shroud, /*child*/, use_undo, /*show*/, /*e
 	actions::clear_shroud(current_team.side());
 
 	resources::screen->recalculate_minimap();
-	resources::screen->redraw_everything();
 
 	return true;
 }
