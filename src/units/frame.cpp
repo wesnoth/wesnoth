@@ -539,8 +539,8 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 
 		const texture::info info = image.get_info();
 
-		int my_x = x + current_data.x - info.w / 2;
-		int my_y = y + current_data.y - info.h / 2;
+		int my_x = x + current_data.x - ((info.w / 2) * game_disp->get_zoom_factor());
+		int my_y = y + current_data.y - ((info.h / 2) * game_disp->get_zoom_factor());
 
 		if(facing_west) {
 			my_x -= current_data.directional_x;
