@@ -256,45 +256,120 @@ void game_display::post_commit()
 
 void game_display::draw_hex_cursor(const map_location& loc)
 {
-	const int xpos = get_location_x(loc);
-	const int ypos = get_location_y(loc);
+	if(!get_map().on_board(loc) || cursor::get() == cursor::WAIT) {
+		return;
+	}
 
-	const unit* u = resources::gameboard->get_visible_unit(loc, dc_->teams()[viewing_team()]);
-
-	std::string bg_path;
-	std::string fg_path;
+	texture* cursor_bg = nullptr;
+	texture* cursor_fg = nullptr;
 
 	// image::SCALED_TO_HEX
 
-	// TODO: should probably cache these results in this class.
+	// TODO: either merge into one image or draw layered.
+
+	// Default
+	static texture default_cursor_bg(image::get_texture("misc/hover-hex-top.png~RC(magenta>gold)"));
+	static texture default_cursor_fg(image::get_texture("misc/hover-hex-bottom.png~RC(magenta>gold)"));
+
+	// Your troops
+	static texture team_cursor_bg(image::get_texture("misc/hover-hex-top.png~RC(magenta>green)"));
+	static texture team_cursor_fg(image::get_texture("misc/hover-hex-bottom.png~RC(magenta>green)"));
+
+	// Allies
+	static texture ally_cursor_bg(image::get_texture("misc/hover-hex-top.png~RC(magenta>lightblue)"));
+	static texture ally_cursor_fg(image::get_texture("misc/hover-hex-bottom.png~RC(magenta>lightblue)"));
+
+	// Enemies
+	static texture enemy_cursor_bg(image::get_texture("misc/hover-hex-enemy-top.png~RC(magenta>red)"));
+	static texture enemy_cursor_fg(image::get_texture("misc/hover-hex-enemy-bottom.png~RC(magenta>red)"));
+
+	const team& t = dc_->teams()[currentTeam_];
+
+	const unit* u = resources::gameboard->get_visible_unit(loc, dc_->teams()[viewing_team()]);
 
 	if(u == nullptr) {
-		bg_path = "misc/hover-hex-top.png~RC(magenta>gold)";
-		fg_path = "misc/hover-hex-bottom.png~RC(magenta>gold)";
-	} else if(dc_->teams()[currentTeam_].is_enemy(u->side())) {
-		bg_path = "misc/hover-hex-enemy-top.png~RC(magenta>red)";
-		fg_path = "misc/hover-hex-enemy-bottom.png~RC(magenta>red)";
-	} else if(dc_->teams()[currentTeam_].side() == u->side()) {
-		bg_path = "misc/hover-hex-top.png~RC(magenta>green)";
-		fg_path = "misc/hover-hex-bottom.png~RC(magenta>green)";
+		cursor_bg = &default_cursor_bg;
+		cursor_fg = &default_cursor_fg;
+	} else if(t.is_enemy(u->side())) {
+		cursor_bg = &enemy_cursor_bg;
+		cursor_fg = &enemy_cursor_fg;
+	} else if(t.side() == u->side()) {
+		cursor_bg = &team_cursor_bg;
+		cursor_fg = &team_cursor_fg;
 	} else {
-		bg_path = "misc/hover-hex-top.png~RC(magenta>lightblue)";
-		fg_path = "misc/hover-hex-bottom.png~RC(magenta>lightblue)";
+		cursor_bg = &ally_cursor_bg;
+		cursor_fg = &ally_cursor_fg;
 	}
 
-	texture cursor_bg = image::get_texture(bg_path);
 	if(cursor_bg) {
-		render_scaled_to_zoom(cursor_bg, xpos, ypos);
+		render_scaled_to_zoom(*cursor_bg, loc);
 	}
 
-	texture cursor_fg = image::get_texture(fg_path);
 	if(cursor_fg) {
-		render_scaled_to_zoom(cursor_fg, xpos, ypos);
+		render_scaled_to_zoom(*cursor_fg, loc);
+	}
+
+	//
+	// Draw accompanying route markers, defence ratings, target status indicators
+	//
+	draw_movement_info(loc);
+}
+
+void game_display::draw_hex_overlays()
+{
+	//
+	// Mask on unreachable locations
+	//
+	if(!reach_map_.empty()) {
+		for(const map_location& loc : get_visible_hexes()) {
+			if(shrouded(loc) || loc == attack_indicator_dst_ || reach_map_.find(loc) != reach_map_.end()) {
+				continue;
+			}
+
+			// was SCALED_TO_HEX
+			static texture unreachable = image::get_texture(game_config::images::unreachable);
+
+			render_scaled_to_zoom(unreachable, loc);
+		}
+	}
+
+	//
+	// Attack indicator - source
+	//
+	if(get_map().on_board(attack_indicator_src_)) {
+		texture indicator = image::get_texture("misc/attack-indicator-src-" + attack_indicator_direction() + ".png");
+
+		// was SCALED_TO_HEX
+		render_scaled_to_zoom(indicator, attack_indicator_src_);
+	}
+
+	//
+	// Attack indicator - target
+	//
+	if(get_map().on_board(attack_indicator_dst_)) {
+		texture indicator = image::get_texture("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png");
+
+		// was SCALED_TO_HEX
+		render_scaled_to_zoom(indicator, attack_indicator_dst_);
+	}
+
+	// Linger overlay unconditionally otherwise it might give glitches
+	// so it's drawn over the shroud and fog.
+	// FIXME: ^ split into seperate function so that happens.
+	if(mode_ != RUNNING) {
+		for(const map_location& loc : get_visible_hexes()) {
+			static texture linger(image::get_texture(game_config::images::linger));
+
+			// was TOD_COLORED
+			render_scaled_to_zoom(linger, loc);
+		}
 	}
 }
 
 void game_display::draw_hex(const map_location& loc)
 {
+	return;
+
 	// Inherited.
 	display::draw_hex(loc);
 
@@ -459,8 +534,70 @@ void game_display::set_game_mode(const game_mode mode)
 	}
 }
 
-void game_display::draw_movement_info(const map_location& loc)
+void game_display::draw_movement_info(const map_location& /*loc*/)
 {
+	if(route_.steps.empty()) {
+		return;
+	}
+
+	std::shared_ptr<wb::manager> wb = wb_.lock();
+
+	for(const auto& mark : route_.marks) {
+		const map_location& m_loc = mark.first;
+
+		if(route_.steps.front() == m_loc || shrouded(m_loc) || !get_map().on_board(m_loc)) {
+			continue;
+		}
+
+		const unit_map::const_iterator un = (wb && wb->get_temp_move_unit().valid())
+			? wb->get_temp_move_unit()
+			: dc_->units().find(route_.steps.front());
+
+		if(un != dc_->units().end()) {
+#if 0
+			// Display the def% of this terrain
+			int def = 100 - un->defense_modifier(get_map().get_terrain(loc));
+
+			std::stringstream def_text;
+			def_text << def << "%";
+
+			color_t color = game_config::red_to_green(def, false);
+
+			// simple mark (no turn point) use smaller font
+			int def_font = w->second.turns > 0 ? 18 : 16;
+			draw_text_in_hex(loc, drawing_queue::LAYER_MOVE_INFO, def_text.str(), def_font, color);
+#endif
+			// TODO: do we want SCALED_TO_HEX?
+			// LAYER_MOVE_INFO
+
+			if(mark.second.invisible) {
+				static texture hidden(image::get_texture("misc/hidden.png"));
+				render_scaled_to_zoom(hidden, m_loc);
+			}
+
+			if(mark.second.zoc) {
+				static texture zoc(image::get_texture("misc/zoc.png"));
+				render_scaled_to_zoom(zoc, m_loc);
+			}
+
+			if(mark.second.capture) {
+				static texture capture(image::get_texture("misc/capture.png"));
+				render_scaled_to_zoom(capture, m_loc);
+			}
+#if 0
+			// We display turn info only if different from a simple last "1"
+			if(w->second.turns > 1 || (w->second.turns == 1 && loc != route_.steps.back())) {
+				std::stringstream turns_text;
+				turns_text << w->second.turns;
+				draw_text_in_hex(loc, drawing_queue::LAYER_MOVE_INFO, turns_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
+			}
+#endif
+			// The hex is full now, so skip the "show enemy moves"
+			return;
+		}
+	}
+
+#if 0
 	// Search if there is a mark here
 	pathfind::marked_route::mark_map::iterator w = route_.marks.find(loc);
 
@@ -532,6 +669,7 @@ void game_display::draw_movement_info(const map_location& loc)
 		}
 	}
 
+	// Number of turns to reach
 	if(!reach_map_.empty()) {
 		reach_map::iterator reach = reach_map_.find(loc);
 		if(reach != reach_map_.end() && reach->second > 1) {
@@ -539,6 +677,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			draw_text_in_hex(loc, drawing_queue::LAYER_MOVE_INFO, num, 16, font::YELLOW_COLOR);
 		}
 	}
+#endif
 }
 
 std::vector<surface> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_)

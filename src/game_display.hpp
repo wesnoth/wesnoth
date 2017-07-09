@@ -149,6 +149,7 @@ protected:
 
 	virtual void draw_hex_cursor(const map_location& loc) override;
 
+	virtual void draw_hex_overlays() override;
 public:
 
 
