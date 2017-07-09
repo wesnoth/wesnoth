@@ -746,14 +746,12 @@ void game_display::highlight_another_reach(const pathfind::paths &paths_list)
 	for (const pathfind::paths::step &dest : paths_list.destinations) {
 		reach_map_[dest.curr]++;
 	}
-	reach_map_changed_ = true;
 }
 
 bool game_display::unhighlight_reach()
 {
 	if(!reach_map_.empty()) {
 		reach_map_.clear();
-		reach_map_changed_ = true;
 		return true;
 	} else {
 		return false;
