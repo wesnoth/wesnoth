@@ -611,7 +611,7 @@ bool wml_event_pump::operator()()
 void wml_event_pump::flush_messages()
 {
 	// Dialogs can only be shown if the display is not locked
-	if(resources::screen && !resources::screen->video().update_locked()) {
+	if(resources::screen && !CVideo::get_singleton().update_locked()) {
 		show_wml_errors();
 		show_wml_messages();
 	}

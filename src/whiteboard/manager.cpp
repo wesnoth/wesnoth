@@ -1091,7 +1091,7 @@ void manager::options_dlg()
 	}
 
 	gui2::dialogs::simple_item_selector dlg("", _("Whiteboard Options"), options);
-	dlg.show(resources::screen->video());
+	dlg.show(CVideo::get_singleton());
 	selection = dlg.selected_index();
 
 	if(selection == -1)

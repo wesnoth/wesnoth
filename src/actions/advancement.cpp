@@ -115,7 +115,7 @@ namespace
 		// When the unit advances, it fades to white, and then switches
 		// to the new unit, then fades back to the normal color
 
-		if (animate && !resources::screen->video().update_locked()) {
+		if (animate && !CVideo::get_singleton().update_locked()) {
 			unit_animator animator;
 			bool with_bars = true;
 			animator.add_animation(&*u, "levelout", u->get_location(), map_location(), 0, with_bars);
@@ -136,7 +136,7 @@ namespace
 		u = resources::gameboard->units().find(loc);
 		resources::screen->invalidate_unit();
 
-		if (animate && u != resources::gameboard->units().end() && !resources::screen->video().update_locked()) {
+		if (animate && u != resources::gameboard->units().end() && !CVideo::get_singleton().update_locked()) {
 			unit_animator animator;
 			animator.add_animation(&*u, "levelin", u->get_location(), map_location(), 0, true);
 			animator.start_animations();

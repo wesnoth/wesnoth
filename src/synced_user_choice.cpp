@@ -395,7 +395,7 @@ static void wait_ingame(user_choice_manager& man)
 static void wait_prestart(user_choice_manager& man)
 {
 	gui2::dialogs::synched_choice_wait scw(man);
-	scw.show(resources::screen->video());
+	scw.show(CVideo::get_singleton());
 }
 
 std::map<int, config> user_choice_manager::get_user_choice_internal(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides)
