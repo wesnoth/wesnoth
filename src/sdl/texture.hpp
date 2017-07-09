@@ -43,7 +43,7 @@ public:
 	/** Small wrapper that queries metadata about the provided texture. */
 	struct info
 	{
-		explicit info(const texture& t);
+		explicit info(SDL_Texture* t);
 
 		Uint32 format;
 		int access;
