@@ -139,7 +139,7 @@ private:
 	void raw_event(const SDL_Event &event);
 
 	/** Fires a draw event. */
-	virtual void draw() override;
+	virtual void draw() override final;
 
 	/**
 	 * Fires a video resize event.
