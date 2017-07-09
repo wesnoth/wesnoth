@@ -762,13 +762,11 @@ void game_display::highlight_another_reach(const pathfind::paths &paths_list)
 	for (const pathfind::paths::step &dest : paths_list.destinations) {
 		reach_map_[dest.curr]++;
 	}
-	reach_map_changed_ = true;
 }
 
 void game_display::unhighlight_reach()
 {
 	reach_map_ = reach_map();
-	reach_map_changed_ = true;
 }
 
 void game_display::set_route(const pathfind::marked_route *route)

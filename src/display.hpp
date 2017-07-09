@@ -586,11 +586,6 @@ public:
 
 	void render_buttons();
 
-	void invalidate_theme()
-	{
-		panelsDrawn_ = false;
-	}
-
 	void refresh_report(const std::string& report_name, const config* new_cfg = nullptr);
 
 	void draw_minimap_units();
@@ -884,15 +879,6 @@ protected:
 	}
 
 	/**
-	 * Initiate a redraw.
-	 *
-	 * Invalidate controls and panels when changed after they have been drawn
-	 * initially. Useful for dynamic theme modification.
-	 */
-	DEPRECATED() void draw_init();
-	DEPRECATED() void draw_wrap(bool update, bool force);
-
-	/**
 	 * Called near the end of a draw operation, derived classes can use this
 	 * to render a specific sidebar. Very similar to post_commit.
 	 */
@@ -1032,10 +1018,8 @@ protected:
 	surface minimap_;
 	SDL_Rect minimap_location_;
 	bool redrawMinimap_;
-	bool redraw_background_;
 	bool grid_;
 	int diagnostic_label_;
-	bool panelsDrawn_;
 	double turbo_speed_;
 	bool turbo_;
 	bool invalidateGameStatus_;
@@ -1050,12 +1034,6 @@ protected:
 	 * atm this is used for replay_controller to add replay controls to the standard theme
 	 */
 	events::generic_event complete_redraw_event_;
-
-	/**
-	 * Holds the tick count for when the next drawing event is scheduled.
-	 * Drawing shouldn't occur before this time.
-	 */
-	int nextDraw_;
 
 	// Not set by the initializer:
 	std::map<std::string, SDL_Rect> reportRects_;
@@ -1080,8 +1058,6 @@ protected:
 	bool animate_water_;
 
 private:
-	texture get_flag(const map_location& loc);
-
 	/** Animated flags for each team */
 	std::vector<animated<image::locator>> flags_;
 
@@ -1142,8 +1118,6 @@ protected:
 	// Tiles lit for showing where unit(s) can reach
 	typedef std::map<map_location, unsigned int> reach_map;
 	reach_map reach_map_;
-	reach_map reach_map_old_;
-	bool reach_map_changed_;
 
 	typedef std::multimap<map_location, overlay> overlay_map;
 
@@ -1177,8 +1151,6 @@ private:
 	arrows_map_t arrows_map_;
 
 	tod_color color_adjust_;
-
-	bool dirty_;
 
 public:
 	void replace_overlay_map(overlay_map* overlays)
