@@ -855,7 +855,7 @@ protected:
 	 *
 	 * Inherited from events::sdl_handler.
 	 */
-	virtual void draw() override;
+	virtual void draw() override final;
 
 	/**
 	 * Called at the beginning of each draw cycle.
