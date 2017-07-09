@@ -75,22 +75,25 @@ image::TYPE editor_display::get_image_type(const map_location& loc)
 	return image::TOD_COLORED;
 }
 
-void editor_display::draw_hex(const map_location& loc)
+void editor_display::draw_hex_cursor(const map_location& loc)
 {
-	//int xpos = get_location_x(loc);
-	//int ypos = get_location_y(loc);
-	display::draw_hex(loc);
-	if (map().on_board_with_border(loc)) {
-		if (map().in_selection(loc)) {
-			//drawing_queue_add(drawing_queue::LAYER_FOG_SHROUD, loc, xpos, ypos,
-			//	image::get_texture("editor/selection-overlay.png"));
-		}
+	if(!map().on_board_with_border(loc)) {
+		return;
+	}
 
-		if (brush_locations_.find(loc) != brush_locations_.end()) {
-			static const image::locator brush(game_config::images::editor_brush);
-			//drawing_queue_add(drawing_queue::LAYER_SELECTED_HEX, loc, xpos, ypos,
-			//		image::get_texture(brush));
-		}
+	static texture brush(image::get_texture(game_config::images::editor_brush));
+
+	for(const map_location& b_loc : brush_locations_) {
+		render_scaled_to_zoom(brush, b_loc); // LAYER_SELECTED_HEX
+	}
+}
+
+void editor_display::draw_hex_overlays()
+{
+	static texture selection_overlay(image::get_texture("editor/selection-overlay.png"));
+
+	for(const map_location& s_loc : map().selection()) {
+		render_scaled_to_zoom(selection_overlay, s_loc); // LAYER_FOG_SHROUD
 	}
 }
 

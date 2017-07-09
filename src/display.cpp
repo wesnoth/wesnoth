@@ -718,6 +718,14 @@ int display::get_location_y(const map_location& loc) const
 	return static_cast<int>(map_area().y + (loc.y + theme_.border().size) * zoom_ - ypos_ + (is_odd(loc.x) ? zoom_/2 : 0));
 }
 
+SDL_Point display::get_loc_drawing_origin(const map_location& loc) const
+{
+	return {
+		get_location_x(loc),
+		get_location_y(loc)
+	};
+}
+
 map_location display::minimap_location_on(int x, int y)
 {
 	//TODO: don't return location for this,
@@ -2590,40 +2598,102 @@ void display::redraw_everything()
 // NEW RENDERING CODE =========================================================================
 //
 
-void display::draw_hex(const map_location& loc)
+void display::draw_hex(const map_location& /*loc*/)
 {
-	const int xpos = get_location_x(loc);
-	const int ypos = get_location_y(loc);
+	// DO NOTHING
+}
 
-	image::TYPE image_type = get_image_type(loc);
+void display::draw_hex_overlays()
+{
+	// DO NOTHING
+}
 
-	const bool on_map = get_map().on_board(loc);
-	const time_of_day& tod = get_time_of_day(loc);
-
-	const bool is_shrouded = shrouded(loc);
-	const bool is_fogged = fogged(loc);
-
-	std::vector<texture> images_fg = get_terrain_images(loc, tod.id, image_type, FOREGROUND);
-	std::vector<texture> images_bg = get_terrain_images(loc, tod.id, image_type, BACKGROUND);
-
-	// Some debug output (TODO)
-	//const int num_images_fg = images_fg.size();
-	//const int num_images_bg = images_bg.size();
-
-	if(!is_shrouded) {
-		//
-		// Background terrains
-		//
-		for(const texture& t : images_bg) {
-			render_scaled_to_zoom(t, xpos, ypos);
+void display::draw_visible_hexes(const rect_of_hexes& visible_hexes, TERRAIN_TYPE terrain_type)
+{
+	for(const map_location& loc : visible_hexes) {
+		if(shrouded(loc)) {
+			continue;
 		}
 
-		//
-		// Village flags
-		//
-		const texture& flag = get_flag(loc);
-		if(flag) {
-			render_scaled_to_zoom(flag, xpos, ypos);
+		image::TYPE image_type = get_image_type(loc);
+		const time_of_day& tod = get_time_of_day(loc);
+
+		for(const texture& t : get_terrain_images(loc, tod.id, image_type, terrain_type)) {
+			render_scaled_to_zoom(t, loc);
+		}
+	}
+}
+
+void display::draw_gamemap()
+{
+	// Currenty visible hexes.
+	const rect_of_hexes& visible_hexes = get_visible_hexes();
+
+	//
+	// Background terrains
+	//
+	draw_visible_hexes(visible_hexes, BACKGROUND);
+
+	//
+	// On-map overlays, such as [item]s.
+	//
+	for(const auto& overlay_record : *overlays_) {
+		const map_location& o_loc = overlay_record.first;
+
+		if(shrouded(o_loc)) {
+			continue;
+		}
+
+		const overlay& item = overlay_record.second;
+		const std::string& current_team_name = dc_->teams()[viewing_team()].team_name();
+
+		if((item.team_name.empty() || item.team_name.find(current_team_name) != std::string::npos) &&
+			(!fogged(o_loc) || item.visible_in_fog))
+		{
+			const texture tex = item.image.find("~NO_TOD_SHIFT()") == std::string::npos
+				? image::get_texture(item.image) // TODO
+				: image::get_texture(item.image);
+
+			// was: SCALED_TO_HEX
+			render_scaled_to_zoom(tex, o_loc);
+		}
+	}
+
+	//
+	// Village flags
+	//
+	for(const team& t : dc_->teams()) {
+		auto& flag = flags_[t.side() - 1];
+		flag.update_last_draw_time();
+
+		for(const map_location& v_loc : t.villages()) {
+			if(!fogged(v_loc) || !dc_->get_team(viewing_side()).is_enemy(t.side())) {
+
+				// TODO: move this if-animated check to a helper function.
+				const image::locator& flag_image = animate_map_
+					? flag.get_current_frame()
+					: flag.get_first_frame();
+
+				render_scaled_to_zoom(image::get_texture(flag_image), v_loc);
+			}
+		}
+	}
+
+	//
+	// The grid overlay, if that's been enabled
+	//
+	if(grid_) {
+		for(const map_location& loc : visible_hexes) {
+			if(shrouded(loc)) {
+				continue;
+			}
+
+			// TODO: split into drawing layers? If not, combine into one image or texture.
+			static const texture grid_top = image::get_texture(game_config::images::grid_top);
+			render_scaled_to_zoom(grid_top, loc);
+
+			static const texture grid_bottom = image::get_texture(game_config::images::grid_bottom);
+			render_scaled_to_zoom(grid_bottom, loc);
 		}
 	}
 
@@ -2631,47 +2701,88 @@ void display::draw_hex(const map_location& loc)
 	// Units
 	//
 	if(!dc_->teams().empty()) {
-		// TODO: why is this created every time?
 		unit_drawer drawer = unit_drawer(*this);
 
-		auto u_it = dc_->units().find(loc);
-		auto request = exclusive_unit_draw_requests_.find(loc);
-
 		// Real units
-		if(u_it != dc_->units().end() && (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id())) {
-			drawer.redraw_unit(*u_it);
+		for(const unit& real_unit : dc_->units()) {
+			drawer.redraw_unit(real_unit);
 		}
 
 		// Fake (moving) units
 		for(const unit* temp_unit : *fake_unit_man_) {
-			if(request == exclusive_unit_draw_requests_.end() || request->second == temp_unit->id()) {
-				drawer.redraw_unit(*temp_unit);
+			drawer.redraw_unit(*temp_unit);
+		}
+
+		// TODO: re-add exclusionary checks for exclusive_unit_draw_requests_ later on, if necessary.
+#if 0
+		auto request = exclusive_unit_draw_requests_.find(loc);
+		if(request == exclusive_unit_draw_requests_.end() || request->second == u_it->id()) {};
+#endif
+	}
+
+	//
+	// Foreground terrains. FIXME! sometimes cut off units...
+	//
+	draw_visible_hexes(visible_hexes, FOREGROUND);
+
+	//
+	// Hex cursor (TODO: split into layers?)
+	//
+	draw_hex_cursor(mouseoverHex_);
+
+	//
+	// Right now just handles halos - see game_display
+	//
+	post_commit();
+
+	draw_hex_overlays();
+
+	//
+	// Shroud and fog
+	//
+	for(const map_location& loc : visible_hexes) {
+		image::TYPE image_type = get_image_type(loc);
+
+		const bool is_shrouded = shrouded(loc);
+		const bool is_fogged = fogged(loc);
+
+		// Main images.
+		if(is_shrouded || is_fogged) {
+
+			// If is_shrouded is false, is_fogged is true
+			const std::string& weather_image = is_shrouded
+				? get_variant(shroud_images_, loc)
+				: get_variant(fog_images_, loc);
+
+			// TODO: image type
+			render_scaled_to_zoom(image::get_texture(weather_image), loc);
+		}
+
+		// Transitions to main hexes.
+		if(!is_shrouded) {
+			for(const texture& t : get_fog_shroud_images(loc, image_type)) {
+				render_scaled_to_zoom(t, loc);
 			}
 		}
 	}
 
-	//
-	// Foreground terrains
-	//
-	if(!is_shrouded) {
-		for(const texture& t : images_fg) {
-			render_scaled_to_zoom(t, xpos, ypos);
-		}
-	}
+	// ================================================================================
+	// TODO: RE-ADD ALL THIS!
+	// ================================================================================
+
+#if 0
 
 	//
 	// Mouseover overlays (TODO: delegate to editor)
 	//
-#if 0
 	if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc)))
 		&& mouseover_hex_overlay_ != nullptr)
 	{
 		render_scaled_to_zoom(mouseover_hex_overlay_, xpos, ypos);
 	}
-#endif
 
 	//
-	// Arrows (whiteboard?)
+	// Arrows (whiteboard?) TODO:
 	//
 	auto arrows_in_hex = arrows_map_.find(loc);
 	if(arrows_in_hex != arrows_map_.end()) {
@@ -2681,56 +2792,8 @@ void display::draw_hex(const map_location& loc)
 	}
 
 	//
-	// Draw the grid overlay, if that's been enabled
+	// ToD Mask
 	//
-	if(!is_shrouded && grid_) {
-		// TODO: split into drawing layers?
-		static const texture grid_top = image::get_texture(game_config::images::grid_top);
-		render_scaled_to_zoom(grid_top, xpos, ypos);
-
-		static const texture grid_bottom = image::get_texture(game_config::images::grid_bottom);
-		render_scaled_to_zoom(grid_bottom, xpos, ypos);
-	}
-
-	//
-	// On-map overlays, such as [item]s.
-	//
-	if(!is_shrouded) {
-		//typedef overlay_map::const_iterator Itor;
-		auto overlays = overlays_->equal_range(loc);
-
-		//image::light_string lt;
-
-		const bool have_overlays = overlays.first != overlays.second;
-		if(have_overlays) {
-			// TODO:
-			//tod_color tod_col = tod.color;
-
-			//if(tod_col != get_time_of_day().color) {
-			//	tod_col = tod_col + color_adjust_;
-			//}
-
-			//lt = image::get_light_string(0, tod_col.r, tod_col.g, tod_col.b);
-
-			for(; overlays.first != overlays.second; ++overlays.first) {
-				if((overlays.first->second.team_name == "" ||
-					overlays.first->second.team_name.find(dc_->teams()[viewing_team()].team_name()) != std::string::npos)
-						&& !(is_fogged && !overlays.first->second.visible_in_fog))
-				{
-					const std::string& image = overlays.first->second.image;
-
-					const texture tex = image.find("~NO_TOD_SHIFT()") == std::string::npos
-						? image::get_texture(image) // TODO
-						: image::get_texture(image);
-
-					// was: SCALED_TO_HEX
-					render_scaled_to_zoom(tex, xpos, ypos);
-				}
-			}
-		}
-	}
-
-#if 0
 	// Draw the time-of-day mask on top of the terrain in the hex.
 	// tod may differ from tod if hex is illuminated.
 	const std::string& tod_hex_mask = tod.image_mask;
@@ -2741,16 +2804,7 @@ void display::draw_hex(const map_location& loc)
 		drawing_queue_add(drawing_queue::LAYER_TERRAIN_FG, loc, xpos, ypos,
 			image::get_image(tod_hex_mask,image::SCALED_TO_HEX));
 	}
-#endif
 
-	//
-	// Hex cursor (TODO: split into layers)
-	//
-	if(on_map && loc == mouseoverHex_) {
-		draw_hex_cursor(loc);
-	}
-
-#if 0
 	//
 	// Debugging output - coordinates, etc.
 	//
@@ -2839,49 +2893,7 @@ void display::draw()
 		SDL_Rect map_area_rect = map_area();
 		render_clip_rect_setter setter(&map_area_rect);
 
-		const rect_of_hexes& visible_hexes = get_visible_hexes();
-
-		// First render pass.
-		for(const map_location& loc : visible_hexes) {
-			draw_hex(loc);
-		}
-
-		// Right now just handles halos - see game_display.
-		post_commit();
-
-		// Second render pass.
-		for(const map_location& loc : visible_hexes) {
-			const int xpos = get_location_x(loc);
-			const int ypos = get_location_y(loc);
-
-			image::TYPE image_type = get_image_type(loc);
-
-			const bool is_shrouded = shrouded(loc);
-			const bool is_fogged = fogged(loc);
-
-			//
-			// Shroud and fog, main images.
-			//
-			if(is_shrouded || is_fogged) {
-
-				// If is_shrouded is false, is_fogged is true
-				const std::string& weather_image = is_shrouded
-					? get_variant(shroud_images_, loc)
-					: get_variant(fog_images_, loc);
-
-				// TODO: image type
-				render_scaled_to_zoom(image::get_texture(weather_image), xpos, ypos);
-			}
-
-			//
-			// Shroud and fog, transitions to main hexes.
-			//
-			if(!is_shrouded) {
-				for(const texture& t : get_fog_shroud_images(loc, image_type)) {
-					render_scaled_to_zoom(t, xpos, ypos);
-				}
-			}
-		}
+		draw_gamemap();
 	}
 
 	// Draw map labels.

@@ -48,7 +48,8 @@ protected:
 	*/
 	image::TYPE get_image_type(const map_location& loc) override;
 
-	void draw_hex(const map_location& loc) override;
+	virtual void draw_hex_cursor(const map_location& loc) override;
+	virtual void draw_hex_overlays() override;
 
 	const SDL_Rect& get_clip_rect() override;
 	void draw_sidebar() override;
