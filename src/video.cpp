@@ -266,7 +266,7 @@ void CVideo::delay(unsigned int milliseconds)
 void CVideo::render_copy(
 		const texture& txt, SDL_Rect* src_rect, SDL_Rect* dst_rect, const bool flip_h, const bool flip_v)
 {
-	if(!window) {
+	if(!window || txt.null()) {
 		return;
 	}
 
