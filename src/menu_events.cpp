@@ -196,8 +196,6 @@ void menu_handler::save_map()
 void menu_handler::preferences()
 {
 	gui2::dialogs::preferences_dialog::display(game_config_);
-	// Needed after changing fullscreen/windowed mode or display resolution
-	gui_->redraw_everything();
 }
 
 void menu_handler::show_chat_log()
@@ -1408,7 +1406,6 @@ void console_handler::do_refresh()
 	image::flush_cache();
 
 	menu_handler_.gui_->create_buttons();
-	menu_handler_.gui_->redraw_everything();
 }
 
 void console_handler::do_droid()
