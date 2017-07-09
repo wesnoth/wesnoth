@@ -280,9 +280,8 @@ void unit_drawer::redraw_unit(const unit & u) const
 		int yoff;
 
 		if(cfg_offset_x.empty() && cfg_offset_y.empty()) {
-			const surface unit_img = image::get_image(u.default_anim_image(), image::SCALED_TO_ZOOM);
-			xoff = unit_img.null() ? 0 : (hex_size - unit_img->w)/2;
-			yoff = unit_img.null() ? 0 : (hex_size - unit_img->h)/2;
+			xoff = unit_img.null() ? 0 : (hex_size - (unit_img_info.w * zoom_factor))/2;
+			yoff = unit_img.null() ? 0 : (hex_size - (unit_img_info.h * zoom_factor))/2;
 		} else {
 			xoff = cfg_offset_x.to_int();
 			yoff = cfg_offset_y.to_int();
@@ -394,11 +393,6 @@ void unit_drawer::redraw_unit(const unit & u) const
 
 void unit_drawer::draw_bar(int xpos, int ypos, size_t height, double filled, color_t col, fixed_t alpha) const
 {
-	filled = utils::clamp<double>(filled, 0.0, 1.0);
-	height = static_cast<size_t>(height * zoom_factor);
-
-	const size_t unfilled = static_cast<size_t>(height * (1.0 - filled));
-
 	// Magic width number
 	static unsigned int bar_width = 4;
 
@@ -414,10 +408,13 @@ void unit_drawer::draw_bar(int xpos, int ypos, size_t height, double filled, col
 	// much to make it line up with the crowns as before. Should probably compensate for this better
 	// in the future.
 	SDL_Rect bar_rect;
-	bar_rect.x = xpos + 19;
-	bar_rect.y = ypos + 13;
-	bar_rect.w = bar_width;
-	bar_rect.h = height;
+	bar_rect.x = xpos + (19 * zoom_factor);
+	bar_rect.y = ypos + (13 * zoom_factor);
+	bar_rect.w = bar_width  * zoom_factor;
+	bar_rect.h = height     * zoom_factor;
+
+	filled = utils::clamp<double>(filled, 0.0, 1.0);
+	const size_t unfilled = static_cast<size_t>(bar_rect.h * (1.0 - filled));
 
 	// Filled area dimensions.
 	SDL_Rect fill_rect;
