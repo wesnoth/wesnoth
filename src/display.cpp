@@ -2541,8 +2541,6 @@ void display::draw_hex(const map_location& loc) {
 			drawing_buffer_add(LAYER_GRID_BOTTOM, loc, xpos, ypos,
 				image::get_image(grid_bottom, image::TOD_COLORED));
 		}
-		// village-control flags.
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
 	}
 
 	if(!shrouded(loc)) {
@@ -2574,6 +2572,11 @@ void display::draw_hex(const map_location& loc) {
 				}
 			}
 		}
+	}
+
+	if(!shrouded(loc)) {
+		// village-control flags.
+		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
 	}
 
 	// Draw the time-of-day mask on top of the terrain in the hex.
