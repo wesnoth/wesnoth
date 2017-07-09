@@ -154,10 +154,8 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	, minimap_(nullptr)
 	, minimap_location_(sdl::empty_rect)
 	, redrawMinimap_(false)
-	, redraw_background_(true)
 	, grid_(false)
 	, diagnostic_label_(0)
-	, panelsDrawn_(false)
 	, turbo_speed_(2)
 	, turbo_(false)
 	, invalidateGameStatus_(true)
@@ -165,7 +163,6 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	, reports_object_(&reports_object)
 	, scroll_event_("scrolled")
 	, complete_redraw_event_("completely_redrawn")
-	, nextDraw_(0)
 	, fps_counter_()
 	, fps_start_()
 	, fps_actual_()
@@ -189,8 +186,6 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	, drawing_queue_()
 	, map_screenshot_(false)
 	, reach_map_()
-	, reach_map_old_()
-	, reach_map_changed_(true)
 	, overlays_(nullptr)
 	, fps_handle_(0)
 	, drawn_hexes_(0)
@@ -203,7 +198,6 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	, draw_num_of_bitmaps_(false)
 	, arrows_map_()
 	, color_adjust_()
-	, dirty_()
 , 
 {
 	//The following assertion fails when starting a campaign
@@ -254,7 +248,6 @@ void display::set_theme(config theme_cfg) {
 	menu_buttons_.clear();
 	action_buttons_.clear();
 	create_buttons();
-	invalidate_theme();
 }
 
 void display::init_flags() {
@@ -335,29 +328,6 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 		// this can happen if both flag and game_config::images::flag are empty.
 		ERR_DP << "missing flag for team" << n << "\n";
 	}
-}
-
-texture display::get_flag(const map_location& loc)
-{
-	if(!get_map().is_village(loc)) {
-		return texture(nullptr);
-	}
-
-	for(const team& t : dc_->teams()) {
-		if(t.owns_village(loc) && (!fogged(loc) || !dc_->get_team(viewing_side()).is_enemy(t.side()))) {
-			auto& flag = flags_[t.side() - 1];
-			flag.update_last_draw_time();
-
-			// TODO: move this if-animated check to a helper function.
-			const image::locator& image_flag = animate_map_
-				? flag.get_current_frame()
-				: flag.get_first_frame();
-
-			return image::get_texture(image_flag); // TODO: ToD coloring
-		}
-	}
-
-	return texture(nullptr);
 }
 
 void display::set_team(size_t teamindex, bool show_everything)
@@ -465,7 +435,6 @@ void display::rebuild_all()
 
 void display::reload_map()
 {
-	redraw_background_ = true;
 	builder_->reload_map();
 }
 
@@ -1424,65 +1393,6 @@ void display::set_diagnostic(const std::string& msg)
 	}
 }
 
-void display::draw_init()
-{
-	// DONE WITH THIS
-	return;
-
-	if (get_map().empty()) {
-		return;
-	}
-
-	if(!panelsDrawn_) {
-		draw_all_panels();
-		panelsDrawn_ = true;
-	}
-
-	if(redraw_background_) {
-		// Full redraw of the background
-		const SDL_Rect clip_rect = map_outside_area();
-		const surface& screen = get_screen_surface();
-		clip_rect_setter set_clip_rect(screen, &clip_rect);
-		SDL_FillRect(screen, &clip_rect, 0x00000000);
-		draw_background(clip_rect, theme_.border().background_image);
-		redraw_background_ = false;
-	}
-}
-
-void display::draw_wrap(bool update, bool force)
-{
-
-	if(redrawMinimap_) {
-		redrawMinimap_ = false;
-		draw_minimap();
-	}
-
-	if(update) {
-		draw_debugging_aids();
-
-		frametimes_.push_back(SDL_GetTicks() - last_frame_finished_);
-		fps_counter_++;
-		using std::chrono::duration_cast;
-		using std::chrono::seconds;
-		using std::chrono::steady_clock;
-		const seconds current_second = duration_cast<seconds>(steady_clock::now().time_since_epoch());
-		if(current_second != fps_start_) {
-			fps_start_ = current_second;
-			fps_actual_ = fps_counter_;
-			fps_counter_ = 0;
-		}
-		int longest_frame = *std::max_element(frametimes_.begin(), frametimes_.end());
-		int wait_time = time_between_draws - longest_frame;
-
-		if(!force && !benchmark && wait_time > 0) {
-			// If it's not time yet to draw, delay until it is
-			SDL_Delay(wait_time);
-		}
-
-		last_frame_finished_ = SDL_GetTicks();
-	}
-}
-
 const theme::action* display::action_pressed()
 {
 	for(auto i = action_buttons_.begin(); i != action_buttons_.end(); ++i) {
@@ -1818,7 +1728,6 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 	image::set_zoom(zoom_);
 
 	labels().recalculate_labels();
-	redraw_background_ = true;
 
 	// Forces a redraw after zooming.
 	// This prevents some graphic glitches from occurring.
@@ -2566,12 +2475,9 @@ void display::redraw_everything()
 		}
 	}
 
-	panelsDrawn_ = false;
 	if (!gui::in_dialog()) {
 		labels().recalculate_labels();
 	}
-
-	redraw_background_ = true;
 
 	for(std::function<void(display&)> f : redraw_observers_) {
 		f(*this);
