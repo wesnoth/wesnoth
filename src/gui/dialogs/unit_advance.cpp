@@ -78,14 +78,13 @@ void unit_advance::pre_show(window& window)
 		// This checks if we've finished iterating over the last unit type advancements
 		// and are into the modification-based advancements.
 		if(i >= last_real_advancement_) {
-			auto iter = sample.get_modifications().child_range("advancement").end();
-			iter--;
+			const auto& back = sample.get_modifications().child_range("advancement").back();
 
-			if(iter->has_attribute("image")) {
-				image_string = iter->get("image")->str();
+			if(back.has_attribute("image")) {
+				image_string = back["image"].str();
 			}
 
-			name = iter->get("description")->str();
+			name = back["description"].str();
 		}
 
 		if(image_string.empty()) {
