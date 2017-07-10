@@ -1166,9 +1166,6 @@ void display::toggle_debug_foreground()
 
 void display::draw_debugging_aids()
 {
-	// TODO: enable.
-	return;
-
 	if(video_.update_locked()) {
 		return;
 	}
