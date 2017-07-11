@@ -1381,7 +1381,7 @@ canvas::~canvas()
 void canvas::draw(const bool force)
 {
 	log_scope2(log_gui_draw, "Canvas: drawing.");
-	if(!is_dirty_ && !force) {
+	if(!is_dirty_ && !force && !texture_.null()) {
 		DBG_GUI_D << "Canvas: nothing to draw.\n";
 		return;
 	}
