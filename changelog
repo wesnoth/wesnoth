@@ -29,6 +29,8 @@ Version 1.13.8+dev:
    * New extra argument to wesnoth.match_location and wesnoth.get_locations
      allows specifying the teleport_unit.
    * Support the extra wesnoth.match_unit arguments also in wesnoth.get_units
+   * Fix wesnoth.put_unit not correctly deciding whether to fire the unit placed
+     event in some situations
  * Multiplayer:
    * When set to remember your password, Wesnoth now encrypts it. It is still
      possible to obtain the password from preferences, but it's no longer as
@@ -76,6 +78,10 @@ Version 1.13.8+dev:
    * Integer SUF keys (eg level) now accept a list of ranges
    * Fix $other_unit variable in SUF not being available in nested [and] [or] [not]
    * Unit ability values can now be specified with WFL
+   * The {ABILITY_TELEPORT} macro no longer uses internal variable substitution,
+     meaning that it can be used in an event without specifying
+     delayed_variable_substitution=yes.
+   * Add fire_event key to [unit] which determines whether to fire a unit placed event.
 
 Version 1.13.8:
   * Campaigns:
