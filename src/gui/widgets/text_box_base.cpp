@@ -442,7 +442,7 @@ void text_box_base::handle_editing(bool& handled, const utf8::string& unicode, i
 		ime_cursor_ = start;
 		ime_length_ = new_len;
 		std::string new_text(text_cached_);
-		new_text.insert(ime_start_point_, unicode);
+		utf8::insert(new_text, ime_start_point_, unicode);
 		text_.set_text(new_text, false);
 
 		// Update status
