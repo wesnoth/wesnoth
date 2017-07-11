@@ -557,7 +557,7 @@ static void event_execute( const SDL_Event& event, command_executor* executor)
 				return;
 		}
 	} else if(event.type == SDL_TEXTINPUT && (
-		(event.text.text[0] <= '\0') ||
+		static_cast<signed char>(event.text.text[0]) <= '\0' ||
 		(event.text.text[1] != '\0')))
 	{
 		return;
