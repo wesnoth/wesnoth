@@ -244,26 +244,9 @@ addon_manager::addon_manager(addons_client& client)
 {
 }
 
-void addon_manager::on_filtertext_changed(text_box_base* textbox, const std::string& text)
+void addon_manager::on_filtertext_changed(text_box_base* textbox)
 {
-	addon_list& addons = find_widget<addon_list>(textbox->get_window(), "addons", true);
-	filter_transform filter(utils::split(text, ' '));
-	boost::dynamic_bitset<> res;
-
-	const config::const_child_itors& addon_cfgs = cfg_.child_range("campaign");
-
-	for(const auto& a : addons_)
-	{
-		const config& addon_cfg = *std::find_if(addon_cfgs.begin(), addon_cfgs.end(),
-			[&a](const config& cfg)
-		{
-			return cfg["name"] == a.first;
-		});
-
-		res.push_back(filter(addon_cfg));
-	}
-
-	addons.set_addon_shown(res);
+	apply_filters(*textbox->get_window());
 }
 
 static std::string describe_status_verbose(const addon_tracking_info& state)
@@ -326,7 +309,7 @@ void addon_manager::pre_show(window& window)
 	addon_list& list = find_widget<addon_list>(&window, "addons", false);
 
 	text_box& filter = find_widget<text_box>(&window, "filter", false);
-	filter.set_text_changed_callback(std::bind(&addon_manager::on_filtertext_changed, this, _1, _2));
+	filter.set_text_changed_callback(std::bind(&addon_manager::on_filtertext_changed, this, _1));
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(list,
@@ -516,6 +499,30 @@ void addon_manager::reload_list_and_reselect_item(const std::string id, window& 
 	on_addon_select(window);
 }
 
+boost::dynamic_bitset<> addon_manager::get_name_filter_visibility(const window& window) const
+{
+	const text_box& name_filter = find_widget<const text_box>(&window, "filter", false);
+	const std::string& text = name_filter.get_value();
+
+	filter_transform filter(utils::split(text, ' '));
+	boost::dynamic_bitset<> res;
+
+	const config::const_child_itors& addon_cfgs = cfg_.child_range("campaign");
+
+	for(const auto& a : addons_)
+	{
+		const config& addon_cfg = *std::find_if(addon_cfgs.begin(), addon_cfgs.end(),
+			[&a](const config& cfg)
+		{
+			return cfg["name"] == a.first;
+		});
+
+		res.push_back(filter(addon_cfg));
+	}
+
+	return res;
+}
+
 boost::dynamic_bitset<> addon_manager::get_status_filter_visibility(const window& window) const
 {
 	const menu_button& status_filter = find_widget<const menu_button>(&window, "install_status_filter", false);
@@ -562,7 +569,10 @@ boost::dynamic_bitset<> addon_manager::get_type_filter_visibility(const window& 
 
 void addon_manager::apply_filters(window& window)
 {
-	boost::dynamic_bitset<> res = get_status_filter_visibility(window) & get_type_filter_visibility(window);
+	boost::dynamic_bitset<> res = 
+		get_status_filter_visibility(window)
+		& get_type_filter_visibility(window)
+		& get_name_filter_visibility(window);
 	find_widget<addon_list>(&window, "addons", false).set_addon_shown(res);
 }
 
