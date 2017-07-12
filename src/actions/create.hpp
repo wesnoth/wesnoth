@@ -145,12 +145,12 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
  * Place a unit into the game.
  * The unit will be placed on @a recruit_location, which should be retrieved
  * through a call to recruit_location().
+ * @param facing the desired facing for the unit, map_location::NDIRECTIONS to determine facing automatically.
  * @returns true if an event (or fog clearing) has mutated the game state.
  */
 typedef std::tuple<bool /*event modified*/, int /*previous village owner side*/, bool /*capture bonus time*/> place_recruit_result;
 place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_location, const map_location& recruited_from,
-	int cost, bool is_recall, bool show = false, bool fire_event = true, bool full_movement = false,
-	bool wml_triggered = false);
+	int cost, bool is_recall, map_location::DIRECTION facing = map_location::NDIRECTIONS, bool show = false, bool fire_event = true, bool full_movement = false, bool wml_triggered = false);
 
 /**
  * Recruits a unit of the given type for the given side.
@@ -170,9 +170,11 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
  * found, and it handles moving the unit to the board, paying gold, firing events,
  * tracking statistics, updating the undo stack (unless @a use_undo is false), and
  * recording the recall (unless @a use_recorder is false).
+ * @param facing the desired facing for the unit, map_location::NDIRECTIONS to determine facing automatically.
  * @returns false if the recall could not be found in the team's recall list.
  */
 bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
+                 map_location::DIRECTION facing = map_location::NDIRECTIONS,
                  bool show=true, bool use_undo=true);
 }//namespace actions

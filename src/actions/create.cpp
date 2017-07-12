@@ -608,7 +608,7 @@ namespace { // Helpers for place_recruit()
 }// anonymous namespace
 //Used by recalls and recruits
 place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_location, const map_location& recruited_from,
-    int cost, bool is_recall, bool show, bool fire_event, bool full_movement,
+    int cost, bool is_recall, map_location::DIRECTION facing, bool show, bool fire_event, bool full_movement,
     bool wml_triggered)
 {
 	place_recruit_result res(false, 0, false);
@@ -632,7 +632,11 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 	unit_map::iterator & new_unit_itor = add_result.first;
 	map_location current_loc = recruit_location;
 
-	set_recruit_facing(new_unit_itor, *u, recruit_location, leader_loc);
+	if (facing == map_location::NDIRECTIONS) {
+		set_recruit_facing(new_unit_itor, *u, recruit_location, leader_loc);
+	} else {
+		new_unit_itor->set_facing(facing);
+	}
 
 	// Do some bookkeeping.
 	recruit_checksums(*u, wml_triggered);
@@ -703,7 +707,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 
 
 	// Place the recruit.
-	place_recruit_result res = place_recruit(new_unit, loc, from, u_type.cost(), false, show);
+	place_recruit_result res = place_recruit(new_unit, loc, from, u_type.cost(), false, map_location::NDIRECTIONS, show);
 	statistics::recruit_unit(*new_unit);
 
 	// To speed things a bit, don't bother with the undo stack during
@@ -730,7 +734,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
  */
 bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
-                 bool show, bool use_undo)
+                 map_location::DIRECTION facing, bool show, bool use_undo)
 {
 	unit_ptr recall = current_team.recall_list().extract_if_matches_id(id);
 
@@ -747,11 +751,11 @@ bool recall_unit(const std::string & id, team & current_team,
 	place_recruit_result res;
 	if (recall->recall_cost() < 0) {
 		res = place_recruit(recall, loc, from, current_team.recall_cost(),
-	                             true, show);
+	                             true, facing, show);
 	}
 	else {
 		res = place_recruit(recall, loc, from, recall->recall_cost(),
-	                             true, show);
+	                             true, facing, show);
 	}
 	statistics::recall_unit(*recall);
 
