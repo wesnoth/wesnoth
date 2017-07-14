@@ -1282,6 +1282,15 @@ void text_shape::draw(
 		return;
 	}
 
+	// Note about color handling. It's possible to render the text with alpha set directly
+	// but it results in unnecessary extra renders and cache storage. Instead, we save the
+	// provided alpha value and override the one passed to the rext renderer. Then, if the
+	// alpha isn't opaque, we set a texture alpha mod once the text is rendered.
+	color_t fg_color = color_(variables);
+
+	const uint8_t saved_alpha = fg_color.a;
+	fg_color.a = ALPHA_OPAQUE;
+
 	font::pango_text& text_renderer = font::get_text_renderer();
 
 	text_renderer
@@ -1293,7 +1302,7 @@ void text_shape::draw(
 		.set_font_size(font_size_)
 		.set_font_style(font_style_)
 		.set_alignment(text_alignment_(variables))
-		.set_foreground_color(color_(variables))
+		.set_foreground_color(fg_color)
 		.set_maximum_width(maximum_width_(variables))
 		.set_maximum_height(maximum_height_(variables), true)
 		.set_ellipse_mode(variables.has_key("text_wrap_mode")
@@ -1303,6 +1312,9 @@ void text_shape::draw(
 
 	// Get the resulting texture.
 	texture& txt = text_renderer.render_and_get_texture();
+
+	// Set texture alpha.
+	set_texture_alpha(txt, saved_alpha);
 
 	// TODO: should use pango_text::get_size but the dimensions are inaccurate. Investigate.
 	texture::info info = txt.get_info();
