@@ -42,7 +42,7 @@
 #include "utils/functional.hpp"
 
 #include <boost/algorithm/string.hpp>
-#include <boost/functional/hash.hpp>
+#include <boost/functional/hash_fwd.hpp>
 
 #include <set>
 
