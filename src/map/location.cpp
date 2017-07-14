@@ -27,7 +27,7 @@
 #include "log.hpp"
 #include "utils/math.hpp"
 
-#include <boost/functional/hash.hpp>
+#include <boost/functional/hash_fwd.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
