@@ -41,20 +41,20 @@ bool is_neutral(const surface& surf)
 }
 
 static SDL_PixelFormat& get_neutral_pixel_format()
-	{
-		static bool first_time = true;
-		static SDL_PixelFormat format;
+{
+	static bool first_time = true;
+	static SDL_PixelFormat format;
 
-		if(first_time) {
-			first_time = false;
-			surface surf(SDL_CreateRGBSurface(0,1,1,32,SDL_RED_MASK,SDL_GREEN_MASK,
-											  SDL_BLUE_MASK,SDL_ALPHA_MASK));
-			format = *surf->format;
-			format.palette = nullptr;
-		}
+	if(first_time) {
+		first_time = false;
+		surface surf(SDL_CreateRGBSurfaceWithFormat(0, 1, 1, 32, SDL_PIXELFORMAT_ARGB8888));
 
-		return format;
+		format = *surf->format;
+		format.palette = nullptr;
 	}
+
+	return format;
+}
 
 surface make_neutral_surface(const surface &surf)
 {
