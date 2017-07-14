@@ -17,6 +17,7 @@
 #include "font/font_options.hpp"
 #include "color.hpp"
 #include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode_types.hpp"
 
@@ -24,19 +25,20 @@
 #include <pango/pangocairo.h>
 
 #include <functional>
+#include <map>
 #include <memory>
 #include <string>
 #include <vector>
 
-/***
+/**
  * Note: This is the cairo-pango code path, not the SDL_TTF code path.
  */
 
 struct language_def;
 struct point;
 
-namespace font {
-
+namespace font
+{
 // add background color and also font markup.
 
 /**
@@ -82,12 +84,20 @@ public:
     pango_text & operator = (const pango_text &) = delete;
 
 	/**
-	 * Returns the rendered text.
+	 * Returns the rendered text texture from the cache.
 	 *
-	 * Before rendering it tests whether a redraw is needed and if so it first
-	 * redraws the surface before returning it.
+	 * If the surface is flagged dirty it will first be re-rendered and a new
+	 * texture added to the cache upon redraw.
 	 */
-	surface& render();
+	texture& render_and_get_texture();
+
+	/**
+	 * Returns the rendered text surface directly.
+	 *
+	 * If the surface is flagged dirty it will first be re-rendered and a new
+	 * texture added to the cache upon redraw.
+	 */
+	surface& render_and_get_surface();
 
 	/** Returns the width needed for the text. */
 	int get_width() const;
@@ -437,6 +447,12 @@ private:
 
 	std::vector<std::string> find_links(utils::string_view text) const;
 	void format_links(std::string& text, const std::vector<std::string>& links) const;
+
+	/** Hash for the current settings (text, size, etc) configuration. */
+	size_t hash_;
+
+	// Allow specialization of std::hash for pango_text
+	friend struct std::hash<pango_text>;
 };
 
 /**
@@ -448,4 +464,29 @@ private:
  */
 pango_text& get_text_renderer();
 
+using pango_text_cache_t = std::map<size_t, texture>;
+
+/**
+ * The text texture cache.
+ *
+ * Each time a specific bit of text is rendered, a corresponding texture is created and
+ * added to the cache. We don't store the surface since there isn't really any use for
+ * it. If we need texture size that can be easily queried.
+ *
+ * @todo Figure out how this can be optimized with a texture atlas. It should be possible
+ * to store smaller bits of text in the atlas and construct new textures from them.
+ */
+static pango_text_cache_t rendered_text_cache;
+
 } // namespace font
+
+// Specialize std::hash for pango_text
+namespace std
+{
+template<>
+struct hash<font::pango_text>
+{
+	size_t operator()(const font::pango_text& t) const;
+};
+
+} // namespace std

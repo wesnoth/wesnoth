@@ -2227,7 +2227,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 			text.set_text(t, true);
 			text.set_maximum_width(area.w);
 			text.set_maximum_height(area.h, false);
-			surface s = text.render();
+			surface s = text.render_and_get_surface();
 
 			// check if next element is text with almost no space to show it
 			const int minimal_text = 12; // width in pixels
@@ -2240,7 +2240,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 				//NOTE this space should be longer than minimal_text pixels
 				t = t + "    ";
 				text.set_text(t, true);
-				s = text.render();
+				s = text.render_and_get_surface();
 				// use the area of this element for next tooltips
 				used_ellipsis = true;
 				ellipsis_area.x = x;
