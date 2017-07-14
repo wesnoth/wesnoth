@@ -1293,22 +1293,27 @@ void text_shape::draw(
 				: PANGO_ELLIPSIZE_END)
 		.set_characters_per_line(characters_per_line_);
 
-	surface& surf = text_renderer.render();
-	if(surf->w == 0) {
+	// Get the resulting texture.
+	texture& txt = text_renderer.render_and_get_texture();
+
+	// TODO: should use pango_text::get_size but the dimensions are inaccurate. Investigate.
+	texture::info info = txt.get_info();
+
+	if(info.w == 0) {
 		DBG_GUI_D << "Text: Rendering '" << text
 				  << "' resulted in an empty canvas, leave.\n";
 		return;
 	}
 
 	wfl::map_formula_callable local_variables(variables);
-	local_variables.add("text_width", wfl::variant(surf->w));
-	local_variables.add("text_height", wfl::variant(surf->h));
+	local_variables.add("text_width", wfl::variant(info.w));
+	local_variables.add("text_height", wfl::variant(info.h));
 	/*
 		std::cerr << "Text: drawing text '" << text
 			<< " maximum width " << maximum_width_(variables)
 			<< " maximum height " << maximum_height_(variables)
-			<< " text width " << surf->w
-			<< " text height " << surf->h;
+			<< " text width " << info.w
+			<< " text height " << info.h;
 	*/
 	///@todo formulas are now recalculated every draw cycle which is a
 	// bit silly unless there has been a resize. So to optimize we should
@@ -1327,25 +1332,17 @@ void text_shape::draw(
 			 _("Text doesn't start on canvas."));
 
 	// A text might be to long and will be clipped.
-	if(surf->w > static_cast<int>(w)) {
+	if(info.w > static_cast<int>(w)) {
 		WRN_GUI_D << "Text: text is too wide for the "
 					 "canvas and will be clipped.\n";
 	}
 
-	if(surf->h > static_cast<int>(h)) {
+	if(info.h > static_cast<int>(h)) {
 		WRN_GUI_D << "Text: text is too high for the "
 					 "canvas and will be clipped.\n";
 	}
 
-	SDL_Rect dst = sdl::create_rect(x, y, surf->w, surf->h);
-
-	/* NOTE: we cannot use SDL_UpdateTexture to copy the surface pixel data directly to the canvas texture
-	 * since no alpha blending occurs; values (even pure alpha) totally overwrite the underlying pixel data.
-	 *
-	 * To work around that, we create a texture from the surface and copy it to the renderer. This cleanly
-	 * copies the surface to the canvas texture with the appropriate alpha blending.
-	 */
-	texture txt(surf);
+	SDL_Rect dst = sdl::create_rect(x, y, info.w, info.h);
 
 	CVideo::get_singleton().render_copy(txt, nullptr, &dst);
 }

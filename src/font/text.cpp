@@ -33,12 +33,16 @@
 #include "preferences/general.hpp"
 
 #include <boost/algorithm/string/replace.hpp>
+#include <boost/functional/hash_fwd.hpp>
 
 #include <cassert>
 #include <cstring>
 #include <stdexcept>
 
 namespace font {
+
+// Cache
+//pango_text_cache_t rendered_text_cache {};
 
 pango_text::pango_text()
 	: context_(pango_font_map_create_context(pango_cairo_font_map_get_default()), g_object_unref)
@@ -65,6 +69,7 @@ pango_text::pango_text()
 	, length_(0)
 	, surface_dirty_(true)
 	, surface_buffer_()
+	, hash_(0)
 {
 	// With 72 dpi the sizes are the same as with SDL_TTF so hardcoded.
 	pango_cairo_context_set_resolution(context_.get(), 72.0);
@@ -88,12 +93,17 @@ pango_text::pango_text()
 	cairo_font_options_destroy(fo);
 }
 
-surface& pango_text::render()
+texture& pango_text::render_and_get_texture()
+{
+	this->rerender();
+	return rendered_text_cache[hash_];
+}
+
+surface& pango_text::render_and_get_surface()
 {
 	this->rerender();
 	return surface_;
 }
-
 
 int pango_text::get_width() const
 {
@@ -689,6 +699,16 @@ void pango_text::rerender(const bool force)
 		this->recalculate(force);
 		surface_dirty_ = false;
 
+		// Update hash
+		hash_ = std::hash<pango_text>()(*this);
+
+		// If we already have the appropriate texture in-cache, exit.
+		auto iter = rendered_text_cache.find(hash_);
+		if(iter != rendered_text_cache.end()) {
+			return;
+		}
+
+		// Else, render the updated text...
 		int width  = rect_.x + rect_.width;
 		int height = rect_.y + rect_.height;
 		if(maximum_width_  > 0) { width  = std::min(width, maximum_width_); }
@@ -724,6 +744,9 @@ void pango_text::rerender(const bool force)
 		surface_.assign(SDL_CreateRGBSurfaceFrom(
 			&surface_buffer_[0], width, height, 32, stride, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
 #endif
+
+		// ...and add it to the cache.
+		rendered_text_cache.emplace(hash_, texture(surface_));
 	}
 }
 
@@ -868,3 +891,37 @@ pango_text& get_text_renderer()
 }
 
 } // namespace font
+
+namespace std
+{
+size_t hash<font::pango_text>::operator()(const font::pango_text& t) const
+{
+	using boost::hash_value;
+	using boost::hash_combine;
+
+	//
+	// Text hashing uses 32-bit FNV-1a.
+	// http://isthe.com/chongo/tech/comp/fnv/#FNV-1a
+	//
+
+	size_t hash = 2166136261;
+	for(const char& c : t.text_) {
+		hash |= c;
+		hash *= 16777619;
+	}
+
+	hash_combine(hash, t.font_class_);
+	hash_combine(hash, t.font_size_);
+	hash_combine(hash, t.font_style_);
+	hash_combine(hash, t.foreground_color_.to_rgba_bytes());
+	hash_combine(hash, t.get_width());
+	hash_combine(hash, t.get_height());
+	hash_combine(hash, t.maximum_width_);
+	hash_combine(hash, t.maximum_height_);
+	hash_combine(hash, t.alignment_);
+	hash_combine(hash, t.ellipse_mode_);
+
+	return hash;
+}
+
+} // namespace std
