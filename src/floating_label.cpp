@@ -108,7 +108,7 @@ texture floating_label::create_texture()
 
 		renderer.set_text(text_, use_markup_);
 
-		surface& foreground = renderer.render();
+		surface& foreground = renderer.render_and_get_surface();
 
 		if(foreground == nullptr) {
 			ERR_FT << "could not create floating label's text" << std::endl;
