@@ -669,10 +669,10 @@ void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const s
 
 	/* set color (used for foreground). */
 	cairo_set_source_rgba(cr.get(),
-		foreground_color_.r / 256.0,
-		foreground_color_.g / 256.0,
-		foreground_color_.b / 256.0,
-		foreground_color_.a / 256.0
+		foreground_color_.r / 255.0,
+		foreground_color_.g / 255.0,
+		foreground_color_.b / 255.0,
+		foreground_color_.a / 255.0
 	);
 
 	pango_cairo_show_layout(cr.get(), &layout);
