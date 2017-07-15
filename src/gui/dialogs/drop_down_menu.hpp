@@ -25,6 +25,9 @@ class config;
 
 namespace gui2
 {
+
+struct point;
+
 namespace dialogs
 {
 ///Used by the menu_button widget.
@@ -37,6 +40,7 @@ public:
 		, selected_item_(selected_item)
 		, use_markup_(use_markup)
 		, keep_open_(keep_open)
+		, mouse_down_happened_(false)
 		, window_(nullptr)
 		, callback_toggle_state_change_(callback_toggle_state_change)
 	{
@@ -71,6 +75,12 @@ private:
 	 * such as scrollbars and toggle butons.
 	 */
 	bool keep_open_;
+	
+	/**
+	 * When menu is invoked on a long-touch timer, a following mouse-up event will close it.
+	 * This flag prevents that: the menu will only be closed on a mouse-up that follows a mouse-down.
+	 * */
+	bool mouse_down_happened_;
 
 	window* window_;
 
@@ -88,6 +98,10 @@ private:
 
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
+	
+	void mouse_up_callback(window& window, bool&, bool&, const point& coordinate);
+	
+	void mouse_down_callback();
 };
 
 } // namespace dialogs

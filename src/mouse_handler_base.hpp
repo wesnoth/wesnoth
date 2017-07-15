@@ -45,6 +45,9 @@ public:
 	 * Const version.
 	 */
 	virtual const display& gui() const = 0;
+	
+	/** If mouse/finger has moved far enough to consider it move/swipe, and not a click/touch */
+	bool dragging_started() const;
 
 	/**
 	 * @return true when the class in the "dragging" state.

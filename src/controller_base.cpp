@@ -17,17 +17,18 @@
 
 #include "show_dialog.hpp" //gui::in_dialog
 #include "display.hpp"
-#include "events.hpp"
 #include "preferences/game.hpp"
 #include "hotkey/command_executor.hpp"
-#include "hotkey/hotkey_command.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "mouse_handler_base.hpp"
 #include "scripting/plugins/context.hpp"
 #include "soundsource.hpp"
+#include "gui/core/timer.hpp"
+
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
+#define LONG_TOUCH_DURATION_MS 400
 
 controller_base::controller_base(
 		const config& game_config, CVideo& /*video*/)
@@ -40,11 +41,29 @@ controller_base::controller_base(
 	, scroll_right_(false)
 	, joystick_manager_()
 	, last_mouse_is_touch_(false)
+	, long_touch_timer_(0)
 {
 }
 
 controller_base::~controller_base()
 {
+	if(long_touch_timer_ != 0) {
+		long_touch_timer_ = 0;
+		gui2::remove_timer(long_touch_timer_);
+	}
+}
+
+void controller_base::long_touch_callback(int x, int y)
+{
+	if(long_touch_timer_ != 0 && !get_mouse_handler_base().dragging_started()) {
+		int mousex, mousey;
+		Uint32 mouse_flags = SDL_GetMouseState(&mousex, &mousey);
+		if((mouse_flags & SDL_BUTTON_LMASK) != 0) {
+			show_menu(get_display().get_theme().context_menu()->items(), x, y, true, get_display());
+		}
+	}
+	
+	long_touch_timer_ = 0;
 }
 
 void controller_base::handle_event(const SDL_Event& event)
@@ -111,6 +130,12 @@ void controller_base::handle_event(const SDL_Event& event)
 		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
+		{
+			long_touch_timer_ = gui2::add_timer(
+				LONG_TOUCH_DURATION_MS,
+				std::bind(&controller_base::long_touch_callback, this, event.button.x, event.button.y));
+		}
+		
 		last_mouse_is_touch_ = event.button.which == SDL_TOUCH_MOUSEID;
 		get_mouse_handler_base().mouse_press(event.button, is_browsing());
 		if (get_mouse_handler_base().get_show_menu()){
@@ -122,6 +147,11 @@ void controller_base::handle_event(const SDL_Event& event)
 		// handled by mouse case
 		break;
 	case SDL_MOUSEBUTTONUP:
+		if(long_touch_timer_ != 0) {
+			long_touch_timer_ = 0;
+			gui2::remove_timer(long_touch_timer_);
+		}
+		
 		last_mouse_is_touch_ = event.button.which == SDL_TOUCH_MOUSEID;
 		get_mouse_handler_base().mouse_press(event.button, is_browsing());
 		if (get_mouse_handler_base().get_show_menu()){
@@ -134,7 +164,9 @@ void controller_base::handle_event(const SDL_Event& event)
 	case SDL_MOUSEWHEEL:
 		get_mouse_handler_base().mouse_wheel(-event.wheel.x, event.wheel.y, is_browsing());
 		break;
-		
+	case TIMER_EVENT:
+		gui2::execute_timer(reinterpret_cast<size_t>(event.user.data1));
+		break;
 	case SDL_MULTIGESTURE:
 	default:
 		break;
@@ -234,7 +266,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 	if (plugins_context *l = get_plugins_context()) {
 		l->play_slice();
 	}
-
+	
 	events::pump();
 	events::raise_process_event();
 	events::raise_draw_event();
