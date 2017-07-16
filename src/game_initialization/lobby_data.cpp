@@ -273,7 +273,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 					addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 				}
 			} else {
-				mod_info += (mod_info.empty() ? "" : ", ") + cfg["addon_id"].str();
+				mod_info += (mod_info.empty() ? "" : ", ") + cfg["id"].str();
 
 				if(cfg["require_modification"].to_bool(false)) {
 					have_all_mods = false;
