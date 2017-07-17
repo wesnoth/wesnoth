@@ -103,40 +103,20 @@ texture floating_label::create_texture()
 		renderer.set_maximum_width(width_ < 0 ? clip_rect_.w : width_);
 		renderer.set_maximum_height(height_ < 0 ? clip_rect_.h : height_, true);
 
+		// Add text outline if we're not drawing the background.
+		if(!fill_background_) {
+			renderer.set_add_outline(true);
+		}
+
 		// Strip trailing newlines.
 		boost::trim_right(text_);
 
 		renderer.set_text(text_, use_markup_);
 
-		surface& foreground = renderer.render_and_get_surface();
+		texture_ = renderer.render_and_get_texture();
 
-		if(foreground == nullptr) {
+		if(texture_.null()) {
 			ERR_FT << "could not create floating label's text" << std::endl;
-			return texture();
-		}
-
-		//
-		// Add some text shadow if we're not drawing the background.
-		//
-		if(!fill_background_) {
-			surface background = create_neutral_surface(foreground->w + 4, foreground->h + 4);
-			sdl::fill_surface_rect(background, nullptr, 0);
-
-			SDL_Rect r {2, 2, 0, 0};
-			sdl_blit(foreground, nullptr, background, &r);
-
-			background = shadow_image(background);
-
-			if(background == nullptr) {
-				ERR_FT << "could not create floating label's shadow" << std::endl;
-				return texture_ = texture(foreground);
-			}
-
-			sdl_blit(foreground, nullptr, background, &r);
-
-			texture_ = texture(background);
-		} else {
-			texture_ = texture(foreground);
 		}
 	}
 
