@@ -1314,8 +1314,7 @@ static texture create_texture_from_file(const image::locator& loc)
 
 		// TODO: if we need to use SDL_RWops we should use IMG_LoadTexture_RW here instead.
 		{
-			texture temp(IMG_LoadTexture(renderer, location.c_str()));
-			res = temp;
+			res.assign(IMG_LoadTexture(renderer, location.c_str()));
 		}
 
 		// TODO: decide what to do about this.
