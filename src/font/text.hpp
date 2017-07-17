@@ -266,7 +266,6 @@ private:
 	/** The SDL surface to render upon used as a cache. */
 	mutable surface surface_;
 
-
 	/** The text to draw (stored as UTF-8). */
 	std::string text_;
 
