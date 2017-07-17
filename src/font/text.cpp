@@ -667,7 +667,8 @@ void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const s
 
 	cairo_format_t format = CAIRO_FORMAT_ARGB32;
 
-	unsigned char* buffer = &surface_buffer_[surface_buffer_offset];
+	uint8_t* buffer = &surface_buffer_[surface_buffer_offset];
+
 	std::unique_ptr<cairo_surface_t, std::function<void(cairo_surface_t*)>> cairo_surface(
 		cairo_image_surface_create_for_data(buffer, format, width, height, stride), cairo_surface_destroy);
 	std::unique_ptr<cairo_t, std::function<void(cairo_t*)>> cr(cairo_create(cairo_surface.get()), cairo_destroy);
@@ -749,7 +750,7 @@ void pango_text::rerender(const bool force)
 
 		this->create_surface_buffer(stride * height);
 
-		if (!surface_buffer_.size()) {
+		if (surface_buffer_.empty()) {
 			surface_.assign(create_neutral_surface(0, 0));
 			return;
 		}
@@ -779,13 +780,11 @@ void pango_text::rerender(const bool force)
 
 void pango_text::create_surface_buffer(const size_t size) const
 {
-	// clear old buffer
+	// Clear surface.
 	surface_.assign(nullptr);
 
-	surface_buffer_.resize(size);
-
-	// Not sure why this is needed, perhaps SDL assumes it?
-	for (auto & c : surface_buffer_) { c = 0; }
+	// Resize buffer appropriately and clear all existing data (essentially sets all pixel values to 0).
+	surface_buffer_.assign(size, 0);
 }
 
 bool pango_text::set_markup(utils::string_view text, PangoLayout& layout) {

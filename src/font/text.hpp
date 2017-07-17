@@ -396,7 +396,7 @@ private:
 	 * data source for the SDL_Surface. This means the buffer needs to be stored
 	 * in the object, since SDL_Surface doesn't own its buffer.
 	 */
-	mutable std::vector<unsigned char> surface_buffer_;
+	mutable std::vector<uint8_t> surface_buffer_;
 
 	/**
 	 * Creates a new buffer.
