@@ -57,12 +57,18 @@ public:
 		return info(*this);
 	}
 
-	/** Destroys the managed texture and creates a new one. */
+	/** Releases ownership of the managed texture and resets the ptr to null. */
+	void reset();
+
+	/** Releases ownership of the managed texture and creates a new one. */
 	void reset(int w, int h, SDL_TextureAccess access);
+
+	/** Replaces ownership of the managed texture with the given one. */
+	void assign(SDL_Texture* t);
 
 	texture& operator=(const texture& t) = default;
 
-	/** Move assignment. Frees the managed texture from the passed object. */
+	/** Move assignment. Releases ownership of the managed texture from the passed object. */
 	texture& operator=(texture&& t) = default;
 
 	operator SDL_Texture*() const
@@ -77,8 +83,6 @@ public:
 
 private:
 	void finalize();
-
-	void destroy_texture();
 
 	std::shared_ptr<SDL_Texture> texture_;
 };

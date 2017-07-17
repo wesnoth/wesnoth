@@ -26,14 +26,21 @@ namespace
 // The default pixel format to create textures with.
 int default_texture_format = SDL_PIXELFORMAT_ARGB8888;
 
+void cleanup_texture(SDL_Texture* t)
+{
+	if(t != nullptr) {
+		SDL_DestroyTexture(t);;
+	}
+}
+
 /**
  * Constructs a new shared_ptr around the provided texture with the appropriate deleter.
  * Should only be passed the result of texture creation functions or the texture might
- * get destroys too early.
+ * get destroyed too early.
  */
 std::shared_ptr<SDL_Texture> make_texture_ptr(SDL_Texture* tex)
 {
-	return std::shared_ptr<SDL_Texture>(tex, &SDL_DestroyTexture);
+	return std::shared_ptr<SDL_Texture>(tex, &cleanup_texture);
 }
 
 } // end anon namespace
@@ -75,10 +82,17 @@ void texture::finalize()
 	set_texture_blend_mode(*this, SDL_BLENDMODE_BLEND);
 }
 
+void texture::reset()
+{
+	if(texture_) {
+		texture_.reset();
+	}
+}
+
 void texture::reset(int w, int h, SDL_TextureAccess access)
 {
 	// No-op if texture is null.
-	destroy_texture();
+	reset();
 
 	SDL_Renderer* renderer = CVideo::get_singleton().get_renderer();
 	if(!renderer) {
@@ -93,11 +107,9 @@ void texture::reset(int w, int h, SDL_TextureAccess access)
 	finalize();
 }
 
-void texture::destroy_texture()
+void texture::assign(SDL_Texture* t)
 {
-	if(texture_) {
-		texture_.reset();
-	}
+	texture_.reset(t, &cleanup_texture);
 }
 
 texture::info::info(SDL_Texture* t)
