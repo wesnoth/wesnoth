@@ -62,6 +62,7 @@ pango_text::pango_text()
 	, font_size_(14)
 	, font_style_(STYLE_NORMAL)
 	, foreground_color_() // solid white
+	, add_outline_(false)
 	, maximum_width_(-1)
 	, characters_per_line_(0)
 	, maximum_height_(-1)
@@ -494,6 +495,16 @@ pango_text& pango_text::set_link_color(const color_t& color)
 	return *this;
 }
 
+pango_text& pango_text::set_add_outline(bool do_add)
+{
+	if(do_add != add_outline_) {
+		add_outline_ = do_add;
+		//calculation_dirty_ = true;
+		surface_dirty_ = true;
+	}
+
+	return *this;
+}
 
 void pango_text::recalculate(const bool force) const
 {
@@ -678,7 +689,21 @@ void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const s
 		}
 	}
 
-	/* set color (used for foreground). */
+	// Add a path to the cairo context tracing the current text.
+	pango_cairo_layout_path(cr.get(), &layout);
+
+	if(add_outline_) {
+		// Set color for background outline (black).
+		cairo_set_source_rgba(cr.get(), 0.0, 0.0, 0.0, 1.0);
+
+		cairo_set_line_join(cr.get(), CAIRO_LINE_JOIN_ROUND);
+		cairo_set_line_width(cr.get(), 3.0); // Adjust as necessary
+
+		// Stroke path to draw outline. Don't delete the path.
+		cairo_stroke_preserve(cr.get());
+	}
+
+	// Set main text color.
 	cairo_set_source_rgba(cr.get(),
 		foreground_color_.r / 255.0,
 		foreground_color_.g / 255.0,
@@ -686,10 +711,13 @@ void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const s
 		foreground_color_.a / 255.0
 	);
 
-	pango_cairo_show_layout(cr.get(), &layout);
+	// Fill text path. This is a hack to work around bug #1744 (bad alpha blending when rendering the
+	// output surface). Instead of calling pango_cairo_show_layout twice, we fill the layout path here
+	// It greatly improves the look of text, but it shouldn't really be necessary and probably messes
+	// with certain OS settings like disabling AA.
+	cairo_fill(cr.get());
 
-	// HACK: 'draw' text a second time in order to get desired output when copying w/ alpha blending.
-	// See bug #1744 for more info.
+	// Necessary for pango markup to be properly rendered.
 	pango_cairo_show_layout(cr.get(), &layout);
 }
 
@@ -904,6 +932,7 @@ size_t hash<font::pango_text>::operator()(const font::pango_text& t) const
 	hash_combine(hash, t.maximum_height_);
 	hash_combine(hash, t.alignment_);
 	hash_combine(hash, t.ellipse_mode_);
+	hash_combine(hash, t.add_outline_);
 
 	return hash;
 }

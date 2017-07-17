@@ -255,6 +255,9 @@ public:
 	pango_text& set_link_aware(bool b);
 
 	pango_text& set_link_color(const color_t& color);
+
+	pango_text& set_add_outline(bool do_add);
+
 private:
 
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
@@ -267,7 +270,6 @@ private:
 
 	/** The SDL surface to render upon used as a cache. */
 	mutable surface surface_;
-
 
 	/** The text to draw (stored as UTF-8). */
 	std::string text_;
@@ -298,6 +300,9 @@ private:
 
 	/** The foreground color. */
 	color_t foreground_color_;
+
+	/** Whether to add an outline effect. */
+	bool add_outline_;
 
 	/**
 	 * The maximum width of the text.
