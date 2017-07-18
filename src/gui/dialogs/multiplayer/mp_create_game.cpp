@@ -799,7 +799,7 @@ void mp_create_game::post_show(window& window)
 						: scenario["name"];
 
 					entry_points.insert(is_first ? entry_points.begin() : entry_points.end(), &scenario);
-					entry_point_titles.push_back(is_first ? entry_point_titles.begin() : entry_point_titles.end(), title);
+					entry_point_titles.insert(is_first ? entry_point_titles.begin() : entry_point_titles.end(), title);
 				}
 			}
 		}
