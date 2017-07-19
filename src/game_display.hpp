@@ -26,10 +26,16 @@ class game_board;
 #include "pathfind/pathfind.hpp"
 
 #include <deque>
+#include <memory>
 
 // This needs to be separate from display.h because of the static
 // singleton member, which will otherwise trigger link failure
 // when building the editor.
+
+namespace font
+{
+	struct floating_label_scope_helper;
+}
 
 class game_display : public display
 {
@@ -136,14 +142,11 @@ protected:
 	 */
 	virtual void post_draw() override;
 
-	virtual void post_commit() override;
-
-	virtual void draw_hex(const map_location& loc) override;
-
 	virtual void draw_hex_cursor(const map_location& loc) override;
 
 	virtual void draw_hex_overlays() override;
 public:
+
 	/** Set the attack direction indicator. */
 	void set_attack_indicator(const map_location& src, const map_location& dst);
 	void clear_attack_indicator();
@@ -207,11 +210,15 @@ private:
 
 	virtual void draw_sidebar() override;
 
+	void draw_footstep_images() const;
+
 	overlay_map overlay_map_;
 
 	// Locations of the attack direction indicator's parts
 	map_location attack_indicator_src_;
 	map_location attack_indicator_dst_;
+
+	std::vector<font::floating_label_scope_helper> hex_def_fl_labels_;
 
 	pathfind::marked_route route_;
 

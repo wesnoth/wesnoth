@@ -1179,29 +1179,36 @@ static void draw_background(const SDL_Rect& area, const std::string& image)
 	CVideo::get_singleton().render_copy(background, nullptr, &a);
 }
 
-void display::draw_text_in_hex(const map_location& loc,
-		const drawing_queue::layer layer, const std::string& text,
-		size_t font_size, color_t color, double x_in_hex, double y_in_hex)
+int display::draw_text_in_hex(const map_location& loc,
+		const std::string& text,
+		size_t font_size,
+		color_t color,
+		int fl_label_id,
+		double x_in_hex,
+		double y_in_hex)
 {
-	if (text.empty()) return;
+	if(text.empty()) {
+		return fl_label_id;
+	}
 
 	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor());
 
-	surface text_surf = font::get_rendered_text(text, font_sz, color);
-	surface back_surf = font::get_rendered_text(text, font_sz, font::BLACK_COLOR);
-	const int x = get_location_x(loc) - text_surf->w/2
-	              + static_cast<int>(x_in_hex* hex_size());
-	const int y = get_location_y(loc) - text_surf->h/2
-	              + static_cast<int>(y_in_hex* hex_size());
-	for (int dy=-1; dy <= 1; ++dy) {
-		for (int dx=-1; dx <= 1; ++dx) {
-			if (dx!=0 || dy!=0) {
-				drawing_queue_add(layer, loc, x + dx, y + dy, back_surf);
-			}
-		}
+	const int x = get_location_x(loc) /*- text_surf->w / 2*/ + static_cast<int>(x_in_hex * hex_size());
+	const int y = get_location_y(loc) /*- text_surf->h / 2*/ + static_cast<int>(y_in_hex * hex_size());
+
+	// We were given a label id, remove it.
+	if(fl_label_id != 0) {
+		font::remove_floating_label(fl_label_id);
 	}
 
-	drawing_queue_add(layer, loc, x, y, text_surf);
+	font::floating_label flabel(text);
+	flabel.set_font_size(font_sz);
+	flabel.set_color(color);
+	flabel.set_position(x, y);
+	flabel.set_alignment(font::CENTER_ALIGN);
+	flabel.set_scroll_mode(font::ANCHOR_LABEL_MAP);
+
+	return font::add_floating_label(flabel);
 }
 
 void display::select_hex(map_location hex)
@@ -2606,16 +2613,14 @@ void display::draw_gamemap()
 	draw_visible_hexes(visible_hexes, FOREGROUND);
 
 	//
+	// Draws various overlays, such as reach maps, etc.
+	//
+	draw_hex_overlays();
+
+	//
 	// Hex cursor (TODO: split into layers?)
 	//
 	draw_hex_cursor(mouseoverHex_);
-
-	//
-	// Right now just handles halos - see game_display
-	//
-	post_commit();
-
-	draw_hex_overlays();
 
 	//
 	// Shroud and fog
@@ -2776,15 +2781,15 @@ void display::draw()
 		draw_gamemap();
 	}
 
-	// Draw map labels.
+	// Draw debugging aids such as the FPS counter.
+	draw_debugging_aids();
+
+	// Draw floating labels (includes map labels).
 	font::draw_floating_labels();
 
 	// TODO: what dis?
 	//events::raise_volatile_draw_event();
 	//events::raise_volatile_undraw_event();
-
-	// Draw debugging aids such as the FPS counter.
-	draw_debugging_aids();
 
 	// Call any redraw observers.
 	// FIXME: makes the editor slow.

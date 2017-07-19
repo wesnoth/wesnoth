@@ -391,7 +391,7 @@ void move::draw_hex(const map_location& hex)
 	{
 		std::stringstream turn_text;
 		turn_text << turn_number_;
-		display::get_singleton()->draw_text_in_hex(hex, drawing_queue::LAYER_MOVE_INFO, turn_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
+		display::get_singleton()->draw_text_in_hex(hex, turn_text.str(), 17, font::NORMAL_COLOR, 0, 0.5,0.8);
 	}
 }
 
