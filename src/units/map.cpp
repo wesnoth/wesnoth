@@ -385,3 +385,8 @@ bool unit_map::has_unit(const unit * const u) const
 	}
 	return false;
 }
+
+bool unit_map::has_unit_at(const map_location& loc) const
+{
+	return find(loc) != end();
+}
