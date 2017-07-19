@@ -85,12 +85,12 @@ unsigned int display::last_zoom_ = SmallZoom;
 
 void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo, const std::string& team_name, const std::string& item_id, bool visible_under_fog)
 {
-	if (halo_man_) {
-		const halo::handle halo_handle = halo_man_->add(get_location_x(loc) + hex_size() / 2,
+	if(halo_man_) {
+		const halo::handle halo_handle = halo_man_->add(
+			get_location_x(loc) + hex_size() / 2,
 			get_location_y(loc) + hex_size() / 2, halo, loc);
 
-		const overlay item(img, halo, halo_handle, team_name, item_id, visible_under_fog);
-		overlays_->insert(overlay_map::value_type(loc,item));
+		overlays_->emplace(loc, overlay(img, halo, halo_handle, team_name, item_id, visible_under_fog));
 	}
 }
 
@@ -1792,13 +1792,7 @@ void display::bounds_check_position()
 {
 	const unsigned int orig_zoom = zoom_;
 
-	if(zoom_ < MinZoom) {
-		zoom_ = MinZoom;
-	}
-
-	if(zoom_ > MaxZoom) {
-		zoom_ = MaxZoom;
-	}
+	zoom_ = utils::clamp(zoom_, MinZoom, MaxZoom);
 
 	bounds_check_position(xpos_, ypos_);
 
@@ -1812,24 +1806,11 @@ void display::bounds_check_position(int& xpos, int& ypos)
 	const int tile_width = hex_width();
 
 	// Adjust for the border 2 times
-	const int xend = static_cast<int>(tile_width * (get_map().w() + 2 * theme_.border().size) + tile_width/3);
-	const int yend = static_cast<int>(zoom_ * (get_map().h() + 2 * theme_.border().size) + zoom_/2);
+	const int xend = static_cast<int>(tile_width * (get_map().w() + 2 * theme_.border().size) + tile_width / 3);
+	const int yend = static_cast<int>(zoom_      * (get_map().h() + 2 * theme_.border().size) + zoom_      / 2);
 
-	if(xpos > xend - map_area().w) {
-		xpos = xend - map_area().w;
-	}
-
-	if(ypos > yend - map_area().h) {
-		ypos = yend - map_area().h;
-	}
-
-	if(xpos < 0) {
-		xpos = 0;
-	}
-
-	if(ypos < 0) {
-		ypos = 0;
-	}
+	xpos = utils::clamp(xpos, 0, xend - map_area().w);
+	ypos = utils::clamp(ypos, 0, yend - map_area().h);
 }
 
 double display::turbo_speed() const
