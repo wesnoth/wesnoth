@@ -394,6 +394,9 @@ public:
 	 */
 	bool has_unit(const unit * const u) const ;
 
+	/** Tests whether a unit exists at the given location. */
+	bool has_unit_at(const map_location& loc) const;
+
 private:
 	umap::iterator begin_core() const ;
 
