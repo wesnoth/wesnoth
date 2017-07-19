@@ -322,7 +322,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
                                 const map_location & real_loc,
                                 const std::set<map_location>* known_units,
                                 size_t * enemy_count, size_t * friend_count,
-                                move_unit_spectator * spectator, bool instant)
+                                move_unit_spectator * spectator, bool /*instant*/)
 {
 	// Give animations a chance to progress; see bug #20324.
 	// TODO: ^ is this something we need to worry about now that external draw calls are removed?
