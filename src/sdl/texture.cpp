@@ -24,23 +24,13 @@ static lg::log_domain log_sdl("SDL");
 namespace
 {
 // The default pixel format to create textures with.
-int default_texture_format = SDL_PIXELFORMAT_ARGB8888;
+const int default_texture_format = SDL_PIXELFORMAT_ARGB8888;
 
 void cleanup_texture(SDL_Texture* t)
 {
 	if(t != nullptr) {
 		SDL_DestroyTexture(t);;
 	}
-}
-
-/**
- * Constructs a new shared_ptr around the provided texture with the appropriate deleter.
- * Should only be passed the result of texture creation functions or the texture might
- * get destroyed too early.
- */
-std::shared_ptr<SDL_Texture> make_texture_ptr(SDL_Texture* tex)
-{
-	return std::shared_ptr<SDL_Texture>(tex, &cleanup_texture);
 }
 
 } // end anon namespace
@@ -50,9 +40,8 @@ texture::texture()
 {
 }
 
-// TODO: should we have this? See possible issues noted above.
 texture::texture(SDL_Texture* txt)
-	: texture_(make_texture_ptr(txt))
+	: texture_(txt, &cleanup_texture)
 {
 	finalize();
 }
@@ -65,7 +54,7 @@ texture::texture(const surface& surf)
 		return;
 	}
 
-	texture_ = make_texture_ptr(SDL_CreateTextureFromSurface(renderer, surf));
+	texture_.reset(SDL_CreateTextureFromSurface(renderer, surf), &cleanup_texture);
 	if(!texture_) {
 		ERR_SDL << "When creating texture from surface: " << SDL_GetError() << std::endl;
 	}
@@ -99,7 +88,7 @@ void texture::reset(int w, int h, SDL_TextureAccess access)
 		return;
 	}
 
-	texture_ = make_texture_ptr(SDL_CreateTexture(renderer, default_texture_format, access, w, h));
+	texture_.reset(SDL_CreateTexture(renderer, default_texture_format, access, w, h), &cleanup_texture);
 	if(!texture_) {
 		ERR_SDL << "When creating texture: " << SDL_GetError() << std::endl;
 	}
