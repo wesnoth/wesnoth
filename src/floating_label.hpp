@@ -21,6 +21,15 @@
 
 namespace font
 {
+/** Helper struct which removes the floating label with the given id upon destruction. */
+struct floating_label_scope_helper
+{
+	floating_label_scope_helper(int handle = 0);
+	~floating_label_scope_helper();
+
+	int id;
+};
+
 /**
  * Struct which will hide all current floating labels, and cause floating labels
  * instantiated after it is created to be displayed.
