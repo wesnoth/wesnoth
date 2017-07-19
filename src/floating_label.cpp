@@ -230,6 +230,18 @@ SDL_Rect get_floating_label_rect(int handle)
 	return sdl::empty_rect;
 }
 
+floating_label_scope_helper::floating_label_scope_helper(int handle)
+	: id(handle)
+{
+}
+
+floating_label_scope_helper::~floating_label_scope_helper()
+{
+	if(id != 0) {
+		remove_floating_label(id);
+	}
+}
+
 floating_label_context::floating_label_context()
 {
 	label_contexts.push(std::set<int>());
