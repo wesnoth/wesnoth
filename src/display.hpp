@@ -860,14 +860,6 @@ protected:
 	}
 
 	/**
-	 * Hook for actions to take right after draw() renders the drawing buffer.
-	 * No action here by default.
-	 */
-	DEPRECATED("") virtual void post_commit()
-	{
-	}
-
-	/**
 	 * Called at the end of each draw cycle.
 	 * Derived classes can use this to add extra actions after all drawing takes place.
 	 * No action here by default.
@@ -900,11 +892,6 @@ private:
 	void draw_gamemap();
 
 protected:
-	/** Draws a single gamemap location. */
-	DEPRECATED("") virtual void draw_hex(const map_location& /*loc*/)
-	{
-	}
-
 	/** Draws the map's hex cursor. No action here by default. */
 	virtual void draw_hex_cursor(const map_location& /*loc*/)
 	{
@@ -927,7 +914,7 @@ public:
 	 *                         This should not contain the texture or source/destination rects.
 	 */
 	template<typename... T>
-	void render_scaled_to_zoom(const texture& tex, const int x_pos, const int y_pos, T&&... extra_args)
+	void render_scaled_to_zoom(const texture& tex, const int x_pos, const int y_pos, T&&... extra_args) const
 	{
 		texture::info info = tex.get_info();
 
@@ -954,7 +941,7 @@ public:
 	 *                         This should not contain the texture or source/destination rects.
 	 */
 	template<typename... T>
-	void render_scaled_to_zoom(const texture& tex, const map_location& loc, T&&... extra_args)
+	void render_scaled_to_zoom(const texture& tex, const map_location& loc, T&&... extra_args) const
 	{
 		SDL_Point origin = get_loc_drawing_origin(loc);
 
@@ -962,14 +949,25 @@ public:
 	}
 
 	/**
-	 * Draw text on a hex. (0.5, 0.5) is the center.
-	 * The font size is adjusted to the zoom factor.
+	 * Adds a floating label with the specified text at the given location.
+	 *
+	 * @param loc                   The map location to draw the label.
+	 * @param text                  The label's text.
+	 * @param font_size             The label's font size. Will be adjusted by the zoom factor.
+	 * @param color                 The label's color.
+	 * @param fl_label_id           The label's existing id. If not 0 the given label will be moved as
+	 *                              the label with that id will be moved to @a loc.
+	 * @param x_in_hex              The relative x location within the hex to draw the label.
+	 * @param y_in_hex              The relative y location within the hex to draw the label.
+	 *                              Note that (0.5, 0.5) indicates the center of the hex.
+	 *
+	 * @returns                     The new floating label's id.
 	 */
-	void draw_text_in_hex(const map_location& loc,
-			const drawing_queue::layer layer,
+	int draw_text_in_hex(const map_location& loc,
 			const std::string& text,
 			size_t font_size,
 			color_t color,
+			int fl_label_id = 0,
 			double x_in_hex = 0.5,
 			double y_in_hex = 0.5);
 
