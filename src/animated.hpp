@@ -89,6 +89,7 @@ public:
 	int get_animation_time() const;
 	int get_animation_time_potential() const;
 	void set_animation_time(int time);
+	void set_max_animation_time(int time);
 
 	int get_animation_duration() const;
 	const T& get_current_frame() const;
@@ -146,6 +147,10 @@ private:
 	bool started_;
 	bool force_next_update_;
 	std::vector<frame> frames_;
+
+	// Can set a maximum animation time so that movement in particular does not exceed potential time
+	// Ignored if has a value of 0
+	int max_animation_time_;
 
 	// These are only valid when anim is started
 	int start_tick_; // time at which we started

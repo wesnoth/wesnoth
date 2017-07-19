@@ -1417,6 +1417,10 @@ bool unit_animator::would_end() const
 
 void unit_animator::wait_until(int animation_time) const
 {
+	// important to set a max animation time so that the time does not go past this value for movements.
+	// fix for bug #1565
+	animated_units_[0].my_unit->anim_comp().get_animation()->set_max_animation_time(animation_time);
+	
 	display* disp = display::get_singleton();
 	double speed = disp->turbo_speed();
 
@@ -1433,6 +1437,7 @@ void unit_animator::wait_until(int animation_time) const
 	CVideo::delay(std::max<int>(0, end_tick - SDL_GetTicks() + 5));
 
 	new_animation_frame();
+	animated_units_[0].my_unit->anim_comp().get_animation()->set_max_animation_time(0);
 }
 
 void unit_animator::wait_for_end() const

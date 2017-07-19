@@ -27,6 +27,7 @@ inline animated<T, T_void_value>::animated(int start_time)
 	, started_(false)
 	, force_next_update_(false)
 	, frames_()
+	, max_animation_time_(0)
 	, start_tick_(0)
 	, cycles_(false)
 	, acceleration_(1)
@@ -42,11 +43,13 @@ inline animated<T, T_void_value>::animated(const std::vector<std::pair<int, T>>&
 	, started_(false)
 	, force_next_update_(false)
 	, frames_()
+	, max_animation_time_(0)
 	, start_tick_(0)
 	, cycles_(false)
 	, acceleration_(1)
 	, last_update_tick_(0)
 	, current_frame_key_(0)
+
 {
 	for(const auto& config_pair : cfg) {
 		add_frame(config_pair.first, config_pair.second, force_change);
@@ -217,7 +220,11 @@ inline int animated<T, T_void_value>::get_animation_time() const
 		return starting_frame_time_;
 	}
 
-	return tick_to_time(last_update_tick_);
+	int time = tick_to_time(last_update_tick_);
+	if (time > max_animation_time_ && max_animation_time_ > 0) {
+		return max_animation_time_;
+	}
+	return time;
 }
 
 template<typename T, typename T_void_value>
@@ -227,6 +234,12 @@ inline void animated<T, T_void_value>::set_animation_time(int time)
 
 	current_frame_key_ = 0;
 	force_next_update_ = true;
+}
+
+template<typename T, typename T_void_value>
+inline void animated<T, T_void_value>::set_max_animation_time(int time)
+{
+	max_animation_time_ = time;
 }
 
 template<typename T, typename T_void_value>

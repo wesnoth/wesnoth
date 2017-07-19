@@ -140,13 +140,9 @@ static int move_unit_between(const map_location& a, const map_location& b,
 	int target_time = animator.get_animation_time_potential();
 		// target_time must be short to avoid jumpy move
 		// std::cout << "target time: " << target_time << "\n";
-	// we round it to the next multiple of 200
+	// we round it to the next multiple of 200 so that movement aligns to hex changes properly
 	target_time += 200;
 	target_time -= target_time%200;
-
-	// This code causes backwards teleport because the time > 200 causes offset > 1.0
-	// which will not match with the following -1.0
-	// if(  target_time - animator.get_animation_time_potential() < 100 ) target_time +=200;
 
 	return target_time;
 }
