@@ -744,8 +744,6 @@ public:
 	/** Checks if location @a loc or one of the adjacent tiles is visible on screen. */
 	bool tile_nearly_on_screen(const map_location& loc) const;
 
-	enum TERRAIN_TYPE { BACKGROUND, FOREGROUND };
-
 	map_labels& labels();
 	const map_labels& labels() const;
 
@@ -865,7 +863,7 @@ protected:
 	 * Hook for actions to take right after draw() renders the drawing buffer.
 	 * No action here by default.
 	 */
-	DEPRECATED() virtual void post_commit()
+	DEPRECATED("") virtual void post_commit()
 	{
 	}
 
@@ -893,15 +891,17 @@ protected:
 	void draw_minimap();
 
 private:
+	enum TERRAIN_TYPE { FOREGROUND, BACKGROUND };
+
 	/** Draws the visible map hex terrains. Used by @ref draw_gamemap. */
-	void draw_visible_hexes(const rect_of_hexes& visible_hexes, TERRAIN_TYPE terrain_type);
+	void draw_visible_hexes(const rect_of_hexes& visible_hexes, TERRAIN_TYPE layer);
 
 	/** Draws the gamemap itself and its various components, such as units, items, fog/shroud, etc. */
 	void draw_gamemap();
 
 protected:
 	/** Draws a single gamemap location. */
-	DEPRECATED() virtual void draw_hex(const map_location& /*loc*/)
+	DEPRECATED("") virtual void draw_hex(const map_location& /*loc*/)
 	{
 	}
 
@@ -983,10 +983,6 @@ protected:
 	 * Virtual since the editor might use a slightly different approach.
 	 */
 	virtual const SDL_Rect& get_clip_rect();
-
-	/** Gets all the associated terrain textures for a specific hex. */
-	std::vector<texture> get_terrain_images(
-			const map_location& loc, const std::string& timeid, image::TYPE type, TERRAIN_TYPE terrain_type);
 
 	/** Gets the appropriate fog or shroud images for a specific hex. */
 	std::vector<texture> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);
