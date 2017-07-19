@@ -1019,163 +1019,6 @@ std::vector<texture> display::get_fog_shroud_images(const map_location& loc, ima
 	return res;
 }
 
-std::vector<texture> display::get_terrain_images(
-		const map_location& loc,
-		const std::string& timeid,
-		image::TYPE /*image_type*/,
-		TERRAIN_TYPE terrain_type)
-{
-	std::vector<texture> res;
-
-	terrain_builder::TERRAIN_TYPE builder_terrain_type = terrain_type == FOREGROUND
-		? terrain_builder::FOREGROUND
-		: terrain_builder::BACKGROUND;
-
-	assert(builder_);
-	const terrain_builder::imagelist* const terrains = builder_->get_terrain_at(loc, timeid, builder_terrain_type);
-
-#if 0
-	image::light_string lt;
-
-	const time_of_day& tod = get_time_of_day(loc);
-
-	//get all the light transitions
-	map_location adjs[6];
-	get_adjacent_tiles(loc,adjs);
-
-	for(int d=0; d<6; ++d){
-		/* concave
-		  _____
-		 /     \
-		/ atod1 \_____
-		\ !tod  /     \
-		 \_____/ atod2 \
-		 /  \__\ !tod  /
-		/       \_____/
-		\  tod  /
-		 \_____/*/
-
-		const time_of_day& atod1 = get_time_of_day(adjs[d]);
-		const time_of_day& atod2 = get_time_of_day(adjs[(d + 1) % 6]);
-
-		if(atod1.color == tod.color || atod2.color == tod.color || atod1.color != atod2.color)
-			continue;
-
-		if(lt.empty()) {
-			//color the full hex before adding transitions
-			tod_color col = tod.color + color_adjust_;
-			lt = image::get_light_string(0, col.r, col.g, col.b);
-		}
-
-		// add the directional transitions
-		tod_color acol = atod1.color + color_adjust_;
-		lt += image::get_light_string(d + 1, acol.r, acol.g, acol.b);
-	}
-	for(int d=0; d<6; ++d){
-		/* convex 1
-		  _____
-		 /     \
-		/ atod1 \_____
-		\ !tod  /     \
-		 \_____/ atod2 \
-		 /  \__\  tod  /
-		/       \_____/
-		\  tod  /
-		 \_____/*/
-
-		const time_of_day& atod1 = get_time_of_day(adjs[d]);
-		const time_of_day& atod2 = get_time_of_day(adjs[(d + 1) % 6]);
-
-		if(atod1.color == tod.color || atod1.color == atod2.color)
-			continue;
-
-		if(lt.empty()) {
-			//color the full hex before adding transitions
-			tod_color col = tod.color + color_adjust_;
-			lt = image::get_light_string(0, col.r, col.g, col.b);
-		}
-
-		// add the directional transitions
-		tod_color acol = atod1.color + color_adjust_;
-		lt += image::get_light_string(d + 7, acol.r, acol.g, acol.b);
-	}
-	for(int d=0; d<6; ++d){
-		/* convex 2
-		  _____
-		 /     \
-		/ atod1 \_____
-		\  tod  /     \
-		 \_____/ atod2 \
-		 /  \__\ !tod  /
-		/       \_____/
-		\  tod  /
-		 \_____/*/
-
-		const time_of_day& atod1 = get_time_of_day(adjs[d]);
-		const time_of_day& atod2 = get_time_of_day(adjs[(d + 1) % 6]);
-
-		if(atod2.color == tod.color || atod1.color == atod2.color)
-			continue;
-
-		if(lt.empty()) {
-			//color the full hex before adding transitions
-			tod_color col = tod.color + color_adjust_;
-			lt = image::get_light_string(0, col.r, col.g, col.b);
-		}
-
-		// add the directional transitions
-		tod_color acol = atod2.color + color_adjust_;
-		lt += image::get_light_string(d + 13, acol.r, acol.g, acol.b);
-	}
-
-	if(lt.empty()){
-		tod_color col = tod.color + color_adjust_;
-		if(!col.is_zero()){
-			// no real lightmap needed but still color the hex
-			lt = image::get_light_string(-1, col.r, col.g, col.b);
-		}
-	}
-#endif
-
-	if(terrains != nullptr) {
-		// Pre-allocate storage appropriately.
-		// Since this function is called extremely often this should save some time.
-		res.reserve(terrains->size());
-
-		// Cache the offmap name.
-		// Since it is themeable it can change, so don't make it static.
-		const std::string off_map_name = "terrain/" + theme_.border().tile_image;
-
-		for(const auto& terrain : *terrains) {
-			const image::locator &image = animate_map_
-				? terrain.get_current_frame()
-				: terrain.get_first_frame();
-
-			// We prevent ToD coloring and brightening of off-map tiles,
-			// We need to test for the tile to be rendered and
-			// not the location, since the transitions are rendered
-			// over the offmap-terrain and these need a ToD coloring.
-			texture tex = image::get_texture(image, image::HEXED); // TODO: scaled to hex?
-
-			//const bool off_map = (image.get_filename() == off_map_name || image.get_modifications().find("NO_TOD_SHIFT()") != std::string::npos);
-#if 0
-			if(off_map) {
-				surf = image::get_image(image, off_map ? image::SCALED_TO_HEX : image_type);
-			} else if(lt.empty()) {
-				surf = image::get_image(image, image::SCALED_TO_HEX);
-			} else {
-				surf = image::get_lighted_image(image, lt, image::SCALED_TO_HEX);
-			}
-#endif
-			if(!tex.null()) {
-				res.push_back(std::move(tex));
-			}
-		}
-	}
-
-	return res;
-}
-
 void display::toggle_benchmark()
 {
 	benchmark = !benchmark;
@@ -2430,19 +2273,164 @@ void display::draw_hex_overlays()
 	// DO NOTHING
 }
 
-void display::draw_visible_hexes(const rect_of_hexes& visible_hexes, TERRAIN_TYPE terrain_type)
+void display::draw_visible_hexes(const rect_of_hexes& visible_hexes, TERRAIN_TYPE layer)
 {
+	assert(builder_);
+
+	drawn_hexes_ = 0;
+
+	terrain_builder::TERRAIN_TYPE builder_terrain_type = layer == FOREGROUND
+		? terrain_builder::FOREGROUND
+		: terrain_builder::BACKGROUND;
+
 	for(const map_location& loc : visible_hexes) {
 		if(shrouded(loc)) {
 			continue;
 		}
 
-		image::TYPE image_type = get_image_type(loc);
+		//image::TYPE image_type = get_image_type(loc);
 		const time_of_day& tod = get_time_of_day(loc);
 
-		for(const texture& t : get_terrain_images(loc, tod.id, image_type, terrain_type)) {
-			render_scaled_to_zoom(t, loc);
+		// Get the image list for this location.
+		const terrain_builder::imagelist* const terrains = builder_->get_terrain_at(loc, tod.id, builder_terrain_type);
+		if(!terrains) {
+			continue;
 		}
+
+#if 0
+		image::light_string lt;
+
+		const time_of_day& tod = get_time_of_day(loc);
+
+		//get all the light transitions
+		map_location adjs[6];
+		get_adjacent_tiles(loc,adjs);
+
+		for(int d=0; d<6; ++d){
+			/* concave
+			  _____
+			 /     \
+			/ atod1 \_____
+			\ !tod  /     \
+			 \_____/ atod2 \
+			 /  \__\ !tod  /
+			/       \_____/
+			\  tod  /
+			 \_____/*/
+
+			const time_of_day& atod1 = get_time_of_day(adjs[d]);
+			const time_of_day& atod2 = get_time_of_day(adjs[(d + 1) % 6]);
+
+			if(atod1.color == tod.color || atod2.color == tod.color || atod1.color != atod2.color)
+				continue;
+
+			if(lt.empty()) {
+				//color the full hex before adding transitions
+				tod_color col = tod.color + color_adjust_;
+				lt = image::get_light_string(0, col.r, col.g, col.b);
+			}
+
+			// add the directional transitions
+			tod_color acol = atod1.color + color_adjust_;
+			lt += image::get_light_string(d + 1, acol.r, acol.g, acol.b);
+		}
+		for(int d=0; d<6; ++d){
+			/* convex 1
+			  _____
+			 /     \
+			/ atod1 \_____
+			\ !tod  /     \
+			 \_____/ atod2 \
+			 /  \__\  tod  /
+			/       \_____/
+			\  tod  /
+			 \_____/*/
+
+			const time_of_day& atod1 = get_time_of_day(adjs[d]);
+			const time_of_day& atod2 = get_time_of_day(adjs[(d + 1) % 6]);
+
+			if(atod1.color == tod.color || atod1.color == atod2.color)
+				continue;
+
+			if(lt.empty()) {
+				//color the full hex before adding transitions
+				tod_color col = tod.color + color_adjust_;
+				lt = image::get_light_string(0, col.r, col.g, col.b);
+			}
+
+			// add the directional transitions
+			tod_color acol = atod1.color + color_adjust_;
+			lt += image::get_light_string(d + 7, acol.r, acol.g, acol.b);
+		}
+		for(int d=0; d<6; ++d){
+			/* convex 2
+			  _____
+			 /     \
+			/ atod1 \_____
+			\  tod  /     \
+			 \_____/ atod2 \
+			 /  \__\ !tod  /
+			/       \_____/
+			\  tod  /
+			 \_____/*/
+
+			const time_of_day& atod1 = get_time_of_day(adjs[d]);
+			const time_of_day& atod2 = get_time_of_day(adjs[(d + 1) % 6]);
+
+			if(atod2.color == tod.color || atod1.color == atod2.color)
+				continue;
+
+			if(lt.empty()) {
+				//color the full hex before adding transitions
+				tod_color col = tod.color + color_adjust_;
+				lt = image::get_light_string(0, col.r, col.g, col.b);
+			}
+
+			// add the directional transitions
+			tod_color acol = atod2.color + color_adjust_;
+			lt += image::get_light_string(d + 13, acol.r, acol.g, acol.b);
+		}
+
+		if(lt.empty()){
+			tod_color col = tod.color + color_adjust_;
+			if(!col.is_zero()){
+				// no real lightmap needed but still color the hex
+				lt = image::get_light_string(-1, col.r, col.g, col.b);
+			}
+		}
+#endif
+
+		// Cache the offmap name.
+		// Since it is themeable it can change, so don't make it static.
+		//const std::string off_map_name = "terrain/" + theme_.border().tile_image;
+
+		for(const auto& terrain : *terrains) {
+			const image::locator& image = animate_map_
+				? terrain.get_current_frame()
+				: terrain.get_first_frame();
+
+			// We prevent ToD coloring and brightening of off-map tiles,
+			// We need to test for the tile to be rendered and
+			// not the location, since the transitions are rendered
+			// over the offmap-terrain and these need a ToD coloring.
+			texture tex = image::get_texture(image, image::HEXED); // TODO: scaled to hex?
+
+			//const bool off_map = (image.get_filename() == off_map_name || image.get_modifications().find("NO_TOD_SHIFT()") != std::string::npos);
+#if 0
+			if(off_map) {
+				surf = image::get_image(image, off_map ? image::SCALED_TO_HEX : image_type);
+			} else if(lt.empty()) {
+				surf = image::get_image(image, image::SCALED_TO_HEX);
+			} else {
+				surf = image::get_lighted_image(image, lt, image::SCALED_TO_HEX);
+			}
+#endif
+			if(!tex.null()) {
+				render_scaled_to_zoom(tex, loc);
+			}
+		}
+
+		++drawn_hexes_;
 	}
 }
 
