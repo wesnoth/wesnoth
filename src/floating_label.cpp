@@ -96,7 +96,7 @@ texture floating_label::create_texture()
 		//
 
 		// TODO: figure out why the global text renderer object gives too large a size.
-		font::pango_text renderer;
+		static font::pango_text renderer;
 
 		renderer.set_foreground_color(color_);
 		renderer.set_font_size(font_size_);
@@ -104,9 +104,7 @@ texture floating_label::create_texture()
 		renderer.set_maximum_height(height_ < 0 ? clip_rect_.h : height_, true);
 
 		// Add text outline if we're not drawing the background.
-		if(!fill_background_) {
-			renderer.set_add_outline(true);
-		}
+		renderer.set_add_outline(!fill_background_);
 
 		// Strip trailing newlines.
 		boost::trim_right(text_);
