@@ -53,7 +53,7 @@ fuh::~fuh() {
 }
 
 void fuh::add_user(const std::string& /*name*/, const std::string& /*mail*/, const std::string& /*password*/) {
-	throw error("For now please register at http://forum.wesnoth.org");
+	throw error("For now please register at https://forums.wesnoth.org");
 }
 
 void fuh::remove_user(const std::string& /*name*/) {
@@ -160,7 +160,7 @@ void fuh::set_is_moderator(const std::string& name, const bool& is_moderator) {
 
 void fuh::password_reminder(const std::string& /*name*/) {
 	throw error("For now please use the password recovery "
-		"function provided at http://forum.wesnoth.org");
+		"function provided at https://forums.wesnoth.org");
 }
 
 std::string fuh::user_info(const std::string& name) {

@@ -782,7 +782,7 @@ void server::send_password_request(socket_ptr socket, const std::string& msg,
 	if(user_handler_->use_phpbb_encryption() && pepper.empty()) {
 		async_send_error(socket, "Even though your nickname is registered on this server you "
 								 "cannot log in due to an error in the hashing algorithm. "
-								 "Logging into your forum account on http://forum.wesnoth.org "
+								 "Logging into your forum account on https://forums.wesnoth.org "
 								 "may fix this problem.");
 		login(socket);
 		return;
