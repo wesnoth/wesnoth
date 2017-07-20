@@ -2564,19 +2564,13 @@ void display::draw_gamemap()
 	}
 
 	//
-	// Units
+	// Real (standing) units
 	//
 	if(!dc_->teams().empty()) {
 		unit_drawer drawer = unit_drawer(*this);
 
-		// Real units
 		for(const unit& real_unit : dc_->units()) {
 			drawer.redraw_unit(real_unit);
-		}
-
-		// Fake (moving) units
-		for(const unit* temp_unit : *fake_unit_man_) {
-			drawer.redraw_unit(*temp_unit);
 		}
 
 		// TODO: re-add exclusionary checks for exclusive_unit_draw_requests_ later on, if necessary.
@@ -2590,6 +2584,17 @@ void display::draw_gamemap()
 	// Foreground terrains. FIXME! sometimes cut off units...
 	//
 	draw_visible_hexes(visible_hexes, FOREGROUND);
+
+	//
+	// Fake (moving) units
+	//
+	if(!dc_->teams().empty()) {
+		unit_drawer drawer = unit_drawer(*this); // TODO: don't create this twice per cycle.
+
+		for(const unit* temp_unit : *fake_unit_man_) {
+			drawer.redraw_unit(*temp_unit);
+		}
+	}
 
 	//
 	// Draws various overlays, such as reach maps, etc.
