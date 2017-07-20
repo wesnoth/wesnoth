@@ -28,7 +28,7 @@
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
-#define LONG_TOUCH_DURATION_MS 400
+#define LONG_TOUCH_DURATION_MS 800
 
 controller_base::controller_base(
 		const config& game_config, CVideo& /*video*/)
@@ -59,7 +59,10 @@ void controller_base::long_touch_callback(int x, int y)
 		int mousex, mousey;
 		Uint32 mouse_flags = SDL_GetMouseState(&mousex, &mousey);
 		if((mouse_flags & SDL_BUTTON_LMASK) != 0) {
-			show_menu(get_display().get_theme().context_menu()->items(), x, y, true, get_display());
+			const theme::menu* const m = get_mouse_handler_base().gui().get_theme().context_menu();
+			if(m != NULL) {
+				show_menu(get_display().get_theme().context_menu()->items(), x, y, true, get_display());
+			}
 		}
 	}
 	
@@ -130,7 +133,7 @@ void controller_base::handle_event(const SDL_Event& event)
 		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
-		{
+		if(long_touch_timer_ == 0) {
 			long_touch_timer_ = gui2::add_timer(
 				LONG_TOUCH_DURATION_MS,
 				std::bind(&controller_base::long_touch_callback, this, event.button.x, event.button.y));
