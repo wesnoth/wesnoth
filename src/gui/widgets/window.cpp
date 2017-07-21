@@ -429,7 +429,8 @@ window* window::window_instance(const unsigned handle)
 
 void window::update_screen_size()
 {
-	const SDL_Rect rect = screen_area();
+	const SDL_Rect rect = CVideo::get_singleton().screen_area();
+
 	settings::screen_width = rect.w;
 	settings::screen_height = rect.h;
 
@@ -703,7 +704,7 @@ void window::draw()
 		assert(!item.empty());
 
 		const SDL_Rect dirty_rect
-				= new_widgets ? screen_area()
+				= new_widgets ? video().screen_area()
 							  : item.back()->get_dirty_rectangle();
 
 // For testing we disable the clipping rect and force the entire screen to

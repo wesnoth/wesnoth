@@ -167,7 +167,7 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	xpos_(0),
 	ypos_(0),
 	view_locked_(false),
-	theme_(theme_cfg, screen_area()),
+	theme_(theme_cfg, screen_.screen_area()),
 	zoom_index_(0),
 	fake_unit_man_(new fake_unit_manager(*this)),
 	builder_(new terrain_builder(level, &dc_->map(), theme_.border().tile_image)),
@@ -276,7 +276,7 @@ display::~display()
 }
 
 void display::set_theme(config theme_cfg) {
-	theme_ = theme(theme_cfg, screen_area());
+	theme_ = theme(theme_cfg, screen_.screen_area());
 	menu_buttons_.clear();
 	action_buttons_.clear();
 	create_buttons();
@@ -876,7 +876,7 @@ void display::layout_buttons()
 	for(const auto& menu : theme_.menus()) {
 		std::shared_ptr<gui::button> b = find_menu_button(menu.get_id());
 		if(b) {
-			const SDL_Rect& loc = menu.location(screen_area());
+			const SDL_Rect& loc = menu.location(screen_.screen_area());
 			b->set_location(loc);
 			b->set_measurements(0,0);
 			b->set_label(menu.title());
@@ -888,7 +888,7 @@ void display::layout_buttons()
 	for(const auto& action : theme_.actions()) {
 		std::shared_ptr<gui::button> b = find_action_button(action.get_id());
 		if(b) {
-			const SDL_Rect& loc = action.location(screen_area());
+			const SDL_Rect& loc = action.location(screen_.screen_area());
 			b->set_location(loc);
 			b->set_measurements(0,0);
 			b->set_label(action.title());
@@ -1437,7 +1437,7 @@ static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<std
 
 	surface surf(image::get_image(panel.image()));
 
-	const SDL_Rect screen = screen_area();
+	const SDL_Rect screen = video.screen_area();
 	SDL_Rect& loc = panel.location(screen);
 
 	DBG_DP << "panel location: x=" << loc.x << ", y=" << loc.y
@@ -1469,7 +1469,7 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 		text = color.str();
 	}
 	const std::string& icon = label.icon();
-	SDL_Rect& loc = label.location(screen_area());
+	SDL_Rect& loc = label.location(video.screen_area());
 
 	if(icon.empty() == false) {
 		surface surf(image::get_image(icon));
@@ -2427,7 +2427,7 @@ void display::redraw_everything()
 
 	tooltips::clear_tooltips();
 
-	theme_.set_resolution(screen_area());
+	theme_.set_resolution(screen_.screen_area());
 
 	if(!menu_buttons_.empty() || !action_buttons_.empty()) {
 		create_buttons();
@@ -2825,7 +2825,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		new_cfg = &generated_cfg;
 
 	SDL_Rect &rect = reportRects_[report_name];
-	const SDL_Rect &new_rect = item->location(screen_area());
+	const SDL_Rect &new_rect = item->location(screen_.screen_area());
 	surface &surf = reportSurfaces_[report_name];
 	config &report = reports_[report_name];
 

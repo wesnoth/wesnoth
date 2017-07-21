@@ -176,7 +176,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 			dy -= scroll_speed;
 		}
 
-		if(mousey > get_display().h() - scroll_threshold) {
+		if(mousey > get_display().video().get_height() - scroll_threshold) {
 			dy += scroll_speed;
 		}
 
@@ -184,7 +184,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 			dx -= scroll_speed;
 		}
 
-		if(mousex > get_display().w() - scroll_threshold) {
+		if(mousex > get_display().video().get_width() - scroll_threshold) {
 			dx += scroll_speed;
 		}
 	}
@@ -245,7 +245,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	const theme::menu* const m = get_display().menu_pressed();
 	if(m != nullptr) {
-		const SDL_Rect& menu_loc = m->location(get_display().screen_area());
+		const SDL_Rect& menu_loc = m->location(get_display().video().screen_area());
 		show_menu(m->items(), menu_loc.x + 1, menu_loc.y + menu_loc.h + 1, false, get_display());
 
 		return;
@@ -253,7 +253,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	const theme::action* const a = get_display().action_pressed();
 	if(a != nullptr) {
-		const SDL_Rect& action_loc = a->location(get_display().screen_area());
+		const SDL_Rect& action_loc = a->location(get_display().video().screen_area());
 		execute_action(a->items(), action_loc.x + 1, action_loc.y + action_loc.h + 1, false);
 
 		return;

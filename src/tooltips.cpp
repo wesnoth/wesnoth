@@ -62,14 +62,16 @@ static void clear_tooltip()
 
 static void show_tooltip(const tooltip& tip)
 {
-	if(CVideo::get_singleton().faked()) {
+	CVideo& video = CVideo::get_singleton();
+
+	if(video.faked()) {
 		return;
 	}
 
 	clear_tooltip();
 
 	const color_t bgcolor {0,0,0,160};
-	SDL_Rect area = screen_area();
+	SDL_Rect area = video.screen_area();
 
 	unsigned int border = 10;
 

@@ -206,22 +206,16 @@ public:
 	virtual const std::set<std::string>& observers() const { static const std::set<std::string> fake_obs = std::set<std::string> (); return fake_obs; }
 
 	/**
-	 * the dimensions of the display. x and y are width/height.
 	 * mapx is the width of the portion of the display which shows the game area.
 	 * Between mapx and x is the sidebar region.
 	 */
-	int w() const { return screen_.getx(); }	/**< width */
-	int h() const { return screen_.gety(); }	/**< height */
 
 	const SDL_Rect& minimap_area() const
-		{ return theme_.mini_map_location(screen_area()); }
+		{ return theme_.mini_map_location(screen_.screen_area()); }
 	const SDL_Rect& palette_area() const
-		{ return theme_.palette_location(screen_area()); }
+		{ return theme_.palette_location(screen_.screen_area()); }
 	const SDL_Rect& unit_image_area() const
-		{ return theme_.unit_image_location(screen_area()); }
-
-	SDL_Rect screen_area() const
-		{ return {0, 0, w(), h()}; }
+		{ return theme_.unit_image_location(screen_.screen_area()); }
 
 	/**
 	 * Returns the maximum area used for the map
@@ -240,7 +234,7 @@ public:
 	 * applied to it.
 	 */
 	const SDL_Rect& map_outside_area() const { return map_screenshot_ ?
-		max_map_area() : theme_.main_map_location(screen_area()); }
+		max_map_area() : theme_.main_map_location(screen_.screen_area()); }
 
 	/** Check if the bbox of the hex at x,y has pixels outside the area rectangle. */
 	bool outside_area(const SDL_Rect& area, const int x,const int y) const;

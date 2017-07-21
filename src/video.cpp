@@ -136,17 +136,6 @@ bool CVideo::non_interactive() const
 	return fake_interactive ? false : (window == nullptr);
 }
 
-SDL_Rect screen_area()
-{
-	sdl::window* w = CVideo::get_singleton().get_window();
-	if(!w) {
-		return {0, 0, frameBuffer->w, frameBuffer->h};
-	}
-
-	SDL_Point size = w->get_size();
-	return {0, 0, size.x, size.y};
-}
-
 void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
 {
 	if(event.type == SDL_WINDOWEVENT) {
@@ -303,22 +292,35 @@ void CVideo::set_window_mode(const MODE_EVENT mode, const point& size)
 	}
 }
 
-int CVideo::getx() const
+SDL_Rect CVideo::screen_area(bool as_pixels) const
 {
 	if(!window) {
-		return frameBuffer->w;
+		return {0, 0, frameBuffer->w, frameBuffer->h};
 	}
 
-	return window->get_size().x;
+	// First, get the renderer size in pixels.
+	SDL_Point size = window->get_output_size();
+
+	// Then convert the dimensions into screen coordinates, if applicable.
+	if(!as_pixels) {
+		float scale_x, scale_y;
+		std::tie(scale_x, scale_y) = get_dpi_scale_factor();
+
+		size.x /= scale_x;
+		size.y /= scale_y;
+	}
+
+	return {0, 0, size.x, size.y};
 }
 
-int CVideo::gety() const
+int CVideo::get_width(bool as_pixels) const
 {
-	if(!window) {
-		return frameBuffer->h;
-	}
+	return screen_area(as_pixels).w;
+}
 
-	return window->get_size().y;
+int CVideo::get_height(bool as_pixels) const
+{
+	return screen_area(as_pixels).h;
 }
 
 void CVideo::delay(unsigned int milliseconds)
@@ -487,7 +489,7 @@ int CVideo::set_help_string(const std::string& str)
 	int size = font::SIZE_LARGE;
 
 	while(size > 0) {
-		if(font::line_width(str, size) > getx()) {
+		if(font::line_width(str, size) > get_width()) {
 			size--;
 		} else {
 			break;
@@ -498,7 +500,7 @@ int CVideo::set_help_string(const std::string& str)
 
 	font::floating_label flabel(str);
 	flabel.set_font_size(size);
-	flabel.set_position(getx() / 2, gety());
+	flabel.set_position(get_width() / 2, get_height());
 	flabel.set_bg_color(color);
 	flabel.set_border_size(border);
 

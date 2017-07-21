@@ -1022,7 +1022,7 @@ void mp_lobby::show_preferences_button_callback(window& window)
 	 *
 	 * @todo This might no longer be needed when gui2 is done.
 	 */
-	const SDL_Rect rect = screen_area();
+	const SDL_Rect rect = window.video().screen_area();
 
 	gui2::settings::gamemap_width  += rect.w - gui2::settings::screen_width;
 	gui2::settings::gamemap_height += rect.h - gui2::settings::screen_height;

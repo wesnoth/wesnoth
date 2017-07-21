@@ -162,11 +162,10 @@ void show_help(CVideo& video, const section &toplevel_sec,
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
 
-	CVideo& screen = video;
-	const surface& scr = screen.getSurface();
+	SDL_Rect screen_area = video.screen_area(false);
 
-	const int width  = std::min<int>(font::relative_size(1200), scr->w - font::relative_size(20));
-	const int height = std::min<int>(font::relative_size(850), scr->h - font::relative_size(150));
+	const int width  = std::min<int>(font::relative_size(1200), screen_area.w - font::relative_size(20));
+	const int height = std::min<int>(font::relative_size(850), screen_area.h - font::relative_size(150));
 	const int left_padding = font::relative_size(10);
 	const int right_padding = font::relative_size(10);
 	const int top_padding = font::relative_size(10);
@@ -175,8 +174,8 @@ void show_help(CVideo& video, const section &toplevel_sec,
 	// If not both locations were supplied, put the dialog in the middle
 	// of the screen.
 	if (yloc <= -1 || xloc <= -1) {
-		xloc = scr->w / 2 - width / 2;
-		yloc = scr->h / 2 - height / 2;
+		xloc = screen_area.w / 2 - width / 2;
+		yloc = screen_area.h / 2 - height / 2;
 	}
 	std::vector<gui::button*> buttons_ptr;
 	gui::button close_button_(video, _("Close"));

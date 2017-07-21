@@ -486,7 +486,7 @@ size_t menu::max_items_onscreen() const
 		return size_t(max_items_);
 	}
 
-	const size_t max_height = (max_height_ == -1 ? (video().gety()*66)/100 : max_height_) - heading_height();
+	const size_t max_height = (max_height_ == -1 ? (video().get_height()*66)/100 : max_height_) - heading_height();
 
 	std::vector<int> heights;
 	size_t n;
@@ -912,7 +912,7 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 {
 	//called from style, draws one row's contents in a generic and adaptable way
 	const std::vector<std::string>& row = (type == HEADING_ROW) ? heading_ : items_[row_index].fields;
-	SDL_Rect const &area = screen_area();
+	SDL_Rect const &area = video().screen_area();
 	SDL_Rect const &loc = inner_location();
 	const std::vector<int>& widths = column_widths();
 	bool lang_rtl = current_language_rtl();
@@ -1137,7 +1137,7 @@ SDL_Rect menu::get_item_rect_internal(size_t item) const
 
 	SDL_Rect res = sdl::create_rect(loc.x, y, loc.w, get_item_height(item));
 
-	SDL_Rect const &screen_area = ::screen_area();
+	SDL_Rect const &screen_area = video().screen_area();
 
 	if(res.x > screen_area.w) {
 		return sdl::empty_rect;

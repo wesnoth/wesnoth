@@ -28,8 +28,6 @@ namespace sdl
 class window;
 }
 
-SDL_Rect screen_area();
-
 class CVideo
 {
 public:
@@ -98,7 +96,7 @@ public:
 	 * Set the window resolution.
 	 *
 	 * @param resolution          The new width and height.
-	 * 
+	 *
 	 * @returns                   Whether the resolution was sucessfully changed.
 	 */
 	bool set_resolution(const point& resolution);
@@ -108,11 +106,19 @@ public:
 	/** Returns the list of available screen resolutions. */
 	std::vector<point> get_available_resolutions(const bool include_current = false);
 
-	/** The current width of the window, is screen coordinates. */
-	int getx() const;
+	/**
+	 * Returns the current window renderer area, either in pixels or screen coordinates.
+	 *
+	 * @param as_pixels           Whether to return the area in pixels (default true) or
+	 *                            DPI-independent (DIP) screen coordinates.
+	 */
+	SDL_Rect screen_area(bool as_pixels = true) const;
 
-	/** The current height of the window, is screen coordinates. */
-	int gety() const;
+	/** Returns the window renderer width in pixels or screen coordinates. */
+	int get_width(bool as_pixels = true) const;
+
+	/** Returns the window renderer height in pixels or in screen coordinates. */
+	int get_height(bool as_pixels = true) const;
 
 	/** The current scale factor on High-DPI screens. */
 	std::pair<float, float> get_dpi_scale_factor() const;

@@ -19,6 +19,7 @@
 #include "font/standard_colors.hpp"
 #include "font/text.hpp"
 #include "log.hpp"
+#include "video.hpp"
 
 #include <map>
 #include <set>
@@ -60,7 +61,7 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 	, lifetime_(-1)
 	, width_(-1)
 	, height_(-1)
-	, clip_rect_(screen_area())
+	, clip_rect_(CVideo::get_singleton().screen_area())
 	, alpha_change_(0)
 	, visible_(true)
 	, align_(CENTER_ALIGN)
