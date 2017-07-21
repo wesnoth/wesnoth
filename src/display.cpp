@@ -145,7 +145,7 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	, xpos_(0)
 	, ypos_(0)
 	, view_locked_(false)
-	, theme_(theme_cfg, screen_.screen_area())
+	, theme_(theme_cfg, video().screen_area())
 	, zoom_index_(0)
 	, fake_unit_man_(new fake_unit_manager(*this))
 	, builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
@@ -241,9 +241,7 @@ display::~display()
 }
 
 void display::set_theme(config theme_cfg) {
-	theme_ = theme(theme_cfg, screen_.screen_area());
-	builder_->set_draw_border(theme_.border().show_border);
-	menu_buttons_.clear();
+	theme_ = theme(theme_cfg, video_.screen_area());	menu_buttons_.clear();
 	action_buttons_.clear();
 	create_buttons();
 }
@@ -821,7 +819,7 @@ void display::layout_buttons()
 	for(const auto& menu : theme_.menus()) {
 		std::shared_ptr<gui::button> b = find_menu_button(menu.get_id());
 		if(b) {
-			const SDL_Rect& loc = menu.location(screen_.screen_area());
+			const SDL_Rect& loc = menu.location(video_.screen_area());
 			b->set_location(loc);
 			b->set_measurements(0,0);
 			b->set_label(menu.title());
@@ -833,7 +831,7 @@ void display::layout_buttons()
 	for(const auto& action : theme_.actions()) {
 		std::shared_ptr<gui::button> b = find_action_button(action.get_id());
 		if(b) {
-			const SDL_Rect& loc = action.location(screen_.screen_area());
+			const SDL_Rect& loc = action.location(video_.screen_area());
 			b->set_location(loc);
 			b->set_measurements(0,0);
 			b->set_label(action.title());
@@ -1968,7 +1966,7 @@ void display::refresh_report(const std::string& report_name, const config * new_
 		new_cfg = &generated_cfg;
 
 	SDL_Rect &rect = reportRects_[report_name];
-	const SDL_Rect &new_rect = item->location(screen_.screen_area());
+	const SDL_Rect &new_rect = item->location(video_.screen_area());
 	surface &surf = reportSurfaces_[report_name];
 	config &report = reports_[report_name];
 
@@ -2286,7 +2284,7 @@ void display::redraw_everything()
 
 	tooltips::clear_tooltips();
 
-	theme_.set_resolution(screen_area());
+	theme_.set_resolution(video_.screen_area());
 
 	if(!menu_buttons_.empty() || !action_buttons_.empty()) {
 		create_buttons();
