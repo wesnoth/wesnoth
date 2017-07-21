@@ -71,6 +71,7 @@ void controller_base::handle_event(const SDL_Event& event)
 
 	switch(event.type) {
 	case SDL_TEXTINPUT:
+		// TODO: remove, not necessary anymore
 		if(have_keyboard_focus()) {
 			hotkey::key_event(event, get_hotkey_command_executor());
 		}
@@ -88,8 +89,6 @@ void controller_base::handle_event(const SDL_Event& event)
 			process_keydown_event(event);
 			hotkey::key_event(event, get_hotkey_command_executor());
 			process_keyup_event(event);
-		} else {
-			process_focus_keydown_event(event);
 		}
 		break;
 
