@@ -20,6 +20,7 @@
 #include "sdl/render_utils.hpp"
 #include "sdl/surface.hpp"
 #include "utils/general.hpp"
+#include "video.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -60,7 +61,7 @@ floating_label::floating_label(const std::string& text)
 	, border_(0)
 	, alpha_change_(0)
 	, current_alpha_(255)
-	, clip_rect_(screen_area())
+	, clip_rect_(CVideo::get_singleton().screen_area())
 	, align_(CENTER_ALIGN)
 	, scroll_(ANCHOR_LABEL_SCREEN)
 	, visible_(true)

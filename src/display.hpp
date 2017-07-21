@@ -276,18 +276,6 @@ public:
 	 * Between mapx and x is the sidebar region.
 	 */
 
-	/** Screen width */
-	int w() const
-	{
-		return video_.get_width();
-	}
-
-	/** Screen height */
-	int h() const
-	{
-		return video_.get_hright();
-	}
-
 	const SDL_Rect& minimap_area() const
 	{
 		return theme_.mini_map_location(video_.screen_area());
@@ -301,11 +289,6 @@ public:
 	const SDL_Rect& unit_image_area() const
 	{
 		return theme_.unit_image_location(video_.screen_area());
-	}
-
-	SDL_Rect screen_area() const
-	{
-		return {0, 0, w(), h()};
 	}
 
 	/** Returns the maximum area used for the map regardless to resolution and view size */
