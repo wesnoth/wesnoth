@@ -653,6 +653,13 @@ void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const s
 		}
 	}
 
+	// For some reason, some people are getting crashes in the following pango_cairo_layout_path call.
+	// This appears to fix it, but I'm not entirely sure why. The Pango doc indicate this is supposed
+	// to be for a PangoLayout created with pango_cairo_create_layout, but we create ours with pango_layout_new.
+	//
+	// - vultraz, 7/22/2017
+	pango_cairo_update_layout(cr.get(), &layout);
+
 	// Add a path to the cairo context tracing the current text.
 	pango_cairo_layout_path(cr.get(), &layout);
 
