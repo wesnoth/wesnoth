@@ -426,7 +426,8 @@ void window::update_screen_size()
 {
 	// Only if we're the toplevel window we need to update the size, otherwise
 	// it's done in the resize event.
-	const SDL_Rect rect = screen_area();
+	const SDL_Rect rect = CVideo::get_singleton().screen_area();
+
 	settings::screen_width = rect.w;
 	settings::screen_height = rect.h;
 

@@ -201,7 +201,7 @@ dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, i
 	h += dim_.title.h + dim_.button_row.h;
 	dim_.button_row.x += x + w;
 
-	SDL_Rect bounds = screen_area();
+	SDL_Rect bounds = video_.screen_area();
 	if(have_border_) {
 		bounds.x += left_->w;
 		bounds.y += top_->h;
@@ -321,7 +321,7 @@ void dialog_frame::draw_background()
 
 SDL_Rect dialog_frame::draw_title(CVideo* video)
 {
-	SDL_Rect rect = screen_area();
+	SDL_Rect rect = video->screen_area();
 	return font::draw_text(video, rect, font::SIZE_TITLE, font::TITLE_COLOR,
 	                       title_, dim_.title.x, dim_.title.y, false, TTF_STYLE_NORMAL);
 }

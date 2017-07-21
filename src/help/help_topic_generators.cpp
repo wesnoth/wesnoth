@@ -239,7 +239,7 @@ std::string unit_topic_generator::operator()() const {
 	const unit_type& female_type = type_.get_gender_unit_type(unit_race::FEMALE);
 	const unit_type& male_type = type_.get_gender_unit_type(unit_race::MALE);
 
-	const int screen_width = CVideo::get_singleton().getx();
+	const int screen_width = CVideo::get_singleton().get_width();
 
 	ss << "Level " << type_.level();
 	ss << "\n\n";

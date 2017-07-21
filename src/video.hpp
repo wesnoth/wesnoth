@@ -28,8 +28,6 @@
 class surface;
 class texture;
 
-SDL_Rect screen_area();
-
 class CVideo {
 public:
 	CVideo(const CVideo&) = delete;
@@ -78,9 +76,19 @@ public:
 
 	std::pair<int,int> current_resolution();
 
-	//functions to get the dimensions of the current video-mode
-	int getx() const;
-	int gety() const;
+	/**
+	 * Returns the current window renderer area, either in pixels or screen coordinates.
+	 *
+	 * @param as_pixels           Whether to return the area in pixels (default true) or
+	 *                            DPI-independent (DIP) screen coordinates.
+	 */
+	SDL_Rect screen_area(bool as_pixels = true) const;
+
+	/** Returns the window renderer width in pixels or screen coordinates. */
+	int get_width(bool as_pixels = true) const;
+
+	/** Returns the window renderer height in pixels or in screen coordinates. */
+	int get_height(bool as_pixels = true) const;
 
 	std::pair<float, float> get_dpi_scale_factor() const;
 

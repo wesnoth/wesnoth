@@ -228,7 +228,7 @@ void button::calculate_size()
 	}
 
 	if (type_ != TYPE_IMAGE){
-		textRect_ = font::draw_text(nullptr, screen_area(), font_size,
+		textRect_ = font::draw_text(nullptr, video().screen_area(), font_size,
 									font::BUTTON_COLOR, label_text_, 0, 0);
 	}
 
