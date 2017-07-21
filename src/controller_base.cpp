@@ -67,6 +67,8 @@ void controller_base::handle_event(const SDL_Event& event)
 	static const hotkey::hotkey_command& quit_hotkey
 			= hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_QUIT_GAME);
 
+	events::mouse_handler_base& mh_base = get_mouse_handler_base();
+
 	switch(event.type) {
 	case SDL_TEXTINPUT:
 		if(have_keyboard_focus()) {
@@ -112,16 +114,16 @@ void controller_base::handle_event(const SDL_Event& event)
 		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
 			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
 			};
-			get_mouse_handler_base().mouse_motion_event(new_event.motion, is_browsing());
+			mh_base.mouse_motion_event(new_event.motion, is_browsing());
 		} else {
-			get_mouse_handler_base().mouse_motion_event(event.motion, is_browsing());
+			mh_base.mouse_motion_event(event.motion, is_browsing());
 		}
 		break;
 
 	case SDL_MOUSEBUTTONDOWN:
 		process_keydown_event(event);
-		get_mouse_handler_base().mouse_press(event.button, is_browsing());
-		if(get_mouse_handler_base().get_show_menu()) {
+		mh_base.mouse_press(event.button, is_browsing());
+		if(mh_base.get_show_menu()) {
 			show_menu(get_display().get_theme().context_menu()->items(), event.button.x, event.button.y, true,
 					get_display());
 		}
@@ -129,15 +131,15 @@ void controller_base::handle_event(const SDL_Event& event)
 		break;
 
 	case SDL_MOUSEBUTTONUP:
-		get_mouse_handler_base().mouse_press(event.button, is_browsing());
-		if(get_mouse_handler_base().get_show_menu()) {
+		mh_base.mouse_press(event.button, is_browsing());
+		if(mh_base.get_show_menu()) {
 			show_menu(get_display().get_theme().context_menu()->items(), event.button.x, event.button.y, true,
 					get_display());
 		}
 		break;
 
 	case SDL_MOUSEWHEEL:
-		get_mouse_handler_base().mouse_wheel(-event.wheel.x, event.wheel.y, is_browsing());
+		mh_base.mouse_wheel(-event.wheel.x, event.wheel.y, is_browsing());
 		break;
 
 	default:
@@ -196,14 +198,16 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 		}
 	}
 
+	events::mouse_handler_base& mh_base = get_mouse_handler_base();
+
 	// Scroll with middle-mouse if enabled
 	if((mouse_flags & SDL_BUTTON_MMASK) != 0 && preferences::middle_click_scrolls()) {
-		const SDL_Point original_loc = get_mouse_handler_base().get_scroll_start();
+		const SDL_Point original_loc = mh_base.get_scroll_start();
 
-		if(get_mouse_handler_base().scroll_started()) {
+		if(mh_base.scroll_started()) {
 			const SDL_Rect& rect = get_display().map_outside_area();
 
-			if(sdl::point_in_rect(mousex, mousey, rect) && get_mouse_handler_base().scroll_started()) {
+			if(sdl::point_in_rect(mousex, mousey, rect) && mh_base.scroll_started()) {
 				// Scroll speed is proportional from the distance from the first
 				// middle click and scrolling speed preference.
 				const double speed = 0.04 * sqrt(static_cast<double>(scroll_speed));
@@ -220,7 +224,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 				}
 			}
 		} else { // Event may fire mouse down out of order with respect to initial click
-			get_mouse_handler_base().set_scroll_start(mousex, mousey);
+			mh_base.set_scroll_start(mousex, mousey);
 		}
 	}
 
