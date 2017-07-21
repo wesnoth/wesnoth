@@ -15,24 +15,23 @@
 
 #include "controller_base.hpp"
 
-#include "show_dialog.hpp" //gui::in_dialog
 #include "display.hpp"
 #include "events.hpp"
 #include "gui/dialogs/loading_screen.hpp"
-#include "preferences/game.hpp"
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "mouse_handler_base.hpp"
+#include "preferences/game.hpp"
 #include "scripting/plugins/context.hpp"
+#include "show_dialog.hpp" //gui::in_dialog
 #include "soundsource.hpp"
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
-controller_base::controller_base(
-		const config& game_config)
+controller_base::controller_base(const config& game_config)
 	: draw_layering(false)
 	, game_config_(game_config)
 	, key_()
@@ -57,7 +56,7 @@ void controller_base::handle_event(const SDL_Event& event)
 	 * first. have_keyboard_focus currently returns false if a dialog open, but this is just as stopgap
 	 * measure. We need to figure out a better way to filter out events.
 	 */
-	//if(gui::in_dialog()) {
+	// if(gui::in_dialog()) {
 	//	return;
 	//}
 
@@ -65,7 +64,8 @@ void controller_base::handle_event(const SDL_Event& event)
 		return;
 	}
 
-	static const hotkey::hotkey_command& quit_hotkey = hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_QUIT_GAME);
+	static const hotkey::hotkey_command& quit_hotkey
+			= hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_QUIT_GAME);
 
 	switch(event.type) {
 	case SDL_TEXTINPUT:
@@ -73,6 +73,7 @@ void controller_base::handle_event(const SDL_Event& event)
 			hotkey::key_event(event, get_hotkey_command_executor());
 		}
 		break;
+
 	case SDL_KEYDOWN:
 		// Detect key press events, unless there something that has keyboard focus
 		// in which case the key press events should go only to it.
@@ -89,45 +90,56 @@ void controller_base::handle_event(const SDL_Event& event)
 			process_focus_keydown_event(event);
 		}
 		break;
+
 	case SDL_KEYUP:
 		process_keyup_event(event);
 		hotkey::key_event(event, get_hotkey_command_executor());
 		break;
+
 	case SDL_JOYBUTTONDOWN:
 		process_keydown_event(event);
 		hotkey::jbutton_event(event, get_hotkey_command_executor());
 		break;
+
 	case SDL_JOYHATMOTION:
 		process_keydown_event(event);
 		hotkey::jhat_event(event, get_hotkey_command_executor());
 		break;
+
 	case SDL_MOUSEMOTION:
 		// Ignore old mouse motion events in the event queue
 		SDL_Event new_event;
 		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
-			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {};
+			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
+			};
 			get_mouse_handler_base().mouse_motion_event(new_event.motion, is_browsing());
 		} else {
 			get_mouse_handler_base().mouse_motion_event(event.motion, is_browsing());
 		}
 		break;
+
 	case SDL_MOUSEBUTTONDOWN:
 		process_keydown_event(event);
 		get_mouse_handler_base().mouse_press(event.button, is_browsing());
-		if (get_mouse_handler_base().get_show_menu()){
-			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
+		if(get_mouse_handler_base().get_show_menu()) {
+			show_menu(get_display().get_theme().context_menu()->items(), event.button.x, event.button.y, true,
+					get_display());
 		}
 		hotkey::mbutton_event(event, get_hotkey_command_executor());
 		break;
+
 	case SDL_MOUSEBUTTONUP:
 		get_mouse_handler_base().mouse_press(event.button, is_browsing());
-		if (get_mouse_handler_base().get_show_menu()){
-			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
+		if(get_mouse_handler_base().get_show_menu()) {
+			show_menu(get_display().get_theme().context_menu()->items(), event.button.x, event.button.y, true,
+					get_display());
 		}
 		break;
+
 	case SDL_MOUSEWHEEL:
 		get_mouse_handler_base().mouse_wheel(-event.wheel.x, event.wheel.y, is_browsing());
 		break;
+
 	default:
 		break;
 	}
@@ -138,63 +150,60 @@ bool controller_base::have_keyboard_focus()
 	return !gui::in_dialog();
 }
 
-void controller_base::process_focus_keydown_event(const SDL_Event& /*event*/) {
-	//no action by default
-}
-
-void controller_base::process_keydown_event(const SDL_Event& /*event*/) {
-	//no action by default
-}
-
-void controller_base::process_keyup_event(const SDL_Event& /*event*/) {
-	//no action by default
-}
-
 bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, double x_axis, double y_axis)
 {
 	sdl::window* window = CVideo::get_singleton().get_window();
-	bool mouse_in_window = (window != nullptr && (window->get_flags() & SDL_WINDOW_MOUSE_FOCUS) != 0)
+
+	const bool mouse_in_window =
+		(window != nullptr && (window->get_flags() & SDL_WINDOW_MOUSE_FOCUS) != 0)
 		|| preferences::get("scroll_when_mouse_outside", true);
+
 	int scroll_speed = preferences::scroll_speed();
 	int dx = 0, dy = 0;
-	int scroll_threshold = (preferences::mouse_scroll_enabled())
-		? preferences::mouse_scroll_threshold() : 0;
-	for (const theme::menu& m : get_display().get_theme().menus()) {
-		if (sdl::point_in_rect(mousex, mousey, m.get_location())) {
+
+	int scroll_threshold = preferences::mouse_scroll_enabled()
+		? preferences::mouse_scroll_threshold()
+		: 0;
+
+	for(const theme::menu& m : get_display().get_theme().menus()) {
+		if(sdl::point_in_rect(mousex, mousey, m.get_location())) {
 			scroll_threshold = 0;
 		}
 	}
 
-	// apply keyboard scrolling
-	dy -= scroll_up_ * scroll_speed;
-	dy += scroll_down_ * scroll_speed;
-	dx -= scroll_left_ * scroll_speed;
+	// Apply keyboard scrolling
+	dy -= scroll_up_    * scroll_speed;
+	dy += scroll_down_  * scroll_speed;
+	dx -= scroll_left_  * scroll_speed;
 	dx += scroll_right_ * scroll_speed;
 
-	// scroll if mouse is placed near the edge of the screen
-	if (mouse_in_window) {
-		if (mousey < scroll_threshold) {
+	// Scroll if mouse is placed near the edge of the screen
+	if(mouse_in_window) {
+		if(mousey < scroll_threshold) {
 			dy -= scroll_speed;
 		}
-		if (mousey > get_display().h() - scroll_threshold) {
+
+		if(mousey > get_display().h() - scroll_threshold) {
 			dy += scroll_speed;
 		}
-		if (mousex < scroll_threshold) {
+
+		if(mousex < scroll_threshold) {
 			dx -= scroll_speed;
 		}
-		if (mousex > get_display().w() - scroll_threshold) {
+
+		if(mousex > get_display().w() - scroll_threshold) {
 			dx += scroll_speed;
 		}
 	}
 
-	// scroll with middle-mouse if enabled
-	if ((mouse_flags & SDL_BUTTON_MMASK) != 0 && preferences::middle_click_scrolls()) {
+	// Scroll with middle-mouse if enabled
+	if((mouse_flags & SDL_BUTTON_MMASK) != 0 && preferences::middle_click_scrolls()) {
 		const SDL_Point original_loc = get_mouse_handler_base().get_scroll_start();
 
-		if (get_mouse_handler_base().scroll_started()) {
+		if(get_mouse_handler_base().scroll_started()) {
 			const SDL_Rect& rect = get_display().map_outside_area();
-			if (sdl::point_in_rect(mousex, mousey,rect) &&
-				get_mouse_handler_base().scroll_started()) {
+
+			if(sdl::point_in_rect(mousex, mousey, rect) && get_mouse_handler_base().scroll_started()) {
 				// Scroll speed is proportional from the distance from the first
 				// middle click and scrolling speed preference.
 				const double speed = 0.04 * sqrt(static_cast<double>(scroll_speed));
@@ -202,18 +211,22 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 				const double x_diff = (mousex - original_loc.x);
 				const double y_diff = (mousey - original_loc.y);
 
-				if (std::fabs(x_diff) > snap_dist || std::fabs(y_diff) <= snap_dist) dx += speed * x_diff;
-				if (std::fabs(y_diff) > snap_dist || std::fabs(x_diff) <= snap_dist) dy += speed * y_diff;
+				if(std::fabs(x_diff) > snap_dist || std::fabs(y_diff) <= snap_dist) {
+					dx += speed * x_diff;
+				}
+
+				if(std::fabs(y_diff) > snap_dist || std::fabs(x_diff) <= snap_dist) {
+					dy += speed * y_diff;
+				}
 			}
-		}
-		else { // Event may fire mouse down out of order with respect to initial click
+		} else { // Event may fire mouse down out of order with respect to initial click
 			get_mouse_handler_base().set_scroll_start(mousex, mousey);
 		}
 	}
 
 	// scroll with joystick
-	dx += round_double( x_axis * scroll_speed);
-	dy += round_double( y_axis * scroll_speed);
+	dx += round_double(x_axis * scroll_speed);
+	dy += round_double(y_axis * scroll_speed);
 
 	return get_display().scroll(dx, dy);
 }
@@ -222,7 +235,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 {
 	CKey key;
 
-	if (plugins_context *l = get_plugins_context()) {
+	if(plugins_context* l = get_plugins_context()) {
 		l->play_slice();
 	}
 
@@ -230,26 +243,28 @@ void controller_base::play_slice(bool is_delay_enabled)
 	events::raise_process_event();
 
 	// Update sound sources before scrolling
-	if (soundsource::manager *l = get_soundsource_man()) {
+	if(soundsource::manager* l = get_soundsource_man()) {
 		l->update();
 	}
 
 	const theme::menu* const m = get_display().menu_pressed();
 	if(m != nullptr) {
 		const SDL_Rect& menu_loc = m->location(get_display().screen_area());
-		show_menu(m->items(),menu_loc.x+1,menu_loc.y + menu_loc.h + 1,false, get_display());
+		show_menu(m->items(), menu_loc.x + 1, menu_loc.y + menu_loc.h + 1, false, get_display());
 
 		return;
 	}
+
 	const theme::action* const a = get_display().action_pressed();
 	if(a != nullptr) {
 		const SDL_Rect& action_loc = a->location(get_display().screen_area());
-		execute_action(a->items(), action_loc.x+1, action_loc.y + action_loc.h + 1,false);
+		execute_action(a->items(), action_loc.x + 1, action_loc.y + action_loc.h + 1, false);
 
 		return;
 	}
+
 	auto str_vec = additional_actions_pressed();
-	if (!str_vec.empty()) {
+	if(!str_vec.empty()) {
 		execute_action(str_vec, 0, 0, false);
 		return;
 	}
@@ -263,17 +278,20 @@ void controller_base::play_slice(bool is_delay_enabled)
 	int mousex, mousey;
 	Uint8 mouse_flags = SDL_GetMouseState(&mousex, &mousey);
 
-	/* TODO fendrin enable after an axis choosing mechanism is implemented
+	// TODO enable after an axis choosing mechanism is implemented
+#if 0
 	std::pair<double, double> values = joystick_manager_.get_mouse_axis_pair();
 	mousex += values.first * 10;
 	mousey += values.second * 10;
 	SDL_WarpMouse(mousex, mousey);
-	*/
+#endif
+
 	scrolling_ = handle_scroll(mousex, mousey, mouse_flags, joystickx, joysticky);
 
 	map_location highlighted_hex = get_display().mouseover_hex();
 
-	/* TODO fendrin enable when the relative cursor movement is implemented well enough
+	// TODO: enable when the relative cursor movement is implemented well enough
+#if 0
 	const map_location& selected_hex = get_display().selected_hex();
 
 	if (selected_hex != map_location::null_location()) {
@@ -282,29 +300,30 @@ void controller_base::play_slice(bool is_delay_enabled)
 			get_display().scroll_to_tile(highlighted_hex, display::ONSCREEN_WARP, false, true);
 			scrolling_ = true;
 		}
-	} else */
+	} else
+#endif
 
-	if (joystick_manager_.update_highlighted_hex(highlighted_hex)
-			&& get_display().get_map().on_board(highlighted_hex)) {
-		get_mouse_handler_base().mouse_motion(0,0, true, true, highlighted_hex);
+	if(joystick_manager_.update_highlighted_hex(highlighted_hex) && get_display().get_map().on_board(highlighted_hex)) {
+		get_mouse_handler_base().mouse_motion(0, 0, true, true, highlighted_hex);
 		get_display().scroll_to_tile(highlighted_hex, display::ONSCREEN_WARP, false, true);
 		scrolling_ = true;
-		}
+	}
 
-	// be nice when window is not visible
+	// Be nice when window is not visible
 	// NOTE should be handled by display instead, to only disable drawing
 	sdl::window* window = CVideo::get_singleton().get_window();
-	if (window != nullptr && is_delay_enabled && (window->get_flags() & SDL_WINDOW_SHOWN) == 0) {
+	if(window != nullptr && is_delay_enabled && (window->get_flags() & SDL_WINDOW_SHOWN) == 0) {
 		CVideo::delay(200);
 	}
 
-	if (!scrolling_ && was_scrolling) {
-		// scrolling ended, update the cursor and the brightened hex
+	// Scrolling ended, update the cursor and the brightened hex
+	if(!scrolling_ && was_scrolling) {
 		get_mouse_handler_base().mouse_update(is_browsing(), highlighted_hex);
 	}
 }
 
-void controller_base::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
+void controller_base::show_menu(
+		const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
 	hotkey::command_executor* cmd_exec = get_hotkey_command_executor();
 	if(!cmd_exec) {
@@ -317,7 +336,7 @@ void controller_base::show_menu(const std::vector<config>& items_arg, int xloc, 
 		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
 
 		if(cmd_exec->can_execute_command(command) && (!context_menu || in_context_menu(command.id))) {
-			items.emplace_back(config {"id", id});
+			items.emplace_back(config{"id", id});
 		}
 	}
 
@@ -330,25 +349,25 @@ void controller_base::show_menu(const std::vector<config>& items_arg, int xloc, 
 
 void controller_base::execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
 {
-	hotkey::command_executor * cmd_exec = get_hotkey_command_executor();
-	if (!cmd_exec) {
+	hotkey::command_executor* cmd_exec = get_hotkey_command_executor();
+	if(!cmd_exec) {
 		return;
 	}
 
 	std::vector<std::string> items;
-	for (const std::string& item : items_arg) {
-
+	for(const std::string& item : items_arg) {
 		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(item);
-		if(cmd_exec->can_execute_command(command))
+		if(cmd_exec->can_execute_command(command)) {
 			items.push_back(item);
+		}
 	}
 
-	if(items.empty())
+	if(items.empty()) {
 		return;
+	}
+
 	cmd_exec->execute_action(items, xloc, yloc, context_menu, get_display());
 }
-
-
 
 bool controller_base::in_context_menu(hotkey::HOTKEY_COMMAND /*command*/) const
 {
@@ -357,38 +376,22 @@ bool controller_base::in_context_menu(hotkey::HOTKEY_COMMAND /*command*/) const
 
 const config& controller_base::get_theme(const config& game_config, std::string theme_name)
 {
-	if (theme_name.empty()) theme_name = preferences::theme();
+	if(theme_name.empty()) {
+		theme_name = preferences::theme();
+	}
 
-	if (const config &c = game_config.find_child("theme", "id", theme_name))
+	if(const config& c = game_config.find_child("theme", "id", theme_name)) {
 		return c;
+	}
 
 	ERR_DP << "Theme '" << theme_name << "' not found. Trying the default theme." << std::endl;
 
-	if (const config &c = game_config.find_child("theme", "id", "Default"))
+	if(const config& c = game_config.find_child("theme", "id", "Default")) {
 		return c;
+	}
 
 	ERR_DP << "Default theme not found." << std::endl;
 
 	static config empty;
 	return empty;
-}
-
-void controller_base::set_scroll_up(bool on)
-{
-	scroll_up_ = on;
-}
-
-void controller_base::set_scroll_down(bool on)
-{
-	scroll_down_ = on;
-}
-
-void controller_base::set_scroll_left(bool on)
-{
-	scroll_left_ = on;
-}
-
-void controller_base::set_scroll_right(bool on)
-{
-	scroll_right_ = on;
 }
