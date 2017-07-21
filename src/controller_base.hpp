@@ -154,12 +154,6 @@ protected:
 		// No action by default
 	}
 
-	/** Process keydown (only when the general map display does not have focus). */
-	virtual void process_focus_keydown_event(const SDL_Event& /*event*/)
-	{
-		// No action by default
-	}
-
 	/** Process keydown (always). Overridden in derived classes */
 	virtual void process_keydown_event(const SDL_Event& /*event*/)
 	{
