@@ -55,7 +55,7 @@ namespace soundsource { class manager; }
 class controller_base : public video2::draw_layering
 {
 public:
-	controller_base(const config& game_config, CVideo& video);
+	controller_base(const config& game_config);
 	virtual ~controller_base();
 
 	void play_slice(bool is_delay_enabled = true);

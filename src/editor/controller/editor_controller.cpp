@@ -60,7 +60,7 @@ static std::vector<std::string> saved_windows_;
 namespace editor {
 
 editor_controller::editor_controller(const config &game_config, CVideo& video)
-	: controller_base(game_config, video)
+	: controller_base(game_config)
 	, mouse_handler_base()
 	, quit_confirmation(std::bind(&editor_controller::quit_confirm, this))
 	, active_menu_(editor::MAP)
