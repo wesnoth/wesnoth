@@ -108,6 +108,22 @@ using render_viewport_setter = render_raii_rect_setter_base<
 	&SDL_RenderSetViewport>;
 
 
+/**
+ * Set renderer drawing color.
+ */
+inline void set_draw_color(SDL_Renderer* renderer, uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+{
+	SDL_SetRenderDrawColor(renderer, r, g, b, a);
+}
+
+/**
+ * Set renderer drawing color.
+ */
+inline void set_draw_color(SDL_Renderer* renderer, color_t color)
+{
+	set_draw_color(renderer, color.r, color.g, color.b, color.a);
+}
+
 /*
  * TEXTURE SETTERS =========================================================================
  * Need to decide if these need their own file.
