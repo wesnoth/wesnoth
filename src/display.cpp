@@ -929,7 +929,7 @@ static const std::string& get_direction(size_t n)
 	return dirs[n >= dirs.size() ? 0 : n];
 }
 
-std::vector<texture> display::get_fog_shroud_images(const map_location& loc, image::TYPE /*image_type*/)
+void display::draw_fog_shroud_transition_images(const map_location& loc, image::TYPE /*image_type*/)
 {
 	std::vector<std::string> names;
 
@@ -1005,18 +1005,10 @@ std::vector<texture> display::get_fog_shroud_images(const map_location& loc, ima
 		}
 	}
 
-	// now get the surfaces
-	std::vector<texture> res;
-	res.reserve(names.size());
-
+	// Now render the images
 	for(std::string& name : names) {
-		texture tex(image::get_texture(name)); // TODO: image_type
-		if(tex) {
-			res.push_back(std::move(tex));
-		}
+		render_scaled_to_zoom(image::get_texture(name), loc); // TODO: image_type
 	}
-
-	return res;
 }
 
 void display::toggle_benchmark()
@@ -2627,9 +2619,7 @@ void display::draw_gamemap()
 
 		// Transitions to main hexes.
 		if(!is_shrouded) {
-			for(const texture& t : get_fog_shroud_images(loc, image_type)) {
-				render_scaled_to_zoom(t, loc);
-			}
+			draw_fog_shroud_transition_images(loc, image_type);
 		}
 	}
 
