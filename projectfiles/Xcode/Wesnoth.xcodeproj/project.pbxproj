@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1EF6CE8214D9846D00ECBE58 /* mp_host_game_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */; };
+		468C1B971F09245F002DF652 /* function_gamestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468C1B951F09245E002DF652 /* function_gamestate.cpp */; };
+		46EC94D81F229C8F00F04F63 /* drawing_queue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EC94D71F229C8F00F04F63 /* drawing_queue.cpp */; };
+		46EC94DB1F229CCA00F04F63 /* command_console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EC94DA1F229CCA00F04F63 /* command_console.cpp */; };
+		46EC94DE1F229CE700F04F63 /* game_ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EC94DD1F229CE700F04F63 /* game_ui.cpp */; };
+		46EC94E41F229D5600F04F63 /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EC94E01F229D5600F04F63 /* utils.cpp */; };
+		46EC94E51F229D5600F04F63 /* context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EC94E11F229D5600F04F63 /* context.cpp */; };
+		46EC94E91F229DB700F04F63 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EC94E81F229DB600F04F63 /* texture.cpp */; };
+		46EC94EB1F229DBF00F04F63 /* surface.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 46EC94EA1F229DBE00F04F63 /* surface.hpp */; };
 		4944F40D1354FB760027E614 /* drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40C1354FB760027E614 /* drawing.cpp */; };
 		4944F4121354FB970027E614 /* debug_clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40E1354FB970027E614 /* debug_clock.cpp */; };
 		4944F4131354FB970027E614 /* mp_login.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40F1354FB970027E614 /* mp_login.cpp */; };
@@ -1390,6 +1398,22 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_host_game_prompt.cpp; sourceTree = "<group>"; };
 		1EF6CE8114D9846D00ECBE58 /* mp_host_game_prompt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_host_game_prompt.hpp; sourceTree = "<group>"; };
+		468C1B951F09245E002DF652 /* function_gamestate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = function_gamestate.cpp; sourceTree = "<group>"; };
+		468C1B961F09245E002DF652 /* function_gamestate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = function_gamestate.hpp; sourceTree = "<group>"; };
+		46EC94D61F229C8F00F04F63 /* drawing_queue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = drawing_queue.hpp; sourceTree = "<group>"; };
+		46EC94D71F229C8F00F04F63 /* drawing_queue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drawing_queue.cpp; sourceTree = "<group>"; };
+		46EC94D91F229CCA00F04F63 /* command_console.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = command_console.hpp; sourceTree = "<group>"; };
+		46EC94DA1F229CCA00F04F63 /* command_console.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = command_console.cpp; sourceTree = "<group>"; };
+		46EC94DC1F229CE700F04F63 /* game_ui.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_ui.hpp; sourceTree = "<group>"; };
+		46EC94DD1F229CE700F04F63 /* game_ui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_ui.cpp; sourceTree = "<group>"; };
+		46EC94E01F229D5600F04F63 /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utils.cpp; sourceTree = "<group>"; };
+		46EC94E11F229D5600F04F63 /* context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = context.cpp; sourceTree = "<group>"; };
+		46EC94E21F229D5600F04F63 /* context.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = context.hpp; sourceTree = "<group>"; };
+		46EC94E31F229D5600F04F63 /* utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utils.hpp; sourceTree = "<group>"; };
+		46EC94E61F229D9D00F04F63 /* render_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = render_utils.hpp; sourceTree = "<group>"; };
+		46EC94E71F229DB600F04F63 /* texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = texture.hpp; sourceTree = "<group>"; };
+		46EC94E81F229DB600F04F63 /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
+		46EC94EA1F229DBE00F04F63 /* surface.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = surface.hpp; sourceTree = "<group>"; };
 		4944F40C1354FB760027E614 /* drawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drawing.cpp; sourceTree = "<group>"; };
 		4944F40E1354FB970027E614 /* debug_clock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = debug_clock.cpp; sourceTree = "<group>"; };
 		4944F40F1354FB970027E614 /* mp_login.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_login.cpp; sourceTree = "<group>"; };
@@ -2924,6 +2948,8 @@
 				EC21944E1960649000420969 /* display_chat_manager.hpp */,
 				ECD39894194B844A00CF2125 /* display_context.cpp */,
 				91B621821B766FD200B00E0F /* display_context.hpp */,
+				46EC94D71F229C8F00F04F63 /* drawing_queue.cpp */,
+				46EC94D61F229C8F00F04F63 /* drawing_queue.hpp */,
 				B5599FF60EC8FE2E008DD061 /* editor */,
 				B5599A970EC62181008DD061 /* events.cpp */,
 				B5599A960EC62181008DD061 /* events.hpp */,
@@ -3016,6 +3042,7 @@
 				B5951A831013BB0800C10B66 /* multiplayer_error_codes.hpp */,
 				F44490B413C5483F003B6442 /* network_asio.cpp */,
 				F44490B513C5483F003B6442 /* network_asio.hpp */,
+				46EC94DF1F229D5600F04F63 /* ogl */,
 				91B621AA1B76AC9600B00E0F /* overlay.hpp */,
 				B55BE02C11234AAB00154E6C /* pathfind */,
 				B55999D20EC62181008DD061 /* pathutils.cpp */,
@@ -3200,6 +3227,17 @@
 				90606A2A1D5599BA00719B40 /* libpcre.1.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		46EC94DF1F229D5600F04F63 /* ogl */ = {
+			isa = PBXGroup;
+			children = (
+				46EC94E01F229D5600F04F63 /* utils.cpp */,
+				46EC94E11F229D5600F04F63 /* context.cpp */,
+				46EC94E21F229D5600F04F63 /* context.hpp */,
+				46EC94E31F229D5600F04F63 /* utils.hpp */,
+			);
+			path = ogl;
 			sourceTree = "<group>";
 		};
 		49DA0CFB13550AC5000AFEBD /* addon */ = {
@@ -3539,9 +3577,13 @@
 				EC84247018F30DB700FC1EEF /* exception.hpp */,
 				ECFB9FAB193BFB6E00146ED0 /* rect.cpp */,
 				91B621F11B76BBC500B00E0F /* rect.hpp */,
+				46EC94E61F229D9D00F04F63 /* render_utils.hpp */,
 				EC2F60211A04983B0018C9D6 /* savepng.c */,
 				EC2F60231A04985A0018C9D6 /* savepng.h */,
+				46EC94EA1F229DBE00F04F63 /* surface.hpp */,
 				EC669C251DFC95AF00172EED /* surface.cpp */,
+				46EC94E81F229DB600F04F63 /* texture.cpp */,
+				46EC94E71F229DB600F04F63 /* texture.hpp */,
 				EC28C58D19423426003B0F5E /* utils.cpp */,
 				EC28C58E19423426003B0F5E /* utils.hpp */,
 				911F2DAB1BA086A400E3102E /* window.cpp */,
@@ -3647,6 +3689,8 @@
 				B5599A8C0EC62181008DD061 /* formula.cpp */,
 				B5599A8B0EC62181008DD061 /* formula.hpp */,
 				B5599A840EC62181008DD061 /* formula_fwd.hpp */,
+				468C1B951F09245E002DF652 /* function_gamestate.cpp */,
+				468C1B961F09245E002DF652 /* function_gamestate.hpp */,
 				B5599A860EC62181008DD061 /* function.cpp */,
 				B5599A850EC62181008DD061 /* function.hpp */,
 				B52EE8AA121359A600CFBDAB /* string_utils.cpp */,
@@ -4297,6 +4341,8 @@
 				B5F4D7160F5B3B25005E204A /* campaign_selection.hpp */,
 				F4D5DF37149CE9B500294046 /* chat_log.cpp */,
 				F4D5DF38149CE9B500294046 /* chat_log.hpp */,
+				46EC94DA1F229CCA00F04F63 /* command_console.cpp */,
+				46EC94D91F229CCA00F04F63 /* command_console.hpp */,
 				ECBBD73E1928F41500E434C6 /* core_selection.cpp */,
 				ECBBD73F1928F41500E434C6 /* core_selection.hpp */,
 				4944F40E1354FB970027E614 /* debug_clock.cpp */,
@@ -4330,6 +4376,8 @@
 				B597EC610FC08E5D00CE81F5 /* game_save.hpp */,
 				9193FC771D5AC2D8004F6C07 /* game_stats.cpp */,
 				9193FC781D5AC2D8004F6C07 /* game_stats.hpp */,
+				46EC94DD1F229CE700F04F63 /* game_ui.cpp */,
+				46EC94DC1F229CE700F04F63 /* game_ui.hpp */,
 				ECABDA341B6A9461001407C1 /* game_version.cpp */,
 				9184385C1D4C786F00C42277 /* game_version.hpp */,
 				B5B4692A1071189700327599 /* gamestate_inspector.cpp */,
@@ -4674,6 +4722,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46EC94EB1F229DBF00F04F63 /* surface.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4860,6 +4909,7 @@
 				ECE0293D1E9A77E100DC0A62 /* outro.cpp in Sources */,
 				B54AC6D80FEA9EB5006F6FBD /* ai.cpp in Sources */,
 				B54AC6E40FEA9EB5006F6FBD /* ai.cpp in Sources */,
+				46EC94E41F229D5600F04F63 /* utils.cpp in Sources */,
 				B5599B830EC62181008DD061 /* animated.cpp in Sources */,
 				F40A13BC1A3A88BA00C4D071 /* apple_notification.mm in Sources */,
 				EC218E9C1A1064F4007C910C /* application_lua_kernel.cpp in Sources */,
@@ -4937,6 +4987,7 @@
 				B552D92410869477002D8F86 /* distributor.cpp in Sources */,
 				4944F40D1354FB760027E614 /* drawing.cpp in Sources */,
 				B5CE470612A041EF00D665EE /* edit_label.cpp in Sources */,
+				46EC94DE1F229CE700F04F63 /* game_ui.cpp in Sources */,
 				497455CE174066A800E89E30 /* edit_text.cpp in Sources */,
 				ECB58C8D19E71347007D074F /* editor_controller.cpp in Sources */,
 				B559A0140EC8FE2E008DD061 /* editor_display.cpp in Sources */,
@@ -4968,6 +5019,7 @@
 				EC2F60111A048E220018C9D6 /* flg_manager.cpp in Sources */,
 				EC45DEE11AD1CEF600BD760C /* floating_label.cpp in Sources */,
 				B5599B720EC62181008DD061 /* floating_textbox.cpp in Sources */,
+				46EC94E91F229DB700F04F63 /* texture.cpp in Sources */,
 				F444917713C5562C003B6442 /* folder_create.cpp in Sources */,
 				ECC8F41B185FE2E1004AC3BE /* format_time_summary.cpp in Sources */,
 				B52EE8CD121359A600CFBDAB /* debugger_fwd.cpp in Sources */,
@@ -5048,6 +5100,7 @@
 				B5A9BD650ECA805A002BE442 /* listbox.cpp in Sources */,
 				B55BE04B11234B1A00154E6C /* lobby_data.cpp in Sources */,
 				B55BE04C11234B1A00154E6C /* lobby_info.cpp in Sources */,
+				46EC94DB1F229CCA00F04F63 /* command_console.cpp in Sources */,
 				B54AC6F50FEA9F92006F6FBD /* lobby.cpp in Sources */,
 				B59F96ED1034796700A57C1A /* player_info.cpp in Sources */,
 				B5599B2F0EC62181008DD061 /* log.cpp in Sources */,
@@ -5067,6 +5120,7 @@
 				F46C5DD413A5089100DD0816 /* lua_object.cpp in Sources */,
 				ECC2FFFA1A51A00900023AF4 /* lua_race.cpp in Sources */,
 				ECA4A67D1A1EC319006BCCF2 /* lua_rng.cpp in Sources */,
+				468C1B971F09245F002DF652 /* function_gamestate.cpp in Sources */,
 				ECE09A551EBA529D0020C97B /* parser.cpp in Sources */,
 				EC5430231A4E6024006D206C /* lua_team.cpp in Sources */,
 				EC5430241A4E6024006D206C /* lua_unit_type.cpp in Sources */,
@@ -5207,10 +5261,12 @@
 				B5599B080EC62181008DD061 /* string_utils.cpp in Sources */,
 				F4E4E0B11367241E001C7528 /* suppose_dead.cpp in Sources */,
 				EC84246C18F30D9100FC1EEF /* synced_checkup.cpp in Sources */,
+				46EC94E51F229D5600F04F63 /* context.cpp in Sources */,
 				EC06802A1EA920A300EEE03B /* random_synced.cpp in Sources */,
 				EC84246D18F30D9100FC1EEF /* synced_commands.cpp in Sources */,
 				EC84246E18F30D9100FC1EEF /* synced_context.cpp in Sources */,
 				ECDEAF77194FEA8500DB2F47 /* syncmp_handler.cpp in Sources */,
+				46EC94D81F229C8F00F04F63 /* drawing_queue.cpp in Sources */,
 				B5599AFC0EC62181008DD061 /* team.cpp in Sources */,
 				ECB57C401A56E6DC001973A5 /* teambuilder.cpp in Sources */,
 				4944F41B1354FBFF0027E614 /* teleport.cpp in Sources */,
