@@ -97,6 +97,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	multiplayer_scenario(),
 	multiplayer_side(),
 	multiplayer_turns(),
+	max_fps(),
 	noaddons(false),
 	nocache(false),
 	nodelay(false),
@@ -213,6 +214,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	display_opts.add_options()
 		("fps", "displays the number of frames per second the game is currently running at, in a corner of the screen.")
 		("fullscreen,f", "runs the game in full screen mode.")
+		("max-fps", po::value<int>(), "the maximum fps the game tries to run at. Values should be between 1 and 1000, the default is 50.")
 		("new-widgets", "there is a new WIP widget toolkit this switch enables the new toolkit (VERY EXPERIMENTAL don't file bug reports since most are known). Parts of the library are deemed stable and will work without this switch.")
 		("resolution,r", po::value<std::string>(), "sets the screen resolution. <arg> should have format XxY. Example: --resolution 800x600")
 		("windowed,w", "runs the game in windowed mode.")
@@ -366,6 +368,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		log_precise_timestamps = true;
 	if (vm.count("log-strict"))
 		parse_log_strictness(vm["log-strict"].as<std::string>());
+	if (vm.count("max-fps"))
+		max_fps = vm["max-fps"].as<int>();
 	if (vm.count("mp-test"))
 		mptest = true;
 	if (vm.count("multiplayer"))

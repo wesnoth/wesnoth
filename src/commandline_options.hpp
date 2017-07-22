@@ -125,6 +125,8 @@ public:
 	boost::optional<std::vector<std::pair<unsigned int, std::string> > > multiplayer_side;
 	/// Non-empty if --turns was given on the command line. Dependent on --multiplayer.
 	boost::optional<std::string> multiplayer_turns;
+	/// Max FPS specified by --max-fps option.
+	boost::optional<int> max_fps;
 	/// True if --noaddons was given on the command line. Disables the loading of all add-ons.
 	bool noaddons;
 	/// True if --nocache was given on the command line. Disables cache usage.

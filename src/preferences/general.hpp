@@ -236,6 +236,9 @@ namespace preferences {
 	 */
 	int mouse_scroll_threshold();
 
+	int draw_delay();
+	void set_draw_delay(int value);
+
 	bool animate_map();
 	void set_animate_map(bool value);
 

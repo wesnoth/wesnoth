@@ -1673,7 +1673,10 @@ void display::draw_init()
 
 void display::draw_wrap(bool update, bool force)
 {
-	static const int time_between_draws = 1000 / screen_.current_refresh_rate();
+	static int time_between_draws = preferences::draw_delay();
+	if(time_between_draws == 0) {
+		time_between_draws = 1000 / screen_.current_refresh_rate();
+	}
 
 	if(redrawMinimap_) {
 		redrawMinimap_ = false;

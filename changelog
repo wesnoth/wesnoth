@@ -55,8 +55,6 @@ Version 1.13.8+dev:
  * Miscellaneous and Bug Fixes:
    * Add --report/-R command line switch for printing the same report from the
      Game Version dialog's clipboard function to stdout.
-   * Removed the --max-fps command line switch. The new FPS cap implementation
-     queries the screen refresh rate instead.
  * WFL Engine
    * Add owner key to terrain space callable, for villages
    * Location formulas in [tunnel] now have a teleport_unit variable

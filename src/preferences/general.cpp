@@ -49,6 +49,8 @@ bool no_preferences_save = false;
 
 bool fps = false;
 
+int draw_delay_ = 0;
+
 config prefs;
 }
 
@@ -975,6 +977,16 @@ bool show_fps()
 void set_show_fps(bool value)
 {
 	fps = value;
+}
+
+int draw_delay()
+{
+	return draw_delay_;
+}
+
+void set_draw_delay(int value)
+{
+	draw_delay_ = value;
 }
 
 bool use_color_cursors()
