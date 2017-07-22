@@ -973,8 +973,8 @@ protected:
 	 */
 	virtual const SDL_Rect& get_clip_rect();
 
-	/** Gets the appropriate fog or shroud images for a specific hex. */
-	std::vector<texture> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);
+	/** Draw the appropriate fog or shroud transition images for a specific hex. */
+	void draw_fog_shroud_transition_images(const map_location& loc, image::TYPE image_type);
 
 	void draw_image_for_report(surface& img, SDL_Rect& rect);
 
