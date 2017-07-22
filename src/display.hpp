@@ -899,6 +899,10 @@ public:
 	template<typename... T>
 	void render_scaled_to_zoom(const texture& tex, const int x_pos, const int y_pos, T&&... extra_args) const
 	{
+		if(tex.null()) {
+			return;
+		}
+
 		texture::info info = tex.get_info();
 
 		// Scale the coordinates to the appropriate zoom factor.
@@ -926,6 +930,10 @@ public:
 	template<typename... T>
 	void render_scaled_to_zoom(const texture& tex, const map_location& loc, T&&... extra_args) const
 	{
+		if(tex.null()) {
+			return;
+		}
+
 		SDL_Point origin = get_loc_drawing_origin(loc);
 
 		render_scaled_to_zoom(tex, origin.x, origin.y, std::forward<T>(extra_args)...);
