@@ -187,8 +187,10 @@ bool halo_impl::effect::render()
 
 	texture::info t_info = texture_.get_info();
 
-	const int xpos = x_ + screenx - t_info.w / 2;
-	const int ypos = y_ + screeny - t_info.h / 2;
+	const double zoom_factor = disp->get_zoom_factor();
+
+	const int xpos = x_ + screenx - (t_info.w / 2) * zoom_factor;
+	const int ypos = y_ + screeny - (t_info.h / 2) * zoom_factor;
 
 	// TODO: decide if I need this
 	// SDL_Rect clip_rect = disp->map_outside_area();
