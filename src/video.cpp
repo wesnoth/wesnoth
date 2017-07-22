@@ -235,6 +235,10 @@ void CVideo::init_window()
 		preferences::min_window_height
 	);
 
+	SDL_DisplayMode currentDisplayMode;
+	SDL_GetCurrentDisplayMode(window->get_display_index(), &currentDisplayMode);
+	refresh_rate_ = currentDisplayMode.refresh_rate != 0 ? currentDisplayMode.refresh_rate : 60;
+
 	event_handler_.join_global();
 
 	update_framebuffer();

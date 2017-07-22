@@ -63,7 +63,10 @@ namespace wb {
 
 #include "overlay.hpp"
 
+#include <boost/circular_buffer.hpp>
+
 #include "utils/functional.hpp"
+#include <cstdint>
 #include <deque>
 #include <list>
 #include <map>
@@ -738,11 +741,8 @@ protected:
 	 */
 	events::generic_event complete_redraw_event_;
 
-	/**
-	 * Holds the tick count for when the next drawing event is scheduled.
-	 * Drawing shouldn't occur before this time.
-	 */
-	int nextDraw_;
+	boost::circular_buffer<unsigned> frametimes_; // in milliseconds
+	uint32_t last_frame_finished_ = 0u;
 
 	// Not set by the initializer:
 	std::map<std::string, SDL_Rect> reportRects_;
@@ -1029,8 +1029,6 @@ private:
 	tod_color color_adjust_;
 
 	bool dirty_;
-
-
 
 public:
 	void replace_overlay_map(overlay_map* overlays) { overlays_ = overlays; }

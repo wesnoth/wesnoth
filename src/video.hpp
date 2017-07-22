@@ -75,6 +75,7 @@ public:
 	void set_resolution(const unsigned width, const unsigned height);
 
 	std::pair<int,int> current_resolution();
+	int current_refresh_rate() { return refresh_rate_; }
 
 	//functions to get the dimensions of the current video-mode
 	int getx() const;
@@ -194,6 +195,7 @@ private:
 
 	int updatesLocked_;
 	int flip_locked_;
+	int refresh_rate_;
 };
 
 //an object which will lock the display for the duration of its lifetime.
