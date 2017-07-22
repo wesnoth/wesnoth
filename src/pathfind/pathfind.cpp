@@ -708,9 +708,9 @@ double shortest_path_calculator::cost(const map_location& loc, const double so_f
 	// Pathfinding heuristic: the cost must be at least 1
 	VALIDATE(terrain_cost >= 1, _("Terrain with a movement cost less than 1 encountered."));
 
-	// total MP is not enough to move on this terrain: impassable
-	if (total_movement_ < terrain_cost)
+	if (total_movement_ < terrain_cost && movement_left_ < terrain_cost) {
 		return getNoPathValue();
+	}
 
 	int other_unit_subcost = 0;
 	if (!ignore_unit_) {
