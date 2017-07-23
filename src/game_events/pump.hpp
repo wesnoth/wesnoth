@@ -84,10 +84,10 @@ public:
 	 * Context: The general environment within which events are processed.
 	 * Returns whether or not we believe WML might have changed something.
 	 */
-	bool context_mutated();
+	bool undo_disabled();
 
 	/** Sets whether or not we believe WML might have changed something. */
-	void context_mutated(bool mutated);
+	void set_undo_disabled(bool mutated);
 
 	/** Returns whether or not we are skipping messages. */
 	bool context_skip_messages();

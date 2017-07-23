@@ -62,11 +62,11 @@ namespace context
 /// State when processing a particular flight of events or commands.
 struct state
 {
-	bool mutated;
+	bool undo_disabled;
 	bool skip_messages;
 
 	explicit state(bool s, bool m = true)
-		: mutated(m)
+		: undo_disabled(m)
 		, skip_messages(s)
 	{
 	}
@@ -314,7 +314,7 @@ bool wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& e
 		resources::screen->maybe_rebuild();
 	}
 
-	return context_mutated();
+	return undo_disabled();
 }
 
 /**
@@ -430,21 +430,21 @@ context::scoped::scoped(std::stack<context::state>& contexts, bool m)
 context::scoped::~scoped()
 {
 	assert(contexts_.size() > 1);
-	bool mutated = contexts_.top().mutated;
+	bool undo_disabled = contexts_.top().undo_disabled;
 	contexts_.pop();
-	contexts_.top().mutated |= mutated;
+	contexts_.top().undo_disabled |= undo_disabled;
 }
 
-bool wml_event_pump::context_mutated()
+bool wml_event_pump::undo_disabled()
 {
 	assert(impl_->contexts_.size() > 0);
-	return impl_->contexts_.top().mutated;
+	return impl_->contexts_.top().undo_disabled;
 }
 
-void wml_event_pump::context_mutated(bool b)
+void wml_event_pump::set_undo_disabled(bool b)
 {
 	assert(impl_->contexts_.size() > 0);
-	impl_->contexts_.top().mutated = b;
+	impl_->contexts_.top().undo_disabled = b;
 }
 
 bool wml_event_pump::context_skip_messages()
@@ -605,7 +605,7 @@ bool wml_event_pump::operator()()
 		resources::whiteboard->on_gamestate_change();
 	}
 
-	return context_mutated();
+	return undo_disabled();
 }
 
 void wml_event_pump::flush_messages()
