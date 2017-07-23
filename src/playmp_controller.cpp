@@ -121,6 +121,11 @@ void playmp_controller::play_human_turn()
 {
 	LOG_NG << "playmp::play_human_turn...\n";
 	assert(!linger_);
+	assert(gamestate_->init_side_done());
+	assert(gamestate().gamedata_.phase() == game_data::PLAY);
+
+	LOG_NG << "events::commands_disabled=" << events::commands_disabled <<"\n";
+
 	remove_blindfold();
 	const std::unique_ptr<countdown_clock> timer(saved_game_.mp_settings().mp_countdown
         ? new countdown_clock(current_team())
