@@ -1927,10 +1927,10 @@ void console_handler::do_whiteboard_options()
 void menu_handler::do_ai_formula(const std::string& str, int side_num, mouse_handler& /*mousehandler*/)
 {
 	try {
-		add_chat_message(time(nullptr), _("wfl"), 0, ai::manager::evaluate_command(side_num, str));
+		add_chat_message(time(nullptr), "wfl", 0, ai::manager::evaluate_command(side_num, str));
 	} catch(wfl::formula_error&) {
 	} catch(...) {
-		add_chat_message(time(nullptr), _("wfl"), 0, "UNKNOWN ERROR IN FORMULA");
+		add_chat_message(time(nullptr), "wfl", 0, "UNKNOWN ERROR IN FORMULA");
 	}
 }
 
