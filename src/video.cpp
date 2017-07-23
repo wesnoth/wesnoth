@@ -131,7 +131,13 @@ bool CVideo::non_interactive() const
 
 SDL_Rect screen_area()
 {
-	return {0, 0, frameBuffer->w, frameBuffer->h};
+	sdl::window* w = CVideo::get_singleton().get_window();
+	if(!w) {
+		return sdl::empty_rect;
+	}
+
+	SDL_Point size = w->get_size();
+	return {0, 0, size.x, size.y};
 }
 
 void CVideo::video_event_handler::handle_window_event(const SDL_Event &event)
@@ -282,7 +288,11 @@ void CVideo::setMode(int x, int y, const MODE_EVENT mode)
 
 int CVideo::getx() const
 {
-	return frameBuffer->w;
+	if(!window) {
+		return 0;
+	}
+
+	return window->get_size().y;
 }
 
 int CVideo::gety() const
@@ -390,14 +400,23 @@ std::vector<std::pair<int, int>> CVideo::get_available_resolutions(const bool in
 	const std::pair<int,int> min_res = std::make_pair(preferences::min_window_width, preferences::min_window_height);
 	const std::pair<int,int> current_res = current_resolution();
 
+#if 0
+	// DPI scale factor.
 	float scale_h, scale_v;
 	std::tie(scale_h, scale_v) = get_dpi_scale_factor();
+#endif
+
+	// The maximum size to which this window can be set. For some reason this won't
+	// pop up as a display mode of its own.
+	SDL_Rect bounds;
+	SDL_GetDisplayBounds(display_index, &bounds);
 
 	SDL_DisplayMode mode;
+
 	for(int i = 0; i < modes; ++i) {
 		if(SDL_GetDisplayMode(display_index, i, &mode) == 0) {
 			// Exclude any results outside the range of the current DPI.
-			if(mode.w > current_res.first * scale_h && mode.h > current_res.second * scale_v) {
+			if(mode.w > bounds.w && mode.h > bounds.h) {
 				continue;
 			}
 
@@ -428,10 +447,9 @@ surface& CVideo::getSurface()
 
 std::pair<int,int> CVideo::current_resolution()
 {
-	SDL_DisplayMode mode;
-	SDL_GetCurrentDisplayMode(window->get_display_index(), &mode);
+	SDL_Point size = window->get_size();
 
-	return std::make_pair(mode.w, mode.h);
+	return std::make_pair(size.x, size.y);
 }
 
 bool CVideo::isFullScreen() const {
