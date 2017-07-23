@@ -24,6 +24,7 @@ class  replay;
 class  unit;
 
 #include "units/map.hpp"
+#include "game_events/fwd.hpp"
 
 #include <vector>
 
@@ -96,7 +97,7 @@ private:
  * Returns true if getting the village triggered a mutating event.
  * side can be 0 to make teh village uncaptured.
  */
-bool get_village(const map_location& loc, int side, bool *time_bonus = nullptr, bool fire_event = true);
+game_events::pump_result_t get_village(const map_location& loc, int side, bool *time_bonus = nullptr, bool fire_event = true);
 
 /// Moves a unit across the board.
 /// And enters the synced context.

@@ -940,3 +940,7 @@ function wesnoth.wml_conditionals.proceed_to_next_scenario(cfg)
 		return endlevel_data.proceed_to_next_level
 	end
 end
+
+function wesnoth.wml_actions.cancel_action(cfg)
+	wesnoth.cancel_action()
+end

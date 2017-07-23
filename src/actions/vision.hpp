@@ -20,6 +20,7 @@
 #pragma once
 
 #include "movetype.hpp"
+#include "game_events/fwd.hpp"
 
 struct map_location;
 class  team;
@@ -111,7 +112,7 @@ public:
 	void drop_events();
 
 	/// Fires the sighted events that were earlier recorded by fog/shroud clearing.
-	bool fire_events();
+	game_events::pump_result_t fire_events();
 
 	/// The invalidations that should occur after invoking clear_unit().
 	void invalidate_after_clear();
@@ -144,7 +145,7 @@ private: // data
 /// Returns the sides that cannot currently see @a target.
 std::vector<int> get_sides_not_seeing(const unit & target);
 /// Fires sighted events for the sides that can see @a target.
-bool actor_sighted(const unit & target, const std::vector<int> * cache =  nullptr);
+game_events::pump_result_t actor_sighted(const unit & target, const std::vector<int> * cache =  nullptr);
 
 
 /// Function that recalculates the fog of war.

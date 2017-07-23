@@ -712,10 +712,10 @@ int game_lua_kernel::intf_fire_event(lua_State *L, const bool by_id)
 	bool b = false;
 
 	if (by_id) {
-	  b = play_controller_.pump().fire("", m, l1, l2, data);
+	  b = std::get<0>(play_controller_.pump().fire("", m, l1, l2, data));
 	}
 	else {
-	  b = play_controller_.pump().fire(m, l1, l2, data);
+	  b = std::get<0>(play_controller_.pump().fire(m, l1, l2, data));
 	}
 	lua_pushboolean(L, b);
 	return 1;
@@ -3536,6 +3536,12 @@ int game_lua_kernel::intf_allow_undo(lua_State * L)
 	return 0;
 }
 
+int game_lua_kernel::intf_cancel_action(lua_State*)
+{
+	play_controller_.pump().action_canceled();
+	return 0;
+}
+
 /// Adding new time_areas dynamically with Standard Location Filters.
 int game_lua_kernel::intf_add_time_area(lua_State * L)
 {
@@ -3997,6 +4003,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "allow_end_turn",            &dispatch<&game_lua_kernel::intf_allow_end_turn             >        },
 		{ "allow_undo",                &dispatch<&game_lua_kernel::intf_allow_undo                 >        },
 		{ "append_ai",                 &intf_append_ai                                                      },
+		{ "cancel_action",             &dispatch<&game_lua_kernel::intf_cancel_action              >        },
 		{ "clear_menu_item",           &dispatch<&game_lua_kernel::intf_clear_menu_item            >        },
 		{ "clear_messages",            &dispatch<&game_lua_kernel::intf_clear_messages             >        },
 		{ "color_adjust",              &dispatch<&game_lua_kernel::intf_color_adjust               >        },
