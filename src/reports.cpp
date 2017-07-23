@@ -1164,8 +1164,12 @@ static config unit_box_at(reports::context & rc, const map_location& mouseover_h
 
 	std::string local_tod_image  = "themes/classic/" + local_tod.image;
 	std::string global_tod_image = "themes/classic/" + global_tod.image;
-	if (local_tod.bonus_modified > 0) local_tod_image += "~BRIGHTEN()";
-	else if (local_tod.bonus_modified < 0) local_tod_image += "~DARKEN()";
+	if(local_tod.bonus_modified != 0) {
+		local_tod_image += "~BLIT(";
+		if (local_tod.bonus_modified > 0) local_tod_image += game_config::images::tod_bright;
+		else if (local_tod.bonus_modified < 0) local_tod_image += game_config::images::tod_dark;
+		local_tod_image += ")";
+	}
 
 	const gamemap &map = rc.map();
 	t_translation::terrain_code terrain = map.get_terrain(mouseover_hex);
