@@ -1,59 +1,103 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
 
+<html class="no-js wmlmacroref" lang="en">
 <head>
-<title>Utility macro reference</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="shortcut icon" type="image/png" href="/mw/skins/glamdrol/ico.png" />
-<style type="text/css">
-/*<![CDATA[*/
-@import url('/mw/skins/glamdrol/main.css');
-@import url('/mw/skins/glamdrol/home.css');
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
 
-.toplink           {float:right; font-size: small;}
-.file_header       {font-style:normal; font-weight:bold;}
-.file_explanation  {font-style:normal; font-weight:bold;}
-.macro_name        {font-style:normal; font-weight:bold;}
-.macro_formals     {font-style:italic; font-weight:normal;}
-.macro_explanation {font-style:normal; font-weight:normal;}
-.listing           {font-style:normal; font-family:monospace;}
-/*]]>*/
-</style>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montaga%7COpen+Sans:400,400i,700,700i" type="text/css" />
+	<link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-16.png" sizes="16x16" />
+	<link rel="stylesheet" type="text/css" href="https://www.wesnoth.org/wesmere/css/wesmere-1.0.0.css" />
+	<style>
+		.filelist {
+			-webkit-columns: auto 3;
+			-moz-columns:    auto 3;
+			columns:         auto 3;
+		}
+
+		@media screen and (max-width: 699px) {
+			.filelist {
+				-webkit-columns: auto 2;
+				-moz-columns:    auto 2;
+				columns:         auto 2;
+			}
+		}
+
+		@media screen and (max-width: 499px) {
+			.filelist {
+				-webkit-columns: auto 1;
+				-moz-columns:    auto 1;
+				columns:         auto 1;
+			}
+		}
+
+		.toplink {
+			float: right;
+			font-size: 0.9em;
+		}
+
+		.file-explanation,
+		.macro-name,
+		.macro-ref-toc {
+			font-weight: bold;
+		}
+
+		.macro-formals {
+			font-style: italic;
+			font-weight: normal;
+		}
+
+		dt {
+			font-size: 1.1em;
+		}
+
+	</style>
+
+	<title>WML Macros Reference - The Battle for Wesnoth</title>
+
+	<script src="https://www.wesnoth.org/wesmere/js/jquery-3.2.1.min.js"></script>
+
+	<script src="https://www.wesnoth.org/wesmere/js/modernizr.js"></script>
+
+	<script src="https://www.wesnoth.org/wesmere/js/wiki.js"></script>
 </head>
+
 <body>
-
-<div id="global">
-
-<div id="header">
-  <div id="logo">
-    <a href="home"><img alt="Wesnoth logo" src="/mw/skins/glamdrol/wesnoth-logo.jpg" /></a>
-  </div>
-</div>
-
-<div id="nav">
-  <ul>
-    <li><a href="http://www.wesnoth.org/">Home</a></li>
-    <li><a href="http://wiki.wesnoth.org/Play">Play</a></li>
-    <li><a href="http://wiki.wesnoth.org/Create">Create</a></li>
-    <li><a href="http://forums.wesnoth.org/">Forums</a></li>
-    <li><a href="http://wiki.wesnoth.org/Support">Support</a></li>
-    <li><a href="http://wiki.wesnoth.org/Project">Project</a></li>
-    <li><a href="http://wiki.wesnoth.org/Credits">Credits</a></li>
-    <li><a href="http://wiki.wesnoth.org/UsefulLinks">Links</a></li>
-  </ul>
-</div>
 
 <div id="main">
 
-<p>This page is an automatically-generated reference for all the
-utility macros with documentation strings in the Wesnoth source
-distribution. It will reflect the state of the latest development
-release. It can be generated with <code>make
-macro-reference.html</code> in the data/tools-directory.</p>
+<div id="nav" role="banner">
+<div class="centerbox">
 
-<p>The organization of these macros may change in future releases,
-and some may be moved out of the default load path.  If in doubt,
-use <tt>wmlscope</tt> to check your campaign against the 
-macros in the Wesnoth distribution.</p>
+	<div id="logo">
+		<a href="https://www.wesnoth.org/"><img alt="Wesnoth logo" src="https://www.wesnoth.org/wesmere/img/logo-minimal-64.png" width="64" height="64" data-retina /></a>
+	</div>
+
+	<ul id="navlinks">
+		<li><a href="https://www.wesnoth.org/">Home</a></li>
+		<li><a href="https://forums.wesnoth.org/viewforum.php?f=62">News</a></li>
+		<li><a href="https://wiki.wesnoth.org/Play">Play</a></li>
+		<li><a href="https://wiki.wesnoth.org/Create">Create</a></li>
+		<li><a href="https://forums.wesnoth.org/">Forums</a></li>
+		<li><a href="https://wiki.wesnoth.org/Project">About</a></li>
+	</ul>
+
+	<div id="sitesearch" role="search">
+		<form method="get" action="https://wiki.wesnoth.org/">
+			<i class="search-icon" aria-hidden="true"></i>
+			<input id="searchbox" type="search" name="search" placeholder="Search" value="" title="Search this site [Alt+Shift+f]" accesskey="f" tabindex="1" />
+		</form>
+	</div>
+
+	<div class="reset"></div>
+</div>
+</div>
+
+<div id="content">
+
+<h1>WML Macros Reference</h1>
+
+<p>This page is an automatically-generated reference for all the utility macros with documentation strings in the Wesnoth source distribution. It will reflect the state of the latest development release. It can be generated with <code>make&nbsp;macro-reference.html</code> in the data/tools-directory.</p>
+
+<p>The organization of these macros may change in future releases, and some may be moved out of the default load path.  If in doubt, use <code class="noframe">wmlscope</code> to check your campaign against the macros in the Wesnoth distribution.</p>

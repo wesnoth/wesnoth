@@ -323,8 +323,9 @@ class CrossRefLister(CrossRef):
                     displayname = filename[len(pref):]
                 else:
                     displayname = filename
-                outstr += "<p class='toplink'>(<a href='#global'>top</a>)</p>\n"
-                outstr += "<h1 id='file:" + displayname + "' class='file_header'>From file: " + displayname + "</h1>\n"
+                outstr += "<p class='toplink'>[ <a href='#content'>top</a> ]</p>\n"
+                outstr += "<h2 id='file:" + displayname + "' class='file_header'>From file: "
+                outstr += "<code class='noframe'>" + displayname + "</code></h2>\n"
                 filenamelist.append(displayname)
                 hdr = []
                 with codecs.open(filename, "r", "utf8") as dfp:
@@ -346,21 +347,21 @@ class CrossRefLister(CrossRef):
                     lines.pop()
                 if not lines: # Ignore definitions without a docstring
                     continue
-                outstr += "\n<dt id='" + header[0] + "'>\n"
-                outstr += "<em class='macro_name'>" + header[0] + "</em>"
+                outstr += "\n<dt id='" + header[0] + "'>\n<code class='noframe'>"
+                outstr += "<span class='macro-name'>" + header[0] + "</span>"
                 if header[1:]:
-                    outstr += " <em class='macro_formals'>"+" ".join(header[1:])+"</em>"
-                outstr += "\n</dt>\n"
+                    outstr += " <var class='macro-formals'>"+" ".join(header[1:])+"</var>"
+                outstr += "\n</code></dt>\n"
                 outstr += "<dd>\n"
-                outstr += interpret(lines, "macro_explanation")
+                outstr += interpret(lines, "macro-explanation")
                 outstr += "</dd>\n"
         outstr += "</dl>\n"
-        outstr += "<p class='toplink'>(<a href='#global'>top</a>)</p>\n"
-        linkheaderstr = "<p class='filelist'>Covered macro files:"
+        outstr += "<p class='toplink'>[ <a href='#content'>top</a> ]</p>\n"
+        linkheaderstr = "<p class='macro-ref-toc'>Documented files:</p><ul class='filelist'>"
         for filename in filenamelist:
-            linkheaderstr += " <a href='#file:" + filename + "'>"
-            linkheaderstr += filename + "</a>"
-        linkheaderstr += "</p>\n"
+            linkheaderstr += "<li><a href='#file:" + filename + "'>"
+            linkheaderstr += "<code class='noframe'>" + filename + "</code></a></li>"
+        linkheaderstr += "</ul>\n"
         fp.write(linkheaderstr)
         fp.write(outstr)
 
