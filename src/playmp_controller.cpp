@@ -56,6 +56,10 @@ playmp_controller::playmp_controller(const config& level,
 	if (!mp_info || mp_info->current_turn == turn()) {
 		skip_replay_ = false;
 	}
+
+	if (gui_->is_blindfolded() && gamestate().first_human_team_ != -1) {
+		blindfold_.unblind();
+	}
 }
 
 playmp_controller::~playmp_controller() {
