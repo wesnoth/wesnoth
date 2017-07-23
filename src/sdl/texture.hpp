@@ -69,7 +69,7 @@ public:
 	texture& operator=(const texture& t) = default;
 
 	/** Move assignment. Releases ownership of the managed texture from the passed object. */
-	texture& operator=(texture&& t) = default;
+	texture& operator=(texture&& t);
 
 	operator SDL_Texture*() const
 	{

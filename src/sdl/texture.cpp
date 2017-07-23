@@ -101,6 +101,12 @@ void texture::assign(SDL_Texture* t)
 	texture_.reset(t, &cleanup_texture);
 }
 
+texture& texture::operator=(texture&& t)
+{
+	texture_ = std::move(t.texture_);
+	return *this;
+}
+
 texture::info::info(SDL_Texture* t)
 	: format(0)
 	, access(0)
