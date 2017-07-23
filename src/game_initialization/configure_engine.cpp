@@ -107,13 +107,13 @@ int configure_engine::num_turns_default() const {
 		preferences::turns();
 }
 int configure_engine::village_gold_default() const {
-	return use_map_settings() && !side_cfg().empty() ?
-		settings::get_village_gold(side_cfg()["village_gold"], &state_.classification()) :
+	return use_map_settings() ?
+		settings::get_village_gold(initial_cfg()["mp_village_gold"], &state_.classification()) :
 		preferences::village_gold();
 }
 int configure_engine::village_support_default() const {
-	return use_map_settings() && !side_cfg().empty() ?
-		settings::get_village_support(side_cfg()["village_support"]) :
+	return use_map_settings() ?
+		settings::get_village_support(initial_cfg()["mp_village_support"]) :
 		preferences::village_support();
 }
 int configure_engine::xp_modifier_default() const {
@@ -145,13 +145,13 @@ bool configure_engine::random_start_time_default() const {
 		preferences::random_start_time();
 }
 bool configure_engine::fog_game_default() const {
-	return use_map_settings() && !side_cfg().empty() ?
-		side_cfg()["fog"].to_bool(state_.classification().is_normal_mp_game()) :
+	return use_map_settings() ?
+		initial_cfg()["mp_fog"].to_bool(state_.classification().is_normal_mp_game()) :
 		preferences::fog();
 }
 bool configure_engine::shroud_game_default() const {
-	return use_map_settings() && !side_cfg().empty() ?
-		side_cfg()["shroud"].to_bool(false) :
+	return use_map_settings() ?
+		initial_cfg()["mp_shroud"].to_bool(false) :
 		preferences::shroud();
 }
 bool configure_engine::allow_observers_default() const {
@@ -194,11 +194,25 @@ void configure_engine::write_parameters()
 
 	for (config& side : scenario.child_range("side"))
 	{
-		side["fog"] = params.fog_game;
-		side["shroud"] = params.shroud_game;
 		if (!params.use_map_settings) {
+			side["fog"] = params.fog_game;
+			side["shroud"] = params.shroud_game;
 			side["village_gold"] = params.village_gold;
 			side["village_support"] = params.village_support;
+		} 
+		else {
+			if (side["fog"].empty()) {
+				side["fog"] = params.fog_game;
+			}
+			if (side["shroud"].empty()) {
+				side["shroud"] = params.shroud_game;
+			}
+			if (side["village_gold"].empty()) {
+				side["village_gold"] = params.village_gold;
+			}
+			if (side["village_support"].empty()) {
+				side["village_support"] = params.village_support;
+			}
 		}
 	}
 }
