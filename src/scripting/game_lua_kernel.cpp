@@ -3528,10 +3528,10 @@ int game_lua_kernel::intf_allow_end_turn(lua_State * L)
 int game_lua_kernel::intf_allow_undo(lua_State * L)
 {
 	if(lua_isboolean(L, 1)) {
-		play_controller_.pump().context_mutated(!luaW_toboolean(L, 1));
+		play_controller_.pump().set_undo_disabled(!luaW_toboolean(L, 1));
 	}
 	else {
-		play_controller_.pump().context_mutated(false);
+		play_controller_.pump().set_undo_disabled(false);
 	}
 	return 0;
 }
