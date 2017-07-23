@@ -121,12 +121,12 @@ static const unit *get_selected_unit(reports::context & rc)
 		rc.screen().show_everything());
 }
 
-static config gray_inactive(reports::context & rc, const std::string &str)
+static config gray_inactive(reports::context & rc, const std::string &str, const std::string& tooltip = "")
 {
 	if ( rc.screen().viewing_side() == rc.screen().playing_side() )
-			return text_report(str);
+			return text_report(str, tooltip);
 
-	return text_report(span_color(font::GRAY_COLOR) + str + naps);
+	return text_report(span_color(font::GRAY_COLOR) + str + naps, tooltip);
 }
 
 static config unit_name(const unit *u)
@@ -1213,11 +1213,16 @@ REPORT_GENERATOR(unit_box, rc)
 
 REPORT_GENERATOR(turn, rc)
 {
-	std::ostringstream str;
+	std::ostringstream str, tooltip;
 	str << rc.tod().turn();
 	int nb = rc.tod().number_of_turns();
 	if (nb != -1) str << '/' << nb;
-	return text_report(str.str());
+
+	tooltip << _("Turn Number");
+	if(nb != -1) {
+		tooltip << "\n\n" << _("When the game reaches the number of turns indicated by the second number, it will end.");
+	}
+	return text_report(str.str(), tooltip.str());
 }
 
 REPORT_GENERATOR(gold, rc)
@@ -1240,7 +1245,7 @@ REPORT_GENERATOR(gold, rc)
 		end = "";
 	}
 	str << utils::half_signed_value(fake_gold) << end;
-	return text_report(str.str());
+	return text_report(str.str(), _("Gold") + "\n\n" + _("The amount of gold currently available to recruit and maintain your army."));
 }
 
 REPORT_GENERATOR(villages, rc)
@@ -1260,12 +1265,12 @@ REPORT_GENERATOR(villages, rc)
 	} else {
 		str << rc.map().villages().size();
 	}
-	return gray_inactive(rc,str.str());
+	return gray_inactive(rc,str.str(), _("Villages") + "\n\n" + _("The fraction of known villages that your side has captured."));
 }
 
 REPORT_GENERATOR(num_units, rc)
 {
-	return gray_inactive(rc, std::to_string(rc.dc().side_units(rc.screen().viewing_side())));
+	return gray_inactive(rc, std::to_string(rc.dc().side_units(rc.screen().viewing_side())), _("Units") + "\n\n" + _("The total number of units on your side."));
 }
 
 REPORT_GENERATOR(upkeep, rc)
@@ -1275,7 +1280,7 @@ REPORT_GENERATOR(upkeep, rc)
 	const team &viewing_team = rc.dc().get_team(viewing_side);
 	team_data td = rc.dc().calculate_team_data(viewing_team);
 	str << td.expenses << " (" << td.upkeep << ")";
-	return gray_inactive(rc,str.str());
+	return gray_inactive(rc,str.str(), _("Upkeep") + "\n\n" + _("The expenses incurred at the end of every turn to maintain your army. The first number is the amount of gold that will be deducted. The second is the total cost of upkeep, including that covered by villages — in other words, the amount of gold that would be deducted if you lost all villages."));
 }
 
 REPORT_GENERATOR(expenses, rc)
@@ -1312,7 +1317,7 @@ REPORT_GENERATOR(income, rc)
 		end = "";
 	}
 	str << td.net_income << end;
-	return text_report(str.str());
+	return text_report(str.str(), _("Income") + "\n\n" + _("The amount of gold you gain each turn from your controlled villages, or the amount of gold you will lose each turn for unit upkeep."));
 }
 
 namespace {
@@ -1520,7 +1525,7 @@ REPORT_GENERATOR(report_clock, /*rc*/)
 	time_t t = std::time(nullptr);
 	ss << utils::put_time(std::localtime(&t), format);
 
-	return text_report(ss.str());
+	return text_report(ss.str(), _("Clock"));
 }
 
 REPORT_GENERATOR(report_countdown, rc)
@@ -1546,7 +1551,7 @@ REPORT_GENERATOR(report_countdown, rc)
 	sec = sec % 60;
 	if (sec < 10) str << '0';
 	str << sec << end;
-	return text_report(str.str());
+	return text_report(str.str(), _("Turn Countdown") + "\n\n" + _("Countdown until your turn automatically ends."));
 }
 
 void reports::register_generator(const std::string &name, reports::generator *g)
