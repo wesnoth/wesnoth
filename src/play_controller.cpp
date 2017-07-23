@@ -409,7 +409,20 @@ void play_controller::maybe_do_init_side()
 	// For all other sides it is recorded in replay and replay handler has to handle
 	// calling do_init_side() functions.
 	//
-	if (gamestate_->init_side_done() || !current_team().is_local() || gamestate().gamedata_.phase() != game_data::PLAY || is_replay() || !replay_->at_end()) {
+	if (gamestate_->init_side_done()) {
+		// We already executed do_init_side this can for example happe if we reload a game,
+		// but also if we changed control of a side during it's turn
+		return;
+	}
+	if (!current_team().is_local()) {
+		// We are in a mp game and execute do_init_side as soon as we receive [init_side] from the current player
+		// (see replay.cpp)
+		return;
+	}
+
+	if (is_replay()) {
+		// We are in a replay and execute do_init_side as soon as we reach the next [init_side] in the replay data
+		// (see replay.cpp) 
 		return;
 	}
 
