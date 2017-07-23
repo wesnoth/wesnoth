@@ -1023,6 +1023,10 @@ std::string unit::small_profile() const
 		return small_profile_;
 	}
 
+	if(!profile_.empty() && small_profile_ != "unit_image" && profile_ != "unit_image") {
+		return profile_;
+	}
+
 	return absolute_image();
 }
 
