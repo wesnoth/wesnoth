@@ -63,10 +63,12 @@ namespace context
 struct state
 {
 	bool undo_disabled;
+	bool action_canceled;
 	bool skip_messages;
 
 	explicit state(bool s, bool m = true)
 		: undo_disabled(m)
+		, action_canceled(false)
 		, skip_messages(s)
 	{
 	}
@@ -279,14 +281,14 @@ bool wml_event_pump::filter_event(const event_handler& handler, const queued_eve
  *
  * @returns true if the game state changed.
  */
-bool wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& ev)
+void wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& ev)
 {
 	DBG_EH << "processing event " << ev.name << " with id=" << ev.id << "\n";
 
 	// We currently never pass a null pointer to this function, but to
 	// guard against future modifications:
 	if(!handler_p) {
-		return false;
+		return;
 	}
 
 	unit_map& units = resources::gameboard->units();
@@ -296,7 +298,7 @@ bool wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& e
 	scoped_weapon_info second_weapon("second_weapon", ev.data.child("second"));
 
 	if(!filter_event(*handler_p, ev)) {
-		return false;
+		return;
 	}
 
 	// The event hasn't been filtered out, so execute the handler.
@@ -313,8 +315,6 @@ bool wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& e
 	if(resources::screen != nullptr) {
 		resources::screen->maybe_rebuild();
 	}
-
-	return undo_disabled();
 }
 
 /**
@@ -431,8 +431,11 @@ context::scoped::~scoped()
 {
 	assert(contexts_.size() > 1);
 	bool undo_disabled = contexts_.top().undo_disabled;
+	bool action_canceled = contexts_.top().action_canceled;
+	
 	contexts_.pop();
 	contexts_.top().undo_disabled |= undo_disabled;
+	contexts_.top().action_canceled |= action_canceled;
 }
 
 bool wml_event_pump::undo_disabled()
@@ -446,6 +449,19 @@ void wml_event_pump::set_undo_disabled(bool b)
 	assert(impl_->contexts_.size() > 0);
 	impl_->contexts_.top().undo_disabled = b;
 }
+
+bool wml_event_pump::action_canceled()
+{
+	assert(impl_->contexts_.size() > 0);
+	return impl_->contexts_.top().action_canceled;
+}
+
+void wml_event_pump::set_action_canceled()
+{
+	assert(impl_->contexts_.size() > 0);
+	impl_->contexts_.top().action_canceled = true;
+}
+
 
 bool wml_event_pump::context_skip_messages()
 {
@@ -476,14 +492,14 @@ void wml_event_pump::put_wml_message(const std::string& logger, const std::strin
 	}
 }
 
-bool wml_event_pump::fire(
+pump_result_t wml_event_pump::fire(
 		const std::string& event, const entity_location& loc1, const entity_location& loc2, const config& data)
 {
 	raise(event, loc1, loc2, data);
 	return (*this)();
 }
 
-bool wml_event_pump::fire(const std::string& event,
+pump_result_t wml_event_pump::fire(const std::string& event,
 		const std::string& id,
 		const entity_location& loc1,
 		const entity_location& loc2,
@@ -507,23 +523,23 @@ void wml_event_pump::raise(const std::string& event,
 	impl_->events_queue.emplace_back(event, id, loc1, loc2, data);
 }
 
-bool wml_event_pump::operator()()
+pump_result_t wml_event_pump::operator()()
 {
 	// Quick aborts:
 	if(resources::screen == nullptr) {
-		return false;
+		return pump_result_t();
 	}
 
 	assert(resources::lua_kernel != nullptr);
 	if(impl_->events_queue.empty()) {
 		DBG_EH << "Processing queued events, but none found.\n";
-		return false;
+		return pump_result_t();
 	}
 
 	if(impl_->instance_count >= game_config::max_loop) {
 		ERR_NG << "game_events pump waiting to process new events because "
 			   << "recursion level would exceed maximum: " << game_config::max_loop << '\n';
-		return false;
+		return pump_result_t();
 	}
 
 	if(!lg::debug().dont_log("event_handler")) {
@@ -605,7 +621,7 @@ bool wml_event_pump::operator()()
 		resources::whiteboard->on_gamestate_change();
 	}
 
-	return undo_disabled();
+	return std::make_tuple(undo_disabled(), action_canceled());
 }
 
 void wml_event_pump::flush_messages()

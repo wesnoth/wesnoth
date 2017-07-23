@@ -374,10 +374,10 @@ void team::write(config& cfg) const
 	cfg["action_bonus_count"] = action_bonus_count_;
 }
 
-bool team::get_village(const map_location& loc, const int owner_side, game_data * gamedata)
+game_events::pump_result_t team::get_village(const map_location& loc, const int owner_side, game_data * gamedata)
 {
 	villages_.insert(loc);
-	bool gamestate_changed = false;
+	game_events::pump_result_t res;
 	if(gamedata) {
 		config::attribute_value& var = gamedata->get_variable("owner_side");
 		const config::attribute_value old_value = var;
@@ -385,7 +385,7 @@ bool team::get_village(const map_location& loc, const int owner_side, game_data 
 
 		// During team building, game_events pump is not guaranteed to exist yet. (At current revision.) We skip capture events in this case.
 		if (resources::game_events) {
-			gamestate_changed = resources::game_events->pump().fire("capture",loc);
+			res = resources::game_events->pump().fire("capture", loc);
 		}
 
 		if(old_value.blank())
@@ -393,7 +393,7 @@ bool team::get_village(const map_location& loc, const int owner_side, game_data 
 		else
 			var = old_value;
 	}
-	return gamestate_changed;
+	return res;
 }
 
 void team::lose_village(const map_location& loc)

@@ -648,7 +648,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 		const std::string event_name = is_recall ? "prerecall" : "prerecruit";
 		LOG_NG << "firing " << event_name << " event\n";
 		{
-			std::get<0>(res) |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
+			std::get<0>(res) |= std::get<0>(resources::game_events->pump().fire(event_name, current_loc, recruited_from));
 		}
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
 			return std::make_tuple(true, 0, false);
@@ -670,7 +670,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 	// Village capturing.
 	if ( resources::gameboard->map().is_village(current_loc) ) {
 		std::get<1>(res) = resources::gameboard->village_owner(current_loc) + 1;
-		std::get<0>(res) |= actions::get_village(current_loc, new_unit_itor->side(), &std::get<2>(res));
+		std::get<0>(res) |= std::get<0>(actions::get_village(current_loc, new_unit_itor->side(), &std::get<2>(res)));
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
 			return std::make_tuple(true, 0, false);
 	}
@@ -684,14 +684,14 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 		const std::string event_name = is_recall ? "recall" : "recruit";
 		LOG_NG << "firing " << event_name << " event\n";
 		{
-			std::get<0>(res) |= resources::game_events->pump().fire(event_name, current_loc, recruited_from);
+			std::get<0>(res) |= std::get<0>(resources::game_events->pump().fire(event_name, current_loc, recruited_from));
 		}
 	}
 
 	// "sighted" event(s).
-	std::get<0>(res) |= clearer.fire_events();
+	std::get<0>(res) |= std::get<0>(clearer.fire_events());
 	if ( new_unit_itor.valid() )
-		std::get<0>(res) |= actions::actor_sighted(*new_unit_itor);
+		std::get<0>(res) |= std::get<0>(actions::actor_sighted(*new_unit_itor));
 
 	return res;
 }

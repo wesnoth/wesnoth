@@ -327,9 +327,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  use_undo, /*show*/, /*error_
 	}
 	const std::string &event_name = child["raise"];
 	if (const config &source = child.child("source")) {
-		undoable = undoable & !resources::game_events->pump().fire(event_name, map_location(source, resources::gamedata));
+		undoable = undoable & !std::get<0>(resources::game_events->pump().fire(event_name, map_location(source, resources::gamedata)));
 	} else {
-		undoable = undoable & !resources::game_events->pump().fire(event_name);
+		undoable = undoable & !std::get<0>(resources::game_events->pump().fire(event_name));
 	}
 
 	// Not clearing the undo stack here casues OOS because we added an entry to the replay but no entry to the undo stack.
