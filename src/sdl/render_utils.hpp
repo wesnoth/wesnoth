@@ -24,18 +24,19 @@
 
 /**
  * Sets the renderer output target to the specified texture.
- * @todo: add support for restoring last target.
  */
 class render_target_setter
 {
 public:
 	explicit render_target_setter(texture& t)
 		: renderer_(CVideo::get_singleton().get_renderer())
+		, last_target_(nullptr)
 	{
 		if(renderer_) {
 			// Validate we can render to this texture.
 			assert(t.get_info().access == SDL_TEXTUREACCESS_TARGET);
 
+			last_target_ = SDL_GetRenderTarget(renderer_);
 			SDL_SetRenderTarget(renderer_, t);
 		}
 	}
@@ -43,12 +44,13 @@ public:
 	~render_target_setter()
 	{
 		if(renderer_) {
-			SDL_SetRenderTarget(renderer_, nullptr);
+			SDL_SetRenderTarget(renderer_, last_target_);
 		}
 	}
 
 private:
 	SDL_Renderer* renderer_;
+	SDL_Texture* last_target_; // TODO: use the texture wrapper?
 };
 
 using sdl_rect_getter = void (*)(SDL_Renderer*, SDL_Rect*);
