@@ -461,18 +461,18 @@ protected:
 	std::string get_label_link(const gui2::point & position) const;
 
 private:
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
 	/**
-	 * Initializes the styled_widget.
+	 * Allows derived classes to implement initialization steps after the config and
+	 * canvases have been loaded.
 	 *
-	 * Not everything can be code in the constructor since virtual functions
-	 * can't be used. So after construction this function needs to be called and
-	 * only once, this happens when set_definition is called.
+	 * Another area this is useful is for initialization making use of virtual functions,
+	 * which can't be used in a constructor.
+	 *
+	 * This function should only be called once.
 	 */
 	virtual void init()
 	{
 	}
-#endif
 
 	/**
 	 * Gets the best size for a text.
