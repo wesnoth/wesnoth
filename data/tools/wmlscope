@@ -357,11 +357,11 @@ class CrossRefLister(CrossRef):
                 outstr += "</dd>\n"
         outstr += "</dl>\n"
         outstr += "<p class='toplink'>[ <a href='#content'>top</a> ]</p>\n"
-        linkheaderstr = "<p class='macro-ref-toc'>Documented files:</p><ul class='filelist'>"
+        linkheaderstr = "<p class='macro-ref-toc'>Documented files:</p><div class='filelist'><ul>"
         for filename in filenamelist:
             linkheaderstr += "<li><a href='#file:" + filename + "'>"
             linkheaderstr += "<code class='noframe'>" + filename + "</code></a></li>"
-        linkheaderstr += "</ul>\n"
+        linkheaderstr += "</ul></div>\n"
         fp.write(linkheaderstr)
         fp.write(outstr)
 
