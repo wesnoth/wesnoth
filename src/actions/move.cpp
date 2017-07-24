@@ -347,52 +347,48 @@ namespace { // Private helpers for move_unit()
 	unit_mover::unit_mover(const std::vector<map_location> & route,
 	                       move_unit_spectator *move_spectator,
 	                       bool skip_sightings, bool skip_ally_sightings) :
-		spectator_(move_spectator),
-		skip_sighting_(skip_sightings),
-		skip_ally_sighting_(skip_ally_sightings),
-		playing_team_is_viewing_(resources::screen->playing_team() ==
-		                         resources::screen->viewing_team()
-		                         ||  resources::screen->show_everything()),
-		route_(route),
-		begin_(route.begin()),
-		full_end_(route.end()),
-		expected_end_(begin_),
-		ambush_limit_(begin_),
-		obstructed_(full_end_),
-		real_end_(begin_),
+		: spectator_(move_spectator)
+		, skip_sighting_(skip_sightings)
+		, skip_ally_sighting_(skip_ally_sightings)
+		, playing_team_is_viewing_(resources::screen->playing_team() == resources::screen->viewing_team() ||  resources::screen->show_everything())
+		, route_(route)
+		, begin_(route.begin())
+		, full_end_(route.end())
+		, expected_end_(begin_)
+		, ambush_limit_(begin_)
+		, obstructed_(full_end_)
+		, real_end_(begin_)
 		// Unit information:
-		move_it_(resources::gameboard->units().find(*begin_)),
-		orig_side_(( assert(move_it_ != resources::gameboard->units().end()),
-		             move_it_->side() )),
-		orig_moves_(move_it_->movement_left()),
-		orig_dir_(move_it_->facing()),
-		goto_( is_ai_move() ? move_it_->get_goto() : route.back() ),
-		current_side_(orig_side_),
-		current_team_(&resources::gameboard->get_team(current_side_)),
-		current_uses_fog_(current_team_->fog_or_shroud()  &&
-		                  current_team_->auto_shroud_updates()),
-		move_loc_(begin_),
-		do_move_track_(resources::game_events->pump().wml_tracking()),
+		, move_it_(resources::gameboard->units().find(*begin_))
+		, orig_side_(( assert(move_it_ != resources::gameboard->units().end()), move_it_->side() ))
+		, orig_moves_(move_it_->movement_left())
+		, orig_dir_(move_it_->facing())
+		, goto_( is_ai_move() ? move_it_->get_goto() : route.back() )
+		, current_side_(orig_side_)
+		, current_team_(&resources::gameboard->get_team(current_side_))
+		, current_uses_fog_(current_team_->fog_or_shroud() && current_team_->auto_shroud_updates())
+		, move_loc_(begin_)
+		, do_move_track_(resources::game_events->pump().wml_tracking())
 		// The remaining fields are set to some sort of "zero state".
-		zoc_stop_(map_location::null_location()),
-		ambush_stop_(map_location::null_location()),
-		blocked_loc_(map_location::null_location()),
-		ambushed_(false),
-		show_ambush_alert_(false),
-		wml_removed_unit_(false),
-		wml_undo_disabled_(false),
-		wml_move_aborted_(false),
-		event_mutated_mid_move_(false),
-		fog_changed_(false),
-		sighted_(false),
-		sighted_stop_(false),
-		teleport_failed_(false),
-		enemy_count_(0),
-		friend_count_(0),
-		ambush_string_(),
-		ambushers_(),
-		moves_left_(),
-		clearer_()
+		, zoc_stop_(map_location::null_location())
+		, ambush_stop_(map_location::null_location())
+		, blocked_loc_(map_location::null_location())
+		, ambushed_(false)
+		, show_ambush_alert_(false)
+		, wml_removed_unit_(false)
+		, wml_undo_disabled_(false)
+		, wml_move_aborted_(false)
+		, event_mutated_mid_move_(false)
+		, fog_changed_(false)
+		, sighted_(false)
+		, sighted_stop_(false)
+		, teleport_failed_(false)
+		, enemy_count_(0)
+		, friend_count_(0)
+		, ambush_string_()
+		, ambushers_()
+		, moves_left_()
+		, clearer_()
 	{
 		if ( !is_ai_move() )
 			// Clear the "goto" instruction during movement.
