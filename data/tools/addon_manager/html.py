@@ -176,14 +176,15 @@ Unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) depend
         described = htmlescape(v("description", "(no description)"))
         w('<div class="desc-tooltip"><b>%s</b><pre>%s</pre></div></td>' % (
             name, described))
-        w("<td><b>%s</b>" % name)
+        w("<td>")
         if url:
             link = url.rstrip("/") + "/" + htmlescape(v("name")) + ".tar.bz2"
             w("""\
-            <a class='addon-download' href=\"%s\">
-                <i class='fa fa-fw fa-2x fa-download' aria-hidden='true'></i>
-                <span class='sr-only'>Download</span>
+            <a class="addon-download" href="%s" title="Download">
+                <i class="fa fa-fw fa-2x fa-download" aria-hidden="true"></i>
+                <span class="sr-only">Download</span>
             </a>""" % link)
+        w("<b>%s</b>" % name)
         w("<br /><span class='addon-meta'><span class='addon-meta-label'>Version:</span> %s<br/>" % htmlescape(v("version", "unknown")))
         w("<span class='addon-meta-label'>Author:</span> %s</span></td>" % htmlescape(v("author", "unknown")))
         MiB = 1024 * 1024
