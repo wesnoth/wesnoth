@@ -6,6 +6,8 @@ Version 1.10.7+dev:
  * Add-ons client:
    * Fixed invalid file size data from the server crashing the client on the
      network transfer progress dialog (bug #20893).
+   * Fix HTML injection exploit in the wesnoth_addon_manager web index
+     generation functionality.
  * Add-ons server:
    * Implemented read-only mode option (read_only boolean attribute in
      server config WML, defaults to "no").

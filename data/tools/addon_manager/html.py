@@ -1,6 +1,9 @@
-# encoding: utf8
-import time, os, glob, sys
+# encoding: utf-8
+import cgi, time, os, glob, sys
 from subprocess import Popen
+
+def htmlescape(str):
+    return cgi.escape(str)
 
 def output(path, url, data):
     try: os.mkdir(path)
@@ -70,7 +73,7 @@ Select the add-on you want to install from the list and click "OK". The download
         translations = campaign.get_all("translation")
         languages = [x.get_text_val("language") for x in translations]
         w("<tr>")
-        icon = v("icon", "")
+        icon = htmlescape(v("icon", ""))
         imgurl = ""
         if icon:
             icon = icon.strip()
@@ -94,9 +97,9 @@ Select the add-on you want to install from the list and click "OK". The download
                     imgurl = "icons/missing-image.png"
             images_to_tc.append( (src, path + "/" + imgurl) )
 
-        type = v("type", "none")
+        type = htmlescape(v("type", "none"))
         size = float(v("size", "0"))
-        name = v("title", "unknown")
+        name = htmlescape(v("title", "unknown"))
         if type == "scenario":
             w("""\
 <td>Scenario<div class="type"><b>single player scenario</b><br/>
@@ -133,25 +136,25 @@ unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) depend
         w(('<td><img alt="%s" src="%s" width="72px" height="72px"/>'
             ) % (icon, imgurl))
         w('<div class="desc"><b>%s</b><br/>%s</div></td>' % (
-            name, v("description", "(no description)")))
+            name, htmlescape(v("description", "(no description)"))))
         w("<td><b>%s</b><br/>" % name)
-        w("Version: %s<br/>" % v("version", "unknown"))
-        w("Author: %s</td>" % v("author", "unknown"))
+        w("Version: %s<br/>" % htmlescape(v("version", "unknown")))
+        w("Author: %s</td>" % htmlescape(v("author", "unknown")))
         MiB = 1024 * 1024
         w("<td><span class=\"hidden\">%d</span><b>%.2f</b>MiB" % (size, size / MiB))
         if url:
-            link = url.rstrip("/") + "/" + v("name") + ".tar.bz2"
+            link = url.rstrip("/") + "/" + htmlescape(v("name")) + ".tar.bz2"
             w("<br/><a href=\"%s\">download</a></td>" % link)
         else:
             w("</td>")
         downloads = int(v("downloads", "0"))
         w("<td><b>%d</b> down<br/>" % (downloads))
-        w("%s up</td>" % v("uploads", "unknown"))
+        w("%s up</td>" % htmlescape(v("uploads", "unknown")))
         timestamp = int(v("timestamp", "0"))
         t = time.localtime(timestamp)
         w("<td><span class=\"hidden\">%d</span>%s</td>" % (timestamp,
             time.strftime("%b %d %Y", t)))
-        w("<td>%s</td>" % (", ".join(languages)))
+        w("<td>%s</td>" % (htmlescape(", ".join(languages))))
         w("</tr>")
     w("</tbody>")
     w("</table>")
