@@ -1358,6 +1358,7 @@ void text_shape::draw(
 
 canvas::canvas()
 	: shapes_()
+	, draw_func_(nullptr)
 	, blur_depth_(0)
 	, w_(0)
 	, h_(0)
@@ -1372,6 +1373,7 @@ canvas::canvas()
 
 canvas::canvas(canvas&& c)
 	: shapes_(std::move(c.shapes_))
+	, draw_func_(c.draw_func_)
 	, blur_depth_(c.blur_depth_)
 	, w_(c.w_)
 	, h_(c.h_)
@@ -1440,11 +1442,15 @@ void canvas::draw(const bool force)
 
 	SDL_RenderClear(renderer_); // TODO: move to its own wrapper.
 
-	// Draw items.
-	for(auto& shape : shapes_) {
-		lg::scope_logger inner_scope_logging_object__(log_gui_draw, "Canvas: draw shape.");
+	// Draw items. TODO: make this cleaner
+	if(draw_func_ != nullptr) {
+		draw_func_(texture_);
+	} else {
+		for(auto& shape : shapes_) {
+			lg::scope_logger inner_scope_logging_object__(log_gui_draw, "Canvas: draw shape.");
 
-		shape->draw(w_, h_, renderer_, variables_);
+			shape->draw(w_, h_, renderer_, variables_);
+		}
 	}
 
 	// TODO: re-enable
