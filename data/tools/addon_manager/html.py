@@ -87,7 +87,7 @@ def output(path, url, data):
     w("<table class=\"tablesorter\" id=\"campaigns\">")
     w("<thead>")
     w("<tr>")
-    for header in ["Type", "Icon", "Addon", "Size", "Traffic", "Date", "Notes"]:
+    for header in ["Type", "Icon", "Addon", "Size", "Traffic", "Date", "Translations"]:
         w("<th>%s&nbsp;&nbsp;&nbsp;</th>" % header)
     w("</tr>")
     w("</thead>")
@@ -127,62 +127,67 @@ def output(path, url, data):
         type = htmlescape(v("type", "none"))
         size = float(v("size", "0"))
         name = htmlescape(v("title", "unknown"))
+        w('<td class="addon-type">')
         if type == "scenario":
             w("""\
-<td>Scenario<div class="type"><b>single player scenario</b><br/>
-After install the scenario will show up in the list you get when choosing "Campaign" in the main menu. (Basically it's just a campaign with only one scenario.)</div></td>""")
+Scenario<div class="type-tooltip"><b>single player scenario</b><br/>
+After install the scenario will show up in the list you get when choosing "Campaign" in the main menu. (Basically it's just a campaign with only one scenario.)</div>""")
         elif type == "campaign":
             w("""\
-<td>Campaign<div class="type"><b>single player campaign</b><br/>
-After install the campaign will show up in the list you get when choosing "Campaign" in the main menu.</div></td>""")
+Campaign<div class="type-tooltip"><b>single player campaign</b><br/>
+After install the campaign will show up in the list you get when choosing "Campaign" in the main menu.</div>""")
         elif type == "campaign_sp_mp":
             w("""\
-<td>SP/SP Campaign<div class="type"><b>single/multi player campaign</b><br />
-After install the campaign will show up both in the list you get when choosing "Campaign" in the main menu, and in the map list in the multiplayer "Create Game" dialog.</div></td>""")
+SP/SP Campaign<div class="type-tooltip"><b>single/multi player campaign</b><br />
+After install the campaign will show up both in the list you get when choosing "Campaign" in the main menu, and in the map list in the multiplayer "Create Game" dialog.</div>""")
         elif type == "campaign_mp":
             w("""\
-<td>MP Campaign<div class="type"><b>multiplayer campaign</b><br/>
-After install the first scenario of the campaign will be available in the map list in the multiplayer "Create Game" dialog.</div></td>""")
+MP Campaign<div class="type-tooltip"><b>multiplayer campaign</b><br/>
+After install the first scenario of the campaign will be available in the map list in the multiplayer "Create Game" dialog.</div>""")
         elif type == "scenario_mp":
             w("""\
-<td>MP Scenario<div class="type"><b>multiplayer scenario</b><br/>
-After install the scenario will be available in the map list in the multiplayer "Create Game" dialog.</div></td>""")
+MP Scenario<div class="type-tooltip"><b>multiplayer scenario</b><br/>
+After install the scenario will be available in the map list in the multiplayer "Create Game" dialog.</div>""")
         elif type == "map_pack":
             w("""\
-<td>MP map-pack<div class="type"><b>multiplayer map pack</b><br/>
-After install the maps/scenarios will be available in the map list in the multiplayer "Create Game" dialog.</div></td>""")
+MP map-pack<div class="type-tooltip"><b>multiplayer map pack</b><br/>
+After install the maps/scenarios will be available in the map list in the multiplayer "Create Game" dialog.</div>""")
         elif type == "era":
             w("""\
-<td>MP era<div class="type"><b>multiplayer era</b><br/>
-After install the included era(s) will be available in the multiplayer "Create Game" dialog.</div></td>""")
+MP era<div class="type-tooltip"><b>multiplayer era</b><br/>
+After install the included era(s) will be available in the multiplayer "Create Game" dialog.</div>""")
         elif type == "faction":
             w("""\
-<td>MP faction<div class="type"><b>multiplayer faction</b><br/>
-Usually comes with an era or is dependency of another add-on.</div></td>""")
+MP faction<div class="type-tooltip"><b>multiplayer faction</b><br/>
+Usually comes with an era or is dependency of another add-on.</div>""")
         elif type == "mod_mp":
             w("""\
-<td>MP modification<div class="type"><b>multiplayer modification</b><br />
-After install the included MP gameplay modification(s) will be available in the multiplayer "Create Game" dialog.</div></td>""")
+MP modification<div class="type-tooltip"><b>multiplayer modification</b><br />
+After install the included MP gameplay modification(s) will be available in the multiplayer "Create Game" dialog.</div>""")
         elif type == "media":
             w("""\
-<td>Resources<div class="type"><b>miscellaneous content/media</b><br/>
-Unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) dependency of another add-on.</div></td>""")
-        else: w(('<td>%s</td>') % type)
+Resources<div class="type-tooltip"><b>miscellaneous content/media</b><br/>
+Unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) dependency of another add-on.</div>""")
+        else:
+            w(type)
+        w('</td>')
         w(('<td><img alt="%s" src="%s" width="72" height="72"/>'
             ) % (icon, imgurl))
         described = htmlescape(v("description", "(no description)"))
-        w('<div class="desc"><b>%s</b><pre>%s</pre></div></td>' % (
+        w('<div class="desc-tooltip"><b>%s</b><pre>%s</pre></div></td>' % (
             name, described))
-        w("<td><b>%s</b><br/>" % name)
-        w("Version: %s<br/>" % htmlescape(v("version", "unknown")))
-        w("Author: %s</td>" % htmlescape(v("author", "unknown")))
-        MiB = 1024 * 1024
-        w("<td><span hidden>%d</span><b>%.2f</b>&nbsp;MiB" % (size, size / MiB))
+        w("<td><b>%s</b>" % name)
         if url:
             link = url.rstrip("/") + "/" + htmlescape(v("name")) + ".tar.bz2"
-            w("<br/><a href=\"%s\">Download</a></td>" % link)
-        else:
-            w("</td>")
+            w("""\
+            <a class='addon-download' href=\"%s\">
+                <i class='fa fa-fw fa-2x fa-download' aria-hidden='true'></i>
+                <span class='sr-only'>Download</span>
+            </a>""" % link)
+        w("<br /><span class='addon-meta'><span class='addon-meta-label'>Version:</span> %s<br/>" % htmlescape(v("version", "unknown")))
+        w("<span class='addon-meta-label'>Author:</span> %s</span></td>" % htmlescape(v("author", "unknown")))
+        MiB = 1024 * 1024
+        w("<td><span hidden>%d</span><b>%.2f</b>&nbsp;MiB</td>" % (size, size / MiB))
         downloads = int(v("downloads", "0"))
         w("<td><b>%d</b> down<br/>" % (downloads))
         w("%s up</td>" % htmlescape(v("uploads", "unknown")))
