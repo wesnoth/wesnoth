@@ -708,7 +708,15 @@ double shortest_path_calculator::cost(const map_location& loc, const double so_f
 	// Pathfinding heuristic: the cost must be at least 1
 	VALIDATE(terrain_cost >= 1, _("Terrain with a movement cost less than 1 encountered."));
 
-	if (total_movement_ < terrain_cost && movement_left_ < terrain_cost) {
+	// Compute how many movement points are left in the game turn
+	// needed to reach the previous hex.
+	// total_movement_ is not zero, thanks to the pathfinding heuristic
+	int remaining_movement = movement_left_ - static_cast<int>(so_far);
+	if (remaining_movement < 0) {
+		remaining_movement = total_movement_ - (-remaining_movement) % total_movement_;
+	}
+
+	if (total_movement_ < terrain_cost && remaining_movement < terrain_cost) {
 		return getNoPathValue();
 	}
 
@@ -732,13 +740,6 @@ double shortest_path_calculator::cost(const map_location& loc, const double so_f
 				other_unit_subcost = 1;
 		}
 	}
-
-	// Compute how many movement points are left in the game turn
-	// needed to reach the previous hex.
-	// total_movement_ is not zero, thanks to the pathfinding heuristic
-	int remaining_movement = movement_left_ - static_cast<int>(so_far);
-	if (remaining_movement < 0)
-		remaining_movement = total_movement_ - (-remaining_movement) % total_movement_;
 
 	// this will sum all different costs of this move
 	int move_cost = 0;
