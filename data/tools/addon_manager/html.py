@@ -13,46 +13,70 @@ def output(path, url, data):
     def w(x):
         f.write(x + "\n")
     w("""\
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">""")
-    w("<title>Add-ons for Wesnoth %s</title>" % os.path.basename(path))
-    w("""\
-<link rel=stylesheet href="style.css" type="text/css">
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="tablesorter.js"></script>
-<script type="text/javascript">
-$(document).ready(function() 
-{ 
-    $("#campaigns").tablesorter(
-    {
-        headers: { 1: { sorter: false} }
-    }
-    ); 
-} 
-); 
-</script>
-</head>
-<body>""")
+<!DOCTYPE html>
 
-    w("""\
-<div class="header">
-<a href="http://www.wesnoth.org">
-<img src="http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg" alt="Wesnoth logo"/>
-</a>
+<html class="no-js addonsweb" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montaga%7COpen+Sans:400,400i,700,700i" type="text/css" />
+    <link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-16.png" sizes="16x16" />
+    <link rel="stylesheet" type="text/css" href="https://www.wesnoth.org/wesmere/css/wesmere-1.0.0.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />""")
+    w("<title>Wesnoth %s Add-ons List - The Battle for Wesnoth</title>" % os.path.basename(path))
+    w("""
+    <script src="https://www.wesnoth.org/wesmere/js/modernizr.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="tablesorter.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#campaigns").tablesorter({
+            headers: { 1: { sorter: false }, 2: { sortInitialOrder: "asc" } },
+        });
+    });
+    </script>
+</head>
+
+<body>
+
+<div id="main">
+
+<div id="nav" role="banner">
+<div class="centerbox">
+
+    <div id="logo">
+        <a href="https://www.wesnoth.org/"><img alt="Wesnoth logo" src="https://www.wesnoth.org/wesmere/img/logo-minimal-64.png" width="64" height="64" data-retina /></a>
+    </div>
+
+    <ul id="navlinks">
+        <li><a href="https://www.wesnoth.org/">Home</a></li>
+        <li><a href="https://forums.wesnoth.org/viewforum.php?f=62">News</a></li>
+        <li><a href="https://wiki.wesnoth.org/Play">Play</a></li>
+        <li><a href="https://wiki.wesnoth.org/Create">Create</a></li>
+        <li><a href="https://forums.wesnoth.org/">Forums</a></li>
+        <li><a href="https://wiki.wesnoth.org/Project">About</a></li>
+    </ul>
+
+    <div id="sitesearch" role="search">
+        <form method="get" action="https://wiki.wesnoth.org/">
+            <i class="search-icon" aria-hidden="true"></i>
+            <input id="searchbox" type="search" name="search" placeholder="Search" value="" title="Search this site [Alt+Shift+f]" accesskey="f" tabindex="1" />
+        </form>
+    </div>
+
+    <div class="reset"></div>
 </div>
-<div class="topnav">
-<a href="index.html">Wesnoth Addons</a>
 </div>
-<div class="main">
-<p>To install an add-on please go to the title screen of Battle for Wesnoth. Select "Add-ons" from the menu and click "OK" to connect to add-ons.wesnoth.org.
-Select the add-on you want to install from the list and click "OK". The download will commence immediately. Wesnoth will then automatically install and load the add-on so you can use it. Remember that not all add-ons are campaigns!</p>
-<p>Note: Hover over the type field to see an explanation of the type and over an icon to see the description of the add-on.</p>
-""")
+
+<div id="content">""")
+    w("<h1>Wesnoth %s Add-ons List</h1>" % os.path.basename(path))
+    w("""<p>To install add-ons using the in-game client, choose "Add-ons" from the main menu, and click "Connect" to connect to the add-ons server. Pick the add-on you want to install from the list and click "OK" — the download will commence immediately and the add-on will be automatically installed once finished. Bear in mind that not all add-ons are singleplayer campaigns!</p>
+    <p><b>Tip:</b> Hover over the type field to see an explanation of the add-on type and over an icon to see a description for the add-on.</p>
+    """)
     if url:
-        w("""<p>PS: If you really have to download an add-on from here uncompress it to the <a href="http://www.wesnoth.org/wiki/EditingWesnoth#Where_is_my_user_data_directory.3F">userdata</a>/data/add-ons/ directory for wesnoth to find it.
-""")
+        w("""<p><strong>If</strong> you really need or would prefer to download add-ons from this web page instead of using the built-in client, use a compatible program to uncompress the full contents of the <code class="noframe">tar.bz2</code> file — including the subfolder named after the add-on — to the <code class="noframe">data/add-ons/</code> folder in your game's <a href="https://wiki.wesnoth.org/EditingWesnoth#The_user_data_directory">user data folder</a>. The add-on will be recognized next time you launch Wesnoth or press F5 on the main menu.""")
 
     am_dir = os.path.dirname(__file__) + "/"
     for name in ["style.css", "jquery.js", "tablesorter.js",
@@ -153,10 +177,10 @@ Unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) depend
         w("Version: %s<br/>" % htmlescape(v("version", "unknown")))
         w("Author: %s</td>" % htmlescape(v("author", "unknown")))
         MiB = 1024 * 1024
-        w("<td><span class=\"hidden\">%d</span><b>%.2f</b>MiB" % (size, size / MiB))
+        w("<td><span hidden>%d</span><b>%.2f</b>&nbsp;MiB" % (size, size / MiB))
         if url:
             link = url.rstrip("/") + "/" + htmlescape(v("name")) + ".tar.bz2"
-            w("<br/><a href=\"%s\">download</a></td>" % link)
+            w("<br/><a href=\"%s\">Download</a></td>" % link)
         else:
             w("</td>")
         downloads = int(v("downloads", "0"))
@@ -164,21 +188,31 @@ Unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) depend
         w("%s up</td>" % htmlescape(v("uploads", "unknown")))
         timestamp = int(v("timestamp", "0"))
         t = time.localtime(timestamp)
-        w("<td><span class=\"hidden\">%d</span>%s</td>" % (timestamp,
+        w("<td><span hidden>%d</span>%s</td>" % (timestamp,
             time.strftime("%b %d %Y", t)))
         w("<td>%s</td>" % (htmlescape(", ".join(languages))))
         w("</tr>")
-    w("</tbody>")
-    w("</table>")
-
     w("""\
-</div>
-<div id="footer">
-<p><a href="http://www.wesnoth.org/wiki/Site_Map">Site map</a></p>
-<p><a href="http://www.wesnoth.org/wiki/Wesnoth:Copyrights">Copyright</a> &copy; 2003&#8211;2016 The Battle for Wesnoth</p>
-<p>Supported by <a href="http://www.jexiste.fr/">Jexiste</a></p>
-</div>
-</body></html>""")
+        </tbody>
+    </table>
+</div> <!-- end content -->
+
+</div> <!-- end main -->
+
+<div id="footer-sep"></div>
+
+<div id="footer"><div id="footer-content"><div>
+	<a href="https://wiki.wesnoth.org/StartingPoints">Site Map</a> &#8226; <a href="http://status.wesnoth.org/">Site Status</a><br />
+	Copyright &copy; 2003&ndash;2017 by <a rel="author" href="https://wiki.wesnoth.org/Project">The Battle for Wesnoth Project</a>.<br />
+	Site design Copyright &copy; 2017 by Ignacio R. Morelle.
+</div></div></div>
+
+<script src="https://www.wesnoth.org/wesmere/js/retina.min.js"></script>
+</body>
+</html>
+""")
     sys.stderr.write("Done outputting html, now generating %d TC'ed images\n" % len(images_to_tc))
     for pair in images_to_tc:
         Popen([os.path.join(am_dir, "../unit_tree/TeamColorizer"), pair[0], pair[1]]).wait() # wait() to ensure only one process is exists at any time
+
+# kate: indent-mode normal; encoding utf-8; space-indent on;
