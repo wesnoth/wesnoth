@@ -168,7 +168,7 @@ After install the included MP gameplay modification(s) will be available in the 
 <td>Resources<div class="type"><b>miscellaneous content/media</b><br/>
 Unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) dependency of another add-on.</div></td>""")
         else: w(('<td>%s</td>') % type)
-        w(('<td><img alt="%s" src="%s" width="72px" height="72px"/>'
+        w(('<td><img alt="%s" src="%s" width="72" height="72"/>'
             ) % (icon, imgurl))
         described = htmlescape(v("description", "(no description)"))
         w('<div class="desc"><b>%s</b><pre>%s</pre></div></td>' % (
