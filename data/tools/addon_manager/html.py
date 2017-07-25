@@ -12,6 +12,12 @@ def output(path, url, data):
     f = open(path + "/index.html", "w")
     def w(x):
         f.write(x + "\n")
+    server_name = os.path.basename(path)
+    if server_name == "1.9":
+        # 1.9 became the 1.10 add-ons server. Reflect that here.
+        server_name = "1.10"
+    else if server_name == "trunk":
+        server_name = "Testing (Trunk)"
     w("""\
 <!DOCTYPE html>
 
@@ -25,7 +31,7 @@ def output(path, url, data):
     <link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-16.png" sizes="16x16" />
     <link rel="stylesheet" type="text/css" href="https://www.wesnoth.org/wesmere/css/wesmere-1.0.0.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />""")
-    w("<title>Wesnoth %s Add-ons List - The Battle for Wesnoth</title>" % os.path.basename(path))
+    w("<title>Wesnoth %s Add-ons List - The Battle for Wesnoth</title>" % server_name)
     w("""
     <script src="https://www.wesnoth.org/wesmere/js/modernizr.js"></script>
     <script type="text/javascript" src="jquery.js"></script>
@@ -71,7 +77,7 @@ def output(path, url, data):
 </div>
 
 <div id="content">""")
-    w("<h1>Wesnoth %s Add-ons List</h1>" % os.path.basename(path))
+    w("<h1>Wesnoth %s Add-ons List</h1>" % server_name)
     w("""<p>To install add-ons using the in-game client, choose "Add-ons" from the main menu, and click "Connect" to connect to the add-ons server. Pick the add-on you want to install from the list and click "OK" — the download will commence immediately and the add-on will be automatically installed once finished. Bear in mind that not all add-ons are singleplayer campaigns!</p>""")
     if url:
         w("""
