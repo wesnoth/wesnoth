@@ -180,8 +180,8 @@ Unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) depend
         else:
             w(type)
         w('</td>')
-        w(('<td class="addon-icon"><img alt="%s" src="%s" width="72" height="72"/>'
-            ) % (icon, imgurl))
+        w(('<td class="addon-icon"><img alt="" src="%s" width="72" height="72"/>'
+            ) % imgurl)
         described = htmlescape(v("description", "(no description)"))
         w('<div class="desc-tooltip"><b>%s</b><pre>%s</pre></div></td>' % (
             name, described))
