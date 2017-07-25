@@ -185,7 +185,7 @@ Unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) depend
         described = htmlescape(v("description", "(no description)"))
         w('<div class="desc-tooltip"><b>%s</b><pre>%s</pre></div></td>' % (
             name, described))
-        w("<td class=\"addon\">")
+        w("<td class=\"addon\"><span hidden>%s</span>" % name)
         if url:
             link = url.rstrip("/") + "/" + htmlescape(v("name")) + ".tar.bz2"
             w("""\
