@@ -72,11 +72,11 @@ def output(path, url, data):
 
 <div id="content">""")
     w("<h1>Wesnoth %s Add-ons List</h1>" % os.path.basename(path))
-    w("""<p>To install add-ons using the in-game client, choose "Add-ons" from the main menu, and click "Connect" to connect to the add-ons server. Pick the add-on you want to install from the list and click "OK" — the download will commence immediately and the add-on will be automatically installed once finished. Bear in mind that not all add-ons are singleplayer campaigns!</p>
-    <p><b>Tip:</b> Hover over the type field to see an explanation of the add-on type and over an icon to see a description for the add-on.</p>
-    """)
+    w("""<p>To install add-ons using the in-game client, choose "Add-ons" from the main menu, and click "Connect" to connect to the add-ons server. Pick the add-on you want to install from the list and click "OK" — the download will commence immediately and the add-on will be automatically installed once finished. Bear in mind that not all add-ons are singleplayer campaigns!</p>""")
     if url:
-        w("""<p><strong>If</strong> you really need or would prefer to download add-ons from this web page instead of using the built-in client, use a compatible program to uncompress the full contents of the <code class="noframe">tar.bz2</code> file — including the subfolder named after the add-on — to the <code class="noframe">data/add-ons/</code> folder in your game's <a href="https://wiki.wesnoth.org/EditingWesnoth#The_user_data_directory">user data folder</a>. The add-on will be recognized next time you launch Wesnoth or press F5 on the main menu.""")
+        w("""
+          <p><strong>If</strong> you really need or would prefer to download add-ons from this web page instead of using the built-in client, use a compatible program to uncompress the full contents of the <code class="noframe">tar.bz2</code> file — including the subfolder named after the add-on — to the <code class="noframe">data/add-ons/</code> folder in your game's <a href="https://wiki.wesnoth.org/EditingWesnoth#The_user_data_directory">user data folder</a>. The add-on will be recognized next time you launch Wesnoth or press F5 on the main menu.</p>
+          <p><b>Tip:</b> Hover over the type field to see an explanation of the add-on type and over an icon to see a description for the add-on.</p>""")
 
     am_dir = os.path.dirname(__file__) + "/"
     for name in ["style.css", "jquery.js", "tablesorter.js",
