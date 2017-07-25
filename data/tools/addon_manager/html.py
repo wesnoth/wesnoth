@@ -16,7 +16,7 @@ def output(path, url, data):
     if server_name == "1.9":
         # 1.9 became the 1.10 add-ons server. Reflect that here.
         server_name = "1.10"
-    else if server_name == "trunk":
+    elif server_name == "trunk":
         server_name = "Testing (Trunk)"
     w("""\
 <!DOCTYPE html>
