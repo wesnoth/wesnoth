@@ -41,6 +41,8 @@ Version 1.13.8+dev:
    * When set to remember your password, Wesnoth now encrypts it. It is still
      possible to obtain the password from preferences, but it's no longer as
      trivial as before.
+   * Fixed crash when loading a replay stored on the server (Bug #1762)
+   * Fixed delay or clients gettings stuck when starting a mp game (Bug #1674)
  * Performance:
    * Rewrote the FPS cap implementation. This greatly improves smoothness ingame.
  * Units:
@@ -59,6 +61,7 @@ Version 1.13.8+dev:
    * Add --report/-R command line switch for printing the same report from the
      Game Version dialog's clipboard function to stdout.
    * Fixed whiteboard crash on delete action with multiple moves (bug #1842)
+   * Fix units beeing unable to step on hexes with too high movecosts (bug #1473) 
  * WFL Engine
    * Add owner key to terrain space callable, for villages
    * Location formulas in [tunnel] now have a teleport_unit variable
@@ -91,6 +94,12 @@ Version 1.13.8+dev:
      meaning that it can be used in an event without specifying
      delayed_variable_substitution=yes.
    * Add fire_event key to [unit] which determines whether to fire a unit placed event.
+   * [resolution] window_width/height now specifies the minimum window size for that
+     resolution ot be chosen 
+   * formula code is now supported in abilities and weapon specials (fr #1436)
+   * The allow_new_game= in [scenario] now defaults to false (it still defaults to true
+     in [multiplayer]) 
+   * Add [cancel_action] (bug #1427)
 
 Version 1.13.8:
   * Campaigns:
