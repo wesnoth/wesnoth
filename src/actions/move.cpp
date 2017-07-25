@@ -346,7 +346,7 @@ namespace { // Private helpers for move_unit()
 	/// affects whether or not gotos are changed).
 	unit_mover::unit_mover(const std::vector<map_location> & route,
 	                       move_unit_spectator *move_spectator,
-	                       bool skip_sightings, bool skip_ally_sightings) :
+	                       bool skip_sightings, bool skip_ally_sightings)
 		: spectator_(move_spectator)
 		, skip_sighting_(skip_sightings)
 		, skip_ally_sighting_(skip_ally_sightings)
