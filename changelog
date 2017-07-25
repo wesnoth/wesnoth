@@ -58,6 +58,7 @@ Version 1.13.8+dev:
  * Miscellaneous and Bug Fixes:
    * Add --report/-R command line switch for printing the same report from the
      Game Version dialog's clipboard function to stdout.
+   * Fixed whiteboard crash on delete action with multiple moves (bug #1842)
  * WFL Engine
    * Add owner key to terrain space callable, for villages
    * Location formulas in [tunnel] now have a teleport_unit variable
