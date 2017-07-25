@@ -104,8 +104,6 @@ private:
 	/**
 	 * Actions to be taken directly after the window is build.
 	 *
-	 * @param video               The video which contains the surface to draw
-	 *                            upon.
 	 * @param window              The window just created.
 	 */
 	virtual void post_build(window& window);
@@ -113,8 +111,6 @@ private:
 	/**
 	 * Actions to be taken before showing the window.
 	 *
-	 * @param video               The video which contains the surface to draw
-	 *                            upon.
 	 * @param window              The window to be shown.
 	 */
 	virtual void pre_show(window& window);

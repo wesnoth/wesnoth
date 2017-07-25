@@ -133,7 +133,7 @@ public:
 	class server_choice
 	{
 	public:
-		virtual ~server_choice(){};
+		virtual ~server_choice(){}
 		/// We are in a game with no mp server and need to do this choice locally
 		virtual config local_choice() const = 0;
 		/// the request which is sended to the mp server.

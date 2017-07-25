@@ -36,8 +36,6 @@ public:
 	 *                              the dialog returns @ref window::OK or 3
 	 *                              undefined otherwise.
 	 * @param allow_remove        Sets @ref allow_remove_.
-	 * @param disp                The display object used for showing the
-	 *                            in-game help when requested.
 	 */
 	addon_connect(std::string& host_name,
 				   const bool allow_remove);

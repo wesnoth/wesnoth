@@ -318,7 +318,7 @@ protected:
 	 *                            The position where the additional content was
 	 *                            inserted/removed, defaults to -1 whcih means
 	 *                            'at end'
-	 * @param height_modification_po
+	 * @param height_modification_pos
 	 *                            The position where the additional content was
 	 *                            inserted/removed, defaults to -1 whcih means
 	 *                            'at end'

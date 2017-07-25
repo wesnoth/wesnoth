@@ -38,7 +38,7 @@ struct dismiss_action : undo_action
 	{
 	}
 	virtual const char* get_type() const { return "dismiss"; }
-	virtual ~dismiss_action() {};
+	virtual ~dismiss_action() {}
 
 	/// Writes this into the provided config.
 	virtual void write(config & cfg) const;

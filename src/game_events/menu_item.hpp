@@ -89,7 +89,7 @@ public:
 	 * The undo stack will be cleared if the event mutated the gamestate.
 	 *
 	 * @param[in] event_hex    The location of the event (where the menu was opened).
-	 * @param[in] last_select  The location of the most recent "select" event.
+	 * @param[in] data         The game data for the most recent "select" event.
 	 */
 	void fire_event(const map_location& event_hex, const game_data& data) const;
 

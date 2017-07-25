@@ -256,10 +256,11 @@ struct future_map
 
 struct future_map_if
 {
-	/** @param cond: If true, applies the planned unit map for the duration of the struct's life and reverts to real unit map on destruction.
+	const std::unique_ptr<future_map> future_map_;
+
+	/** @param cond If true, applies the planned unit map for the duration of the struct's life and reverts to real unit map on destruction.
 			No effect if cond == false.
 	*/
-	const std::unique_ptr<future_map> future_map_;
 	future_map_if(bool cond)
 		: future_map_(cond ? new future_map() : nullptr)
 	{}

@@ -379,8 +379,6 @@ private:
 	 *
 	 * At this point the registered fields are not yet registered.
 	 *
-	 * @param video               The video which contains the surface to draw
-	 *                            upon.
 	 * @param window              The window just created.
 	 */
 	virtual void post_build(window& window);

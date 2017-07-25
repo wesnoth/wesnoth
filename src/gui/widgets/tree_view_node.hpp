@@ -298,7 +298,7 @@ private:
 
 	point calculate_best_size(const int indentation_level,
 							   const unsigned indentation_step_size) const;
-	/** @param assume_visible: if false (default) it will return 0 if the parent node is folded*/
+	/** @param assume_visible if false (default) it will return 0 if the parent node is folded*/
 	point get_current_size(bool assume_visible = false) const;
 	point get_folded_size() const;
 	point get_unfolded_size() const;

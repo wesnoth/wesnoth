@@ -1274,8 +1274,8 @@ public:
 
 	/**
 	 * Count modifications of a particular type.
-	 * @param The type of modification to count.
-	 *        Valid values are "advancement", "trait", "object"
+	 * @param type The type of modification to count.
+	 *             Valid values are "advancement", "trait", "object"
 	 * @param id The ID of the modification to count
 	 * @return The total number of modifications of that type and ID.
 	 */
@@ -1283,8 +1283,8 @@ public:
 
 	/**
 	 * Add a new modification to the unit.
-	 * @param The type of modification to add.
-	 *        Valid values are "advancement", "trait", "object"
+	 * @param type The type of modification to add.
+	 *             Valid values are "advancement", "trait", "object"
 	 * @param modification The details of the modification
 	 * @param no_add If true, apply the modification but don't save it for unit rebuild time.
 	 *               Defaults to false.

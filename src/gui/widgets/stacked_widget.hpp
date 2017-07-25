@@ -102,7 +102,7 @@ public:
 	 * Gets the grid for a specified layer.
 	 * This can be used to search for widgets in a hidden layer.
 	 *
-	 * @param           The layer to retrieve
+	 * @param i         The layer to retrieve
 	 * @returns         The grid for the specified layer.
 	 */
 	grid* get_layer_grid(unsigned int i);

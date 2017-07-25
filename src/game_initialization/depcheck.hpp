@@ -139,7 +139,7 @@ public:
 	/**
 	 * Tells whether a certain mod is activated.
 	 *
-	 * @param string the string id of the mod
+	 * @param id     the string id of the mod
 	 *
 	 * @return true if activated, false is not
 	 */

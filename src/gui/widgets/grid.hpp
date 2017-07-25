@@ -127,7 +127,7 @@ public:
 	 * touch the other settings of the child.
 	 *
 	 * @param id                  The id of the widget to free.
-	 * @param widget              The widget to put in the grid.
+	 * @param w                   The widget to put in the grid.
 	 * @param recurse             Do we want to decent into the child grids.
 	 * @param new_parent          The new parent for the swapped out widget.
 	 *
@@ -231,7 +231,7 @@ public:
 	 *
 	 * @param widget              The widget whose cell to modify.
 	 * @param set_flag            The alignment flag to set.
-	 * @param mask                Whether to affect horizontal or vertical alignment.
+	 * @param mode_mask           Whether to affect horizontal or vertical alignment.
 	 *                            Use either HORIZONTAL_MASK or VERTICAL_MASK
 	 */
 	void set_child_alignment(widget* widget, unsigned set_flag, unsigned mode_mask);

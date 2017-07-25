@@ -283,10 +283,10 @@ if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 	# version of cmake will be able to this for us.
 	#
 	# Also silence some Clang specific warnings due to extra parenthesis in if statements when comparing instead
-	set_source_files_properties(
-		${libwesnoth-lua_STAT_SRC}
-		PROPERTIES COMPILE_FLAGS
-			"-x c++ -Wno-parentheses-equality"
+	set_property(SOURCE
+		SOURCE ${libwesnoth-lua_STAT_SRC}
+		APPEND_STRING PROPERTY COMPILE_FLAGS
+			" -x c++ -Wno-parentheses-equality -Wno-conditional-uninitialized"
 	)
 endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 
@@ -469,6 +469,7 @@ if(ENABLE_CAMPAIGN_SERVER)
   target_link_libraries(campaignd
 	  wesnoth-core
 	  ${server-external-libs}
+	  ${CRYPTO_LIBRARY}
 	  ${Boost_RANDOM_LIBRARY}
 	  ${LIBRT}
 	  )

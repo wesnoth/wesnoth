@@ -2570,7 +2570,7 @@ int game_lua_kernel::intf_play_sound(lua_State *L)
 static int intf_sound_volume(lua_State* L)
 {
 	int vol = preferences::sound_volume();
-	lua_pushnumber(L, sound::get_sound_volume() * 100.0f / vol);
+	lua_pushnumber(L, sound::get_sound_volume() * 100.0 / vol);
 	if(lua_isnumber(L, 1)) {
 		float rel = lua_tonumber(L, 1);
 		if(rel < 0.0f || rel > 100.0f) {

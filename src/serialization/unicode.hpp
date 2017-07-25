@@ -87,9 +87,9 @@ namespace utf8 {
 	 *
 	 * The output is guaranteed to be valid UTF-8.
 	 *
-	 * @param[in]  str   String encoded in UTF-8.
-	 * @param[out] str   String encoded UTF-8 that contains at most @p size
-	 *                   codepoints.
+	 * @param[in,out]  str   [in]  String encoded in UTF-8.
+	 *                       [out] String encoded UTF-8 that contains at most @p size
+	 *                             codepoints.
 	 * @param      size  The size to truncate to.
 	 */
 	void truncate_as_ucs4(utf8::string& str, const size_t size);

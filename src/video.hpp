@@ -62,16 +62,14 @@ public:
 
 	void set_fullscreen(bool ison);
 
+	void set_resolution(const std::pair<int,int>& res);
+
 	/**
 	 * Set the resolution.
 	 *
 	 * @param width               The new width.
 	 * @param height              The new height.
-	 *
-	 * @returns                   The status true if width and height are the
-	 *                            size of the framebuffer, false otherwise.
 	 */
-	void set_resolution(const std::pair<int,int>& res);
 	void set_resolution(const unsigned width, const unsigned height);
 
 	std::pair<int,int> current_resolution();

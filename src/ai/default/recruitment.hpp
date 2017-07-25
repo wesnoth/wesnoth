@@ -141,9 +141,9 @@ struct recruit_job : public component {
 		}
 		return cfg;
 	}
-	std::string get_id() const {return id;};
-	std::string get_name() const {return "recruit_job";};
-	std::string get_engine() const {return "cpp";};
+	std::string get_id() const {return id;}
+	std::string get_name() const {return "recruit_job";}
+	std::string get_engine() const {return "cpp";}
 };
 
 struct recruit_limit : public component {
@@ -164,9 +164,9 @@ struct recruit_limit : public component {
 		}
 		return cfg;
 	}
-	std::string get_id() const {return id;};
-	std::string get_name() const {return "recruit_limit";};
-	std::string get_engine() const {return "cpp";};
+	std::string get_id() const {return id;}
+	std::string get_name() const {return "recruit_limit";}
+	std::string get_engine() const {return "cpp";}
 };
 
 class recruitment_aspect : public standard_aspect<config> {

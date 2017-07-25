@@ -30,8 +30,8 @@ namespace font {
 /**
  * Retuns a Pango formatting string using the provided color_t object.
  *
- * The string returned will be in format: '<span foreground=#color>'
- * Callers will need to manually append the closing</span>' tag.
+ * The string returned will be in format: &lt;span foreground=#color>
+ * Callers will need to manually append the closing &lt;/span>' tag.
  *
  * @param color        The color_t object from which to retrieve the color.
  */

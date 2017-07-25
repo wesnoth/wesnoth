@@ -31,9 +31,9 @@ public:
 		, description_(description)
 		, image_(image)
 	{}
-	std::string label() const {return label_;};
-	std::string description() const {return description_;};
-	std::string image() const {return image_;};
+	std::string label() const {return label_;}
+	std::string description() const {return description_;}
+	std::string image() const {return image_;}
 private:
 	std::string label_, description_, image_;
 };

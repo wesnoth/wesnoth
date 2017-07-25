@@ -172,7 +172,7 @@ public:
 	 * Implements the increment functionality of @ref variant_iterator
 	 * for a value of this type.
 	 *
-	 * @param iter The opaque reference that was passed to the variant_iterator by @ref make_iterator.
+	 * The parameter is an opaque reference that was passed to the variant_iterator by @ref make_iterator.
 	 */
 	virtual void iterator_inc(boost::any&) const {}
 
@@ -180,7 +180,7 @@ public:
 	 * Implements the decrement functionality of @ref variant_iterator
 	 * for a value of this type.
 	 *
-	 * @param iter The opaque reference that was passed to the variant_iterator by @ref make_iterator.
+	 * The parameter is an opaque reference that was passed to the variant_iterator by @ref make_iterator.
 	 */
 	virtual void iterator_dec(boost::any&) const {}
 
@@ -190,8 +190,8 @@ public:
 	 *
 	 * Note that this is only called if the two iterators are already known to be of the same type.
 	 *
-	 * @param first The opaque reference that was passed to the variant_iterator by @ref make_iterator.
-	 * @param second The opaque reference that was passed to the variant_iterator by @ref make_iterator.
+	 * The first parameter is an opaque reference that was passed to the variant_iterator by @ref make_iterator.
+	 * The second parameter is an opaque reference that was passed to the variant_iterator by @ref make_iterator.
 	 */
 	virtual bool iterator_equals(const boost::any& /*first*/, const boost::any& /*second*/) const
 	{
