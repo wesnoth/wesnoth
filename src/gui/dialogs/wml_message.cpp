@@ -173,7 +173,7 @@ int show_wml_message(CVideo& video,
 		dlg.reset(new wml_message_left(title, message, left->portrait, left->mirror));
 	} else if(!left && right) {
 		dlg.reset(new wml_message_right(title, message, right->portrait, right->mirror));
-	} else {
+	} else if(right && left) {
 		dlg.reset(new wml_message_double(title, message, left->portrait, left->mirror, right->portrait, right->mirror));
 	}
 	assert(dlg.get());
