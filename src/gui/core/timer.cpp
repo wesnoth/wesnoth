@@ -39,8 +39,11 @@ struct timer
 static size_t next_timer_id = 0;
 
 /** The active timers. */
-static std::map<size_t, timer> timers;
-
+static std::map<size_t, timer>& get_timers()
+{
+	static std::map<size_t, timer>* ptimers = new std::map<size_t, timer>();
+	return *ptimers;
+}
 /** The id of the event being executed, 0 if none. */
 static size_t executing_id = 0;
 
@@ -86,8 +89,8 @@ static Uint32 timer_callback(Uint32, void* id)
 	DBG_GUI_E << "Pushing timer event in queue.\n";
 
 	std::map<size_t, timer>::iterator itor
-			= timers.find(reinterpret_cast<size_t>(id));
-	if(itor == timers.end()) {
+			= get_timers().find(reinterpret_cast<size_t>(id));
+	if(itor == get_timers().end()) {
 		return 0;
 	}
 
@@ -119,7 +122,7 @@ size_t add_timer(const Uint32 interval,
 
 	do {
 		++next_timer_id;
-	} while(next_timer_id == 0 || timers.find(next_timer_id) != timers.end());
+	} while(next_timer_id == 0 || get_timers().find(next_timer_id) != get_timers().end());
 
 	timer timer;
 	timer.sdl_id = SDL_AddTimer(
@@ -135,7 +138,7 @@ size_t add_timer(const Uint32 interval,
 
 	timer.callback = callback;
 
-	timers.emplace(next_timer_id, timer);
+	get_timers().emplace(next_timer_id, timer);
 
 	DBG_GUI_E << "Added timer " << next_timer_id << ".\n";
 	return next_timer_id;
@@ -145,8 +148,8 @@ bool remove_timer(const size_t id)
 {
 	DBG_GUI_E << "Removing timer " << id << ".\n";
 
-	std::map<size_t, timer>::iterator itor = timers.find(id);
-	if(itor == timers.end()) {
+	std::map<size_t, timer>::iterator itor = get_timers().find(id);
+	if(itor == get_timers().end()) {
 		LOG_GUI_E << "Can't remove timer since it no longer exists.\n";
 		return false;
 	}
@@ -168,7 +171,7 @@ bool remove_timer(const size_t id)
 		 */
 		DBG_GUI_E << "The timer is already out of the SDL timer list.\n";
 	}
-	timers.erase(itor);
+	get_timers().erase(itor);
 	return true;
 }
 
@@ -176,8 +179,8 @@ bool execute_timer(const size_t id)
 {
 	DBG_GUI_E << "Executing timer " << id << ".\n";
 
-	std::map<size_t, timer>::iterator itor = timers.find(id);
-	if(itor == timers.end()) {
+	std::map<size_t, timer>::iterator itor = get_timers().find(id);
+	if(itor == get_timers().end()) {
 		LOG_GUI_E << "Can't execute timer since it no longer exists.\n";
 		return false;
 	}
@@ -188,7 +191,7 @@ bool execute_timer(const size_t id)
 	}
 
 	if(!executing_id_removed && itor->second.interval == 0) {
-		timers.erase(itor);
+		get_timers().erase(itor);
 	}
 	return true;
 }
