@@ -87,8 +87,17 @@ def output(path, url, data):
     w("<table class=\"tablesorter\" id=\"campaigns\">")
     w("<thead>")
     w("<tr>")
-    for header in ["Type", "Icon", "Addon", "Size", "Traffic", "Date", "Translations"]:
-        w("<th>%s&nbsp;&nbsp;&nbsp;</th>" % header)
+    table_headers = [
+        ("type",    "Type"),
+        ("icon",    "Icon"),
+        ("name",    "Addon"),
+        ("size",    "Size"),
+        ("stats",   "Traffic"),
+        ("date",    "Date"),
+        ("locales", "Translations")
+    ]
+    for header_class, header_label in table_headers:
+        w("<th class=\"addon-%s\">%s&nbsp;&nbsp;&nbsp;</th>" % (header_class, header_label))
     w("</tr>")
     w("</thead>")
     w("<tbody>")
@@ -171,12 +180,12 @@ Unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) depend
         else:
             w(type)
         w('</td>')
-        w(('<td><img alt="%s" src="%s" width="72" height="72"/>'
+        w(('<td class="addon-icon"><img alt="%s" src="%s" width="72" height="72"/>'
             ) % (icon, imgurl))
         described = htmlescape(v("description", "(no description)"))
         w('<div class="desc-tooltip"><b>%s</b><pre>%s</pre></div></td>' % (
             name, described))
-        w("<td>")
+        w("<td class=\"addon\">")
         if url:
             link = url.rstrip("/") + "/" + htmlescape(v("name")) + ".tar.bz2"
             w("""\

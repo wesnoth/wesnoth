@@ -14,10 +14,6 @@ table#campaigns th {
 	text-align: left;
 }
 
-table#campaigns td img {
-	float: left;
-}
-
 div.type-tooltip,
 div.desc-tooltip {
 	display: none;
@@ -96,8 +92,31 @@ table.tablesorter thead tr .headerSortDown {
 	background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2222%22%20height%3D%2216%22%3E%3Cpath%20d%3D%22m%2015.502%2C11.002%20-5%2C-5.001%20-5%2C5.001%20z%22%20fill%3D%22%23333333%22%2F%3E%3C%2Fsvg%3E');
 }
 
-.addon-type {
+th.addon-icon {
+	width: 72px;
+	min-width: 72px;
+}
+
+th.addon-name {
+	width: 45%;
+}
+
+th.addon-size,
+th.addon-stats {
+	width: 10%;
+}
+
+th.addon-date,
+th.addon-locales {
+	width: 12%;
+}
+
+td.addon-type {
 	padding-top: 24px; /* a little bit more than 25% image height (72px) */
+}
+
+td.addon-icon {
+	text-align: center;
 }
 
 .addon-meta {
@@ -109,7 +128,23 @@ table.tablesorter thead tr .headerSortDown {
 }
 
 .addon-download {
-	display: inline-block;
+	display: block;
 	float: right;
 	margin: 0 0 0.9em 0.9em;
+	text-align: center;
+}
+
+@media screen and (max-width: 699px) {
+	th.addon-icon {
+		min-width: 0;
+	}
+
+	.addon-download {
+		float: none;
+		margin: 0.3em 0.9em;
+	}
+
+	td.addon {
+		text-align: center;
+	}
 }
