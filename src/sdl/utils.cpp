@@ -447,20 +447,20 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 				// the graphics origin is actually
 				// somewhere else.
 
-				const fixed_t e = 0x000000FF & xsrc;
-				const fixed_t s = 0x000000FF & ysrc;
-				const fixed_t n = 0xFF - s;
-				const fixed_t w = 0xFF - e;
+				const fixed_t east = 0x000000FF & xsrc;
+				const fixed_t south = 0x000000FF & ysrc;
+				const fixed_t north = 0xFF - south;
+				const fixed_t west = 0xFF - east;
 
 				pix[0] = *src_word;              // northwest
 				pix[1] = *(src_word + dx);       // northeast
 				pix[2] = *(src_word + dy);       // southwest
 				pix[3] = *(src_word + dx + dy);  // southeast
 
-				bilin[0] = n*w;
-				bilin[1] = n*e;
-				bilin[2] = s*w;
-				bilin[3] = s*e;
+				bilin[0] = north*west;
+				bilin[1] = north*east;
+				bilin[2] = south*west;
+				bilin[3] = south*east;
 
 				// Scope out the neighboorhood, see
 				// what the pixel values are like.
