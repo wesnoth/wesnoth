@@ -99,8 +99,8 @@ public:
 
 
 	/**
-	 * @param[in] cfg the config to be read
-	 * @param[out] parsed_cfg parsed config
+	 * @param[in] original_cfg the config to be read
+	 * @param[out] cfg parsed config
 	 * @return was all ok?
 	 * @retval true success
 	 * @retval false failure

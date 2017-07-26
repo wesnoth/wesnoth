@@ -278,8 +278,6 @@ bool wml_event_pump::filter_event(const event_handler& handler, const queued_eve
  * @param[in,out]  handler_p  The handler to offer the event to.
  *                            This may be reset during processing.
  * @param[in]      ev         The event information.
- *
- * @returns true if the game state changed.
  */
 void wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& ev)
 {
