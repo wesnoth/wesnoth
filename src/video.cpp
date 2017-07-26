@@ -294,12 +294,16 @@ int CVideo::getx() const
 		return 0;
 	}
 
-	return window->get_size().y;
+	return window->get_size().x;
 }
 
 int CVideo::gety() const
 {
-	return frameBuffer->h;
+	if(!window) {
+		return 0;
+	}
+
+	return window->get_size().y;
 }
 
 void CVideo::delay(unsigned int milliseconds)
