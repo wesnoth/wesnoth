@@ -44,8 +44,6 @@ typedef std::pair<ng::controller, std::string> controller_option;
 class connect_engine
 {
 public:
-	/// @param players the player which are already connected to the current game.
-	///                This is always empty unless we advance form a previous scenario.
 	connect_engine(saved_game& state,
 		const bool first_scenario, mp_campaign_info* campaign_info);
 

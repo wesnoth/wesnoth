@@ -487,7 +487,7 @@ bool undo_list::apply_shroud_changes() const
 	disp.draw();
 
 	// Fire sighted events
-	if ( clearer.fire_events() ) {
+	if ( std::get<0>(clearer.fire_events() )) {
 		// Fix up the display in case WML changed stuff.
 		clear_shroud(side_);
 		disp.invalidate_unit();

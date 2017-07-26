@@ -39,60 +39,89 @@
 #include "hotkey/hotkey_command.hpp"
 #include "joystick.hpp"
 #include "key.hpp"
-#include "video.hpp"
 #include "quit_confirmation.hpp"
+#include "video.hpp"
 
 class CVideo;
 class display;
 class plugins_context;
 
-namespace events { class mouse_handler_base; }
+namespace events
+{
+class mouse_handler_base;
+}
 
-namespace hotkey { class command_executor; }
+namespace hotkey
+{
+class command_executor;
+}
 
-namespace soundsource { class manager; }
+namespace soundsource
+{
+class manager;
+}
 
 class controller_base : public video2::draw_layering
 {
 public:
-	controller_base(const config& game_config, CVideo& video);
+	controller_base(const config& game_config);
 	virtual ~controller_base();
 
 	void play_slice(bool is_delay_enabled = true);
 
-	static const config &get_theme(const config& game_config, std::string theme_name);
+	static const config& get_theme(const config& game_config, std::string theme_name);
 
 	void apply_keyboard_scroll(int x, int y);
-	void set_scroll_up(bool on);
-	void set_scroll_down(bool on);
-	void set_scroll_left(bool on);
-	void set_scroll_right(bool on);
 
-	/**
-	* Get (optionally) a command executor to handle context menu events
-	*/
-	virtual hotkey::command_executor * get_hotkey_command_executor() { return nullptr; }
+	void set_scroll_up(bool on)
+	{
+		scroll_up_ = on;
+	}
+
+	void set_scroll_down(bool on)
+	{
+		scroll_down_ = on;
+	}
+
+	void set_scroll_left(bool on)
+	{
+		scroll_left_ = on;
+	}
+
+	void set_scroll_right(bool on)
+	{
+		scroll_right_ = on;
+	}
+
+	/** Optionally get a command executor to handle context menu events. */
+	virtual hotkey::command_executor* get_hotkey_command_executor()
+	{
+		return nullptr;
+	}
+
 protected:
 	virtual bool is_browsing() const
-	{ return false; }
-	/**
-	 * Get a reference to a mouse handler member a derived class uses
-	 */
+	{
+		return false;
+	}
+
+	/** Get a reference to a mouse handler member a derived class uses. */
 	virtual events::mouse_handler_base& get_mouse_handler_base() = 0;
-	/**
-	 * Get a reference to a display member a derived class uses
-	 */
+
+	/** Get a reference to a display member a derived class uses. */
 	virtual display& get_display() = 0;
 
-	/**
-	 * Get (optionally) a soundsources manager a derived class uses
-	 */
-	virtual soundsource::manager * get_soundsource_man() { return nullptr; }
+	/** Get (optionally) a soundsources manager a derived class uses. */
+	virtual soundsource::manager* get_soundsource_man()
+	{
+		return nullptr;
+	}
 
-	/**
-	 * Get (optionally) a plugins context a derived class uses
-	 */
-	virtual plugins_context * get_plugins_context() { return nullptr; }
+	/** Get (optionally) a plugins context a derived class uses. */
+	virtual plugins_context* get_plugins_context()
+	{
+		return nullptr;
+	}
 
 	/**
 	 * Derived classes should override this to return false when arrow keys
@@ -102,8 +131,10 @@ protected:
 	 */
 	virtual bool have_keyboard_focus();
 
-	virtual std::vector<std::string> additional_actions_pressed() { return std::vector<std::string>(); }
-
+	virtual std::vector<std::string> additional_actions_pressed()
+	{
+		return std::vector<std::string>();
+	}
 
 	/**
 	 * Handle scrolling by keyboard, joystick and moving mouse near map edges
@@ -119,24 +150,28 @@ protected:
 	 */
 	void handle_event(const SDL_Event& event);
 
-	void handle_window_event(const SDL_Event& ) {}
+	void handle_window_event(const SDL_Event& /*event*/)
+	{
+		// No action by default
+	}
 
-	/**
-	 * Process keydown (only when the general map display does not have focus).
-	 */
-	virtual void process_focus_keydown_event(const SDL_Event& event);
+	/** Process keydown (only when the general map display does not have focus). */
+	virtual void process_focus_keydown_event(const SDL_Event& /*event*/)
+	{
+		// No action by default
+	}
 
-	/**
-	 * Process keydown (always).
-	 * Overridden in derived classes
-	 */
-	virtual void process_keydown_event(const SDL_Event& event);
+	/** Process keydown (always). Overridden in derived classes */
+	virtual void process_keydown_event(const SDL_Event& /*event*/)
+	{
+		// No action by default
+	}
 
-	/**
-	 * Process keyup (always).
-	 * Overridden in derived classes
-	 */
-	virtual void process_keyup_event(const SDL_Event& event);
+	/** Process keyup (always). * Overridden in derived classes */
+	virtual void process_keyup_event(const SDL_Event& /*event*/)
+	{
+		// No action by default
+	}
 
 	virtual void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
 	virtual void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
@@ -144,11 +179,14 @@ protected:
 	virtual bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 
 	const config& game_config_;
+
 	CKey key_;
+
 	bool scrolling_;
 	bool scroll_up_;
 	bool scroll_down_;
 	bool scroll_left_;
 	bool scroll_right_;
+
 	joystick_manager joystick_manager_;
 };

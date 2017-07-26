@@ -712,10 +712,10 @@ int game_lua_kernel::intf_fire_event(lua_State *L, const bool by_id)
 	bool b = false;
 
 	if (by_id) {
-	  b = play_controller_.pump().fire("", m, l1, l2, data);
+	  b = std::get<0>(play_controller_.pump().fire("", m, l1, l2, data));
 	}
 	else {
-	  b = play_controller_.pump().fire(m, l1, l2, data);
+	  b = std::get<0>(play_controller_.pump().fire(m, l1, l2, data));
 	}
 	lua_pushboolean(L, b);
 	return 1;
@@ -2570,7 +2570,7 @@ int game_lua_kernel::intf_play_sound(lua_State *L)
 static int intf_sound_volume(lua_State* L)
 {
 	int vol = preferences::sound_volume();
-	lua_pushnumber(L, sound::get_sound_volume() * 100.0f / vol);
+	lua_pushnumber(L, sound::get_sound_volume() * 100.0 / vol);
 	if(lua_isnumber(L, 1)) {
 		float rel = lua_tonumber(L, 1);
 		if(rel < 0.0f || rel > 100.0f) {
@@ -3528,11 +3528,17 @@ int game_lua_kernel::intf_allow_end_turn(lua_State * L)
 int game_lua_kernel::intf_allow_undo(lua_State * L)
 {
 	if(lua_isboolean(L, 1)) {
-		play_controller_.pump().context_mutated(!luaW_toboolean(L, 1));
+		play_controller_.pump().set_undo_disabled(!luaW_toboolean(L, 1));
 	}
 	else {
-		play_controller_.pump().context_mutated(false);
+		play_controller_.pump().set_undo_disabled(false);
 	}
+	return 0;
+}
+
+int game_lua_kernel::intf_cancel_action(lua_State*)
+{
+	play_controller_.pump().action_canceled();
 	return 0;
 }
 
@@ -3997,6 +4003,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "allow_end_turn",            &dispatch<&game_lua_kernel::intf_allow_end_turn             >        },
 		{ "allow_undo",                &dispatch<&game_lua_kernel::intf_allow_undo                 >        },
 		{ "append_ai",                 &intf_append_ai                                                      },
+		{ "cancel_action",             &dispatch<&game_lua_kernel::intf_cancel_action              >        },
 		{ "clear_menu_item",           &dispatch<&game_lua_kernel::intf_clear_menu_item            >        },
 		{ "clear_messages",            &dispatch<&game_lua_kernel::intf_clear_messages             >        },
 		{ "color_adjust",              &dispatch<&game_lua_kernel::intf_color_adjust               >        },

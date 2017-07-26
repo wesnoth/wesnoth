@@ -84,6 +84,21 @@ public:
 	void set_size(const int w, const int h);
 
 	/**
+	 * Gets the window's size, in screen coordinates.
+	 *
+	 * For the most part, this seems to return the same result as @ref get_output_size. However,
+	 * SDL indicates for high DPI displays these two functions could differ. I could not observe
+	 * any change in behavior with DPI virtualization on or off, but to be safe, I'm keeping the
+	 * two functions seperate and using this for matters of window resolution.
+	 *
+	 * - vultraz, 6/27/2017
+	 */
+	SDL_Point get_size();
+
+	/** Gets the window's renderer output size, in pixels */
+	SDL_Point get_output_size();
+
+	/**
 	 * Dummy function for centering the window.
 	 */
 	void center();

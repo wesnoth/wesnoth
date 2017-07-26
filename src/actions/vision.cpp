@@ -543,13 +543,13 @@ void shroud_clearer::drop_events()
  * Fires the sighted events that were recorded by earlier fog/shroud clearing.
  * @return true if the events have mutated the game state.
  */
-bool shroud_clearer::fire_events()
+game_events::pump_result_t shroud_clearer::fire_events()
 {
 	const unit_map & units = resources::gameboard->units();
 
 	// Possible/probable quick abort.
 	if ( sightings_.empty() )
-		return false;
+		return game_events::pump_result_t();
 
 	// In case of exceptions, clear sightings_ before processing events.
 	std::vector<sight_data> sight_list;
@@ -619,7 +619,7 @@ std::vector<int> get_sides_not_seeing(const unit & target)
  *
  * @returns true if an event has mutated the game state.
  */
-bool actor_sighted(const unit & target, const std::vector<int> * cache)
+game_events::pump_result_t actor_sighted(const unit & target, const std::vector<int> * cache)
 /* Current logic:
  * 1) One event is fired per side that can see the target.
  * 2) The second unit for the event is one that can see the target, if possible.

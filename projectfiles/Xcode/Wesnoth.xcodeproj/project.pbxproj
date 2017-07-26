@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1EF6CE8214D9846D00ECBE58 /* mp_host_game_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */; };
+		468C1B971F09245F002DF652 /* function_gamestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468C1B951F09245E002DF652 /* function_gamestate.cpp */; };
 		4944F40D1354FB760027E614 /* drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40C1354FB760027E614 /* drawing.cpp */; };
 		4944F4121354FB970027E614 /* debug_clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40E1354FB970027E614 /* debug_clock.cpp */; };
 		4944F4131354FB970027E614 /* mp_login.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40F1354FB970027E614 /* mp_login.cpp */; };
@@ -509,7 +510,6 @@
 		91C548F61D8870F800FE6A7B /* preprocessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AD0EC62181008DD061 /* preprocessor.cpp */; };
 		91C554601D73F997002DB0C8 /* faction_select.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C5545E1D73F997002DB0C8 /* faction_select.cpp */; };
 		91C554611D73F997002DB0C8 /* faction_select.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C5545E1D73F997002DB0C8 /* faction_select.cpp */; };
-		91C554671D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C554661D77A545002DB0C8 /* libpcre.1.dylib */; };
 		91C554681D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C554661D77A545002DB0C8 /* libpcre.1.dylib */; };
 		91C554691D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C554661D77A545002DB0C8 /* libpcre.1.dylib */; };
 		91C55DA41CC078820040012E /* context_free_grammar_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C55DA21CC078820040012E /* context_free_grammar_generator.cpp */; };
@@ -1390,6 +1390,8 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_host_game_prompt.cpp; sourceTree = "<group>"; };
 		1EF6CE8114D9846D00ECBE58 /* mp_host_game_prompt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_host_game_prompt.hpp; sourceTree = "<group>"; };
+		468C1B951F09245E002DF652 /* function_gamestate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = function_gamestate.cpp; sourceTree = "<group>"; };
+		468C1B961F09245E002DF652 /* function_gamestate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = function_gamestate.hpp; sourceTree = "<group>"; };
 		4944F40C1354FB760027E614 /* drawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drawing.cpp; sourceTree = "<group>"; };
 		4944F40E1354FB970027E614 /* debug_clock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = debug_clock.cpp; sourceTree = "<group>"; };
 		4944F40F1354FB970027E614 /* mp_login.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_login.cpp; sourceTree = "<group>"; };
@@ -2742,7 +2744,6 @@
 				B55999270EC61F59008DD061 /* SDL2_mixer.framework in Frameworks */,
 				B5599E9C0EC68BF2008DD061 /* SDL2_ttf.framework in Frameworks */,
 				B55998F80EC61EA5008DD061 /* SDL2.framework in Frameworks */,
-				91C554671D77A545002DB0C8 /* libpcre.1.dylib in Frameworks */,
 				915C68F41DF1F78600594B07 /* libintl.8.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3647,6 +3648,8 @@
 				B5599A8C0EC62181008DD061 /* formula.cpp */,
 				B5599A8B0EC62181008DD061 /* formula.hpp */,
 				B5599A840EC62181008DD061 /* formula_fwd.hpp */,
+				468C1B951F09245E002DF652 /* function_gamestate.cpp */,
+				468C1B961F09245E002DF652 /* function_gamestate.hpp */,
 				B5599A860EC62181008DD061 /* function.cpp */,
 				B5599A850EC62181008DD061 /* function.hpp */,
 				B52EE8AA121359A600CFBDAB /* string_utils.cpp */,
@@ -4684,6 +4687,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Wesnoth" */;
 			buildPhases = (
+				46B626461D635BC900863502 /* Update Revision.h */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				8D1107290486CEB800E47090 /* Resources */,
@@ -4821,6 +4825,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		46B626461D635BC900863502 /* Update Revision.h */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Update Revision.h";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$SOURCE_ROOT/../..\"\n./utils/autorevision.sh -t h > src/revision.h";
+		};
 		91C2A6EB1B843AA900346948 /* Copy Translations (if present) */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -5067,6 +5085,7 @@
 				F46C5DD413A5089100DD0816 /* lua_object.cpp in Sources */,
 				ECC2FFFA1A51A00900023AF4 /* lua_race.cpp in Sources */,
 				ECA4A67D1A1EC319006BCCF2 /* lua_rng.cpp in Sources */,
+				468C1B971F09245F002DF652 /* function_gamestate.cpp in Sources */,
 				ECE09A551EBA529D0020C97B /* parser.cpp in Sources */,
 				EC5430231A4E6024006D206C /* lua_team.cpp in Sources */,
 				EC5430241A4E6024006D206C /* lua_unit_type.cpp in Sources */,
@@ -6153,6 +6172,7 @@
 					"LUA_USE_MACOSX=1",
 					"HAVE_LIBPNG=1",
 					"HAVE_HISTORY=1",
+					"LOAD_REVISION=1",
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";

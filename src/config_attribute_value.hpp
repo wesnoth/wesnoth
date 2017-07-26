@@ -188,7 +188,7 @@ public:
 	std::string str(const std::string& fallback = "") const;
 	t_string t_str() const;
 	/**
-		@param T a type created with MAKE_ENUM macro
+		@tparam T a type created with MAKE_ENUM macro
 		NOTE: since T::VALUE constants is not of type T but of the underlying enum type you must specify the template parameter explicitly
 		TODO: Fix this in c++11 using constexpr types.
 	*/

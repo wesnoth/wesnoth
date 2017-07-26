@@ -481,42 +481,6 @@ void command_executor::get_menu_images(display& disp, std::vector<config>& items
 	}
 }
 
-basic_handler::basic_handler(command_executor* exec) : exec_(exec) {}
-
-void basic_handler::handle_event(const SDL_Event& event)
-{
-
-	switch (event.type) {
-	case SDL_KEYDOWN:
-	case SDL_KEYUP:
-		// If we're in a dialog we only want to handle items that are explicitly
-		// handled by the executor.
-		// If we're not in a dialog we can call the regular key event handler.
-		if (!gui::in_dialog()) {
-			key_event(event,exec_);
-		} else if (exec_ != nullptr) {
-			event_execute(event,exec_);
-		}
-		break;
-	case SDL_JOYBUTTONDOWN:
-	case SDL_JOYBUTTONUP:
-		if (!gui::in_dialog()) {
-			jbutton_event(event,exec_);
-		} else if (exec_ != nullptr) {
-			event_execute(event,exec_);
-		}
-		break;
-	case SDL_MOUSEBUTTONDOWN:
-	case SDL_MOUSEBUTTONUP:
-		if (!gui::in_dialog()) {
-			mbutton_event(event,exec_);
-		} else if (exec_ != nullptr) {
-			event_execute(event,exec_);
-		}
-		break;
-	}
-}
-
 void mbutton_event(const SDL_Event& event, command_executor* executor)
 {
 	event_execute(event, executor);

@@ -288,7 +288,7 @@ namespace implementation
  * @param event                   The event to test.
  * @param dispatcher              The final widget to test, this is also the
  *                                dispatcher the sends the event.
- * @param widget                  The widget should parent(s) to check.
+ * @param w                       The widget should parent(s) to check.
  *
  * @returns                       The list of widgets with a handler.
  *                                The order will be (assuming all have a

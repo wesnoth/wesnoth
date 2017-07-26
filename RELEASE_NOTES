@@ -23,10 +23,18 @@ CHANGES
 
 [rawarn="Deprecations and breaking changes"]
 [list]
-[*] example entry
+[*] moveto and enter_hex, exit_hex event no longer abort the movement, [cancel_action] must be used to cancel the current move.
+[*] The allow_new_game= attribute in [scenario] now defaults to false (it still defaults to tru in [multiplayer]) 
+[*] In gui2 dialogs/widgets [resolution] window_width/height now specifies the minimum window size for that resolution ot be chosen 
 [/list]
 [/rawarn]
 
+
+ [rasection="New lua/wml features"]
+ [list]
+ [*] formula code is now supported in abilities and weapon specials
+ [/list]
+ [/rasection]
 
 ==========
 KNOWN BUGS

@@ -55,6 +55,10 @@
 
 #include <cmath>
 
+#ifdef _WIN32
+#include <Windows.h>
+#endif
+
 // Includes for bug #17573
 
 static lg::log_domain log_display("display");
@@ -177,7 +181,7 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 	reports_object_(&reports_object),
 	scroll_event_("scrolled"),
 	complete_redraw_event_("completely_redrawn"),
-	nextDraw_(0),
+	frametimes_(50),
 	reportRects_(),
 	reportSurfaces_(),
 	reports_(),
@@ -248,10 +252,18 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 		create_buttons();
 	}
 
+#ifdef _WIN32
+	// Increase timer resolution to prevent delays getting much longer than they should.
+	timeBeginPeriod(1u);
+#endif
 }
 
 display::~display()
 {
+#ifdef _WIN32
+	timeEndPeriod(1u);
+#endif
+
 	singleton_ = nullptr;
 	resources::fake_units = nullptr;
 }
@@ -1661,9 +1673,10 @@ void display::draw_init()
 
 void display::draw_wrap(bool update, bool force)
 {
-	static const int time_between_draws = preferences::draw_delay();
-	const int current_time = SDL_GetTicks();
-	const int wait_time = nextDraw_ - current_time;
+	static int time_between_draws = preferences::draw_delay();
+	if(time_between_draws == 0) {
+		time_between_draws = 1000 / screen_.current_refresh_rate();
+	}
 
 	if(redrawMinimap_) {
 		redrawMinimap_ = false;
@@ -1672,20 +1685,17 @@ void display::draw_wrap(bool update, bool force)
 
 	if(update) {
 		update_display();
+
+		frametimes_.push_back(SDL_GetTicks() - last_frame_finished_);
+		int longest_frame = *std::max_element(frametimes_.begin(), frametimes_.end());
+		int wait_time = time_between_draws - longest_frame;
+
 		if(!force && !benchmark && wait_time > 0) {
 			// If it's not time yet to draw, delay until it is
 			SDL_Delay(wait_time);
 		}
 
-		// Set the theoretical next draw time
-		nextDraw_ += time_between_draws;
-
-		// If the next draw already should have been finished,
-		// we'll enter an update frenzy, so make sure that the
-		// too late value doesn't keep growing.
-		// Note: if force is used too often,
-		// we can also get the opposite effect.
-		nextDraw_ = std::max<int>(nextDraw_, SDL_GetTicks());
+		last_frame_finished_ = SDL_GetTicks();
 	}
 }
 

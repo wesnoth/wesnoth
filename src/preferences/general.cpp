@@ -49,7 +49,7 @@ bool no_preferences_save = false;
 
 bool fps = false;
 
-int draw_delay_ = 20;
+int draw_delay_ = 0;
 
 config prefs;
 }

@@ -217,11 +217,6 @@ void game_display::scroll_to_leader(int side, SCROLL_TYPE scroll_type,bool force
 	unit_map::const_iterator leader = dc_->units().find_leader(side);
 
 	if(leader.valid()) {
-		// YogiHH: I can't see why we need another key_handler here,
-		// therefore I will comment it out :
-		/*
-		const hotkey::basic_handler key_events_handler(gui_);
-		*/
 		scroll_to_tile(leader->get_location(), scroll_type, true, force);
 	}
 }

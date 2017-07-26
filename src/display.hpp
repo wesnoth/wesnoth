@@ -63,7 +63,10 @@ namespace wb {
 
 #include "overlay.hpp"
 
+#include <boost/circular_buffer.hpp>
+
 #include "utils/functional.hpp"
+#include <cstdint>
 #include <deque>
 #include <list>
 #include <map>
@@ -206,8 +209,8 @@ public:
 	 * mapx is the width of the portion of the display which shows the game area.
 	 * Between mapx and x is the sidebar region.
 	 */
-	int w() const { return screen_.getx(); }	/**< width */
-	int h() const { return screen_.gety(); }	/**< height */
+	int w() const { return screen_.get_window() ? screen_.get_window()->get_output_size().x : 0; }	/**< width */
+	int h() const { return screen_.get_window() ? screen_.get_window()->get_output_size().y : 0; }	/**< height */
 	const SDL_Rect& minimap_area() const
 		{ return theme_.mini_map_location(screen_area()); }
 	const SDL_Rect& palette_area() const
@@ -738,11 +741,8 @@ protected:
 	 */
 	events::generic_event complete_redraw_event_;
 
-	/**
-	 * Holds the tick count for when the next drawing event is scheduled.
-	 * Drawing shouldn't occur before this time.
-	 */
-	int nextDraw_;
+	boost::circular_buffer<unsigned> frametimes_; // in milliseconds
+	uint32_t last_frame_finished_ = 0u;
 
 	// Not set by the initializer:
 	std::map<std::string, SDL_Rect> reportRects_;
@@ -1029,8 +1029,6 @@ private:
 	tod_color color_adjust_;
 
 	bool dirty_;
-
-
 
 public:
 	void replace_overlay_map(overlay_map* overlays) { overlays_ = overlays; }

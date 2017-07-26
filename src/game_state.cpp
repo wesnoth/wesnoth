@@ -190,7 +190,7 @@ void game_state::init(const config& level, play_controller & pc)
 	{
 		if (first_human_team_ == -1) {
 			const std::string &controller = side["controller"];
-			if (controller == "human") {
+			if (controller == "human" && side["is_local"].to_bool(true)) {
 				first_human_team_ = team_num;
 			}
 		}

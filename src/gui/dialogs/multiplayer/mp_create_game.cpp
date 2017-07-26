@@ -790,14 +790,16 @@ void mp_create_game::post_show(window& window)
 		const auto& tagname = create_engine_.get_state().classification().get_tagname();
 
 		if(tagname == "scenario") {
+			const std::string first_scenario = create_engine_.current_level().data()["first_scenario"];
 			for(const config& scenario : game_config_manager::get()->game_config().child_range(tagname)) {
-				if(scenario["allow_new_game"].to_bool(true) || game_config::debug) {
+				const bool is_first = scenario["id"] == first_scenario;
+				if(scenario["allow_new_game"].to_bool(false) || is_first || game_config::debug ) {
 					const std::string& title = !scenario["new_game_title"].empty()
 						? scenario["new_game_title"]
 						: scenario["name"];
 
-					entry_points.push_back(&scenario);
-					entry_point_titles.push_back(title);
+					entry_points.insert(is_first ? entry_points.begin() : entry_points.end(), &scenario);
+					entry_point_titles.insert(is_first ? entry_point_titles.begin() : entry_point_titles.end(), title);
 				}
 			}
 		}

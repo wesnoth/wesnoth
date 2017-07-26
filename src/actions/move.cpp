@@ -136,12 +136,12 @@ void move_unit_spectator::set_unit(const unit_map::const_iterator &u)
 }
 
 
-bool get_village(const map_location& loc, int side, bool *action_timebonus, bool fire_event)
+game_events::pump_result_t get_village(const map_location& loc, int side, bool *action_timebonus, bool fire_event)
 {
 	std::vector<team> &teams = resources::gameboard->teams();
 	team *t = unsigned(side - 1) < teams.size() ? &teams[side - 1] : nullptr;
 	if (t && t->owns_village(loc)) {
-		return false;
+		return game_events::pump_result_t();
 	}
 
 	bool not_defeated = t && !resources::gameboard->team_is_defeated(*t);
@@ -164,8 +164,10 @@ bool get_village(const map_location& loc, int side, bool *action_timebonus, bool
 		}
 	}
 
-	if (!t) return false;
-
+	if (!t) {
+		return game_events::pump_result_t();
+	}
+	
 	if(grants_timebonus) {
 		t->set_action_bonus_count(1 + t->action_bonus_count());
 		*action_timebonus = true;
@@ -178,7 +180,7 @@ bool get_village(const map_location& loc, int side, bool *action_timebonus, bool
 		return t->get_village(loc, old_owner_side, fire_event ? resources::gamedata : nullptr);
 	}
 
-	return false;
+	return game_events::pump_result_t();
 }
 
 
@@ -222,7 +224,7 @@ namespace { // Private helpers for move_unit()
 		bool interrupted(bool include_end_of_move_events=true) const
 		{
 			return ambushed_ || blocked() || sighted_ || teleport_failed_ ||
-			       (include_end_of_move_events ? event_mutated_ : event_mutated_mid_move_ ) ||
+			       (include_end_of_move_events ? (wml_removed_unit_ || wml_move_aborted_): event_mutated_mid_move_ ) ||
 			       !move_it_.valid();
 		}
 
@@ -233,7 +235,7 @@ namespace { // Private helpers for move_unit()
 		void cache_hidden_units(const route_iterator & start,
 		                        const route_iterator & stop);
 		/// Fires the enter_hex or exit_hex event and updates our data as needed.
-		bool fire_hex_event(const std::string & event_name,
+		void fire_hex_event(const std::string & event_name,
 		                    const route_iterator & current,
 	                        const route_iterator & other);
 		/// AI moves are supposed to not change the "goto" order.
@@ -242,8 +244,8 @@ namespace { // Private helpers for move_unit()
 		route_iterator plot_turn(const route_iterator & start,
 		                         const route_iterator & stop);
 		/// Updates our stored info after a WML event might have changed something.
-		bool post_wml(const route_iterator & step);
-		bool post_wml() { return post_wml(full_end_); }
+		void post_wml(game_events::pump_result_t pump_res, const route_iterator & step);
+		void post_wml(game_events::pump_result_t pump_res) { return post_wml(pump_res, full_end_); }
 		/// Fires the sighted events that were raised earlier.
 		void pump_sighted(const route_iterator & from);
 		/// Returns the ambush alert (if any) for the given unit.
@@ -253,7 +255,7 @@ namespace { // Private helpers for move_unit()
 
 		/// Returns whether or not undoing this move should be blocked.
 		bool undo_blocked() const
-		{ return ambushed_ || blocked() || event_mutated_ || fog_changed_ ||
+		{ return ambushed_ || blocked() || wml_removed_unit_ || wml_undo_disabled_ || fog_changed_ ||
 		         teleport_failed_; }
 
 		// The remaining private functions are suggested to be inlined because
@@ -319,8 +321,10 @@ namespace { // Private helpers for move_unit()
 		map_location blocked_loc_; // Location of a blocking, enemy, non-ambusher unit.
 		bool ambushed_;
 		bool show_ambush_alert_;
-		bool event_mutated_;
-		bool event_mutated_mid_move_; // Cache of event_mutated_ from just before the end-of-move handling.
+		bool wml_removed_unit_;
+		bool wml_undo_disabled_;
+		bool wml_move_aborted_;
+		bool event_mutated_mid_move_; // Cache of wml_removed_unit_ || wml_move_aborted_ from just before the end-of-move handling.
 		bool fog_changed_;
 		bool sighted_;	// Records if sightings were made that could interrupt movement.
 		bool sighted_stop_;	// Records if sightings were made that did interrupt movement (the same as sighted_ unless movement ended for another reason).
@@ -342,51 +346,49 @@ namespace { // Private helpers for move_unit()
 	/// affects whether or not gotos are changed).
 	unit_mover::unit_mover(const std::vector<map_location> & route,
 	                       move_unit_spectator *move_spectator,
-	                       bool skip_sightings, bool skip_ally_sightings) :
-		spectator_(move_spectator),
-		skip_sighting_(skip_sightings),
-		skip_ally_sighting_(skip_ally_sightings),
-		playing_team_is_viewing_(resources::screen->playing_team() ==
-		                         resources::screen->viewing_team()
-		                         ||  resources::screen->show_everything()),
-		route_(route),
-		begin_(route.begin()),
-		full_end_(route.end()),
-		expected_end_(begin_),
-		ambush_limit_(begin_),
-		obstructed_(full_end_),
-		real_end_(begin_),
+	                       bool skip_sightings, bool skip_ally_sightings)
+		: spectator_(move_spectator)
+		, skip_sighting_(skip_sightings)
+		, skip_ally_sighting_(skip_ally_sightings)
+		, playing_team_is_viewing_(resources::screen->playing_team() == resources::screen->viewing_team() ||  resources::screen->show_everything())
+		, route_(route)
+		, begin_(route.begin())
+		, full_end_(route.end())
+		, expected_end_(begin_)
+		, ambush_limit_(begin_)
+		, obstructed_(full_end_)
+		, real_end_(begin_)
 		// Unit information:
-		move_it_(resources::gameboard->units().find(*begin_)),
-		orig_side_(( assert(move_it_ != resources::gameboard->units().end()),
-		             move_it_->side() )),
-		orig_moves_(move_it_->movement_left()),
-		orig_dir_(move_it_->facing()),
-		goto_( is_ai_move() ? move_it_->get_goto() : route.back() ),
-		current_side_(orig_side_),
-		current_team_(&resources::gameboard->get_team(current_side_)),
-		current_uses_fog_(current_team_->fog_or_shroud()  &&
-		                  current_team_->auto_shroud_updates()),
-		move_loc_(begin_),
-		do_move_track_(resources::game_events->pump().wml_tracking()),
+		, move_it_(resources::gameboard->units().find(*begin_))
+		, orig_side_(( assert(move_it_ != resources::gameboard->units().end()), move_it_->side() ))
+		, orig_moves_(move_it_->movement_left())
+		, orig_dir_(move_it_->facing())
+		, goto_( is_ai_move() ? move_it_->get_goto() : route.back() )
+		, current_side_(orig_side_)
+		, current_team_(&resources::gameboard->get_team(current_side_))
+		, current_uses_fog_(current_team_->fog_or_shroud() && current_team_->auto_shroud_updates())
+		, move_loc_(begin_)
+		, do_move_track_(resources::game_events->pump().wml_tracking())
 		// The remaining fields are set to some sort of "zero state".
-		zoc_stop_(map_location::null_location()),
-		ambush_stop_(map_location::null_location()),
-		blocked_loc_(map_location::null_location()),
-		ambushed_(false),
-		show_ambush_alert_(false),
-		event_mutated_(false),
-		event_mutated_mid_move_(false),
-		fog_changed_(false),
-		sighted_(false),
-		sighted_stop_(false),
-		teleport_failed_(false),
-		enemy_count_(0),
-		friend_count_(0),
-		ambush_string_(),
-		ambushers_(),
-		moves_left_(),
-		clearer_()
+		, zoc_stop_(map_location::null_location())
+		, ambush_stop_(map_location::null_location())
+		, blocked_loc_(map_location::null_location())
+		, ambushed_(false)
+		, show_ambush_alert_(false)
+		, wml_removed_unit_(false)
+		, wml_undo_disabled_(false)
+		, wml_move_aborted_(false)
+		, event_mutated_mid_move_(false)
+		, fog_changed_(false)
+		, sighted_(false)
+		, sighted_stop_(false)
+		, teleport_failed_(false)
+		, enemy_count_(0)
+		, friend_count_(0)
+		, ambush_string_()
+		, ambushers_()
+		, moves_left_()
+		, clearer_()
 	{
 		if ( !is_ai_move() )
 			// Clear the "goto" instruction during movement.
@@ -718,27 +720,15 @@ namespace { // Private helpers for move_unit()
 	 * @param[in]  current     The currently occupied hex.
 	 * @param[in]  other       The secondary hex to provide to the event.
 	 *
-	 * @return true if this event should interrupt movement.
-	 * (This is also stored in event_mutated_.)
 	 */
-	bool unit_mover::fire_hex_event(const std::string & event_name,
+	void unit_mover::fire_hex_event(const std::string & event_name,
 		                            const route_iterator & current,
 	                                const route_iterator & other)
 	{
-		const size_t track = resources::game_events->pump().wml_tracking();
-		bool valid = true;
 
 		const game_events::entity_location mover(*move_it_, *current);
-		const bool event = resources::game_events->pump().fire(event_name, mover, *other);
 
-		if (track != resources::game_events->pump().wml_tracking()) {
-			// Some WML fired, so update our status.
-			valid = post_wml(current);
-		}
-		if (event || !valid) {
-			event_mutated_ = true;
-		}
-		return event || !valid;
+		post_wml(resources::game_events->pump().fire(event_name, mover, *other), current);
 	}
 
 
@@ -814,8 +804,11 @@ namespace { // Private helpers for move_unit()
 	 *
 	 * @returns false if continuing is impossible (i.e. we lost the moving unit).
 	 */
-	bool unit_mover::post_wml(const route_iterator & step)
+	void unit_mover::post_wml(game_events::pump_result_t pump_res, const route_iterator & step)
 	{
+		wml_move_aborted_ |= std::get<1>(pump_res);
+		wml_undo_disabled_ |= std::get<0>(pump_res);
+
 		// Re-find the moving unit.
 		move_it_ = resources::gameboard->units().find(*move_loc_);
 		const bool found = move_it_ != resources::gameboard->units().end();
@@ -837,7 +830,7 @@ namespace { // Private helpers for move_unit()
 			}
 		}
 
-		return found;
+		wml_removed_unit_ |= !found;
 	}
 
 
@@ -846,22 +839,18 @@ namespace { // Private helpers for move_unit()
 	 *
 	 * @param[in]  from  Points to the hex the sighting unit currently occupies.
 	 *
-	 * @return sets event_mutated_ to true if this event should interrupt movement.
+	 * @return sets event_mutated_ || wml_move_aborted_ to true if this event should interrupt movement.
 	 */
 	void unit_mover::pump_sighted(const route_iterator & from)
 	{
 		const size_t track = resources::game_events->pump().wml_tracking();
-		bool valid = true;
 
-		const bool non_undoable_events_happened = clearer_.fire_events();
+		auto pump_res = clearer_.fire_events();
 
 		if (track != resources::game_events->pump().wml_tracking()) {
 			// Some WML fired, so update our status.
-			valid = post_wml(from);
-		}
-		if (non_undoable_events_happened || !valid) {
-			event_mutated_ = true;
-		}
+			post_wml(pump_res, from);
+		}		
 	}
 
 
@@ -922,8 +911,14 @@ namespace { // Private helpers for move_unit()
 			// Make sure this hex is drawn correctly.
 			disp.invalidate(hex);
 			// Fire sighted events.
-			event_mutated_ |= actor_sighted(*ambusher, &sight_cache);
-			post_wml();
+			
+			bool wml_undo_blocked = false;
+			bool wml_move_aborted = false;
+		
+			std::tie(wml_undo_blocked, wml_move_aborted) = actor_sighted(*ambusher, &sight_cache);
+			// TODO: should we call post_wml ?
+			wml_move_aborted_ |= wml_move_aborted;
+			wml_undo_disabled_ |= wml_undo_blocked;
 		}
 	}
 
@@ -931,7 +926,7 @@ namespace { // Private helpers for move_unit()
 	// Public interface:
 
 	/**
-	 * Determines how far along the route the unit can expect to move this turn.
+		* Determines how far along the route the unit can expect to move this turn.
 	 * This is based solely on data known to the player, and will not plot a move
 	 * that ends on another (known) unit.
 	 * (For example, this prevents a player from plotting a multi-turn move that
@@ -981,18 +976,17 @@ namespace { // Private helpers for move_unit()
 
 				// See if we can leave *step_from.
 				// Already accounted for: ambusher
-				if ( event_mutated_ )
-				{
+				if ( wml_removed_unit_ || wml_move_aborted_) {
 					break;
 				}
-				if ( sighted_ && is_reasonable_stop(*step_from) )
-				{
+				if ( sighted_ && is_reasonable_stop(*step_from) ) {
 					sighted_stop_ = true;
 					break;
 				}
 				// Already accounted for: ZoC
 				// Already accounted for: movement cost
-				if ( fire_hex_event(exit_hex_str, step_from, real_end_) ) {
+				fire_hex_event(exit_hex_str, step_from, real_end_);
+				if (wml_removed_unit_ || wml_move_aborted_) {
 					break;
 				}
 				if ( real_end_ == obstructed_ ) {
@@ -1011,7 +1005,7 @@ namespace { // Private helpers for move_unit()
 
 				// Fire the events for this step.
 				// (These return values are not checked since real_end_ still
-				// needs to be incremented. The event_mutated_ check will break
+				// needs to be incremented. The wml_move_aborted_ check will break
 				// us out of the loop if needed.)
 				fire_hex_event(enter_hex_str, real_end_, step_from);
 				// Sighted events only fire if we could stop due to sighting.
@@ -1026,7 +1020,14 @@ namespace { // Private helpers for move_unit()
 				// Finish animating.
 				animator.finish(move_it_.get_shared_ptr());
 				// Check for the moving unit being seen.
-				event_mutated_ |= actor_sighted(*move_it_, &not_seeing);
+
+				bool wml_undo_blocked = false;
+				bool wml_move_aborted = false;
+
+				std::tie(wml_undo_blocked, wml_move_aborted) = actor_sighted(*move_it_, &not_seeing);
+				// TODO: should we call post_wml ?
+				wml_move_aborted_ |= wml_move_aborted;
+				wml_undo_disabled_ |= wml_undo_blocked;
 			}
 		}//if
 
@@ -1039,7 +1040,7 @@ namespace { // Private helpers for move_unit()
 		teleport_failed_ = teleport_failed_ && obstructed_stop;
 		// event_mutated_ does not get unset, regardless of other reasons
 		// for stopping, but we do save its current value.
-		event_mutated_mid_move_ = event_mutated_;
+		event_mutated_mid_move_ = wml_removed_unit_ || wml_move_aborted_;
 	}
 
 
@@ -1080,15 +1081,13 @@ namespace { // Private helpers for move_unit()
 				if ( orig_village_owner != current_side_) {
 					// Captured. Zap movement and take over the village.
 					move_it_->set_movement(0, true);
-					event_mutated_ |= get_village(final_loc, current_side_, &action_time_bonus);
-					post_wml();
+					post_wml(get_village(final_loc, current_side_, &action_time_bonus));
 				}
 			}
 		}
 
 		// Finally, the moveto event.
-		event_mutated_ |= resources::game_events->pump().fire("moveto", final_loc, *begin_);
-		post_wml();
+		post_wml(resources::game_events->pump().fire("moveto", final_loc, *begin_));
 
 		// Record keeping.
 		if (spectator_) {

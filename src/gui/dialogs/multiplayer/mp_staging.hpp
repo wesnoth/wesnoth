@@ -72,7 +72,7 @@ private:
 	void set_state_changed()
 	{
 		state_changed_ = true;
-	};
+	}
 
 	ng::connect_engine& connect_engine_;
 

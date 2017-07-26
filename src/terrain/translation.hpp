@@ -247,7 +247,7 @@ namespace t_translation {
 	 *					  [S ]T
 	 *					  S = starting location a positive non-zero number
 	 *					  T = terrain code (see read_terrain_code)
-	 * @param starting_positions This parameter will be filled with the starting
+	 * @param positions This parameter will be filled with the starting
 	 *					locations found. Starting locations can only occur once
 	 *					if multiple definitions occur of the same position only
 	 *					the last is stored. The returned value is a map:
@@ -263,7 +263,7 @@ namespace t_translation {
 	 * Write a gamemap in to a vector string.
 	 *
 	 * @param map				 A terrain vector, as returned from read_game_map
-	 * @param starting_positions A starting positions map, as returned from read_game_map
+	 * @param positions A starting positions map, as returned from read_game_map
 	 *
 	 * @returns			A terrain string which can be read with read_game_map.
 	 *					For readability the map is padded to groups of 12 chars,

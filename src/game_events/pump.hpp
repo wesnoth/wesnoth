@@ -27,6 +27,7 @@
 
 #pragma once
 
+#include "game_events/fwd.hpp"
 #include "game_events/entity_location.hpp"
 #include "game_events/handlers.hpp"
 #include "game_events/manager.hpp"
@@ -82,12 +83,20 @@ public:
 
 	/**
 	 * Context: The general environment within which events are processed.
-	 * Returns whether or not we believe WML might have changed something.
+	 * Returns whether or not audoing is impossible due to wml.
 	 */
-	bool context_mutated();
+	bool undo_disabled();
 
-	/** Sets whether or not we believe WML might have changed something. */
-	void context_mutated(bool mutated);
+	/** [allow_undo] implementation */
+	void set_undo_disabled(bool mutated);
+
+	/**
+	 * Returns whether or not wml wants to abort the currently executed user action.
+	 */
+	bool action_canceled();
+
+	/** Sets whether or not wml wants to abort the currently executed user action. */
+	void set_action_canceled();
 
 	/** Returns whether or not we are skipping messages. */
 	bool context_skip_messages();
@@ -106,12 +115,12 @@ public:
 	 *
 	 * Events may have up to two arguments, both of which must be locations.
 	 */
-	bool fire(const std::string& event,
+	pump_result_t fire(const std::string& event,
 			const entity_location& loc1 = entity_location::null_entity,
 			const entity_location& loc2 = entity_location::null_entity,
 			const config& data = config());
 
-	bool fire(const std::string& event,
+	pump_result_t fire(const std::string& event,
 			const std::string& id,
 			const entity_location& loc1 = entity_location::null_entity,
 			const entity_location& loc2 = entity_location::null_entity,
@@ -131,7 +140,7 @@ public:
 		raise(event, "", loc1, loc2, data);
 	}
 
-	bool operator()();
+	pump_result_t operator()();
 
 	/** Flushes WML messages and errors. */
 	void flush_messages();
@@ -142,7 +151,7 @@ public:
 private:
 	bool filter_event(const event_handler& handler, const queued_event& ev);
 
-	bool process_event(handler_ptr& handler_p, const queued_event& ev);
+	void process_event(handler_ptr& handler_p, const queued_event& ev);
 
 	void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source);
 

@@ -515,15 +515,22 @@ config map_context::to_config()
 				config& u = side.add_child("unit");
 				i->get_location().write(u);
 				u["type"] = i->type_id();
-				u["canrecruit"] = i->can_recruit();
-				u["unrenamable"] = i->unrenamable();
-    				if(!boost::regex_match(i->id(), boost::regex(".*-[0-9]+")))
-    				{
+				u["name"] = i->name();
+				u["facing"] = map_location::write_direction(i->facing());
+
+    				if(!boost::regex_match(i->id(), boost::regex(".*-[0-9]+"))) {
 					u["id"] = i->id();
     				}
-				u["name"] = i->name();
-				u["extra_recruit"] = utils::join(i->recruits());
-				u["facing"] = map_location::write_direction(i->facing());
+
+				if(i->can_recruit()) {
+					u["canrecruit"] = i->can_recruit();
+				}
+				if(i->unrenamable()) {
+					u["unrenamable"] = i->unrenamable();
+				}
+				if(!i->recruits().empty()) {
+					u["extra_recruit"] = utils::join(i->recruits());
+				}
 			}
 		}
 	}

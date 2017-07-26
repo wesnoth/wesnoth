@@ -141,6 +141,8 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
  */
 std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_loc);
 
+typedef std::tuple<bool /*event modified*/, int /*previous village owner side*/, bool /*capture bonus time*/> place_recruit_result;
+
 /**
  * Place a unit into the game.
  * The unit will be placed on @a recruit_location, which should be retrieved
@@ -148,7 +150,6 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
  * @param facing the desired facing for the unit, map_location::NDIRECTIONS to determine facing automatically.
  * @returns true if an event (or fog clearing) has mutated the game state.
  */
-typedef std::tuple<bool /*event modified*/, int /*previous village owner side*/, bool /*capture bonus time*/> place_recruit_result;
 place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_location, const map_location& recruited_from,
 	int cost, bool is_recall, map_location::DIRECTION facing = map_location::NDIRECTIONS, bool show = false, bool fire_event = true, bool full_movement = false, bool wml_triggered = false);
 

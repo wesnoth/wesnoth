@@ -360,17 +360,13 @@ protected:
 			r.first->second = c;
 		}
 	}
-	virtual void assert_existence(const std::string& cmd) {
-		assert(command_map_.count(cmd));
-	}
+
 	virtual void register_alias(const std::string& to_cmd,
 		const std::string& cmd)
 	{
-		// disable the assert to allow alias to "command + args"
-		// the fonction assert_existence seems unused now
-		//assert_existence(to_cmd);
 		command_alias_map_[cmd] = to_cmd;
 	}
+
 	//get all aliases of a command.
 	static const std::vector<std::string> get_aliases(const std::string& cmd)
 	{

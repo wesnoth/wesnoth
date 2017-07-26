@@ -15,8 +15,9 @@
 #include "addon/info.hpp"
 
 #include "addon/manager.hpp"
-#include "game_config.hpp"
 #include "config.hpp"
+#include "font/pango/escape.hpp"
+#include "game_config.hpp"
 #include "gettext.hpp"
 #include "image.hpp"
 #include "log.hpp"
@@ -124,9 +125,9 @@ void addon_info::write_minimal(config& cfg) const
 std::string addon_info::display_title() const
 {
 	if(this->title.empty()) {
-		return make_addon_title(this->id);
+		return font::escape_text(make_addon_title(this->id));
 	} else {
-		return this->title;
+		return font::escape_text(this->title);
 	}
 }
 

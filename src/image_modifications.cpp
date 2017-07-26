@@ -578,7 +578,7 @@ surface cs_modification::operator()(const surface& src) const
 
 surface blend_modification::operator()(const surface& src) const
 {
-	return blend_surface(src, a_, color_t(r_, g_, b_));
+	return blend_surface(src, static_cast<double>(a_), color_t(r_, g_, b_));
 }
 
 surface bl_modification::operator()(const surface& src) const

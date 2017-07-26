@@ -55,6 +55,7 @@
 #include "game_initialization/singleplayer.hpp"             // for sp_create_mode
 #include "statistics.hpp"
 #include "tstring.hpp"                  // for operator==, operator!=
+#include "utils/general.hpp"            // for clamp
 #include "video.hpp"                    // for CVideo
 #include "wesnothd_connection_error.hpp"
 #include "wml_exception.hpp"            // for wml_exception
@@ -187,12 +188,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	if (cmdline_opts_.load)
 		load_data_.reset(new savegame::load_game_metadata{ *cmdline_opts_.load });
 	if (cmdline_opts_.max_fps) {
-		int fps;
-		//FIXME: remove the next line once the weird util.cpp specialized template lexical_cast_default() linking issue is solved
-		fps = lexical_cast_default<int>("", 50);
-		fps = *cmdline_opts_.max_fps;
-		fps = std::min<int>(fps, 1000);
-		fps = std::max<int>(fps, 1);
+		int fps = utils::clamp(*cmdline_opts_.max_fps, 1, 1000);
 		fps = 1000 / fps;
 		// increase the delay to avoid going above the maximum
 		if(1000 % fps != 0) {

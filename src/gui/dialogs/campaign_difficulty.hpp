@@ -34,7 +34,7 @@ class campaign_difficulty : public modal_dialog
 {
 public:
 	/**
-	 * @param config of the campaign difficulty is being chosen for
+	 * @param campaign The campaign the difficulty is being chosen for
 	 */
 	campaign_difficulty(const config& campaign);
 

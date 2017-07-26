@@ -347,9 +347,7 @@ void styled_widget::set_definition(const std::string& definition)
 	load_config();
 	assert(config());
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
 	init();
-#endif
 }
 
 void styled_widget::set_label(const t_string& label)

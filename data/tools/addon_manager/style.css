@@ -1,131 +1,151 @@
-body {
-    background-color:  #fffbf0;
-    margin: 0px;
-    }
-h1 {
-    text-align: center;
-    }
+/*
+ * Wesnoth add-ons server web index stylesheet supplement for Wesmere
+ * <https://github.com/wesnoth/wesmere/>
+ */
 
-div.header {
-    background:#444444 url("http://www.wesnoth.org/mw/skins/glamdrol/headerbg.jpg") repeat-x scroll center top;
-    border-bottom:1px solid #000000;
-    margin:0pt;
-    padding:0pt;
-    width:100%;
-    text-align: center;
+.centerbox,
+#content,
+#footer-content {
+	/* Need some extra space for the list to display in its full glory. */
+	max-width: 76em;
 }
-div.topnav {
-    background:#272727 url("http://www.wesnoth.org/mw/skins/glamdrol/navbg.png") repeat-x scroll center bottom;
-    border-top:1px solid #595959;
-    margin:0pt;
-    padding:3px 4px 15px;
-    text-align:center;
-}
-div.topnav a {
-    color:#B48648;
-    font-family:"Trebuchet MS",sans-serif;
-    line-height:0.8em;
-    font-size:0.8em;
-    font-weight:bold;
-    text-decoration:none;
-}
-div.topnav a:hover {
-    color:#CCCCCC;
-}
-div.main {
-    margin: 0em 1em 0em 1em;
-}
-img {
-    border: none;
-}
-div.header img {
-    vertical-align:middle;
-}
-.hidden {display: none;}
-
-div#footer {
-    clear: both;
-    font-size: 0.7em;
-    line-height:0.7em;
-    border-top: 1px solid black;
-    padding: 1em;
-    color:#333333;
-    font-family:sans-serif;
-    }
 
 table#campaigns th {
-    text-align: left;
+	text-align: left;
 }
 
-table#campaigns td img {
-    float: left;
+div.type-tooltip,
+div.desc-tooltip {
+	display: none;
+	text-align: left;
 }
 
-div.type {
-    display: none;
+tbody td {
+	position: relative;
 }
 
-td:hover div.type {
-    display: block;
-    left: 12px;
-    position: absolute;
-    width: 20em;
-    background-color: #ffffff;
-    border: 1px solid black;
-    padding: 8px;
+td:hover div.type-tooltip,
+td:hover div.desc-tooltip {
+	display:  block;
+	position: absolute;
+	left:     0;
+	top:      100%;
+	width:    16em;
+	padding:  0.3em 0.6em;
+	z-index:  1;
+
+	background-color: #e9dbc2; /* $wui-menu-bg      */
+	border: 1px solid #b48648; /* $wui-text-navlink */
+	box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.2);
+	border-radius: 4px;
 }
 
-div.desc {
-    display: none;
+td:hover div.desc-tooltip {
+	width: 28em;
 }
 
-td:hover div.desc {
-    display: block;
-    left: 72px;
-    position: absolute;
-    width: 20em;
-    background-color: #ffffff;
-    border: 1px solid black;
-    padding: 8px;
+div.desc-tooltip pre {
+	border: none;
+	background: transparent;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	font: inherit;
+	margin: 0;
+	padding: 0;
+	max-height: none;
 }
 
-pre {
-    white-space: pre-wrap;       /* css-3 */
-    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-    white-space: -pre-wrap;      /* Opera 4-6 */
-    white-space: -o-pre-wrap;    /* Opera 7 */
-    word-wrap: break-word;       /* Internet Explorer 5.5+ */
-    font: inherit;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-/* tables */
 table.tablesorter {
 	width: 100%;
 	text-align: left;
 }
+
 table.tablesorter thead tr th, table.tablesorter tfoot tr th {
-	border: 1px solid #000000;
-	padding: 4px;
+	background: #e7d9c0; /* $glamdrol-darkbg */
 }
+
+/* SVG arrows taken and modified from MediaWiki's Vector skin resources */
+
 table.tablesorter thead tr .header {
 	background-image: url(bg.gif);
+	background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2222%22%20height%3D%2216%22%3E%3Cpath%20d%3D%22m%2015.502%2C8.001%20-5%2C5.001%20-5%2C-5.001%20z%22%20fill%3D%22%23888%22%2F%3E%3Cpath%20d%3D%22m%2015.502%2C7.002%20-5%2C-5.001%20-5%2C5.001%20z%22%20fill%3D%22%23888%22%2F%3E%3C%2Fsvg%3E');
 	background-repeat: no-repeat;
 	background-position: center right;
 	cursor: pointer;
 }
+
 table.tablesorter tbody td {
-	padding: 4px;
 	vertical-align: top;
+	background: #fffbf0; /* $glamdrol-bg */
 }
-table.tablesorter tbody tr.odd td {
+
+table.tablesorter tbody tr:nth-child(even) td {
+	background: #f8f2e8; /* lighten($wesmere-page-bg, 4%) */
 }
+
 table.tablesorter thead tr .headerSortUp {
 	background-image: url(asc.gif);
+	background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2222%22%20height%3D%2216%22%3E%3Cpath%20d%3D%22M15.502%206.001l-5%205.001-5-5.001z%22%20fill%3D%22%23333333%22%2F%3E%3C%2Fsvg%3E');
 }
+
 table.tablesorter thead tr .headerSortDown {
 	background-image: url(desc.gif);
+	background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2222%22%20height%3D%2216%22%3E%3Cpath%20d%3D%22m%2015.502%2C11.002%20-5%2C-5.001%20-5%2C5.001%20z%22%20fill%3D%22%23333333%22%2F%3E%3C%2Fsvg%3E');
 }
-table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+
+th.addon-icon {
+	width: 72px;
+	min-width: 72px;
+}
+
+th.addon-name {
+	width: 45%;
+}
+
+th.addon-size,
+th.addon-stats {
+	width: 10%;
+}
+
+th.addon-date,
+th.addon-locales {
+	width: 12%;
+}
+
+td.addon-type {
+	padding-top: 24px; /* a little bit more than 25% image height (72px) */
+}
+
+td.addon-icon {
+	text-align: center;
+}
+
+.addon-meta {
+	font-size: 0.9em;
+}
+
+.addon-meta-label {
+	color: #724f2e; /* $wui-border-dark */
+}
+
+.addon-download {
+	display: block;
+	float: right;
+	margin: 0 0 0.9em 0.9em;
+	text-align: center;
+}
+
+@media screen and (max-width: 699px) {
+	th.addon-icon {
+		min-width: 0;
+	}
+
+	.addon-download {
+		float: none;
+		margin: 0.3em 0.9em;
+	}
+
+	td.addon {
+		text-align: center;
+	}
 }

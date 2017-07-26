@@ -111,7 +111,7 @@ public:
 	/**
 	 * Set the options selected in the menu.
 	 *
-	 * @param mask     A mask specifying which options to select and deselect
+	 * @param states   A mask specifying which options to select and deselect
 	 */
 	void select_options(boost::dynamic_bitset<> states);
 

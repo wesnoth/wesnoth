@@ -166,19 +166,4 @@ void mbutton_event(const SDL_Event& event, command_executor* executor);
 //TODO
 void execute_command(const hotkey_command& command, command_executor* executor, int index=-1, bool press=true);
 
-// Object which will ensure that basic keyboard events like escape
-// are handled properly for the duration of its lifetime.
-class basic_handler : public events::sdl_handler
-{
-public:
-	basic_handler(command_executor* exec);
-
-	void handle_event(const SDL_Event& event);
-	void handle_window_event(const SDL_Event&) {}
-
-private:
-	command_executor* exec_;
-};
-
-
 }

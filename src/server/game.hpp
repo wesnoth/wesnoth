@@ -282,7 +282,7 @@ private:
 	void transfer_ai_sides(const socket_ptr player);
 	void send_leave_game(socket_ptr user) const;
 	/**
-		@param sides: a comma sperated list of side numbers to which the package should be sent,
+		@param sides a comma sperated list of side numbers to which the package should be sent,
 	*/
 	void send_data_sides(simple_wml::document& data, const simple_wml::string_span& sides,
 			const socket_ptr exclude=socket_ptr(), std::string packet_type = "") const;
