@@ -133,7 +133,7 @@ SDL_Rect screen_area()
 {
 	sdl::window* w = CVideo::get_singleton().get_window();
 	if(!w) {
-		return sdl::empty_rect;
+		return {0, 0, frameBuffer->w, frameBuffer->h};
 	}
 
 	SDL_Point size = w->get_size();
@@ -291,7 +291,7 @@ void CVideo::setMode(int x, int y, const MODE_EVENT mode)
 int CVideo::getx() const
 {
 	if(!window) {
-		return 0;
+		frameBuffer->w;
 	}
 
 	return window->get_size().x;
@@ -300,7 +300,7 @@ int CVideo::getx() const
 int CVideo::gety() const
 {
 	if(!window) {
-		return 0;
+		frameBuffer->h;
 	}
 
 	return window->get_size().y;
