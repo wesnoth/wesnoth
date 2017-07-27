@@ -233,47 +233,47 @@ static int intf_music_commit(lua_State*) {
 }
 
 static int impl_track_get(lua_State* L) {
-	lua_music_track& track = *get_track(L, 1);
-	if(&track == nullptr || !track->valid()) {
+	lua_music_track* track = get_track(L, 1);
+	if(track == nullptr || !track->valid()) {
 		return luaL_error(L, "Error: Attempted to access an invalid music track.\n");
 	}
 	const char* m = luaL_checkstring(L, 2);
-	return_bool_attrib("valid", track.valid());
-	if(!track.valid()) {
+	return_bool_attrib("valid", track->valid());
+	if(!track->valid()) {
 		return luaL_error(L, "Tried to access member of track that is no longer valid.");
 	}
-	return_bool_attrib("append", track->append());
-	return_bool_attrib("shuffle", track->shuffle());
-	return_bool_attrib("immediate", track->immediate());
-	return_bool_attrib("once", track->play_once());
-	return_int_attrib("ms_before", track->ms_before());
-	return_int_attrib("ms_after", track->ms_after());
-	return_string_attrib("name", track->id());
-	return_string_attrib("title", track->title());
+	return_bool_attrib("append", (*track)->append());
+	return_bool_attrib("shuffle", (*track)->shuffle());
+	return_bool_attrib("immediate", (*track)->immediate());
+	return_bool_attrib("once", (*track)->play_once());
+	return_int_attrib("ms_before", (*track)->ms_before());
+	return_int_attrib("ms_after", (*track)->ms_after());
+	return_string_attrib("name", (*track)->id());
+	return_string_attrib("title", (*track)->title());
 
 	return_cfg_attrib("__cfg",
-						cfg["append"]=track->append();
-						cfg["shuffle"]=track->shuffle();
-						cfg["immediate"]=track->immediate();
-						cfg["once"]=track->play_once();
-						cfg["ms_before"]=track->ms_before();
-						cfg["ms_after"]=track->ms_after();
-						cfg["name"]=track->id();
-						cfg["title"]=track->title());
+						cfg["append"]=(*track)->append();
+						cfg["shuffle"]=(*track)->shuffle();
+						cfg["immediate"]=(*track)->immediate();
+						cfg["once"]=(*track)->play_once();
+						cfg["ms_before"]=(*track)->ms_before();
+						cfg["ms_after"]=(*track)->ms_after();
+						cfg["name"]=(*track)->id();
+						cfg["title"]=(*track)->title());
 
 	return luaW_getmetafield(L, 1, m);
 }
 
 static int impl_track_set(lua_State* L) {
-	lua_music_track& track = *get_track(L, 1);
-	if(&track == nullptr || !track->valid()) {
+	lua_music_track* track = get_track(L, 1);
+	if(track == nullptr || !track->valid()) {
 		return luaL_error(L, "Error: Attempted to access an invalid music track.\n");
 	}
 	const char* m = luaL_checkstring(L, 2);
-	modify_bool_attrib("shuffle", track->set_shuffle(value));
-	modify_bool_attrib("once", track->set_play_once(value));
-	modify_int_attrib("ms_before", track->set_ms_before(value));
-	modify_int_attrib("ms_after", track->set_ms_after(value));
+	modify_bool_attrib("shuffle", (*track)->set_shuffle(value));
+	modify_bool_attrib("once", (*track)->set_play_once(value));
+	modify_int_attrib("ms_before", (*track)->set_ms_before(value));
+	modify_int_attrib("ms_after", (*track)->set_ms_after(value));
 	return 0;
 }
 
