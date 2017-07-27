@@ -716,7 +716,7 @@ double shortest_path_calculator::cost(const map_location& loc, const double so_f
 		remaining_movement = total_movement_ - (-remaining_movement) % total_movement_;
 	}
 
-	if (total_movement_ < terrain_cost && remaining_movement < terrain_cost) {
+	if (terrain_cost >= movetype::UNREACHABLE || (total_movement_ < terrain_cost && remaining_movement < terrain_cost)) {
 		return getNoPathValue();
 	}
 
