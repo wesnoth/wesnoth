@@ -63,6 +63,14 @@ void controller_base::handle_event(const SDL_Event& event)
 		}
 		break;
 
+	case SDL_TEXTEDITING:
+		if(have_keyboard_focus()) {
+			event.type = SDL_TEXTINPUT;
+			hotkey::key_event(event, get_hotkey_command_executor());
+			SDL_StopTextInput();
+			SDL_StartTextInput();
+		}
+
 	case SDL_KEYDOWN:
 		// Detect key press events, unless there something that has keyboard focus
 		// in which case the key press events should go only to it.
