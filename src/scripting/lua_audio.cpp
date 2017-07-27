@@ -234,6 +234,9 @@ static int intf_music_commit(lua_State*) {
 
 static int impl_track_get(lua_State* L) {
 	lua_music_track& track = *get_track(L, 1);
+	if(&track == nullptr || !track->valid()) {
+		return luaL_error(L, "Error: Attempted to access an invalid music track.\n");
+	}
 	const char* m = luaL_checkstring(L, 2);
 	return_bool_attrib("valid", track.valid());
 	if(!track.valid()) {
@@ -263,6 +266,9 @@ static int impl_track_get(lua_State* L) {
 
 static int impl_track_set(lua_State* L) {
 	lua_music_track& track = *get_track(L, 1);
+	if(&track == nullptr || !track->valid()) {
+		return luaL_error(L, "Error: Attempted to access an invalid music track.\n");
+	}
 	const char* m = luaL_checkstring(L, 2);
 	modify_bool_attrib("shuffle", track->set_shuffle(value));
 	modify_bool_attrib("once", track->set_play_once(value));
