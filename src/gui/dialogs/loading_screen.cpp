@@ -205,7 +205,7 @@ loading_screen::~loading_screen()
 
 		// Another approach migth be to add exit points ( boost::this_thread::interruption_point() ) to the worker
 		// functions (filesystem.cpp config parsing code etc. ) and then use that to end the thread faster.
-		std::exit(0);
+		std::quick_exit(0);
 	}
 	clear_timer();
 	close();
