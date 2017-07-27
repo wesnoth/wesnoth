@@ -46,6 +46,8 @@ void hotkey_bind::sdl_event_callback(window& win, const SDL_Event &event)
 {
 	if (hotkey::is_hotkeyable_event(event)) {
 		new_binding_ = hotkey::create_hotkey(hotkey_id_, event);
+	}
+	if(event.type == SDL_KEYUP) {
 		win.set_retval(window::OK);
 	}
 }
