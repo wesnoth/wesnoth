@@ -65,7 +65,7 @@ void controller_base::handle_event(const SDL_Event& event)
 
 	case SDL_TEXTEDITING:
 		if(have_keyboard_focus()) {
-			event.type = SDL_TEXTINPUT;
+			//event.type = SDL_TEXTINPUT;
 			hotkey::key_event(event, get_hotkey_command_executor());
 			SDL_StopTextInput();
 			SDL_StartTextInput();
