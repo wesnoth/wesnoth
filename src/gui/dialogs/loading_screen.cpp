@@ -42,6 +42,15 @@ static lg::log_domain log_loadscreen("loadscreen");
 #define LOG_LS LOG_STREAM(info, log_loadscreen)
 #define DBG_LS LOG_STREAM(debug, log_loadscreen)
 
+#if defined(__APPLE__)
+#define NO_QUICK_EXIT
+#endif
+
+#if defined(_MSC_VER) && _MSC_VER <= 1800
+#define NO_QUICK_EXIT
+#endif
+
+
 static const std::map<std::string, std::string> stages =
 {
 	{ "build terrain", N_("Building terrain rules") },
@@ -207,7 +216,12 @@ loading_screen::~loading_screen()
 
 		// Another approach migth be to add exit points ( boost::this_thread::interruption_point() ) to the worker
 		// functions (filesystem.cpp config parsing code etc. ) and then use that to end the thread faster.
+
+#ifdef NO_QUICK_EXIT
+		std::_Exit(0)
+#else
 		std::quick_exit(0);
+#endif
 	}
 	clear_timer();
 	close();
