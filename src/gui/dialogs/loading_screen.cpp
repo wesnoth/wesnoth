@@ -32,6 +32,8 @@
 #include "log.hpp"
 #include "preferences/general.hpp"
 #include "utils/functional.hpp"
+
+#include <cstdlib>
 #include <boost/thread.hpp>
 
 static lg::log_domain log_loadscreen("loadscreen");
