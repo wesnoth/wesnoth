@@ -36,15 +36,15 @@
 #include <cstdlib>
 #include <boost/thread.hpp>
 
+#if defined(_MSC_VER) && _MSC_VER <= 1800
+#include <Windows.h>
+#endif
+
 static lg::log_domain log_loadscreen("loadscreen");
 #define ERR_LS LOG_STREAM(err, log_loadscreen)
 #define WRN_LS LOG_STREAM(warn, log_loadscreen)
 #define LOG_LS LOG_STREAM(info, log_loadscreen)
 #define DBG_LS LOG_STREAM(debug, log_loadscreen)
-
-#if defined(_LIBCPP_VERSION) || defined(__MINGW32__) || (defined(_MSC_VER) && _MSC_VER <= 1800)
-#define quick_exit _Exit
-#endif
 
 static const std::map<std::string, std::string> stages =
 {
@@ -212,7 +212,14 @@ loading_screen::~loading_screen()
 		// Another approach migth be to add exit points ( boost::this_thread::interruption_point() ) to the worker
 		// functions (filesystem.cpp config parsing code etc. ) and then use that to end the thread faster.
 
+#if defined(_MSC_VER) && _MSC_VER <= 1800
+		HANDLE process = GetCurrentProcess();
+		TerminateProcess(process, 0u);
+#elif defined(_LIBCPP_VERSION) || defined(__MINGW32__)
+		std::_Exit(0);
+#else
 		std::quick_exit(0);
+#endif
 	}
 	clear_timer();
 	close();
