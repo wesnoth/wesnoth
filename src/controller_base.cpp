@@ -71,6 +71,7 @@ void controller_base::handle_event(const SDL_Event& event)
 			SDL_StopTextInput();
 			SDL_StartTextInput();
 		}
+		break;
 
 	case SDL_KEYDOWN:
 		// Detect key press events, unless there something that has keyboard focus
