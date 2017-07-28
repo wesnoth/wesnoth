@@ -944,3 +944,18 @@ end
 function wesnoth.wml_actions.cancel_action(cfg)
 	wesnoth.cancel_action()
 end
+
+function wesnoth.wml_actions.store_unit_defense(cfg)
+	local unit = wesnoth.get_units(cfg)[1] or helper.wml_error "[store_unit_defense]'s filter didn't match any unit"
+	local terrain = cfg.terrain
+	local defense
+	
+	if terrain then
+		defense = wesnoth.unit_defense(unit, terrain)
+	elseif cfg.loc_x and cfg.loc_y then
+		defense = wesnoth.unit_defense(unit, wesnoth.get_terrain(cfg.loc_x, cfg.loc_y))
+	else
+		defense = wesnoth.unit_defense(unit, wesnoth.get_terrain(unit.x, unit.y))
+	end
+	wesnoth.set_variable(cfg.variable or "terrain_defense", defense)
+end
