@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <memory>
 #include <string>
 
 class CVideo;
@@ -84,7 +85,7 @@ public:
 
 private:
 	/** The window, used in show. */
-	window* window_;
+	std::unique_ptr<window> window_;
 
 	/** The id of the window to build. */
 	virtual const std::string& window_id() const = 0;
