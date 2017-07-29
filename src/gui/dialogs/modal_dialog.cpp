@@ -69,7 +69,7 @@ bool modal_dialog::show(CVideo& video, const unsigned auto_close_time)
 
 	retval_ = window->show(restore_, auto_close_time);
 
-	open_window_stack.pop_back();
+	remove_from_window_stack(window.get());
 
 	/*
 	 * It can happen that when two clicks follow each other fast that the event

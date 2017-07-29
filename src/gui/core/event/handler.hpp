@@ -297,6 +297,9 @@ std::ostream& operator<<(std::ostream& stream, const ui_event event);
  */
 extern std::vector<window*> open_window_stack;
 
+/** Removes a entry from the open_window_stack list. This should be used instead of pop_back. */
+void remove_from_window_stack(window* window);
+
 /**
  * Is a dialog open?
  *

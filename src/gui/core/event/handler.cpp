@@ -1022,6 +1022,16 @@ std::ostream& operator<<(std::ostream& stream, const ui_event event)
 
 std::vector<window*> open_window_stack {};
 
+void remove_from_window_stack(window* window)
+{
+	for(auto iter = open_window_stack.rbegin(); iter != open_window_stack.rend(); ++iter) {
+		if(*iter == window) {
+			open_window_stack.erase(std::next(iter).base());
+			break;
+		}
+	}
+}
+
 bool is_in_dialog()
 {
 	return !open_window_stack.empty();
