@@ -502,18 +502,19 @@ public:
 		callback_next_draw_ = func;
 	}
 
+	enum show_mode {
+		none,
+		modal,
+		modeless,
+		tooltip
+	};
+
 private:
 	/** Needed so we can change what's drawn on the screen. */
 	CVideo& video_;
 
 	/** The status of the window. */
 	status status_;
-
-	enum show_mode {
-		none,
-		modal,
-		tooltip
-	};
 
 	/**
 	 * The mode in which the window is shown.
@@ -740,6 +741,18 @@ private:
 	std::unique_ptr<event::distributor> event_distributor_;
 
 public:
+	/** Gets a reference to the window's distributor to allow some state peeking. */
+	const event::distributor& get_distributor() const
+	{
+		return *event_distributor_;
+	}
+
+	/** Returns the dialog mode for this window. */
+	show_mode mode() const
+	{
+		return show_mode_;
+	}
+
 	// mouse and keyboard_capture should be renamed and stored in the
 	// dispatcher. Chaining probably should remain exclusive to windows.
 	void mouse_capture(const bool capture = true);

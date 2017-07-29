@@ -538,7 +538,7 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 
 	set_mouse_behavior(event::dispatcher::hit);
 
-	show_mode_ = modal;
+	show_mode_ = modeless;
 
 	/*
 	 * Before show has been called, some functions might have done some testing
