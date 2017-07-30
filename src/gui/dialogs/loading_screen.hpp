@@ -52,15 +52,7 @@ public:
 
 	static void progress(const char* stage_name = nullptr);
 
-	/**
-	 * Hides the window.
-	 *
-	 * The hiding also destroys the window. It is safe to call the function
-	 * when the window is not shown.
-	 */
-	void close();
 private:
-	window* window_;
 	size_t timer_id_;
 	int animation_counter_;
 	std::function<void()> work_;

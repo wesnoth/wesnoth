@@ -80,8 +80,7 @@ namespace dialogs
 REGISTER_DIALOG(loading_screen)
 
 loading_screen::loading_screen(std::function<void()> f)
-	: window_(nullptr)
-	, timer_id_(0)
+	: timer_id_(0)
 	, animation_counter_(0)
 	, work_(f)
 	, worker_()
@@ -104,15 +103,6 @@ loading_screen::loading_screen(std::function<void()> f)
 	}
 	current_visible_stage_ = visible_stages_.end();
 	current_load = this;
-}
-
-void loading_screen::close()
-{
-	if(window_) {
-		window_->undraw();
-		delete window_;
-		window_ = nullptr;
-	}
 }
 
 void loading_screen::pre_show(window& window)
@@ -217,7 +207,6 @@ loading_screen::~loading_screen()
 #endif
 	}
 	clear_timer();
-	close();
 	current_load = nullptr;
 }
 
