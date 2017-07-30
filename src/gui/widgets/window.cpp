@@ -340,8 +340,9 @@ window::window(CVideo& video,
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_layout_(new debug_layout_graph(this))
 #endif
-	, event_distributor_(
-			  new event::distributor(*this, event::dispatcher::front_child))
+	, event_distributor_(new event::distributor(*this, event::dispatcher::front_child))
+	, exit_hook_([](window&)->bool { return true; })
+	, callback_next_draw_(nullptr)
 {
 	// We load the config in here as exception.
 	// Our caller did update the screen size so no need for us to do that again.

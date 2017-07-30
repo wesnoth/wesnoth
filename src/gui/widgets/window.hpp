@@ -463,9 +463,8 @@ public:
 		if(it != linked_size_.end()) {
 			return point(it->second.width, it->second.height);
 		}
-		else {
-			return point(-1, -1);
-		}
+
+		return point(-1, -1);
 	}
 
 	/**
@@ -482,13 +481,7 @@ public:
 
 	void set_exit_hook_ok_only(std::function<bool(window&)> func)
 	{
-		exit_hook_ = [func](window& w)->bool {
-			if(w.get_retval() == OK) {
-				return func(w);
-			}
-
-			return true;
-		};
+		exit_hook_ = [func](window& w)->bool { return (w.get_retval() == OK && func(w)) || true; };
 	}
 
 	/**
@@ -821,7 +814,7 @@ private:
 	void signal_handler_request_placement(const event::ui_event event,
 										  bool& handled);
 
-	std::function<bool(window&)> exit_hook_ = [](window&)->bool { return true; };
+	std::function<bool(window&)> exit_hook_;
 	std::function<void()> callback_next_draw_;
 };
 
