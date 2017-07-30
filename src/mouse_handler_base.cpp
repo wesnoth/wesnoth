@@ -66,6 +66,11 @@ mouse_handler_base::mouse_handler_base()
 {
 }
 
+bool mouse_handler_base::dragging_started() const
+{
+	return dragging_started_;
+}
+
 bool mouse_handler_base::is_dragging() const
 {
 	return dragging_left_ || dragging_right_ || dragging_touch_;
@@ -161,26 +166,13 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	map_location loc = gui().hex_clicked_on(event.x, event.y);
 	mouse_update(browse, loc);
 
-	static clock_t touch_timestamp = 0;
-
 	if(is_touch_click(event)) {
 		if (event.state == SDL_PRESSED) {
 			cancel_dragging();
-			touch_timestamp = clock();
 			init_dragging(dragging_touch_);
 			left_click(event.x, event.y, browse);
 		} else if (event.state == SDL_RELEASED) {
 			minimap_scrolling_ = false;
-
-			if (!dragging_started_ && touch_timestamp > 0) {
-				time_t dt = clock() - touch_timestamp;
-				if (dt > CLOCKS_PER_SEC * 3 / 10) {
-					right_click(event.x, event.y, browse); // show_menu_ = true;
-				}
-			} else {
-				touch_timestamp = 0;
-			}
-
 			clear_dragging(event, browse);
 			left_mouse_up(event.x, event.y, browse);
 		}
