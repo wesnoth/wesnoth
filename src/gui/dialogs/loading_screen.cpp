@@ -115,11 +115,6 @@ void loading_screen::close()
 	}
 }
 
-window* loading_screen::build_window(CVideo& video) const
-{
-	return build(video, window_id());
-}
-
 void loading_screen::pre_show(window& window)
 {
 	if (work_) {

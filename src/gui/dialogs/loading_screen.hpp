@@ -69,8 +69,6 @@ private:
 	std::exception_ptr exception_;
 	void clear_timer();
 
-	window* build_window(CVideo& video) const;
-
 	virtual const std::string& window_id() const override;
 
 	void timer_callback(window& window);

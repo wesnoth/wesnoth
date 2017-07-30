@@ -698,12 +698,6 @@ void lua_interpreter::display(CVideo& video, lua_interpreter::WHICH_KERNEL which
 	}
 }
 
-/** Call inherited method */
-window* lua_interpreter::build_window(CVideo& video)
-{
-	return build(video, window_id());
-}
-
 /** Bind the controller, initialize one of the static labels with info about this kernel, and update the view. */
 void lua_interpreter::pre_show(window& window)
 {

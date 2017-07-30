@@ -34,9 +34,6 @@ public:
 	lua_interpreter(lua_kernel_base & lk);
 
 	/** Inherited from modal_dialog. */
-	window* build_window(CVideo& video);
-
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
 	enum WHICH_KERNEL { APP, GAME };

@@ -33,9 +33,6 @@ public:
 	chat_log(const vconfig& cfg, const replay& replay);
 
 	/** Inherited from modal_dialog. */
-	window* build_window(CVideo& video);
-
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
 	std::shared_ptr<view> get_view();

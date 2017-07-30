@@ -445,11 +445,6 @@ std::shared_ptr<chat_log::view> chat_log::get_view()
 	return view_;
 }
 
-window* chat_log::build_window(CVideo& video)
-{
-	return build(video, window_id());
-}
-
 void chat_log::pre_show(window& window)
 {
 	LOG_CHAT_LOG << "Entering chat_log::pre_show" << std::endl;
