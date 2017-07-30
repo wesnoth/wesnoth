@@ -2274,6 +2274,10 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	double self_not_hit = 1.0;
 	double opp_not_hit = 1.0;
 
+	// The probability of being already dead before the fight begins:
+	double self_already_dead = hp_dist[0];
+	double opp_already_dead = opponent.hp_dist[0];
+
 	// If we've fought before and we have swarm, we might have to split the
 	// calculation by number of attacks.
 	const std::vector<combat_slice> split = split_summary(u_, summary);
@@ -2380,15 +2384,15 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	double opp_touched = 1.0 - opp_not_hit;
 
 	poisoned = calculate_probability_of_debuff(poisoned, opponent.u_.poisons, touched, 1.0 - hp_dist[0],
-		u_.experience + game_config::kill_xp(opponent.u_.level) >= u_.max_experience, opponent.hp_dist[0]);
+		u_.experience + game_config::kill_xp(opponent.u_.level) >= u_.max_experience, opponent.hp_dist[0] - opp_already_dead);
 	opponent.poisoned = calculate_probability_of_debuff(opponent.poisoned, u_.poisons, opp_touched, 1.0 - opponent.hp_dist[0],
-		opponent.u_.experience + game_config::kill_xp(u_.level) >= opponent.u_.max_experience, hp_dist[0]);
+		opponent.u_.experience + game_config::kill_xp(u_.level) >= opponent.u_.max_experience, hp_dist[0] - self_already_dead);
 
 	if(!use_monte_carlo_simulation) {
 		slowed = calculate_probability_of_debuff(slowed, opponent.u_.slows, touched, 1.0 - hp_dist[0],
-			u_.experience + game_config::kill_xp(opponent.u_.level) >= u_.max_experience, opponent.hp_dist[0]);
+			u_.experience + game_config::kill_xp(opponent.u_.level) >= u_.max_experience, opponent.hp_dist[0] - opp_already_dead);
 		opponent.slowed = calculate_probability_of_debuff(opponent.slowed, u_.slows, opp_touched, 1.0 - opponent.hp_dist[0],
-			opponent.u_.experience + game_config::kill_xp(u_.level) >= opponent.u_.max_experience, hp_dist[0]);
+			opponent.u_.experience + game_config::kill_xp(u_.level) >= opponent.u_.max_experience, hp_dist[0] - self_already_dead);
 	} else {
 		/* The slowed probability depends on in how many rounds
 		 * the combatant happened to be slowed.
