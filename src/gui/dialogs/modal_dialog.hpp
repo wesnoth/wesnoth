@@ -130,16 +130,7 @@ class modal_dialog
 	friend std::string unit_test_mark_as_tested(const modal_dialog& dialog);
 
 public:
-	modal_dialog()
-		: retval_(0)
-		, always_save_fields_(false)
-		, fields_()
-		, focus_()
-		, restore_(false)
-		, allow_plugin_skip_(true)
-		, show_even_without_video_(false)
-	{
-	}
+	modal_dialog();
 
 	virtual ~modal_dialog();
 
@@ -328,7 +319,7 @@ private:
 	 * functions defined we don't offer access to the vector. If access is
 	 * needed the creator should store a copy of the pointer.
 	 */
-	std::vector<field_base*> fields_;
+	std::vector<std::unique_ptr<class field_base>> fields_;
 
 	/**
 	 * Contains the widget that should get the focus when the window is shown.

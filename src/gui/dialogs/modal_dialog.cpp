@@ -26,13 +26,19 @@ namespace gui2
 {
 namespace dialogs
 {
+modal_dialog::modal_dialog()
+	: retval_(0)
+	, always_save_fields_(false)
+	, fields_()
+	, focus_()
+	, restore_(false)
+	, allow_plugin_skip_(true)
+	, show_even_without_video_(false)
+{
+}
 
 modal_dialog::~modal_dialog()
 {
-	for(auto field : fields_)
-	{
-		delete field;
-	}
 }
 
 bool modal_dialog::show(CVideo& video, const unsigned auto_close_time)
@@ -110,7 +116,7 @@ field_bool* modal_dialog::register_bool(
 										 callback_change,
 										 initial_fire);
 
-	fields_.push_back(field);
+	fields_.emplace_back(field);
 	return field;
 }
 
@@ -124,7 +130,7 @@ modal_dialog::register_bool(const std::string& id,
 	field_bool* field
 			= new field_bool(id, mandatory, linked_variable, callback_change, initial_fire);
 
-	fields_.push_back(field);
+	fields_.emplace_back(field);
 	return field;
 }
 
@@ -137,7 +143,7 @@ field_integer* modal_dialog::register_integer(
 	field_integer* field = new field_integer(
 			id, mandatory, callback_load_value, callback_save_value);
 
-	fields_.push_back(field);
+	fields_.emplace_back(field);
 	return field;
 }
 
@@ -147,7 +153,7 @@ field_integer* modal_dialog::register_integer(const std::string& id,
 {
 	field_integer* field = new field_integer(id, mandatory, linked_variable);
 
-	fields_.push_back(field);
+	fields_.emplace_back(field);
 	return field;
 }
 
@@ -165,7 +171,7 @@ field_text* modal_dialog::register_text(
 		focus_ = id;
 	}
 
-	fields_.push_back(field);
+	fields_.emplace_back(field);
 	return field;
 }
 
@@ -180,7 +186,7 @@ field_text* modal_dialog::register_text(const std::string& id,
 		focus_ = id;
 	}
 
-	fields_.push_back(field);
+	fields_.emplace_back(field);
 	return field;
 }
 
@@ -191,7 +197,7 @@ field_label* modal_dialog::register_label(const std::string& id,
 {
 	field_label* field = new field_label(id, mandatory, text, use_markup);
 
-	fields_.push_back(field);
+	fields_.emplace_back(field);
 	return field;
 }
 
@@ -217,7 +223,7 @@ void modal_dialog::post_show(window& /*window*/)
 
 void modal_dialog::init_fields(window& window)
 {
-	for(auto field : fields_)
+	for(auto& field : fields_)
 	{
 		field->attach_to_window(window);
 		field->widget_init(window);
@@ -232,7 +238,7 @@ void modal_dialog::init_fields(window& window)
 
 void modal_dialog::finalize_fields(window& window, const bool save_fields)
 {
-	for(auto field : fields_)
+	for(auto& field : fields_)
 	{
 		if(save_fields) {
 			field->widget_finalize(window);

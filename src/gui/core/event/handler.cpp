@@ -58,7 +58,7 @@ namespace event
 {
 
 /***** Static data. *****/
-static class sdl_event_handler* handler_ = nullptr;
+static std::unique_ptr<class sdl_event_handler> handler_ = nullptr;
 static events::event_context* event_context = nullptr;
 
 #ifdef MAIN_EVENT_HANDLER
@@ -792,7 +792,7 @@ void sdl_event_handler::keyboard(const ui_event event)
 
 manager::manager()
 {
-	handler_ = new sdl_event_handler();
+	handler_.reset(new sdl_event_handler());
 
 #ifdef MAIN_EVENT_HANDLER
 	draw_interval = 30;
@@ -805,8 +805,7 @@ manager::manager()
 
 manager::~manager()
 {
-	delete handler_;
-	handler_ = nullptr;
+	handler_.reset(nullptr);
 
 #ifdef MAIN_EVENT_HANDLER
 	draw_interval = 0;
