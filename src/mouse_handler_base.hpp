@@ -135,7 +135,10 @@ public:
 	 * @returns true when the click should not process the event further.
 	 * This means do not treat the call as a start of drag movement.
 	 */
-	virtual bool right_click(int x, int y, const bool browse);
+	virtual bool right_click(int /*x*/, int /*y*/, const bool /*browse*/)
+	{
+		return true;
+	}
 
 	/**
 	 * Called in the default right_click when the context menu is about to
@@ -158,9 +161,7 @@ public:
 	}
 
 	/** Called when the right mouse button is up. */
-	virtual void right_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
-	{
-	}
+	virtual void right_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/);
 
 	/** Called when the mouse wheel is scrolled up. */
 	virtual void mouse_wheel_up(int /*x*/, int /*y*/, const bool /*browse*/)

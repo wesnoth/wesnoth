@@ -120,10 +120,6 @@ void controller_base::handle_event(const SDL_Event& event)
 	case SDL_MOUSEBUTTONDOWN:
 		process_keydown_event(event);
 		mh_base.mouse_press(event.button, is_browsing());
-		if(mh_base.get_show_menu()) {
-			show_menu(get_display().get_theme().context_menu()->items(), event.button.x, event.button.y, true,
-					get_display());
-		}
 		hotkey::mbutton_event(event, get_hotkey_command_executor());
 		break;
 

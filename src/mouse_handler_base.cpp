@@ -123,7 +123,7 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 		if((dragging_left_  && (SDL_GetMouseState(&mx, &my) & SDL_BUTTON_LEFT)  != 0) ||
 		   (dragging_right_ && (SDL_GetMouseState(&mx, &my) & SDL_BUTTON_RIGHT) != 0))
 		{
-			const double drag_distance = 
+			const double drag_distance =
 				std::pow(static_cast<double>(drag_from_x_ - mx), 2) +
 				std::pow(static_cast<double>(drag_from_y_ - my), 2);
 
@@ -276,10 +276,10 @@ void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 	}
 }
 
-bool mouse_handler_base::right_click(int x, int y, const bool browse)
+void mouse_handler_base::right_mouse_up(int x, int y, const bool browse)
 {
 	if(!right_click_show_menu(x, y, browse)) {
-		return false;
+		return;
 	}
 
 	gui().draw(); // redraw highlight (and maybe some more)
@@ -290,8 +290,6 @@ bool mouse_handler_base::right_click(int x, int y, const bool browse)
 	} else {
 		WRN_DP << "no context menu found..." << std::endl;
 	}
-
-	return true;
 }
 
 void mouse_handler_base::init_dragging(bool& dragging_flag)
