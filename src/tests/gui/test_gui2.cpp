@@ -154,7 +154,7 @@ std::string unit_test_mark_popup_as_tested(const modeless_dialog& dialog)
 
 window* unit_test_window(const modeless_dialog& dialog)
 {
-	return dialog.window_;
+	return dialog.window_.get();
 }
 
 class mp_server_list;
