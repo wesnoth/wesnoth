@@ -95,15 +95,11 @@ static Uint32 timer_callback(Uint32, void* id)
 	}
 
 	SDL_Event event;
-	SDL_UserEvent data;
-
-	data.type = TIMER_EVENT;
-	data.code = 0;
-	data.data1 = id;
-	data.data2 = nullptr;
 
 	event.type = TIMER_EVENT;
-	event.user = data;
+	event.user.code = 0;
+	event.user.data1 = id;
+	event.user.data2 = nullptr;
 
 	SDL_PushEvent(&event);
 
