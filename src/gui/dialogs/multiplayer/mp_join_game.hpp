@@ -60,7 +60,7 @@ private:
 
 	void generate_side_list(window& window);
 
-	void update_player_list(window& window);
+	void update_player_list(window& window, const config::const_child_itors& users);
 
 	void network_handler(window& window);
 

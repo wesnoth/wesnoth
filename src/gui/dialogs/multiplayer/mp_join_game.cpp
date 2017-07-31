@@ -288,11 +288,6 @@ void mp_join_game::pre_show(window& window)
 	chat.active_window_changed();
 
 	//
-	// Set up player list
-	//
-	update_player_list(window);
-
-	//
 	// Set up the network handling
 	//
 	update_timer_ = add_timer(game_config::lobby_network_timer, std::bind(&mp_join_game::network_handler, this, std::ref(window)), true);
@@ -421,17 +416,17 @@ void mp_join_game::generate_side_list(window& window)
 	}
 }
 
-void mp_join_game::update_player_list(window& window)
+void mp_join_game::update_player_list(window& window, const config::const_child_itors& users)
 {
 	listbox& player_list = find_widget<listbox>(&window, "player_list", false);
 
 	player_list.clear();
 
-	for(const auto& side : get_scenario().child_range("side")) {
+	for(const auto& user : users) {
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		item["label"] = side["player_id"];
+		item["label"] = user["name"];
 		data.emplace("player_name", item);
 
 		player_list.add_row(data);
@@ -441,8 +436,7 @@ void mp_join_game::update_player_list(window& window)
 void mp_join_game::network_handler(window& window)
 {
 	// If the game has already started, close the dialog immediately.
-	if (level_["started"].to_bool())
-	{
+	if(level_["started"].to_bool()) {
 		window.set_retval(window::OK);
 		return;
 	}
@@ -485,13 +479,15 @@ void mp_join_game::network_handler(window& window)
 		generate_side_list(window);
 	}
 
-	if (data.has_child("turn")) {
+	if(data.has_child("turn")) {
 		ERR_MP << "received replay data\n" << data << "\n in mp join\n";
 	}
 
 	// Update player list
 	// TODO: optimally, it wouldn't regenerate the entire list every single refresh cycle
-	update_player_list(window);
+	if(data.has_child("user")) {
+		update_player_list(window, data.child_range("user"));
+	}
 }
 
 config& mp_join_game::get_scenario()
