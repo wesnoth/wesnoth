@@ -49,6 +49,7 @@ void playturn_network_adapter::read_from_network()
 	}
 	assert(!data_.back().empty());
 
+	// TODO: remove this after 1.13.9
 	if(back.has_attribute("side_drop"))
 	{
 		config child;

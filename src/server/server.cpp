@@ -1559,7 +1559,6 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 	} else if (data.child("error")
 			   || data.child("side_secured")
 			   || data.root().has_attr("failed")
-			   || data.root().has_attr("side_drop")
 			   || data.root().has_attr("side")) {
 		return;
 	}

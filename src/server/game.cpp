@@ -1301,9 +1301,12 @@ bool game::remove_player(const socket_ptr player, const bool disconnect, const b
 
 		//send the host a notification of removal of this side
 		const std::string side_drop = lexical_cast_default<std::string, size_t>(side_index + 1);
+
 		simple_wml::document drop;
-		drop.root().set_attr("side_drop", side_drop.c_str());
-		drop.root().set_attr("controller", side_controllers_[side_index].to_cstring());
+		auto& node_side_drop = drop.root().add_child("side_drop");
+
+		node_side_drop.set_attr("side_num", side_drop.c_str());
+		node_side_drop.set_attr("controller", side_controllers_[side_index].to_cstring());
 
 		DBG_GAME << "*** sending side drop: \n" << drop.output() << std::endl;
 

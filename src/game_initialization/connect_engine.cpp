@@ -605,11 +605,11 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 	}
 
 	// A side has been dropped.
-	if(!data["side_drop"].empty()) {
-		unsigned side_drop = data["side_drop"].to_int() - 1;
+	if(const config& side_drop = data.child("side_drop")) {
+		unsigned side_index = side_drop["side_num"].to_int() - 1;
 
-		if(side_drop < side_engines_.size()) {
-			side_engine_ptr side_to_drop = side_engines_[side_drop];
+		if(side_index < side_engines_.size()) {
+			side_engine_ptr side_to_drop = side_engines_[side_index];
 
 			// Remove user, whose side was dropped.
 			connected_users_rw().erase(side_to_drop->player_id());
