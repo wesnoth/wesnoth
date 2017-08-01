@@ -1355,6 +1355,7 @@ public:
 	/** Set the unit's ellipse image. */
 	void set_image_ellipse(const std::string& ellipse)
 	{
+		appearance_changed_ = true;
 		ellipse_.reset(new std::string(ellipse));
 	}
 
@@ -1562,6 +1563,9 @@ public:
 	friend void intrusive_ptr_add_ref(const unit*);
 	friend void intrusive_ptr_release(const unit*);
 
+	void set_appearance_changed(bool value) { appearance_changed_ = value; }
+	bool appearance_changed() const { return appearance_changed_; }
+
 protected:
 	mutable long ref_count_; // used by intrusive_ptr
 
@@ -1684,6 +1688,9 @@ private:
 
 	std::string profile_;
 	std::string small_profile_;
+	
+	//Used to check whether the moving units during a move needs ot be updated
+	mutable bool appearance_changed_ = true;
 
 	void parse_upkeep(const config::attribute_value& upkeep);
 	void write_upkeep(config::attribute_value& upkeep) const;

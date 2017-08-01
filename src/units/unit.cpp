@@ -890,6 +890,7 @@ std::vector<std::string> unit::get_traits_list() const
  */
 void unit::advance_to(const unit_type& u_type, bool use_traits)
 {
+	appearance_changed_ = true;
 	// For reference, the type before this advancement.
 	const unit_type& old_type = type();
 	// Adjust the new type for gender and variation.
@@ -1340,6 +1341,7 @@ std::map<std::string, unit::state_t> unit::known_boolean_state_names_ {
 
 void unit::set_state(const std::string& state, bool value)
 {
+	appearance_changed_ = true;
 	state_t known_boolean_state_id = get_known_boolean_state_id(state);
 	if(known_boolean_state_id != STATE_UNKNOWN) {
 		set_state(known_boolean_state_id, value);
@@ -1513,6 +1515,7 @@ void unit::write(config& cfg) const
 void unit::set_facing(map_location::DIRECTION dir) const
 {
 	if(dir != map_location::NDIRECTIONS) {
+		appearance_changed_ = true;
 		facing_ = dir;
 	}
 	// Else look at yourself (not available so continue to face the same direction)
@@ -1821,6 +1824,7 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 
 void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 {
+	appearance_changed_ = true;
 	if(apply_to == "fearless") {
 		is_fearless_ = effect["set"].to_bool(true);
 	} else if(apply_to == "healthy") {
@@ -2489,6 +2493,7 @@ void unit::remove_movement_ai()
 
 void unit::set_hidden(bool state) const
 {
+//	appearance_changed_ = true;
 	hidden_ = state;
 	if(!state) {
 		return;
@@ -2500,6 +2505,7 @@ void unit::set_hidden(bool state) const
 
 void unit::set_image_halo(const std::string& halo)
 {
+	appearance_changed_ = true;
 	anim_comp_->clear_haloes();
 	halo_.reset(new std::string(halo));
 }

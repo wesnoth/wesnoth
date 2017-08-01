@@ -313,8 +313,6 @@ namespace { // Private helpers for move_unit()
 		team * current_team_;	// Will default to the original team if the moving unit becomes invalid.
 		bool current_uses_fog_;
 		route_iterator move_loc_; // Will point to the last moved-to location (in case the moving unit disappears).
-		size_t do_move_track_;	// Tracks whether or not do_move() needs to update the displayed (fake) unit. Should only be touched by do_move() and the constructor.
-
 		// Data accumulated while making the move.
 		map_location zoc_stop_;
 		map_location ambush_stop_; // Could be inaccurate if ambushed_ is false.
@@ -368,7 +366,6 @@ namespace { // Private helpers for move_unit()
 		, current_team_(&resources::gameboard->get_team(current_side_))
 		, current_uses_fog_(current_team_->fog_or_shroud() && current_team_->auto_shroud_updates())
 		, move_loc_(begin_)
-		, do_move_track_(resources::game_events->pump().wml_tracking())
 		// The remaining fields are set to some sort of "zero state".
 		, zoc_stop_(map_location::null_location())
 		, ambush_stop_(map_location::null_location())
@@ -543,10 +540,9 @@ namespace { // Private helpers for move_unit()
 			move_loc_ = step_to;
 
 			// Show this move.
-			const size_t current_tracking = resources::game_events->pump().wml_tracking();
 			animator.proceed_to(move_it_.get_shared_ptr(), step_to - begin_,
-			                    current_tracking != do_move_track_, false);
-			do_move_track_ = current_tracking;
+			                    move_it_->appearance_changed(), false);
+			move_it_->set_appearance_changed(false);
 			disp.redraw_minimap();
 		}
 
