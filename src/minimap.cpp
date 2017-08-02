@@ -40,12 +40,12 @@ static lg::log_domain log_display("display");
 
 namespace image {
 
-surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::map<map_location,unsigned int> *reach_map)
+surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::map<map_location,unsigned int> *reach_map, bool ignore_terrain_disabled)
 {
 	const terrain_type_data & tdata = *map.tdata();
 
 
-	const bool preferences_minimap_draw_terrain = preferences::minimap_draw_terrain();
+	const bool preferences_minimap_draw_terrain = preferences::minimap_draw_terrain() || ignore_terrain_disabled;
 	const bool preferences_minimap_terrain_coding = preferences::minimap_terrain_coding();
 	const bool preferences_minimap_draw_villages = preferences::minimap_draw_villages();
 	const bool preferences_minimap_unit_coding = preferences::minimap_movement_coding();

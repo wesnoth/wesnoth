@@ -207,7 +207,7 @@ const surface minimap::get_image(const int w, const int h) const
 	try
 	{
 		const gamemap map(std::make_shared<terrain_type_data>(*terrain_), map_data_);
-		const surface surf = image::getMinimap(w, h, map, nullptr);
+		const surface surf = image::getMinimap(w, h, map, nullptr, nullptr, true);
 		cache.emplace(key, value_type(surf));
 #ifdef DEBUG_MINIMAP_CACHE
 		std::cerr << '-';

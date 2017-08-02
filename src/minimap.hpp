@@ -27,5 +27,5 @@ class gamemap;
 namespace image {
 	///function to create the minimap for a given map
 	///the surface returned must be freed by the user
-	surface getMinimap(int w, int h, const gamemap &map_, const team *vm = nullptr, const std::map<map_location,unsigned int> *reach_map = nullptr);
+	surface getMinimap(int w, int h, const gamemap &map_, const team *vm = nullptr, const std::map<map_location,unsigned int> *reach_map = nullptr, bool ignore_terrain_disabled = false);
 }
