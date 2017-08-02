@@ -29,7 +29,7 @@
 #include "display.hpp"
 #include "quit_confirmation.hpp"
 #include "show_dialog.hpp"
-#include "unicode.hpp"
+#include "serialization/unicode.hpp"
 
 #include "utils/functional.hpp"
 
