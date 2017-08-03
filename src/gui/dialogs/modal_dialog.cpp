@@ -41,6 +41,18 @@ modal_dialog::~modal_dialog()
 {
 }
 
+namespace {
+	struct window_stack_handler {
+		window_stack_handler(std::unique_ptr<window>& win) : local_window(win) {
+			open_window_stack.push_back(local_window.get());
+		}
+		~window_stack_handler() {
+			remove_from_window_stack(local_window.get());
+		}
+		std::unique_ptr<window>& local_window;
+	};
+}
+
 bool modal_dialog::show(CVideo& video, const unsigned auto_close_time)
 {
 	if(video.faked() && !show_even_without_video_) {
@@ -71,11 +83,10 @@ bool modal_dialog::show(CVideo& video, const unsigned auto_close_time)
 
 	pre_show(*window);
 
-	open_window_stack.push_back(window.get());
-
-	retval_ = window->show(restore_, auto_close_time);
-
-	remove_from_window_stack(window.get());
+	{ // Scope the window stack
+		window_stack_handler push_window_stack(window);
+		retval_ = window->show(restore_, auto_close_time);
+	}
 
 	/*
 	 * It can happen that when two clicks follow each other fast that the event
