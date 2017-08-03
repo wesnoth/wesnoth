@@ -12,40 +12,49 @@
    See the COPYING file for more details.
 */
 
+#include "map/label.hpp"
+#include "color.hpp"
 #include "display.hpp"
 #include "floating_label.hpp"
+#include "formula/string_utils.hpp"
 #include "game_board.hpp"
 #include "game_data.hpp"
-#include "map/label.hpp"
 #include "resources.hpp"
-#include "color.hpp"
 #include "tooltips.hpp"
-#include "formula/string_utils.hpp"
 
-//Our definition of map labels being obscured is if the tile is obscured,
-//or the tile below is obscured. This is because in the case where the tile
-//itself is visible, but the tile below is obscured, the bottom half of the
-//tile will still be shrouded, and the label being drawn looks weird.
+/**
+ * Our definition of map labels being obscured is if the tile is obscured,
+ * or the tile below is obscured. This is because in the case where the tile
+ * itself is visible, but the tile below is obscured, the bottom half of the
+ * tile will still be shrouded, and the label being drawn looks weird.
+ */
 inline bool is_shrouded(const display* disp, const map_location& loc)
 {
 	return disp->shrouded(loc) || disp->shrouded(loc.get_direction(map_location::SOUTH));
 }
 
-/// Rather simple test for a hex being fogged.
-/// This only exists because is_shrouded() does. (The code looks nicer if
-/// the test for being fogged looks similar to the test for being shrouded.)
+/**
+ * Rather simple test for a hex being fogged.
+ * This only exists because is_shrouded() does. (The code looks nicer if
+ * the test for being fogged looks similar to the test for being shrouded.)
+ */
 inline bool is_fogged(const display* disp, const map_location& loc)
 {
 	return disp->fogged(loc);
 }
 
-map_labels::map_labels(const team *team) :
-	team_(team), labels_(), enabled_(true), categories_dirty(true)
+map_labels::map_labels(const team* team)
+	: team_(team)
+	, labels_()
+	, enabled_(true)
+	, categories_dirty(true)
 {
 }
 
-map_labels::map_labels(const map_labels& other) :
-	team_(other.team_), labels_(), enabled_(true)
+map_labels::map_labels(const map_labels& other)
+	: team_(other.team_)
+	, labels_()
+	, enabled_(true)
 {
 	config cfg;
 	other.write(cfg);
@@ -61,90 +70,91 @@ map_labels& map_labels::operator=(const map_labels& other)
 {
 	if(this != &other) {
 		this->~map_labels();
-		new (this) map_labels(other);
+		new(this) map_labels(other);
 	}
+
 	return *this;
 }
 
 void map_labels::write(config& res) const
 {
-	for (team_label_map::const_iterator labs = labels_.begin(); labs != labels_.end(); ++labs)
-	{
+	for(team_label_map::const_iterator labs = labels_.begin(); labs != labels_.end(); ++labs) {
 		for(label_map::const_iterator i = labs->second.begin(); i != labs->second.end(); ++i) {
 			config item;
 			i->second->write(item);
 
-
-			res.add_child("label",item);
+			res.add_child("label", item);
 		}
 	}
 }
 
-void map_labels::read(const config &cfg)
+void map_labels::read(const config& cfg)
 {
 	clear_all();
 
-	for (const config &i : cfg.child_range("label"))
-	{
+	for(const config& i : cfg.child_range("label")) {
 		const map_location loc(i, resources::gamedata);
-		terrain_label *label = new terrain_label(*this, i);
+		terrain_label* label = new terrain_label(*this, i);
 		add_label(loc, label);
 	}
+
 	recalculate_labels();
 }
 
 terrain_label* map_labels::get_label_private(const map_location& loc, const std::string& team_name)
 {
 	team_label_map::const_iterator label_map = labels_.find(team_name);
-	if (label_map != labels_.end()) {
-		map_labels::label_map::const_iterator itor = label_map->second.find(loc);;
-		if (itor != label_map->second.end())
+	if(label_map != labels_.end()) {
+		map_labels::label_map::const_iterator itor = label_map->second.find(loc);
+		if(itor != label_map->second.end()) {
 			return itor->second;
+		}
 	}
+
 	return nullptr;
 }
 
 const terrain_label* map_labels::get_label(const map_location& loc) const
 {
 	const terrain_label* res = get_label(loc, team_name());
-	// no such team label, we try global label, except if it's what we just did
+
+	// No such team label. Try to find global label, except if that's what we just did.
 	// NOTE: This also avoid infinite recursion
-	if (res == nullptr && team_name() != "") {
+	if(res == nullptr && team_name() != "") {
 		return get_label(loc, "");
 	}
+
 	return res;
 }
 
 const std::string& map_labels::team_name() const
 {
-	if (team_)
-	{
+	if(team_) {
 		return team_->team_name();
 	}
+
 	static const std::string empty;
 	return empty;
 }
 
 void map_labels::set_team(const team* team)
 {
-	if ( team_ != team )
-	{
+	if(team_ != team) {
 		team_ = team;
 		categories_dirty = true;
 	}
 }
 
-
 const terrain_label* map_labels::set_label(const map_location& loc,
-					   const t_string& text,
-					   const int creator,
-					   const std::string& team_name,
-					   const color_t color,
-					   const bool visible_in_fog,
-					   const bool visible_in_shroud,
-					   const bool immutable,
-					   const std::string& category,
-					   const t_string& tooltip )
+		const t_string& text,
+		const int creator,
+		const std::string& team_name,
+		const color_t color,
+		const bool visible_in_fog,
+		const bool visible_in_shroud,
+		const bool immutable,
+		const std::string& category,
+		const t_string& tooltip)
 {
 	terrain_label* res = nullptr;
 
@@ -154,54 +164,45 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 	team_label_map::iterator current_label_map = labels_.find(team_name);
 	label_map::iterator current_label;
 
-	if ( current_label_map != labels_.end()
-			&& (current_label = current_label_map->second.find(loc)) != current_label_map->second.end() )
+	if(current_label_map != labels_.end() &&
+		(current_label = current_label_map->second.find(loc)) != current_label_map->second.end())
 	{
 		// Found old checking if need to erase it
-		if(text.str().empty())
-		{
+		if(text.str().empty()) {
 			// Erase the old label.
 			delete current_label->second;
 			current_label_map->second.erase(current_label);
 
 			// Restore the global label in the same spot, if any.
-			if ( terrain_label* global_label = get_label_private(loc, "") )
+			if(terrain_label* global_label = get_label_private(loc, "")) {
 				global_label->recalculate();
-		}
-		else
-		{
-			current_label->second->update_info(text, creator, tooltip, team_name, color, visible_in_fog, visible_in_shroud, immutable, category);
+			}
+		} else {
+			current_label->second->update_info(
+					text, creator, tooltip, team_name, color, visible_in_fog, visible_in_shroud, immutable, category);
 			res = current_label->second;
 		}
-	}
-	else if(!text.str().empty())
-	{
+	} else if(!text.str().empty()) {
 		// See if we will be replacing a global label.
 		terrain_label* global_label = get_label_private(loc, "");
 
 		// Add the new label.
-		res = new terrain_label(text,
-				creator,
-				team_name,
-				loc,
-				*this,
-				color,
-				visible_in_fog,
-				visible_in_shroud,
-				immutable,
-				category,
-				tooltip);
+		res = new terrain_label(
+			text, creator, team_name, loc, *this, color, visible_in_fog, visible_in_shroud,	immutable, category, tooltip);
+
 		add_label(loc, res);
 
 		// Hide the old label.
-		if ( global_label != nullptr )
+		if(global_label != nullptr) {
 			global_label->recalculate();
+		}
 	}
+
 	categories_dirty = true;
 	return res;
 }
 
-void map_labels::add_label(const map_location &loc, terrain_label *new_label)
+void map_labels::add_label(const map_location& loc, terrain_label* new_label)
 {
 	labels_[new_label->team_name()][loc] = new_label;
 	categories_dirty = true;
@@ -210,54 +211,54 @@ void map_labels::add_label(const map_location &loc, terrain_label *new_label)
 void map_labels::clear(const std::string& team_name, bool force)
 {
 	team_label_map::iterator i = labels_.find(team_name);
-	if (i != labels_.end())
-	{
+	if(i != labels_.end()) {
 		clear_map(i->second, force);
 	}
 
 	i = labels_.find("");
-	if (i != labels_.end())
-	{
+	if(i != labels_.end()) {
 		clear_map(i->second, force);
 	}
+
 	categories_dirty = true;
 }
 
-void map_labels::clear_map(label_map &m, bool force)
+void map_labels::clear_map(label_map& m, bool force)
 {
 	label_map::iterator i = m.begin();
-	while (i != m.end())
-	{
-		if (!i->second->immutable() || force) {
+	while(i != m.end()) {
+		if(!i->second->immutable() || force) {
 			delete i->second;
 			m.erase(i++);
-		} else ++i;
+		} else {
+			++i;
+		}
 	}
+
 	categories_dirty = true;
 }
 
 void map_labels::clear_all()
 {
-	for (team_label_map::value_type &m : labels_)
-	{
+	for(team_label_map::value_type& m : labels_) {
 		clear_map(m.second, true);
 	}
+
 	labels_.clear();
 }
 
 void map_labels::recalculate_labels()
 {
-	for (team_label_map::value_type &m : labels_)
-	{
-		for (label_map::value_type &l : m.second)
-		{
+	for(team_label_map::value_type& m : labels_) {
+		for(label_map::value_type& l : m.second) {
 			l.second->recalculate();
 		}
 	}
 }
 
-void map_labels::enable(bool is_enabled) {
-	if (is_enabled != enabled_) {
+void map_labels::enable(bool is_enabled)
+{
+	if(is_enabled != enabled_) {
 		enabled_ = is_enabled;
 		recalculate_labels();
 	}
@@ -271,43 +272,47 @@ void map_labels::enable(bool is_enabled) {
 bool map_labels::visible_global_label(const map_location& loc) const
 {
 	const team_label_map::const_iterator glabels = labels_.find(team_name());
-	return glabels == labels_.end()
-			|| glabels->second.find(loc) == glabels->second.end();
+	return glabels == labels_.end() || glabels->second.find(loc) == glabels->second.end();
 }
 
 void map_labels::recalculate_shroud()
 {
-	for (team_label_map::value_type &m : labels_)
-	{
-		for (label_map::value_type &l : m.second)
-		{
+	for(team_label_map::value_type& m : labels_) {
+		for(label_map::value_type& l : m.second) {
 			l.second->calculate_shroud();
 		}
 	}
 }
 
-const std::vector<std::string>& map_labels::all_categories() const {
+const std::vector<std::string>& map_labels::all_categories() const
+{
 	if(categories_dirty) {
 		categories_dirty = false;
 		categories.clear();
 		categories.push_back("team");
+
 		for(size_t i = 1; i <= resources::gameboard->teams().size(); i++) {
 			categories.push_back("side:" + std::to_string(i));
 		}
+
 		std::set<std::string> unique_cats;
-		for (const team_label_map::value_type& m : labels_) {
-			for (const label_map::value_type& l : m.second) {
-				if(l.second->category().empty()) continue;
+		for(const team_label_map::value_type& m : labels_) {
+			for(const label_map::value_type& l : m.second) {
+				if(l.second->category().empty()) {
+					continue;
+				}
+
 				unique_cats.insert("cat:" + l.second->category());
 			}
 		}
+
 		std::copy(unique_cats.begin(), unique_cats.end(), std::back_inserter(categories));
 	}
+
 	return categories;
 }
 
-
-/// creating new label
+/** Create a new label. */
 terrain_label::terrain_label(const t_string& text,
 		const int creator,
 		const std::string& team_name,
@@ -318,49 +323,49 @@ terrain_label::terrain_label(const t_string& text,
 		const bool visible_in_shroud,
 		const bool immutable,
 		const std::string& category,
-		const t_string& tooltip ) :
-				handle_(0),
-				text_(text),
-				tooltip_(tooltip),
-				category_(category),
-				team_name_(team_name),
-				visible_in_fog_(visible_in_fog),
-				visible_in_shroud_(visible_in_shroud),
-				immutable_(immutable),
-				creator_(creator),
-				color_(color),
-				parent_(&parent),
-				loc_(loc)
+		const t_string& tooltip)
+	: handle_(0)
+	, text_(text)
+	, tooltip_(tooltip)
+	, category_(category)
+	, team_name_(team_name)
+	, visible_in_fog_(visible_in_fog)
+	, visible_in_shroud_(visible_in_shroud)
+	, immutable_(immutable)
+	, creator_(creator)
+	, color_(color)
+	, parent_(&parent)
+	, loc_(loc)
 {
 	draw();
 }
 
-/// Load label from config
-terrain_label::terrain_label(const map_labels &parent, const config &cfg) :
-		handle_(0),
-		text_(),
-		tooltip_(),
-		team_name_(),
-		visible_in_fog_(true),
-		visible_in_shroud_(false),
-		immutable_(true),
-		creator_(-1),
-		color_(),
-		parent_(&parent),
-		loc_()
+/** Load label from config. */
+terrain_label::terrain_label(const map_labels& parent, const config& cfg)
+	: handle_(0)
+	, text_()
+	, tooltip_()
+	, team_name_()
+	, visible_in_fog_(true)
+	, visible_in_shroud_(false)
+	, immutable_(true)
+	, creator_(-1)
+	, color_()
+	, parent_(&parent)
+	, loc_()
 {
 	read(cfg);
 }
-
 
 terrain_label::~terrain_label()
 {
 	clear();
 }
 
-void terrain_label::read(const config &cfg)
+void terrain_label::read(const config& cfg)
 {
-	const variable_set &vs = *resources::gamedata;
+	const variable_set& vs = *resources::gamedata;
+
 	loc_ = map_location(cfg, &vs);
 	color_t color = font::LABEL_COLOR;
 
@@ -384,7 +389,9 @@ void terrain_label::read(const config &cfg)
 		}
 	}
 
-	text_ = utils::interpolate_variables_into_tstring(text_, vs); // Not moved to rendering, as that would depend on variables at render-time
+	// Not moved to rendering, as that would depend on variables at render-time
+	text_ = utils::interpolate_variables_into_tstring(text_, vs);
+
 	team_name_ = utils::interpolate_variables_into_string(team_name_, vs);
 	tmp_color = utils::interpolate_variables_into_string(tmp_color, vs);
 
@@ -405,6 +412,7 @@ void terrain_label::read(const config &cfg)
 void terrain_label::write(config& cfg) const
 {
 	loc_.write(cfg);
+
 	cfg["text"] = text();
 	cfg["tooltip"] = tooltip();
 	cfg["team_name"] = (this->team_name());
@@ -416,89 +424,36 @@ void terrain_label::write(config& cfg) const
 	cfg["side"] = creator_ + 1;
 }
 
-const t_string& terrain_label::text() const
-{
-	return text_;
-}
-
-const t_string& terrain_label::tooltip() const
-{
-	return tooltip_;
-}
-
-int terrain_label::creator() const
-{
-	return creator_;
-}
-
-const std::string& terrain_label::category() const
-{
-	return category_;
-}
-
-const std::string& terrain_label::team_name() const
-{
-	return team_name_;
-}
-
-bool terrain_label::visible_in_fog() const
-{
-	return visible_in_fog_;
-}
-
-bool terrain_label::visible_in_shroud() const
-{
-	return visible_in_shroud_;
-}
-
-bool terrain_label::immutable() const
-{
-	return immutable_;
-}
-
-const map_location& terrain_label::location() const
-{
-	return loc_;
-}
-
-const color_t& terrain_label::color() const
-{
-	return color_;
-}
-
-void terrain_label::set_text(const t_string& text)
-{
-	text_ = text;
-}
-
 void terrain_label::update_info(const t_string& text,
-								const int creator,
-								const t_string& tooltip,
-								const std::string& team_name,
-								const color_t color)
+		const int creator,
+		const t_string& tooltip,
+		const std::string& team_name,
+		const color_t color)
 {
 	color_ = color;
 	text_ = text;
 	tooltip_ = tooltip;
 	team_name_ = team_name;
 	creator_ = creator;
+
 	draw();
 }
 
 void terrain_label::update_info(const t_string& text,
-								const int creator,
-								const t_string& tooltip,
-								const std::string& team_name,
-								const color_t color,
-								const bool visible_in_fog,
-								const bool visible_in_shroud,
-								const bool immutable,
-								const std::string& category)
+		const int creator,
+		const t_string& tooltip,
+		const std::string& team_name,
+		const color_t color,
+		const bool visible_in_fog,
+		const bool visible_in_shroud,
+		const bool immutable,
+		const std::string& category)
 {
 	visible_in_fog_ = visible_in_fog;
 	visible_in_shroud_ = visible_in_shroud;
 	immutable_ = immutable;
 	category_ = category;
+
 	update_info(text, creator, tooltip, team_name, color);
 }
 
@@ -509,27 +464,28 @@ void terrain_label::recalculate()
 
 void terrain_label::calculate_shroud()
 {
-	if (handle_) {
+	if(handle_) {
 		font::show_floating_label(handle_, !hidden());
 	}
 
-	if (tooltip_.empty() || hidden()) {
+	if(tooltip_.empty() || hidden()) {
 		tooltips::remove_tooltip(tooltip_handle_);
 		tooltip_handle_ = 0;
 		return;
 	}
 
-	//tooltips::update_tooltip(tooltip_handle, get_rect(), tooltip_.str(), "", true);
+	// tooltips::update_tooltip(tooltip_handle, get_rect(), tooltip_.str(), "", true);
 
-	if (tooltip_handle_)
-		tooltips::update_tooltip(tooltip_handle_,get_rect(), tooltip_.str(), "", true);
-	else
+	if(tooltip_handle_) {
+		tooltips::update_tooltip(tooltip_handle_, get_rect(), tooltip_.str(), "", true);
+	} else {
 		tooltip_handle_ = tooltips::add_tooltip(get_rect(), tooltip_.str());
+	}
 }
 
 SDL_Rect terrain_label::get_rect() const
 {
-	SDL_Rect rect {0,0,0,0};
+	SDL_Rect rect {0, 0, 0, 0};
 
 	display* disp = display::get_singleton();
 	if(!disp) {
@@ -541,7 +497,7 @@ SDL_Rect terrain_label::get_rect() const
 	rect.x = disp->get_location_x(loc_) + hex_size / 4;
 	rect.y = disp->get_location_y(loc_);
 	rect.h = disp->hex_size();
-	rect.w = disp->hex_size() - hex_size/2;
+	rect.w = disp->hex_size() - hex_size / 2;
 
 	return rect;
 }
@@ -553,24 +509,24 @@ void terrain_label::draw()
 		return;
 	}
 
-	if (text_.empty() && tooltip_.empty()) {
+	if(text_.empty() && tooltip_.empty()) {
 		return;
 	}
+
 	clear();
 
-	if (!viewable(disp->get_disp_context())) {
+	if(!viewable(disp->get_disp_context())) {
 		return;
 	}
-	//Note: the y part of loc_nextx is not used at all.
+
+	// Note: the y part of loc_nextx is not used at all.
 	const map_location loc_nextx = loc_.get_direction(map_location::NORTH_EAST);
 	const map_location loc_nexty = loc_.get_direction(map_location::SOUTH);
-	const int xloc = (disp->get_location_x(loc_) +
-			disp->get_location_x(loc_nextx)*2)/3;
+	const int xloc = (disp->get_location_x(loc_) + disp->get_location_x(loc_nextx) * 2) / 3;
 	const int yloc = disp->get_location_y(loc_nexty) - font::SIZE_NORMAL;
 
 	// If a color is specified don't allow to override it with markup. (prevents faking map labels for example)
-	// FIXME: @todo Better detect if it's team label and not provided by
-	// the scenario.
+	// FIXME: @todo Better detect if it's team label and not provided by the scenario.
 	bool use_markup = color_ == font::LABEL_COLOR;
 
 	font::floating_label flabel(text_.str());
@@ -605,20 +561,31 @@ bool terrain_label::hidden() const
 	std::string creator = "side:" + std::to_string(creator_ + 1);
 	const std::vector<std::string>& hidden_categories = disp->get_disp_context().hidden_label_categories();
 
-	if(std::find(hidden_categories.begin(), hidden_categories.end(), category) != hidden_categories.end())
+	if(std::find(hidden_categories.begin(), hidden_categories.end(), category) != hidden_categories.end()) {
 		return true;
-	if(creator_ >= 0 && std::find(hidden_categories.begin(), hidden_categories.end(), creator) != hidden_categories.end())
+	}
+
+	if(creator_ >= 0 &&
+		std::find(hidden_categories.begin(), hidden_categories.end(), creator) != hidden_categories.end())
+	{
 		return true;
-	if(!team_name().empty() && std::find(hidden_categories.begin(), hidden_categories.end(), "team") != hidden_categories.end())
+	}
+
+	if(!team_name().empty() &&
+		std::find(hidden_categories.begin(), hidden_categories.end(), "team") != hidden_categories.end())
+	{
 		return true;
+	}
 
 	// Fog can hide some labels.
-	if ( !visible_in_fog_ && is_fogged(disp, loc_) )
+	if(!visible_in_fog_ && is_fogged(disp, loc_)) {
 		return true;
+	}
 
 	// Shroud can hide some labels.
-	if ( !visible_in_shroud_ && is_shrouded(disp, loc_) )
+	if(!visible_in_shroud_ && is_shrouded(disp, loc_)) {
 		return true;
+	}
 
 	return false;
 }
@@ -628,35 +595,37 @@ bool terrain_label::hidden() const
  * creating a label. Conditions that can change during unit movement (disregarding
  * potential WML events) should not be listed here; they belong in hidden().
  */
-bool terrain_label::viewable(const display_context & dc) const
+bool terrain_label::viewable(const display_context& dc) const
 {
-	if ( !parent_->enabled() )
+	if(!parent_->enabled()) {
 		return false;
+	}
 
 	// In the editor, all labels are viewable.
-	if ( dc.teams().empty() )
+	if(dc.teams().empty()) {
 		return true;
+	}
 
 	// Observers are not privvy to team labels.
 	const bool can_see_team_labels = !dc.is_observer();
 
 	// Global labels are shown unless covered by a team label.
-	if ( team_name_.empty() )
+	if(team_name_.empty()) {
 		return !can_see_team_labels || parent_->visible_global_label(loc_);
+	}
 
 	// Team labels are only shown to members of the team.
-	return can_see_team_labels  &&  parent_->team_name() == team_name_;
+	return can_see_team_labels && parent_->team_name() == team_name_;
 }
 
 void terrain_label::clear()
 {
-	if (handle_)
-	{
+	if(handle_) {
 		font::remove_floating_label(handle_);
 		handle_ = 0;
 	}
-	if (tooltip_handle_)
-	{
+
+	if(tooltip_handle_) {
 		tooltips::remove_tooltip(tooltip_handle_);
 		tooltip_handle_ = 0;
 	}
