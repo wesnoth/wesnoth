@@ -226,7 +226,7 @@ static wesnothd_connection_ptr open_connection(CVideo& video, const std::string&
 							}
 
 							sp["password"] = utils::md5(utils::md5(password, utils::md5::get_salt(salt),
-									utils::md5::get_iteration_count(salt)).hex_digest(), salt.substr(12, 8)).hex_digest();
+									utils::md5::get_iteration_count(salt)).base64_digest(), salt.substr(12, 8)).base64_digest();
 
 						} else {
 							sp["password"] = password;

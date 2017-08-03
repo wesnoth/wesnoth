@@ -80,7 +80,7 @@ bool fuh::login(const std::string& name, const std::string& password, const std:
 		return false;
 	}
 
-	std::string valid_hash = utils::md5(hash.substr(12,34), seed).hex_digest();
+	std::string valid_hash = utils::md5(hash.substr(12,34), seed).base64_digest();
 
 	if(password == valid_hash) return true;
 

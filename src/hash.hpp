@@ -25,6 +25,7 @@ namespace utils {
 class hash_base
 {
 public:
+	virtual std::string base64_digest() const = 0;
 	virtual std::string hex_digest() const = 0;
 	virtual ~hash_base() {}
 };
@@ -47,6 +48,7 @@ public:
 	static bool is_valid_hash(const std::string& hash);
 	explicit md5(const std::string& input);
 	md5(const std::string& input, const std::string& salt, int iteration_count = 10);
+	virtual std::string base64_digest() const override;
 	virtual std::string hex_digest() const override;
 };
 
@@ -54,6 +56,7 @@ class sha1 : public hash_digest<20>
 {
 public:
 	explicit sha1(const std::string& input);
+	virtual std::string base64_digest() const override;
 	virtual std::string hex_digest() const override;
 };
 

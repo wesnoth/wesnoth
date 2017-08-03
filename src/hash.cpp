@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 
 #include <openssl/sha.h>
 #include <openssl/md5.h>
@@ -50,6 +51,16 @@ std::string encode_hash(const std::array<uint8_t, len>& input) {
 	} while (i < len);
 
 	return encoded_hash;
+}
+
+template<size_t len>
+std::string hexencode_hash(const std::array<uint8_t, len>& input) {
+	std::ostringstream sout;
+	sout << std::hex;
+	for(uint8_t c : input) {
+		sout << int(c);
+	}
+	return sout.str();
 }
 
 }
@@ -93,6 +104,11 @@ md5::md5(const std::string& password, const std::string& salt, int iteration_cou
 
 std::string md5::hex_digest() const
 {
+	return hexencode_hash<DIGEST_SIZE>(hash);
+}
+
+std::string md5::base64_digest() const
+{
 	return encode_hash<DIGEST_SIZE>(hash);
 }
 
@@ -105,6 +121,11 @@ sha1::sha1(const std::string& str)
 }
 
 std::string sha1::hex_digest() const
+{
+	return hexencode_hash<DIGEST_SIZE>(hash);
+}
+
+std::string sha1::base64_digest() const
 {
 	return encode_hash<DIGEST_SIZE>(hash);
 }
