@@ -19,31 +19,30 @@
 
 #include "game_display.hpp"
 
-#include "gettext.hpp"
-#include "wesconfig.h"
-
+#include "color.hpp"
 #include "cursor.hpp"
 #include "display_chat_manager.hpp"
 #include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "floating_label.hpp"
+#include "font/standard_colors.hpp"
 #include "game_board.hpp"
-#include "preferences/game.hpp"
+#include "gettext.hpp"
 #include "halo.hpp"
 #include "log.hpp"
-#include "map/map.hpp"
 #include "map/label.hpp"
+#include "map/map.hpp"
 #include "ogl/utils.hpp"
-#include "font/standard_colors.hpp"
+#include "preferences/game.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
-#include "tod_manager.hpp"
-#include "color.hpp"
 #include "sound.hpp"
 #include "synced_context.hpp"
 #include "terrain/type_data.hpp"
-#include "units/unit.hpp"
+#include "tod_manager.hpp"
 #include "units/drawer.hpp"
+#include "units/unit.hpp"
+#include "wesconfig.h"
 #include "whiteboard/manager.hpp"
 
 static lg::log_domain log_display("display");
@@ -53,26 +52,26 @@ static lg::log_domain log_display("display");
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-std::map<map_location,fixed_t> game_display::debugHighlights_;
+std::map<map_location, fixed_t> game_display::debugHighlights_;
 
 game_display::game_display(game_board& board, std::weak_ptr<wb::manager> wb,
 		reports & reports_object,
 		const config& theme_cfg,
 		const config& level,
-		bool) :
-		display(&board, wb, reports_object, theme_cfg, level, false),
-		overlay_map_(),
-		attack_indicator_src_(),
-		attack_indicator_dst_(),
-		hex_def_fl_labels_(),
-		route_(),
-		displayedUnitHex_(),
-		sidebarScaling_(1.0),
-		first_turn_(true),
-		in_game_(false),
-		chat_man_(new display_chat_manager(*this)),
-		mode_(RUNNING),
-		needs_rebuild_(false)
+		bool)
+	: display(&board, wb, reports_object, theme_cfg, level, false)
+	, overlay_map_()
+	, attack_indicator_src_()
+	, attack_indicator_dst_()
+	, hex_def_fl_labels_()
+	, route_()
+	, displayedUnitHex_()
+	, sidebarScaling_(1.0)
+	, first_turn_(true)
+	, in_game_(false)
+	, chat_man_(new display_chat_manager(*this))
+	, mode_(RUNNING)
+	, needs_rebuild_(false)
 {
 	replace_overlay_map(&overlay_map_);
 #ifdef USE_GL_RENDERING
@@ -85,42 +84,42 @@ game_display::game_display(game_board& board, std::weak_ptr<wb::manager> wb,
 game_display::~game_display()
 {
 	try {
-	// SDL_FreeSurface(minimap_);
-	chat_man_->prune_chat_messages(true);
-	} catch (...) {}
+		// SDL_FreeSurface(minimap_);
+		chat_man_->prune_chat_messages(true);
+	} catch(...) {
+	}
 }
 
 void game_display::new_turn()
 {
 	const time_of_day& tod = resources::tod_manager->get_time_of_day();
 
-	if( !first_turn_) {
+	if(!first_turn_) {
 		const time_of_day& old_tod = resources::tod_manager->get_previous_time_of_day();
 
 		if(old_tod.image_mask != tod.image_mask) {
-			surface old_mask(image::get_image(old_tod.image_mask,image::SCALED_TO_HEX));
-			surface new_mask(image::get_image(tod.image_mask,image::SCALED_TO_HEX));
+			surface old_mask(image::get_image(old_tod.image_mask, image::SCALED_TO_HEX));
+			surface new_mask(image::get_image(tod.image_mask, image::SCALED_TO_HEX));
 
-			const int niterations = static_cast<int>(10/turbo_speed());
+			const int niterations = static_cast<int>(10 / turbo_speed());
 			const int frame_time = 30;
 			const int starting_ticks = SDL_GetTicks();
 			for(int i = 0; i != niterations; ++i) {
-
 				if(old_mask != nullptr) {
-					const fixed_t proportion = ftofxp(1.0) - fxpdiv(i,niterations);
+					const fixed_t proportion = ftofxp(1.0) - fxpdiv(i, niterations);
 					adjust_surface_alpha(old_mask, proportion);
 					tod_hex_mask1.assign(old_mask);
 				}
 
 				if(new_mask != nullptr) {
-					const fixed_t proportion = fxpdiv(i,niterations);
+					const fixed_t proportion = fxpdiv(i, niterations);
 					adjust_surface_alpha(new_mask, proportion);
 					tod_hex_mask2.assign(new_mask);
 				}
 
 
 				const int cur_ticks = SDL_GetTicks();
-				const int wanted_ticks = starting_ticks + i*frame_time;
+				const int wanted_ticks = starting_ticks + i * frame_time;
 				if(cur_ticks < wanted_ticks) {
 					SDL_Delay(wanted_ticks - cur_ticks);
 				}
@@ -151,15 +150,15 @@ void game_display::highlight_hex(map_location hex)
 {
 	wb::future_map_if future(!synced_context::is_synced()); /**< Lasts for whole method. */
 
-	const unit *u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !dont_show_all_);
-	if (u) {
+	const unit* u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !dont_show_all_);
+	if(u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
 	} else {
 		u = resources::gameboard->get_visible_unit(mouseoverHex_, dc_->teams()[viewing_team()], !dont_show_all_);
-		if (u) {
+		if(u) {
 			// mouse moved from unit hex to non-unit hex
-			if (dc_->units().count(selectedHex_)) {
+			if(dc_->units().count(selectedHex_)) {
 				displayedUnitHex_ = selectedHex_;
 				invalidate_unit();
 			}
@@ -172,13 +171,13 @@ void game_display::highlight_hex(map_location hex)
 
 void game_display::display_unit_hex(map_location hex)
 {
-	if (!hex.valid())
+	if(!hex.valid())
 		return;
 
 	wb::future_map_if future(!synced_context::is_synced()); /**< Lasts for whole method. */
 
-	const unit *u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !dont_show_all_);
-	if (u) {
+	const unit* u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !dont_show_all_);
+	if(u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
 	}
@@ -186,13 +185,13 @@ void game_display::display_unit_hex(map_location hex)
 
 void game_display::invalidate_unit_after_move(const map_location& src, const map_location& dst)
 {
-	if (src == displayedUnitHex_) {
+	if(src == displayedUnitHex_) {
 		displayedUnitHex_ = dst;
 		invalidate_unit();
 	}
 }
 
-void game_display::scroll_to_leader(int side, SCROLL_TYPE scroll_type,bool force)
+void game_display::scroll_to_leader(int side, SCROLL_TYPE scroll_type, bool force)
 {
 	unit_map::const_iterator leader = dc_->units().find_leader(side);
 
@@ -216,7 +215,7 @@ void game_display::pre_draw()
 
 void game_display::post_draw()
 {
-	if (std::shared_ptr<wb::manager> w = wb_.lock()) {
+	if(std::shared_ptr<wb::manager> w = wb_.lock()) {
 		w->post_draw();
 	}
 }
@@ -335,7 +334,7 @@ void game_display::draw_hex_overlays()
 	// Draw route steps
 	//
 	if(std::shared_ptr<wb::manager> w = wb_.lock()) {
-		//w->draw_hex(loc);
+		// w->draw_hex(loc);
 
 		if(!w->is_active() && !w->has_temp_move()) {
 			draw_footstep_images();
@@ -379,19 +378,18 @@ bool game_display::has_time_area() const
 
 void game_display::draw_sidebar()
 {
-	if ( !team_valid() )
+	if(!team_valid())
 		return;
 
 	refresh_report("report_clock");
 	refresh_report("report_countdown");
 
-	if (invalidateGameStatus_)
-	{
+	if(invalidateGameStatus_) {
 		wb::future_map future; // start planned unit map scope
 
 		// We display the unit the mouse is over if it is over a unit,
 		// otherwise we display the unit that is selected.
-		for (const std::string &name : reports_object_->report_list()) {
+		for(const std::string& name : reports_object_->report_list()) {
 			refresh_report(name);
 		}
 		invalidateGameStatus_ = false;
@@ -517,7 +515,7 @@ void game_display::draw_movement_info()
 		if(mark.second.turns > 1 || (mark.second.turns == 1 && m_loc != route_.steps.back())) {
 			std::stringstream turns_text;
 			turns_text << mark.second.turns;
-			//draw_text_in_hex(m_loc, turns_text.str(), 17, font::NORMAL_COLOR, 0.5, 0.8); TODO
+			// draw_text_in_hex(m_loc, turns_text.str(), 17, font::NORMAL_COLOR, 0.5, 0.8); TODO
 		}
 
 		++i;
@@ -598,16 +596,16 @@ void game_display::draw_footstep_images() const
 	}
 }
 
-void game_display::highlight_reach(const pathfind::paths &paths_list)
+void game_display::highlight_reach(const pathfind::paths& paths_list)
 {
 	unhighlight_reach();
 	highlight_another_reach(paths_list);
 }
 
-void game_display::highlight_another_reach(const pathfind::paths &paths_list)
+void game_display::highlight_another_reach(const pathfind::paths& paths_list)
 {
 	// Fold endpoints of routes into reachability map.
-	for (const pathfind::paths::step &dest : paths_list.destinations) {
+	for(const pathfind::paths::step& dest : paths_list.destinations) {
 		reach_map_[dest.curr]++;
 	}
 }
@@ -622,7 +620,7 @@ bool game_display::unhighlight_reach()
 	}
 }
 
-void game_display::set_route(const pathfind::marked_route *route)
+void game_display::set_route(const pathfind::marked_route* route)
 {
 	if(route != nullptr) {
 		route_ = *route;
@@ -641,9 +639,9 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 	font::floating_label flabel(text);
 	flabel.set_font_size(font::SIZE_XLARGE);
 	flabel.set_color(color);
-	flabel.set_position(get_location_x(loc)+zoom_/2, get_location_y(loc));
+	flabel.set_position(get_location_x(loc) + zoom_ / 2, get_location_y(loc));
 	flabel.set_move(0, -2 * turbo_speed());
-	flabel.set_lifetime(60/turbo_speed());
+	flabel.set_lifetime(60 / turbo_speed());
 	flabel.set_scroll_mode(font::ANCHOR_LABEL_MAP);
 
 	font::add_floating_label(flabel);
@@ -657,7 +655,7 @@ int& game_display::debug_highlight(const map_location& loc)
 
 void game_display::set_attack_indicator(const map_location& src, const map_location& dst)
 {
-	if (attack_indicator_src_ != src || attack_indicator_dst_ != dst) {
+	if(attack_indicator_src_ != src || attack_indicator_dst_ != dst) {
 		attack_indicator_src_ = src;
 		attack_indicator_dst_ = dst;
 	}
@@ -670,8 +668,7 @@ void game_display::clear_attack_indicator()
 
 std::string game_display::current_team_name() const
 {
-	if (team_valid())
-	{
+	if(team_valid()) {
 		return dc_->teams()[currentTeam_].team_name();
 	}
 	return std::string();
@@ -683,14 +680,16 @@ void game_display::begin_game()
 	create_buttons();
 }
 
-void game_display::needs_rebuild(bool b) {
-	if (b) {
+void game_display::needs_rebuild(bool b)
+{
+	if(b) {
 		needs_rebuild_ = true;
 	}
 }
 
-bool game_display::maybe_rebuild() {
-	if (needs_rebuild_) {
+bool game_display::maybe_rebuild()
+{
+	if(needs_rebuild_) {
 		needs_rebuild_ = false;
 		recalculate_minimap();
 		rebuild_all();
