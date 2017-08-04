@@ -560,11 +560,11 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 
 		fixed_t alpha = ftofxp(current_data.highlight_ratio);
 
-		// FIXME: this has a problem where multiple units of the same type (so, same texture)
-		// all get this applied to them. Not sure how to fix...
-		if(alpha < ftofxp(1.0)) {
-			set_texture_alpha(image, alpha);
-		}
+		// Explicitly set sprite to opaque if not applying an alpha effect. This ensures that
+		// multiple copies of the same sprite - ie, diffent units of the same type - don't all
+		// get drawn with the alpha effect. This happened because they all use the same texture
+		// and setting the alpha mod on one affects them all.
+		set_texture_alpha(image, alpha < ftofxp(1.0) ? alpha : ALPHA_OPAQUE);
 
 #if 0
 		surface surf(image);
