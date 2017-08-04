@@ -430,15 +430,15 @@ void log_file_manager::enable_native_console_output()
 	DBG_LS << "stderr to console\n";
 	fflush(stderr);
 	std::cerr.flush();
-	freopen("CONOUT$", "wb", stderr);
+	assert(freopen("CONOUT$", "wb", stderr) == stderr);
 
 	DBG_LS << "stdout to console\n";
 	fflush(stdout);
 	std::cout.flush();
-	freopen("CONOUT$", "wb", stdout);
+	assert(freopen("CONOUT$", "wb", stdout) == stdout);
 
 	DBG_LS << "stdin from console\n";
-	freopen("CONIN$",  "rb", stdin);
+	assert(freopen("CONIN$",  "rb", stdin) == stdin);
 
 	// At this point the log file has been closed and it's no longer our
 	// responsibility to clean up anything; Windows will figure out what to do
