@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#include "gui/widgets/widget_helpers.hpp"
+
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/widget.hpp"
