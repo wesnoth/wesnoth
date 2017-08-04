@@ -31,11 +31,12 @@ class terrain_label;
 class map_labels
 {
 public:
-	typedef std::map<map_location, terrain_label*> label_map;
+	typedef std::map<map_location, terrain_label> label_map;
 	typedef std::map<std::string, label_map> team_label_map;
 
 	map_labels(const map_labels&);
 	map_labels(const team*);
+
 	~map_labels();
 
 	map_labels& operator=(const map_labels&);
@@ -50,6 +51,7 @@ public:
 
 	// search a team-only label, if fails then try public labels
 	const terrain_label* get_label(const map_location& loc) const;
+
 	const terrain_label* set_label(const map_location& loc,
 			const t_string& text,
 			const int creator = -1,
@@ -82,9 +84,11 @@ public:
 	void clear_all();
 
 private:
-	void add_label(const map_location&, terrain_label*);
+	template<typename... T>
+	terrain_label* add_label(T&&... args);
 
 	void clear_map(label_map&, bool);
+
 	terrain_label* get_label_private(const map_location& loc, const std::string& team_name);
 	// Note: this is not an overload of get_label() so that we do not block
 	//       outsiders from calling get_label for a non-const map_labels object.
@@ -103,11 +107,15 @@ private:
 class terrain_label
 {
 public:
-	terrain_label(const t_string& text,
+	/** Delete copy ctor and assignment ops. */
+	terrain_label(const terrain_label&) = delete;
+	terrain_label& operator=(const terrain_label&) = delete;
+
+	terrain_label(const map_labels& parent,
+			const t_string& text,
 			const int creator,
 			const std::string& team_name,
 			const map_location& loc,
-			const map_labels& parent,
 			const color_t color = font::NORMAL_COLOR,
 			const bool visible_in_fog = true,
 			const bool visible_in_shroud = false,
@@ -116,6 +124,9 @@ public:
 			const t_string& tooltip = "");
 
 	terrain_label(const map_labels&, const config&);
+
+	/** Default move ctor. */
+	terrain_label(terrain_label&&) = default;
 
 	~terrain_label();
 
@@ -193,9 +204,6 @@ public:
 	void calculate_shroud();
 
 private:
-	terrain_label(const terrain_label&);
-	const terrain_label& operator=(const terrain_label&);
-
 	void clear();
 	void draw();
 	bool hidden() const;

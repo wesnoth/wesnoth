@@ -78,10 +78,10 @@ map_labels& map_labels::operator=(const map_labels& other)
 
 void map_labels::write(config& res) const
 {
-	for(team_label_map::const_iterator labs = labels_.begin(); labs != labels_.end(); ++labs) {
-		for(label_map::const_iterator i = labs->second.begin(); i != labs->second.end(); ++i) {
+	for(const auto& group : labels_) {
+		for(const auto& label : group.second) {
 			config item;
-			i->second->write(item);
+			label.second.write(item);
 
 			res.add_child("label", item);
 		}
@@ -93,9 +93,7 @@ void map_labels::read(const config& cfg)
 	clear_all();
 
 	for(const config& i : cfg.child_range("label")) {
-		const map_location loc(i, resources::gamedata);
-		terrain_label* label = new terrain_label(*this, i);
-		add_label(loc, label);
+		add_label(*this, i);
 	}
 
 	recalculate_labels();
@@ -103,11 +101,11 @@ void map_labels::read(const config& cfg)
 
 terrain_label* map_labels::get_label_private(const map_location& loc, const std::string& team_name)
 {
-	team_label_map::const_iterator label_map = labels_.find(team_name);
+	auto label_map = labels_.find(team_name);
 	if(label_map != labels_.end()) {
-		map_labels::label_map::const_iterator itor = label_map->second.find(loc);
+		auto itor = label_map->second.find(loc);
 		if(itor != label_map->second.end()) {
-			return itor->second;
+			return &itor->second;
 		}
 	}
 
@@ -170,7 +168,6 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 		// Found old checking if need to erase it
 		if(text.str().empty()) {
 			// Erase the old label.
-			delete current_label->second;
 			current_label_map->second.erase(current_label);
 
 			// Restore the global label in the same spot, if any.
@@ -178,19 +175,18 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 				global_label->recalculate();
 			}
 		} else {
-			current_label->second->update_info(
-					text, creator, tooltip, team_name, color, visible_in_fog, visible_in_shroud, immutable, category);
-			res = current_label->second;
+			current_label->second.update_info(
+				text, creator, tooltip, team_name, color, visible_in_fog, visible_in_shroud, immutable, category);
+
+			res = &current_label->second;
 		}
 	} else if(!text.str().empty()) {
 		// See if we will be replacing a global label.
 		terrain_label* global_label = get_label_private(loc, "");
 
 		// Add the new label.
-		res = new terrain_label(
-			text, creator, team_name, loc, *this, color, visible_in_fog, visible_in_shroud,	immutable, category, tooltip);
-
-		add_label(loc, res);
+		res = add_label(
+			*this, text, creator, team_name, loc, color, visible_in_fog, visible_in_shroud, immutable, category, tooltip);
 
 		// Hide the old label.
 		if(global_label != nullptr) {
@@ -202,10 +198,13 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 	return res;
 }
 
-void map_labels::add_label(const map_location& loc, terrain_label* new_label)
+template<typename... T>
+terrain_label* map_labels::add_label(T&&... args)
 {
-	labels_[new_label->team_name()][loc] = new_label;
 	categories_dirty = true;
+
+	terrain_label t(std::forward<T>(args)...);
+	return &(*labels_[t.team_name()].emplace(t.location(), std::move(t)).first).second;
 }
 
 void map_labels::clear(const std::string& team_name, bool force)
@@ -227,8 +226,7 @@ void map_labels::clear_map(label_map& m, bool force)
 {
 	label_map::iterator i = m.begin();
 	while(i != m.end()) {
-		if(!i->second->immutable() || force) {
-			delete i->second;
+		if(!i->second.immutable() || force) {
 			m.erase(i++);
 		} else {
 			++i;
@@ -240,18 +238,14 @@ void map_labels::clear_map(label_map& m, bool force)
 
 void map_labels::clear_all()
 {
-	for(team_label_map::value_type& m : labels_) {
-		clear_map(m.second, true);
-	}
-
 	labels_.clear();
 }
 
 void map_labels::recalculate_labels()
 {
-	for(team_label_map::value_type& m : labels_) {
-		for(label_map::value_type& l : m.second) {
-			l.second->recalculate();
+	for(auto& m : labels_) {
+		for(auto& l : m.second) {
+			l.second.recalculate();
 		}
 	}
 }
@@ -277,9 +271,9 @@ bool map_labels::visible_global_label(const map_location& loc) const
 
 void map_labels::recalculate_shroud()
 {
-	for(team_label_map::value_type& m : labels_) {
-		for(label_map::value_type& l : m.second) {
-			l.second->calculate_shroud();
+	for(auto& m : labels_) {
+		for(auto& l : m.second) {
+			l.second.calculate_shroud();
 		}
 	}
 }
@@ -296,13 +290,13 @@ const std::vector<std::string>& map_labels::all_categories() const
 		}
 
 		std::set<std::string> unique_cats;
-		for(const team_label_map::value_type& m : labels_) {
-			for(const label_map::value_type& l : m.second) {
-				if(l.second->category().empty()) {
+		for(const auto& m : labels_) {
+			for(const auto& l : m.second) {
+				if(l.second.category().empty()) {
 					continue;
 				}
 
-				unique_cats.insert("cat:" + l.second->category());
+				unique_cats.insert("cat:" + l.second.category());
 			}
 		}
 
@@ -313,11 +307,11 @@ const std::vector<std::string>& map_labels::all_categories() const
 }
 
 /** Create a new label. */
-terrain_label::terrain_label(const t_string& text,
+terrain_label::terrain_label(const map_labels& parent,
+		const t_string& text,
 		const int creator,
 		const std::string& team_name,
 		const map_location& loc,
-		const map_labels& parent,
 		const color_t color,
 		const bool visible_in_fog,
 		const bool visible_in_shroud,
