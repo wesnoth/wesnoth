@@ -48,7 +48,7 @@ bool portable_isspace(const char c)
 	// returns true only on ASCII spaces
 	if (static_cast<unsigned char>(c) >= 128)
 		return false;
-	return isnewline(c) || isspace(c);
+	return isnewline(c) || isspace(static_cast<unsigned char>(c));
 }
 
 // Make sure we regard '\r' and '\n' as a space, since Mac, Unix, and DOS
