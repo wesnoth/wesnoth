@@ -118,8 +118,8 @@ public:
 	/** Function to float a label above a tile */
 	void float_label(const map_location& loc, const std::string& text, const color_t& color);
 
-	/** Draws the movement info (turns available) for a given location. */
-	void draw_movement_info(const map_location& loc);
+	/** Draws the movement info (turns available). */
+	void draw_movement_info();
 
 	/** Function to invalidate that unit status displayed on the sidebar. */
 	void invalidate_unit() { invalidateGameStatus_ = true; }

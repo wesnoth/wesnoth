@@ -279,7 +279,7 @@ void game_display::draw_hex_cursor(const map_location& loc)
 	//
 	// Draw accompanying defense ratings and turn reach numbers within the hex.
 	//
-	draw_movement_info(loc);
+	draw_movement_info();
 
 	if(!game_config::images::selected.empty() && get_map().on_board(selectedHex_)) {
 		static texture selected(image::get_texture(game_config::images::selected));
@@ -405,20 +405,46 @@ void game_display::set_game_mode(const game_mode mode)
 	}
 }
 
-void game_display::draw_movement_info(const map_location& /*loc*/)
+void game_display::draw_movement_info()
 {
+	// No route steps. Draw terrain defense based on selected hex.
 	if(route_.steps.empty()) {
+		if(selectedHex_.valid()) {
+			const unit_map::const_iterator selectedUnit =
+				resources::gameboard->find_visible_unit(selectedHex_, dc_->teams()[currentTeam_]);
+
+			const unit_map::const_iterator mouseoveredUnit =
+				resources::gameboard->find_visible_unit(mouseoverHex_, dc_->teams()[currentTeam_]);
+
+#if 0
+			if(selectedUnit != dc_->units().end() && mouseoveredUnit == dc_->units().end()) {
+				// Display the def% of this terrain
+				int def =  100 - selectedUnit->defense_modifier(get_map().get_terrain(mouseoverHex_));
+				std::stringstream def_text;
+				def_text << def << "%";
+
+				color_t color = game_config::red_to_green(def, false);
+
+				// Use small font
+				static const int def_font = 16;
+				draw_text_in_hex(mouseoverHex_, def_text.str(), def_font, color);
+			}
+#endif
+
+			// LAYER_MOVE_INFO
+			for(const auto& reach : reach_map_) {
+				unsigned int num = reach.second;
+				if(num > 1) {
+					draw_text_in_hex(reach.first, std::to_string(num), 16, font::YELLOW_COLOR);
+				}
+			}
+		}
+
 		hex_def_fl_labels_.clear();
 		return;
 	}
 
 	std::shared_ptr<wb::manager> wb = wb_.lock();
-
-	//const unit_map::const_iterator selectedUnit =
-	//	resources::gameboard->find_visible_unit(selectedHex_,dc_->teams()[currentTeam_]);
-
-	//const unit_map::const_iterator mouseoveredUnit =
-	//	resources::gameboard->find_visible_unit(mouseoverHex_,dc_->teams()[currentTeam_]);
 
 	// First step of the route should be a unit.
 	const unit_map::const_iterator un = (wb && wb->get_temp_move_unit().valid())
@@ -491,101 +517,11 @@ void game_display::draw_movement_info(const map_location& /*loc*/)
 		if(mark.second.turns > 1 || (mark.second.turns == 1 && m_loc != route_.steps.back())) {
 			std::stringstream turns_text;
 			turns_text << mark.second.turns;
-		//	draw_text_in_hex(m_loc, turns_text.str(), 17, font::NORMAL_COLOR, 0.5, 0.8);
+			//draw_text_in_hex(m_loc, turns_text.str(), 17, font::NORMAL_COLOR, 0.5, 0.8); TODO
 		}
-
-		// The hex is full now, so skip the "show enemy moves"
-		//return;
 
 		++i;
 	}
-
-
-#if 0
-	// Search if there is a mark here
-	pathfind::marked_route::mark_map::iterator w = route_.marks.find(loc);
-
-	std::shared_ptr<wb::manager> wb = wb_.lock();
-
-	// Don't use empty route or the first step (the unit will be there)
-	if(w != route_.marks.end() && !route_.steps.empty() && ) {
-		const unit_map::const_iterator un = (wb && wb->get_temp_move_unit().valid())
-			? wb->get_temp_move_unit()
-			: dc_->units().find(route_.steps.front());
-
-		if(un != dc_->units().end()) {
-			// Display the def% of this terrain
-			int move_cost = un->movement_cost(get_map().get_terrain(loc));
-			int def = (move_cost == movetype::UNREACHABLE ?
-						0 : 100 - un->defense_modifier(get_map().get_terrain(loc)));
-			std::stringstream def_text;
-			def_text << def << "%";
-
-			color_t color = game_config::red_to_green(def, false);
-
-			// simple mark (no turn point) use smaller font
-			int def_font = w->second.turns > 0 ? 18 : 16;
-			draw_text_in_hex(loc, drawing_queue::LAYER_MOVE_INFO, def_text.str(), def_font, color);
-
-			int xpos = get_location_x(loc);
-			int ypos = get_location_y(loc);
-			if (w->second.invisible) {
-				drawing_queue_add(drawing_queue::LAYER_MOVE_INFO, loc, xpos, ypos,
-					image::get_image("misc/hidden.png", image::SCALED_TO_HEX));
-			}
-
-			if (w->second.zoc) {
-				drawing_queue_add(drawing_queue::LAYER_MOVE_INFO, loc, xpos, ypos,
-					image::get_image("misc/zoc.png", image::SCALED_TO_HEX));
-			}
-
-			if (w->second.capture) {
-				drawing_queue_add(drawing_queue::LAYER_MOVE_INFO, loc, xpos, ypos,
-					image::get_image("misc/capture.png", image::SCALED_TO_HEX));
-			}
-
-			//we display turn info only if different from a simple last "1"
-			if (w->second.turns > 1 || (w->second.turns == 1 && loc != route_.steps.back())) {
-				std::stringstream turns_text;
-				turns_text << w->second.turns;
-				draw_text_in_hex(loc, drawing_queue::LAYER_MOVE_INFO, turns_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
-			}
-
-			// The hex is full now, so skip the "show enemy moves"
-			return;
-		}
-	}
-
-	// When out-of-turn, it's still interesting to check out the terrain defs of the selected unit
-	else if (selectedHex_.valid() && loc == mouseoverHex_)
-	{
-		const unit_map::const_iterator selectedUnit = resources::gameboard->find_visible_unit(selectedHex_,dc_->teams()[currentTeam_]);
-		const unit_map::const_iterator mouseoveredUnit = resources::gameboard->find_visible_unit(mouseoverHex_,dc_->teams()[currentTeam_]);
-		if(selectedUnit != dc_->units().end() && mouseoveredUnit == dc_->units().end()) {
-			// Display the def% of this terrain
-			int move_cost = selectedUnit->movement_cost(get_map().get_terrain(loc));
-			int def = (move_cost == movetype::UNREACHABLE ?
-						0 : 100 - selectedUnit->defense_modifier(get_map().get_terrain(loc)));
-			std::stringstream def_text;
-			def_text << def << "%";
-
-			color_t color = game_config::red_to_green(def, false);
-
-			// use small font
-			int def_font = 16;
-			draw_text_in_hex(loc, drawing_queue::LAYER_MOVE_INFO, def_text.str(), def_font, color);
-		}
-	}
-
-	// Number of turns to reach
-	if(!reach_map_.empty()) {
-		reach_map::iterator reach = reach_map_.find(loc);
-		if(reach != reach_map_.end() && reach->second > 1) {
-			const std::string num = std::to_string(reach->second);
-			draw_text_in_hex(loc, drawing_queue::LAYER_MOVE_INFO, num, 16, font::YELLOW_COLOR);
-		}
-	}
-#endif
 }
 
 void game_display::draw_footstep_images() const
