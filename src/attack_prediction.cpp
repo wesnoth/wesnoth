@@ -275,7 +275,7 @@ public:
 	// Returns the index of the plane with the given slow statuses.
 	static unsigned int plane_index(bool a_slowed, bool b_slowed)
 	{
-		return a_slowed * 1u + b_slowed * 2u;
+		return (a_slowed ? 1 : 0) + (b_slowed ? 2 : 0);
 	}
 
 	/// What is the chance that an indicated combatant (one of them) is at zero?
