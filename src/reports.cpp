@@ -965,12 +965,11 @@ static config unit_weapons(reports::context & rc, const unit *u)
 	if ((u != nullptr) && (!u->attacks().empty())) {
 		map_location displayed_unit_hex = rc.screen().displayed_unit_hex();
 
-		//TODO enable after the string frezze is lifted
-		//const std::string attack_headline =
-		//		( u->attacks().size() > 1 ) ? N_("Attacks") : N_("Attack");
+		const std::string attack_headline =
+				( u->attacks().size() > 1 ) ? N_("Attacks") : N_("Attack");
 
-		//add_text(res,  /*span_color(font::weapon_details_color)
-		//		+*/ attack_headline /*+ "</span>\n"*/ + '\n', "");
+		add_text(res,  span_color(font::weapon_details_color)
+				+ attack_headline + "</span>" + '\n', "");
 
 		for (const attack_type &at : u->attacks())
 		{
