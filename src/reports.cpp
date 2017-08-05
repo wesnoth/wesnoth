@@ -961,20 +961,21 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 
 static config unit_weapons(reports::context & rc, const unit *u)
 {
-	if (!u || u->attacks().empty()) return config();
-	map_location displayed_unit_hex = rc.screen().displayed_unit_hex();
-	config res;
+	config res = config();
+	if ((u != nullptr) && (!u->attacks().empty())) {
+		map_location displayed_unit_hex = rc.screen().displayed_unit_hex();
 
-	//TODO enable after the string frezze is lifted
-	//const std::string attack_headline =
-	//		( u->attacks().size() > 1 ) ? N_("Attacks") : N_("Attack");
+		//TODO enable after the string frezze is lifted
+		//const std::string attack_headline =
+		//		( u->attacks().size() > 1 ) ? N_("Attacks") : N_("Attack");
 
-	//add_text(res,  /*span_color(font::weapon_details_color)
-	//		+*/ attack_headline /*+ "</span>\n"*/ + '\n', "");
+		//add_text(res,  /*span_color(font::weapon_details_color)
+		//		+*/ attack_headline /*+ "</span>\n"*/ + '\n', "");
 
-	for (const attack_type &at : u->attacks())
-	{
-		attack_info(rc, at, res, *u, displayed_unit_hex);
+		for (const attack_type &at : u->attacks())
+		{
+			attack_info(rc, at, res, *u, displayed_unit_hex);
+		}
 	}
 	return res;
 }
