@@ -1993,8 +1993,11 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 
 	const SDL_Rect& area = map_area();
 
-	xpos_ += (xpos_ + area.w / 2) * amount / zoom_;
-	ypos_ += (ypos_ + area.h / 2) * amount / zoom_;
+	//Turn the zoom factor to a double in order to avoid rounding errors.
+	double zoom_factor = double(new_zoom) / double(zoom_);
+	
+	xpos_ = round_double(((xpos_ + area.w / 2) * zoom_factor) - (area.w / 2));
+	ypos_ = round_double(((ypos_ + area.h / 2) * zoom_factor) - (area.h / 2));
 
 	zoom_ = new_zoom;
 	bounds_check_position(xpos_, ypos_);
