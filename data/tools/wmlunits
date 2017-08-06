@@ -30,15 +30,6 @@ def copy_images():
         "data/tools/unit_tree/style.css"), options.output)
     shutil.copy2(os.path.join(image_collector.datadir,
         "data/tools/unit_tree/menu.js"), options.output)
-    for grab in [
-        "http://www.wesnoth.org/mw/skins/glamdrol/headerbg.jpg",
-        "http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg",
-        "http://www.wesnoth.org/mw/skins/glamdrol/navbg.png"]:
-        local = os.path.join(options.output, grab[grab.rfind("/") + 1:])
-        if not os.path.exists(local):
-            print("Fetching", grab)
-            url = urllib.request.urlopen(grab)
-            open(local, "wb").write(url.read())
 
 def shell(com):
     #print(com)

@@ -9,36 +9,75 @@ import wesnoth.wmlparser3 as wmlparser3
 pics_location = "../../pics"
 
 html_header = '''
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE html>
+
+<html class="no-js wmlunits" lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<link rel="stylesheet" href=\"%(path)sstyle.css\" type=\"text/css\"/>
-<script type="text/javascript" src="%(path)s/menu.js"></script>
-<title>%(title)s</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montaga%%7COpen+Sans:400,400i,700,700i" type="text/css" />
+	<link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-16.png" sizes="16x16" />
+	<link rel="stylesheet" type="text/css" href="http://wesmere.localhost/wesmere/css/wesmere-1.1.0.css" />
+	<link rel="stylesheet" type="text/css" href="http://wesmere.localhost/wesmere/css/wmlunits-1.1.0.css" />
+	<script src="https://www.wesnoth.org/wesmere/js/modernizr.js"></script>
+    <script type="text/javascript" src="%(path)s/menu.js"></script>
+    <title>%(title)s</title>
 </head>
-<body><div>'''.strip()
+
+<body>
+
+<div id="main">'''.strip()
 
 top_bar = '''
-<div class="header">
-<a href="//www.wesnoth.org">
-<img src="%(path)swesnoth-logo.jpg" alt="Wesnoth logo"/>
-</a>
+<div id="nav" role="banner">
+<div class="centerbox">
+
+	<div id="logo">
+		<a href="https://www.wesnoth.org/" aria-label="Wesnoth logo"></a>
+	</div>
+
+	<ul id="navlinks">
+		<li><a href="https://www.wesnoth.org/">Home</a></li>
+		<li><a href="https://forums.wesnoth.org/viewforum.php?f=62">News</a></li>
+		<li><a href="https://wiki.wesnoth.org/Play">Play</a></li>
+		<li><a href="https://wiki.wesnoth.org/Create">Create</a></li>
+		<li><a href="https://forums.wesnoth.org/">Forums</a></li>
+		<li><a href="https://wiki.wesnoth.org/Project">About</a></li>
+	</ul>
+
+	<div id="sitesearch" role="search">
+		<form method="get" action="https://wiki.wesnoth.org/">
+			<input id="searchbox" type="search" name="search" placeholder="Search" title="Search this wiki [Alt+Shift+f]" accesskey="f" tabindex="1" />
+			<span id="searchbox-controls">
+				<button id="search-go" class="search-button" type="submit" title="Search" tabindex="2">
+					<i class="search-icon" aria-hidden="true"></i>
+					<span class="sr-label">Search this wiki</span>
+				</button>
+			</span>
+		</form>
+	</div>
+
+	<div class="reset"></div>
 </div>
-<div class="topnav">
-<a href="%(path)sindex.html">Wesnoth Units database</a>
-</div>'''.strip()
+</div>
+
+<div id="content" role="main">'''.strip()
 
 html_footer = '''
-<div id="footer">
-<p>%(generation_note)s</p>
-<p><a href="//wiki.wesnoth.org/Site_Map">Site map</a></p>
-<p><a href="//wiki.wesnoth.org/Wesnoth:Copyrights">Copyright</a> &copy; 2003&#8211;2016 The Battle for Wesnoth</p>
-<p>Supported by <a href="http://www.jexiste.fr/">Jexiste</a></p>
-</div>
-</div>
+</div> <!-- end content -->
+
+</div> <!-- end main -->
+
+<div id="footer-sep"></div>
+
+<div id="footer"><div id="footer-content"><div>
+	<a href="https://wiki.wesnoth.org/StartingPoints">Site Map</a> &#8226; <a href="http://status.wesnoth.org/">Site Status</a><br />
+	Copyright &copy; 2003&ndash;2017 by <a rel="author" href="https://wiki.wesnoth.org/Project">The Battle for Wesnoth Project</a>.<br />
+	Site design Copyright &copy; 2017 by Ignacio R. Morelle.
+</div></div></div>
+
 </body></html>
 '''.strip()
 
