@@ -965,8 +965,7 @@ static config unit_weapons(reports::context & rc, const unit *u)
 	if ((u != nullptr) && (!u->attacks().empty())) {
 		map_location displayed_unit_hex = rc.screen().displayed_unit_hex();
 
-		const std::string attack_headline =
-				( u->attacks().size() > 1 ) ? N_("Attacks") : N_("Attack");
+		const std::string attack_headline = _n("Attack", "Attacks", u->attacks().size());
 
 		add_text(res,  span_color(font::weapon_details_color)
 				+ attack_headline + "</span>" + '\n', "");
