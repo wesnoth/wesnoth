@@ -61,10 +61,13 @@ def main(folder):
     w(html_output.html_header % locals())
     
     w(html_output.top_bar % locals())
+
+    w('<h1>Database Build Report</h1>')
     
     w('<div class="overview">')
-    
+
     w('<table class="overview">')
+    w("<thead>")
     w("<tr><th>")
     w("Addon")
     w("</th><th>")
@@ -72,6 +75,9 @@ def main(folder):
     w("</th><th>")
     w("Error Log")
     w("</th></tr>")
+    w("</thead>")
+
+    w("<tbody>")
     count = 0
     total_n = 0
     total_error_logs = 0
@@ -164,14 +170,17 @@ def main(folder):
         w("</td></tr>")
         
         count += 1
-        
-    w("<tr><td>")
+    w("</tbody>")
+
+    w("<tfoot>")
+    w("<tr><th scope=\"row\">")
     w("Total (for %d addons):" % count)
-    w("</td><td>")
+    w("</th><td>")
     w(str(total_n))
     w("</td><td>")
     w(str(total_error_logs) + " (" + str(total_lines) + " lines)")
     w("</td></tr>")
+    w("</tfoot>")
 
     w("</table>")
     

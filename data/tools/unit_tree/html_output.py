@@ -507,7 +507,7 @@ class HTMLOutput:
         write("</table>")
         write("</div></li>\n")
         
-        write('<li class="overviewlink"><a class="unitmenu" href="../../overview.html">Overview</a></li>')
+        write('<li class="overviewlink"><a href="../../overview.html">Build Report</a></li>')
 
         write("</ul>\n")
 
