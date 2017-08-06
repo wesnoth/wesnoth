@@ -49,11 +49,11 @@ top_bar = '''
 
 	<div id="sitesearch" role="search">
 		<form method="get" action="https://wiki.wesnoth.org/">
-			<input id="searchbox" type="search" name="search" placeholder="Search" title="Search this wiki [Alt+Shift+f]" accesskey="f" tabindex="1" />
+			<input id="searchbox" type="search" name="search" placeholder="Search" title="Search the wiki [Alt+Shift+f]" accesskey="f" tabindex="1" />
 			<span id="searchbox-controls">
 				<button id="search-go" class="search-button" type="submit" title="Search" tabindex="2">
 					<i class="search-icon" aria-hidden="true"></i>
-					<span class="sr-label">Search this wiki</span>
+					<span class="sr-label">Search the wiki</span>
 				</button>
 			</span>
 		</form>
@@ -80,6 +80,8 @@ html_footer = '''
 
 </body></html>
 '''.strip()
+
+html_clear_floats = '<div class="reset"></div>'
 
 all_written_html_files = []
 
@@ -505,9 +507,7 @@ class HTMLOutput:
         write("</table>")
         write("</div></li>\n")
         
-        write("<li><div>&nbsp;</div></li>")
-        write("<li><div>&nbsp;</div></li>")
-        write('<li><a class="unitmenu" href="../../overview.html">Overview</a></li>')
+        write('<li class="overviewlink"><a class="unitmenu" href="../../overview.html">Overview</a></li>')
 
         write("</ul>\n")
 
@@ -634,10 +634,12 @@ class HTMLOutput:
                             except TypeError:
                                 pass
                         racename = un.name
-                        attributes += " class=\"raceheader\""
-                        write("<td%s>" % attributes)
-                        write("<a name=\"%s\">%s</a>" % (racename, racename))
-                        write("</td>\n")
+                        # TODO: we need to use a unique race id instead of a potentially duplicate
+                        #       name for the header id and link target!
+                        attributes += " id=\"%s\" class=\"raceheader\"" % racename
+                        write("<th" + attributes + ">")
+                        write("<a href=\"#%s\">%s</a>" % (racename, racename))
+                        write("</th>\n")
                     elif un:
                         u = un.unit
                         attributes += " class=\"unitcell\""
@@ -664,11 +666,8 @@ class HTMLOutput:
                         uaddon = "mainline"
                         if "mainline" not in u.campaigns: uaddon = self.addon
                         link = "../../%s/%s/%s.html" % (uaddon, self.isocode, uid)
-                        write("<div class=\"i\"><a href=\"%s\" title=\"id=%s\">%s</a>" % (
-                            link, uid, "i"))
-                        write("</div>")
                         write("<div class=\"l\">L%s%s</div>" % (level, crown))
-                        write("<a href=\"%s\">%s</a><br/>" % (link, name))
+                        write("<a href=\"%s\" title=\"Id: %s\">%s</a><br/>" % (link, uid, name))
 
                         write('<div class="pic">')
                         image, portrait = self.pic(u, u)
@@ -692,12 +691,12 @@ class HTMLOutput:
                         # Write info about abilities.
                         anames = self.get_abilities(u)
                         if anames:
-                            write("\n<div style=\"clear:both\">")
+                            write("\n<div class=\"abilities\">")
                             write(", ".join(anames))
                             write("</div>")
 
                         # Write info about attacks.
-                        write("\n<div style=\"clear:both\">")
+                        write("\n<div class=\"attacks\">")
                         attacks = self.get_recursive_attacks(u)
                         for attack in attacks:
 
@@ -742,7 +741,7 @@ class HTMLOutput:
 
         self.write_units()
 
-        self.output.write('<div id="clear" style="clear:both;"></div>')
+        self.output.write(html_clear_floats)
         self.output.write("</div>")
 
         self.output.write(html_footer % {
@@ -832,8 +831,8 @@ class HTMLOutput:
         write("<h2>Information</h2>\n")
         write("<table class=\"unitinfo\">\n")
         write("<tr>\n")
-        write("<td>%s" % _("Advances from: ", "wesnoth-help"))
-        write("</td><td>\n")
+        write("<th>%s" % _("Advances from: ", "wesnoth-help"))
+        write("</th><td>\n")
         for pid in self.forest.get_parents(uid):
             punit = self.wesnoth.unit_lookup[pid]
             if "mainline" in unit.campaigns and "mainline" not in punit.campaigns:
@@ -847,8 +846,8 @@ class HTMLOutput:
             write("\n<a href=\"%s\">%s</a>" % (link, name))
         write("</td>\n")
         write("</tr><tr>\n")
-        write("<td>%s" % _("Advances to: ", "wesnoth-help"))
-        write("</td><td>\n")
+        write("<th>%s" % _("Advances to: ", "wesnoth-help"))
+        write("</th><td>\n")
         for cid in self.forest.get_children(uid):
             try:
                 cunit = self.wesnoth.unit_lookup[cid]
@@ -877,12 +876,12 @@ class HTMLOutput:
             ("experience", _("XP: ")),
             ("level", _("Level") + ": "),
             ("alignment", _("Alignment: ")),
-            ("id", "ID")]:
+            ("id", "Id: ")]:
             x = uval(val)
             if not x and val in ("jamming", "vision"): continue
             if val == "alignment": x = _(x)
             write("<tr>\n")
-            write("<td>%s</td>" % text)
+            write("<th>%s</th>" % text)
             write("<td class=\"val\">%s</td>" % x)
             write("</tr>\n")
 
@@ -890,7 +889,7 @@ class HTMLOutput:
         anames = self.get_abilities(unit)
 
         write("<tr>\n")
-        write("<td>%s</td>" % _("Abilities: ", "wesnoth-help"))
+        write("<th>%s</th>" % _("Abilities: ", "wesnoth-help"))
         write("<td class=\"val\">" + (", ".join(anames)) + "</td>")
         write("</tr>\n")
 
@@ -1094,7 +1093,7 @@ class HTMLOutput:
 
         write('</div>') # columns parent
 
-        self.output.write('<div id="clear" style="clear:both;"></div>')
+        self.output.write(html_clear_floats)
         write('</div>') # main
 
         self.output.write(html_footer % {
