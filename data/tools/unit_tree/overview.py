@@ -54,8 +54,9 @@ def main(folder):
     def w(x): out.write(x + "\n")
 
     path = ""
-    title = "Wesnoth Unit Database Overview"
+    title = "Database Build Report"
     generation_note = "generated on " + time.ctime()
+    classes = "wmlunits-report"
 
     w(html_output.html_header % locals())
     

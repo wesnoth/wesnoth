@@ -11,7 +11,7 @@ pics_location = "../../pics"
 html_header = '''
 <!DOCTYPE html>
 
-<html class="no-js wmlunits" lang="en">
+<html class="no-js wmlunits %(classes)s" lang="en">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -23,7 +23,7 @@ html_header = '''
 	<link rel="stylesheet" type="text/css" href="http://wesmere.localhost/wesmere/css/wmlunits-1.1.0.css" />
 	<script src="https://www.wesnoth.org/wesmere/js/modernizr.js"></script>
     <script type="text/javascript" src="%(path)s/menu.js"></script>
-    <title>%(title)s</title>
+    <title>%(title)s - Wesnoth Units Database</title>
 </head>
 
 <body>
@@ -730,7 +730,7 @@ class HTMLOutput:
 
     def write_units_tree(self, grouper, title, add_parents):
         self.output.write(html_header % {"path": "../../",
-            "title": title})
+            "title": title, "classes": "wmlunits-tree"})
 
         n = self.analyze_units(grouper, add_parents)
         self.write_navbar("units_tree")
@@ -781,7 +781,7 @@ class HTMLOutput:
 
         self.output = output
         write(html_header % {"path": "../../",
-            "title": display_name})
+            "title": display_name, "classes": "wmlunits-unit"})
         self.write_navbar("unit_report")
 
         self.output.write("<div class=\"main\">")
