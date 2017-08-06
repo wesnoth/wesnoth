@@ -34,6 +34,8 @@
 #include "video.hpp"
 #include "wml_exception.hpp"
 
+#include <iterator>
+
 namespace gui2
 {
 
@@ -1391,9 +1393,13 @@ void canvas::draw(const bool force)
 		variables_.add("height", wfl::variant(h_));
 	}
 
-	// create surface
-	DBG_GUI_D << "Canvas: create new empty canvas.\n";
-	canvas_.assign(create_neutral_surface(w_, h_));
+	if(!canvas_.null()) {
+		DBG_GUI_D << "Canvas: use cached canvas.\n";
+	} else {
+		// create surface
+		DBG_GUI_D << "Canvas: create new empty canvas.\n";
+		canvas_.assign(create_neutral_surface(w_, h_));
+	}
 
 	SDL_DestroyRenderer(renderer_);
 
@@ -1406,6 +1412,10 @@ void canvas::draw(const bool force)
 
 		shape->draw(canvas_, renderer_, variables_);
 	}
+
+	// The shapes have been drawn and the draw result has been cached. Clear the list.
+	std::copy(shapes_.begin(), shapes_.end(), std::back_inserter(drawn_shapes_));
+	shapes_.clear();
 
 	SDL_RenderPresent(renderer_);
 
@@ -1484,12 +1494,29 @@ void canvas::parse_cfg(const config& cfg)
 
 void canvas::clear_shapes(const bool force)
 {
-	const auto iter = std::remove_if(shapes_.begin(), shapes_.end(), [&force](const shape_ptr s)
+	auto iter = std::remove_if(shapes_.begin(), shapes_.end(), [force](const shape_ptr s)
 	{
 		return !s->immutable() && !force;
 	});
-
 	shapes_.erase(iter, shapes_.end());
+
+	iter = std::remove_if(drawn_shapes_.begin(), drawn_shapes_.end(), [force](const shape_ptr s)
+	{
+		return !s->immutable() && !force;
+	});
+	drawn_shapes_.erase(iter, drawn_shapes_.end());
+}
+
+void canvas::invalidate_cache()
+{
+	canvas_.assign(nullptr);
+
+	if(shapes_.empty()) {
+		shapes_.swap(drawn_shapes_);
+	} else {
+		std::copy(drawn_shapes_.begin(), drawn_shapes_.end(), std::inserter(shapes_, shapes_.begin()));
+		drawn_shapes_.clear();
+	}
 }
 
 /***** ***** ***** ***** ***** SHAPE ***** ***** ***** ***** *****/

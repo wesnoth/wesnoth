@@ -35,9 +35,6 @@ namespace gui2
  *
  * The class has a config which contains what to draw.
  *
- * NOTE we might add some caching in a later state, for now every draw cycle
- * does a full redraw.
- *
  * The copy constructor does a shallow copy of the shapes to draw.
  * a clone() will be implemented if really needed.
  */
@@ -121,6 +118,7 @@ public:
 	void set_cfg(const config& cfg, const bool force = false)
 	{
 		clear_shapes(force);
+		invalidate_cache();
 		parse_cfg(cfg);
 	}
 
@@ -142,6 +140,7 @@ public:
 	{
 		w_ = width;
 		set_is_dirty(true);
+		invalidate_cache();
 	}
 
 	unsigned get_width() const
@@ -153,6 +152,7 @@ public:
 	{
 		h_ = height;
 		set_is_dirty(true);
+		invalidate_cache();
 	}
 
 	unsigned get_height() const
@@ -169,6 +169,7 @@ public:
 	{
 		variables_.add(key, value);
 		set_is_dirty(true);
+		invalidate_cache();
 	}
 
 	void set_is_dirty(const bool is_dirty)
@@ -179,6 +180,10 @@ public:
 private:
 	/** Vector with the shapes to draw. */
 	std::vector<shape_ptr> shapes_;
+
+	/** All shapes which have been already drawn. Kept around in case
+	 * the cache needs to be invalidated. */
+	std::vector<shape_ptr> drawn_shapes_;
 
 	/**
 	 * The depth of the blur to use in the pre committing.
@@ -223,6 +228,7 @@ private:
 	void parse_cfg(const config& cfg);
 
 	void clear_shapes(const bool force);
+	void invalidate_cache();
 };
 
 } // namespace gui2

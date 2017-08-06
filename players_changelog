@@ -32,6 +32,8 @@ Version 1.13.8+dev:
 
  * Performance:
    * Rewrote the FPS cap implementation. This greatly improves smoothness ingame.
+   * Implemented GUI canvas caching. It speeds up multiple areas, but especially
+     the story screen.
 
  * User Interface:
    * Unit recall dialog now sorts the units by both level and required XP for

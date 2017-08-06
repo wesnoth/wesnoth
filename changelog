@@ -47,6 +47,8 @@ Version 1.13.8+dev:
    * Fixed delay or clients gettings stuck when starting a mp game (Bug #1674)
  * Performance:
    * Rewrote the FPS cap implementation. This greatly improves smoothness ingame.
+   * Implemented GUI canvas caching. It speeds up multiple areas, but especially
+     the story screen.
  * Units:
    * Added new lvl0 Giant Scorpling, leveling into the Giant Scorpion.
  * User Interface:
