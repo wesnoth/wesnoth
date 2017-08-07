@@ -70,6 +70,8 @@ top_bar = '''
 html_footer = '''
 </div> <!-- end content -->
 
+<div class="centerbox"><div id="lastmod">%(generation_note)s</div></div>
+
 </div> <!-- end main -->
 
 <div id="footer-sep"></div>
@@ -764,7 +766,7 @@ class HTMLOutput:
         self.output.write("</div>")
 
         self.output.write(html_footer % {
-            "generation_note": "generated on " + time.ctime()})
+            "generation_note": "Last updated on " + time.ctime() + "."})
         
         return n
 
@@ -1116,7 +1118,7 @@ class HTMLOutput:
         write('</div>') # main
 
         self.output.write(html_footer % {
-            "generation_note": "generated on " + time.ctime()})
+            "generation_note": "Last updated on " + time.ctime() + "."})
 
 
 def generate_campaign_report(addon, isocode, campaign, wesnoth):

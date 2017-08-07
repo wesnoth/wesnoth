@@ -11,7 +11,7 @@ def write_addon_overview(folder, addon):
 
     path = "../"
     title = name + " Overview"
-    generation_note = "generated on " + time.ctime()
+    generation_note = "Last updated on " + time.ctime() + "."
     
     w(html_output.html_header % locals())
     
