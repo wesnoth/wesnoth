@@ -704,10 +704,16 @@ class HTMLOutput:
 
                         write('</a>\n</div>\n')
                         write("<div class=\"attributes\">")
-                        write("%s%s<br />" % (_("Cost: ", "wesnoth-help"), cost))
-                        write("%s%s<br />" % (_("HP: "), hp))
-                        write("%s%s<br />" % (_("MP: "), mp))
-                        write("%s%s<br />" % (_("XP: "), xp))
+
+                        attributes = (
+                            (_("Cost: ", "wesnoth-help"), cost),
+                            (_("HP: "), hp),
+                            (_("XP: "), xp),
+                            (_("MP: "), mp),
+                        )
+
+                        for attr_label, attr_value in attributes:
+                            write('<span class="attribute-label">%s</span> <span class="attribute-value">%s</span><br />' % (attr_label.strip(), attr_value))
 
                         # Write info about abilities.
                         anames = self.get_abilities(u)
