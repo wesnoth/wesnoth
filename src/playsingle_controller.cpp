@@ -125,6 +125,11 @@ void playsingle_controller::init_gui(){
 	// does not necessarily define the starting positions. While usually
 	// best to use the map, the scenarion may explicitly set the positions,
 	// overriding those found in the map (if any).
+	if(map_start_.valid())
+	{
+		gui_->scroll_to_tile(map_start_, game_display::WARP);
+	}
+	else
 	{
 		int scroll_team = gamestate().first_human_team_ + 1;
 		if (scroll_team == 0) {
