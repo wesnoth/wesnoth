@@ -696,7 +696,7 @@ class HTMLOutput:
                         write('<a href=\"%s\">' % link)
 
                         if crown == " ♚":
-                            write('<div style="background: url(%s)">' % image)
+                            write('<div class="spritebg" style="background-image:url(\'%s\')">' % image)
                             write('<img src="%s" alt="(image)" />' % crownimage)
                             write("</div>")
                         else:
