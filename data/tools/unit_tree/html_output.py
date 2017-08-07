@@ -9,6 +9,7 @@ import wesnoth.wmlparser3 as wmlparser3
 pics_location = "../../pics"
 
 html_entity_horizontal_bar = '&#8213;'
+html_entity_multiplication_sign = '&#215;'
 
 html_header = '''
 <!DOCTYPE html>
@@ -24,8 +25,8 @@ html_header = '''
 	<link rel="stylesheet" type="text/css" href="http://wesmere.localhost/wesmere/css/wesmere-1.1.0.css" />
 	<link rel="stylesheet" type="text/css" href="http://wesmere.localhost/wesmere/css/wmlunits-1.1.0.css" />
 	<script src="https://www.wesnoth.org/wesmere/js/modernizr.js"></script>
-    <script type="text/javascript" src="%(path)s/menu.js"></script>
-    <title>%(title)s - Wesnoth Units Database</title>
+	<script type="text/javascript" src="%(path)s/menu.js"></script>
+	<title>%(title)s - Wesnoth Units Database</title>
 </head>
 
 <body>
@@ -41,6 +42,7 @@ top_bar = '''
 	</div>
 
 	<ul id="navlinks">
+		<li><a href="https://units.wesnoth.org/">Units</a></li>
 		<li><a href="https://www.wesnoth.org/">Home</a></li>
 		<li><a href="https://forums.wesnoth.org/viewforum.php?f=62">News</a></li>
 		<li><a href="https://wiki.wesnoth.org/Play">Play</a></li>
@@ -693,7 +695,7 @@ class HTMLOutput:
                         write('<div class="pic">')
                         image, portrait = self.pic(u, u)
 
-                        write('<a href=\"%s\">' % link)
+                        write('<a href=\"%s\" title=\"Id: %s\">' % (link, name))
 
                         if crown == " ♚":
                             write('<div class="spritebg" style="background-image:url(\'%s\')">' % image)
@@ -729,7 +731,7 @@ class HTMLOutput:
 
                             n = T(attack, "number")
                             x = T(attack, "damage")
-                            x = "%s - %s" % (x, n)
+                            x = " ".join((x, html_entity_multiplication_sign, n))
                             write("%s " % x)
 
                             r = T(attack, "range")
@@ -860,6 +862,7 @@ class HTMLOutput:
         write("<tr>\n")
         write("<th>%s" % _("Advances from: ", "wesnoth-help"))
         write("</th><td>\n")
+        have_advances = False
         for pid in self.forest.get_parents(uid):
             punit = self.wesnoth.unit_lookup[pid]
             if "mainline" in unit.campaigns and "mainline" not in punit.campaigns:
@@ -870,11 +873,17 @@ class HTMLOutput:
             link = "../../%s/%s/%s.html" % (addon, self.isocode, pid)
             name = self.wesnoth.get_unit_value(punit, "name",
                 translation=self.translation.translate)
-            write("\n<a href=\"%s\">%s</a>" % (link, name))
+            if have_advances:
+                write(', ')
+            write('<a href="%s">%s</a>' % (link, name))
+            have_advances = True
+        if not have_advances:
+            write('-')
         write("</td>\n")
         write("</tr><tr>\n")
         write("<th>%s" % _("Advances to: ", "wesnoth-help"))
         write("</th><td>\n")
+        have_advances = False
         for cid in self.forest.get_children(uid):
             try:
                 cunit = self.wesnoth.unit_lookup[cid]
@@ -890,7 +899,12 @@ class HTMLOutput:
                 name = cid
                 if "mainline" in unit.campaigns: continue
                 link = self.target
-            write("\n<a href=\"%s\">%s</a>" % (link, name))
+            if have_advances:
+                write(', ')
+            write('<a href="%s">%s</a>' % (link, name))
+            have_advances = True
+        if not have_advances:
+            write('-')
         write("</td>\n")
         write("</tr>\n")
 
@@ -917,13 +931,16 @@ class HTMLOutput:
 
         write("<tr>\n")
         write("<th>%s</th>" % _("Abilities: ", "wesnoth-help"))
-        write("<td class=\"val\">" + (", ".join(anames)) + "</td>")
+        if len(anames):
+            write("<td class=\"val\">" + (", ".join(anames)) + "</td>")
+        else:
+            write("<td class=\"val\">-</td>")
         write("</tr>\n")
 
         write("</table>\n")
 
         # Write info about attacks.
-        write("<h2>" + _("unit help^Attacks", "wesnoth-help") + " <small>(damage - count)</small></h2> \n")
+        write("<h2>" + _("unit help^Attacks", "wesnoth-help") + " <small>(damage " + html_entity_multiplication_sign + " count)</small></h2> \n")
         write("<table class=\"unitinfo attacks\">\n")
         write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /></colgroup>')
         attacks = self.get_recursive_attacks(unit)
@@ -954,7 +971,7 @@ class HTMLOutput:
 
             n = attack.get_text_val("number")
             x = attack.get_text_val("damage")
-            x = "%s - %s" % (x, n)
+            x = " ".join((x, html_entity_multiplication_sign, n))
             write("<td><i>%s</i>" % x)
 
             t = T(attack, "type")
@@ -1028,7 +1045,7 @@ class HTMLOutput:
                 simage = image
                 sportrait = portrait
 
-            style = "background-image: url(%s);" % simage
+            style = "background-image:url('%s');" % simage
 
             write('<div class="portrait">')
             write('<div style="%s">&nbsp;</div>' % style)
@@ -1041,10 +1058,10 @@ class HTMLOutput:
         write("<table class=\"unitinfo terrain\">\n")
         write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /></colgroup>')
 
-        write("<tr><th colspan=\"2\"></th><th colspan=\"2\">%s</th></tr>\n" % (
-            _("Movement Cost", "wesnoth-help")))
-        write("<tr><th colspan=\"2\">%s</th><th></th><th class=\"numheader\">%s</th></tr>\n" % (
-            _("Terrain", "wesnoth-help"), _("Defense", "wesnoth-help")))
+        write('<thead>')
+        write('<tr><th colspan="2">%s</th><th class="mvtcost">%s</th><th class="numheader">%s</th></tr>\n' % (
+            _("Terrain", "wesnoth-help"), _("Movement Cost", "wesnoth-help"), _("Defense", "wesnoth-help")))
+        write('</thead>')
 
         terrains = self.wesnoth.terrain_lookup
         terrainlist = []
@@ -1090,11 +1107,15 @@ class HTMLOutput:
             not_from_race, c = find_attr("movement_costs", tid)
 
             ccell = "td"
-            if c == "99": ccell += ' class="grayed"'
+            if c == "99":
+                ccell += ' class="mvtcost grayed"'
+            else:
+                ccell += ' class="mvtcost"'
             dcell = "td"
             not_from_race, d = find_attr("defense", tid)
 
-            if d == "-": d = 100
+            if d == "-":
+                d = 100
 
             try:
                 d = int(d)
