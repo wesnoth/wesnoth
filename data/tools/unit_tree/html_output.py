@@ -8,6 +8,8 @@ import wesnoth.wmlparser3 as wmlparser3
 
 pics_location = "../../pics"
 
+html_entity_horizontal_bar = '&#8213;'
+
 html_header = '''
 <!DOCTYPE html>
 
@@ -344,7 +346,7 @@ class HTMLOutput:
         <div class="navbar">
         """)
 
-        write("<ul class=\"navbar\">")
+        write('<ul class="navbar" role="menu">')
 
         def abbrev(name):
             abbrev = name[0]
@@ -355,13 +357,28 @@ class HTMLOutput:
             return abbrev
 
         def add_menu(id, name, class2=""):
-            write("""<li class="popuptrigger"
+            write("""<li class="popuptrigger" role="menuitem" aria-haspopup="true"
                 onclick="toggle_menu(this, '""" + id + """', 2)"
                 onmouseover="toggle_menu(this, '""" + id + """', 1)"
                 onmouseout="toggle_menu(this, '""" + id + """', 0)">""")
             write('<a class="' + class2 + '">' + name + "</a>")
-            write('<div class="popupmenu" id="' + id + '">')
-            write("<div>" + name + "</div>")
+            write('<ul class="popupmenu" id="' + id + '" role="menu" aria-label="' + name + '">')
+            write('<li>' + name + '</li>')
+
+        # FIXME: This is legacy code needed for the Language menu, since it's
+        #        a table and we can't make it otherwise since CSS column
+        #        support is still hit-or-miss for some browsers still in use.
+        def add_menu2(id, name, class2=""):
+            write("""<li class="popuptrigger" role="menuitem" aria-haspopup="true"
+                onclick="toggle_menu(this, '""" + id + """', 2)"
+                onmouseover="toggle_menu(this, '""" + id + """', 1)"
+                onmouseout="toggle_menu(this, '""" + id + """', 0)">""")
+            write('<a class="' + class2 + '">' + name + "</a>")
+            write('<div class="popupmenu" id="' + id + '" role="menu" aria-label="' + name + '">')
+            write('<div>' + name + '</div>')
+
+        def end_menu():
+            write('</ul></li>\n')
 
         # We may not have all the required info yet so defer writing the
         # campaigns/eras navigation.
@@ -370,13 +387,13 @@ class HTMLOutput:
         x = self.translate("addon_type^Campaign", "wesnoth")
         add_menu("campaigns_menu", x)
         write("PLACE CAMPAIGNS HERE\n")
-        write("</div></li>\n")
+        end_menu()
         
         # Eras
         x = self.translate("Era", "wesnoth")
         add_menu("eras_menu", x)
         write("PLACE ERAS HERE\n")
-        write("</div></li>\n")
+        end_menu()
 
         # Races / Factions
 
@@ -389,7 +406,7 @@ class HTMLOutput:
             x = self.translate("Race", "wesnoth-lib")
             add_menu("races_menu", x)
 
-            write("<a href=\"mainline.html\">%s</a><br/>\n" % (
+            write('<li><a href="mainline.html" role="menuitem">%s</a></li>\n' % (
                 self.translate("all", "wesnoth-editor")))
 
             r = {}, {}
@@ -412,12 +429,12 @@ class HTMLOutput:
 
             for racename, rid in racenames:
                 if racename == "-":
-                    write(" -<br/>")
+                    write('<li>%s</li>' % html_entity_horizontal_bar)
                 else:
-                    write(" <a href=\"%s#%s\">%s</a><br/>" % (
+                    write('<li><a href="%s#%s" role="menuitem">%s</a></li>' % (
                         target, racename, racename))
 
-            write("</div></li>\n")
+            end_menu()
         else:
             x = self.translate("Factions", "wesnoth-help")
             add_menu("races_menu", x)
@@ -429,10 +446,10 @@ class HTMLOutput:
                     if isinstance(un, helpers.GroupNode):
                         html = "../%s/%s.html" % (
                             self.isocode, self.campaign)
-                        write(" <a href=\"%s#%s\">%s</a><br/>" % (
+                        write('<li><a href="%s#%s" role="menuitem">%s</a></li>' % (
                             html, un.name, un.name))
 
-            write("</div></li>\n")
+            end_menu()
 
         # Add entries for the races also to the navbar itself.
         if not self.is_era:
@@ -454,14 +471,16 @@ class HTMLOutput:
             got_menu = False
             menuid = 0
             for r in racelist:
-                if not r: continue
-                if got_menu: write("</div></li>\n")
+                if not r:
+                    continue
+                if got_menu:
+                    end_menu()
                 add_menu("units_menu" + str(menuid), r, "unitmenu")
                 menuid += 1
                 got_menu = True
                 c = self.campaign
                 if c == "units": c = "mainline"
-                write("<a href=\"%s#%s\">%s</a><br/>" % (
+                write('<li><a href="%s#%s" role="menuitem">%s</a></li>' % (
                     target, r, r))
                 for uid in races[r]:
                     un = self.wesnoth.unit_lookup[uid]
@@ -474,13 +493,13 @@ class HTMLOutput:
                     if not name:
                         error_message("Warning: Unit uid=" + uid + " has no name.\n")
                         name = uid
-                    write("<a href=\"" + link + "\">" + name + "</a><br />")
-
-            if got_menu: write("</div></li>\n")
+                    write('<li><a href="' + link + '" role="menuitem">' + name + '</a></li>')
+            if got_menu:
+                end_menu()
 
         # Languages
         x = self.translate("Language", "wesnoth")
-        add_menu("languages_menu", x)
+        add_menu2("languages_menu", x)
         col = 0
         maxcol = len(langlist) - 1
         write("<table>")
@@ -492,11 +511,11 @@ class HTMLOutput:
             #underscore = labb.find("_")
             #if underscore > 0: labb = labb[:underscore]
             if self.addon == "mainline":
-                write(" <a title=\"%s\" href=\"../%s/%s\">%s</a><br/>\n" % (
+                write('<a title="%s" href="../%s/%s" role="menuitem">%s</a>\n' % (
                     languages[lang], lang, self.target,
                         labb))
             else:
-                write(" <a title=\"%s\" href=\"../%s/%s\">%s</a><br/>\n" % (
+                write('<a title="%s" href="../%s/%s">%s</a>\n' % (
                     languages[lang], lang, "mainline.html",
                         labb))    
             write("</td>")
@@ -1212,10 +1231,10 @@ def html_postprocess_file(filename, isocode, batchlist):
         for campaign in campaigns:
             addon, cname, campname, lang = campaign
 
-            chtml += " <a title=\"%s\" href=\"../../%s/%s/%s.html\">%s</a><br/>\n" % (
+            chtml += '<li><a title="%s" href="../../%s/%s/%s.html" role="menuitem">%s</a></li>\n' % (
                 campname, addon, lang, cname, campname)
         if i == 0 and cids[1]:
-            chtml += "-<br/>\n"
+            chtml += '<li>%s</li>\n' % html_entity_horizontal_bar
 
     eids = [[], []]
     for addon in batchlist:
@@ -1238,10 +1257,10 @@ def html_postprocess_file(filename, isocode, batchlist):
         for era in eras:
             addon, eid, eraname, lang = era
 
-            ehtml += " <a title=\"%s\" href=\"../../%s/%s/%s.html\">%s</a><br/>" % (
+            ehtml += '<li><a title="%s" href="../../%s/%s/%s.html" role="menuitem">%s</a></li>\n' % (
                 eraname, addon, lang, eid, eraname)
         if i == 0 and eids[1]:
-            ehtml += "-<br/>\n"
+            ehtml += '<li>%s</li>\n' % html_entity_horizontal_bar
             
     f = open(filename, "r+b")
     html = f.read().decode("utf8")
