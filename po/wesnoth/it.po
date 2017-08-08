@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-05-29 21:55+0200\n"
-"PO-Revision-Date: 2017-06-07 15:51+0300\n"
+"PO-Revision-Date: 2017-07-25 18:56+0300\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1273,7 +1273,7 @@ msgstr "Chiedi a $ai_controller_unit.name di spostarsi qui"
 #: data/core/macros/ai_controller.cfg:72
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
-"Chiedi a $ally_leader.name (condottiero della fazione $ally_leader.side) di "
+"Chiedi a $ally_leader.name (condottiero della squadra $ally_leader.side) di "
 "spostarsi qui"
 
 #. [note]
@@ -1300,7 +1300,7 @@ msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
 msgstr ""
-"$ally_leader.name (fazione $ally_side|) sta attuando le seguenti istruzioni:"
+"$ally_leader.name (squadra $ally_side|) sta attuando le seguenti istruzioni:"
 
 #. [overview_message_no_instructions]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:132
@@ -1308,7 +1308,7 @@ msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
 msgstr ""
-"$ally_leader.name (fazione $ally_side|) non ha ricevuto istruzioni e si "
+"$ally_leader.name (squadra $ally_side|) non ha ricevuto istruzioni e si "
 "comporta normalmente."
 
 #. [aggression]
@@ -1352,19 +1352,19 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:378
 #: data/core/macros/ai_controller.cfg:384
 msgid "Side $temp_i"
-msgstr "Fazione $temp_i"
+msgstr "Squadra $temp_i"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:245
 #: data/core/macros/ai_controller.cfg:386
 msgid "side $temp_i"
-msgstr "fazione $temp_i"
+msgstr "squadra $temp_i"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:260
 #: data/core/macros/ai_controller.cfg:401
 msgid "side $temp_i ($side_i_leader.name|)"
-msgstr "fazione $temp_i ($side_i_leader.name|)"
+msgstr "squadra $temp_i ($side_i_leader.name|)"
 
 #. [value]
 #: data/core/macros/ai_controller.cfg:286
@@ -3244,8 +3244,8 @@ msgid ""
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
 "Il giocatore controllato dal computer potrebbe non riuscire ad usare "
-"correttamente in gioco la fazione $side_number nel corso di questo scenario. "
-"La fazione $side_number è stata ideata per essere usata da un giocatore "
+"correttamente in gioco la squadra $side_number nel corso di questo scenario. "
+"La squadra $side_number è stata ideata per essere usata da un giocatore "
 "umano."
 
 #. [music]
@@ -4195,12 +4195,12 @@ msgstr "gioca il turno"
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:511 data/themes/_initial.cfg:664
 msgid "Next Side"
-msgstr "Fazione successiva"
+msgstr "Squadra successiva"
 
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:512 data/themes/_initial.cfg:665
 msgid "play side turn"
-msgstr "gioca il turno della fazione"
+msgstr "gioca il turno della squadra"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:526 data/themes/_initial.cfg:678
@@ -5442,7 +5442,7 @@ msgstr "Era MG"
 
 #: src/addon/info.cpp:166
 msgid "addon_type^MP faction"
-msgstr "Fazione MG"
+msgstr "Squadra MG"
 
 #: src/addon/info.cpp:168
 msgid "addon_type^MP map-pack"
@@ -6087,7 +6087,7 @@ msgstr "Nell’era attuale sono disponibili solo fazioni casuali."
 
 #: src/game_initialization/flg_manager.cpp:212
 msgid "Unable to find a leader type for faction $faction"
-msgstr "Impossibile trovare un tipo di condottiero per la fazione $faction"
+msgstr "Impossibile trovare un tipo di condottiero per la squadra $faction"
 
 #: src/game_initialization/flg_manager.cpp:235
 msgid "Cannot obtain genders for invalid leader $leader"
@@ -6442,8 +6442,6 @@ msgstr ""
 "«dimensione massima delle colline»)"
 
 #: src/gui/core/linked_group_definition.cpp:40
-#, fuzzy
-#| msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 "Il gruppo '$id' collegato ha bisogno di un chiave 'larghezza_fissa' o "
@@ -6459,7 +6457,7 @@ msgstr "Non sono presenti salvataggi da caricare"
 
 #: src/gui/dialogs/game_stats.hpp:43
 msgid "No visible sides found."
-msgstr "Nessuna fazione multigiocatore visibile trovata."
+msgstr "Nessuna squadra visibile trovata."
 
 #: src/gui/dialogs/lobby/player_info.cpp:103
 msgid "In game:"
@@ -6989,32 +6987,32 @@ msgstr "Aggiorna l’interfaccia grafica."
 
 #: src/menu_events.cpp:1163
 msgid "Switch a side to/from AI control."
-msgstr "Dai/togli all’IA il controllo di una fazione."
+msgstr "Dai/togli all’IA il controllo di una squadra."
 
 #: src/menu_events.cpp:1164 src/menu_events.cpp:1166
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr "[<fazione> [on/off]]"
+msgstr "[<squadra> [on/off]]"
 
 #: src/menu_events.cpp:1165
 msgid "Switch a side to/from idle state."
-msgstr "Assegna/togli alla fazione lo stato “Inattiva”."
+msgstr "Assegna/togli alla squadra lo stato “Inattiva”."
 
 #: src/menu_events.cpp:1169
 msgid "<side> <nickname>"
-msgstr "<fazione> <nickname>"
+msgstr "<squadra> <nickname>"
 
 #: src/menu_events.cpp:1169
 msgid "Assign control of a side to a different player or observer."
-msgstr "Assegna il controllo di una fazione a un altro giocatore/osservatore."
+msgstr "Assegna il controllo di una squadra a un altro giocatore/osservatore."
 
 # verificare assolutamente
 #: src/menu_events.cpp:1170
 msgid "Query the controller status of a side."
-msgstr "Interroga lo stato controllore di una fazione."
+msgstr "Interroga lo stato controllore di una squadra."
 
 #: src/menu_events.cpp:1171
 msgid "<side>"
-msgstr "<fazione>"
+msgstr "<squadra>"
 
 #: src/menu_events.cpp:1172
 msgid "Clear chat history."
@@ -7209,47 +7207,47 @@ msgstr "Nessuna etichetta o unità contenente la stringa ‘$search’ trovata."
 
 #: src/menu_events.cpp:1404
 msgid "Can't droid invalid side: '$side'."
-msgstr "Impossibile automatizzare la fazione non valida: «$side»."
+msgstr "Impossibile automatizzare la squadra non valida: «$side»."
 
 #: src/menu_events.cpp:1409
 msgid "Can't droid networked side: '$side'."
-msgstr "Impossibile automatizzare la fazione in rete: «$side»."
+msgstr "Impossibile automatizzare la squadra in rete: «$side»."
 
 #: src/menu_events.cpp:1427
 msgid "Can't droid a local ai side: '$side'."
-msgstr "Impossibile automatizzare una fazione con IA locale: «$side»."
+msgstr "Impossibile automatizzare una squadra con IA locale: «$side»."
 
 #: src/menu_events.cpp:1443
 msgid "Can't idle invalid side: '$side'."
-msgstr "Impossibile rendere inattiva la fazione non valida: «$side»."
+msgstr "Impossibile rendere inattiva la squadra non valida: «$side»."
 
 #: src/menu_events.cpp:1448
 msgid "Can't idle networked side: '$side'."
-msgstr "Impossibile rendere inattiva la fazione in rete: «$side»."
+msgstr "Impossibile rendere inattiva la squadra in rete: «$side»."
 
 #: src/menu_events.cpp:1453
 msgid "Can't idle local ai side: '$side'."
-msgstr "Impossibile rendere inattiva una fazione con IA locale: «$side»."
+msgstr "Impossibile rendere inattiva una squadra con IA locale: «$side»."
 
 #: src/menu_events.cpp:1513
 msgid "Can't change control of invalid side: '$side'."
-msgstr "Impossibile cambiare il controllo della fazione non valida: «$side»."
+msgstr "Impossibile cambiare il controllo della squadra non valida: «$side»."
 
 #: src/menu_events.cpp:1523
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
-"Impossibile cambiare il controllo della fazione fuori dai limiti: «$side»."
+"Impossibile cambiare il controllo della squadra fuori dai limiti: «$side»."
 
 #: src/menu_events.cpp:1540
 msgid "Can't query control of invalid side: '$side'."
 msgstr ""
-"Impossibile inviare interrogazioni sul controllo della fazione non valida: "
+"Impossibile inviare interrogazioni sul controllo della squadra non valida: "
 "«$side»."
 
 #: src/menu_events.cpp:1547
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr ""
-"Impossibile inviare interrogazioni sul controllo della fazione fuori dai "
+"Impossibile inviare interrogazioni sul controllo della squadra fuori dai "
 "limiti: «$side»."
 
 #: src/menu_events.cpp:1654
@@ -7433,7 +7431,7 @@ msgid ""
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
-"Questa fazione si trova in uno stato di inattività. Per procedere con la "
+"Questa squadra si trova in uno stato di inattività. Per procedere con la "
 "partita, deve essere assegnata a un altro controllore. Per esempio, puoi "
 "utilizzare i comandi :droid, :control o :give_control."
 
@@ -7485,7 +7483,7 @@ msgstr "Sostituisci con un giocatore in locale"
 
 #: src/playturn.cpp:279
 msgid "Set side to idle"
-msgstr "Imposta la fazione come inattiva"
+msgstr "Imposta la squadra come inattiva"
 
 #: src/playturn.cpp:280
 msgid "Save and abort game"
@@ -7966,7 +7964,7 @@ msgstr "i"
 
 #: src/synced_user_choice.cpp:328
 msgid "waiting for $desc from side(s) $sides"
-msgstr "in attesa di $desc dalla fazione/i $sides"
+msgstr "in attesa di $desc dalla squadra/e $sides"
 
 #: src/terrain/terrain.cpp:179
 msgid "Allied village"
@@ -7999,13 +7997,10 @@ msgstr "Questo periodo della giornata è soltanto una bozza!"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:349
-#, fuzzy
-#| msgid "$number_or_percent damage"
-#| msgid_plural "$number_or_percent damage"
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
-msgstr[0] "$number_or_percent danno"
-msgstr[1] "$number_or_percent danni"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> danno"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> danni"
 
 #: src/units/attack_type.cpp:358
 msgid "$number damage"
@@ -8015,13 +8010,10 @@ msgstr[1] "$number danni"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:367
-#, fuzzy
-#| msgid "$number_or_percent strike"
-#| msgid_plural "$number_or_percent strikes"
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
-msgstr[0] "$number_or_percent colpo"
-msgstr[1] "$number_or_percent colpi"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> colpo"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> colpi"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:376
@@ -8032,15 +8024,13 @@ msgstr[1] "$number colpi"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:385
-#, fuzzy
-#| msgid "$number parry"
 msgid "$number| accuracy"
-msgstr " $number schivata"
+msgstr " $number| schivata"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:392
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
-msgstr ""
+msgstr "<span color=\"$color\">$number_or_percent|%</span> accuratezza"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:399
@@ -8049,10 +8039,8 @@ msgstr " $number schivata"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:406
-#, fuzzy
-#| msgid "$number_or_percent parry"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
-msgstr "$number_or_percent parata"
+msgstr "<span color=\"$color\">$number_or_percent</span> parata"
 
 #. TRANSLATORS: Current value for WML code set_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:413
@@ -8063,13 +8051,10 @@ msgstr[1] "$number punti movimento"
 
 #. TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:422
-#, fuzzy
-#| msgid "$number_or_percent movement point"
-#| msgid_plural "$number_or_percent movement points"
 msgid "<span color=\"$color\">$number_or_percent movement</span> point"
 msgid_plural "<span color=\"$color\">$number_or_percent movement</span> points"
-msgstr[0] "$number_or_percent punto movemento"
-msgstr[1] "$number_or_percent punti movimento"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> punto movimento"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> punti movimento"
 
 #: src/units/types.cpp:462
 msgid "No description available."
@@ -8116,47 +8101,33 @@ msgid "wesnoth"
 msgstr "Wesnoth"
 
 #: src/units/unit.cpp:1785
-#, fuzzy
-#| msgid "$number_or_percent move"
-#| msgid_plural "$number_or_percent moves"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
-msgstr[0] "$number_or_percent mossa"
-msgstr[1] "$number_or_percent mosse"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> mossa"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> mosse"
 
 #: src/units/unit.cpp:1791
-#, fuzzy
-#| msgid "$number_or_percent vision"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
-msgstr "$number_or_percent visuale"
+msgstr "<span color=\"$color\">$number_or_percent</span> visuale"
 
 #: src/units/unit.cpp:1795
-#, fuzzy
-#| msgid "$number_or_percent jamming"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
-msgstr "$number_or_percent disturbo"
+msgstr "<span color=\"$color\">$number_or_percent</span> disturbo"
 
 #: src/units/unit.cpp:1800
-#, fuzzy
-#| msgid "$number_or_percent XP to advance"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
-msgstr "$number_or_percent PE per avanzare"
+msgstr "<span color=\"$color\">$number_or_percent</span> PE per avanzare"
 
 #: src/units/unit.cpp:1804
-#, fuzzy
-#| msgid "$number_or_percent attack per turn"
-#| msgid_plural "$number_or_percent attacks per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
-msgstr[0] "$number_or_percent attacco per turno"
-msgstr[1] "$number_or_percent attacchi per turno"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> attacco per turno"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> attacchi per turno"
 
 #: src/units/unit.cpp:1811
-#, fuzzy
-#| msgid "$number_or_percent cost to recall"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
-msgstr "$number_or_percent costo di richiamo"
+msgstr "<span color=\"$color\">$number_or_percent</span> costo di richiamo"
 
 #: src/units/unit.cpp:2215
 msgid "$effect_description per level"

@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-05-29 21:55+0200\n"
-"PO-Revision-Date: 2016-05-15 15:26+0000\n"
+"PO-Revision-Date: 2017-07-29 15:21+0300\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [generic_multiplayer]: id=user_map
@@ -86,7 +86,7 @@ msgstr ""
 "affidano ad un uso accorto del terreno e di attacchi coordinati, sferrati "
 "preferibilmente all’alba o al tramonto.\n"
 "\n"
-"Quest’era è ancora in fase di sviluppo, siete quindi pregati di notificare "
+"Quest’era è ancora in fase di sviluppo, siete quindi pregati di riportare "
 "qualsiasi problema possiate incontrare."
 
 #. [era]: id=era_khalifate_heroes
@@ -109,14 +109,14 @@ msgstr ""
 "un uso accorto del terreno e di attacchi coordinati, sferrati "
 "preferibilmente all’alba o al tramonto.\n"
 "\n"
-"Quest’era è ancora in fase di sviluppo, siete quindi pregati di notificare "
+"Quest’era è ancora in fase di sviluppo, siete quindi pregati di riportare "
 "qualsiasi problema possiate incontrare."
 
 #. [lua]: f
 #: data/multiplayer/eras.lua:62
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgstr ""
-"<span strikethrough='true' foreground='#%02x%02x%02x'>Fazione %d</span>"
+"<span strikethrough='true' foreground='#%02x%02x%02x'>Squadra %d</span>"
 
 #. [lua]: f
 #: data/multiplayer/eras.lua:76
@@ -124,7 +124,7 @@ msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
 msgstr ""
-"<span foreground='#%02x%02x%02x'>Fazione %d</span>: Punteggio entrate = %d  "
+"<span foreground='#%02x%02x%02x'>Squadra %d</span>: Punteggio entrate = %d  "
 "Punteggio unità = %d  Oro = %d"
 
 #. [lua]: f
@@ -135,7 +135,7 @@ msgstr "Totale: <b>%d</b>"
 #. [lua]: f
 #: data/multiplayer/eras.lua:87
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
-msgstr "<span foreground='%s'>La fazione %d</span> è in vantaggio."
+msgstr "<span foreground='%s'>La squadra %d</span> è in vantaggio."
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -160,7 +160,7 @@ msgstr ""
 "dst='..race_lizard'</ref>. I draghi discendono dai dragoni, ma sono d‎i "
 "taglia minore. I sauri sono decisamente più piccoli dei draghi e hanno una "
 "diversa ascendenza. Con la loro unione, la fazione dei draghi può contare su "
-"una grande mobilita' al costo di una ridotta difesa, cosa che porta allo "
+"una grande mobilità al costo di una ridotta difesa, cosa che porta allo "
 "sviluppo di tattiche inusuali per una fazione dell’<ref>text='Era "
 "Predefinita' dst='..era_era_default'</ref>."
 
@@ -188,8 +188,8 @@ msgstr ""
 "coordinare attacchi all’alba e al tramonto. ‎‎‎Trai i loro ranghi trovano posto "
 "unità legali e liminali, curatori, combattenti di mischia infallibili e "
 "terribili arcieri a cavallo. Sebbene le unità del califfato tendano ad "
-"essere più' costose di quelle della fazione Lealista, compensano il costo "
-"con la loro alta mobilità, specialmente su terreni collinosi."
+"essere più costose di quelle della fazione Lealista, compensano il costo con "
+"la loro alta mobilità, specialmente su terreni collinosi."
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -214,11 +214,11 @@ msgstr ""
 "<ref>text='Nani' dst='..race_dwarf'</ref> e dai loro alleati fuorilegge "
 "<ref>text='Umani' dst='..race_human'</ref>. I nani sono una razza antica che "
 "vive sottoterra ed annovera tra le sue fila valorosi guerrieri, sebbene "
-"iccoli di statura. I fuorilegge sono degli umani respinti dalla loro stessa "
+"piccoli di statura. I fuorilegge sono degli umani respinti dalla loro stessa "
 "razza in quanto socialmente non accettati e diventati alleati dei nani a "
 "causa dei nemici in comune. Questa miscela di razze porta ad una "
 "combinazione di nani tozzi e corazzati, molto abili in determinati tipi di "
-"terreno e umani che invece si destreggiano bene sugli altri tipi di tereno."
+"terreno e umani che invece si destreggiano bene sugli altri tipi di terreno."
 
 #. [multiplayer_side]: id=Loyalists, type=random
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
@@ -303,7 +303,7 @@ msgstr ""
 "ref>, alcuni <ref>text='nereidi' dst='..race_merman'</ref>, e le creature di "
 "boschi chiamate <ref>text='Wose' dst='..race_wose'</ref>. I Ribelli si "
 "avvantaggiano in termini difensivi delle zone boscose, sono maestri negli "
-"attacchi a distanza e possiedono l’allieamento neutrale degli elfi."
+"attacchi a distanza e possiedono l’allineamento neutrale degli elfi."
 
 #. [multiplayer_side]: id=Undead, type=random
 #: data/multiplayer/factions/undead-aoh.cfg:4
@@ -328,7 +328,7 @@ msgstr ""
 "<ref>text='non-morte' dst='..race_undead'</ref>, solitamente accompagnati da "
 "<ref>text='umani' dst='..race_human'</ref> che praticano le arti oscure. "
 "Spesso , questi “adepti oscuri” sono le unità che procurano i danni maggiori "
-"nella fazione, ma sono le più' vulnerabili. L’addestramento in questa "
+"nella fazione, ma sono le più vulnerabili. L’addestramento in questa "
 "proibita e malvagia forma di magia ha sostanzialmente consumato tutta la "
 "loro energia vitale e in pratica non riescono ad avere alcun tipo di attacco "
 "in mischia.  I Non-morti sono una fazione molto aggressiva e di notte sono "
@@ -359,17 +359,18 @@ msgid ""
 msgstr ""
 "Tanto tempo fa, la grande maga Sulla fu imprigionata nell’Aethermaw, una "
 "stringa di energia mistica la cui natura caotica era capace di impedire la "
-"sua fuga. Tuttavia dopo molti secoli, Sulla a poco a poco accordò i suoi "
-"poteri col vortice del disordine che nientemeno era l’Aethermaw stesso, e da "
-"ciò ha cominciato a creare terreni materiali e a disegnare intere regioni, "
-"realtà e periodi di tempo appartenenti a centinaia di mondi differenti. La "
-"maga fa esperimenti con questi disparati pezzi di cosmo, li manipola, li "
-"mescola e poi li spedisce avanti e indietro tra l’Aethermaw e il loro punto "
-"di origine. Se riuscirà a dominare i brontolii dell’Aethermaw, forse un "
-"giorno Sulla riuscirà a rompere le catene e potrà essere di nuovo libera. In "
-"attesa che ciò accada, continuerà ad organizzare battaglie coinvolgendo "
-"creature mortali abbastanza sfortunate da farsi richiamare nelle profondità "
-"del suo mondo, per il solo puro divertimento. Progettata da Doc Paterson."
+"sua fuga. Tuttavia dopo molti secoli, Sulla a poco a poco sincronizzò i suoi "
+"poteri col vortice del disordine che era nientemeno che l’Aethermaw stesso, "
+"e da ciò ha cominciato a creare terreni materiali e a disegnare intere "
+"regioni, realtà e periodi di tempo appartenenti a centinaia di mondi "
+"differenti. La maga fa esperimenti con questi disparati pezzi di cosmo, li "
+"manipola, li mescola e poi li spedisce avanti e indietro tra l’Aethermaw e "
+"il loro punto di origine. Se riuscirà a dominare i brontolii dell’Aethermaw, "
+"forse un giorno Sulla riuscirà a rompere le catene e potrà essere di nuovo "
+"libera. In attesa che ciò accada, continuerà ad organizzare battaglie "
+"coinvolgendo creature mortali abbastanza sfortunate da farsi richiamare "
+"nelle profondità del suo mondo, per il solo puro divertimento. Progettata da "
+"Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
@@ -449,10 +450,8 @@ msgstr "Sud"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:289
-#, fuzzy
-#| msgid "Death of your team leaders"
 msgid "Defeat enemy leader(s)"
-msgstr "Morte dei tuoi condottieri"
+msgstr "Sconfiggi il/i condottieri nemici"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:293
@@ -460,6 +459,8 @@ msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle."
 msgstr ""
+"La grande maga Sulla ha trasportato le tue armate in questa bizzarra "
+"dimensione, e chiede che tu la faccia divertire con una battaglia."
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:296
@@ -467,6 +468,8 @@ msgid ""
 "Units may not move into a hex with a rock cairn. They may, however, be "
 "recruited to, and move from, such hexes."
 msgstr ""
+"Le unità non possono occupare un esagono con un tumulo di rocce. Resta "
+"possibile reclutare una unità su uno di questi esagoni e poi muoverla."
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:299
@@ -474,13 +477,16 @@ msgid ""
 "Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
 "of the battlefield. The process will be complete by the end of turn 6."
 msgstr ""
+"All’inizio del quarto turno, la grande maga Sulla inizierà a congiungere le "
+"due metà del campo di battaglia. Il processo sarà completato alla fine del "
+"sesto turno."
 
 # indeciso su come tradurre growls (brontolio, ruggito, ringhio, borbottare, borbottio).
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:329
 msgid "The Aethermaw growls."
-msgstr "Il brontolio di Aethermaw."
+msgstr "I brontolii dell’Aethermaw."
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:6
@@ -1050,10 +1056,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Clearing_Gushes
 #: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:7
-#, fuzzy
-#| msgid "4p — Clash"
 msgid "2p — Clearing Gushes"
-msgstr "4g – Scontro"
+msgstr "2g - Ripulire le fonti"
 
 #. [multiplayer]: id=multiplayer_Clearing_Gushes
 #: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:8
@@ -1066,6 +1070,14 @@ msgid ""
 "rigorous discipline and organization of Wesnoth's armies are in no small "
 "part driven by a constant need to patrol and defend these prosperous lands."
 msgstr ""
+"Le rive del Grande Fiume per molti sono le terre più fertili che si "
+"conoscano. La primavera e l’estate portano allagamenti lungo tutta la sua "
+"estensione, rendendo il suolo fertile e regalando copiosi raccolti "
+"autunnali. Il regno di Wesnoth ha reso questa terra il motore della sua "
+"salute e prosperità, rendendola altresì il bersaglio di innumerevoli "
+"attacchi ed incursioni. La disciplina rigorosa e l’organizzazione delle "
+"armate di Wesnoth sono il larga parte generate dal costante bisogno di "
+"pattugliare e difendere queste lande prosperose."
 
 #. [multiplayer]: id=multiplayer_Cynsaun_Battlefield
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:6
@@ -1383,10 +1395,8 @@ msgstr ""
 #  XXX Hamlets, al plurale. Dovrebbe essere un piccolo villaggio, o una raggruppamento di case.
 #. [multiplayer]: id=multiplayer_Hellhole
 #: data/multiplayer/scenarios/2p_Hellhole.cfg:7
-#, fuzzy
-#| msgid "2p — Hamlets"
 msgid "2p — Hellhole"
-msgstr "2g – Villaggi"
+msgstr "2g – Buca dell’Inferno"
 
 #. [multiplayer]: id=multiplayer_Hellhole
 #: data/multiplayer/scenarios/2p_Hellhole.cfg:8
@@ -1399,6 +1409,14 @@ msgid ""
 "eternal scar on the land that to this day summons forth legions of wandering "
 "undead."
 msgstr ""
+"Una volta, la città di Myrilel era un tranquillo villaggio ai confini "
+"orientali delle terre conosciute dall’uomo. Tutto ciò è stato cambiato per "
+"sempre dall’ascesa del signore della guerra, il lich Mal-Ravanal, che ha "
+"spalancato i cancelli della oscura stregoneria nera proprio al centro della "
+"città, in modo da crearvi il primo centro di raccolta per le sue armate "
+"della morte. Sebbene Mal-Ravanal sia stato sconfitto, Myrilel resta tuttora "
+"un posto di rovina e desolazione, con i cancelli ad eterno monito di una "
+"terra che ai giorni d’oggi continua a sfornare legioni di non-morti vaganti."
 
 #. [multiplayer]: id=multiplayer_Hornshark_Island
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:26
@@ -1530,7 +1548,7 @@ msgstr ""
 #. [multiplayer]: id=multiplayer_Ruined_Passage
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:7
 msgid "2p — Ruined Passage"
-msgstr ""
+msgstr "2g - Varco disastrato"
 
 #. [multiplayer]: id=multiplayer_Ruined_Passage
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:8
@@ -1544,11 +1562,21 @@ msgid ""
 "molten brimstone lies land kept pristine and untouched — yet mysteriously "
 "abandoned nonetheless."
 msgstr ""
+"Molte sono le storie che ruotano intorno al lontano ovest, racconti "
+"fantastici che narrano di come esso sia stato la culla di tutti gli esseri "
+"viventi, prima che piombasse nella rovina causata da un diluvio di disastri. "
+"Le leggende narrano dell’ingenuità degli antichi nelle loro ultime ore, "
+"quando tentarono di respingere le violente tempeste di fuoco e cenere. "
+"Soltanto di recente, alcune spedizioni segrete hanno rivelato la fondatezza "
+"di queste storie: sorprendentemente, un canale di gigantesche pareti "
+"incantate. Compresa tra eruttanti isole vulcaniche e vasti mari di zolfo "
+"fuso, giace una terra ancora primordiale e integra, ancora misteriosamente "
+"abbandonata."
 
 #. [multiplayer]: id=multiplayer_Ruphus_Isle
 #: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:7
 msgid "2p — Ruphus Isle"
-msgstr ""
+msgstr "2g - Isola Ruphus"
 
 #. [multiplayer]: id=multiplayer_Ruphus_Isle
 #: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:8
@@ -1675,10 +1703,8 @@ msgstr "Una statua di pietra di Lo-bsang, servitore di Sulla."
 
 #. [multiplayer]: id=multiplayer_Swamp_of_Dread
 #: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:7
-#, fuzzy
-#| msgid "2p — Sablestone Delta"
 msgid "2p — Swamp of Dread"
-msgstr "2g – Delta della roccia nera"
+msgstr "2g – Palude dell’Orrore"
 
 #. [multiplayer]: id=multiplayer_Swamp_of_Dread
 #: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:8
@@ -1694,6 +1720,19 @@ msgid ""
 "great strategic value means it is fiercely contested by all with military "
 "aims in the Great Continent's heart."
 msgstr ""
+"A nord del Grande Fiume si estende la Palude dell’Orrore: una vasta e "
+"inospitale distesa di fango, intrisa di ripugnante magia. Esistono soltanto "
+"poche strade che la attraversano e non garantiscono troppo sulle possibilità "
+"di rimanere intrappolati o morire. Nonostante tutto, questi percorsi sono "
+"molto ricercati in quanto lucrose connessioni tra le pianure meridionali e "
+"il rude nord, ed esploratori intrepidi sono disposti ad attraversare le "
+"pericolose piantagioni in cerca di luoghi redditizi ove piazzare stazioni di "
+"commercio. La più grande di queste stazioni, il Passo di Areth, è un "
+"attraversamento molto conosciuto e da lungo tempo conteso, fin dalle prime "
+"antiche guerre tra elfi e nani. A dispetto della povertà della zona e delle "
+"limitate risorse, il suo altissimo valore strategico conduce al fatto che "
+"sia aspramente contesa da tutti quelli i cui scopi bellici coinvolgano il "
+"cuore del Grande Continente."
 
 #. [multiplayer]: id=multiplayer_The_Freelands
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:6
@@ -1719,10 +1758,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_The_Walls_of_Pyrennis
 #: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:7
-#, fuzzy
-#| msgid "2p — Den of Onis"
 msgid "2p — The Walls of Pyrennis"
-msgstr "2g – Il covo di Onis"
+msgstr "2g – Le mura di Pyrennis"
 
 #. [multiplayer]: id=multiplayer_The_Walls_of_Pyrennis
 #: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:8
@@ -1738,6 +1775,19 @@ msgid ""
 "Pyrennis have proved astoundingly indestructible both to time and war — that "
 "is, what scattered segments of it were actually completed."
 msgstr ""
+"Quando le orde degli orchi iniziarono ad infrangersi ad ondate sul Grande "
+"Continente, un intrepido monarca di nome Olgor il Re di Ferro pose le basi "
+"per la riunificazione delle litigiose tribù orchesche. Il suo sogno era "
+"quello di conquistare l’intero Continente e di porlo sotto il giogo degli "
+"orchi. A tal proposito diede l’ordine di costruire l’immensa fortezza di "
+"Pyrennis come monumento del suo potere. Ma fu proprio questa cittadella che "
+"portò alla disgregazione del suo operato: i suoi vassalli, restii al "
+"completare la costruzione dell’edificio prima di aver completato la "
+"conquista del continente, si ribellarono ad Olgol e morto lui, disperdendo "
+"le tribù degli orchi per i secoli a venire. Le mura di Pyrennis hanno dato "
+"prova di essere incredibilmente resistenti sia alla prova del tempo che a "
+"quella della guerra, tant’è che qua e là ne rimangono ancora alcuni pezzi "
+"interi."
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:37
@@ -1747,7 +1797,7 @@ msgstr "2g - La fortezza dai mille pungiglioni"
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
 msgid "A strange place. Designed by Doc Paterson"
-msgstr "Uno strano posto. Disegnata da Doc Paterson"
+msgstr "Uno strano posto. Ideato da Doc Paterson"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:85
@@ -1821,10 +1871,8 @@ msgstr "Statua"
 
 #. [multiplayer]: id=multiplayer_Tombs_of_Kesorak
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:7
-#, fuzzy
-#| msgid "5p — Forest of Fear"
 msgid "2p — Tombs of Kesorak"
-msgstr "5g – La foresta della paura"
+msgstr "2g - Le tombe di Kesorak"
 
 #. [multiplayer]: id=multiplayer_Tombs_of_Kesorak
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:8
@@ -1835,6 +1883,12 @@ msgid ""
 "whispering amongst the withered trees of this barren landscape. Unconcerned "
 "by their gloomy surroundings, your leaders have chosen this place to clash."
 msgstr ""
+"Centinaia di anni fa, dopo la sua sconfitta, in questo luogo venne sepolto "
+"lo stregone Kesorak insieme ad un certo numero dei suoi seguaci. Oggi "
+"un’aura gelida circonda le tombe, e molti credono che la voce di Kesorak "
+"possa ancora essere udita sussurrare tra gli alberi avvizziti di questo "
+"spoglio paesaggio. Incuranti della cupa ambientazione, i tuoi comandanti "
+"hanno deciso di darsi battaglia in questo posto."
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:179
@@ -1842,6 +1896,8 @@ msgid ""
 "The map contains mausoleums and campfires that shift the time of the day by "
 "one step toward night and day, respectively."
 msgstr ""
+"La mappa contiene i mausolei e i fuochi di bivacco che spostano l’ora del "
+"giorno in avanti rispettivamente di notte e di giorno."
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:182
@@ -1849,6 +1905,8 @@ msgid ""
 "The tile in the centre, which contains the casket of the titular "
 "necromancer, is always covered in pitch black fog."
 msgstr ""
+"L’esagono centrale, contenente la bara del necromante del titolo, è "
+"perennemente coperto da una fitta nebbia nera come la pece."
 
 #. [multiplayer]: id=multiplayer_Weldyn_Channel
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:5
@@ -1910,16 +1968,12 @@ msgstr "3g – L’Isola degli Orazi"
 
 #. [multiplayer]: id=multiplayer_Island_of_the_Horatii
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
-#, fuzzy
-#| msgid ""
-#| "Controlling the central island is often the key to victory in this "
-#| "21x21hex 3 player free for all map."
 msgid ""
 "Controlling the central island is often the key to victory in this 3 player "
 "free for all map."
 msgstr ""
 "Il controllo dell’isola centrale è spesso la via per la vittoria in questa "
-"mappa 21×21 per tre giocatori, da giocare tutti contro tutti."
+"mappa per tre giocatori, da giocare tutti contro tutti."
 
 #. [multiplayer]: id=multiplayer_3p_Morituri
 #: data/multiplayer/scenarios/3p_Morituri.cfg:5
@@ -1937,10 +1991,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Bath_of_Glory
 #: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:7
-#, fuzzy
-#| msgid "4p — Paths of Daggers"
 msgid "4p — Bath of Glory"
-msgstr "4g – Il sentiero dei pugnali"
+msgstr "4g – Bagno della Gloria"
 
 #. [multiplayer]: id=multiplayer_Bath_of_Glory
 #: data/multiplayer/scenarios/4p_Bath_of_Glory.cfg:9
@@ -1954,6 +2006,17 @@ msgid ""
 "wealthy nobles can turn into veritable battlegrounds — but even this has "
 "become a form of entertainment woven into the allure of the Bath."
 msgstr ""
+"La lontana e leggendaria città di Malisat è famosa per i suoi grandi "
+"monumenti, tra cui spicca il più famoso di tutti: l’enorme complesso "
+"conosciuto come il Bagno della Gloria. Creato per essere un paradiso del "
+"rilassamento per accogliere i soldati al loro ritorno a casa, il Bagno è una "
+"incredibile oasi costruita nel deserto al centro del nulla, solo sabbia. Nel "
+"tempo si è poi trasformata in una città vera e propria, con una profusione "
+"di arte e musica che emana dai suoi bagni, incentrate per lo più sulla vita "
+"selvaggia. La vastità del complesso conduce al fatto che spesso le accese "
+"dispute tra i ricchi nobili possano tramutarsi in vere e proprie battaglie, "
+"ma anche questa è diventata una forma di intrattenimento intessuta nel "
+"fascino del Bagno."
 
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:5
@@ -1968,10 +2031,10 @@ msgid ""
 "snowcapped mountains of this small province, its villagers hardly seem to "
 "take notice."
 msgstr ""
-"Si dice che la Provincia di Acque Blu sia stata distrutta e ricostruita una "
-"ventina di volte. Ora che altri eserciti si radunano sulle catene montuose e "
-"sulle montagne innevate di questa piccola provincia, i suoi abitanti quasi "
-"non se ne accorgono."
+"Si dice che la Provincia di Acque Blu sia stata distrutta e ricostruita "
+"almeno una ventina di volte. Ora che altri eserciti si radunano sulle catene "
+"montuose e sulle montagne innevate di questa piccola provincia, i suoi "
+"abitanti quasi non se ne accorgono."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:21
@@ -2024,10 +2087,8 @@ msgstr "Piccola mappa per giocare 2 contro 2."
 # nome intraducibile secondo me. Aether = etere ; maw = stomaco, fauci.
 #. [multiplayer]: id=multiplayer_Geothermal
 #: data/multiplayer/scenarios/4p_Geothermal.cfg:7
-#, fuzzy
-#| msgid "2p — Aethermaw"
 msgid "4p — Geothermal"
-msgstr "2g – Aethermaw"
+msgstr "4g – Geotermia"
 
 #. [multiplayer]: id=multiplayer_Geothermal
 #: data/multiplayer/scenarios/4p_Geothermal.cfg:9
@@ -2038,6 +2099,12 @@ msgid ""
 "perilous and unstable, is nonetheless rich thanks to numerous foundries "
 "using the heat of volcanoes and hot springs to fuel their forges."
 msgstr ""
+"I versanti occidentali delle Montagne Centrali sono delle lande dai forti "
+"contrasti: bollenti calderoni vulcanici si alternano a profondi fiumi blu, "
+"in mezzo a brulle montagne nevose, punteggiate di verdi radure. Sebbene a "
+"volte pericolosa ed instabile, questa terra e nondimeno ricca, grazie alle "
+"numerose fonderie che si avvantaggiano del calore dei vulcani e delle fonti "
+"calde per alimentare le loro forge."
 
 #. [multiplayer]: id=multiplayer_4p_Hamlets
 #: data/multiplayer/scenarios/4p_Hamlets.cfg:5
@@ -2060,12 +2127,6 @@ msgstr "4g – L’incrocio di Isar"
 
 #. [multiplayer]: id=multiplayer_Isars_Cross
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A very small 2 vs. 2 map. Close quarters fighting means the successful "
-#| "rotation of units and planning of moves is important. Teams set for "
-#| "players 1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting "
-#| "gold, 20 villages."
 msgid ""
 "A very small 2 vs. 2 map. Close quarters fighting means the successful "
 "rotation of units and planning of moves is important. Teams set for players "
@@ -2075,7 +2136,7 @@ msgstr ""
 "Una mappa molto piccola 2 contro 2. Per la vicinanza delle basi è importante "
 "riuscire a ruotare le unità e pianificare le mosse. Le squadre sono definite "
 "con i giocatori 1 e 4 contro 2 e 3 (nordest contro sudovest). Bilanciata per "
-"75 monete, 20 villaggi."
+"75 monete iniziali, 20 villaggi."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:20
@@ -2121,17 +2182,13 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_King_of_the_Hill
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:9
-#, fuzzy
-#| msgid ""
-#| "Controlling the area around the central keep is very lucrative in this "
-#| "36X36 4 player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgid ""
 "Controlling the area around the central keep is very lucrative in this 4 "
 "player FFA map. Works fine 2 vs. 2 as well. There are 36 villages."
 msgstr ""
 "Il controllo dell’area attorno al castello centrale è molto redditizio in "
-"questa mappa 36×36 per quattro giocatori. È possibile giocare la mappa in "
-"modalità tutti contro tutti oppure a squadre. Ci sono 36 villaggi."
+"questa mappa per quattro giocatori tutti contro tutti. È bilanciata anche "
+"per uno scontro due contro due. Contiene 36 villaggi."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:32
@@ -2162,17 +2219,13 @@ msgstr "4g – Il fiume Loris"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A 25x25 2 vs. 2 map centered around a river with keeps in opposite "
-#| "corners. Designed for players 1&4 vs. 2&3. There are 28 villages."
 msgid ""
 "2 vs. 2 map centered around a river with keeps in opposite corners. Designed "
 "for players 1+4 vs. 2+3. There are 28 villages."
 msgstr ""
-"Una mappa 25×25 incentrata su di un fiume con due fortezze agli angoli "
-"opposti. Si consiglia di impostare i giocatori 1 e 4 contro 2 e 3. Ci sono "
-"28 villaggi e si consiglia di impostare 2 monete d’oro per villaggio."
+"Una mappa due contro due incentrata su di un fiume con due fortezze agli "
+"angoli opposti. Si consiglia di impostare i giocatori 1 e 4 contro 2 e 3. "
+"Contiene 28 villaggi."
 
 #. [multiplayer]: id=multiplayer_4p_Morituri
 #: data/multiplayer/scenarios/4p_Morituri.cfg:5
@@ -2198,15 +2251,11 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Paths_of_Daggers
 #: data/multiplayer/scenarios/4p_Paths_of_Daggers.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A 35X27 2 vs. 2 map with 5 separate paths of engagement. Balanced to be "
-#| "played east vs. west (1&4 vs. 2&3), but works well with any teams or FFA."
 msgid ""
 "A 2 vs. 2 map with 5 separate paths of engagement. Balanced to be played "
 "east vs. west (1+4 vs. 2+3), but works well with any teams or FFA."
 msgstr ""
-"Una mappa 35×27 2 contro 2 con cinque diversi percorsi dove ingaggiare il "
+"Una mappa due contro due con cinque diversi percorsi dove ingaggiare il "
 "nemico. È stata bilanciata per esser giocata da est contro ovest (1 e 4 "
 "contro 2 e 3), ma funziona bene con qualsiasi squadra o anche nel tutti "
 "contro tutti."
@@ -2218,10 +2267,6 @@ msgstr "4g – Rovine di Terra-Dwelve"
 
 #. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
 #: data/multiplayer/scenarios/4p_Ruins_of_Terra-Dwelve.cfg:7
-#, fuzzy
-#| msgid ""
-#| "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
-#| "Large multi-fronted 2vs2 set in a vast underground complex."
 msgid ""
 "Battle over the legendary treasures of the ancient ruins of Terra-Dwelve. "
 "Large multi-fronted 2 vs. 2 set in a vast underground complex."
@@ -2236,18 +2281,13 @@ msgstr "4g – Castelli assediati"
 
 #. [multiplayer]: id=multiplayer_Siege_Castles
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:9
-#, fuzzy
-#| msgid ""
-#| "36X36 4 player map where 4 mighty castles face off at the convergence of "
-#| "two rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 "
-#| "villages."
 msgid ""
 "A 4 player map where 4 mighty castles face off at the convergence of two "
 "rivers. Works well as 2 vs. 2 or FFA. There are approximately 45 villages."
 msgstr ""
-"Mappa 36×36 per 4 giocatori dove 4 castelli si fronteggiano dove si "
-"incontrano due fiumi. Funziona bene per un combattimento 2 contro 2 o tutti "
-"contro tutti. Ci sono all’incirca 45 villaggi."
+"Mappa per 4 giocatori dove quattro mitici castelli si fronteggiano alla "
+"confluenza di due fiumi. Funziona bene per un combattimento due contro due o "
+"tutti contro tutti. Contiene all’incirca 45 villaggi."
 
 #. [multiplayer]: id=multiplayer_4p_Underworld
 #: data/multiplayer/scenarios/4p_Underworld.cfg:5
@@ -2269,16 +2309,12 @@ msgstr "4g – Il caos di Xanthe"
 
 #. [multiplayer]: id=multiplayer_Xanthe_Chaos
 #: data/multiplayer/scenarios/4p_Xanthe_Chaos.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A 24X28 2 vs. 2 map with auxiliary keeps, and a large messy battle in the "
-#| "center common."
 msgid ""
 "A 2 vs. 2 map with auxiliary keeps, and a large messy battle in the center "
 "common."
 msgstr ""
-"Una mappa 24×28 da giocare in 2 contro 2, con fortezze ausiliarie, e una "
-"grossa e disordinata battaglia nel centro comune."
+"Una mappa da giocare in due contro due, con fortezze ausiliarie e una grossa "
+"e disordinata battaglia nel centro comune."
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:5
@@ -2287,25 +2323,18 @@ msgstr "5g – Asta-X"
 
 #. [multiplayer]: id=multiplayer_Auction-X
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:7
-#, fuzzy
-#| msgid ""
-#| "4 players surround a central keep, play vs the AI survival style, or as a "
-#| "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or "
-#| "FFA, and the best way to determine how much is an auction, LOWEST bid "
-#| "wins. It is a very small map so 75 gold is recommended for the other "
-#| "players."
 msgid ""
 "4 players surround a central keep, play vs. the AI survival style, or as a "
 "FFA or 4 vs. 1. The center player will need more gold in a 4 vs. 1 or FFA, "
 "and the best way to determine how much is an auction, LOWEST bid wins. It is "
 "a very small map so 75 gold is recommended for the other players."
 msgstr ""
-"4 giocatori circondano una fortezza centrale, gioca contro l’IA in una gara "
-"di sopravvivenza, in tutti contro tutti o in 4 contro 1. Il giocatore "
-"centrale avrà bisogno di più oro nelle partite tutti contro tutti o 4 contro "
-"1 e il sistema migliore per determinare quanto è con un’asta al ribasso. È "
-"una mappa molto piccola quindi si raccomandano 75 monete d’oro per gli altri "
-"giocatori."
+"Quattro giocatori circondano una fortezza centrale, gioca contro l’IA in una "
+"gara di sopravvivenza, in tutti contro tutti o in quattro contro uno. Il "
+"giocatore centrale avrà bisogno di più oro nelle partite tutti contro tutti "
+"o quattro contro uno e il sistema migliore per determinare quanto è con "
+"un’asta al ribasso. È una mappa molto piccola quindi si raccomandano 75 "
+"monete d’oro per gli altri giocatori."
 
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:69
@@ -2459,6 +2488,8 @@ msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible!"
 msgstr ""
+"Congratulazioni per essere sopravvissuto in una mappa dove così tanti "
+"giocatori hanno dichiarato lo scopo irraggiungibile!"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:530
@@ -2481,23 +2512,17 @@ msgstr "6g – Le trappole di Manzivan"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:10
-#, fuzzy
-#| msgid ""
-#| "A 40X20 3 vs. 3 map. The Manzivan Traps are widely known as a difficult "
-#| "and confusing area of terrain where it is easy to end up out of position "
-#| "or over extended. Teams set for players 145 vs. 236 (east vs west). "
-#| "Designed for 100 starting gold, has 33 villages."
 msgid ""
 "A 3 vs. 3 map. The Manzivan Traps are widely known as a difficult and "
 "confusing area of terrain where it is easy to end up out of position or over "
 "extended. Teams set for players 145 vs. 236 (east vs. west). Designed for "
 "100 starting gold, has 33 villages."
 msgstr ""
-"Una mappa 40×20 per giocare in 3 contro 3. Le trappole di Manzivan sono una "
-"zona notoriamente difficile, in cui è facile perdere l’orientamento e finire "
-"in una brutta posizione o troppo lunghi. Preparato per giocare con squadre "
-"145 contro 236 (est contro ovest). Lo schema è fatto per essere giocato con "
-"100 monete d’oro iniziali e ha 33 villaggi."
+"Una mappa per giocare in 3 contro 3. Le trappole di Manzivan sono una zona "
+"notoriamente difficile, in cui è facile perdere l’orientamento e finire in "
+"una brutta posizione o allungare troppo lo schieramento. Preparato per "
+"giocare con squadre 145 contro 236 (est contro ovest). Lo schema è fatto per "
+"essere giocato con 100 monete d’oro iniziali e ha 33 villaggi."
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:7
@@ -2506,16 +2531,12 @@ msgstr "6g – Vulcano"
 
 #. [multiplayer]: id=multiplayer_Volcano
 #: data/multiplayer/scenarios/6p_Volcano.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A 3vs3 battle to control the ashes of a kingdom long ago collapsed from a "
-#| "volcanic eruption. It has 36 villages."
 msgid ""
 "A 3 vs. 3 battle to control the ashes of a kingdom long ago collapsed from a "
 "volcanic eruption. It has 36 villages."
 msgstr ""
-"Una battaglia 3vs3 per il controllo delle rovine di un regno distrutto da "
-"un’eruzione vulcanica tanto tempo fa. Possiede 36 villaggi."
+"Una battaglia tre contro tre per il controllo delle rovine di un regno "
+"distrutto da un’eruzione vulcanica tanto tempo fa. Possiede 36 villaggi."
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:7
@@ -2524,23 +2545,16 @@ msgstr "6g – Tramonto a Waterloo"
 
 #. [multiplayer]: id=multiplayer_Waterloo_Sunset
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:9
-#, fuzzy
-#| msgid ""
-#| "A 40X30 3 vs. 3 map. Flexible coordination of your alliance is required "
-#| "to avoid being outnumbered. Teams set for players 145 vs. 236 (north vs. "
-#| "south), but having players 146 or 136 as a team is also interesting. "
-#| "Designed for 150 starting gold, has 44 villages."
 msgid ""
 "A 3 vs. 3 map. Flexible coordination of your alliance is required to avoid "
 "being outnumbered. Teams set for players 145 vs. 236 (north vs. south), but "
 "having players 146 or 136 as a team is also interesting. Designed for 150 "
 "starting gold, has 44 villages."
 msgstr ""
-"Mappa 40×30 per 3 contro 3. Per evitare di essere travolti in numero è "
-"necessaria una coordinazione flessibile delle vostre alleanze. Predisposta "
-"per squadre con i giocatori 145 contro 236 (nord contro sud), ma è anche "
-"interessante con le squadre 146 o 136. Bilanciata per 150 monete, ci sono 44 "
-"villaggi."
+"Mappa tre contro tre. Per evitare di essere travolti in numero è necessaria "
+"una coordinazione flessibile delle vostre alleanze. Predisposta per squadre "
+"con i giocatori 145 contro 236 (nord contro sud), ma è anche interessante "
+"con le squadre 146 o 136. Bilanciata per 150 monete, ci sono 44 villaggi."
 
 #. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:5

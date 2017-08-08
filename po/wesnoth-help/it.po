@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-03-19 00:05+0300\n"
-"PO-Revision-Date: 2017-06-07 19:06+0300\n"
+"PO-Revision-Date: 2017-07-29 14:56+0300\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -189,6 +189,9 @@ msgid ""
 "\n"
 "The paint tool utilizes the brushes and the terrain palette."
 msgstr ""
+"Dipinge le tessere terreno sulla mappa.\n"
+"\n"
+"Lo strumento di pittura utilizza i pennelli e la tavolozza dei terreni."
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:39
@@ -202,6 +205,9 @@ msgid ""
 "\n"
 "The fill tool utilizes the terrain palette."
 msgstr ""
+"Riempie una regione contigua di terreno con un terreno diverso!\n"
+"\n"
+"Lo strumento di riempimento utilizza la tavolozza dei terreni."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:49
@@ -215,11 +221,15 @@ msgid ""
 "\n"
 "This tool utilizes the brushes."
 msgstr ""
+"Seleziona un insieme di esagoni sulla mappa. Il miglior strumento in "
+"assoluto|\n"
+"\n"
+"Questo strumento utilizza i pennelli."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:59
 msgid "Paste Tool"
-msgstr ""
+msgstr "Strumento di Riempimento"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:60
@@ -238,6 +248,10 @@ msgid ""
 "\n"
 "This tool gives only limited control over the start locations of certain."
 msgstr ""
+"Definisce la posizione di partenza del leader di una squadra\n"
+"\n"
+"Questo strumento fornisce solo un controllo limitato su alcune posizioni di "
+"partenza."
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:77
@@ -252,7 +266,7 @@ msgstr "Strumento per oggetti"
 #. [topic]: id=editor_tool_soundsource
 #: data/core/editor/help.cfg:93
 msgid "Soundsource Tool"
-msgstr "Strumento sorgenti audio"
+msgstr "Strumento per sorgenti audio"
 
 #. [topic]: id=editor_tool_soundsource
 #: data/core/editor/help.cfg:94
@@ -261,11 +275,14 @@ msgid ""
 "\n"
 "This tool has not been implemented yet."
 msgstr ""
+"Posizione le fonti sonore sulle tue mappe!\n"
+"\n"
+"Questo strumento non è stato ancora implementato."
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:103
 msgid "Village Ownership Tool"
-msgstr ""
+msgstr "Strumento appartenenza villaggio"
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:111
@@ -275,7 +292,7 @@ msgstr "Strumento per le unità"
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:119
 msgid "Named Areas"
-msgstr ""
+msgstr "Aree identificate"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:120
@@ -288,6 +305,15 @@ msgid ""
 "This is a very powerful mechanism since it allows generic scenario codings "
 "working with different maps providing the needed named locations."
 msgstr ""
+"Le aree identificate sono un insieme di terreni a cui si può fare "
+"riferimento durante la programmazione di uno script di uno scenario tramite "
+"un nome definito.\n"
+"\n"
+"Può essere utilizzato per creare un livello di astrazione intermedio tra "
+"l’implementazione di un effetto e i setaggi specifici di una mappa. Il tutto "
+"garantisce un potente meccanismo che permette di utilizzare in mappe diverse "
+"il lavoro generico di codifica di uno scenario semplicemente utilizzando i "
+"nomi necessari."
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:130
@@ -321,9 +347,9 @@ msgid ""
 "\n"
 "The editor can be launched from the <italic>text='Map Editor'</italic>"
 msgstr ""
-"L'Editor di Mappe e Scenari di Wesnoth permette agli utenti di creare e "
+"L’Editor di Mappe e Scenari di Wesnoth permette agli utenti di creare e "
 "modificare le mappe sulle quali viene svolto ogni scenario del gioco. "
-"Fornisce anche un limitato insieme di caratteristiche per impostare unso "
+"Fornisce anche un limitato insieme di caratteristiche per impostare uno "
 "scenario di base.\n"
 "\n"
 "L’editor piò essere lanciato cliccando su <italic>text='Editor Mappe'</"
@@ -331,19 +357,14 @@ msgstr ""
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:144
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Chance to Hit'</header>"
 msgid ""
 " option at the title screen. \n"
 "\n"
 "<header>text='What you get'</header>"
 msgstr ""
+"opzione nella schermata iniziale.\n"
 "\n"
-"\n"
-"<header>text='Probabilità di colpire'</header>"
+"<header>text='Che cosa ottieni'</header>"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:146
@@ -404,6 +425,24 @@ msgid ""
 "TODO is that true?\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"• What-you-see-is-what-you-get (Quello-che-vedi-è-quello-che-ottieni)\n"
+"L’ editor non è una applicazione WYSIWYG.\n"
+"\n"
+"Siccome l’esatta rappresentazione grafica di un terreno in una mappa dipende "
+"da tutte le regole di terreno caricate (cosa che differenzia l’editor da "
+"qualunque altra modalità d’uso), la mappa non apparirà esattamente identica "
+"a quella durante il gioco.\n"
+"\n"
+"• Gestori di eventi e scripting\n"
+"L’ editor non è un tool di aiuto per la stesura di script per la gestione di "
+"eventi di uno scenario.\n"
+"\n"
+"• Infinite Backwards Compatibility\n"
+"The editor can't load maps from versions prior to 1.10.\n"
+"TODO is that true?\n"
+"\n"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:172
@@ -417,17 +456,17 @@ msgid ""
 "• <ref>dst='editor_clipboard' text='Editor Clipboard'</ref>"
 msgstr ""
 "\n"
-"• <ref>dst='editor_modes' text='Editing Modes'</ref>\n"
+"• <ref>dst='editor_modes' text='Modalità Editing'</ref>\n"
 "• <ref>dst='editor_toolkit' text='Editor Toolkit'</ref>\n"
-"• <ref>dst='editor_palette' text='Editor Palette'</ref>\n"
-"• <ref>dst='editor_brush' text='Editor Brushes'</ref> TODO: not sure if it "
-"needs a topic on its own\n"
+"• <ref>dst='editor_palette' text='Editor Tavolozza'</ref>\n"
+"• <ref>dst='editor_brush' text='Editor Pennelli'</ref> TODO: non è certo se "
+"ci sia bisogno di un paragrafo specifico\n"
 "• <ref>dst='editor_clipboard' text='Editor Clipboard'</ref>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:184
 msgid "Editing Modes"
-msgstr "Modalità di gioco"
+msgstr "Modalità di editing"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
@@ -443,7 +482,7 @@ msgstr ""
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:185
 msgid "The editor features two separate modes of operation:"
-msgstr ""
+msgstr "L’editor ha due diversi modi di operare:"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:187
@@ -453,6 +492,10 @@ msgid ""
 "Allows only the composing of the terrain map itself and the definition of "
 "leader starting positions."
 msgstr ""
+"\n"
+"\n"
+"Permettere soltanto la composizione di una mappa con i diversi terreni e la "
+"definizione della posizione iniziale del comandante."
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:189
@@ -462,6 +505,10 @@ msgid ""
 "\n"
 "<bold>text='Native'</bold>"
 msgstr ""
+"\n"
+"Il salvataggio delle informazioni dipende dal file caricatoç\n"
+"\n"
+"<bold>text='Nativo'</bold>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:192
@@ -474,6 +521,15 @@ msgid ""
 "\n"
 "<bold>text='Embedded'</bold>"
 msgstr ""
+"\n"
+"Una nuova mappa o un file contiene soltanto i parametri per "
+"map_data_attribute.\n"
+"\n"
+"La mappa prodotta può essere giocata in partire del tipo  “Mappe Utente” nel "
+"menù del gioco per creare una partita multigiocatore se viene salvata nella "
+"cartella di default.\n"
+"\n"
+"<bold>text='Incluso'</bold>"
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:197
@@ -484,6 +540,11 @@ msgid ""
 "map_data and leaves everything else in the scenario untouched. Maps opened "
 "this way are marked [e] in the Maps menu."
 msgstr ""
+"\n"
+"In questa sottomodalità verrà aperto un file Scenario che contiene un "
+"map_data_attribute valido (non un file incluso). L’editor sostituisce "
+"soltanto il contenuto di map_data e lasci tutto il resto dello scenario così "
+"com’è. Le mappe aperte in questa modalità sono marcate [e] nel menù Mappe."
 
 #. [topic]: id=editor_modes
 #: data/core/editor/help.cfg:198
@@ -508,6 +569,14 @@ msgid ""
 "In this mode, terrain data is stored in the map_data attribute and saved "
 "into a file with any applicable WML."
 msgstr ""
+"\n"
+"\n"
+"La modalità Scenario consente l’utilizzo di diversi strumenti addizionali, "
+"ad esempio lo strumento per Unità. Comunque, per poterlo utilizzare, deve "
+"essere definita almeno una squadra.\n"
+"\n"
+"In questa modalità, i dati dei terreni sono memorizzati nell’attributo "
+"map_data e salvati in uno file tramite una qualsiasi WML applicabile."
 
 #. [topic]: id=editor_toolkit
 #: data/core/editor/help.cfg:211
@@ -535,6 +604,27 @@ msgid ""
 "• <ref>dst='editor_tool_unit' text='Unit Tool'</ref>\n"
 "\n"
 msgstr ""
+"L’ editor fornisce diverti strumenti per modificare le tue mappe e i tuoi "
+"scenari. C’è sempre uno degli strumenti dell’editor attivo, in qualunque "
+"condizione. Il contesto nel quale si trova ad essere attivato lo strumento "
+"determina il contenuto della tavolozza e i menu contestuali.\n"
+"\n"
+"Questi sono gli strumenti disponibili:\n"
+"\n"
+"• <ref>dst='editor_tool_paint' text='Strumento di Pittura'</ref>\n"
+"• <ref>dst='editor_tool_fill'  text='Strumento di Riempimento'</ref>\n"
+"• <ref>dst='editor_tool_select' text='Strumento di Selezione'</ref>\n"
+"• <ref>dst='editor_tool_paste' text='Strumento di Riempimento'</ref>\n"
+"• <ref>dst='editor_tool_starting' text='Strumento per impostare la posizione "
+"iniziale'</ref>\n"
+"• <ref>dst='editor_tool_label' text='Strumento per le etichette'</ref>\n"
+"• <ref>dst='editor_tool_item' text='Strumento per oggetti'</ref>\n"
+"• <ref>dst='editor_tool_soundsource' text='Strumento per sorgenti audio'</"
+"ref>\n"
+"• <ref>dst='editor_tool_village' text='Strumento appartenenza villaggio'</"
+"ref>\n"
+"• <ref>dst='editor_tool_unit' text='Strumento per le unità'</ref>\n"
+"\n"
 
 #. [topic]: id=editor_terrain
 #: data/core/editor/help.cfg:234
@@ -548,11 +638,14 @@ msgid ""
 "<ref>dst='editor_tool_paint' text='Paint'</ref> and "
 "<ref>dst='editor_tool_fill' text='Fill Tool'</ref>."
 msgstr ""
+"Le funzionalità dell’editor dei terreni sono sostanzialmente quelle degli "
+"strumenti di <ref>dst='editor_tool_paint' text='Pittura'</ref> e di "
+"<ref>dst='editor_tool_fill' text='Riempimento'</ref>."
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:242
 msgid "Editor Mask Usage"
-msgstr ""
+msgstr "Utilizzo dell’editor delle maschere"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:243
@@ -560,6 +653,8 @@ msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
 msgstr ""
+"Le maschere possono essere sovrapposte da una mappa base e possono essere "
+"utilizzare anche in scenari diversi agendo negli stessi posti."
 
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:250
@@ -569,7 +664,7 @@ msgstr "Editor Andamento Temporale"
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:258
 msgid "Editor Palette"
-msgstr ""
+msgstr "Tavolozza dell’editor"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:259
@@ -579,11 +674,15 @@ msgid ""
 "list of all available terrains, and the unit tool will provide a list of "
 "available units."
 msgstr ""
+"La tavolozza dell’editor contiene tutti gli elementi che possono essere "
+"utilizzati nel tool selezionato. Ad esempio, il tool di pittura mostrerà "
+"l’elenco completo dei terreni disponibili, mentre il tool delle unità "
+"mostrerà l'elenco di tutte le unità disponibili."
 
 #. [topic]: id=map_format
 #: data/core/editor/help.cfg:266
 msgid "Wesnoth Map Format"
-msgstr ""
+msgstr "Formato Mappa Wesnoth"
 
 #. [topic]: id=map_format
 #: data/core/editor/help.cfg:267
@@ -599,16 +698,28 @@ msgid ""
 "Additional information, such as teams, custom events, and complex side "
 "setups still need to be manually coded in WML."
 msgstr ""
+"Wesnoth memorizza le sue mappe in un file di testo leggibile.\n"
+"\n"
+"Un file mappa consiste in delle righe formate da stringhe di codice terreno "
+"separate da virgole. Questi file possono essere modificati con un qualsiasi "
+"editor generico di testi, tipo notepad.\n"
+"\n"
+"Le sole informazioni aggiuntive nella sintassi delle mappe sono le posizioni "
+"iniziali delle squadre dello scenario.\n"
+"\n"
+"Informazioni addizionali, quali schieramenti, eventi personalizzati, e in "
+"generale tutte le customizzazioni di una fazione devono tuttora essere "
+"codificate manualmente in WML."
 
 #. [topic]: id=scenario_format
 #: data/core/editor/help.cfg:280
 msgid "Scenario Format"
-msgstr ""
+msgstr "Formato dello scenario"
 
 #. [topic]: id=editor_starting_positions_in_general
 #: data/core/editor/help.cfg:288
 msgid "Starting Positions Howto"
-msgstr ""
+msgstr "Howto posizioni di partenza"
 
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
@@ -964,7 +1075,7 @@ msgstr ""
 "<header>text='Principali zone di interesse:'</header>\n"
 "    • Montagne Centrali: una barriera virtualmente insormontabile tra la "
 "regione del fiume e le pianure del remoto nord.\n"
-"    • Denti dei Picchi Centrali: catena di alte vette particolarmente "
+"    • Zanne delle Montagne Centrali: catena di alte vette particolarmente "
 "proibitive, posta a sud-ovest del Lago Vrug e a nord della foresta di "
 "Wesmere. Costituiscono la zona più inospitale e pericolosa delle Montagne "
 "Centrali; qui vivono solo eremiti, pazzi e maghi.\n"
@@ -1020,7 +1131,7 @@ msgstr ""
 "<header>text='Principali zone di interesse:'</header>\n"
 "    • Foresta di Aethen: la più grande foresta meridionale, che si estende "
 "fino all’estremo sud ed è la dimora degli <ref>dst='..race_elf' text='elfi'</"
-"ref>. Sebbene gli elfi non facciano lcuna distinzione, la parte meridionale "
+"ref>. Sebbene gli elfi non facciano alcuna distinzione, la parte meridionale "
 "di questa foresta e' stata ribattezzata Boschi Meridionali dagli abitanti di "
 "Kerlath.\n"
 "    • Foresta Nera: una antica foresta della quale ben poco è noto; fu "
@@ -1213,10 +1324,10 @@ msgstr ""
 "rendono il gioco facile da imparare, ma difficile da padroneggiare.\n"
 "\n"
 "Le prossime pagine ti spiegheranno tutto quello che c’è da sapere per "
-"iocare. Durante una partita, nuove informazioni vengono aggiunte di volta in "
-"volta nelle varie categorie man mano che procedi e scopri nuovi aspetti del "
-"gioco. Per informazioni più dettagliate su situazioni speciali ed eccezioni, "
-"consulta i relativi collegamenti."
+"giocare. Durante una partita, nuove informazioni vengono aggiunte di volta "
+"in volta nelle varie categorie man mano che procedi e scopri nuovi aspetti "
+"del gioco. Per informazioni più dettagliate su situazioni speciali ed "
+"eccezioni, consulta i relativi collegamenti."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:107
@@ -1245,6 +1356,28 @@ msgid ""
 "The <italic>text='Battle for Wesnoth'</italic> project was begun in 2003, "
 "and has been worked on by a multitude of volunteers ever since."
 msgstr ""
+"Il gioco si svolge su una plancia suddivisa in esagoni, dove le tue unità si "
+"scontrano contro quelle controllate dal computer, dai tuoi amici che si "
+"alternano al tuo computer (partite con la sedia calda), da altri giocatori "
+"nella tua rete, o giocatori sparsi per il mondo in modalità multigiocatore.\n"
+"\n"
+"Ognuna di queste battaglie è chiamata <italic>text='scenario'</italic>; più "
+"scenari possono essre legati insieme per formare <italic>text='campagne'</"
+"italic>. Oltre alle campagne fornite insieme al gioco, Wesnoth supporta "
+"pienamente contenuti creati dagli utenti, infatti il nostro server delle "
+"estensioni contiene centinaia di mappe, campagne, ere e fazioni, tutte "
+"personalizzate.\n"
+"\n"
+"Il gioco permette anche di utilizzare un linguaggio di customizzazione "
+"facilmente leggibile da un essere umano, il cosiddetto Wesnoth Markup "
+"Language (WML, Linguaggio di modifica di Wesnoth). Questo linguaggio "
+"permette ad un utente di creare il suo contenuto, così come un potente "
+"editor di mappe e scenari permette di progettare un campo di battaglia a "
+"proprio piacimento.\n"
+"\n"
+"Il progetto <italic>text='Battle for Wesnoth'</italic> è partito nel 2003, e "
+"sin da allora un gran numero di volontari ha contribuito a farlo crescere e "
+"migliorare."
 
 #. [topic]: id=..units
 #: data/core/help.cfg:120
@@ -1272,6 +1405,9 @@ msgid ""
 "sides in multiplayer games.\n"
 "\n"
 msgstr ""
+"Una fazione è una raccolta di unità e dei comandanti. Le fazioni vengono "
+"assegnate alle squadre nelle partite multigiocatore.\n"
+"\n"
 
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:131
@@ -1281,6 +1417,9 @@ msgid ""
 "factions are available from add-ons.\n"
 "\n"
 msgstr ""
+"Un’era è una raccolta di fazioni, progettate per essere utilizzate l’una "
+"contro l’altra. Oltre alle ere principali che vengono fornite con il gioco, "
+"tra le estensioni si possono trovare molte ere progettate dagli utenti.\n"
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:140
@@ -1358,6 +1497,28 @@ msgid ""
 "quite challenging, you may wish to start on easy before progressing to "
 "higher difficulties."
 msgstr ""
+"Wesnoth è composto da una serie di battaglie chiamate "
+"<italic>text='scenari'</italic>, che gettano le tue truppe contro quelle si "
+"uno o più avversari. Più scenari che si susseguono secondo un preciso filo "
+"logico che racconta l’evolversi di una storia formano una "
+"<italic>text='campagna'</italic>. Una campagna va giocata con molta cautela, "
+"cercando di preservare le truppe migliori per utilizzarle negli scenari "
+"finali.\n"
+"\n"
+"Il <bold>text='Tutorial'</bold> interattivo ti introduce alle basi di gioco "
+"di Wesnoth nel contesto di uno scenario. La maggior parte del materiale "
+"utilizzato nel tutorial è spiegato più in dettaglio in queste pagine, così "
+"che possano essere sempre usate come riferimento nel caso tu voglia "
+"ripassare qualche dettaglio che ti è sfuggito.\n"
+"\n"
+"Dopo aver dominato le basi, fai un tentativo con una campagna per "
+"principianti, tipo <italic>text='Lotta per il Trono'</italic> o "
+"<italic>text='La Guardia del Sud'</italic>. Un elenco esaustivo delle "
+"campagne disponibili è disponibile cliccano sull’opzione "
+"<bold>text='Campagna'</bold> nel menù principale. Siccome Wesnoth può essere "
+"decisamente impegnativo, è consigliabile iniziare a giocare scegliendo le "
+"modalità più semplici prima di affrontare quelle più impegnative e "
+"difficoltose."
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:176
@@ -1468,7 +1629,7 @@ msgid ""
 "recruitment, along with their gold cost. Click on a unit to see its "
 "statistics, then press the OK button to recruit it."
 msgstr ""
-"Ogni fazione inizia la battaglia con un condottiero nella propria fortezza. "
+"Ogni squadra inizia la battaglia con un condottiero nella propria fortezza. "
 "All’inizio della battaglia, e a volte anche durante la stessa, avrai bisogno "
 "di reclutare <ref>dst='..units' text='unità'</ref> perché si uniscano al tuo "
 "esercito. Per reclutarle, porta il tuo condottiero (per esempio, Konrad "
@@ -2305,6 +2466,8 @@ msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night.\n"
 msgstr ""
+"Alcuni scenari sotterranei sono illuminati. Sono considerati eternamente in "
+"equilibrio tra il giorno e la notte.\n"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:351
@@ -2312,6 +2475,8 @@ msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate."
 msgstr ""
+"Alcuni scenari di gioco-di-ruolo si svolgono il luoghi chiusi — anche queste "
+"regioni vengono considerate intermedie."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:358
@@ -2338,6 +2503,10 @@ msgid ""
 "heal your units. However, with the exception of resting, these do not stack; "
 "only one can occur per turn."
 msgstr ""
+"In combattimento, le tue unità saranno inevitabilmente ferite: "
+"fortunatamente, ci sono però diversi modi diversi per curarle. Comunque, ad "
+"eccezione del riposo, tutti questi metodi non si sommano l’un con l’altro, "
+"soltanto uno di essi verrà applicato ad ogni turno."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:361
@@ -2403,6 +2572,11 @@ msgid ""
 "text='advances'</ref>, it will heal fully. This can happen as soon as your "
 "unit gains enough experience, whether it is your turn or not."
 msgstr ""
+"\n"
+"• <bold>text='Avanzamento'</bold>: quando una unità <ref>dst='advancement' "
+"text='avanza di livello'</ref>, viene completamente curata. Tutto ciò accade "
+"non appena ottiene abbastanza esperienza, a prescindere se sia il tuo turno "
+"di gioco o no."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:366
@@ -2442,6 +2616,14 @@ msgid ""
 "from one healer per turn, a unit surrounded by healers from several allied "
 "sides will be healed once on each of said allied sides’ turns."
 msgstr ""
+"\n"
+"\n"
+"A differenza di altre forme di guarigione, le abilità di guarigione non "
+"hanno effetto quando è il turno del guarito, ma al turno del guaritore. "
+"Questo significa che mentre una unità che è circondata da diversi guaritori "
+"della stessa squadra riceverà le cure da un guaritore per ogni turno, una "
+"circondata da guaritori di diverse squadre alleate sarà curata un volta per "
+"ogni turno di ogni singola squadra."
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:378
@@ -2500,6 +2682,10 @@ msgid ""
 "available to a unit are largely determined by its <italic>text='race'</"
 "italic>."
 msgstr ""
+"Le caratteristiche sono delle leggere alterazioni degli attributi di una "
+"unità. Solitamente sono assegnate in maniera casuale ad una unità al momento "
+"del reclutamento. Le caratteristiche disponibili per una unità sono in larga "
+"parte determinate dalla sua <italic>text='razza'</italic>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:401
@@ -2634,6 +2820,16 @@ msgid ""
 "and <italic>text='cave hills'</italic>.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"I terreni di tipo misto mescolano le proprietà di diversi tipe di terreno "
+"base. Quando si muovono su un terreno di questo tipo, le unità di solito "
+"utilizzano la <italic>text='migliore difesa'</italic> e il "
+"<italic>text='peggior movimento'</italic> del tipo di terreno base "
+"sottostante.Ad esempio, questo è il caso con <italic>text='colline boscose'</"
+"italic>, <italic>text='colline sabbiose'</italic>, and <italic>text='colline "
+"cavernose'</italic>.\n"
+"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:429
@@ -2649,6 +2845,18 @@ msgid ""
 "nonfliers (unsurprisingly).\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"Una eccezione significativa sono i terreni di tipo ponti, tipo "
+"<italic>text='ponti su acque basse'</italic>, <italic>text='guadi'</italic>, "
+"e <italic>text='ponti su abissi'</italic>. I guadi sono facilmente "
+"attraversabili sia dalle creature marine che dagli umani: tutte le unità che "
+"si muovono lungo un guado beneficiano della loro migliore difesa e "
+"movimento, scelto fra quello del terreno pianeggiante e le acque basse, "
+"piuttosto che del peggior fattore movimento tra i due tipi di territorio. "
+"Allo stesso modo, i ponti sugli abissi sono attraversabili da unità che non "
+"volano (prevedibilmente).\n"
+"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:433
@@ -2660,6 +2868,13 @@ msgid ""
 "together with hill, swamp, and cave, respectively.\n"
 "\n"
 msgstr ""
+"\n"
+"\n"
+"I villaggi terrestri solitamente forniscono i migliori bonus sia in difesa "
+"che in movimento. Essi sono un tipo di terreno misto, basato sul tipo di "
+"terreno villaggio, insieme a quello di tipo collina, palude e caverna, "
+"rispettivamente\n"
+"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:437
@@ -2704,6 +2919,13 @@ msgid ""
 "either pressing the hotkey, or right clicking and selecting from the context "
 "menu."
 msgstr ""
+"\n"
+"\n"
+"Puoi cedere che tipo di comportamento ha il terreno misto muovendo il mouse "
+"sopra il suo esagono e visualizzando la <italic>text='descrizione terreno'</"
+"italic> disponibile premendo la scorciatoia da tastiera o cliccando col "
+"bottone destro del mouse e selezionando la voce opportuna nel menù "
+"contestuale."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:445
@@ -2727,10 +2949,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Alcune unità hanno <italic>text='limite percentuale di difesa' per un "
-"particolare tipo di terreno base. Queste unità soffrono di una penalità "
-"anche su un tipo di terreno misto che abbia quel tipo, in quanto la lodo "
-"difesa non può superare il limite imposto"
+"Alcune unità hanno un <italic>text='limite percentuale di difesa'</italic> "
+"per un particolare tipo di terreno base. Queste unità soffrono di una "
+"penalità anche su un tipo di terreno misto che abbia quel tipo, in quanto la "
+"lodo difesa non può superare il limite imposto."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:449
@@ -2742,6 +2964,13 @@ msgid ""
 "on forested hills, he has a defense rating of 30% rather than 40%, because "
 "the mixed rating cannot exceed the cap."
 msgstr ""
+"\n"
+"\n"
+"Ad esempio, il <ref>text='Cavaliere Lealista' dst='unit_Cavalryman'</ref> "
+"per un terreno di tipo foresta ha un bonus di difesa del 30% ed anche un "
+"limite superiore imposto. Quindi, su un terreno di tipo colline con foresta "
+"ottiene un bonus difensivo del 30% invece del 40% perché il suo bonus non "
+"può eccedere quello del suo limite superiore."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:451
@@ -2887,7 +3116,7 @@ msgstr ""
 "\n"
 "In modalità <italic>text='multigiocatore'</italic>, puoi scegliere un’era al "
 "momento di creare una nuova partita; i giocatori possono scegliere una tra "
-"le fazioni presenti in quell’era durante la preparazione delle squadre e "
+"le squadre presenti in quell’era durante la preparazione delle squadre e "
 "degli schieramenti."
 
 #. [topic]: id=using_addons
@@ -3108,12 +3337,12 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Imposta o scambia il giocatore della fazione scegliendo fra umano e IA. "
+"Imposta o scambia il giocatore della squadra scegliendo fra umano e IA. "
 "Questo comando deve essere impartito dal giocatore o dal client che "
-"controlla tale fazione. Se non viene definito un parametro aggiuntivo, "
+"controlla tale squadra. Se non viene definito un parametro aggiuntivo, "
 "cambia il controllo della fazione tra umano e IA. Se il parametro è «on», "
 "imposta l’IA come controllante; se invece è «off», imposta l’umano come "
-"controllante. Se non viene definito alcun parametro, stabilisce come fazione "
+"controllante. Se non viene definito alcun parametro, stabilisce come squadra "
 "di base quella attualmente attiva.\n"
 "\n"
 
@@ -3125,7 +3354,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Visualizza lo stato del controllore di una fazione.\n"
+"Visualizza lo stato del controllore di una squadra.\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -3238,13 +3467,13 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Passa il controllo della fazione (scrivere qui il numero della fazione) "
+"Passa il controllo della squadra (scrivere qui il numero della squadra) "
 "all’utente (scrivere qui il nome del giocatore o dell’osservatore). Puoi "
-"controllare quale fazione appartiene a quale giocatore nella finestra di "
+"controllare quale squadra appartiene a quale giocatore nella finestra di "
 "dialogo <bold>text='Impostazioni dello scenario'</bold> (premi il pulsante "
 "<bold>text='Ancora'</bold> nella <bold>text='Tabella di stato'</bold> "
 "[combinazione di default: Alt+s] per arrivarci). L’ospitante può cambiare il "
-"controllo di qualsiasi fazione.\n"
+"controllo di qualsiasi squadra.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3257,7 +3486,7 @@ msgid ""
 msgstr ""
 "\n"
 "Apre una finestra di dialogo per aiutare l’host a cambiare i controllori "
-"umani delle fazioni.\n"
+"umani delle squadre.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3269,8 +3498,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Abilita/disabilita per una fazione lo stato “Inattiva”. L’host può definire "
-"una fazione come inattiva a seguito della sua disconnessione dalla rete.\n"
+"Abilita/disabilita per una squadra lo stato “Inattiva”. L’host può definire "
+"una squadra come inattiva a seguito della sua disconnessione dalla rete.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3284,8 +3513,8 @@ msgid ""
 msgstr ""
 "\n"
 "Espelle un utente dalla partita multigiocatore. Tale utente potrà poi "
-"riunirsi alla partita. Se vuoi cambiare il controllo della sua fazione o "
-"delle sue fazioni, usa invece il comando :control.\n"
+"riunirsi alla partita. Se vuoi cambiare il controllo della sua squadra o "
+"delle sue squadre, usa invece il comando :control.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3300,7 +3529,7 @@ msgstr ""
 "\n"
 "Invia un messaggio privato ad un utente. Durante una partita, non è "
 "possibile inviare messaggi privati ai giocatori che stanno controllando una "
-"fazione presente nella partita a cui stai giocando.\n"
+"squadra presente nella partita a cui stai giocando.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3389,7 +3618,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Attiva/disattiva la nebbia o l’oscurità per la fazione attuale.\n"
+"Attiva/disattiva la nebbia o l’oscurità per la squadra attuale.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3400,7 +3629,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Aggiunge l’ammontare specificato all’oro della fazione attuale.\n"
+"Aggiunge l’ammontare specificato all’oro della squadra attuale.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3653,7 +3882,7 @@ msgid ""
 "using one of its moves."
 msgstr ""
 "Quest’unità può teletrasportarsi fra due villaggi liberi qualsiasi posseduti "
-"dalla propria fazione, usando uno dei suoi punti movimento."
+"dalla propria squadra, usando uno dei suoi punti movimento."
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:237 data/core/macros/abilities.cfg:239
@@ -4234,7 +4463,7 @@ msgid ""
 "controlled by its side."
 msgstr ""
 " Quest’unità può usare uno dei suoi punti movimento per teletrasportarsi fra "
-"due villaggi vuoti qualsiasi controllati dalla propria fazione."
+"due villaggi vuoti qualsiasi controllati dalla propria squadra."
 
 #: data/core/macros/special-notes.cfg:44
 msgid ""
@@ -4761,7 +4990,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Le unità con caretteristica <italic>text='Sano'</italic> hanno un punto "
+"Le unità con caratteristica <italic>text='Sano'</italic> hanno un punto "
 "ferita addizionale, e guadagnano un punto addizionale ad ogni passaggio di "
 "livello. Guariscono inoltre 2 punti ferita ad ogni turno, anche se non hanno "
 "riposato il turno precedente."
