@@ -102,6 +102,12 @@ helpers.error_message = error_message
 def reset_errors():
     error_only_once = {}
 
+def int_fallback(str_value, int_fallback = 0):
+    try:
+        return int(str_value)
+    except ValueError:
+        return int_fallback
+
 class MyFile:
     """
     Python 2 is a bit weird with encodings, really should switch this to
@@ -1003,6 +1009,17 @@ class HTMLOutput:
             write("</tr>")
         write("</table>\n")
 
+        def resistance_rating_color_class(resistance):
+            # Logic from src/help/help_topic_generators.cpp and src/units/helper.cpp @ 1.13.8+dev
+            if resistance < 0:
+                return 'red'
+            elif resistance <= 20:
+                return 'yellow'
+            elif resistance <= 40:
+                return ''
+            else:
+                return 'green'
+
         # Write info about resistances.
         resistances = [
             ("blade", "attacks/sword-human.png"),
@@ -1017,9 +1034,14 @@ class HTMLOutput:
         write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /><col class="col5" /><col class="col6" /></colgroup>')
         row = 0
         for rid, ricon in resistances:
-            special, r = find_attr("resistance", rid)
-            if r == "-": r = 100
-            try: r = "<i>%d%%</i>" % (100 - int(r))
+            special, resist_str = find_attr("resistance", rid)
+            r = 100 if resist_str == '-' else 100 - int(resist_str)
+            resist_classes = ['num']
+            resist_rating = resistance_rating_color_class(r)
+            if resist_rating:
+                resist_classes.append('rating-' + resist_rating)
+            try:
+                resist_str = "<i>%d%%</i>" % r
             except ValueError:
                 error_message("Warning: Invalid resistance %s for %s.\n" % (
                     r, uid))
@@ -1030,9 +1052,10 @@ class HTMLOutput:
             picname = image_collector.add_image(self.addon, ricon,
                 no_tc = True)
             icon = os.path.join(pics_location, picname)
-            write("<td><img src=\"%s\" alt=\"(icon)\" /></td>\n" % (icon, ))
-            write("<th>%s</th><td class=\"num\">%s</td>\n" % (_(rid), r))
-            if row % 2 == 1: write("</tr>\n")
+            write('<td><img src="%s" alt="(icon)" /></td>\n' % (icon, ))
+            write('<th>%s</th><td class="%s">%s</td>\n' % (_(rid), ' '.join(resist_classes), resist_str))
+            if row % 2 == 1:
+                write('</tr>\n')
             row += 1
         write("</table>\n")
 
@@ -1107,37 +1130,66 @@ class HTMLOutput:
                 error_message("Terrain " + tid + " has no symbol_image\n")
         terrainlist.sort()
 
-        for tname, tid, ticon in terrainlist:
-            not_from_race, c = find_attr("movement_costs", tid)
-
-            ccell = "td"
-            if c == "99":
-                ccell += ' class="mvtcost grayed"'
+        def defense_rating_color_class(defense):
+            # Logic from src/help/help_topic_generators.cpp @ 1.13.8+dev
+            if defense <= 10:
+                return 'red'
+            elif defense <= 30:
+                return 'yellow'
+            elif defense <= 50:
+                return ''
             else:
-                ccell += ' class="mvtcost"'
-            dcell = "td"
-            not_from_race, d = find_attr("defense", tid)
+                return 'green'
 
-            if d == "-":
-                d = 100
+        def mvtcost_rating_color_class(str_mvtcost, str_moves):
+            cost = int_fallback(str_mvtcost, 99)
+            moves = int_fallback(str_moves)
+            # Logic from src/help/help_topic_generators.cpp @ 1.13.8+dev
+            if cost >= moves:
+                return 'red'
+            elif cost > 1:
+                return 'yellow'
+            else:
+                return ''
+
+        for tname, tid, ticon in terrainlist:
+            not_from_race, move_cost = find_attr("movement_costs", tid)
+            classes_cost = ['mvtcost']
+            cost_rating = ''
+
+            not_from_race, defense = find_attr("defense", tid)
+            classes_defense = ['num']
+            defense_rating = ''
+
+            if defense == '-':
+                defense = 100
+
+            cost_rating = mvtcost_rating_color_class(move_cost, uval('movement'))
 
             try:
-                d = int(d)
+                defense = int(defense)
                 # negative defense has something to do with best defense if
                 # there's multiple terrain types
-                if d < 0: d = -d
-                d = "%d%%" % (100 - d)
+                if defense < 0:
+                    defense = -defense
+                defense_rating = defense_rating_color_class(100 - defense)
+                defense = "%d%%" % (100 - defense)
             except ValueError:
                 error_message("Warning: Invalid defense %s for %s.\n" % (
-                    d, uid))
+                    defense, uid))
+
+            if cost_rating:
+                classes_cost.append('rating-' + cost_rating)
+            if defense_rating:
+                classes_defense.append('rating-' + defense_rating)
 
             write("<tr>\n")
             picname = image_collector.add_image(self.addon,
                 "terrain/" + ticon + ".png", no_tc=True)
             icon = os.path.join(pics_location, picname)
             write("<td><img src=\"%s\"  alt=\"(icon)\" /></td>\n" % (icon, ))
-            write("<td>%s</td><%s><i>%s</i></td><%s class=\"num\"><i>%s</i></td>\n" % (
-                tname, ccell, c, dcell, d))
+            write('<td>%s</td><td class="%s"><i>%s</i></td><td class="%s"><i>%s</i></td>\n' % (
+                tname, ' '.join(classes_cost), move_cost, ' '.join(classes_defense), defense))
             write("</tr>\n")
         write("</table>\n")
 
