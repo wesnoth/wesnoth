@@ -504,11 +504,14 @@ class HTMLOutput:
         # Languages
         x = self.translate("Language", "wesnoth")
         add_menu2("languages_menu", x)
+        cell = 0
         col = 0
-        maxcol = len(langlist) - 1
+        colcount = 5
+        lastcell = len(langlist) - 1
         write("<table>")
         write("<tr>")
         for lang in langlist:
+            cell += 1
             col += 1
             write("<td>")
             labb = lang
@@ -519,13 +522,17 @@ class HTMLOutput:
                     languages[lang], lang, self.target,
                         labb))
             else:
-                write('<a title="%s" href="../%s/%s">%s</a>\n' % (
+                write('<a title="%s" href="../%s/%s" role="menuitem">%s</a>\n' % (
                     languages[lang], lang, "mainline.html",
                         labb))    
             write("</td>")
-            if col % 5 == 0:
-                if col < maxcol: write("</tr><tr>")
-
+            if cell % colcount == 0:
+                if cell < lastcell:
+                    write("</tr><tr>")
+                col = 0
+        if col:
+            for i in range(colcount - col + 1, colcount):
+                write("<td></td>")
         write("</tr>")
         write("</table>")
         write("</div></li>\n")
