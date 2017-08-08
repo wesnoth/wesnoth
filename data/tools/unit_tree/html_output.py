@@ -1016,7 +1016,7 @@ class HTMLOutput:
             elif resistance <= 20:
                 return 'yellow'
             elif resistance <= 40:
-                return ''
+                return 'olive'
             else:
                 return 'green'
 
@@ -1137,7 +1137,7 @@ class HTMLOutput:
             elif defense <= 30:
                 return 'yellow'
             elif defense <= 50:
-                return ''
+                return 'olive'
             else:
                 return 'green'
 
@@ -1146,11 +1146,13 @@ class HTMLOutput:
             moves = int_fallback(str_moves)
             # Logic from src/help/help_topic_generators.cpp @ 1.13.8+dev
             if cost >= moves:
+                return 'gray'
+            elif cost > moves/2:
                 return 'red'
             elif cost > 1:
                 return 'yellow'
             else:
-                return ''
+                return 'green'
 
         for tname, tid, ticon in terrainlist:
             not_from_race, move_cost = find_attr("movement_costs", tid)
