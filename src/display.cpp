@@ -3147,12 +3147,19 @@ void display::update_arrow(arrow & arrow)
 	}
 }
 
+map_location display::get_middle_location() const
+{
+	const SDL_Rect& rect = map_area();
+	return pixel_position_to_hex(rect.x + rect.w / 2 , rect.y + rect.h / 2 );
+}
+
 void display::write(config& cfg) const
 {
 	cfg["view_locked"] = view_locked_;
 	cfg["color_adjust_red"] = color_adjust_.r;
 	cfg["color_adjust_green"] = color_adjust_.g;
 	cfg["color_adjust_blue"] = color_adjust_.b;
+	get_middle_location().write(cfg.add_child("location"));
 }
 
 void display::read(const config& cfg)

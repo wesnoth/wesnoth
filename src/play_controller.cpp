@@ -158,6 +158,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, skip_replay_(skip_replay)
 	, linger_(false)
 	, init_side_done_now_(false)
+	, map_start_()
 	, victory_when_enemies_defeated_(level["victory_when_enemies_defeated"].to_bool(true))
 	, remove_from_carryover_on_defeat_(level["remove_from_carryover_on_defeat"].to_bool(true))
 	, victory_music_()
@@ -238,6 +239,7 @@ void play_controller::init(CVideo& video, const config& level)
 		LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks()) << std::endl;
 		gui2::dialogs::loading_screen::progress("build terrain");
 		gui_.reset(new game_display(gamestate().board_, video, whiteboard_manager_, *gamestate().reports_, gamestate().tod_manager_, theme_cfg, level));
+		map_start_ = map_location(level.child_or_empty("display").child_or_empty("location"));
 		if (!gui_->video().faked()) {
 			if (saved_game_.mp_settings().mp_countdown)
 				gui_->get_theme().modify_label("time-icon", _ ("time left for current turn"));
@@ -503,9 +505,10 @@ void play_controller::init_side_end()
 		gui_->invalidate_all();
 	}
 
-	if (!is_skipping_replay() && current_team().get_scroll_to_leader()){
+	if (!is_skipping_replay() && current_team().get_scroll_to_leader() && !map_start_.valid()){
 		gui_->scroll_to_leader(current_side(), game_display::ONSCREEN,false);
 	}
+	map_start_ = map_location();
 	whiteboard_manager_->on_init_side();
 }
 
@@ -1070,6 +1073,7 @@ void play_controller::start_game()
 	if(!gamestate().start_event_fired_)
 	{
 		gamestate().start_event_fired_ = true;
+		map_start_ = map_location();
 		resources::recorder->add_start_if_not_there_yet();
 		resources::recorder->get_next_action();
 

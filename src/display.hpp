@@ -638,6 +638,7 @@ protected:
 	/// map of hexes where only one unit should be drawn, the one identified by the associated id string
 	exclusive_unit_draw_requests_t exclusive_unit_draw_requests_;
 
+	map_location get_middle_location() const;
 	/**
 	 * Called near the beginning of each draw() call.
 	 * Derived classes can use this to add extra actions before redrawing

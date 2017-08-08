@@ -343,6 +343,8 @@ protected:
 	 * (false = we did init sides before we reloaded the game).
 	 */
 	bool init_side_done_now_;
+	//the displayed location when we load a game.
+	map_location map_start_;
 	const std::string& select_music(bool victory) const;
 
 	void reset_gamestate(const config& level, int replay_pos);
