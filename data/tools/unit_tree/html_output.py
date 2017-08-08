@@ -942,7 +942,7 @@ class HTMLOutput:
         # Write info about attacks.
         write("<h2>" + _("unit help^Attacks", "wesnoth-help") + " <small>(damage " + html_entity_multiplication_sign + " count)</small></h2> \n")
         write("<table class=\"unitinfo attacks\">\n")
-        write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /></colgroup>')
+        write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /></colgroup>')
         attacks = self.get_recursive_attacks(unit)
         for attack in attacks:
             write("<tr>")
@@ -1007,10 +1007,7 @@ class HTMLOutput:
 
         write("<h2>%s</h2>\n" % _("Resistances: ").strip(" :"))
         write("<table class=\"unitinfo resistances\">\n")
-        write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /><col class="col5" /><col class="col6" /><col class="col7" /></colgroup>')
-        write("<tr>\n")
-
-        write("</tr>\n")
+        write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /><col class="col5" /><col class="col6" /></colgroup>')
         row = 0
         for rid, ricon in resistances:
             special, r = find_attr("resistance", rid)
@@ -1056,7 +1053,7 @@ class HTMLOutput:
         # Write info about movement costs and terrain defense.
         write("<h2>" + _("Terrain", "wesnoth-help") + "</h2>\n")
         write("<table class=\"unitinfo terrain\">\n")
-        write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /></colgroup>')
+        write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /></colgroup>')
 
         write('<thead>')
         write('<tr><th colspan="2">%s</th><th class="mvtcost">%s</th><th class="numheader">%s</th></tr>\n' % (
