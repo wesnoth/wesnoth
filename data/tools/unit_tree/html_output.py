@@ -10,6 +10,7 @@ pics_location = "../../pics"
 
 html_entity_horizontal_bar = '&#8213;'
 html_entity_multiplication_sign = '&#215;'
+html_entity_figure_dash = '&#8210;'
 
 html_header = '''
 <!DOCTYPE html>
@@ -891,7 +892,7 @@ class HTMLOutput:
             write('<a href="%s">%s</a>' % (link, name))
             have_advances = True
         if not have_advances:
-            write('-')
+            write(html_entity_figure_dash)
         write("</td>\n")
         write("</tr><tr>\n")
         write("<th>%s" % _("Advances to: ", "wesnoth-help"))
@@ -917,7 +918,7 @@ class HTMLOutput:
             write('<a href="%s">%s</a>' % (link, name))
             have_advances = True
         if not have_advances:
-            write('-')
+            write(html_entity_figure_dash)
         write("</td>\n")
         write("</tr>\n")
 
@@ -945,9 +946,9 @@ class HTMLOutput:
         write("<tr>\n")
         write("<th>%s</th>" % _("Abilities: ", "wesnoth-help"))
         if len(anames):
-            write("<td class=\"val\">" + (", ".join(anames)) + "</td>")
+            write('<td class="val">' + (', '.join(anames)) + '</td>')
         else:
-            write("<td class=\"val\">-</td>")
+            write('<td class="val">' + html_entity_figure_dash + '</td>')
         write("</tr>\n")
 
         write("</table>\n")
@@ -1184,6 +1185,8 @@ class HTMLOutput:
                 classes_cost.append('rating-' + cost_rating)
             if defense_rating:
                 classes_defense.append('rating-' + defense_rating)
+            if move_cost == '-':
+                move_cost = html_entity_figure_dash
 
             write("<tr>\n")
             picname = image_collector.add_image(self.addon,
