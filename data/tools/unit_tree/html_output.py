@@ -1056,7 +1056,7 @@ class HTMLOutput:
         write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /></colgroup>')
 
         write('<thead>')
-        write('<tr><th colspan="2">%s</th><th class="mvtcost">%s</th><th class="numheader">%s</th></tr>\n' % (
+        write('<tr><th colspan="2"><span class="sr-label">%s</span></th><th class="mvtcost">%s</th><th class="numheader">%s</th></tr>\n' % (
             _("Terrain", "wesnoth-help"), _("Movement Cost", "wesnoth-help"), _("Defense", "wesnoth-help")))
         write('</thead>')
 
