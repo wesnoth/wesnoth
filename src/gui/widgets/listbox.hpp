@@ -185,6 +185,24 @@ public:
 	bool select_row(const unsigned row, const bool select = true);
 
 	/**
+	 * Selects a row at the given position, regardless of sorting order.
+	 *
+	 * When using @ref select_row the relevant row is located by index regardless
+	 * of its actual position in the list, which could differ if the list had been
+	 * sorted. In that case, `select_row(0)` would not select the list's first row
+	 * as displayed.
+	 *
+	 * This function allows row selection based on position. `select_row_at(0)` will
+	 * always select the list's first row, regardless of sorting order.
+	 *
+	 * @param row                 The row to select.
+	 * @param select              Select or deselect the row.
+	 *
+	 * @returns                   True if the operation succeeded.
+	 */
+	bool select_row_at(const unsigned row, const bool select = true);
+
+	/**
 	 * Check if a row is selected
 	 * @param row                 The row to test
 	 * @returns                   True if it is selected.

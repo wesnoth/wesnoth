@@ -261,6 +261,13 @@ bool listbox::select_row(const unsigned row, const bool select)
 	return before != generator_->get_selected_item_count();
 }
 
+bool listbox::select_row_at(const unsigned row, const bool select)
+{
+	assert(generator_);
+
+	return select_row(generator_->get_item_at_ordered(row), select);
+}
+
 bool listbox::row_selected(const unsigned row)
 {
 	assert(generator_);
@@ -636,7 +643,7 @@ void listbox::set_active_sorting_option(const order_pair& sort_by, const bool se
 	order_by_column(sort_by.first, dynamic_cast<widget&>(wgt));
 
 	if(select_first && generator_->get_item_count() > 0) {
-		select_row(generator_->get_item_at_ordered(0));
+		select_row_at(0);
 	}
 }
 
