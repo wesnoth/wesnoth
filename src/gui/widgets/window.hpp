@@ -272,18 +272,6 @@ public:
 	 */
 	void invalidate_layout();
 
-	/** Inherited from event_handler. */
-	window& get_window()
-	{
-		return *this;
-	}
-
-	/** Inherited from event_handler. */
-	const window& get_window() const
-	{
-		return *this;
-	}
-
 	/** See @ref widget::find_at. */
 	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
