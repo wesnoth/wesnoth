@@ -134,7 +134,7 @@ public:
 	/**
 	 * Wrapper for enabling or disabling member widgets.
 	 * Each member widget will be enabled or disabled based on the result of the specified
-	 * predicate, which takes its accociated value.
+	 * predicate, which takes its associated value.
 	 *
 	 * If a selected widget is to be disabled, it is deselected and the first active member
 	 * selected instead. The same happens if no members were previously active at all.
@@ -174,7 +174,7 @@ public:
 
 private:
 	/**
-	 * Container map for group members, organized by member value, accociated widget.
+	 * Container map for group members, organized by member value, associated widget.
 	 */
 	group_map members_;
 

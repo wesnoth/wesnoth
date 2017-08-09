@@ -104,7 +104,8 @@ public:
 	}
 
 protected:
-/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
+	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
+
 	/** Inherited from scrollbar_container. */
 	void handle_key_up_arrow(SDL_Keymod modifier, bool& handled) override;
 
@@ -118,7 +119,7 @@ protected:
 	void handle_key_right_arrow(SDL_Keymod modifier, bool& handled) override;
 private:
 	/**
-	 * @todo evaluate which way the dependancy should go.
+	 * @todo evaluate which way the dependency should go.
 	 *
 	 * We no depend on the implementation, maybe the implementation should
 	 * depend on us instead.

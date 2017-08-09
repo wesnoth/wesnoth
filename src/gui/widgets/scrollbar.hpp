@@ -337,7 +337,7 @@ private:
 	 *
 	 * Needs to be called when someting changes eg number of items
 	 * or available size. It can only be called once we have a size
-	 * otherwise we can't calulate a thing.
+	 * otherwise we can't calculate a thing.
 	 */
 	void recalculate();
 

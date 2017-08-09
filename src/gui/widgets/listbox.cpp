@@ -66,7 +66,7 @@ listbox::listbox(const bool has_minimum,
 				   const bool select)
 	: scrollbar_container()
 	, generator_(generator_base::build(has_minimum, has_maximum, placement, select))
-	, is_horizonal_(placement == generator_base::horizontal_list)
+	, is_horizontal_(placement == generator_base::horizontal_list)
 	, list_builder_(nullptr)
 	, callback_value_changed_()
 	, need_layout_(false)
@@ -111,13 +111,13 @@ void listbox::remove_row(const unsigned row, unsigned count)
 
 	int height_reduced = 0;
 	int width_reduced = 0;
-	//TODO: Fix this for horizinal listboxes
+	//TODO: Fix this for horizontal listboxes
 	//Note the we have to use content_grid_ and cannot use "_list_grid" which is what generator_ uses.
-	int row_pos_y = is_horizonal_ ? -1 : generator_->item(row).get_y()  - content_grid_->get_y();
-	int row_pos_x = is_horizonal_ ? -1 : 0;
+	int row_pos_y = is_horizontal_ ? -1 : generator_->item(row).get_y()  - content_grid_->get_y();
+	int row_pos_x = is_horizontal_ ? -1 : 0;
 	for(; count; --count) {
 		if(generator_->item(row).get_visible() != visibility::invisible) {
-			if(is_horizonal_) {
+			if(is_horizontal_) {
 				width_reduced += generator_->item(row).get_width();
 			}
 			else {

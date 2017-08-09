@@ -561,22 +561,22 @@ private:
 	/** The maximum height if automatic_placement_ is true. */
 	unsigned maximum_height_;
 
-	/** The formula to calulate the x value of the dialog. */
+	/** The formula to calculate the x value of the dialog. */
 	typed_formula<unsigned> x_;
 
-	/** The formula to calulate the y value of the dialog. */
+	/** The formula to calculate the y value of the dialog. */
 	typed_formula<unsigned> y_;
 
-	/** The formula to calulate the width of the dialog. */
+	/** The formula to calculate the width of the dialog. */
 	typed_formula<unsigned> w_;
 
-	/** The formula to calulate the height of the dialog. */
+	/** The formula to calculate the height of the dialog. */
 	typed_formula<unsigned> h_;
 
 	/** The formula to determine whether the size is good. */
 	typed_formula<bool> reevaluate_best_size_;
 
-	/** The formula definitions available for the calulation formulas. */
+	/** The formula definitions available for the calculation formulas. */
 	wfl::function_symbol_table functions_;
 
 	/** The settings for the tooltip. */
@@ -627,10 +627,10 @@ private:
 		/** The widgets linked. */
 		std::vector<widget*> widgets;
 
-		/** the current width of all widgets in the intis group, -1 if the width is not linked*/
+		/** The current width of all widgets in the group, -1 if the width is not linked. */
 		int width;
 
-		/** the current height of all widgets in the intis group, -1 if the height is not linked*/
+		/** The current height of all widgets in the group, -1 if the height is not linked. */
 		int height;
 	};
 

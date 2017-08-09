@@ -80,9 +80,9 @@ public:
 
 protected:
 	/**
-	 * Initializes the interneral sub-widget pointers.
+	 * Initializes the internal sub-widget pointers.
 	 * Should be called when building the window, so the pointers
-	 * are initilized when set_displayed_type() is called.
+	 * are initialized when set_displayed_type() is called.
 	 */
 	void finalize_setup();
 

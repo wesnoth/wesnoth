@@ -518,7 +518,7 @@ private:
 	 * widget in the window. Need to look whether it is possible in a clean way.
 	 * Maybe a signal just prior to showing a window where the widget can do
 	 * some of it's on things, would also be nice for widgets that need a
-	 * finaliser function.
+	 * finalizer function.
 	 */
 	std::string linked_group_;
 

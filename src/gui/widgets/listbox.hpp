@@ -355,7 +355,7 @@ private:
 	 */
 	generator_base* generator_;
 
-	const bool is_horizonal_;
+	const bool is_horizontal_;
 
 	/** Contains the builder for the new items. */
 	builder_grid_const_ptr list_builder_;
