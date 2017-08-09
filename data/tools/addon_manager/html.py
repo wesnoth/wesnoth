@@ -57,6 +57,7 @@ def output(path, url, data):
     </div>
 
     <ul id="navlinks">
+        <li><a href="https://addons.wesnoth.org/">Add-ons</a></li>
         <li><a href="https://www.wesnoth.org/">Home</a></li>
         <li><a href="https://forums.wesnoth.org/viewforum.php?f=62">News</a></li>
         <li><a href="https://wiki.wesnoth.org/Play">Play</a></li>
