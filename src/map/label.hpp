@@ -125,8 +125,8 @@ public:
 
 	terrain_label(const map_labels&, const config&);
 
-	/** Default move ctor. */
-	terrain_label(terrain_label&&) = default;
+	/** Move ctor. */
+	terrain_label(terrain_label&&);
 
 	~terrain_label();
 

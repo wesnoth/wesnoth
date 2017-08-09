@@ -351,6 +351,25 @@ terrain_label::terrain_label(const map_labels& parent, const config& cfg)
 	read(cfg);
 }
 
+terrain_label::terrain_label(terrain_label&& l)
+	: handle_(l.handle_)
+	, tooltip_handle_(l.tooltip_handle_)
+	, text_(l.text_)
+	, tooltip_(l.tooltip_)
+	, category_(l.category_)
+	, team_name_(l.team_name_)
+	, visible_in_fog_(l.visible_in_fog_)
+	, visible_in_shroud_(l.visible_in_shroud_)
+	, immutable_(l.immutable_)
+	, creator_(l.creator_)
+	, color_(l.color_)
+	, parent_(l.parent_)
+	, loc_(l.loc_)
+{
+	l.handle_ = 0;
+	l.tooltip_handle_ = 0;
+}
+
 terrain_label::~terrain_label()
 {
 	clear();
