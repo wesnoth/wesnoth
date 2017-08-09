@@ -151,7 +151,24 @@ void addon_list::set_addons(const addons_list& addons)
 		item["label"] = describe_status(tracking_info);
 		data.emplace("installation_status", item);
 
-		item["label"] = addon.version.str();
+		// If the addon is upgradable or ourdated on server, we display the two relevant
+		// versions directly in the list for convenience.
+		const bool special_version_display =
+			tracking_info.state == ADDON_INSTALLED_UPGRADABLE ||
+			tracking_info.state == ADDON_INSTALLED_OUTDATED;
+
+		std::ostringstream ss;
+		if(special_version_display) {
+			ss << tracking_info.installed_version.str() << "\n";
+		}
+
+		ss << addon.version.str();
+
+		if(special_version_display) {
+			ss.str(colorify_addon_state_string(ss.str(), tracking_info.state, false));
+		}
+
+		item["label"] = ss.str();
 		data.emplace("version", item);
 
 		item["label"] = addon.author;
