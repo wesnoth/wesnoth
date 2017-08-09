@@ -214,6 +214,7 @@ const std::vector<std::pair<ADDON_STATUS_FILTER, std::string>> addon_manager::st
 	{FILTER_ALL,           N_("addons_view^All Add-ons")},
 	{FILTER_INSTALLED,     N_("addons_view^Installed")},
 	{FILTER_UPGRADABLE,    N_("addons_view^Upgradable")},
+	{FILTER_PUBLISHABEL,   N_("addons_view^Publishable")},
 	{FILTER_NOT_INSTALLED, N_("addons_view^Not Installed")},
 };
 
@@ -534,13 +535,14 @@ boost::dynamic_bitset<> addon_manager::get_status_filter_visibility(const window
 
 	boost::dynamic_bitset<> res;
 	for(const auto& a : addons_) {
-		const ADDON_STATUS state = tracking_info_.at(a.second.id).state;
+		const addon_tracking_info& info = tracking_info_.at(a.second.id);
 
 		res.push_back(
 			(selection == FILTER_ALL) ||
-			(selection == FILTER_INSTALLED     && is_installed_addon_status(state)) ||
-			(selection == FILTER_UPGRADABLE    && state == ADDON_INSTALLED_UPGRADABLE) ||
-			(selection == FILTER_NOT_INSTALLED && state == ADDON_NONE)
+			(selection == FILTER_INSTALLED     && is_installed_addon_status(info.state)) ||
+			(selection == FILTER_UPGRADABLE    && info.state == ADDON_INSTALLED_UPGRADABLE) ||
+			(selection == FILTER_PUBLISHABEL   && info.can_publish == true) ||
+			(selection == FILTER_NOT_INSTALLED && info.state == ADDON_NONE)
 		);
 	}
 
