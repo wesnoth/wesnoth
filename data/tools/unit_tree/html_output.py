@@ -23,8 +23,8 @@ html_header = '''
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montaga%%7COpen+Sans:400,400i,700,700i" type="text/css" />
 	<link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-32.png" sizes="32x32" />
 	<link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-16.png" sizes="16x16" />
-	<link rel="stylesheet" type="text/css" href="http://wesmere.localhost/wesmere/css/wesmere-1.1.0.css" />
-	<link rel="stylesheet" type="text/css" href="http://wesmere.localhost/wesmere/css/wmlunits-1.1.0.css" />
+	<link rel="stylesheet" type="text/css" href="https://www.wesnoth.org/wesmere/css/wesmere-1.1.0.css" />
+	<link rel="stylesheet" type="text/css" href="https://www.wesnoth.org/wesmere/css/wmlunits-1.1.0.css" />
 	<script src="https://www.wesnoth.org/wesmere/js/modernizr.js"></script>
 	<script type="text/javascript" src="%(path)s/menu.js"></script>
 	<title>%(title)s - Wesnoth Units Database</title>
