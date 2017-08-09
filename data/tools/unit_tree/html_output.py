@@ -719,17 +719,19 @@ class HTMLOutput:
                             write('<img src="%s" alt="(image)" />' % image)
 
                         write('</a>\n</div>\n')
-                        write("<div class=\"attributes\">")
 
+                        write('<div class="attributes">')
+
+                        write('<table><colgroup><col class="attribute-label"><col class="attribute-value">')
                         attributes = (
                             (_("Cost: ", "wesnoth-help"), cost),
                             (_("HP: "), hp),
                             (_("XP: "), xp),
                             (_("MP: "), mp),
                         )
-
                         for attr_label, attr_value in attributes:
-                            write('<span class="attribute-label">%s</span> <span class="attribute-value">%s</span><br />' % (attr_label.strip(), attr_value))
+                            write('<tr><th>%s</th><td>%s</td></tr>' % (attr_label.strip(), attr_value))
+                        write('</table>')
 
                         # Write info about abilities.
                         anames = self.get_abilities(u)
