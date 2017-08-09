@@ -11,7 +11,7 @@ def write_addon_overview(folder, addon):
     name = addon["name"]
 
     path = "../"
-    title = html_output.cleantext(name + " Overview")
+    title = html_output.cleantext("Build Report for " + name)
     generation_note = "Last updated on " + time.ctime() + "."
     
     w(html_output.html_header % locals())
@@ -42,7 +42,7 @@ def write_addon_overview(folder, addon):
     w("<div>")
     if os.path.exists(os.path.join(folder, "error.log")):
         w('<p><b>Warnings or errors were found: <a href="error.html"/>log</a></b></p>')
-    w('<p><a href="../overview.html">back to overview</a></p>')
+    w('<p><a href="../overview.html">Back to the full report</a></p>')
     w("</div>")
     
     w('</div> <!-- overview -->')

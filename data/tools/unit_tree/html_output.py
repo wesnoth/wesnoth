@@ -863,7 +863,7 @@ class HTMLOutput:
         if female:
             fname = T(female[0], "name")
             if fname and fname != uname:
-                display_name += "<br/>" + cleantext(fname)
+                display_name += " / " + cleantext(fname)
 
         write('<div class="unit-columns">')
 
@@ -893,7 +893,7 @@ class HTMLOutput:
         if not description:
             description = clean_uval("unit_description")
         if not description:
-            description = "-"
+            description = html_entity_horizontal_bar
         write('<p>%s</p>\n' % re.sub('\n', '\n<br />', description))
 
         # Base info.
