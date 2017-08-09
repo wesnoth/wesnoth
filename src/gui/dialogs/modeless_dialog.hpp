@@ -83,6 +83,12 @@ public:
 	 */
 	void hide();
 
+	/** Returns a pointer to the dialog's window. Will be null if it hasn't been built yet. */
+	window* get_window() const
+	{
+		return window_.get();
+	}
+
 private:
 	/** The window, used in show. */
 	std::unique_ptr<window> window_;

@@ -27,7 +27,8 @@ namespace gui2
 namespace dialogs
 {
 modal_dialog::modal_dialog()
-	: retval_(0)
+	: window_(nullptr)
+	, retval_(0)
 	, always_save_fields_(false)
 	, fields_()
 	, focus_()
@@ -72,20 +73,20 @@ bool modal_dialog::show(CVideo& video, const unsigned auto_close_time)
 		return false;
 	}
 
-	std::unique_ptr<window> window(build_window(video));
-	assert(window.get());
+	window_.reset(build_window(video));
+	assert(window_.get());
 
-	post_build(*window);
+	post_build(*window_);
 
-	window->set_owner(this);
+	window_->set_owner(this);
 
-	init_fields(*window);
+	init_fields(*window_);
 
-	pre_show(*window);
+	pre_show(*window_);
 
 	{ // Scope the window stack
-		window_stack_handler push_window_stack(window);
-		retval_ = window->show(restore_, auto_close_time);
+		window_stack_handler push_window_stack(window_);
+		retval_ = window_->show(restore_, auto_close_time);
 	}
 
 	/*
@@ -102,12 +103,15 @@ bool modal_dialog::show(CVideo& video, const unsigned auto_close_time)
 	 */
 	SDL_FlushEvent(DOUBLE_CLICK_EVENT);
 
-	finalize_fields(*window, (retval_ == window::OK || always_save_fields_));
+	finalize_fields(*window_, (retval_ == window::OK || always_save_fields_));
 
-	post_show(*window);
+	post_show(*window_);
 
-	// post_show may have updated the windoe retval. Update it here.
-	retval_ = window->get_retval();
+	// post_show may have updated the window retval. Update it here.
+	retval_ = window_->get_retval();
+
+	// Reset window object.
+	window_.reset(nullptr);
 
 	return retval_ == window::OK;
 }

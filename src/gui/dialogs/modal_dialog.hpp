@@ -152,6 +152,12 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
+	/** Returns a pointer to the dialog's window. Will be null if it hasn't been built yet. */
+	window* get_window() const
+	{
+		return window_.get();
+	}
+
 	int get_retval() const
 	{
 		return retval_;
@@ -299,6 +305,9 @@ protected:
 	}
 
 private:
+	/** The window object build for this dialog. */
+	std::unique_ptr<window> window_;
+
 	/** Returns the window exit status, 0 means not shown. */
 	int retval_;
 
