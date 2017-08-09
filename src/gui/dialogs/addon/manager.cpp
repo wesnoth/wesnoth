@@ -573,7 +573,7 @@ boost::dynamic_bitset<> addon_manager::get_type_filter_visibility(const window& 
 
 void addon_manager::apply_filters(window& window)
 {
-	boost::dynamic_bitset<> res = 
+	boost::dynamic_bitset<> res =
 		get_status_filter_visibility(window)
 		& get_type_filter_visibility(window)
 		& get_name_filter_visibility(window);
@@ -850,9 +850,9 @@ void addon_manager::on_addon_select(window& window)
 	} else {
 		action_stack.select_layer(1);
 
-		// TODO: are these the right flags to check?
-		find_widget<button>(parent, "publish", false).set_active(installed);
-		find_widget<button>(parent, "delete", false).set_active(!installed);
+		// Always enable the publish button, but disable the delete button if not yet published.
+		find_widget<button>(parent, "publish", false).set_active(true);
+		find_widget<button>(parent, "delete", false).set_active(!info->local_only);
 	}
 }
 

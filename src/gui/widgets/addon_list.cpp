@@ -229,6 +229,7 @@ void addon_list::set_addons(const addons_list& addons)
 			find_widget<label>(row_grid, "installation_status", false).set_visible(install_status_visibility_);
 		} else {
 			const bool is_updatable = tracking_info.state == ADDON_INSTALLED_OUTDATED;
+			const bool can_delete = !addon.local_only;
 
 			button& install_button = find_widget<button>(control_grid, "single_install", false);
 			button& update_button = find_widget<button>(control_grid, "single_update", false);
@@ -236,7 +237,7 @@ void addon_list::set_addons(const addons_list& addons)
 
 			install_button.set_active(true);
 			update_button.set_active(true);
-			uninstall_button.set_active(tracking_info.state == ADDON_INSTALLED);
+			uninstall_button.set_active(can_delete);
 
 			if(true) {
 				gui2::event::connect_signal_mouse_left_click(
@@ -264,7 +265,7 @@ void addon_list::set_addons(const addons_list& addons)
 				update_button.set_tooltip(_("Send new version to server"));
 			}
 
-			if(tracking_info.state == ADDON_INSTALLED) {
+			if(can_delete) {
 				gui2::event::connect_signal_mouse_left_click(
 					uninstall_button,
 					[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
