@@ -5,12 +5,13 @@ from . import html_output
 
 def write_addon_overview(folder, addon):
     out = open(os.path.join(folder, "index.html"), "w")
-    def w(x): out.write(x + "\n")
+    def w(x):
+        out.write(x + "\n")
     
     name = addon["name"]
 
     path = "../"
-    title = name + " Overview"
+    title = html_output.cleantext(name + " Overview")
     generation_note = "Last updated on " + time.ctime() + "."
     
     w(html_output.html_header % locals())
@@ -21,13 +22,13 @@ def write_addon_overview(folder, addon):
     
     eras = addon.get("eras", [])
 
-    w("<h2>" + name + "</h2>")
+    w("<h2>" + html_output.cleantext(name) + "</h2>")
 
     if eras:
         w("<h3>Eras</h3><ul>")
         for era in eras:
-            epath = os.path.join("en_US", era["id"] + ".html")
-            w('<li><a href="' + epath + '">' + era["name"] + '</a></li>')
+            epath = html_output.cleanurl(os.path.join("en_US", era["id"] + ".html"))
+            w('<li><a href="' + epath + '">' + html_output.cleantext(era["name"], quote=False) + '</a></li>')
         w("</ul>")
     
     campaigns = addon.get("campaigns", [])
@@ -35,7 +36,7 @@ def write_addon_overview(folder, addon):
         w("<h3>Campaigns</h3><ul>")
         for campaign in campaigns:
             cpath = os.path.join("en_US", campaign["id"] + ".html")
-            w('<li><a href="' + cpath + '">' + campaign["name"] + '</a></li>')
+            w('<li><a href="' + cpath + '">' + html_output.cleantext(campaign["name"], quote=False) + '</a></li>')
         w("</ul>")
     
     w("<div>")
@@ -99,7 +100,7 @@ def main(folder):
         name = f[len(folder):].lstrip("/")
         error_name = os.path.join(name, "error.html")
         w('<tr><td>')
-        w('<a href="' + os.path.join(name, "index.html") + '">' + name + '</a>')
+        w('<a href="' + html_output.cleanurl(os.path.join(name, "index.html")) + '">' + html_output.cleantext(name, quote=False) + '</a>')
         w('</td><td>')
         w(str(n))
         w('</td><td>')
@@ -166,7 +167,7 @@ def main(folder):
             total_lines += lines_count
             
             total_error_logs += 1
-            w('<a class="error" href="%s">%s (%d lines)</a>' % (error_name, error_kind, lines_count))
+            w('<a class="error" href="%s">%s (%d lines)</a>' % (html_output.cleanurl(error_name), error_kind, lines_count))
         w("</td></tr>")
         
         count += 1
