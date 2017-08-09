@@ -29,7 +29,7 @@ def output(path, url, data):
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montaga%7COpen+Sans:400,400i,700,700i" type="text/css" />
     <link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-16.png" sizes="16x16" />
-    <link rel="stylesheet" type="text/css" href="https://www.wesnoth.org/wesmere/css/wesmere-1.0.0.css" />
+    <link rel="stylesheet" type="text/css" href="https://www.wesnoth.org/wesmere/css/wesmere-1.1.0.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />""")
     w("<title>Wesnoth %s Add-ons List - The Battle for Wesnoth</title>" % server_name)
     w("""
@@ -53,7 +53,7 @@ def output(path, url, data):
 <div class="centerbox">
 
     <div id="logo">
-        <a href="https://www.wesnoth.org/"><img alt="Wesnoth logo" src="https://www.wesnoth.org/wesmere/img/logo-minimal-64.png" width="64" height="64" data-retina /></a>
+        <a href="https://www.wesnoth.org/" aria-label="Wesnoth logo"></a>
     </div>
 
     <ul id="navlinks">
@@ -67,8 +67,13 @@ def output(path, url, data):
 
     <div id="sitesearch" role="search">
         <form method="get" action="https://wiki.wesnoth.org/">
-            <i class="search-icon" aria-hidden="true"></i>
-            <input id="searchbox" type="search" name="search" placeholder="Search" value="" title="Search this site [Alt+Shift+f]" accesskey="f" tabindex="1" />
+            <input id="searchbox" type="search" name="search" placeholder="Search" title="Search the wiki [Alt+Shift+f]" accesskey="f" tabindex="1" />
+            <span id="searchbox-controls">
+                <button id="search-go" class="search-button" type="submit" title="Search" tabindex="2">
+                    <i class="search-icon" aria-hidden="true"></i>
+                    <span class="sr-label">Search the wiki</span>
+                </button>
+            </span>
         </form>
     </div>
 
@@ -227,8 +232,6 @@ Unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) depend
 	Copyright &copy; 2003&ndash;2017 by <a rel="author" href="https://wiki.wesnoth.org/Project">The Battle for Wesnoth Project</a>.<br />
 	Site design Copyright &copy; 2017 by Ignacio R. Morelle.
 </div></div></div>
-
-<script src="https://www.wesnoth.org/wesmere/js/retina.min.js"></script>
 </body>
 </html>
 """)
