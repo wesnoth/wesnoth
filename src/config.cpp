@@ -586,6 +586,28 @@ void config::remove_child(config_key_type key, unsigned index)
 	remove_child(i, index);
 }
 
+void config::remove_children(config_key_type key, std::function<bool(const config&)> p)
+{
+	check_valid();
+
+	child_map::iterator pos = children_.find(key);
+	if(pos == children_.end()) {
+		return;
+	}
+
+	const auto predicate = [p](const std::unique_ptr<config>& child)
+	{
+		return p(*child);
+	};
+
+	auto child_it = std::find_if(pos->second.begin(), pos->second.end(), predicate);
+	while(child_it != pos->second.end()) {
+		unsigned index = child_it - pos->second.begin();
+		remove_child(pos, index);
+		child_it = std::find_if(pos->second.begin() + index, pos->second.end(), predicate);
+	}
+}
+
 const config::attribute_value& config::operator[](config_key_type key) const
 {
 	check_valid();

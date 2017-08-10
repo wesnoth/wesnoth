@@ -31,6 +31,7 @@
 
 #include <climits>
 #include <ctime>
+#include <functional>
 #include <iosfwd>
 #include <iterator>
 #include <map>
@@ -515,6 +516,10 @@ public:
 	void splice_children(config &src, const std::string &key);
 
 	void remove_child(config_key_type key, unsigned index);
+	/**
+	 * Removes all children with tag @a key for which @a p returns true.
+	 */
+	void remove_children(config_key_type key, std::function<bool(const config&)> p);
 	void recursive_clear_value(config_key_type key);
 
 	void clear();
