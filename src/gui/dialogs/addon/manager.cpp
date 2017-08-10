@@ -682,6 +682,8 @@ void addon_manager::publish_addon(const addon_info& addon, window& window)
 				_("The server responded with an error:") + "\n" + client_.get_last_server_error());
 		} else {
 			gui2::show_transient_message(window.video(), _("Response"), server_msg);
+			fetch_addons_list(window);
+			reload_list_and_reselect_item(addon_id, window);
 		}
 	}
 }
@@ -708,6 +710,8 @@ void addon_manager::delete_addon(const addon_info& addon, window& window)
 	} else {
 		// FIXME: translation needed!
 		gui2::show_transient_message(window.video(), _("Response"), server_msg);
+		fetch_addons_list(window);
+		reload_list_and_reselect_item(addon_id, window);
 	}
 }
 
