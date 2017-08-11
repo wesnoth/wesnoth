@@ -25,8 +25,8 @@ html_header = '''
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montaga%%7COpen+Sans:400,400i,700,700i" type="text/css" />
 	<link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-32.png" sizes="32x32" />
 	<link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-16.png" sizes="16x16" />
-	<link rel="stylesheet" type="text/css" href="https://www.wesnoth.org/wesmere/css/wesmere-1.1.0.css" />
-	<link rel="stylesheet" type="text/css" href="https://www.wesnoth.org/wesmere/css/wmlunits-1.1.0.css" />
+	<link rel="stylesheet" type="text/css" href="http://wesmere.localhost/wesmere/css/wesmere-1.1.0.css" />
+	<link rel="stylesheet" type="text/css" href="http://wesmere.localhost/wesmere/css/wmlunits-1.1.0.css" />
 	<script src="https://www.wesnoth.org/wesmere/js/modernizr.js"></script>
 	<script type="text/javascript" src="%(path)s/menu.js"></script>
 	<title>%(title)s - Wesnoth Units Database</title>
@@ -105,7 +105,7 @@ helpers.error_message = error_message
 def reset_errors():
     error_only_once = {}
 
-def int_fallback(str_value, int_fallback = 0):
+def int_fallback(str_value, int_fallback=0):
     try:
         return int(str_value)
     except ValueError:
@@ -226,11 +226,11 @@ class GroupByFaction:
 global_htmlout = None
 def T(tag, att):
     if not tag: return "none"
-    return tag.get_text_val(att, translation = global_htmlout.translate)
+    return tag.get_text_val(att, translation=global_htmlout.translate)
 
 
 class HTMLOutput:
-    def __init__(self, isocode, output, addon, campaign, is_era, wesnoth, verbose = False):
+    def __init__(self, isocode, output, addon, campaign, is_era, wesnoth, verbose=False):
         global global_htmlout
         self.output = output
         self.addon = addon
@@ -309,7 +309,7 @@ class HTMLOutput:
                 breadth += tree.breadth
 
         thelist = list(groups.keys())
-        thelist.sort(key = lambda x: grouper.group_name(x))
+        thelist.sort(key=lambda x: grouper.group_name(x))
 
         rows_count = breadth + len(thelist)
         # Create empty grid.
@@ -327,7 +327,7 @@ class HTMLOutput:
             return x
 
         def grid_place(nodes, x):
-            nodes.sort(key = by_name)
+            nodes.sort(key=by_name)
             for node in nodes:
                 level = node.unit.level
                 if level < 0: level = 0
@@ -352,47 +352,43 @@ class HTMLOutput:
             x = grid_place(nodes, x)
 
         self.unitgrid = rows
-        
+
         return len(forest.lookup)
 
     def write_navbar(self, report_type):
-        def write(x): self.output.write(x)
-        
+        def write(x):
+            self.output.write(x)
+
         all_written_html_files.append((self.isocode, self.output.filename))
 
         languages = self.wesnoth.languages_found
         langlist = list(languages.keys())
         langlist.sort()
-        
+
         write(top_bar % {"path" : "../../"})
 
-        write("""
-        
-
-        <div class="navbar">
-        """)
-
+        write('<div class="navbar">')
         write('<ul class="navbar" role="menu">')
 
         def abbrev(name):
             abbrev = name[0]
-            word_seperators = [" ", "_", "+", "(", ")"]
+            word_separators = [" ", "_", "+", "(", ")"]
             for i in range(1, len(name)):
-                if name[i] in ["+", "(", ")"] or name[i - 1] in word_seperators and name[i] not in word_seperators:
+                if name[i] in ["+", "(", ")"] or \
+                    name[i - 1] in word_separators and \
+                    name[i] not in word_separators:
                     abbrev += name[i]
             return abbrev
 
         def add_menu(id, name, classes='', is_table_container=False):
             html_name = cleantext(name)
             html_classes = " ".join((cleantext(classes), "popuptrigger"))
+            child_tag = 'ul' if not is_table_container else 'div'
+            label_tag = 'li' if not is_table_container else 'div'
             write('<li class="popupcontainer" role="menuitem" aria-haspopup="true">')
             write('<a class="' + html_classes + '" href="#">' + html_name + "</a>")
-            if not is_table_container:
-                write('<ul class="popupmenu" id="' + id + '" role="menu" aria-label="' + html_name + '">')
-                write('<li>' + html_name + '</li>')
-            else:
-                write('<div class="popupmenu" id="' + id + '" role="menu" aria-label="' + html_name + '">')
-                write('<div>' + html_name + '</div>')
+            write('<' + child_tag + ' class="popupmenu" id="' + id + '" role="menu" aria-label="' + html_name + '">')
+            write('<' + label_tag + '>' + html_name + '</' + label_tag + '>')
 
         # FIXME: This is legacy code needed for the Language menu, since it's
         #        a table and we can't make it otherwise since CSS column
@@ -412,18 +408,21 @@ class HTMLOutput:
         def add_menuitem_placeholder():
             write('<li>' + html_entity_horizontal_bar + '</li>')
 
-        def end_menu():
-            write('</ul></li>\n')
+        def end_menu(is_table_container=False):
+            if not is_table_container:
+                write('</ul></li>\n')
+            else:
+                write('</div></li>')
 
         # We may not have all the required info yet so defer writing the
         # campaigns/eras navigation.
-        
+
         # Campaigns
         x = self.translate("addon_type^Campaign", "wesnoth")
         add_menu("campaigns_menu", x)
         write("PLACE CAMPAIGNS HERE\n")
         end_menu()
-        
+
         # Eras
         x = self.translate("Era", "wesnoth")
         add_menu("eras_menu", x)
@@ -517,8 +516,8 @@ class HTMLOutput:
                     if "mainline" in un.campaigns: addon = "mainline"
                     else: addon = self.addon
                     link = cleanurl("../../%s/%s/%s.html" % (addon, self.isocode, uid))
-                    name = self.wesnoth.get_unit_value(un,
-                        "name", translation=self.translation.translate)
+                    name = self.wesnoth.get_unit_value(un, "name",
+                                                       translation=self.translation.translate)
                     if not name:
                         error_message("Warning: Unit uid=" + uid + " has no name.\n")
                         name = uid
@@ -539,7 +538,8 @@ class HTMLOutput:
             cell += 1
             col += 1
             write("<td>")
-            url = cleanurl('../%s/%s' % (lang, self.target if self.addon == 'mainline' else 'mainline.html'))
+            filename = self.target if self.addon == 'mainline' else 'mainline.html'
+            url = cleanurl('../%s/%s' % (lang, filename))
             # TODO: Maybe use the language name instead of its code for the label?
             add_menuitem(url, lang, title=languages[lang], standalone=True)
             write("</td>")
@@ -552,19 +552,17 @@ class HTMLOutput:
                 write("<td></td>")
         write("</tr>")
         write("</table>")
-        write("</div></li>\n")
-        
+        end_menu(is_table_container=True)
+
         write('<li class="overviewlink"><a href="../../overview.html">Build Report</a></li>')
 
-        write("</ul>\n")
+        write('</ul></div>\n')
 
-        write("</div>\n")
-
-    def pic(self, u, x, recursion = 0):
+    def pic(self, u, x, recursion=0):
         if recursion >= 4:
             error_message(
                 "Warning: Cannot find image for unit %s(%s).\n" % (
-                u.get_text_val("id"), x.name.decode("utf8")))
+                    u.get_text_val("id"), x.name.decode("utf8")))
             return None, None
         image = self.wesnoth.get_unit_value(x, "image")
         portrait = x.get_all(tag="portrait")
@@ -579,22 +577,20 @@ class HTMLOutput:
                 baseunit = self.wesnoth.get_base_unit(u)
                 if baseunit:
                     female = baseunit.get_all(tag="female")
-                    return self.pic(u, female[0], recursion = recursion + 1)
+                    return self.pic(u, female[0], recursion=recursion + 1)
                 else:
-                    return self.pic(u, u, recursion = recursion + 1)
-            error_message(
-                "Warning: Missing image for unit %s(%s).\n" % (
-                u.get_text_val("id"), x.name.decode("utf8")))
+                    return self.pic(u, u, recursion=recursion + 1)
+            error_message("Warning: Missing image for unit %s(%s).\n" %
+                          (u.get_text_val("id"), x.name.decode("utf8")))
             return None, None
         icpic = image_collector.add_image_check(self.addon, image)
         if not icpic.ipath:
             error_message("Warning: No picture %s for unit %s.\n" %
-                (image, u.get_text_val("id")))
+                          (image, u.get_text_val("id")))
         picname = icpic.id_name
         image = os.path.join(pics_location, picname)
         if portrait:
-            picname = image_collector.add_image(self.addon, portrait,
-                no_tc=True)
+            picname = image_collector.add_image(self.addon, portrait, no_tc=True)
             portrait = os.path.join(pics_location, picname)
         return image, portrait
 
@@ -652,7 +648,8 @@ class HTMLOutput:
         write("</colgroup>")
 
         pic = image_collector.add_image("general",
-            "../../../images/misc/leader-crown.png", no_tc=True)
+                                        "../../../images/misc/leader-crown.png",
+                                        no_tc=True)
         crownimage = cleanurl(os.path.join(pics_location, pic))
         ms = None
         for row in range(len(rows)):
@@ -694,7 +691,7 @@ class HTMLOutput:
 
                         def uval(name):
                             return self.wesnoth.get_unit_value(u, name,
-                                translation=self.translation.translate)
+                                                               translation=self.translation.translate)
 
                         def clean_uval(name):
                             return cleantext(uval(name))
@@ -827,8 +824,7 @@ class HTMLOutput:
             x = unit.get_all(tag=what)
             y = None
             if x:
-                y = x[0].get_text_val(key,
-                translation=self.translation.translate)
+                y = x[0].get_text_val(key, translation=self.translation.translate)
             if y:
                 return True, y
             if unit.movetype and mty != None:
@@ -836,8 +832,7 @@ class HTMLOutput:
             return False, "-"
 
         def uval(name):
-            return self.wesnoth.get_unit_value(unit, name,
-                translation=self.translation.translate)
+            return self.wesnoth.get_unit_value(unit, name, translation=self.translation.translate)
 
         def clean_uval(name):
             return cleantext(uval(name))
@@ -893,15 +888,6 @@ class HTMLOutput:
             description = html_entity_horizontal_bar
         write('<p>%s</p>\n' % re.sub('\n', '\n<br />', description))
 
-        # Base info.
-        hp = uval("hitpoints")
-        mp = uval("movement")
-        xp = uval("experience")
-        vision = uval("vision")
-        jamming = uval("jamming")
-        level = uval("level")
-        alignment = uval("alignment")
-
         write('<h2>Information</h2>\n')
         write('<table class="unitinfo">\n')
 
@@ -915,7 +901,7 @@ class HTMLOutput:
             addon = "mainline" if "mainline" in unit.campaigns else self.addon
             link = cleanurl("../../%s/%s/%s.html" % (addon, self.isocode, pid))
             name = self.wesnoth.get_unit_value(punit, "name",
-                translation=self.translation.translate)
+                                               translation=self.translation.translate)
             if have_advances:
                 write(', ')
             write('<a href="%s">%s</a>' % (link, cleantext(name, quote=False)))
@@ -935,7 +921,7 @@ class HTMLOutput:
                 if "mainline" in unit.campaigns and "mainline" not in cunit.campaigns:
                     continue
                 name = self.wesnoth.get_unit_value(cunit, "name",
-                    translation=self.translation.translate)
+                                                   translation=self.translation.translate)
             except KeyError:
                 error_message("Warning: Unit %s not found.\n" % cid)
                 name = cid
@@ -984,9 +970,9 @@ class HTMLOutput:
         write('</table>\n')
 
         # Write info about attacks.
-        write('<h2>%s <small>(damage %s count)</small></h2>\n' % (
-              cleantext(_("unit help^Attacks", "wesnoth-help"), quote=False),
-              html_entity_multiplication_sign))
+        write('<h2>%s <small>(damage %s count)</small></h2>\n' %
+              (cleantext(_("unit help^Attacks", "wesnoth-help"), quote=False),
+               html_entity_multiplication_sign))
         write('<table class="unitinfo attacks">\n')
         write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /></colgroup>')
         attacks = self.get_recursive_attacks(unit)
@@ -1000,8 +986,7 @@ class HTMLOutput:
             if not icon:
                 icon = "attacks/%s.png" % aid
 
-            image_add = image_collector.add_image_check(self.addon,
-                icon, no_tc = True)
+            image_add = image_collector.add_image_check(self.addon, icon, no_tc=True)
             if not image_add.ipath:
                 error_message("Error: No attack icon '%s' found for '%s'.\n" % (
                     icon, uid))
@@ -1031,9 +1016,8 @@ class HTMLOutput:
                     if sname:
                         s.append(cleantext(sname, quote=False))
                     else:
-                        error_message(
-                            "Warning: Weapon special %s has no name for %s.\n" % (
-                            special.name.decode("utf8"), uid))
+                        error_message("Warning: Weapon special %s has no name for %s.\n" %
+                                      (special.name.decode("utf8"), uid))
             write("<td>%s</td>" % "<br/>".join(s))
             write("</tr>")
         write("</table>\n")
@@ -1078,8 +1062,7 @@ class HTMLOutput:
             if special: rcell += ' class="special"'
             if row % 2 == 0: write("<tr>\n")
             else: write("<td></td>")
-            picname = image_collector.add_image(self.addon, ricon,
-                no_tc = True)
+            picname = image_collector.add_image(self.addon, ricon, no_tc=True)
             icon = os.path.join(pics_location, picname)
             write('<td><img src="%s" alt="(icon)" /></td>\n' % (icon, ))
             write('<th>%s</th><td class="%s">%s</td>\n' % (cleantext(_(rid), quote=False), ' '.join(resist_classes), resist_str))
@@ -1128,9 +1111,12 @@ class HTMLOutput:
         for tstring, t in list(terrains.items()):
             tid = t.get_text_val("id")
             if tid in ["off_map", "off_map2", "fog", "shroud", "impassable",
-                "void", "rails"]: continue
-            if t.get_all(att="aliasof"): continue
-            if tid in already: continue
+                       "void", "rails"]:
+                continue
+            if t.get_all(att="aliasof"):
+                continue
+            if tid in already:
+                continue
             already[tid] = 1
             name = T(t, "name")
             ticon = t.get_text_val("symbol_image")
@@ -1155,7 +1141,7 @@ class HTMLOutput:
             elif tid == "impassable": ticon = "void/void"
             elif tid == "unwalkable": ticon = "unwalkable/lava"
             elif tid == "rails": ticon = "misc/rails-ne-sw"
-            
+
             if ticon:
                 terrainlist.append((name, tid, ticon))
             else:
@@ -1223,11 +1209,14 @@ class HTMLOutput:
 
             write('<tr>\n')
             picname = image_collector.add_image(self.addon,
-                "terrain/" + ticon + ".png", no_tc=True)
+                                                "terrain/" + ticon + ".png",
+                                                no_tc=True)
             icon = os.path.join(pics_location, picname)
             write('<td><img src="%s" alt="(icon)" /></td>\n' % cleanurl(icon))
-            write('<td>%s</td><td class="%s"><i>%s</i></td><td class="%s"><i>%s</i></td>\n' % (
-                cleantext(tname, quote=False), ' '.join(classes_cost), move_cost, ' '.join(classes_defense), defense))
+            write('<td>%s</td><td class="%s"><i>%s</i></td><td class="%s"><i>%s</i></td>\n' %
+                  (cleantext(tname, quote=False),
+                   ' '.join(classes_cost), move_cost,
+                   ' '.join(classes_defense), defense))
             write("</tr>\n")
         write("</table>\n")
 
@@ -1259,41 +1248,41 @@ def generate_campaign_report(addon, isocode, campaign, wesnoth):
     grouper = GroupByRace(wesnoth, cid)
 
     if campaign:
-        title = campaign.get_text_val("name", translation = html.translate)
+        title = campaign.get_text_val("name", translation=html.translate)
     else:
         title = html.translate("Units", "wesnoth-help")
     if not title:
         title = cid
 
     n = html.write_units_tree(grouper, title, True)
-    
+
     output.close()
-    
+
     return n
 
 def generate_era_report(addon, isocode, era, wesnoth):
     eid = era.get_text_val("id")
-    
+
     print(("era " + addon + " " + eid + " " + isocode))
 
     path = os.path.join(options.output, addon, isocode)
     if not os.path.isdir(path): os.mkdir(path)
-    
+
     output = MyFile(os.path.join(path, "%s.html" % eid), "w")
     html = HTMLOutput(isocode, output, addon, eid, True, wesnoth)
     html.target = "%s.html" % eid
-    
+
     grouper = GroupByFaction(wesnoth, eid)
 
-    ename = era.get_text_val("name", translation = html.translate)
+    ename = era.get_text_val("name", translation=html.translate)
     n = html.write_units_tree(grouper, ename, False)
-    
+
     output.close()
-    
+
     return n
 
 def generate_single_unit_reports(addon, isocode, wesnoth):
-    
+
     path = os.path.join(options.output, addon, isocode)
     if not os.path.isdir(path): os.mkdir(path)
 
@@ -1304,7 +1293,7 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
     for uid, unit in list(wesnoth.unit_lookup.items()):
         if unit.hidden: continue
         if "mainline" in unit.campaigns and addon != "mainline": continue
-        
+
         try:
             htmlname = "%s.html" % uid
             filename = os.path.join(path, htmlname)
@@ -1319,19 +1308,19 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
             error_message("Unicode problem: " + repr(path) + " + " + repr(uid) + "\n")
             error_message(str(e) + "\n")
             continue
-        
+
         output = MyFile(filename, "w")
         html.target = "%s.html" % uid
         html.write_unit_report(output, unit)
         output.close()
-        
+
 def html_postprocess_file(filename, isocode, batchlist):
 
     print(("postprocessing " + repr(filename)))
-    
+
     chtml = ""
     ehtml = ""
-    
+
     cids = [[], []]
     for addon in batchlist:
         for campaign in addon.get("campaigns", []):
@@ -1348,7 +1337,7 @@ def html_postprocess_file(filename, isocode, batchlist):
 
     for i in range(2):
         campaigns = cids[i]
-        campaigns.sort(key = lambda x: "A" if x[1] == "mainline" else "B" + x[2])
+        campaigns.sort(key=lambda x: "A" if x[1] == "mainline" else "B" + x[2])
 
         for campaign in campaigns:
             addon, cname, campname, lang = campaign
@@ -1374,7 +1363,7 @@ def html_postprocess_file(filename, isocode, batchlist):
 
     for i in range(2):
         eras = eids[i]
-        eras.sort(key = lambda x: x[2])
+        eras.sort(key=lambda x: x[2])
 
         for era in eras:
             addon, eid, eraname, lang = era
