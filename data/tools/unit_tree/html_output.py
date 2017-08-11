@@ -384,12 +384,9 @@ class HTMLOutput:
 
         def add_menu(id, name, classes='', is_table_container=False):
             html_name = cleantext(name)
-            html_classes = cleantext(classes)
-            write("""<li class="popuptrigger" role="menuitem" aria-haspopup="true"
-                onclick="toggle_menu(this, '{0}', 2)"
-                onmouseover="toggle_menu(this, '{0}', 1)"
-                onmouseout="toggle_menu(this, '{0}', 0)">""".format(id))
-            write('<a class="' + html_classes + '">' + html_name + "</a>")
+            html_classes = " ".join((cleantext(classes), "popuptrigger"))
+            write('<li class="popupcontainer" role="menuitem" aria-haspopup="true">')
+            write('<a class="' + html_classes + '" href="#">' + html_name + "</a>")
             if not is_table_container:
                 write('<ul class="popupmenu" id="' + id + '" role="menu" aria-label="' + html_name + '">')
                 write('<li>' + html_name + '</li>')
