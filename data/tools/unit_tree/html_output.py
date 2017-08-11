@@ -12,13 +12,13 @@ import unit_tree.helpers as helpers
 import wesnoth.wmlparser3 as wmlparser3
 
 
-pics_location = "../../pics"
+PICS_LOCATION = "../../pics"
 
-html_entity_horizontal_bar = '&#8213;'
-html_entity_multiplication_sign = '&#215;'
-html_entity_figure_dash = '&#8210;'
+HTML_ENTITY_HORIZONTAL_BAR = '&#8213;'
+HTML_ENTITY_MULTIPLICATION_SIGN = '&#215;'
+HTML_ENTITY_FIGURE_DASH = '&#8210;'
 
-html_header = '''
+HTML_HEADER = '''
 <!DOCTYPE html>
 
 <html class="no-js wmlunits %(classes)s" lang="en">
@@ -40,7 +40,7 @@ html_header = '''
 
 <div id="main">'''.strip()
 
-top_bar = '''
+TOP_BAR = '''
 <div id="nav" role="banner">
 <div class="centerbox">
 
@@ -76,7 +76,7 @@ top_bar = '''
 
 <div id="content" role="main">'''.strip()
 
-html_footer = '''
+HTML_FOOTER = '''
 </div> <!-- end content -->
 
 <div class="centerbox"><div id="lastmod">%(generation_note)s</div></div>
@@ -94,7 +94,7 @@ html_footer = '''
 </body></html>
 '''.strip()
 
-html_clear_floats = '<div class="reset"></div>'
+HTML_CLEAR_FLOATS = '<div class="reset"></div>'
 
 all_written_html_files = []
 
@@ -373,7 +373,7 @@ class HTMLOutput:
         langlist = list(languages.keys())
         langlist.sort()
 
-        write(top_bar % {"path" : "../../"})
+        write(TOP_BAR % {"path" : "../../"})
 
         write('<div class="navbar">')
         write('<ul class="navbar" role="menu">')
@@ -414,7 +414,7 @@ class HTMLOutput:
                 write('</li>')
 
         def add_menuitem_placeholder():
-            write('<li>' + html_entity_horizontal_bar + '</li>')
+            write('<li>' + HTML_ENTITY_HORIZONTAL_BAR + '</li>')
 
         def end_menu(is_table_container=False):
             if not is_table_container:
@@ -601,10 +601,10 @@ class HTMLOutput:
             error_message("Warning: No picture %s for unit %s.\n" %
                           (image, u.get_text_val("id")))
         picname = icpic.id_name
-        image = os.path.join(pics_location, picname)
+        image = os.path.join(PICS_LOCATION, picname)
         if portrait:
             picname = image_collector.add_image(self.addon, portrait, no_tc=True)
-            portrait = os.path.join(pics_location, picname)
+            portrait = os.path.join(PICS_LOCATION, picname)
         return image, portrait
 
     def get_abilities(self, u):
@@ -670,7 +670,7 @@ class HTMLOutput:
         pic = image_collector.add_image("general",
                                         "../../../images/misc/leader-crown.png",
                                         no_tc=True)
-        crownimage = cleanurl(os.path.join(pics_location, pic))
+        crownimage = cleanurl(os.path.join(PICS_LOCATION, pic))
         ms = None
         for row in range(len(rows)):
             write("<tr>\n")
@@ -779,7 +779,7 @@ class HTMLOutput:
                         for attack in attacks:
                             n = T(attack, "number")
                             x = T(attack, "damage")
-                            x = "%s %s %s " % (cleantext(x, quote=False), html_entity_multiplication_sign, cleantext(n, quote=False))
+                            x = "%s %s %s " % (cleantext(x, quote=False), HTML_ENTITY_MULTIPLICATION_SIGN, cleantext(n, quote=False))
                             write(x)
 
                             r = T(attack, "range")
@@ -809,7 +809,7 @@ class HTMLOutput:
     def write_units_tree(self, grouper, title, add_parents):
         html_title = cleantext(title)
 
-        self.output.write(html_header % {
+        self.output.write(HTML_HEADER % {
             "path":    "../../",
             "title":   html_title,
             "classes": "wmlunits-tree",
@@ -824,10 +824,10 @@ class HTMLOutput:
 
         self.write_units()
 
-        self.output.write(html_clear_floats)
+        self.output.write(HTML_CLEAR_FLOATS)
         self.output.write('</div>')
 
-        self.output.write(html_footer % {
+        self.output.write(HTML_FOOTER % {
             "generation_note": "Last updated on " + time.ctime() + "."})
 
         return n
@@ -866,7 +866,7 @@ class HTMLOutput:
         display_name = cleantext(uname)
 
         self.output = output
-        write(html_header % {
+        write(HTML_HEADER % {
             "path":    "../../",
             "title":   display_name,
             "classes": "wmlunits-unit"})
@@ -908,7 +908,7 @@ class HTMLOutput:
         if not description:
             description = clean_uval("unit_description")
         if not description:
-            description = html_entity_horizontal_bar
+            description = HTML_ENTITY_HORIZONTAL_BAR
         write('<p>%s</p>\n' % re.sub('\n', '\n<br />', description))
 
         write('<h2>Information</h2>\n')
@@ -930,7 +930,7 @@ class HTMLOutput:
             write('<a href="%s">%s</a>' % (link, cleantext(name, quote=False)))
             have_advances = True
         if not have_advances:
-            write(html_entity_figure_dash)
+            write(HTML_ENTITY_FIGURE_DASH)
         write('</td></tr>\n')
 
         # Advances-to list
@@ -956,7 +956,7 @@ class HTMLOutput:
             write('<a href="%s">%s</a>' % (link, cleantext(name, quote=False)))
             have_advances = True
         if not have_advances:
-            write(html_entity_figure_dash)
+            write(HTML_ENTITY_FIGURE_DASH)
         write('</td></tr>\n')
 
         attributes = [
@@ -987,7 +987,7 @@ class HTMLOutput:
         if len(anames):
             write('<td class="val">' + cleantext(', '.join(anames), quote=False) + '</td>')
         else:
-            write('<td class="val">' + html_entity_figure_dash + '</td>')
+            write('<td class="val">' + HTML_ENTITY_FIGURE_DASH + '</td>')
         write('</tr>\n')
 
         write('</table>\n')
@@ -995,7 +995,7 @@ class HTMLOutput:
         # Write info about attacks.
         write('<h2>%s <small>(damage %s count)</small></h2>\n' %
               (cleantext(_("unit help^Attacks", "wesnoth-help"), quote=False),
-               html_entity_multiplication_sign))
+               HTML_ENTITY_MULTIPLICATION_SIGN))
         write('<table class="unitinfo attacks">\n')
         write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /></colgroup>')
         attacks = self.get_recursive_attacks(unit)
@@ -1013,9 +1013,9 @@ class HTMLOutput:
             if not image_add.ipath:
                 error_message("Error: No attack icon '%s' found for '%s'.\n" % (
                     icon, uid))
-                icon = os.path.join(pics_location, "unit$elves-wood$shaman.png")
+                icon = os.path.join(PICS_LOCATION, "unit$elves-wood$shaman.png")
             else:
-                icon = os.path.join(pics_location, image_add.id_name)
+                icon = os.path.join(PICS_LOCATION, image_add.id_name)
             write("<td><img src=\"%s\" alt=\"(image)\"/></td>" % cleanurl(icon))
 
             write("<td><b>%s</b>" % cleantext(aname, quote=False))
@@ -1025,7 +1025,7 @@ class HTMLOutput:
 
             n = attack.get_text_val("number")
             x = attack.get_text_val("damage")
-            x = '%s %s %s' % (cleantext(x, quote=False), html_entity_multiplication_sign, cleantext(n, quote=False))
+            x = '%s %s %s' % (cleantext(x, quote=False), HTML_ENTITY_MULTIPLICATION_SIGN, cleantext(n, quote=False))
             write("<td><i>%s</i>" % x)
 
             t = T(attack, "type")
@@ -1089,7 +1089,7 @@ class HTMLOutput:
             else:
                 write("<td></td>")
             picname = image_collector.add_image(self.addon, ricon, no_tc=True)
-            icon = os.path.join(pics_location, picname)
+            icon = os.path.join(PICS_LOCATION, picname)
             write('<td><img src="%s" alt="(icon)" /></td>\n' % (icon, ))
             write('<th>%s</th><td class="%s">%s</td>\n' % (cleantext(_(rid), quote=False), ' '.join(resist_classes), resist_str))
             if row % 2 == 1:
@@ -1229,7 +1229,7 @@ class HTMLOutput:
             if defense_rating:
                 classes_defense.append('rating-' + defense_rating)
             if move_cost == '-':
-                move_cost = html_entity_figure_dash
+                move_cost = HTML_ENTITY_FIGURE_DASH
             else:
                 move_cost = cleantext(move_cost, quote=False)
 
@@ -1237,7 +1237,7 @@ class HTMLOutput:
             picname = image_collector.add_image(self.addon,
                                                 "terrain/" + ticon + ".png",
                                                 no_tc=True)
-            icon = os.path.join(pics_location, picname)
+            icon = os.path.join(PICS_LOCATION, picname)
             write('<td><img src="%s" alt="(icon)" /></td>\n' % cleanurl(icon))
             write('<td>%s</td><td class="%s"><i>%s</i></td><td class="%s"><i>%s</i></td>\n' %
                   (cleantext(tname, quote=False),
@@ -1250,10 +1250,10 @@ class HTMLOutput:
 
         write('</div>') # columns parent
 
-        self.output.write(html_clear_floats)
+        self.output.write(HTML_CLEAR_FLOATS)
         write('</div>') # main
 
-        self.output.write(html_footer % {
+        self.output.write(HTML_FOOTER % {
             "generation_note": "Last updated on " + time.ctime() + "."})
 
 
@@ -1374,7 +1374,7 @@ def html_postprocess_file(filename, isocode, batchlist):
             chtml += '<li><a title="%s" href="%s" role="menuitem">%s</a></li>\n' % (
                 cleantext(campname), url, cleantext(campname, quote=False))
         if i == 0 and cids[1]:
-            chtml += '<li>%s</li>\n' % html_entity_horizontal_bar
+            chtml += '<li>%s</li>\n' % HTML_ENTITY_HORIZONTAL_BAR
 
     eids = [[], []]
     for addon in batchlist:
@@ -1398,7 +1398,7 @@ def html_postprocess_file(filename, isocode, batchlist):
             ehtml += '<li><a title="%s" href="%s" role="menuitem">%s</a></li>\n' % (
                 cleantext(eraname), url, cleantext(eraname, quote=False))
         if i == 0 and eids[1]:
-            ehtml += '<li>%s</li>\n' % html_entity_horizontal_bar
+            ehtml += '<li>%s</li>\n' % HTML_ENTITY_HORIZONTAL_BAR
 
     f = open(filename, "r+b")
     html = f.read().decode("utf8")
