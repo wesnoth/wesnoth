@@ -14,14 +14,49 @@ import wesnoth.wmlparser3 as wmlparser3
 
 PICS_LOCATION = "../../pics"
 
-HTML_ENTITY_HORIZONTAL_BAR = '&#8213;'
-HTML_ENTITY_MULTIPLICATION_SIGN = '&#215;'
-HTML_ENTITY_FIGURE_DASH = '&#8210;'
+# Icons for mainline terrains used on the unit details page
+TERRAIN_ICONS = {
+    "fungus":        "forest/mushrooms-tile",
+    "cave":          "cave/floor6",
+    "sand":          "sand/beach",
+    "reef":          "water/reef-tropical-tile",
+    "hills":         "hills/regular",
+    "swamp_water":   "swamp/water-tile",
+    "shallow_water": "water/coast-tile",
+    "castle":        "castle/castle-tile",
+    "mountains":     "mountains/snow-tile",
+    "deep_water":    "water/ocean-tile",
+    "flat":          "grass/green-symbol",
+    "forest":        "forest/pine-tile",
+    "frozen":        "frozen/ice",
+    "village":       "village/human-tile",
+    "impassable":    "void/void",
+    "unwalkable":    "unwalkable/lava",
+    "rails":         "misc/rails-ne-sw",
+}
 
-HTML_HEADER = '''
+# Omit these terrains from the terrain info report on the unit details page
+HIDDEN_TERRAINS = [
+    "off_map", "off_map2", "fog", "shroud", "impassable", "void", "rails"
+]
+
+# Damage tpye ids and associated icons used on the details page
+RESISTANCES = [
+    ("blade", "attacks/sword-human.png"),
+    ("pierce", "attacks/spear.png"),
+    ("impact", "attacks/club.png"),
+    ("fire", "attacks/fireball.png"),
+    ("cold", "attacks/iceball.png"),
+    ("arcane", "attacks/faerie-fire.png")
+]
+
+WESMERE_CSS_VERSION = "1.1.0"
+WESMERE_CSS_PREFIX = "https://www.wesnoth.org"
+
+WESMERE_HEADER = '''\
 <!DOCTYPE html>
 
-<html class="no-js wmlunits %(classes)s" lang="en">
+<html class="no-js %(classes)s" lang="en">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -29,8 +64,8 @@ HTML_HEADER = '''
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montaga%%7COpen+Sans:400,400i,700,700i" type="text/css" />
 	<link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-32.png" sizes="32x32" />
 	<link rel="icon" type="image/png" href="https://www.wesnoth.org/wesmere/img/favicon-16.png" sizes="16x16" />
-	<link rel="stylesheet" type="text/css" href="http://wesmere.localhost/wesmere/css/wesmere-1.1.0.css" />
-	<link rel="stylesheet" type="text/css" href="http://wesmere.localhost/wesmere/css/wmlunits-1.1.0.css" />
+	<link rel="stylesheet" type="text/css" href="%(cssprefix)s/wesmere/css/wesmere-%(cssver)s.css" />
+	<link rel="stylesheet" type="text/css" href="%(cssprefix)s/wesmere/css/wmlunits-%(cssver)s.css" />
 	<script src="https://www.wesnoth.org/wesmere/js/modernizr.js"></script>
 	<script type="text/javascript" src="%(path)s/menu.js"></script>
 	<title>%(title)s - Wesnoth Units Database</title>
@@ -38,9 +73,8 @@ HTML_HEADER = '''
 
 <body>
 
-<div id="main">'''.strip()
+<div id="main">
 
-TOP_BAR = '''
 <div id="nav" role="banner">
 <div class="centerbox">
 
@@ -74,9 +108,9 @@ TOP_BAR = '''
 </div>
 </div>
 
-<div id="content" role="main">'''.strip()
+<div id="content" role="main">'''
 
-HTML_FOOTER = '''
+WESMERE_FOOTER = '''\
 </div> <!-- end content -->
 
 <div class="centerbox"><div id="lastmod">%(generation_note)s</div></div>
@@ -92,13 +126,37 @@ HTML_FOOTER = '''
 </div></div></div>
 
 </body></html>
-'''.strip()
+'''
 
 HTML_CLEAR_FLOATS = '<div class="reset"></div>'
+
+HTML_ENTITY_HORIZONTAL_BAR = '&#8213;'
+HTML_ENTITY_MULTIPLICATION_SIGN = '&#215;'
+HTML_ENTITY_FIGURE_DASH = '&#8210;'
+
+PRE_PLACEHOLDER_CAMPAIGNS = "PLACE CAMPAIGNS HERE\n"
+PRE_PLACEHOLDER_ERAS = "PLACE ERAS HERE\n"
+
+def website_header(title='', path='../../', classes=[]):
+    """Returns the website header with the specified parameters."""
+    return WESMERE_HEADER % {
+        "title":     title,
+        "path":      path,
+        "cssprefix": WESMERE_CSS_PREFIX,
+        "cssver":    WESMERE_CSS_VERSION,
+        "classes":   ' '.join(['wmlunits'] + classes)}
+
+def website_footer(timestamp=''):
+    """Returns the website footer, including the current timestamp."""
+    if not timestamp:
+        timestamp = "Last updated on " + time.ctime() + "."
+    return WESMERE_FOOTER % { "generation_note": timestamp }
+
 
 all_written_html_files = []
 
 error_only_once = {}
+
 def error_message(message):
     if message in error_only_once:
         return
@@ -130,6 +188,42 @@ def cleantext(text, quote=True):
     if text is None:
         return text
     return html.escape(text, quote)
+
+def resistance_rating_color_class(resistance):
+    """Return a color class adequate for the provided unit resistance value."""
+    if resistance < 0:
+        return 'red'
+    elif resistance <= 20:
+        return 'yellow'
+    elif resistance <= 40:
+        return 'olive'
+    else:
+        return 'green'
+
+def defense_rating_color_class(defense):
+    """Return a color class adequate for the provided terrain defense value."""
+    if defense <= 10:
+        return 'red'
+    elif defense <= 30:
+        return 'yellow'
+    elif defense <= 50:
+        return 'olive'
+    else:
+        return 'green'
+
+def mvtcost_rating_color_class(str_mvtcost, str_moves):
+    """Return a color class adequate for the provided movement cost value."""
+    cost = int_fallback(str_mvtcost, 99)
+    moves = int_fallback(str_moves)
+    if cost >= moves:
+        return 'gray'
+    elif cost > moves/2:
+        return 'red'
+    elif cost > 1:
+        return 'yellow'
+    else:
+        return 'green'
+
 
 class MyFile:
     """
@@ -373,8 +467,6 @@ class HTMLOutput:
         langlist = list(languages.keys())
         langlist.sort()
 
-        write(TOP_BAR % {"path" : "../../"})
-
         write('<div class="navbar">')
         write('<ul class="navbar" role="menu">')
 
@@ -389,22 +481,41 @@ class HTMLOutput:
             return abbrev
 
         def add_menu(menuid, name, classes='', is_table_container=False):
+            """
+            Writes the initial portion of a sidebar item, including the item's
+            label, the start tag for the popup menu container, and the label
+            for said menu.
+
+            If is_table_container=True, the popup menu prolog is suitable for
+            a table (currently used for the Language menu). This will be
+            removed one day, hopefully. (TODO)
+            """
             html_name = cleantext(name)
             html_classes = " ".join((cleantext(classes), "popuptrigger"))
+            # FIXME: This is legacy code needed for the Language menu, since it's
+            #        a table and we can't make it otherwise because CSS column
+            #        support is still hit-or-miss for some browsers still in use.
             child_tag = 'ul' if not is_table_container else 'div'
             label_tag = 'li' if not is_table_container else 'div'
             write('<li class="popupcontainer" role="menuitem" aria-haspopup="true">')
-            write('<a class="' + html_classes + '" href="#">' + html_name + "</a>")
+            write('<a class="' + html_classes + '" href="#">' + html_name + '</a>')
             write('<' + child_tag + ' class="popupmenu" id="' + menuid + '" role="menu" aria-label="' + html_name + '">')
             write('<' + label_tag + '>' + html_name + '</' + label_tag + '>')
 
-        # FIXME: This is legacy code needed for the Language menu, since it's
-        #        a table and we can't make it otherwise since CSS column
-        #        support is still hit-or-miss for some browsers still in use.
-        def add_menu2(menuid, name, classes=''):
-            add_menu(menuid, name, classes, is_table_container=True)
+        def add_menuitem_placeholder():
+            """Writes a horizontal bar serving as a menu placeholder."""
+            write('<li>' + HTML_ENTITY_HORIZONTAL_BAR + '</li>')
 
         def add_menuitem(url, label, standalone=False, title=''):
+            """
+            Writes a sidebar item.
+
+            If standalone=True, the item will be provided without the list
+            element tags so it can be used in pretty much any context. In
+            reality, the option is only provided for use with add_menu() with
+            is_table_container=True and it will be removed at some point in
+            the hopefully not-so-far future (TODO).
+            """
             if not standalone:
                 write('<li>')
             extra_attr = (' title="%s"' % cleantext(title)) if title else ''
@@ -413,10 +524,12 @@ class HTMLOutput:
             if not standalone:
                 write('</li>')
 
-        def add_menuitem_placeholder():
-            write('<li>' + HTML_ENTITY_HORIZONTAL_BAR + '</li>')
-
         def end_menu(is_table_container=False):
+            """
+            Writes the closing tags for a menu started with start_menu().
+            The is_table_container value used here ought to be the same as the
+            original.
+            """
             if not is_table_container:
                 write('</ul></li>\n')
             else:
@@ -428,13 +541,13 @@ class HTMLOutput:
         # Campaigns
         x = self.translate("addon_type^Campaign", "wesnoth")
         add_menu("campaigns_menu", x)
-        write("PLACE CAMPAIGNS HERE\n")
+        write(PRE_PLACEHOLDER_CAMPAIGNS)
         end_menu()
 
         # Eras
         x = self.translate("Era", "wesnoth")
         add_menu("eras_menu", x)
-        write("PLACE ERAS HERE\n")
+        write(PRE_PLACEHOLDER_ERAS)
         end_menu()
 
         # Races / Factions
@@ -490,8 +603,6 @@ class HTMLOutput:
 
         # Add entries for the races also to the navbar itself.
         if not self.is_era:
-            class Entry:
-                pass
             races = {}
 
             for uid, u in list(self.wesnoth.unit_lookup.items()):
@@ -540,31 +651,31 @@ class HTMLOutput:
 
         # Languages
         x = self.translate("Language", "wesnoth")
-        add_menu2("languages_menu", x)
+        add_menu("languages_menu", x, is_table_container=True)
         cell = 0
         col = 0
         colcount = 5
         lastcell = len(langlist) - 1
-        write("<table>")
-        write("<tr>")
+        write('<table>')
+        write('<tr>')
         for lang in langlist:
             cell += 1
             col += 1
-            write("<td>")
+            write('<td>')
             filename = self.target if self.addon == 'mainline' else 'mainline.html'
             url = cleanurl('../%s/%s' % (lang, filename))
             # TODO: Maybe use the language name instead of its code for the label?
             add_menuitem(url, lang, title=languages[lang], standalone=True)
-            write("</td>")
+            write('</td>')
             if cell % colcount == 0:
                 if cell < lastcell:
-                    write("</tr><tr>")
+                    write('</tr><tr>')
                 col = 0
         if col:
             for i in range(colcount - col + 1, colcount):
-                write("<td></td>")
-        write("</tr>")
-        write("</table>")
+                write('<td></td>')
+        write('</tr>')
+        write('</table>')
         end_menu(is_table_container=True)
 
         write('<li class="overviewlink"><a href="../../overview.html">Build Report</a></li>')
@@ -656,16 +767,16 @@ class HTMLOutput:
         return attacks
 
     def write_units(self):
-        def write(x):
-            self.output.write(x)
-        def _(x, c="wesnoth"):
-            return self.translate(x, c)
+        def write(line):
+            self.output.write(line)
+        def _(msgid, textdomain="wesnoth"):
+            return self.translate(msgid, textdomain)
+
         rows = self.unitgrid
-        write("<table class=\"units\">\n")
-        write("<colgroup>")
+        write('<table class="units">\n<colgroup>')
         for i in range(6):
-            write("<col class=\"col%d\" />" % i)
-        write("</colgroup>")
+            write('<col class="col%d" />' % i)
+        write('</colgroup>')
 
         pic = image_collector.add_image("general",
                                         "../../../images/misc/leader-crown.png",
@@ -673,7 +784,7 @@ class HTMLOutput:
         crownimage = cleanurl(os.path.join(PICS_LOCATION, pic))
         ms = None
         for row in range(len(rows)):
-            write("<tr>\n")
+            write('<tr>\n')
             for column in range(6):
                 hspan, vspan, un = rows[row][column]
                 if vspan:
@@ -681,9 +792,9 @@ class HTMLOutput:
                     if hspan == 1 and vspan == 1:
                         pass
                     elif hspan == 1:
-                        attributes += " rowspan=\"%d\"" % vspan
+                        attributes += ' rowspan="%d"' % vspan
                     elif vspan == 1:
-                        attributes += " colspan=\"%d\"" % hspan
+                        attributes += ' colspan="%d"' % hspan
 
                     if un and isinstance(un, helpers.GroupNode):
                         # Find the current multiplayer side so we can show the
@@ -700,14 +811,14 @@ class HTMLOutput:
                         racename = un.name
                         # TODO: we need to use a unique race id instead of a potentially duplicate
                         #       name for the header id and link target!
-                        attributes += " id=\"%s\" class=\"raceheader\"" % cleantext(racename)
-                        write("<th" + attributes + ">")
-                        write("<a href=\"#%s\">%s</a>" % (cleanurl(racename), cleantext(racename, quote=False)))
-                        write("</th>\n")
+                        attributes += ' id="%s" class="raceheader"' % cleantext(racename)
+                        write('<th' + attributes + '>')
+                        write('<a href="#%s">%s</a>' % (cleanurl(racename), cleantext(racename, quote=False)))
+                        write('</th>\n')
                     elif un:
                         u = un.unit
-                        attributes += " class=\"unitcell\""
-                        write("<td%s>" % attributes)
+                        attributes += ' class="unitcell"'
+                        write('<td%s>' % attributes)
 
                         def uval(name):
                             return self.wesnoth.get_unit_value(u, name,
@@ -747,7 +858,7 @@ class HTMLOutput:
                         if crown == " ♚":
                             write('<div class="spritebg" style="background-image:url(\'%s\')">' % image)
                             write('<img src="%s" alt="(image)" />' % crownimage)
-                            write("</div>")
+                            write('</div>')
                         else:
                             write('<img src="%s" alt="(image)" />' % image)
 
@@ -771,7 +882,7 @@ class HTMLOutput:
                         if anames:
                             write('\n<div class="abilities">')
                             write(cleantext(", ".join(anames)))
-                            write("</div>")
+                            write('</div>')
 
                         # Write info about attacks.
                         write('\n<div class="attacks">')
@@ -809,11 +920,8 @@ class HTMLOutput:
     def write_units_tree(self, grouper, title, add_parents):
         html_title = cleantext(title)
 
-        self.output.write(HTML_HEADER % {
-            "path":    "../../",
-            "title":   html_title,
-            "classes": "wmlunits-tree",
-        })
+        self.output.write(website_header(title=html_title,
+                                         classes=['wmlunits-tree']))
 
         n = self.analyze_units(grouper, add_parents)
         self.write_navbar("units_tree")
@@ -827,16 +935,15 @@ class HTMLOutput:
         self.output.write(HTML_CLEAR_FLOATS)
         self.output.write('</div>')
 
-        self.output.write(HTML_FOOTER % {
-            "generation_note": "Last updated on " + time.ctime() + "."})
+        self.output.write(website_footer())
 
         return n
 
     def write_unit_report(self, output, unit):
-        def write(x):
-            self.output.write(x)
-        def _(x, c="wesnoth"):
-            return self.translate(x, c)
+        def write(line):
+            self.output.write(line)
+        def _(msgid, textdomain="wesnoth"):
+            return self.translate(msgid, textdomain)
 
         def find_attr(what, key):
             if unit.movetype:
@@ -866,10 +973,8 @@ class HTMLOutput:
         display_name = cleantext(uname)
 
         self.output = output
-        write(HTML_HEADER % {
-            "path":    "../../",
-            "title":   display_name,
-            "classes": "wmlunits-unit"})
+        write(website_header(title=display_name,
+                             classes=['wmlunits-unit']))
         self.write_navbar("unit_report")
 
         self.output.write('<div class="main">')
@@ -884,7 +989,7 @@ class HTMLOutput:
 
         write('<div class="unit-column-left">')
 
-        write("<h1>%s</h1>\n" % display_name)
+        write('<h1>%s</h1>\n' % display_name)
 
         write('<div class="pic">')
         if female:
@@ -1000,7 +1105,7 @@ class HTMLOutput:
         write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /></colgroup>')
         attacks = self.get_recursive_attacks(unit)
         for attack in attacks:
-            write("<tr>")
+            write('<tr>')
 
             aid = attack.get_text_val("name")
             aname = T(attack, "description")
@@ -1016,17 +1121,17 @@ class HTMLOutput:
                 icon = os.path.join(PICS_LOCATION, "unit$elves-wood$shaman.png")
             else:
                 icon = os.path.join(PICS_LOCATION, image_add.id_name)
-            write("<td><img src=\"%s\" alt=\"(image)\"/></td>" % cleanurl(icon))
+            write('<td><img src="%s" alt="(image)"/></td>' % cleanurl(icon))
 
-            write("<td><b>%s</b>" % cleantext(aname, quote=False))
+            write('<td><b>%s</b>' % cleantext(aname, quote=False))
 
             r = T(attack, "range")
-            write("<br/>%s</td>" % cleantext(_(r), quote=False))
+            write('<br/>%s</td>' % cleantext(_(r), quote=False))
 
             n = attack.get_text_val("number")
             x = attack.get_text_val("damage")
             x = '%s %s %s' % (cleantext(x, quote=False), HTML_ENTITY_MULTIPLICATION_SIGN, cleantext(n, quote=False))
-            write("<td><i>%s</i>" % x)
+            write('<td><i>%s</i>' % x)
 
             t = T(attack, "type")
             write('<br/>%s</td>' % cleantext(_(t), quote=False))
@@ -1041,35 +1146,16 @@ class HTMLOutput:
                     else:
                         error_message("Warning: Weapon special %s has no name for %s.\n" %
                                       (special.name.decode("utf8"), uid))
-            write("<td>%s</td>" % "<br/>".join(s))
-            write("</tr>")
-        write("</table>\n")
-
-        def resistance_rating_color_class(resistance):
-            # Logic from src/help/help_topic_generators.cpp and src/units/helper.cpp @ 1.13.8+dev
-            if resistance < 0:
-                return 'red'
-            elif resistance <= 20:
-                return 'yellow'
-            elif resistance <= 40:
-                return 'olive'
-            else:
-                return 'green'
+            write('<td>%s</td>' % '<br/>'.join(s))
+            write('</tr>')
+        write('</table>\n')
 
         # Write info about resistances.
-        resistances = [
-            ("blade", "attacks/sword-human.png"),
-            ("pierce", "attacks/spear.png"),
-            ("impact", "attacks/club.png"),
-            ("fire", "attacks/fireball.png"),
-            ("cold", "attacks/iceball.png"),
-            ("arcane", "attacks/faerie-fire.png")]
-
-        write("<h2>%s</h2>\n" % _("Resistances: ").strip(" :"))
-        write("<table class=\"unitinfo resistances\">\n")
+        write('<h2>%s</h2>\n' % _("Resistances: ").strip(" :"))
+        write('<table class="unitinfo resistances">\n')
         write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /><col class="col5" /><col class="col6" /></colgroup>')
         row = 0
-        for rid, ricon in resistances:
+        for rid, ricon in RESISTANCES:
             special, resist_str = find_attr("resistance", rid)
             r = 100 if resist_str == '-' else 100 - int(resist_str)
             resist_classes = ['num']
@@ -1077,7 +1163,7 @@ class HTMLOutput:
             if resist_rating:
                 resist_classes.append('rating-' + resist_rating)
             try:
-                resist_str = "<i>%d%%</i>" % r
+                resist_str = '<i>%d%%</i>' % r
             except ValueError:
                 error_message("Warning: Invalid resistance %s for %s.\n" % (
                     r, uid))
@@ -1085,9 +1171,9 @@ class HTMLOutput:
             if special:
                 rcell += ' class="special"'
             if row % 2 == 0:
-                write("<tr>\n")
+                write('<tr>\n')
             else:
-                write("<td></td>")
+                write('<td></td>')
             picname = image_collector.add_image(self.addon, ricon, no_tc=True)
             icon = os.path.join(PICS_LOCATION, picname)
             write('<td><img src="%s" alt="(icon)" /></td>\n' % (icon, ))
@@ -1095,7 +1181,7 @@ class HTMLOutput:
             if row % 2 == 1:
                 write('</tr>\n')
             row += 1
-        write("</table>\n")
+        write('</table>\n')
 
         # end left column
         write('</div>')
@@ -1136,67 +1222,21 @@ class HTMLOutput:
         already = {}
         for tstring, t in list(terrains.items()):
             tid = t.get_text_val("id")
-            if tid in ["off_map", "off_map2", "fog", "shroud", "impassable",
-                       "void", "rails"]:
-                continue
-            if t.get_all(att="aliasof"):
-                continue
-            if tid in already:
+            if tid in HIDDEN_TERRAINS or t.get_all(att="aliasof") or tid in already:
                 continue
             already[tid] = 1
             name = T(t, "name")
             ticon = t.get_text_val("symbol_image")
             if not ticon:
                 ticon = t.get_text_val("icon_image")
-
             # Use nice images for known mainline terrain types
-            if tid == "fungus": ticon = "forest/mushrooms-tile"
-            elif tid == "cave": ticon = "cave/floor6"
-            elif tid == "sand": ticon = "sand/beach"
-            elif tid == "reef": ticon = "water/reef-tropical-tile"
-            elif tid == "hills": ticon = "hills/regular"
-            elif tid == "swamp_water": ticon = "swamp/water-tile"
-            elif tid == "shallow_water": ticon = "water/coast-tile"
-            elif tid == "castle": ticon = "castle/castle-tile"
-            elif tid == "mountains": ticon = "mountains/snow-tile"
-            elif tid == "deep_water": ticon = "water/ocean-tile"
-            elif tid == "flat": ticon = "grass/green-symbol"
-            elif tid == "forest": ticon = "forest/pine-tile"
-            elif tid == "frozen": ticon = "frozen/ice"
-            elif tid == "village": ticon = "village/human-tile"
-            elif tid == "impassable": ticon = "void/void"
-            elif tid == "unwalkable": ticon = "unwalkable/lava"
-            elif tid == "rails": ticon = "misc/rails-ne-sw"
-
+            if tid in TERRAIN_ICONS:
+                ticon = TERRAIN_ICONS[tid]
             if ticon:
                 terrainlist.append((name, tid, ticon))
             else:
                 error_message("Terrain " + tid + " has no symbol_image\n")
         terrainlist.sort()
-
-        def defense_rating_color_class(defense):
-            # Logic from src/help/help_topic_generators.cpp @ 1.13.8+dev
-            if defense <= 10:
-                return 'red'
-            elif defense <= 30:
-                return 'yellow'
-            elif defense <= 50:
-                return 'olive'
-            else:
-                return 'green'
-
-        def mvtcost_rating_color_class(str_mvtcost, str_moves):
-            cost = int_fallback(str_mvtcost, 99)
-            moves = int_fallback(str_moves)
-            # Logic from src/help/help_topic_generators.cpp @ 1.13.8+dev
-            if cost >= moves:
-                return 'gray'
-            elif cost > moves/2:
-                return 'red'
-            elif cost > 1:
-                return 'yellow'
-            else:
-                return 'green'
 
         for tname, tid, ticon in terrainlist:
             not_from_race, move_cost = find_attr("movement_costs", tid)
@@ -1243,8 +1283,8 @@ class HTMLOutput:
                   (cleantext(tname, quote=False),
                    ' '.join(classes_cost), move_cost,
                    ' '.join(classes_defense), defense))
-            write("</tr>\n")
-        write("</table>\n")
+            write('</tr>\n')
+        write('</table>\n')
 
         write('</div>') # right column
 
@@ -1253,8 +1293,7 @@ class HTMLOutput:
         self.output.write(HTML_CLEAR_FLOATS)
         write('</div>') # main
 
-        self.output.write(HTML_FOOTER % {
-            "generation_note": "Last updated on " + time.ctime() + "."})
+        self.output.write(website_footer())
 
 
 def generate_campaign_report(addon, isocode, campaign, wesnoth):
@@ -1402,8 +1441,8 @@ def html_postprocess_file(filename, isocode, batchlist):
 
     f = open(filename, "r+b")
     html = f.read().decode("utf8")
-    html = html.replace("PLACE CAMPAIGNS HERE\n", chtml)
-    html = html.replace("PLACE ERAS HERE\n", ehtml)
+    html = html.replace(PRE_PLACEHOLDER_CAMPAIGNS, chtml)
+    html = html.replace(PRE_PLACEHOLDER_ERAS, ehtml)
     f.seek(0)
     f.write(html.encode("utf8"))
     f.close()

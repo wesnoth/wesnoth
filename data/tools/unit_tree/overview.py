@@ -10,13 +10,12 @@ def write_addon_overview(folder, addon):
 
     name = addon["name"]
 
-    path = "../"
     title = html_output.cleantext("Build Report for " + name)
     generation_note = "Last updated on " + time.ctime() + "."
 
-    w(html_output.HTML_HEADER % locals())
-
-    w(html_output.TOP_BAR % locals())
+    w(html_output.website_header(path="../",
+                                 title=title,
+                                 classes=["wmlunits-report"]))
 
     w('<div class="overview">')
 
@@ -25,11 +24,11 @@ def write_addon_overview(folder, addon):
     w('<h2>' + html_output.cleantext(name) + '</h2>')
 
     if eras:
-        w("<h3>Eras</h3><ul>")
+        w('<h3>Eras</h3><ul>')
         for era in eras:
             epath = html_output.cleanurl(os.path.join("en_US", era["id"] + ".html"))
             w('<li><a href="' + epath + '">' + html_output.cleantext(era["name"], quote=False) + '</a></li>')
-        w("</ul>")
+        w('</ul>')
 
     campaigns = addon.get("campaigns", [])
     if campaigns:
@@ -37,17 +36,17 @@ def write_addon_overview(folder, addon):
         for campaign in campaigns:
             cpath = os.path.join("en_US", campaign["id"] + ".html")
             w('<li><a href="' + cpath + '">' + html_output.cleantext(campaign["name"], quote=False) + '</a></li>')
-        w("</ul>")
+        w('</ul>')
 
-    w("<div>")
+    w('<div>')
     if os.path.exists(os.path.join(folder, "error.log")):
         w('<p><b>Warnings or errors were found: <a href="error.html">log</a></b></p>')
     w('<p><a href="../overview.html">Back to the full report</a></p>')
-    w("</div>")
+    w('</div>')
 
     w('</div> <!-- overview -->')
 
-    w(html_output.HTML_FOOTER % locals())
+    w(html_output.website_footer())
 
 
 def main(folder):
@@ -55,14 +54,9 @@ def main(folder):
     def w(x):
         out.write(x + "\n")
 
-    path = ""
-    title = "Database Build Report"
-    generation_note = "generated on " + time.ctime()
-    classes = "wmlunits-report"
-
-    w(html_output.HTML_HEADER % locals())
-
-    w(html_output.TOP_BAR % locals())
+    w(html_output.website_header(path="",
+                                 title="Database Build Report",
+                                 classes=["wmlunits-report"]))
 
     w('<h1>Database Build Report</h1>')
 
@@ -126,7 +120,8 @@ def main(folder):
                     return ""
 
                 mo = re.match(".*--preprocess-defines(.*)", line)
-                if mo: return "Defines: " + mo.group(1) + "<br />"
+                if mo:
+                    return "Defines: " + mo.group(1) + '<br />'
 
                 for s in source:
                     line = line.replace(s, "WML")
@@ -136,34 +131,34 @@ def main(folder):
                 out = ""
                 for row in rows:
                     row = row.strip()
-                    out += row + "<br />"
+                    out += row + '<br />'
                 return out
 
             htmlerr = open(error_html, "w")
-            htmlerr.write("<html><body>")
+            htmlerr.write('<html><body>')
             lines_count = 0
             for line in text.splitlines():
                 line = line.strip()
                 if line in ["<INTERNAL ERROR>", "<WML ERROR>", "<PARSE ERROR>", "<TIMEOUT ERROR>"]:
-                    htmlerr.write("<p>")
+                    htmlerr.write('<p>')
                 elif line in ["</INTERNAL ERROR>", "</WML ERROR>", "</PARSE ERROR>", "</TIMEOUT ERROR>"]:
-                    htmlerr.write("</p>")
+                    htmlerr.write('</p>')
                 else:
                     err_html = postprocess(line)
-                    lines_count += err_html.count("<br")
+                    lines_count += err_html.count('<br')
                     htmlerr.write(err_html)
-            htmlerr.write("</body></html>")
+            htmlerr.write('</body></html>')
 
             total_lines += lines_count
 
             total_error_logs += 1
             w('<a class="error" href="%s">%s (%d lines)</a>' % (html_output.cleanurl(error_name), error_kind, lines_count))
-        w("</td></tr>")
+        w('</td></tr>')
 
         count += 1
-    w("</tbody>")
+    w('</tbody>')
 
-    w("<tfoot><tr>")
+    w('<tfoot><tr>')
     w('<th scope="row">Total (for %d addons):</th>' % count)
     w('<td>' + str(total_n) + '</td>')
     w('<td>' + str(total_error_logs) + ' (' + str(total_lines) + ' lines)</td>')
@@ -173,7 +168,7 @@ def main(folder):
 
     w('</div> <!-- overview -->')
 
-    w(html_output.HTML_FOOTER % locals())
+    w(html_output.website_footer())
 
 if __name__ == "__main__":
     main(sys.argv[1])
