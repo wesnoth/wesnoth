@@ -478,6 +478,12 @@ void command_executor::get_menu_images(display& disp, std::vector<config>& items
 
 			item["label"] = desc;
 			item["details"] = hotkey::get_names(item_id);
+		} else {
+			// If no matching hotkey was found, treat the id as a plaintext description.
+			// This is because either type of value can be written to the id field by
+			// the WMI manager. The plaintext description is used in the case the menu item
+			// specifies the relevant entry is *not* a hotkey.
+			item["label"] = item_id;
 		}
 	}
 }
