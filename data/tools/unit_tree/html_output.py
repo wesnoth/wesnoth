@@ -1,9 +1,13 @@
 # encoding: utf-8
 
-import os, gettext, time, copy, sys, re
+import copy
+import gettext
 import html
-import urllib
+import os
+import re
+import time
 import traceback
+import urllib
 import unit_tree.helpers as helpers
 import wesnoth.wmlparser3 as wmlparser3
 
@@ -96,7 +100,8 @@ all_written_html_files = []
 
 error_only_once = {}
 def error_message(message):
-    if message in error_only_once: return
+    if message in error_only_once:
+        return
     error_only_once[message] = 1
     write_error(message)
 
@@ -112,14 +117,16 @@ def int_fallback(str_value, int_fallback=0):
         return int_fallback
 
 def cleanurl(url):
-    "Encode the given URL to ensure it only contains valid URL characters "
-    "(also known as percent-encoding)."
+    """
+    Encode the given URL to ensure it only contains valid URL characters
+    (also known as percent-encoding).
+    """
     if url is None:
         return url
     return urllib.parse.quote(url, encoding='utf-8')
 
 def cleantext(text, quote=True):
-    "Escape any HTML special characters in the given string."
+    """Escape any HTML special characters in the given string."""
     if text is None:
         return text
     return html.escape(text, quote)
@@ -131,11 +138,11 @@ class MyFile:
     """
     def __init__(self, filename, mode):
         self.filename = filename
-        self.f = open(filename, mode + "b")
-    def write(self, x):
-        self.f.write(x.encode("utf8"))
+        self.fileobj = open(filename, mode + "b")
+    def write(self, line):
+        self.fileobj.write(line.encode("utf8"))
     def close(self):
-        self.f.close()
+        self.fileobj.close()
 
 
 class Translation:
@@ -144,11 +151,13 @@ class Translation:
         self.localedir = localedir
         self.langcode = langcode
         class Dummy:
-            def gettext(self, x):
-                if not x: return ""
-                caret = x.find("^")
-                if caret < 0: return x
-                return x[caret + 1:]
+            def gettext(self, msgid):
+                if not msgid:
+                    return ""
+                caret = msgid.find("^")
+                if caret < 0:
+                    return msgid
+                return msgid[caret + 1:]
         self.dummy = Dummy()
 
     def translate(self, string, textdomain):
@@ -167,10 +176,7 @@ class Translation:
                 self.catalog[textdomain] = self.dummy
             except ValueError:
                 self.catalog[textdomain] = self.dummy
-
-        r = self.catalog[textdomain].gettext(string)
-
-        return r
+        return self.catalog[textdomain].gettext(string)
 
 
 class GroupByRace:
@@ -179,14 +185,16 @@ class GroupByRace:
         self.campaign = campaign
 
     def unitfilter(self, unit):
-        if not self.campaign: return True
+        if not self.campaign:
+            return True
         return unit.campaigns and self.campaign == unit.campaigns[0]
 
     def groups(self, unit):
         return [T(unit.race, "plural_name")]
 
     def group_name(self, group):
-        if not group: return "None"
+        if not group:
+            return "None"
         return group
 
 class GroupByNothing:
@@ -225,7 +233,8 @@ class GroupByFaction:
 
 global_htmlout = None
 def T(tag, att):
-    if not tag: return "none"
+    if not tag:
+        return "none"
     return tag.get_text_val(att, translation=global_htmlout.translate)
 
 
@@ -257,7 +266,8 @@ class HTMLOutput:
         forest = self.forest = helpers.UnitForest()
         units_added = {}
         for uid, u in list(self.wesnoth.unit_lookup.items()):
-            if u.hidden: continue
+            if u.hidden:
+                continue
             if grouper.unitfilter(u):
                 forest.add_node(helpers.UnitNode(u))
                 units_added[uid] = u
@@ -287,7 +297,8 @@ class HTMLOutput:
             while added:
                 added = False
                 for uid, u in list(self.wesnoth.unit_lookup.items()):
-                    if uid in forest.lookup: continue
+                    if uid in forest.lookup:
+                        continue
                     for auid in u.advance:
                         if auid in forest.lookup:
                             forest.add_node(helpers.UnitNode(u))
@@ -323,15 +334,12 @@ class HTMLOutput:
         # Sort advancement trees by name of first unit and place into the grid.
         def by_name(t):
             x = T(t.unit, "name")
-            if x is None: return ""
-            return x
+            return "" if x is None else x
 
         def grid_place(nodes, x):
             nodes.sort(key=by_name)
             for node in nodes:
-                level = node.unit.level
-                if level < 0: level = 0
-                if level > 5: level = 5
+                level = max(0, min(5, node.unit.level))
                 rows[x][level] = (1, node.breadth, node)
                 for i in range(1, node.breadth):
                     rows[x + i][level] = (0, 0, node)
@@ -380,21 +388,21 @@ class HTMLOutput:
                     abbrev += name[i]
             return abbrev
 
-        def add_menu(id, name, classes='', is_table_container=False):
+        def add_menu(menuid, name, classes='', is_table_container=False):
             html_name = cleantext(name)
             html_classes = " ".join((cleantext(classes), "popuptrigger"))
             child_tag = 'ul' if not is_table_container else 'div'
             label_tag = 'li' if not is_table_container else 'div'
             write('<li class="popupcontainer" role="menuitem" aria-haspopup="true">')
             write('<a class="' + html_classes + '" href="#">' + html_name + "</a>")
-            write('<' + child_tag + ' class="popupmenu" id="' + id + '" role="menu" aria-label="' + html_name + '">')
+            write('<' + child_tag + ' class="popupmenu" id="' + menuid + '" role="menu" aria-label="' + html_name + '">')
             write('<' + label_tag + '>' + html_name + '</' + label_tag + '>')
 
         # FIXME: This is legacy code needed for the Language menu, since it's
         #        a table and we can't make it otherwise since CSS column
         #        support is still hit-or-miss for some browsers still in use.
-        def add_menu2(id, name, classes=''):
-            add_menu(id, name, classes, is_table_container=True)
+        def add_menu2(menuid, name, classes=''):
+            add_menu(menuid, name, classes, is_table_container=True)
 
         def add_menuitem(url, label, standalone=False, title=''):
             if not standalone:
@@ -472,7 +480,8 @@ class HTMLOutput:
             for row in self.unitgrid:
                 for column in range(6):
                     hspan, vspan, un = row[column]
-                    if not un: continue
+                    if not un:
+                        continue
                     if isinstance(un, helpers.GroupNode):
                         url = cleanurl('../%s/%s.html' % (self.isocode, self.campaign))
                         url += '#' + cleanurl(un.name)
@@ -481,12 +490,13 @@ class HTMLOutput:
 
         # Add entries for the races also to the navbar itself.
         if not self.is_era:
-            class Entry: pass
+            class Entry:
+                pass
             races = {}
 
             for uid, u in list(self.wesnoth.unit_lookup.items()):
-                if self.campaign != "units":
-                    if self.campaign not in u.campaigns: continue
+                if self.campaign != "units" and self.campaign not in u.campaigns:
+                    continue
                 if u.race:
                     racename = T(u.race, "plural_name")
                 else:
@@ -512,9 +522,12 @@ class HTMLOutput:
                 add_menuitem('%s#%s' % (cleanurl(target), cleanurl(r)), r)
                 for uid in races[r]:
                     un = self.wesnoth.unit_lookup[uid]
-                    if un.hidden: continue
-                    if "mainline" in un.campaigns: addon = "mainline"
-                    else: addon = self.addon
+                    if un.hidden:
+                        continue
+                    if "mainline" in un.campaigns:
+                        addon = "mainline"
+                    else:
+                        addon = self.addon
                     link = cleanurl("../../%s/%s/%s.html" % (addon, self.isocode, uid))
                     name = self.wesnoth.get_unit_value(un, "name",
                                                        translation=self.translation.translate)
@@ -598,19 +611,24 @@ class HTMLOutput:
         anames = []
         already = {}
         for abilities in u.get_all(tag="abilities"):
-            try: c = abilities.get_all()
-            except AttributeError: c = []
+            try:
+                c = abilities.get_all()
+            except AttributeError:
+                c = []
             for ability in c:
                 try:
                     id = ability.get_text_val("id")
                 except AttributeError as e:
                     error_message("Error: Ignoring ability " + ability.debug())
                     continue
-                if id in already: continue
+                if id in already:
+                    continue
                 already[id] = True
                 name = T(ability, "name")
-                if not name: name = id
-                if not name: name = ability.name.decode("utf8")
+                if not name:
+                    name = id
+                if not name:
+                    name = ability.name.decode("utf8")
                 anames.append(name)
         return anames
 
@@ -638,8 +656,10 @@ class HTMLOutput:
         return attacks
 
     def write_units(self):
-        def write(x): self.output.write(x)
-        def _(x, c="wesnoth"): return self.translate(x, c)
+        def write(x):
+            self.output.write(x)
+        def _(x, c="wesnoth"):
+            return self.translate(x, c)
         rows = self.unitgrid
         write("<table class=\"units\">\n")
         write("<colgroup>")
@@ -712,7 +732,8 @@ class HTMLOutput:
                                 crown = " ♚"
 
                         uaddon = "mainline"
-                        if "mainline" not in u.campaigns: uaddon = self.addon
+                        if "mainline" not in u.campaigns:
+                            uaddon = self.addon
                         link = cleanurl("../../%s/%s/%s.html" % (uaddon, self.isocode, uid))
                         write('<div class="l">L%s%s</div>' % (level, crown))
                         write('<a href="%s" title="Id: %s">%s</a><br />' % (link, uid, name))
@@ -812,8 +833,10 @@ class HTMLOutput:
         return n
 
     def write_unit_report(self, output, unit):
-        def write(x): self.output.write(x)
-        def _(x, c="wesnoth"): return self.translate(x, c)
+        def write(x):
+            self.output.write(x)
+        def _(x, c="wesnoth"):
+            return self.translate(x, c)
 
         def find_attr(what, key):
             if unit.movetype:
@@ -1059,9 +1082,12 @@ class HTMLOutput:
                 error_message("Warning: Invalid resistance %s for %s.\n" % (
                     r, uid))
             rcell = "td"
-            if special: rcell += ' class="special"'
-            if row % 2 == 0: write("<tr>\n")
-            else: write("<td></td>")
+            if special:
+                rcell += ' class="special"'
+            if row % 2 == 0:
+                write("<tr>\n")
+            else:
+                write("<td></td>")
             picname = image_collector.add_image(self.addon, ricon, no_tc=True)
             icon = os.path.join(pics_location, picname)
             write('<td><img src="%s" alt="(icon)" /></td>\n' % (icon, ))
@@ -1236,12 +1262,14 @@ def generate_campaign_report(addon, isocode, campaign, wesnoth):
         cid = campaign.get_text_val("id")
     else:
         cid = "mainline"
-    if not cid: cid = addon + "_" + campaign.get_text_val("define")
+    if not cid:
+        cid = addon + "_" + campaign.get_text_val("define")
 
     print(("campaign " + addon + " " + cid + " " + isocode))
 
     path = os.path.join(options.output, addon, isocode)
-    if not os.path.isdir(path): os.mkdir(path)
+    if not os.path.isdir(path):
+        os.mkdir(path)
     output = MyFile(os.path.join(path, "%s.html" % cid), "w")
     html = HTMLOutput(isocode, output, addon, cid, False, wesnoth)
     html.target = "%s.html" % cid
@@ -1266,7 +1294,8 @@ def generate_era_report(addon, isocode, era, wesnoth):
     print(("era " + addon + " " + eid + " " + isocode))
 
     path = os.path.join(options.output, addon, isocode)
-    if not os.path.isdir(path): os.mkdir(path)
+    if not os.path.isdir(path):
+        os.mkdir(path)
 
     output = MyFile(os.path.join(path, "%s.html" % eid), "w")
     html = HTMLOutput(isocode, output, addon, eid, True, wesnoth)
@@ -1284,15 +1313,18 @@ def generate_era_report(addon, isocode, era, wesnoth):
 def generate_single_unit_reports(addon, isocode, wesnoth):
 
     path = os.path.join(options.output, addon, isocode)
-    if not os.path.isdir(path): os.mkdir(path)
+    if not os.path.isdir(path):
+        os.mkdir(path)
 
     html = HTMLOutput(isocode, None, addon, "units", False, wesnoth)
     grouper = GroupByNothing()
     html.analyze_units(grouper, True)
 
     for uid, unit in list(wesnoth.unit_lookup.items()):
-        if unit.hidden: continue
-        if "mainline" in unit.campaigns and addon != "mainline": continue
+        if unit.hidden:
+            continue
+        if "mainline" in unit.campaigns and addon != "mainline":
+            continue
 
         try:
             htmlname = "%s.html" % uid
@@ -1302,7 +1334,8 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
             if os.path.exists(filename):
                 age = time.time() - os.path.getmtime(filename)
                 # was modified in the last 12 hours - we should be ok
-                if age < 3600 * 12: continue
+                if age < 3600 * 12:
+                    continue
         except (UnicodeDecodeError, UnicodeEncodeError) as e:
             traceback.print_exc()
             error_message("Unicode problem: " + repr(path) + " + " + repr(uid) + "\n")
@@ -1315,26 +1348,22 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
         output.close()
 
 def html_postprocess_file(filename, isocode, batchlist):
-
     print(("postprocessing " + repr(filename)))
-
     chtml = ""
     ehtml = ""
 
     cids = [[], []]
     for addon in batchlist:
         for campaign in addon.get("campaigns", []):
-            if campaign["units"] == "?": continue
-            if campaign["units"] <= 0: continue
-            if addon["name"] == "mainline": lang = isocode
-            else: lang = "en_US"
+            if campaign["units"] == "?" or campaign["units"] <= 0:
+                continue
+            lang = isocode if addon["name"] == "mainline" else "en_US"
             c = addon["name"], campaign["id"], campaign["translations"].get(
                 lang, campaign["name"]), lang
             if addon["name"] == "mainline":
                 cids[0].append(c)
             else:
                 cids[1].append(c)
-
     for i in range(2):
         campaigns = cids[i]
         campaigns.sort(key=lambda x: "A" if x[1] == "mainline" else "B" + x[2])
@@ -1350,17 +1379,15 @@ def html_postprocess_file(filename, isocode, batchlist):
     eids = [[], []]
     for addon in batchlist:
         for era in addon.get("eras", []):
-            if era["units"] == "?": continue
-            if era["units"] <= 0: continue
-            if addon["name"] == "mainline": lang = isocode
-            else: lang = "en_US"
+            if era["units"] == "?" or era["units"] <= 0:
+                continue
+            lang = isocode if addon["name"] == "mainline" else "en_US"
             e = addon["name"], era["id"], era["translations"].get(
                 lang, era["name"]), lang
             if addon["name"] == "mainline":
                 eids[0].append(e)
             else:
                 eids[1].append(e)
-
     for i in range(2):
         eras = eids[i]
         eras.sort(key=lambda x: x[2])
