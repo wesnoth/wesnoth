@@ -60,9 +60,7 @@ unsigned state_default::get_state() const
 matrix::matrix(const implementation::builder_matrix& builder)
 	: tbase(builder, "matrix"), content_(), pane_(nullptr)
 {
-	std::shared_ptr<const matrix_definition::resolution>
-	cfg = std::static_pointer_cast<const matrix_definition::resolution>(
-			config());
+	const auto cfg = cast_config_to<matrix_definition>();
 
 	builder_widget::replacements_map replacements;
 	replacements.emplace("_main", builder.builder_main);

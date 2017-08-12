@@ -410,9 +410,7 @@ widget* builder_tree_view::build() const
 	DBG_GUI_G << "Window builder: placed tree_view '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const tree_view_definition::resolution>
-	conf = std::static_pointer_cast<const tree_view_definition::resolution>(
-					widget->config());
+	const auto conf = widget->cast_config_to<tree_view_definition>();
 	assert(conf);
 
 	widget->init_grid(conf->grid);

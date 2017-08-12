@@ -301,9 +301,7 @@ widget* builder_multi_page::build() const
 	DBG_GUI_G << "Window builder: placed multi_page '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const multi_page_definition::resolution>
-	conf = std::static_pointer_cast<const multi_page_definition::resolution>(
-					widget->config());
+	const auto conf = widget->cast_config_to<multi_page_definition>();
 	assert(conf);
 
 	widget->init_grid(conf->grid);

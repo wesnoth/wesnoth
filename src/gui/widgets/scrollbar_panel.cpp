@@ -162,9 +162,7 @@ widget* builder_scrollbar_panel::build() const
 	DBG_GUI_G << "Window builder: placed scrollbar_panel '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const scrollbar_panel_definition::resolution> conf
-			= std::static_pointer_cast<const scrollbar_panel_definition::resolution>(
-				panel->config());
+	const auto conf = panel->cast_config_to<scrollbar_panel_definition>();
 	assert(conf);
 
 	panel->init_grid(conf->grid);

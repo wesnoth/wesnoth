@@ -264,10 +264,7 @@ void text_box::update_offsets()
 {
 	assert(config());
 
-	std::shared_ptr<const text_box_definition::resolution>
-	conf = std::static_pointer_cast<const text_box_definition::resolution>(
-			config());
-
+	const auto conf = cast_config_to<text_box_definition>();
 	assert(conf);
 
 	// FIXME: This should use pango-cairo code path instead of sdl_ttf code path
@@ -340,10 +337,7 @@ void text_box::load_config_extra()
 {
 	assert(config());
 
-	std::shared_ptr<const text_box_definition::resolution>
-	conf = std::static_pointer_cast<const text_box_definition::resolution>(
-			config());
-
+	const auto conf = cast_config_to<text_box_definition>();
 	assert(conf);
 
 	set_font_size(conf->text_font_size);

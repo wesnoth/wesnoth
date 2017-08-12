@@ -144,7 +144,7 @@ widget* builder_size_lock::build() const
 	DBG_GUI_G << "Window builder: placed fixed size widget '" << id <<
 		"' with definition '" << definition << "'.\n";
 
-	auto conf = std::static_pointer_cast<const size_lock_definition::resolution>(widget->config());
+	const auto conf = widget->cast_config_to<size_lock_definition>();
 	assert(conf != nullptr);
 
 	widget->init_grid(conf->grid);

@@ -446,7 +446,7 @@ widget* builder_addon_list::build() const
 	DBG_GUI_G << "Window builder: placed add-on list '" << id <<
 		"' with definition '" << definition << "'.\n";
 
-	auto conf = std::static_pointer_cast<const addon_list_definition::resolution>(widget->config());
+	const auto conf = widget->cast_config_to<addon_list_definition>();
 	assert(conf != nullptr);
 
 	widget->init_grid(conf->grid);

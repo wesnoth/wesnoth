@@ -151,10 +151,7 @@ void label::load_config_extra()
 {
 	assert(config());
 
-	std::shared_ptr<const label_definition::resolution>
-	conf = std::static_pointer_cast<const label_definition::resolution>(
-			config());
-
+	const auto conf = cast_config_to<label_definition>();
 	assert(conf);
 
 	set_link_aware(conf->link_aware);

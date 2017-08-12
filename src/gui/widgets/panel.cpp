@@ -37,9 +37,7 @@ REGISTER_WIDGET(panel)
 
 SDL_Rect panel::get_client_rect() const
 {
-	std::shared_ptr<const panel_definition::resolution> conf
-			= std::static_pointer_cast<const panel_definition::resolution>(
-					config());
+	const auto conf = cast_config_to<panel_definition>();
 	assert(conf);
 
 	SDL_Rect result = get_rectangle();
@@ -79,9 +77,7 @@ void panel::impl_draw_foreground(surface& frame_buffer, int x_offset, int y_offs
 
 point panel::border_space() const
 {
-	std::shared_ptr<const panel_definition::resolution> conf
-			= std::static_pointer_cast<const panel_definition::resolution>(
-					config());
+	const auto conf = cast_config_to<panel_definition>();
 	assert(conf);
 
 	return point(conf->left_border + conf->right_border, conf->top_border + conf->bottom_border);

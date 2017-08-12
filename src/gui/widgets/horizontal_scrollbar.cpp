@@ -35,39 +35,31 @@ REGISTER_WIDGET(horizontal_scrollbar)
 
 unsigned horizontal_scrollbar::minimum_positioner_length() const
 {
-	std::shared_ptr<const horizontal_scrollbar_definition::resolution>
-	conf = std::static_pointer_cast<const horizontal_scrollbar_definition::
-											   resolution>(config());
-
+	const auto conf = cast_config_to<horizontal_scrollbar_definition>();
 	assert(conf);
+
 	return conf->minimum_positioner_length;
 }
 
 unsigned horizontal_scrollbar::maximum_positioner_length() const
 {
-	std::shared_ptr<const horizontal_scrollbar_definition::resolution>
-	conf = std::static_pointer_cast<const horizontal_scrollbar_definition::
-											   resolution>(config());
-
+	const auto conf = cast_config_to<horizontal_scrollbar_definition>();
 	assert(conf);
+
 	return conf->maximum_positioner_length;
 }
 
 unsigned horizontal_scrollbar::offset_before() const
 {
-	std::shared_ptr<const horizontal_scrollbar_definition::resolution>
-	conf = std::static_pointer_cast<const horizontal_scrollbar_definition::
-											   resolution>(config());
-
+	const auto conf = cast_config_to<horizontal_scrollbar_definition>();
 	assert(conf);
+
 	return conf->left_offset;
 }
 
 unsigned horizontal_scrollbar::offset_after() const
 {
-	std::shared_ptr<const horizontal_scrollbar_definition::resolution>
-	conf = std::static_pointer_cast<const horizontal_scrollbar_definition::
-											   resolution>(config());
+	const auto conf = cast_config_to<horizontal_scrollbar_definition>();
 	assert(conf);
 
 	return conf->right_offset;

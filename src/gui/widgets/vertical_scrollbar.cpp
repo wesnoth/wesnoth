@@ -30,36 +30,28 @@ REGISTER_WIDGET(vertical_scrollbar)
 
 unsigned vertical_scrollbar::minimum_positioner_length() const
 {
-	std::shared_ptr<const vertical_scrollbar_definition::resolution> conf
-			= std::static_pointer_cast<const vertical_scrollbar_definition::
-												  resolution>(config());
+	const auto conf = cast_config_to<vertical_scrollbar_definition>();
 	assert(conf);
 	return conf->minimum_positioner_length;
 }
 
 unsigned vertical_scrollbar::maximum_positioner_length() const
 {
-	std::shared_ptr<const vertical_scrollbar_definition::resolution> conf
-			= std::static_pointer_cast<const vertical_scrollbar_definition::
-												  resolution>(config());
+	const auto conf = cast_config_to<vertical_scrollbar_definition>();
 	assert(conf);
 	return conf->maximum_positioner_length;
 }
 
 unsigned vertical_scrollbar::offset_before() const
 {
-	std::shared_ptr<const vertical_scrollbar_definition::resolution> conf
-			= std::static_pointer_cast<const vertical_scrollbar_definition::
-												  resolution>(config());
+	const auto conf = cast_config_to<vertical_scrollbar_definition>();
 	assert(conf);
 	return conf->top_offset;
 }
 
 unsigned vertical_scrollbar::offset_after() const
 {
-	std::shared_ptr<const vertical_scrollbar_definition::resolution> conf
-			= std::static_pointer_cast<const vertical_scrollbar_definition::
-												  resolution>(config());
+	const auto conf = cast_config_to<vertical_scrollbar_definition>();
 	assert(conf);
 	return conf->bottom_offset;
 }

@@ -765,10 +765,7 @@ widget* builder_chatbox::build() const
 	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const chatbox_definition::resolution> conf
-		= std::static_pointer_cast<
-			const chatbox_definition::resolution>(widget->config());
-
+	const auto conf = widget->cast_config_to<chatbox_definition>();
 	assert(conf);
 
 	widget->init_grid(conf->grid);

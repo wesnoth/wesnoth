@@ -595,10 +595,7 @@ widget* builder_unit_preview_pane::build() const
 	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const unit_preview_pane_definition::resolution> conf
-		= std::static_pointer_cast<
-			const unit_preview_pane_definition::resolution>(widget->config());
-
+	const auto conf = widget->cast_config_to<unit_preview_pane_definition>();
 	assert(conf);
 
 	widget->init_grid(conf->grid);

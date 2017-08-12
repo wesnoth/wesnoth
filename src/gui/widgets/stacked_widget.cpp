@@ -257,9 +257,7 @@ widget* builder_stacked_widget::build() const
 	DBG_GUI_G << "Window builder: placed stacked widget '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const stacked_widget_definition::resolution>
-	conf = std::static_pointer_cast<const stacked_widget_definition::resolution>(
-					widget->config());
+	const auto conf = widget->cast_config_to<stacked_widget_definition>();
 	assert(conf);
 
 	widget->init_grid(conf->grid);

@@ -321,6 +321,24 @@ protected:
 		return config_;
 	}
 
+	/**
+	 * Casts the current resolution definition config to the respective type of a
+	 * derived widget.
+	 *
+	 * @tparam T         The definition type to cast to. Should have a `resolution`
+	 *                   subclass or struct derived from resolution_definition.
+	 *
+	 * @returns          A shared_ptr with the newly cast config.
+	 */
+	template<typename T>
+	std::shared_ptr<const typename T::resolution> cast_config_to() const
+	{
+		static_assert(std::is_base_of<resolution_definition, typename T::resolution>::value,
+			"Given type's resolution object does not derive from resolution_definition.");
+
+		return std::static_pointer_cast<const typename T::resolution>(config());
+	}
+
 	void set_config(resolution_definition_ptr config)
 	{
 		config_ = config;

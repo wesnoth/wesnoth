@@ -957,9 +957,7 @@ void window::layout()
 {
 	/***** Initialize. *****/
 
-	std::shared_ptr<const window_definition::resolution>
-	conf = std::static_pointer_cast<const window_definition::resolution>(
-			config());
+	const auto conf = cast_config_to<window_definition>();
 	assert(conf);
 
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);

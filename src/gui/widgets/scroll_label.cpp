@@ -284,8 +284,7 @@ widget* builder_scroll_label::build() const
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
-	std::shared_ptr<const scroll_label_definition::resolution>
-	conf = std::static_pointer_cast<const scroll_label_definition::resolution>(widget->config());
+	const auto conf = widget->cast_config_to<scroll_label_definition>();
 	assert(conf);
 
 	widget->init_grid(conf->grid);

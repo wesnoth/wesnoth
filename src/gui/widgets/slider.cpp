@@ -63,10 +63,7 @@ point slider::calculate_best_size() const
 	if(best_slider_length_ != 0) {
 
 		// Override length.
-		std::shared_ptr<const slider_definition::resolution> conf
-				= std::static_pointer_cast<const slider_definition::
-													  resolution>(config());
-
+		const auto conf = cast_config_to<slider_definition>();
 		assert(conf);
 
 		result.x = conf->left_offset + best_slider_length_ + conf->right_offset;
@@ -158,36 +155,28 @@ void slider::child_callback_positioner_moved()
 
 unsigned slider::minimum_positioner_length() const
 {
-	std::shared_ptr<const slider_definition::resolution>
-	conf = std::static_pointer_cast<const slider_definition::resolution>(
-			config());
+	const auto conf = cast_config_to<slider_definition>();
 	assert(conf);
 	return conf->minimum_positioner_length;
 }
 
 unsigned slider::maximum_positioner_length() const
 {
-	std::shared_ptr<const slider_definition::resolution>
-	conf = std::static_pointer_cast<const slider_definition::resolution>(
-			config());
+	const auto conf = cast_config_to<slider_definition>();
 	assert(conf);
 	return conf->maximum_positioner_length;
 }
 
 unsigned slider::offset_before() const
 {
-	std::shared_ptr<const slider_definition::resolution>
-	conf = std::static_pointer_cast<const slider_definition::resolution>(
-			config());
+	const auto conf = cast_config_to<slider_definition>();
 	assert(conf);
 	return conf->left_offset;
 }
 
 unsigned slider::offset_after() const
 {
-	std::shared_ptr<const slider_definition::resolution>
-	conf = std::static_pointer_cast<const slider_definition::resolution>(
-			config());
+	const auto conf = cast_config_to<slider_definition>();
 	assert(conf);
 	return conf->right_offset;
 }

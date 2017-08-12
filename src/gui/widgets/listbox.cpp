@@ -991,9 +991,7 @@ widget* builder_listbox::build() const
 	DBG_GUI_G << "Window builder: placed listbox '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const listbox_definition::resolution>
-	conf = std::static_pointer_cast<const listbox_definition::resolution>(
-			widget->config());
+	const auto conf = widget->cast_config_to<listbox_definition>();
 	assert(conf);
 
 	widget->init_grid(conf->grid);
@@ -1116,9 +1114,7 @@ widget* builder_horizontal_listbox::build() const
 	DBG_GUI_G << "Window builder: placed listbox '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const listbox_definition::resolution>
-	conf = std::static_pointer_cast<const listbox_definition::resolution>(
-			widget->config());
+	const auto conf = widget->cast_config_to<listbox_definition>();
 	assert(conf);
 
 	widget->init_grid(conf->grid);
@@ -1241,9 +1237,7 @@ widget* builder_grid_listbox::build() const
 	DBG_GUI_G << "Window builder: placed listbox '" << id
 			  << "' with definition '" << definition << "'.\n";
 
-	std::shared_ptr<const listbox_definition::resolution>
-	conf = std::static_pointer_cast<const listbox_definition::resolution>(
-			widget->config());
+	const auto conf = widget->cast_config_to<listbox_definition>();
 	assert(conf);
 
 	widget->init_grid(conf->grid);
