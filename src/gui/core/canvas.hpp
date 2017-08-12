@@ -223,6 +223,9 @@ private:
 	/** Whether canvas dimensions changed. */
 	bool size_changed_;
 
+	/** Whether to completely clear the canvas texture of any previously drawn content. */
+	bool cache_invalidated_;
+
 	/**
 	 * Parses a config object.
 	 *
@@ -237,7 +240,10 @@ private:
 
 	void clear_shapes(const bool force);
 
-	void invalidate_cache();
+	void invalidate_cache()
+	{
+		cache_invalidated_ = true;
+	}
 
 	/** Small helper to handle size variable update logic. */
 	void update_size(unsigned int& value, unsigned int new_value);
