@@ -36,9 +36,6 @@ def copy_images():
     print("Recolorizing pictures.")
     image_collector.copy_and_color_images(options.output)
     shutil.copy2(os.path.join(image_collector.datadir,
-                              "data/tools/unit_tree/style.css"),
-                 options.output)
-    shutil.copy2(os.path.join(image_collector.datadir,
                               "data/tools/unit_tree/menu.js"),
                  options.output)
 
