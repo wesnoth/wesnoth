@@ -7,10 +7,9 @@ import os
 import re
 import time
 import traceback
-import urllib
+import urllib.parse
 import unit_tree.helpers as helpers
 import wesnoth.wmlparser3 as wmlparser3
-
 
 PICS_LOCATION = "../../pics"
 
@@ -163,6 +162,7 @@ def error_message(message):
     error_only_once[message] = 1
     write_error(message)
 
+
 helpers.error_message = error_message
 
 def reset_errors():
@@ -173,6 +173,7 @@ def int_fallback(str_value, int_fallback=0):
         return int(str_value)
     except ValueError:
         return int_fallback
+
 
 def cleanurl(url):
     """
@@ -291,6 +292,7 @@ class GroupByRace:
             return "None"
         return group
 
+
 class GroupByNothing:
     def __init__(self):
         pass
@@ -303,6 +305,7 @@ class GroupByNothing:
 
     def group_name(self, group):
         return "units"
+
 
 class GroupByFaction:
     def __init__(self, wesnoth, era):
@@ -325,7 +328,9 @@ class GroupByFaction:
             name = "factionless"
         return name
 
+
 global_htmlout = None
+
 def T(tag, att):
     if not tag:
         return "none"
@@ -458,8 +463,10 @@ class HTMLOutput:
         return len(forest.lookup)
 
     def write_navbar(self, report_type):
-        def write(x):
-            self.output.write(x)
+        def write(line):
+            self.output.write(line)
+        def _(msgid, textdomain="wesnoth"):
+            return self.translate(msgid, textdomain)
 
         all_written_html_files.append((self.isocode, self.output.filename))
 
@@ -539,14 +546,12 @@ class HTMLOutput:
         # campaigns/eras navigation.
 
         # Campaigns
-        x = self.translate("addon_type^Campaign", "wesnoth")
-        add_menu("campaigns_menu", x)
+        add_menu("campaigns_menu", _("addon_type^Campaign"))
         write(PRE_PLACEHOLDER_CAMPAIGNS)
         end_menu()
 
         # Eras
-        x = self.translate("Era", "wesnoth")
-        add_menu("eras_menu", x)
+        add_menu("eras_menu", _("Era"))
         write(PRE_PLACEHOLDER_ERAS)
         end_menu()
 
@@ -557,10 +562,9 @@ class HTMLOutput:
             target = "mainline.html"
 
         if not self.is_era:
-            x = self.translate("Race", "wesnoth-lib")
-            add_menu("races_menu", x)
+            add_menu("races_menu", _("Race", "wesnoth-lib"))
 
-            add_menuitem('mainline.html', self.translate('all', 'wesnoth-editor'))
+            add_menuitem('mainline.html', _("all", "wesnoth-editor"))
 
             r = {}, {}
             for u in list(self.wesnoth.unit_lookup.values()):
@@ -588,8 +592,7 @@ class HTMLOutput:
                     add_menuitem(url, racename)
             end_menu()
         else:
-            x = self.translate("Factions", "wesnoth-help")
-            add_menu("races_menu", x)
+            add_menu("races_menu", _("Factions", "wesnoth-help"))
             for row in self.unitgrid:
                 for column in range(6):
                     hspan, vspan, un = row[column]
@@ -650,8 +653,7 @@ class HTMLOutput:
                 end_menu()
 
         # Languages
-        x = self.translate("Language", "wesnoth")
-        add_menu("languages_menu", x, is_table_container=True)
+        add_menu("languages_menu", _("Language"), is_table_container=True)
         cell = 0
         col = 0
         colcount = 5
@@ -957,7 +959,7 @@ class HTMLOutput:
                 y = x[0].get_text_val(key, translation=self.translation.translate)
             if y:
                 return True, y
-            if unit.movetype and mty != None:
+            if unit.movetype and mty is not None:
                 return False, mty
             return False, "-"
 
@@ -1076,13 +1078,13 @@ class HTMLOutput:
             ("id",         "Id: ")
         ]
 
-        for val, text in attributes:
-            x = uval(val)
-            if not x and val in ("jamming", "vision"):
+        for attr, label in attributes:
+            value = uval(attr)
+            if not value and attr in ("jamming", "vision"):
                 continue
-            if val == "alignment":
-                x = _(x)
-            write('<tr><th>%s</th><td class="val">%s</td></tr>\n' % (cleantext(text, quote=False), cleantext(x, quote=False)))
+            if attr == "alignment":
+                value = _(value)
+            write('<tr><th>%s</th><td class="val">%s</td></tr>\n' % (cleantext(label, quote=False), cleantext(value, quote=False)))
 
         # Write info about abilities.
         anames = self.get_abilities(unit)
@@ -1330,7 +1332,7 @@ def generate_campaign_report(addon, isocode, campaign, wesnoth):
 def generate_era_report(addon, isocode, era, wesnoth):
     eid = era.get_text_val("id")
 
-    print(("era " + addon + " " + eid + " " + isocode))
+    print("era " + addon + " " + eid + " " + isocode)
 
     path = os.path.join(options.output, addon, isocode)
     if not os.path.isdir(path):
@@ -1387,7 +1389,7 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
         output.close()
 
 def html_postprocess_file(filename, isocode, batchlist):
-    print(("postprocessing " + repr(filename)))
+    print("postprocessing " + repr(filename))
     chtml = ""
     ehtml = ""
 

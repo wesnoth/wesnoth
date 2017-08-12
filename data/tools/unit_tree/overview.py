@@ -1,5 +1,9 @@
 #!/usr/bin/env python2
-import glob, os, sys, time, re
+import glob
+import os
+import re
+import sys
+import time
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from . import html_output
 
@@ -69,8 +73,10 @@ def main(folder):
     total_error_logs = 0
     total_lines = 0
     for f in sorted(glob.glob(os.path.join(folder, "*"))):
-        if not os.path.isdir(f): continue
-        if f.endswith("/pics"): continue
+        if not os.path.isdir(f):
+            continue
+        if f.endswith("/pics"):
+            continue
 
         error_log = os.path.abspath(os.path.join(f, "error.log"))
         error_html = os.path.abspath(os.path.join(f, "error.html"))
@@ -104,15 +110,13 @@ def main(folder):
             source = []
 
             def postprocess(line):
-                if line == "WMLError:": return ""
-                if line == "?": return ""
-                if line == "Preprocessor error:": return ""
-                if line.startswith("Automatically found a possible data directory"): return ""
-                if line.startswith("Overriding data directory with"): return ""
-                if line == "'SKIP_CORE' defined.": return ""
-                if re.match("added .* defines.", line): return ""
-                if line.startswith("skipped 'data/core'"): return ""
-                if line.startswith("preprocessing specified resource:"): return ""
+                if line in ("WMLError:", "?", "Preprocessor error:", "'SKIP_CORE' defined.") or \
+                   line.startswith("Automatically found a possible data directory") or \
+                   line.startswith("Overriding data directory with") or \
+                   line.startswith("skipped 'data/core'") or \
+                   line.startswith("preprocessing specified resource:") or \
+                   re.match("added .* defines.", line):
+                    return ""
 
                 mo = re.match(r"\d+ /tmp(?:/wmlparser_.*?/|/)(.*\.cfg).*", line)
                 if mo:
