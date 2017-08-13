@@ -1,7 +1,7 @@
 /*
  * Popup menu implementation for the Wesnoth units database
  */
-(function() {
+var wmlunits_menu_setup = (function() {
     var menus = [];
     var visibleMenu = false;
 
@@ -41,40 +41,38 @@
         return e.className.search(/\bnavbar\b/) != -1;
     }
 
-    window.addEventListener("load", function() {
-        var navItems = document.getElementsByClassName("popupcontainer");
+    var navItems = document.getElementsByClassName("popupcontainer");
 
-        // Set event handlers for individual menu triggers.
-        for (var i = 0; i < navItems.length; ++i) {
-            var navItem = navItems[i],
-                menu = navItem.getElementsByClassName("popupmenu")[0];
+    // Set event handlers for individual menu triggers.
+    for (var i = 0; i < navItems.length; ++i) {
+        var navItem = navItems[i],
+            menu = navItem.getElementsByClassName("popupmenu")[0];
 
-            menus.push(menu);
+        menus.push(menu);
 
-            var id = menu.id,
-                a = navItem.getElementsByClassName("popuptrigger")[0];
+        var id = menu.id,
+            a = navItem.getElementsByClassName("popuptrigger")[0];
 
-            a.addEventListener("click", function(event) {
-                event.preventDefault();
-                event.stopPropagation();
-                toggleMenu(event, event.target.nextElementSibling);
-            }, false);
+        a.addEventListener("click", function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            toggleMenu(event, event.target.nextElementSibling);
+        }, false);
+    }
+
+    // Dismiss all visible menus on click outside them.
+    document.addEventListener("click", function(event) {
+        if (!visibleMenu) {
+            return;
         }
 
-        // Dismiss all visible menus on click outside them.
-        document.addEventListener("click", function(event) {
-            if (!visibleMenu) {
-                return;
-            }
+        var parent = event.target;
+        while(parent && !isMenuBox(parent) && !isNavBar(parent)) {
+            parent = parent.parentElement;
+        }
 
-            var parent = event.target;
-            while(parent && !isMenuBox(parent) && !isNavBar(parent)) {
-                parent = parent.parentElement;
-            }
-
-            if (!parent || !isMenuBox(parent)) {
-                hideMenus();
-            }
-        }, false);
+        if (!parent || !isMenuBox(parent)) {
+            hideMenus();
+        }
     }, false);
-})();
+});

@@ -686,6 +686,8 @@ class HTMLOutput:
 
         write('</ul></div>\n')
 
+        write('<script>\nwmlunits_menu_setup();\n</script>');
+
     def pic(self, u, x, recursion=0):
         if recursion >= 4:
             error_message(
