@@ -38,6 +38,7 @@
 #include "serialization/string_utils.hpp"
 
 #include "utils/functional.hpp"
+#include "utils/irdya_datetime.hpp"
 #include "video.hpp"
 
 namespace gui2
@@ -95,13 +96,89 @@ void campaign_selection::campaign_selected(window& window)
 
 	assert(tree.selected_item());
 	if(tree.selected_item()->id() != "") {
-		const unsigned choice = lexical_cast<unsigned>(tree.selected_item()->id());
+		auto iter = std::find(page_ids_.begin(), page_ids_.end(), tree.selected_item()->id());
+		const int choice = iter - page_ids_.begin();
+		if(iter == page_ids_.end()) {
+			return;
+		}
 
 		multi_page& pages = find_widget<multi_page>(&window, "campaign_details", false);
 		pages.select_page(choice);
 		engine_.set_current_level(choice);
 	}
 
+}
+
+void campaign_selection::sort_campaigns(window& window, campaign_selection::CAMPAIGN_ORDER order, bool ascending)
+{
+	using level_ptr = ng::create_engine::level_ptr;
+	auto levels = engine_.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN);
+	switch(order) {
+		case RANK: // Already sorted by rank
+			if(!ascending) {
+				// This'll actually never happen, but who knows if that'll ever change...
+				std::reverse(levels.begin(), levels.end());
+			}
+			break;
+		case DATE:
+			std::sort(levels.begin(), levels.end(), [ascending](const level_ptr& a, const level_ptr& b) {
+				auto cpn_a = std::dynamic_pointer_cast<ng::campaign>(a), cpn_b = std::dynamic_pointer_cast<ng::campaign>(b);
+				if(cpn_b == nullptr) return cpn_a != nullptr;
+				if(cpn_a == nullptr) return false;
+				return ascending ? cpn_a->dates().first < cpn_b->dates().first : cpn_a->dates().first > cpn_b->dates().first;
+			});
+			break;
+		case NAME:
+			std::sort(levels.begin(), levels.end(), [ascending](const level_ptr& a, const level_ptr& b) {
+				int cmp = translation::icompare(a->name(), b->name());
+				return ascending ? cmp < 0 : cmp > 0;
+			});
+			break;
+	}
+
+	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);
+	// Remember which campaign was selected...
+	std::string was_selected = tree.selected_item()->id();
+	tree.clear();
+	for(const auto& level : levels) {
+		add_campaign_to_tree(window, level->data());
+	}
+
+	if(!was_selected.empty()) {
+		tree_view_node& node = find_widget<tree_view_node>(&window, was_selected, false);
+		node.select_node();
+	}
+}
+
+void campaign_selection::toggle_sorting_selection(window& window, CAMPAIGN_ORDER order) {
+	static bool force = false;
+	if(force) {
+		return;
+	}
+	if(current_sorting_ == order) {
+		if(currently_sorted_asc_) {
+			currently_sorted_asc_ = false;
+		} else {
+			currently_sorted_asc_ = true;
+			current_sorting_ = RANK;
+		}
+	} else if(current_sorting_ == RANK) {
+		currently_sorted_asc_ = true;
+		current_sorting_ = order;
+	} else {
+		currently_sorted_asc_ = true;
+		current_sorting_ = order;
+		force = true;
+		if(order == NAME) {
+			toggle_button& sort_time = find_widget<toggle_button>(&window, "sort_time", false);
+			sort_time.set_value(0);
+		} else if(order == DATE) {
+			toggle_button& sort_name = find_widget<toggle_button>(&window, "sort_name", false);
+			sort_name.set_value(0);
+		}
+		force = false;
+	}
+	sort_campaigns(window, current_sorting_, currently_sorted_asc_);
 }
 
 void campaign_selection::pre_show(window& window)
@@ -112,33 +189,25 @@ void campaign_selection::pre_show(window& window)
 	tree.set_selection_change_callback(
 		std::bind(&campaign_selection::campaign_selected, this, std::ref(window)));
 
+	toggle_button& sort_name = find_widget<toggle_button>(&window, "sort_name", false);
+	toggle_button& sort_time = find_widget<toggle_button>(&window, "sort_time", false);
+	sort_name.set_callback_state_change(std::bind(&campaign_selection::toggle_sorting_selection, this, std::ref(window), NAME));
+	sort_time.set_callback_state_change(std::bind(&campaign_selection::toggle_sorting_selection, this, std::ref(window), DATE));
+
 	window.keyboard_capture(&tree);
 
 	/***** Setup campaign details. *****/
 	multi_page& pages = find_widget<multi_page>(&window, "campaign_details", false);
 
-	unsigned id = 0;
 	for(const auto & level : engine_.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN)) {
 		const config& campaign = level->data();
 
 		/*** Add tree item ***/
-		std::map<std::string, string_map> data;
-		string_map item;
-
-		item["label"] = campaign["icon"];
-		data.emplace("icon", item);
-
-		item["label"] = campaign["name"];
-		data.emplace("name", item);
-
-		item["label"] = campaign["completed"].to_bool() ? "misc/laurel.png" : "misc/blank-hex.png";
-		data.emplace("victory", item);
-
-		tree.add_node("campaign", data).set_id(std::to_string(id++));
+		add_campaign_to_tree(window, campaign);
 
 		/*** Add detail item ***/
-		item.clear();
-		data.clear();
+		std::map<std::string, string_map> data;
+		string_map item;
 
 		item["label"] = campaign["description"];
 		item["use_markup"] = "true";
@@ -153,6 +222,7 @@ void campaign_selection::pre_show(window& window)
 		data.emplace("image", item);
 
 		pages.add_page(data);
+		page_ids_.push_back(campaign["id"]);
 	}
 
 	//
@@ -184,6 +254,24 @@ void campaign_selection::pre_show(window& window)
 	campaign_selected(window);
 }
 
+void campaign_selection::add_campaign_to_tree(window& window, const config& campaign)
+{
+	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);
+	std::map<std::string, string_map> data;
+	string_map item;
+
+	item["label"] = campaign["icon"];
+	data.emplace("icon", item);
+
+	item["label"] = campaign["name"];
+	data.emplace("name", item);
+
+	item["label"] = campaign["completed"].to_bool() ? "misc/laurel.png" : "misc/blank-hex.png";
+	data.emplace("victory", item);
+
+	tree.add_node("campaign", data).set_id(campaign["id"]);
+}
+
 void campaign_selection::post_show(window& window)
 {
 	tree_view& tree = find_widget<tree_view>(&window, "campaign_tree", false);
@@ -194,7 +282,10 @@ void campaign_selection::post_show(window& window)
 
 	assert(tree.selected_item());
 	if(tree.selected_item()->id() != "") {
-		choice_ = lexical_cast<unsigned>(tree.selected_item()->id());
+		auto iter = std::find(page_ids_.begin(), page_ids_.end(), tree.selected_item()->id());
+		if(iter != page_ids_.end()) {
+			choice_ = iter - page_ids_.begin();
+		}
 	}
 
 	deterministic_ = find_widget<toggle_button>(&window, "checkbox_deterministic", false).get_value_bool();

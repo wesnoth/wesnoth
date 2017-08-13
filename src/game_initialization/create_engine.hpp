@@ -19,6 +19,7 @@
 #include "generators/map_generator.hpp"
 #include "mp_game_settings.hpp"
 #include "utils/make_enum.hpp"
+#include "utils/irdya_datetime.hpp"
 
 #include <numeric>
 #include <string>
@@ -253,6 +254,11 @@ public:
 		return min_players_ <= player_count && max_players_ >= player_count;
 	}
 
+	std::pair<irdya_date, irdya_date> dates() const
+	{
+		return dates_;
+	}
+
 private:
 	campaign(const campaign&) = delete;
 	void operator=(const campaign&) = delete;
@@ -262,6 +268,7 @@ private:
 	std::string image_label_;
 	int min_players_;
 	int max_players_;
+	std::pair<irdya_date, irdya_date> dates_;
 };
 
 class create_engine
