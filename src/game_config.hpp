@@ -92,6 +92,9 @@ namespace game_config
 			game_title_background,
 			game_logo,
 			game_logo_background,
+			victory_laurel,
+			victory_laurel_hardest,
+			victory_laurel_easy,
 			// orbs and hp/xp bar
 			orb,
 			energy,

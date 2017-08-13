@@ -266,7 +266,17 @@ void campaign_selection::add_campaign_to_tree(window& window, const config& camp
 	item["label"] = campaign["name"];
 	data.emplace("name", item);
 
-	item["label"] = campaign["completed"].to_bool() ? "misc/laurel.png" : "misc/blank-hex.png";
+	if(campaign["completed_on_hardest"].to_bool()) {
+		item["label"] = game_config::images::victory_laurel_hardest;
+	} else if(campaign["completed"].to_bool()) {
+		if(campaign["completed_difficulties"] == campaign.child_or_empty("difficulty")["define"]) {
+			item["label"] = game_config::images::victory_laurel_easy;
+		} else {
+			item["label"] = game_config::images::victory_laurel;
+		}
+	} else {
+		item["label"] = "misc/blank-hex.png";
+	}
 	data.emplace("victory", item);
 
 	tree.add_node("campaign", data).set_id(campaign["id"]);

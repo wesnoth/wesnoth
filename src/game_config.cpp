@@ -186,6 +186,9 @@ std::string
 	game_title_background,
 	game_logo,
 	game_logo_background,
+	victory_laurel,
+	victory_laurel_hardest,
+	victory_laurel_easy,
 	// orbs and hp/xp bar
 	orb,
 	energy,
@@ -313,6 +316,10 @@ void load_config(const config &v)
 		game_title_background = i["game_title_background"].str();
 		game_logo             = i["game_logo"].str();
 		game_logo_background  = i["game_logo_background"].str();
+
+		victory_laurel = i["victory_laurel"];
+		victory_laurel_hardest = i["victory_laurel_hardest"];
+		victory_laurel_easy = i["victory_laurel_easy"];
 
 		orb    = i["orb"].str();
 		energy = i["energy"].str();
