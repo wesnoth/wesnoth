@@ -693,13 +693,11 @@ class HTMLOutput:
                     u.get_text_val("id"), x.name.decode("utf8")))
             return None, None
         image = self.wesnoth.get_unit_value(x, "image")
-        portrait = x.get_all(tag="portrait")
+        portrait = self.wesnoth.get_unit_value(x, "profile")
         if not portrait:
             bu = self.wesnoth.get_base_unit(u)
             if bu:
-                portrait = bu.get_all(tag="portrait")
-        if portrait:
-            portrait = portrait[0].get_text_val("image")
+                portrait = self.wesnoth.get_unit_value(bu, "profile")
         if not image:
             if x.name == b"female":
                 baseunit = self.wesnoth.get_base_unit(u)
