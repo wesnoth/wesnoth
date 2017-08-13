@@ -171,6 +171,8 @@ def reset_errors():
 def int_fallback(str_value, int_fallback=0):
     try:
         return int(str_value)
+    except TypeError:
+        return int_fallback
     except ValueError:
         return int_fallback
 
