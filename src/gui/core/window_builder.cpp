@@ -50,11 +50,9 @@
 namespace gui2
 {
 
-static std::map<std::string, std::function<builder_widget_ptr(config)> >&
-builder_widget_lookup()
+static std::map<std::string, widget_builder_func_t>& builder_widget_lookup()
 {
-	static std::map<std::string, std::function<builder_widget_ptr(config)> >
-	result;
+	static std::map<std::string, widget_builder_func_t> result;
 	return result;
 }
 
@@ -138,8 +136,7 @@ builder_widget::builder_widget(const config& cfg)
 }
 
 void
-register_builder_widget(const std::string& id,
-						std::function<builder_widget_ptr(config)> functor)
+register_builder_widget(const std::string& id, widget_builder_func_t functor)
 {
 	builder_widget_lookup().emplace(id, functor);
 }

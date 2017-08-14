@@ -73,6 +73,8 @@ public:
 typedef std::shared_ptr<builder_widget> builder_widget_ptr;
 typedef std::shared_ptr<const builder_widget> builder_widget_const_ptr;
 
+using widget_builder_func_t = std::function<builder_widget_ptr(config)>;
+
 /**
  * Registers a widget to be build.
  *
@@ -83,8 +85,7 @@ typedef std::shared_ptr<const builder_widget> builder_widget_const_ptr;
  * @param functor                 The functor to create the widget.
  */
 void
-register_builder_widget(const std::string& id,
-						std::function<builder_widget_ptr(config)> functor);
+register_builder_widget(const std::string& id, widget_builder_func_t functor);
 
 
 /**
