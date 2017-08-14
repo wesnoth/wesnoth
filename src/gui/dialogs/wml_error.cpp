@@ -210,13 +210,13 @@ void wml_error::pre_show(window& window)
 {
 	if(!have_files_) {
 		styled_widget& filelist = find_widget<styled_widget>(&window, "files", false);
-		filelist.set_visible(styled_widget::visibility::invisible);
+		filelist.set_visible(widget::visibility::invisible);
 	}
 
 	if(!have_post_summary_) {
 		styled_widget& post_summary
 				= find_widget<styled_widget>(&window, "post_summary", false);
-		post_summary.set_visible(styled_widget::visibility::invisible);
+		post_summary.set_visible(widget::visibility::invisible);
 	}
 
 	button& copy_button = find_widget<button>(&window, "copy", false);

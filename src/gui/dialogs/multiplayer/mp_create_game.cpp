@@ -261,7 +261,7 @@ void mp_create_game::pre_show(window& win)
 
 	// No mods, hide the header
 	if(mod_list.get_item_count() <= 0) {
-		find_widget<styled_widget>(&win, "mods_header", false).set_visible(window::visibility::invisible);
+		find_widget<styled_widget>(&win, "mods_header", false).set_visible(widget::visibility::invisible);
 	} else {
 		on_mod_select(win);
 	}

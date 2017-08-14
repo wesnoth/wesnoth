@@ -416,7 +416,7 @@ lobby_chat_window* chatbox::search_create_window(const std::string& name,
 		std::bind(&chatbox::close_window_button_callback, this, open_windows_.back(), _3, _4));
 
 	if(!allow_close) {
-		close_button.set_visible(styled_widget::visibility::hidden);
+		close_button.set_visible(widget::visibility::hidden);
 	}
 
 	return &open_windows_.back();

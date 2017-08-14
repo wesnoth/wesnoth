@@ -442,7 +442,7 @@ void title_screen::pre_show(window& win)
 	});
 
 	if(game_config_manager::get()->game_config().child_range("core").size() <= 1) {
-		find_widget<button>(&win, "cores", false).set_visible(window::visibility::invisible);
+		find_widget<button>(&win, "cores", false).set_visible(widget::visibility::invisible);
 	}
 
 	//

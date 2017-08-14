@@ -180,7 +180,7 @@ void game_version::pre_show(window& window)
 		if(!desktop::open_object_is_supported()) {
 			// No point in displaying these on platforms that can't do
 			// open_object().
-			browse_w.set_visible(styled_widget::visibility::invisible);
+			browse_w.set_visible(widget::visibility::invisible);
 		}
 
 		if(!desktop::clipboard::available()) {

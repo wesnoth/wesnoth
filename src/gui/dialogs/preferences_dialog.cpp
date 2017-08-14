@@ -197,7 +197,7 @@ void preferences_dialog::update_friends_list_controls(window& window, listbox& l
 	find_widget<button>(&window, "remove", false).set_active(!list_empty);
 
 	find_widget<label>(&window, "no_friends_notice", false).set_visible(
-		list_empty ? window::visibility::visible : window::visibility::invisible);
+		list_empty ? widget::visibility::visible : widget::visibility::invisible);
 }
 
 void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& textbox, window& window)
@@ -575,11 +575,11 @@ void preferences_dialog::post_build(window& window)
 		assert(main_grid);
 
 		grid& details_grid = find_widget<grid>(main_grid, "prefs_setter_grid", false);
-		details_grid.set_visible(styled_widget::visibility::invisible);
+		details_grid.set_visible(widget::visibility::invisible);
 
 		// The toggle widget for toggle-type options (hidden for other types)
 		toggle_button& toggle_box = find_widget<toggle_button>(main_grid, "value_toggle", false);
-		toggle_box.set_visible(styled_widget::visibility::hidden);
+		toggle_box.set_visible(widget::visibility::hidden);
 
 		if(!option["description"].empty()) {
 			find_widget<styled_widget>(main_grid, "description", false).set_label(option["description"]);
@@ -589,7 +589,7 @@ void preferences_dialog::post_build(window& window)
 			case ADVANCED_PREF_TYPE::TOGGLE: {
 				//main_grid->remove_child("setter");
 
-				toggle_box.set_visible(styled_widget::visibility::visible);
+				toggle_box.set_visible(widget::visibility::visible);
 				toggle_box.set_value(get(pref_name, option["default"].to_bool()));
 
 				connect_signal_mouse_left_click(toggle_box, std::bind(
@@ -927,12 +927,12 @@ void preferences_dialog::on_advanced_prefs_list_select(listbox& list, window& wi
 
 	if(has_description || (selected_type != ADVANCED_PREF_TYPE::SPECIAL && selected_type != ADVANCED_PREF_TYPE::TOGGLE)) {
 		find_widget<widget>(get_advanced_row_grid(list, selected_row), "prefs_setter_grid", false)
-			.set_visible(styled_widget::visibility::visible);
+			.set_visible(widget::visibility::visible);
 	}
 
 	if(last_selected_item_ != selected_row) {
 		find_widget<widget>(get_advanced_row_grid(list, last_selected_item_), "prefs_setter_grid", false)
-			.set_visible(styled_widget::visibility::invisible);
+			.set_visible(widget::visibility::invisible);
 
 		last_selected_item_ = selected_row;
 	}

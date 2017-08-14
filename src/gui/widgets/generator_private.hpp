@@ -21,7 +21,7 @@
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
-#include "gui/widgets/window.hpp" // For window::visibility
+#include "gui/widgets/window.hpp" // For widget::visibility
 #include "wml_exception.hpp"
 
 namespace gui2
@@ -658,7 +658,7 @@ public:
 	virtual bool get_item_shown(const unsigned index) const override
 	{
 		assert(index < items_.size());
-		return items_[index]->shown && items_[index]->child_grid.get_visible() != window::visibility::invisible;
+		return items_[index]->shown && items_[index]->child_grid.get_visible() != widget::visibility::invisible;
 	}
 
 

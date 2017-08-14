@@ -1396,7 +1396,7 @@ void window::signal_handler_click_dismiss(const event::ui_event event,
 static bool is_active(const widget* wgt)
 {
 	if(const styled_widget* control = dynamic_cast<const styled_widget*>(wgt)) {
-		return control->get_active() && control->get_visible() == window::visibility::visible;
+		return control->get_active() && control->get_visible() == widget::visibility::visible;
 	}
 	return false;
 }
