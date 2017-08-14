@@ -35,8 +35,8 @@ TIMEOUT = 20
 def copy_images():
     print("Recolorizing pictures.")
     image_collector.copy_and_color_images(options.output)
-    shutil.copy2(os.path.join(image_collector.datadir,
-                              "data/tools/unit_tree/menu.js"),
+    shutil.copy2(os.path.join(os.path.dirname(os.path.realpath(__file__)),
+                              "unit_tree/menu.js"),
                  options.output)
 
 def shell(com):
