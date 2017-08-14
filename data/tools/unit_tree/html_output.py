@@ -501,15 +501,13 @@ class HTMLOutput:
             """
             html_name = cleantext(name)
             html_classes = " ".join((cleantext(classes), "popuptrigger"))
-            # FIXME: This is legacy code needed for the Language menu, since it's
-            #        a table and we can't make it otherwise because CSS column
-            #        support is still hit-or-miss for some browsers still in use.
-            child_tag = 'ul' if not is_table_container else 'div'
-            label_tag = 'li' if not is_table_container else 'div'
             write('<li class="popupcontainer" role="menuitem" aria-haspopup="true">')
             write('<a class="' + html_classes + '" href="#">' + html_name + '</a>')
-            write('<' + child_tag + ' class="popupmenu" id="' + menuid + '" role="menu" aria-label="' + html_name + '">')
-            write('<' + label_tag + '>' + html_name + '</' + label_tag + '>')
+            write('<div id="%s" class="popupmenu" role="menu" aria-label="%s">' %
+                  (menuid, html_name))
+            write('<div class="popupheader">' + html_name + '</div>')
+            if not is_table_container:
+                write('<ul>')
 
         def add_menuitem_placeholder():
             """Writes a horizontal bar serving as a menu placeholder."""
@@ -540,9 +538,8 @@ class HTMLOutput:
             original.
             """
             if not is_table_container:
-                write('</ul></li>\n')
-            else:
-                write('</div></li>')
+                write('</ul>')
+            write('</div></li>')
 
         # We may not have all the required info yet so defer writing the
         # campaigns/eras navigation.
