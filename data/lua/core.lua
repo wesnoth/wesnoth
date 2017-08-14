@@ -150,7 +150,7 @@ local _ = wesnoth.textdomain "wesnoth"
 
 -- Note: When using version (for level 2 or 3 deprecation), specify the first version
 -- in which the feature could be removed... NOT the version at which it was deprecated.
-local function wesnoth.deprecation_message(elem_name, level, version, detail)
+function wesnoth.deprecation_message(elem_name, level, version, detail)
 	local message_params = {elem = elem_name}
 	local logger
 	local message
@@ -174,7 +174,7 @@ local function wesnoth.deprecation_message(elem_name, level, version, detail)
 	else
 		error(_"Invalid deprecation level (should be 1-4)")
 	end
-	if len(detail) > 0 then
+	if #detail > 0 then
 		logger(message .. "\n  " .. detail)
 	else
 		logger(message)
@@ -354,8 +354,10 @@ end
 -- Some C++ functions are deprecated; apply the messages here.
 -- Note: It must happen AFTER the C++ functions are reassigned above to their new location.
 -- These deprecated functions will probably never be removed.
-wesnoth.get_variable = wesnoth.deprecate_api('wesnoth.get_variable', 'wml.variable.get', 1, nil, wesnoth.get_variable)
-wesnoth.set_variable = wesnoth.deprecate_api('wesnoth.set_variable', 'wml.variable.set', 1, nil, wesnoth.set_variable)
-wesnoth.get_all_vars = wesnoth.deprecate_api('wesnoth.get_all_vars', 'wml.variable.get_all', 1, nil, wesnoth.get_all_vars)
+if wesnoth.kernel_type() == "Game Lua Kernel" then
+	wesnoth.get_variable = wesnoth.deprecate_api('wesnoth.get_variable', 'wml.variable.get', 1, nil, wesnoth.get_variable)
+	wesnoth.set_variable = wesnoth.deprecate_api('wesnoth.set_variable', 'wml.variable.set', 1, nil, wesnoth.set_variable)
+	wesnoth.get_all_vars = wesnoth.deprecate_api('wesnoth.get_all_vars', 'wml.variable.get_all', 1, nil, wesnoth.get_all_vars)
+end
 wesnoth.tovconfig = wesnoth.deprecate_api('wesnoth.tovconfig', 'wml.tovconfig', 1, nil, wesnoth.tovconfig)
 wesnoth.debug = wesnoth.deprecate_api('wesnoth.debug', 'wml.tostring', 1, nil, wesnoth.debug)

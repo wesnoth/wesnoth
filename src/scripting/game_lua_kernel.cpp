@@ -1430,19 +1430,6 @@ int game_lua_kernel::intf_zoom(lua_State* L)
 }
 
 /**
- * Dumps a wml table or userdata wml object into a pretty string.
- * - Arg 1: wml table or vconfig userdata
- * - Ret 1: string
- */
-static int intf_debug(lua_State* L)
-{
-	const config& arg = luaW_checkconfig(L, 1);
-	const std::string& result = arg.debug();
-	lua_pushstring(L, result.c_str());
-	return 1;
-}
-
-/**
  * Removes all messages from the chat window.
  */
 int game_lua_kernel::intf_clear_messages(lua_State*)
@@ -3978,7 +3965,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "copy_unit",                &intf_copy_unit                },
 		{ "create_animator",          &intf_create_animator          },
 		{ "create_unit",              &intf_create_unit              },
-		{ "debug",                    &intf_debug                    },
 		{ "debug_ai",                 &intf_debug_ai                 },
 		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "get_era",                  &intf_get_era                  },
