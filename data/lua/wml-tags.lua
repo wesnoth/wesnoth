@@ -888,8 +888,15 @@ function wml_actions.sound_source(cfg)
 end
 
 function wml_actions.deprecated_message(cfg)
+	if type(cfg.level) ~= "number" or cfg.level < 1 or cfg.level > 4 then
+		local _ = wesnoth.textdomain "wesnoth"
+		helper.wml_error(_"Invalid deprecation level (should be 1-4)")
+	end
+	wesnoth.deprecation_message(cfg.what, cfg.level, cfg.version, cfg.message or '')
 	if not wesnoth.game_config.debug then return end
-	wesnoth.log('wml', cfg.message)
+	if cfg.level > 1 then
+		wesnoth.log('wml', cfg.message)
+	end
 end
 
 function wml_actions.wml_message(cfg)
