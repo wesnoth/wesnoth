@@ -559,7 +559,7 @@ if __name__ == '__main__':
     try:
         import ctypes
         libc = ctypes.CDLL("libc.so.6")
-        libc.prctl(15, "wmlunits", 0, 0, 0)
+        libc.prctl(15, b"wmlunits", 0, 0, 0)
     except: # oh well...
         pass
 
