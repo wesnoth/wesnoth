@@ -16,17 +16,18 @@
 
 #include "gui/core/window_builder.hpp"
 
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/core/window_builder/instance.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/horizontal_scrollbar.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/matrix.hpp"
+#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/password_box.hpp"
@@ -42,14 +43,12 @@
 #include "gui/widgets/vertical_scrollbar.hpp"
 #include "gui/widgets/viewport.hpp"
 #include "gui/widgets/window.hpp"
-#include "formula/string_utils.hpp"
 #include "wml_exception.hpp"
 
 #include "utils/functional.hpp"
 
 namespace gui2
 {
-
 static std::map<std::string, widget_builder_func_t>& builder_widget_lookup()
 {
 	static std::map<std::string, widget_builder_func_t> result;
@@ -74,25 +73,25 @@ window* build(CVideo& video, const builder_window::window_resolution* definition
 	// We set the values from the definition since we can only determine the
 	// best size (if needed) after all widgets have been placed.
 	window* win = new window(video,
-								  definition->x,
-								  definition->y,
-								  definition->width,
-								  definition->height,
-								  definition->reevaluate_best_size,
-								  definition->functions,
-								  definition->automatic_placement,
-								  definition->horizontal_placement,
-								  definition->vertical_placement,
-								  definition->maximum_width,
-								  definition->maximum_height,
-								  definition->definition,
-								  definition->tooltip,
-								  definition->helptip);
+		definition->x,
+		definition->y,
+		definition->width,
+		definition->height,
+		definition->reevaluate_best_size,
+		definition->functions,
+		definition->automatic_placement,
+		definition->horizontal_placement,
+		definition->vertical_placement,
+		definition->maximum_width,
+		definition->maximum_height,
+		definition->definition,
+		definition->tooltip,
+		definition->helptip
+	);
+
 	assert(win);
 
-	for(const auto & lg : definition->linked_groups)
-	{
-
+	for(const auto& lg : definition->linked_groups) {
 		if(win->has_linked_size_group(lg.id)) {
 			t_string msg = vgettext("Linked '$id' group has multiple definitions.", {{"id", lg.id}});
 
@@ -135,8 +134,7 @@ builder_widget::builder_widget(const config& cfg)
 {
 }
 
-void
-register_builder_widget(const std::string& id, widget_builder_func_t functor)
+void register_builder_widget(const std::string& id, widget_builder_func_t functor)
 {
 	builder_widget_lookup().emplace(id, functor);
 }
@@ -146,8 +144,7 @@ builder_widget_ptr create_builder_widget(const config& cfg)
 	config::const_all_children_itors children = cfg.all_children_range();
 	VALIDATE(children.size() == 1, "Grid cell does not have exactly 1 child.");
 
-	for(const auto & item : builder_widget_lookup())
-	{
+	for(const auto& item : builder_widget_lookup()) {
 		if(item.first == "window" || item.first == "tooltip") {
 			continue;
 		}
@@ -182,20 +179,19 @@ builder_widget_ptr create_builder_widget(const config& cfg)
  *
  * If this code is executed, which it will cause an assertion failure.
  *
- * Its likeley that this happens becasue some build this as a library file
+ * Its likeley that this happens because some build this as a library file
  * which is then used by the wesnoth executable. For msvc a good try to fix
  * this issue is to add __pragma(comment(linker, "/include:" #TYPE)) or
  * similar in the REGISTER_WIDGET3 macro. For gcc and similar this can only
  * be fixed by using --whole-archive flag when linking this library.
  */
 #if 1
-#define TRY(name)                                                              \
-	do {                                                                       \
-		if(const config& c = cfg.child(#name)) {                               \
-			builder_widget_ptr p =                                            \
-				std::make_shared<implementation::builder_##name>(c);          \
-			assert(false);                                                     \
-		}                                                                      \
+#define TRY(name)                                                                                                      \
+	do {                                                                                                               \
+		if(const config& c = cfg.child(#name)) {                                                                       \
+			builder_widget_ptr p = std::make_shared<implementation::builder_##name>(c);                                \
+			assert(false);                                                                                             \
+		}                                                                                                              \
 	} while(0)
 
 	TRY(stacked_widget);
@@ -248,15 +244,14 @@ builder_widget_ptr create_builder_widget(const config& cfg)
 void builder_window::read(const config& cfg)
 {
 	VALIDATE(!id_.empty(), missing_mandatory_wml_key("window", "id"));
-	VALIDATE(!description_.empty(),
-			 missing_mandatory_wml_key("window", "description"));
+	VALIDATE(!description_.empty(), missing_mandatory_wml_key("window", "description"));
 
 	DBG_GUI_P << "Window builder: reading data for window " << id_ << ".\n";
 
 	config::const_child_itors cfgs = cfg.child_range("resolution");
 	VALIDATE(!cfgs.empty(), _("No resolution defined."));
-	for(const auto & i : cfgs)
-	{
+
+	for(const auto& i : cfgs) {
 		resolutions.emplace_back(i);
 	}
 }
@@ -376,8 +371,7 @@ builder_window::window_resolution::window_resolution(const config& cfg)
 	, reevaluate_best_size(cfg["reevaluate_best_size"])
 	, functions()
 	, vertical_placement(implementation::get_v_align(cfg["vertical_placement"]))
-	, horizontal_placement(
-			  implementation::get_h_align(cfg["horizontal_placement"]))
+	, horizontal_placement(implementation::get_h_align(cfg["horizontal_placement"]))
 	, maximum_width(cfg["maximum_width"])
 	, maximum_height(cfg["maximum_height"])
 	, click_dismiss(cfg["click_dismiss"].to_bool())
@@ -398,14 +392,11 @@ builder_window::window_resolution::window_resolution(const config& cfg)
 	grid = std::make_shared<builder_grid>(builder_grid(c));
 
 	if(!automatic_placement) {
-		VALIDATE(width.has_formula() || width(),
-				 missing_mandatory_wml_key("resolution", "width"));
-		VALIDATE(height.has_formula() || height(),
-				 missing_mandatory_wml_key("resolution", "height"));
+		VALIDATE(width.has_formula() || width(), missing_mandatory_wml_key("resolution", "width"));
+		VALIDATE(height.has_formula() || height(), missing_mandatory_wml_key("resolution", "height"));
 	}
 
-	DBG_GUI_P << "Window builder: parsing resolution " << window_width << ','
-			  << window_height << '\n';
+	DBG_GUI_P << "Window builder: parsing resolution " << window_width << ',' << window_height << '\n';
 
 	if(definition.empty()) {
 		definition = "default";
@@ -414,10 +405,10 @@ builder_window::window_resolution::window_resolution(const config& cfg)
 	linked_groups = parse_linked_group_definitions(cfg);
 }
 
-builder_window::window_resolution::tooltip_info::tooltip_info(const config& cfg, const std::string& tagname) : id(cfg["id"])
+builder_window::window_resolution::tooltip_info::tooltip_info(const config& cfg, const std::string& tagname)
+	: id(cfg["id"])
 {
-	VALIDATE(!id.empty(),
-			 missing_mandatory_wml_key("[window][resolution][" + tagname + "]", "id"));
+	VALIDATE(!id.empty(), missing_mandatory_wml_key("[window][resolution][" + tagname + "]", "id"));
 }
 
 /*WIKI
@@ -494,14 +485,12 @@ builder_grid::builder_grid(const config& cfg)
 {
 	log_scope2(log_gui_parse, "Window builder: parsing a grid");
 
-	for(const auto & row : cfg.child_range("row"))
-	{
+	for(const auto& row : cfg.child_range("row")) {
 		unsigned col = 0;
 
 		row_grow_factor.push_back(row["grow_factor"]);
 
-		for(const auto & c : row.child_range("column"))
-		{
+		for(const auto& c : row.child_range("column")) {
 			flags.push_back(implementation::read_flags(c));
 			border_size.push_back(c["border_size"]);
 			if(rows == 0) {
@@ -522,8 +511,7 @@ builder_grid::builder_grid(const config& cfg)
 		}
 	}
 
-	DBG_GUI_P << "Window builder: grid has " << rows << " rows and " << cols
-			  << " columns.\n";
+	DBG_GUI_P << "Window builder: grid has " << rows << " rows and " << cols << " columns.\n";
 }
 
 grid* builder_grid::build() const
@@ -546,26 +534,22 @@ grid* builder_grid::build(grid* grid) const
 
 	log_scope2(log_gui_general, "Window builder: building grid");
 
-	DBG_GUI_G << "Window builder: grid '" << id << "' has " << rows
-			  << " rows and " << cols << " columns.\n";
+	DBG_GUI_G << "Window builder: grid '" << id << "' has " << rows << " rows and " << cols << " columns.\n";
 
 	for(unsigned x = 0; x < rows; ++x) {
 		grid->set_row_grow_factor(x, row_grow_factor[x]);
-		for(unsigned y = 0; y < cols; ++y) {
 
+		for(unsigned y = 0; y < cols; ++y) {
 			if(x == 0) {
 				grid->set_column_grow_factor(y, col_grow_factor[y]);
 			}
 
-			DBG_GUI_G << "Window builder: adding child at " << x << ',' << y
-					  << ".\n";
+			DBG_GUI_G << "Window builder: adding child at " << x << ',' << y << ".\n";
 
-			widget* widget = widgets[x * cols + y]->build();
-			grid->set_child(widget,
-							x,
-							y,
-							flags[x * cols + y],
-							border_size[x * cols + y]);
+			const unsigned int i = x * cols + y;
+
+			widget* widget = widgets[i]->build();
+			grid->set_child(widget, x, y, flags[i], border_size[i]);
 		}
 	}
 
@@ -580,25 +564,20 @@ void builder_grid::build(grid& grid, const replacements_map& replacements) const
 
 	log_scope2(log_gui_general, "Window builder: building grid");
 
-	DBG_GUI_G << "Window builder: grid '" << id << "' has " << rows
-			  << " rows and " << cols << " columns.\n";
+	DBG_GUI_G << "Window builder: grid '" << id << "' has " << rows << " rows and " << cols << " columns.\n";
 
 	for(unsigned x = 0; x < rows; ++x) {
 		grid.set_row_grow_factor(x, row_grow_factor[x]);
-		for(unsigned y = 0; y < cols; ++y) {
 
+		for(unsigned y = 0; y < cols; ++y) {
 			if(x == 0) {
 				grid.set_column_grow_factor(y, col_grow_factor[y]);
 			}
 
-			DBG_GUI_G << "Window builder: adding child at " << x << ',' << y
-					  << ".\n";
+			DBG_GUI_G << "Window builder: adding child at " << x << ',' << y << ".\n";
 
-			grid.set_child(widgets[x * cols + y]->build(replacements),
-						   x,
-						   y,
-						   flags[x * cols + y],
-						   border_size[x * cols + y]);
+			const unsigned int i = x * cols + y;
+			grid.set_child(widgets[i]->build(replacements), x, y, flags[i], border_size[i]);
 		}
 	}
 }
