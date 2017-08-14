@@ -39,6 +39,8 @@ Version 1.13.8+dev:
    * Support the extra wesnoth.match_unit arguments also in wesnoth.get_units
    * Fix wesnoth.put_unit not correctly deciding whether to fire the unit placed
      event in some situations
+   * wesnoth.debug() can now be called from map generators or plugins. It is
+     also deprecated, however; you should use wml.tostring() instead.
  * Multiplayer:
    * When set to remember your password, Wesnoth now encrypts it. It is still
      possible to obtain the password from preferences, but it's no longer as
@@ -61,6 +63,12 @@ Version 1.13.8+dev:
    * Allow deleting saves with the Delete key in the Load dialog.
    * Fixed team selection screen often ignoring attempts to scroll (bug #1632).
    * Input Method Editor support in most textboxes (except in-game chat)
+   * Campaign dialog now uses different-coloured victory wreaths depending on
+     the difficulty you beat the campaign on
+   * Campaign dialog can now be sorted in alphabetical or chronological order
+   * Fixed a number of issues with hotkeys
+   * Fixed the viewport being moved when changing the zoom level
+   * Fixed an occasional interface hang where only the menus work
  * Miscellaneous and Bug Fixes:
    * Add --report/-R command line switch for printing the same report from the
      Game Version dialog's clipboard function to stdout.
