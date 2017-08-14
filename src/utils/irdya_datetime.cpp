@@ -13,6 +13,8 @@ See the COPYING file for more details.
 
 #include "utils/irdya_datetime.hpp"
 #include "gettext.hpp"
+#include "formula/string_utils.hpp"
+#include "tstring.hpp"
 #include <exception>
 
 irdya_date irdya_date::read_date(const std::string& date)
@@ -42,26 +44,22 @@ irdya_date irdya_date::read_date(const std::string& date)
 
 std::string irdya_date::to_string() const
 {
-	std::string result = std::to_string(year) + " ";
+	utils::string_map args {{"year", std::to_string(year)}};
 	switch(epoch.v) {
 		case EPOCH::BEFORE_WESNOTH:
-			// TRANSLATORS: "Before Wesnoth" - epoch suffix for years prior to the founding of Wesnoth
-			result += _("BW");
-			break;
+			// TRANSLATORS: "Before Wesnoth" - format for years prior to the founding of Wesnoth
+			return VGETTEXT("$year BW", args);
 		case EPOCH::WESNOTH:
-			// TRANSLATORS: "Year of Wesnoth" - epoch suffix for years after the founding of Wesnoth
-			result += _("YW");
-			break;
+			// TRANSLATORS: "Year of Wesnoth" - format for years after the founding of Wesnoth
+			return VGETTEXT("$year YW", args);
 		case EPOCH::BEFORE_FALL:
-			// TRANSLATORS: "Before the Fall" - epoch suffix for years prior to the fall of Wesnoth
-			result += _("BF");
-			break;
+			// TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
+			return VGETTEXT("$year BF", args);
 		case EPOCH::AFTER_FALL:
-			// TRANSLATORS: "After the Fall" - epoch suffix for years after the fall of Wesonth
-			result += _("AF");
-			break;
+			// TRANSLATORS: "After the Fall" - format for years after the fall of Wesonth
+			return VGETTEXT("$year AF", args);
 	}
-	return result;
+	return "";
 }
 
 bool operator<(const irdya_date& a, const irdya_date& b)
