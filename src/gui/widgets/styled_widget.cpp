@@ -73,7 +73,7 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 	: widget(builder)
 	, definition_(builder.definition)
 	, label_(builder.label_string)
-	, use_markup_(false)
+	, use_markup_(builder.use_markup)
 	, use_tooltip_on_label_overflow_(builder.use_tooltip_on_label_overflow)
 	, tooltip_(builder.tooltip)
 	, help_message_(builder.help)
