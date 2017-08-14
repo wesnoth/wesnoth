@@ -50,6 +50,7 @@ def write_addon_overview(folder, addon):
 
     w('</div> <!-- overview -->')
 
+    w(html_output.build_timestamp())
     w(html_output.website_footer())
 
 
@@ -172,6 +173,7 @@ def main(folder):
 
     w('</div> <!-- overview -->')
 
+    w(html_output.build_timestamp())
     w(html_output.website_footer())
 
 if __name__ == "__main__":

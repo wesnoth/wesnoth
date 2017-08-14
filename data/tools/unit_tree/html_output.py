@@ -112,8 +112,6 @@ WESMERE_HEADER = '''\
 WESMERE_FOOTER = '''\
 </div> <!-- end content -->
 
-<div class="centerbox"><div id="lastmod">%(generation_note)s</div></div>
-
 </div> <!-- end main -->
 
 <div id="footer-sep"></div>
@@ -145,11 +143,13 @@ def website_header(title='', path='../../', classes=[]):
         "cssver":    WESMERE_CSS_VERSION,
         "classes":   ' '.join(['wmlunits'] + classes)}
 
-def website_footer(timestamp=''):
-    """Returns the website footer, including the current timestamp."""
-    if not timestamp:
-        timestamp = "Last updated on " + time.ctime() + "."
-    return WESMERE_FOOTER % { "generation_note": timestamp }
+def website_footer():
+    """Returns the website footer."""
+    return WESMERE_FOOTER
+
+def build_timestamp():
+    """Returns an element containing the current date and time."""
+    return '<div id="lastmod">Last updated on %s.</div>' % time.ctime()
 
 
 all_written_html_files = []
@@ -934,6 +934,7 @@ class HTMLOutput:
         self.write_units()
 
         self.output.write(HTML_CLEAR_FLOATS)
+        self.output.write(build_timestamp())
         self.output.write('</div>')
 
         self.output.write(website_footer())
@@ -1292,6 +1293,7 @@ class HTMLOutput:
         write('</div>') # columns parent
 
         self.output.write(HTML_CLEAR_FLOATS)
+        self.output.write(build_timestamp())
         write('</div>') # main
 
         self.output.write(website_footer())
