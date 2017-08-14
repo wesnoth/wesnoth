@@ -19,7 +19,7 @@ function callbacks.generate_map(params)
 		end
 	end
 
-	local function clear_tile(x, y)
+	local function clear_tile(x, y, terrain_clear)
 		if not map:on_board(x,y) then
 			return
 		end
@@ -30,7 +30,39 @@ function callbacks.generate_map(params)
 		if r <= params.village_density then
 			map:set_tile(x, y, mathx.random_choice(params.terrain_village))
 		else
-			map:set_tile(x, y, mathx.random_choice(params.terrain_clear))
+			map:set_tile(x, y, mathx.random_choice(terrain_clear or params.terrain_clear))
+		end
+	end
+
+	local function place_road(to_x, to_y, from_x, from_y, road_ops, terrain_clear)
+		if not map:on_board(to_x, to_y) then
+			return
+		end
+		if map:get_tile(to_x, to_y) == params.terrain_castle or map:get_tile(to_x, to_y) == params.terrain_keep then
+			return
+		end
+		local tile_op = road_ops[map:get_tile(to_x, to_y)]
+		if tile_op then
+			if tile_op.convert_to_bridge and from_x and from_y then
+				local bridges = {}
+				for elem in tile_op.convert_to_bridge:gmatch("[^%s,][^,]*") do
+					table.insert(bridges, elem)
+				end
+				local dir = wesnoth.map.get_relative_dir(from_x, from_y, to_x, to_y)
+				if dir == 'n' or dir == 's' then
+					map:set_tile(to_x, to_y, bridges[1])
+				elseif dir == 'sw' or dir == 'ne' then
+					map:set_tile(to_x, to_y, bridges[2])
+				elseif dir == 'se' or dir == 'nw' then
+					map:set_tile(to_x, to_y, bridges[3])
+				end
+			elseif tile_op.convert_to then
+				local tile = mathx.random_choice(tile_op.convert_to)
+				map:set_tile(to_x, to_y, tile)
+			end
+		else
+			local tile = mathx.random_choice(terrain_clear or params.terrain_clear)
+			map:set_tile(to_x, to_y, tile)
 		end
 	end
 
@@ -66,17 +98,25 @@ function callbacks.generate_map(params)
 			locs_set = locs_set,
 			id = id,
 			items = items,
+			data = chamber,
 		})
 		chambers_by_id[id] = chambers[#chambers]
 		for passage in wml.child_range(chamber, "passage") do
 			local dst = chambers_by_id[passage.destination]
 			if dst ~= nil then
+				local road_costs, road_ops = {}, {}
+				for road in wml.child_range(passage, "road_cost") do
+					road_costs[road.terrain] = road.cost
+					road_ops[road.terrain] = road
+				end
 				table.insert(passages, {
 					start_x = x,
 					start_y = y,
 					dest_x = dst.center_x,
 					dest_y = dst.center_y,
 					data = passage,
+					costs = road_costs,
+					roads = road_ops,
 				})
 			end
 		end
@@ -86,7 +126,7 @@ function callbacks.generate_map(params)
 	for i,v in ipairs(chambers) do
 		local locs_list = {}
 		for x, y in v.locs_set:stable_iter() do
-			clear_tile(x, y)
+			clear_tile(x, y, v.data.terrain_clear)
 			if map:on_inner_board(x, y) then
 				table.insert(locs_list, {x,y})
 			end
@@ -122,8 +162,11 @@ function callbacks.generate_map(params)
 					return math.huge
 				end
 				local res = 1.0
-				if map:get_tile(x, y) == params.terrain_wall then
+				local tile = map:get_tile(x, y)
+				if tile == params.terrain_wall then
 					res = laziness
+				else
+					res = v.costs[tile] or 1.0
 				end
 				if windiness > 1 then
 					res = res * random(windiness)
@@ -135,8 +178,16 @@ function callbacks.generate_map(params)
 			for j, loc in ipairs(path) do
 				local locs_set = LS.create()
 				build_chamber(loc[1], loc[2], locs_set, width, jagged)
+				local prev_x, prev_y
 				for x,y in locs_set:stable_iter() do
-					clear_tile(x, y)
+					local r = 1000
+					if v.data.place_villages then r = random(1000) end
+					if r <= params.village_density then
+						place_road(x, y, prev_x, prev_y, v.roads, params.terrain_village)
+					else
+						place_road(x, y, prev_x, prev_y, v.roads, v.data.terrain_clear)
+					end
+					prev_x, prev_y = x, y
 				end
 			end
 		end

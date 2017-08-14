@@ -95,7 +95,7 @@ function map_mt.__tostring(map)
 	for y = 0, map.h - 1 do
 		local string_builder = {}
 		for x = 0, map.w - 1 do
-			local tile_string = map:get_tile(x, y)
+			local tile_string = map:get_tile(x, y) or 'Xv'
 			if map.locations and map.locations:get(x,y) then
 				for i,v in ipairs(map.locations:get(x,y)) do
 					tile_string = v .. ' ' .. tile_string
