@@ -1,8 +1,11 @@
+
+local _ = wesnoth.textdomain "wesnoth-ai"
+
+wesnoth.deprecation_message('data/ai/lua/patrol.lua', 1, nil, _"Use the Patrols Micro AI instead of patrol.lua.")
+
 function patrol_gen(n, wp)
     -- n is the name of the unit, like Kiressh
     -- wp - a table of waypoint tables of form {x,y}
-
-    wesnoth.message('data/ai/lua/patrol.lua is deprecated. Use the Patrols Micro AI instead.')
 
     local unit = wesnoth.get_units({name=n})[1]
 

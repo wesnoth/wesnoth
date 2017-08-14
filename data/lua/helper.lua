@@ -333,54 +333,20 @@ helper.parsed = wml.parsed
 helper.shallow_literal = wml.shallow_literal
 helper.shallow_parsed = wml.shallow_parsed
 
---[[ Uncomment after 1.14
-helper.distance_between = helper.deprecate(
-	"helper.distance_between is deprecated; use wesnoth.map.distance_between instead",
-	wesnoth.map.distance_between)
-helper.get_child = helper.deprecate(
-	"helper.get_child is deprecated; use wml.get_child instead", wml.get_child)
-helper.get_nth_child = helper.deprecate(
-	"helper.get_nth_child is deprecated; use wml.get_nth_child instead", wml.get_nth_child)
-helper.child_count = helper.deprecate(
-	"helper.child_count is deprecated; use wml.child_count instead", wml.child_count)
-helper.child_range = helper.deprecate(
-	"helper.child_range is deprecated; use wml.child_range instead", wml.child_range)
-helper.child_array = helper.deprecate(
-	"helper.child_array is deprecated; use wml.child_array instead", wml.child_array)
-helper.get_variable_array = helper.deprecate(
-	"helper.get_variable_array is deprecated; use wml.variable.get_array instead",
-	wml.variable.get_array)
-helper.set_variable_array = helper.deprecate(
-	"helper.set_variable_array is deprecated; use wml.variable.set_array instead",
-	wml.variable.set_array)
-helper.get_variable_proxy_array = helper.deprecate(
-	"helper.get_variable_proxy_array is deprecated; use wml.variable.get_proxy_array instead",
-	wml.variable.get_proxy_array)
-helper.literal = helper.deprecate(
-	"helper.literal is deprecated; use wml.literal instead", wml.literal)
-helper.parsed = helper.deprecate(
-	"helper.parsed is deprecated; use wml.parsed instead", wml.parsed)
-helper.shallow_literal = helper.deprecate(
-	"helper.shallow_literal is deprecated; use wml.shallow_literal instead", wml.shallow_literal)
-helper.shallow_parsed = helper.deprecate(
-	"helper.shallow_parsed is deprecated; use wml.shallow_parsed instead", wml.shallow_parsed)
-helper.set_wml_var_metatable = helper.deprecate(
-	"helper.set_wml_var_metatable is deprecated; use wml.variable.proxy instead " ..
-	"which has the metatable already set", helper.set_wml_var_metatable)
-helper.set_wml_tag_metatable = helper.deprecate(
-	"helper.set_wml_tag_metatable is deprecated; use wml.tag instead " ..
-	"which has the metatable already set", helper.set_wml_tag_metatable)
-
-wesnoth.get_variable = helper.deprecate(
-	"wesnoth.get_variable is deprecated; use wml.variable.get instead", wesnoth.get_variable)
-wesnoth.set_variable = helper.deprecate(
-	"wesnoth.set_variable is deprecated; use wml.variable.set instead", wesnoth.set_variable)
-wesnoth.get_all_vars = helper.deprecate(
-	"wesnoth.get_all_vars is deprecated; use wml.variable.get_all instead", wesnoth.get_all_vars)
-wesnoth.tovconfig = helper.deprecate(
-	"wesnoth.tovconfig is deprecated; use wml.tovconfig instead", wesnoth.tovconfig)
-wesnoth.debug = helper.deprecate(
-	"wesnoth.debug is deprecated; use wml.tostring instead", wesnoth.debug)
---]]
+helper.distance_between = wesnoth.deprecate_api('helper.distance_between', 'wesnoth.map.distance_between', 1, nil, helper.distance_between)
+helper.get_child = wesnoth.deprecate_api('helper.get_child', 'wml.get_child', 1, nil, wml.get_child)
+helper.get_nth_child = wesnoth.deprecate('helper.get_nth_child', 'wml.get_nth_child', 1, nil, wml.get_nth_child)
+helper.child_count = wesnoth.deprecate_api('helper.child_count', 'wml.child_count', 1, nil, wml.child_count)
+helper.child_range = wesnoth.deprecate_api('helper.child_range', 'wml.child_range', 1, nil, wml.child_range)
+helper.child_array = wesnoth.deprecate_api('helper.child_array', 'wml.child_array', 1, nil, wml.child_array)
+helper.get_variable_array = wesnoth.deprecate_api('helper.get_variable_array', 'wml.variable.get_array', 1, nil, wml.variable.get_array)
+helper.set_variable_array = wesnoth.deprecate_api('helper.set_variable_array', 'wml.variable.set_array', 1, nil, wml.variable.set_array)
+helper.get_variable_proxy_array = wesnoth.deprecate_api('helper.get_variable_proxy_array', 'wml.variable.get_proxy_array', 1, nil, wml.variable.get_proxy_array)
+helper.literal = wesnoth.deprecate_api('helper.literal', 'wml.literal', 1, nil, wml.literal)
+helper.parsed = wesnoth.deprecate_api('helper.parsed', 'wml.parsed', 1, nil, wml.parsed)
+helper.shallow_literal = wesnoth.deprecate_api('helper.shallow_literal', 'wml.shallow_literal', 1, nil, wml.shallow_literal)
+helper.shallow_parsed = wesnoth.deprecate_api('helper.shallow_parsed', 'wml.shallow_parsed', 1, nil, wml.shallow_parsed)
+helper.set_wml_var_metatable = wesnoth.deprecate_api('helper.set_wml_var_metatable', 'wml.variable.proxy', 1, nil, helper.set_wml_var_metatable)
+helper.set_wml_tag_metatable = wesnoth.deprecate_api('helper.set_wml_tag_metatable', 'wml.tag', 1, nil, helper.set_wml_tag_metatable)
 
 return helper

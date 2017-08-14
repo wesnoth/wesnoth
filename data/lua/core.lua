@@ -144,6 +144,86 @@ function wml.shallow_parsed(cfg)
 	end
 end
 
+--[========[Deprecation Helpers]========]
+
+local _ = wesnoth.textdomain "wesnoth"
+
+-- Note: When using version (for level 2 or 3 deprecation), specify the first version
+-- in which the feature could be removed... NOT the version at which it was deprecated.
+local function wesnoth.deprecation_message(elem_name, level, version, detail)
+	local message_params = {elem = elem_name}
+	local logger
+	local message
+	if level == 1 then
+		logger = function(msg) wesnoth.log("info", msg) end
+		message = wesnoth.format(_"$elem has been deprecated indefinitely.", message_params)
+	elseif level == 2 then
+		logger = function(msg) wesnoth.log("warn", msg) end
+		if wesnoth.compare_versions(game_config.version, "<", version) then
+			message_params.version = version
+			message = wesnoth.format(_"$elem has been deprecated and may be removed in version $version.", message_params)
+		else
+			message = wesnoth.format(_"$elem has been deprecated and may be removed at any time.", message_params)
+		end
+	elseif level == 3 then
+		logger = function(msg) wesnoth.log("err", msg) end
+		message = wesnoth.format(_"$elem has been deprecated and will be removed in the next version.", message_params)
+	elseif level == 4 then
+		logger = error
+		message = wesnoth.format(_"$elem has been deprecated and removed.", message_params)
+	else
+		error(_"Invalid deprecation level (should be 1-4)")
+	end
+	if len(detail) > 0 then
+		logger(message .. "\n  " .. detail)
+	else
+		logger(message)
+	end
+end
+
+-- Usage: module.something = wesnoth.deprecate(module.something, "something", ...)
+function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, detail_msg)
+	local message = detail_msg or ''
+	if replacement then
+		message = message .. " " .. wesnoth.format(_"(Note: You should use $replacement instead in new code)", {replacement = replacement})
+	end
+	if type(level) ~= "number" or level < 1 or level > 4 then
+		error("Invalid deprecation level! Must be 1-4.")
+	end
+	local msg_shown = false
+	if type(elem) == "function" then
+		return function(...)
+			if not msg_shown then
+				msg_shown = true
+				wesnoth.deprecation_message(elem_name, level, version, message)
+			end
+			return elem(...)
+		end
+	elseif type(elem) == "table" or type(elem) == "userdata" then
+		local mt = {
+			__index = function(key)
+				if not msg_shown then
+					msg_shown = true
+					wesnoth.deprecation_message(elem_name, level, version, message)
+				end
+				return elem[key]
+			end,
+			__newindex = function(key, val)
+				if not msg_shown then
+					msg_shown = true
+					wesnoth.deprecation_message(elem_name, level, version, message)
+				end
+				elem[key] = val
+			end,
+		}
+		return setmetatable({}, mt)
+	else
+		wesnoth.log('warn', "Attempted to deprecate something that is not a table or function: " ..
+			elem_name .. " -> " .. replacement .. ", where " .. elem_name .. " = " .. tostring(elem))
+	end
+	return elem
+end
+
 if wesnoth.kernel_type() == "Game Lua Kernel" then
 	--[========[Basic variable access]========]
 
@@ -270,3 +350,12 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		return result
 	end
 end
+
+-- Some C++ functions are deprecated; apply the messages here.
+-- Note: It must happen AFTER the C++ functions are reassigned above to their new location.
+-- These deprecated functions will probably never be removed.
+wesnoth.get_variable = wesnoth.deprecate_api('wesnoth.get_variable', 'wml.variable.get', 1, nil, wesnoth.get_variable)
+wesnoth.set_variable = wesnoth.deprecate_api('wesnoth.set_variable', 'wml.variable.set', 1, nil, wesnoth.set_variable)
+wesnoth.get_all_vars = wesnoth.deprecate_api('wesnoth.get_all_vars', 'wml.variable.get_all', 1, nil, wesnoth.get_all_vars)
+wesnoth.tovconfig = wesnoth.deprecate_api('wesnoth.tovconfig', 'wml.tovconfig', 1, nil, wesnoth.tovconfig)
+wesnoth.debug = wesnoth.deprecate_api('wesnoth.debug', 'wml.tostring', 1, nil, wesnoth.debug)
