@@ -591,7 +591,7 @@ class HTMLOutput:
                     add_menuitem(url, racename)
             end_menu()
         else:
-            add_menu("races_menu", _("Factions", "wesnoth-help"))
+            add_menu("races_menu", _("Factions"))
             for row in self.unitgrid:
                 for column in range(6):
                     hspan, vspan, un = row[column]
@@ -869,7 +869,7 @@ class HTMLOutput:
 
                         write('<table><colgroup><col class="attribute-label"><col class="attribute-value">')
                         attributes = (
-                            (_("Cost: ", "wesnoth-help"), cost),
+                            (_("Cost: "), cost),
                             (_("HP: "), hp),
                             (_("XP: "), xp),
                             (_("MP: "), mp),
@@ -1021,7 +1021,7 @@ class HTMLOutput:
         write('<table class="unitinfo">\n')
 
         # Advances-from list
-        write('<tr><th>%s</th><td>' % cleantext(_("Advances from: ", "wesnoth-help"), quote=False))
+        write('<tr><th>%s</th><td>' % cleantext(_("Advances from: "), quote=False))
         have_advances = False
         for pid in self.forest.get_parents(uid):
             punit = self.wesnoth.unit_lookup[pid]
@@ -1040,7 +1040,7 @@ class HTMLOutput:
         write('</td></tr>\n')
 
         # Advances-to list
-        write('<tr><th>%s</th><td>' % cleantext(_("Advances to: ", "wesnoth-help"), quote=False))
+        write('<tr><th>%s</th><td>' % cleantext(_("Advances to: "), quote=False))
         have_advances = False
         for cid in self.forest.get_children(uid):
             try:
@@ -1066,13 +1066,13 @@ class HTMLOutput:
         write('</td></tr>\n')
 
         attributes = [
-            ("cost",       _("Cost: ", "wesnoth-help")),
+            ("cost",       _("Cost: ")),
             ("hitpoints",  _("HP: ")),
-            ("movement",   _("Movement", "wesnoth-help") + ": "),
-            ("vision",     _("Vision", "wesnoth-help") + ": "),
-            ("jamming",    _("Jamming", "wesnoth-help") + ":"),
+            ("movement",   _("Moves: ")),
+            ("vision",     _("Vision: ")),
+            ("jamming",    _("Jamming: ")),
             ("experience", _("XP: ")),
-            ("level",      _("Level") + ": "),
+            ("level",      _("Level: ")),
             ("alignment",  _("Alignment: ")),
             ("id",         "Id: ")
         ]
@@ -1089,7 +1089,7 @@ class HTMLOutput:
         anames = self.get_abilities(unit)
 
         write('<tr>\n')
-        write('<th>%s</th>' % cleantext(_("Abilities: ", "wesnoth-help"), quote=False))
+        write('<th>%s</th>' % cleantext(_("Abilities: "), quote=False))
         if len(anames):
             write('<td class="val">' + cleantext(', '.join(anames), quote=False) + '</td>')
         else:
@@ -1100,7 +1100,7 @@ class HTMLOutput:
 
         # Write info about attacks.
         write('<h2>%s <small>(damage %s count)</small></h2>\n' %
-              (cleantext(_("unit help^Attacks", "wesnoth-help"), quote=False),
+              (cleantext(_("unit help^Attacks"), quote=False),
                HTML_ENTITY_MULTIPLICATION_SIGN))
         write('<table class="unitinfo attacks">\n')
         write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /></colgroup>')
@@ -1207,15 +1207,15 @@ class HTMLOutput:
             write('</div>')
 
         # Write info about movement costs and terrain defense.
-        write('<h2>' + cleantext(_("Terrain", "wesnoth-help"), quote=False) + '</h2>\n')
+        write('<h2>' + cleantext(_("Terrain"), quote=False) + '</h2>\n')
         write('<table class="unitinfo terrain">\n')
         write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /></colgroup>')
 
         write('<thead>')
         write('<tr><th colspan="2"><span class="sr-label">%s</span></th><th class="mvtcost">%s</th><th class="numheader">%s</th></tr>\n' % (
-            cleantext(_("Terrain", "wesnoth-help"), quote=False),
-            cleantext(_("Movement Cost", "wesnoth-help"), quote=False),
-            cleantext(_("Defense", "wesnoth-help"), quote=False)))
+            cleantext(_("Terrain"), quote=False),
+            cleantext(_("Movement Cost"), quote=False),
+            cleantext(_("Defense"), quote=False)))
         write('</thead>')
 
         terrains = self.wesnoth.terrain_lookup
