@@ -15,7 +15,7 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include "gui/widgets/styled_widget.hpp"
+#include "gui/widgets/widget.hpp"
 
 namespace gui2
 {

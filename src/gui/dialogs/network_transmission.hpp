@@ -15,7 +15,6 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
-#include "gui/widgets/styled_widget.hpp"
 #include "network_asio.hpp"
 #include <boost/optional.hpp>
 #include "events.hpp"
