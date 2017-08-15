@@ -33,7 +33,9 @@ public:
 		, choice_(-1)
 		, deterministic_(false)
 		, mod_states_()
+		, page_ids_()
 		, current_sorting_(RANK)
+		, currently_sorted_asc_(true)
 	{
 		set_restore(true);
 	}
@@ -63,9 +65,6 @@ private:
 	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
-	enum CAMPAIGN_ORDER {RANK, DATE, NAME} current_sorting_;
-	bool currently_sorted_asc_ = true;
-
 	void sort_campaigns(window& window, CAMPAIGN_ORDER order, bool ascending);
 
 	void add_campaign_to_tree(window& window, const config& campaign);
@@ -85,6 +84,10 @@ private:
 	boost::dynamic_bitset<> mod_states_;
 
 	std::vector<std::string> page_ids_;
+
+	enum CAMPAIGN_ORDER {RANK, DATE, NAME} current_sorting_;
+
+	bool currently_sorted_asc_;
 };
 
 } // namespace dialogs
