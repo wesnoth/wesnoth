@@ -47,13 +47,13 @@ public:
 	public:
 		context(const display_context & dc, display & disp, const tod_manager & tod, std::shared_ptr<wb::manager> wb, boost::optional<events::mouse_handler &> mhb) : dc_(dc), disp_(disp), tod_(tod), wb_(wb), mhb_(mhb) {}
 
-		const std::vector<team> & teams() { return dc_.teams(); }
-		const unit_map & units() { return dc_.units(); }
-		const gamemap & map() { return dc_.map(); }
+		const std::vector<team> & teams() const { return dc_.teams(); }
+		const unit_map & units() const { return dc_.units(); }
+		const gamemap & map() const { return dc_.map(); }
 
-		const display_context & dc() { return dc_; }
+		const display_context & dc() const { return dc_; }
 		display & screen() { return disp_; }
-		const tod_manager & tod() { return tod_; }
+		const tod_manager & tod() const { return tod_; }
 		std::shared_ptr<wb::manager> wb() { return wb_; }
 		boost::optional<events::mouse_handler&> mhb() { return mhb_; }
 
