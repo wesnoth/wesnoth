@@ -14,6 +14,7 @@ See the COPYING file for more details.
 #pragma once
 
 #include "utils/make_enum.hpp"
+#include <ostream>
 #include <vector>
 #include <string>
 
@@ -50,3 +51,5 @@ bool operator>(const irdya_date& a, const irdya_date& b);
 bool operator>=(const irdya_date& a, const irdya_date& b);
 bool operator==(const irdya_date& a, const irdya_date& b);
 bool operator!=(const irdya_date& a, const irdya_date& b);
+
+std::ostream& operator<<(std::ostream& s, const irdya_date& d);

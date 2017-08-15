@@ -112,3 +112,8 @@ bool operator!=(const irdya_date& a, const irdya_date& b)
 	return !(a == b);
 }
 
+std::ostream& operator<<(std::ostream& s, const irdya_date& d)
+{
+	s << d.to_string();
+	return s;
+}
