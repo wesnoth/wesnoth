@@ -738,10 +738,12 @@ class HTMLOutput:
                 already[id] = True
                 name = T(ability, "name")
                 if not name:
-                    name = id
-                if not name:
                     name = ability.name.decode("utf8")
-                anames.append(name)
+                # Only add abilities with a label, since those that lack one
+                # are normally hidden in the game and used to implement more
+                # complex ones.
+                if name:
+                    anames.append(name)
         return anames
 
     def get_recursive_attacks(self, this_unit):
