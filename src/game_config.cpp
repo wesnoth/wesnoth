@@ -317,9 +317,9 @@ void load_config(const config &v)
 		game_logo             = i["game_logo"].str();
 		game_logo_background  = i["game_logo_background"].str();
 
-		victory_laurel = i["victory_laurel"];
-		victory_laurel_hardest = i["victory_laurel_hardest"];
-		victory_laurel_easy = i["victory_laurel_easy"];
+		victory_laurel = i["victory_laurel"].str();
+		victory_laurel_hardest = i["victory_laurel_hardest"].str();
+		victory_laurel_easy = i["victory_laurel_easy"].str();
 
 		orb    = i["orb"].str();
 		energy = i["energy"].str();
