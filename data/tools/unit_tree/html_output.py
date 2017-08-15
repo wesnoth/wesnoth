@@ -652,7 +652,7 @@ class HTMLOutput:
                 end_menu()
 
         # Languages
-        add_menu("languages_menu", _("Language"), is_table_container=True)
+        add_menu("languages_menu", _("Language", "wesnoth-lib"), is_table_container=True)
         cell = 0
         col = 0
         colcount = 5
