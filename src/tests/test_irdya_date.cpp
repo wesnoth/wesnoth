@@ -35,14 +35,14 @@ BOOST_AUTO_TEST_CASE(test_irdya_date_parse) {
 }
 
 BOOST_AUTO_TEST_CASE(test_irdya_date_equal) {
-	irdya_date first(EPOCH::WESNOTH, 12);
-	irdya_date second(EPOCH::WESNOTH, 12);
+	irdya_date first(irdya_date::EPOCH::WESNOTH, 12);
+	irdya_date second(irdya_date::EPOCH::WESNOTH, 12);
 	BOOST_CHECK_EQUAL(first, second);
 }
 
 BOOST_AUTO_TEST_CASE(test_irdya_date_ordering) {
-	irdya_date BW_34(EPOCH::BEFORE_WESNOTH, 34), BW_12(EPOCH::BEFORE_WESNOTH, 12), YW_40(EPOCH::WESNOTH, 40), YW_52(EPOCH::WESNOTH, 52);
-	irdya_date BF_29(EPOCH::BEFORE_FALL, 29), BF_42(EPOCH::BEFORE_FALL, 42), AF_12(EPOCH::AFTER_FALL, 12), AF_102(EPOCH::AFTER_FALL, 102), Y0;
+	irdya_date BW_34(irdya_date::EPOCH::BEFORE_WESNOTH, 34), BW_12(irdya_date::EPOCH::BEFORE_WESNOTH, 12), YW_40(irdya_date::EPOCH::WESNOTH, 40), YW_52(irdya_date::EPOCH::WESNOTH, 52);
+	irdya_date BF_29(irdya_date::EPOCH::BEFORE_FALL, 29), BF_42(irdya_date::EPOCH::BEFORE_FALL, 42), AF_12(irdya_date::EPOCH::AFTER_FALL, 12), AF_102(irdya_date::EPOCH::AFTER_FALL, 102), Y0;
 
 	BOOST_CHECK(BW_34 < BW_12);
 	BOOST_CHECK(BW_34 < YW_40);
@@ -56,14 +56,14 @@ BOOST_AUTO_TEST_CASE(test_irdya_date_ordering) {
 	BOOST_CHECK(BW_12 < YW_40);
 	BOOST_CHECK(BW_12 < YW_52);
 	BOOST_CHECK(BW_12 < BF_42);
-	BOOST_CHECK(BW_12 < BW_29);
+	BOOST_CHECK(BW_12 < BF_29);
 	BOOST_CHECK(BW_12 < AF_12);
 	BOOST_CHECK(BW_12 < AF_102);
 	BOOST_CHECK(BW_12 < Y0);
 
 	BOOST_CHECK(YW_40 < YW_52);
 	BOOST_CHECK(YW_40 < BF_42);
-	BOOST_CHECK(Y@_40 < BF_29);
+	BOOST_CHECK(YW_40 < BF_29);
 	BOOST_CHECK(YW_40 < AF_12);
 	BOOST_CHECK(YW_40 < AF_102);
 	BOOST_CHECK(YW_40 < Y0);
