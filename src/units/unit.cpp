@@ -414,10 +414,6 @@ unit::unit(const config& cfg, bool use_traits, const vconfig* vcfg)
 		overlays_.clear();
 	}
 
-	if(const config& variables = cfg.child("variables")) {
-		variables_ = variables;
-	}
-
 	if(vcfg) {
 		const vconfig& filter_recall = vcfg->child("filter_recall");
 		if(!filter_recall.null())
@@ -451,6 +447,10 @@ unit::unit(const config& cfg, bool use_traits, const vconfig* vcfg)
 
 	// Apply the unit type's data to this unit.
 	advance_to(*type_, use_traits);
+
+	if(const config& variables = cfg.child("variables")) {
+		variables_ = variables;
+	}
 
 	if(const config::attribute_value* v = cfg.get("race")) {
 		if(const unit_race *r = unit_types.find_race(*v)) {
@@ -2294,6 +2294,8 @@ std::string unit::default_anim_image() const
 void unit::apply_modifications()
 {
 	log_scope("apply mods");
+
+	variables_.clear_children("mods");
 
 	for(const auto& mod : ModificationTypes) {
 		if(mod == "advance" && modifications_.has_child(mod)) {
