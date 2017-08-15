@@ -6,13 +6,6 @@ wmlunits -- tool to output information on all units in HTML
 Run without arguments to see usage.
 """
 
-# Makes things faster on 32-bit systems
-try:
-    import psyco
-    psyco.full()
-except ImportError:
-    pass
-
 import argparse
 import os
 import shutil
