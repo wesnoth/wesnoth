@@ -1254,7 +1254,8 @@ class HTMLOutput:
             if defense == '-':
                 defense = 100
 
-            cost_rating = mvtcost_rating_color_class(move_cost, uval('movement'))
+            total_movement = uval('movement')
+            cost_rating = mvtcost_rating_color_class(move_cost, total_movement)
 
             try:
                 defense = int(defense)
@@ -1272,7 +1273,7 @@ class HTMLOutput:
                 classes_cost.append('rating-' + cost_rating)
             if defense_rating:
                 classes_defense.append('rating-' + defense_rating)
-            if move_cost == '-':
+            if move_cost == '-' or int_fallback(total_movement) <= int_fallback(move_cost, 99):
                 move_cost = HTML_ENTITY_FIGURE_DASH
             else:
                 move_cost = cleantext(move_cost, quote=False)
