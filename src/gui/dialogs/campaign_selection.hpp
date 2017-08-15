@@ -27,6 +27,7 @@ namespace dialogs
 
 class campaign_selection : public modal_dialog
 {
+	enum CAMPAIGN_ORDER {RANK, DATE, NAME};
 public:
 	explicit campaign_selection(ng::create_engine& eng)
 		: engine_(eng)
@@ -85,7 +86,7 @@ private:
 
 	std::vector<std::string> page_ids_;
 
-	enum CAMPAIGN_ORDER {RANK, DATE, NAME} current_sorting_;
+	CAMPAIGN_ORDER current_sorting_;
 
 	bool currently_sorted_asc_;
 };
