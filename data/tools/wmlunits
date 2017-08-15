@@ -272,7 +272,7 @@ def list_contents():
     info["version"] = "mainline"
     info["parsed"] = "false"
 
-    parse("{core}{multiplayer/eras.cfg}", "SKIP_CORE")
+    parse("{core}{multiplayer/eras.cfg}", "__WMLUNITS__,SKIP_CORE")
     info["eras"] = list_eras(batchlist, "mainline")
 
     # Fake mainline campaign to have an overview of the mainline units
@@ -280,7 +280,7 @@ def list_contents():
     append(info["campaigns"], "mainline", "", name="Units", domain="wesnoth-help")
 
     if not options.addons_only:
-        parse("{core}{campaigns}", "SKIP_CORE")
+        parse("{core}{campaigns}", "__WMLUNITS__,SKIP_CORE")
         info["campaigns"] += list_campaigns(batchlist, "mainline")
 
     addons = []
@@ -324,7 +324,7 @@ def list_contents():
                 continue
             info["parsed"] = False
             info["dependencies"] = get_dependencies(addon)
-            parse("{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "MULTIPLAYER,SKIP_CORE")
+            parse("{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE")
             info["eras"] = list_eras(batchlist, addon)
             info["campaigns"] = list_campaigns(batchlist, addon)
             info["version"] = version
@@ -378,15 +378,15 @@ def process_campaign_or_era(addon, cid, define, batchlist):
     wesnoth.add_units("mainline")
 
     if define == "MULTIPLAYER":
-        wesnoth.parser.parse_text("{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "MULTIPLAYER,SKIP_CORE")
+        wesnoth.parser.parse_text("{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE")
         wesnoth.add_units(cid)
     else:
         if addon == "mainline":
             if cid != "mainline":
-                wesnoth.parser.parse_text("{core}{campaigns}", "SKIP_CORE,NORMAL," + define)
+                wesnoth.parser.parse_text("{core}{campaigns}", "__WMLUNITS__,SKIP_CORE,NORMAL," + define)
                 wesnoth.add_units(cid)
         else:
-            wesnoth.parser.parse_text("{core}{~add-ons}", "SKIP_CORE," + define)
+            wesnoth.parser.parse_text("{core}{~add-ons}", "__WMLUNITS__,SKIP_CORE," + define)
             wesnoth.add_units(cid)
 
     if addon == "mainline" and cid == "mainline":
