@@ -748,7 +748,7 @@ public:
 			const std::function<void(widget&)>& callback) override
 	{
 		assert(list_builder);
-		assert(index == -1 || static_cast<unsigned>(index) < items_.size());
+		assert(index == -1 || static_cast<unsigned>(index) <= items_.size());
 
 		child* item = new child;
 		list_builder->build(&item->child_grid);
