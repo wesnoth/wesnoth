@@ -1104,7 +1104,7 @@ class HTMLOutput:
         if len(anames):
             write('<td class="val">' + cleantext(', '.join(anames), quote=False) + '</td>')
         else:
-            write('<td class="val">' + HTML_ENTITY_FIGURE_DASH + '</td>')
+            write('<td>' + HTML_ENTITY_FIGURE_DASH + '</td>')
         write('</tr>\n')
 
         write('</table>\n')
