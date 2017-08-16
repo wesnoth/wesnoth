@@ -492,10 +492,8 @@ void register_widget(const std::string& id, widget_parser_t f, const char* key)
 	registered_widget_types()[id] = {f, key};
 }
 
-
-
-namespace {
-	
+namespace
+{
 template<typename TList, typename TConv>
 const typename TList::value_type& get_best_resolution(const TList& list, const TConv& get_size)
 {
@@ -508,17 +506,17 @@ const typename TList::value_type& get_best_resolution(const TList& list, const T
 	const int screen_h = settings::screen_height;
 
 	for(const auto& res : list) {
-
 		gui2::point size = get_size(res);
+
 		int w = size.x ? size.x : 1;
 		int h = size.y ? size.y : 1;
 		int score = 0;
 
 		if(w <= screen_w && h <= screen_h) {
-			score = w * h;	
-		}
-		else {
-			//neagtive score, only used in case none of the given resolution fits on the screen (workaround of a bug where the windows size can become < 800x600).
+			score = w * h;
+		} else {
+			// Negative score, only used in case none of the given resolution fits on the screen (workaround of a bug
+			// where the windows size can become < 800x600).
 			score = std::min(screen_w - w, 0) + std::min(screen_h - h, 0);
 		}
 
@@ -529,10 +527,10 @@ const typename TList::value_type& get_best_resolution(const TList& list, const T
 	}
 
 	assert(best_resolution != nullptr);
-	return *best_resolution;	
+	return *best_resolution;
 }
 
-} //namespace
+} // namespace
 
 resolution_definition_ptr get_control(const std::string& control_type, const std::string& definition)
 {
@@ -593,7 +591,12 @@ resolution_definition_ptr get_control(const std::string& control_type, const std
 	VALIDATE(!resolutions.empty(),
 		formatter() << "Control: type '" << control_type << "' definition '" << definition << "' has no resolutions.\n");
 
-	return get_best_resolution(resolutions, [&](const resolution_definition_ptr& ptr){return point { static_cast<int>(ptr->window_width), static_cast<int>(ptr->window_height)}; } );
+	return get_best_resolution(resolutions, [&](const resolution_definition_ptr& ptr) {
+		return point {
+			static_cast<int>(ptr->window_width),
+			static_cast<int>(ptr->window_height)
+		};
+	});
 }
 
 const builder_window::window_resolution& get_window_builder(const std::string& type)
@@ -620,7 +623,12 @@ const builder_window::window_resolution& get_window_builder(const std::string& t
 
 	VALIDATE(!resolutions.empty(), formatter() << "Window '" << type << "' has no resolutions.\n");
 
-	return get_best_resolution(resolutions, [&](const builder_window::window_resolution& res) { return point { static_cast<int>(res.window_width), static_cast<int>(res.window_height)}; } );
+	return get_best_resolution(resolutions, [&](const builder_window::window_resolution& res) {
+		return point {
+			static_cast<int>(res.window_width),
+			static_cast<int>(res.window_height)
+		};
+	});
 }
 
 /*WIKI
