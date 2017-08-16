@@ -584,6 +584,11 @@ class HTMLOutput:
                 racenames += [("-", "-")] + sorted(r[1].items())
 
             for racename, rid in racenames:
+                # Some add-ons use race names consisting of only whitespace for
+                # hiding races in the UI. We need to skip those since otherwise
+                # they result in unusual markup (e.g. invisible <a> elements).
+                if not racename.strip():
+                    continue
                 if racename == "-":
                     add_menuitem_placeholder()
                 else:
@@ -622,7 +627,10 @@ class HTMLOutput:
             got_menu = False
             menuid = 0
             for r in racelist:
-                if not r:
+                # Some add-ons use race names consisting of only whitespace for
+                # hiding races in the UI. We need to skip those since otherwise
+                # they result in unusual markup (e.g. invisible <a> elements).
+                if not r.strip():
                     continue
                 if got_menu:
                     end_menu()
