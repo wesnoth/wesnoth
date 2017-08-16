@@ -992,6 +992,9 @@
     <ClCompile Include="..\..\src\utils\context_free_grammar_generator.cpp">
       <Filter>utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\utils\irdya_datetime.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\utils\make_enum.cpp">
       <Filter>utils</Filter>
     </ClCompile>
@@ -1032,6 +1035,9 @@
       <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\tests\test_image_modifications.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tests\test_irdya_date.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\tests\test_lexical_cast.cpp">
@@ -1540,12 +1546,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\utils\irdya_datetime.cpp">
-      <Filter>utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\tests\test_irdya_date.cpp">
-      <Filter>Tests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2467,6 +2467,9 @@
     <ClInclude Include="..\..\src\utils\io.hpp">
       <Filter>utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\utils\irdya_datetime.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\utils\iterable_pair.hpp">
       <Filter>utils</Filter>
     </ClInclude>
@@ -2564,6 +2567,9 @@
       <Filter>Game_Events</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game_events\entity_location.hpp">
+      <Filter>Game_Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\game_events\fwd.hpp">
       <Filter>Game_Events</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\game_events\handlers.hpp">
@@ -2993,9 +2999,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\preferences\lobby.hpp">
       <Filter>Preferences</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\utils\irdya_datetime.hpp">
-      <Filter>utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -3008,9 +3008,11 @@
     </ClCompile>
     <ClCompile Include="..\..\src\tests\test_irdya_date.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">true</ExcludedFromBuild>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Tests\</ObjectFileName>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">true</ExcludedFromBuild>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Tests\</ObjectFileName>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Tests\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Tests\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Tests\</ObjectFileName>
     </ClCompile>
@@ -3295,6 +3297,7 @@
     <ClCompile Include="..\..\src\utils\irdya_datetime.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)utils\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)utils\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)utils\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)utils\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)utils\</ObjectFileName>
     </ClCompile>
@@ -3633,6 +3636,7 @@
     <ClInclude Include="..\..\src\game_events\action_wml.hpp" />
     <ClInclude Include="..\..\src\game_events\conditional_wml.hpp" />
     <ClInclude Include="..\..\src\game_events\entity_location.hpp" />
+    <ClInclude Include="..\..\src\game_events\fwd.hpp" />
     <ClInclude Include="..\..\src\game_events\handlers.hpp" />
     <ClInclude Include="..\..\src\game_events\manager.hpp" />
     <ClInclude Include="..\..\src\game_events\manager_impl.hpp" />
