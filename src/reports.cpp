@@ -1252,8 +1252,7 @@ REPORT_GENERATOR(villages, rc)
 	std::ostringstream str;
 	int viewing_side = rc.screen().viewing_side();
 	const team &viewing_team = rc.dc().get_team(viewing_side);
-	team_data td = rc.dc().calculate_team_data(viewing_team);
-	str << td.villages << '/';
+	str << viewing_team.villages().size() << '/';
 	if (viewing_team.uses_shroud()) {
 		int unshrouded_villages = 0;
 		for (const map_location &loc : rc.map().villages()) {
