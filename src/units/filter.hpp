@@ -26,6 +26,13 @@
 #pragma once
 
 #include "units/ptr.hpp"
+#include "utils/make_enum.hpp"
+
+#include "display_context.hpp"
+#include "units/map.hpp"
+#include "units/unit.hpp"
+#include "filter_context.hpp"
+#include "variable.hpp"
 
 #include <memory>
 #include <vector>
@@ -36,47 +43,94 @@ class config;
 class vconfig;
 struct map_location;
 
-class unit_filter_abstract_impl {
-public:
-	virtual bool matches(const unit & u, const map_location & loc, const unit * u2 = nullptr) const = 0;
-	virtual std::vector<const unit*> all_matches_on_map(unsigned max_matches, const map_location* loc = nullptr, const unit* u2 = nullptr) const = 0;
-	virtual unit_const_ptr first_match_on_map() const = 0;
-	virtual config to_config() const = 0;
-	virtual bool empty() const {return false;}
-	virtual ~unit_filter_abstract_impl() {}
-};
 
-class unit_filter {
-public:
-	unit_filter(const vconfig & cfg, const filter_context * fc, bool use_flat_tod = false); //!< Constructs a unit filter from a config and a context. This function should give the most efficient implementation available.
 
-	// Copy and Swap Idiom for the interface -- does not copy the underlying impl
-	unit_filter(const unit_filter & o ) : impl_(o.impl_), max_matches_() {}
-	void swap(unit_filter & o) {
-		impl_.swap(o.impl_);
-		std::swap(max_matches_, o.max_matches_);
+namespace unit_filter_impl
+{
+	MAKE_ENUM (CONDITIONAL_TYPE,
+		(AND, "and")
+		(OR, "or")
+		(NOT, "not")
+	)
+
+	struct unit_filter_args
+	{
+		const unit& u;
+		const map_location loc;
+		const unit* u2;
+		const filter_context * fc;
+		const bool use_flat_tod;
+	};
+
+	struct unit_filter_base
+	{
+		virtual bool matches(const unit_filter_args&) const = 0;
+		virtual ~unit_filter_base() {}
+	};
+	
+	struct unit_filter_compound : public unit_filter_base
+	{
+		unit_filter_compound(vconfig cfg);
+		
+		template<typename C, typename F>
+		void create_attribute(const config::attribute_value c, C conv, F func);
+		template<typename F>
+		void create_child(const vconfig& c, F func);
+
+		void fill(vconfig cfg);
+
+		virtual bool matches(const unit_filter_args& u) const override;
+		bool filter_impl(const unit_filter_args& u) const;
+
+		std::vector<std::unique_ptr<unit_filter_base>> children_;
+		std::vector<std::pair<CONDITIONAL_TYPE, unit_filter_compound>> cond_children_;
+	};
+	
+}
+
+class unit_filter
+{
+public:
+	unit_filter(vconfig cfg, const filter_context * fc, bool use_flat_tod = false)
+		: cfg_(cfg)
+		, fc_(fc)
+		, use_flat_tod_(use_flat_tod)
+		, impl_(cfg_)
+		, max_matches_(-1)
+	{
+		cfg_.make_safe();
 	}
-	unit_filter & operator=(unit_filter o) {
-		swap(o);
-		return *this;
-	}
+
+	unit_filter(const unit_filter&) = default;
+	unit_filter(unit_filter&&) = default;
+
+	unit_filter& operator=(const unit_filter&) = default;
+	unit_filter& operator=(unit_filter&&) = default;
 
 	/// Determine if *this matches @a filter at a specified location.
 	/// Use this for units on a recall list, or to test for a match if
 	/// a unit is hypothetically moved.
 	bool matches(const unit & u, const map_location & loc) const {
-		return impl_->matches(u,loc);
+		return impl_.matches(unit_filter_impl::unit_filter_args{u, loc, nullptr, fc_, use_flat_tod_});
 	}
+	
 	/// Determine if *this matches @a filter at its current location.
 	/// (Only use for units currently on the map; otherwise use the overload
 	/// that takes a location, possibly with a null location.)
-	bool matches(const unit & u) const;
+	bool matches(const unit & u) const {
+		return impl_.matches(unit_filter_impl::unit_filter_args{u, u.get_location(), nullptr, fc_, use_flat_tod_});
+	}
 
-	bool matches(const unit & u, const map_location & loc, const unit & u2) const;
-	bool matches(const unit & u, const unit & u2) const;
+	bool matches(const unit & u, const map_location & loc, const unit & u2) const {
+		return impl_.matches(unit_filter_impl::unit_filter_args{u, loc, &u2, fc_, use_flat_tod_});
+	}
+
+	bool matches(const unit & u, const unit & u2) const {
+		return impl_.matches(unit_filter_impl::unit_filter_args{u, u.get_location(), &u2, fc_, use_flat_tod_});
+	}
 
 	bool operator()(const unit & u, const map_location & loc) const {
-		return matches(u,loc);
+		return matches(u, loc);
 	}
 
 	bool operator()(const unit & u) const {
@@ -84,39 +138,66 @@ public:
 	}
 
 	bool operator()(const unit & u, const map_location & loc, const unit & u2) const {
-		return matches(u,loc,u2);
+		return matches(u, loc, u2);
 	}
 
 	bool operator()(const unit & u, const unit & u2) const {
-		return matches(u,u2);
+		return matches(u, u2);
 	}
 
-	std::vector<const unit *> all_matches_on_map() const {
-		return impl_->all_matches_on_map(max_matches_);
+	std::vector<const unit *> all_matches_on_map(const map_location* loc = nullptr, const unit* other_unit = nullptr) const
+	{
+		std::vector<const unit *> ret;
+		int max_matches = max_matches_;
+		
+		for (const unit & u : fc_->get_disp_context().units()) {
+			if (impl_.matches(unit_filter_impl::unit_filter_args{u, loc ? *loc : u.get_location(), other_unit, fc_, use_flat_tod_})) {
+				if(max_matches == 0) {
+					return ret;
+				}
+				--max_matches;
+				ret.push_back(&u);
+			}
+		}
+		return ret;
 	}
 
 	std::vector<const unit*> all_matches_at(const map_location& loc) const {
-		return impl_->all_matches_on_map(max_matches_, &loc);
+		return all_matches_on_map(&loc);
 	}
 
 	std::vector<const unit*> all_matches_with_unit(const unit& u) const {
-		return impl_->all_matches_on_map(max_matches_, nullptr, &u);
+		return all_matches_on_map(nullptr, &u);
 	}
 
 	std::vector<const unit*> all_matches_with_unit_at(const unit& u, const map_location& loc) const {
-		return impl_->all_matches_on_map(max_matches_, &loc, &u);
+		return all_matches_on_map(&loc, &u);
 	}
 
 	unit_const_ptr first_match_on_map() const {
-		return impl_->first_match_on_map();
+		const unit_map & units = fc_->get_disp_context().units();
+		for(unit_map::const_iterator u = units.begin(); u != units.end(); u++) {
+			if (matches(*u, u->get_location())) {
+				return u.get_shared_ptr();
+			}
+		}
+		return unit_const_ptr();
 	}
 
-	config to_config() const;
+	config to_config() const {
+		return cfg_.get_config();
+	}
 
 	bool empty() const {
-		return impl_->empty();
+		return cfg_.get_config().empty();
 	}
+
 private:
-	std::shared_ptr<unit_filter_abstract_impl> impl_;
-	unsigned max_matches_;
+	
+	vconfig cfg_;
+	const filter_context * fc_;
+	bool use_flat_tod_;
+	unit_filter_impl::unit_filter_compound impl_;
+	int max_matches_;
 };
+

@@ -17,10 +17,7 @@
 #include "log.hpp"
 
 #include "config.hpp"
-#include "display_context.hpp"
-#include "filter_context.hpp"
 #include "game_data.hpp"
-#include "utils/make_enum.hpp"
 #include "map/map.hpp"
 #include "map/location.hpp"
 #include "scripting/game_lua_kernel.hpp" //Needed for lua kernel
@@ -30,718 +27,662 @@
 #include "tod_manager.hpp"
 #include "units/unit.hpp"
 #include "units/formula_manager.hpp"
-#include "units/map.hpp"
 #include "units/types.hpp"
 #include "variable.hpp" // needed for vconfig, scoped unit
 #include "wml_exception.hpp" // needed for FAIL
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/function_gamestate.hpp"
+#include "formula/string_utils.hpp"
+#include "resources.hpp"
 
 #include <boost/optional.hpp>
-
-#include <vector>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define DBG_CF LOG_STREAM(debug, log_config)
 
-// Defined out of line to avoid including config in unit_filter.hpp
-config unit_filter::to_config() const {
-	return impl_->to_config();
-}
+using namespace unit_filter_impl;
 
-///Defined out of line to prevent including unit at unit_filter.hpp
-bool unit_filter::matches(const unit & u) const {
-	return matches (u, u.get_location());
-}
+namespace {
 
-bool unit_filter::matches(const unit & u, const map_location & loc, const unit & u2) const {
-	return impl_->matches(u,loc,&u2);
-}
+struct unit_filter_xy : public unit_filter_base
+{
+	unit_filter_xy(const std::string& x, const std::string& y) : x_(x), y_(y) {}
 
-bool unit_filter::matches(const unit & u, const unit & u2) const {
-	return matches(u, u.get_location(), u2);
-}
-
-//bool unit_filter::matches(const unit & /*u*/, const map_location & /*loc*/) const {
-//	assert(false && "called match against a pure abstract unit_filter! this indicates a programmer error, this function must be overrided");
-//	return false;
-//}
-
-
-/// Forward declare the "construct" method which constructs an appropriate filter impl
-static std::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vcfg, const filter_context & fc, bool flat_tod);
-
-/// Null unit filter is built when the input config is null
-class null_unit_filter_impl : public unit_filter_abstract_impl {
-public:
-	null_unit_filter_impl(const filter_context & fc) : fc_(fc) {}
-	virtual bool matches(const unit & /*u*/, const map_location & /*loc*/, const unit *) const {
-		return true;
-	}
-	virtual std::vector<const unit *> all_matches_on_map(unsigned max_matches, const map_location* = nullptr, const unit* = nullptr) const {
-		std::vector<const unit *> ret;
-		for(const unit & u : fc_.get_disp_context().units()) {
-			--max_matches;
-			ret.push_back(&u);
-			if(max_matches == 0) {
-				return ret;
-			}
-		}
-		return ret;
-	}
-
-	virtual unit_const_ptr first_match_on_map() const {
-		return fc_.get_disp_context().units().begin().get_shared_ptr();
-	}
-
-
-	virtual ~null_unit_filter_impl() {}
-
-	config to_config() const {
-		return config();
-	}
-
-	bool empty() const {
-		return true;
-	}
-
-private:
-	const filter_context & fc_;
-};
-
-/// This enum helps to evaluate conditional filters
-namespace conditional {
-	MAKE_ENUM (TYPE,
-		(AND, "and")
-		(OR, "or")
-		(NOT, "not")
-	)
-}
-
-
-/// The basic unit filter gives a generic implementation of the match fcn
-class basic_unit_filter_impl : public unit_filter_abstract_impl {
-public:
-	basic_unit_filter_impl(const vconfig & vcfg, const filter_context & fc, bool flat_tod)
-		: fc_(fc)
-		, vcfg(vcfg)
-		, use_flat_tod_(flat_tod)
-		, cond_children_()
-		, cond_child_types_()
+	virtual bool matches(const unit_filter_args& u) const override
 	{
-		// Handle [and], [or], and [not] with in-order precedence
-		vconfig::all_children_iterator cond = vcfg.ordered_begin();
-		vconfig::all_children_iterator cond_end = vcfg.ordered_end();
-		while(cond != cond_end)
-		{
-			const std::string& cond_name = cond.get_key();
-			conditional::TYPE type;
-			if(type.parse(cond_name)) {
-				const vconfig& cond_filter = cond.get_child();
+		std::string x = utils::interpolate_variables_into_string(x_, *(resources::gamedata));
+		std::string y = utils::interpolate_variables_into_string(y_, *(resources::gamedata));
 
-				cond_children_.emplace_back(cond_filter, &fc_, use_flat_tod_);
-				cond_child_types_.push_back(type);
-			}
-			else {
-				static const int NUM_VALID_TAGS = 5;
-				static const std::string valid_tags[NUM_VALID_TAGS] {
-					"filter_vision",
-					"filter_adjacent",
-					"filter_location",
-					"filter_side",
-					"filter_wml",
-				};
-				static const std::string* const valid_tags_end = valid_tags + NUM_VALID_TAGS;
-
-				if (std::find(valid_tags, valid_tags_end, cond_name) == valid_tags_end){
-					std::stringstream errmsg;
-					errmsg << "encountered a child [" << cond_name << "] of a standard unit filter, it is being ignored";
-					DBG_CF << errmsg.str() << std::endl; //FAIL( errmsg.str() );
-				}
-
-			}
-			++cond;
+		if(x == "recall" && y == "recall") {
+			return !u.fc->get_disp_context().map().on_board(u.loc);
 		}
-		this->vcfg.make_safe();
+		else {
+			return u.loc.matches_range(x, y);
+		}
 	}
 
-	virtual bool matches(const unit & u, const map_location & loc, const unit * u2) const;
-	virtual std::vector<const unit *> all_matches_on_map(unsigned max_matches, const map_location* loc = nullptr, const unit* u2 = nullptr) const;
-	virtual unit_const_ptr first_match_on_map() const;
-	config to_config() const {
-		return vcfg.get_config();
-	}
-
-	virtual ~basic_unit_filter_impl() {}
-private:
-	const filter_context & fc_;
-	const vconfig vcfg;
-	bool use_flat_tod_;
-
-	std::vector<unit_filter> cond_children_;
-	std::vector<conditional::TYPE> cond_child_types_;
-
-	bool internal_matches_filter(const unit & u, const map_location & loc, const unit* u2) const;
+	const std::string x_;
+	const std::string y_;
 };
 
-/** "Factory" method which constructs an appropriate implementation
- *
- */
-
-static std::shared_ptr<unit_filter_abstract_impl> construct(const vconfig & vcfg, const filter_context & fc, bool flat_tod)
+struct unit_filter_adjacent : public unit_filter_base
 {
-	if (vcfg.empty()) {
-		return std::make_shared<null_unit_filter_impl> (fc);
+	unit_filter_adjacent(const vconfig& cfg)
+		: child_(cfg)
+		, cfg_(cfg)
+	{
 	}
-	if (vcfg.get_config().attribute_count() == 1 && vcfg.get_config().all_children_count() == 0 && vcfg.has_attribute("limit")) {
-		return std::make_shared<null_unit_filter_impl> (fc);
-	}
-	return std::make_shared<basic_unit_filter_impl>(vcfg, fc, flat_tod);
-	//TODO: Add more efficient implementations for special cases
-}
 
-/** Ctor of unit filter
- *  unit_filter::unit_filter acts as a factory, selecting the appropriate implementation class
- */
-unit_filter::unit_filter(const vconfig & vcfg, const filter_context * fc, bool flat_tod)
-	: impl_()
-	, max_matches_(static_cast<unsigned>(-1))
-{
-	if(vcfg) {
-		max_matches_ = vcfg["limit"].to_unsigned(max_matches_);
-	}
-	if (!fc) {
-		assert(false && "attempt to instantiate a unit filter with a null filter context!");
-	}
-	impl_ = construct(vcfg, *fc, flat_tod);
-}
+	virtual bool matches(const unit_filter_args& u) const override
+	{
+		const unit_map& units = u.fc->get_disp_context().units();
+		map_location adjacent[6];
+		get_adjacent_tiles(u.loc, adjacent);
+		int match_count=0;
 
-/** Begin implementations of filter impl's
- */
-
-bool basic_unit_filter_impl::matches(const unit & u, const map_location& loc, const unit * u2) const
-{
-	bool matches = true;
-
-	if(loc.valid()) {
-		scoped_xy_unit auto_store("this_unit", loc, fc_.get_disp_context().units());
-		if (u2) {
-			const map_location& loc2 = u2->get_location();
-			scoped_xy_unit u2_auto_store("other_unit", loc2, fc_.get_disp_context().units());
-			matches = internal_matches_filter(u, loc, u2);
+		config::attribute_value i_adjacent = cfg_["adjacent"];
+		std::vector<map_location::DIRECTION> dirs;
+		if (i_adjacent.empty()) {
+			dirs = map_location::default_dirs();
 		} else {
-			matches = internal_matches_filter(u, loc, u2);
+			dirs = map_location::parse_directions(i_adjacent);
+		}
+		for (map_location::DIRECTION dir : dirs) {
+			unit_map::const_iterator unit_itor = units.find(adjacent[dir]);			
+			if (unit_itor == units.end() || !child_.matches(unit_filter_args{*unit_itor, unit_itor->get_location(), &u.u, u.fc, u.use_flat_tod} )) {
+				continue;
+			}
+			auto is_enemy = cfg_["is_enemy"];
+			if (!is_enemy.empty() && is_enemy.to_bool() != u.fc->get_disp_context().get_team(u.u.side()).is_enemy(unit_itor->side())) {
+				continue;
+			}
+			++match_count;
+		}
+
+		static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-6");
+		config::attribute_value i_count = cfg_["count"];
+		return in_ranges(match_count, !i_count.blank() ? utils::parse_ranges(i_count) : default_counts);
+	}
+
+	const unit_filter_compound child_;
+	const vconfig cfg_;
+};
+
+
+template<typename F>
+struct unit_filter_child_literal : public unit_filter_base
+{
+	unit_filter_child_literal(const vconfig& v, const F& f) : v_(v) , f_(f) {}
+	virtual bool matches(const unit_filter_args& u) const override
+	{
+		return f_(v_, u);
+	}
+	vconfig v_;
+	F f_;
+};
+
+template<typename T, typename F>
+struct unit_filter_attribute_parsed : public unit_filter_base
+{
+	unit_filter_attribute_parsed(T&& v, F&& f) : v_(std::move(v)), f_(std::move(f)) {}
+	virtual bool matches(const unit_filter_args& u) const override
+	{
+		return f_(v_, u);
+	}
+	T v_;
+	F f_;
+};
+
+template<typename C, typename F>
+struct unit_filter_attribute_literal : public unit_filter_base
+{
+	unit_filter_attribute_literal(std::string&& v, C&& c, F&& f) : v_(std::move(v)), c_(std::move(c)), f_(std::move(f)) {}
+	virtual bool matches(const unit_filter_args& u) const override
+	{
+		config::attribute_value v;
+		v = utils::interpolate_variables_into_string(v_, *(resources::gamedata));
+		return f_(c_(v), u);
+	}
+	std::string v_;
+	C c_;
+	F f_;
+};
+
+class contains_dollar_visitor : public boost::static_visitor<bool>
+{
+public:
+	contains_dollar_visitor() {}
+
+	
+	template<typename T>
+	bool operator()(T const &) const { return false; }
+
+	bool operator()(t_string const&)    const { return true; }
+
+	bool operator()(const std::string& s) const
+	{
+		return s.find('$') != std::string::npos;
+	}
+};
+
+}
+
+
+unit_filter_compound::unit_filter_compound(vconfig cfg)
+	: children_()
+	, cond_children_()
+{
+	fill(cfg);
+}
+
+bool unit_filter_compound::matches(const unit_filter_args& u) const
+{
+	bool res;
+
+	if(u.loc.valid()) {
+		scoped_xy_unit auto_store("this_unit", u.loc, u.fc->get_disp_context().units());
+		if (u.u2) {
+			const map_location& loc2 = u.u2->get_location();
+			scoped_xy_unit u2_auto_store("other_unit", loc2, u.fc->get_disp_context().units());
+			res = filter_impl(u);
+		} else {
+			res = filter_impl(u);
 		}
 	} else {
 		// If loc is invalid, then this is a recall list unit (already been scoped)
-		matches = internal_matches_filter(u, loc, nullptr);
+		res = filter_impl(u);
 	}
 
 	// Handle [and], [or], and [not] with in-order precedence
-	for (size_t i = 0; i < cond_children_.size(); i++) {
-		switch (cond_child_types_[i].v) {
-			case conditional::TYPE::AND:
-				if(u2) {
-					matches = matches && cond_children_[i].matches(u,loc,*u2);
-				} else {
-					matches = matches && cond_children_[i].matches(u,loc);
-				}
-				break;
-			case conditional::TYPE::OR:
-				if(u2) {
-					matches = matches || cond_children_[i].matches(u,loc,*u2);
-				} else {
-					matches = matches || cond_children_[i].matches(u,loc);
-				}
-				break;
-			case conditional::TYPE::NOT:
-				if(u2) {
-					matches = matches && !cond_children_[i].matches(u,loc,*u2);
-				} else {
-					matches = matches && !cond_children_[i].matches(u,loc);
-				}
+	for(const auto & filter : cond_children_) {
+		bool child_res = filter.second.matches(u);
+		
+		switch (filter.first.v) {
+		case CONDITIONAL_TYPE::AND:
+			res = res && child_res;
+			break;
+		case CONDITIONAL_TYPE::OR:
+			res = res || child_res;
+			break;
+		case CONDITIONAL_TYPE::NOT:
+			res = res && !child_res;
+			break;
 		}
 	}
-	return matches;
+	return res;
 }
 
-bool basic_unit_filter_impl::internal_matches_filter(const unit & u, const map_location& loc, const unit* u2) const
+bool unit_filter_compound::filter_impl(const unit_filter_args& u) const
 {
-	if (!vcfg["name"].blank() && vcfg["name"].t_str() != u.name()) {
-		return false;
-	}
-
-	if (!vcfg["id"].blank()) {
-		std::vector<std::string> id_list = utils::split(vcfg["id"]);
-		if (std::find(id_list.begin(), id_list.end(), u.id()) == id_list.end()) {
+	for(const auto & filter : children_) {
+		if (!filter->matches(u)) {
 			return false;
 		}
 	}
-
-	// Allow 'speaker' as an alternative to id, since people use it so often
-	if (!vcfg["speaker"].blank() && vcfg["speaker"].str() != u.id()) {
-		return false;
-	}
-
-	if (vcfg.has_child("filter_location")) {
-		if (vcfg.count_children("filter_location") > 1) {
-			FAIL("Encountered multiple [filter_location] children of a standard unit filter. "
-				 "This is not currently supported and in all versions of wesnoth would have "
-				 "resulted in the later children being ignored. You must use [and] or similar "
-				 "to achieve the desired result.");
-		}
-		terrain_filter filt(vcfg.child("filter_location"), &fc_, use_flat_tod_);
-		if (!filt.match(loc)) {
-			return false;
-		}
-	}
-
-	if(vcfg.has_child("filter_side")) {
-		if (vcfg.count_children("filter_side") > 1) {
-			FAIL("Encountered multiple [filter_side] children of a standard unit filter. "
-				 "This is not currently supported and in all versions of wesnoth would have "
-				 "resulted in the later children being ignored. You must use [and] or similar "
-				 "to achieve the desired result.");
-		}
-		side_filter filt(vcfg.child("filter_side"), &fc_);
-		if(!filt.match(u.side()))
-			return false;
-	}
-
-	// Also allow filtering on location ranges outside of the location filter
-	if (!vcfg["x"].blank() || !vcfg["y"].blank()){
-		if(vcfg["x"] == "recall" && vcfg["y"] == "recall") {
-			//locations on the map are considered to not be on a recall list
-			if (fc_.get_disp_context().map().on_board(loc))
-			{
-				return false;
-			}
-		} else if(vcfg["x"].empty() && vcfg["y"].empty()) {
-			return false;
-		} else if(!loc.matches_range(vcfg["x"], vcfg["y"])) {
-			return false;
-		}
-	}
-
-	// The type could be a comma separated list of types
-	if (!vcfg["type"].empty()) {
-		std::vector<std::string> types = utils::split(vcfg["type"]);
-		if (std::find(types.begin(), types.end(), u.type_id()) == types.end()) {
-			return false;
-		}
-	}
-
-	// Shorthand for all advancements of a given type
-	if (!vcfg["type_adv_tree"].empty()) {
-		std::set<std::string> types;
-		for(const std::string type : utils::split(vcfg["type_adv_tree"])) {
-			if(types.count(type)) {
-				continue;
-			}
-			if(const unit_type* ut = unit_types.find(type)) {
-				const auto& tree = ut->advancement_tree();
-				types.insert(tree.begin(), tree.end());
-				types.insert(type);
-			}
-		}
-		if(types.find(u.type_id()) == types.end()) {
-			return false;
-		}
-	}
-
-	// The variation_type could be a comma separated list of types
-	if (!vcfg["variation"].empty())
-	{
-		std::vector<std::string> types = utils::split(vcfg["variation"]);
-		if (std::find(types.begin(), types.end(), u.variation()) == types.end()) {
-			return false;
-		}
-	}
-
-	// The has_variation_type could be a comma separated list of types
-	if (!vcfg["has_variation"].empty())
-	{
-		bool match = false;
-		// If this unit is a variation itself then search in the base unit's variations.
-		const unit_type* const type = u.variation().empty() ? &u.type() : unit_types.find(u.type().base_id());
-		assert(type);
-
-		for (const std::string& variation_id : utils::split(vcfg["has_variation"])) {
-			if (type->has_variation(variation_id)) {
-				match = true;
-				break;
-			}
-		}
-		if (!match) return false;
-	}
-
-	if (!vcfg["ability"].empty())
-	{
-		bool match = false;
-
-		for (const std::string& ability_id : utils::split(vcfg["ability"])) {
-			if (u.has_ability_by_id(ability_id)) {
-				match = true;
-				break;
-			}
-		}
-		if (!match) return false;
-	}
-
-	if (!vcfg["ability_type"].empty())
-	{
-		bool match = false;
-
-		for (const std::string& ability : utils::split(vcfg["ability_type"])) {
-			if (u.has_ability_type(ability)) {
-				match = true;
-				break;
-			}
-		}
-		if (!match) return false;
-	}
-
-	if(!vcfg["ability_type_active"].empty()) {
-		bool match = false;
-
-		for(const std::string& ability : utils::split(vcfg["ability_type_active"])) {
-			if(!u.get_abilities(ability, loc).empty()) {
-				match = true;
-				break;
-			}
-		}
-		if(!match) {
-			return false;
-		}
-	}
-
-	if(!vcfg["trait"].empty()) {
-		std::vector<std::string> check_traits = utils::split(vcfg["trait"]), have_traits = u.get_traits_list(), isect;
-		std::sort(check_traits.begin(), check_traits.end());
-		std::sort(have_traits.begin(), have_traits.end());
-		std::set_intersection(check_traits.begin(), check_traits.end(), have_traits.begin(), have_traits.end(), std::back_inserter(isect));
-		if(isect.empty()) {
-			return false;
-		}
-	}
-
-	if (!vcfg["race"].empty()) {
-		std::vector<std::string> races = utils::split(vcfg["race"]);
-		if (std::find(races.begin(), races.end(), u.race()->id()) == races.end()) {
-			return false;
-		}
-	}
-
-	if (!vcfg["gender"].blank() && string_gender(vcfg["gender"]) != u.gender()) {
-		return false;
-	}
-
-	if (!vcfg["side"].empty() && vcfg["side"].to_int(-999) != u.side()) {
-		std::vector<std::string> sides = utils::split(vcfg["side"]);
-		const std::string u_side = std::to_string(u.side());
-		if (std::find(sides.begin(), sides.end(), u_side) == sides.end()) {
-			return false;
-		}
-	}
-
-	// handle statuses list
-	if (!vcfg["status"].empty()) {
-		bool status_found = false;
-
-		for (const std::string status : utils::split(vcfg["status"])) {
-			if(u.get_state(status)) {
-				status_found = true;
-				break;
-			}
-		}
-
-		if(!status_found) {
-			return false;
-		}
-	}
-
-	if (vcfg.has_child("has_attack")) {
-		const vconfig& weap_filter = vcfg.child("has_attack");
-		bool has_weapon = false;
-		for(const attack_type& a : u.attacks()) {
-			if(a.matches_filter(weap_filter.get_parsed_config())) {
-				has_weapon = true;
-				break;
-			}
-		}
-		if(!has_weapon) {
-			return false;
-		}
-	} else if (!vcfg["has_weapon"].blank()) {
-		std::string weapon = vcfg["has_weapon"];
-		bool has_weapon = false;
-		for(const attack_type& a : u.attacks()) {
-			if(a.id() == weapon) {
-				has_weapon = true;
-				break;
-			}
-		}
-		if(!has_weapon) {
-			return false;
-		}
-	}
-
-	if (!vcfg["role"].blank() && vcfg["role"].str() != u.get_role()) {
-		return false;
-	}
-
-	if (!vcfg["ai_special"].blank() && ((vcfg["ai_special"].str() == "guardian") != u.get_state(unit::STATE_GUARDIAN))) {
-		return false;
-	}
-
-	if (!vcfg["canrecruit"].blank() && vcfg["canrecruit"].to_bool() != u.can_recruit()) {
-		return false;
-	}
-
-	if (!vcfg["recall_cost"].blank()) {
-		bool match_found = false;
-		for(auto cost : utils::parse_ranges(vcfg["recall_cost"])) {
-			if(cost.first <= u.recall_cost() && u.recall_cost() <= cost.second) {
-				match_found = true;
-				break;
-			}
-		}
-		if(!match_found) {
-			return false;
-		}
-	}
-
-	if(!vcfg["level"].blank()) {
-		bool match_found = false;
-		for(auto lvl : utils::parse_ranges(vcfg["level"])) {
-			if(lvl.first <= u.level() && u.level() <= lvl.second) {
-				match_found = true;
-				break;
-			}
-		}
-		if(!match_found) {
-			return false;
-		}
-	}
-
-	if(!vcfg["defense"].blank()) {
-		bool match_found = false;
-		int actual_defense = u.defense_modifier(fc_.get_disp_context().map().get_terrain(loc));
-		for(auto def : utils::parse_ranges(vcfg["defense"])) {
-			if(def.first <= actual_defense && actual_defense <= def.second) {
-				match_found = true;
-				break;
-			}
-		}
-		if(!match_found) {
-			return false;
-		}
-	}
-
-	if(!vcfg["movement_cost"].blank()) {
-		bool match_found = false;
-		int actual_cost = u.movement_cost(fc_.get_disp_context().map().get_terrain(loc));
-		for(auto cost : utils::parse_ranges(vcfg["movement_cost"])) {
-			if(cost.first <= actual_cost && actual_cost <= cost.second) {
-				match_found = true;
-				break;
-			}
-		}
-		if(!match_found) {
-			return false;
-		}
-	}
-
-	if(!vcfg["vision_cost"].blank()) {
-		bool match_found = false;
-		int actual_cost = u.vision_cost(fc_.get_disp_context().map().get_terrain(loc));
-		for(auto cost : utils::parse_ranges(vcfg["vision_cost"])) {
-			if(cost.first <= actual_cost && actual_cost <= cost.second) {
-				match_found = true;
-				break;
-			}
-		}
-		if(!match_found) {
-			return false;
-		}
-	}
-
-	if(!vcfg["jamming_cost"].blank()) {
-		bool match_found = false;
-		int actual_cost = u.jamming_cost(fc_.get_disp_context().map().get_terrain(loc));
-		for(auto cost : utils::parse_ranges(vcfg["jamming_cost"])) {
-			if(cost.first <= actual_cost && actual_cost <= cost.second) {
-				match_found = true;
-				break;
-			}
-		}
-		if(!match_found) {
-			return false;
-		}
-	}
-
-	// Now start with the new WML based comparison.
-	// If a key is in the unit and in the filter, they should match
-	// filter only => not for us
-	// unit only => not filtered
-	config unit_cfg; // No point in serializing the unit once for each [filter_wml]!
-	for (const vconfig& wmlcfg : vcfg.get_children("filter_wml")) {
-			config fwml = wmlcfg.get_parsed_config();
-			/* Check if the filter only cares about variables.
-			   If so, no need to serialize the whole unit. */
-			config::all_children_itors ci = fwml.all_children_range();
-			if (fwml.all_children_count() == 1 &&
-				fwml.attribute_count() == 1 &&
-			    ci.front().key == "variables") {
-				if (!u.variables().matches(ci.front().cfg))
-					return false;
-			} else {
-				if (unit_cfg.empty())
-					u.write(unit_cfg);
-				if (!unit_cfg.matches(fwml))
-					return false;
-			}
-	}
-
-	for (const vconfig& vision : vcfg.get_children("filter_vision")) {
-		std::set<int> viewers;
-
-		// Use standard side filter
-		side_filter ssf(vision, &fc_);
-		std::vector<int> sides = ssf.get_teams();
-		viewers.insert(sides.begin(), sides.end());
-
-		bool found = false;
-		for (const int viewer : viewers) {
-			bool fogged = fc_.get_disp_context().get_team(viewer).fogged(loc);
-			bool hiding = u.invisible(loc, fc_.get_disp_context())
-				&& fc_.get_disp_context().get_team(viewer).is_enemy(u.side());
-			bool unit_hidden = fogged || hiding;
-			if (vision["visible"].to_bool(true) != unit_hidden) {
-				found = true;
-				break;
-			}
-		}
-		if (!found) {return false;}
-	}
-
-	if (vcfg.has_child("filter_adjacent")) {
-		const unit_map& units = fc_.get_disp_context().units();
-		map_location adjacent[6];
-		get_adjacent_tiles(loc, adjacent);
-
-		for (const vconfig& adj_cfg : vcfg.get_children("filter_adjacent")) {
-			int match_count=0;
-			unit_filter filt(adj_cfg, &fc_, use_flat_tod_);
-
-			config::attribute_value i_adjacent = adj_cfg["adjacent"];
-			std::vector<map_location::DIRECTION> dirs;
-			if (i_adjacent.blank()) {
-				dirs = map_location::default_dirs();
-			} else {
-				dirs = map_location::parse_directions(i_adjacent);
-			}
-
-			std::vector<map_location::DIRECTION>::const_iterator j, j_end = dirs.end();
-			for (j = dirs.begin(); j != j_end; ++j) {
-				unit_map::const_iterator unit_itor = units.find(adjacent[*j]);
-				if (unit_itor == units.end() || !filt(*unit_itor, u)) {
-					continue;
-				}
-				boost::optional<bool> is_enemy;
-				if (!adj_cfg["is_enemy"].blank()) {
-					is_enemy = adj_cfg["is_enemy"].to_bool();
-				}
-				if (!is_enemy || *is_enemy ==
-				    fc_.get_disp_context().get_team(u.side()).is_enemy(unit_itor->side())) {
-					++match_count;
-				}
-			}
-
-			static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-6");
-			config::attribute_value i_count = adj_cfg["count"];
-			if(!in_ranges(match_count, !i_count.blank() ? utils::parse_ranges(i_count) : default_counts)) {
-				return false;
-			}
-		}
-	}
-
-	if (!vcfg["find_in"].blank()) {
-		// Allow filtering by searching a stored variable of units
-		if (const game_data * gd = fc_.get_game_data()) {
-			try
-			{
-				variable_access_const vi = gd->get_variable_access_read(vcfg["find_in"]);
-				bool found_id = false;
-				for (const config& c : vi.as_array())
-				{
-					if(c["id"] == u.id())
-						found_id = true;
-				}
-				if(!found_id)
-				{
-					return false;
-				}
-			}
-			catch(const invalid_variablename_exception&)
-			{
-				return false;
-			}
-		}
-	}
-	if (!vcfg["formula"].blank()) {
-		try {
-			const wfl::unit_callable main(loc,u);
-			wfl::map_formula_callable callable(main.fake_ptr());
-			if (u2) {
-				std::shared_ptr<wfl::unit_callable> secondary(new wfl::unit_callable(*u2));
-				callable.add("other", wfl::variant(secondary));
-				// It's not destroyed upon scope exit because the variant holds a reference
-			}
-			const wfl::formula form(vcfg["formula"], new wfl::gamestate_function_symbol_table);
-			if(!form.evaluate(callable).as_bool()) {
-				return false;
-			}
-			return true;
-		} catch(wfl::formula_error& e) {
-			lg::wml_error() << "Formula error in unit filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
-			// Formulae with syntax errors match nothing
-			return false;
-		}
-	}
-
-	if (!vcfg["lua_function"].blank()) {
-		if (game_lua_kernel * lk = fc_.get_lua_kernel()) {
-			bool b = lk->run_filter(vcfg["lua_function"].str().c_str(), u);
-			if (!b) return false;
-		}
-	}
-
 	return true;
 }
 
-std::vector<const unit *> basic_unit_filter_impl::all_matches_on_map(unsigned max_matches, const map_location* loc, const unit* u2) const {
-	std::vector<const unit *> ret;
-	for (const unit & u : fc_.get_disp_context().units()) {
-		if (matches(u, loc ? *loc : u.get_location(), u2)) {
-			if(max_matches == 0) {
-				return ret;
-			}
-			--max_matches;
-			ret.push_back(&u);
-		}
-	}
-	return ret;
+template<typename F>
+void unit_filter_compound::create_child(const vconfig& c, F func)
+{
+	children_.emplace_back(new unit_filter_child_literal<F>(c, func));
 }
 
-unit_const_ptr basic_unit_filter_impl::first_match_on_map() const {
-	const unit_map & units = fc_.get_disp_context().units();
-	for(unit_map::const_iterator u = units.begin(); u != units.end(); u++) {
-		if (matches(*u,u->get_location(),nullptr)) {
-			return u.get_shared_ptr();
+template<typename C, typename F>
+void unit_filter_compound::create_attribute(const config::attribute_value v, C conv, F func)
+{
+	if(v.empty()) {
+	}
+	else if(v.apply_visitor(contains_dollar_visitor())) {
+		children_.emplace_back(new unit_filter_attribute_literal<C, F>(std::move(v.str()), std::move(conv), std::move(func)));
+	}
+	else {
+		children_.emplace_back(new unit_filter_attribute_parsed<decltype(conv(v)), F>(std::move(conv(v)), std::move(func)));
+	}
+}
+
+void unit_filter_compound::fill(vconfig cfg)
+	{
+		const config& literal = cfg.get_config();
+
+		//optimisation
+		if(literal.empty()) { return; }
+
+		create_attribute(literal["name"],
+			[](const config::attribute_value& c) { return c.t_str(); },
+			[](const t_string& str, const unit_filter_args& u) { return str == u.u.name(); }
+		);
+
+		create_attribute(literal["id"],
+			[](const config::attribute_value& c) { return utils::split(c.str()); },
+			[](const std::vector<std::string>& id_list, const unit_filter_args& u)
+			{
+				return std::find(id_list.begin(), id_list.end(), u.u.id()) != id_list.end();
+			}
+		);
+
+		create_attribute(literal["speaker"],
+			[](const config::attribute_value& c) { return c.str(); },
+			[](const std::string& speaker, const unit_filter_args& u)
+			{
+				return speaker == u.u.id();
+			}
+		);
+
+		create_attribute(literal["type"],
+			[](const config::attribute_value& c) { return utils::split(c.str()); },
+			[](const std::vector<std::string>& types, const unit_filter_args& u)
+			{
+				return std::find(types.begin(), types.end(), u.u.type_id()) != types.end();
+			}
+		);
+
+		create_attribute(literal["type_adv_tree"],
+			[](const config::attribute_value& c) { return utils::split(c.str()); },
+			[](const std::vector<std::string>& types, const unit_filter_args& u)
+			{
+				std::set<std::string> types_expanded;
+				for(const std::string& type : types) {
+					if(types_expanded.count(type)) {
+						continue;
+					}
+					if(const unit_type* ut = unit_types.find(type)) {
+						const auto& tree = ut->advancement_tree();
+						types_expanded.insert(tree.begin(), tree.end());
+						types_expanded.insert(type);
+					}
+				}
+				return types_expanded.find(u.u.type_id()) != types_expanded.end();
+			}
+		);
+
+		create_attribute(literal["variation"],
+			[](const config::attribute_value& c) { return utils::split(c.str()); },
+			[](const std::vector<std::string>& types, const unit_filter_args& u)
+			{
+				return std::find(types.begin(), types.end(), u.u.variation()) != types.end();
+			}
+		);
+
+		create_attribute(literal["has_variation"],
+			[](const config::attribute_value& c) { return utils::split(c.str()); },
+			[](const std::vector<std::string>& types, const unit_filter_args& u)
+			{
+				// If this unit is a variation itself then search in the base unit's variations.
+				const unit_type* const type = u.u.variation().empty() ? &u.u.type() : unit_types.find(u.u.type().base_id());
+				assert(type);
+
+				for(const std::string& variation_id : types) {
+					if (type->has_variation(variation_id)) {
+						return true;
+					}
+				}
+				return false;
+			}
+		);
+
+		create_attribute(literal["ability"],
+			[](const config::attribute_value& c) { return utils::split(c.str()); },
+			[](const std::vector<std::string>& abilities, const unit_filter_args& u)
+			{
+				for(const std::string& ability_id : abilities) {
+					if (u.u.has_ability_by_id(ability_id)) {
+						return true;
+					}
+				}
+				return false;
+			}
+		);
+
+		create_attribute(literal["ability_type"],
+			[](const config::attribute_value& c) { return utils::split(c.str()); },
+			[](const std::vector<std::string>& abilities, const unit_filter_args& u)
+			{
+				for(const std::string& ability : abilities) {
+					if (u.u.has_ability_type(ability)) {
+						return true;
+					}
+				}
+				return false;
+			}
+		);
+
+		create_attribute(literal["ability_type_active"],
+			[](const config::attribute_value& c) { return utils::split(c.str()); },
+			[](const std::vector<std::string>& abilities, const unit_filter_args& u)
+			{
+				for(const std::string& ability : abilities) {
+					if (!u.u.get_abilities(ability, u.loc).empty()) {
+						return true;
+					}
+				}
+				return false;
+			}
+		);
+
+		create_attribute(literal["trait"],
+			[](const config::attribute_value& c)
+			{
+				auto res = utils::split(c.str());
+				std::sort(res.begin(), res.end());
+				return res;
+
+			},
+			[](const std::vector<std::string>& check_traits, const unit_filter_args& u)
+			{
+
+				std::vector<std::string> have_traits = u.u.get_traits_list();
+				std::vector<std::string> isect;
+				std::sort(have_traits.begin(), have_traits.end());
+				std::set_intersection(check_traits.begin(), check_traits.end(), have_traits.begin(), have_traits.end(), std::back_inserter(isect));
+				return !isect.empty();
+			}
+		);
+
+		create_attribute(literal["race"],
+			[](const config::attribute_value& c) { return utils::split(c.str()); },
+			[](const std::vector<std::string>& races, const unit_filter_args& u)
+			{
+				return std::find(races.begin(), races.end(), u.u.race()->id()) != races.end();
+			}
+		);
+
+		create_attribute(literal["gender"],
+			[](const config::attribute_value& c) { return string_gender(c.str()); },
+			[](unit_race::GENDER gender, const unit_filter_args& u)
+			{
+				return gender == u.u.gender();
+			}
+		);
+
+		create_attribute(literal["side"],
+			[](const config::attribute_value& c)
+			{
+				std::vector<int> res;
+				for(const std::string& s : utils::split(c.str())) {
+					res.push_back(std::stoi(s));
+				}
+				return res;
+			},
+			[](const std::vector<int>& sides, const unit_filter_args& u)
+			{
+				return std::find(sides.begin(), sides.end(), u.u.side()) != sides.end();
+			}
+		);
+
+		create_attribute(literal["status"],
+			[](const config::attribute_value& c) { return utils::split(c.str()); },
+			[](const std::vector<std::string>& statuses, const unit_filter_args& u)
+			{
+				for(const std::string& status : statuses) {
+					if (u.u.get_state(status)) {
+						return true;
+					}
+				}
+				return false;
+			}
+		);
+
+		create_attribute(literal["has_weapon"],
+			[](const config::attribute_value& c) { return c.str(); },
+			[](const std::string& weapon, const unit_filter_args& u)
+			{
+
+				for(const attack_type& a : u.u.attacks()) {
+					if(a.id() == weapon) {
+						return true;
+					}
+				}
+				return false;
+			}
+		);
+
+		create_attribute(literal["role"],
+			[](const config::attribute_value& c) { return c.str(); },
+			[](const std::string& role, const unit_filter_args& u)
+			{
+				return u.u.get_role() == role;
+			}
+		);
+
+		create_attribute(literal["ai_special"],
+			[](const config::attribute_value& c) { return c.str(); },
+			[](const std::string& ai_special, const unit_filter_args& u)
+			{
+				return (ai_special == "guardian") == u.u.get_state(unit::STATE_GUARDIAN);
+			}
+		);
+
+		create_attribute(literal["canrecruit"],
+			[](const config::attribute_value& c) { return c.to_bool(); },
+			[](bool canrecruit, const unit_filter_args& u)
+			{
+				return u.u.can_recruit() == canrecruit;
+			}
+		);
+
+		create_attribute(literal["recall_cost"],
+			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& u)
+			{
+				for(auto cost : ranges) {
+					if(cost.first <= u.u.recall_cost() && u.u.recall_cost() <= cost.second) {
+						return true;
+					}
+				}
+				return false;
+			}
+		);
+
+		create_attribute(literal["level"],
+			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& u)
+			{
+				for(auto lvl : ranges) {
+					if(lvl.first <= u.u.level() && u.u.level() <= lvl.second) {
+						return true;
+					}
+				}
+				return false;
+			}
+		);
+
+		create_attribute(literal["defense"],
+			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& u)
+			{
+				int actual_defense = u.u.defense_modifier(u.fc->get_disp_context().map().get_terrain(u.loc));
+				for(auto def : ranges) {
+					if(def.first <= actual_defense && actual_defense <= def.second) {
+						return true;
+					}
+				}
+				return false;
+			}
+		);
+
+		create_attribute(literal["movement_cost"],
+			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& u)
+			{
+				int actual_cost = u.u.movement_cost(u.fc->get_disp_context().map().get_terrain(u.loc));
+				for(auto cost : ranges) {
+					if(cost.first <= actual_cost && actual_cost <= cost.second) {
+						return true;
+					}
+				}
+				return false;
+			}
+		);
+
+		create_attribute(literal["vision_cost"],
+			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& u)
+			{
+				int actual_cost = u.u.vision_cost(u.fc->get_disp_context().map().get_terrain(u.loc));
+				for(auto cost : ranges) {
+					if(cost.first <= actual_cost && actual_cost <= cost.second) {
+						return true;
+					}
+				}
+				return false;
+			}
+		);
+
+		create_attribute(literal["jamming_cost"],
+			[](const config::attribute_value& c) { return utils::parse_ranges(c.str()); },
+			[](const std::vector<std::pair<int,int>>& ranges, const unit_filter_args& u)
+			{
+				int actual_cost = u.u.jamming_cost(u.fc->get_disp_context().map().get_terrain(u.loc));
+				for(auto cost : ranges) {
+					if(cost.first <= actual_cost && actual_cost <= cost.second) {
+						return true;
+					}
+				}
+				return false;
+			}
+		);
+		
+		create_attribute(literal["lua_function"],
+			[](const config::attribute_value& c) { return c.str(); },
+			[](const std::string& lua_function, const unit_filter_args& u)
+			{
+				if (game_lua_kernel * lk = u.fc->get_lua_kernel()) {
+					return lk->run_filter(lua_function.c_str(), u.u);
+				}
+				return true;
+			}
+		);
+
+		create_attribute(literal["formula"],
+			[](const config::attribute_value& c)
+			{
+				//TODO: catch syntax error.
+				return wfl::formula(c, new wfl::gamestate_function_symbol_table());
+			},
+			[](const wfl::formula& form, const unit_filter_args& u)
+			{
+				try {
+					const wfl::unit_callable main(u.loc, u.u);
+					wfl::map_formula_callable callable(main.fake_ptr());
+					if (u.u2) {
+						std::shared_ptr<wfl::unit_callable> secondary(new wfl::unit_callable(*u.u2));
+						callable.add("other", wfl::variant(secondary));
+						// It's not destroyed upon scope exit because the variant holds a reference
+					}
+					if(!form.evaluate(callable).as_bool()) {
+						return false;
+					}
+					return true;
+				} catch(wfl::formula_error& e) {
+					lg::wml_error() << "Formula error in unit filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
+					// Formulae with syntax errors match nothing
+					return false;
+				}
+			}
+		);
+		
+		create_attribute(literal["find_in"],
+			[](const config::attribute_value& c) { return c.str(); },
+			[](const std::string& find_in, const unit_filter_args& u)
+			{
+				// Allow filtering by searching a stored variable of units
+				if (const game_data * gd = u.fc->get_game_data()) {
+					try
+					{
+						for (const config& c : gd->get_variable_access_read(find_in).as_array())
+						{
+							if(c["id"] == u.u.id()) {
+								return true;
+							}
+						}
+						return false;
+					}
+					catch(const invalid_variablename_exception&)
+					{
+						return false;
+					}
+				}
+				return true;
+			}
+		);
+
+		if (!literal["x"].empty() || !literal["y"].empty()) {
+			children_.emplace_back(new unit_filter_xy(literal["x"], literal["y"]));
+		}
+		
+		for(auto child : cfg.all_ordered()) {
+			CONDITIONAL_TYPE cond;
+			if(cond.parse(child.first)) {
+				cond_children_.emplace_back(std::piecewise_construct_t(), std::make_tuple(cond), std::make_tuple(child.second));
+			}
+			else if (child.first == "filter_wml") {
+				create_child(child.second, [](const vconfig& c, const unit_filter_args& u) {
+					config fwml = c.get_parsed_config();
+
+					/* Check if the filter only cares about variables.
+					   If so, no need to serialize the whole unit. */
+					config::all_children_itors ci = fwml.all_children_range();
+					if (fwml.all_children_count() == 1 && fwml.attribute_count() == 1 && ci.front().key == "variables") {
+						return u.u.variables().matches(ci.front().cfg);
+					} else {
+						config ucfg;
+						u.u.write(ucfg);
+						return ucfg.matches(fwml);
+					}
+				});
+			}
+			else if (child.first == "filter_vision") {
+				create_child(child.second, [](const vconfig& c, const unit_filter_args& u) {
+					std::set<int> viewers;
+					side_filter ssf(c, u.fc);
+					std::vector<int> sides = ssf.get_teams();
+					viewers.insert(sides.begin(), sides.end());
+
+					for (const int viewer : viewers) {
+						bool fogged = u.fc->get_disp_context().get_team(viewer).fogged(u.loc);
+						bool hiding = u.u.invisible(u.loc, u.fc->get_disp_context()) && u.fc->get_disp_context().get_team(viewer).is_enemy(u.u.side());
+						bool unit_hidden = fogged || hiding;
+						if (c["visible"].to_bool(true) != unit_hidden) {
+							return true;
+						}
+					}
+					return false;
+				});
+			}
+			else if (child.first == "filter_adjacent") {
+				children_.emplace_back(new unit_filter_adjacent(child.second));
+			}
+			else if (child.first == "filter_location") {
+				create_child(child.second, [](const vconfig& c, const unit_filter_args& u) {
+					return terrain_filter(c, u.fc, u.use_flat_tod).match(u.loc);
+				});
+			}
+			else if (child.first == "filter_side") {
+				create_child(child.second, [](const vconfig& c, const unit_filter_args& u) {
+					return side_filter(c, u.fc).match(u.u.side());
+				});
+			}
+			else if (child.first == "has_attack") {
+				create_child(child.second, [](const vconfig& c, const unit_filter_args& u) {
+					for(const attack_type& a : u.u.attacks()) {
+						if(a.matches_filter(c.get_parsed_config())) {
+							return true;
+						}
+					}
+					return false;
+				});
+			}
+			else {
+				std::stringstream errmsg;
+				errmsg << "encountered a child [" << child.first << "] of a standard unit filter, it is being ignored";
+				DBG_CF << errmsg.str() << std::endl;
+			}
+			
 		}
 	}
-	return unit_const_ptr();
-}
+
+
+
