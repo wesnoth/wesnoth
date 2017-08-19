@@ -43,12 +43,11 @@ terrain_filter::~terrain_filter()
 {
 }
 
-terrain_filter::terrain_filter(const vconfig& cfg, const filter_context * fc,
-		const bool flat_tod, const size_t max_loop) :
+terrain_filter::terrain_filter(const vconfig& cfg, const filter_context * fc, const bool flat_tod) :
 	cfg_(cfg),
 	fc_(fc),
 	cache_(),
-	max_loop_(max_loop),
+	max_loop_(game_config::max_loop),
 	flat_(flat_tod)
 {
 }

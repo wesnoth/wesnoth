@@ -30,8 +30,7 @@ class team;
 class terrain_filter : public xy_pred {
 public:
 
-	terrain_filter(const vconfig& cfg,
-		const filter_context * fc, const bool flat_tod=false, const size_t max_loop=game_config::max_loop);
+	terrain_filter(const vconfig& cfg, const filter_context * fc, const bool flat_tod=false);
 	terrain_filter(const vconfig& cfg, const terrain_filter& original);
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	~terrain_filter();
@@ -69,11 +68,6 @@ public:
 		return get_locs_impl(locs, &ref_unit, with_border);
 	}
 
-	//restrict: limits the allowed radius size and also limits nesting
-	// The purpose to limit the time spent for WML handling
-	// Note: this feature is not fully implemented, e.g. SLF inside SUF inside SLF
-	void restrict_size(const size_t max_loop) { max_loop_ = max_loop; }
-
 	//flatten: use base time of day -- ignore illumination ability
 	void flatten(const bool flat_tod=true) { flat_ = flat_tod; }
 
@@ -105,6 +99,6 @@ private:
 	};
 
 	mutable terrain_filter_cache cache_;
-	size_t max_loop_;
+	const size_t max_loop_;
 	bool flat_;
 };
