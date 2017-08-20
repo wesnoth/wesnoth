@@ -553,7 +553,6 @@ static int rank_castle_location(int x, int y, const is_valid_terrain& valid_terr
 		}
 
 		if(distance < min_distance) {
-			avg_distance = 0;
 			return -1;
 		}
 
@@ -966,6 +965,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		failed_locs.insert(best_loc);
 	}
 
+	LOG_NG << "Placed castles. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
 	LOG_NG << "Placing roads...\n";
 	ticks = SDL_GetTicks();
 
@@ -1154,7 +1154,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		}
 	}
 
-	LOG_NG << "Placed roads and castles. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
+	LOG_NG << "Placed roads. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
 	ticks = SDL_GetTicks();
 
 	/* Random naming for landforms: mountains, forests, swamps, hills
@@ -1209,6 +1209,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		}
 	}
 
+	LOG_NG << "Named landforms. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
 	LOG_NG << "Placing villages...\n";
 	ticks = SDL_GetTicks();
 

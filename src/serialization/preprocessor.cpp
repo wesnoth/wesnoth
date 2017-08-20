@@ -195,6 +195,8 @@ class preprocessor
 	std::string old_textdomain_;
 	std::string old_location_;
 	int old_linenum_;
+
+	friend class preprocessor_streambuf;
 protected:
 	preprocessor_streambuf &target_;
 	preprocessor(preprocessor_streambuf &);
@@ -207,7 +209,7 @@ public:
 	virtual bool get_chunk() = 0;
 	///retruns 1 if this parses a macro, -1 if this doesnt parse text (if this is no preprocessor_data). 0 otherwise (this parses a file).
 	virtual int is_macro() { return -1; }
-	virtual ~preprocessor();
+	virtual ~preprocessor() {}
 };
 
 /**
@@ -218,6 +220,7 @@ class preprocessor_streambuf: public streambuf
 {
 	std::string out_buffer_;      /**< Buffer read by the STL stream. */
 	virtual int underflow();
+	void restore_old_preprocessor(const preprocessor& current);
 	std::stringstream buffer_;    /**< Buffer filled by the #current_ preprocessor. */
 	preprocessor *current_;       /**< Input preprocessor. */
 	preproc_map *defines_;
@@ -330,7 +333,9 @@ int preprocessor_streambuf::underflow()
 		// Process files and data chunks until the desired buffer size is reached
 		if (!current_->get_chunk()) {
 			 // Delete the current preprocessor item to restore its predecessor
-			delete current_;
+			preprocessor* temp = current_;
+			restore_old_preprocessor(*temp);
+			delete temp;
 		}
 	}
 	// Update the internal state and data pointers
@@ -344,6 +349,26 @@ int preprocessor_streambuf::underflow()
 	if (sz >= bs)
 		return EOF;
 	return static_cast<unsigned char>(*(begin + sz));
+}
+
+/**
+* Restores the old preprocessing context.
+* Appends location and domain directives to the buffer, so that the parser
+* notices these changes.
+*/
+void preprocessor_streambuf::restore_old_preprocessor(const preprocessor& current)
+{
+	if(!current.old_location_.empty()) {
+		buffer_ << "\376line " << current.old_linenum_ << ' ' << current.old_location_ << '\n';
+	}
+	if(!current.old_textdomain_.empty() && textdomain_ != current.old_textdomain_) {
+		buffer_ << "\376textdomain " << current.old_textdomain_ << '\n';
+	}
+	current_ = current.old_preprocessor_;
+	location_ = current.old_location_;
+	linenum_ = current.old_linenum_;
+	textdomain_ = current.old_textdomain_;
+	--depth_;
 }
 
 std::string lineno_string(const std::string &lineno)
@@ -405,27 +430,6 @@ preprocessor::preprocessor(preprocessor_streambuf &t) :
 {
 	++target_.depth_;
 	target_.current_ = this;
-}
-
-/**
- * Restores the old preprocessing context of #target_.
- * Appends location and domain directives to the buffer, so that the parser
- * notices these changes.
- */
-preprocessor::~preprocessor()
-{
-	assert(target_.current_ == this);
-	if (!old_location_.empty()) {
-		target_.buffer_ << "\376line " << old_linenum_ << ' ' << old_location_ << '\n';
-	}
-	if (!old_textdomain_.empty() && target_.textdomain_ != old_textdomain_) {
-		target_.buffer_ << "\376textdomain " << old_textdomain_ << '\n';
-	}
-	target_.current_  = old_preprocessor_;
-	target_.location_ = old_location_;
-	target_.linenum_  = old_linenum_;
-	target_.textdomain_ = old_textdomain_;
-	--target_.depth_;
 }
 
 /**

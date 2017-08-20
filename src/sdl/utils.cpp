@@ -432,7 +432,7 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 
 				Uint8 r,g,b,a;
 				Uint32 rr,gg,bb,aa;
-				Uint16 avg_r, avg_g, avg_b, avg_a;
+				Uint16 avg_r, avg_g, avg_b;
 				Uint32 pix[4], bilin[4];
 
 				// This next part is the fixed point
@@ -466,7 +466,7 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 				// what the pixel values are like.
 
 				int count = 0;
-				avg_r = avg_g = avg_b = avg_a = 0;
+				avg_r = avg_g = avg_b = 0;
 				int loc;
 				for (loc=0; loc<4; loc++) {
 				  a = pix[loc] >> 24;
@@ -477,7 +477,6 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 				    avg_r += r;
 				    avg_g += g;
 				    avg_b += b;
-				    avg_a += a;
 				    count++;
 				  }
 				}
@@ -485,7 +484,6 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 				  avg_r /= count;
 				  avg_b /= count;
 				  avg_g /= count;
-				  avg_a /= count;
 				}
 
 				// Perform modified bilinear interpolation.

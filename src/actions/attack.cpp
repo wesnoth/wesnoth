@@ -736,7 +736,7 @@ namespace {
 		 * Used in perform_hit to confirm a replay is in sync.
 		 * Check OOS_error_ after this method, true if error detected.
 		 */
-		void check_replay_attack_result(bool, int, int, config, unit_info&);
+		void check_replay_attack_result(bool&, int, int&, config, unit_info&);
 
 		void unit_killed(unit_info &, unit_info &,
 			const battle_context_unit_stats *&, const battle_context_unit_stats *&,
@@ -1333,7 +1333,7 @@ namespace {
 		}
 	}
 
-	void attack::check_replay_attack_result(bool hits, int ran_num, int damage,
+	void attack::check_replay_attack_result(bool& hits, int ran_num, int& damage,
 			config replay_results, unit_info& attacker)
 	{
 		int results_chance = replay_results["chance"];

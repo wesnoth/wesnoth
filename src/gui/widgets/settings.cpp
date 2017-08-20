@@ -528,6 +528,7 @@ const typename TList::value_type& get_best_resolution(const TList& list, const T
 		}
 	}
 
+	assert(best_resolution != nullptr);
 	return *best_resolution;	
 }
 

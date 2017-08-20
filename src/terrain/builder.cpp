@@ -164,6 +164,8 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 
 			img_list.push_back(anim);
 
+			assert(anim.get_animation_duration() != 0);
+
 			if(variant.random_start)
 				img_list.back().set_animation_time(ri.rand % img_list.back().get_animation_duration());
 
@@ -1182,6 +1184,8 @@ void terrain_builder::build_terrains()
 				}
 			}
 		}
+
+		assert(min_constraint != nullptr);
 
 		// NOTE: if min_types is not empty, we have found a valid min_constraint;
 		for(t_translation::ter_list::const_iterator t = min_types.begin(); t != min_types.end(); ++t) {

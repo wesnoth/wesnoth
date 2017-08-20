@@ -736,14 +736,12 @@ static terrain_code string_to_number_(const std::string& str, const ter_layer fi
 static terrain_code string_to_number_(std::string str, std::string& start_position, const ter_layer filler)
 {
 	const char* c_str = str.c_str();
-	size_t begin = 0;
-	size_t end = str.size();
 	terrain_code result;
 
 	// Strip the spaces around us
 	const std::string& whitespace = " \t";
-	begin = str.find_first_not_of(whitespace);
-	end = str.find_last_not_of(whitespace) + 1;
+	size_t begin = str.find_first_not_of(whitespace);
+	size_t end = str.find_last_not_of(whitespace) + 1;
 	if(begin == std::string::npos) {
 		return result;
 	}
