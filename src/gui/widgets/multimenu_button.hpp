@@ -28,6 +28,10 @@ class config;
 
 namespace gui2
 {
+namespace implementation
+{
+struct builder_multimenu_button;
+}
 
 // ------------ WIDGET -----------{
 
@@ -37,7 +41,7 @@ namespace gui2
 class multimenu_button : public styled_widget
 {
 public:
-	multimenu_button();
+	explicit multimenu_button(const implementation::builder_multimenu_button& builder);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 

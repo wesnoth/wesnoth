@@ -22,6 +22,10 @@
 
 namespace gui2
 {
+namespace implementation
+{
+struct builder_spacer;
+}
 
 // ------------ WIDGET -----------{
 
@@ -37,12 +41,7 @@ namespace gui2
 class spacer : public styled_widget
 {
 public:
-	spacer(const std::string& w = "0", const std::string& h = "0")
-		: styled_widget()
-		, width_(w)
-		, height_(h)
-	{
-	}
+	spacer(const implementation::builder_spacer& builder, const std::string& w = "0", const std::string& h = "0");
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 

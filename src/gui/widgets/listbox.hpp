@@ -35,6 +35,7 @@ namespace implementation
 struct builder_listbox;
 struct builder_horizontal_listbox;
 struct builder_grid_listbox;
+struct builder_styled_widget;
 }
 
 /** The listbox class. */
@@ -49,6 +50,8 @@ public:
 	/**
 	 * Constructor.
 	 *
+	 * @param builder             The builder for the appropriate listbox
+	 *                            variant.
 	 * @param has_minimum         Does the listbox need to have one item
 	 *                            selected.
 	 * @param has_maximum         Can the listbox only have one item
@@ -57,10 +60,11 @@ public:
 	 * @param select              Select an item when selected, if false it
 	 *                            changes the visible state instead.
 	 */
-	listbox(const bool has_minimum,
-			 const bool has_maximum,
-			 const generator_base::placement placement,
-			 const bool select);
+	listbox(const implementation::builder_styled_widget& builder,
+			const bool has_minimum,
+			const bool has_maximum,
+			const generator_base::placement placement,
+			const bool select);
 
 	/***** ***** ***** ***** Row handling. ***** ***** ****** *****/
 	/**

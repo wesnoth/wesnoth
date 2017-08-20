@@ -31,6 +31,12 @@ namespace gui2
 
 REGISTER_WIDGET(drawing)
 
+drawing::drawing(const implementation::builder_drawing& builder)
+	: styled_widget(builder, get_control_type())
+	, best_size_(0, 0)
+{
+}
+
 point drawing::calculate_best_size() const
 {
 	return best_size_ != point() ? best_size_
@@ -177,9 +183,7 @@ builder_drawing::builder_drawing(const config& cfg)
 
 widget* builder_drawing::build() const
 {
-	drawing* widget = new drawing();
-
-	init_control(widget);
+	drawing* widget = new drawing(*this);
 
 	const wfl::map_formula_callable& size = get_screen_size_variables();
 

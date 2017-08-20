@@ -66,8 +66,9 @@ const std::map<std::string, scrollbar_base::scroll_mode>& scroll_lookup()
 
 } // namespace
 
-scrollbar_container::scrollbar_container()
-	: container_base()
+scrollbar_container::scrollbar_container(const implementation::builder_styled_widget& builder,
+		const std::string& control_type)
+	: container_base(builder, control_type)
 	, state_(ENABLED)
 	, vertical_scrollbar_mode_(AUTO_VISIBLE_FIRST_RUN)
 	, horizontal_scrollbar_mode_(AUTO_VISIBLE_FIRST_RUN)
@@ -825,8 +826,7 @@ void scrollbar_container::finalize_setup()
 	}
 
 	/***** Setup the content *****/
-	content_ = new spacer();
-	content_->set_definition("default");
+	content_ = build_single_widget_instance<spacer>("spacer");
 
 	content_grid_ = dynamic_cast<grid*>(
 			get_grid().swap_child("_content_grid", content_, true).release());

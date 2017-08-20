@@ -44,7 +44,7 @@ class scroll_label : public scrollbar_container
 	friend struct implementation::builder_scroll_label;
 
 public:
-	scroll_label(bool wrap, const PangoAlignment text_alignment);
+	explicit scroll_label(const implementation::builder_scroll_label& builder);
 
 	/** See @ref styled_widget::set_label. */
 	virtual void set_label(const t_string& label) override;

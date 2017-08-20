@@ -32,8 +32,8 @@
 namespace gui2
 {
 
-text_box_base::text_box_base()
-	: styled_widget()
+text_box_base::text_box_base(const implementation::builder_styled_widget& builder, const std::string& control_type)
+	: styled_widget(builder, control_type)
 	, state_(ENABLED)
 	, text_()
 	, selection_start_(0)

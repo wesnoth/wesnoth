@@ -21,17 +21,17 @@
 
 namespace gui2
 {
+namespace implementation
+{
+struct builder_progress_bar;
+}
 
 // ------------ WIDGET -----------{
 
 class progress_bar : public styled_widget
 {
 public:
-	progress_bar() : styled_widget(), percentage_(static_cast<unsigned>(-1))
-	{
-		// Force canvas update
-		set_percentage(0);
-	}
+	explicit progress_bar(const implementation::builder_progress_bar& builder);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 

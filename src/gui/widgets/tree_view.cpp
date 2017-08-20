@@ -37,9 +37,9 @@ namespace gui2
 
 REGISTER_WIDGET(tree_view)
 
-tree_view::tree_view(const std::vector<node_definition>& node_definitions)
-	: scrollbar_container()
-	, node_definitions_(node_definitions)
+tree_view::tree_view(const implementation::builder_tree_view& builder)
+	: scrollbar_container(builder, get_control_type())
+	, node_definitions_(builder.nodes)
 	, indentation_step_size_(0)
 	, need_layout_(false)
 	, root_node_(new tree_view_node("root",
@@ -398,9 +398,7 @@ widget* builder_tree_view::build() const
 	 *  TODO see how much we can move in the constructor instead of
 	 *  building in several steps.
 	 */
-	tree_view* widget = new tree_view(nodes);
-
-	init_control(widget);
+	tree_view* widget = new tree_view(*this);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);

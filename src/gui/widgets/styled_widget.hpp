@@ -35,9 +35,6 @@ class styled_widget : public widget
 	friend class debug_layout_graph;
 
 public:
-	/** @deprecated Used the second overload. */
-	styled_widget();
-
 	/**
 	 * Constructor.
 	 *
@@ -187,18 +184,6 @@ public:
 
 private:
 	/**
-	 * Loads the configuration of the widget.
-	 *
-	 * Controls have their definition stored in a definition object. In order to
-	 * determine sizes and drawing the widget this definition needs to be
-	 * loaded. The member definition_ contains the name of the definition and
-	 * function load the proper configuration.
-	 *
-	 * @deprecated @ref definition_load_configuration() is the replacement.
-	 */
-	void load_config();
-
-	/**
 	 * Uses the load function.
 	 *
 	 * @note This doesn't look really clean, but the final goal is refactor
@@ -223,17 +208,6 @@ public:
 	const widget* find(const std::string& id,
 						const bool must_be_active) const override;
 
-	/**
-	 * Sets the definition.
-	 *
-	 * This function sets the definition of a styled_widget and should be called soon
-	 * after creating the object since a lot of internal functions depend on the
-	 * definition.
-	 *
-	 * This function should be called one time only!!!
-	 */
-	void set_definition(const std::string& definition);
-
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 	bool get_use_tooltip_on_label_overflow() const
 	{
@@ -249,9 +223,11 @@ public:
 	{
 		return label_;
 	}
+
 	virtual void set_label(const t_string& label);
 
 	virtual void set_use_markup(bool use_markup);
+
 	bool get_use_markup() const
 	{
 		return use_markup_;
@@ -293,6 +269,7 @@ public:
 	}
 
 	virtual void set_text_alignment(const PangoAlignment text_alignment);
+
 	PangoAlignment get_text_alignment() const
 	{
 		return text_alignment_;
@@ -334,7 +311,8 @@ protected:
 	std::shared_ptr<const typename T::resolution> cast_config_to() const
 	{
 		static_assert(std::is_base_of<resolution_definition, typename T::resolution>::value,
-			"Given type's resolution object does not derive from resolution_definition.");
+			"Given type's resolution object does not derive from resolution_definition."
+		);
 
 		return std::static_pointer_cast<const typename T::resolution>(config());
 	}
@@ -431,16 +409,6 @@ private:
 	resolution_definition_ptr config_;
 
 	/**
-	 * Load class dependent config settings.
-	 *
-	 * load_config will call this method after loading the config, by default it
-	 * does nothing but classes can override it to implement custom behavior.
-	 */
-	virtual void load_config_extra()
-	{
-	}
-
-	/**
 	 * Loads the configuration of the widget.
 	 *
 	 * Controls have their definition stored in a definition object. In order to
@@ -479,19 +447,6 @@ protected:
 	std::string get_label_link(const gui2::point & position) const;
 
 private:
-	/**
-	 * Allows derived classes to implement initialization steps after the config and
-	 * canvases have been loaded.
-	 *
-	 * Another area this is useful is for initialization making use of virtual functions,
-	 * which can't be used in a constructor.
-	 *
-	 * This function should only be called once.
-	 */
-	virtual void init()
-	{
-	}
-
 	/**
 	 * Gets the best size for a text.
 	 *
@@ -567,9 +522,6 @@ public:
 	using builder_widget::build;
 
 	virtual widget* build(const replacements_map& replacements) const override;
-
-	/** @deprecated The styled_widget can initialize itself. */
-	void init_control(styled_widget* styled_widget) const;
 
 	/** Parameters for the styled_widget. */
 	std::string definition;

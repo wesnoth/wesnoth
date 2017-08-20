@@ -40,15 +40,15 @@ namespace gui2
 
 REGISTER_WIDGET(label)
 
-label::label()
-		: styled_widget()
-		, state_(ENABLED)
-		, can_wrap_(false)
-		, characters_per_line_(0)
-		, link_aware_(false)
-		, link_color_(color_t::from_hex_string("ffff00"))
-		, can_shrink_(false)
-		, text_alpha_(255)
+label::label(const implementation::builder_label& builder)
+	: styled_widget(builder, get_control_type())
+	, state_(ENABLED)
+	, can_wrap_(false)
+	, characters_per_line_(0)
+	, link_aware_(false)
+	, link_color_(color_t::from_hex_string("ffff00"))
+	, can_shrink_(false)
+	, text_alpha_(255)
 {
 	connect_signal<event::LEFT_BUTTON_CLICK>(std::bind(&label::signal_handler_left_button_click, this, _2, _3));
 	connect_signal<event::RIGHT_BUTTON_CLICK>(std::bind(&label::signal_handler_right_button_click, this, _2, _3));
@@ -146,18 +146,6 @@ const std::string& label::get_control_type() const
 	static const std::string type = "label";
 	return type;
 }
-
-void label::load_config_extra()
-{
-	assert(config());
-
-	const auto conf = cast_config_to<label_definition>();
-	assert(conf);
-
-	set_link_aware(conf->link_aware);
-	set_link_color(conf->link_color);
-}
-
 
 void label::signal_handler_left_button_click(const event::ui_event /* event */, bool & handled)
 {
@@ -334,15 +322,18 @@ builder_label::builder_label(const config& cfg)
 
 widget* builder_label::build() const
 {
-	label* lbl = new label();
+	label* lbl = new label(*this);
 
-	init_control(lbl);
+	const auto conf = lbl->cast_config_to<label_definition>();
+	assert(conf);
 
 	lbl->set_can_wrap(wrap);
 	lbl->set_characters_per_line(characters_per_line);
 	lbl->set_text_alignment(text_alignment);
 	lbl->set_text_alpha(ALPHA_OPAQUE);
 	lbl->set_can_shrink(can_shrink);
+	lbl->set_link_aware(conf->link_aware);
+	lbl->set_link_color(conf->link_color);
 
 	DBG_GUI_G << "Window builder: placed label '" << id << "' with definition '"
 			  << definition << "'.\n";

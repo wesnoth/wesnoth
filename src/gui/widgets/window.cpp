@@ -304,7 +304,7 @@ window::window(CVideo& video,
 				 const std::string& definition,
 				 const builder_window::window_resolution::tooltip_info& tooltip,
 				 const builder_window::window_resolution::tooltip_info& helptip)
-	: panel()
+	: panel(implementation::builder_window(::config {"definition", definition->definition}), get_control_type())
 	, cursor::setter(cursor::NORMAL)
 	, video_(video)
 	, status_(NEW)
@@ -344,11 +344,6 @@ window::window(CVideo& video,
 	, exit_hook_([](window&)->bool { return true; })
 	, callback_next_draw_(nullptr)
 {
-	// We load the config in here as exception.
-	// Our caller did update the screen size so no need for us to do that again.
-	set_definition(definition);
-	load_config();
-
 	manager::instance().add(*this);
 
 	connect();

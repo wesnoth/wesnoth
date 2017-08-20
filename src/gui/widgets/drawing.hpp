@@ -23,7 +23,10 @@ class config;
 
 namespace gui2
 {
-
+namespace implementation
+{
+	struct builder_drawing;
+}
 // ------------ WIDGET -----------{
 
 /**
@@ -35,9 +38,7 @@ namespace gui2
 class drawing : public styled_widget
 {
 public:
-	drawing() : styled_widget(), best_size_(0, 0)
-	{
-	}
+	explicit drawing(const implementation::builder_drawing& builder);
 
 	canvas& get_drawing_canvas()
 	{

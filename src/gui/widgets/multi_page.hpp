@@ -38,7 +38,7 @@ class multi_page : public container_base
 	friend class debug_layout_graph;
 
 public:
-	multi_page();
+	explicit multi_page(const implementation::builder_multi_page& builder);
 
 	/***** ***** ***** ***** Page handling. ***** ***** ****** *****/
 

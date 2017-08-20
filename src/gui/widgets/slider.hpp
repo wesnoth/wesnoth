@@ -22,14 +22,20 @@
 
 namespace gui2
 {
+namespace implementation
+{
+struct builder_slider;
+}
 
 // ------------ WIDGET -----------{
 
 /** A slider. */
 class slider : public scrollbar_base, public integer_selector
 {
+	friend struct implementation::builder_slider;
+
 public:
-	slider();
+	explicit slider(const implementation::builder_slider& builder);
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
@@ -178,8 +184,8 @@ private:
 	tlabel_creator value_labels_;
 
 	/**
-	 * When initially pessing the positioner and every time a new value is chosen through dragging,
-	 * this value is upda with the mouse position at the time. This allows the widget to track
+	 * When initially pressing the positioner and every time a new value is chosen through dragging,
+	 * this value is updated with the mouse position at the time. This allows the widget to track
 	 * how far the mouse has moved since setting the last value.
 	 */
 	point current_item_mouse_position_;

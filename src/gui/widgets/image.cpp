@@ -36,6 +36,11 @@ namespace gui2
 
 REGISTER_WIDGET(image)
 
+image::image(const implementation::builder_image& builder)
+	: styled_widget(builder, get_control_type())
+{
+}
+
 point image::calculate_best_size() const
 {
 	surface image(::image::get_image(::image::locator(get_label())));
@@ -168,9 +173,7 @@ builder_image::builder_image(const config& cfg) : builder_styled_widget(cfg)
 
 widget* builder_image::build() const
 {
-	image* widget = new image();
-
-	init_control(widget);
+	image* widget = new image(*this);
 
 	DBG_GUI_G << "Window builder: placed image '" << id << "' with definition '"
 			  << definition << "'.\n";

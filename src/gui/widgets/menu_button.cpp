@@ -37,8 +37,8 @@ namespace gui2
 
 REGISTER_WIDGET(menu_button)
 
-menu_button::menu_button()
-	: styled_widget()
+menu_button::menu_button(const implementation::builder_menu_button& builder)
+	: styled_widget(builder, get_control_type())
 	, selectable_item()
 	, state_(ENABLED)
 	, retval_(0)
@@ -309,9 +309,7 @@ builder_menu_button::builder_menu_button(const config& cfg)
 
 widget* builder_menu_button::build() const
 {
-	menu_button* widget = new menu_button();
-
-	init_control(widget);
+	menu_button* widget = new menu_button(*this);
 
 	widget->set_retval(get_retval(retval_id_, retval_, id));
 	if(!options_.empty()) {

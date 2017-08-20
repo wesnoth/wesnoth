@@ -18,6 +18,10 @@
 
 namespace gui2
 {
+namespace implementation
+{
+struct builder_text_box;
+}
 
 // ------------ WIDGET -----------{
 
@@ -116,8 +120,10 @@ private:
 /** Class for a single line text area. */
 class text_box : public text_box_base
 {
+	friend struct implementation::builder_text_box;
+
 public:
-	text_box();
+	explicit text_box(const implementation::builder_styled_widget& builder);
 
 	/** Saves the text in the widget to the history. */
 	void save_to_history()
@@ -254,9 +260,6 @@ private:
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
-
-	/** Inherited from styled_widget. */
-	void load_config_extra() override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 

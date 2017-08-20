@@ -27,8 +27,8 @@
 namespace gui2
 {
 
-scrollbar_base::scrollbar_base()
-	: styled_widget()
+scrollbar_base::scrollbar_base(const implementation::builder_styled_widget& builder, const std::string& control_type)
+	: styled_widget(builder, control_type)
 	, state_(ENABLED)
 	, item_count_(0)
 	, item_position_(0)
@@ -49,6 +49,15 @@ scrollbar_base::scrollbar_base()
 			&scrollbar_base::signal_handler_left_button_down, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_UP>(std::bind(
 			&scrollbar_base::signal_handler_left_button_up, this, _2, _3));
+}
+
+void scrollbar_base::finalize_setup()
+{
+	// These values won't change so set them once.
+	for(auto& tmp : get_canvases()) {
+		tmp.set_variable("offset_before", wfl::variant(offset_before()));
+		tmp.set_variable("offset_after", wfl::variant(offset_after()));
+	}
 }
 
 void scrollbar_base::scroll(const scroll_mode scroll)
@@ -148,7 +157,6 @@ void scrollbar_base::set_item_position(const unsigned item_position)
 
 void scrollbar_base::update_canvas()
 {
-
 	for(auto & tmp : get_canvases())
 	{
 		tmp.set_variable("positioner_offset", wfl::variant(positioner_offset_));
@@ -168,7 +176,7 @@ void scrollbar_base::set_state(const state_t state)
 void scrollbar_base::recalculate()
 {
 	// We can be called before the size has been set up in that case we can't do
-	// the proper recalcultion so stop before we die with an assert.
+	// the proper recalculation so stop before we die with an assert.
 	if(!get_length()) {
 		return;
 	}
@@ -301,16 +309,6 @@ void scrollbar_base::move_positioner(const int distance)
 		<< ".\n\n";
 #endif
 	update_canvas();
-}
-
-void scrollbar_base::load_config_extra()
-{
-	// These values won't change so set them here.
-	for(auto & tmp : get_canvases())
-	{
-		tmp.set_variable("offset_before", wfl::variant(offset_before()));
-		tmp.set_variable("offset_after", wfl::variant(offset_after()));
-	}
 }
 
 void scrollbar_base::signal_handler_mouse_enter(const event::ui_event event,

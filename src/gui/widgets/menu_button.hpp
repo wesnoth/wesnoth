@@ -28,6 +28,10 @@ class config;
 
 namespace gui2
 {
+namespace implementation
+{
+	struct builder_menu_button;
+}
 
 // ------------ WIDGET -----------{
 
@@ -37,7 +41,7 @@ namespace gui2
 class menu_button : public styled_widget, public selectable_item
 {
 public:
-	menu_button();
+	explicit menu_button(const implementation::builder_menu_button& builder);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 

@@ -43,7 +43,7 @@ class scrollbar_base : public styled_widget
 	friend class slider;
 
 public:
-	scrollbar_base();
+	scrollbar_base(const implementation::builder_styled_widget& builder, const std::string& control_type);
 
 	/**
 	 * scroll 'step size'.
@@ -56,7 +56,7 @@ public:
 		ITEM_BACKWARDS,		 /**< Go one item towards the begin. */
 		HALF_JUMP_BACKWARDS, /**< Go half the visible items towards the begin.
 								*/
-		JUMP_BACKWARDS,	/**< Go the visibile items towards the begin. */
+		JUMP_BACKWARDS,	/**< Go the visible items towards the begin. */
 		END,			   /**< Go to the end position. */
 		ITEM_FORWARD,	  /**< Go one item towards the end. */
 		HALF_JUMP_FORWARD, /**< Go half the visible items towards the end. */
@@ -148,6 +148,7 @@ public:
 	{
 		return visible_items_;
 	}
+
 	void set_visible_items(const unsigned visible_items)
 	{
 		visible_items_ = visible_items;
@@ -158,6 +159,7 @@ public:
 	{
 		return step_size_;
 	}
+
 	void set_step_size(const unsigned step_size)
 	{
 		step_size_ = step_size;
@@ -170,6 +172,8 @@ public:
 	}
 
 protected:
+	void finalize_setup();
+
 	unsigned get_positioner_offset() const
 	{
 		return positioner_offset_;
@@ -355,9 +359,6 @@ private:
 	 *                           to end.
 	*/
 	virtual void move_positioner(const int distance);
-
-	/** Inherited from styled_widget. */
-	void load_config_extra() override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 

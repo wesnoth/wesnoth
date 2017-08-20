@@ -62,6 +62,22 @@ namespace gui2
 
 REGISTER_WIDGET(unit_preview_pane)
 
+unit_preview_pane::unit_preview_pane(const implementation::builder_unit_preview_pane& builder)
+	: container_base(builder, get_control_type())
+	, current_type_()
+	, icon_type_(nullptr)
+	, icon_race_(nullptr)
+	, icon_alignment_(nullptr)
+	, label_name_(nullptr)
+	, label_level_(nullptr)
+	, label_race_(nullptr)
+	, label_details_(nullptr)
+	, tree_details_(nullptr)
+	, button_profile_(nullptr)
+	, image_mods_()
+{
+}
+
 void unit_preview_pane::finalize_setup()
 {
 	// Icons
@@ -588,9 +604,7 @@ builder_unit_preview_pane::builder_unit_preview_pane(const config& cfg)
 
 widget* builder_unit_preview_pane::build() const
 {
-	unit_preview_pane* widget = new unit_preview_pane();
-
-	init_control(widget);
+	unit_preview_pane* widget = new unit_preview_pane(*this);
 
 	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
 			  << "' with definition '" << definition << "'.\n";

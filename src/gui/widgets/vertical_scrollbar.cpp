@@ -28,6 +28,11 @@ namespace gui2
 
 REGISTER_WIDGET(vertical_scrollbar)
 
+vertical_scrollbar::vertical_scrollbar(const implementation::builder_vertical_scrollbar& builder)
+	: scrollbar_base(builder, get_control_type())
+{
+}
+
 unsigned vertical_scrollbar::minimum_positioner_length() const
 {
 	const auto conf = cast_config_to<vertical_scrollbar_definition>();
@@ -197,9 +202,9 @@ builder_vertical_scrollbar::builder_vertical_scrollbar(const config& cfg)
 
 widget* builder_vertical_scrollbar::build() const
 {
-	vertical_scrollbar* widget = new vertical_scrollbar();
+	vertical_scrollbar* widget = new vertical_scrollbar(*this);
 
-	init_control(widget);
+	widget->finalize_setup();
 
 	DBG_GUI_G << "Window builder:"
 			  << " placed vertical scrollbar '" << id << "' with definition '"

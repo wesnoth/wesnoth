@@ -37,6 +37,12 @@ namespace gui2
 
 REGISTER_WIDGET3(text_box_definition, password_box, "text_box_definition")
 
+password_box::password_box(const implementation::builder_password_box& builder)
+	: text_box(builder)
+	, real_value_()
+{
+}
+
 void password_box::set_value(const std::string& text)
 {
 	real_value_ = text;
@@ -129,9 +135,7 @@ builder_password_box::builder_password_box(const config& cfg)
 
 widget* builder_password_box::build() const
 {
-	password_box* widget = new password_box();
-
-	init_control(widget);
+	password_box* widget = new password_box(*this);
 
 	// A password box doesn't have a label but a text.
 	// It also has no history.

@@ -39,7 +39,7 @@ class stacked_widget : public container_base
 	friend class debug_layout_graph;
 
 public:
-	stacked_widget();
+	explicit stacked_widget(const implementation::builder_stacked_widget& builder);
 
 	/***** ***** ***** inherited ***** ****** *****/
 

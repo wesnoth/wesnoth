@@ -32,10 +32,10 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 REGISTER_WIDGET(multi_page)
-multi_page::multi_page()
-	: container_base()
-	, generator_(
-			  generator_base::build(true, true, generator_base::independent, false))
+
+multi_page::multi_page(const implementation::builder_multi_page& builder)
+	: container_base(builder, get_control_type())
+	, generator_(generator_base::build(true, true, generator_base::independent, false))
 	, page_builders_()
 {
 }
@@ -292,9 +292,7 @@ builder_multi_page::builder_multi_page(const config& cfg)
 
 widget* builder_multi_page::build() const
 {
-	multi_page* widget = new multi_page();
-
-	init_control(widget);
+	multi_page* widget = new multi_page(*this);
 
 	widget->set_page_builders(builders);
 

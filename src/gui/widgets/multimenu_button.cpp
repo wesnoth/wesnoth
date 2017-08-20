@@ -39,8 +39,8 @@ namespace gui2
 
 REGISTER_WIDGET(multimenu_button)
 
-multimenu_button::multimenu_button()
-	: styled_widget()
+multimenu_button::multimenu_button(const implementation::builder_multimenu_button& builder)
+	: styled_widget(builder, get_control_type())
 	, state_(ENABLED)
 	, retval_(0)
 	, values_()
@@ -353,9 +353,7 @@ builder_multimenu_button::builder_multimenu_button(const config& cfg)
 
 widget* builder_multimenu_button::build() const
 {
-	multimenu_button* widget = new multimenu_button();
-
-	init_control(widget);
+	multimenu_button* widget = new multimenu_button(*this);
 
 	widget->set_retval(get_retval(retval_id_, retval_, id));
 	widget->set_max_shown(max_shown_);

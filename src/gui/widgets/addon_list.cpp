@@ -39,6 +39,18 @@ namespace gui2
 
 REGISTER_WIDGET(addon_list)
 
+addon_list::addon_list(const implementation::builder_addon_list& builder)
+	: container_base(builder, get_control_type())
+	, addon_vector_()
+	, install_status_visibility_(visibility::visible)
+	, install_buttons_visibility_(visibility::invisible)
+	, install_function_()
+	, uninstall_function_()
+	, publish_function_()
+	, delete_function_()
+{
+}
+
 static color_t color_outdated {255, 127, 0};
 
 std::string addon_list::colorify_addon_state_string(const std::string& str, ADDON_STATUS state, bool verbose)
@@ -439,9 +451,7 @@ builder_addon_list::builder_addon_list(const config& cfg) :
 
 widget* builder_addon_list::build() const
 {
-	addon_list* widget = new addon_list();
-
-	init_control(widget);
+	addon_list* widget = new addon_list(*this);
 
 	DBG_GUI_G << "Window builder: placed add-on list '" << id <<
 		"' with definition '" << definition << "'.\n";

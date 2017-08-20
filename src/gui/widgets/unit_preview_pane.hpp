@@ -41,21 +41,7 @@ class unit_preview_pane : public container_base
 	friend struct implementation::builder_unit_preview_pane;
 
 public:
-	unit_preview_pane()
-		: container_base()
-		, current_type_()
-		, icon_type_(nullptr)
-		, icon_race_(nullptr)
-		, icon_alignment_(nullptr)
-		, label_name_(nullptr)
-		, label_level_(nullptr)
-		, label_race_(nullptr)
-		, label_details_(nullptr)
-		, tree_details_(nullptr)
-		, button_profile_(nullptr)
-		, image_mods_()
-	{
-	}
+	explicit unit_preview_pane(const implementation::builder_unit_preview_pane& builder);
 
 	/** Displays the stats of a specified unit type */
 	void set_displayed_type(const unit_type& type);

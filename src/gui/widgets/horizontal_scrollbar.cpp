@@ -33,6 +33,11 @@ namespace gui2
 
 REGISTER_WIDGET(horizontal_scrollbar)
 
+horizontal_scrollbar::horizontal_scrollbar(const implementation::builder_horizontal_scrollbar& builder)
+	: scrollbar_base(builder, get_control_type())
+{
+}
+
 unsigned horizontal_scrollbar::minimum_positioner_length() const
 {
 	const auto conf = cast_config_to<horizontal_scrollbar_definition>();
@@ -217,9 +222,9 @@ builder_horizontal_scrollbar::builder_horizontal_scrollbar(const config& cfg)
 
 widget* builder_horizontal_scrollbar::build() const
 {
-	horizontal_scrollbar* widget = new horizontal_scrollbar();
+	horizontal_scrollbar* widget = new horizontal_scrollbar(*this);
 
-	init_control(widget);
+	widget->finalize_setup();
 
 	DBG_GUI_G << "Window builder:"
 			  << " placed horizontal scrollbar '" << id << "' with definition '"

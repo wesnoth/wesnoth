@@ -40,7 +40,11 @@ namespace gui2
 
 REGISTER_WIDGET(button)
 
-button::button() : styled_widget(), clickable_item(), state_(ENABLED), retval_(0)
+button::button(const implementation::builder_button& builder)
+	: styled_widget(builder, get_control_type())
+	, clickable_item()
+	, state_(ENABLED)
+	, retval_(0)
 {
 	connect_signal<event::MOUSE_ENTER>(
 			std::bind(&button::signal_handler_mouse_enter, this, _2, _3));
@@ -246,9 +250,7 @@ builder_button::builder_button(const config& cfg)
 
 widget* builder_button::build() const
 {
-	button* widget = new button();
-
-	init_control(widget);
+	button* widget = new button(*this);
 
 	widget->set_retval(get_retval(retval_id_, retval_, id));
 

@@ -39,11 +39,11 @@ namespace gui2
 
 REGISTER_WIDGET(scroll_label)
 
-scroll_label::scroll_label(bool wrap, const PangoAlignment text_alignment)
-	: scrollbar_container()
+scroll_label::scroll_label(const implementation::builder_scroll_label& builder)
+	: scrollbar_container(builder, get_control_type())
 	, state_(ENABLED)
-	, wrap_on_(wrap)
-	, text_alignment_(text_alignment)
+	, wrap_on_(builder.wrap_on)
+	, text_alignment_(builder.text_alignment)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
 		std::bind(&scroll_label::signal_handler_left_button_down, this, _2),
@@ -277,9 +277,7 @@ builder_scroll_label::builder_scroll_label(const config& cfg)
 
 widget* builder_scroll_label::build() const
 {
-	scroll_label* widget = new scroll_label(wrap_on, text_alignment);
-
-	init_control(widget);
+	scroll_label* widget = new scroll_label(*this);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);

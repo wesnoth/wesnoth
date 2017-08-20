@@ -27,6 +27,12 @@ namespace gui2
 
 REGISTER_WIDGET(size_lock)
 
+size_lock::size_lock(const implementation::builder_size_lock& builder)
+	: container_base(builder, get_control_type())
+	, widget_(nullptr)
+{
+}
+
 void size_lock::place(const point& origin, const point& size)
 {
 	point content_size = widget_->get_best_size();
@@ -137,9 +143,7 @@ builder_size_lock::builder_size_lock(const config& cfg) :
 
 widget* builder_size_lock::build() const
 {
-	size_lock* widget = new size_lock();
-
-	init_control(widget);
+	size_lock* widget = new size_lock(*this);
 
 	DBG_GUI_G << "Window builder: placed fixed size widget '" << id <<
 		"' with definition '" << definition << "'.\n";

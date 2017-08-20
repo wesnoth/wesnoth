@@ -21,14 +21,20 @@
 
 namespace gui2
 {
+namespace implementation
+{
+	struct builder_label;
+}
 
 // ------------ WIDGET -----------{
 
 /** Label showing a text. */
 class label : public styled_widget
 {
+	friend struct implementation::builder_label;
+
 public:
-	label();
+	explicit label(const implementation::builder_label& builder);
 
 	/** See @ref widget::can_wrap. */
 	virtual bool can_wrap() const override;
@@ -130,9 +136,6 @@ private:
 
 	/** See @ref styled_widget::get_control_type. */
 	virtual const std::string& get_control_type() const override;
-
-	/** Inherited from styled_widget. */
-	void load_config_extra() override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 

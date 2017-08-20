@@ -24,6 +24,10 @@
 
 namespace gui2
 {
+namespace implementation
+{
+	struct builder_styled_widget;
+}
 
 /**
  * Abstract base class for text items.
@@ -43,7 +47,7 @@ class text_box_base : public styled_widget
 {
 
 public:
-	text_box_base();
+	text_box_base(const implementation::builder_styled_widget& builder, const std::string& control_type);
 
 	~text_box_base();
 

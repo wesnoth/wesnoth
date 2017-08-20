@@ -21,6 +21,10 @@
 
 namespace gui2
 {
+namespace implementation
+{
+	struct builder_image;
+}
 
 // ------------ WIDGET -----------{
 
@@ -28,9 +32,7 @@ namespace gui2
 class image : public styled_widget
 {
 public:
-	image() : styled_widget()
-	{
-	}
+	explicit image(const implementation::builder_image& builder);
 
 	/**
 	 * Wrapper for set_label.

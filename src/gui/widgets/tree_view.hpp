@@ -43,7 +43,7 @@ class tree_view : public scrollbar_container
 public:
 	typedef implementation::tree_node node_definition;
 
-	explicit tree_view(const std::vector<node_definition>& node_definitions);
+	explicit tree_view(const implementation::builder_tree_view& builder);
 
 	~tree_view();
 

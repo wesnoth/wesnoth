@@ -36,8 +36,8 @@ namespace gui2
 
 REGISTER_WIDGET(toggle_button)
 
-toggle_button::toggle_button()
-	: styled_widget()
+toggle_button::toggle_button(const implementation::builder_toggle_button& builder)
+	: styled_widget(builder, get_control_type())
 	, state_(ENABLED)
 	, state_num_(0)
 	, retval_(0)
@@ -290,9 +290,7 @@ builder_toggle_button::builder_toggle_button(const config& cfg)
 
 widget* builder_toggle_button::build() const
 {
-	toggle_button* widget = new toggle_button();
-
-	init_control(widget);
+	toggle_button* widget = new toggle_button(*this);
 
 	widget->set_icon_name(icon_name_);
 	widget->set_retval(get_retval(retval_id_, retval_, id));
