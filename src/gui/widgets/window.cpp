@@ -289,21 +289,7 @@ window* manager::get_window(const unsigned id)
 
 } // namespace
 
-window::window(CVideo& video,
-				 typed_formula<unsigned> x,
-				 typed_formula<unsigned> y,
-				 typed_formula<unsigned> w,
-				 typed_formula<unsigned> h,
-				 typed_formula<bool> reevaluate_best_size,
-				 const wfl::function_symbol_table& functions,
-				 const bool automatic_placement,
-				 const unsigned horizontal_placement,
-				 const unsigned vertical_placement,
-				 const unsigned maximum_width,
-				 const unsigned maximum_height,
-				 const std::string& definition,
-				 const builder_window::window_resolution::tooltip_info& tooltip,
-				 const builder_window::window_resolution::tooltip_info& helptip)
+window::window(CVideo& video, const builder_window::window_resolution* definition)
 	: panel(implementation::builder_window(::config {"definition", definition->definition}), get_control_type())
 	, cursor::setter(cursor::NORMAL)
 	, video_(video)
@@ -318,19 +304,19 @@ window::window(CVideo& video,
 	, restore_(true)
 	, is_toplevel_(!is_in_dialog())
 	, restorer_()
-	, automatic_placement_(automatic_placement)
-	, horizontal_placement_(horizontal_placement)
-	, vertical_placement_(vertical_placement)
-	, maximum_width_(maximum_width)
-	, maximum_height_(maximum_height)
-	, x_(x)
-	, y_(y)
-	, w_(w)
-	, h_(h)
-	, reevaluate_best_size_(reevaluate_best_size)
-	, functions_(functions)
-	, tooltip_(tooltip)
-	, helptip_(helptip)
+	, automatic_placement_(definition->automatic_placement)
+	, horizontal_placement_(definition->horizontal_placement)
+	, vertical_placement_(definition->vertical_placement)
+	, maximum_width_(definition->maximum_width)
+	, maximum_height_(definition->maximum_height)
+	, x_(definition->x)
+	, y_(definition->y)
+	, w_(definition->width)
+	, h_(definition->height)
+	, reevaluate_best_size_(definition->reevaluate_best_size)
+	, functions_(definition->functions)
+	, tooltip_(definition->tooltip)
+	, helptip_(definition->helptip)
 	, click_dismiss_(false)
 	, enter_disabled_(false)
 	, escape_disabled_(false)

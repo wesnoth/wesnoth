@@ -68,21 +68,7 @@ class window : public panel, public cursor::setter
 	friend class pane;
 
 public:
-	window(CVideo& video,
-			typed_formula<unsigned> x,
-			typed_formula<unsigned> y,
-			typed_formula<unsigned> w,
-			typed_formula<unsigned> h,
-			typed_formula<bool> reevaluate_best_size,
-			const wfl::function_symbol_table& functions,
-			const bool automatic_placement,
-			const unsigned horizontal_placement,
-			const unsigned vertical_placement,
-			const unsigned maximum_width,
-			const unsigned maximum_height,
-			const std::string& definition,
-			const builder_window::window_resolution::tooltip_info& tooltip,
-			const builder_window::window_resolution::tooltip_info& helptip);
+	window(CVideo& video, const builder_window::window_resolution* definition);
 
 	~window();
 
@@ -151,7 +137,7 @@ public:
 	 * @param auto_close_timeout  The time in ms after which the window will
 	 *                            automatically close, if 0 it doesn't close.
 	 *                            @note the timeout is a minimum time and
-	 *                            there's no quarantee about how fast it closes
+	 *                            there's no guarantee about how fast it closes
 	 *                            after the minimum.
 	 *
 	 * @returns                   The close code of the window, predefined
