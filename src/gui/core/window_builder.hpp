@@ -100,22 +100,6 @@ register_builder_widget(const std::string& id, widget_builder_func_t functor);
 builder_widget_ptr create_builder_widget(const config& cfg);
 
 /**
- * Helper to generate a widget from a WML widget instance.
- *
- * Mainly used as functor for @ref register_builder_widget.
- *
- * @param cfg                     The config with the information to
- *                                Instantiate the widget.
- *
- * @returns                       A generic widget builder pointer.
- */
-template <class T>
-builder_widget_ptr build_widget(const config& cfg)
-{
-	return std::make_shared<T>(cfg);
-}
-
-/**
  * Helper function to implement @ref build_single_widget_instance. This keeps the main
  * logic in the implementation despite said function being a template and therefor
  * needing to be fully implemented in the declaration.
