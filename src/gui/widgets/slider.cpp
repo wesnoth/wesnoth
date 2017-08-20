@@ -37,8 +37,8 @@ namespace gui2
 
 REGISTER_WIDGET(slider)
 
-slider::slider()
-	: scrollbar_base()
+slider::slider(const implementation::builder_slider& builder)
+	: scrollbar_base(builder, get_control_type())
 	, best_slider_length_(0)
 	, minimum_value_(0)
 	, minimum_value_label_()
@@ -487,15 +487,15 @@ builder_slider::builder_slider(const config& cfg)
 
 widget* builder_slider::build() const
 {
-	slider* widget = new slider();
-
-	init_control(widget);
+	slider* widget = new slider(*this);
 
 	widget->set_best_slider_length(best_slider_length_);
 	widget->set_maximum_value(maximum_value_);
 	widget->set_minimum_value(minimum_value_);
 	widget->set_step_size(step_size_);
 	widget->set_value(value_);
+	
+	widget->finalize_setup();
 
 	if(!value_labels_.empty()) {
 		VALIDATE(value_labels_.size() == widget->get_item_count(),

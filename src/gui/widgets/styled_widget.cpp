@@ -43,31 +43,6 @@ namespace gui2
 
 // ------------ WIDGET -----------{
 
-styled_widget::styled_widget()
-	: definition_("default")
-	, label_()
-	, use_markup_(false)
-	, use_tooltip_on_label_overflow_(true)
-	, tooltip_()
-	, help_message_()
-	, canvas_()
-	, config_(nullptr)
-	, renderer_()
-	, text_maximum_width_(0)
-	, text_alignment_(PANGO_ALIGN_LEFT)
-	, text_ellipse_mode_(PANGO_ELLIPSIZE_END)
-	, shrunken_(false)
-{
-	connect_signal<event::SHOW_TOOLTIP>(std::bind(
-			&styled_widget::signal_handler_show_tooltip, this, _2, _3, _5));
-
-	connect_signal<event::SHOW_HELPTIP>(std::bind(
-			&styled_widget::signal_handler_show_helptip, this, _2, _3, _5));
-
-	connect_signal<event::NOTIFY_REMOVE_TOOLTIP>(std::bind(
-			&styled_widget::signal_handler_notify_remove_tooltip, this, _2, _3));
-}
-
 styled_widget::styled_widget(const implementation::builder_styled_widget& builder,
 				   const std::string& control_type)
 	: widget(builder)
@@ -296,16 +271,6 @@ void styled_widget::place(const point& origin, const point& size)
 	update_canvas();
 }
 
-void styled_widget::load_config()
-{
-	if(!config()) {
-
-		definition_load_configuration(get_control_type());
-
-		load_config_extra();
-	}
-}
-
 widget* styled_widget::find_at(const point& coordinate, const bool must_be_active)
 {
 	return (widget::find_at(coordinate, must_be_active)
@@ -338,16 +303,6 @@ const widget* styled_widget::find(const std::string& id, const bool must_be_acti
 			&& (!must_be_active || get_active()))
 				   ? this
 				   : nullptr;
-}
-
-void styled_widget::set_definition(const std::string& definition)
-{
-	assert(!config());
-	definition_ = definition;
-	load_config();
-	assert(config());
-
-	init();
 }
 
 void styled_widget::set_label(const t_string& label)
@@ -406,9 +361,16 @@ void styled_widget::update_canvas()
 		canvas.set_variable("text", wfl::variant(label_));
 		canvas.set_variable("text_markup", wfl::variant(use_markup_));
 		canvas.set_variable("text_link_aware", wfl::variant(get_link_aware()));
-		// Possible TODO: Consider making a formula_callable for colours
+
+		// Possible TODO: consider making a formula_callable for colors.
 		color_t link_color = get_link_color();
-		std::vector<wfl::variant> link_color_as_list{wfl::variant(link_color.r), wfl::variant(link_color.g), wfl::variant(link_color.b), wfl::variant(link_color.a)};
+		std::vector<wfl::variant> link_color_as_list {
+			wfl::variant(link_color.r),
+			wfl::variant(link_color.g),
+			wfl::variant(link_color.b),
+			wfl::variant(link_color.a)
+		};
+
 		canvas.set_variable("text_link_color", wfl::variant(link_color_as_list));
 		canvas.set_variable("text_alignment",
 							wfl::variant(encode_text_alignment(text_alignment_)));
@@ -704,22 +666,6 @@ builder_styled_widget::builder_styled_widget(const config& cfg)
 
 	DBG_GUI_P << "Window builder: found styled_widget with id '" << id
 			  << "' and definition '" << definition << "'.\n";
-}
-
-void builder_styled_widget::init_control(styled_widget* control) const
-{
-	assert(control);
-
-	control->set_id(id);
-	control->set_definition(definition);
-	control->set_linked_group(linked_group);
-	control->set_label(label_string);
-	control->set_tooltip(tooltip);
-	control->set_help_message(help);
-	control->set_use_tooltip_on_label_overflow(use_tooltip_on_label_overflow);
-	control->set_use_markup(use_markup);
-	control->set_debug_border_mode(debug_border_mode);
-	control->set_debug_border_color(debug_border_color);
 }
 
 widget* builder_styled_widget::build(const replacements_map& /*replacements*/) const

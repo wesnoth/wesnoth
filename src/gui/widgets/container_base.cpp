@@ -28,8 +28,9 @@
 namespace gui2
 {
 
-container_base::container_base()
-	: styled_widget(), grid_()
+container_base::container_base(const implementation::builder_styled_widget& builder, const std::string& control_type)
+	: styled_widget(builder, control_type)
+	, grid_()
 {
 	grid_.set_parent(this);
 	connect_signal<event::REQUEST_PLACEMENT>(

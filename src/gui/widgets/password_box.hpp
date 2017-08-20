@@ -28,15 +28,17 @@
  */
 namespace gui2
 {
+namespace implementation
+{
+	struct builder_password_box;
+}
 
 // ------------ WIDGET -----------{
 
 class password_box : public text_box
 {
 public:
-	password_box() : text_box(), real_value_()
-	{
-	}
+	explicit password_box(const implementation::builder_password_box& builder);
 
 	/** Inherited from text_box_base. */
 	virtual void set_value(const std::string& text) override;

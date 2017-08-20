@@ -32,6 +32,14 @@ namespace gui2
 
 REGISTER_WIDGET(progress_bar)
 
+progress_bar::progress_bar(const implementation::builder_progress_bar& builder)
+	: styled_widget(builder, get_control_type())
+	, percentage_(static_cast<unsigned>(-1))
+{
+	// Force canvas update
+	set_percentage(0);
+}
+
 void progress_bar::set_active(const bool /*active*/)
 {
 	/* DO NOTHING */
@@ -146,9 +154,7 @@ builder_progress_bar::builder_progress_bar(const config& cfg)
 
 widget* builder_progress_bar::build() const
 {
-	progress_bar* widget = new progress_bar();
-
-	init_control(widget);
+	progress_bar* widget = new progress_bar(*this);
 
 	DBG_GUI_G << "Window builder: placed progress bar '" << id
 			  << "' with definition '" << definition << "'.\n";

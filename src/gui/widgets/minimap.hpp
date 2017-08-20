@@ -23,6 +23,10 @@ class config;
 
 namespace gui2
 {
+namespace implementation
+{
+struct builder_minimap;
+}
 
 // ------------ WIDGET -----------{
 
@@ -35,9 +39,7 @@ namespace gui2
 class minimap : public styled_widget
 {
 public:
-	minimap() : styled_widget(), map_data_(), terrain_(nullptr)
-	{
-	}
+	explicit minimap(const implementation::builder_minimap& builder);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 

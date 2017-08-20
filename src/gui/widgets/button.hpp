@@ -22,6 +22,10 @@
 
 namespace gui2
 {
+namespace implementation
+{
+	struct builder_button;
+}
 
 // ------------ WIDGET -----------{
 
@@ -31,7 +35,7 @@ namespace gui2
 class button : public styled_widget, public clickable_item
 {
 public:
-	button();
+	explicit button(const implementation::builder_button& builder);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 

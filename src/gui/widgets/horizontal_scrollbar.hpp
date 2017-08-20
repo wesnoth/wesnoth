@@ -21,16 +21,20 @@
 
 namespace gui2
 {
+namespace implementation
+{
+struct builder_horizontal_scrollbar;
+}
 
 // ------------ WIDGET -----------{
 
 /** A horizontal scrollbar. */
 class horizontal_scrollbar : public scrollbar_base
 {
+	friend struct implementation::builder_horizontal_scrollbar;
+
 public:
-	horizontal_scrollbar() : scrollbar_base()
-	{
-	}
+	explicit horizontal_scrollbar(const implementation::builder_horizontal_scrollbar& builder);
 
 private:
 	/** Inherited from tscrollbar. */

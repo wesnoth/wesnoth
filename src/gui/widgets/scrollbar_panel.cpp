@@ -32,6 +32,11 @@ namespace gui2
 
 REGISTER_WIDGET(scrollbar_panel)
 
+scrollbar_panel::scrollbar_panel(const implementation::builder_scrollbar_panel& builder)
+	: scrollbar_container(builder, get_control_type())
+{
+}
+
 bool scrollbar_panel::get_active() const
 {
 	return true;
@@ -152,9 +157,7 @@ builder_scrollbar_panel::builder_scrollbar_panel(const config& cfg)
 
 widget* builder_scrollbar_panel::build() const
 {
-	scrollbar_panel* panel = new scrollbar_panel();
-
-	init_control(panel);
+	scrollbar_panel* panel = new scrollbar_panel(*this);
 
 	panel->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	panel->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);

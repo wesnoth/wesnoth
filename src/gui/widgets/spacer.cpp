@@ -28,6 +28,13 @@ namespace gui2
 
 REGISTER_WIDGET(spacer)
 
+spacer::spacer(const implementation::builder_spacer& builder, const std::string& w, const std::string& h)
+	: styled_widget(builder, get_control_type())
+	, width_(w)
+	, height_(h)
+{
+}
+
 bool spacer::fills_available_space()
 {
 	return (!width_.has_formula() && width_() == 0) && (!height_.has_formula() && height_() == 0);
@@ -178,9 +185,7 @@ builder_spacer::builder_spacer(const config& cfg)
 
 widget* builder_spacer::build() const
 {
-	spacer* widget = new spacer(width_, height_);
-
-	init_control(widget);
+	spacer* widget = new spacer(*this, width_, height_);
 
 	DBG_GUI_G << "Window builder: placed spacer '" << id
 			  << "' with definition '" << definition << "'.\n";

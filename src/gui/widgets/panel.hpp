@@ -21,6 +21,10 @@
 
 namespace gui2
 {
+namespace implementation
+{
+struct builder_panel;
+}
 
 // ------------ WIDGET -----------{
 
@@ -32,14 +36,11 @@ namespace gui2
  */
 class panel : public container_base
 {
-
 public:
 	/**
 	 * Constructor.
 	 */
-	panel() : container_base()
-	{
-	}
+	panel(const implementation::builder_styled_widget& builder, const std::string& control_type = "");
 
 	/** See @ref container_base::get_client_rect. */
 	virtual SDL_Rect get_client_rect() const override;

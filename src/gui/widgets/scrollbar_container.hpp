@@ -27,6 +27,7 @@ namespace implementation
 {
 struct builder_scroll_label;
 struct builder_scrollbar_panel;
+struct builder_styled_widget;
 }
 
 /**
@@ -50,7 +51,8 @@ class scrollbar_container : public container_base
 	friend struct scrollbar_container_implementation;
 
 public:
-	scrollbar_container();
+	explicit scrollbar_container(const implementation::builder_styled_widget& builder,
+		const std::string& control_type);
 
 	~scrollbar_container()
 	{

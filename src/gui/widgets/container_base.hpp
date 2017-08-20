@@ -20,6 +20,10 @@
 
 namespace gui2
 {
+namespace implementation
+{
+struct builder_styled_widget;
+}
 
 /**
  * A generic container base class.
@@ -33,7 +37,7 @@ class container_base : public styled_widget
 	friend class debug_layout_graph;
 
 public:
-	container_base();
+	explicit container_base(const implementation::builder_styled_widget& builder, const std::string& control_type);
 
 	/**
 	 * Returns the client rect.

@@ -19,6 +19,10 @@
 
 namespace gui2
 {
+namespace implementation
+{	
+	struct builder_toggle_button;
+}
 
 // ------------ WIDGET -----------{
 
@@ -31,7 +35,7 @@ namespace gui2
 class toggle_button : public styled_widget, public selectable_item
 {
 public:
-	toggle_button();
+	explicit toggle_button(const implementation::builder_toggle_button& builder);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 

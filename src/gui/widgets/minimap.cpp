@@ -47,6 +47,13 @@ namespace gui2
 
 REGISTER_WIDGET(minimap)
 
+minimap::minimap(const implementation::builder_minimap& builder)
+	: styled_widget(builder, get_control_type())
+	, map_data_()
+	, terrain_(nullptr)
+{
+}
+
 void minimap::set_active(const bool /*active*/)
 {
 	/* DO NOTHING */
@@ -325,9 +332,7 @@ builder_minimap::builder_minimap(const config& cfg) : builder_styled_widget(cfg)
 
 widget* builder_minimap::build() const
 {
-	minimap* widget = new minimap();
-
-	init_control(widget);
+	minimap* widget = new minimap(*this);
 
 	DBG_GUI_G << "Window builder: placed minimap '" << id
 			  << "' with definition '" << definition << "'.\n";

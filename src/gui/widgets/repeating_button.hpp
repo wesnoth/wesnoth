@@ -22,13 +22,17 @@
 
 namespace gui2
 {
+namespace implementation
+{
+struct builder_repeating_button;
+}
 
 // ------------ WIDGET -----------{
 
 class repeating_button : public styled_widget, public clickable_item
 {
 public:
-	repeating_button();
+	explicit repeating_button(const implementation::builder_repeating_button& builder);
 	~repeating_button();
 
 	/**

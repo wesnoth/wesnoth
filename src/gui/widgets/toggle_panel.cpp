@@ -37,8 +37,8 @@ namespace gui2
 
 REGISTER_WIDGET(toggle_panel)
 
-toggle_panel::toggle_panel()
-	: panel()
+toggle_panel::toggle_panel(const implementation::builder_toggle_panel& builder)
+	: panel(builder, get_control_type())
 	, state_(ENABLED)
 	, state_num_(0)
 	, retval_(0)
@@ -419,9 +419,7 @@ builder_toggle_panel::builder_toggle_panel(const config& cfg)
 
 widget* builder_toggle_panel::build() const
 {
-	toggle_panel* widget = new toggle_panel();
-
-	init_control(widget);
+	toggle_panel* widget = new toggle_panel(*this);
 
 	widget->set_retval(get_retval(retval_id_, retval_, id));
 

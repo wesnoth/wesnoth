@@ -57,7 +57,7 @@ class chatbox : public container_base, public events::chat_handler
 	friend struct implementation::builder_chatbox;
 
 public:
-	chatbox();
+	explicit chatbox(const implementation::builder_chatbox& builder);
 
 	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;

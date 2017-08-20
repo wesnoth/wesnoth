@@ -60,11 +60,12 @@ void callback_list_item_clicked(widget& caller)
 
 } // namespace
 
-listbox::listbox(const bool has_minimum,
-				   const bool has_maximum,
-				   const generator_base::placement placement,
-				   const bool select)
-	: scrollbar_container()
+listbox::listbox(const implementation::builder_styled_widget& builder,
+		const bool has_minimum,
+		const bool has_maximum,
+		const generator_base::placement placement,
+		const bool select)
+	: scrollbar_container(builder, get_control_type())
 	, generator_(generator_base::build(has_minimum, has_maximum, placement, select))
 	, is_horizontal_(placement == generator_base::horizontal_list)
 	, list_builder_(nullptr)
@@ -972,16 +973,14 @@ widget* builder_listbox::build() const
 	list_view* widget = new list_view(
 			true, true, generator_base::vertical_list, true, list_builder);
 
-	init_control(widget);
+	//init_control(widget);
 	if(!list_data.empty()) {
 		widget->append_rows(list_data);
 	}
 	return widget;
 #else
 	listbox* widget
-			= new listbox(has_minimum_, has_maximum_, generator_base::vertical_list, true);
-
-	init_control(widget);
+			= new listbox(*this, has_minimum_, has_maximum_, generator_base::vertical_list, true);
 
 	widget->set_list_builder(list_builder); // FIXME in finalize???
 
@@ -1095,16 +1094,14 @@ widget* builder_horizontal_listbox::build() const
 	list_view* widget = new list_view(
 			true, true, generator_base::horizontal_list, true, list_builder);
 
-	init_control(widget);
+	//init_control(widget);
 	if(!list_data.empty()) {
 		widget->append_rows(list_data);
 	}
 	return widget;
 #else
 	listbox* widget
-			= new listbox(has_minimum_, has_maximum_, generator_base::horizontal_list, true);
-
-	init_control(widget);
+			= new listbox(*this, has_minimum_, has_maximum_, generator_base::horizontal_list, true);
 
 	widget->set_list_builder(list_builder); // FIXME in finalize???
 
@@ -1218,16 +1215,14 @@ widget* builder_grid_listbox::build() const
 	list_view* widget = new list_view(
 			true, true, generator_base::grid, true, list_builder);
 
-	init_control(widget);
+	//init_control(widget);
 	if(!list_data.empty()) {
 		widget->append_rows(list_data);
 	}
 	return widget;
 #else
 	listbox* widget
-			= new listbox(has_minimum_, has_maximum_, generator_base::table, true);
-
-	init_control(widget);
+			= new listbox(*this, has_minimum_, has_maximum_, generator_base::table, true);
 
 	widget->set_list_builder(list_builder); // FIXME in finalize???
 

@@ -95,8 +95,8 @@ std::string text_history::get_value() const
 	}
 }
 
-text_box::text_box()
-	: text_box_base()
+text_box::text_box(const implementation::builder_styled_widget& builder)
+	: text_box_base(builder, get_control_type())
 	, history_()
 	, max_input_length_(0)
 	, text_x_offset_(0)
@@ -114,6 +114,8 @@ text_box::text_box()
 			&text_box::signal_handler_left_button_up, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(std::bind(
 			&text_box::signal_handler_left_button_double_click, this, _2, _3));
+
+	update_offsets();
 }
 
 void text_box::place(const point& origin, const point& size)
@@ -333,19 +335,6 @@ void text_box::handle_key_clear_line(SDL_Keymod /*modifier*/, bool& handled)
 	set_value("");
 }
 
-void text_box::load_config_extra()
-{
-	assert(config());
-
-	const auto conf = cast_config_to<text_box_definition>();
-	assert(conf);
-
-	set_font_size(conf->text_font_size);
-	set_font_style(conf->text_font_style);
-
-	update_offsets();
-}
-
 const std::string& text_box::get_control_type() const
 {
 	static const std::string type = "text_box";
@@ -494,9 +483,7 @@ builder_text_box::builder_text_box(const config& cfg)
 
 widget* builder_text_box::build() const
 {
-	text_box* widget = new text_box();
-
-	init_control(widget);
+	text_box* widget = new text_box(*this);
 
 	// A textbox doesn't have a label but a text
 	widget->set_value(label_string);
@@ -506,6 +493,12 @@ widget* builder_text_box::build() const
 	}
 
 	widget->set_max_input_length(max_input_length);
+
+	const auto conf = widget->cast_config_to<text_box_definition>();
+	assert(conf);
+
+	widget->set_font_size(conf->text_font_size);
+	widget->set_font_style(conf->text_font_style);
 
 	DBG_GUI_G << "Window builder: placed text box '" << id
 			  << "' with definition '" << definition << "'.\n";

@@ -35,6 +35,11 @@ namespace gui2
 
 REGISTER_WIDGET(panel)
 
+panel::panel(const implementation::builder_styled_widget& builder, const std::string& control_type)
+	: container_base(builder, control_type.empty() ? get_control_type() : control_type)
+{
+}
+
 SDL_Rect panel::get_client_rect() const
 {
 	const auto conf = cast_config_to<panel_definition>();
@@ -199,9 +204,7 @@ builder_panel::builder_panel(const config& cfg)
 
 widget* builder_panel::build() const
 {
-	panel* widget = new panel();
-
-	init_control(widget);
+	panel* widget = new panel(*this);
 
 	DBG_GUI_G << "Window builder: placed panel '" << id << "' with definition '"
 			  << definition << "'.\n";

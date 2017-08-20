@@ -43,10 +43,7 @@ public:
 	/**
 	 * Constructor.
 	 */
-	scrollbar_panel()
-		: scrollbar_container()
-	{
-	}
+	explicit scrollbar_panel(const implementation::builder_scrollbar_panel& builder);
 
 	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;

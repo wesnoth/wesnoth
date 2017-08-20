@@ -20,6 +20,11 @@
 namespace gui2
 {
 
+namespace implementation
+{
+struct builder_toggle_panel;
+}
+
 // ------------ WIDGET -----------{
 
 /**
@@ -33,7 +38,7 @@ namespace gui2
 class toggle_panel : public panel, public selectable_item
 {
 public:
-	toggle_panel();
+	explicit toggle_panel(const implementation::builder_toggle_panel& builder);
 
 	/**
 	 * Sets the members of the child controls.

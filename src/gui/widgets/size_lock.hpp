@@ -36,10 +36,7 @@ class size_lock : public container_base
 	friend struct implementation::builder_size_lock;
 
 public:
-	size_lock() :
-		container_base(),
-		widget_(nullptr)
-	{}
+	explicit size_lock(const implementation::builder_size_lock& builder);
 
 	/** See @ref control::get_active. */
 	bool get_active() const override

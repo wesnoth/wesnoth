@@ -38,16 +38,7 @@ class addon_list : public container_base
 	friend struct implementation::builder_addon_list;
 
 public:
-	addon_list()
-		: container_base()
-		, addon_vector_()
-		, install_status_visibility_(visibility::visible)
-		, install_buttons_visibility_(visibility::invisible)
-		, install_function_()
-		, uninstall_function_()
-		, publish_function_()
-		, delete_function_()
-	{}
+	explicit addon_list(const implementation::builder_addon_list& builder);
 
 	/** Special retval for the toggle panels in the addons list */
 	static const int DEFAULT_ACTION_RETVAL = 200;
