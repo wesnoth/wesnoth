@@ -211,6 +211,14 @@ public:
 		builder_grid_ptr grid;
 	};
 
+	/**
+	 * Resolution options for this window instance.
+	 *
+	 * The window widget handles resolution options differently from other widgets.
+	 * Most specify their resolution options in their definitions. However, windows
+	 * define different resolution options for each window *instance*. That enables
+	 * each dialog to have its own set of options.
+	 */
 	std::vector<window_resolution> resolutions;
 
 private:
