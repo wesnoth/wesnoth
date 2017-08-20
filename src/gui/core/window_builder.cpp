@@ -72,23 +72,7 @@ window* build(CVideo& video, const builder_window::window_resolution* definition
 {
 	// We set the values from the definition since we can only determine the
 	// best size (if needed) after all widgets have been placed.
-	window* win = new window(video,
-		definition->x,
-		definition->y,
-		definition->width,
-		definition->height,
-		definition->reevaluate_best_size,
-		definition->functions,
-		definition->automatic_placement,
-		definition->horizontal_placement,
-		definition->vertical_placement,
-		definition->maximum_width,
-		definition->maximum_height,
-		definition->definition,
-		definition->tooltip,
-		definition->helptip
-	);
-
+	window* win = new window(video, definition);
 	assert(win);
 
 	for(const auto& lg : definition->linked_groups) {
