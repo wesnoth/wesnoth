@@ -16,6 +16,7 @@
 
 #include <boost/test/unit_test.hpp>
 
+#include "config.hpp"
 #include "config_cache.hpp"
 #include "gui/auxiliary/iterator/iterator.hpp"
 #include "gui/widgets/label.hpp"
@@ -120,10 +121,10 @@ static void add_widget(gui2::grid& grid
 			, 0);
 }
 
-template<class T>
-static void test_control()
+template<class T, typename... T2>
+static void test_control(T2&&... args)
 {
-	T control;
+	T control(std::forward<T2>(args)...);
 
 	{
 		gui2::iteration::iterator< gui2::iteration::policy::order::top_down<
@@ -170,7 +171,7 @@ static void test_control()
 static void test_control()
 {
 	/* Could add more widgets to the list. */
-	test_control<gui2::label>();
+	test_control<gui2::label>(gui2::implementation::builder_label(config()));
 
 }
 
@@ -185,14 +186,14 @@ static void test_grid()
 
 	gui2::grid* g = new gui2::grid(2, 2);
 	add_widget(grid, g, "1", 0, 0);
-	add_widget(grid, new gui2::label(), "2", 1, 0);
-	add_widget(grid, new gui2::label(), "3", 0, 1);
-	add_widget(grid, new gui2::label(), "4", 1, 1);
+	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "2", 1, 0);
+	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "3", 0, 1);
+	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "4", 1, 1);
 
-	add_widget(*g, new gui2::label(), "5", 0, 0);
-	add_widget(*g, new gui2::label(), "6", 1, 0);
-	add_widget(*g, new gui2::label(), "7", 0, 1);
-	add_widget(*g, new gui2::label(), "8", 1, 1);
+	add_widget(*g, new gui2::label(gui2::implementation::builder_label(config())), "5", 0, 0);
+	add_widget(*g, new gui2::label(gui2::implementation::builder_label(config())), "6", 1, 0);
+	add_widget(*g, new gui2::label(gui2::implementation::builder_label(config())), "7", 0, 1);
+	add_widget(*g, new gui2::label(gui2::implementation::builder_label(config())), "8", 1, 1);
 
 	{
 		std::stringstream sstr;
