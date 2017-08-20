@@ -55,4 +55,10 @@
  *
  * "Calls" REGISTER_WIDGET3(id_definition, id, nullptr)
  */
-#define REGISTER_WIDGET(id) REGISTER_WIDGET3(id##_definition, id, nullptr)
+#define REGISTER_WIDGET(id) REGISTER_WIDGET3(id##_definition, id, nullptr)                                             \
+                                                                                                                       \
+	const std::string& id::get_control_type() const                                                                    \
+	{                                                                                                                  \
+		static const std::string result(#id);                                                                          \
+		return result;                                                                                                 \
+	}

@@ -255,12 +255,6 @@ void minimap::impl_draw_background(surface& frame_buffer,
 	}
 }
 
-const std::string& minimap::get_control_type() const
-{
-	static const std::string type = "minimap";
-	return type;
-}
-
 // }---------- DEFINITION ---------{
 
 minimap_definition::minimap_definition(const config& cfg)

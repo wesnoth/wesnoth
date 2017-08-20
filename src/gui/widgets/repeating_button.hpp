@@ -102,7 +102,7 @@ private:
 	/** The timer for the repeating events. */
 	size_t repeat_timer_;
 
-	/** See @ref styled_widget::get_control_type. */
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/

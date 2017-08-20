@@ -183,12 +183,6 @@ iteration::walker_base* matrix::create_walker()
 	return nullptr;
 }
 
-const std::string& matrix::get_control_type() const
-{
-	static const std::string type = "matrix";
-	return type;
-}
-
 // }---------- DEFINITION ---------{
 
 /*WIKI

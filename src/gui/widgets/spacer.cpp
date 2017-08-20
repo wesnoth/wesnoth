@@ -105,12 +105,6 @@ void spacer::impl_draw_background(surface& /*frame_buffer*/
 	/* DO NOTHING */
 }
 
-const std::string& spacer::get_control_type() const
-{
-	static const std::string type = "spacer";
-	return type;
-}
-
 // }---------- DEFINITION ---------{
 
 spacer_definition::spacer_definition(const config& cfg)

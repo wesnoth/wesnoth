@@ -76,12 +76,6 @@ bool progress_bar::disable_click_dismiss() const
 	return false;
 }
 
-const std::string& progress_bar::get_control_type() const
-{
-	static const std::string type = "progress_bar";
-	return type;
-}
-
 // }---------- DEFINITION ---------{
 
 progress_bar_definition::progress_bar_definition(const config& cfg)

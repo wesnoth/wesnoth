@@ -95,12 +95,6 @@ bool image::disable_click_dismiss() const
 	return false;
 }
 
-const std::string& image::get_control_type() const
-{
-	static const std::string type = "image";
-	return type;
-}
-
 // }---------- DEFINITION ---------{
 
 image_definition::image_definition(const config& cfg)

@@ -72,12 +72,6 @@ stacked_widget::finalize(std::vector<builder_grid_const_ptr> widget_builder)
 	select_layer(-1);
 }
 
-const std::string& stacked_widget::get_control_type() const
-{
-	static const std::string type = "stacked_widget";
-	return type;
-}
-
 void stacked_widget::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */

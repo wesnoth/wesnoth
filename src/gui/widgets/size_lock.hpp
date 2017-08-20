@@ -85,12 +85,8 @@ private:
 	 */
 	void finalize(builder_widget_const_ptr widget_builder);
 
-	/** See @ref control::get_control_type. */
-	const std::string& get_control_type() const override
-	{
-		static const std::string control_type = "size_lock";
-		return control_type;
-	}
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
+	virtual const std::string& get_control_type() const override;
 
 	/** See @ref container_::set_self_active. */
 	void set_self_active(const bool) override

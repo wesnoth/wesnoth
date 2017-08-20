@@ -206,12 +206,6 @@ void toggle_panel::impl_draw_foreground(surface& frame_buffer,
 	styled_widget::impl_draw_foreground(frame_buffer, x_offset, y_offset);
 }
 
-const std::string& toggle_panel::get_control_type() const
-{
-	static const std::string type = "toggle_panel";
-	return type;
-}
-
 void toggle_panel::signal_handler_mouse_enter(const event::ui_event event,
 											   bool& handled)
 {

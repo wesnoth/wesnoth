@@ -97,7 +97,7 @@ private:
 		ENABLED
 	};
 
-	/** See @ref styled_widget::get_control_type. */
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
 	/** See @ref container_base::set_self_active. */

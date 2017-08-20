@@ -1175,12 +1175,6 @@ bool window::click_dismiss(const int mouse_button_mask)
 	return false;
 }
 
-const std::string& window::get_control_type() const
-{
-	static const std::string type = "window";
-	return type;
-}
-
 namespace
 {
 

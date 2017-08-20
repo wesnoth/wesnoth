@@ -419,7 +419,7 @@ private:
 	/** Inherited from scrollbar_container. */
 	virtual void set_content_size(const point& origin, const point& size) override;
 
-	/** See @ref styled_widget::get_control_type. */
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
 	void order_by_column(unsigned column, widget& widget);

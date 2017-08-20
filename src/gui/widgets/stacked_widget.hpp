@@ -146,7 +146,7 @@ private:
 	/** Internal implementation detail for selecting layers. */
 	void select_layer_impl(std::function<bool(unsigned int i)> display_condition);
 
-	/** See @ref styled_widget::get_control_type. */
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
 	/** See @ref container_base::set_self_active. */

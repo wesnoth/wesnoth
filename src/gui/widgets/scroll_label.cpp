@@ -150,12 +150,6 @@ bool scroll_label::can_wrap() const
 	return wrap_on_;
 }
 
-const std::string& scroll_label::get_control_type() const
-{
-	static const std::string type = "scroll_label";
-	return type;
-}
-
 void scroll_label::signal_handler_left_button_down(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";

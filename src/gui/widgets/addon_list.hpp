@@ -159,12 +159,8 @@ private:
 	/** Needed because otherwise the add-on with the first ID would be initially selected. */
 	void select_first_addon();
 
-	/** See @ref control::get_control_type. */
-	const std::string& get_control_type() const override
-	{
-		static const std::string control_type = "addon_list";
-		return control_type;
-	}
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
+	virtual const std::string& get_control_type() const override;
 
 	/** See @ref container_::set_self_active. */
 	void set_self_active(const bool) override

@@ -47,12 +47,6 @@ unsigned scrollbar_panel::get_state() const
 	return 0;
 }
 
-const std::string& scrollbar_panel::get_control_type() const
-{
-	static const std::string type = "scrollbar_panel";
-	return type;
-}
-
 void scrollbar_panel::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */
