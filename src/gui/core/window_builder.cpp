@@ -372,7 +372,7 @@ builder_window::window_resolution::window_resolution(const config& cfg)
 	, linked_groups()
 	, tooltip(cfg.child_or_empty("tooltip"), "tooltip")
 	, helptip(cfg.child_or_empty("helptip"), "helptip")
-	, grid(0)
+	, grid(nullptr)
 {
 	if(!cfg["functions"].empty()) {
 		wfl::formula(cfg["functions"], &functions).evaluate();

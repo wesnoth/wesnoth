@@ -296,7 +296,7 @@ window::window(CVideo& video, const builder_window::window_resolution* definitio
 	, status_(NEW)
 	, show_mode_(none)
 	, retval_(NONE)
-	, owner_(0)
+	, owner_(nullptr)
 	, need_layout_(true)
 	, variables_()
 	, invalidate_layout_blocked_(false)
