@@ -219,6 +219,15 @@ builder_widget_ptr create_builder_widget(const config& cfg)
 	FAIL("Unknown widget type " + cfg.ordered_begin()->key);
 }
 
+widget* build_single_widget_instance_helper(const std::string& type, const config& cfg)
+{
+	const auto& iter = builder_widget_lookup().find(type);
+	VALIDATE(iter != builder_widget_lookup().end(), "Invalid widget type '" + type + "'");
+
+	widget_builder_func_t& builder = iter->second;
+	return builder(cfg)->build();
+}
+
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 1_window

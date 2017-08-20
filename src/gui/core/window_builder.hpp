@@ -87,7 +87,6 @@ using widget_builder_func_t = std::function<builder_widget_ptr(config)>;
 void
 register_builder_widget(const std::string& id, widget_builder_func_t functor);
 
-
 /**
  * Create a widget builder.
  *
@@ -114,6 +113,31 @@ template <class T>
 builder_widget_ptr build_widget(const config& cfg)
 {
 	return std::make_shared<T>(cfg);
+}
+
+/**
+ * Helper function to implement @ref build_single_widget_instance. This keeps the main
+ * logic in the implementation despite said function being a template and therefor
+ * needing to be fully implemented in the declaration.
+ */
+widget* build_single_widget_instance_helper(const std::string& type, const config& cfg);
+
+/**
+ * Builds a single widget instance of the given type with the specified attributes.
+ *
+ * This should be used in place of creating a widget object directly, as it
+ * allows the widget-specific builder code to be executed.
+ *
+ * @tparam                        The final widget type. The widget pointer will be
+ *                                cast to this.
+ *
+ * @param type                    String ID of the widget type.
+ * @param cfg                     Data config to pass to the widget's builder.
+ */
+template<typename T>
+T* build_single_widget_instance(const std::string& type, const config& cfg = config())
+{
+	return dynamic_cast<T*>(build_single_widget_instance_helper(type, cfg));
 }
 
 struct builder_grid : public builder_widget
