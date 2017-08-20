@@ -103,7 +103,7 @@ private:
 	/** When we're used as a fixed size item, this holds the best size. */
 	point best_size_;
 
-	/** See @ref styled_widget::get_control_type. */
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 };
 

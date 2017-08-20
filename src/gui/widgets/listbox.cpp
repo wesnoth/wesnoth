@@ -700,12 +700,6 @@ void listbox::layout_children(const bool force)
 	}
 }
 
-const std::string& listbox::get_control_type() const
-{
-	static const std::string type = "listbox";
-	return type;
-}
-
 // }---------- DEFINITION ---------{
 
 listbox_definition::listbox_definition(const config& cfg)

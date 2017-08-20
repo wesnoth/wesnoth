@@ -214,12 +214,6 @@ bool chatbox::get_active() const
 	return true;
 }
 
-const std::string& chatbox::get_control_type() const
-{
-	static const std::string type = "chatbox";
-	return type;
-}
-
 void chatbox::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */

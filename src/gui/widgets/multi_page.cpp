@@ -153,12 +153,6 @@ void multi_page::impl_draw_background(surface& /*frame_buffer*/
 	/* DO NOTHING */
 }
 
-const std::string& multi_page::get_control_type() const
-{
-	static const std::string type = "multi_page";
-	return type;
-}
-
 void multi_page::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */

@@ -144,12 +144,6 @@ void toggle_button::set_state(const state_t state)
 	}
 }
 
-const std::string& toggle_button::get_control_type() const
-{
-	static const std::string type = "toggle_button";
-	return type;
-}
-
 void toggle_button::signal_handler_mouse_enter(const event::ui_event event,
 												bool& handled)
 {

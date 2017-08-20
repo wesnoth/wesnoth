@@ -104,12 +104,6 @@ bool horizontal_scrollbar::in_orthogonal_range(const point& coordinate) const
 	return static_cast<size_t>(coordinate.x) < get_width();
 }
 
-const std::string& horizontal_scrollbar::get_control_type() const
-{
-	static const std::string type = "horizontal_scrollbar";
-	return type;
-}
-
 // }---------- DEFINITION ---------{
 
 horizontal_scrollbar_definition::horizontal_scrollbar_definition(

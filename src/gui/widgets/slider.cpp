@@ -260,12 +260,6 @@ void slider::update_canvas()
 	}
 }
 
-const std::string& slider::get_control_type() const
-{
-	static const std::string type = "slider";
-	return type;
-}
-
 void slider::handle_key_decrease(bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << '\n';

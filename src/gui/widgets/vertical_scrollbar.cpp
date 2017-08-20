@@ -94,12 +94,6 @@ bool vertical_scrollbar::in_orthogonal_range(const point& coordinate) const
 	return static_cast<size_t>(coordinate.y) < get_height();
 }
 
-const std::string& vertical_scrollbar::get_control_type() const
-{
-	static const std::string type = "vertical_scrollbar";
-	return type;
-}
-
 // }---------- DEFINITION ---------{
 
 vertical_scrollbar_definition::vertical_scrollbar_definition(

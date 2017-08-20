@@ -84,12 +84,6 @@ void button::set_state(const state_t state)
 	}
 }
 
-const std::string& button::get_control_type() const
-{
-	static const std::string type = "button";
-	return type;
-}
-
 void button::signal_handler_mouse_enter(const event::ui_event event,
 										 bool& handled)
 {

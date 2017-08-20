@@ -335,12 +335,6 @@ void text_box::handle_key_clear_line(SDL_Keymod /*modifier*/, bool& handled)
 	set_value("");
 }
 
-const std::string& text_box::get_control_type() const
-{
-	static const std::string type = "text_box";
-	return type;
-}
-
 void text_box::signal_handler_mouse_motion(const event::ui_event event,
 											bool& handled,
 											const point& coordinate)

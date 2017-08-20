@@ -81,12 +81,6 @@ bool drawing::disable_click_dismiss() const
 	return false;
 }
 
-const std::string& drawing::get_control_type() const
-{
-	static const std::string type = "drawing";
-	return type;
-}
-
 // }---------- DEFINITION ---------{
 
 drawing_definition::drawing_definition(const config& cfg)

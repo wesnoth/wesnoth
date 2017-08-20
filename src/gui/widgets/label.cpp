@@ -141,12 +141,6 @@ void label::set_state(const state_t state)
 	}
 }
 
-const std::string& label::get_control_type() const
-{
-	static const std::string type = "label";
-	return type;
-}
-
 void label::signal_handler_left_button_click(const event::ui_event /* event */, bool & handled)
 {
 	DBG_GUI_E << "label click" << std::endl;

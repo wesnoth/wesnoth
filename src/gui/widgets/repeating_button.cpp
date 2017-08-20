@@ -101,12 +101,6 @@ void repeating_button::set_state(const state_t state)
 	}
 }
 
-const std::string& repeating_button::get_control_type() const
-{
-	static const std::string type = "repeating_button";
-	return type;
-}
-
 void repeating_button::signal_handler_mouse_enter(const event::ui_event event,
 												   bool& handled)
 {

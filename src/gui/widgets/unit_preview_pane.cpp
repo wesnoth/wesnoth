@@ -558,12 +558,6 @@ unsigned unit_preview_pane::get_state() const
 	return ENABLED;
 }
 
-const std::string& unit_preview_pane::get_control_type() const
-{
-	static const std::string type = "unit_preview_pane";
-	return type;
-}
-
 void unit_preview_pane::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */

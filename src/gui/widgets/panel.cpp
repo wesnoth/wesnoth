@@ -88,12 +88,6 @@ point panel::border_space() const
 	return point(conf->left_border + conf->right_border, conf->top_border + conf->bottom_border);
 }
 
-const std::string& panel::get_control_type() const
-{
-	static const std::string type = "panel";
-	return type;
-}
-
 void panel::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */

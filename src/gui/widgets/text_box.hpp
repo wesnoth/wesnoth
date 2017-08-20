@@ -258,7 +258,7 @@ private:
 	/** Inherited from text_box_base. */
 	void handle_key_clear_line(SDL_Keymod modifier, bool& handled) override;
 
-	/** See @ref styled_widget::get_control_type. */
+	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
 	/***** ***** ***** signal handlers ***** ****** *****/

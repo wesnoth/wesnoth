@@ -379,12 +379,6 @@ void list_view::set_self_active(const bool active)
 	/* DO NOTHING */
 }
 
-const std::string& list_view::get_control_type() const
-{
-	static const std::string type = "list";
-	return type;
-}
-
 void list_view::signal_handler_left_button_down(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
