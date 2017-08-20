@@ -162,6 +162,11 @@ public:
 
 	void set_step_size(const unsigned step_size)
 	{
+		// Step size can't be 0!
+		if(step_size == 0) {
+			throw std::invalid_argument("GUI2: scrollbar step size cannot be 0");
+		}
+
 		step_size_ = step_size;
 		recalculate();
 	}
