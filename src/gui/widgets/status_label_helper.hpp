@@ -15,21 +15,21 @@
 
 #include "gettext.hpp"
 #include "gui/core/event/dispatcher.hpp"
-#include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/selectable_item.hpp"
+#include "gui/widgets/styled_widget.hpp"
 
 #include "utils/functional.hpp"
 #include "utils/type_trait_aliases.hpp"
 
-namespace gui2 {
-
+namespace gui2
+{
 /**
  * Default value getter for selectable widgets (like toggle buttons)
  */
 template<typename T>
 static inline utils::enable_if_t<std::is_base_of<selectable_item, T>::value, std::string>
-default_value_getter(T& w)
+default_status_value_getter(T& w)
 {
 	return w.get_value_bool() ? _("yes") : _("no");
 }
@@ -39,7 +39,7 @@ default_value_getter(T& w)
  */
 template<typename T>
 static inline utils::enable_if_t<std::is_base_of<integer_selector, T>::value, std::string>
-default_value_getter(T& w)
+default_status_value_getter(T& w)
 {
 	return w.get_value_label();
 }
@@ -51,15 +51,29 @@ default_value_getter(T& w)
  *
  * This relies on hooking into the NOTIFY_MODIFIED event, so can only be used with widgets that fire
  * that event.
+ *
+ * @param find_in                  The containing widget (usually a window or grid) in which to find
+ *                                 the source and status label widgets.
+ * @param source_id                The ID of the source widget.
+ * @param value_getter             Functor to process the value of the source widget.
+ * @param label_id                 The ID of the status label widget.
+ *
+ * @returns                        The callback function used to update the status label's value.
  */
 template<typename W>
-std::function<void()> bind_status_label(widget& find_in, const std::string& id,
-		const std::function<std::string(W&)> value_getter = default_value_getter<W>,
+std::function<void()> bind_status_label(
+		widget& find_in,
+		const std::string& source_id,
+		const std::function<std::string(W&)> value_getter = default_status_value_getter<W>,
 		const std::string& label_id = "")
 {
-	const std::string label_id_ = label_id.empty() ? id + "_label" : label_id;
+	// If no label ID is provided, use the format source ID + '_label'.
+	const std::string label_id_ = label_id.empty() ? source_id + "_label" : label_id;
 
-	W& source = find_widget<W>(&find_in, id, false);
+	// Find the source value widget.
+	W& source = find_widget<W>(&find_in, source_id, false);
+
+	// Find the target status label.
 	styled_widget& label = find_widget<styled_widget>(&find_in, label_id_, false);
 
 	const auto update_label = [&, value_getter]() {
@@ -68,10 +82,10 @@ std::function<void()> bind_status_label(widget& find_in, const std::string& id,
 		label.set_label(value);
 	};
 
-	// Bind the callback
+	// Bind the callback.
 	connect_signal_notify_modified(source, std::bind(update_label));
 
-	// Set initial value
+	// Set initial value.
 	update_label();
 
 	return update_label;
