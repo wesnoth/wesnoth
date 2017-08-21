@@ -62,7 +62,7 @@ default_status_value_getter(T& w)
  */
 template<typename W>
 std::function<void()> bind_status_label(
-		widget& find_in,
+		widget* find_in,
 		const std::string& source_id,
 		const std::function<std::string(W&)> value_getter = default_status_value_getter<W>,
 		const std::string& label_id = "")
@@ -71,10 +71,10 @@ std::function<void()> bind_status_label(
 	const std::string label_id_ = label_id.empty() ? source_id + "_label" : label_id;
 
 	// Find the source value widget.
-	W& source = find_widget<W>(&find_in, source_id, false);
+	W& source = find_widget<W>(find_in, source_id, false);
 
 	// Find the target status label.
-	styled_widget& label = find_widget<styled_widget>(&find_in, label_id_, false);
+	styled_widget& label = find_widget<styled_widget>(find_in, label_id_, false);
 
 	const auto update_label = [&, value_getter]() {
 		const std::string value = value_getter(source);

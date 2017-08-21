@@ -596,7 +596,7 @@ void preferences_dialog::post_build(window& window)
 					[&, pref_name]() { set(pref_name, toggle_box.get_value_bool()); }
 				));
 
-				gui2::bind_status_label<toggle_button>(*main_grid, "value_toggle", [](toggle_button& t)->std::string {
+				gui2::bind_status_label<toggle_button>(main_grid, "value_toggle", [](toggle_button& t)->std::string {
 					return t.get_value_bool() ? _("yes") : _("no");
 				}, "value");
 
@@ -622,7 +622,7 @@ void preferences_dialog::post_build(window& window)
 					[&, pref_name]() { set(pref_name, slide.get_value()); }
 				));
 
-				gui2::bind_status_label<slider>(*main_grid, "setter", [](slider& s)->std::string {
+				gui2::bind_status_label<slider>(main_grid, "setter", [](slider& s)->std::string {
 					return std::to_string(s.get_value());
 				}, "value");
 
@@ -659,7 +659,7 @@ void preferences_dialog::post_build(window& window)
 					set(pref_name, option_ids[dynamic_cast<menu_button&>(w).get_value()]);
 				});
 
-				gui2::bind_status_label<menu_button>(*main_grid, "setter", [](menu_button& m)->std::string {
+				gui2::bind_status_label<menu_button>(main_grid, "setter", [](menu_button& m)->std::string {
 					return m.get_value_string();
 				}, "value");
 
@@ -969,15 +969,15 @@ void preferences_dialog::pre_show(window& window)
 	// is not the case for those in Advanced
 	//
 
-	gui2::bind_status_label<slider>(window, "max_saves_slider", [](slider& s)->std::string {
+	gui2::bind_status_label<slider>(&window, "max_saves_slider", [](slider& s)->std::string {
 		return s.get_value() == INFINITE_AUTO_SAVES ? _("∞") : s.get_value_label().str();
 	});
 
-	gui2::bind_status_label<slider>(window, "turbo_slider",     [](slider& s)->std::string {
+	gui2::bind_status_label<slider>(&window, "turbo_slider",     [](slider& s)->std::string {
 		return s.get_value_label();
 	});
 
-	gui2::bind_status_label<slider>(window, "scaling_slider",   [](slider& s)->std::string {
+	gui2::bind_status_label<slider>(&window, "scaling_slider",   [](slider& s)->std::string {
 		return s.get_value_label() + "%";
 	});
 
