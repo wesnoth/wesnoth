@@ -596,9 +596,8 @@ void preferences_dialog::post_build(window& window)
 					[&, pref_name]() { set(pref_name, toggle_box.get_value_bool()); }
 				));
 
-				gui2::bind_status_label<toggle_button>(main_grid, "value_toggle", [](toggle_button& t)->std::string {
-					return t.get_value_bool() ? _("yes") : _("no");
-				}, "value");
+				gui2::bind_status_label<toggle_button>(
+					main_grid, "value_toggle", default_status_value_getter<toggle_button>, "value");
 
 				break;
 			}
@@ -622,9 +621,7 @@ void preferences_dialog::post_build(window& window)
 					[&, pref_name]() { set(pref_name, slide.get_value()); }
 				));
 
-				gui2::bind_status_label<slider>(main_grid, "setter", [](slider& s)->std::string {
-					return std::to_string(s.get_value());
-				}, "value");
+				gui2::bind_status_label<slider>(main_grid, "setter", default_status_value_getter<slider>, "value");
 
 				break;
 			}
@@ -973,9 +970,7 @@ void preferences_dialog::pre_show(window& window)
 		return s.get_value() == INFINITE_AUTO_SAVES ? _("∞") : s.get_value_label().str();
 	});
 
-	gui2::bind_status_label<slider>(&window, "turbo_slider",     [](slider& s)->std::string {
-		return s.get_value_label();
-	});
+	gui2::bind_status_label<slider>(&window, "turbo_slider");
 
 	gui2::bind_status_label<slider>(&window, "scaling_slider",   [](slider& s)->std::string {
 		return s.get_value_label() + "%";
