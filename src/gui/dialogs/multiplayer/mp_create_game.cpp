@@ -293,15 +293,15 @@ void mp_create_game::pre_show(window& win)
 	//
 	// Set up the setting status labels
 	//
-	bind_status_label<slider>(win, turns_->id());
-	bind_status_label<slider>(win, gold_->id());
-	bind_status_label<slider>(win, support_->id());
-	bind_status_label<slider>(win, experience_->id());
+	bind_status_label<slider>(&win, turns_->id());
+	bind_status_label<slider>(&win, gold_->id());
+	bind_status_label<slider>(&win, support_->id());
+	bind_status_label<slider>(&win, experience_->id());
 
-	bind_status_label<slider>(win, init_turn_limit_->id());
-	bind_status_label<slider>(win, turn_bonus_->id());
-	bind_status_label<slider>(win, reservoir_->id());
-	bind_status_label<slider>(win, action_bonus_->id());
+	bind_status_label<slider>(&win, init_turn_limit_->id());
+	bind_status_label<slider>(&win, turn_bonus_->id());
+	bind_status_label<slider>(&win, reservoir_->id());
+	bind_status_label<slider>(&win, action_bonus_->id());
 
 	//
 	// Set up tab control

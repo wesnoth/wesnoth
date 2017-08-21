@@ -59,14 +59,14 @@ void generator_settings::pre_show(window& window)
 	connect_signal_notify_modified(*players_->get_widget(), std::bind(
 		&generator_settings::adjust_minimum_size_by_players, this, std::ref(window)));
 
-	gui2::bind_status_label<slider>(window, "players");
+	gui2::bind_status_label<slider>(&window, "players");
 
-	update_width_label_  = gui2::bind_status_label<slider>(window, "width");
-	update_height_label_ = gui2::bind_status_label<slider>(window, "height");
+	update_width_label_  = gui2::bind_status_label<slider>(&window, "width");
+	update_height_label_ = gui2::bind_status_label<slider>(&window, "height");
 
-	gui2::bind_status_label<slider>(window, "villages", [](slider& s)->std::string { return formatter() << s.get_value() << _("/1000 tiles"); });
-	gui2::bind_status_label<slider>(window, "castle_size");
-	gui2::bind_status_label<slider>(window, "landform", [](slider& s)->std::string {
+	gui2::bind_status_label<slider>(&window, "villages", [](slider& s)->std::string { return formatter() << s.get_value() << _("/1000 tiles"); });
+	gui2::bind_status_label<slider>(&window, "castle_size");
+	gui2::bind_status_label<slider>(&window, "landform", [](slider& s)->std::string {
 		return s.get_value() == 0 ? _("Inland") : (s.get_value() < max_coastal ? _("Coastal") : _("Island")); });
 }
 
