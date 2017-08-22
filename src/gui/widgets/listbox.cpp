@@ -69,7 +69,6 @@ listbox::listbox(const implementation::builder_styled_widget& builder,
 	, generator_(generator_base::build(has_minimum, has_maximum, placement, select))
 	, is_horizontal_(placement == generator_base::horizontal_list)
 	, list_builder_(nullptr)
-	, callback_value_changed_()
 	, need_layout_(false)
 	, orders_()
 {
@@ -179,9 +178,7 @@ void listbox::set_row_shown(const unsigned row, const bool shown)
 		set_is_dirty(true);
 	}
 
-	if(selected_row != get_selected_row() && callback_value_changed_) {
-		callback_value_changed_(*this);
-
+	if(selected_row != get_selected_row()) {
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
@@ -221,9 +218,7 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 		set_is_dirty(true);
 	}
 
-	if(selected_row != get_selected_row() && callback_value_changed_) {
-		callback_value_changed_(*this);
-
+	if(selected_row != get_selected_row()) {
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
@@ -302,13 +297,6 @@ void listbox::list_item_clicked(widget& caller)
 				generator_->select_item(i, checkbox->get_value_bool());
 			} else {
 				generator_->toggle_item(i);
-			}
-
-			if(callback_item_changed_) {
-				callback_item_changed_(i);
-			}
-			if(callback_value_changed_) {
-				callback_value_changed_(*this);
 			}
 
 			fire(event::NOTIFY_MODIFIED, *this, nullptr);
@@ -472,10 +460,6 @@ void listbox::update_visible_area_on_key_event(const bool key_direction_vertical
 	}
 
 	show_content_rect(rect);
-
-	if(callback_value_changed_) {
-		callback_value_changed_(*this);
-	}
 
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
