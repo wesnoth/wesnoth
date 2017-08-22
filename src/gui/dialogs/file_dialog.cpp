@@ -231,21 +231,10 @@ void file_dialog::pre_show(window& window)
 
 	listbox& filelist = find_widget<listbox>(&window, "filelist", false);
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(filelist, std::bind(
-				  &file_dialog::on_row_selected
-				, *this
-				, std::ref(window)));
-	connect_signal_notify_modified(bookmarks_bar, std::begin(
-				  &file_dialog::on_bookmark_selected
-				, *this
-				, std::ref(window)));
-#else
-	filelist.set_callback_value_change(
-			dialog_callback<file_dialog, &file_dialog::on_row_selected>);
-	bookmarks_bar.set_callback_value_change(
-			dialog_callback<file_dialog, &file_dialog::on_bookmark_selected>);
-#endif
+	connect_signal_notify_modified(filelist,
+			std::bind(&file_dialog::on_row_selected, this, std::ref(window)));
+	connect_signal_notify_modified(bookmarks_bar,
+			std::bind(&file_dialog::on_bookmark_selected, this, std::ref(window)));
 
 	button& mkdir_button = find_widget<button>(&window, "new_dir", false);
 	button& rm_button = find_widget<button>(&window, "delete_file", false);

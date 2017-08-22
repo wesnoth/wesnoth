@@ -527,7 +527,7 @@ void preferences_dialog::post_build(window& window)
 			std::ref(textbox),
 			std::ref(window)));
 
-	friends_list.set_callback_value_change(std::bind(
+	connect_signal_notify_modified(friends_list, std::bind(
 			&preferences_dialog::on_friends_list_select,
 			this,
 			std::ref(friends_list),
@@ -676,17 +676,11 @@ void preferences_dialog::post_build(window& window)
 		}
 	}
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(advanced, std::bind(
 		&preferences_dialog::on_advanced_prefs_list_select,
 		this,
 		std::ref(advanced),
 		std::ref(window)));
-#else
-	advanced.set_callback_value_change([&, this](widget&) {
-		on_advanced_prefs_list_select(advanced, window);
-	});
-#endif
 
 	on_advanced_prefs_list_select(advanced, window);
 
@@ -932,21 +926,13 @@ void preferences_dialog::on_advanced_prefs_list_select(listbox& list, window& wi
 	}
 }
 
-void preferences_dialog::initialize_tabs(window& /*window*/, listbox& selector)
+void preferences_dialog::initialize_tabs(window& window, listbox& selector)
 {
 	//
 	// MULTIPLAYER TABS
 	//
-
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(selector, std::bind(
-			&preferences_dialog::on_tab_select,
-			this,
-			std::ref(window)));
-#else
-	selector.set_callback_value_change(dialog_callback
-			<preferences_dialog, &preferences_dialog::on_tab_select>);
-#endif
+	connect_signal_notify_modified(selector,
+		std::bind(&preferences_dialog::on_tab_select, this, std::ref(window)));
 }
 
 static int index_in_pager_range(const int& first, const stacked_widget& pager)
@@ -979,15 +965,9 @@ void preferences_dialog::pre_show(window& window)
 	listbox& selector = find_widget<listbox>(&window, "selector", false);
 	stacked_widget& pager = find_widget<stacked_widget>(&window, "pager", false);
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(selector, std::bind(
-			&preferences_dialog::on_page_select,
-			this,
-			std::ref(window)));
-#else
-	selector.set_callback_value_change(dialog_callback
-			<preferences_dialog, &preferences_dialog::on_page_select>);
-#endif
+	connect_signal_notify_modified(selector,
+		std::bind(&preferences_dialog::on_page_select, this, std::ref(window)));
+
 	window.keyboard_capture(&selector);
 
 	VALIDATE(selector.get_item_count() == pager.get_layer_count(),

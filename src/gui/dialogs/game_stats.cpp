@@ -238,14 +238,7 @@ void game_stats::pre_show(window& window)
 
 	window.keyboard_capture(&tab_bar);
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(*tab_bar,
-			std::bind(&game_stats::on_tab_select,
-				*this, std::ref(window)));
-#else
-	tab_bar.set_callback_value_change(
-			dialog_callback<game_stats, &game_stats::on_tab_select>);
-#endif
+	connect_signal_notify_modified(tab_bar, std::bind(&game_stats::on_tab_select, this, std::ref(window)));
 
 	on_tab_select(window);
 }

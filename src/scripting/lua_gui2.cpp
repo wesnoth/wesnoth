@@ -793,7 +793,8 @@ int intf_set_dialog_callback(lua_State* L)
 	}
 #else
 	else if(gui2::listbox* l = dynamic_cast<gui2::listbox*>(w)) {
-		l->set_callback_value_change(&dialog_callback);
+		static dialog_callback_wrapper wrapper;
+		connect_signal_notify_modified(*l, std::bind(&dialog_callback_wrapper::forward, wrapper, w));
 	}
 #endif
 	else if(gui2::tree_view* tv = dynamic_cast<gui2::tree_view*>(w)) {

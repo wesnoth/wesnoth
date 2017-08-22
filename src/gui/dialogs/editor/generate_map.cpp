@@ -134,8 +134,8 @@ void editor_generate_map::pre_show(window& window)
 		this->do_generator_selected(window);
 	}
 
-	list.set_callback_item_change(
-			std::bind(&editor_generate_map::do_generator_selected, this, std::ref(window)));
+	connect_signal_notify_modified(list,
+		std::bind(&editor_generate_map::do_generator_selected, this, std::ref(window)));
 
 	button& settings_button = find_widget<button>(&window, "settings", false);
 	connect_signal_mouse_left_click(

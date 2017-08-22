@@ -250,14 +250,7 @@ void mp_create_game::pre_show(window& win)
 		mog_toggle.set_callback_state_change(std::bind(&mp_create_game::on_mod_toggle, this, i));
 	}
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(*mod_list,
-			std::bind(&mp_create_game::on_mod_select,
-				*this, std::ref(win)));
-#else
-	mod_list.set_callback_value_change(
-			dialog_callback<mp_create_game, &mp_create_game::on_mod_select>);
-#endif
+	connect_signal_notify_modified(mod_list, std::bind(&mp_create_game::on_mod_select, this, std::ref(win)));
 
 	// No mods, hide the header
 	if(mod_list.get_item_count() <= 0) {
@@ -308,14 +301,8 @@ void mp_create_game::pre_show(window& win)
 	//
 	listbox& tab_bar = find_widget<listbox>(&win, "tab_bar", false);
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(*tab_bar,
-			std::bind(&mp_create_game::on_tab_select,
-				*this, std::ref(win)));
-#else
-	tab_bar.set_callback_value_change(
-			dialog_callback<mp_create_game, &mp_create_game::on_tab_select>);
-#endif
+	connect_signal_notify_modified(tab_bar,
+		std::bind(&mp_create_game::on_tab_select, this, std::ref(win)));
 
 	// We call on_tab_select farther down.
 
@@ -324,14 +311,8 @@ void mp_create_game::pre_show(window& win)
 	//
 	listbox& list = find_widget<listbox>(&win, "games_list", false);
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(list,
-		std::bind(&mp_create_game::on_game_select,
-			*this, std::ref(win)));
-#else
-	list.set_callback_value_change(
-			dialog_callback<mp_create_game, &mp_create_game::on_game_select>);
-#endif
+		std::bind(&mp_create_game::on_game_select, this, std::ref(win)));
 
 	win.add_to_keyboard_chain(&list);
 

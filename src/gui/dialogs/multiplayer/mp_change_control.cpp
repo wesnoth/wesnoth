@@ -86,19 +86,11 @@ void mp_change_control::pre_show(window& window)
 	listbox& sides_list = find_widget<listbox>(&window, "sides_list", false);
 	listbox& nicks_list = find_widget<listbox>(&window, "nicks_list", false);
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(sides_list,
 		std::bind(&mp_change_control::handle_sides_list_item_clicked, this, std::ref(window)));
 
 	connect_signal_notify_modified(nicks_list,
 		std::bind(&mp_change_control::handle_nicks_list_item_clicked, this, std::ref(window)));
-#else
-	sides_list.set_callback_value_change(
-		dialog_callback<mp_change_control, &mp_change_control::handle_sides_list_item_clicked>);
-
-	nicks_list.set_callback_value_change(
-		dialog_callback<mp_change_control, &mp_change_control::handle_nicks_list_item_clicked>);
-#endif
 
 	//
 	// Initialize sides list

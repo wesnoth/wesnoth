@@ -115,15 +115,7 @@ void unit_create::pre_show(window& window)
 	window.keyboard_capture(filter);
 	window.add_to_keyboard_chain(&list);
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(*list,
-								   std::bind(&unit_create::list_item_clicked,
-											   *this,
-											   std::ref(window)));
-#else
-	list.set_callback_value_change(
-			dialog_callback<unit_create, &unit_create::list_item_clicked>);
-#endif
+	connect_signal_notify_modified(list, std::bind(&unit_create::list_item_clicked, this, std::ref(window)));
 
 	list.clear();
 
