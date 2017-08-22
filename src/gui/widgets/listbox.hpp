@@ -256,17 +256,6 @@ public:
 							  const std::vector<widget*>& call_stack) override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
-	void
-	set_callback_item_change(const std::function<void(size_t)>& callback)
-	{
-		callback_item_changed_ = callback;
-	}
-
-	void
-	set_callback_value_change(const std::function<void(widget&)>& callback)
-	{
-		callback_value_changed_ = callback;
-	}
 
 	void set_list_builder(builder_grid_ptr list_builder)
 	{
@@ -325,7 +314,7 @@ protected:
 	void handle_key_right_arrow(SDL_Keymod modifier, bool& handled) override;
 
 private:
-	/** Helper to update visible area after a key event. */ 
+	/** Helper to update visible area after a key event. */
 	void update_visible_area_on_key_event(const bool key_direction_vertical);
 
 	/**
@@ -366,22 +355,6 @@ private:
 
 	/** Contains the builder for the new items. */
 	builder_grid_const_ptr list_builder_;
-
-	/**
-	 * This callback is called when a list item is clicked (toggled).
-	 *
-	 * The function is passed the index of the toggled item.
-	 */
-	std::function<void(size_t)> callback_item_changed_;
-
-	/**
-	 * This callback is called when the value in the listbox changes.
-	 *
-	 * @todo the implementation of the callback hasn't been tested a lot and
-	 * there might be too many calls. That might happen if an arrow up didn't
-	 * change the selected item.
-	 */
-	std::function<void(widget&)> callback_value_changed_;
 
 	bool need_layout_;
 
