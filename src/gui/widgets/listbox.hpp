@@ -325,6 +325,9 @@ protected:
 	void handle_key_right_arrow(SDL_Keymod modifier, bool& handled) override;
 
 private:
+	/** Helper to update visible area after a key event. */ 
+	void update_visible_area_on_key_event(const bool key_direction_vertical);
+
 	/**
 	 * @todo A listbox must have the following config parameters in the
 	 * instantiation:
