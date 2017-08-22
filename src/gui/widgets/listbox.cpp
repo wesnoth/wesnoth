@@ -181,6 +181,8 @@ void listbox::set_row_shown(const unsigned row, const bool shown)
 
 	if(selected_row != get_selected_row() && callback_value_changed_) {
 		callback_value_changed_(*this);
+
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
 
@@ -221,6 +223,8 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 
 	if(selected_row != get_selected_row() && callback_value_changed_) {
 		callback_value_changed_(*this);
+
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
 }
 
@@ -306,6 +310,8 @@ void listbox::list_item_clicked(widget& caller)
 			if(callback_value_changed_) {
 				callback_value_changed_(*this);
 			}
+
+			fire(event::NOTIFY_MODIFIED, *this, nullptr);
 			return;
 		}
 	}
@@ -470,6 +476,8 @@ void listbox::update_visible_area_on_key_event(const bool key_direction_vertical
 	if(callback_value_changed_) {
 		callback_value_changed_(*this);
 	}
+
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 void listbox::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
