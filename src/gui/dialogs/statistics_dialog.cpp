@@ -81,26 +81,16 @@ void statistics_dialog::pre_show(window& window)
 	listbox& tab_bar = find_widget<listbox>(&window, "tab_bar", false);
 	tab_bar.select_row(use_campaign);
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(*tab_bar,
-		std::bind(&statistics_dialog::on_tab_select, *this, std::ref(window)));
-#else
-	tab_bar.set_callback_value_change(
-		dialog_callback<statistics_dialog, &statistics_dialog::on_tab_select>);
-#endif
+	connect_signal_notify_modified(tab_bar,
+		std::bind(&statistics_dialog::on_tab_select, this, std::ref(window)));
 
 	//
 	// Set up primary stats list
 	//
 	listbox& stat_list = find_widget<listbox>(&window, "stats_list_main", false);
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(*stat_list,
-		std::bind(&statistics_dialog::on_primary_list_select, *this, std::ref(window)));
-#else
-	stat_list.set_callback_value_change(
-		dialog_callback<statistics_dialog, &statistics_dialog::on_primary_list_select>);
-#endif
+	connect_signal_notify_modified(stat_list,
+		std::bind(&statistics_dialog::on_primary_list_select, this, std::ref(window)));
 
 	update_lists(window);
 }

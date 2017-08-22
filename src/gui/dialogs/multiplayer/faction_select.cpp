@@ -84,14 +84,8 @@ void faction_select::pre_show(window& window)
 
 	window.keyboard_capture(&list);
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(*list,
-	   std::bind(&faction_select::on_faction_select,
-			*this, std::ref(window)));
-#else
-	list.set_callback_value_change(
-		dialog_callback<faction_select, &faction_select::on_faction_select>);
-#endif
+	connect_signal_notify_modified(list,
+		std::bind(&faction_select::on_faction_select, this, std::ref(window)));
 
 	for(const config *s : flg_manager_.choosable_factions()) {
 		const config& side = *s;

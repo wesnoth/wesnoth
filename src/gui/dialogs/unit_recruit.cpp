@@ -64,15 +64,7 @@ void unit_recruit::pre_show(window& window)
 {
 	listbox& list = find_widget<listbox>(&window, "recruit_list", false);
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(*list,
-		std::bind(&unit_recruit::list_item_clicked,
-		*this,
-		std::ref(window)));
-#else
-	list.set_callback_value_change(
-		dialog_callback<unit_recruit, &unit_recruit::list_item_clicked>);
-#endif
+	connect_signal_notify_modified(list, std::bind(&unit_recruit::list_item_clicked, this, std::ref(window)));
 
 	window.keyboard_capture(&list);
 

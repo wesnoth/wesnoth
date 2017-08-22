@@ -312,10 +312,6 @@ void addon_manager::pre_show(window& window)
 	text_box& filter = find_widget<text_box>(&window, "filter", false);
 	filter.set_text_changed_callback(std::bind(&addon_manager::on_filtertext_changed, this, _1));
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(list,
-		std::bind(&addon_manager::on_addon_select, *this, std::ref(window)));
-#else
 	list.set_install_function(std::bind(&addon_manager::install_addon,
 		this, std::placeholders::_1, std::ref(window)));
 	list.set_uninstall_function(std::bind(&addon_manager::uninstall_addon,
@@ -328,9 +324,7 @@ void addon_manager::pre_show(window& window)
 	list.set_delete_function(std::bind(&addon_manager::delete_addon,
 		this, std::placeholders::_1, std::ref(window)));
 
-	list.set_callback_value_change(
-		dialog_callback<addon_manager, &addon_manager::on_addon_select>);
-#endif
+	list.set_modified_signal_handler([this, &window]() { on_addon_select(window); });
 
 	fetch_addons_list(window);
 	load_addon_list(window);

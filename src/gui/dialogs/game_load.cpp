@@ -117,13 +117,8 @@ void game_load::pre_show(window& window)
 
 	listbox& list = find_widget<listbox>(&window, "savegame_list", false);
 
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
 	connect_signal_notify_modified(list,
-			std::bind(&game_load::display_savegame, *this, std::ref(window)));
-#else
-	list.set_callback_value_change(
-			dialog_callback<game_load, &game_load::display_savegame>);
-#endif
+			std::bind(&game_load::display_savegame, this, std::ref(window)));
 
 	window.keyboard_capture(filter);
 	window.add_to_keyboard_chain(&list);

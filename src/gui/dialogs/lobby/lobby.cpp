@@ -672,14 +672,9 @@ void mp_lobby::pre_show(window& window)
 	SCOPE_LB;
 
 	gamelistbox_ = find_widget<listbox>(&window, "game_list", false, true);
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(
-			*gamelistbox_,
-			std::bind(&mp_lobby::gamelist_change_callback, *this, std::ref(window)));
-#else
-	gamelistbox_->set_callback_value_change(
-			dialog_callback<mp_lobby, &mp_lobby::gamelist_change_callback>);
-#endif
+
+	connect_signal_notify_modified(*gamelistbox_,
+			std::bind(&mp_lobby::gamelist_change_callback, this, std::ref(window)));
 
 	window.keyboard_capture(gamelistbox_);
 

@@ -47,9 +47,9 @@ public:
 	void set_addons(const addons_list& addons);
 
 	/** Sets up a callback that will be called when the player selects an add-on. */
-	void set_callback_value_change(const std::function<void(widget&)>& callback)
+	void set_modified_signal_handler(const std::function<void()>& callback)
 	{
-		get_listbox().set_callback_value_change(callback);
+		connect_signal_notify_modified(get_listbox(), std::bind(callback));
 	}
 
 	/** Returns the selected add-on. */

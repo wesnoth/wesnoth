@@ -177,7 +177,7 @@ void drop_down_menu::pre_show(window& window)
 	// Handle embedded button toggling.
 	// For some reason this works as a listbox value callback but don't ask me why.
 	// -vultraz 2/17/17
-	list.set_callback_value_change(std::bind(&callback_flip_embedded_toggle, std::ref(window)));
+	connect_signal_notify_modified(list, std::bind(&callback_flip_embedded_toggle, std::ref(window)));
 
 	// Dismiss on resize
 	window.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&resize_callback, std::ref(window)), event::dispatcher::front_child);

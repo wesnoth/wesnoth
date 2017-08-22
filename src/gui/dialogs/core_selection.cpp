@@ -88,17 +88,9 @@ void core_selection::pre_show(window& window)
 {
 	/***** Setup core list. *****/
 	listbox& list = find_widget<listbox>(&window, "core_list", false);
-#ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(
-			list,
-			std::bind(&core_selection::core_selected,
-						this,
-						std::ref(window)));
-#else
-	list.set_callback_value_change(
-			dialog_callback<core_selection,
-							&core_selection::core_selected>);
-#endif
+
+	connect_signal_notify_modified(list, std::bind(&core_selection::core_selected, this, std::ref(window)));
+
 	window.keyboard_capture(&list);
 
 	/***** Setup core details. *****/
