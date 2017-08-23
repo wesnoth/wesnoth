@@ -563,12 +563,6 @@ void listbox::finalize(builder_grid_const_ptr header,
 			-1, list_builder_, list_data, callback_list_item_clicked);
 	swap_grid(nullptr, content_grid(), generator_, "_list_grid");
 }
-namespace {
-	bool default_sort(unsigned i1, unsigned i2)
-	{
-		return i1 < i2;
-	}
-}
 
 void listbox::order_by_column(unsigned column, widget& widget)
 {
@@ -586,7 +580,7 @@ void listbox::order_by_column(unsigned column, widget& widget)
 		return;
 	}
 	if(selectable.get_value() == SORT_NONE) {
-		order_by(generator_base::torder_func(&default_sort));
+		order_by(std::less<unsigned>());
 	}
 	else {
 		order_by(orders_[column].second[selectable.get_value() - 1]);
