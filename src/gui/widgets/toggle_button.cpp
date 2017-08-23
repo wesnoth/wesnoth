@@ -41,7 +41,6 @@ toggle_button::toggle_button(const implementation::builder_toggle_button& builde
 	, state_(ENABLED)
 	, state_num_(0)
 	, retval_(0)
-	, callback_state_change_()
 	, icon_name_()
 {
 	connect_signal<event::MOUSE_ENTER>(std::bind(
@@ -126,10 +125,6 @@ void toggle_button::set_value(const unsigned selected)
 	}
 
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
-
-	if(callback_state_change_) {
-		callback_state_change_(*this);
-	}
 }
 
 void toggle_button::set_retval(const int retval)

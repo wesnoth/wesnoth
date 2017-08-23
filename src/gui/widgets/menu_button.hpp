@@ -86,12 +86,6 @@ public:
 	/** Inherited from selectable_item */
 	virtual unsigned num_states() const override { return values_.size(); }
 
-	/** Inherited from selectable_item */
-	virtual void set_callback_state_change(std::function<void(widget&)> callback) override
-	{
-		callback_state_change_ = callback;
-	}
-
 	/** Returns the value of the selected row */
 	std::string get_value_string() const
 	{
@@ -141,9 +135,6 @@ private:
 	bool keep_open_;
 
 	dialogs::drop_down_menu* droplist_;
-
-	/** See selectable_item::set_callback_state_change. */
-	std::function<void(widget&)> callback_state_change_;
 
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;

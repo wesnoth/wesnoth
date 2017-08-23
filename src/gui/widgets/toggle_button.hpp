@@ -68,12 +68,6 @@ public:
 
 	void set_retval(const int retval);
 
-	/** Inherited from selectable_item. */
-	void set_callback_state_change(std::function<void(widget&)> callback) override
-	{
-		callback_state_change_ = callback;
-	}
-
 	void set_icon_name(const std::string& icon_name)
 	{
 		icon_name_ = icon_name;
@@ -121,9 +115,6 @@ private:
 	 * retval of the window and the window closes itself.
 	 */
 	int retval_;
-
-	/** See selectable_item::set_callback_state_change. */
-	std::function<void(widget&)> callback_state_change_;
 
 	/**
 	 * The toggle button can contain an icon next to the text.

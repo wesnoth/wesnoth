@@ -154,10 +154,6 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 
-		if(callback_state_change_) {
-			callback_state_change_(*this);
-		}
-
 		if(retval_ != 0) {
 			if(window* window = get_window()) {
 				window->set_retval(retval_);

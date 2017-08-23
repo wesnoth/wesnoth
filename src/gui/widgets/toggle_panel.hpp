@@ -105,12 +105,6 @@ public:
 
 	void set_retval(const int retval);
 
-	/** Inherited from selectable_item. */
-	void set_callback_state_change(std::function<void(widget&)> callback) override
-	{
-		callback_state_change_ = callback;
-	}
-
 	void set_callback_mouse_left_double_click(
 			std::function<void(widget&)> callback)
 	{
@@ -155,9 +149,6 @@ private:
 	 * retval of the window and the window closes itself.
 	 */
 	int retval_;
-
-	/** See selectable_item::set_callback_state_change. */
-	std::function<void(widget&)> callback_state_change_;
 
 	/** Mouse left double click callback */
 	std::function<void(widget&)> callback_mouse_left_double_click_;
