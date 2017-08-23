@@ -74,7 +74,7 @@ private:
 	 * std::find to get the initial index. This method should also allow the values to eventually be translated,
 	 * since the string values don't come into consideration at all, save for populating the menu_button.
 	 *
-	 * -- vultraz, 8/21/2016
+	 * - vultraz, 2016-08-21
 	 */
 	std::vector<mp_game_settings::RANDOM_FACTION_MODE> rfm_types_;
 

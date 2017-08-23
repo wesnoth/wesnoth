@@ -750,7 +750,7 @@ public:
 			 *
 			 * NOTE: This used to only remove the first signal of matching target type.
 			 *       That behavior could be restored in the future if needed.
-			 * - vultraz 5/2/2017
+			 * - vultraz, 2017-05-02
 			 */
 			switch(position) {
 				case front_pre_child:
@@ -889,7 +889,7 @@ inline void disconnect_signal_mouse_left_click(dispatcher& dispatcher,
  * panels, but it does. Will revisit if it becomes an issue later (ie, if
  * this is used with other widgets and doesn't work).
  *
- * vultraz - 8/23/17
+ * - vultraz, 2017-08-23
  */
 inline void connect_signal_mouse_left_double_click(dispatcher& dispatcher, const signal_function& signal)
 {

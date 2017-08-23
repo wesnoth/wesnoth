@@ -627,7 +627,7 @@ void addon_manager::update_addon(const addon_info& addon, window& window)
 	 * calls the other. Since this might change in the future, I'm leaving this function
 	 * here for now.
 	 *
-	 * - vultraz, 3/12/17
+	 * - vultraz, 2017-03-12
 	 */
 	install_addon(addon, window);
 }
