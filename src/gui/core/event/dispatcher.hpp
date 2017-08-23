@@ -51,7 +51,7 @@ struct message;
  *
  * This function is used for the callbacks in set_event.
  */
-typedef std::function<void(dispatcher& dispatcher,
+typedef std::function<void(widget& dispatcher,
 							const ui_event event,
 							bool& handled, bool& halt)> signal_function;
 
@@ -60,7 +60,7 @@ typedef std::function<void(dispatcher& dispatcher,
  *
  * This function is used for the callbacks in set_event_mouse.
  */
-typedef std::function<void(dispatcher& dispatcher,
+typedef std::function<void(widget& dispatcher,
 							 const ui_event event,
 							 bool& handled,
 							 bool& halt,
@@ -71,7 +71,7 @@ typedef std::function<void(dispatcher& dispatcher,
  *
  * This function is used for the callbacks in set_event_keyboard.
  */
-typedef std::function<void(dispatcher& dispatcher,
+typedef std::function<void(widget& dispatcher,
 							 const ui_event event,
 							 bool& handled,
 							 bool& halt,
@@ -84,7 +84,7 @@ typedef std::function<void(dispatcher& dispatcher,
  *
  * This function is used for the callbacks in set_event_touch.
  */
-typedef std::function<void(dispatcher& dispatcher,
+typedef std::function<void(widget& dispatcher,
 							 const ui_event event,
 							 bool& handled,
 							 bool& halt,
@@ -98,7 +98,7 @@ typedef std::function<void(dispatcher& dispatcher,
  * Added the dummy void* parameter which will be nullptr to get a different
  * signature as signal_function's callback.
  */
-typedef std::function<void(dispatcher& dispatcher,
+typedef std::function<void(widget& dispatcher,
 							 const ui_event event,
 							 bool& handled,
 							 bool& halt,
@@ -109,7 +109,7 @@ typedef std::function<void(dispatcher& dispatcher,
  *
  * This function is used for the callbacks in set_event_message.
  */
-typedef std::function<void(dispatcher& dispatcher,
+typedef std::function<void(widget& dispatcher,
 							 const ui_event event,
 							 bool& handled,
 							 bool& halt,
@@ -120,7 +120,7 @@ typedef std::function<void(dispatcher& dispatcher,
  *
  * This function is used for the callbacks in set_event_raw_event.
  */
-typedef std::function<void(dispatcher& dispatcher,
+typedef std::function<void(widget& dispatcher,
 						   const ui_event event,
 						   bool& handled,
 						   bool& halt,
@@ -131,7 +131,7 @@ typedef std::function<void(dispatcher& dispatcher,
  *
  * This function is used for the callbacks in set_event_text_input.
  */
-typedef std::function<void(dispatcher& dispatcher,
+typedef std::function<void(widget& dispatcher,
 						   const ui_event event,
 						   bool& handled,
 						   bool& halt,
@@ -140,7 +140,7 @@ typedef std::function<void(dispatcher& dispatcher,
 						   int32_t select_len)> signal_text_input_function;
 
 /** Hotkey function handler signature. */
-typedef std::function<bool(dispatcher& dispatcher,
+typedef std::function<bool(widget& dispatcher,
 							 hotkey::HOTKEY_COMMAND id)> hotkey_function;
 
 /**
@@ -155,7 +155,7 @@ typedef std::function<bool(dispatcher& dispatcher,
  * track the mouse location and fire MOUSE_ENTER and MOUSE_LEAVE events to the
  * widgets involved.
  *
- * [1] Not really sure whether it will be a base clase for a widget or
+ * [1] Not really sure whether it will be a base class for a widget or
  * styled_widget yet.
  */
 class dispatcher
