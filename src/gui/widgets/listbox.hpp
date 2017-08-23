@@ -26,7 +26,6 @@
 
 namespace gui2
 {
-
 // ------------ WIDGET -----------{
 
 class selectable_item;
@@ -96,8 +95,7 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	grid& add_row(const std::map<std::string /* widget id */, string_map>& data,
-				 const int index = -1);
+	grid& add_row(const std::map<std::string /* widget id */, string_map>& data, const int index = -1);
 
 	/**
 	 * Removes a row in the listbox.
@@ -251,9 +249,7 @@ public:
 	virtual void layout_children() override;
 
 	/** See @ref widget::child_populate_dirty_list. */
-	virtual void
-	child_populate_dirty_list(window& caller,
-							  const std::vector<widget*>& call_stack) override;
+	virtual void child_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack) override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -331,7 +327,6 @@ private:
 	 * For now it's always fixed width depending on the first row.
 	 */
 
-
 	/**
 	 * Finishes the building initialization of the widget.
 	 *
@@ -340,8 +335,8 @@ private:
 	 * @param list_data           The initial data to fill the listbox with.
 	 */
 	void finalize(builder_grid_const_ptr header,
-				  builder_grid_const_ptr footer,
-				  const std::vector<std::map<std::string, string_map>>& list_data);
+			builder_grid_const_ptr footer,
+			const std::vector<std::map<std::string, string_map>>& list_data);
 	/**
 	 * Contains a pointer to the generator.
 	 *
@@ -358,7 +353,7 @@ private:
 
 	bool need_layout_;
 
-	typedef std::vector<std::pair<selectable_item*, generator_sort_array > > torder_list;
+	typedef std::vector<std::pair<selectable_item*, generator_sort_array>> torder_list;
 	torder_list orders_;
 	/**
 	 * Resizes the content.
@@ -376,9 +371,9 @@ private:
 	 *                            * positive values increase height.
 	 */
 	void resize_content(const int width_modification,
-						const int height_modification,
-						const int width__modification_pos = -1,
-						const int height_modification_pos = -1);
+			const int height_modification,
+			const int width__modification_pos = -1,
+			const int height_modification_pos = -1);
 
 	/**
 	 * Resizes the content.
@@ -405,7 +400,6 @@ private:
 
 struct listbox_definition : public styled_widget_definition
 {
-
 	explicit listbox_definition(const config& cfg);
 
 	struct resolution : public resolution_definition
@@ -420,7 +414,6 @@ struct listbox_definition : public styled_widget_definition
 
 namespace implementation
 {
-
 struct builder_listbox : public builder_styled_widget
 {
 	explicit builder_listbox(const config& cfg);
