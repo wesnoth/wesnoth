@@ -201,6 +201,31 @@ bool dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
 	return itor->second(dynamic_cast<widget&>(*this), id);
 }
 
+void connect_signal_pre_key_press(dispatcher& dispatcher, const signal_keyboard_function& signal)
+{
+	dispatcher.connect_signal<SDL_KEY_DOWN>(signal, dispatcher::front_child);
+}
+
+void connect_signal_mouse_left_click(dispatcher& dispatcher, const signal_function& signal)
+{
+	dispatcher.connect_signal<LEFT_BUTTON_CLICK>(signal);
+}
+
+void disconnect_signal_mouse_left_click(dispatcher& dispatcher, const signal_function& signal)
+{
+	dispatcher.disconnect_signal<LEFT_BUTTON_CLICK>(signal);
+}
+
+void connect_signal_mouse_left_double_click(dispatcher& dispatcher, const signal_function& signal)
+{
+	dispatcher.connect_signal<LEFT_BUTTON_DOUBLE_CLICK>(signal, dispatcher::back_post_child);
+}
+
+void connect_signal_notify_modified(dispatcher& dispatcher, const signal_notification_function& signal)
+{
+	dispatcher.connect_signal<NOTIFY_MODIFIED>(signal);
+}
+
 } // namespace event
 
 } // namespace gui2
