@@ -579,7 +579,7 @@ private:
 					callback_change_(*widget);
 				}
 
-				dynamic_cast<selectable_item*>(widget)->set_callback_state_change(callback_change_);
+				connect_signal_notify_modified(*widget, std::bind(callback_change_, _1));
 			}
 		}
 	}

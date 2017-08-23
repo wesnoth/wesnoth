@@ -127,7 +127,7 @@ public:
 		};
 
 		for(auto& member : members_) {
-			member.second->set_callback_state_change(callback);
+			event::connect_signal_notify_modified(dynamic_cast<widget&>(*member.second), std::bind(callback, _1));
 		}
 	}
 

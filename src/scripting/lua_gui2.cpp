@@ -780,7 +780,7 @@ int intf_set_dialog_callback(lua_State* L)
 		static dialog_callback_wrapper wrapper;
 		c->connect_click_handler(std::bind(&dialog_callback_wrapper::forward, wrapper, w));
 	} else if(gui2::selectable_item* s = dynamic_cast<gui2::selectable_item*>(w)) {
-		s->set_callback_state_change(&dialog_callback);
+		connect_signal_notify_modified(dynamic_cast<gui2::widget&>(*s), std::bind(dialog_callback, _1));
 	}
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	else if(gui2::list_view* l = dynamic_cast<gui2::list_view*>(w)) {

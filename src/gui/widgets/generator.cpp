@@ -1074,7 +1074,8 @@ selection::init(grid* g,
 			toggle_panel* panel = dynamic_cast<toggle_panel*>(widget);
 
 			if(btn) {
-				btn->set_callback_state_change(callback);
+				connect_signal_notify_modified(*btn, std::bind(callback, _1));
+
 				std::map<std::string, string_map>::const_iterator itor
 						= data.find(btn->id());
 
@@ -1085,7 +1086,8 @@ selection::init(grid* g,
 					btn->set_members(itor->second);
 				}
 			} else if(panel) {
-				panel->set_callback_state_change(callback);
+				connect_signal_notify_modified(*panel, std::bind(callback, _1));
+
 				panel->set_child_members(data);
 			} else if(child_grid) {
 				init(child_grid, data, callback);

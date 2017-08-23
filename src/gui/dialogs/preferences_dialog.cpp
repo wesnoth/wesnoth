@@ -652,9 +652,11 @@ void preferences_dialog::post_build(window& window)
 
 				menu.set_use_markup(true);
 				menu.set_values(menu_data, selected);
-				menu.set_callback_state_change([=](widget& w) {
-					set(pref_name, option_ids[dynamic_cast<menu_button&>(w).get_value()]);
-				});
+
+				// We need to bind a lambda here since preferences::set is overloaded.
+				// A lambda alone would be more verbose because it'd need to specify all the parameters.
+				connect_signal_notify_modified(menu,
+					std::bind([=](widget& w) { set(pref_name, option_ids[dynamic_cast<menu_button&>(w).get_value()]); }, _1));
 
 				gui2::bind_status_label<menu_button>(main_grid, "setter", [](menu_button& m)->std::string {
 					return m.get_value_string();

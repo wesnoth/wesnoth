@@ -128,9 +128,8 @@ void editor_resize_map::pre_show(window& window)
 		direction_buttons_[i]
 				= find_widget<toggle_button>(&window, name, false, true);
 
-		direction_buttons_[i]->set_callback_state_change(
-				dialog_callback<editor_resize_map,
-								&editor_resize_map::update_expand_direction>);
+		connect_signal_notify_modified(*direction_buttons_[i],
+			std::bind(&editor_resize_map::update_expand_direction, this, std::ref(window)));
 	}
 	direction_buttons_[0]->set_value(true);
 	update_expand_direction(window);

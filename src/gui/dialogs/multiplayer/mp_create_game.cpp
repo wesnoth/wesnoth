@@ -247,7 +247,7 @@ void mp_create_game::pre_show(window& win)
 			mog_toggle.set_value_bool(true);
 		}
 
-		mog_toggle.set_callback_state_change(std::bind(&mp_create_game::on_mod_toggle, this, i));
+		connect_signal_notify_modified(mog_toggle, std::bind(&mp_create_game::on_mod_toggle, this, i));
 	}
 
 	connect_signal_notify_modified(mod_list, std::bind(&mp_create_game::on_mod_select, this, std::ref(win)));

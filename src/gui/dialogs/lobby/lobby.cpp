@@ -684,10 +684,11 @@ void mp_lobby::pre_show(window& window)
 	player_list_.sort_by_relation->set_value(preferences::playerlist_sort_relation());
 	player_list_.update_sort_icons();
 
-	player_list_.sort_by_name->set_callback_state_change(
-			std::bind(&mp_lobby::player_filter_callback, this, _1));
-	player_list_.sort_by_relation->set_callback_state_change(
-			std::bind(&mp_lobby::player_filter_callback, this, _1));
+	connect_signal_notify_modified(*player_list_.sort_by_name,
+		std::bind(&mp_lobby::player_filter_callback, this));
+
+	connect_signal_notify_modified(*player_list_.sort_by_relation,
+		std::bind(&mp_lobby::player_filter_callback, this));
 
 	window.set_enter_disabled(true);
 
@@ -742,14 +743,18 @@ void mp_lobby::pre_show(window& window)
 	filter_invert_  = find_widget<toggle_button>(&window, "filter_invert", false, true);
 	filter_text_    = find_widget<text_box>(&window, "filter_text", false, true);
 
-	filter_friends_->set_callback_state_change(
-			std::bind(&mp_lobby::game_filter_change_callback, this, _1));
-	filter_ignored_->set_callback_state_change(
-			std::bind(&mp_lobby::game_filter_change_callback, this, _1));
-	filter_slots_->set_callback_state_change(
-			std::bind(&mp_lobby::game_filter_change_callback, this, _1));
-	filter_invert_->set_callback_state_change(
-			std::bind(&mp_lobby::game_filter_change_callback, this, _1));
+	connect_signal_notify_modified(*filter_friends_,
+		std::bind(&mp_lobby::game_filter_change_callback, this));
+
+	connect_signal_notify_modified(*filter_ignored_,
+		std::bind(&mp_lobby::game_filter_change_callback, this));
+
+	connect_signal_notify_modified(*filter_slots_,
+		std::bind(&mp_lobby::game_filter_change_callback, this));
+
+	connect_signal_notify_modified(*filter_invert_,
+		std::bind(&mp_lobby::game_filter_change_callback, this));
+
 	connect_signal_pre_key_press(
 			*filter_text_,
 			std::bind(&mp_lobby::game_filter_keypress_callback, this, _5));
@@ -1062,7 +1067,7 @@ void mp_lobby::game_filter_keypress_callback(const SDL_Keycode key)
 	}
 }
 
-void mp_lobby::game_filter_change_callback(gui2::widget& /*widget*/)
+void mp_lobby::game_filter_change_callback()
 {
 	game_filter_reload();
 	update_gamelist_filter();
@@ -1073,7 +1078,7 @@ void mp_lobby::gamelist_change_callback(window& /*window*/)
 	update_selected_game();
 }
 
-void mp_lobby::player_filter_callback(gui2::widget& /*widget*/)
+void mp_lobby::player_filter_callback()
 {
 	player_list_.update_sort_icons();
 
