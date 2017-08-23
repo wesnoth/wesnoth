@@ -262,7 +262,7 @@ public:
 		list_builder_ = list_builder;
 	}
 
-	void order_by(const generator_base::torder_func& func);
+	void order_by(const generator_base::order_func& func);
 
 	void set_column_order(unsigned col, const generator_sort_array& func);
 

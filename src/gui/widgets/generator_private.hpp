@@ -996,11 +996,11 @@ private:
 	/** whether need to recalculate order_dirty_ */
 	mutable bool order_dirty_;
 
-	typedef std::function<bool (unsigned, unsigned)> torder_func;
-	torder_func order_func_;
+	typedef std::function<bool (unsigned, unsigned)> order_func;
+	order_func order_func_;
 
 
-	virtual void set_order(const torder_func& order) override
+	virtual void set_order(const order_func& order) override
 	{
 		order_func_ = order;
 		order_dirty_ = true;
@@ -1009,10 +1009,10 @@ private:
 
 	struct calculate_order_helper
 	{
-		const torder_func& order_func_;
+		const order_func& order_func_;
 		const child_list& items_;
 
-		calculate_order_helper(const torder_func& order_func, const child_list& items)
+		calculate_order_helper(const order_func& order_func, const child_list& items)
 			: order_func_(order_func)
 			, items_(items)
 		{
