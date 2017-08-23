@@ -861,26 +861,13 @@ private:
  * This callback is called before the widget itself allowing you to either
  * snoop on the input or filter it.
  */
-inline void
-connect_signal_pre_key_press(dispatcher& dispatcher,
-							 const signal_keyboard_function& signal)
-{
-	dispatcher.connect_signal<SDL_KEY_DOWN>(signal, dispatcher::front_child);
-}
+void connect_signal_pre_key_press(dispatcher& dispatcher, const signal_keyboard_function& signal);
 
 /** Connects a signal handler for a left mouse button click. */
-inline void connect_signal_mouse_left_click(dispatcher& dispatcher,
-											const signal_function& signal)
-{
-	dispatcher.connect_signal<LEFT_BUTTON_CLICK>(signal);
-}
+void connect_signal_mouse_left_click(dispatcher& dispatcher, const signal_function& signal);
 
 /** Disconnects a signal handler for a left mouse button click. */
-inline void disconnect_signal_mouse_left_click(dispatcher& dispatcher,
-											   const signal_function& signal)
-{
-	dispatcher.disconnect_signal<LEFT_BUTTON_CLICK>(signal);
-}
+void disconnect_signal_mouse_left_click(dispatcher& dispatcher, const signal_function& signal);
 
 /**
  * Connects a signal handler for a left mouse button double click.
@@ -891,18 +878,10 @@ inline void disconnect_signal_mouse_left_click(dispatcher& dispatcher,
  *
  * - vultraz, 2017-08-23
  */
-inline void connect_signal_mouse_left_double_click(dispatcher& dispatcher, const signal_function& signal)
-{
-	dispatcher.connect_signal<LEFT_BUTTON_DOUBLE_CLICK>(signal, dispatcher::back_post_child);
-}
+void connect_signal_mouse_left_double_click(dispatcher& dispatcher, const signal_function& signal);
 
 /** Connects a signal handler for getting a notification upon modification. */
-inline void
-connect_signal_notify_modified(dispatcher& dispatcher,
-							   const signal_notification_function& signal)
-{
-	dispatcher.connect_signal<event::NOTIFY_MODIFIED>(signal);
-}
+void connect_signal_notify_modified(dispatcher& dispatcher, const signal_notification_function& signal);
 
 } // namespace event
 
