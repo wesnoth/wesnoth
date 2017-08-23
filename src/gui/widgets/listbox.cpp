@@ -541,7 +541,7 @@ void listbox::finalize(builder_grid_const_ptr header,
 		// Should probably look into a way to make it more general like it was before (used to be
 		// cast to selectable_item).
 		//
-		// vultraz - 8/23/2017
+		// - vultraz, 2017-08-23
 		//
 		if(toggle_button* selectable = find_widget<toggle_button>(&p, "sort_" + std::to_string(i), false, false)) {
 			// Register callback to sort the list.
