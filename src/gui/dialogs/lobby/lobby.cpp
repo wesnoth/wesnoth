@@ -457,8 +457,7 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game,
 
 	toggle_panel& row_panel = find_widget<toggle_panel>(grid, "panel", false);
 
-	row_panel.set_callback_mouse_left_double_click(
-			std::bind(&mp_lobby::join_or_observe, this, idx));
+	connect_signal_mouse_left_double_click(row_panel, std::bind(&mp_lobby::join_or_observe, this, idx));
 
 	set_visible_if_exists(grid, "time_limit_icon",   !game.time_limit.empty());
 	set_visible_if_exists(grid, "vision_fog",         game.fog);
@@ -478,11 +477,11 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game,
 		map->set_config(&game_config_);
 		map->set_map_data(game.map_data);
 	}
-	
+
 	if(!add_callbacks) {
 		return;
 	}
-		
+
 	if(button* join_button = dynamic_cast<button*>(grid->find("join", false))) {
 		connect_signal_mouse_left_click(
 				*join_button,
@@ -626,8 +625,8 @@ void mp_lobby::update_playerlist()
 
 		tree_view_node& player = target_list->tree->add_child("player", tree_group_item);
 
-		find_widget<toggle_panel>(&player, "tree_view_node_label", false)
-				.set_callback_mouse_left_double_click(std::bind(&mp_lobby::user_dialog_callback, this, userptr));
+		connect_signal_mouse_left_double_click(find_widget<toggle_panel>(&player, "tree_view_node_label", false),
+			std::bind(&mp_lobby::user_dialog_callback, this, userptr));
 	}
 
 	player_list_.active_game.update_player_count_label();
