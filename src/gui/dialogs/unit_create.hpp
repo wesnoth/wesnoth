@@ -78,6 +78,8 @@ private:
 	void filter_text_changed(text_box_base* textbox, const std::string& text);
 	void gender_toggle_callback(window& window);
 
+	void update_displayed_type() const;
+
 	group<unit_race::GENDER> gender_toggle;
 };
 } // namespace dialogs

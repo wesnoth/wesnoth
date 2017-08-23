@@ -181,6 +181,17 @@ void unit_create::post_show(window& window)
 	last_gender = gender_;
 }
 
+void unit_create::update_displayed_type() const
+{
+	window* w = get_window();
+
+	const int selected_row
+		= find_widget<listbox>(w, "unit_type_list", false).get_selected_row();
+
+	find_widget<unit_preview_pane>(w, "unit_details", false)
+		.set_displayed_type(units_[selected_row]->get_gender_unit_type(gender_));
+}
+
 void unit_create::list_item_clicked(window& window)
 {
 	const int selected_row
@@ -190,8 +201,7 @@ void unit_create::list_item_clicked(window& window)
 		return;
 	}
 
-	find_widget<unit_preview_pane>(&window, "unit_details", false)
-		.set_displayed_type(*units_[selected_row]);
+	update_displayed_type();
 
 	gender_toggle.set_members_enabled([&](const unit_race::GENDER& gender)->bool {
 		return units_[selected_row]->has_gender_variation(gender);
@@ -247,6 +257,8 @@ void unit_create::filter_text_changed(text_box_base* textbox, const std::string&
 void unit_create::gender_toggle_callback(window&)
 {
 	gender_ = gender_toggle.get_active_member_value();
+
+	update_displayed_type();
 }
 } // namespace dialogs
 } // namespace gui2
