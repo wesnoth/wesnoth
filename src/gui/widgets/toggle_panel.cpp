@@ -42,7 +42,6 @@ toggle_panel::toggle_panel(const implementation::builder_toggle_panel& builder)
 	, state_(ENABLED)
 	, state_num_(0)
 	, retval_(0)
-	, callback_state_change_(nullptr)
 	, callback_mouse_left_double_click_()
 {
 	set_wants_mouse_left_double_click();
@@ -248,10 +247,6 @@ toggle_panel::signal_handler_pre_left_button_click(const event::ui_event event)
 	 */
 
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
-
-	if(callback_state_change_) {
-		callback_state_change_(*this);
-	}
 #endif
 }
 
@@ -266,9 +261,6 @@ void toggle_panel::signal_handler_left_button_click(const event::ui_event event,
 
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 
-	if(callback_state_change_) {
-		callback_state_change_(*this);
-	}
 	handled = true;
 }
 
