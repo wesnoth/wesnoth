@@ -248,8 +248,8 @@ public:
 					data,
 			const std::function<void(widget&)>& callback) = 0;
 
-	typedef std::function<bool (unsigned, unsigned)> torder_func;
-	virtual void set_order(const torder_func& order) = 0;
+	typedef std::function<bool (unsigned, unsigned)> order_func;
+	virtual void set_order(const order_func& order) = 0;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -381,6 +381,6 @@ public:
 
 };
 
-using generator_sort_array = std::array<generator_base::torder_func, 2>;
+using generator_sort_array = std::array<generator_base::order_func, 2>;
 
 } // namespace gui2

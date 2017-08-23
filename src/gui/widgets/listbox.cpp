@@ -587,7 +587,7 @@ void listbox::order_by_column(unsigned column, widget& widget)
 	}
 }
 
-void listbox::order_by(const generator_base::torder_func& func)
+void listbox::order_by(const generator_base::order_func& func)
 {
 	generator_->set_order(func);
 
