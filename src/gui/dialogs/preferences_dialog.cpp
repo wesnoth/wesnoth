@@ -592,6 +592,8 @@ void preferences_dialog::post_build(window& window)
 				toggle_box.set_visible(widget::visibility::visible);
 				toggle_box.set_value(get(pref_name, option["default"].to_bool()));
 
+				// We need to bind a lambda here since preferences::set is overloaded.
+				// A lambda alone would be more verbose because it'd need to specify all the parameters.
 				connect_signal_mouse_left_click(toggle_box, std::bind(
 					[&, pref_name]() { set(pref_name, toggle_box.get_value_bool()); }
 				));
@@ -617,6 +619,8 @@ void preferences_dialog::post_build(window& window)
 
 				slide.set_value(lexical_cast_default<int>(get(pref_name), option["default"].to_int()));
 
+				// We need to bind a lambda here since preferences::set is overloaded.
+				// A lambda alone would be more verbose because it'd need to specify all the parameters.
 				connect_signal_notify_modified(slide, std::bind(
 					[&, pref_name]() { set(pref_name, slide.get_value()); }
 				));
