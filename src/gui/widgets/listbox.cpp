@@ -18,23 +18,21 @@
 
 #include "gui/widgets/listbox.hpp"
 
+#include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/core/log.hpp"
+#include "gui/core/register_widget.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/core/window_builder/helper.hpp"
-#include "gui/core/register_widget.hpp"
 #include "gui/widgets/pane.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/selectable_item.hpp"
-#include "gui/widgets/widget_helpers.hpp"
+#include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/viewport.hpp"
+#include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/window.hpp"
-
-#include "gettext.hpp"
-
 #include "utils/functional.hpp"
 
 #include <boost/optional.hpp>
@@ -44,7 +42,6 @@
 
 namespace gui2
 {
-
 // ------------ WIDGET -----------{
 
 REGISTER_WIDGET(listbox)
@@ -77,20 +74,17 @@ listbox::listbox(const implementation::builder_styled_widget& builder,
 grid& listbox::add_row(const string_map& item, const int index)
 {
 	assert(generator_);
-	grid& row = generator_->create_item(
-			index, list_builder_, item, callback_list_item_clicked);
+	grid& row = generator_->create_item(index, list_builder_, item, callback_list_item_clicked);
 
 	resize_content(row);
 
 	return row;
 }
 
-grid& listbox::add_row(const std::map<std::string /* widget id */, string_map>& data,
-				  const int index)
+grid& listbox::add_row(const std::map<std::string /* widget id */, string_map>& data, const int index)
 {
 	assert(generator_);
-	grid& row = generator_->create_item(
-			index, list_builder_, data, callback_list_item_clicked);
+	grid& row = generator_->create_item(index, list_builder_, data, callback_list_item_clicked);
 
 	resize_content(row);
 
@@ -111,19 +105,21 @@ void listbox::remove_row(const unsigned row, unsigned count)
 
 	int height_reduced = 0;
 	int width_reduced = 0;
-	//TODO: Fix this for horizontal listboxes
-	//Note the we have to use content_grid_ and cannot use "_list_grid" which is what generator_ uses.
-	int row_pos_y = is_horizontal_ ? -1 : generator_->item(row).get_y()  - content_grid_->get_y();
+
+	// TODO: Fix this for horizontal listboxes
+	// Note the we have to use content_grid_ and cannot use "_list_grid" which is what generator_ uses.
+	int row_pos_y = is_horizontal_ ? -1 : generator_->item(row).get_y() - content_grid_->get_y();
 	int row_pos_x = is_horizontal_ ? -1 : 0;
+
 	for(; count; --count) {
 		if(generator_->item(row).get_visible() != visibility::invisible) {
 			if(is_horizontal_) {
 				width_reduced += generator_->item(row).get_width();
-			}
-			else {
+			} else {
 				height_reduced += generator_->item(row).get_height();
 			}
 		}
+
 		generator_->delete_item(row);
 	}
 
@@ -162,12 +158,16 @@ void listbox::set_row_shown(const unsigned row, const bool shown)
 	const int selected_row = get_selected_row();
 
 	bool resize_needed = false;
+
+	// Local scope for invalidate_layout_blocker
 	{
 		window::invalidate_layout_blocker invalidate_layout_blocker(*window);
 
 		generator_->set_item_shown(row, shown);
+
 		point best_size = generator_->calculate_best_size();
-		generator_->place(generator_->get_origin(), { std::max(best_size.x, content_visible_area().w), best_size.y });
+		generator_->place(generator_->get_origin(), {std::max(best_size.x, content_visible_area().w), best_size.y});
+
 		resize_needed = !content_resize_request();
 	}
 
@@ -188,8 +188,7 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 	assert(generator_);
 	assert(shown.size() == get_item_count());
 
-	if (generator_->get_items_shown() == shown)
-	{
+	if(generator_->get_items_shown() == shown) {
 		LOG_GUI_G << LOG_HEADER << " returning early" << std::endl;
 		return;
 	}
@@ -200,14 +199,18 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 	const int selected_row = get_selected_row();
 
 	bool resize_needed = false;
+
+	// Local scope for invalidate_layout_blocker
 	{
 		window::invalidate_layout_blocker invalidate_layout_blocker(*window);
 
 		for(size_t i = 0; i < shown.size(); ++i) {
 			generator_->set_item_shown(i, shown[i]);
 		}
+
 		point best_size = generator_->calculate_best_size();
-		generator_->place(generator_->get_origin(), { std::max(best_size.x, content_visible_area().w), best_size.y });
+		generator_->place(generator_->get_origin(), {std::max(best_size.x, content_visible_area().w), best_size.y});
+
 		resize_needed = !content_resize_request();
 	}
 
@@ -235,6 +238,7 @@ bool listbox::any_rows_shown() const
 			return true;
 		}
 	}
+
 	return false;
 }
 
@@ -264,21 +268,18 @@ bool listbox::select_row(const unsigned row, const bool select)
 bool listbox::select_row_at(const unsigned row, const bool select)
 {
 	assert(generator_);
-
 	return select_row(generator_->get_item_at_ordered(row), select);
 }
 
 bool listbox::row_selected(const unsigned row)
 {
 	assert(generator_);
-
 	return generator_->is_selected(row);
 }
 
 int listbox::get_selected_row() const
 {
 	assert(generator_);
-
 	return generator_->get_selected_item();
 }
 
@@ -290,9 +291,9 @@ void listbox::list_item_clicked(widget& caller)
 	get_window()->keyboard_capture(this);
 
 	for(size_t i = 0; i < generator_->get_item_count(); ++i) {
-
 		if(generator_->item(i).has_widget(caller)) {
 			toggle_button* checkbox = dynamic_cast<toggle_button*>(&caller);
+
 			if(checkbox != nullptr) {
 				generator_->select_item(i, checkbox->get_value_bool());
 			} else {
@@ -303,6 +304,7 @@ void listbox::list_item_clicked(widget& caller)
 			return;
 		}
 	}
+
 	assert(false);
 }
 
@@ -330,9 +332,12 @@ bool listbox::update_content_size()
 	return false;
 }
 
-/* Suppress -Wmaybe-uninitialized warnings. @GregoryLundberg reported in IRC that GCC 6.2.1 with SCons gives a warning that
- * the value of horizontal_scrollbar_position can be used uninitialized. It's of course not possible (boost::optional
- * conversion to bool returns true only if the value is set), but GCC can't prove that to itself. */
+/* Suppress -Wmaybe-uninitialized warnings.
+ * @GregoryLundberg reported in IRC that GCC 6.2.1 with SCons gives a warning that the value
+ * of horizontal_scrollbar_position can be used uninitialized. It's of course not possible
+ * (boost::optional conversion to bool returns true only if the value is set), but GCC can't
+ * prove that to itself.
+ */
 #if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
@@ -341,9 +346,9 @@ bool listbox::update_content_size()
 void listbox::place(const point& origin, const point& size)
 {
 	boost::optional<unsigned> vertical_scrollbar_position, horizontal_scrollbar_position;
+
 	// Check if this is the first time placing the list box
-	if (get_origin() != point{-1, -1})
-	{
+	if(get_origin() != point {-1, -1}) {
 		vertical_scrollbar_position = get_vertical_scrollbar_item_position();
 		horizontal_scrollbar_position = get_horizontal_scrollbar_item_position();
 	}
@@ -352,15 +357,14 @@ void listbox::place(const point& origin, const point& size)
 	scrollbar_container::place(origin, size);
 
 	const int selected_item = generator_->get_selected_item();
-	if (vertical_scrollbar_position && horizontal_scrollbar_position)
-	{
+	if(vertical_scrollbar_position && horizontal_scrollbar_position) {
 		LOG_GUI_L << LOG_HEADER << " restoring scroll position" << std::endl;
+
 		set_vertical_scrollbar_item_position(*vertical_scrollbar_position);
 		set_horizontal_scrollbar_item_position(*horizontal_scrollbar_position);
-	}
-	else if (selected_item != -1)
-	{
+	} else if(selected_item != -1) {
 		LOG_GUI_L << LOG_HEADER << " making the initially selected item visible" << std::endl;
+
 		const SDL_Rect& visible = content_visible_area();
 		SDL_Rect rect = generator_->item(selected_item).get_rectangle();
 
@@ -376,16 +380,16 @@ void listbox::place(const point& origin, const point& size)
 #endif
 
 void listbox::resize_content(const int width_modification,
-							  const int height_modification,
-							  const int width_modification_pos,
-							  const int height_modification_pos)
+		const int height_modification,
+		const int width_modification_pos,
+		const int height_modification_pos)
 {
-	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size()
-			  << " width_modification " << width_modification
-			  << " height_modification " << height_modification << ".\n";
+	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size() << " width_modification "
+			  << width_modification << " height_modification " << height_modification << ".\n";
 
-	if(content_resize_request(width_modification, height_modification, width_modification_pos, height_modification_pos)) {
-
+	if(content_resize_request(
+		width_modification, height_modification, width_modification_pos, height_modification_pos))
+	{
 		// Calculate new size.
 		point size = content_grid()->get_size();
 		size.x += width_modification;
@@ -396,10 +400,12 @@ void listbox::resize_content(const int width_modification,
 
 		// Set status.
 		need_layout_ = true;
+
 		// If the content grows assume it "overwrites" the old content.
 		if(width_modification < 0 || height_modification < 0) {
 			set_is_dirty(true);
 		}
+
 		DBG_GUI_L << LOG_HEADER << " succeeded.\n";
 	} else {
 		DBG_GUI_L << LOG_HEADER << " failed.\n";
@@ -412,11 +418,12 @@ void listbox::resize_content(const widget& row)
 		return;
 	}
 
-	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size()
-			  << " row size " << row.get_best_size() << ".\n";
+	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size() << " row size " << row.get_best_size()
+			  << ".\n";
 
 	const point content = content_grid()->get_size();
 	point size = row.get_best_size();
+
 	if(size.x < content.x) {
 		size.x = 0;
 	} else {
@@ -431,9 +438,7 @@ void listbox::layout_children()
 	layout_children(false);
 }
 
-void
-listbox::child_populate_dirty_list(window& caller,
-									const std::vector<widget*>& call_stack)
+void listbox::child_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack)
 {
 	// Inherited.
 	scrollbar_container::child_populate_dirty_list(caller, call_stack);
@@ -521,8 +526,8 @@ void listbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 }
 
 void listbox::finalize(builder_grid_const_ptr header,
-						builder_grid_const_ptr footer,
-						const std::vector<std::map<std::string, string_map>>& list_data)
+		builder_grid_const_ptr footer,
+		const std::vector<std::map<std::string, string_map>>& list_data)
 {
 	// "Inherited."
 	scrollbar_container::finalize_setup();
@@ -547,7 +552,7 @@ void listbox::finalize(builder_grid_const_ptr header,
 			// Register callback to sort the list.
 			connect_signal_notify_modified(*selectable, std::bind(&listbox::order_by_column, this, i, _1));
 
-			if(orders_.size() < max ) {
+			if(orders_.size() < max) {
 				orders_.resize(max);
 			}
 
@@ -559,8 +564,7 @@ void listbox::finalize(builder_grid_const_ptr header,
 		swap_grid(&get_grid(), content_grid(), footer->build(), "_footer_grid");
 	}
 
-	generator_->create_items(
-			-1, list_builder_, list_data, callback_list_item_clicked);
+	generator_->create_items(-1, list_builder_, list_data, callback_list_item_clicked);
 	swap_grid(nullptr, content_grid(), generator_, "_list_grid");
 }
 
@@ -570,19 +574,20 @@ void listbox::order_by_column(unsigned column, widget& widget)
 	if(column >= orders_.size()) {
 		return;
 	}
-	for(auto& pair : orders_)
-	{
+
+	for(auto& pair : orders_) {
 		if(pair.first != nullptr && pair.first != &selectable) {
 			pair.first->set_value(SORT_NONE);
 		}
 	}
+
 	if(selectable.get_value() > orders_[column].second.size()) {
 		return;
 	}
+
 	if(selectable.get_value() == SORT_NONE) {
 		order_by(std::less<unsigned>());
-	}
-	else {
+	} else {
 		order_by(orders_[column].second[selectable.get_value() - 1]);
 	}
 }
@@ -600,6 +605,7 @@ void listbox::set_column_order(unsigned col, const generator_sort_array& func)
 	if(col >= orders_.size()) {
 		orders_.resize(col + 1);
 	}
+
 	orders_[col].second = func;
 }
 
@@ -608,7 +614,7 @@ void listbox::set_active_sorting_option(const order_pair& sort_by, const bool se
 	// TODO: should this be moved to a public header_grid() getter function?
 	grid& header_grid = find_widget<grid>(this, "_header_grid", false);
 
-	selectable_item& wgt = find_widget<selectable_item>(&header_grid, "sort_" +  std::to_string(sort_by.first), false);
+	selectable_item& wgt = find_widget<selectable_item>(&header_grid, "sort_" + std::to_string(sort_by.first), false);
 	wgt.set_value(static_cast<int>(sort_by.second));
 
 	order_by_column(sort_by.first, dynamic_cast<widget&>(wgt));
@@ -620,9 +626,11 @@ void listbox::set_active_sorting_option(const order_pair& sort_by, const bool se
 
 const listbox::order_pair listbox::get_active_sorting_option()
 {
-	const auto iter = std::find_if(orders_.begin(), orders_.end(), [](const std::pair<selectable_item*, generator_sort_array>& option) {
-		return option.first != nullptr && option.first->get_value() != SORT_NONE;
-	});
+	const auto iter = std::find_if(orders_.begin(), orders_.end(),
+		[](const std::pair<selectable_item*, generator_sort_array>& option) {
+			return option.first != nullptr && option.first->get_value() != SORT_NONE;
+		}
+	);
 
 	if(iter != orders_.end()) {
 		return {iter - orders_.begin(), static_cast<SORT_ORDER>(iter->first->get_value())};
@@ -649,8 +657,7 @@ void listbox::layout_children(const bool force)
 	if(need_layout_ || force) {
 		const int selected_item = generator_->get_selected_item();
 
-		content_grid()->place(content_grid()->get_origin(),
-							  content_grid()->get_size());
+		content_grid()->place(content_grid()->get_origin(), content_grid()->get_size());
 
 		const SDL_Rect& visible = content_visible_area_;
 
@@ -760,7 +767,8 @@ listbox_definition::listbox_definition(const config& cfg)
  * The definition of a horizontal listbox is the same as for a normal listbox.
  */
 listbox_definition::resolution::resolution(const config& cfg)
-	: resolution_definition(cfg), grid(nullptr)
+	: resolution_definition(cfg)
+	, grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t in listbox.hpp.
 	state.emplace_back(cfg.child("state_enabled"));
@@ -869,40 +877,41 @@ listbox_definition::resolution::resolution(const config& cfg)
 
 namespace implementation
 {
-
 static std::vector<std::map<std::string, string_map>> parse_list_data(const config& data, const unsigned int req_cols)
 {
 	std::vector<std::map<std::string, string_map>> list_data;
-	for(const auto & row : data.child_range("row"))
-	{
-		auto cols = row.child_range("column");
-		VALIDATE(static_cast<unsigned>(cols.size()) == req_cols, _("'list_data' must have the same number of columns as the 'list_definition'."));
 
-		for(const auto & c : cols)
-		{
+	for(const auto& row : data.child_range("row")) {
+		auto cols = row.child_range("column");
+
+		VALIDATE(static_cast<unsigned>(cols.size()) == req_cols,
+			_("'list_data' must have the same number of columns as the 'list_definition'.")
+		);
+
+		for(const auto& c : cols) {
 			list_data.emplace_back();
-			for(const auto & i : c.attribute_range())
-			{
+
+			for(const auto& i : c.attribute_range()) {
 				list_data.back()[""][i.first] = i.second;
 			}
-			for(const auto& w : c.child_range("widget"))
-			{
+
+			for(const auto& w : c.child_range("widget")) {
 				VALIDATE(w.has_attribute("id"), missing_mandatory_wml_key("[list_data][row][column][widget]", "id"));
+
 				for(const auto& i : w.attribute_range()) {
 					list_data.back()[w["id"]][i.first] = i.second;
 				}
 			}
 		}
 	}
+
 	return list_data;
 }
 
 builder_listbox::builder_listbox(const config& cfg)
 	: builder_styled_widget(cfg)
-	, vertical_scrollbar_mode(
-			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
-	, horizontal_scrollbar_mode(
-			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
+	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, header(nullptr)
 	, footer(nullptr)
 	, list_builder(nullptr)
@@ -921,10 +930,11 @@ builder_listbox::builder_listbox(const config& cfg)
 	const config& l = cfg.child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
+
 	list_builder = std::make_shared<builder_grid>(l);
 	assert(list_builder);
-	VALIDATE(list_builder->rows == 1,
-			 _("A 'list_definition' should contain one row."));
+
+	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
 
 	if(cfg.has_child("list_data")) {
 		list_data = parse_list_data(cfg.child("list_data"), list_builder->cols);
@@ -934,25 +944,24 @@ builder_listbox::builder_listbox(const config& cfg)
 widget* builder_listbox::build() const
 {
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	list_view* widget = new list_view(
-			true, true, generator_base::vertical_list, true, list_builder);
+	list_view* widget = new list_view(true, true, generator_base::vertical_list, true, list_builder);
 
-	//init_control(widget);
+	// init_control(widget);
 	if(!list_data.empty()) {
 		widget->append_rows(list_data);
 	}
+
 	return widget;
 #else
-	listbox* widget
-			= new listbox(*this, has_minimum_, has_maximum_, generator_base::vertical_list, true);
+
+	listbox* widget = new listbox(*this, has_minimum_, has_maximum_, generator_base::vertical_list, true);
 
 	widget->set_list_builder(list_builder); // FIXME in finalize???
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
-	DBG_GUI_G << "Window builder: placed listbox '" << id
-			  << "' with definition '" << definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.\n";
 
 	const auto conf = widget->cast_config_to<listbox_definition>();
 	assert(conf);
@@ -1030,10 +1039,8 @@ widget* builder_listbox::build() const
 
 builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
 	: builder_styled_widget(cfg)
-	, vertical_scrollbar_mode(
-			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
-	, horizontal_scrollbar_mode(
-			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
+	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, list_builder(nullptr)
 	, list_data()
 	, has_minimum_(cfg["has_minimum"].to_bool(true))
@@ -1042,10 +1049,11 @@ builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
 	const config& l = cfg.child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
+
 	list_builder = std::make_shared<builder_grid>(l);
 	assert(list_builder);
-	VALIDATE(list_builder->rows == 1,
-			 _("A 'list_definition' should contain one row."));
+
+	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
 
 	if(cfg.has_child("list_data")) {
 		list_data = parse_list_data(cfg.child("list_data"), list_builder->cols);
@@ -1055,25 +1063,24 @@ builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
 widget* builder_horizontal_listbox::build() const
 {
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	list_view* widget = new list_view(
-			true, true, generator_base::horizontal_list, true, list_builder);
+	list_view* widget = new list_view(true, true, generator_base::horizontal_list, true, list_builder);
 
-	//init_control(widget);
+	// init_control(widget);
 	if(!list_data.empty()) {
 		widget->append_rows(list_data);
 	}
+
 	return widget;
 #else
-	listbox* widget
-			= new listbox(*this, has_minimum_, has_maximum_, generator_base::horizontal_list, true);
+
+	listbox* widget = new listbox(*this, has_minimum_, has_maximum_, generator_base::horizontal_list, true);
 
 	widget->set_list_builder(list_builder); // FIXME in finalize???
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
-	DBG_GUI_G << "Window builder: placed listbox '" << id
-			  << "' with definition '" << definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.\n";
 
 	const auto conf = widget->cast_config_to<listbox_definition>();
 	assert(conf);
@@ -1151,10 +1158,8 @@ widget* builder_horizontal_listbox::build() const
 
 builder_grid_listbox::builder_grid_listbox(const config& cfg)
 	: builder_styled_widget(cfg)
-	, vertical_scrollbar_mode(
-			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
-	, horizontal_scrollbar_mode(
-			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+	, vertical_scrollbar_mode(get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
+	, horizontal_scrollbar_mode(get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, list_builder(nullptr)
 	, list_data()
 	, has_minimum_(cfg["has_minimum"].to_bool(true))
@@ -1163,10 +1168,11 @@ builder_grid_listbox::builder_grid_listbox(const config& cfg)
 	const config& l = cfg.child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
+
 	list_builder = std::make_shared<builder_grid>(l);
 	assert(list_builder);
-	VALIDATE(list_builder->rows == 1,
-			 _("A 'list_definition' should contain one row."));
+
+	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
 
 	if(cfg.has_child("list_data")) {
 		list_data = parse_list_data(cfg.child("list_data"), list_builder->cols);
@@ -1176,25 +1182,24 @@ builder_grid_listbox::builder_grid_listbox(const config& cfg)
 widget* builder_grid_listbox::build() const
 {
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	list_view* widget = new list_view(
-			true, true, generator_base::grid, true, list_builder);
+	list_view* widget = new list_view(true, true, generator_base::grid, true, list_builder);
 
-	//init_control(widget);
+	// init_control(widget);
 	if(!list_data.empty()) {
 		widget->append_rows(list_data);
 	}
+
 	return widget;
 #else
-	listbox* widget
-			= new listbox(*this, has_minimum_, has_maximum_, generator_base::table, true);
+
+	listbox* widget = new listbox(*this, has_minimum_, has_maximum_, generator_base::table, true);
 
 	widget->set_list_builder(list_builder); // FIXME in finalize???
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
-	DBG_GUI_G << "Window builder: placed listbox '" << id
-			  << "' with definition '" << definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed listbox '" << id << "' with definition '" << definition << "'.\n";
 
 	const auto conf = widget->cast_config_to<listbox_definition>();
 	assert(conf);
