@@ -882,6 +882,20 @@ inline void disconnect_signal_mouse_left_click(dispatcher& dispatcher,
 	dispatcher.disconnect_signal<LEFT_BUTTON_CLICK>(signal);
 }
 
+/**
+ * Connects a signal handler for a left mouse button double click.
+ *
+ * I'm not exactly sure why this works in this queue position with toggle
+ * panels, but it does. Will revisit if it becomes an issue later (ie, if
+ * this is used with other widgets and doesn't work).
+ *
+ * vultraz - 8/23/17
+ */
+inline void connect_signal_mouse_left_double_click(dispatcher& dispatcher, const signal_function& signal)
+{
+	dispatcher.connect_signal<LEFT_BUTTON_DOUBLE_CLICK>(signal, dispatcher::back_post_child);
+}
+
 /** Connects a signal handler for getting a notification upon modification. */
 inline void
 connect_signal_notify_modified(dispatcher& dispatcher,
