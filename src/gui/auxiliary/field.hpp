@@ -232,7 +232,6 @@ private:
 	{
 	}
 
-
 	/** See widget_finalize. */
 	virtual void finalize_generic(window& window) = 0;
 
@@ -286,7 +285,7 @@ public:
 		, callback_load_value_(callback_load_value)
 		, callback_save_value_(callback_save_value)
 	{
-		static_assert((!std::is_same<styled_widget, W>::value), "Second template argument cannot be styled_widget");
+		static_assert(!std::is_same<styled_widget, W>::value, "Second template argument cannot be styled_widget");
 	}
 
 	/**
@@ -307,10 +306,10 @@ public:
 		: field_base(id, mandatory)
 		, value_(T())
 		, link_(linked_variable)
-		, callback_load_value_(std::function<T()>())
-		, callback_save_value_(std::function<void(CT)>())
+		, callback_load_value_(nullptr)
+		, callback_save_value_(nullptr)
 	{
-		static_assert((!std::is_same<styled_widget, W>::value), "Second template argument cannot be styled_widget");
+		static_assert(!std::is_same<styled_widget, W>::value, "Second template argument cannot be styled_widget");
 	}
 
 	/**
@@ -334,10 +333,10 @@ public:
 		: field_base(id, mandatory)
 		, value_(value)
 		, link_(value_)
-		, callback_load_value_(std::function<T()>())
-		, callback_save_value_(std::function<void(CT)>())
+		, callback_load_value_(nullptr)
+		, callback_save_value_(nullptr)
 	{
-		static_assert((std::is_same<styled_widget, W>::value), "Second template argument must be styled_widget");
+		static_assert(std::is_same<styled_widget, W>::value, "Second template argument must be styled_widget");
 	}
 
 	/** Inherited from field_base. */
@@ -411,7 +410,7 @@ private:
 	 * The variable linked to the field.
 	 *
 	 * When set determines the initial value and the final value is stored here
-	 * in the finallizer.
+	 * in the finalizer.
 	 */
 	T& link_;
 
@@ -634,7 +633,6 @@ public:
 				 const bool use_markup)
 		: field<std::string, styled_widget, const std::string&>(id, mandatory, text)
 		, use_markup_(use_markup)
-
 	{
 	}
 
