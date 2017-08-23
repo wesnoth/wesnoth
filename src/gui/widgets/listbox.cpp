@@ -532,16 +532,29 @@ void listbox::finalize(builder_grid_const_ptr header,
 	if(header) {
 		swap_grid(&get_grid(), content_grid(), header->build(), "_header_grid");
 	}
+
 	grid& p = find_widget<grid>(this, "_header_grid", false);
+
 	for(unsigned i = 0, max = std::max(p.get_cols(), p.get_rows()); i < max; ++i) {
-		if(selectable_item* selectable = find_widget<selectable_item>(&p, "sort_" +  std::to_string(i), false, false)) {
-			selectable->set_callback_state_change(std::bind(&listbox::order_by_column, this, i, _1));
+		//
+		// TODO: I had to change this to case to a toggle_button in order to use a signal handler.
+		// Should probably look into a way to make it more general like it was before (used to be
+		// cast to selectable_item).
+		//
+		// vultraz - 8/23/2017
+		//
+		if(toggle_button* selectable = find_widget<toggle_button>(&p, "sort_" + std::to_string(i), false, false)) {
+			// Register callback to sort the list.
+			connect_signal_notify_modified(*selectable, std::bind(&listbox::order_by_column, this, i, _1));
+
 			if(orders_.size() < max ) {
 				orders_.resize(max);
 			}
+
 			orders_[i].first = selectable;
 		}
 	}
+
 	if(footer) {
 		swap_grid(&get_grid(), content_grid(), footer->build(), "_footer_grid");
 	}

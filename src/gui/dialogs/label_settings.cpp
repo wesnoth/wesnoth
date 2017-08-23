@@ -103,7 +103,8 @@ void label_settings::pre_show(window& window) {
 
 		toggle_button& status = find_widget<toggle_button>(grid, "cat_status", false);
 		status.set_value(visible);
-		status.set_callback_state_change(std::bind(&label_settings::toggle_category, this, _1, category));
+
+		connect_signal_notify_modified(status, std::bind(&label_settings::toggle_category, this, _1, category));
 
 		if(category.substr(0,5) == "side:") {
 			label& cat_name = find_widget<label>(grid, "cat_name", false);

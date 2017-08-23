@@ -238,7 +238,8 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 				std::tie(checkbox, val) = add_node_and_get_widget<toggle_button>(option_node, "option_checkbox", data, option_cfg);
 
 				checkbox->set_value(val.to_bool());
-				checkbox->set_callback_state_change(
+
+				connect_signal_notify_modified(*checkbox,
 					std::bind(&mp_options_helper::update_options_data_map<toggle_button>, this, checkbox, visible_options_.back()));
 
 			} else if(opt.key == "spacer") {

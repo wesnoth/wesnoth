@@ -138,13 +138,13 @@ private:
 
 	void game_filter_reload();
 
-	void game_filter_change_callback(widget& widget);
+	void game_filter_change_callback();
 
 	void game_filter_keypress_callback(const SDL_Keycode key);
 
 	void gamelist_change_callback(window& window);
 
-	void player_filter_callback(widget& widget);
+	void player_filter_callback();
 
 	void user_dialog_callback(mp::user_info* info);
 

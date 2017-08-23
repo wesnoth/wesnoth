@@ -191,8 +191,12 @@ void campaign_selection::pre_show(window& window)
 
 	toggle_button& sort_name = find_widget<toggle_button>(&window, "sort_name", false);
 	toggle_button& sort_time = find_widget<toggle_button>(&window, "sort_time", false);
-	sort_name.set_callback_state_change(std::bind(&campaign_selection::toggle_sorting_selection, this, std::ref(window), NAME));
-	sort_time.set_callback_state_change(std::bind(&campaign_selection::toggle_sorting_selection, this, std::ref(window), DATE));
+
+	connect_signal_notify_modified(sort_name,
+		std::bind(&campaign_selection::toggle_sorting_selection, this, std::ref(window), NAME));
+
+	connect_signal_notify_modified(sort_time,
+		std::bind(&campaign_selection::toggle_sorting_selection, this, std::ref(window), DATE));
 
 	window.keyboard_capture(&tree);
 

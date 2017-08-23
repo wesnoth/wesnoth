@@ -121,8 +121,6 @@ void toggle_button::set_value(const unsigned selected)
 
 	// Check for get_window() is here to prevent the callback from
 	// being called when the initial value is set.
-	//
-	// TODO: see if this is necessary with the signal handler.
 	if(!get_window()) {
 		return;
 	}

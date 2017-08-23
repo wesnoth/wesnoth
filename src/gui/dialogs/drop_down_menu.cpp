@@ -154,7 +154,7 @@ void drop_down_menu::pre_show(window& window)
 			checkbox->set_value_bool(entry["checkbox"].to_bool(false));
 
 			if(callback_toggle_state_change_ != nullptr) {
-				checkbox->set_callback_state_change(std::bind(callback_toggle_state_change_));
+				connect_signal_notify_modified(*checkbox, std::bind(callback_toggle_state_change_));
 			}
 
 			grid* mi_grid = dynamic_cast<grid*>(new_row.find("menu_item", false));
