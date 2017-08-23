@@ -115,6 +115,12 @@ text_box::text_box(const implementation::builder_styled_widget& builder)
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(std::bind(
 			&text_box::signal_handler_left_button_double_click, this, _2, _3));
 
+	const auto conf = cast_config_to<text_box_definition>();
+	assert(conf);
+
+	set_font_size(conf->text_font_size);
+	set_font_style(conf->text_font_style);
+
 	update_offsets();
 }
 
@@ -487,12 +493,6 @@ widget* builder_text_box::build() const
 	}
 
 	widget->set_max_input_length(max_input_length);
-
-	const auto conf = widget->cast_config_to<text_box_definition>();
-	assert(conf);
-
-	widget->set_font_size(conf->text_font_size);
-	widget->set_font_style(conf->text_font_style);
 
 	DBG_GUI_G << "Window builder: placed text box '" << id
 			  << "' with definition '" << definition << "'.\n";
