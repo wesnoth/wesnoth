@@ -6,7 +6,7 @@ wesnoth.wml_actions.random_placement = function(cfg)
 	-- TODO: In most cases this tag is used to place units, so maybe make include_borders=no the default for [filter_location]?
 	local filter = helper.get_child(parsed, "filter_location") or {}
 	local command = helper.get_child(parsed, "command") or helper.wml_error("[random_placement] missing required [command] subtag")
-	local distance = cfg.min_distance or 0
+	local remove_radius = (cfg.min_distance or 0) - 1
 	local num_items = cfg.num_items or helper.wml_error("[random_placement] missing required 'num_items' attribute")
 	local variable = cfg.variable or helper.wml_error("[random_placement] missing required 'variable' attribute")
 	local allow_less = cfg.allow_less == true
@@ -33,10 +33,10 @@ wesnoth.wml_actions.random_placement = function(cfg)
 		wesnoth.set_variable(variable .. ".y", point[2])
 		wesnoth.set_variable(variable .. ".n", i)
 		wesnoth.set_variable(variable .. ".terrain", wesnoth.get_terrain(point[1], point[2]))
-		if distance < 0 then
-			-- optimisation: nothing to do for distance < 0
-		elseif distance == 0 then
-			-- optimisation: for distance = 0 we just need to remove the element at index
+		if remove_radius < 0 then
+			-- optimisation: nothing to do for remove_radius < 0
+		elseif remove_radius == 0 then
+			-- optimisation: for remove_radius = 0 we just need to remove the element at index
 			-- optimisation: swapping elements and storing size in an extra variable is faster than table.remove(locs, j)
 			locs[index] = locs[size]
 			size = size - 1
@@ -47,9 +47,9 @@ wesnoth.wml_actions.random_placement = function(cfg)
 				local y1 = locs[j][2]
 				local x2 = point[1]
 				local y2 = point[2]
-				-- optimisation: same effect as "if wesnoth.map.distance_between(x1,y1,x2,y2) <= distance then goto continue; end" but faster.
+				-- optimisation: same effect as "if wesnoth.map.distance_between(x1,y1,x2,y2) <= remove_radius then goto continue; end" but faster.
 				local d_x = math_abs(x1-x2)
-				if d_x > distance then
+				if d_x > remove_radius then
 					goto continue
 				end
 				if d_x % 2 ~= 0 then
@@ -60,7 +60,7 @@ wesnoth.wml_actions.random_placement = function(cfg)
 					end
 				end
 				local d_y = math_abs(y1-y2)
-				if d_x + 2*d_y > 2*distance then
+				if d_x + 2*d_y > 2*remove_radius then
 					goto continue
 				end
 				-- optimisation: swapping elements and storing size in an extra variable is faster than table.remove(locs, j)
