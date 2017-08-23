@@ -42,7 +42,6 @@ toggle_panel::toggle_panel(const implementation::builder_toggle_panel& builder)
 	, state_(ENABLED)
 	, state_num_(0)
 	, retval_(0)
-	, callback_mouse_left_double_click_()
 {
 	set_wants_mouse_left_double_click();
 
@@ -276,9 +275,6 @@ void toggle_panel::signal_handler_left_button_double_click(
 		window->set_retval(retval_);
 	}
 
-	if(callback_mouse_left_double_click_) {
-		callback_mouse_left_double_click_(*this);
-	}
 	handled = true;
 }
 

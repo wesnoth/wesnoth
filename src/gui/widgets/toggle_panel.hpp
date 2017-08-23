@@ -105,12 +105,6 @@ public:
 
 	void set_retval(const int retval);
 
-	void set_callback_mouse_left_double_click(
-			std::function<void(widget&)> callback)
-	{
-		callback_mouse_left_double_click_ = callback;
-	}
-
 private:
 	/**
 	 * Possible states of the widget.
