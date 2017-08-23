@@ -198,7 +198,7 @@ bool dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
 		return false;
 	}
 
-	return itor->second(*this, id);
+	return itor->second(dynamic_cast<widget&>(*this), id);
 }
 
 } // namespace event
