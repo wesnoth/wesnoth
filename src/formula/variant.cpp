@@ -543,25 +543,25 @@ bool variant::operator>(const variant& v) const
 variant variant::list_elements_add(const variant& v) const
 {
 	must_both_be(VARIANT_TYPE::TYPE_LIST, v);
-	return value_cast<variant_list>()->list_op(v.value_, [](variant& v1, variant& v2) { return v1 + v2; });
+	return value_cast<variant_list>()->list_op(v.value_, std::plus<variant>());
 }
 
 variant variant::list_elements_sub(const variant& v) const
 {
 	must_both_be(VARIANT_TYPE::TYPE_LIST, v);
-	return value_cast<variant_list>()->list_op(v.value_, [](variant& v1, variant& v2) { return v1 - v2; });
+	return value_cast<variant_list>()->list_op(v.value_, std::minus<variant>());
 }
 
 variant variant::list_elements_mul(const variant& v) const
 {
 	must_both_be(VARIANT_TYPE::TYPE_LIST, v);
-	return value_cast<variant_list>()->list_op(v.value_, [](variant& v1, variant& v2) { return v1 * v2; });
+	return value_cast<variant_list>()->list_op(v.value_, std::multiplies<variant>());
 }
 
 variant variant::list_elements_div(const variant& v) const
 {
 	must_both_be(VARIANT_TYPE::TYPE_LIST, v);
-	return value_cast<variant_list>()->list_op(v.value_, [](variant& v1, variant& v2) { return v1 / v2; });
+	return value_cast<variant_list>()->list_op(v.value_, std::divides<variant>());
 }
 
 variant variant::concatenate(const variant& v) const
