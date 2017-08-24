@@ -22,7 +22,7 @@ bool point_in_rect(int x, int y, const SDL_Rect& rect)
 {
 #if SDL_VERSION_ATLEAST(2, 0, 4)
 	SDL_Point p {x, y};
-	return SDL_PointInRect(&p, &rect);
+	return SDL_PointInRect(&p, &rect) != SDL_FALSE;
 #else
 	return x >= rect.x && y >= rect.y && x < rect.x + rect.w && y < rect.y + rect.h;
 #endif
@@ -77,7 +77,7 @@ void fill_rectangle(const SDL_Rect& rect, const color_t& color)
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b)
 {
-	return SDL_RectEquals(&a, &b);
+	return SDL_RectEquals(&a, &b) != SDL_FALSE;
 }
 
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b)
