@@ -58,14 +58,15 @@ void callback_list_item_clicked(widget& caller)
 } // namespace
 
 listbox::listbox(const implementation::builder_styled_widget& builder,
+		const generator_base::placement placement,
+		builder_grid_ptr list_builder,
 		const bool has_minimum,
 		const bool has_maximum,
-		const generator_base::placement placement,
 		const bool select)
 	: scrollbar_container(builder, get_control_type())
 	, generator_(generator_base::build(has_minimum, has_maximum, placement, select))
 	, is_horizontal_(placement == generator_base::horizontal_list)
-	, list_builder_(nullptr)
+	, list_builder_(list_builder)
 	, need_layout_(false)
 	, orders_()
 {
@@ -954,9 +955,7 @@ widget* builder_listbox::build() const
 	return widget;
 #else
 
-	listbox* widget = new listbox(*this, has_minimum_, has_maximum_, generator_base::vertical_list, true);
-
-	widget->set_list_builder(list_builder); // FIXME in finalize???
+	listbox* widget = new listbox(*this, generator_base::vertical_list, list_builder, has_minimum_, has_maximum_);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
@@ -1073,9 +1072,7 @@ widget* builder_horizontal_listbox::build() const
 	return widget;
 #else
 
-	listbox* widget = new listbox(*this, has_minimum_, has_maximum_, generator_base::horizontal_list, true);
-
-	widget->set_list_builder(list_builder); // FIXME in finalize???
+	listbox* widget = new listbox(*this, generator_base::horizontal_list, list_builder, has_minimum_, has_maximum_);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
@@ -1192,9 +1189,7 @@ widget* builder_grid_listbox::build() const
 	return widget;
 #else
 
-	listbox* widget = new listbox(*this, has_minimum_, has_maximum_, generator_base::table, true);
-
-	widget->set_list_builder(list_builder); // FIXME in finalize???
+	listbox* widget = new listbox(*this, generator_base::table, list_builder, has_minimum_, has_maximum_);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);

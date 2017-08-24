@@ -49,21 +49,20 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param builder             The builder for the appropriate listbox
-	 *                            variant.
-	 * @param has_minimum         Does the listbox need to have one item
-	 *                            selected.
-	 * @param has_maximum         Can the listbox only have one item
-	 *                            selected.
+	 * @param builder             The builder for the appropriate listbox variant.
 	 * @param placement           How are the items placed.
-	 * @param select              Select an item when selected, if false it
-	 *                            changes the visible state instead.
+	 * @param list_builder        Grid builder for the listbox definition grid.
+	 * @param has_minimum         Does the listbox need to have one item selected.
+	 * @param has_maximum         Can the listbox only have one item selected.
+	 * @param select              Select an item when selected. If false it changes
+	 *                            the visible state instead. Default true.
 	 */
 	listbox(const implementation::builder_styled_widget& builder,
+			const generator_base::placement placement,
+			builder_grid_ptr list_builder,
 			const bool has_minimum,
 			const bool has_maximum,
-			const generator_base::placement placement,
-			const bool select);
+			const bool select = true);
 
 	/***** ***** ***** ***** Row handling. ***** ***** ****** *****/
 	/**
@@ -252,11 +251,6 @@ public:
 	virtual void child_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack) override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
-
-	void set_list_builder(builder_grid_ptr list_builder)
-	{
-		list_builder_ = list_builder;
-	}
 
 	void order_by(const generator_base::order_func& func);
 
