@@ -182,17 +182,6 @@ public:
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
-private:
-	/**
-	 * Uses the load function.
-	 *
-	 * @note This doesn't look really clean, but the final goal is refactor
-	 * more code and call load_config in the ctor, removing the use case for
-	 * the window. That however is a longer termine refactoring.
-	 */
-	friend class window;
-
-public:
 	/** See @ref widget::find_at. */
 	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
