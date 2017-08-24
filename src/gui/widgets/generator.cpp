@@ -1133,7 +1133,7 @@ void show::init(grid* grid,
 /***** ***** ***** ***** Helper macros ***** ***** ***** *****/
 
 #ifdef GENERATE_PLACEMENT
-char compile_assert[0];
+static_assert(false, "GUI2/Generator: GENERATE_PLACEMENT already defined!");
 #else
 #define GENERATE_PLACEMENT                                                     \
 	switch(placement) {                                                        \
@@ -1167,7 +1167,7 @@ char compile_assert[0];
 #endif
 
 #ifdef GENERATE_SELECT
-char compile_assert[0];
+static_assert(false, "GUI2/Generator: GENERATE_SELECT already defined!");
 #else
 #define GENERATE_SELECT                                                        \
 	if(select) {                                                               \
@@ -1180,7 +1180,7 @@ char compile_assert[0];
 #endif
 
 #ifdef GENERATE_MAXIMUM
-char compile_assert[0];
+static_assert(false, "GUI2/Generator: GENERATE_MAXIMUM already defined!");
 #else
 #define GENERATE_MAXIMUM                                                       \
 	if(has_maximum) {                                                          \
@@ -1193,7 +1193,7 @@ char compile_assert[0];
 #endif
 
 #ifdef GENERATE_BODY
-char compile_assert[0];
+static_assert(false, "GUI2/Generator: GENERATE_BODY already defined!");
 #else
 #define GENERATE_BODY                                                          \
 	if(has_minimum) {                                                          \
