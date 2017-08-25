@@ -41,12 +41,11 @@ static void add_widget(gui2::grid& grid
 			, 0);
 }
 
-template<class T, typename... T2>
-static void test_control(T2&&... args)
+template<class T>
+static void test_control(T&& control)
 {
 	//std::cerr << __func__ << ": " << typeid(T).name() << ".\n";
 
-	T control(std::forward<T2>(args)...);
 	const std::unique_ptr<gui2::iteration::walker_base> visitor(control.create_walker());
 
 	BOOST_REQUIRE_NE(visitor.get(), static_cast<void*>(nullptr));
@@ -83,13 +82,13 @@ static void test_control(T2&&... args)
 static void test_control()
 {
 	/* Could add more widgets to the list. */
-	test_control<gui2::label>(gui2::implementation::builder_label(config()));
+	test_control(gui2::label(gui2::implementation::builder_label(config())));
 }
 
 static void test_grid()
 {
 	/* An empty grid behaves the same as a control so test here. */
-	test_control<gui2::grid>();
+	test_control(gui2::grid());
 
 	//std::cerr << __func__ << ": Detailed test.\n";
 
