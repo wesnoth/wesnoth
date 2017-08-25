@@ -22,7 +22,7 @@
 class irdya_date
 {
 public:
-	MAKE_ENUM(EPOCH, (BEFORE_WESNOTH, "BW")(WESNOTH, "YW")(BEFORE_FALL, "BF")(AFTER_FALL, "AF"));
+	MAKE_ENUM(EPOCH, (BEFORE_WESNOTH, "BW")(WESNOTH, "YW")(BEFORE_FALL, "BF")(AFTER_FALL, "AF"))
 
 	irdya_date() = default;
 
