@@ -48,15 +48,6 @@ REGISTER_WIDGET(listbox)
 REGISTER_WIDGET3(listbox_definition, horizontal_listbox, nullptr)
 REGISTER_WIDGET3(listbox_definition, grid_listbox, nullptr)
 
-namespace
-{
-void callback_list_item_clicked(widget& caller)
-{
-	get_parent<listbox>(caller).list_item_clicked(caller);
-}
-
-} // namespace
-
 listbox::listbox(const implementation::builder_styled_widget& builder,
 		const generator_base::placement placement,
 		builder_grid_ptr list_builder,
@@ -75,7 +66,7 @@ listbox::listbox(const implementation::builder_styled_widget& builder,
 grid& listbox::add_row(const string_map& item, const int index)
 {
 	assert(generator_);
-	grid& row = generator_->create_item(index, list_builder_, item, callback_list_item_clicked);
+	grid& row = generator_->create_item(index, list_builder_, item, std::bind(&listbox::list_item_clicked, this, _1));
 
 	resize_content(row);
 
@@ -85,7 +76,7 @@ grid& listbox::add_row(const string_map& item, const int index)
 grid& listbox::add_row(const std::map<std::string /* widget id */, string_map>& data, const int index)
 {
 	assert(generator_);
-	grid& row = generator_->create_item(index, list_builder_, data, callback_list_item_clicked);
+	grid& row = generator_->create_item(index, list_builder_, data, std::bind(&listbox::list_item_clicked, this, _1));
 
 	resize_content(row);
 
@@ -565,7 +556,7 @@ void listbox::finalize(builder_grid_const_ptr header,
 		swap_grid(&get_grid(), content_grid(), footer->build(), "_footer_grid");
 	}
 
-	generator_->create_items(-1, list_builder_, list_data, callback_list_item_clicked);
+	generator_->create_items(-1, list_builder_, list_data, std::bind(&listbox::list_item_clicked, this, _1));
 	swap_grid(nullptr, content_grid(), generator_, "_list_grid");
 }
 
