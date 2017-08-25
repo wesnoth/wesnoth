@@ -34,8 +34,6 @@ class end_credits : public modal_dialog
 public:
 	explicit end_credits(const std::string& campaign);
 
-	~end_credits();
-
 	static void display(CVideo& video, const std::string& campaign = "")
 	{
 		end_credits(campaign).show(video);
@@ -54,8 +52,6 @@ private:
 	const std::string& focus_on_;
 
 	std::vector<std::string> backgrounds_;
-
-	size_t timer_id_;
 
 	scroll_label* text_widget_;
 
