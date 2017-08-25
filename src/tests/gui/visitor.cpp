@@ -41,12 +41,12 @@ static void add_widget(gui2::grid& grid
 			, 0);
 }
 
-template<class T>
-static void test_control()
+template<class T, typename... T2>
+static void test_control(T2&&... args)
 {
 	//std::cerr << __func__ << ": " << typeid(T).name() << ".\n";
 
-	T control;
+	T control(std::forward<T2>(args)...);
 	const std::unique_ptr<gui2::iteration::walker_base> visitor(control.create_walker());
 
 	BOOST_REQUIRE_NE(visitor.get(), static_cast<void*>(nullptr));
@@ -83,8 +83,7 @@ static void test_control()
 static void test_control()
 {
 	/* Could add more widgets to the list. */
-	test_control<gui2::label>();
-
+	test_control<gui2::label>(gui2::implementation::builder_label(config()));
 }
 
 static void test_grid()
@@ -96,10 +95,10 @@ static void test_grid()
 
 	/* Test the child part here. */
 	gui2::grid grid(2 ,2);
-	add_widget(grid, new gui2::label(), "(1,1)", 0, 0);
-	add_widget(grid, new gui2::label(), "(1,2)", 0, 1);
-	add_widget(grid, new gui2::label(), "(2,1)", 1, 0);
-	add_widget(grid, new gui2::label(), "(2,2)", 1, 1);
+	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "(1,1)", 0, 0);
+	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "(1,2)", 0, 1);
+	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "(2,1)", 1, 0);
+	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "(2,2)", 1, 1);
 
 	const std::unique_ptr<gui2::iteration::walker_base> visitor(grid.create_walker());
 
