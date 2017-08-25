@@ -513,9 +513,8 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 				return;
 			}
 
-			// If ctrl-a is used for home drop the styled_widget modifier
-			modifier = static_cast<SDL_Keymod>(modifier & ~KMOD_CTRL);
-			FALLTHROUGH;
+			select_all();
+			break;
 
 		case SDLK_HOME:
 			handle_key_home(modifier, handled);
