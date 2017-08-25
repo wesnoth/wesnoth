@@ -16,7 +16,6 @@
 
 #include "gui/widgets/generator.hpp"
 
-#include <cassert>
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -24,21 +23,20 @@
 #include "gui/widgets/window.hpp" // For widget::visibility
 #include "wml_exception.hpp"
 
+#include <cassert>
+
 namespace gui2
 {
-
 /**
  * Contains the policies for the generator class.
  */
 namespace policy
 {
-
 /***** ***** ***** ***** Minimum selection ***** ***** ***** *****/
 
 /** Contains the policy for the minimum number of selected items. */
 namespace minimum_selection
 {
-
 /** Must select at least one item. */
 struct one_item : public virtual generator_base
 {
@@ -64,7 +62,7 @@ struct one_item : public virtual generator_base
 	 * Called when the users wants to deselect an item.
 	 *
 	 * If the item can be deselected this function should call
-	 * do_deselect_item() to make the deslection happen. If not allowed no
+	 * do_deselect_item() to make the deselection happen. If not allowed no
 	 * action needs to be taken.
 	 *
 	 * @param index               The index of the item to deselect.
@@ -91,7 +89,6 @@ struct one_item : public virtual generator_base
 /** No minimum selection. */
 struct no_item : public virtual generator_base
 {
-
 	/** See @ref minimum_selection::one_item::set_item_shown(). */
 	void set_item_shown(const unsigned index, const bool show);
 
@@ -126,7 +123,6 @@ struct no_item : public virtual generator_base
 /** Contains the policy for the maximum number of selected items. */
 namespace maximum_selection
 {
-
 /** May select only one item. */
 struct one_item : public virtual generator_base
 {
@@ -152,6 +148,7 @@ struct one_item : public virtual generator_base
 			// deselect current.
 			do_deselect_item(get_selected_item());
 		}
+
 		// select new.
 		do_select_item(index);
 	}
@@ -176,7 +173,6 @@ struct many_items : public virtual generator_base
 /** Controls how new items are placed. */
 namespace placement
 {
-
 /** Places the items in a horizontal row. */
 struct horizontal_list : public virtual generator_base
 {
@@ -223,25 +219,23 @@ struct horizontal_list : public virtual generator_base
 	void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
 	/** See @ref widget::find_at. */
-	virtual widget* find_at(const point& coordinate,
-							 const bool must_be_active) override;
+	virtual widget* find_at(const point& coordinate, const bool must_be_active) override;
 
 	/** See @ref widget::find_at. */
-	virtual const widget* find_at(const point& coordinate,
-								   const bool must_be_active) const override;
+	virtual const widget* find_at(const point& coordinate, const bool must_be_active) const override;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
 	/** Inherited from generator_base. */
 	void handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& /*handled*/) override
 	{
-		/* do nothing */
+		/* DO NOTHING */
 	}
 
 	/** Inherited from generator_base. */
 	void handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& /*handled*/) override
 	{
-		/* do nothing */
+		/* DO NOTHING */
 	}
 
 	/** Inherited from generator_base. */
@@ -297,12 +291,10 @@ struct vertical_list : public virtual generator_base
 	void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
 	/** See @ref widget::find_at. */
-	virtual widget* find_at(const point& coordinate,
-							 const bool must_be_active) override;
+	virtual widget* find_at(const point& coordinate, const bool must_be_active) override;
 
 	/** See @ref widget::find_at. */
-	virtual const widget* find_at(const point& coordinate,
-								   const bool must_be_active) const override;
+	virtual const widget* find_at(const point& coordinate, const bool must_be_active) const override;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
@@ -314,12 +306,14 @@ struct vertical_list : public virtual generator_base
 
 	/** Inherited from generator_base. */
 	void handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& /*handled*/) override
-	{ /* do nothing */
+	{
+		/* DO NOTHING */
 	}
 
 	/** Inherited from generator_base. */
 	void handle_key_right_arrow(SDL_Keymod /*modifier*/, bool& /*handled*/) override
-	{ /* do nothing */
+	{
+		/* DO NOTHING */
 	}
 
 	// FIXME we need a delete handler as well,
@@ -372,8 +366,7 @@ struct table : public virtual generator_base
 	virtual point calculate_best_size() const override;
 
 	/** See @ref widget::place. */
-	virtual void place(const point& /*origin*/
-					   , const point& /*size*/) override;
+	virtual void place(const point& /*origin*/, const point& /*size*/) override;
 
 	/** See @ref widget::set_origin. */
 	virtual void set_origin(const point& /*origin*/) override;
@@ -383,11 +376,13 @@ struct table : public virtual generator_base
 
 	/** See @ref widget::find_at. */
 	virtual widget* find_at(const point& /*coordinate*/
-							 , const bool /*must_be_active*/) override;
+			,
+			const bool /*must_be_active*/) override;
 
 	/** See @ref widget::find_at. */
 	virtual const widget* find_at(const point& /*coordinate*/
-								   , const bool /*must_be_active*/) const override;
+			,
+			const bool /*must_be_active*/) const override;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
@@ -402,6 +397,7 @@ struct table : public virtual generator_base
 
 	/** Inherited from generator_base. */
 	void handle_key_right_arrow(SDL_Keymod, bool&) override;
+
 private:
 	/**
 	 * Has the grid already been placed?
@@ -450,19 +446,16 @@ struct independent : public virtual generator_base
 	void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
 	/** See @ref widget::find_at. */
-	virtual widget* find_at(const point& coordinate,
-							 const bool must_be_active) override;
+	virtual widget* find_at(const point& coordinate, const bool must_be_active) override;
 
 	/** See @ref widget::find_at. */
-	virtual const widget* find_at(const point& coordinate,
-								   const bool must_be_active) const override;
+	virtual const widget* find_at(const point& coordinate, const bool must_be_active) const override;
 
 	/** See @ref widget::find. */
 	widget* find(const std::string& id, const bool must_be_active) override;
 
 	/** See @ref widget::find. */
-	const widget* find(const std::string& id,
-						const bool must_be_active) const override;
+	const widget* find(const std::string& id, const bool must_be_active) const override;
 
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
@@ -501,7 +494,6 @@ struct independent : public virtual generator_base
  */
 namespace select_action
 {
-
 /** Select the item, this requires the grid to contain a selectable_item. */
 struct selection : public virtual generator_base
 {
@@ -517,8 +509,8 @@ struct selection : public virtual generator_base
 	 *                            in the grid is (de)selected.
 	 */
 	void init(grid* grid,
-			  const std::map<std::string /* widget id */, string_map>& data,
-			  const std::function<void(widget&)>& callback);
+			const std::map<std::string /* widget id */, string_map>& data,
+			const std::function<void(widget&)>& callback);
 };
 
 /** Show the item. */
@@ -526,8 +518,7 @@ struct show : public virtual generator_base
 {
 	void select(grid& grid, const bool show)
 	{
-		grid.set_visible(show ? widget::visibility::visible
-							  : widget::visibility::hidden);
+		grid.set_visible(show ? widget::visibility::visible : widget::visibility::hidden);
 	}
 
 	/**
@@ -541,8 +532,8 @@ struct show : public virtual generator_base
 	 *                            should be nullptr.
 	 */
 	void init(grid* grid,
-			  const std::map<std::string /* widget id */, string_map>& data,
-			  const std::function<void(widget&)>& callback);
+			const std::map<std::string /* widget id */, string_map>& data,
+			const std::function<void(widget&)>& callback);
 };
 
 } // namespace select_action
@@ -556,14 +547,14 @@ struct show : public virtual generator_base
  *
  * The class is policy based so the behavior can be selected.
  */
-template <class minimum_selection,
-		  class maximum_selection,
-		  class my_placement,
-		  class select_action>
+template<class minimum_selection,
+         class maximum_selection,
+         class my_placement,
+         class select_action>
 class generator : public minimum_selection,
-				   public maximum_selection,
-				   public my_placement,
-				   public select_action
+                  public maximum_selection,
+                  public my_placement,
+                  public select_action
 {
 public:
 	generator()
@@ -623,7 +614,7 @@ public:
 			last_selected_item_ = index;
 		} else if(is_selected(index)) {
 			if(!minimum_selection::deselect_item(index)) {
-				// Some items might have deseleted themselves so
+				// Some items might have deselected themselves so
 				// make sure they do get selected again.
 				select_action::select(item(index), true);
 			}
@@ -642,12 +633,9 @@ public:
 	{
 		assert(index < items_.size());
 		if(items_[index]->shown != show) {
-
 			/*** Set the proper visible state. ***/
 			items_[index]->shown = show;
-			items_[index]
-					->child_grid.set_visible(show ? widget::visibility::visible
-											: widget::visibility::invisible);
+			items_[index]->child_grid.set_visible(show ? widget::visibility::visible : widget::visibility::invisible);
 
 			/*** Update the selection. ***/
 			minimum_selection::set_item_shown(index, show);
@@ -660,7 +648,6 @@ public:
 		assert(index < items_.size());
 		return items_[index]->shown && items_[index]->child_grid.get_visible() != widget::visibility::invisible;
 	}
-
 
 	/** Inherited from generator_base. */
 	unsigned get_item_count() const override
@@ -677,23 +664,21 @@ public:
 	/** Inherited from generator_base. */
 	int get_selected_item() const override
 	{
-
 		if(selected_item_count_ == 0) {
 			return -1;
-		} else if(last_selected_item_ != -1
-				  && last_selected_item_ < static_cast<int>(items_.size())
-				  && (*items_[last_selected_item_]).selected) {
-
+		} else if(last_selected_item_ != -1 && last_selected_item_ < static_cast<int>(items_.size())
+			&& (*items_[last_selected_item_]).selected)
+		{
 			return last_selected_item_;
-
 		} else {
 			for(size_t i = 0; i < items_.size(); ++i) {
 				if((*items_[i]).selected) {
 					return i;
 				}
 			}
-			FAIL_WITH_DEV_MESSAGE("No item selected.",
-				"selected_item_count_ was non-zero, yet no selected item was found.");
+
+			FAIL_WITH_DEV_MESSAGE(
+				"No item selected.", "selected_item_count_ was non-zero, yet no selected item was found.");
 		}
 	}
 
@@ -727,12 +712,11 @@ public:
 		return items_[order_[index]]->child_grid;
 	}
 
-
 	/** Inherited from generator_base. */
 	grid& create_item(const int index,
-					   builder_grid_const_ptr list_builder,
-					   const string_map& item_data,
-					   const std::function<void(widget&)>& callback) override
+			builder_grid_const_ptr list_builder,
+			const string_map& item_data,
+			const std::function<void(widget&)>& callback) override
 	{
 		std::map<std::string, string_map> data;
 
@@ -741,8 +725,7 @@ public:
 	}
 
 	/** Inherited from generator_base. */
-	grid& create_item(
-			const int index,
+	grid& create_item(const int index,
 			builder_grid_const_ptr list_builder,
 			const std::map<std::string /* widget id */, string_map>& item_data,
 			const std::function<void(widget&)>& callback) override
@@ -752,26 +735,30 @@ public:
 
 		child* item = new child;
 		list_builder->build(&item->child_grid);
+
 		init(&item->child_grid, item_data, callback);
 
 		const unsigned item_index = index == -1 ? items_.size() : index;
 
 		items_.emplace(items_.begin() + item_index, item);
+
 		order_dirty_ = true;
+
 		minimum_selection::create_item(item_index);
+
 		my_placement::create_item(item_index);
+
 		if(!is_selected(item_index)) {
 			select_action::select(item->child_grid, false);
 		}
+
 		return item->child_grid;
 	}
 
 	/** Inherited from generator_base. */
-	virtual void create_items(
-			const int index,
+	virtual void create_items(const int index,
 			builder_grid_const_ptr list_builder,
-			const std::vector<std::map<std::string /*widget id*/, string_map> >&
-					data,
+			const std::vector<std::map<std::string /*widget id*/, string_map>>& data,
 			const std::function<void(widget&)>& callback) override
 	{
 		impl_create_items(index, list_builder, data, callback);
@@ -779,9 +766,9 @@ public:
 
 	/** Inherited from generator_base. */
 	virtual void create_items(const int index,
-							  builder_grid_const_ptr list_builder,
-							  const std::vector<string_map>& data,
-							  const std::function<void(widget&)>& callback) override
+			builder_grid_const_ptr list_builder,
+			const std::vector<string_map>& data,
+			const std::function<void(widget&)>& callback) override
 	{
 		impl_create_items(index, list_builder, data, callback);
 	}
@@ -789,11 +776,8 @@ public:
 	/** See @ref widget::layout_initialize. */
 	virtual void layout_initialize(const bool full_initialization) override
 	{
-		for(auto& item : items_)
-		{
-			if(item->child_grid.get_visible() != widget::visibility::invisible
-			   && item->shown) {
-
+		for(auto& item : items_) {
+			if(item->child_grid.get_visible() != widget::visibility::invisible && item->shown) {
 				item->child_grid.layout_initialize(full_initialization);
 			}
 		}
@@ -842,45 +826,38 @@ public:
 	}
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer,
-									int x_offset,
-									int y_offset) override
+	virtual void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset) override
 	{
 		assert(this->get_visible() == widget::visibility::visible);
-		calculate_order();
-		for(auto index : order_)
-		{
-			child* item = items_[index].get();
-			if(item->child_grid.get_visible() == widget::visibility::visible
-			   && item->shown) {
 
+		calculate_order();
+
+		for(auto index : order_) {
+			child* item = items_[index].get();
+
+			if(item->child_grid.get_visible() == widget::visibility::visible && item->shown) {
 				item->child_grid.draw_children(frame_buffer, x_offset, y_offset);
 			}
 		}
 	}
 
 	/** See @ref widget::child_populate_dirty_list. */
-	virtual void
-	child_populate_dirty_list(window& caller,
-							  const std::vector<widget*>& call_stack) override
+	virtual void child_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack) override
 	{
-		for(auto& item : items_)
-		{
+		for(auto& item : items_) {
 			std::vector<widget*> child_call_stack = call_stack;
 			item->child_grid.populate_dirty_list(caller, child_call_stack);
 		}
 	}
 
 	/** See @ref widget::find_at. */
-	virtual widget* find_at(const point& coordinate,
-							 const bool must_be_active) override
+	virtual widget* find_at(const point& coordinate, const bool must_be_active) override
 	{
 		return my_placement::find_at(coordinate, must_be_active);
 	}
 
 	/** See @ref widget::find_at. */
-	virtual const widget* find_at(const point& coordinate,
-								   const bool must_be_active) const override
+	virtual const widget* find_at(const point& coordinate, const bool must_be_active) const override
 	{
 		return my_placement::find_at(coordinate, must_be_active);
 	}
@@ -888,12 +865,12 @@ public:
 	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override
 	{
-		for(auto& item : items_)
-		{
+		for(auto& item : items_) {
 			if(item->child_grid.disable_click_dismiss()) {
 				return true;
 			}
 		}
+
 		return false;
 	}
 
@@ -956,8 +933,11 @@ private:
 	/** Definition of an item. */
 	struct child
 	{
-
-		child() : child_grid(), selected(false), shown(true), ordered_index(0)
+		child()
+			: child_grid()
+			, selected(false)
+			, shown(true)
+			, ordered_index(0)
 		{
 		}
 
@@ -996,9 +976,8 @@ private:
 	/** whether need to recalculate order_dirty_ */
 	mutable bool order_dirty_;
 
-	typedef std::function<bool (unsigned, unsigned)> order_func;
+	typedef std::function<bool(unsigned, unsigned)> order_func;
 	order_func order_func_;
-
 
 	virtual void set_order(const order_func& order) override
 	{
@@ -1043,20 +1022,22 @@ private:
 		if(order_dirty_) {
 			if(order_.size() != items_.size()) {
 				order_.resize(items_.size());
+
 				for(size_t i = 0; i < items_.size(); ++i) {
 					order_[i] = i;
 				}
 			}
+
 			if(order_func_) {
 				std::stable_sort(order_.begin(), order_.end(), calculate_order_helper(order_func_, items_));
 			}
+
 			for(size_t i = 0; i < order_.size(); ++i) {
 				items_[order_[i]]->ordered_index = i;
 			}
 
 			order_dirty_ = false;
-		}
-		else {
+		} else {
 			assert(order_.size() == items_.size());
 		}
 	}
@@ -1089,15 +1070,15 @@ private:
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
 	 */
-	template <class T>
+	template<class T>
 	void impl_create_items(const int index,
-						   builder_grid_const_ptr list_builder,
-						   const std::vector<T>& data,
-						   const std::function<void(widget&)>& callback)
+			builder_grid_const_ptr list_builder,
+			const std::vector<T>& data,
+			const std::function<void(widget&)>& callback)
 	{
 		int i = index;
-		for(const auto & item_data : data)
-		{
+
+		for(const auto& item_data : data) {
 			create_item(i, list_builder, item_data, callback);
 			if(i != -1) {
 				++i;
@@ -1118,8 +1099,8 @@ private:
 	 *                            in the grid is (de)selected.
 	 */
 	void init(grid* grid,
-			  const std::map<std::string /* widget id */, string_map>& data,
-			  const std::function<void(widget&)>& callback)
+			const std::map<std::string /* widget id */, string_map>& data,
+			const std::function<void(widget&)>& callback)
 	{
 		assert(grid);
 		grid->set_parent(this);
