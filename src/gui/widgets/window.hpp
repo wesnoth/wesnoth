@@ -788,6 +788,8 @@ private:
 	void signal_handler_request_placement(const event::ui_event event,
 										  bool& handled);
 
+	void signal_handler_close_window();
+
 	std::function<bool(window&)> exit_hook_;
 	std::function<void()> callback_next_draw_;
 };

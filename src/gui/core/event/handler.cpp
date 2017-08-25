@@ -236,14 +236,12 @@ private:
 	 */
 	void hat_motion(const SDL_Event& event);
 
-
 	/**
 	 * Handles a joystick button down event.
 	 *
 	 * @param event                  The SDL joystick button event triggered.
 	 */
 	void button_down(const SDL_Event& event);
-
 
 	/**
 	 * Fires a key down event.
@@ -296,6 +294,13 @@ private:
 	 * @param event                  The event to fire.
 	 */
 	void keyboard(const ui_event event);
+
+	/**
+	 * Fires a CLOSE_WINDOW event for the window with the given ID.
+	 *
+	 * @param window_id              The ID of the window to close.
+	 */
+	void close_window(const unsigned window_id);
 
 	/**
 	 * The dispatchers.
@@ -383,15 +388,9 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			execute_timer(reinterpret_cast<size_t>(event.user.data1));
 			break;
 
-		case CLOSE_WINDOW_EVENT: {
-			/** @todo Convert this to a proper new style event. */
-			DBG_GUI_E << "Firing " << CLOSE_WINDOW << ".\n";
-
-			window* window = window::window_instance(event.user.code);
-			if(window) {
-				window->set_retval(window::AUTO_CLOSE);
-			}
-		} break;
+		case CLOSE_WINDOW_EVENT:
+			close_window(event.user.code);
+			break;
 
 		case SDL_JOYBUTTONDOWN:
 			button_down(event);
@@ -785,6 +784,16 @@ void sdl_event_handler::keyboard(const ui_event event)
 
 	if(dispatcher* dispatcher = keyboard_dispatcher()) {
 		dispatcher->fire(event, dynamic_cast<widget&>(*dispatcher));
+	}
+}
+
+void sdl_event_handler::close_window(const unsigned window_id)
+{
+	DBG_GUI_E << "Firing " << CLOSE_WINDOW << ".\n";
+
+	window* window = window::window_instance(window_id);
+	if(window) {
+		window->fire(CLOSE_WINDOW, *window);
 	}
 }
 
