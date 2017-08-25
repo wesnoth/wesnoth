@@ -390,28 +390,28 @@ public:
 	void bind(window& window)
 	{
 		LOG_CHAT_LOG << "Entering chat_log::view::bind" << std::endl;
-		model_.msg_label = &find_widget<styled_widget>(&window, "msg", false);
+		model_.msg_label = find_widget<styled_widget>(&window, "msg", false, true);
 		model_.page_number
-				= &find_widget<slider>(&window, "page_number", false);
+				= find_widget<slider>(&window, "page_number", false, true);
 		connect_signal_notify_modified(
 				*model_.page_number,
 				std::bind(&view::handle_page_number_changed, this));
 
 		model_.previous_page
-				= &find_widget<button>(&window, "previous_page", false);
+				= find_widget<button>(&window, "previous_page", false, true);
 		model_.previous_page->connect_click_handler(
 				std::bind(&view::previous_page, this));
 
-		model_.next_page = &find_widget<button>(&window, "next_page", false);
+		model_.next_page = find_widget<button>(&window, "next_page", false, true);
 		model_.next_page->connect_click_handler(
 				std::bind(&view::next_page, this));
 
-		model_.filter = &find_widget<text_box>(&window, "filter", false);
+		model_.filter = find_widget<text_box>(&window, "filter", false, true);
 		model_.filter->set_text_changed_callback(
 				std::bind(&view::filter, this));
 		window.keyboard_capture(model_.filter);
 
-		model_.copy_button = &find_widget<button>(&window, "copy", false);
+		model_.copy_button = find_widget<button>(&window, "copy", false, true);
 		connect_signal_mouse_left_click(
 				*model_.copy_button,
 				std::bind(&view::handle_copy_button_clicked,
@@ -422,7 +422,7 @@ public:
 			model_.copy_button->set_tooltip(_("Clipboard support not found, contact your packager"));
 		}
 
-		model_.page_label = &find_widget<styled_widget>(&window, "page_label", false);
+		model_.page_label = find_widget<styled_widget>(&window, "page_label", false, true);
 
 		LOG_CHAT_LOG << "Exiting chat_log::view::bind" << std::endl;
 	}

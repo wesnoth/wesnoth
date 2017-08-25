@@ -88,7 +88,7 @@ public:
 
 	/** Bind the scroll label widget to my pointer, and configure */
 	void bind(window& window) {
-		msg_label = &find_widget<scroll_label>(&window, "msg", false);
+		msg_label = find_widget<scroll_label>(&window, "msg", false, true);
 		msg_label->set_use_markup(true);
 		msg_label->set_vertical_scrollbar_mode(scrollbar_container::ALWAYS_VISIBLE);
 		msg_label->set_label("");
@@ -448,7 +448,7 @@ void lua_interpreter::controller::bind(window& window)
 	assert(view_);
 	view_->bind(window);
 
-	text_entry = &find_widget<text_box>(&window, "text_entry", false);
+	text_entry = find_widget<text_box>(&window, "text_entry", false, true);
 	//text_entry->set_text_changed_callback(
 	//		std::bind(&view::filter, this, std::ref(window)));
 	window.keyboard_capture(text_entry);
@@ -464,14 +464,14 @@ void lua_interpreter::controller::bind(window& window)
 						_5,
 						std::ref(window)));
 
-	copy_button = &find_widget<button>(&window, "copy", false);
+	copy_button = find_widget<button>(&window, "copy", false, true);
 	connect_signal_mouse_left_click(
 			*copy_button,
 			std::bind(&lua_interpreter::controller::handle_copy_button_clicked,
 						this,
 						std::ref(window)));
 
-	clear_button = &find_widget<button>(&window, "clear", false);
+	clear_button = find_widget<button>(&window, "clear", false, true);
 	connect_signal_mouse_left_click(
 			*clear_button,
 			std::bind(&lua_interpreter::controller::handle_clear_button_clicked,
@@ -705,7 +705,7 @@ void lua_interpreter::pre_show(window& window)
 	register_text("text_entry", false, controller_->text_entry_, true);
 	controller_->bind(window);
 
-	label *kernel_type_label = &find_widget<label>(&window, "kernel_type", false);
+	label *kernel_type_label = find_widget<label>(&window, "kernel_type", false, true);
 	kernel_type_label->set_label(controller_->lua_model_->get_name());
 
 	controller_->update_view();

@@ -61,18 +61,18 @@ void lobby_player_info::pre_show(window& window)
 						this,
 						std::ref(window)));
 
-	add_to_friends_ = &find_widget<button>(&window, "add_to_friends", false);
+	add_to_friends_ = find_widget<button>(&window, "add_to_friends", false, true);
 	connect_signal_mouse_left_click(
 			*add_to_friends_,
 			std::bind(&lobby_player_info::add_to_friends_button_callback, this));
 
-	add_to_ignores_ = &find_widget<button>(&window, "add_to_ignores", false);
+	add_to_ignores_ = find_widget<button>(&window, "add_to_ignores", false, true);
 	connect_signal_mouse_left_click(
 			*add_to_ignores_,
 			std::bind(&lobby_player_info::add_to_ignores_button_callback, this));
 
 	remove_from_list_
-			= &find_widget<button>(&window, "remove_from_list", false);
+			= find_widget<button>(&window, "remove_from_list", false, true);
 	connect_signal_mouse_left_click(
 			*remove_from_list_,
 			std::bind(&lobby_player_info::remove_from_list_button_callback, this));

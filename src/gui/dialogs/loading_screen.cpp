@@ -125,8 +125,8 @@ void loading_screen::pre_show(window& window)
 
 	timer_id_ = add_timer(100, std::bind(&loading_screen::timer_callback, this, std::ref(window)), true);
 	cursor_setter_.reset(new cursor::setter(cursor::WAIT));
-	progress_stage_label_ = &find_widget<label>(&window, "status", false);
-	animation_label_ = &find_widget<label>(&window, "test_animation", false);
+	progress_stage_label_ = find_widget<label>(&window, "status", false, true);
+	animation_label_ = find_widget<label>(&window, "test_animation", false, true);
 
 	window.set_enter_disabled(true);
 	window.set_escape_disabled(true);
