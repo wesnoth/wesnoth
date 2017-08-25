@@ -260,7 +260,7 @@ void file_dialog::pre_show(window& window)
 
 	refresh_fileview(window);
 
-	window.keyboard_capture(&find_widget<text_box>(&window, "filename", false));
+	window.keyboard_capture(find_widget<text_box>(&window, "filename", false, true));
 	window.add_to_keyboard_chain(&filelist);
 	window.set_exit_hook(std::bind(&file_dialog::on_exit, this, std::ref(window)));
 }

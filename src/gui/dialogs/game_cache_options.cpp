@@ -87,9 +87,9 @@ game_cache_options::game_cache_options()
 
 void game_cache_options::pre_show(window& window)
 {
-	clean_button_ = &find_widget<button>(&window, "clean", false);
-	purge_button_ = &find_widget<button>(&window, "purge", false);
-	size_label_ = &find_widget<label>(&window, "size", false);
+	clean_button_ = find_widget<button>(&window, "clean", false, true);
+	purge_button_ = find_widget<button>(&window, "purge", false, true);
+	size_label_ = find_widget<label>(&window, "size", false, true);
 
 	update_cache_size_display();
 
