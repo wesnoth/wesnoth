@@ -18,23 +18,23 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "cursor.hpp"
 #include "gui/dialogs/loading_screen.hpp"
-#include "gui/widgets/label.hpp"
-#include "gui/widgets/window.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/core/timer.hpp"
-#include "gui/auxiliary/find_widget.hpp"
 
-#include "video.hpp"
 #include "cursor.hpp"
 #include "gettext.hpp"
+#include "gui/auxiliary/find_widget.hpp"
+#include "gui/core/timer.hpp"
+#include "gui/widgets/label.hpp"
+#include "gui/widgets/settings.hpp"
+#include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
 #include "utils/functional.hpp"
+#include "video.hpp"
+
+#include <boost/thread.hpp>
 
 #include <cstdlib>
-#include <boost/thread.hpp>
 
 #if defined(_MSC_VER) && _MSC_VER <= 1800
 #include <Windows.h>
@@ -76,7 +76,6 @@ namespace gui2
 {
 namespace dialogs
 {
-
 REGISTER_DIALOG(loading_screen)
 
 loading_screen::loading_screen(std::function<void()> f)
@@ -93,32 +92,37 @@ loading_screen::loading_screen(std::function<void()> f)
 	, current_visible_stage_()
 	, is_worker_running_(false)
 {
-	for (const auto& pair : stages) {
+	for(const auto& pair : stages) {
 		visible_stages_[pair.first] = t_string(pair.second, "wesnoth-lib") + "...";
 	}
-	for (int i = 0; i != 20; ++i) {
+
+	for(int i = 0; i != 20; ++i) {
 		std::string s(20, ' ');
 		s[i] = '.';
 		animation_stages_.push_back(s);
 	}
+
 	current_visible_stage_ = visible_stages_.end();
 	current_load = this;
 }
 
 void loading_screen::pre_show(window& window)
 {
-	if (work_) {
+	if(work_) {
 		worker_.reset(new boost::thread([this]() {
 			is_worker_running_ = true;
+
 			try {
 				work_();
 			} catch(...) {
-				//TODO: guard this with a mutex.
+				// TODO: guard this with a mutex.
 				exception_ = std::current_exception();
 			}
+
 			is_worker_running_ = false;
 		}));
 	}
+
 	timer_id_ = add_timer(100, std::bind(&loading_screen::timer_callback, this, std::ref(window)), true);
 	cursor_setter_.reset(new cursor::setter(cursor::WAIT));
 	progress_stage_label_ = &find_widget<label>(&window, "status", false);
@@ -140,6 +144,7 @@ void loading_screen::progress(const char* stage)
 	if(!current_load) {
 		return;
 	}
+
 	if(stage) {
 		current_load->current_stage_
 #if defined(_MSC_VER) && _MSC_VER < 1900
@@ -154,49 +159,56 @@ loading_screen* loading_screen::current_load = nullptr;
 
 void loading_screen::timer_callback(window& window)
 {
-	if (!work_ || !worker_ || worker_->timed_join(boost::posix_time::milliseconds(0))) {
-		if (exception_) {
+	if(!work_ || !worker_ || worker_->timed_join(boost::posix_time::milliseconds(0))) {
+		if(exception_) {
 			clear_timer();
 			std::rethrow_exception(exception_);
 		}
+
 		window.close();
 	}
-	if (!work_) {
+
+	if(!work_) {
 		return;
 	}
+
 	const char* stage = current_stage_
 #if defined(_MSC_VER) && _MSC_VER < 1900
 		;
 #else
 		.load(std::memory_order_acquire);
 #endif
-	if (stage && (current_visible_stage_ == visible_stages_.end() || stage != current_visible_stage_->first))
-	{
+
+	if(stage && (current_visible_stage_ == visible_stages_.end() || stage != current_visible_stage_->first)) {
 		auto iter = visible_stages_.find(stage);
 		if(iter == visible_stages_.end()) {
 			WRN_LS << "Stage ID '" << stage << "' missing description." << std::endl;
 			return;
 		}
+
 		current_visible_stage_ = iter;
 		progress_stage_label_->set_label(iter->second);
 	}
+
 	++animation_counter_;
-	if (animation_counter_ % 2 == 0) {
+	if(animation_counter_ % 2 == 0) {
 		animation_label_->set_label(animation_stages_[(animation_counter_ / 2) % animation_stages_.size()]);
 	}
 }
 
 loading_screen::~loading_screen()
 {
-	if (is_worker_running_) {
-		// The worker thread is running, exit the application to prevent memory corruption.
-		// TODO: this is still not optimal, the main problem is that this code here assumes
-		// that this happened becasue the window was closed which is not necessarily the case
-		// (other possibilities migth be a 'dialog doesn't fit on screen' exception casued by resizing the window)
-
-		// Another approach migth be to add exit points ( boost::this_thread::interruption_point() ) to the worker
-		// functions (filesystem.cpp config parsing code etc. ) and then use that to end the thread faster.
-
+	/* If the worker thread is running, exit the application to prevent memory corruption.
+	 * TODO: this is still not optimal. The main problem is that this code assumes that this
+	 * happened because the window was closed, which is not necessarily the case (other
+	 * possibilities might be a 'dialog doesn't fit on screen' exception caused by resizing
+	 * the window).
+	 *
+	 * Another approach might be to add exit points (boost::this_thread::interruption_point())
+	 * to the worker functions (filesystem.cpp, config parsing code, etc.) and then use that
+	 * to end the thread faster.
+	 */
+	if(is_worker_running_) {
 #if defined(_MSC_VER) && _MSC_VER <= 1800
 		HANDLE process = GetCurrentProcess();
 		TerminateProcess(process, 0u);
@@ -206,6 +218,7 @@ loading_screen::~loading_screen()
 		std::quick_exit(0);
 #endif
 	}
+
 	clear_timer();
 	current_load = nullptr;
 }
@@ -213,20 +226,20 @@ loading_screen::~loading_screen()
 void loading_screen::display(CVideo& video, std::function<void()> f)
 {
 	const bool use_loadingscreen_animation = !preferences::disable_loadingscreen_animation();
-	if (current_load || video.faked()) {
+
+	if(current_load || video.faked()) {
 		f();
-	}
-	else if(use_loadingscreen_animation) {
+	} else if(use_loadingscreen_animation) {
 		loading_screen(f).show(video);
-	}
-	else {
+	} else {
 		loading_screen(std::function<void()>()).show(video);
 		f();
 	}
 }
+
 void loading_screen::clear_timer()
 {
-	if (timer_id_ != 0) {
+	if(timer_id_ != 0) {
 		remove_timer(timer_id_);
 		timer_id_ = 0;
 	}
