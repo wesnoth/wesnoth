@@ -449,13 +449,13 @@ void listbox::child_populate_dirty_list(window& caller, const std::vector<widget
 	generator_->populate_dirty_list(caller, child_call_stack);
 }
 
-void listbox::update_visible_area_on_key_event(const bool key_direction_vertical)
+void listbox::update_visible_area_on_key_event(const KEY_SCROLL_DIRECTION direction)
 {
 	const SDL_Rect& visible = content_visible_area();
 	SDL_Rect rect = generator_->item(generator_->get_selected_item()).get_rectangle();
 
 	// When scrolling make sure the new items are visible...
-	if(key_direction_vertical) {
+	if(direction == KEY_VERTICAL) {
 		// ...but leave the horizontal scrollbar position.
 		rect.x = visible.x;
 		rect.w = visible.w;
@@ -477,7 +477,7 @@ void listbox::handle_key_up_arrow(SDL_Keymod modifier, bool& handled)
 	generator_->handle_key_up_arrow(modifier, handled);
 
 	if(handled) {
-		update_visible_area_on_key_event(true);
+		update_visible_area_on_key_event(KEY_VERTICAL);
 	} else {
 		// Inherited.
 		scrollbar_container::handle_key_up_arrow(modifier, handled);
@@ -491,7 +491,7 @@ void listbox::handle_key_down_arrow(SDL_Keymod modifier, bool& handled)
 	generator_->handle_key_down_arrow(modifier, handled);
 
 	if(handled) {
-		update_visible_area_on_key_event(true);
+		update_visible_area_on_key_event(KEY_VERTICAL);
 	} else {
 		// Inherited.
 		scrollbar_container::handle_key_up_arrow(modifier, handled);
@@ -506,7 +506,7 @@ void listbox::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 
 	// Inherited.
 	if(handled) {
-		update_visible_area_on_key_event(false);
+		update_visible_area_on_key_event(KEY_HORIZONTAL);
 	} else {
 		scrollbar_container::handle_key_left_arrow(modifier, handled);
 	}
@@ -520,7 +520,7 @@ void listbox::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 
 	// Inherited.
 	if(handled) {
-		update_visible_area_on_key_event(false);
+		update_visible_area_on_key_event(KEY_HORIZONTAL);
 	} else {
 		scrollbar_container::handle_key_left_arrow(modifier, handled);
 	}
