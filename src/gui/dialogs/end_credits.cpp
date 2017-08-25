@@ -19,7 +19,6 @@
 #include "config.hpp"
 #include "game_config.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/core/timer.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/repeating_button.hpp"
 #include "gui/widgets/scrollbar.hpp"
@@ -42,18 +41,10 @@ REGISTER_DIALOG(end_credits)
 end_credits::end_credits(const std::string& campaign)
 	: focus_on_(campaign)
 	, backgrounds_()
-	, timer_id_()
 	, text_widget_(nullptr)
 	, scroll_speed_(100)
+	, last_scroll_(std::numeric_limits<uint32_t>::max())
 {
-}
-
-end_credits::~end_credits()
-{
-	if(timer_id_ != 0) {
-		remove_timer(timer_id_);
-		timer_id_ = 0;
-	}
 }
 
 static void parse_about_tag(const config& cfg, std::stringstream& ss)
@@ -73,10 +64,11 @@ void end_credits::pre_show(window& window)
 {
 	window.set_callback_next_draw([this]()
 	{
-		timer_id_ = add_timer(10, std::bind(&end_credits::timer_callback, this), true);
 		// Delay a little before beginning the scrolling
 		last_scroll_ = SDL_GetTicks() + 3000;
 	});
+
+	window.connect_signal<event::DRAW>(std::bind(&end_credits::timer_callback, this), event::dispatcher::front_child);
 
 	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, _5));
 
@@ -160,10 +152,6 @@ void end_credits::timer_callback()
 	text_widget_->set_vertical_scrollbar_item_position(cur_pos + needed_dist);
 
 	last_scroll_ = now;
-
-	if(text_widget_->vertical_scrollbar_at_end()) {
-		remove_timer(timer_id_);
-	}
 }
 
 void end_credits::key_press_callback(const SDL_Keycode key)
