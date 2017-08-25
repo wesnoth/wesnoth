@@ -33,6 +33,12 @@ class grid : public widget
 public:
 	explicit grid(const unsigned rows = 0, const unsigned cols = 0);
 
+	/** Delete the copy constructor. */
+	grid(const grid&) = delete;
+
+	/** Delete the move assignment operator. */
+	grid& operator=(const grid&) = delete;
+
 	virtual ~grid();
 
 	/***** ***** ***** ***** LAYOUT FLAGS ***** ***** ***** *****/
