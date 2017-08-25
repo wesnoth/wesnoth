@@ -88,8 +88,8 @@ void editor_edit_side::pre_show(window& window)
 
 	vision_group.set_member_states(share_vision_);
 
-	window.add_to_tab_order(find_widget<text_box>(&window, "team_name", false, false));
-	window.add_to_tab_order(find_widget<text_box>(&window, "user_team_name", false, false));
+	window.add_to_tab_order(find_widget<text_box>(&window, "team_name", false, true));
+	window.add_to_tab_order(find_widget<text_box>(&window, "user_team_name", false, true));
 }
 
 void editor_edit_side::post_show(window&)

@@ -86,8 +86,8 @@ editor_edit_label::editor_edit_label(std::string& text,
 
 void editor_edit_label::pre_show(window& win)
 {
-	win.add_to_tab_order(find_widget<text_box>(&win, "label", false, false));
-	win.add_to_tab_order(find_widget<text_box>(&win, "category", false, false));
+	win.add_to_tab_order(find_widget<text_box>(&win, "label", false, true));
+	win.add_to_tab_order(find_widget<text_box>(&win, "category", false, true));
 }
 
 void editor_edit_label::register_color_component(std::string widget_id, uint8_t color_t::* component) {

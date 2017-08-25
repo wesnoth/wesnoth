@@ -113,7 +113,7 @@ void mp_login::pre_show(window& win)
 	}
 	
 	win.add_to_tab_order(&login);
-	win.add_to_tab_order(find_widget<text_box>(&win, "password", false, false));
+	win.add_to_tab_order(find_widget<text_box>(&win, "password", false, true));
 }
 
 void mp_login::post_show(window& win) {
