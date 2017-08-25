@@ -398,6 +398,8 @@ window::window(CVideo& video, const builder_window::window_resolution* definitio
 					&window::signal_handler_request_placement, this, _2, _3),
 			event::dispatcher::back_pre_child);
 
+	connect_signal<event::CLOSE_WINDOW>(std::bind(&window::signal_handler_close_window, this));
+
 	register_hotkey(hotkey::GLOBAL__HELPTIP, std::bind(gui2::helptip));
 }
 
@@ -1469,6 +1471,11 @@ void window::signal_handler_request_placement(const event::ui_event event,
 	invalidate_layout();
 
 	handled = true;
+}
+
+void window::signal_handler_close_window()
+{
+	set_retval(AUTO_CLOSE);
 }
 
 // }---------- DEFINITION ---------{
