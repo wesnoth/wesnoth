@@ -121,11 +121,9 @@ static void add_widget(gui2::grid& grid
 			, 0);
 }
 
-template<class T, typename... T2>
-static void test_control(T2&&... args)
+template<class T>
+static void test_control(T&& control)
 {
-	T control(std::forward<T2>(args)...);
-
 	{
 		gui2::iteration::iterator< gui2::iteration::policy::order::top_down<
 				true
@@ -171,14 +169,14 @@ static void test_control(T2&&... args)
 static void test_control()
 {
 	/* Could add more widgets to the list. */
-	test_control<gui2::label>(gui2::implementation::builder_label(config()));
+	test_control(gui2::label(gui2::implementation::builder_label(config())));
 
 }
 
 static void test_grid()
 {
 	/* An empty grid behaves the same as a control so test here. */
-	test_control<gui2::grid>();
+	test_control(gui2::grid());
 
 	/* Test the child part here. */
 	gui2::grid grid(2 ,2);
