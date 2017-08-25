@@ -23,15 +23,12 @@
 
 namespace gui2
 {
-
 namespace policy
 {
-
 /***** ***** ***** ***** Minimum selection ***** ***** ***** *****/
 
 namespace minimum_selection
 {
-
 void one_item::set_item_shown(const unsigned index, const bool show)
 {
 	if(show && get_selected_item_count() == 0) {
@@ -62,6 +59,7 @@ bool one_item::deselect_item(const unsigned index)
 		do_deselect_item(index);
 		return true;
 	}
+
 	return false;
 }
 
@@ -73,10 +71,10 @@ void one_item::delete_item(const unsigned index)
 		do_deselect_item(index);
 
 		if(get_selected_item_count() == 0) {
-
 			// Are there items left?
 			const unsigned item_count = get_item_count();
 			const unsigned visible_index = get_ordered_index(index);
+
 			if(item_count > 1) {
 				// Is the last item deselected?
 				if(visible_index == item_count - 1) {
@@ -104,8 +102,8 @@ void no_item::set_item_shown(const unsigned index, const bool show)
 
 namespace placement
 {
-
-horizontal_list::horizontal_list() : placed_(false)
+horizontal_list::horizontal_list()
+	: placed_(false)
 {
 }
 
@@ -123,10 +121,9 @@ point horizontal_list::calculate_best_size() const
 {
 	// The best size is the sum of the widths and the greatest height.
 	point result(0, 0);
+
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(i)) {
-
 			continue;
 		}
 
@@ -153,16 +150,16 @@ void horizontal_list::place(const point& origin, const point& size)
 	 */
 
 	point current_origin = origin;
+
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(get_item_at_ordered(i))) {
-
 			continue;
 		}
 
 		grid& grid = item_ordered(i);
 		point best_size = grid.get_best_size();
 		assert(best_size.y <= size.y);
+
 		// FIXME should we look at grow factors???
 		best_size.y = size.y;
 
@@ -182,14 +179,13 @@ void horizontal_list::set_origin(const point& origin)
 {
 	point current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(get_item_at_ordered(i))) {
-
 			continue;
 		}
 
 		grid& grid = item_ordered(i);
 		grid.set_origin(current_origin);
+
 		current_origin.x += grid.get_width();
 	}
 }
@@ -203,21 +199,17 @@ void horizontal_list::set_visible_rectangle(const SDL_Rect& rectangle)
 	 * placement functions.
 	 */
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		grid& grid = item_ordered(i);
 		grid.set_visible_rectangle(rectangle);
 	}
 }
 
-widget* horizontal_list::find_at(const point& coordinate,
-								   const bool must_be_active)
+widget* horizontal_list::find_at(const point& coordinate, const bool must_be_active)
 {
 	assert(get_window());
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(i)) {
-
 			continue;
 		}
 
@@ -227,18 +219,16 @@ widget* horizontal_list::find_at(const point& coordinate,
 			return widget;
 		}
 	}
+
 	return nullptr;
 }
 
-const widget* horizontal_list::find_at(const point& coordinate,
-										 const bool must_be_active) const
+const widget* horizontal_list::find_at(const point& coordinate, const bool must_be_active) const
 {
 	assert(get_window());
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(i)) {
-
 			continue;
 		}
 
@@ -248,6 +238,7 @@ const widget* horizontal_list::find_at(const point& coordinate,
 			return widget;
 		}
 	}
+
 	return nullptr;
 }
 
@@ -266,6 +257,7 @@ void horizontal_list::handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& handl
 				break;
 			}
 		}
+
 		return;
 	}
 
@@ -273,9 +265,7 @@ void horizontal_list::handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& handl
 	handled = true;
 
 	for(int i = get_ordered_index(get_selected_item()) - 1; i >= 0; --i) {
-
 		if(!get_item_shown(get_item_at_ordered(i))) {
-
 			continue;
 		}
 
@@ -289,8 +279,7 @@ void horizontal_list::handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& handl
 	}
 }
 
-void horizontal_list::handle_key_right_arrow(SDL_Keymod /*modifier*/,
-											  bool& handled)
+void horizontal_list::handle_key_right_arrow(SDL_Keymod /*modifier*/, bool& handled)
 {
 	if(get_item_count() == 0) {
 		return;
@@ -312,9 +301,7 @@ void horizontal_list::handle_key_right_arrow(SDL_Keymod /*modifier*/,
 	handled = true;
 
 	for(size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(get_item_at_ordered(i))) {
-
 			continue;
 		}
 
@@ -328,7 +315,8 @@ void horizontal_list::handle_key_right_arrow(SDL_Keymod /*modifier*/,
 	}
 }
 
-vertical_list::vertical_list() : placed_(false)
+vertical_list::vertical_list()
+	: placed_(false)
 {
 }
 
@@ -347,9 +335,7 @@ point vertical_list::calculate_best_size() const
 	// The best size is the sum of the heights and the greatest width.
 	point result(0, 0);
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(i)) {
-
 			continue;
 		}
 
@@ -377,15 +363,14 @@ void vertical_list::place(const point& origin, const point& size)
 
 	point current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(get_item_at_ordered(i))) {
-
 			continue;
 		}
 
 		grid& grid = item_ordered(i);
 		point best_size = grid.get_best_size();
 		assert(best_size.x <= size.x);
+
 		// FIXME should we look at grow factors???
 		best_size.x = size.x;
 
@@ -405,14 +390,13 @@ void vertical_list::set_origin(const point& origin)
 {
 	point current_origin = origin;
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(get_item_at_ordered(i))) {
-
 			continue;
 		}
 
 		grid& grid = item_ordered(i);
 		grid.set_origin(current_origin);
+
 		current_origin.y += grid.get_height();
 	}
 }
@@ -426,24 +410,19 @@ void vertical_list::set_visible_rectangle(const SDL_Rect& rectangle)
 	 * placement functions.
 	 */
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		grid& grid = item(i);
 		grid.set_visible_rectangle(rectangle);
 	}
 }
 
-widget* vertical_list::find_at(const point& coordinate,
-								 const bool must_be_active)
+widget* vertical_list::find_at(const point& coordinate, const bool must_be_active)
 {
 	assert(get_window());
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(i)) {
-
 			continue;
 		}
-
 
 		widget* widget = item(i).find_at(coordinate, must_be_active);
 
@@ -454,15 +433,12 @@ widget* vertical_list::find_at(const point& coordinate,
 	return nullptr;
 }
 
-const widget* vertical_list::find_at(const point& coordinate,
-									   const bool must_be_active) const
+const widget* vertical_list::find_at(const point& coordinate, const bool must_be_active) const
 {
 	assert(get_window());
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(i)) {
-
 			continue;
 		}
 
@@ -497,9 +473,7 @@ void vertical_list::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
 	handled = true;
 
 	for(int i = get_ordered_index(get_selected_item()) - 1; i >= 0; --i) {
-
 		if(!get_item_shown(get_item_at_ordered(i))) {
-
 			continue;
 		}
 
@@ -535,9 +509,7 @@ void vertical_list::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled
 	handled = true;
 
 	for(size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(get_item_at_ordered(i))) {
-
 			continue;
 		}
 
@@ -551,7 +523,8 @@ void vertical_list::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled
 	}
 }
 
-table::table() : placed_(false)//, n_cols_(2)
+table::table()
+	: placed_(false) //, n_cols_(2)
 {
 }
 
@@ -567,59 +540,85 @@ void table::create_item(const unsigned /*index*/)
 
 point table::calculate_best_size() const
 {
-	// The best size is the one that minimizes aspect ratio of the enclosing rect
-	// We first calculate the best size of each item,
-	// then find the number of rows that minimizes the aspect ratio
-	// We try a number of columns from 1 up to sqrt(visible_items) + 2
+	/* The best size is that which minimizes the aspect ratio of the enclosing rect.
+	 * We first calculate the best size of each item, then find the number of rows
+	 * that minimizes the aspect ratio. We try a number of columns from 1 up to
+	 * sqrt(visible_items) + 2.
+	 *
+	 * @todo these calculations need rethinking since the grid layout doesn't work
+	 * properly as of now.
+	 *
+	 * - vultraz, 2017-08-25
+	 */
+
 	size_t n_items = get_item_count();
 	size_t max_cols = sqrt(n_items) + 2;
+
 	std::vector<point> item_sizes;
 	for(size_t i = 0; i < n_items; i++) {
 		if(get_item_shown(i)) {
 			item_sizes.push_back(item(i).get_best_size());
 		}
 	}
+
 	if(item_sizes.empty()) {
 		return point();
 	}
+
 	std::vector<point> best_sizes(1);
-	best_sizes[0] = std::accumulate(item_sizes.begin(), item_sizes.end(), point(), [](point a, point b) {
-		return point(std::max(a.x, b.x), a.y + b.y);
-	});
-	int max_xtra = std::min_element(item_sizes.begin(), item_sizes.end(), [](point a, point b) {
-		return a.x < b.x;
-	})->x / 2;
+
+	best_sizes[0] = std::accumulate(item_sizes.begin(), item_sizes.end(), point(),
+		[](point a, point b) { return point(std::max(a.x, b.x), a.y + b.y); }
+	);
+
+	int max_xtra = std::min_element(item_sizes.begin(), item_sizes.end(),
+		[](point a, point b) { return a.x < b.x; }
+	)->x / 2;
+
 	for(size_t cells_in_1st_row = 2; cells_in_1st_row <= max_cols; cells_in_1st_row++) {
-		int row_min_width = std::accumulate(item_sizes.begin(), item_sizes.begin() + cells_in_1st_row, 0, [](int a, point b) {
-			return a + b.x;
-		});
+		int row_min_width = std::accumulate(item_sizes.begin(), item_sizes.begin() + cells_in_1st_row, 0,
+			[](int a, point b) { return a + b.x; }
+		);
+
 		int row_max_width = row_min_width + max_xtra;
 		int row = 0;
+
 		point row_size, total_size;
+
 		for(size_t n = 0; n < item_sizes.size(); n++) {
 			if(row_size.x + item_sizes[n].x > row_max_width) {
 				// Start new row
 				row++;
+
 				total_size.y += row_size.y;
+
 				if(total_size.x < row_size.x) {
 					total_size.x = row_size.x;
 				}
+
 				row_size = point();
 			}
+
 			row_size.x += item_sizes[n].x;
+
 			if(row_size.y < item_sizes[n].y) {
 				row_size.y = item_sizes[n].y;
 			}
 		}
+
 		total_size.y += row_size.y;
+
 		if(total_size.x < row_size.x) {
 			total_size.x = row_size.x;
 		}
+
 		best_sizes.push_back(total_size);
 	}
 
 	return *std::min_element(best_sizes.begin(), best_sizes.end(), [](point p1, point p2) {
-		return std::max<double>(p1.x, p1.y) / std::min<double>(p1.x, p1.y) < std::max<double>(p2.x, p2.y) / std::min<double>(p2.x, p2.y);
+		return
+			std::max<double>(p1.x, p1.y) / std::min<double>(p1.x, p1.y) <
+			std::max<double>(p2.x, p2.y) / std::min<double>(p2.x, p2.y);
 	});
 }
 
@@ -637,9 +636,7 @@ void table::place(const point& origin, const point& size)
 	point current_origin = origin;
 	int row_height = 0;
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(get_item_at_ordered(i))) {
-
 			continue;
 		}
 
@@ -676,9 +673,7 @@ void table::set_origin(const point& origin)
 	point current_origin = origin;
 	size_t row_height = 0;
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(get_item_at_ordered(i))) {
-
 			continue;
 		}
 
@@ -707,21 +702,17 @@ void table::set_visible_rectangle(const SDL_Rect& rectangle)
 	 * placement functions.
 	 */
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		grid& grid = item(i);
 		grid.set_visible_rectangle(rectangle);
 	}
 }
 
-widget* table::find_at(const point& coordinate,
-						  const bool must_be_active)
+widget* table::find_at(const point& coordinate, const bool must_be_active)
 {
 	assert(get_window());
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(i)) {
-
 			continue;
 		}
 
@@ -734,15 +725,12 @@ widget* table::find_at(const point& coordinate,
 	return nullptr;
 }
 
-const widget* table::find_at(const point& coordinate,
-								const bool must_be_active) const
+const widget* table::find_at(const point& coordinate, const bool must_be_active) const
 {
 	assert(get_window());
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(i)) {
-
 			continue;
 		}
 
@@ -752,6 +740,7 @@ const widget* table::find_at(const point& coordinate,
 			return widget;
 		}
 	}
+
 	return nullptr;
 }
 
@@ -770,6 +759,7 @@ void table::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
 				break;
 			}
 		}
+
 		return;
 	}
 
@@ -777,9 +767,7 @@ void table::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
 	handled = true;
 
 	for(int i = get_ordered_index(get_selected_item()) - 1; i >= 0; --i) {
-
 		if(!get_item_shown(get_item_at_ordered(i))) {
-
 			continue;
 		}
 
@@ -808,6 +796,7 @@ void table::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled)
 				break;
 			}
 		}
+
 		return;
 	}
 
@@ -815,9 +804,7 @@ void table::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled)
 	handled = true;
 
 	for(size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(get_item_at_ordered(i))) {
-
 			continue;
 		}
 
@@ -846,6 +833,7 @@ void table::handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& handled)
 				break;
 			}
 		}
+
 		return;
 	}
 
@@ -853,9 +841,7 @@ void table::handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& handled)
 	handled = true;
 
 	for(int i = get_ordered_index(get_selected_item()) - 1; i >= 0; --i) {
-
 		if(!get_item_shown(get_item_at_ordered(i))) {
-
 			continue;
 		}
 
@@ -869,8 +855,7 @@ void table::handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& handled)
 	}
 }
 
-void table::handle_key_right_arrow(SDL_Keymod /*modifier*/,
-									 bool& handled)
+void table::handle_key_right_arrow(SDL_Keymod /*modifier*/, bool& handled)
 {
 	if(get_item_count() == 0) {
 		return;
@@ -885,6 +870,7 @@ void table::handle_key_right_arrow(SDL_Keymod /*modifier*/,
 				break;
 			}
 		}
+
 		return;
 	}
 
@@ -892,9 +878,7 @@ void table::handle_key_right_arrow(SDL_Keymod /*modifier*/,
 	handled = true;
 
 	for(size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
-
 		if(!get_item_shown(get_item_at_ordered(i))) {
-
 			continue;
 		}
 
@@ -911,7 +895,6 @@ void table::handle_key_right_arrow(SDL_Keymod /*modifier*/,
 void independent::request_reduce_width(const unsigned maximum_width)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		grid& grid = item(i);
 		grid.request_reduce_width(maximum_width);
 	}
@@ -920,7 +903,6 @@ void independent::request_reduce_width(const unsigned maximum_width)
 void independent::request_reduce_height(const unsigned maximum_height)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		grid& grid = item(i);
 		grid.request_reduce_height(maximum_height);
 	}
@@ -933,8 +915,8 @@ point independent::calculate_best_size() const
 	 * height.
 	 */
 	point result(0, 0);
-	for(size_t i = 0; i < get_item_count(); ++i) {
 
+	for(size_t i = 0; i < get_item_count(); ++i) {
 		const grid& grid = item(i);
 
 		const point best_size = grid.get_best_size();
@@ -954,7 +936,6 @@ point independent::calculate_best_size() const
 void independent::place(const point& origin, const point& size)
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		grid& grid = item(i);
 		grid.place(origin, size);
 	}
@@ -969,14 +950,12 @@ void independent::set_origin(const point& origin)
 	 * and what the consequences are.
 	 */
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		grid& grid = item(i);
 		grid.set_origin(origin);
 	}
 }
 
-widget* independent::find_at(const point& coordinate,
-							   const bool must_be_active)
+widget* independent::find_at(const point& coordinate, const bool must_be_active)
 {
 	assert(get_window());
 
@@ -989,8 +968,7 @@ widget* independent::find_at(const point& coordinate,
 	return grid.find_at(coordinate, must_be_active);
 }
 
-const widget* independent::find_at(const point& coordinate,
-									 const bool must_be_active) const
+const widget* independent::find_at(const point& coordinate, const bool must_be_active) const
 {
 	assert(get_window());
 
@@ -1012,20 +990,20 @@ widget* independent::find(const std::string& id, const bool must_be_active)
 			}
 		}
 	}
+
 	return nullptr;
 }
 
-const widget* independent::find(const std::string& id,
-								  const bool must_be_active) const
+const widget* independent::find(const std::string& id, const bool must_be_active) const
 {
 	for(size_t i = 0; i < get_item_count(); ++i) {
 		if(is_selected(i)) {
 			if(const widget* widget = item(i).find(id, must_be_active)) {
-
 				return widget;
 			}
 		}
 	}
+
 	return nullptr;
 }
 
@@ -1038,7 +1016,6 @@ void independent::set_visible_rectangle(const SDL_Rect& rectangle)
 	 * and what the consequences are.
 	 */
 	for(size_t i = 0; i < get_item_count(); ++i) {
-
 		grid& grid = item(i);
 		grid.set_visible_rectangle(rectangle);
 	}
@@ -1050,7 +1027,6 @@ void independent::set_visible_rectangle(const SDL_Rect& rectangle)
 
 namespace select_action
 {
-
 void selection::select(grid& grid, const bool select)
 {
 	selectable_item* selectable = dynamic_cast<selectable_item*>(grid.get_widget(0, 0));
@@ -1059,10 +1035,9 @@ void selection::select(grid& grid, const bool select)
 	selectable->set_value(select);
 }
 
-void
-selection::init(grid* g,
-			  const std::map<std::string /* widget id */, string_map>& data,
-			  const std::function<void(widget&)>& callback)
+void selection::init(grid* g,
+		const std::map<std::string /* widget id */, string_map>& data,
+		const std::function<void(widget&)>& callback)
 {
 	for(unsigned row = 0; row < g->get_rows(); ++row) {
 		for(unsigned col = 0; col < g->get_cols(); ++col) {
@@ -1076,8 +1051,7 @@ selection::init(grid* g,
 			if(btn) {
 				connect_signal_notify_modified(*btn, std::bind(callback, _1));
 
-				std::map<std::string, string_map>::const_iterator itor
-						= data.find(btn->id());
+				std::map<std::string, string_map>::const_iterator itor = data.find(btn->id());
 
 				if(itor == data.end()) {
 					itor = data.find("");
@@ -1099,26 +1073,22 @@ selection::init(grid* g,
 }
 
 void show::init(grid* grid,
-				 const std::map<std::string /* widget id */, string_map>& data,
-				 const std::function<void(widget&)>& callback)
+		const std::map<std::string /* widget id */, string_map>& data,
+		const std::function<void(widget&)>& callback)
 {
 	assert(!callback);
 
-	for(const auto & item : data)
-	{
+	for(const auto& item : data) {
 		if(item.first.empty()) {
 			for(unsigned row = 0; row < grid->get_rows(); ++row) {
 				for(unsigned col = 0; col < grid->get_cols(); ++col) {
-					if(styled_widget* control
-					   = dynamic_cast<styled_widget*>(grid->get_widget(row, col))) {
-
+					if(styled_widget* control = dynamic_cast<styled_widget*>(grid->get_widget(row, col))) {
 						control->set_members(item.second);
 					}
 				}
 			}
 		} else {
-			styled_widget* control
-					= dynamic_cast<styled_widget*>(grid->find(item.first, false));
+			styled_widget* control = dynamic_cast<styled_widget*>(grid->find(item.first, false));
 			if(control) {
 				control->set_members(item.second);
 			}
@@ -1135,80 +1105,66 @@ void show::init(grid* grid,
 #ifdef GENERATE_PLACEMENT
 static_assert(false, "GUI2/Generator: GENERATE_PLACEMENT already defined!");
 #else
-#define GENERATE_PLACEMENT                                                     \
-	switch(placement) {                                                        \
-		case generator_base::horizontal_list:                                     \
-			result = new generator<minimum,                                   \
-									maximum,                                   \
-									policy::placement::horizontal_list,       \
-									select_action>;                            \
-			break;                                                             \
-		case generator_base::vertical_list:                                       \
-			result = new generator<minimum,                                   \
-									maximum,                                   \
-									policy::placement::vertical_list,         \
-									select_action>;                            \
-			break;                                                             \
-		case generator_base::table:                                                \
-			result = new generator<minimum,                                   \
-									maximum,                                   \
-									policy::placement::table,                \
-									select_action>;                            \
-			break;                                                             \
-		case generator_base::independent:                                         \
-			result = new generator<minimum,                                   \
-									maximum,                                   \
-									policy::placement::independent,           \
-									select_action>;                            \
-			break;                                                             \
-		default:                                                               \
-			assert(false);                                                     \
+#define GENERATE_PLACEMENT                                                                                             \
+	switch(placement) {                                                                                                \
+	case generator_base::horizontal_list:                                                                              \
+		result = new generator<minimum, maximum, policy::placement::horizontal_list, select_action>;                   \
+		break;                                                                                                         \
+	case generator_base::vertical_list:                                                                                \
+		result = new generator<minimum, maximum, policy::placement::vertical_list, select_action>;                     \
+		break;                                                                                                         \
+	case generator_base::table:                                                                                        \
+		result = new generator<minimum, maximum, policy::placement::table, select_action>;                             \
+		break;                                                                                                         \
+	case generator_base::independent:                                                                                  \
+		result = new generator<minimum, maximum, policy::placement::independent, select_action>;                       \
+		break;                                                                                                         \
+	default:                                                                                                           \
+		assert(false);                                                                                                 \
 	}
 #endif
 
 #ifdef GENERATE_SELECT
 static_assert(false, "GUI2/Generator: GENERATE_SELECT already defined!");
 #else
-#define GENERATE_SELECT                                                        \
-	if(select) {                                                               \
-		typedef policy::select_action::selection select_action;                  \
-		GENERATE_PLACEMENT                                                     \
-	} else {                                                                   \
-		typedef policy::select_action::show select_action;                    \
-		GENERATE_PLACEMENT                                                     \
+#define GENERATE_SELECT                                                                                                \
+	if(select) {                                                                                                       \
+		typedef policy::select_action::selection select_action;                                                        \
+		GENERATE_PLACEMENT                                                                                             \
+	} else {                                                                                                           \
+		typedef policy::select_action::show select_action;                                                             \
+		GENERATE_PLACEMENT                                                                                             \
 	}
 #endif
 
 #ifdef GENERATE_MAXIMUM
 static_assert(false, "GUI2/Generator: GENERATE_MAXIMUM already defined!");
 #else
-#define GENERATE_MAXIMUM                                                       \
-	if(has_maximum) {                                                          \
-		typedef policy::maximum_selection::one_item maximum;                       \
-		GENERATE_SELECT                                                        \
-	} else {                                                                   \
-		typedef policy::maximum_selection::many_items maximum;                  \
-		GENERATE_SELECT                                                        \
+#define GENERATE_MAXIMUM                                                                                               \
+	if(has_maximum) {                                                                                                  \
+		typedef policy::maximum_selection::one_item maximum;                                                           \
+		GENERATE_SELECT                                                                                                \
+	} else {                                                                                                           \
+		typedef policy::maximum_selection::many_items maximum;                                                         \
+		GENERATE_SELECT                                                                                                \
 	}
 #endif
 
 #ifdef GENERATE_BODY
 static_assert(false, "GUI2/Generator: GENERATE_BODY already defined!");
 #else
-#define GENERATE_BODY                                                          \
-	if(has_minimum) {                                                          \
-		typedef policy::minimum_selection::one_item minimum;                       \
-		GENERATE_MAXIMUM                                                       \
-	} else {                                                                   \
-		typedef policy::minimum_selection::no_item minimum;                      \
-		GENERATE_MAXIMUM                                                       \
+#define GENERATE_BODY                                                                                                  \
+	if(has_minimum) {                                                                                                  \
+		typedef policy::minimum_selection::one_item minimum;                                                           \
+		GENERATE_MAXIMUM                                                                                               \
+	} else {                                                                                                           \
+		typedef policy::minimum_selection::no_item minimum;                                                            \
+		GENERATE_MAXIMUM                                                                                               \
 	}
 #endif
 
-generator_base* generator_base::build(const bool has_minimum,
-								const bool has_maximum,
-								const placement placement,
-								const bool select)
+generator_base* generator_base::build(
+		const bool has_minimum, const bool has_maximum, const placement placement, const bool select)
 {
 	generator_base* result = nullptr;
 	GENERATE_BODY;
@@ -1221,7 +1177,6 @@ namespace {
 
 void pointer_test()
 {
-
 	generator_base *a = generator_base::build(
 			true, true, generator_base::horizontal_list, true);
 
@@ -1279,7 +1234,6 @@ void direct_test()
 	b.clear();
 	c.clear();
 	d.clear();
-
 }
 
 } // namespace
