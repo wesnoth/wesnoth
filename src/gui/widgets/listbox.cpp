@@ -615,10 +615,14 @@ void listbox::set_active_sorting_option(const order_pair& sort_by, const bool se
 	// TODO: should this be moved to a public header_grid() getter function?
 	grid& header_grid = find_widget<grid>(this, "_header_grid", false);
 
-	selectable_item& wgt = find_widget<selectable_item>(&header_grid, "sort_" + std::to_string(sort_by.first), false);
-	wgt.set_value(static_cast<int>(sort_by.second));
+	selectable_item& w = find_widget<selectable_item>(&header_grid, "sort_" + std::to_string(sort_by.first), false);
 
-	order_by_column(sort_by.first, dynamic_cast<widget&>(wgt));
+	// Set the sorting toggle widgets' value (in this case, its state) to the given sorting
+	// order. This is necessary since the widget's value is used to determine the order in
+	// @ref order_by_column in lieu of a direction being passed directly.
+	w.set_value(static_cast<int>(sort_by.second));
+
+	order_by_column(sort_by.first, dynamic_cast<widget&>(w));
 
 	if(select_first && generator_->get_item_count() > 0) {
 		select_row_at(0);
@@ -627,17 +631,15 @@ void listbox::set_active_sorting_option(const order_pair& sort_by, const bool se
 
 const listbox::order_pair listbox::get_active_sorting_option()
 {
-	const auto iter = std::find_if(orders_.begin(), orders_.end(),
-		[](const std::pair<selectable_item*, generator_sort_array>& option) {
-			return option.first != nullptr && option.first->get_value() != SORT_NONE;
-		}
-	);
+	for(unsigned int column = 0; column < orders_.size(); ++column) {
+		selectable_item* w = orders_[column].first;
 
-	if(iter != orders_.end()) {
-		return {iter - orders_.begin(), static_cast<SORT_ORDER>(iter->first->get_value())};
+		if(w && w->get_value() != SORT_NONE) {
+			return std::make_pair(column, static_cast<SORT_ORDER>(w->get_value()));
+		}
 	}
 
-	return {-1, SORT_NONE};
+	return std::make_pair(-1, SORT_NONE);
 }
 
 void listbox::set_content_size(const point& origin, const point& size)
