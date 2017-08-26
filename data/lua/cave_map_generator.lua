@@ -181,12 +181,14 @@ function callbacks.generate_map(params)
 				local prev_x, prev_y
 				for x,y in locs_set:stable_iter() do
 					local r = 1000
+					local ter_to_place
 					if v.data.place_villages then r = random(1000) end
 					if r <= params.village_density then
-						place_road(x, y, prev_x, prev_y, v.roads, params.terrain_village)
+						ter_to_place = v.data.terrain_village or params.terrain_village
 					else
-						place_road(x, y, prev_x, prev_y, v.roads, v.data.terrain_clear)
+						ter_to_place = v.data.terrain_clear or params.terrain_clear
 					end
+					place_road(x, y, prev_x, prev_y, v.roads, ter_to_place)
 					prev_x, prev_y = x, y
 				end
 			end
