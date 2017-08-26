@@ -112,7 +112,7 @@ widget* build_single_widget_instance_helper(const std::string& type, const confi
  * This should be used in place of creating a widget object directly, as it
  * allows the widget-specific builder code to be executed.
  *
- * @tparam                        The final widget type. The widget pointer will be
+ * @tparam T                      The final widget type. The widget pointer will be
  *                                cast to this.
  *
  * @param type                    String ID of the widget type.
