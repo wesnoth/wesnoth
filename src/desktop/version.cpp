@@ -121,7 +121,7 @@ std::string os_version()
 #ifdef __APPLE__
 
 	//
-	// Standard Mac OSX version
+	// Standard Mac OS X version
 	//
 
 	static const std::string version_plist = "/System/Library/CoreServices/SystemVersion.plist";
@@ -135,8 +135,12 @@ std::string os_version()
 		const std::string& ver = read_pipe_line(p);
 
 		if(!ver.empty()) {
-			return "Apple OS X " + ver;
-		}
+			if (std::stod(ver) >= 10.12) {
+				return "Apple macOS " + ver;
+			} else {
+				return "Apple OS X " + ver;
+			}
+ 		}
 	}
 
 #else
