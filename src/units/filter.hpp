@@ -91,10 +91,10 @@ namespace unit_filter_impl
 class unit_filter
 {
 public:
-	unit_filter(vconfig cfg, const filter_context * fc, bool use_flat_tod = false)
+	unit_filter(vconfig cfg, const filter_context * fc)
 		: cfg_(cfg)
 		, fc_(fc)
-		, use_flat_tod_(use_flat_tod)
+		, use_flat_tod_(false)
 		, impl_(cfg_)
 		, max_matches_(-1)
 	{
@@ -106,6 +106,11 @@ public:
 
 	unit_filter& operator=(const unit_filter&) = default;
 	unit_filter& operator=(unit_filter&&) = default;
+
+	unit_filter& set_use_flat_tod(bool value) {
+		use_flat_tod_ = value;
+		return *this;
+	}
 
 	/// Determine if *this matches @a filter at a specified location.
 	/// Use this for units on a recall list, or to test for a match if

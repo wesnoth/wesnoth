@@ -123,8 +123,10 @@ bool side_filter::match_internal(const team &t) const
 	//Allow filtering on units
 	if(cfg_.has_child("has_unit")) {
 		const vconfig & ufilt_cfg = cfg_.child("has_unit");
-		if (!ufilter_)
-			ufilter_.reset(new unit_filter(ufilt_cfg, fc_, flat_));
+		if (!ufilter_) {
+			ufilter_.reset(new unit_filter(ufilt_cfg, fc_));
+			ufilter_->set_use_flat_tod(flat_);
+		}
 		bool found = false;
 		for(const unit &u : fc_->get_disp_context().units()) {
 			if (u.side() != t.side()) {

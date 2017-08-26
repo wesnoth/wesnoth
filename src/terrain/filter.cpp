@@ -165,8 +165,10 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 		const unit_map::const_iterator u = fc_->get_disp_context().units().find(loc);
 		if (!u.valid())
 			return false;
-		if (!cache_.ufilter_)
-			cache_.ufilter_.reset(new unit_filter(cfg_.child("filter"), fc_, flat_));
+		if (!cache_.ufilter_) {
+			cache_.ufilter_.reset(new unit_filter(cfg_.child("filter"), fc_));
+			cache_.ufilter_->set_use_flat_tod(flat_);
+		}
 		if (!cache_.ufilter_->matches(*u, loc))
 			return false;
 	}
