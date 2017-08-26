@@ -417,7 +417,7 @@ void scrollbar_container::place(const point& origin, const point& size)
 		vertical_scrollbar_mode_,
 		content_grid_->get_height(),
 		content_->get_height(),
-		content_grid_
+		content_grid_.get()
 	);
 
 	// Set horizontal scrollbar
@@ -427,7 +427,7 @@ void scrollbar_container::place(const point& origin, const point& size)
 		horizontal_scrollbar_mode_,
 		content_grid_->get_width(),
 		content_->get_width(),
-		content_grid_
+		content_grid_.get()
 	);
 
 	// Update the buttons.
@@ -766,7 +766,8 @@ void scrollbar_container::finalize_setup()
 	/***** Setup the content *****/
 	content_ = build_single_widget_instance<spacer>("spacer");
 
-	content_grid_ = dynamic_cast<grid*>(get_grid().swap_child("_content_grid", content_, true).release());
+	// TODO: possibly move this unique_ptr casting functionality to a helper function.
+	content_grid_.reset(dynamic_cast<grid*>(get_grid().swap_child("_content_grid", content_, true).release()));
 	assert(content_grid_);
 
 	content_grid_->set_parent(this);

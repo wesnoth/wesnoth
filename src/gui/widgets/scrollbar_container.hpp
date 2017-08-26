@@ -54,7 +54,6 @@ public:
 
 	~scrollbar_container()
 	{
-		delete content_grid_;
 	}
 
 	/** The way to handle the showing or hiding of the scrollbar. */
@@ -160,12 +159,12 @@ public:
 
 	grid* content_grid()
 	{
-		return content_grid_;
+		return content_grid_.get();
 	}
 
 	const grid* content_grid() const
 	{
-		return content_grid_;
+		return content_grid_.get();
 	}
 
 	const SDL_Rect& content_visible_area() const
@@ -479,7 +478,7 @@ private:
 	scrollbar_base *vertical_scrollbar_, *horizontal_scrollbar_;
 
 	/** The grid that holds the content. */
-	grid* content_grid_;
+	std::unique_ptr<grid> content_grid_;
 
 	/** Dummy spacer to hold the contents location. */
 	spacer* content_;
