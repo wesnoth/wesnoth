@@ -298,14 +298,10 @@ void preferences_dialog::post_build(window& window)
 	register_integer("turbo_slider", true,
 		accl_load, accl_save);
 
-	// Manually set the value labels
-	std::vector<t_string> accl_speed_labels(accl_speeds_.size());
-
-	std::transform(accl_speeds_.begin(), accl_speeds_.end(), accl_speed_labels.begin(),	[](double speed) {
-		return lexical_cast<std::string>(speed);
-	});
-
-	find_widget<slider>(&window, "turbo_slider", false).set_value_labels(accl_speed_labels);
+	// Set the value label transform function.
+	find_widget<slider>(&window, "turbo_slider", false).set_value_labels(
+		[this](int pos, int /*max*/)->t_string { return lexical_cast<std::string>(accl_speeds_[pos]); }
+	);
 
 	/* SKIP AI MOVES */
 	register_bool("skip_ai_moves", true,
