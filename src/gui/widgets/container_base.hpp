@@ -155,8 +155,7 @@ public:
 	/**
 	 * Initializes and builds the grid.
 	 *
-	 * This function should only be called upon an empty grid. This grid is
-	 * returned by initial_grid();
+	 * This function should only be called upon an empty grid.
 	 *
 	 * @param grid_builder        The builder for the grid.
 	 */
@@ -237,16 +236,6 @@ public:
 private:
 	/** The grid which holds the child objects. */
 	grid grid_;
-
-	/**
-	 * Returns the grid to initialize while building.
-	 *
-	 * @todo Evaluate whether this function is overridden if not remove.
-	 */
-	virtual grid& initial_grid()
-	{
-		return grid_;
-	}
 
 	/** Returns the space used by the border. */
 	virtual point border_space() const;

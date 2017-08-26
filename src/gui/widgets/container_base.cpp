@@ -267,9 +267,9 @@ container_base::init_grid(const std::shared_ptr<builder_grid>& grid_builder)
 {
 	log_scope2(log_gui_general, LOG_SCOPE_HEADER);
 
-	assert(initial_grid().get_rows() == 0 && initial_grid().get_cols() == 0);
+	assert(grid_.get_rows() == 0 && grid_.get_cols() == 0);
 
-	grid_builder->build(&initial_grid());
+	grid_builder->build(&grid_);
 }
 
 point container_base::border_space() const
