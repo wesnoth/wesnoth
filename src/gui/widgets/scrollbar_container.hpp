@@ -20,7 +20,6 @@
 
 namespace gui2
 {
-
 class spacer;
 
 namespace implementation
@@ -51,8 +50,7 @@ class scrollbar_container : public container_base
 	friend struct scrollbar_container_implementation;
 
 public:
-	explicit scrollbar_container(const implementation::builder_styled_widget& builder,
-		const std::string& control_type);
+	explicit scrollbar_container(const implementation::builder_styled_widget& builder, const std::string& control_type);
 
 	~scrollbar_container()
 	{
@@ -128,19 +126,16 @@ public:
 	virtual unsigned get_state() const override;
 
 	/** See @ref widget::find_at. */
-	virtual widget* find_at(const point& coordinate,
-							 const bool must_be_active) override;
+	virtual widget* find_at(const point& coordinate, const bool must_be_active) override;
 
 	/** See @ref widget::find_at. */
-	virtual const widget* find_at(const point& coordinate,
-								   const bool must_be_active) const override;
+	virtual const widget* find_at(const point& coordinate, const bool must_be_active) const override;
 
 	/** See @ref widget::find. */
 	widget* find(const std::string& id, const bool must_be_active) override;
 
 	/** See @ref widget::find. */
-	const widget* find(const std::string& id,
-						const bool must_be_active) const override;
+	const widget* find(const std::string& id, const bool must_be_active) const override;
 
 	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
@@ -149,6 +144,7 @@ public:
 
 	/** @note shouldn't be called after being shown in a dialog. */
 	void set_vertical_scrollbar_mode(const scrollbar_mode scrollbar_mode);
+
 	scrollbar_mode get_vertical_scrollbar_mode() const
 	{
 		return vertical_scrollbar_mode_;
@@ -156,6 +152,7 @@ public:
 
 	/** @note shouldn't be called after being shown in a dialog. */
 	void set_horizontal_scrollbar_mode(const scrollbar_mode scrollbar_mode);
+
 	scrollbar_mode get_horizontal_scrollbar_mode() const
 	{
 		return horizontal_scrollbar_mode_;
@@ -165,6 +162,7 @@ public:
 	{
 		return content_grid_;
 	}
+	
 	const grid* content_grid() const
 	{
 		return content_grid_;
@@ -329,9 +327,9 @@ protected:
 	 *                            otherwise.
 	 */
 	bool content_resize_request(const int width_modification,
-								const int height_modification,
-								const int width_modification_pos = -1,
-								const int height_modification_pos = -1);
+			const int height_modification,
+			const int width_modification_pos = -1,
+			const int height_modification_pos = -1);
 
 private:
 	/**
@@ -398,7 +396,6 @@ protected:
 	 *                            changing.
 	 */
 	virtual void handle_key_page_down(SDL_Keymod modifier, bool& handled);
-
 
 	/**
 	 * Up arrow key pressed.
@@ -476,10 +473,10 @@ private:
 	scrollbar_mode vertical_scrollbar_mode_, horizontal_scrollbar_mode_;
 
 	/** These are valid after finalize_setup(). */
-	grid* vertical_scrollbar_grid_, *horizontal_scrollbar_grid_;
+	grid *vertical_scrollbar_grid_, *horizontal_scrollbar_grid_;
 
 	/** These are valid after finalize_setup(). */
-	scrollbar_base* vertical_scrollbar_, *horizontal_scrollbar_;
+	scrollbar_base *vertical_scrollbar_, *horizontal_scrollbar_;
 
 	/** The grid that holds the content. */
 	grid* content_grid_;
@@ -510,14 +507,10 @@ private:
 	virtual void layout_children() override;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer,
-									int x_offset,
-									int y_offset) override;
+	virtual void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset) override;
 
 	/** See @ref widget::child_populate_dirty_list. */
-	virtual void
-	child_populate_dirty_list(window& caller,
-							  const std::vector<widget*>& call_stack) override;
+	virtual void child_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack) override;
 
 	/**
 	 * Sets the size of the content grid.
@@ -538,18 +531,13 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_sdl_key_down(const event::ui_event event,
-									 bool& handled,
-									 const SDL_Keycode key,
-									 SDL_Keymod modifier);
+	void signal_handler_sdl_key_down(
+			const event::ui_event event, bool& handled, const SDL_Keycode key, SDL_Keymod modifier);
 
 	void signal_handler_sdl_wheel_up(const event::ui_event event, bool& handled);
-	void signal_handler_sdl_wheel_down(const event::ui_event event,
-									   bool& handled);
-	void signal_handler_sdl_wheel_left(const event::ui_event event,
-									   bool& handled);
-	void signal_handler_sdl_wheel_right(const event::ui_event event,
-										bool& handled);
+	void signal_handler_sdl_wheel_down(const event::ui_event event, bool& handled);
+	void signal_handler_sdl_wheel_left(const event::ui_event event, bool& handled);
+	void signal_handler_sdl_wheel_right(const event::ui_event event, bool& handled);
 
 public:
 	scrollbar_base* horizontal_scrollbar()
