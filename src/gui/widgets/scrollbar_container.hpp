@@ -52,7 +52,7 @@ class scrollbar_container : public container_base
 public:
 	explicit scrollbar_container(const implementation::builder_styled_widget& builder, const std::string& control_type);
 
-	~scrollbar_container()
+	virtual ~scrollbar_container()
 	{
 	}
 
