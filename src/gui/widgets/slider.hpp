@@ -94,11 +94,11 @@ public:
 
 	void set_value_labels(const std::vector<t_string>& value_labels);
 
-	typedef std::function<t_string(int /*current position*/, int /*num positions*/)> tlabel_creator;
+	using label_generator = std::function<t_string(int /*current position*/, int /*num positions*/)>;
 
-	void set_value_labels(const tlabel_creator& value_labels)
+	void set_value_labels(const label_generator& generator)
 	{
-		value_labels_ = value_labels;
+		value_label_generator_ = generator;
 	}
 
 	/**
@@ -178,12 +178,11 @@ private:
 	t_string maximum_value_label_;
 
 	/**
-	 * This allows the slider to show custom texts instead of the values.
-	 * This vector should have the same amount of items as options for the
-	 * sliders. When set these texts are shown instead of the values. It also
-	 * overrides minimum_value_label_ and maximum_value_label_.
+	 * Function to output custom value labels for the slider. When set
+	 * its output is shown instead of the numeric values. It also overrides
+	 * minimum_value_label_ and maximum_value_label_.
 	 */
-	tlabel_creator value_labels_;
+	label_generator value_label_generator_;
 
 	/**
 	 * When initially pressing the positioner and every time a new value is chosen through dragging,
@@ -255,6 +254,7 @@ private:
 	t_string minimum_value_label_;
 	t_string maximum_value_label_;
 
+	/* This vector should have the same number of items as the slider's values. */
 	std::vector<t_string> value_labels_;
 };
 

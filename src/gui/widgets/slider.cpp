@@ -42,7 +42,7 @@ slider::slider(const implementation::builder_slider& builder)
 	, minimum_value_(0)
 	, minimum_value_label_()
 	, maximum_value_label_()
-	, value_labels_()
+	, value_label_generator_()
 	, current_item_mouse_position_(0, 0)
 {
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(&slider::signal_handler_sdl_key_down, this, _2, _3, _5));
@@ -133,8 +133,8 @@ void slider::set_maximum_value(const int maximum_value)
 
 t_string slider::get_value_label() const
 {
-	if(value_labels_) {
-		return value_labels_(get_item_position(), get_item_count());
+	if(value_label_generator_) {
+		return value_label_generator_(get_item_position(), get_item_count());
 	} else if(!minimum_value_label_.empty() && get_value() == get_minimum_value()) {
 		return minimum_value_label_;
 	} else if(!maximum_value_label_.empty() && get_value() == get_maximum_value()) {
