@@ -328,12 +328,29 @@ private:
 		friend struct grid_implementation;
 
 	public:
-		child() : flags_(0), border_size_(0), widget_(nullptr)
-
 		// Fixme make a class where we can store some properties in the cache
 		// regarding size etc.
+		child() : flags_(0), border_size_(0), widget_(nullptr)
 		{
 		}
+
+		/**
+		 * Move constructor.
+		 *
+		 * This is necessary in order that the child objects be moved instead
+		 * of copied when the grid's child vector is resized. std::vector will
+		 * utilize a move constructor as long as a non-throwing one is provided.
+		 */
+#if defined(_MSC_VER) && _MSC_VER <= 1800 // MSVC 2013
+		child(child&& c) NOEXCEPT
+			: flags_(c.flags)
+			, border_size_(c.border_size_)
+			, widget_(std::move(c.widget_))
+		{
+		}
+#else
+		child(child&&) NOEXCEPT = default;
+#endif
 
 		/** Returns the best size for the cell. */
 		point get_best_size() const;
@@ -362,6 +379,7 @@ private:
 		{
 			return flags_;
 		}
+
 		void set_flags(const unsigned flags)
 		{
 			flags_ = flags;
@@ -371,6 +389,7 @@ private:
 		{
 			return border_size_;
 		}
+
 		void set_border_size(const unsigned border_size)
 		{
 			border_size_ = border_size;
@@ -378,16 +397,29 @@ private:
 
 		const widget* get_widget() const
 		{
-			return widget_;
+			return widget_.get();
 		}
+
 		widget* get_widget()
 		{
-			return widget_;
+			return widget_.get();
 		}
 
 		void set_widget(widget* widget)
 		{
-			widget_ = widget;
+			widget_.reset(widget);
+		}
+
+		/**
+		 * Releases widget from ownership by this child and returns it in the
+		 * form of a new unique_ptr. widget_ will be null after this is called.
+		 */
+		std::unique_ptr<widget> free_widget()
+		{
+			std::unique_ptr<widget> temp(nullptr);
+			widget_.swap(temp);
+
+			return temp;
 		}
 
 	private:
@@ -403,10 +435,10 @@ private:
 		/**
 		 * Pointer to the widget.
 		 *
-		 * Once the widget is assigned to the grid we own the widget and are
-		 * responsible for it's destruction.
+		 * Once the widget is assigned to the grid we own the widget and it
+		 * will be destroyed with the grid or @ref free_widget is called.
 		 */
-		widget* widget_;
+		std::unique_ptr<widget> widget_;
 
 		/** Returns the space needed for the border. */
 		point border_space() const;

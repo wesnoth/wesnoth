@@ -53,12 +53,6 @@ grid::grid(const unsigned rows, const unsigned cols)
 
 grid::~grid()
 {
-	// Delete the children in this destructor since resizing a vector copies the
-	// children and thus frees the child prematurely.
-	for(auto & child : children_)
-	{
-		delete child.get_widget();
-	}
 }
 
 unsigned grid::add_row(const unsigned count)
@@ -89,7 +83,6 @@ void grid::set_child(widget* widget,
 		// free a child when overwriting it
 		WRN_GUI_G << LOG_HEADER << " child '" << cell.id() << "' at cell '"
 				  << row << ',' << col << "' will be replaced.\n";
-		delete cell.get_widget();
 	}
 
 	// copy data
@@ -128,16 +121,17 @@ std::unique_ptr<widget> grid::swap_child(const std::string& id,
 			continue;
 		}
 
-		// When find the widget there should be a widget.
-		widget* old = child.get_widget();
+		// Free widget from cell and validate.
+		std::unique_ptr<widget> old = child.free_widget();
 		assert(old);
+
 		old->set_parent(new_parent);
 
 		w->set_parent(this);
 		w->set_visible(old->get_visible());
-		child.set_widget(w);
 
-		return std::unique_ptr<widget>(old);
+		child.set_widget(w);
+		return old;
 	}
 
 	return nullptr;
@@ -148,10 +142,6 @@ void grid::remove_child(const unsigned row, const unsigned col)
 	assert(row < rows_ && col < cols_);
 
 	child& cell = get_child(row, col);
-
-	if(cell.get_widget()) {
-		delete cell.get_widget();
-	}
 	cell.set_widget(nullptr);
 }
 
@@ -159,9 +149,7 @@ void grid::remove_child(const std::string& id, const bool find_all)
 {
 	for(auto & child : children_)
 	{
-
 		if(child.id() == id) {
-			delete child.get_widget();
 			child.set_widget(nullptr);
 
 			if(!find_all) {
