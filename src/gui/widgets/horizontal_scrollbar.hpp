@@ -37,34 +37,34 @@ public:
 	explicit horizontal_scrollbar(const implementation::builder_horizontal_scrollbar& builder);
 
 private:
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	unsigned get_length() const override
 	{
 		return get_width();
 	}
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	unsigned minimum_positioner_length() const override;
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	unsigned maximum_positioner_length() const override;
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	unsigned offset_before() const override;
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	unsigned offset_after() const override;
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	bool on_positioner(const point& coordinate) const override;
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	int on_bar(const point& coordinate) const override;
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	bool in_orthogonal_range(const point& coordinate) const override;
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	int get_length_difference(const point& original, const point& current) const override
 	{
 		return current.x - original.x;

@@ -109,7 +109,7 @@ public:
 	t_string get_value_label() const;
 
 protected:
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	void child_callback_positioner_moved() override;
 
 private:
@@ -124,40 +124,40 @@ private:
 	 */
 	int minimum_value_;
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	unsigned get_length() const override
 	{
 		return get_width();
 	}
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	unsigned minimum_positioner_length() const override;
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	unsigned maximum_positioner_length() const override;
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	unsigned offset_before() const override;
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	unsigned offset_after() const override;
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	bool on_positioner(const point& coordinate) const override;
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	int on_bar(const point& coordinate) const override;
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	bool in_orthogonal_range(const point& coordinate) const override;
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	int get_length_difference(const point& original, const point& current) const override
 	{
 		return current.x - original.x;
 	}
 
-	/** Inherited from tscrollbar. */
+	/** Inherited from scrollbar_base. */
 	//void move_positioner(const int distance) override;
 
 	/** See @ref styled_widget::update_canvas. */
@@ -211,7 +211,7 @@ private:
 	//void signal_handler_left_button_down(const event::ui_event event, bool& handled);
 
 	// In this subclass, only used to grab keyboard focus -
-	// see tscrollbar class for more handling of this event.
+	// see scrollbar_base class for more handling of this event.
 	void signal_handler_left_button_up(const event::ui_event event,
 									   bool& handled);
 };
