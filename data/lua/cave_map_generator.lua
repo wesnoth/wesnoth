@@ -73,6 +73,28 @@ function callbacks.generate_map(params)
 	for chamber in wml.child_range(params, "chamber") do
 		local chance = tonumber(chamber.chance) or 100
 		local x, y = MG.random_location(chamber.x, chamber.y)
+		-- Note: x,y run from (0,0) to (w+1,h+1)
+		if chamber.relative_to == "top-right" then
+			x = map.w - x - 1
+		elseif chamber.relative_to == "bottom-right" then
+			x = map.w - x - 1
+			y = map.h - y - 1
+		elseif chamber.relative_to == "bottom-left" then
+			y = map.h - y - 1
+		elseif chamber.relative_to == "top-middle" then
+			x = math.ceil(map.w / 2) + x
+		elseif chamber.relative_to == "bottom-middle" then
+			x = math.ceil(map.w / 2) + x
+			y = map.h - y - 1
+		elseif chamber.relative_to == "middle-left" then
+			y = math.ceil(map.h / 2) + y
+		elseif chamber.relative_to == "middle-right" then
+			y = math.ceil(map.h / 2) + y
+			x = map.w - x - 1
+		elseif chamber.relative_to == "center" then
+			x = math.ceil(map.w / 2) + x
+			y = math.ceil(map.h / 2) + y
+		end -- Default is "top-left" which means no adjustments needed
 		local id = chamber.id
 		if chance == 0 or random(100) > chance then
 			-- Set chance to 0 so that the scenario generator can tell which chambers were used
