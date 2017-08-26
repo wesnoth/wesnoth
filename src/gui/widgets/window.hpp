@@ -644,7 +644,7 @@ private:
 	void layout_linked_widgets();
 
 	/**
-	 * Handles a mouse click event for dismissing the dialogue.
+	 * Handles a mouse click event for dismissing the dialog.
 	 *
 	 * @param mouse_button_mask   The SDL_BUTTON mask for the button used to
 	 *                            dismiss the click. If the caller is from the
@@ -658,16 +658,16 @@ private:
 	/**
 	 * The state of the mouse button.
 	 *
-	 * When click dismissing a dialogue in the past the DOWN event was used.
+	 * When click dismissing a dialog in the past the DOWN event was used.
 	 * This lead to a bug [1]. The obvious change was to switch to the UP
-	 * event, this lead to another bug; the dialogue was directly dismissed.
+	 * event, this lead to another bug; the dialog was directly dismissed.
 	 * Since the game map code uses the UP and DOWN event to select a unit
 	 * there is no simple solution.
 	 *
 	 * Upon entry this value stores the mouse button state at entry. When a
 	 * button is DOWN and goes UP that button does \em not trigger a dismissal
-	 * of the dialogue, instead that button's down state is removed from this
-	 * variable. Therefore the next UP event does dismiss the dialogue.
+	 * of the dialog, instead that button's down state is removed from this
+	 * variable. Therefore the next UP event does dismiss the dialog.
 	 *
 	 * [1] https://gna.org/bugs/index.php?18970
 	 */

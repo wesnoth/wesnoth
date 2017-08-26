@@ -99,7 +99,7 @@ public:
 	/**
 	 * See @ref widget::can_wrap.
 	 *
-	 * @note This function is called before the object is finalised.
+	 * @note This function is called before the object is finalized.
 	 */
 	virtual bool can_wrap() const override;
 
@@ -162,7 +162,7 @@ public:
 	{
 		return content_grid_;
 	}
-	
+
 	const grid* content_grid() const
 	{
 		return content_grid_;
@@ -316,11 +316,11 @@ protected:
 	 *                            * positive values increase height.
 	 * @param width_modification_pos
 	 *                            The position where the additional content was
-	 *                            inserted/removed, defaults to -1 whcih means
+	 *                            inserted/removed, defaults to -1 which means
 	 *                            'at end'
 	 * @param height_modification_pos
 	 *                            The position where the additional content was
-	 *                            inserted/removed, defaults to -1 whcih means
+	 *                            inserted/removed, defaults to -1 which means
 	 *                            'at end'
 	 *
 	 * @returns                   True is wanted modification is accepted false

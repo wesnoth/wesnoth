@@ -69,7 +69,7 @@
  * manager object etc. etc.
  *
  * Circa 2012, the solution was to implement every callback function in the wesnoth
- * table simply as a C function, whcih grabs whatever engine features it needs from
+ * table simply as a C function, which grabs whatever engine features it needs from
  * a collection of pointers with external linkage in resources.hpp. The pointers
  * must be reset by the play controller object whenver it is created or destroyed...
  * or reset (replay controller), and always in a particular order because eventually

@@ -623,7 +623,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 
 			if(!mouse_button_state_initialized) {
 				/*
-				 * The state must be initialize when showing the dialogue.
+				 * The state must be initialize when showing the dialog.
 				 * However when initialized before this point there were random
 				 * errors. This only happened when the 'click' was done fast; a
 				 * slower click worked properly.

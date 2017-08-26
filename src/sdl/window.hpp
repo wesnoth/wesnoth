@@ -33,7 +33,7 @@ namespace sdl
  * The wrapper class for the @ref SDL_Window class.
  *
  * At the moment of writing it is not certain yet how many windows will be
- * created. At least one as main window, but maybe the GUI dialogues will have
+ * created. At least one as main window, but maybe the GUI dialogs will have
  * their own window. Once that is known it might be a good idea to evaluate
  * whether the class should become a singleton or not.
  *
