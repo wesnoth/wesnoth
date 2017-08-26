@@ -17,12 +17,12 @@
 #include "gui/widgets/slider.hpp"
 
 #include "formatter.hpp"
+#include "gettext.hpp"
 #include "gui/core/log.hpp"
-#include "gui/widgets/window.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/window.hpp"
 #include "sound.hpp"
-#include "gettext.hpp"
 #include "wml_exception.hpp"
 
 #include "utils/functional.hpp"
@@ -32,7 +32,6 @@
 
 namespace gui2
 {
-
 // ------------ WIDGET -----------{
 
 REGISTER_WIDGET(slider)
@@ -44,14 +43,14 @@ slider::slider(const implementation::builder_slider& builder)
 	, minimum_value_label_()
 	, maximum_value_label_()
 	, value_labels_()
-	, current_item_mouse_position_(0,0)
+	, current_item_mouse_position_(0, 0)
 {
-	connect_signal<event::SDL_KEY_DOWN>(std::bind(
-			&slider::signal_handler_sdl_key_down, this, _2, _3, _5));
-	//connect_signal<event::LEFT_BUTTON_DOWN>(
+	connect_signal<event::SDL_KEY_DOWN>(std::bind(&slider::signal_handler_sdl_key_down, this, _2, _3, _5));
+
+	// connect_signal<event::LEFT_BUTTON_DOWN>(
 	//		std::bind(&slider::signal_handler_left_button_down, this, _2, _3));
-	connect_signal<event::LEFT_BUTTON_UP>(
-			std::bind(&slider::signal_handler_left_button_up, this, _2, _3));
+
+	connect_signal<event::LEFT_BUTTON_UP>(std::bind(&slider::signal_handler_left_button_up, this, _2, _3));
 }
 
 point slider::calculate_best_size() const
@@ -60,8 +59,8 @@ point slider::calculate_best_size() const
 
 	// Inherited.
 	point result = styled_widget::calculate_best_size();
-	if(best_slider_length_ != 0) {
 
+	if(best_slider_length_ != 0) {
 		// Override length.
 		const auto conf = cast_config_to<slider_definition>();
 		assert(conf);
@@ -69,8 +68,7 @@ point slider::calculate_best_size() const
 		result.x = conf->left_offset + best_slider_length_ + conf->right_offset;
 	}
 
-	DBG_GUI_L << LOG_HEADER << " best_slider_length " << best_slider_length_
-			  << " result " << result << ".\n";
+	DBG_GUI_L << LOG_HEADER << " best_slider_length " << best_slider_length_ << " result " << result << ".\n";
 	return result;
 }
 
@@ -137,11 +135,9 @@ t_string slider::get_value_label() const
 {
 	if(value_labels_) {
 		return value_labels_(get_item_position(), get_item_count());
-	} else if(!minimum_value_label_.empty() && get_value()
-											   == get_minimum_value()) {
+	} else if(!minimum_value_label_.empty() && get_value() == get_minimum_value()) {
 		return minimum_value_label_;
-	} else if(!maximum_value_label_.empty() && get_value()
-											   == get_maximum_value()) {
+	} else if(!maximum_value_label_.empty() && get_value() == get_maximum_value()) {
 		return maximum_value_label_;
 	}
 
@@ -184,10 +180,11 @@ unsigned slider::offset_after() const
 bool slider::on_positioner(const point& coordinate) const
 {
 	// Note we assume the positioner is over the entire height of the widget.
-	return coordinate.x >= static_cast<int>(get_positioner_offset())
-		   && coordinate.x < static_cast<int>(get_positioner_offset()
-											  + get_positioner_length())
-		   && coordinate.y > 0 && coordinate.y < static_cast<int>(get_height());
+	return
+		coordinate.x >= static_cast<int>(get_positioner_offset()) &&
+		coordinate.x <  static_cast<int>(get_positioner_offset() + get_positioner_length()) &&
+		coordinate.y > 0 &&
+		coordinate.y <  static_cast<int>(get_height());
 }
 
 int slider::on_bar(const point& coordinate) const
@@ -215,22 +212,24 @@ bool slider::in_orthogonal_range(const point& coordinate) const
 	return static_cast<size_t>(coordinate.x) < (get_width() - offset_after());
 }
 
-/*void slider::update_current_item_mouse_position()
+#if 0
+void slider::update_current_item_mouse_position()
 {
 	point mouse = get_mouse_position();
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 
 	current_item_mouse_position_ = mouse;
-}*/
+}
 
 /* TODO: this is designed to allow the slider to snap to value on drag. However, it lags behind the
  * mouse cursor too much and seems to cause problems with certain slider values. Will have to look
  * into this further.
  */
-/*void slider::move_positioner(const int)
+void slider::move_positioner(const int)
 {
-	const int distance_from_last_item = get_length_difference(current_item_mouse_position_, get_mouse_position_last_move());
+	const int distance_from_last_item =
+		get_length_difference(current_item_mouse_position_, get_mouse_position_last_move());
 
 	if(std::abs(distance_from_last_item) >= get_pixels_per_step()) {
 		const int steps_traveled = distance_from_last_item / get_pixels_per_step();
@@ -246,16 +245,15 @@ bool slider::in_orthogonal_range(const point& coordinate) const
 
 		update_canvas();
 	}
-}*/
+}
+#endif
 
 void slider::update_canvas()
 {
-
 	// Inherited.
 	scrollbar_base::update_canvas();
 
-	for(auto & tmp : get_canvases())
-	{
+	for(auto& tmp : get_canvases()) {
 		tmp.set_variable("text", wfl::variant(get_value_label()));
 	}
 }
@@ -278,11 +276,8 @@ void slider::handle_key_increase(bool& handled)
 	scroll(scrollbar_base::ITEM_FORWARD);
 }
 
-void slider::signal_handler_sdl_key_down(const event::ui_event event,
-										  bool& handled,
-										  const SDL_Keycode key)
+void slider::signal_handler_sdl_key_down(const event::ui_event event, bool& handled, const SDL_Keycode key)
 {
-
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	if(key == SDLK_DOWN || key == SDLK_LEFT) {
@@ -294,17 +289,18 @@ void slider::signal_handler_sdl_key_down(const event::ui_event event,
 	}
 }
 
-/*void slider::signal_handler_left_button_down(const event::ui_event event, bool& handled)
+#if 0
+void slider::signal_handler_left_button_down(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	update_current_item_mouse_position();
 
 	handled = true;
-}*/
+}
+#endif
 
-void slider::signal_handler_left_button_up(const event::ui_event event,
-											bool& handled)
+void slider::signal_handler_left_button_up(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -322,7 +318,7 @@ static t_string default_value_label_generator(const std::vector<t_string>& value
 
 void slider::set_value_labels(const std::vector<t_string>& value_labels)
 {
-	//dont use std::ref becasue we want to store value_labels in the cloasure.
+	// Don't use std::ref because we want to store value_labels in the closure.
 	set_value_labels(std::bind(&default_value_label_generator, value_labels, _1, _2));
 }
 
@@ -390,9 +386,7 @@ slider_definition::resolution::resolution(const config& cfg)
 	, left_offset(cfg["left_offset"])
 	, right_offset(cfg["right_offset"])
 {
-	VALIDATE(minimum_positioner_length,
-			 missing_mandatory_wml_key("resolution",
-									   "minimum_positioner_length"));
+	VALIDATE(minimum_positioner_length, missing_mandatory_wml_key("resolution", "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum state_t is slider.hpp.
 	state.emplace_back(cfg.child("state_enabled"));
@@ -456,7 +450,6 @@ slider_definition::resolution::resolution(const config& cfg)
 
 namespace implementation
 {
-
 builder_slider::builder_slider(const config& cfg)
 	: implementation::builder_styled_widget(cfg)
 	, best_slider_length_(cfg["best_slider_length"])
@@ -473,8 +466,7 @@ builder_slider::builder_slider(const config& cfg)
 		return;
 	}
 
-	for(const auto & label : labels.child_range("value"))
-	{
+	for(const auto& label : labels.child_range("value")) {
 		value_labels_.push_back(label["label"]);
 	}
 }
@@ -488,12 +480,12 @@ widget* builder_slider::build() const
 	widget->set_minimum_value(minimum_value_);
 	widget->set_step_size(step_size_);
 	widget->set_value(value_);
-	
+
 	widget->finalize_setup();
 
 	if(!value_labels_.empty()) {
 		VALIDATE(value_labels_.size() == widget->get_item_count(),
-				 _("The number of value_labels and values don't match."));
+				_("The number of value_labels and values don't match."));
 
 		widget->set_value_labels(value_labels_);
 
@@ -502,8 +494,7 @@ widget* builder_slider::build() const
 		widget->set_maximum_value_label(maximum_value_label_);
 	}
 
-	DBG_GUI_G << "Window builder: placed slider '" << id
-			  << "' with definition '" << definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed slider '" << id << "' with definition '" << definition << "'.\n";
 
 	return widget;
 }

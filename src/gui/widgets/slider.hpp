@@ -69,11 +69,11 @@ public:
 
 	/** Inherited from integer_selector. */
 	int get_maximum_value() const override
-	// The number of items needs to include the begin and end so count - 1.
 	{
+		// The number of items needs to include the begin and end so count - 1.
 		return minimum_value_ + get_item_count() - 1;
 	}
-	typedef std::function<t_string(int /*current position*/, int /*num positions*/)> tlabel_creator;
+
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_best_slider_length(const unsigned length)
@@ -93,6 +93,8 @@ public:
 	}
 
 	void set_value_labels(const std::vector<t_string>& value_labels);
+
+	typedef std::function<t_string(int /*current position*/, int /*num positions*/)> tlabel_creator;
 
 	void set_value_labels(const tlabel_creator& value_labels)
 	{
@@ -158,7 +160,7 @@ private:
 	}
 
 	/** Inherited from scrollbar_base. */
-	//void move_positioner(const int distance) override;
+	// void move_positioner(const int distance) override;
 
 	/** See @ref styled_widget::update_canvas. */
 	virtual void update_canvas() override;
@@ -190,7 +192,7 @@ private:
 	 */
 	point current_item_mouse_position_;
 
-	//void update_current_item_mouse_position();
+	// void update_current_item_mouse_position();
 
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
@@ -204,16 +206,13 @@ private:
 	/**
 	 * Signal handlers:
 	 */
-	void signal_handler_sdl_key_down(const event::ui_event event,
-									 bool& handled,
-									 const SDL_Keycode key);
+	void signal_handler_sdl_key_down(const event::ui_event event, bool& handled, const SDL_Keycode key);
 
-	//void signal_handler_left_button_down(const event::ui_event event, bool& handled);
+	// void signal_handler_left_button_down(const event::ui_event event, bool& handled);
 
 	// In this subclass, only used to grab keyboard focus -
 	// see scrollbar_base class for more handling of this event.
-	void signal_handler_left_button_up(const event::ui_event event,
-									   bool& handled);
+	void signal_handler_left_button_up(const event::ui_event event, bool& handled);
 };
 
 // }---------- DEFINITION ---------{
@@ -238,7 +237,6 @@ struct slider_definition : public styled_widget_definition
 
 namespace implementation
 {
-
 struct builder_slider : public builder_styled_widget
 {
 	explicit builder_slider(const config& cfg);
