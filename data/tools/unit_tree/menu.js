@@ -5,17 +5,57 @@ var wmlunits_menu_setup = (function() {
     var menus = [];
     var visibleMenu = false;
 
+    //
+    // Legacy browser support functions (IE 9 only, really)
+    //
+
+    function removeClass(e, classId)
+    {
+        var prevClasses = e.className.split(/\s+/),
+            newClasses = [];
+
+        for (var i = 0; i < prevClasses.length; ++i) {
+            if (prevClasses[i] != classId) {
+                newClasses.push(prevClasses[i]);
+            }
+        }
+
+        e.className = newClasses.join(" ");
+    }
+
+    function toggleClass(e, classId)
+    {
+        var prevClasses = e.className.split(/\s+/),
+            newClasses = [],
+            foundClass = false;
+
+        for (var i = 0; i < prevClasses.length; ++i) {
+            if (prevClasses[i] == classId) {
+                foundClass = true;
+            } else {
+                newClasses.push(prevClasses[i]);
+            }
+        }
+
+        if (!foundClass) {
+            newClasses.push(classId);
+        }
+
+        e.className = newClasses.join(" ");
+
+        return !foundClass;
+    }
+
+    //
+    // The main stuff
+    //
+
     function toggleMenu(event, menu)
     {
-        hideMenus(menu);
+        var menu = event.target.nextElementSibling;
 
-        if (!menu.style.display || menu.style.display === "none") {
-            menu.style.display = "block";
-            visibleMenu = true;
-        } else {
-            menu.style.display = "none";
-            visibleMenu = false;
-        }
+        hideMenus(menu);
+        visibleMenu = toggleClass(event.target, "menu-visible");
     }
 
     function hideMenus(skipMenu)
@@ -26,7 +66,7 @@ var wmlunits_menu_setup = (function() {
 
         for (var i = 0; i < menus.length; ++i) {
             if (menus[i] !== skipMenu) {
-                menus[i].style.display = "none";
+                removeClass(menus[i].previousElementSibling, "menu-visible");
             }
         }
     }
@@ -56,7 +96,7 @@ var wmlunits_menu_setup = (function() {
         a.addEventListener("click", function(event) {
             event.preventDefault();
             event.stopPropagation();
-            toggleMenu(event, event.target.nextElementSibling);
+            toggleMenu(event);
         }, false);
     }
 

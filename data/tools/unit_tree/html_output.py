@@ -489,7 +489,7 @@ class HTMLOutput:
                     abbrev += name[i]
             return abbrev
 
-        def add_menu(menuid, name, classes='', is_table_container=False):
+        def add_menu(menuid, name, classes='', url='', is_table_container=False):
             """
             Writes the initial portion of a sidebar item, including the item's
             label, the start tag for the popup menu container, and the label
@@ -498,20 +498,29 @@ class HTMLOutput:
             If is_table_container=True, the popup menu prolog is suitable for
             a table (currently used for the Language menu). This will be
             removed one day, hopefully. (TODO)
+
+            The url parameter allows setting a destination URL for the menu
+            header, which will be a link if it is set to a non-empty string.
             """
             html_name = cleantext(name)
             html_classes = " ".join((cleantext(classes), "popuptrigger"))
             write('<li class="popupcontainer" role="menuitem" aria-haspopup="true">')
             write('<a class="' + html_classes + '" href="#">' + html_name + '</a>')
-            write('<div id="%s" class="popupmenu" role="menu" aria-label="%s">' %
-                  (menuid, html_name))
-            write('<div class="popupheader">' + html_name + '</div>')
+            if menuid:
+                write('<div id="%s" class="popupmenu" role="menu" aria-label="%s">' %
+                      (menuid, html_name))
+            else:
+                write('<div class="popupmenu" role="menu" aria-label="%s">' % html_name)
+            if url:
+                write('<a class="popupheader" href="' + url + '">' + html_name + '</a>')
+            else:
+                write('<div class="popupheader">' + html_name + '</div>')
             if not is_table_container:
                 write('<ul>')
 
         def add_menuitem_placeholder():
             """Writes a horizontal bar serving as a menu placeholder."""
-            write('<li>' + HTML_ENTITY_HORIZONTAL_BAR + '</li>')
+            write('<li class="menuplaceholder">' + HTML_ENTITY_HORIZONTAL_BAR + '</li>')
 
         def add_menuitem(url, label, standalone=False, title=''):
             """
@@ -624,23 +633,14 @@ class HTMLOutput:
                 races[racename] = runits
 
             racelist = sorted(races.keys())
-            got_menu = False
-            menuid = 0
             for r in racelist:
                 # Some add-ons use race names consisting of only whitespace for
                 # hiding races in the UI. We need to skip those since otherwise
                 # they result in unusual markup (e.g. invisible <a> elements).
                 if not r.strip():
                     continue
-                if got_menu:
-                    end_menu()
-                add_menu("units_menu" + str(menuid), r, "unitmenu")
-                menuid += 1
-                got_menu = True
-                c = self.campaign
-                if c == "units":
-                    c = "mainline"
-                add_menuitem('%s#%s' % (cleanurl(target), cleanurl(r)), r)
+                race_url = "%s#%s" % (cleanurl(target), cleanurl(r))
+                add_menu("", r, "unitmenu", url=race_url)
                 for uid in races[r]:
                     un = self.wesnoth.unit_lookup[uid]
                     if un.hidden:
@@ -656,7 +656,6 @@ class HTMLOutput:
                         error_message("Warning: Unit uid=" + uid + " has no name.\n")
                         name = uid
                     add_menuitem(link, name)
-            if got_menu:
                 end_menu()
 
         # Languages
@@ -1433,7 +1432,7 @@ def html_postprocess_file(filename, isocode, batchlist):
             chtml += '<li><a title="%s" href="%s" role="menuitem">%s</a></li>\n' % (
                 cleantext(campname), url, cleantext(campname, quote=False))
         if i == 0 and cids[1]:
-            chtml += '<li>%s</li>\n' % HTML_ENTITY_HORIZONTAL_BAR
+            chtml += '</ul><ul>'
 
     eids = [[], []]
     for addon in batchlist:
@@ -1457,7 +1456,7 @@ def html_postprocess_file(filename, isocode, batchlist):
             ehtml += '<li><a title="%s" href="%s" role="menuitem">%s</a></li>\n' % (
                 cleantext(eraname), url, cleantext(eraname, quote=False))
         if i == 0 and eids[1]:
-            ehtml += '<li>%s</li>\n' % HTML_ENTITY_HORIZONTAL_BAR
+            ehtml += '</ul><ul>'
 
     f = open(filename, "r+b")
     html = f.read().decode("utf8")
