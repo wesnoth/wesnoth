@@ -71,6 +71,7 @@ function callbacks.generate_map(params)
 	local passages = {}
 
 	for chamber in wml.child_range(params, "chamber") do
+		if chamber.ignore then goto continue end
 		local chance = tonumber(chamber.chance) or 100
 		local x, y = MG.random_location(chamber.x, chamber.y)
 		-- Note: x,y run from (0,0) to (w+1,h+1)
@@ -124,6 +125,7 @@ function callbacks.generate_map(params)
 		})
 		chambers_by_id[id] = chambers[#chambers]
 		for passage in wml.child_range(chamber, "passage") do
+			if passage.ignore then goto continue end
 			local dst = chambers_by_id[passage.destination]
 			if dst ~= nil then
 				local road_costs, road_ops = {}, {}
@@ -141,6 +143,7 @@ function callbacks.generate_map(params)
 					roads = road_ops,
 				})
 			end
+			::continue::
 		end
 		::continue::
 	end
