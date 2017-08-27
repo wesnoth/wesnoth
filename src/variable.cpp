@@ -124,16 +124,17 @@ vconfig vconfig::unconstructed_vconfig()
  * It is perfectly safe to call this for a vconfig that already manages its memory.
  * This does not work on a null() vconfig.
  */
-void vconfig::make_safe() const
+const vconfig& vconfig::make_safe() const
 {
 	// Nothing to do if we already manage our own memory.
 	if ( memory_managed() )
-		return;
+		return *this;
 
 	// Make a copy of our config.
 	cache_.reset(new config(*cfg_));
 	// Use our copy instead of the original.
 	cfg_ = cache_.get();
+	return *this;
 }
 
 config vconfig::get_parsed_config() const
