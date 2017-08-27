@@ -60,6 +60,7 @@ public:
 	/// Equivalent to vconfig(cfg, false).
 	/// Do not use if the vconfig will persist after @a cfg is destroyed!
 	explicit vconfig(const config &cfg) : cache_(), cfg_(&cfg) {}
+	explicit vconfig(config &&cfg) : cache_(new config(std::move(cfg))), cfg_(cache_.get()) { }
 	vconfig(const config &cfg, bool manage_memory);
 	~vconfig();
 
@@ -70,7 +71,7 @@ public:
 	explicit operator bool() const	{ return !null(); }
 
 	bool null() const { assert(cfg_); return cfg_ == &default_empty_config; }
-	void make_safe() const; //!< instruct the vconfig to make a private copy of its underlying data.
+	const vconfig& make_safe() const; //!< instruct the vconfig to make a private copy of its underlying data.
 	const config& get_config() const { return *cfg_; }
 	config get_parsed_config() const;
 

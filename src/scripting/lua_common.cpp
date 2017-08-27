@@ -799,7 +799,7 @@ bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
 			config cfg;
 			bool ok = luaW_toconfig(L, index, cfg);
 			if (!ok) return false;
-			vcfg = vconfig(cfg, true);
+			vcfg = vconfig(std::move(cfg));
 			break;
 		}
 		case LUA_TUSERDATA:

@@ -47,8 +47,7 @@ namespace ai {
 		}
 		lua_getfield(L, n, "own");
 		if(lua_istable(L, -1)) {
-			config cfg;
-			vconfig vcfg(cfg, true);
+			vconfig vcfg(config(), true);
 			if(luaW_tovconfig(L, -1, vcfg)) {
 				att->filter_own_.reset(new unit_filter(vcfg, resources::filter_con));
 			}
@@ -59,8 +58,7 @@ namespace ai {
 		}
 		lua_getfield(L, n, "enemy");
 		if(lua_istable(L, -1)) {
-			config cfg;
-			vconfig vcfg(cfg, true);
+			vconfig vcfg(config(), true);
 			if(luaW_tovconfig(L, -1, vcfg)) {
 				att->filter_enemy_.reset(new unit_filter(vcfg, resources::filter_con));
 			}
