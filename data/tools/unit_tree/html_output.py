@@ -1000,13 +1000,13 @@ class HTMLOutput:
             if fname and fname != uname:
                 display_name += " / " + cleantext(fname)
 
-        write('<div class="unit-columns">')
+        write('<div id="unit-summary" class="unit-columns">\n')
 
-        write('<div class="unit-column-left">')
+        write('<div id="unit-desc" class="unit-column-left">\n')
 
         write('<h1>%s</h1>\n' % display_name)
 
-        write('<div class="pic">')
+        write('<div id="unit-sprites" class="pic">')
         if female:
             mimage, portrait = self.pic(unit, unit)
             fimage, fportrait = self.pic(unit, female[0])
@@ -1030,6 +1030,32 @@ class HTMLOutput:
         if not description:
             description = HTML_ENTITY_HORIZONTAL_BAR
         write('<p>%s</p>\n' % re.sub('\n', '\n<br />', description))
+
+        write('</div> <!-- #unit-desc -->\n')
+
+        write('<div id="unit-portraits" class="unit-column-right">\n')
+        for si in range(2):
+            if si and not female:
+                break
+            if si:
+                sportrait = fportrait
+                simage = fimage
+            else:
+                simage = image
+                sportrait = portrait
+
+            style = "background-image:url('%s');" % cleanurl(simage)
+
+            write('<div class="portrait">')
+            write('<div style="%s">&nbsp;</div>' % style)
+            if portrait:
+                write('<img src="%s" alt="(portrait)" />\n' % cleanurl(sportrait))
+            write('</div>')
+        write('</div>\n')
+
+        write('</div> <!-- #unit-summary -->\n')
+
+        write('<div id="unit-details" class="unit-columns">\n<div class="unit-column-left">\n')
 
         write('<h2>Information</h2>\n')
         write('<table class="unitinfo">\n')
@@ -1204,24 +1230,6 @@ class HTMLOutput:
         write('</div>')
         write('<div class="unit-column-right">')
 
-        for si in range(2):
-            if si and not female:
-                break
-            if si:
-                sportrait = fportrait
-                simage = fimage
-            else:
-                simage = image
-                sportrait = portrait
-
-            style = "background-image:url('%s');" % cleanurl(simage)
-
-            write('<div class="portrait">')
-            write('<div style="%s">&nbsp;</div>' % style)
-            if portrait:
-                write('<img src="%s" alt="(portrait)" />\n' % cleanurl(sportrait))
-            write('</div>')
-
         # Write info about movement costs and terrain defense.
         write('<h2>' + cleantext(_("Terrain"), quote=False) + '</h2>\n')
         write('<table class="unitinfo terrain">\n')
@@ -1304,9 +1312,9 @@ class HTMLOutput:
             write('</tr>\n')
         write('</table>\n')
 
-        write('</div>') # right column
+        write('</div>\n')
 
-        write('</div>') # columns parent
+        write('</div> <!-- #unit-details -->\n')
 
         self.output.write(HTML_CLEAR_FLOATS)
         self.output.write(build_timestamp())
