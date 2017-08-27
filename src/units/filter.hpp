@@ -98,7 +98,6 @@ public:
 		, impl_(cfg_)
 		, max_matches_(-1)
 	{
-		cfg_.make_safe();
 	}
 
 	unit_filter(const unit_filter&) = default;
