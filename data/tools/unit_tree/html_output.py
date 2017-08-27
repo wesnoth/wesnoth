@@ -896,30 +896,34 @@ class HTMLOutput:
                             write('</div>')
 
                         # Write info about attacks.
-                        write('\n<div class="attacks">')
                         attacks = self.get_recursive_attacks(u)
-                        for attack in attacks:
-                            n = T(attack, "number")
-                            x = T(attack, "damage")
-                            x = "%s %s %s " % (cleantext(x, quote=False), HTML_ENTITY_MULTIPLICATION_SIGN, cleantext(n, quote=False))
-                            write(x)
+                        if attacks:
+                            write('\n<div class="attacks">')
+                            first_attack = True
+                            for attack in attacks:
+                                if not first_attack:
+                                    write('<br />')
+                                first_attack = False
+                                n = T(attack, "number")
+                                x = T(attack, "damage")
+                                x = "%s %s %s " % (cleantext(x, quote=False), HTML_ENTITY_MULTIPLICATION_SIGN, cleantext(n, quote=False))
+                                write(x)
 
-                            r = T(attack, "range")
-                            t = T(attack, "type")
-                            write(cleantext("%s (%s)" % (_(r), _(t)), quote=False))
+                                r = T(attack, "range")
+                                t = T(attack, "type")
+                                write(cleantext("%s (%s)" % (_(r), _(t)), quote=False))
 
-                            s = []
-                            specials = attack.get_all(tag="specials")
-                            if specials:
-                                for special in specials[0].get_all(tag=""):
-                                    sname = T(special, "name")
-                                    if sname:
-                                        s.append(sname)
-                                s = ", ".join(s)
-                                if s:
-                                    write(" (%s)" % cleantext(s, quote=False))
-                            write('<br />')
-                        write('</div>')
+                                s = []
+                                specials = attack.get_all(tag="specials")
+                                if specials:
+                                    for special in specials[0].get_all(tag=""):
+                                        sname = T(special, "name")
+                                        if sname:
+                                            s.append(sname)
+                                    s = ", ".join(s)
+                                    if s:
+                                        write(" (%s)" % cleantext(s, quote=False))
+                            write('</div>')
 
                         write('</div>')
                         write('</td>\n')
@@ -1110,57 +1114,59 @@ class HTMLOutput:
         write('</table>\n')
 
         # Write info about attacks.
-        write('<h2>%s <small>(damage %s count)</small></h2>\n' %
-              (cleantext(_("unit help^Attacks"), quote=False),
-               HTML_ENTITY_MULTIPLICATION_SIGN))
-        write('<table class="unitinfo attacks">\n')
-        write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /></colgroup>')
         attacks = self.get_recursive_attacks(unit)
-        for attack in attacks:
-            write('<tr>')
+        if attacks:
+            write('<h2>%s <small>(damage %s count)</small></h2>\n' %
+                  (cleantext(_("unit help^Attacks"), quote=False),
+                  HTML_ENTITY_MULTIPLICATION_SIGN))
+            write('<table class="unitinfo attacks">\n')
+            write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /></colgroup>')
 
-            aid = attack.get_text_val("name")
-            aname = T(attack, "description")
+            for attack in attacks:
+                write('<tr>')
 
-            icon = attack.get_text_val("icon")
-            if not icon:
-                icon = "attacks/%s.png" % aid
+                aid = attack.get_text_val("name")
+                aname = T(attack, "description")
 
-            image_add = image_collector.add_image_check(self.addon, icon, no_tc=True)
-            if not image_add.ipath:
-                error_message("Error: No attack icon '%s' found for '%s'.\n" % (
-                    icon, uid))
-                icon = os.path.join(PICS_LOCATION, "unit$elves-wood$shaman.png")
-            else:
-                icon = os.path.join(PICS_LOCATION, image_add.id_name)
-            write('<td><img src="%s" alt="(image)"/></td>' % cleanurl(icon))
+                icon = attack.get_text_val("icon")
+                if not icon:
+                    icon = "attacks/%s.png" % aid
 
-            write('<td><b>%s</b>' % cleantext(aname, quote=False))
+                image_add = image_collector.add_image_check(self.addon, icon, no_tc=True)
+                if not image_add.ipath:
+                    error_message("Error: No attack icon '%s' found for '%s'.\n" % (
+                        icon, uid))
+                    icon = os.path.join(PICS_LOCATION, "unit$elves-wood$shaman.png")
+                else:
+                    icon = os.path.join(PICS_LOCATION, image_add.id_name)
+                write('<td><img src="%s" alt="(image)"/></td>' % cleanurl(icon))
 
-            r = T(attack, "range")
-            write('<br/>%s</td>' % cleantext(_(r), quote=False))
+                write('<td><b>%s</b>' % cleantext(aname, quote=False))
 
-            n = attack.get_text_val("number")
-            x = attack.get_text_val("damage")
-            x = '%s %s %s' % (cleantext(x, quote=False), HTML_ENTITY_MULTIPLICATION_SIGN, cleantext(n, quote=False))
-            write('<td><i>%s</i>' % x)
+                r = T(attack, "range")
+                write('<br/>%s</td>' % cleantext(_(r), quote=False))
 
-            t = T(attack, "type")
-            write('<br/>%s</td>' % cleantext(_(t), quote=False))
+                n = attack.get_text_val("number")
+                x = attack.get_text_val("damage")
+                x = '%s %s %s' % (cleantext(x, quote=False), HTML_ENTITY_MULTIPLICATION_SIGN, cleantext(n, quote=False))
+                write('<td><i>%s</i>' % x)
 
-            s = []
-            specials = attack.get_all(tag="specials")
-            if specials:
-                for special in specials[0].get_all(tag=""):
-                    sname = T(special, "name")
-                    if sname:
-                        s.append(cleantext(sname, quote=False))
-                    else:
-                        error_message("Warning: Weapon special %s has no name for %s.\n" %
-                                      (special.name.decode("utf8"), uid))
-            write('<td>%s</td>' % '<br/>'.join(s))
-            write('</tr>')
-        write('</table>\n')
+                t = T(attack, "type")
+                write('<br/>%s</td>' % cleantext(_(t), quote=False))
+
+                s = []
+                specials = attack.get_all(tag="specials")
+                if specials:
+                    for special in specials[0].get_all(tag=""):
+                        sname = T(special, "name")
+                        if sname:
+                            s.append(cleantext(sname, quote=False))
+                        else:
+                            error_message("Warning: Weapon special %s has no name for %s.\n" %
+                                          (special.name.decode("utf8"), uid))
+                write('<td>%s</td>' % '<br/>'.join(s))
+                write('</tr>')
+            write('</table>\n')
 
         # Write info about resistances.
         write('<h2>%s</h2>\n' % _("Resistances: ").strip(" :"))
