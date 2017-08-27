@@ -52,6 +52,8 @@ Version 1.13.11:
      unit.loc = {x, y} or unit.loc = {x = x, y = y}
    * Added side.chose_random getter.
    * Added unit_type.profile and unit_type.small_profile getters.
+   * Lua GUI2 API: added support for slider callbacks via
+     wesnoth.set_dialog_callback.
  * Multiplayer:
    * Dark Forecast: Fixed broken faction and leader selection.
    * Rename the Khalifate to Dunefolk. This includes renaming all the faction's
