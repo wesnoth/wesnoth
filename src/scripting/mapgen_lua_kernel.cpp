@@ -305,7 +305,7 @@ void mapgen_lua_kernel::run_generator(const char * prog, const config & generato
 void mapgen_lua_kernel::user_config(const char * prog, config & generator)
 {
 	run_generator(prog, generator);
-	if(!luaW_toconfig(mState, -1, generator)) {
+	if(!lua_isnoneornil(mState, -1) && !luaW_toconfig(mState, -1, generator)) {
 		std::string msg = "expected a string, found a ";
 		msg += lua_typename(mState, lua_type(mState, -1));
 		lua_pop(mState, 1);
