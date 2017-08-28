@@ -26,6 +26,7 @@
 
 #include <SDL.h>
 #include <key.hpp>
+#include <serialization/unicode.hpp>
 
 
 static lg::log_domain log_config("config");
@@ -161,7 +162,7 @@ hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event)
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 		std::string text =  std::string(event.text.text);
 		keyboard->set_text(text);
-		if (text == ":") {
+		if(text == ":" || text == "`") {
 			mods = mods & ~KMOD_SHIFT;
 		}
 	}
@@ -298,10 +299,10 @@ bool hotkey_keyboard::matches_helper(const SDL_Event &event) const
 	if (event.type == SDL_TEXTINPUT) {
 		std::string text = std::string(event.text.text);
 		boost::algorithm::to_lower(text);
-		if (text == ":") {
+		if(text == ":" || text == "`") {
 			mods = mods & ~KMOD_SHIFT;
 		}
-		return text_ == text && mods == mod_;
+		return text_ == text && utf8::size(utf8::string(event.text.text)) == 1 && mods == mod_;
 	}
 
 	return false;

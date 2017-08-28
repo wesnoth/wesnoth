@@ -29,7 +29,6 @@
 #include "display.hpp"
 #include "quit_confirmation.hpp"
 #include "show_dialog.hpp"
-#include "serialization/unicode.hpp"
 
 #include "utils/functional.hpp"
 
@@ -521,15 +520,6 @@ static void event_execute( const SDL_Event& event, command_executor* executor)
 			event.type == SDL_JOYBUTTONDOWN ||
 			event.type == SDL_MOUSEBUTTONDOWN ||
 			event.type == SDL_TEXTINPUT;
-
-	if(event.type == SDL_KEYDOWN) {
-		unsigned mods = event.key.keysym.mod;
-		if(!CKey::is_uncomposable(event.key) && !(mods & KMOD_CTRL) && !(mods & KMOD_ALT) && !(mods & KMOD_GUI)) {
-				return;
-		}
-	} else if(event.type == SDL_TEXTINPUT && !(event.text.text[31] == 0 && utf8::size(utf8::string(event.text.text)) == 1)) {
-		return;
-	}
 
 	execute_command(hotkey::get_hotkey_command(hk->get_command()), executor, -1, press);
 	executor->set_button_state();
