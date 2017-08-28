@@ -126,11 +126,7 @@ public:
 	terrain_label(const map_labels&, const config&);
 
 	/** Move ctor. */
-#if defined(_MSC_VER) && _MSC_VER < 1900
 	terrain_label(terrain_label&&);
-#else
-	terrain_label(terrain_label&&) = default;
-#endif
 
 	~terrain_label();
 
