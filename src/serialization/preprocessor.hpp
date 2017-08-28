@@ -17,51 +17,99 @@
 
 #pragma once
 
+#include "filesystem.hpp"
 #include <iosfwd>
 #include <map>
 #include <vector>
-#include "filesystem.hpp"
 
 #include "exceptions.hpp"
 
 class config_writer;
 class config;
 
-struct preproc_define;
-typedef std::map< std::string, preproc_define > preproc_map;
+typedef std::map<std::string, struct preproc_define> preproc_map;
 
 struct preproc_define
 {
-	preproc_define() : value(), arguments(), optional_arguments(), textdomain(), linenum(0), location() {}
-	explicit preproc_define(const std::string& val) : value(val), arguments(), optional_arguments(), textdomain(), linenum(0), location() {}
-	preproc_define(const std::string& val, const std::vector< std::string > &args, const std::map< std::string, std::string> &optargs,
-	               const std::string& domain, int line, const std::string& loc)
-		: value(val), arguments(args), optional_arguments(optargs), textdomain(domain), linenum(line), location(loc) {}
+	preproc_define()
+		: value()
+		, arguments()
+		, optional_arguments()
+		, textdomain()
+		, linenum(0)
+		, location()
+	{
+	}
+
+	explicit preproc_define(const std::string& val)
+		: value(val)
+		, arguments()
+		, optional_arguments()
+		, textdomain()
+		, linenum(0)
+		, location()
+	{
+	}
+
+	preproc_define(const std::string& val,
+			const std::vector<std::string>& args,
+			const std::map<std::string, std::string>& optargs,
+			const std::string& domain,
+			int line,
+			const std::string& loc)
+		: value(val)
+		, arguments(args)
+		, optional_arguments(optargs)
+		, textdomain(domain)
+		, linenum(line)
+		, location(loc)
+	{
+	}
+
 	std::string value;
-	std::vector< std::string > arguments;
-	std::map< std::string, std::string> optional_arguments;
+
+	std::vector<std::string> arguments;
+
+	std::map<std::string, std::string> optional_arguments;
+
 	std::string textdomain;
+
 	int linenum;
+
 	std::string location;
+
 	void write(config_writer&, const std::string&) const;
 	void write_argument(config_writer&, const std::string&) const;
+
 	void read(const config&);
-	void read_argument(const config &);
-	static preproc_map::value_type read_pair(const config &);
-	bool operator==(preproc_define const &) const;
-	bool operator<(preproc_define const &) const;
-	bool operator!=(preproc_define const &v) const { return !operator==(v); }
+	void read_argument(const config&);
+
+	static preproc_map::value_type read_pair(const config&);
+
+	bool operator==(preproc_define const&) const;
+
+	bool operator<(preproc_define const&) const;
+
+	bool operator!=(preproc_define const& v) const
+	{
+		return !operator==(v);
+	}
 };
 
 std::ostream& operator<<(std::ostream& stream, const preproc_define& def);
 
-struct preproc_config {
-	struct error : public game::error {
-		error(const std::string& message) : game::error(message) {}
+struct preproc_config
+{
+	struct error : public game::error
+	{
+		error(const std::string& message)
+			: game::error(message)
+		{
+		}
 	};
 };
 
-std::string lineno_string(const std::string &lineno);
+std::string lineno_string(const std::string& lineno);
 
 std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& def);
 
@@ -72,7 +120,10 @@ std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& de
  *
  * @returns                       The resulting preprocessed file data.
  */
-filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map *defines = nullptr);
+filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map* defines = nullptr);
 
-void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
-			bool write_cfg=false, bool write_plain_cfg=false, const std::string& target_directory="");
+void preprocess_resource(const std::string& res_name,
+		preproc_map* defines_map,
+		bool write_cfg = false,
+		bool write_plain_cfg = false,
+		const std::string& target_directory = "");
