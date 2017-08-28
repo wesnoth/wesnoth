@@ -663,7 +663,6 @@ class HTMLOutput:
         cell = 0
         col = 0
         colcount = 5
-        lastcell = len(langlist) - 1
         write('<table>')
         write('<tr>')
         for lang in langlist:
@@ -675,12 +674,12 @@ class HTMLOutput:
             # TODO: Maybe use the language name instead of its code for the label?
             add_menuitem(url, lang, title=languages[lang], standalone=True)
             write('</td>')
-            if cell % colcount == 0:
-                if cell < lastcell:
-                    write('</tr><tr>')
+            if col >= colcount:
                 col = 0
+                if cell < len(langlist):
+                    write('</tr><tr>')
         if col:
-            for i in range(colcount - col + 1, colcount):
+            for i in range(col + 1, colcount + 1):
                 write('<td></td>')
         write('</tr>')
         write('</table>')
