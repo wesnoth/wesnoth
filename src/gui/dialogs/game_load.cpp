@@ -388,6 +388,19 @@ void game_load::delete_button_callback(window& window)
 
 void game_load::key_press_callback(window& window, const SDL_Keycode key)
 {
+	//
+	// Don't delete games when we're typing in the textbox!
+	//
+	// I'm not sure if this check was necessary when I first added this feature
+	// (I didn't check at the time), but regardless, it's needed now. If it turns
+	// out I screwed something up in my refactoring, I'll remove this.
+	//
+	// - vultraz, 2017-08-28
+	//
+	if(find_widget<text_box>(&window, "txtFilter", false).get_state() == text_box_base::FOCUSED) {
+		return;
+	}
+
 	if(key == SDLK_DELETE) {
 		delete_button_callback(window);
 	}

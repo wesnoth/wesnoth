@@ -272,7 +272,6 @@ public:
 	
 	void interrupt_composition();
 
-private:
 	/** Note the order of the states must be the same as defined in
 	 * settings.hpp. */
 	enum state_t {
@@ -281,6 +280,7 @@ private:
 		FOCUSED,
 	};
 
+private:
 	void set_state(const state_t state);
 
 	virtual void toggle_cursor_timer(bool enable);
