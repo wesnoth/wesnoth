@@ -56,10 +56,16 @@ namespace unit_filter_impl
 	struct unit_filter_args
 	{
 		const unit& u;
-		const map_location loc;
+		map_location loc;
 		const unit* u2;
-		const filter_context * fc;
-		const bool use_flat_tod;
+		const filter_context* fc;
+		bool use_flat_tod;
+
+		// This constructor is here to shut down warnings that the default constructor couldn't be generated.
+		// It's technically unnecessary since lacking of a default constructor doesn't prevent aggregate-initialization, but...
+		unit_filter_args(const unit& u, map_location loc, const unit* u2, const filter_context* fc, bool use_flat_tod)
+			: u(u), loc(loc), u2(u2), fc(fc), use_flat_tod(use_flat_tod)
+		{}
 	};
 
 	struct unit_filter_base
@@ -82,7 +88,7 @@ namespace unit_filter_impl
 		virtual bool matches(const unit_filter_args& u) const override;
 		bool filter_impl(const unit_filter_args& u) const;
 
-		std::vector<std::unique_ptr<unit_filter_base>> children_;
+		std::vector<std::shared_ptr<unit_filter_base>> children_;
 		std::vector<std::pair<CONDITIONAL_TYPE, unit_filter_compound>> cond_children_;
 	};
 	
@@ -101,10 +107,28 @@ public:
 	}
 
 	unit_filter(const unit_filter&) = default;
-	unit_filter(unit_filter&&) = default;
-
 	unit_filter& operator=(const unit_filter&) = default;
+
+#if defined(_MSC_VER) && _MSC_VER < 1900
+	unit_filter(unit_filter&& u)
+		: cfg_(std::move(u.cfg_))
+		, fc_(u.fc_)
+		, use_flat_tod_(u.use_flat_tod_)
+		, impl_(std::move(u.impl_))
+		, max_matches_(u.max_matches_)
+	{}
+	unit_filter& operator=(unit_filter&& u)
+	{
+		cfg_ = std::move(u.cfg_);
+		fc_ = u.fc_;
+		use_flat_tod_ = u.use_flat_tod_;
+		impl_ = std::move(u.impl_);
+		max_matches_ = u.max_matches_;
+	}
+#else
+	unit_filter(unit_filter&&) = default;
 	unit_filter& operator=(unit_filter&&) = default;
+#endif
 
 	unit_filter& set_use_flat_tod(bool value) {
 		use_flat_tod_ = value;
