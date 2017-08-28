@@ -798,8 +798,7 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf& t,
 
 void preprocessor_data::push_token(token_desc::TOKEN_TYPE t)
 {
-	token_desc token(t, strings_.size(), linenum_);
-	tokens_.push_back(token);
+	tokens_.emplace_back(t, strings_.size(), linenum_);
 
 	if(t == token_desc::MACRO_SPACE) {
 		// Macro expansions do not have any associated storage at start.
