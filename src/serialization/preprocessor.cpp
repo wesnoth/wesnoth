@@ -30,6 +30,7 @@
 #include "wesconfig.h"
 
 #include <stdexcept>
+#include <deque>
 
 static lg::log_domain log_preprocessor("preprocessor");
 #define ERR_PREPROC LOG_STREAM(err, log_preprocessor)
@@ -235,11 +236,6 @@ public:
 	{
 	}
 
-	preprocessor* get_old_preprocessor()
-	{
-		return old_preprocessor_;
-	}
-
 	/**
 	 * Preprocesses and sends some text to the #target_ buffer.
 	 * @return false when the input has no data left.
@@ -256,8 +252,6 @@ public:
 	}
 
 private:
-	preprocessor* const old_preprocessor_;
-
 	std::string old_textdomain_;
 	std::string old_location_;
 
@@ -280,7 +274,7 @@ public:
 		: streambuf()
 		, out_buffer_("")
 		, buffer_()
-		, current_(nullptr)
+		, preprocessor_queue_()
 		, defines_(def)
 		, default_defines_()
 		, textdomain_(PACKAGE)
@@ -297,12 +291,23 @@ public:
 	void error(const std::string&, int);
 	void warning(const std::string&, int);
 
+	template<typename T, typename... A>
+	void add_preprocessor(A&&... args)
+	{
+		preprocessor_queue_.emplace_back(new T(*this, std::forward<A>(args)...));
+	}
+
+	preprocessor* current() const
+	{
+		return preprocessor_queue_.empty() ? nullptr : preprocessor_queue_.back().get();
+	}
+
 private:
 	preprocessor_streambuf(const preprocessor_streambuf& t)
 		: streambuf()
 		, out_buffer_("")
 		, buffer_()
-		, current_(nullptr)
+		, preprocessor_queue_()
 		, defines_(t.defines_)
 		, default_defines_()
 		, textdomain_(PACKAGE)
@@ -315,7 +320,7 @@ private:
 
 	virtual int underflow();
 
-	void restore_old_preprocessor(const preprocessor& current);
+	void restore_old_preprocessor();
 
 	/** Buffer read by the STL stream. */
 	std::string out_buffer_;
@@ -323,8 +328,8 @@ private:
 	/** Buffer filled by the #current_ preprocessor. */
 	std::stringstream buffer_;
 
-	/** Input preprocessor. */
-	preprocessor* current_;
+	/** Input preprocessor queue. */
+	std::deque<std::unique_ptr<preprocessor>> preprocessor_queue_;
 
 	preproc_map* defines_;
 	preproc_map default_defines_;
@@ -349,14 +354,12 @@ private:
 
 /** Preprocessor constructor. */
 preprocessor::preprocessor(preprocessor_streambuf& t)
-	: old_preprocessor_(t.current_)
-	, old_textdomain_(t.textdomain_)
+	: old_textdomain_(t.textdomain_)
 	, old_location_(t.location_)
 	, old_linenum_(t.linenum_)
 	, target_(t)
 {
 	++target_.depth_;
-	target_.current_ = this;
 }
 
 /**
@@ -392,16 +395,13 @@ int preprocessor_streambuf::underflow()
 
 	const int desired_fill_amount = 2000;
 
-	while(current_ && buffer_.rdbuf()->in_avail() < desired_fill_amount) {
+	while(current() && buffer_.rdbuf()->in_avail() < desired_fill_amount) {
 		// Process files and data chunks until the desired buffer size is reached
-		if(!current_->get_chunk()) {
-			// Delete the current preprocessor item to restore its predecessor
-			preprocessor* temp = current_;
-			restore_old_preprocessor(*temp);
-			delete temp;
+		if(!current()->get_chunk()) {
+			// Drop the current preprocessor item from the queue.
+			restore_old_preprocessor();
 		}
 	}
-
 
 	// Update the internal state and data pointers
 	out_buffer_ = buffer_.str();
@@ -426,20 +426,24 @@ int preprocessor_streambuf::underflow()
 * Appends location and domain directives to the buffer, so that the parser
 * notices these changes.
 */
-void preprocessor_streambuf::restore_old_preprocessor(const preprocessor& current)
+void preprocessor_streambuf::restore_old_preprocessor()
 {
-	if(!current.old_location_.empty()) {
-		buffer_ << "\376line " << current.old_linenum_ << ' ' << current.old_location_ << '\n';
+	preprocessor* current = this->current();
+
+	if(!current->old_location_.empty()) {
+		buffer_ << "\376line " << current->old_linenum_ << ' ' << current->old_location_ << '\n';
 	}
 
-	if(!current.old_textdomain_.empty() && textdomain_ != current.old_textdomain_) {
-		buffer_ << "\376textdomain " << current.old_textdomain_ << '\n';
+	if(!current->old_textdomain_.empty() && textdomain_ != current->old_textdomain_) {
+		buffer_ << "\376textdomain " << current->old_textdomain_ << '\n';
 	}
 
-	current_ = current.old_preprocessor_;
-	location_ = current.old_location_;
-	linenum_ = current.old_linenum_;
-	textdomain_ = current.old_textdomain_;
+	location_ = current->old_location_;
+	linenum_ = current->old_linenum_;
+	textdomain_ = current->old_textdomain_;
+
+	// Drop the preprocessor from the queue.
+	preprocessor_queue_.pop_back();
 
 	--depth_;
 }
@@ -448,14 +452,19 @@ std::string preprocessor_streambuf::get_current_file()
 {
 	unsigned nested_level = 0;
 
-	preprocessor* pre = current_;
+	preprocessor* pre = current();
 
-	while(pre && pre->is_macro()) {
+	// Iterate backwards over queue to get the last non-macro preprocessor.
+	for(auto& p = preprocessor_queue_.rbegin(); p != preprocessor_queue_.rend(); ++p) {
+		pre = p->get();
+
+		if(!pre || !pre->is_macro()) {
+			break;
+		}
+
 		if(pre->is_macro() == 1) {
 			++nested_level;
 		}
-
-		pre = pre->get_old_preprocessor();
 	}
 
 	std::string res;
@@ -533,7 +542,7 @@ void preprocessor_streambuf::warning(const std::string& warning_type, int l)
  * A preprocessor_file object is created when a preprocessor encounters an
  * inclusion directive that resolves to a file or directory, e.g. '{themes/}'.
  */
-class preprocessor_file : preprocessor
+class preprocessor_file : public preprocessor
 {
 public:
 	/** Constructor. It relies on preprocessor_data so it's implemented after that class is declared. */
@@ -554,7 +563,7 @@ public:
 				continue;
 			}
 
-			new preprocessor_file(target_, name);
+			target_.add_preprocessor<preprocessor_file>(name);
 			return true;
 		}
 
@@ -575,7 +584,7 @@ private:
  * Specialized preprocessor for handling any kind of input stream.
  * This is the core of the preprocessor.
  */
-class preprocessor_data : preprocessor
+class preprocessor_data : public preprocessor
 {
 	/** Description of a preprocessing chunk. */
 	struct token_desc
@@ -738,8 +747,10 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf& t, const std::strin
 		if(!file_stream->good()) {
 			ERR_PREPROC << "Could not open file " << name << std::endl;
 		} else {
-			new preprocessor_data(t, file_stream.release(), "", filesystem::get_short_wml_path(name), 1,
-					filesystem::directory_name(name), t.textdomain_, nullptr);
+			t.add_preprocessor<preprocessor_data>(file_stream.release(), "",
+				filesystem::get_short_wml_path(name), 1,
+				filesystem::directory_name(name), t.textdomain_, nullptr
+			);
 		}
 	}
 
@@ -1439,27 +1450,26 @@ bool preprocessor_data::get_chunk()
 				if(val.optional_arguments.size() > 0) {
 					for(const auto& argument : val.optional_arguments) {
 						if(defines->find(argument.first) == defines->end()) {
-							std::ostringstream res;
-							preprocessor_streambuf* buf = new preprocessor_streambuf(target_);
+							std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(target_));
 
 							buf->textdomain_ = target_.textdomain_;
-							std::istream in(buf);
+							std::istream in(buf.get());
 
 							std::istringstream* buffer = new std::istringstream(argument.second);
 
 							std::map<std::string, std::string>* temp_defines = new std::map<std::string, std::string>;
 							temp_defines->insert(defines->begin(), defines->end());
 
-							new preprocessor_data(*buf, buffer, val.location, "", val.linenum, dir, val.textdomain,
-									temp_defines, false);
+							buf->add_preprocessor<preprocessor_data>(
+								buffer, val.location, "", val.linenum, dir, val.textdomain, temp_defines, false);
+
+							std::ostringstream res;
 							res << in.rdbuf();
 
 							DBG_PREPROC << "Setting default for optional argument " << argument.first << " in macro "
 										<< symbol << "\n";
 
 							(*defines)[argument.first] = res.str();
-
-							delete buf;
 						}
 					}
 				}
@@ -1479,22 +1489,27 @@ bool preprocessor_data::get_chunk()
 
 				if(!slowpath_) {
 					DBG_PREPROC << "substituting macro " << symbol << '\n';
-					new preprocessor_data(
-							target_, buffer, val.location, "", val.linenum, dir, val.textdomain, defines, true);
+
+					target_.add_preprocessor<preprocessor_data>(
+						buffer, val.location, "", val.linenum, dir, val.textdomain, defines, true);
 				} else {
 					DBG_PREPROC << "substituting (slow) macro " << symbol << '\n';
-					std::ostringstream res;
-					preprocessor_streambuf* buf = new preprocessor_streambuf(target_);
+
+					std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(target_));
+
 					// Make the nested preprocessor_data responsible for
 					// restoring our current textdomain if needed.
 					buf->textdomain_ = target_.textdomain_;
+
+					std::ostringstream res;
 					{
-						std::istream in(buf);
-						new preprocessor_data(
-								*buf, buffer, val.location, "", val.linenum, dir, val.textdomain, defines, true);
+						std::istream in(buf.get());
+						buf->add_preprocessor<preprocessor_data>(
+							buffer, val.location, "", val.linenum, dir, val.textdomain, defines, true);
+
 						res << in.rdbuf();
 					}
-					delete buf;
+
 					put(res.str());
 				}
 			} else if(target_.depth_ < 40) {
@@ -1506,16 +1521,18 @@ bool preprocessor_data::get_chunk()
 					if(!slowpath_)
 						// nfname.size() - symbol.size() gives you an index into nfname
 						// This does not necessarily match the symbol though, as it can start with ~ or ./
-						new preprocessor_file(target_, nfname, nfname.size() - symbol.size());
+						target_.add_preprocessor<preprocessor_file>(nfname, nfname.size() - symbol.size());
 					else {
+						std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(target_));
+
 						std::ostringstream res;
-						preprocessor_streambuf* buf = new preprocessor_streambuf(target_);
 						{
-							std::istream in(buf);
-							new preprocessor_file(*buf, nfname, nfname.size() - symbol.size());
+							std::istream in(buf.get());
+							buf->add_preprocessor<preprocessor_file>(nfname, nfname.size() - symbol.size());
+
 							res << in.rdbuf();
 						}
-						delete buf;
+
 						put(res.str());
 					}
 				} else {
@@ -1592,7 +1609,7 @@ filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map
 
 	preprocessor_streambuf* buf = new preprocessor_streambuf(defines);
 
-	new preprocessor_file(*buf, fname);
+	buf->add_preprocessor<preprocessor_file>(fname);
 
 	return filesystem::scoped_istream(new preprocessor_deleter(buf, owned_defines));
 }
