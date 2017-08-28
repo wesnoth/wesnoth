@@ -373,33 +373,18 @@ bool wesnothd_connection::receive_data(config& result)
 
 wesnothd_connection::~wesnothd_connection()
 {
-	MPTEST_LOG;	
+	MPTEST_LOG;
+	stop();
 }
 
-//  wesnothd_connection_ptr
-
-
-wesnothd_connection_ptr& wesnothd_connection_ptr::operator=(wesnothd_connection_ptr&& other)
-{
-	MPTEST_LOG;
-	if(ptr_) {
-		ptr_->stop();
-		ptr_.reset();
-	}
-	ptr_ = std::move(other.ptr_);
-	return *this;
-}	
+//
+//  wesnothd_connection_ptr generator
+//
 
 wesnothd_connection_ptr wesnothd_connection::create(const std::string& host, const std::string& service)
 {
-	//can't use make_shared becasue the ctor is private
-	return wesnothd_connection_ptr(std::shared_ptr<wesnothd_connection>(new wesnothd_connection(host, service)));
-}
-
-wesnothd_connection_ptr::~wesnothd_connection_ptr()
-{
-	MPTEST_LOG;
-	if(ptr_) {
-		ptr_->stop();
-	}
+	// We can't use std::make_shared here since the wesnothd_connection ctor 
+	// is private since we want only this function to be able to create a
+	// new wesnothd_connection object.
+	return wesnothd_connection_ptr(new wesnothd_connection(host, service));
 }
