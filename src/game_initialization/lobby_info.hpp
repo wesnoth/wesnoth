@@ -17,6 +17,7 @@
 #include "config.hpp"
 #include "game_initialization/lobby_data.hpp"
 #include <boost/dynamic_bitset.hpp>
+#include <memory>
 
 namespace mp {
 
@@ -29,11 +30,7 @@ class lobby_info
 public:
 	explicit lobby_info(const config& game_config, const std::vector<std::string>& installed_addons);
 
-	~lobby_info();
-
-	void delete_games();
-
-	typedef std::map<int, game_info*> game_info_map;
+	typedef std::map<int, std::unique_ptr<game_info>> game_info_map;
 
 	using game_filter_func = std::function<bool(const game_info&)>;
 

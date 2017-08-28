@@ -55,18 +55,6 @@ lobby_info::lobby_info(const config& game_config, const std::vector<std::string>
 {
 }
 
-lobby_info::~lobby_info()
-{
-	delete_games();
-}
-
-void lobby_info::delete_games()
-{
-	for(const auto & v : games_by_id_) {
-		delete v.second;
-	}
-}
-
 void do_notify(notify_mode mode, const std::string & sender, const std::string & message)
 {
 	switch (mode) {
@@ -128,12 +116,12 @@ void lobby_info::process_gamelist(const config& data)
 	SCOPE_LB;
 	gamelist_ = data;
 	gamelist_initialized_ = true;
-	delete_games();
+
 	games_by_id_.clear();
 
 	for(const auto & c : gamelist_.child("gamelist").child_range("game")) {
-		game_info* game = new game_info(c, game_config_, installed_addons_);
-		games_by_id_[game->id] = game;
+		std::unique_ptr<game_info> game(new game_info(c, game_config_, installed_addons_));
+		games_by_id_.emplace(game->id, std::move(game));
 	}
 
 	DBG_LB << dump_games_map(games_by_id_);
@@ -189,9 +177,7 @@ bool lobby_info::process_gamelist_diff(const config& data)
 
 			if(current_i->second->display_status == game_info::NEW) {
 				// This means the game never made it through to the user interface,
-				// so just deleting it is fine
-				// TODO: use std::unique_ptr instead of deleting manually.
-				delete current_i->second;
+				// so just deleting it is fine.
 				games_by_id_.erase(current_i);
 			} else {
 				current_i->second->display_status = game_info::DELETED;
@@ -254,7 +240,7 @@ void lobby_info::sync_games_display_status()
 	game_info_map::iterator i = games_by_id_.begin();
 	while(i != games_by_id_.end()) {
 		if(i->second->display_status == game_info::DELETED) {
-			delete i->second;
+
 			i = games_by_id_.erase(i);
 		} else {
 			i->second->display_status = game_info::CLEAN;
@@ -269,13 +255,13 @@ void lobby_info::sync_games_display_status()
 game_info* lobby_info::get_game_by_id(int id)
 {
 	game_info_map::iterator i = games_by_id_.find(id);
-	return i == games_by_id_.end() ? nullptr : i->second;
+	return i == games_by_id_.end() ? nullptr : i->second.get();
 }
 
 const game_info* lobby_info::get_game_by_id(int id) const
 {
 	game_info_map::const_iterator i = games_by_id_.find(id);
-	return i == games_by_id_.end() ? nullptr : i->second;
+	return i == games_by_id_.end() ? nullptr : i->second.get();
 }
 
 room_info* lobby_info::get_room(const std::string& name)
@@ -362,7 +348,7 @@ void lobby_info::make_games_vector()
 	games_.clear();
 
 	for(const auto & v : games_by_id_) {
-		games_.push_back(v.second);
+		games_.push_back(v.second.get());
 	}
 }
 
