@@ -351,6 +351,7 @@ terrain_label::terrain_label(const map_labels& parent, const config& cfg)
 	read(cfg);
 }
 
+#if defined(_MSC_VER) && _MSC_VER < 1900
 terrain_label::terrain_label(terrain_label&& l)
 	: handle_(l.handle_)
 	, tooltip_handle_(l.tooltip_handle_)
@@ -369,6 +370,7 @@ terrain_label::terrain_label(terrain_label&& l)
 	l.handle_ = 0;
 	l.tooltip_handle_ = 0;
 }
+#endif
 
 terrain_label::~terrain_label()
 {
