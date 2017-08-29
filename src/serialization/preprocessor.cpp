@@ -38,8 +38,6 @@ static lg::log_domain log_preprocessor("preprocessor");
 #define LOG_PREPROC LOG_STREAM(info, log_preprocessor)
 #define DBG_PREPROC LOG_STREAM(debug, log_preprocessor)
 
-using std::streambuf;
-
 static std::string current_file_str = "CURRENT_FILE";
 static std::string current_dir_str = "CURRENT_DIRECTORY";
 
@@ -267,11 +265,11 @@ private:
  * Target for sending preprocessed output.
  * Objects of this class can be plugged into an STL stream.
  */
-class preprocessor_streambuf : public streambuf
+class preprocessor_streambuf : public std::streambuf
 {
 public:
 	preprocessor_streambuf(preproc_map* def)
-		: streambuf()
+		: std::streambuf()
 		, out_buffer_("")
 		, buffer_()
 		, preprocessor_queue_()
@@ -304,7 +302,7 @@ public:
 
 private:
 	preprocessor_streambuf(const preprocessor_streambuf& t)
-		: streambuf()
+		: std::streambuf()
 		, out_buffer_("")
 		, buffer_()
 		, preprocessor_queue_()
