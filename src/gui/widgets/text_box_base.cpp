@@ -520,28 +520,12 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			handle_key_home(modifier, handled);
 			break;
 
-		case SDLK_e:
-			if(!(modifier & KMOD_CTRL)) {
-				return;
-			}
-
-			// If ctrl-e is used for end drop the styled_widget modifier
-			modifier = static_cast<SDL_Keymod>(modifier & ~KMOD_CTRL);
-			FALLTHROUGH;
-
 		case SDLK_END:
 			handle_key_end(modifier, handled);
 			break;
 
 		case SDLK_BACKSPACE:
 			handle_key_backspace(modifier, handled);
-			break;
-
-		case SDLK_u:
-			if(!(modifier & KMOD_CTRL)) {
-				return;
-			}
-			handle_key_clear_line(modifier, handled);
 			break;
 
 		case SDLK_DELETE:
