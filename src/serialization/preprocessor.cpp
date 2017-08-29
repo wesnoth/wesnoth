@@ -256,12 +256,6 @@ public:
 	{
 		return NO_PARSING;
 	}
-
-private:
-	std::string old_textdomain_;
-	std::string old_location_;
-
-	int old_linenum_;
 };
 
 
@@ -283,11 +277,10 @@ public:
 		, preprocessor_queue_()
 		, defines_(def)
 		, default_defines_()
-		, textdomain_(PACKAGE)
-		, location_("")
-		, linenum_(0)
 		, quoted_(false)
 	{
+		// Add a single entry to the queue with default data values.
+		preprocessor_queue_.emplace_back();
 	}
 
 	/** Decodes the filenames placed in a location. */
@@ -299,23 +292,42 @@ public:
 	template<typename T, typename... A>
 	void add_preprocessor(A&&... args)
 	{
-		preprocessor_queue_.emplace_back(new T(*this, std::forward<A>(args)...));
-		preprocessor_queue_.back()->init();
+		preprocessor_queue_.emplace_back(textdomain(), location(), linenum(), new T(*this, std::forward<A>(args)...));
+		preprocessor_queue_.back().preprocessor->init();
 	}
 
 	void drop_preprocessor()
 	{
 		preprocessor_queue_.pop_back();
+
+		// The queue should always at least have the default data object.
+		assert(!preprocessor_queue_.empty());
 	}
 
 	int depth() const
 	{
-		return preprocessor_queue_.size();
+		// Subtract one to compensate for the default value set.
+		return preprocessor_queue_.size() - 1;
 	}
 
 	preprocessor* current() const
 	{
-		return preprocessor_queue_.empty() ? nullptr : preprocessor_queue_.back().get();
+		return preprocessor_queue_.back().preprocessor.get();
+	}
+
+	std::string& textdomain()
+	{
+		return preprocessor_queue_.back().textdomain;
+	}
+
+	std::string& location()
+	{
+		return preprocessor_queue_.back().location;
+	}
+
+	int& linenum()
+	{
+		return preprocessor_queue_.back().linenum;
 	}
 
 private:
@@ -326,11 +338,10 @@ private:
 		, preprocessor_queue_()
 		, defines_(t.defines_)
 		, default_defines_()
-		, textdomain_(PACKAGE)
-		, location_("")
-		, linenum_(0)
 		, quoted_(t.quoted_)
 	{
+		// Add a single entry to the queue with default data values.
+		preprocessor_queue_.emplace_back();
 	}
 
 	/** Inherited from basic_streambuf. */
@@ -344,16 +355,38 @@ private:
 	/** Buffer filled by the #current_ preprocessor. */
 	std::stringstream buffer_;
 
+	/** Helper struct to keep some relevant data along with each preprocessor. */
+	struct data_pod
+	{
+		data_pod(const std::string& tdomain, const std::string& loc, const int& linenum, preprocessor* new_preproc)
+			: preprocessor(new_preproc)
+			, textdomain(tdomain)
+			, location(loc)
+			, linenum(linenum)
+		{
+		}
+
+		data_pod()
+			: preprocessor(nullptr)
+			, textdomain(PACKAGE)
+			, location("")
+			, linenum(0)
+		{
+		}
+
+		std::unique_ptr<preprocessor> preprocessor;
+
+		std::string textdomain;
+		std::string location;
+
+		int linenum;
+	};
+
 	/** Input preprocessor queue. */
-	std::deque<std::unique_ptr<preprocessor>> preprocessor_queue_;
+	std::deque<data_pod> preprocessor_queue_;
 
 	preproc_map* defines_;
 	preproc_map default_defines_;
-
-	std::string textdomain_;
-	std::string location_;
-
-	int linenum_;
 
 	/**
 	 * Set to true if one preprocessor for this target started to read a string.
@@ -370,9 +403,6 @@ private:
 /** Preprocessor constructor. */
 preprocessor::preprocessor(preprocessor_streambuf& t)
 	: parent_(t)
-	, old_textdomain_(t.textdomain_)
-	, old_location_(t.location_)
-	, old_linenum_(t.linenum_)
 {
 }
 
@@ -442,22 +472,21 @@ int preprocessor_streambuf::underflow()
 */
 void preprocessor_streambuf::restore_old_preprocessor()
 {
-	preprocessor* current = this->current();
+	// Save a copy of the textdomain before dropping the preprocessor.
+	const std::string last_tdomain = textdomain();
 
-	if(!current->old_location_.empty()) {
-		buffer_ << OUTPUT_SEPARATOR << "line " << current->old_linenum_ << ' ' << current->old_location_ << '\n';
-	}
-
-	if(!current->old_textdomain_.empty() && textdomain_ != current->old_textdomain_) {
-		buffer_ << OUTPUT_SEPARATOR << "textdomain " << current->old_textdomain_ << '\n';
-	}
-
-	location_ = current->old_location_;
-	linenum_ = current->old_linenum_;
-	textdomain_ = current->old_textdomain_;
-
-	// Drop the preprocessor from the queue.
+	// Drop the preprocessor from the queue. This should be done before
+	// writing the location and textdomain to the buffer, since then we
+	// have data from the previous state.
 	drop_preprocessor();
+
+	if(!location().empty()) {
+		buffer_ << OUTPUT_SEPARATOR << "line " << linenum() << ' ' << location() << '\n';
+	}
+
+	if(!textdomain().empty() && last_tdomain != textdomain()) {
+		buffer_ << OUTPUT_SEPARATOR << "textdomain " << textdomain() << '\n';
+	}
 }
 
 std::string preprocessor_streambuf::get_current_file()
@@ -468,7 +497,7 @@ std::string preprocessor_streambuf::get_current_file()
 
 	// Iterate backwards over queue to get the last non-macro preprocessor.
 	for(auto p = preprocessor_queue_.rbegin(); p != preprocessor_queue_.rend(); ++p) {
-		pre = p->get();
+		pre = p->preprocessor.get();
 
 		if(!pre || pre->parse_mode() == preprocessor::PARSES_FILE) {
 			break;
@@ -480,7 +509,7 @@ std::string preprocessor_streambuf::get_current_file()
 	}
 
 	std::string res;
-	std::vector<std::string> pos = utils::quoted_split(location_, ' ');
+	std::vector<std::string> pos = utils::quoted_split(location(), ' ');
 
 	if(pos.size() <= 2 * nested_level) {
 		return res;
@@ -524,7 +553,7 @@ void preprocessor_streambuf::error(const std::string& error_type, int l)
 	std::string position, error;
 	std::ostringstream pos;
 
-	pos << l << ' ' << location_;
+	pos << l << ' ' << location();
 	position = lineno_string(pos.str());
 
 	error = error_type + '\n';
@@ -540,7 +569,7 @@ void preprocessor_streambuf::warning(const std::string& warning_type, int l)
 	std::string position, warning;
 	std::ostringstream pos;
 
-	pos << l << ' ' << location_;
+	pos << l << ' ' << location();
 	position = lineno_string(pos.str());
 
 	warning = warning_type + '\n';
@@ -785,7 +814,7 @@ void preprocessor_file::init()
 	} else {
 		parent_.add_preprocessor<preprocessor_data>(file_stream.release(), "",
 			filesystem::get_short_wml_path(name_), 1,
-			filesystem::directory_name(name_), parent_.textdomain_, nullptr
+			filesystem::directory_name(name_), parent_.textdomain(), nullptr
 		);
 	}
 }
@@ -822,18 +851,18 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf& t,
 		s << get_file_code(name);
 	}
 
-	if(!t.location_.empty()) {
-		s << ' ' << t.linenum_ << ' ' << t.location_;
+	if(!t.location().empty()) {
+		s << ' ' << t.linenum() << ' ' << t.location();
 	}
 
-	t.location_ = s.str();
-	t.linenum_ = linenum;
+	t.location() = s.str();
+	t.linenum() = linenum;
 
-	t.buffer_ << OUTPUT_SEPARATOR << "line " << linenum << ' ' << t.location_ << '\n';
+	t.buffer_ << OUTPUT_SEPARATOR << "line " << linenum << ' ' << t.location() << '\n';
 
-	if(t.textdomain_ != domain) {
+	if(t.textdomain() != domain) {
 		t.buffer_ << OUTPUT_SEPARATOR << "textdomain " << domain << '\n';
-		t.textdomain_ = domain;
+		t.textdomain() = domain;
 	}
 
 	push_token(token_desc::START);
@@ -862,8 +891,8 @@ void preprocessor_data::push_token(token_desc::TOKEN_TYPE t)
 
 	std::ostringstream s;
 	if(!skipping_ && slowpath_) {
-		s << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << parent_.location_ << "\n"
-		  << OUTPUT_SEPARATOR << "textdomain " << parent_.textdomain_ << '\n';
+		s << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << parent_.location() << "\n"
+		  << OUTPUT_SEPARATOR << "textdomain " << parent_.textdomain() << '\n';
 	}
 
 	strings_.push_back(s.str());
@@ -1007,18 +1036,18 @@ void preprocessor_data::put(char c)
 
 	int cond_linenum = c == '\n' ? linenum_ - 1 : linenum_;
 
-	if(unsigned diff = cond_linenum - parent_.linenum_) {
-		parent_.linenum_ = cond_linenum;
+	if(unsigned diff = cond_linenum - parent_.linenum()) {
+		parent_.linenum() = cond_linenum;
 
-		if(diff <= parent_.location_.size() + 11) {
+		if(diff <= parent_.location().size() + 11) {
 			parent_.buffer_ << std::string(diff, '\n');
 		} else {
-			parent_.buffer_ << OUTPUT_SEPARATOR << "line " << parent_.linenum_ << ' ' << parent_.location_ << '\n';
+			parent_.buffer_ << OUTPUT_SEPARATOR << "line " << parent_.linenum() << ' ' << parent_.location() << '\n';
 		}
 	}
 
 	if(c == '\n') {
-		++parent_.linenum_;
+		++parent_.linenum();
 	}
 
 	parent_.buffer_ << c;
@@ -1234,7 +1263,7 @@ bool preprocessor_data::get_chunk()
 					std::ostringstream new_pos, old_pos;
 					const preproc_define& old_d = old_i->second;
 
-					new_pos << linenum << ' ' << parent_.location_;
+					new_pos << linenum << ' ' << parent_.location();
 					old_pos << old_d.linenum << ' ' << old_d.location;
 
 					WRN_PREPROC << "Redefining macro " << symbol << " without explicit #undef at "
@@ -1244,9 +1273,9 @@ bool preprocessor_data::get_chunk()
 
 				buffer.erase(buffer.end() - 7, buffer.end());
 				(*parent_.defines_)[symbol]
-						= preproc_define(buffer, items, optargs, parent_.textdomain_, linenum, parent_.location_);
+						= preproc_define(buffer, items, optargs, parent_.textdomain(), linenum, parent_.location());
 
-				LOG_PREPROC << "defining macro " << symbol << " (location " << get_location(parent_.location_) << ")\n";
+				LOG_PREPROC << "defining macro " << symbol << " (location " << get_location(parent_.location()) << ")\n";
 			}
 		} else if(command == "ifdef") {
 			skip_spaces();
@@ -1334,10 +1363,10 @@ bool preprocessor_data::get_chunk()
 		} else if(command == "textdomain") {
 			skip_spaces();
 			const std::string& s = read_word();
-			if(s != parent_.textdomain_) {
+			if(s != parent_.textdomain()) {
 				put("#textdomain ");
 				put(s);
-				parent_.textdomain_ = s;
+				parent_.textdomain() = s;
 			}
 			comment = true;
 		} else if(command == "enddef") {
@@ -1347,7 +1376,7 @@ bool preprocessor_data::get_chunk()
 			const std::string& symbol = read_word();
 			if(!skipping_) {
 				parent_.defines_->erase(symbol);
-				LOG_PREPROC << "undefine macro " << symbol << " (location " << get_location(parent_.location_) << ")\n";
+				LOG_PREPROC << "undefine macro " << symbol << " (location " << get_location(parent_.location()) << ")\n";
 			}
 		} else if(command == "error") {
 			if(!skipping_) {
@@ -1395,7 +1424,7 @@ bool preprocessor_data::get_chunk()
 			//		std::ostringstream error;
 			//		std::ostringstream location;
 			//		error << "Can't parse new macro parameter with a macro call scope open";
-			//		location<<linenum_<<' '<<parent_.location_;
+			//		location<<linenum_<<' '<<parent_.location();
 			//		parent_.error(error.str(), location.str());
 			//	}
 			//	strings_.pop_back();
@@ -1431,8 +1460,8 @@ bool preprocessor_data::get_chunk()
 				}
 
 				std::ostringstream v;
-				v << arg->second << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << parent_.location_ << "\n"
-				  << OUTPUT_SEPARATOR << "textdomain " << parent_.textdomain_ << '\n';
+				v << arg->second << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << parent_.location() << "\n"
+				  << OUTPUT_SEPARATOR << "textdomain " << parent_.textdomain() << '\n';
 
 				pop_token();
 				put(v.str());
@@ -1485,7 +1514,7 @@ bool preprocessor_data::get_chunk()
 						if(defines->find(argument.first) == defines->end()) {
 							std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(parent_));
 
-							buf->textdomain_ = parent_.textdomain_;
+							buf->textdomain() = parent_.textdomain();
 							std::istream in(buf.get());
 
 							std::istringstream* buffer = new std::istringstream(argument.second);
@@ -1532,7 +1561,7 @@ bool preprocessor_data::get_chunk()
 
 					// Make the nested preprocessor_data responsible for
 					// restoring our current textdomain if needed.
-					buf->textdomain_ = parent_.textdomain_;
+					buf->textdomain() = parent_.textdomain();
 
 					std::ostringstream res;
 					{
@@ -1579,8 +1608,8 @@ bool preprocessor_data::get_chunk()
 		} else if(!skipping_) {
 			if(token.type == token_desc::MACRO_SPACE) {
 				std::ostringstream s;
-				s << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << parent_.location_ << "\n"
-				  << OUTPUT_SEPARATOR << "textdomain " << parent_.textdomain_ << '\n';
+				s << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << parent_.location() << "\n"
+				  << OUTPUT_SEPARATOR << "textdomain " << parent_.textdomain() << '\n';
 
 				strings_.push_back(s.str());
 				token.type = token_desc::MACRO_CHUNK;
