@@ -156,7 +156,7 @@ public:
 	struct rule_image_variant
 	{
 		/** Constructor for the normal defaut case */
-		rule_image_variant(const std::string& image_string, const std::string& variations, bool random_start = true)
+		rule_image_variant(const std::string& image_string, const std::string& variations, int random_start = -1)
 			: image_string(image_string)
 			, variations(variations)
 			, images()
@@ -171,7 +171,7 @@ public:
 				const std::string& variations,
 				const std::string& tod,
 				const std::string& has_flag,
-				bool random_start = true);
+				int random_start = -1);
 
 		/** A string representing either the filename for an image, or
 		 *  a list of images, with an optional timing for each image.
@@ -208,8 +208,9 @@ public:
 
 		std::vector<std::string> has_flag;
 
-		/** Indicate if the animation uses a random shift */
-		bool random_start;
+		/** Specify the allowed amount of random shift (in milliseconds) applied
+		 * to the animation start time, -1 for shifting without limitation.*/
+		int random_start;
 	};
 
 	/**

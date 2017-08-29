@@ -166,8 +166,10 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 
 			assert(anim.get_animation_duration() != 0);
 
-			if(variant.random_start)
+			if(variant.random_start < 0)
 				img_list.back().set_animation_time(ri.rand % img_list.back().get_animation_duration());
+			else if(variant.random_start > 0)
+				img_list.back().set_animation_time(ri.rand % variant.random_start);
 
 			if(!animate) {
 				img_list.back().pause_animation();
@@ -662,7 +664,7 @@ terrain_builder::rule_image_variant::rule_image_variant(const std::string& image
 		const std::string& variations,
 		const std::string& tod,
 		const std::string& has_flag,
-		bool random_start)
+		int random_start)
 	: image_string(image_string)
 	, variations(variations)
 	, images()
@@ -721,7 +723,9 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 			const std::string& variations = img["variations"];
 			const std::string& tod = variant["tod"];
 			const std::string& has_flag = variant["has_flag"];
-			bool random_start = variant["random_start"].to_bool(true);
+
+			// If an integer is given then assign that, but if a bool is given, then assign -1 if true and 0 if false
+			int random_start = variant["random_start"].to_bool(true) ? variant["random_start"].to_int(-1) : 0;
 
 			images.back().variants.push_back(rule_image_variant(name, variations, tod, has_flag, random_start));
 		}
@@ -730,7 +734,9 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		// (will be used only if previous variants don't match)
 		const std::string& name = img["name"];
 		const std::string& variations = img["variations"];
-		bool random_start = img["random_start"].to_bool(true);
+
+		int random_start = img["random_start"].to_bool(true) ? img["random_start"].to_int(-1) : 0;
+
 		images.back().variants.push_back(rule_image_variant(name, variations, random_start));
 	}
 }
