@@ -1368,7 +1368,7 @@ void display::update_display()
 		if(frames == sample_freq) {
 			const int this_sample = SDL_GetTicks();
 
-			const int fps = (frames*1000)/(this_sample - last_sample);
+			const int fps = 1000 / *std::max_element(frametimes_.begin(), frametimes_.end());
 			last_sample = this_sample;
 			frames = 0;
 
