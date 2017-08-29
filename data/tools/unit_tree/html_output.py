@@ -721,7 +721,10 @@ class HTMLOutput:
         picname = icpic.id_name
         image = os.path.join(PICS_LOCATION, picname)
         if portrait:
-            picname = image_collector.add_image(self.addon, portrait, no_tc=True)
+            picname = image_collector.add_image(self.addon,
+                                                portrait,
+                                                no_tc=True,
+                                                check_transparent=True)
             portrait = os.path.join(PICS_LOCATION, picname)
         return image, portrait
 
@@ -1043,12 +1046,11 @@ class HTMLOutput:
                 simage = image
                 sportrait = portrait
 
-            style = "background-image:url('%s');" % cleanurl(simage)
-
             write('<div class="portrait">')
-            write('<div style="%s">&nbsp;</div>' % style)
             if portrait:
                 write('<img src="%s" alt="(portrait)" />\n' % cleanurl(sportrait))
+            else:
+                write('<div style="background-image:url(\'%s\')">&nbsp;</div>' % cleanurl(simage))
             write('</div>')
         write('</div>\n')
 

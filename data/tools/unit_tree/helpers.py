@@ -50,7 +50,7 @@ class ImageCollector:
                 self.binary_paths_per_addon[addon] = []
             self.binary_paths_per_addon[addon].append(path)
 
-    def _find_image(self, addon, name):
+    def _find_image(self, addon, name, check_transparent):
         tilde = name.find("~")
         if tilde >= 0:
             name = name[:tilde]
@@ -62,21 +62,29 @@ class ImageCollector:
                 bases.append(os.path.join(self.datadir, path, idir))
                 bases.append(os.path.join(self.userdir, path, idir))
 
-        bases = [os.path.join("%s" % base, name) for base in bases]
+        if not check_transparent:
+            bases = [os.path.join("%s" % base, name) for base in bases]
+        else:
+            dirname, filename = os.path.split(name)
+            new_bases = []
+            for base in bases:
+                new_bases.append(os.path.join("%s" % base, dirname, "transparent", filename))
+                new_bases.append(os.path.join("%s" % base, name))
+            bases = new_bases
 
         for ipath in bases:
             if os.path.exists(ipath):
                 return ipath, bases
         return None, bases
 
-    def add_image_check(self, addon, name, no_tc=False):
+    def add_image_check(self, addon, name, no_tc=False, check_transparent=False):
         if (addon, name) in self.images_by_addon_name:
             image = self.images_by_addon_name[(addon, name)]
             if addon not in image.addons:
                 image.addons.add(addon)
             return image
 
-        ipath, bases = self._find_image(addon, name)
+        ipath, bases = self._find_image(addon, name, check_transparent)
         if ipath in self.images_by_ipath:
             image = self.images_by_ipath[ipath]
             if addon not in image.addons:
@@ -115,8 +123,8 @@ class ImageCollector:
 
         return image
 
-    def add_image(self, addon, path, no_tc=False):
-        image = self.add_image_check(addon, path, no_tc)
+    def add_image(self, addon, path, no_tc=False, check_transparent=False):
+        image = self.add_image_check(addon, path, no_tc, check_transparent)
         return image.id_name
 
     def copy_and_color_images(self, target_path):
