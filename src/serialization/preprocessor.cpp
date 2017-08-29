@@ -48,6 +48,8 @@ static bool encode_filename = true;
 
 static std::string preprocessor_error_detail_prefix = "\n    ";
 
+static const char OUTPUT_SEPARATOR = '\xFE';
+
 // get filename associated to this code
 static std::string get_filename(const std::string& file_code)
 {
@@ -429,11 +431,11 @@ void preprocessor_streambuf::restore_old_preprocessor()
 	preprocessor* current = this->current();
 
 	if(!current->old_location_.empty()) {
-		buffer_ << "\376line " << current->old_linenum_ << ' ' << current->old_location_ << '\n';
+		buffer_ << OUTPUT_SEPARATOR << "line " << current->old_linenum_ << ' ' << current->old_location_ << '\n';
 	}
 
 	if(!current->old_textdomain_.empty() && textdomain_ != current->old_textdomain_) {
-		buffer_ << "\376textdomain " << current->old_textdomain_ << '\n';
+		buffer_ << OUTPUT_SEPARATOR << "textdomain " << current->old_textdomain_ << '\n';
 	}
 
 	location_ = current->old_location_;
@@ -795,10 +797,10 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf& t,
 	t.location_ = s.str();
 	t.linenum_ = linenum;
 
-	t.buffer_ << "\376line " << linenum << ' ' << t.location_ << '\n';
+	t.buffer_ << OUTPUT_SEPARATOR << "line " << linenum << ' ' << t.location_ << '\n';
 
 	if(t.textdomain_ != domain) {
-		t.buffer_ << "\376textdomain " << domain << '\n';
+		t.buffer_ << OUTPUT_SEPARATOR << "textdomain " << domain << '\n';
 		t.textdomain_ = domain;
 	}
 
@@ -828,7 +830,8 @@ void preprocessor_data::push_token(token_desc::TOKEN_TYPE t)
 
 	std::ostringstream s;
 	if(!skipping_ && slowpath_) {
-		s << "\376line " << linenum_ << ' ' << target_.location_ << "\n\376textdomain " << target_.textdomain_ << '\n';
+		s << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << target_.location_ << "\n"
+		  << OUTPUT_SEPARATOR << "textdomain " << target_.textdomain_ << '\n';
 	}
 
 	strings_.push_back(s.str());
@@ -978,7 +981,7 @@ void preprocessor_data::put(char c)
 		if(diff <= target_.location_.size() + 11) {
 			target_.buffer_ << std::string(diff, '\n');
 		} else {
-			target_.buffer_ << "\376line " << target_.linenum_ << ' ' << target_.location_ << '\n';
+			target_.buffer_ << OUTPUT_SEPARATOR << "line " << target_.linenum_ << ' ' << target_.location_ << '\n';
 		}
 	}
 
@@ -1056,7 +1059,7 @@ bool preprocessor_data::get_chunk()
 		++linenum_;
 	}
 
-	if(c == '\376') {
+	if(c == OUTPUT_SEPARATOR) {
 		std::string buffer(1, c);
 
 		for(;;) {
@@ -1372,7 +1375,7 @@ bool preprocessor_data::get_chunk()
 
 			std::string symbol = strings_[token.stack_pos];
 			std::string::size_type pos;
-			while((pos = symbol.find('\376')) != std::string::npos) {
+			while((pos = symbol.find(OUTPUT_SEPARATOR)) != std::string::npos) {
 				std::string::iterator b = symbol.begin(); // invalidated at each iteration
 				symbol.erase(b + pos, b + symbol.find('\n', pos + 1) + 1);
 			}
@@ -1396,8 +1399,8 @@ bool preprocessor_data::get_chunk()
 				}
 
 				std::ostringstream v;
-				v << arg->second << "\376line " << linenum_ << ' ' << target_.location_ << "\n\376textdomain "
-				  << target_.textdomain_ << '\n';
+				v << arg->second << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << target_.location_ << "\n"
+				  << OUTPUT_SEPARATOR << "textdomain " << target_.textdomain_ << '\n';
 
 				pop_token();
 				put(v.str());
@@ -1544,8 +1547,8 @@ bool preprocessor_data::get_chunk()
 		} else if(!skipping_) {
 			if(token.type == token_desc::MACRO_SPACE) {
 				std::ostringstream s;
-				s << "\376line " << linenum_ << ' ' << target_.location_ << "\n\376textdomain " << target_.textdomain_
-				  << '\n';
+				s << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << target_.location_ << "\n"
+				  << OUTPUT_SEPARATOR << "textdomain " << target_.textdomain_ << '\n';
 
 				strings_.push_back(s.str());
 				token.type = token_desc::MACRO_CHUNK;
