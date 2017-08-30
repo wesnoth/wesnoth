@@ -358,7 +358,7 @@ private:
 	friend class preprocessor;
 	friend class preprocessor_file;
 	friend class preprocessor_data;
-	friend struct preprocessor_deleter;
+	friend struct preprocessor_scope_helper;
 };
 
 /** Preprocessor constructor. */
@@ -1570,30 +1570,51 @@ bool preprocessor_data::get_chunk()
 
 
 // ==================================================================================
-// PREPROCESSOR DELETER
+// PREPROCESSOR SCOPE HELPER
 // ==================================================================================
 
-struct preprocessor_deleter : std::basic_istream<char>
+struct preprocessor_scope_helper : std::basic_istream<char>
 {
-	preprocessor_deleter(preprocessor_streambuf* buf, preproc_map* defines)
-		: std::basic_istream<char>(buf)
-		, buf_(buf)
-		, defines_(defines)
+	preprocessor_scope_helper(const std::string& fname, preproc_map* defines)
+		: std::basic_istream<char>(nullptr)
+		, buf_(nullptr)
+		, local_defines_(nullptr)
 	{
+		//
+		// If no defines were provided, we create a new local preproc_map and assign
+		// it to defines temporarily. In this case, the map will be deleted once this
+		// object is destroyed and defines will still be subsequently null.
+		//
+		if(!defines) {
+			local_defines_.reset(new preproc_map);
+			defines = local_defines_.get();
+		}
+
+		buf_.reset(new preprocessor_streambuf(defines));
+
+		// Begin processing.
+		buf_->add_preprocessor<preprocessor_file>(fname);
+
+		//
+		// TODO: not sure if this call is needed. Previously, this call was passed a
+		// preprocessor_streambuf pointer and the std::basic_istream constructor was
+		// called with its contents. However, at that point the preprocessing should
+		// already have completed, meaning this call might be redundant. Not sure.
+		//
+		// - vultraz, 2017-08-31
+		//
+		init(buf_.get());
 	}
 
-	~preprocessor_deleter()
+	~preprocessor_scope_helper()
 	{
 		clear(std::ios_base::goodbit);
 		exceptions(std::ios_base::goodbit);
 		rdbuf(nullptr);
-
-		delete buf_;
-		delete defines_;
 	}
 
-	preprocessor_streambuf* buf_;
-	preproc_map* defines_;
+	std::unique_ptr<preprocessor_streambuf> buf_;
+	std::unique_ptr<preproc_map> local_defines_;
 };
 
 
@@ -1605,20 +1626,8 @@ filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map
 {
 	log_scope("preprocessing file " + fname + " ...");
 
-	preproc_map* owned_defines = nullptr;
-
-	// If no preproc_map has been given, create a new one and ensure it is destroyed when
-	// along with the stream by passing it to the deleter.
-	if(!defines) {
-		owned_defines = new preproc_map;
-		defines = owned_defines;
-	}
-
-	preprocessor_streambuf* buf = new preprocessor_streambuf(defines);
-
-	buf->add_preprocessor<preprocessor_file>(fname);
-
-	return filesystem::scoped_istream(new preprocessor_deleter(buf, owned_defines));
+	// NOTE: the preprocessor_scope_helper does *not* take ownership of defines.
+	return filesystem::scoped_istream(new preprocessor_scope_helper(fname, defines));
 }
 
 void preprocess_resource(const std::string& res_name,
