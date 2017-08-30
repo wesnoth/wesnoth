@@ -296,7 +296,14 @@ public:
 	template<typename T, typename... A>
 	void add_preprocessor(A&&... args)
 	{
+		++depth_;
 		preprocessor_queue_.emplace_back(new T(*this, std::forward<A>(args)...));
+	}
+
+	void drop_preprocessor()
+	{
+		preprocessor_queue_.pop_back();
+		--depth_;
 	}
 
 	preprocessor* current() const
@@ -361,7 +368,6 @@ preprocessor::preprocessor(preprocessor_streambuf& t)
 	, old_location_(t.location_)
 	, old_linenum_(t.linenum_)
 {
-	++parent_.depth_;
 }
 
 /**
@@ -445,9 +451,7 @@ void preprocessor_streambuf::restore_old_preprocessor()
 	textdomain_ = current->old_textdomain_;
 
 	// Drop the preprocessor from the queue.
-	preprocessor_queue_.pop_back();
-
-	--depth_;
+	drop_preprocessor();
 }
 
 std::string preprocessor_streambuf::get_current_file()
