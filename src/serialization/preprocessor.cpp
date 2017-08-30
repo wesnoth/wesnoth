@@ -282,7 +282,6 @@ public:
 		, textdomain_(PACKAGE)
 		, location_("")
 		, linenum_(0)
-		, depth_(0)
 		, quoted_(false)
 	{
 	}
@@ -296,14 +295,17 @@ public:
 	template<typename T, typename... A>
 	void add_preprocessor(A&&... args)
 	{
-		++depth_;
 		preprocessor_queue_.emplace_back(new T(*this, std::forward<A>(args)...));
 	}
 
 	void drop_preprocessor()
 	{
 		preprocessor_queue_.pop_back();
-		--depth_;
+	}
+
+	int depth() const
+	{
+		return preprocessor_queue_.size();
 	}
 
 	preprocessor* current() const
@@ -322,7 +324,6 @@ private:
 		, textdomain_(PACKAGE)
 		, location_("")
 		, linenum_(0)
-		, depth_(t.depth_)
 		, quoted_(t.quoted_)
 	{
 	}
@@ -347,7 +348,6 @@ private:
 	std::string location_;
 
 	int linenum_;
-	int depth_;
 
 	/**
 	 * Set to true if one preprocessor for this target started to read a string.
@@ -1410,7 +1410,7 @@ bool preprocessor_data::get_chunk()
 
 				pop_token();
 				put(v.str());
-			} else if(parent_.depth_ < 100 && (macro = parent_.defines_->find(symbol)) != parent_.defines_->end()) {
+			} else if(parent_.depth() < 100 && (macro = parent_.defines_->find(symbol)) != parent_.defines_->end()) {
 				const preproc_define& val = macro->second;
 				size_t nb_arg = strings_.size() - token.stack_pos - 1;
 				size_t optional_arg_num = 0;
@@ -1519,7 +1519,7 @@ bool preprocessor_data::get_chunk()
 
 					put(res.str());
 				}
-			} else if(parent_.depth_ < 40) {
+			} else if(parent_.depth() < 40) {
 				LOG_PREPROC << "Macro definition not found for " << symbol << " , attempting to open as file.\n";
 				pop_token();
 
