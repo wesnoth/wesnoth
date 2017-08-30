@@ -213,6 +213,8 @@ std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& de
 // PREPROCESSOR BASE
 // ==================================================================================
 
+class preprocessor_streambuf;
+
 /**
  * Base class for preprocessing an input.
  */
@@ -354,10 +356,10 @@ private:
 
 /** Preprocessor constructor. */
 preprocessor::preprocessor(preprocessor_streambuf& t)
-	: old_textdomain_(t.textdomain_)
+	: parent_(t)
+	, old_textdomain_(t.textdomain_)
 	, old_location_(t.location_)
 	, old_linenum_(t.linenum_)
-	, parent_(t)
 {
 	++parent_.depth_;
 }
