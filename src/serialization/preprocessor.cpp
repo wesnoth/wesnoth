@@ -223,13 +223,13 @@ class preprocessor
 protected:
 	/**
 	 * Sets up a new preprocessor for stream buffer \a t.
-	 * Saves the current preprocessing context of #target_. It will be automatically restored on destruction.
+	 * Saves the current preprocessing context of #parent_. It will be automatically restored on destruction.
 	 *
 	 * It relies on preprocessor_streambuf so it's implemented after that class is declared.
 	 */
 	preprocessor(preprocessor_streambuf& t);
 
-	preprocessor_streambuf& target_;
+	preprocessor_streambuf& parent_;
 
 public:
 	virtual ~preprocessor()
@@ -237,7 +237,7 @@ public:
 	}
 
 	/**
-	 * Preprocesses and sends some text to the #target_ buffer.
+	 * Preprocesses and sends some text to the #parent_ buffer.
 	 * @return false when the input has no data left.
 	 */
 	virtual bool get_chunk() = 0;
@@ -357,9 +357,9 @@ preprocessor::preprocessor(preprocessor_streambuf& t)
 	: old_textdomain_(t.textdomain_)
 	, old_location_(t.location_)
 	, old_linenum_(t.linenum_)
-	, target_(t)
+	, parent_(t)
 {
-	++target_.depth_;
+	++parent_.depth_;
 }
 
 /**
@@ -563,7 +563,7 @@ public:
 				continue;
 			}
 
-			target_.add_preprocessor<preprocessor_file>(name);
+			parent_.add_preprocessor<preprocessor_file>(name);
 			return true;
 		}
 
@@ -738,7 +738,7 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf& t, const std::strin
 				<< filesystem::directory_name(fname.substr(symbol_index)) << "'";
 
 				// TODO: find a real linenumber
-				target_.error(ss.str(), -1);
+				parent_.error(ss.str(), -1);
 			}
 		}
 	} else {
@@ -830,8 +830,8 @@ void preprocessor_data::push_token(token_desc::TOKEN_TYPE t)
 
 	std::ostringstream s;
 	if(!skipping_ && slowpath_) {
-		s << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << target_.location_ << "\n"
-		  << OUTPUT_SEPARATOR << "textdomain " << target_.textdomain_ << '\n';
+		s << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << parent_.location_ << "\n"
+		  << OUTPUT_SEPARATOR << "textdomain " << parent_.textdomain_ << '\n';
 	}
 
 	strings_.push_back(s.str());
@@ -975,21 +975,21 @@ void preprocessor_data::put(char c)
 
 	int cond_linenum = c == '\n' ? linenum_ - 1 : linenum_;
 
-	if(unsigned diff = cond_linenum - target_.linenum_) {
-		target_.linenum_ = cond_linenum;
+	if(unsigned diff = cond_linenum - parent_.linenum_) {
+		parent_.linenum_ = cond_linenum;
 
-		if(diff <= target_.location_.size() + 11) {
-			target_.buffer_ << std::string(diff, '\n');
+		if(diff <= parent_.location_.size() + 11) {
+			parent_.buffer_ << std::string(diff, '\n');
 		} else {
-			target_.buffer_ << OUTPUT_SEPARATOR << "line " << target_.linenum_ << ' ' << target_.location_ << '\n';
+			parent_.buffer_ << OUTPUT_SEPARATOR << "line " << parent_.linenum_ << ' ' << parent_.location_ << '\n';
 		}
 	}
 
 	if(c == '\n') {
-		++target_.linenum_;
+		++parent_.linenum_;
 	}
 
-	target_.buffer_ << c;
+	parent_.buffer_ << c;
 }
 
 void preprocessor_data::put(const std::string& s /*, int line_change*/)
@@ -1003,8 +1003,8 @@ void preprocessor_data::put(const std::string& s /*, int line_change*/)
 		return;
 	}
 
-	target_.buffer_ << s;
-	// target_.linenum_ += line_change;
+	parent_.buffer_ << s;
+	// parent_.linenum_ += line_change;
 }
 
 void preprocessor_data::conditional_skip(bool skip)
@@ -1052,7 +1052,7 @@ bool preprocessor_data::get_chunk()
 			s = "???";
 		}
 
-		target_.error(std::string(s) + " not terminated", token.linenum);
+		parent_.error(std::string(s) + " not terminated", token.linenum);
 	}
 
 	if(c == '\n') {
@@ -1089,22 +1089,22 @@ bool preprocessor_data::get_chunk()
 		put('<');
 	} else if(c == '"') {
 		if(token.type == token_desc::STRING) {
-			target_.quoted_ = false;
+			parent_.quoted_ = false;
 			put(c);
 			pop_token();
-		} else if(!target_.quoted_) {
-			target_.quoted_ = true;
+		} else if(!parent_.quoted_) {
+			parent_.quoted_ = true;
 			push_token(token_desc::STRING);
 			put(c);
 		} else {
-			target_.error("Nested quoted string", linenum_);
+			parent_.error("Nested quoted string", linenum_);
 		}
 	} else if(c == '{') {
 		push_token(token_desc::MACRO_SPACE);
 		++slowpath_;
 	} else if(c == ')' && token.type == token_desc::MACRO_PARENS) {
 		pop_token();
-	} else if(c == '#' && !target_.quoted_) {
+	} else if(c == '#' && !parent_.quoted_) {
 		std::string command = read_word();
 		bool comment = false;
 
@@ -1115,7 +1115,7 @@ bool preprocessor_data::get_chunk()
 			std::map<std::string, std::string> optargs;
 
 			if(items.empty()) {
-				target_.error("No macro name found after #define directive", linenum);
+				parent_.error("No macro name found after #define directive", linenum);
 			}
 
 			std::string symbol = items.front();
@@ -1168,7 +1168,7 @@ bool preprocessor_data::get_chunk()
 										skip_eol();
 										break;
 									} else {
-										target_.error("Unterminated #arg definition", linenum_);
+										parent_.error("Unterminated #arg definition", linenum_);
 									}
 								}
 							}
@@ -1183,7 +1183,7 @@ bool preprocessor_data::get_chunk()
 							if(std::equal(buffer.end() - 6, buffer.end(), "define")) { // TODO: Maybe add support for
 																					   // this? This would fill feature
 																					   // request #21343
-								target_.error(
+								parent_.error(
 										"Preprocessor error: #define is not allowed inside a #define/#enddef pair",
 										linenum);
 							}
@@ -1193,16 +1193,16 @@ bool preprocessor_data::get_chunk()
 			}
 
 			if(found_enddef != 7) {
-				target_.error("Unterminated preprocessor definition", linenum_);
+				parent_.error("Unterminated preprocessor definition", linenum_);
 			}
 
 			if(!skipping_) {
-				preproc_map::const_iterator old_i = target_.defines_->find(symbol);
-				if(old_i != target_.defines_->end()) {
+				preproc_map::const_iterator old_i = parent_.defines_->find(symbol);
+				if(old_i != parent_.defines_->end()) {
 					std::ostringstream new_pos, old_pos;
 					const preproc_define& old_d = old_i->second;
 
-					new_pos << linenum << ' ' << target_.location_;
+					new_pos << linenum << ' ' << parent_.location_;
 					old_pos << old_d.linenum << ' ' << old_d.location;
 
 					WRN_PREPROC << "Redefining macro " << symbol << " without explicit #undef at "
@@ -1211,21 +1211,21 @@ bool preprocessor_data::get_chunk()
 				}
 
 				buffer.erase(buffer.end() - 7, buffer.end());
-				(*target_.defines_)[symbol]
-						= preproc_define(buffer, items, optargs, target_.textdomain_, linenum, target_.location_);
+				(*parent_.defines_)[symbol]
+						= preproc_define(buffer, items, optargs, parent_.textdomain_, linenum, parent_.location_);
 
-				LOG_PREPROC << "defining macro " << symbol << " (location " << get_location(target_.location_) << ")\n";
+				LOG_PREPROC << "defining macro " << symbol << " (location " << get_location(parent_.location_) << ")\n";
 			}
 		} else if(command == "ifdef") {
 			skip_spaces();
 			const std::string& symbol = read_word();
-			bool found = target_.defines_->count(symbol) != 0;
+			bool found = parent_.defines_->count(symbol) != 0;
 			DBG_PREPROC << "testing for macro " << symbol << ": " << (found ? "defined" : "not defined") << '\n';
 			conditional_skip(!found);
 		} else if(command == "ifndef") {
 			skip_spaces();
 			const std::string& symbol = read_word();
-			bool found = target_.defines_->count(symbol) != 0;
+			bool found = parent_.defines_->count(symbol) != 0;
 			DBG_PREPROC << "testing for macro " << symbol << ": " << (found ? "defined" : "not defined") << '\n';
 			conditional_skip(found);
 		} else if(command == "ifhave") {
@@ -1253,12 +1253,12 @@ bool preprocessor_data::get_chunk()
 			const VERSION_COMP_OP vop = parse_version_op(vopstr);
 
 			if(vop == OP_INVALID) {
-				target_.error("Invalid #ifver/#ifnver operator", linenum_);
-			} else if(target_.defines_->count(vsymstr) != 0) {
-				const preproc_define& sym = (*target_.defines_)[vsymstr];
+				parent_.error("Invalid #ifver/#ifnver operator", linenum_);
+			} else if(parent_.defines_->count(vsymstr) != 0) {
+				const preproc_define& sym = (*parent_.defines_)[vsymstr];
 
 				if(!sym.arguments.empty()) {
-					target_.error("First argument macro in #ifver/#ifnver should not require arguments", linenum_);
+					parent_.error("First argument macro in #ifver/#ifnver should not require arguments", linenum_);
 				}
 
 				version_info const version1(sym.value);
@@ -1273,7 +1273,7 @@ bool preprocessor_data::get_chunk()
 				std::string err = "Undefined macro in #ifver/#ifnver first argument: '";
 				err += vsymstr;
 				err += "'";
-				target_.error(err, linenum_);
+				parent_.error(err, linenum_);
 			}
 		} else if(command == "else") {
 			if(token.type == token_desc::SKIP_ELSE) {
@@ -1285,7 +1285,7 @@ bool preprocessor_data::get_chunk()
 				++skipping_;
 				push_token(token_desc::SKIP_IF);
 			} else {
-				target_.error("Unexpected #else", linenum_);
+				parent_.error("Unexpected #else", linenum_);
 			}
 		} else if(command == "endif") {
 			switch(token.type) {
@@ -1296,33 +1296,33 @@ bool preprocessor_data::get_chunk()
 			case token_desc::PROCESS_ELSE:
 				break;
 			default:
-				target_.error("Unexpected #endif", linenum_);
+				parent_.error("Unexpected #endif", linenum_);
 			}
 			pop_token();
 		} else if(command == "textdomain") {
 			skip_spaces();
 			const std::string& s = read_word();
-			if(s != target_.textdomain_) {
+			if(s != parent_.textdomain_) {
 				put("#textdomain ");
 				put(s);
-				target_.textdomain_ = s;
+				parent_.textdomain_ = s;
 			}
 			comment = true;
 		} else if(command == "enddef") {
-			target_.error("Unexpected #enddef", linenum_);
+			parent_.error("Unexpected #enddef", linenum_);
 		} else if(command == "undef") {
 			skip_spaces();
 			const std::string& symbol = read_word();
 			if(!skipping_) {
-				target_.defines_->erase(symbol);
-				LOG_PREPROC << "undefine macro " << symbol << " (location " << get_location(target_.location_) << ")\n";
+				parent_.defines_->erase(symbol);
+				LOG_PREPROC << "undefine macro " << symbol << " (location " << get_location(parent_.location_) << ")\n";
 			}
 		} else if(command == "error") {
 			if(!skipping_) {
 				skip_spaces();
 				std::ostringstream error;
 				error << "#error: \"" << read_rest_of_line() << '"';
-				target_.error(error.str(), linenum_);
+				parent_.error(error.str(), linenum_);
 			} else
 				DBG_PREPROC << "Skipped an error\n";
 		} else if(command == "warning") {
@@ -1330,7 +1330,7 @@ bool preprocessor_data::get_chunk()
 				skip_spaces();
 				std::ostringstream warning;
 				warning << "#warning: \"" << read_rest_of_line() << '"';
-				target_.warning(warning.str(), linenum_);
+				parent_.warning(warning.str(), linenum_);
 			} else {
 				DBG_PREPROC << "Skipped a warning\n";
 			}
@@ -1363,14 +1363,14 @@ bool preprocessor_data::get_chunk()
 			//		std::ostringstream error;
 			//		std::ostringstream location;
 			//		error << "Can't parse new macro parameter with a macro call scope open";
-			//		location<<linenum_<<' '<<target_.location_;
-			//		target_.error(error.str(), location.str());
+			//		location<<linenum_<<' '<<parent_.location_;
+			//		parent_.error(error.str(), location.str());
 			//	}
 			//	strings_.pop_back();
 			//}
 
 			if(strings_.size() <= static_cast<size_t>(token.stack_pos)) {
-				target_.error("No macro or file substitution target specified", linenum_);
+				parent_.error("No macro or file substitution target specified", linenum_);
 			}
 
 			std::string symbol = strings_[token.stack_pos];
@@ -1387,24 +1387,24 @@ bool preprocessor_data::get_chunk()
 			// otherwise we assume it's a file name to load.
 			if(symbol == current_file_str && strings_.size() - token.stack_pos == 1) {
 				pop_token();
-				put(target_.get_current_file());
+				put(parent_.get_current_file());
 			} else if(symbol == current_dir_str && strings_.size() - token.stack_pos == 1) {
 				pop_token();
-				put(filesystem::directory_name(target_.get_current_file()));
+				put(filesystem::directory_name(parent_.get_current_file()));
 			} else if(local_defines_ && (arg = local_defines_->find(symbol)) != local_defines_->end()) {
 				if(strings_.size() - token.stack_pos != 1) {
 					std::ostringstream error;
 					error << "Macro argument '" << symbol << "' does not expect any arguments";
-					target_.error(error.str(), linenum_);
+					parent_.error(error.str(), linenum_);
 				}
 
 				std::ostringstream v;
-				v << arg->second << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << target_.location_ << "\n"
-				  << OUTPUT_SEPARATOR << "textdomain " << target_.textdomain_ << '\n';
+				v << arg->second << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << parent_.location_ << "\n"
+				  << OUTPUT_SEPARATOR << "textdomain " << parent_.textdomain_ << '\n';
 
 				pop_token();
 				put(v.str());
-			} else if(target_.depth_ < 100 && (macro = target_.defines_->find(symbol)) != target_.defines_->end()) {
+			} else if(parent_.depth_ < 100 && (macro = parent_.defines_->find(symbol)) != parent_.defines_->end()) {
 				const preproc_define& val = macro->second;
 				size_t nb_arg = strings_.size() - token.stack_pos - 1;
 				size_t optional_arg_num = 0;
@@ -1439,7 +1439,7 @@ bool preprocessor_data::get_chunk()
 								std::ostringstream warning;
 								warning << "Unrecognized optional argument passed to macro '" << symbol << "': '"
 										<< argname << "'";
-								target_.warning(warning.str(), linenum_);
+								parent_.warning(warning.str(), linenum_);
 
 								optional_arg_num++; // To prevent the argument number check from blowing up
 							}
@@ -1451,9 +1451,9 @@ bool preprocessor_data::get_chunk()
 				if(val.optional_arguments.size() > 0) {
 					for(const auto& argument : val.optional_arguments) {
 						if(defines->find(argument.first) == defines->end()) {
-							std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(target_));
+							std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(parent_));
 
-							buf->textdomain_ = target_.textdomain_;
+							buf->textdomain_ = parent_.textdomain_;
 							std::istream in(buf.get());
 
 							std::istringstream* buffer = new std::istringstream(argument.second);
@@ -1481,7 +1481,7 @@ bool preprocessor_data::get_chunk()
 					error << "Preprocessor symbol '" << symbol << "' defined at " << get_filename(locations[0]) << ":"
 						  << val.linenum << " expects " << val.arguments.size() << " arguments, but has "
 						  << nb_arg - optional_arg_num << " arguments";
-					target_.error(error.str(), linenum_);
+					parent_.error(error.str(), linenum_);
 				}
 
 				std::istringstream* buffer = new std::istringstream(val.value);
@@ -1491,16 +1491,16 @@ bool preprocessor_data::get_chunk()
 				if(!slowpath_) {
 					DBG_PREPROC << "substituting macro " << symbol << '\n';
 
-					target_.add_preprocessor<preprocessor_data>(
+					parent_.add_preprocessor<preprocessor_data>(
 						buffer, val.location, "", val.linenum, dir, val.textdomain, defines, true);
 				} else {
 					DBG_PREPROC << "substituting (slow) macro " << symbol << '\n';
 
-					std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(target_));
+					std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(parent_));
 
 					// Make the nested preprocessor_data responsible for
 					// restoring our current textdomain if needed.
-					buf->textdomain_ = target_.textdomain_;
+					buf->textdomain_ = parent_.textdomain_;
 
 					std::ostringstream res;
 					{
@@ -1513,7 +1513,7 @@ bool preprocessor_data::get_chunk()
 
 					put(res.str());
 				}
-			} else if(target_.depth_ < 40) {
+			} else if(parent_.depth_ < 40) {
 				LOG_PREPROC << "Macro definition not found for " << symbol << " , attempting to open as file.\n";
 				pop_token();
 
@@ -1522,9 +1522,9 @@ bool preprocessor_data::get_chunk()
 					if(!slowpath_)
 						// nfname.size() - symbol.size() gives you an index into nfname
 						// This does not necessarily match the symbol though, as it can start with ~ or ./
-						target_.add_preprocessor<preprocessor_file>(nfname, nfname.size() - symbol.size());
+						parent_.add_preprocessor<preprocessor_file>(nfname, nfname.size() - symbol.size());
 					else {
-						std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(target_));
+						std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(parent_));
 
 						std::ostringstream res;
 						{
@@ -1539,16 +1539,16 @@ bool preprocessor_data::get_chunk()
 				} else {
 					std::ostringstream error;
 					error << "Macro/file '" << symbol << "' is missing";
-					target_.error(error.str(), linenum_);
+					parent_.error(error.str(), linenum_);
 				}
 			} else {
-				target_.error("Too many nested preprocessing inclusions", linenum_);
+				parent_.error("Too many nested preprocessing inclusions", linenum_);
 			}
 		} else if(!skipping_) {
 			if(token.type == token_desc::MACRO_SPACE) {
 				std::ostringstream s;
-				s << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << target_.location_ << "\n"
-				  << OUTPUT_SEPARATOR << "textdomain " << target_.textdomain_ << '\n';
+				s << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << parent_.location_ << "\n"
+				  << OUTPUT_SEPARATOR << "textdomain " << parent_.textdomain_ << '\n';
 
 				strings_.push_back(s.str());
 				token.type = token_desc::MACRO_CHUNK;
@@ -1619,7 +1619,7 @@ void preprocess_resource(const std::string& res_name,
 		preproc_map* defines_map,
 		bool write_cfg,
 		bool write_plain_cfg,
-		const std::string& target_directory)
+		const std::string& parent_directory)
 {
 	if(filesystem::is_directory(res_name)) {
 		std::vector<std::string> dirs, files;
@@ -1630,12 +1630,12 @@ void preprocess_resource(const std::string& res_name,
 		// Subdirectories
 		for(const std::string& dir : dirs) {
 			LOG_PREPROC << "processing sub-dir: " << dir << '\n';
-			preprocess_resource(dir, defines_map, write_cfg, write_plain_cfg, target_directory);
+			preprocess_resource(dir, defines_map, write_cfg, write_plain_cfg, parent_directory);
 		}
 
 		// Files in current directory
 		for(const std::string& file : files) {
-			preprocess_resource(file, defines_map, write_cfg, write_plain_cfg, target_directory);
+			preprocess_resource(file, defines_map, write_cfg, write_plain_cfg, parent_directory);
 		}
 
 		return;
@@ -1671,7 +1671,7 @@ void preprocess_resource(const std::string& res_name,
 
 		read(cfg, streamContent);
 
-		const std::string preproc_res_name = target_directory + "/" + filesystem::base_name(res_name);
+		const std::string preproc_res_name = parent_directory + "/" + filesystem::base_name(res_name);
 
 		// Write the processed cfg file
 		if(write_cfg) {
