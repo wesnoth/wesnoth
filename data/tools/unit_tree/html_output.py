@@ -637,7 +637,8 @@ class HTMLOutput:
                 # Some add-ons use race names consisting of only whitespace for
                 # hiding races in the UI. We need to skip those since otherwise
                 # they result in unusual markup (e.g. invisible <a> elements).
-                if not r.strip():
+                if not r.strip() or \
+                    not [uid for uid in races[r] if not self.wesnoth.unit_lookup[uid].hidden]:
                     continue
                 race_url = "%s#%s" % (cleanurl(target), cleanurl(r))
                 add_menu("", r, "unitmenu", url=race_url)
