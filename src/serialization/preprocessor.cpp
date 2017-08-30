@@ -455,7 +455,7 @@ std::string preprocessor_streambuf::get_current_file()
 	preprocessor* pre = current();
 
 	// Iterate backwards over queue to get the last non-macro preprocessor.
-	for(auto& p = preprocessor_queue_.rbegin(); p != preprocessor_queue_.rend(); ++p) {
+	for(auto p = preprocessor_queue_.rbegin(); p != preprocessor_queue_.rend(); ++p) {
 		pre = p->get();
 
 		if(!pre || !pre->is_macro()) {
