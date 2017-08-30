@@ -489,7 +489,7 @@ class HTMLOutput:
                     abbrev += name[i]
             return abbrev
 
-        def add_menu(menuid, name, classes='', url='', is_table_container=False):
+        def add_menu(menuid, name, classes='', url='', is_table_container=False, container_classes=''):
             """
             Writes the initial portion of a sidebar item, including the item's
             label, the start tag for the popup menu container, and the label
@@ -516,7 +516,10 @@ class HTMLOutput:
             else:
                 write('<div class="popupheader">' + html_name + '</div>')
             if not is_table_container:
-                write('<ul>')
+                if not container_classes:
+                    write('<ul>')
+                else:
+                    write('<ul class="%s">' % cleantext(container_classes))
 
         def add_menuitem_placeholder():
             """Writes a horizontal bar serving as a menu placeholder."""
@@ -634,14 +637,15 @@ class HTMLOutput:
 
             racelist = sorted(races.keys())
             for r in racelist:
+                visible_num = len([uid for uid in races[r] if not self.wesnoth.unit_lookup[uid].hidden])
                 # Some add-ons use race names consisting of only whitespace for
                 # hiding races in the UI. We need to skip those since otherwise
                 # they result in unusual markup (e.g. invisible <a> elements).
-                if not r.strip() or \
-                    not [uid for uid in races[r] if not self.wesnoth.unit_lookup[uid].hidden]:
+                if not r.strip() or not visible_num:
                     continue
                 race_url = "%s#%s" % (cleanurl(target), cleanurl(r))
-                add_menu("", r, "unitmenu", url=race_url)
+                use_columns = "nocolumns" if visible_num < 12 else ""
+                add_menu("", r, "unitmenu", url=race_url, container_classes=use_columns)
                 for uid in races[r]:
                     un = self.wesnoth.unit_lookup[uid]
                     if un.hidden:
