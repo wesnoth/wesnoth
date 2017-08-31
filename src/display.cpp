@@ -3146,7 +3146,7 @@ void display::update_arrow(arrow & arrow)
 map_location display::get_middle_location() const
 {
 	const SDL_Rect& rect = map_area();
-	return pixel_position_to_hex(rect.x + rect.w / 2 , rect.y + rect.h / 2 );
+	return pixel_position_to_hex(xpos_ + rect.x + rect.w / 2 , ypos_ + rect.y + rect.h / 2 );
 }
 
 void display::write(config& cfg) const
