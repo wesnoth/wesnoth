@@ -123,7 +123,7 @@ private:
 void parser::operator()()
 {
 	cfg_.clear();
-	elements.push(element(&cfg_, ""));
+	elements.emplace(&cfg_, "");
 
 	do {
 		tok_.next_token();
@@ -195,7 +195,7 @@ void parser::parse_element()
 
 		// Add the element
 		current_element = &(elements.top().cfg->add_child(elname));
-		elements.push(element(current_element, elname, tok_.get_start_line(), tok_.get_file()));
+		elements.emplace(current_element, elname, tok_.get_start_line(), tok_.get_file());
 
 		if(validator_) {
 			validator_->open_tag(elname, tok_.get_start_line(), tok_.get_file());
@@ -229,7 +229,7 @@ void parser::parse_element()
 			}
 		}
 
-		elements.push(element(current_element, elname, tok_.get_start_line(), tok_.get_file()));
+		elements.emplace(current_element, elname, tok_.get_start_line(), tok_.get_file());
 		break;
 
 	case '/': // [/element]
