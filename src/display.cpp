@@ -1361,7 +1361,6 @@ void display::update_display()
 	}
 
 	if(preferences::show_fps() || benchmark) {
-		static int last_sample = SDL_GetTicks();
 		static int frames = 0;
 		++frames;
 		const int sample_freq = 10;
@@ -1369,7 +1368,6 @@ void display::update_display()
 			const int this_sample = SDL_GetTicks();
 
 			const int fps = 1000 / *std::max_element(frametimes_.begin(), frametimes_.end());
-			last_sample = this_sample;
 			frames = 0;
 
 			if(fps_handle_ != 0) {
