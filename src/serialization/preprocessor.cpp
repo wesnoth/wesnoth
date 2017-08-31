@@ -327,7 +327,8 @@ private:
 	{
 	}
 
-	virtual int underflow();
+	/** Inherited from basic_streambuf. */
+	virtual int underflow() override;
 
 	void restore_old_preprocessor();
 
@@ -557,7 +558,7 @@ public:
 	 * Inserts and processes the next file in the list of included files.
 	 * @return	false if there is no next file.
 	 */
-	virtual bool get_chunk()
+	virtual bool get_chunk() override
 	{
 		while(pos_ != end_) {
 			const std::string& name = *(pos_++);
@@ -684,9 +685,9 @@ public:
 			std::map<std::string, std::string>* defines,
 			bool is_define = false);
 
-	virtual bool get_chunk();
+	virtual bool get_chunk() override;
 
-	virtual preprocessor::MODE parse_mode()
+	virtual preprocessor::MODE parse_mode() override
 	{
 		return is_define_ ? PARSES_MACRO : PARSES_FILE;
 	}
