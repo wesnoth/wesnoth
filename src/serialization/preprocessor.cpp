@@ -639,7 +639,7 @@ class preprocessor_data : public preprocessor
 	std::vector<std::string> strings_;
 
 	/** Mapping of macro arguments to their content. */
-	std::map<std::string, std::string>* local_defines_;
+	std::unique_ptr<std::map<std::string, std::string>> local_defines_;
 
 	/** Stack of nested preprocessing chunks. */
 	std::vector<token_desc> tokens_;
@@ -684,11 +684,6 @@ public:
 			const std::string& domain,
 			std::map<std::string, std::string>* defines,
 			bool is_define = false);
-
-	~preprocessor_data()
-	{
-		delete local_defines_;
-	}
 
 	virtual bool get_chunk();
 
