@@ -244,13 +244,12 @@ public:
 	 */
 	virtual bool get_chunk() = 0;
 
-	/**
-	 * Retruns 1 if this parses a macro, -1 if this doesn't parse text (if this is no preprocessor_data),
-	 * 0 otherwise (this parses a file).
-	 */
-	virtual int is_macro()
+	enum MODE { NO_PARSING, PARSES_FILE, PARSES_MACRO };
+
+	/** Returns the appropriate parsing mode for this preprocessor. */
+	virtual MODE parse_mode()
 	{
-		return -1;
+		return NO_PARSING;
 	}
 
 private:
@@ -464,11 +463,11 @@ std::string preprocessor_streambuf::get_current_file()
 	for(auto p = preprocessor_queue_.rbegin(); p != preprocessor_queue_.rend(); ++p) {
 		pre = p->get();
 
-		if(!pre || !pre->is_macro()) {
+		if(!pre || pre->parse_mode() == preprocessor::PARSES_FILE) {
 			break;
 		}
 
-		if(pre->is_macro() == 1) {
+		if(pre->parse_mode() == preprocessor::PARSES_MACRO) {
 			++nested_level;
 		}
 	}
@@ -687,9 +686,9 @@ public:
 
 	virtual bool get_chunk();
 
-	virtual int is_macro()
+	virtual preprocessor::MODE parse_mode()
 	{
-		return is_define_ ? 1 : 0;
+		return is_define_ ? PARSES_MACRO : PARSES_FILE;
 	}
 
 	friend bool operator==(preprocessor_data::token_desc::TOKEN_TYPE, char);
