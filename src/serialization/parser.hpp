@@ -21,19 +21,20 @@
 #include "configr_assign.hpp"
 
 class abstract_validator;
-// Read data in, clobbering existing data.
-void read(config &cfg, std::istream &in,
-		  abstract_validator * validator = nullptr); 	// Throws config::error
-void read(config &cfg, const std::string &in,
-		  abstract_validator * validator = nullptr); 	// Throws config::error
-void read_gz(config &cfg, std::istream &in,
-			 abstract_validator * validator = nullptr);
-void read_bz2(config &cfg, std::istream &in,
-			 abstract_validator * validator = nullptr);
 
-void write(std::ostream &out, configr_of const &cfg, unsigned int level=0);
-void write_gz(std::ostream &out, configr_of const &cfg);
-void write_bz2(std::ostream &out, configr_of const &cfg);
-void write_key_val(std::ostream &out, const std::string &key, const config::attribute_value &value, unsigned level, std::string &textdomain);
-void write_open_child(std::ostream &out, const std::string &child, unsigned int level);
-void write_close_child(std::ostream &out, const std::string &child, unsigned int level);
+// Read data in, clobbering existing data.
+void read(config& cfg, std::istream& in, abstract_validator* validator = nullptr);      // Throws config::error
+void read(config& cfg, const std::string& in, abstract_validator* validator = nullptr); // Throws config::error
+void read_gz(config& cfg, std::istream& in, abstract_validator* validator = nullptr);
+void read_bz2(config& cfg, std::istream& in, abstract_validator* validator = nullptr);
+
+void write(std::ostream& out, configr_of const& cfg, unsigned int level = 0);
+void write_gz(std::ostream& out, configr_of const& cfg);
+void write_bz2(std::ostream& out, configr_of const& cfg);
+void write_key_val(std::ostream& out,
+		const std::string& key,
+		const config::attribute_value& value,
+		unsigned level,
+		std::string& textdomain);
+void write_open_child(std::ostream& out, const std::string& child, unsigned int level);
+void write_close_child(std::ostream& out, const std::string& child, unsigned int level);
