@@ -65,10 +65,10 @@ namespace
 
 class parser
 {
-	parser();
+	parser() = delete;
 
-	parser(const parser&);
-	parser& operator=(const parser&);
+	parser(const parser&) = delete;
+	parser& operator=(const parser&) = delete;
 
 public:
 	parser(config& cfg, std::istream& in, abstract_validator* validator = nullptr)
