@@ -21,6 +21,9 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/unicode.hpp"
+#ifdef __APPLE__
+#include "../version.hpp"
+#endif
 
 #include <cstring>
 
@@ -135,10 +138,11 @@ std::string os_version()
 		const std::string& ver = read_pipe_line(p);
 
 		if(!ver.empty()) {
-			if (std::stod(ver) >= 10.12) {
-				return "Apple macOS " + ver;
-			} else {
+			const version_info version(ver);
+			if (version.minor_version() < 12) {
 				return "Apple OS X " + ver;
+			} else {
+				return "Apple macOS " + ver;
 			}
  		}
 	}
