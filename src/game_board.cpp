@@ -61,12 +61,6 @@ void swap(game_board & one, game_board & other) {
 	one.map_.swap(other.map_);
 }
 
-game_board & game_board::operator= (game_board other)
-{
-	swap(*this, other);
-	return(*this);
-}
-
 void game_board::new_turn(int player_num) {
 	for (unit & i : units_) {
 		if (i.side() == player_num) {

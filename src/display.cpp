@@ -347,6 +347,7 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 	animated<image::locator>& f = flags_[n];
 
 	f = temp_anim;
+	assert(f.get_end_time() != 0);
 	f.start_animation(rand() % f.get_end_time(), true);
 }
 
@@ -1058,9 +1059,8 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 }
 
 std::vector<surface> display::get_terrain_images(const map_location &loc,
-						     const std::string& timeid,
-		image::TYPE image_type,
-		TERRAIN_TYPE terrain_type)
+	const std::string& timeid,
+	TERRAIN_TYPE terrain_type)
 {
 	std::vector<surface> res;
 
@@ -1189,7 +1189,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			const bool off_map = (image.get_filename() == off_map_name || image.get_modifications().find("NO_TOD_SHIFT()") != std::string::npos);
 
 			if(off_map) {
-				surf = image::get_image(image, off_map ? image::SCALED_TO_HEX : image_type);
+				surf = image::get_image(image, image::SCALED_TO_HEX);
 			} else if(lt.empty()) {
 				surf = image::get_image(image, image::SCALED_TO_HEX);
 			} else {
@@ -2530,8 +2530,8 @@ void display::draw_hex(const map_location& loc) {
 	int num_images_bg = 0;
 
 	if(!shrouded(loc)) {
-		std::vector<surface> images_fg = get_terrain_images(loc,tod.id, image_type, FOREGROUND);
-		std::vector<surface> images_bg = get_terrain_images(loc,tod.id, image_type, BACKGROUND);
+		std::vector<surface> images_fg = get_terrain_images(loc,tod.id, FOREGROUND);
+		std::vector<surface> images_bg = get_terrain_images(loc,tod.id, BACKGROUND);
 
 		num_images_fg = images_fg.size();
 		num_images_bg = images_bg.size();

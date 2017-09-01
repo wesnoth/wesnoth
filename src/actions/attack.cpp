@@ -532,7 +532,7 @@ int battle_context::choose_attacker_weapon(const unit &attacker,
 			defender_combatant_ = new combatant(*defender_stats_, prev_def);
 			attacker_combatant_->fight(*defender_combatant_);
 		} else {
-			if (attacker_stats_->disable) {
+			if (attacker_stats_ != nullptr && attacker_stats_->disable) {
 				delete attacker_stats_;
 				attacker_stats_ = nullptr;
 				continue;

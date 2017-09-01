@@ -98,7 +98,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
 				continue;
 
 			// Check if the leader is on a connected keep.
-			if ( allow_local && dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(*u, recruit_loc) ) {
+			if (allow_local && dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(*u, recruit_loc)) {
 				leader_in_place= true;
 				local_result.insert(u->recruits().begin(), u->recruits().end());
 			}
@@ -203,7 +203,7 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
 				continue;
 
 			// Check if the leader is on a connected keep.
-			if ( !dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(*u, recall_loc) )
+			if (!dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(*u, recall_loc))
 				continue;
 			leader_in_place= true;
 
@@ -262,7 +262,7 @@ namespace { // Helpers for check_recall_location()
 			return RECRUIT_NO_VACANCY;
 
 		// See if the preferred location cannot be used.
-		if ( !dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(recaller, preferred) ) {
+		if (!dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(recaller, preferred)) {
 			alternative = permissible;
 			return RECRUIT_ALTERNATE_LOCATION;
 		}
@@ -392,7 +392,7 @@ namespace { // Helpers for check_recruit_location()
 			return RECRUIT_NO_VACANCY;
 
 		// See if the preferred location cannot be used.
-		if ( !dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(recruiter, preferred) ) {
+		if (!dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(recruiter, preferred)) {
 			alternative = permissible;
 			return RECRUIT_ALTERNATE_LOCATION;
 		}
@@ -540,14 +540,14 @@ namespace { // Helpers for place_recruit()
 
 		// See if the preferred location is an option.
 		unit_map::const_iterator leader = units.find(recruited_from);
-		if ( leader != units.end()  &&  leader->can_recruit()  &&
-			 leader->side() == side && dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(*leader, recruit_location) )
+		if (leader != units.end()  &&  leader->can_recruit()  &&
+			leader->side() == side && dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(*leader, recruit_location))
 			return leader->get_location();
 
 		// Check all units.
-		for ( leader = units.begin(); leader != units.end(); ++leader )
-			if ( leader->can_recruit()  &&  leader->side() == side  &&
-				 dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(*leader, recruit_location) )
+		for (leader = units.begin(); leader != units.end(); ++leader)
+			if (leader->can_recruit() && leader->side() == side &&
+				dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(*leader, recruit_location))
 				return leader->get_location();
 
 		// No usable leader found.

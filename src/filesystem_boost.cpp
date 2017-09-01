@@ -1161,9 +1161,12 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 	// and there would be no way to "escape" from "terrain/" otherwise. This is not the
 	// best solution but we cannot remove it without another solution (subtypes maybe?).
 
-	// using 'for' instead 'if' to allow putting delcaration and check into the brackets
-	for(std::string::size_type pos = filename.rfind("../"); pos != std::string::npos;)
-		return get_binary_file_location(type, filename.substr(pos + 3));
+	{
+		std::string::size_type pos = filename.rfind("../");
+		if(pos != std::string::npos) {
+			return get_binary_file_location(type, filename.substr(pos + 3));
+		}
+	}
 
 	if (!is_legal_file(filename))
 		return std::string();

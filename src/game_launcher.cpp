@@ -455,7 +455,7 @@ bool game_launcher::init_lua_script()
 
 void game_launcher::set_test(const std::string& id)
 {
-	state_ = saved_game();
+	state_.clear();
 	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TEST;
 	state_.classification().campaign_define = "TEST";
 
@@ -691,7 +691,7 @@ bool game_launcher::load_game()
 
 void game_launcher::set_tutorial()
 {
-	state_ = saved_game();
+	state_.clear();
 	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TUTORIAL;
 	state_.classification().campaign_define = "TUTORIAL";
 	state_.mp_settings().mp_era = "era_default";
@@ -711,7 +711,7 @@ void game_launcher::mark_completed_campaigns(std::vector<config> &campaigns)
 
 bool game_launcher::new_campaign()
 {
-	state_ = saved_game();
+	state_.clear();
 	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::SCENARIO;
 	state_.mp_settings().show_connect = false;
 	play_replay_ = false;
@@ -804,7 +804,7 @@ void game_launcher::start_wesnothd()
 
 bool game_launcher::play_multiplayer(mp_selection res)
 {
-	state_ = saved_game();
+	state_.clear();
 	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
 	try {
@@ -889,7 +889,7 @@ bool game_launcher::play_multiplayer_commandline()
 	DBG_MP << "starting multiplayer game from the commandline" << std::endl;
 
 	// These are all the relevant lines taken literally from play_multiplayer() above
-	state_ = saved_game();
+	state_.clear();
 	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
 	game_config_manager::get()->

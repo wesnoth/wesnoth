@@ -382,16 +382,6 @@ void menu::set_inner_location(SDL_Rect const &rect)
 	bg_register(rect);
 }
 
-const menu::item& menu::get_item(int index) const
-{
-	return items_[index];
-}
-
-const menu::item& menu::get_selected_item() const
-{
-	return items_[selection()];
-}
-
 void menu::change_item(int pos1, int pos2,const std::string& str)
 {
 	if(pos1 < 0 || pos1 >= int(item_pos_.size()) ||

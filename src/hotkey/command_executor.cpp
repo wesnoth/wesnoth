@@ -527,11 +527,11 @@ static void event_execute( const SDL_Event& event, command_executor* executor)
 
 void execute_command(const hotkey_command& command, command_executor* executor, int index, bool press)
 {
-	if (executor != nullptr) {
-		if (!executor->can_execute_command(command, index)
-				|| executor->execute_command(command, index, press)) {
-			return;
-		}
+	assert(executor != nullptr);
+
+	if (!executor->can_execute_command(command, index)
+			|| executor->execute_command(command, index, press)) {
+		return;
 	}
 
 	if (!press) {

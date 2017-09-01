@@ -87,6 +87,7 @@ CVideo::CVideo(FAKE_TYPES type)
 	, help_string_(0)
 	, updatesLocked_(0)
 	, flip_locked_(0)
+	, refresh_rate_(0)
 {
 	assert(!singleton_);
 	singleton_ = this;

@@ -43,6 +43,7 @@ multimenu_button::multimenu_button(const implementation::builder_multimenu_butto
 	: styled_widget(builder, get_control_type())
 	, state_(ENABLED)
 	, retval_(0)
+	, max_shown_(1)
 	, values_()
 	, toggle_states_()
 	, droplist_(nullptr)

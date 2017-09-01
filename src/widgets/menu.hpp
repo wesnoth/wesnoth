@@ -161,9 +161,6 @@ public:
 	void move_selection_keeping_viewport(size_t id);
 	void reset_selection();
 
-	const item& get_item(int index) const;
-	const item& get_selected_item() const;
-
 	// allows user to change_item while running (dangerous)
 	void change_item(int pos1,int pos2,const std::string& str);
 

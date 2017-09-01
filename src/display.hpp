@@ -695,7 +695,6 @@ protected:
 
 	std::vector<surface> get_terrain_images(const map_location &loc,
 					const std::string& timeid,
-					image::TYPE type,
 					TERRAIN_TYPE terrain_type);
 
 	std::vector<surface> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);

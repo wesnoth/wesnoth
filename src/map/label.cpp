@@ -337,6 +337,7 @@ terrain_label::terrain_label(const map_labels& parent,
 /** Load label from config. */
 terrain_label::terrain_label(const map_labels& parent, const config& cfg)
 	: handle_(0)
+	, tooltip_handle_(0)
 	, text_()
 	, tooltip_()
 	, team_name_()

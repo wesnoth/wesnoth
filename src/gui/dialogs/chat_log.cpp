@@ -205,7 +205,7 @@ public:
 		// one might want to continue reading the conversation in order.
 		//
 		// TODO: look into implementing the above suggestion
-		dynamic_cast<scroll_label*>(msg_label)->scroll_vertical_scrollbar(scrollbar_base::END);
+		dynamic_cast<scroll_label&>(*msg_label).scroll_vertical_scrollbar(scrollbar_base::END);
 	}
 
 	void chat_message_list_to_clipboard(int first, int last)

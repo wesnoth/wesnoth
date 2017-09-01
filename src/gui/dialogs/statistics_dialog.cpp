@@ -157,7 +157,7 @@ void statistics_dialog::add_damage_row(
 
 	if(show_this_turn) {
 		str << turn_damage << " / "
-			<< (turn_expected * 10 + shift / 2) / shift * 0.1
+			<< (turn_expected * 10 + shift / 2) / shift / 10
 			<< "    " // TODO: should probably make this two columns
 			<< ((dst < 0) ^ (turn_expected < 0) ? "" : "+")
 			<< (turn_expected == 0 ? 0 : 100 * dst / turn_expected) << '%';

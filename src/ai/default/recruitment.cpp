@@ -1462,7 +1462,8 @@ double recruitment::get_unit_ratio() const {
 		if (unit.incapacitated() || unit.total_movement() <= 0 || unit.can_recruit()) {
 			continue;
 		}
-		double value = unit.cost() * unit.hitpoints() / unit.max_hitpoints();
+		double value = unit.cost() *
+			static_cast<double>(unit.hitpoints()) / static_cast<double>(unit.max_hitpoints());
 		if (current_team().is_enemy(unit.side())) {
 			enemy_total_value += value;
 		} else {

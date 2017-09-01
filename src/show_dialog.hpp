@@ -22,7 +22,7 @@ class surface;
 #include "floating_label.hpp"
 #include "tooltips.hpp"
 #include "video.hpp"
-#include "widgets/menu.hpp"
+#include "widgets/button.hpp"
 
 namespace gui
 {

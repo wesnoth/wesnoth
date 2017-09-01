@@ -1019,7 +1019,7 @@ void preprocessor_data::conditional_skip(bool skip)
 
 bool preprocessor_data::get_chunk()
 {
-	char c = in_.get();
+	char c = static_cast<char>(in_.get());
 	token_desc& token = tokens_.back();
 
 	if(in_.eof()) {
@@ -1064,7 +1064,7 @@ bool preprocessor_data::get_chunk()
 		std::string buffer(1, c);
 
 		for(;;) {
-			char d = in_.get();
+			char d = static_cast<char>(in_.get());
 
 			if(in_.eof() || d == '\n') {
 				break;
@@ -1126,7 +1126,7 @@ bool preprocessor_data::get_chunk()
 			for(;;) {
 				if(in_.eof())
 					break;
-				char d = in_.get();
+				char d = static_cast<char>(in_.get());
 				if(d == '\n')
 					++linenum_;
 				buffer += d;
@@ -1153,7 +1153,7 @@ bool preprocessor_data::get_chunk()
 									break;
 								}
 
-								char e = in_.get();
+								char e = static_cast<char>(in_.get());
 								if(e == '\n') {
 									++linenum_;
 								}

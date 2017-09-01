@@ -731,7 +731,8 @@ ai::holder& manager::get_active_ai_holder_for_side_dbg(side_number side)
 {
 	if (!game_config::debug)
 	{
-		return *(new ai::holder(side, config()));
+		static ai::holder empty_holder(side, config());
+		return empty_holder;
 	}
 	return get_active_ai_holder_for_side(side);
 }

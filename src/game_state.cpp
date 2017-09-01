@@ -79,6 +79,8 @@ game_state::game_state(const config & level, play_controller & pc, game_board& b
 	player_number_(level["playing_team"].to_int() + 1),
 	end_level_data_(),
 	init_side_done_(level["init_side_done"].to_bool(false)),
+	start_event_fired_(!level["playing_team"].empty()),
+	server_request_number_(level["server_request_number"].to_int()),
 	first_human_team_(-1)
 {
 	lua_kernel_->load_core();

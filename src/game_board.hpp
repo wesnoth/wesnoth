@@ -101,7 +101,7 @@ public:
 	// Copy and swap idiom, because we have a scoped pointer.
 
 	game_board(const game_board & other);
-	game_board & operator= (game_board other);
+	game_board& operator=(const game_board& other) = delete;
 
 	friend void swap(game_board & one, game_board & other);
 

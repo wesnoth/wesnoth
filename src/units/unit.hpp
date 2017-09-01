@@ -127,7 +127,7 @@ public:
 
 	void swap(unit&);
 
-	unit& operator=(unit);
+	unit& operator=(const unit&) = delete;
 
 	/**
 	 * @defgroup unit_advance Advancement functions

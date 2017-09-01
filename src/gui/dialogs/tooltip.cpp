@@ -72,6 +72,11 @@ class tooltip : public modeless_dialog
 public:
 	tooltip() : modeless_dialog(), window_id_(), message_(), mouse_()
 	{
+		// To make Coverity happy
+		source_rect_.x = 0;
+		source_rect_.y = 0;
+		source_rect_.w = 0;
+		source_rect_.h = 0;
 	}
 
 	void set_window_id(const std::string& window_id)

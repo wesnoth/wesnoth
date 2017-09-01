@@ -793,15 +793,6 @@ void unit::swap(unit & o)
 	swap(invisibility_cache_, o.invisibility_cache_);
 }
 
-/**
- * Assignment operator.
- */
-unit& unit::operator=(unit other)
-{
-	swap(other);
-	return *this;
-}
-
 void unit::generate_name()
 {
 	if(!name_.empty() || !generate_name_) {

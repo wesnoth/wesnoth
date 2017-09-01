@@ -188,11 +188,11 @@ side_actions_container::iterator side_actions_container::bump_earlier(iterator p
 	assert(position < end());
 
 	action_ptr rhs = *position;
-	action_ptr lhs = position[-1];
+	action_ptr lhs = *(position - 1);
 
 	actions_.replace(position, lhs);
-	actions_.replace(position-1, rhs);
-	return position-1;
+	actions_.replace(position - 1, rhs);
+	return position - 1;
 }
 
 side_actions_container::iterator side_actions_container::bump_later(iterator position)
@@ -455,7 +455,7 @@ namespace
 
 		void check_recruit_recall(const map_location &loc) {
 			const unit_const_ptr leader = second_->get_unit();
-			if(leader->can_recruit() && dynamic_cast<game_state*>(resources::filter_con)->can_recruit_on(*leader, loc)) {
+			if(leader->can_recruit() && dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(*leader, loc)) {
 				if(const unit_const_ptr backup_leader = find_backup_leader(*leader)) {
 					side_actions::iterator it = sa_.find_first_action_of(*backup_leader);
 					if(!(it == sa_.end() || position_ < it)) {

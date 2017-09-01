@@ -267,7 +267,7 @@ create_engine::create_engine(CVideo& v, saved_game& state)
 
 	bool connect = state_.mp_settings().show_connect;
 
-	state_ = saved_game();
+	state_.clear();
 	state_.classification().campaign_type = type;
 	state_.mp_settings().show_connect = connect;
 

@@ -40,10 +40,12 @@ public:
 	explicit saved_game(config cfg);
 	~saved_game(){}
 
-	saved_game& operator =(saved_game other);
+	saved_game& operator=(const saved_game& other) = delete;
+	saved_game& operator=(saved_game&& other);
 	void swap(saved_game& other);
 	/// destroys the passed config.
 	void set_data(config& cfg);
+	void clear();
 	/// writes the config information into a stream (file)
 	void write_config(config_writer& out) const;
 	void write_general_info(config_writer& out) const;

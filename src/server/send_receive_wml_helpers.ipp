@@ -291,7 +291,8 @@ struct handle_receive_doc : public handle_doc<Handler, ErrorHandler>
 {
 	std::size_t buf_size;
 	handle_receive_doc(socket_ptr socket, Handler handler, ErrorHandler error_handler) :
-		handle_doc<Handler, ErrorHandler>(socket, handler, error_handler)
+		handle_doc<Handler, ErrorHandler>(socket, handler, error_handler),
+		buf_size(0)
 	{
 	}
 	void operator()(const boost::system::error_code& error, std::size_t size)

@@ -538,7 +538,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 			double best_threat = 0.0;
 			int best_distance = 0;
 
-			const double max_acceptable_threat = un.hitpoints()/4;
+			const double max_acceptable_threat = un.hitpoints() / 4.0;
 
 			std::set<map_location> mass_locations;
 

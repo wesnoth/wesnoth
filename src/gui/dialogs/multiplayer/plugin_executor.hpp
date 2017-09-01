@@ -38,13 +38,16 @@ protected:
 	std::unique_ptr<plugins_context> plugins_context_;
 
 protected:
-	plugin_executor() {
+	plugin_executor()
+		: timer_id(0u)
+	{
 		if(plugins_manager::get()) {
 			timer_id = add_timer(game_config::lobby_network_timer, std::bind(&plugin_executor::play_slice, this), true);
 		}
 	}
 
-	~plugin_executor() {
+	~plugin_executor()
+	{
 		if(plugins_manager::get()) {
 			remove_timer(timer_id);
 		}

@@ -25,6 +25,7 @@ public:
 	~replay_recorder_base();
 
 	void swap(replay_recorder_base& other);
+	void swap(replay_recorder_base&& other) {swap(other);}
 	int get_pos() const;
 
 	int size() const;

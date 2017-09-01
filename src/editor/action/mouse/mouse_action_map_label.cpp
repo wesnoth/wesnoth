@@ -54,7 +54,7 @@ editor_action* mouse_action_map_label::drag_left(editor_display& disp, int x, in
 		partial = true;
 		chain = new editor_action_chain(new editor_action_label_delete(last_draged_));
 		chain->append_action(new editor_action_label(hex, label->text(), label->team_name(), label->color(),
-				label->visible_in_shroud(), label->visible_in_fog(), label->immutable(), label->category()));
+			label->visible_in_fog(), label->visible_in_shroud(), label->immutable(), label->category()));
 	}
 
 	last_draged_ = hex;

@@ -579,7 +579,7 @@ void saved_game::unify_controllers()
 	}
 }
 
-saved_game& saved_game::operator=(saved_game other)
+saved_game& saved_game::operator=(saved_game&& other)
 {
 	this->swap(other);
 	return *this;
@@ -658,4 +658,16 @@ void saved_game::set_data(config& cfg)
 	classification_ = game_classification(cfg);
 	mp_settings_ = mp_game_settings(cfg.child_or_empty("multiplayer"));
 	cfg.clear();
+}
+
+void saved_game::clear()
+{
+	carryover_.clear();
+	classification_ = game_classification();
+	has_carryover_expanded_ = false;
+	mp_settings_ = mp_game_settings();
+	replay_data_.swap(replay_recorder_base());
+	replay_start_.clear();
+	starting_pos_.clear();
+	starting_pos_type_ = STARTINGPOS_NONE;
 }

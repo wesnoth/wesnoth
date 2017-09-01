@@ -48,7 +48,7 @@ public:
 			return;
 		}
 
-		dynamic_cast<widget*>(w)->connect_signal<event::LEFT_BUTTON_CLICK>(
+		dynamic_cast<widget&>(*w).connect_signal<event::LEFT_BUTTON_CLICK>(
 			std::bind(&group::group_operator, this), event::dispatcher::front_child);
 
 		member_order_.push_back(dynamic_cast<styled_widget*>(w));
@@ -121,7 +121,7 @@ public:
 	{
 		// Ensure this callback is only called on the member being activated
 		const auto callback = [func](widget& widget)->void {
-			if(dynamic_cast<selectable_item*>(&widget)->get_value_bool()) {
+			if(dynamic_cast<selectable_item&>(widget).get_value_bool()) {
 				func(widget);
 			}
 		};

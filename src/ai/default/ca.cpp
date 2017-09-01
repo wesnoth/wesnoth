@@ -560,7 +560,7 @@ void get_villages_phase::execute()
 				const unit_map::const_iterator new_unit = units_.find(loc);
 
 				if (new_unit != units_.end() &&
-				    power_projection(i->first, get_enemy_dstsrc()) >= new_unit->hitpoints() / 4)
+				    power_projection(i->first, get_enemy_dstsrc()) >= new_unit->hitpoints() / 4.0)
 				{
 					LOG_AI_TESTING_AI_DEFAULT << "found support target... " << new_unit->get_location() << '\n';
 					//FIXME: suokko tweaked the constant 1.0 to the formula:

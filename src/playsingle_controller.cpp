@@ -340,7 +340,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		return is_victory ? LEVEL_RESULT::VICTORY : LEVEL_RESULT::DEFEAT;
 	} catch(const savegame::load_game_exception &) {
 		// Loading a new game is effectively a quit.
-		saved_game_ = saved_game();
+		saved_game_.clear();
 		throw;
 	} catch(wesnothd_error& e) {
 
@@ -502,7 +502,7 @@ void playsingle_controller::linger()
 		}
 	} catch(const savegame::load_game_exception &) {
 		// Loading a new game is effectively a quit.
-		saved_game_ = saved_game();
+		saved_game_.clear();
 		throw;
 	}
 

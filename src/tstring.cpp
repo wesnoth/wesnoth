@@ -61,7 +61,9 @@ t_string_base::walker::walker(const t_string_base& string) :
 	begin_(0),
 	end_(string_.size()),
 	textdomain_(),
-	translatable_(false)
+	translatable_(false),
+	countable_(false),
+	count_(0)
 {
 	if(string.translatable_) {
 		update();

@@ -99,6 +99,7 @@ editor_resize_map::editor_resize_map(int& width,
 	, old_width_(width)
 	, old_height_(height)
 	, expand_direction_(expand_direction)
+	, direction_buttons_{}
 {
 	register_bool("copy_edge_terrain", false, copy_edge_terrain);
 

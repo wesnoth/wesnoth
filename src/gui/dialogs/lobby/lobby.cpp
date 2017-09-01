@@ -130,6 +130,7 @@ mp_lobby::mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_con
 	, gamelistbox_(nullptr)
 	, window_(nullptr)
 	, lobby_info_(info)
+	, chatbox_(nullptr)
 	, filter_friends_(nullptr)
 	, filter_ignored_(nullptr)
 	, filter_slots_(nullptr)
@@ -146,6 +147,7 @@ mp_lobby::mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_con
 	, gamelist_id_at_row_()
 	, delay_playerlist_update_(false)
 	, delay_gamelist_update_(false)
+	, joined_game_id_(0)
 {
 	// Need to set this in the constructor, pre_show() is too late
 	set_show_even_without_video(true);
