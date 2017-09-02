@@ -21,9 +21,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/unicode.hpp"
-#ifdef __APPLE__
 #include "../version.hpp"
-#endif
 
 #include <cstring>
 
@@ -139,7 +137,7 @@ std::string os_version()
 
 		if(!ver.empty()) {
 			const version_info version(ver);
-			if (version.minor_version() < 12) {
+			if (version.major_version() == 10 && version.minor_version() < 12) {
 				return "Apple OS X " + ver;
 			} else {
 				return "Apple macOS " + ver;
