@@ -21,6 +21,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/unicode.hpp"
+#include "../version.hpp"
 
 #include <cstring>
 
@@ -121,7 +122,7 @@ std::string os_version()
 #ifdef __APPLE__
 
 	//
-	// Standard Mac OSX version
+	// Standard Mac OS X version
 	//
 
 	static const std::string version_plist = "/System/Library/CoreServices/SystemVersion.plist";
@@ -135,8 +136,13 @@ std::string os_version()
 		const std::string& ver = read_pipe_line(p);
 
 		if(!ver.empty()) {
-			return "Apple OS X " + ver;
-		}
+			const version_info version(ver);
+			if (version.major_version() == 10 && version.minor_version() < 12) {
+				return "Apple OS X " + ver;
+			} else {
+				return "Apple macOS " + ver;
+			}
+ 		}
 	}
 
 #else
