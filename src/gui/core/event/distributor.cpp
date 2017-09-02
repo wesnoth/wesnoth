@@ -66,6 +66,7 @@ static Uint32 popup_callback(Uint32 /*interval*/, void* /*param*/)
 	data.code = 0;
 	data.data1 = 0;
 	data.data2 = 0;
+	data.timestamp = std::time(nullptr);
 
 	event.type = HOVER_REMOVE_POPUP_EVENT;
 	event.user = data;

@@ -72,6 +72,7 @@ void trigger_full_redraw() {
 	data.code = 0;
 	data.data1 = nullptr;
 	data.data2 = nullptr;
+	data.timestamp = std::time(nullptr);
 
 	drawEvent.type = DRAW_ALL_EVENT;
 	drawEvent.user = data;
@@ -158,6 +159,7 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event &event)
 				data.code = 0;
 				data.data1 = nullptr;
 				data.data2 = nullptr;
+				data.timestamp = std::time(nullptr);
 
 				drawEvent.type = DRAW_ALL_EVENT;
 				drawEvent.user = data;
