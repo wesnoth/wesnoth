@@ -278,9 +278,8 @@ void campaign_selection::add_campaign_to_tree(window& window, const config& camp
 		} else {
 			item["label"] = game_config::images::victory_laurel;
 		}
-	} else {
-		item["label"] = "misc/blank-hex.png";
 	}
+
 	data.emplace("victory", item);
 
 	tree.add_node("campaign", data).set_id(campaign["id"]);
