@@ -717,7 +717,7 @@ bool unit_type::has_random_traits() const
 	for(const auto& cfg : possible_traits()) {
 		const config::attribute_value& availability = cfg["availability"];
 		if(availability.blank()) return true;
-		if(strcmp(availability.str().c_str(), "musthave") != 0) return true;
+		if(availability.str() != "musthave") return true;
 	}
 	return false;
 }

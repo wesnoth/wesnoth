@@ -133,7 +133,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		// Handle plague.
 		unit_ability_list plague_specials = weapon->get_specials("plague");
 		plagues = !opp.get_state("unplagueable") && !plague_specials.empty() &&
-			strcmp(opp.undead_variation().c_str(), "null") && !resources::gameboard->map().is_village(opp_loc);
+			opp.undead_variation() == "null" && !resources::gameboard->map().is_village(opp_loc);
 
 		if (plagues) {
 			plague_type = (*plague_specials.front().first)["type"].str();
@@ -267,7 +267,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 
 		unit_ability_list plague_specials = weapon->get_specials("plague");
 		plagues = !opp_type->musthave_status("unplagueable") && !plague_specials.empty() &&
-			strcmp(opp_type->undead_variation().c_str(), "null");
+			opp_type->undead_variation() == "null";
 
 		if (plagues) {
 			plague_type = (*plague_specials.front().first)["type"].str();
