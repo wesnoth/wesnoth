@@ -1378,12 +1378,16 @@ void unit::remove_ability_by_id(const std::string& ability)
 
 void unit::write(config& cfg) const
 {
+	config back;
 	auto write_subtag = [&cfg](const std::string& key, const config& child)
 	{
 		cfg.clear_children(key);
 
 		if(!child.empty()) {
 			cfg.add_child(key, child);
+		}
+		else {
+			back.add_child(key, child);
 		}
 	};
 
@@ -1501,6 +1505,7 @@ void unit::write(config& cfg) const
 			cfg.add_child("advancement", advancement);
 		}
 	}
+	cfg.append(back);
 }
 
 void unit::set_facing(map_location::DIRECTION dir) const
