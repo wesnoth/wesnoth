@@ -1713,6 +1713,9 @@ private:
 	}
 };
 
+/** Implement non-member swap function for std::swap (calls @ref unit::swap). */
+void swap(unit& lhs, unit& rhs);
+
 /**
  * Object which temporarily resets a unit's movement.
  *

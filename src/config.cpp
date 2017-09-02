@@ -1237,6 +1237,11 @@ void config::swap(config& cfg)
 	ordered_children.swap(cfg.ordered_children);
 }
 
+void swap(config& lhs, config& rhs)
+{
+	lhs.swap(rhs);
+}
+
 bool operator==(const config& a, const config& b)
 {
 	a.check_valid(b);

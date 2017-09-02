@@ -140,3 +140,7 @@ private:
 
 	replay_recorder_base replay_data_;
 };
+
+/** Implement non-member swap function for std::swap (calls @ref saved_game::swap). */
+void swap(saved_game& lhs, saved_game& rhs);
+

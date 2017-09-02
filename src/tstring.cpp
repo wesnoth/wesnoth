@@ -619,6 +619,11 @@ void t_string::reset_translations()
 	++language_counter;
 }
 
+void swap(t_string& lhs, t_string& rhs)
+{
+	lhs.swap(rhs);
+}
+
 std::ostream& operator<<(std::ostream& stream, const t_string_base& string)
 {
 	stream << string.str();

@@ -300,4 +300,7 @@ private:
 	document* next_;
 };
 
+/** Implement non-member swap function for std::swap (calls @ref document::swap). */
+void swap(document& lhs, document& rhs);
+
 }

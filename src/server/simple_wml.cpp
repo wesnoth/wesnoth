@@ -1239,6 +1239,11 @@ std::string document::stats()
 	return s.str();
 }
 
+void swap(document& lhs, document& rhs)
+{
+	lhs.swap(rhs);
+}
+
 }
 
 #ifdef UNIT_TEST_SIMPLE_WML

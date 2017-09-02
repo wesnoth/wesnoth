@@ -140,3 +140,8 @@ void replay_recorder_base::delete_upcoming_commands()
 {
 	commands_.resize(pos_);
 }
+
+void swap(replay_recorder_base& lhs, replay_recorder_base& rhs)
+{
+	lhs.swap(rhs);
+}

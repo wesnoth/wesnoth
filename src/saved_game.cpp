@@ -671,3 +671,8 @@ void saved_game::clear()
 	starting_pos_.clear();
 	starting_pos_type_ = STARTINGPOS_NONE;
 }
+
+void swap(saved_game& lhs, saved_game& rhs)
+{
+	lhs.swap(rhs);
+}

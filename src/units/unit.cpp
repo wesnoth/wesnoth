@@ -2632,3 +2632,8 @@ std::string get_checksum(const unit& u)
 
 	return wcfg.hash();
 }
+
+void swap(unit& lhs, unit& rhs)
+{
+	lhs.swap(rhs);
+}

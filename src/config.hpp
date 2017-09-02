@@ -769,6 +769,9 @@ private:
 	std::vector<child_pos> ordered_children;
 };
 
+/** Implement non-member swap function for std::swap (calls @ref config::swap). */
+void swap(config& lhs, config& rhs);
+
 namespace detail {
 	template<typename... T>
 	struct config_construct_unpacker;

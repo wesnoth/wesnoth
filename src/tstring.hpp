@@ -188,6 +188,10 @@ private:
 	//never null
 	std::shared_ptr<const t_string_base> val_;
 };
+
+/** Implement non-member swap function for std::swap (calls @ref t_string::swap). */
+void swap(t_string& lhs, t_string& rhs);
+
 inline std::ostream& operator<<(std::ostream& os, const t_string& str) { return os << str.get(); }
 inline bool operator==(const std::string &a, const t_string &b)    { return b == a; }
 inline bool operator==(const char *a, const t_string &b)           { return b == a; }

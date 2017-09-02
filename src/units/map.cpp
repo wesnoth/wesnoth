@@ -390,3 +390,8 @@ bool unit_map::has_unit_at(const map_location& loc) const
 {
 	return find(loc) != end();
 }
+
+void swap(unit_map& lhs, unit_map& rhs)
+{
+	lhs.swap(rhs);
+}

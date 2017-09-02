@@ -434,6 +434,9 @@ private:
 
 };
 
+/** Implement non-member swap function for std::swap (calls @ref unit_map::swap). */
+void swap(unit_map& lhs, unit_map& rhs);
+
 template <typename T>
 size_t unit_map::erase(const T& iter) {
 	assert(iter.valid());

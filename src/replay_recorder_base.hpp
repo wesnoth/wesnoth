@@ -58,3 +58,6 @@ protected:
 	boost::ptr_vector<config> commands_;
 	int pos_;
 };
+
+/** Implement non-member swap function for std::swap (calls @ref replay_recorder_base::swap). */
+void swap(replay_recorder_base& lhs, replay_recorder_base& rhs);
