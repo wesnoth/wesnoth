@@ -85,6 +85,7 @@ static Uint32 timer_sdl_draw_event(Uint32, void*)
 	data.code = 0;
 	data.data1 = nullptr;
 	data.data2 = nullptr;
+	data.timestampt = std::time(nullptr);
 
 	event.type = DRAW_EVENT;
 	event.user = data;

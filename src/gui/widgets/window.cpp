@@ -142,6 +142,7 @@ static Uint32 draw_timer(Uint32, void*)
 	data.code = 0;
 	data.data1 = nullptr;
 	data.data2 = nullptr;
+	data.timestamp = std::time(nullptr);
 
 	event.type = DRAW_EVENT;
 	event.user = data;
@@ -194,6 +195,7 @@ static bool helptip()
 	data.code = 0;
 	data.data1 = nullptr;
 	data.data2 = nullptr;
+	data.timestamp = std::time(nullptr);
 
 	event.type = SHOW_HELPTIP_EVENT;
 	event.user = data;
@@ -604,6 +606,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 		data.code = manager::instance().get_id(*this);
 		data.data1 = nullptr;
 		data.data2 = nullptr;
+		data.timestamp = std::time(nullptr);
 
 		event.type = CLOSE_WINDOW_EVENT;
 		event.user = data;
