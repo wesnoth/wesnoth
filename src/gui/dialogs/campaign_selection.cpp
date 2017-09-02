@@ -278,6 +278,8 @@ void campaign_selection::add_campaign_to_tree(window& window, const config& camp
 		} else {
 			item["label"] = game_config::images::victory_laurel;
 		}
+	} else {
+		item.clear();
 	}
 
 	data.emplace("victory", item);
