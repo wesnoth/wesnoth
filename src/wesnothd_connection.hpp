@@ -41,8 +41,7 @@ namespace boost
 }
 
 class config;
-
-using wesnothd_connection_ptr = std::shared_ptr<class wesnothd_connection>;
+class wesnothd_connection_ptr;
 
 /** A class that represents a TCP/IP connection to the wesnothd server. */
 class wesnothd_connection : public std::enable_shared_from_this<wesnothd_connection>
@@ -57,7 +56,7 @@ private:
 	/**
 	 * Constructor.
 	 *
-	 * May only be called by @ref create (or another function of this class).
+	 * May only be called via wesnothd_connection_ptr
 	 * @param host    Name of the host to connect to
 	 * @param service Service identifier such as "80" or "http"
 	 */
@@ -160,4 +159,49 @@ private:
 	std::size_t bytes_to_read_;
 	std::size_t bytes_read_;
 
+};
+
+class wesnothd_connection_ptr
+{
+private:
+	friend class wesnothd_connection;
+	wesnothd_connection_ptr(std::shared_ptr<wesnothd_connection>&& ptr)
+		: ptr_(std::move(ptr))
+	{}
+public:
+	
+	wesnothd_connection_ptr() = default;
+	
+	wesnothd_connection_ptr(const wesnothd_connection_ptr&) = delete;
+	wesnothd_connection_ptr& operator=(const wesnothd_connection_ptr&) = delete;
+#if defined(_MSC_VER) &&_MSC_VER == 1800
+	wesnothd_connection_ptr(wesnothd_connection_ptr&& other) : ptr_(std::move(other.ptr_))  {}
+#else
+	wesnothd_connection_ptr(wesnothd_connection_ptr&&) = default;
+#endif
+	wesnothd_connection_ptr& operator=(wesnothd_connection_ptr&&);
+
+	~wesnothd_connection_ptr();
+
+	explicit operator bool() const {
+		return !!ptr_;
+	}
+	wesnothd_connection& operator*() {
+		return *ptr_;
+	}
+	const wesnothd_connection& operator*() const {
+		return *ptr_;
+	}
+	wesnothd_connection* operator->() {
+		return ptr_.get();
+	}
+	const wesnothd_connection* operator->() const {
+		return ptr_.get();
+	}
+	wesnothd_connection* get() const {
+		return ptr_.get();
+	}
+
+private:
+	std::shared_ptr<wesnothd_connection> ptr_;
 };

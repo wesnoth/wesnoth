@@ -64,7 +64,7 @@ static wesnothd_connection_ptr open_connection(CVideo& video, const std::string&
 		h = preferences::network_host();
 	}
 
-	wesnothd_connection_ptr sock(nullptr);
+	wesnothd_connection_ptr sock;
 
 	const int colon_index = h.find_first_of(":");
 	std::string host;
@@ -120,7 +120,7 @@ static wesnothd_connection_ptr open_connection(CVideo& video, const std::string&
 				throw wesnothd_error(_("Server-side redirect loop"));
 			}
 			shown_hosts.insert(hostpair(host, port));
-			sock.reset();
+			sock = wesnothd_connection_ptr();
 			sock = gui2::dialogs::network_transmission::wesnothd_connect_dialog(video, "redirect", host, port);
 			continue;
 		}
