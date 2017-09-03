@@ -437,17 +437,11 @@ battle_context& battle_context::operator=(const battle_context& other)
 		attacker_stats_.reset(new battle_context_unit_stats(*other.attacker_stats_));
 		defender_stats_.reset(new battle_context_unit_stats(*other.defender_stats_));
 
-		if(other.attacker_combatant_) {
-			attacker_combatant_.reset(new combatant(*other.attacker_combatant_, *attacker_stats_));
-		} else {
-			attacker_combatant_.reset();
-		}
+		attacker_combatant_.reset(other.attacker_combatant_
+			? new combatant(*other.attacker_combatant_, *attacker_stats_) : nullptr);
 
-		if(other.defender_combatant_) {
-			defender_combatant_.reset(new combatant(*other.defender_combatant_, *defender_stats_));
-		} else {
-			defender_combatant_.reset();
-		}
+		defender_combatant_.reset(other.defender_combatant_
+			? new combatant(*other.defender_combatant_, *defender_stats_) : nullptr);
 	}
 
 	return *this;
@@ -575,7 +569,6 @@ int battle_context::choose_attacker_weapon(const unit& attacker,
 				attacker, attacker_loc, choices[0], true, defender, defender_loc, def_weapon, units));
 
 		if(attacker_stats_->disable) {
-			attacker_stats_.reset();
 			return -1;
 		}
 
