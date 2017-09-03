@@ -23,7 +23,6 @@
 #include "actions/vision.hpp"
 
 #include "ai/lua/aspect_advancements.hpp"
-#include "attack_prediction.hpp"
 #include "game_config.hpp"
 #include "game_data.hpp"
 #include "game_events/pump.hpp"
@@ -404,10 +403,10 @@ battle_context::battle_context(const unit_map& units,
 
 		assert(!defender_stats_ && !attacker_combatant_ && !defender_combatant_);
 
-		attacker_stats_ = new battle_context_unit_stats(
-				attacker, attacker_loc, attacker_weapon, true, defender, defender_loc, ddef, units);
-		defender_stats_ = new battle_context_unit_stats(
-				defender, defender_loc, defender_weapon, false, attacker, attacker_loc, adef, units);
+		attacker_stats_.reset(new battle_context_unit_stats(
+				attacker, attacker_loc, attacker_weapon, true, defender, defender_loc, ddef, units));
+		defender_stats_.reset(new battle_context_unit_stats(
+				defender, defender_loc, defender_weapon, false, attacker, attacker_loc, adef, units));
 	}
 
 	// There have been various bugs where only one of these was set
@@ -432,29 +431,23 @@ battle_context::battle_context(const battle_context& other)
 	*this = other;
 }
 
-battle_context::~battle_context()
-{
-	delete attacker_stats_;
-	delete defender_stats_;
-	delete attacker_combatant_;
-	delete defender_combatant_;
-}
-
 battle_context& battle_context::operator=(const battle_context& other)
 {
 	if(&other != this) {
-		delete attacker_stats_;
-		delete defender_stats_;
-		delete attacker_combatant_;
-		delete defender_combatant_;
+		attacker_stats_.reset(new battle_context_unit_stats(*other.attacker_stats_));
+		defender_stats_.reset(new battle_context_unit_stats(*other.defender_stats_));
 
-		attacker_stats_ = new battle_context_unit_stats(*other.attacker_stats_);
-		defender_stats_ = new battle_context_unit_stats(*other.defender_stats_);
+		if(other.attacker_combatant_) {
+			attacker_combatant_.reset(new combatant(*other.attacker_combatant_, *attacker_stats_));
+		} else {
+			attacker_combatant_.reset();
+		}
 
-		attacker_combatant_
-				= other.attacker_combatant_ ? new combatant(*other.attacker_combatant_, *attacker_stats_) : nullptr;
-		defender_combatant_
-				= other.defender_combatant_ ? new combatant(*other.defender_combatant_, *defender_stats_) : nullptr;
+		if(other.defender_combatant_) {
+			defender_combatant_.reset(new combatant(*other.defender_combatant_, *defender_stats_));
+		} else {
+			defender_combatant_.reset();
+		}
 	}
 
 	return *this;
@@ -468,8 +461,8 @@ const combatant& battle_context::get_attacker_combatant(const combatant* prev_de
 	if(!attacker_combatant_) {
 		assert(!defender_combatant_);
 
-		attacker_combatant_ = new combatant(*attacker_stats_);
-		defender_combatant_ = new combatant(*defender_stats_, prev_def);
+		attacker_combatant_.reset(new combatant(*attacker_stats_));
+		defender_combatant_.reset(new combatant(*defender_stats_, prev_def));
 
 		attacker_combatant_->fight(*defender_combatant_);
 	}
@@ -483,8 +476,8 @@ const combatant& battle_context::get_defender_combatant(const combatant* prev_de
 	if(!defender_combatant_) {
 		assert(!attacker_combatant_);
 
-		attacker_combatant_ = new combatant(*attacker_stats_);
-		defender_combatant_ = new combatant(*defender_stats_, prev_def);
+		attacker_combatant_.reset(new combatant(*attacker_stats_));
+		defender_combatant_.reset(new combatant(*defender_stats_, prev_def));
 
 		attacker_combatant_->fight(*defender_combatant_);
 	}
@@ -578,25 +571,27 @@ int battle_context::choose_attacker_weapon(const unit& attacker,
 				= choose_defender_weapon(attacker, defender, choices[0], units, attacker_loc, defender_loc, prev_def);
 		const_attack_ptr def_weapon
 				= *defender_weapon >= 0 ? defender.attacks()[*defender_weapon].shared_from_this() : nullptr;
-		attacker_stats_ = new battle_context_unit_stats(
-				attacker, attacker_loc, choices[0], true, defender, defender_loc, def_weapon, units);
+		attacker_stats_.reset(new battle_context_unit_stats(
+				attacker, attacker_loc, choices[0], true, defender, defender_loc, def_weapon, units));
 
 		if(attacker_stats_->disable) {
-			delete attacker_stats_;
-			attacker_stats_ = nullptr;
+			attacker_stats_.reset();
 			return -1;
 		}
 
 		const attack_type& att = attacker.attacks()[choices[0]];
-		defender_stats_ = new battle_context_unit_stats(
-				defender, defender_loc, *defender_weapon, false, attacker, attacker_loc, att.shared_from_this(), units);
+		defender_stats_.reset(new battle_context_unit_stats(
+				defender, defender_loc, *defender_weapon, false, attacker, attacker_loc, att.shared_from_this(), units));
 
 		return choices[0];
 	}
 
 	// Multiple options: simulate them, save best.
-	battle_context_unit_stats *best_att_stats = nullptr, *best_def_stats = nullptr;
-	combatant *best_att_comb = nullptr, *best_def_comb = nullptr;
+	std::unique_ptr<battle_context_unit_stats> best_att_stats(nullptr);
+	std::unique_ptr<battle_context_unit_stats> best_def_stats(nullptr);
+
+	std::unique_ptr<combatant> best_att_comb(nullptr);
+	std::unique_ptr<combatant> best_def_comb(nullptr);
 
 	for(i = 0; i < choices.size(); ++i) {
 		const attack_type& att = attacker.attacks()[choices[i]];
@@ -612,24 +607,22 @@ int battle_context::choose_attacker_weapon(const unit& attacker,
 				def = defender.attacks()[def_weapon].shared_from_this();
 			}
 
-			attacker_stats_ = new battle_context_unit_stats(
-					attacker, attacker_loc, choices[i], true, defender, defender_loc, def, units);
+			attacker_stats_.reset(new battle_context_unit_stats(
+					attacker, attacker_loc, choices[i], true, defender, defender_loc, def, units));
 
 			if(attacker_stats_->disable) {
-				delete attacker_stats_;
-				attacker_stats_ = nullptr;
 				continue;
 			}
 
-			defender_stats_ = new battle_context_unit_stats(
-					defender, defender_loc, def_weapon, false, attacker, attacker_loc, att.shared_from_this(), units);
-			attacker_combatant_ = new combatant(*attacker_stats_);
-			defender_combatant_ = new combatant(*defender_stats_, prev_def);
+			defender_stats_.reset(new battle_context_unit_stats(
+					defender, defender_loc, def_weapon, false, attacker, attacker_loc, att.shared_from_this(), units));
+
+			attacker_combatant_.reset(new combatant(*attacker_stats_));
+			defender_combatant_.reset(new combatant(*defender_stats_, prev_def));
+
 			attacker_combatant_->fight(*defender_combatant_);
 		} else {
 			if(attacker_stats_ != nullptr && attacker_stats_->disable) {
-				delete attacker_stats_;
-				attacker_stats_ = nullptr;
 				continue;
 			}
 		}
@@ -637,32 +630,22 @@ int battle_context::choose_attacker_weapon(const unit& attacker,
 		if(!best_att_comb ||
 			better_combat(*attacker_combatant_, *defender_combatant_, *best_att_comb, *best_def_comb, harm_weight)
 		) {
-			delete best_att_comb;
-			delete best_def_comb;
-			delete best_att_stats;
-			delete best_def_stats;
-
-			best_att_comb = attacker_combatant_;
-			best_def_comb = defender_combatant_;
-			best_att_stats = attacker_stats_;
-			best_def_stats = defender_stats_;
-		} else {
-			delete attacker_combatant_;
-			delete defender_combatant_;
-			delete attacker_stats_;
-			delete defender_stats_;
+			best_att_comb = std::move(attacker_combatant_);
+			best_def_comb = std::move(defender_combatant_);
+			best_att_stats = std::move(attacker_stats_);
+			best_def_stats = std::move(defender_stats_);
 		}
 
-		attacker_combatant_ = nullptr;
-		defender_combatant_ = nullptr;
-		attacker_stats_ = nullptr;
-		defender_stats_ = nullptr;
+		attacker_combatant_.reset();
+		defender_combatant_.reset();
+		attacker_stats_.reset();
+		defender_stats_.reset();
 	}
 
-	attacker_combatant_ = best_att_comb;
-	defender_combatant_ = best_def_comb;
-	attacker_stats_ = best_att_stats;
-	defender_stats_ = best_def_stats;
+	attacker_combatant_ = std::move(best_att_comb);
+	defender_combatant_ = std::move(best_def_comb);
+	attacker_stats_ = std::move(best_att_stats);
+	defender_stats_ = std::move(best_def_stats);
 
 	// These currently mean the same thing, but assumptions like that have been broken before
 	if(!defender_stats_ || !attacker_stats_) {
@@ -744,19 +727,18 @@ int battle_context::choose_defender_weapon(const unit& attacker,
 	for(i = 0; i < choices.size(); ++i) {
 		const attack_type& def = defender.attacks()[choices[i]];
 
-		battle_context_unit_stats* att_stats = new battle_context_unit_stats(
-				attacker, attacker_loc, attacker_weapon, true, defender, defender_loc, def.shared_from_this(), units);
-		battle_context_unit_stats* def_stats = new battle_context_unit_stats(
-				defender, defender_loc, choices[i], false, attacker, attacker_loc, att.shared_from_this(), units);
+		std::unique_ptr<battle_context_unit_stats> att_stats(new battle_context_unit_stats(
+				attacker, attacker_loc, attacker_weapon, true, defender, defender_loc, def.shared_from_this(), units));
+
+		std::unique_ptr<battle_context_unit_stats> def_stats(new battle_context_unit_stats(
+				defender, defender_loc, choices[i], false, attacker, attacker_loc, att.shared_from_this(), units));
 
 		if(def_stats->disable) {
-			delete att_stats;
-			delete def_stats;
 			continue;
 		}
 
-		combatant* att_comb = new combatant(*att_stats);
-		combatant* def_comb = new combatant(*def_stats, prev_def);
+		std::unique_ptr<combatant> att_comb(new combatant(*att_stats));
+		std::unique_ptr<combatant> def_comb(new combatant(*def_stats, prev_def));
 
 		att_comb->fight(*def_comb);
 
@@ -766,20 +748,10 @@ int battle_context::choose_defender_weapon(const unit& attacker,
 		if(simple_rating >= min_rating &&
 			(!attacker_combatant_ || better_combat(*def_comb, *att_comb, *defender_combatant_, *attacker_combatant_, 1.0))
 		) {
-			delete attacker_combatant_;
-			delete defender_combatant_;
-			delete attacker_stats_;
-			delete defender_stats_;
-
-			attacker_combatant_ = att_comb;
-			defender_combatant_ = def_comb;
-			attacker_stats_ = att_stats;
-			defender_stats_ = def_stats;
-		} else {
-			delete att_comb;
-			delete def_comb;
-			delete att_stats;
-			delete def_stats;
+			attacker_combatant_ = std::move(att_comb);
+			defender_combatant_ = std::move(def_comb);
+			attacker_stats_ = std::move(att_stats);
+			defender_stats_ = std::move(def_stats);
 		}
 	}
 
@@ -830,7 +802,6 @@ public:
 			int attack_with,
 			int defend_with,
 			bool update_display = true);
-	~attack();
 
 	void perform();
 
@@ -873,7 +844,7 @@ private:
 	void unit_killed(
 			unit_info&, unit_info&, const battle_context_unit_stats*&, const battle_context_unit_stats*&, bool);
 
-	battle_context* bc_;
+	std::unique_ptr<battle_context> bc_;
 
 	const battle_context_unit_stats* a_stats_;
 	const battle_context_unit_stats* d_stats_;
@@ -950,11 +921,6 @@ attack::attack(const map_location& attacker,
 	, update_display_(update_display)
 	, OOS_error_(false)
 {
-}
-
-attack::~attack()
-{
-	delete bc_;
 }
 
 void attack::fire_event(const std::string& n)
@@ -1035,7 +1001,7 @@ void attack::refresh_bc()
 		return;
 	}
 
-	*bc_ = battle_context(units_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_);
+	bc_.reset(new battle_context(units_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_));
 
 	a_stats_ = &bc_->get_attacker_stats();
 	d_stats_ = &bc_->get_defender_stats();
@@ -1397,7 +1363,7 @@ void attack::perform()
 	// If the attacker was invisible, she isn't anymore!
 	a_.get_unit().set_state(unit::STATE_UNCOVERED, true);
 
-	bc_ = new battle_context(units_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_);
+	bc_.reset(new battle_context(units_, a_.loc_, d_.loc_, a_.weapon_, d_.weapon_));
 
 	a_stats_ = &bc_->get_attacker_stats();
 	d_stats_ = &bc_->get_defender_stats();

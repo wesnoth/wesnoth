@@ -22,11 +22,11 @@
 #pragma once
 
 #include "ai/lua/aspect_advancements.hpp"
+#include "attack_prediction.hpp"
 #include "units/types.hpp"
 
 #include <vector>
 
-struct combatant;
 struct map_location;
 class team;
 class unit;
@@ -189,7 +189,6 @@ public:
 	battle_context(const battle_context_unit_stats& att, const battle_context_unit_stats& def);
 
 	battle_context(const battle_context& other);
-	~battle_context();
 
 	battle_context& operator=(const battle_context& other);
 
@@ -237,10 +236,12 @@ private:
 			const combatant* prev_def);
 
 	/** Statistics of the units. */
-	battle_context_unit_stats *attacker_stats_, *defender_stats_;
+	std::unique_ptr<battle_context_unit_stats> attacker_stats_;
+	std::unique_ptr<battle_context_unit_stats> defender_stats_;
 
 	/** Outcome of simulated fight. */
-	combatant *attacker_combatant_, *defender_combatant_;
+	std::unique_ptr<combatant> attacker_combatant_;
+	std::unique_ptr<combatant> defender_combatant_;
 };
 
 /** Performs an attack. */
