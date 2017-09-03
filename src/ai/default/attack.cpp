@@ -116,7 +116,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		}
 
 		bool from_cache = false;
-		battle_context *bc;
+		std::unique_ptr<battle_context> bc;
 
 		// This cache is only about 99% correct, but speeds up evaluation by about 1000 times.
 		// We recalculate when we actually attack.
@@ -128,15 +128,13 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 				static_cast<int>(up->attacks().size())) {
 
 			from_cache = true;
-			bc = new battle_context(usc->second.first, usc->second.second);
+			bc.reset(new battle_context(usc->second.first, usc->second.second));
 		} else {
-			bc = new battle_context(units, m->second, target, -1, -1, m_aggression, prev_def);
+			bc.reset(new battle_context(units, m->second, target, -1, -1, m_aggression, prev_def));
 		}
 		const combatant &att = bc->get_attacker_combatant(prev_def);
 		const combatant &def = bc->get_defender_combatant(prev_def);
 
-		delete prev_bc;
-		prev_bc = bc;
 		prev_def = &bc->get_defender_combatant(prev_def);
 
 		if ( !from_cache ) {
@@ -245,7 +243,6 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		avg_damage_inflicted += defend_it->hitpoints() - prev_def->average_hp(map.gives_healing(defend_it->get_location()));
 	}
 
-	delete prev_bc;
 	terrain_quality /= resources_used;
 
 	// Restore the units to their original positions.

@@ -52,8 +52,6 @@ public:
 	 */
 	addons_client(CVideo& v, const std::string& address);
 
-	~addons_client();
-
 	/**
 	 * Try to establish a connection to the add-ons server.
 	 */
@@ -122,8 +120,8 @@ private:
 	std::string addr_;
 	std::string host_;
 	std::string port_;
-	network_asio::connection* conn_;
-	gui2::dialogs::network_transmission* stat_;
+	std::unique_ptr<network_asio::connection> conn_;
+	std::unique_ptr<gui2::dialogs::network_transmission> stat_;
 	std::string last_error_;
 
 	/**

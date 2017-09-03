@@ -117,7 +117,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 
 	if(cfg_.has_attribute("terrain")) {
 		if(cache_.parsed_terrain == nullptr) {
-			cache_.parsed_terrain = new t_translation::ter_match(cfg_["terrain"]);
+			cache_.parsed_terrain.reset(new t_translation::ter_match(cfg_["terrain"]));
 		}
 		if(!cache_.parsed_terrain->is_empty) {
 			const t_translation::terrain_code letter = fc_->get_disp_context().map().get_terrain_info(loc).number();
@@ -563,7 +563,7 @@ void terrain_filter::get_locs_impl(std::set<map_location>& locs, const unit* ref
 	//handle location filter
 	if(cfg_.has_child("filter_adjacent_location")) {
 		if(cache_.adjacent_matches == nullptr) {
-			cache_.adjacent_matches = new std::vector<std::set<map_location> >();
+			cache_.adjacent_matches.reset(new std::vector<std::set<map_location>>());
 		}
 		const vconfig::child_list& adj_cfgs = cfg_.get_children("filter_adjacent_location");
 		for (unsigned i = 0; i < adj_cfgs.size(); ++i) {
@@ -663,9 +663,4 @@ void terrain_filter::get_locs_impl(std::set<map_location>& locs, const unit* ref
 config terrain_filter::to_config() const
 {
 	return cfg_.get_config();
-}
-
-terrain_filter::terrain_filter_cache::~terrain_filter_cache() {
-	delete parsed_terrain;
-	delete adjacent_matches;
 }

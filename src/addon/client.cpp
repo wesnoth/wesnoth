@@ -65,7 +65,7 @@ void addons_client::connect()
 	utils::string_map i18n_symbols;
 	i18n_symbols["server_address"] = addr_;
 
-	conn_ = new network_asio::connection(host_, port_);
+	conn_.reset(new network_asio::connection(host_, port_));
 
 	this->wait_for_transfer_done(
 		vgettext("Connecting to $server_address|...", i18n_symbols));
@@ -499,7 +499,7 @@ void addons_client::wait_for_transfer_done(const std::string& status_message, bo
 	else
 		cd.reset(new read_addon_connection_data{ *conn_ });
 	if(!stat_) {
-		stat_ = new network_transmission(*cd, _("Add-ons Manager"), status_message);
+		stat_.reset(new network_transmission(*cd, _("Add-ons Manager"), status_message));
 	} else {
 		stat_->set_subtitle(status_message);
 		stat_->set_connection_data(*cd);
@@ -509,10 +509,4 @@ void addons_client::wait_for_transfer_done(const std::string& status_message, bo
 		// Notify the caller chain that the user aborted the operation.
 		throw user_exit();
 	}
-}
-
-addons_client::~addons_client()
-{
-	delete stat_; // stat_ depends on conn_, so it must be destroyed first!
-	delete conn_;
 }

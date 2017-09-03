@@ -81,7 +81,7 @@ namespace {
 		lua_State* L;
 		scoped_dialog* prev;
 		static scoped_dialog* current;
-		gui2::window* window;
+		std::unique_ptr<gui2::window> window;
 		typedef std::map<gui2::widget*, int> callback_map;
 		callback_map callbacks;
 
@@ -107,7 +107,6 @@ namespace {
 
 	scoped_dialog::~scoped_dialog()
 	{
-		delete window;
 		current = prev;
 		lua_pushstring(L, dlgclbkKey);
 		lua_pushvalue(L, -1);
@@ -131,7 +130,7 @@ static gui2::widget* find_widget(lua_State* L, int i, bool readonly)
 		return nullptr;
 	}
 
-	gui2::widget* w = scoped_dialog::current->window;
+	gui2::widget* w = scoped_dialog::current->window.get();
 	for(; !lua_isnoneornil(L, i); ++i)
 	{
 #ifdef GUI2_EXPERIMENTAL_LISTBOX

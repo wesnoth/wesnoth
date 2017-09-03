@@ -82,10 +82,10 @@ private:
 
 
 	composite_ai_ptr ai_;
-	side_context *side_context_;
-	readonly_context *readonly_context_;
-	readwrite_context *readwrite_context_;
-	default_ai_context *default_ai_context_;
+	std::unique_ptr<side_context> side_context_;
+	std::unique_ptr<readonly_context> readonly_context_;
+	std::unique_ptr<readwrite_context> readwrite_context_;
+	std::unique_ptr<default_ai_context> default_ai_context_;
 	side_number side_;
 	config cfg_;
 };
@@ -464,7 +464,7 @@ private:
 	static AI_map_of_stacks ai_map_;
 	static std::deque< command_history_item > history_;
 	static long history_item_counter_;
-	static game_info *ai_info_;
+	static std::unique_ptr<game_info> ai_info_;
 
 	static events::generic_event map_changed_;
 	static events::generic_event recruit_list_changed_;

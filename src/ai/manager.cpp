@@ -82,19 +82,19 @@ holder::holder( side_number side, const config &cfg )
 void holder::init( side_number side )
 {
 	if (side_context_ == nullptr) {
-		side_context_ = new side_context_impl(side,cfg_);
+		side_context_.reset(new side_context_impl(side,cfg_));
 	} else {
 		side_context_->set_side(side);
 	}
 	if (readonly_context_ == nullptr){
-		readonly_context_ = new readonly_context_impl(*side_context_,cfg_);
+		readonly_context_.reset(new readonly_context_impl(*side_context_,cfg_));
 		readonly_context_->on_readonly_context_create();
 	}
 	if (readwrite_context_ == nullptr){
-		readwrite_context_ = new readwrite_context_impl(*readonly_context_,cfg_);
+		readwrite_context_.reset(new readwrite_context_impl(*readonly_context_,cfg_));
 	}
 	if (default_ai_context_ == nullptr){
-		default_ai_context_ = new default_ai_context_impl(*readwrite_context_,cfg_);
+		default_ai_context_.reset(new default_ai_context_impl(*readwrite_context_,cfg_));
 	}
 	if (!this->ai_){
 		ai_ = std::shared_ptr<ai_composite>(new ai_composite(*default_ai_context_,cfg_));
@@ -129,10 +129,6 @@ holder::~holder()
 		LOG_AI_MANAGER << describe_ai() << "Managed AI will be deleted" << std::endl;
 	}
 	} catch (...) {}
-	delete this->default_ai_context_;
-	delete this->readwrite_context_;
-	delete this->readonly_context_;
-	delete this->side_context_;
 }
 
 
@@ -308,7 +304,7 @@ component* holder::get_component(component *root, const std::string &path) {
 
 
 manager::AI_map_of_stacks manager::ai_map_;
-game_info *manager::ai_info_;
+std::unique_ptr<game_info> manager::ai_info_;
 events::generic_event manager::user_interact_("ai_user_interact");
 events::generic_event manager::sync_network_("ai_sync_network");
 events::generic_event manager::tod_changed_("ai_tod_changed");
@@ -325,14 +321,13 @@ void manager::set_ai_info(const game_info& i)
 	if (ai_info_!=nullptr){
 		clear_ai_info();
 	}
-	ai_info_ = new game_info(i);
+	ai_info_.reset(new game_info(i));
 	registry::init();
 }
 
 
 void manager::clear_ai_info(){
-	delete ai_info_;
-	ai_info_ = nullptr;
+	ai_info_.reset(nullptr);
 }
 
 
@@ -640,9 +635,8 @@ bool manager::add_ai_for_side_from_config( side_number side, const config& cfg, 
 		remove_ai_for_side(side);
 	}
 
-	holder new_holder(side,parsed_cfg);
 	std::stack<holder>& ai_stack_for_specific_side = get_or_create_ai_stack_for_side(side);
-	ai_stack_for_specific_side.push(new_holder);
+	ai_stack_for_specific_side.emplace(side, parsed_cfg);
 	return true;
 }
 
@@ -655,9 +649,8 @@ bool manager::add_ai_for_side( side_number side, const std::string& ai_algorithm
 	}
 	config cfg;
 	cfg["ai_algorithm"] = ai_algorithm_type;
-	holder new_holder(side,cfg);
 	std::stack<holder>& ai_stack_for_specific_side = get_or_create_ai_stack_for_side(side);
-	ai_stack_for_specific_side.push(new_holder);
+	ai_stack_for_specific_side.emplace(side, cfg);
 	return true;
 }
 
@@ -806,8 +799,7 @@ holder& manager::get_active_ai_holder_for_side( side_number side )
 		return ai_stack_for_specific_side.top();
 	} else {
 		config cfg = configuration::get_default_ai_parameters();
-		holder new_holder(side, cfg);
-		ai_stack_for_specific_side.push(new_holder);
+		ai_stack_for_specific_side.emplace(side, cfg);
 		return ai_stack_for_specific_side.top();
 	}
 }

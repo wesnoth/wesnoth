@@ -84,13 +84,11 @@ private:
 	struct terrain_filter_cache {
 		terrain_filter_cache();
 
-		~terrain_filter_cache();
-
 		//parsed_terrain: optimizes handling of terrain="..."
-		t_translation::ter_match *parsed_terrain;
+		std::unique_ptr<t_translation::ter_match> parsed_terrain;
 
 		//adjacent_matches: optimize handling of [filter_adjacent_location] for get_locations()
-		std::vector< std::set<map_location> > *adjacent_matches;
+		std::unique_ptr<std::vector<std::set<map_location>>> adjacent_matches;
 
 		//adjacent_match_cache: optimize handling of [filter_adjacent_location] for match()
 		std::vector< std::pair<terrain_filter, std::map<map_location,bool> > > adjacent_match_cache;
