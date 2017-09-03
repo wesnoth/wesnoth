@@ -451,10 +451,10 @@ prob_matrix::prob_matrix(unsigned int a_max,
 /** Allocate a new probability array, initialized to 0. */
 std::unique_ptr<double[]> prob_matrix::new_plane()
 {
-	unsigned int size = rows_ * cols_;
-	double* arr = new double[size];
-	memset(arr, 0, sizeof(double) * size);
-	return std::unique_ptr<double[]>(arr);
+	const unsigned int size = rows_ * cols_;
+	std::unique_ptr<double[]> res(new double[size]);
+	std::fill_n(res.get(), size, 0);
+	return res;
 }
 
 /**
