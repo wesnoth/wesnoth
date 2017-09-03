@@ -842,7 +842,7 @@ private:
 	void check_replay_attack_result(bool&, int, int&, config, unit_info&);
 
 	void unit_killed(
-			unit_info&, unit_info&, const battle_context_unit_stats*&, const battle_context_unit_stats*&, bool);
+			unit_info&, unit_info&, const battle_context_unit_stats*, const battle_context_unit_stats*, bool);
 
 	std::unique_ptr<battle_context> bc_;
 
@@ -1016,8 +1016,8 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 {
 	unit_info &attacker = *(attacker_turn ? &a_ : &d_), &defender = *(attacker_turn ? &d_ : &a_);
 
-	const battle_context_unit_stats*& attacker_stats = *(attacker_turn ? &a_stats_ : &d_stats_),
-	                               *& defender_stats = *(attacker_turn ? &d_stats_ : &a_stats_);
+	const battle_context_unit_stats* attacker_stats = (attacker_turn ? a_stats_ : d_stats_);
+	const battle_context_unit_stats* defender_stats = (attacker_turn ? d_stats_ : a_stats_);
 
 	int& abs_n = *(attacker_turn ? &abs_n_attack_ : &abs_n_defend_);
 	bool& update_fog = *(attacker_turn ? &update_def_fog_ : &update_att_fog_);
@@ -1225,8 +1225,8 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 
 void attack::unit_killed(unit_info& attacker,
 		unit_info& defender,
-		const battle_context_unit_stats*& attacker_stats,
-		const battle_context_unit_stats*& defender_stats,
+		const battle_context_unit_stats* attacker_stats,
+		const battle_context_unit_stats* defender_stats,
 		bool drain_killed)
 {
 	attacker.xp_ = game_config::kill_xp(defender.get_unit().level());
