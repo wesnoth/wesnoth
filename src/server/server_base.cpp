@@ -111,7 +111,7 @@ void server_base::handle_handshake(const boost::system::error_code& error, socke
 	if(check_error(error, socket))
 		return;
 
-	if(strcmp(handshake.get(), "\0\0\0\0") != 0) {
+	if(memcmp(handshake.get(), "\0\0\0\0", 4) != 0) {
 		ERR_SERVER << client_address(socket) << "\tincorrect handshake\n";
 		return;
 	}
