@@ -464,7 +464,7 @@ std::string preprocessor_streambuf::get_current_file()
 {
 	unsigned nested_level = 0;
 
-	preprocessor* pre = current();
+	preprocessor* pre = nullptr;
 
 	// Iterate backwards over queue to get the last non-macro preprocessor.
 	for(auto p = preprocessor_queue_.rbegin(); p != preprocessor_queue_.rend(); ++p) {
@@ -498,12 +498,17 @@ std::string lineno_string(const std::string& lineno)
 
 	while(i != end) {
 		const std::string& line = *(i++);
-		if(!res.empty())
+
+		if(!res.empty()) {
 			res += included_from;
-		if(i != end)
+		}
+
+		if(i != end) {
 			res += get_filename(*(i++));
-		else
+		} else {
 			res += "<unknown>";
+		}
+
 		res += ':' + line;
 	}
 
@@ -740,10 +745,13 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf& t, const std::strin
 	, is_directory_(filesystem::is_directory(name))
 {
 	if(is_directory_) {
-		filesystem::get_files_in_dir(name, &files_, nullptr, filesystem::ENTIRE_FILE_PATH, filesystem::SKIP_MEDIA_DIR,
-				filesystem::DO_REORDER);
+		filesystem::get_files_in_dir(name, &files_, nullptr,
+			filesystem::ENTIRE_FILE_PATH,
+			filesystem::SKIP_MEDIA_DIR,
+			filesystem::DO_REORDER
+		);
 
-		for(std::string fname : files_) {
+		for(const std::string& fname : files_) {
 			size_t cpos = fname.rfind(" ");
 
 			if(cpos != std::string::npos && cpos >= symbol_index) {
