@@ -108,7 +108,7 @@ struct pump_impl
 		, instance_count(0)
 		, my_manager(&man)
 	{
-		contexts_.push(context::state(false));
+		contexts_.emplace(false);
 	}
 };
 
@@ -422,7 +422,7 @@ context::scoped::scoped(std::stack<context::state>& contexts, bool m)
 	assert(contexts_.size() > 0);
 
 	bool skip_messages = (contexts_.size() > 1) && contexts_.top().skip_messages;
-	contexts_.push(context::state(skip_messages, m));
+	contexts_.emplace(skip_messages, m);
 }
 
 context::scoped::~scoped()

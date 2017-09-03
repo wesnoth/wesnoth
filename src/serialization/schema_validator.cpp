@@ -128,8 +128,8 @@ schema_validator::schema_validator(const std::string & config_file_name)
 										+ " was not read.\n");
 	}else{
 		stack_.push(&root_);
-		counter_.push(cnt_map());
-		cache_.push(message_map());
+		counter_.emplace();
+		cache_.emplace();
 		root_.expand_all(root_);
 		LOG_VL << "Schema file "<< config_file_name << " was read.\n"
 				<< "Validator initialized\n";
@@ -194,8 +194,8 @@ void schema_validator::open_tag(const std::string & name,
 	}else{
 		stack_.push(nullptr);
 	}
-	counter_.push(cnt_map());
-	cache_.push(message_map());
+	counter_.emplace();
+	cache_.emplace();
 }
 
 void schema_validator::close_tag(){

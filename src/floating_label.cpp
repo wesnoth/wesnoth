@@ -259,7 +259,7 @@ floating_label_context::floating_label_context()
 {
 	const surface screen = nullptr;
 
-	label_contexts.push(std::set<int>());
+	label_contexts.emplace();
 }
 
 floating_label_context::~floating_label_context()
