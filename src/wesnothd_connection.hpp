@@ -161,6 +161,13 @@ private:
 
 };
 
+/*
+ * This class acts like a unique_ptr<wesnothd_connection>, wesnothd_connection objects may only be owned though this pointer.
+ * The reason why we need this is that wesnothd_connection runs a workerthread so we use a shared_ptr to make sure
+ * the wesnothd_connection isn't destroyed before the worker thread has finished. When this object is destroed, it calls
+ * wesnothd_connection::stop() which stops the worker thread which will then destroy the other shared_ptr<wesnothd_connection>
+ * which destroys the wesnothd_connection object.
+ */
 class wesnothd_connection_ptr
 {
 private:
