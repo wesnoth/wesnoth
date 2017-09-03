@@ -238,6 +238,11 @@ public:
 	{
 	}
 
+	/** Allows specifying any actions that need to be called after the constructor completes. */
+	virtual void init()
+	{
+	}
+
 	/**
 	 * Preprocesses and sends some text to the #parent_ buffer.
 	 * @return false when the input has no data left.
@@ -295,6 +300,7 @@ public:
 	void add_preprocessor(A&&... args)
 	{
 		preprocessor_queue_.emplace_back(new T(*this, std::forward<A>(args)...));
+		preprocessor_queue_.back()->init();
 	}
 
 	void drop_preprocessor()
@@ -554,6 +560,8 @@ public:
 	/** Constructor. It relies on preprocessor_data so it's implemented after that class is declared. */
 	preprocessor_file(preprocessor_streambuf& t, const std::string& name, size_t symbol_index = -1);
 
+	virtual void init() override;
+
 	/**
 	 * Inserts and processes the next file in the list of included files.
 	 * @return	false if there is no next file.
@@ -579,6 +587,10 @@ public:
 private:
 	std::vector<std::string> files_;
 	std::vector<std::string>::const_iterator pos_, end_;
+
+	const std::string& name_;
+
+	bool is_directory_;
 };
 
 
@@ -724,8 +736,10 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf& t, const std::strin
 	, files_()
 	, pos_()
 	, end_()
+	, name_(name)
+	, is_directory_(filesystem::is_directory(name))
 {
-	if(filesystem::is_directory(name)) {
+	if(is_directory_) {
 		filesystem::get_files_in_dir(name, &files_, nullptr, filesystem::ENTIRE_FILE_PATH, filesystem::SKIP_MEDIA_DIR,
 				filesystem::DO_REORDER);
 
@@ -743,20 +757,29 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf& t, const std::strin
 			}
 		}
 	} else {
-		filesystem::scoped_istream file_stream = filesystem::istream_file(name);
-
-		if(!file_stream->good()) {
-			ERR_PREPROC << "Could not open file " << name << std::endl;
-		} else {
-			t.add_preprocessor<preprocessor_data>(file_stream.release(), "",
-				filesystem::get_short_wml_path(name), 1,
-				filesystem::directory_name(name), t.textdomain_, nullptr
-			);
-		}
+		// Handled in the init() function.
 	}
 
 	pos_ = files_.begin();
 	end_ = files_.end();
+}
+
+void preprocessor_file::init()
+{
+	if(is_directory_) {
+		return;
+	}
+
+	filesystem::scoped_istream file_stream = filesystem::istream_file(name_);
+
+	if(!file_stream->good()) {
+		ERR_PREPROC << "Could not open file " << name_ << std::endl;
+	} else {
+		parent_.add_preprocessor<preprocessor_data>(file_stream.release(), "",
+			filesystem::get_short_wml_path(name_), 1,
+			filesystem::directory_name(name_), parent_.textdomain_, nullptr
+		);
+	}
 }
 
 preprocessor_data::preprocessor_data(preprocessor_streambuf& t,
