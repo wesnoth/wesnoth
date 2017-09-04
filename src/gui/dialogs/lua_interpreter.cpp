@@ -549,7 +549,7 @@ void lua_interpreter::controller::input_keypress_callback(bool& handled,
 void lua_interpreter::controller::execute()
 {
 	std::string cmd = text_entry->get_value();
-	if (cmd.size() == 0) return; //don't bother with empty string
+	if (cmd.empty()) return; //don't bother with empty string
 
 	cmd.erase(cmd.find_last_not_of(" \n\r\t")+1); //right trim the string
 

@@ -69,7 +69,7 @@ static toggle_button * setup_pref_toggle_button(const std::string & id, bool def
 	b->set_value(preferences::get(id, def));
 
 	//ensure we have yes / no for the toggle button, so that the preference matches the toggle button for sure.
-	if (preferences::get(id).size() == 0) {
+	if (preferences::get(id).empty()) {
 		preferences::set(id, def);
 	}
 

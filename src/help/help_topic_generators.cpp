@@ -77,7 +77,7 @@ static std::string print_behavior_description(ter_iter start, ter_iter end, cons
 				names.push_back(tt.editor_name());
 		}
 
-		if (names.size() == 0) return "";
+		if (names.empty()) return "";
 		if (names.size() == 1) return names.at(0);
 
 		ss << best_str(best) << " ";

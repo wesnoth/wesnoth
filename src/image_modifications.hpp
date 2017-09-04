@@ -297,7 +297,7 @@ public:
 	adjust_channels_modification(const std::vector<std::string>& formulas)
 		: formulas_(formulas)
 	{
-		if(formulas_.size() == 0) {
+		if(formulas_.empty()) {
 			formulas_.push_back("red");
 		}
 		if(formulas_.size() == 1) {

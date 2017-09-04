@@ -624,7 +624,7 @@ void get_villages_phase::get_villages(
 
 	treachmap::iterator itor = reachmap.begin();
 	while(itor != reachmap.end()) {
-		if(itor->second.size() == 0) {
+		if(itor->second.empty()) {
 			itor = remove_unit(reachmap, moves_, itor);
 		} else {
 			++itor;
@@ -811,7 +811,7 @@ void get_villages_phase::dispatch(treachmap& reachmap, tmoves& moves)
 		}
 	}
 
-	if(reachmap.size() == 0) {
+	if(reachmap.empty()) {
 		DBG_AI_TESTING_AI_DEFAULT << "No units left after simple dispatcher.\n";
 		return;
 	}

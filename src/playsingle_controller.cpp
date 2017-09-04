@@ -381,7 +381,7 @@ void playsingle_controller::play_side_impl()
 		LOG_NG << "is human...\n";
 		// If a side is dead end the turn, but play at least side=1's
 		// turn in case all sides are dead
-		if (gamestate().board_.side_units(current_side()) == 0 && !(gamestate().board_.units().size() == 0 && current_side() == 1)) {
+		if (gamestate().board_.side_units(current_side()) == 0 && !(gamestate().board_.units().empty() && current_side() == 1)) {
 			end_turn_ = END_TURN_REQUIRED;
 		}
 
