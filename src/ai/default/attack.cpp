@@ -98,6 +98,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	assert(!movements.empty());
 	std::vector<std::pair<map_location,map_location> >::const_iterator m;
 
+	std::unique_ptr<battle_context> bc(nullptr);
 	const combatant *prev_def = nullptr;
 
 	for (m = movements.begin(); m != movements.end(); ++m) {
@@ -115,7 +116,6 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		}
 
 		bool from_cache = false;
-		std::unique_ptr<battle_context> bc;
 
 		// This cache is only about 99% correct, but speeds up evaluation by about 1000 times.
 		// We recalculate when we actually attack.
