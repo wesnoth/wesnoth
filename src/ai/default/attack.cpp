@@ -99,6 +99,8 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	std::vector<std::pair<map_location,map_location> >::const_iterator m;
 
 	std::unique_ptr<battle_context> bc(nullptr);
+	std::unique_ptr<battle_context> old_bc(nullptr);
+
 	const combatant *prev_def = nullptr;
 
 	for (m = movements.begin(); m != movements.end(); ++m) {
@@ -116,6 +118,11 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		}
 
 		bool from_cache = false;
+
+		// Swap the two context pointers. old_bc should be null at this point, so bc is cleared
+		// and old_bc takes ownership of the context pointer. This allows prev_def to remain
+		// valid until it's reassigned.
+		old_bc.swap(bc);
 
 		// This cache is only about 99% correct, but speeds up evaluation by about 1000 times.
 		// We recalculate when we actually attack.
@@ -135,6 +142,9 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		const combatant &def = bc->get_defender_combatant(prev_def);
 
 		prev_def = &bc->get_defender_combatant(prev_def);
+
+		// We no longer need the old context since prev_def has been reassigned.
+		old_bc.reset(nullptr);
 
 		if ( !from_cache ) {
 			ai_obj.unit_stats_cache().emplace(cache_key, std::make_pair(
