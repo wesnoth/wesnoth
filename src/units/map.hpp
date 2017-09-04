@@ -313,6 +313,8 @@ public:
 	size_t size() const { return lmap_.size(); }
 	size_t num_iters() const ;
 
+	bool empty() const { return lmap_.empty(); }
+
 	void clear(bool force = false);
 
 	/**
