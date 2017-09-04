@@ -189,7 +189,6 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 	menu_buttons_(),
 	action_buttons_(),
 	invalidated_(),
-	previous_invalidated_(),
 	mouseover_hex_overlay_(nullptr),
 	tod_hex_mask1(nullptr),
 	tod_hex_mask2(nullptr),
@@ -2441,17 +2440,7 @@ void display::draw(bool update,bool force) {
 	pre_draw();
 	// invalidate all that needs to be invalidated
 	invalidate_animations();
-	// at this stage we have everything that needs to be invalidated for this redraw
-	// save it as the previous invalidated, and merge with the previous invalidated_
-	// we merge with the previous redraw because if a hex had a unit last redraw but
-	// not this one, nobody will tell us to redraw (cleanup)
-	previous_invalidated_.swap(invalidated_);
-	invalidated_.insert(previous_invalidated_.begin(),previous_invalidated_.end());
-	// these new invalidations cannot cause any propagation because
-	// if a hex was invalidated last turn but not this turn, then
-	// * case of no unit in neighbor hex=> no propagation
-	// * case of unit in hex but was there last turn=>its hexes are invalidated too
-	// * case of unit in hex not there last turn => it moved, so was invalidated previously
+
 	if(!get_map().empty()) {
 		//int simulate_delay = 0;
 

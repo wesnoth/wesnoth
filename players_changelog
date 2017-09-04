@@ -35,6 +35,8 @@ Version 1.13.8+dev:
 
  * Performance:
    * Rewrote the FPS cap implementation. This greatly improves smoothness ingame.
+   * Each invalidated hex is now only redrawn once, not twice. This almost halves CPU
+     usage ingame.
    * Implemented GUI canvas caching. It speeds up multiple areas, but especially
      the story screen.
 
