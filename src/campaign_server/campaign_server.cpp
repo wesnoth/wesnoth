@@ -118,7 +118,7 @@ server::server(const std::string& cfg_file)
 	std::memset( &sa, 0, sizeof(sa) );
 	#pragma GCC diagnostic ignored "-Wold-style-cast"
 	sa.sa_handler = SIG_IGN;
-	int res = sigaction( SIGPIPE, &sa, NULL);
+	int res = sigaction( SIGPIPE, &sa, nullptr);
 	assert( res == 0 );
 #endif
 

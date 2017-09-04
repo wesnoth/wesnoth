@@ -77,7 +77,7 @@ void enumerate_storage_devices(std::vector<path_info>& res)
 			const DWORD label_bufsize = MAX_PATH + 1;
 			wchar_t label[label_bufsize] { 0 };
 
-			if(GetVolumeInformation(drive, label, label_bufsize, NULL, NULL, NULL, NULL, 0) == 0) {
+			if(GetVolumeInformation(drive, label, label_bufsize, nullptr, nullptr, nullptr, nullptr, 0) == 0) {
 				// Probably an empty removable drive, just ignore it and carry on.
 				const DWORD err = GetLastError();
 				LOG_DU << "enumerate_win32_drives(): GetVolumeInformation() failed (" << err << ")\n";

@@ -192,7 +192,7 @@ R prepared_statement(MYSQL* conn, const std::string& sql, Args&&... args)
 	auto arg_binds = make_binds(args...);
 
 	std::unique_ptr<MYSQL_STMT, decltype(&mysql_stmt_close)> stmt{mysql_stmt_init(conn), mysql_stmt_close};
-	if(stmt == NULL)
+	if(stmt == nullptr)
 		throw sql_error("mysql_stmt_init failed", sql);
 
 	if(mysql_stmt_prepare(stmt.get(), sql.c_str(), sql.size()) != 0)

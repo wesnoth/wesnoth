@@ -389,8 +389,8 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 	// Since SDL version 1.1.5 0 is transparent, before 255 was transparent.
 	assert(SDL_ALPHA_TRANSPARENT==0);
 
-	if(surf == NULL)
-		return NULL;
+	if(surf == nullptr)
+		return nullptr;
 
 	if(w == surf->w && h == surf->h) {
 		return surf;
@@ -403,9 +403,9 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 	surface src(make_neutral_surface(surf));
 	// Now both surfaces are always in the "neutral" pixel format
 
-	if(src == NULL || dst == NULL) {
+	if(src == nullptr || dst == nullptr) {
 		std::cerr << "Could not create surface to scale onto\n";
-		return NULL;
+		return nullptr;
 	}
 
 	{

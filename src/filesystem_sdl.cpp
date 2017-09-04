@@ -42,7 +42,7 @@ SDL_RWops* load_RWops(const std::string &path) {
 	std::istream *ifs = istream_file(path).release();
 	if(!ifs) {
 		ERR_FS << "load_RWops: istream_file returned NULL on " << path << '\n';
-		return NULL;
+		return nullptr;
 	}
 
 	rw->hidden.unknown.data1 = ifs;
