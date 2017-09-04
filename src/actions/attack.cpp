@@ -1007,13 +1007,16 @@ void attack::refresh_bc()
 
 bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 {
-	unit_info &attacker = *(attacker_turn ? &a_ : &d_), &defender = *(attacker_turn ? &d_ : &a_);
+	unit_info& attacker = attacker_turn ? a_ : d_;
+	unit_info& defender = attacker_turn ? d_ : a_;
 
-	const battle_context_unit_stats*& attacker_stats = *(attacker_turn ? &a_stats_ : &d_stats_),
-	                               *& defender_stats = *(attacker_turn ? &d_stats_ : &a_stats_);
+	// NOTE: we need to use a reference-to-pointer here so a_stats_ and d_stats_ can be
+	// modified without. Using a pointer directly would render them invalid when that happened.
+	const battle_context_unit_stats*& attacker_stats = attacker_turn ? a_stats_ : d_stats_;
+	const battle_context_unit_stats*& defender_stats = attacker_turn ? d_stats_ : a_stats_;
 
-	int& abs_n = *(attacker_turn ? &abs_n_attack_ : &abs_n_defend_);
-	bool& update_fog = *(attacker_turn ? &update_def_fog_ : &update_att_fog_);
+	int& abs_n = attacker_turn ? abs_n_attack_ : abs_n_defend_;
+	bool& update_fog = attacker_turn ? update_def_fog_ : update_att_fog_;
 
 	int ran_num = randomness::generator->get_random_int(0, 99);
 	bool hits = (ran_num < attacker.cth_);
@@ -1172,7 +1175,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 
 	if(attacker_dies) {
 		unit_killed(defender, attacker, defender_stats, attacker_stats, true);
-		*(attacker_turn ? &update_att_fog_ : &update_def_fog_) = true;
+		(attacker_turn ? update_att_fog_ : update_def_fog_) = true;
 	}
 
 	if(dies) {
@@ -1224,11 +1227,14 @@ void attack::unit_killed(unit_info& attacker,
 {
 	attacker.xp_ = game_config::kill_xp(defender.get_unit().level());
 	defender.xp_ = 0;
+
 	resources::screen->invalidate(attacker.loc_);
 
 	game_events::entity_location death_loc(defender.loc_, defender.id_);
 	game_events::entity_location attacker_loc(attacker.loc_, attacker.id_);
+
 	std::string undead_variation = defender.get_unit().undead_variation();
+
 	fire_event("attack_end");
 	refresh_bc();
 
@@ -1249,7 +1255,6 @@ void attack::unit_killed(unit_info& attacker,
 	dat.add_child("second", a_weapon_cfg);
 
 	resources::game_events->pump().fire("last_breath", death_loc, attacker_loc, dat);
-
 	refresh_bc();
 
 	// WML has invalidated the dying unit, abort.
