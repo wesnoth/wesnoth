@@ -98,7 +98,6 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	assert(!movements.empty());
 	std::vector<std::pair<map_location,map_location> >::const_iterator m;
 
-	battle_context *prev_bc = nullptr;
 	const combatant *prev_def = nullptr;
 
 	for (m = movements.begin(); m != movements.end(); ++m) {
