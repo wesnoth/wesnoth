@@ -151,11 +151,11 @@ BOOST_AUTO_TEST_CASE ( test_config_attribute_value )
 
 		// blank != "" test.
 	c = config();
-	BOOST_CHECK(cc["x"] != "");
+	BOOST_CHECK(!cc["x"].empty());
 	BOOST_CHECK(cc["x"].empty());
 	BOOST_CHECK(cc["x"].blank());
 
-	BOOST_CHECK(c["x"] != "");
+	BOOST_CHECK(!c["x"].empty());
 	BOOST_CHECK(c["x"].empty());
 	BOOST_CHECK(c["x"].blank());
 

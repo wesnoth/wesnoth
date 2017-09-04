@@ -1245,7 +1245,7 @@ std::vector<std::string> parse_text(const std::string &text)
 		msg << "Element '" << ss.str() << "' continues through end of string.";
 		throw parse_error(msg.str());
 	}
-	if (ss.str() != "") {
+	if (!ss.str().empty()) {
 		// Add the last string.
 		res.push_back(ss.str());
 	}
@@ -1289,7 +1289,7 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 		msg << "Unterminated single quote after: '" << ss.str() << "'";
 		throw parse_error(msg.str());
 	}
-	if (ss.str() != "") {
+	if (!ss.str().empty()) {
 		attributes.push_back(ss.str());
 	}
 	ss.str("");
@@ -1407,7 +1407,7 @@ void generate_contents()
 					// toplevel. Hence, add it to the hidden ones if it
 					// is not referenced from another section.
 					if (!section_is_referenced(id, *help_config)) {
-						if (ss.str() != "") {
+						if (!ss.str().empty()) {
 							ss << ",";
 						}
 						ss << id;
@@ -1421,7 +1421,7 @@ void generate_contents()
 				const std::string id = topic["id"];
 				if (find_topic(default_toplevel, id) == nullptr) {
 					if (!topic_is_referenced(id, *help_config)) {
-						if (ss.str() != "") {
+						if (!ss.str().empty()) {
 							ss << ",";
 						}
 						ss << id;

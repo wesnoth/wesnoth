@@ -264,7 +264,7 @@ public:
 	 */
 	virtual bool valid() const
 	{
-		return keycode_ != SDLK_UNKNOWN && text_ != "";
+		return keycode_ != SDLK_UNKNOWN && !text_.empty();
 	}
 
 protected:

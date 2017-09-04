@@ -95,7 +95,7 @@ void campaign_selection::campaign_selected(window& window)
 	}
 
 	assert(tree.selected_item());
-	if(tree.selected_item()->id() != "") {
+	if(!tree.selected_item()->id().empty()) {
 		auto iter = std::find(page_ids_.begin(), page_ids_.end(), tree.selected_item()->id());
 		const int choice = iter - page_ids_.begin();
 		if(iter == page_ids_.end()) {
@@ -296,7 +296,7 @@ void campaign_selection::post_show(window& window)
 	}
 
 	assert(tree.selected_item());
-	if(tree.selected_item()->id() != "") {
+	if(!tree.selected_item()->id().empty()) {
 		auto iter = std::find(page_ids_.begin(), page_ids_.end(), tree.selected_item()->id());
 		if(iter != page_ids_.end()) {
 			choice_ = iter - page_ids_.begin();

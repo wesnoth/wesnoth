@@ -308,7 +308,7 @@ double passage_path_calculator::cost(const map_location& loc, const double) cons
 void cave_map_generator::cave_map_generator_job::place_passage(const passage& p)
 {
 	const std::string& chance = p.cfg["chance"];
-	if(chance != "" && int(rng_()%100) < std::stoi(chance)) {
+	if(!chance.empty() && int(rng_()%100) < std::stoi(chance)) {
 		return;
 	}
 

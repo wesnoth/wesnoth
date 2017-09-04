@@ -814,7 +814,7 @@ void server::add_player(socket_ptr socket, const wesnothd::player& player)
 
 	send_to_player(socket, games_and_users_list_);
 
-	if (motd_ != "") {
+	if (!motd_.empty()) {
 		send_server_message(socket, motd_);
 	}
 
@@ -2599,7 +2599,7 @@ void server::motd_handler(const std::string& /*issuer_name*/, const std::string&
 	assert(out != NULL);
 
 	if (parameters == "") {
-		if (motd_ != "") {
+		if (!motd_.empty()) {
 			*out << "Message of the day:\n" << motd_;
 			return;
 		} else {

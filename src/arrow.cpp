@@ -266,12 +266,12 @@ void arrow::update_symbols()
 		}
 
 		image_filename = dirname + style_ + "/" + prefix;
-		if (suffix != "")
+		if (!suffix.empty())
 		{
 			image_filename += ("-" + suffix);
 		}
 		image_filename += ".png";
-		assert(image_filename != "");
+		assert(!image_filename.empty());
 
 		image::locator image = image::locator(image_filename, mods);
 		if (!image.file_exists())

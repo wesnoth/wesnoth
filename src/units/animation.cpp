@@ -89,23 +89,23 @@ struct animation_cursor
 			const std::string s_branch_value     = branch.attributes["value"];
 			const std::string s_branch_value_2nd = branch.attributes["value_second"];
 
-			if(s_branch_hits != "" && s_branch_hits == s_cfg_hits) {
+			if(!s_branch_hits.empty() && s_branch_hits == s_cfg_hits) {
 				previously_hits_set = true;
 			}
 
-			if(s_branch_direction != "" && s_branch_direction == s_cfg_direction) {
+			if(!s_branch_direction.empty() && s_branch_direction == s_cfg_direction) {
 				previously_direction_set = true;
 			}
 
-			if(s_branch_terrain != "" && s_branch_terrain == s_cfg_terrain) {
+			if(!s_branch_terrain.empty() && s_branch_terrain == s_cfg_terrain) {
 				previously_terrain_set = true;
 			}
 
-			if(s_branch_value != "" && s_branch_value == s_cfg_value) {
+			if(!s_branch_value.empty() && s_branch_value == s_cfg_value) {
 				previously_value_set = true;
 			}
 
-			if(s_branch_value_2nd != "" && s_branch_value_2nd == s_cfg_value_2nd) {
+			if(!s_branch_value_2nd.empty() && s_branch_value_2nd == s_cfg_value_2nd) {
 				previously_value_2nd_set = true;
 			}
 		}

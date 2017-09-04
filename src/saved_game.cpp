@@ -309,9 +309,9 @@ void saved_game::expand_mp_events()
 		boost::copy( mp_settings_.active_mods
 			| boost::adaptors::transformed(modevents_entry_for("modification"))
 			, std::back_inserter(mods) );
-		if(mp_settings_.mp_era != "") //We don't want the error message below if there is no era (= if this is a sp game)
+		if(!mp_settings_.mp_era.empty()) //We don't want the error message below if there is no era (= if this is a sp game)
 		{ mods.emplace_back("era", mp_settings_.mp_era); }
-		if(classification_.campaign != "")
+		if(!classification_.campaign.empty())
 		{ mods.emplace_back("campaign", classification_.campaign); }
 
 		// In the first iteration mod contains no [resource]s in all other iterations, mods contains only [resource]s

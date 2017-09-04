@@ -392,7 +392,7 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 {
 	DBG_MP << "preparing data for campaign by reloading game config\n";
 
-	if(difficulty != "") {
+	if(!difficulty.empty()) {
 		state_.classification().difficulty = difficulty;
 	} else if(!selected_campaign_difficulty_.empty()) {
 		state_.classification().difficulty = selected_campaign_difficulty_;

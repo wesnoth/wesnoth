@@ -1624,7 +1624,7 @@ void display::set_diagnostic(const std::string& msg)
 		diagnostic_label_ = 0;
 	}
 
-	if(msg != "") {
+	if(!msg.empty()) {
 		font::floating_label flabel(msg);
 		flabel.set_font_size(font::SIZE_PLUS);
 		flabel.set_color(font::YELLOW_COLOR);

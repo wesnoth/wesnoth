@@ -116,7 +116,7 @@ void help_text_area::set_items()
 	std::vector<std::string> const &parsed_items = shown_topic_->text.parsed_text();
 	std::vector<std::string>::const_iterator it;
 	for (it = parsed_items.begin(); it != parsed_items.end(); ++it) {
-		if (*it != "" && (*it)[0] == '[') {
+		if (!(*it).empty() && (*it)[0] == '[') {
 			// Should be parsed as WML.
 			try {
 				config cfg;
@@ -247,7 +247,7 @@ void help_text_area::handle_jump_cfg(const config &cfg)
 		throw parse_error("Jump markup must have either a to or an amount attribute.");
 	}
 	unsigned jump_to = curr_loc_.first;
-	if (amount_str != "") {
+	if (!amount_str.empty()) {
 		unsigned amount;
 		try {
 			amount = lexical_cast<unsigned, std::string>(amount_str);
@@ -257,7 +257,7 @@ void help_text_area::handle_jump_cfg(const config &cfg)
 		}
 		jump_to += amount;
 	}
-	if (to_str != "") {
+	if (!to_str.empty()) {
 		unsigned to;
 		try {
 			to = lexical_cast<unsigned, std::string>(to_str);
@@ -577,7 +577,7 @@ std::string help_text_area::ref_at(const int x, const int y)
 		const std::list<item>::const_iterator it =
 			std::find_if(items_.begin(), items_.end(), item_at(local_x, cmp_y));
 		if (it != items_.end()) {
-			if ((*it).ref_to != "") {
+			if (!(*it).ref_to.empty()) {
 				return ((*it).ref_to);
 			}
 		}

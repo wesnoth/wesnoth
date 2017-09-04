@@ -515,7 +515,7 @@ unit::unit(const config& cfg, bool use_traits, const vconfig* vcfg)
 	std::vector<std::string> temp_advances = utils::split(cfg["advances_to"]);
 	if(temp_advances.size() == 1 && temp_advances.front() == "null") {
 		advances_to_.clear();
-	} else if(temp_advances.size() >= 1 && temp_advances.front() != "") {
+	} else if(temp_advances.size() >= 1 && !temp_advances.front().empty()) {
 		advances_to_ = temp_advances;
 	}
 
@@ -1759,7 +1759,7 @@ std::string unit::describe_builtin_effect(std::string apply_to, const config& ef
 		std::string desc;
 		for(attack_ptr a : attacks_) {
 			bool affected = a->describe_modification(effect, &desc);
-			if(affected && desc != "") {
+			if(affected && !desc.empty()) {
 				attack_names.emplace_back(a->name(), "wesnoth-units");
 			}
 		}

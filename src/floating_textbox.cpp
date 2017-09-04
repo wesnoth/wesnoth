@@ -113,7 +113,7 @@ namespace gui{
 		label_string_ = label;
 		mode_ = mode;
 
-		if(check_label != "") {
+		if(!check_label.empty()) {
 			check_.reset(new gui::button(gui.video(),check_label,gui::button::TYPE_CHECK));
 			check_->set_check(checked);
 		}

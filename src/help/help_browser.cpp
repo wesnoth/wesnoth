@@ -145,7 +145,7 @@ void help_browser::handle_event(const SDL_Event &event)
 			const int mousex = mouse_event.x;
 			const int mousey = mouse_event.y;
 			const std::string ref = text_area_.ref_at(mousex, mousey);
-			if (ref != "") {
+			if (!ref.empty()) {
 				const topic *t = find_topic(toplevel_, ref);
 				if (t == nullptr) {
 					std::stringstream msg;
@@ -170,7 +170,7 @@ void help_browser::update_cursor()
 	int mousex, mousey;
 	SDL_GetMouseState(&mousex,&mousey);
 	const std::string ref = text_area_.ref_at(mousex, mousey);
-	if (ref != "" && !ref_cursor_) {
+	if (!ref.empty() && !ref_cursor_) {
 		cursor::set(cursor::HYPERLINK);
 		ref_cursor_ = true;
 	}

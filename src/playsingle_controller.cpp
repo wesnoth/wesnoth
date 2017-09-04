@@ -155,7 +155,7 @@ void playsingle_controller::play_scenario_init()
 		saved_game_.replay_start() = to_config();
 	}
 	start_game();
-	if( saved_game_.classification().random_mode != "" && is_networked_mp()) {
+	if(!saved_game_.classification().random_mode.empty() && is_networked_mp()) {
 		// This won't cause errors later but we should notify the user about it in case he didn't knew it.
 		gui2::show_transient_message(
 			gui_->video(),

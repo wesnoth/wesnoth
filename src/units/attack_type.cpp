@@ -65,7 +65,7 @@ attack_type::attack_type(const config& cfg) :
 		description_ = translation::egettext(id_.c_str());
 
 	if(icon_.empty()){
-		if (id_ != "")
+		if (!id_.empty())
 			icon_ = "attacks/" + id_ + ".png";
 		else
 			icon_ = "attacks/blank-attack.png";

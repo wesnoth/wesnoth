@@ -391,7 +391,7 @@ void unit_type::build_created(
 	}
 
 	const std::string& advances_to_val = cfg_["advances_to"];
-	if(advances_to_val != "null" && advances_to_val != "") {
+	if(advances_to_val != "null" && !advances_to_val.empty()) {
 		advances_to_ = utils::split(advances_to_val);
 	}
 

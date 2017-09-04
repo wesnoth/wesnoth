@@ -915,7 +915,7 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr user) {
 			marked.push_back(index - marked.size());
 		} else if ((**command).child("speak")) {
 			simple_wml::node& speak = *(**command).child("speak");
-			if (speak["to_sides"] != "" || is_muted_observer(user)) {
+			if (!speak["to_sides"].empty() || is_muted_observer(user)) {
 				DBG_GAME << "repackaging..." << std::endl;
 				repackage = true;
 			}

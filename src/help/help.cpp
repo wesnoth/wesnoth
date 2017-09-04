@@ -206,7 +206,7 @@ void show_help(CVideo& video, const section &toplevel_sec,
 		hb.set_location(xloc + left_padding, yloc + top_padding);
 		hb.set_width(width - left_padding - right_padding);
 		hb.set_height(height - top_padding - bot_padding);
-		if (show_topic != "") {
+		if (!show_topic.empty()) {
 			hb.show_topic(show_topic);
 		}
 		else {

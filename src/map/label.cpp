@@ -118,7 +118,7 @@ const terrain_label* map_labels::get_label(const map_location& loc) const
 
 	// No such team label. Try to find global label, except if that's what we just did.
 	// NOTE: This also avoid infinite recursion
-	if(res == nullptr && team_name() != "") {
+	if(res == nullptr && !team_name().empty()) {
 		return get_label(loc, "");
 	}
 

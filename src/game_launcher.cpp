@@ -850,7 +850,7 @@ bool game_launcher::play_multiplayer(mp_selection res)
 	} catch (mapgen_exception& e) {
 		gui2::show_error_message(video(), _("Map generator error: ") + e.message);
 	} catch(wesnothd_error& e) {
-		if(e.message != "") {
+		if(!e.message.empty()) {
 			ERR_NET << "caught network error: " << e.message << std::endl;
 			gui2::show_transient_message(video()
 					, ""
@@ -859,7 +859,7 @@ bool game_launcher::play_multiplayer(mp_selection res)
 			ERR_NET << "caught network error" << std::endl;
 		}
 	} catch(config::error& e) {
-		if(e.message != "") {
+		if(!e.message.empty()) {
 			ERR_CONFIG << "caught config::error: " << e.message << std::endl;
 			gui2::show_transient_message(video(), "", e.message);
 		} else {

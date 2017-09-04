@@ -168,7 +168,7 @@ namespace {
 		to(t_translation::GRASS_LAND)
 	{
 		const std::string& terrain = cfg["terrain"];
-		if(terrain != "") {
+		if(!terrain.empty()) {
 			to = t_translation::read_terrain_code(terrain);
 		}
 	}
@@ -207,7 +207,7 @@ namespace {
 		, to(t_translation::NONE_TERRAIN)
 	{
 		const std::string& to_str = cfg["to"];
-		if(to_str != "") {
+		if(!to_str.empty()) {
 			to = t_translation::read_terrain_code(to_str);
 		}
 	}
@@ -1116,7 +1116,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				terrain[x][y] = letter;
 				if(misc_labels != nullptr) {
 					const map_location loc(x - data.width / 3, y - data.height / 3); //add to use for village naming
-					if(road_base_name != "")
+					if(!road_base_name.empty())
 						road_names.emplace(loc, road_base_name);
 				}
 			}
