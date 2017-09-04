@@ -27,7 +27,7 @@ bool user_handler::send_mail(const std::string& to_user,
 	}
 
 	// If this user did not provide an email
-	if(get_mail(to_user) == "") {
+	if(get_mail(to_user).empty()) {
 		throw error("Could not send email. The email address of the user '" + to_user + "' is empty.");
 	}
 

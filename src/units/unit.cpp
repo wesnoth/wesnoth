@@ -410,7 +410,7 @@ unit::unit(const config& cfg, bool use_traits, const vconfig* vcfg)
 	set_underlying_id(resources::gameboard ? resources::gameboard->unit_id_manager() : n_unit::id_manager::global_instance());
 
 	overlays_ = utils::parenthetical_split(cfg["overlays"], ',');
-	if(overlays_.size() == 1 && overlays_.front() == "") {
+	if(overlays_.size() == 1 && overlays_.front().empty()) {
 		overlays_.clear();
 	}
 

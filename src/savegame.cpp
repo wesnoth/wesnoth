@@ -337,7 +337,7 @@ savegame::savegame(saved_game& gamestate, const compression::format compress_sav
 
 bool savegame::save_game_automatic(CVideo& video, bool ask_for_overwrite, const std::string& filename)
 {
-	if (filename == "")
+	if (filename.empty())
 		create_filename();
 	else
 		filename_ = filename;
@@ -444,7 +444,7 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		Uint32 start, end;
 		start = SDL_GetTicks();
 
-		if (filename_ == "")
+		if (filename_.empty())
 			filename_ = filename;
 
 		before_save();

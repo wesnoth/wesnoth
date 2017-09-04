@@ -28,7 +28,7 @@ static lg::log_domain log_config("config");
 
 map_generator* create_map_generator(const std::string& name, const config &cfg)
 {
-	if(name == "default" || name == "") {
+	if(name == "default" || name.empty()) {
 		return new default_map_generator(cfg);
 	} else if(name == "cave") {
 		ERR_CF << "map/scenario_generation=cave is deprecatd and will be removed soon, use map/scenario_generation=lua with lua/cave_map_generator.lua instead.\n";

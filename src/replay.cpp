@@ -145,7 +145,7 @@ chat_msg::chat_msg(const config &cfg)
 	, text_(cfg["message"].str())
 {
 	const std::string& team_name = cfg["team_name"];
-	if(team_name == "")
+	if(team_name.empty())
 	{
 		nick_ = cfg["id"].str();
 	} else {

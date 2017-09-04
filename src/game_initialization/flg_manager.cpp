@@ -138,12 +138,12 @@ void flg_manager::resolve_random(randomness::mt_rng& rng, const std::vector<std:
 		std::vector<std::string> faction_choices, faction_excepts;
 
 		faction_choices = utils::split((*current_faction_)["choices"]);
-		if(faction_choices.size() == 1 && faction_choices.front() == "") {
+		if(faction_choices.size() == 1 && faction_choices.front().empty()) {
 			faction_choices.clear();
 		}
 
 		faction_excepts = utils::split((*current_faction_)["except"]);
-		if(faction_excepts.size() == 1 && faction_excepts.front() == "") {
+		if(faction_excepts.size() == 1 && faction_excepts.front().empty()) {
 			faction_excepts.clear();
 		}
 

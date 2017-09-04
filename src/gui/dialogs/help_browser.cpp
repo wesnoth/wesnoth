@@ -95,7 +95,7 @@ void help_browser::on_topic_select(window& window)
 
 	assert(tree.selected_item());
 
-	if(tree.selected_item()->id() == "") {
+	if(tree.selected_item()->id().empty()) {
 		return;
 	}
 

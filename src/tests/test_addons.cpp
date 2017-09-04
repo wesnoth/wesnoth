@@ -43,8 +43,8 @@ BOOST_AUTO_TEST_CASE( validation )
 
 BOOST_AUTO_TEST_CASE( encoding )
 {
-	BOOST_CHECK( encode_binary("") == "" );
-	BOOST_CHECK( unencode_binary("") == "" );
+	BOOST_CHECK( encode_binary("").empty() );
+	BOOST_CHECK( unencode_binary("").empty() );
 
 	//
 	// Plain string.

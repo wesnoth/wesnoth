@@ -179,7 +179,7 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 			}
 
 
-			if (var_name == "") {
+			if (var_name.empty()) {
 				// Allow for a way to have $s in a string.
 				// $| will be replaced by $.
 				res.replace(var_begin, var_end, "$");

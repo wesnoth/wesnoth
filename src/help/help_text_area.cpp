@@ -162,7 +162,7 @@ void help_text_area::handle_ref_cfg(const config &cfg)
 	const std::string text = cfg["text"];
 	bool force = cfg["force"].to_bool();
 
-	if (dst == "") {
+	if (dst.empty()) {
 		std::stringstream msg;
 		msg << "Ref markup must have dst attribute. Please submit a bug"
 		       " report if you have not modified the game files yourself. Erroneous config: ";
@@ -206,7 +206,7 @@ void help_text_area::handle_img_cfg(const config &cfg)
 	const std::string align = cfg["align"];
 	bool floating = cfg["float"].to_bool();
 	bool box = cfg["box"].to_bool(true);
-	if (src == "") {
+	if (src.empty()) {
 		throw parse_error("Img markup must have src attribute.");
 	}
 	add_img_item(src, align, floating, box);
@@ -215,7 +215,7 @@ void help_text_area::handle_img_cfg(const config &cfg)
 void help_text_area::handle_bold_cfg(const config &cfg)
 {
 	const std::string text = cfg["text"];
-	if (text == "") {
+	if (text.empty()) {
 		throw parse_error("Bold markup must have text attribute.");
 	}
 	add_text_item(text, "", false, -1, true);
@@ -224,7 +224,7 @@ void help_text_area::handle_bold_cfg(const config &cfg)
 void help_text_area::handle_italic_cfg(const config &cfg)
 {
 	const std::string text = cfg["text"];
-	if (text == "") {
+	if (text.empty()) {
 		throw parse_error("Italic markup must have text attribute.");
 	}
 	add_text_item(text, "", false, -1, false, true);
@@ -233,7 +233,7 @@ void help_text_area::handle_italic_cfg(const config &cfg)
 void help_text_area::handle_header_cfg(const config &cfg)
 {
 	const std::string text = cfg["text"];
-	if (text == "") {
+	if (text.empty()) {
 		throw parse_error("Header markup must have text attribute.");
 	}
 	add_text_item(text, "", false, title2_size, true);
@@ -243,7 +243,7 @@ void help_text_area::handle_jump_cfg(const config &cfg)
 {
 	const std::string amount_str = cfg["amount"];
 	const std::string to_str = cfg["to"];
-	if (amount_str == "" && to_str == "") {
+	if (amount_str.empty() && to_str.empty()) {
 		throw parse_error("Jump markup must have either a to or an amount attribute.");
 	}
 	unsigned jump_to = curr_loc_.first;
@@ -280,7 +280,7 @@ void help_text_area::handle_jump_cfg(const config &cfg)
 void help_text_area::handle_format_cfg(const config &cfg)
 {
 	const std::string text = cfg["text"];
-	if (text == "") {
+	if (text.empty()) {
 		throw parse_error("Format markup must have text attribute.");
 	}
 	bool bold = cfg["bold"].to_bool();
@@ -492,7 +492,7 @@ help_text_area::ALIGNMENT help_text_area::str_to_align(const std::string &cmp_st
 		return MIDDLE;
 	} else if (cmp_str == "right") {
 		return RIGHT;
-	} else if (cmp_str == "here" || cmp_str == "") { // Make the empty string be "here" alignment.
+	} else if (cmp_str == "here" || cmp_str.empty()) { // Make the empty string be "here" alignment.
 		return HERE;
 	}
 	std::stringstream msg;

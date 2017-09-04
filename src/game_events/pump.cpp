@@ -329,7 +329,7 @@ void wml_event_pump::fill_wml_messages_map(std::map<std::string, int>& msg_map, 
 			break;
 		}
 
-		if(msg == "") {
+		if(msg.empty()) {
 			continue;
 		}
 

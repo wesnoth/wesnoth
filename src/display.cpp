@@ -2576,7 +2576,7 @@ void display::draw_hex(const map_location& loc) {
 			lt = image::get_light_string(0, tod_col.r, tod_col.g, tod_col.b);
 
 			for( ; overlays.first != overlays.second; ++overlays.first) {
-				if ((overlays.first->second.team_name == "" ||
+				if ((overlays.first->second.team_name.empty() ||
 						overlays.first->second.team_name.find(dc_->teams()[viewing_team()].team_name()) != std::string::npos)
 						&& !(fogged(loc) && !overlays.first->second.visible_in_fog))
 				{

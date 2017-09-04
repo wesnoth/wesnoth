@@ -370,7 +370,7 @@ void server::setup_handlers()
 
 config server::read_config() const {
 	config configuration;
-	if (config_file_ == "") return configuration;
+	if (config_file_.empty()) return configuration;
 	try {
 		filesystem::scoped_istream stream = preprocess_file(config_file_);
 		read(configuration, *stream);
@@ -413,7 +413,7 @@ void server::load_config() {
 	allow_remote_shutdown_ = cfg_["allow_remote_shutdown"].to_bool();
 
 	disallowed_names_.clear();
-	if (cfg_["disallow_names"] == "") {
+	if (cfg_["disallow_names"].empty()) {
 		disallowed_names_.push_back("*admin*");
 		disallowed_names_.push_back("*admln*");
 		disallowed_names_.push_back("*server*");
@@ -875,7 +875,7 @@ void server::handle_player_in_lobby(socket_ptr socket, std::shared_ptr<simple_wm
 
 void server::handle_whisper(socket_ptr socket, simple_wml::node& whisper)
 {
-	if((whisper["receiver"] == "") || (whisper["message"] == "")) {
+	if((whisper["receiver"].empty()) || (whisper["message"].empty())) {
 		static simple_wml::document data(
 					"[message]\n"
 					"message=\"Invalid number of arguments\"\n"
@@ -2136,7 +2136,7 @@ void server::netstats_handler(const std::string& /*issuer_name*/, const std::str
 void server::adminmsg_handler(const std::string& issuer_name, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
 	assert(out != NULL);
 
-	if (parameters == "") {
+	if (parameters.empty()) {
 		*out << "You must type a message.";
 		return;
 	}
@@ -2205,7 +2205,7 @@ void server::pm_handler(const std::string& issuer_name, const std::string& /*que
 void server::msg_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
 	assert(out != nullptr);
 
-	if (parameters == "") {
+	if (parameters.empty()) {
 		*out << "You must type a message.";
 		return;
 	}
@@ -2222,7 +2222,7 @@ void server::msg_handler(const std::string& /*issuer_name*/, const std::string& 
 void server::lobbymsg_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
 	assert(out != nullptr);
 
-	if (parameters == "") {
+	if (parameters.empty()) {
 		*out << "You must type a message.";
 		return;
 	}
@@ -2258,7 +2258,7 @@ void server::status_handler(const std::string& issuer_name, const std::string& /
 	}
 	const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
 	for (const auto& player : player_connections_) {
-		if (parameters == "" || parameters == "*"
+		if (parameters.empty() || parameters == "*"
 				|| (match_ip && utils::wildcard_string_match(client_address(player.socket()), parameters))
 				|| (!match_ip && utils::wildcard_string_match(player.info().name(), parameters))) {
 			found_something = true;
@@ -2543,7 +2543,7 @@ void server::gban_handler(const std::string& issuer_name, const std::string& /*q
 void server::unban_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
 	assert(out != NULL);
 
-	if (parameters == "") {
+	if (parameters.empty()) {
 		*out << "You must enter an ipmask to unban.";
 		return;
 	}
@@ -2553,7 +2553,7 @@ void server::unban_handler(const std::string& /*issuer_name*/, const std::string
 void server::ungban_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
 	assert(out != NULL);
 
-	if (parameters == "") {
+	if (parameters.empty()) {
 		*out << "You must enter an ipmask to ungban.";
 		return;
 	}
@@ -2563,7 +2563,7 @@ void server::ungban_handler(const std::string& /*issuer_name*/, const std::strin
 void server::kick_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
 	assert(out != NULL);
 
-	if (parameters == "") {
+	if (parameters.empty()) {
 		*out <<  "You must enter a mask to kick.";
 		return;
 	}
@@ -2598,7 +2598,7 @@ void server::kick_handler(const std::string& /*issuer_name*/, const std::string&
 void server::motd_handler(const std::string& /*issuer_name*/, const std::string& /*query*/, std::string& parameters, std::ostringstream *out) {
 	assert(out != NULL);
 
-	if (parameters == "") {
+	if (parameters.empty()) {
 		if (!motd_.empty()) {
 			*out << "Message of the day:\n" << motd_;
 			return;
@@ -2649,7 +2649,7 @@ void server::dul_handler(const std::string& /*issuer_name*/, const std::string& 
 
 	try {
 
-		if (parameters == "") {
+		if (parameters.empty()) {
 			*out << "Unregistered login is " << (deny_unregistered_login_ ? "disallowed" : "allowed") << ".";
 		} else {
 			deny_unregistered_login_ = (utf8::lowercase(parameters) == "yes");

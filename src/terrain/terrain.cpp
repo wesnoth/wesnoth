@@ -170,22 +170,22 @@ terrain_type::terrain_type(const config& cfg) :
 	//mouse over message are only shown on villages
 	if(village_) {
 		income_description_ = cfg["income_description"];
-		if(income_description_ == "") {
+		if(income_description_.empty()) {
 			income_description_ = _("Village");
 		}
 
 		income_description_ally_ = cfg["income_description_ally"];
-		if(income_description_ally_ == "") {
+		if(income_description_ally_.empty()) {
 			income_description_ally_ = _("Allied village");
 		}
 
 		income_description_enemy_ = cfg["income_description_enemy"];
-		if(income_description_enemy_ == "") {
+		if(income_description_enemy_.empty()) {
 			income_description_enemy_ = _("Enemy village");
 		}
 
 		income_description_own_ = cfg["income_description_own"];
-		if(income_description_own_ == "") {
+		if(income_description_own_.empty()) {
 			income_description_own_ = _("Owned village");
 		}
 	}

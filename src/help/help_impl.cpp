@@ -261,7 +261,7 @@ section parse_config(const config *cfg)
 std::vector<topic> generate_topics(const bool sort_generated,const std::string &generator)
 {
 	std::vector<topic> res;
-	if (generator == "") {
+	if (generator.empty()) {
 		return res;
 	}
 
@@ -309,7 +309,7 @@ void generate_sections(const config *help_cfg, const std::string &generator, sec
 std::string generate_topic_text(const std::string &generator, const config *help_cfg, const section &sec, const std::vector<topic>& generated_topics)
 {
 	std::string empty_string = "";
-	if (generator == "") {
+	if (generator.empty()) {
 		return empty_string;
 	} else if (generator == "about") {
 		return generate_about_text();

@@ -122,7 +122,7 @@ void chat_handler::send_command(const std::string& cmd, const std::string& args 
 
 void chat_handler::do_speak(const std::string& message, bool allies_only)
 {
-	if (message == "" || message == "/") {
+	if (message.empty() || message == "/") {
 		return;
 	}
 	bool is_command = (message[0] == '/');

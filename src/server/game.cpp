@@ -978,7 +978,7 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr user) {
 		simple_wml::node& message_turn = message->root().add_child("turn");
 		simple_wml::node& message_turn_command = message_turn.add_child("command");
 		speak->copy_into(message_turn_command.add_child("speak"));
-		if (to_sides == "") {
+		if (to_sides.empty()) {
 			send_data(*message, user, "game message");
 			record_data(message.release());
 		} else if (to_sides == game_config::observer_team_name) {

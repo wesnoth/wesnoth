@@ -174,7 +174,7 @@ void help_browser::update_cursor()
 		cursor::set(cursor::HYPERLINK);
 		ref_cursor_ = true;
 	}
-	else if (ref == "" && ref_cursor_) {
+	else if (ref.empty() && ref_cursor_) {
 		cursor::set(cursor::NORMAL);
 		ref_cursor_ = false;
 	}

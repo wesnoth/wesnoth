@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_CASE( utils_join_test )
 {
 	std::vector<std::string> fruit;
 
-	BOOST_CHECK( utils::join(fruit) == "" );
+	BOOST_CHECK( utils::join(fruit).empty() );
 
 	fruit.push_back("apples");
 
