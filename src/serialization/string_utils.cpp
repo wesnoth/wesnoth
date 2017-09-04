@@ -192,7 +192,7 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 			//combine square contents and rest of string for comma zone block
 			size_t j = 0;
 			size_t j_max = 0;
-			if (square_left.size() != 0)
+			if (!square_left.empty())
 				j_max = square_expansion.size() / square_left.size();
 			do {
 				j1 = i1;

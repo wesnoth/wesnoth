@@ -1279,7 +1279,7 @@ public:
 	{}
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
-		if( args().size() != 0 ) {
+		if(!args().empty()) {
 			for( size_t i = 0; i < args().size() ; ++i)
 				args()[i]->evaluate(variables,fdb);
 		}

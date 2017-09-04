@@ -804,7 +804,7 @@ void get_villages_phase::dispatch(treachmap& reachmap, tmoves& moves)
 			}
 		}
 
-		if(reachmap.size() != 0 && dispatched) {
+		if(!reachmap.empty() && dispatched) {
 			DBG_AI_TESTING_AI_DEFAULT << reachmap.size() << " unit(s) left restarting simple dispatching.\n";
 
 			dump_reachmap(reachmap);

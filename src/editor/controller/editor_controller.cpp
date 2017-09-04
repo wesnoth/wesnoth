@@ -288,7 +288,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 			return true; //general hotkeys we can always do
 
 		case hotkey::HOTKEY_UNIT_LIST:
-			return get_current_map_context().get_units().size() != 0;
+			return !get_current_map_context().get_units().empty();
 
 		case HOTKEY_STATUS_TABLE:
 			return !get_current_map_context().get_teams().empty();
