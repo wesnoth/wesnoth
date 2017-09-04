@@ -243,6 +243,7 @@ def output(path, url, data):
         addon_type = htmlescape(v("type", "none"))
         version = htmlescape(v("version", "unknown"))
         author = htmlescape(v("author", "unknown"))
+        feedback_url = v("feedback_url", None) # Escaped by a function call.
 
         icon = htmlescape(v("icon", ""))
         description = htmlescape(v('description', '(no description)'))
@@ -299,12 +300,21 @@ def output(path, url, data):
            '<div class="desc-tooltip"><b>%s</b><pre>%s</pre></div></td>') % (
                imgurl, title, description))
 
+        def make_icon_button(url, label, icon):
+            w(('<a href="{0}" title="{1}">'
+               '<i class="fa fa-fw fa-2x fa-{2}" aria-hidden="true"></i>'
+               '<span class="sr-only">{1}</span></a>').format(
+                    htmlescape(url), htmlescape(label), icon))
+
         w('<td class="addon"><span hidden>%s</span>' % title)
-        if url:
-            link = htmlescape(url.rstrip("/") + "/" + urlencode(addon_id) + ".tar.bz2")
-            w(('<a class="addon-download" href="%s" title="Download">'
-               '<i class="fa fa-fw fa-2x fa-download" aria-hidden="true"></i>'
-               '<span class="sr-only">Download</span></a>') % link)
+        if url or feedback_url:
+            w('<span class="addon-download">')
+            if feedback_url:
+                make_icon_button(feedback_url, "Forum topic", "comment")
+            if url:
+                link = url.rstrip("/") + "/" + urlencode(addon_id) + ".tar.bz2"
+                make_icon_button(link, "Download", "download")
+            w('</span>')
         w(('<b>%s</b><br/>'
            '<span class="addon-meta"><span class="addon-meta-label">Version:</span> %s<br/>'
            '<span class="addon-meta-label">Author:</span> %s</span></td>') % (
