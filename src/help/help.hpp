@@ -30,6 +30,8 @@ struct help_manager {
 };
 
 struct section;
+void init_help();
+
 /// Open a help dialog using a toplevel other than the default. This
 /// allows for complete customization of the contents, although not in a
 /// very easy way.

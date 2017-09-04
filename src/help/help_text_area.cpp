@@ -113,41 +113,22 @@ void help_text_area::set_items()
 		down_one_line();
 	}
 	// Parse and add the text.
-	std::vector<std::string> const &parsed_items = shown_topic_->text.parsed_text();
-	std::vector<std::string>::const_iterator it;
-	for (it = parsed_items.begin(); it != parsed_items.end(); ++it) {
-		if (*it != "" && (*it)[0] == '[') {
-			// Should be parsed as WML.
-			try {
-				config cfg;
-				std::istringstream stream(*it);
-				read(cfg, stream);
-
+	const config& parsed_items = shown_topic_->text.parsed_text();
+	for(auto& item : parsed_items.all_children_range()) {
 #define TRY(name) do { \
-				if (config &child = cfg.child(#name)) \
-					handle_##name##_cfg(child); \
-				} while (0)
+		if (item.key == #name) \
+			handle_##name##_cfg(item.cfg); \
+		} while (0)
 
-				TRY(ref);
-				TRY(img);
-				TRY(bold);
-				TRY(italic);
-				TRY(header);
-				TRY(jump);
-				TRY(format);
-
+		TRY(text);
+		TRY(ref);
+		TRY(img);
+		TRY(bold);
+		TRY(italic);
+		TRY(header);
+		TRY(jump);
+		TRY(format);
 #undef TRY
-
-			}
-			catch (config::error& e) {
-				std::stringstream msg;
-				msg << "Error when parsing help markup as WML: '" << e.message << "'";
-				throw parse_error(msg.str());
-			}
-		}
-		else {
-			add_text_item(*it);
-		}
 	}
 	down_one_line(); // End the last line.
 	int h = height();
@@ -288,6 +269,10 @@ void help_text_area::handle_format_cfg(const config &cfg)
 	int font_size = cfg["font_size"].to_int(normal_font_size);
 	color_t color = help::string_to_color(cfg["color"]);
 	add_text_item(text, "", false, font_size, bold, italic, color);
+}
+
+void help_text_area::handle_text_cfg(const config& cfg) {
+	add_text_item(cfg["text"]);
 }
 
 void help_text_area::add_text_item(const std::string& text, const std::string& ref_dst,

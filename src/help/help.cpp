@@ -26,7 +26,9 @@
 #include "font/constants.hpp"           // for relative_size
 #include "preferences/game.hpp"
 #include "gettext.hpp"                  // for _
+#include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/widgets/settings.hpp"
 #include "help/help_browser.hpp"             // for help_browser
 #include "help/help_impl.hpp"                // for hidden_symbol, toplevel, etc
 #include "key.hpp"                      // for CKey
@@ -149,6 +151,23 @@ void show_variation_help(CVideo& video, const std::string& unit, const std::stri
 	show_help(video, default_toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation, xloc, yloc);
 }
 
+void init_help() {
+	// Find all unit_types that have not been constructed yet and fill in the information
+	// needed to create the help topics
+	unit_types.build_all(unit_type::HELP_INDEXED);
+
+	if(preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
+		preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
+		last_debug_state != game_config::debug ||
+		last_num_encountered_units < 0) {
+		// More units or terrains encountered, update the contents.
+		last_num_encountered_units = preferences::encountered_units().size();
+		last_num_encountered_terrains = preferences::encountered_terrains().size();
+		last_debug_state = game_config::debug;
+		generate_contents();
+	}
+}
+
 /**
  * Open a help dialog using a toplevel other than the default.
  *
@@ -159,6 +178,11 @@ void show_help(CVideo& video, const section &toplevel_sec,
 			   const std::string& show_topic,
 			   int xloc, int yloc)
 {
+	if(gui2::new_widgets) {
+		gui2::dialogs::help_browser::display(video, toplevel_sec, show_topic);
+		return;
+	}
+
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
 
@@ -187,20 +211,7 @@ void show_help(CVideo& video, const section &toplevel_sec,
 	f.layout(xloc, yloc, width, height);
 	f.draw();
 
-    // Find all unit_types that have not been constructed yet and fill in the information
-    // needed to create the help topics
-	unit_types.build_all(unit_type::HELP_INDEXED);
-
-	if (preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
-	    preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
-	    last_debug_state != game_config::debug ||
-		last_num_encountered_units < 0) {
-		// More units or terrains encountered, update the contents.
-		last_num_encountered_units = preferences::encountered_units().size();
-		last_num_encountered_terrains = preferences::encountered_terrains().size();
-		last_debug_state = game_config::debug;
-		generate_contents();
-	}
+	init_help();
 	try {
 		help_browser hb(video, toplevel_sec);
 		hb.set_location(xloc + left_padding, yloc + top_padding);
