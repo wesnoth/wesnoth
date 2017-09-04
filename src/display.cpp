@@ -54,6 +54,7 @@
 #include <SDL_image.h>
 
 #include <cmath>
+#include <iomanip>
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -1365,7 +1366,11 @@ void display::update_display()
 		++frames;
 		const int sample_freq = 10;
 		if(frames == sample_freq) {
-			const int fps = 1000 / *std::max_element(frametimes_.begin(), frametimes_.end());
+			const auto minmax_it = std::minmax_element(frametimes_.begin(), frametimes_.end());
+			const unsigned render_avg = std::accumulate(frametimes_.begin(), frametimes_.end(), 0) / frametimes_.size();
+			const int avg_fps = 1000 / render_avg;
+			const int max_fps = 1000 / *minmax_it.first;
+			const int min_fps = 1000 / *minmax_it.second;
 			frames = 0;
 
 			if(fps_handle_ != 0) {
@@ -1373,7 +1378,9 @@ void display::update_display()
 				fps_handle_ = 0;
 			}
 			std::ostringstream stream;
-			stream << "fps: " << fps;
+			stream << "<tt>      min/avg/max</tt>\n";
+			stream << "<tt>FPS:  " << std::setfill(' ') << std::setw(3) << min_fps << '/'<< std::setw(3) << avg_fps << '/' << std::setw(3) << max_fps << "</tt>\n";
+			stream << "<tt>Time: " << std::setfill(' ') << std::setw(3) << *minmax_it.first << '/' << std::setw(3) << render_avg << '/' << std::setw(3) << *minmax_it.second << " ms</tt>\n";
 			if (game_config::debug) {
 				stream << "\nhex: " << drawn_hexes_*1.0/sample_freq;
 				if (drawn_hexes_ != invalidated_hexes_)
