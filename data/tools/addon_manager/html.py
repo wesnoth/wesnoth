@@ -5,6 +5,7 @@ import glob
 import os
 import sys
 import time
+import urllib.parse
 from subprocess import Popen
 
 #
@@ -173,6 +174,15 @@ def htmlescape(text, quote=True):
         return text
     return html.escape(text, quote)
 
+def urlencode(text):
+    """
+    Encode the given string to ensure it only contains valid URL characters
+    (also known as percent-encoding).
+    """
+    if text is None:
+        return text
+    return urllib.parse.quote(text, encoding='utf-8')
+
 def output(path, url, data):
     """Write the HTML index of add-ons into the specified directory."""
     try:
@@ -291,7 +301,7 @@ def output(path, url, data):
 
         w('<td class="addon"><span hidden>%s</span>' % title)
         if url:
-            link = htmlescape(url.rstrip("/") + "/" + addon_id + ".tar.bz2")
+            link = htmlescape(url.rstrip("/") + "/" + urlencode(addon_id) + ".tar.bz2")
             w(('<a class="addon-download" href="%s" title="Download">'
                '<i class="fa fa-fw fa-2x fa-download" aria-hidden="true"></i>'
                '<span class="sr-only">Download</span></a>') % link)
