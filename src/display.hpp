@@ -66,6 +66,7 @@ namespace wb {
 #include <boost/circular_buffer.hpp>
 
 #include "utils/functional.hpp"
+#include <chrono>
 #include <cstdint>
 #include <deque>
 #include <list>
@@ -742,6 +743,9 @@ protected:
 	events::generic_event complete_redraw_event_;
 
 	boost::circular_buffer<unsigned> frametimes_; // in milliseconds
+	unsigned int fps_counter_;
+	std::chrono::seconds fps_start_;
+	unsigned int fps_actual_;
 	uint32_t last_frame_finished_ = 0u;
 
 	// Not set by the initializer:
