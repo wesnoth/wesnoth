@@ -646,7 +646,7 @@ class HTMLOutput:
                 race_url = "%s#%s" % (cleanurl(target), cleanurl(r))
                 use_columns = "nocolumns" if visible_num < 12 else ""
                 add_menu("", r, "unitmenu", url=race_url, container_classes=use_columns)
-                for uid in races[r]:
+                for uid in sorted(races[r]):
                     un = self.wesnoth.unit_lookup[uid]
                     if un.hidden:
                         continue
