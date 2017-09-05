@@ -1354,6 +1354,12 @@ void display::flip()
 	font::undraw_floating_labels(frameBuffer);
 }
 
+// frametime is in milliseconds
+static unsigned calculate_fps(unsigned frametime)
+{
+	return frametime != 0u ? 1000u / frametime : 999u;
+}
+
 void display::update_display()
 {
 	if (screen_.update_locked()) {
@@ -1367,9 +1373,9 @@ void display::update_display()
 		if(frames == sample_freq) {
 			const auto minmax_it = std::minmax_element(frametimes_.begin(), frametimes_.end());
 			const unsigned render_avg = std::accumulate(frametimes_.begin(), frametimes_.end(), 0) / frametimes_.size();
-			const int avg_fps = 1000 / render_avg;
-			const int max_fps = 1000 / *minmax_it.first;
-			const int min_fps = 1000 / *minmax_it.second;
+			const int avg_fps = calculate_fps(render_avg);
+			const int max_fps = calculate_fps(*minmax_it.first);
+			const int min_fps = calculate_fps(*minmax_it.second);
 			frames = 0;
 
 			if(fps_handle_ != 0) {
