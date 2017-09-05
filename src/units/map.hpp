@@ -219,9 +219,7 @@ public:
 		 */
 		pointer get_shared_ptr() const
 		{
-			assert(valid());
-			tank_->self_check();
-			return i_->second.unit;
+			return operator->();
 		}
 
 		reference operator*() const
