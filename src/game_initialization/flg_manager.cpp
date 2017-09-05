@@ -377,12 +377,19 @@ void flg_manager::update_choosable_factions()
 		}
 	}
 
-	// Sort alphabetically, but with the 'random' option always first
-	// TODO: some eras like ageless have multiple random options
-	// ('any random faction', 'a random default faction', 'a random non-default faction', etc)
-	// so this code shouldn't assume that there is only one random faction which is on top of the list.
-	std::sort(choosable_factions_.begin() + 1, choosable_factions_.end(), [](const config* c1, const config* c2) {
-		return translation::compare((*c1)["name"].str(), (*c2)["name"].str()) < 0;
+	// Sort alphabetically, but with the random faction options always first.
+	// Since some eras have multiple random options we can't just assume there is
+	// only one random faction on top of the list.
+	std::sort(choosable_factions_.begin(), choosable_factions_.end(), [](const config* c1, const config* c2) {
+		const config& lhs = *c1;
+		const config& rhs = *c2;
+
+		// Random factions always first.
+		if(lhs["random_faction"].to_bool() || rhs["random_faction"].to_bool()) {
+			return false;
+		}
+
+		return translation::compare(lhs["name"].str(), rhs["name"].str()) < 0;
 	});
 }
 
