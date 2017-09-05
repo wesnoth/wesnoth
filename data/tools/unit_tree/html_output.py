@@ -631,9 +631,9 @@ class HTMLOutput:
                     racename = T(u.race, "plural_name")
                 else:
                     racename = "none"
-                runits = races.get(racename, [])
-                runits.append(uid)
-                races[racename] = runits
+                if not racename in races:
+                    races[racename] = []
+                races[racename].append(uid)
 
             racelist = sorted(races.keys())
             for r in racelist:
