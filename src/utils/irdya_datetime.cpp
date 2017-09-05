@@ -21,7 +21,7 @@
 
 irdya_date irdya_date::read_date(const std::string& date)
 {
-	irdya_date date_result();
+	irdya_date date_result;
 
 	// Currently only supports a year and an epoch.
 	size_t year_start = date.find_first_not_of(' ');
