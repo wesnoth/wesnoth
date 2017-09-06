@@ -73,7 +73,7 @@ static toggle_button * setup_pref_toggle_button(const std::string & id, bool def
 		preferences::set(id, def);
 	}
 
-	connect_signal_mouse_left_click(*b, std::bind([&, id]() { preferences::set(id, b->get_value_bool()); }));
+	connect_signal_mouse_left_click(*b, std::bind([b, id]() { preferences::set(id, b->get_value_bool()); }));
 
 	return b;
 }
