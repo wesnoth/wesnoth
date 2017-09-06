@@ -170,8 +170,6 @@ void toggle_button::signal_handler_left_button_click(const event::ui_event event
 
 	set_value(get_value() + 1);
 
-	fire(event::NOTIFY_MODIFIED, *this, nullptr);
-
 	handled = true;
 }
 
