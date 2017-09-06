@@ -73,10 +73,10 @@ bool open_object(const std::string& path_or_url)
 	} else if(child == 0) {
 		execlp(launcher, launcher, path_or_url.c_str(), nullptr);
 		_exit(1); // This shouldn't happen.
-	} else if(waitpid(child, &child_status, 0) == -1) {
-		ERR_DU << "open_object(): waitpid() failed" << std::endl;
-		return false;
 	}
+
+	// Waiting for the child process to exit is unnecessary because we ignore SIGCHLD.
+	// See the manpage for wait(2).
 
 	if(child_status) {
 //Those status check macros seem to trigger old style casts on some compiler versions

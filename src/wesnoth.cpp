@@ -1015,6 +1015,11 @@ int main(int argc, char** argv)
 	sigemptyset(&terminate_handler.sa_mask);
 	sigaction(SIGTERM, &terminate_handler, nullptr);
 	sigaction(SIGINT, &terminate_handler, nullptr);
+
+	// Explicitly ignore SIGCHLD. This allows us to launch child processes without waiting
+	// for them to exit. See the manpage for wait(2).
+	terminate_handler.sa_handler = SIG_IGN;
+	sigaction(SIGCHLD, &terminate_handler, nullptr);
 #endif
 
 	//declare this here so that it will always be at the front of the event queue.
