@@ -43,7 +43,7 @@ campaigns, and share them with others.
 .SH OPTIONS
 .
 .TP
-.BI --bunzip \ infile.gz
+.BI --bunzip \ infile.bz2
 decompresses a file which should be in bzip2 format and stores it
 without the .bz2 suffix. The
 .I infile.bz2
@@ -56,8 +56,9 @@ and removes
 .IR infile .
 .TP
 .BI -c[ id_campaign ],\ --campaign[ =id_campaign ]
-goes directly to the campaign with id <id_campaign>. A selection menu will
-appear if no id was specified.
+goes directly to the campaign with id
+.IR id_campaign .
+A selection menu will appear if no id was specified.
 .TP
 .BI --campaign-difficulty[ =difficulty ]
 The difficulty of the specified campaign (1 to max). If none specified,
@@ -73,11 +74,11 @@ overrides the loaded core with the one whose id is specified.
 overrides the data directory with the one specified
 .TP
 .B --data-path
-print the path of the data directory and exits.
+prints the path of the data directory and exits.
 .TP
 .B -d, --debug
 enables additional command mode options in-game
-(see the wiki page at http://www.wesnoth.org/wiki/CommandMode for more
+(see the wiki page at https://www.wesnoth.org/wiki/CommandMode for more
 information about command mode).
 .TP
 .BI -e[ file ],\ --editor[ =file ]
@@ -153,7 +154,7 @@ if used) and exits
 .BI --max-fps \ fps
 the number of frames per second the game can show, the value should be between
 the 1 and 1000, the default is
-.BR 50 .
+.BR 60 .
 .TP
 .B -m, --multiplayer
 runs a multiplayer game. There are additional options that can be used
@@ -176,7 +177,12 @@ disables loading of user addons.
 disables caching of game data.
 .TP
 .B --nogui
-runs the game without the GUI.
+runs the game without the GUI. Only availaible in combination with
+.B --multiplayer
+or
+.B --screenshot
+or
+.BR --plugin .
 .TP
 .B --nomusic
 runs the game without music.
@@ -189,44 +195,54 @@ don't try to validate replay of unit test. Only relevant when used with
 runs the game without sounds and music.
 .TP
 .BI --password \ password
-uses <password> when connecting to a server, ignoring other preferences. Unsafe.
+uses
+.I password
+when connecting to a server, ignoring other preferences. Unsafe.
 .TP
 .B --path
 prints the name of the game data directory and exits.
 .TP
 .BI -p,\ --preprocess \ source-file/folder \  target-directory
-preprocesses a specified file/folder. For each file(s) a plain .cfg file and a processed
- .cfg file will be written in specified target directory. If a folder is specified, it will
+preprocesses a specified file/folder. For each file(s) a plain .cfg file and a processed .cfg
+file will be written in specified target directory. If a folder is specified, it will
 be preprocessed recursively based on the known preprocessor rules. The common macroses
 from the "data/core/macros" directory will be preprocessed before the specified resources.
 Example:
 .B -p ~/wesnoth/data/campaigns/tutorial ~/result.
 For details regarding the preprocessor visit:
-http://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor
+https://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor
 .TP
 .BI --preprocess-defines= DEFINE1 , DEFINE2 , etc
-comma separated list of defines to be used by the '--preprocess' command. If
+comma separated list of defines to be used by the
+.B --preprocess
+command. If
 .B SKIP_CORE
 is in the define list the "data/core" directory won't be preprocessed.
 .TP
 .BI --preprocess-input-macros \ source-file
-used only by the '--preprocess' command.
+used only by the
+.B --preprocess
+command.
 Specifies a file that contains [preproc_define]s to be included before preprocessing.
 .TP
 .BI --preprocess-output-macros[ =target-file ]
-used only by the '--preprocess' command.
+used only by the
+.B --preprocess
+command.
 Will output all preprocessed macros in the target file. If the file is not specified
 the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.
 The output file can be passed to
 .BR --preprocess-input-macros
-This switch should be typed before the --preprocess command.
+This switch should be typed before the
+.B --preprocess
+command.
 .TP
 .BI -r\  X x Y ,\ --resolution\  X x Y
 sets the screen resolution. Example:
 .B -r 800x600
 .TP
 .BI --render-image \ image \  output
-takes a valid wesnoth 'image path string' with image path functions, and outputs to a windows .bmp file.
+takes a valid wesnoth 'image path string' with image path functions, and outputs to a .png file. Outputs a windows .bmp file if the filename ends with .bmp or if libpng is not availaible. Image path functions are documented at https://wiki.wesnoth.org/ImagePathFunctionWML.
 .TP
 .BI -R,\ --report
 initializes game directories, prints build information suitable for use in bug reports, and exits.
@@ -237,7 +253,11 @@ Example:
 .B --rng-seed 0
 .TP
 .BI --screenshot \ map \  output
-saves a screenshot of <map> to <output> without initializing a screen.
+saves a screenshot of
+.I map
+to
+.I output
+without initializing a screen.
 .TP
 .BI -s[ host ],\ --server[ =host ]
 connects to the specified host if any, otherwise connect to the first server in preferences. Example:
@@ -245,7 +265,7 @@ connects to the specified host if any, otherwise connect to the first server in 
 .TP
 .B --showgui
 runs the game with the GUI, overriding any implicit
-.B --nogui.
+.BR --nogui .
 .TP
 .B --strict-validation
 validation errors are treated as fatal errors.
@@ -253,12 +273,18 @@ validation errors are treated as fatal errors.
 .BI -t[ scenario_id ],\ --test[ =scenario_id ]
 runs the game in a small test scenario. The scenario should be one defined with a
 .B [test]
-WML tag. The default is "test". Implies
-.B --nogui.
+WML tag. The default is
+.BR test .
+A demonstration of the
+.B [micro_ai]
+feature can be started with 
+.BR micro_ai_test .
+Implies
+.BR --nogui .
 .TP
 .BI -u,\ --unit \ scenario-id
 runs the specified test scenario as a unit test. Implies
-.B --nogui.
+.BR --nogui .
 .TP
 .BI --userconfig-dir \ name
 sets the user configuration directory to
@@ -284,7 +310,9 @@ specify a directory relative to the process working directory by using path
 starting with ".\\" or "..\\".
 .TP
 .BI --username \ username
-uses <username> when connecting to a server, ignoring other preferences.
+uses
+.I username
+when connecting to a server, ignoring other preferences.
 .TP
 .B --userdata-path
 prints the path of the userdata directory and exits.
@@ -401,7 +429,7 @@ Edited by Nils Kneuper <crazy-ivanovic@gmx.net>, ott <ott@gaon.net> and Soliton 
 .br
 This manual page was originally written by Cyril Bouthors <cyril@bouthors.org>.
 .br
-Visit the official homepage: http://www.wesnoth.org/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
