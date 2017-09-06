@@ -385,7 +385,11 @@ void flg_manager::update_choosable_factions()
 		const config& rhs = *c2;
 
 		// Random factions always first.
-		if(lhs["random_faction"].to_bool() || rhs["random_faction"].to_bool()) {
+		if(lhs["random_faction"].to_bool() && !rhs["random_faction"].to_bool()) {
+			return true;
+		}
+
+		if(!lhs["random_faction"].to_bool() && rhs["random_faction"].to_bool()) {
 			return false;
 		}
 
