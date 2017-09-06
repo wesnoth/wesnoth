@@ -337,8 +337,7 @@ bool replay::add_chat_message_location(int pos)
 
 void replay::speak(const config& cfg)
 {
-	config& cmd = base_->insert_command(base_->size());
-	cmd["undo"] = false;
+	config& cmd = add_nonundoable_command();
 	cmd.add_child("speak",cfg);
 	add_chat_message_location(base_->size() - 1);
 }
@@ -581,9 +580,13 @@ config& replay::add_command()
 
 config& replay::add_nonundoable_command()
 {
-	config& r = base_->insert_command(base_->get_pos());
+	const bool was_at_end = at_end();
+	config& r = base_->insert_command(base_->size());
 	r["undo"] = false;
-	base_->set_pos(base_->get_pos() + 1);
+	if(was_at_end) {
+		base_->set_pos(base_->get_pos() + 1);
+	}
+	assert(was_at_end == at_end());
 	return r;
 }
 
