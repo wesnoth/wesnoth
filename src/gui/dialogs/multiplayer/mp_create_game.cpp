@@ -119,7 +119,7 @@ mp_create_game::mp_create_game(const config& cfg, ng::create_engine& create_eng)
 
 	create_engine_.init_active_mods();
 
-	create_engine_.get_state() = saved_game();
+	create_engine_.get_state().clear();
 	create_engine_.get_state().classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
 	// Need to set this in the constructor, pre_show() is too late

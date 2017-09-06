@@ -623,7 +623,7 @@ void start_local_game_commandline(CVideo& video, const config& game_config, save
 	DBG_MP << "entering create mode" << std::endl;
 
 	// Set the default parameters
-	state = saved_game(); // This creates these parameters with default values defined in mp_game_settings.cpp
+	state.clear(); // This creates these parameters with default values defined in mp_game_settings.cpp
 	mp_game_settings& parameters = state.mp_settings();
 
 	// Hardcoded default values

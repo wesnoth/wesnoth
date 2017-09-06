@@ -133,7 +133,7 @@ bool mp_join_game::fetch_game_config(CVideo& video)
 	}
 
 	if(first_scenario_) {
-		state_ = saved_game();
+		state_.clear();
 		state_.classification() = game_classification(level_);
 
 		// Make sure that we have the same config as host, if possible.
