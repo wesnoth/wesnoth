@@ -505,17 +505,6 @@ void create_engine::reset_level_filters()
 	level_name_filter_ = "";
 }
 
-std::vector<std::string> create_engine::extras_menu_item_names(const MP_EXTRA extra_type) const
-{
-	std::vector<std::string> names;
-
-	for(extras_metadata_ptr extra : get_const_extras_by_type(extra_type)) {
-		names.push_back(extra->name);
-	}
-
-	return names;
-}
-
 level& create_engine::current_level() const
 {
 	return *type_map_.at(current_level_type_.v).games[current_level_index_];

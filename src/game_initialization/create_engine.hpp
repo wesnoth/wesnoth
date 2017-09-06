@@ -342,9 +342,6 @@ public:
 
 	std::vector<size_t> get_filtered_level_indices(level::TYPE type) const;
 
-	/** DEPRECATED */
-	std::vector<std::string> extras_menu_item_names(const MP_EXTRA extra_type) const;
-
 	level& current_level() const;
 	const extras_metadata& current_extra(const MP_EXTRA extra_type) const;
 
