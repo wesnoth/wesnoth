@@ -68,9 +68,9 @@ manager::manager(const config& gamecfg, bool mp, CVideo& video)
 	DBG_MP << "Initializing the dependency manager" << std::endl;
 
 	for(const config& cfg : gamecfg.child_range("modification")) {
-		component_availabilty type = cfg["type"].to_enum<component_availabilty>(component_availabilty::HYBRID);
+		component_availability type = cfg["type"].to_enum<component_availability>(component_availability::HYBRID);
 
-		if((type != component_availabilty::MP || mp) && (type != component_availabilty::SP || !mp)) {
+		if((type != component_availability::MP || mp) && (type != component_availability::SP || !mp)) {
 			config info;
 			info["id"] = cfg["id"];
 			info["name"] = cfg["name"];
@@ -84,9 +84,9 @@ manager::manager(const config& gamecfg, bool mp, CVideo& video)
 	}
 
 	for(const config& cfg : gamecfg.child_range("era")) {
-		component_availabilty type = cfg["type"].to_enum<component_availabilty>(component_availabilty::MP);
+		component_availability type = cfg["type"].to_enum<component_availability>(component_availability::MP);
 
-		if((type != component_availabilty::MP || mp) && (type != component_availabilty::SP || !mp)) {
+		if((type != component_availability::MP || mp) && (type != component_availability::SP || !mp)) {
 			config info;
 			info["id"] = cfg["id"];
 			info["name"] = cfg["name"];

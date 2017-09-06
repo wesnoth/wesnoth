@@ -35,7 +35,7 @@ enum component_type
 	MODIFICATION
 };
 
-MAKE_ENUM(component_availabilty,
+MAKE_ENUM(component_availability,
 	(SP, "sp")
 	(MP, "mp")
 	(HYBRID, "hybrid")
