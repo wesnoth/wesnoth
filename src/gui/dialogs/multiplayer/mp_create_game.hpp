@@ -113,7 +113,6 @@ private:
 
 	void on_game_select(window& window);
 	void on_tab_select(window& window);
-	void on_mod_select(window& window);
 	void on_era_select(window& window);
 	void on_mod_toggle(const int index);
 	void on_random_faction_mode_select(window& window);

@@ -250,13 +250,9 @@ void mp_create_game::pre_show(window& win)
 		connect_signal_notify_modified(mog_toggle, std::bind(&mp_create_game::on_mod_toggle, this, i));
 	}
 
-	connect_signal_notify_modified(mod_list, std::bind(&mp_create_game::on_mod_select, this, std::ref(win)));
-
 	// No mods, hide the header
 	if(mod_list.get_item_count() <= 0) {
 		find_widget<styled_widget>(&win, "mods_header", false).set_visible(widget::visibility::invisible);
-	} else {
-		on_mod_select(win);
 	}
 
 	//
@@ -477,11 +473,6 @@ void mp_create_game::on_tab_select(window& window)
 	if(i == TAB_SETTINGS) {
 		update_map_settings(window);
 	}
-}
-
-void mp_create_game::on_mod_select(window& window)
-{
-	create_engine_.set_current_mod_index(find_widget<listbox>(&window, "mod_list", false).get_selected_row());
 }
 
 void mp_create_game::on_mod_toggle(const int index)
