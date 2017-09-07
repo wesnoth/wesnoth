@@ -112,8 +112,7 @@ displays a summary of command line options to standard output, and exits.
 .BI -l,\ --load \ file
 loads the savegame
 .I file
-from the standard save game directory.
-If the
+from the standard save game directory. If the
 .B -e
 or
 .B --editor
@@ -153,8 +152,10 @@ if used) and exits
 .TP
 .BI --max-fps \ fps
 the number of frames per second the game can show, the value should be between
-the 1 and 1000, the default is
-.BR 60 .
+.I 1
+and
+.IR 1000 ,
+the default is the monitor's refresh rate.
 .TP
 .B -m, --multiplayer
 runs a multiplayer game. There are additional options that can be used
@@ -166,8 +167,7 @@ as explained below.
 load the test mp scenarios.
 .TP
 .B --no-delay
-runs the game without any delays for graphic benchmarking.
-This is automatically enabled by
+runs the game without any delays for graphic benchmarking. This is automatically enabled by
 .BR --nogui .
 .TP
 .B --noaddons
@@ -222,17 +222,17 @@ is in the define list the "data/core" directory won't be preprocessed.
 .BI --preprocess-input-macros \ source-file
 used only by the
 .B --preprocess
-command.
-Specifies a file that contains [preproc_define]s to be included before preprocessing.
+command. Specifies a file that contains
+.BR [preproc_define] s
+to be included before preprocessing.
 .TP
 .BI --preprocess-output-macros[ =target-file ]
 used only by the
 .B --preprocess
-command.
-Will output all preprocessed macros in the target file. If the file is not specified
-the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.
-The output file can be passed to
-.BR --preprocess-input-macros
+command. Will output all preprocessed macros in the target file. If the file is not specified
+the output will be file '_MACROS_.cfg' in the target directory of preprocess's command. The
+output file can be passed to
+.BR --preprocess-input-macros .
 This switch should be typed before the
 .B --preprocess
 command.
@@ -248,8 +248,7 @@ takes a valid wesnoth 'image path string' with image path functions, and outputs
 initializes game directories, prints build information suitable for use in bug reports, and exits.
 .TP
 .BI --rng-seed \ seed
-seeds the random number generator with number <arg>.
-Example:
+seeds the random number generator with number <arg>. Example:
 .B --rng-seed 0
 .TP
 .BI --screenshot \ map \  output
@@ -404,20 +403,18 @@ sets the number of turns for the chosen scenario. The default is
 .SH EXIT STATUS
 .
 Normal exit status is 0.
-An exit status of 1 indicates an (SDL, video, fonts, etc) initialization error.
-An exit status of 2 indicates an error with the command line options.
+An exit status of 1 indicates an (SDL, video, fonts, etc) initialization error. An
+exit status of 2 indicates an error with the command line options.
 .br
 When running unit tests
 .RB (with \ -u ),
-the exit status is different.
-An exit status of 0 indicates that the test passed,
-and 1 indicates that the test failed.
-An exit status of 3 indicates that the test passed, but produced an invalid replay file.
-An exit status of 4 indicates that the test passed, but the replay produced errors.
-These latter two are only returned if
+the exit status is different. An exit
+status of 0 indicates that the test passed,
+and 1 indicates that the test failed. An exit status of 3 indicates that the test passed, but produced an invalid
+replay file. An exit status of 4 indicates that the test passed, but the replay produced errors. These latter
+two are only returned if
 .B --noreplaycheck
-is not passed.
-An exit status of 2 indicates that the test timed out, when used with the deprecated
+is not passed. An exit status of 2 indicates that the test timed out, when used with the deprecated
 .B --timeout
 option.
 .
