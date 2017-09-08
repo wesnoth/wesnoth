@@ -7,7 +7,10 @@ services:
 compiler:
     - gcc
     - clang
-
+addons:
+  apt:
+    packages:
+    - libsdl2-dev
 env:
     - OPT=-O0 CXXSTD=11 NLS=false
     - OPT=-O2 CXXSTD=11 NLS=false
