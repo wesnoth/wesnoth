@@ -33,7 +33,8 @@
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
-#include "formula/string_utils.hpp"
+#include "formula/string_utils.hpp"  
+#include "units/animation_componant.cpp"
 #include "units/types.hpp"
 #include "units/udisplay.hpp"
 #include "font/standard_colors.hpp"
@@ -433,6 +434,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 		}
 	} else {
 		config cfg;
+		i->anim_comp().clear_haloes () ;
 		i->write(cfg);
 		cfg[name] = value;
 
