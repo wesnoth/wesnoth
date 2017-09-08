@@ -70,7 +70,7 @@ function wesnoth.wml_actions.kill(cfg)
 			end
 			anim:run()
 		end
-		wesnoth.wml_actions.redraw{}
+		-- wesnoth.wml_actions.redraw{}
 
 		if can_fire then
 			wesnoth.fire_event("die", death_loc, killer_loc)
@@ -84,6 +84,8 @@ function wesnoth.wml_actions.kill(cfg)
 		end
 		-- Test that it's valid (and still on the map) first, in case the event erased (or extracted) it.
 		if unit.valid == "map" then unit:erase() end
+
+		wesnoth.wml_actions.redraw{}
 
 		number_killed = number_killed + 1
 	end
