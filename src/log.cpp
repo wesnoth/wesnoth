@@ -27,6 +27,7 @@
 #include <sstream>
 #include <ctime>
 
+#include "global.hpp"
 #include "utils/io.hpp"
 
 namespace {
@@ -195,15 +196,15 @@ std::string get_timespan(const time_t& t) {
 	return sout.str();
 }
 
-static void print_precise_timestamp(std::ostream & out) throw()
+static void print_precise_timestamp(std::ostream & out) NOEXCEPT
 {
-	try{
+	try {
 		facet.put(
 			std::ostreambuf_iterator<char>(out),
 			out,
 			' ',
 			boost::posix_time::microsec_clock::local_time());
-	} catch(...){}
+	} catch(...) {}
 }
 
 std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool do_indent) const
