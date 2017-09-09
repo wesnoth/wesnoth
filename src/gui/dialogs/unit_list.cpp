@@ -68,11 +68,10 @@ static std::string format_level_string(const int level)
 		return lvl;
 	} else if(level == 2) {
 		return "<b>" + lvl + "</b>";
-	} else if(level > 2 ) {
+	} else { // level must be > 2
 		return"<b><span color='#ffffff'>" + lvl + "</span></b>";
 	}
 
-	return lvl;
 }
 
 static std::string format_if_leader(unit_const_ptr u, const std::string str)
