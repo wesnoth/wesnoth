@@ -169,8 +169,6 @@ void menu_button::set_values(const std::vector<::config>& values, int selected)
 	selected_ = selected;
 
 	set_label(values_[selected_]["label"]);
-
-	// fire(event::NOTIFY_MODIFIED, *this, nullptr); TODO: should this fire here?
 }
 
 void menu_button::set_selected(int selected)
