@@ -1699,7 +1699,8 @@ void display::draw_wrap(bool update, bool force)
 
 		frametimes_.push_back(SDL_GetTicks() - last_frame_finished_);
 		fps_counter_++;
-		const std::chrono::seconds current_second = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch());
+		using std::chrono::seconds;
+		const seconds current_second = std::chrono::duration_cast<seconds>(std::chrono::system_clock::now().time_since_epoch());
 		if(current_second != fps_start_){
 			fps_start_ = current_second;
 			fps_actual_ = fps_counter_;
