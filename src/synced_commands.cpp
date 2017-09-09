@@ -434,7 +434,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 		}
 	} else {
 		config cfg;
-		i->anim_comp().clear_haloes () ;
+		i->anim_comp().clear_haloes();
 		i->write(cfg);
 		cfg[name] = value;
 
