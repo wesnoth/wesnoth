@@ -307,7 +307,7 @@ unit_ptr get_amla_unit(const unit &u, const config &mod_option)
 	unit_ptr amla_unit(new unit(u));
 	amla_unit->set_experience(amla_unit->experience_overflow());
 	amla_unit->add_modification("advancement", mod_option);
-	u.anim_comp().clear_haloes() ; 
+	u.anim_comp().clear_haloes();
 	
 	return amla_unit;
 }
