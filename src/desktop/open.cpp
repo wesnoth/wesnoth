@@ -64,7 +64,6 @@ bool open_object(const std::string& path_or_url)
 	const char launcher[] = "open";
 #endif
 
-	int child_status = 0;
 	const pid_t child = fork();
 
 	if(child == -1) {
@@ -77,21 +76,6 @@ bool open_object(const std::string& path_or_url)
 
 	// Waiting for the child process to exit is unnecessary because we ignore SIGCHLD.
 	// See the manpage for wait(2).
-
-	if(child_status) {
-//Those status check macros seem to trigger old style casts on some compiler versions
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wold-style-cast"
-		if(WIFEXITED(child_status)) {
-			ERR_DU << "open_object(): " << launcher << " returned "
-			       << WEXITSTATUS(child_status) << '\n';
-#pragma GCC diagnostic pop
-		} else {
-			ERR_DU << "open_object(): " << launcher << " failed" << std::endl;
-		}
-
-		return false;
-	}
 
 	return true;
 
