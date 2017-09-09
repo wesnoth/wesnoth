@@ -195,13 +195,15 @@ std::string get_timespan(const time_t& t) {
 	return sout.str();
 }
 
-static void print_precise_timestamp(std::ostream & out)
+static void print_precise_timestamp(std::ostream & out) throw()
 {
-	facet.put(
-		std::ostreambuf_iterator<char>(out),
-		out,
-		' ',
-		boost::posix_time::microsec_clock::local_time());
+	try{
+		facet.put(
+			std::ostreambuf_iterator<char>(out),
+			out,
+			' ',
+			boost::posix_time::microsec_clock::local_time());
+	} catch(...){}
 }
 
 std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool do_indent) const
