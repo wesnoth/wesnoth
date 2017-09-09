@@ -2105,7 +2105,7 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 			if (!map().on_board(loc)) {
 				return luaL_argerror(L, 1, "invalid location");
 			}
-			u->anim_comp(). clear_haloes () ;
+			u->anim_comp().clear_haloes();
 		} else if (int side = u.on_recall_list()) {
 			team &t = board().get_team(side);
 			// Should it use underlying ID instead?
