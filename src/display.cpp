@@ -1701,7 +1701,7 @@ void display::draw_wrap(bool update, bool force)
 		fps_counter_++;
 		using std::chrono::seconds;
 		const seconds current_second = std::chrono::duration_cast<seconds>(std::chrono::steady_clock::now().time_since_epoch());
-		if(current_second != fps_start_){
+		if(current_second != fps_start_) {
 			fps_start_ = current_second;
 			fps_actual_ = fps_counter_;
 			fps_counter_ = 0;
