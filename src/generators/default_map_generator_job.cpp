@@ -692,10 +692,6 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 	// Try to find configuration for castles
 	const config& castle_config = cfg.child("castle");
-	if(!castle_config) {
-		LOG_NG << "Could not find castle configuration\n";
-		return std::string();
-	}
 
 	int ticks = SDL_GetTicks();
 
@@ -902,15 +898,6 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	LOG_NG << "Placing castles...\n";
 
 	/*
-	 * Castle configuration tag contains a 'valid_terrain' attribute which is a
-	 * list of terrains that the castle may appear on.
-	 */
-	const t_translation::ter_list list =
-		t_translation::read_list(castle_config["valid_terrain"]);
-
-	const is_valid_terrain terrain_tester(terrain, list);
-
-	/*
 	 * Attempt to place castles at random.
 	 *
 	 * After they are placed, we run a sanity check to make sure no two castles
@@ -922,50 +909,60 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	std::vector<map_location> castles;
 	std::set<map_location> failed_locs;
 
-	for(int player = 0; player != data.nplayers; ++player) {
-		LOG_NG << "placing castle for " << player << "\n";
-		lg::scope_logger inner_scope_logging_object__(lg::general(), "placing castle");
-		const int min_x = data.width/3 + 3;
-		const int min_y = data.height/3 + 3;
-		const int max_x = (data.width/3)*2 - 4;
-		const int max_y = (data.height/3)*2 - 4;
-		int min_distance = castle_config["min_distance"];
+	if(castle_config) {
+		/*
+		 * Castle configuration tag contains a 'valid_terrain' attribute which is a
+		 * list of terrains that the castle may appear on.
+		 */
+		const t_translation::ter_list list = t_translation::read_list(castle_config["valid_terrain"]);
 
-		map_location best_loc;
-		int best_ranking = 0;
-		for(int x = min_x; x != max_x; ++x) {
-			for(int y = min_y; y != max_y; ++y) {
-				const map_location loc(x,y);
-				if(failed_locs.count(loc)) {
-					continue;
-				}
+		const is_valid_terrain terrain_tester(terrain, list);
 
-				const int ranking = rank_castle_location(x, y, terrain_tester, min_x, max_x, min_y, max_y, min_distance, castles, best_ranking);
-				if(ranking <= 0) {
-					failed_locs.insert(loc);
-				}
+		for(int player = 0; player != data.nplayers; ++player) {
+			LOG_NG << "placing castle for " << player << "\n";
+			lg::scope_logger inner_scope_logging_object__(lg::general(), "placing castle");
+			const int min_x = data.width/3 + 3;
+			const int min_y = data.height/3 + 3;
+			const int max_x = (data.width/3)*2 - 4;
+			const int max_y = (data.height/3)*2 - 4;
+			int min_distance = castle_config["min_distance"];
 
-				if(ranking > best_ranking) {
-					best_ranking = ranking;
-					best_loc = loc;
+			map_location best_loc;
+			int best_ranking = 0;
+			for(int x = min_x; x != max_x; ++x) {
+				for(int y = min_y; y != max_y; ++y) {
+					const map_location loc(x,y);
+					if(failed_locs.count(loc)) {
+						continue;
+					}
+
+					const int ranking = rank_castle_location(x, y, terrain_tester, min_x, max_x, min_y, max_y, min_distance, castles, best_ranking);
+					if(ranking <= 0) {
+						failed_locs.insert(loc);
+					}
+
+					if(ranking > best_ranking) {
+						best_ranking = ranking;
+						best_loc = loc;
+					}
 				}
 			}
+
+			if(best_ranking == 0) {
+				ERR_NG << "No castle location found, aborting." << std::endl;
+				const std::string error = _("No valid castle location found. Too many or too few mountain hexes? (please check the 'max hill size' parameter)");
+				throw mapgen_exception(error);
+			}
+
+			assert(std::find(castles.begin(), castles.end(), best_loc) == castles.end());
+			castles.push_back(best_loc);
+
+			// Make sure the location can't get a second castle.
+			failed_locs.insert(best_loc);
 		}
 
-		if(best_ranking == 0) {
-			ERR_NG << "No castle location found, aborting." << std::endl;
-			const std::string error = _("No valid castle location found. Too many or too few mountain hexes? (please check the 'max hill size' parameter)");
-			throw mapgen_exception(error);
-		}
-
-		assert(std::find(castles.begin(), castles.end(), best_loc) == castles.end());
-		castles.push_back(best_loc);
-
-		// Make sure the location can't get a second castle.
-		failed_locs.insert(best_loc);
+		LOG_NG << "Placed castles. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
 	}
-
-	LOG_NG << "Placed castles. " << (SDL_GetTicks() - ticks) << " ticks elapsed" << "\n";
 	LOG_NG << "Placing roads...\n";
 	ticks = SDL_GetTicks();
 
