@@ -45,7 +45,6 @@ menu_button::menu_button(const implementation::builder_menu_button& builder)
 	, values_()
 	, selected_()
 	, keep_open_(false)
-	, droplist_(nullptr)
 {
 	values_.emplace_back(::config {"label", this->get_label()});
 
@@ -135,11 +134,7 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 	dialogs::drop_down_menu droplist(this->get_rectangle(), this->values_, this->selected_, this->get_use_markup(), this->keep_open_,
 		nullptr);
 
-	droplist_ = &droplist;
-
 	if(droplist.show(get_window()->video())) {
-		droplist_ = nullptr;
-
 		const int selected = droplist.selected_item();
 
 		// Safety check. If the user clicks a selection in the dropdown and moves their mouse away too
@@ -157,8 +152,6 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 			}
 		}
 	}
-
-	droplist_ = nullptr;
 
 	handled = true;
 }

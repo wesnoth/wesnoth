@@ -134,8 +134,6 @@ private:
 
 	bool keep_open_;
 
-	dialogs::drop_down_menu* droplist_;
-
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
 	virtual const std::string& get_control_type() const override;
 
