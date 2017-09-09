@@ -166,6 +166,14 @@ void toggle_panel::set_value(const unsigned selected)
 	}
 	state_num_ = selected % num_states();
 	set_is_dirty(true);
+
+	// Check for get_window() is here to prevent the callback from
+	// being called when the initial value is set.
+	if(!get_window()) {
+		return;
+	}
+
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 void toggle_panel::set_retval(const int retval)
@@ -257,8 +265,6 @@ void toggle_panel::signal_handler_left_button_click(const event::ui_event event,
 	sound::play_UI_sound(settings::sound_toggle_panel_click);
 
 	set_value(get_value() + 1);
-
-	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 
 	handled = true;
 }

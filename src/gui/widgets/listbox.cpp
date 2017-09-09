@@ -284,12 +284,12 @@ void listbox::list_item_clicked(widget& caller)
 
 	for(size_t i = 0; i < generator_->get_item_count(); ++i) {
 		if(generator_->item(i).has_widget(caller)) {
-			toggle_button* checkbox = dynamic_cast<toggle_button*>(&caller);
+			selectable_item* selectable = dynamic_cast<selectable_item*>(&caller);
 
-			if(checkbox != nullptr) {
-				generator_->select_item(i, checkbox->get_value_bool());
+			if(selectable != nullptr) {
+				generator_->select_item(i, selectable->get_value_bool());
 			} else {
-				generator_->toggle_item(i);
+				// TODO: only selectable items are allowed right now. Should we error here?
 			}
 
 			fire(event::NOTIFY_MODIFIED, *this, nullptr);

@@ -104,8 +104,6 @@ void scrollbar_base::scroll(const scroll_mode scroll)
 		default:
 			assert(false);
 	}
-
-	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 void scrollbar_base::place(const point& origin, const point& size)
@@ -153,6 +151,8 @@ void scrollbar_base::set_item_position(const unsigned item_position)
 	update_canvas();
 
 	assert(item_position_ <= item_count_ - visible_items_);
+
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 void scrollbar_base::update_canvas()
@@ -399,11 +399,9 @@ void scrollbar_base::signal_handler_left_button_down(const event::ui_event event
 
 	if(bar == -1) {
 		scroll(HALF_JUMP_BACKWARDS);
-		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 		// positioner_moved_notifier_.notify();
 	} else if(bar == 1) {
 		scroll(HALF_JUMP_FORWARD);
-		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 		// positioner_moved_notifier_.notify();
 	} else {
 		assert(bar == 0);

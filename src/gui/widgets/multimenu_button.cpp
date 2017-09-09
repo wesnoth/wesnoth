@@ -241,6 +241,8 @@ void multimenu_button::set_values(const std::vector<::config>& values)
 	toggle_states_.reset();
 
 	set_label(_("multimenu^None Selected"));
+
+	// fire(event::NOTIFY_MODIFIED, *this, nullptr); TODO: should this fire here?
 }
 
 // }---------- DEFINITION ---------{

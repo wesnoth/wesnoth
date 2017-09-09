@@ -142,17 +142,13 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 
 		const int selected = droplist.selected_item();
 
-		// Saftey check. If the user clicks a selection in the dropdown and moves their mouse away too
+		// Safety check. If the user clicks a selection in the dropdown and moves their mouse away too
 		// quickly, selected_ could be set to -1. This returns in that case, preventing crashes.
 		if(selected < 0) {
 			return;
 		}
 
-		selected_ = selected;
-
-		this->set_label(values_[selected_]["label"]);
-
-		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+		set_selected(selected);
 
 		if(retval_ != 0) {
 			if(window* window = get_window()) {
@@ -180,6 +176,8 @@ void menu_button::set_values(const std::vector<::config>& values, int selected)
 	selected_ = selected;
 
 	set_label(values_[selected_]["label"]);
+
+	// fire(event::NOTIFY_MODIFIED, *this, nullptr); TODO: should this fire here?
 }
 
 void menu_button::set_selected(int selected)
@@ -194,6 +192,8 @@ void menu_button::set_selected(int selected)
 	selected_ = selected;
 
 	set_label(values_[selected_]["label"]);
+
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 // }---------- DEFINITION ---------{
