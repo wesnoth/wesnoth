@@ -340,11 +340,13 @@ void addon_list::select_addon(const std::string& id)
 {
 	listbox& list = get_listbox();
 
-	const addon_info& info = **std::find_if(addon_vector_.begin(), addon_vector_.end(),
+	auto iter = std::find_if(addon_vector_.begin(), addon_vector_.end(),
 		[&id](const addon_info* a)
 	{
 		return a->id == id;
 	});
+	assert(iter != addon_vector_.end());
+	const addon_info& info = **iter;
 
 	for(unsigned int i = 0u; i < list.get_item_count(); ++i)
 	{
