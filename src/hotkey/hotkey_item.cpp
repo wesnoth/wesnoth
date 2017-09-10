@@ -142,12 +142,12 @@ void hotkey_base::save(config& item) const
 hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event)
 {
 	hotkey_ptr base = hotkey_ptr(new hotkey_void);
+	const hotkey_command& command = get_hotkey_command(id);
 	unsigned mods = sdl_get_mods();
 
 	switch (event.type) {
-	case SDL_KEYDOWN:
 	case SDL_KEYUP: {
-		if (mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI || CKey::is_uncomposable(event.key)) {
+		if (mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI || CKey::is_uncomposable(event.key) || command.toggle) {
 			hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
 			base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 			SDL_Keycode code;
@@ -158,6 +158,9 @@ hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event)
 	}
 		break;
 	case SDL_TEXTINPUT: {
+		if(command.toggle) {
+			return nullptr;
+		}
 		hotkey_keyboard_ptr keyboard(new hotkey_keyboard());
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 		std::string text =  std::string(event.text.text);
@@ -167,7 +170,6 @@ hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event)
 		}
 	}
 		break;
-	case SDL_MOUSEBUTTONDOWN:
 	case SDL_MOUSEBUTTONUP: {
 		hotkey_mouse_ptr mouse(new hotkey_mouse());
 		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
@@ -289,14 +291,15 @@ const std::string hotkey_keyboard::get_name_helper() const
 bool hotkey_keyboard::matches_helper(const SDL_Event &event) const
 {
 	unsigned int mods = sdl_get_mods();
+	const hotkey_command& command = get_hotkey_command(get_command());
 
 	if ((event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) &&
 				(mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI ||
-			  CKey::is_uncomposable(event.key))) {
+			  CKey::is_uncomposable(event.key)) || command.toggle) {
 		return event.key.keysym.sym == keycode_ && mods == mod_;
 	}
 
-	if (event.type == SDL_TEXTINPUT) {
+	if (event.type == SDL_TEXTINPUT && !command.toggle) {
 		std::string text = std::string(event.text.text);
 		boost::algorithm::to_lower(text);
 		if(text == ":" || text == "`") {
@@ -488,8 +491,7 @@ bool is_hotkeyable_event(const SDL_Event &event) {
 	if (mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI) {
 		return event.type == SDL_KEYUP;
 	} else {
-		return event.type == SDL_TEXTINPUT ||
-				(event.type  == SDL_KEYUP && CKey::is_uncomposable(event.key));
+		return event.type == SDL_TEXTINPUT || event.type  == SDL_KEYUP;
 	}
 }
 
