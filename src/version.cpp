@@ -227,7 +227,7 @@ namespace {
 				result = recursive_order_operation<std::greater<unsigned int>, std::equal_to<unsigned int> >(lcc, rcc, 0);
 				break;
 			default:
-				assert(0 == 1);
+				assert(false);
 				break;
 		}
 		return result;

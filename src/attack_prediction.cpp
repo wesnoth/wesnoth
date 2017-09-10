@@ -2349,13 +2349,13 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	for(unsigned int i = 0; i < summary[0].size(); ++i) {
 		if(std::fabs(summary[0][i] - res[i]) > 0.000001) {
 			std::cerr << "Mismatch for " << i << " hp: " << summary[0][i] << " should have been " << res[i] << "\n";
-			assert(0);
+			assert(false);
 		}
 	}
 	for(unsigned int i = 0; i < opponent.summary[0].size(); ++i) {
 		if(std::fabs(opponent.summary[0][i] - opp_res[i]) > 0.000001) {
 			std::cerr << "Mismatch for " << i << " hp: " << opponent.summary[0][i] << " should have been " << opp_res[i] << "\n";
-			assert(0);
+			assert(false);
 		}
 	}
 #endif
