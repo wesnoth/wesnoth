@@ -211,8 +211,6 @@ typedef std::bitset<SCOPE_COUNT> hk_scopes;
 /// this is currently a semi struct: it haves a constructor, but only const-public members.
 struct hotkey_command {
 public:
-	/// the compiler want me to make a default constructor
-	/// since most member are const, calling the default constructor is normally no use.
 	hotkey_command() = delete;
 	hotkey_command(HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, bool toggle, hk_scopes scope, HOTKEY_CATEGORY category, const t_string& tooltip);
 	/// the names are strange: the "hotkey::HOTKEY_COMMAND" is named id, and the string to identify the object is called "command"

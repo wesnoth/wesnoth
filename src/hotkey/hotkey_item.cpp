@@ -295,7 +295,7 @@ bool hotkey_keyboard::matches_helper(const SDL_Event &event) const
 
 	if ((event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) &&
 				(mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI ||
-			  CKey::is_uncomposable(event.key)) || command.toggle) {
+			  command.toggle || CKey::is_uncomposable(event.key))) {
 		return event.key.keysym.sym == keycode_ && mods == mod_;
 	}
 
