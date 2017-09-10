@@ -18,6 +18,7 @@
 #include "log.hpp"
 #include "quit_confirmation.hpp"
 #include "video.hpp"
+#include "sdl/userevent.hpp"
 
 #if defined _WIN32
 #include "desktop/windows_tray_notification.hpp"
@@ -548,12 +549,7 @@ void pump()
 						&& std::abs(event.button.x - last_click_x) < DoubleClickMaxMove
 						&& std::abs(event.button.y - last_click_y) < DoubleClickMaxMove
 				) {
-					SDL_UserEvent user_event;
-					user_event.type = DOUBLE_CLICK_EVENT;
-					user_event.code = 0;
-					user_event.data1 = reinterpret_cast<void*>(event.button.x);
-					user_event.data2 = reinterpret_cast<void*>(event.button.y);
-					user_event.timestamp = std::time(nullptr);
+					sdl::UserEvent user_event(DOUBLE_CLICK_EVENT, event.button.x, event.button.y);
 					::SDL_PushEvent(reinterpret_cast<SDL_Event*>(&user_event));
 				}
 
@@ -755,13 +751,7 @@ void call_in_main_thread(const std::function<void(void)>& f)
 	invoked_function_data fdata{false, f};
 
 	SDL_Event sdl_event;
-	SDL_UserEvent sdl_userevent;
-
-	sdl_userevent.type = INVOKE_FUNCTION_EVENT;
-	sdl_userevent.code = 0;
-	sdl_userevent.data1 = &fdata;
-	sdl_userevent.data2 = nullptr;
-	sdl_userevent.timestamp = std::time(nullptr);
+	sdl::UserEvent sdl_userevent(INVOKE_FUNCTION_EVENT, &fdata);
 
 	sdl_event.type = INVOKE_FUNCTION_EVENT;
 	sdl_event.user = sdl_userevent;

@@ -61,6 +61,7 @@
 #include "formula/variant.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
+#include "sdl/userevent.hpp"
 
 #include "utils/functional.hpp"
 
@@ -136,13 +137,7 @@ static Uint32 draw_timer(Uint32, void*)
 	//	DBG_GUI_E << "Pushing draw event in queue.\n";
 
 	SDL_Event event;
-	SDL_UserEvent data;
-
-	data.type = DRAW_EVENT;
-	data.code = 0;
-	data.data1 = nullptr;
-	data.data2 = nullptr;
-	data.timestamp = std::time(nullptr);
+	sdl::UserEvent data(DRAW_EVENT);
 
 	event.type = DRAW_EVENT;
 	event.user = data;
@@ -189,13 +184,7 @@ static bool helptip()
 	DBG_GUI_E << "Pushing SHOW_HELPTIP_EVENT event in queue.\n";
 
 	SDL_Event event;
-	SDL_UserEvent data;
-
-	data.type = SHOW_HELPTIP_EVENT;
-	data.code = 0;
-	data.data1 = nullptr;
-	data.data2 = nullptr;
-	data.timestamp = std::time(nullptr);
+	sdl::UserEvent data(SHOW_HELPTIP_EVENT);
 
 	event.type = SHOW_HELPTIP_EVENT;
 	event.user = data;
@@ -600,13 +589,7 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 		draw();
 
 		SDL_Event event;
-		SDL_UserEvent data;
-
-		data.type = CLOSE_WINDOW_EVENT;
-		data.code = manager::instance().get_id(*this);
-		data.data1 = nullptr;
-		data.data2 = nullptr;
-		data.timestamp = std::time(nullptr);
+		sdl::UserEvent data(CLOSE_WINDOW_EVENT, manager::instance().get_id(*this));
 
 		event.type = CLOSE_WINDOW_EVENT;
 		event.user = data;

@@ -25,6 +25,7 @@
 #include "hotkey/hotkey_item.hpp"
 #include "video.hpp"
 #include "serialization/unicode_cast.hpp"
+#include "sdl/userevent.hpp"
 
 #include <cassert>
 
@@ -79,13 +80,7 @@ static Uint32 timer_sdl_draw_event(Uint32, void*)
 	// DBG_GUI_E << "Pushing draw event in queue.\n";
 
 	SDL_Event event;
-	SDL_UserEvent data;
-
-	data.type = DRAW_EVENT;
-	data.code = 0;
-	data.data1 = nullptr;
-	data.data2 = nullptr;
-	data.timestampt = std::time(nullptr);
+	sdl::UserEvent data(DRAW_EVENT);
 
 	event.type = DRAW_EVENT;
 	event.user = data;
