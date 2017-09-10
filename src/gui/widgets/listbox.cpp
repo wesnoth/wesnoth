@@ -284,9 +284,21 @@ void listbox::list_item_clicked(widget& caller)
 
 	for(size_t i = 0; i < generator_->get_item_count(); ++i) {
 		if(generator_->item(i).has_widget(caller)) {
+			toggle_button* checkbox = dynamic_cast<toggle_button*>(&caller);
+
+			if(checkbox != nullptr) {
+				generator_->select_item(i, checkbox->get_value_bool());
+			} else {
+				generator_->toggle_item(i);
+			}
+
+			// TODO: enable this code once toggle_panel::set_value dispatches
+			// NOTIFY_MODIFED events. See comment in said function for more details.
+#if 0
 			selectable_item& selectable = dynamic_cast<selectable_item&>(caller);
 
 			generator_->select_item(i, selectable.get_value_bool());
+#endif
 
 			fire(event::NOTIFY_MODIFIED, *this, nullptr);
 			return;
