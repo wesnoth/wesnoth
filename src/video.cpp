@@ -20,6 +20,7 @@
 #include "log.hpp"
 #include "preferences/general.hpp"
 #include "sdl/window.hpp"
+#include "sdl/userevent.hpp"
 
 #include <cassert>
 #include <vector>
@@ -66,13 +67,7 @@ void trigger_full_redraw() {
 	}
 
 	SDL_Event drawEvent;
-	SDL_UserEvent data;
-
-	data.type = DRAW_ALL_EVENT;
-	data.code = 0;
-	data.data1 = nullptr;
-	data.data2 = nullptr;
-	data.timestamp = std::time(nullptr);
+	sdl::UserEvent data(DRAW_ALL_EVENT);
 
 	drawEvent.type = DRAW_ALL_EVENT;
 	drawEvent.user = data;
@@ -153,13 +148,7 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event &event)
 				//if(display::get_singleton())
 					//display::get_singleton()->redraw_everything();
 				SDL_Event drawEvent;
-				SDL_UserEvent data;
-
-				data.type = DRAW_ALL_EVENT;
-				data.code = 0;
-				data.data1 = nullptr;
-				data.data2 = nullptr;
-				data.timestamp = std::time(nullptr);
+				sdl::UserEvent data(DRAW_ALL_EVENT);
 
 				drawEvent.type = DRAW_ALL_EVENT;
 				drawEvent.user = data;

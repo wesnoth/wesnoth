@@ -23,6 +23,7 @@
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/text_box_base.hpp"
+#include "sdl/userevent.hpp"
 
 #include "utils/functional.hpp"
 
@@ -60,13 +61,7 @@ static Uint32 popup_callback(Uint32 /*interval*/, void* /*param*/)
 	DBG_GUI_E << "Pushing popup removal event in queue.\n";
 
 	SDL_Event event;
-	SDL_UserEvent data;
-
-	data.type = HOVER_REMOVE_POPUP_EVENT;
-	data.code = 0;
-	data.data1 = 0;
-	data.data2 = 0;
-	data.timestamp = std::time(nullptr);
+	sdl::UserEvent data(HOVER_REMOVE_POPUP_EVENT);
 
 	event.type = HOVER_REMOVE_POPUP_EVENT;
 	event.user = data;
