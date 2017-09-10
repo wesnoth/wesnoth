@@ -180,7 +180,7 @@ void toggle_panel::set_value(const unsigned selected)
 	 * A bunch of refactoring in the generator will be needed before this can be enabled,
 	 * though.
 	 *
-	 * -- vultraz, 2019-09-11
+	 * -- vultraz, 2017-09-11
 	 */
 
 	// Check for get_window() is here to prevent the callback from
