@@ -17,8 +17,8 @@
 
 #include "display.hpp"
 #include "events.hpp"
+#include "preferences/game.hpp"
 #include "hotkey/command_executor.hpp"
-#include "hotkey/hotkey_command.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "mouse_handler_base.hpp"
@@ -26,8 +26,12 @@
 #include "scripting/plugins/context.hpp"
 #include "show_dialog.hpp" //gui::in_dialog
 #include "soundsource.hpp"
+#include "gui/core/timer.hpp"
+
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
+
+static const int long_touch_duration_ms = 800;
 
 controller_base::controller_base(const config& game_config)
 	: game_config_(game_config)
@@ -38,11 +42,48 @@ controller_base::controller_base(const config& game_config)
 	, scroll_left_(false)
 	, scroll_right_(false)
 	, joystick_manager_()
+	, last_mouse_is_touch_(false)
+	, long_touch_timer_(0)
 {
 }
 
 controller_base::~controller_base()
 {
+	if(long_touch_timer_ != 0) {
+		gui2::remove_timer(long_touch_timer_);
+		long_touch_timer_ = 0;
+	}
+}
+
+void controller_base::long_touch_callback(int x, int y)
+{
+	if(long_touch_timer_ != 0 && !get_mouse_handler_base().dragging_started()) {
+		int x_now;
+		int y_now;
+		uint32_t mouse_state = SDL_GetMouseState(&x_now, &y_now);
+
+#ifdef MOUSE_TOUCH_EMULATION
+		if(mouse_state & SDL_BUTTON(SDL_BUTTON_RIGHT)) {
+			// Monkey-patch touch controls again to make them look like left button.
+			mouse_state = SDL_BUTTON(SDL_BUTTON_LEFT);
+		}
+#endif
+
+		// Workaround for double-menu b/c of slow events processing, or I don't know.
+		int dx = x - x_now;
+		int dy = y - y_now;
+		int threshold = get_mouse_handler_base().drag_threshold();
+		bool yes_actually_dragging = dx * dx + dy * dy >= threshold * threshold;
+
+		if(!yes_actually_dragging && (mouse_state & SDL_BUTTON(SDL_BUTTON_LEFT)) != 0) {
+			const theme::menu* const m = get_mouse_handler_base().gui().get_theme().context_menu();
+			if(m != nullptr) {
+				show_menu(get_display().get_theme().context_menu()->items(), x_now, y_now, true, get_display());
+			}
+		}
+	}
+
+	long_touch_timer_ = 0;
 }
 
 void controller_base::handle_event(const SDL_Event& event)
@@ -55,6 +96,8 @@ void controller_base::handle_event(const SDL_Event& event)
 			= hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_QUIT_GAME);
 
 	events::mouse_handler_base& mh_base = get_mouse_handler_base();
+
+	SDL_Event new_event;
 
 	switch(event.type) {
 	case SDL_TEXTINPUT:
@@ -96,34 +139,64 @@ void controller_base::handle_event(const SDL_Event& event)
 		break;
 
 	case SDL_JOYBUTTONDOWN:
-		process_keydown_event(event);
 		hotkey::jbutton_event(event, get_hotkey_command_executor());
 		break;
 
 	case SDL_JOYHATMOTION:
-		process_keydown_event(event);
 		hotkey::jhat_event(event, get_hotkey_command_executor());
 		break;
 
 	case SDL_MOUSEMOTION:
 		// Ignore old mouse motion events in the event queue
-		SDL_Event new_event;
 		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
 			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
 			};
-			mh_base.mouse_motion_event(new_event.motion, is_browsing());
+			if(new_event.motion.which != SDL_TOUCH_MOUSEID) {
+				mh_base.mouse_motion_event(new_event.motion, is_browsing());
+			}
 		} else {
-			mh_base.mouse_motion_event(event.motion, is_browsing());
+			if(new_event.motion.which != SDL_TOUCH_MOUSEID) {
+				mh_base.mouse_motion_event(event.motion, is_browsing());
+			}
+		}
+		break;
+
+	case SDL_FINGERMOTION:
+		// TODO: Support finger specifically, like in panning the map. For now, SDL's "shadow mouse" events will do.
+		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_FINGERMOTION, SDL_FINGERMOTION) > 0) {
+			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_FINGERMOTION, SDL_FINGERMOTION) > 0) {
+			};
+			mh_base.touch_motion_event(new_event.tfinger, is_browsing());
+		} else {
+			mh_base.touch_motion_event(event.tfinger, is_browsing());
 		}
 		break;
 
 	case SDL_MOUSEBUTTONDOWN:
-		process_keydown_event(event);
+		if(long_touch_timer_ == 0) {
+			long_touch_timer_ = gui2::add_timer(
+					long_touch_duration_ms,
+					std::bind(&controller_base::long_touch_callback, this, event.button.x, event.button.y));
+		}
+
+		last_mouse_is_touch_ = event.button.which == SDL_TOUCH_MOUSEID;
+
 		mh_base.mouse_press(event.button, is_browsing());
 		hotkey::mbutton_event(event, get_hotkey_command_executor());
 		break;
 
+	case SDL_FINGERDOWN:
+		// handled by mouse case
+		break;
+
 	case SDL_MOUSEBUTTONUP:
+		if(long_touch_timer_ != 0) {
+			gui2::remove_timer(long_touch_timer_);
+			long_touch_timer_ = 0;
+		}
+
+		last_mouse_is_touch_ = event.button.which == SDL_TOUCH_MOUSEID;
+
 		mh_base.mouse_press(event.button, is_browsing());
 		if(mh_base.get_show_menu()) {
 			show_menu(get_display().get_theme().context_menu()->items(), event.button.x, event.button.y, true,
@@ -131,10 +204,19 @@ void controller_base::handle_event(const SDL_Event& event)
 		}
 		break;
 
+	case SDL_FINGERUP:
+		// handled by mouse case
+		break;
+
 	case SDL_MOUSEWHEEL:
 		mh_base.mouse_wheel(-event.wheel.x, event.wheel.y, is_browsing());
 		break;
 
+	case TIMER_EVENT:
+		gui2::execute_timer(reinterpret_cast<size_t>(event.user.data1));
+		break;
+	// TODO: Support finger specifically, like pan the map. For now, SDL's "shadow mouse" events will do.
+	case SDL_MULTIGESTURE:
 	default:
 		break;
 	}
@@ -172,8 +254,9 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, dou
 	dx -= scroll_left_  * scroll_speed;
 	dx += scroll_right_ * scroll_speed;
 
-	// Scroll if mouse is placed near the edge of the screen
-	if(mouse_in_window) {
+	// TODO: DO edge-scroll when dragging a unit. Wow, that will require more coupling.
+	// scroll if mouse is placed near the edge of the screen
+	if(mouse_in_window && !last_mouse_is_touch_) {
 		if(mousey < scroll_threshold) {
 			dy -= scroll_speed;
 		}

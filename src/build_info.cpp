@@ -31,8 +31,10 @@
 
 #include <boost/version.hpp>
 
+#ifndef __IPHONEOS__
 #include <openssl/crypto.h>
 #include <openssl/opensslv.h>
+#endif
 
 #include <pango/pangocairo.h>
 
@@ -241,10 +243,12 @@ version_table_manager::version_table_manager()
 	// OpenSSL/libcrypto
 	//
 
+#ifndef __IPHONEOS__
 	compiled[LIB_CRYPTO] = format_openssl_version(OPENSSL_VERSION_NUMBER);
 	linked[LIB_CRYPTO] = format_openssl_version(SSLeay());
 	names[LIB_CRYPTO] = "OpenSSL/libcrypto";
-
+#endif
+	
 	//
 	// Cairo
 	//

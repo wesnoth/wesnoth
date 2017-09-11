@@ -82,14 +82,28 @@ typedef std::function<void(widget& dispatcher,
 /**
  * Callback function signature.
  *
- * This function is used for the callbacks in set_event_touch.
+ * This function is used for the callbacks in set_event_touch_motion.
  */
 typedef std::function<void(widget& dispatcher,
 							 const ui_event event,
 							 bool& handled,
 							 bool& halt,
 							 const point& pos,
-							 const point& distance)> signal_touch_function;
+							 const point& distance)> signal_touch_motion_function;
+
+/**
+ * Callback function signature.
+ *
+ * This function is used for the callbacks in set_event_touch_gesture.
+ */
+typedef std::function<void(dispatcher& dispatcher,
+							 const ui_event event,
+							 bool& handled,
+							 bool& halt,
+						     const point& center,
+						     float dTheta,
+						     float dDist,
+						     Uint8 numFingers)> signal_touch_gesture_function;
 
 /**
  * Callback function signature.
@@ -229,7 +243,7 @@ public:
 			  const utf8::string& unicode);
 
 	/**
-	 * Fires an event which takes touch parameters.
+	 * Fires an event which takes touch-motion parameters.
 	 *
 	 * @param event                  The event to fire.
 	 * @param target                 The widget that should receive the event.
@@ -240,6 +254,23 @@ public:
 			  widget& target,
 			  const point& pos,
 			  const point& distance);
+	
+	
+	/**
+	 * Fires an event which takes touch-gesture parameters.
+	 *
+	 * @param event                  The event to fire.
+	 * @param target                 The widget that should receive the event.
+	 * @param pos                    The location touched.
+	 * @param distance               The distance moved.
+	 */
+	bool fire(const ui_event event,
+			  widget& target,
+			  const point& center,
+			  float dTheta,
+			  float dDist,
+			  Uint8 numFingers);
+	
 
 	/**
 	 * Fires an event which takes notification parameters.
@@ -451,18 +482,18 @@ public:
 	}
 
 	/**
-	 * Connect a signal for callback in set_event_touch.
+	 * Connect a signal for callback in set_event_touch_motion.
 	 *
 	 * @tparam E                     The event the callback needs to react to.
 	 * @param signal                 The callback function.
 	 * @param position               The position to place the callback.
 	 */
 	template <ui_event E>
-	utils::enable_if_t<has_key<set_event_touch, E>::value>
-	connect_signal(const signal_touch_function& signal,
+	utils::enable_if_t<has_key<set_event_touch_motion, E>::value>
+	connect_signal(const signal_touch_motion_function& signal,
 				   const queue_position position = back_child)
 	{
-		signal_touch_queue_.connect_signal(E, position, signal);
+		signal_touch_motion_queue_.connect_signal(E, position, signal);
 	}
 
 	/**
@@ -476,11 +507,44 @@ public:
 	 *                               was added in front or back.)
 	 */
 	template <ui_event E>
-	utils::enable_if_t<has_key<set_event_touch, E>::value>
-	disconnect_signal(const signal_touch_function& signal,
+	utils::enable_if_t<has_key<set_event_touch_motion, E>::value>
+	disconnect_signal(const signal_touch_motion_function& signal,
 					  const queue_position position = back_child)
 	{
-		signal_touch_queue_.disconnect_signal(E, position, signal);
+		signal_touch_motion_queue_.disconnect_signal(E, position, signal);
+	}
+
+	/**
+	 * Connect a signal for callback in set_event_touch_gesture.
+	 *
+	 * @tparam E                     The event the callback needs to react to.
+	 * @param signal                 The callback function.
+	 * @param position               The position to place the callback.
+	 */
+	template <ui_event E>
+	utils::enable_if_t<has_key<set_event_touch_gesture, E>::value>
+	connect_signal(const signal_touch_gesture_function& signal,
+				   const queue_position position = back_child)
+	{
+		signal_touch_gesture_queue_.connect_signal(E, position, signal);
+	}
+
+	/**
+	 * Disconnect a signal for callback in set_event_touch.
+	 *
+	 * @tparam E                     The event the callback was used for.
+	 * @param signal                 The callback function.
+	 * @param position               The place where the function was added.
+	 *                               Needed remove the event from the right
+	 *                               place. (The function doesn't care whether
+	 *                               was added in front or back.)
+	 */
+	template <ui_event E>
+	utils::enable_if_t<has_key<set_event_touch_gesture, E>::value>
+	disconnect_signal(const signal_touch_gesture_function& signal,
+					  const queue_position position = back_child)
+	{
+		signal_touch_gesture_queue_.disconnect_signal(E, position, signal);
 	}
 
 	/**
@@ -827,7 +891,10 @@ private:
 	signal_queue<signal_keyboard_function> signal_keyboard_queue_;
 
 	/** Signal queue for callbacks in set_event_touch. */
-	signal_queue<signal_touch_function> signal_touch_queue_;
+	signal_queue<signal_touch_motion_function> signal_touch_motion_queue_;
+
+	/** Signal queue for callbacks in set_event_touch. */
+	signal_queue<signal_touch_gesture_function> signal_touch_gesture_queue_;
 
 	/** Signal queue for callbacks in set_event_notification. */
 	signal_queue<signal_notification_function> signal_notification_queue_;

@@ -123,6 +123,11 @@ void play_controller::hotkey_handler::select_and_action() {
 	mouse_handler_.select_or_action(browse());
 }
 
+void play_controller::hotkey_handler::touch_hex() {
+	auto touched_hex = gui()->mouseover_hex();
+	mouse_handler_.touch_action(touched_hex, false);
+}
+
 void play_controller::hotkey_handler::move_action(){
 	mouse_handler_.move_action(browse());
 }
@@ -308,6 +313,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 	case hotkey::HOTKEY_DESELECT_HEX:
 	case hotkey::HOTKEY_MOVE_ACTION:
 	case hotkey::HOTKEY_SELECT_AND_ACTION:
+	case hotkey::HOTKEY_TOUCH_HEX:
 	case hotkey::HOTKEY_MINIMAP_CODING_TERRAIN:
 	case hotkey::HOTKEY_MINIMAP_CODING_UNIT:
 	case hotkey::HOTKEY_MINIMAP_DRAW_UNITS:

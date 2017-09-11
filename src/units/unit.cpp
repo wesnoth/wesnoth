@@ -1230,6 +1230,11 @@ void unit::end_turn()
 	}
 
 	set_state(STATE_NOT_MOVED,false);
+
+	// Without this, on the other player's turn, the unit will be seen by enemies/observers
+	// as having extra movement range (total_movement() + movement_).
+	movement_ = 0;
+
 	// Clear interrupted move
 	set_interrupted_move(map_location());
 }

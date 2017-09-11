@@ -15,11 +15,17 @@
 #ifdef __APPLE__
 
 #include "desktop/apple_notification.hpp"
+#include "TargetConditionals.h"
 
 #import <Foundation/Foundation.h>
 
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+#define HAVE_IOS_NOTIFICATION
+#else
 #if (defined MAC_OS_X_VERSION_10_8) && (MAC_OS_X_VERSION_10_8 <= MAC_OS_X_VERSION_MAX_ALLOWED)
 #define HAVE_NS_USER_NOTIFICATION
+#endif
 #endif
 
 #ifdef HAVE_GROWL
@@ -53,6 +59,9 @@ void send_cocoa_notification(const std::string& owner, const std::string& messag
 #ifdef HAVE_GROWL
 void send_growl_notification(const std::string& owner, const std::string& message, const desktop::notifications::type note_type);
 #endif
+#ifdef HAVE_IOS_NOTIFICATION
+	void send_ios_notification(const std::string& owner, const std::string& message, const desktop::notifications::type note_type);
+#endif
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -76,10 +85,15 @@ void send_notification(const std::string& owner, const std::string& message, con
         send_growl_notification(owner, message, note_type);
     }
 #endif
+#ifdef HAVE_IOS_NOTIFICATION
+	@autoreleasepool {
+		send_ios_notification(owner, message, note_type);
+	}
+#endif
 }
 #endif //end else HAVE_NS_USER_NOTIFICATION
 #pragma clang diagnostic pop
-  
+
 #ifdef HAVE_NS_USER_NOTIFICATION
 void send_cocoa_notification(const std::string& owner, const std::string& message) {
     NSString *title = [NSString stringWithCString:owner.c_str() encoding:NSUTF8StringEncoding];
@@ -124,6 +138,37 @@ void send_growl_notification(const std::string& owner, const std::string& messag
                                clickContext:nil];
 }
 #endif //end HAVE_GROWL
+
+#ifdef HAVE_IOS_NOTIFICATION
+	void send_ios_notification(const std::string& owner, const std::string& message, const desktop::notifications::type note_type)
+	{
+		// TODO: rewrite, add IOS version-specific ifdefs.
+		NSString *notificationName = @"";
+		switch (note_type) {
+			case desktop::notifications::CHAT:
+				notificationName = @"Chat Message";
+				break;
+			case desktop::notifications::TURN_CHANGED:
+				notificationName = @"Turn Changed";
+				break;
+			case desktop::notifications::OTHER:
+				notificationName = @"Wesnoth";
+				break;
+		}
+		NSString *title = [NSString stringWithCString:owner.c_str() encoding:NSUTF8StringEncoding];
+		NSString *description = [NSString stringWithCString:message.c_str() encoding:NSUTF8StringEncoding];
+
+		UILocalNotification *notification = [[UILocalNotification alloc]init];
+		notification.repeatInterval = NSDayCalendarUnit;
+		// 8.2+
+		[notification setAlertTitle: title];
+		[notification setAlertBody: description];
+		[notification setFireDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+		[notification setTimeZone:[NSTimeZone  defaultTimeZone]];
+		[[UIApplication sharedApplication] scheduleLocalNotification:notification];
+
+	}
+#endif
 
 }
 #endif //end __APPLE__
