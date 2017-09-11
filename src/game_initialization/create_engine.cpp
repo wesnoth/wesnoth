@@ -340,7 +340,7 @@ void create_engine::init_generated_level_data()
 			// Set the scenario to have placing of sides
 			// based on the terrain they prefer
 			if(!data.has_attribute("modify_placing")) {
-				data["modify_placing"] = "true";
+				data["modify_placing"] = true;
 			}
 
 			const std::string& description = cur_lev->data()["description"];

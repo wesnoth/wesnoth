@@ -646,14 +646,14 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	for(const animation_branch& ab : prepare_animation(cfg, "standing_anim")) {
 		config anim = ab.merge();
 		anim["apply_to"] = "standing";
-		anim["cycles"] = "true";
+		anim["cycles"] = true;
 
 		// Add cycles to all frames within a standing animation block
 		for(config::const_all_children_iterator ci : ab.children) {
 			std::string sub_frame_name = ci->key;
 			size_t pos = sub_frame_name.find("_frame");
 			if(pos != std::string::npos) {
-				anim[sub_frame_name.substr(0, pos) + "_cycles"] = "true";
+				anim[sub_frame_name.substr(0, pos) + "_cycles"] = true;
 			}
 		}
 
@@ -672,13 +672,13 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	for(const animation_branch& ab : prepare_animation(cfg, "standing_anim")) {
 		config anim = ab.merge();
 		anim["apply_to"] = "default";
-		anim["cycles"] = "true";
+		anim["cycles"] = true;
 
 		for(config::const_all_children_iterator ci : ab.children) {
 			std::string sub_frame_name = ci->key;
 			size_t pos = sub_frame_name.find("_frame");
 			if(pos != std::string::npos) {
-				anim[sub_frame_name.substr(0, pos) + "_cycles"] = "true";
+				anim[sub_frame_name.substr(0, pos) + "_cycles"] = true;
 			}
 		}
 
