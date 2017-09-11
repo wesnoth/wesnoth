@@ -46,9 +46,6 @@ tree_view_node::tree_view_node(
 	, toggle_(nullptr)
 	, label_(nullptr)
 	, unfolded_(false)
-	, callback_state_change_()
-	, callback_state_to_folded_()
-	, callback_state_to_unfolded_()
 {
 	grid_.set_parent(this);
 	set_parent(&parent_tree_view);
@@ -258,10 +255,6 @@ void tree_view_node::fold_internal()
 
 	get_tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
 	unfolded_ = false;
-
-	if(callback_state_to_folded_) {
-		callback_state_to_folded_(*this);
-	}
 }
 
 void tree_view_node::unfold_internal()
@@ -275,10 +268,6 @@ void tree_view_node::unfold_internal()
 
 	get_tree_view().resize_content(width_modification, height_modification, -1, calculate_ypos());
 	unfolded_ = true;
-
-	if(callback_state_to_unfolded_) {
-		callback_state_to_unfolded_(*this);
-	}
 }
 
 void tree_view_node::clear()
@@ -609,10 +598,6 @@ void tree_view_node::signal_handler_left_button_click(const event::ui_event even
 	is_folded() ? fold_internal() : unfold_internal();
 
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
-
-	if(callback_state_change_) {
-		callback_state_change_(*this);
-	}
 }
 
 void tree_view_node::signal_handler_label_left_button_click(

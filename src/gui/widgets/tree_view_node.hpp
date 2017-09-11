@@ -202,34 +202,6 @@ public:
 	 */
 	std::vector<int> describe_path();
 
-	enum NODE_CALLBACK_SCOPE {
-		ON_BOTH,
-		ON_FOLD,
-		ON_UNFOLD
-	};
-
-	/** Inherited from selectable_item.
-	 *
-	 * @param scope      Specifies the scope of the callback event
-	 *                   0 : on both fold and unfold
-	 *                   1 : on unfolded to folded
-	 *                   2 : on folded to unfolded
-	*/
-	void set_callback_state_change(
-			const NODE_CALLBACK_SCOPE scope, std::function<void(widget&)> callback)
-	{
-		switch(scope) {
-			case ON_BOTH:
-				callback_state_change_ = callback;
-				break;
-			case ON_FOLD:
-				callback_state_to_folded_ = callback;
-				break;
-			case ON_UNFOLD:
-				callback_state_to_unfolded_ = callback;
-				break;
-		}
-	}
 	tree_view_node* get_last_visible_parent_node();
 	tree_view_node* get_node_above();
 	tree_view_node* get_node_below();
@@ -314,15 +286,6 @@ private:
 	virtual void impl_draw_children(surface& frame_buffer,
 									int x_offset,
 									int y_offset) override;
-
-	/** See selectable_item::set_callback_state_change. */
-	std::function<void(widget&)> callback_state_change_;
-
-	/** See selectable_item::set_callback_state_change. */
-	std::function<void(widget&)> callback_state_to_folded_;
-
-	/** See selectable_item::set_callback_state_change. */
-	std::function<void(widget&)> callback_state_to_unfolded_;
 
 	// FIXME rename to icon
 	void signal_handler_left_button_click(const event::ui_event event);
