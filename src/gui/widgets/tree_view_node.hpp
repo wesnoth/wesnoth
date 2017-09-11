@@ -16,9 +16,7 @@
 
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/grid.hpp"
-#include "gui/auxiliary/iterator/walker_tree_node.hpp"
-
-#include <boost/ptr_container/ptr_vector.hpp>
+#include <memory>
 
 namespace gui2
 {
@@ -36,7 +34,7 @@ class tree_view_node : public widget
 	friend class tree_view;
 
 public:
-	using node_children_vector = boost::ptr_vector<tree_view_node>;
+	using node_children_vector = std::vector<std::unique_ptr<tree_view_node>>;
 
 	bool operator==(const tree_view_node& node)
 	{
@@ -140,10 +138,7 @@ public:
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iteration::walker_base* create_walker() override
-	{
-		return new gui2::iteration::tree_node(*this, children_);
-	}
+	virtual iteration::walker_base* create_walker() override;
 
 	node_children_vector& children()
 	{

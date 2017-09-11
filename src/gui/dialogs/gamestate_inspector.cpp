@@ -330,8 +330,8 @@ public:
 		// Furthermore, there's no need to remember that a subnode was open once the parent is closed.
 		if(!selected->is_root_node()) {
 			for(auto& node : selected->parent_node().children()) {
-				if(&node != selected) {
-					node.fold(true);
+				if(node.get() != selected) {
+					node->fold(true);
 				}
 			}
 

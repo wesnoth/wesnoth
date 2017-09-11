@@ -15,7 +15,6 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/auxiliary/iterator/walker_tree_node.hpp"
-#include "gui/widgets/tree_view_node.hpp"
 
 #include <cassert>
 
@@ -25,7 +24,7 @@ namespace gui2
 namespace iteration
 {
 
-tree_node::tree_node(gui2::tree_view_node& node, boost::ptr_vector<gui2::tree_view_node>& children)
+tree_node::tree_node(gui2::tree_view_node& node, tree_view_node::node_children_vector& children)
 	: children_(children), widget_(&node), itor_(children.begin())
 {
 }
@@ -83,7 +82,7 @@ gui2::widget* tree_node::get(const level level)
 			if(itor_ == children_.end()) {
 				return nullptr;
 			} else {
-				return itor_.operator->();
+				return itor_.operator->()->get();
 			}
 	}
 

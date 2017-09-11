@@ -74,7 +74,10 @@ int tree_view::remove_node(tree_view_node* node)
 
 	tree_view_node::node_children_vector& siblings = node->parent_node_->children_;
 
-	auto node_itor = std::find(siblings.begin(), siblings.end(), *node);
+	auto node_itor = std::find_if(siblings.begin(), siblings.end(),
+		[node](const std::unique_ptr<tree_view_node>& c) { return c.get() == node; }
+	);
+
 	assert(node_itor != siblings.end());
 
 	const int position = node_itor - siblings.begin();

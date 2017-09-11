@@ -16,7 +16,7 @@
 
 #include "gui/auxiliary/iterator/walker.hpp"
 
-#include <boost/ptr_container/ptr_vector.hpp>
+#include "gui/widgets/tree_view_node.hpp"
 
 namespace gui2
 {
@@ -36,7 +36,7 @@ public:
 	 * @param node                The tree view node which the walker is attached to.
 	 * @param children            The node's children.
 	 */
-	tree_node(gui2::tree_view_node& node, boost::ptr_vector<gui2::tree_view_node>& children);
+	tree_node(gui2::tree_view_node& node, tree_view_node::node_children_vector& children);
 
 	/** Inherited from @ref gui2::iteration::walker_base. */
 	virtual state_t next(const level level);
@@ -49,7 +49,7 @@ public:
 
 private:
 	/** The children of the node which the walker is attached to. */
-	boost::ptr_vector<gui2::tree_view_node>& children_;
+	tree_view_node::node_children_vector& children_;
 
 	/**
 	 * The node which the walker is attached to.
@@ -65,7 +65,7 @@ private:
 	 * This variable is used to track where the @ref
 	 * gui2::iteration::walker_base::child level visiting is.
 	 */
-	boost::ptr_vector<gui2::tree_view_node>::iterator itor_;
+	tree_view_node::node_children_vector::iterator itor_;
 };
 
 } // namespace iteration

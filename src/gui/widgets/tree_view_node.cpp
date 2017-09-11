@@ -18,6 +18,7 @@
 
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/auxiliary/iterator/walker_tree_node.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
@@ -125,7 +126,7 @@ void tree_view_node::clear_before_destruct()
 {
 	tree_view_ = nullptr;
 	for(auto& child : children_) {
-		child.clear_before_destruct();
+		child->clear_before_destruct();
 	}
 }
 
@@ -134,20 +135,20 @@ tree_view_node& tree_view_node::add_child(
 		const std::map<std::string /* widget id */, string_map>& data,
 		const int index)
 {
-	boost::ptr_vector<tree_view_node>::iterator itor = children_.end();
+	auto itor = children_.end();
 
 	if(static_cast<size_t>(index) < children_.size()) {
 		itor = children_.begin() + index;
 	}
 
-	itor = children_.insert(itor, new tree_view_node(id, this, get_tree_view(), data));
+	itor = children_.emplace(itor, new tree_view_node(id, this, get_tree_view(), data));
 
 	if(is_folded() /*|| is_root_node()*/) {
-		return *itor;
+		return **itor;
 	}
 
 	if(get_tree_view().get_size() == point()) {
-		return *itor;
+		return **itor;
 	}
 
 	assert(get_tree_view().content_grid());
@@ -155,7 +156,7 @@ tree_view_node& tree_view_node::add_child(
 
 	// Calculate width modification.
 	// This increases tree width if the width of the new node is greater than the current width.
-	point best_size = itor->get_best_size();
+	point best_size = (*itor)->get_best_size();
 	best_size.x += get_indentation_level() * get_tree_view().indentation_step_size_;
 
 	const int width_modification = best_size.x > current_size.x
@@ -179,9 +180,9 @@ tree_view_node& tree_view_node::add_child(
 	assert(height_modification >= 0);
 
 	// Request new size.
-	get_tree_view().resize_content(width_modification, height_modification, -1, itor->calculate_ypos());
+	get_tree_view().resize_content(width_modification, height_modification, -1, (*itor)->calculate_ypos());
 
-	return *itor;
+	return **itor;
 }
 
 unsigned tree_view_node::get_indentation_level() const
@@ -225,7 +226,7 @@ void tree_view_node::fold(const bool recursive)
 
 	if(recursive) {
 		for(auto& child_node : children_) {
-			child_node.fold(true);
+			child_node->fold(true);
 		}
 	}
 }
@@ -241,7 +242,7 @@ void tree_view_node::unfold(const bool recursive)
 
 	if(recursive) {
 		for(auto& child_node : children_) {
-			child_node.unfold(true);
+			child_node->unfold(true);
 		}
 	}
 }
@@ -288,7 +289,7 @@ void tree_view_node::clear()
 	if(!is_folded()) {
 		for(const auto & node : children_)
 		{
-			height_reduction += node.get_current_size().y;
+			height_reduction += node->get_current_size().y;
 		}
 	}
 
@@ -311,7 +312,7 @@ private:
 						  const bool must_be_active)
 	{
 		for(It it = begin; it != end; ++it) {
-			if(W* widget = it->find_at(coordinate, must_be_active)) {
+			if(W* widget = (*it)->find_at(coordinate, must_be_active)) {
 				return widget;
 			}
 		}
@@ -361,8 +362,8 @@ widget* tree_view_node::find(const std::string& id, const bool must_be_active)
 		return result;
 	}
 
-	for(tree_view_node& child : children_) {
-		result = child.find(id, must_be_active);
+	for(auto& child : children_) {
+		result = child->find(id, must_be_active);
 		if(result) {
 			return result;
 		}
@@ -383,8 +384,8 @@ const widget* tree_view_node::find(const std::string& id, const bool must_be_act
 		return result;
 	}
 
-	for(const tree_view_node& child : children_) {
-		result = child.find(id, must_be_active);
+	for(const auto& child : children_) {
+		result = child->find(id, must_be_active);
 		if(result) {
 			return result;
 		}
@@ -404,7 +405,7 @@ void tree_view_node::impl_populate_dirty_list(window& caller, const std::vector<
 
 	for(auto& node : children_) {
 		std::vector<widget*> child_call_stack = call_stack;
-		node.impl_populate_dirty_list(caller, child_call_stack);
+		node->impl_populate_dirty_list(caller, child_call_stack);
 	}
 }
 
@@ -430,11 +431,11 @@ point tree_view_node::get_current_size(bool assume_visible) const
 	}
 
 	for(const auto& node : children_) {
-		if(node.grid_.get_visible() == widget::visibility::invisible) {
+		if(node->grid_.get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 
-		point node_size = node.get_current_size();
+		point node_size = node->get_current_size();
 
 		size.y += node_size.y;
 		size.x = std::max(size.x, node_size.x);
@@ -460,11 +461,11 @@ point tree_view_node::get_unfolded_size() const
 	}
 
 	for(const auto& node : children_) {
-		if(node.grid_.get_visible() == widget::visibility::invisible) {
+		if(node->grid_.get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 
-		point node_size = node.get_current_size(true);
+		point node_size = node->get_current_size(true);
 
 		size.y += node_size.y;
 		size.x = std::max(size.x, node_size.x);
@@ -486,11 +487,11 @@ point tree_view_node::calculate_best_size(const int indentation_level,
 	DBG_GUI_L << LOG_HEADER << " own grid best size " << best_size << ".\n";
 
 	for(const auto& node : children_) {
-		if(node.grid_.get_visible() == widget::visibility::invisible) {
+		if(node->grid_.get_visible() == widget::visibility::invisible) {
 			continue;
 		}
 
-		const point node_size = node.calculate_best_size(indentation_level + 1, indentation_step_size);
+		const point node_size = node->calculate_best_size(indentation_level + 1, indentation_step_size);
 
 		if(!is_folded()) {
 			best_size.y += node_size.y;
@@ -548,7 +549,7 @@ unsigned tree_view_node::place(const unsigned indentation_step_size,
 
 	DBG_GUI_L << LOG_HEADER << " set children.\n";
 	for(auto & node : children_) {
-		origin.y += node.place(indentation_step_size, origin, width);
+		origin.y += node->place(indentation_step_size, origin, width);
 	}
 
 	// Inherited.
@@ -570,7 +571,7 @@ void tree_view_node::set_visible_rectangle(const SDL_Rect& rectangle)
 	}
 
 	for(auto & node : children_) {
-		node.set_visible_rectangle(rectangle);
+		node->set_visible_rectangle(rectangle);
 	}
 }
 
@@ -585,7 +586,7 @@ void tree_view_node::impl_draw_children(surface& frame_buffer,
 	}
 
 	for(auto & node : children_) {
-		node.impl_draw_children(frame_buffer, x_offset, y_offset);
+		node->impl_draw_children(frame_buffer, x_offset, y_offset);
 	}
 }
 
@@ -685,7 +686,7 @@ const std::string& tree_view_node::get_control_type() const
 tree_view_node& tree_view_node::get_child_at(int index)
 {
 	assert(static_cast<size_t>(index) < children_.size());
-	return children_[index];
+	return *children_[index];
 }
 
 std::vector<int> tree_view_node::describe_path()
@@ -696,7 +697,7 @@ std::vector<int> tree_view_node::describe_path()
 
 	std::vector<int> res = parent_node_->describe_path();
 	for(size_t i = 0; i < parent_node_->count_children(); ++i) {
-		if(&parent_node_->children_[i] == this) {
+		if(parent_node_->children_[i].get() == this) {
 			res.push_back(i);
 			return res;
 		}
@@ -714,11 +715,11 @@ int tree_view_node::calculate_ypos()
 
 	int res = parent_node_->calculate_ypos();
 	for(const auto& node : parent_node_->children_) {
-		if(&node == this) {
+		if(node.get() == this) {
 			break;
 		}
 
-		res += node.get_current_size(true).y;
+		res += node->get_current_size(true).y;
 	}
 
 	return res;
@@ -740,11 +741,11 @@ tree_view_node* tree_view_node::get_node_above()
 
 	tree_view_node* cur = nullptr;
 	for(size_t i = 0; i < parent_node_->count_children(); ++i) {
-		if(&parent_node_->children_[i] == this) {
+		if(parent_node_->children_[i].get() == this) {
 			if(i == 0) {
 				return parent_node_->is_root_node() ? nullptr : parent_node_;
 			} else {
-				cur = &parent_node_->children_[i - 1];
+				cur = parent_node_->children_[i - 1].get();
 				break;
 			}
 		}
@@ -769,9 +770,9 @@ tree_view_node* tree_view_node::get_node_below()
 		tree_view_node& parent = *cur->parent_node_;
 
 		for(size_t i = 0; i < parent.count_children(); ++i) {
-			if(&parent.children_[i] == cur) {
+			if(parent.children_[i].get() == cur) {
 				if(i < parent.count_children() - 1) {
-					return &parent.children_[i + 1];
+					return parent.children_[i + 1].get();
 				} else {
 					cur = &parent;
 				}
@@ -833,8 +834,13 @@ void tree_view_node::layout_initialize(const bool full_initialization)
 
 	// Clear child caches.
 	for(auto & child : children_) {
-		child.layout_initialize(full_initialization);
+		child->layout_initialize(full_initialization);
 	}
+}
+
+iteration::walker_base* tree_view_node::create_walker()
+{
+	return new gui2::iteration::tree_node(*this, children_);
 }
 
 } // namespace gui2
