@@ -127,14 +127,6 @@ public:
 	void set_values(const std::vector<::config>& values);
 
 	/**
-	 * Sets a callback that will be called immediately when any toggle button is selected or deselected.
-	 */
-	virtual void set_callback_toggle_state_change(std::function<void(boost::dynamic_bitset<>)> callback)
-	{
-		callback_toggle_state_change_ = callback;
-	}
-
-	/**
 	 * Get the current state of the menu options.
 	 *
 	 * @returns        A mask specifying which options are selected
@@ -190,8 +182,6 @@ private:
 	boost::dynamic_bitset<> toggle_states_;
 
 	dialogs::drop_down_menu* droplist_;
-
-	std::function<void(boost::dynamic_bitset<>)> callback_toggle_state_change_;
 
 	void update_config_from_toggle_states();
 	void update_label();

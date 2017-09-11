@@ -206,10 +206,6 @@ void multimenu_button::toggle_state_changed()
 	toggle_states_ = droplist_->get_toggle_states();
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	update_label();
-
-	if(callback_toggle_state_change_ != nullptr) {
-		callback_toggle_state_change_(toggle_states_);
-	}
 }
 
 void multimenu_button::select_option(const unsigned option, const bool selected)

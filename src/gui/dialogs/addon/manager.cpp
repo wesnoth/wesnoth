@@ -347,7 +347,8 @@ void addon_manager::pre_show(window& window)
 	}
 
 	type_filter.set_values(type_filter_entries);
-	type_filter.set_callback_toggle_state_change(std::bind(&addon_manager::apply_filters, this, std::ref(window)));
+
+	connect_signal_notify_modified(type_filter, std::bind(&addon_manager::apply_filters, this, std::ref(window)));
 
 	button& url_go_button = find_widget<button>(&window, "url_go", false);
 	button& url_copy_button = find_widget<button>(&window, "url_copy", false);

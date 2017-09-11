@@ -698,7 +698,9 @@ void preferences_dialog::post_build(window& window)
 	multimenu_button& hotkey_menu = find_widget<multimenu_button>(&window, "hotkey_category_menu", false);
 
 	hotkey_menu.set_values(hotkey_category_entries);
-	hotkey_menu.set_callback_toggle_state_change(std::bind(&preferences_dialog::hotkey_type_filter_callback, this, std::ref(window)));
+
+	connect_signal_notify_modified(hotkey_menu,
+		std::bind(&preferences_dialog::hotkey_type_filter_callback, this, std::ref(window)));
 
 	listbox& hotkey_list = setup_hotkey_list(window);
 
