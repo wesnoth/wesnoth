@@ -165,7 +165,9 @@ void unit_drawer::redraw_unit (const unit & u) const
 
 	bool has_halo = ac.unit_halo_ && ac.unit_halo_->valid();
 	if(!has_halo && !u.image_halo().empty()) {
-		ac.unit_halo_ = halo_man.add(x, y - height_adjust, u.image_halo()+u.TC_image_mods(), map_location(-1, -1));
+		ac.unit_halo_ = halo_man.add( 0, 0, u.image_halo()+u.TC_image_mods(), map_location(-1, -1));
+		halo_man.set_location(ac.unit_halo_, x, y - height_adjust);
+		
 	}
 	if(has_halo && u.image_halo().empty()) {
 		halo_man.remove(ac.unit_halo_);

@@ -50,8 +50,7 @@ public:
 	bool expired()     const { return !images_.cycles() && images_.animation_finished(); }
 	bool need_update() const { return images_.need_update(); }
 	bool does_change() const { return !images_.does_not_change(); }
-	bool on_location(const std::set<map_location>& locations) const;
-	bool location_not_known() const;
+	bool on_location(const std::set<map_location>& locations) const;	
 
 	void add_overlay_location(std::set<map_location>& locations);
 private:
@@ -147,8 +146,8 @@ halo_impl::effect::effect(display * screen, int xpos, int ypos, const animated<i
 		const map_location& loc, ORIENTATION orientation, bool infinite) :
 	images_(img),
 	orientation_(orientation),
-	x_(0),
-	y_(0),
+	x_(xpos),
+	y_(xpos),
 	surf_(nullptr),
 	buffer_(nullptr),
 	rect_(sdl::empty_rect),
@@ -169,7 +168,7 @@ void halo_impl::effect::set_location(int x, int y)
 	int new_x = x - disp->get_location_x(map_location::ZERO());
 	int new_y = y - disp->get_location_y(map_location::ZERO());
 	if (new_x != x_ || new_y != y_) {
-		unrender();
+		
 		x_ = new_x;
 		y_ = new_y;
 		buffer_.assign(nullptr);
@@ -224,7 +223,7 @@ bool halo_impl::effect::render()
 
 	// If rendered the first time, need to determine the area affected.
 	// If a halo changes size, it is not updated.
-	if(location_not_known()) {
+	if(overlayed_hexes_.empty()) {
 		display::rect_of_hexes hexes = disp->hexes_under_rect(rect);
 		display::rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
 		for (;i != end; ++i) {
@@ -296,10 +295,7 @@ bool halo_impl::effect::on_location(const std::set<map_location>& locations) con
 	return false;
 }
 
-bool halo_impl::effect::location_not_known() const
-{
-	return overlayed_hexes_.empty();
-}
+
 
 void halo_impl::effect::add_overlay_location(std::set<map_location>& locations)
 {
@@ -404,7 +400,7 @@ void halo_impl::unrender(std::set<map_location> invalidated_locations)
 			// Test all haloes not yet in the set
 			// which match one of the locations
 			if(invalidated_haloes.find(itor->first) == invalidated_haloes.end() &&
-					(itor->second.location_not_known() ||
+					
 					itor->second.on_location(invalidated_locations))) {
 
 				// If found, add all locations which the halo invalidates,

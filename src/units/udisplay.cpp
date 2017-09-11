@@ -569,6 +569,7 @@ void unit_die(const map_location& loc, unit& loser,
 			unit_animation::hit_type::KILL,secondary_attack,attack,0);
 	animator.start_animations();
 	animator.wait_for_end();
+	loser.anim_comp().clear_haloes();
 
 	reset_helpers(winner,&loser);
 	events::mouse_handler* mousehandler = events::mouse_handler::get_singleton();
