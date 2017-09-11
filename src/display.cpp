@@ -350,7 +350,11 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 	animated<image::locator>& f = flags_[n];
 
 	f = temp_anim;
-	assert(f.get_end_time() != 0);
+	if (f.get_end_time() <= 0) {
+		std::stringstream msg;
+		msg << "Invalid animation duration (<= 0) found when constructing flag for side " << n;
+		throw std::domain_error(msg.str());
+	}
 	f.start_animation(rand() % f.get_end_time(), true);
 }
 
