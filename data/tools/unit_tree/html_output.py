@@ -870,7 +870,7 @@ class HTMLOutput:
                         image, portrait = self.pic(u, u)
                         image = cleanurl(image)
 
-                        write('<a href="%s" title="Id: %s">' % (link, name))
+                        write('<a href="%s" title="Id: %s">' % (link, uid))
 
                         if crown == " ♚":
                             write('<div class="spritebg" style="background-image:url(\'%s\')">' % image)
