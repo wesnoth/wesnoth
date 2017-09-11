@@ -736,9 +736,12 @@ tree_view_node* tree_view_node::get_node_above()
 		}
 	}
 
-	while(!cur->is_folded() && cur->count_children() > 0) {
+	while(cur && !cur->is_folded() && cur->count_children() > 0) {
 		cur = &cur->get_child_at(cur->count_children() - 1);
 	}
+
+	if (!cur)
+		throw std::domain_error("tree_view_node::get_node_above(): Cannot determine which node is this line, or which node is the line above this one, if any.");
 
 	return cur;
 }
