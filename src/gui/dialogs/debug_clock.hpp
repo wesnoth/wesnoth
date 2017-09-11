@@ -43,7 +43,6 @@ public:
 		, second_(nullptr)
 		, pane_(nullptr)
 		, clock_(nullptr)
-		, window_(nullptr)
 		, signal_()
 		, time_()
 	{
@@ -72,9 +71,6 @@ private:
 
 	/** A widget that can display the time. */
 	styled_widget* clock_;
-
-	/** The window being shown. */
-	window* window_;
 
 	/** The signal patched in the drawing routine. */
 	event::signal_function signal_;

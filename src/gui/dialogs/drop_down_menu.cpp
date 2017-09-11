@@ -103,8 +103,6 @@ namespace
 
 void drop_down_menu::pre_show(window& window)
 {
-	window_ = &window;
-
 	window.set_variable("button_x", wfl::variant(button_pos_.x));
 	window.set_variable("button_y", wfl::variant(button_pos_.y));
 	window.set_variable("button_w", wfl::variant(button_pos_.w));
@@ -188,15 +186,11 @@ void drop_down_menu::post_show(window& window)
 	listbox& list = find_widget<listbox>(&window, "list", true);
 
 	selected_item_ = list.get_selected_row();
-
-	window_ = nullptr;
 }
 
 boost::dynamic_bitset<> drop_down_menu::get_toggle_states() const
 {
-	assert(window_ != nullptr);
-
-	const listbox& list = find_widget<const listbox>(window_, "list", true);
+	const listbox& list = find_widget<const listbox>(get_window(), "list", true);
 
 	boost::dynamic_bitset<> states;
 

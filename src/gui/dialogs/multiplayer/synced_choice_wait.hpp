@@ -31,7 +31,7 @@ public:
 private:
 	user_choice_manager& mgr_;
 	label* message_;
-	window* window_;
+
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 

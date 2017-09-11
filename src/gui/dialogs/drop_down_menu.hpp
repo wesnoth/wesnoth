@@ -37,7 +37,6 @@ public:
 		, selected_item_(selected_item)
 		, use_markup_(use_markup)
 		, keep_open_(keep_open)
-		, window_(nullptr)
 		, callback_toggle_state_change_(callback_toggle_state_change)
 	{
 		set_restore(true);
@@ -52,7 +51,7 @@ public:
 	boost::dynamic_bitset<> get_toggle_states() const;
 
 private:
-	/** Configuration of rach row. */
+	/** Configuration of each row. */
 	std::vector<config> items_;
 
 	/**
@@ -68,11 +67,9 @@ private:
 
 	/**
 	 * Whether to keep this dialog open after a click occurs not handled by special exceptions
-	 * such as scrollbars and toggle butons.
+	 * such as scrollbars and toggle buttons.
 	 */
 	bool keep_open_;
-
-	window* window_;
 
 	/**
 	 * If toggle buttons are used, this callback is called whenever the state of any toggle

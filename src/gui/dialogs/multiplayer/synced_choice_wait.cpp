@@ -60,7 +60,6 @@ REGISTER_DIALOG(synched_choice_wait)
 synched_choice_wait::synched_choice_wait(user_choice_manager& mgr)
 	: mgr_(mgr)
 	, message_()
-	, window_(nullptr)
 {
 	mgr_.changed_event_.attach_handler(this);
 }
@@ -72,7 +71,6 @@ synched_choice_wait::~synched_choice_wait()
 
 void synched_choice_wait::pre_show(window& window)
 {
-	window_ = &window;
 	message_ = find_widget<label>(&window, "lblMessage", false, true);
 
 
@@ -84,7 +82,7 @@ void synched_choice_wait::pre_show(window& window)
 
 	message_->set_label(mgr_.wait_message());
 	if(mgr_.finished() || !mgr_.waiting()) {
-		window_->close();
+		window.close();
 	}
 }
 
@@ -94,7 +92,7 @@ void synched_choice_wait::handle_generic_event(const std::string& event_name)
 	assert(message_);
 	message_->set_label(mgr_.wait_message());
 	if(mgr_.finished() || !mgr_.waiting()) {
-		window_->close();
+		get_window()->close();
 	}
 }
 

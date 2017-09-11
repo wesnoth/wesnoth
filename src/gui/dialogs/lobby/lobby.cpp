@@ -128,7 +128,6 @@ mp_lobby::mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_con
 	: quit_confirmation(&mp_lobby::logout_prompt)
 	, game_config_(game_config)
 	, gamelistbox_(nullptr)
-	, window_(nullptr)
 	, lobby_info_(info)
 	, chatbox_(nullptr)
 	, filter_friends_(nullptr)
@@ -489,7 +488,7 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game,
 				*join_button,
 				std::bind(&mp_lobby::join_global_button_callback,
 							this,
-							std::ref(*window_)));
+							std::ref(*get_window())));
 		join_button->set_active(game.can_join());
 	}
 
@@ -498,7 +497,7 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game,
 				*observe_button,
 				std::bind(&mp_lobby::observe_global_button_callback,
 							this,
-							std::ref(*window_)));
+							std::ref(*get_window())));
 		observe_button->set_active(game.can_observe());
 	}
 
@@ -653,8 +652,8 @@ void mp_lobby::update_selected_game()
 		selected_game_id_ = 0;
 	}
 
-	find_widget<button>(window_, "observe_global", false).set_active(can_observe);
-	find_widget<button>(window_, "join_global", false).set_active(can_join);
+	find_widget<button>(get_window(), "observe_global", false).set_active(can_observe);
+	find_widget<button>(get_window(), "join_global", false).set_active(can_join);
 
 	player_list_dirty_ = true;
 }
@@ -695,8 +694,6 @@ void mp_lobby::pre_show(window& window)
 
 	// Exit hook to add a confirmation when quitting the Lobby.
 	window.set_exit_hook(std::bind(&mp_lobby::exit_hook, this, std::ref(window)));
-
-	window_ = &window;
 
 	chatbox_ = find_widget<chatbox>(&window, "chat", false, true);
 	chatbox_->set_lobby_info(lobby_info_);
@@ -798,7 +795,6 @@ void mp_lobby::pre_show(window& window)
 
 void mp_lobby::post_show(window& /*window*/)
 {
-	window_ = nullptr;
 	remove_timer(lobby_update_timer_);
 	lobby_update_timer_ = 0;
 	plugins_context_.reset();
@@ -890,7 +886,7 @@ void mp_lobby::join_or_observe(int idx)
 {
 	const mp::game_info& game = *lobby_info_.games()[idx];
 	if(do_game_join(idx, !game.can_join())) {
-		window_->set_retval(game.can_join() ? JOIN : OBSERVE);
+		get_window()->set_retval(game.can_join() ? JOIN : OBSERVE);
 	}
 }
 
@@ -965,16 +961,16 @@ bool mp_lobby::do_game_join(int idx, bool observe)
 	// Prompt user to download this game's required addons if its requirements have not been met
 	if(game.addons_outcome != mp::game_info::SATISFIED) {
 		if(game.required_addons.empty()) {
-			gui2::show_error_message(window_->video(), _("Something is wrong with the addon version check database supporting the multiplayer lobby. Please report this at http://bugs.wesnoth.org."));
+			gui2::show_error_message(get_window()->video(), _("Something is wrong with the addon version check database supporting the multiplayer lobby. Please report this at http://bugs.wesnoth.org."));
 			return false;
 		}
 
-		if(!handle_addon_requirements_gui(window_->video(), game.required_addons, game.addons_outcome)) {
+		if(!handle_addon_requirements_gui(get_window()->video(), game.required_addons, game.addons_outcome)) {
 			return false;
 		} else {
 			// Addons have been downloaded, so the game_config and installed addons list need to be reloaded.
 			// The lobby is closed and reopened.
-			window_->set_retval(RELOAD_CONFIG);
+			get_window()->set_retval(RELOAD_CONFIG);
 			return false;
 		}
 	}
@@ -985,7 +981,7 @@ bool mp_lobby::do_game_join(int idx, bool observe)
 	join["observe"] = observe;
 	if(join && !observe && game.password_required) {
 		std::string password;
-		if(!gui2::dialogs::mp_join_game_password_prompt::execute(password, window_->video())) {
+		if(!gui2::dialogs::mp_join_game_password_prompt::execute(password, get_window()->video())) {
 			return false;
 		}
 
@@ -1087,7 +1083,7 @@ void mp_lobby::player_filter_callback()
 	preferences::set_playerlist_sort_name(player_list_.sort_by_name->get_value_bool());
 
 	player_list_dirty_ = true;
-	// window_->invalidate_layout();
+	// get_window()->invalidate_layout();
 }
 
 void mp_lobby::user_dialog_callback(mp::user_info* info)
@@ -1096,7 +1092,7 @@ void mp_lobby::user_dialog_callback(mp::user_info* info)
 
 	lobby_delay_gamelist_update_guard g(*this);
 
-	dlg.show(window_->video());
+	dlg.show(get_window()->video());
 
 	delay_playerlist_update_ = true;
 

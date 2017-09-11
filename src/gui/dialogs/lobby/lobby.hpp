@@ -172,8 +172,6 @@ private:
 
 	listbox* gamelistbox_;
 
-	window* window_;
-
 	mp::lobby_info& lobby_info_;
 
 	chatbox* chatbox_;
