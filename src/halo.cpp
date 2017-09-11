@@ -169,7 +169,6 @@ void halo_impl::effect::set_location(int x, int y)
 	int new_x = x - disp->get_location_x(map_location::ZERO());
 	int new_y = y - disp->get_location_y(map_location::ZERO());
 	if (new_x != x_ || new_y != y_) {
-		unrender();
 		x_ = new_x;
 		y_ = new_y;
 		buffer_.assign(nullptr);
