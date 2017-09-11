@@ -183,6 +183,9 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 	scroll_event_("scrolled"),
 	complete_redraw_event_("completely_redrawn"),
 	frametimes_(50),
+	fps_counter_(),
+	fps_start_(),
+	fps_actual_(),
 	reportRects_(),
 	reportSurfaces_(),
 	reports_(),
@@ -1383,8 +1386,8 @@ void display::update_display()
 				fps_handle_ = 0;
 			}
 			std::ostringstream stream;
-			stream << "<tt>      min/avg/max</tt>\n";
-			stream << "<tt>FPS:  " << std::setfill(' ') << std::setw(3) << min_fps << '/'<< std::setw(3) << avg_fps << '/' << std::setw(3) << max_fps << "</tt>\n";
+			stream << "<tt>      min/avg/max/act</tt>\n";
+			stream << "<tt>FPS:  " << std::setfill(' ') << std::setw(3) << min_fps << '/'<< std::setw(3) << avg_fps << '/' << std::setw(3) << max_fps << '/' << std::setw(3) << fps_actual_ << "</tt>\n";
 			stream << "<tt>Time: " << std::setfill(' ') << std::setw(3) << *minmax_it.first << '/' << std::setw(3) << render_avg << '/' << std::setw(3) << *minmax_it.second << " ms</tt>\n";
 			if (game_config::debug) {
 				stream << "\nhex: " << drawn_hexes_*1.0/sample_freq;
@@ -1695,6 +1698,16 @@ void display::draw_wrap(bool update, bool force)
 		update_display();
 
 		frametimes_.push_back(SDL_GetTicks() - last_frame_finished_);
+		fps_counter_++;
+		using std::chrono::duration_cast;
+		using std::chrono::seconds;
+		using std::chrono::steady_clock;
+		const seconds current_second = duration_cast<seconds>(steady_clock::now().time_since_epoch());
+		if(current_second != fps_start_) {
+			fps_start_ = current_second;
+			fps_actual_ = fps_counter_;
+			fps_counter_ = 0;
+		}
 		int longest_frame = *std::max_element(frametimes_.begin(), frametimes_.end());
 		int wait_time = time_between_draws - longest_frame;
 
