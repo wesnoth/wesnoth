@@ -270,19 +270,37 @@ void campaign_selection::add_campaign_to_tree(window& window, const config& camp
 	item["label"] = campaign["name"];
 	data.emplace("name", item);
 
-	if(campaign["completed_on_hardest"].to_bool()) {
-		item["label"] = game_config::images::victory_laurel_hardest;
-	} else if(campaign["completed"].to_bool()) {
-		if(campaign["completed_difficulties"] == campaign.child_or_empty("difficulty")["define"]) {
+	// We completed the campaign! Calculate the appropriate victory laurel.
+	if(campaign["completed"].to_bool()) {
+		config::const_child_itors difficulties = campaign.child_range("difficulty");
+
+		auto did_complete_at = [&difficulties](config::const_child_iterator i) {
+			return i == difficulties.end() ? false : (*i)["completed_at"].to_bool();
+		};
+
+		const bool has_multiple_difficulties = difficulties.size() > 1;
+
+		/*
+		 * Criteria:
+		 *
+		 * - Use the gold laurel (hardest) for campaigns with only one difficulty OR
+		 *   if out of two or more difficulties, the last one has been completed.
+		 *
+		 * - Use the bronze laurel (easiest) if the first difficulty out of two or more
+		 *   has been completed.
+		 *
+		 * - Use the silver laurel otherwise.
+		 */
+		if(difficulties.size() == 1 || (has_multiple_difficulties && did_complete_at(difficulties.end() - 1))) {
+			item["label"] = game_config::images::victory_laurel_hardest;
+		} else if(has_multiple_difficulties && did_complete_at(difficulties.begin())) {
 			item["label"] = game_config::images::victory_laurel_easy;
 		} else {
 			item["label"] = game_config::images::victory_laurel;
 		}
-	} else {
-		item.clear();
-	}
 
-	data.emplace("victory", item);
+		data.emplace("victory", item);
+	}
 
 	tree.add_node("campaign", data).set_id(campaign["id"]);
 }

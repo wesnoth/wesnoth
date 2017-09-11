@@ -220,18 +220,10 @@ void campaign::set_metadata()
 void campaign::mark_if_completed()
 {
 	data_["completed"] = preferences::is_campaign_completed(data_["id"]);
-	std::vector<std::string> completed_difficulties;
-	bool completed_on_hardest = false;
-	for(auto cfg : data_.child_range("difficulty")) {
-		if(preferences::is_campaign_completed(data_["id"], cfg["define"])) {
-			completed_difficulties.push_back(cfg["define"]);
-			completed_on_hardest = true;
-		} else {
-			completed_on_hardest = false;
-		}
+
+	for(auto& cfg : data_.child_range("difficulty")) {
+		cfg["completed_at"] = preferences::is_campaign_completed(data_["id"], cfg["define"]);
 	}
-	data_["completed_difficulties"] = utils::join(completed_difficulties);
-	data_["completed_on_hardest"] = completed_on_hardest;
 }
 
 create_engine::create_engine(CVideo& v, saved_game& state)
