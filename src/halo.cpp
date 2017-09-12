@@ -50,8 +50,7 @@ public:
 	bool expired()     const { return !images_.cycles() && images_.animation_finished(); }
 	bool need_update() const { return images_.need_update(); }
 	bool does_change() const { return !images_.does_not_change(); }
-	bool on_location(const std::set<map_location>& locations) const;
-	bool location_not_known() const;
+	bool on_location(const std::set<map_location>& locations) const;	
 
 	void add_overlay_location(std::set<map_location>& locations);
 private:
@@ -403,8 +402,7 @@ void halo_impl::unrender(std::set<map_location> invalidated_locations)
 			// Test all haloes not yet in the set
 			// which match one of the locations
 			if(invalidated_haloes.find(itor->first) == invalidated_haloes.end() &&
-					(itor->second.location_not_known() ||
-					itor->second.on_location(invalidated_locations))) {
+			   (itor->second.location_not_known() || itor->second.on_location(invalidated_locations))) {
 
 				// If found, add all locations which the halo invalidates,
 				// and add it to the set

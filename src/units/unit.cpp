@@ -1180,7 +1180,7 @@ void unit::expire_modifications(const std::string& duration)
 {
 	// If any modifications expire, then we will need to rebuild the unit.
 	const unit_type* rebuild_from = nullptr;
-
+ 	int hp = hit_points_;
 	// Loop through all types of modifications.
 	for(const auto& mod_name : ModificationTypes) {
 		// Loop through all modifications of this type.
@@ -1207,6 +1207,7 @@ void unit::expire_modifications(const std::string& duration)
 	if(rebuild_from != nullptr) {
 		anim_comp_->clear_haloes();
 		advance_to(*rebuild_from);
+		hit_points_ = hp;
 	}
 }
 
