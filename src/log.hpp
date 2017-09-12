@@ -44,6 +44,8 @@
 
 #pragma once
 
+#include "global.hpp"
+
 #ifndef __func__
  #ifdef __FUNCTION__
   #define __func__ __FUNCTION__
@@ -164,8 +166,8 @@ public:
 	}
 	void do_indent() const;
 private:
-	void do_log_entry(log_domain const &domain, const std::string& str);
-	void do_log_exit();
+	void do_log_entry(log_domain const &domain, const std::string& str) NOEXCEPT;
+	void do_log_exit() NOEXCEPT;
 };
 
 /**

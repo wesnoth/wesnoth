@@ -237,18 +237,23 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool
 	}
 }
 
-void scope_logger::do_log_entry(log_domain const &domain, const std::string& str)
+void scope_logger::do_log_entry(log_domain const &domain, const std::string& str) NOEXCEPT
 {
 	output_ = &debug()(domain, false, true);
 	str_ = str;
-	ticks_ = boost::posix_time::microsec_clock::local_time();
+	try {
+		ticks_ = boost::posix_time::microsec_clock::local_time();
+	} catch(...) {}
 	(*output_) << "{ BEGIN: " << str_ << "\n";
 	++indent;
 }
 
-void scope_logger::do_log_exit()
+void scope_logger::do_log_exit() NOEXCEPT
 {
-	const long ticks = (boost::posix_time::microsec_clock::local_time() - ticks_).total_milliseconds();
+	long ticks = 0;
+	try {
+		ticks = (boost::posix_time::microsec_clock::local_time() - ticks_).total_milliseconds();
+	} catch(...) {}
 	--indent;
 	do_indent();
 	if (timestamp) (*output_) << get_timestamp(time(nullptr));
