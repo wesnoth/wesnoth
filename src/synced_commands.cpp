@@ -34,7 +34,7 @@
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "formula/string_utils.hpp"  
-#include "units/animation_componant.cpp"
+#include "units/animation_component.cpp"
 #include "units/types.hpp"
 #include "units/udisplay.hpp"
 #include "font/standard_colors.hpp"
