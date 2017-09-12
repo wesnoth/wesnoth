@@ -251,7 +251,7 @@ struct hotkey_command_temp {
 	/// description, tooltip are untranslated
 	const char* description;
 
-	bool hidden, toggle;
+	bool hidden;
 
 	hk_scopes scope;
 	HOTKEY_CATEGORY category;
