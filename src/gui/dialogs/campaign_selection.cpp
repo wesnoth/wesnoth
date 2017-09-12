@@ -296,11 +296,11 @@ void campaign_selection::add_campaign_to_tree(window& window, const config& camp
 	if(campaign["completed"].to_bool()) {
 		config::const_child_itors difficulties = campaign.child_range("difficulty");
 
-		auto did_complete_at = [&difficulties](config::const_child_iterator i) {
-			return i == difficulties.end() ? false : (*i)["completed_at"].to_bool();
-		};
+		auto did_complete_at = [](const config& c) { return c["completed_at"].to_bool(); };
 
-		const bool has_multiple_difficulties = difficulties.size() > 1;
+		// Check for non-completion on every difficulty save the first.
+		const bool only_first_completed = difficulties.size() > 1 &&
+			std::none_of(difficulties.begin() + 1, difficulties.end(), did_complete_at);
 
 		/*
 		 * Criteria:
@@ -308,14 +308,14 @@ void campaign_selection::add_campaign_to_tree(window& window, const config& camp
 		 * - Use the gold laurel (hardest) for campaigns with only one difficulty OR
 		 *   if out of two or more difficulties, the last one has been completed.
 		 *
-		 * - Use the bronze laurel (easiest) if the first difficulty out of two or more
-		 *   has been completed.
+		 * - Use the bronze laurel (easiest) only if the first difficulty out of two
+		 *   or more has been completed.
 		 *
 		 * - Use the silver laurel otherwise.
 		 */
-		if(difficulties.size() == 1 || (has_multiple_difficulties && did_complete_at(difficulties.end() - 1))) {
+		if(!difficulties.empty() && did_complete_at(difficulties.back())) {
 			item["label"] = game_config::images::victory_laurel_hardest;
-		} else if(has_multiple_difficulties && did_complete_at(difficulties.begin())) {
+		} else if(only_first_completed && did_complete_at(difficulties.front())) {
 			item["label"] = game_config::images::victory_laurel_easy;
 		} else {
 			item["label"] = game_config::images::victory_laurel;
