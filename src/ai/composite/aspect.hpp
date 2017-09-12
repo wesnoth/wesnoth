@@ -146,11 +146,11 @@ public:
 			}
 
 			if (!valid_variant_ && valid_ ) {
-				value_variant_ = std::shared_ptr<wfl::variant>(new wfl::variant(variant_value_translator<T>::value_to_variant(this->get())));
+				value_variant_.reset(new wfl::variant(variant_value_translator<T>::value_to_variant(this->get())));
 				valid_variant_ = true;
 			} else if (!valid_variant_ && valid_lua_) {
 				value_ = value_lua_->get();
-				value_variant_ = std::shared_ptr<wfl::variant>(new wfl::variant(variant_value_translator<T>::value_to_variant(this->get())));
+				value_variant_.reset(new wfl::variant(variant_value_translator<T>::value_to_variant(this->get())));
 				valid_variant_ = true; // @note: temporary workaround
 			} else {
 				assert(valid_variant_);
@@ -171,7 +171,7 @@ public:
 
 			if (!valid_ ) {
 				if (valid_variant_) {
-					value_ = std::shared_ptr<T>(new T(variant_value_translator<T>::variant_to_value(get_variant())));
+					value_.reset(new T(variant_value_translator<T>::variant_to_value(get_variant())));
 					valid_ = true;
 				} else if (valid_lua_){
 					value_ = value_lua_->get();
@@ -309,13 +309,13 @@ public:
 		///@todo 1.9 optimize in case of an aspect which returns variant
 		for(const auto& f : boost::adaptors::reverse(facets_)) {
 			if (f->active()) {
-				this->value_ = std::shared_ptr<T>(f->get_ptr());
+				this->value_ = f->get_ptr();
 				this->valid_ = true;
 				return;
 			}
 		}
 		if (default_) {
-			this->value_ = std::shared_ptr<T>(default_->get_ptr());
+			this->value_ = default_->get_ptr();
 			this->valid_ = true;
 		}
 	}
@@ -442,7 +442,7 @@ public:
 			// error
 			return;
 		}
-		handler_ = std::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
+		handler_.reset(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
 	}
 
 	void recalculate() const

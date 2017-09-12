@@ -177,7 +177,7 @@ void target_location_goal::on_create()
 	}
 	const config &criteria = cfg_.child("criteria");
 	if (criteria) {
-		filter_ptr_ = std::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),resources::filter_con));
+		filter_ptr_.reset(new terrain_filter(vconfig(criteria),resources::filter_con));
 	}
 }
 
@@ -228,7 +228,7 @@ void protect_goal::on_create()
 	}
 	const config &criteria = cfg_.child("criteria");
 	if (criteria) {
-		filter_ptr_ = std::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),resources::filter_con));
+		filter_ptr_.reset(new terrain_filter(vconfig(criteria),resources::filter_con));
 	}
 
 
@@ -320,13 +320,12 @@ lua_goal::lua_goal(readonly_context &context, const config &cfg)
 
 void lua_goal::on_create(std::shared_ptr<ai::lua_ai_context> l_ctx)
 {
-	handler_ = std::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
+	handler_.reset(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
 }
 
 void lua_goal::add_targets(std::back_insert_iterator< std::vector< target > > target_list)
 {
-	std::shared_ptr< lua_object< std::vector < target > > > l_obj
-		= std::shared_ptr< lua_object< std::vector < target > > >(new lua_object< std::vector < target > >());
+	std::shared_ptr<lua_object<std::vector<target>>> l_obj = std::make_shared<lua_object<std::vector<target>>>();
 	config c(cfg_.child_or_empty("args"));
 	handler_->handle(c, true, l_obj);
 	try {

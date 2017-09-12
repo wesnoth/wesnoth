@@ -97,7 +97,7 @@ void holder::init( side_number side )
 		default_ai_context_.reset(new default_ai_context_impl(*readwrite_context_,cfg_));
 	}
 	if (!this->ai_){
-		ai_ = std::shared_ptr<ai_composite>(new ai_composite(*default_ai_context_,cfg_));
+		ai_.reset(new ai_composite(*default_ai_context_,cfg_));
 	}
 
 	if (this->ai_) {

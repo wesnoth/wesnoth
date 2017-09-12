@@ -1232,7 +1232,7 @@ future_map_if_active::~future_map_if_active()
 
 real_map::real_map():
 		initial_planned_unit_map_(resources::whiteboard && resources::whiteboard->has_planned_unit_map()),
-		unit_map_lock_(resources::whiteboard ? resources::whiteboard->unit_map_lock_ : std::shared_ptr<bool>(new bool(false)))
+		unit_map_lock_(resources::whiteboard ? resources::whiteboard->unit_map_lock_ : std::make_shared<bool>(false))
 {
 	if (!resources::whiteboard)
 		return;

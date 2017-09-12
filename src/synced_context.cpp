@@ -257,11 +257,11 @@ std::shared_ptr<randomness::rng> synced_context::get_rng_for_action()
 	const std::string& mode = resources::classification->random_mode;
 	if(mode == "deterministic")
 	{
-		return std::shared_ptr<randomness::rng>(new randomness::rng_deterministic(resources::gamedata->rng()));
+		return std::make_shared<randomness::rng_deterministic>(resources::gamedata->rng());
 	}
 	else
 	{
-		return std::shared_ptr<randomness::rng>(new randomness::synced_rng(generate_random_seed));
+		return std::make_shared<randomness::synced_rng>(generate_random_seed);
 	}
 }
 

@@ -435,7 +435,7 @@ aspect_attacks_lua::aspect_attacks_lua(readonly_context &context, const config &
 		// error
 		return;
 	}
-	handler_ = std::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
+	handler_.reset(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
 }
 
 void aspect_attacks_lua::recalculate() const

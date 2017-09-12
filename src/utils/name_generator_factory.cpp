@@ -38,7 +38,7 @@ void name_generator_factory::add_name_generator_from_config(const config& config
 
 	if(config.has_attribute(cfg_name)) {
 		try {
-			name_generators_[id] = std::shared_ptr<name_generator>(new context_free_grammar_generator(config[cfg_name]));
+			name_generators_[id].reset(new context_free_grammar_generator(config[cfg_name]));
 			return;
 		}
 		catch (const name_generator_invalid_exception& ex) {
@@ -50,7 +50,7 @@ void name_generator_factory::add_name_generator_from_config(const config& config
 		config::attribute_value markov_name_list = config[markov_name];
 
 		if(!markov_name_list.blank()) {
-			name_generators_[id] = std::shared_ptr<name_generator>(new markov_generator(utils::split(markov_name_list), config["markov_chain_size"].to_int(2), 12));
+			name_generators_[id].reset(new markov_generator(utils::split(markov_name_list), config["markov_chain_size"].to_int(2), 12));
 		}
 	}
 }
@@ -59,7 +59,7 @@ std::shared_ptr<name_generator> name_generator_factory::get_name_generator() {
 	std::map<std::string, std::shared_ptr<name_generator>>::const_iterator it = name_generators_.find("");
 	if(it == name_generators_.end()) {
 		//create a dummy instance, which always returns the empty string
-		return std::shared_ptr<name_generator>(new name_generator( ));
+		return std::make_shared<name_generator>();
 	}
 
 	return it->second;

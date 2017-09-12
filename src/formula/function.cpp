@@ -86,7 +86,7 @@ private:
 		std::shared_ptr<formula_debugger> fdbp;
 		bool need_wrapper = false;
 		if (fdb==nullptr) {
-			fdbp = std::shared_ptr<formula_debugger>(new formula_debugger());
+			fdbp.reset(new formula_debugger());
 			fdb = &*fdbp;
 			need_wrapper = true;
 
