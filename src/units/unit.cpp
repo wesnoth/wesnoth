@@ -1207,7 +1207,7 @@ void unit::expire_modifications(const std::string& duration)
 	if(rebuild_from != nullptr) {
 		anim_comp_->clear_haloes();
 		advance_to(*rebuild_from);
-		hit_points_ = hp;	
+		hit_points_ = hp;
 	}
 }
 
