@@ -64,6 +64,10 @@ void generator_settings::pre_show(window& window)
 	update_width_label_  = gui2::bind_status_label<slider>(&window, "width");
 	update_height_label_ = gui2::bind_status_label<slider>(&window, "height");
 
+	// Update min size initially.
+	// Do this *after* assigning the 'update_*_label_` functions or the game will crash!
+	adjust_minimum_size_by_players(window);
+
 	gui2::bind_status_label<slider>(&window, "villages", [](slider& s)->std::string { return formatter() << s.get_value() << _("/1000 tiles"); });
 	gui2::bind_status_label<slider>(&window, "castle_size");
 	gui2::bind_status_label<slider>(&window, "landform", [](slider& s)->std::string {
