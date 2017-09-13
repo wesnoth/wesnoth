@@ -104,6 +104,16 @@ void scrollbar_base::scroll(const scroll_mode scroll)
 		default:
 			assert(false);
 	}
+
+	/*
+	 * @note I'm not sure if this should be in @ref set_item_position, but right now it
+	 * causes weird viewport issues with listboxes. Selecting certain items makes the
+	 * viewport to jump to the top, likely having to do with @ref recalculate dispatching
+	 * an event (since it calls set_item_position). This seems like a safe spot for now.
+	 *
+	 * -- vultraz, 2017-09-13
+	 */
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
 void scrollbar_base::place(const point& origin, const point& size)
@@ -152,7 +162,10 @@ void scrollbar_base::set_item_position(const unsigned item_position)
 
 	assert(item_position_ <= item_count_ - visible_items_);
 
+#if 0
+	/** See comment in @ref scroll for more info. */
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
+#endif
 }
 
 void scrollbar_base::update_canvas()
