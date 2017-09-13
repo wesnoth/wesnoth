@@ -271,6 +271,8 @@ hotkey_command_temp hotkey_list_[] {
 	{ HOTKEY_NULL, "null", N_("Unrecognized Command"), true, SCOPE_COUNT, HKCAT_PLACEHOLDER, "" }
 };
 
+std::set<HOTKEY_COMMAND> toggle_commands = {HOTKEY_SCROLL_UP, HOTKEY_SCROLL_DOWN, HOTKEY_SCROLL_LEFT, HOTKEY_SCROLL_RIGHT};
+
 // contains copies of hotkey_list_ and all current active wml menu hotkeys
 // maybe known_hotkeys is not a fitting name anymore.
 boost::ptr_vector<hotkey::hotkey_command> known_hotkeys;
@@ -389,7 +391,7 @@ void add_wml_hotkey(const std::string& id, const t_string& description, const co
 			remove_wml_hotkey(id);
 		}
 		DBG_G << "Added wml hotkey with id = '" << id << "' and description = '" << description << "'.\n";
-		known_hotkeys.push_back(new hotkey_command(hotkey::HOTKEY_WML, id, description, false, scope_game, HKCAT_CUSTOM, t_string("")));
+		known_hotkeys.push_back(new hotkey_command(hotkey::HOTKEY_WML, id, description, false, false, scope_game, HKCAT_CUSTOM, t_string("")));
 
 		command_map_[id] = known_hotkeys.size() - 1;
 
@@ -410,17 +412,8 @@ void add_wml_hotkey(const std::string& id, const t_string& description, const co
 	}
 }
 
-
-
-
-hotkey_command::hotkey_command()
-	: id(HOTKEY_NULL), command(""), description(""), hidden(true), scope(), category(), tooltip("")
-{
-	ERR_G << "hotkey_command's default constructor called. This shouldn't happen, because all its members are const.";
-}
-
-hotkey_command::hotkey_command(hotkey::HOTKEY_COMMAND cmd, const std::string& id_, const t_string& desc, bool hid, hotkey::hk_scopes scop, hotkey::HOTKEY_CATEGORY cat, const t_string& toolt)
-	: id(cmd), command(id_), description(desc), hidden(hid), scope(scop), category(cat), tooltip(toolt)
+hotkey_command::hotkey_command(hotkey::HOTKEY_COMMAND cmd, const std::string& id_, const t_string& desc, bool hid, bool tog, hotkey::hk_scopes scop, hotkey::HOTKEY_CATEGORY cat, const t_string& toolt)
+	: id(cmd), command(id_), description(desc), hidden(hid), toggle(tog), scope(scop), category(cat), tooltip(toolt)
 {
 }
 
@@ -496,7 +489,7 @@ void init_hotkey_commands()  {
 	size_t i = 0;
 	for(hotkey_command_temp& cmd : hotkey_list_)
 	{
-		known_hotkeys.push_back( new hotkey_command(cmd.id, cmd.command, t_string(cmd.description, "wesnoth-lib"), cmd.hidden, cmd.scope, cmd.category, t_string(cmd.tooltip, "wesnoth-lib")));
+		known_hotkeys.push_back(new hotkey_command(cmd.id, cmd.command, t_string(cmd.description, "wesnoth-lib"), cmd.hidden, toggle_commands.count(cmd.id) > 0, cmd.scope, cmd.category, t_string(cmd.tooltip, "wesnoth-lib")));
 		command_map_[cmd.command] = i;
 		i++;
 	}

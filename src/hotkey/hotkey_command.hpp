@@ -211,10 +211,8 @@ typedef std::bitset<SCOPE_COUNT> hk_scopes;
 /// this is currently a semi struct: it haves a constructor, but only const-public members.
 struct hotkey_command {
 public:
-	/// the compiler want me to make a default constructor
-	/// since most member are const, calling the default constructor is normally no use.
-	hotkey_command();
-	hotkey_command(HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, hk_scopes scope, HOTKEY_CATEGORY category, const t_string& tooltip);
+	hotkey_command() = delete;
+	hotkey_command(HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, bool toggle, hk_scopes scope, HOTKEY_CATEGORY category, const t_string& tooltip);
 	/// the names are strange: the "hotkey::HOTKEY_COMMAND" is named id, and the string to identify the object is called "command"
 	/// there is some inconstancy with that names in this file.
 	/// This binds the command to a function. Does not need to be unique.
@@ -225,6 +223,9 @@ public:
 	const t_string description;
 	/// If hidden then don't show the command in the hotkey preferences.
 	const bool hidden;
+	/// Toggle hotkeys have some restrictions on what can be bound to them.
+	/// They require a binding that has two states, "pressed" and "released".
+	const bool toggle;
 	/// The visibility scope of the command.
 	const hk_scopes scope;
 	/// The category of the command.
