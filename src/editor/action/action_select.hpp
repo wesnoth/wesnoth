@@ -27,24 +27,31 @@
 
 #include "editor/action/action.hpp"
 
-
-namespace editor {
-
+namespace editor
+{
 /**
  * Select the given locations
  */
 class editor_action_select : public editor_action_area
 {
-	public:
-		editor_action_select(const std::set<map_location>& area)
+public:
+	editor_action_select(const std::set<map_location>& area)
 		: editor_action_area(area)
-		{
-		}
-		editor_action_select* clone() const;
-		void extend(const editor_map& map, const std::set<map_location>& locs);
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "select"; }
+	{
+	}
+
+	editor_action_select* clone() const;
+
+	void extend(const editor_map& map, const std::set<map_location>& locs);
+
+	editor_action* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	const char* get_name() const
+	{
+		return "select";
+	}
 };
 
 /**
@@ -53,14 +60,23 @@ class editor_action_select : public editor_action_area
 class editor_action_deselect : public editor_action_area
 {
 public:
-	editor_action_deselect(const std::set<map_location>& area) :
-		editor_action_area(area) {}
+	editor_action_deselect(const std::set<map_location>& area)
+		: editor_action_area(area)
+	{
+	}
 
 	editor_action_deselect* clone() const;
+
 	void extend(const editor_map& map, const std::set<map_location>& locs);
+
 	editor_action* perform(map_context& mc) const;
+
 	void perform_without_undo(map_context& mc) const;
-	const char* get_name() const { return "deselect"; }
+
+	const char* get_name() const
+	{
+		return "deselect";
+	}
 };
 
 /**
@@ -68,14 +84,21 @@ public:
  */
 class editor_action_select_all : public editor_action
 {
-	public:
-		editor_action_select_all()
-		{
-		}
-		editor_action_select_all* clone() const;
-		editor_action_select* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "select_all"; }
+public:
+	editor_action_select_all()
+	{
+	}
+
+	editor_action_select_all* clone() const;
+
+	editor_action_select* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	const char* get_name() const
+	{
+		return "select_all";
+	}
 };
 
 /**
@@ -83,14 +106,21 @@ class editor_action_select_all : public editor_action
  */
 class editor_action_select_none : public editor_action
 {
-	public:
-		editor_action_select_none()
-		{
-		}
-		editor_action_select_none* clone() const;
-		editor_action_select* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "select_none"; }
+public:
+	editor_action_select_none()
+	{
+	}
+
+	editor_action_select_none* clone() const;
+
+	editor_action_select* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	const char* get_name() const
+	{
+		return "select_none";
+	}
 };
 
 /**
@@ -98,16 +128,21 @@ class editor_action_select_none : public editor_action
  */
 class editor_action_select_inverse : public editor_action
 {
-	public:
-		editor_action_select_inverse()
-		{
-		}
-		editor_action_select_inverse* clone() const;
-		editor_action_select_inverse* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "select_inverse"; }
+public:
+	editor_action_select_inverse()
+	{
+	}
+
+	editor_action_select_inverse* clone() const;
+
+	editor_action_select_inverse* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	const char* get_name() const
+	{
+		return "select_inverse";
+	}
 };
 
-
-
-} //end namespace editor
+} // end namespace editor

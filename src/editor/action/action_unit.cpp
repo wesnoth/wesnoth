@@ -17,18 +17,18 @@
  * Editor unit action class
  */
 
-//TODO is a textdomain needed?
+// TODO is a textdomain needed?
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor/action/action_unit.hpp"
 
 #include "editor/map/map_context.hpp"
 
-#include "units/unit.hpp"
 #include "units/animation_component.hpp"
+#include "units/unit.hpp"
 
-namespace editor {
-
+namespace editor
+{
 editor_action_unit* editor_action_unit::clone() const
 {
 	return new editor_action_unit(*this);
@@ -43,11 +43,10 @@ editor_action* editor_action_unit::perform(map_context& mc) const
 
 void editor_action_unit::perform_without_undo(map_context& mc) const
 {
-	mc.get_units().add(loc_,u_);
+	mc.get_units().add(loc_, u_);
 	mc.get_units().find(loc_)->set_location(loc_);
 	mc.add_changed_location(loc_);
 }
-
 
 editor_action_unit_delete* editor_action_unit_delete::clone() const
 {
@@ -60,24 +59,24 @@ editor_action* editor_action_unit_delete::perform(map_context& mc) const
 	unit_map::const_unit_iterator unit_it = units.find(loc_);
 
 	std::unique_ptr<editor_action> undo;
-	if (unit_it != units.end()) {
+	if(unit_it != units.end()) {
 		undo.reset(new editor_action_unit(loc_, *unit_it));
 		perform_without_undo(mc);
 		return undo.release();
 	}
+
 	return nullptr;
 }
 
 void editor_action_unit_delete::perform_without_undo(map_context& mc) const
 {
 	unit_map& units = mc.get_units();
-	if (!units.erase(loc_)) {
+	if(!units.erase(loc_)) {
 		ERR_ED << "Could not delete unit on " << loc_ << std::endl;
 	} else {
 		mc.add_changed_location(loc_);
 	}
 }
-
 
 editor_action_unit_replace* editor_action_unit_replace::clone() const
 {
@@ -99,7 +98,8 @@ void editor_action_unit_replace::perform_without_undo(map_context& mc) const
 	unit::clear_status_caches();
 
 	unit& u = *units.find(new_loc_);
-	//TODO do we still need set_standing?
+
+	// TODO do we still need set_standing?
 	u.anim_comp().set_standing();
 
 	mc.add_changed_location(loc_);
@@ -111,11 +111,10 @@ void editor_action_unit_replace::perform_without_undo(map_context& mc) const
 	}
 	*/
 
-//TODO check if that is useful
-//	resources::screen->invalidate_unit_after_move(loc_, new_loc_);
-//	resources::screen->draw();
+	// TODO check if that is useful
+	//	resources::screen->invalidate_unit_after_move(loc_, new_loc_);
+	//	resources::screen->draw();
 }
-
 
 editor_action_unit_facing* editor_action_unit_facing::clone() const
 {
@@ -134,11 +133,10 @@ void editor_action_unit_facing::perform_without_undo(map_context& mc) const
 	unit_map& units = mc.get_units();
 	unit_map::unit_iterator unit_it = units.find(loc_);
 
-	if (unit_it != units.end()) {
+	if(unit_it != units.end()) {
 		unit_it->set_facing(new_direction_);
 		unit_it->anim_comp().set_standing();
 	}
 }
 
-
-} //end namespace editor
+} // end namespace editor

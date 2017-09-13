@@ -21,8 +21,8 @@
 #include "editor/action/action_select.hpp"
 #include "editor/map/map_context.hpp"
 
-namespace editor {
-
+namespace editor
+{
 editor_action_select* editor_action_select::clone() const
 {
 	return new editor_action_select(*this);
@@ -30,7 +30,7 @@ editor_action_select* editor_action_select::clone() const
 
 void editor_action_select::extend(const editor_map& /*map*/, const std::set<map_location>& locs)
 {
-	for (const map_location& loc : locs) {
+	for(const map_location& loc : locs) {
 		LOG_ED << "Extending by " << loc << "\n";
 		area_.insert(loc);
 	}
@@ -39,18 +39,18 @@ void editor_action_select::extend(const editor_map& /*map*/, const std::set<map_
 editor_action* editor_action_select::perform(map_context& mc) const
 {
 	std::set<map_location> undo_locs;
-	for (const map_location& loc : area_) {
+	for(const map_location& loc : area_) {
 		undo_locs.insert(loc);
 		mc.add_changed_location(loc);
 	}
+
 	perform_without_undo(mc);
 	return new editor_action_select(undo_locs);
 }
 
 void editor_action_select::perform_without_undo(map_context& mc) const
 {
-	for (const map_location& loc : area_) {
-
+	for(const map_location& loc : area_) {
 		mc.get_map().add_to_selection(loc);
 		mc.add_changed_location(loc);
 	}
@@ -63,9 +63,9 @@ editor_action_deselect* editor_action_deselect::clone() const
 
 void editor_action_deselect::extend(const editor_map& map, const std::set<map_location>& locs)
 {
-	for (const map_location& loc : locs) {
+	for(const map_location& loc : locs) {
 		LOG_ED << "Checking " << loc << "\n";
-		if (!map.in_selection(loc)) {
+		if(!map.in_selection(loc)) {
 			LOG_ED << "Extending by " << loc << "\n";
 			area_.insert(loc);
 		}
@@ -75,19 +75,20 @@ void editor_action_deselect::extend(const editor_map& map, const std::set<map_lo
 editor_action* editor_action_deselect::perform(map_context& mc) const
 {
 	std::set<map_location> undo_locs;
-	for (const map_location& loc : area_) {
-		if (mc.get_map().in_selection(loc)) {
+	for(const map_location& loc : area_) {
+		if(mc.get_map().in_selection(loc)) {
 			undo_locs.insert(loc);
 			mc.add_changed_location(loc);
 		}
 	}
+
 	perform_without_undo(mc);
 	return new editor_action_select(undo_locs);
 }
 
 void editor_action_deselect::perform_without_undo(map_context& mc) const
 {
-	for (const map_location& loc : area_) {
+	for(const map_location& loc : area_) {
 		mc.get_map().remove_from_selection(loc);
 		mc.add_changed_location(loc);
 	}
@@ -102,11 +103,13 @@ editor_action_select* editor_action_select_all::perform(map_context& mc) const
 {
 	std::set<map_location> current = mc.get_map().selection();
 	mc.get_map().select_all();
+
 	std::set<map_location> all = mc.get_map().selection();
 	std::set<map_location> undo_locs;
-	std::set_difference(all.begin(), all.end(),
-		current.begin(), current.end(),
-		std::inserter(undo_locs, undo_locs.begin()));
+
+	std::set_difference(
+		all.begin(), all.end(), current.begin(), current.end(), std::inserter(undo_locs, undo_locs.begin()));
+
 	mc.set_everything_changed();
 	return new editor_action_select(undo_locs);
 }
@@ -153,5 +156,4 @@ void editor_action_select_inverse::perform_without_undo(map_context& mc) const
 	mc.set_everything_changed();
 }
 
-
-} //end namespace editor
+} // end namespace editor

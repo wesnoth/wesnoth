@@ -29,45 +29,74 @@
 #include "editor/action/action.hpp"
 #include "map/map.hpp"
 
-namespace editor {
-
+namespace editor
+{
 /**
  * Set label action
  */
 class editor_action_label : public editor_action_location
 {
-	public:
-		editor_action_label(map_location loc, const std::string& text, const std::string& team_name,
-				color_t color, bool visible_fog, bool visible_shroud, bool immutable, std::string category)
-		: editor_action_location(loc), text_(text) , team_name_(team_name), category_(category), color_(color)
-		, visible_fog_(visible_fog), visible_shroud_(visible_shroud), immutable_(immutable)
-		{
-		}
-		editor_action_label* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "label"; }
-	protected:
-		const std::string text_;
-		const std::string team_name_;
-		const std::string category_;
-		color_t color_;
-		bool visible_fog_;
-		bool visible_shroud_;
-		bool immutable_;
+public:
+	editor_action_label(map_location loc,
+			const std::string& text,
+			const std::string& team_name,
+			color_t color,
+			bool visible_fog,
+			bool visible_shroud,
+			bool immutable,
+			std::string category)
+		: editor_action_location(loc)
+		, text_(text)
+		, team_name_(team_name)
+		, category_(category)
+		, color_(color)
+		, visible_fog_(visible_fog)
+		, visible_shroud_(visible_shroud)
+		, immutable_(immutable)
+	{
+	}
+
+	editor_action_label* clone() const;
+
+	editor_action* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	const char* get_name() const
+	{
+		return "label";
+	}
+
+protected:
+	const std::string text_;
+	const std::string team_name_;
+	const std::string category_;
+
+	color_t color_;
+
+	bool visible_fog_;
+	bool visible_shroud_;
+	bool immutable_;
 };
 
 class editor_action_label_delete : public editor_action_location
 {
-	public:
-		editor_action_label_delete(map_location loc)
+public:
+	editor_action_label_delete(map_location loc)
 		: editor_action_location(loc)
-		{
-		}
-		editor_action_label_delete* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "label_delete"; }
+	{
+	}
+
+	editor_action_label_delete* clone() const;
+
+	editor_action* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	const char* get_name() const
+	{
+		return "label_delete";
+	}
 };
 
-} //end namespace editor
+} // end namespace editor

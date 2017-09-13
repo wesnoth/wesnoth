@@ -29,26 +29,33 @@
 
 #include "units/unit.hpp"
 
-namespace editor {
-
-
+namespace editor
+{
 /**
  * place a new unit on the map
  */
 class editor_action_unit : public editor_action_location
 {
-	public:
-		editor_action_unit(map_location loc,
-				const unit& u)
-		: editor_action_location(loc), u_(u)
-		{
-		}
-		editor_action_unit* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "unit"; }
-	protected:
-		unit u_;
+public:
+	editor_action_unit(map_location loc, const unit& u)
+		: editor_action_location(loc)
+		, u_(u)
+	{
+	}
+
+	editor_action_unit* clone() const;
+
+	editor_action* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	const char* get_name() const
+	{
+		return "unit";
+	}
+
+protected:
+	unit u_;
 };
 
 /**
@@ -56,47 +63,73 @@ class editor_action_unit : public editor_action_location
  */
 class editor_action_unit_delete : public editor_action_location
 {
-	public:
-		editor_action_unit_delete(map_location loc)
+public:
+	editor_action_unit_delete(map_location loc)
 		: editor_action_location(loc)
-		{
-		}
-		editor_action_unit_delete* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "unit_delete"; }
+	{
+	}
+
+	editor_action_unit_delete* clone() const;
+
+	editor_action* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	const char* get_name() const
+	{
+		return "unit_delete";
+	}
 };
 
 class editor_action_unit_replace : public editor_action_location
 {
-	public:
-		editor_action_unit_replace(map_location loc, map_location new_loc)
-		: editor_action_location(loc), new_loc_(new_loc)
-		{
-		}
-		editor_action_unit_replace* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "unit_replace"; }
-	protected:
-		map_location new_loc_;
+public:
+	editor_action_unit_replace(map_location loc, map_location new_loc)
+		: editor_action_location(loc)
+		, new_loc_(new_loc)
+	{
+	}
+
+	editor_action_unit_replace* clone() const;
+
+	editor_action* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	const char* get_name() const
+	{
+		return "unit_replace";
+	}
+
+protected:
+	map_location new_loc_;
 };
 
 class editor_action_unit_facing : public editor_action_location
 {
-	public:
-	editor_action_unit_facing(map_location loc, map_location::DIRECTION new_direction, map_location::DIRECTION old_direction)
-	: editor_action_location(loc), new_direction_(new_direction), old_direction_(old_direction)
+public:
+	editor_action_unit_facing(
+			map_location loc, map_location::DIRECTION new_direction, map_location::DIRECTION old_direction)
+		: editor_action_location(loc)
+		, new_direction_(new_direction)
+		, old_direction_(old_direction)
 	{
 	}
+
 	editor_action_unit_facing* clone() const;
+
 	editor_action* perform(map_context& mc) const;
+
 	void perform_without_undo(map_context& mc) const;
-	const char* get_name() const { return "unit_facing"; }
+
+	const char* get_name() const
+	{
+		return "unit_facing";
+	}
+
 protected:
 	map_location::DIRECTION new_direction_;
 	map_location::DIRECTION old_direction_;
 };
 
-
-} //end namespace editor
+} // end namespace editor

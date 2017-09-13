@@ -27,25 +27,33 @@
 
 #include "editor/action/action.hpp"
 
-
-namespace editor {
-
+namespace editor
+{
 /**
  * Sets the ownership of a village to the current side.
  */
 class editor_action_village : public editor_action_location
 {
-	public:
-		editor_action_village(map_location loc, int side_number)
-		: editor_action_location(loc), side_number_(side_number)
-		{
-		}
-		editor_action_village* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "village"; }
-	private:
-		int side_number_;
+public:
+	editor_action_village(map_location loc, int side_number)
+		: editor_action_location(loc)
+		, side_number_(side_number)
+	{
+	}
+
+	editor_action_village* clone() const;
+
+	editor_action* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	const char* get_name() const
+	{
+		return "village";
+	}
+
+private:
+	int side_number_;
 };
 
 /**
@@ -53,16 +61,22 @@ class editor_action_village : public editor_action_location
  */
 class editor_action_village_delete : public editor_action_location
 {
-	public:
-		editor_action_village_delete(map_location loc)
+public:
+	editor_action_village_delete(map_location loc)
 		: editor_action_location(loc)
-		{
-		}
-		editor_action_village_delete* clone() const;
-		editor_action* perform(map_context& mc) const;
-		void perform_without_undo(map_context& mc) const;
-		const char* get_name() const { return "village_delete"; }
+	{
+	}
+
+	editor_action_village_delete* clone() const;
+
+	editor_action* perform(map_context& mc) const;
+
+	void perform_without_undo(map_context& mc) const;
+
+	const char* get_name() const
+	{
+		return "village_delete";
+	}
 };
 
-
-} //end namespace editor
+} // end namespace editor
