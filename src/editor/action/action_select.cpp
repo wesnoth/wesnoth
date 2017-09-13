@@ -23,10 +23,7 @@
 
 namespace editor
 {
-editor_action_select* editor_action_select::clone() const
-{
-	return new editor_action_select(*this);
-}
+IMPLEMENT_ACTION(select)
 
 void editor_action_select::extend(const editor_map& /*map*/, const std::set<map_location>& locs)
 {
@@ -56,10 +53,7 @@ void editor_action_select::perform_without_undo(map_context& mc) const
 	}
 }
 
-editor_action_deselect* editor_action_deselect::clone() const
-{
-	return new editor_action_deselect(*this);
-}
+IMPLEMENT_ACTION(deselect)
 
 void editor_action_deselect::extend(const editor_map& map, const std::set<map_location>& locs)
 {
@@ -94,10 +88,7 @@ void editor_action_deselect::perform_without_undo(map_context& mc) const
 	}
 }
 
-editor_action_select_all* editor_action_select_all::clone() const
-{
-	return new editor_action_select_all(*this);
-}
+IMPLEMENT_ACTION(select_all)
 
 editor_action_select* editor_action_select_all::perform(map_context& mc) const
 {
@@ -120,10 +111,7 @@ void editor_action_select_all::perform_without_undo(map_context& mc) const
 	mc.set_everything_changed();
 }
 
-editor_action_select_none* editor_action_select_none::clone() const
-{
-	return new editor_action_select_none(*this);
-}
+IMPLEMENT_ACTION(select_none)
 
 editor_action_select* editor_action_select_none::perform(map_context& mc) const
 {
@@ -139,10 +127,7 @@ void editor_action_select_none::perform_without_undo(map_context& mc) const
 	mc.set_everything_changed();
 }
 
-editor_action_select_inverse* editor_action_select_inverse::clone() const
-{
-	return new editor_action_select_inverse(*this);
-}
+IMPLEMENT_ACTION(select_inverse)
 
 editor_action_select_inverse* editor_action_select_inverse::perform(map_context& mc) const
 {

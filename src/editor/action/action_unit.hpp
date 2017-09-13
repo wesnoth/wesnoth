@@ -43,16 +43,15 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_unit* clone() const;
 
 	editor_action* perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "unit";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 
 protected:
 	unit u_;
@@ -69,16 +68,15 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_unit_delete* clone() const;
 
 	editor_action* perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "unit_delete";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 };
 
 class editor_action_unit_replace : public editor_action_location
@@ -90,16 +88,15 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_unit_replace* clone() const;
 
 	editor_action* perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "unit_replace";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 
 protected:
 	map_location new_loc_;
@@ -116,16 +113,15 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_unit_facing* clone() const;
 
 	editor_action* perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "unit_facing";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 
 protected:
 	map_location::DIRECTION new_direction_;

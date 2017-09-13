@@ -29,10 +29,7 @@
 
 namespace editor
 {
-editor_action_unit* editor_action_unit::clone() const
-{
-	return new editor_action_unit(*this);
-}
+IMPLEMENT_ACTION(unit)
 
 editor_action* editor_action_unit::perform(map_context& mc) const
 {
@@ -48,10 +45,7 @@ void editor_action_unit::perform_without_undo(map_context& mc) const
 	mc.add_changed_location(loc_);
 }
 
-editor_action_unit_delete* editor_action_unit_delete::clone() const
-{
-	return new editor_action_unit_delete(*this);
-}
+IMPLEMENT_ACTION(unit_delete)
 
 editor_action* editor_action_unit_delete::perform(map_context& mc) const
 {
@@ -78,10 +72,7 @@ void editor_action_unit_delete::perform_without_undo(map_context& mc) const
 	}
 }
 
-editor_action_unit_replace* editor_action_unit_replace::clone() const
-{
-	return new editor_action_unit_replace(*this);
-}
+IMPLEMENT_ACTION(unit_replace)
 
 editor_action* editor_action_unit_replace::perform(map_context& mc) const
 {
@@ -116,10 +107,7 @@ void editor_action_unit_replace::perform_without_undo(map_context& mc) const
 	//	resources::screen->draw();
 }
 
-editor_action_unit_facing* editor_action_unit_facing::clone() const
-{
-	return new editor_action_unit_facing(*this);
-}
+IMPLEMENT_ACTION(unit_facing)
 
 editor_action* editor_action_unit_facing::perform(map_context& mc) const
 {

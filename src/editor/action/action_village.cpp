@@ -25,10 +25,7 @@
 
 namespace editor
 {
-editor_action_village* editor_action_village::clone() const
-{
-	return new editor_action_village(*this);
-}
+IMPLEMENT_ACTION(village)
 
 editor_action* editor_action_village::perform(map_context& mc) const
 {
@@ -71,10 +68,7 @@ void editor_action_village::perform_without_undo(map_context& mc) const
 	teams[side_number_].get_village(loc_, 0, nullptr);
 }
 
-editor_action_village_delete* editor_action_village_delete::clone() const
-{
-	return new editor_action_village_delete(*this);
-}
+IMPLEMENT_ACTION(village_delete)
 
 editor_action* editor_action_village_delete::perform(map_context& mc) const
 {

@@ -42,14 +42,13 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_whole_map* clone() const;
 
 	void perform_without_undo(map_context& m) const;
 
-	const char* get_name() const
-	{
-		return "whole_map";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 
 protected:
 	editor_map m_;
@@ -102,6 +101,7 @@ public:
 
 	editor_action_chain& operator=(const editor_action_chain& other);
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_chain* clone() const;
 
 	/**
@@ -171,10 +171,8 @@ public:
 	 */
 	void perform_without_undo(map_context& m) const;
 
-	const char* get_name() const
-	{
-		return "chain";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 
 protected:
 	/**
@@ -259,6 +257,7 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_paste* clone() const;
 
 	editor_action_paste* perform(map_context& mc) const;
@@ -267,10 +266,8 @@ public:
 
 	void extend(const editor_map& map, const std::set<map_location>& locs);
 
-	const char* get_name() const
-	{
-		return "paste";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 
 protected:
 	map_location offset_;
@@ -291,16 +288,15 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_paint_area* clone() const;
 
 	editor_action_paste* perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "paint_area";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 
 protected:
 	t_translation::terrain_code t_;
@@ -320,16 +316,15 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_fill* clone() const;
 
 	editor_action_paint_area* perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "fill";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 
 protected:
 	bool one_layer_;
@@ -347,16 +342,15 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_starting_position* clone() const;
 
 	editor_action* perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "starting_pos";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 
 protected:
 	std::string loc_id_;
@@ -382,14 +376,13 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_resize_map* clone() const;
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "resize";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 
 protected:
 	int x_size_;
@@ -408,14 +401,13 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_apply_mask* clone() const;
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "apply_mask";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 
 private:
 	gamemap mask_;
@@ -433,10 +425,7 @@ public:
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "create_mask";
-	}
+	const char* get_name() const;
 
 private:
 	editor_map target_;
@@ -453,16 +442,15 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_shuffle_area* clone() const;
 
 	editor_action_paste* perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "shuffle_area";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 };
 
 } // end namespace editor

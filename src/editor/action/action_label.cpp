@@ -24,10 +24,7 @@
 
 namespace editor
 {
-editor_action_label* editor_action_label::clone() const
-{
-	return new editor_action_label(*this);
-}
+IMPLEMENT_ACTION(label)
 
 editor_action* editor_action_label::perform(map_context& mc) const
 {
@@ -59,10 +56,7 @@ void editor_action_label::perform_without_undo(map_context& mc) const
 		loc_, text_, -1, team_name_, color_, visible_fog_, visible_shroud_, immutable_, category_);
 }
 
-editor_action_label_delete* editor_action_label_delete::clone() const
-{
-	return new editor_action_label_delete(*this);
-}
+IMPLEMENT_ACTION(label_delete)
 
 editor_action* editor_action_label_delete::perform(map_context& mc) const
 {

@@ -40,6 +40,7 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_select* clone() const;
 
 	void extend(const editor_map& map, const std::set<map_location>& locs);
@@ -48,10 +49,8 @@ public:
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "select";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 };
 
 /**
@@ -65,6 +64,7 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_deselect* clone() const;
 
 	void extend(const editor_map& map, const std::set<map_location>& locs);
@@ -73,10 +73,8 @@ public:
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "deselect";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 };
 
 /**
@@ -89,16 +87,15 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_select_all* clone() const;
 
 	editor_action_select* perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "select_all";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 };
 
 /**
@@ -111,16 +108,15 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_select_none* clone() const;
 
 	editor_action_select* perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "select_none";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 };
 
 /**
@@ -133,16 +129,15 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_select_inverse* clone() const;
 
 	editor_action_select_inverse* perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "select_inverse";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 };
 
 } // end namespace editor

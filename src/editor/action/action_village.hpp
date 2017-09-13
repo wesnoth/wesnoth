@@ -41,16 +41,15 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_village* clone() const;
 
 	editor_action* perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "village";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 
 private:
 	int side_number_;
@@ -67,16 +66,15 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_village_delete* clone() const;
 
 	editor_action* perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "village_delete";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 };
 
 } // end namespace editor

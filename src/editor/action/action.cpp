@@ -67,10 +67,7 @@ editor_action* editor_action::perform(map_context& mc) const
 	return undo.release();
 }
 
-editor_action_whole_map* editor_action_whole_map::clone() const
-{
-	return new editor_action_whole_map(*this);
-}
+IMPLEMENT_ACTION(whole_map)
 
 void editor_action_whole_map::perform_without_undo(map_context& mc) const
 {
@@ -111,10 +108,7 @@ editor_action_chain::~editor_action_chain()
 	}
 }
 
-editor_action_chain* editor_action_chain::clone() const
-{
-	return new editor_action_chain(*this);
-}
+IMPLEMENT_ACTION(chain)
 
 int editor_action_chain::action_count() const
 {
@@ -191,10 +185,7 @@ void editor_action_area::extend(const editor_map& /*map*/, const std::set<map_lo
 	area_.insert(locs.begin(), locs.end());
 }
 
-editor_action_paste* editor_action_paste::clone() const
-{
-	return new editor_action_paste(*this);
-}
+IMPLEMENT_ACTION(paste)
 
 void editor_action_paste::extend(const editor_map& map, const std::set<map_location>& locs)
 {
@@ -217,10 +208,7 @@ void editor_action_paste::perform_without_undo(map_context& mc) const
 	mc.set_needs_terrain_rebuild();
 }
 
-editor_action_paint_area* editor_action_paint_area::clone() const
-{
-	return new editor_action_paint_area(*this);
-}
+IMPLEMENT_ACTION(paint_area)
 
 editor_action_paste* editor_action_paint_area::perform(map_context& mc) const
 {
@@ -237,10 +225,7 @@ void editor_action_paint_area::perform_without_undo(map_context& mc) const
 	mc.set_needs_terrain_rebuild();
 }
 
-editor_action_fill* editor_action_fill::clone() const
-{
-	return new editor_action_fill(*this);
-}
+IMPLEMENT_ACTION(fill)
 
 editor_action_paint_area* editor_action_fill::perform(map_context& mc) const
 {
@@ -261,10 +246,7 @@ void editor_action_fill::perform_without_undo(map_context& mc) const
 	mc.set_needs_terrain_rebuild();
 }
 
-editor_action_starting_position* editor_action_starting_position::clone() const
-{
-	return new editor_action_starting_position(*this);
-}
+IMPLEMENT_ACTION(starting_position)
 
 editor_action* editor_action_starting_position::perform(map_context& mc) const
 {
@@ -309,10 +291,7 @@ void editor_action_starting_position::perform_without_undo(map_context& mc) cons
 	mc.set_needs_labels_reset();
 }
 
-editor_action_resize_map* editor_action_resize_map::clone() const
-{
-	return new editor_action_resize_map(*this);
-}
+IMPLEMENT_ACTION(resize_map)
 
 void editor_action_resize_map::perform_without_undo(map_context& mc) const
 {
@@ -320,10 +299,7 @@ void editor_action_resize_map::perform_without_undo(map_context& mc) const
 	mc.set_needs_reload();
 }
 
-editor_action_apply_mask* editor_action_apply_mask::clone() const
-{
-	return new editor_action_apply_mask(*this);
-}
+IMPLEMENT_ACTION(apply_mask)
 
 void editor_action_apply_mask::perform_without_undo(map_context& mc) const
 {
@@ -331,10 +307,7 @@ void editor_action_apply_mask::perform_without_undo(map_context& mc) const
 	mc.set_needs_terrain_rebuild();
 }
 
-editor_action_create_mask* editor_action_create_mask::clone() const
-{
-	return new editor_action_create_mask(*this);
-}
+IMPLEMENT_ACTION(create_mask)
 
 void editor_action_create_mask::perform_without_undo(map_context& mc) const
 {
@@ -342,10 +315,7 @@ void editor_action_create_mask::perform_without_undo(map_context& mc) const
 	mc.set_needs_terrain_rebuild();
 }
 
-editor_action_shuffle_area* editor_action_shuffle_area::clone() const
-{
-	return new editor_action_shuffle_area(*this);
-}
+IMPLEMENT_ACTION(shuffle_area)
 
 editor_action_paste* editor_action_shuffle_area::perform(map_context& mc) const
 {

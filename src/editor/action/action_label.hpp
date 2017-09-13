@@ -56,16 +56,15 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_label* clone() const;
 
 	editor_action* perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "label";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 
 protected:
 	const std::string text_;
@@ -87,16 +86,15 @@ public:
 	{
 	}
 
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
 	editor_action_label_delete* clone() const;
 
 	editor_action* perform(map_context& mc) const;
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const
-	{
-		return "label_delete";
-	}
+	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
+	const char* get_name() const;
 };
 
 } // end namespace editor

@@ -117,4 +117,19 @@ struct editor_action_exception : public editor_exception
 	}
 };
 
+/**
+ * Helper macro to implement common action methods.
+ */
+#define IMPLEMENT_ACTION(id)                                                                                           \
+                                                                                                                       \
+	const char* editor_action_##id::get_name() const                                                                   \
+	{                                                                                                                  \
+		return #id;                                                                                                    \
+	}                                                                                                                  \
+                                                                                                                       \
+	editor_action_##id* editor_action_##id::clone() const                                                              \
+	{                                                                                                                  \
+		return new editor_action_##id(*this);                                                                          \
+	}                                                                                                                  \
+
 } // end namespace editor

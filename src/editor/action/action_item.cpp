@@ -26,10 +26,7 @@
 
 namespace editor
 {
-editor_action_item* editor_action_item::clone() const
-{
-	return new editor_action_item(*this);
-}
+IMPLEMENT_ACTION(item)
 
 editor_action* editor_action_item::perform(map_context& mc) const
 {
@@ -46,10 +43,7 @@ void editor_action_item::perform_without_undo(map_context& /*mc*/) const
 	//	mc.add_changed_location(loc_);
 }
 
-editor_action_item_delete* editor_action_item_delete::clone() const
-{
-	return new editor_action_item_delete(*this);
-}
+IMPLEMENT_ACTION(item_delete)
 
 editor_action* editor_action_item_delete::perform(map_context& /*mc*/) const
 {
@@ -75,10 +69,7 @@ void editor_action_item_delete::perform_without_undo(map_context& /*mc*/) const
 	//	}
 }
 
-editor_action_item_replace* editor_action_item_replace::clone() const
-{
-	return new editor_action_item_replace(*this);
-}
+IMPLEMENT_ACTION(item_replace)
 
 editor_action* editor_action_item_replace::perform(map_context& mc) const
 {
@@ -112,10 +103,7 @@ void editor_action_item_replace::perform_without_undo(map_context& /*mc*/) const
 	////	resources::screen->draw();
 }
 
-editor_action_item_facing* editor_action_item_facing::clone() const
-{
-	return new editor_action_item_facing(*this);
-}
+IMPLEMENT_ACTION(item_facing)
 
 editor_action* editor_action_item_facing::perform(map_context& mc) const
 {
