@@ -416,18 +416,12 @@ protected:
 	/**
 	 * Container type used to store actions in the undo and redo stacks
 	 */
-	typedef std::deque<editor_action*> action_stack;
+	typedef std::deque<std::unique_ptr<editor_action>> action_stack;
 
 	/**
 	 * Checks if an action stack reached its capacity and removes the front element if so.
 	 */
 	void trim_stack(action_stack& stack);
-
-	/**
-	 * Clears an action stack and deletes all its contents. Helper function used when the undo
-	 * or redo stack needs to be cleared
-	 */
-	void clear_stack(action_stack& stack);
 
 	/**
 	 * Perform an action at the back of one stack, and then move it to the back of the other stack.

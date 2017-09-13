@@ -224,8 +224,8 @@ map_context::map_context(const config& game_config, const std::string& filename)
 
 map_context::~map_context()
 {
-	clear_stack(undo_stack_);
-	clear_stack(redo_stack_);
+	undo_stack_.clear();
+	redo_stack_.clear();
 }
 
 void map_context::new_side()
@@ -670,10 +670,11 @@ void map_context::perform_action(const editor_action& action)
 
 	actions_since_save_++;
 
-	undo_stack_.push_back(undo);
+	undo_stack_.emplace_back(undo);
 
 	trim_stack(undo_stack_);
-	clear_stack(redo_stack_);
+
+	redo_stack_.clear();
 }
 
 void map_context::perform_partial_action(const editor_action& action)
@@ -693,7 +694,8 @@ void map_context::perform_partial_action(const editor_action& action)
 
 	// actions_since_save_ += action.action_count();
 	undo_chain->prepend_action(undo);
-	clear_stack(redo_stack_);
+
+	redo_stack_.clear();
 }
 
 bool map_context::modified() const
@@ -723,22 +725,22 @@ bool map_context::can_redo() const
 
 editor_action* map_context::last_undo_action()
 {
-	return undo_stack_.empty() ? nullptr : undo_stack_.back();
+	return undo_stack_.empty() ? nullptr : undo_stack_.back().get();
 }
 
 editor_action* map_context::last_redo_action()
 {
-	return redo_stack_.empty() ? nullptr : redo_stack_.back();
+	return redo_stack_.empty() ? nullptr : redo_stack_.back().get();
 }
 
 const editor_action* map_context::last_undo_action() const
 {
-	return undo_stack_.empty() ? nullptr : undo_stack_.back();
+	return undo_stack_.empty() ? nullptr : undo_stack_.back().get();
 }
 
 const editor_action* map_context::last_redo_action() const
 {
-	return redo_stack_.empty() ? nullptr : redo_stack_.back();
+	return redo_stack_.empty() ? nullptr : redo_stack_.back().get();
 }
 
 void map_context::undo()
@@ -786,44 +788,38 @@ void map_context::partial_undo()
 	const std::unique_ptr<editor_action> first_action_in_chain(undo_chain->pop_first_action());
 	if(undo_chain->empty()) {
 		actions_since_save_--;
-		delete undo_chain;
 		undo_stack_.pop_back();
 	}
 
-	redo_stack_.push_back(first_action_in_chain->perform(*this));
+	redo_stack_.emplace_back(first_action_in_chain->perform(*this));
 	// actions_since_save_ -= last_redo_action()->action_count();
 }
 
 void map_context::clear_undo_redo()
 {
-	clear_stack(undo_stack_);
-	clear_stack(redo_stack_);
+	undo_stack_.clear();
+	redo_stack_.clear();
 }
 
 void map_context::trim_stack(action_stack& stack)
 {
 	if(stack.size() > max_action_stack_size_) {
-		delete stack.front();
 		stack.pop_front();
 	}
-}
-
-void map_context::clear_stack(action_stack& stack)
-{
-	for(editor_action* a : stack) {
-		delete a;
-	}
-
-	stack.clear();
 }
 
 void map_context::perform_action_between_stacks(action_stack& from, action_stack& to)
 {
 	assert(!from.empty());
-	const std::unique_ptr<editor_action> action(from.back());
+
+	std::unique_ptr<editor_action> action(nullptr);
+	action.swap(from.back());
+
 	from.pop_back();
+
 	editor_action* reverse_action = action->perform(*this);
-	to.push_back(reverse_action);
+	to.emplace_back(reverse_action);
+
 	trim_stack(to);
 }
 
