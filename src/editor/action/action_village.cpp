@@ -29,7 +29,7 @@ IMPLEMENT_ACTION(village)
 
 editor_action* editor_action_village::perform(map_context& mc) const
 {
-	std::unique_ptr<editor_action> undo;
+	editor_action_ptr undo;
 
 	if(!mc.get_map().is_village(loc_)) {
 		return nullptr;
@@ -72,7 +72,7 @@ IMPLEMENT_ACTION(village_delete)
 
 editor_action* editor_action_village_delete::perform(map_context& mc) const
 {
-	std::unique_ptr<editor_action> undo;
+	editor_action_ptr undo;
 
 	for(const team& t : mc.get_teams()) {
 		if(t.owns_village(loc_)) {

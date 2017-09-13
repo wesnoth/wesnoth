@@ -412,12 +412,6 @@ protected:
 	 */
 	editor_map map_;
 
-
-	/**
-	 * Container type used to store actions in the undo and redo stacks
-	 */
-	typedef std::deque<std::unique_ptr<editor_action>> action_stack;
-
 	/**
 	 * Checks if an action stack reached its capacity and removes the front element if so.
 	 */

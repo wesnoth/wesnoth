@@ -1211,7 +1211,7 @@ void editor_controller::export_selection_coords()
 void editor_controller::perform_delete(editor_action* action)
 {
 	if (action) {
-		const std::unique_ptr<editor_action> action_auto(action);
+		const editor_action_ptr action_auto(action);
 		get_current_map_context().perform_action(*action);
 	}
 }
@@ -1219,7 +1219,7 @@ void editor_controller::perform_delete(editor_action* action)
 void editor_controller::perform_refresh_delete(editor_action* action, bool drag_part /* =false */)
 {
 	if (action) {
-		const std::unique_ptr<editor_action> action_auto(action);
+		const editor_action_ptr action_auto(action);
 		context_manager_->perform_refresh(*action, drag_part);
 	}
 }
@@ -1270,7 +1270,7 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/,
 		//last undo action and the controller shouldn't add
 		//anything to the undo stack (hence a different perform_ call)
 		if (a != nullptr) {
-			const std::unique_ptr<editor_action> aa(a);
+			const editor_action_ptr aa(a);
 			if (partial) {
 				get_current_map_context().perform_partial_action(*a);
 			} else {

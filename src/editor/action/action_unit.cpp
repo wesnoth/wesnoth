@@ -33,7 +33,7 @@ IMPLEMENT_ACTION(unit)
 
 editor_action* editor_action_unit::perform(map_context& mc) const
 {
-	std::unique_ptr<editor_action> undo(new editor_action_unit_delete(loc_));
+	editor_action_ptr undo(new editor_action_unit_delete(loc_));
 	perform_without_undo(mc);
 	return undo.release();
 }
@@ -52,7 +52,7 @@ editor_action* editor_action_unit_delete::perform(map_context& mc) const
 	unit_map& units = mc.get_units();
 	unit_map::const_unit_iterator unit_it = units.find(loc_);
 
-	std::unique_ptr<editor_action> undo;
+	editor_action_ptr undo;
 	if(unit_it != units.end()) {
 		undo.reset(new editor_action_unit(loc_, *unit_it));
 		perform_without_undo(mc);
@@ -76,7 +76,7 @@ IMPLEMENT_ACTION(unit_replace)
 
 editor_action* editor_action_unit_replace::perform(map_context& mc) const
 {
-	std::unique_ptr<editor_action> undo(new editor_action_unit_replace(new_loc_, loc_));
+	editor_action_ptr undo(new editor_action_unit_replace(new_loc_, loc_));
 
 	perform_without_undo(mc);
 	return undo.release();
@@ -111,7 +111,7 @@ IMPLEMENT_ACTION(unit_facing)
 
 editor_action* editor_action_unit_facing::perform(map_context& mc) const
 {
-	std::unique_ptr<editor_action> undo(new editor_action_unit_facing(loc_, old_direction_, new_direction_));
+	editor_action_ptr undo(new editor_action_unit_facing(loc_, old_direction_, new_direction_));
 	perform_without_undo(mc);
 	return undo.release();
 }

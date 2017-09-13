@@ -23,6 +23,9 @@
 #include "exceptions.hpp"
 #include "log.hpp"
 
+#include <deque>
+#include <memory>
+
 extern lg::log_domain log_editor;
 #define DBG_ED LOG_STREAM_INDENT(debug, log_editor)
 #define LOG_ED LOG_STREAM_INDENT(info, log_editor)
@@ -61,5 +64,11 @@ class editor_mouse_handler;
 class map_context;
 class map_fragment;
 class mouse_action;
+
+/** Action pointer typedef. */
+using editor_action_ptr = std::unique_ptr<editor_action>;
+
+/** Action stack typedef. */
+using action_stack = std::deque<editor_action_ptr>;
 
 } //end namespace editor

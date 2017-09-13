@@ -62,7 +62,7 @@ std::string editor_action::get_description() const
 
 editor_action* editor_action::perform(map_context& mc) const
 {
-	std::unique_ptr<editor_action> undo(new editor_action_whole_map(mc.get_map()));
+	editor_action_ptr undo(new editor_action_whole_map(mc.get_map()));
 	perform_without_undo(mc);
 	return undo.release();
 }
@@ -250,7 +250,7 @@ IMPLEMENT_ACTION(starting_position)
 
 editor_action* editor_action_starting_position::perform(map_context& mc) const
 {
-	std::unique_ptr<editor_action> undo;
+	editor_action_ptr undo;
 
 	const std::string* old_loc_id = mc.get_map().is_starting_position(loc_);
 	map_location old_loc = mc.get_map().special_location(loc_id_);

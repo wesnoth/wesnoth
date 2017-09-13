@@ -28,7 +28,7 @@ IMPLEMENT_ACTION(label)
 
 editor_action* editor_action_label::perform(map_context& mc) const
 {
-	std::unique_ptr<editor_action> undo;
+	editor_action_ptr undo;
 
 	const terrain_label* old_label = mc.get_labels().get_label(loc_);
 	if(old_label) {
@@ -60,7 +60,7 @@ IMPLEMENT_ACTION(label_delete)
 
 editor_action* editor_action_label_delete::perform(map_context& mc) const
 {
-	std::unique_ptr<editor_action> undo;
+	editor_action_ptr undo;
 
 	const terrain_label* deleted = mc.get_labels().get_label(loc_);
 

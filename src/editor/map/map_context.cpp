@@ -785,7 +785,7 @@ void map_context::partial_undo()
 
 	// a partial undo performs the first action form the current action's action_chain that would be normally performed
 	// i.e. the *first* one.
-	const std::unique_ptr<editor_action> first_action_in_chain(undo_chain->pop_first_action());
+	const editor_action_ptr first_action_in_chain(undo_chain->pop_first_action());
 	if(undo_chain->empty()) {
 		actions_since_save_--;
 		undo_stack_.pop_back();
@@ -812,7 +812,7 @@ void map_context::perform_action_between_stacks(action_stack& from, action_stack
 {
 	assert(!from.empty());
 
-	std::unique_ptr<editor_action> action(nullptr);
+	editor_action_ptr action(nullptr);
 	action.swap(from.back());
 
 	from.pop_back();
