@@ -34,7 +34,7 @@ int editor_action::instance_count_ = 0;
 editor_action::editor_action()
 	: id_(next_id_++)
 {
-	instance_count_++;
+	++instance_count_;
 
 #ifdef EDITOR_DEBUG_ACTION_LIFETIME
 	LOG_ED << "Action " << std::setw(2) << id_ << " ctor " << this << " (count is " << instance_count << "\n";

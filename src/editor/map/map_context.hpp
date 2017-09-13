@@ -102,7 +102,7 @@ public:
 	/** removes the last side from the scenario */
 	void remove_side() {
 		teams_.pop_back();
-		actions_since_save_++;
+		++actions_since_save_;
 	}
 
 	void save_area(const std::set<map_location>& area) {
@@ -112,7 +112,7 @@ public:
 	void new_area(const std::set<map_location>& area) {
 		tod_manager_->add_time_area("", area, config());
 		active_area_ = tod_manager_->get_area_ids().size() -1;
-		actions_since_save_++;
+		++actions_since_save_;
 	}
 
 	void remove_area(int index);
@@ -168,7 +168,7 @@ public:
 	 */
 	void set_local_starting_time(int time) {
 		tod_manager_->set_current_time(time, active_area_);
-		actions_since_save_++;
+		++actions_since_save_;
 	}
 
 	tod_manager* get_time_manager() {

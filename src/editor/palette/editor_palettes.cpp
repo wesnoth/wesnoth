@@ -327,7 +327,7 @@ void editor_palette<Item>::draw_contents()
 		// Adjust location
 		if (counter_from_zero % item_width_ == item_width_ - 1)
 			y += item_space_;
-		counter++;
+		++counter;
 	}
 }
 

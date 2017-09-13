@@ -239,7 +239,7 @@ void map_context::new_side()
 	// TODO: build might be slight overkill here just to set the side...
 	teams_.back().build(cfg, get_map());
 
-	actions_since_save_++;
+	++actions_since_save_;
 }
 
 void map_context::set_side_setup(editor_team_info& info)
@@ -261,7 +261,7 @@ void map_context::set_side_setup(editor_team_info& info)
 	t.set_village_gold(info.village_income);
 	t.set_village_support(info.village_support);
 
-	actions_since_save_++;
+	++actions_since_save_;
 }
 
 void map_context::set_scenario_setup(const std::string& id,
@@ -279,14 +279,14 @@ void map_context::set_scenario_setup(const std::string& id,
 	victory_defeated_ = victory_defeated;
 	tod_manager_->set_number_of_turns(turns);
 	xp_mod_ = xp_mod;
-	actions_since_save_++;
+	++actions_since_save_;
 }
 
 void map_context::set_starting_time(int time)
 {
 	tod_manager_->set_current_time(time);
 	if(!pure_map_) {
-		actions_since_save_++;
+		++actions_since_save_;
 	}
 }
 
@@ -294,14 +294,14 @@ void map_context::remove_area(int index)
 {
 	tod_manager_->remove_time_area(index);
 	active_area_--;
-	actions_since_save_++;
+	++actions_since_save_;
 }
 
 void map_context::replace_schedule(const std::vector<time_of_day>& schedule)
 {
 	tod_manager_->replace_schedule(schedule);
 	if(!pure_map_) {
-		actions_since_save_++;
+		++actions_since_save_;
 	}
 }
 
@@ -309,7 +309,7 @@ void map_context::replace_local_schedule(const std::vector<time_of_day>& schedul
 {
 	tod_manager_->replace_local_schedule(schedule, active_area_);
 	if(!pure_map_) {
-		actions_since_save_++;
+		++actions_since_save_;
 	}
 }
 
@@ -365,7 +365,7 @@ void map_context::load_scenario(const config& game_config)
 			units_.add(loc, unit(a_unit, true));
 		}
 
-		i++;
+		++i;
 	}
 }
 
@@ -668,7 +668,7 @@ void map_context::perform_action(const editor_action& action)
 		actions_since_save_ = 1 + undo_stack_.size();
 	}
 
-	actions_since_save_++;
+	++actions_since_save_;
 
 	undo_stack_.emplace_back(undo);
 
@@ -763,7 +763,7 @@ void map_context::redo()
 
 	if(can_redo()) {
 		perform_action_between_stacks(redo_stack_, undo_stack_);
-		actions_since_save_++;
+		++actions_since_save_;
 	} else {
 		WRN_ED << "redo() called with an empty redo stack" << std::endl;
 	}
