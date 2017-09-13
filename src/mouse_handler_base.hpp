@@ -135,9 +135,9 @@ public:
 	 * @returns true when the click should not process the event further.
 	 * This means do not treat the call as a start of drag movement.
 	 */
-	virtual bool right_click(int /*x*/, int /*y*/, const bool /*browse*/)
+	virtual bool right_click(int x, int y, const bool browse)
 	{
-		return true;
+		return right_click_show_menu(x, y, browse);
 	}
 
 	/**
