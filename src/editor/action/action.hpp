@@ -48,7 +48,7 @@ public:
 	void perform_without_undo(map_context& m) const;
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const char* get_name() const;
+	const std::string& get_name() const;
 
 protected:
 	editor_map m_;
@@ -75,9 +75,10 @@ public:
 	 */
 	virtual void extend(const editor_map& map, const std::set<map_location>& locs) = 0;
 
-	const char* get_name() const
+	const std::string& get_name() const
 	{
-		return "extendable";
+		static const std::string name("extendable");
+		return name;
 	}
 };
 
@@ -172,7 +173,7 @@ public:
 	void perform_without_undo(map_context& m) const;
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const char* get_name() const;
+	const std::string& get_name() const;
 
 protected:
 	/**
@@ -193,9 +194,10 @@ public:
 	{
 	}
 
-	const char* get_name() const
+	const std::string& get_name() const
 	{
-		return "location";
+		static const std::string name("location");
+		return name;
 	}
 
 protected:
@@ -214,9 +216,10 @@ public:
 	{
 	}
 
-	const char* get_name() const
+	const std::string& get_name() const
 	{
-		return "location_terrain";
+		static const std::string name("location_terrain");
+		return name;
 	}
 
 protected:
@@ -236,9 +239,10 @@ public:
 
 	void extend(const editor_map& map, const std::set<map_location>& locs);
 
-	const char* get_name() const
+	const std::string& get_name() const
 	{
-		return "area";
+		static const std::string name("area");
+		return name;
 	}
 
 protected:
@@ -267,7 +271,7 @@ public:
 	void extend(const editor_map& map, const std::set<map_location>& locs);
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const char* get_name() const;
+	const std::string& get_name() const;
 
 protected:
 	map_location offset_;
@@ -296,7 +300,7 @@ public:
 	void perform_without_undo(map_context& mc) const;
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const char* get_name() const;
+	const std::string& get_name() const;
 
 protected:
 	t_translation::terrain_code t_;
@@ -324,7 +328,7 @@ public:
 	void perform_without_undo(map_context& mc) const;
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const char* get_name() const;
+	const std::string& get_name() const;
 
 protected:
 	bool one_layer_;
@@ -350,7 +354,7 @@ public:
 	void perform_without_undo(map_context& mc) const;
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const char* get_name() const;
+	const std::string& get_name() const;
 
 protected:
 	std::string loc_id_;
@@ -382,7 +386,7 @@ public:
 	void perform_without_undo(map_context& mc) const;
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const char* get_name() const;
+	const std::string& get_name() const;
 
 protected:
 	int x_size_;
@@ -407,7 +411,7 @@ public:
 	void perform_without_undo(map_context& mc) const;
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const char* get_name() const;
+	const std::string& get_name() const;
 
 private:
 	gamemap mask_;
@@ -425,7 +429,7 @@ public:
 
 	void perform_without_undo(map_context& mc) const;
 
-	const char* get_name() const;
+	const std::string& get_name() const;
 
 private:
 	editor_map target_;
@@ -450,7 +454,7 @@ public:
 	void perform_without_undo(map_context& mc) const;
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const char* get_name() const;
+	const std::string& get_name() const;
 };
 
 } // end namespace editor

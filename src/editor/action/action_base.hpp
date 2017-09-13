@@ -71,9 +71,10 @@ public:
 	/**
 	 * @return a short name of this action type, defaults to unknown
 	 */
-	virtual const char* get_name() const
+	virtual const std::string& get_name() const
 	{
-		return "unknown";
+		static const std::string name("unknown");
+		return name;
 	}
 
 	/**
@@ -122,9 +123,10 @@ struct editor_action_exception : public editor_exception
  */
 #define IMPLEMENT_ACTION(id)                                                                                           \
                                                                                                                        \
-	const char* editor_action_##id::get_name() const                                                                   \
+	const std::string& editor_action_##id::get_name() const                                                            \
 	{                                                                                                                  \
-		return #id;                                                                                                    \
+		static const std::string name(#id);                                                                            \
+		return name;                                                                                                   \
 	}                                                                                                                  \
                                                                                                                        \
 	editor_action_##id* editor_action_##id::clone() const                                                              \

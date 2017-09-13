@@ -64,7 +64,7 @@ public:
 	void perform_without_undo(map_context& mc) const;
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const char* get_name() const;
+	const std::string& get_name() const;
 
 protected:
 	const std::string text_;
@@ -94,7 +94,7 @@ public:
 	void perform_without_undo(map_context& mc) const;
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const char* get_name() const;
+	const std::string& get_name() const;
 };
 
 } // end namespace editor

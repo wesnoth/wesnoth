@@ -53,7 +53,7 @@ public:
 	void perform_without_undo(map_context& mc) const;
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const char* get_name() const;
+	const std::string& get_name() const;
 
 protected:
 	overlay item_;
@@ -78,7 +78,7 @@ public:
 	void perform_without_undo(map_context& mc) const;
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const char* get_name() const;
+	const std::string& get_name() const;
 };
 
 class editor_action_item_replace : public editor_action_location
@@ -98,7 +98,7 @@ public:
 	void perform_without_undo(map_context& mc) const;
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const char* get_name() const;
+	const std::string& get_name() const;
 
 protected:
 	map_location new_loc_;
@@ -123,7 +123,7 @@ public:
 	void perform_without_undo(map_context& mc) const;
 
 	/** Inherited from editor_action, implemented by IMPLEMENT_ACTION. */
-	const char* get_name() const;
+	const std::string& get_name() const;
 
 protected:
 	map_location::DIRECTION new_direction_;
