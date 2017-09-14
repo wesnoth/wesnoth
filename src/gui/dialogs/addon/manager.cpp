@@ -594,7 +594,11 @@ void addon_manager::execute_action_on_selected_addon(window& window)
 		return;
 	}
 
-	(this->*fptr)(*addon, window);
+	try {
+		(this->*fptr)(*addon, window);
+	} catch(const addons_client::user_exit&) {
+		// User canceled the op.
+	}
 }
 
 void addon_manager::install_addon(const addon_info& addon, window& window)
