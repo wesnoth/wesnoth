@@ -36,6 +36,7 @@
 #include "formula/string_utils.hpp"
 #include "units/types.hpp"
 #include "units/udisplay.hpp"
+#include "whiteboard/manager.hpp"
 #include "font/standard_colors.hpp"
 
 static lg::log_domain log_replay("replay");
@@ -533,6 +534,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 		if (i.valid()) {
 			resources::gameboard->units().erase(i);
 		}
+		resources::whiteboard->on_kill_unit();
 		actions::recalculate_fog(dying_side);
 	}
 	return true;

@@ -69,6 +69,7 @@
 #include "recall_list_manager.hpp"      // for recall_list_manager
 #include "replay.hpp"                   // for get_user_choice, etc
 #include "reports.hpp"                  // for register_generator, etc
+#include "resources.hpp"                // for whiteboard
 #include "scripting/lua_audio.hpp"
 #include "scripting/lua_unit.hpp"
 #include "scripting/lua_unit_attacks.hpp"
@@ -104,6 +105,7 @@
 #include "units/types.hpp"    // for unit_type_data, unit_types, etc
 #include "variable.hpp"                 // for vconfig, etc
 #include "variable_info.hpp"
+#include "whiteboard/manager.hpp"       // for whiteboard
 #include "wml_exception.hpp"
 
 #include "utils/functional.hpp"               // for bind_t, bind
@@ -2128,6 +2130,7 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 	}
 
 	units().erase(loc);
+	resources::whiteboard->on_kill_unit();
 	return 0;
 }
 

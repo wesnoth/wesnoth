@@ -410,6 +410,13 @@ void manager::on_change_controller(int side, const team& t)
 	}
 }
 
+void manager::on_kill_unit()
+{
+	if(highlighter_ != nullptr) {
+		highlighter_->set_selection_candidate(unit_ptr());
+	}
+}
+
 bool manager::current_side_has_actions()
 {
 	if(current_side_actions()->empty()) {

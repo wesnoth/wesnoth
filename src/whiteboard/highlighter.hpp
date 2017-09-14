@@ -58,6 +58,8 @@ public:
 	/// @return the collection of actions that are highlighted but don't have the focus
 	secondary_highlights_t get_secondary_highlights() { return secondary_highlights_; }
 
+	void set_selection_candidate(unit_ptr candidate) { selection_candidate_ = candidate; }
+
 private:
 	unit_map& get_unit_map();
 	/** Unhighlight a given action (main or secondary). */

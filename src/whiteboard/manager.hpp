@@ -92,6 +92,7 @@ public:
 	void on_gamestate_change();
 	void on_viewer_change(size_t team_index);
 	void on_change_controller(int side, const team& t);
+	void on_kill_unit();
 	/** Handles various cleanup right before removing an action from the queue */
 	void pre_delete_action(action_ptr action);
 	/** Handles various cleanup right after removing an action from the queue */
