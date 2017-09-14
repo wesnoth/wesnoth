@@ -580,6 +580,11 @@ void addon_manager::apply_filters(window& window)
 template<void(addon_manager::*fptr)(const addon_info& addon, window& window)>
 void addon_manager::execute_action_on_selected_addon(window& window)
 {
+	// Explicitly return to the main page if we're in low-res mode so the list is visible.
+	if(stacked_widget* stk = find_widget<stacked_widget>(&window, "main_stack", false, false)) {
+		stk->select_layer(0);
+	}
+
 	addon_list& addons = find_widget<addon_list>(&window, "addons", false);
 	const addon_info* addon = addons.get_selected_addon();
 
