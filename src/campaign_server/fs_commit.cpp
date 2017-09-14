@@ -21,9 +21,8 @@
 #include <cstdio>
 #include <cstring>
 
-#include <unistd.h>
-
 #ifndef _WIN32
+#include <unistd.h>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
 #endif
