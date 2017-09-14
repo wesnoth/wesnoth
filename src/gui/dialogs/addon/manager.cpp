@@ -307,6 +307,8 @@ static std::string describe_status_verbose(const addon_tracking_info& state)
 
 void addon_manager::pre_show(window& window)
 {
+	window.set_escape_disabled(true);
+
 	addon_list& list = find_widget<addon_list>(&window, "addons", false);
 
 	text_box& filter = find_widget<text_box>(&window, "filter", false);
