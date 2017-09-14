@@ -16,9 +16,11 @@ Version 1.13.8+dev:
      * Fix bug when finding bird bones reported here:
        https://forums.wesnoth.org/viewtopic.php?f=4&t=46480#p614781
    * Under the Burning Suns:
+     * New unit sprites: Quenoth Mystic line, Quenoth Flanker line, Flesh Golem.
      * Fixed crash in 'Out of the Frying Pan'.
      * Fixed Ethereal Shadow and Ethereal Nightgaunt having nightstalk even when
        they shouldn't.
+     * Formation ability now has looser adjacency requirements.
  * Graphics:
    * Added portrait for Giant Rat.
    * Fixed transparency artifacts in scaled portraits and other message images
@@ -83,6 +85,7 @@ Version 1.13.8+dev:
      (bug #1606)
    * Fixed whiteboard crash on delete action with multiple moves (bug #1842)
    * Fix units beeing unable to step on hexes with too high movecosts (bug #1473) 
+   * Improved and more detailed FPS display
  * WFL Engine
    * Add owner key to terrain space callable, for villages
    * Location formulas in [tunnel] now have a teleport_unit variable
@@ -121,6 +124,8 @@ Version 1.13.8+dev:
    * The allow_new_game= in [scenario] now defaults to false (it still defaults to true
      in [multiplayer]) 
    * Add [cancel_action] (bug #1427)
+   * Allowed TerrainGraphicsWML random_start= to optionally take a positive
+     integer to limit the range of the random shift of the animation start time
 
 Version 1.13.8:
   * Campaigns:
