@@ -62,6 +62,10 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 {
 	definition_load_configuration(control_type);
 
+	// Enable hover behavior if a tooltip was provided.
+	// TODO: maybe don't duplicate this call with set_tooltip?
+	set_wants_mouse_hover(!tooltip_.empty());
+
 	connect_signal<event::SHOW_TOOLTIP>(std::bind(
 			&styled_widget::signal_handler_show_tooltip, this, _2, _3, _5));
 
