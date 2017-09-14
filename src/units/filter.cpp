@@ -55,7 +55,10 @@ struct unit_filter_xy : public unit_filter_base
 		std::string x = utils::interpolate_variables_into_string(x_, *(resources::gamedata));
 		std::string y = utils::interpolate_variables_into_string(y_, *(resources::gamedata));
 
-		if(x == "recall" && y == "recall") {
+		if(x.empty() && y.empty()) {
+			return false;
+		}
+		else if(x == "recall" && y == "recall") {
 			return !args.fc->get_disp_context().map().on_board(args.loc);
 		}
 		else {
