@@ -609,7 +609,7 @@ void unit_filter_compound::fill(vconfig cfg)
 			}
 		);
 
-		if (!literal["x"].empty() || !literal["y"].empty()) {
+		if (!literal["x"].blank() || !literal["y"].blank()) {
 			children_.emplace_back(new unit_filter_xy(literal["x"], literal["y"]));
 		}
 		
