@@ -84,6 +84,7 @@
     <ClInclude Include="..\..\src\campaign_server\blacklist.hpp" />
     <ClInclude Include="..\..\src\campaign_server\campaign_server.hpp" />
     <ClInclude Include="..\..\src\campaign_server\control.hpp" />
+    <ClInclude Include="..\..\src\campaign_server\fs_commit.hpp" />
     <ClInclude Include="..\..\src\hash.hpp" />
     <ClInclude Include="..\..\src\server\server_base.hpp" />
     <ClInclude Include="..\..\src\server\simple_wml.hpp" />
@@ -101,6 +102,7 @@
     <ClCompile Include="..\..\src\campaign_server\campaign_server.cpp">
       <ObjectFileName>$(IntDir)Campaign_Server\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\campaign_server\fs_commit.cpp" />
     <ClCompile Include="..\..\src\hash.cpp">
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
