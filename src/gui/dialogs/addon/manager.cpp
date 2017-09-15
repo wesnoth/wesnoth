@@ -682,7 +682,7 @@ void addon_manager::publish_addon(const addon_info& addon, window& window)
 	} else if(!client_.request_distribution_terms(server_msg)) {
 		gui2::show_error_message(window.video(),
 			_("The server responded with an error:") + "\n" + client_.get_last_server_error());
-	} else if(gui2::show_message(window.video(), _("Terms"), server_msg, gui2::dialogs::message::ok_cancel_buttons) == gui2::window::OK) {
+	} else if(gui2::show_message(window.video(), _("Terms"), server_msg, gui2::dialogs::message::ok_cancel_buttons, true) == gui2::window::OK) {
 		if(!client_.upload_addon(addon_id, server_msg, cfg)) {
 			gui2::show_error_message(window.video(),
 				_("The server responded with an error:") + "\n" + client_.get_last_server_error());
