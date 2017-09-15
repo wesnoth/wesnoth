@@ -189,7 +189,7 @@ namespace {
 				str += ", ";
 			}
 
-			str += addon_list::colorify_addon_state_string(dep.display_title(), depstate.state);
+			str += addon_list::colorize_addon_state_string(dep.display_title(), depstate.state);
 		}
 
 		return str;
@@ -302,7 +302,7 @@ static std::string describe_status_verbose(const addon_tracking_info& state)
 			s = _("addon_state^Unknown");
 	}
 
-	return addon_list::colorify_addon_state_string(s, state.state);
+	return addon_list::colorize_addon_state_string(s, state.state);
 }
 
 void addon_manager::pre_show(window& window)

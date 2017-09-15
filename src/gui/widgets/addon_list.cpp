@@ -53,7 +53,7 @@ addon_list::addon_list(const implementation::builder_addon_list& builder)
 
 static color_t color_outdated {255, 127, 0};
 
-std::string addon_list::colorify_addon_state_string(const std::string& str, ADDON_STATUS state, bool verbose)
+std::string addon_list::colorize_addon_state_string(const std::string& str, ADDON_STATUS state, bool verbose)
 {
 	color_t colorname = font::NORMAL_COLOR;
 
@@ -122,7 +122,7 @@ std::string addon_list::describe_status(const addon_tracking_info& info)
 		tx = _("addon_state^Unknown");
 	}
 
-	return colorify_addon_state_string(tx, info.state, true);
+	return colorize_addon_state_string(tx, info.state, true);
 }
 
 void addon_list::set_addons(const addons_list& addons)
@@ -177,7 +177,7 @@ void addon_list::set_addons(const addons_list& addons)
 		ss << addon.version.str();
 
 		if(special_version_display) {
-			ss.str(colorify_addon_state_string(ss.str(), tracking_info.state, false));
+			ss.str(colorize_addon_state_string(ss.str(), tracking_info.state, false));
 		}
 
 		item["label"] = ss.str();

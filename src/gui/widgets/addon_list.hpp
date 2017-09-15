@@ -101,7 +101,7 @@ public:
 	 * Changes the color of an add-on state string (installed, outdated, etc.) according to the state itself.
 	 * This function is here because the add-on list widget itself needs it.
 	 */
-	static std::string colorify_addon_state_string(const std::string& str, ADDON_STATUS state, bool verbose = false);
+	static std::string colorize_addon_state_string(const std::string& str, ADDON_STATUS state, bool verbose = false);
 
 	/** Determines if install status of each widget is shown. */
 	void set_install_status_visibility(visibility visibility)
