@@ -33,6 +33,9 @@
     <ClInclude Include="..\..\src\campaign_server\campaign_server.hpp">
       <Filter>Campaign_Server</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\campaign_server\fs_commit.hpp">
+      <Filter>Campaign_Server</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\hash.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +55,9 @@
       <Filter>Campaign_Server</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\campaign_server\campaign_server.cpp">
+      <Filter>Campaign_Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\campaign_server\fs_commit.cpp">
       <Filter>Campaign_Server</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\hash.cpp" />

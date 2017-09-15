@@ -102,7 +102,9 @@
     <ClCompile Include="..\..\src\campaign_server\campaign_server.cpp">
       <ObjectFileName>$(IntDir)Campaign_Server\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\campaign_server\fs_commit.cpp" />
+    <ClCompile Include="..\..\src\campaign_server\fs_commit.cpp">
+      <ObjectFileName>$(IntDir)Campaign_Server\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\hash.cpp">
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
