@@ -629,8 +629,20 @@ void server::handle_request_terms(const server::request& req)
 		return;
 	}
 
+	// TODO: possibly move to server.cfg
+	static const std::string terms =
+		"All content within add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL), with the sole exception of graphics and audio explicitly denoted as released under a Creative Commons license either in:\n"
+		"\n"
+		"    a) a combined toplevel file, e.g. “My_Addon/ART_LICENSE”; OR\n"
+		"    b) a file with the same path as the asset with “.license” appended, e.g. “My_Addon/images/units/axeman.png.license”.\n"
+		"\n"
+		"By uploading content to this server, you certify that you have the right to:\n"
+		"\n"
+		"    a) release all included art and audio explicitly denoted with a Creative Commons license in the proscribed manner under that license; AND\n"
+		"    b) release all other included content under the terms of the GPL; and that you choose to do so.";
+
 	LOG_CS << "sending terms " << req.addr << "\n";
-	send_message("All add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so.", req.sock);
+	send_message(terms, req.sock);
 	LOG_CS << " Done\n";
 }
 
