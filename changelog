@@ -52,6 +52,7 @@ Version 1.13.8+dev:
      trivial as before.
    * Fixed crash when loading a replay stored on the server (Bug #1762)
    * Fixed delay or clients gettings stuck when starting a mp game (Bug #1674)
+   * Fix bug where leader can become unable to be killed (issue #1666)
  * Performance:
    * Rewrote the FPS cap implementation. This greatly improves smoothness ingame.
    * Each invalidated hex is now only redrawn once, not twice. This almost halves CPU
