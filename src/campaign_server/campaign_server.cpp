@@ -588,16 +588,15 @@ void server::handle_request_terms(const server::request& req)
 	}
 
 	// TODO: possibly move to server.cfg
-	static const std::string terms = R"""(
-		All content within add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL), with the sole exception of graphics and audio explicitly denoted as released under a Creative Commons license either in
+	static const std::string terms = R"""(All content within add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL), with the sole exception of graphics and audio explicitly denoted as released under a Creative Commons license either in a:
 
-		A) a combined toplevel file, e.g. `add-ons/My_Addon/ART_LICENSE`, OR
-		B) a file with the same path as the asset with `.license` appended, e.g. `add-ons/My_Addon/images/units/axeman.png.license`.
+    a) combined toplevel file, e.g. “My_Addon/ART_LICENSE”; <b>or</b>
+    b) file with the same path as the asset with “.license” appended, e.g. “My_Addon/images/units/axeman.png.license”.
 
-		By uploading content to this server, you certify that you have the right
+<b>By uploading content to this server, you certify that you have the right to:</b>
 
-		A) to release all included art and audio explicitly denoted with a Creative Commons license in the proscribed manner under that license, AND
-		B) to release all other included content under the terms of the GPL; and that you choose to do so.)""";
+    a) release all included art and audio explicitly denoted with a Creative Commons license in the proscribed manner under that license; <b>and</b>
+    b) release all other included content under the terms of the GPL; and that you choose to do so.)""";
 
 	LOG_CS << "sending terms " << req.addr << "\n";
 	send_message(terms, req.sock);
