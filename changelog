@@ -5,7 +5,8 @@ Version 1.13.8+dev:
  * Campaigns:
    * Reordered beginner campaigns to be friendlier to new players.
    * Delfador's Memoirs:
-     * Replaced incorrect 'Defeat all enemies' objectives with more specific 'Defeat all enemy leaders'.
+     * Replaced incorrect 'Defeat all enemies' objectives with more specific
+     'Defeat all enemy leaders'.
    * Heir to the Throne:
      * Fixed thieves in 'Siege of Elensefar' getting duplicated.
      * Fixed Void Armor not doing anything.
@@ -55,9 +56,10 @@ Version 1.13.8+dev:
    * Fixed delay or clients gettings stuck when starting a mp game (Bug #1674)
    * Fix bug where leader can become unable to be killed (issue #1666)
  * Performance:
-   * Rewrote the FPS cap implementation. This greatly improves smoothness ingame.
-   * Each invalidated hex is now only redrawn once, not twice. This almost halves CPU
-     usage ingame.
+   * Rewrote the FPS cap implementation. This greatly improves
+     smoothness ingame.
+   * Each invalidated hex is now only redrawn once, not twice. This almost
+     halves CPU usage ingame.
    * Implemented GUI canvas caching. It speeds up multiple areas, but especially
      the story screen.
  * Units:
@@ -87,21 +89,26 @@ Version 1.13.8+dev:
    * Add owner key to terrain space callable, for villages
    * Location formulas in [tunnel] now have a teleport_unit variable
    * Fix a crash when attempting to call a non-existent function
-   * The following previously FormulaAI-exclusive functions are now also available
-     in filter formulas (SUF, SLF, SSF, SWF):
+   * The following previously FormulaAI-exclusive functions are now also
+     available in filter formulas (SUF, SLF, SSF, SWF):
 	 adjacent_locs, location_in_radius, get_unit_type, unit_at, defense_on,
 	 chance_to_hit, movement_cost
-   * New builtin functions for manipulating locations (available to all formulas):
-     adjacent_locs, are_adjacent, relative_dir, direction_from, rotate_loc_around
-   * New enemy_of function checks if its second argument is an enemy of the first
+   * New builtin functions for manipulating locations
+     (available to all formulas):
+     adjacent_locs, are_adjacent, relative_dir, direction_from,
+     rotate_loc_around
+   * New enemy_of function checks if its second argument is
+     an enemy of the first
      Arguments can be side or unit objects, or integer side indices (1..n)
  * WML Engine
    * If ai_algorithm is used in [modify_side][ai], it now replaces the whole AI
-     with the contents of [modify_side][ai], instead of appending these parameters.
+     with the contents of [modify_side][ai], instead of appending these
+     parameters.
    * New [credits_group] tag can be used by non-campaign addons to group several
      [about] tags under a single header. This is a toplevel tag, not a subtag
 	 of [era] or [modification].
-   * An empty id key in SUF no longer matches all units; instead, it matches none.
+   * An empty id key in SUF no longer matches all units;
+     instead, it matches none.
    * Fix [primary_attack] and [secondary_attack] in [kill]
    * Fix [kill] not affecting recall list units
    * Fix [scroll] with omitted x or y
@@ -109,18 +116,19 @@ Version 1.13.8+dev:
    * Fix some hotkeys not working (issues #1737 and #1769)
    * New vision_cost and jamming_cost keys in SUF
    * Integer SUF keys (eg level) now accept a list of ranges
-   * Fix $other_unit variable in SUF not being available in nested [and] [or] [not]
+   * Fix $other_unit SUF variable being unavailable in nested [and] [or] [not]
    * Unit ability values can now be specified with WFL
    * The {ABILITY_TELEPORT} macro no longer uses internal variable substitution,
      meaning that it can be used in an event without specifying
      delayed_variable_substitution=yes.
      (This also applies to {ABILITY_BACKSTAB} and {ABILITY_LEADERSHIP}.)
-   * Add fire_event key to [unit] which determines whether to fire a unit placed event.
-   * [resolution] window_width/height now specifies the minimum window size for that
-     resolution ot be chosen 
+   * Add fire_event key to [unit] which determines whether to fire a unit 
+     placed event.
+   * [resolution] window_width/height now specifies the minimum window size 
+     for that resolution ot be chosen 
    * formula code is now supported in abilities and weapon specials (fr #1436)
-   * The allow_new_game= in [scenario] now defaults to false (it still defaults to true
-     in [multiplayer]) 
+   * The allow_new_game= in [scenario] now defaults to false (it still
+     defaults to true in [multiplayer])
    * Add [cancel_action] (bug #1427)
    * Allowed TerrainGraphicsWML random_start= to optionally take a positive
      integer to limit the range of the random shift of the animation start time
@@ -128,10 +136,11 @@ Version 1.13.8+dev:
    * Add --report/-R command line switch for printing the same report from the
      Game Version dialog's clipboard function to stdout.
    * Fixed programmatically killed unit flashing after its death animation
-   * On GNU/Linux the game no longer minimizes when it loses focus in fullscreen mode
-     (bug #1606)
+   * On GNU/Linux the game no longer minimizes when it loses focus in
+     fullscreen mode (bug #1606)
    * Fixed whiteboard crash on delete action with multiple moves (bug #1842)
-   * Fix units beeing unable to step on hexes with too high movecosts (bug #1473) 
+   * Fix units beeing unable to step on hexes with too high movecosts
+     (bug #1473)
    * Improved and more detailed FPS display
 
 Version 1.13.8:
