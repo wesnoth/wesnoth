@@ -9,6 +9,7 @@ Version 1.13.8+dev:
    * Heir to the Throne:
      * Fixed thieves in 'Siege of Elensefar' getting duplicated.
      * Fixed Void Armor not doing anything.
+     * Fixed translatability of countdown in 'Test of the Clans'.
    * Northern Rebirth:
      * Fixed backdoor lever opening the wrong location in 'The Pursuit'.
    * Secrets of the Ancients:
@@ -60,7 +61,8 @@ Version 1.13.8+dev:
    * Implemented GUI canvas caching. It speeds up multiple areas, but especially
      the story screen.
  * Units:
-   * Added new lvl0 Giant Scorpling, leveling into the Giant Scorpion.
+   * Added new lvl 0 Giant Scorpling, leveling into the Giant Scorpion.
+   * Tweak some costs for lvl 3 units.
  * User Interface:
    * Fixed loyal and aged traits missing from help (issue #1935).
    * Unit recall dialog now sorts the units by both level and required XP for
@@ -78,6 +80,9 @@ Version 1.13.8+dev:
    * Fixed a number of issues with hotkeys
    * Fixed the viewport being moved when changing the zoom level
    * Fixed an occasional interface hang where only the menus work
+   * Trait description tooltips now color-code modifiers
+   * Fix about window not showing Mac notifications as available
+   * Add descriptive tooltips for all text elements in the top status bar
  * WFL Engine
    * Add owner key to terrain space callable, for villages
    * Location formulas in [tunnel] now have a teleport_unit variable
@@ -109,6 +114,7 @@ Version 1.13.8+dev:
    * The {ABILITY_TELEPORT} macro no longer uses internal variable substitution,
      meaning that it can be used in an event without specifying
      delayed_variable_substitution=yes.
+     (This also applies to {ABILITY_BACKSTAB} and {ABILITY_LEADERSHIP}.)
    * Add fire_event key to [unit] which determines whether to fire a unit placed event.
    * [resolution] window_width/height now specifies the minimum window size for that
      resolution ot be chosen 
