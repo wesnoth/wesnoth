@@ -601,9 +601,9 @@ static void play_new_music()
 	if(itor == music_cache.end()) {
 		LOG_AUDIO << "attempting to insert track '" << filename << "' into cache\n";
 
-		SDL_RWops* rwops = filesystem::load_RWops(filename);
+		filesystem::rwops_ptr rwops = filesystem::load_RWops(filename);
 		// SDL takes ownership of rwops
-		const std::shared_ptr<Mix_Music> music(Mix_LoadMUSType_RW(rwops, MUS_NONE, true), &Mix_FreeMusic);
+		const std::shared_ptr<Mix_Music> music(Mix_LoadMUSType_RW(rwops.release(), MUS_NONE, true), &Mix_FreeMusic);
 
 		if(music == nullptr) {
 			ERR_AUDIO << "Could not load music file '" << filename << "': " << Mix_GetError() << "\n";
@@ -882,8 +882,8 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		const std::string& filename = filesystem::get_binary_file_location("sounds", file);
 
 		if(!filename.empty()) {
-			SDL_RWops* rwops = filesystem::load_RWops(filename);
-			temp_chunk.set_data(Mix_LoadWAV_RW(rwops, true)); // SDL takes ownership of rwops
+			filesystem::rwops_ptr rwops = filesystem::load_RWops(filename);
+			temp_chunk.set_data(Mix_LoadWAV_RW(rwops.release(), true)); // SDL takes ownership of rwops
 		} else {
 			ERR_AUDIO << "Could not load sound file '" << file << "'." << std::endl;
 			throw chunk_load_exception();

@@ -37,7 +37,9 @@ namespace filesystem {
 using scoped_istream = std::unique_ptr<std::istream>;
 using scoped_ostream = std::unique_ptr<std::ostream>;
 
-SDL_RWops* load_RWops(const std::string &path);
+typedef std::unique_ptr<SDL_RWops, void(*)(SDL_RWops*)> rwops_ptr;
+
+rwops_ptr load_RWops(const std::string &path);
 
 /** An exception object used when an IO error occurs */
 struct io_exception : public game::error {
