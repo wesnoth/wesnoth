@@ -39,14 +39,14 @@ SDL_RWops* load_RWops(const std::string &path) {
 
 	rw->type = 7; // Random number that is larger than 5
 
-	std::istream *ifs = istream_file(path).release();
+	scoped_istream ifs = istream_file(path);
 	if(!ifs) {
 		SDL_FreeRW(rw);
 		ERR_FS << "load_RWops: istream_file returned NULL on " << path << '\n';
 		return nullptr;
 	}
 
-	rw->hidden.unknown.data1 = ifs;
+	rw->hidden.unknown.data1 = ifs.release();
 
 	return rw;
 }
