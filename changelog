@@ -78,15 +78,6 @@ Version 1.13.8+dev:
    * Fixed a number of issues with hotkeys
    * Fixed the viewport being moved when changing the zoom level
    * Fixed an occasional interface hang where only the menus work
- * Miscellaneous and Bug Fixes:
-   * Add --report/-R command line switch for printing the same report from the
-     Game Version dialog's clipboard function to stdout.
-   * Fixed programmatically killed unit flashing after its death animation
-   * On GNU/Linux the game no longer minimizes when it loses focus in fullscreen mode
-     (bug #1606)
-   * Fixed whiteboard crash on delete action with multiple moves (bug #1842)
-   * Fix units beeing unable to step on hexes with too high movecosts (bug #1473) 
-   * Improved and more detailed FPS display
  * WFL Engine
    * Add owner key to terrain space callable, for villages
    * Location formulas in [tunnel] now have a teleport_unit variable
@@ -127,6 +118,15 @@ Version 1.13.8+dev:
    * Add [cancel_action] (bug #1427)
    * Allowed TerrainGraphicsWML random_start= to optionally take a positive
      integer to limit the range of the random shift of the animation start time
+ * Miscellaneous and Bug Fixes:
+   * Add --report/-R command line switch for printing the same report from the
+     Game Version dialog's clipboard function to stdout.
+   * Fixed programmatically killed unit flashing after its death animation
+   * On GNU/Linux the game no longer minimizes when it loses focus in fullscreen mode
+     (bug #1606)
+   * Fixed whiteboard crash on delete action with multiple moves (bug #1842)
+   * Fix units beeing unable to step on hexes with too high movecosts (bug #1473) 
+   * Improved and more detailed FPS display
 
 Version 1.13.8:
   * Campaigns:
