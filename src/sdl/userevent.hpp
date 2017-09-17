@@ -15,29 +15,39 @@
 
 #include <SDL_events.h>
 
+#include <cstring>
+
 namespace sdl
 {
-    class UserEvent : public SDL_UserEvent
-    {
-        public:
-            UserEvent() : SDL_UserEvent() {
-            }
 
-            UserEvent(int type) : UserEvent() {
-                this->type = type;
-            }
+class UserEvent : public SDL_UserEvent
+{
+public:
+	UserEvent() : SDL_UserEvent()
+	{
+		std::memset(this, 0, sizeof(*this));
+	}
 
-            UserEvent(int type, int code) : UserEvent(type) {
-                this->code = code;
-            }
+	UserEvent(int type) : UserEvent()
+	{
+		this->type = type;
+	}
 
-            UserEvent(int type, int data1, int data2) : UserEvent(type) {
-                this->data1 = reinterpret_cast<void*>(data1);
-                this->data2 = reinterpret_cast<void*>(data2);
-            }
+	UserEvent(int type, int code) : UserEvent(type)
+	{
+		this->code = code;
+	}
 
-            UserEvent(int type, void* data1) : UserEvent(type) {
-                this->data1 = data1;
-            }
-    };
+	UserEvent(int type, int data1, int data2) : UserEvent(type)
+	{
+		this->data1 = reinterpret_cast<void*>(data1);
+		this->data2 = reinterpret_cast<void*>(data2);
+	}
+
+	UserEvent(int type, void* data1) : UserEvent(type)
+	{
+		this->data1 = data1;
+	}
+};
+
 }
