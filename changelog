@@ -132,7 +132,7 @@ Version 1.13.8+dev:
    * Add fire_event key to [unit] which determines whether to fire a unit 
      placed event.
    * [resolution] window_width/height now specifies the minimum window size 
-     for that resolution ot be chosen 
+     for that resolution to be chosen
    * formula code is now supported in abilities and weapon specials (fr #1436)
    * The allow_new_game= in [scenario] now defaults to false (it still
      defaults to true in [multiplayer])
@@ -149,10 +149,10 @@ Version 1.13.8+dev:
    * On GNU/Linux the game no longer minimizes when it loses focus in
      fullscreen mode (bug #1606)
    * Fixed whiteboard crash on delete action with multiple moves (bug #1842)
-   * Fix units beeing unable to step on hexes with too high movecosts
+   * Fix units being unable to step on hexes with too high movecosts
      (bug #1473)
    * Improved and more detailed FPS display
-   * Fix minimap beeing sometimes balck in mp create (bug #1484)
+   * Fix minimap being sometimes black in mp create (bug #1484)
    * Optimized unit filters
    * Fixed bug #1837 empty tags missing in [store_unit] 
 
