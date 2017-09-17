@@ -25,6 +25,7 @@
 #include "gui/widgets/window.hpp"
 #include "sdl/rect.hpp"
 
+#include <algorithm>
 #include "utils/functional.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
@@ -207,6 +208,10 @@ void scrollbar_container::request_reduce_width(const unsigned maximum_width)
 {
 	DBG_GUI_L << LOG_HEADER << " requested width " << maximum_width << ".\n";
 
+	if(static_cast<unsigned>(get_grid().get_best_size().x) > maximum_width) {
+		get_grid().request_reduce_width(maximum_width);
+	}
+
 	// First ask our content, it might be able to wrap which looks better as
 	// a scrollbar.
 	assert(content_grid_);
@@ -257,6 +262,8 @@ void scrollbar_container::request_reduce_width(const unsigned maximum_width)
 	} else {
 		size.x = scrollbar_size.x;
 	}
+
+	size.x = std::max(size.x, get_grid().get_best_size().x);
 
 	// FIXME adjust for the step size of the scrollbar
 
