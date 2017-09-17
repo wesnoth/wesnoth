@@ -85,6 +85,7 @@ Version 1.13.8+dev:
    * Trait description tooltips now color-code modifiers
    * Fix about window not showing Mac notifications as available
    * Add descriptive tooltips for all text elements in the top status bar
+   * The current screen position is now saved in savefiles
  * WFL Engine
    * Add owner key to terrain space callable, for villages
    * Location formulas in [tunnel] now have a teleport_unit variable
@@ -132,6 +133,9 @@ Version 1.13.8+dev:
    * Add [cancel_action] (bug #1427)
    * Allowed TerrainGraphicsWML random_start= to optionally take a positive
      integer to limit the range of the random shift of the animation start time
+   * new attributes mp_village_gold, mp_village_support, mp_shroud, mp_fog in
+     [multiplayer] that are used as default values for the corresponding
+     attributes in [side]
  * Miscellaneous and Bug Fixes:
    * Add --report/-R command line switch for printing the same report from the
      Game Version dialog's clipboard function to stdout.
@@ -142,6 +146,9 @@ Version 1.13.8+dev:
    * Fix units beeing unable to step on hexes with too high movecosts
      (bug #1473)
    * Improved and more detailed FPS display
+   * Fix minimap beeing sometimes balck in mp create (bug #1484)
+   * Optimized unit filters
+   * Fixed bug #1837 empty tags missing in [store_unit] 
 
 Version 1.13.8:
   * Campaigns:
