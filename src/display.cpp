@@ -335,7 +335,7 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 		if(sub_items.size() > 1) {
 			str = sub_items.front();
 			try {
-				time = std::stoi(sub_items.back());
+				time = std::max<int>(1, std::stoi(sub_items.back()));
 			} catch(std::invalid_argument) {
 				ERR_DP << "Invalid time value found when constructing flag for side " << n << ": " << sub_items.back() << "\n";
 			}
@@ -348,14 +348,15 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 	}
 
 	animated<image::locator>& f = flags_[n];
-
 	f = temp_anim;
-	if (f.get_end_time() <= 0) {
-		std::stringstream msg;
-		msg << "Invalid animation duration (<= 0) found when constructing flag for side " << n;
-		throw std::domain_error(msg.str());
+	auto time = f.get_end_time(); 
+	if (time > 0) {
+		f.start_animation(rand() % time, true);
 	}
-	f.start_animation(rand() % f.get_end_time(), true);
+	else {
+		// this can happen if both flag and game_config::images::flag are empty.
+		ERR_DP << "missing flag for team" << n << "\n";
+	}
 }
 
 surface display::get_flag(const map_location& loc)
