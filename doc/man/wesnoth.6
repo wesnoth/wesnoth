@@ -127,7 +127,7 @@ uses language
 Example:
 .B --language ang_GB@latin
 .TP
-.BI --log-level= domain1 , domain2 , ...
+.BI --log- level = domain1 , domain2 , ...
 sets the severity level of the log domains.
 .B all
 can be used to match any log domain. Available levels:
@@ -147,7 +147,7 @@ of the victory result. Only relevant when used with
 .TP
 .BI --logdomains[ =filter ]
 lists defined log domains (only the ones containing
-.B filter
+.I filter
 if used) and exits
 .TP
 .BI --max-fps \ fps
@@ -212,7 +212,7 @@ Example:
 For details regarding the preprocessor visit:
 https://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor
 .TP
-.BI --preprocess-defines= DEFINE1 , DEFINE2 , etc
+.BI --preprocess-defines= DEFINE1 , DEFINE2 , ...
 comma separated list of defines to be used by the
 .B --preprocess
 command. If
@@ -397,8 +397,7 @@ chosen by an id. Factions are described in the data/multiplayer.cfg
 file.
 .TP
 .BI --turns \ value
-sets the number of turns for the chosen scenario. The default is
-.BR 50 .
+sets the number of turns for the chosen scenario. By default no turn limit is set.
 .
 .SH EXIT STATUS
 .
