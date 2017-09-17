@@ -1393,7 +1393,7 @@ bool recruitment::recruit_matches_types(const std::string& recruit,
  */
 bool recruitment::remove_job_if_no_blocker(config* job) {
 	assert(job);
-	if (!job->operator[]("blocker").to_bool(true)) {
+	if ((*job)["blocker"].to_bool(true)) {
 		LOG_AI_RECRUITMENT << "Canceling job.\n";
 		job->clear();
 		return true;
