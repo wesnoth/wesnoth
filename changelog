@@ -28,6 +28,8 @@ Version 1.13.8+dev:
    * Fixed transparency artifacts in scaled portraits and other message images
      (issue #1570).
    * Fixed issue with jumpy animations on faster speeds (issue #1565).
+   * Added ruined version of encampment terrain
+   * Added some new item and scenery images
  * Language and i18n:
    * Updated translations: British English, Chinese (Simplified), Italian,
      Polish, Scottish Gaelic, Slovak, Spanish
@@ -86,6 +88,10 @@ Version 1.13.8+dev:
    * Fix about window not showing Mac notifications as available
    * Add descriptive tooltips for all text elements in the top status bar
    * The current screen position is now saved in savefiles
+   * Removed emacs keybindings in text fields (Ctrl+A, Ctrl+U, Ctrl+E)
+     Ctrl+A now selects all text in the field.
+   * Fix addon manager closing when canceling an operation
+   * Addons can now be filtered to show only publishable addons
  * WFL Engine
    * Add owner key to terrain space callable, for villages
    * Location formulas in [tunnel] now have a teleport_unit variable
