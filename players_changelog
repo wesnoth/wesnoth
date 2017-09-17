@@ -6,7 +6,8 @@ Version 1.13.8+dev:
  * Campaigns:
    * Reordered beginner campaigns to be friendlier to new players.
    * Delfador's Memoirs:
-     * Replaced incorrect 'Defeat all enemies' objectives with more specific 'Defeat all enemy leaders'.
+     * Replaced incorrect 'Defeat all enemies' objectives with more specific
+     'Defeat all enemy leaders'.
    * Heir to the Throne:
      * Fixed thieves in 'Siege of Elensefar' getting duplicated.
      * Fixed Void Armor not doing anything.
@@ -37,9 +38,10 @@ Version 1.13.8+dev:
    * Fix bug where leader can become unable to be killed (issue #1666)
 
  * Performance:
-   * Rewrote the FPS cap implementation. This greatly improves smoothness ingame.
-   * Each invalidated hex is now only redrawn once, not twice. This almost halves CPU
-     usage ingame.
+   * Rewrote the FPS cap implementation. This greatly improves
+     smoothness ingame.
+   * Each invalidated hex is now only redrawn once, not twice. This almost
+     halves CPU usage ingame.
    * Implemented GUI canvas caching. It speeds up multiple areas, but especially
      the story screen.
 
@@ -51,8 +53,8 @@ Version 1.13.8+dev:
 
  * Miscellaneous and bug fixes:
    * Fixed programmatically killed unit flashing after its death animation
-   * On GNU/Linux the game no longer minimizes when it loses focus in fullscreen mode
-     (bug #1606)
+   * On GNU/Linux the game no longer minimizes when it loses focus in
+     fullscreen mode (bug #1606)
 
 Version 1.13.8:
   * Under the Burning Suns:
