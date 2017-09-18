@@ -761,7 +761,7 @@ void server::handle_upload(const server::request& req)
 		add_license(data);
 
 		{
-			filesystem::atomic_commit campaign_file(cfg_file_);
+			filesystem::atomic_commit campaign_file(filename);
 			config_writer writer(*campaign_file.ostream(), true, compress_level_);
 			writer.write(data);
 			campaign_file.commit();
