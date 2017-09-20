@@ -29,6 +29,6 @@ def generate(env):
                   'CCACHE_HASHDIR',
                   'CCACHE_UNIFY',
                   'CCACHE_EXTENSION']:
-            if os.environ.has_key(i) and not env.has_key(i):
+            if i in os.environ and i not in env:
                 env['ENV'][i] = os.environ[i]
 
