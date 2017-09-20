@@ -61,6 +61,7 @@ rwops_ptr make_read_RWops(const std::string &path) {
 
 	return rw;
 }
+
 rwops_ptr make_write_RWops(const std::string &path) {
 	rwops_ptr rw(SDL_AllocRW(), &SDL_FreeRW);
 
@@ -110,6 +111,7 @@ static Sint64 ofs_size (struct SDL_RWops * context) {
 }
 
 typedef std::pair<Sint64, std::ios_base::seekdir> offset_dir;
+
 static offset_dir translate_seekdir(Sint64 offset, int whence) {
 	switch(whence){
 	case RW_SEEK_SET:
