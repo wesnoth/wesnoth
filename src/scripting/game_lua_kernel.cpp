@@ -445,6 +445,7 @@ static int impl_add_animation(lua_State* L)
 
 static int impl_run_animation(lua_State* L)
 {
+	events::command_disabler command_disabler;
 	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
 	anim.start_animations();
 	anim.wait_for_end();
@@ -2600,6 +2601,7 @@ int game_lua_kernel::intf_scroll_to_tile(lua_State *L)
 
 int game_lua_kernel::intf_select_hex(lua_State *L)
 {
+	events::command_disabler command_disabler;
 	ERR_LUA << "wesnoth.select_hex is deprecated, use wesnoth.select_unit and/or wesnoth.highlight_hex" << std::endl;
 
 	// Need this because check_location may change the stack
@@ -2623,6 +2625,7 @@ int game_lua_kernel::intf_select_hex(lua_State *L)
  */
 int game_lua_kernel::intf_select_unit(lua_State *L)
 {
+	events::command_disabler command_disabler;
 	if(lua_isnoneornil(L, 1)) {
 		play_controller_.get_mouse_handler_base().select_hex(map_location::null_location(), false, false, false);
 		return 0;
@@ -3145,6 +3148,7 @@ static int intf_remove_modifications(lua_State *L)
  */
 static int intf_advance_unit(lua_State *L)
 {
+	events::command_disabler command_disabler;
 	//TODO: check whether the unit is on the map.
 	unit& u = luaW_checkunit(L, 1, true);
 	advance_unit_params par(u.get_location());
@@ -3215,7 +3219,8 @@ int game_lua_kernel::intf_remove_tile_overlay(lua_State *L)
 	return 0;
 }
 
-int game_lua_kernel::intf_log_replay(lua_State* L) {
+int game_lua_kernel::intf_log_replay(lua_State* L)
+{
 	replay& recorder = play_controller_.get_replay();
 	const int nargs = lua_gettop(L);
 	if(nargs < 2 || nargs > 3) {
@@ -3274,6 +3279,7 @@ int game_lua_kernel::intf_color_adjust(lua_State *L)
  */
 int game_lua_kernel::intf_delay(lua_State *L)
 {
+	events::command_disabler command_disabler;
 	lua_Integer delay = luaL_checkinteger(L, 1);
 	if(delay == 0) {
 		play_controller_.play_slice(false);
@@ -3716,6 +3722,7 @@ int game_lua_kernel::intf_get_all_vars(lua_State *L) {
  */
 int game_lua_kernel::intf_teleport(lua_State *L)
 {
+	events::command_disabler command_disabler;
 	unit_ptr u = luaW_checkunit_ptr(L, 1, true);
 	map_location dst = luaW_checklocation(L, 2);
 	bool check_passability = !luaW_toboolean(L, 3);
