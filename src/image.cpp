@@ -1217,9 +1217,8 @@ bool save_image(const surface& surf, const std::string& filename)
 		LOG_DP << "Writing a png image to " << filename << std::endl;
 
 		surface tmp = SDL_PNGFormatAlpha(surf.get());
-		// SDL_SavePNG_RW(tmp, filesystem::write_RWops(filename).release(), 1); //1 means to close the file (RWops) when we finish
-		//^ This doesn't work, load_RWops is only for reading not writing
-		return SDL_SavePNG(tmp, filename.c_str()) == 0;
+		const int err = SDL_SavePNG_RW(tmp, filesystem::write_RWops(filename).release(), 1); //1 means SDL takes ownership of the RWops
+		return err == 0;
 	}
 #endif
 
