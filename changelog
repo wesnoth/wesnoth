@@ -33,7 +33,6 @@ Version 1.13.8+dev:
    * Fixed transparency artifacts in scaled portraits and other message images
      (issue #1570).
    * Fixed issue with jumpy animations on faster speeds (issue #1565).
-   * Added ruined version of encampment terrain
    * Added some new item and scenery images
  * Language and i18n:
    * Updated translations: British English, Chinese (Simplified), Italian,
@@ -70,6 +69,7 @@ Version 1.13.8+dev:
    * Implemented GUI canvas caching. It speeds up multiple areas, but especially
      the story screen.
  * Terrains:
+     * Added ruined version of encampment terrain.
      * New stone floor terrain.
      * Gates now have new terrain codes to grant more control for map makers.
        The old codes are now deprecated (issue #1839)
