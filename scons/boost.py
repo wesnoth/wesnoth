@@ -28,7 +28,9 @@ def find_boost(env):
         versions = []
         for prefix, includefile in includes:
             try:
-                versions.append(map(int, re.findall(r"^boost-(\d*)_(\d*)$", basename(dirname(dirname(includefile))))[0]))
+                testname = basename(dirname(dirname(includefile)))
+                major, minor = re.findall(r"^boost-(\d*)_(\d*)$", testname)[0]
+                versions.append((int(major), int(minor)))
             except IndexError:
                 versions.append((0,0))
         version_nums = [100000 * major_minor[0] + 100 * major_minor[1] for major_minor in versions]

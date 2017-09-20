@@ -268,7 +268,7 @@ if sys.platform == 'win32':
 
             sAttrs = win32security.SECURITY_ATTRIBUTES()
             StartupInfo = win32process.STARTUPINFO()
-            newargs = string.join(map(escape, args[1:]), ' ')
+            newargs = ' '.join(map(escape, args[1:]))
             cmdline = cmd + " " + newargs
 
             # check for any special operating system commands
@@ -563,9 +563,9 @@ else                  : build_suffix = "-" + build
 Export("build_suffix")
 env.SConscript("src/SConscript", variant_dir = build_dir, duplicate = False)
 Import(binaries + ["sources"])
-binary_nodes = map(eval, binaries)
-all = env.Alias("all", map(Alias, binaries))
-env.Default(map(Alias, env["default_targets"]))
+binary_nodes = [eval(binary) for binary in binaries]
+all = env.Alias("all", [Alias(binary) for binary in binaries])
+env.Default([Alias(target) for target in env["default_targets"]])
 
 if have_client_prereqs and env["nls"]:
     env.Requires("wesnoth", Dir("translations"))
@@ -616,7 +616,7 @@ def InstallManpages(env, component):
 
 # The game and associated resources
 env.InstallBinary(wesnoth)
-env.InstallData("datadir", "wesnoth", map(Dir, installable_subs))
+env.InstallData("datadir", "wesnoth", [Dir(sub) for sub in installable_subs])
 env.InstallData("docdir",  "wesnoth", [Glob("doc/manual/*.html"), Dir("doc/manual/styles"), Dir("doc/manual/images")])
 if env["nls"]:
     env.InstallData("localedir", "wesnoth", Dir("translations"))
