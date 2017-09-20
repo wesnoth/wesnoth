@@ -2012,7 +2012,7 @@ void game_lua_kernel::put_unit_helper(const map_location& loc)
 	}
 
 	units().erase(loc);
-        resources::whiteboard-> on_kill_unit ();
+        resources::whiteboard->on_kill_unit();
 }
 
 /**
