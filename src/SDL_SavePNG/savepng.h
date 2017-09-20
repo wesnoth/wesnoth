@@ -7,16 +7,7 @@
  * http://www.libpng.org/pub/png/src/libpng-LICENSE.txt
  */
 #include <SDL_video.h>
-/*
- * Save an SDL_Surface as a PNG file.
- *
- * Returns 0 success or -1 on failure, the error message is then retrievable
- * via SDL_GetError().
- */
-#define SDL_SavePNG(surface, file) \
-	SDL_SavePNG_RW(surface, SDL_RWFromFile(file, "wb"), 1)
-//
-//TODO: filesystem::load_RWops is only for reading, would like a writing version also
+
 #ifdef __cplusplus
 extern "C" {
 #endif // __cplusplus
