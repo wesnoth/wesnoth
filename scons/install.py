@@ -8,18 +8,18 @@ def InstallFilteredHook(target, source, env):
     target = Flatten(target)
     source = Flatten(source)
     if(len(target) != len(source)):
-        raise ValueError, "Number of targets doesn't match number of sources"
+        raise ValueError("Number of targets doesn't match number of sources")
 
     def do_copy(target, source):
         if CopyFilter(source):
             if os.path.isfile(source):
                     if env["verbose"]:
-                        print "cp %s %s" % (source, target)
+                        print("cp %s %s" % (source, target))
                     shutil.copy2(source, target)
             else:
                 if not os.path.exists(target):
                     if env["verbose"]:
-                        print "Make directory", target
+                        print("Make directory", target)
                     os.makedirs(target)
                 for file in os.listdir(source):
                     do_copy(os.path.join(target, file), os.path.join(source, file))
@@ -31,7 +31,7 @@ def InstallFilteredHook(target, source, env):
             os.makedirs(target_path)
         for d in (target_path, source_path):
             if not os.path.isdir(d):
-                raise ValueError, "%s is not a directory" % d
+                raise ValueError("%s is not a directory" % d)
         do_copy(target_path, source_path)
 
 from SCons.Action import ActionFactory
@@ -42,7 +42,7 @@ def hard_link(dest, src, symlink = False):
             os.symlink(src, dest)
         else:
             os.link(src, dest)
-    except OSError, e:
+    except OSError as e:
         if e.errno == 18:
             hard_link(dest, src, True)
         else:
@@ -79,7 +79,7 @@ def InstallData(env, datadir, component, source, subdir = ""):
         if len(dirs) == 1:
             install = env.InstallFiltered(installdir.path, dirs[0].path)
         else:
-            install = map(lambda x : env.InstallFiltered(os.path.join(installdir.path, x.name), x.path), dirs)
+            install = [env.InstallFiltered(os.path.join(installdir.path, x.name), x.path) for x in dirs]
         AlwaysBuild(install)
         env.Alias("install-" + component, install)
 

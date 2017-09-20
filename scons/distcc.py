@@ -8,7 +8,7 @@ def exists():
     return True
 
 def generate(env):
-        print env["ENV"]["PATH"]
+        print(env["ENV"]["PATH"])
         env['DISTCC'] = env.WhereIs("distcc")
         env['CC'] = '$DISTCC %s' % env['CC']
         env['CXX'] = '$DISTCC %s' % env['CXX']
@@ -22,5 +22,5 @@ def generate(env):
                   'DISTCC_TCP_CORK',
                   'DISTCC_SSH'
                   ]:
-            if os.environ.has_key(i) and not env.has_key(i):
+            if i in os.environ and i not in env:
                 env['ENV'][i] = os.environ[i]

@@ -19,7 +19,7 @@ def setup_cross_compile(env):
             "RC"
             ]
         for tool in tools:
-            if env.has_key(tool):
+            if tool in env:
                 env[tool] = env["host"] + "-" + env[tool]
 
         env.PrependUnique(CPPPATH="$prefix/include", LIBPATH="$prefix/lib")

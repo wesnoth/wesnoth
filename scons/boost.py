@@ -31,7 +31,7 @@ def find_boost(env):
                 versions.append(map(int, re.findall(r"^boost-(\d*)_(\d*)$", basename(dirname(dirname(includefile))))[0]))
             except IndexError:
                 versions.append((0,0))
-        version_nums = map(lambda (major, minor): 100000 * major + 100 * minor, versions)
+        version_nums = [100000 * major_minor[0] + 100 * major_minor[1] for major_minor in versions]
         include_index = version_nums.index(max(version_nums))
         prefix, includefile = includes[include_index]
         version = versions[include_index]
