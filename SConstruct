@@ -9,7 +9,7 @@
 
 EnsureSConsVersion(0,98,3)
 
-import os, sys, shutil, re, commands
+import os, sys, shutil, re, subprocess
 from glob import glob
 from subprocess import Popen, PIPE, call
 from os import access, F_OK
@@ -682,7 +682,7 @@ if 'dist' in COMMAND_LINE_TARGETS:    # Speedup, the manifest is expensive
     def dist_manifest():
         "Get an argument list suitable for passing to a distribution archiver."
         # Start by getting a list of all files under version control
-        lst = commands.getoutput("git ls-files | grep -v 'data\/test\/.*' | awk '/^[^?]/ {print $4;}'").split()
+        lst = subprocess.check_output("git ls-files | grep -v 'data\/test\/.*' | awk '/^[^?]/ {print $4;}'", shell=True).split()
         lst = filter(os.path.isfile, lst)
         return lst
     dist_tarball = env.Tar('wesnoth-${version}.tar.bz2', [])
