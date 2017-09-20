@@ -377,6 +377,7 @@ WML_HANDLER_FUNCTION(modify_turns,, cfg)
 /// that is just moving for the visual effect
 WML_HANDLER_FUNCTION(move_unit_fake,, cfg)
 {
+	events::command_disabler command_disabler;
 	fake_unit_ptr dummy_unit(create_fake_unit(cfg));
 	if(!dummy_unit.get())
 		return;
@@ -398,6 +399,7 @@ WML_HANDLER_FUNCTION(move_unit_fake,, cfg)
 
 WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 {
+	events::command_disabler command_disabler;
 	LOG_NG << "Processing [move_units_fake]\n";
 
 	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
@@ -453,6 +455,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 // be sure to update data/lua/wml_tag, auto_recall feature for [role] to reflect your changes.
 WML_HANDLER_FUNCTION(recall,, cfg)
 {
+	events::command_disabler command_disabler;
 	LOG_NG << "recalling unit...\n";
 	config temp_config(cfg.get_config());
 	// Prevent the recall unit filter from using the location as a criterion
@@ -907,6 +910,7 @@ WML_HANDLER_FUNCTION(tunnel,, cfg)
 /// If we should spawn a new unit on the map somewhere
 WML_HANDLER_FUNCTION(unit,, cfg)
 {
+	events::command_disabler command_disabler;
 	config parsed_cfg = cfg.get_parsed_config();
 
 	config::attribute_value to_variable = cfg["to_variable"];
