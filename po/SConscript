@@ -8,14 +8,14 @@ from os.path import join, walk
 Import("env")
 
 def remove_pot_cdate(path):
-    return "".join(filter(lambda line: "POT-Creation-Date: " not in line, open(path).readlines()))
+    return "".join([line for line in open(path).readlines() if "POT-Creation-Date: " not in line])
 def update_pot(target, source, env):
     pot = target[0].path
     new_pot = source[0].path
     if not os.path.exists(new_pot): return
     if remove_pot_cdate(new_pot) != remove_pot_cdate(pot):
         shutil.copy2(new_pot, pot)
-        print pot + " updated."
+        print(pot + " updated.")
     os.remove(new_pot)
 
 #
@@ -24,7 +24,7 @@ def update_pot(target, source, env):
 
 textdomains = glob("wesnoth*")
 po4a_domains = Split("wesnoth-manpages wesnoth-manual")
-textdomains = filter(os.path.isdir, textdomains)
+textdomains = [domain for domain in textdomains if os.path.isdir(domain)]
 linguas = Split(open("LINGUAS").read())
 
 if "pot-update" in COMMAND_LINE_TARGETS:
@@ -51,7 +51,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
 
         potfiles = open(join(domain, "POTFILES.in"), "w")
         potfiles.writelines([line + "\n" for line in sorted(domain_sources[domain[7:]])])
-        sources = map(lambda x: Dir("#").File(x), domain_sources[domain[7:]])
+        sources = [Dir("#").File(x) for x in domain_sources[domain[7:]]]
         if sources:
             source_pot = env.Command(
                 join(domain, domain + ".cpp.pot"),
@@ -69,7 +69,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
         FINDCFG = join(domain, "FINDCFG")
         if os.path.exists(FINDCFG):
             cfgs = Split(Popen(["sh", join("po", FINDCFG)], stdout = PIPE, cwd = "..").communicate()[0])
-        cfgs = map(lambda x: File(x, Dir("..")), cfgs)
+        cfgs = [File(x, Dir("..")) for x in cfgs]
         if cfgs:
             wml_pot = env.Command(
                 join(domain, domain + ".wml.pot"),
