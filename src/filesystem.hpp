@@ -39,8 +39,8 @@ using scoped_ostream = std::unique_ptr<std::ostream>;
 
 typedef std::unique_ptr<SDL_RWops, void(*)(SDL_RWops*)> rwops_ptr;
 
-rwops_ptr read_RWops(const std::string &path);
-rwops_ptr write_RWops(const std::string &path);
+rwops_ptr make_read_RWops(const std::string &path);
+rwops_ptr make_write_RWops(const std::string &path);
 
 /** An exception object used when an IO error occurs */
 struct io_exception : public game::error {

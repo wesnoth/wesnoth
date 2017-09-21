@@ -39,7 +39,7 @@ static size_t SDLCALL ofs_write(struct SDL_RWops *context, const void *ptr, size
 static int SDLCALL ifs_close(struct SDL_RWops *context);
 static int SDLCALL ofs_close(struct SDL_RWops *context);
 
-rwops_ptr read_RWops(const std::string &path) {
+rwops_ptr make_read_RWops(const std::string &path) {
 	rwops_ptr rw(SDL_AllocRW(), &SDL_FreeRW);
 
 	rw->size = &ifs_size;
@@ -52,7 +52,7 @@ rwops_ptr read_RWops(const std::string &path) {
 
 	scoped_istream ifs = istream_file(path);
 	if(!ifs) {
-		ERR_FS << "read_RWops: istream_file returned NULL on " << path << '\n';
+		ERR_FS << "make_read_RWops: istream_file returned NULL on " << path << '\n';
 		rw.reset();
 		return rw;
 	}
@@ -61,7 +61,7 @@ rwops_ptr read_RWops(const std::string &path) {
 
 	return rw;
 }
-rwops_ptr write_RWops(const std::string &path) {
+rwops_ptr make_write_RWops(const std::string &path) {
 	rwops_ptr rw(SDL_AllocRW(), &SDL_FreeRW);
 
 	rw->size = &ofs_size;
@@ -74,7 +74,7 @@ rwops_ptr write_RWops(const std::string &path) {
 
 	scoped_ostream ofs = ostream_file(path);
 	if(!ofs) {
-		ERR_FS << "write_RWops: ostream_file returned NULL on " << path << '\n';
+		ERR_FS << "make_write_RWops: ostream_file returned NULL on " << path << '\n';
 		rw.reset();
 		return rw;
 	}

@@ -513,7 +513,7 @@ static std::string get_localized_path(const std::string& file, const std::string
 // Load overlay image and compose it with the original surface.
 static void add_localized_overlay(const std::string& ovr_file, surface& orig_surf)
 {
-	filesystem::rwops_ptr rwops = filesystem::read_RWops(ovr_file);
+	filesystem::rwops_ptr rwops = filesystem::make_read_RWops(ovr_file);
 	surface ovr_surf = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
 	if(ovr_surf.null()) {
 		return;
@@ -537,7 +537,7 @@ static surface load_image_file(const image::locator& loc)
 			if(!loc_location.empty()) {
 				location = loc_location;
 			}
-			filesystem::rwops_ptr rwops = filesystem::read_RWops(location);
+			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(location);
 			res = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
 			// If there was no standalone localized image, check if there is an overlay.
 			if(!res.null() && loc_location.empty()) {
@@ -1217,7 +1217,7 @@ bool save_image(const surface& surf, const std::string& filename)
 		LOG_DP << "Writing a png image to " << filename << std::endl;
 
 		surface tmp = SDL_PNGFormatAlpha(surf.get());
-		const int err = SDL_SavePNG_RW(tmp, filesystem::write_RWops(filename).release(), 1); //1 means SDL takes ownership of the RWops
+		const int err = SDL_SavePNG_RW(tmp, filesystem::make_write_RWops(filename).release(), 1); //1 means SDL takes ownership of the RWops
 		return err == 0;
 	}
 #endif
