@@ -18,7 +18,7 @@ from os import access, F_OK
 AddOption('--option-cache', dest='option_cache', nargs=1, type = 'string', action = 'store', metavar = 'FILE', help='file with cached construction variables', default = '.scons-option-cache')
 if os.path.exists(GetOption("option_cache")):
     optfile = file(GetOption("option_cache"))
-    print("Saved options:", optfile.read().replace("\n", ", ")[:-2])
+    print("Saved options: {}".format(optfile.read().replace("\n", ", ")[:-2]))
     optfile.close()
 
 #

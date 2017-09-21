@@ -19,7 +19,7 @@ def InstallFilteredHook(target, source, env):
             else:
                 if not os.path.exists(target):
                     if env["verbose"]:
-                        print("Make directory", target)
+                        print("Make directory {}".format(target))
                     os.makedirs(target)
                 for file in os.listdir(source):
                     do_copy(os.path.join(target, file), os.path.join(source, file))
