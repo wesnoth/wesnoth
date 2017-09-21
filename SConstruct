@@ -114,7 +114,7 @@ opts.AddVariables(
 
 toolpath = ["scons"] + map(lambda x : x.abspath + "/scons", Dir(".").repositories)
 sys.path = toolpath + sys.path
-env = Environment(tools=["tar", "gettext", "install", "python_devel", "scanreplace"], options = opts, toolpath = toolpath)
+env = Environment(tools=["tar", "gettext_tool", "install", "python_devel", "scanreplace"], options = opts, toolpath = toolpath)
 
 if env["lockfile"]:
     print("Creating lockfile")
@@ -289,7 +289,9 @@ def Warning(message):
     return False
 
 from metasconf import init_metasconf
-configure_args = dict(custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango", "pkgconfig", "gettext", "lua"]), config_h = "$build_dir/config.h",
+configure_args = dict(
+    custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "cairo", "pango", "pkgconfig", "gettext_tool", "lua"]),
+    config_h = "$build_dir/config.h",
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
 env.MergeFlags(env["extra_flags_config"])
