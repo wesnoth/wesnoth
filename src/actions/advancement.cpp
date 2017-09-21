@@ -353,6 +353,7 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 		LOG_CF << "Added '" << new_unit->type_id() << "' to the encountered units.\n";
 	}
 	resources::gameboard->units().erase(loc);
+        resources::whiteboard->on_kill_unit();
 	u = resources::gameboard->units().insert(new_unit).first;
 
 	// Update fog/shroud.
