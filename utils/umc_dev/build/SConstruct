@@ -12,7 +12,7 @@ import os, shutil, re, subprocess
 # Warn user of current set of build options.
 if os.path.exists('.scons-option-cache'):
     optfile = file('.scons-option-cache')
-    print "Saved options:", optfile.read().replace("\n", ", ")[:-2]
+    print("Saved options: {}".format(optfile.read().replace("\n", ", ")[:-2]))
     optfile.close()
 
 # variables
@@ -37,17 +37,17 @@ binaries_dir = env[ "binariesdir" ]
 
 store_pass = env["storepass"]
 if len(store_pass) == 0:
-   print "Please specify the 'storepass' variable"
+   print("Please specify the 'storepass' variable")
    Return()
 
 key_pass = env["keypass"]
 if len(key_pass) == 0:
-   print "Please specify the 'keypass' variable"
+   print("Please specify the 'keypass' variable")
    Return()
 
 temp_build_dir = os.environ[ "TMP" ] + "/umcdev_build"
 
-print "Clearing temporary build dir ( " + temp_build_dir + " ) ..."
+print("Clearing temporary build dir ( " + temp_build_dir + " ) ...")
 if os.path.exists( temp_build_dir ):
     shutil.rmtree( temp_build_dir )
 
@@ -67,18 +67,18 @@ for file in os.listdir( eclipse_dir + "/plugins" ):
         pde_build_dir = eclipse_dir + "/plugins/" + file
 
 if equinox_launcher_path:
-    print "Found equinox launcher: " + equinox_launcher_path
+    print("Found equinox launcher: " + equinox_launcher_path)
 else:
-    print "Couldn't find equinox launcher. Aborting..."
+    print("Couldn't find equinox launcher. Aborting...")
     Return( )
 
 if pde_build_dir:
-    print "Found PDE Build dir: " + pde_build_dir
+    print("Found PDE Build dir: " + pde_build_dir)
 else:
-    print "Couldn't find PDE Build dir. Aborting..."
+    print("Couldn't find PDE Build dir. Aborting...")
     Return( )
 
-print "Building..."
+print("Building...")
 subprocess.call( [
     "java",
     "-cp", equinox_launcher_path, "org.eclipse.core.launcher.Main",
@@ -98,7 +98,7 @@ subprocess.call( [
     "-buildfile", "build.xml" ] )
 
 # Some cleanup
-print "Cleaning up..."
+print("Cleaning up...")
 # Some cleanup
 to_cleanup = [ 
 	"../org.wesnoth.feature/build.xml",  

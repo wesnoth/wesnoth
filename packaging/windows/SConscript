@@ -18,7 +18,7 @@ if env["multilib_arch"] == "32":
     env.AppendUnique(RCFLAGS = Split("-F pe-i386"))
 
 def WindowsInstaller(env, files):
-    files = map(Entry, Flatten(files))
+    files = [Entry(file) for file in Flatten(files)]
     env["NSIS_INSTALL_FILES"] = ""
     env["NSIS_UNINSTALL_FILES"] = ""
     try:
