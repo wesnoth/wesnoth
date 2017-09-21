@@ -476,6 +476,10 @@ void mouse_handler::select_or_action(bool browse)
 
 	// Load whiteboard partial moves
 	wb::future_map_if_active planned_unit_map;
+	
+	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
+		lk->select_hex_callback(last_hex_);
+	}
 
 	unit_map::iterator clicked_u = find_unit(last_hex_);
 	unit_map::iterator selected_u = find_unit(selected_hex_);
@@ -509,9 +513,6 @@ void mouse_handler::move_action(bool browse)
 	//		deselect_hex();
 	//		return false;
 	//	}
-	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
-		lk->select_hex_callback(last_hex_);
-	}
 	unit_map::iterator u;
 	unit_map::iterator clicked_u;
 	map_location src;
@@ -678,9 +679,6 @@ void mouse_handler::move_action(bool browse)
 void mouse_handler::select_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event) {
 
 	selected_hex_ = hex;
-	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
-		lk->select_hex_callback(last_hex_);
-	}
 
 	gui().select_hex(selected_hex_);
 	gui().clear_attack_indicator();

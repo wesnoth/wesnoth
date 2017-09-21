@@ -28,8 +28,8 @@ static size_t SDLCALL ifs_read(struct SDL_RWops *context, void *ptr, size_t size
 static size_t SDLCALL ifs_write(struct SDL_RWops *context, const void *ptr, size_t size, size_t num);
 static int SDLCALL ifs_close(struct SDL_RWops *context);
 
-SDL_RWops* load_RWops(const std::string &path) {
-	SDL_RWops *rw = SDL_AllocRW();
+rwops_ptr load_RWops(const std::string &path) {
+	rwops_ptr rw(SDL_AllocRW(), &SDL_FreeRW);
 
 	rw->size = &ifs_size;
 	rw->seek = &ifs_seek;
@@ -41,9 +41,9 @@ SDL_RWops* load_RWops(const std::string &path) {
 
 	scoped_istream ifs = istream_file(path);
 	if(!ifs) {
-		SDL_FreeRW(rw);
 		ERR_FS << "load_RWops: istream_file returned NULL on " << path << '\n';
-		return nullptr;
+		rw.reset();
+		return rw;
 	}
 
 	rw->hidden.unknown.data1 = ifs.release();

@@ -7,6 +7,8 @@ Version 1.13.8+dev:
    * Delfador's Memoirs:
      * Replaced incorrect 'Defeat all enemies' objectives with more specific
      'Defeat all enemy leaders'.
+     * Increased difficulty, clarified objectives, & improved feel of S21 & S22.
+     * Riders are now guaranteed to go for a signpost in S21 on all levels.
    * Heir to the Throne:
      * Fixed thieves in 'Siege of Elensefar' getting duplicated.
      * Fixed Void Armor not doing anything.
@@ -31,7 +33,6 @@ Version 1.13.8+dev:
    * Fixed transparency artifacts in scaled portraits and other message images
      (issue #1570).
    * Fixed issue with jumpy animations on faster speeds (issue #1565).
-   * Added ruined version of encampment terrain
    * Added some new item and scenery images
  * Language and i18n:
    * Updated translations: British English, Chinese (Simplified), Italian,
@@ -68,6 +69,7 @@ Version 1.13.8+dev:
    * Implemented GUI canvas caching. It speeds up multiple areas, but especially
      the story screen.
  * Terrains:
+     * Added ruined version of encampment terrain.
      * New stone floor terrain.
      * Gates now have new terrain codes to grant more control for map makers.
        The old codes are now deprecated (issue #1839)

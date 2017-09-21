@@ -2288,7 +2288,7 @@ void server::clones_handler(const std::string& /*issuer_name*/, const std::strin
 		}
 	}
 	if (clones.empty()) {
-		*out << "No clones found.";
+		*out << std::endl << "No clones found.";
 	}
 }
 

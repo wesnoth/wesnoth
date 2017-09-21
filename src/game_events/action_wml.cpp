@@ -46,6 +46,7 @@
 #include "recall_list_manager.hpp"
 #include "replay.hpp"
 #include "random.hpp"
+#include "mouse_handler_base.hpp" // for events::commands_disabled
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "side_filter.hpp"
@@ -284,12 +285,34 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 	static const std::set<std::string> allowed_tags {"attack", "move", "recruit", "recall", "disband", "fire_event", "lua_ai"};
 
 	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
+	const bool is_unsynced_too_early = resources::gamedata->phase() != game_data::PLAY;
+	const bool is_unsynced = synced_context::get_synced_state() == synced_context::UNSYNCED;
 	if(is_too_early)
 	{
 		ERR_NG << "[do_command] called too early, only allowed at START or later" << std::endl;
 		return;
 	}
-	if(!resources::controller->current_team().is_local() && synced_context::get_synced_state() == synced_context::UNSYNCED)
+	if(is_unsynced && resources::controller->is_lingering())
+	{
+		ERR_NG << "[do_command] cannot be used in linger mode" << std::endl;
+		return;
+	}
+	if(is_unsynced && resources::controller->gamestate().init_side_done())
+	{
+		ERR_NG << "[do_command] cannot be used before the turn has started" << std::endl;
+		return;
+	}
+	if(is_unsynced && is_unsynced_too_early)
+	{
+		ERR_NG << "[do_command] called too early" << std::endl;
+		return;
+	}
+	if(is_unsynced && events::commands_disabled)
+	{
+		ERR_NG << "[do_command] cannot invoke synced commands while commands are blocked" << std::endl;
+		return;
+	}
+	if(is_unsynced && !resources::controller->current_team().is_local())
 	{
 		ERR_NG << "[do_command] can only be used from clients that control the currently playing side" << std::endl;
 		return;
@@ -354,6 +377,7 @@ WML_HANDLER_FUNCTION(modify_turns,, cfg)
 /// that is just moving for the visual effect
 WML_HANDLER_FUNCTION(move_unit_fake,, cfg)
 {
+	events::command_disabler command_disabler;
 	fake_unit_ptr dummy_unit(create_fake_unit(cfg));
 	if(!dummy_unit.get())
 		return;
@@ -375,6 +399,7 @@ WML_HANDLER_FUNCTION(move_unit_fake,, cfg)
 
 WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 {
+	events::command_disabler command_disabler;
 	LOG_NG << "Processing [move_units_fake]\n";
 
 	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
@@ -430,6 +455,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 // be sure to update data/lua/wml_tag, auto_recall feature for [role] to reflect your changes.
 WML_HANDLER_FUNCTION(recall,, cfg)
 {
+	events::command_disabler command_disabler;
 	LOG_NG << "recalling unit...\n";
 	config temp_config(cfg.get_config());
 	// Prevent the recall unit filter from using the location as a criterion
@@ -884,6 +910,7 @@ WML_HANDLER_FUNCTION(tunnel,, cfg)
 /// If we should spawn a new unit on the map somewhere
 WML_HANDLER_FUNCTION(unit,, cfg)
 {
+	events::command_disabler command_disabler;
 	config parsed_cfg = cfg.get_parsed_config();
 
 	config::attribute_value to_variable = cfg["to_variable"];

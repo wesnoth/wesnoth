@@ -9,7 +9,7 @@
 
 EnsureSConsVersion(0,98,3)
 
-import os, sys, shutil, re, commands
+import os, sys, shutil, re, subprocess
 from glob import glob
 from subprocess import Popen, PIPE, call
 from os import access, F_OK
@@ -18,7 +18,7 @@ from os import access, F_OK
 AddOption('--option-cache', dest='option_cache', nargs=1, type = 'string', action = 'store', metavar = 'FILE', help='file with cached construction variables', default = '.scons-option-cache')
 if os.path.exists(GetOption("option_cache")):
     optfile = file(GetOption("option_cache"))
-    print "Saved options:", optfile.read().replace("\n", ", ")[:-2]
+    print("Saved options:", optfile.read().replace("\n", ", ")[:-2])
     optfile.close()
 
 #
@@ -29,9 +29,9 @@ config_h_re = re.compile(r"^.*#define\s*(\S*)\s*\"(\S*)\".*$", re.MULTILINE)
 build_config = dict( config_h_re.findall(File("src/wesconfig.h").get_contents()) )
 try:
     version = build_config["VERSION"]
-    print "Building Wesnoth version %s" % version
+    print("Building Wesnoth version %s" % version)
 except KeyError:
-    print "Couldn't determine the Wesnoth version number, bailing out!"
+    print("Couldn't determine the Wesnoth version number, bailing out!")
     sys.exit(1)
 
 #
@@ -125,7 +125,7 @@ sys.path = toolpath + sys.path
 env = Environment(tools=["tar", "gettext", "install", "python_devel", "scanreplace"], options = opts, toolpath = toolpath)
 
 if env["lockfile"]:
-    print "Creating lockfile"
+    print("Creating lockfile")
     lockfile = os.path.abspath("scons.lock")
     open(lockfile, "wx").write(str(os.getpid()))
     import atexit
@@ -247,7 +247,7 @@ if env["fast"]:
     SetOption('implicit_cache', 1)
 
 if not os.path.isabs(env["prefix"]):
-    print "Warning: prefix is set to relative dir. destdir setting will be ignored."
+    print("Warning: prefix is set to relative dir. destdir setting will be ignored.")
     env["destdir"] = ""
 
 #
@@ -268,7 +268,7 @@ if sys.platform == 'win32':
 
             sAttrs = win32security.SECURITY_ATTRIBUTES()
             StartupInfo = win32process.STARTUPINFO()
-            newargs = string.join(map(escape, args[1:]), ' ')
+            newargs = ' '.join(map(escape, args[1:]))
             cmdline = cmd + " " + newargs
 
             # check for any special operating system commands
@@ -294,14 +294,14 @@ if sys.platform == 'win32':
 #
 # Check some preconditions
 #
-print "---[checking prerequisites]---"
+print("---[checking prerequisites]---")
 
 def Info(message):
-    print "INFO: " + message
+    print("INFO: " + message)
     return True
 
 def Warning(message):
-    print "WARNING: " + message
+    print("WARNING: " + message)
     return False
 
 from metasconf import init_metasconf
@@ -434,8 +434,8 @@ if env["prereqs"]:
     if not have_test_prereqs and "test" in env["default_targets"]:
         env["default_targets"].remove("test")
 
-    print "  " + env.subst("If any config checks fail, look in $build_dir/config.log for details")
-    print "  If a check fails spuriously due to caching, use --config=force to force its rerun"
+    print("  " + env.subst("If any config checks fail, look in $build_dir/config.log for details"))
+    print("  If a check fails spuriously due to caching, use --config=force to force its rerun")
 
 else:
     have_client_prereqs = True
@@ -452,14 +452,14 @@ have_msgfmt = env["MSGFMT"]
 if not have_msgfmt:
      env["nls"] = False
 if not have_msgfmt:
-     print "NLS tools are not present..."
+     print("NLS tools are not present...")
 if not env['nls']:
-     print "NLS catalogue installation is disabled."
+     print("NLS catalogue installation is disabled.")
 
 #
 # Implement configuration switches
 #
-print "---[applying configuration]---"
+print("---[applying configuration]---")
 
 for env in [test_env, client_env, env]:
     build_root="#/"
@@ -563,9 +563,9 @@ else                  : build_suffix = "-" + build
 Export("build_suffix")
 env.SConscript("src/SConscript", variant_dir = build_dir, duplicate = False)
 Import(binaries + ["sources"])
-binary_nodes = map(eval, binaries)
-all = env.Alias("all", map(Alias, binaries))
-env.Default(map(Alias, env["default_targets"]))
+binary_nodes = [eval(binary) for binary in binaries]
+all = env.Alias("all", [Alias(binary) for binary in binaries])
+env.Default([Alias(target) for target in env["default_targets"]])
 
 if have_client_prereqs and env["nls"]:
     env.Requires("wesnoth", Dir("translations"))
@@ -616,7 +616,7 @@ def InstallManpages(env, component):
 
 # The game and associated resources
 env.InstallBinary(wesnoth)
-env.InstallData("datadir", "wesnoth", map(Dir, installable_subs))
+env.InstallData("datadir", "wesnoth", [Dir(sub) for sub in installable_subs])
 env.InstallData("docdir",  "wesnoth", [Glob("doc/manual/*.html"), Dir("doc/manual/styles"), Dir("doc/manual/images")])
 if env["nls"]:
     env.InstallData("localedir", "wesnoth", Dir("translations"))
@@ -630,8 +630,8 @@ if have_client_prereqs and have_X and env["desktop_entry"]:
      env.InstallData("desktopdir", "wesnoth", "icons/wesnoth.desktop")
 
 # Python tools
-env.InstallData("bindir", "pytools", map(lambda tool: os.path.join("data", "tools", tool), pythontools))
-env.InstallData("python_site_packages_dir", "pytools", map(lambda module: os.path.join("data", "tools", "wesnoth", module), pythonmodules))
+env.InstallData("bindir", "pytools", [os.path.join("data", "tools", tool) for tool in pythontools])
+env.InstallData("python_site_packages_dir", "pytools", [os.path.join("data", "tools", "wesnoth", module) for module in pythonmodules])
 
 # Wesnoth MP server install
 env.InstallBinary(wesnothd)
@@ -639,7 +639,7 @@ InstallManpages(env, "wesnothd")
 if not access(fifodir, F_OK):
     fifodir = env.Command(fifodir, [], [
         Mkdir(fifodir),
-        Chmod(fifodir, 0700),
+        Chmod(fifodir, 0o700),
         Action("chown %s:%s %s" %
                (env["server_uid"], env["server_gid"], fifodir)),
         ])
@@ -682,7 +682,7 @@ if 'dist' in COMMAND_LINE_TARGETS:    # Speedup, the manifest is expensive
     def dist_manifest():
         "Get an argument list suitable for passing to a distribution archiver."
         # Start by getting a list of all files under version control
-        lst = commands.getoutput("git ls-files | grep -v 'data\/test\/.*' | awk '/^[^?]/ {print $4;}'").split()
+        lst = subprocess.check_output("git ls-files | grep -v 'data\/test\/.*' | awk '/^[^?]/ {print $4;}'", shell=True).split()
         lst = filter(os.path.isfile, lst)
         return lst
     dist_tarball = env.Tar('wesnoth-${version}.tar.bz2', [])

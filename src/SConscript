@@ -1,6 +1,6 @@
 # vi: syntax=python:et:ts=4
 
-import commands, os
+import os
 from subprocess import Popen, PIPE
 from glob import glob
 
@@ -124,7 +124,7 @@ libwesnoth_extras.extend(env_lua.Library("lua", objs_lua))
 
 def error_action(target, source, env):
     from SCons.Errors import UserError
-    raise UserError, "Target disabled because its prerequisites are not met"
+    raise UserError("Target disabled because its prerequisites are not met")
 
 def WesnothProgram(env, target, source, can_build, **kw):
     if env["build"] == "optimized" and env["enable_lto"] == True:
