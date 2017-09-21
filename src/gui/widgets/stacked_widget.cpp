@@ -22,6 +22,7 @@
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/generator.hpp"
 #include "gettext.hpp"
+#include "utils/const_clone.hpp"
 #include "utils/general.hpp"
 
 #include "utils/functional.hpp"
@@ -33,10 +34,33 @@ namespace gui2
 
 REGISTER_WIDGET(stacked_widget)
 
+struct stacked_widget_implementation
+{
+	template<typename W>
+	static W* find(utils::const_clone_ref<stacked_widget, W> stack,
+			const std::string& id,
+			const bool must_be_active)
+	{
+		// Use base method if find-in-all-layer isn't set.
+		if(!stack.find_in_all_layers_) {
+			return stack.container_base::find(id, must_be_active);
+		}
+
+		for(unsigned i = 0; i < stack.get_layer_count(); ++i) {
+			if(W* res = stack.get_layer_grid(i)->find(id, must_be_active)) {
+				return res;
+			}
+		}
+
+		return stack.container_base::find(id, must_be_active);
+	}
+};
+
 stacked_widget::stacked_widget(const implementation::builder_stacked_widget& builder)
 	: container_base(builder, get_control_type())
 	, generator_(generator_base::build(false, false, generator_base::independent, false))
 	, selected_layer_(-1)
+	, find_in_all_layers_(false)
 {
 }
 
@@ -158,6 +182,22 @@ grid* stacked_widget::get_layer_grid(unsigned int i)
 {
 	assert(generator_);
 	return &generator_->item(i);
+}
+
+const grid* stacked_widget::get_layer_grid(unsigned int i) const
+{
+	assert(generator_);
+	return &generator_->item(i);
+}
+
+widget* stacked_widget::find(const std::string& id, const bool must_be_active)
+{
+	return stacked_widget_implementation::find<widget>(*this, id, must_be_active);
+}
+
+const widget* stacked_widget::find(const std::string& id, const bool must_be_active) const
+{
+	return stacked_widget_implementation::find<const widget>(*this, id, must_be_active);
 }
 
 // }---------- DEFINITION ---------{
