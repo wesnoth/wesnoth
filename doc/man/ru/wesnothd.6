@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd "Демон для игры по сети Battle for Wesnoth"
+.TH WESNOTHD 6 2017 wesnothd "Демон для игры по сети Battle for Wesnoth"
 .
 .SH ИМЯ
 .
@@ -33,10 +33,9 @@ wesnothd \- демон многопользовательской игры Би�
 .
 .SH ОПИСАНИЕ
 .
-Управление многопользовательскими играми Битвы за
-Веснот. См. http://www.wesnoth.org/wiki/ServerAdministration (англ.), чтобы
-узнать какие команды сервер может принимать через клиент Веснота  (/query
-\&...) или firo .
+Manages Battle for Wesnoth multiplayer games. See
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH ПАРАМЕТРЫ
 .
@@ -119,9 +118,9 @@ wesnothd \- демон многопользовательской игры Би�
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-Путь к fifo, куда можно направлять серверные команды (соответствует команде
-/query ... в wesnoth).  Если не задан, используется файл, заданный при
-компиляции (по умолчанию \fB/var/run/socket/wesnothd/socket\fP)
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Число разрешенных сообщений в \fBmessages_time_period\fP. (по умолчанию: \fB4\fP)
@@ -301,11 +300,11 @@ Soliton <soliton.de@gmail.com> и Томасом Баумхаером
 <thomas.baumhauer@gmail.com>. Эта страница изначально была написана
 Сирилом Бауторсом (Cyril Bouthors) <cyril@bouthors.org>.
 .br
-Посетите официальную страницу: http://www.wesnoth.org/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH "АВТОРСКОЕ ПРАВО"
 .
-Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2017 David White <davidnwhite@verizon.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as
 published by the Free Software Foundation.  There is NO warranty; not even

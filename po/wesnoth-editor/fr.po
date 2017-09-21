@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Editor-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-05-29 21:55+0200\n"
+"POT-Creation-Date: 2017-09-21 23:27+0300\n"
 "PO-Revision-Date: 2014-03-13 10:55+0100\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
@@ -334,13 +334,13 @@ msgstr "Nom : "
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:280 src/editor/map/map_context.cpp:766
+#: src/editor/map/context_manager.cpp:280 src/editor/map/map_context.cpp:828
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Nouvelle carte)"
 
-#: src/editor/map/context_manager.cpp:291 src/editor/map/map_context.cpp:766
+#: src/editor/map/context_manager.cpp:291 src/editor/map/map_context.cpp:828
 #, fuzzy
 #| msgid "(New Scenario)"
 msgid "New Scenario"
@@ -469,15 +469,15 @@ msgstr ""
 "La taille de la carte de destination est différente de celle de la carte "
 "actuelle"
 
-#: src/editor/map/map_context.cpp:149
+#: src/editor/map/map_context.cpp:146
 msgid "File not found"
 msgstr "Fichier non trouvé"
 
-#: src/editor/map/map_context.cpp:155
+#: src/editor/map/map_context.cpp:153
 msgid "Empty file"
 msgstr "Fichier vide"
 
-#: src/editor/map/map_context.cpp:204
+#: src/editor/map/map_context.cpp:209
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -485,15 +485,15 @@ msgstr ""
 "Ce fichier ressemble à un scénario, mais la valeur de map_data n'indique pas "
 "un nom de fichier existant."
 
-#: src/editor/map/map_context.cpp:555
+#: src/editor/map/map_context.cpp:597
 msgid "Could not save the scenario: $msg"
 msgstr "Impossible de sauvegarder le scénario : $msg"
 
-#: src/editor/map/map_context.cpp:582
+#: src/editor/map/map_context.cpp:629
 msgid "Could not save into scenario"
 msgstr "Impossible de sauvegarder dans le scénario"
 
-#: src/editor/map/map_context.cpp:590
+#: src/editor/map/map_context.cpp:639
 msgid "Could not save the map: $msg"
 msgstr "Impossible de sauvegarder la carte : $msg"
 

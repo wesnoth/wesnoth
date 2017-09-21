@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"POT-Creation-Date: 2017-09-21 23:27+0300\n"
 "PO-Revision-Date: 2008-02-21 10:21+0800\n"
 "Last-Translator: eve <eve_eso@yahoo.com>\n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. [time]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:499
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
 #: data/core/macros/schedules.cfg:109
 msgid "Underground"
 msgstr "Ilalim ng Lupa"
@@ -26,14 +26,14 @@ msgstr "Ilalim ng Lupa"
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:659
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:657
-#: data/core/macros/abilities.cfg:346
+#: data/core/macros/abilities.cfg:274
 msgid "berserk"
 msgstr "mabangis"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:661
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:659
-#: data/core/macros/abilities.cfg:347
+#: data/core/macros/abilities.cfg:275
 #, fuzzy
 #| msgid ""
 #| "Berserk:\n"
@@ -52,14 +52,14 @@ msgstr ""
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:668
-#: data/core/macros/abilities.cfg:433
+#: data/core/macros/abilities.cfg:359
 msgid "magical"
 msgstr "mahiwaga"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:672
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:670
-#: data/core/macros/abilities.cfg:434
+#: data/core/macros/abilities.cfg:360
 #, fuzzy
 #| msgid ""
 #| "Magical:\n"
@@ -75,7 +75,7 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:679
-#: data/core/macros/abilities.cfg:478
+#: data/core/macros/abilities.cfg:404
 #, fuzzy
 #| msgid "firststrike"
 msgid "first strike"
@@ -83,7 +83,7 @@ msgstr "unang tama"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:681
-#: data/core/macros/abilities.cfg:479
+#: data/core/macros/abilities.cfg:405
 #, fuzzy
 #| msgid ""
 #| "First Strike:\n"
@@ -1694,45 +1694,45 @@ msgid ""
 "\n"
 msgstr ""
 
+#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:340 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Bukang-liwayway"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
+#. [time]: id=morning
 #: data/core/help.cfg:341 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Umaga"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
+#. [time]: id=afternoon
 #: data/core/help.cfg:342 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "Hapon"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:343 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Takipsilim"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
+#. [time]: id=first_watch
 #: data/core/help.cfg:344 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "Unang Tingin"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
+#. [time]: id=second_watch
 #: data/core/help.cfg:345 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
@@ -2673,18 +2673,18 @@ msgstr ""
 "walang pagsasaalang-alang ano mang pinsala."
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:107
+#: data/core/macros/abilities.cfg:106
 msgid "leadership"
 msgstr "pamumuno"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:108
+#: data/core/macros/abilities.cfg:107
 #, fuzzy
 msgid "female^leadership"
 msgstr "pamumuno"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:109
+#: data/core/macros/abilities.cfg:108
 msgid ""
 "This unit can lead our own units that are next to it, making them fight "
 "better.\n"
@@ -2696,36 +2696,36 @@ msgid ""
 msgstr ""
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:170
+#: data/core/macros/abilities.cfg:125
 msgid "skirmisher"
 msgstr ""
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:171
+#: data/core/macros/abilities.cfg:126
 #, fuzzy
 msgid "female^skirmisher"
 msgstr "malakas"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:172
+#: data/core/macros/abilities.cfg:127
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:185
+#: data/core/macros/abilities.cfg:140
 msgid "illuminates"
 msgstr ""
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:186
+#: data/core/macros/abilities.cfg:141
 #, fuzzy
 msgid "female^illuminates"
 msgstr "matalino"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:187
+#: data/core/macros/abilities.cfg:142
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -2735,36 +2735,36 @@ msgid ""
 msgstr ""
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:199
+#: data/core/macros/abilities.cfg:154
 msgid "teleport"
 msgstr ""
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:200
+#: data/core/macros/abilities.cfg:155
 #, fuzzy
 msgid "female^teleport"
 msgstr "matalino"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:201
+#: data/core/macros/abilities.cfg:156
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:237 data/core/macros/abilities.cfg:239
+#: data/core/macros/abilities.cfg:185
 msgid "ambush"
 msgstr "tambangan"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:238 data/core/macros/abilities.cfg:240
+#: data/core/macros/abilities.cfg:186
 #, fuzzy
 msgid "female^ambush"
 msgstr "matapat"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:241 data/core/macros/abilities.cfg:244
+#: data/core/macros/abilities.cfg:187
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -2774,13 +2774,12 @@ msgid ""
 msgstr ""
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:261 data/core/macros/abilities.cfg:262
-#: data/core/macros/abilities.cfg:266
+#: data/core/macros/abilities.cfg:204 data/core/macros/abilities.cfg:205
 msgid "nightstalk"
 msgstr ""
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:263 data/core/macros/abilities.cfg:268
+#: data/core/macros/abilities.cfg:206
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -2789,25 +2788,19 @@ msgid ""
 "remaining movement."
 msgstr ""
 
-#. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:267
-#, fuzzy
-msgid "female^nightstalk"
-msgstr "malusog"
-
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:285 data/core/macros/abilities.cfg:290
+#: data/core/macros/abilities.cfg:223
 msgid "concealment"
 msgstr ""
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:286 data/core/macros/abilities.cfg:291
+#: data/core/macros/abilities.cfg:224
 #, fuzzy
 msgid "female^concealment"
 msgstr "matalino"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:287 data/core/macros/abilities.cfg:292
+#: data/core/macros/abilities.cfg:225
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.\n"
@@ -2818,18 +2811,18 @@ msgid ""
 msgstr ""
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:309 data/core/macros/abilities.cfg:314
+#: data/core/macros/abilities.cfg:242
 msgid "submerge"
 msgstr ""
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:310 data/core/macros/abilities.cfg:315
+#: data/core/macros/abilities.cfg:243
 #, fuzzy
 msgid "female^submerge"
 msgstr "malakas"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:311 data/core/macros/abilities.cfg:316
+#: data/core/macros/abilities.cfg:244
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -2839,30 +2832,30 @@ msgid ""
 msgstr ""
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:333
+#: data/core/macros/abilities.cfg:261
 msgid "feeding"
 msgstr ""
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:334
+#: data/core/macros/abilities.cfg:262
 #, fuzzy
 msgid "female^feeding"
 msgstr "walang takot"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:335
+#: data/core/macros/abilities.cfg:263
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
 msgstr ""
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:357
+#: data/core/macros/abilities.cfg:285
 msgid "backstab"
 msgstr ""
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:358
+#: data/core/macros/abilities.cfg:286
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -2871,12 +2864,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:378 data/core/macros/abilities.cfg:389
+#: data/core/macros/abilities.cfg:304 data/core/macros/abilities.cfg:315
 msgid "plague"
 msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:379
+#: data/core/macros/abilities.cfg:305
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
@@ -2884,7 +2877,7 @@ msgid ""
 msgstr ""
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:390
+#: data/core/macros/abilities.cfg:316
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -2892,12 +2885,12 @@ msgid ""
 msgstr ""
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:400
+#: data/core/macros/abilities.cfg:326
 msgid "slows"
 msgstr ""
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:401
+#: data/core/macros/abilities.cfg:327
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -2906,36 +2899,36 @@ msgid ""
 msgstr ""
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:410
+#: data/core/macros/abilities.cfg:336
 #, fuzzy
 msgid "petrifies"
 msgstr "Mga Tama"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:411
+#: data/core/macros/abilities.cfg:337
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:420
+#: data/core/macros/abilities.cfg:346
 msgid "marksman"
 msgstr ""
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:421
+#: data/core/macros/abilities.cfg:347
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:445
+#: data/core/macros/abilities.cfg:371
 msgid "swarm"
 msgstr ""
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:446
+#: data/core/macros/abilities.cfg:372
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -2944,36 +2937,36 @@ msgid ""
 msgstr ""
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:455
+#: data/core/macros/abilities.cfg:381
 msgid "charge"
 msgstr ""
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:456
+#: data/core/macros/abilities.cfg:382
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:468
+#: data/core/macros/abilities.cfg:394
 msgid "drains"
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:469
+#: data/core/macros/abilities.cfg:395
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:488
+#: data/core/macros/abilities.cfg:414
 msgid "poison"
 msgstr "lason"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:489
+#: data/core/macros/abilities.cfg:415
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -4646,6 +4639,10 @@ msgstr ""
 #: src/help/help.cpp:240
 msgid "Parse error when parsing help text: "
 msgstr ""
+
+#, fuzzy
+#~ msgid "female^nightstalk"
+#~ msgstr "malusog"
 
 #~ msgid "Intelligent"
 #~ msgstr "Matalino"

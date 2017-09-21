@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd "Мережний демон мультиплеєру Битви за Веснот"
+.TH WESNOTHD 6 2017 wesnothd "Мережний демон мультиплеєру Битви за Веснот"
 .
 .SH НАЗВА
 .
@@ -33,9 +33,9 @@ wesnothd \- мережний демон мультиплеєру Битви за
 .
 .SH ОПИС
 .
-Управління багатокористувацькими іграми Битви за
-Веснот. Див. http://www.wesnoth.org/wiki/ServerAdministration щоб дізнатися
-які команди сервер може приймати через клієнт wesnoth (/query ...) або firo.
+Manages Battle for Wesnoth multiplayer games. See
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH ОПЦІЇ
 .
@@ -115,9 +115,9 @@ restart) будуть проігноровані, тільки якщо вони
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-Шлях до fifo, до якого ви можете відголошувати команди сервера (так само, як
-/query ... з wesnoth). Якщо не вказано, скидається до шляху, визначеного під
-час компіляції (типово: \fB/var/run/socket/wesnothd/socket\fP).
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Кількість дозволених повідомлень за \fBmessages_time_period\fP. (типово: \fB4\fP)
@@ -276,11 +276,11 @@ Soliton <soliton.de@gmail.com> та Томасом Баумхауером (Thoma
 Baumhauer) <thomas.baumhauer@gmail.com>. Початковий автор сторінки \-
 Cyril Bouthors <cyril@bouthors.org>.
 .br
-Загляньте на офіційну сторінку: http://www.wesnoth.org/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH "АВТОРСЬКІ ПРАВА"
 .
-Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2017 David White <davidnwhite@verizon.net>
 .br
 Це Вільне Програмне Забезпечення; воно ліцензоване під ліцензією GPL версії
 2, що опублікована Free Software Foundation. Гарантії НЕ надаються; ні щодо

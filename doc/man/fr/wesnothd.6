@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd "Serveur multijoueur de Bataille pour Wesnoth"
+.TH WESNOTHD 6 2017 wesnothd "Serveur multijoueur de Bataille pour Wesnoth"
 .
 .SH NOM
 .
@@ -34,9 +34,9 @@ wesnothd \- Serveur pour jeu multijoueur en réseau de Bataille pour
 .
 .SH DESCRIPTION
 .
-Gère les jeux multijoueurs de Bataille pour Wesnoth. Voir les commandes que
-le serveur accepte via le client wesnoth ou via une fifo sur
-http://www.wesnoth.org/wiki/ServerAdministration.
+Manages Battle for Wesnoth multiplayer games. See
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH OPTIONS
 .
@@ -116,10 +116,9 @@ par défaut (utilisées si rien n'est précisé) sont\ :
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-Chemin de la fifo dans laquelle vous pouvez envoyer des commandes au serveur
-(comme les /query depuis wesnoth). Si elle n'est pas précisée, le chemin est
-celui prédéfini lors de la compilation (valeur par défaut\ :
-\fB/var/run/socket/wesnothd/socket\fP).
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Nombre maximum de messages permis en \fBmessages_time_period\fP (par défaut :
@@ -284,11 +283,11 @@ Soliton <soliton.de@gmail.com> et Thomas Baumhauer
 <thomas.baumhauer@gmail.com>. Ce manuel a été à l'origine écrit par
 Cyril Bouthors <cyril@bouthors.org>.
 .br
-Rendez\-vous sur la page d'accueil officielle\ : http://www.wesnoth.org/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2017 David White <davidnwhite@verizon.net>
 .br
 Ceci est un logiciel libre\ ; ce logiciel est sous la licence GPL version 2,
 comme définie par la Free Software Foundation. Il n'offre AUCUNE GARANTIE, y

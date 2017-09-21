@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd "Battle for Wesnoth\-Mehrspielernetzwerkdaemon"
+.TH WESNOTHD 6 2017 wesnothd "Battle for Wesnoth\-Mehrspielernetzwerkdaemon"
 .
 .SH NAME
 .
@@ -33,9 +33,9 @@ wesnothd \- Battle for \fBWesnoth\fP Mehrspielernetzwerkdaemon
 .
 .SH BESCHREIBUNG
 .
-Verwaltet Battle for Wesnoth Mehrspieler Partien. Siehe auf
-http://www.wesnoth.org/wiki/ServerAdministration für die Befehle, die der
-Server von Wesnoth (/query ...) oder über die FIFO entgegennimmt.
+Manages Battle for Wesnoth multiplayer games. See
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH KOMMANDOZEILENOPTIONEN
 .
@@ -117,10 +117,9 @@ Platzhalter unterstützt. Siehe \fBglob\fP(7) für mehr Details. Standardwerte
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-Der Pfad zur FIFO\-Datei, in die Befehle für den Server geschrieben werden
-können (das gleiche wie /query ... aus Wesnoth selbst heraus). Falls nicht
-angegeben, wird die einkompilierte Voreinstellung verwendet (Standard:
-\fB/var/run/socket/wesnothd/socket\fP).
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Die Anzahl der erlaubten Nachrichten in \fBmessages_time_period\fP. (Standard:
@@ -295,11 +294,11 @@ Laberenz <Jan\-Heiner@arcor.de>, Nils Kneuper
 Diese Beschreibung stammt im Original von Cyril Bouthors
 <cyril@bouthors.org>.
 .br
-Besuchen Sie auch die offizielle Webseite: http://www.wesnoth.org/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2017 David White <davidnwhite@verizon.net>
 .br
 Dieses Programm ist freie Software. Sie können es unter den Bedingungen der
 GNU General Public License, wie von der Free Software Foundation

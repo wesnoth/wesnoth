@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-05-29 21:55+0200\n"
+"POT-Creation-Date: 2017-09-21 23:27+0300\n"
 "PO-Revision-Date: 2014-03-12 10:36+0100\n"
 "Last-Translator: galicae <nikolaspapadop@yahoo.com>\n"
 "Language-Team: none\n"
@@ -331,13 +331,13 @@ msgstr ""
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:280 src/editor/map/map_context.cpp:766
+#: src/editor/map/context_manager.cpp:280 src/editor/map/map_context.cpp:828
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Νέος Χάρτης)"
 
-#: src/editor/map/context_manager.cpp:291 src/editor/map/map_context.cpp:766
+#: src/editor/map/context_manager.cpp:291 src/editor/map/map_context.cpp:828
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Scenario"
@@ -467,17 +467,17 @@ msgstr ""
 "To μέγεθος του επιλεγμένου χάρτη είναι διαφορετικό απο αυτό του τρέχοντος "
 "χαρτη"
 
-#: src/editor/map/map_context.cpp:149
+#: src/editor/map/map_context.cpp:146
 msgid "File not found"
 msgstr "Αρχείο δεν βρέθηκε"
 
-#: src/editor/map/map_context.cpp:155
+#: src/editor/map/map_context.cpp:153
 #, fuzzy
 #| msgid "Empty map file"
 msgid "Empty file"
 msgstr "Άδειο αρχείο χάρτη"
 
-#: src/editor/map/map_context.cpp:204
+#: src/editor/map/map_context.cpp:209
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -485,17 +485,17 @@ msgstr ""
 "Ο χάρτης μοιάζει σε χάρτη με σενάριο, αλλά η τιμή map_data δεν παραπέμπει σε "
 "ένα υπάρχον αρχείο"
 
-#: src/editor/map/map_context.cpp:555
+#: src/editor/map/map_context.cpp:597
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
 msgstr "Δεν ήταν δυνατό να αποθηκευτεί ο χάρτης: $msg"
 
-#: src/editor/map/map_context.cpp:582
+#: src/editor/map/map_context.cpp:629
 msgid "Could not save into scenario"
 msgstr "Δεν ήταν δυνατό να αποθηκευτεί ο χάρτης ως χάρτης με σενάριο"
 
-#: src/editor/map/map_context.cpp:590
+#: src/editor/map/map_context.cpp:639
 msgid "Could not save the map: $msg"
 msgstr "Δεν ήταν δυνατό να αποθηκευτεί ο χάρτης: $msg"
 

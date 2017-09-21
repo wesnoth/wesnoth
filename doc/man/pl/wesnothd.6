@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd "demon sieciowy gier wieloosobowych Bitwy o Wesnoth"
+.TH WESNOTHD 6 2017 wesnothd "demon sieciowy gier wieloosobowych Bitwy o Wesnoth"
 .
 .SH NAZWA
 .
@@ -33,10 +33,9 @@ wesnothd \- demon sieciowy gier wieloosobowych Bitwy o \fBWesnoth\fP
 .
 .SH OPIS
 .
-Zarządza grami wieloosobowymi Bitwy o Wesnoth. Więcej informacji o
-poleceniach akceptowanych przez serwer za pośrednictwem klienta wesnoth
-(/query ...) lub kolejki można znaleźć pod adresem
-http://www.wesnoth.org/wiki/ServerAdministration.
+Manages Battle for Wesnoth multiplayer games. See
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH OPCJE
 .
@@ -120,10 +119,9 @@ wartości nie zostaną
 podane):\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-Ścieżka do kolejki, do której można przesyłać echem polecenia serwera
-(działanie równoważne do polecenia /query ... z wesnoth). Jeśli nie zostanie
-podana, przyjmowana jest ścieżka określona podczas kompilacji (domyślnie:
-\fB/var/run/socket/wesnothd/socket\fP).
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Liczba wiadomości dopuszczanych w przedziale czasowym
@@ -288,11 +286,11 @@ Soliton <soliton.de@gmail.com> i Thomas Baumhauer
 <thomas.baumhauer@gmail.com>. Autorem pierwotnej wersji tej strony
 manuala jest Cyril Bouthors <cyril@bouthors.org>.
 .br
-Odwiedź oficjalną stronę WWW: http://www.wesnoth.org/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH "PRAWA AUTORSKIE"
 .
-Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2017 David White <davidnwhite@verizon.net>
 .br
 Oprogramowanie typu Free Software. Oprogramowanie oparte na licencji GPL
 wersja 2 opublikowanej przez Free Software Foundation. Nie udziela się

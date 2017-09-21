@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-05-29 21:55+0200\n"
+"POT-Creation-Date: 2017-09-21 20:27 UTC\n"
 "PO-Revision-Date: 2007-02-16 00:58+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch <foppe.benedictus@gmail.com>\n"
@@ -18,49 +18,49 @@ msgstr ""
 "X-Poedit-Language: Dutch\n"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:11
+#: data/campaigns/Eastern_Invasion/_main.cfg:13
 #, fuzzy
 #| msgid "The Eastern Invasion"
 msgid "Eastern Invasion"
 msgstr "De Oosterse Invasie"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:12
+#: data/campaigns/Eastern_Invasion/_main.cfg:14
 msgid "EI"
 msgstr ""
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:16
+#: data/campaigns/Eastern_Invasion/_main.cfg:18
 msgid "Easy"
 msgstr ""
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:16
+#: data/campaigns/Eastern_Invasion/_main.cfg:18
 msgid "Spearman"
 msgstr "Speerman"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:17
+#: data/campaigns/Eastern_Invasion/_main.cfg:19
 msgid "Normal"
 msgstr ""
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:17
+#: data/campaigns/Eastern_Invasion/_main.cfg:19
 msgid "Swordsman"
 msgstr "Zwaardvechter"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:18
+#: data/campaigns/Eastern_Invasion/_main.cfg:20
 msgid "Challenging"
 msgstr ""
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:18
+#: data/campaigns/Eastern_Invasion/_main.cfg:20
 msgid "Royal Guard"
 msgstr "Koninklijke Wacht"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:20
+#: data/campaigns/Eastern_Invasion/_main.cfg:22
 #, fuzzy
 msgid ""
 "There are rumors of undead attacks on the eastern border of Wesnoth. You, an "
@@ -74,32 +74,32 @@ msgstr ""
 "zoeken wat er aan de hand is."
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:22
+#: data/campaigns/Eastern_Invasion/_main.cfg:24
 msgid "(Intermediate level, 16 scenarios.)"
 msgstr ""
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:26
+#: data/campaigns/Eastern_Invasion/_main.cfg:28
 msgid "Campaign Design"
 msgstr ""
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:32
+#: data/campaigns/Eastern_Invasion/_main.cfg:34
 msgid "Campaign Maintenance"
 msgstr ""
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:45
+#: data/campaigns/Eastern_Invasion/_main.cfg:47
 msgid "Campaign Epilogue and Continuity"
 msgstr ""
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:51
+#: data/campaigns/Eastern_Invasion/_main.cfg:53
 msgid "Prose and Story Edits"
 msgstr ""
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:57
+#: data/campaigns/Eastern_Invasion/_main.cfg:59
 msgid "Artwork and Graphics Design"
 msgstr "Illustraties en Grafisch Ontwerp"
 
@@ -219,14 +219,13 @@ msgstr ""
 "een dag in de vroege ochtend de kreten van een van de wachters weerklonken..."
 
 #. [side]
+#. [side]: type=Dwarvish Steelclad, id=Knutan
 #. [side]: type=Lieutenant, id=Gweddry
+#. [side]: type=General, id=Konrad II
+#. [side]: type=Great Mage, id=Kaldor
 #. [side]: type=General, id=Halrad
 #. [side]: type=General, id=Halric
 #. [side]: type=General, id=Halrod
-#. [side]: type=General, id=Gweddry
-#. [side]: type=Dwarvish Steelclad, id=Knutan
-#. [side]: type=General, id=Konrad II
-#. [side]: type=Great Mage, id=Kaldor
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:25
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:63
@@ -262,16 +261,27 @@ msgstr ""
 msgid "Wesnothians"
 msgstr ""
 
-#. [side]: type=Dark Sorcerer, id=Mal-Skraat
-#. [side]: type=Lich, id=Mal-Telnarad
-#. [side]: type=Lich, id=Mal-Grekulak
-#. [side]: type=Lich, id=Mal-Xakralan
-#. [side]: type=Lich, id=Mal-Uknalu
-#. [side]: type=Necromancer, id=Mal-un-Karad
 #. [side]: type=Dark Sorcerer, id=Mal-Sakkat
 #. [side]: type=Dark Sorcerer, id=Mal-Talar
 #. [side]: type=Lich, id=Mal-Uldhar
 #. [side]
+#. [side]: type=Dark Sorcerer, id=Mal-Skraat
+#. [side]: type=Dark Adept, id=Mal-Tar
+#. [side]: type=Dark Sorcerer, id=Mal-Kallat
+#. [side]: type=Lich, id=Mal-Telnarad
+#. [side]: type=Dark Sorcerer, id=Mal-Marak
+#. [side]: type=Dark Sorcerer, id=Mal-Galkar
+#. [side]: type=Death Knight, id=Ravanal-Guard
+#. [side]: type=Revenant, id=Lanar-Skal
+#. [side]: type=Bone Knight, id=Garnad
+#. [side]: type=Necromancer, id=Mal-un-Karad
+#. [side]: type=Necromancer, id=Mal-un-Darak
+#. [side]: type=Necromancer, id=Mal-un-Zanrad
+#. [side]: type=Necromancer, id=Mal-un-Xadrux
+#. [side]: type=Lich, id=Mal-Grekulak
+#. [side]: type=Lich, id=Mal-Xakralan
+#. [side]: type=Lich, id=Mal-Uknalu
+#. [side]: type=Lich Lord, id=Mal-Ravanal
 #. [side]: type=Lich, id=Lich2
 #. [side]: type=Lich, id=Lich3
 #. [side]: type=Lich, id=Lich4
@@ -279,17 +289,6 @@ msgstr ""
 #. [side]: type=Lich, id=Lich6
 #. [side]: type=Lich, id=Lich7
 #. [side]: type=Lich, id=Lich8
-#. [side]: type=Revenant, id=Lanar-Skal
-#. [side]: type=Dark Adept, id=Mal-Tar
-#. [side]: type=Dark Sorcerer, id=Mal-Kallat
-#. [side]: type=Lich Lord, id=Mal-Ravanal
-#. [side]: type=Dark Sorcerer, id=Mal-Marak
-#. [side]: type=Dark Sorcerer, id=Mal-Galkar
-#. [side]: type=Death Knight, id=Ravanal-Guard
-#. [side]: type=Necromancer, id=Mal-un-Darak
-#. [side]: type=Necromancer, id=Mal-un-Zanrad
-#. [side]: type=Necromancer, id=Mal-un-Xadrux
-#. [side]: type=Bone Knight, id=Garnad
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:95
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:123
 #: data/campaigns/Eastern_Invasion/scenarios/01_The_Outpost.cfg:158
@@ -503,11 +502,11 @@ msgstr "Volg me, mannen! In de tunnel!"
 msgid "The Escape Tunnel"
 msgstr "De Ontsnappingstunnel"
 
-#. [side]
 #. [side]: type=Troll, id=Kabak
+#. [side]: type=Ogre, id=Grug
+#. [side]
 #. [side]: type=Troll Warrior, id=Darg
 #. [side]: type=Gryphon, id=Kraagak
-#. [side]: type=Ogre, id=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:42
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:83
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:69
@@ -798,9 +797,9 @@ msgid "Volas"
 msgstr "Volas"
 
 #. [side]: type=Orcish Warrior, id=Gruga-Har
-#. [side]: type=Orcish Warlord, id=King Dra-Nak
 #. [side]: type=Orcish Nightblade, id=Bagork
 #. [side]: type=Orcish Warlord, id=Prok-Bak
+#. [side]: type=Orcish Warlord, id=King Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:75
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:80
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:134
@@ -1615,11 +1614,11 @@ msgstr "Twee Paden"
 
 #. [side]: type=Orcish Warlord, id=Wak-Rano
 #. [side]: type=Dark Sorcerer, id=Mal-Arnai
+#. [side]: type=Orcish Ruler, id=Draka-Kura
 #. [side]: type=Orcish Warlord, id=Varrak-Klar
 #. [side]: type=Troll Warrior, id=Unhk
 #. [side]: type=Orcish Warlord, id=Ran-Lar
 #. [side]
-#. [side]: type=Orcish Ruler, id=Draka-Kura
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:38
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:60
@@ -2314,7 +2313,6 @@ msgid "Lake Vrug"
 msgstr "Het Vrug Meer"
 
 #. [side]: type=Lieutenant, id=Gweddry
-#. [side]: type=General, id=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:26
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:28
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:27
@@ -3072,8 +3070,8 @@ msgstr "Mal-un-Zanrad"
 msgid "Mal-un-Xadrux"
 msgstr "Mal-un-Xadrux"
 
-#. [unit]: id=Konrad, type=General
 #. [side]: type=General, id=Konrad II
+#. [unit]: id=Konrad, type=General
 #: data/campaigns/Eastern_Invasion/scenarios/14_Approaching_Weldyn.cfg:105
 #: data/campaigns/Eastern_Invasion/scenarios/15_The_Council.cfg:57
 #: data/campaigns/Eastern_Invasion/scenarios/16_Weldyn_under_Attack.cfg:212
@@ -3497,8 +3495,8 @@ msgstr ""
 msgid "The Duel"
 msgstr "Het Duel"
 
-#. [modify_unit]: type=Lich Lord, id=Mal-Ravanal
 #. [side]: type=Lich Lord, id=Mal-Ravanal
+#. [modify_unit]: type=Lich Lord, id=Mal-Ravanal
 #: data/campaigns/Eastern_Invasion/scenarios/17a_The_Duel.cfg:33
 #: data/campaigns/Eastern_Invasion/scenarios/17b_Weldyn_Besieged.cfg:339
 #: data/campaigns/Eastern_Invasion/utils/character-definitions.cfg:29

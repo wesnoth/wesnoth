@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.19+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-05-29 21:55+0200\n"
+"POT-Creation-Date: 2017-09-21 20:28 UTC\n"
 "PO-Revision-Date: 2013-11-21 01:42+0800\n"
 "Last-Translator: Charry Wang <kekecharry@gmail.com>\n"
 "Language-Team: none\n"
@@ -23,43 +23,43 @@ msgid "SotBE"
 msgstr "黑眼之子"
 
 #. [campaign]: id=Son_of_the_Black-Eye
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:15
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:17
 #, fuzzy
 #| msgid "(Challenging)"
 msgid "Challenging"
 msgstr "(挑戰)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:15
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:17
 msgid "Grunt"
 msgstr "蠻兵"
 
 #. [campaign]: id=Son_of_the_Black-Eye
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:18
 #, fuzzy
 #| msgid "(Difficult)"
 msgid "Difficult"
 msgstr "(困難)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:16
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:18
 msgid "Warrior"
 msgstr "蠻將"
 
 #. [campaign]: id=Son_of_the_Black-Eye
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:17
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:19
 #, fuzzy
 #| msgid "(Nightmare)"
 msgid "Nightmare"
 msgstr "(夢靨)"
 
 #. [campaign]: id=Son_of_the_Black-Eye
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:17
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:19
 msgid "Warlord"
 msgstr "督軍"
 
 #. [campaign]: id=Son_of_the_Black-Eye
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:20
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
 msgid ""
 "Your father Karun Black-Eye was the greatest orcish leader that ever lived. "
 "Now, as his son, it’s up to you to thwart the selfish designs of the humans "
@@ -76,27 +76,27 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=Son_of_the_Black-Eye
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:22
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:24
 msgid "(Expert level, 18 scenarios.)"
 msgstr "(專家難度，18個場景)"
 
 #. [about]
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:27
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:29
 msgid "Campaign Design"
 msgstr "戰役設計"
 
 #. [about]
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:38
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:40
 msgid "Campaign Maintenance"
 msgstr "戰役維護"
 
 #. [about]
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:48
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:50
 msgid "Prose, Grammatical and WML Assistance"
 msgstr "劇情，語法 和 WML協助"
 
 #. [about]
-#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:54
+#: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:56
 msgid "Artwork and Graphics"
 msgstr "藝術和圖形"
 
@@ -137,12 +137,12 @@ msgstr "擊敗艾柏"
 msgid "Death of Kapou’e"
 msgstr "卡叵尹陣亡"
 
-#. [side]: id=Kapou'e, type=Orcish Leader
 #. [side]: type=Orcish Leader, id=Kapou'e
+#. [side]: id=Kapou'e, type=Orcish Leader
 #. [side]
+#. [side]: type=Orcish Slayer, id=Rugh
 #. [side]: id=Grüü, type=Great Troll
 #. [side]: type=General, id=Howgarth III
-#. [side]: type=Orcish Slayer, id=Rugh
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:64
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:43
@@ -179,10 +179,10 @@ msgid "Alber"
 msgstr "艾柏"
 
 #. [side]: type=Lieutenant, id=Alber
+#. [side]: type=General, id=Lanbec'h
 #. [side]: type=General, id=Slowhand
 #. [side]
 #. [side]: type=General, id=Harman
-#. [side]: type=General, id=Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:82
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/02_The_Human_Army.cfg:61
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:34
@@ -982,12 +982,12 @@ msgstr ""
 msgid "Etheliel"
 msgstr "伊西里爾"
 
-#. [side]: type=Elvish Shyde, id=Lucile
-#. [side]: type=Elvish Captain, id=Raceme
 #. [side]: type=Elvish Marshal, id=Etheliel
 #. [side]: type=Elvish Marshal, id=Hida'tul
 #. [side]: type=Elvish Marshal, id=Ammon
 #. [side]: type=Elvish Marshal, id=Sammual
+#. [side]: type=Elvish Shyde, id=Lucile
+#. [side]: type=Elvish Captain, id=Raceme
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:68
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:100
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/04_The_Siege_of_Barag_Gor.cfg:115
@@ -1703,12 +1703,12 @@ msgstr "亞鄲"
 #. [side]
 #. [side]: type=General, id=Arthain
 #. [side]: type=Lieutenant, id=Hanak
+#. [side]: type=Bandit, id=Sagmar
 #. [side]: type=General, id=Telthys
 #. [side]: type=General, id=Fredor
 #. [side]: type=General, id=Georan
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #. [side]: type=Orcish Warlord, id=Shan Taum
-#. [side]: type=Bandit, id=Sagmar
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:86
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:97
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
@@ -2268,8 +2268,8 @@ msgstr ""
 msgid "At last, here are the Mourned Hills! We can only hope for the best."
 msgstr "終究，我們還是到了，哀悼山丘！我們還能做的就只剩下祈禱了。"
 
-#. [message]: role=cannonfodder
 #. [message]: speaker=Grüü
+#. [message]: role=cannonfodder
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:110
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:293
 msgid "Why?"
@@ -2692,8 +2692,8 @@ msgstr "浪費太多時間了，我們應該派出所有軍隊，將這些傢伙
 msgid "It won’t be said that Elves were braver than us, everyone attack!"
 msgstr "精靈永遠不會比我們更加勇猛的，全軍突襲！"
 
-#. [side]: type=General, id=Earl Lanbec'h
 #. [unit]: type=General, id=Earl Lanbec'h
+#. [side]: type=General, id=Earl Lanbec'h
 #. [side]: type=Grand Marshal, id=Earl Lanbec'h
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:658
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_of_Armies.cfg:143
@@ -4134,8 +4134,8 @@ msgstr "我們到了，伯爵閣下。"
 msgid "Ahhh, perfect, more reinforcements."
 msgstr "噢，太棒了，更多的援軍。"
 
-#. [side]: type=General, id=Howgarth III
 #. [unit]: type=General, id=Howgarth III
+#. [side]: type=General, id=Howgarth III
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:390
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:154
 msgid "Howgarth III"

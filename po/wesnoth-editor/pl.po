@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-05-29 21:55+0200\n"
+"POT-Creation-Date: 2017-09-21 23:27+0300\n"
 "PO-Revision-Date: 2016-02-21 15:53+0100\n"
 "Last-Translator: Paweł Jackowski <pjackowski@gmail.com>\n"
 "Language-Team: none\n"
@@ -329,13 +329,13 @@ msgstr "Imię:"
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:280 src/editor/map/map_context.cpp:766
+#: src/editor/map/context_manager.cpp:280 src/editor/map/map_context.cpp:828
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Nowa mapa)"
 
-#: src/editor/map/context_manager.cpp:291 src/editor/map/map_context.cpp:766
+#: src/editor/map/context_manager.cpp:291 src/editor/map/map_context.cpp:828
 #, fuzzy
 #| msgid "(New Scenario)"
 msgid "New Scenario"
@@ -461,15 +461,15 @@ msgstr "Gracz $player_number"
 msgid "The size of the target map is different from the current map"
 msgstr "Rozmiar mapy docelowej jest inny niż mapy obecnie załadowanej"
 
-#: src/editor/map/map_context.cpp:149
+#: src/editor/map/map_context.cpp:146
 msgid "File not found"
 msgstr "Nie znaleziono pliku"
 
-#: src/editor/map/map_context.cpp:155
+#: src/editor/map/map_context.cpp:153
 msgid "Empty file"
 msgstr "Pusty plik mapy"
 
-#: src/editor/map/map_context.cpp:204
+#: src/editor/map/map_context.cpp:209
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -477,15 +477,15 @@ msgstr ""
 "Plik mapy wygląda na scenariusz, ale wartość map_data nie wskazuje na "
 "istniejący plik"
 
-#: src/editor/map/map_context.cpp:555
+#: src/editor/map/map_context.cpp:597
 msgid "Could not save the scenario: $msg"
 msgstr "Zapisanie scenariusza nie powiodło się: $msg"
 
-#: src/editor/map/map_context.cpp:582
+#: src/editor/map/map_context.cpp:629
 msgid "Could not save into scenario"
 msgstr "Zapisanie do scenariusza nie powiodło się"
 
-#: src/editor/map/map_context.cpp:590
+#: src/editor/map/map_context.cpp:639
 msgid "Could not save the map: $msg"
 msgstr "Zapisanie mapy nie powiodło się: $msg"
 

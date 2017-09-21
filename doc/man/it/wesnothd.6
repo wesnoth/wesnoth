@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd "Demone di rete per multigiocatore di Battle for Wesnoth"
+.TH WESNOTHD 6 2017 wesnothd "Demone di rete per multigiocatore di Battle for Wesnoth"
 .
 .SH NOME
 .
@@ -35,10 +35,9 @@ wesnothd \- Demone di rete per multigiocatore di Battle for
 .
 .SH DESCRIZIONE
 .
-Gestisce le partite multigiocatore di Battle for Wesnoth. Vedi
-http://www.wesnoth.org/wiki/ServerAdministration per sapere quali comandi
-sono accettati dal server attraverso il client di wesnoth (/query ...) o il
-socket.
+Manages Battle for Wesnoth multiplayer games. See
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH OPZIONI
 .
@@ -122,10 +121,9 @@ predefiniti (usati in mancanza di specifiche diverse) sono:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-Il path della fifo alla quale inviare i comandi del server (come in /query
-\&... per wesnoth). Se non diversamente specificato invia allo standard
-utilizzato come path al momento della compilazione del sorgente (default:
-\fB/var/run/socket/wesnothd/socket\fP).
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Il numero di messaggi permessi in un periodo di \fBmessages_time_period\fP
@@ -156,7 +154,7 @@ significa la directory da cui è stato eseguito wesnothd.
 .TP 
 \fBrestart_command\fP
 Il comando che il server utilizza per lanciare un muovo processo server
-cramite il comando \fBrestart\fP. Può essere inviato soltanto tramite la
+tramite il comando \fBrestart\fP. Può essere inviato soltanto tramite la
 fifo. Per dettagli, vedi i setaggi di \fBallow_remote_shutdown\fP.
 .TP 
 \fBroom_save_file\fP
@@ -197,7 +195,7 @@ Indirizzo del server a cui reindirizzare i collegamenti
 Porta su cui connettersi
 .TP 
 \fBversion\fP
-Una lista separata da virgole delle versioni daredirigere. Si comporta come
+Una lista separata da virgole delle versioni da redirigere. Si comporta come
 \fBversions_accepted\fP per quello che riguarda lo schema dei caratteri jolly.
 .RE
 .P
@@ -214,7 +212,7 @@ Definizione del formato per la rappresentazione del periodo. Il formato è
 M (mesi) o Y (anni) e %d è un numero. Se non vengono specificati
 modificatori ri tempo, il valore si assume essere espresso in minuti (m). Ad
 esempio: \fBtime="1D12h30m"\fP ha come risultato un periodo di messa al bando
-di 1 giorno, 12 ore e 30 minutei.
+di 1 giorno, 12 ore e 30 minuti.
 .RE
 .P
 \fB[proxy]\fP Un tag che indica al server di fare da proxy e di inoltrare le
@@ -292,11 +290,11 @@ Soliton <soliton.de@gmail.com> w Thomas Bauhauer
 <thomas.baumhauer@gmailcom>. Questo manuale è stato scritto in
 origine da Cyril Bouthors <cyril@bouthors.org>.
 .br
-Visita la pagina home ufficiale: http://www.wesnoth.org/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2017 David White <davidnwhite@verizon.net>
 .br
 Questo gioco è rilasciato come Software Libero; viene rilasciato secondo i
 termini della licenza GPL versione 2 come pubblicata dalla Free Software
