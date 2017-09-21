@@ -110,7 +110,7 @@ static Sint64 ofs_size (struct SDL_RWops * context) {
 }
 
 typedef std::pair<Sint64, std::ios_base::seekdir> offset_dir;
-static offset_dir translate_seekdir(Sint64 offset, int whence){
+static offset_dir translate_seekdir(Sint64 offset, int whence) {
 	switch(whence){
 	case RW_SEEK_SET:
 		return std::make_pair(std::max(0l, offset), std::ios_base::beg);
@@ -186,14 +186,10 @@ static size_t SDLCALL ofs_write(struct SDL_RWops *context, const void *ptr, size
 	const std::streampos before = ofs->tellp();
 	ofs->write(static_cast<const char*>(ptr), num * size);
 	const std::streampos after = ofs->tellp();
+	const std::streamoff bytes_written = after - before;
+	const int num_written = bytes_written / size;
 
-	const int written = (after - before) / size;
-
-	// Fail sticks unless we clear it. Bad is an actual I/O error
-	if(!ofs->bad())
-		ofs->clear();
-
-	return static_cast<int>(written);
+	return num_written;
 }
 
 static int SDLCALL ifs_close(struct SDL_RWops *context) {
