@@ -444,7 +444,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 			// Don't remove the unit until after we've verified there are no errors in creating the new one,
 			// or else the unit would simply be removed from the map with no replacement.
 			resources::gameboard->units().erase(loc);
-	                resources::whiteboard->on_kill_unit();
+			resources::whiteboard->on_kill_unit();
 			resources::gameboard->units().insert(new_u);
 		} catch(unit_type::error& e) {
 			ERR_REPLAY << e.what() << std::endl; // TODO: more appropriate error message log
