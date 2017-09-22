@@ -354,21 +354,24 @@ std::size_t wesnothd_connection::poll()
 bool wesnothd_connection::receive_data(config& result)
 {
 	MPTEST_LOG;
+
+	{
+		std::lock_guard<std::mutex> lock(recv_queue_mutex_);
+		if (!recv_queue_.empty()) {
+			result.swap(recv_queue_.front());
+			recv_queue_.pop_front();
+			return true;
+		}
+	}
+
 	{
 		std::lock_guard<std::mutex> lock(last_error_mutex_);
 		if (last_error_) {
 			throw error(last_error_);
 		}
 	}
-	std::lock_guard<std::mutex> lock(recv_queue_mutex_);
-	if (recv_queue_.empty()) {
-		return false;
-	}
-	else {
-		result.swap(recv_queue_.front());
-		recv_queue_.pop_front();
-		return true;
-	}
+
+	return false;
 }
 
 wesnothd_connection::~wesnothd_connection()
