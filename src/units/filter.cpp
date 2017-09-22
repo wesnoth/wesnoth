@@ -185,7 +185,7 @@ bool unit_filter_compound::matches(const unit_filter_args& args) const
 	bool res;
 
 	if(args.loc.valid()) {
-		scoped_xy_unit auto_store("this_unit", args.loc, args.fc->get_disp_context().units());
+		scoped_xy_unit auto_store("this_unit", args.u.get_location(), args.fc->get_disp_context().units());
 		if (args.u2) {
 			const map_location& loc2 = args.u2->get_location();
 			scoped_xy_unit u2_auto_store("other_unit", loc2, args.fc->get_disp_context().units());
