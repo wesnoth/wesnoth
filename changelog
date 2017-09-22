@@ -12,7 +12,7 @@ Version 1.13.8+dev:
    * Heir to the Throne:
      * Fixed thieves in 'Siege of Elensefar' getting duplicated.
      * Fixed Void Armor not doing anything.
-     * Fixed translatability of countdown in 'Test of the Clans'.
+     * Fixed translatibility of countdown in 'Test of the Clans'.
    * Northern Rebirth:
      * Fixed backdoor lever opening the wrong location in 'The Pursuit'.
    * Secrets of the Ancients:
@@ -59,7 +59,7 @@ Version 1.13.8+dev:
      possible to obtain the password from preferences, but it's no longer as
      trivial as before.
    * Fixed crash when loading a replay stored on the server (Bug #1762)
-   * Fixed delay or clients gettings stuck when starting a mp game (Bug #1674)
+   * Fixed delay or clients getting stuck when starting a mp game (Bug #1674)
    * Fix bug where leader can become unable to be killed (issue #1666)
  * Performance:
    * Rewrote the FPS cap implementation. This greatly improves
@@ -138,9 +138,9 @@ Version 1.13.8+dev:
      meaning that it can be used in an event without specifying
      delayed_variable_substitution=yes.
      (This also applies to {ABILITY_BACKSTAB} and {ABILITY_LEADERSHIP}.)
-   * Add fire_event key to [unit] which determines whether to fire a unit 
+   * Add fire_event key to [unit] which determines whether to fire a unit
      placed event.
-   * [resolution] window_width/height now specifies the minimum window size 
+   * [resolution] window_width/height now specifies the minimum window size
      for that resolution to be chosen
    * formula code is now supported in abilities and weapon specials (fr #1436)
    * The allow_new_game= in [scenario] now defaults to false (it still
@@ -163,7 +163,9 @@ Version 1.13.8+dev:
    * Improved and more detailed FPS display
    * Fix minimap being sometimes black in mp create (bug #1484)
    * Optimized unit filters
-   * Fixed bug #1837 empty tags missing in [store_unit] 
+   * Fixed bug #1837 empty tags missing in [store_unit]
+   * Fixed preferences not being saved if they weren't in the currently
+     selected tab when the settings dialog was closed.
 
 Version 1.13.8:
   * Campaigns:
