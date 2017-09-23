@@ -196,6 +196,9 @@ void CVideo::update_framebuffer()
 	if(!frameBuffer) {
 		frameBuffer = fb;
 	} else {
+		// Because SDL has already freed the old framebuffer,
+		// ensure that we won't attempt to free it.
+		frameBuffer.clear_without_free();
 		frameBuffer.assign(fb);
 	}
 }

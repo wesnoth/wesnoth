@@ -54,6 +54,9 @@ public:
 		return *this;
 	}
 
+	// Intended to be used when SDL has already freed the surface
+	void clear_without_free() { surface_ = nullptr; }
+
 	operator SDL_Surface*() const { return surface_; }
 
 	SDL_Surface* get() const { return surface_; }
