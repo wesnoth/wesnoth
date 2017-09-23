@@ -80,7 +80,20 @@ private:
 	void free_surface()
 	{
 		if(surface_) {
-			SDL_FreeSurface(surface_);
+			/* Workaround for an SDL bug.
+			 * SDL 2.0.6 frees the blit map unconditionally in SDL_FreeSurface() without checking
+			 * if the reference count has fallen to zero. However, many SDL functions such as
+			 * SDL_ConvertSurface() assume that the blit map is present.
+			 * Thus, we only call SDL_FreeSurface() if this is the last reference to the surface.
+			 * Otherwise we just decrement the reference count ourselves.
+			 *
+			 * - Jyrki, 2017-09-23
+			 */
+			if(surface_->refcount > 1) {
+				--surface_->refcount;
+			} else {
+				SDL_FreeSurface(surface_);
+			}
 		}
 	}
 
