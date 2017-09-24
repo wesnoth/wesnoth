@@ -32,6 +32,13 @@
 
 #include <boost/math/constants/constants.hpp>
 
+version_info sdl_get_version()
+{
+	SDL_version sdl_version;
+	SDL_GetVersion(&sdl_version);
+	return version_info(sdl_version.major, sdl_version.minor, sdl_version.patch);
+}
+
 bool is_neutral(const surface& surf)
 {
 	return (surf->format->BytesPerPixel == 4 &&
