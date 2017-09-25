@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd "Bitva o Wesnoth \- síťový server pro hru více hráčů"
+.TH WESNOTHD 6 2017 wesnothd "Bitva o Wesnoth \- síťový server pro hru více hráčů"
 .
 .SH NÁZEV
 .
@@ -33,9 +33,9 @@ Bitva o \fBWesnoth\fP \- síťový server pro hru více hráčů
 .
 .SH POPIS
 .
-Součást Bitvy o Wesnoth spravující hry více hráčů. Na
-http://www.wesnoth.org/wiki/ServerAdministration lze nalézt příkazy, které
-server akceptuje, a to jak přes fifo, tak přímo od klienta wesnoth.
+Manages Battle for Wesnoth multiplayer games. See
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH VOLBY
 .
@@ -113,9 +113,9 @@ metaznaky \fB*\fP a \fB?\fP. Více viz. \fBglob\fP(7). Implicitní hodnota je:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-Cesta k fifo, do nějž můžete posílat příkazy serveru (stejně jako pomocí
-/query z klienta). Pokud není explicitně určena, je použita výchozí hodnota
-určená při kompilaci (běžně \fB/var/run/socket/wesnothd/socket\fP).
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Maximální počet zpráv, které jsou přijaty během
@@ -278,11 +278,11 @@ Cyril Bouthors <cyril@bouthors.org>. Překlad Oto 'tapik' Buchta
 <tapik@buchtovi.cz> a Vladimír Slávik
 <slavik.vladimir@seznam.cz>.
 .br
-Navštivte oficiální stránky: http://www.wesnoth.org/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2017 David White <davidnwhite@verizon.net>
 .br
 Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak je
 publikována nadací Free Software Foundation. Tento program je bez záruky, a

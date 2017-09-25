@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd 韦诺之战多人网络守护进程
+.TH WESNOTHD 6 2017 wesnothd 韦诺之战多人网络守护进程
 .
 .SH 命名
 .
@@ -33,8 +33,9 @@ wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP）多人网络守护进程
 .
 .SH 描述
 .
-管理韦诺之战的多人游戏。请参见http://www.wesnoth.org/wiki/ServerAdministration以查看服务器可以接受的命令列表。服务器可以从wesnoth客户端（/query
-\&...）或者fifo接受命令。
+Manages Battle for Wesnoth multiplayer games. See
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH 选项
 .
@@ -99,8 +100,9 @@ wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP）多人网络守护进程
 服务器不允许使用的用户名/昵称。可以使用\fB*\fP和\fB?\fP通配符。更多详细信息请查看\fBglob\fP(7)。默认值（如果用户没有指定则自动使用）是：\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP。
 .TP 
 \fBfifo_path\fP
-服务器所使用的fifo文件的路径（与在wesnoth中使用 /query
-功能相同），您可以向该文件内echo服务器命令。如果不指定，则默认为编译时指定的路径（默认值：\fB/var/run/socket/wesnothd/socket\fP）。
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 \fBmessages_time_period\fP内允许的消息数。（默认值：\fB4\fP）
@@ -231,12 +233,11 @@ UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 <thomas.baumhauer@gmail.com> 编辑。这个手册页最初由 Cyril Bouthors
 <cyril@bouthors.org> 编写。
 .br
-请访问官方主页：http://www.wesnoth.org/
-以及Wesnoth中文爱好者主页：http://www.wesnoth.cn
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH 版权
 .
-版权所有 \(co 2003\-2016 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2017 David White <davidnwhite@verizon.net>
 .br
 这是一款自由软件，使用由自由软件基金会发布的GPL版本2协议授权。使用本软件时*不*提供任何保证，甚至没有对“可销售性”和“针对某一特别目的之可用性”的保证。本段中文翻译不具有法律效力，只有GPL英文原本才具有法律效力。
 .

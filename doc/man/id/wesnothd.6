@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd "Pertempuran demi Wesnoth multipemain jaringan daemon"
+.TH WESNOTHD 6 2017 wesnothd "Pertempuran demi Wesnoth multipemain jaringan daemon"
 .
 .SH NAMA
 .
@@ -33,10 +33,9 @@ wesnothd \- Pertempuran untuk  \fBWesnoth\fP daemon multiplayer jaringan
 .
 .SH PENJELASAN
 .
-Mengatur Pertempuran demi Wesnoth permainan\-permainan multiplayer. Lihat
-http://www.wesnoth.org/wiki/ServerAdministration untuk mengetahui perintah
-apa yang server terima melalui klien Wesnoth (/ query ...) atau fifo
-tersebut.
+Manages Battle for Wesnoth multiplayer games. See
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH PILIHAN
 .
@@ -116,9 +115,9 @@ wildcard yang didukung. Lihat \fBglob\fP(7) untuk lebih jelasnya. nilai default
 \fB*admin*,*admln*,*server*,ai,ai?,komputer, manusia, jaringan,pemain\fP.
 .TP 
 \fBfifo_path\fP
-Path ke fifo Anda dapat echo perintah ke server (sama seperti /query
-\&... dari Wesnoth). Jika tidak ditentukan default ke jalan saat kompilasi
-(default: \fB/var/run/socket/wesnothd/socket\fP).
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Jumlah pesan yang diperbolehkan dalam \fBmessages_time_period\fP. (default:
@@ -282,11 +281,11 @@ Soliton <soliton.de@gmail.com> dan Thomas Baumhauer
 <thomas.baumhauer@gmail.com>.  Halaman pedoman ini ditulis oleh
 Cyril Bouthors <cyril@bouthors.org>.
 .br
-Kunjungi halaman resmi kami di: http://www.wesnoth.org/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH "HAK CIPTA"
 .
-Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2017 David White <davidnwhite@verizon.net>
 .br
 Ini adalah perangkat lunak gratis, perangkat lunak ini berlisensi di bawah
 GPL versi 2, seperti dipublikasikan oleh Free Software Foundation. TIDAK ADA

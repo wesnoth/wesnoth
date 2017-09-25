@@ -2066,6 +2066,8 @@ void complex_fight(attack_prediction_mode mode,
 		b_damage = b_slow_damage = stats.max_hp;
 	}
 
+	const double original_self_not_hit = self_not_hit;
+	const double original_opp_not_hit = opp_not_hit;
 	const double hit_chance = stats.chance_to_hit / 100.0;
 	const double opp_hit_chance = opp_stats.chance_to_hit / 100.0;
 
@@ -2107,10 +2109,10 @@ void complex_fight(attack_prediction_mode mode,
 			 * with a simple multiplication.
 			 * Instead, just fetch the probability from the combat matrix.
 			 */
-			opp_not_hit = pm->col_sum(plane_index(stats, opp_stats), opp_stats.hp);
+			opp_not_hit = original_opp_not_hit * pm->col_sum(plane_index(stats, opp_stats), opp_stats.hp);
 		}
 		if(opp_stats.slows) {
-			self_not_hit = pm->row_sum(plane_index(stats, opp_stats), stats.hp);
+			self_not_hit = original_self_not_hit * pm->row_sum(plane_index(stats, opp_stats), stats.hp);
 		}
 	} else {
 		debug(("Using Monte Carlo simulation.\n"));

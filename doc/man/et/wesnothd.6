@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd "Wesnothi Lahingu mitmemängija\-võrgumoodul"
+.TH WESNOTHD 6 2017 wesnothd "Wesnothi Lahingu mitmemängija\-võrgumoodul"
 .
 .SH NIMI
 .
@@ -33,9 +33,9 @@ wesnothd \- Battle for \fBWesnoth\fPi mitmemängija\-võrgumoodul
 .
 .SH KIRJELDUS
 .
-Haldab Wesnothi Lahingu mitmemängija mänge. Vt
-http://www.wesnoth.org/wiki/ServerAdministration käskude kohta, mida saab
-anda klientprogrammist (/query ...) või käsujärjekorra kaudu..
+Manages Battle for Wesnoth multiplayer games. See
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH VALIKUD
 .
@@ -113,9 +113,9 @@ määrata) on:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-Serveri käsujärjekorra (FIFO) kataloog (nagu wesnothi /query ... ).  Kui
-pole määratud, kasutatakse kompileerimisaegset vaikimisi väärtust
-(vaikimisi: /var/run/socket/wesnothd/socket).
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Lubatud sõnumite arv perioodil \fBmessages_time_period\fP. (vaikimisi: \fB4\fP)
@@ -267,11 +267,11 @@ Soliton <soliton.de@gmail.com> ja Thomas Baumhauer
 <thomas.baumhauer@gmail.com>.  Selle manuaalilehe algne autor oli
 Cyril Bouthors <cyril@bouthors.org>.
 .br
-Külasta ametlikku kodulehte: http://www.wesnoth.org/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH AUTORIÕIGUS
 .
-Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2017 David White <davidnwhite@verizon.net>
 .br
 See on vaba tarkvara \- see tarkvara kasutab Vaba Tarkvara Sihtasutuse
 koostatud GPL litsentsi versiooni 2. Garantiid EI OLE, isegi mitte

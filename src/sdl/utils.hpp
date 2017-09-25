@@ -20,12 +20,15 @@
 #include "color.hpp"
 #include "sdl/surface.hpp"
 #include "utils/math.hpp"
+#include "version.hpp"
 
 #include <SDL.h>
 
 #include <cstdlib>
 #include <map>
 #include <string>
+
+version_info sdl_get_version();
 
 inline void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* dst_rect){
 	SDL_BlitSurface(src, src_rect, dst, dst_rect);

@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd "Harc Wesnothért többjátékos hálózati démon"
+.TH WESNOTHD 6 2017 wesnothd "Harc Wesnothért többjátékos hálózati démon"
 .
 .SH NÉV
 .
@@ -33,9 +33,9 @@ wesnothd \- Harc \fBWesnoth\fPért többjátékos hálózati démon
 .
 .SH LEÍRÁS
 .
-A Harc Wesnothért többjátékos mérkőzéseit kezeli. A klienstől (/query ...)
-vagy a fifoból érkező elfogadott parancsokról itt tájékozódhatsz:
-http://www.wesnoth.org/wiki/ServerAdministration .
+Manages Battle for Wesnoth multiplayer games. See
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH BEÁLLÍTÁSOK
 .
@@ -116,10 +116,9 @@ részletekért. Alapértelmezett értékek (ha más nincsen megadva): \fB*admin*
 *admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-A fifo elérési útvonala, amibe szerver parancsokat írathatsz ki (ugyanaz
-mint /query ... a wesnothban). Ha nincs meghatározva, alapértelmezettként a
-fordításnál meghatározott értékkel egyezik meg
-(\fB/var/run/socket/wesnothd/socket\fP).
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 A megadott időtartam (\fBmessages_time_period\fP) alatt küldhető üzenetek
@@ -290,12 +289,11 @@ Magyarra fordították: Gilluin <gilluin@citromail.hu>, Széll Tamás
 <krisztian.kad@gmail.com> és Udvari Gábor
 <gabor.udvari@gmail.com>.
 .br
-Látogasd meg a hivatalos honlapot: http://www.wesnoth.org/ illetve a magyar
-közösségi portált: http://wesnoth.fsf.hu/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH "SZERZŐI JOGOK"
 .
-Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2017 David White <davidnwhite@verizon.net>
 .br
 Ez egy szabad szoftver; terjeszthető illetve módosítható a GNU Általános
 Közreadási Feltételek dokumentumában \- 2. vagy későbbi verzió \- leírtak

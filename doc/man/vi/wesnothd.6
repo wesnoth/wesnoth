@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd "Tiến trình nền cho mạng nhiều người chơi Trận chiến vì Wesnoth"
+.TH WESNOTHD 6 2017 wesnothd "Tiến trình nền cho mạng nhiều người chơi Trận chiến vì Wesnoth"
 .
 .SH TÊN
 .
@@ -33,9 +33,9 @@ wesnothd \- tiến trình nền cho mạng nhiều người chơi Trận chiến
 .
 .SH "MÔ TẢ"
 .
-Quản lý các trò chơi nhiều người chơi Trận chiến vì Wesnoth. Xem
-http://www.wesnoth.org/wiki/ServerAdministration để biết những lệnh nào máy
-chủ chấp nhận qua máy khách wesnoth (/query ...) hoặc fifo.
+Manages Battle for Wesnoth multiplayer games. See
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH "TÙY CHỌN"
 .
@@ -114,9 +114,9 @@ Tên/biệt danh không được máy chủ chấp nhận. \fB*\fP và \fB?\fP t
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-Đường dẫn đến fifo bạn có thể lặp lại lệnh máy chủ vào (giống như /query
-\&... từ wesnoth). Nếu không được chỉ định, mặc định là đường dẫn lúc biên
-dịch (mặc định: \fB/var/run/socket/wesnothd/socket\fP).
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Số tin nhắn được phép trong \fBmessages_time_period\fP. (mặc định: \fB4\fP)
@@ -276,11 +276,11 @@ Soliton <soliton.de@gmail.com> và Thomas Baumhauer
 <thomas.baumhauer@gmail.com>.  Trang hướng dẫn này ban đầu được viết
 bởi Cyril Bouthors <cyril@bouthors.org>.
 .br
-Truy cập trang chủ chính thức: http://www.wesnoth.org/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH "BẢN QUYỀN"
 .
-Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2017 David White <davidnwhite@verizon.net>
 .br
 Đây là Phần mềm Tự do; phần mềm này được cấp phép theo GPL phiên bản 2, được
 công bố bởi Free Software Foundation (Tổ chức phần mềm tự do). KHÔNG có bảo

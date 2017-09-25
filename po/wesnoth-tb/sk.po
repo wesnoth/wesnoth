@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-05-29 21:55+0200\n"
+"POT-Creation-Date: 2017-09-21 20:28 UTC\n"
 "PO-Revision-Date: 2017-04-14 23:12+0200\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
@@ -14,37 +14,37 @@ msgstr ""
 "X-Generator: Poedit 1.8.7.1\n"
 
 #. [campaign]: id=Two_Brothers
-#: data/campaigns/Two_Brothers/_main.cfg:12
+#: data/campaigns/Two_Brothers/_main.cfg:13
 msgid "A Tale of Two Brothers"
 msgstr "Príbeh o dvoch bratoch"
 
 #. [campaign]: id=Two_Brothers
-#: data/campaigns/Two_Brothers/_main.cfg:13
+#: data/campaigns/Two_Brothers/_main.cfg:14
 msgid "AToTB"
 msgstr "Podb"
 
 #. [campaign]: id=Two_Brothers
-#: data/campaigns/Two_Brothers/_main.cfg:17
+#: data/campaigns/Two_Brothers/_main.cfg:18
 msgid "Beginner"
 msgstr "(Začiatočník)"
 
 #. [campaign]: id=Two_Brothers
-#: data/campaigns/Two_Brothers/_main.cfg:17
+#: data/campaigns/Two_Brothers/_main.cfg:18
 msgid "Horseman"
 msgstr "Jazdec"
 
 #. [campaign]: id=Two_Brothers
-#: data/campaigns/Two_Brothers/_main.cfg:18
+#: data/campaigns/Two_Brothers/_main.cfg:19
 msgid "Challenging"
 msgstr "(Pokročilý)"
 
 #. [campaign]: id=Two_Brothers
-#: data/campaigns/Two_Brothers/_main.cfg:18
+#: data/campaigns/Two_Brothers/_main.cfg:19
 msgid "Knight"
 msgstr "Rytier"
 
 #. [campaign]: id=Two_Brothers
-#: data/campaigns/Two_Brothers/_main.cfg:20
+#: data/campaigns/Two_Brothers/_main.cfg:21
 msgid ""
 "An evil mage is threatening the small village of Maghre and its inhabitants. "
 "The village’s mage sends to his warrior brother for help, but not all goes "
@@ -57,37 +57,37 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=Two_Brothers
-#: data/campaigns/Two_Brothers/_main.cfg:22
+#: data/campaigns/Two_Brothers/_main.cfg:23
 msgid "(Novice level, 4 scenarios.)"
 msgstr "(Začiatočnícka úroveň, 4 scény.)"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:29
+#: data/campaigns/Two_Brothers/_main.cfg:30
 msgid "Campaign Design"
 msgstr "Návrh kampane"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:38
+#: data/campaigns/Two_Brothers/_main.cfg:39
 msgid "Prose and Story Edits"
 msgstr "Úpravy príbehu a textu"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:47
+#: data/campaigns/Two_Brothers/_main.cfg:48
 msgid "Campaign Maintenance"
 msgstr "Udržiavanie kampane"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:56
+#: data/campaigns/Two_Brothers/_main.cfg:57
 msgid "Artwork and Graphics Design"
 msgstr "Grafické spracovanie"
 
 #. [about]
-#: data/campaigns/Two_Brothers/_main.cfg:72
+#: data/campaigns/Two_Brothers/_main.cfg:73
 msgid "Miscellaneous"
 msgstr "Rôzne"
 
 #. [entry]
-#: data/campaigns/Two_Brothers/_main.cfg:86
+#: data/campaigns/Two_Brothers/_main.cfg:87
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "Špeciálne poďakovanie všetkým, na ktorých som si teraz nespomenul."
 
@@ -208,10 +208,10 @@ msgstr ""
 msgid "Humans"
 msgstr "Ľudia"
 
-#. [side]: type=Dark Sorcerer, id=Mordak
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
 #. [side]: type=Orcish Warlord, id=Tairach
+#. [side]: type=Dark Sorcerer, id=Mordak
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:114
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:131
@@ -283,33 +283,46 @@ msgstr "Zabiješ čierneho mága Mordaka."
 msgid "Death of Arvith"
 msgstr "Zomrie Arne."
 
+#. [note]
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:177
+msgid ""
+"Undead units have a variety of resistances. Keep this in mind when forming "
+"your strategy and choosing recruits."
+msgstr ""
+
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:183
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:188
 msgid "Greetings, brother, and welcome home."
 msgstr "Zdravím ťa, bratku. Vitaj doma."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:188
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:193
 msgid "Hail."
 msgstr "Tak je."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:193
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:198
 msgid "Is that all, Arvith? I understand, but..."
 msgstr "To je všetko, Arne? Rozumiem, ale..."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:198
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:203
 msgid "You called, and I came; be content with that. What ails Maghre?"
 msgstr "Ty si ma volal, a ja som prišiel. Čo trápi našu dedinu, Maghre?"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:203
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:208
+#, fuzzy
+#| msgid ""
+#| "A dark mage has come upon us; his creatures call him Mordak. They have "
+#| "been terrorizing outlying farms, and we fear they may soon attack the "
+#| "village itself! The villagers of Maghre have taken up weapons but they "
+#| "are not trained fighters; but we need your men, and you to lead them."
 msgid ""
 "A dark mage has come upon us; his creatures call him Mordak. They have been "
 "terrorizing outlying farms, and we fear they may soon attack the village "
 "itself! The villagers of Maghre have taken up weapons but they are not "
-"trained fighters; but we need your men, and you to lead them."
+"trained fighters; we need your men, and you to lead them."
 msgstr ""
 "Prišiel medzi nás temný kúzelník. Jeho potvory ho volajú Mordak. Už "
 "spustošili nejednu farmu, a bojíme sa, že zanedlho napadnú dedinu! "
@@ -317,7 +330,7 @@ msgstr ""
 "Potrebujeme tvoje vojsko, a teba ako hlavného veliteľa."
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:208
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:213
 msgid ""
 "I can feel Mordak’s foul touch on the hidden currents of the earth and air. "
 "He is somewhere due north of here, I would say not more than two days’ ride."
@@ -326,7 +339,7 @@ msgstr ""
 "dni rýchleho cvalu na sever."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:213
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:218
 msgid ""
 "All right. I will do this for the village. Can you keep the mage off our "
 "backs?"
@@ -335,7 +348,7 @@ msgstr ""
 "dosahu?"
 
 #. [message]: speaker=Baran
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:218
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:223
 msgid ""
 "I will go stealthily with a handful of our best scouts and woodsmen. While "
 "you demonstrate against him and kill his creatures, I will try to defeat "
@@ -347,12 +360,12 @@ msgstr ""
 "najmenej čakať. Ty znič jeho jednotky. Spolu tu nastolíme poriadok."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:223
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:228
 msgid "... Aye. Just make sure you’re there when we need you."
 msgstr "... Dobre. Ale posnaž sa aby si tam bol keď ťa budeme potrebovať."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:234
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:239
 msgid ""
 "Baran should be in position by now. Press them, distract the adept so Baran "
 "can spring his trap!"
@@ -361,17 +374,17 @@ msgstr ""
 "niečo nestalo. Poponáhľajme sa!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:245
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:250
 msgid "Baran has not made his attack!"
 msgstr "Bjarn neuskutočnil svoj útok!"
 
 #. [message]: role=Mercenary
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:250
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:255
 msgid "Could he have abandoned us?"
 msgstr "Ako nás mohol opustiť?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:255
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:260
 msgid ""
 "No... No. This is something else. I’m worried about him... but right now it "
 "means we have to deal with this Mordak ourselves."
@@ -380,29 +393,29 @@ msgstr ""
 "zabiť Mordaka sami!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:267
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:272
 msgid "Argh!"
 msgstr "Ach!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:272
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:277
 msgid "Good work, men! But what has become of my brother?"
 msgstr "Dobrá práca chlapi! Ale čo sa stalo s mojim bratom?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:277
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:282
 msgid "Worried about him, are you? E-he-he... hergh... gaargh..."
 msgstr "Bojíš sa oňho, čo? He-he-he... eh... aaah. . ."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:287
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:292
 msgid ""
 "There’s nothing more to be had from this one; we will have to search for "
 "Baran ourselves!"
 msgstr "Z neho už asi nič nevylezie, budeme musieť nájsť Bjarna sami!"
 
 #. [message]: role=Reporter
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:309
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:314
 msgid ""
 "Sir, our scouts report that Baran was seen captured and carried away further "
 "north!"
@@ -410,17 +423,17 @@ msgstr ""
 "Pane, naši prieskumníci zistili, že Bjarn bol zajatý a odvliekli ho na sever!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:314
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:319
 msgid "That they should dare this! We will give chase at once."
 msgstr "Ako sa opovážili! Naháňačka sa začína, priamo na sever!"
 
 #. [message]: speaker=Mordak
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:335
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:340
 msgid "Your brother’s plan to ambush me has failed. He is our prisoner now."
 msgstr "Plán tvojho smelého bráška stroskotal. A ja mám o jedného väzňa viac."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:340
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:345
 msgid ""
 "My brother, kidnapped? I have failed you, Baran! And even now Mordak’s "
 "forces descend upon the village!"
@@ -429,14 +442,14 @@ msgstr ""
 "pustošia dedinu!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:356
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:361
 msgid "I hear these creatures are nigh-immune to our weapons, let us see!"
 msgstr ""
 "Počul som, že tieto netvory sú takmer odolné voči našim zbraniam, poďme to "
 "overiť!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:372
+#: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:377
 msgid "That was not so hard!"
 msgstr "Nebolo to až také ťažké!"
 

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-19 00:05+0300\n"
+"POT-Creation-Date: 2017-09-21 23:27+0300\n"
 "PO-Revision-Date: 2014-06-05 23:38+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Generator: Lokalize 1.4\n"
 
 #. [time]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:499
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
 #: data/core/macros/schedules.cfg:109
 msgid "Underground"
 msgstr "Dưới lòng đất"
@@ -24,14 +24,14 @@ msgstr "Dưới lòng đất"
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:659
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:657
-#: data/core/macros/abilities.cfg:346
+#: data/core/macros/abilities.cfg:274
 msgid "berserk"
 msgstr "điên cuồng"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:661
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:659
-#: data/core/macros/abilities.cfg:347
+#: data/core/macros/abilities.cfg:275
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -43,14 +43,14 @@ msgstr ""
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:668
-#: data/core/macros/abilities.cfg:433
+#: data/core/macros/abilities.cfg:359
 msgid "magical"
 msgstr "phép thuật"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:672
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:670
-#: data/core/macros/abilities.cfg:434
+#: data/core/macros/abilities.cfg:360
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -60,13 +60,13 @@ msgstr ""
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:679
-#: data/core/macros/abilities.cfg:478
+#: data/core/macros/abilities.cfg:404
 msgid "first strike"
 msgstr "đánh trước"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:681
-#: data/core/macros/abilities.cfg:479
+#: data/core/macros/abilities.cfg:405
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "Đơn vị này luôn đánh trước với đòn này, kể cả khi đang phòng thủ."
@@ -2421,45 +2421,45 @@ msgstr ""
 "trạng thái. Đối với chu kỳ ngày/đêm thông thường, buổi sáng và buổi chiều "
 "tính là ngày, canh một và canh hai tính là đêm:\n"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:340 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Bình minh"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
+#. [time]: id=morning
 #: data/core/help.cfg:341 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Buổi sáng"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
+#. [time]: id=afternoon
 #: data/core/help.cfg:342 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "Buổi chiều"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:343 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Chạng vạng"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
+#. [time]: id=first_watch
 #: data/core/help.cfg:344 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "Canh một"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
+#. [time]: id=second_watch
 #: data/core/help.cfg:345 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
@@ -3766,17 +3766,17 @@ msgstr ""
 "Sức kháng cự âm không bị ảnh hưởng."
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:107
+#: data/core/macros/abilities.cfg:106
 msgid "leadership"
 msgstr "lãnh đạo"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:108
+#: data/core/macros/abilities.cfg:107
 msgid "female^leadership"
 msgstr "lãnh đạo"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:109
+#: data/core/macros/abilities.cfg:108
 msgid ""
 "This unit can lead our own units that are next to it, making them fight "
 "better.\n"
@@ -3795,17 +3795,17 @@ msgstr ""
 "hại nhiều hơn 25% nhân với mức chênh lệch cấp độ của chúng."
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:170
+#: data/core/macros/abilities.cfg:125
 msgid "skirmisher"
 msgstr "đột nhập"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:171
+#: data/core/macros/abilities.cfg:126
 msgid "female^skirmisher"
 msgstr "đột nhập"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:172
+#: data/core/macros/abilities.cfg:127
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
@@ -3814,17 +3814,17 @@ msgstr ""
 "toàn bộ vùng kiểm soát của kẻ thù."
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:185
+#: data/core/macros/abilities.cfg:140
 msgid "illuminates"
 msgstr "chiếu sáng"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:186
+#: data/core/macros/abilities.cfg:141
 msgid "female^illuminates"
 msgstr "chiếu sáng"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:187
+#: data/core/macros/abilities.cfg:142
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -3839,17 +3839,17 @@ msgstr ""
 "vạng khi trời đang là ban đêm, và như thể đang là ban ngày khi chạng vạng."
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:199
+#: data/core/macros/abilities.cfg:154
 msgid "teleport"
 msgstr "dịch chuyển tức thời"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:200
+#: data/core/macros/abilities.cfg:155
 msgid "female^teleport"
 msgstr "dịch chuyển tức thời"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:201
+#: data/core/macros/abilities.cfg:156
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
@@ -3858,17 +3858,17 @@ msgstr ""
 "phe nó sở hữu, sử dụng một điểm di chuyển."
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:237 data/core/macros/abilities.cfg:239
+#: data/core/macros/abilities.cfg:185
 msgid "ambush"
 msgstr "mai phục"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:238 data/core/macros/abilities.cfg:240
+#: data/core/macros/abilities.cfg:186
 msgid "female^ambush"
 msgstr "mai phục"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:241 data/core/macros/abilities.cfg:244
+#: data/core/macros/abilities.cfg:187
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -3883,13 +3883,12 @@ msgstr ""
 "vị này đều mất ngay lập tức toàn bộ điểm di chuyển còn lại."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:261 data/core/macros/abilities.cfg:262
-#: data/core/macros/abilities.cfg:266
+#: data/core/macros/abilities.cfg:204 data/core/macros/abilities.cfg:205
 msgid "nightstalk"
 msgstr "săn đêm"
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:263 data/core/macros/abilities.cfg:268
+#: data/core/macros/abilities.cfg:206
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -3903,23 +3902,18 @@ msgstr ""
 "có đơn vị bên cạnh nó. Bất kỳ đơn vị kẻ thù nào phát hiện ra đơn vị này đều "
 "mất ngay lập tức toàn bộ điểm di chuyển còn lại."
 
-#. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:267
-msgid "female^nightstalk"
-msgstr "săn đêm"
-
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:285 data/core/macros/abilities.cfg:290
+#: data/core/macros/abilities.cfg:223
 msgid "concealment"
 msgstr "ẩn nấp"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:286 data/core/macros/abilities.cfg:291
+#: data/core/macros/abilities.cfg:224
 msgid "female^concealment"
 msgstr "ẩn nấp"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:287 data/core/macros/abilities.cfg:292
+#: data/core/macros/abilities.cfg:225
 #, fuzzy
 #| msgid ""
 #| "This unit can hide in villages (with the exception of water villages), "
@@ -3945,17 +3939,17 @@ msgstr ""
 "vị này đều mất ngay lập tức toàn bộ điểm di chuyển còn lại."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:309 data/core/macros/abilities.cfg:314
+#: data/core/macros/abilities.cfg:242
 msgid "submerge"
 msgstr "lặn"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:310 data/core/macros/abilities.cfg:315
+#: data/core/macros/abilities.cfg:243
 msgid "female^submerge"
 msgstr "lặn"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:311 data/core/macros/abilities.cfg:316
+#: data/core/macros/abilities.cfg:244
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -3970,17 +3964,17 @@ msgstr ""
 "đơn vị này đều mất ngay lập tức toàn bộ điểm di chuyển còn lại."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:333
+#: data/core/macros/abilities.cfg:261
 msgid "feeding"
 msgstr "bồi dưỡng"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:334
+#: data/core/macros/abilities.cfg:262
 msgid "female^feeding"
 msgstr "bồi dưỡng"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:335
+#: data/core/macros/abilities.cfg:263
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -3989,12 +3983,12 @@ msgstr ""
 "miễn nhiễm với bệnh dịch."
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:357
+#: data/core/macros/abilities.cfg:285
 msgid "backstab"
 msgstr "đánh lén"
 
 #. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:358
+#: data/core/macros/abilities.cfg:286
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -4006,12 +4000,12 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:378 data/core/macros/abilities.cfg:389
+#: data/core/macros/abilities.cfg:304 data/core/macros/abilities.cfg:315
 msgid "plague"
 msgstr "bệnh dịch"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:379
+#: data/core/macros/abilities.cfg:305
 #, fuzzy
 #| msgid ""
 #| "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -4027,7 +4021,7 @@ msgstr ""
 "dịch. Đòn này không có tác dụng với ma quái hoặc các đơn vị ở trong làng."
 
 #. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:390
+#: data/core/macros/abilities.cfg:316
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -4038,12 +4032,12 @@ msgstr ""
 "dịch. Đòn này không có tác dụng với ma quái hoặc các đơn vị ở trong làng."
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:400
+#: data/core/macros/abilities.cfg:326
 msgid "slows"
 msgstr "chậm"
 
 #. [slow]: id=slow
-#: data/core/macros/abilities.cfg:401
+#: data/core/macros/abilities.cfg:327
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -4056,12 +4050,12 @@ msgstr ""
 "tượng con ốc sên trong thông tin trạng thái khi chọn nó."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:410
+#: data/core/macros/abilities.cfg:336
 msgid "petrifies"
 msgstr "hóa đá"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:411
+#: data/core/macros/abilities.cfg:337
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -4070,12 +4064,12 @@ msgstr ""
 "đá không thể di chuyển hay tấn công."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:420
+#: data/core/macros/abilities.cfg:346
 msgid "marksman"
 msgstr "thiện xạ"
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:421
+#: data/core/macros/abilities.cfg:347
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
@@ -4083,12 +4077,12 @@ msgstr ""
 "là 60%."
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:445
+#: data/core/macros/abilities.cfg:371
 msgid "swarm"
 msgstr "liên hoàn"
 
 #. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:446
+#: data/core/macros/abilities.cfg:372
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -4101,12 +4095,12 @@ msgstr ""
 "được phép."
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:455
+#: data/core/macros/abilities.cfg:381
 msgid "charge"
 msgstr "xung kích"
 
 #. [damage]: id=charge
-#: data/core/macros/abilities.cfg:456
+#: data/core/macros/abilities.cfg:382
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -4116,12 +4110,12 @@ msgstr ""
 "đôi từ đòn phản công của đối phương."
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:468
+#: data/core/macros/abilities.cfg:394
 msgid "drains"
 msgstr "bòn rút"
 
 #. [drains]: id=drains
-#: data/core/macros/abilities.cfg:469
+#: data/core/macros/abilities.cfg:395
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -4130,12 +4124,12 @@ msgstr ""
 "thân một lượng bằng một nửa lượng thiệt hại mà nó gây ra (làm tròn xuống)."
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:488
+#: data/core/macros/abilities.cfg:414
 msgid "poison"
 msgstr "độc"
 
 #. [poison]: id=poison
-#: data/core/macros/abilities.cfg:489
+#: data/core/macros/abilities.cfg:415
 #, fuzzy
 #| msgid ""
 #| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -6510,6 +6504,9 @@ msgstr "Trợ giúp Trận chiến vì Wesnoth"
 #: src/help/help.cpp:240
 msgid "Parse error when parsing help text: "
 msgstr "Lỗi phân tích khi phân tích văn bản trợ giúp: "
+
+#~ msgid "female^nightstalk"
+#~ msgstr "săn đêm"
 
 #~ msgid ""
 #~ "When a unit is killed by a Plague attack, that unit is replaced with a "

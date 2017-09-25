@@ -6314,6 +6314,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = (
+					"-Wno-unused-local-typedefs",
+					"-Wno-unused-private-field",
+				);
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lbz2",

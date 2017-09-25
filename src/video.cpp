@@ -19,6 +19,7 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
+#include "sdl/utils.hpp"
 #include "sdl/window.hpp"
 #include "sdl/userevent.hpp"
 
@@ -196,6 +197,12 @@ void CVideo::update_framebuffer()
 	if(!frameBuffer) {
 		frameBuffer = fb;
 	} else {
+		if(sdl_get_version() >= version_info(2, 0, 6)) {
+			// Because SDL has already freed the old framebuffer,
+			// ensure that we won't attempt to free it.
+			frameBuffer.clear_without_free();
+		}
+
 		frameBuffer.assign(fb);
 	}
 }

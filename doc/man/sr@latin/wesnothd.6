@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd "Višeigrački mrežni domar \(dqBoja za Vesnot\(dq"
+.TH WESNOTHD 6 2017 wesnothd "Višeigrački mrežni domar \(dqBoja za Vesnot\(dq"
 .
 .SH IME
 .
@@ -33,9 +33,9 @@ wesnothd \-\- višeigrački mrežni domar "Boja za \fBVesnot\fP"
 .
 .SH OPIS
 .
-Upravlja višeigračkim partijama "Boja za Vesnot". Pogledajte
-http://www.wesnoth.org/wiki/ServerAdministration za naredbe koje server
-prihvata preko klijenta (/query ...) ili fifoa.
+Manages Battle for Wesnoth multiplayer games. See
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH OPCIJE
 .
@@ -115,9 +115,9 @@ koriste ako se ništa ne zada, su:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-putanja do fifoa iz kojeg server može da čita naredbe (iste kao /query
-\&... iz igre). Ako nije zadata, spada na ugrađenu (podrazumevano:
-\fB/var/run/socket/wesnothd/socket\fP).
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 broj dozvoljenih poruka za vreme \fBmessages_time_period\fP (podrazumevano:
@@ -279,11 +279,11 @@ Baumhauer (Thomas Baumhauer) <thomas.baumhauer@gmail.com>. Ovu
 uputnu stranicu prvobitno je napisao Siril Butor (Cyril Bouthors)
 <cyril@bouthors.org>.
 .br
-Posetite zvaničnu domaću stranicu: http://www.wesnoth.org/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH "AUTORSKA PRAVA"
 .
-Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2017 David White <davidnwhite@verizon.net>
 .br
 Ovo je slobodan softver; licenciran je pod uslovima OJL verzije 2  (GPLv2),
 koju izdaje Zadužbina za slobodni softver. Nema BILO KAKVE GARANCIJE; čak ni

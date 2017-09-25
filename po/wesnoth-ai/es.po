@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-03-23 08:11+0100\n"
+"POT-Creation-Date: 2017-09-21 20:27 UTC\n"
 "PO-Revision-Date: 2017-03-27 20:34+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -53,6 +53,10 @@ msgstr "IA en desarrollo: Predeterminada con envenenamiento (Formula AI)"
 msgid "Multiplayer_AI^Dev AI: Idle AI"
 msgstr "IA en desarrollo: IA inactiva"
 
+#: data/ai/lua/patrol.lua:4
+msgid "Use the Patrols Micro AI instead of patrol.lua."
+msgstr ""
+
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
 msgid "The Elves Besieged"
@@ -84,10 +88,10 @@ msgstr "Delfador"
 msgid "Urug-Telfar"
 msgstr "Urug-Telfar"
 
-#. [side]: id=Vanak, type=Orcish Ruler
 #. [side]: type=Orcish Warlord, id=Urug-Telfar
 #. [side]: type=Orcish Warlord, id=Knafa-Tan
 #. [side]: type=Orcish Warlord, id=Maga-Knafa
+#. [side]: id=Vanak, type=Orcish Ruler
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:98
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:112
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:130
@@ -332,8 +336,8 @@ msgstr ""
 "mutuamente, demostrando el gran autocontrol que tiene un perro pastor bien "
 "entrenado."
 
-#. [event]
 #. [test]: id=animals
+#. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:27
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:45
 msgid "Animals"
@@ -344,10 +348,10 @@ msgstr "Animales"
 msgid "Rutburt"
 msgstr "Rutburt"
 
+#. [side]: id=Rutburt, type=Outlaw
 #. [side]: type=General, id=leader2
 #. [side]: type=Lieutenant, id=leader5
 #. [side]: type=Lieutenant, id=leader6
-#. [side]: id=Rutburt, type=Outlaw
 #: data/ai/micro_ais/scenarios/animals.cfg:48
 #: data/ai/micro_ais/scenarios/goto.cfg:43
 #: data/ai/micro_ais/scenarios/goto.cfg:93
@@ -376,8 +380,8 @@ msgstr "Arañas"
 msgid "Yetis"
 msgstr "Yetis"
 
-#. [event]
 #. [side]
+#. [event]
 #. [test]: id=wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:119
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:48
@@ -390,10 +394,10 @@ msgstr "Lobos"
 msgid "Whelps"
 msgstr "Crías"
 
-#. [set_menu_item]: id=m01_end_swarm
+#. [set_menu_item]: id=m01_end_animals
 #. [event]
 #. [set_menu_item]: id=m04_end_animals
-#. [set_menu_item]: id=m01_end_animals
+#. [set_menu_item]: id=m01_end_swarm
 #. [set_menu_item]: id=m01_end_wolves
 #: data/ai/micro_ais/scenarios/animals.cfg:209
 #: data/ai/micro_ais/scenarios/dragon.cfg:48
@@ -764,8 +768,8 @@ msgstr ""
 "No se ha de hacer nada aquí, solo mirar o usar el escenario como plantilla "
 "para sus propias pruebas."
 
-#. [event]
 #. [test]: id=goto
+#. [event]
 #: data/ai/micro_ais/scenarios/goto.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:84
 msgid "Goto"
@@ -821,8 +825,8 @@ msgstr "Sargento Aethubry"
 msgid "Place Side 1 Footpad"
 msgstr "Crear un salteador para el lado 1"
 
-#. [set_menu_item]: id=m05_kill_unit
 #. [set_menu_item]: id=m02_kill_unit
+#. [set_menu_item]: id=m05_kill_unit
 #: data/ai/micro_ais/scenarios/goto.cfg:350
 #: data/ai/micro_ais/scenarios/swarm.cfg:113
 #: data/ai/micro_ais/scenarios/wolves.cfg:153
@@ -1927,8 +1931,8 @@ msgstr "¡Lo conseguí! Ahora nuestra gente estará a salvo."
 msgid "Nooo!  All is lost. We will never stop the orcs now!"
 msgstr "¡Nooo! Todo se ha perdido. ¡Ya nunca podremos detener a los orcos!"
 
-#. [event]
 #. [test]: id=patrols
+#. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:75
 msgid "Patrols"
@@ -2140,8 +2144,8 @@ msgstr ""
 msgid "Let's go home, chaps."
 msgstr "Vayamos a casa, compadres."
 
-#. [event]
 #. [test]: id=protect_unit
+#. [event]
 #: data/ai/micro_ais/scenarios/protect_unit.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:63
 msgid "Protect Unit"
@@ -2303,8 +2307,8 @@ msgstr "Los retuve tanto como pude."
 msgid "I made it"
 msgstr "Lo hice"
 
-#. [event]
 #. [test]: id=recruiting
+#. [event]
 #: data/ai/micro_ais/scenarios/recruiting.cfg:5
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:78
 msgid "Recruiting"
@@ -2376,8 +2380,8 @@ msgstr "Mugre el canijo"
 msgid "team_name^Grnk"
 msgstr "Mugre"
 
-#. [test]: id=swarm
 #. [event]
+#. [test]: id=swarm
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:51
 #: data/ai/micro_ais/scenarios/swarm.cfg:5
 msgid "Swarm"

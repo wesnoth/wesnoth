@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-05-29 21:55+0200\n"
+"POT-Creation-Date: 2017-09-21 23:27+0300\n"
 "PO-Revision-Date: 2011-12-31 10:38+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
@@ -330,13 +330,13 @@ msgstr ""
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:280 src/editor/map/map_context.cpp:766
+#: src/editor/map/context_manager.cpp:280 src/editor/map/map_context.cpp:828
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Uus kaart)"
 
-#: src/editor/map/context_manager.cpp:291 src/editor/map/map_context.cpp:766
+#: src/editor/map/context_manager.cpp:291 src/editor/map/map_context.cpp:828
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Scenario"
@@ -466,17 +466,17 @@ msgstr "Mängija $player_number"
 msgid "The size of the target map is different from the current map"
 msgstr "Sihtkaart on lähtekaardist erineva suurusega"
 
-#: src/editor/map/map_context.cpp:149
+#: src/editor/map/map_context.cpp:146
 msgid "File not found"
 msgstr "Faili ei leitud"
 
-#: src/editor/map/map_context.cpp:155
+#: src/editor/map/map_context.cpp:153
 #, fuzzy
 #| msgid "Empty map file"
 msgid "Empty file"
 msgstr "Tühi kaardifail"
 
-#: src/editor/map/map_context.cpp:204
+#: src/editor/map/map_context.cpp:209
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -484,17 +484,17 @@ msgstr ""
 "See kaardifail tundub olevat stsenaarium, kuid map_data -väärtus ei viita "
 "ühelegi olemasolevale failile"
 
-#: src/editor/map/map_context.cpp:555
+#: src/editor/map/map_context.cpp:597
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
 msgstr "Ei saa kaarti salvestada: $msg"
 
-#: src/editor/map/map_context.cpp:582
+#: src/editor/map/map_context.cpp:629
 msgid "Could not save into scenario"
 msgstr "Kaarti ei saa stsenaariumisse salvestada"
 
-#: src/editor/map/map_context.cpp:590
+#: src/editor/map/map_context.cpp:639
 msgid "Could not save the map: $msg"
 msgstr "Ei saa kaarti salvestada: $msg"
 

@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd "Servizo de rede para partidas con varios xogadores de A batalla polo Noroeste"
+.TH WESNOTHD 6 2017 wesnothd "Servizo de rede para partidas con varios xogadores de A batalla polo Noroeste"
 .
 .SH NOME
 .
@@ -34,9 +34,9 @@ polo \fBNoroeste\fP.
 .
 .SH DESCRICIÓN
 .
-Xestiona partidas de A batalla polo Noroeste con varios xogadores. Véxanse
-en «http://www.wesnoth.org/wiki/ServerAdministration» (en inglés) as ordes
-que acepta o servidor a través do cliente wesnoth (/query […]) ou do fifo.
+Manages Battle for Wesnoth multiplayer games. See
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH OPCIÓNS
 .
@@ -119,10 +119,9 @@ valores predeterminados son:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-A ruta ao fifo polo que se poden enviar ordes ao servidor —equivalente ao
-«/query …» desde o xogo—. Se non se especifica outra cousa, toma a ruta
-indicada como valor predeterminado durante a compilación (en principio
-\fB/var/run/socket/wesnothd/socket\fP).
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 O número máximo de mensaxes permitidas en \fBmessages_time_period\fP (\fB4\fP de
@@ -289,11 +288,11 @@ posteriores: Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
 Baumhauer <thomas.baumhauer@gmail.com>. Autor orixinal desta axuda:
 Cyril Bouthors <cyril@bouthors.org>.
 .br
-Visite o sitio web oficial: http://www.wesnoth.org/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH "DEREITOS DE AUTOR"
 .
-Copyright \(co 2003\-2016, David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2017 David White <davidnwhite@verizon.net>
 .br
 Isto é software libre. Este software está protexido polos termos da versión
 2 da licenza GNU GPL, tal e como foi publicada pola Free Software

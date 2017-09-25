@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd "Battle for Wesnoth multiplayer network daemon"
+.TH WESNOTHD 6 2017 wesnothd "Battle for Wesnoth multiplayer network daemon"
 .
 .SH NAME
 .
@@ -34,8 +34,8 @@ wesnothd \- Battle for \fBWesnoth\fP multiplayer network daemon
 .SH DESCRIPTION
 .
 Manages Battle for Wesnoth multiplayer games. See
-http://www.wesnoth.org/wiki/ServerAdministration on what commands the server
-accepts via the wesnoth client (/query ...) or the fifo.
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH OPTIONS
 .
@@ -117,7 +117,7 @@ values (used if nothing is specified) are:
 \fBfifo_path\fP
 The path to the fifo you can echo server commands into (same as /query
 \&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/socket/wesnothd/socket\fP).
+(default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 The number of allowed messages in \fBmessages_time_period\fP. (default: \fB4\fP)
@@ -278,11 +278,11 @@ Soliton <soliton.de@gmail.com> and Thomas Baumhauer
 <thomas.baumhauer@gmail.com>.  This manual page was originally
 written by Cyril Bouthors <cyril@bouthors.org>.
 .br
-Visit the official homepage: http://www.wesnoth.org/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2017 David White <davidnwhite@verizon.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as
 published by the Free Software Foundation.  There is NO warranty; not even

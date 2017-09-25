@@ -1572,7 +1572,18 @@ void console_handler::do_layers()
 	const mouse_handler& mousehandler = menu_handler_.pc_.get_mouse_handler_base();
 	const map_location& loc = mousehandler.get_last_hex();
 
-	gui2::dialogs::terrain_layers::display(disp, loc, disp.video());
+	//
+	// It's possible to invoke this dialog even if loc isn't a valid hex. I'm not sure
+	// exactly how that happens, but it does seem to occur when moving the mouse outside
+	// the window to the menu bar. Not sure if there's a bug when the set-last-hex code
+	// in that case, but this check at least ensures the dialog is only ever shown for a
+	// valid, on-map location. Otherwise, an assertion gets thrown.
+	//
+	// -- vultraz, 2017-09-21
+	//
+	if(disp.get_map().on_board_with_border(loc)) {
+		gui2::dialogs::terrain_layers::display(disp, loc, disp.video());
+	}
 }
 
 void console_handler::do_fps()

@@ -969,6 +969,8 @@ void preferences_dialog::pre_show(window& window)
 	listbox& selector = find_widget<listbox>(&window, "selector", false);
 	stacked_widget& pager = find_widget<stacked_widget>(&window, "pager", false);
 
+	pager.set_find_in_all_layers(true);
+
 	connect_signal_notify_modified(selector,
 		std::bind(&preferences_dialog::on_page_select, this, std::ref(window)));
 
@@ -980,7 +982,7 @@ void preferences_dialog::pre_show(window& window)
 	const int main_index = index_in_pager_range(initial_index_.first, pager);
 
 	// Loops through each pager layer and checks if it has both a tab bar
-	// and stack. If so, it initilizes the options for the former and
+	// and stack. If so, it initializes the options for the former and
 	// selects the specified layer of the latter.
 	for(unsigned int i = 0; i < pager.get_layer_count(); ++i) {
 		listbox* tab_selector = find_widget<listbox>(

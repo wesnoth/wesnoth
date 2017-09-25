@@ -1,10 +1,12 @@
+from os.path import normpath
+
 def exists():
     return True
 
 def make_incflags(paths, RDirs):
     result = []
     for path in paths:
-       if not str(path).startswith("#"):
+       if not str(path).startswith("#") and normpath(str(path)) != '/usr/include':
            for rdir in RDirs((path,)):
                result.append("-isystem")
                result.append(str(rdir))

@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd "Battle for Wesnoth マルチプレイヤー・ネットワーク・デーモン"
+.TH WESNOTHD 6 2017 wesnothd "Battle for Wesnoth マルチプレイヤー・ネットワーク・デーモン"
 .
 .SH 名前
 .
@@ -33,9 +33,9 @@ wesnothd \- Battle for \fBWesnoth\fP マルチプレイヤー・ネットワー�
 .
 .SH 説明
 .
-Battle for Wesnoth のマルチプレイヤーゲームを管理する。 wesnoth クライアント(/query ...)や fifo
-を通して、サーバがどのようなコマンドを受けつけるかについては
-http://www.wesnoth.org/wiki/ServerAdministration を参照。
+Manages Battle for Wesnoth multiplayer games. See
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH オプション
 .
@@ -104,8 +104,9 @@ wesnothd をデーモンとして実行する。
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP。
 .TP 
 \fBfifo_path\fP
-サーバコマンド(wesnoth からの /query ... と同じ)をエコーする fifo
-へのパス。指定されない場合の既定値はコンパイル時に指定されたパス(既定値: \fB/var/run/socket/wesnothd/socket\fP)。
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 \fBmessages_time_period\fP の時間内に許可されるメッセージ数。(既定値: \fB4\fP)
@@ -243,11 +244,11 @@ David White <davidnwhite@verizon.net> によって書かれた。 Nils Kneuper
 <cyril@bouthors.org> によって最初に書かれた。 岡田信人 <okyada@gmail.com>
 によって日本語に翻訳され、いいむらなおき <amatubu@gmail.com> によって編集された。
 .br
-公式ホームページ http://www.wesnoth.org/ を訪問して下さい。
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH 著作権
 .
-Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2017 David White <davidnwhite@verizon.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as
 published by the Free Software Foundation.  There is NO warranty; not even

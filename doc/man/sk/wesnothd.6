@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd "Démon na sieťovú hru Bitky o Wesnoth"
+.TH WESNOTHD 6 2017 wesnothd "Démon na sieťovú hru Bitky o Wesnoth"
 .
 .SH NÁZOV
 .
@@ -33,9 +33,9 @@ wesnothd \- Démon na sieťovú hru Bitky o \fBWesnoth\fP
 .
 .SH POPIS
 .
-Riadi sieťové hry pre viacerých hráčov Bitky o Wesnoth. Na stránke
-http://www.wesnoth.org/wiki/ServerAdministration sú uvedené príkazy, ktoré
-server prijíma cez klienta (/query ...) alebo soket (fifo).
+Manages Battle for Wesnoth multiplayer games. See
+https://www.wesnoth.org/wiki/ServerAdministration on what commands the
+server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH MOŽNOSTI
 .
@@ -114,9 +114,9 @@ Mená/prezývky, ktoré server neprijíma. Podporujú sa zástupné znaky \fB*\f
 nezadá) sú:\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-Cesta k soketu (fifo), do ktorého môžete posielať príkazy pre server
-(rovnaké ako /query ... z wesnoth). Ak nie je uvedená, použije sa cesta
-zadaná pri kompilácii (predvolená: \fB/var/run/socket/wesnothd/socket\fP).
+The path to the fifo you can echo server commands into (same as /query
+\&... from wesnoth).  If not specified defaults to the compile\-time path
+(default: \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Počet povolených správ počas \fBmessages_time_period\fP. (štandardne: \fB4\fP)
@@ -277,11 +277,11 @@ Soliton <soliton@gmail.com> a Thomas Baumhauer
 <viliam@bur.sk>.  Túto manuálovú stránku pôvodne napísal Cyril
 Bouthors <cyril@bouthors.org>.
 .br
-Navštívte oficiálnu stránku: http://www.wesnoth.org/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2016 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2017 David White <davidnwhite@verizon.net>
 .br
 Toto je slobodný softvér; tento softvér je zverejnená pod Všeobecnou
 verejnou licenciou (GPL) verzia 2, ako ju zverejnila Nadácia slobodného

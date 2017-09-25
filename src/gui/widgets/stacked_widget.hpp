@@ -35,6 +35,7 @@ class generator_base;
 
 class stacked_widget : public container_base
 {
+	friend struct stacked_widget_implementation;
 	friend struct implementation::builder_stacked_widget;
 	friend class debug_layout_graph;
 
@@ -107,6 +108,14 @@ public:
 	 */
 	grid* get_layer_grid(unsigned int i);
 
+	/** Const overload for @ref get_layer_grid. */
+	const grid* get_layer_grid(unsigned int i) const;
+
+	void set_find_in_all_layers(const bool do_find)
+	{
+		find_in_all_layers_ = do_find;
+	}
+
 private:
 	/**
 	 * Finishes the building initialization of the widget.
@@ -120,7 +129,7 @@ private:
 	 * Contains a pointer to the generator.
 	 *
 	 * The pointer is not owned by this class, it's stored in the content_grid_
-	 * of the scrollbar_container super class and freed when it's grid is
+	 * of the scrollbar_container super class and freed when its grid is
 	 * freed.
 	 *
 	 * NOTE: the generator is initialized with has_minimum (first arg) as false,
@@ -141,6 +150,12 @@ private:
 	 */
 	int selected_layer_;
 
+	/**
+	 * If true, @ref find will search all layers for widgets regardless of which
+	 * one is visible.
+	 */
+	bool find_in_all_layers_;
+
 	void update_selected_layer_index(const int i);
 
 	/** Internal implementation detail for selecting layers. */
@@ -151,6 +166,13 @@ private:
 
 	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
+
+public:
+	/** See @ref widget::find. */
+	virtual widget* find(const std::string& id, const bool must_be_active) override;
+
+	/** See @ref widget::find. */
+	virtual const widget* find(const std::string& id, const bool must_be_active) const override;
 };
 
 // }---------- DEFINITION ---------{
