@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-09-21 20:27 UTC\n"
-"PO-Revision-Date: 2016-11-07 20:32+1100\n"
+"PO-Revision-Date: 2017-09-25 12:30+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.2\n"
 
 #. [campaign]: id=Delfadors_Memoirs
 #: data/campaigns/Delfadors_Memoirs/_main.cfg:22
@@ -460,10 +460,8 @@ msgstr "Death of Delfador"
 
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:113
-#, fuzzy
-#| msgid "Grooar! Burn! Burn! Ahahaha..."
 msgid "Grooar! Pillage! Pillage! Ahahaha..."
-msgstr "Grooar! Burn! Burn! A ha ha ha..."
+msgstr "Grooar! Pillage! Pillage! A ha ha ha..."
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/02_This_Valley_Belongs_to_Me.cfg:124
@@ -1230,10 +1228,8 @@ msgstr "This’ll splinter your bones, you vile monstrosity!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:172
-#, fuzzy
-#| msgid "At least, morning is here... And the skeletons are disappearing!"
 msgid "At last, morning is here... And the skeletons are disappearing!"
-msgstr "At least, morning is here... And the skeletons are disappearing!"
+msgstr "At last, morning is here... And the skeletons are disappearing!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:183
@@ -4728,12 +4724,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:32
-#, fuzzy
-#| msgid ""
-#| "Delfador was granted an audience with the King and expressed his concerns "
-#| "about the Book, but the King put off a decision until Asheviere returned "
-#| "to Weldyn, and ordered Delfador to take no further action. And for once, "
-#| "Delfador knew he could not obey the King’s order."
 msgid ""
 "Delfador was granted an audience with the King and expressed his concerns "
 "about the missing Book, but the King put off a decision until Asheviere "
@@ -4741,9 +4731,9 @@ msgid ""
 "once, Delfador knew he could not obey the King’s order."
 msgstr ""
 "Delfador was granted an audience with the King and expressed his concerns "
-"about the Book, but the King put off a decision until Asheviere returned to "
-"Weldyn, and ordered Delfador to take no further action. And for once, "
-"Delfador knew he could not obey the King’s order."
+"about the missing Book, but the King put off a decision until Asheviere "
+"returned to Weldyn, and ordered Delfador to take no further action. And for "
+"once, Delfador knew he could not obey the King’s order."
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:36
@@ -4759,33 +4749,27 @@ msgstr ""
 #. [side]: type=General, id=Rhuwin
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:83
 msgid "Rhuwin"
-msgstr ""
+msgstr "Rhuwin"
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:115
 msgid "Kill all enemy units"
-msgstr ""
+msgstr "Kill all enemy units"
 
 #. [objective]: condition=lose
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:119
-#, fuzzy
-#| msgid "Enemy unit reaches the signpost"
 msgid "Enemy unit reaches a signpost"
-msgstr "Enemy unit reaches the signpost"
+msgstr "Enemy unit reaches a signpost"
 
 #. [note]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:143
-#, fuzzy
-#| msgid "Enemy unit reaches the signpost"
 msgid "Enemy rider units will go for a signpost"
-msgstr "Enemy unit reaches the signpost"
+msgstr "Enemy rider units will go for a signpost"
 
 #. [note]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:152
-#, fuzzy
-#| msgid "Enemy unit reaches the signpost"
 msgid "All enemy units will go for a signpost"
-msgstr "Enemy unit reaches the signpost"
+msgstr "All enemy units will go for a signpost"
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:170
@@ -4828,10 +4812,8 @@ msgstr "The guards are slain. Now we must look for the book."
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:317
-#, fuzzy
-#| msgid "New Objective: Find the secret door. Explore the manor."
 msgid "Find the secret door to enter the manor"
-msgstr "New Objective: Find the secret door. Explore the manor."
+msgstr "Find the secret door to enter the manor"
 
 #. [message]: id=$unit.id
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:343
@@ -4841,7 +4823,7 @@ msgstr "This looks like a secret door. Let’s see where it leads..."
 #. [message]: speaker=Rhuwin
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:372
 msgid "Everyone, quickly, go alert the queen!"
-msgstr ""
+msgstr "Everyone, quickly, go and alert the queen!"
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_Clash_at_the_Manor.cfg:483
@@ -4865,7 +4847,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:86
 msgid "Find the Book"
-msgstr ""
+msgstr "Find the Book"
 
 #. [message]: speaker=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_Face_of_the_Enemy.cfg:119
