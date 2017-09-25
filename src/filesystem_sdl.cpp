@@ -111,14 +111,13 @@ static Sint64 ofs_size (struct SDL_RWops * context) {
 
 typedef std::pair<Sint64, std::ios_base::seekdir> offset_dir;
 static offset_dir translate_seekdir(Sint64 offset, int whence) {
-	Sint64 zero = 0;
 	switch(whence){
 	case RW_SEEK_SET:
-		return std::make_pair(std::max(zero, offset), std::ios_base::beg);
+		return std::make_pair(std::max<Sint64>(0, offset), std::ios_base::beg);
 	case RW_SEEK_CUR:
 		return std::make_pair(offset, std::ios_base::cur);
 	case RW_SEEK_END:
-		return std::make_pair(std::min(zero, offset), std::ios_base::end);
+		return std::make_pair(std::min<Sint64>(0, offset), std::ios_base::end);
 	default:
 		assert(false);
 		throw "assertion ignored";
