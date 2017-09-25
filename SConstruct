@@ -55,7 +55,7 @@ opts.AddVariables(
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
     ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
     ('extra_flags_optimized', 'Extra compiler and linker flags to use for optimized builds', ""),
-    BoolVariable('enable_lto', 'Whether to enable Link Time Optimization', False),
+    BoolVariable('enable_lto', 'Whether to enable Link Time Optimization for build=optimized', False),
     PathVariable('bindir', 'Where to install binaries', "bin", PathVariable.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathVariable('datadir', 'read-only architecture-independent game data', "$datarootdir/$datadirname", PathVariable.PathAccept),
