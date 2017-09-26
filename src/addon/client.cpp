@@ -44,6 +44,7 @@ addons_client::addons_client(CVideo& v, const std::string& address)
 	, conn_(nullptr)
 	, stat_(nullptr)
 	, last_error_()
+	, last_error_data_()
 {
 	const std::vector<std::string>& address_components =
 		utils::split(addr_, ':');
@@ -439,10 +440,12 @@ bool addons_client::update_last_error(config& response_cfg)
 {
 	if(config const &error = response_cfg.child("error")) {
 		this->last_error_ = error["message"].str();
+		this->last_error_data_ = error["extra_data"].str();
 		ERR_ADDONS << "server error: " << error << '\n';
 		return true;
 	} else {
 		this->last_error_.clear();
+		this->last_error_data_.clear();
 		return false;
 	}
 }

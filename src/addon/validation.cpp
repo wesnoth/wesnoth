@@ -68,16 +68,56 @@ bool addon_filename_legal(const std::string& name)
 	}
 }
 
-bool check_names_legal(const config& dir)
+namespace {
+
+bool check_names_legal_internal(const config& dir, std::string current_prefix, std::vector<std::string>* badlist)
 {
-	for (const config &path : dir.child_range("file")) {
-		if (!addon_filename_legal(path["name"])) return false;
+	if (!current_prefix.empty()) {
+		current_prefix += '/';
 	}
-	for (const config &path : dir.child_range("dir")) {
-		if (!addon_filename_legal(path["name"])) return false;
-		if (!check_names_legal(path)) return false;
+
+	for(const config& path : dir.child_range("file")) {
+		const std::string& filename = path["name"];
+
+		if(!addon_filename_legal(filename)) {
+			if(badlist) {
+				badlist->push_back(current_prefix + filename);
+			} else {
+				return false;
+			}
+		}
 	}
-	return true;
+
+	for(const config& path : dir.child_range("dir")) {
+		const std::string& dirname = path["name"];
+		const std::string& new_prefix = current_prefix + dirname;
+
+		if(!addon_filename_legal(dirname)) {
+			if(badlist) {
+				badlist->push_back(new_prefix + "/");
+			} else {
+				return false;
+			}
+		}
+
+		// Recurse into subdir.
+		if(!check_names_legal_internal(path, new_prefix, badlist) && !badlist) {
+			return false;
+		}
+	}
+
+	return badlist ? badlist->empty() : true;
+}
+
+} // end unnamed namespace 3
+
+bool check_names_legal(const config& dir, std::vector<std::string>* badlist)
+{
+	// Usually our caller is passing us the root [dir] for an add-on, which
+	// shall contain a single subdir named after the add-on itself, so we can
+	// start with an empty display prefix and that'll reflect the addon
+	// structure correctly (e.g. "Addon_Name/~illegalfilename1").
+	return check_names_legal_internal(dir, "", badlist);
 }
 
 ADDON_TYPE get_addon_type(const std::string& str)

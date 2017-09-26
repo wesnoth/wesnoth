@@ -60,6 +60,9 @@ public:
 	/** Returns the last error message sent by the server, or an empty string. */
 	const std::string& get_last_server_error() const { return last_error_; }
 
+	/** Returns the last error message extra data sent by the server, or an empty string. */
+	const std::string& get_last_server_error_data() const { return last_error_data_; }
+
 	/**
 	 * Request the add-ons list from the server.
 	 *
@@ -123,6 +126,7 @@ private:
 	std::unique_ptr<network_asio::connection> conn_;
 	std::unique_ptr<gui2::dialogs::network_transmission> stat_;
 	std::string last_error_;
+	std::string last_error_data_;
 
 	/**
 	* Downloads the specified add-on from the server.

@@ -684,8 +684,20 @@ void addon_manager::publish_addon(const addon_info& addon, window& window)
 			_("The server responded with an error:") + "\n" + client_.get_last_server_error());
 	} else if(gui2::show_message(window.video(), _("Terms"), server_msg, gui2::dialogs::message::ok_cancel_buttons, true) == gui2::window::OK) {
 		if(!client_.upload_addon(addon_id, server_msg, cfg)) {
-			gui2::show_error_message(window.video(),
-				_("The server responded with an error:") + "\n" + client_.get_last_server_error());
+			const std::string& msg = _("The server responded with an error:") +
+			                         "\n\n" + client_.get_last_server_error();
+			const std::string& extra_data = client_.get_last_server_error_data();
+			if (!extra_data.empty()) {
+				// TODO: Allow user to copy the extra data portion to clipboard
+				//       or something, maybe display it in a dialog similar to
+				//       the WML load errors report in a monospace font and
+				//       stuff (having a scroll container is especially
+				//       important since a long list can cause the dialog to
+				//       overflow).
+				gui2::show_error_message(window.video(), msg + "\n\n" + extra_data);
+			} else {
+				gui2::show_error_message(window.video(), msg);
+			}
 		} else {
 			gui2::show_transient_message(window.video(), _("Response"), server_msg);
 			fetch_addons_list(window);

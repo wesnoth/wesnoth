@@ -187,6 +187,17 @@ private:
 	 * is recorded to the server log.
 	 */
 	void send_error(const std::string& msg, socket_ptr sock);
+
+	/**
+	 * Send a client an error message.
+	 *
+	 * The WML sent consists of a document containing a single @p [error] child
+	 * with a @a message attribute holding the value of @a msg, and an
+	 * @a extra_data attribute holding the value of @a extra_data. In addition
+	 * to sending the error to the client, a line with the client IP and
+	 * message is recorded to the server log.
+	 */
+	void send_error(const std::string& msg, const std::string& extra_data, socket_ptr sock);
 };
 
 } // end namespace campaignd
