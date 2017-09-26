@@ -437,6 +437,16 @@ void server::send_error(const std::string& msg, socket_ptr sock)
 	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
 }
 
+void server::send_error(const std::string& msg, const std::string& extra_data, socket_ptr sock)
+{
+	ERR_CS << "[" << client_address(sock) << "]: " << msg << '\n';
+	simple_wml::document doc;
+	simple_wml::node& err_cfg = doc.root().add_child("error");
+	err_cfg.set_attr_dup("message", msg.c_str());
+	err_cfg.set_attr_dup("extra_data", extra_data.c_str());
+	async_send_doc(sock, doc, std::bind(&server::handle_new_client, this, _1), null_handler);
+}
+
 #define REGISTER_CAMPAIGND_HANDLER(req_id) \
 	handlers_[#req_id] = std::bind(&server::handle_##req_id, \
 		std::placeholders::_1, std::placeholders::_2)
@@ -640,6 +650,8 @@ void server::handle_upload(const server::request& req)
 		return;
 	}
 
+	std::vector<std::string> badnames;
+
 	if(read_only_) {
 		LOG_CS << "Upload aborted - uploads not permitted in read-only mode.\n";
 		send_error("Add-on rejected: The server is currently in read-only mode.", req.sock);
@@ -673,11 +685,13 @@ void server::handle_upload(const server::request& req)
 	} else if(upload["email"].empty()) {
 		LOG_CS << "Upload aborted - no add-on email specified.\n";
 		send_error("Add-on rejected: You did not specify your email address in the pbl file!", req.sock);
-	} else if(!check_names_legal(data)) {
-		LOG_CS << "Upload aborted - invalid file names in add-on data.\n";
-		send_error("Add-on rejected: The add-on contains an illegal file or directory name."
-				   " File or directory names may not contain whitespace or any of the following characters: '/ \\ : ~'",
-				   req.sock);
+	} else if(!check_names_legal(data, &badnames)) {
+		const std::string& filelist = utils::join(badnames, "\n");
+		LOG_CS << "Upload aborted - invalid file names in add-on data (" << badnames.size() << " entries).\n";
+		send_error(
+			"Add-on rejected: The add-on contains files or directories with illegal names. "
+			"File or directory names may not contain whitespace or any of the following characters: '/ \\ : ~'",
+			filelist, req.sock);
 	} else if(campaign && !authenticate(*campaign, upload["passphrase"])) {
 		LOG_CS << "Upload aborted - incorrect passphrase.\n";
 		send_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect.", req.sock);

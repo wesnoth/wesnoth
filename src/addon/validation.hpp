@@ -63,8 +63,20 @@ std::string get_addon_type_string(ADDON_TYPE type);
 bool addon_name_legal(const std::string& name);
 /** Checks whether an add-on file name is legal or not. */
 bool addon_filename_legal(const std::string& name);
-/** Probes an add-on archive for illegal names. */
-bool check_names_legal(const config& dir);
+
+/**
+ * Scans an add-on archive for illegal names.
+ *
+ * @param dir     The WML container for the root [dir] node where the search
+ *                should begin.
+ * @param badlist If provided and not null, any illegal names encountered will
+ *                be added to this list. This also makes the archive scan more
+ *                thorough instead of returning on the first illegal name
+ *                encountered.
+ *
+ * @returns True if no illegal names were found.
+ */
+bool check_names_legal(const config& dir, std::vector<std::string>* badlist = nullptr);
 
 std::string encode_binary(const std::string& str);
 std::string unencode_binary(const std::string& str);
