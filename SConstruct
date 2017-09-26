@@ -183,7 +183,7 @@ if 'TRAVIS' in os.environ:
 else:
     SDL2_version = '2.0.4'
 
-boost_version = '1.48.0'
+boost_version = '1.50.0'
 
 
 Help("""Arguments may be a mixture of switches and targets in any order.
