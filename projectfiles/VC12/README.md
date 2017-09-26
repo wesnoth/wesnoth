@@ -82,7 +82,10 @@ folders, all version numbers are minimal requirements:
       into the 'lib' *General Folder*.
 
 
-   3. libboost-1.48.0 ( http://www.boost.org/ )
+   3. libboost-1.50.0 ( http://www.boost.org/ )
+
+      Note these instructions are still referring to Boost 1.48.0, and are so
+      pending possible fixes to make it Boost >= 1.50.0 compliant.
 
       Download Boost and unpack it into the folder  
       	`C:\projects\`
