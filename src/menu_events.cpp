@@ -454,6 +454,20 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 			gui_->highlight_another_reach(path);
 		}
 	}
+
+	// Find possible unit (no matter whether friend or foe) under the
+	// mouse cursor.
+	mouse_handler& mh = pc_.get_mouse_handler_base();
+	const map_location& hex_under_mouse = mh.hovered_hex();
+	const bool selected_hex_has_unit = mh.hex_hosts_unit(hex_under_mouse);
+
+	if(selected_hex_has_unit) {
+		// At this point, a single pixel move would remove the enemy
+		// [best possible] movements hex tiles highlights, so some
+		// prevention on normal unit mouseover movement highlight
+		// has to be toggled temporarily.
+		mh.disable_units_highlight();
+	}
 }
 
 void menu_handler::toggle_shroud_updates(int side_num)

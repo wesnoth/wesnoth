@@ -81,6 +81,7 @@ mouse_handler::mouse_handler(game_display* gui, play_controller& pc)
 	, over_route_(false)
 	, reachmap_invalid_(false)
 	, show_partial_move_(false)
+	, preventing_units_highlight_(false)
 {
 	singleton_ = this;
 }
@@ -296,6 +297,14 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 	} // end planned unit map scope
 
 	if((!selected_hex_.valid()) && un && current_paths_.destinations.empty() && !gui().fogged(un->get_location())) {
+		/*
+		 * Only process unit if toggler not preventing normal unit
+		 * processing. This can happen e.g. if, after activating 'show
+		 * [best possible] enemy movements' through the UI menu, the
+		 * mouse cursor lands on a hex with unit in it.
+		 */
+		if(!preventing_units_highlight_) {
+
 		if(un->side() == side_num_) {
 			// unit is on our team, show path if the unit has one
 			const map_location go_to = un->get_goto();
@@ -324,6 +333,13 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		unselected_paths_ = true;
 
 		gui().highlight_reach(current_paths_);
+
+		} // !preventing_units_highlight_
+	}
+
+	if(!un && preventing_units_highlight_) {
+		// Cursor on empty hex, turn unit highlighting back on.
+		enable_units_highlight();
 	}
 }
 
@@ -350,6 +366,19 @@ unit_map::iterator mouse_handler::find_unit(const map_location& hex)
 unit_map::const_iterator mouse_handler::find_unit(const map_location& hex) const
 {
 	return pc_.gamestate().board_.find_visible_unit(hex, viewing_team());
+}
+
+const map_location mouse_handler::hovered_hex() const
+{
+	int x = -1;
+	int y = -1;
+	SDL_GetMouseState(&x, &y);
+	return gui_->hex_clicked_on(x, y);
+}
+
+bool mouse_handler::hex_hosts_unit(const map_location& hex) const
+{
+	return find_unit(hex).valid();
 }
 
 map_location mouse_handler::current_unit_attacks_from(const map_location& loc) const
@@ -1212,5 +1241,15 @@ team& mouse_handler::current_team()
 }
 
 mouse_handler* mouse_handler::singleton_ = nullptr;
+
+void mouse_handler::disable_units_highlight()
+{
+	preventing_units_highlight_ = true;
+}
+
+void mouse_handler::enable_units_highlight()
+{
+	preventing_units_highlight_ = false;
+}
 
 } // end namespace events

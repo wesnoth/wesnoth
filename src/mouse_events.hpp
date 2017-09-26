@@ -87,6 +87,31 @@ public:
 
 	void select_or_action(bool browse);
 
+	/**
+	 * Uses SDL and @ref game_display::hex_clicked_on
+	 * to fetch the hex the mouse is hovering, if applicable.
+	 */
+	const map_location hovered_hex() const;
+
+	/** Unit exists on the hex, no matter if friend or foe. */
+	bool hex_hosts_unit(const map_location& hex) const;
+
+	/**
+	 * Use this to disable hovering an unit from highlighting its movement
+	 * range.
+	 *
+	 * @see enable_units_highlight()
+	 */
+	void disable_units_highlight();
+
+	/**
+	 * When unit highlighting is disabled, call this when the mouse no
+	 * longer hovers any unit to enable highlighting again.
+	 *
+	 * @see disable_units_highlight()
+	 */
+	void enable_units_highlight();
+
 protected:
 	/**
 	 * Due to the way this class is constructed we can assume that the
@@ -146,6 +171,8 @@ private:
 	bool show_partial_move_;
 
 	static mouse_handler * singleton_;
+
+	bool preventing_units_highlight_;
 };
 
 }
