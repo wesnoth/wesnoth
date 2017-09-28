@@ -685,7 +685,7 @@ class CrossRef:
             print("*** Beginning reference-gathering pass...")
         for (ns, fn) in all_in:
             if progress:
-                print(filename)
+                print(fn)
             if iswml(fn):
                 with codecs.open(fn, "r", "utf8") as rfp:
                     attack_name = None
