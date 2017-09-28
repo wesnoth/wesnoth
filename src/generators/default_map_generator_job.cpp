@@ -702,9 +702,10 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	data.width  *= 3;
 	data.height *= 3;
 
-	config naming = game_config_.child("naming");
+	config naming;
 
 	if(cfg.has_child("naming")) {
+		naming = game_config_.child("naming");
 		naming.append_attributes(cfg.child("naming"));
 	}
 
