@@ -785,6 +785,7 @@ class CrossRef:
                                     self.missing.append((name, Reference(ns,fn,n+1)))
                         # Notice implicit references through attacks
                         if state == "outside":
+                            have_icon = False
                             if "[attack]" in line:
                                 beneath = 0
                                 attack_name = default_icon = None
