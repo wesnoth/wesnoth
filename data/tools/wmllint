@@ -2405,7 +2405,12 @@ def translator(filename, mapxforms, textxform):
     mfile = []
     map_only = filename.endswith(".map")
     terminator = "\n"
-    for line in unmodified:
+    UTF8_BOM = "\ufeff"
+    for i, line in enumerate(unmodified):
+        # get rid of BOM characters
+        if i == 0 and line.startswith(UTF8_BOM):
+            line = line[1:]
+            print("%s: removed UTF-8 BOM character at the start of the file" % (filename))
         if line.endswith("\n"):
             line = line[:-1]
         if line.endswith("\r"):
