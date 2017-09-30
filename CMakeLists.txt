@@ -110,40 +110,6 @@ if(NOT CMAKE_BUILD_TYPE)
 	set( CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
 endif(NOT CMAKE_BUILD_TYPE)
 
-# Add additional build with optional LTO flags
-MESSAGE("Adding Optimized build")
-if("${ENABLE_LTO}" STREQUAL "yes")
-  MESSAGE("LTO is enabled for Optimized build")
-  set(CMAKE_CXX_FLAGS_OPTIMIZED "-O3 -march=native -flto -s" CACHE STRING "Flags for a more highly optimized build" FORCE)
-  set(CMAKE_C_FLAGS_OPTIMIZED "-O3 -march=native -flto -s" CACHE STRING "Flags for a more highly optimized build with LTO" FORCE)
-  set(CMAKE_EXE_LINKER_FLAGS_OPTIMIZED "-fuse-ld=gold" CACHE STRING "Flags for a more highly optimized build with LTO" FORCE)
-else()
-  MESSAGE("LTO is not enabled for Optimized build")
-  set(CMAKE_CXX_FLAGS_OPTIMIZED "-O3 -march=native -s" CACHE STRING "Flags for a more highly optimized build without LTO" FORCE)
-  set(CMAKE_C_FLAGS_OPTIMIZED "-O3 -march=native -s" CACHE STRING "Flags for a more highly optimized build without LTO" FORCE)
-  set(CMAKE_EXE_LINKER_FLAGS_OPTIMIZED "" CACHE STRING "" FORCE)
-endif()
-set(CMAKE_SHARED_LINKER_FLAGS_OPTIMIZED "" CACHE STRING "Not used" FORCE)
-MARK_AS_ADVANCED(CMAKE_CXX_FLAGS_OPTIMIZED CMAKE_C_FLAGS_OPTIMIZED
-	CMAKE_EXE_LINKER_FLAGS_OPTIMIZED CMAKE_SHARED_LINKER_FLAGS_OPTIMIZED)
-
-# set CMAKE_AR and CMAKE_RANLIB to use LTO-enabled variants if the build is
-# Optimized and LTO is enabled
-if("${CMAKE_BUILD_TYPE}" STREQUAL "Optimized" AND "${ENABLE_LTO}" STREQUAL "yes")
-  MESSAGE("Using gcc-ar and gcc-ranlib")
-  find_program(LTO_AR NAMES gcc-ar)
-  find_program(LTO_RANLIB NAMES gcc-ranlib)
-  set(CMAKE_AR "${LTO_AR}" CACHE STRING "Supports LTO" FORCE)
-  set(CMAKE_RANLIB "${LTO_RANLIB}" CACHE STRING "Supports LTO" FORCE)
-else()
-  MESSAGE("Using ar and ranlib")
-  find_program(NON_LTO_AR NAMES ar)
-  find_program(NON_LTO_RANLIB NAMES ranlib)
-  set(CMAKE_AR "${NON_LTO_AR}" CACHE STRING "Does not support LTO" FORCE)
-  set(CMAKE_RANLIB "${NON_LTO_RANLIB}" CACHE STRING "Does not support LTO" FORCE)
-endif()
-MARK_AS_ADVANCED(LTO_AR LTO_RANLIB NON_LTO_AR NON_LTO_RANLIB)
-
 if(NOT DEFINED ENABLE_DISPLAY_REVISION)
 	# Test whether the code is used in a repository if not autorevision will
 	# fail and should be disabled by default. If inside a repository enable
@@ -520,16 +486,6 @@ add_definitions(-DLOCALEDIR=\\\"${LOCALEDIR}\\\")
 
 # -NDEBUG is automatically added to all release build types, so manually remove
 # this define from the related variables
-MESSAGE ("removing NDEBUG flag from CMAKE_CXX_FLAGS_RELEASE")
-separate_arguments(CMAKE_CXX_FLAGS_RELEASE)
-list(REMOVE_ITEM CMAKE_CXX_FLAGS_RELEASE "-DNDEBUG")
-string(REPLACE ";" " " CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}" CACHE STRING "removed NDEBUG flag" FORCE)
-MESSAGE ("removing NDEBUG flag from CMAKE_C_FLAGS_RELEASE")
-separate_arguments(CMAKE_C_FLAGS_RELEASE)
-list(REMOVE_ITEM CMAKE_C_FLAGS_RELEASE "-DNDEBUG")
-string(REPLACE ";" " " CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
-set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}" CACHE STRING "removed NDEBUG flag" FORCE)
 MESSAGE ("removing NDEBUG flag from CMAKE_CXX_FLAGS_RELWITHDEBINFO")
 separate_arguments(CMAKE_CXX_FLAGS_RELWITHDEBINFO)
 list(REMOVE_ITEM CMAKE_CXX_FLAGS_RELWITHDEBINFO "-DNDEBUG")
@@ -551,46 +507,81 @@ list(REMOVE_ITEM CMAKE_C_FLAGS_MINSIZEREL "-DNDEBUG")
 string(REPLACE ";" " " CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}")
 set(CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}" CACHE STRING "removed NDEBUG flag" FORCE)
 
-# add pentiumpro arch for windows builds with -O3, otherwise resulting executable may not work
-if(WIN32)
-	separate_arguments(CMAKE_CXX_FLAGS_RELEASE)
-	list(APPEND CMAKE_CXX_FLAGS_RELEASE "-march=pentiumpro")
-	list(REMOVE_DUPLICATES CMAKE_CXX_FLAGS_RELEASE)
-	string(REPLACE ";" " " CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
-	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}" CACHE STRING "added -march=pentiumpro" FORCE)
-	MESSAGE("added -march=pentiumpro to Release build")
+# #
+# Start determining options for Release build
+# #
+
+# reset the base Release build option
+MESSAGE("Replacing default flags used for Release build with -O3")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3" CACHE STRING "Release build flags" FORCE)
+set(CMAKE_C_FLAGS_RELEASE "-O3" CACHE STRING "Release build flags" FORCE)
+# set the arch to use for Release build if provided
+if(ARCH)
+	MESSAGE("adding -march=${ARCH} to Release build")
+	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -march=${ARCH}" CACHE STRING "Release build flags" FORCE)
+	set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -march=${ARCH}" CACHE STRING "Release build flags" FORCE)
+endif(ARCH)
+# add pentiumpro arch for windows builds with -O3 if no other arch provided, otherwise resulting executable may not work
+if(WIN32 AND NOT ARCH)
+	MESSAGE("WIN32 and no arch provided, defaulting to pentiumpro")
+	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -march=pentiumpro" CACHE STRING "Release build flags" FORCE)
+	set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -march=pentiumpro" CACHE STRING "Release build flags" FORCE)
+endif(WIN32 AND NOT ARCH)
+
+# if compiling with LTO
+if("${ENABLE_LTO}" STREQUAL "yes")
+# clang and gcc require different parallelization options and linkers
+	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+		MESSAGE("added -flto=thin to Release build")
+		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto=thin" CACHE STRING "Release build flags with LTO" FORCE)
+		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto=thin" CACHE STRING "Release build flags with LTO" FORCE)
+		
+		MESSAGE("Using Clang LLD linker")
+		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "-s -fuse-ld=lld" CACHE STRING "Linker flag for building with LTO and clang" FORCE)
+	elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+		if(NOT LTO_JOBS)
+			MESSAGE("LTO_JOBS not set, defaulting to 1")
+			set(LTO_JOBS "1" CACHE STRING "Number of threads to use for LTO with gcc" FORCE)
+		endif(NOT LTO_JOBS)
+		
+		MESSAGE("added -flto=${LTO_JOBS} to Release build")
+		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto=${LTO_JOBS}" CACHE STRING "Release build flags with LTO" FORCE)
+		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto=${LTO_JOBS}" CACHE STRING "Release build flags with LTO" FORCE)
+		
+		MESSAGE("Using GCC gold linker")
+		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "-s -fuse-ld=gold" CACHE STRING "Linker flag for building with LTO and gcc" FORCE)
+	endif()
 	
-	separate_arguments(CMAKE_C_FLAGS_RELEASE)
-	list(APPEND CMAKE_C_FLAGS_RELEASE "-march=pentiumpro")
-	list(REMOVE_DUPLICATES CMAKE_C_FLAGS_RELEASE)
-	string(REPLACE ";" " " CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
-	set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}" CACHE STRING "added -march=pentiumpro" FORCE)
-	MESSAGE("added -march=pentiumpro to Release build")
-	
-	separate_arguments(CMAKE_CXX_FLAGS_OPTIMIZED)
-	list(REMOVE_ITEM CMAKE_CXX_FLAGS_OPTIMIZED "-march=native")
-	list(APPEND CMAKE_CXX_FLAGS_OPTIMIZED "-march=pentiumpro")
-	list(REMOVE_DUPLICATES CMAKE_CXX_FLAGS_OPTIMIZED)
-	string(REPLACE ";" " " CMAKE_CXX_FLAGS_OPTIMIZED
-		"${CMAKE_CXX_FLAGS_OPTIMIZED}")
-	set(CMAKE_CXX_FLAGS_OPTIMIZED "${CMAKE_CXX_FLAGS_OPTIMIZED}" CACHE STRING "added -march=pentiumpro" FORCE)
-	MESSAGE("added -march=pentiumpro to Optimized build")
-	
-	separate_arguments(CMAKE_C_FLAGS_OPTIMIZED)
-	list(REMOVE_ITEM CMAKE_C_FLAGS_OPTIMIZED "-march=native")
-	list(APPEND CMAKE_C_FLAGS_OPTIMIZED "-march=pentiumpro")
-	list(REMOVE_DUPLICATES CMAKE_C_FLAGS_OPTIMIZED)
-	string(REPLACE ";" " " CMAKE_C_FLAGS_OPTIMIZED
-		"${CMAKE_C_FLAGS_OPTIMIZED}")
-	set(CMAKE_C_FLAGS_OPTIMIZED "${CMAKE_C_FLAGS_OPTIMIZED}" CACHE STRING "added -march=pentiumpro" FORCE)
-	MESSAGE("added -march=pentiumpro to Optimized build")
-endif(WIN32)
+# set CMAKE_AR and CMAKE_RANLIB to use LTO-enabled variants if LTO is enabled
+	MESSAGE("Using gcc-ar and gcc-ranlib")
+	find_program(LTO_AR NAMES gcc-ar)
+	find_program(LTO_RANLIB NAMES gcc-ranlib)
+	set(CMAKE_AR "${LTO_AR}" CACHE STRING "Supports LTO" FORCE)
+	set(CMAKE_RANLIB "${LTO_RANLIB}" CACHE STRING "Supports LTO" FORCE)
+else()
+	MESSAGE("Using ar, ranlib, and default linker")
+	find_program(NON_LTO_AR NAMES ar)
+	find_program(NON_LTO_RANLIB NAMES ranlib)
+	set(CMAKE_AR "${NON_LTO_AR}" CACHE STRING "Does not support LTO" FORCE)
+	set(CMAKE_RANLIB "${NON_LTO_RANLIB}" CACHE STRING "Does not support LTO" FORCE)
+	set(CMAKE_EXE_LINKER_FLAGS_RELEASE "" CACHE STRING "Default linker" FORCE)
+endif()
+MARK_AS_ADVANCED(LTO_AR LTO_RANLIB NON_LTO_AR NON_LTO_RANLIB)
+
+# #
+# End determining options for Release build
+# Start setting options for Debug build
+# #
 
 # replace the default Debug flag of -g with -O0 -DDEBUG -ggdb3
 # this matches the flags of scons' debug build
 MESSAGE("Replacing flags used for Debug build")
 set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3" CACHE STRING "change cmake's Debug flags to match scons' flags" FORCE)
 set(CMAKE_C_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3" CACHE STRING "change cmake's Debug flags to match scons' flags" FORCE)
+
+# #
+# End setting options for Debug build
+# #
 
 # When the path starts with a / on a Unix system it's an absolute path.
 # This means that on Windows the path used is always relative.

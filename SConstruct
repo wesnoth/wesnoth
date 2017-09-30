@@ -47,15 +47,15 @@ def OptionalPath(key, val, env):
 opts.AddVariables(
     ListVariable('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd test")),
-    EnumVariable('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["optimized", "release", "debug", "glibcxx_debug", "profile", "base"]),
+    EnumVariable('build', 'Build variant: debug, release profile or base (no subdirectory)', "release", ["release", "debug", "glibcxx_debug", "profile", "base"]),
     PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
     ('extra_flags_config', "Extra compiler and linker flags to use for configuration and all builds. Whether they're compiler or linker is determined by env.ParseFlags. Unknown flags are compile flags by default. This applies to all extra_flags_* variables", ""),
     ('extra_flags_base', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
     ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
-    ('extra_flags_optimized', 'Extra compiler and linker flags to use for optimized builds', ""),
-    BoolVariable('enable_lto', 'Whether to enable Link Time Optimization', False),
+    BoolVariable('enable_lto', 'Whether to enable Link Time Optimization for build=release', False),
+    ('arch', 'What -march option to use for build=release, will default to pentiumpro on Windows', ""),
     PathVariable('bindir', 'Where to install binaries', "bin", PathVariable.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathVariable('datadir', 'read-only architecture-independent game data', "$datarootdir/$datadirname", PathVariable.PathAccept),
@@ -172,6 +172,8 @@ if env.get('cxxtool',""):
 
 if env['jobs'] > 1:
     SetOption("num_jobs", env['jobs'])
+else:
+    env['jobs'] = 1
 
 if env['distcc']: 
     env.Tool('distcc')
@@ -479,22 +481,29 @@ for env in [test_env, client_env, env]:
         if env['sanitize']:
             env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
         
-        env["OPT_FLAGS"] = "-O3"
         env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
         
-# because apparently telling the compiler, linker, AND windres to be 32-bit just isn't enough
-        if env["PLATFORM"] == 'win32':
-            env["ARCH"] = "-march=pentiumpro"
-            env["OPT_FLAGS"] =  env["OPT_FLAGS"] + " " + env["ARCH"]
-        else:
-            env["ARCH"] = "-march=native"
+        env["OPT_COMP_FLAGS"] = "-O3"
         
+        if env["arch"]:
+            env["arch"] = " -march=" + env["arch"]
+# without setting to pentiumpro, compiling on Windows with 64-bit tdm-gcc and -O3 currently fails
+# therefore, set to pentiumpro if nothing else has been specified
+        if env["PLATFORM"] == "win32" and not env["arch"]:
+            env["arch"] = " -march=pentiumpro"
+        
+# set the -march option if windows or something was passed in
+        env["OPT_COMP_FLAGS"] = env["OPT_COMP_FLAGS"] + env["arch"]
+        
+# if building with LTO enabled
         if env["enable_lto"] == True:
-            env["HIGH_OPT_COMP_FLAGS"] = "-O3 " + env["ARCH"] + " -flto -s"
-            env["HIGH_OPT_LINK_FLAGS"] = env["HIGH_OPT_COMP_FLAGS"] + " -fuse-ld=gold"
-        else:
-            env["HIGH_OPT_COMP_FLAGS"] = "-O3 " + env["ARCH"] + " -s"
-            env["HIGH_OPT_LINK_FLAGS"] = ""
+# gcc and clang need different LTO options and linkers
+            if env["CC"] == "gcc":
+                env["OPT_COMP_FLAGS"] = env["OPT_COMP_FLAGS"] + " -flto=" + str(env["jobs"])
+                env["OPT_LINK_FLAGS"] = env["OPT_COMP_FLAGS"] + " -s -fuse-ld=gold"
+            elif "clang" in env["CXX"]:
+                env["OPT_COMP_FLAGS"] = env["OPT_COMP_FLAGS"] + " -flto=thin"
+                env["OPT_LINK_FLAGS"] = env["OPT_COMP_FLAGS"] + " -s -fuse-ld=lld"
 
     if "clang" in env["CXX"]:
         # Silence warnings about unused -I options and unknown warning switches.
@@ -540,9 +549,8 @@ builds = {
     "base"          : dict(CCFLAGS    = Split("$OPT_FLAGS")),    # Don't build in subdirectory
     "debug"         : dict(CCFLAGS    = Split("$DEBUG_FLAGS")),
     "glibcxx_debug" : dict(CPPDEFINES = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")),
-    "release"       : dict(CCFLAGS    = Split("$OPT_FLAGS")),
-    "profile"       : dict(CCFLAGS    = "-pg", LINKFLAGS = "-pg"),
-    "optimized"     : dict(CCFLAGS    = Split("$HIGH_OPT_COMP_FLAGS"), LINKFLAGS=Split("$HIGH_OPT_LINK_FLAGS"))
+    "release"       : dict(CCFLAGS    = Split("$OPT_COMP_FLAGS"), LINKFLAGS=Split("$OPT_LINK_FLAGS")),
+    "profile"       : dict(CCFLAGS    = "-pg", LINKFLAGS = "-pg")
     }
 builds["glibcxx_debug"].update(builds["debug"])
 build = env["build"]
