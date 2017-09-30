@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import gzip, zlib, io
 import socket, struct, glob, sys, shutil, threading, os, fnmatch
 import wesnoth.wmlparser3 as wmlparser

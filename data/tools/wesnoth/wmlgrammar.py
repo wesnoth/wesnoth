@@ -1,3 +1,5 @@
+#!/usr/bin/env python2
+
 """
 wmlgrammar -- parses a given schema into a more usable form
 """

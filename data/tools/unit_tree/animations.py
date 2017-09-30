@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 def write_animation(out, aa, name):
     c = [0, 0]
     for a in aa:

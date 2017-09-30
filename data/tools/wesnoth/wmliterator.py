@@ -1,3 +1,5 @@
+#!/usr/bin/env python2
+
 """
 wmliterator.py -- Python routines for navigating a Battle For Wesnoth WML tree
 Author: Sapient (Patrick Parker), 2007

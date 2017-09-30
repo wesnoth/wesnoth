@@ -1,1 +1,2 @@
-# This let's python know about the addon_manager module.
+#!/usr/bin/env python3
+# This lets Python know about the addon_manager module.

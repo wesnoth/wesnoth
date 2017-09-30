@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 

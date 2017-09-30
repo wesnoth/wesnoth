@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys
 from . import helpers
 from .html_output import Translation

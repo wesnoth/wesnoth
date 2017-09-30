@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 Various helpers for use by the wmlunits tool.
 """
