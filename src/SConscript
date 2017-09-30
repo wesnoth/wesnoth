@@ -105,7 +105,7 @@ env_lua = env.Clone(
     CPPPATH = ["$CPPPATH", Dir(".").srcnode()],
     CPPDEFINES = ["$CPPDEFINES", env["PLATFORM"] != "win32" and "LUA_USE_POSIX" or []])
 
-if env_lua["build"] == "optimized" and env_lua["enable_lto"] == True:
+if env_lua["enable_lto"] == True:
     env_lua["AR"] = 'gcc-ar'
     env_lua["RANLIB"] = 'gcc-ranlib'
 
@@ -127,7 +127,7 @@ def error_action(target, source, env):
     raise UserError("Target disabled because its prerequisites are not met")
 
 def WesnothProgram(env, target, source, can_build, **kw):
-    if env["build"] == "optimized" and env["enable_lto"] == True:
+    if env["enable_lto"] == True:
         env["AR"] = 'gcc-ar'
         env["RANLIB"] = 'gcc-ranlib'
     
