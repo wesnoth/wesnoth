@@ -13,8 +13,8 @@ def id_to_location_map(ai*)
 #this function returns all input hexes and hexes within some radius of them#
 def get_locations_surroundings(ai*, input_locs, range)
 	sum(
-		map(input_locs, 
-			locations_in_radius( self, range) 
+		map(input_locs,
+			locations_in_radius( self, range)
 		)
 	);
 
@@ -28,40 +28,40 @@ def get_keeps_with_surroundings(ai*, range)
 #  evaluate average defense #
 
 #gives map where key is id of terrain, and value is number of hexes of that terrain on a gamemap#
-def locations_map(ai*) 
-	tomap( 
-		map( 
-			map.terrain, 
-			id 
-		) 
+def locations_map(ai*)
+	tomap(
+		map(
+			map.terrain,
+			id
+		)
 	);
 
 
 #
-filters terrain map, 
+filters terrain map,
 min_percent it minimal % of map that terrain has to occupy to be considered in later evaluations
 #
 def filtered_locations_map(ai*, min_percent)
-	filter( 
-		locations_map(ai) , 
-		value >  (map.w * map.h) / ( 100 / min_percent ) 
+	filter(
+		locations_map(ai) ,
+		value >  (map.w * map.h) / ( 100 / min_percent )
 	);
 
 
 #returns average defense of the unit #
 def unit_average_defense(ai*, unit, terrain_min_percent )
-	sum( 
-		values( 
+	sum(
+		values(
 			map(
-				filtered_locations_map(ai,terrain_min_percent), 
-				defense_on( 
-					unit, 
+				filtered_locations_map(ai,terrain_min_percent),
+				defense_on(
+					unit,
 					find(map.terrain,id=key).loc
 				) *
 				value
-			) 
-		) 
-	) / 
+			)
+		)
+	) /
 	sum(
 		values(
 			filtered_locations_map(
@@ -73,32 +73,32 @@ def unit_average_defense(ai*, unit, terrain_min_percent )
 
 #returns map of units from units_list and their average defense (more -> better) #
 
-def map_units_average_defense(ai*, units_list, terrain_min_percent) 
+def map_units_average_defense(ai*, units_list, terrain_min_percent)
 	tomap(
-		map( 
-			units_list, 
-			id 
-		), 
-		map( 
-			units_list, 'unit', 
+		map(
+			units_list,
+			id
+		),
+		map(
+			units_list, 'unit',
 			unit_average_defense(
-				ai, 
-				unit, 
-				terrain_min_percent 
-			) 
-		) 
+				ai,
+				unit,
+				terrain_min_percent
+			)
+		)
 	);
 
 def units_average_defense(ai*, units_list, terrain_min_percent)
 	sum(
-		map( 
-			units_list, 'unit', 
+		map(
+			units_list, 'unit',
 			unit_average_defense(
-				ai, 
-				unit, 
-				terrain_min_percent 
-			) 
-		) 
+				ai,
+				unit,
+				terrain_min_percent
+			)
+		)
 	) /
 	size(
 		units_list

@@ -4,11 +4,11 @@ wfl 'poisoner_eval.fai'
 #rate units with regeneration as worse targets #
 if( find( villages, self = target.loc ), -10, 0 ) +
 # units next to healers/curers are also bad targets #
-min(	map(	
-		filter( 
-			map( adjacent_locs(target.loc), 
-				unit_at(self) 
-			), 
+min(	map(
+		filter(
+			map( adjacent_locs(target.loc),
+				unit_at(self)
+			),
 			'unit', index_of(unit.side, enemies) != -1 and unit.abilities
 		), 'unit_with_sp',
 		if( index_of('healing',unit_with_sp.abilities) != -1, -5, 0 ) +

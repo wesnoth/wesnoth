@@ -14,9 +14,9 @@ def get_villages_on_terrain_map( ai*, locations_map )
 
 # Returns location_map with the area around important villages set to 1000 (radius 1) #
 def mark_important_locations(ai*, location_map )
-	map( location_map, 
-		if( tmp_villages[key], 
-			1000, 
+	map( location_map,
+		if( tmp_villages[key],
+			1000,
 			value
 		)
 	)
@@ -26,8 +26,8 @@ def mark_important_locations(ai*, location_map )
 # Returns a list of ALL keys(locs) of side_terrain #
 def get_important_locations(ai* )
 	keys(
-		map( ai.vars.side_terrain, 
-			value >= 1000 
+		map( ai.vars.side_terrain,
+			value >= 1000
 		)
 	);
 
@@ -144,9 +144,9 @@ def current_enemies(ai*)
 # Returns a integer. #
 # Returns the sum of 12 times the maximum attack damage for all enemy_units #
 def evaluate_attacker_against_opponents(ai*, unit, enemy_units)
-	sum( 
-		map( 
-			enemy_units, 'enemy_unit', 
+	sum(
+		map(
+			enemy_units, 'enemy_unit',
 			sum( # sum over all 4 elements (which are the same). 3 * 4 = 12. #
 				map(
 					[
@@ -159,7 +159,7 @@ def evaluate_attacker_against_opponents(ai*, unit, enemy_units)
 							self[1]
 						]
 					)*3 # Replaces all 4 elements in the list with 3 times the maximum of self[0] and self[1]. #
-				) 
+				)
 			)
 		)
 	);
@@ -169,9 +169,9 @@ def evaluate_attacker_against_opponents(ai*, unit, enemy_units)
 # This time the atacker can defend himself. The defender will chose the attack with the best #
 # damage difference #
 def evaluate_defender_against_opponents(ai*, unit, enemy_units)
-	sum( 
-		map( 
-			enemy_units, 'enemy_unit', 
+	sum(
+		map(
+			enemy_units, 'enemy_unit',
 			sum(
 				map(
 					[
@@ -183,7 +183,7 @@ def evaluate_defender_against_opponents(ai*, unit, enemy_units)
 							self[1] - self[3]
 						]
 					)*5
-				) 
+				)
 			)
 		)
 	);
@@ -297,13 +297,13 @@ def calculate_recruits(ai*)
 	change_numbers_to_percents(
 		combine_maps_sub(
 			combine_maps_add(
-				combine_maps_add( 
+				combine_maps_add(
 					debug_print('defense_hp_eval ', defense_hp_eval(ai, recruits_id_map ) ),
 					debug_print('movement_eval ', movement_eval(ai, recruits_id_map) )
 				),
 				debug_print('fighting_eval ', multiply_values(
 									fighting_eval(ai,recruits_id_map), 5
-								) 
+								)
 					)
 			),
 			combine_maps_add(
@@ -315,7 +315,7 @@ def calculate_recruits(ai*)
 
 def do_recruitment( ai* )
 	if( unit_to_recruit,
-		safe_call( 
+		safe_call(
 			recruit( unit_to_recruit ),
 			end
 		),

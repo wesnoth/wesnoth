@@ -5,13 +5,13 @@ wfl 'level_up_attack_move.fai'
 # is attacker killing target.                                                   #
 
 # function calc_exp returns exp gain for a kill of unit with level#
-def calc_exp(level) 
+def calc_exp(level)
 	if(level = 0, 4, level * 8);
 
 # function returns best defensive loc reachable by attacker to attack enemy     #
 def get_best_defense_loc(moves, attacker, enemy)
-	choose(filter(map(filter(moves, src=attacker.loc), dst), 
-		distance_between(self, enemy.loc) = 1), 
+	choose(filter(map(filter(moves, src=attacker.loc), dst),
+		distance_between(self, enemy.loc) = 1),
 		defense_on(attacker, self));
 
 if(calc_exp(target.level) > (me.max_experience - me.experience),

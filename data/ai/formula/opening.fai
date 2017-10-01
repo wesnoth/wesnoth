@@ -1,12 +1,12 @@
-def opening(ai*) 
-	if(turn = 1, [ 
+def opening(ai*)
+	if(turn = 1, [
 		recruit('Skeleton Archer', loc(11,21)),
 		recruit('Dark Adept', loc(11,22)),
 		recruit('Dark Adept', loc(10,22)),
 		recruit('Skeleton Archer', loc(9,22)),
 		recruit('Ghost', loc(11,24)),
 		move(loc(11,23), loc(14,22)) ],
-	if(turn = 2, [ 
+	if(turn = 2, [
 		move(loc(11,21),loc(13,17)),
 		if(unit_at(loc(11,22)).max_moves = 6,
 		move(loc(11,22),loc(13,18)),
@@ -26,89 +26,89 @@ def opening(ai*)
 		recruit('Skeleton Archer', loc(11,21)) ],
         []))));
 
-def rate_position_defensiveness(ai*,src,dst) 
-	units_can_reach(ai.my_moves, dst).size - units_can_reach(ai.enemy_moves, dst).size; 
+def rate_position_defensiveness(ai*,src,dst)
+	units_can_reach(ai.my_moves, dst).size - units_can_reach(ai.enemy_moves, dst).size;
 
-def rate_position_danger(ai*,unit,dst) 
-	(100*sum(map(units_can_reach(ai.enemy_moves, dst), 'enemy', max_possible_damage(enemy, unit)*defense_on(unit, dst)))) / unit.hitpoints; 
+def rate_position_danger(ai*,unit,dst)
+	(100*sum(map(units_can_reach(ai.enemy_moves, dst), 'enemy', max_possible_damage(enemy, unit)*defense_on(unit, dst)))) / unit.hitpoints;
 
-def build_attacks(attack_move) 
-	if(attack_move, 
-		map(attack_move.movements, attack(src, dst, attack_move.target)), 
-	[]); def targets(ai) 
-	ai.enemy_and_unowned_villages; 
+def build_attacks(attack_move)
+	if(attack_move,
+		map(attack_move.movements, attack(src, dst, attack_move.target)),
+	[]); def targets(ai)
+	ai.enemy_and_unowned_villages;
 
-def distance_to_target(ai,dst) 
-	min(map(targets(ai), distance_between(dst, self))); 
+def distance_to_target(ai,dst)
+	min(map(targets(ai), distance_between(dst, self)));
 
-def move_to_targets(ai*) 
+def move_to_targets(ai*)
 	find(moves, src != my_leader.loc and rate_position_defensiveness(ai, src, dst) > 0)
-		where moves = sort(my_moves.moves, distance_to_target(ai, a.dst) < distance_to_target(ai, b.dst)); 
+		where moves = sort(my_moves.moves, distance_to_target(ai, a.dst) < distance_to_target(ai, b.dst));
 
-def get_village_captures(ai) 
-	sum(map(ai.enemy_and_unowned_villages, 'village', map(units_can_reach(ai.my_moves, village), move(loc, village))), []); 
+def get_village_captures(ai)
+	sum(map(ai.enemy_and_unowned_villages, 'village', map(units_can_reach(ai.my_moves, village), move(loc, village))), []);
 
-def get_village_garrisons(ai*) 
-	sum(map(my_villages, 'village', map(units_can_reach(ai.my_moves, village), move(loc, village))), []); 
+def get_village_garrisons(ai*)
+	sum(map(my_villages, 'village', map(units_can_reach(ai.my_moves, village), move(loc, village))), []);
 
-def uncontended_captures(ai) 
-	filter(get_village_captures(ai), (src != ai.my_leader.loc) and (units_can_reach(ai.enemy_moves, dst).empty)); 
+def uncontended_captures(ai)
+	filter(get_village_captures(ai), (src != ai.my_leader.loc) and (units_can_reach(ai.enemy_moves, dst).empty));
 
-def move_to_keep(ai*) 
-	if(keep_in_range, 
-		move(my_leader.loc, keep_in_range), 
+def move_to_keep(ai*)
+	if(keep_in_range,
+		move(my_leader.loc, keep_in_range),
 	null())
-		where keep_in_range = find(unit_moves(my_leader.loc), 'moveto', find(keeps, moveto = self)); 
+		where keep_in_range = find(unit_moves(my_leader.loc), 'moveto', find(keeps, moveto = self));
 
-def village_value(ai*) 400; 
+def village_value(ai*) 400;
 
-def rate_healing(unit*) 
-	value * ((min(max_hitpoints - hitpoints, 8)*100)/max_hitpoints); 
+def rate_healing(unit*)
+	value * ((min(max_hitpoints - hitpoints, 8)*100)/max_hitpoints);
 
-def rate_village_garrison(ai*, move_from, village) 
-	if(find(enemy_moves, dst = village), 
-		village_value(ai), 
+def rate_village_garrison(ai*, move_from, village)
+	if(find(enemy_moves, dst = village),
+		village_value(ai),
 	0);
 
-def rate_village_capture(ai*,src,dst) village_value(ai); 
+def rate_village_capture(ai*,src,dst) village_value(ai);
 
-def rate_village_proximity(ai*, unit, dst) 
-	if(distance = 1, 
-		0, 
+def rate_village_proximity(ai*, unit, dst)
+	if(distance = 1,
+		0,
 	village_value(ai)/(distance/unit.max_moves + 1))
-		where distance = distance_to_nearest_unowned_village(dst); 
+		where distance = distance_to_nearest_unowned_village(dst);
 
-def rate_move(ai*,src,dst) 
-	if(is_village(map, dst), 
-		rate_healing(u) + if(find(my_villages, self = dst), 
-			rate_village_garrison(ai, src, dst), 
-		rate_village_capture(ai, src, dst)), 
+def rate_move(ai*,src,dst)
+	if(is_village(map, dst),
+		rate_healing(u) + if(find(my_villages, self = dst),
+			rate_village_garrison(ai, src, dst),
+		rate_village_capture(ai, src, dst)),
 	rate_village_proximity(ai, u, dst)) - (danger*u.value)/2
-		where u = unit_at(src), danger = rate_position_danger(ai, unit_at(src), dst); 
+		where u = unit_at(src), danger = rate_position_danger(ai, unit_at(src), dst);
 
-def rate_attack(ai*,attack) 
-	if(attack, 
-		(attack.chance_to_kill*attack.target_value + (((attack.avg_damage_inflicted*100)/unit_at(attack.target).max_hitpoints)*attack.target_value) + sum(map(attack.movements, rate_move(ai, src, dst))))/attack.movements.size, 
-	null()); 
+def rate_attack(ai*,attack)
+	if(attack,
+		(attack.chance_to_kill*attack.target_value + (((attack.avg_damage_inflicted*100)/unit_at(attack.target).max_hitpoints)*attack.target_value) + sum(map(attack.movements, rate_move(ai, src, dst))))/attack.movements.size,
+	null());
 
-def get_best_move(ai*, candidate_moves) 
-	if(rate_attack(ai, best_attack) > 
-		if(best_move, rate_move(ai, best_move.src, 
-			best_move.dst), 
+def get_best_move(ai*, candidate_moves)
+	if(rate_attack(ai, best_attack) >
+		if(best_move, rate_move(ai, best_move.src,
+			best_move.dst),
 		0),
-        build_attacks(best_attack), 
+        build_attacks(best_attack),
 	[best_move])
     	where best_attack = choose(attacks, rate_attack(ai, self)),
-	best_move = choose(candidate_moves, rate_move(ai, src, dst)); 
+	best_move = choose(candidate_moves, rate_move(ai, src, dst));
 
-def move_leader_to_keep(ai*) 
-	if(dest, 
-		[move(my_leader.loc, dest)], 
+def move_leader_to_keep(ai*)
+	if(dest,
+		[move(my_leader.loc, dest)],
 	[])
-		where dest = find(unit_moves(my_leader.loc), 'dst', find(keeps, 'keep', keep = dst)); 
+		where dest = find(unit_moves(my_leader.loc), 'dst', find(keeps, 'keep', keep = dst));
 
-if(vars.turn_opening != turn, 
+if(vars.turn_opening != turn,
 	[set_var('turn_opening', turn)] + opening(self),
-if(my_leader.loc and find(keeps, self = my_leader.loc) = null(), 
-	move_leader_to_keep(self), 
+if(my_leader.loc and find(keeps, self = my_leader.loc) = null(),
+	move_leader_to_keep(self),
 []) + get_best_move(self, filter(my_moves.moves, src != my_leader.loc)) + [ recruit('Skeleton Archer', loc(11,21)), recruit('Dark Adept', loc(11,22)) ])

@@ -21,7 +21,7 @@ def step_move(me)
         	)
 	)
 
-where desired_path = shortest_path( me.loc, me.vars.next_step );	
+where desired_path = shortest_path( me.loc, me.vars.next_step );
 
 def move_ahead(ai*, me)
 	if( enemy_units,
@@ -46,7 +46,7 @@ def patrol_move(ai*, me)
             me.vars.waypoints[ me.vars.next_step ],
             me.loc
         ),
-	
+
 	move_ahead(ai,me)
     );
 
@@ -58,15 +58,15 @@ if( me.moves = 0,
     )
 )
 
-where attack = if( path_to, 
-			if(path_to.size <= me.vars.guard_radius, 
-				attack( me.loc, path_to.last, closest_unit(self, me).loc ), 
-				0 
+where attack = if( path_to,
+			if(path_to.size <= me.vars.guard_radius,
+				attack( me.loc, path_to.last, closest_unit(self, me).loc ),
+				0
 			),
 			0
 		)
-		
-where path_to = if( enemy_units, 
+
+where path_to = if( enemy_units,
 			shortest_path( me.loc, closest_unit(self, me).loc ),
 			[]
 		)

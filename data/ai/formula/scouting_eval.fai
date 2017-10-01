@@ -2,12 +2,12 @@ wfl 'scouting_eval.fai'
 
 if(me.loc = my_leader.loc,
 	-5,
-if( size(shroud) = 0, 
+if( size(shroud) = 0,
 	-5,
 if( size(enemies_in_range) != 0,
 	-5,
-if( me.max_moves > 5, 
-	50, 
+if( me.max_moves > 5,
+	50,
 	-5))))
 where enemies_in_range = filter( enemy_units, 'enemy', distance_between( me.loc, enemy.loc ) < me.max_moves),
       shroud   = find_shroud()

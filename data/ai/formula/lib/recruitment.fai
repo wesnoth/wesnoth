@@ -11,21 +11,21 @@ def recruit_army(ai*,unit_map)
 				unit_map[unit_type] -
 				(
 					(
-						100 * 
+						100 *
 						size(
 							filter(
-								my_units, 
+								my_units,
 								type = unit_type
 							)
 						)
-					) / 
+					) /
 					size(my_units)
 				)
 			) >= 0
 		),
 		value
 	);
-	
+
 
 
 

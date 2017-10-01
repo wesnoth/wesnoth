@@ -1,6 +1,6 @@
 wfl 'scouting_move.fai'
 
-if(size(villages) != 0, 
+if(size(villages) != 0,
 	move(me.loc, nearest_loc(nearest_loc(me.loc,villages),unit_moves(me.loc))),
 	move(me.loc, nearest_loc(nearest_loc(me.loc,shroud),unit_moves(me.loc))))
 where villages = filter(unit_moves(me.loc),is_unowned_village(map,x,y)),

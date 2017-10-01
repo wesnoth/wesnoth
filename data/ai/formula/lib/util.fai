@@ -24,23 +24,23 @@ def change_numbers_to_percents( input_map )
 	) where sum = sumarize_values(input_map);
 
 def add_number_to_values( input_map, number )
-	map( input_map, 
-		value + number 
+	map( input_map,
+		value + number
 	);
 
 def multiply_values( input_map, number )
-	map( input_map, 
-		value * number 
+	map( input_map,
+		value * number
 	);
 
 #make sure we have only positive values in a map #
 def make_positive_only( input_map )
-	if( lowest < 0, 
-		add_number_to_values( 
-			input_map, 
+	if( lowest < 0,
+		add_number_to_values(
+			input_map,
 			-lowest
-		), 
-		input_map 
+		),
+		input_map
 	)
 	where lowest = lowest_value( input_map );
 
