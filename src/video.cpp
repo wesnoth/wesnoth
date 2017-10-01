@@ -116,7 +116,7 @@ void CVideo::initSDL()
 CVideo::~CVideo()
 {
 	if(sdl_get_version() >= version_info(2, 0, 6)) {
-		// Because SDL has will free the framebuffer,
+		// Because SDL will free the framebuffer,
 		// ensure that we won't attempt to free it.
 		frameBuffer.clear_without_free();
 	}
