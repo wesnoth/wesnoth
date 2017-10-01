@@ -13,7 +13,7 @@ min(	map(
 		), 'unit_with_sp',
 		if( index_of('healing',unit_with_sp.abilities) != -1, -5, 0 ) +
 		if( index_of('curing',unit_with_sp.abilities) != -1, -5, 0 )
-	)
+	) .. [0]
 ) +
 #leader is always a good target! #
 if( target.canrecruit, 50, 0 ) +
