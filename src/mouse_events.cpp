@@ -304,37 +304,35 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		 * mouse cursor lands on a hex with unit in it.
 		 */
 		if(!preventing_units_highlight_) {
+			if(un->side() == side_num_) {
+				// unit is on our team, show path if the unit has one
+				const map_location go_to = un->get_goto();
+				if(board.map().on_board(go_to)) {
+					pathfind::marked_route route;
+					{ // start planned unit map scope
+						wb::future_map_if_active raii;
+						route = get_route(un.get(), go_to, current_team());
+					} // end planned unit map scope
+					gui().set_route(&route);
+				}
+				over_route_ = true;
 
-		if(un->side() == side_num_) {
-			// unit is on our team, show path if the unit has one
-			const map_location go_to = un->get_goto();
-			if(board.map().on_board(go_to)) {
-				pathfind::marked_route route;
-				{ // start planned unit map scope
-					wb::future_map_if_active raii;
-					route = get_route(un.get(), go_to, current_team());
-				} // end planned unit map scope
-				gui().set_route(&route);
+				wb::future_map_if_active raii;
+				current_paths_ = pathfind::paths(*un, false, true, viewing_team(), path_turns_);
+			} else {
+				// unit under cursor is not on our team
+				// Note: planned unit map must be activated after this is done,
+				// since the future state includes changes to units' movement.
+				unit_movement_resetter move_reset(*un);
+
+				wb::future_map_if_active raii;
+				current_paths_ = pathfind::paths(*un, false, true, viewing_team(), path_turns_);
 			}
-			over_route_ = true;
 
-			wb::future_map_if_active raii;
-			current_paths_ = pathfind::paths(*un, false, true, viewing_team(), path_turns_);
-		} else {
-			// unit under cursor is not on our team
-			// Note: planned unit map must be activated after this is done,
-			// since the future state includes changes to units' movement.
-			unit_movement_resetter move_reset(*un);
+			unselected_paths_ = true;
+			gui().highlight_reach(current_paths_);
 
-			wb::future_map_if_active raii;
-			current_paths_ = pathfind::paths(*un, false, true, viewing_team(), path_turns_);
 		}
-
-		unselected_paths_ = true;
-
-		gui().highlight_reach(current_paths_);
-
-		} // !preventing_units_highlight_
 	}
 
 	if(!un && preventing_units_highlight_) {
