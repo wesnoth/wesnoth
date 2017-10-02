@@ -27,11 +27,9 @@ class Substitution(object):
 
 def split_filenames(match):
     filename_group = match.group(1)
-    bracket = filename_group.find('[')
-    comma = filename_group.find(',')
-    if not comma:
+    if ',' not in filename_group:
         yield filename_group
-    elif not bracket:
+    elif '[' not in filename_group:
         yield from filename_group.split(',')
     else:
         bracket_depth = 0
