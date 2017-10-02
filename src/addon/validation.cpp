@@ -62,7 +62,7 @@ bool addon_filename_legal(const std::string& name)
 	// POSIX portable filenames: a-z A-Z 0-9 . - _
 	// Additionally, we use @ for translations and + for gendered sprites
 	static const std::string valid_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_+@";
-	if(name.empty() || name == "." ||
+	if(name.empty() || name.back() == '.' ||
 	   name.find_first_not_of(valid_chars) != std::string::npos ||
 	   name.find("..") != std::string::npos) {
 		return false;
