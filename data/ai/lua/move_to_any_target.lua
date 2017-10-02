@@ -20,7 +20,7 @@ return {
             -- Find a unit that has a path to an space close to an enemy
             for i,u in ipairs(units) do
                 local distance, target = AH.get_closest_enemy({u.x, u.y})
-                if target.x then
+                if target then
                     unit = u
 
                     local x, y = wesnoth.find_vacant_tile(target.x, target.y)
