@@ -48,9 +48,8 @@ namespace {
 
 bool addon_name_legal(const std::string& name)
 {
-	if(name.empty() || name == "." ||
-	   std::find_if(name.begin(), name.end(), addon_name_char_illegal()) != name.end() ||
-	   name.find("..") != std::string::npos) {
+	if(name.empty() ||
+	   std::find_if(name.begin(), name.end(), addon_name_char_illegal()) != name.end()) {
 		return false;
 	} else {
 	   return true;
