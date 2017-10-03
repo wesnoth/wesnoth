@@ -497,7 +497,7 @@ class Reference:
 
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Za-z0-9_:]*)(?!\.)\b")
-    file_reference = re.compile(r"([A-Za-z0-9{}.][A-Za-z0-9_/+{}.@\-\[\],~\*]*(" + "|".join(resource_extensions) + "))((~[A-Z]+\(.*\))*)(:([0-9]+|\[[0-9,*~]*\]))?")
+    file_reference = re.compile(r"([A-Za-z0-9{}.][A-Za-z0-9_/+{}.@\-\[\],~\*]*?\.(" + "|".join(resource_extensions) + "))((~[A-Z]+\(.*\))*)(:([0-9]+|\[[0-9,*~]*\]))?")
     tag_parse = re.compile("\s*([a-z_]+)\s*=(.*)")
     def mark_matching_resources(self, pattern, fn, n):
         "Mark all definitions matching a specified pattern with a reference."
