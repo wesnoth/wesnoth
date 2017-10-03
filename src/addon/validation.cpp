@@ -26,30 +26,15 @@ namespace {
 		"scenario_mp", "map_pack", "era", "faction", "mod_mp", /*"gui", */ "media",
 		"other", ""
 	};
-
-	struct addon_name_char_illegal
-	{
-		/**
-		 * Returns whether the given add-on name char is not whitelisted.
-		 */
-		inline bool operator()(char c) const
-		{
-			switch(c)
-			{
-				case '-':		// hyphen-minus
-				case '_':		// low line
-				return false;
-				default:
-					return !isalnum(c);
-			}
-		}
-	};
 }
 
 bool addon_name_legal(const std::string& name)
 {
+	// POSIX portable filenames: a-z A-Z 0-9 . - _
+	// We disallow .
+	static const std::string valid_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_";
 	if(name.empty() ||
-	   std::find_if(name.begin(), name.end(), addon_name_char_illegal()) != name.end()) {
+	   name.find_first_not_of(valid_chars) != std::string::npos) {
 		return false;
 	} else {
 	   return true;
