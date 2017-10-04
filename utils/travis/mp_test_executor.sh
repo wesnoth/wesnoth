@@ -18,8 +18,8 @@ hostpid=$!
 joinpid=$!
 
 START_TIME=$SECONDS
-HOST_RUNNING=0
-JOIN_RUNNING=0
+HOST_RUNNING=yes
+JOIN_RUNNING=yes
 while true; do
     # Timeout
     EXEC_TIME=$(($SECONDS - $START_TIME))
@@ -30,10 +30,10 @@ while true; do
     fi
     # Check if clients still running
     if ! kill -0 $hostpid 2>/dev/null; then
-        HOST_RUNNING=1
+        HOST_RUNNING=no
     fi
     if ! kill -0 $joinpid 2>/dev/null; then
-        JOIN_RUNNING=1
+        JOIN_RUNNING=no
     fi
 
     sleep $LOOP_TIME
@@ -43,12 +43,12 @@ while true; do
         break
     fi
     # If one has finished previously, kill the other
-    if [ $HOST_RUNNING == 1 ]; then
+    if [ $HOST_RUNNING = "no" ]; then
         echo "Host finished at least $LOOP_TIME seconds ago. Killing join"
         kill $joinpid 2>/dev/null
         break
     fi
-    if [ $JOIN_RUNNING == 1 ]; then
+    if [ $JOIN_RUNNING = "no" ]; then
         echo "Join finished at least $LOOP_TIME seconds ago. Killing host"
         kill $hostpid 2>/dev/null
         break
