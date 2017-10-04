@@ -1289,6 +1289,7 @@ void attack::unit_killed(unit_info& attacker,
 	}
 
 	units_.erase(defender.loc_);
+	resources::whiteboard->on_kill_unit();
 
 	// Plague units make new units on the target hex.
 	if(attacker.valid() && attacker_stats->plagues && !drain_killed) {
