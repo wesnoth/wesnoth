@@ -45,7 +45,7 @@ res.turns_over_advantage = function()
 	local side_num = -1
 	local total_score = -1
 	local side_comparison = ""
-	local color = nil
+	local color = "#000000"
 	for side, team in all_sides() do
 		if not team.__cfg.hidden then
 			local r, g, b = 255, 255, 255
