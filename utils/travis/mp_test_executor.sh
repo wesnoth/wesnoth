@@ -26,6 +26,7 @@ while true; do
     if [ $EXEC_TIME -gt $TIMEOUT_TIME ]; then
         kill $hostpid 2>/dev/null
         kill $joinpid 2>/dev/null
+        break
     fi
     # Check if clients still running
     if ! kill -0 $hostpid 2>/dev/null; then
