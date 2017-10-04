@@ -106,7 +106,7 @@ function ca_fast_move:execution(cfg)
     if leader then
         table.sort(enemy_leaders, function(a, b)
             local dist_a = M.distance_between(leader.x, leader.y, a.x, a.y)
-            local dist_b = m.distance_between(leader.x, leader.y, b.x, b.y)
+            local dist_b = M.distance_between(leader.x, leader.y, b.x, b.y)
             return (dist_a < dist_b)
         end)
     end
