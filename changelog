@@ -1,4 +1,11 @@
 Version 1.13.10:
+ * Add-ons client:
+   * A list of illegal filenames is displayed if any are found by the server
+     when uploading.
+ * Add-ons server:
+   * A list of illegal filenames is sent to the client if any are found during
+     the upload validation process. Only clients supporting this new
+     functionality can display the list.
  * Language and i18n:
    * Updated translations: British English
  * Multiplayer:
