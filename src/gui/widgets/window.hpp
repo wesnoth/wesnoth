@@ -455,7 +455,7 @@ public:
 
 	void set_exit_hook_ok_only(std::function<bool(window&)> func)
 	{
-		exit_hook_ = [func](window& w)->bool { return (w.get_retval() == OK && func(w)) || true; };
+		exit_hook_ = [func](window& w)->bool { return w.get_retval() != OK || func(w); };
 	}
 
 	/**
