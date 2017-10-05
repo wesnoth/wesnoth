@@ -15,12 +15,12 @@
 #pragma once
 
 #include "gettext.hpp"
-#include "preferences/game.hpp"
 #include "mp_game_settings.hpp"
+#include "preferences/game.hpp"
 #include "saved_game.hpp"
 
-namespace ng {
-
+namespace ng
+{
 /**
  * configure_engine
  *
@@ -30,59 +30,226 @@ namespace ng {
 class configure_engine
 {
 public:
-	configure_engine(saved_game& state, const config* intial = nullptr);
+	configure_engine(saved_game& state, const config* initial = nullptr);
 
-	// Set all parameters to their default values
+	/** Set all parameters to their default values. */
 	void set_default_values();
 
-	// check force_lock_settings in config
+	/** Checks force_lock_settings in config. */
 	bool force_lock_settings() const;
 
-	// getter methods
-	std::string game_name() const;
-	int num_turns() const;
-	int village_gold() const;
-	int village_support() const;
-	int xp_modifier() const;
-	int mp_countdown_init_time() const;
-	int mp_countdown_reservoir_time() const;
-	int mp_countdown_turn_bonus() const;
-	int mp_countdown_action_bonus() const;
-	bool mp_countdown() const;
-	bool use_map_settings() const;
-	bool random_start_time() const;
-	bool fog_game() const;
-	bool shroud_game() const;
-	bool allow_observers() const;
-	bool registered_users_only() const;
-	bool shuffle_sides() const;
-	mp_game_settings::RANDOM_FACTION_MODE random_faction_mode() const;
-	const config& options() const;
+	//
+	// Getter methods
+	//
 
-	// setter methods
-	void set_game_name(std::string name);
-	void set_game_password(std::string name);
-	void set_num_turns(int val);
-	void set_village_gold(int val);
-	void set_village_support(int val);
-	void set_xp_modifier(int val);
-	void set_mp_countdown_init_time(int val);
-	void set_mp_countdown_reservoir_time(int val);
-	void set_mp_countdown_turn_bonus(int val);
-	void set_mp_countdown_action_bonus(int val);
-	void set_mp_countdown(bool val);
-	void set_use_map_settings(bool val);
-	void set_random_start_time(bool val);
-	void set_fog_game(bool val);
-	void set_shroud_game(bool val);
-	void set_allow_observers(bool val);
-	void set_registered_users_only(bool val);
-	void set_oos_debug(bool val);
-	void set_shuffle_sides(bool val);
-	void set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE val);
-	void set_options(const config& cfg);
+	std::string game_name() const
+	{
+		return parameters_.name;
+	}
 
-	// parameter defaults
+	int num_turns() const
+	{
+		return parameters_.num_turns;
+	}
+
+	int village_gold() const
+	{
+		return parameters_.village_gold;
+	}
+
+	int village_support() const
+	{
+		return parameters_.village_support;
+	}
+
+	int xp_modifier() const
+	{
+		return parameters_.xp_modifier;
+	}
+
+	int mp_countdown_init_time() const
+	{
+		return parameters_.mp_countdown_init_time;
+	}
+
+	int mp_countdown_reservoir_time() const
+	{
+		return parameters_.mp_countdown_reservoir_time;
+	}
+
+	int mp_countdown_turn_bonus() const
+	{
+		return parameters_.mp_countdown_turn_bonus;
+	}
+
+	int mp_countdown_action_bonus() const
+	{
+		return parameters_.mp_countdown_action_bonus;
+	}
+
+	bool mp_countdown() const
+	{
+		return parameters_.mp_countdown;
+	}
+
+	bool use_map_settings() const
+	{
+		return parameters_.use_map_settings;
+	}
+
+	bool random_start_time() const
+	{
+		return parameters_.random_start_time;
+	}
+
+	bool fog_game() const
+	{
+		return parameters_.fog_game;
+	}
+
+	bool shroud_game() const
+	{
+		return parameters_.shroud_game;
+	}
+
+	bool allow_observers() const
+	{
+		return parameters_.allow_observers;
+	}
+
+	bool registered_users_only() const
+	{
+		return parameters_.registered_users_only;
+	}
+
+	bool shuffle_sides() const
+	{
+		return parameters_.shuffle_sides;
+	}
+
+	mp_game_settings::RANDOM_FACTION_MODE random_faction_mode() const
+	{
+		return parameters_.random_faction_mode;
+	}
+
+	const config& options() const
+	{
+		return parameters_.options;
+	}
+
+	//
+	// Setter methods
+	//
+
+	void set_game_name(std::string name)
+	{
+		parameters_.name = name;
+	}
+
+	void set_game_password(std::string name)
+	{
+		parameters_.password = name;
+	}
+
+	void set_num_turns(int val)
+	{
+		parameters_.num_turns = val;
+	}
+
+	void set_village_gold(int val)
+	{
+		parameters_.village_gold = val;
+	}
+
+	void set_village_support(int val)
+	{
+		parameters_.village_support = val;
+	}
+
+	void set_xp_modifier(int val)
+	{
+		parameters_.xp_modifier = val;
+	}
+
+	void set_mp_countdown_init_time(int val)
+	{
+		parameters_.mp_countdown_init_time = val;
+	}
+
+	void set_mp_countdown_reservoir_time(int val)
+	{
+		parameters_.mp_countdown_reservoir_time = val;
+	}
+
+	void set_mp_countdown_turn_bonus(int val)
+	{
+		parameters_.mp_countdown_turn_bonus = val;
+	}
+
+	void set_mp_countdown_action_bonus(int val)
+	{
+		parameters_.mp_countdown_action_bonus = val;
+	}
+
+	void set_mp_countdown(bool val)
+	{
+		parameters_.mp_countdown = val;
+	}
+
+	void set_use_map_settings(bool val)
+	{
+		parameters_.use_map_settings = val;
+	}
+
+	void set_random_start_time(bool val)
+	{
+		parameters_.random_start_time = val;
+	}
+
+	void set_fog_game(bool val)
+	{
+		parameters_.fog_game = val;
+	}
+
+	void set_shroud_game(bool val)
+	{
+		parameters_.shroud_game = val;
+	}
+
+	void set_allow_observers(bool val)
+	{
+		parameters_.allow_observers = val;
+	}
+
+	void set_registered_users_only(bool val)
+	{
+		parameters_.registered_users_only = val;
+	}
+
+	void set_oos_debug(bool val)
+	{
+		state_.classification().oos_debug = val;
+	}
+
+	void set_shuffle_sides(bool val)
+	{
+		parameters_.shuffle_sides = val;
+	}
+
+	void set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE val)
+	{
+		parameters_.random_faction_mode = val;
+	}
+
+	void set_options(const config& cfg)
+	{
+		parameters_.options = cfg;
+	}
+
+	//
+	// Parameter defaults
+	//
+
 	static std::string game_name_default();
 	int num_turns_default() const;
 	int village_gold_default() const;
@@ -103,32 +270,45 @@ public:
 	mp_game_settings::RANDOM_FACTION_MODE random_faction_mode_default() const;
 	const config& options_default() const;
 
-	// parameters_ accessor
-	const mp_game_settings& get_parameters() const;
+	const mp_game_settings& get_parameters() const
+	{
+		return parameters_;
+	}
 
-	const std::vector<std::string>& entry_point_titles() const;
 	void write_parameters();
 
 	void update_initial_cfg(const config& cfg)
 	{
 		initial_ = &cfg;
 	}
+
+	const std::vector<std::string>& entry_point_titles() const;
+
 private:
 	saved_game& state_;
+
 	mp_game_settings& parameters_;
+
 	/// Never nullptr.
 	const config* initial_;
-	// village gold, village support, fog, and shroud are per player, always show values of player 1.
+
 	/**
-	 * @todo This might not be 100% correct, but at the moment
-	 * it is not possible to show the fog and shroud per player.
-	 * This might change in the future.
+	 * Village gold, village support, fog, and shroud are per player but always show the
+	 * player 1's values.
+	 *
+	 * @todo This might not be 100% correct, but at the moment it is not possible to show
+	 * fog and shroud per player. This might change in the future.
+	 *
+	 * @todo: Is the above even still true?
+	 * -- vultraz, 2017-10-05
+	 *
 	 * NOTE when 'load game' is selected there are no sides.
 	 */
 	const config& side_cfg() const
 	{
 		return initial_->child_or_empty("side");
 	}
+
 	const config& initial_cfg() const
 	{
 		return *initial_;
