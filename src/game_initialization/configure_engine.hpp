@@ -282,8 +282,6 @@ public:
 		initial_ = &cfg;
 	}
 
-	const std::vector<std::string>& entry_point_titles() const;
-
 private:
 	saved_game& state_;
 
