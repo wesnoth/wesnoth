@@ -402,6 +402,9 @@ public:
 
 	saved_game& get_state();
 
+	/** Returns true if the current level has one or more [side] tags. */
+	bool current_level_has_side_data();
+
 private:
 	create_engine(const create_engine&) = delete;
 	void operator=(const create_engine&) = delete;

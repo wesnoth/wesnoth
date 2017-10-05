@@ -712,7 +712,13 @@ void mp_create_game::load_game_callback(window& window)
 	window.set_retval(LOAD_GAME);
 }
 
-bool mp_create_game::dialog_exit_hook(window&) {
+bool mp_create_game::dialog_exit_hook(window& window)
+{
+	if(!create_engine_.current_level_has_side_data()) {
+		gui2::show_transient_error_message(window.video(), _("The selected game has no sides!"));
+		return false;
+	}
+
 	if(create_engine_.current_level_type() != ng::level::TYPE::CAMPAIGN &&
 	   create_engine_.current_level_type() != ng::level::TYPE::SP_CAMPAIGN
 	) {

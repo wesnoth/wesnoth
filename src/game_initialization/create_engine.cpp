@@ -352,6 +352,11 @@ void create_engine::init_generated_level_data()
 	//DBG_MP << current_level().data().debug();
 }
 
+bool create_engine::current_level_has_side_data()
+{
+	return current_level().data().has_child("side");
+}
+
 void create_engine::prepare_for_new_level()
 {
 	DBG_MP << "preparing mp_game_settings for new level\n";
