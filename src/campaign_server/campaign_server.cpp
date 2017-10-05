@@ -676,7 +676,8 @@ void server::handle_upload(const server::request& req)
 	} else if(!check_names_legal(data)) {
 		LOG_CS << "Upload aborted - invalid file names in add-on data.\n";
 		send_error("Add-on rejected: The add-on contains an illegal file or directory name."
-				   " File or directory names may not contain whitespace or any of the following characters: '/ \\ : ~'",
+				   " File or directory names may only contain latin letters, numbers or any of the following characters: '. _ - + @'."
+				   " Additionally, the names must not contain '..' or end in '.'.",
 				   req.sock);
 	} else if(campaign && !authenticate(*campaign, upload["passphrase"])) {
 		LOG_CS << "Upload aborted - incorrect passphrase.\n";
