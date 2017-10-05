@@ -168,8 +168,7 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	// Create side engines.
 	int index = 0;
 	for(const config& s : sides) {
-		side_engine_ptr new_side_engine(new side_engine(s, *this, index));
-		side_engines_.push_back(new_side_engine);
+		side_engines_.emplace_back(new side_engine(s, *this, index));
 
 		index++;
 	}

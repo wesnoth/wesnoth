@@ -687,9 +687,7 @@ void create_engine::init_all_levels()
 			}
 
 			if(add_map) {
-				user_map_ptr new_user_map(new user_map(user_map_data, user_map_names_[i], map.get()));
-
-				type_map_[level::TYPE::USER_MAP].games.push_back(new_user_map);
+				type_map_[level::TYPE::USER_MAP].games.emplace_back(new user_map(user_map_data, user_map_names_[i], map.get()));
 
 				// Since user maps are treated as scenarios, some dependency info is required
 				config depinfo;
@@ -715,7 +713,7 @@ void create_engine::init_all_levels()
 			scenario_ptr new_scenario(new scenario(data));
 			if(new_scenario->id().empty()) continue;
 
-			type_map_[level::TYPE::USER_SCENARIO].games.push_back(new_scenario);
+			type_map_[level::TYPE::USER_SCENARIO].games.push_back(std::move(new_scenario));
 
 			// Since user scenarios are treated as scenarios, some dependency info is required
 			config depinfo;
@@ -735,13 +733,9 @@ void create_engine::init_all_levels()
 			continue;
 
 		if(data.has_attribute("map_generation") || data.has_attribute("scenario_generation")) {
-			random_map_ptr new_random_map(new random_map(data));
-
-			type_map_[level::TYPE::RANDOM_MAP].games.push_back(new_random_map);
+			type_map_[level::TYPE::RANDOM_MAP].games.emplace_back(new random_map(data));
 		} else {
-			scenario_ptr new_scenario(new scenario(data));
-
-			type_map_[level::TYPE::SCENARIO].games.push_back(new_scenario);
+			type_map_[level::TYPE::SCENARIO].games.emplace_back(new scenario(data));
 		}
 	}
 
@@ -752,16 +746,14 @@ void create_engine::init_all_levels()
 		bool mp = state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
 
 		if(type == "mp" || (type == "hybrid" && mp)) {
-			campaign_ptr new_campaign(new campaign(data));
-
-			type_map_[level::TYPE::CAMPAIGN].games.push_back(new_campaign);
+			type_map_[level::TYPE::CAMPAIGN].games.emplace_back(new campaign(data));
 		}
 
 		if(type == "sp" || type.empty() || (type == "hybrid" && !mp)) {
 			campaign_ptr new_sp_campaign(new campaign(data));
 			new_sp_campaign->mark_if_completed();
 
-			type_map_[level::TYPE::SP_CAMPAIGN].games.push_back(new_sp_campaign);
+			type_map_[level::TYPE::SP_CAMPAIGN].games.push_back(std::move(new_sp_campaign));
 		}
 	}
 
@@ -797,7 +789,7 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 			new_extras_metadata->description = extra["description"].str();
 			new_extras_metadata->cfg = &extra;
 
-			extras.push_back(new_extras_metadata);
+			extras.push_back(std::move(new_extras_metadata));
 		}
 	}
 }
