@@ -40,8 +40,14 @@ mp_options_helper::mp_options_helper(window& window, ng::create_engine& create_e
 	, options_data_()
 {
 	for(const auto& c : preferences::options().all_children_range()) {
+		// Parse old [option] tag range syntax.
 		for(const auto& saved_option : c.cfg.child_range("option")) {
 			options_data_[c.cfg["id"]][saved_option["id"]] = saved_option["value"];
+		}
+
+		// Parse new [options] id = value syntax.
+		for(const auto& saved_option : c.cfg.child_or_empty("options").attribute_range()) {
+			options_data_[c.cfg["id"]][saved_option.first] = saved_option.second;
 		}
 	}
 
@@ -323,14 +329,8 @@ config mp_options_helper::get_options_config()
 	for(const auto& source : visible_options_) {
 		config& mod = options.add_child(source.level_type);
 		mod["id"] = source.id;
-#if 0
-		// TODO: enable this as soon as we drop the old mp configure screen.
+
 		mod.add_child("options", options_data_[source.id]);
-#else
-		for(const auto& option : options_data_[source.id].attribute_range()) {
-			mod.add_child("option", config {"id", option.first, "value", option.second});
-		}
-#endif
 	}
 
 	return options;
