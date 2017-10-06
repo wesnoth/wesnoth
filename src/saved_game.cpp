@@ -243,7 +243,7 @@ void saved_game::expand_scenario()
 			set_defaults();
 		} else {
 			this->starting_pos_type_ = STARTINGPOS_INVALID;
-			this->starting_pos_ = config();
+			this->starting_pos_.clear();
 		}
 	}
 }
@@ -482,7 +482,7 @@ void saved_game::set_scenario(config scenario)
 void saved_game::remove_snapshot()
 {
 	this->starting_pos_type_ = STARTINGPOS_NONE;
-	this->starting_pos_ = config();
+	this->starting_pos_.clear();
 }
 
 config& saved_game::get_starting_pos()
@@ -523,7 +523,7 @@ void saved_game::convert_to_start_save()
 	has_carryover_expanded_ = false;
 
 	replay_data_ = replay_recorder_base();
-	replay_start_ = config();
+	replay_start_.clear();
 
 	remove_snapshot();
 }
@@ -643,14 +643,14 @@ void saved_game::set_data(config& cfg)
 		carryover_.swap(caryover_sides_start);
 		has_carryover_expanded_ = false;
 	} else {
-		carryover_ = config();
+		carryover_.clear();
 		has_carryover_expanded_ = false;
 	}
 
 	if(config& replay_start = cfg.child("replay_start")) {
 		replay_start_.swap(replay_start);
 	} else {
-		replay_start_ = config();
+		replay_start_.clear();
 	}
 
 	replay_data_ = replay_recorder_base();
@@ -670,7 +670,7 @@ void saved_game::set_data(config& cfg)
 		this->starting_pos_.swap(scenario);
 	} else {
 		this->starting_pos_type_ = STARTINGPOS_NONE;
-		this->starting_pos_ = config();
+		this->starting_pos_.clear();
 	}
 
 	LOG_NG << "scenario: '" << carryover_["next_scenario"].str() << "'\n";

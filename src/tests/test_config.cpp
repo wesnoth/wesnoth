@@ -150,7 +150,7 @@ BOOST_AUTO_TEST_CASE ( test_config_attribute_value )
 		BOOST_CHECK_EQUAL(x_str, "123456789123");
 
 		// blank != "" test.
-	c = config();
+	c.clear();
 	BOOST_CHECK(!cc["x"].empty());
 	BOOST_CHECK(cc["x"].empty());
 	BOOST_CHECK(cc["x"].blank());

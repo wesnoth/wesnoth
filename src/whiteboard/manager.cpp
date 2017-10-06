@@ -619,7 +619,7 @@ void manager::send_network_data()
 		wb_cfg["side"] = static_cast<int>(team_index+1);
 		wb_cfg["to_sides"] = resources::gameboard->teams().at(team_index).allied_human_teams();
 
-		buf_cfg = config();
+		buf_cfg.clear();
 
 		resources::controller->send_to_wesnothd(packet, "whiteboard");
 

@@ -108,7 +108,7 @@ static void set_global_variable(persist_context &ctx, const vconfig &pcfg)
 			}
 			catch(const invalid_variablename_exception&)
 			{
-				val = config();
+				val.clear();
 			}
 		} else {
 			for (size_t i = 0; i < arraylen; i++)

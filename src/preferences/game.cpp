@@ -577,7 +577,7 @@ const config& options()
 		// It may be an invalid config, which would cause problems in
 		// multiplayer_create, so let's replace it with an empty but valid
 		// config
-		option_values = config();
+		option_values.clear();
 	} else {
 		option_values = preferences::get_child("options");
 	}

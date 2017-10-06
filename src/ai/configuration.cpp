@@ -48,7 +48,7 @@ void configuration::init(const config &game_config)
 	default_config_ = ais.child("default_config");
 	if (!default_config_) {
 		ERR_AI_CONFIGURATION << "Missing AI [default_config]. Therefore, default_config_ set to empty." << std::endl;
-		default_config_ = config();
+		default_config_.clear();
 	}
 
 
@@ -180,7 +180,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	LOG_AI_CONFIGURATION << "side "<< side <<": parsing AI configuration from config" << std::endl;
 
 	//leave only the [ai] children
-	cfg = config();
+	cfg.clear();
 	for (const config &aiparam : original_cfg.child_range("ai")) {
 		cfg.add_child("ai",aiparam);
 	}

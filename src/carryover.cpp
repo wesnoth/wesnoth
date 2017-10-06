@@ -224,7 +224,7 @@ void carryover_info::transfer_to(config& level)
 	}
 
 	next_scenario_ = "";
-	variables_ = config();
+	variables_.clear();
 	wml_menu_items_.clear();
 
 }

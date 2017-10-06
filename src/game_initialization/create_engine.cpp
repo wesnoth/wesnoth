@@ -156,8 +156,8 @@ random_map::random_map(const config& data)
 	, generator_name_(generate_whole_scenario_ ? data_["scenario_generation"] : data_["map_generation"])
 {
 	if(!data.has_child("generator")) {
-		data_ = config();
-		generator_data_= config();
+		data_.clear();
+		generator_data_.clear();
 		data_["description"] = "Error: Random map found with missing generator information. Scenario should have a [generator] child.";
 		data_["error_message"] = "missing [generator] tag";
 	} else {
@@ -165,8 +165,8 @@ random_map::random_map(const config& data)
 	}
 
 	if(!data.has_attribute("scenario_generation") && !data.has_attribute("map_generation")) {
-		data_ = config();
-		generator_data_= config();
+		data_.clear();
+		generator_data_.clear();
 		data_["description"] = "Error: Random map found with missing generator information. Scenario should have a [generator] child.";
 		data_["error_message"] = "couldn't find 'scenario_generation' or 'map_generation' attribute";
 	}
