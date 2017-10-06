@@ -52,9 +52,15 @@ namespace {
 		{
 			switch(c){
 			case ' ':
+			case '"':
+			case '*':
 			case '/':
 			case ':':
+			case '<':
+			case '>':
+			case '?':
 			case '\\':
+			case '|':
 			case '~':
 			case 0x7F: // DEL
 				return true;
