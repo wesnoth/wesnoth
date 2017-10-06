@@ -66,7 +66,8 @@ namespace {
 				return true;
 			default:
 				return (
-					c < 0x20 || // control characters
+					c < 0x20 ||                 // C0 control characters
+					(c >= 0x80 && c < 0xA0) ||  // C1 control characters
 					(c >= 0xD800 && c < 0xE000) // surrogate pairs
 				);
 			}
