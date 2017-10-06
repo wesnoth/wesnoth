@@ -117,6 +117,14 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 		i18n_symbols["addon_title"] = make_addon_title(id);
 	}
 
+	if(!addon_name_legal(id)){
+		i18n_symbols["addon_id"] = id;
+		this->last_error_ =
+			vgettext("The add-on <i>$addon_title</i> has an invalid id '$addon_id' "
+				"and cannot be published.", i18n_symbols);
+		return false;
+	}
+
 	std::string passphrase = cfg["passphrase"];
 	// generate a random passphrase and write it to disk
 	// if the .pbl file doesn't provide one already
@@ -135,6 +143,15 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 
 	config addon_data;
 	archive_addon(id, addon_data);
+
+	std::vector<std::string> badnames;
+	if(!check_names_legal(addon_data, &badnames)){
+		this->last_error_ =
+			vgettext("The add-on <i>$addon_title</i> has an invalid file or directory "
+				"name and cannot be published.", i18n_symbols);
+		this->last_error_data_ = utils::join(badnames, "\n");
+		return false;
+	}
 
 	config request_buf, response_buf;
 	request_buf.add_child("upload", cfg).add_child("data", addon_data);
