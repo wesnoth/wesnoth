@@ -75,8 +75,6 @@
 #include "variable.hpp" // for config_variable_set
 #include "variable_info.hpp"
 
-#include <boost/range/adaptors.hpp>
-#include <boost/range/algorithm/copy.hpp>
 #include <cassert>
 
 static lg::log_domain log_engine("engine");
@@ -271,25 +269,6 @@ struct modevents_entry
 	std::string id;
 };
 
-struct modevents_entry_for
-{
-	// This typedef is used by boost.
-	typedef modevents_entry result_type;
-
-	modevents_entry_for(const std::string& type)
-		: type_(type)
-	{
-	}
-
-	modevents_entry operator()(const std::string& id) const
-	{
-		return modevents_entry(type_, id);
-	}
-
-private:
-	std::string type_;
-};
-
 } // end anon namespace
 
 void saved_game::load_mod(const std::string& type, const std::string& id)
@@ -342,8 +321,9 @@ void saved_game::expand_mp_events()
 		std::vector<modevents_entry> mods;
 		std::set<std::string> loaded_resources;
 
-		boost::copy(mp_settings_.active_mods | boost::adaptors::transformed(modevents_entry_for("modification")),
-			std::back_inserter(mods));
+		std::transform(mp_settings_.active_mods.begin(), mp_settings_.active_mods.end(), std::back_inserter(mods),
+			[](const std::string& id) { return modevents_entry("modification", id); }
+		);
 
 		// We don't want the error message below if there is no era (= if this is a sp game).
 		if(!mp_settings_.mp_era .empty()) {
@@ -382,8 +362,9 @@ void saved_game::expand_mp_options()
 	if(starting_pos_type_ == STARTINGPOS_SCENARIO && !has_carryover_expanded_) {
 		std::vector<modevents_entry> mods;
 
-		boost::copy(mp_settings_.active_mods | boost::adaptors::transformed(modevents_entry_for("modification")),
-			std::back_inserter(mods));
+		std::transform(mp_settings_.active_mods.begin(), mp_settings_.active_mods.end(), std::back_inserter(mods),
+			[](const std::string& id) { return modevents_entry("modification", id); }
+		);
 
 		mods.emplace_back("era", mp_settings_.mp_era);
 		mods.emplace_back("multiplayer", get_scenario_id());
