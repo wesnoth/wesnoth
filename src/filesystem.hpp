@@ -180,8 +180,11 @@ bool ends_with(const std::string& str, const std::string& suffix);
 /**
  * Returns the base filename of a file, with directory name stripped.
  * Equivalent to a portable basename() function.
+ *
+ * If @a remove_extension is true, the filename extension will be stripped
+ * from the returned value.
  */
-std::string base_name(const std::string& file);
+std::string base_name(const std::string& file, const bool remove_extension = false);
 
 /**
  * Returns the directory name of a file, with filename stripped.
