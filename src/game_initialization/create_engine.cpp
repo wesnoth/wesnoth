@@ -146,7 +146,7 @@ std::string user_map::description() const
 	}
 
 	// map error message
-	return _("User made map");
+	return _("Custom map.");
 }
 
 random_map::random_map(const config& data)

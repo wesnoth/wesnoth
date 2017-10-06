@@ -501,7 +501,7 @@ void mp_create_game::show_description(window& window, const std::string& new_des
 {
 	styled_widget& description = find_widget<styled_widget>(&window, "description", false);
 
-	description.set_label(!new_description.empty() ? new_description : _("No description available"));
+	description.set_label(!new_description.empty() ? new_description : _("No description available."));
 	description.set_use_markup(true);
 }
 
