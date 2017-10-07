@@ -47,10 +47,9 @@ def OptionalPath(key, val, env):
 opts.AddVariables(
     ListVariable('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd test")),
-    EnumVariable('build', 'Build variant: debug, release, profile or base (no subdirectory)', "release", ["release", "debug", "glibcxx_debug", "profile", "base"]),
+    EnumVariable('build', 'Build variant: debug, release or profile', "release", ["release", "debug", "profile"]),
     PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
     ('extra_flags_config', "Extra compiler and linker flags to use for configuration and all builds. Whether they're compiler or linker is determined by env.ParseFlags. Unknown flags are compile flags by default. This applies to all extra_flags_* variables", ""),
-    ('extra_flags_base', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
     ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
@@ -193,12 +192,11 @@ Switches apply to the entire build regardless of where they are in the order.
 Important switches include:
 
     prefix=/usr     probably what you want for production tools
-    build=base      build directly in the distribution root;
-                    you'll need this if you're trying to use Emacs compile mode.
     build=release   build the release build variant with appropriate flags
                         in build/release and copy resulting binaries
                         into distribution/working copy root.
     build=debug     same for debug build variant, binaries will be copied with -debug suffix
+    build=profile   build with instrumentation for gprof
 
 With no arguments, the recipe builds wesnoth and wesnothd.  Available
 build targets include the individual binaries:
@@ -208,7 +206,6 @@ build targets include the individual binaries:
 You can make the following special build targets:
 
     all = wesnoth wesnothd campaignd test (*).
-    TAGS = build tags for Emacs (*).
     wesnoth-deps.png = project dependency graph
     install = install all executables that currently exist, and any data needed
     install-wesnothd = install the Wesnoth multiplayer server.
@@ -546,46 +543,30 @@ SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 
 binaries = Split("wesnoth wesnothd campaignd test")
 builds = {
-    "base"          : dict(CCFLAGS    = Split("$OPT_FLAGS")),    # Don't build in subdirectory
     "debug"         : dict(CCFLAGS    = Split("$DEBUG_FLAGS")),
-    "glibcxx_debug" : dict(CPPDEFINES = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")),
     "release"       : dict(CCFLAGS    = Split("$OPT_COMP_FLAGS"), LINKFLAGS=Split("$OPT_LINK_FLAGS")),
     "profile"       : dict(CCFLAGS    = "-pg", LINKFLAGS = "-pg")
     }
-builds["glibcxx_debug"].update(builds["debug"])
 build = env["build"]
 
 for env in [test_env, client_env, env]:
-    env["extra_flags_glibcxx_debug"] = env["extra_flags_debug"]
     env.AppendUnique(**builds[build])
     env.Append(CXXFLAGS = Split(os.environ.get('CXXFLAGS', [])), LINKFLAGS = Split(os.environ.get('LDFLAGS', [])))
     env.MergeFlags(env["extra_flags_" + build])
 
-if build == "base":
-    build_dir = ""
-else:
-    build_dir = os.path.join("$build_dir", build)
+build_dir = os.path.join("$build_dir", build)
 
 if build == "release" : build_suffix = ""
 else                  : build_suffix = "-" + build
 Export("build_suffix")
 env.SConscript("src/SConscript", variant_dir = build_dir, duplicate = False)
-Import(binaries + ["sources"])
+Import(binaries)
 binary_nodes = [eval(binary) for binary in binaries]
 all = env.Alias("all", [Alias(binary) for binary in binaries])
 env.Default([Alias(target) for target in env["default_targets"]])
 
 if have_client_prereqs and env["nls"]:
     env.Requires("wesnoth", Dir("translations"))
-
-#
-# Utility productions (Unix-like systems only)
-#
-
-# Make a tags file for Emacs
-# Exuberant Ctags doesn't understand the -l c++ flag so if the etags fails try the ctags version
-env.Command("TAGS", sources, 'etags -l c++ $SOURCES.srcpath || (ctags --tag-relative=yes -f src/tags $SOURCES.srcpath)')
-env.Clean(all, 'TAGS')
 
 #
 # Unix installation productions
