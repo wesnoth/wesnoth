@@ -137,10 +137,10 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 		title = _("Scenario Report");
 	} else if (res == LEVEL_RESULT::VICTORY) {
 		title = _("Victory");
-		report << "<b>" << _("You have emerged victorious!") << "</b>\n";
+		report << "<b>" << _("You have emerged victorious!") << "</b>";
 	} else {
 		title = _("Defeat");
-		report <<  _("You have been defeated!") << "\n";
+		report <<  _("You have been defeated!");
 	}
 
 	//We need to write the carryover amount to the team thats why we need non const
@@ -172,7 +172,7 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 				continue;
 			}
 			if (persistent_teams > 1) {
-				report << "\n<b>" << t.side_name() << "</b>";
+				report << "\n\n<b>" << t.side_name() << "</b>";
 			}
 
 			report_victory(report, t, finishing_bonus_per_turn, turns_left, finishing_bonus);
