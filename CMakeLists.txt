@@ -162,6 +162,7 @@ option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" OFF)
 option(ENABLE_PEDANTIC_COMPILATION "Sets the pedantic compilation mode" OFF)
 option(ENABLE_DEBUG_WINDOW_LAYOUT "Add the debug option to allow the generation of debug layout files in dot format" OFF)
 option(ENABLE_DESIGN_DOCUMENTS "Enables the generation of design documents, and has additional dependencies" OFF)
+option(ENABLE_LTO "Sets Link Time Optimization" OFF)
 
 #misc options
 if(NOT MSVC)
@@ -529,7 +530,7 @@ if(WIN32 AND NOT ARCH)
 endif(WIN32 AND NOT ARCH)
 
 # if compiling with LTO
-if("${ENABLE_LTO}" STREQUAL "yes")
+if(ENABLE_LTO)
 # clang and gcc require different parallelization options and linkers
 	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 		MESSAGE("added -flto=thin to Release build")
@@ -538,7 +539,7 @@ if("${ENABLE_LTO}" STREQUAL "yes")
 		
 		MESSAGE("Using Clang LLD linker")
 		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "-s -fuse-ld=lld" CACHE STRING "Linker flag for building with LTO and clang" FORCE)
-	elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+	elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 		if(NOT LTO_JOBS)
 			MESSAGE("LTO_JOBS not set, defaulting to 1")
 			set(LTO_JOBS "1" CACHE STRING "Number of threads to use for LTO with gcc" FORCE)
