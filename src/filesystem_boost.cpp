@@ -1149,6 +1149,11 @@ static bool is_legal_file(const std::string &filename)
 		return false;
 	}
 
+	if (filename.find('\\') != std::string::npos) {
+		ERR_FS << "Illegal path '" << filename << R"end(' ("\" not allowed, for compatibility with GNU/Linux and macOS).)end" << std::endl;
+		return false;
+	}
+
 	if (looks_like_pbl(filename)) {
 		ERR_FS << "Illegal path '" << filename << "' (.pbl files are not allowed)." << std::endl;
 		return false;
