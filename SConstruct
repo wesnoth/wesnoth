@@ -47,14 +47,16 @@ def OptionalPath(key, val, env):
 opts.AddVariables(
     ListVariable('default_targets', 'Targets that will be built if no target is specified in command line.',
         "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd test")),
-    EnumVariable('build', 'Build variant: debug, release or profile', "release", ["release", "debug", "profile"]),
+    EnumVariable('build', 'Build variant: release, debug, profile or base (no subdirectory)', "release", ["release", "debug", "profile", "base"]),
     PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
     ('extra_flags_config', "Extra compiler and linker flags to use for configuration and all builds. Whether they're compiler or linker is determined by env.ParseFlags. Unknown flags are compile flags by default. This applies to all extra_flags_* variables", ""),
+    ('extra_flags_base', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
     ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
     BoolVariable('enable_lto', 'Whether to enable Link Time Optimization for build=release', False),
     ('arch', 'What -march option to use for build=release, will default to pentiumpro on Windows', ""),
+    BoolVariable('glibcxx_debug', 'Whether to define _GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC for build=debug', False),
     PathVariable('bindir', 'Where to install binaries', "bin", PathVariable.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathVariable('datadir', 'read-only architecture-independent game data', "$datarootdir/$datadirname", PathVariable.PathAccept),
@@ -145,14 +147,6 @@ if term is not None:
 
 if env["PLATFORM"] == "win32":
     env.Tool("mingw")
-elif env["PLATFORM"] == "sunos":
-    env.Tool("sunc++")
-    env.Tool("suncc")
-    env.Tool("sunar")
-    env.Tool("sunlink")
-    env.Append(CXXFLAGS = Split("-library=stlport4 -staticlib=stlport4 -norunpath -features=tmplife -features=tmplrefstatic -features=extensions"))
-    env.Append(LINKFLAGS = Split("-library=stlport4 -staticlib=stlport4 -lsocket -lnsl -lboost_iostreams -L. -R."))
-    env['CC'] = env['CXX']
 else:
     from cross_compile import *
     setup_cross_compile(env)
@@ -192,11 +186,13 @@ Switches apply to the entire build regardless of where they are in the order.
 Important switches include:
 
     prefix=/usr     probably what you want for production tools
+    build=base      build directly in the distribution root;
+                    you'll need this if you're trying to use Emacs compile mode.
     build=release   build the release build variant with appropriate flags
                         in build/release and copy resulting binaries
                         into distribution/working copy root.
     build=debug     same for debug build variant, binaries will be copied with -debug suffix
-    build=profile   build with instrumentation for gprof
+    build=profile   
 
 With no arguments, the recipe builds wesnoth and wesnothd.  Available
 build targets include the individual binaries:
@@ -206,6 +202,7 @@ build targets include the individual binaries:
 You can make the following special build targets:
 
     all = wesnoth wesnothd campaignd test (*).
+    TAGS = build tags for Emacs (*).
     wesnoth-deps.png = project dependency graph
     install = install all executables that currently exist, and any data needed
     install-wesnothd = install the Wesnoth multiplayer server.
@@ -478,7 +475,21 @@ for env in [test_env, client_env, env]:
         if env['sanitize']:
             env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
         
+# #
+# Start determining options for debug build
+# #
+        
         env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
+        
+        if env["glibcxx_debug"] == True:
+            env["GLIBCXX_DEBUG"] = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")
+        else:
+            env["GLIBCXX_DEBUG"] = ""
+        
+# #
+# End determining options for debug build
+# Start setting options for release build
+# #
         
         env["OPT_COMP_FLAGS"] = "-O3"
         
@@ -502,13 +513,13 @@ for env in [test_env, client_env, env]:
                 env["OPT_COMP_FLAGS"] = env["OPT_COMP_FLAGS"] + " -flto=thin"
                 env["OPT_LINK_FLAGS"] = env["OPT_COMP_FLAGS"] + " -s -fuse-ld=lld"
 
+# #
+# End setting options for release build
+# #
+
     if "clang" in env["CXX"]:
         # Silence warnings about unused -I options and unknown warning switches.
         env.AppendUnique(CCFLAGS = Split("-Qunused-arguments -Wno-unknown-warning-option -Werror=non-virtual-dtor"))
-
-    if "suncc" in env["TOOLS"]:
-        env["OPT_FLAGS"] = "-g0"
-        env["DEBUG_FLAGS"] = "-g"
 
     if env['internal_data']:
         env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
@@ -543,7 +554,8 @@ SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 
 binaries = Split("wesnoth wesnothd campaignd test")
 builds = {
-    "debug"         : dict(CCFLAGS    = Split("$DEBUG_FLAGS")),
+    "base"          : dict(CCFLAGS    = Split("$OPT_COMP_FLAGS"), LINKFLAGS=Split("$OPT_LINK_FLAGS")),    # Don't build in subdirectory
+    "debug"         : dict(CCFLAGS    = Split("$DEBUG_FLAGS")   , CPPDEFINES=env["GLIBCXX_DEBUG"]),
     "release"       : dict(CCFLAGS    = Split("$OPT_COMP_FLAGS"), LINKFLAGS=Split("$OPT_LINK_FLAGS")),
     "profile"       : dict(CCFLAGS    = "-pg", LINKFLAGS = "-pg")
     }
@@ -554,19 +566,31 @@ for env in [test_env, client_env, env]:
     env.Append(CXXFLAGS = Split(os.environ.get('CXXFLAGS', [])), LINKFLAGS = Split(os.environ.get('LDFLAGS', [])))
     env.MergeFlags(env["extra_flags_" + build])
 
-build_dir = os.path.join("$build_dir", build)
+if build == "base":
+    build_dir = ""
+else:
+    build_dir = os.path.join("$build_dir", build)
 
 if build == "release" : build_suffix = ""
 else                  : build_suffix = "-" + build
 Export("build_suffix")
 env.SConscript("src/SConscript", variant_dir = build_dir, duplicate = False)
-Import(binaries)
+Import(binaries + ["sources"])
 binary_nodes = [eval(binary) for binary in binaries]
 all = env.Alias("all", [Alias(binary) for binary in binaries])
 env.Default([Alias(target) for target in env["default_targets"]])
 
 if have_client_prereqs and env["nls"]:
     env.Requires("wesnoth", Dir("translations"))
+
+#
+# Utility productions (Unix-like systems only)
+#
+
+# Make a tags file for Emacs
+# Exuberant Ctags doesn't understand the -l c++ flag so if the etags fails try the ctags version
+env.Command("TAGS", sources, 'etags -l c++ $SOURCES.srcpath || (ctags --tag-relative=yes -f src/tags $SOURCES.srcpath)')
+env.Clean(all, 'TAGS')
 
 #
 # Unix installation productions

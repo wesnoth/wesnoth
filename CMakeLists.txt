@@ -162,7 +162,8 @@ option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" OFF)
 option(ENABLE_PEDANTIC_COMPILATION "Sets the pedantic compilation mode" OFF)
 option(ENABLE_DEBUG_WINDOW_LAYOUT "Add the debug option to allow the generation of debug layout files in dot format" OFF)
 option(ENABLE_DESIGN_DOCUMENTS "Enables the generation of design documents, and has additional dependencies" OFF)
-option(ENABLE_LTO "Sets Link Time Optimization" OFF)
+option(ENABLE_LTO "Sets Link Time Optimization for Release builds" OFF)
+option(GLIBCXX_DEBUG "Whether to define _GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC" OFF)
 
 #misc options
 if(NOT MSVC)
@@ -579,6 +580,13 @@ MARK_AS_ADVANCED(LTO_AR LTO_RANLIB NON_LTO_AR NON_LTO_RANLIB)
 MESSAGE("Replacing flags used for Debug build")
 set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3" CACHE STRING "change cmake's Debug flags to match scons' flags" FORCE)
 set(CMAKE_C_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3" CACHE STRING "change cmake's Debug flags to match scons' flags" FORCE)
+
+# adds GLIBCXX_DEBUG definitions
+if(GLIBCXX_DEBUG)
+  MESSAGE("Defining _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC")
+  add_definitions(-D_GLIBCXX_DEBUG)
+  add_definitions(-D_GLIBCXX_DEBUG_PEDANTIC)
+endif(GLIBCXX_DEBUG)
 
 # #
 # End setting options for Debug build
