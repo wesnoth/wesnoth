@@ -192,7 +192,7 @@ Important switches include:
                         in build/release and copy resulting binaries
                         into distribution/working copy root.
     build=debug     same for debug build variant, binaries will be copied with -debug suffix
-    build=profile   
+    build=profile   build with instrumentation for gprof
 
 With no arguments, the recipe builds wesnoth and wesnothd.  Available
 build targets include the individual binaries:
