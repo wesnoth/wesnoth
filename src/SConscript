@@ -132,7 +132,10 @@ def WesnothProgram(env, target, source, can_build, **kw):
         env["RANLIB"] = 'gcc-ranlib'
     
     if can_build:
-        bin = env.Program("#/" + target + build_suffix, source, **kw)
+        if env["build"] == "base":
+            bin = env.Program(target, source, **kw)
+        else:
+            bin = env.Program("#/" + target + build_suffix, source, **kw)
         env.Alias(target, bin)
     else:
         bin = env.Alias(target, [], error_action)
@@ -162,6 +165,12 @@ env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core], have_serv
 test_sources = GetSources("test")
 test = test_env.WesnothProgram("test", test_sources +  [libwesnoth_extras, libwesnoth_core, libwesnoth, libwesnoth_sdl, libwesnoth_extras], have_test_prereqs)
 #---end of getting sources---
+
+sources = []
+if "TAGS" in COMMAND_LINE_TARGETS:
+    sources = [ Glob(os.path.join(dir, pattern)) for dir in ["", "*", "*/*"] for pattern in ["*.cpp", "*.hpp"] ]
+
+Export("sources")
 
 # Local variables:
 # mode: python
