@@ -6,6 +6,9 @@ Version 1.13.10:
    * A list of illegal filenames is sent to the client if any are found during
      the upload validation process. Only clients supporting this new
      functionality can display the list.
+   * Fix an issue where the implementation of the hashing function used for
+     add-on passphrases was changed since 1.13.8, breaking existing hashes
+     (bug #2068).
  * Language and i18n:
    * Updated translations: British English
  * Multiplayer:
