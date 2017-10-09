@@ -62,7 +62,7 @@ public:
 }
 
 template<typename charT, typename traits = std::char_traits<charT> > class basic_string_view;
-	
+
 template<typename charT, typename traits>
 class basic_string_view {
 public:

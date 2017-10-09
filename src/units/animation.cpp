@@ -1420,7 +1420,7 @@ void unit_animator::wait_until(int animation_time) const
 	// important to set a max animation time so that the time does not go past this value for movements.
 	// fix for bug #1565
 	animated_units_[0].my_unit->anim_comp().get_animation()->set_max_animation_time(animation_time);
-	
+
 	display* disp = display::get_singleton();
 	double speed = disp->turbo_speed();
 

@@ -430,7 +430,7 @@ context::scoped::~scoped()
 	assert(contexts_.size() > 1);
 	bool undo_disabled = contexts_.top().undo_disabled;
 	bool action_canceled = contexts_.top().action_canceled;
-	
+
 	contexts_.pop();
 	contexts_.top().undo_disabled |= undo_disabled;
 	contexts_.top().action_canceled |= action_canceled;

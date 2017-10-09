@@ -269,7 +269,7 @@ public:
 	{
 		return ime_in_progress_;
 	}
-	
+
 	void interrupt_composition();
 
 	/** Note the order of the states must be the same as defined in

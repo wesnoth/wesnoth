@@ -545,7 +545,7 @@ void help_text_area::draw_contents()
 						it->rect.w - i * 2,
 						it->rect.h - i * 2
 					};
-	
+
 					sdl::draw_rectangle(draw_rect, {0, 0, 0, 0});
 					++dst.x;
 					++dst.y;

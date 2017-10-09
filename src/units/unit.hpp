@@ -1688,7 +1688,7 @@ private:
 
 	std::string profile_;
 	std::string small_profile_;
-	
+
 	//Used to check whether the moving units during a move needs ot be updated
 	mutable bool appearance_changed_ = true;
 

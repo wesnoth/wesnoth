@@ -111,7 +111,7 @@ void mp_login::pre_show(window& win)
 	if(focus_password_) {
 		win.keyboard_capture(find_widget<text_box>(&win, "password", false, true));
 	}
-	
+
 	win.add_to_tab_order(&login);
 	win.add_to_tab_order(find_widget<text_box>(&win, "password", false, true));
 }

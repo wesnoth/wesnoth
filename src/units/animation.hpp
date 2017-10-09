@@ -76,12 +76,12 @@ public:
 	{
 		return unit_anim_.get_animation_time();
 	}
-	
+
 	void set_max_animation_time(int time)
 	{
 		unit_anim_.set_max_animation_time(time);
 	}
-	
+
 	int get_animation_time_potential() const
 	{
 		return unit_anim_.get_animation_time_potential();

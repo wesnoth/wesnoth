@@ -152,7 +152,7 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 		// worker thread
 		std::shared_ptr<wesnothd_connection> this_ptr = this->shared_from_this();
 		io_service_.run();
-		LOG_NW << "wesnothd_connection::io_service::run() returned\n";		
+		LOG_NW << "wesnothd_connection::io_service::run() returned\n";
 	} ));
 }
 
@@ -167,7 +167,7 @@ void wesnothd_connection::send_data(const configr_of& request)
 
 	//TODO: shoudl i capturea  shared_ptr for this?
 	io_service_.post([this, buf_ptr](){
-		DBG_NW << "In wesnothd_connection::send_data::lambda\n";		
+		DBG_NW << "In wesnothd_connection::send_data::lambda\n";
 		send_queue_.push_back(buf_ptr);
 		if (send_queue_.size() == 1) {
 			send();
@@ -376,7 +376,7 @@ bool wesnothd_connection::receive_data(config& result)
 
 wesnothd_connection::~wesnothd_connection()
 {
-	MPTEST_LOG;	
+	MPTEST_LOG;
 }
 
 //  wesnothd_connection_ptr
@@ -391,7 +391,7 @@ wesnothd_connection_ptr& wesnothd_connection_ptr::operator=(wesnothd_connection_
 	}
 	ptr_ = std::move(other.ptr_);
 	return *this;
-}	
+}
 
 wesnothd_connection_ptr wesnothd_connection::create(const std::string& host, const std::string& service)
 {

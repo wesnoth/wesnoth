@@ -93,7 +93,7 @@ struct unit_filter_adjacent : public unit_filter_base
 			dirs = map_location::parse_directions(i_adjacent);
 		}
 		for (map_location::DIRECTION dir : dirs) {
-			unit_map::const_iterator unit_itor = units.find(adjacent[dir]);			
+			unit_map::const_iterator unit_itor = units.find(adjacent[dir]);
 			if (unit_itor == units.end() || !child_.matches(unit_filter_args{*unit_itor, unit_itor->get_location(), &args.u, args.fc, args.use_flat_tod} )) {
 				continue;
 			}
@@ -158,7 +158,7 @@ class contains_dollar_visitor : public boost::static_visitor<bool>
 public:
 	contains_dollar_visitor() {}
 
-	
+
 	template<typename T>
 	bool operator()(T const &) const { return false; }
 
@@ -201,7 +201,7 @@ bool unit_filter_compound::matches(const unit_filter_args& args) const
 	// Handle [and], [or], and [not] with in-order precedence
 	for(const auto & filter : cond_children_) {
 		bool child_res = filter.second.matches(args);
-		
+
 		switch (filter.first.v) {
 		case CONDITIONAL_TYPE::AND:
 			res = res && child_res;
@@ -547,7 +547,7 @@ void unit_filter_compound::fill(vconfig cfg)
 				return false;
 			}
 		);
-		
+
 		create_attribute(literal["lua_function"],
 			[](const config::attribute_value& c) { return c.str(); },
 			[](const std::string& lua_function, const unit_filter_args& args)
@@ -586,7 +586,7 @@ void unit_filter_compound::fill(vconfig cfg)
 				}
 			}
 		);
-		
+
 		create_attribute(literal["find_in"],
 			[](const config::attribute_value& c) { return c.str(); },
 			[](const std::string& find_in, const unit_filter_args& args)
@@ -615,7 +615,7 @@ void unit_filter_compound::fill(vconfig cfg)
 		if (!literal["x"].blank() || !literal["y"].blank()) {
 			children_.emplace_back(new unit_filter_xy(literal["x"], literal["y"]));
 		}
-		
+
 		for(auto child : cfg.all_ordered()) {
 			CONDITIONAL_TYPE cond;
 			if(cond.parse(child.first)) {
@@ -683,7 +683,7 @@ void unit_filter_compound::fill(vconfig cfg)
 				errmsg << "encountered a child [" << child.first << "] of a standard unit filter, it is being ignored";
 				DBG_CF << errmsg.str() << std::endl;
 			}
-			
+
 		}
 	}
 

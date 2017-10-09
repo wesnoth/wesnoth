@@ -411,8 +411,8 @@ bool unit::has_ability_type(const std::string& ability) const
 }
 
 namespace {
-	
-	
+
+
 template<typename T, typename TFuncFormula>
 class get_ability_value_visitor : public boost::static_visitor<T>
 {
@@ -447,7 +447,7 @@ template<typename T, typename TFuncFormula>
 T get_single_ability_value(const config::attribute_value& v, T def, const map_location& sender_loc, const map_location& receiver_loc, const TFuncFormula& formula_handler)
 {
 	return v.apply_visitor(make_get_ability_value_visitor(def, [&](const std::string& s) {
-		
+
 			try {
 				assert(resources::units);
 				auto u_itor = resources::units->find(sender_loc);
@@ -1062,7 +1062,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_int();
 			});
-	
+
 			bool cumulative = cfg["cumulative"].to_bool();
 			if (!value_is_set && !cumulative) {
 				value_set = value;

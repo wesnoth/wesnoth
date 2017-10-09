@@ -167,7 +167,7 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
 	if (!t) {
 		return game_events::pump_result_t();
 	}
-	
+
 	if(grants_timebonus) {
 		t->set_action_bonus_count(1 + t->action_bonus_count());
 		*action_timebonus = true;
@@ -846,7 +846,7 @@ namespace { // Private helpers for move_unit()
 		if (track != resources::game_events->pump().wml_tracking()) {
 			// Some WML fired, so update our status.
 			post_wml(pump_res, from);
-		}		
+		}
 	}
 
 
@@ -907,10 +907,10 @@ namespace { // Private helpers for move_unit()
 			// Make sure this hex is drawn correctly.
 			disp.invalidate(hex);
 			// Fire sighted events.
-			
+
 			bool wml_undo_blocked = false;
 			bool wml_move_aborted = false;
-		
+
 			std::tie(wml_undo_blocked, wml_move_aborted) = actor_sighted(*ambusher, &sight_cache);
 			// TODO: should we call post_wml ?
 			wml_move_aborted_ |= wml_move_aborted;

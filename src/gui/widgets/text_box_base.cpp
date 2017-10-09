@@ -58,7 +58,7 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 			&text_box_base::signal_handler_sdl_key_down, this, _2, _3, _5, _6));
 	connect_signal<event::SDL_TEXT_INPUT>(std::bind(&text_box_base::handle_commit, this, _3, _5));
 	connect_signal<event::SDL_TEXT_EDITING>(std::bind(&text_box_base::handle_editing, this, _3, _5, _6, _7));
-	
+
 	connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(std::bind(
 			&text_box_base::signal_handler_receive_keyboard_focus, this, _2));
 	connect_signal<event::LOSE_KEYBOARD_FOCUS>(
@@ -573,7 +573,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			// The IME will handle it, we just need to make sure nothing else handles it too.
 			handled = true;
 			break;
-		
+
 		case SDLK_ESCAPE:
 			if(!ime_in_progress_ || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT))) {
 				return;
@@ -581,7 +581,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			interrupt_composition();
 			handled = true;
 			break;
-		
+
 		default:
 			// Don't call the text changed callback if nothing happened.
 			return;

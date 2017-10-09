@@ -349,7 +349,7 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 
 	animated<image::locator>& f = flags_[n];
 	f = temp_anim;
-	auto time = f.get_end_time(); 
+	auto time = f.get_end_time();
 	if (time > 0) {
 		f.start_animation(rand() % time, true);
 	}
@@ -2021,7 +2021,7 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 
 	//Turn the zoom factor to a double in order to avoid rounding errors.
 	double zoom_factor = double(new_zoom) / double(zoom_);
-	
+
 	xpos_ = round_double(((xpos_ + area.w / 2) * zoom_factor) - (area.w / 2));
 	ypos_ = round_double(((ypos_ + area.h / 2) * zoom_factor) - (area.h / 2));
 

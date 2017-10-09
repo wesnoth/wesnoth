@@ -73,11 +73,11 @@ namespace unit_filter_impl
 		virtual bool matches(const unit_filter_args&) const = 0;
 		virtual ~unit_filter_base() {}
 	};
-	
+
 	struct unit_filter_compound : public unit_filter_base
 	{
 		unit_filter_compound(vconfig cfg);
-		
+
 		template<typename C, typename F>
 		void create_attribute(const config::attribute_value c, C conv, F func);
 		template<typename F>
@@ -91,7 +91,7 @@ namespace unit_filter_impl
 		std::vector<std::shared_ptr<unit_filter_base>> children_;
 		std::vector<std::pair<CONDITIONAL_TYPE, unit_filter_compound>> cond_children_;
 	};
-	
+
 }
 
 class unit_filter
@@ -141,7 +141,7 @@ public:
 	bool matches(const unit & u, const map_location & loc) const {
 		return impl_.matches(unit_filter_impl::unit_filter_args{u, loc, nullptr, fc_, use_flat_tod_});
 	}
-	
+
 	/// Determine if *this matches @a filter at its current location.
 	/// (Only use for units currently on the map; otherwise use the overload
 	/// that takes a location, possibly with a null location.)
@@ -177,7 +177,7 @@ public:
 	{
 		std::vector<const unit *> ret;
 		int max_matches = max_matches_;
-		
+
 		for (const unit & u : fc_->get_disp_context().units()) {
 			if (impl_.matches(unit_filter_impl::unit_filter_args{u, loc ? *loc : u.get_location(), other_unit, fc_, use_flat_tod_})) {
 				if(max_matches == 0) {
@@ -221,7 +221,7 @@ public:
 	}
 
 private:
-	
+
 	vconfig cfg_;
 	const filter_context * fc_;
 	bool use_flat_tod_;

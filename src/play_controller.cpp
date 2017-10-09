@@ -424,7 +424,7 @@ void play_controller::maybe_do_init_side()
 
 	if (is_replay()) {
 		// We are in a replay and execute do_init_side as soon as we reach the next [init_side] in the replay data
-		// (see replay.cpp) 
+		// (see replay.cpp)
 		return;
 	}
 

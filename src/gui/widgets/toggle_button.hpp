@@ -20,7 +20,7 @@
 namespace gui2
 {
 namespace implementation
-{	
+{
 	struct builder_toggle_button;
 }
 

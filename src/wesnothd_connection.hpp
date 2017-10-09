@@ -176,9 +176,9 @@ private:
 		: ptr_(std::move(ptr))
 	{}
 public:
-	
+
 	wesnothd_connection_ptr() = default;
-	
+
 	wesnothd_connection_ptr(const wesnothd_connection_ptr&) = delete;
 	wesnothd_connection_ptr& operator=(const wesnothd_connection_ptr&) = delete;
 #if defined(_MSC_VER) &&_MSC_VER == 1800
