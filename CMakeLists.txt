@@ -163,7 +163,7 @@ option(ENABLE_PEDANTIC_COMPILATION "Sets the pedantic compilation mode" OFF)
 option(ENABLE_DEBUG_WINDOW_LAYOUT "Add the debug option to allow the generation of debug layout files in dot format" OFF)
 option(ENABLE_DESIGN_DOCUMENTS "Enables the generation of design documents, and has additional dependencies" OFF)
 option(ENABLE_LTO "Sets Link Time Optimization for Release builds" OFF)
-option(GLIBCXX_DEBUG "Whether to define _GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC" OFF)
+option(GLIBCXX_DEBUG "Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC" OFF)
 
 #misc options
 if(NOT MSVC)

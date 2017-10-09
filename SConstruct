@@ -56,7 +56,7 @@ opts.AddVariables(
     ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
     BoolVariable('enable_lto', 'Whether to enable Link Time Optimization for build=release', False),
     ('arch', 'What -march option to use for build=release, will default to pentiumpro on Windows', ""),
-    BoolVariable('glibcxx_debug', 'Whether to define _GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC for build=debug', False),
+    BoolVariable('glibcxx_debug', 'Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC for build=debug', False),
     PathVariable('bindir', 'Where to install binaries', "bin", PathVariable.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathVariable('datadir', 'read-only architecture-independent game data', "$datarootdir/$datadirname", PathVariable.PathAccept),
@@ -191,8 +191,10 @@ Important switches include:
     build=release   build the release build variant with appropriate flags
                         in build/release and copy resulting binaries
                         into distribution/working copy root.
-    build=debug     same for debug build variant, binaries will be copied with -debug suffix
+    build=debug     same for debug build variant
+                    binaries will be copied with -debug suffix
     build=profile   build with instrumentation for gprof
+                    binaries will be copied with -profile suffix
 
 With no arguments, the recipe builds wesnoth and wesnothd.  Available
 build targets include the individual binaries:
@@ -482,9 +484,9 @@ for env in [test_env, client_env, env]:
         env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
         
         if env["glibcxx_debug"] == True:
-            env["GLIBCXX_DEBUG"] = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")
+            glibcxx_debug_flags = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")
         else:
-            env["GLIBCXX_DEBUG"] = ""
+            glibcxx_debug_flags = ""
         
 # #
 # End determining options for debug build
@@ -554,10 +556,10 @@ SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 
 binaries = Split("wesnoth wesnothd campaignd test")
 builds = {
-    "base"          : dict(CCFLAGS    = Split("$OPT_COMP_FLAGS"), LINKFLAGS=Split("$OPT_LINK_FLAGS")),    # Don't build in subdirectory
-    "debug"         : dict(CCFLAGS    = Split("$DEBUG_FLAGS")   , CPPDEFINES=env["GLIBCXX_DEBUG"]),
-    "release"       : dict(CCFLAGS    = Split("$OPT_COMP_FLAGS"), LINKFLAGS=Split("$OPT_LINK_FLAGS")),
-    "profile"       : dict(CCFLAGS    = "-pg", LINKFLAGS = "-pg")
+    "base"    : dict(CCFLAGS = Split("$OPT_COMP_FLAGS"), LINKFLAGS=Split("$OPT_LINK_FLAGS")),
+    "debug"   : dict(CCFLAGS = Split("$DEBUG_FLAGS")   , CPPDEFINES=glibcxx_debug_flags),
+    "release" : dict(CCFLAGS = Split("$OPT_COMP_FLAGS"), LINKFLAGS=Split("$OPT_LINK_FLAGS")),
+    "profile" : dict(CCFLAGS = "-pg", LINKFLAGS = "-pg")
     }
 build = env["build"]
 
