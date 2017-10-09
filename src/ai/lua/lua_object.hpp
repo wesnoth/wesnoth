@@ -67,7 +67,7 @@ public:
 
 	void store(lua_State* L, int n)
 	{
-		this->value_ = std::shared_ptr<T>(to_type(L, lua_absindex(L, n)));
+		this->value_ = to_type(L, lua_absindex(L, n));
 	}
 
 protected:
@@ -108,7 +108,7 @@ inline std::shared_ptr<int> lua_object<int>::to_type(lua_State *L, int n)
 template <>
 inline std::shared_ptr< std::vector<std::string> > lua_object< std::vector<std::string> >::to_type(lua_State *L, int n)
 {
-	std::shared_ptr< std::vector<std::string> > v = std::shared_ptr< std::vector<std::string> >(new std::vector<std::string>());
+	std::shared_ptr<std::vector<std::string>> v(new std::vector<std::string>());
 	int l = lua_rawlen(L, n);
 	for (int i = 1; i < l + 1; ++i)
 	{
@@ -125,7 +125,7 @@ inline std::shared_ptr< std::vector<std::string> > lua_object< std::vector<std::
 template <>
 inline std::shared_ptr<config> lua_object<config>::to_type(lua_State *L, int n)
 {
-	std::shared_ptr<config> cfg = std::shared_ptr<config>(new config());
+	std::shared_ptr<config> cfg(new config());
 	luaW_toconfig(L, n, *cfg);
 	return cfg;
 }
@@ -133,8 +133,8 @@ inline std::shared_ptr<config> lua_object<config>::to_type(lua_State *L, int n)
 template <>
 inline std::shared_ptr<terrain_filter> lua_object<terrain_filter>::to_type(lua_State *L, int n)
 {
-	std::shared_ptr<config> cfg = std::shared_ptr<config>(new config());
-	std::shared_ptr<vconfig> vcfg = std::shared_ptr<vconfig>(new vconfig(*cfg));
+	std::shared_ptr<config> cfg(new config());
+	std::shared_ptr<vconfig> vcfg(new vconfig(*cfg));
 	if (!luaW_tovconfig(L, n, *vcfg)) {
 		cfg->add_child("not");
 	}
@@ -146,7 +146,7 @@ inline std::shared_ptr<terrain_filter> lua_object<terrain_filter>::to_type(lua_S
 template <>
 inline std::shared_ptr<std::vector<target> > lua_object< std::vector<target> >::to_type(lua_State *L, int n)
 {
-	std::shared_ptr<std::vector<target> > targets = std::shared_ptr<std::vector<target> >(new std::vector<target>());
+	std::shared_ptr<std::vector<target>> targets(new std::vector<target>());
 	std::back_insert_iterator< std::vector<target> > tg(*targets);
 	int l = lua_rawlen(L, n);
 
@@ -195,8 +195,7 @@ inline std::shared_ptr<std::vector<target> > lua_object< std::vector<target> >::
 template <>
 inline std::shared_ptr<unit_advancements_aspect> lua_object<unit_advancements_aspect>::to_type(lua_State *L, int n)
 {
-	std::shared_ptr<unit_advancements_aspect> uaa = std::shared_ptr<unit_advancements_aspect>(new unit_advancements_aspect(L, n));
-	return uaa;
+	return std::make_shared<unit_advancements_aspect>(L, n);
 }
 
 // This one is too complex to define in the header.
