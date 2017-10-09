@@ -36,7 +36,7 @@
 #pragma warning(push)
 #pragma warning(disable: 4459)
 #endif
-#include "spirit_po.hpp"
+#include "spirit_po/spirit_po.hpp"
 #if defined(__GNUC__)
 #pragma GCC diagnostic pop
 #elif defined(_MSC_VER)
