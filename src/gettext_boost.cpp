@@ -425,7 +425,13 @@ int compare(const std::string& s1, const std::string& s2)
 
 int icompare(const std::string& s1, const std::string& s2)
 {
-	return std::use_facet<bl::collator<char> >(get_manager().get_locale()).compare(bl::collator_base::secondary, s1, s2);
+#ifdef __APPLE__
+	// https://github.com/wesnoth/wesnoth/issues/2094
+	return compare(s1, s2);
+#else
+	return std::use_facet<bl::collator<char> >(get_manager().get_locale()).compare(
+			bl::collator_base::secondary, s1, s2);
+#endif
 }
 
 void init()
