@@ -6,8 +6,17 @@
 #ifndef SPIRIT_PO_CATALOG_HPP_INCLUDED
 #define SPIRIT_PO_CATALOG_HPP_INCLUDED
 
+// This isn't necessary after boost 1.57 I think but we'll leave it here for compat
+
 #ifndef BOOST_SPIRIT_USE_PHOENIX_V3
 #define BOOST_SPIRIT_USE_PHOENIX_V3
+#endif
+
+// SPIRIT_PO_NO_EXCEPTIONS used to be named SPIRIT_PO_NOEXCEPT, but we leave this
+// here to avoid breakage.
+
+#if (!defined SPIRIT_PO_NO_EXCEPTIONS) && (defined SPIRIT_PO_NOEXCEPT)
+#define SPIRIT_PO_NO_EXCEPTIONS
 #endif
 
 #include <spirit_po/catalog_metadata.hpp>
@@ -39,23 +48,23 @@ class catalog {
   typename pf_compiler::result_type pf_function_object_;
   uint singular_index_; // cached result of pf_function_object(1)
 
-#ifdef SPIRIT_PO_NOEXCEPT
+#ifdef SPIRIT_PO_NO_EXCEPTIONS
   boost::optional<std::string> error_message_;
   // if loading failed, error_message_ contains an error
   // (rather than throwing an exception)
-#endif // SPIRIT_PO_NOEXCEPT
+#endif // SPIRIT_PO_NO_EXCEPTIONS
   warning_channel_type warning_channel_;
 
   hashmap_type hashmap_;
 
 public:
-  static const char EOT = '\x4';
-  // ASCII 4 is EOT character
-  // Used to separate msg context from msgid in the hashmap, in MO files
-  // We use the same formatting system, just for consistency.
-  // c.f. https://www.gnu.org/software/gettext/manual/html_node/MO-Files.html
-
   static std::string form_context_index(const std::string & msgctxt, const std::string & id) {
+    const char EOT = static_cast<char>(4);
+    // ASCII 4 is EOT character
+    // Used to separate msg context from msgid in the hashmap, in MO files
+    // We use the same formatting system, just for consistency.
+    // c.f. https://www.gnu.org/software/gettext/manual/html_node/MO-Files.html
+
     return msgctxt + EOT + id;
   }
 
@@ -76,6 +85,7 @@ private:
 
   const std::string & get(const po_message & msg, uint plural) const {
     uint idx = (plural == 1 ? singular_index_ : pf_function_object_(plural));
+    if (idx >= msg.strings().size()) { idx = 0; }
     return msg.strings()[idx];
   }
 
@@ -114,7 +124,7 @@ private:
   }
 
 public:
-#ifdef SPIRIT_PO_NOEXCEPT
+#ifdef SPIRIT_PO_NO_EXCEPTIONS
   /***
    * Error checking (this is done so we don't have to throw exceptions from the ctor.
    */
@@ -125,7 +135,7 @@ public:
   std::string error() const {
     return *error_message_; // UB if there there is not an error message
   }
-#endif // SPIRIT_PO_NOEXCEPT
+#endif // SPIRIT_PO_NO_EXCEPTIONS
 
   /***
    * Ctors
@@ -134,6 +144,7 @@ public:
   catalog(spirit::line_pos_iterator<Iterator> & it, spirit::line_pos_iterator<Iterator> & end, warning_channel_type warn_channel = warning_channel_type(), pf_compiler compiler = pf_compiler())
     : metadata_()
     , pf_function_object_()
+    , singular_index_(0)
     , warning_channel_(warn_channel)
     , hashmap_()
   {
@@ -186,7 +197,7 @@ public:
       }
 
       msg.line_no = line_no;
-      insert_message(std::move(msg)); // for compatibility, need to insert the header message at msgid ""
+      this->insert_message(std::move(msg)); // for compatibility, need to insert the header message at msgid ""
     }
 
     // Now parse non-fuzzy messages
@@ -219,7 +230,7 @@ public:
         }
         msg.line_no = line_no;
         // only insert it if it wasn't marked fuzzy
-        if (!fuzzy) { insert_message(std::move(msg)); }
+        if (!fuzzy) { this->insert_message(std::move(msg)); }
       }
     }
 
@@ -280,7 +291,7 @@ public:
   const char * gettext(const char * msgid) const {
     auto it = hashmap_.find(msgid);
     if (it != hashmap_.end()) {
-      return get(it->second).c_str();
+      return this->get(it->second).c_str();
     } else {
       return msgid;
     }
@@ -289,7 +300,7 @@ public:
   const char * ngettext(const char * msgid, const char * msgid_plural, uint plural) const {
     auto it = hashmap_.find(msgid);
     if (it != hashmap_.end() && it->second.is_plural()) {
-      return get(it->second, plural).c_str();
+      return this->get(it->second, plural).c_str();
     } else {
       return (plural == 1 ? msgid : msgid_plural);
     }
@@ -298,7 +309,7 @@ public:
   const char * pgettext(const char * context, const char * msgid) const {
     auto it = hashmap_.find(form_context_index(context, msgid));
     if (it != hashmap_.end()) {
-      return get(it->second).c_str();
+      return this->get(it->second).c_str();
     } else {
       return msgid;
     }
@@ -307,7 +318,7 @@ public:
   const char * npgettext(const char * context, const char * msgid, const char * msgid_plural, uint plural) const {
     auto it = hashmap_.find(form_context_index(context, msgid));
     if (it != hashmap_.end() && it->second.is_plural()) {
-      return get(it->second, plural).c_str();
+      return this->get(it->second, plural).c_str();
     } else {
       return (plural == 1 ? msgid : msgid_plural);
     }
@@ -317,42 +328,77 @@ public:
    * Lookup strings from catalog, return std::string.
    *
    * When, for whatever reason, it is more comfortable to use idiomatic C++.
+   *
+   * Template arguments here should always be `std::string &&` or `const std::string &`
    */
-  std::string gettext_str(const std::string & msgid) const {
+
+private:
+  template <typename S>
+  std::string gettext_str_impl(S && msgid) const {
     auto it = hashmap_.find(msgid);
     if (it != hashmap_.end()) {
-      return get(it->second);
+      return this->get(it->second);
     } else {
-      return msgid;
+      return std::forward<S>(msgid);
     }
   }
 
-  std::string ngettext_str(const std::string & msgid, const std::string & msgid_plural, uint plural) const {
+  template <typename S1, typename S2>
+  std::string ngettext_str_impl(S1 && msgid, S2 && msgid_plural, uint plural) const {
     auto it = hashmap_.find(msgid);
     if (it != hashmap_.end() && it->second.is_plural()) {
-      return get(it->second, plural);
+      return this->get(it->second, plural);
     } else {
-      return (plural == 1 ? msgid : msgid_plural);
+      if (plural == 1) {
+        return std::forward<S1>(msgid);
+      } else {
+        return std::forward<S2>(msgid_plural);
+      }
     }
   }
 
-  std::string pgettext_str(const std::string & context, const std::string & msgid) const {
+  template <typename S>
+  std::string pgettext_str_impl(const std::string & context, S && msgid) const {
     auto it = hashmap_.find(form_context_index(context, msgid));
     if (it != hashmap_.end()) {
-      return get(it->second);
+      return this->get(it->second);
     } else {
-      return msgid;
+      return std::forward<S>(msgid);
     }
   }
 
-  std::string npgettext_str(const std::string & context, const std::string & msgid, const std::string & msgid_plural, uint plural) const {
+  template <typename S1, typename S2>
+  std::string npgettext_str_impl(const std::string & context, S1 && msgid, S2 && msgid_plural, uint plural) const {
     auto it = hashmap_.find(form_context_index(context, msgid));
     if (it != hashmap_.end() && it->second.is_plural()) {
-      return get(it->second, plural);
+      return this->get(it->second, plural);
     } else {
-      return (plural == 1 ? msgid : msgid_plural);
+      if (plural == 1) {
+        return std::forward<S1>(msgid);
+      } else {
+        return std::forward<S2>(msgid_plural);
+      }
     }
   }
+
+public:
+  // Interface to implementations above, enforcing that arguments are `std::string`.
+
+  std::string gettext_str(const std::string & msgid) const { return this->gettext_str_impl(msgid); }
+  std::string gettext_str(std::string && msgid) const { return this->gettext_str_impl(std::move(msgid)); }
+
+  std::string ngettext_str(const std::string & msgid, const std::string & msgid_plural, uint plural) const { return this->ngettext_str_impl(msgid, msgid_plural, plural); }
+  std::string ngettext_str(std::string && msgid, const std::string & msgid_plural, uint plural) const { return this->ngettext_str_impl(std::move(msgid), msgid_plural, plural); }
+  std::string ngettext_str(const std::string & msgid, std::string && msgid_plural, uint plural) const { return this->ngettext_str_impl(msgid, std::move(msgid_plural), plural); }
+  std::string ngettext_str(std::string && msgid, std::string && msgid_plural, uint plural) const { return this->ngettext_str_impl(std::move(msgid), std::move(msgid_plural), plural); }
+
+  std::string pgettext_str(const std::string & context, const std::string & msgid) const { return this->pgettext_str_impl(context, msgid); }
+  std::string pgettext_str(const std::string & context, std::string && msgid) const { return this->pgettext_str_impl(context, std::move(msgid)); }
+
+  std::string npgettext_str(const std::string & context, const std::string & msgid, const std::string & msgid_plural, uint plural) const { return this->npgettext_str_impl(context, msgid, msgid_plural, plural); }
+  std::string npgettext_str(const std::string & context, std::string && msgid, const std::string & msgid_plural, uint plural) const { return this->npgettext_str_impl(context, std::move(msgid), msgid_plural, plural); }
+  std::string npgettext_str(const std::string & context, const std::string & msgid, std::string && msgid_plural, uint plural) const { return this->npgettext_str_impl(context, msgid, std::move(msgid_plural), plural); }
+  std::string npgettext_str(const std::string & context, std::string && msgid, std::string && msgid_plural, uint plural) const { return this->npgettext_str_impl(context, std::move(msgid), std::move(msgid_plural), plural); }
 
   /***
    * Get line numbers of messages
@@ -409,7 +455,7 @@ public:
     }
     for (auto & p : other.hashmap_) {
       if (p.first.size()) { // don't copy over the header, keep our original header
-        insert_message(std::move(p.second));
+        this->insert_message(std::move(p.second));
       }
     }
   }

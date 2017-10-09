@@ -83,8 +83,8 @@ class function_object {
   boost::optional<std::string> parse_error_;
 
 public:
-  function_object(const expr & _e) : machine_(_e), parse_error_() {}
-  function_object(const std::string & s) : machine_(n_var()), parse_error_(s) {}
+  explicit function_object(const expr & _e) : machine_(_e), parse_error_() {}
+  explicit function_object(const std::string & s) : machine_(constant{0}), parse_error_(s) {}
   function_object() : function_object(std::string{"uninitialized"}) {}
 
   uint operator()(uint n) const {
@@ -113,7 +113,7 @@ struct compiler {
   }
 };
 
-} // end namespace default_plura_forms
+} // end namespace default_plural_forms
 
 } // end namespace spirit_po
 

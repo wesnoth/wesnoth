@@ -126,7 +126,7 @@ FOREACH_SPIRIT_PO_CONJUNCTION(EVAL_OP_)
  */
 
 BOOST_FUSION_ADAPT_STRUCT(spirit_po::default_plural_forms::constant,
-  (spirit_po::uint, value))
+  (unsigned int, value))
 BOOST_FUSION_ADAPT_STRUCT(spirit_po::default_plural_forms::not_op,
   (spirit_po::default_plural_forms::expr, e1))
 BOOST_FUSION_ADAPT_STRUCT(spirit_po::default_plural_forms::ternary_op,

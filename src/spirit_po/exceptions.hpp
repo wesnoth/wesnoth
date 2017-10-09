@@ -6,7 +6,6 @@
 #ifndef SPIRIT_PO_EXCEPTIONS_HPP_INCLUDED
 #define SPIRIT_PO_EXCEPTIONS_HPP_INCLUDED
 
-#include <spirit_po/default_plural_forms_expressions.hpp>
 #include <boost/spirit/include/support_line_pos_iterator.hpp>
 #include <string>
 
@@ -48,7 +47,7 @@ inline std::string string_iterator_context(const std::string & str,
 } // end namespace spirit_po
 
 
-#ifdef SPIRIT_PO_NOEXCEPT
+#ifdef SPIRIT_PO_NO_EXCEPTIONS
 
 #define SPIRIT_PO_CATALOG_FAIL(Message)                      \
 do {                                                         \
@@ -56,15 +55,15 @@ do {                                                         \
   return ;                                                   \
 } while(0)
 
-#else // SPIRIT_PO_NOEXCEPT
+#else // SPIRIT_PO_NO_EXCEPTIONS
 
 #include <stdexcept>
 
 namespace spirit_po {
 
 struct catalog_exception : std::runtime_error {
-  catalog_exception(const char * what) : runtime_error(what) {}
-  catalog_exception(const std::string & what) : runtime_error(what) {}
+  explicit catalog_exception(const char * what) : runtime_error(what) {}
+  explicit catalog_exception(const std::string & what) : runtime_error(what) {}
 };
 
 } // end namespace spirit_po
@@ -75,6 +74,6 @@ do {                                                         \
 } while(0)
 
 
-#endif // SPIRIT_PO_NOEXCEPT
+#endif // SPIRIT_PO_NO_EXCEPTIONS
 
 #endif // SPIRIT_PO_EXCEPTIONS_HPP_INCLUDED

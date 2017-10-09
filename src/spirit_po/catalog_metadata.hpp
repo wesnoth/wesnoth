@@ -66,7 +66,7 @@ private:
     }
   };
 
-#define DEFAULT_CHARSET "UTF-8"
+#define SPIRIT_PO_DEFAULT_CHARSET "UTF-8"
 
   template <typename Iterator>
   struct content_type_grammar : qi::grammar<Iterator, std::string()> {
@@ -75,15 +75,15 @@ private:
       using qi::lit;
       using qi::omit;
       using qi::skip;
-      main = skip(' ')[ omit[ *(qi::char_ - ';') >> lit(';') ] >> ((lit("charset=") >> *(qi::char_)) | qi::attr(DEFAULT_CHARSET)) ];
+      main = skip(' ')[ omit[ *(qi::char_ - ';') >> lit(';') ] >> ((lit("charset=") >> *(qi::char_)) | qi::attr(SPIRIT_PO_DEFAULT_CHARSET)) ];
     }
   };
 
 public:
   // nonempty return is an error mesage
   std::string parse_header(const std::string & header) {
-    const char * default_charset = DEFAULT_CHARSET;
-#undef DEFAULT_CHARSET
+    const char * const default_charset = SPIRIT_PO_DEFAULT_CHARSET;
+#undef SPIRIT_PO_DEFAULT_CHARSET
 
     project_id = find_header_line(header, "Project-Id-Version:");
     language = find_header_line(header, "Language:");
