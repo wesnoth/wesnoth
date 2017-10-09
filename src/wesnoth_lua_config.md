@@ -1,11 +1,11 @@
 # Lua for Wesnoth
 
-This document describes the process used to install Lua 5.3.3 for Wesnoth.
+This document describes the process used to install Lua 5.3.4 for Wesnoth.
 
 The goal of this process was, as much as possible, install clean, unchanged sources.
 Traditionally, Wesnoth maintainers have made changes directly to the Lua source kit.
 __This is strongly discouraged.__
-Future maintainers should strive, as much as possible, to follow a simliar process.
+Future maintainers should strive, as much as possible, to follow a similar process.
 
 The process, below, involves a number of separate commits; this makes the upgrade history easier to follow.
 The primary commit, after replacing the sources, is usually unreadable since it contains thousands of changes.
@@ -21,25 +21,25 @@ And be sure you are working in a private branch.
         $ cd ~/wesnoth
         $ git checkout master
         $ git pull --rebase upstream master
-        $ git checkout -b Upgrade_to_Lua-5.3.3
+        $ git checkout -b Upgrade_to_Lua-5.3.4
 
 ## 2) Update Lua Source
 
 Download the current source kit from [the Lua maintainers](http://www.lua.org).
-For Lua 5.3.3, this was <http://www.lua.org/ftp/lua-5.3.3.tag.gz>.
+For Lua 5.3.4, this was <http://www.lua.org/ftp/lua-5.3.4.tag.gz>.
 The following presumes you are working on Unix.
 Windows is a bit more work, but generally follows the same process.
 
         $ cd ~
-        $ wget http://www.lua.org/ftp/lua-5.3.3.tar.gz
+        $ wget http://www.lua.org/ftp/lua-5.3.4.tar.gz
 
 Unpack into your home folder.
 
-        $ tar -zxf lua-5.3.3.tar.gz
+        $ tar -zxf lua-5.3.4.tar.gz
 
 Change into the Lua source folder.
 
-        $ cd ~/lua-5.3.3/src
+        $ cd ~/lua-5.3.4/src
 
 We do not need, or want, the Lua command line interpreter, the Lua compiler or the Makefile, so delete them.
 We compile using C++ so cannot allow the use of "C" linkage from the provided header.
@@ -53,7 +53,7 @@ To ensure  this, rather than depend upon compiler flags, rename the files.
         $ for FILENAME in *.c; do mv "$FILENAME" "`basename $FILENAME .c`.cpp"; done
 
 Delete the entire Lua source from Wesnoth.
-Be careful not to delete the `COPYRIGHT` and `SConscript` files.
+Be careful not to delete the `COPYRIGHT` file.
 After removing the old sources, these should be the only files remaining.
 
         $ rm ~/wesnoth/src/lua/*.h
@@ -74,7 +74,7 @@ Replace the copyright notice in the `COPYRIGHT` file.
 ## 4) Update SCons and CMake
 
 Remember to review the source kit for added and removed files, and change the SCons and CMake configuration, as needed.
-For Lua, the SCons configuration file is `~/wesnoth/src/lua/SConscript`, and the CMake configuration is part of `~/wesnoth/src/CMakeLists.txt`.
+Both build systems' build lists are in `~/wesnoth/source_lists/lua`.
 Verify the files listed match the C++ source files just copied in; order is not important, headers are not listed.
 
 Updating the project files for other target platforms is optional at this point.
@@ -83,13 +83,13 @@ Updating the project files for other target platforms is optional at this point.
 
         $ cd ~/wesnoth
         $ git add .
-        $ git commit -m 'Upgrade to Lua 5.3.3'
+        $ git commit -m 'Upgrade to Lua 5.3.4'
 
 ## 6) Apply official patches
 
 Often there will be patches available against the Lua release.
 Generally, these can be applied using `patch`, but obtaining clean patch files takes some looking.
-Hand-appling the patches may be easier.
+Hand-applying the patches may be easier.
 The patches can be [viewed online](http://www.lua.org/bugs.html).
 
 __Apply each patch as a separate commit.__
@@ -126,7 +126,7 @@ __Separately commit these adjustments.__
 
 ## 10) Check Mainline
 
-Finally, read the Lua manual section on incompatibilties with older versions.
+Finally, read the Lua manual section on incompatibilities with older versions.
 Be sure to check all mainline Lua modules to ensure any deprecated or removed Lua functions are updated.
 
 __Commit any changes needed.__
