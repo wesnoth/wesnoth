@@ -137,6 +137,7 @@ private:
 	pathfind::marked_route current_route_;
 	pathfind::paths current_paths_;
 	bool unselected_paths_;
+	bool unselected_reach_;
 	int path_turns_;
 	int side_num_;
 

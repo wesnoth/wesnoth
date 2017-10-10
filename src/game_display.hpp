@@ -105,7 +105,7 @@ public:
 	void highlight_another_reach(const pathfind::paths &paths_list);
 
 	/** Reset highlighting of paths. */
-	void unhighlight_reach();
+	bool unhighlight_reach();
 
 	/**
 	 * Sets the route along which footsteps are drawn to show movement of a

@@ -485,7 +485,12 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 
 bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 {
-	return (selected_hex_.valid() ? false : sdl::point_in_rect(x, y, gui().map_area()));
+	if(selected_hex_.valid() || unselected_reach_) {
+		unselected_reach_ = false;
+		return false;
+	}
+
+	return sdl::point_in_rect(x, y, gui().map_area());
 }
 
 void mouse_handler::select_or_action(bool browse)
@@ -784,7 +789,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		gui_->highlight_another_reach(reaching_unit_locations);
 	} else {
 		if(!pc_.gamestate().board_.units_.find(last_hex_)) {
-			gui_->unhighlight_reach();
+			unselected_reach_ = gui_->unhighlight_reach();
 		}
 
 		current_paths_ = pathfind::paths();
