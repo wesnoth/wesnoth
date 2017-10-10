@@ -65,7 +65,7 @@ public:
 
 	virtual double evaluate()
 	{
-		lua_int_obj l_obj = lua_int_obj(new lua_object<int>());
+		lua_int_obj l_obj(new lua_object<int>());
 
 		if (evaluation_action_handler_) {
 			evaluation_action_handler_->handle(serialized_evaluation_state_, true, l_obj);
@@ -104,8 +104,8 @@ public:
 	lua_candidate_action_wrapper( rca_context &context, const config &cfg, lua_ai_context &lua_ai_ctx)
 		: lua_candidate_action_wrapper_base(context,cfg),evaluation_(cfg["evaluation"]),execution_(cfg["execution"])
 	{
-		evaluation_action_handler_ = std::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(evaluation_.c_str(),lua_ai_ctx));
-		execution_action_handler_ = std::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(execution_.c_str(),lua_ai_ctx));
+		evaluation_action_handler_.reset(resources::lua_kernel->create_lua_ai_action_handler(evaluation_.c_str(),lua_ai_ctx));
+		execution_action_handler_.reset(resources::lua_kernel->create_lua_ai_action_handler(execution_.c_str(),lua_ai_ctx));
 	}
 
 	virtual ~lua_candidate_action_wrapper() {}
@@ -137,8 +137,8 @@ public:
 		std::string exec_code;
 		generate_code(eval_code, exec_code);
 
-		evaluation_action_handler_ = std::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(eval_code.c_str(),lua_ai_ctx));
-		execution_action_handler_ = std::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(exec_code.c_str(),lua_ai_ctx));
+		evaluation_action_handler_.reset(resources::lua_kernel->create_lua_ai_action_handler(eval_code.c_str(),lua_ai_ctx));
+		execution_action_handler_.reset(resources::lua_kernel->create_lua_ai_action_handler(exec_code.c_str(),lua_ai_ctx));
 	}
 
 	virtual ~lua_candidate_action_wrapper_external() {}
@@ -180,7 +180,7 @@ public:
 		, bound_unit_()
 	{
 		map_location loc(cfg["unit_x"], cfg["unit_y"], wml_loc()); // lua and c++ coords differ by one
-		bound_unit_ = unit_ptr(new unit(*resources::gameboard->units().find(loc)));
+		bound_unit_.reset(new unit(*resources::gameboard->units().find(loc)));
 	}
 
 	virtual double evaluate()
@@ -211,7 +211,7 @@ public:
 	lua_stage_wrapper( ai_context &context, const config &cfg, lua_ai_context &lua_ai_ctx )
 		: stage(context,cfg),action_handler_(),code_(cfg["code"]),serialized_evaluation_state_(cfg.child_or_empty("args"))
 	{
-		action_handler_ =  std::shared_ptr<lua_ai_action_handler>(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(),lua_ai_ctx));
+		action_handler_.reset(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(),lua_ai_ctx));
 	}
 
 	virtual ~lua_stage_wrapper()
@@ -305,14 +305,14 @@ void engine_lua::do_parse_candidate_action_from_config( rca_context &context, co
 	if (!cfg["sticky"].to_bool())
 	{
 		if (cfg.has_attribute("location")) {
-			ca_ptr = candidate_action_ptr(new lua_candidate_action_wrapper_external(context,cfg,*lua_ai_context_));
+			ca_ptr.reset(new lua_candidate_action_wrapper_external(context,cfg,*lua_ai_context_));
 		} else {
-			ca_ptr = candidate_action_ptr(new lua_candidate_action_wrapper(context,cfg,*lua_ai_context_));
+			ca_ptr.reset(new lua_candidate_action_wrapper(context,cfg,*lua_ai_context_));
 		}
 	}
 	else
 	{
-		ca_ptr = candidate_action_ptr(new lua_sticky_candidate_action_wrapper(context,cfg,*lua_ai_context_));
+		ca_ptr.reset(new lua_sticky_candidate_action_wrapper(context,cfg,*lua_ai_context_));
 	}
 
 	if (ca_ptr) {
@@ -330,7 +330,7 @@ void engine_lua::do_parse_stage_from_config( ai_context &context, const config &
 		return;
 	}
 
-	stage_ptr st_ptr = stage_ptr(new lua_stage_wrapper(context,cfg,*lua_ai_context_));
+	stage_ptr st_ptr(new lua_stage_wrapper(context,cfg,*lua_ai_context_));
 	if (st_ptr) {
 		st_ptr->on_create();
 		*b = st_ptr;
