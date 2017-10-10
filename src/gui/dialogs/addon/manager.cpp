@@ -694,9 +694,9 @@ void addon_manager::publish_addon(const addon_info& addon, window& window)
 				//       stuff (having a scroll container is especially
 				//       important since a long list can cause the dialog to
 				//       overflow).
-				gui2::show_error_message(window.video(), msg + "\n\n" + extra_data);
+				gui2::show_error_message(window.video(), msg + "\n\n" + extra_data, true);
 			} else {
-				gui2::show_error_message(window.video(), msg);
+				gui2::show_error_message(window.video(), msg, true);
 			}
 		} else {
 			gui2::show_transient_message(window.video(), _("Response"), server_msg);
