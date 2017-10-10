@@ -15,10 +15,16 @@ Version 1.13.10:
    * Upgrade to Lua 5.3.4.
  * Multiplayer:
    * Fixed a bug where the client would return to titlescreen on receiving a
-     redirect message from the server, which made connecting to the official server
-     via the "connect to official server" button impossible.
+     redirect message from the server, which made connecting to the official
+     server via the "connect to official server" button impossible.
  * Miscellaneous and Bug Fixes:
    * Updated our included Spirit Po version from 1.0.1 to 1.1.2.
+   * Fix idle AI being replaced by default AI under certain circumstances on
+     loading of mid-scenario saves (bug #1955)
+   * Fix rare AI crashes in the move-to-any-target candidate action and the
+     Fast Micro AI
+   * Fix poisoner FAI to prevent flood of error messages in Legend of Wesmere
+     (bug #1999)
 
 Version 1.13.9:
  * Add-ons client:
