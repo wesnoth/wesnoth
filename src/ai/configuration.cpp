@@ -114,20 +114,32 @@ void configuration::add_mod_ai_from_config(config::const_child_itors mods)
 	}
 }
 
-std::vector<description*> configuration::get_available_ais(){
+std::vector<description*> configuration::get_available_ais()
+{
 	std::vector<description*> ais_list;
-	for(description_map::iterator desc = ai_configurations_.begin(); desc!=ai_configurations_.end(); ++desc) {
-		ais_list.push_back(&desc->second);
-		DBG_AI_CONFIGURATION << "has ai with config: "<< std::endl << desc->second.cfg<< std::endl;
+
+	for(auto& a_config : ai_configurations_) {
+		ais_list.push_back(&a_config.second);
+		DBG_AI_CONFIGURATION << "has ai with config: "<< std::endl << a_config.second.cfg<< std::endl;
 	}
-	for(description_map::iterator desc = era_ai_configurations_.begin(); desc!=era_ai_configurations_.end(); ++desc) {
-		ais_list.push_back(&desc->second);
-		DBG_AI_CONFIGURATION << "has ai with config: "<< std::endl << desc->second.cfg<< std::endl;
+
+	for(auto& e_config : era_ai_configurations_) {
+		ais_list.push_back(&e_config.second);
+		DBG_AI_CONFIGURATION << "has ai with config: "<< std::endl << e_config.second.cfg<< std::endl;
 	}
-	for(description_map::iterator desc = mod_ai_configurations_.begin(); desc!=mod_ai_configurations_.end(); ++desc) {
-		ais_list.push_back(&desc->second);
-		DBG_AI_CONFIGURATION << "has ai with config: "<< std::endl << desc->second.cfg<< std::endl;
+
+	for(auto& m_config : mod_ai_configurations_) {
+		ais_list.push_back(&m_config.second);
+		DBG_AI_CONFIGURATION << "has ai with config: "<< std::endl << m_config.second.cfg<< std::endl;
 	}
+
+	// Remove any AIs marked hidden.
+	const auto new_end = std::remove_if(ais_list.begin(), ais_list.end(),
+		[](description* d) { return d->cfg["hidden"].to_bool(false); }
+	);
+
+	ais_list.erase(new_end, ais_list.end());
+
 	return ais_list;
 }
 
