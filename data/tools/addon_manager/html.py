@@ -184,7 +184,7 @@ def urlencode(text):
         return text
     return urllib.parse.quote(text, encoding='utf-8')
 
-def output(path, url, data):
+def output(path, url, datadir, data):
     """Write the HTML index of add-ons into the specified directory."""
     try:
         os.mkdir(path)
@@ -197,7 +197,7 @@ def output(path, url, data):
         outfile.write(line + "\n")
 
     am_dir = os.path.dirname(__file__) + "/"
-    root_dir = am_dir + "../../../"
+    root_dir = datadir + "/" if datadir is not None else am_dir + "../../../"
     images_to_tc = []
 
     # Copy required HTML assets into the destination dir.

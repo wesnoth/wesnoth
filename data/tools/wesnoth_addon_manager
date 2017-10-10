@@ -82,6 +82,9 @@ if __name__ == "__main__":
     argumentparser.add_argument("--url", help="When used with --html, " +
         "a download link will be added for each campaign, with the given " +
         "base URL.")
+    argumentparser.add_argument("--datadir", help="When used with --html, " +
+        "specifies the Wesnoth data dir where add-on icons will be copied " +
+        "from.")
     argumentparser.add_argument("-U", "--unpack",
         help="unpack the file UNPACK as a binary WML packet " +
         "(specify the add-on path with -c)")
@@ -412,7 +415,7 @@ if __name__ == "__main__":
             del cs
         if campaign_list:
             import addon_manager.html
-            addon_manager.html.output(args.html, args.url,
+            addon_manager.html.output(args.html, args.url, args.datadir,
                 campaign_list)
         else:
             sys.stderr.write("Could not retrieve campaign list " +
