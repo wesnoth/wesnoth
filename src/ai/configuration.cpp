@@ -119,24 +119,25 @@ std::vector<description*> configuration::get_available_ais()
 	std::vector<description*> ais_list;
 
 	const auto add_if_not_hidden = [&ais_list](description* d) {
+		const config& cfg = d->cfg;
+
 		if(!d->cfg["hidden"].to_bool(false)) {
 			ais_list.push_back(d);
+
+			DBG_AI_CONFIGURATION << "has ai with config: " << std::endl << cfg << std::endl;
 		}
 	};
 
 	for(auto& a_config : ai_configurations_) {
 		add_if_not_hidden(&a_config.second);
-		DBG_AI_CONFIGURATION << "has ai with config: "<< std::endl << a_config.second.cfg<< std::endl;
 	}
 
 	for(auto& e_config : era_ai_configurations_) {
 		add_if_not_hidden(&e_config.second);
-		DBG_AI_CONFIGURATION << "has ai with config: "<< std::endl << e_config.second.cfg<< std::endl;
 	}
 
 	for(auto& m_config : mod_ai_configurations_) {
 		add_if_not_hidden(&m_config.second);
-		DBG_AI_CONFIGURATION << "has ai with config: "<< std::endl << m_config.second.cfg<< std::endl;
 	}
 
 	return ais_list;
