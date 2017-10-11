@@ -4,7 +4,7 @@ from subprocess import Popen, PIPE
 import os, shutil
 import re
 from fnmatch import fnmatch
-from os.path import join, walk
+from os.path import join
 Import("env")
 
 def remove_pot_cdate(path):
@@ -33,13 +33,13 @@ if "pot-update" in COMMAND_LINE_TARGETS:
     def fill_source_list(arg, dir, files):
         for file in files:
             if fnmatch(file, "*.[hc]pp"):
-                match = re.search('^#define\\s+GETTEXT_DOMAIN\\s+"wesnoth(-.*)"', Dir(dir).File(file).get_contents(), re.MULTILINE)
+                match = re.search('^#define\\s+GETTEXT_DOMAIN\\s+"wesnoth(-.*)"', Dir(dir).File(file).get_contents().decode("utf-8"), re.MULTILINE)
                 if match:
                     source_domain = match.group(1)
                 else:
                     source_domain = ""
                 domain_sources[source_domain].append(Dir(dir).File(file).path)
-    walk("../src", fill_source_list, None)
+    os.walk("../src", fill_source_list, None)
 
     for domain in textdomains:
         pot = File(join(domain, domain + ".pot"))
@@ -68,7 +68,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
         cfgs = []
         FINDCFG = join(domain, "FINDCFG")
         if os.path.exists(FINDCFG):
-            cfgs = Split(Popen(["sh", join("po", FINDCFG)], stdout = PIPE, cwd = "..").communicate()[0])
+            cfgs = Split(Popen(["sh", join("po", FINDCFG)], stdout = PIPE, cwd = "..").communicate()[0].decode("utf-8"))
         cfgs = [File(x, Dir("..")) for x in cfgs]
         if cfgs:
             wml_pot = env.Command(

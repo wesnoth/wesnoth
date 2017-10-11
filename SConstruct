@@ -17,7 +17,7 @@ from os import access, F_OK
 # Warn user of current set of build options.
 AddOption('--option-cache', dest='option_cache', nargs=1, type = 'string', action = 'store', metavar = 'FILE', help='file with cached construction variables', default = '.scons-option-cache')
 if os.path.exists(GetOption("option_cache")):
-    optfile = file(GetOption("option_cache"))
+    optfile = open(GetOption("option_cache"))
     print("Saved options: {}".format(optfile.read().replace("\n", ", ")[:-2]))
     optfile.close()
 
@@ -26,7 +26,7 @@ if os.path.exists(GetOption("option_cache")):
 #
 
 config_h_re = re.compile(r"^.*#define\s*(\S*)\s*\"(\S*)\".*$", re.MULTILINE)
-build_config = dict( config_h_re.findall(File("src/wesconfig.h").get_contents()) )
+build_config = dict( config_h_re.findall(File("src/wesconfig.h").get_contents().decode("utf-8")) )
 try:
     version = build_config["VERSION"]
     print("Building Wesnoth version %s" % version)
@@ -231,7 +231,7 @@ specifying --option-cache=FILE command line argument. Current option values can 
 
 If you set CXXFLAGS and/or LDFLAGS in the environment, the values will
 be appended to the appropriate variables within scons.
-""" + opts.GenerateHelpText(env, sort=cmp))
+""" + opts.GenerateHelpText(env))
 
 if GetOption("help"):
     Return()
@@ -619,7 +619,7 @@ def CopyFilter(fn):
 
 env["copy_filter"] = CopyFilter
 
-linguas = Split(File("po/LINGUAS").get_contents())
+linguas = Split(File("po/LINGUAS").get_contents().decode("utf-8"))
 
 def InstallManpages(env, component):
     env.InstallData("mandir", component, os.path.join("doc", "man", component + ".6"), "man6")
