@@ -84,25 +84,25 @@ protected:
 template <>
 inline std::shared_ptr<double> lua_object<double>::to_type(lua_State *L, int n)
 {
-	return std::shared_ptr<double>(new double(lua_tonumber(L, n)));
+	return std::make_shared<double>(lua_tonumber(L, n));
 }
 
 template <>
 inline std::shared_ptr<std::string> lua_object<std::string>::to_type(lua_State *L, int n)
 {
-	return std::shared_ptr<std::string>(new std::string(lua_tostring(L, n)));
+	return std::make_shared<std::string>(lua_tostring(L, n));
 }
 
 template <>
 inline std::shared_ptr<bool> lua_object<bool>::to_type(lua_State *L, int n)
 {
-	return std::shared_ptr<bool>(new bool(luaW_toboolean(L, n)));
+	return std::make_shared<bool>(luaW_toboolean(L, n));
 }
 
 template <>
 inline std::shared_ptr<int> lua_object<int>::to_type(lua_State *L, int n)
 {
-	return std::shared_ptr<int>(new int(static_cast<int>(lua_tointeger(L, n))));
+	return std::make_shared<int>(static_cast<int>(lua_tointeger(L, n)));
 }
 
 template <>
