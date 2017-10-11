@@ -57,7 +57,7 @@ opts.AddVariables(
     BoolVariable('enable_lto', 'Whether to enable Link Time Optimization for build=release', False),
     ('arch', 'What -march option to use for build=release, will default to pentiumpro on Windows', ""),
     BoolVariable('glibcxx_debug', 'Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC for build=debug', False),
-    EnumVariable('profiler', 'profiler to be used for build=profile', "gprof", ["gprof", "gcov", "gperftools"]),
+    EnumVariable('profiler', 'profiler to be used for build=profile', "gprof", ["gprof", "gcov", "gperftools", "perf"]),
     PathVariable('bindir', 'Where to install binaries', "bin", PathVariable.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathVariable('datadir', 'read-only architecture-independent game data', "$datarootdir/$datadirname", PathVariable.PathAccept),
@@ -532,6 +532,10 @@ for env in [test_env, client_env, env]:
         if env["profiler"] == "gperftools":
             prof_comp_flags = ""
             prof_link_flags = "-Wl,--no-as-needed,-lprofiler"
+        
+        if env["profiler"] == "perf":
+            prof_comp_flags = Split("-ggdb -Og")
+            prof_link_flags = ""
         
 # #
 # End setting options for profile build
