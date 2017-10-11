@@ -121,7 +121,7 @@ std::vector<description*> configuration::get_available_ais()
 	const auto add_if_not_hidden = [&ais_list](description* d) {
 		const config& cfg = d->cfg;
 
-		if(!d->cfg["hidden"].to_bool(false)) {
+		if(!cfg["hidden"].to_bool(false)) {
 			ais_list.push_back(d);
 
 			DBG_AI_CONFIGURATION << "has ai with config: " << std::endl << cfg << std::endl;
