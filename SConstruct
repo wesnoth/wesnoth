@@ -57,6 +57,7 @@ opts.AddVariables(
     BoolVariable('enable_lto', 'Whether to enable Link Time Optimization for build=release', False),
     ('arch', 'What -march option to use for build=release, will default to pentiumpro on Windows', ""),
     BoolVariable('glibcxx_debug', 'Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC for build=debug', False),
+    EnumVariable('profiler', 'profiler to be used for build=profile', "gprof", ["gprof", "gcov", "gperftools"]),
     PathVariable('bindir', 'Where to install binaries', "bin", PathVariable.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathVariable('datadir', 'read-only architecture-independent game data', "$datarootdir/$datadirname", PathVariable.PathAccept),
@@ -193,7 +194,7 @@ Important switches include:
                         into distribution/working copy root.
     build=debug     same for debug build variant
                     binaries will be copied with -debug suffix
-    build=profile   build with instrumentation for gprof
+    build=profile   build with instrumentation for a supported profiler
                     binaries will be copied with -profile suffix
 
 With no arguments, the recipe builds wesnoth and wesnothd.  Available
@@ -517,6 +518,23 @@ for env in [test_env, client_env, env]:
 
 # #
 # End setting options for release build
+# Start setting options for profile build
+# #
+        
+        if env["profiler"] == "gprof":
+            prof_comp_flags = "-pg"
+            prof_link_flags = "-pg"
+        
+        if env["profiler"] == "gcov":
+            prof_comp_flags = Split("-fprofile-arcs -ftest-coverage")
+            prof_link_flags = "-fprofile-arcs"
+        
+        if env["profiler"] == "gperftools":
+            prof_comp_flags = ""
+            prof_link_flags = "-Wl,--no-as-needed,-lprofiler"
+        
+# #
+# End setting options for profile build
 # #
 
     if "clang" in env["CXX"]:
@@ -556,10 +574,10 @@ SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 
 binaries = Split("wesnoth wesnothd campaignd test")
 builds = {
-    "base"    : dict(CCFLAGS = Split("$OPT_COMP_FLAGS"), LINKFLAGS=Split("$OPT_LINK_FLAGS")),
-    "debug"   : dict(CCFLAGS = Split("$DEBUG_FLAGS")   , CPPDEFINES=glibcxx_debug_flags),
-    "release" : dict(CCFLAGS = Split("$OPT_COMP_FLAGS"), LINKFLAGS=Split("$OPT_LINK_FLAGS")),
-    "profile" : dict(CCFLAGS = "-pg", LINKFLAGS = "-pg")
+    "base"    : dict(CCFLAGS = Split("$OPT_COMP_FLAGS"), LINKFLAGS  = Split("$OPT_LINK_FLAGS")),
+    "debug"   : dict(CCFLAGS = Split("$DEBUG_FLAGS")   , CPPDEFINES = glibcxx_debug_flags),
+    "release" : dict(CCFLAGS = Split("$OPT_COMP_FLAGS"), LINKFLAGS  = Split("$OPT_LINK_FLAGS")),
+    "profile" : dict(CCFLAGS = prof_comp_flags         , LINKFLAGS  = prof_link_flags)
     }
 build = env["build"]
 
