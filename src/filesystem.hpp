@@ -54,6 +54,9 @@ enum file_name_option { ENTIRE_FILE_PATH, FILE_NAME_ONLY };
 enum file_filter_option { NO_FILTER, SKIP_MEDIA_DIR, SKIP_PBL_FILES };
 enum file_reorder_option { DONT_REORDER, DO_REORDER };
 
+/** Some tasks to run on startup. */
+void init();
+
 /**
  * Populates 'files' with all the files and
  * 'dirs' with all the directories in dir.

@@ -1003,6 +1003,8 @@ int main(int argc, char** argv)
 #endif
 #endif //_OPENMP
 
+	filesystem::init();
+
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
 		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
 		return(1);

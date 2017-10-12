@@ -43,6 +43,7 @@ using boost::uintmax_t;
 #include "config.hpp"
 #include "game_config.hpp"
 #include "log.hpp"
+#include "serialization/unicode_cast.hpp"
 #include "version.hpp"
 
 static lg::log_domain log_filesystem("filesystem");
@@ -189,11 +190,41 @@ namespace {
 	};
 
 	static static_runner static_bfs_path_imbuer;
+
+	typedef DWORD(WINAPI *GetFinalPathNameByHandleWPtr)(HANDLE, LPWSTR, DWORD, DWORD);
+	static GetFinalPathNameByHandleWPtr dyn_GetFinalPathNameByHandle;
 #endif
+
+	bool is_filename_case_correct(const std::string& fname, const boost::iostreams::file_descriptor_source& fd)
+	{
+#ifdef _WIN32
+		if(dyn_GetFinalPathNameByHandle == nullptr) {
+			// Windows XP. Just assume that the case is correct.
+			return true;
+		}
+
+		wchar_t real_path[MAX_PATH];
+		dyn_GetFinalPathNameByHandle(fd.handle(), real_path, MAX_PATH - 1, VOLUME_NAME_NONE);
+		std::string real_name = filesystem::base_name(unicode_cast<std::string>(std::wstring(real_path)));
+		return real_name == filesystem::base_name(fname);
+#else
+		return true;
+#endif
+	}
 }
 
 
 namespace filesystem {
+
+void init()
+{
+#ifdef _WIN32
+	HMODULE kernel32 = GetModuleHandle(TEXT("Kernel32.dll"));
+	// Note that this returns a null pointer on Windows XP!
+	dyn_GetFinalPathNameByHandle = reinterpret_cast<GetFinalPathNameByHandleWPtr>(
+		GetProcAddress(kernel32, "GetFinalPathNameByHandleW"));
+#endif
+}
 
 static void push_if_exists(std::vector<std::string> *vec, const path &file, bool full) {
 	if (vec != nullptr) {
@@ -779,6 +810,11 @@ filesystem::scoped_istream istream_file(const std::string &fname, bool treat_fai
 		//TODO: has this still use ?
 		if (!fd.is_open() && treat_failure_as_error) {
 			ERR_FS << "Could not open '" << fname << "' for reading.\n";
+		} else if (!is_filename_case_correct(fname, fd)) {
+			ERR_FS << "Not opening '" << fname << "' due to case mismatch.\n";
+			filesystem::scoped_istream s(new bfs::ifstream());
+			s->clear(std::ios_base::failbit);
+			return s;
 		}
 		return filesystem::scoped_istream(new boost::iostreams::stream<boost::iostreams::file_descriptor_source>(fd, 4096, 0));
 	}
