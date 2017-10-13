@@ -107,7 +107,7 @@ include(SearchForStuff)
 # optimization (c.f. bug #23445), work around this by enforcing "release" type
 # if nothing was selected
 if(NOT CMAKE_BUILD_TYPE)
-	set( CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
+	set( CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release Profile RelWithDebInfo MinSizeRel." FORCE)
 endif(NOT CMAKE_BUILD_TYPE)
 
 if(NOT DEFINED ENABLE_DISPLAY_REVISION)
@@ -583,13 +583,46 @@ set(CMAKE_C_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3" CACHE STRING "change cmake's Debug 
 
 # adds GLIBCXX_DEBUG definitions
 if(GLIBCXX_DEBUG)
-  MESSAGE("Defining _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC")
-  add_definitions(-D_GLIBCXX_DEBUG)
-  add_definitions(-D_GLIBCXX_DEBUG_PEDANTIC)
+	MESSAGE("Defining _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC")
+	add_definitions(-D_GLIBCXX_DEBUG)
+	add_definitions(-D_GLIBCXX_DEBUG_PEDANTIC)
 endif(GLIBCXX_DEBUG)
 
 # #
 # End setting options for Debug build
+# Start setting options for Profile build
+# #
+
+if(PROFILER STREQUAL "gprof" OR NOT PROFILER)
+	MESSAGE("Profiler is gprof")
+	set(CMAKE_CXX_FLAGS_PROFILE "-pg" CACHE STRING "Flags for profiling with gprof" FORCE)
+	set(CMAKE_C_FLAGS_PROFILE "-pg" CACHE STRING "Flags for profiling with gprof" FORCE)
+	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "" CACHE STRING "" FORCE)
+endif()
+
+if(PROFILER STREQUAL "gcov")
+	MESSAGE("Profiler is gcov")
+	set(CMAKE_CXX_FLAGS_PROFILE "-fprofile-arcs -ftest-coverage" CACHE STRING "Flags for profiling with gcov" FORCE)
+	set(CMAKE_C_FLAGS_PROFILE "-fprofile-arcs -ftest-coverage" CACHE STRING "Flags for profiling with gcov" FORCE)
+	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "" CACHE STRING "" FORCE)
+endif()
+
+if(PROFILER STREQUAL "gperftools")
+	MESSAGE("Profiler is gperftools")
+	set(CMAKE_CXX_FLAGS_PROFILE "" CACHE STRING "Flags for profiling with gperftools" FORCE)
+	set(CMAKE_C_FLAGS_PROFILE "" CACHE STRING "Flags for profiling with gperftools" FORCE)
+	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "-Wl,--no-as-needed,-lprofiler" CACHE STRING "" FORCE)
+endif()
+
+if(PROFILER STREQUAL "perf")
+	MESSAGE("Profiler is perf")
+	set(CMAKE_CXX_FLAGS_PROFILE "-ggdb -Og" CACHE STRING "Flags for profiling with perf" FORCE)
+	set(CMAKE_C_FLAGS_PROFILE "-ggdb -Og" CACHE STRING "Flags for profiling with perf" FORCE)
+	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "" CACHE STRING "" FORCE)
+endif()
+
+# #
+# End setting options for Profile build
 # #
 
 # When the path starts with a / on a Unix system it's an absolute path.
