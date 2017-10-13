@@ -193,11 +193,9 @@ namespace {
 
 	typedef DWORD(WINAPI *GetFinalPathNameByHandleWPtr)(HANDLE, LPWSTR, DWORD, DWORD);
 	static GetFinalPathNameByHandleWPtr dyn_GetFinalPathNameByHandle;
-#endif
 
 	bool is_filename_case_correct(const std::string& fname, const boost::iostreams::file_descriptor_source& fd)
 	{
-#ifdef _WIN32
 		if(dyn_GetFinalPathNameByHandle == nullptr) {
 			// Windows XP. Just assume that the case is correct.
 			return true;
@@ -207,10 +205,14 @@ namespace {
 		dyn_GetFinalPathNameByHandle(fd.handle(), real_path, MAX_PATH - 1, VOLUME_NAME_NONE);
 		std::string real_name = filesystem::base_name(unicode_cast<std::string>(std::wstring(real_path)));
 		return real_name == filesystem::base_name(fname);
-#else
-		return true;
-#endif
 	}
+
+#else
+	bool is_filename_case_correct(const std::string& /*fname*/, const boost::iostreams::file_descriptor_source& /*fd*/)
+	{
+		return true;
+	}
+#endif
 }
 
 
