@@ -28,8 +28,6 @@ static lg::log_domain log_addons_client("addons-client");
 #define LOG_AC LOG_STREAM(info,  log_addons_client)
 
 namespace {
-	const std::string fallback_addon_icon = "misc/blank-hex.png";
-
 	void resolve_deps_recursive(const addons_list& addons, const std::string& base_id, std::set<std::string>& dest)
 	{
 		addons_list::const_iterator it = addons.find(base_id);
@@ -137,13 +135,9 @@ std::string addon_info::display_icon() const
 
 	if(ret.empty()) {
 		ERR_AC << "add-on '" << id << "' doesn't have an icon path set" << std::endl;
-		ret = fallback_addon_icon;
-	}
-	else if(!image::exists(ret)) {
+	} else if(!image::exists(ret)) {
 		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'" << std::endl;
-		ret = game_config::debug ? game_config::images::missing : fallback_addon_icon;
-	}
-	else if(ret.find("units/") != std::string::npos && ret.find_first_of('~') == std::string::npos) {
+	} else if(ret.find("units/") != std::string::npos && ret.find_first_of('~') == std::string::npos) {
 		// HACK: prevent magenta icons, because they look awful
 		LOG_AC << "add-on '" << id << "' uses a unit baseframe as icon without TC/RC specifications\n";
 		ret += "~RC(magenta>red)";
