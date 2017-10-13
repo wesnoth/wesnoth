@@ -3,6 +3,8 @@ Version 1.13.10+dev:
    * Updated translations: Chinese (Simplified)
  * User Interface:
    * Removed broken Unit Box and Widescreen themes.
+   * Fixed a bug that partially prevented movement feedback announce messages
+     to be displayed (UI regression bug #2130, affecting 1.13.8 and 1.13.10).
  * WML Engine:
    * File paths are now case sensitive even on Windows.
 

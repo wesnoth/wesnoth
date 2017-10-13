@@ -583,9 +583,30 @@ public:
 	map_labels& labels();
 	const map_labels& labels() const;
 
+	/** Holds options for calls to function 'announce' (@ref announce). */
+	struct announce_options
+	{
+		/** Lifetime measured in frames. */
+		int lifetime;
+
+		/**
+		 * An announcement according these options should replace the
+		 * previous announce (typical of fast announcing) or not
+		 * (typical of movement feedback).
+		 */
+		bool discard_previous;
+
+		announce_options()
+			: lifetime(100)
+			, discard_previous(false)
+		{
+		}
+	};
+
 	/** Announce a message prominently. */
 	void announce(const std::string& msg,
-		       const color_t& color = font::GOOD_COLOR, int lifetime = 100);
+	              const color_t& color = font::GOOD_COLOR,
+	              const announce_options& options = announce_options());
 
 	/**
 	 * Schedule the minimap for recalculation.
