@@ -195,11 +195,24 @@ void team::team_info::read(const config &cfg)
 	carryover_gold = cfg["carryover_gold"].to_int(0);
 	variables = cfg.child_or_empty("variables");
 	is_local = cfg["is_local"].to_bool(true);
+	int color_=side-1;
+	std::string color_id_;
+	std::vector<std::string> color_options_;
+	color_options_ = game_config::default_colors;
+	color_id_ = color_options_[color_];
+
+	if(!cfg["color"].empty()) {
+		if(cfg["color"].to_int()) {
+			color_ = cfg["color"].to_int() - 1;
+			color_id_ = color_options_[color_];
+		}
+		}
+
 
 	if(cfg.has_attribute("color")) {
 		color = cfg["color"].str();
 	} else {
-		color = cfg["side"].str();
+		color = color_id_;
 	}
 
 	// If arel starting new scenario override settings from [ai] tags
