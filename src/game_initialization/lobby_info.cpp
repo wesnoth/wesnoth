@@ -405,6 +405,8 @@ void lobby_info::sort_users(bool by_name, bool by_relation)
 		if(by_relation) {
 			return u1->relation < u2->relation;
 		}
+
+		return true;
 	});
 }
 
