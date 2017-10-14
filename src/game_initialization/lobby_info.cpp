@@ -392,13 +392,19 @@ void lobby_info::sort_users(bool by_name, bool by_relation)
 		users_sorted_.push_back(&u);
 	}
 
-	// TODO: is this the simplest way to represent the sorting method?
 	std::sort(users_sorted_.begin(), users_sorted_.end(), [&](const user_info* u1, const user_info* u2) {
 		if(by_name && by_relation) {
-			return u1->relation < u2->relation || (u1->relation == u2->relation && u1->name < u2->name);
+			return u1->relation <  u2->relation ||
+			      (u1->relation == u2->relation && translation::icompare(u1->name, u2->name) < 0);
 		}
 
-		return (by_name ? u1->name < u2->name : true) && (by_relation ? u1->relation < u2->relation : true);
+		if(by_name) {
+			return translation::icompare(u1->name, u2->name) < 0;
+		}
+
+		if(by_relation) {
+			return u1->relation < u2->relation;
+		}
 	});
 }
 
