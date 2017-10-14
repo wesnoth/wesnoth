@@ -127,12 +127,12 @@ bool check_case_insensitive_duplicates(const config& dir){
 	bool inserted;
 	for (const config &path : dir.child_range("file")) {
 		const config::attribute_value &filename = path["name"];
-		std::tie(std::ignore, inserted) = filenames.insert(boost::algorithm::to_lower_copy(filename.str()));
+		std::tie(std::ignore, inserted) = filenames.insert(boost::algorithm::to_lower_copy(filename.str(), std::locale::classic()));
 		if (!inserted) return false;
 	}
 	for (const config &path : dir.child_range("dir")) {
 		const config::attribute_value &filename = path["name"];
-		std::tie(std::ignore, inserted) = filenames.insert(boost::algorithm::to_lower_copy(filename.str()));
+		std::tie(std::ignore, inserted) = filenames.insert(boost::algorithm::to_lower_copy(filename.str(), std::locale::classic()));
 		if (!inserted) return false;
 		if (!check_case_insensitive_duplicates(path)) return false;
 	}
