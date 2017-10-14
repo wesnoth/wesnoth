@@ -76,7 +76,7 @@ unit_const_ptr game_stats::get_leader(const int side)
 
 static std::string controller_name(const team& t)
 {
-	static const std::array<t_string, 3> names {_("controller^Human"), _("controller^AI"), _("controller^Idle")};
+	static const std::array<t_string, 3> names {{_("controller^Human"), _("controller^AI"), _("controller^Idle")}};
 	return "<span color='#808080'><small>" + names[t.controller().v] + "</small></span>";
 }
 
