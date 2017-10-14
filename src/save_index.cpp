@@ -372,6 +372,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			std::string leader;
 			std::string leader_image;
 			std::string leader_image_tc_modifier;
+			std::string leader_image_tc_modifier_alt;
 			std::string leader_name;
 			int gold = side["gold"];
 			int units = 0, recall_units = 0;
@@ -395,13 +396,27 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 				if(!leader.empty() || !u["canrecruit"].to_bool()) {
 					continue;
 				}
+				int color_=u["side"].to_int(1)-1;
+				std::string color_id_;
+				std::string flag_rgb_;
+				flag_rgb_="magenta";
+				std::vector<std::string> color_options_;
+				color_options_ = game_config::default_colors;
+				color_id_ = color_options_[color_];
+
+				if(u["color"].to_int()) {
+			color_ = u["color"].to_int() - 1;
+			color_id_ = color_options_[color_];
+			}
+
 
 				// Don't count it among the troops
 				units--;
 				leader = u["id"].str();
 				leader_name = u["name"].str();
 				leader_image = u["image"].str();
-				leader_image_tc_modifier = "~RC(" + u["flag_rgb"].str() + ">" + u["side"].str() + ")";
+				leader_image_tc_modifier = "~RC(" + u["flag_rgb"].str() + ">" + color_id_ + ")";
+				leader_image_tc_modifier_alt="~RC(" + flag_rgb_ + ">" + color_id_ + ")";
 			}
 
 			// We need a binary path-independent path to the leader image here so it can be displayed
@@ -421,7 +436,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			leader_config["leader"] = leader;
 			leader_config["leader_name"] = leader_name;
 			leader_config["leader_image"] = leader_image;
-			leader_config["leader_image_tc_modifier"] = leader_image_tc_modifier;
+			leader_config["leader_image_tc_modifier"] = leader_image_tc_modifier_alt;
 			leader_config["gold"] = gold;
 			leader_config["units"] = units;
 			leader_config["recall_units"] = recall_units;
