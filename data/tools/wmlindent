@@ -95,7 +95,7 @@ def opener(str):
     else:
         return str.startswith(tuple(opener_prefixes))
 
-class bailout:
+class bailout(Exception):
     def __init__(self, filename, lineno, msg):
         self.filename = filename
         self.lineno = lineno
