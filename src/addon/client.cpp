@@ -134,7 +134,14 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	cfg["name"] = id;
 
 	config addon_data;
-	archive_addon(id, addon_data);
+	try {
+		archive_addon(id, addon_data);
+	} catch(utf8::invalid_utf8_exception&){
+		this->last_error_ =
+			vgettext("The add-on <i>$addon_title</i> has a file or directory "
+				"containing invalid characters and cannot be published.", i18n_symbols);
+		return false;
+	}
 
 	config request_buf, response_buf;
 	request_buf.add_child("upload", cfg).add_child("data", addon_data);
