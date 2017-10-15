@@ -27,6 +27,26 @@ class Substitution(object):
     def __repr__(self):
         return "<Class Substitution, sub={}, start={:d}, end={:d}>".format(self.sub, self.start, self.end)
 
+def split_filenames(match):
+    filename_group = match.group(1)
+    if ',' not in filename_group:
+        yield filename_group
+    elif '[' not in filename_group:
+        yield from filename_group.split(',')
+    else:
+        bracket_depth = 0
+        start_ix = 0
+
+        for ix, ch in enumerate(filename_group):
+            if ch == '[':
+                bracket_depth += 1
+            elif ch == ']':
+                bracket_depth -= 1
+            elif ch == ',' and bracket_depth == 0:
+                yield filename_group[start_ix:ix]
+                start_ix = ix + 1
+        yield filename_group[start_ix:]
+
 def expand_square_braces(path):
     """Expands the square brackets notation to normal file names.
 Yields the expanded file names, or the original path itself
@@ -479,7 +499,7 @@ class Reference:
 
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Za-z0-9_:]*)(?!\.)\b")
-    file_reference = re.compile(r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.@\-\[\],~\*]*(" + "|".join(resource_extensions) + ")(?=(~.*)?)")
+    file_reference = re.compile(r"([A-Za-z0-9{}.][A-Za-z0-9_/+{}.@\-\[\],~\*]*?\.(" + "|".join(resource_extensions) + "))((~[A-Z]+\(.*\))*)(:([0-9]+|\[[0-9,*~]*\]))?")
     tag_parse = re.compile("\s*([a-z_]+)\s*=(.*)")
     def mark_matching_resources(self, pattern, fn, n):
         "Mark all definitions matching a specified pattern with a reference."
@@ -755,36 +775,37 @@ class CrossRef:
                             continue
                         # Find references to resource files
                         for match in re.finditer(CrossRef.file_reference, line):
-                            for name in expand_square_braces(match.group(0)):
-                                # Catches maps that look like macro names.
-                                if (name.endswith(".map") or name.endswith(".mask")) and name[0] == '{':
-                                    name = name[1:]
-                                if os.sep == "\\":
-                                    name = name.replace("/", "\\")
-                                key = None
-                                # If name is already in our resource list, it's easy.
-                                if name in self.fileref and self.visible_from(name, fn, n):
-                                    self.fileref[name].append(fn, n+1)
-                                    continue
-                                # If the name contains substitutable parts, count
-                                # it as a reference to everything the substitutions
-                                # could potentially match.
-                                elif '{' in name or '@' in name:
-                                    pattern = re.sub(r"(\{[^}]*\}|@R0|@V)", '.*', name)
-                                    key = self.mark_matching_resources(pattern, fn,n+1)
-                                    if key:
-                                        self.fileref[key].append(fn, n+1)
-                                else:
-                                    candidates = []
-                                    for trial in self.fileref:
-                                        if trial.endswith(os.sep + name) and self.visible_from(trial, fn, n):
-                                            key = trial
-                                            self.fileref[trial].append(fn, n+1)
-                                            candidates.append(trial)
-                                    if len(candidates) > 1:
-                                        print("%s: more than one resource matching %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates)))
-                                if not key:
-                                    self.missing.append((name, Reference(ns,fn,n+1)))
+                            for pattern in split_filenames(match):
+                                for name in expand_square_braces(pattern):
+                                    # Catches maps that look like macro names.
+                                    if (name.endswith(".map") or name.endswith(".mask")) and name[0] == '{':
+                                        name = name[1:]
+                                    if os.sep == "\\":
+                                        name = name.replace("/", "\\")
+                                    key = None
+                                    # If name is already in our resource list, it's easy.
+                                    if name in self.fileref and self.visible_from(name, fn, n):
+                                        self.fileref[name].append(fn, n+1)
+                                        continue
+                                    # If the name contains substitutable parts, count
+                                    # it as a reference to everything the substitutions
+                                    # could potentially match.
+                                    elif '{' in name or '@' in name:
+                                        pattern = re.sub(r"(\{[^}]*\}|@R0|@V)", '.*', name)
+                                        key = self.mark_matching_resources(pattern, fn,n+1)
+                                        if key:
+                                            self.fileref[key].append(fn, n+1)
+                                    else:
+                                        candidates = []
+                                        for trial in self.fileref:
+                                            if trial.endswith(os.sep + name) and self.visible_from(trial, fn, n):
+                                                key = trial
+                                                self.fileref[trial].append(fn, n+1)
+                                                candidates.append(trial)
+                                        if len(candidates) > 1:
+                                            print("%s: more than one resource matching %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates)))
+                                    if not key:
+                                        self.missing.append((name, Reference(ns,fn,n+1)))
                         # Notice implicit references through attacks
                         if state == "outside":
                             have_icon = False
