@@ -75,12 +75,15 @@ __NOEDITSECTION__
 In July 2003, '''David White''' released the first version of Wesnoth. Since
 then, many people have joined the project, contributing in very different ways.
 
-To make any changes to this list, please modify about.cfg in the repo or ask any
-developer to do it for you.
+To make any changes to this list, please modify
+<code class="noframe">about.cfg</code> in the repo or ask any developer to do
+it for you.
 """.lstrip())
     for path, sections in chapters:
         if path == "data/core/about.cfg":
-            print("== Contributors ==")
+            print("== Core Contributors ==")
+        elif path == "data/core/about_i18n.cfg":
+            print("== Translations ==")
         else:
             slash1 = path.rfind("/")
             slash2 = path.rfind("/", 0, slash1)
@@ -92,10 +95,10 @@ developer to do it for you.
             print("=== %s ===" % section.title)
             for name, comment, wikiuser, email in section.lines:
                 if name in ("*", "•"):
-                    print("<hr>")
+                    print("<hr style='clear:none'>")
                     continue
                 if comment:
-                    comment = " - " + comment
+                    comment = " &#8212; " + comment
                 if wikiuser:
                     # If a wiki user is given, the nickname is turned into a
                     # wiki link, or else the whole name.
