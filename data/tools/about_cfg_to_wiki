@@ -23,7 +23,7 @@ if __name__ == "__main__":
         help="Specify the wesnoth executable to use.")
     args = argument_parser.parse_args()
 
-    files = ["data/core/about.cfg"]
+    files = ["data/core/about.cfg", "data/core/about_i18n.cfg"]
     files.extend(glob.glob("data/campaigns/*/_main.cfg"))
 
     if not args.wesnoth:
