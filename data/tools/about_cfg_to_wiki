@@ -83,7 +83,7 @@ it for you.
         if path == "data/core/about.cfg":
             print("== Core Contributors ==")
         elif path == "data/core/about_i18n.cfg":
-            print("== Translations ==")
+            print("== Translators ==")
         else:
             slash1 = path.rfind("/")
             slash2 = path.rfind("/", 0, slash1)
