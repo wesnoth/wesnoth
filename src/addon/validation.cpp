@@ -112,14 +112,24 @@ bool check_names_legal_internal(const config& dir, std::string current_prefix, s
 }
 
 bool check_case_insensitive_duplicates_internal(const config& dir, std::string prefix, std::vector<std::string>* badlist){
-	std::set<std::string> filenames;
+	typedef std::pair<bool, std::string> printed_and_original;
+	std::map<std::string, printed_and_original> filenames;
 	bool inserted;
+	bool printed;
+	std::string original;
 	for (const config &path : dir.child_range("file")) {
 		const config::attribute_value &filename = path["name"];
-		std::tie(std::ignore, inserted) = filenames.insert(boost::algorithm::to_lower_copy(filename.str(), std::locale::classic()));
+		const std::string lowercase = boost::algorithm::to_lower_copy(filename.str(), std::locale::classic());
+		const std::string with_prefix = prefix + filename.str();
+		std::tie(std::ignore, inserted) = filenames.emplace(lowercase, std::make_pair(false, with_prefix));
 		if (!inserted){
 			if(badlist){
-				badlist->push_back(prefix + filename.str());
+				std::tie(printed, original) = filenames[lowercase];
+				if(!printed){
+					badlist->push_back(original);
+					filenames[lowercase] = make_pair(true, std::string());
+				}
+				badlist->push_back(with_prefix);
 			} else {
 				return false;
 			}
@@ -127,10 +137,17 @@ bool check_case_insensitive_duplicates_internal(const config& dir, std::string p
 	}
 	for (const config &path : dir.child_range("dir")) {
 		const config::attribute_value &filename = path["name"];
-		std::tie(std::ignore, inserted) = filenames.insert(boost::algorithm::to_lower_copy(filename.str(), std::locale::classic()));
+		const std::string lowercase = boost::algorithm::to_lower_copy(filename.str(), std::locale::classic());
+		const std::string with_prefix = prefix + filename.str();
+		std::tie(std::ignore, inserted) = filenames.emplace(lowercase, std::make_pair(false, with_prefix));
 		if (!inserted) {
 			if(badlist){
-				badlist->push_back(prefix + filename.str());
+				std::tie(printed, original) = filenames[lowercase];
+				if(!printed){
+					badlist->push_back(original);
+					filenames[lowercase] = make_pair(true, std::string());
+				}
+				badlist->push_back(with_prefix);
 			} else {
 				return false;
 			}
