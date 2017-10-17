@@ -237,6 +237,11 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 				"name and cannot be installed.", i18n_symbols));
 		return false;
 	}
+	if(!check_case_insensitive_duplicates(archive_cfg)){
+		gui2::show_error_message(v_,
+			vgettext("The add-on <i>$addon_title</i> has file or directory names "
+				"with case conflicts. This may cause problems.", i18n_symbols));
+	}
 
 	// Add local version information before unpacking
 

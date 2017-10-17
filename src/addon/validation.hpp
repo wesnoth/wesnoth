@@ -77,6 +77,8 @@ bool addon_filename_legal(const std::string& name);
  * @returns True if no illegal names were found.
  */
 bool check_names_legal(const config& dir, std::vector<std::string>* badlist = nullptr);
+/** Probes an add-on archive for case-conflicts on case-insensitive filesystems. */
+bool check_case_insensitive_duplicates(const config& dir);
 
 std::string encode_binary(const std::string& str);
 std::string unencode_binary(const std::string& str);

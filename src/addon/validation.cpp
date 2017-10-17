@@ -17,6 +17,8 @@
 #include "config.hpp"
 
 #include <algorithm>
+#include <boost/algorithm/string.hpp>
+#include <set>
 
 const unsigned short default_campaignd_port = 15008;
 
@@ -118,6 +120,23 @@ bool check_names_legal(const config& dir, std::vector<std::string>* badlist)
 	// start with an empty display prefix and that'll reflect the addon
 	// structure correctly (e.g. "Addon_Name/~illegalfilename1").
 	return check_names_legal_internal(dir, "", badlist);
+}
+
+bool check_case_insensitive_duplicates(const config& dir){
+	std::set<std::string> filenames;
+	bool inserted;
+	for (const config &path : dir.child_range("file")) {
+		const config::attribute_value &filename = path["name"];
+		std::tie(std::ignore, inserted) = filenames.insert(boost::algorithm::to_lower_copy(filename.str(), std::locale::classic()));
+		if (!inserted) return false;
+	}
+	for (const config &path : dir.child_range("dir")) {
+		const config::attribute_value &filename = path["name"];
+		std::tie(std::ignore, inserted) = filenames.insert(boost::algorithm::to_lower_copy(filename.str(), std::locale::classic()));
+		if (!inserted) return false;
+		if (!check_case_insensitive_duplicates(path)) return false;
+	}
+	return true;
 }
 
 ADDON_TYPE get_addon_type(const std::string& str)
