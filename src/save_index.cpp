@@ -404,10 +404,11 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 				color_options_ = game_config::default_colors;
 				color_id_ = color_options_[color_];
 
-				if(u["color"].to_int()) {
+			if(u["color"].to_int()) {
 			color_ = u["color"].to_int() - 1;
 			color_id_ = color_options_[color_];
 			}
+			
 
 
 				// Don't count it among the troops
