@@ -206,7 +206,9 @@ void team::team_info::read(const config &cfg)
 			color_ = cfg["color"].to_int() - 1;
 			color_id_ = color_options_[color_];
 		}
-		}
+	}
+	
+	
 
 
 	if(cfg.has_attribute("color")) {
