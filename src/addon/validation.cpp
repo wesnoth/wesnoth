@@ -15,6 +15,7 @@
 
 #include "addon/validation.hpp"
 #include "config.hpp"
+#include "serialization/unicode_cast.hpp"
 
 #include <algorithm>
 #include <boost/algorithm/string.hpp>
@@ -46,13 +47,40 @@ namespace {
 			}
 		}
 	};
+
+	struct addon_filename_ucs4char_illegal
+	{
+		inline bool operator()(ucs4::char_t c) const
+		{
+			switch(c){
+			case ' ':
+			case '"':
+			case '*':
+			case '/':
+			case ':':
+			case '<':
+			case '>':
+			case '?':
+			case '\\':
+			case '|':
+			case '~':
+			case 0x7F: // DEL
+				return true;
+			default:
+				return (
+					c < 0x20 ||                 // C0 control characters
+					(c >= 0x80 && c < 0xA0) ||  // C1 control characters
+					(c >= 0xD800 && c < 0xE000) // surrogate pairs
+				);
+			}
+		}
+	};
 }
 
 bool addon_name_legal(const std::string& name)
 {
-	if(name.empty() || name == "." ||
-	   std::find_if(name.begin(), name.end(), addon_name_char_illegal()) != name.end() ||
-	   name.find("..") != std::string::npos) {
+	if(name.empty() ||
+	   std::find_if(name.begin(), name.end(), addon_name_char_illegal()) != name.end()) {
 		return false;
 	} else {
 	   return true;
@@ -61,12 +89,17 @@ bool addon_name_legal(const std::string& name)
 
 bool addon_filename_legal(const std::string& name)
 {
-	if(name.empty() || name == "." ||
-	   name.find_first_of("/:\\~ \r\n\v\t") != std::string::npos ||
-	   name.find("..") != std::string::npos) {
+	if(name.empty() || name.back() == '.' ||
+	   name.find("..") != std::string::npos ||
+	   name.size() > 255) {
 		return false;
 	} else {
-		return true;
+		const ucs4::string name_ucs4 = unicode_cast<ucs4::string>(name);
+		const std::string name_utf8 = unicode_cast<utf8::string>(name_ucs4);
+		if(name != name_utf8){ // name is invalid UTF-8
+			return false;
+		}
+		return std::find_if(name_ucs4.begin(), name_ucs4.end(), addon_filename_ucs4char_illegal()) == name_ucs4.end();
 	}
 }
 
