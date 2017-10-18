@@ -17,6 +17,7 @@
 #include "addon/manager.hpp"
 #include "addon/validation.hpp"
 #include "cursor.hpp"
+#include "font/pango/escape.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
@@ -112,13 +113,13 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	response_message.clear();
 
 	utils::string_map i18n_symbols;
-	i18n_symbols["addon_title"] = cfg["title"];
+	i18n_symbols["addon_title"] = font::escape_text(cfg["title"]);
 	if(i18n_symbols["addon_title"].empty()) {
-		i18n_symbols["addon_title"] = make_addon_title(id);
+		i18n_symbols["addon_title"] = font::escape_text(make_addon_title(id));
 	}
 
 	if(!addon_name_legal(id)){
-		i18n_symbols["addon_id"] = id;
+		i18n_symbols["addon_id"] = font::escape_text(id);
 		this->last_error_ =
 			vgettext("The add-on <i>$addon_title</i> has an invalid id '$addon_id' "
 				"and cannot be published.", i18n_symbols);
@@ -156,7 +157,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 		this->last_error_ =
 			vgettext("The add-on <i>$addon_title</i> has an invalid file or directory "
 				"name and cannot be published.", i18n_symbols);
-		this->last_error_data_ = utils::join(badnames, "\n");
+		this->last_error_data_ = font::escape_text(utils::join(badnames, "\n"));
 		return false;
 	}
 
@@ -185,9 +186,9 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 	config cfg = get_addon_pbl_info(id);
 
 	utils::string_map i18n_symbols;
-	i18n_symbols["addon_title"] = cfg["title"];
+	i18n_symbols["addon_title"] = font::escape_text(cfg["title"]);
 	if(i18n_symbols["addon_title"].empty()) {
-		i18n_symbols["addon_title"] = make_addon_title(id);
+		i18n_symbols["addon_title"] = font::escape_text(make_addon_title(id));
 	}
 
 	config request_buf, response_buf;
@@ -221,7 +222,7 @@ bool addons_client::download_addon(config& archive_cfg, const std::string& id, c
 	request_body["increase_downloads"] = increase_downloads;
 
 	utils::string_map i18n_symbols;
-	i18n_symbols["addon_title"] = title;
+	i18n_symbols["addon_title"] = font::escape_text(title);
 
 	LOG_ADDONS << "downloading " << id << '\n';
 
@@ -236,7 +237,7 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 	const cursor::setter cursor_setter(cursor::WAIT);
 
 	utils::string_map i18n_symbols;
-	i18n_symbols["addon_title"] = info.title;
+	i18n_symbols["addon_title"] = font::escape_text(info.title);
 
 	if(!check_names_legal(archive_cfg)) {
 		gui2::show_error_message(v_,
@@ -418,7 +419,7 @@ bool addons_client::do_check_before_overwriting_addon(const addon_info& addon)
 	}
 
 	utils::string_map symbols;
-	symbols["addon"] = addon.title;
+	symbols["addon"] = font::escape_text(addon.title);
 	std::string text;
 	std::vector<std::string> extra_items;
 
@@ -468,8 +469,8 @@ addons_client::install_result addons_client::install_addon_with_checks(const add
 bool addons_client::update_last_error(config& response_cfg)
 {
 	if(config const &error = response_cfg.child("error")) {
-		this->last_error_ = error["message"].str();
-		this->last_error_data_ = error["extra_data"].str();
+		this->last_error_ = font::escape_text(error["message"].str());
+		this->last_error_data_ = font::escape_text(error["extra_data"].str());
 		ERR_ADDONS << "server error: " << error << '\n';
 		return true;
 	} else {
