@@ -690,7 +690,8 @@ void server::handle_upload(const server::request& req)
 		LOG_CS << "Upload aborted - invalid file names in add-on data (" << badnames.size() << " entries).\n";
 		send_error(
 			"Add-on rejected: The add-on contains files or directories with illegal names. "
-			"File or directory names may not contain whitespace or any of the following characters: '/ \\ : ~'",
+			"File or directory names may not contain whitespace, control characters or any of the following characters: '\" * / : < > ? \\ | ~'. "
+			"It also may not contain '..' end with '.' or be longer than 255 characters.",
 			filelist, req.sock);
 	} else if(!check_case_insensitive_duplicates(data)) {
 		LOG_CS << "Upload aborted - case conflict in add-on data.\n";
