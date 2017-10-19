@@ -138,7 +138,7 @@ mp_lobby::mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_con
 	, selected_game_id_()
 	, player_list_()
 	, player_list_dirty_(false)
-	, gamelist_dirty_(false)
+	, gamelist_dirty_(true)
 	, last_gamelist_update_(0)
 	, gamelist_diff_update_(true)
 	, wesnothd_connection_(connection)
