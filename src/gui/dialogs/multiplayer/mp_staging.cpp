@@ -53,7 +53,7 @@ mp_staging::mp_staging(ng::connect_engine& connect_engine, mp::lobby_info& lobby
 	: connect_engine_(connect_engine)
 	, ai_algorithms_(ai::configuration::get_available_ais())
 	, lobby_info_(lobby_info)
-	, wesnothd_connection_(connection)
+	, network_connection_(connection)
 	, update_timer_(0)
 	, state_changed_(false)
 	, team_tree_map_()
@@ -102,8 +102,8 @@ void mp_staging::pre_show(window& window)
 
 	chat.set_lobby_info(lobby_info_);
 
-	if(wesnothd_connection_) {
-		chat.set_wesnothd_connection(*wesnothd_connection_);
+	if(network_connection_) {
+		chat.set_wesnothd_connection(*network_connection_);
 	}
 
 	chat.room_window_open("this game", true, false); // TODO: better title?
@@ -459,7 +459,7 @@ void mp_staging::network_handler(window& window)
 
 	// Next, check for any incoming changes
 	config data;
-	if(!state_changed_ && (!wesnothd_connection_ || !wesnothd_connection_->receive_data(data))) {
+	if(!state_changed_ && (!network_connection_ || !network_connection_->receive_data(data))) {
 		return;
 	}
 

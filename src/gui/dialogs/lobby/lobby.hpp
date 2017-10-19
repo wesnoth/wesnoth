@@ -198,7 +198,7 @@ private:
 
 	bool gamelist_diff_update_;
 
-	wesnothd_connection &wesnothd_connection_;
+	wesnothd_connection &network_connection_;
 
 	/** Timer for updating the lobby. */
 	size_t lobby_update_timer_;

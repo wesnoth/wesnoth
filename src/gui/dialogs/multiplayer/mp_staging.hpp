@@ -80,7 +80,7 @@ private:
 
 	mp::lobby_info& lobby_info_;
 
-	wesnothd_connection* wesnothd_connection_;
+	wesnothd_connection* network_connection_;
 
 	size_t update_timer_;
 

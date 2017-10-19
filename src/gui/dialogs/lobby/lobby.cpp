@@ -141,7 +141,7 @@ mp_lobby::mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_con
 	, gamelist_dirty_(true)
 	, last_gamelist_update_(0)
 	, gamelist_diff_update_(true)
-	, wesnothd_connection_(connection)
+	, network_connection_(connection)
 	, lobby_update_timer_(0)
 	, gamelist_id_at_row_()
 	, delay_playerlist_update_(false)
@@ -318,7 +318,7 @@ void mp_lobby::update_gamelist_diff()
 		} else {
 			if(list_i >= gamelistbox_->get_item_count()) {
 				ERR_LB << "Ran out of listbox items -- triggering a full refresh\n";
-				wesnothd_connection_.send_data(config("refresh_lobby"));
+				network_connection_.send_data(config("refresh_lobby"));
 				return;
 			}
 
@@ -327,7 +327,7 @@ void mp_lobby::update_gamelist_diff()
 					   << list_rows_deleted
 					   << " >= " << gamelist_id_at_row_.size()
 					   << " -- triggering a full refresh\n";
-				wesnothd_connection_.send_data(config("refresh_lobby"));
+				network_connection_.send_data(config("refresh_lobby"));
 				return;
 			}
 
@@ -335,7 +335,7 @@ void mp_lobby::update_gamelist_diff()
 			if(game.id != listbox_game_id) {
 				ERR_LB << "Listbox game id does not match expected id "
 					   << listbox_game_id << " " << game.id << " (row " << list_i << ")\n";
-				wesnothd_connection_.send_data(config("refresh_lobby"));
+				network_connection_.send_data(config("refresh_lobby"));
 				return;
 			}
 
@@ -697,7 +697,7 @@ void mp_lobby::pre_show(window& window)
 
 	chatbox_ = find_widget<chatbox>(&window, "chat", false, true);
 	chatbox_->set_lobby_info(lobby_info_);
-	chatbox_->set_wesnothd_connection(wesnothd_connection_);
+	chatbox_->set_wesnothd_connection(network_connection_);
 	chatbox_->set_active_window_changed_callback([this]() { player_list_dirty_ = true; });
 
 	find_widget<button>(&window, "create", false).set_retval(CREATE);
@@ -804,7 +804,7 @@ void mp_lobby::network_handler()
 {
 	try {
 		config data;
-		if (wesnothd_connection_.receive_data(data)) {
+		if (network_connection_.receive_data(data)) {
 			process_network_data(data);
 		}
 	} catch (wesnothd_error& e) {
@@ -855,7 +855,7 @@ void mp_lobby::process_gamelist_diff(const config& data)
 		gamelist_dirty_ = true;
 	} else {
 		ERR_LB << "process_gamelist_diff failed!" << std::endl;
-		wesnothd_connection_.send_data(config("refresh_lobby"));
+		network_connection_.send_data(config("refresh_lobby"));
 	}
 	const int joined = data.child_count("insert_child");
 	const int left = data.child_count("remove_child");
@@ -988,14 +988,14 @@ bool mp_lobby::do_game_join(int idx, bool observe)
 		join["password"] = password;
 	}
 
-	wesnothd_connection_.send_data(response);
+	network_connection_.send_data(response);
 	joined_game_id_ = game.id;
 	return true;
 }
 
 void mp_lobby::refresh_button_callback(window& /*window*/)
 {
-	wesnothd_connection_.send_data(config("refresh_lobby"));
+	network_connection_.send_data(config("refresh_lobby"));
 }
 
 void mp_lobby::show_preferences_button_callback(window& window)
@@ -1021,7 +1021,7 @@ void mp_lobby::show_preferences_button_callback(window& window)
 	 */
 	window.invalidate_layout();
 
-	wesnothd_connection_.send_data(config("refresh_lobby"));
+	network_connection_.send_data(config("refresh_lobby"));
 }
 
 void mp_lobby::game_filter_reload()
@@ -1122,7 +1122,7 @@ void mp_lobby::user_dialog_callback(mp::user_info* info)
 	// update_gamelist();
 	delay_playerlist_update_ = false;
 	player_list_dirty_ = true;
-	wesnothd_connection_.send_data(config("refresh_lobby"));
+	network_connection_.send_data(config("refresh_lobby"));
 }
 
 void mp_lobby::skip_replay_changed_callback(window& window)
