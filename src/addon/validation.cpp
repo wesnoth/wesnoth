@@ -144,6 +144,55 @@ bool check_names_legal_internal(const config& dir, std::string current_prefix, s
 	return badlist ? badlist->empty() : true;
 }
 
+bool check_case_insensitive_duplicates_internal(const config& dir, std::string prefix, std::vector<std::string>* badlist){
+	typedef std::pair<bool, std::string> printed_and_original;
+	std::map<std::string, printed_and_original> filenames;
+	bool inserted;
+	bool printed;
+	std::string original;
+	for (const config &path : dir.child_range("file")) {
+		const config::attribute_value &filename = path["name"];
+		const std::string lowercase = boost::algorithm::to_lower_copy(filename.str(), std::locale::classic());
+		const std::string with_prefix = prefix + filename.str();
+		std::tie(std::ignore, inserted) = filenames.emplace(lowercase, std::make_pair(false, with_prefix));
+		if (!inserted){
+			if(badlist){
+				std::tie(printed, original) = filenames[lowercase];
+				if(!printed){
+					badlist->push_back(original);
+					filenames[lowercase] = make_pair(true, std::string());
+				}
+				badlist->push_back(with_prefix);
+			} else {
+				return false;
+			}
+		}
+	}
+	for (const config &path : dir.child_range("dir")) {
+		const config::attribute_value &filename = path["name"];
+		const std::string lowercase = boost::algorithm::to_lower_copy(filename.str(), std::locale::classic());
+		const std::string with_prefix = prefix + filename.str();
+		std::tie(std::ignore, inserted) = filenames.emplace(lowercase, std::make_pair(false, with_prefix));
+		if (!inserted) {
+			if(badlist){
+				std::tie(printed, original) = filenames[lowercase];
+				if(!printed){
+					badlist->push_back(original);
+					filenames[lowercase] = make_pair(true, std::string());
+				}
+				badlist->push_back(with_prefix);
+			} else {
+				return false;
+			}
+		}
+		if (!check_case_insensitive_duplicates_internal(path, prefix + filename + "/", badlist) && !badlist){
+			return false;
+		}
+	}
+
+	return badlist ? badlist->empty() : true;
+}
+
 } // end unnamed namespace 3
 
 bool check_names_legal(const config& dir, std::vector<std::string>* badlist)
@@ -155,21 +204,8 @@ bool check_names_legal(const config& dir, std::vector<std::string>* badlist)
 	return check_names_legal_internal(dir, "", badlist);
 }
 
-bool check_case_insensitive_duplicates(const config& dir){
-	std::set<std::string> filenames;
-	bool inserted;
-	for (const config &path : dir.child_range("file")) {
-		const config::attribute_value &filename = path["name"];
-		std::tie(std::ignore, inserted) = filenames.insert(boost::algorithm::to_lower_copy(filename.str(), std::locale::classic()));
-		if (!inserted) return false;
-	}
-	for (const config &path : dir.child_range("dir")) {
-		const config::attribute_value &filename = path["name"];
-		std::tie(std::ignore, inserted) = filenames.insert(boost::algorithm::to_lower_copy(filename.str(), std::locale::classic()));
-		if (!inserted) return false;
-		if (!check_case_insensitive_duplicates(path)) return false;
-	}
-	return true;
+bool check_case_insensitive_duplicates(const config& dir, std::vector<std::string>* badlist){
+    return check_case_insensitive_duplicates_internal(dir, "", badlist);
 }
 
 ADDON_TYPE get_addon_type(const std::string& str)

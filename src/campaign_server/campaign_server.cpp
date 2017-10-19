@@ -693,9 +693,13 @@ void server::handle_upload(const server::request& req)
 			"File or directory names may not contain whitespace, control characters or any of the following characters: '\" * / : < > ? \\ | ~'. "
 			"It also may not contain '..' end with '.' or be longer than 255 characters.",
 			filelist, req.sock);
-	} else if(!check_case_insensitive_duplicates(data)) {
-		LOG_CS << "Upload aborted - case conflict in add-on data.\n";
-		send_error("Add-on rejected: Two files have a case conflict", req.sock);
+	} else if(!check_case_insensitive_duplicates(data, &badnames)) {
+		const std::string& filelist = utils::join(badnames, "\n");
+		LOG_CS << "Upload aborted - case conflict in add-on data (" << badnames.size() << " entries).\n";
+		send_error(
+			"Add-on rejected: The add-on contains files or directories with case conflicts. "
+			"File or directory names may not be differently-cased versions of the same string.",
+			filelist, req.sock);
 	} else if(campaign && !authenticate(*campaign, upload["passphrase"])) {
 		LOG_CS << "Upload aborted - incorrect passphrase.\n";
 		send_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect.", req.sock);

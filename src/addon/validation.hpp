@@ -77,8 +77,21 @@ bool addon_filename_legal(const std::string& name);
  * @returns True if no illegal names were found.
  */
 bool check_names_legal(const config& dir, std::vector<std::string>* badlist = nullptr);
-/** Probes an add-on archive for case-conflicts on case-insensitive filesystems. */
-bool check_case_insensitive_duplicates(const config& dir);
+/**
+ * Scans an add-on archive for case-conflicts.
+ *
+ * Case conflicts may cause trouble on case-insensitive filesystems.
+ *
+ * @param dir     The WML container for the root [dir] node where the search
+ *                should begin.
+ * @param badlist If provided and not null, any case conflicts encountered will
+ *                be added to this list. This also makes the archive scan more
+ *                thorough instead of returning on the first conflict
+ *                encountered.
+ *
+ * @returns True if no conflicts were found.
+ */
+bool check_case_insensitive_duplicates(const config& dir, std::vector<std::string>* badlist = nullptr);
 
 std::string encode_binary(const std::string& str);
 std::string unencode_binary(const std::string& str);
