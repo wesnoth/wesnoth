@@ -168,7 +168,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 		this->last_error_ =
 			vgettext("The add-on <i>$addon_title</i> contains files or directories with case conflicts. "
 				"File or directory names may not be differently-cased versions of the same string.", i18n_symbols);
-		this->last_error_data_ = utils::join(badnames, "\n");
+		this->last_error_data_ = font::escape_text(utils::join(badnames, "\n"));
 		return false;
 	}
 
