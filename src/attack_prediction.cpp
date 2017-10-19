@@ -2070,6 +2070,10 @@ void complex_fight(attack_prediction_mode mode,
 	const double original_opp_not_hit = opp_not_hit;
 	const double hit_chance = stats.chance_to_hit / 100.0;
 	const double opp_hit_chance = opp_stats.chance_to_hit / 100.0;
+	double self_hit = 0.0;
+	double opp_hit = 0.0;
+	double self_hit_unknown = 1.0; // Probability we don't yet know if A will be hit or not
+	double opp_hit_unknown = 1.0; // Ditto for B
 
 	// Prepare the matrix that will do our calculations.
 	std::unique_ptr<combat_matrix> m;
@@ -2086,15 +2090,27 @@ void complex_fight(attack_prediction_mode mode,
 			for(unsigned int i = 0; i < max_attacks; ++i) {
 				if(i < strikes) {
 					debug(("A strikes\n"));
-					opp_not_hit *= 1.0 - hit_chance * (1.0 - pm->dead_prob_a());
+					double b_already_dead = pm->dead_prob_b();
 					pm->receive_blow_b(hit_chance);
 					pm->dump();
+
+					double first_hit = hit_chance * opp_hit_unknown;
+					opp_hit += first_hit;
+					opp_hit_unknown -= first_hit;
+					double this_hit_killed_b = (pm->dead_prob_b() - b_already_dead) / ((1.0 - b_already_dead) * (1.0 - pm->dead_prob_a()));
+					self_hit_unknown *= (1.0 - this_hit_killed_b);
 				}
 				if(i < opp_strikes) {
 					debug(("B strikes\n"));
-					self_not_hit *= 1.0 - opp_hit_chance * (1.0 - pm->dead_prob_b());
+					double a_already_dead = pm->dead_prob_a();
 					pm->receive_blow_a(opp_hit_chance);
 					pm->dump();
+
+					double first_hit = opp_hit_chance * self_hit_unknown;
+					self_hit += first_hit;
+					self_hit_unknown -= first_hit;
+					double this_hit_killed_a = (pm->dead_prob_a() - a_already_dead) / ((1.0 - a_already_dead) * (1.0 - pm->dead_prob_b()));
+					opp_hit_unknown *= (1.0 - this_hit_killed_a);
 				}
 			}
 
@@ -2102,11 +2118,14 @@ void complex_fight(attack_prediction_mode mode,
 			pm->dump();
 		} while(--rounds && pm->dead_prob() < 0.99);
 
+		self_not_hit = original_self_not_hit * (1.0 - self_hit);
+		opp_not_hit = original_opp_not_hit * (1.0 - opp_hit);
+
 		if(stats.slows) {
 			/* The calculation method for the "not hit" probability above is incorrect if either unit can slow.
 			 * Because a slowed unit deals less damage, it is more likely for the slowing unit to be alive if it
 			 * has hit the other unit. In that situation, the "not hit" probability can no longer be calculated
-			 * with a simple multiplication.
+			 * with simple addition.
 			 * Instead, just fetch the probability from the combat matrix.
 			 */
 			opp_not_hit = original_opp_not_hit * pm->col_sum(plane_index(stats, opp_stats), opp_stats.hp);
