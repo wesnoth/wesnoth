@@ -318,7 +318,7 @@ void mp_lobby::update_gamelist_diff()
 		} else {
 			if(list_i >= gamelistbox_->get_item_count()) {
 				ERR_LB << "Ran out of listbox items -- triggering a full refresh\n";
-				network_connection_.send_data(config("refresh_lobby"));
+				refresh_lobby();
 				return;
 			}
 
@@ -327,7 +327,7 @@ void mp_lobby::update_gamelist_diff()
 					   << list_rows_deleted
 					   << " >= " << gamelist_id_at_row_.size()
 					   << " -- triggering a full refresh\n";
-				network_connection_.send_data(config("refresh_lobby"));
+				refresh_lobby();
 				return;
 			}
 
@@ -335,7 +335,7 @@ void mp_lobby::update_gamelist_diff()
 			if(game.id != listbox_game_id) {
 				ERR_LB << "Listbox game id does not match expected id "
 					   << listbox_game_id << " " << game.id << " (row " << list_i << ")\n";
-				network_connection_.send_data(config("refresh_lobby"));
+				refresh_lobby();
 				return;
 			}
 
@@ -547,7 +547,6 @@ void mp_lobby::update_playerlist()
 	for(auto userptr : lobby_info_.users_sorted()) {
 		mp::user_info& user = *userptr;
 		sub_player_list* target_list(nullptr);
-		std::map<std::string, string_map> data;
 
 		std::string name = user.name;
 
@@ -604,8 +603,6 @@ void mp_lobby::update_playerlist()
 		}
 
 		icon_ss << ".png";
-		add_label_data(data, "player", name);
-		add_label_data(data, "main_icon", icon_ss.str());
 
 		if(!preferences::playerlist_group_players()) {
 			target_list = &player_list_.other_rooms;
@@ -674,7 +671,7 @@ void mp_lobby::pre_show(window& window)
 	gamelistbox_ = find_widget<listbox>(&window, "game_list", false, true);
 
 	connect_signal_notify_modified(*gamelistbox_,
-			std::bind(&mp_lobby::gamelist_change_callback, this, std::ref(window)));
+			std::bind(&mp_lobby::gamelist_change_callback, this));
 
 	window.keyboard_capture(gamelistbox_);
 
@@ -704,7 +701,7 @@ void mp_lobby::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "refresh", false),
-		std::bind(&mp_lobby::refresh_button_callback, this, std::ref(window)));
+		std::bind(&mp_lobby::refresh_lobby, this));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "show_preferences", false),
@@ -855,7 +852,7 @@ void mp_lobby::process_gamelist_diff(const config& data)
 		gamelist_dirty_ = true;
 	} else {
 		ERR_LB << "process_gamelist_diff failed!" << std::endl;
-		network_connection_.send_data(config("refresh_lobby"));
+		refresh_lobby();
 	}
 	const int joined = data.child_count("insert_child");
 	const int left = data.child_count("remove_child");
@@ -993,7 +990,7 @@ bool mp_lobby::do_game_join(int idx, bool observe)
 	return true;
 }
 
-void mp_lobby::refresh_button_callback(window& /*window*/)
+void mp_lobby::refresh_lobby()
 {
 	network_connection_.send_data(config("refresh_lobby"));
 }
@@ -1021,7 +1018,7 @@ void mp_lobby::show_preferences_button_callback(window& window)
 	 */
 	window.invalidate_layout();
 
-	network_connection_.send_data(config("refresh_lobby"));
+	refresh_lobby();
 }
 
 void mp_lobby::game_filter_reload()
@@ -1070,7 +1067,7 @@ void mp_lobby::game_filter_change_callback()
 	update_gamelist_filter();
 }
 
-void mp_lobby::gamelist_change_callback(window& /*window*/)
+void mp_lobby::gamelist_change_callback()
 {
 	update_selected_game();
 }
@@ -1122,7 +1119,7 @@ void mp_lobby::user_dialog_callback(mp::user_info* info)
 	// update_gamelist();
 	delay_playerlist_update_ = false;
 	player_list_dirty_ = true;
-	network_connection_.send_data(config("refresh_lobby"));
+	refresh_lobby();
 }
 
 void mp_lobby::skip_replay_changed_callback(window& window)

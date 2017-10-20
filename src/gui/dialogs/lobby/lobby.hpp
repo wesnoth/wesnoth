@@ -134,7 +134,7 @@ private:
 
 	void show_preferences_button_callback(window& window);
 
-	void refresh_button_callback(window& window);
+	void refresh_lobby();
 
 	void game_filter_reload();
 
@@ -142,7 +142,7 @@ private:
 
 	void game_filter_keypress_callback(const SDL_Keycode key);
 
-	void gamelist_change_callback(window& window);
+	void gamelist_change_callback();
 
 	void player_filter_callback();
 
