@@ -190,9 +190,13 @@ std::vector<std::shared_ptr<sound::music_track>>::const_iterator find_track(cons
 
 namespace sound
 {
-unsigned int get_current_track()
+unsigned int get_current_track_index()
 {
 	return current_track_index;
+}
+std::shared_ptr<music_track> get_current_track()
+{
+	return current_track;
 }
 std::shared_ptr<music_track> get_previous_music_track()
 {
