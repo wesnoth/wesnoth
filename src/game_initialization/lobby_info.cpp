@@ -398,15 +398,7 @@ void lobby_info::sort_users(bool by_name, bool by_relation)
 			      (u1->relation == u2->relation && translation::icompare(u1->name, u2->name) < 0);
 		}
 
-		if(by_name) {
-			return translation::icompare(u1->name, u2->name) < 0;
-		}
-
-		if(by_relation) {
-			return u1->relation < u2->relation;
-		}
-
-		return true;
+		return (by_name && translation::icompare(u1->name, u2->name) < 0) || (by_relation && u1->relation < u2->relation);
 	});
 }
 
