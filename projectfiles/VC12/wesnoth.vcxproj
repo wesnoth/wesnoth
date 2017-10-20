@@ -1790,7 +1790,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\lobby.cpp" />
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\lobby.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)\Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)\Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)\Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)\Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)\Gui\Dialogs\Multiplayer\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_alerts_options.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
@@ -1875,7 +1881,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\player_info.cpp" />
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\player_info.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)\Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)\Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)\Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)\Gui\Dialogs\Multiplayer\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)\Gui\Dialogs\Multiplayer\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\synced_choice_wait.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
