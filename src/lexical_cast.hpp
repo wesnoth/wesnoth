@@ -124,6 +124,16 @@ struct bad_lexical_cast : std::exception
 
 namespace implementation {
 
+/* Suppress -Wmaybe-uninitialized warnings.
+ * I (Jyrki) noticed that building with -Og on my system (GCC 7.2.0, Boost 1.61)
+ * GCC may omit a warning that the value of `fallback` may be used uninitialized.
+ * It's impossible, but GCC can't prove that to itself.
+ */
+#if defined(__GNUC__) && !defined(__clang__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+#endif
+
 /**
  * Base class for the conversion.
  *
@@ -484,6 +494,10 @@ struct lexical_caster<
 		}
 	}
 };
+
+#if defined(__GNUC__) && !defined(__clang__)
+#pragma GCC diagnostic pop
+#endif
 
 } // namespace implementation
 
