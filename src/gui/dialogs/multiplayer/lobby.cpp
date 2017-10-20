@@ -13,12 +13,12 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/lobby/lobby.hpp"
+#include "gui/dialogs/multiplayer/lobby.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/dialogs/lobby/player_info.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
+#include "gui/dialogs/multiplayer/player_info.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/helper.hpp"
 

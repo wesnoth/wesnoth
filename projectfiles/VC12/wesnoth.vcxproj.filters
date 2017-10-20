@@ -56,9 +56,6 @@
     <Filter Include="Gui\Dialogs">
       <UniqueIdentifier>{006b82d3-7b2b-41ef-bfd8-8f98867cab7b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Gui\Dialogs\Lobby">
-      <UniqueIdentifier>{7c98108b-ad5b-4712-8824-40ac9b734ff4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Gui\Dialogs\Addon">
       <UniqueIdentifier>{994675eb-e9db-4699-a08a-d29248d169e7}</UniqueIdentifier>
     </Filter>
@@ -700,12 +697,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\wml_message.cpp">
       <Filter>Gui\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\lobby\lobby.cpp">
-      <Filter>Gui\Dialogs\Lobby</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\lobby\player_info.cpp">
-      <Filter>Gui\Dialogs\Lobby</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\addon\connect.cpp">
       <Filter>Gui\Dialogs\Addon</Filter>
@@ -1547,6 +1538,12 @@
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\lobby.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\player_info.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -2106,12 +2103,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\wml_message.hpp">
       <Filter>Gui\Dialogs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\lobby\lobby.hpp">
-      <Filter>Gui\Dialogs\Lobby</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\lobby\player_info.hpp">
-      <Filter>Gui\Dialogs\Lobby</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\addon\connect.hpp">
       <Filter>Gui\Dialogs\Addon</Filter>
@@ -3002,6 +2993,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\preferences\lobby.hpp">
       <Filter>Preferences</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\lobby.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\player_info.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

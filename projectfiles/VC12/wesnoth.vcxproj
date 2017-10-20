@@ -1748,20 +1748,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\lobby\lobby.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Lobby\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\Lobby\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\Lobby\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\Lobby\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Lobby\</ObjectFileName>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\lobby\player_info.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Lobby\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\Lobby\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\Lobby\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\Lobby\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Lobby\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\log_settings.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
@@ -1804,6 +1790,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\lobby.cpp" />
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_alerts_options.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
@@ -1888,6 +1875,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\player_info.cpp" />
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\synced_choice_wait.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
@@ -3743,14 +3731,13 @@
     <ClInclude Include="..\..\src\gui\dialogs\label_settings.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\language_selection.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\loading_screen.hpp" />
-    <ClInclude Include="..\..\src\gui\dialogs\lobby\lobby.hpp" />
-    <ClInclude Include="..\..\src\gui\dialogs\lobby\player_info.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\log_settings.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\lua_interpreter.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\message.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\modal_dialog.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\modeless_dialog.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\faction_select.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\lobby.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_alerts_options.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_change_control.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_cmd_wrapper.hpp" />
@@ -3763,6 +3750,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_method_selection.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_options_helper.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_staging.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\player_info.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\plugin_executor.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\synced_choice_wait.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\network_transmission.hpp" />
