@@ -564,8 +564,8 @@ if(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 	# exec_program(sed ARGS "-i" "'s/^\(Name.*=.*\)$/\1TEST/g'" ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop )
 	# install the generated .desktop file
 	# install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
-	install(FILES icons/wesnoth.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
-	install(FILES icons/wesnoth-icon.png DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/64x64/apps )
+	install(FILES packaging/wesnoth.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
+	install(DIRECTORY packaging/icons/hicolor DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons )
 endif(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 
 
