@@ -493,7 +493,7 @@ public:
 	double idle_anim_rate() const { return idle_anim_rate_; }
 
 	void bounds_check_position();
-	void bounds_check_position(int& xpos, int& ypos);
+	void bounds_check_position(int& xpos, int& ypos) const;
 
 	/**
 	 * Scrolls the display by xmov,ymov pixels.

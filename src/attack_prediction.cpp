@@ -317,7 +317,7 @@ public:
 
 private:
 	// This gives me 10% speed improvement over std::vector<> (g++4.0.3 x86)
-	std::unique_ptr<double[]> new_plane();
+	std::unique_ptr<double[]> new_plane() const;
 
 	void initialize_plane(unsigned plane,
 			unsigned a_cur,
@@ -449,7 +449,7 @@ prob_matrix::prob_matrix(unsigned int a_max,
 }
 
 /** Allocate a new probability array, initialized to 0. */
-std::unique_ptr<double[]> prob_matrix::new_plane()
+std::unique_ptr<double[]> prob_matrix::new_plane() const
 {
 	const unsigned int size = rows_ * cols_;
 	std::unique_ptr<double[]> res(new double[size]);
