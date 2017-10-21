@@ -45,9 +45,9 @@ editor_action* editor_action_village::perform(map_context& mc) const
 
 	editor_action_ptr undo(new editor_action_village_delete(loc_));
 
-	for(const team& t : teams) {
-		if(t.owns_village(loc_)) {
-			undo.reset(new editor_action_village(loc_, t.side() - 1));
+	for(const team& t2 : teams) {
+		if(t2.owns_village(loc_)) {
+			undo.reset(new editor_action_village(loc_, t2.side() - 1));
 		}
 	}
 
