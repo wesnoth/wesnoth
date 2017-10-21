@@ -131,7 +131,7 @@ public:
 		return pumped_count_ >= queue_.size();
 	}
 
-	unsigned count()
+	unsigned count() const
 	{
 		return impl_.instance_count;
 	}

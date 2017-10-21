@@ -78,7 +78,7 @@ namespace {
 			char_t_to*& to_next;
 			char_t_to* to_end;
 
-			bool can_push(size_t count)
+			bool can_push(size_t count) const
 			{
 				return static_cast<size_t>(to_end - to_next) > count;
 			}

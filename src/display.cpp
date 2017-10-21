@@ -2324,7 +2324,7 @@ void display::bounds_check_position()
 	}
 }
 
-void display::bounds_check_position(int& xpos, int& ypos)
+void display::bounds_check_position(int& xpos, int& ypos) const
 {
 	const int tile_width = hex_width();
 
