@@ -687,11 +687,8 @@ if env["nls"]:
     env.InstallData("datadir", "wesnoth", "l10n-track")
 InstallManpages(env, "wesnoth")
 if have_client_prereqs and have_X and env["desktop_entry"]:
-     if sys.platform == "darwin":
-         env.InstallData("icondir", "wesnoth", "icons/wesnoth-icon-Mac.png")
-     else:
-         env.InstallData("icondir", "wesnoth", "icons/wesnoth-icon.png")
-     env.InstallData("desktopdir", "wesnoth", "icons/wesnoth.desktop")
+     env.InstallData("icondir", "wesnoth", "packaging/icons")
+     env.InstallData("desktopdir", "wesnoth", "packaging/wesnoth.desktop")
 
 # Python tools
 env.InstallData("bindir", "pytools", [os.path.join("data", "tools", tool) for tool in pythontools])
