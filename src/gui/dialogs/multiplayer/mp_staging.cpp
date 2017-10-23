@@ -143,7 +143,7 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	data.emplace("side_number", item);
 
 	// TODO: don't hardcode magenta?
-	item["label"] = "units/unknown-unit.png~RC(magenta>" + std::to_string(side->color() + 1) + ")";
+	item["label"] = "units/unknown-unit.png~RC(magenta>" + side->color_id() + ")";
 	data.emplace("leader_image", item);
 
 	item["label"] = "icons/icon-random.png";

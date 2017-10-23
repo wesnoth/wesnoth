@@ -865,9 +865,8 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	, flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_, parent_.params_.use_map_settings, parent_.params_.saved_game)
 	, allow_changes_(!parent_.params_.saved_game && !(flg_.choosable_factions().size() == 1 && flg_.choosable_leaders().size() == 1 && flg_.choosable_genders().size() == 1))
 	, waiting_to_choose_faction_(allow_changes_)
-	, custom_color_()
-	, color_id_()
-	, color_options_()
+	, color_options_(game_config::default_colors)
+	, color_id_(color_options_[color_])
 {
 	// Save default attributes that could be overwirtten by the faction, so that correct faction lists would be
 	// initialized by flg_manager when the new side config is sent over network.
@@ -944,25 +943,22 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 		team_ = team_name_index;
 	}
 
-	color_options_ = game_config::default_colors;
-	color_id_ = color_options_[color_];
-
 	if(!cfg["color"].empty()) {
 		if(cfg["color"].to_int()) {
 			color_ = cfg["color"].to_int() - 1;
 			color_id_ = color_options_[color_];
 		} else {
-			custom_color_ = cfg["color"].str();
+			const std::string custom_color = cfg["color"].str();
 
-			const auto iter = std::find(color_options_.begin(), color_options_.end(), custom_color_);
+			const auto iter = std::find(color_options_.begin(), color_options_.end(), custom_color);
 
 			if(iter != color_options_.end()) {
 				color_id_ = *iter;
 				color_ = iter - color_options_.begin();
 			} else {
-				color_options_.push_back(custom_color_);
+				color_options_.push_back(custom_color);
 
-				color_id_ = custom_color_;
+				color_id_ = custom_color;
 				color_ = color_options_.size() - 1;
 			}
 		}
