@@ -405,7 +405,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 				color_options_ = game_config::default_colors;
 				color_id_ = color_options_[color_];
 				
-				if (u.has_attribute("color")){
+				if (u.has_attribute("color")) {
 					color_ = u["color"].to_int() - 1;
 					color_id_ = color_options_[color_];
 				}
