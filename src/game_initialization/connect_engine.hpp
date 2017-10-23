@@ -31,7 +31,6 @@ enum controller {
 	CNTR_COMPUTER,
 	CNTR_EMPTY,
 	CNTR_RESERVED,
-	CNTR_LAST
 };
 
 class connect_engine;

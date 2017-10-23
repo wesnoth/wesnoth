@@ -1034,7 +1034,6 @@ config side_engine::new_config() const
 		res["name"] = desc;
 	}
 
-	assert(controller_ != CNTR_LAST);
 	if(controller_ == CNTR_COMPUTER && allow_player_) {
 		// Do not import default ai cfg otherwise - all is set by scenario config.
 		res.add_child_at("ai", config {"ai_algorithm", ai_algorithm_}, 0);
@@ -1286,7 +1285,6 @@ void side_engine::update_controller_options()
 	}
 
 	// Connected users.
-	add_controller_option(CNTR_LAST, _("--give--"), "human");
 	for(const std::string& user : parent_.connected_users()) {
 		add_controller_option(parent_.default_controller_, user, "human");
 	}
@@ -1317,9 +1315,6 @@ void side_engine::update_current_controller_index()
 bool side_engine::controller_changed(const int selection)
 {
 	const ng::controller selected_cntr = controller_options_[selection].first;
-	if(selected_cntr == CNTR_LAST) {
-		return false;
-	}
 
 	// Check if user was selected. If so assign a side to him/her.
 	// If not, make sure that no user is assigned to this side.
