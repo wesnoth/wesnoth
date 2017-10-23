@@ -94,10 +94,10 @@ mp_create_game::mp_create_game(const config& cfg, ng::create_engine& create_eng)
 {
 	level_types_ = {
 		{ng::level::TYPE::SCENARIO, _("Scenarios")},
-		{ng::level::TYPE::CAMPAIGN, _("Campaigns")},
-		{ng::level::TYPE::SP_CAMPAIGN, _("SP Campaigns")},
-		{ng::level::TYPE::USER_MAP, _("User Maps")},
-		{ng::level::TYPE::USER_SCENARIO, _("User Scenarios")},
+		{ng::level::TYPE::CAMPAIGN, _("Multiplayer Campaigns")},
+		{ng::level::TYPE::SP_CAMPAIGN, _("Singleplayer Campaigns")},
+		{ng::level::TYPE::USER_MAP, _("Custom Maps")},
+		{ng::level::TYPE::USER_SCENARIO, _("Custom Scenarios")},
 		{ng::level::TYPE::RANDOM_MAP, _("Random Maps")},
 	};
 
