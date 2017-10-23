@@ -21,6 +21,8 @@
 #include "mt_rng.hpp"
 #include "units/types.hpp"
 
+#include <algorithm>
+
 static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 #define LOG_MP LOG_STREAM(info, log_mp_connect_engine)
 #define ERR_MP LOG_STREAM(err, log_mp_connect_engine)
@@ -81,7 +83,7 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 
 	update_available_factions();
 
-	set_current_faction(0);
+	select_default_faction();
 }
 
 void flg_manager::set_current_faction(const unsigned index)
@@ -430,6 +432,21 @@ void flg_manager::update_choosable_genders()
 			choosable_genders_.clear();
 			choosable_genders_.push_back(default_gender);
 		}
+	}
+}
+
+void flg_manager::select_default_faction()
+{
+	const config::attribute_value& default_faction = get_default_faction(side_)["faction"];
+	auto default_faction_it = std::find_if(choosable_factions_.begin(), choosable_factions_.end(),
+		[&default_faction](const config* faction) {
+			return (*faction)["id"] == default_faction;
+		});
+
+	if(default_faction_it != choosable_factions_.end()) {
+		set_current_faction(default_faction_it - choosable_factions_.begin());
+	} else {
+		set_current_faction(0u);
 	}
 }
 
