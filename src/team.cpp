@@ -412,8 +412,8 @@ void team::write(config& cfg) const
 	cfg["gold"] = gold_;
 
 	// Write village locations
-	for(std::set<map_location>::const_iterator t = villages_.begin(); t != villages_.end(); ++t) {
-		t->write(cfg.add_child("village"));
+	for(const map_location& loc : villages_) {
+		loc.write(cfg.add_child("village"));
 	}
 
 	cfg["shroud_data"] = shroud_.write();
@@ -520,13 +520,13 @@ bool team::calculate_is_enemy(size_t index) const
 			<< info_.team_name << "], their team_name is [" << resources::gameboard->teams()[index].info_.team_name
 			<< "]" << std::endl;
 
-	for(std::vector<std::string>::const_iterator t = our_teams.begin(); t != our_teams.end(); ++t) {
-		if(std::find(their_teams.begin(), their_teams.end(), *t) != their_teams.end()) {
-			LOG_NGE << "team " << info_.side << " found same team name [" << *t << "] in team " << index + 1
+	for(const std::string& t : our_teams) {
+		if(std::find(their_teams.begin(), their_teams.end(), t) != their_teams.end()) {
+			LOG_NGE << "team " << info_.side << " found same team name [" << t << "] in team " << index + 1
 					<< std::endl;
 			return false;
 		} else {
-			LOG_NGE << "team " << info_.side << " not found same team name [" << *t << "] in team " << index + 1
+			LOG_NGE << "team " << info_.side << " not found same team name [" << t << "] in team " << index + 1
 					<< std::endl;
 		}
 	}
@@ -794,8 +794,8 @@ void team::shroud_map::reset()
 		return;
 	}
 
-	for(std::vector<std::vector<bool>>::iterator i = data_.begin(); i != data_.end(); ++i) {
-		std::fill(i->begin(), i->end(), false);
+	for(auto& i : data_) {
+		std::fill(i.begin(), i.end(), false);
 	}
 }
 
@@ -843,11 +843,11 @@ bool team::shroud_map::shared_value(const std::vector<const shroud_map*>& maps, 
 std::string team::shroud_map::write() const
 {
 	std::stringstream shroud_str;
-	for(std::vector<std::vector<bool>>::const_iterator sh = data_.begin(); sh != data_.end(); ++sh) {
+	for(const auto& sh : data_) {
 		shroud_str << '|';
 
-		for(std::vector<bool>::const_iterator i = sh->begin(); i != sh->end(); ++i) {
-			shroud_str << (*i ? '1' : '0');
+		for(bool i : sh) {
+			shroud_str << (i ? '1' : '0');
 		}
 
 		shroud_str << '\n';
@@ -860,15 +860,15 @@ void team::shroud_map::read(const std::string& str)
 {
 	data_.clear();
 
-	for(std::string::const_iterator sh = str.begin(); sh != str.end(); ++sh) {
-		if(*sh == '|') {
+	for(const char sh : str) {
+		if(sh == '|') {
 			data_.resize(data_.size() + 1);
 		}
 
 		if(data_.empty() == false) {
-			if(*sh == '1') {
+			if(sh == '1') {
 				data_.back().push_back(true);
-			} else if(*sh == '0') {
+			} else if(sh == '0') {
 				data_.back().push_back(false);
 			}
 		}
@@ -878,14 +878,14 @@ void team::shroud_map::read(const std::string& str)
 void team::shroud_map::merge(const std::string& str)
 {
 	int x = 0, y = 0;
-	for(std::string::const_iterator sh = str.begin(); sh != str.end(); ++sh) {
-		if(*sh == '|' && sh != str.begin()) {
+	for(const char sh : str) {
+		if(sh == '|' && sh != str.front()) {
 			y = 0;
 			x++;
-		} else if(*sh == '1') {
+		} else if(sh == '1') {
 			clear(x, y);
 			y++;
-		} else if(*sh == '0') {
+		} else if(sh == '0') {
 			y++;
 		}
 	}
@@ -898,12 +898,12 @@ bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 	}
 
 	bool cleared = false;
-	for(std::vector<const shroud_map*>::const_iterator i = maps.begin(); i != maps.end(); ++i) {
-		if((*i)->enabled_ == false) {
+	for(const shroud_map* m : maps) {
+		if(m->enabled_ == false) {
 			continue;
 		}
 
-		const std::vector<std::vector<bool>>& v = (*i)->data_;
+		const std::vector<std::vector<bool>>& v = m->data_;
 		for(size_t x = 0; x != v.size(); ++x) {
 			for(size_t y = 0; y != v[x].size(); ++y) {
 				if(v[x][y]) {
@@ -962,8 +962,8 @@ std::string team::get_side_highlight_pango(int side)
 void team::log_recruitable() const
 {
 	LOG_NG << "Adding recruitable units: \n";
-	for(std::set<std::string>::const_iterator it = info_.can_recruit.begin(); it != info_.can_recruit.end(); ++it) {
-		LOG_NG << *it << std::endl;
+	for(const std::string& recruit : info_.can_recruit) {
+		LOG_NG << recruit << std::endl;
 	}
 
 	LOG_NG << "Added all recruitable units\n";
