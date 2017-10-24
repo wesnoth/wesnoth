@@ -948,13 +948,11 @@ int dir_size(const std::string& pname)
 
 std::string base_name(const std::string& file, const bool remove_extension)
 {
-	std::string res = path(file).filename().string();
-
-	if(remove_extension) {
-		return res.substr(0, res.rfind("."));
+	if(!remove_extension) {
+		return path(file).filename().string();
+	} else {
+		return path(file).stem().string();
 	}
-
-	return res;
 }
 
 std::string directory_name(const std::string& file)
