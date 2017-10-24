@@ -95,6 +95,8 @@ private:
 	blacklist blacklist_;
 	std::string blacklist_file_;
 
+	std::vector<std::string> stats_exempt_ips_;
+
 	boost::asio::basic_waitable_timer<std::chrono::steady_clock> flush_timer_;
 
 	void handle_new_client(socket_ptr socket);
@@ -146,6 +148,9 @@ private:
 
 	/** Retrieves the contents of the [server_info] WML node. */
 	config& server_info() { return cfg_.child("server_info"); }
+
+	/** Checks if the specified address should never bump download counts. */
+	bool ignore_address_stats(const std::string& addr) const;
 
 	//
 	// Request handling.
