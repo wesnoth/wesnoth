@@ -156,6 +156,7 @@ server::server(const std::string& cfg_file, size_t min_threads, size_t max_threa
 	, feedback_url_format_()
 	, blacklist_()
 	, blacklist_file_()
+	, stats_exempt_ips_()
 	, port_(load_config())
 	, net_manager_(min_threads, max_threads)
 	, server_manager_(port_)
@@ -218,6 +219,8 @@ int server::load_config()
 
 	blacklist_file_ = cfg_["blacklist_file"].str();
 	load_blacklist();
+
+	stats_exempt_ips_ = utils::split(cfg_["stats_exempt_ips"].str());
 
 	// Load any configured hooks.
 	hooks_.insert(std::make_pair(std::string("hook_post_upload"), cfg_["hook_post_upload"]));
@@ -317,6 +320,18 @@ void server::fire(const std::string& hook, const std::string& addon)
 		return;
 	}
 #endif
+}
+
+bool server::ignore_address_stats(const std::string& addr) const
+{
+	BOOST_FOREACH(const std::string& mask, stats_exempt_ips_) {
+		// TODO: we want CIDR subnet mask matching here, not glob matching!
+		if(utils::wildcard_string_match(addr, mask)) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 void server::send_message(const std::string& msg, network::connection sock)
@@ -612,7 +627,7 @@ void server::handle_request_campaign(const server::request& req)
 		// Clients doing upgrades or some other specific thing shouldn't bump
 		// the downloads count. Default to true for compatibility with old
 		// clients that won't tell us what they are trying to do.
-		if(req.cfg["increase_downloads"].to_bool(true)) {
+		if(req.cfg["increase_downloads"].to_bool(true) && !ignore_address_stats(req.addr)) {
 			const int downloads = campaign["downloads"].to_int() + 1;
 			campaign["downloads"] = downloads;
 		}
