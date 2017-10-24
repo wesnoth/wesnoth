@@ -30,6 +30,16 @@ namespace {
 		"other", ""
 	};
 
+	// Reserved DOS device names on Windows XP and later.
+	const std::set<std::string> dos_device_names = {
+		"NUL", "CON", "AUX", "PRN",
+		// Console API devices
+		"CONIN$", "CONOUT$",
+		// Configuration-dependent devices
+		"COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8", "COM9",
+		"LPT1", "LPT2", "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9",
+	};
+
 	struct addon_name_char_illegal
 	{
 		/**
@@ -94,6 +104,20 @@ bool addon_filename_legal(const std::string& name)
 	   name.size() > 255) {
 		return false;
 	} else {
+		// NOTE: We can't use filesystem::base_name() here, since it returns
+		//       the filename up to the *last* dot. "CON.foo.bar" in
+		//       "CON.foo.bar.baz" is still redirected to "CON" on Windows;
+		//       the base_name() approach would cause the name to not match
+		//       any entries on our blacklist.
+		//       Do also note that we're relying on the next check after this
+		//       to flag the name as illegal if it contains a ':' -- a
+		//       trailing colon is a valid way to refer to DOS device names,
+		//       meaning that e.g. "CON:" is equivalent to "CON".
+		const std::string stem = boost::algorithm::to_upper_copy(name.substr(0, name.find('.')), std::locale::classic());
+		if(dos_device_names.find(stem) != dos_device_names.end()) {
+			return false;
+		}
+
 		const ucs4::string name_ucs4 = unicode_cast<ucs4::string>(name);
 		const std::string name_utf8 = unicode_cast<utf8::string>(name_ucs4);
 		if(name != name_utf8){ // name is invalid UTF-8
