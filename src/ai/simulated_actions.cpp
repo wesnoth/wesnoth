@@ -23,6 +23,7 @@
 #include "game_config.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
+#include "random.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
 #include "team.hpp"
@@ -239,7 +240,7 @@ void helper_advance_unit(const map_location& loc){
 	std::vector<config> mod_options = advance_unit->get_modification_advances();
 	int options_num = unit_helper::number_of_possible_advances(*advance_unit);
 
-	size_t advance_choice = rand() % options_num;
+	size_t advance_choice = randomness::generator->get_random_int(0, options_num-1);
 	unit_ptr advanced_unit(new unit(*advance_unit));
 
 	if(advance_choice < options.size()){

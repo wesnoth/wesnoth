@@ -14,6 +14,7 @@
 
 #include "server/user_handler.hpp"
 #include "config.hpp"
+#include "random.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <ctime>
@@ -43,7 +44,7 @@ std::string user_handler::create_salt(int length) {
 	std::stringstream ss;
 
 	for(int i = 0; i < length; i++) {
-		ss << (rand() % 10);
+		ss << randomness::generator->get_random_int(0, 9);
 	}
 
 	return  ss.str();

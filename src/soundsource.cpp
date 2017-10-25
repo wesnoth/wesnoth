@@ -14,6 +14,7 @@
 
 #include "display.hpp"
 #include "log.hpp"
+#include "random.hpp"
 #include "serialization/string_utils.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
@@ -134,7 +135,7 @@ void positional_source::update(unsigned int time, const display &disp)
 	if (time - last_played_ < unsigned(min_delay_) || sound::is_sound_playing(id_))
 		return;
 
-	int i = rand() % 100 + 1;
+	int i = randomness::generator->get_random_int(1, 100);
 
 	if(i <= chance_) {
 		last_played_ = time;

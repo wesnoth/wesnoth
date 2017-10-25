@@ -70,6 +70,7 @@
 #include "game_config_manager.hpp"
 #include "generators/map_create.hpp"
 #include "log.hpp"
+#include "random.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "statistics.hpp"
 #include "variable.hpp" // for config_variable_set
@@ -133,7 +134,7 @@ void saved_game::set_random_seed()
 		return;
 	}
 
-	carryover_["random_seed"] = rand();
+	carryover_["random_seed"] = randomness::generator->get_random_int(0, INT_MAX);
 	carryover_["random_calls"] = 0;
 }
 

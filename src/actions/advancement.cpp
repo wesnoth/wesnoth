@@ -183,7 +183,7 @@ namespace
 			}
 			else if(t.is_local_ai() || t.is_network_ai() || t.is_empty())
 			{
-				res = rand() % nb_options_;
+				res = randomness::generator->get_random_int(0, nb_options_-1);
 
 				//if ai_advancement_ is the default advancement the following code will
 				//have no effect because get_advancements returns an empty list.

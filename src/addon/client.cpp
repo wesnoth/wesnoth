@@ -24,6 +24,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
+#include "random.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 
@@ -132,7 +133,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	if(passphrase.empty()) {
 		passphrase.resize(8);
 		for(size_t n = 0; n != 8; ++n) {
-			passphrase[n] = 'a' + (rand()%26);
+			passphrase[n] = randomness::generator->get_random_int('a', 'z');
 		}
 		cfg["passphrase"] = passphrase;
 		set_addon_pbl_info(id, cfg);

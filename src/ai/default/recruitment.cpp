@@ -1242,7 +1242,7 @@ const std::string recruitment::get_random_pattern_type_if_exists(const data& lea
 
 		if (!job_types.empty()) {
 			// Choose a random job_type.
-			choosen_type = job_types[rand() % job_types.size()];
+			choosen_type = job_types[randomness::generator->get_random_int(0, job_types.size()-1)];
 		}
 	}
 	return choosen_type;
@@ -1543,7 +1543,7 @@ void recruitment::do_randomness(std::vector<data>* leader_data) const {
 	for (data& data : *leader_data) {
 		for (score_map::value_type& entry : data.scores) {
 			double& score = entry.second;
-			score += (static_cast<double>(rand()) / RAND_MAX) * get_recruitment_randomness();
+			score += randomness::generator->get_random_double() * get_recruitment_randomness();
 		}
 	}
 }
