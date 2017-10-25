@@ -517,6 +517,7 @@ set(CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}" CACHE STRING "removed
 MESSAGE("Replacing default flags used for Release build with -O3")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3" CACHE STRING "Release build flags" FORCE)
 set(CMAKE_C_FLAGS_RELEASE "-O3" CACHE STRING "Release build flags" FORCE)
+set(CMAKE_EXE_LINKER_FLAGS_RELEASE "" CACHE STRING "" FORCE)
 # set the arch to use for Release build if provided
 if(ARCH)
 	MESSAGE("adding -march=${ARCH} to Release build")
@@ -530,17 +531,21 @@ if(WIN32 AND NOT ARCH)
 	set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -march=pentiumpro" CACHE STRING "Release build flags" FORCE)
 endif(WIN32 AND NOT ARCH)
 
-# if compiling with LTO
-if(ENABLE_LTO)
-# clang and gcc require different parallelization options and linkers
-	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-		MESSAGE("added -flto=thin to Release build")
-		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto=thin" CACHE STRING "Release build flags with LTO" FORCE)
-		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto=thin" CACHE STRING "Release build flags with LTO" FORCE)
-		
-		MESSAGE("Using Clang LLD linker")
-		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "-s -fuse-ld=lld" CACHE STRING "Linker flag for building with LTO and clang" FORCE)
-	elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+# PGO and LTO for GCC
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+	if(PGO_DATA STREQUAL "generate")
+		MESSAGE("Generating PGO data")
+		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-generate=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags generating PGO data" FORCE)
+		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-generate=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags generating PGO data" FORCE)
+	endif()
+	
+	if(PGO_DATA STREQUAL "use")
+		MESSAGE("Using PGO data from previous runs")
+		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-correction -fprofile-use=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags for using PGO data" FORCE)
+		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-correction -fprofile-use=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags for using PGO data" FORCE)
+	endif()
+	
+	if(ENABLE_LTO)
 		if(NOT LTO_JOBS)
 			MESSAGE("LTO_JOBS not set, defaulting to 1")
 			set(LTO_JOBS "1" CACHE STRING "Number of threads to use for LTO with gcc" FORCE)
@@ -551,10 +556,36 @@ if(ENABLE_LTO)
 		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto=${LTO_JOBS}" CACHE STRING "Release build flags with LTO" FORCE)
 		
 		MESSAGE("Using GCC gold linker")
-		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "-s -fuse-ld=gold" CACHE STRING "Linker flag for building with LTO and gcc" FORCE)
+		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -fuse-ld=gold" CACHE STRING "" FORCE)
+	endif(ENABLE_LTO)
+endif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+
+# PGO and LTO for Clang
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+	if(PGO_DATA STREQUAL "generate")
+		MESSAGE("Generating PGO data")
+		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-instr-generate=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth-%p.profraw" CACHE STRING "Release build flags generating PGO data" FORCE)
+		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-instr-generate=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth-%p.profraw" CACHE STRING "Release build flags generating PGO data" FORCE)
 	endif()
 	
+	if(PGO_DATA STREQUAL "use")
+		MESSAGE("Using PGO data from previous runs")
+		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-instr-use=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth.profdata" CACHE STRING "Release build flags for using PGO data" FORCE)
+		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-instr-use=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth.profdata" CACHE STRING "Release build flags for using PGO data" FORCE)
+	endif()
+	
+	if(ENABLE_LTO)
+		MESSAGE("added -flto=thin to Release build")
+		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto=thin" CACHE STRING "Release build flags with LTO" FORCE)
+		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto=thin" CACHE STRING "Release build flags with LTO" FORCE)
+		
+		MESSAGE("Using Clang LLD linker")
+		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -fuse-ld=lld" CACHE STRING "Linker flag for building with LTO and clang" FORCE)
+	endif(ENABLE_LTO)
+endif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+
 # set CMAKE_AR and CMAKE_RANLIB to use LTO-enabled variants if LTO is enabled
+if(ENABLE_LTO)
 	MESSAGE("Using gcc-ar and gcc-ranlib")
 	find_program(LTO_AR NAMES gcc-ar)
 	find_program(LTO_RANLIB NAMES gcc-ranlib)
@@ -569,6 +600,9 @@ else()
 	set(CMAKE_EXE_LINKER_FLAGS_RELEASE "" CACHE STRING "Default linker" FORCE)
 endif()
 MARK_AS_ADVANCED(LTO_AR LTO_RANLIB NON_LTO_AR NON_LTO_RANLIB)
+
+# clean the pgo data
+set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${CMAKE_SOURCE_DIR}/pgo_data/")
 
 # #
 # End determining options for Release build
