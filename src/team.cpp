@@ -198,7 +198,6 @@ void team::team_info::read(const config& cfg)
 	is_local = cfg["is_local"].to_bool(true);
 
 	color = get_side_color_id_from_config(cfg);
-	std::cerr << "Setting up side... set color to " << color << std::endl;
 
 	// If starting new scenario override settings from [ai] tags
 	if(!user_team_name.translatable())
