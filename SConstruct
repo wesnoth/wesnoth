@@ -50,7 +50,7 @@ opts.AddVariables(
     EnumVariable('build', 'Build variant: release, debug, profile or base (no subdirectory)', "release", ["release", "debug", "profile", "base"]),
     PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
     ('extra_flags_config', "Extra compiler and linker flags to use for configuration and all builds. Whether they're compiler or linker is determined by env.ParseFlags. Unknown flags are compile flags by default. This applies to all extra_flags_* variables", ""),
-    ('extra_flags_base', 'Extra compiler and linker flags to use for release builds', ""),
+    ('extra_flags_base', 'Extra compiler and linker flags to use for base builds', ""),
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
     ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
@@ -58,6 +58,7 @@ opts.AddVariables(
     ('arch', 'What -march option to use for build=release, will default to pentiumpro on Windows', ""),
     BoolVariable('glibcxx_debug', 'Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC for build=debug', False),
     EnumVariable('profiler', 'profiler to be used for build=profile', "gprof", ["gprof", "gcov", "gperftools", "perf"]),
+    EnumVariable('pgo_data', 'whether to generate profiling data for PGO, or use existing profiling data', "", ["", "generate", "use"]),
     PathVariable('bindir', 'Where to install binaries', "bin", PathVariable.PathAccept),
     ('cachedir', 'Directory that contains a cache of derived files.', ''),
     PathVariable('datadir', 'read-only architecture-independent game data', "$datarootdir/$datadirname", PathVariable.PathAccept),
@@ -482,10 +483,10 @@ for env in [test_env, client_env, env]:
 # Start determining options for debug build
 # #
         
-        env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
+        env["DEBUG_FLAGS"] = "-O0 -DDEBUG -ggdb3"
         
         if env["glibcxx_debug"] == True:
-            glibcxx_debug_flags = Split("_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC")
+            glibcxx_debug_flags = "_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC"
         else:
             glibcxx_debug_flags = ""
         
@@ -494,27 +495,44 @@ for env in [test_env, client_env, env]:
 # Start setting options for release build
 # #
         
+# default compiler flags
         env["OPT_COMP_FLAGS"] = "-O3"
         
+# use the arch if provided, or if on Windows and no arch was passed in then default to pentiumpro
+# without setting to pentiumpro, compiling on Windows with 64-bit tdm-gcc and -O3 currently fails
         if env["arch"]:
             env["arch"] = " -march=" + env["arch"]
-# without setting to pentiumpro, compiling on Windows with 64-bit tdm-gcc and -O3 currently fails
-# therefore, set to pentiumpro if nothing else has been specified
+        
         if env["PLATFORM"] == "win32" and not env["arch"]:
             env["arch"] = " -march=pentiumpro"
         
-# set the -march option if windows or something was passed in
         env["OPT_COMP_FLAGS"] = env["OPT_COMP_FLAGS"] + env["arch"]
         
-# if building with LTO enabled
-        if env["enable_lto"] == True:
-# gcc and clang need different LTO options and linkers
-            if env["CC"] == "gcc":
+# PGO and LTO setup
+        if env["CC"] == "gcc":
+            if env["pgo_data"] == "generate":
+                env["OPT_COMP_FLAGS"] = env["OPT_COMP_FLAGS"] + " -fprofile-generate=pgo_data/"
+                env["OPT_LINK_FLAGS"] = "-fprofile-generate=pgo_data/"
+            
+            if env["pgo_data"] == "use":
+                env["OPT_COMP_FLAGS"] = env["OPT_COMP_FLAGS"] + " -fprofile-correction -fprofile-use=pgo_data/"
+                env["OPT_LINK_FLAGS"] = "-fprofile-correction -fprofile-use=pgo_data/"
+
+            if env["enable_lto"] == True:
                 env["OPT_COMP_FLAGS"] = env["OPT_COMP_FLAGS"] + " -flto=" + str(env["jobs"])
-                env["OPT_LINK_FLAGS"] = env["OPT_COMP_FLAGS"] + " -s -fuse-ld=gold"
-            elif "clang" in env["CXX"]:
+                env["OPT_LINK_FLAGS"] = env["OPT_COMP_FLAGS"] + " -fuse-ld=gold"
+        elif "clang" in env["CXX"]:
+            if env["pgo_data"] == "generate":
+                env["OPT_COMP_FLAGS"] = env["OPT_COMP_FLAGS"] + " -fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"
+                env["OPT_LINK_FLAGS"] = "-fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"
+            
+            if env["pgo_data"] == "use":
+                env["OPT_COMP_FLAGS"] = env["OPT_COMP_FLAGS"] + " -fprofile-instr-use=pgo_data/wesnoth.profdata"
+                env["OPT_LINK_FLAGS"] = "-fprofile-instr-use=pgo_data/wesnoth.profdata"
+
+            if env["enable_lto"] == True:
                 env["OPT_COMP_FLAGS"] = env["OPT_COMP_FLAGS"] + " -flto=thin"
-                env["OPT_LINK_FLAGS"] = env["OPT_COMP_FLAGS"] + " -s -fuse-ld=lld"
+                env["OPT_LINK_FLAGS"] = env["OPT_COMP_FLAGS"] + " -fuse-ld=lld"
 
 # #
 # End setting options for release build
@@ -526,7 +544,7 @@ for env in [test_env, client_env, env]:
             prof_link_flags = "-pg"
         
         if env["profiler"] == "gcov":
-            prof_comp_flags = Split("-fprofile-arcs -ftest-coverage")
+            prof_comp_flags = "-fprofile-arcs -ftest-coverage"
             prof_link_flags = "-fprofile-arcs"
         
         if env["profiler"] == "gperftools":
@@ -534,7 +552,7 @@ for env in [test_env, client_env, env]:
             prof_link_flags = "-Wl,--no-as-needed,-lprofiler"
         
         if env["profiler"] == "perf":
-            prof_comp_flags = Split("-ggdb -Og")
+            prof_comp_flags = "-ggdb -Og"
             prof_link_flags = ""
         
 # #
@@ -579,9 +597,9 @@ SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 binaries = Split("wesnoth wesnothd campaignd test")
 builds = {
     "base"    : dict(CCFLAGS = Split("$OPT_COMP_FLAGS"), LINKFLAGS  = Split("$OPT_LINK_FLAGS")),
-    "debug"   : dict(CCFLAGS = Split("$DEBUG_FLAGS")   , CPPDEFINES = glibcxx_debug_flags),
+    "debug"   : dict(CCFLAGS = Split("$DEBUG_FLAGS")   , CPPDEFINES = Split(glibcxx_debug_flags)),
     "release" : dict(CCFLAGS = Split("$OPT_COMP_FLAGS"), LINKFLAGS  = Split("$OPT_LINK_FLAGS")),
-    "profile" : dict(CCFLAGS = prof_comp_flags         , LINKFLAGS  = prof_link_flags)
+    "profile" : dict(CCFLAGS = Split(prof_comp_flags)  , LINKFLAGS  = Split(prof_link_flags))
     }
 build = env["build"]
 
@@ -606,6 +624,12 @@ env.Default([Alias(target) for target in env["default_targets"]])
 
 if have_client_prereqs and env["nls"]:
     env.Requires("wesnoth", Dir("translations"))
+
+#
+# clean out any PGO-related files
+#
+
+env.Clean(all, "pgo_data/")
 
 #
 # Utility productions (Unix-like systems only)
