@@ -2580,7 +2580,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Preferences\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\quit_confirmation.cpp" />
-    <ClCompile Include="..\..\src\random.cpp" />
     <ClCompile Include="..\..\src\random_deterministic.cpp" />
     <ClCompile Include="..\..\src\random_synced.cpp" />
     <ClCompile Include="..\..\src\recall_list_manager.cpp" />
@@ -3898,7 +3897,6 @@
     <ClInclude Include="..\..\src\preferences\general.hpp" />
     <ClInclude Include="..\..\src\preferences\lobby.hpp" />
     <ClInclude Include="..\..\src\quit_confirmation.hpp" />
-    <ClInclude Include="..\..\src\random.hpp" />
     <ClInclude Include="..\..\src\random_deterministic.hpp" />
     <ClInclude Include="..\..\src\random_synced.hpp" />
     <ClInclude Include="..\..\src\recall_list_manager.hpp" />

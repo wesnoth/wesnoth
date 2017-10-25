@@ -351,7 +351,7 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 	f = temp_anim;
 	auto time = f.get_end_time();
 	if (time > 0) {
-		f.start_animation(rand() % time, true);
+		f.start_animation(randomness::generator->get_random_int(0, time-1), true);
 	}
 	else {
 		// this can happen if both flag and game_config::images::flag are empty.

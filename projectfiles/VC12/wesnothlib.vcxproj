@@ -141,6 +141,7 @@
     <ClCompile Include="..\..\src\gettext_boost.cpp" />
     <ClCompile Include="..\..\src\log.cpp" />
     <ClCompile Include="..\..\src\log_windows.cpp" />
+    <ClCompile Include="..\..\src\random.cpp" />
     <ClCompile Include="..\..\src\serialization\binary_or_text.cpp">
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4706;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
@@ -170,6 +171,7 @@
     <ClInclude Include="..\..\src\libc_error.hpp" />
     <ClInclude Include="..\..\src\log.hpp" />
     <ClInclude Include="..\..\src\log_windows.hpp" />
+    <ClInclude Include="..\..\src\random.hpp" />
     <ClInclude Include="..\..\src\serialization\binary_or_text.hpp" />
     <ClInclude Include="..\..\src\serialization\parser.hpp" />
     <ClInclude Include="..\..\src\serialization\preprocessor.hpp" />

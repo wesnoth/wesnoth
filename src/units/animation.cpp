@@ -24,6 +24,7 @@
 #include "units/animation_component.hpp"
 #include "units/filter.hpp"
 #include "variable.hpp"
+#include "random.hpp"
 
 #include <algorithm>
 
@@ -434,7 +435,7 @@ int unit_animation::matches(const display& disp, const map_location& loc, const 
 		return MATCH_FAIL;
 	}
 
-	if(frequency_ && !(rand()%frequency_)) {
+	if(frequency_ && !(randomness::generator->get_random_int(0, frequency_-1))) {
 		return MATCH_FAIL;
 	}
 

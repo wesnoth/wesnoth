@@ -762,11 +762,7 @@ private:
 	{
 		int res = 0;
 		while(faces > 0 && num_rolls-- > 0) {
-			if(randomness::generator) {
-				res += (randomness::generator->next_random() % faces) + 1;
-			} else {
-				res += (rand() % faces) + 1;
-			}
+			res += randomness::generator->get_random_int(1, faces);
 		}
 
 		return res;
