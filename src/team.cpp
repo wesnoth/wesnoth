@@ -197,11 +197,8 @@ void team::team_info::read(const config& cfg)
 	variables = cfg.child_or_empty("variables");
 	is_local = cfg["is_local"].to_bool(true);
 
-	if(cfg.has_attribute("color")) {
-		color = cfg["color"].str();
-	} else {
-		color = cfg["side"].str();
-	}
+	color = get_side_color_id_from_config(cfg);
+	std::cerr << "Setting up side... set color to " << color << std::endl;
 
 	// If starting new scenario override settings from [ai] tags
 	if(!user_team_name.translatable())
@@ -918,7 +915,7 @@ bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 
 const color_range team::get_side_color_range(int side)
 {
-	std::string index = get_side_color_index(side);
+	std::string index = get_side_color_id(side);
 	std::map<std::string, color_range>::iterator gp = game_config::team_rgb_range.find(index);
 
 	if(gp != game_config::team_rgb_range.end()) {
@@ -940,18 +937,51 @@ color_t team::get_minimap_color(int side)
 	return get_side_color_range(side).rep();
 }
 
-std::string team::get_side_color_index(int side)
+std::string team::get_side_color_id(unsigned side)
 {
-	size_t index = size_t(side - 1);
+	try {
+		const unsigned index = side - 1;
 
-	if(resources::gameboard && index < resources::gameboard->teams().size()) {
-		const std::string side_map = resources::gameboard->teams()[index].color();
-		if(!side_map.empty()) {
-			return side_map;
+		// If no gameboard (and by extension, team list) is available, use the default side color.
+		if(!resources::gameboard) {
+			return game_config::default_colors.at(index);
 		}
+
+		// Else, try to fetch the color from the side's config.
+		const std::string& side_color = resources::gameboard->teams().at(index).color();
+
+		if(!side_color.empty()) {
+			return side_color;
+		}
+
+		// If the side color data was empty, fall back to the default color. This should only
+		// happen if the side data hadn't been initialized yet, which is the case if this function
+		// is being called to set up said side data. :P
+		return game_config::default_colors.at(index);
+	} catch(const std::out_of_range&) {
+		// Side index was invalid! Coloring will fail!
+		return "";
+	}
+}
+
+std::string team::get_side_color_id_from_config(const config& cfg)
+{
+	const config::attribute_value& c = cfg["color"];
+
+	// If no color key or value was provided, use the given color for that side.
+	// If outside a game context (ie, where a list of teams has been constructed),
+	// this will just be the side's default color.
+	if(c.blank() || c.empty()) {
+		return get_side_color_id(cfg["side"].to_unsigned(1));
 	}
 
-	return std::to_string(side);
+	// Do the same as above for numeric color key values.
+	if(unsigned side = c.to_unsigned(1)) {
+		return get_side_color_id(side);
+	}
+
+	// Else, we should have a color id at this point. Return it.
+	return c.str();
 }
 
 std::string team::get_side_highlight_pango(int side)

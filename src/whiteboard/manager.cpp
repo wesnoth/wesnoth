@@ -711,7 +711,7 @@ void manager::create_temp_move()
 			{
 				// Create temp arrow
 				move_arrow.reset(new arrow());
-				move_arrow->set_color(team::get_side_color_index(
+				move_arrow->set_color(team::get_side_color_id(
 						viewer_side()));
 				move_arrow->set_style(arrow::STYLE_HIGHLIGHTED);
 			}

@@ -2448,7 +2448,7 @@ unit_movement_resetter::~unit_movement_resetter()
 
 std::string unit::TC_image_mods() const
 {
-	return formatter() << "~RC(" << flag_rgb() << ">" << team::get_side_color_index(side()) << ")";
+	return formatter() << "~RC(" << flag_rgb() << ">" << team::get_side_color_id(side()) << ")";
 }
 
 std::string unit::image_mods() const

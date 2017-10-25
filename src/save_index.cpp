@@ -396,12 +396,14 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 					continue;
 				}
 
+				const std::string tc_color = team::get_side_color_id_from_config(u);
+				
 				// Don't count it among the troops
 				units--;
 				leader = u["id"].str();
 				leader_name = u["name"].str();
 				leader_image = u["image"].str();
-				leader_image_tc_modifier = "~RC(" + u["flag_rgb"].str() + ">" + u["side"].str() + ")";
+				leader_image_tc_modifier = "~RC(" + u["flag_rgb"].str() + ">" + tc_color + ")";
 			}
 
 			// We need a binary path-independent path to the leader image here so it can be displayed

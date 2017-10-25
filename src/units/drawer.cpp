@@ -201,7 +201,7 @@ void unit_drawer::redraw_unit (const unit & u) const
 			const std::string nozoc    = !emit_zoc      ? "nozoc-"    : "";
 			const std::string leader   = can_recruit    ? "leader-"   : "";
 			const std::string selected = sel_hex == loc ? "selected-" : "";
-			const std::string tc       = team::get_side_color_index(side);
+			const std::string tc       = team::get_side_color_id(side);
 
 			const std::string ellipse_top = formatter() << ellipse << "-" << leader << nozoc << selected << "top.png~RC(ellipse_red>" << tc << ")";
 			const std::string ellipse_bot = formatter() << ellipse << "-" << leader << nozoc << selected << "bottom.png~RC(ellipse_red>" << tc << ")";

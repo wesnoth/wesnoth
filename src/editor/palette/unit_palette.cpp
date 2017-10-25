@@ -84,7 +84,7 @@ void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstre
 
 	std::stringstream filename;
 	filename << u.image() << "~RC(" << u.flag_rgb() << '>'
-	    	 << team::get_side_color_index(gui_.viewing_side()) << ')';
+	    	 << team::get_side_color_id(gui_.viewing_side()) << ')';
 
 	image = image::get_image(filename.str());
 	if(image == nullptr) {

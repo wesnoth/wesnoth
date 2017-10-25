@@ -258,7 +258,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 
 		if(resources::controller) {
 			mods = "~RC(" + type.flag_rgb() + ">" +
-				 team::get_side_color_index(resources::controller->current_side())
+				 team::get_side_color_id(resources::controller->current_side())
 				 + ")";
 		}
 
