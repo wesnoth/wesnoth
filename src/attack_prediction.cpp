@@ -2097,7 +2097,8 @@ void complex_fight(attack_prediction_mode mode,
 					double first_hit = hit_chance * opp_hit_unknown;
 					opp_hit += first_hit;
 					opp_hit_unknown -= first_hit;
-					double this_hit_killed_b = (pm->dead_prob_b() - b_already_dead) / ((1.0 - b_already_dead) * (1.0 - pm->dead_prob_a()));
+					double both_were_alive = (1.0 - b_already_dead) * (1.0 - pm->dead_prob_a());
+					double this_hit_killed_b = both_were_alive != 0.0 ? (pm->dead_prob_b() - b_already_dead) / both_were_alive : 1.0;
 					self_hit_unknown *= (1.0 - this_hit_killed_b);
 				}
 				if(i < opp_strikes) {
@@ -2109,7 +2110,8 @@ void complex_fight(attack_prediction_mode mode,
 					double first_hit = opp_hit_chance * self_hit_unknown;
 					self_hit += first_hit;
 					self_hit_unknown -= first_hit;
-					double this_hit_killed_a = (pm->dead_prob_a() - a_already_dead) / ((1.0 - a_already_dead) * (1.0 - pm->dead_prob_b()));
+					double both_were_alive = (1.0 - a_already_dead) * (1.0 - pm->dead_prob_b());
+					double this_hit_killed_a = both_were_alive != 0.0 ? (pm->dead_prob_a() - a_already_dead) / both_were_alive : 1.0;
 					opp_hit_unknown *= (1.0 - this_hit_killed_a);
 				}
 			}
