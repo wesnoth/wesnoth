@@ -740,6 +740,9 @@
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\faction_select.cpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\lobby.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_alerts_options.cpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClCompile>
@@ -774,6 +777,9 @@
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_staging.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\player_info.cpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\synced_choice_wait.cpp">
@@ -1538,12 +1544,6 @@
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\lobby.cpp">
-      <Filter>Gui\Dialogs\Multiplayer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\player_info.cpp">
-      <Filter>Gui\Dialogs\Multiplayer</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -2146,6 +2146,9 @@
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\faction_select.hpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\lobby.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_alerts_options.hpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
@@ -2180,6 +2183,9 @@
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_staging.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\player_info.hpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\plugin_executor.hpp">
@@ -2993,12 +2999,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\preferences\lobby.hpp">
       <Filter>Preferences</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\lobby.hpp">
-      <Filter>Gui\Dialogs\Multiplayer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\player_info.hpp">
-      <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
