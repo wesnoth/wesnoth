@@ -874,14 +874,14 @@ void team::shroud_map::read(const std::string& str)
 void team::shroud_map::merge(const std::string& str)
 {
 	int x = 0, y = 0;
-	for(const char sh : str) {
-		if(sh == '|' && sh != str.front()) {
+	for(int i = 1; i < str.length(); ++i) {
+		if(str[i] == '|') {
 			y = 0;
 			x++;
-		} else if(sh == '1') {
+		} else if(str[i] == '1') {
 			clear(x, y);
 			y++;
-		} else if(sh == '0') {
+		} else if(str[i] == '0') {
 			y++;
 		}
 	}
