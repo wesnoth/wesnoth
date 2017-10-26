@@ -895,7 +895,7 @@ static void wesnoth_terminate_handler(int) {
 #endif
 
 #if defined(_OPENMP) && _MSC_VER >= 1600
-static void restart_process(const std::vector<std::string>& commandline)
+static void restart_process()
 {
 	wchar_t process_path[MAX_PATH];
 	SetLastError(ERROR_SUCCESS);
@@ -905,7 +905,7 @@ static void restart_process(const std::vector<std::string>& commandline)
 		throw std::runtime_error("Failed to retrieve the process path");
 	}
 
-	std::wstring commandline_str = unicode_cast<std::wstring>(utils::join(commandline, " "));
+	std::wstring commandline_str(GetCommandLineW());
 	// CreateProcessW is allowed to modify the passed command line.
 	// Therefore we need to copy it.
 	wchar_t* commandline_c_str = new wchar_t[commandline_str.length() + 1];
@@ -997,8 +997,7 @@ int main(int argc, char** argv)
 #elif _MSC_VER >= 1600
 	if (!getenv("OMP_WAIT_POLICY")) {
 		_putenv_s("OMP_WAIT_POLICY", "PASSIVE");
-		args[0] = utils::quote(args[0]);
-		restart_process(args);
+		restart_process();
 	}
 #endif
 #endif //_OPENMP
