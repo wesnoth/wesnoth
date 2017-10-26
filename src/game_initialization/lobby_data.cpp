@@ -212,9 +212,10 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 				required_addon r;
 				r.addon_id = c[id_key].str();
 				r.outcome = NEED_DOWNLOAD;
-
 				r.message = vgettext("Missing addon: $id", {{"id", c[id_key].str()}});
-				required_addons.push_back(r);
+
+				required_addons.push_back(std::move(r));
+
 				if(addons_outcome == SATISFIED) {
 					addons_outcome = NEED_DOWNLOAD;
 				}
@@ -234,7 +235,6 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		parse_requirements(mod, "addon_id");
 	}
 
-	std::string turn = game["turn"];
 	if(!game["mp_era"].empty()) {
 		const config& era_cfg = game_config.find_child("era", "id", game["mp_era"]);
 		if(era_cfg) {
@@ -248,7 +248,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 		} else {
 			have_era = !game["require_era"].to_bool(true);
-			era = vgettext("Unknown era: $era_id", {{"era_id", game["mp_era_addon_id"].str()}});
+			era = vgettext("Unknown era: $era_name", {{"era_name", game["mp_era_name"].str()}});
 			era_short = make_short_name(era);
 			verified = false;
 
@@ -263,27 +263,22 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	std::stringstream info_stream;
 	info_stream << era;
 
-	if(!game.child_or_empty("modification").empty()) {
-		for(const config& cfg : game.child_range("modification")) {
+	for(const config& cfg : game.child_range("modification")) {
+		mod_info += (mod_info.empty() ? "" : ", ") + cfg["name"].str();
+
+		if(cfg["require_modification"].to_bool(false)) {
 			if(const config& mod = game_config.find_child("modification", "id", cfg["id"])) {
-				mod_info += (mod_info.empty() ? "" : ", ") + mod["name"].str();
-
-				if(cfg["require_modification"].to_bool(false)) {
-					ADDON_REQ result = check_addon_version_compatibility(mod, game);
-					addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
-				}
+				ADDON_REQ result = check_addon_version_compatibility(mod, game);
+				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			} else {
-				mod_info += (mod_info.empty() ? "" : ", ") + cfg["id"].str();
+				have_all_mods = false;
+				mod_info += " " + _("(missing)");
 
-				if(cfg["require_modification"].to_bool(false)) {
-					have_all_mods = false;
-					mod_info += " " + _("(missing)");
-
-					addons_outcome = NEED_DOWNLOAD;
-				}
+				addons_outcome = NEED_DOWNLOAD;
 			}
 		}
 	}
+
 
 	if(map_data.empty()) {
 		map_data = filesystem::read_map(game["mp_scenario"]);
@@ -356,15 +351,15 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			verified = false;
 		}
 	} else if(!game["mp_campaign"].empty()) {
-		if(const config& level_cfg = game_config.find_child("campaign", "id", game["mp_campaign"])) {
+		if(const config& campaign_cfg = game_config.find_child("campaign", "id", game["mp_campaign"])) {
 			std::stringstream campaign_text;
 			campaign_text
 				<< "<b>" << _("(C)") << "</b>" << " "
-				<< level_cfg["name"] << " — "
+				<< campaign_cfg["name"] << " — "
 				<< game["mp_scenario_name"];
 
 			// Difficulty
-			config difficulties = gui2::dialogs::generate_difficulty_config(level_cfg);
+			config difficulties = gui2::dialogs::generate_difficulty_config(campaign_cfg);
 			for(const config& difficulty : difficulties.child_range("difficulty")) {
 				if(difficulty["define"] == game["difficulty_define"]) {
 					campaign_text << " — " << difficulty["description"];
@@ -378,11 +373,11 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 
 			// TODO: should we have this?
 			//if(game["require_scenario"].to_bool(false)) {
-				ADDON_REQ result = check_addon_version_compatibility(level_cfg, game);
+				ADDON_REQ result = check_addon_version_compatibility(campaign_cfg, game);
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			//}
 		} else {
-			scenario = vgettext("Unknown campaign: $campaign_id", {{"campaign_id", game["mp_campaign"].str()}});
+			scenario = vgettext("Unknown campaign: $campaign_id", {{"campaign_id", game["mp_campaign_name"].str()}});
 			info_stream << scenario;
 			verified = false;
 		}
@@ -400,6 +395,8 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		info_stream << _("Reloaded game");
 		verified = false;
 	}
+
+	std::string turn = game["turn"];
 
 	if(!turn.empty()) {
 		started = true;
@@ -452,7 +449,7 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 		version_info local_min_ver(local_item.has_attribute("addon_min_version") ? local_item["addon_min_version"] : local_item["addon_version"]);
 
 		// If the UMC didn't specify last compatible version, assume no backwards compatibility.
-		// Also apply some sanity checking regarding min version; if the min ver doens't make sense, ignore it.
+		// Also apply some sanity checking regarding min version; if the min ver doesn't make sense, ignore it.
 		local_min_ver = std::min(local_min_ver, local_ver);
 
 		// Remote version

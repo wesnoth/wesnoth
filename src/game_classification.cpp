@@ -38,6 +38,7 @@ game_classification::game_classification()
 	, era_define()
 	, mod_defines()
 	, campaign()
+	, campaign_name()
 	, abbrev()
 	, end_credits(true)
 	, end_text()
@@ -59,6 +60,7 @@ game_classification::game_classification(const config& cfg)
 	, era_define(cfg["era_define"])
 	, mod_defines(utils::split(cfg["mod_defines"]))
 	, campaign(cfg["campaign"])
+	, campaign_name(cfg["campaign_name"])
 	, abbrev(cfg["abbrev"])
 	, end_credits(cfg["end_credits"].to_bool(true))
 	, end_text(cfg["end_text"])
@@ -79,6 +81,7 @@ game_classification::game_classification(const game_classification& gc)
 	, era_define(gc.era_define)
 	, mod_defines(gc.mod_defines)
 	, campaign(gc.campaign)
+	, campaign_name(gc.campaign_name)
 	, abbrev(gc.abbrev)
 	, end_credits(gc.end_credits)
 	, end_text(gc.end_text)
@@ -101,6 +104,7 @@ config game_classification::to_config() const
 	cfg["era_define"] = era_define;
 	cfg["mod_defines"] = utils::join(mod_defines);
 	cfg["campaign"] = campaign;
+	cfg["campaign_name"] = campaign_name;
 	cfg["abbrev"] = abbrev;
 	cfg["end_credits"] = end_credits;
 	cfg["end_text"] = end_text;

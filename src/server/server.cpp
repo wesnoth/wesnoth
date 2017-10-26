@@ -1318,6 +1318,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		for(const simple_wml::node* m : mlist) {
 			desc.add_child_at("modification", 0);
 			desc.child("modification")->set_attr_dup("id", m->attr("id"));
+			desc.child("modification")->set_attr_dup("name", m->attr("name"));
 			desc.child("modification")->set_attr_dup("addon_id", m->attr("addon_id"));
 			if (m->attr("require_modification").to_bool(false))
 				desc.child("modification")->set_attr("require_modification", "yes");

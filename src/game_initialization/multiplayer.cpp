@@ -473,6 +473,8 @@ static bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<st
 			sound::stop_music();
 		}
 
+		helper->state.clear();
+
 		mp::lobby_info li(helper->game_config, installed_addons);
 		helper->lobby_info = &li;
 

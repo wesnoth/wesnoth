@@ -50,7 +50,8 @@ public:
 	std::string era_define;                          /**< If there is a define the era uses to customize data */
 	std::vector<std::string> mod_defines;            /**< If there are defines the modifications use to customize data */
 
-	std::string campaign;                            /**< the campaign being played */
+	std::string campaign;                            /**< The id of the campaign being played */
+	std::string campaign_name;                       /**< The name of the campaign being played. */
 
 	std::string abbrev;                              /**< the campaign abbreviation */
 	bool end_credits;                                /**< whether to show the standard credits at the end */
