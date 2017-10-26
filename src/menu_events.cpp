@@ -1370,7 +1370,7 @@ void menu_handler::do_search(const std::string& new_search)
 		const std::string msg = vgettext("Could not find label or unit "
 										 "containing the string ‘$search’.",
 				symbols);
-		gui2::show_message(gui_->video(), "", msg, gui2::dialogs::message::auto_close);
+		(void) gui2::show_message(gui_->video(), "", msg, gui2::dialogs::message::auto_close);
 	}
 }
 
