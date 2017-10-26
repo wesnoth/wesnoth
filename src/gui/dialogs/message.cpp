@@ -209,7 +209,7 @@ void show_error_message(CVideo& video,
 						bool message_use_markup)
 {
 	LOG_STREAM(err, lg::general()) << msg << '\n';
-	show_message(video,
+	(void) show_message(video,
 				 _("Error"),
 				 msg,
 				 message::ok_button,
