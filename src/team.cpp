@@ -874,7 +874,7 @@ void team::shroud_map::read(const std::string& str)
 void team::shroud_map::merge(const std::string& str)
 {
 	int x = 0, y = 0;
-	for(int i = 1; i < str.length(); ++i) {
+	for(size_t i = 1; i < str.length(); ++i) {
 		if(str[i] == '|') {
 			y = 0;
 			x++;
@@ -971,11 +971,11 @@ std::string team::get_side_color_id_from_config(const config& cfg)
 	// If outside a game context (ie, where a list of teams has been constructed),
 	// this will just be the side's default color.
 	if(c.blank() || c.empty()) {
-		return get_side_color_id(cfg["side"].to_unsigned(1));
+		return get_side_color_id(cfg["side"].to_unsigned());
 	}
 
 	// Do the same as above for numeric color key values.
-	if(unsigned side = c.to_unsigned(1)) {
+	if(unsigned side = c.to_unsigned()) {
 		return get_side_color_id(side);
 	}
 
