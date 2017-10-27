@@ -299,12 +299,11 @@ const addon_info* addon_list::get_selected_addon() const
 {
 	const listbox& list = find_widget<const listbox>(&get_grid(), "addons", false);
 
-	const int index = list.get_selected_row();
-	if(index == -1 || index >= static_cast<int>(addon_vector_.size())) {
+	try {
+		return addon_vector_.at(list.get_selected_row());
+	} catch(const std::out_of_range&) {
 		return nullptr;
 	}
-
-	return addon_vector_.at(index);
 }
 
 std::string addon_list::get_remote_addon_id()
@@ -322,19 +321,17 @@ void addon_list::select_addon(const std::string& id)
 	listbox& list = get_listbox();
 
 	auto iter = std::find_if(addon_vector_.begin(), addon_vector_.end(),
-		[&id](const addon_info* a)
-	{
-		return a->id == id;
-	});
+		[&id](const addon_info* a) { return a->id == id; }
+	);
+
 	assert(iter != addon_vector_.end());
 	const addon_info& info = **iter;
 
-	for(unsigned int i = 0u; i < list.get_item_count(); ++i)
-	{
+	for(unsigned int i = 0u; i < list.get_item_count(); ++i) {
 		grid* row = list.get_row_grid(i);
+
 		const label& name_label = find_widget<label>(row, "name", false);
-		if(name_label.get_label().base_str() == info.display_title())
-		{
+		if(name_label.get_label().base_str() == info.display_title()) {
 			list.select_row(i);
 		}
 	}
@@ -373,25 +370,27 @@ void addon_list::select_first_addon()
 		return;
 	}
 
-	const addon_info* first_addon = addon_vector_.at(0);
+	const addon_info* first_addon = addon_vector_[0];
+
 	for(const addon_info* a : addon_vector_) {
 		if(a->display_title().compare(first_addon->display_title()) < 0) {
 			first_addon = a;
 		}
 	}
+
 	select_addon(first_addon->id);
 }
 
-addon_list_definition::addon_list_definition(const config& cfg) :
-	styled_widget_definition(cfg)
+addon_list_definition::addon_list_definition(const config& cfg)
+	: styled_widget_definition(cfg)
 {
 	DBG_GUI_P << "Parsing add-on list " << id << "\n";
 
 	load_resolutions<resolution>(cfg);
 }
 
-addon_list_definition::resolution::resolution(const config& cfg) :
-	resolution_definition(cfg), grid(nullptr)
+addon_list_definition::resolution::resolution(const config& cfg)
+	: resolution_definition(cfg), grid(nullptr)
 {
 	// Add a dummy state since every widget needs a state.
 	static config dummy("draw");
@@ -419,14 +418,15 @@ static widget::visibility parse_visibility(const std::string& str)
 	}
 }
 
-builder_addon_list::builder_addon_list(const config& cfg) :
-	builder_styled_widget(cfg),
-	install_status_visibility_(widget::visibility::visible),
-	install_buttons_visibility_(widget::visibility::invisible)
+builder_addon_list::builder_addon_list(const config& cfg)
+	: builder_styled_widget(cfg)
+	, install_status_visibility_(widget::visibility::visible)
+	, install_buttons_visibility_(widget::visibility::invisible)
 {
 	if(cfg.has_attribute("install_status_visibility")) {
 		install_status_visibility_ = parse_visibility(cfg["install_status_visibility"]);
 	}
+
 	if(cfg.has_attribute("install_buttons_visibility")) {
 		install_buttons_visibility_ = parse_visibility(cfg["install_buttons_visibility"]);
 	}
@@ -452,6 +452,6 @@ widget* builder_addon_list::build() const
 	return widget;
 }
 
-}
+} // end namespace implementation
 
-}
+} // end namespace gui2
