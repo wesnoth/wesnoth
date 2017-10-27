@@ -474,7 +474,7 @@ for env in [test_env, client_env, env]:
             env.AppendUnique(CXXFLAGS = ["-fopenmp"], LIBS = ["gomp"])
 
         if env['strict']:
-            env.AppendUnique(CCFLAGS = Split("-Werror $(-Wno-unused-local-typedefs$)"))
+            env.AppendUnique(CCFLAGS = Split("-Werror $(-Wno-unused-local-typedefs$) $(-Wno-maybe-uninitialized$)"))
             env.AppendUnique(CXXFLAGS = Split("-Wold-style-cast"))
         if env['sanitize']:
             env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])

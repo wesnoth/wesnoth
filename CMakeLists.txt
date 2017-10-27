@@ -295,6 +295,14 @@ check_compiler_has_flag(
 	"-Wno-literal-suffix"
 )
 
+# This flag is too aggressive and keeps giving false positives.
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
+	"-Wmaybe-uninitialized"
+	HAS_COMPILER_FLAG_WMAYBE_UNINITIALIZED
+	"-Wno-maybe-uninitialized"
+)
+
 # This removes a lot of warnings from Clang regarding unused -I arguments
 check_compiler_has_flag(
 	CXX_FLAGS_STRICT_COMPILATION
