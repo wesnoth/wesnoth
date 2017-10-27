@@ -39,15 +39,9 @@ void unit_palette::setup(const config& /*cfg*/)
 		item_map_.emplace(i.second.id(), i.second);
 		group_map_[i.second.race_id()].push_back(i.second.id());
 		nmax_items_ = std::max<int>(nmax_items_, group_map_[i.second.race_id()].size());
-		// TODO: Implement the concept of "core" units
-		bool core = true;
-		if(core) {
-			// Add the unit to the default group
-			group_map_["all"].push_back(i.second.id());
-			nmax_items_ = std::max<int>(nmax_items_, group_map_["all"].size());
-		} else {
-			non_core_items_.insert(i.second.id());
-		}
+		// Add the unit to the default group
+		group_map_["all"].push_back(i.second.id());
+		nmax_items_ = std::max<int>(nmax_items_, group_map_["all"].size());
 	}
 
 	for(const race_map::value_type &i : unit_types.races()) {
