@@ -15,6 +15,7 @@
 
 #include "gui/widgets/addon_list.hpp"
 
+#include "addon/client.hpp"
 #include "color.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
@@ -125,6 +126,17 @@ std::string addon_list::describe_status(const addon_tracking_info& info)
 	return colorize_addon_state_string(tx, info.state, true);
 }
 
+void addon_list::addon_action_wrapper(addon_op_func_t& func, const addon_info& addon, bool& handled, bool& halt)
+{
+	try {
+		func(addon);
+
+		handled = halt = true;
+	} catch(const addons_client::user_exit&) {
+		// User canceled the op.
+	}
+}
+
 void addon_list::set_addons(const addons_list& addons)
 {
 	listbox& list = get_listbox();
@@ -214,41 +226,28 @@ void addon_list::set_addons(const addons_list& addons)
 			install_update_stack.select_layer(static_cast<int>(is_updatable));
 
 			if(!is_updatable) {
-				find_widget<button>(control_grid, "single_install", false).set_active(!is_installed);
+				button& install_button = find_widget<button>(control_grid, "single_install", false);
+				install_button.set_active(!is_installed);
+
 				if(install_function_ != nullptr) {
-					gui2::event::connect_signal_mouse_left_click(
-						find_widget<button>(control_grid, "single_install", false),
-						[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
-					{
-						install_function_(addon);
-						handled = true;
-						halt = true;
-					});
+					connect_signal_mouse_left_click(install_button,
+						std::bind(&addon_list::addon_action_wrapper, this, install_function_, std::ref(addon), _3, _4));
 				}
 			} else {
-				find_widget<button>(control_grid, "single_update", false).set_active(true);
+				button& update_button = find_widget<button>(control_grid, "single_update", false);
+				update_button.set_active(true);
+
 				if(update_function_ != nullptr) {
-					gui2::event::connect_signal_mouse_left_click(
-						find_widget<button>(control_grid, "single_update", false),
-						[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
-					{
-						update_function_(addon);
-						handled = true;
-						halt = true;
-					});
+					connect_signal_mouse_left_click(update_button,
+						std::bind(&addon_list::addon_action_wrapper, this, update_function_, std::ref(addon), _3, _4));
 				}
 			}
 
 			if(is_installed) {
 				if(uninstall_function_ != nullptr) {
-					gui2::event::connect_signal_mouse_left_click(
+					connect_signal_mouse_left_click(
 						find_widget<button>(control_grid, "single_uninstall", false),
-						[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
-					{
-						uninstall_function_(addon);
-						handled = true;
-						halt = true;
-					});
+						std::bind(&addon_list::addon_action_wrapper, this, uninstall_function_, std::ref(addon), _3, _4));
 				}
 			}
 
@@ -269,40 +268,22 @@ void addon_list::set_addons(const addons_list& addons)
 			uninstall_button.set_active(can_delete);
 
 			if(true) {
-				gui2::event::connect_signal_mouse_left_click(
-					install_button,
-					[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
-				{
-					publish_function_(addon);
-					handled = true;
-					halt = true;
-				});
+				connect_signal_mouse_left_click(install_button,
+					std::bind(&addon_list::addon_action_wrapper, this, publish_function_, std::ref(addon), _3, _4));
 
 				install_button.set_tooltip(_("Publish add-on"));
 			}
 
 			if(is_updatable) {
-				gui2::event::connect_signal_mouse_left_click(
-					update_button,
-					[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
-				{
-					publish_function_(addon);
-					handled = true;
-					halt = true;
-				});
+				connect_signal_mouse_left_click(update_button,
+					std::bind(&addon_list::addon_action_wrapper, this, publish_function_, std::ref(addon), _3, _4));
 
 				update_button.set_tooltip(_("Send new version to server"));
 			}
 
 			if(can_delete) {
-				gui2::event::connect_signal_mouse_left_click(
-					uninstall_button,
-					[this, addon](gui2::event::dispatcher&, const gui2::event::ui_event, bool& handled, bool& halt)
-				{
-					delete_function_(addon);
-					handled = true;
-					halt = true;
-				});
+				connect_signal_mouse_left_click(uninstall_button,
+					std::bind(&addon_list::addon_action_wrapper, this, delete_function_, std::ref(addon), _3, _4));
 
 				uninstall_button.set_tooltip(_("Delete add-on from server"));
 			}

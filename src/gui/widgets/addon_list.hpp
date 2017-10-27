@@ -61,32 +61,41 @@ public:
 	/** Selects the add-on with the given ID. */
 	void select_addon(const std::string& id);
 
+	using addon_op_func_t = std::function<void(const addon_info&)>;
+
+	/**
+	 * Helper to wrap the execution of any of the addon operation functions.
+	 * It catches addons_client::user_exit exceptions and halts GUI2 event execution
+	 * after calling the given function.
+	 */
+	void addon_action_wrapper(addon_op_func_t& func, const addon_info& addon, bool& handled, bool& halt);
+
 	/** Sets the function to call when the player clicks the install button. */
-	void set_install_function(std::function<void(const addon_info&)> function)
+	void set_install_function(addon_op_func_t function)
 	{
 		install_function_ = function;
 	}
 
 	/** Sets the function to call when the player clicks the uninstall button. */
-	void set_uninstall_function(std::function<void(const addon_info&)> function)
+	void set_uninstall_function(addon_op_func_t function)
 	{
 		uninstall_function_ = function;
 	}
 
 	/** Sets the function to call when the player clicks the update button. */
-	void set_update_function(std::function<void(const addon_info&)> function)
+	void set_update_function(addon_op_func_t function)
 	{
 		update_function_ = function;
 	}
 
 	/** Sets the function to upload an addon to the addons server. */
-	void set_publish_function(std::function<void(const addon_info&)> function)
+	void set_publish_function(addon_op_func_t function)
 	{
 		publish_function_ = function;
 	}
 
 	/** Sets the function to install an addon from the addons server. */
-	void set_delete_function(std::function<void(const addon_info&)> function)
+	void set_delete_function(addon_op_func_t function)
 	{
 		delete_function_ = function;
 	}
@@ -142,12 +151,12 @@ private:
 	visibility install_status_visibility_;
 	visibility install_buttons_visibility_;
 
-	std::function<void(const addon_info&)> install_function_;
-	std::function<void(const addon_info&)> uninstall_function_;
-	std::function<void(const addon_info&)> update_function_;
+	addon_op_func_t install_function_;
+	addon_op_func_t uninstall_function_;
+	addon_op_func_t update_function_;
 
-	std::function<void(const addon_info&)> publish_function_;
-	std::function<void(const addon_info&)> delete_function_;
+	addon_op_func_t publish_function_;
+	addon_op_func_t delete_function_;
 
 	static std::string describe_status(const addon_tracking_info& info);
 
