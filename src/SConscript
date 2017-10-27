@@ -132,8 +132,8 @@ def WesnothProgram(env, target, source, can_build, **kw):
         env["RANLIB"] = 'gcc-ranlib'
     
     if can_build:
-        if env["build"] == "base":
-            bin = env.Program(target, source, **kw)
+        if env["use_srcdir"] == True:
+            bin = env.Program(target + build_suffix, source, **kw)
         else:
             bin = env.Program("#/" + target + build_suffix, source, **kw)
         env.Alias(target, bin)
