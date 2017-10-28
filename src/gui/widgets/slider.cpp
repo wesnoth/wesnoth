@@ -84,7 +84,9 @@ void slider::set_value(int value)
 		return;
 	}
 
-	set_slider_position(value / step_size_ - minimum_value_);
+	set_slider_position((value - minimum_value_) / step_size_);
+
+	assert(std::abs(get_value() - value) <= (step_size_ / 2));
 
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
