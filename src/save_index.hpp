@@ -89,6 +89,7 @@ public:
 private:
 	config& data(const std::string& name) ;
 	config& data() ;
+	static void fix_leader_image_path(config& data);
 private:
 	bool loaded_;
 	config data_;
