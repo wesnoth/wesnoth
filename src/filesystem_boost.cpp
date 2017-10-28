@@ -1326,17 +1326,17 @@ std::string get_independent_image_path(const std::string &filename)
 	path full_path(get_binary_file_location("images", filename));
 
 	if (full_path.empty())
-		return full_path.string();
+		return full_path.generic_string();
 
 	path partial = subtract_path(full_path, get_user_data_path());
 	if (!partial.empty())
-		return partial.string();
+		return partial.generic_string();
 
 	partial = subtract_path(full_path, game_config::path);
 	if (!partial.empty())
-		return partial.string();
+		return partial.generic_string();
 
-	return full_path.string();
+	return full_path.generic_string();
 }
 
 std::string get_program_invocation(const std::string &program_name)
