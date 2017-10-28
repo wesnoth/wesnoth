@@ -169,15 +169,6 @@ void slider_base::recalculate()
 	}
 	assert(available_length() > 0);
 
-	// All visible.
-	if(item_last_ == 0) {
-		positioner_offset_ = offset_before();
-		recalculate_positioner();
-		item_position_ = 0;
-		update_canvas();
-		return;
-	}
-
 	recalculate_positioner();
 
 	set_slider_position(item_position_);
