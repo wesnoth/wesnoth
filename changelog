@@ -6,6 +6,9 @@ Version 1.13.10+dev:
    * Fixed a bug that partially prevented movement feedback announce messages
      to be displayed (UI regression bug #2130, affecting 1.13.8 and 1.13.10).
  * WML Engine:
+   * File paths with backslashes are no longer allowed. This ensures that a UMC
+     author can't accidentally use them and make an add-on that breaks on
+     GNU/Linux and macOS.
    * File paths are now case sensitive even on Windows.
 
 Version 1.13.10:
