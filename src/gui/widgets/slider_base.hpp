@@ -186,7 +186,7 @@ protected:
 	{
 	}
 
-	virtual int jump_size() const { return 1;  };
+	virtual int jump_size() const { return 1;  }
 
 private:
 	void set_state(const state_t state);
@@ -316,7 +316,7 @@ private:
 	/**
 	 * Moves the positioner.
 	 *
-	 * @param distance           The new offset in pixels of the positioner;
+	 * @param offset             The new offset in pixels of the positioner;
 	*/
 	void move_positioner(int offset);
 
