@@ -45,7 +45,6 @@ slider_base::slider_base(const implementation::builder_styled_widget& builder, c
 	, item_last_(0)
 	, item_position_(0)
 	, drag_initial_mouse_(0, 0)
-	, drag_initial_position_(0)
 	, drag_initial_offset_(0)
 	, positioner_offset_(0)
 	, positioner_length_(0)
@@ -230,10 +229,9 @@ void slider_base::signal_handler_mouse_motion(
 
 		break;
 
-	case PRESSED: {
+	case PRESSED:
 		move_positioner(get_length_difference(drag_initial_mouse_, mouse) + drag_initial_offset_);
-
-	} break;
+		break;
 
 	case FOCUSED:
 		if(!on_positioner(mouse)) {
@@ -278,7 +276,6 @@ void slider_base::signal_handler_left_button_down(const event::ui_event event, b
 		assert(get_window());
 
 		drag_initial_mouse_ = mouse;
-		drag_initial_position_ = item_position_;
 		drag_initial_offset_ = positioner_offset_ - offset_before();
 
 		get_window()->mouse_capture();
@@ -320,7 +317,6 @@ void slider_base::signal_handler_left_button_up(const event::ui_event event, boo
 	}
 
 	drag_initial_mouse_ = {0, 0};
-	drag_initial_position_ = 0;
 	drag_initial_offset_ = 0;
 
 	handled = true;

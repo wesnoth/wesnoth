@@ -38,9 +38,6 @@ namespace gui2
  */
 class slider_base : public styled_widget
 {
-	/** @todo Abstract the code so this friend is no longer needed. */
-	friend class slider;
-
 public:
 	slider_base(const implementation::builder_styled_widget& builder, const std::string& control_type);
 
@@ -208,19 +205,11 @@ private:
 	 * This is used during dragging the positioner.
 	 */
 	point drag_initial_mouse_;
-	/**
-	* The position the slider was when draggin the slider was started.
-	*
-	* This is used during dragging the positioner.
-	*/
-	int drag_initial_position_;
 
 	/**
 	* The offset in pixels the slider was when dragging the positioner was started.
 	*/
 	int drag_initial_offset_;
-
-	point mouse2_;
 
 	/**
 	 * The start offset of the positioner.
