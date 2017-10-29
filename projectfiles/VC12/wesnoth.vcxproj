@@ -331,9 +331,6 @@
     <None Include="..\..\src\language_win32.ii" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\gui\widgets\slider_base.cpp">
-      <ObjectFileName>$(IntDir)Gui\Widgets\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\about.cpp" />
     <ClCompile Include="..\..\src\actions\advancement.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Actions\</ObjectFileName>
@@ -2274,6 +2271,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\slider_base.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\spacer.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
@@ -3828,6 +3832,7 @@
     <ClInclude Include="..\..\src\gui\widgets\settings.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\size_lock.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\slider.hpp" />
+    <ClInclude Include="..\..\src\gui\widgets\slider_base.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\spacer.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\stacked_widget.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\status_label_helper.hpp" />
