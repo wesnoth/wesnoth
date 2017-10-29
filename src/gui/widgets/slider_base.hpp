@@ -21,7 +21,6 @@
 
 namespace gui2
 {
-
 /**
  * Base class for a scroll bar.
  *
@@ -52,23 +51,23 @@ public:
 	 * parameters for these amounts.
 	 */
 	enum scroll_mode {
-		BEGIN,				 /**< Go to begin position. */
-		ITEM_BACKWARDS,		 /**< Go one item towards the begin. */
-		HALF_JUMP_BACKWARDS, /**< Go half the visible items towards the begin.
-								*/
-		JUMP_BACKWARDS,	/**< Go the visibile items towards the begin. */
-		END,			   /**< Go to the end position. */
-		ITEM_FORWARD,	  /**< Go one item towards the end. */
-		HALF_JUMP_FORWARD, /**< Go half the visible items towards the end. */
-		JUMP_FORWARD
-	}; /**< Go the visible items towards the end. */
+		BEGIN,               /**< Go to begin position. */
+		ITEM_BACKWARDS,      /**< Go one item towards the begin. */
+		HALF_JUMP_BACKWARDS, /**< Go half the visible items towards the begin. */
+		JUMP_BACKWARDS,      /**< Go the visible items towards the begin. */
+		END,                 /**< Go to the end position. */
+		ITEM_FORWARD,        /**< Go one item towards the end. */
+		HALF_JUMP_FORWARD,   /**< Go half the visible items towards the end. */
+		JUMP_FORWARD         /**< Go the visible items towards the end. */
+	};
 
-	///container for the current position of a slider.
+	/** Helper container for the slider's current position. */
 	struct slider_position_t
 	{
 		int offset;
 		int max_offset;
 	};
+
 	/**
 	 * Sets the item position.
 	 *
@@ -77,6 +76,7 @@ public:
 	 * @param scroll              'step size' to scroll.
 	 */
 	void scroll(const scroll_mode scroll);
+
 protected:
 	/** Is the positioner at the beginning of the slider? */
 	bool at_begin() const
@@ -115,18 +115,12 @@ public:
 	/** See @ref styled_widget::get_state. */
 	virtual unsigned get_state() const override;
 
-    /**
+	/**
 	 * Possible states of the widget.
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum state_t {
-		ENABLED,
-		DISABLED,
-		PRESSED,
-		FOCUSED,
-		COUNT
-	};
+	enum state_t { ENABLED, DISABLED, PRESSED, FOCUSED, COUNT };
 
 protected:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -149,7 +143,7 @@ protected:
 
 	/**
 	 * Note the position isn't guaranteed to be the wanted position
-	 * the step size is honored. The value will be rouded down.
+	 * the step size is honored. The value will be rounded down.
 	 */
 	void set_slider_position(int item_position);
 
@@ -186,10 +180,14 @@ protected:
 	{
 	}
 
-	virtual int jump_size() const { return 1;  }
+	virtual int jump_size() const
+	{
+		return 1;
+	}
 
 private:
 	void set_state(const state_t state);
+
 	/**
 	 * Current state of the widget.
 	 *
@@ -216,7 +214,7 @@ private:
 	* This is used during dragging the positioner.
 	*/
 	int drag_initial_position_;
-	
+
 	/**
 	* The offset in pixels the slider was when dragging the positioner was started.
 	*/
@@ -233,7 +231,8 @@ private:
 
 	/** The current length of the positioner. */
 	int positioner_length_;
-	/** whether the slider shoudl 'snap' into its supported values or not */
+
+	/** Whether the slider should 'snap' into its supported values or not. */
 	bool snap_;
 
 	/***** ***** ***** ***** Pure virtual functions ***** ***** ***** *****/
@@ -241,9 +240,15 @@ private:
 	/** Get the length of the slider. */
 	virtual unsigned get_length() const = 0;
 
-	int available_length() const { return get_length() - offset_before() - offset_after(); }
+	int available_length() const
+	{
+		return get_length() - offset_before() - offset_after();
+	}
 
-	int max_offset() const { return std::max(0, available_length() - positioner_length()); }
+	int max_offset() const
+	{
+		return std::max(0, available_length() - positioner_length());
+	}
 
 	/**
 	 * The number of pixels we can't use since they're used for borders.
@@ -290,17 +295,15 @@ private:
 	 * This function is used to determine how much the positioner needs to  be
 	 * moved.
 	 */
-	virtual int get_length_difference(const point& original,
-									  const point& current) const = 0;
+	virtual int get_length_difference(const point& original, const point& current) const = 0;
 
 	/***** ***** ***** ***** Private functions ***** ***** ***** *****/
 
 	/**
 	 * Updates the slider.
 	 *
-	 * Needs to be called when someting changes eg number of items
-	 * or available size. It can only be called once we have a size
-	 * otherwise we can't calulate a thing.
+	 * Needs to be called when someting changes eg number of items or available size.
+	 * It can only be called once we have a size otherwise we can't calculate a thing.
 	 */
 	void recalculate();
 
@@ -311,7 +314,10 @@ private:
 	 */
 	virtual int positioner_length() const = 0;
 
-	void recalculate_positioner() {	positioner_length_ = positioner_length(); }
+	void recalculate_positioner()
+	{
+		positioner_length_ = positioner_length();
+	}
 
 	/**
 	 * Moves the positioner.
@@ -322,22 +328,15 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_mouse_enter(const event::ui_event event,
-									bool& handled,
-									bool& halt);
+	void signal_handler_mouse_enter(const event::ui_event event, bool& handled, bool& halt);
 
-	void signal_handler_mouse_motion(const event::ui_event event,
-									 bool& handled,
-									 bool& halt,
-									 const point& coordinate);
+	void signal_handler_mouse_motion(const event::ui_event event, bool& handled, bool& halt, const point& coordinate);
 
 	void signal_handler_mouse_leave(const event::ui_event event, bool& handled);
 
-	void signal_handler_left_button_down(const event::ui_event event,
-										 bool& handled);
+	void signal_handler_left_button_down(const event::ui_event event, bool& handled);
 
-	void signal_handler_left_button_up(const event::ui_event event,
-									   bool& handled);
+	void signal_handler_left_button_up(const event::ui_event event, bool& handled);
 };
 
 } // namespace gui2

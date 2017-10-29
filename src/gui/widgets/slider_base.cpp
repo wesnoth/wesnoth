@@ -27,20 +27,20 @@
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace {
-	int rounded_division(int value, int new_base, int old_base)
-	{
-		if (old_base == 0) {
-			return new_base / 2;
-		}
-		else {
-			return ::rounded_division(value * new_base, old_base);
-		}
+namespace
+{
+int rounded_division(int value, int new_base, int old_base)
+{
+	if(old_base == 0) {
+		return new_base / 2;
+	} else {
+		return ::rounded_division(value * new_base, old_base);
 	}
 }
+} // end anon namespace
+
 namespace gui2
 {
-
 slider_base::slider_base(const implementation::builder_styled_widget& builder, const std::string& control_type)
 	: styled_widget(builder, control_type)
 	, state_(ENABLED)
@@ -53,55 +53,55 @@ slider_base::slider_base(const implementation::builder_styled_widget& builder, c
 	, positioner_length_(0)
 	, snap_(true)
 {
-	connect_signal<event::MOUSE_ENTER>(std::bind(
-			&slider_base::signal_handler_mouse_enter, this, _2, _3, _4));
-	connect_signal<event::MOUSE_MOTION>(std::bind(
-			&slider_base::signal_handler_mouse_motion, this, _2, _3, _4, _5));
-	connect_signal<event::MOUSE_LEAVE>(std::bind(
-			&slider_base::signal_handler_mouse_leave, this, _2, _3));
-	connect_signal<event::LEFT_BUTTON_DOWN>(std::bind(
-			&slider_base::signal_handler_left_button_down, this, _2, _3));
-	connect_signal<event::LEFT_BUTTON_UP>(std::bind(
-			&slider_base::signal_handler_left_button_up, this, _2, _3));
+	connect_signal<event::MOUSE_ENTER>(
+		std::bind(&slider_base::signal_handler_mouse_enter, this, _2, _3, _4));
+	connect_signal<event::MOUSE_MOTION>(
+		std::bind(&slider_base::signal_handler_mouse_motion, this, _2, _3, _4, _5));
+	connect_signal<event::MOUSE_LEAVE>(
+		std::bind(&slider_base::signal_handler_mouse_leave, this, _2, _3));
+	connect_signal<event::LEFT_BUTTON_DOWN>(
+		std::bind(&slider_base::signal_handler_left_button_down, this, _2, _3));
+	connect_signal<event::LEFT_BUTTON_UP>(
+		std::bind(&slider_base::signal_handler_left_button_up, this, _2, _3));
 }
 
 void slider_base::scroll(const scroll_mode scroll)
 {
 	switch(scroll) {
-		case BEGIN:
-			set_slider_position(0);
-			break;
+	case BEGIN:
+		set_slider_position(0);
+		break;
 
-		case ITEM_BACKWARDS:
-			set_slider_position(item_position_ - 1);
-			break;
+	case ITEM_BACKWARDS:
+		set_slider_position(item_position_ - 1);
+		break;
 
-		case HALF_JUMP_BACKWARDS:
-			set_slider_position(item_position_  - jump_size() / 2);
-			break;
+	case HALF_JUMP_BACKWARDS:
+		set_slider_position(item_position_ - jump_size() / 2);
+		break;
 
-		case JUMP_BACKWARDS:
-			set_slider_position(item_position_ - jump_size());
-			break;
+	case JUMP_BACKWARDS:
+		set_slider_position(item_position_ - jump_size());
+		break;
 
-		case END:
-			set_slider_position(item_last_);
-			break;
+	case END:
+		set_slider_position(item_last_);
+		break;
 
-		case ITEM_FORWARD:
-			set_slider_position(item_position_ + 1);
-			break;
+	case ITEM_FORWARD:
+		set_slider_position(item_position_ + 1);
+		break;
 
-		case HALF_JUMP_FORWARD:
-			set_slider_position(item_position_ + jump_size() / 2);
-			break;
+	case HALF_JUMP_FORWARD:
+		set_slider_position(item_position_ + jump_size() / 2);
+		break;
 
-		case JUMP_FORWARD:
-			set_slider_position(item_position_ + jump_size());
-			break;
+	case JUMP_FORWARD:
+		set_slider_position(item_position_ + jump_size());
+		break;
 
-		default:
-			assert(false);
+	default:
+		assert(false);
 	}
 
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
@@ -145,12 +145,11 @@ void slider_base::set_slider_position(int item_position)
 
 void slider_base::update_canvas()
 {
-
-	for(auto & tmp : get_canvases())
-	{
+	for(auto& tmp : get_canvases()) {
 		tmp.set_variable("positioner_offset", wfl::variant(positioner_offset_));
 		tmp.set_variable("positioner_length", wfl::variant(positioner_length_));
 	}
+
 	set_is_dirty(true);
 }
 
@@ -169,12 +168,12 @@ void slider_base::recalculate()
 	if(!get_length()) {
 		return;
 	}
+
 	assert(available_length() > 0);
 
 	recalculate_positioner();
 
 	set_slider_position(item_position_);
-
 }
 
 void slider_base::move_positioner(int new_offset)
@@ -194,13 +193,12 @@ void slider_base::move_positioner(int new_offset)
 void slider_base::update_slider_position(slider_base::slider_position_t& pos)
 {
 	int new_position = rounded_division(pos.offset, item_last_, pos.max_offset);
-	
+
 	if(snap_) {
 		pos.offset = rounded_division(new_position, pos.max_offset, item_last_);
 	}
 
 	if(new_position != item_position_) {
-		
 		item_position_ = new_position;
 
 		child_callback_positioner_moved();
@@ -209,9 +207,7 @@ void slider_base::update_slider_position(slider_base::slider_position_t& pos)
 	}
 }
 
-void slider_base::signal_handler_mouse_enter(const event::ui_event event,
-											 bool& handled,
-											 bool& halt)
+void slider_base::signal_handler_mouse_enter(const event::ui_event event, bool& handled, bool& halt)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -219,10 +215,8 @@ void slider_base::signal_handler_mouse_enter(const event::ui_event event,
 	signal_handler_mouse_motion(event, handled, halt, get_mouse_position());
 }
 
-void slider_base::signal_handler_mouse_motion(const event::ui_event event,
-											  bool& handled,
-											  bool& halt,
-											  const point& coordinate)
+void slider_base::signal_handler_mouse_motion(
+		const event::ui_event event, bool& handled, bool& halt, const point& coordinate)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << " at " << coordinate << ".\n";
 
@@ -231,50 +225,50 @@ void slider_base::signal_handler_mouse_motion(const event::ui_event event,
 	mouse.y -= get_y();
 
 	switch(state_) {
-		case ENABLED:
-			if(on_positioner(mouse)) {
-				set_state(FOCUSED);
-			}
+	case ENABLED:
+		if(on_positioner(mouse)) {
+			set_state(FOCUSED);
+		}
 
-			break;
+		break;
 
-		case PRESSED: {
-			move_positioner(get_length_difference(drag_initial_mouse_, mouse) + drag_initial_offset_);
+	case PRESSED: {
+		move_positioner(get_length_difference(drag_initial_mouse_, mouse) + drag_initial_offset_);
 
-		} break;
+	} break;
 
-		case FOCUSED:
-			if(!on_positioner(mouse)) {
-				set_state(ENABLED);
-			}
-			break;
+	case FOCUSED:
+		if(!on_positioner(mouse)) {
+			set_state(ENABLED);
+		}
 
-		case DISABLED:
-			// Shouldn't be possible, but seems to happen in the lobby
-			// if a resize layout happens during dragging.
-			halt = true;
-			break;
+		break;
 
-		default:
-			assert(false);
+	case DISABLED:
+		// Shouldn't be possible, but seems to happen in the lobby
+		// if a resize layout happens during dragging.
+		halt = true;
+		break;
+
+	default:
+		assert(false);
 	}
+
 	handled = true;
 }
 
-void slider_base::signal_handler_mouse_leave(const event::ui_event event,
-											 bool& handled)
+void slider_base::signal_handler_mouse_leave(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
 	if(state_ == FOCUSED) {
 		set_state(ENABLED);
 	}
+
 	handled = true;
 }
 
-
-void slider_base::signal_handler_left_button_down(const event::ui_event event,
-												  bool& handled)
+void slider_base::signal_handler_left_button_down(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -284,6 +278,7 @@ void slider_base::signal_handler_left_button_down(const event::ui_event event,
 
 	if(on_positioner(mouse)) {
 		assert(get_window());
+
 		drag_initial_mouse_ = mouse;
 		drag_initial_position_ = item_position_;
 		drag_initial_offset_ = positioner_offset_ - offset_before();
@@ -305,8 +300,7 @@ void slider_base::signal_handler_left_button_down(const event::ui_event event,
 	handled = true;
 }
 
-void slider_base::signal_handler_left_button_up(const event::ui_event event,
-												bool& handled)
+void slider_base::signal_handler_left_button_up(const event::ui_event event, bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
