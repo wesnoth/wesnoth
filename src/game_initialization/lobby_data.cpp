@@ -310,7 +310,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			std::ostringstream msi;
 			msi << map.w() << font::unicode_multiplication_sign << map.h();
 			map_size_info = msi.str();
-			info_stream << spaced_em_dash << map_size_info;
+			info_stream << spaced_em_dash() << map_size_info;
 		} catch(incorrect_map_format_error& e) {
 			ERR_CF << "illegal map: " << e.message << std::endl;
 			verified = false;
@@ -353,7 +353,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 
 					if(!hash_found) {
 						remote_scenario = true;
-						info_stream << spaced_em_dash;
+						info_stream << spaced_em_dash();
 						info_stream << _("Remote scenario");
 						verified = false;
 					}
@@ -374,14 +374,14 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			std::stringstream campaign_text;
 			campaign_text
 				<< make_game_type_marker(_("C"), false)
-				<< campaign_cfg["name"] << spaced_em_dash
+				<< campaign_cfg["name"] << spaced_em_dash()
 				<< game["mp_scenario_name"];
 
 			// Difficulty
 			config difficulties = gui2::dialogs::generate_difficulty_config(campaign_cfg);
 			for(const config& difficulty : difficulties.child_range("difficulty")) {
 				if(difficulty["define"] == game["difficulty_define"]) {
-					campaign_text << spaced_em_dash << difficulty["description"];
+					campaign_text << spaced_em_dash() << difficulty["description"];
 
 					break;
 				}
@@ -410,7 +410,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	boost::replace_all(scenario, "\n", " " + font::unicode_em_dash + " ");
 
 	if(reloaded) {
-		info_stream << spaced_em_dash;
+		info_stream << spaced_em_dash();
 		info_stream << _("Reloaded game");
 		verified = false;
 	}
