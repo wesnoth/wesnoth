@@ -437,7 +437,7 @@ unit::unit(const config& cfg, bool use_traits, const vconfig* vcfg)
 
 	random_traits_ = cfg["random_traits"].to_bool(true);
 	facing_ = map_location::parse_direction(cfg["facing"]);
-	if(facing_ == map_location::NDIRECTIONS) facing_ = static_cast<map_location::DIRECTION>(randomness::generator->get_random_int(0, map_location::NDIRECTIONS-1));
+	if(facing_ == map_location::NDIRECTIONS) facing_ = static_cast<map_location::DIRECTION>(randomness::rng::default_instance().get_random_int(0, map_location::NDIRECTIONS-1));
 
 	if(const config& mods = cfg.child("modifications")) {
 		modifications_ = mods;
@@ -668,7 +668,7 @@ unit::unit(const unit_type& u_type, int side, bool real_unit, unit_race::GENDER 
 	, overlays_()
 	, role_()
 	, attacks_()
-	, facing_(static_cast<map_location::DIRECTION>(randomness::generator->get_random_int(0, map_location::NDIRECTIONS-1)))
+	, facing_(static_cast<map_location::DIRECTION>(randomness::rng::default_instance().get_random_int(0, map_location::NDIRECTIONS-1)))
 	, trait_names_()
 	, trait_descriptions_()
 	, unit_value_()
