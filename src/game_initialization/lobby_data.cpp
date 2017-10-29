@@ -149,7 +149,11 @@ void user_info::update_relation()
 
 namespace
 {
-const std::string spaced_em_dash = " " + font::unicode_em_dash + " ";
+const std::string& spaced_em_dash()
+{
+	static const std::string res = " " + font::unicode_em_dash + " ";
+	return res;
+}
 
 // Returns an abbreviated form of the provided string - ie, 'Ageless Era' should become 'AE'
 std::string make_short_name(const std::string& long_name)
@@ -415,11 +419,10 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 
 	if(!turn.empty()) {
 		started = true;
-		int index = turn.find_first_of('/');
-		if(index > -1) {
-			const std::string current_turn_string = turn.substr(0, index);
-			current_turn = lexical_cast<unsigned int>(current_turn_string);
-		}
+
+		const std::string current_turn_string = turn.substr(0, turn.find_first_of('/'));
+		current_turn = lexical_cast<unsigned int>(current_turn_string);
+
 		status = _("Turn") + " " + turn;
 	} else {
 		started = false;
