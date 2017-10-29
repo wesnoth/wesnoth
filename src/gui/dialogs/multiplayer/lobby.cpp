@@ -219,14 +219,6 @@ void modify_grid_with_data(grid* grid, const std::map<std::string, string_map>& 
 	}
 }
 
-void set_visible_if_exists(grid* grid, const std::string& id, bool visible)
-{
-	if(widget* w = grid->find(id, false)) {
-		//w->set_visible(visible ? widget::visibility::visible : widget::visibility::invisible);
-		w->set_visible(visible ? widget::visibility::visible : widget::visibility::hidden);
-	}
-}
-
 std::string colorize(const std::string& str, const std::string& color)
 {
 	if(color.empty()) {
