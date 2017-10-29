@@ -324,7 +324,7 @@ static std::shared_ptr<sound::music_track> choose_track()
 
 		if(current_track_list.size() > 1) {
 			do {
-				track = randomness::generator->get_random_int(0, current_track_list.size()-1);
+				track = randomness::rng::default_instance().get_random_int(0, current_track_list.size()-1);
 			} while(!track_ok(current_track_list[track]->file_path()));
 		}
 
@@ -353,14 +353,14 @@ static std::string pick_one(const std::string& files)
 	unsigned int choice;
 
 	if(prev_choices.find(files) != prev_choices.end()) {
-		choice = randomness::generator->get_random_int(0, ids.size()-1 - 1);
+		choice = randomness::rng::default_instance().get_random_int(0, ids.size()-1 - 1);
 		if(choice >= prev_choices[files]) {
 			++choice;
 		}
 
 		prev_choices[files] = choice;
 	} else {
-		choice = randomness::generator->get_random_int(0, ids.size()-1);
+		choice = randomness::rng::default_instance().get_random_int(0, ids.size()-1);
 		prev_choices.emplace(files, choice);
 	}
 

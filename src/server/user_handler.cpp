@@ -44,7 +44,7 @@ std::string user_handler::create_salt(int length) {
 	std::stringstream ss;
 
 	for(int i = 0; i < length; i++) {
-		ss << randomness::generator->get_random_int(0, 9);
+		ss << randomness::rng::default_instance().get_random_int(0, 9);
 	}
 
 	return  ss.str();

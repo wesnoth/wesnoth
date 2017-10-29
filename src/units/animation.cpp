@@ -435,7 +435,7 @@ int unit_animation::matches(const display& disp, const map_location& loc, const 
 		return MATCH_FAIL;
 	}
 
-	if(frequency_ && !(randomness::generator->get_random_int(0, frequency_-1))) {
+	if(frequency_ && !(randomness::rng::default_instance().get_random_int(0, frequency_-1))) {
 		return MATCH_FAIL;
 	}
 

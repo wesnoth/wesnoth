@@ -913,7 +913,7 @@ const std::string& play_controller::select_music(bool victory) const
 
 	if(music_list.empty())
 		return empty_str;
-	return music_list[randomness::generator->get_random_int(0, music_list.size()-1)];
+	return music_list[randomness::rng::default_instance().get_random_int(0, music_list.size()-1)];
 }
 
 void play_controller::check_victory()
