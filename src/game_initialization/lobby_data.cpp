@@ -147,8 +147,12 @@ void user_info::update_relation()
 	}
 }
 
+namespace
+{
+const std::string spaced_em_dash = " " + font::unicode_em_dash + " ";
+
 // Returns an abbreviated form of the provided string - ie, 'Ageless Era' should become 'AE'
-static std::string make_short_name(const std::string& long_name)
+std::string make_short_name(const std::string& long_name)
 {
 	if(long_name.empty()) {
 		return "";
@@ -169,6 +173,17 @@ static std::string make_short_name(const std::string& long_name)
 
 	return ss.str();
 }
+
+std::string make_game_type_marker(std::string text, bool color_for_missing)
+{
+	if(color_for_missing) {
+		return formatter() << "<b><span color='#f00'>[" << text << "]</span></b> ";
+	} else {
+		return formatter() << "<b>[" << text << "]</b> ";
+	}
+}
+
+} // end anon namespace
 
 game_info::game_info(const config& game, const config& game_config, const std::vector<std::string>& installed_addons)
 	: id(game["id"])
@@ -248,7 +263,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 		} else {
 			have_era = !game["require_era"].to_bool(true);
-			era = vgettext("Unknown era: $era_name", {{"era_name", game["mp_era_name"].str()}});
+			era = vgettext("$era_name (missing)", {{"era_name", game["mp_era_name"].str()}});
 			era_short = make_short_name(era);
 			verified = false;
 
@@ -279,7 +294,6 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		}
 	}
 
-
 	if(map_data.empty()) {
 		map_data = filesystem::read_map(game["mp_scenario"]);
 	}
@@ -292,7 +306,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			std::ostringstream msi;
 			msi << map.w() << font::unicode_multiplication_sign << map.h();
 			map_size_info = msi.str();
-			info_stream << " — " + map_size_info;
+			info_stream << spaced_em_dash << map_size_info;
 		} catch(incorrect_map_format_error& e) {
 			ERR_CF << "illegal map: " << e.message << std::endl;
 			verified = false;
@@ -301,6 +315,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			verified = false;
 		}
 	}
+
 	info_stream << " ";
 
 	//
@@ -316,7 +331,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		}
 
 		if(*level_cfg) {
-			scenario = formatter() << "<b>" << _("(S)") << "</b>" << " " << (*level_cfg)["name"].str();
+			scenario = formatter() << make_game_type_marker(_("S"), false) << (*level_cfg)["name"].str();
 			info_stream << scenario;
 
 			// Reloaded games do not match the original scenario hash, so it makes no sense
@@ -334,7 +349,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 
 					if(!hash_found) {
 						remote_scenario = true;
-						info_stream << " — ";
+						info_stream << spaced_em_dash;
 						info_stream << _("Remote scenario");
 						verified = false;
 					}
@@ -346,7 +361,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			}
 		} else {
-			scenario = vgettext("Unknown scenario: $scenario_id", {{"scenario_id", game["mp_scenario_name"].str()}});
+			scenario = formatter() << make_game_type_marker(_("S"), true) << game["mp_scenario_name"].str();
 			info_stream << scenario;
 			verified = false;
 		}
@@ -354,15 +369,15 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		if(const config& campaign_cfg = game_config.find_child("campaign", "id", game["mp_campaign"])) {
 			std::stringstream campaign_text;
 			campaign_text
-				<< "<b>" << _("(C)") << "</b>" << " "
-				<< campaign_cfg["name"] << " — "
+				<< make_game_type_marker(_("C"), false)
+				<< campaign_cfg["name"] << spaced_em_dash
 				<< game["mp_scenario_name"];
 
 			// Difficulty
 			config difficulties = gui2::dialogs::generate_difficulty_config(campaign_cfg);
 			for(const config& difficulty : difficulties.child_range("difficulty")) {
 				if(difficulty["define"] == game["difficulty_define"]) {
-					campaign_text << " — " << difficulty["description"];
+					campaign_text << spaced_em_dash << difficulty["description"];
 
 					break;
 				}
@@ -377,7 +392,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			//}
 		} else {
-			scenario = vgettext("Unknown campaign: $campaign_id", {{"campaign_id", game["mp_campaign_name"].str()}});
+			scenario = formatter() << make_game_type_marker(_("C"), true) << game["mp_campaign_name"].str();
 			info_stream << scenario;
 			verified = false;
 		}
@@ -391,7 +406,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	boost::replace_all(scenario, "\n", " " + font::unicode_em_dash + " ");
 
 	if(reloaded) {
-		info_stream << " — ";
+		info_stream << spaced_em_dash;
 		info_stream << _("Reloaded game");
 		verified = false;
 	}
@@ -430,6 +445,8 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 			<< game["mp_countdown_init_time"].str() << "+"
 			<< game["mp_countdown_turn_bonus"].str() << "/"
 			<< game["mp_countdown_action_bonus"].str();
+	} else {
+		time_limit = _("none");
 	}
 
 	map_info = info_stream.str();

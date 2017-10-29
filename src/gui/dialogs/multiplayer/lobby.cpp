@@ -193,24 +193,6 @@ void mp_lobby::post_build(window& win)
 
 namespace
 {
-
-void add_label_data(std::map<std::string, string_map>& map,
-					const std::string& key,
-					const std::string& label)
-{
-	string_map item;
-	item["label"] = label;
-	item["use_markup"] = "true";
-	map.emplace(key, item);
-}
-
-void add_tooltip_data(std::map<std::string, string_map>& map,
-					  const std::string& key,
-					  const std::string& label)
-{
-	map[key]["tooltip"] = label;
-}
-
 void modify_grid_with_data(grid* grid, const std::map<std::string, string_map>& map)
 {
 	for(const auto& v : map) {
@@ -240,12 +222,17 @@ void modify_grid_with_data(grid* grid, const std::map<std::string, string_map>& 
 void set_visible_if_exists(grid* grid, const std::string& id, bool visible)
 {
 	if(widget* w = grid->find(id, false)) {
-		w->set_visible(visible ? widget::visibility::visible : widget::visibility::invisible);
+		//w->set_visible(visible ? widget::visibility::visible : widget::visibility::invisible);
+		w->set_visible(visible ? widget::visibility::visible : widget::visibility::hidden);
 	}
 }
 
 std::string colorize(const std::string& str, const std::string& color)
 {
+	if(color.empty()) {
+		return str;
+	}
+
 	return (formatter() << "<span color=\"" << color << "\">" << str << "</span>").str();
 }
 
@@ -401,106 +388,130 @@ void mp_lobby::update_gamelist_header()
 std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_info& game)
 {
 	std::map<std::string, string_map> data;
+	string_map item;
+
+	item["use_markup"] = "true";
 
 	std::string color_string;
 	if(game.vacant_slots > 0) {
 		color_string = (game.reloaded || game.started) ? "yellow" : "green";
-	} else {
-		color_string = game.observers ? "#ddd" : "red";
 	}
 
-	if(!game.have_era && (game.vacant_slots > 0 || game.observers)) {
-		color_string = "#444";
-	}
+	item["label"] = colorize("<i>" + game.name + "</i>", font::GRAY_COLOR.to_hex_string());
+	data.emplace("name", item);
 
-	add_label_data(data, "status", colorize(game.status, color_string));
-	add_label_data(data, "name",   colorize(game.name, color_string));
+	item["label"] = game.scenario;
+	data.emplace("scenario", item);
 
-	add_label_data(data, "era",             colorize(game.era, "#a69275"));
-	add_label_data(data, "era_short",       game.era_short);
-	add_label_data(data, "mods",            colorize(game.mod_info, "#a69275"));
-	add_label_data(data, "map_info",        game.map_info);
-	add_label_data(data, "scenario",        game.scenario);
-	add_label_data(data, "map_size_text",   game.map_size_info);
-	add_label_data(data, "time_limit",      game.time_limit);
-	add_label_data(data, "gold_text",       game.gold);
-	add_label_data(data, "xp_text",         game.xp);
-	add_label_data(data, "vision_text",     game.vision);
-	add_label_data(data, "time_limit_text", game.time_limit);
-	add_label_data(data, "status",          game.status);
+	item["label"] = colorize(game.status, color_string);
+	data.emplace("status", item);
 
-	if(game.observers) {
-		add_label_data(data, "observer_icon", "misc/eye.png");
-		add_tooltip_data(data, "observer_icon", _("Observers allowed"));
-	} else {
-		add_label_data(data, "observer_icon", "misc/no_observer.png");
-		add_tooltip_data(data, "observer_icon", _("Observers not allowed"));
-	}
-
-	std::string vision_icon;
-	if(game.fog) {
-		vision_icon = game.shroud ? "misc/vision-fog-shroud.png" : "misc/vision-fog.png";
-	} else {
-		vision_icon = game.shroud ? "misc/vision-shroud.png" : "misc/vision-none.png";
-	}
-
-	add_label_data(data, "vision_icon", vision_icon);
-	add_tooltip_data(data, "vision_icon", game.vision);
 	return data;
 }
 
-void mp_lobby::adjust_game_row_contents(const mp::game_info& game,
-										   int idx,
-										   grid* grid, bool add_callbacks)
+void mp_lobby::adjust_game_row_contents(const mp::game_info& game, int idx, grid* grid, bool add_callbacks)
 {
 	find_widget<styled_widget>(grid, "name", false).set_use_markup(true);
 	find_widget<styled_widget>(grid, "status", false).set_use_markup(true);
 
 	toggle_panel& row_panel = find_widget<toggle_panel>(grid, "panel", false);
 
-	connect_signal_mouse_left_double_click(row_panel, std::bind(&mp_lobby::join_or_observe, this, idx));
+	//
+	// Game info
+	//
+	std::ostringstream ss;
 
-	set_visible_if_exists(grid, "time_limit_icon",   !game.time_limit.empty());
-	set_visible_if_exists(grid, "vision_fog",         game.fog);
-	set_visible_if_exists(grid, "vision_shroud",      game.shroud);
-	set_visible_if_exists(grid, "vision_none",      !(game.fog || game.shroud));
-	set_visible_if_exists(grid, "observers_yes",      game.observers);
-	set_visible_if_exists(grid, "shuffle_sides_icon", game.shuffle_sides);
-	set_visible_if_exists(grid, "observers_no",      !game.observers);
-	set_visible_if_exists(grid, "needs_password",     game.password_required);
-	set_visible_if_exists(grid, "reloaded",           game.reloaded);
-	set_visible_if_exists(grid, "started",            game.started);
-	set_visible_if_exists(grid, "use_map_settings",   game.use_map_settings);
-	set_visible_if_exists(grid, "registered_only",    game.registered_users_only);
-	set_visible_if_exists(grid, "no_era",            !game.have_era);
+	ss << "<big>" << _("Era:") << "</big>\n" << game.era << "\n";
 
-	if(minimap* map = dynamic_cast<minimap*>(grid->find("minimap", false))) {
-		map->set_config(&game_config_);
-		map->set_map_data(game.map_data);
+	ss << "\n<big>" << _("Modifications:") << "</big>\n";
+
+	std::vector<std::string> mods = utils::split(game.mod_info);
+
+	if(mods.empty()) {
+		ss << _("None") << "\n";
+	} else {
+		for(const std::string& mod : mods) {
+			ss << mod << "\n";
+		}
 	}
+
+	// TODO: move to some general are of the code.
+	const auto yes_or_no = [](bool val) { return val ? _("yes") : _("no"); };
+
+	ss << "\n<big>" << _("Settings:") << "</big>\n";
+	ss << _("Experience modifier:")   << " " << game.xp << "\n";
+	ss << _("Gold:")                  << " " << game.gold << "\n";
+	ss << _("Map size:")              << " " << game.map_size_info << "\n";
+	ss << _("Registered users only:") << " " << yes_or_no(game.registered_users_only) << "\n";
+	ss << _("Reloaded:")              << " " << yes_or_no(game.reloaded) << "\n";
+	ss << _("Shared vision:")         << " " << game.vision << "\n";
+	ss << _("Shuffle sides:")         << " " << yes_or_no(game.shuffle_sides) << "\n";
+	ss << _("Time limit:")            << " " << game.time_limit << "\n";
+	ss << _("Use map settings:")      << " " << yes_or_no(game.use_map_settings);
+
+	image& info_icon = find_widget<image>(grid, "game_info", false);
+
+	if(!game.have_era || !game.have_all_mods || !game.required_addons.empty()) {
+		info_icon.set_label("icons/icon-info-error.png");
+
+		ss << "\n\n<big><span color='#f00'>! </span></big>";
+		ss << _("One or more items need to be installed\nin order to join this game.");
+	} else {
+		info_icon.set_label("icons/icon-info.png");
+	}
+
+	info_icon.set_tooltip(ss.str());
+
+	//
+	// Password icon
+	//
+	image& password_icon = find_widget<image>(grid, "needs_password", false);
+
+	if(game.password_required) {
+		password_icon.set_visible(widget::visibility::visible);
+	} else {
+		password_icon.set_visible(widget::visibility::hidden);
+	}
+
+	//
+	// Observer icon
+	//
+	image& observer_icon = find_widget<image>(grid, "observer_icon", false);
+
+	if(game.observers) {
+		observer_icon.set_label("misc/eye.png");
+		observer_icon.set_tooltip( _("Observers allowed"));
+	} else {
+		observer_icon.set_label("misc/no_observer.png");
+		observer_icon.set_tooltip( _("Observers not allowed"));
+	}
+
+	//
+	// Minimap
+	//
+	minimap& map = find_widget<minimap>(grid, "minimap", false);
+
+	map.set_config(&game_config_);
+	map.set_map_data(game.map_data);
+
+	connect_signal_mouse_left_double_click(row_panel,
+		std::bind(&mp_lobby::join_or_observe, this, idx));
+
+	button& join_button = find_widget<button>(grid, "join", false);
+	button& observe_button = find_widget<button>(grid, "observe", false);
+
+	join_button.set_active(game.can_join());
+	observe_button.set_active(game.can_observe());
 
 	if(!add_callbacks) {
 		return;
 	}
 
-	if(button* join_button = dynamic_cast<button*>(grid->find("join", false))) {
-		connect_signal_mouse_left_click(
-				*join_button,
-				std::bind(&mp_lobby::join_global_button_callback,
-							this,
-							std::ref(*get_window())));
-		join_button->set_active(game.can_join());
-	}
+	connect_signal_mouse_left_click(join_button,
+		std::bind(&mp_lobby::join_global_button_callback, this, std::ref(*get_window())));
 
-	if(button* observe_button = dynamic_cast<button*>(grid->find("observe", false))) {
-		connect_signal_mouse_left_click(
-				*observe_button,
-				std::bind(&mp_lobby::observe_global_button_callback,
-							this,
-							std::ref(*get_window())));
-		observe_button->set_active(game.can_observe());
-	}
-
+	connect_signal_mouse_left_click(observe_button,
+		std::bind(&mp_lobby::observe_global_button_callback, this, std::ref(*get_window())));
 }
 
 void mp_lobby::update_gamelist_filter()
