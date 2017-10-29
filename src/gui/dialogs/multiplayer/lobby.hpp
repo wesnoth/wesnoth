@@ -89,7 +89,7 @@ protected:
 
 	std::map<std::string, string_map> make_game_row_data(const mp::game_info& game);
 
-	void adjust_game_row_contents(const mp::game_info& game, int idx, grid* grid, bool add_callbacks = true);
+	void adjust_game_row_contents(const mp::game_info& game, grid* grid, bool add_callbacks = true);
 
 public:
 	void update_playerlist();

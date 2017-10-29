@@ -297,7 +297,7 @@ void mp_lobby::update_gamelist()
 		LOG_LB << "Adding game to listbox (1)" << game.id << "\n";
 		grid* grid = &gamelistbox_->add_row(make_game_row_data(game));
 
-		adjust_game_row_contents(game, gamelistbox_->get_item_count() - 1, grid);
+		adjust_game_row_contents(game, grid);
 	}
 
 	if(select_row >= 0 && select_row != gamelistbox_->get_selected_row()) {
@@ -338,7 +338,7 @@ void mp_lobby::update_gamelist_diff()
 			}
 
 			grid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
-			adjust_game_row_contents(game, gamelistbox_->get_item_count() - 1, grid);
+			adjust_game_row_contents(game, grid);
 
 			list_i++;
 			next_gamelist_id_at_row.push_back(game.id);
@@ -370,7 +370,7 @@ void mp_lobby::update_gamelist_diff()
 				LOG_LB << "Modifying game in listbox " << game.id << " (row " << list_i << ")\n";
 				grid* grid = gamelistbox_->get_row_grid(list_i);
 				modify_grid_with_data(grid, make_game_row_data(game));
-				adjust_game_row_contents(game, list_i, grid, false);
+				adjust_game_row_contents(game, grid, false);
 				++list_i;
 				next_gamelist_id_at_row.push_back(game.id);
 			} else if(game.display_status == mp::game_info::DELETED) {
@@ -449,7 +449,7 @@ std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_in
 	return data;
 }
 
-void mp_lobby::adjust_game_row_contents(const mp::game_info& game, int idx, grid* grid, bool add_callbacks)
+void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, bool add_callbacks)
 {
 	find_widget<styled_widget>(grid, "name", false).set_use_markup(true);
 	find_widget<styled_widget>(grid, "status", false).set_use_markup(true);
