@@ -1811,13 +1811,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_cmd_wrapper.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_connect.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\Multiplayer\</ObjectFileName>
@@ -3758,7 +3751,6 @@
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\lobby.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_alerts_options.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_change_control.hpp" />
-    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_cmd_wrapper.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_connect.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_create_game.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_host_game_prompt.hpp" />
