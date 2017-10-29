@@ -131,7 +131,7 @@ private:
 	 * encountered.
 	 *
 	 * @param game            Info on the game we're attempting to join.
-	 * @param mode
+	 * @param mode            Whether joining as player, observer or whichever works.
 	 */
 	void enter_game(const mp::game_info& game, JOIN_MODE mode);
 
