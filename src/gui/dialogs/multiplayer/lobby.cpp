@@ -219,14 +219,6 @@ void modify_grid_with_data(grid* grid, const std::map<std::string, string_map>& 
 	}
 }
 
-void set_visible_if_exists(grid* grid, const std::string& id, bool visible)
-{
-	if(widget* w = grid->find(id, false)) {
-		//w->set_visible(visible ? widget::visibility::visible : widget::visibility::invisible);
-		w->set_visible(visible ? widget::visibility::visible : widget::visibility::hidden);
-	}
-}
-
 std::string colorize(const std::string& str, const std::string& color)
 {
 	if(color.empty()) {
@@ -234,6 +226,54 @@ std::string colorize(const std::string& str, const std::string& color)
 	}
 
 	return (formatter() << "<span color=\"" << color << "\">" << str << "</span>").str();
+}
+
+bool handle_addon_requirements_gui(CVideo& v, const std::vector<mp::game_info::required_addon>& reqs, mp::game_info::ADDON_REQ addon_outcome)
+{
+	if(addon_outcome == mp::game_info::CANNOT_SATISFY) {
+		std::string e_title = _("Incompatible User-made Content.");
+		std::string err_msg = _("This game cannot be joined because the host has out-of-date add-ons that are incompatible with your version. You might wish to suggest that the host's add-ons be updated.");
+
+		err_msg +="\n\n";
+		err_msg += _("Details:");
+		err_msg += "\n";
+
+		for(const mp::game_info::required_addon & a : reqs) {
+			if (a.outcome == mp::game_info::CANNOT_SATISFY) {
+				err_msg += font::unicode_bullet + " " + a.message + "\n";
+			}
+		}
+		gui2::show_message(v, e_title, err_msg, message::auto_close);
+
+		return false;
+	} else if(addon_outcome == mp::game_info::NEED_DOWNLOAD) {
+		std::string e_title = _("Missing User-made Content.");
+		std::string err_msg = _("This game requires one or more user-made addons to be installed or updated in order to join.\nDo you want to try to install them?");
+
+		err_msg +="\n\n";
+		err_msg += _("Details:");
+		err_msg += "\n";
+
+		std::vector<std::string> needs_download;
+		for(const mp::game_info::required_addon & a : reqs) {
+			if(a.outcome == mp::game_info::NEED_DOWNLOAD) {
+				err_msg += font::unicode_bullet + " " + a.message + "\n";
+
+				needs_download.push_back(a.addon_id);
+			}
+		}
+
+		assert(needs_download.size() > 0);
+
+		if(gui2::show_message(v, e_title, err_msg, message::yes_no_buttons, true) == gui2::window::OK) {
+			// Begin download session
+			ad_hoc_addon_fetch_session(v, needs_download);
+
+			return true;
+		}
+	}
+
+	return false;
 }
 
 } // end anonymous namespace
@@ -494,9 +534,6 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, int idx, grid
 	map.set_config(&game_config_);
 	map.set_map_data(game.map_data);
 
-	connect_signal_mouse_left_double_click(row_panel,
-		std::bind(&mp_lobby::join_or_observe, this, idx));
-
 	button& join_button = find_widget<button>(grid, "join", false);
 	button& observe_button = find_widget<button>(grid, "observe", false);
 
@@ -507,11 +544,14 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, int idx, grid
 		return;
 	}
 
+	connect_signal_mouse_left_double_click(row_panel,
+		std::bind(&mp_lobby::enter_game_by_id, this, game.id, DO_EITHER));
+
 	connect_signal_mouse_left_click(join_button,
-		std::bind(&mp_lobby::join_global_button_callback, this, std::ref(*get_window())));
+		std::bind(&mp_lobby::enter_game_by_id, this, game.id, DO_JOIN));
 
 	connect_signal_mouse_left_click(observe_button,
-		std::bind(&mp_lobby::observe_global_button_callback, this, std::ref(*get_window())));
+		std::bind(&mp_lobby::enter_game_by_id, this, game.id, DO_OBSERVE));
 }
 
 void mp_lobby::update_gamelist_filter()
@@ -720,13 +760,13 @@ void mp_lobby::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "join_global", false),
-		std::bind(&mp_lobby::join_global_button_callback, this, std::ref(window)));
+		std::bind(&mp_lobby::enter_selected_game, this, DO_JOIN));
 
 	find_widget<button>(&window, "join_global", false).set_active(false);
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "observe_global", false),
-		std::bind(&mp_lobby::observe_global_button_callback, this, std::ref(window)));
+		std::bind(&mp_lobby::enter_selected_game, this, DO_OBSERVE));
 
 	find_widget<button>(&window, "observe_global", false).set_active(false);
 
@@ -778,15 +818,11 @@ void mp_lobby::pre_show(window& window)
 	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
 
 	plugins_context_->set_callback("join",    [&, this](const config&) {
-		if(do_game_join(get_game_index_from_id(selected_game_id_), false)) {
-			window.set_retval(JOIN);
-		}
+		enter_game_by_id(selected_game_id_, DO_JOIN);
 	}, true);
 
 	plugins_context_->set_callback("observe", [&, this](const config&) {
-		if(do_game_join(get_game_index_from_id(selected_game_id_), true)) {
-			window.set_retval(OBSERVE);
-		}
+		enter_game_by_id(selected_game_id_, DO_OBSERVE);
 	}, true);
 
 	plugins_context_->set_callback("create", [&window](const config&) { window.set_retval(CREATE); }, true);
@@ -876,129 +912,89 @@ void mp_lobby::process_gamelist_diff(const config& data)
 	}
 }
 
-void mp_lobby::observe_global_button_callback(window& window)
+void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 {
-	if(do_game_join(gamelistbox_->get_selected_row(), true)) {
-		window.set_retval(OBSERVE);
-	}
-}
+	const bool try_join = mode == DO_JOIN || (mode == DO_EITHER && game.can_join());
+	const bool try_obsv = mode == DO_OBSERVE;
 
-void mp_lobby::join_global_button_callback(window& window)
-{
-	if(do_game_join(gamelistbox_->get_selected_row(), false)) {
-		window.set_retval(JOIN);
-	}
-}
-
-void mp_lobby::join_or_observe(int idx)
-{
-	const mp::game_info& game = *lobby_info_.games()[idx];
-	if(do_game_join(idx, !game.can_join())) {
-		get_window()->set_retval(game.can_join() ? JOIN : OBSERVE);
-	}
-}
-
-static bool handle_addon_requirements_gui(CVideo& v, const std::vector<mp::game_info::required_addon>& reqs, mp::game_info::ADDON_REQ addon_outcome)
-{
-	if(addon_outcome == mp::game_info::CANNOT_SATISFY) {
-		std::string e_title = _("Incompatible User-made Content.");
-		std::string err_msg = _("This game cannot be joined because the host has out-of-date add-ons that are incompatible with your version. You might wish to suggest that the host's add-ons be updated.");
-
-		err_msg +="\n\n";
-		err_msg += _("Details:");
-		err_msg += "\n";
-
-		for(const mp::game_info::required_addon & a : reqs) {
-			if (a.outcome == mp::game_info::CANNOT_SATISFY) {
-				err_msg += font::unicode_bullet + " " + a.message + "\n";
-			}
-		}
-		gui2::show_message(v, e_title, err_msg, message::auto_close);
-
-		return false;
-	} else if(addon_outcome == mp::game_info::NEED_DOWNLOAD) {
-		std::string e_title = _("Missing User-made Content.");
-		std::string err_msg = _("This game requires one or more user-made addons to be installed or updated in order to join.\nDo you want to try to install them?");
-
-		err_msg +="\n\n";
-		err_msg += _("Details:");
-		err_msg += "\n";
-
-		std::vector<std::string> needs_download;
-		for(const mp::game_info::required_addon & a : reqs) {
-			if(a.outcome == mp::game_info::NEED_DOWNLOAD) {
-				err_msg += font::unicode_bullet + " " + a.message + "\n";
-
-				needs_download.push_back(a.addon_id);
-			}
-		}
-
-		assert(needs_download.size() > 0);
-
-		if(gui2::show_message(v, e_title, err_msg, message::yes_no_buttons, true) == gui2::window::OK) {
-			// Begin download session
-			ad_hoc_addon_fetch_session(v, needs_download);
-
-			return true;
-		}
+	if(try_obsv && !game.can_observe()) {
+		ERR_LB << "Attempted to observe a game with observers disabled" << std::endl;
+		return;
 	}
 
-	return false;
-}
+	if(try_join && !game.can_join()) {
+		ERR_LB << "Attempted to join a game with no vacant slots" << std::endl;
+		return;
+	}
 
-bool mp_lobby::do_game_join(int idx, bool observe)
-{
-	if(idx < 0 || idx >= static_cast<int>(lobby_info_.games().size())) {
-		ERR_LB << "Requested join/observe of a game with index out of range: "
-			   << idx << ", games size is " << lobby_info_.games().size() << "\n";
-		return false;
-	}
-	const mp::game_info& game = *lobby_info_.games()[idx];
-	if(observe) {
-		if(!game.can_observe()) {
-			ERR_LB << "Requested observe of a game with observers disabled" << std::endl;
-			return false;
-		}
-	} else {
-		if(!game.can_join()) {
-			ERR_LB << "Requested join to a game with no vacant slots" << std::endl;
-			return false;
-		}
-	}
+	window& window = *get_window();
 
 	// Prompt user to download this game's required addons if its requirements have not been met
 	if(game.addons_outcome != mp::game_info::SATISFIED) {
 		if(game.required_addons.empty()) {
-			gui2::show_error_message(get_window()->video(), _("Something is wrong with the addon version check database supporting the multiplayer lobby. Please report this at http://bugs.wesnoth.org."));
-			return false;
+			gui2::show_error_message(window.video(), _("Something is wrong with the addon version check database supporting the multiplayer lobby. Please report this at http://bugs.wesnoth.org."));
+			return;
 		}
 
-		if(!handle_addon_requirements_gui(get_window()->video(), game.required_addons, game.addons_outcome)) {
-			return false;
-		} else {
-			// Addons have been downloaded, so the game_config and installed addons list need to be reloaded.
-			// The lobby is closed and reopened.
-			get_window()->set_retval(RELOAD_CONFIG);
-			return false;
+		if(!handle_addon_requirements_gui(window.video(), game.required_addons, game.addons_outcome)) {
+			return;
 		}
+
+		// Addons have been downloaded, so the game_config and installed addons list need to be reloaded.
+		// The lobby is closed and reopened.
+		window.set_retval(RELOAD_CONFIG);
+		return;
 	}
 
 	config response;
-	config& join = response.add_child("join");
-	join["id"] = std::to_string(game.id);
-	join["observe"] = observe;
-	if(join && !observe && game.password_required) {
+
+	config& join_data = response.add_child("join");
+	join_data["id"] = std::to_string(game.id);
+	join_data["observe"] = try_obsv;
+
+	if(!join_data.empty() && try_join && game.password_required) {
 		std::string password;
-		if(!gui2::dialogs::mp_join_game_password_prompt::execute(password, get_window()->video())) {
-			return false;
+
+		if(!gui2::dialogs::mp_join_game_password_prompt::execute(password, window.video())) {
+			return;
 		}
 
-		join["password"] = password;
+		join_data["password"] = password;
 	}
 
 	network_connection_.send_data(response);
 	joined_game_id_ = game.id;
-	return true;
+
+	// We're all good. Close lobby and proceed to game!
+	window.set_retval(try_join ? JOIN : OBSERVE);
+}
+
+void mp_lobby::enter_game_by_index(const int index, JOIN_MODE mode)
+{
+	try {
+		enter_game(*lobby_info_.games().at(index), mode);
+	} catch(const std::out_of_range&) {
+		// Game index was invalid!
+		ERR_LB << "Attempted to join/observe a game with index out of range: " << index << ". "
+		       << "Games vector size is " << lobby_info_.games().size() << std::endl;
+	}
+}
+
+void mp_lobby::enter_game_by_id(const int game_id, JOIN_MODE mode)
+{
+	mp::game_info* game_ptr = lobby_info_.get_game_by_id(game_id);
+
+	if(!game_ptr) {
+		ERR_LB << "Attempted to join/observe a game with an invalid id: " << game_id << std::endl;
+		return;
+	}
+
+	enter_game(*game_ptr, mode);
+}
+
+void mp_lobby::enter_selected_game(JOIN_MODE mode)
+{
+	enter_game_by_index(gamelistbox_->get_selected_row(), mode);
 }
 
 void mp_lobby::refresh_lobby()
@@ -1139,15 +1135,6 @@ void mp_lobby::skip_replay_changed_callback(window& window)
 	const int value = find_widget<menu_button>(&window, "replay_options", false).get_value();
 	preferences::set_skip_mp_replay(value == 1);
 	preferences::set_blindfold_replay(value == 2);
-}
-
-int mp_lobby::get_game_index_from_id(const int game_id) const
-{
-	if(mp::game_info* game = lobby_info_.get_game_by_id(game_id)) {
-		return std::find(lobby_info_.games().begin(), lobby_info_.games().end(), game) - lobby_info_.games().begin();
-	}
-
-	return -1;
 }
 
 } // namespace dialogs
