@@ -98,7 +98,7 @@ static int impl_music_get(lua_State* L) {
 	if(strcmp(m, "current_i") == 0) {
 		auto current_index = sound::get_current_track_index();
 		if(current_index) {
-			lua_pushinteger(L, current_index.value() + 1);
+			lua_pushinteger(L, current_index.get() + 1);
 		} else {
 			lua_pushnil(L);
 		}
