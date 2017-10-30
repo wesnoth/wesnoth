@@ -114,9 +114,14 @@ private:
 	void on_game_select(window& window);
 	void on_tab_select(window& window);
 	void on_era_select(window& window);
-	void on_mod_toggle(const int index);
+	void on_mod_toggle(window& window, const int index);
 	void on_random_faction_mode_select(window& window);
-
+	
+	std::vector<std::string> get_active_mods(window& window);
+	void set_active_mods(window& window, const std::vector<std::string>& val);
+	
+	void sync_with_depcheck(window& window);
+	
 	void show_description(window& window, const std::string& new_description);
 
 	void update_details(window& window);

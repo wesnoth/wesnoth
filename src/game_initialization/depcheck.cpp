@@ -110,6 +110,18 @@ manager::manager(const config& gamecfg, bool mp, CVideo& video)
 			depinfo_.add_child("scenario", info);
 		}
 	}
+
+	for(const config& cfg : gamecfg.child_range("campaign")) {
+		config info;
+		info["id"] = cfg["id"];
+		info["name"] = cfg["name"];
+		info["allow_era_choice"] = cfg["allow_era_choice"];
+
+		copy_keys(info, cfg, "era");
+		copy_keys(info, cfg, "modification", true);
+
+		depinfo_.add_child("scenario", info);
+	}
 }
 
 void manager::save_state()
@@ -234,6 +246,10 @@ bool manager::conflicts(const elem& elem1, const elem& elem2, bool directonly) c
 		if(utils::contains(ignored, elem1.id)) {
 			return false;
 		}
+	}
+
+	if((elem1.type == "era" && data2["allow_era_choice"].to_bool(false)) ||(elem2.type == "era" && data1["allow_era_choice"].to_bool(false))) {
+		return false;
 	}
 
 	bool result = false;

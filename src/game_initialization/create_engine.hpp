@@ -384,9 +384,8 @@ public:
 	bool generator_has_settings() const;
 	void generator_user_config();
 
-	int find_level_by_id(const std::string& id) const;
+	std::pair<level::TYPE, int> find_level_by_id(const std::string& id) const;
 	int find_extra_by_id(const MP_EXTRA extra_type, const std::string& id) const;
-	level::TYPE find_level_type_by_id(const std::string& id) const;
 
 	const depcheck::manager& dependency_manager() const
 	{
