@@ -96,11 +96,11 @@ static int impl_music_get(lua_State* L) {
 	}
 
 	if(strcmp(m, "current_i") == 0) {
-		size_t i = sound::get_current_track_index();
-		if(i >= sound::get_num_tracks()) {
-			lua_pushnil(L);
+		auto current_index = sound::get_current_track_index();
+		if(current_index) {
+			lua_pushinteger(L, current_index.value() + 1);
 		} else {
-			lua_pushinteger(L, i + 1);
+			lua_pushnil(L);
 		}
 		return 1;
 	}

@@ -191,8 +191,11 @@ std::vector<std::shared_ptr<sound::music_track>>::const_iterator find_track(cons
 
 namespace sound
 {
-unsigned int get_current_track_index()
+boost::optional<unsigned int> get_current_track_index()
 {
+	if(current_track_index >= current_track_list.size()){
+		return {};
+	}
 	return current_track_index;
 }
 std::shared_ptr<music_track> get_current_track()
