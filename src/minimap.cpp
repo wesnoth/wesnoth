@@ -84,11 +84,11 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 			if(!map.on_board_with_border(loc))
 				continue;
 
-			const bool highlighted = reach_map && reach_map->count(loc) != 0;
-
 			const bool shrouded = (resources::screen != nullptr && resources::screen->is_blindfolded()) || (vw != nullptr && vw->shrouded(loc));
 			// shrouded hex are not considered fogged (no need to fog a black image)
 			const bool fogged = (vw != nullptr && !shrouded && vw->fogged(loc));
+
+			const bool highlighted = reach_map && reach_map->count(loc) != 0 && !shrouded;
 
 			const t_translation::terrain_code terrain = shrouded ?
 					t_translation::VOID_TERRAIN : map[loc];
