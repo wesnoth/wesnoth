@@ -578,13 +578,13 @@ void game_display::highlight_another_reach(const pathfind::paths &paths_list)
 
 bool game_display::unhighlight_reach()
 {
-	reach_map_changed_ = !reach_map_.empty();
-
-	if(reach_map_changed_) {
+	if(!reach_map_.empty()) {
 		reach_map_.clear();
+		reach_map_changed_ = true;
+		return true;
+	} else {
+		return false;
 	}
-
-	return reach_map_changed_;
 }
 
 void game_display::invalidate_route()
