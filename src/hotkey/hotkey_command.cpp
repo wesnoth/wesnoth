@@ -320,6 +320,11 @@ void set_active_scopes(hk_scopes s)
 	scope_active_ = s;
 }
 
+bool is_scope_active(scope s)
+{
+	return scope_active_[s];
+}
+
 bool is_scope_active(hk_scopes s)
 {
 	// s is a copy because we need one
