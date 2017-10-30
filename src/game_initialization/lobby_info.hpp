@@ -30,7 +30,7 @@ class lobby_info
 public:
 	explicit lobby_info(const config& game_config, const std::vector<std::string>& installed_addons);
 
-	typedef std::map<int, std::unique_ptr<game_info>> game_info_map;
+	typedef std::map<int, game_info> game_info_map;
 
 	using game_filter_func = std::function<bool(const game_info&)>;
 

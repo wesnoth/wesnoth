@@ -90,7 +90,7 @@ std::string dump_games_map(const lobby_info::game_info_map& games)
 {
 	std::stringstream ss;
 	for(const auto & v : games) {
-		const game_info& game = *v.second;
+		const game_info& game = v.second;
 		ss << "G" << game.id << "(" << game.name << ") "
 		   << game.display_status_string() << " ";
 	}
@@ -120,8 +120,8 @@ void lobby_info::process_gamelist(const config& data)
 	games_by_id_.clear();
 
 	for(const auto & c : gamelist_.child("gamelist").child_range("game")) {
-		std::unique_ptr<game_info> game(new game_info(c, game_config_, installed_addons_));
-		games_by_id_.emplace(game->id, std::move(game));
+		game_info game(c, game_config_, installed_addons_);
+		games_by_id_.emplace(game.id, std::move(game));
 	}
 
 	DBG_LB << dump_games_map(games_by_id_);
@@ -162,25 +162,25 @@ bool lobby_info::process_gamelist_diff(const config& data)
 		const std::string& diff_result = c[config::diff_track_attribute];
 		if(diff_result == "new" || diff_result == "modified") {
 			if(current_i == games_by_id_.end()) {
-				games_by_id_.emplace(game_id, std::unique_ptr<game_info>(new game_info(c, game_config_, installed_addons_)));
+				games_by_id_.emplace(game_id, game_info(c, game_config_, installed_addons_));
 				continue;
 			}
 
 			// Had a game with that id, so update it and mark it as such
-			*(current_i->second) = game_info(c, game_config_, installed_addons_);
-			current_i->second->display_status = game_info::UPDATED;
+			current_i->second = game_info(c, game_config_, installed_addons_);
+			current_i->second.display_status = game_info::UPDATED;
 		} else if(diff_result == "deleted") {
 			if(current_i == games_by_id_.end()) {
 				WRN_LB << "Would have to delete a game that I don't have: " << game_id << "\n";
 				continue;
 			}
 
-			if(current_i->second->display_status == game_info::NEW) {
+			if(current_i->second.display_status == game_info::NEW) {
 				// This means the game never made it through to the user interface,
 				// so just deleting it is fine.
 				games_by_id_.erase(current_i);
 			} else {
-				current_i->second->display_status = game_info::DELETED;
+				current_i->second.display_status = game_info::DELETED;
 			}
 		}
 	}
@@ -239,11 +239,11 @@ void lobby_info::sync_games_display_status()
 
 	game_info_map::iterator i = games_by_id_.begin();
 	while(i != games_by_id_.end()) {
-		if(i->second->display_status == game_info::DELETED) {
+		if(i->second.display_status == game_info::DELETED) {
 
 			i = games_by_id_.erase(i);
 		} else {
-			i->second->display_status = game_info::CLEAN;
+			i->second.display_status = game_info::CLEAN;
 			++i;
 		}
 	}
@@ -255,13 +255,13 @@ void lobby_info::sync_games_display_status()
 game_info* lobby_info::get_game_by_id(int id)
 {
 	game_info_map::iterator i = games_by_id_.find(id);
-	return i == games_by_id_.end() ? nullptr : i->second.get();
+	return i == games_by_id_.end() ? nullptr : &i->second;
 }
 
 const game_info* lobby_info::get_game_by_id(int id) const
 {
 	game_info_map::const_iterator i = games_by_id_.find(id);
-	return i == games_by_id_.end() ? nullptr : i->second.get();
+	return i == games_by_id_.end() ? nullptr : &i->second;
 }
 
 room_info* lobby_info::get_room(const std::string& name)
@@ -347,8 +347,8 @@ void lobby_info::make_games_vector()
 	games_visibility_.clear();
 	games_.clear();
 
-	for(const auto & v : games_by_id_) {
-		games_.push_back(v.second.get());
+	for(auto & v : games_by_id_) {
+		games_.push_back(&v.second);
 	}
 }
 
