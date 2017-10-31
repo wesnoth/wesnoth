@@ -165,7 +165,7 @@ private:
 
 	/** Fires a draw event. */
 	using events::sdl_handler::draw;
-	void draw(const bool force);
+	void draw();
 
 	/**
 	 * Fires a video resize event.
@@ -374,10 +374,10 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			break;
 
 		case DRAW_EVENT:
-			draw(false);
+			draw();
 			break;
 		case DRAW_ALL_EVENT:
-			draw(true);
+			draw();
 			break;
 
 		case TIMER_EVENT:
@@ -409,7 +409,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		case SDL_WINDOWEVENT:
 			switch(event.window.event) {
 				case SDL_WINDOWEVENT_EXPOSED:
-					draw(true);
+					draw();
 					break;
 
 				case SDL_WINDOWEVENT_RESIZED:
@@ -521,7 +521,7 @@ void sdl_event_handler::activate()
 	}
 }
 
-void sdl_event_handler::draw(const bool force)
+void sdl_event_handler::draw()
 {
 	for(auto dispatcher : dispatchers_)
 	{
