@@ -128,7 +128,7 @@ void playsingle_controller::init_gui()
 	// overriding those found in the map (if any).
 	if(map_start_.valid())
 	{
-		gui_->scroll_to_tile(map_start_, game_display::WARP);
+		gui_->scroll_to_tile(map_start_, game_display::WARP, false);
 		LOG_NG << "Found good stored ui location " << map_start_ << "\n";
 	}
 	else
