@@ -113,7 +113,8 @@ playsingle_controller::~playsingle_controller()
 	ai::manager::clear_ais() ;
 }
 
-void playsingle_controller::init_gui(){
+void playsingle_controller::init_gui()
+{
 	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks()) << "\n";
 	play_controller::init_gui();
 
@@ -128,6 +129,7 @@ void playsingle_controller::init_gui(){
 	if(map_start_.valid())
 	{
 		gui_->scroll_to_tile(map_start_, game_display::WARP);
+		LOG_NG << "Found good stored ui location " << map_start_ << "\n";
 	}
 	else
 	{
@@ -138,6 +140,10 @@ void playsingle_controller::init_gui(){
 		map_location loc(gamestate().board_.map().starting_position(scroll_team));
 		if ((loc.x >= 0) && (loc.y >= 0)) {
 			gui_->scroll_to_tile(loc, game_display::WARP);
+			LOG_NG << "Found bad stored ui location " << map_start_ << " using side starting location " << loc << "\n";
+		}
+		else {
+			LOG_NG << "Found bad stored ui location\n";
 		}
 	}
 
