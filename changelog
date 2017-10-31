@@ -1,6 +1,9 @@
 Version 1.13.10+dev:
  * Language and i18n:
    * Updated translations: Chinese (Simplified)
+ * Performance:
+   * GUI2 windows no longer redraw everything 50 times per second. This reduces
+     CPU usage in fullscreen windows such as MP lobby by about 85 %.
  * User Interface:
    * Removed broken Unit Box and Widescreen themes.
    * Fixed a bug that partially prevented movement feedback announce messages

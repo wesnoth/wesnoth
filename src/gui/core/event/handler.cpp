@@ -523,35 +523,8 @@ void sdl_event_handler::activate()
 
 void sdl_event_handler::draw(const bool force)
 {
-	// Don't display this event since it floods the screen
-	// DBG_GUI_E << "Firing " << DRAW << ".\n";
-
-	/*
-	 * In normal draw mode the first window in not forced to be drawn the
-	 * others are. So for forced mode we only need to force the first window to
-	 * be drawn the others are already handled.
-	 */
-	bool first = !force;
-
-	/**
-	 * @todo Need to evaluate which windows really to redraw.
-	 *
-	 * For now we use a hack, but would be nice to rewrite it for 1.9/1.11.
-	 */
 	for(auto dispatcher : dispatchers_)
 	{
-		if(!first) {
-			/*
-			 * This leaves glitches on window borders if the window beneath it
-			 * has changed, on the other hand invalidating twindown::restorer_
-			 * causes black borders around the window. So there's the choice
-			 * between two evils.
-			 */
-			dynamic_cast<widget&>(*dispatcher).set_is_dirty(true);
-		} else {
-			first = false;
-		}
-
 		dispatcher->fire(DRAW, dynamic_cast<widget&>(*dispatcher));
 	}
 
