@@ -14,16 +14,16 @@
 
 #include "game_initialization/lobby_info.hpp"
 
-#include "config.hpp"
-#include "preferences/game.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "map/map.hpp"
 #include "map/exception.hpp"
-#include "wml_exception.hpp"
-#include "wesnothd_connection.hpp"
+#include "map/map.hpp"
 #include "mp_ui_alerts.hpp"
+#include "preferences/game.hpp"
+#include "wesnothd_connection.hpp"
+#include "wml_exception.hpp"
+
 #include <iterator>
 
 static lg::log_domain log_engine("engine");
@@ -35,8 +35,8 @@ static lg::log_domain log_lobby("lobby");
 #define ERR_LB LOG_STREAM(err, log_lobby)
 #define SCOPE_LB log_scope2(log_lobby, __func__)
 
-namespace mp {
-
+namespace mp
+{
 lobby_info::lobby_info(const config& game_config, const std::vector<std::string>& installed_addons)
 	: game_config_(game_config)
 	, installed_addons_(installed_addons)
@@ -55,9 +55,9 @@ lobby_info::lobby_info(const config& game_config, const std::vector<std::string>
 {
 }
 
-void do_notify(notify_mode mode, const std::string & sender, const std::string & message)
+void do_notify(notify_mode mode, const std::string& sender, const std::string& message)
 {
-	switch (mode) {
+	switch(mode) {
 	case NOTIFY_WHISPER:
 	case NOTIFY_WHISPER_OTHER_WINDOW:
 	case NOTIFY_OWN_NICK:
@@ -85,15 +85,14 @@ void do_notify(notify_mode mode, const std::string & sender, const std::string &
 
 namespace
 {
-
 std::string dump_games_map(const lobby_info::game_info_map& games)
 {
 	std::stringstream ss;
-	for(const auto & v : games) {
+	for(const auto& v : games) {
 		const game_info& game = v.second;
-		ss << "G" << game.id << "(" << game.name << ") "
-		   << game.display_status_string() << " ";
+		ss << "G" << game.id << "(" << game.name << ") " << game.display_status_string() << " ";
 	}
+
 	ss << "\n";
 	return ss.str();
 }
@@ -101,10 +100,10 @@ std::string dump_games_map(const lobby_info::game_info_map& games)
 std::string dump_games_config(const config& gamelist)
 {
 	std::stringstream ss;
-	for(const auto & c : gamelist.child_range("game")) {
-		ss << "g" << c["id"] << "(" << c["name"] << ") "
-		   << c[config::diff_track_attribute] << " ";
+	for(const auto& c : gamelist.child_range("game")) {
+		ss << "g" << c["id"] << "(" << c["name"] << ") " << c[config::diff_track_attribute] << " ";
 	}
+
 	ss << "\n";
 	return ss.str();
 }
@@ -114,12 +113,13 @@ std::string dump_games_config(const config& gamelist)
 void lobby_info::process_gamelist(const config& data)
 {
 	SCOPE_LB;
+
 	gamelist_ = data;
 	gamelist_initialized_ = true;
 
 	games_by_id_.clear();
 
-	for(const auto & c : gamelist_.child("gamelist").child_range("game")) {
+	for(const auto& c : gamelist_.child("gamelist").child_range("game")) {
 		game_info game(c, game_config_, installed_addons_);
 		games_by_id_.emplace(game.id, std::move(game));
 	}
@@ -138,11 +138,11 @@ bool lobby_info::process_gamelist_diff(const config& data)
 	}
 
 	DBG_LB << "prediff " << dump_games_config(gamelist_.child("gamelist"));
+
 	try {
 		gamelist_.apply_diff(data, true);
 	} catch(config::error& e) {
-		ERR_LB << "Error while applying the gamelist diff: '" << e.message
-		       << "' Getting a new gamelist.\n";
+		ERR_LB << "Error while applying the gamelist diff: '" << e.message << "' Getting a new gamelist.\n";
 		return false;
 	}
 
@@ -151,6 +151,7 @@ bool lobby_info::process_gamelist_diff(const config& data)
 
 	for(config& c : gamelist_.child("gamelist").child_range("game")) {
 		DBG_LB << "data process: " << c["id"] << " (" << c[config::diff_track_attribute] << ")\n";
+
 		const int game_id = c["id"];
 		if(game_id == 0) {
 			ERR_LB << "game with id 0 in gamelist config" << std::endl;
@@ -160,6 +161,7 @@ bool lobby_info::process_gamelist_diff(const config& data)
 		game_info_map::iterator current_i = games_by_id_.find(game_id);
 
 		const std::string& diff_result = c[config::diff_track_attribute];
+
 		if(diff_result == "new" || diff_result == "modified") {
 			if(current_i == games_by_id_.end()) {
 				games_by_id_.emplace(game_id, game_info(c, game_config_, installed_addons_));
@@ -171,7 +173,7 @@ bool lobby_info::process_gamelist_diff(const config& data)
 			current_i->second.display_status = game_info::UPDATED;
 		} else if(diff_result == "deleted") {
 			if(current_i == games_by_id_.end()) {
-				WRN_LB << "Would have to delete a game that I don't have: " << game_id << "\n";
+				WRN_LB << "Would have to delete a game that I don't have: " << game_id << std::endl;
 				continue;
 			}
 
@@ -186,48 +188,49 @@ bool lobby_info::process_gamelist_diff(const config& data)
 	}
 
 	DBG_LB << dump_games_map(games_by_id_);
-	try	{
+
+	try {
 		gamelist_.clear_diff_track(data);
 	} catch(config::error& e) {
-		ERR_LB << "Error while applying the gamelist diff (2): '" << e.message
-			   << "' Getting a new gamelist.\n";
+		ERR_LB << "Error while applying the gamelist diff (2): '" << e.message << "' Getting a new gamelist.\n";
 		return false;
 	}
 
 	DBG_LB << "postclean " << dump_games_config(gamelist_.child("gamelist"));
-	process_userlist();
 
+	process_userlist();
 	return true;
 }
 
 void lobby_info::process_userlist()
 {
 	SCOPE_LB;
+
 	users_.clear();
-	for(const auto & c : gamelist_.child_range("user")) {
+	for(const auto& c : gamelist_.child_range("user")) {
 		users_.emplace_back(c);
 	}
 
-	for(auto & ui : users_) {
+	for(auto& ui : users_) {
 		if(ui.game_id == 0) {
 			continue;
 		}
 
 		game_info* g = get_game_by_id(ui.game_id);
 		if(!g) {
-			WRN_NG << "User " << ui.name << " has unknown game_id: " << ui.game_id << "\n";
+			WRN_NG << "User " << ui.name << " has unknown game_id: " << ui.game_id << std::endl;
 			continue;
 		}
 
 		switch(ui.relation) {
-			case user_info::FRIEND:
-				g->has_friends = true;
-				break;
-			case user_info::IGNORED:
-				g->has_ignored = true;
-				break;
-			default:
-				break;
+		case user_info::FRIEND:
+			g->has_friends = true;
+			break;
+		case user_info::IGNORED:
+			g->has_ignored = true;
+			break;
+		default:
+			break;
 		}
 	}
 }
@@ -238,9 +241,9 @@ void lobby_info::sync_games_display_status()
 	DBG_LB << "games_by_id_ size: " << games_by_id_.size();
 
 	game_info_map::iterator i = games_by_id_.begin();
+
 	while(i != games_by_id_.end()) {
 		if(i->second.display_status == game_info::DELETED) {
-
 			i = games_by_id_.erase(i);
 		} else {
 			i->second.display_status = game_info::CLEAN;
@@ -248,7 +251,8 @@ void lobby_info::sync_games_display_status()
 		}
 	}
 
-	DBG_LB << " -> " << games_by_id_.size() << "\n";
+	DBG_LB << " -> " << games_by_id_.size() << std::endl;
+
 	make_games_vector();
 }
 
@@ -266,9 +270,10 @@ const game_info* lobby_info::get_game_by_id(int id) const
 
 room_info* lobby_info::get_room(const std::string& name)
 {
-	for(auto & r : rooms_) {
-		if(r.name() == name)
+	for(auto& r : rooms_) {
+		if(r.name() == name) {
 			return &r;
+		}
 	}
 
 	return nullptr;
@@ -276,7 +281,7 @@ room_info* lobby_info::get_room(const std::string& name)
 
 const room_info* lobby_info::get_room(const std::string& name) const
 {
-	for(const auto & r : rooms_) {
+	for(const auto& r : rooms_) {
 		if(r.name() == name) {
 			return &r;
 		}
@@ -301,11 +306,6 @@ user_info* lobby_info::get_user(const std::string& name)
 	return nullptr;
 }
 
-chat_session& lobby_info::get_whisper_log(const std::string& name)
-{
-	return whispers_[name];
-}
-
 void lobby_info::open_room(const std::string& name)
 {
 	if(!has_room(name)) {
@@ -315,30 +315,11 @@ void lobby_info::open_room(const std::string& name)
 
 void lobby_info::close_room(const std::string& name)
 {
-	DBG_LB << "lobby info: closing room " << name << "\n";
+	DBG_LB << "lobby info: closing room " << name << std::endl;
+
 	if(room_info* r = get_room(name)) {
 		rooms_.erase(rooms_.begin() + (r - &rooms_[0]));
 	}
-}
-
-const std::vector<game_info*>& lobby_info::games_filtered() const
-{
-	return games_filtered_;
-}
-
-void lobby_info::add_game_filter(game_filter_func func)
-{
-	game_filters_.push_back(func);
-}
-
-void lobby_info::clear_game_filter()
-{
-	game_filters_.clear();
-}
-
-void lobby_info::set_game_filter_invert(bool value)
-{
-	game_filter_invert_ = value;
 }
 
 void lobby_info::make_games_vector()
@@ -347,7 +328,7 @@ void lobby_info::make_games_vector()
 	games_visibility_.clear();
 	games_.clear();
 
-	for(auto & v : games_by_id_) {
+	for(auto& v : games_by_id_) {
 		games_.push_back(&v.second);
 	}
 }
@@ -356,12 +337,14 @@ void lobby_info::apply_game_filter()
 {
 	games_filtered_.clear();
 	games_visibility_.clear();
+
 	for(auto g : games_) {
 		game_info& gi = *g;
 
 		bool show = true;
 		for(const auto& filter_func : game_filters_) {
 			show = filter_func(gi);
+
 			if(!show) {
 				break;
 			}
@@ -380,7 +363,7 @@ void lobby_info::apply_game_filter()
 
 void lobby_info::update_user_statuses(int game_id, const room_info* room)
 {
-	for(auto & user : users_) {
+	for(auto& user : users_) {
 		user.update_state(game_id, room);
 	}
 }
@@ -402,9 +385,4 @@ void lobby_info::sort_users(bool by_name, bool by_relation)
 	});
 }
 
-const std::vector<user_info*>& lobby_info::users_sorted() const
-{
-	return users_sorted_;
-}
-
-}
+} // end namespace mp
