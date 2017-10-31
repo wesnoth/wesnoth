@@ -447,6 +447,7 @@ static void find_routes(
 	for (int x = xmin; x <= xmax; ++x) {
 		for (int y = ymin; y <= ymax; ++y)
 		{
+			assert(index(x, y) >= 0);
 			const findroute_node &n = nodes[index(x,y)];
 			if ( n.search_num == search_counter ) {
 				paths::step s =
