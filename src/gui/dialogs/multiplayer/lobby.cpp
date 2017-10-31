@@ -417,7 +417,7 @@ void mp_lobby::update_gamelist_header()
 {
 #ifndef GUI2_EXPERIMENTAL_LISTBOX
 	const std::string games_string = vgettext("Games: showing $num_shown out of $num_total", {
-		{"num_shown", std::to_string(lobby_info_.games_filtered().size())},
+		{"num_shown", std::to_string(lobby_info_.games_visibility().count())},
 		{"num_total", std::to_string(lobby_info_.games().size())}
 	});
 
@@ -1106,21 +1106,7 @@ void mp_lobby::user_dialog_callback(mp::user_info* info)
 	}
 
 	selected_game_id_ = info->game_id;
-	// the commented out code below should be enough, but that'd delete the
-	// playerlist and the widget calling this callback, so instead the game
-	// will be selected on the next gamelist update.
-	/*
-	if (info->game_id != 0) {
-		for (unsigned i = 0; i < lobby_info_.games_filtered().size(); ++i) {
-		game_info& g = *lobby_info_.games_filtered()[i];
-			if (info->game_id == g.id) {
-			gamelistbox_->select_row(i);
-				update_selected_game();
-				break;
-			}
-		}
-	}
-	*/
+
 	// do not update here as it can cause issues with removing the widget
 	// from within it's event handler. Should get updated as soon as possible
 	// update_gamelist();

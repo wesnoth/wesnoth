@@ -139,11 +139,6 @@ public:
 		return games_visibility_;
 	}
 
-	const std::vector<game_info*>& games_filtered() const
-	{
-		return games_filtered_;
-	}
-
 	const std::vector<user_info>& users() const
 	{
 		return users_;
@@ -170,7 +165,6 @@ private:
 	game_info_map games_by_id_;
 
 	std::vector<game_info*> games_;
-	std::vector<game_info*> games_filtered_;
 
 	std::vector<user_info> users_;
 	std::vector<user_info*> users_sorted_;
@@ -198,9 +192,5 @@ enum notify_mode {
 	NOTIFY_COUNT
 };
 
-void do_notify(notify_mode mode, const std::string& sender, const std::string& message);
-inline void do_notify(notify_mode mode)
-{
-	do_notify(mode, "", "");
-}
+void do_notify(notify_mode mode, const std::string& sender = "", const std::string& message = "");
 }

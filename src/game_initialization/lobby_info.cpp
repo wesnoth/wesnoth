@@ -45,7 +45,6 @@ lobby_info::lobby_info(const config& game_config, const std::vector<std::string>
 	, rooms_()
 	, games_by_id_()
 	, games_()
-	, games_filtered_()
 	, users_()
 	, users_sorted_()
 	, whispers_()
@@ -158,7 +157,7 @@ bool lobby_info::process_gamelist_diff(const config& data)
 			return false;
 		}
 
-		game_info_map::iterator current_i = games_by_id_.find(game_id);
+		auto current_i = games_by_id_.find(game_id);
 
 		const std::string& diff_result = c[config::diff_track_attribute];
 
@@ -211,6 +210,13 @@ void lobby_info::process_userlist()
 		users_.emplace_back(c);
 	}
 
+	users_sorted_.reserve(users_.size());
+	users_sorted_.clear();
+
+	for(auto& u : users_) {
+		users_sorted_.push_back(&u);
+	}
+
 	for(auto& ui : users_) {
 		if(ui.game_id == 0) {
 			continue;
@@ -240,7 +246,7 @@ void lobby_info::sync_games_display_status()
 	DBG_LB << "lobby_info::sync_games_display_status";
 	DBG_LB << "games_by_id_ size: " << games_by_id_.size();
 
-	game_info_map::iterator i = games_by_id_.begin();
+	auto i = games_by_id_.begin();
 
 	while(i != games_by_id_.end()) {
 		if(i->second.display_status == game_info::DELETED) {
@@ -258,13 +264,13 @@ void lobby_info::sync_games_display_status()
 
 game_info* lobby_info::get_game_by_id(int id)
 {
-	game_info_map::iterator i = games_by_id_.find(id);
+	auto i = games_by_id_.find(id);
 	return i == games_by_id_.end() ? nullptr : &i->second;
 }
 
 const game_info* lobby_info::get_game_by_id(int id) const
 {
-	game_info_map::const_iterator i = games_by_id_.find(id);
+	auto i = games_by_id_.find(id);
 	return i == games_by_id_.end() ? nullptr : &i->second;
 }
 
@@ -324,26 +330,30 @@ void lobby_info::close_room(const std::string& name)
 
 void lobby_info::make_games_vector()
 {
-	games_filtered_.clear();
-	games_visibility_.clear();
+	games_.reserve(games_by_id_.size());
 	games_.clear();
 
 	for(auto& v : games_by_id_) {
 		games_.push_back(&v.second);
 	}
+
+	// Reset the visibility mask. Its size should then match games_'s and all its bits be true.
+	games_visibility_.resize(games_.size());
+	games_visibility_.reset();
+	games_visibility_.flip();
 }
 
 void lobby_info::apply_game_filter()
 {
-	games_filtered_.clear();
-	games_visibility_.clear();
+	// Since games_visibility_ is a visibility mask over games_,
+	// they need to be the same size or we'll end up with issues.
+	assert(games_visibility_.size() == games_.size());
 
-	for(auto g : games_) {
-		game_info& gi = *g;
-
+	for(unsigned i = 0; i < games_.size(); ++i) {
 		bool show = true;
+
 		for(const auto& filter_func : game_filters_) {
-			show = filter_func(gi);
+			show = filter_func(*games_[i]);
 
 			if(!show) {
 				break;
@@ -354,10 +364,7 @@ void lobby_info::apply_game_filter()
 			show = !show;
 		}
 
-		games_visibility_.push_back(show);
-		if(show) {
-			games_filtered_.push_back(&gi);
-		}
+		games_visibility_[i] = show;
 	}
 }
 
@@ -370,11 +377,6 @@ void lobby_info::update_user_statuses(int game_id, const room_info* room)
 
 void lobby_info::sort_users(bool by_name, bool by_relation)
 {
-	users_sorted_.clear();
-	for(auto& u : users_) {
-		users_sorted_.push_back(&u);
-	}
-
 	std::sort(users_sorted_.begin(), users_sorted_.end(), [&](const user_info* u1, const user_info* u2) {
 		if(by_name && by_relation) {
 			return u1->relation <  u2->relation ||
