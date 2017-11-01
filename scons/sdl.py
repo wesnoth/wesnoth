@@ -138,6 +138,7 @@ int main(int argc, char ** argv)
     if context.env["host"]:
         context.Result("n/a (cross-compile)")
         return True
+    context.env["ENV"]["SDL_AUDIODRIVER"] = "dummy"
     (result, output) = context.TryRun(test_program1, ".c")
     if result:
         context.Result("yes")
