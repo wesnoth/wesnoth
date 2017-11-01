@@ -231,7 +231,13 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 				required_addon r;
 				r.addon_id = c[id_key].str();
 				r.outcome = NEED_DOWNLOAD;
-				r.message = vgettext("Missing addon: $id", {{"id", c[id_key].str()}});
+
+				// Use addon name if provided, else fall back on the addon id.
+				if(c.has_attribute("name")) {
+					r.message = vgettext("Missing addon: $name", {{"name", c["name"].str()}});
+				} else {
+					r.message = vgettext("Missing addon: $id", {{"id", c[id_key].str()}});
+				}
 
 				required_addons.push_back(std::move(r));
 
@@ -478,13 +484,18 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 
 		remote_min_ver = std::min(remote_min_ver, remote_ver);
 
+		// Use content name if provided, else fall back on the addon id.
+		// TODO: should this use t_string?
+		const std::string name = local_item.has_attribute("name")
+			? local_item["name"].str()
+			: local_item["addon_id"].str();
+
 		// Check if the host is too out of date to play.
 		if(local_min_ver > remote_ver) {
 			r.outcome = CANNOT_SATISFY;
 
-			// TODO: Figure out how to ask the add-on manager for the user-friendly name of this add-on.
 			r.message = vgettext("The host's version of <i>$addon</i> is incompatible. They have version <b>$host_ver</b> while you have version <b>$local_ver</b>.", {
-				{"addon",     r.addon_id},
+				{"addon",     name},
 				{"host_ver",  remote_ver.str()},
 				{"local_ver", local_ver.str()}
 			});
@@ -497,10 +508,9 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 		if(remote_min_ver > local_ver) {
 			r.outcome = NEED_DOWNLOAD;
 
-			// TODO: Figure out how to ask the add-on manager for the user-friendly name of this add-on.
 			r.message = vgettext("Your version of <i>$addon</i> is incompatible. You have version <b>$local_ver</b> while the host has version <b>$host_ver</b>.", {
-				{"addon", r.addon_id},
-				{"host_ver", remote_ver.str()},
+				{"addon",     name},
+				{"host_ver",  remote_ver.str()},
 				{"local_ver", local_ver.str()}
 			});
 
