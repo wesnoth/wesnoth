@@ -778,8 +778,11 @@ class CrossRef:
                             for pattern in split_filenames(match):
                                 for name in expand_square_braces(pattern):
                                     # Catches maps that look like macro names.
-                                    if (name.endswith(".map") or name.endswith(".mask")) and name[0] == '{':
-                                        name = name[1:]
+                                    if (name.endswith(".map") or name.endswith(".mask")):
+                                        if name.startswith("{~"):
+                                            name = name[2:]
+                                        elif name.startswith("{"):
+                                            name = name[1:]
                                     if os.sep == "\\":
                                         name = name.replace("/", "\\")
                                     key = None
