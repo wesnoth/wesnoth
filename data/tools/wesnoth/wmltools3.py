@@ -709,6 +709,7 @@ class CrossRef:
             if iswml(fn):
                 with codecs.open(fn, "r", "utf8") as rfp:
                     attack_name = None
+                    have_icon = False
                     beneath = 0
                     ignoreflag = False
                     for (n, line) in enumerate(rfp):
@@ -811,7 +812,6 @@ class CrossRef:
                                         self.missing.append((name, Reference(ns,fn,n+1)))
                         # Notice implicit references through attacks
                         if state == "outside":
-                            have_icon = False
                             if "[attack]" in line:
                                 beneath = 0
                                 attack_name = default_icon = None
