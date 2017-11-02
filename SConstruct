@@ -46,7 +46,7 @@ def OptionalPath(key, val, env):
 
 opts.AddVariables(
     ListVariable('default_targets', 'Targets that will be built if no target is specified in command line.',
-        "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd test")),
+        "wesnoth,wesnothd", Split("wesnoth wesnothd campaignd boost_unit_tests")),
     EnumVariable('build', 'Build variant: release, debug, or profile', "release", ["release", "debug", "profile"]),
     PathVariable('build_dir', 'Build all intermediate files(objects, test programs, etc) under this dir', "build", PathVariable.PathAccept),
     ('extra_flags_config', "Extra compiler and linker flags to use for configuration and all builds. Whether they're compiler or linker is determined by env.ParseFlags. Unknown flags are compile flags by default. This applies to all extra_flags_* variables", ""),
@@ -201,11 +201,11 @@ Important switches include:
 With no arguments, the recipe builds wesnoth and wesnothd.  Available
 build targets include the individual binaries:
 
-    wesnoth wesnothd campaignd test
+    wesnoth wesnothd campaignd boost_unit_tests
 
 You can make the following special build targets:
 
-    all = wesnoth wesnothd campaignd test (*).
+    all = wesnoth wesnothd campaignd boost_unit_tests (*).
     TAGS = build tags for Emacs (*).
     wesnoth-deps.png = project dependency graph
     install = install all executables that currently exist, and any data needed
@@ -431,8 +431,8 @@ if env["prereqs"]:
     have_test_prereqs = have_client_prereqs and conf.CheckBoost('unit_test_framework') \
                             or Warning("Unit tests are disabled because their prerequisites are not met")
     test_env = conf.Finish()
-    if not have_test_prereqs and "test" in env["default_targets"]:
-        env["default_targets"].remove("test")
+    if not have_test_prereqs and "boost_unit_tests" in env["default_targets"]:
+        env["default_targets"].remove("boost_unit_tests")
 
     print("  " + env.subst("If any config checks fail, look in $build_dir/config.log for details"))
     print("  If a check fails spuriously due to caching, use --config=force to force its rerun")
@@ -595,7 +595,7 @@ except:
 Export(Split("env client_env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
 SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
 
-binaries = Split("wesnoth wesnothd campaignd test")
+binaries = Split("wesnoth wesnothd campaignd boost_unit_tests")
 builds = {
     "release" : dict(CCFLAGS = Split(rel_comp_flags) , LINKFLAGS  = Split(rel_link_flags)),
     "debug"   : dict(CCFLAGS = Split(debug_flags)    , CPPDEFINES = Split(glibcxx_debug_flags)),

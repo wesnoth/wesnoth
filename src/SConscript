@@ -80,7 +80,7 @@ if env["png"]:
 libwesnoth_sdl = client_env.Library("wesnoth_sdl", libwesnoth_sdl_sources)
 
 #---wesnoth---
-# Used by both 'wesnoth' and 'test' targets
+# Used by both 'wesnoth' and 'boost_unit_tests' targets
 
 wesnoth_sources = GetSources("wesnoth")
 
@@ -161,9 +161,9 @@ env.WesnothProgram("wesnothd", wesnothd_sources + [libwesnoth_core, env["wesnoth
 campaignd_sources = GetSources("campaignd")
 env.WesnothProgram("campaignd", campaignd_sources + [libwesnoth_core], have_server_prereqs, OBJPREFIX = "campaignd_")
 
-#---test---
-test_sources = GetSources("test")
-test = test_env.WesnothProgram("test", test_sources +  [libwesnoth_extras, libwesnoth_core, libwesnoth, libwesnoth_sdl, libwesnoth_extras], have_test_prereqs)
+#---boost_unit_tests---
+test_sources = GetSources("boost_unit_tests")
+boost_unit_tests = test_env.WesnothProgram("boost_unit_tests", test_sources +  [libwesnoth_extras, libwesnoth_core, libwesnoth, libwesnoth_sdl, libwesnoth_extras], have_test_prereqs)
 #---end of getting sources---
 
 sources = []

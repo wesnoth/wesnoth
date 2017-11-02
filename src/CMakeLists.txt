@@ -485,7 +485,7 @@ if(ENABLE_TESTS)
 
 	add_definitions(-DBOOST_TEST_DYN_LINK)
   
-  GetSources("test" test_SRC)
+  GetSources("boost_unit_tests" test_SRC)
   
 	if(ENABLE_GAME)
 		set(test_LIB
@@ -514,16 +514,16 @@ if(ENABLE_TESTS)
 				"${CXX_FLAG_NO_USELESS_CAST}"
 	)
 
-	add_executable(test
+	add_executable(boost_unit_tests
 		${test_SRC}
 	)
-	target_link_libraries(test
+	target_link_libraries(boost_unit_tests
 		${test_LIB}
 		${game-external-libs}
 		boost_unit_test_framework
 	)
-	set_target_properties(test
-		PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}test${BINARY_SUFFIX}
+	set_target_properties(boost_unit_tests
+		PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}boost_unit_tests${BINARY_SUFFIX}
 	)
 
 endif(ENABLE_TESTS)
