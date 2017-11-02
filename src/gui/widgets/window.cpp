@@ -1225,15 +1225,12 @@ void window_swap_grid(grid* g,
 
 void window::redraw_windows_on_top() const
 {
-	auto me = std::find(open_window_stack.begin(), open_window_stack.end(), this);
-	if(me == open_window_stack.end()) {
-		// Known to happen for tooltips.
-		return;
-	}
+	std::vector<dispatcher*>& dispatchers = event::get_all_dispatchers();
+	auto me = std::find(dispatchers.begin(), dispatchers.end(), this);
 
-	for(auto it = std::next(me); it != open_window_stack.end(); ++it) {
+	for(auto it = std::next(me); it != dispatchers.end(); ++it) {
 		// Note that setting an entire window dirty like this is expensive.
-		(*it)->set_is_dirty(true);
+		dynamic_cast<widget&>(**it).set_is_dirty(true);
 	}
 }
 

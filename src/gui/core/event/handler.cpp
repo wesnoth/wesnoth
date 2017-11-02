@@ -146,6 +146,11 @@ public:
 	 */
 	void disconnect(dispatcher* dispatcher);
 
+	/**
+	 * Returns all dispatchers in the Z order.
+	 */
+	std::vector<dispatcher*>& get_dispatchers() { return dispatchers_; }
+
 	/** The dispatcher that captured the mouse focus. */
 	dispatcher* mouse_focus;
 
@@ -805,6 +810,12 @@ void disconnect_dispatcher(dispatcher* dispatcher)
 	assert(handler_);
 	assert(dispatcher);
 	handler_->disconnect(dispatcher);
+}
+
+std::vector<dispatcher*>& get_all_dispatchers()
+{
+	assert(handler_);
+	return handler_->get_dispatchers();
 }
 
 void init_mouse_location()

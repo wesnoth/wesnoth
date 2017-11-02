@@ -248,6 +248,11 @@ void connect_dispatcher(dispatcher* dispatcher);
 void disconnect_dispatcher(dispatcher* dispatcher);
 
 /**
+ * Gets all event dispatchers in the Z order.
+ */
+std::vector<dispatcher*>& get_all_dispatchers();
+
+/**
  * Initializes the location of the mouse.
  *
  * After a layout of the window the mouse location needs to be updated to
