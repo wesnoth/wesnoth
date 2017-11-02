@@ -714,7 +714,7 @@ void play_music_config(const config& music_node, int i)
 		current_track = *iter;
 		current_track_index = iter - current_track_list.begin();
 		play_music();
-	} else if(!track.append()) { // Make sure the current track is finished
+	} else if(!track.append() && current_track) { // Make sure the current track is finished
 		current_track->set_play_once(true);
 	}
 }
