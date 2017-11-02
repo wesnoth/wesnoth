@@ -195,17 +195,19 @@ namespace {
 		// Constructor:
 		findroute_indexer(int a, int b) : w(a), h(b) { }
 		// Convert to an index: (throws on out of bounds)
-		int operator()(int x, int y) const {
+		unsigned operator()(int x, int y) const {
 			VALIDATE(this->on_board(x,y),
 				"Pathfind: Location not on board");
-			return x + y*w;
+			return x + static_cast<unsigned>(y)*w;
 		}
-		int operator()(const map_location& loc) const {
+		unsigned operator()(const map_location& loc) const {
 			return (*this)(loc.x, loc.y);
 		}
 		// Convert from an index:
-		map_location operator()(int index) const {
-			return map_location(index%w, index/w);
+		map_location operator()(unsigned index) const {
+			return map_location(
+				static_cast<int>(index%w),
+				static_cast<int>(index/w));
 		}
 		// Check if location is on board
 		inline bool on_board(const map_location& loc) const {
@@ -330,11 +332,11 @@ static void find_routes(
 	                                      map_location::null_location(),
 	                                      search_counter);
 	// Begin the search at the starting location.
-	std::vector<int> hexes_to_process(1, index(origin));  // Will be maintained as a heap.
+	std::vector<unsigned> hexes_to_process(1, index(origin));  // Will be maintained as a heap.
 
 	while ( !hexes_to_process.empty() ) {
 		// Process the hex closest to the origin.
-		const int cur_index = hexes_to_process.front();
+		const unsigned cur_index = hexes_to_process.front();
 		const map_location cur_hex = index(cur_index);
 		const findroute_node& current = nodes[cur_index];
 		// Remove from the heap.
@@ -364,7 +366,7 @@ static void find_routes(
 		for ( int i = adj_locs.size()-1; i >= 0; --i ) {
 			// Get the node associated with this location.
 			const map_location & next_hex = adj_locs[i];
-			const int next_index = index(next_hex);
+			const unsigned next_index = index(next_hex);
 			findroute_node & next = nodes[next_index];
 
 			// Skip nodes we have already collected.
