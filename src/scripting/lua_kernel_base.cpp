@@ -260,7 +260,7 @@ static int intf_wml_matches_filter(lua_State* L)
 * Arg 1: (optional) Logger
 * Arg 2: Message
 */
-int intf_log(lua_State *L) {
+static int intf_log(lua_State *L) {
 	const std::string& logger = lua_isstring(L, 2) ? luaL_checkstring(L, 1) : "";
 	std::string msg = lua_isstring(L, 2) ? luaL_checkstring(L, 2) : luaL_checkstring(L, 1);
 	if(msg.empty() || msg[msg.size() - 1] != '\n') {
