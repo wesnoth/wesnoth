@@ -194,12 +194,11 @@ namespace {
 
 		// Constructor:
 		findroute_indexer(int a, int b) : w(a), h(b) { }
-		// Convert to an index: (returns -1 on out of bounds)
+		// Convert to an index: (throws on out of bounds)
 		int operator()(int x, int y) const {
-			if ( x < 0  || w <= x  ||  y < 0 || h <= y )
-				return -1;
-			else
-				return x + y*w;
+			VALIDATE(this->on_board(x,y),
+				"Pathfind: Location not on board");
+			return x + y*w;
 		}
 		int operator()(const map_location& loc) const {
 			return (*this)(loc.x, loc.y);
