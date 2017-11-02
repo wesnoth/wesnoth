@@ -207,6 +207,10 @@ namespace {
 		map_location operator()(int index) const {
 			return map_location(index%w, index/w);
 		}
+		// Check if location is on board
+		inline bool on_board(const map_location& loc) const {
+			return this->on_board(loc.x, loc.y);
+		}
 		inline bool on_board(int x, int y) const {
 			return (x >= 0) && (x < w) && (y >= 0) && (y < h);
 		}
@@ -303,6 +307,8 @@ static void find_routes(
 	findroute_comp node_comp(nodes);
 	findroute_indexer index(map.w(), map.h());
 
+	assert(index.on_board(origin));
+
 	// Check if full_cost_map has the correct size.
 	// If not, ignore it. If yes, initialize the start position.
 	if ( full_cost_map ) {
@@ -320,7 +326,6 @@ static void find_routes(
 	int nb_dest = 1;
 
 	// Record the starting location.
-	assert(index(origin) >= 0);
 	nodes[index(origin)] = findroute_node(moves_left, turns_left,
 	                                      map_location::null_location(),
 	                                      search_counter);
@@ -342,7 +347,7 @@ static void find_routes(
 
 		// Sort adjacents by on-boardness
 		auto off_board_it = std::partition(adj_locs.begin(), adj_locs.end(), [&index](map_location loc){
-			return index.on_board(loc.x, loc.y);
+			return index.on_board(loc);
 		});
 		// Store off-board edges if needed
 		if(edges != nullptr){
