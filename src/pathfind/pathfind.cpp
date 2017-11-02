@@ -208,6 +208,9 @@ namespace {
 		map_location operator()(int index) const {
 			return map_location(index%w, index/w);
 		}
+		inline bool on_board(int x, int y) const {
+			return (x >= 0) && (x < w) && (y >= 0) && (y < h);
+		}
 	};
 
 	/**
@@ -337,6 +340,18 @@ static void find_routes(
 		// Get the locations adjacent to current.
 		std::vector<map_location> adj_locs(6);
 		get_adjacent_tiles(cur_hex, &adj_locs[0]);
+
+		// Sort adjacents by on-boardness
+		auto off_board_it = std::partition(adj_locs.begin(), adj_locs.end(), [&index](map_location loc){
+			return index.on_board(loc.x, loc.y);
+		});
+		// Store off-board edges if needed
+		if(edges != nullptr){
+			edges->insert(off_board_it, adj_locs.end());
+		}
+		// Remove off-board map locations
+		adj_locs.erase(off_board_it, adj_locs.end());
+
 		if ( teleporter ) {
 			std::set<map_location> allowed_teleports;
 			teleports.get_adjacents(allowed_teleports, cur_hex);
@@ -346,12 +361,6 @@ static void find_routes(
 			// Get the node associated with this location.
 			const map_location & next_hex = adj_locs[i];
 			const int next_index = index(next_hex);
-			if ( next_index < 0 ) {
-				// Off the map.
-				if ( edges != nullptr )
-					edges->insert(next_hex);
-				continue;
-			}
 			findroute_node & next = nodes[next_index];
 
 			// Skip nodes we have already collected.
