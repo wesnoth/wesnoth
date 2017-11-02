@@ -227,11 +227,11 @@ void remove_floating_label(int handle)
 {
 	const label_map::iterator i = labels.find(handle);
 	if(i != labels.end()) {
-		if(label_contexts.empty() == false) {
-			label_contexts.top().erase(i->first);
-		}
-
 		labels.erase(i);
+	}
+
+	if(!label_contexts.empty()) {
+		label_contexts.top().erase(handle);
 	}
 }
 
@@ -257,24 +257,20 @@ SDL_Rect get_floating_label_rect(int handle)
 
 floating_label_context::floating_label_context()
 {
-	const surface screen = nullptr;
-
 	label_contexts.emplace();
 }
 
 floating_label_context::~floating_label_context()
 {
 	const std::set<int>& context = label_contexts.top();
-	while (!context.empty())
-	{
+
+	while(!context.empty()) {
 		// Remove_floating_label removes the passed label from the context.
 		// This loop removes a different label in every iteration.
 		remove_floating_label(*context.begin());
 	}
 
 	label_contexts.pop();
-
-	const surface screen = nullptr;
 }
 
 void draw_floating_labels(surface screen)
