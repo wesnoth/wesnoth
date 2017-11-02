@@ -224,6 +224,7 @@ static void print_trait_list(std::stringstream & ss, const std::vector<trait_dat
 	size_t i = 0;
 	ss << make_link(l[i].first, l[i].second);
 
+	// This doesn't skip traits with empty names
 	for(i++; i < l.size(); i++) {
 		ss << ", " << make_link(l[i].first,l[i].second);
 	}
