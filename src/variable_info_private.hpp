@@ -34,6 +34,7 @@ auto get_child_range(TConfig& cfg, const std::string& key, int start, int count)
 	return {res.begin() + start, res.begin() + start + count};
 }
 
+void resolve_negative_value(int size, int& val);
 void resolve_negative_value(int size, int& val)
 {
 	if(val < 0) {
@@ -52,6 +53,7 @@ const config non_empty_const_cfg("_");
  * Parses a ']' terminated string.
  * This is a important optimization of lexical_cast_default
  */
+int parse_index(const char* index_str);
 int parse_index(const char* index_str)
 {
 	char* endptr;
