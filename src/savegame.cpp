@@ -525,7 +525,7 @@ filesystem::scoped_ostream savegame::open_save_game(const std::string &label)
 	replace_space2underbar(name);
 
 	try {
-		return filesystem::scoped_ostream(filesystem::ostream_file(filesystem::get_saves_dir() + "/" + name));
+		return filesystem::ostream_file(filesystem::get_saves_dir() + "/" + name);
 	} catch(filesystem::io_exception& e) {
 		throw game::save_game_failed(e.what());
 	}
