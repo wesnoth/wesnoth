@@ -65,11 +65,13 @@ opts.AddVariables(
     PathVariable('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathVariable.PathAccept),
     BoolVariable('fribidi','Clear to disable bidirectional-language support', True),
     BoolVariable('desktop_entry','Clear to disable desktop-entry', True),
+    BoolVariable('appdata_file','Clear to not install appdata file', True),
     BoolVariable('systemd','Install systemd unit file for wesnothd', bool(WhereIs("systemd"))),
     PathVariable('datarootdir', 'sets the root of data directories to a non-default location', "share", PathVariable.PathAccept),
     PathVariable('datadirname', 'sets the name of data directory', "wesnoth$version_suffix", PathVariable.PathAccept),
     PathVariable('desktopdir', 'sets the desktop entry directory to a non-default location', "$datarootdir/applications", PathVariable.PathAccept),
     PathVariable('icondir', 'sets the icons directory to a non-default location', "$datarootdir/icons", PathVariable.PathAccept),
+    PathVariable('appdatadir', 'sets the appdata directory to a non-default location', "$datarootdir/metainfo", PathVariable.PathAccept),
     BoolVariable('internal_data', 'Set to put data in Mac OS X application fork', False),
     PathVariable('localedirname', 'sets the locale data directory to a non-default location', "translations", PathVariable.PathAccept),
     PathVariable('mandir', 'sets the man pages directory to a non-default location', "$datarootdir/man", PathVariable.PathAccept),
@@ -576,7 +578,7 @@ for env in [test_env, client_env, env]:
         env.Append(CPPDEFINES = "_X11")
 
 # Simulate autools-like behavior of prefix on various paths
-    installdirs = Split("bindir datadir fifodir icondir desktopdir mandir docdir python_site_packages_dir")
+    installdirs = Split("bindir datadir fifodir icondir desktopdir appdatadir mandir docdir python_site_packages_dir")
     for d in installdirs:
         env[d] = os.path.join(env["prefix"], env[d])
 
@@ -691,6 +693,8 @@ InstallManpages(env, "wesnoth")
 if have_client_prereqs and have_X and env["desktop_entry"]:
      env.InstallData("icondir", "wesnoth", "packaging/icons")
      env.InstallData("desktopdir", "wesnoth", "packaging/wesnoth.desktop")
+if have_client_prereqs and "linux" in sys.platform and env["appdata_file"]:
+     env.InstallData("appdatadir", "wesnoth", "packaging/wesnoth.appdata.xml")
 
 # Python tools
 env.InstallData("bindir", "pytools", [os.path.join("data", "tools", tool) for tool in pythontools])
