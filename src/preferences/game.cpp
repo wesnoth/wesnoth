@@ -242,10 +242,10 @@ std::map<std::string, std::string> get_acquaintances_nice(const std::string& fil
 	return ac_nice;
 }
 
-preferences::acquaintance* add_acquaintance(const std::string& nick, const std::string& mode, const std::string& notes)
+std::pair<preferences::acquaintance*, bool> add_acquaintance(const std::string& nick, const std::string& mode, const std::string& notes)
 {
 	if(!utils::isvalid_wildcard(nick)) {
-		return nullptr;
+		return std::make_pair(nullptr, false);
 	}
 
 	preferences::acquaintance new_entry(nick, mode, notes);
@@ -261,7 +261,7 @@ preferences::acquaintance* add_acquaintance(const std::string& nick, const std::
 
 	save_acquaintances();
 
-	return &iter->second;
+	return std::make_pair(&iter->second, success);
 }
 
 bool remove_acquaintance(const std::string& nick) {

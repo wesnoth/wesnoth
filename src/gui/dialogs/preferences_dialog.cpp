@@ -216,7 +216,11 @@ void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& t
 		username = username.substr(0, pos);
 	}
 
-	acquaintance* entry = add_acquaintance(username, (is_friend ? "friend": "ignore"), reason);
+	acquaintance* entry = nullptr;
+	bool added_new;
+
+	std::tie(entry, added_new) = add_acquaintance(username, (is_friend ? "friend": "ignore"), reason);
+
 	if(!entry) {
 		gui2::show_transient_message(window.video(), _("Error"), _("Invalid username"), "", false, false, true);
 		return;
@@ -225,7 +229,27 @@ void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& t
 	textbox.clear();
 
 	listbox& list = find_widget<listbox>(&window, "friends_list", false);
-	list.add_row(get_friends_list_row_data(*entry));
+
+	//
+	// If this is a new entry, just add a new row. If it's not, we find the relevant
+	// row, remove it, and add a new row with the updated data. Should probably come
+	// up with a more elegant way to do this... the only reason I'm using the remove
+	// -and-replace method is to prevent any issues with the widgets' layout sizes.
+	//
+	if(added_new) {
+		list.add_row(get_friends_list_row_data(*entry));
+	} else {
+		for(unsigned i = 0; i < list.get_item_count(); ++i) {
+			grid* row_grid = list.get_row_grid(i);
+
+			if(find_widget<label>(row_grid, "friend_name", false).get_label() == entry->get_nick()) {
+				list.remove_row(i);
+				list.add_row(get_friends_list_row_data(*entry), i);
+
+				break;
+			}
+		}
+	}
 
 	update_friends_list_controls(window, list);
 }
