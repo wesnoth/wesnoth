@@ -171,6 +171,7 @@ private:
 	/** Fires a draw event. */
 	using events::sdl_handler::draw;
 	void draw();
+	void draw_everything();
 
 	/**
 	 * Fires a video resize event.
@@ -381,8 +382,9 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		case DRAW_EVENT:
 			draw();
 			break;
+
 		case DRAW_ALL_EVENT:
-			draw();
+			draw_everything();
 			break;
 
 		case TIMER_EVENT:
@@ -538,6 +540,15 @@ void sdl_event_handler::draw()
 
 		video.flip();
 	}
+}
+
+void sdl_event_handler::draw_everything()
+{
+	for(auto dispatcher : dispatchers_) {
+		dynamic_cast<widget&>(*dispatcher).set_is_dirty(true);
+	}
+
+	draw();
 }
 
 void sdl_event_handler::video_resize(const point& new_size)
