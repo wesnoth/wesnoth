@@ -33,6 +33,7 @@
 #include "gui/widgets/viewport.hpp"
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/window.hpp"
+#include "sdl/rect.hpp"
 #include "utils/functional.hpp"
 
 #include <boost/optional.hpp>
@@ -301,11 +302,19 @@ void listbox::list_item_clicked(widget& caller)
 #endif
 
 			fire(event::NOTIFY_MODIFIED, *this, nullptr);
-			return;
+			break;
 		}
 	}
 
-	assert(false);
+	const SDL_Rect& visible = content_visible_area();
+	SDL_Rect rect = generator_->item(generator_->get_selected_item()).get_rectangle();
+
+	if(sdl::rects_overlap(visible, rect)) {
+		rect.x = visible.x;
+		rect.w = visible.w;
+
+		show_content_rect(rect);
+	}
 }
 
 void listbox::set_self_active(const bool /*active*/)
