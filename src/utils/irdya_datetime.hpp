@@ -56,8 +56,11 @@ public:
 private:
 	EPOCH epoch;
 
+	unsigned int year = 0;
+
 	// TODO: Decide how many months and days there are!
-	unsigned int year = 0, month = 0, day = 0;
+	//unsigned int month = 0;
+	//unsigned int day = 0;
 };
 
 bool operator<(const irdya_date& a, const irdya_date& b);
