@@ -39,11 +39,7 @@ editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key,
 	init_mouse_actions(c_manager);
 }
 
-editor_toolkit::~editor_toolkit()
-{
-	//TODO ask someone about that
-	//delete palette_manager_.get();
-}
+editor_toolkit::~editor_toolkit() = default;
 
 void editor_toolkit::init_brushes(const config& game_config)
 {
