@@ -104,7 +104,9 @@ void player_list::init(window& w)
 {
 	active_game.init(w, _("Selected Game"));
 	other_games.init(w, _("Other Games"));
+#ifdef ENABLE_ROOM_MEMBER_TREE
 	active_room.init(w, _("Current Room"));
+#endif
 	other_rooms.init(w, _("Lobby"), true);
 
 	sort_by_name = find_widget<toggle_button>(&w, "player_list_sort_name", false, true);
@@ -586,12 +588,16 @@ void mp_lobby::update_playerlist()
 	}
 
 	assert(player_list_.active_game.tree);
+#ifdef ENABLE_ROOM_MEMBER_TREE
 	assert(player_list_.active_room.tree);
+#endif
 	assert(player_list_.other_games.tree);
 	assert(player_list_.other_rooms.tree);
 
 	player_list_.active_game.tree->clear();
+#ifdef ENABLE_ROOM_MEMBER_TREE
 	player_list_.active_room.tree->clear();
+#endif
 	player_list_.other_games.tree->clear();
 	player_list_.other_rooms.tree->clear();
 
@@ -604,6 +610,7 @@ void mp_lobby::update_playerlist()
 		std::stringstream icon_ss;
 		icon_ss << "lobby/status";
 		switch(user.state) {
+#ifdef ENABLE_ROOM_MEMBER_TREE
 			case mp::user_info::SEL_ROOM:
 				icon_ss << "-lobby";
 				target_list = &player_list_.active_room;
@@ -611,6 +618,7 @@ void mp_lobby::update_playerlist()
 					target_list = &player_list_.other_rooms;
 				}
 				break;
+#endif
 			case mp::user_info::LOBBY:
 				icon_ss << "-lobby";
 				target_list = &player_list_.other_rooms;
@@ -679,7 +687,9 @@ void mp_lobby::update_playerlist()
 	}
 
 	player_list_.active_game.update_player_count_label();
+#ifdef ENABLE_ROOM_MEMBER_TREE
 	player_list_.active_room.update_player_count_label();
+#endif
 	player_list_.other_rooms.update_player_count_label();
 	player_list_.other_games.update_player_count_label();
 
