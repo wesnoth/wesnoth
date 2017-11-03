@@ -580,12 +580,14 @@ void mp_lobby::update_playerlist()
 	lobby_info_.sort_users(player_list_.sort_by_name->get_value_bool(),
 						   player_list_.sort_by_relation->get_value_bool());
 
+#ifdef ENABLE_ROOM_MEMBER_TREE
 	bool lobby = false;
 	if(mp::room_info* ri = chatbox_->active_window_room()) {
 		if(ri->name() == "lobby") {
 			lobby = true;
 		}
 	}
+#endif
 
 	assert(player_list_.active_game.tree);
 #ifdef ENABLE_ROOM_MEMBER_TREE
