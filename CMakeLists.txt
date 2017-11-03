@@ -147,6 +147,10 @@ if(UNIX AND NOT APPLE AND NOT CYGWIN)
 	option(ENABLE_DESKTOP_ENTRY "enable installation of desktop entry files" ON)
 endif(UNIX AND NOT APPLE AND NOT CYGWIN)
 
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+	option(ENABLE_APPDATA_FILE "enable installation of an appdata file for appstream" ON)
+endif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+
 option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" OFF)
 option(ENABLE_PEDANTIC_COMPILATION "Sets the pedantic compilation mode" OFF)
 option(ENABLE_DEBUG_WINDOW_LAYOUT "Add the debug option to allow the generation of debug layout files in dot format" OFF)
@@ -555,6 +559,9 @@ if(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 	install(DIRECTORY packaging/icons/hicolor DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons )
 endif(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 
+if(ENABLE_APPDATA_FILE AND ENABLE_GAME)
+	install(FILES packaging/wesnoth.appdata.xml DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo )
+endif(ENABLE_APPDATA_FILE AND ENABLE_GAME)
 
 if(ENABLE_SERVER AND FIFO_DIR)
 	install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory \$ENV{DESTDIR}/${FIFO_DIR})")
