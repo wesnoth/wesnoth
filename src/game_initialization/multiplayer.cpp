@@ -262,7 +262,7 @@ static wesnothd_connection_ptr open_connection(CVideo& video, const std::string&
 					error_message = vgettext("The nickname ‘$nick’ is already taken.", i18n_symbols);
 				} else if((*error)["error_code"] == MP_INVALID_CHARS_IN_NAME_ERROR) {
 					error_message = vgettext("The nickname ‘$nick’ contains invalid "
-							"characters. Only alpha-numeric characters, underscores and "
+							"characters. Only alpha-numeric characters (one at minimum), underscores and "
 							"hyphens are allowed.", i18n_symbols);
 				} else if((*error)["error_code"] == MP_NAME_TOO_LONG_ERROR) {
 					error_message = vgettext("The nickname ‘$nick’ is too long. Nicks must "
