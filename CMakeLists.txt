@@ -11,10 +11,6 @@ cmake_minimum_required(VERSION 2.6.0)
 
 include(CheckCXXCompilerFlag)
 
-if(COMMAND cmake_policy)
-	cmake_policy(SET CMP0005 OLD)
-endif(COMMAND cmake_policy)
-
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
 # use our own version of FindBoost.cmake and other Find* scripts
@@ -485,14 +481,14 @@ endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 set(DATADIR ${DATAROOTDIR}/${DATADIRNAME})
 
 if(NOT WIN32)
-	add_definitions(-DWESNOTH_PATH=\\\"${DATADIR}\\\")
+	add_definitions(-DWESNOTH_PATH="${DATADIR}")
 endif(NOT WIN32)
 
 if(X11_FOUND)
 	add_definitions(-D_X11)
 endif(X11_FOUND)
 
-add_definitions(-DLOCALEDIR=\\\"${LOCALEDIR}\\\")
+add_definitions(-DLOCALEDIR="${LOCALEDIR}")
 
 # -NDEBUG is automatically added to all release build types, so manually remove
 # this define from the related variables
@@ -677,15 +673,15 @@ else(LOCALEDIR MATCHES "^/")
 	set(LOCALE_INSTALL ${DATADIR}/${LOCALEDIR})
 endif(LOCALEDIR MATCHES "^/")
 
-add_definitions(-DFIFODIR=\\\"${FIFO_DIR}\\\")
+add_definitions(-DFIFODIR="${FIFO_DIR}")
 
 if(PREFERENCES_DIR)
-	add_definitions(-DPREFERENCES_DIR=\\\"${PREFERENCES_DIR}\\\")
+	add_definitions(-DPREFERENCES_DIR="${PREFERENCES_DIR"})
 endif(PREFERENCES_DIR)
 
 
 if(DEFAULT_PREFS_FILE)
-	add_definitions(-DDEFAULT_PREFS_PATH=\\\"${DEFAULT_PREFS_FILE}\\\")
+	add_definitions(-DDEFAULT_PREFS_PATH="${DEFAULT_PREFS_FILE"})
 
 	if(NOT DEFAULT_PREFS_FILE MATCHES "^/")
 		add_definitions(-DHAS_RELATIVE_DEFPREF)
