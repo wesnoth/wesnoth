@@ -16,7 +16,7 @@ from os import access, F_OK
 
 # Warn user of current set of build options.
 AddOption('--option-cache', dest='option_cache', nargs=1, type = 'string', action = 'store', metavar = 'FILE', help='file with cached construction variables', default = '.scons-option-cache')
-if os.path.exists(GetOption("option_cache")):
+if GetOption("option_cache") != "" and os.path.exists(GetOption("option_cache")):
     optfile = open(GetOption("option_cache"))
     print("Saved options: {}".format(optfile.read().replace("\n", ", ")[:-2]))
     optfile.close()
@@ -134,7 +134,8 @@ if env["lockfile"]:
     import atexit
     atexit.register(os.remove, lockfile)
 
-opts.Save(GetOption("option_cache"), env)
+if GetOption("option_cache") != "":
+    opts.Save(GetOption("option_cache"), env)
 env.SConsignFile("$build_dir/sconsign.dblite")
 
 # If OS_ENV was enabled, copy the entire OS environment.
