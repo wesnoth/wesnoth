@@ -1622,22 +1622,28 @@ surface blur_alpha_surface(const surface &surf, int depth)
 		Average() : alpha(), red(), green(), blue()
 		{}
 		Average& operator+=(const Pixel& pix){
-			red   += pix.red;
-			green += pix.green;
-			blue  += pix.blue;
+			red   += pix.alpha * pix.red;
+			green += pix.alpha * pix.green;
+			blue  += pix.alpha * pix.blue;
 			alpha += pix.alpha;
 			return *this;
 		}
 		Average& operator-=(const Pixel& pix){
-			red   -= pix.red;
-			green -= pix.green;
-			blue  -= pix.blue;
+			red   -= pix.alpha * pix.red;
+			green -= pix.alpha * pix.green;
+			blue  -= pix.alpha * pix.blue;
 			alpha -= pix.alpha;
 			return *this;
 		}
 		Uint32 operator()(unsigned num){
 			const Uint32 ff = 0xff;
-			return (std::min(alpha/num,ff) << 24) | (std::min(red/num,ff) << 16) | (std::min(green/num,ff) << 8) | std::min(blue/num,ff);
+			if(!alpha){
+				return 0;
+			}
+			return (std::min(alpha/num,ff) << 24)
+			    | (std::min(red/alpha,ff) << 16)
+			    | (std::min(green/alpha,ff) << 8)
+			    | std::min(blue/alpha,ff);
 		}
 	};
 
