@@ -6,6 +6,9 @@ Version 1.13.10+dev:
      * Added a full set of hints on easy difficulty.
  * Language and i18n:
    * Updated translations: Chinese (Simplified)
+ * Lua API:
+   * New wesnoth.unit_types[].advances_to getter.
+   * New wesnoth.unit_types[].advances_from getter.
  * Performance:
    * GUI2 windows no longer redraw everything 50 times per second. This reduces
      CPU usage in fullscreen windows such as MP lobby by about 85 %.
