@@ -1609,8 +1609,12 @@ surface blur_alpha_surface(const surface &surf, int depth)
 
 	surface_lock lock(res);
 	int x, y;
+	// Iterate over rows, blurring each row horizontally
 	for(y = 0; y < res->h; ++y) {
+		// Sum of pixel values stored here
 		Uint32 alpha=0, red = 0, green = 0, blue = 0;
+
+		// Preload the first depth+1 pixels
 		Uint32* p = lock.pixels() + y*res->w;
 		for(x = 0; x <= depth && x < res->w; ++x, ++p) {
 			alpha += ((*p) >> 24)&0xFF;
@@ -1621,10 +1625,14 @@ surface blur_alpha_surface(const surface &surf, int depth)
 			queue.push_back(*p);
 		}
 
+		// This is the actual inner loop
 		p = lock.pixels() + y*res->w;
 		for(x = 0; x < res->w; ++x, ++p) {
+			// Write the current average
 			const Uint32 num = queue.size();
 			*p = (std::min(alpha/num,ff) << 24) | (std::min(red/num,ff) << 16) | (std::min(green/num,ff) << 8) | std::min(blue/num,ff);
+
+			// Unload earlier pixels that are now too far away
 			if(x >= depth) {
 				{
 					const auto &front = queue.front();
@@ -1637,6 +1645,7 @@ surface blur_alpha_surface(const surface &surf, int depth)
 				queue.pop_front();
 			}
 
+			// Add new pixels
 			if(x + depth+1 < res->w) {
 				Uint32* q = p + depth+1;
 				alpha += ((*q) >> 24)&0xFF;
@@ -1651,8 +1660,12 @@ surface blur_alpha_surface(const surface &surf, int depth)
 		queue.clear();
 	}
 
+	// Iterate over columns, blurring each column vertically
 	for(x = 0; x < res->w; ++x) {
+		// Sum of pixel values stored here
 		Uint32 alpha=0, red = 0, green = 0, blue = 0;
+
+		// Preload the first depth+1 pixels
 		Uint32* p = lock.pixels() + x;
 		for(y = 0; y <= depth && y < res->h; ++y, p += res->w) {
 			alpha += ((*p) >> 24)&0xFF;
@@ -1663,10 +1676,14 @@ surface blur_alpha_surface(const surface &surf, int depth)
 			queue.push_back(*p);
 		}
 
+		// This is the actual inner loop
 		p = lock.pixels() + x;
 		for(y = 0; y < res->h; ++y, p += res->w) {
+			// Write the current average
 			const Uint32 num = queue.size();
 			*p = (std::min(alpha/num,ff) << 24) | (std::min(red/num,ff) << 16) | (std::min(green/num,ff) << 8) | std::min(blue/num,ff);
+
+			// Unload earlier pixels that are now too far away
 			if(y >= depth) {
 				{
 					const auto &front = queue.front();
@@ -1679,6 +1696,7 @@ surface blur_alpha_surface(const surface &surf, int depth)
 				queue.pop_front();
 			}
 
+			// Add new pixels
 			if(y + depth+1 < res->h) {
 				Uint32* q = p + (depth+1)*res->w;
 				alpha += ((*q) >> 24)&0xFF;
