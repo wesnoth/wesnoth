@@ -57,7 +57,7 @@ public:
 	explicit chatbox(const implementation::builder_chatbox& builder);
 
 	/** See @ref styled_widget::set_active. */
-	virtual void set_active(const bool active) override
+	virtual void set_active(const bool /*active*/) override
 	{
 		/* DO NOTHING */
 	}
