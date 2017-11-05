@@ -212,7 +212,13 @@ surface submerge_alpha(const surface &surf, int depth, float alpha_base, float a
 */
 surface light_surface(const surface &surf, const surface &lightmap);
 
-/** Cross-fades a surface. */
+/**
+ * Cross-fades a surface.
+ *
+ * @param surf                    The source surface.
+ * @param depth                   The depth of the blurring.
+ * @return                        A new, blurred, neutral surface.
+ */
 surface blur_surface(const surface &surf, int depth = 1);
 
 /**
@@ -227,8 +233,9 @@ void blur_surface(surface& surf, SDL_Rect rect, int depth = 1);
 /**
  * Cross-fades a surface with alpha channel.
  *
- * @todo FIXME: This is just an adapted copy-paste
- * of the normal blur but with blur alpha channel too
+ * @param surf                    The source surface.
+ * @param depth                   The depth of the blurring.
+ * @return                        A new, blurred, neutral surface.
  */
 surface blur_alpha_surface(const surface &surf, int depth = 1);
 
