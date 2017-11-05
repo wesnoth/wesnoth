@@ -57,6 +57,8 @@ static int impl_unit_type_get(lua_State *L)
 	return_int_attrib("cost", ut.cost());
 	return_int_attrib("level", ut.level());
 	return_int_attrib("recall_cost", ut.recall_cost());
+	return_vector_string_attrib("advances_to", ut.advances_to());
+	return_vector_string_attrib("advances_from", ut.advances_from());
 	return_cfgref_attrib("__cfg", ut.get_cfg());
 	if (strcmp(m, "traits") == 0) {
 		lua_newtable(L);
