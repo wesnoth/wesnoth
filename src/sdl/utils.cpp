@@ -1610,21 +1610,21 @@ surface blur_alpha_surface(const surface &surf, int depth)
 	surface_lock lock(res);
 	int x, y;
 	for(y = 0; y < res->h; ++y) {
-		Uint32 alpha=0, red = 0, green = 0, blue = 0, avg = 0;
+		Uint32 alpha=0, red = 0, green = 0, blue = 0;
 		Uint32* p = lock.pixels() + y*res->w;
 		for(x = 0; x <= depth && x < res->w; ++x, ++p) {
 			alpha += ((*p) >> 24)&0xFF;
 			red += ((*p) >> 16)&0xFF;
 			green += ((*p) >> 8)&0xFF;
 			blue += (*p)&0xFF;
-			++avg;
 			assert(!queue.full());
 			queue.push_back(*p);
 		}
 
 		p = lock.pixels() + y*res->w;
 		for(x = 0; x < res->w; ++x, ++p) {
-			*p = (std::min(alpha/avg,ff) << 24) | (std::min(red/avg,ff) << 16) | (std::min(green/avg,ff) << 8) | std::min(blue/avg,ff);
+			const Uint32 num = queue.size();
+			*p = (std::min(alpha/num,ff) << 24) | (std::min(red/num,ff) << 16) | (std::min(green/num,ff) << 8) | std::min(blue/num,ff);
 			if(x >= depth) {
 				{
 					const auto &front = queue.front();
@@ -1633,7 +1633,6 @@ surface blur_alpha_surface(const surface &surf, int depth)
 					green -= (front >> 8)&0xFF;
 					blue -= front&0xFF;
 				}
-				--avg;
 				assert(!queue.empty());
 				queue.pop_front();
 			}
@@ -1644,7 +1643,6 @@ surface blur_alpha_surface(const surface &surf, int depth)
 				red += ((*q) >> 16)&0xFF;
 				green += ((*q) >> 8)&0xFF;
 				blue += (*q)&0xFF;
-				++avg;
 				assert(!queue.full());
 				queue.push_back(*q);
 			}
@@ -1654,21 +1652,21 @@ surface blur_alpha_surface(const surface &surf, int depth)
 	}
 
 	for(x = 0; x < res->w; ++x) {
-		Uint32 alpha=0, red = 0, green = 0, blue = 0, avg = 0;
+		Uint32 alpha=0, red = 0, green = 0, blue = 0;
 		Uint32* p = lock.pixels() + x;
 		for(y = 0; y <= depth && y < res->h; ++y, p += res->w) {
 			alpha += ((*p) >> 24)&0xFF;
 			red += ((*p) >> 16)&0xFF;
 			green += ((*p) >> 8)&0xFF;
 			blue += *p&0xFF;
-			++avg;
 			assert(!queue.full());
 			queue.push_back(*p);
 		}
 
 		p = lock.pixels() + x;
 		for(y = 0; y < res->h; ++y, p += res->w) {
-			*p = (std::min(alpha/avg,ff) << 24) | (std::min(red/avg,ff) << 16) | (std::min(green/avg,ff) << 8) | std::min(blue/avg,ff);
+			const Uint32 num = queue.size();
+			*p = (std::min(alpha/num,ff) << 24) | (std::min(red/num,ff) << 16) | (std::min(green/num,ff) << 8) | std::min(blue/num,ff);
 			if(y >= depth) {
 				{
 					const auto &front = queue.front();
@@ -1677,7 +1675,6 @@ surface blur_alpha_surface(const surface &surf, int depth)
 					green -= (front >> 8)&0xFF;
 					blue -= front&0xFF;
 				}
-				--avg;
 				assert(!queue.empty());
 				queue.pop_front();
 			}
@@ -1688,7 +1685,6 @@ surface blur_alpha_surface(const surface &surf, int depth)
 				red += ((*q) >> 16)&0xFF;
 				green += ((*q) >> 8)&0xFF;
 				blue += (*q)&0xFF;
-				++avg;
 				assert(!queue.full());
 				queue.push_back(*q);
 			}
