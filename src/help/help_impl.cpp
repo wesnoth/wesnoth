@@ -697,11 +697,19 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 	for (std::map<t_string, const config>::iterator a = trait_list.begin(); a != trait_list.end(); ++a) {
 		std::string id = "traits_" + a->first;
 		const config trait = a->second;
+
+		std::string name = trait["male_name"].str();
+		if (name.empty()) name = trait["female_name"].str();
+		if (name.empty()) name = trait["name"].str();
+		if (name.empty()) continue; // Hidden trait
+
 		std::stringstream text;
-		if (trait["help_text"].empty()) {
+		if (!trait["help_text"].empty()) {
+			text << trait["help_text"];
+		} else if (!trait["description"].empty()) {
 			text << trait["description"];
 		} else {
-			text << trait["help_text"];
+			text << _("No description available.");
 		}
 		text << "\n\n";
 		if (trait["availability"] == "musthave") {
@@ -709,10 +717,6 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 		} else if (trait["availability"] == "none") {
 			text << _("Availability: ") << _("Unavailable") << "\n";
 		}
-		std::string name = trait["male_name"].str();
-		if (name.empty()) name = trait["female_name"].str();
-		if (name.empty()) name = trait["name"].str();
-
 		topics.emplace_back(name, id, text.str());
 	}
 
