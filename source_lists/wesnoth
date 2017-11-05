@@ -202,17 +202,15 @@ gui/dialogs/hotkey_bind.cpp
 gui/dialogs/label_settings.cpp
 gui/dialogs/language_selection.cpp
 gui/dialogs/loading_screen.cpp
-gui/dialogs/lobby/lobby.cpp
-gui/dialogs/lobby/player_info.cpp
 gui/dialogs/log_settings.cpp
 gui/dialogs/lua_interpreter.cpp
 gui/dialogs/message.cpp
 gui/dialogs/modal_dialog.cpp
 gui/dialogs/modeless_dialog.cpp
 gui/dialogs/multiplayer/faction_select.cpp
+gui/dialogs/multiplayer/lobby.cpp
 gui/dialogs/multiplayer/mp_alerts_options.cpp
 gui/dialogs/multiplayer/mp_change_control.cpp
-gui/dialogs/multiplayer/mp_cmd_wrapper.cpp
 gui/dialogs/multiplayer/mp_connect.cpp
 gui/dialogs/multiplayer/mp_create_game.cpp
 gui/dialogs/multiplayer/mp_host_game_prompt.cpp
@@ -222,6 +220,7 @@ gui/dialogs/multiplayer/mp_login.cpp
 gui/dialogs/multiplayer/mp_method_selection.cpp
 gui/dialogs/multiplayer/mp_options_helper.cpp
 gui/dialogs/multiplayer/mp_staging.cpp
+gui/dialogs/multiplayer/player_info.cpp
 gui/dialogs/multiplayer/synced_choice_wait.cpp
 gui/dialogs/network_transmission.cpp
 gui/dialogs/outro.cpp
@@ -276,6 +275,7 @@ gui/widgets/scrollbar_panel.cpp
 gui/widgets/settings.cpp
 gui/widgets/size_lock.cpp
 gui/widgets/slider.cpp
+gui/widgets/slider_base.cpp
 gui/widgets/spacer.cpp
 gui/widgets/stacked_widget.cpp
 gui/widgets/styled_widget.cpp
@@ -322,7 +322,6 @@ preferences/display.cpp
 preferences/editor.cpp
 preferences/game.cpp
 preferences/lobby.cpp
-random.cpp
 random_deterministic.cpp
 random_synced.cpp
 recall_list_manager.cpp

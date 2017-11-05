@@ -31,6 +31,8 @@
 #include "filesystem.hpp"
 #include "config.hpp"
 
+#include <boost/algorithm/string/replace.hpp>
+
 static lg::log_domain log_engine("engine");
 #define LOG_SAVE LOG_STREAM(info, log_engine)
 #define ERR_SAVE LOG_STREAM(err, log_engine)
@@ -116,6 +118,7 @@ save_index_class::save_index_class()
 config& save_index_class::data(const std::string& name) {
 	config& cfg = data();
 	if (config& sv = cfg.find_child("save", "save", name)) {
+		fix_leader_image_path(sv);
 		return sv;
 	}
 		config& res = cfg.add_child("save");
@@ -142,6 +145,14 @@ config& save_index_class::data() {
 		loaded_ = true;
 	}
 	return data_;
+}
+
+void save_index_class::fix_leader_image_path(config& data) {
+	for(config& leader : data.child_range("leader")) {
+		std::string leader_image = leader["leader_image"];
+		boost::algorithm::replace_all(leader_image, "\\", "/");
+		leader["leader_image"] = leader_image;
+	}
 }
 
 save_index_class save_index_manager;
@@ -396,12 +407,14 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 					continue;
 				}
 
+				const std::string tc_color = team::get_side_color_id_from_config(u);
+				
 				// Don't count it among the troops
 				units--;
 				leader = u["id"].str();
 				leader_name = u["name"].str();
 				leader_image = u["image"].str();
-				leader_image_tc_modifier = "~RC(" + u["flag_rgb"].str() + ">" + u["side"].str() + ")";
+				leader_image_tc_modifier = "~RC(" + u["flag_rgb"].str() + ">" + tc_color + ")";
 			}
 
 			// We need a binary path-independent path to the leader image here so it can be displayed

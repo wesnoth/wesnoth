@@ -89,7 +89,7 @@ protected:
 
 	std::map<std::string, string_map> make_game_row_data(const mp::game_info& game);
 
-	void adjust_game_row_contents(const mp::game_info& game, int idx, grid* grid, bool add_callbacks = true);
+	void adjust_game_row_contents(const mp::game_info& game, grid* grid, bool add_callbacks = true);
 
 public:
 	void update_playerlist();
@@ -118,23 +118,35 @@ private:
 
 	void process_gamelist_diff(const config& data);
 
-	void join_global_button_callback(window& window);
-
-	void observe_global_button_callback(window& window);
-
-	void join_or_observe(int index);
+	enum JOIN_MODE { DO_JOIN, DO_OBSERVE, DO_EITHER };
 
 	/**
-	 * Assemble and send a game join request. Ask for password if the game
-	 * requires one.
-	 * @return true iff the request was actually sent, false if not for some
-	 *         reason like user canceled the password dialog or idx was invalid.
+	 * Exits the lobby and enters the given game.
+	 *
+	 * This assembles the game request for the server and handles any applicable
+	 * pre-join actions, such as prompting the player for the game's password or
+	 * informing them additonal content needs installing.
+	 *
+	 * The lobby window will be closed on completion, assuming an error wasn't
+	 * encountered.
+	 *
+	 * @param game            Info on the game we're attempting to join.
+	 * @param mode            Whether joining as player, observer or whichever works.
 	 */
-	bool do_game_join(int idx, bool observe);
+	void enter_game(const mp::game_info& game, JOIN_MODE mode);
+
+	/** Entry wrapper for @ref enter_game, where game is located by index. */
+	void enter_game_by_index(const int index, JOIN_MODE mode);
+
+	/** Entry wrapper for @ref enter_game, where game is located by game id. */
+	void enter_game_by_id(const int game_id, JOIN_MODE mode);
+
+	/** Enter game by index, where index is the selected game listbox row. */
+	void enter_selected_game(JOIN_MODE mode);
 
 	void show_preferences_button_callback(window& window);
 
-	void refresh_button_callback(window& window);
+	void refresh_lobby();
 
 	void game_filter_reload();
 
@@ -142,7 +154,7 @@ private:
 
 	void game_filter_keypress_callback(const SDL_Keycode key);
 
-	void gamelist_change_callback(window& window);
+	void gamelist_change_callback();
 
 	void player_filter_callback();
 
@@ -153,8 +165,6 @@ private:
 	bool exit_hook(window& window);
 
 	static bool logout_prompt();
-
-	int get_game_index_from_id(const int game_id) const;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
@@ -198,7 +208,7 @@ private:
 
 	bool gamelist_diff_update_;
 
-	wesnothd_connection &wesnothd_connection_;
+	wesnothd_connection &network_connection_;
 
 	/** Timer for updating the lobby. */
 	size_t lobby_update_timer_;

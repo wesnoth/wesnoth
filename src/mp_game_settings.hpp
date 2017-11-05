@@ -36,7 +36,7 @@ struct mp_game_settings
 	std::string password;
 	std::string hash;
 	std::string mp_era;
-	std::string mp_era_addon_id;
+	std::string mp_era_name;
 	std::string mp_scenario;
 	std::string mp_scenario_name;
 	std::string mp_campaign;

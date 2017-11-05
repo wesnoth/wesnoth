@@ -320,8 +320,7 @@ public:
 		model_.previous_page->set_active(has_previous);
 		model_.next_page->set_active(has_next);
 		model_.populate_chat_message_list(first, last);
-		model_.page_number->set_minimum_value(1);
-		model_.page_number->set_maximum_value(count_of_pages);
+		model_.page_number->set_value_range(1, count_of_pages);
 		model_.page_number->set_active(count_of_pages > 1);
 		LOG_CHAT_LOG << "Maximum value of page number slider: "
 					 << count_of_pages << std::endl;

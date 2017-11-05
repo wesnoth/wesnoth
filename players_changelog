@@ -2,7 +2,17 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog
 
-Version 1.13.11:
+Version 1.13.10+dev:
+ * Campaigns:
+   * A Tale of Two Brothers:
+     * Add a full set of hints on easy difficulty.
+ * Language and i18n:
+   * Updated translations: Chinese (Simplified).
+ * Performance:
+   * GUI2 windows no longer redraw everything 50 times per second. This reduces
+     CPU usage in fullscreen windows such as MP lobby by about 85 %.
+ * Miscellaneous and bug fixes:
+   * Fixed ingame help showing units you haven't encountered (bug #2135)
 
 
 Version 1.13.10:

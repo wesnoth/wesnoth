@@ -13,12 +13,12 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/lobby/lobby.hpp"
+#include "gui/dialogs/multiplayer/lobby.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/dialogs/lobby/player_info.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
+#include "gui/dialogs/multiplayer/player_info.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/helper.hpp"
 
@@ -104,7 +104,9 @@ void player_list::init(window& w)
 {
 	active_game.init(w, _("Selected Game"));
 	other_games.init(w, _("Other Games"));
+#ifdef ENABLE_ROOM_MEMBER_TREE
 	active_room.init(w, _("Current Room"));
+#endif
 	other_rooms.init(w, _("Lobby"), true);
 
 	sort_by_name = find_widget<toggle_button>(&w, "player_list_sort_name", false, true);
@@ -138,10 +140,10 @@ mp_lobby::mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_con
 	, selected_game_id_()
 	, player_list_()
 	, player_list_dirty_(false)
-	, gamelist_dirty_(false)
+	, gamelist_dirty_(true)
 	, last_gamelist_update_(0)
 	, gamelist_diff_update_(true)
-	, wesnothd_connection_(connection)
+	, network_connection_(connection)
 	, lobby_update_timer_(0)
 	, gamelist_id_at_row_()
 	, delay_playerlist_update_(false)
@@ -193,24 +195,6 @@ void mp_lobby::post_build(window& win)
 
 namespace
 {
-
-void add_label_data(std::map<std::string, string_map>& map,
-					const std::string& key,
-					const std::string& label)
-{
-	string_map item;
-	item["label"] = label;
-	item["use_markup"] = "true";
-	map.emplace(key, item);
-}
-
-void add_tooltip_data(std::map<std::string, string_map>& map,
-					  const std::string& key,
-					  const std::string& label)
-{
-	map[key]["tooltip"] = label;
-}
-
 void modify_grid_with_data(grid* grid, const std::map<std::string, string_map>& map)
 {
 	for(const auto& v : map) {
@@ -237,16 +221,61 @@ void modify_grid_with_data(grid* grid, const std::map<std::string, string_map>& 
 	}
 }
 
-void set_visible_if_exists(grid* grid, const std::string& id, bool visible)
-{
-	if(widget* w = grid->find(id, false)) {
-		w->set_visible(visible ? widget::visibility::visible : widget::visibility::invisible);
-	}
-}
-
 std::string colorize(const std::string& str, const std::string& color)
 {
+	if(color.empty()) {
+		return str;
+	}
+
 	return (formatter() << "<span color=\"" << color << "\">" << str << "</span>").str();
+}
+
+bool handle_addon_requirements_gui(CVideo& v, const std::vector<mp::game_info::required_addon>& reqs, mp::game_info::ADDON_REQ addon_outcome)
+{
+	if(addon_outcome == mp::game_info::CANNOT_SATISFY) {
+		std::string e_title = _("Incompatible User-made Content.");
+		std::string err_msg = _("This game cannot be joined because the host has out-of-date add-ons that are incompatible with your version. You might wish to suggest that the host's add-ons be updated.");
+
+		err_msg +="\n\n";
+		err_msg += _("Details:");
+		err_msg += "\n";
+
+		for(const mp::game_info::required_addon & a : reqs) {
+			if (a.outcome == mp::game_info::CANNOT_SATISFY) {
+				err_msg += font::unicode_bullet + " " + a.message + "\n";
+			}
+		}
+		gui2::show_message(v, e_title, err_msg, message::auto_close);
+
+		return false;
+	} else if(addon_outcome == mp::game_info::NEED_DOWNLOAD) {
+		std::string e_title = _("Missing User-made Content.");
+		std::string err_msg = _("This game requires one or more user-made addons to be installed or updated in order to join.\nDo you want to try to install them?");
+
+		err_msg +="\n\n";
+		err_msg += _("Details:");
+		err_msg += "\n";
+
+		std::vector<std::string> needs_download;
+		for(const mp::game_info::required_addon & a : reqs) {
+			if(a.outcome == mp::game_info::NEED_DOWNLOAD) {
+				err_msg += font::unicode_bullet + " " + a.message + "\n";
+
+				needs_download.push_back(a.addon_id);
+			}
+		}
+
+		assert(needs_download.size() > 0);
+
+		if(gui2::show_message(v, e_title, err_msg, message::yes_no_buttons, true) == gui2::window::OK) {
+			// Begin download session
+			ad_hoc_addon_fetch_session(v, needs_download);
+
+			return true;
+		}
+	}
+
+	return false;
 }
 
 } // end anonymous namespace
@@ -270,7 +299,7 @@ void mp_lobby::update_gamelist()
 		LOG_LB << "Adding game to listbox (1)" << game.id << "\n";
 		grid* grid = &gamelistbox_->add_row(make_game_row_data(game));
 
-		adjust_game_row_contents(game, gamelistbox_->get_item_count() - 1, grid);
+		adjust_game_row_contents(game, grid);
 	}
 
 	if(select_row >= 0 && select_row != gamelistbox_->get_selected_row()) {
@@ -311,14 +340,14 @@ void mp_lobby::update_gamelist_diff()
 			}
 
 			grid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
-			adjust_game_row_contents(game, gamelistbox_->get_item_count() - 1, grid);
+			adjust_game_row_contents(game, grid);
 
 			list_i++;
 			next_gamelist_id_at_row.push_back(game.id);
 		} else {
 			if(list_i >= gamelistbox_->get_item_count()) {
 				ERR_LB << "Ran out of listbox items -- triggering a full refresh\n";
-				wesnothd_connection_.send_data(config("refresh_lobby"));
+				refresh_lobby();
 				return;
 			}
 
@@ -327,7 +356,7 @@ void mp_lobby::update_gamelist_diff()
 					   << list_rows_deleted
 					   << " >= " << gamelist_id_at_row_.size()
 					   << " -- triggering a full refresh\n";
-				wesnothd_connection_.send_data(config("refresh_lobby"));
+				refresh_lobby();
 				return;
 			}
 
@@ -335,7 +364,7 @@ void mp_lobby::update_gamelist_diff()
 			if(game.id != listbox_game_id) {
 				ERR_LB << "Listbox game id does not match expected id "
 					   << listbox_game_id << " " << game.id << " (row " << list_i << ")\n";
-				wesnothd_connection_.send_data(config("refresh_lobby"));
+				refresh_lobby();
 				return;
 			}
 
@@ -343,7 +372,7 @@ void mp_lobby::update_gamelist_diff()
 				LOG_LB << "Modifying game in listbox " << game.id << " (row " << list_i << ")\n";
 				grid* grid = gamelistbox_->get_row_grid(list_i);
 				modify_grid_with_data(grid, make_game_row_data(game));
-				adjust_game_row_contents(game, list_i, grid, false);
+				adjust_game_row_contents(game, grid, false);
 				++list_i;
 				next_gamelist_id_at_row.push_back(game.id);
 			} else if(game.display_status == mp::game_info::DELETED) {
@@ -390,7 +419,7 @@ void mp_lobby::update_gamelist_header()
 {
 #ifndef GUI2_EXPERIMENTAL_LISTBOX
 	const std::string games_string = vgettext("Games: showing $num_shown out of $num_total", {
-		{"num_shown", std::to_string(lobby_info_.games_filtered().size())},
+		{"num_shown", std::to_string(lobby_info_.games_visibility().count())},
 		{"num_total", std::to_string(lobby_info_.games().size())}
 	});
 
@@ -401,106 +430,130 @@ void mp_lobby::update_gamelist_header()
 std::map<std::string, string_map> mp_lobby::make_game_row_data(const mp::game_info& game)
 {
 	std::map<std::string, string_map> data;
+	string_map item;
+
+	item["use_markup"] = "true";
 
 	std::string color_string;
 	if(game.vacant_slots > 0) {
 		color_string = (game.reloaded || game.started) ? "yellow" : "green";
-	} else {
-		color_string = game.observers ? "#ddd" : "red";
 	}
 
-	if(!game.have_era && (game.vacant_slots > 0 || game.observers)) {
-		color_string = "#444";
-	}
+	item["label"] = colorize("<i>" + game.name + "</i>", font::GRAY_COLOR.to_hex_string());
+	data.emplace("name", item);
 
-	add_label_data(data, "status", colorize(game.status, color_string));
-	add_label_data(data, "name",   colorize(game.name, color_string));
+	item["label"] = game.scenario;
+	data.emplace("scenario", item);
 
-	add_label_data(data, "era",             colorize(game.era, "#a69275"));
-	add_label_data(data, "era_short",       game.era_short);
-	add_label_data(data, "mods",            colorize(game.mod_info, "#a69275"));
-	add_label_data(data, "map_info",        game.map_info);
-	add_label_data(data, "scenario",        game.scenario);
-	add_label_data(data, "map_size_text",   game.map_size_info);
-	add_label_data(data, "time_limit",      game.time_limit);
-	add_label_data(data, "gold_text",       game.gold);
-	add_label_data(data, "xp_text",         game.xp);
-	add_label_data(data, "vision_text",     game.vision);
-	add_label_data(data, "time_limit_text", game.time_limit);
-	add_label_data(data, "status",          game.status);
+	item["label"] = colorize(game.status, color_string);
+	data.emplace("status", item);
 
-	if(game.observers) {
-		add_label_data(data, "observer_icon", "misc/eye.png");
-		add_tooltip_data(data, "observer_icon", _("Observers allowed"));
-	} else {
-		add_label_data(data, "observer_icon", "misc/no_observer.png");
-		add_tooltip_data(data, "observer_icon", _("Observers not allowed"));
-	}
-
-	std::string vision_icon;
-	if(game.fog) {
-		vision_icon = game.shroud ? "misc/vision-fog-shroud.png" : "misc/vision-fog.png";
-	} else {
-		vision_icon = game.shroud ? "misc/vision-shroud.png" : "misc/vision-none.png";
-	}
-
-	add_label_data(data, "vision_icon", vision_icon);
-	add_tooltip_data(data, "vision_icon", game.vision);
 	return data;
 }
 
-void mp_lobby::adjust_game_row_contents(const mp::game_info& game,
-										   int idx,
-										   grid* grid, bool add_callbacks)
+void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, bool add_callbacks)
 {
 	find_widget<styled_widget>(grid, "name", false).set_use_markup(true);
 	find_widget<styled_widget>(grid, "status", false).set_use_markup(true);
 
 	toggle_panel& row_panel = find_widget<toggle_panel>(grid, "panel", false);
 
-	connect_signal_mouse_left_double_click(row_panel, std::bind(&mp_lobby::join_or_observe, this, idx));
+	//
+	// Game info
+	//
+	std::ostringstream ss;
 
-	set_visible_if_exists(grid, "time_limit_icon",   !game.time_limit.empty());
-	set_visible_if_exists(grid, "vision_fog",         game.fog);
-	set_visible_if_exists(grid, "vision_shroud",      game.shroud);
-	set_visible_if_exists(grid, "vision_none",      !(game.fog || game.shroud));
-	set_visible_if_exists(grid, "observers_yes",      game.observers);
-	set_visible_if_exists(grid, "shuffle_sides_icon", game.shuffle_sides);
-	set_visible_if_exists(grid, "observers_no",      !game.observers);
-	set_visible_if_exists(grid, "needs_password",     game.password_required);
-	set_visible_if_exists(grid, "reloaded",           game.reloaded);
-	set_visible_if_exists(grid, "started",            game.started);
-	set_visible_if_exists(grid, "use_map_settings",   game.use_map_settings);
-	set_visible_if_exists(grid, "registered_only",    game.registered_users_only);
-	set_visible_if_exists(grid, "no_era",            !game.have_era);
+	ss << "<big>" << _("Era:") << "</big>\n" << game.era << "\n";
 
-	if(minimap* map = dynamic_cast<minimap*>(grid->find("minimap", false))) {
-		map->set_config(&game_config_);
-		map->set_map_data(game.map_data);
+	ss << "\n<big>" << _("Modifications:") << "</big>\n";
+
+	std::vector<std::string> mods = utils::split(game.mod_info);
+
+	if(mods.empty()) {
+		ss << _("None") << "\n";
+	} else {
+		for(const std::string& mod : mods) {
+			ss << mod << "\n";
+		}
 	}
+
+	// TODO: move to some general are of the code.
+	const auto yes_or_no = [](bool val) { return val ? _("yes") : _("no"); };
+
+	ss << "\n<big>" << _("Settings:") << "</big>\n";
+	ss << _("Experience modifier:")   << " " << game.xp << "\n";
+	ss << _("Gold:")                  << " " << game.gold << "\n";
+	ss << _("Map size:")              << " " << game.map_size_info << "\n";
+	ss << _("Registered users only:") << " " << yes_or_no(game.registered_users_only) << "\n";
+	ss << _("Reloaded:")              << " " << yes_or_no(game.reloaded) << "\n";
+	ss << _("Shared vision:")         << " " << game.vision << "\n";
+	ss << _("Shuffle sides:")         << " " << yes_or_no(game.shuffle_sides) << "\n";
+	ss << _("Time limit:")            << " " << game.time_limit << "\n";
+	ss << _("Use map settings:")      << " " << yes_or_no(game.use_map_settings);
+
+	image& info_icon = find_widget<image>(grid, "game_info", false);
+
+	if(!game.have_era || !game.have_all_mods || !game.required_addons.empty()) {
+		info_icon.set_label("icons/icon-info-error.png");
+
+		ss << "\n\n<big><span color='#f00'>! </span></big>";
+		ss << _("One or more items need to be installed\nin order to join this game.");
+	} else {
+		info_icon.set_label("icons/icon-info.png");
+	}
+
+	info_icon.set_tooltip(ss.str());
+
+	//
+	// Password icon
+	//
+	image& password_icon = find_widget<image>(grid, "needs_password", false);
+
+	if(game.password_required) {
+		password_icon.set_visible(widget::visibility::visible);
+	} else {
+		password_icon.set_visible(widget::visibility::hidden);
+	}
+
+	//
+	// Observer icon
+	//
+	image& observer_icon = find_widget<image>(grid, "observer_icon", false);
+
+	if(game.observers) {
+		observer_icon.set_label("misc/eye.png");
+		observer_icon.set_tooltip( _("Observers allowed"));
+	} else {
+		observer_icon.set_label("misc/no_observer.png");
+		observer_icon.set_tooltip( _("Observers not allowed"));
+	}
+
+	//
+	// Minimap
+	//
+	minimap& map = find_widget<minimap>(grid, "minimap", false);
+
+	map.set_config(&game_config_);
+	map.set_map_data(game.map_data);
+
+	button& join_button = find_widget<button>(grid, "join", false);
+	button& observe_button = find_widget<button>(grid, "observe", false);
+
+	join_button.set_active(game.can_join());
+	observe_button.set_active(game.can_observe());
 
 	if(!add_callbacks) {
 		return;
 	}
 
-	if(button* join_button = dynamic_cast<button*>(grid->find("join", false))) {
-		connect_signal_mouse_left_click(
-				*join_button,
-				std::bind(&mp_lobby::join_global_button_callback,
-							this,
-							std::ref(*get_window())));
-		join_button->set_active(game.can_join());
-	}
+	connect_signal_mouse_left_double_click(row_panel,
+		std::bind(&mp_lobby::enter_game_by_id, this, game.id, DO_EITHER));
 
-	if(button* observe_button = dynamic_cast<button*>(grid->find("observe", false))) {
-		connect_signal_mouse_left_click(
-				*observe_button,
-				std::bind(&mp_lobby::observe_global_button_callback,
-							this,
-							std::ref(*get_window())));
-		observe_button->set_active(game.can_observe());
-	}
+	connect_signal_mouse_left_click(join_button,
+		std::bind(&mp_lobby::enter_game_by_id, this, game.id, DO_JOIN));
 
+	connect_signal_mouse_left_click(observe_button,
+		std::bind(&mp_lobby::enter_game_by_id, this, game.id, DO_OBSERVE));
 }
 
 void mp_lobby::update_gamelist_filter()
@@ -527,33 +580,39 @@ void mp_lobby::update_playerlist()
 	lobby_info_.sort_users(player_list_.sort_by_name->get_value_bool(),
 						   player_list_.sort_by_relation->get_value_bool());
 
+#ifdef ENABLE_ROOM_MEMBER_TREE
 	bool lobby = false;
 	if(mp::room_info* ri = chatbox_->active_window_room()) {
 		if(ri->name() == "lobby") {
 			lobby = true;
 		}
 	}
+#endif
 
 	assert(player_list_.active_game.tree);
+#ifdef ENABLE_ROOM_MEMBER_TREE
 	assert(player_list_.active_room.tree);
+#endif
 	assert(player_list_.other_games.tree);
 	assert(player_list_.other_rooms.tree);
 
 	player_list_.active_game.tree->clear();
+#ifdef ENABLE_ROOM_MEMBER_TREE
 	player_list_.active_room.tree->clear();
+#endif
 	player_list_.other_games.tree->clear();
 	player_list_.other_rooms.tree->clear();
 
 	for(auto userptr : lobby_info_.users_sorted()) {
 		mp::user_info& user = *userptr;
 		sub_player_list* target_list(nullptr);
-		std::map<std::string, string_map> data;
 
 		std::string name = user.name;
 
 		std::stringstream icon_ss;
 		icon_ss << "lobby/status";
 		switch(user.state) {
+#ifdef ENABLE_ROOM_MEMBER_TREE
 			case mp::user_info::SEL_ROOM:
 				icon_ss << "-lobby";
 				target_list = &player_list_.active_room;
@@ -561,6 +620,7 @@ void mp_lobby::update_playerlist()
 					target_list = &player_list_.other_rooms;
 				}
 				break;
+#endif
 			case mp::user_info::LOBBY:
 				icon_ss << "-lobby";
 				target_list = &player_list_.other_rooms;
@@ -604,8 +664,6 @@ void mp_lobby::update_playerlist()
 		}
 
 		icon_ss << ".png";
-		add_label_data(data, "player", name);
-		add_label_data(data, "main_icon", icon_ss.str());
 
 		if(!preferences::playerlist_group_players()) {
 			target_list = &player_list_.other_rooms;
@@ -631,7 +689,9 @@ void mp_lobby::update_playerlist()
 	}
 
 	player_list_.active_game.update_player_count_label();
+#ifdef ENABLE_ROOM_MEMBER_TREE
 	player_list_.active_room.update_player_count_label();
+#endif
 	player_list_.other_rooms.update_player_count_label();
 	player_list_.other_games.update_player_count_label();
 
@@ -674,7 +734,7 @@ void mp_lobby::pre_show(window& window)
 	gamelistbox_ = find_widget<listbox>(&window, "game_list", false, true);
 
 	connect_signal_notify_modified(*gamelistbox_,
-			std::bind(&mp_lobby::gamelist_change_callback, this, std::ref(window)));
+			std::bind(&mp_lobby::gamelist_change_callback, this));
 
 	window.keyboard_capture(gamelistbox_);
 
@@ -697,14 +757,14 @@ void mp_lobby::pre_show(window& window)
 
 	chatbox_ = find_widget<chatbox>(&window, "chat", false, true);
 	chatbox_->set_lobby_info(lobby_info_);
-	chatbox_->set_wesnothd_connection(wesnothd_connection_);
+	chatbox_->set_wesnothd_connection(network_connection_);
 	chatbox_->set_active_window_changed_callback([this]() { player_list_dirty_ = true; });
 
 	find_widget<button>(&window, "create", false).set_retval(CREATE);
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "refresh", false),
-		std::bind(&mp_lobby::refresh_button_callback, this, std::ref(window)));
+		std::bind(&mp_lobby::refresh_lobby, this));
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "show_preferences", false),
@@ -712,13 +772,13 @@ void mp_lobby::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "join_global", false),
-		std::bind(&mp_lobby::join_global_button_callback, this, std::ref(window)));
+		std::bind(&mp_lobby::enter_selected_game, this, DO_JOIN));
 
 	find_widget<button>(&window, "join_global", false).set_active(false);
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "observe_global", false),
-		std::bind(&mp_lobby::observe_global_button_callback, this, std::ref(window)));
+		std::bind(&mp_lobby::enter_selected_game, this, DO_OBSERVE));
 
 	find_widget<button>(&window, "observe_global", false).set_active(false);
 
@@ -770,15 +830,11 @@ void mp_lobby::pre_show(window& window)
 	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
 
 	plugins_context_->set_callback("join",    [&, this](const config&) {
-		if(do_game_join(get_game_index_from_id(selected_game_id_), false)) {
-			window.set_retval(JOIN);
-		}
+		enter_game_by_id(selected_game_id_, DO_JOIN);
 	}, true);
 
 	plugins_context_->set_callback("observe", [&, this](const config&) {
-		if(do_game_join(get_game_index_from_id(selected_game_id_), true)) {
-			window.set_retval(OBSERVE);
-		}
+		enter_game_by_id(selected_game_id_, DO_OBSERVE);
 	}, true);
 
 	plugins_context_->set_callback("create", [&window](const config&) { window.set_retval(CREATE); }, true);
@@ -804,7 +860,7 @@ void mp_lobby::network_handler()
 {
 	try {
 		config data;
-		if (wesnothd_connection_.receive_data(data)) {
+		if (network_connection_.receive_data(data)) {
 			process_network_data(data);
 		}
 	} catch (wesnothd_error& e) {
@@ -855,7 +911,7 @@ void mp_lobby::process_gamelist_diff(const config& data)
 		gamelist_dirty_ = true;
 	} else {
 		ERR_LB << "process_gamelist_diff failed!" << std::endl;
-		wesnothd_connection_.send_data(config("refresh_lobby"));
+		refresh_lobby();
 	}
 	const int joined = data.child_count("insert_child");
 	const int left = data.child_count("remove_child");
@@ -868,134 +924,94 @@ void mp_lobby::process_gamelist_diff(const config& data)
 	}
 }
 
-void mp_lobby::observe_global_button_callback(window& window)
+void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 {
-	if(do_game_join(gamelistbox_->get_selected_row(), true)) {
-		window.set_retval(OBSERVE);
-	}
-}
+	const bool try_join = mode == DO_JOIN || (mode == DO_EITHER && game.can_join());
+	const bool try_obsv = mode == DO_OBSERVE;
 
-void mp_lobby::join_global_button_callback(window& window)
-{
-	if(do_game_join(gamelistbox_->get_selected_row(), false)) {
-		window.set_retval(JOIN);
-	}
-}
-
-void mp_lobby::join_or_observe(int idx)
-{
-	const mp::game_info& game = *lobby_info_.games()[idx];
-	if(do_game_join(idx, !game.can_join())) {
-		get_window()->set_retval(game.can_join() ? JOIN : OBSERVE);
-	}
-}
-
-static bool handle_addon_requirements_gui(CVideo& v, const std::vector<mp::game_info::required_addon>& reqs, mp::game_info::ADDON_REQ addon_outcome)
-{
-	if(addon_outcome == mp::game_info::CANNOT_SATISFY) {
-		std::string e_title = _("Incompatible User-made Content.");
-		std::string err_msg = _("This game cannot be joined because the host has out-of-date add-ons that are incompatible with your version. You might wish to suggest that the host's add-ons be updated.");
-
-		err_msg +="\n\n";
-		err_msg += _("Details:");
-		err_msg += "\n";
-
-		for(const mp::game_info::required_addon & a : reqs) {
-			if (a.outcome == mp::game_info::CANNOT_SATISFY) {
-				err_msg += font::unicode_bullet + " " + a.message + "\n";
-			}
-		}
-		gui2::show_message(v, e_title, err_msg, message::auto_close);
-
-		return false;
-	} else if(addon_outcome == mp::game_info::NEED_DOWNLOAD) {
-		std::string e_title = _("Missing User-made Content.");
-		std::string err_msg = _("This game requires one or more user-made addons to be installed or updated in order to join.\nDo you want to try to install them?");
-
-		err_msg +="\n\n";
-		err_msg += _("Details:");
-		err_msg += "\n";
-
-		std::vector<std::string> needs_download;
-		for(const mp::game_info::required_addon & a : reqs) {
-			if(a.outcome == mp::game_info::NEED_DOWNLOAD) {
-				err_msg += font::unicode_bullet + " " + a.message + "\n";
-
-				needs_download.push_back(a.addon_id);
-			}
-		}
-
-		assert(needs_download.size() > 0);
-
-		if(gui2::show_message(v, e_title, err_msg, message::yes_no_buttons, true) == gui2::window::OK) {
-			// Begin download session
-			ad_hoc_addon_fetch_session(v, needs_download);
-
-			return true;
-		}
+	if(try_obsv && !game.can_observe()) {
+		ERR_LB << "Attempted to observe a game with observers disabled" << std::endl;
+		return;
 	}
 
-	return false;
-}
+	if(try_join && !game.can_join()) {
+		ERR_LB << "Attempted to join a game with no vacant slots" << std::endl;
+		return;
+	}
 
-bool mp_lobby::do_game_join(int idx, bool observe)
-{
-	if(idx < 0 || idx >= static_cast<int>(lobby_info_.games().size())) {
-		ERR_LB << "Requested join/observe of a game with index out of range: "
-			   << idx << ", games size is " << lobby_info_.games().size() << "\n";
-		return false;
-	}
-	const mp::game_info& game = *lobby_info_.games()[idx];
-	if(observe) {
-		if(!game.can_observe()) {
-			ERR_LB << "Requested observe of a game with observers disabled" << std::endl;
-			return false;
-		}
-	} else {
-		if(!game.can_join()) {
-			ERR_LB << "Requested join to a game with no vacant slots" << std::endl;
-			return false;
-		}
-	}
+	window& window = *get_window();
 
 	// Prompt user to download this game's required addons if its requirements have not been met
 	if(game.addons_outcome != mp::game_info::SATISFIED) {
 		if(game.required_addons.empty()) {
-			gui2::show_error_message(get_window()->video(), _("Something is wrong with the addon version check database supporting the multiplayer lobby. Please report this at http://bugs.wesnoth.org."));
-			return false;
+			gui2::show_error_message(window.video(), _("Something is wrong with the addon version check database supporting the multiplayer lobby. Please report this at http://bugs.wesnoth.org."));
+			return;
 		}
 
-		if(!handle_addon_requirements_gui(get_window()->video(), game.required_addons, game.addons_outcome)) {
-			return false;
-		} else {
-			// Addons have been downloaded, so the game_config and installed addons list need to be reloaded.
-			// The lobby is closed and reopened.
-			get_window()->set_retval(RELOAD_CONFIG);
-			return false;
+		if(!handle_addon_requirements_gui(window.video(), game.required_addons, game.addons_outcome)) {
+			return;
 		}
+
+		// Addons have been downloaded, so the game_config and installed addons list need to be reloaded.
+		// The lobby is closed and reopened.
+		window.set_retval(RELOAD_CONFIG);
+		return;
 	}
 
 	config response;
-	config& join = response.add_child("join");
-	join["id"] = std::to_string(game.id);
-	join["observe"] = observe;
-	if(join && !observe && game.password_required) {
+
+	config& join_data = response.add_child("join");
+	join_data["id"] = std::to_string(game.id);
+	join_data["observe"] = try_obsv;
+
+	if(!join_data.empty() && try_join && game.password_required) {
 		std::string password;
-		if(!gui2::dialogs::mp_join_game_password_prompt::execute(password, get_window()->video())) {
-			return false;
+
+		if(!gui2::dialogs::mp_join_game_password_prompt::execute(password, window.video())) {
+			return;
 		}
 
-		join["password"] = password;
+		join_data["password"] = password;
 	}
 
-	wesnothd_connection_.send_data(response);
+	network_connection_.send_data(response);
 	joined_game_id_ = game.id;
-	return true;
+
+	// We're all good. Close lobby and proceed to game!
+	window.set_retval(try_join ? JOIN : OBSERVE);
 }
 
-void mp_lobby::refresh_button_callback(window& /*window*/)
+void mp_lobby::enter_game_by_index(const int index, JOIN_MODE mode)
 {
-	wesnothd_connection_.send_data(config("refresh_lobby"));
+	try {
+		enter_game(*lobby_info_.games().at(index), mode);
+	} catch(const std::out_of_range&) {
+		// Game index was invalid!
+		ERR_LB << "Attempted to join/observe a game with index out of range: " << index << ". "
+		       << "Games vector size is " << lobby_info_.games().size() << std::endl;
+	}
+}
+
+void mp_lobby::enter_game_by_id(const int game_id, JOIN_MODE mode)
+{
+	mp::game_info* game_ptr = lobby_info_.get_game_by_id(game_id);
+
+	if(!game_ptr) {
+		ERR_LB << "Attempted to join/observe a game with an invalid id: " << game_id << std::endl;
+		return;
+	}
+
+	enter_game(*game_ptr, mode);
+}
+
+void mp_lobby::enter_selected_game(JOIN_MODE mode)
+{
+	enter_game_by_index(gamelistbox_->get_selected_row(), mode);
+}
+
+void mp_lobby::refresh_lobby()
+{
+	network_connection_.send_data(config("refresh_lobby"));
 }
 
 void mp_lobby::show_preferences_button_callback(window& window)
@@ -1021,7 +1037,7 @@ void mp_lobby::show_preferences_button_callback(window& window)
 	 */
 	window.invalidate_layout();
 
-	wesnothd_connection_.send_data(config("refresh_lobby"));
+	refresh_lobby();
 }
 
 void mp_lobby::game_filter_reload()
@@ -1070,7 +1086,7 @@ void mp_lobby::game_filter_change_callback()
 	update_gamelist_filter();
 }
 
-void mp_lobby::gamelist_change_callback(window& /*window*/)
+void mp_lobby::gamelist_change_callback()
 {
 	update_selected_game();
 }
@@ -1102,27 +1118,13 @@ void mp_lobby::user_dialog_callback(mp::user_info* info)
 	}
 
 	selected_game_id_ = info->game_id;
-	// the commented out code below should be enough, but that'd delete the
-	// playerlist and the widget calling this callback, so instead the game
-	// will be selected on the next gamelist update.
-	/*
-	if (info->game_id != 0) {
-		for (unsigned i = 0; i < lobby_info_.games_filtered().size(); ++i) {
-		game_info& g = *lobby_info_.games_filtered()[i];
-			if (info->game_id == g.id) {
-			gamelistbox_->select_row(i);
-				update_selected_game();
-				break;
-			}
-		}
-	}
-	*/
+
 	// do not update here as it can cause issues with removing the widget
 	// from within it's event handler. Should get updated as soon as possible
 	// update_gamelist();
 	delay_playerlist_update_ = false;
 	player_list_dirty_ = true;
-	wesnothd_connection_.send_data(config("refresh_lobby"));
+	refresh_lobby();
 }
 
 void mp_lobby::skip_replay_changed_callback(window& window)
@@ -1131,15 +1133,6 @@ void mp_lobby::skip_replay_changed_callback(window& window)
 	const int value = find_widget<menu_button>(&window, "replay_options", false).get_value();
 	preferences::set_skip_mp_replay(value == 1);
 	preferences::set_blindfold_replay(value == 2);
-}
-
-int mp_lobby::get_game_index_from_id(const int game_id) const
-{
-	if(mp::game_info* game = lobby_info_.get_game_by_id(game_id)) {
-		return std::find(lobby_info_.games().begin(), lobby_info_.games().end(), game) - lobby_info_.games().begin();
-	}
-
-	return -1;
 }
 
 } // namespace dialogs

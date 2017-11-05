@@ -36,7 +36,7 @@ before_install:
     - export TARGETS="wesnoth wesnothd campaignd test"
     - export STRICT_COMPILATION=false
     - export EXTRA_FLAGS_RELEASE=""
-    - export WML_TESTS=true CPP_TESTS=true PLAY_TEST=true MP_TEST=true
+    - export WML_TESTS=true CPP_TESTS=false PLAY_TEST=true MP_TEST=true
     - export WML_TEST_TIME=15
 
     - if $NLS; then

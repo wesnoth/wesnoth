@@ -238,7 +238,7 @@ public:
 		return is_regular_game_end();
 	}
 
-	void maybe_throw_return_to_play_side()
+	void maybe_throw_return_to_play_side() const
 	{
 		if(should_return_to_play_side() && !linger_ ) {
 			throw return_to_play_side_exception();

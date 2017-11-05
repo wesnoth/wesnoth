@@ -56,9 +56,6 @@
     <Filter Include="Gui\Dialogs">
       <UniqueIdentifier>{006b82d3-7b2b-41ef-bfd8-8f98867cab7b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Gui\Dialogs\Lobby">
-      <UniqueIdentifier>{7c98108b-ad5b-4712-8824-40ac9b734ff4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Gui\Dialogs\Addon">
       <UniqueIdentifier>{994675eb-e9db-4699-a08a-d29248d169e7}</UniqueIdentifier>
     </Filter>
@@ -701,12 +698,6 @@
     <ClCompile Include="..\..\src\gui\dialogs\wml_message.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\lobby\lobby.cpp">
-      <Filter>Gui\Dialogs\Lobby</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\lobby\player_info.cpp">
-      <Filter>Gui\Dialogs\Lobby</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\addon\connect.cpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClCompile>
@@ -749,13 +740,13 @@
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\faction_select.cpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\lobby.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_alerts_options.cpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_change_control.cpp">
-      <Filter>Gui\Dialogs\Multiplayer</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_cmd_wrapper.cpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_connect.cpp">
@@ -783,6 +774,9 @@
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\mp_staging.cpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\multiplayer\player_info.cpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\multiplayer\synced_choice_wait.cpp">
@@ -1466,7 +1460,6 @@
     <ClCompile Include="..\..\src\playturn.cpp" />
     <ClCompile Include="..\..\src\playturn_network_adapter.cpp" />
     <ClCompile Include="..\..\src\quit_confirmation.cpp" />
-    <ClCompile Include="..\..\src\random.cpp" />
     <ClCompile Include="..\..\src\random_deterministic.cpp" />
     <ClCompile Include="..\..\src\random_synced.cpp" />
     <ClCompile Include="..\..\src\recall_list_manager.cpp" />
@@ -1546,6 +1539,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\slider_base.cpp">
+      <Filter>Gui\Widgets</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2107,12 +2103,6 @@
     <ClInclude Include="..\..\src\gui\dialogs\wml_message.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\lobby\lobby.hpp">
-      <Filter>Gui\Dialogs\Lobby</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\lobby\player_info.hpp">
-      <Filter>Gui\Dialogs\Lobby</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\addon\connect.hpp">
       <Filter>Gui\Dialogs\Addon</Filter>
     </ClInclude>
@@ -2155,13 +2145,13 @@
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\faction_select.hpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\lobby.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_alerts_options.hpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_change_control.hpp">
-      <Filter>Gui\Dialogs\Multiplayer</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_cmd_wrapper.hpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_connect.hpp">
@@ -2189,6 +2179,9 @@
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\mp_staging.hpp">
+      <Filter>Gui\Dialogs\Multiplayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\multiplayer\player_info.hpp">
       <Filter>Gui\Dialogs\Multiplayer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\dialogs\multiplayer\plugin_executor.hpp">
@@ -2892,7 +2885,6 @@
     <ClInclude Include="..\..\src\playturn.hpp" />
     <ClInclude Include="..\..\src\playturn_network_adapter.hpp" />
     <ClInclude Include="..\..\src\quit_confirmation.hpp" />
-    <ClInclude Include="..\..\src\random.hpp" />
     <ClInclude Include="..\..\src\random_deterministic.hpp" />
     <ClInclude Include="..\..\src\random_synced.hpp" />
     <ClInclude Include="..\..\src\recall_list_manager.hpp" />
@@ -3002,6 +2994,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\preferences\lobby.hpp">
       <Filter>Preferences</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\slider_base.hpp">
+      <Filter>Gui\Widgets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

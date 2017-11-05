@@ -253,8 +253,7 @@ editor_action* brush_drag_mouse_action::drag_generic(editor_display& disp, int x
 const brush& brush_drag_mouse_action::get_brush()
 {
 	assert(brush_);
-	assert(*brush_);
-	return **brush_;
+	return *brush_;
 }
 
 

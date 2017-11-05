@@ -17,6 +17,7 @@
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "preferences/game.hpp"
+#include "random.hpp"
 #include "serialization/string_utils.hpp"
 #include "sound_music_track.hpp"
 
@@ -190,9 +191,16 @@ std::vector<std::shared_ptr<sound::music_track>>::const_iterator find_track(cons
 
 namespace sound
 {
-unsigned int get_current_track()
+boost::optional<unsigned int> get_current_track_index()
 {
+	if(current_track_index >= current_track_list.size()){
+		return {};
+	}
 	return current_track_index;
+}
+std::shared_ptr<music_track> get_current_track()
+{
+	return current_track;
 }
 std::shared_ptr<music_track> get_previous_music_track()
 {
@@ -319,7 +327,7 @@ static std::shared_ptr<sound::music_track> choose_track()
 
 		if(current_track_list.size() > 1) {
 			do {
-				track = rand() % current_track_list.size();
+				track = randomness::rng::default_instance().get_random_int(0, current_track_list.size()-1);
 			} while(!track_ok(current_track_list[track]->file_path()));
 		}
 
@@ -348,14 +356,14 @@ static std::string pick_one(const std::string& files)
 	unsigned int choice;
 
 	if(prev_choices.find(files) != prev_choices.end()) {
-		choice = rand() % (ids.size() - 1);
+		choice = randomness::rng::default_instance().get_random_int(0, ids.size()-1 - 1);
 		if(choice >= prev_choices[files]) {
 			++choice;
 		}
 
 		prev_choices[files] = choice;
 	} else {
-		choice = rand() % ids.size();
+		choice = randomness::rng::default_instance().get_random_int(0, ids.size()-1);
 		prev_choices.emplace(files, choice);
 	}
 
@@ -706,7 +714,7 @@ void play_music_config(const config& music_node, int i)
 		current_track = *iter;
 		current_track_index = iter - current_track_list.begin();
 		play_music();
-	} else if(!track.append()) { // Make sure the current track is finished
+	} else if(!track.append() && current_track) { // Make sure the current track is finished
 		current_track->set_play_once(true);
 	}
 }

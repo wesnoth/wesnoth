@@ -1675,7 +1675,6 @@ surface blur_alpha_surface(const surface &surf, int depth)
 
 		p = lock.pixels() + x;
 		for(y = 0; y < res->h; ++y, p += res->w) {
-			assert(avg);
 			*p = (std::min(alpha/avg,ff) << 24) | (std::min(red/avg,ff) << 16) | (std::min(green/avg,ff) << 8) | std::min(blue/avg,ff);
 			if(y >= depth) {
 				alpha -= ((*front) >> 24)&0xFF;

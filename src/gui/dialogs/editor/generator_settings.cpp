@@ -80,7 +80,7 @@ void generator_settings::adjust_minimum_size_by_players(window& window)
 
 	const auto update_dimension_slider = [&](field_integer* field) {
 		slider& w = dynamic_cast<slider&>(*field->get_widget());
-		w.set_minimum_value(min_size + extra_size);
+		w.set_value_range(min_size + extra_size, w.get_maximum_value());
 	};
 
 	update_dimension_slider(width_);

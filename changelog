@@ -1,9 +1,31 @@
-Version 1.13.11:
+Version 1.13.10+dev:
+ * Campaigns:
+   * The Cutscene_Minimal theme is now used in all dialog only scenarios that
+     have linger=no in [end_level].
+   * A Tale of Two Brothers:
+     * Added a full set of hints on easy difficulty.
+ * Language and i18n:
+   * Updated translations: Chinese (Simplified)
+ * Performance:
+   * GUI2 windows no longer redraw everything 50 times per second. This reduces
+     CPU usage in fullscreen windows such as MP lobby by about 85 %.
+ * User Interface:
+   * Removed broken Unit Box and Widescreen themes.
+   * Fixed a bug that partially prevented movement feedback announce messages
+     to be displayed (UI regression bug #2130, affecting 1.13.8 and 1.13.10).
+   * New, greatly simplified display of games in the MP Lobby.
+   * Fixed individual Join/Observe buttons acting on the wrong game in the MP
+     Lobby.
+   * Greatly improved behavior of sliders.
+   * Fixed crash when modifying an existing friend entry in Preferences.
+   * Fixed players being unable to start campaigns in MP mode.
  * WML Engine:
    * File paths with backslashes are no longer allowed. This ensures that a UMC
      author can't accidentally use them and make an add-on that breaks on
      GNU/Linux and macOS.
    * File paths are now case sensitive even on Windows.
+ * Miscellaneous and bug fixes:
+   * Fixed ingame help showing units you haven't encountered (bug #2135)
 
 Version 1.13.10:
  * Add-ons client:

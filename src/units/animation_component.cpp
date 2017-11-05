@@ -18,6 +18,7 @@
 #include "display.hpp"
 #include "map/map.hpp"
 #include "preferences/general.hpp"
+#include "random.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
 
@@ -44,7 +45,7 @@ const unit_animation* unit_animation_component::choose_animation(const display& 
 	if(max_val == unit_animation::MATCH_FAIL) {
 		return nullptr;
 	}
-	return options[rand()%options.size()];
+	return options[randomness::rng::default_instance().get_random_int(0, options.size()-1)];
 }
 
 void unit_animation_component::set_standing(bool with_bars)
@@ -116,7 +117,7 @@ void unit_animation_component::start_animation (int start_time, const unit_anima
 	frame_begin_time_ = anim_->get_begin_time() -1;
 	if (disp->idle_anim()) {
 		next_idling_ = get_current_animation_tick()
-			+ static_cast<int>((20000 + rand() % 20000) * disp->idle_anim_rate());
+			+ static_cast<int>(randomness::rng::default_instance().get_random_int(20000, 39999) * disp->idle_anim_rate());
 	} else {
 		next_idling_ = INT_MAX;
 	}
@@ -140,7 +141,7 @@ void unit_animation_component::refresh()
 		// prevent all units animating at the same time
 		if (disp.idle_anim()) {
 			next_idling_ = get_current_animation_tick()
-				+ static_cast<int>((20000 + rand() % 20000) * disp.idle_anim_rate());
+				+ static_cast<int>(randomness::rng::default_instance().get_random_int(20000, 39999) * disp.idle_anim_rate());
 		} else {
 			next_idling_ = INT_MAX;
 		}

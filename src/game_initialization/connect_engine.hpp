@@ -31,7 +31,6 @@ enum controller {
 	CNTR_COMPUTER,
 	CNTR_EMPTY,
 	CNTR_RESERVED,
-	CNTR_LAST
 };
 
 class connect_engine;
@@ -268,10 +267,10 @@ private:
 	flg_manager flg_;
 	const bool allow_changes_;
 	bool waiting_to_choose_faction_;
-	std::string custom_color_;
-	std::string color_id_;
 
 	std::vector<std::string> color_options_;
+
+	std::string color_id_;
 };
 
 } // end namespace ng

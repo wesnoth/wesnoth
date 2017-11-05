@@ -22,6 +22,7 @@
 #include <cmath>
 #include <cstddef>
 #include <cstdint>
+#include <cstdlib>
 #include <limits>
 #include <math.h> // cmath may not provide round()
 #include <vector>
@@ -295,6 +296,18 @@ inline unsigned int count_leading_ones(N n) {
 	// `count_leading_zeros` in case `~n` is of a different type.
 	return count_leading_zeros<N>(~n);
 }
+
+inline int gcd(int a, int b) {
+	return b == 0 ?  a : gcd(b, a % b);
+}
+
+//Probably not postable.
+inline int rounded_division(int a, int b)
+{
+	auto res = std::div(a,b);
+	return 2 * res.rem > b ? (res.quot + 1) : res.quot; 
+}
+
 
 #if 1
 typedef int32_t fixed_t;

@@ -68,20 +68,19 @@
 #include "gui/dialogs/label_settings.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/loading_screen.hpp"
-#include "gui/dialogs/lobby/lobby.hpp"
-#include "gui/dialogs/lobby/player_info.hpp"
 #include "gui/dialogs/log_settings.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
+#include "gui/dialogs/multiplayer/lobby.hpp"
 #include "gui/dialogs/multiplayer/mp_alerts_options.hpp"
 #include "gui/dialogs/multiplayer/mp_change_control.hpp"
-#include "gui/dialogs/multiplayer/mp_cmd_wrapper.hpp"
 #include "gui/dialogs/multiplayer/mp_connect.hpp"
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
+#include "gui/dialogs/multiplayer/player_info.hpp"
 #include "gui/dialogs/outro.hpp"
 #include "gui/dialogs/depcheck_confirm_change.hpp"
 #include "gui/dialogs/depcheck_select_new.hpp"
@@ -433,7 +432,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<message>();
 	test<mp_alerts_options>();
 	//test<mp_change_control>();
-	test<mp_cmd_wrapper>();
 	test<mp_connect>();
 	//test<mp_create_game>();
 	//test<mp_join_game>();
@@ -881,14 +879,6 @@ struct dialog_tester<mp_change_control>
 	}
 };
 #endif
-template<>
-struct dialog_tester<mp_cmd_wrapper>
-{
-	mp_cmd_wrapper* create()
-	{
-		return new mp_cmd_wrapper("foo");
-	}
-};
 
 template<>
 struct dialog_tester<mp_create_game>

@@ -685,6 +685,16 @@ private:
 	std::vector<std::vector<widget*> > dirty_list_;
 
 	/**
+	 * In how many consecutive frames the window has changed. This is used to
+	 * detect the situation where the title screen changes in every frame,
+	 * forcing all other windows to redraw everything all the time.
+	 */
+	unsigned int consecutive_changed_frames_ = 0u;
+
+	/** Schedules windows on top of us (if any) to redraw. */
+	void redraw_windows_on_top() const;
+
+	/**
 	 * Finishes the initialization of the grid.
 	 *
 	 * @param content_grid        The new contents for the content grid.

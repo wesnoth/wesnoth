@@ -127,7 +127,7 @@ move::move(config const& cfg, bool hidden)
 		throw action::ctor_err("move: Invalid route_");
 
 	// Construct arrow_
-	arrow_->set_color(team::get_side_color_index(side_number()));
+	arrow_->set_color(team::get_side_color_id(side_number()));
 	arrow_->set_style(arrow::STYLE_STANDARD);
 	arrow_->set_path(route_->steps);
 

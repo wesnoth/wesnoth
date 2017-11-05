@@ -526,28 +526,30 @@ void game_config_manager::load_game_config_for_game(
 	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest &&
 		classification.campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER);
 
-	typedef std::shared_ptr<game_config::scoped_preproc_define> define;
+	//
+	// NOTE: these deques aren't used here, but the objects within are utilized as RAII helpers.
+	//
+
+	typedef std::unique_ptr<game_config::scoped_preproc_define> define;
+
 	std::deque<define> extra_defines;
-	for (const std::string& extra_define : classification.campaign_xtra_defines) {
-		define new_define(new game_config::scoped_preproc_define(extra_define));
-		extra_defines.push_back(new_define);
-	}
-	std::deque<define> modification_defines;
-	for (const std::string& mod_define : classification.mod_defines) {
-		define new_define(new game_config::scoped_preproc_define(mod_define, !mod_define.empty()));
-		modification_defines.push_back(new_define);
+	for(const std::string& extra_define : classification.campaign_xtra_defines) {
+		extra_defines.emplace_back(new game_config::scoped_preproc_define(extra_define));
 	}
 
-	try{
-		load_game_config_with_loadscreen(NO_FORCE_RELOAD, &classification);
+	std::deque<define> modification_defines;
+	for(const std::string& mod_define : classification.mod_defines) {
+		modification_defines.emplace_back(new game_config::scoped_preproc_define(mod_define, !mod_define.empty()));
 	}
-	catch(game::error&) {
+
+	try {
+		load_game_config_with_loadscreen(NO_FORCE_RELOAD, &classification);
+	} catch(game::error&) {
 		cache_.clear_defines();
 
 		std::deque<define> previous_defines;
-		for (const preproc_map::value_type& preproc : old_defines_map_) {
-			define new_define(new game_config::scoped_preproc_define(preproc.first));
-			previous_defines.push_back(new_define);
+		for(const preproc_map::value_type& preproc : old_defines_map_) {
+			previous_defines.emplace_back(new game_config::scoped_preproc_define(preproc.first));
 		}
 
 		load_game_config_with_loadscreen(NO_FORCE_RELOAD);
@@ -563,7 +565,7 @@ void game_config_manager::load_game_config_for_create(bool is_mp, bool is_test)
 ///During an mp game the default difficuly define is also defined so better already load it now if we alreeady must reload config cache.
 	game_config::scoped_preproc_define normal(DEFAULT_DIFFICULTY, !map_includes(old_defines_map_, cache_.get_preproc_map()));
 
-	typedef std::shared_ptr<game_config::scoped_preproc_define> define;
+	typedef std::unique_ptr<game_config::scoped_preproc_define> define;
 	try{
 		load_game_config_with_loadscreen(NO_INCLUDE_RELOAD);
 	}
@@ -572,8 +574,7 @@ void game_config_manager::load_game_config_for_create(bool is_mp, bool is_test)
 
 		std::deque<define> previous_defines;
 		for (const preproc_map::value_type& preproc : old_defines_map_) {
-			define new_define(new game_config::scoped_preproc_define(preproc.first));
-			previous_defines.push_back(new_define);
+			previous_defines.emplace_back(new game_config::scoped_preproc_define(preproc.first));
 		}
 
 		load_game_config_with_loadscreen(NO_FORCE_RELOAD);

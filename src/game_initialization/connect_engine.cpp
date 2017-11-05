@@ -865,9 +865,8 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	, flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_, parent_.params_.use_map_settings, parent_.params_.saved_game)
 	, allow_changes_(!parent_.params_.saved_game && !(flg_.choosable_factions().size() == 1 && flg_.choosable_leaders().size() == 1 && flg_.choosable_genders().size() == 1))
 	, waiting_to_choose_faction_(allow_changes_)
-	, custom_color_()
-	, color_id_()
-	, color_options_()
+	, color_options_(game_config::default_colors)
+	, color_id_(color_options_[color_])
 {
 	// Save default attributes that could be overwirtten by the faction, so that correct faction lists would be
 	// initialized by flg_manager when the new side config is sent over network.
@@ -944,25 +943,22 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 		team_ = team_name_index;
 	}
 
-	color_options_ = game_config::default_colors;
-	color_id_ = color_options_[color_];
-
 	if(!cfg["color"].empty()) {
 		if(cfg["color"].to_int()) {
 			color_ = cfg["color"].to_int() - 1;
 			color_id_ = color_options_[color_];
 		} else {
-			custom_color_ = cfg["color"].str();
+			const std::string custom_color = cfg["color"].str();
 
-			const auto iter = std::find(color_options_.begin(), color_options_.end(), custom_color_);
+			const auto iter = std::find(color_options_.begin(), color_options_.end(), custom_color);
 
 			if(iter != color_options_.end()) {
 				color_id_ = *iter;
 				color_ = iter - color_options_.begin();
 			} else {
-				color_options_.push_back(custom_color_);
+				color_options_.push_back(custom_color);
 
-				color_id_ = custom_color_;
+				color_id_ = custom_color;
 				color_ = color_options_.size() - 1;
 			}
 		}
@@ -1038,7 +1034,6 @@ config side_engine::new_config() const
 		res["name"] = desc;
 	}
 
-	assert(controller_ != CNTR_LAST);
 	if(controller_ == CNTR_COMPUTER && allow_player_) {
 		// Do not import default ai cfg otherwise - all is set by scenario config.
 		res.add_child_at("ai", config {"ai_algorithm", ai_algorithm_}, 0);
@@ -1290,7 +1285,6 @@ void side_engine::update_controller_options()
 	}
 
 	// Connected users.
-	add_controller_option(CNTR_LAST, _("--give--"), "human");
 	for(const std::string& user : parent_.connected_users()) {
 		add_controller_option(parent_.default_controller_, user, "human");
 	}
@@ -1321,9 +1315,6 @@ void side_engine::update_current_controller_index()
 bool side_engine::controller_changed(const int selection)
 {
 	const ng::controller selected_cntr = controller_options_[selection].first;
-	if(selected_cntr == CNTR_LAST) {
-		return false;
-	}
 
 	// Check if user was selected. If so assign a side to him/her.
 	// If not, make sure that no user is assigned to this side.

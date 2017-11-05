@@ -172,7 +172,6 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side["previous_recruits"] = "Elvish Archer";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	//BOOST_CHECK_EQUAL( side_engine->flg().choosable_factions().size(), 1 );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
 	BOOST_CHECK_EQUAL( side_engine->new_config()["previous_recruits"],
 		"Elvish Archer" );
 
@@ -352,7 +351,6 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 	side["previous_recruits"] = "Elvish Archer";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK( side_engine->flg().choosable_factions().size() >  1 );
-	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
 	BOOST_CHECK_EQUAL( side_engine->new_config()["previous_recruits"],
 		"Elvish Archer" );
 

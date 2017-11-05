@@ -317,7 +317,7 @@ public:
 
 private:
 	// This gives me 10% speed improvement over std::vector<> (g++4.0.3 x86)
-	std::unique_ptr<double[]> new_plane();
+	std::unique_ptr<double[]> new_plane() const;
 
 	void initialize_plane(unsigned plane,
 			unsigned a_cur,
@@ -449,7 +449,7 @@ prob_matrix::prob_matrix(unsigned int a_max,
 }
 
 /** Allocate a new probability array, initialized to 0. */
-std::unique_ptr<double[]> prob_matrix::new_plane()
+std::unique_ptr<double[]> prob_matrix::new_plane() const
 {
 	const unsigned int size = rows_ * cols_;
 	std::unique_ptr<double[]> res(new double[size]);
@@ -1494,22 +1494,24 @@ monte_carlo_combat_matrix::monte_carlo_combat_matrix(unsigned int a_max_hp,
 
 void monte_carlo_combat_matrix::simulate()
 {
+	randomness::rng& rng = randomness::rng::default_instance();
+
 	for(unsigned int i = 0u; i < NUM_ITERATIONS; ++i) {
 		bool a_hit = false;
 		bool b_hit = false;
-		bool a_slowed = randomness::generator->get_random_bool(a_initially_slowed_chance_);
-		bool b_slowed = randomness::generator->get_random_bool(b_initially_slowed_chance_);
+		bool a_slowed = rng.get_random_bool(a_initially_slowed_chance_);
+		bool b_slowed = rng.get_random_bool(b_initially_slowed_chance_);
 		const std::vector<double>& a_initial = a_slowed ? a_initial_slowed_ : a_initial_;
 		const std::vector<double>& b_initial = b_slowed ? b_initial_slowed_ : b_initial_;
-		unsigned int a_hp = randomness::generator->get_random_element(a_initial.begin(), a_initial.end());
-		unsigned int b_hp = randomness::generator->get_random_element(b_initial.begin(), b_initial.end());
+		unsigned int a_hp = rng.get_random_element(a_initial.begin(), a_initial.end());
+		unsigned int b_hp = rng.get_random_element(b_initial.begin(), b_initial.end());
 		unsigned int a_strikes = calc_blows_a(a_hp);
 		unsigned int b_strikes = calc_blows_b(b_hp);
 
 		for(unsigned int j = 0u; j < rounds_ && a_hp > 0u && b_hp > 0u; ++j) {
 			for(unsigned int k = 0u; k < std::max(a_strikes, b_strikes); ++k) {
 				if(k < a_strikes) {
-					if(randomness::generator->get_random_bool(a_hit_chance_)) {
+					if(rng.get_random_bool(a_hit_chance_)) {
 						// A hits B
 						unsigned int damage = a_slowed ? a_slow_damage_ : a_damage_;
 						damage = std::min(damage, b_hp);
@@ -1529,7 +1531,7 @@ void monte_carlo_combat_matrix::simulate()
 				}
 
 				if(k < b_strikes) {
-					if(randomness::generator->get_random_bool(b_hit_chance_)) {
+					if(rng.get_random_bool(b_hit_chance_)) {
 						// B hits A
 						unsigned int damage = b_slowed ? b_slow_damage_ : b_damage_;
 						damage = std::min(damage, a_hp);
@@ -2097,7 +2099,8 @@ void complex_fight(attack_prediction_mode mode,
 					double first_hit = hit_chance * opp_hit_unknown;
 					opp_hit += first_hit;
 					opp_hit_unknown -= first_hit;
-					double this_hit_killed_b = (pm->dead_prob_b() - b_already_dead) / ((1.0 - b_already_dead) * (1.0 - pm->dead_prob_a()));
+					double both_were_alive = (1.0 - b_already_dead) * (1.0 - pm->dead_prob_a());
+					double this_hit_killed_b = both_were_alive != 0.0 ? (pm->dead_prob_b() - b_already_dead) / both_were_alive : 1.0;
 					self_hit_unknown *= (1.0 - this_hit_killed_b);
 				}
 				if(i < opp_strikes) {
@@ -2109,7 +2112,8 @@ void complex_fight(attack_prediction_mode mode,
 					double first_hit = opp_hit_chance * self_hit_unknown;
 					self_hit += first_hit;
 					self_hit_unknown -= first_hit;
-					double this_hit_killed_a = (pm->dead_prob_a() - a_already_dead) / ((1.0 - a_already_dead) * (1.0 - pm->dead_prob_b()));
+					double both_were_alive = (1.0 - a_already_dead) * (1.0 - pm->dead_prob_b());
+					double this_hit_killed_a = both_were_alive != 0.0 ? (pm->dead_prob_a() - a_already_dead) / both_were_alive : 1.0;
 					opp_hit_unknown *= (1.0 - this_hit_killed_a);
 				}
 			}

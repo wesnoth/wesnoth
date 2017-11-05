@@ -67,7 +67,7 @@ mp_join_game::mp_join_game(saved_game& state, mp::lobby_info& lobby_info, wesnot
 	: level_()
 	, state_(state)
 	, lobby_info_(lobby_info)
-	, wesnothd_connection_(connection)
+	, network_connection_(connection)
 	, update_timer_(0)
 	, first_scenario_(first_scenario)
 	, observe_game_(observe_game)
@@ -91,14 +91,14 @@ bool mp_join_game::fetch_game_config(CVideo& video)
 {
 	// Ask for the next scenario data, if applicable
 	if(!first_scenario_) {
-		wesnothd_connection_.send_data(config("load_next_scenario"));
+		network_connection_.send_data(config("load_next_scenario"));
 	}
 
 	bool has_scenario_and_controllers = false;
 	while(!has_scenario_and_controllers) {
 		config revc;
 		const bool data_res = gui2::dialogs::network_transmission::wesnothd_receive_dialog(
-			video, "download level data", revc, wesnothd_connection_);
+			video, "download level data", revc, network_connection_);
 
 		if(!data_res) {
 			return false;
@@ -229,7 +229,7 @@ bool mp_join_game::fetch_game_config(CVideo& video)
 		change["leader"] = flg.current_leader();
 		change["gender"] = flg.current_gender();
 
-		wesnothd_connection_.send_data(faction);
+		network_connection_.send_data(faction);
 	}
 
 	return true;
@@ -282,7 +282,7 @@ void mp_join_game::pre_show(window& window)
 	chatbox& chat = find_widget<chatbox>(&window, "chat", false);
 
 	chat.set_lobby_info(lobby_info_);
-	chat.set_wesnothd_connection(wesnothd_connection_);
+	chat.set_wesnothd_connection(network_connection_);
 
 	chat.room_window_open("this game", true, false); // TODO: better title?
 	chat.active_window_changed();
@@ -442,7 +442,7 @@ void mp_join_game::network_handler(window& window)
 	}
 
 	config data;
-	if(!wesnothd_connection_.receive_data(data)) {
+	if(!network_connection_.receive_data(data)) {
 		return;
 	}
 
@@ -518,7 +518,7 @@ void mp_join_game::post_show(window& window)
 
 		mp_ui_alerts::game_has_begun();
 	} else {
-		wesnothd_connection_.send_data(config("leave_game"));
+		network_connection_.send_data(config("leave_game"));
 	}
 }
 

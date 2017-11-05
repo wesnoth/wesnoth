@@ -200,7 +200,7 @@ void label::signal_handler_right_button_click(const event::ui_event /* event */,
 
 	desktop::clipboard::copy_to_clipboard(link, false);
 
-	show_message(get_window()->video(), "", _("Copied link!"), dialogs::message::auto_close);
+	(void) show_message(get_window()->video(), "", _("Copied link!"), dialogs::message::auto_close);
 
 	handled = true;
 }

@@ -12,9 +12,10 @@
    See the COPYING file for more details.
 */
 
+#include "gui/dialogs/multiplayer/player_info.hpp"
+
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
-#include "gui/dialogs/lobby/player_info.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"

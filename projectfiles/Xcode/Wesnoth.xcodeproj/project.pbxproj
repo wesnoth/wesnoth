@@ -379,8 +379,6 @@
 		91A215CB1CAD968400927AEA /* set_starting_position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4728DAF145A59CF00F0E1E1 /* set_starting_position.cpp */; };
 		91A215CC1CAD969200927AEA /* lobby_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55BE04711234B1A00154E6C /* lobby_data.cpp */; };
 		91A215CD1CAD969200927AEA /* lobby_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55BE04911234B1A00154E6C /* lobby_info.cpp */; };
-		91A215CE1CAD969200927AEA /* lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6EF0FEA9F92006F6FBD /* lobby.cpp */; };
-		91A215CF1CAD969200927AEA /* player_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B59F96EB1034796700A57C1A /* player_info.cpp */; };
 		91A215D01CAD96D900927AEA /* mp_alerts_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC5C70BE19EEB57400432CF4 /* mp_alerts_options.cpp */; };
 		91A215D11CAD96D900927AEA /* mp_change_control.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49DA0D1D13550E1E000AFEBD /* mp_change_control.cpp */; };
 		91A215D21CAD96D900927AEA /* mp_cmd_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B59915060F20E9FF00BAD4C1 /* mp_cmd_wrapper.cpp */; };
@@ -823,7 +821,6 @@
 		B54AC6E50FEA9EB5006F6FBD /* candidates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6BE0FEA9EB5006F6FBD /* candidates.cpp */; };
 		B54AC6E60FEA9EB5006F6FBD /* ca.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6C10FEA9EB5006F6FBD /* ca.cpp */; };
 		B54AC6E80FEA9EB5006F6FBD /* stage_rca.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6C50FEA9EB5006F6FBD /* stage_rca.cpp */; };
-		B54AC6F50FEA9F92006F6FBD /* lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6EF0FEA9F92006F6FBD /* lobby.cpp */; };
 		B54AC6F60FEA9F92006F6FBD /* transient_message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6F10FEA9F92006F6FBD /* transient_message.cpp */; };
 		B54AC7000FEA9FA5006F6FBD /* multi_page.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6F80FEA9FA5006F6FBD /* multi_page.cpp */; };
 		B54AC7010FEA9FA5006F6FBD /* scrollbar_panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B54AC6FB0FEA9FA5006F6FBD /* scrollbar_panel.cpp */; };
@@ -963,7 +960,6 @@
 		B59F96E0103478DE00A57C1A /* stage_side_formulas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B59F96DB103478DE00A57C1A /* stage_side_formulas.cpp */; };
 		B59F96E1103478DE00A57C1A /* stage_unit_formulas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B59F96DD103478DE00A57C1A /* stage_unit_formulas.cpp */; };
 		B59F96E71034791200A57C1A /* aspect_attacks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B59F96E51034791200A57C1A /* aspect_attacks.cpp */; };
-		B59F96ED1034796700A57C1A /* player_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B59F96EB1034796700A57C1A /* player_info.cpp */; };
 		B59F9733103716E400A57C1A /* unit_create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B59F9731103716E400A57C1A /* unit_create.cpp */; };
 		B5A9B2290ECA4074002BE442 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = B5A9914A0ECA4064002BE442 /* fonts */; };
 		B5A9B22B0ECA4074002BE442 /* images in Resources */ = {isa = PBXBuildFile; fileRef = B5A9B0780ECA4074002BE442 /* images */; };
@@ -1209,6 +1205,8 @@
 		ECE09A551EBA529D0020C97B /* parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE09A531EBA529D0020C97B /* parser.cpp */; };
 		ECE113A61DAECF3D00EBD7C4 /* paths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE113A41DAECF3D00EBD7C4 /* paths.cpp */; };
 		ECE17E121A0DD79F00B76473 /* type_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE17E111A0DD79F00B76473 /* type_data.cpp */; };
+		ECE272451FA03AAF004F0908 /* lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE272441FA03AAE004F0908 /* lobby.cpp */; };
+		ECE272491FA03ADD004F0908 /* player_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE272471FA03ADC004F0908 /* player_info.cpp */; };
 		ECEEB7F01A1E8AB20006575B /* default_map_generator_job.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEEB7EF1A1E8AB20006575B /* default_map_generator_job.cpp */; };
 		ECF3A0B318AD3E8800DD643A /* wml_error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF3A0B118AD3E8700DD643A /* wml_error.cpp */; };
 		ECF9D43D19F3FF9400E6C9D9 /* filesystem_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */; settings = {COMPILER_FLAGS = "-DPREFERENCES_DIR='\"Library/Application Support/Wesnoth_1.13\"' -DHAS_RELATIVE_LOCALEDIR"; }; };
@@ -1901,8 +1899,6 @@
 		B54AC6C20FEA9EB5006F6FBD /* ca.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ca.hpp; sourceTree = "<group>"; };
 		B54AC6C50FEA9EB5006F6FBD /* stage_rca.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stage_rca.cpp; sourceTree = "<group>"; };
 		B54AC6C60FEA9EB5006F6FBD /* stage_rca.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = stage_rca.hpp; sourceTree = "<group>"; };
-		B54AC6EF0FEA9F92006F6FBD /* lobby.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lobby.cpp; sourceTree = "<group>"; };
-		B54AC6F00FEA9F92006F6FBD /* lobby.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lobby.hpp; sourceTree = "<group>"; };
 		B54AC6F10FEA9F92006F6FBD /* transient_message.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = transient_message.cpp; sourceTree = "<group>"; };
 		B54AC6F20FEA9F92006F6FBD /* transient_message.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = transient_message.hpp; sourceTree = "<group>"; };
 		B54AC6F70FEA9FA5006F6FBD /* grid_private.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = grid_private.hpp; sourceTree = "<group>"; };
@@ -2197,8 +2193,6 @@
 		B59F96DE103478DE00A57C1A /* stage_unit_formulas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = stage_unit_formulas.hpp; sourceTree = "<group>"; };
 		B59F96E51034791200A57C1A /* aspect_attacks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = aspect_attacks.cpp; sourceTree = "<group>"; };
 		B59F96E61034791200A57C1A /* aspect_attacks.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = aspect_attacks.hpp; sourceTree = "<group>"; };
-		B59F96EB1034796700A57C1A /* player_info.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = player_info.cpp; sourceTree = "<group>"; };
-		B59F96EC1034796700A57C1A /* player_info.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = player_info.hpp; sourceTree = "<group>"; };
 		B59F9731103716E400A57C1A /* unit_create.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_create.cpp; sourceTree = "<group>"; };
 		B59F9732103716E400A57C1A /* unit_create.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_create.hpp; sourceTree = "<group>"; };
 		B5A5E3B012132C790047782D /* lapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lapi.h; sourceTree = "<group>"; };
@@ -2615,6 +2609,10 @@
 		ECE113A41DAECF3D00EBD7C4 /* paths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = paths.cpp; sourceTree = "<group>"; };
 		ECE113A51DAECF3D00EBD7C4 /* paths.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = paths.hpp; sourceTree = "<group>"; };
 		ECE17E111A0DD79F00B76473 /* type_data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = type_data.cpp; sourceTree = "<group>"; };
+		ECE272441FA03AAE004F0908 /* lobby.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lobby.cpp; sourceTree = "<group>"; };
+		ECE272461FA03AC9004F0908 /* lobby.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lobby.hpp; sourceTree = "<group>"; };
+		ECE272471FA03ADC004F0908 /* player_info.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = player_info.cpp; sourceTree = "<group>"; };
+		ECE272481FA03ADC004F0908 /* player_info.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = player_info.hpp; sourceTree = "<group>"; };
 		ECEEB7EF1A1E8AB20006575B /* default_map_generator_job.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = default_map_generator_job.cpp; sourceTree = "<group>"; };
 		ECF3A0B118AD3E8700DD643A /* wml_error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wml_error.cpp; sourceTree = "<group>"; };
 		ECF3A0B218AD3E8800DD643A /* wml_error.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = wml_error.hpp; sourceTree = "<group>"; };
@@ -3762,6 +3760,8 @@
 			children = (
 				91C5545E1D73F997002DB0C8 /* faction_select.cpp */,
 				91C5545F1D73F997002DB0C8 /* faction_select.hpp */,
+				ECE272441FA03AAE004F0908 /* lobby.cpp */,
+				ECE272461FA03AC9004F0908 /* lobby.hpp */,
 				EC5C70BE19EEB57400432CF4 /* mp_alerts_options.cpp */,
 				91B621DD1B76B72500B00E0F /* mp_alerts_options.hpp */,
 				49DA0D1D13550E1E000AFEBD /* mp_change_control.cpp */,
@@ -3786,6 +3786,8 @@
 				91D191461D78D1D900E60B56 /* mp_options_helper.hpp */,
 				91F860841D90B2E9008FE58F /* mp_staging.cpp */,
 				91F860851D90B2E9008FE58F /* mp_staging.hpp */,
+				ECE272471FA03ADC004F0908 /* player_info.cpp */,
+				ECE272481FA03ADC004F0908 /* player_info.hpp */,
 				91222E9C1D6E2D2900001AF2 /* plugin_executor.hpp */,
 				919B37FA1BAF7A9D00E0094C /* synced_choice_wait.cpp */,
 				919B37FB1BAF7A9D00E0094C /* synced_choice_wait.hpp */,
@@ -4019,17 +4021,6 @@
 				F419E43E13354E220031448A /* teleport.hpp */,
 			);
 			path = pathfind;
-			sourceTree = "<group>";
-		};
-		B55BE04611234B1A00154E6C /* lobby */ = {
-			isa = PBXGroup;
-			children = (
-				B54AC6EF0FEA9F92006F6FBD /* lobby.cpp */,
-				B54AC6F00FEA9F92006F6FBD /* lobby.hpp */,
-				B59F96EB1034796700A57C1A /* player_info.cpp */,
-				B59F96EC1034796700A57C1A /* player_info.hpp */,
-			);
-			path = lobby;
 			sourceTree = "<group>";
 		};
 		B597C49D0FACD3F900CE81F5 /* tests */ = {
@@ -4341,7 +4332,6 @@
 				B5A9BCC00ECA805A002BE442 /* language_selection.hpp */,
 				9122417A1CAAB7B7008B347F /* loading_screen.cpp */,
 				9122417B1CAAB7B7008B347F /* loading_screen.hpp */,
-				B55BE04611234B1A00154E6C /* lobby */,
 				918C8A211D05FDAA009744A0 /* log_settings.cpp */,
 				918C8A221D05FDAA009744A0 /* log_settings.hpp */,
 				EC2F9A031A18112D00A14878 /* lua_interpreter.cpp */,
@@ -4846,6 +4836,7 @@
 				6295C3B7150FC95C0077D8C5 /* action_unit.cpp in Sources */,
 				62973FDE15C2EA7800D18140 /* action_village.cpp in Sources */,
 				62CC8E7417B9063E00C16B75 /* action_wml.cpp in Sources */,
+				ECE272491FA03ADD004F0908 /* player_info.cpp in Sources */,
 				B52EE91512135AC300CFBDAB /* action.cpp in Sources */,
 				6295C3B5150FC95C0077D8C5 /* action.cpp in Sources */,
 				B54AC69C0FEA9E8F006F6FBD /* actions.cpp in Sources */,
@@ -5045,8 +5036,6 @@
 				B5A9BD650ECA805A002BE442 /* listbox.cpp in Sources */,
 				B55BE04B11234B1A00154E6C /* lobby_data.cpp in Sources */,
 				B55BE04C11234B1A00154E6C /* lobby_info.cpp in Sources */,
-				B54AC6F50FEA9F92006F6FBD /* lobby.cpp in Sources */,
-				B59F96ED1034796700A57C1A /* player_info.cpp in Sources */,
 				B5599B2F0EC62181008DD061 /* log.cpp in Sources */,
 				B597EC5B0FC08E0100CE81F5 /* log.cpp in Sources */,
 				EC67F7FB1DB314580038337E /* text_cache.cpp in Sources */,
@@ -5304,6 +5293,7 @@
 				91F462941C7117400050A9C9 /* drop_down_menu.cpp in Sources */,
 				EC5401891EBE0C4500AE66EE /* lobby.cpp in Sources */,
 				9130A4601C73BB6100852782 /* select_orb_colors.cpp in Sources */,
+				ECE272451FA03AAF004F0908 /* lobby.cpp in Sources */,
 				91DCA6891C9066CC0030F8D0 /* unit_preview_pane.cpp in Sources */,
 				91DCA68D1C9066EC0030F8D0 /* unit_recruit.cpp in Sources */,
 				9122417C1CAAB7B7008B347F /* loading_screen.cpp in Sources */,
@@ -5802,8 +5792,6 @@
 				91A215CB1CAD968400927AEA /* set_starting_position.cpp in Sources */,
 				91A215CC1CAD969200927AEA /* lobby_data.cpp in Sources */,
 				91A215CD1CAD969200927AEA /* lobby_info.cpp in Sources */,
-				91A215CE1CAD969200927AEA /* lobby.cpp in Sources */,
-				91A215CF1CAD969200927AEA /* player_info.cpp in Sources */,
 				91A215D01CAD96D900927AEA /* mp_alerts_options.cpp in Sources */,
 				91A215D11CAD96D900927AEA /* mp_change_control.cpp in Sources */,
 				91A215D21CAD96D900927AEA /* mp_cmd_wrapper.cpp in Sources */,

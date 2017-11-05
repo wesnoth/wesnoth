@@ -29,20 +29,21 @@ IMPLEMENT_ACTION(village)
 
 editor_action* editor_action_village::perform(map_context& mc) const
 {
-	editor_action_ptr undo;
-
 	if(!mc.get_map().is_village(loc_)) {
 		return nullptr;
 	}
 
 	std::vector<team>& teams = mc.get_teams();
 
-	team* t = unsigned(side_number_) < teams.size() ? &teams[side_number_] : nullptr;
-	if(t && t->owns_village(loc_)) {
-		return nullptr;
+	try {
+		if(teams.at(side_number_).owns_village(loc_)) {
+			return nullptr;
+		}
+	} catch(const std::out_of_range&) {
+		// side_number_ was an invalid team index.
 	}
 
-	undo.reset(new editor_action_village_delete(loc_));
+	editor_action_ptr undo(new editor_action_village_delete(loc_));
 
 	for(const team& t : teams) {
 		if(t.owns_village(loc_)) {

@@ -476,13 +476,21 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-// For copy/paste we use a different key on the MAC. Other ctrl modifiers won't
-// be modifed seems not to be required when I read the comment in
-// widgets/textbox.cpp:516. Would be nice if somebody on a MAC would test it.
+/*
+ * For copy, cut and paste we use a different key on the MAC. Even for 'select
+ * all', contradicting the comment in widgets/textbox.cpp:495.
+ *
+ * The reason for that is, by coupling 'select all' to the behavior for copy,
+ * cut and paste, the text box behavior as a whole gets consistent with default
+ * macOS hotkey idioms.
+ */
 #ifdef __APPLE__
-	const unsigned copypaste_modifier = KMOD_LGUI | KMOD_RGUI;
+	// Idiomatic modifier key in macOS computers.
+	const SDL_Keycode modifier_key = KMOD_GUI;
 #else
-	const unsigned copypaste_modifier = KMOD_CTRL;
+	// Idiomatic modifier key in Microsoft desktop environments. Common in
+	// GNU/Linux as well, to some extent.
+	const SDL_Keycode modifier_key = KMOD_CTRL;
 #endif
 
 	switch(key) {
@@ -512,7 +520,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_a:
-			if(!(modifier & KMOD_CTRL)) {
+			if(!(modifier & modifier_key)) {
 				return;
 			}
 
@@ -536,7 +544,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_c:
-			if(!(modifier & copypaste_modifier)) {
+			if(!(modifier & modifier_key)) {
 				return;
 			}
 
@@ -547,7 +555,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_x:
-			if(!(modifier & copypaste_modifier)) {
+			if(!(modifier & modifier_key)) {
 				return;
 			}
 
@@ -557,7 +565,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		case SDLK_v:
-			if(!(modifier & copypaste_modifier)) {
+			if(!(modifier & modifier_key)) {
 				return;
 			}
 

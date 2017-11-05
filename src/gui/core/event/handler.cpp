@@ -146,6 +146,11 @@ public:
 	 */
 	void disconnect(dispatcher* dispatcher);
 
+	/**
+	 * Returns all dispatchers in the Z order.
+	 */
+	std::vector<dispatcher*>& get_dispatchers() { return dispatchers_; }
+
 	/** The dispatcher that captured the mouse focus. */
 	dispatcher* mouse_focus;
 
@@ -165,7 +170,8 @@ private:
 
 	/** Fires a draw event. */
 	using events::sdl_handler::draw;
-	void draw(const bool force);
+	void draw();
+	void draw_everything();
 
 	/**
 	 * Fires a video resize event.
@@ -374,10 +380,11 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			break;
 
 		case DRAW_EVENT:
-			draw(false);
+			draw();
 			break;
+
 		case DRAW_ALL_EVENT:
-			draw(true);
+			draw_everything();
 			break;
 
 		case TIMER_EVENT:
@@ -409,7 +416,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		case SDL_WINDOWEVENT:
 			switch(event.window.event) {
 				case SDL_WINDOWEVENT_EXPOSED:
-					draw(true);
+					draw();
 					break;
 
 				case SDL_WINDOWEVENT_RESIZED:
@@ -521,37 +528,10 @@ void sdl_event_handler::activate()
 	}
 }
 
-void sdl_event_handler::draw(const bool force)
+void sdl_event_handler::draw()
 {
-	// Don't display this event since it floods the screen
-	// DBG_GUI_E << "Firing " << DRAW << ".\n";
-
-	/*
-	 * In normal draw mode the first window in not forced to be drawn the
-	 * others are. So for forced mode we only need to force the first window to
-	 * be drawn the others are already handled.
-	 */
-	bool first = !force;
-
-	/**
-	 * @todo Need to evaluate which windows really to redraw.
-	 *
-	 * For now we use a hack, but would be nice to rewrite it for 1.9/1.11.
-	 */
 	for(auto dispatcher : dispatchers_)
 	{
-		if(!first) {
-			/*
-			 * This leaves glitches on window borders if the window beneath it
-			 * has changed, on the other hand invalidating twindown::restorer_
-			 * causes black borders around the window. So there's the choice
-			 * between two evils.
-			 */
-			dynamic_cast<widget&>(*dispatcher).set_is_dirty(true);
-		} else {
-			first = false;
-		}
-
 		dispatcher->fire(DRAW, dynamic_cast<widget&>(*dispatcher));
 	}
 
@@ -560,6 +540,15 @@ void sdl_event_handler::draw(const bool force)
 
 		video.flip();
 	}
+}
+
+void sdl_event_handler::draw_everything()
+{
+	for(auto dispatcher : dispatchers_) {
+		dynamic_cast<widget&>(*dispatcher).set_is_dirty(true);
+	}
+
+	draw();
 }
 
 void sdl_event_handler::video_resize(const point& new_size)
@@ -832,6 +821,12 @@ void disconnect_dispatcher(dispatcher* dispatcher)
 	assert(handler_);
 	assert(dispatcher);
 	handler_->disconnect(dispatcher);
+}
+
+std::vector<dispatcher*>& get_all_dispatchers()
+{
+	assert(handler_);
+	return handler_->get_dispatchers();
 }
 
 void init_mouse_location()

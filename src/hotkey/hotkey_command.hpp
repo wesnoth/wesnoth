@@ -280,6 +280,7 @@ const hotkey_command& get_hotkey_null();
 void deactivate_all_scopes();
 void set_scope_active(scope s, bool set = true);
 void set_active_scopes(hk_scopes s);
+bool is_scope_active(scope s);
 bool is_scope_active(hk_scopes s);
 
 ///

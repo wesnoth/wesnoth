@@ -40,6 +40,7 @@ public:
 		std::string::const_iterator end() const   { return string_.begin() + end_; }
 		std::string::const_iterator plural_begin() const;
 		std::string::const_iterator plural_end() const;
+
 	private:
 		void update();
 
@@ -54,8 +55,10 @@ public:
 	friend class walker;
 
 	t_string_base();
+
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	~t_string_base();
+
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string_base(const t_string_base&);
 	t_string_base(const std::string& string);
@@ -99,12 +102,14 @@ public:
 	const std::string& str() const;
 	const char* c_str() const                        { return str().c_str(); }
 	bool translatable() const						 { return translatable_; }
+
 	// Warning: value() may contain platform dependent prefix bytes !
 	// Consider base_str() for a more reliable untranslated string
 	const std::string& value() const                 { return value_; }
 	std::string base_str() const;
 
 	size_t hash_value() const;
+
 private:
 	std::string value_;
 	mutable std::string translated_value_;
@@ -123,12 +128,15 @@ public:
 
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string();
+
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	~t_string();
+
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
-	t_string(const t_string &);
+	t_string(const t_string&);
+
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
-	t_string &operator=(const t_string &);
+	t_string& operator=(const t_string&);
 
 	t_string(const base &);
 	t_string(const char *);
@@ -136,7 +144,7 @@ public:
 	t_string(const std::string &str, const std::string &textdomain);
 	t_string(const std::string& sing, const std::string& pl, int count, const std::string& textdomain);
 
-	t_string &operator=(const char *o);
+	t_string& operator=(const char *o);
 
 	static t_string from_serialized(const std::string& string) { return t_string(base::from_serialized(string)); }
 	std::string to_serialized() const { return get().to_serialized(); }
@@ -146,6 +154,7 @@ public:
 	t_string operator+(const t_string& o) const { return get() + o.get(); }
 	t_string operator+(const std::string& o) const { return get() + o; }
 	t_string operator+(const char* o) const { return get() + o; }
+
 private:
 	template<typename T>
 	void increase_impl(const T& other)
@@ -154,6 +163,7 @@ private:
 		*nw += other;
 		val_.reset(nw);
 	}
+
 public:
 	t_string& operator+=(const t_string& o) { increase_impl(o.get()); return *this; }
 	t_string& operator+=(const std::string& o) { increase_impl(o); return *this; }
@@ -184,6 +194,7 @@ public:
 
 	const t_string_base& get() const { return *val_; }
 	void swap(t_string& other) { val_.swap(other.val_); }
+
 private:
 	//never null
 	std::shared_ptr<const t_string_base> val_;
@@ -193,9 +204,9 @@ private:
 void swap(t_string& lhs, t_string& rhs);
 
 inline std::ostream& operator<<(std::ostream& os, const t_string& str) { return os << str.get(); }
-inline bool operator==(const std::string &a, const t_string &b)    { return b == a; }
-inline bool operator==(const char *a, const t_string &b)           { return b == a; }
-inline bool operator!=(const std::string &a, const t_string &b)    { return b != a; }
-inline bool operator!=(const char *a, const t_string &b)           { return b != a; }
-inline t_string operator+(const std::string &a, const t_string &b) { return t_string(a) + b; }
-inline t_string operator+(const char *a, const t_string &b)        { return t_string(a) + b; }
+inline bool operator==(const std::string &a, const t_string& b)    { return b == a; }
+inline bool operator==(const char *a, const t_string& b)           { return b == a; }
+inline bool operator!=(const std::string &a, const t_string& b)    { return b != a; }
+inline bool operator!=(const char *a, const t_string& b)           { return b != a; }
+inline t_string operator+(const std::string &a, const t_string& b) { return t_string(a) + b; }
+inline t_string operator+(const char *a, const t_string& b)        { return t_string(a) + b; }

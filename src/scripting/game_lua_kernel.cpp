@@ -131,13 +131,6 @@ class CVideo;
 #include "scripting/debug_lua.hpp"
 #endif
 
-// Suppress uninitialized variables warnings, because of boost::optional constructors in this file which apparently confuses gcc
-#if defined(__GNUC__) && !defined(__clang__) // we shouldn't need this for clang, but for gcc and tdm-gcc we probably do
-#if __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6 ) // "GCC diagnostic ignored" is apparently not available at version 4.5.2
-#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
-#endif
-#endif
-
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define WRN_LUA LOG_STREAM(warn, log_scripting_lua)

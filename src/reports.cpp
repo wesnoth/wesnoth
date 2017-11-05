@@ -1469,7 +1469,7 @@ REPORT_GENERATOR(side_playing, rc)
 	const team &active_team = rc.teams()[rc.screen().playing_team()];
 	std::string flag_icon = active_team.flag_icon();
 	std::string old_rgb = game_config::flag_rgb;
-	std::string new_rgb = team::get_side_color_index(rc.screen().playing_side());
+	std::string new_rgb = team::get_side_color_id(rc.screen().playing_side());
 	std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 	if (flag_icon.empty())
 		flag_icon = game_config::images::flag_icon;

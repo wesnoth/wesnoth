@@ -94,15 +94,12 @@ mp_create_game::mp_create_game(const config& cfg, ng::create_engine& create_eng)
 {
 	level_types_ = {
 		{ng::level::TYPE::SCENARIO, _("Scenarios")},
-		{ng::level::TYPE::CAMPAIGN, _("Campaigns")},
-		{ng::level::TYPE::USER_MAP, _("User Maps")},
-		{ng::level::TYPE::USER_SCENARIO, _("User Scenarios")},
+		{ng::level::TYPE::CAMPAIGN, _("Multiplayer Campaigns")},
+		{ng::level::TYPE::SP_CAMPAIGN, _("Singleplayer Campaigns")},
+		{ng::level::TYPE::USER_MAP, _("Custom Maps")},
+		{ng::level::TYPE::USER_SCENARIO, _("Custom Scenarios")},
 		{ng::level::TYPE::RANDOM_MAP, _("Random Maps")},
 	};
-
-	if(game_config::debug) {
-		level_types_.emplace_back(ng::level::TYPE::SP_CAMPAIGN, _("SP Campaigns"));
-	}
 
 	level_types_.erase(std::remove_if(level_types_.begin(), level_types_.end(),
 		[this](level_type_info& type_info) {

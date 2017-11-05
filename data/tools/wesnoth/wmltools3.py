@@ -709,6 +709,7 @@ class CrossRef:
             if iswml(fn):
                 with codecs.open(fn, "r", "utf8") as rfp:
                     attack_name = None
+                    have_icon = False
                     beneath = 0
                     ignoreflag = False
                     for (n, line) in enumerate(rfp):
@@ -778,8 +779,11 @@ class CrossRef:
                             for pattern in split_filenames(match):
                                 for name in expand_square_braces(pattern):
                                     # Catches maps that look like macro names.
-                                    if (name.endswith(".map") or name.endswith(".mask")) and name[0] == '{':
-                                        name = name[1:]
+                                    if (name.endswith(".map") or name.endswith(".mask")):
+                                        if name.startswith("{~"):
+                                            name = name[2:]
+                                        elif name.startswith("{"):
+                                            name = name[1:]
                                     if os.sep == "\\":
                                         name = name.replace("/", "\\")
                                     key = None
@@ -808,7 +812,6 @@ class CrossRef:
                                         self.missing.append((name, Reference(ns,fn,n+1)))
                         # Notice implicit references through attacks
                         if state == "outside":
-                            have_icon = False
                             if "[attack]" in line:
                                 beneath = 0
                                 attack_name = default_icon = None

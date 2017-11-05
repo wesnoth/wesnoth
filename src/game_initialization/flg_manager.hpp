@@ -94,6 +94,8 @@ private:
 	// Append leaders from a given faction to a choosable factions.
 	void append_leaders_from_faction(const config* faction);
 
+	void select_default_faction();
+
 	int faction_index(const config& faction) const;
 	/// returns -1 if no leader with that name was found
 	int leader_index(const std::string& leader) const;

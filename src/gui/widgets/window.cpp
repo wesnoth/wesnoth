@@ -65,6 +65,10 @@
 
 #include "utils/functional.hpp"
 
+#include <algorithm>
+#include <iterator>
+#include <stdexcept>
+
 namespace wfl { class function_symbol_table; }
 namespace gui2 { class button; }
 
@@ -719,7 +723,21 @@ void window::draw()
 	}
 
 	if (dirty_list_.empty()) {
+		consecutive_changed_frames_ = 0u;
 		return;
+	}
+
+	++consecutive_changed_frames_;
+	if(consecutive_changed_frames_ >= 100u && id_ == "title_screen") {
+		/* The title screen has changed in 100 consecutive frames, i.e. every
+		frame for two seconds. It looks like the screen is constantly changing
+		or at least marking widgets as dirty.
+
+		That's a severe problem. Every time the title screen changes, all
+		other GUI windows need to be fully redrawn, with huge CPU usage cost.
+		For that reason, this situation is a hard error. */
+		throw std::logic_error("The title screen is constantly changing, "
+			"which has a huge CPU usage cost. See the code comment.");
 	}
 
 	for(auto & item : dirty_list_)
@@ -811,6 +829,8 @@ void window::draw()
 	}
 
 	dirty_list_.clear();
+
+	redraw_windows_on_top();
 
 	std::vector<widget*> call_stack;
 	populate_dirty_list(*this, call_stack);
@@ -1202,6 +1222,17 @@ void window_swap_grid(grid* g,
 }
 
 } // namespace
+
+void window::redraw_windows_on_top() const
+{
+	std::vector<dispatcher*>& dispatchers = event::get_all_dispatchers();
+	auto me = std::find(dispatchers.begin(), dispatchers.end(), this);
+
+	for(auto it = std::next(me); it != dispatchers.end(); ++it) {
+		// Note that setting an entire window dirty like this is expensive.
+		dynamic_cast<widget&>(**it).set_is_dirty(true);
+	}
+}
 
 void window::finalize(const std::shared_ptr<builder_grid>& content_grid)
 {

@@ -354,6 +354,17 @@ void create_engine::init_generated_level_data()
 
 bool create_engine::current_level_has_side_data()
 {
+	//
+	// We exclude campaigns from this check since they require preprocessing in order to check
+	// their side data. Since this function is used by the MP Create screen to verify side data
+	// before proceeding to Staging, this should cover most cases of false positives. It does,
+	// however, leave open the possibility of scenarios that require preprocessing before their
+	// side data is accessible, but that's an unlikely occurrence.
+	//
+	if(current_level_type_ == level::TYPE::CAMPAIGN || current_level_type_ == level::TYPE::SP_CAMPAIGN) {
+		return true;
+	}
+
 	return current_level().data().has_child("side");
 }
 
@@ -398,6 +409,7 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 	config& current_level_data = current_level().data();
 
 	state_.classification().campaign = current_level_data["id"].str();
+	state_.classification().campaign_name = current_level_data["name"].str();
 	state_.classification().abbrev = current_level_data["abbrev"].str();
 
 	state_.classification().end_text = current_level_data["end_text"].str();
@@ -653,7 +665,7 @@ const mp_game_settings& create_engine::get_parameters()
 
 	int era_index = current_level().allow_era_choice() ? current_era_index_ : 0;
 	state_.mp_settings().mp_era = eras_[era_index]->id;
-	state_.mp_settings().mp_era_addon_id = (*eras_[era_index]->cfg)["addon_id"].str();
+	state_.mp_settings().mp_era_name = (*eras_[era_index]->cfg)["name"].str();
 
 	return state_.mp_settings();
 }

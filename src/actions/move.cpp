@@ -1133,10 +1133,13 @@ namespace { // Private helpers for move_unit()
 			redraw = true;
 		}
 
+		display::announce_options announce_options;
+		announce_options.discard_previous = false;
+
 		// Failed teleport feedback?
 		if ( playing_team_is_viewing_  &&  teleport_failed_ ) {
 			std::string teleport_string = _("Failed teleport! Exit not empty");
-			disp.announce(message_prefix + teleport_string, font::BAD_COLOR);
+			disp.announce(message_prefix + teleport_string, font::BAD_COLOR, announce_options);
 			message_prefix += " \n";
 			redraw = true;
 		}
@@ -1166,7 +1169,7 @@ namespace { // Private helpers for move_unit()
 				msg_color = font::GOOD_COLOR;
 			}
 
-			disp.announce(message_prefix + message, msg_color);
+			disp.announce(message_prefix + message, msg_color, announce_options);
 			message_prefix += " \n";
 			redraw = true;
 		}
@@ -1179,7 +1182,7 @@ namespace { // Private helpers for move_unit()
 				utils::string_map symbols;
 				symbols["hotkey"] = name;
 				std::string message = vgettext("(press $hotkey to keep moving)", symbols);
-				disp.announce(message_prefix + message, font::NORMAL_COLOR);
+				disp.announce(message_prefix + message, font::NORMAL_COLOR, announce_options);
 				message_prefix += " \n";
 				redraw = true;
 			}

@@ -78,7 +78,7 @@ namespace {
 			char_t_to*& to_next;
 			char_t_to* to_end;
 
-			bool can_push(size_t count)
+			bool can_push(size_t count) const
 			{
 				return static_cast<size_t>(to_end - to_next) > count;
 			}
@@ -948,13 +948,11 @@ int dir_size(const std::string& pname)
 
 std::string base_name(const std::string& file, const bool remove_extension)
 {
-	std::string res = path(file).filename().string();
-
-	if(remove_extension) {
-		return res.substr(0, res.rfind("."));
+	if(!remove_extension) {
+		return path(file).filename().string();
+	} else {
+		return path(file).stem().string();
 	}
-
-	return res;
 }
 
 std::string directory_name(const std::string& file)
@@ -1328,17 +1326,17 @@ std::string get_independent_image_path(const std::string &filename)
 	path full_path(get_binary_file_location("images", filename));
 
 	if (full_path.empty())
-		return full_path.string();
+		return full_path.generic_string();
 
 	path partial = subtract_path(full_path, get_user_data_path());
 	if (!partial.empty())
-		return partial.string();
+		return partial.generic_string();
 
 	partial = subtract_path(full_path, game_config::path);
 	if (!partial.empty())
-		return partial.string();
+		return partial.generic_string();
 
-	return full_path.string();
+	return full_path.generic_string();
 }
 
 std::string get_program_invocation(const std::string &program_name)

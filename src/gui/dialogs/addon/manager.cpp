@@ -648,13 +648,16 @@ void addon_manager::update_all_addons(window& window)
 {
 	for(const auto& a : addons_) {
 		if(tracking_info_[a.first].state == ADDON_INSTALLED_UPGRADABLE) {
-			// TODO: handle result of this
-			client_.install_addon_with_checks(addons_, a.second);
+			addons_client::install_result result = client_.install_addon_with_checks(addons_, a.second);
+
+			// Take note if any wml_changes occurred
+			need_wml_cache_refresh_ |= result.wml_changed;
 		}
 	}
 
-	need_wml_cache_refresh_ = true;
-	load_addon_list(window);
+	if(need_wml_cache_refresh_) {
+		load_addon_list(window);
+	}
 }
 
 /** Performs all backend and UI actions for publishing the specified add-on. */

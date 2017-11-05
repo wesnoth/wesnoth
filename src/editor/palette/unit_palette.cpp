@@ -39,15 +39,9 @@ void unit_palette::setup(const config& /*cfg*/)
 		item_map_.emplace(i.second.id(), i.second);
 		group_map_[i.second.race_id()].push_back(i.second.id());
 		nmax_items_ = std::max<int>(nmax_items_, group_map_[i.second.race_id()].size());
-		// TODO: Implement the concept of "core" units
-		bool core = true;
-		if(core) {
-			// Add the unit to the default group
-			group_map_["all"].push_back(i.second.id());
-			nmax_items_ = std::max<int>(nmax_items_, group_map_["all"].size());
-		} else {
-			non_core_items_.insert(i.second.id());
-		}
+		// Add the unit to the default group
+		group_map_["all"].push_back(i.second.id());
+		nmax_items_ = std::max<int>(nmax_items_, group_map_["all"].size());
 	}
 
 	for(const race_map::value_type &i : unit_types.races()) {
@@ -84,7 +78,7 @@ void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstre
 
 	std::stringstream filename;
 	filename << u.image() << "~RC(" << u.flag_rgb() << '>'
-	    	 << team::get_side_color_index(gui_.viewing_side()) << ')';
+	    	 << team::get_side_color_id(gui_.viewing_side()) << ')';
 
 	image = image::get_image(filename.str());
 	if(image == nullptr) {

@@ -107,7 +107,7 @@ include(SearchForStuff)
 # optimization (c.f. bug #23445), work around this by enforcing "release" type
 # if nothing was selected
 if(NOT CMAKE_BUILD_TYPE)
-	set( CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE)
+	set( CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release Profile RelWithDebInfo MinSizeRel." FORCE)
 endif(NOT CMAKE_BUILD_TYPE)
 
 if(NOT DEFINED ENABLE_DISPLAY_REVISION)
@@ -293,6 +293,14 @@ check_compiler_has_flag(
 	"-Wliteral-suffix"
 	HAS_COMPILER_FLAG_WLITERAL_SUFFIX
 	"-Wno-literal-suffix"
+)
+
+# This flag is too aggressive and keeps giving false positives.
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
+	"-Wmaybe-uninitialized"
+	HAS_COMPILER_FLAG_WMAYBE_UNINITIALIZED
+	"-Wno-maybe-uninitialized"
 )
 
 # This removes a lot of warnings from Clang regarding unused -I arguments
@@ -517,6 +525,7 @@ set(CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}" CACHE STRING "removed
 MESSAGE("Replacing default flags used for Release build with -O3")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3" CACHE STRING "Release build flags" FORCE)
 set(CMAKE_C_FLAGS_RELEASE "-O3" CACHE STRING "Release build flags" FORCE)
+set(CMAKE_EXE_LINKER_FLAGS_RELEASE "" CACHE STRING "" FORCE)
 # set the arch to use for Release build if provided
 if(ARCH)
 	MESSAGE("adding -march=${ARCH} to Release build")
@@ -530,17 +539,21 @@ if(WIN32 AND NOT ARCH)
 	set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -march=pentiumpro" CACHE STRING "Release build flags" FORCE)
 endif(WIN32 AND NOT ARCH)
 
-# if compiling with LTO
-if(ENABLE_LTO)
-# clang and gcc require different parallelization options and linkers
-	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-		MESSAGE("added -flto=thin to Release build")
-		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto=thin" CACHE STRING "Release build flags with LTO" FORCE)
-		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto=thin" CACHE STRING "Release build flags with LTO" FORCE)
-		
-		MESSAGE("Using Clang LLD linker")
-		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "-s -fuse-ld=lld" CACHE STRING "Linker flag for building with LTO and clang" FORCE)
-	elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+# PGO and LTO for GCC
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+	if(PGO_DATA STREQUAL "generate")
+		MESSAGE("Generating PGO data")
+		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-generate=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags generating PGO data" FORCE)
+		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-generate=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags generating PGO data" FORCE)
+	endif()
+	
+	if(PGO_DATA STREQUAL "use")
+		MESSAGE("Using PGO data from previous runs")
+		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-correction -fprofile-use=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags for using PGO data" FORCE)
+		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-correction -fprofile-use=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags for using PGO data" FORCE)
+	endif()
+	
+	if(ENABLE_LTO)
 		if(NOT LTO_JOBS)
 			MESSAGE("LTO_JOBS not set, defaulting to 1")
 			set(LTO_JOBS "1" CACHE STRING "Number of threads to use for LTO with gcc" FORCE)
@@ -551,10 +564,36 @@ if(ENABLE_LTO)
 		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto=${LTO_JOBS}" CACHE STRING "Release build flags with LTO" FORCE)
 		
 		MESSAGE("Using GCC gold linker")
-		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "-s -fuse-ld=gold" CACHE STRING "Linker flag for building with LTO and gcc" FORCE)
+		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -fuse-ld=gold" CACHE STRING "" FORCE)
+	endif(ENABLE_LTO)
+endif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+
+# PGO and LTO for Clang
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+	if(PGO_DATA STREQUAL "generate")
+		MESSAGE("Generating PGO data")
+		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-instr-generate=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth-%p.profraw" CACHE STRING "Release build flags generating PGO data" FORCE)
+		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-instr-generate=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth-%p.profraw" CACHE STRING "Release build flags generating PGO data" FORCE)
 	endif()
 	
+	if(PGO_DATA STREQUAL "use")
+		MESSAGE("Using PGO data from previous runs")
+		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-instr-use=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth.profdata" CACHE STRING "Release build flags for using PGO data" FORCE)
+		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-instr-use=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth.profdata" CACHE STRING "Release build flags for using PGO data" FORCE)
+	endif()
+	
+	if(ENABLE_LTO)
+		MESSAGE("added -flto=thin to Release build")
+		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto=thin" CACHE STRING "Release build flags with LTO" FORCE)
+		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto=thin" CACHE STRING "Release build flags with LTO" FORCE)
+		
+		MESSAGE("Using Clang LLD linker")
+		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -fuse-ld=lld" CACHE STRING "Linker flag for building with LTO and clang" FORCE)
+	endif(ENABLE_LTO)
+endif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+
 # set CMAKE_AR and CMAKE_RANLIB to use LTO-enabled variants if LTO is enabled
+if(ENABLE_LTO)
 	MESSAGE("Using gcc-ar and gcc-ranlib")
 	find_program(LTO_AR NAMES gcc-ar)
 	find_program(LTO_RANLIB NAMES gcc-ranlib)
@@ -570,6 +609,9 @@ else()
 endif()
 MARK_AS_ADVANCED(LTO_AR LTO_RANLIB NON_LTO_AR NON_LTO_RANLIB)
 
+# clean the pgo data
+set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${CMAKE_SOURCE_DIR}/pgo_data/")
+
 # #
 # End determining options for Release build
 # Start setting options for Debug build
@@ -583,13 +625,46 @@ set(CMAKE_C_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3" CACHE STRING "change cmake's Debug 
 
 # adds GLIBCXX_DEBUG definitions
 if(GLIBCXX_DEBUG)
-  MESSAGE("Defining _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC")
-  add_definitions(-D_GLIBCXX_DEBUG)
-  add_definitions(-D_GLIBCXX_DEBUG_PEDANTIC)
+	MESSAGE("Defining _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC")
+	add_definitions(-D_GLIBCXX_DEBUG)
+	add_definitions(-D_GLIBCXX_DEBUG_PEDANTIC)
 endif(GLIBCXX_DEBUG)
 
 # #
 # End setting options for Debug build
+# Start setting options for Profile build
+# #
+
+if(PROFILER STREQUAL "gprof" OR NOT PROFILER)
+	MESSAGE("Profiler is gprof")
+	set(CMAKE_CXX_FLAGS_PROFILE "-pg" CACHE STRING "Flags for profiling with gprof" FORCE)
+	set(CMAKE_C_FLAGS_PROFILE "-pg" CACHE STRING "Flags for profiling with gprof" FORCE)
+	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "" CACHE STRING "" FORCE)
+endif()
+
+if(PROFILER STREQUAL "gcov")
+	MESSAGE("Profiler is gcov")
+	set(CMAKE_CXX_FLAGS_PROFILE "-fprofile-arcs -ftest-coverage" CACHE STRING "Flags for profiling with gcov" FORCE)
+	set(CMAKE_C_FLAGS_PROFILE "-fprofile-arcs -ftest-coverage" CACHE STRING "Flags for profiling with gcov" FORCE)
+	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "" CACHE STRING "" FORCE)
+endif()
+
+if(PROFILER STREQUAL "gperftools")
+	MESSAGE("Profiler is gperftools")
+	set(CMAKE_CXX_FLAGS_PROFILE "" CACHE STRING "Flags for profiling with gperftools" FORCE)
+	set(CMAKE_C_FLAGS_PROFILE "" CACHE STRING "Flags for profiling with gperftools" FORCE)
+	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "-Wl,--no-as-needed,-lprofiler" CACHE STRING "" FORCE)
+endif()
+
+if(PROFILER STREQUAL "perf")
+	MESSAGE("Profiler is perf")
+	set(CMAKE_CXX_FLAGS_PROFILE "-ggdb -Og" CACHE STRING "Flags for profiling with perf" FORCE)
+	set(CMAKE_C_FLAGS_PROFILE "-ggdb -Og" CACHE STRING "Flags for profiling with perf" FORCE)
+	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "" CACHE STRING "" FORCE)
+endif()
+
+# #
+# End setting options for Profile build
 # #
 
 # When the path starts with a / on a Unix system it's an absolute path.

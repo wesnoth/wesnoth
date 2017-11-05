@@ -172,13 +172,13 @@ namespace {
 std::string describe_turns(int turn, int num_turns)
 {
 	std::ostringstream buf;
-	buf << turn << '/';
+	buf << turn;
 
-	if(num_turns == -1) {
-		buf << '-';
-	} else {
-		buf << num_turns;
+	// If the game has a turn limit.
+	if(num_turns > -1) {
+		buf << '/' << num_turns;
 	}
+
 	return buf.str();
 }
 
