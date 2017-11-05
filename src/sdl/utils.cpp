@@ -1603,7 +1603,7 @@ surface blur_alpha_surface(const surface &surf, int depth)
 		depth = max_blur;
 	}
 
-	boost::circular_buffer<Uint32> queue(max_blur);
+	boost::circular_buffer<Uint32> queue(depth*2+1);
 
 	const Uint32 ff = 0xff;
 
