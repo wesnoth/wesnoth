@@ -1603,26 +1603,59 @@ surface blur_alpha_surface(const surface &surf, int depth)
 		depth = max_blur;
 	}
 
-	boost::circular_buffer<Uint32> queue(depth*2+1);
+	struct Pixel{
+		Uint8 alpha;
+		Uint8 red;
+		Uint8 green;
+		Uint8 blue;
+		Pixel(Uint32* p)
+		  : alpha(((*p) >> 24)&0xFF)
+		  , red(((*p) >> 16)&0xFF)
+		  , green(((*p) >> 8)&0xFF)
+		  , blue((*p)&0xFF) {}
+	};
+	struct Average{
+		Uint32 alpha;
+		Uint32 red;
+		Uint32 green;
+		Uint32 blue;
+		Average() : alpha(), red(), green(), blue()
+		{}
+		Average& operator+=(const Pixel& pix){
+			red   += pix.red;
+			green += pix.green;
+			blue  += pix.blue;
+			alpha += pix.alpha;
+			return *this;
+		}
+		Average& operator-=(const Pixel& pix){
+			red   -= pix.red;
+			green -= pix.green;
+			blue  -= pix.blue;
+			alpha -= pix.alpha;
+			return *this;
+		}
+		Uint32 operator()(unsigned num){
+			const Uint32 ff = 0xff;
+			return (std::min(alpha/num,ff) << 24) | (std::min(red/num,ff) << 16) | (std::min(green/num,ff) << 8) | std::min(blue/num,ff);
+		}
+	};
 
-	const Uint32 ff = 0xff;
+	boost::circular_buffer<Pixel> queue(depth*2+1);
 
 	surface_lock lock(res);
 	int x, y;
 	// Iterate over rows, blurring each row horizontally
 	for(y = 0; y < res->h; ++y) {
 		// Sum of pixel values stored here
-		Uint32 alpha=0, red = 0, green = 0, blue = 0;
+		Average avg;
 
 		// Preload the first depth+1 pixels
 		Uint32* p = lock.pixels() + y*res->w;
 		for(x = 0; x <= depth && x < res->w; ++x, ++p) {
-			alpha += ((*p) >> 24)&0xFF;
-			red += ((*p) >> 16)&0xFF;
-			green += ((*p) >> 8)&0xFF;
-			blue += (*p)&0xFF;
 			assert(!queue.full());
-			queue.push_back(*p);
+			queue.push_back(Pixel{p});
+			avg += queue.back();
 		}
 
 		// This is the actual inner loop
@@ -1630,17 +1663,11 @@ surface blur_alpha_surface(const surface &surf, int depth)
 		for(x = 0; x < res->w; ++x, ++p) {
 			// Write the current average
 			const Uint32 num = queue.size();
-			*p = (std::min(alpha/num,ff) << 24) | (std::min(red/num,ff) << 16) | (std::min(green/num,ff) << 8) | std::min(blue/num,ff);
+			*p = avg(num);
 
 			// Unload earlier pixels that are now too far away
 			if(x >= depth) {
-				{
-					const auto &front = queue.front();
-					alpha -= (front >> 24)&0xFF;
-					red -= (front >> 16)&0xFF;
-					green -= (front >> 8)&0xFF;
-					blue -= front&0xFF;
-				}
+				avg -= queue.front();
 				assert(!queue.empty());
 				queue.pop_front();
 			}
@@ -1648,12 +1675,9 @@ surface blur_alpha_surface(const surface &surf, int depth)
 			// Add new pixels
 			if(x + depth+1 < res->w) {
 				Uint32* q = p + depth+1;
-				alpha += ((*q) >> 24)&0xFF;
-				red += ((*q) >> 16)&0xFF;
-				green += ((*q) >> 8)&0xFF;
-				blue += (*q)&0xFF;
 				assert(!queue.full());
-				queue.push_back(*q);
+				queue.push_back(Pixel{q});
+				avg += queue.back();
 			}
 		}
 		assert(static_cast<int>(queue.size()) == std::min(depth, res->w));
@@ -1663,17 +1687,14 @@ surface blur_alpha_surface(const surface &surf, int depth)
 	// Iterate over columns, blurring each column vertically
 	for(x = 0; x < res->w; ++x) {
 		// Sum of pixel values stored here
-		Uint32 alpha=0, red = 0, green = 0, blue = 0;
+		Average avg;
 
 		// Preload the first depth+1 pixels
 		Uint32* p = lock.pixels() + x;
 		for(y = 0; y <= depth && y < res->h; ++y, p += res->w) {
-			alpha += ((*p) >> 24)&0xFF;
-			red += ((*p) >> 16)&0xFF;
-			green += ((*p) >> 8)&0xFF;
-			blue += *p&0xFF;
 			assert(!queue.full());
-			queue.push_back(*p);
+			queue.push_back(Pixel{p});
+			avg += queue.back();
 		}
 
 		// This is the actual inner loop
@@ -1681,17 +1702,11 @@ surface blur_alpha_surface(const surface &surf, int depth)
 		for(y = 0; y < res->h; ++y, p += res->w) {
 			// Write the current average
 			const Uint32 num = queue.size();
-			*p = (std::min(alpha/num,ff) << 24) | (std::min(red/num,ff) << 16) | (std::min(green/num,ff) << 8) | std::min(blue/num,ff);
+			*p = avg(num);
 
 			// Unload earlier pixels that are now too far away
 			if(y >= depth) {
-				{
-					const auto &front = queue.front();
-					alpha -= (front >> 24)&0xFF;
-					red -= (front >> 16)&0xFF;
-					green -= (front >> 8)&0xFF;
-					blue -= front&0xFF;
-				}
+				avg -= queue.front();
 				assert(!queue.empty());
 				queue.pop_front();
 			}
@@ -1699,12 +1714,9 @@ surface blur_alpha_surface(const surface &surf, int depth)
 			// Add new pixels
 			if(y + depth+1 < res->h) {
 				Uint32* q = p + (depth+1)*res->w;
-				alpha += ((*q) >> 24)&0xFF;
-				red += ((*q) >> 16)&0xFF;
-				green += ((*q) >> 8)&0xFF;
-				blue += (*q)&0xFF;
 				assert(!queue.full());
-				queue.push_back(*q);
+				queue.push_back(Pixel{q});
+				avg += queue.back();
 			}
 		}
 		assert(static_cast<int>(queue.size()) == std::min(depth, res->h));
