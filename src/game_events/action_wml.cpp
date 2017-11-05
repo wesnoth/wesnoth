@@ -692,6 +692,9 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 				bool remove_empty = split_element["remove_empty"].to_bool();
 
 				char* separator = separator_string.empty() ? nullptr : &separator_string[0];
+				if(separator_string.size() > 1){
+					ERR_NG << "[set_variables] [split] separator only supports 1 character, multiple passed: " << split_element["separator"] << " with " << cfg.get_config().debug() << std::endl;
+				}
 
 				std::vector<std::string> split_vector;
 
