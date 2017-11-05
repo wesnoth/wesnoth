@@ -354,6 +354,17 @@ void create_engine::init_generated_level_data()
 
 bool create_engine::current_level_has_side_data()
 {
+	//
+	// We exclude campaigns from this check since they require preprocessing in order to check
+	// their side data. Since this function is used by the MP Create screen to verify side data
+	// before proceeding to Staging, this should cover most cases of false positives. It does,
+	// however, leave open the possibility of scenarios that require preprocessing before their
+	// side data is accessible, but that's an unlikely occurrence.
+	//
+	if(current_level_type_ == level::TYPE::CAMPAIGN || current_level_type_ == level::TYPE::SP_CAMPAIGN) {
+		return true;
+	}
+
 	return current_level().data().has_child("side");
 }
 
