@@ -30,6 +30,7 @@
 #include <cstring>
 #include <iostream>
 
+#include <boost/circular_buffer.hpp>
 #include <boost/math/constants/constants.hpp>
 
 version_info sdl_get_version()
@@ -1602,16 +1603,13 @@ surface blur_alpha_surface(const surface &surf, int depth)
 		depth = max_blur;
 	}
 
-	Uint32 queue[max_blur];
-	const Uint32* end_queue = queue + max_blur;
+	boost::circular_buffer<Uint32> queue(max_blur);
 
 	const Uint32 ff = 0xff;
 
 	surface_lock lock(res);
 	int x, y;
 	for(y = 0; y < res->h; ++y) {
-		const Uint32* front = &queue[0];
-		Uint32* back = &queue[0];
 		Uint32 alpha=0, red = 0, green = 0, blue = 0, avg = 0;
 		Uint32* p = lock.pixels() + y*res->w;
 		for(x = 0; x <= depth && x < res->w; ++x, ++p) {
@@ -1620,25 +1618,24 @@ surface blur_alpha_surface(const surface &surf, int depth)
 			green += ((*p) >> 8)&0xFF;
 			blue += (*p)&0xFF;
 			++avg;
-			*back++ = *p;
-			if(back == end_queue) {
-				back = &queue[0];
-			}
+			assert(!queue.full());
+			queue.push_back(*p);
 		}
 
 		p = lock.pixels() + y*res->w;
 		for(x = 0; x < res->w; ++x, ++p) {
 			*p = (std::min(alpha/avg,ff) << 24) | (std::min(red/avg,ff) << 16) | (std::min(green/avg,ff) << 8) | std::min(blue/avg,ff);
 			if(x >= depth) {
-				alpha -= ((*front) >> 24)&0xFF;
-				red -= ((*front) >> 16)&0xFF;
-				green -= ((*front) >> 8)&0xFF;
-				blue -= *front&0xFF;
-				--avg;
-				++front;
-				if(front == end_queue) {
-					front = &queue[0];
+				{
+					const auto &front = queue.front();
+					alpha -= (front >> 24)&0xFF;
+					red -= (front >> 16)&0xFF;
+					green -= (front >> 8)&0xFF;
+					blue -= front&0xFF;
 				}
+				--avg;
+				assert(!queue.empty());
+				queue.pop_front();
 			}
 
 			if(x + depth+1 < res->w) {
@@ -1648,17 +1645,15 @@ surface blur_alpha_surface(const surface &surf, int depth)
 				green += ((*q) >> 8)&0xFF;
 				blue += (*q)&0xFF;
 				++avg;
-				*back++ = *q;
-				if(back == end_queue) {
-					back = &queue[0];
-				}
+				assert(!queue.full());
+				queue.push_back(*q);
 			}
 		}
+		assert(static_cast<int>(queue.size()) == std::min(depth, res->w));
+		queue.clear();
 	}
 
 	for(x = 0; x < res->w; ++x) {
-		const Uint32* front = &queue[0];
-		Uint32* back = &queue[0];
 		Uint32 alpha=0, red = 0, green = 0, blue = 0, avg = 0;
 		Uint32* p = lock.pixels() + x;
 		for(y = 0; y <= depth && y < res->h; ++y, p += res->w) {
@@ -1667,25 +1662,24 @@ surface blur_alpha_surface(const surface &surf, int depth)
 			green += ((*p) >> 8)&0xFF;
 			blue += *p&0xFF;
 			++avg;
-			*back++ = *p;
-			if(back == end_queue) {
-				back = &queue[0];
-			}
+			assert(!queue.full());
+			queue.push_back(*p);
 		}
 
 		p = lock.pixels() + x;
 		for(y = 0; y < res->h; ++y, p += res->w) {
 			*p = (std::min(alpha/avg,ff) << 24) | (std::min(red/avg,ff) << 16) | (std::min(green/avg,ff) << 8) | std::min(blue/avg,ff);
 			if(y >= depth) {
-				alpha -= ((*front) >> 24)&0xFF;
-				red -= ((*front) >> 16)&0xFF;
-				green -= ((*front) >> 8)&0xFF;
-				blue -= *front&0xFF;
-				--avg;
-				++front;
-				if(front == end_queue) {
-					front = &queue[0];
+				{
+					const auto &front = queue.front();
+					alpha -= (front >> 24)&0xFF;
+					red -= (front >> 16)&0xFF;
+					green -= (front >> 8)&0xFF;
+					blue -= front&0xFF;
 				}
+				--avg;
+				assert(!queue.empty());
+				queue.pop_front();
 			}
 
 			if(y + depth+1 < res->h) {
@@ -1695,12 +1689,12 @@ surface blur_alpha_surface(const surface &surf, int depth)
 				green += ((*q) >> 8)&0xFF;
 				blue += (*q)&0xFF;
 				++avg;
-				*back++ = *q;
-				if(back == end_queue) {
-					back = &queue[0];
-				}
+				assert(!queue.full());
+				queue.push_back(*q);
 			}
 		}
+		assert(static_cast<int>(queue.size()) == std::min(depth, res->h));
+		queue.clear();
 	}
 
 	return res;
