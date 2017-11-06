@@ -29,6 +29,12 @@ class mp_connect : public modal_dialog
 public:
 	mp_connect();
 
+	/** The execute function. See @ref modal_dialog for more information. */
+	static bool execute(CVideo& video)
+	{
+		return mp_connect().show(video);
+	}
+
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;

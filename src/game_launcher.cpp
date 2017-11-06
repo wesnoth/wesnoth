@@ -31,6 +31,7 @@
 #include "gui/dialogs/language_selection.hpp"  // for language_selection
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp" //for show error message
+#include "gui/dialogs/multiplayer/mp_connect.hpp"
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp" //for host game prompt
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
 #include "gui/dialogs/outro.hpp"
@@ -826,6 +827,21 @@ bool game_launcher::play_multiplayer(mp_selection res)
 
 
 		}
+
+		// If a server address wasn't specified, prompt for it now.
+		if(multiplayer_server_.empty()) {
+			if(!gui2::dialogs::mp_connect::execute(CVideo::get_singleton())) {
+				return false;
+			}
+
+			// The prompt saves its input to preferences.
+			multiplayer_server_ = preferences::network_host();
+
+			if(multiplayer_server_ != preferences::server_list().front().address) {
+				preferences::set_network_host(multiplayer_server_);
+			}
+		}
+
 		//create_engine already calls game_config_manager::get()->load_config but maybe its better to have MULTIPLAYER defined while we are in the lobby.
 		game_config_manager::get()->load_game_config_for_create(true);
 

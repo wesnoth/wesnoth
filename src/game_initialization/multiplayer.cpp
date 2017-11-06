@@ -24,7 +24,6 @@
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/lobby.hpp"
-#include "gui/dialogs/multiplayer/mp_connect.hpp"
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
@@ -48,34 +47,24 @@ static lg::log_domain log_mp("mp/main");
 #define DBG_MP LOG_STREAM(debug, log_mp)
 
 /** Opens a new server connection and prompts the client for login credentials, if necessary. */
-static wesnothd_connection_ptr open_connection(CVideo& video, const std::string& original_host)
+static wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 {
 	DBG_MP << "opening connection" << std::endl;
 
-	std::string h = original_host;
-	if(h.empty()) {
-		gui2::dialogs::mp_connect dlg;
-		dlg.show(video);
-
-		if(dlg.get_retval() != gui2::window::OK) {
-			return wesnothd_connection_ptr();
-		}
-
-		h = preferences::network_host();
-	}
-
 	wesnothd_connection_ptr sock;
 
-	const int colon_index = h.find_first_of(":");
-	std::string host;
+	if(host.empty()) {
+		return sock;
+	}
+
+	const int colon_index = host.find_first_of(":");
 	unsigned int port;
 
 	if(colon_index == -1) {
-		host = h;
 		port = 15000;
 	} else {
-		host = h.substr(0, colon_index);
-		port = lexical_cast_default<unsigned int>(h.substr(colon_index + 1), 15000);
+		port = lexical_cast_default<unsigned int>(host.substr(colon_index + 1), 15000);
+		host = host.substr(0, colon_index);
 	}
 
 	// shown_hosts is used to prevent the client being locked in a redirect loop.
@@ -314,10 +303,6 @@ static wesnothd_connection_ptr open_connection(CVideo& video, const std::string&
 			if(!*error) break;
 		} // end login loop
 	} while(!(data.child("join_lobby") || data.child("join_game")));
-
-	if(h != preferences::server_list().front().address) {
-		preferences::set_network_host(h);
-	}
 
 	if(data.child("join_lobby")) {
 		return sock;
