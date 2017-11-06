@@ -186,7 +186,7 @@ public:
 	config to_config() const;
 
 	bool is_skipping_replay() const { return skip_replay_; }
-	void toggle_skipping_replay() { skip_replay_ = !skip_replay_; }
+	void toggle_skipping_replay();
 	bool is_linger_mode() const { return linger_; }
 	void do_autosave();
 

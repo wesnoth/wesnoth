@@ -1263,3 +1263,12 @@ void play_controller::show_objectives() const
 	gui2::show_transient_message(gui_->video(), get_scenario_name(), (objectives.empty() ? no_objectives : objectives), "", true);
 	t.reset_objectives_changed();
 }
+
+void play_controller::toggle_skipping_replay()
+{
+	skip_replay_ = !skip_replay_;
+	const std::shared_ptr<gui::button> skip_animation_button = get_display().find_action_button("skip-animation");
+	if (skip_animation_button) {
+		skip_animation_button->set_check(skip_replay_);
+	}
+}
