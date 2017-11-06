@@ -932,7 +932,12 @@ void display::create_buttons()
 		}
 
 		std::shared_ptr<gui::button> b_prev = find_action_button(b->id());
-		if(b_prev) b->enable(b_prev->enabled());
+		if(b_prev) {
+			b->enable(b_prev->enabled());
+			if (b_prev->get_type() == gui::button::TYPE_CHECK) {
+				b->set_check(b_prev->checked());
+			}
+		}
 
 		action_work.push_back(b);
 	}
