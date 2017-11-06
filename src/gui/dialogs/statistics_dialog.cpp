@@ -143,9 +143,10 @@ void statistics_dialog::add_damage_row(
 	const long long dsa = shift * damage      - expected;
 	const long long dst = shift * turn_damage - turn_expected;
 
+	const long long shifted = ((expected * 20) + shift) / (2 * shift);
 	std::ostringstream str;
 	str << damage << " / "
-		<< (((expected * 20) + shift) / (2 * shift)) * 0.1
+		<< static_cast<double>(shifted) * 0.1
 		<< "    " // TODO: should probably make this two columns
 		<< ((dsa < 0) ^ (expected < 0) ? "" : "+")
 		<< (expected == 0 ? 0 : 100 * dsa / expected) << '%';
@@ -156,8 +157,9 @@ void statistics_dialog::add_damage_row(
 	str.str("");
 
 	if(show_this_turn) {
+		const long long turn_shifted = ((turn_expected * 20) + shift) / (2 * shift);
 		str << turn_damage << " / "
-			<< (((turn_expected * 20) + shift) / (2 * shift)) * 0.1
+			<< static_cast<double>(turn_shifted) * 0.1
 			<< "    " // TODO: should probably make this two columns
 			<< ((dst < 0) ^ (turn_expected < 0) ? "" : "+")
 			<< (turn_expected == 0 ? 0 : 100 * dst / turn_expected) << '%';
