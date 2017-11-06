@@ -33,7 +33,7 @@ matrix:
       env: opt=-O0 CXXSTD=11 NLS=false
 
 before_install:
-    - export TARGETS="wesnoth wesnothd campaignd test"
+    - export TARGETS="wesnoth wesnothd campaignd boost_unit_tests"
     - export STRICT_COMPILATION=false
     - export EXTRA_FLAGS_RELEASE=""
     - export WML_TESTS=true CPP_TESTS=false PLAY_TEST=true MP_TEST=true
