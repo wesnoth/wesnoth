@@ -1,15 +1,15 @@
 #!/bin/bash
 COUNTER=10
-./test
+./boost_unit_tests
 ERRORCODE=$?
 while [ $COUNTER -gt 0 -a $ERRORCODE -eq 200 ]; do
-    echo "test gave error code 200 (segfault).. trying again."
+    echo "boost_unit_tests gave error code 200 (segfault).. trying again."
     COUNTER=$((COUNTER-1))
-    ./test
+    ./boost_unit_tests
     ERRORCODE=$?
 done
 if [ $ERRORCODE -eq 200 ]; then
-    echo "test gave error code 200 ten times. suppressing this error...\n"
+    echo "boost_unit_tests gave error code 200 ten times. suppressing this error...\n"
     ERRORCODE=0
 fi
 export TEST_ERROR_CODE="$ERRORCODE"
