@@ -244,7 +244,9 @@ void remove_track(unsigned int i)
 
 	if(i == current_track_index) {
 		// Let the track finish playing
-		current_track->set_play_once(true);
+		if(current_track){
+			current_track->set_play_once(true);
+		}
 		// Set current index to the new size of the list
 		current_track_index = current_track_list.size() - 1;
 	} else if(i < current_track_index) {
@@ -599,7 +601,7 @@ static void play_new_music()
 	music_start_time = 0; // reset status: no start time
 	want_new_music = true;
 
-	if(!preferences::music_on() || !mix_ok || !current_track->valid()) {
+	if(!preferences::music_on() || !mix_ok || !current_track || !current_track->valid()) {
 		return;
 	}
 
@@ -779,7 +781,7 @@ void commit_music_changes()
 	played_before.clear();
 
 	// Play-once is OK if still playing.
-	if(current_track->play_once()) {
+	if(current_track && current_track->play_once()) {
 		return;
 	}
 
