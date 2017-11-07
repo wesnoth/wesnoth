@@ -31,7 +31,7 @@ public:
     };
 
 	enum TYPE { TYPE_PRESS, TYPE_CHECK, TYPE_TURBO, TYPE_IMAGE, TYPE_RADIO };
-	TYPE get_type() const { return type_; };
+	TYPE get_type() const { return type_; }
 
 	enum SPACE_CONSUMPTION { DEFAULT_SPACE, MINIMUM_SPACE };
 
