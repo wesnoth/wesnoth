@@ -70,7 +70,10 @@ public:
 		add_input(inputs, "__list");
 		add_input(inputs, "__map");
 		for(lua_pushnil(mState); lua_next(mState, table_i); lua_pop(mState,1)) {
-			if(lua_isstring(mState, -2) && !lua_isnumber(mState, -2)) {
+			lua_pushvalue(mState, -2);
+			bool is_valid_key = (lua_type(mState, -1) == LUA_TSTRING) && !lua_isnumber(mState, -1);
+			lua_pop(mState, 1);
+			if(is_valid_key) {
 				std::string key = lua_tostring(mState, -2);
 				if(key.find_first_not_of(formula::id_chars) != std::string::npos) {
 					add_input(inputs, key);
