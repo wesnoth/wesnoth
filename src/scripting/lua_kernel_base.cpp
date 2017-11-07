@@ -178,7 +178,7 @@ static int intf_name_generator(lua_State *L)
 			if(lua_istable(L, 2)) {
 				std::map<std::string, std::vector<std::string>> data;
 				for(lua_pushnil(L); lua_next(L, 2); lua_pop(L, 1)) {
-					if(!lua_isstring(L, -2)) {
+					if(lua_type(L, -2) != LUA_TSTRING) {
 						lua_pushstring(L, "CFG generator: invalid nonterminal name (must be a string)");
 						return lua_error(L);
 					}
@@ -914,7 +914,7 @@ std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string 
 			lua_settop(L, top);
 			// Metafunction not found, so use lua_next to enumerate the table
 			for(lua_pushnil(L); lua_next(L, obj); lua_pop(L, 1)) {
-				if(lua_isstring(L, -2)) {
+				if(lua_type(L, -2) == LUA_TSTRING) {
 					std::string attr = lua_tostring(L, -2);
 					if(attr.empty()) {
 						continue;

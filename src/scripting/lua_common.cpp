@@ -745,8 +745,9 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg)
 	// Then convert the attributes (string indices).
 	for (lua_pushnil(L); lua_next(L, index); lua_pop(L, 1))
 	{
-		if (lua_isnumber(L, -2)) continue;
-		if (!lua_isstring(L, -2)) return_misformed();
+		int indextype = lua_type(L, -2);
+		if (indextype == LUA_TNUMBER) continue;
+		if (indextype != LUA_TSTRING) return_misformed();
 		config::attribute_value &v = cfg[lua_tostring(L, -2)];
 		if (lua_istable(L, -1)) {
 			int subindex = lua_absindex(L, -1);
@@ -760,7 +761,7 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg)
 			}
 			// If there are any string keys, it's misformed
 			for (lua_pushnil(L); lua_next(L, subindex); lua_pop(L, 1)) {
-				if (!lua_isnumber(L, -2)) return_misformed();
+				if (lua_type(L, -2) != LUA_TNUMBER) return_misformed();
 			}
 			v = str.str();
 		} else if (!luaW_toscalar(L, -1, v)) return_misformed();
