@@ -30,7 +30,6 @@
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
-#include "gui/dialogs/network_transmission.hpp"
 #include "gui/widgets/settings.hpp"
 #include "hash.hpp"
 #include "log.hpp"
@@ -86,7 +85,7 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 	config data;
 
 	// Start stage
-	gui2::dialogs::loading_screen::progress("connect to server");
+	gui2::dialogs::loading_screen::progress(loading_stage::connect_to_server);
 
 	// First, spin until we get a handshake from the server.
 	while(!sock->handshake_finished()) {
@@ -94,7 +93,7 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 		SDL_Delay(1);
 	}
 
-	gui2::dialogs::loading_screen::progress("waiting");
+	gui2::dialogs::loading_screen::progress(loading_stage::waiting);
 
 	const auto wait_for_server_to_send_data = [&sock, &data]() {
 		while(!sock->has_data_received()) {
@@ -187,7 +186,7 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 			sock->send_data(response);
 			wait_for_server_to_send_data();
 
-			gui2::dialogs::loading_screen::progress("login response");
+			gui2::dialogs::loading_screen::progress(loading_stage::login_response);
 
 			config* warning = &data.child("warning");
 
@@ -265,7 +264,7 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 					sock->send_data(response);
 					wait_for_server_to_send_data();
 
-					gui2::dialogs::loading_screen::progress("login response");
+					gui2::dialogs::loading_screen::progress(loading_stage::login_response);
 
 					error = &data.child("error");
 

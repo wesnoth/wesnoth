@@ -46,30 +46,29 @@ static lg::log_domain log_loadscreen("loadscreen");
 #define LOG_LS LOG_STREAM(info, log_loadscreen)
 #define DBG_LS LOG_STREAM(debug, log_loadscreen)
 
-static const std::map<std::string, std::string> stages =
-{
-	{ "build terrain", N_("Building terrain rules") },
-	{ "create cache", N_("Reading files and creating cache") },
-	{ "init display", N_("Initializing display") },
-	{ "init fonts", N_("Reinitialize fonts for the current language") },
-	{ "init teams", N_("Initializing teams") },
-	{ "init theme", N_("Initializing display") },
-	{ "load config", N_("Loading game configuration") },
-	{ "load data", N_("Loading data files") },
-	{ "load level", N_("Loading level") },
-	{ "init lua", N_("Initializing scripting engine") },
-	{ "init whiteboard", N_("Initializing planning mode") },
-	{ "load unit types", N_("Reading unit files") },
-	{ "load units", N_("Loading units") },
-	{ "refresh addons", N_("Searching for installed add-ons") },
-	{ "start game", N_("Starting game") },
-	{ "verify cache", N_("Verifying cache") },
-	{ "connect to server", N_("Connecting to server") },
-	{ "login response", N_("Logging in") },
-	{ "waiting", N_("Waiting for server") },
-	{ "redirect", N_("Connecting to redirected server") },
-	{ "next scenario", N_("Waiting for next scenario") },
-	{ "download level data", N_("Getting game data") },
+static const std::map<loading_stage, std::string> stage_names {
+	{ loading_stage::build_terrain,       N_("Building terrain rules") },
+	{ loading_stage::create_cache,        N_("Reading files and creating cache") },
+	{ loading_stage::init_display,        N_("Initializing display") },
+	{ loading_stage::init_fonts,          N_("Reinitialize fonts for the current language") },
+	{ loading_stage::init_teams,          N_("Initializing teams") },
+	{ loading_stage::init_theme,          N_("Initializing display") },
+	{ loading_stage::load_config,         N_("Loading game configuration") },
+	{ loading_stage::load_data,           N_("Loading data files") },
+	{ loading_stage::load_level,          N_("Loading level") },
+	{ loading_stage::init_lua,            N_("Initializing scripting engine") },
+	{ loading_stage::init_whiteboard,     N_("Initializing planning mode") },
+	{ loading_stage::load_unit_types,     N_("Reading unit files") },
+	{ loading_stage::load_units,          N_("Loading units") },
+	{ loading_stage::refresh_addons,      N_("Searching for installed add-ons") },
+	{ loading_stage::start_game,          N_("Starting game") },
+	{ loading_stage::verify_cache,        N_("Verifying cache") },
+	{ loading_stage::connect_to_server,   N_("Connecting to server") },
+	{ loading_stage::login_response,      N_("Logging in") },
+	{ loading_stage::waiting,             N_("Waiting for server") },
+	{ loading_stage::redirect,            N_("Connecting to redirected server") },
+	{ loading_stage::next_scenario,       N_("Waiting for next scenario") },
+	{ loading_stage::download_level_data, N_("Getting game data") },
 };
 
 namespace gui2
@@ -86,13 +85,13 @@ loading_screen::loading_screen(std::function<void()> f)
 	, cursor_setter_()
 	, progress_stage_label_(nullptr)
 	, animation_label_(nullptr)
-	, current_stage_(nullptr)
+	, current_stage_(loading_stage::none)
 	, visible_stages_()
 	, animation_stages_()
 	, current_visible_stage_()
 	, is_worker_running_(false)
 {
-	for(const auto& pair : stages) {
+	for(const auto& pair : stage_names) {
 		visible_stages_[pair.first] = t_string(pair.second, "wesnoth-lib") + "...";
 	}
 
@@ -139,19 +138,14 @@ void loading_screen::post_show(window& /*window*/)
 	cursor_setter_.reset();
 }
 
-void loading_screen::progress(const char* stage)
+void loading_screen::progress(loading_stage stage)
 {
 	if(!current_load) {
 		return;
 	}
 
-	if(stage) {
-		current_load->current_stage_
-#if defined(_MSC_VER) && _MSC_VER < 1900
-			= stage;
-#else
-			.store(stage, std::memory_order_release);
-#endif
+	if(stage != loading_stage::none) {
+		current_load->current_stage_.store(stage, std::memory_order_release);
 	}
 }
 
@@ -172,17 +166,12 @@ void loading_screen::timer_callback(window& window)
 		return;
 	}
 
-	const char* stage = current_stage_
-#if defined(_MSC_VER) && _MSC_VER < 1900
-		;
-#else
-		.load(std::memory_order_acquire);
-#endif
+	loading_stage stage = current_stage_.load(std::memory_order_acquire);
 
-	if(stage && (current_visible_stage_ == visible_stages_.end() || stage != current_visible_stage_->first)) {
+	if(stage != loading_stage::none && (current_visible_stage_ == visible_stages_.end() || stage != current_visible_stage_->first)) {
 		auto iter = visible_stages_.find(stage);
 		if(iter == visible_stages_.end()) {
-			WRN_LS << "Stage ID '" << stage << "' missing description." << std::endl;
+			WRN_LS << "Stage missing description." << std::endl;
 			return;
 		}
 

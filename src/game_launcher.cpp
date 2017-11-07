@@ -949,7 +949,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 
 	gui2::dialogs::loading_screen::display(video(), [this, reload]() {
 
-		gui2::dialogs::loading_screen::progress("load data");
+		gui2::dialogs::loading_screen::progress(loading_stage::load_data);
 		if(reload == RELOAD_DATA) {
 			try {
 				game_config_manager::get()->

@@ -207,7 +207,7 @@ void play_controller::init(CVideo& video, const config& level)
 {
 
 	gui2::dialogs::loading_screen::display(video, [this, &video, &level]() {
-		gui2::dialogs::loading_screen::progress("load level");
+		gui2::dialogs::loading_screen::progress(loading_stage::load_level);
 
 		LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks()) << std::endl;
 		gamestate_.reset(new game_state(level, *this, tdata_));
@@ -225,20 +225,20 @@ void play_controller::init(CVideo& video, const config& level)
 		resources::tunnels = gamestate().pathfind_manager_.get();
 
 		LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks()) << std::endl;
-		gui2::dialogs::loading_screen::progress("init whiteboard");
+		gui2::dialogs::loading_screen::progress(loading_stage::init_whiteboard);
 		whiteboard_manager_.reset(new wb::manager());
 		resources::whiteboard = whiteboard_manager_;
 
 		LOG_NG << "loading units..." << (SDL_GetTicks() - ticks()) << std::endl;
-		gui2::dialogs::loading_screen::progress("load units");
+		gui2::dialogs::loading_screen::progress(loading_stage::load_units);
 		preferences::encounter_all_content(gamestate().board_);
 
 		LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks()) << std::endl;
-		gui2::dialogs::loading_screen::progress("init theme");
+		gui2::dialogs::loading_screen::progress(loading_stage::init_theme);
 		const config& theme_cfg = controller_base::get_theme(game_config_, theme());
 
 		LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks()) << std::endl;
-		gui2::dialogs::loading_screen::progress("build terrain");
+		gui2::dialogs::loading_screen::progress(loading_stage::build_terrain);
 		gui_.reset(new game_display(gamestate().board_, video, whiteboard_manager_, *gamestate().reports_, gamestate().tod_manager_, theme_cfg, level));
 		map_start_ = map_location(level.child_or_empty("display").child_or_empty("location"));
 		if (!gui_->video().faked()) {
@@ -248,7 +248,7 @@ void play_controller::init(CVideo& video, const config& level)
 				gui_->get_theme().modify_label("time-icon", _ ("current local time"));
 		}
 
-		gui2::dialogs::loading_screen::progress("init display");
+		gui2::dialogs::loading_screen::progress(loading_stage::init_display);
 		mouse_handler_.set_gui(gui_.get());
 		menu_handler_.set_gui(gui_.get());
 		resources::screen = gui_.get();
@@ -260,7 +260,7 @@ void play_controller::init(CVideo& video, const config& level)
 		// as that functions use the manager state_of_game
 		// Has to be done before registering any events!
 		gamestate().set_game_display(gui_.get());
-		gui2::dialogs::loading_screen::progress("init lua");
+		gui2::dialogs::loading_screen::progress(loading_stage::init_lua);
 
 		if(gamestate().first_human_team_ != -1) {
 			gui_->set_team(gamestate().first_human_team_);
@@ -279,7 +279,7 @@ void play_controller::init(CVideo& video, const config& level)
 		}
 
 		init_managers();
-		gui2::dialogs::loading_screen::progress("start game");
+		gui2::dialogs::loading_screen::progress(loading_stage::start_game);
 		//loadscreen_manager->reset();
 		gamestate().gamedata_.set_phase(game_data::PRELOAD);
 		gamestate().lua_kernel_->load_game(level);

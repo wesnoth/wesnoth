@@ -644,14 +644,14 @@ static int do_gameloop(const std::vector<std::string>& args)
 	    game->jump_to_editor());
 
 	gui2::dialogs::loading_screen::display(game->video(), [&res, &config_manager]() {
-		gui2::dialogs::loading_screen::progress("load config");
+		gui2::dialogs::loading_screen::progress(loading_stage::load_config);
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
 		if(res == false) {
 			std::cerr << "could not initialize game config\n";
 			return;
 		}
-		gui2::dialogs::loading_screen::progress("init fonts");
+		gui2::dialogs::loading_screen::progress(loading_stage::init_fonts);
 
 		res = font::load_font_config();
 		if(res == false) {
@@ -659,7 +659,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			return;
 	}
 
-		gui2::dialogs::loading_screen::progress("refresh addons");
+		gui2::dialogs::loading_screen::progress(loading_stage::refresh_addons);
 		refresh_addon_version_info_cache();
 	});
 

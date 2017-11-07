@@ -30,6 +30,38 @@ namespace cursor
 	struct setter;
 }
 
+/**
+ * Loading screen stage IDs.
+ * When adding new entries here, don't forget to update the stage_names
+ * map with an appropriate description.
+ */
+enum class loading_stage
+{
+	build_terrain,
+	create_cache,
+	init_display,
+	init_fonts,
+	init_teams,
+	init_theme,
+	load_config,
+	load_data,
+	load_level,
+	init_lua,
+	init_whiteboard,
+	load_unit_types,
+	load_units,
+	refresh_addons,
+	start_game,
+	verify_cache,
+	connect_to_server,
+	login_response,
+	waiting,
+	redirect,
+	next_scenario,
+	download_level_data,
+	none,
+};
+
 namespace gui2
 {
 
@@ -38,11 +70,9 @@ class window;
 
 namespace dialogs
 {
-
 class loading_screen : public modal_dialog
 {
 public:
-
 	loading_screen(std::function<void()> f);
 
 	~loading_screen();
@@ -50,7 +80,7 @@ public:
 	static void display(CVideo& video, std::function<void()> f);
 	static bool displaying() { return current_load != nullptr; }
 
-	static void progress(const char* stage_name = nullptr);
+	static void progress(loading_stage stage = loading_stage::none);
 
 private:
 	size_t timer_id_;
@@ -75,15 +105,13 @@ private:
 	label* animation_label_;
 	static loading_screen* current_load;
 
-#if defined(_MSC_VER) && _MSC_VER < 1900
-	// std::atomic is buggy in MSVC 2013 - doesn't work for cv types
-	const char* current_stage_;
-#else
-	std::atomic<const char*> current_stage_;
-#endif
-	std::map<std::string, t_string> visible_stages_;
+	std::atomic<loading_stage> current_stage_;
+
+	using stage_map = std::map<loading_stage, t_string>;
+
+	stage_map visible_stages_;
 	std::vector<t_string> animation_stages_;
-	std::map<std::string, t_string>::const_iterator current_visible_stage_;
+	stage_map::const_iterator current_visible_stage_;
 
 	bool is_worker_running_;
 };

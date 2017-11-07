@@ -99,7 +99,7 @@ void network_transmission::post_show(window& /*window*/)
 	connection_->cancel();
 }
 
-void network_transmission::wesnothd_dialog(CVideo& video, network_transmission::connection_data& conn, const std::string& msg)
+void network_transmission::wesnothd_dialog(CVideo& video, network_transmission::connection_data& conn, loading_stage stage)
 {
 	if (video.faked()) {
 		while (!conn.finished()) {
@@ -109,7 +109,7 @@ void network_transmission::wesnothd_dialog(CVideo& video, network_transmission::
 	}
 	else {
 		loading_screen::display(video, [&]() {
-			loading_screen::progress(msg.c_str());
+			loading_screen::progress(stage);
 			while(!conn.finished()) {
 				conn.poll();
 				SDL_Delay(1);
@@ -129,11 +129,11 @@ struct read_wesnothd_connection_data : public network_transmission::connection_d
 	wesnothd_connection& conn_;
 };
 
-bool network_transmission::wesnothd_receive_dialog(CVideo& video, const std::string& msg, config& cfg, wesnothd_connection& connection)
+bool network_transmission::wesnothd_receive_dialog(CVideo& video, loading_stage stage, config& cfg, wesnothd_connection& connection)
 {
-	assert(!msg.empty());
+	assert(stage != loading_stage::none);
 	read_wesnothd_connection_data gui_data(connection);
-	wesnothd_dialog(video, gui_data, msg);
+	wesnothd_dialog(video, gui_data, stage);
 	return connection.receive_data(cfg);
 }
 

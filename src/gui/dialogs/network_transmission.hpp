@@ -14,17 +14,18 @@
 
 #pragma once
 
+#include "events.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "network_asio.hpp"
+#include "wesnothd_connection.hpp"
+
 #include <boost/optional.hpp>
-#include "events.hpp"
-#include <wesnothd_connection.hpp>
 
 namespace gui2
 {
 namespace dialogs
 {
-
 
 /**
  * Dialog that tracks network transmissions
@@ -47,10 +48,10 @@ public:
 		virtual ~connection_data() {}
 	};
 
-	static bool wesnothd_receive_dialog(CVideo& video, const std::string& msg, config& cfg, wesnothd_connection& connection);
+	static bool wesnothd_receive_dialog(CVideo& video, loading_stage stage, config& cfg, wesnothd_connection& connection);
 
 private:
-	static void wesnothd_dialog(CVideo& video, connection_data& conn, const std::string& msg);
+	static void wesnothd_dialog(CVideo& video, connection_data& conn, loading_stage stage);
 	connection_data* connection_;
 
 	class pump_monitor : public events::pump_monitor

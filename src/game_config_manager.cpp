@@ -156,9 +156,9 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// Load the selected core.
 		// Handle terrains so that they are last loaded from the core.
 		// Load every compatible addon.
-		gui2::dialogs::loading_screen::progress("verify cache");
+		gui2::dialogs::loading_screen::progress(loading_stage::verify_cache);
 		filesystem::data_tree_checksum();
-		gui2::dialogs::loading_screen::progress("create cache");
+		gui2::dialogs::loading_screen::progress(loading_stage::create_cache);
 
 		// Start transaction so macros are shared.
 		game_config::config_cache_transaction main_transaction;
@@ -486,7 +486,7 @@ void game_config_manager::set_multiplayer_hashes()
 void game_config_manager::set_unit_data()
 {
 	game_config_.merge_children("units");
-	gui2::dialogs::loading_screen::progress("load unit types");
+	gui2::dialogs::loading_screen::progress(loading_stage::load_unit_types);
 	if(config &units = game_config_.child("units")) {
 		unit_types.set_config(units);
 	}

@@ -98,7 +98,7 @@ bool mp_join_game::fetch_game_config(CVideo& video)
 	while(!has_scenario_and_controllers) {
 		config revc;
 		const bool data_res = gui2::dialogs::network_transmission::wesnothd_receive_dialog(
-			video, "download level data", revc, network_connection_);
+			video, loading_stage::download_level_data, revc, network_connection_);
 
 		if(!data_res) {
 			return false;

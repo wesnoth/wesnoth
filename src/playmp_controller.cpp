@@ -287,8 +287,8 @@ void playmp_controller::wait_for_upload()
 	network_reader_.set_source(playturn_network_adapter::get_source_from_config(cfg));
 	while(true) {
 		try {
-			const bool  res = gui2::dialogs::network_transmission::wesnothd_receive_dialog(
-				gui_->video(), "next scenario", cfg, mp_info_->connection);
+			const bool res = gui2::dialogs::network_transmission::wesnothd_receive_dialog(
+				gui_->video(), loading_stage::next_scenario, cfg, mp_info_->connection);
 
 			if(res) {
 				if (turn_data_.process_network_data_from_reader() == turn_info::PROCESS_END_LINGER) {
