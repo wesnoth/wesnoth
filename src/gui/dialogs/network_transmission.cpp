@@ -137,23 +137,5 @@ bool network_transmission::wesnothd_receive_dialog(CVideo& video, const std::str
 	return connection.receive_data(cfg);
 }
 
-struct connect_wesnothd_connection_data : public network_transmission::connection_data
-{
-	connect_wesnothd_connection_data(wesnothd_connection& conn) : conn_(conn) {}
-	virtual bool finished() override { return conn_.handshake_finished(); }
-	virtual void cancel() override { }
-	virtual void poll() override { conn_.poll(); }
-	wesnothd_connection& conn_;
-};
-
-wesnothd_connection_ptr network_transmission::wesnothd_connect_dialog(CVideo& video, const std::string& msg, const std::string& hostname, int port)
-{
-	assert(!msg.empty());
-	wesnothd_connection_ptr res = wesnothd_connection::create(hostname, std::to_string(port));
-	connect_wesnothd_connection_data gui_data(*res);
-	wesnothd_dialog(video, gui_data, msg);
-	return res;
-}
-
 } // namespace dialogs
 } // namespace gui2

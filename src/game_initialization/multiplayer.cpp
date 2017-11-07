@@ -15,6 +15,7 @@
 #include "game_initialization/multiplayer.hpp"
 
 #include "addon/manager.hpp" // for installed_addons
+#include "events.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
 #include "game_initialization/mp_game_utils.hpp"
@@ -22,6 +23,7 @@
 #include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/lobby.hpp"
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
@@ -46,8 +48,10 @@
 static lg::log_domain log_mp("mp/main");
 #define DBG_MP LOG_STREAM(debug, log_mp)
 
+namespace
+{
 /** Opens a new server connection and prompts the client for login credentials, if necessary. */
-static wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
+wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 {
 	DBG_MP << "opening connection" << std::endl;
 
@@ -68,23 +72,50 @@ static wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 	}
 
 	// shown_hosts is used to prevent the client being locked in a redirect loop.
-	typedef std::pair<std::string, int> hostpair;
+	using hostpair = std::pair<std::string, int>;
+
 	std::set<hostpair> shown_hosts;
-	shown_hosts.insert(hostpair(host, port));
+	shown_hosts.emplace(host, port);
+
+	// Initializes the connection to the server.
+	sock = wesnothd_connection::create(host, std::to_string(port));
+	if(!sock) {
+		return sock;
+	}
 
 	config data;
-	sock = gui2::dialogs::network_transmission::wesnothd_connect_dialog(video, "connect to server", host, port);
+
+	// Start stage
+	gui2::dialogs::loading_screen::progress("connect to server");
+
+	// First, spin until we get a handshake from the server.
+	while(!sock->handshake_finished()) {
+		sock->poll();
+		SDL_Delay(1);
+	}
+
+	gui2::dialogs::loading_screen::progress("waiting");
+
+	const auto wait_for_server_to_send_data = [&sock, &data]() {
+		while(!sock->has_data_received()) {
+			SDL_Delay(1);
+		}
+
+		sock->receive_data(data);
+	};
+
+	// Then, log in and wait for the lobby/game join prompt.
 	do {
 		if(!sock) {
 			return sock;
 		}
 
 		data.clear();
-		gui2::dialogs::network_transmission::wesnothd_receive_dialog(video, "waiting", data, *sock);
-		//mp::check_response(data_res, data);
+		wait_for_server_to_send_data();
 
 		if(data.has_child("reject") || data.has_attribute("version")) {
 			std::string version;
+
 			if(const config& reject = data.child("reject")) {
 				version = reject["accepted_versions"].str();
 			} else {
@@ -95,26 +126,29 @@ static wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 			utils::string_map i18n_symbols;
 			i18n_symbols["required_version"] = version;
 			i18n_symbols["your_version"] = game_config::version;
+
 			const std::string errorstring = vgettext("The server accepts versions '$required_version', but you are using version '$your_version'", i18n_symbols);
 			throw wesnothd_error(errorstring);
 		}
 
 		// Check for "redirect" messages
-		if(const config& redirect = data.child("redirect"))
-		{
+		if(const config& redirect = data.child("redirect")) {
 			host = redirect["host"].str();
-			port =redirect["port"].to_int(15000);
+			port = redirect["port"].to_int(15000);
 
-			if(shown_hosts.find(hostpair(host,port)) != shown_hosts.end()) {
+			if(shown_hosts.find(hostpair(host, port)) != shown_hosts.end()) {
 				throw wesnothd_error(_("Server-side redirect loop"));
 			}
-			shown_hosts.insert(hostpair(host, port));
+
+			shown_hosts.emplace(host, port);
+
+			// Open a new connection with the new host and port.
 			sock = wesnothd_connection_ptr();
-			sock = gui2::dialogs::network_transmission::wesnothd_connect_dialog(video, "redirect", host, port);
+			sock = wesnothd_connection::create(host, std::to_string(port));
 			continue;
 		}
 
-		if(data.child("version")) {
+		if(data.has_child("version")) {
 			config cfg;
 			config res;
 			cfg["version"] = game_config::version;
@@ -123,7 +157,7 @@ static wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 		}
 
 		// Continue if we did not get a direction to login
-		if(!data.child("mustlogin")) {
+		if(!data.has_child("mustlogin")) {
 			continue;
 		}
 
@@ -151,7 +185,10 @@ static wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 			}
 
 			sock->send_data(response);
-			gui2::dialogs::network_transmission::wesnothd_receive_dialog(video, "login response", data, *sock);
+			wait_for_server_to_send_data();
+
+			gui2::dialogs::loading_screen::progress("login response");
+
 			config* warning = &data.child("warning");
 
 			if(*warning) {
@@ -226,7 +263,9 @@ static wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 
 					// Once again send our request...
 					sock->send_data(response);
-					gui2::dialogs::network_transmission::wesnothd_receive_dialog(video, "login response", data, *sock);
+					wait_for_server_to_send_data();
+
+					gui2::dialogs::loading_screen::progress("login response");
 
 					error = &data.child("error");
 
@@ -279,7 +318,9 @@ static wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 				}
 
 				gui2::dialogs::mp_login dlg(host, error_message, !((*error)["password_request"].empty()));
-				dlg.show(video);
+
+				// Need to show the dialog from the main thread or it won't appear.
+				events::call_in_main_thread([&dlg, &video]() { dlg.show(video); });
 
 				switch(dlg.get_retval()) {
 					//Log in with password
@@ -304,11 +345,11 @@ static wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 		} // end login loop
 	} while(!(data.child("join_lobby") || data.child("join_game")));
 
-	if(data.child("join_lobby")) {
-		return sock;
+	if(!data.has_child("join_lobby")) {
+		return wesnothd_connection_ptr();
 	}
 
-	return wesnothd_connection_ptr();
+	return sock;
 }
 
 /** Helper struct to manage the MP workflow arguments. */
@@ -343,7 +384,7 @@ using mp_workflow_helper_ptr = std::shared_ptr<mp_workflow_helper>;
  *
  * NOTE: since these functions are static, they appear here in the opposite order they'd be accessed.
  */
-static void enter_wait_mode(mp_workflow_helper_ptr helper, int game_id, bool observe)
+void enter_wait_mode(mp_workflow_helper_ptr helper, int game_id, bool observe)
 {
 	DBG_MP << "entering wait mode" << std::endl;
 
@@ -385,7 +426,7 @@ static void enter_wait_mode(mp_workflow_helper_ptr helper, int game_id, bool obs
 	helper->connection->send_data(config("leave_game"));
 }
 
-static void enter_staging_mode(mp_workflow_helper_ptr helper)
+void enter_staging_mode(mp_workflow_helper_ptr helper)
 {
 	DBG_MP << "entering connect mode" << std::endl;
 
@@ -418,7 +459,7 @@ static void enter_staging_mode(mp_workflow_helper_ptr helper)
 	}
 }
 
-static void enter_create_mode(mp_workflow_helper_ptr helper)
+void enter_create_mode(mp_workflow_helper_ptr helper)
 {
 	DBG_MP << "entering create mode" << std::endl;
 
@@ -438,7 +479,7 @@ static void enter_create_mode(mp_workflow_helper_ptr helper)
 	}
 }
 
-static bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::string>& installed_addons)
+bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::string>& installed_addons)
 {
 	DBG_MP << "entering lobby mode" << std::endl;
 
@@ -514,9 +555,11 @@ static bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<st
 	return true;
 }
 
-/** Pubic entry points for the MP workflow */
-namespace mp {
+} // end anon namespace
 
+/** Pubic entry points for the MP workflow */
+namespace mp
+{
 void start_client(CVideo& video, const config& game_config,	saved_game& state, const std::string& host)
 {
 	const config* game_config_ptr = &game_config;
@@ -530,7 +573,9 @@ void start_client(CVideo& video, const config& game_config,	saved_game& state, c
 
 	preferences::admin_authentication_reset r;
 
-	wesnothd_connection_ptr connection = open_connection(video, host);
+	wesnothd_connection_ptr connection;
+	gui2::dialogs::loading_screen::display(video, [&]() { connection = open_connection(video, host); });
+
 	if(!connection) {
 		return;
 	}
