@@ -829,7 +829,7 @@ bool game_launcher::play_multiplayer(mp_selection res)
 		}
 
 		// If a server address wasn't specified, prompt for it now.
-		if(multiplayer_server_.empty()) {
+		if(res != MP_LOCAL && multiplayer_server_.empty()) {
 			if(!gui2::dialogs::mp_connect::execute(CVideo::get_singleton())) {
 				return false;
 			}
