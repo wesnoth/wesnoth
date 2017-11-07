@@ -306,8 +306,13 @@ void listbox::list_item_clicked(widget& caller)
 		}
 	}
 
+	const int selected_item = generator_->get_selected_item();
+	if(selected_item == -1) {
+		return;
+	}
+
 	const SDL_Rect& visible = content_visible_area();
-	SDL_Rect rect = generator_->item(generator_->get_selected_item()).get_rectangle();
+	SDL_Rect rect = generator_->item(selected_item).get_rectangle();
 
 	if(sdl::rects_overlap(visible, rect)) {
 		rect.x = visible.x;
