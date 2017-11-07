@@ -15,7 +15,6 @@
 #pragma once
 
 #include "events.hpp"
-#include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "network_asio.hpp"
 #include "wesnothd_connection.hpp"
@@ -36,7 +35,7 @@ namespace dialogs
 class network_transmission : public modal_dialog
 {
 public:
-	//A wrapper of either a wesnothd_connection or a network_asio::connection
+	/** A wrapper of either a wesnothd_connection or a network_asio::connection. */
 	class connection_data
 	{
 	public:
@@ -48,10 +47,7 @@ public:
 		virtual ~connection_data() {}
 	};
 
-	static bool wesnothd_receive_dialog(CVideo& video, loading_stage stage, config& cfg, wesnothd_connection& connection);
-
 private:
-	static void wesnothd_dialog(CVideo& video, connection_data& conn, loading_stage stage);
 	connection_data* connection_;
 
 	class pump_monitor : public events::pump_monitor

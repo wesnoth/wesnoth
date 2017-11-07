@@ -12,14 +12,19 @@
    See the COPYING file for more details.
 */
 
-#include <deque>
-#include "utils/functional.hpp"
-#include <cstdint>
-#include "log.hpp"
 #include "wesnothd_connection.hpp"
+
+#include "gui/dialogs/loading_screen.hpp"
+#include "log.hpp"
 #include "serialization/parser.hpp"
+#include "utils/functional.hpp"
+#include "video.hpp"
 
 #include <boost/thread.hpp>
+#include <SDL_timer.h>
+
+#include <cstdint>
+#include <deque>
 
 static lg::log_domain log_network("network");
 #define DBG_NW LOG_STREAM(debug, log_network)
@@ -372,6 +377,30 @@ bool wesnothd_connection::receive_data(config& result)
 	}
 
 	return false;
+}
+
+bool wesnothd_connection::wait_and_receive_data(config& data)
+{
+	while(!has_data_received()) {
+		SDL_Delay(1);
+	}
+
+	return receive_data(data);
+};
+
+
+bool wesnothd_connection::fetch_data_with_loading_screen(config& cfg, loading_stage stage)
+{
+	assert(stage != loading_stage::none);
+
+	bool res = false;
+	gui2::dialogs::loading_screen::display(CVideo::get_singleton(), [&]() {
+		gui2::dialogs::loading_screen::progress(stage);
+
+		res = wait_and_receive_data(cfg);
+	});
+
+	return res;
 }
 
 wesnothd_connection::~wesnothd_connection()

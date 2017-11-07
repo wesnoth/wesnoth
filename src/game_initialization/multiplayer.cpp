@@ -95,14 +95,6 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 
 	gui2::dialogs::loading_screen::progress(loading_stage::waiting);
 
-	const auto wait_for_server_to_send_data = [&sock, &data]() {
-		while(!sock->has_data_received()) {
-			SDL_Delay(1);
-		}
-
-		sock->receive_data(data);
-	};
-
 	// Then, log in and wait for the lobby/game join prompt.
 	do {
 		if(!sock) {
@@ -110,7 +102,7 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 		}
 
 		data.clear();
-		wait_for_server_to_send_data();
+		sock->wait_and_receive_data(data);
 
 		if(data.has_child("reject") || data.has_attribute("version")) {
 			std::string version;
@@ -184,7 +176,7 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 			}
 
 			sock->send_data(response);
-			wait_for_server_to_send_data();
+			sock->wait_and_receive_data(data);
 
 			gui2::dialogs::loading_screen::progress(loading_stage::login_response);
 
@@ -262,7 +254,7 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 
 					// Once again send our request...
 					sock->send_data(response);
-					wait_for_server_to_send_data();
+					sock->wait_and_receive_data(data);
 
 					gui2::dialogs::loading_screen::progress(loading_stage::login_response);
 

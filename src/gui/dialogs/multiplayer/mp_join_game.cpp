@@ -25,8 +25,8 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/helper.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
-#include "gui/dialogs/network_transmission.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/chatbox.hpp"
@@ -97,8 +97,8 @@ bool mp_join_game::fetch_game_config(CVideo& video)
 	bool has_scenario_and_controllers = false;
 	while(!has_scenario_and_controllers) {
 		config revc;
-		const bool data_res = gui2::dialogs::network_transmission::wesnothd_receive_dialog(
-			video, loading_stage::download_level_data, revc, network_connection_);
+		const bool data_res =
+			network_connection_.fetch_data_with_loading_screen(revc, loading_stage::download_level_data);
 
 		if(!data_res) {
 			return false;

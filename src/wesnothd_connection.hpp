@@ -42,6 +42,7 @@ namespace boost
 
 class config;
 class wesnothd_connection_ptr;
+enum class loading_stage;
 
 /** A class that represents a TCP/IP connection to the wesnothd server. */
 class wesnothd_connection : public std::enable_shared_from_this<wesnothd_connection>
@@ -64,9 +65,17 @@ private:
 public:
 	static wesnothd_connection_ptr create(const std::string& host, const std::string& service);
 
+	bool fetch_data_with_loading_screen(config& cfg, loading_stage stage);
+
 	void send_data(const configr_of& request);
 
 	bool receive_data(config& result);
+
+	/**
+	 * Helper function that spins until data has been received.
+	 * Should be used in tandem with the loading screen or other multi-threaded components.
+	 */
+	bool wait_and_receive_data(config& data);
 
 	/** Handle all pending asynchonous events and return */
 	std::size_t poll();

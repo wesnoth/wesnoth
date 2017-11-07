@@ -23,7 +23,6 @@
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
-#include "gui/dialogs/loading_screen.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -97,44 +96,6 @@ void network_transmission::post_show(window& /*window*/)
 {
 	pump_monitor_.window_.reset();
 	connection_->cancel();
-}
-
-void network_transmission::wesnothd_dialog(CVideo& video, network_transmission::connection_data& conn, loading_stage stage)
-{
-	if (video.faked()) {
-		while (!conn.finished()) {
-			conn.poll();
-			SDL_Delay(1);
-		}
-	}
-	else {
-		loading_screen::display(video, [&]() {
-			loading_screen::progress(stage);
-			while(!conn.finished()) {
-				conn.poll();
-				SDL_Delay(1);
-			}
-		});
-	}
-}
-
-struct read_wesnothd_connection_data : public network_transmission::connection_data
-{
-	read_wesnothd_connection_data(wesnothd_connection& conn) : conn_(conn) {}
-	size_t total() override { return conn_.bytes_to_read(); }
-	virtual size_t current()  override { return conn_.bytes_read(); }
-	virtual bool finished() override { return conn_.has_data_received(); }
-	virtual void cancel() override { }
-	virtual void poll() override { }
-	wesnothd_connection& conn_;
-};
-
-bool network_transmission::wesnothd_receive_dialog(CVideo& video, loading_stage stage, config& cfg, wesnothd_connection& connection)
-{
-	assert(stage != loading_stage::none);
-	read_wesnothd_connection_data gui_data(connection);
-	wesnothd_dialog(video, gui_data, stage);
-	return connection.receive_data(cfg);
 }
 
 } // namespace dialogs
