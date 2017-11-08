@@ -652,7 +652,7 @@ void play_music_repeatedly(const std::string& id)
 	current_track_index = 0;
 
 	// If we're already playing it, don't interrupt.
-	if(!last_track || *last_track != *current_track) {
+	if(!last_track || !current_track || *last_track != *current_track) {
 		play_music();
 	}
 
@@ -781,14 +781,16 @@ void commit_music_changes()
 	played_before.clear();
 
 	// Play-once is OK if still playing.
-	if(current_track && current_track->play_once()) {
-		return;
-	}
-
-	// If current track no longer on playlist, change it.
-	for(auto m : current_track_list) {
-		if(*current_track == *m) {
+	if(current_track) {
+		if(current_track->play_once()) {
 			return;
+		}
+
+		// If current track no longer on playlist, change it.
+		for(auto m : current_track_list) {
+			if(*current_track == *m) {
+				return;
+			}
 		}
 	}
 
