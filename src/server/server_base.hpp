@@ -21,11 +21,6 @@
 
 #include "exceptions.hpp"
 
-// MSVC compilation throws deprecation warnings on boost's use of gethostbyaddr and gethostbyname in socket_ops.ipp
-#ifdef _WIN32
-#define _WINSOCK_DEPRECATED_NO_WARNINGS
-#endif
-
 #include <boost/asio.hpp>
 #include <boost/asio/signal_set.hpp>
 #include <boost/shared_array.hpp>

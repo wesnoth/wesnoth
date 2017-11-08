@@ -15,17 +15,26 @@
 #pragma once
 
 #ifdef _WIN32
-# define BOOST_ASIO_DISABLE_IOCP
-# ifdef INADDR_ANY
-#  undef INADDR_ANY
-# endif
-# ifdef INADDR_BROADCAST
-#  undef INADDR_BROADCAST
-# endif
-# ifdef INADDR_NONE
-#  undef INADDR_NONE
-# endif
+
+// MSVC compilation throws deprecation warnings on boost's use of  gethostbyaddr and
+// gethostbyname in socket_ops.ipp. This define silences that.
+#define _WINSOCK_DEPRECATED_NO_WARNINGS
+
+#define BOOST_ASIO_DISABLE_IOCP
+
+#ifdef INADDR_ANY
+#undef INADDR_ANY
 #endif
+
+#ifdef INADDR_BROADCAST
+#undef INADDR_BROADCAST
+#endif
+
+#ifdef INADDR_NONE
+#undef INADDR_NONE
+#endif
+
+#endif // endif _WIN32
 
 #include <boost/asio.hpp>
 #include <deque>
