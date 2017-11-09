@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-09-21 23:32+0300\n"
-"PO-Revision-Date: 2017-07-25 18:56+0300\n"
+"PO-Revision-Date: 2017-11-04 08:05+0300\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -4060,38 +4060,38 @@ msgstr "DejaVu Sans Mono"
 #. [lua]: wesnoth.deprecation_message
 #: data/lua/core.lua:159
 msgid "$elem has been deprecated indefinitely."
-msgstr ""
+msgstr "$elem è stato deprecato indefinitivamente."
 
 #. [lua]: wesnoth.deprecation_message
 #: data/lua/core.lua:164
 msgid "$elem has been deprecated and may be removed in version $version."
-msgstr ""
+msgstr "$elem è stato deprecato e può essere rimosso nella versione $version."
 
 #. [lua]: wesnoth.deprecation_message
 #: data/lua/core.lua:166
 msgid "$elem has been deprecated and may be removed at any time."
-msgstr ""
+msgstr "$elem è stato deprecato e può essere rimosso in qualsiasi momento."
 
 #. [lua]: wesnoth.deprecation_message
 #: data/lua/core.lua:170
 msgid "$elem has been deprecated and will be removed in the next version."
-msgstr ""
+msgstr "$elem è stato deprecato e verrà rimosso nella prossima versione."
 
 #. [lua]: wesnoth.deprecation_message
 #: data/lua/core.lua:173
 msgid "$elem has been deprecated and removed."
-msgstr ""
+msgstr "$elem è stato deprecato e rimosso."
 
 #. [lua]: wesnoth.deprecation_message
 #. [lua]: wml_actions.deprecated_message
 #: data/lua/core.lua:175 data/lua/wml-tags.lua:893
 msgid "Invalid deprecation level (should be 1-4)"
-msgstr ""
+msgstr "Livello di deprecamento non valido (deve essere compreso tra 1 e 4)"
 
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:188
 msgid "(Note: You should use $replacement instead in new code)"
-msgstr ""
+msgstr "(Nota: Dovresti usare $replacement al suo posto nel nuovo codice)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
@@ -7751,12 +7751,10 @@ msgid "Total damage"
 msgstr "Danno totale"
 
 #: src/reports.cpp:968
-#, fuzzy
-#| msgid "Attacks: "
 msgid "Attack"
 msgid_plural "Attacks"
-msgstr[0] "Attacchi: "
-msgstr[1] "Attacchi: "
+msgstr[0] "Attacco"
+msgstr[1] "Attacchi"
 
 #: src/reports.cpp:1104 src/reports.cpp:1156
 msgid "Lawful units: "
@@ -7776,38 +7774,38 @@ msgstr "Unità liminali: "
 
 #: src/reports.cpp:1220
 msgid "Turn Number"
-msgstr ""
+msgstr "Turni"
 
 #: src/reports.cpp:1222
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
+"Il gioco finirà quando verranno giocati un numero di turni pari a quello "
+"indicato nella secondo valore. "
 
 #: src/reports.cpp:1247
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
+"Il quantitativo di oro attualmente disponibile per reclutare e mantenere l "
+"tua armata."
 
 #: src/reports.cpp:1266
 msgid "The fraction of known villages that your side has captured."
-msgstr ""
+msgstr "La frazione dei villaggi conosciuti che la tua squadra ha catturato."
 
 #: src/reports.cpp:1266
-#, fuzzy
-#| msgid "Village"
 msgid "Villages"
-msgstr "Villaggio"
+msgstr "Villaggi"
 
 #: src/reports.cpp:1271
 msgid "The total number of units on your side."
-msgstr ""
+msgstr "Il numero totale di unità della tua squadra."
 
 #: src/reports.cpp:1271
-#, fuzzy
-#| msgid "units"
 msgid "Units"
-msgstr "unità"
+msgstr "Unità"
 
 #: src/reports.cpp:1281
 msgid ""
@@ -7816,24 +7814,28 @@ msgid ""
 "total cost of upkeep, including that covered by villages — in other words, "
 "the amount of gold that would be deducted if you lost all villages."
 msgstr ""
+"Spese necessarie per mantenere la tua armata alla fine di ogni turno. Il "
+"primo numero rappresenta il quantitativo di oro che verrà scalato; il "
+"secondo il costo totale di mantenimento, incluso quello coperto dai "
+"villaggi, in altre parole, il quantitativo di oro che sarebbe dedotto se tu "
+"perdessi tutti i villaggi."
 
 #: src/reports.cpp:1281
-#, fuzzy
-#| msgid "upkeep"
 msgid "Upkeep"
-msgstr "mantenimento"
+msgstr "Mantenimento"
 
 #: src/reports.cpp:1318
-#, fuzzy
-#| msgid "income"
 msgid "Income"
-msgstr "entrate"
+msgstr "Entrate"
 
 #: src/reports.cpp:1318
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
+"Il quantitativo di oro che guadagni ad ogni turno come introito dei villaggi "
+"da te controllati, o il quantitativo di oro che perderai ad ogni turno per "
+"il mantenimento delle unità."
 
 #: src/reports.cpp:1486
 msgid "Observers:"
@@ -7841,15 +7843,15 @@ msgstr "Osservatori:"
 
 #: src/reports.cpp:1526
 msgid "Clock"
-msgstr ""
+msgstr "Orologio"
 
 #: src/reports.cpp:1552
 msgid "Countdown until your turn automatically ends."
-msgstr ""
+msgstr "Conto alla rovescia fino alla fine automatica dei turni."
 
 #: src/reports.cpp:1552
 msgid "Turn Countdown"
-msgstr ""
+msgstr "Conto alla rovescia dei turni"
 
 #: src/save_index.cpp:195
 msgid "%a %b %d %H:%M %Y"
