@@ -262,6 +262,10 @@ static bool track_ok(const std::string& id)
 {
 	LOG_AUDIO << "Considering " << id << "\n";
 
+	if(!current_track) {
+		return false;
+	}
+
 	// If they committed changes to list, we forget previous plays, but
 	// still *never* repeat same track twice if we have an option.
 	if(id == current_track->file_path()) {
