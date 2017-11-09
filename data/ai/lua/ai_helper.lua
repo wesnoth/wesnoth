@@ -329,7 +329,7 @@ function ai_helper.robust_move_and_attack(ai, src, dst, target_loc, cfg)
     end
 
     local gamestate_changed = false
-    local move_result
+    local move_result = ai_helper.dummy_check_action(false, false, 'robust_move_and_attack::NO_ACTION')
     if (unit.moves > 0) then
         if (src_x == dst_x) and (src_y == dst_y) then
             move_result = ai.stopunit_moves(unit)
