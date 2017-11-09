@@ -194,7 +194,7 @@ void editor_map::invert_selection()
 	for (int x = -1; x < w() + 1; ++x) {
 		for (int y = -1; y < h() + 1; ++y) {
 			if (selection_.find(map_location(x, y)) == selection_.end()) {
-				new_selection.insert(map_location(x, y));
+				new_selection.emplace(x, y);
 			}
 		}
 	}

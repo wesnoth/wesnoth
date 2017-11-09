@@ -270,7 +270,7 @@ void class_tag::add_tag(const std::string &path, const class_tag &tag,
 	if ( path.empty() || path == "/" ){
 		tag_map::iterator it = tags_.find(tag.name_);
 		if (it == tags_.end()){
-			tags_.insert(tag_map_value(tag.name_,tag));
+			tags_.emplace(tag.name_, tag);
 		}else{
 			it->second.set_min(tag.min_);
 			it->second.set_max(tag.max_);
@@ -294,7 +294,7 @@ void class_tag::add_tag(const std::string &path, const class_tag &tag,
 		class_tag subtag;
 		subtag.set_name(name);
 		subtag.add_tag(next_path,tag,root);
-		tags_.insert(tag_map_value(name,subtag));
+		tags_.emplace(name, subtag);
 		return;
 	}
 	it_tags->second.add_tag(next_path,tag,root);

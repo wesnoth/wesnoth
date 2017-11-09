@@ -121,8 +121,8 @@ void editor_controller::init_tods(const config& game_config)
 		tods_map::iterator times = tods_.find(schedule_id);
 		if (times == tods_.end()) {
 			std::pair<tods_map::iterator, bool> new_times =
-					tods_.insert( std::pair<std::string, std::pair<std::string, std::vector<time_of_day> > >
-			(schedule_id, std::pair<std::string, std::vector<time_of_day> >(schedule_name, std::vector<time_of_day>())) );
+				tods_.emplace(schedule_id, std::make_pair(schedule_name, std::vector<time_of_day>()));
+
 			times = new_times.first;
 		} else {
 			ERR_ED << "Duplicate TOD Schedule identifiers." << std::endl;

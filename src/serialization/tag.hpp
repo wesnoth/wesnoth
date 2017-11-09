@@ -226,10 +226,10 @@ public:
 		super_= s;
 	}
 	void add_key(const class_key& new_key){
-		keys_.insert(key_map_value(new_key.get_name(),new_key));
+		keys_.emplace(new_key.get_name(), new_key);
 	}
 	void add_tag(const class_tag& new_tag){
-		tags_.insert(tag_map_value(new_tag.name_,new_tag));
+		tags_.emplace(new_tag.name_, new_tag);
 	}
 	void add_link(const std::string & link);
 

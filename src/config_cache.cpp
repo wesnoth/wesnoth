@@ -312,8 +312,7 @@ void config_cache::add_define(const std::string& define)
 
 	if(config_cache_transaction::is_active()) {
 		// we have to add this to active map too
-		config_cache_transaction::instance().get_active_map(defines_map_).insert(
-				std::make_pair(define, preproc_define()));
+		config_cache_transaction::instance().get_active_map(defines_map_).emplace(define, preproc_define());
 	}
 
 }

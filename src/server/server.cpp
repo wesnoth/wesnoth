@@ -809,7 +809,7 @@ void server::send_password_request(socket_ptr socket, const std::string& msg,
 void server::add_player(socket_ptr socket, const wesnothd::player& player)
 {
 	bool inserted;
-	std::tie(std::ignore, inserted) = player_connections_.insert(player_connections::value_type(socket, player));
+	std::tie(std::ignore, inserted) = player_connections_.emplace(socket, player);
 	assert(inserted);
 
 	send_to_player(socket, games_and_users_list_);

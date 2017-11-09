@@ -699,7 +699,7 @@ static lg::log_domain log_server("server");
 		for (const config &bt : cfg.child_range("ban_time")) {
 			time_t duration = 0;
 			if (parse_time(bt["time"], &duration)) {
-				ban_times_.insert(default_ban_times::value_type(bt["name"], duration));
+				ban_times_.emplace(bt["name"], duration);
 			}
 		}
 		init_ban_help();

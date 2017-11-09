@@ -110,8 +110,7 @@ void display::add_overlay(const map_location& loc, const std::string& img, const
 		const halo::handle halo_handle = halo_man_->add(get_location_x(loc) + hex_size() / 2,
 			get_location_y(loc) + hex_size() / 2, halo, loc);
 
-		const overlay item(img, halo, halo_handle, team_name, item_id, visible_under_fog);
-		overlays_->insert(overlay_map::value_type(loc,item));
+		overlays_->emplace(loc, overlay(img, halo, halo_handle, team_name, item_id, visible_under_fog));
 	}
 }
 
