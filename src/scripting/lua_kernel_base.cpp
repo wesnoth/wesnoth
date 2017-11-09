@@ -910,6 +910,10 @@ std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string 
 			lua_pushlstring(L, partial_name.c_str(), partial_name.size());
 			luaW_pcall(L, 2, 1);
 			ret = lua_check<std::vector<std::string>>(L, -1);
+		} else if(lua_type(L, -1) != LUA_TTABLE) {
+			LOG_LUA << "Userdata missing __tab_enum meta-function for tab completion";
+			lua_settop(L, save_stack);
+			return ret;
 		} else {
 			lua_settop(L, top);
 			// Metafunction not found, so use lua_next to enumerate the table
