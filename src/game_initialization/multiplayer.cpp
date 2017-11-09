@@ -102,7 +102,6 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 	initial_lobby_config.clear();
 
 	bool received_join_lobby = false;
-	bool received_join_game = false;
 	bool received_gamelist = false;
 
 	// Then, log in and wait for the lobby/game join prompt.
@@ -353,20 +352,12 @@ data_check:
 			gui2::dialogs::loading_screen::progress(loading_stage::download_lobby_data);
 		}
 
-		if(data.has_child("join_game")) {
-			received_join_game = true;
-		}
-
 		if(data.has_child("gamelist")) {
 			received_gamelist = true;
 
 			std::swap(initial_lobby_config, data);
 		}
-	} while(!(received_join_lobby && received_gamelist) && !received_join_game);
-
-	if(!received_join_lobby) {
-		return wesnothd_connection_ptr();
-	}
+	} while(!received_join_lobby || !received_gamelist);
 
 	return sock;
 }
