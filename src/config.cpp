@@ -255,6 +255,17 @@ void config::append(const config& cfg)
 	}
 }
 
+void config::append_children_by_move(config& cfg, const std::string& key)
+{
+	check_valid(cfg);
+
+	// DO note this leaves the tags empty in the source config. Not sure if
+	// that should be changed.
+	for(config& value : cfg.child_range(key)) {
+		add_child(key, std::move(value));
+	}
+}
+
 void config::merge_children(const std::string& key)
 {
 	check_valid();

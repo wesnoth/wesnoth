@@ -733,6 +733,9 @@ public:
 	 */
 	void append_children(const config &cfg, const std::string& key);
 
+	/** Moves children with the given name from the given config to this one. */
+	void append_children_by_move(config& cfg, const std::string& key);
+
 	/**
 	 * Adds attributes from @a cfg.
 	 */
