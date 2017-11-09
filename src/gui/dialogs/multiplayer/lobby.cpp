@@ -139,7 +139,7 @@ mp_lobby::mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_con
 	, filter_text_(nullptr)
 	, selected_game_id_()
 	, player_list_()
-	, player_list_dirty_(false)
+	, player_list_dirty_(true)
 	, gamelist_dirty_(true)
 	, last_gamelist_update_(0)
 	, gamelist_diff_update_(true)
@@ -822,7 +822,13 @@ void mp_lobby::pre_show(window& window)
 	game_filter_reload();
 
 	// Force first update to be directly.
-	mp_lobby::network_handler();
+	update_gamelist();
+	update_playerlist();
+
+	// TODO: currently getting a crash in the chatbox if we use this.
+	// -- vultraz, 2017-11-10
+	//mp_lobby::network_handler();
+
 	lobby_update_timer_ = add_timer(
 		game_config::lobby_network_timer, std::bind(&mp_lobby::network_handler, this), true);
 

@@ -49,6 +49,8 @@ static lg::log_domain log_mp("mp/main");
 
 namespace
 {
+config initial_lobby_config;
+
 /** Opens a new server connection and prompts the client for login credentials, if necessary. */
 wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 {
@@ -82,8 +84,6 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 		return sock;
 	}
 
-	config data;
-
 	// Start stage
 	gui2::dialogs::loading_screen::progress(loading_stage::connect_to_server);
 
@@ -94,6 +94,16 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 	}
 
 	gui2::dialogs::loading_screen::progress(loading_stage::waiting);
+
+	config data;
+
+	// Clear the initial saved config to be sure we don't swap old data
+	// into `data` when we grab the new game/user list.
+	initial_lobby_config.clear();
+
+	bool received_join_lobby = false;
+	bool received_join_game = false;
+	bool received_gamelist = false;
 
 	// Then, log in and wait for the lobby/game join prompt.
 	do {
@@ -149,7 +159,7 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 
 		// Continue if we did not get a direction to login
 		if(!data.has_child("mustlogin")) {
-			continue;
+			goto data_check;
 		}
 
 		// Enter login loop
@@ -334,9 +344,27 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 			// is still going to be nullptr
 			if(!*error) break;
 		} // end login loop
-	} while(!(data.child("join_lobby") || data.child("join_game")));
 
-	if(!data.has_child("join_lobby")) {
+data_check:
+
+		if(data.has_child("join_lobby")) {
+			received_join_lobby = true;
+
+			gui2::dialogs::loading_screen::progress(loading_stage::download_lobby_data);
+		}
+
+		if(data.has_child("join_game")) {
+			received_join_game = true;
+		}
+
+		if(data.has_child("gamelist")) {
+			received_gamelist = true;
+
+			std::swap(initial_lobby_config, data);
+		}
+	} while(!(received_join_lobby && received_gamelist) && !received_join_game);
+
+	if(!received_join_lobby) {
 		return wesnothd_connection_ptr();
 	}
 
@@ -492,6 +520,11 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 
 		mp::lobby_info li(helper->game_config, installed_addons);
 		helper->lobby_info = &li;
+
+		if(!initial_lobby_config.empty()) {
+			li.process_gamelist(initial_lobby_config);
+			initial_lobby_config.clear();
+		}
 
 		int dlg_retval = 0;
 		int dlg_joined_game_id = 0;

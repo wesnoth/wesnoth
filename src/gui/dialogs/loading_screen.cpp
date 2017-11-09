@@ -69,6 +69,7 @@ static const std::map<loading_stage, std::string> stage_names {
 	{ loading_stage::redirect,            N_("Connecting to redirected server") },
 	{ loading_stage::next_scenario,       N_("Waiting for next scenario") },
 	{ loading_stage::download_level_data, N_("Getting game data") },
+	{ loading_stage::download_lobby_data, N_("Downloading lobby data") },
 };
 
 namespace gui2

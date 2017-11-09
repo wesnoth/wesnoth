@@ -59,6 +59,7 @@ enum class loading_stage
 	redirect,
 	next_scenario,
 	download_level_data,
+	download_lobby_data,
 	none,
 };
 
