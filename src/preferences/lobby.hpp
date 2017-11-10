@@ -18,12 +18,6 @@
 
 namespace preferences {
 
-	bool sort_list();
-	void _set_sort_list(bool show);
-
-	bool iconize_list();
-	void _set_iconize_list(bool show);
-
 	bool whisper_friends_only();
 	void set_whisper_friends_only(bool v);
 

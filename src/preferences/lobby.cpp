@@ -18,26 +18,6 @@
 
 namespace preferences {
 
-bool sort_list()
-{
-	return preferences::get("sort_list", true);
-}
-
-void _set_sort_list(bool sort)
-{
-	preferences::set("sort_list", sort);
-}
-
-bool iconize_list()
-{
-	return preferences::get("iconize_list", true);
-}
-
-void _set_iconize_list(bool sort)
-{
-	preferences::set("iconize_list", sort);
-}
-
 bool whisper_friends_only()
 {
 	return preferences::get("lobby_whisper_friends_only", false);

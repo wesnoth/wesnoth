@@ -489,14 +489,6 @@ void preferences_dialog::post_build(window& window)
 	register_bool("remember_password", true,
 		remember_password, set_remember_password);
 
-	/* SORT LOBBY LIST */
-	register_bool("lobby_sort_players", true,
-		sort_list, _set_sort_list);
-
-	/* ICONIZE LOBBY LIST */
-	register_bool("lobby_player_icons", true,
-		iconize_list, _set_iconize_list);
-
 	/* WHISPERS FROM FRIENDS ONLY */
 	register_bool("lobby_whisper_friends_only", true,
 		whisper_friends_only, set_whisper_friends_only);
