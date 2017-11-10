@@ -49,17 +49,14 @@ static lg::log_domain log_mp("mp/main");
 
 namespace
 {
-config initial_lobby_config;
-
 /** Opens a new server connection and prompts the client for login credentials, if necessary. */
-wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
+std::pair<wesnothd_connection_ptr, config> open_connection(CVideo& video, std::string host)
 {
 	DBG_MP << "opening connection" << std::endl;
 
 	wesnothd_connection_ptr sock;
-
 	if(host.empty()) {
-		return sock;
+		return std::make_pair(std::move(sock), config());
 	}
 
 	const int colon_index = host.find_first_of(":");
@@ -81,7 +78,7 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 	// Initializes the connection to the server.
 	sock = wesnothd_connection::create(host, std::to_string(port));
 	if(!sock) {
-		return sock;
+		return std::make_pair(std::move(sock), config());
 	}
 
 	// Start stage
@@ -96,10 +93,7 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 	gui2::dialogs::loading_screen::progress(loading_stage::waiting);
 
 	config data;
-
-	// Clear the initial saved config to be sure we don't swap old data
-	// into `data` when we grab the new game/user list.
-	initial_lobby_config.clear();
+	config initial_lobby_config;
 
 	bool received_join_lobby = false;
 	bool received_gamelist = false;
@@ -107,7 +101,7 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 	// Then, log in and wait for the lobby/game join prompt.
 	do {
 		if(!sock) {
-			return sock;
+			return std::make_pair(std::move(sock), config());
 		}
 
 		data.clear();
@@ -156,9 +150,18 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 			sock->send_data(res);
 		}
 
+		// Check for gamelist. This *must* be done before the mustlogin check
+		// or else this loop will run ad-infinitum.
+		if(data.has_child("gamelist")) {
+			received_gamelist = true;
+
+			// data should only contain the game and user lists at this point, so just swap it.
+			std::swap(initial_lobby_config, data);
+		}
+
 		// Continue if we did not get a direction to login
 		if(!data.has_child("mustlogin")) {
-			goto data_check;
+			continue;
 		}
 
 		// Enter login loop
@@ -207,7 +210,7 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 				warning_msg += _("Do you want to continue?");
 
 				if(gui2::show_message(video, _("Warning"), warning_msg, gui2::dialogs::message::yes_no_buttons) != gui2::window::OK) {
-					return wesnothd_connection_ptr();
+					return std::make_pair(wesnothd_connection_ptr(), config());
 				}
 			}
 
@@ -332,7 +335,7 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 						break;
 					// Cancel
 					default:
-						return wesnothd_connection_ptr();
+						return std::make_pair(wesnothd_connection_ptr(), config());
 				}
 
 			// If we have got a new username we have to start all over again
@@ -344,22 +347,14 @@ wesnothd_connection_ptr open_connection(CVideo& video, std::string host)
 			if(!*error) break;
 		} // end login loop
 
-data_check:
-
 		if(data.has_child("join_lobby")) {
 			received_join_lobby = true;
 
 			gui2::dialogs::loading_screen::progress(loading_stage::download_lobby_data);
 		}
-
-		if(data.has_child("gamelist")) {
-			received_gamelist = true;
-
-			std::swap(initial_lobby_config, data);
-		}
 	} while(!received_join_lobby || !received_gamelist);
 
-	return sock;
+	return std::make_pair(std::move(sock), std::move(initial_lobby_config));
 }
 
 /** Helper struct to manage the MP workflow arguments. */
@@ -489,7 +484,7 @@ void enter_create_mode(mp_workflow_helper_ptr helper)
 	}
 }
 
-bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::string>& installed_addons)
+bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::string>& installed_addons, const config& initial_lobby_config)
 {
 	DBG_MP << "entering lobby mode" << std::endl;
 
@@ -514,7 +509,6 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 
 		if(!initial_lobby_config.empty()) {
 			li.process_gamelist(initial_lobby_config);
-			initial_lobby_config.clear();
 		}
 
 		int dlg_retval = 0;
@@ -589,7 +583,11 @@ void start_client(CVideo& video, const config& game_config,	saved_game& state, c
 	preferences::admin_authentication_reset r;
 
 	wesnothd_connection_ptr connection;
-	gui2::dialogs::loading_screen::display(video, [&]() { connection = open_connection(video, host); });
+	config lobby_config;
+
+	gui2::dialogs::loading_screen::display(video, [&]() {
+		std::tie(connection, lobby_config) = open_connection(video, host);
+	});
 
 	if(!connection) {
 		return;
@@ -602,7 +600,7 @@ void start_client(CVideo& video, const config& game_config,	saved_game& state, c
 		workflow_helper.reset(new mp_workflow_helper(video, *game_config_ptr, state, connection.get(), nullptr));
 
 		// A return of false means a config reload was requested, so do that and then loop.
-		re_enter = !enter_lobby_mode(workflow_helper, installed_addons);
+		re_enter = !enter_lobby_mode(workflow_helper, installed_addons, lobby_config);
 
 		if(re_enter) {
 			game_config_manager* gcm = game_config_manager::get();
