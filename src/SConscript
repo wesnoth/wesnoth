@@ -147,11 +147,11 @@ for env in [test_env, client_env, env]:
     env.AddMethod(WesnothProgram)
 
 #---wesnoth---
-wesnoth_objects = libwesnoth_extras + libwesnoth_core + libwesnoth + libwesnoth_sdl + libwesnoth_extras
+libwesnoth_objects = libwesnoth_extras + libwesnoth_core + libwesnoth + libwesnoth_sdl + libwesnoth_extras
 if env["PLATFORM"] == 'darwin':
-    client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + wesnoth_objects + ["macosx/SDLMain.mm"], have_client_prereqs)
+    client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects + ["macosx/SDLMain.mm"], have_client_prereqs)
 else:
-    client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + wesnoth_objects, have_client_prereqs)
+    client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects, have_client_prereqs)
 
 #---wesnothd---
 wesnothd_sources = GetSources("wesnothd")
@@ -163,7 +163,7 @@ env.WesnothProgram("campaignd", campaignd_sources + libwesnoth_core, have_server
 
 #---boost_unit_tests---
 test_sources = GetSources("boost_unit_tests")
-boost_unit_tests = test_env.WesnothProgram("boost_unit_tests", test_sources + wesnoth_objects, have_test_prereqs)
+boost_unit_tests = test_env.WesnothProgram("boost_unit_tests", test_sources + libwesnoth_objects, have_test_prereqs)
 #---end of getting sources---
 
 sources = []
