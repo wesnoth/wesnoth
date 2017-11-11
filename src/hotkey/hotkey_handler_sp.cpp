@@ -212,6 +212,8 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 
 			return !item->is_synced() || play_controller_.can_use_synced_wml_menu();
 		}
+		case hotkey::HOTKEY_SAVE_GAME:
+			return !events::commands_disabled || (playsingle_controller_.is_replay() && events::commands_disabled <  2);
 		case hotkey::HOTKEY_UNIT_HOLD_POSITION:
 		case hotkey::HOTKEY_END_UNIT_TURN:
 			return !browse() && !linger() && !events::commands_disabled;
