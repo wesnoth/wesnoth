@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <SDL_rect.h>
+
 #include <iosfwd>
 
 namespace gui2
@@ -35,6 +37,9 @@ struct point
 
 	/** y coordinate. */
 	int y;
+
+	/** Allow implicit conversion to SDL_Point. */
+	operator SDL_Point();
 
 	bool operator==(const point& point) const
 	{

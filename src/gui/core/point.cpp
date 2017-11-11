@@ -20,6 +20,10 @@
 
 namespace gui2
 {
+point::operator SDL_Point()
+{
+    return {x, y};
+}
 
 point& point::operator+=(const point& point)
 {
