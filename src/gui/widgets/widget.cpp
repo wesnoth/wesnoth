@@ -34,6 +34,8 @@ widget::widget()
 	, y_(-1)
 	, width_(0)
 	, height_(0)
+	, fixed_width_("", 0)
+	, fixed_height_("", 0)
 	, layout_size_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, last_best_size_()
@@ -56,6 +58,8 @@ widget::widget(const builder_widget& builder)
 	, y_(-1)
 	, width_(0)
 	, height_(0)
+	, fixed_width_(builder.fixed_width)
+	, fixed_height_(builder.fixed_height)
 	, layout_size_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, last_best_size_()
@@ -199,11 +203,32 @@ point widget::get_best_size() const
 
 	point result = layout_size_;
 	if(result == point()) {
-		result = calculate_best_size();
-		//Adjust to linked widget size if linked widget size was already calculated.
-		if(!get_window()->get_need_layout() && !linked_group_.empty())
-		{
+		point best_size = calculate_best_size();
+
+		if(!has_fixed_size()) {
+			result = best_size;
+		} else {
+			result = get_fixed_size();
+
+			//
+			// NOTE: the x or y coordinates could be 0 or less at this point, either because
+			// the formulas evaluated to 0 or because either of the fixed_width or fixed_height
+			// keys were omitted in the WML (in which case, the default value is 0). We'll
+			// assume a 0 value means that dimension is unfixed, so fall back on the best size.
+			//
+			if(result.x <= 0) {
+				result.x = best_size.x;
+			}
+
+			if(result.y <= 0) {
+				result.y = best_size.y;
+			}
+		}
+
+		// Adjust to linked widget size if linked widget size was already calculated.
+		if(!get_window()->get_need_layout() && !linked_group_.empty()) {
 			point linked_size = get_window()->get_linked_size(linked_group_);
+
 			result.x = std::max(result.x, linked_size.x);
 			result.y = std::max(result.y, linked_size.y);
 		}
@@ -214,6 +239,21 @@ point widget::get_best_size() const
 #endif
 
 	return result;
+}
+
+bool widget::has_fixed_size() const
+{
+	return fixed_width_.has_formula() || fixed_height_.has_formula();
+}
+
+point widget::get_fixed_size() const
+{
+	if(const window* window = get_window()) {
+		const wfl::map_formula_callable& vars = window->get_variables();
+		return point(fixed_width_(vars), fixed_height_(vars));
+	}
+
+	return point();
 }
 
 bool widget::can_wrap() const

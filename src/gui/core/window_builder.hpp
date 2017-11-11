@@ -66,6 +66,9 @@ public:
 	std::string id;
 	std::string linked_group;
 
+	typed_formula<unsigned> fixed_width;
+	typed_formula<unsigned> fixed_height;
+
 	int debug_border_mode;
 	color_t debug_border_color;
 };
