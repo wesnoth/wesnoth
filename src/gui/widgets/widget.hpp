@@ -15,7 +15,7 @@
 #pragma once
 
 #include "gui/core/event/dispatcher.hpp"
-#include "gui/core/point.hpp"
+#include "sdl/point.hpp"
 #include "gui/widgets/event_executor.hpp"
 #include "color.hpp"
 

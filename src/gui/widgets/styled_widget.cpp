@@ -558,12 +558,12 @@ void styled_widget::signal_handler_notify_remove_tooltip(const event::ui_event e
 	handled = true;
 }
 
-std::string styled_widget::get_label_token(const gui2::point & position, const char * delim) const
+std::string styled_widget::get_label_token(const point & position, const char * delim) const
 {
 	return renderer_.get_token(position, delim);
 }
 
-std::string styled_widget::get_label_link(const gui2::point & position) const
+std::string styled_widget::get_label_link(const point & position) const
 {
 	return renderer_.get_link(position);
 }

@@ -33,10 +33,7 @@
  */
 
 struct language_def;
-
-namespace gui2 {
-	struct point;
-} // namespace gui2;
+struct point;
 
 namespace font {
 
@@ -99,7 +96,7 @@ public:
 	int get_height() const;
 
 	/** Returns the pixel size needed for the text. */
-	gui2::point get_size() const;
+	point get_size() const;
 
 	/** Has the text been truncated? This happens if it exceeds max width or height. */
 	bool is_truncated() const;
@@ -158,7 +155,7 @@ public:
 	 *                            requested location is out of range 0,0 is
 	 *                            returned.
 	 */
-	gui2::point get_cursor_position(
+	point get_cursor_position(
 		const unsigned column, const unsigned line = 0) const;
 
 	/**
@@ -171,7 +168,7 @@ public:
 	 * 			      delimiter characters. If position is out of bounds,
 	 *			      it returns the empty string.
 	 */
-	std::string get_token(const gui2::point & position, const char * delimiters = " \n\r\t") const;
+	std::string get_token(const point & position, const char * delimiters = " \n\r\t") const;
 
 	/**
 	 * Checks if position points to a character in a link in the text, returns it
@@ -180,7 +177,7 @@ public:
 	 *
 	 * @returns                   The link if one is found, the empty string otherwise.
 	 */
-	std::string get_link(const gui2::point & position) const;
+	std::string get_link(const point & position) const;
 
 	/**
 	 * Gets the column of line of the character at the position.
@@ -191,7 +188,7 @@ public:
 	 *                            value the line of the character found (or last
 	 *                            character if not found.
 	 */
-	gui2::point get_column_line(const gui2::point& position) const;
+	point get_column_line(const point& position) const;
 
 	/**
 	 * Gets the length of the text in bytes.

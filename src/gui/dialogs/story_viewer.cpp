@@ -19,7 +19,7 @@
 #include "formula/callable_objects.hpp"
 #include "formula/variant.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/core/point.hpp"
+#include "sdl/point.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"

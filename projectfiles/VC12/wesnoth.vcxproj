@@ -1419,13 +1419,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Core\Placer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Core\Placer\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\core\point.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\core\timer.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
@@ -2747,6 +2740,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)SDL\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\sdl\point.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)SDL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)SDL\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)SDL\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\sdl\rect.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)SDL\</ObjectFileName>
@@ -3693,7 +3693,6 @@
     <ClInclude Include="..\..\src\gui\core\placer.hpp" />
     <ClInclude Include="..\..\src\gui\core\placer\horizontal_list.hpp" />
     <ClInclude Include="..\..\src\gui\core\placer\vertical_list.hpp" />
-    <ClInclude Include="..\..\src\gui\core\point.hpp" />
     <ClInclude Include="..\..\src\gui\core\register_widget.hpp" />
     <ClInclude Include="..\..\src\gui\core\timer.hpp" />
     <ClInclude Include="..\..\src\gui\core\widget_definition.hpp" />
@@ -3935,6 +3934,7 @@
     <ClInclude Include="..\..\src\scripting\plugins\manager.hpp" />
     <ClInclude Include="..\..\src\scripting\push_check.hpp" />
     <ClInclude Include="..\..\src\sdl\exception.hpp" />
+    <ClInclude Include="..\..\src\sdl\point.hpp" />
     <ClInclude Include="..\..\src\sdl\rect.hpp" />
     <ClInclude Include="..\..\src\sdl\surface.hpp" />
     <ClInclude Include="..\..\src\sdl\userevent.hpp" />

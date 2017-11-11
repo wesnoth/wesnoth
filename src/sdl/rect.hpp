@@ -24,9 +24,7 @@
 
 #include <SDL_rect.h>
 
-namespace gui2 {
-	struct point;
-}
+struct point;
 
 namespace sdl
 {
@@ -56,7 +54,7 @@ inline SDL_Rect create_rect(const int x, const int y, const int w, const int h)
  */
 bool point_in_rect(int x, int y, const SDL_Rect& rect);
 
-bool point_in_rect(const gui2::point& point, const SDL_Rect& rect);
+bool point_in_rect(const point& point, const SDL_Rect& rect);
 
 /**
  * Tests whether two rectangles overlap.

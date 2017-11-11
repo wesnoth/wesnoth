@@ -26,7 +26,7 @@
 #include "gettext.hpp"
 #include "gui/widgets/helper.hpp"
 #include "gui/core/log.hpp"
-#include "gui/core/point.hpp"
+#include "sdl/point.hpp"
 #include "sdl/utils.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
@@ -107,11 +107,11 @@ int pango_text::get_height() const
 	return this->get_size().y;
 }
 
-gui2::point pango_text::get_size() const
+point pango_text::get_size() const
 {
 	this->recalculate();
 
-	return gui2::point(rect_.width, rect_.height);
+	return point(rect_.width, rect_.height);
 }
 
 bool pango_text::is_truncated() const
@@ -152,7 +152,7 @@ unsigned pango_text::insert_unicode(const unsigned offset, const ucs4::string& u
 	return this->insert_text(offset, insert);
 }
 
-gui2::point pango_text::get_cursor_position(
+point pango_text::get_cursor_position(
 		const unsigned column, const unsigned line) const
 {
 	this->recalculate();
@@ -165,7 +165,7 @@ gui2::point pango_text::get_cursor_position(
 	// Go the wanted line.
 	if(line != 0) {
 		if(pango_layout_get_line_count(layout_.get()) >= static_cast<int>(line)) {
-			return gui2::point(0, 0);
+			return point(0, 0);
 		}
 
 		for(size_t i = 0; i < line; ++i) {
@@ -183,7 +183,7 @@ gui2::point pango_text::get_cursor_position(
 				break;
 			}
 			// We are beyond data.
-			return gui2::point(0, 0);
+			return point(0, 0);
 		}
 	}
 
@@ -194,10 +194,10 @@ gui2::point pango_text::get_cursor_position(
 	PangoRectangle rect;
 	pango_layout_get_cursor_pos(layout_.get(), offset, &rect, nullptr);
 
-	return gui2::point(PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y));
+	return point(PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y));
 }
 
-std::string pango_text::get_token(const gui2::point & position, const char * delim) const
+std::string pango_text::get_token(const point & position, const char * delim) const
 {
 	this->recalculate();
 
@@ -229,7 +229,7 @@ std::string pango_text::get_token(const gui2::point & position, const char * del
 	return txt.substr(l,r-l);
 }
 
-std::string pango_text::get_link(const gui2::point & position) const
+std::string pango_text::get_link(const point & position) const
 {
 	if (!link_aware_) {
 		return "";
@@ -244,7 +244,7 @@ std::string pango_text::get_link(const gui2::point & position) const
 	}
 }
 
-gui2::point pango_text::get_column_line(const gui2::point& position) const
+point pango_text::get_column_line(const point& position) const
 {
 	this->recalculate();
 
@@ -273,7 +273,7 @@ gui2::point pango_text::get_column_line(const gui2::point& position) const
 		const int pos = this->get_cursor_position(i, line).x;
 
 		if(pos == offset) {
-			return  gui2::point(i, line);
+			return  point(i, line);
 		}
 	}
 }

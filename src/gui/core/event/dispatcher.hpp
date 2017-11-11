@@ -29,10 +29,10 @@
 #include <map>
 #include <type_traits>
 
+struct point;
+
 namespace gui2
 {
-
-struct point;
 class widget;
 
 namespace event

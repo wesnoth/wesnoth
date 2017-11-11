@@ -204,7 +204,7 @@ protected:
 
 	/***** ***** ***** ***** expose some functions ***** ***** ***** *****/
 
-	gui2::point get_cursor_position(const unsigned column,
+	point get_cursor_position(const unsigned column,
 									 const unsigned line = 0) const
 	{
 		return text_.get_cursor_position(column, line);

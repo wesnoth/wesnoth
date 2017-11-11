@@ -19,11 +19,10 @@
 
 class CVideo;
 class t_string;
+struct point;
 
 namespace gui2
 {
-
-struct point;
 
 namespace dialogs
 {

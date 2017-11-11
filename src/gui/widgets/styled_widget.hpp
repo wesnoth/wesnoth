@@ -431,9 +431,9 @@ protected:
 									  int y_offset) override;
 
 	/** Exposes font::pango_text::get_token, for the text label of this styled_widget */
-	std::string get_label_token(const gui2::point & position, const char * delimiters = " \n\r\t") const;
+	std::string get_label_token(const point & position, const char * delimiters = " \n\r\t") const;
 
-	std::string get_label_link(const gui2::point & position) const;
+	std::string get_label_link(const point & position) const;
 
 private:
 	/**

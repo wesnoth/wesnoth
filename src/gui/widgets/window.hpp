@@ -36,13 +36,13 @@
 
 class CVideo;
 class surface;
+struct point;
 
 namespace gui2
 {
 
 class widget;
 namespace event { struct message; }
-struct point;
 
 // ------------ WIDGET -----------{
 

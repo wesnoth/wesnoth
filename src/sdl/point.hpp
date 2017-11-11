@@ -18,9 +18,6 @@
 
 #include <iosfwd>
 
-namespace gui2
-{
-
 /** Holds a 2D point. */
 struct point
 {
@@ -75,6 +72,3 @@ struct point
 };
 
 std::ostream& operator<<(std::ostream& stream, const point& point);
-
-
-} // namespace gui2

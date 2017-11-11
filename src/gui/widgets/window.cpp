@@ -36,7 +36,7 @@
 #include "gui/core/event/message.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/layout_exception.hpp"
-#include "gui/core/point.hpp"
+#include "sdl/point.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/tooltip.hpp"

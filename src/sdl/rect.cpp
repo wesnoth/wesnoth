@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "gui/core/point.hpp"
+#include "sdl/point.hpp"
 #include "sdl/rect.hpp"
 #include "video.hpp"
 
@@ -28,7 +28,7 @@ bool point_in_rect(int x, int y, const SDL_Rect& rect)
 #endif
 }
 
-bool point_in_rect(const gui2::point& point, const SDL_Rect& rect)
+bool point_in_rect(const point& point, const SDL_Rect& rect)
 {
 	return point_in_rect(point.x, point.y, rect);
 }

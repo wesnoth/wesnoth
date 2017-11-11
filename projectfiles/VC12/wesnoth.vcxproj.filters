@@ -812,9 +812,6 @@
     <ClCompile Include="..\..\src\gui\core\placer.cpp">
       <Filter>Gui\Core</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\core\point.cpp">
-      <Filter>Gui\Core</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\gui\core\timer.cpp">
       <Filter>Gui\Core</Filter>
     </ClCompile>
@@ -1543,6 +1540,9 @@
     <ClCompile Include="..\..\src\gui\widgets\slider_base.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\sdl\point.cpp">
+      <Filter>SDL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -2257,9 +2257,6 @@
       <Filter>Gui\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\core\placer.hpp">
-      <Filter>Gui\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\core\point.hpp">
       <Filter>Gui\Core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\core\register_widget.hpp">
@@ -2997,6 +2994,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\slider_base.hpp">
       <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sdl\point.hpp">
+      <Filter>SDL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

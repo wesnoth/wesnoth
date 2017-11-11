@@ -14,15 +14,13 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/core/point.hpp"
+#include "sdl/point.hpp"
 
 #include <iostream>
 
-namespace gui2
-{
 point::operator SDL_Point()
 {
-    return {x, y};
+	return {x, y};
 }
 
 point& point::operator+=(const point& point)
@@ -44,5 +42,3 @@ std::ostream& operator<<(std::ostream& stream, const point& point)
 	stream << point.x << ',' << point.y;
 	return stream;
 }
-
-} // namespace gui2

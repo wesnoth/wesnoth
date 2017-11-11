@@ -23,6 +23,7 @@
 #include <string>
 
 struct SDL_Rect;
+struct point;
 class t_string;
 
 namespace wfl
@@ -32,7 +33,6 @@ class map_formula_callable;
 
 namespace gui2
 {
-struct point;
 
 /**
  * Initializes the gui subsystems.

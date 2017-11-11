@@ -16,7 +16,7 @@
 
 #include "gui/core/placer/vertical_list.hpp"
 
-#include "gui/core/point.hpp"
+#include "sdl/point.hpp"
 
 #include <cassert>
 #include <numeric>

@@ -25,10 +25,10 @@
 
 #include "utils/make_enum.hpp"
 
+struct point;
+
 namespace gui2
 {
-
-struct point;
 
 /**
  * Base class for the placement helper.
