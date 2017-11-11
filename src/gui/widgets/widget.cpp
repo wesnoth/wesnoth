@@ -625,9 +625,7 @@ bool widget::is_at(const point& coordinate, const bool must_be_active) const
 		return false;
 	}
 
-	return coordinate.x >= x_ && coordinate.x < (x_ + static_cast<int>(width_))
-		   && coordinate.y >= y_
-		   && coordinate.y < (y_ + static_cast<int>(height_));
+	return sdl::point_in_rect(coordinate, get_rectangle());
 }
 
 } // namespace gui2

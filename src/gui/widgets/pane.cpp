@@ -24,6 +24,7 @@
 #include "gui/core/event/message.hpp"
 #include "gettext.hpp"
 #include "lexical_cast.hpp"
+#include "sdl/rect.hpp"
 
 #include "utils/functional.hpp"
 
@@ -73,11 +74,7 @@ struct pane_implementation
 			 * If the adjusted coordinate is in the item's grid let the grid
 			 * resolve the coordinate.
 			 */
-			const SDL_Rect rect = item.item_grid->get_rectangle();
-			if(coordinate.x >= rect.x && coordinate.y >= rect.y
-			   && coordinate.x < rect.x + rect.w
-			   && coordinate.y < rect.y + rect.h) {
-
+			if(sdl::point_in_rect(coordinate, item.item_grid->get_rectangle())) {
 				return item.item_grid->find_at(coordinate, must_be_active);
 			}
 		}

@@ -22,6 +22,7 @@
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#include "sdl/rect.hpp"
 #include "sound.hpp"
 #include "utils/math.hpp"
 #include "gettext.hpp"
@@ -132,12 +133,11 @@ unsigned slider::offset_after() const
 
 bool slider::on_positioner(const point& coordinate) const
 {
+	SDL_Rect positioner_rect =
+		sdl::create_rect(get_positioner_offset(), 0, get_positioner_length(), get_height());
+
 	// Note we assume the positioner is over the entire height of the widget.
-	return
-		coordinate.x >= static_cast<int>(get_positioner_offset()) &&
-		coordinate.x <  static_cast<int>(get_positioner_offset() + get_positioner_length()) &&
-		coordinate.y > 0 &&
-		coordinate.y <  static_cast<int>(get_height());
+	return sdl::point_in_rect(coordinate, positioner_rect);
 }
 
 int slider::on_bar(const point& coordinate) const
@@ -265,14 +265,14 @@ void slider::set_step_size(int step_size)
 {
 	const int old_min_value = get_minimum_value();
 	const int old_max_value = get_maximum_value();
-	
+
 	const int range_diff = get_item_count() - 1;
 	const int old_value = get_value();
 
 	step_size_ = gcd(range_diff, step_size);
 	slider_set_item_last(range_diff / step_size_);
 	set_value(old_value);
-	
+
 	assert(old_min_value == get_minimum_value());
 	assert(old_max_value == get_maximum_value());
 }
