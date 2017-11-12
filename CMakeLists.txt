@@ -518,9 +518,9 @@ set(CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}" CACHE STRING "removed
 # #
 
 # reset the base Release build option
-MESSAGE("Replacing default flags used for Release build with -O3")
-set(CMAKE_CXX_FLAGS_RELEASE "-O3" CACHE STRING "Release build flags" FORCE)
-set(CMAKE_C_FLAGS_RELEASE "-O3" CACHE STRING "Release build flags" FORCE)
+MESSAGE("Replacing default flags used for Release build with -O3 ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_RELEASE}")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3 ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_RELEASE}" CACHE STRING "Release build flags" FORCE)
+set(CMAKE_C_FLAGS_RELEASE "-O3 ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_RELEASE}" CACHE STRING "Release build flags" FORCE)
 set(CMAKE_EXE_LINKER_FLAGS_RELEASE "" CACHE STRING "" FORCE)
 # set the arch to use for Release build if provided
 if(ARCH)
@@ -601,9 +601,11 @@ else()
 	find_program(NON_LTO_RANLIB NAMES ranlib)
 	set(CMAKE_AR "${NON_LTO_AR}" CACHE STRING "Does not support LTO" FORCE)
 	set(CMAKE_RANLIB "${NON_LTO_RANLIB}" CACHE STRING "Does not support LTO" FORCE)
-	set(CMAKE_EXE_LINKER_FLAGS_RELEASE "" CACHE STRING "Default linker" FORCE)
 endif()
 MARK_AS_ADVANCED(LTO_AR LTO_RANLIB NON_LTO_AR NON_LTO_RANLIB)
+
+# add in extra flags
+set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} ${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_RELEASE}")
 
 # clean the pgo data
 set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${CMAKE_SOURCE_DIR}/pgo_data/")
@@ -615,9 +617,10 @@ set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${CMAKE_SOURCE_
 
 # replace the default Debug flag of -g with -O0 -DDEBUG -ggdb3
 # this matches the flags of scons' debug build
-MESSAGE("Replacing flags used for Debug build")
-set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3" CACHE STRING "change cmake's Debug flags to match scons' flags" FORCE)
-set(CMAKE_C_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3" CACHE STRING "change cmake's Debug flags to match scons' flags" FORCE)
+MESSAGE("Replacing flags used for Debug build -O0 -DDEBUG -ggdb3 ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_DEBUG}")
+set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3 ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_DEBUG}" CACHE STRING "change cmake's Debug flags to match scons' flags" FORCE)
+set(CMAKE_C_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3 ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_DEBUG}" CACHE STRING "change cmake's Debug flags to match scons' flags" FORCE)
+set(CMAKE_EXE_LINKER_FLAGS_DEBUG "${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_DEBUG}" CACHE STRING "" FORCE)
 
 # adds GLIBCXX_DEBUG definitions
 if(GLIBCXX_DEBUG)
@@ -633,30 +636,30 @@ endif(GLIBCXX_DEBUG)
 
 if(PROFILER STREQUAL "gprof" OR NOT PROFILER)
 	MESSAGE("Profiler is gprof")
-	set(CMAKE_CXX_FLAGS_PROFILE "-pg" CACHE STRING "Flags for profiling with gprof" FORCE)
-	set(CMAKE_C_FLAGS_PROFILE "-pg" CACHE STRING "Flags for profiling with gprof" FORCE)
-	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "" CACHE STRING "" FORCE)
+	set(CMAKE_CXX_FLAGS_PROFILE "-pg ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gprof" FORCE)
+	set(CMAKE_C_FLAGS_PROFILE "-pg ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gprof" FORCE)
+	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_PROFILE}" CACHE STRING "" FORCE)
 endif()
 
 if(PROFILER STREQUAL "gcov")
 	MESSAGE("Profiler is gcov")
-	set(CMAKE_CXX_FLAGS_PROFILE "-fprofile-arcs -ftest-coverage" CACHE STRING "Flags for profiling with gcov" FORCE)
-	set(CMAKE_C_FLAGS_PROFILE "-fprofile-arcs -ftest-coverage" CACHE STRING "Flags for profiling with gcov" FORCE)
-	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "" CACHE STRING "" FORCE)
+	set(CMAKE_CXX_FLAGS_PROFILE "-fprofile-arcs -ftest-coverage ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gcov" FORCE)
+	set(CMAKE_C_FLAGS_PROFILE "-fprofile-arcs -ftest-coverage ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gcov" FORCE)
+	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_PROFILE}" CACHE STRING "" FORCE)
 endif()
 
 if(PROFILER STREQUAL "gperftools")
 	MESSAGE("Profiler is gperftools")
-	set(CMAKE_CXX_FLAGS_PROFILE "" CACHE STRING "Flags for profiling with gperftools" FORCE)
-	set(CMAKE_C_FLAGS_PROFILE "" CACHE STRING "Flags for profiling with gperftools" FORCE)
-	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "-Wl,--no-as-needed,-lprofiler" CACHE STRING "" FORCE)
+	set(CMAKE_CXX_FLAGS_PROFILE "${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gperftools" FORCE)
+	set(CMAKE_C_FLAGS_PROFILE "${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with gperftools" FORCE)
+	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "-Wl,--no-as-needed,-lprofiler ${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_PROFILE}" CACHE STRING "" FORCE)
 endif()
 
 if(PROFILER STREQUAL "perf")
 	MESSAGE("Profiler is perf")
-	set(CMAKE_CXX_FLAGS_PROFILE "-ggdb -Og" CACHE STRING "Flags for profiling with perf" FORCE)
-	set(CMAKE_C_FLAGS_PROFILE "-ggdb -Og" CACHE STRING "Flags for profiling with perf" FORCE)
-	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "" CACHE STRING "" FORCE)
+	set(CMAKE_CXX_FLAGS_PROFILE "-ggdb -Og ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with perf" FORCE)
+	set(CMAKE_C_FLAGS_PROFILE "-ggdb -Og ${EXTRA_FLAGS_CONFIG} ${EXTRA_FLAGS_PROFILE}" CACHE STRING "Flags for profiling with perf" FORCE)
+	set(CMAKE_EXE_LINKER_FLAGS_PROFILE "${LINK_EXTRA_FLAGS_CONFIG} ${LINK_EXTRA_FLAGS_PROFILE}" CACHE STRING "" FORCE)
 endif()
 
 # #
