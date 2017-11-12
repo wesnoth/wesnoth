@@ -88,14 +88,6 @@ int halo_id;
 std::set<int> invalidated_haloes;
 
 /**
- * A newly added halo will be added to this list, these haloes don't need to be
- * unrendered but do not to be rendered regardless which tiles are invalidated.
- * These haloes will stay in this set until there're really rendered (rendering
- * won't happen if for example the halo is offscreen).
- */
-std::set<int> new_haloes;
-
-/**
  * Upon deleting, a halo isn't deleted but added to this set, upon unrendering
  * the image is unrendered and deleted.
  */
@@ -117,7 +109,6 @@ explicit halo_impl(display & screen) :
 	haloes(),
 	halo_id(1),
 	invalidated_haloes(),
-	new_haloes(),
 	deleted_haloes(),
 	changing_haloes()
 {}
@@ -335,7 +326,6 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 
 	}
 	haloes.emplace(id, effect(disp, x, y, image_vector, loc, orientation, infinite));
-	new_haloes.insert(id);
 	if(haloes.find(id)->second.does_change() || !infinite) {
 		changing_haloes.insert(id);
 	}
@@ -428,9 +418,6 @@ void halo_impl::unrender(std::set<map_location> invalidated_locations)
 
 	// Really delete the haloes marked for deletion
 	for(set_itor = deleted_haloes.begin(); set_itor != deleted_haloes.end(); ++set_itor) {
-		// It can happen a deleted halo hasn't been rendered yet, invalidate them as well
-		new_haloes.erase(*set_itor);
-
 		changing_haloes.erase(*set_itor);
 		invalidated_haloes.erase(*set_itor);
 		haloes.erase(*set_itor);
@@ -442,30 +429,16 @@ void halo_impl::unrender(std::set<map_location> invalidated_locations)
 void halo_impl::render()
 {
 	if(preferences::show_haloes() == false || haloes.empty() ||
-			(new_haloes.empty() && invalidated_haloes.empty())) {
+			invalidated_haloes.empty()) {
 		return;
 	}
 
-	// Keep track of not rendered new images they have to be kept scheduled
-	// for rendering otherwise the invalidation area is never properly set
-	std::set<int> unrendered_new_haloes;
-
-	// Render the haloes:
-	// iterate through all the haloes and draw if in either set
-	for(std::map<int, effect>::iterator itor = haloes.begin();
-			itor != haloes.end(); ++itor) {
-
-		if(new_haloes.find(itor->first) != new_haloes.end() &&
-				! itor->second.render()) {
-
-			unrendered_new_haloes.insert(itor->first);
-		} else if(invalidated_haloes.find(itor->first) != invalidated_haloes.end()) {
-			itor->second.render();
-		}
+	// Render the haloes: draw all invalidated haloes
+	for(int halo_id : invalidated_haloes) {
+		haloes.at(halo_id).render();
 	}
 
 	invalidated_haloes.clear();
-	new_haloes = unrendered_new_haloes;
 }
 
 // end halo_impl implementations
