@@ -27,7 +27,7 @@ namespace editor {
 class mouse_action_select : public brush_drag_mouse_action
 {
 public:
-	mouse_action_select(const brush* brush, const CKey& key, empty_palette& palette)
+	mouse_action_select(const brush* const * const brush, const CKey& key, empty_palette& palette)
 	: brush_drag_mouse_action(palette, brush, key)
 	{
 	}

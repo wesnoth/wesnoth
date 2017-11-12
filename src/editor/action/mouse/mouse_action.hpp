@@ -165,7 +165,7 @@ private:
 class brush_drag_mouse_action : public mouse_action
 {
 public:
-	brush_drag_mouse_action(common_palette& palette, const brush* brush, const CKey& key)
+	brush_drag_mouse_action(common_palette& palette, const brush* const * const brush, const CKey& key)
 		: mouse_action(palette, key)
 		, previous_drag_hex_()
 		, brush_(brush)
@@ -235,12 +235,12 @@ private:
 	editor_action* drag_generic(editor_display& disp, int x, int y, bool& partial, editor_action* last_undo);
 
 	/**
-	 * Current brush handle. Currently pointer to brush with full constness.
+	 * Current brush handle. Currently a pointer-to-pointer with full constness.
 	 * The mouse action does not modify the brush, does not modify the pointer
 	 * to the current brush, and we allow setting this pointr only once, hence
 	 * the three "consts".
 	 */
-	const brush* const brush_;
+	const brush* const * const brush_;
 };
 
 /**
@@ -250,7 +250,7 @@ class mouse_action_paint : public brush_drag_mouse_action
 {
 public:
 	mouse_action_paint(
-		const brush* brush, const CKey& key, terrain_palette& palette)
+		const brush* const * const brush, const CKey& key, terrain_palette& palette)
 	: brush_drag_mouse_action(palette, brush, key)
 	, terrain_palette_(palette)
 	{

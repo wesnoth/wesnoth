@@ -31,7 +31,7 @@ editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key,
 	, palette_manager_()
 	, mouse_action_(nullptr)  // Will be set before this constructor ends.
 	, mouse_actions_()
-	, brush_(nullptr) // Will be set before this constructor ends.
+	, brush_(nullptr)
 	, brushes_()
 {
 	init_brushes(game_config);
@@ -62,11 +62,11 @@ void editor_toolkit::init_sidebar(const config& game_config)
 void editor_toolkit::init_mouse_actions(context_manager& cmanager)
 {
 	mouse_actions_.emplace(hotkey::HOTKEY_EDITOR_TOOL_PAINT,
-		std::make_shared<mouse_action_paint>(brush_, key_, *palette_manager_->terrain_palette_.get()));
+		std::make_shared<mouse_action_paint>(&brush_, key_, *palette_manager_->terrain_palette_.get()));
 	mouse_actions_.emplace(hotkey::HOTKEY_EDITOR_TOOL_FILL,
 		std::make_shared<mouse_action_fill>(key_, *palette_manager_->terrain_palette_.get()));
 	mouse_actions_.emplace(hotkey::HOTKEY_EDITOR_TOOL_SELECT,
-		std::make_shared<mouse_action_select>(brush_, key_, *palette_manager_->empty_palette_.get()));
+		std::make_shared<mouse_action_select>(&brush_, key_, *palette_manager_->empty_palette_.get()));
 	mouse_actions_.emplace(hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION,
 		std::make_shared<mouse_action_starting_position>(key_, *palette_manager_->location_palette_.get()));
 	mouse_actions_.emplace(hotkey::HOTKEY_EDITOR_TOOL_LABEL,
