@@ -1348,8 +1348,11 @@ void editor_controller::right_drag_end(int x, int y, const bool /*browse*/)
 	perform_delete(a);
 }
 
-void editor_controller::right_mouse_up(int x, int y, const bool /*browse*/)
+void editor_controller::right_mouse_up(int x, int y, const bool browse)
 {
+	// Call base method to handle context menus.
+	mouse_handler_base::right_mouse_up(x, y, browse);
+
 	editor_action* a = get_mouse_action().up_right(*gui_, x, y);
 	perform_delete(a);
 	if (a) set_button_state();
