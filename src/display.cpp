@@ -107,8 +107,11 @@ void display::parse_team_overlays()
 void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo, const std::string& team_name, const std::string& item_id, bool visible_under_fog)
 {
 	if (halo_man_) {
-		const halo::handle halo_handle = halo_man_->add(get_location_x(loc) + hex_size() / 2,
-			get_location_y(loc) + hex_size() / 2, halo, loc);
+		halo::handle halo_handle;
+		if(halo != "") {
+			halo_handle = halo_man_->add(get_location_x(loc) + hex_size() / 2,
+				get_location_y(loc) + hex_size() / 2, halo, loc);
+		}
 
 		overlays_->emplace(loc, overlay(img, halo, halo_handle, team_name, item_id, visible_under_fog));
 	}
