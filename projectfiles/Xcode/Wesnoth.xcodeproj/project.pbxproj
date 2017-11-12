@@ -715,7 +715,6 @@
 		91E357101CACCA5700774252 /* canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC510FC08E0100CE81F5 /* canvas.cpp */; };
 		91E357111CACCA5700774252 /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B597EC550FC08E0100CE81F5 /* log.cpp */; };
 		91E357121CACCA5700774252 /* placer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5AFEA1571208B0062EAFC /* placer.cpp */; };
-		91E357131CACCA5700774252 /* point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4C5DD66158CFD5E0044F754 /* point.cpp */; };
 		91E357141CACCA5700774252 /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CF7BBA10D55F5A00A8BEB5 /* timer.cpp */; };
 		91E357151CACCA5700774252 /* tips.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B504B94A1284C06B00261FE9 /* tips.cpp */; };
 		91E357161CACCA5700774252 /* widget_definition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5B4692E107118B200327599 /* widget_definition.cpp */; };
@@ -1187,6 +1186,7 @@
 		ECB107D81E84B52600379898 /* story_viewer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECB107D61E84B52600379898 /* story_viewer.cpp */; };
 		ECB57C401A56E6DC001973A5 /* teambuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECB57C3F1A56E6DC001973A5 /* teambuilder.cpp */; };
 		ECB58C8D19E71347007D074F /* editor_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECB58C8B19E71347007D074F /* editor_controller.cpp */; };
+		ECB6A6331FB8AAC500877C20 /* point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECB6A6321FB8AAC400877C20 /* point.cpp */; };
 		ECBBD73D1928F3F200E434C6 /* builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECBBD73B1928F3F100E434C6 /* builder.cpp */; };
 		ECBBD7401928F41500E434C6 /* core_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECBBD73E1928F41500E434C6 /* core_selection.cpp */; };
 		ECC2FFFA1A51A00900023AF4 /* lua_race.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECC2FFF91A51A00900023AF4 /* lua_race.cpp */; };
@@ -1237,7 +1237,6 @@
 		F480CD1F14034E6D007175D6 /* mapbuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD1D14034E6D007175D6 /* mapbuilder.cpp */; };
 		F480CD2414034F18007175D6 /* schema_validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD2214034F18007175D6 /* schema_validator.cpp */; };
 		F49F134A15BC627C00B64B0B /* edit_label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F49F134815BC627C00B64B0B /* edit_label.cpp */; };
-		F4C5DD68158CFD5E0044F754 /* point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4C5DD66158CFD5E0044F754 /* point.cpp */; };
 		F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		F4D2A9D514DAED4200CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		F4D2DECB14DCA1D000CAFF31 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D2DECA14DCA1D000CAFF31 /* client.cpp */; };
@@ -2581,6 +2580,8 @@
 		ECB57C3F1A56E6DC001973A5 /* teambuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = teambuilder.cpp; sourceTree = "<group>"; };
 		ECB58C8B19E71347007D074F /* editor_controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = editor_controller.cpp; path = controller/editor_controller.cpp; sourceTree = "<group>"; };
 		ECB58C8C19E71347007D074F /* editor_controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = editor_controller.hpp; path = controller/editor_controller.hpp; sourceTree = "<group>"; };
+		ECB6A6311FB8AAC400877C20 /* point.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = point.hpp; sourceTree = "<group>"; };
+		ECB6A6321FB8AAC400877C20 /* point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = point.cpp; sourceTree = "<group>"; };
 		ECBBD73B1928F3F100E434C6 /* builder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = builder.cpp; sourceTree = "<group>"; };
 		ECBBD73C1928F3F100E434C6 /* builder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = builder.hpp; sourceTree = "<group>"; };
 		ECBBD73E1928F41500E434C6 /* core_selection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = core_selection.cpp; sourceTree = "<group>"; };
@@ -2670,8 +2671,6 @@
 		F480CD2A14034FB8007175D6 /* schema_validator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = schema_validator.hpp; sourceTree = "<group>"; };
 		F49F134815BC627C00B64B0B /* edit_label.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = edit_label.cpp; sourceTree = "<group>"; };
 		F49F134915BC627C00B64B0B /* edit_label.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = edit_label.hpp; sourceTree = "<group>"; };
-		F4C5DD66158CFD5E0044F754 /* point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = point.cpp; sourceTree = "<group>"; };
-		F4C5DD67158CFD5E0044F754 /* point.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = point.hpp; sourceTree = "<group>"; };
 		F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
 		F4D2DECA14DCA1D000CAFF31 /* client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = client.cpp; sourceTree = "<group>"; };
 		F4D2DEDE14DED86800CAFF31 /* lctype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lctype.h; sourceTree = "<group>"; };
@@ -3531,6 +3530,8 @@
 			children = (
 				EC84246F18F30DB700FC1EEF /* exception.cpp */,
 				EC84247018F30DB700FC1EEF /* exception.hpp */,
+				ECB6A6321FB8AAC400877C20 /* point.cpp */,
+				ECB6A6311FB8AAC400877C20 /* point.hpp */,
 				ECFB9FAB193BFB6E00146ED0 /* rect.cpp */,
 				91B621F11B76BBC500B00E0F /* rect.hpp */,
 				EC2F60211A04983B0018C9D6 /* savepng.c */,
@@ -3741,8 +3742,6 @@
 				F4D5AFEF157120B30062EAFC /* placer */,
 				F4D5AFEA1571208B0062EAFC /* placer.cpp */,
 				F4D5AFEB1571208B0062EAFC /* placer.hpp */,
-				F4C5DD66158CFD5E0044F754 /* point.cpp */,
-				F4C5DD67158CFD5E0044F754 /* point.hpp */,
 				9190B73B1CA0564700B0EF66 /* register_widget.hpp */,
 				B5CF7BBA10D55F5A00A8BEB5 /* timer.cpp */,
 				B5CF7BBB10D55F5A00A8BEB5 /* timer.hpp */,
@@ -5040,6 +5039,7 @@
 				B597EC5B0FC08E0100CE81F5 /* log.cpp in Sources */,
 				EC67F7FB1DB314580038337E /* text_cache.cpp in Sources */,
 				EC5401871EBE0C4500AE66EE /* game.cpp in Sources */,
+				ECB6A6331FB8AAC500877C20 /* point.cpp in Sources */,
 				EC218EA01A106648007C910C /* lua_common.cpp in Sources */,
 				ECD5D7BF1A22DC8600114175 /* lua_cpp_function.cpp in Sources */,
 				ECA4A67B1A1EC319006BCCF2 /* lua_fileops.cpp in Sources */,
@@ -5134,7 +5134,6 @@
 				B5599B140EC62181008DD061 /* playsingle_controller.cpp in Sources */,
 				EC51DB7818F8BFA4004621D9 /* playturn_network_adapter.cpp in Sources */,
 				B5599B130EC62181008DD061 /* playturn.cpp in Sources */,
-				F4C5DD68158CFD5E0044F754 /* point.cpp in Sources */,
 				4944F4141354FB970027E614 /* modeless_dialog.cpp in Sources */,
 				B5599B070EC62181008DD061 /* preprocessor.cpp in Sources */,
 				B52EE89E1213590500CFBDAB /* progress_bar.cpp in Sources */,
@@ -5607,7 +5606,6 @@
 				91E357101CACCA5700774252 /* canvas.cpp in Sources */,
 				91E357111CACCA5700774252 /* log.cpp in Sources */,
 				91E357121CACCA5700774252 /* placer.cpp in Sources */,
-				91E357131CACCA5700774252 /* point.cpp in Sources */,
 				91E357141CACCA5700774252 /* timer.cpp in Sources */,
 				91E357151CACCA5700774252 /* tips.cpp in Sources */,
 				91E357161CACCA5700774252 /* widget_definition.cpp in Sources */,
