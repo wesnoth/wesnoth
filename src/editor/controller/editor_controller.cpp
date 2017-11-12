@@ -204,7 +204,7 @@ bool editor_controller::quit_confirm()
 	std::string message;
 	if (amount == 0) {
 		message = _("Do you really want to quit?");
-	} else if (amount == 1) {
+	} else if (amount == 1 && get_current_map_context().modified()) {
 		message = _("Do you really want to quit? Changes to this map since the last save will be lost.");
 	} else {
 		message = _("Do you really want to quit? The following maps were modified and all changes since the last save will be lost:");
