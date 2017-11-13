@@ -14,6 +14,8 @@ Version 1.13.10+dev:
  * Lua API:
    * New wesnoth.unit_types[].advances_to getter.
    * New wesnoth.unit_types[].advances_from getter.
+ * Multiplayer:
+   * Dark Forecast: Fixed broken faction and leader selection.
  * Performance:
    * GUI2 windows no longer redraw everything 50 times per second. This reduces
      CPU usage in fullscreen windows such as MP lobby by about 85 %.
