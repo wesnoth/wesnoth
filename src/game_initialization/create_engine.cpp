@@ -337,6 +337,8 @@ void create_engine::init_generated_level_data()
 
 			const std::string& description = cur_lev->data()["description"];
 			data["description"] = description;
+			// TODO: should we also carryover [story] from the outer scenario as we do in saved_game.cpp
+			data["id"] = cur_lev->data()["id"];
 
 			cur_lev->set_data(data);
 		}
