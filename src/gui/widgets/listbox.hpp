@@ -304,6 +304,9 @@ protected:
 	void handle_key_right_arrow(SDL_Keymod modifier, bool& handled) override;
 
 private:
+	/** See @ref widget::calculate_best_size. */
+	virtual point calculate_best_size() const override;
+
 	enum KEY_SCROLL_DIRECTION { KEY_VERTICAL, KEY_HORIZONTAL };
 
 	/** Helper to update visible area after a key event. */

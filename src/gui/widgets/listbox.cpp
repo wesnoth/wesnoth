@@ -447,6 +447,22 @@ void listbox::child_populate_dirty_list(window& caller, const std::vector<widget
 	generator_->populate_dirty_list(caller, child_call_stack);
 }
 
+point listbox::calculate_best_size() const
+{
+	// Get the size from the base class, then add any extra space for the header and footer.
+	point result = scrollbar_container::calculate_best_size();
+
+	if(const grid* header = find_widget<const grid>(&get_grid(), "_header_grid", false, false)) {
+		result.y += header->get_best_size().y;
+	}
+
+	if(const grid* footer = find_widget<const grid>(&get_grid(), "_footer_grid", false, false)) {
+		result.y += footer->get_best_size().y;
+	}
+
+	return result;
+}
+
 void listbox::update_visible_area_on_key_event(const KEY_SCROLL_DIRECTION direction)
 {
 	const SDL_Rect& visible = content_visible_area();

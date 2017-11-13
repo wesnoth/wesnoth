@@ -298,18 +298,6 @@ point scrollbar_container::calculate_best_size() const
 		vertical_scrollbar.x + std::max(horizontal_scrollbar.x, content.x),
 		horizontal_scrollbar.y + std::max(vertical_scrollbar.y, content.y));
 
-	//
-	// Workaround for bug #24780. This should probably be moved somewhere more specific to
-	// the listbox, but for now it suffices.
-	//
-	if(const grid* header = find_widget<const grid>(&get_grid(), "_header_grid", false, false)) {
-		result.y += header->get_best_size().y;
-	}
-
-	if(const grid* footer = find_widget<const grid>(&get_grid(), "_footer_grid", false, false)) {
-		result.y += footer->get_best_size().y;
-	}
-
 	DBG_GUI_L << LOG_HEADER << " vertical_scrollbar " << vertical_scrollbar << " horizontal_scrollbar "
 			  << horizontal_scrollbar << " content " << content << " result " << result << ".\n";
 
