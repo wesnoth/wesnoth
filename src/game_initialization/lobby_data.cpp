@@ -304,6 +304,8 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		}
 	}
 
+	info_stream << mod_info;
+
 	if(map_data.empty()) {
 		map_data = filesystem::read_map(game["mp_scenario"]);
 	}
