@@ -29,7 +29,7 @@ namespace wfl
 	{                                                                                                                  \
 	public:                                                                                                            \
 		explicit name##_function(const args_list& args)                                                                \
-			: function_expression(#name, args, ##min_args, ##max_args)                                                 \
+			: function_expression(#name, args, min_args, max_args)                                                     \
 		{                                                                                                              \
 		}                                                                                                              \
                                                                                                                        \
