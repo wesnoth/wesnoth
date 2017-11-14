@@ -75,13 +75,13 @@ public:
 
 	void set_values(const std::vector<::config>& values, int selected = 0);
 
-	void set_selected(int selected);
+	void set_selected(int selected, bool fire_event = true);
 
 	/** Inherited from selectable_item */
 	virtual unsigned get_value() const override { return selected_; }
 
 	/** Inherited from selectable_item */
-	virtual void set_value(const unsigned value ) override { set_selected(value); }
+	virtual void set_value(unsigned value, bool fire_event = false) override { set_selected(value, fire_event); }
 
 	/** Inherited from selectable_item */
 	virtual unsigned num_states() const override { return values_.size(); }

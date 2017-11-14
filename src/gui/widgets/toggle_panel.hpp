@@ -96,7 +96,7 @@ public:
 	}
 
 	/** Inherited from selectable_item */
-	void set_value(const unsigned selected) override;
+	void set_value(const unsigned selected, bool fire_event = false) override;
 
 	/** Inherited from selectable_item */
 	unsigned num_states() const override;

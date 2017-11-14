@@ -159,15 +159,15 @@ point toggle_panel::border_space() const
 	return point(conf->left_border + conf->right_border, conf->top_border + conf->bottom_border);
 }
 
-void toggle_panel::set_value(const unsigned selected)
+void toggle_panel::set_value(unsigned selected, bool fire_event)
 {
+	selected = selected % num_states();
 	if(selected == get_value()) {
 		return;
 	}
-	state_num_ = selected % num_states();
+	state_num_ = selected;
 	set_is_dirty(true);
 
-#if 0
 	/*
 	 * Disabled since this causes problems all over the place.
 	 * This was added in acea15c312f178b2b6fe4556ca6b190b00866557 but clashes with the
@@ -185,12 +185,9 @@ void toggle_panel::set_value(const unsigned selected)
 
 	// Check for get_window() is here to prevent the callback from
 	// being called when the initial value is set.
-	if(!get_window()) {
-		return;
+	if(get_window() && fire_event) {
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}
-
-	fire(event::NOTIFY_MODIFIED, *this, nullptr);
-#endif
 }
 
 void toggle_panel::set_retval(const int retval)
@@ -252,7 +249,7 @@ toggle_panel::signal_handler_pre_left_button_click(const event::ui_event event)
 {
 	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
 
-	set_value(1);
+	set_value(1, true);
 
 #if 0
 	/*
@@ -281,10 +278,7 @@ void toggle_panel::signal_handler_left_button_click(const event::ui_event event,
 
 	sound::play_UI_sound(settings::sound_toggle_panel_click);
 
-	set_value(get_value() + 1);
-
-	/** @todo remove. See comment in @ref set_value. */
-	fire(event::NOTIFY_MODIFIED, *this, nullptr);
+	set_value(get_value() + 1, true);
 
 	handled = true;
 }

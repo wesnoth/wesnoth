@@ -109,12 +109,12 @@ private:
 	field_integer* action_bonus_;
 
 	template<typename widget>
-	void on_filter_change(window& window, const std::string& id);
+	void on_filter_change(window& window, const std::string& id, bool do_select);
 
 	void on_game_select(window& window);
 	void on_tab_select(window& window);
 	void on_era_select(window& window);
-	void on_mod_toggle(window& window, const int index);
+	void on_mod_toggle(window& window, const int index, toggle_button* sender);
 	void on_random_faction_mode_select(window& window);
 	
 	std::vector<std::string> get_active_mods(window& window);

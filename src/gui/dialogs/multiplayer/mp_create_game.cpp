@@ -153,12 +153,12 @@ void mp_create_game::pre_show(window& win)
 	// Set up filtering
 	//
 	connect_signal_notify_modified(find_widget<slider>(&win, "num_players", false),
-		std::bind(&mp_create_game::on_filter_change<slider>, this, std::ref(win), "num_players"));
+		std::bind(&mp_create_game::on_filter_change<slider>, this, std::ref(win), "num_players", true));
 
 	text_box& filter = find_widget<text_box>(&win, "game_filter", false);
 
 	filter.set_text_changed_callback(
-		std::bind(&mp_create_game::on_filter_change<text_box>, this, std::ref(win), "game_filter"));
+		std::bind(&mp_create_game::on_filter_change<text_box>, this, std::ref(win), "game_filter", true));
 
 	// Note this cannot be in the keyboard chain or it will capture focus from other text boxes
 	win.keyboard_capture(&filter);
@@ -218,8 +218,8 @@ void mp_create_game::pre_show(window& win)
 			create_engine_.active_mods().push_back(mod->id);
 			mog_toggle.set_value_bool(true);
 		}
-
-		connect_signal_notify_modified(mog_toggle, std::bind(&mp_create_game::on_mod_toggle, this, std::ref(win), i));
+		auto pmog_toggle = &mog_toggle;
+		connect_signal_notify_modified(mog_toggle, std::bind(&mp_create_game::on_mod_toggle, this, std::ref(win), i, pmog_toggle));
 	}
 
 	// No mods, hide the header
@@ -366,7 +366,7 @@ void mp_create_game::pre_show(window& win)
 		create_engine_.set_current_era_index(cfg["index"].to_int()); }, true);
 
 	plugins_context_->set_callback("select_mod",   [this, &win](const config& cfg) {
-		on_mod_toggle(win, cfg["index"].to_int());
+		on_mod_toggle(win, cfg["index"].to_int(), nullptr);
 	}, true);
 
 	plugins_context_->set_accessor("game_config",  [this](const config&) {return cfg_; });
@@ -437,7 +437,7 @@ void mp_create_game::sync_with_depcheck(window& window)
 }
 
 template<typename widget>
-void mp_create_game::on_filter_change(window& window, const std::string& id)
+void mp_create_game::on_filter_change(window& window, const std::string& id, bool do_select)
 {
 	create_engine_.apply_level_filter(find_widget<widget>(&window, id, false).get_value());
 
@@ -449,8 +449,9 @@ void mp_create_game::on_filter_change(window& window, const std::string& id)
 	}
 
 	game_list.set_row_shown(filtered);
-
-	on_game_select(window);
+	if(do_select) {
+		on_game_select(window);
+	}
 }
 
 void mp_create_game::on_game_select(window& window)
@@ -513,8 +514,12 @@ void mp_create_game::on_tab_select(window& window)
 	}
 }
 
-void mp_create_game::on_mod_toggle(window& window, const int index)
+void mp_create_game::on_mod_toggle(window& window, const int index, toggle_button* sender)
 {
+	(void)sender;
+	if(sender && (sender->get_value_bool() == create_engine_.dependency_manager().is_modification_active(index))) {
+		assert(false);
+	}
 	create_engine_.toggle_mod(index);
 
 	sync_with_depcheck(window);
@@ -582,8 +587,8 @@ void mp_create_game::display_games_of_type(window& window, ng::level::TYPE type,
 
 	if(!level.empty() && !list.get_rows_shown().empty()) {
 		// Recalculate which rows should be visible
-		on_filter_change<slider>(window, "num_players");
-		on_filter_change<text_box>(window, "game_filter");
+		on_filter_change<slider>(window, "num_players", false);
+		on_filter_change<text_box>(window, "game_filter", false);
 
 		int level_index = create_engine_.find_level_by_id(level).second;
 		if(level_index >= 0 && size_t(level_index) < list.get_item_count()) {
