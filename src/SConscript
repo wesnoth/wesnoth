@@ -65,7 +65,7 @@ libwesnoth_core_sources = GetSources("libwesnoth_core")
 if env["PLATFORM"] == "win32":
     libwesnoth_core_sources.append("log_windows.cpp")
 
-libwesnoth_core = [env.Library("wesnoth_core", libwesnoth_core_sources)]
+libwesnoth_core = env.Library("wesnoth_core", libwesnoth_core_sources)
 
 #---libwesnoth---
 libwesnoth_sources = GetSources("libwesnoth")
