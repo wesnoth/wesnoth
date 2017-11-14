@@ -1429,7 +1429,7 @@ function_symbol_table::function_symbol_table(std::shared_ptr<function_symbol_tab
 
 void function_symbol_table::add_function(const std::string& name, formula_function_ptr&& fcn)
 {
-	custom_formulas_.emplace(name, std::forward<formula_function_ptr>(fcn));
+	custom_formulas_.emplace(name, std::move(fcn));
 }
 
 expression_ptr function_symbol_table::create_function(
