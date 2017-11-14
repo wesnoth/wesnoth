@@ -265,7 +265,7 @@ pathfind::teleport_map formula_ai::get_allowed_teleports(unit_map::iterator& uni
 void formula_ai::add_formula_function(const std::string& name, const_formula_ptr formula, const_formula_ptr precondition, const std::vector<std::string>& args)
 {
 	formula_function_ptr fcn(new user_formula_function(name,formula,precondition,args));
-	function_table_.add_function(name, fcn);
+	function_table_.add_function(name, std::move(fcn));
 }
 
 namespace {

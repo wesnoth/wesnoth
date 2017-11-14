@@ -1265,11 +1265,9 @@ expression_ptr parse_expression(const tk::token* i1, const tk::token* i2, functi
 			}
 
 			symbols->add_function(formula_name,
-				formula_function_ptr(
-					new user_formula_function(
-						formula_name, const_formula_ptr(new formula(beg, i1, symbols)),
-						formula::create_optional_formula(precond, symbols), args
-					)
+				std::make_shared<user_formula_function>(
+					formula_name, const_formula_ptr(new formula(beg, i1, symbols)),
+					formula::create_optional_formula(precond, symbols), args
 				)
 			);
 
