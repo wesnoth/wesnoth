@@ -790,6 +790,7 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 		? ng::depcheck::component_availability::MP
 		: ng::depcheck::component_availability::HYBRID;
 
+	std::set<std::string> found_ids;
 	for(const config& extra : game_config_manager::get()->game_config().child_range(extra_name))
 	{
 		ng::depcheck::component_availability type = extra["type"].to_enum(default_availabilty);
@@ -797,13 +798,19 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 
 		if((type != ng::depcheck::component_availability::MP || mp) && (type != ng::depcheck::component_availability::SP || !mp) )
 		{
-			extras_metadata_ptr new_extras_metadata(new extras_metadata());
-			new_extras_metadata->id = extra["id"].str();
-			new_extras_metadata->name = extra["name"].str();
-			new_extras_metadata->description = extra["description"].str();
-			new_extras_metadata->cfg = &extra;
+			if(found_ids.insert(extra["id"]).second) {
+				extras_metadata_ptr new_extras_metadata(new extras_metadata());
+				new_extras_metadata->id = extra["id"].str();
+				new_extras_metadata->name = extra["name"].str();
+				new_extras_metadata->description = extra["description"].str();
+				new_extras_metadata->cfg = &extra;
 
-			extras.push_back(std::move(new_extras_metadata));
+				extras.push_back(std::move(new_extras_metadata));		
+			}
+			else {
+				//TODO: use a more visible error message.
+				ERR_CF << "found " << extra_name << " with id=" << extra["id"] << " twice\n";
+			}
 		}
 	}
 }

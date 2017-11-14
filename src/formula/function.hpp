@@ -45,7 +45,7 @@ namespace wfl
  * The function must be defined by a `name_function` class which is accessible in the current scope.
  */
 #define DECLARE_WFL_FUNCTION(name)                                                                                     \
-	functions_table.add_function(#name, formula_function_ptr(new builtin_formula_function<name##_function>(#name)))
+	functions_table.add_function(#name, std::make_shared<builtin_formula_function<name##_function>>(#name));
 
 struct call_stack_manager
 {
@@ -217,7 +217,7 @@ public:
 
 	function_expression_ptr generate_function_expression(const std::vector<expression_ptr>& args) const
 	{
-		return function_expression_ptr(new T(args));
+		return std::make_shared<T>(args);
 	}
 };
 
@@ -229,13 +229,13 @@ class function_symbol_table
 public:
 	explicit function_symbol_table(std::shared_ptr<function_symbol_table> parent = nullptr);
 
-	void add_function(const std::string& name, formula_function_ptr fcn);
+	void add_function(const std::string& name, formula_function_ptr&& fcn);
 
 	expression_ptr create_function(const std::string& fn, const std::vector<expression_ptr>& args) const;
 
 	std::set<std::string> get_function_names() const;
 
-	bool empty()
+	bool empty() const
 	{
 		return custom_formulas_.empty() && (parent == nullptr || parent->empty());
 	}

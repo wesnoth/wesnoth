@@ -87,7 +87,7 @@ DEFINE_WFL_FUNCTION(debug, 0, 1)
 
 	if(fdb == nullptr) {
 		fdbp.reset(new formula_debugger());
-		fdb = &*fdbp;
+		fdb = fdbp.get();
 		need_wrapper = true;
 	}
 
@@ -363,7 +363,7 @@ DEFINE_WFL_FUNCTION(tomap, 1, 2)
 			if(auto kv = (*it).try_convert<key_value_pair>()) {
 				tmp[kv->query_value("key")] = kv->query_value("value");
 			} else {
-				std::map<variant, variant>::iterator map_it = tmp.find(*it);
+				auto map_it = tmp.find(*it);
 
 				if(map_it == tmp.end()) {
 					tmp[*it] = variant(1);
@@ -1419,7 +1419,7 @@ variant formula_function_expression::execute(const formula_callable& variables, 
 function_expression_ptr user_formula_function::generate_function_expression(
 		const std::vector<expression_ptr>& args) const
 {
-	return function_expression_ptr(new formula_function_expression(name_, args, formula_, precondition_, args_));
+	return std::make_shared<formula_function_expression>(name_, args, formula_, precondition_, args_);
 }
 
 function_symbol_table::function_symbol_table(std::shared_ptr<function_symbol_table> parent)
@@ -1427,15 +1427,15 @@ function_symbol_table::function_symbol_table(std::shared_ptr<function_symbol_tab
 {
 }
 
-void function_symbol_table::add_function(const std::string& name, formula_function_ptr fcn)
+void function_symbol_table::add_function(const std::string& name, formula_function_ptr&& fcn)
 {
-	custom_formulas_[name] = fcn;
+	custom_formulas_.emplace(name, std::forward<formula_function_ptr>(fcn));
 }
 
 expression_ptr function_symbol_table::create_function(
 		const std::string& fn, const std::vector<expression_ptr>& args) const
 {
-	const functions_map::const_iterator i = custom_formulas_.find(fn);
+	const auto i = custom_formulas_.find(fn);
 	if(i != custom_formulas_.end()) {
 		return i->second->generate_function_expression(args);
 	}
@@ -1457,8 +1457,8 @@ std::set<std::string> function_symbol_table::get_function_names() const
 		res = parent->get_function_names();
 	}
 
-	for(functions_map::const_iterator iter = custom_formulas_.begin(); iter != custom_formulas_.end(); ++iter) {
-		res.insert((*iter).first);
+	for(const auto& formula : custom_formulas_) {
+		res.insert(formula.first);
 	}
 
 	return res;
