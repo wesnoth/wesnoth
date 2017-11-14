@@ -96,7 +96,7 @@ static bool resolve_filename(std::string& filename, std::string currentdir, std:
 			break;
 		}
 		size_t pos2 = filename.find_last_of('/', pos - 1);
-		if(pos == std::string::npos || pos2 >= pos) {
+		if(pos2 == std::string::npos || pos2 >= pos) {
 			return false;
 		}
 		filename = filename.replace(pos2, pos- pos2 + 3, "");
