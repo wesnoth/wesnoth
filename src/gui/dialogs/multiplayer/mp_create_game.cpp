@@ -515,8 +515,7 @@ void mp_create_game::on_tab_select(window& window)
 
 void mp_create_game::on_mod_toggle(window& window, const int index)
 {
-	create_engine_.set_current_mod_index(index);
-	create_engine_.toggle_current_mod();
+	create_engine_.toggle_mod(index);
 
 	sync_with_depcheck(window);
 
@@ -527,7 +526,7 @@ void mp_create_game::on_era_select(window& window)
 {
 	create_engine_.set_current_era_index(find_widget<menu_button>(&window, "eras", false).get_value());
 
-	find_widget<menu_button>(&window, "eras", false).set_tooltip(create_engine_.current_extra(ng::create_engine::ERA).description);
+	find_widget<menu_button>(&window, "eras", false).set_tooltip(create_engine_.current_era().description);
 
 	sync_with_depcheck(window);
 
@@ -812,7 +811,7 @@ void mp_create_game::post_show(window& window)
 		prefs::set_modifications(create_engine_.active_mods());
 		prefs::set_level_type(create_engine_.current_level_type().v);
 		prefs::set_level(create_engine_.current_level().id());
-		prefs::set_era(create_engine_.current_extra(ng::create_engine::ERA).id);
+		prefs::set_era(create_engine_.current_era().id);
 
 		create_engine_.prepare_for_era_and_mods();
 

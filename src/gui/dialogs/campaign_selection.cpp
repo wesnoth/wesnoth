@@ -358,8 +358,7 @@ void campaign_selection::mod_toggled(window& window)
 
 	for(unsigned i = 0; i < mod_states_.size(); i++) {
 		if(mod_states_[i]) {
-			engine_.set_current_mod_index(i);
-			engine_.toggle_current_mod();
+			engine_.toggle_mod(i);
 		}
 	}
 

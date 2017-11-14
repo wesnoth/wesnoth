@@ -230,7 +230,6 @@ create_engine::create_engine(CVideo& v, saved_game& state)
 	: current_level_type_()
 	, current_level_index_(0)
 	, current_era_index_(0)
-	, current_mod_index_(0)
 	, level_name_filter_()
 	, player_count_filter_(1)
 	, type_map_()
@@ -519,12 +518,9 @@ level& create_engine::current_level() const
 	return *type_map_.at(current_level_type_.v).games[current_level_index_];
 }
 
-const create_engine::extras_metadata& create_engine::current_extra(const MP_EXTRA extra_type) const
+const create_engine::extras_metadata& create_engine::current_era() const
 {
-	const size_t index = (extra_type == ERA) ?
-		current_era_index_ : current_mod_index_;
-
-	return *get_const_extras_by_type(extra_type)[index];
+	return *get_const_extras_by_type(ERA)[current_era_index_];
 }
 
 void create_engine::set_current_level(const size_t index)
@@ -556,10 +552,10 @@ void create_engine::set_current_era_index(const size_t index, bool force)
 	dependency_manager_->try_era_by_index(index, force);
 }
 
-bool create_engine::toggle_current_mod(bool force)
+bool create_engine::toggle_mod(int index, bool force)
 {
-	bool is_active = dependency_manager_->is_modification_active(current_mod_index_);
-	dependency_manager_->try_modification_by_index(current_mod_index_, !is_active, force);
+	bool is_active = dependency_manager_->is_modification_active(index);
+	dependency_manager_->try_modification_by_index(index, !is_active, force);
 
 	state_.mp_settings().active_mods = dependency_manager_->get_modifications();
 
