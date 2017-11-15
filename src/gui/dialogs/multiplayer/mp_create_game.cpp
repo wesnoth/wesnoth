@@ -403,7 +403,7 @@ void mp_create_game::pre_show(window& win)
 
 void mp_create_game::sync_with_depcheck(window& window)
 {
-	if (create_engine_.current_era_index() != create_engine_.dependency_manager().get_era_index()) {
+	if (static_cast<int>(create_engine_.current_era_index()) != create_engine_.dependency_manager().get_era_index()) {
 
 		int new_era_index = create_engine_.dependency_manager().get_era_index();
 		
