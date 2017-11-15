@@ -1,5 +1,6 @@
-[![Build Status](https://travis-ci.org/wesnoth/wesnoth.svg?branch=master)](https://travis-ci.org/wesnoth/wesnoth) [![Build status](https://ci.appveyor.com/api/projects/status/nv5jnof3lk3j6kg6?svg=true)](https://ci.appveyor.com/project/wesnoth/wesnoth)
-[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://img.shields.io/badge/License-GPL%20v2-blue.svg)
+[![Build Status](https://travis-ci.org/wesnoth/wesnoth.svg?branch=master)](https://travis-ci.org/wesnoth/wesnoth)
+[![Build status](https://ci.appveyor.com/api/projects/status/nv5jnof3lk3j6kg6?svg=true)](https://ci.appveyor.com/project/wesnoth/wesnoth)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 [![Coverity Scan](https://img.shields.io/coverity/scan/1063.svg)](https://scan.coverity.com/projects/wesnoth)
 
 About
