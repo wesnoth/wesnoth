@@ -411,6 +411,7 @@ void mp_create_game::pre_show(window& win)
 
 void mp_create_game::sync_with_depcheck(window& window)
 {
+	DBG_MP << "sync_with_depcheck: start\n";
 	if (static_cast<int>(create_engine_.current_era_index()) != create_engine_.dependency_manager().get_era_index()) {
 
 		DBG_MP << "sync_with_depcheck: correcting era\n";
@@ -425,7 +426,7 @@ void mp_create_game::sync_with_depcheck(window& window)
 
 		// Match scenario and scenario type
 		auto new_level_index = create_engine_.find_level_by_id(create_engine_.dependency_manager().get_scenario());
-
+		bool different_type = new_level_index.first  != create_engine_.current_level_type();
 		if (new_level_index.second != -1) {
 
 			create_engine_.set_current_level_type(new_level_index.first);
@@ -435,8 +436,20 @@ void mp_create_game::sync_with_depcheck(window& window)
 			auto& game_types_list = find_widget<menu_button>(&window, "game_types", false);
 			game_types_list.set_value(std::find_if(level_types_.begin(), level_types_.begin(), [&](const level_type_info& info){ return info.first == new_level_index.first; }) - level_types_.begin());
 			
+			if(different_type) {
+				display_games_of_type(window, new_level_index.first, create_engine_.current_level().id());
+			}
+			else {
+				// this function (or rather on_game_select) might be triggered by a listbox callback
+				// in which case we cannot use display_games_of_type since it destroys the list
+				// (it's elements) which might result in segfaults. We assume that a listbox-triggered
+				// sync_with_depcheck call does never change the game type and goes to this branch instead.
+				find_widget<listbox>(&window, "games_list", false).select_row(new_level_index.second);
+				// Override the last selection so on_game_select selects the new level
+				selected_game_index_ = -1;
 
-			display_games_of_type(window, new_level_index.first, create_engine_.current_level().id());
+				on_game_select(window);
+			}
 		}
 	}
 	
@@ -445,6 +458,7 @@ void mp_create_game::sync_with_depcheck(window& window)
 		set_active_mods(create_engine_.dependency_manager().get_modifications());
 	}
 	create_engine_.init_active_mods();
+	DBG_MP << "sync_with_depcheck: end\n";
 
 }
 
