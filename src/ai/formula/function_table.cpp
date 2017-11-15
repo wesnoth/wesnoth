@@ -1354,7 +1354,7 @@ public:
 // This macro is for functions taking an additional formula_ai argument.
 // Functions using the other macro could potentially be made core.
 #define DECLARE_FAI_FUNCTION(name) \
-	add_function(#name, std::make_shared<ai_formula_function<name##_function>>(#name, ai));
+	add_function(#name, std::make_shared<ai_formula_function<name##_function>>(#name, ai))
 
 ai_function_symbol_table::ai_function_symbol_table(ai::formula_ai& ai)
 	: function_symbol_table(std::make_shared<gamestate_function_symbol_table>(std::make_shared<action_function_symbol_table>()))

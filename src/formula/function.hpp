@@ -45,7 +45,7 @@ namespace wfl
  * The function must be defined by a `name_function` class which is accessible in the current scope.
  */
 #define DECLARE_WFL_FUNCTION(name)                                                                                     \
-	functions_table.add_function(#name, std::make_shared<builtin_formula_function<name##_function>>(#name));
+	functions_table.add_function(#name, std::make_shared<builtin_formula_function<name##_function>>(#name))
 
 struct call_stack_manager
 {
