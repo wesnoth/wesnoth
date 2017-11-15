@@ -31,6 +31,8 @@ namespace gui2
 class toggle_button;
 class toggle_panel;
 class widget;
+class listbox;
+class menu_button;
 
 namespace dialogs
 {
@@ -107,6 +109,9 @@ private:
 	field_integer* turn_bonus_;
 	field_integer* reservoir_;
 	field_integer* action_bonus_;
+	
+	listbox* mod_list_;
+	menu_button* eras_menu_button_;
 
 	template<typename widget>
 	void on_filter_change(window& window, const std::string& id, bool do_select);
@@ -117,8 +122,8 @@ private:
 	void on_mod_toggle(window& window, const int index, toggle_button* sender);
 	void on_random_faction_mode_select(window& window);
 	
-	std::vector<std::string> get_active_mods(window& window);
-	void set_active_mods(window& window, const std::vector<std::string>& val);
+	std::vector<std::string> get_active_mods();
+	void set_active_mods(const std::vector<std::string>& val);
 	
 	void sync_with_depcheck(window& window);
 	
