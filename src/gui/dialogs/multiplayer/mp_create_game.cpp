@@ -228,8 +228,8 @@ void mp_create_game::pre_show(window& win)
 			create_engine_.active_mods().push_back(mod->id);
 			mog_toggle.set_value_bool(true);
 		}
-		auto pmog_toggle = &mog_toggle;
-		connect_signal_notify_modified(mog_toggle, std::bind(&mp_create_game::on_mod_toggle, this, std::ref(win), i, pmog_toggle));
+
+		connect_signal_notify_modified(mog_toggle, std::bind(&mp_create_game::on_mod_toggle, this, std::ref(win), i, &mog_toggle));
 	}
 
 	// No mods, hide the header
@@ -412,39 +412,39 @@ void mp_create_game::pre_show(window& win)
 void mp_create_game::sync_with_depcheck(window& window)
 {
 	DBG_MP << "sync_with_depcheck: start\n";
-	if (static_cast<int>(create_engine_.current_era_index()) != create_engine_.dependency_manager().get_era_index()) {
 
+	if(static_cast<int>(create_engine_.current_era_index()) != create_engine_.dependency_manager().get_era_index()) {
 		DBG_MP << "sync_with_depcheck: correcting era\n";
-		int new_era_index = create_engine_.dependency_manager().get_era_index();
-		
+		const int new_era_index = create_engine_.dependency_manager().get_era_index();
+
 		create_engine_.set_current_era_index(new_era_index, true);
 		eras_menu_button_->set_value(new_era_index);
 	}
 
-	if (create_engine_.current_level().id() != create_engine_.dependency_manager().get_scenario()) {
+	if(create_engine_.current_level().id() != create_engine_.dependency_manager().get_scenario()) {
 		DBG_MP << "sync_with_depcheck: correcting scenario\n";
 
 		// Match scenario and scenario type
-		auto new_level_index = create_engine_.find_level_by_id(create_engine_.dependency_manager().get_scenario());
-		bool different_type = new_level_index.first  != create_engine_.current_level_type();
-		if (new_level_index.second != -1) {
+		const auto new_level_index = create_engine_.find_level_by_id(create_engine_.dependency_manager().get_scenario());
+		const bool different_type = new_level_index.first != create_engine_.current_level_type();
 
+		if(new_level_index.second != -1) {
 			create_engine_.set_current_level_type(new_level_index.first);
 			create_engine_.set_current_level(new_level_index.second);
 			selected_game_index_ = new_level_index.second;
 
 			auto& game_types_list = find_widget<menu_button>(&window, "game_types", false);
 			game_types_list.set_value(std::find_if(level_types_.begin(), level_types_.begin(), [&](const level_type_info& info){ return info.first == new_level_index.first; }) - level_types_.begin());
-			
+
 			if(different_type) {
 				display_games_of_type(window, new_level_index.first, create_engine_.current_level().id());
-			}
-			else {
-				// this function (or rather on_game_select) might be triggered by a listbox callback
-				// in which case we cannot use display_games_of_type since it destroys the list
-				// (it's elements) which might result in segfaults. We assume that a listbox-triggered
-				// sync_with_depcheck call does never change the game type and goes to this branch instead.
+			} else {
+				// This function (or rather on_game_select) might be triggered by a listbox callback, in
+				// which case we cannot use display_games_of_type since it destroys the list (and its
+				// elements) which might result in segfaults. Instead, we assume that a listbox-triggered
+				// sync_with_depcheck call never changes the game type and goes to this branch instead.
 				find_widget<listbox>(&window, "games_list", false).select_row(new_level_index.second);
+
 				// Override the last selection so on_game_select selects the new level
 				selected_game_index_ = -1;
 
@@ -452,14 +452,14 @@ void mp_create_game::sync_with_depcheck(window& window)
 			}
 		}
 	}
-	
+
 	if(get_active_mods() != create_engine_.dependency_manager().get_modifications()) {
 		DBG_MP << "sync_with_depcheck: correcting modifications\n";
 		set_active_mods(create_engine_.dependency_manager().get_modifications());
 	}
+
 	create_engine_.init_active_mods();
 	DBG_MP << "sync_with_depcheck: end\n";
-
 }
 
 template<typename widget>
@@ -475,6 +475,7 @@ void mp_create_game::on_filter_change(window& window, const std::string& id, boo
 	}
 
 	game_list.set_row_shown(filtered);
+
 	if(do_select) {
 		on_game_select(window);
 	}
@@ -488,17 +489,16 @@ void mp_create_game::on_game_select(window& window)
 		return;
 	}
 
-	// Convert the absolute-index get_selected_row to a relatve index for the create_engine to handle
+	// Convert the absolute-index get_selected_row to a relative index for the create_engine to handle
 	selected_game_index_ = convert_to_game_filtered_index(selected_game);
-	
+
 	create_engine_.set_current_level(selected_game_index_);
-	
+
 	sync_with_depcheck(window);
 
 	update_details(window);
 
 	// General settings
-
 	const bool can_select_era = create_engine_.current_level().allow_era_choice();
 
 	if(!can_select_era) {
@@ -544,6 +544,7 @@ void mp_create_game::on_mod_toggle(window& window, const int index, toggle_butto
 		ERR_MP << "ignoring on_mod_toggle that is already set\n";
 		return;
 	}
+
 	create_engine_.toggle_mod(index);
 
 	sync_with_depcheck(window);
@@ -805,7 +806,7 @@ void mp_create_game::set_active_mods(const std::vector<std::string>& val)
 		++i;
 	}
 }
-	
+
 bool mp_create_game::dialog_exit_hook(window& window)
 {
 	if(!create_engine_.current_level_has_side_data()) {
