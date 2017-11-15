@@ -110,12 +110,13 @@ void toggle_button::update_canvas()
 	set_is_dirty(true);
 }
 
-void toggle_button::set_value(const unsigned selected)
+void toggle_button::set_value(unsigned selected, bool fire_event)
 {
+	selected = selected % num_states();
 	if(selected == get_value()) {
 		return;
 	}
-	state_num_ = selected % num_states();
+	state_num_ = selected;
 	set_is_dirty(true);
 
 	// Check for get_window() is here to prevent the callback from
@@ -123,8 +124,9 @@ void toggle_button::set_value(const unsigned selected)
 	if(!get_window()) {
 		return;
 	}
-
-	fire(event::NOTIFY_MODIFIED, *this, nullptr);
+	if (fire_event) {
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+	}
 }
 
 void toggle_button::set_retval(const int retval)
@@ -168,7 +170,7 @@ void toggle_button::signal_handler_left_button_click(const event::ui_event event
 
 	sound::play_UI_sound(settings::sound_toggle_button_click);
 
-	set_value(get_value() + 1);
+	set_value(get_value() + 1, true);
 
 	handled = true;
 }

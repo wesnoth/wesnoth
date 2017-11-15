@@ -42,6 +42,7 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "game_config.hpp"
+#include "log.hpp"
 #include "savegame.hpp"
 #include "settings.hpp"
 #include "formatter.hpp"
@@ -51,6 +52,13 @@
 #endif
 
 #include <boost/algorithm/string.hpp>
+
+
+static lg::log_domain log_mp_create("mp/create");
+
+#define DBG_MP LOG_STREAM(debug, log_mp_create)
+#define WRN_MP LOG_STREAM(warn, log_mp_create)
+#define ERR_MP LOG_STREAM(err, log_mp_create)
 
 namespace gui2
 {
@@ -91,6 +99,8 @@ mp_create_game::mp_create_game(const config& cfg, ng::create_engine& create_eng)
 	, turn_bonus_(register_integer("turn_bonus", true, prefs::countdown_turn_bonus, prefs::set_countdown_turn_bonus))
 	, reservoir_(register_integer("reservoir", true, prefs::countdown_reservoir_time, prefs::set_countdown_reservoir_time))
 	, action_bonus_(register_integer("action_bonus", true, prefs::countdown_action_bonus, prefs::set_countdown_action_bonus))
+	, mod_list_()
+	, eras_menu_button_()
 {
 	level_types_ = {
 		{ng::level::TYPE::SCENARIO, _("Scenarios")},
@@ -153,12 +163,12 @@ void mp_create_game::pre_show(window& win)
 	// Set up filtering
 	//
 	connect_signal_notify_modified(find_widget<slider>(&win, "num_players", false),
-		std::bind(&mp_create_game::on_filter_change<slider>, this, std::ref(win), "num_players"));
+		std::bind(&mp_create_game::on_filter_change<slider>, this, std::ref(win), "num_players", true));
 
 	text_box& filter = find_widget<text_box>(&win, "game_filter", false);
 
 	filter.set_text_changed_callback(
-		std::bind(&mp_create_game::on_filter_change<text_box>, this, std::ref(win), "game_filter"));
+		std::bind(&mp_create_game::on_filter_change<text_box>, this, std::ref(win), "game_filter", true));
 
 	// Note this cannot be in the keyboard chain or it will capture focus from other text boxes
 	win.keyboard_capture(&filter);
@@ -195,9 +205,42 @@ void mp_create_game::pre_show(window& win)
 	game_menu_button.connect_click_handler(std::bind(&mp_create_game::update_games_list, this, std::ref(win)));
 
 	//
+	// Set up mods list
+	//
+	mod_list_ = &find_widget<listbox>(&win, "mod_list", false);
+
+	const auto& activemods = preferences::modifications();
+	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
+		std::map<std::string, string_map> data;
+		string_map item;
+
+		item["label"] = mod->name;
+		data.emplace("mod_name", item);
+
+		grid* row_grid = &mod_list_->add_row(data);
+
+		find_widget<toggle_panel>(row_grid, "panel", false).set_tooltip(mod->description);
+
+		toggle_button& mog_toggle = find_widget<toggle_button>(row_grid, "mod_active_state", false);
+
+		const int i = mod_list_->get_item_count() - 1;
+		if(std::find(activemods.begin(), activemods.end(), mod->id) != activemods.end()) {
+			create_engine_.active_mods().push_back(mod->id);
+			mog_toggle.set_value_bool(true);
+		}
+		auto pmog_toggle = &mog_toggle;
+		connect_signal_notify_modified(mog_toggle, std::bind(&mp_create_game::on_mod_toggle, this, std::ref(win), i, pmog_toggle));
+	}
+
+	// No mods, hide the header
+	if(mod_list_->get_item_count() <= 0) {
+		find_widget<styled_widget>(&win, "mods_header", false).set_visible(widget::visibility::invisible);
+	}
+
+	//
 	// Set up eras menu_button
 	//
-	menu_button& eras_menu_button = find_widget<menu_button>(&win, "eras", false);
+	eras_menu_button_ = &find_widget<menu_button>(&win, "eras", false);
 
 	std::vector<config> era_names;
 	for(const auto& era : create_engine_.get_const_extras_by_type(ng::create_engine::ERA)) {
@@ -209,48 +252,15 @@ void mp_create_game::pre_show(window& win)
 		throw config::error(_("No eras found"));
 	}
 
-	eras_menu_button.set_values(era_names);
-	eras_menu_button.connect_click_handler(std::bind(&mp_create_game::on_era_select, this, std::ref(win)));
+	eras_menu_button_->set_values(era_names);
+	eras_menu_button_->connect_click_handler(std::bind(&mp_create_game::on_era_select, this, std::ref(win)));
 
 	const int era_selection = create_engine_.find_extra_by_id(ng::create_engine::ERA, preferences::era());
 	if(era_selection >= 0) {
-		eras_menu_button.set_selected(era_selection);
+		eras_menu_button_->set_selected(era_selection);
 	}
 
 	on_era_select(win);
-
-	//
-	// Set up mods list
-	//
-	listbox& mod_list = find_widget<listbox>(&win, "mod_list", false);
-
-	const auto& activemods = preferences::modifications();
-	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
-		std::map<std::string, string_map> data;
-		string_map item;
-
-		item["label"] = mod->name;
-		data.emplace("mod_name", item);
-
-		grid* row_grid = &mod_list.add_row(data);
-
-		find_widget<toggle_panel>(row_grid, "panel", false).set_tooltip(mod->description);
-
-		toggle_button& mog_toggle = find_widget<toggle_button>(row_grid, "mod_active_state", false);
-
-		const int i = mod_list.get_item_count() - 1;
-		if(std::find(activemods.begin(), activemods.end(), mod->id) != activemods.end()) {
-			create_engine_.active_mods().push_back(mod->id);
-			mog_toggle.set_value_bool(true);
-		}
-
-		connect_signal_notify_modified(mog_toggle, std::bind(&mp_create_game::on_mod_toggle, this, i));
-	}
-
-	// No mods, hide the header
-	if(mod_list.get_item_count() <= 0) {
-		find_widget<styled_widget>(&win, "mods_header", false).set_visible(widget::visibility::invisible);
-	}
 
 	//
 	// Set up random faction mode menu_button
@@ -365,8 +375,9 @@ void mp_create_game::pre_show(window& win)
 	plugins_context_->set_callback("select_era",   [this](const config& cfg) {
 		create_engine_.set_current_era_index(cfg["index"].to_int()); }, true);
 
-	plugins_context_->set_callback("select_mod",   [this](const config& cfg) {
-		on_mod_toggle(cfg["index"].to_int()); }, true);
+	plugins_context_->set_callback("select_mod",   [this, &win](const config& cfg) {
+		on_mod_toggle(win, cfg["index"].to_int(), nullptr);
+	}, true);
 
 	plugins_context_->set_accessor("game_config",  [this](const config&) {return cfg_; });
 	plugins_context_->set_accessor("get_selected", [this](const config&) {
@@ -384,8 +395,8 @@ void mp_create_game::pre_show(window& win)
 	plugins_context_->set_accessor("find_level",   [this](const config& cfg) {
 		const std::string id = cfg["id"].str();
 		return config {
-			"index", create_engine_.find_level_by_id(id),
-			"type", create_engine_.find_level_type_by_id(id),
+			"index", create_engine_.find_level_by_id(id).second,
+			"type", create_engine_.find_level_by_id(id).first,
 		};
 	});
 
@@ -398,8 +409,61 @@ void mp_create_game::pre_show(window& win)
 	});
 }
 
+void mp_create_game::sync_with_depcheck(window& window)
+{
+	DBG_MP << "sync_with_depcheck: start\n";
+	if (static_cast<int>(create_engine_.current_era_index()) != create_engine_.dependency_manager().get_era_index()) {
+
+		DBG_MP << "sync_with_depcheck: correcting era\n";
+		int new_era_index = create_engine_.dependency_manager().get_era_index();
+		
+		create_engine_.set_current_era_index(new_era_index, true);
+		eras_menu_button_->set_value(new_era_index);
+	}
+
+	if (create_engine_.current_level().id() != create_engine_.dependency_manager().get_scenario()) {
+		DBG_MP << "sync_with_depcheck: correcting scenario\n";
+
+		// Match scenario and scenario type
+		auto new_level_index = create_engine_.find_level_by_id(create_engine_.dependency_manager().get_scenario());
+		bool different_type = new_level_index.first  != create_engine_.current_level_type();
+		if (new_level_index.second != -1) {
+
+			create_engine_.set_current_level_type(new_level_index.first);
+			create_engine_.set_current_level(new_level_index.second);
+			selected_game_index_ = new_level_index.second;
+
+			auto& game_types_list = find_widget<menu_button>(&window, "game_types", false);
+			game_types_list.set_value(std::find_if(level_types_.begin(), level_types_.begin(), [&](const level_type_info& info){ return info.first == new_level_index.first; }) - level_types_.begin());
+			
+			if(different_type) {
+				display_games_of_type(window, new_level_index.first, create_engine_.current_level().id());
+			}
+			else {
+				// this function (or rather on_game_select) might be triggered by a listbox callback
+				// in which case we cannot use display_games_of_type since it destroys the list
+				// (it's elements) which might result in segfaults. We assume that a listbox-triggered
+				// sync_with_depcheck call does never change the game type and goes to this branch instead.
+				find_widget<listbox>(&window, "games_list", false).select_row(new_level_index.second);
+				// Override the last selection so on_game_select selects the new level
+				selected_game_index_ = -1;
+
+				on_game_select(window);
+			}
+		}
+	}
+	
+	if(get_active_mods() != create_engine_.dependency_manager().get_modifications()) {
+		DBG_MP << "sync_with_depcheck: correcting modifications\n";
+		set_active_mods(create_engine_.dependency_manager().get_modifications());
+	}
+	create_engine_.init_active_mods();
+	DBG_MP << "sync_with_depcheck: end\n";
+
+}
+
 template<typename widget>
-void mp_create_game::on_filter_change(window& window, const std::string& id)
+void mp_create_game::on_filter_change(window& window, const std::string& id, bool do_select)
 {
 	create_engine_.apply_level_filter(find_widget<widget>(&window, id, false).get_value());
 
@@ -411,8 +475,9 @@ void mp_create_game::on_filter_change(window& window, const std::string& id)
 	}
 
 	game_list.set_row_shown(filtered);
-
-	on_game_select(window);
+	if(do_select) {
+		on_game_select(window);
+	}
 }
 
 void mp_create_game::on_game_select(window& window)
@@ -425,23 +490,24 @@ void mp_create_game::on_game_select(window& window)
 
 	// Convert the absolute-index get_selected_row to a relatve index for the create_engine to handle
 	selected_game_index_ = convert_to_game_filtered_index(selected_game);
-
+	
 	create_engine_.set_current_level(selected_game_index_);
+	
+	sync_with_depcheck(window);
+
 	update_details(window);
 
 	// General settings
-	stacked_widget& stack = find_widget<stacked_widget>(&window, "pager", false);
 
 	const bool can_select_era = create_engine_.current_level().allow_era_choice();
 
-	menu_button& era_combo = find_widget<menu_button>(stack.get_layer_grid(TAB_GENERAL), "eras", false);
 	if(!can_select_era) {
-		era_combo.set_label(_("No eras available for this game."));
+		eras_menu_button_->set_label(_("No eras available for this game."));
 	} else {
-		era_combo.set_selected(era_combo.get_value());
+		eras_menu_button_->set_selected(eras_menu_button_->get_value());
 	}
 
-	era_combo.set_active(can_select_era);
+	eras_menu_button_->set_active(can_select_era);
 
 	// Custom options
 	options_manager_->update_game_options();
@@ -472,19 +538,26 @@ void mp_create_game::on_tab_select(window& window)
 	}
 }
 
-void mp_create_game::on_mod_toggle(const int index)
+void mp_create_game::on_mod_toggle(window& window, const int index, toggle_button* sender)
 {
-	create_engine_.set_current_mod_index(index);
-	create_engine_.toggle_current_mod();
+	if(sender && (sender->get_value_bool() == create_engine_.dependency_manager().is_modification_active(index))) {
+		ERR_MP << "ignoring on_mod_toggle that is already set\n";
+		return;
+	}
+	create_engine_.toggle_mod(index);
+
+	sync_with_depcheck(window);
 
 	options_manager_->update_mod_options();
 }
 
 void mp_create_game::on_era_select(window& window)
 {
-	create_engine_.set_current_era_index(find_widget<menu_button>(&window, "eras", false).get_value());
+	create_engine_.set_current_era_index(eras_menu_button_->get_value());
 
-	find_widget<menu_button>(&window, "eras", false).set_tooltip(create_engine_.current_extra(ng::create_engine::ERA).description);
+	eras_menu_button_->set_tooltip(create_engine_.current_era().description);
+
+	sync_with_depcheck(window);
 
 	options_manager_->update_era_options();
 }
@@ -538,10 +611,10 @@ void mp_create_game::display_games_of_type(window& window, ng::level::TYPE type,
 
 	if(!level.empty() && !list.get_rows_shown().empty()) {
 		// Recalculate which rows should be visible
-		on_filter_change<slider>(window, "num_players");
-		on_filter_change<text_box>(window, "game_filter");
+		on_filter_change<slider>(window, "num_players", false);
+		on_filter_change<text_box>(window, "game_filter", false);
 
-		int level_index = create_engine_.find_level_by_id(level);
+		int level_index = create_engine_.find_level_by_id(level).second;
 		if(level_index >= 0 && size_t(level_index) < list.get_item_count()) {
 			list.select_row(level_index);
 		}
@@ -709,6 +782,30 @@ void mp_create_game::load_game_callback(window& window)
 	window.set_retval(LOAD_GAME);
 }
 
+std::vector<std::string> mp_create_game::get_active_mods()
+{
+	int i = 0;
+	std::set<std::string> res;
+	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
+		if(find_widget<toggle_button>(mod_list_->get_row_grid(i), "mod_active_state", false).get_value_bool()) {
+			res.insert(mod->id);
+		}
+		++i;
+	}
+	return std::vector<std::string>(res.begin(), res.end());
+}
+
+void mp_create_game::set_active_mods(const std::vector<std::string>& val)
+{
+	std::set<std::string> val2(val.begin(), val.end());
+	int i = 0;
+	std::set<std::string> res;
+	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
+		find_widget<toggle_button>(mod_list_->get_row_grid(i), "mod_active_state", false).set_value_bool(val2.find(mod->id) != val2.end());
+		++i;
+	}
+}
+	
 bool mp_create_game::dialog_exit_hook(window& window)
 {
 	if(!create_engine_.current_level_has_side_data()) {
@@ -741,7 +838,7 @@ void mp_create_game::post_show(window& window)
 		prefs::set_modifications(create_engine_.active_mods());
 		prefs::set_level_type(create_engine_.current_level_type().v);
 		prefs::set_level(create_engine_.current_level().id());
-		prefs::set_era(create_engine_.current_extra(ng::create_engine::ERA).id);
+		prefs::set_era(create_engine_.current_era().id);
 
 		create_engine_.prepare_for_era_and_mods();
 

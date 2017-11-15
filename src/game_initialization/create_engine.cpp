@@ -230,7 +230,6 @@ create_engine::create_engine(CVideo& v, saved_game& state)
 	: current_level_type_()
 	, current_level_index_(0)
 	, current_era_index_(0)
-	, current_mod_index_(0)
 	, level_name_filter_()
 	, player_count_filter_(1)
 	, type_map_()
@@ -290,10 +289,8 @@ create_engine::create_engine(CVideo& v, saved_game& state)
 		}
 	}
 
-	if(current_level_type_ != level::TYPE::CAMPAIGN &&
-		current_level_type_ != level::TYPE::SP_CAMPAIGN) {
-		dependency_manager_->try_modifications(state_.mp_settings().active_mods, true);
-	}
+
+	dependency_manager_->try_modifications(state_.mp_settings().active_mods, true);
 
 	reset_level_filters();
 }
@@ -521,12 +518,9 @@ level& create_engine::current_level() const
 	return *type_map_.at(current_level_type_.v).games[current_level_index_];
 }
 
-const create_engine::extras_metadata& create_engine::current_extra(const MP_EXTRA extra_type) const
+const create_engine::extras_metadata& create_engine::current_era() const
 {
-	const size_t index = (extra_type == ERA) ?
-		current_era_index_ : current_mod_index_;
-
-	return *get_const_extras_by_type(extra_type)[index];
+	return *get_const_extras_by_type(ERA)[current_era_index_];
 }
 
 void create_engine::set_current_level(const size_t index)
@@ -548,11 +542,7 @@ void create_engine::set_current_level(const size_t index)
 		generator_.reset(nullptr);
 	}
 
-	if(current_level_type_ != level::TYPE::CAMPAIGN &&
-		current_level_type_ != level::TYPE::SP_CAMPAIGN) {
-
-		dependency_manager_->try_scenario(current_level().id());
-	}
+	dependency_manager_->try_scenario(current_level().id());
 }
 
 void create_engine::set_current_era_index(const size_t index, bool force)
@@ -562,11 +552,10 @@ void create_engine::set_current_era_index(const size_t index, bool force)
 	dependency_manager_->try_era_by_index(index, force);
 }
 
-bool create_engine::toggle_current_mod(bool force)
+bool create_engine::toggle_mod(int index, bool force)
 {
-	force |= (current_level_type_ == ng::level::TYPE::CAMPAIGN || current_level_type_ == ng::level::TYPE::SP_CAMPAIGN);
-	bool is_active = dependency_manager_->is_modification_active(current_mod_index_);
-	dependency_manager_->try_modification_by_index(current_mod_index_, !is_active, force);
+	bool is_active = dependency_manager_->is_modification_active(index);
+	dependency_manager_->try_modification_by_index(index, !is_active, force);
 
 	state_.mp_settings().active_mods = dependency_manager_->get_modifications();
 
@@ -588,23 +577,21 @@ void create_engine::generator_user_config()
 	generator_->user_config();
 }
 
-int create_engine::find_level_by_id(const std::string& id) const
+std::pair<level::TYPE, int> create_engine::find_level_by_id(const std::string& id) const
 {
-	int i = 0;
-
 	for(const auto& type : type_map_) {
-		i = 0;
+		int i = 0;
 
 		for(const auto game : type.second.games) {
 			if(game->id() == id) {
-				return i;
+				return {type.first, i};
 			}
 
 			i++;
 		}
 	}
 
-	return -1;
+	return {level::TYPE::SP_CAMPAIGN, -1};
 }
 
 int create_engine::find_extra_by_id(const MP_EXTRA extra_type, const std::string& id) const
@@ -618,19 +605,6 @@ int create_engine::find_extra_by_id(const MP_EXTRA extra_type, const std::string
 	}
 
 	return -1;
-}
-
-level::TYPE create_engine::find_level_type_by_id(const std::string& id) const
-{
-	for(const auto& type : type_map_) {
-		for(const auto game : type.second.games) {
-			if(game->id() == id) {
-				return type.first;
-			}
-		}
-	}
-
-	return level::TYPE::SP_CAMPAIGN;
 }
 
 void create_engine::init_active_mods()

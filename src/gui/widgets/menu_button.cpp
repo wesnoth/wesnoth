@@ -143,7 +143,7 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 			return;
 		}
 
-		set_selected(selected);
+		set_selected(selected, true);
 
 		if(retval_ != 0) {
 			if(window* window = get_window()) {
@@ -171,7 +171,7 @@ void menu_button::set_values(const std::vector<::config>& values, int selected)
 	set_label(values_[selected_]["label"]);
 }
 
-void menu_button::set_selected(int selected)
+void menu_button::set_selected(int selected, bool fire_event)
 {
 	assert(static_cast<size_t>(selected) < values_.size());
 	assert(static_cast<size_t>(selected_) < values_.size());
@@ -183,8 +183,9 @@ void menu_button::set_selected(int selected)
 	selected_ = selected;
 
 	set_label(values_[selected_]["label"]);
-
-	fire(event::NOTIFY_MODIFIED, *this, nullptr);
+	if (fire_event) {
+		fire(event::NOTIFY_MODIFIED, *this, nullptr);
+	}
 }
 
 // }---------- DEFINITION ---------{

@@ -39,7 +39,7 @@ public:
 	virtual unsigned get_value() const = 0;
 
 	/** Select the styled_widget. */
-	virtual void set_value(const unsigned) = 0;
+	virtual void set_value(unsigned value, bool fire_event = false) = 0;
 
 	/** The number of states, that is 2 for normal buttons, 3 for tristate buttons. */
 	virtual unsigned num_states() const = 0;
@@ -50,10 +50,10 @@ public:
 		return get_value() != 0;
 	}
 
-	void set_value_bool(const bool value)
+	void set_value_bool(bool value, bool fire_event = false)
 	{
 		assert(num_states() == 2);
-		return set_value(value);
+		return set_value(value, fire_event);
 	}
 };
 

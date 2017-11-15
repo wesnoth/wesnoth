@@ -343,7 +343,7 @@ public:
 	std::vector<size_t> get_filtered_level_indices(level::TYPE type) const;
 
 	level& current_level() const;
-	const extras_metadata& current_extra(const MP_EXTRA extra_type) const;
+	const extras_metadata& current_era() const;
 
 	void set_current_level_type(const level::TYPE type)
 	{
@@ -358,19 +358,10 @@ public:
 	void set_current_level(const size_t index);
 
 	void set_current_era_index(const size_t index, bool force = false);
-	void set_current_mod_index(const size_t index)
-	{
-		current_mod_index_ = index;
-	}
 
 	size_t current_era_index() const
 	{
 		return current_era_index_;
-	}
-
-	size_t current_mod_index() const
-	{
-		return current_mod_index_;
 	}
 
 	const config& curent_era_cfg() const;
@@ -378,15 +369,14 @@ public:
 	const std::vector<extras_metadata_ptr>& get_const_extras_by_type(const MP_EXTRA extra_type) const;
 	std::vector<extras_metadata_ptr>& get_extras_by_type(const MP_EXTRA extra_type);
 
-	bool toggle_current_mod(bool force = false);
+	bool toggle_mod(int index, bool force = false);
 
 	bool generator_assigned() const;
 	bool generator_has_settings() const;
 	void generator_user_config();
 
-	int find_level_by_id(const std::string& id) const;
+	std::pair<level::TYPE, int> find_level_by_id(const std::string& id) const;
 	int find_extra_by_id(const MP_EXTRA extra_type, const std::string& id) const;
-	level::TYPE find_level_type_by_id(const std::string& id) const;
 
 	const depcheck::manager& dependency_manager() const
 	{
@@ -419,7 +409,6 @@ private:
 	size_t current_level_index_;
 
 	size_t current_era_index_;
-	size_t current_mod_index_;
 
 	std::string level_name_filter_;
 	int player_count_filter_;
