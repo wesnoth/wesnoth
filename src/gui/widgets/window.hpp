@@ -431,12 +431,6 @@ public:
 		variables_.add(key, value);
 		set_is_dirty(true);
 	}
-
-	const wfl::map_formula_callable& get_variables() const
-	{
-		return variables_;
-	}
-
 	point get_linked_size(const std::string& linked_group_id) const
 	{
 		std::map<std::string, linked_size>::const_iterator it = linked_size_.find(linked_group_id);

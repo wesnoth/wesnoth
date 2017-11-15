@@ -14,12 +14,10 @@
 
 #pragma once
 
-#include "color.hpp"
-#include "formula/callable.hpp"
-#include "gui/auxiliary/typed_formula.hpp"
 #include "gui/core/event/dispatcher.hpp"
-#include "gui/widgets/event_executor.hpp"
 #include "sdl/point.hpp"
+#include "gui/widgets/event_executor.hpp"
+#include "color.hpp"
 
 #include <string>
 
@@ -325,15 +323,6 @@ public:
 	 */
 	point get_best_size() const;
 
-	/**
-	 * Checks if this widget has a fixed size.
-	 * If so, it will be used instead of the result of get_best_size();
-	 */
-	bool has_fixed_size() const;
-
-	/** Evaluates and returns the result of the fixed size formulas. */
-	point get_fixed_size() const;
-
 private:
 	/**
 	 * Calculates the best size.
@@ -496,12 +485,6 @@ private:
 
 	/** The height of the widget. */
 	unsigned height_;
-
-	/** A given fixed width of the widget. */
-	typed_formula<unsigned> fixed_width_;
-
-	/** A given fixed height of the widget. */
-	typed_formula<unsigned> fixed_height_;
 
 	/**
 	 * The best size for the widget.

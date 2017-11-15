@@ -113,8 +113,6 @@ window* build(CVideo& video, const std::string& type)
 builder_widget::builder_widget(const config& cfg)
 	: id(cfg["id"])
 	, linked_group(cfg["linked_group"])
-	, fixed_width(cfg["fixed_width"], 0)
-	, fixed_height(cfg["fixed_height"], 0)
 	, debug_border_mode(cfg["debug_border_mode"])
 	, debug_border_color(decode_color(cfg["debug_border_color"]))
 {
