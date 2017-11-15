@@ -17,6 +17,7 @@
 #include "size_lock.hpp"
 
 #include <gettext.hpp>
+#include <gui/core/layout_exception.hpp>
 #include <gui/core/register_widget.hpp>
 #include <gui/widgets/helper.hpp>
 #include <gui/widgets/settings.hpp>
@@ -45,7 +46,20 @@ void size_lock::place(const point& origin, const point& size)
 
 	if (content_size.y > size.y)
 	{
-		reduce_height(size.y);
+		try
+		{
+			reduce_height(size.y);
+		}
+		catch(layout_exception_width_modified&)
+		{
+		}
+
+		content_size = widget_->get_best_size();
+	}
+
+	if (content_size.x > size.x)
+	{
+		reduce_width(size.x);
 		content_size = widget_->get_best_size();
 	}
 
