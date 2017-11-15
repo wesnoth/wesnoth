@@ -42,6 +42,7 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "game_config.hpp"
+#include "log.hpp"
 #include "savegame.hpp"
 #include "settings.hpp"
 #include "formatter.hpp"
@@ -51,6 +52,13 @@
 #endif
 
 #include <boost/algorithm/string.hpp>
+
+
+static lg::log_domain log_mp_create("mp/create");
+
+#define DBG_MP LOG_STREAM(debug, log_mp_create)
+#define WRN_MP LOG_STREAM(warn, log_mp_create)
+#define ERR_MP LOG_STREAM(err, log_mp_create)
 
 namespace gui2
 {
@@ -405,6 +413,7 @@ void mp_create_game::sync_with_depcheck(window& window)
 {
 	if (static_cast<int>(create_engine_.current_era_index()) != create_engine_.dependency_manager().get_era_index()) {
 
+		DBG_MP << "sync_with_depcheck: correcting era\n";
 		int new_era_index = create_engine_.dependency_manager().get_era_index();
 		
 		create_engine_.set_current_era_index(new_era_index, true);
@@ -412,6 +421,7 @@ void mp_create_game::sync_with_depcheck(window& window)
 	}
 
 	if (create_engine_.current_level().id() != create_engine_.dependency_manager().get_scenario()) {
+		DBG_MP << "sync_with_depcheck: correcting scenario\n";
 
 		// Match scenario and scenario type
 		auto new_level_index = create_engine_.find_level_by_id(create_engine_.dependency_manager().get_scenario());
@@ -431,6 +441,7 @@ void mp_create_game::sync_with_depcheck(window& window)
 	}
 	
 	if(get_active_mods() != create_engine_.dependency_manager().get_modifications()) {
+		DBG_MP << "sync_with_depcheck: correcting modifications\n";
 		set_active_mods(create_engine_.dependency_manager().get_modifications());
 	}
 	create_engine_.init_active_mods();
@@ -515,9 +526,9 @@ void mp_create_game::on_tab_select(window& window)
 
 void mp_create_game::on_mod_toggle(window& window, const int index, toggle_button* sender)
 {
-	(void)sender;
 	if(sender && (sender->get_value_bool() == create_engine_.dependency_manager().is_modification_active(index))) {
-		assert(false);
+		ERR_MP << "ignoring on_mod_toggle that is already set\n";
+		return;
 	}
 	create_engine_.toggle_mod(index);
 
