@@ -38,6 +38,10 @@ using boost::uintmax_t;
 #include <windows.h>
 #include <shlobj.h>
 #include <shlwapi.h>
+
+// Work around TDM-GCC not #defining this according to @newfrenchy83.
+#define VOLUME_NAME_NONE 0x4
+
 #endif /* !_WIN32 */
 
 #include "config.hpp"
