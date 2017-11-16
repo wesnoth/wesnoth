@@ -31,7 +31,7 @@ public:
 	}
 
 	/** Sets the selected value. */
-	virtual void set_value(const int value) = 0;
+	virtual void set_value(int value) = 0;
 
 	/** Gets the selected value. */
 	virtual int get_value() const = 0;
