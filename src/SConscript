@@ -150,12 +150,17 @@ for env in [test_env, client_env, env]:
 libwesnoth_objects = libwesnoth_extras + libwesnoth_core + libwesnoth + libwesnoth_sdl + libwesnoth_extras
 if env["PLATFORM"] == 'darwin':
     client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects + ["macosx/SDLMain.mm"], have_client_prereqs)
+elif env["PLATFORM"] == 'win32':
+    client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects + env["wesnoth_res"], have_client_prereqs)
 else:
     client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects, have_client_prereqs)
 
 #---wesnothd---
 wesnothd_sources = GetSources("wesnothd")
-env.WesnothProgram("wesnothd", wesnothd_sources + libwesnoth_core, have_server_prereqs)
+if env["PLATFORM"] == 'win32':
+    env.WesnothProgram("wesnothd", wesnothd_sources + libwesnoth_core + env["wesnothd_res"], have_server_prereqs)
+else:
+    env.WesnothProgram("wesnothd", wesnothd_sources + libwesnoth_core, have_server_prereqs)
 
 #---campaignd---
 campaignd_sources = GetSources("campaignd")
