@@ -147,6 +147,8 @@ for env in [test_env, client_env, env]:
     env.AddMethod(WesnothProgram)
 
 #---wesnoth---
+# for wesnoth_res and wesnothd_res, see packaging/windows/SConscript
+# used to set the executable icon for wesnoth and wesnothd
 libwesnoth_objects = libwesnoth_extras + libwesnoth_core + libwesnoth + libwesnoth_sdl + libwesnoth_extras
 if env["PLATFORM"] == 'darwin':
     client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects + ["macosx/SDLMain.mm"], have_client_prereqs)
