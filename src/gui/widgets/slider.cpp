@@ -86,7 +86,7 @@ void slider::set_value(int value)
 		return;
 	}
 
-	set_slider_position((value - minimum_value_) / step_size_);
+	set_slider_position(rounded_division(value - minimum_value_, step_size_));
 
 	if(std::abs(get_value() - value) > (step_size_ / 2)) {
 		ERR_GUI_G << "slider::set_value error:"
@@ -95,7 +95,7 @@ void slider::set_value(int value)
 			<< " desired_value=" << value
 			<< " minimum_value=" << minimum_value_
 			<< " maximum_value=" << get_maximum_value()
-			<< " step_size=" << step_size_ "\n";
+			<< " step_size=" << step_size_ << "\n";
 		assert(false);
 	}
 	assert();
