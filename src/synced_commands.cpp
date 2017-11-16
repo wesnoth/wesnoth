@@ -494,6 +494,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 		actions::get_village(loc, created->side());
 
 	// Update fog/shroud.
+	// Not checking auto_shroud_updates() here since :create is not undoable. (#2196)
 	actions::shroud_clearer clearer;
 	clearer.clear_unit(loc, *created);
 	clearer.fire_events();

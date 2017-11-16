@@ -639,6 +639,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 	}
 
 	// Do some bookkeeping.
+	team& current_team = resources::gameboard->get_team(u->side());
 	recruit_checksums(*u, wml_triggered);
 	resources::whiteboard->on_gamestate_change();
 
@@ -655,7 +656,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 		new_unit_itor->set_hidden(true);
 	}
 	preferences::encountered_units().insert(new_unit_itor->type_id());
-	resources::gameboard->get_team(u->side()).spend_gold(cost);
+	current_team.spend_gold(cost);
 
 	if ( show ) {
 		unit_display::unit_recruited(current_loc, leader_loc);
@@ -677,7 +678,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 
 	// Fog clearing.
 	actions::shroud_clearer clearer;
-	if ( !wml_triggered ) // To preserve current WML behavior.
+	if ( !wml_triggered && current_team.auto_shroud_updates() ) // To preserve current WML behavior.
 		std::get<0>(res) |= clearer.clear_unit(current_loc, *new_unit_itor);
 
 	if ( fire_event ) {
