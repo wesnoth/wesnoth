@@ -396,7 +396,7 @@ public:
 	virtual void set_dst_src_enemy_valid_lua() = 0;
 
 	/** get most suitable keep for leader - nearest free that can be reached in 1 turn, if none - return nearest occupied that can be reached in 1 turn, if none - return nearest keep, if none - return null_location */
-	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths ) = 0;
+	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths ) const = 0;
 
 	/**
 	 * serialize to config
@@ -977,7 +977,7 @@ public:
 		target_->set_src_dst_enemy_valid_lua();
 	}
 
-	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths ) override
+	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths ) const override
 	{
 		return target_->suitable_keep(leader_location, leader_paths);
 	}
@@ -1485,7 +1485,7 @@ public:
 
 	virtual void set_src_dst_enemy_valid_lua() override;
 
-	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths ) override;
+	virtual const map_location& suitable_keep( const map_location& leader_location, const pathfind::paths& leader_paths ) const override;
 
 
 	virtual config to_readonly_context_config() const override;

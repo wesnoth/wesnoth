@@ -1294,40 +1294,20 @@ DEFINE_WFL_FUNCTION(type, 1, 1)
 
 namespace actions
 {
-class safe_call_function : public function_expression
+DEFINE_WFL_FUNCTION(safe_call, 2, 2)
 {
-public:
-	explicit safe_call_function(const args_list& args)
-		: function_expression("safe_call", args, 2, 2)
-	{
-	}
+	const variant main = args()[0]->evaluate(variables, fdb);
+	const expression_ptr backup_formula = args()[1];
 
-private:
-	variant execute(const formula_callable& variables, formula_debugger* fdb) const
-	{
-		const variant main = args()[0]->evaluate(variables, fdb);
-		const expression_ptr backup_formula = args()[1];
+	return variant(std::make_shared<safe_call_callable>(main, backup_formula));
+}
 
-		return variant(std::make_shared<safe_call_callable>(main, backup_formula));
-	}
-};
-
-class set_var_function : public function_expression
+DEFINE_WFL_FUNCTION(set_var, 2, 2)
 {
-public:
-	explicit set_var_function(const args_list& args)
-		: function_expression("set_var", args, 2, 2)
-	{
-	}
-
-private:
-	variant execute(const formula_callable& variables, formula_debugger* fdb) const
-	{
-		return variant(std::make_shared<set_var_callable>(
-		args()[0]->evaluate(variables, add_debug_info(fdb, 0, "set_var:key")).as_string(),
-		args()[1]->evaluate(variables, add_debug_info(fdb, 1, "set_var:value"))));
-	}
-};
+	return variant(std::make_shared<set_var_callable>(
+	args()[0]->evaluate(variables, add_debug_info(fdb, 0, "set_var:key")).as_string(),
+	args()[1]->evaluate(variables, add_debug_info(fdb, 1, "set_var:value"))));
+}
 
 } // namespace actions
 

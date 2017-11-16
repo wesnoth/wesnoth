@@ -136,7 +136,7 @@ public:
 	*   @return pointer to created function or
 	*   @retval game_logic::formula_ptr() if there were any problems
 	*/
-	wfl::formula_ptr create_optional_formula(const std::string& formula_string);
+	wfl::formula_ptr create_optional_formula(const std::string& formula_string) const;
 
 	wfl::candidate_action_ptr load_candidate_action_from_config(const config& cfg);
 
@@ -168,7 +168,9 @@ private:
 
 //	gamestate_change_observer infinite_loop_guardian_;
 	wfl::map_formula_callable vars_;
-	wfl::ai_function_symbol_table function_table_;
+	// Making this mutable is a bit of a hack, but I don't have a better idea.
+	// (It's needed because a formula could define new functions.)
+	mutable wfl::ai_function_symbol_table function_table_;
 
 	friend class ai_default;
 	friend ai_context& get_ai_context(wfl::const_formula_callable_ptr for_fai);

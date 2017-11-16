@@ -1229,7 +1229,7 @@ void readonly_context_impl::set_src_dst_enemy_valid_lua()
 	src_dst_enemy_valid_lua_ = true;
 }
 
-const map_location& readonly_context_impl::suitable_keep(const map_location& leader_location, const pathfind::paths& leader_paths){
+const map_location& readonly_context_impl::suitable_keep(const map_location& leader_location, const pathfind::paths& leader_paths) const {
 	if (resources::gameboard->map().is_keep(leader_location)) {
 		return leader_location; //if leader already on keep, then return leader_location
 	}

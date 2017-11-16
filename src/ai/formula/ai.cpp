@@ -140,7 +140,7 @@ void formula_ai::display_message(const std::string& msg) const
 
 }
 
-formula_ptr formula_ai::create_optional_formula(const std::string& formula_string){
+formula_ptr formula_ai::create_optional_formula(const std::string& formula_string) const {
 	try{
 		return formula::create_optional_formula(formula_string, &function_table_);
 	}
