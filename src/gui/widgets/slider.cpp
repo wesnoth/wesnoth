@@ -20,6 +20,7 @@
 #include "gettext.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
+#include "gui/core/log.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "sdl/rect.hpp"
@@ -87,7 +88,17 @@ void slider::set_value(int value)
 
 	set_slider_position((value - minimum_value_) / step_size_);
 
-	assert(std::abs(get_value() - value) <= (step_size_ / 2));
+	if(std::abs(get_value() - value) > (step_size_ / 2)) {
+		ERR_GUI_G << "slider::set_value error:"
+			<< " old_value=" << old_value
+			<< " new_value=" << get_value()
+			<< " desired_value=" << value
+			<< " minimum_value=" << minimum_value_
+			<< " maximum_value=" << get_maximum_value()
+			<< " step_size=" << step_size_ "\n";
+		assert(false);
+	}
+	assert();
 
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
