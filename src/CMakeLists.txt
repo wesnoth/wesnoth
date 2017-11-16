@@ -84,10 +84,6 @@ endif(MSVC)
 set(common-external-libs
 	${common-external-libs}
 	${Boost_FILESYSTEM_LIBRARY}
-)
-
-set(common-external-libs
-	${common-external-libs}
 	${Boost_LOCALE_LIBRARY}
 )
 
@@ -133,10 +129,6 @@ endif(MSVC)
 set(server-external-libs
 	${common-external-libs}
 	${Boost_SYSTEM_LIBRARIES}
-)
-
-set(game-external-libs
-	${game-external-libs}
 )
 
 set(tools-external-libs
@@ -266,7 +258,7 @@ endif()
 
 ########### libwesnoth-lua ###############
 
-GetSources("lua" libwesnoth-lua_STAT_SRC)
+GetSources("libwesnoth_lua" libwesnoth-lua_STAT_SRC)
 
 # We explicitly want lua compiled as C++ version, so this line is required:
 set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES LANGUAGE CXX)
@@ -340,18 +332,16 @@ target_link_libraries(wesnoth-sdl
 
 ########### Wesnoth main source files ###############
 
-# Depending on whether the game or the game and the tests are build the main
-# sources are compiled in the game library or not. If only one target is needed
-# the putting in the game library solution is slower. If both targets are build
-# the library is faster (especially if the user doesn't use ccache (or
-# something similar)).
+# create libwesnoth-extras.a if building the client or the boost unit tests
 
-GetSources("wesnoth" wesnoth-main_SRC)
+if(ENABLE_GAME OR ENABLE_TESTS)
+	GetSources("libwesnoth_extras" wesnoth-main_SRC)
+	add_library(wesnoth-extras ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${wesnoth-main_SRC})
+endif(ENABLE_GAME OR ENABLE_TESTS)
 
 ########### libwesnoth-game ###############
-# rename libwesnoth.a to libwesnoth-game.a to have clearer targets
 
-GetSources("libwesnoth" libwesnoth-game_STAT_SRC)
+GetSources("libwesnoth_game" libwesnoth-game_STAT_SRC)
 
 # On windows only, this file needs to be linked, as its header is included #ifdef win32.
 if(WIN32)
@@ -369,7 +359,6 @@ if(APPLE)
 	)
 endif(APPLE)
 
-
 # For libdbus (essentially just for linux), this file needs to be linked, as its header is included #ifdef HAVE_LIBDBUS
 if(LIBDBUS_FOUND)
 	set(libwesnoth-game_STAT_SRC
@@ -378,56 +367,22 @@ if(LIBDBUS_FOUND)
 	)
 endif(LIBDBUS_FOUND)
 
-if(ENABLE_GAME AND ENABLE_TESTS)
-	set(libwesnoth-game_STAT_SRC
-		${libwesnoth-game_STAT_SRC}
-		${wesnoth-main_SRC}
-	)
-endif(ENABLE_GAME AND ENABLE_TESTS)
-
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
 add_library(wesnoth-game ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${libwesnoth-game_STAT_SRC})
 
-if(ENABLE_GAME AND ENABLE_TESTS)
-	target_link_libraries(wesnoth-game
-		wesnoth-core
-		wesnoth-lua
-	)
-endif(ENABLE_GAME AND ENABLE_TESTS)
-
 ########### Wesnoth ###############
 
 if(ENABLE_GAME)
-	if(ENABLE_TESTS)
-		set(wesnoth_SRC
-			wesnoth.cpp
-		)
-		set(wesnoth_LIB
-			wesnoth-core
-			wesnoth-lua
-			wesnoth-game
-			wesnoth-sdl
-		)
-	else(ENABLE_TESTS)
-		set(wesnoth_SRC
-			wesnoth.cpp
-			${wesnoth-main_SRC}
-		)
-		set(wesnoth_LIB
-			wesnoth-core
-			wesnoth-lua
-			wesnoth-game
-			wesnoth-sdl
-		)
-	endif(ENABLE_TESTS)
-
-	add_executable(wesnoth WIN32
-		${wesnoth_SRC}
-	)
+	add_executable(wesnoth WIN32 wesnoth.cpp)
 
 	target_link_libraries(wesnoth
-		${wesnoth_LIB}
+	  wesnoth-extras
+		wesnoth-lua
+		wesnoth-core
+		wesnoth-game
+		wesnoth-sdl
+		wesnoth-extras
 		${game-external-libs}
 	)
 	set_target_properties(wesnoth
@@ -443,11 +398,10 @@ if(ENABLE_SERVER)
 
   GetSources("wesnothd" wesnothd_SRC)
 
-  add_executable(wesnothd WIN32
-	  ${wesnothd_SRC}
-  )
+  add_executable(wesnothd WIN32 ${wesnothd_SRC})
 
   target_link_libraries(wesnothd wesnoth-core ${server-external-libs} ${Boost_RANDOM_LIBRARY})
+  
   set_target_properties(wesnothd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnothd${BINARY_SUFFIX})
 
   install(TARGETS wesnothd DESTINATION ${BINDIR})
@@ -460,18 +414,13 @@ if(ENABLE_CAMPAIGN_SERVER)
   
   GetSources("campaignd" campaignd_SRC)
 
-  check_library_exists(rt clock_gettime "time.h" HAVE_CLOCK_GETTIME_RT)
-  if(HAVE_CLOCK_GETTIME_RT)
-	  set(LIBRT rt)
-  endif()
-
   add_executable(campaignd ${campaignd_SRC})
+  
   target_link_libraries(campaignd
-	  wesnoth-core
-	  ${server-external-libs}
-	  ${CRYPTO_LIBRARY}
-	  ${Boost_RANDOM_LIBRARY}
-	  ${LIBRT}
+	    wesnoth-core
+	    ${server-external-libs}
+	    ${CRYPTO_LIBRARY}
+	    ${Boost_RANDOM_LIBRARY}
 	  )
   set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd${BINARY_SUFFIX})
 
@@ -486,39 +435,23 @@ if(ENABLE_TESTS)
 	add_definitions(-DBOOST_TEST_DYN_LINK)
   
   GetSources("boost_unit_tests" test_SRC)
-  
-	if(ENABLE_GAME)
-		set(test_LIB
-			wesnoth-core
-			wesnoth-game
-			wesnoth-sdl
-			wesnoth-lua
-		)
-	else(ENABLE_GAME)
-		set(test_SRC
-			${test_SRC}
-			${wesnoth-main_SRC}
-		)
-		set(test_LIB
-			wesnoth-core
-			wesnoth-game
-			wesnoth-lua
-			wesnoth-sdl
-		)
-	endif(ENABLE_GAME)
 
 	set_source_files_properties(
 		tests/test_util.cpp
 		PROPERTIES
-			COMPILE_FLAGS
-				"${CXX_FLAG_NO_USELESS_CAST}"
+		COMPILE_FLAGS
+		"${CXX_FLAG_NO_USELESS_CAST}"
 	)
 
-	add_executable(boost_unit_tests
-		${test_SRC}
-	)
+	add_executable(boost_unit_tests ${test_SRC})
+	
 	target_link_libraries(boost_unit_tests
-		${test_LIB}
+	  wesnoth-extras
+		wesnoth-lua
+		wesnoth-core
+		wesnoth-game
+		wesnoth-sdl
+	  wesnoth-extras
 		${game-external-libs}
 		boost_unit_test_framework
 	)
