@@ -98,7 +98,6 @@ void slider::set_value(int value)
 			<< " step_size=" << step_size_ << "\n";
 		assert(false);
 	}
-	assert();
 
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
