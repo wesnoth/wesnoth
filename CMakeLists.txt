@@ -7,7 +7,9 @@
 # * install .desktop files taking binary prefix and suffix into account
 
 # set minimum version
-cmake_minimum_required(VERSION 2.6.0)
+cmake_minimum_required(VERSION 2.8.5)
+
+project(wesnoth)
 
 include(CheckCXXCompilerFlag)
 
@@ -20,14 +22,12 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 # Options
 #
 
+# Adhere to GNU filesystem layout conventions
+include(GNUInstallDirs)
+
 #Path options
-set(BINDIR "bin" CACHE STRING "Where to install binaries")
-set(DATAROOTDIR "${CMAKE_INSTALL_PREFIX}/share" CACHE STRING "Sets the root of data directories to a non-default location")
-set(DOCDIR "${DATAROOTDIR}/doc/wesnoth" CACHE STRING "Sets the doc directory to a non-default location.")
-set(MANDIR "${DATAROOTDIR}/man" CACHE STRING "Where to install manpages")
 set(DATADIRNAME "wesnoth" CACHE STRING "change the name of the directory for the read-only architecture-independent game data")
 set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}" CACHE STRING "change the dir where binaries are placed right at compile time")
-set(LOCALEDIR "translations" CACHE STRING "change the name of the locale data directory to a non-default name")
 set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.wesnoth on unix)")
 set(DEFAULT_PREFS_FILE "" CACHE STRING "Set system wide preferences file")
 
@@ -150,8 +150,6 @@ mark_as_advanced(on ENABLE_SHARED_LIBRARIES)
 
 if(UNIX AND NOT APPLE AND NOT CYGWIN)
 	option(ENABLE_DESKTOP_ENTRY "enable installation of desktop entry files" ON)
-	set(ICONDIR "${DATAROOTDIR}/pixmaps" CACHE STRING "Sets the icon directory for desktop entry to a non-default location.")
-	set(DESKTOPDIR "${DATAROOTDIR}/applications/" CACHE STRING "Sets the desktop file directory for desktop entry to a non-default location.")
 endif(UNIX AND NOT APPLE AND NOT CYGWIN)
 
 option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" OFF)
@@ -477,18 +475,13 @@ if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 	set(CMAKE_EXE_LINKER_FLAGS "-lstdc++ -lm ${CMAKE_EXE_LINKER_FLAGS}")
 endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 
-# compose datadir path of datarootdir and datadirname
-set(DATADIR ${DATAROOTDIR}/${DATADIRNAME})
-
 if(NOT WIN32)
-	add_definitions(-DWESNOTH_PATH="${DATADIR}")
+	add_definitions(-DWESNOTH_PATH="${CMAKE_INSTALL_FULL_DATADIR}/${DATADIRNAME}")
 endif(NOT WIN32)
 
 if(X11_FOUND)
 	add_definitions(-D_X11)
 endif(X11_FOUND)
-
-add_definitions(-DLOCALEDIR="${LOCALEDIR}")
 
 # -NDEBUG is automatically added to all release build types, so manually remove
 # this define from the related variables
@@ -666,15 +659,16 @@ endif()
 # End setting options for Profile build
 # #
 
-# When the path starts with a / on a Unix system it's an absolute path.
-# This means that on Windows the path used is always relative.
-if(LOCALEDIR MATCHES "^/")
-	add_definitions(-DHAS_RELATIVE_LOCALEDIR=0)
-	set(LOCALE_INSTALL ${LOCALEDIR})
-else(LOCALEDIR MATCHES "^/")
+# On Windows the path used is always relative.
+if(WIN32)
 	add_definitions(-DHAS_RELATIVE_LOCALEDIR=1)
-	set(LOCALE_INSTALL ${DATADIR}/${LOCALEDIR})
-endif(LOCALEDIR MATCHES "^/")
+	file(RELATIVE_PATH LOCALEDIR "${CMAKE_INSTALL_FULL_BINDIR}" "${CMAKE_INSTALL_FULL_LOCALEDIR}")
+else(WIN32)
+	add_definitions(-DHAS_RELATIVE_LOCALEDIR=0)
+	set(LOCALEDIR "${CMAKE_INSTALL_FULL_LOCALEDIR}")
+endif(WIN32)
+
+add_definitions(-DLOCALEDIR="${LOCALEDIR}")
 
 add_definitions(-DFIFODIR="${FIFO_DIR}")
 
@@ -795,7 +789,7 @@ add_subdirectory(src)
 #
 # Install files
 #
-install(DIRECTORY data fonts images sounds DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS PATTERN ".git" EXCLUDE )
+install(DIRECTORY data fonts images sounds DESTINATION ${CMAKE_INSTALL_DATADIR}/${DATADIRNAME} USE_SOURCE_PERMISSIONS PATTERN ".git" EXCLUDE )
 
 
 #
@@ -812,9 +806,9 @@ if(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 	#execute_process(COMMAND sed "-i" "'s/^\(Name.*=.*\)$/\1TEST/g'" ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop )
 	#exec_program(sed ARGS "-i" "'s/^\(Name.*=.*\)$/\1TEST/g'" ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop )
 	# install the generated .desktop file
-	#  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop DESTINATION ${DESKTOPDIR} )
-	install(FILES icons/wesnoth.desktop DESTINATION ${DESKTOPDIR} )
-	install(FILES icons/wesnoth-icon.png DESTINATION ${ICONDIR} )
+	#  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
+	install(FILES icons/wesnoth.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
+	install(FILES icons/wesnoth-icon.png DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/64x64/apps )
 endif(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 
 
@@ -833,7 +827,7 @@ if(ENABLE_SERVER AND FIFO_DIR)
 endif()
 
 # Index for checking states of localized images at runtime.
-install(FILES l10n-track DESTINATION ${DATADIR})
+install(FILES l10n-track DESTINATION ${CMAKE_INSTALL_DATADIR}/${DATADIRNAME})
 
 #
 # uninstall

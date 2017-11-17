@@ -1,14 +1,14 @@
 set_directory_properties(PROPERTIES CLEAN_NO_CUSTOM true)
 
-install(FILES manual.en.html DESTINATION "${DOCDIR}")
+install(FILES manual.en.html DESTINATION "${CMAKE_INSTALL_DOCDIR}/html")
 install(DIRECTORY images styles
-	DESTINATION "${DOCDIR}"
+	DESTINATION "${CMAKE_INSTALL_DOCDIR}/html"
 	PATTERN ".git" EXCLUDE
 )
 
 if(ENABLE_NLS)
 	foreach(LANG ${LINGUAS})
-		install(FILES manual.${LANG}.html DESTINATION "${DOCDIR}" OPTIONAL)
+		install(FILES manual.${LANG}.html DESTINATION "${CMAKE_INSTALL_DOCDIR}/html" OPTIONAL)
 	endforeach(LANG ${LINGUAS})
 endif(ENABLE_NLS)
 
