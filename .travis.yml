@@ -14,7 +14,7 @@ addons:
 env:
     - OPT=-O0 CXXSTD=11 NLS=false
     - OPT=-O2 CXXSTD=11 NLS=false
-    - OPT=-O2 CXXSTD=1z NLS=false
+    - OPT=-O2 CXXSTD=1y NLS=false
     - NLS=true
     - CXXSTD=11 NLS=false USE_CMAKE=true
 matrix:
@@ -24,7 +24,7 @@ matrix:
     - compiler: gcc
       env: NLS=true
     - compiler: clang
-      env: OPT=-O2 CXXSTD=1z NLS=false
+      env: OPT=-O2 CXXSTD=1y NLS=false
     - compiler: clang
       env: OPT=-O0 CXXSTD=11 NLS=false
   include:
