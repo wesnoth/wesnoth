@@ -3,8 +3,8 @@ set(CXX_FLAGS_PROJECT "${CXX_FLAGS_PROJECT} -include boost-patched/bind/arg.hpp"
 
 # store the specified sources list in the specified variable
 function(GetSources source_list store_in_var)
-  file(STRINGS "../source_lists/${source_list}" sources)
-  set(${store_in_var} ${sources} PARENT_SCOPE)
+	file(STRINGS "../source_lists/${source_list}" sources)
+	set(${store_in_var} ${sources} PARENT_SCOPE)
 endfunction()
 
 ## some includes ##
@@ -256,18 +256,18 @@ if(ENABLE_DISPLAY_REVISION)
 endif()
 
 
-########### libwesnoth-lua ###############
+########### lua ###############
 
-GetSources("libwesnoth_lua" libwesnoth-lua_STAT_SRC)
+GetSources("lua" lua_STAT_SRC)
 
 # We explicitly want lua compiled as C++ version, so this line is required:
-set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES LANGUAGE CXX)
+set_source_files_properties(${lua_STAT_SRC} PROPERTIES LANGUAGE CXX)
 
 # Inject a header into the Lua sources for Wesnoth-specific changes
 # makedepend won't see it so we have to specifically add it as a dependancy.
 file(GLOB wesnoth_lua_config wesnoth_lua_config.h)
-set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES COMPILE_FLAGS "-include ${wesnoth_lua_config}")
-set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES OBJECT_DEPENDS ${wesnoth_lua_config})
+set_source_files_properties(${lua_STAT_SRC} PROPERTIES COMPILE_FLAGS "-include ${wesnoth_lua_config}")
+set_source_files_properties(${lua_STAT_SRC} PROPERTIES OBJECT_DEPENDS ${wesnoth_lua_config})
 
 if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 	# Assume the compiler is the clang compiler.
@@ -276,7 +276,7 @@ if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 	#
 	# Also silence some Clang specific warnings due to extra parenthesis in if statements when comparing instead
 	set_property(SOURCE
-		SOURCE ${libwesnoth-lua_STAT_SRC}
+		SOURCE ${lua_STAT_SRC}
 		APPEND_STRING PROPERTY COMPILE_FLAGS
 			" -x c++ -Wno-parentheses-equality -Wno-conditional-uninitialized"
 	)
@@ -284,7 +284,7 @@ endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
-add_library(wesnoth-lua ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${libwesnoth-lua_STAT_SRC})
+add_library(lua ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${lua_STAT_SRC})
 
 
 ########### Old style cast flags ###############
@@ -300,7 +300,7 @@ if(HAS_COMPILER_FLAG_WUSELESS_CAST)
 	set(CXX_FLAG_NO_USELESS_CAST "-Wno-useless-cast")
 endif()
 
-set_target_properties(wesnoth-lua
+set_target_properties(lua
 	PROPERTIES
 		COMPILE_FLAGS
 			"${CXX_FLAG_NO_OLD_STYLE_CAST} ${CXX_FLAG_NO_USELESS_CAST}"
@@ -332,16 +332,16 @@ target_link_libraries(wesnoth-sdl
 
 ########### Wesnoth main source files ###############
 
-# create libwesnoth-extras.a if building the client or the boost unit tests
+# create libwesnoth-client.a if building the client or the boost unit tests
 
 if(ENABLE_GAME OR ENABLE_TESTS)
-	GetSources("libwesnoth_extras" wesnoth-main_SRC)
-	add_library(wesnoth-extras ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${wesnoth-main_SRC})
+	GetSources("wesnoth" wesnoth-main_SRC)
+	add_library(wesnoth-client ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${wesnoth-main_SRC})
 endif(ENABLE_GAME OR ENABLE_TESTS)
 
 ########### libwesnoth-game ###############
 
-GetSources("libwesnoth_game" libwesnoth-game_STAT_SRC)
+GetSources("libwesnoth" libwesnoth-game_STAT_SRC)
 
 # On windows only, this file needs to be linked, as its header is included #ifdef win32.
 if(WIN32)
@@ -377,12 +377,12 @@ if(ENABLE_GAME)
 	add_executable(wesnoth WIN32 wesnoth.cpp)
 
 	target_link_libraries(wesnoth
-	  wesnoth-extras
-		wesnoth-lua
+		wesnoth-client
+		lua
 		wesnoth-core
 		wesnoth-game
 		wesnoth-sdl
-		wesnoth-extras
+		wesnoth-client
 		${game-external-libs}
 	)
 	set_target_properties(wesnoth
@@ -396,35 +396,35 @@ endif(ENABLE_GAME)
 
 if(ENABLE_SERVER)
 
-  GetSources("wesnothd" wesnothd_SRC)
+	GetSources("wesnothd" wesnothd_SRC)
 
-  add_executable(wesnothd WIN32 ${wesnothd_SRC})
+	add_executable(wesnothd WIN32 ${wesnothd_SRC})
 
-  target_link_libraries(wesnothd wesnoth-core ${server-external-libs} ${Boost_RANDOM_LIBRARY})
-  
-  set_target_properties(wesnothd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnothd${BINARY_SUFFIX})
+	target_link_libraries(wesnothd wesnoth-core ${server-external-libs} ${Boost_RANDOM_LIBRARY})
+	
+	set_target_properties(wesnothd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnothd${BINARY_SUFFIX})
 
-  install(TARGETS wesnothd DESTINATION ${BINDIR})
+	install(TARGETS wesnothd DESTINATION ${BINDIR})
 
 endif(ENABLE_SERVER)
 
 ########### Campaign Server ###############
 
 if(ENABLE_CAMPAIGN_SERVER)
-  
-  GetSources("campaignd" campaignd_SRC)
 
-  add_executable(campaignd ${campaignd_SRC})
-  
-  target_link_libraries(campaignd
-	    wesnoth-core
-	    ${server-external-libs}
-	    ${CRYPTO_LIBRARY}
-	    ${Boost_RANDOM_LIBRARY}
-	  )
-  set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd${BINARY_SUFFIX})
+	GetSources("campaignd" campaignd_SRC)
 
-  install(TARGETS campaignd DESTINATION ${BINDIR})
+	add_executable(campaignd ${campaignd_SRC})
+	
+	target_link_libraries(campaignd
+			wesnoth-core
+			${server-external-libs}
+			${CRYPTO_LIBRARY}
+			${Boost_RANDOM_LIBRARY}
+		)
+	set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd${BINARY_SUFFIX})
+
+	install(TARGETS campaignd DESTINATION ${BINDIR})
 
 endif(ENABLE_CAMPAIGN_SERVER)
 
@@ -433,8 +433,8 @@ endif(ENABLE_CAMPAIGN_SERVER)
 if(ENABLE_TESTS)
 
 	add_definitions(-DBOOST_TEST_DYN_LINK)
-  
-  GetSources("boost_unit_tests" test_SRC)
+	
+	GetSources("boost_unit_tests" test_SRC)
 
 	set_source_files_properties(
 		tests/test_util.cpp
@@ -446,12 +446,12 @@ if(ENABLE_TESTS)
 	add_executable(boost_unit_tests ${test_SRC})
 	
 	target_link_libraries(boost_unit_tests
-	  wesnoth-extras
-		wesnoth-lua
+		wesnoth-client
+		lua
 		wesnoth-core
 		wesnoth-game
 		wesnoth-sdl
-	  wesnoth-extras
+		wesnoth-client
 		${game-external-libs}
 		boost_unit_test_framework
 	)

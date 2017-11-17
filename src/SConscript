@@ -68,7 +68,7 @@ if env["PLATFORM"] == "win32":
 libwesnoth_core = env.Library("wesnoth-core", libwesnoth_core_sources)
 
 #---libwesnoth_game---
-libwesnoth_game_sources = GetSources("libwesnoth_game")
+libwesnoth_game_sources = GetSources("libwesnoth")
 libwesnoth_game = client_env.Library("wesnoth-game", libwesnoth_game_sources)
 
 #---libwesnoth_sdl---
@@ -82,21 +82,21 @@ libwesnoth_sdl = client_env.Library("wesnoth-sdl", libwesnoth_sdl_sources)
 #---wesnoth---
 # Used by both 'wesnoth' and 'boost_unit_tests' targets
 
-wesnoth_extras_sources = GetSources("libwesnoth_extras")
+wesnoth_client_sources = GetSources("wesnoth")
 
 if env["PLATFORM"] == "win32":
-    wesnoth_extras_sources.append("desktop/windows_tray_notification.cpp")
+    wesnoth_client_sources.append("desktop/windows_tray_notification.cpp")
 
 if env["PLATFORM"] == 'darwin':
-    wesnoth_extras_sources.append("desktop/apple_notification.mm")
+    wesnoth_client_sources.append("desktop/apple_notification.mm")
 
 if env["notifications"]:
-    wesnoth_extras_sources.append("desktop/dbus_notification.cpp")
+    wesnoth_client_sources.append("desktop/dbus_notification.cpp")
 
-libwesnoth_extras = client_env.Library("wesnoth-extras", wesnoth_extras_sources)
+libwesnoth_client = client_env.Library("wesnoth-client", wesnoth_client_sources)
 
 #---lua---
-lua_sources = GetSources("libwesnoth_lua")
+lua_sources = GetSources("lua")
 
 env_lua = env.Clone(
     # Silence some Clang-specific warnings due to extra parentheses in if statements when comparing.
@@ -116,7 +116,7 @@ objs_lua = env_lua.Object(lua_sources)
 for obj in objs_lua:
     env_lua.Depends(obj, env_lua["wesnoth_lua_config"])
 
-libwesnoth_lua = env_lua.Library("wesnoth-lua", objs_lua)
+liblua = env_lua.Library("lua", objs_lua)
 
 #
 # Target declarations
@@ -149,7 +149,7 @@ for env in [test_env, client_env, env]:
 #---wesnoth---
 # for wesnoth_res and wesnothd_res, see packaging/windows/SConscript
 # used to set the executable icon for wesnoth and wesnothd
-libwesnoth_objects = libwesnoth_extras + libwesnoth_lua + libwesnoth_core + libwesnoth_game + libwesnoth_sdl + libwesnoth_extras
+libwesnoth_objects = libwesnoth_client + liblua + libwesnoth_core + libwesnoth_game + libwesnoth_sdl + libwesnoth_client
 if env["PLATFORM"] == 'darwin':
     client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects + ["macosx/SDLMain.mm"], have_client_prereqs)
 elif env["PLATFORM"] == 'win32':
