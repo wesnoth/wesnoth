@@ -230,6 +230,26 @@ void config::append_children(const config& cfg)
 	}
 }
 
+void config::append_children(config&& cfg)
+{
+	check_valid(cfg);
+
+#if 0
+	//For some unknown reason this doesn't compile.
+	if(children_.empty()) {
+		//optimisation
+		children_ = std::move(cfg.children_);
+		ordered_children = std::move(cfg.ordered_children);
+		cfg.clear_all_children();
+		return;
+	}
+#endif
+	for(const any_child& value : cfg.all_children_range()) {
+		add_child(value.key, std::move(value.cfg));
+	}
+	cfg.clear_all_children();
+}
+
 void config::append_attributes(const config& cfg)
 {
 	check_valid(cfg);
@@ -253,6 +273,23 @@ void config::append(const config& cfg)
 	for(const attribute& v : cfg.values_) {
 		values_[v.first] = v.second;
 	}
+}
+
+void config::append(config&& cfg)
+{
+	append_children(std::move(cfg));
+	
+	if(values_.empty()) {
+		//optimisation.
+		values_ = std::move(cfg.values_);
+	}
+	else {
+		for(const attribute& v : cfg.values_) {
+			//TODO: move the attributes aswell?
+			values_[v.first] = v.second;
+		}
+	}
+	cfg.clear_attibutes();
 }
 
 void config::append_children_by_move(config& cfg, const std::string& key)
@@ -756,6 +793,19 @@ void config::clear()
 	children_.clear();
 	values_.clear();
 	ordered_children.clear();
+}
+
+void config::clear_all_children()
+{
+	// No validity check for this function.
+	children_.clear();
+	ordered_children.clear();
+}
+
+void config::clear_attibutes()
+{
+	// No validity check for this function.
+	values_.clear();
 }
 
 bool config::empty() const

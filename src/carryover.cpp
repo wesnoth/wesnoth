@@ -205,10 +205,8 @@ void carryover_info::transfer_to(config& level)
 		level["next_underlying_unit_id"] = next_underlying_unit_id_;
 	}
 
-	//if the game has been loaded from a snapshot, the existing variables will be the current ones
-	if(!level.has_child("variables")) {
-		level.add_child("variables", variables_);
-	}
+	//if the game has been loaded from a snapshot, variables_ is empty since we cleared it below.
+	level.child_or_add("variables").append(std::move(variables_));
 
 	config::attribute_value & seed_value = level["random_seed"];
 	if ( seed_value.empty() ) {

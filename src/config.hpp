@@ -523,6 +523,8 @@ public:
 	void recursive_clear_value(config_key_type key);
 
 	void clear();
+	void clear_all_children();
+	void clear_attibutes();
 	bool empty() const;
 
 	std::string debug() const;
@@ -722,11 +724,13 @@ public:
 	 * Attributes in the latter config object will clobber attributes in this one.
 	 */
 	void append(const config& cfg);
+	void append(config&& cfg);
 
 	/**
 	 * Adds children from @a cfg.
 	 */
 	void append_children(const config &cfg);
+	void append_children(config&& cfg);
 
 	/**
 	 * Adds children from @a cfg.
