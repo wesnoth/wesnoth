@@ -3,7 +3,7 @@ Description=Wesnoth Multiplayer Server Daemon
 After=network.target
 
 [Service]
-ExecStart=@CMAKE_INSTALL_PREFIX@/@BINDIR@/wesnothd
+ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/wesnothd
 
 [Install]
 WantedBy=multi-user.target
