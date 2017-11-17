@@ -4,11 +4,18 @@ Version 1.13.10+dev:
      have linger=no in [end_level].
    * A Tale of Two Brothers:
      * Added a full set of hints on easy difficulty.
- * Contiuous Integration (CI) and Unit testing
+ * Packaging
    * Renamed the target and binary for the Boost unit tests from `test` to
      `boost_unit_tests`. This quells warnings from CMake about reserved target
      names, and reduces confusion about which `test` is intended: the wesnoth
      executable or the standard shell command.
+   * The CMake build system now uses standard Kitware-supported variables
+     from the `GNUInstallDirs` module. Distributions might have to change
+     the defaults to suit their FHS needs.
+   * The previous addition of `GNUInstallDirs` necessitates a bumping of the
+     CMake minimum requirements, which is now at 2.8.5. Most distributions
+     already use a CMake version above 3.0, so this would only affect users
+     of vintage CMake versions.
  * Language and i18n:
    * Updated translations: Chinese (Simplified), Italian
  * Lua API:
