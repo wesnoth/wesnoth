@@ -434,7 +434,7 @@ if(ENABLE_GAME)
 		PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}
 	)
 
-	install(TARGETS wesnoth DESTINATION ${BINDIR})
+	install(TARGETS wesnoth DESTINATION ${CMAKE_INSTALL_BINDIR})
 endif(ENABLE_GAME)
 
 ########### Wesnothd Server ###############
@@ -450,7 +450,7 @@ if(ENABLE_SERVER)
   target_link_libraries(wesnothd wesnoth-core ${server-external-libs} ${Boost_RANDOM_LIBRARY})
   set_target_properties(wesnothd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnothd${BINARY_SUFFIX})
 
-  install(TARGETS wesnothd DESTINATION ${BINDIR})
+  install(TARGETS wesnothd DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 endif(ENABLE_SERVER)
 
@@ -475,7 +475,7 @@ if(ENABLE_CAMPAIGN_SERVER)
 	  )
   set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd${BINARY_SUFFIX})
 
-  install(TARGETS campaignd DESTINATION ${BINDIR})
+  install(TARGETS campaignd DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 endif(ENABLE_CAMPAIGN_SERVER)
 
