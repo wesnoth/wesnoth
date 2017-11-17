@@ -434,8 +434,8 @@ void halo_impl::render()
 	}
 
 	// Render the haloes: draw all invalidated haloes
-	for(int halo_id : invalidated_haloes) {
-		haloes.at(halo_id).render();
+	for(int id : invalidated_haloes) {
+		haloes.at(id).render();
 	}
 
 	invalidated_haloes.clear();
