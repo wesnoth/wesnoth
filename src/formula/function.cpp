@@ -440,6 +440,25 @@ DEFINE_WFL_FUNCTION(replace, 3, 4)
 	return variant(result.replace(offset, std::string::npos, replacement));
 }
 
+DEFINE_WFL_FUNCTION(insert, 3, 3)
+{
+	std::string result = args()[0]->evaluate(variables, fdb).as_string();
+	std::string insert = args().back()->evaluate(variables, fdb).as_string();
+
+	int offset = args()[1]->evaluate(variables, fdb).as_int();
+	if(offset < 0) {
+		offset += result.size();
+
+		if(offset < 0) {
+			offset = 0;
+		}
+	} else if(static_cast<size_t>(offset >= result.size())) {
+		return variant(result + insert);
+	}
+
+	return variant(result.insert(offset, insert));
+}
+
 DEFINE_WFL_FUNCTION(length, 1, 1)
 {
 	return variant(args()[0]->evaluate(variables, fdb).as_string().length());
