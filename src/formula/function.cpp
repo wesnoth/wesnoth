@@ -452,7 +452,7 @@ DEFINE_WFL_FUNCTION(insert, 3, 3)
 		if(offset < 0) {
 			offset = 0;
 		}
-	} else if(static_cast<size_t>(offset >= result.size())) {
+	} else if(static_cast<size_t>(offset) >= result.size()) {
 		return variant(result + insert);
 	}
 
