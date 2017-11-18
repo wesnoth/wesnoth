@@ -34,34 +34,25 @@ std::vector<surrender_confirmation*> surrender_confirmation::blockers_ = std::ve
 
 bool surrender_confirmation::surrender()
 {
-	bool doSurrender = false;
-
-
 	if(!open_) {
 		open_ = true;
 		for(surrender_confirmation* blocker : boost::adaptors::reverse(blockers_))
 		{
-			if(blocker->prompt_()) {
-				doSurrender=true;
+			if(!blocker->prompt_()) {
+				open_ = false;
+				return false;
 			} else {
-				doSurrender=false;
-			}
-		}
-		open_ = false;
-
-		if(doSurrender)
-		{
-			display& disp = resources::controller->get_display();
-			unit_map& units = resources::gameboard->units();
-			for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
-				if(i->side() == disp.viewing_side()) {
+				display& disp = resources::controller->get_display();
+				unit_map& units = resources::gameboard->units();
+				int viewing_side = disp.viewing_side();
+				for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
+					if(i->side() == viewing_side) {
 						const map_location loc = (*i).get_location();
-						const int dying_side = i->side();
 						resources::controller->pump().fire("last_breath", loc, loc);
 						if (i.valid()) {
 							unit_display::unit_die(loc, *i);
 						}
-						resources::screen->redraw_minimap();
+
 						if (i.valid()) {
 							i->set_hitpoints(0);
 						}
@@ -69,14 +60,21 @@ bool surrender_confirmation::surrender()
 						if (i.valid()) {
 							resources::gameboard->units().erase(i);
 						}
-						resources::whiteboard->on_kill_unit();
-						actions::recalculate_fog(dying_side);
+
+					}
 				}
+				resources::screen->redraw_minimap();
+				resources::whiteboard->on_kill_unit();
+				actions::recalculate_fog(viewing_side);
+				resources::controller->check_victory();
 			}
+			open_ = false;
+			return true;
 		}
+		open_ = false;
 	}
 
-	return doSurrender;
+	return true;
 }
 
 
