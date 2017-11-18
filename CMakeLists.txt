@@ -28,6 +28,7 @@ include(GNUInstallDirs)
 #Path options
 set(DATADIRNAME "wesnoth" CACHE STRING "change the name of the directory for the read-only architecture-independent game data")
 set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}" CACHE STRING "change the dir where binaries are placed right at compile time")
+set(LOCALEDIR "translations" CACHE STRING "change the name of the locale data directory to a non-default name")
 set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.wesnoth on unix)")
 set(DEFAULT_PREFS_FILE "" CACHE STRING "Set system wide preferences file")
 
@@ -483,6 +484,8 @@ if(X11_FOUND)
 	add_definitions(-D_X11)
 endif(X11_FOUND)
 
+add_definitions(-DLOCALEDIR="${LOCALEDIR}")
+
 # -NDEBUG is automatically added to all release build types, so manually remove
 # this define from the related variables
 MESSAGE ("removing NDEBUG flag from CMAKE_CXX_FLAGS_RELWITHDEBINFO")
@@ -659,16 +662,15 @@ endif()
 # End setting options for Profile build
 # #
 
-# On Windows the path used is always relative.
-if(WIN32)
-	add_definitions(-DHAS_RELATIVE_LOCALEDIR=1)
-	file(RELATIVE_PATH LOCALEDIR "${CMAKE_INSTALL_FULL_BINDIR}" "${CMAKE_INSTALL_FULL_LOCALEDIR}")
-else(WIN32)
+# When the path starts with a / on a Unix system it's an absolute path.
+# This means that on Windows the path used is always relative.
+if(IS_ABSOLUTE "${LOCALEDIR}")
 	add_definitions(-DHAS_RELATIVE_LOCALEDIR=0)
-	set(LOCALEDIR "${CMAKE_INSTALL_FULL_LOCALEDIR}")
-endif(WIN32)
-
-add_definitions(-DLOCALEDIR="${LOCALEDIR}")
+	set(LOCALE_INSTALL ${LOCALEDIR})
+else()
+	add_definitions(-DHAS_RELATIVE_LOCALEDIR=1)
+	set(LOCALE_INSTALL ${CMAKE_INSTALL_DATADIR}/${DATADIRNAME}/${LOCALEDIR})
+endif()
 
 add_definitions(-DFIFODIR="${FIFO_DIR}")
 
