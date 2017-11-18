@@ -582,6 +582,13 @@ static int do_gameloop(const std::vector<std::string>& args)
 	game_config::wesnoth_program_dir = filesystem::directory_name(args[0]);
 	int finished = process_command_args(cmdline_opts);
 	if(finished != -1) {
+#ifdef _WIN32
+		if(lg::using_own_console()) {
+				std::cerr << "Press enter to continue..." << std::endl;
+				std::cin.get();
+		}
+#endif
+
 		return finished;
 	}
 
