@@ -212,9 +212,9 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 
 	po::options_description display_opts("Display options");
 	display_opts.add_options()
-		("fps", "displays the number of frames per second the game is currently running at, in a corner of the screen.")
+		("fps", "displays the number of frames per second the game is currently running at, in a corner of the screen. Min/avg/max don't take the FPS limiter into account, act does.")
 		("fullscreen,f", "runs the game in full screen mode.")
-		("max-fps", po::value<int>(), "the maximum fps the game tries to run at. Values should be between 1 and 1000, the default is 50.")
+		("max-fps", po::value<int>(), "the maximum fps the game tries to run at. Values should be between 1 and 1000, the default is the display's refresh rate.")
 		("new-widgets", "there is a new WIP widget toolkit this switch enables the new toolkit (VERY EXPERIMENTAL don't file bug reports since most are known). Parts of the library are deemed stable and will work without this switch.")
 		("resolution,r", po::value<std::string>(), "sets the screen resolution. <arg> should have format XxY. Example: --resolution 800x600")
 		("windowed,w", "runs the game in windowed mode.")
