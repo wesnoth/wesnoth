@@ -407,7 +407,7 @@ private:
 	 */
 	bool set_markup(utils::string_view text, PangoLayout& layout);
 
-	bool set_markup_helper(utils::string_view text, PangoLayout& layout);
+	bool validate_markup(utils::string_view text, char** raw_text, std::string& semi_escaped) const;
 
 	/** Splits the text to two Cairo surfaces.
 	 *
@@ -430,9 +430,8 @@ private:
 
 	static void copy_layout_properties(PangoLayout& src, PangoLayout& dst);
 
-	std::string format_link_tokens(const std::string & text) const;
-
-	std::string handle_token(const std::string & token) const;
+	std::vector<std::string> find_links(utils::string_view text) const;
+	void format_links(std::string& text, const std::vector<std::string>& links) const;
 };
 
 } // namespace font
