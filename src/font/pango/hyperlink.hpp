@@ -14,19 +14,22 @@
 
 #pragma once
 
+#include "color.hpp"
+#include "serialization/string_utils.hpp"
+
 #include <string>
 
 namespace font {
 
 // Helper functions for link-aware text feature
 
-inline bool looks_like_url(const std::string & str)
+inline bool looks_like_url(utils::string_view str)
 {
 	return (str.size() >= 8) && ((str.substr(0,7) == "http://") || (str.substr(0,8) == "https://"));
 }
 
-inline std::string format_as_link(const std::string & link, const std::string & color) {
-	return "<span underline=\'single\' color=\'" + color + "\'>" + link + "</span>";
+inline std::string format_as_link(const std::string & link, color_t color) {
+	return "<span underline=\'single\' color=\'" + color.to_hex_string() + "\'>" + link + "</span>";
 }
 
 } // end namespace font

@@ -32,6 +32,8 @@
 #include "serialization/unicode.hpp"
 #include "preferences/general.hpp"
 
+#include <boost/algorithm/string/replace.hpp>
+
 #include <cassert>
 #include <cstring>
 #include <stdexcept>
@@ -732,47 +734,68 @@ void pango_text::create_surface_buffer(const size_t size) const
 }
 
 bool pango_text::set_markup(utils::string_view text, PangoLayout& layout) {
-	return this->set_markup_helper(link_aware_ ? this->format_link_tokens(text.to_string()) : text, layout);
+	char* raw_text;
+	std::string semi_escaped;
+	bool valid = validate_markup(text, &raw_text, semi_escaped);
+	if(semi_escaped != "") {
+		text = semi_escaped;
+	}
+
+	if(valid) {
+		if(link_aware_) {
+			std::vector<std::string> links = find_links(raw_text);
+			std::string final_text = text.to_string();
+			format_links(final_text, links);
+			pango_layout_set_markup(&layout, final_text.c_str(), final_text.size());
+		} else {
+			pango_layout_set_markup(&layout, text.data(), text.size());
+		}
+	} else {
+		ERR_GUI_L << "pango_text::" << __func__
+			<< " text '" << text
+			<< "' has broken markup, set to normal text.\n";
+		set_text(_("The text contains invalid markup: ") + text.to_string(), false);
+	}
+
+	return valid;
 }
 
-std::string pango_text::format_link_tokens(const std::string & text) const {
-	std::string delim = " \n\r\t";
-	// Tokenize according to these delimiters, and stream the results of `handle_token` on each token to get the new text.
-
-	std::string result;
+std::vector<std::string> pango_text::find_links(utils::string_view text) const {
+	const std::string delim = " \n\r\t";
+	std::vector<std::string> links;
 
 	int last_delim = -1;
 	for (size_t index = 0; index < text.size(); ++index) {
 		if (delim.find(text.at(index)) != std::string::npos) {
 			// want to include chars from range since last token, dont want to include any delimiters
-			result += this->handle_token(text.substr(last_delim + 1, index - last_delim - 1));
-			result += text.at(index);
+			utils::string_view token = text.substr(last_delim + 1, index - last_delim - 1);
+			if(looks_like_url(token)) {
+				links.push_back(token.to_string());
+			}
 			last_delim = index;
 		}
 	}
 	if (last_delim < static_cast<int>(text.size()) - 1) {
-		result += this->handle_token(text.substr(last_delim + 1, text.size() - last_delim - 1));
+		utils::string_view token = text.substr(last_delim + 1, text.size() - last_delim - 1);
+		if(looks_like_url(token)) {
+			links.push_back(token.to_string());
+		}
 	}
 
-	return result;
+	return links;
 }
 
-std::string pango_text::handle_token(const std::string & token) const
+void pango_text::format_links(std::string& text, const std::vector<std::string>& links) const
 {
-	if (looks_like_url(token)) {
-		return format_as_link(token, link_color_.to_hex_string());
-	} else {
-		return token;
+	for(const std::string& link : links) {
+		boost::algorithm::replace_first(text, link, format_as_link(link, link_color_));
 	}
 }
 
-bool pango_text::set_markup_helper(utils::string_view text, PangoLayout& layout)
+bool pango_text::validate_markup(utils::string_view text, char** raw_text, std::string& semi_escaped) const
 {
 	if(pango_parse_markup(text.data(), text.size(),
-		0, nullptr, nullptr, nullptr, nullptr)) {
-
-		/* Markup is valid so set it. */
-		pango_layout_set_markup(&layout, text.data(), text.size());
+		0, nullptr, raw_text, nullptr, nullptr)) {
 		return true;
 	}
 
@@ -784,7 +807,7 @@ bool pango_text::set_markup_helper(utils::string_view text, PangoLayout& layout)
 	 * So only try to recover from broken ampersands, by simply replacing them
 	 * with the escaped version.
 	 */
-	std::string semi_escaped{semi_escape_text(text.to_string())};
+	semi_escaped = semi_escape_text(text.to_string());
 
 	/*
 	 * If at least one ampersand is replaced the semi-escaped string
@@ -793,14 +816,9 @@ bool pango_text::set_markup_helper(utils::string_view text, PangoLayout& layout)
 	 */
 	if(text.size() == semi_escaped.size()
 			|| !pango_parse_markup(semi_escaped.c_str(), semi_escaped.size()
-				, 0, nullptr, nullptr, nullptr, nullptr)) {
+				, 0, nullptr, raw_text, nullptr, nullptr)) {
 
 		/* Fixing the ampersands didn't work. */
-		ERR_GUI_L << "pango_text::" << __func__
-				<< " text '" << text
-				<< "' has broken markup, set to normal text.\n";
-
-		this->set_text(_("The text contains invalid markup: ") + text.to_string(), false);
 		return false;
 	}
 
@@ -809,7 +827,6 @@ bool pango_text::set_markup_helper(utils::string_view text, PangoLayout& layout)
 			<< " text '" << text
 			<< "' has unescaped ampersands '&', escaped them.\n";
 
-	pango_layout_set_markup(&layout, semi_escaped.c_str(), semi_escaped.size());
 	return true;
 }
 
