@@ -22,7 +22,6 @@
 
 #include "ai/composite/aspect.hpp"
 #include "ai/composite/rca.hpp"
-#include "units/unit.hpp"
 #include "units/map.hpp"
 
 #include <iomanip>
@@ -84,19 +83,7 @@ struct data {
 		}
 		return normalized;
 	}
-	std::string to_string() const {
-		std::stringstream s;
-		s << "---------------Content of leader data---------------\n";
-		s << "For leader: " << leader->name() << "\n";
-		s << "ratio_score: " << ratio_score << "\n";
-		s << "recruit_count: " << recruit_count << "\n\n";
-		for (const score_map::value_type& entry : scores) {
-			s << std::setw(20) << entry.first <<
-					" score: " << std::setw(7) << entry.second << "\n";
-		}
-		s << "----------------------------------------------------\n";
-		return s.str();
-	}
+	std::string to_string() const;
 };
 
 struct cached_combat_value {

@@ -40,6 +40,7 @@
 #include "units/filter.hpp"
 #include "units/map.hpp"
 #include "units/types.hpp"
+#include "units/unit.hpp"
 #include "variable.hpp"
 #include "wml_exception.hpp"
 
@@ -101,6 +102,20 @@ const static double COMBAT_CACHE_TOLERANCY = 0.5;
 // The old recruitment CA usually recruited too many scouts.
 // To prevent this we multiply the aspect village_per_scout with this constant.
 const static double VILLAGE_PER_SCOUT_MULTIPLICATOR = 2.;
+}
+
+std::string data::to_string() const {
+	std::stringstream s;
+	s << "---------------Content of leader data---------------\n";
+	s << "For leader: " << leader->name() << "\n";
+	s << "ratio_score: " << ratio_score << "\n";
+	s << "recruit_count: " << recruit_count << "\n\n";
+	for (const score_map::value_type& entry : scores) {
+		s << std::setw(20) << entry.first <<
+				" score: " << std::setw(7) << entry.second << "\n";
+	}
+	s << "----------------------------------------------------\n";
+	return s.str();
 }
 
 recruitment::recruitment(rca_context& context, const config& cfg)
