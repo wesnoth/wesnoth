@@ -20,6 +20,7 @@
 #include "team.hpp"
 #include "replay.hpp"
 #include "units/map.hpp"
+#include "units/unit.hpp"
 #include "statistics.hpp"
 #include "log.hpp"
 #include "game_display.hpp"
@@ -32,6 +33,21 @@ namespace actions
 {
 namespace undo
 {
+
+recruit_action::recruit_action(const unit_const_ptr recruited, const map_location& loc,
+			   const map_location& from, int orig_village_owner, bool time_bonus)
+	: undo_action()
+	, shroud_clearing_action(recruited, loc, orig_village_owner, time_bonus)
+	, u_type(recruited->type())
+	, recruit_from(from)
+{}
+
+recruit_action::recruit_action(const config & cfg, const unit_type & type, const map_location& from)
+	: undo_action(cfg)
+	, shroud_clearing_action(cfg)
+	, u_type(type)
+	, recruit_from(from)
+{}
 
 /**
  * Writes this into the provided config.

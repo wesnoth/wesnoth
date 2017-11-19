@@ -16,7 +16,7 @@
 #include "undo_action.hpp"
 #include "shroud_clearing_action.hpp"
 #include "units/ptr.hpp"
-#include "units/unit.hpp"
+#include "units/types.hpp"
 
 namespace actions
 {
@@ -30,19 +30,8 @@ struct recruit_action : undo_action, shroud_clearing_action
 
 
 	recruit_action(const unit_const_ptr recruited, const map_location& loc,
-	               const map_location& from, int orig_village_owner, bool time_bonus)
-		: undo_action()
-		, shroud_clearing_action(recruited, loc, orig_village_owner, time_bonus)
-		, u_type(recruited->type())
-		, recruit_from(from)
-	{
-	}
-	recruit_action(const config & cfg, const unit_type & type, const map_location& from)
-		: undo_action(cfg)
-		, shroud_clearing_action(cfg)
-		, u_type(type)
-		, recruit_from(from)
-	{}
+	               const map_location& from, int orig_village_owner, bool time_bonus);
+	recruit_action(const config & cfg, const unit_type & type, const map_location& from);
 	virtual const char* get_type() const { return "recruit"; }
 	virtual ~recruit_action() {}
 
