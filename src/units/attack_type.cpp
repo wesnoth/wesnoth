@@ -27,6 +27,7 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "gettext.hpp"
+#include "utils/math.hpp"
 
 #include <cassert>
 

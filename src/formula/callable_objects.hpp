@@ -16,12 +16,15 @@
 
 #include "formula/callable.hpp"
 #include "formula/formula.hpp"
+#include "map/location.hpp"
+#include "units/ptr.hpp"
 
-#include "units/unit.hpp"
-
+class display_context;
+class gamemap;
 class team;
 class terrain_type;
-class display_context;
+class unit;
+class unit_type;
 
 namespace wfl
 {
@@ -81,10 +84,7 @@ private:
 class attack_type_callable : public formula_callable
 {
 public:
-	explicit attack_type_callable(const attack_type& attack) : att_(attack.shared_from_this())
-	{
-		type_ = ATTACK_TYPE_C;
-	}
+	explicit attack_type_callable(const attack_type& attack);
 
 	variant get_value(const std::string& key) const override;
 	void get_inputs(formula_input_vector& inputs) const override;
@@ -105,10 +105,7 @@ public:
 		type_ = UNIT_C;
 	}
 
-	explicit unit_callable(const unit &u) : loc_(u.get_location()), u_(u)
-	{
-		type_ = UNIT_C;
-	}
+	explicit unit_callable(const unit &u);
 
 	variant get_value(const std::string& key) const override;
 	void get_inputs(formula_input_vector& inputs) const override;

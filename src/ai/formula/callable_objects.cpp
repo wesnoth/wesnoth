@@ -22,6 +22,7 @@
 #include "ai/game_info.hpp"
 #include "ai/actions.hpp"
 #include "units/formula_manager.hpp"
+#include "units/unit.hpp"
 #include "log.hpp"
 #include "menu_events.hpp" // for fallback_ai_to_human_exception
 

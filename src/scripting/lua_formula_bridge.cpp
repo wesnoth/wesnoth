@@ -27,6 +27,7 @@
 
 #include "resources.hpp"
 #include "units/map.hpp"
+#include "units/unit.hpp"
 
 static const char formulaKey[] = "formula";
 

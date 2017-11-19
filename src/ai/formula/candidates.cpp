@@ -22,6 +22,7 @@
 #include "game_board.hpp"
 #include "log.hpp"
 #include "resources.hpp"
+#include "units/unit.hpp"
 
 static lg::log_domain log_formula_ai("ai/engine/fai");
 #define ERR_AI LOG_STREAM(err, log_formula_ai)

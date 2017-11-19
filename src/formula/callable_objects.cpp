@@ -19,7 +19,9 @@
 #include "map/map.hpp"
 #include "display_context.hpp"
 #include "team.hpp"
+#include "units/attack_type.hpp"
 #include "units/formula_manager.hpp"
+#include "units/unit.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_scripting_formula("scripting/formula");
@@ -62,6 +64,11 @@ void location_callable::serialize_to_string(std::string& str) const
 	std::ostringstream s;
 	s << "loc(" << (loc_.wml_x()) << "," << (loc_.wml_y()) << ")";
 	str += s.str();
+}
+
+attack_type_callable::attack_type_callable(const attack_type& attack) : att_(attack.shared_from_this())
+{
+	type_ = ATTACK_TYPE_C;
 }
 
 variant attack_type_callable::get_value(const std::string& key) const
@@ -149,6 +156,11 @@ int attack_type_callable::do_compare(const formula_callable* callable) const
 	}
 
 	return att_->weapon_specials().compare(att_callable->att_->weapon_specials());
+}
+
+unit_callable::unit_callable(const unit& u) : loc_(u.get_location()), u_(u)
+{
+	type_ = UNIT_C;
 }
 
 variant unit_callable::get_value(const std::string& key) const

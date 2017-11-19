@@ -6,6 +6,8 @@
 #include "game_board.hpp"
 #include "map/map.hpp"
 #include "pathutils.hpp"
+#include "units/types.hpp"
+#include "units/unit.hpp"
 
 namespace wfl {
 
