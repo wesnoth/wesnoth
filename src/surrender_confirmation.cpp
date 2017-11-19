@@ -17,14 +17,9 @@
 #include "video.hpp"
 #include "resources.hpp"
 #include "game_board.hpp"
-#include "game_events/pump.hpp"
 #include "play_controller.hpp"
 #include "display.hpp"
-#include "units/unit.hpp"
-#include "units/udisplay.hpp"
-#include "units/map.hpp"
-#include "whiteboard/manager.hpp"
-#include "actions/vision.hpp"
+#include "team.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/window.hpp"
 #include <boost/range/adaptor/reversed.hpp>
@@ -43,29 +38,13 @@ bool surrender_confirmation::surrender()
 				return false;
 			} else {
 				display& disp = resources::controller->get_display();
-				unit_map& units = resources::gameboard->units();
+				std::vector<team>& teams = resources::gameboard->teams();
 				int viewing_side = disp.viewing_side();
-				for(unit_map::iterator i = units.begin(); i != units.end(); ++i) {
+				for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
 					if(i->side() == viewing_side) {
-						const map_location loc = (*i).get_location();
-						resources::controller->pump().fire("last_breath", loc, loc);
-						if (i.valid()) {
-							unit_display::unit_die(loc, *i);
-						}
-
-						if (i.valid()) {
-							i->set_hitpoints(0);
-						}
-						resources::controller->pump().fire("die", loc, loc);
-						if (i.valid()) {
-							resources::gameboard->units().erase(i);
-						}
-
+						(*i).set_defeat_condition(team::DEFEAT_CONDITION::ALWAYS);
 					}
 				}
-				resources::screen->redraw_minimap();
-				resources::whiteboard->on_kill_unit();
-				actions::recalculate_fog(viewing_side);
 				resources::controller->check_victory();
 			}
 			open_ = false;
