@@ -681,3 +681,16 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_shroud, /*child*/, use_undo, /*show*/, /*e
 	return true;
 }
 
+SYNCED_COMMAND_HANDLER_FUNCTION(surrender, child, /*use_undo*/, /*show*/, /*error_handler*/)
+{
+	std::vector<team>& teams = resources::gameboard->teams();
+	int side = child.get("side_number")->to_int();
+	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
+		if(i->side() == side) {
+			(*i).set_defeat_condition(team::DEFEAT_CONDITION::ALWAYS);
+		}
+	}
+	resources::controller->check_victory();
+	return true;
+}
+

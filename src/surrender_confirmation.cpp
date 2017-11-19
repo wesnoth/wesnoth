@@ -18,6 +18,9 @@
 #include "resources.hpp"
 #include "game_board.hpp"
 #include "play_controller.hpp"
+#include "replay_helper.hpp"
+#include "synced_commands.hpp"
+#include "synced_context.hpp"
 #include "display.hpp"
 #include "team.hpp"
 #include "gui/dialogs/message.hpp"
@@ -37,15 +40,7 @@ bool surrender_confirmation::surrender()
 				open_ = false;
 				return false;
 			} else {
-				display& disp = resources::controller->get_display();
-				std::vector<team>& teams = resources::gameboard->teams();
-				int viewing_side = disp.viewing_side();
-				for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
-					if(i->side() == viewing_side) {
-						(*i).set_defeat_condition(team::DEFEAT_CONDITION::ALWAYS);
-					}
-				}
-				resources::controller->check_victory();
+				synced_context::run_and_throw("surrender", replay_helper::get_init_side());
 			}
 			open_ = false;
 			return true;
@@ -55,7 +50,6 @@ bool surrender_confirmation::surrender()
 
 	return true;
 }
-
 
 bool surrender_confirmation::show_prompt(const std::string& message)
 {
