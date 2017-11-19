@@ -11,11 +11,12 @@
    See the COPYING file for more details.
 */
 
-#include "game_board.hpp"
 #include "actions/undo_dismiss_action.hpp"
+#include "game_board.hpp"
+#include "replay.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "replay.hpp"
+#include "units/unit.hpp"
 
 namespace actions
 {
