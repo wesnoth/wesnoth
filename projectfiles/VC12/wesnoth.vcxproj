@@ -3251,6 +3251,12 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Units\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Units\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\units\make.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Units\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Units\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Units\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Units\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\units\map.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Units\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Units\</ObjectFileName>
@@ -4010,6 +4016,7 @@
     <ClInclude Include="..\..\src\units\frame_private.hpp" />
     <ClInclude Include="..\..\src\units\helper.hpp" />
     <ClInclude Include="..\..\src\units\id.hpp" />
+    <ClInclude Include="..\..\src\units\make.hpp" />
     <ClInclude Include="..\..\src\units\map.hpp" />
     <ClInclude Include="..\..\src\units\ptr.hpp" />
     <ClInclude Include="..\..\src\units\race.hpp" />
