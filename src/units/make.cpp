@@ -12,8 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "units/ptr.hpp"
-#include "units/unit.hpp"
+#include "units/make.hpp"
 
 unit_ptr make_unit_ptr(const config& cfg, bool use_traits, const vconfig* vcfg){
     return { new unit(cfg, use_traits, vcfg) };
