@@ -30,7 +30,6 @@
 
 #include "display_context.hpp"
 #include "units/map.hpp"
-#include "units/unit.hpp"
 #include "filter_context.hpp"
 #include "variable.hpp"
 
@@ -145,17 +144,13 @@ public:
 	/// Determine if *this matches @a filter at its current location.
 	/// (Only use for units currently on the map; otherwise use the overload
 	/// that takes a location, possibly with a null location.)
-	bool matches(const unit & u) const {
-		return impl_.matches(unit_filter_impl::unit_filter_args{u, u.get_location(), nullptr, fc_, use_flat_tod_});
-	}
+	bool matches(const unit & u) const;
 
 	bool matches(const unit & u, const map_location & loc, const unit & u2) const {
 		return impl_.matches(unit_filter_impl::unit_filter_args{u, loc, &u2, fc_, use_flat_tod_});
 	}
 
-	bool matches(const unit & u, const unit & u2) const {
-		return impl_.matches(unit_filter_impl::unit_filter_args{u, u.get_location(), &u2, fc_, use_flat_tod_});
-	}
+	bool matches(const unit & u, const unit & u2) const;
 
 	bool operator()(const unit & u, const map_location & loc) const {
 		return matches(u, loc);
@@ -173,22 +168,7 @@ public:
 		return matches(u, u2);
 	}
 
-	std::vector<const unit *> all_matches_on_map(const map_location* loc = nullptr, const unit* other_unit = nullptr) const
-	{
-		std::vector<const unit *> ret;
-		int max_matches = max_matches_;
-
-		for (const unit & u : fc_->get_disp_context().units()) {
-			if (impl_.matches(unit_filter_impl::unit_filter_args{u, loc ? *loc : u.get_location(), other_unit, fc_, use_flat_tod_})) {
-				if(max_matches == 0) {
-					return ret;
-				}
-				--max_matches;
-				ret.push_back(&u);
-			}
-		}
-		return ret;
-	}
+	std::vector<const unit *> all_matches_on_map(const map_location* loc = nullptr, const unit* other_unit = nullptr) const;
 
 	std::vector<const unit*> all_matches_at(const map_location& loc) const {
 		return all_matches_on_map(&loc);
@@ -202,15 +182,7 @@ public:
 		return all_matches_on_map(&loc, &u);
 	}
 
-	unit_const_ptr first_match_on_map() const {
-		const unit_map & units = fc_->get_disp_context().units();
-		for(unit_map::const_iterator u = units.begin(); u != units.end(); u++) {
-			if (matches(*u, u->get_location())) {
-				return u.get_shared_ptr();
-			}
-		}
-		return unit_const_ptr();
-	}
+	unit_const_ptr first_match_on_map() const;
 
 	config to_config() const {
 		return cfg_.get_config();

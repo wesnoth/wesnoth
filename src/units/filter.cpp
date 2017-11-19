@@ -44,6 +44,41 @@ static lg::log_domain log_config("config");
 
 using namespace unit_filter_impl;
 
+bool unit_filter::matches(const unit& u) const {
+	return impl_.matches(unit_filter_impl::unit_filter_args{u, u.get_location(), nullptr, fc_, use_flat_tod_});
+}
+
+bool unit_filter::matches(const unit & u, const unit & u2) const {
+	return impl_.matches(unit_filter_impl::unit_filter_args{u, u.get_location(), &u2, fc_, use_flat_tod_});
+}
+
+std::vector<const unit *> unit_filter::all_matches_on_map(const map_location* loc, const unit* other_unit) const
+{
+	std::vector<const unit *> ret;
+	int max_matches = max_matches_;
+
+	for (const unit & u : fc_->get_disp_context().units()) {
+		if (impl_.matches(unit_filter_impl::unit_filter_args{u, loc ? *loc : u.get_location(), other_unit, fc_, use_flat_tod_})) {
+			if(max_matches == 0) {
+				return ret;
+			}
+			--max_matches;
+			ret.push_back(&u);
+		}
+	}
+	return ret;
+}
+
+unit_const_ptr unit_filter::first_match_on_map() const {
+	const unit_map & units = fc_->get_disp_context().units();
+	for(unit_map::const_iterator u = units.begin(); u != units.end(); u++) {
+		if (matches(*u, u->get_location())) {
+			return u.get_shared_ptr();
+		}
+	}
+	return unit_const_ptr();
+}
+
 namespace {
 
 struct unit_filter_xy : public unit_filter_base
