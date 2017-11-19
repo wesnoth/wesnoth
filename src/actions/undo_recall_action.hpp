@@ -16,7 +16,6 @@
 #include "undo_action.hpp"
 #include "shroud_clearing_action.hpp"
 #include "units/ptr.hpp"
-#include "units/unit.hpp"
 
 namespace actions
 {
@@ -31,19 +30,8 @@ struct recall_action : undo_action, shroud_clearing_action
 
 
 	recall_action(const unit_const_ptr recalled, const map_location& loc,
-	              const map_location& from, int orig_village_owner, bool time_bonus)
-		: undo_action()
-		, shroud_clearing_action(recalled, loc, orig_village_owner, time_bonus)
-		, id(recalled->id())
-		, recall_from(from)
-	{
-	}
-	recall_action(const config & cfg, const map_location & from)
-		: undo_action(cfg)
-		, shroud_clearing_action(cfg)
-		, id(cfg["id"])
-		, recall_from(from)
-	{}
+				  const map_location& from, int orig_village_owner, bool time_bonus);
+	recall_action(const config & cfg, const map_location & from);
 	virtual const char* get_type() const { return "recall"; }
 	virtual ~recall_action() {}
 
