@@ -16,7 +16,6 @@
 #include "undo_action.hpp"
 #include "shroud_clearing_action.hpp"
 #include "units/ptr.hpp"
-#include "units/unit.hpp"
 
 namespace actions
 {
@@ -33,14 +32,7 @@ struct move_action : undo_action, shroud_clearing_action
 	move_action(const unit_const_ptr moved,
 	            const std::vector<map_location>::const_iterator & begin,
 	            const std::vector<map_location>::const_iterator & end,
-	            int sm, int timebonus, int orig, const map_location::DIRECTION dir)
-		: undo_action()
-		, shroud_clearing_action(moved, begin, end, orig, timebonus != 0)
-		, starting_moves(sm)
-		, starting_dir(dir == map_location::NDIRECTIONS ? moved->facing() : dir)
-		, goto_hex(moved->get_goto())
-	{
-	}
+	            int sm, int timebonus, int orig, const map_location::DIRECTION dir);
 	move_action(const config & cfg, const config & unit_cfg,
 	            int sm, const map_location::DIRECTION dir)
 		: undo_action(cfg)
