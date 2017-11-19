@@ -15,7 +15,6 @@
 
 #include "undo_action.hpp"
 #include "units/make.hpp"
-#include "units/ptr.hpp"
 
 namespace actions
 {
