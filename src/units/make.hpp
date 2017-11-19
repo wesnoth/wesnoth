@@ -14,7 +14,6 @@
 
 #include "units/race.hpp"
 #include "units/ptr.hpp"
-#include "units/unit.hpp"
 
 class config;
 class unit_type;
