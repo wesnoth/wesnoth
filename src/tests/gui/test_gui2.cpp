@@ -548,7 +548,7 @@ struct dialog_tester<addon_manager>
 	}
 	addon_manager* create()
 	{
-		addons_client client(video, "localhost:15999");
+		addons_client client("localhost:15999");
 		return new addon_manager(client);
 	}
 };

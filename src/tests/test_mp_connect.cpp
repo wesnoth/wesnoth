@@ -54,7 +54,7 @@ struct mp_connect_fixture {
 		config_manager()
 	{
 
-		config_manager.reset(new game_config_manager(cmdline_opts, test_utils::get_fake_display(1000,1000).video(), false));
+		config_manager.reset(new game_config_manager(cmdline_opts, false));
 		config_manager->init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
 		state.reset(new saved_game());
