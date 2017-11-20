@@ -115,8 +115,6 @@ struct wml_exception
 
 	/**
 	 * Shows the error in a dialog.
-	 *
-	 * @param video          Target for rendering the UI message.
 	 */
 	void show();
 private:

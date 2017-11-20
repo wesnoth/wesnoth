@@ -73,8 +73,6 @@ void show_transient_message(const std::string& title,
  * This shows a dialog with a short message which can be dismissed with a
  * single click.
  *
- * @param video               The video which contains the surface to draw
- *                            upon.
  * @param message             The message to show in the dialog.
  * @param image               An image to show in the dialog.
  * @param message_use_markup  Use markup for the message?

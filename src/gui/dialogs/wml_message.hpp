@@ -237,7 +237,6 @@ struct wml_message_portrait
 /**
  *  Helper function to show a portrait.
  *
- *  @param video                  The display variable.
  *  @param title                  The title of the dialog.
  *  @param message                The message to show.
  *  @param left                   Portrait to show on the left.

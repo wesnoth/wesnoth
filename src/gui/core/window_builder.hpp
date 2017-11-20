@@ -31,7 +31,6 @@ class window;
 /**
  * Builds a window.
  *
- * @param video                   The frame buffer to draw upon.
  * @param type                    The type id string of the window, this window
  *                                must be registered at startup.
  */

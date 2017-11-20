@@ -160,8 +160,6 @@ public:
 	/**
 	 * Shows the window.
 	 *
-	 * @param video               The video which contains the surface to draw
-	 *                            upon.
 	 * @param auto_close_time     The time in ms after which the dialog will
 	 *                            automatically close, if 0 it doesn't close.
 	 *                            @note the timeout is a minimum time and
@@ -391,8 +389,6 @@ private:
 	 * Every dialog shows it's own kind of window, this function should return
 	 * the window to show.
 	 *
-	 * @param video               The video which contains the surface to draw
-	 *                            upon.
 	 * @returns                   The window to show.
 	 */
 	window* build_window() const;
