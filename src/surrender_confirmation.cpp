@@ -16,13 +16,10 @@
 #include "gettext.hpp"
 #include "video.hpp"
 #include "resources.hpp"
-#include "game_board.hpp"
 #include "play_controller.hpp"
 #include "replay_helper.hpp"
 #include "synced_commands.hpp"
 #include "synced_context.hpp"
-#include "display.hpp"
-#include "team.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/window.hpp"
 #include <boost/range/adaptor/reversed.hpp>

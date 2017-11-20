@@ -226,6 +226,12 @@ void replay::add_start()
 	cmd.add_child("start");
 }
 
+void replay::add_surrender()
+{
+	config& cmd = add_command();
+	cmd.add_child("surrender");
+}
+
 void replay::add_countdown_update(int value, int team)
 {
 	config& cmd = add_command();
@@ -834,6 +840,10 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			DBG_REPLAY << "got an dependent action name = " << child_name <<"\n";
 			resources::recorder->revert_action();
 			return REPLAY_FOUND_DEPENDENT;
+		}
+		else if ((*cfg).has_child("surrender"))
+		{
+			return REPLAY_FOUND_END_TURN;
 		}
 		else
 		{

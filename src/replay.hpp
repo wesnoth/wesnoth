@@ -55,6 +55,7 @@ public:
 
 
 	void add_start();
+	void add_surrender();
 	void add_countdown_update(int value,int team);
 
 	void add_synced_command(const std::string& name, const config& command);
