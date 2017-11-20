@@ -18,6 +18,20 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 # use our own version of FindBoost.cmake and other Find* scripts
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
+# function to remove a flag from a variable
+function(RemoveFlag VAR SCOPE FLAG)
+	MESSAGE("Removing ${FLAG} flag from ${VAR}")
+	separate_arguments(${VAR})
+	list(REMOVE_ITEM ${VAR} ${FLAG})
+	string(REPLACE ";" " " ${VAR} "${${VAR}}")
+	
+	if("${SCOPE}" STREQUAL "CACHE")
+		set(${VAR} "${${VAR}}" CACHE STRING "" FORCE)
+	elseif("${SCOPE}" STREQUAL "PARENT")
+		set(${VAR} "${${VAR}}" PARENT_SCOPE)
+	endif()
+endfunction()
+
 #
 # Options
 #
@@ -483,28 +497,15 @@ if(X11_FOUND)
 	add_definitions(-D_X11)
 endif(X11_FOUND)
 
-# -NDEBUG is automatically added to all release build types, so manually remove
-# this define from the related variables
-MESSAGE ("removing NDEBUG flag from CMAKE_CXX_FLAGS_RELWITHDEBINFO")
-separate_arguments(CMAKE_CXX_FLAGS_RELWITHDEBINFO)
-list(REMOVE_ITEM CMAKE_CXX_FLAGS_RELWITHDEBINFO "-DNDEBUG")
-string(REPLACE ";" " " CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
-set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO}" CACHE STRING "removed NDEBUG flag" FORCE)
-MESSAGE ("removing NDEBUG flag from CMAKE_C_FLAGS_RELWITHDEBINFO")
-separate_arguments(CMAKE_C_FLAGS_RELWITHDEBINFO)
-list(REMOVE_ITEM CMAKE_C_FLAGS_RELWITHDEBINFO "-DNDEBUG")
-string(REPLACE ";" " " CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO}")
-set(CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO}" CACHE STRING "removed NDEBUG flag" FORCE)
-MESSAGE ("removing NDEBUG flag from CMAKE_CXX_FLAGS_MINSIZEREL")
-separate_arguments(CMAKE_CXX_FLAGS_MINSIZEREL)
-list(REMOVE_ITEM CMAKE_CXX_FLAGS_MINSIZEREL "-DNDEBUG")
-string(REPLACE ";" " " CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL}")
-set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL}" CACHE STRING "removed NDEBUG flag" FORCE)
-MESSAGE ("removing NDEBUG flag from CMAKE_C_FLAGS_MINSIZEREL")
-separate_arguments(CMAKE_C_FLAGS_MINSIZEREL)
-list(REMOVE_ITEM CMAKE_C_FLAGS_MINSIZEREL "-DNDEBUG")
-string(REPLACE ";" " " CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}")
-set(CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}" CACHE STRING "removed NDEBUG flag" FORCE)
+# -DNDEBUG is automatically added to all release build types, so manually remove this define from the related variables
+RemoveFlag(CMAKE_CXX_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG")
+RemoveFlag(CMAKE_C_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG")
+RemoveFlag(CMAKE_CXX_FLAGS_MINSIZEREL CACHE "-DNDEBUG")
+RemoveFlag(CMAKE_C_FLAGS_MINSIZEREL CACHE "-DNDEBUG")
+
+# -rdynamic is automatically added, but we don't need it, and it increases the executable size
+RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS PARENT "-rdynamic")
+RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS PARENT "-rdynamic")
 
 # #
 # Start determining options for Release build
