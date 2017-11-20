@@ -569,7 +569,7 @@ struct dialog_tester<campaign_selection>
 {
 	saved_game state;
 	ng::create_engine ng;
-	dialog_tester() : state(config {"campaign_type", "scenario"}), ng(test_utils::get_fake_display(-1, -1).video(), state)
+	dialog_tester() : state(config {"campaign_type", "scenario"}), ng(state)
 	{
 	}
 	campaign_selection* create()
@@ -874,13 +874,12 @@ template<>
 struct dialog_tester<mp_create_game>
 {
 	saved_game state;
-	ng::create_engine engine;
-	dialog_tester() : state(config {"campaign_type", "multiplayer"}), engine(test_utils::get_fake_display(-1, -1).video(), state)
+	dialog_tester() : state(config {"campaign_type", "multiplayer"})
 	{
 	}
 	mp_create_game* create()
 	{
-		return new mp_create_game(main_config, engine);
+		return new mp_create_game(main_config, state, true, nullptr);
 	}
 };
 
@@ -1150,7 +1149,7 @@ struct dialog_tester<sp_options_configure>
 	saved_game state;
 	ng::create_engine create_eng;
 	ng::configure_engine config_eng;
-	dialog_tester() : create_eng(test_utils::get_fake_display(-1, -1).video(), state)
+	dialog_tester() : create_eng(state)
 		, config_eng(create_eng.get_state()) {}
 	sp_options_configure* create()
 	{
