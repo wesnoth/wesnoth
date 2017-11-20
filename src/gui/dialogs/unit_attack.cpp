@@ -89,7 +89,7 @@ unit_attack::unit_attack(const unit_map::iterator& attacker_itor,
 void unit_attack::damage_calc_callback(window& window)
 {
 	const size_t index = find_widget<listbox>(&window, "weapon_list", false).get_selected_row();
-	attack_predictions::display(weapons_[index], *attacker_itor_, *defender_itor_, window.video());
+	attack_predictions::display(weapons_[index], *attacker_itor_, *defender_itor_);
 }
 
 void unit_attack::pre_show(window& window)

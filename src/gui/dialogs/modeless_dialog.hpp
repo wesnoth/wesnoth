@@ -59,8 +59,6 @@ public:
 	/**
 	 * Shows the window.
 	 *
-	 * @param video               The video which contains the surface to draw
-	 *                            upon.
 	 * @param allow_interaction   Does the dialog allow interaction?
 	 *                            * true a non modal window is shown
 	 *                            * false a tooltip window is shown
@@ -70,8 +68,7 @@ public:
 	 *                            there's no guarantee about how fast it closes
 	 *                            after the minimum.
 	 */
-	void show(CVideo& video,
-			  const bool allow_interaction = false,
+	void show(const bool allow_interaction = false,
 			  const unsigned auto_close_time = 0);
 
 
@@ -102,11 +99,9 @@ private:
 	 * Every dialog shows it's own kind of window, this function should return
 	 * the window to show.
 	 *
-	 * @param video               The video which contains the surface to draw
-	 *                            upon.
 	 * @returns                   The window to show.
 	 */
-	window* build_window(CVideo& video) const;
+	window* build_window() const;
 
 	/**
 	 * Actions to be taken directly after the window is build.

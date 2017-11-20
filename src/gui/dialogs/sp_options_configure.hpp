@@ -34,7 +34,7 @@ public:
 	 * Execute function. We only want to show the dialog if the campaign has options or if
 	 * there are active mods and at least one of those mods has custom options.
 	 */
-	static bool execute(ng::create_engine& create_engine, ng::configure_engine& config_engine, CVideo& video)
+	static bool execute(ng::create_engine& create_engine, ng::configure_engine& config_engine)
 	{
 		// Check campaign options.
 		const auto& campaign_mods = create_engine.current_level().data().child_range("options");
@@ -66,7 +66,7 @@ public:
 			return true;
 		}
 
-		return sp_options_configure(create_engine, config_engine).show(video);
+		return sp_options_configure(create_engine, config_engine).show();
 	}
 
 private:

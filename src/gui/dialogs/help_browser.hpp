@@ -30,10 +30,7 @@ class help_browser : public modal_dialog
 public:
 	help_browser();
 
-	static void display(CVideo& video)
-	{
-		help_browser().show(video);
-	}
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(help_browser)
 
 private:
 	std::string initial_topic_;

@@ -34,10 +34,7 @@ public:
 	 *
 	 * See @ref modal_dialog for more information.
      */
-	static void display(CVideo& video)
-	{
-		game_cache_options().show(video);
-	}
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(game_cache_options)
 
 private:
 	std::string cache_path_;
@@ -46,10 +43,10 @@ private:
 	button* purge_button_;
 	label* size_label_;
 
-	void clean_cache_callback(CVideo& video);
+	void clean_cache_callback();
 	bool clean_cache();
 
-	void purge_cache_callback(CVideo& video);
+	void purge_cache_callback();
 	bool purge_cache();
 
 	void copy_to_clipboard_callback();

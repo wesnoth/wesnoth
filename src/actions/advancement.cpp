@@ -77,7 +77,7 @@ namespace
 		if (previews.size() > 1 || always_display) {
 			gui2::dialogs::unit_advance dlg(previews, num_real_advances);
 
-			dlg.show(CVideo::get_singleton());
+			dlg.show();
 
 			if (dlg.get_retval() == gui2::window::OK) {
 				return dlg.get_selected_index();

@@ -209,7 +209,7 @@ void show_unit_list(display& gui)
 		unit_list.push_back(i.get_shared_ptr());
 	}
 
-	if(unit_list::execute(unit_list, scroll_to, gui.video())) {
+	if(unit_list::execute(unit_list, scroll_to)) {
 		gui.scroll_to_tile(scroll_to, display::WARP);
 		gui.select_hex(scroll_to);
 	}

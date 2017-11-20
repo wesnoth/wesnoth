@@ -37,14 +37,14 @@ class game_stats : public modal_dialog
 public:
 	game_stats(const display_context& board, const int viewing_team, int& selected_index);
 
-	static bool execute(game_board& board, const int viewing_team, int& selected_index, CVideo& video)
+	static bool execute(game_board& board, const int viewing_team, int& selected_index)
 	{
 		if(std::all_of(board.teams().begin(), board.teams().end(), [](team& team) { return team.hidden(); })) {
-			show_transient_message(video, "", _("No visible sides found."));
+			show_transient_message("", _("No visible sides found."));
 			return false;
 		}
 
-		return game_stats(board, viewing_team, selected_index).show(video);
+		return game_stats(board, viewing_team, selected_index).show();
 	}
 
 private:

@@ -74,7 +74,7 @@ public:
 	/** The display function -- see @ref modal_dialog for more information. */
 	static void display(CVideo& video, const config& game_cfg, const preferences::PREFERENCE_VIEW initial_view = preferences::VIEW_DEFAULT)
 	{
-		preferences_dialog(video, game_cfg, initial_view).show(video);
+		preferences_dialog(video, game_cfg, initial_view).show();
 	}
 
 	typedef std::vector<const hotkey::hotkey_command*> t_visible_hotkeys;
@@ -106,7 +106,7 @@ private:
 	/** Callback for selection changes */
 	void on_page_select(window& window);
 	void on_tab_select(window& window);
-	void on_advanced_prefs_list_select(listbox& tree, window& window);
+	void on_advanced_prefs_list_select(listbox& tree);
 
 	/** Special callback functions */
 	void handle_res_select(window& window);

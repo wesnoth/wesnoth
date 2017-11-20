@@ -798,7 +798,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		 * changes such as those dictated by window resolution.
 		 */
 		while(dlg.get_retval() == gui2::dialogs::title_screen::REDRAW_BACKGROUND) {
-			dlg.show(game->video());
+			dlg.show();
 		}
 
 		switch(dlg.get_retval()) {
@@ -833,7 +833,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			game->start_editor();
 			break;
 		case gui2::dialogs::title_screen::SHOW_ABOUT:
-			gui2::dialogs::end_credits::display(game->video());
+			gui2::dialogs::end_credits::display();
 			break;
 		case gui2::dialogs::title_screen::LAUNCH_GAME:
 			game->launch_game(should_reload);

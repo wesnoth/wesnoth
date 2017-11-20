@@ -89,7 +89,7 @@ private:
 	void update_tip(window& window, const bool previous);
 
 	/** Shows the debug clock. */
-	void show_debug_clock_window(CVideo& video);
+	void show_debug_clock_window();
 };
 
 } // namespace dialogs

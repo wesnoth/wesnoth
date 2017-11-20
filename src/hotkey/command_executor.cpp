@@ -60,9 +60,9 @@ void make_screenshot(const std::string& name, CVideo& video, const TFunc& func)
 	filename = filesystem::get_next_filename(filename, ext);
 	const bool res = func(filename, video);
 	if (res) {
-		gui2::dialogs::screenshot_notification::display(filename, video);
+		gui2::dialogs::screenshot_notification::display(filename);
 	} else {
-		gui2::show_error_message(video,
+		gui2::show_error_message(
 			_("Screenshot creation failed.\n\n"
 			"Make sure there is enough space on the drive holding Wesnoth’s player resource files and that file permissions are set up correctly."));
 	}
@@ -369,7 +369,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	{
 		SDL_Rect pos {xloc, yloc, 1, 1};
 		gui2::dialogs::drop_down_menu mmenu(pos, items, -1, true, false); // TODO: last value should be variable
-		mmenu.show(gui.video());
+		mmenu.show();
 		if(mmenu.get_retval() == gui2::window::OK) {
 			res = mmenu.selected_item();
 		}
@@ -677,7 +677,7 @@ CVideo& command_executor_default::get_video()
 void command_executor_default::lua_console()
 {
 	if (get_display().in_game()) {
-		gui2::dialogs::lua_interpreter::display(get_video(), gui2::dialogs::lua_interpreter::GAME);
+		gui2::dialogs::lua_interpreter::display(gui2::dialogs::lua_interpreter::GAME);
 	} else {
 		command_executor::lua_console();
 	}
@@ -686,7 +686,7 @@ void command_executor_default::lua_console()
 
 void command_executor::lua_console()
 {
-	gui2::dialogs::lua_interpreter::display(get_video(), gui2::dialogs::lua_interpreter::APP);
+	gui2::dialogs::lua_interpreter::display(gui2::dialogs::lua_interpreter::APP);
 }
 
 void command_executor_default::zoom_in()

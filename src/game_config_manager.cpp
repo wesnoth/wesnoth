@@ -196,8 +196,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 					gui2::dialogs::wml_error::display(
 						_("Error validating data core."),
 						_("Found a core without id attribute.")
-						+ '\n' +  _("Skipping the core."),
-						video_);
+						+ '\n' +  _("Skipping the core."));
 				});
 				continue;
 			}
@@ -207,8 +206,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 						_("Error validating data core."),
 						_("Core ID: ") + id
 						+ '\n' + _("The ID is already in use.")
-						+ '\n' + _("Skipping the core."),
-						video_);
+						+ '\n' + _("Skipping the core."));
 				});
 				continue;
 			}
@@ -221,8 +219,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 						_("Core ID: ") + id
 						+ '\n' + _("Core Path: ") + path
 						+ '\n' + _("File not found.")
-						+ '\n' + _("Skipping the core."),
-						video_);
+						+ '\n' + _("Skipping the core."));
 				});
 				continue;
 			}
@@ -244,8 +241,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 					_("Error loading core data."),
 					_("Core ID: ") + preferences::core_id()
 					+ '\n' + _("Error loading the core with named id.")
-					+ '\n' + _("Falling back to the default core."),
-					video_);
+					+ '\n' + _("Falling back to the default core."));
 			});
 			preferences::set_core_id("default");
 		}
@@ -256,8 +252,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 				gui2::dialogs::wml_error::display(
 					_("Error loading core data."),
 					_("Can't locate the default core.")
-					+ '\n' + _("The game will now exit."),
-					video_);
+					+ '\n' + _("The game will now exit."));
 			});
 			throw;
 		}
@@ -318,14 +313,14 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 			events::call_in_main_thread([&]() {
 				gui2::dialogs::wml_error::display(
 					_("Error loading custom game configuration files. The game will try without loading add-ons."),
-					e.message, video_);
+					e.message);
 			});
 			load_game_config(force_reload, classification);
 		} else if (preferences::core_id() != "default") {
 			events::call_in_main_thread([&]() {
 				gui2::dialogs::wml_error::display(
 					_("Error loading custom game configuration files. The game will fallback to the default core files."),
-					e.message, video_);
+					e.message);
 			});
 			preferences::set_core_id("default");
 			game_config::no_addons = false;
@@ -334,7 +329,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 			events::call_in_main_thread([&]() {
 				gui2::dialogs::wml_error::display(
 					_("Error loading default core game configuration files. The game will now exit."),
-					e.message, video_);
+					e.message);
 			});
 			throw;
 		}
@@ -470,7 +465,7 @@ void game_config_manager::load_addons_cfg()
 
 		const std::string& report = utils::join(error_log, "\n\n");
 		events::call_in_main_thread([&]() {
-			gui2::dialogs::wml_error::display(msg1, msg2, error_addons, report, video_);
+			gui2::dialogs::wml_error::display(msg1, msg2, error_addons, report);
 		});
 	}
 }

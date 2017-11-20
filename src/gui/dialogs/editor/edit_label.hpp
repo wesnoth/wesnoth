@@ -41,18 +41,8 @@ public:
 					   color_t& color,
 					   std::string& category);
 
-	/** The execute function see @ref modal_dialog for more information. */
-	static bool execute(std::string& text,
-						bool& immutable,
-						bool& visible_fog,
-						bool& visible_shroud,
-						color_t& color,
-						std::string& category,
-						CVideo& video)
-	{
-		return editor_edit_label(text, immutable, visible_fog, visible_shroud, color, category)
-				.show(video);
-	}
+	/** The execute function. See @ref modal_dialog for more information. */
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(editor_edit_label)
 
 private:
 	color_t& color_store;

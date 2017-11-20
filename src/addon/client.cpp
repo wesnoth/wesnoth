@@ -252,13 +252,13 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 	i18n_symbols["addon_title"] = font::escape_text(info.title);
 
 	if(!check_names_legal(archive_cfg)) {
-		gui2::show_error_message(v_,
+		gui2::show_error_message(
 			vgettext("The add-on <i>$addon_title</i> has an invalid file or directory "
 				"name and cannot be installed.", i18n_symbols));
 		return false;
 	}
 	if(!check_case_insensitive_duplicates(archive_cfg)){
-		gui2::show_error_message(v_,
+		gui2::show_error_message(
 			vgettext("The add-on <i>$addon_title</i> has file or directory names "
 				"with case conflicts. This may cause problems.", i18n_symbols));
 	}
@@ -315,7 +315,7 @@ bool addons_client::try_fetch_addon(const addon_info & addon)
 		)) {
 		const std::string& server_error = get_last_server_error();
 		if(!server_error.empty()) {
-			gui2::show_error_message(v_,
+			gui2::show_error_message(
 				_("The server responded with an error:") + "\n" + server_error);
 		}
 		return false;
@@ -365,7 +365,7 @@ addons_client::install_result addons_client::do_resolve_addon_dependencies(const
 			broken_deps_report += "\n    " + font::unicode_bullet + " " + make_addon_title(broken_dep_id);
 		}
 
-		if(gui2::show_message(v_, _("Broken Dependencies"), broken_deps_report, gui2::dialogs::message::yes_no_buttons) != gui2::window::OK) {
+		if(gui2::show_message(_("Broken Dependencies"), broken_deps_report, gui2::dialogs::message::yes_no_buttons) != gui2::window::OK) {
 			result.outcome = install_outcome::abort;
 			return result; // canceled by user
 		}
@@ -384,7 +384,7 @@ addons_client::install_result addons_client::do_resolve_addon_dependencies(const
 		}
 
 		gui2::dialogs::install_dependencies dlg(options);
-		bool cont = dlg.show(v_);
+		bool cont = dlg.show();
 		if(!cont) {
 			return result; // the user has chosen to continue without installing anything.
 		}
@@ -412,7 +412,7 @@ addons_client::install_result addons_client::do_resolve_addon_dependencies(const
 			"The following dependencies could not be installed. Do you still wish to continue?",
 			failed_titles.size()) + std::string("\n\n") + utils::bullet_list(failed_titles);
 
-		result.outcome = gui2::show_message(v_, _("Dependencies Installation Failed"), failed_deps_report, gui2::dialogs::message::yes_no_buttons) == gui2::window::OK ? install_outcome::success : install_outcome::abort; // If the user cancels, return abort. Otherwise, return success, since the user chose to ignore the failure.
+		result.outcome = gui2::show_message(_("Dependencies Installation Failed"), failed_deps_report, gui2::dialogs::message::yes_no_buttons) == gui2::window::OK ? install_outcome::success : install_outcome::abort; // If the user cancels, return abort. Otherwise, return success, since the user chose to ignore the failure.
 		return result;
 	}
 
@@ -449,7 +449,7 @@ bool addons_client::do_check_before_overwriting_addon(const addon_info& addon)
 	text += utils::bullet_list(extra_items) + "\n\n";
 	text += _("Do you really wish to continue?");
 
-	return gui2::show_message(v_, _("Confirm"), text, gui2::dialogs::message::yes_no_buttons) == gui2::window::OK;
+	return gui2::show_message(_("Confirm"), text, gui2::dialogs::message::yes_no_buttons) == gui2::window::OK;
 }
 
 addons_client::install_result addons_client::install_addon_with_checks(const addons_list& addons, const addon_info& addon)
@@ -550,7 +550,7 @@ void addons_client::wait_for_transfer_done(const std::string& status_message, bo
 		stat_->set_connection_data(*cd);
 	}
 
-	if(!stat_->show(v_)) {
+	if(!stat_->show()) {
 		// Notify the caller chain that the user aborted the operation.
 		throw user_exit();
 	}

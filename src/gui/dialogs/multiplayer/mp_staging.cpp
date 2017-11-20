@@ -238,7 +238,7 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	leader_select.set_active(!saved_game);
 
 	connect_signal_mouse_left_click(leader_select,
-		std::bind(&mp_staging::select_leader_callback, this, std::ref(window), side, std::ref(row_grid)));
+		std::bind(&mp_staging::select_leader_callback, this, side, std::ref(row_grid)));
 
 	//
 	// Team
@@ -374,10 +374,10 @@ void mp_staging::on_team_select(window& window, ng::side_engine_ptr side, menu_b
 	halt = true;
 }
 
-void mp_staging::select_leader_callback(window& window, ng::side_engine_ptr side, grid& row_grid)
+void mp_staging::select_leader_callback(ng::side_engine_ptr side, grid& row_grid)
 {
 	gui2::dialogs::faction_select dlg(side->flg(), side->color_id(), side->index() + 1);
-	dlg.show(window.video());
+	dlg.show();
 
 	if(dlg.get_retval() == window::OK) {
 		update_leader_display(side, row_grid);

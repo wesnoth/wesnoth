@@ -166,7 +166,6 @@ private:
  * Normally the dialog won't have a button only when the text doesn't fit in
  * the dialog and a scrollbar is used the button will be shown.
  *
- * @param video               The video which contains the surface to draw upon.
  * @param title               The title of the dialog.
  * @param message             The message to show in the dialog.
  * @param button_caption      The caption of the close button.
@@ -176,8 +175,7 @@ private:
  * @param message_use_markup  Use markup for the message?
  * @param title_use_markup    Use markup for the title?
  */
-void show_message(CVideo& video,
-				  const std::string& title,
+void show_message(const std::string& title,
 				  const std::string& message,
 				  const std::string& button_caption = "",
 				  const bool auto_close = true,
@@ -190,8 +188,6 @@ void show_message(CVideo& video,
  * @note this function is rather untested, and the API might change in the
  * near future.
  *
- * @param video               The video which contains the surface to draw
- *                            upon.
  * @param title               The title of the dialog.
  * @param message             The message to show in the dialog.
  * @param button_style        The style of the button(s) shown.
@@ -200,8 +196,7 @@ void show_message(CVideo& video,
  *
  * @returns                   The retval of the dialog shown.
  */
-int show_message(CVideo& video,
-				 const std::string& title,
+int show_message(const std::string& title,
 				 const std::string& message,
 				 const dialogs::message::button_style button_style,
 				 bool message_use_markup = false,
@@ -210,13 +205,10 @@ int show_message(CVideo& video,
 /**
  * Shows an error message to the user.
  *
- * @param video               The video which contains the surface to draw
- *                            upon.
  * @param message             The message to show in the dialog.
  * @param message_use_markup  Use markup for the message?
  */
-void show_error_message(CVideo& video,
-						const std::string& message,
+void show_error_message(const std::string& message,
 						bool message_use_markup = false);
 
 } // namespace gui2

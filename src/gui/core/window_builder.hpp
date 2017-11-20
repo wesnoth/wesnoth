@@ -36,7 +36,7 @@ class window;
  * @param type                    The type id string of the window, this window
  *                                must be registered at startup.
  */
-window* build(CVideo& video, const std::string& type);
+window* build(const std::string& type);
 
 /** Contains the info needed to instantiate a widget. */
 struct builder_widget
@@ -231,6 +231,6 @@ private:
 /**
  * Builds a window.
  */
-window* build(CVideo& video, const builder_window::window_resolution* res);
+window* build(const builder_window::window_resolution* res);
 
 } // namespace gui2

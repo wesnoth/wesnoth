@@ -33,10 +33,7 @@ class terrain_layers : public modal_dialog
 public:
 	terrain_layers(display_t& disp, const map_location& loc);
 
-	static void display(display_t& disp, const map_location& loc, CVideo& video)
-	{
-		terrain_layers(disp, loc).show(video);
-	}
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(terrain_layers)
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

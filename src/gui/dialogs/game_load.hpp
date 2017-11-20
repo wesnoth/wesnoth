@@ -37,14 +37,14 @@ class game_load : public modal_dialog
 public:
 	game_load(const config& cache_config, savegame::load_game_metadata& data);
 
-	static bool execute(const config& cache_config, savegame::load_game_metadata& data, CVideo& video)
+	static bool execute(const config& cache_config, savegame::load_game_metadata& data)
 	{
 		if(savegame::get_saves_list().empty()) {
-			gui2::show_transient_message(video, _("No Saved Games"), _("There are no save files to load"));
+			gui2::show_transient_message(_("No Saved Games"), _("There are no save files to load"));
 			return false;
 		}
 
-		return game_load(cache_config, data).show(video);
+		return game_load(cache_config, data).show();
 	}
 
 private:

@@ -27,11 +27,8 @@ class mp_host_game_prompt : public modal_dialog
 public:
 	mp_host_game_prompt();
 
-	/** The execute function see @ref modal_dialog for more information. */
-	static bool execute(CVideo& video)
-	{
-		return mp_host_game_prompt().show(video);
-	}
+	/** The execute function. See @ref modal_dialog for more information. */
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(mp_host_game_prompt)
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

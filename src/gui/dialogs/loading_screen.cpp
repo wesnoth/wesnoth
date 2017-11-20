@@ -220,9 +220,9 @@ void loading_screen::display(CVideo& video, std::function<void()> f)
 	if(current_load || video.faked()) {
 		f();
 	} else if(use_loadingscreen_animation) {
-		loading_screen(f).show(video);
+		loading_screen(f).show();
 	} else {
-		loading_screen(std::function<void()>()).show(video);
+		loading_screen(std::function<void()>()).show();
 		f();
 	}
 }

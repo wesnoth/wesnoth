@@ -26,11 +26,8 @@ class game_delete : public modal_dialog
 public:
 	game_delete();
 
-	/** The execute function see @ref modal_dialog for more information. */
-	static bool execute(CVideo& video)
-	{
-		return game_delete().show(video);
-	}
+	/** The execute function. See @ref modal_dialog for more information. */
+    DEFINE_SIMPLE_EXECUTE_WRAPPER(game_delete)
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

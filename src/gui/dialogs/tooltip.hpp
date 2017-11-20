@@ -36,14 +36,11 @@ namespace tip
  * The tip is a tooltip or a helptip. One type of tip is shown at the same
  * time, opening a second tip closes the first.
  *
- * @param video               The video which contains the surface to draw
- *                            upon.
  * @param window_id           The id of the window used to show the tip.
  * @param message             The message to show in the tip.
  * @param mouse               The position of the mouse.
  */
-void show(CVideo& video,
-		  const std::string& window_id,
+void show(const std::string& window_id,
 		  const t_string& message,
 		  const point& mouse,
 		  const SDL_Rect& source_rect);

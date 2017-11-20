@@ -37,10 +37,7 @@ public:
 	folder_create(std::string& folder_name);
 
 	/** The execute function; see @ref modal_dialog for more information. */
-	static bool execute(std::string& folder_name, CVideo& video)
-	{
-		return folder_create(folder_name).show(video);
-	}
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(folder_create)
 
 private:
 	friend class bookmark_create;
@@ -65,9 +62,9 @@ class bookmark_create
 {
 public:
 	/** The execute function; see @ref modal_dialog for more information. */
-	static bool execute(std::string& bookmark_name, CVideo& video)
+	static bool execute(std::string& bookmark_name)
 	{
-		return folder_create(bookmark_name).enable_bookmark_mode().show(video);
+		return folder_create(bookmark_name).enable_bookmark_mode().show();
 	}
 };
 

@@ -30,10 +30,7 @@ public:
 	mp_connect();
 
 	/** The execute function. See @ref modal_dialog for more information. */
-	static bool execute(CVideo& video)
-	{
-		return mp_connect().show(video);
-	}
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(mp_connect)
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

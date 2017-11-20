@@ -68,11 +68,11 @@ static std::map<std::string, widget_builder_func_t>& builder_widget_lookup()
  * be tuned. This page will describe what can be tuned.
  *
  */
-window* build(CVideo& video, const builder_window::window_resolution* definition)
+window* build(const builder_window::window_resolution* definition)
 {
 	// We set the values from the definition since we can only determine the
 	// best size (if needed) after all widgets have been placed.
-	window* win = new window(video, definition);
+	window* win = new window(definition);
 	assert(win);
 
 	for(const auto& lg : definition->linked_groups) {
@@ -102,10 +102,10 @@ window* build(CVideo& video, const builder_window::window_resolution* definition
 	return win;
 }
 
-window* build(CVideo& video, const std::string& type)
+window* build(const std::string& type)
 {
 	const builder_window::window_resolution& definition = get_window_builder(type);
-	window* window = build(video, &definition);
+	window* window = build(&definition);
 	window->set_id(type);
 	return window;
 }

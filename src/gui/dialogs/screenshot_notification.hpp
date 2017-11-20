@@ -38,10 +38,7 @@ public:
 	 *
 	 * See @ref modal_dialog for more information.
 	 */
-	static void display(const std::string& path, CVideo& video)
-	{
-		screenshot_notification(path).show(video);
-	}
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(screenshot_notification)
 
 private:
 	const std::string path_;

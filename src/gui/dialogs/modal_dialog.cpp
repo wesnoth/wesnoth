@@ -54,9 +54,9 @@ namespace {
 	};
 }
 
-bool modal_dialog::show(CVideo& video, const unsigned auto_close_time)
+bool modal_dialog::show(const unsigned auto_close_time)
 {
-	if(video.faked() && !show_even_without_video_) {
+	if(CVideo::get_singleton().faked() && !show_even_without_video_) {
 		if(!allow_plugin_skip_) {
 			return false;
 		}
@@ -73,7 +73,7 @@ bool modal_dialog::show(CVideo& video, const unsigned auto_close_time)
 		return false;
 	}
 
-	window_.reset(build_window(video));
+	window_.reset(build_window());
 	assert(window_.get());
 
 	post_build(*window_);
@@ -216,9 +216,9 @@ field_label* modal_dialog::register_label(const std::string& id,
 	return field;
 }
 
-window* modal_dialog::build_window(CVideo& video) const
+window* modal_dialog::build_window() const
 {
-	return build(video, window_id());
+	return build(window_id());
 }
 
 void modal_dialog::post_build(window& /*window*/)

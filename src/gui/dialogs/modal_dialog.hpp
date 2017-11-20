@@ -27,7 +27,6 @@ namespace gui2
 {
 namespace dialogs
 {
-
 /**
  * Registers a window.
  *
@@ -41,23 +40,21 @@ namespace dialogs
  *                                the same window so the id doesn't need to be
  *                                unique.
  */
-#define REGISTER_WINDOW(id)                                                    \
-	namespace                                                                  \
-	{                                                                          \
-                                                                               \
-	namespace ns_##id                                                          \
-	{                                                                          \
-                                                                               \
-		struct register_helper                                                \
-		{                                                                      \
-			register_helper()                                                 \
-			{                                                                  \
-				register_window(#id);                                          \
-			}                                                                  \
-		};                                                                     \
-                                                                               \
-		struct register_helper register_helper;                                \
-	}                                                                          \
+#define REGISTER_WINDOW(id)                                                                                            \
+	namespace                                                                                                          \
+	{                                                                                                                  \
+	namespace ns_##id                                                                                                  \
+	{                                                                                                                  \
+		struct register_helper                                                                                         \
+		{                                                                                                              \
+			register_helper()                                                                                          \
+			{                                                                                                          \
+				register_window(#id);                                                                                  \
+			}                                                                                                          \
+		};                                                                                                             \
+                                                                                                                       \
+		struct register_helper register_helper;                                                                        \
+	}                                                                                                                  \
 	}
 
 /**
@@ -79,11 +76,11 @@ namespace dialogs
  *                                the same window so the id doesn't need to be
  *                                unique.
  */
-#define REGISTER_DIALOG2(type, id)                                             \
-	REGISTER_WINDOW(id) const std::string& type::window_id() const             \
-	{                                                                          \
-		static const std::string result(#id);                                  \
-		return result;                                                         \
+#define REGISTER_DIALOG2(type, id)                                                                                     \
+	REGISTER_WINDOW(id) const std::string& type::window_id() const                                                     \
+	{                                                                                                                  \
+		static const std::string result(#id);                                                                          \
+		return result;                                                                                                 \
 	}
 
 /**
@@ -92,6 +89,34 @@ namespace dialogs
  * "Calls" REGISTER_DIALOG2(window_id, window_id)
  */
 #define REGISTER_DIALOG(window_id) REGISTER_DIALOG2(window_id, window_id)
+
+/**
+ * Adds a bare-bones static `display` function to a dialog class that immediately
+ * invokes the dialogs's @ref modal_dialog::show function. If more complex behavior
+ * is desired, the function should be defined manually.
+ *
+ * See the @ref modal_dialog documentation (below) for more info.
+ */
+#define DEFINE_SIMPLE_DISPLAY_WRAPPER(dialog)                                                                          \
+	template<typename... T>                                                                                            \
+	static void display(T&&... args)                                                                                   \
+	{                                                                                                                  \
+		dialog(std::forward<T>(args)...).show();                                                                       \
+	}
+
+/**
+ * Adds a bare-bonesstatic `execute` function to a dialog class that immediately
+ * invokes and return the result of the dialogs's @ref modal_dialog::show function.
+ * If more complex behavior is desired, the function should be defined manually.
+ *
+ * See the @ref modal_dialog documentation (below) for more info.
+ */
+#define DEFINE_SIMPLE_EXECUTE_WRAPPER(dialog)                                                                          \
+	template<typename... T>                                                                                            \
+	static bool execute(T&&... args)                                                                                   \
+	{                                                                                                                  \
+		return dialog(std::forward<T>(args)...).show();                                                                \
+	}
 
 /**
  * Abstract base class for all modal dialogs.
@@ -147,7 +172,7 @@ public:
 	 *
 	 * @returns                   Whether the final retval_ == window::OK
 	 */
-	bool show(CVideo& video, const unsigned auto_close_time = 0);
+	bool show(const unsigned auto_close_time = 0);
 
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
@@ -372,7 +397,7 @@ private:
 	 *                            upon.
 	 * @returns                   The window to show.
 	 */
-	window* build_window(CVideo& video) const;
+	window* build_window() const;
 
 	/**
 	 * Actions to be taken directly after the window is build.

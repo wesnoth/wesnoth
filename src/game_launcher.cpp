@@ -442,7 +442,7 @@ bool game_launcher::init_lua_script()
 
 			return true;
 		} catch (std::exception & e) {
-			gui2::show_error_message(video(), std::string("When loading a plugin, error:\n") + e.what());
+			gui2::show_error_message(std::string("When loading a plugin, error:\n") + e.what());
 			error = true;
 		}
 	}
@@ -641,28 +641,28 @@ bool game_launcher::load_game()
 
 	} catch(config::error& e) {
 		if(e.message.empty()) {
-			gui2::show_error_message(video(), _("The file you have tried to load is corrupt"));
+			gui2::show_error_message(_("The file you have tried to load is corrupt"));
 		}
 		else {
-			gui2::show_error_message(video(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
+			gui2::show_error_message(_("The file you have tried to load is corrupt: '") + e.message + '\'');
 		}
 		return false;
 	} catch(wml_exception& e) {
-		e.show(video());
+		e.show();
 		return false;
 	} catch(filesystem::io_exception& e) {
 		if(e.message.empty()) {
-			gui2::show_error_message(video(), _("File I/O Error while reading the game"));
+			gui2::show_error_message(_("File I/O Error while reading the game"));
 		} else {
-			gui2::show_error_message(video(), _("File I/O Error while reading the game: '") + e.message + '\'');
+			gui2::show_error_message(_("File I/O Error while reading the game: '") + e.message + '\'');
 		}
 		return false;
 	} catch(game::error& e) {
 		if(e.message.empty()) {
-			gui2::show_error_message(video(), _("The file you have tried to load is corrupt"));
+			gui2::show_error_message(_("The file you have tried to load is corrupt"));
 		}
 		else {
-			gui2::show_error_message(video(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
+			gui2::show_error_message(_("The file you have tried to load is corrupt: '") + e.message + '\'');
 		}
 		return false;
 	}
@@ -717,7 +717,7 @@ bool game_launcher::new_campaign()
 	state_.mp_settings().show_connect = false;
 	play_replay_ = false;
 
-	return sp::enter_create_mode(video(), game_config_manager::get()->game_config(),
+	return sp::enter_create_mode(game_config_manager::get()->game_config(),
 		state_, jump_to_campaign_);
 }
 
@@ -815,7 +815,7 @@ bool game_launcher::play_multiplayer(mp_selection res)
 				start_wesnothd();
 			} catch(game::mp_server_error&)
 			{
-				preferences::show_wesnothd_server_search(video());
+				preferences::show_wesnothd_server_search();
 
 				try {
 					start_wesnothd();
@@ -830,7 +830,7 @@ bool game_launcher::play_multiplayer(mp_selection res)
 
 		// If a server address wasn't specified, prompt for it now.
 		if(res != MP_LOCAL && multiplayer_server_.empty()) {
-			if(!gui2::dialogs::mp_connect::execute(CVideo::get_singleton())) {
+			if(!gui2::dialogs::mp_connect::execute()) {
 				return false;
 			}
 
@@ -858,39 +858,37 @@ bool game_launcher::play_multiplayer(mp_selection res)
 		}
 
 	} catch(game::mp_server_error& e) {
-		gui2::show_error_message(video(), _("Error while starting server: ") + e.message);
+		gui2::show_error_message(_("Error while starting server: ") + e.message);
 	} catch(game::load_game_failed& e) {
-		gui2::show_error_message(video(), _("The game could not be loaded: ") + e.message);
+		gui2::show_error_message(_("The game could not be loaded: ") + e.message);
 	} catch(game::game_error& e) {
-		gui2::show_error_message(video(), _("Error while playing the game: ") + e.message);
+		gui2::show_error_message(_("Error while playing the game: ") + e.message);
 	} catch (mapgen_exception& e) {
-		gui2::show_error_message(video(), _("Map generator error: ") + e.message);
+		gui2::show_error_message(_("Map generator error: ") + e.message);
 	} catch(wesnothd_error& e) {
 		if(!e.message.empty()) {
 			ERR_NET << "caught network error: " << e.message << std::endl;
-			gui2::show_transient_message(video()
-					, ""
-					, translation::gettext(e.message.c_str()));
+			gui2::show_transient_message("", translation::gettext(e.message.c_str()));
 		} else {
 			ERR_NET << "caught network error" << std::endl;
 		}
 	} catch(config::error& e) {
 		if(!e.message.empty()) {
 			ERR_CONFIG << "caught config::error: " << e.message << std::endl;
-			gui2::show_transient_message(video(), "", e.message);
+			gui2::show_transient_message("", e.message);
 		} else {
 			ERR_CONFIG << "caught config::error" << std::endl;
 		}
 	} catch(incorrect_map_format_error& e) {
-		gui2::show_error_message(video(), _("The game map could not be loaded: ") + e.message);
+		gui2::show_error_message(_("The game map could not be loaded: ") + e.message);
 	} catch (savegame::load_game_exception & e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(wml_exception& e) {
-		e.show(video());
+		e.show();
 	} catch (game::error & e) {
 		std::cerr << "caught game::error...\n";
-		gui2::show_error_message(video(), _("Error: ") + e.message);
+		gui2::show_error_message(_("Error: ") + e.message);
 	}
 
 	return false;
@@ -923,7 +921,7 @@ bool game_launcher::play_multiplayer_commandline()
 bool game_launcher::change_language()
 {
 	gui2::dialogs::language_selection dlg;
-	dlg.show(video());
+	dlg.show();
 	if (dlg.get_retval() != gui2::window::OK) return false;
 
 	if (!(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test)) {
@@ -968,19 +966,19 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		if(result == LEVEL_RESULT::VICTORY && !state_.classification().is_normal_mp_game()) {
 			preferences::add_completed_campaign(state_.classification().campaign, state_.classification().difficulty);
 
-			gui2::dialogs::outro::display(state_.classification().end_text, state_.classification().end_text_duration, video());
+			gui2::dialogs::outro::display(state_.classification().end_text, state_.classification().end_text_duration);
 
 			if(state_.classification().end_credits) {
-				gui2::dialogs::end_credits::display(video(), state_.classification().campaign);
+				gui2::dialogs::end_credits::display(state_.classification().campaign);
 			}
 		}
 	} catch (savegame::load_game_exception &e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(wml_exception& e) {
-		e.show(video());
+		e.show();
 	} catch(mapgen_exception& e) {
-		gui2::show_error_message(video(), _("Map generator error: ") + e.message);
+		gui2::show_error_message(_("Map generator error: ") + e.message);
 	}
 }
 
@@ -994,7 +992,7 @@ void game_launcher::play_replay()
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(wml_exception& e) {
-		e.show(video());
+		e.show();
 	}
 }
 

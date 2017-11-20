@@ -149,8 +149,7 @@ message::button_status::button_status()
 
 using namespace dialogs;
 
-void show_message(CVideo& video,
-				  const std::string& title,
+void show_message(const std::string& title,
 				  const std::string& msg,
 				  const std::string& button_caption,
 				  const bool auto_close,
@@ -159,11 +158,10 @@ void show_message(CVideo& video,
 {
 	message dlg(title, msg, auto_close, message_use_markup, title_use_markup);
 	dlg.set_button_caption(message::ok, button_caption);
-	dlg.show(video);
+	dlg.show();
 }
 
-int show_message(CVideo& video,
-				 const std::string& title,
+int show_message(const std::string& title,
 				 const std::string& msg,
 				 const message::button_style button_style,
 				 bool message_use_markup,
@@ -200,16 +198,15 @@ int show_message(CVideo& video,
 			break;
 	}
 
-	dlg.show(video);
+	dlg.show();
 	return dlg.get_retval();
 }
 
-void show_error_message(CVideo& video,
-						const std::string& msg,
+void show_error_message(const std::string& msg,
 						bool message_use_markup)
 {
 	LOG_STREAM(err, lg::general()) << msg << '\n';
-	(void) show_message(video,
+	(void) show_message(
 				 _("Error"),
 				 msg,
 				 message::ok_button,

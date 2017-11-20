@@ -190,8 +190,6 @@ namespace {
 	void test_resolutions(const resolution_list& resolutions)
 	{
 		for(const resolution& resolution : resolutions) {
-			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
-
 			dialog_tester<T> ctor;
 			const std::unique_ptr<modal_dialog> dlg(ctor.create());
 			BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
@@ -200,7 +198,7 @@ namespace {
 
 			std::string exception;
 			try {
-				dlg->show(video, 1);
+				dlg->show(1);
 			} catch(gui2::layout_exception_width_modified&) {
 				exception = "gui2::layout_exception_width_modified";
 			} catch(gui2::layout_exception_width_resize_failed&) {
@@ -229,8 +227,6 @@ namespace {
 		bool interact = false;
 		for(int i = 0; i < 2; ++i) {
 			for(const resolution& resolution : resolutions) {
-				CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
-
 				dialog_tester<T> ctor;
 				const std::unique_ptr<modeless_dialog> dlg(ctor.create());
 				BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
@@ -239,7 +235,7 @@ namespace {
 
 				std::string exception;
 				try {
-					dlg->show(video, interact);
+					dlg->show(interact);
 					gui2::window* window = unit_test_window((*dlg.get()));
 					BOOST_REQUIRE_NE(window, static_cast<void*>(nullptr));
 					window->draw();
@@ -276,16 +272,12 @@ namespace {
 			, const std::string& id)
 	{
 		for(const resolution& resolution : resolutions) {
-
-			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
-
 			std::set<std::string>& list = gui2::unit_test_registered_window_list();
 			list.erase(id);
 
 			std::string exception;
 			try {
-				tip::show(video
-						, id
+				tip::show(id
 						, "Test messsage for a tooltip."
 						, point(0, 0)
 						, {0,0,0,0});
@@ -523,11 +515,9 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 BOOST_AUTO_TEST_CASE(test_make_test_fake)
 {
-	CVideo& video = test_utils::get_fake_display(10, 10).video();
-
 	try {
 		message dlg("title", "message", true, false, false);
-		dlg.show(video, 1);
+		dlg.show(1);
 	} catch(wml_exception& e) {
 		BOOST_CHECK(e.user_message == _("Failed to show a dialog, "
 					"which doesn't fit on the screen."));

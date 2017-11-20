@@ -52,8 +52,6 @@ private:
  * @note The message _should_ be small enough to fit on the window, the text
  * can contain newlines and will wrap when needed.
  *
- * @param video               The video which contains the surface to draw
- *                            upon.
  * @param title               The title of the dialog.
  * @param message             The message to show in the dialog.
  * @param image               An image to show in the dialog.
@@ -62,8 +60,7 @@ private:
  * @param restore_background  Restore the background to the state it was before
  * 							  the message appeared
  */
-void show_transient_message(CVideo& video,
-							const std::string& title,
+void show_transient_message(const std::string& title,
 							const std::string& message,
 							const std::string& image = std::string(),
 							const bool message_use_markup = false,
@@ -82,8 +79,7 @@ void show_transient_message(CVideo& video,
  * @param image               An image to show in the dialog.
  * @param message_use_markup  Use markup for the message?
  */
-void show_transient_error_message(CVideo& video,
-								  const std::string& message,
+void show_transient_error_message(const std::string& message,
 								  const std::string& image = std::string(),
 								  const bool message_use_markup = false);
 

@@ -49,13 +49,7 @@ public:
 	 *                              if this method returns @a true, undefined
 	 *                              otherwise.
 	 */
-	static bool execute(const std::string& title,
-						const std::string& label,
-						std::string& text,
-						CVideo& video)
-	{
-		return edit_text(title, label, text).show(video);
-	}
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(edit_text)
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

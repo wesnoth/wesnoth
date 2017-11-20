@@ -31,6 +31,6 @@ namespace preferences {
 	void set_idle_anim(bool ison);
 	void set_idle_anim_rate(int rate);
 
-	void show_wesnothd_server_search(CVideo&);
-	bool show_theme_dialog(CVideo& disp);
+	void show_wesnothd_server_search();
+	bool show_theme_dialog();
 } // end namespace preferences

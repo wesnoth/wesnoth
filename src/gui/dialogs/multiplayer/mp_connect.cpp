@@ -152,12 +152,12 @@ void mp_server_list::post_show(window& window)
 REGISTER_DIALOG(mp_connect)
 
 static void
-show_server_list(CVideo& video, window& window, field_text* host_name)
+show_server_list(window& window, field_text* host_name)
 {
 	assert(host_name);
 
 	mp_server_list dlg;
-	dlg.show(video);
+	dlg.show();
 
 	if(dlg.get_retval() == window::OK) {
 		host_name->set_widget_value(window, dlg.host_name());
@@ -182,10 +182,7 @@ void mp_connect::pre_show(window& win)
 	if(button* btn = find_widget<button>(&win, "list", false, false)) {
 
 		connect_signal_mouse_left_click(*btn,
-										std::bind(show_server_list,
-													std::ref(win.video()),
-													std::ref(win),
-													host_name_));
+			std::bind(show_server_list, std::ref(win), host_name_));
 	}
 }
 

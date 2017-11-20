@@ -35,11 +35,8 @@ public:
 	 */
 	explicit mp_join_game_password_prompt(std::string& password);
 
-	/** The execute function -- see @ref modal_dialog for more information. */
-	static bool execute(std::string& password, CVideo& video)
-	{
-		return mp_join_game_password_prompt(password).show(video);
-	}
+	/** The execute function. See @ref modal_dialog for more information. */
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(mp_join_game_password_prompt)
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

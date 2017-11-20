@@ -442,7 +442,7 @@ bool manager::enable_mods_dialog(const std::vector<std::string>& mods, const std
 	}
 
 	gui2::dialogs::depcheck_confirm_change dialog(true, items, requester);
-	return dialog.show(video_);
+	return dialog.show();
 }
 
 bool manager::disable_mods_dialog(const std::vector<std::string>& mods, const std::string& requester)
@@ -453,7 +453,7 @@ bool manager::disable_mods_dialog(const std::vector<std::string>& mods, const st
 	}
 
 	gui2::dialogs::depcheck_confirm_change dialog(false, items, requester);
-	return dialog.show(video_);
+	return dialog.show();
 }
 
 std::string manager::change_era_dialog(const std::vector<std::string>& eras)
@@ -465,7 +465,7 @@ std::string manager::change_era_dialog(const std::vector<std::string>& eras)
 
 	gui2::dialogs::depcheck_select_new dialog(ERA, items);
 
-	if(dialog.show(video_)) {
+	if(dialog.show()) {
 		return eras[dialog.result()];
 	}
 
@@ -480,7 +480,7 @@ std::string manager::change_scenario_dialog(const std::vector<std::string>& scen
 	}
 
 	gui2::dialogs::depcheck_select_new dialog(SCENARIO, items);
-	if(dialog.show(video_)) {
+	if(dialog.show()) {
 		return scenarios[dialog.result()];
 	}
 
@@ -489,7 +489,7 @@ std::string manager::change_scenario_dialog(const std::vector<std::string>& scen
 
 void manager::failure_dialog(const std::string& msg)
 {
-	gui2::show_message(video_, _("Failed to resolve dependencies"), msg, _("OK"));
+	gui2::show_message(_("Failed to resolve dependencies"), msg, _("OK"));
 }
 
 void manager::insert_element(component_type type, const config& data, int index)

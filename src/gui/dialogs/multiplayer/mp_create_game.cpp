@@ -185,7 +185,7 @@ void mp_create_game::pre_show(window& win)
 	}
 
 	if(game_types.empty()) {
-		gui2::show_transient_message(win.video(), "", _("No games found."));
+		gui2::show_transient_message("", _("No games found."));
 		throw game::error(_("No games found."));
 	}
 
@@ -251,7 +251,7 @@ void mp_create_game::pre_show(window& win)
 	}
 
 	if(era_names.empty()) {
-		gui2::show_transient_message(win.video(), "", _("No eras found."));
+		gui2::show_transient_message("", _("No eras found."));
 		throw config::error(_("No eras found"));
 	}
 
@@ -819,10 +819,10 @@ void mp_create_game::set_active_mods(const std::vector<std::string>& val)
 	}
 }
 
-bool mp_create_game::dialog_exit_hook(window& window)
+bool mp_create_game::dialog_exit_hook(window& /*window*/)
 {
 	if(!create_engine_.current_level_has_side_data()) {
-		gui2::show_transient_error_message(window.video(), _("The selected game has no sides!"));
+		gui2::show_transient_error_message(_("The selected game has no sides!"));
 		return false;
 	}
 
@@ -893,7 +893,7 @@ void mp_create_game::post_show(window& window)
 			gui2::dialogs::simple_item_selector dlg(_("Choose Starting Scenario"), _("Select at which point to begin this campaign."), entry_point_titles);
 
 			dlg.set_single_button(true);
-			dlg.show(window.video());
+			dlg.show();
 
 			const config& scenario = *entry_points[dlg.selected_index()];
 

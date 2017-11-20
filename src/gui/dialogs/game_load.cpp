@@ -364,7 +364,7 @@ void game_load::delete_button_callback(window& window)
 
 		// See if we should ask the user for deletion confirmation
 		if(preferences::ask_delete_saves()) {
-			if(!gui2::dialogs::game_delete::execute(window.video())) {
+			if(!gui2::dialogs::game_delete::execute()) {
 				return;
 			}
 		}

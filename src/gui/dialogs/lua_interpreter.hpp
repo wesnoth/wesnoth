@@ -37,8 +37,8 @@ public:
 	virtual void pre_show(window& window) override;
 
 	enum WHICH_KERNEL { APP, GAME };
-	static void display(CVideo& video, lua_kernel_base * lk);
-	static void display(CVideo& video, WHICH_KERNEL which);
+	static void display(lua_kernel_base * lk);
+	static void display(WHICH_KERNEL which);
 private:
 	const std::unique_ptr<controller> controller_;
 
