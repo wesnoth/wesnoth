@@ -57,7 +57,6 @@ struct mp_campaign_info
 
 class campaign_controller
 {
-	CVideo& video_;
 	saved_game& state_;
 	const config& game_config_;
 	const ter_data_cache & tdata_;
@@ -65,9 +64,8 @@ class campaign_controller
 	bool is_replay_;
 	mp_campaign_info* mp_info_;
 public:
-	campaign_controller(CVideo& video, saved_game& state, const config& game_config, const ter_data_cache & tdata, bool is_unit_test = false)
-		: video_(video)
-		, state_(state)
+	campaign_controller(saved_game& state, const config& game_config, const ter_data_cache & tdata, bool is_unit_test = false)
+		: state_(state)
 		, game_config_(game_config)
 		, tdata_(tdata)
 		, is_unit_test_(is_unit_test)

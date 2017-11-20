@@ -50,7 +50,7 @@ static lg::log_domain log_mp("mp/main");
 namespace
 {
 /** Opens a new server connection and prompts the client for login credentials, if necessary. */
-std::pair<wesnothd_connection_ptr, config> open_connection(CVideo& video, std::string host)
+std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 {
 	DBG_MP << "opening connection" << std::endl;
 
@@ -323,7 +323,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(CVideo& video, std::s
 				gui2::dialogs::mp_login dlg(host, error_message, !((*error)["password_request"].empty()));
 
 				// Need to show the dialog from the main thread or it won't appear.
-				events::call_in_main_thread([&dlg, &video]() { dlg.show(); });
+				events::call_in_main_thread([&dlg]() { dlg.show(); });
 
 				switch(dlg.get_retval()) {
 					//Log in with password
@@ -360,15 +360,12 @@ std::pair<wesnothd_connection_ptr, config> open_connection(CVideo& video, std::s
 /** Helper struct to manage the MP workflow arguments. */
 struct mp_workflow_helper
 {
-	mp_workflow_helper(CVideo& video, const config& gc, saved_game& state, wesnothd_connection* connection, mp::lobby_info* li)
-		: video(video)
-		, game_config(gc)
+	mp_workflow_helper(const config& gc, saved_game& state, wesnothd_connection* connection, mp::lobby_info* li)
+		: game_config(gc)
 		, state(state)
 		, connection(connection)
 		, lobby_info(li)
 	{}
-
-	CVideo& video;
 
 	const config& game_config;
 
@@ -423,7 +420,7 @@ void enter_wait_mode(mp_workflow_helper_ptr helper, int game_id, bool observe)
 	}
 
 	if(dlg_ok) {
-		campaign_controller controller(helper->video, helper->state, helper->game_config, game_config_manager::get()->terrain_types());
+		campaign_controller controller(helper->state, helper->game_config, game_config_manager::get()->terrain_types());
 		controller.set_mp_info(campaign_info.get());
 		controller.play_game();
 	}
@@ -454,7 +451,7 @@ void enter_staging_mode(mp_workflow_helper_ptr helper)
 	} // end connect_engine_ptr, dlg scope
 
 	if(dlg_ok) {
-		campaign_controller controller(helper->video, helper->state, helper->game_config, game_config_manager::get()->terrain_types());
+		campaign_controller controller(helper->state, helper->game_config, game_config_manager::get()->terrain_types());
 		controller.set_mp_info(campaign_info.get());
 		controller.play_game();
 	}
@@ -569,7 +566,7 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 /** Pubic entry points for the MP workflow */
 namespace mp
 {
-void start_client(CVideo& video, const config& game_config,	saved_game& state, const std::string& host)
+void start_client(const config& game_config,	saved_game& state, const std::string& host)
 {
 	const config* game_config_ptr = &game_config;
 
@@ -586,7 +583,7 @@ void start_client(CVideo& video, const config& game_config,	saved_game& state, c
 	config lobby_config;
 
 	gui2::dialogs::loading_screen::display([&]() {
-		std::tie(connection, lobby_config) = open_connection(video, host);
+		std::tie(connection, lobby_config) = open_connection(host);
 	});
 
 	if(!connection) {
@@ -597,7 +594,7 @@ void start_client(CVideo& video, const config& game_config,	saved_game& state, c
 	bool re_enter = false;
 
 	do {
-		workflow_helper.reset(new mp_workflow_helper(video, *game_config_ptr, state, connection.get(), nullptr));
+		workflow_helper.reset(new mp_workflow_helper(*game_config_ptr, state, connection.get(), nullptr));
 
 		// A return of false means a config reload was requested, so do that and then loop.
 		re_enter = !enter_lobby_mode(workflow_helper, installed_addons, lobby_config);
@@ -641,7 +638,7 @@ bool goto_mp_wait(saved_game& state, const config& game_config, wesnothd_connect
 	return dlg.show();
 }
 
-void start_local_game(CVideo& video, const config& game_config, saved_game& state)
+void start_local_game(const config& game_config, saved_game& state)
 {
 	DBG_MP << "starting local game" << std::endl;
 
@@ -649,12 +646,12 @@ void start_local_game(CVideo& video, const config& game_config, saved_game& stat
 
 	// TODO: should lobby_info take a nullptr in this case, or should we pass the installed_addons data here too?
 	lobby_info li(game_config, {});
-	mp_workflow_helper_ptr workflow_helper = std::make_shared<mp_workflow_helper>(video, game_config, state, nullptr, &li);
+	mp_workflow_helper_ptr workflow_helper = std::make_shared<mp_workflow_helper>(game_config, state, nullptr, &li);
 
 	enter_create_mode(workflow_helper);
 }
 
-void start_local_game_commandline(CVideo& video, const config& game_config, saved_game& state, const commandline_options& cmdline_opts)
+void start_local_game_commandline(const config& game_config, saved_game& state, const commandline_options& cmdline_opts)
 {
 	DBG_MP << "starting local MP game from commandline" << std::endl;
 
@@ -750,7 +747,7 @@ void start_local_game_commandline(CVideo& video, const config& game_config, save
 	unsigned int repeat = (cmdline_opts.multiplayer_repeat) ? *cmdline_opts.multiplayer_repeat : 1;
 	for(unsigned int i = 0; i < repeat; i++){
 		saved_game state_copy(state);
-		campaign_controller controller(video, state_copy, game_config, game_config_manager::get()->terrain_types());
+		campaign_controller controller(state_copy, game_config, game_config_manager::get()->terrain_types());
 		controller.play_game();
 	}
 }

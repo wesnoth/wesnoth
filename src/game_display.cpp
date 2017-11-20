@@ -62,13 +62,13 @@ std::map<map_location,fixed_t> game_display::debugHighlights_;
  */
 std::vector<surface> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_);
 
-game_display::game_display(game_board& board, CVideo& video, std::weak_ptr<wb::manager> wb,
+game_display::game_display(game_board& board, std::weak_ptr<wb::manager> wb,
 		reports & reports_object,
 		const tod_manager& tod,
 		const config& theme_cfg,
 		const config& level,
 		bool) :
-		display(&board, video, wb, reports_object, theme_cfg, level, false),
+		display(&board, wb, reports_object, theme_cfg, level, false),
 		overlay_map_(),
 		attack_indicator_src_(),
 		attack_indicator_dst_(),
@@ -83,17 +83,17 @@ game_display::game_display(game_board& board, CVideo& video, std::weak_ptr<wb::m
 		needs_rebuild_(false)
 {
 	replace_overlay_map(&overlay_map_);
-	video.clear_screen();
+	video().clear_screen();
 }
 
-game_display* game_display::create_dummy_display(CVideo& video)
+game_display* game_display::create_dummy_display()
 {
 	static config dummy_cfg;
 	static config dummy_cfg2;
 	static game_board dummy_board(std::make_shared<terrain_type_data>(dummy_cfg), dummy_cfg2);
 	static tod_manager dummy_tod(dummy_cfg);
 	static reports rep_;
-	return new game_display(dummy_board, video, std::shared_ptr<wb::manager>(), rep_, dummy_tod,
+	return new game_display(dummy_board, std::shared_ptr<wb::manager>(), rep_, dummy_tod,
 			dummy_cfg, dummy_cfg, true);
 }
 

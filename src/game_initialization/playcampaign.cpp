@@ -186,7 +186,7 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 
 LEVEL_RESULT campaign_controller::playsingle_scenario(end_level_data &end_level)
 {
-	playsingle_controller playcontroller(is_replay_ ? state_.get_replay_starting_pos() : state_.get_starting_pos(), state_, game_config_, tdata_, video_, false);
+	playsingle_controller playcontroller(is_replay_ ? state_.get_replay_starting_pos() : state_.get_starting_pos(), state_, game_config_, tdata_, false);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
 	if(is_replay_) {
 		playcontroller.enable_replay(is_unit_test_);
@@ -208,7 +208,7 @@ LEVEL_RESULT campaign_controller::playsingle_scenario(end_level_data &end_level)
 	end_level = playcontroller.get_end_level_data_const();
 
 	show_carryover_message(playcontroller, end_level, res);
-	if(!video_.faked())
+	if(!CVideo::get_singleton().faked())
 	{
 		playcontroller.maybe_linger();
 	}
@@ -221,7 +221,7 @@ LEVEL_RESULT campaign_controller::playmp_scenario(end_level_data &end_level)
 {
 
 	playmp_controller playcontroller(state_.get_starting_pos(), state_,
-		game_config_, tdata_, video_, mp_info_);
+		game_config_, tdata_, mp_info_);
 	LEVEL_RESULT res = playcontroller.play_scenario(state_.get_starting_pos());
 
 	//Check if the player started as mp client and changed to host

@@ -59,17 +59,17 @@ static std::vector<std::string> saved_windows_;
 
 namespace editor {
 
-editor_controller::editor_controller(const config &game_config, CVideo& video)
+editor_controller::editor_controller(const config &game_config)
 	: controller_base(game_config)
 	, mouse_handler_base()
 	, quit_confirmation(std::bind(&editor_controller::quit_confirm, this))
 	, active_menu_(editor::MAP)
 	, reports_(new reports())
-	, gui_(new editor_display(*this, video, *reports_, controller_base::get_theme(game_config, "editor")))
+	, gui_(new editor_display(*this, *reports_, controller_base::get_theme(game_config, "editor")))
 	, tods_()
 	, context_manager_(new context_manager(*gui_.get(), game_config_))
 	, toolkit_(nullptr)
-	, tooltip_manager_(video)
+	, tooltip_manager_()
 	, floating_label_manager_(nullptr)
 	, help_manager_(nullptr)
 	, do_quit_(false)

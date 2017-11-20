@@ -24,7 +24,7 @@ const display_context * get_dummy_display_context();
 class editor_display : public display
 {
 public:
-	editor_display(editor_controller& controller, CVideo& video, reports& reports_object, const config& theme_cfg);
+	editor_display(editor_controller& controller, reports& reports_object, const config& theme_cfg);
 
 	bool in_editor() const override { return true; }
 

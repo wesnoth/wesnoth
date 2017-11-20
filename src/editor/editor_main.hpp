@@ -34,6 +34,6 @@ enum EXIT_STATUS {
  *          go back to the titlescreen or quit to desktop altogether)
  */
 
-EXIT_STATUS start(const config& game_config, CVideo& video, const std::string& filename = "", bool take_screenshot = false, const std::string& screenshot_filename = "map_screenshot.bmp");
+EXIT_STATUS start(const config& game_config, const std::string& filename = "", bool take_screenshot = false, const std::string& screenshot_filename = "map_screenshot.bmp");
 
 } //end namespace editor
