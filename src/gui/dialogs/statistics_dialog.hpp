@@ -32,10 +32,7 @@ class statistics_dialog : public modal_dialog
 public:
 	statistics_dialog(const team& current_team);
 
-	static void display(const team& current_team, CVideo& video)
-	{
-		statistics_dialog(current_team).show(video);
-	}
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(statistics_dialog)
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

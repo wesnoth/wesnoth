@@ -83,7 +83,7 @@ editor_action* mouse_action_map_label::up_left(editor_display& disp, int x, int 
 	gui2::dialogs::editor_edit_label d(label, immutable, visible_fog, visible_shroud, color, category);
 
 	editor_action* a = nullptr;
-	if(d.show(disp.video())) {
+	if(d.show()) {
 		a = new editor_action_label(hex, label, team_name, color
 				, visible_fog, visible_shroud, immutable, category);
 		update_brush_highlights(disp, hex);

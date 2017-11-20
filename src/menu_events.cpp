@@ -154,7 +154,7 @@ void menu_handler::objectives()
 
 void menu_handler::show_statistics(int side_num)
 {
-	gui2::dialogs::statistics_dialog::display(board().get_team(side_num), gui_->video());
+	gui2::dialogs::statistics_dialog::display(board().get_team(side_num));
 }
 
 void menu_handler::unit_list()
@@ -166,7 +166,7 @@ void menu_handler::status_table()
 {
 	int selected_index;
 
-	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team(), selected_index, gui_->video())) {
+	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team(), selected_index)) {
 		gui_->scroll_to_leader(teams()[selected_index].side());
 	}
 }
@@ -183,18 +183,18 @@ void menu_handler::save_map()
 	   .set_path(input_name)
 	   .set_extension(".map");
 
-	if(!dlg.show(gui_->video())) {
+	if(!dlg.show()) {
 		return;
 	}
 
 	try {
 		filesystem::write_file(dlg.path(), map().write());
-		gui2::show_transient_message(gui_->video(), "", _("Map saved."));
+		gui2::show_transient_message("", _("Map saved."));
 	} catch(filesystem::io_exception& e) {
 		utils::string_map symbols;
 		symbols["msg"] = e.what();
 		const std::string msg = vgettext("Could not save the map: $msg", symbols);
-		gui2::show_transient_error_message(gui_->video(), msg);
+		gui2::show_transient_error_message(msg);
 	}
 }
 
@@ -210,7 +210,7 @@ void menu_handler::show_chat_log()
 	config c;
 	c["name"] = "prototype of chat log";
 	gui2::dialogs::chat_log chat_log_dialog(vconfig(c), *resources::recorder);
-	chat_log_dialog.show(gui_->video());
+	chat_log_dialog.show();
 	// std::string text = resources::recorder->build_chat_log();
 	// gui::show_dialog(*gui_,nullptr,_("Chat Log"),"",gui::CLOSE_ONLY,nullptr,nullptr,"",&text);
 }
@@ -274,13 +274,13 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 	}
 
 	if(sample_units.empty()) {
-		gui2::show_transient_message(gui_->video(), "", _("You have no units available to recruit."));
+		gui2::show_transient_message("", _("You have no units available to recruit."));
 		return;
 	}
 
 	gui2::dialogs::unit_recruit dlg(sample_units, board().get_team(side_num));
 
-	dlg.show(gui_->video());
+	dlg.show();
 
 	if(dlg.get_retval() == gui2::window::OK) {
 		do_recruit(sample_units[dlg.get_selected_index()]->id(), side_num, last_hex);
@@ -311,7 +311,7 @@ bool menu_handler::do_recruit(const std::string& name, int side_num, const map_l
 			? pc_.get_whiteboard()->get_spent_gold_for(side_num)
 			: 0))
 	{
-		gui2::show_transient_message(gui_->video(), "", _("You do not have enough gold to recruit that unit"));
+		gui2::show_transient_message("", _("You do not have enough gold to recruit that unit"));
 		return false;
 	}
 
@@ -328,7 +328,7 @@ bool menu_handler::do_recruit(const std::string& name, int side_num, const map_l
 	} // end planned unit map scope
 
 	if(!msg.empty()) {
-		gui2::show_transient_message(gui_->video(), "", msg);
+		gui2::show_transient_message("", msg);
 		return false;
 	}
 
@@ -348,8 +348,7 @@ bool menu_handler::do_recruit(const std::string& name, int side_num, const map_l
 void menu_handler::recall(int side_num, const map_location& last_hex)
 {
 	if(pc_.get_disallow_recall()) {
-		gui2::show_transient_message(
-				gui_->video(), "", _("You are separated from your soldiers and may not recall them"));
+		gui2::show_transient_message("", _("You are separated from your soldiers and may not recall them"));
 		return;
 	}
 
@@ -367,18 +366,18 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 	}
 
 	if(current_team.recall_list().empty()) {
-		gui2::show_transient_message(gui_->video(), "",
+		gui2::show_transient_message("",
 			_("There are no troops available to recall\n(You must have veteran survivors from a previous scenario)"));
 		return;
 	}
 	if(recall_list_team.empty()) {
-		gui2::show_transient_message(gui_->video(), "", _("You currently can't recall at the highlighted location"));
+		gui2::show_transient_message("", _("You currently can't recall at the highlighted location"));
 		return;
 	}
 
 	gui2::dialogs::unit_recall dlg(recall_list_team, current_team);
 
-	dlg.show(gui_->video());
+	dlg.show();
 
 	if(dlg.get_retval() != gui2::window::OK) {
 		return;
@@ -401,7 +400,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		i18n_symbols["cost"] = std::to_string(unit_cost);
 		std::string msg = VNGETTEXT("You must have at least 1 gold piece to recall a unit",
 				"You must have at least $cost gold pieces to recall this unit", unit_cost, i18n_symbols);
-		gui2::show_transient_message(gui_->video(), "", msg);
+		gui2::show_transient_message("", msg);
 		return;
 	}
 
@@ -418,7 +417,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 	} // end planned unit map scope
 
 	if(!err.empty()) {
-		gui2::show_transient_message(gui_->video(), "", err);
+		gui2::show_transient_message("", err);
 		return;
 	}
 
@@ -539,7 +538,7 @@ bool unmoved_units(
 bool menu_handler::end_turn(int side_num)
 {
 	if(!gamedata().allow_end_turn()) {
-		gui2::show_transient_message((*gui_).video(), "", _("You cannot end your turn yet!"));
+		gui2::show_transient_message("", _("You cannot end your turn yet!"));
 		return false;
 	}
 
@@ -551,7 +550,7 @@ bool menu_handler::end_turn(int side_num)
 	else if(preferences::confirm_no_moves() && !pc_.get_undo_stack().player_acted()
 			&& (!pc_.get_whiteboard() || !pc_.get_whiteboard()->current_side_has_actions())
 			&& units_alive(side_num, units())) {
-		const int res = gui2::show_message((*gui_).video(), "",
+		const int res = gui2::show_message("",
 				_("You have not started your turn yet. Do you really want to end your turn?"),
 				gui2::dialogs::message::yes_no_buttons);
 		if(res == gui2::window::CANCEL) {
@@ -560,7 +559,7 @@ bool menu_handler::end_turn(int side_num)
 	}
 	// Ask for confirmation if units still have some movement left.
 	else if(preferences::yellow_confirm() && partmoved_units(side_num, units(), board(), pc_.get_whiteboard())) {
-		const int res = gui2::show_message((*gui_).video(), "",
+		const int res = gui2::show_message("",
 				_("Some units have movement left. Do you really want to end your turn?"),
 				gui2::dialogs::message::yes_no_buttons);
 		if(res == gui2::window::CANCEL) {
@@ -569,7 +568,7 @@ bool menu_handler::end_turn(int side_num)
 	}
 	// Ask for confirmation if units still have all movement left.
 	else if(preferences::green_confirm() && unmoved_units(side_num, units(), board(), pc_.get_whiteboard())) {
-		const int res = gui2::show_message((*gui_).video(), "",
+		const int res = gui2::show_message("",
 				_("Some units have not moved. Do you really want to end your turn?"),
 				gui2::dialogs::message::yes_no_buttons);
 		if(res == gui2::window::CANCEL) {
@@ -629,7 +628,7 @@ void menu_handler::rename_unit()
 	const std::string title(N_("Rename Unit"));
 	const std::string label(N_("Name:"));
 
-	if(gui2::dialogs::edit_text::execute(title, label, name, gui_->video())) {
+	if(gui2::dialogs::edit_text::execute(title, label, name)) {
 		resources::recorder->add_rename(name, un->get_location());
 		un->rename(name);
 		gui_->invalidate_unit();
@@ -668,7 +667,7 @@ type_and_gender choose_unit(game_display& gui)
 	// are properly cached.
 	//
 	gui2::dialogs::unit_create create_dlg;
-	create_dlg.show(gui.video());
+	create_dlg.show();
 
 	if(create_dlg.no_choice()) {
 		return type_and_gender(nullptr, unit_race::NUM_GENDERS);
@@ -781,7 +780,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 	const terrain_label* old_label = gui_->labels().get_label(loc);
 	std::string label = old_label ? old_label->text() : "";
 
-	if(gui2::dialogs::edit_label::execute(label, team_only, gui_->video())) {
+	if(gui2::dialogs::edit_label::execute(label, team_only)) {
 		std::string team_name;
 		color_t color = font::LABEL_COLOR;
 
@@ -807,7 +806,7 @@ void menu_handler::clear_labels()
 
 void menu_handler::label_settings()
 {
-	if(gui2::dialogs::label_settings::execute(board(), gui_->video())) {
+	if(gui2::dialogs::label_settings::execute(board())) {
 		gui_->labels().recalculate_labels();
 	}
 }
@@ -1370,7 +1369,7 @@ void menu_handler::do_search(const std::string& new_search)
 		const std::string msg = vgettext("Could not find label or unit "
 										 "containing the string ‘$search’.",
 				symbols);
-		(void) gui2::show_message(gui_->video(), "", msg, gui2::dialogs::message::auto_close);
+		(void) gui2::show_message("", msg, gui2::dialogs::message::auto_close);
 	}
 }
 
@@ -1478,7 +1477,7 @@ void console_handler::do_idle()
 
 void console_handler::do_theme()
 {
-	preferences::show_theme_dialog(menu_handler_.gui_->video());
+	preferences::show_theme_dialog();
 }
 
 struct save_id_matches
@@ -1596,7 +1595,7 @@ void console_handler::do_layers()
 	// -- vultraz, 2017-09-21
 	//
 	if(disp.get_map().on_board_with_border(loc)) {
-		gui2::dialogs::terrain_layers::display(disp, loc, disp.video());
+		gui2::dialogs::terrain_layers::display(disp, loc);
 	}
 }
 
@@ -1673,7 +1672,7 @@ void console_handler::do_choose_level()
 	{
 		gui2::dialogs::simple_item_selector dlg(_("Choose Scenario (Debug!)"), "", options);
 		dlg.set_selected_index(choice);
-		dlg.show(menu_handler_.gui_->video());
+		dlg.show();
 		choice = dlg.selected_index();
 	}
 
@@ -1737,7 +1736,7 @@ void console_handler::do_unsafe_lua()
 		return;
 	}
 
-	const int retval = gui2::show_message(menu_handler_.gui_->video(), _("WARNING! Unsafe Lua Mode"),
+	const int retval = gui2::show_message(_("WARNING! Unsafe Lua Mode"),
 		_("Executing Lua code in in this manner opens your computer to potential security breaches from any "
 		"malicious add-ons or other programs you may have installed.\n\n"
 		"Do not continue unless you really know what you are doing."), gui2::dialogs::message::ok_cancel_buttons);
@@ -1798,8 +1797,7 @@ void console_handler::do_set_var()
 
 void console_handler::do_show_var()
 {
-	gui2::show_transient_message((*menu_handler_.gui_).video(), "",
-		menu_handler_.gamedata().get_variable_const(get_data()));
+	gui2::show_transient_message("", menu_handler_.gamedata().get_variable_const(get_data()));
 }
 
 void console_handler::do_inspect()
@@ -1807,13 +1805,13 @@ void console_handler::do_inspect()
 	vconfig cfg = vconfig::empty_vconfig();
 	gui2::dialogs::gamestate_inspector inspect_dialog(
 			resources::gamedata->get_variables(), *resources::game_events, *resources::gameboard);
-	inspect_dialog.show(menu_handler_.gui_->video());
+	inspect_dialog.show();
 }
 
 void console_handler::do_control_dialog()
 {
 	gui2::dialogs::mp_change_control mp_change_control(menu_handler_);
-	mp_change_control.show(menu_handler_.gui_->video());
+	mp_change_control.show();
 }
 
 void console_handler::do_unit()
@@ -1866,7 +1864,7 @@ void console_handler::do_discover()
 
 void console_handler::do_undiscover()
 {
-	const int res = gui2::show_message((*menu_handler_.gui_).video(), "Undiscover",
+	const int res = gui2::show_message("Undiscover",
 			_("Do you wish to clear all of your discovered units from help?"), gui2::dialogs::message::yes_no_buttons);
 	if(res != gui2::window::CANCEL) {
 		preferences::encountered_units().clear();

@@ -33,10 +33,7 @@ public:
 	 *
 	 * See @ref modal_dialog for more information.
 	 */
-	static void display(CVideo& video)
-	{
-		mp_alerts_options().show(video);
-	}
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(mp_alerts_options)
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

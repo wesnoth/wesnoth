@@ -150,8 +150,7 @@ static tooltip& tip()
 	return *t;
 }
 
-void show(CVideo& video,
-		  const std::string& window_id,
+void show(const std::string& window_id,
 		  const t_string& message,
 		  const point& mouse,
 		  const SDL_Rect& source_rect)
@@ -167,7 +166,7 @@ void show(CVideo& video,
 	t.set_source_rect(source_rect);
 	try
 	{
-		t.show(video);
+		t.show();
 	}
 	catch(window_builder_invalid_id&)
 	{
@@ -176,7 +175,7 @@ void show(CVideo& video,
 		t.set_window_id("tooltip_large");
 		try
 		{
-			t.show(video);
+			t.show();
 		}
 		catch(window_builder_invalid_id&)
 		{

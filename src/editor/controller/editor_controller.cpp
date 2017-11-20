@@ -174,10 +174,10 @@ EXIT_STATUS editor_controller::main_loop()
 			play_slice();
 		}
 	} catch (editor_exception& e) {
-		gui2::show_transient_message(gui().video(), _("Fatal error"), e.what());
+		gui2::show_transient_message(_("Fatal error"), e.what());
 		return EXIT_ERROR;
 	} catch (wml_exception& e) {
-		e.show(gui().video());
+		e.show();
 	}
 	return quit_mode_;
 }
@@ -192,7 +192,7 @@ void editor_controller::do_screenshot(const std::string& screenshot_filename /* 
 			ERR_ED << "Screenshot creation failed!\n";
 		}
 	} catch (wml_exception& e) {
-		e.show(gui().video());
+		e.show();
 	}
 }
 
@@ -216,14 +216,13 @@ bool editor_controller::quit_confirm()
 void editor_controller::custom_tods_dialog()
 {
 	if (tods_.empty()) {
-		gui2::show_error_message(gui().video(),
-				_("No editor time-of-day found."));
+		gui2::show_error_message(_("No editor time-of-day found."));
 		return;
 	}
 
 	tod_manager& manager = *get_current_map_context().get_time_manager();
 
-	if(gui2::dialogs::custom_tod::execute(manager.times(), manager.get_current_time(), gui().video())) {
+	if(gui2::dialogs::custom_tod::execute(manager.times(), manager.get_current_time())) {
 		// TODO save the new tod here
 	}
 
@@ -1143,7 +1142,7 @@ void editor_controller::change_unit_id()
 
 	if(un != units.end()) {
 		std::string id = un->id();
-		if (gui2::dialogs::edit_text::execute(title, label, id, gui_->video())) {
+		if (gui2::dialogs::edit_text::execute(title, label, id)) {
 			un->set_id(id);
 		}
 	}
@@ -1160,7 +1159,7 @@ void editor_controller::rename_unit()
 
 	if(un != units.end()) {
 		std::string name = un->name();
-		if(gui2::dialogs::edit_text::execute(title, label, name, gui_->video())) {
+		if(gui2::dialogs::edit_text::execute(title, label, name)) {
 			//TODO we may not want a translated name here.
 			un->set_name(name);
 		}

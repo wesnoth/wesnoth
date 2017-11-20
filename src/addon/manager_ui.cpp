@@ -74,18 +74,18 @@ bool addons_manager_ui(CVideo& v, const std::string& remote_address)
 		client.connect();
 
 		gui2::dialogs::addon_manager dlg(client);
-		dlg.show(v);
+		dlg.show();
 
 		need_wml_cache_refresh = dlg.get_need_wml_cache_refresh();
 	} catch(const config::error& e) {
 		ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;
-		gui2::show_error_message(v, _("Network communication error."));
+		gui2::show_error_message(_("Network communication error."));
 	} catch(const network_asio::error& e) {
 		ERR_NET << "network_asio::error thrown during transaction with add-on server; \""<< e.what() << "\"" << std::endl;
-		gui2::show_error_message(v, _("Remote host disconnected."));
+		gui2::show_error_message(_("Remote host disconnected."));
 	} catch(const filesystem::io_exception& e) {
 		ERR_FS << "filesystem::io_exception thrown while installing an addon; \"" << e.what() << "\"" << std::endl;
-		gui2::show_error_message(v, _("A problem occurred when trying to create the files necessary to install this add-on."));
+		gui2::show_error_message(_("A problem occurred when trying to create the files necessary to install this add-on."));
 	} catch(const invalid_pbl_exception& e) {
 		ERR_CFG << "could not read .pbl file " << e.path << ": " << e.message << std::endl;
 
@@ -93,28 +93,27 @@ bool addons_manager_ui(CVideo& v, const std::string& remote_address)
 		symbols["path"] = e.path;
 		symbols["msg"] = e.message;
 
-		gui2::show_error_message(v,
+		gui2::show_error_message(
 			vgettext("A local file with add-on publishing information could not be read.\n\nFile: $path\nError message: $msg", symbols));
 	} catch(wml_exception& e) {
-		e.show(v);
+		e.show();
 	} catch(const addons_client::user_exit&) {
 		LOG_AC << "initial connection canceled by user\n";
 	} catch(const addons_client::invalid_server_address&) {
-		gui2::show_error_message(v, _("The add-ons server address specified is not valid."));
+		gui2::show_error_message(_("The add-ons server address specified is not valid."));
 	}
 
 	return need_wml_cache_refresh;
 }
 
-bool uninstall_local_addons(CVideo& v)
+bool uninstall_local_addons()
 {
 	const std::string list_lead = "\n\n";
 
 	const std::vector<std::string>& addons = installed_addons();
 
 	if(addons.empty()) {
-		gui2::show_error_message(v,
-			_("You have no add-ons installed."));
+		gui2::show_error_message(_("You have no add-ons installed."));
 		return false;
 	}
 
@@ -151,7 +150,7 @@ bool uninstall_local_addons(CVideo& v)
 
 	do {
 		gui2::dialogs::addon_uninstall_list dlg(addon_titles_map);
-		dlg.show(v);
+		dlg.show();
 
 		remove_ids = dlg.selected_addons();
 		if(remove_ids.empty()) {
@@ -169,8 +168,8 @@ bool uninstall_local_addons(CVideo& v)
 			"Are you sure you want to remove the following installed add-ons?",
 			remove_ids.size()) + list_lead + utils::bullet_list(remove_names);
 
-		res = gui2::show_message(v
-				, _("Confirm")
+		res = gui2::show_message(
+				_("Confirm")
 				, confirm_message
 				, gui2::dialogs::message::yes_no_buttons);
 	} while (res != gui2::window::OK);
@@ -196,11 +195,11 @@ bool uninstall_local_addons(CVideo& v)
 			skipped_names.size());
 
 		gui2::show_error_message(
-			v, dlg_msg + list_lead + utils::bullet_list(skipped_names));
+			dlg_msg + list_lead + utils::bullet_list(skipped_names));
 	}
 
 	if(!failed_names.empty()) {
-		gui2::show_error_message(v, _n(
+		gui2::show_error_message(_n(
 			"The following add-on could not be deleted properly:",
 			"The following add-ons could not be deleted properly:",
 			failed_names.size()) + list_lead + utils::bullet_list(failed_names));
@@ -215,7 +214,7 @@ bool uninstall_local_addons(CVideo& v)
 			succeeded_names.size());
 
 		gui2::show_transient_message(
-			v, dlg_title,
+			dlg_title,
 			dlg_msg + list_lead + utils::bullet_list(succeeded_names), "", false, false, true);
 
 		return true;
@@ -236,7 +235,7 @@ bool manage_addons(CVideo& v)
 	const bool have_addons = !installed_addons().empty();
 
 	gui2::dialogs::addon_connect addon_dlg(host_name, have_addons);
-	addon_dlg.show(v);
+	addon_dlg.show();
 	int res = addon_dlg.get_retval();
 
 	if(res == gui2::window::OK) {
@@ -247,7 +246,7 @@ bool manage_addons(CVideo& v)
 		case addon_download:
 			return addons_manager_ui(v, host_name);
 		case addon_uninstall:
-			return uninstall_local_addons(v);
+			return uninstall_local_addons();
 		default:
 			return false;
 	}
@@ -266,7 +265,7 @@ bool ad_hoc_addon_fetch_session(CVideo& v, const std::vector<std::string>& addon
 		addons_list addons;
 
 		if(!get_addons_list(client, addons)) {
-			gui2::show_error_message(v, _("An error occurred while downloading the add-ons list from the server."));
+			gui2::show_error_message(_("An error occurred while downloading the add-ons list from the server."));
 			return false;
 		}
 
@@ -280,7 +279,7 @@ bool ad_hoc_addon_fetch_session(CVideo& v, const std::vector<std::string>& addon
 			} else {
 				utils::string_map symbols;
 				symbols["addon_id"] = addon_id;
-				gui2::show_error_message(v, vgettext("Could not find an add-on matching id $addon_id on the add-on server.", symbols));
+				gui2::show_error_message(vgettext("Could not find an add-on matching id $addon_id on the add-on server.", symbols));
 				return_value = false;
 			}
 		}
@@ -289,13 +288,13 @@ bool ad_hoc_addon_fetch_session(CVideo& v, const std::vector<std::string>& addon
 
 	} catch(const config::error& e) {
 		ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;
-		gui2::show_error_message(v, _("Network communication error."));
+		gui2::show_error_message(_("Network communication error."));
 	} catch(const network_asio::error& e) {
 		ERR_NET << "network_asio::error thrown during transaction with add-on server; \""<< e.what() << "\"" << std::endl;
-		gui2::show_error_message(v, _("Remote host disconnected."));
+		gui2::show_error_message(_("Remote host disconnected."));
 	} catch(const filesystem::io_exception& e) {
 		ERR_FS << "io_exception thrown while installing an addon; \"" << e.what() << "\"" << std::endl;
-		gui2::show_error_message(v, _("A problem occurred when trying to create the files necessary to install this add-on."));
+		gui2::show_error_message(_("A problem occurred when trying to create the files necessary to install this add-on."));
 	} catch(const invalid_pbl_exception& e) {
 		ERR_CFG << "could not read .pbl file " << e.path << ": " << e.message << std::endl;
 
@@ -303,14 +302,14 @@ bool ad_hoc_addon_fetch_session(CVideo& v, const std::vector<std::string>& addon
 		symbols["path"] = e.path;
 		symbols["msg"] = e.message;
 
-		gui2::show_error_message(v,
+		gui2::show_error_message(
 			vgettext("A local file with add-on publishing information could not be read.\n\nFile: $path\nError message: $msg", symbols));
 	} catch(wml_exception& e) {
-		e.show(v);
+		e.show();
 	} catch(const addons_client::user_exit&) {
 		LOG_AC << "initial connection canceled by user\n";
 	} catch(const addons_client::invalid_server_address&) {
-		gui2::show_error_message(v, _("The add-ons server address specified is not valid."));
+		gui2::show_error_message(_("The add-ons server address specified is not valid."));
 	}
 
 	return false;

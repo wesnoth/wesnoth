@@ -48,10 +48,7 @@ public:
 	 *
 	 * See @ref modal_dialog for more information.
 	 */
-	static void display(CVideo& video)
-	{
-		game_version().show(video);
-	}
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(game_version)
 
 private:
 	const std::string path_wid_stem_;

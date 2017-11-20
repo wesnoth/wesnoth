@@ -205,7 +205,7 @@ void custom_tod::select_file(window& window, const std::string& default_dir)
 	   .set_path(dn)
 	   .set_read_only(true);
 
-	if(dlg.show(window.video())) {
+	if(dlg.show()) {
 		dn = dlg.path();
 
 		if(data.first == "image") {

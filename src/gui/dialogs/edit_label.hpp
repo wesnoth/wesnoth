@@ -41,11 +41,8 @@ public:
 	 */
 	edit_label(std::string& label, bool& team_only);
 
-	/** The execute function see @ref modal_dialog for more information. */
-	static bool execute(std::string& label, bool& team_only, CVideo& video)
-	{
-		return edit_label(label, team_only).show(video);
-	}
+	/** The execute function. See @ref modal_dialog for more information. */
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(edit_label)
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

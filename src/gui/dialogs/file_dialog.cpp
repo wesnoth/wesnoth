@@ -296,7 +296,7 @@ bool file_dialog::is_selection_type_acceptable(file_dialog::SELECTION_TYPE stype
 			: stype == SELECTION_IS_FILE;
 }
 
-bool file_dialog::confirm_overwrite(window& window, file_dialog::SELECTION_TYPE stype)
+bool file_dialog::confirm_overwrite(window& /*window*/, file_dialog::SELECTION_TYPE stype)
 {
 	// TODO: Adapt for implementing directory selection mode.
 	if(stype != SELECTION_IS_FILE) {
@@ -305,7 +305,7 @@ bool file_dialog::confirm_overwrite(window& window, file_dialog::SELECTION_TYPE 
 
 	const std::string& message
 			= _("The file already exists. Do you wish to overwrite it?");
-	return gui2::show_message(window.video(), _("Confirm"), message, message::yes_no_buttons) != gui2::window::CANCEL;
+	return gui2::show_message(_("Confirm"), message, message::yes_no_buttons) != gui2::window::CANCEL;
 }
 
 bool file_dialog::process_submit_common(window& window, const std::string& name)
@@ -328,13 +328,13 @@ bool file_dialog::process_submit_common(window& window, const std::string& name)
 			// We get here in save mode or not. Use the file creation language only in
 			// save mode.
 			if(save_mode_) {
-				show_transient_error_message(window.video(), vgettext("The file or folder $path cannot be created.", {{"path", name}}));
+				show_transient_error_message(vgettext("The file or folder $path cannot be created.", {{"path", name}}));
 				break;
 			}
 			FALLTHROUGH;
 		case SELECTION_NOT_FOUND:
 			// We only get here if we aren't in save mode.
-			show_transient_error_message(window.video(), vgettext("The file or folder $path does not exist.", {{"path", name}}));
+			show_transient_error_message(vgettext("The file or folder $path does not exist.", {{"path", name}}));
 			break;
 		case SELECTION_IS_FILE:
 			// TODO: Adapt for implementing directory selection mode.
@@ -656,7 +656,7 @@ void file_dialog::on_bookmark_add_cmd(window& window)
 
 	std::string label = default_label;
 
-	const bool confirm = bookmark_create::execute(label, window.video());
+	const bool confirm = bookmark_create::execute(label);
 	if(!confirm) {
 		return;
 	}
@@ -705,11 +705,11 @@ void file_dialog::on_dir_create_cmd(window& window)
 {
 	std::string new_dir_name;
 
-	if(folder_create::execute(new_dir_name, window.video())) {
+	if(folder_create::execute(new_dir_name)) {
 		const std::string& new_path = concat_path(current_dir_, new_dir_name);
 
 		if(!fs::make_directory(new_path)) {
-			show_transient_error_message(window.video(),
+			show_transient_error_message(
 					vgettext("Could not create a new folder at $path|. Make sure you have the appropriate permissions to write to this location.",
 					{{"path", new_path}}));
 		} else {
@@ -732,7 +732,7 @@ void file_dialog::on_file_delete_cmd(window& window)
 			: _("The following file will be permanently deleted:"))
 			+ "\n\n" + selection + "\n\n" + _("Do you wish to continue?");
 
-	if(gui2::show_message(window.video(), _("Confirm"), message, message::yes_no_buttons) == gui2::window::CANCEL) {
+	if(gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::window::CANCEL) {
 		return;
 	}
 
@@ -741,7 +741,7 @@ void file_dialog::on_file_delete_cmd(window& window)
 			: fs::delete_file(selection);
 
 	if(!result) {
-		show_transient_error_message(window.video(),
+		show_transient_error_message(
 				vgettext("Could not delete $path|. Make sure you have the appropriate permissions to write to this location.",
 						 {{"path", selection}}));
 	} else {

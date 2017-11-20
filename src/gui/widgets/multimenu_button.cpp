@@ -137,7 +137,7 @@ void multimenu_button::signal_handler_left_button_click(const event::ui_event ev
 		std::bind(&multimenu_button::toggle_state_changed, this));
 
 	droplist_ = &droplist;
-	droplist.show(get_window()->video());
+	droplist.show();
 	droplist_ = nullptr;
 
 	if(retval_ != 0) {

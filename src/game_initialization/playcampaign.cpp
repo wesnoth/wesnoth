@@ -180,7 +180,7 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 	}
 
 	if (end_level.transient.carryover_report) {
-		gui2::show_transient_message(video_, title, report.str(), "", true);
+		gui2::show_transient_message(title, report.str(), "", true);
 	}
 }
 
@@ -288,24 +288,24 @@ LEVEL_RESULT campaign_controller::play_game()
 				res = playmp_scenario(end_level);
 			}
 		} catch(game::load_game_failed& e) {
-			gui2::show_error_message(video_, _("The game could not be loaded: ") + e.message);
+			gui2::show_error_message(_("The game could not be loaded: ") + e.message);
 			return LEVEL_RESULT::QUIT;
 		} catch(quit_game_exception&) {
 			LOG_NG << "The game was aborted\n";
 			return LEVEL_RESULT::QUIT;
 		} catch(game::game_error& e) {
-			gui2::show_error_message(video_, _("Error while playing the game: ") + e.message);
+			gui2::show_error_message(_("Error while playing the game: ") + e.message);
 			return LEVEL_RESULT::QUIT;
 		} catch(incorrect_map_format_error& e) {
-			gui2::show_error_message(video_, _("The game map could not be loaded: ") + e.message);
+			gui2::show_error_message(_("The game map could not be loaded: ") + e.message);
 			return LEVEL_RESULT::QUIT;
 		} catch (mapgen_exception& e) {
-			gui2::show_error_message(video_, _("Map generator error: ") + e.message);
+			gui2::show_error_message(_("Map generator error: ") + e.message);
 		} catch(config::error& e) {
-			gui2::show_error_message(video_, _("Error while reading the WML: ") + e.message);
+			gui2::show_error_message(_("Error while reading the WML: ") + e.message);
 			return LEVEL_RESULT::QUIT;
 		} catch(wml_exception& e) {
-			e.show(video_);
+			e.show();
 			return LEVEL_RESULT::QUIT;
 		}
 
@@ -339,7 +339,7 @@ LEVEL_RESULT campaign_controller::play_game()
 		}
 		else if(res == LEVEL_RESULT::OBSERVER_END && mp_info_ && !mp_info_->is_host)
 		{
-			const int dlg_res = gui2::show_message(video_, _("Game Over"),
+			const int dlg_res = gui2::show_message(_("Game Over"),
 				_("This scenario has ended. Do you want to continue the campaign?"),
 				gui2::dialogs::message::yes_no_buttons);
 
@@ -350,7 +350,7 @@ LEVEL_RESULT campaign_controller::play_game()
 
 		if (mp_info_ && !mp_info_->is_host) {
 			// Opens join game dialog to get a new gamestate.
-			if(!mp::goto_mp_wait(video_, state_, game_config_, &mp_info_->connection, res == LEVEL_RESULT::OBSERVER_END)) {
+			if(!mp::goto_mp_wait(state_, game_config_, &mp_info_->connection, res == LEVEL_RESULT::OBSERVER_END)) {
 				return LEVEL_RESULT::QUIT;
 			}
 
@@ -372,7 +372,7 @@ LEVEL_RESULT campaign_controller::play_game()
 
 				if (!connect_engine->can_start_game() || (game_config::debug && game_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
 					// Opens staging dialog to allow users to make an adjustments for scenario.
-					if(!mp::goto_mp_connect(video_, *connect_engine, game_config_, mp_info_ ? &mp_info_->connection : nullptr)) {
+					if(!mp::goto_mp_connect(*connect_engine, game_config_, mp_info_ ? &mp_info_->connection : nullptr)) {
 						return LEVEL_RESULT::QUIT;
 					}
 				} else {
@@ -409,7 +409,7 @@ LEVEL_RESULT campaign_controller::play_game()
 		utils::string_map symbols;
 		symbols["scenario"] = state_.get_scenario_id();
 		message = utils::interpolate_variables_into_string(message, &symbols);
-		gui2::show_error_message(video_, message);
+		gui2::show_error_message(message);
 		return LEVEL_RESULT::QUIT;
 	}
 

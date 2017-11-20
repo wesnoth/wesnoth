@@ -120,7 +120,7 @@ struct wml_exception
 	 *
 	 * @param video          Target for rendering the UI message.
 	 */
-	void show(CVideo& video);
+	void show();
 private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(wml_exception)
 };

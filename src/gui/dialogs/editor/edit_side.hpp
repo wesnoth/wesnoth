@@ -32,11 +32,8 @@ class editor_edit_side : public modal_dialog
 public:
 	explicit editor_edit_side(editor::editor_team_info& info);
 
-	/** The execute function see @ref modal_dialog for more information. */
-	static bool execute(editor::editor_team_info& info, CVideo& video)
-	{
-		return editor_edit_side(info).show(video);
-	}
+	/** The execute function. See @ref modal_dialog for more information. */
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(editor_edit_side)
 
 private:
 	virtual void pre_show(window& window) override;

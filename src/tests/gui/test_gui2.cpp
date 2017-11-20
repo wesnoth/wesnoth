@@ -190,8 +190,6 @@ namespace {
 	void test_resolutions(const resolution_list& resolutions)
 	{
 		for(const resolution& resolution : resolutions) {
-			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
-
 			dialog_tester<T> ctor;
 			const std::unique_ptr<modal_dialog> dlg(ctor.create());
 			BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
@@ -200,7 +198,7 @@ namespace {
 
 			std::string exception;
 			try {
-				dlg->show(video, 1);
+				dlg->show(1);
 			} catch(gui2::layout_exception_width_modified&) {
 				exception = "gui2::layout_exception_width_modified";
 			} catch(gui2::layout_exception_width_resize_failed&) {
@@ -229,8 +227,6 @@ namespace {
 		bool interact = false;
 		for(int i = 0; i < 2; ++i) {
 			for(const resolution& resolution : resolutions) {
-				CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
-
 				dialog_tester<T> ctor;
 				const std::unique_ptr<modeless_dialog> dlg(ctor.create());
 				BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
@@ -239,7 +235,7 @@ namespace {
 
 				std::string exception;
 				try {
-					dlg->show(video, interact);
+					dlg->show(interact);
 					gui2::window* window = unit_test_window((*dlg.get()));
 					BOOST_REQUIRE_NE(window, static_cast<void*>(nullptr));
 					window->draw();
@@ -276,16 +272,12 @@ namespace {
 			, const std::string& id)
 	{
 		for(const resolution& resolution : resolutions) {
-
-			CVideo& video = test_utils::get_fake_display(resolution.first, resolution.second).video();
-
 			std::set<std::string>& list = gui2::unit_test_registered_window_list();
 			list.erase(id);
 
 			std::string exception;
 			try {
-				tip::show(video
-						, id
+				tip::show(id
 						, "Test messsage for a tooltip."
 						, point(0, 0)
 						, {0,0,0,0});
@@ -523,11 +515,9 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 BOOST_AUTO_TEST_CASE(test_make_test_fake)
 {
-	CVideo& video = test_utils::get_fake_display(10, 10).video();
-
 	try {
 		message dlg("title", "message", true, false, false);
-		dlg.show(video, 1);
+		dlg.show(1);
 	} catch(wml_exception& e) {
 		BOOST_CHECK(e.user_message == _("Failed to show a dialog, "
 					"which doesn't fit on the screen."));
@@ -579,7 +569,7 @@ struct dialog_tester<campaign_selection>
 {
 	saved_game state;
 	ng::create_engine ng;
-	dialog_tester() : state(config {"campaign_type", "scenario"}), ng(test_utils::get_fake_display(-1, -1).video(), state)
+	dialog_tester() : state(config {"campaign_type", "scenario"}), ng(state)
 	{
 	}
 	campaign_selection* create()
@@ -884,13 +874,12 @@ template<>
 struct dialog_tester<mp_create_game>
 {
 	saved_game state;
-	ng::create_engine engine;
-	dialog_tester() : state(config {"campaign_type", "multiplayer"}), engine(test_utils::get_fake_display(-1, -1).video(), state)
+	dialog_tester() : state(config {"campaign_type", "multiplayer"})
 	{
 	}
 	mp_create_game* create()
 	{
-		return new mp_create_game(main_config, engine);
+		return new mp_create_game(main_config, state, true, nullptr);
 	}
 };
 
@@ -1160,7 +1149,7 @@ struct dialog_tester<sp_options_configure>
 	saved_game state;
 	ng::create_engine create_eng;
 	ng::configure_engine config_eng;
-	dialog_tester() : create_eng(test_utils::get_fake_display(-1, -1).video(), state)
+	dialog_tester() : create_eng(state)
 		, config_eng(create_eng.get_state()) {}
 	sp_options_configure* create()
 	{

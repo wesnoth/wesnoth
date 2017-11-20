@@ -209,7 +209,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(CVideo& video, std::s
 				warning_msg += "\n\n";
 				warning_msg += _("Do you want to continue?");
 
-				if(gui2::show_message(video, _("Warning"), warning_msg, gui2::dialogs::message::yes_no_buttons) != gui2::window::OK) {
+				if(gui2::show_message(_("Warning"), warning_msg, gui2::dialogs::message::yes_no_buttons) != gui2::window::OK) {
 					return std::make_pair(wesnothd_connection_ptr(), config());
 				}
 			}
@@ -223,7 +223,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(CVideo& video, std::s
 				std::string password = preferences::password(host, login);
 
 				bool fall_through = (*error)["force_confirmation"].to_bool() ?
-					(gui2::show_message(video, _("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::window::CANCEL) :
+					(gui2::show_message(_("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::window::CANCEL) :
 					false;
 
 				const bool is_pw_request = !((*error)["password_request"].empty()) && !(password.empty());
@@ -323,7 +323,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(CVideo& video, std::s
 				gui2::dialogs::mp_login dlg(host, error_message, !((*error)["password_request"].empty()));
 
 				// Need to show the dialog from the main thread or it won't appear.
-				events::call_in_main_thread([&dlg, &video]() { dlg.show(video); });
+				events::call_in_main_thread([&dlg, &video]() { dlg.show(); });
 
 				switch(dlg.get_retval()) {
 					//Log in with password
@@ -414,11 +414,11 @@ void enter_wait_mode(mp_workflow_helper_ptr helper, int game_id, bool observe)
 	{
 		gui2::dialogs::mp_join_game dlg(helper->state, *helper->lobby_info, *helper->connection, true, observe);
 
-		if(!dlg.fetch_game_config(helper->video)) {
+		if(!dlg.fetch_game_config()) {
 			return;
 		}
 
-		dlg.show(helper->video);
+		dlg.show();
 		dlg_ok = dlg.get_retval() == gui2::window::OK;
 	}
 
@@ -449,7 +449,7 @@ void enter_staging_mode(mp_workflow_helper_ptr helper)
 		ng::connect_engine_ptr connect_engine(new ng::connect_engine(helper->state, true, campaign_info.get()));
 
 		gui2::dialogs::mp_staging dlg(*connect_engine, *helper->lobby_info, helper->connection);
-		dlg.show(helper->video);
+		dlg.show();
 		dlg_ok = dlg.get_retval() == gui2::window::OK;
 	} // end connect_engine_ptr, dlg scope
 
@@ -474,7 +474,7 @@ void enter_create_mode(mp_workflow_helper_ptr helper)
 		mp::user_info* host_info = helper->lobby_info->get_user(preferences::login());
 
 		gui2::dialogs::mp_create_game dlg(helper->game_config, helper->state, local_mode, host_info);
-		dlg_cancel = !dlg.show(helper->video);
+		dlg_cancel = !dlg.show();
 	}
 
 	if(!dlg_cancel) {
@@ -516,7 +516,7 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 		{
 
 			gui2::dialogs::mp_lobby dlg(helper->game_config, li, *helper->connection);
-			dlg.show(helper->video);
+			dlg.show();
 			dlg_retval = dlg.get_retval();
 			dlg_joined_game_id = dlg.get_joined_game_id();
 		}
@@ -527,7 +527,7 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 					enter_create_mode(helper);
 				} catch(config::error& error) {
 					if(!error.message.empty()) {
-						gui2::show_error_message(helper->video, error.message);
+						gui2::show_error_message(error.message);
 					}
 
 					// Update lobby content
@@ -544,7 +544,7 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 					);
 				} catch(config::error& error) {
 					if(!error.message.empty()) {
-						gui2::show_error_message(helper->video, error.message);
+						gui2::show_error_message(error.message);
 					}
 
 					// Update lobby content
@@ -616,21 +616,21 @@ void start_client(CVideo& video, const config& game_config,	saved_game& state, c
 	} while(re_enter);
 }
 
-bool goto_mp_connect(CVideo& video, ng::connect_engine& engine, const config& game_config, wesnothd_connection* connection)
+bool goto_mp_connect(ng::connect_engine& engine, const config& game_config, wesnothd_connection* connection)
 {
 	lobby_info li(game_config, {});
 
 	gui2::dialogs::mp_staging dlg(engine, li, connection);
-	return dlg.show(video);
+	return dlg.show();
 }
 
-bool goto_mp_wait(CVideo& video, saved_game& state, const config& game_config, wesnothd_connection* connection, bool observe)
+bool goto_mp_wait(saved_game& state, const config& game_config, wesnothd_connection* connection, bool observe)
 {
 	lobby_info li(game_config, std::vector<std::string>());
 
 	gui2::dialogs::mp_join_game dlg(state, li, *connection, false, observe);
 
-	if(!dlg.fetch_game_config(video)) {
+	if(!dlg.fetch_game_config()) {
 		return false;
 	}
 
@@ -638,7 +638,7 @@ bool goto_mp_wait(CVideo& video, saved_game& state, const config& game_config, w
 		return true;
 	}
 
-	return dlg.show(video);
+	return dlg.show();
 }
 
 void start_local_game(CVideo& video, const config& game_config, saved_game& state)

@@ -35,10 +35,8 @@ class custom_tod : public modal_dialog
 public:
 	custom_tod(const std::vector<time_of_day>& times, int current_time);
 
-	static bool execute(const std::vector<time_of_day>& times, int current_time, CVideo& video)
-	{
-		return custom_tod(times, current_time).show(video);
-	}
+	/** The execute function. See @ref modal_dialog for more information. */
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(custom_tod)
 
 	using string_pair = std::pair<std::string, std::string>;
 	using tod_attribute_getter = std::function<string_pair(const time_of_day&)>;

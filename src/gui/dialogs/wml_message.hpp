@@ -245,8 +245,7 @@ struct wml_message_portrait
  *  @param options                Options to offer.
  *  @param input                  Info on text input.
  */
-int show_wml_message(CVideo& video,
-					 const std::string& title,
+int show_wml_message(const std::string& title,
 					 const std::string& message,
 					 const wml_message_portrait* left,
 					 const wml_message_portrait* right,

@@ -437,7 +437,7 @@ void addon_manager::fetch_addons_list(window& window)
 {
 	client_.request_addons_list(cfg_);
 	if(!cfg_) {
-		show_error_message(window.video(), _("An error occurred while downloading the add-ons list from the server."));
+		gui2::show_error_message(_("An error occurred while downloading the add-ons list from the server."));
 		window.close();
 	}
 }
@@ -471,7 +471,7 @@ void addon_manager::load_addon_list(window& window)
 	}
 
 	if(addons_.empty()) {
-		show_transient_message(window.video(), _("No Add-ons Available"), _("There are no add-ons available for download from this server."));
+		show_transient_message(_("No Add-ons Available"), _("There are no add-ons available for download from this server."));
 		window.close();
 	}
 
@@ -616,7 +616,7 @@ void addon_manager::install_addon(const addon_info& addon, window& window)
 void addon_manager::uninstall_addon(const addon_info& addon, window& window)
 {
 	if(have_addon_pbl_info(addon.id) || have_addon_in_vcs_tree(addon.id)) {
-		show_error_message(window.video(),
+		show_error_message(
 			_("The following add-on appears to have publishing or version control information stored locally, and will not be removed:") + " " +
 				addon.display_title());
 		return;
@@ -625,7 +625,7 @@ void addon_manager::uninstall_addon(const addon_info& addon, window& window)
 	bool success = remove_local_addon(addon.id);
 
 	if(!success) {
-		show_error_message(window.video(), _("The following add-on could not be deleted properly:") + " " + addon.display_title());
+		gui2::show_error_message(_("The following add-on could not be deleted properly:") + " " + addon.display_title());
 	} else {
 		need_wml_cache_refresh_ = true;
 
@@ -671,7 +671,7 @@ void addon_manager::publish_addon(const addon_info& addon, window& window)
 	const version_info& version_to_publish = cfg["version"].str();
 
 	if(version_to_publish <= tracking_info_[addon_id].remote_version) {
-		const int res = gui2::show_message(window.video(), _("Warning"),
+		const int res = gui2::show_message(_("Warning"),
 			_("The remote version of this add-on is greater or equal to the version being uploaded. Do you really wish to continue?"),
 			gui2::dialogs::message::yes_no_buttons);
 
@@ -681,11 +681,11 @@ void addon_manager::publish_addon(const addon_info& addon, window& window)
 	}
 
 	if(!::image::exists(cfg["icon"].str())) {
-		gui2::show_error_message(window.video(), _("Invalid icon path. Make sure the path points to a valid image."));
+		gui2::show_error_message(_("Invalid icon path. Make sure the path points to a valid image."));
 	} else if(!client_.request_distribution_terms(server_msg)) {
-		gui2::show_error_message(window.video(),
+		gui2::show_error_message(
 			_("The server responded with an error:") + "\n" + client_.get_last_server_error());
-	} else if(gui2::show_message(window.video(), _("Terms"), server_msg, gui2::dialogs::message::ok_cancel_buttons, true) == gui2::window::OK) {
+	} else if(gui2::show_message(_("Terms"), server_msg, gui2::dialogs::message::ok_cancel_buttons, true) == gui2::window::OK) {
 		if(!client_.upload_addon(addon_id, server_msg, cfg)) {
 			const std::string& msg = _("The server responded with an error:") +
 			                         "\n\n" + client_.get_last_server_error();
@@ -697,12 +697,12 @@ void addon_manager::publish_addon(const addon_info& addon, window& window)
 				//       stuff (having a scroll container is especially
 				//       important since a long list can cause the dialog to
 				//       overflow).
-				gui2::show_error_message(window.video(), msg + "\n\n" + extra_data, true);
+				gui2::show_error_message(msg + "\n\n" + extra_data, true);
 			} else {
-				gui2::show_error_message(window.video(), msg, true);
+				gui2::show_error_message(msg, true);
 			}
 		} else {
-			gui2::show_transient_message(window.video(), _("Response"), server_msg);
+			gui2::show_transient_message(_("Response"), server_msg);
 			fetch_addons_list(window);
 			reload_list_and_reselect_item(addon_id, window);
 		}
@@ -718,8 +718,7 @@ void addon_manager::delete_addon(const addon_info& addon, window& window)
 		{{"addon", make_addon_title(addon_id)}} // FIXME: need the real title!
 	);
 
-	const int res = gui2::show_message(
-		window.video(), _("Confirm"), text, gui2::dialogs::message::yes_no_buttons);
+	const int res = gui2::show_message(_("Confirm"), text, gui2::dialogs::message::yes_no_buttons);
 
 	if(res != gui2::window::OK) {
 		return;
@@ -727,10 +726,10 @@ void addon_manager::delete_addon(const addon_info& addon, window& window)
 
 	std::string server_msg;
 	if(!client_.delete_remote_addon(addon_id, server_msg)) {
-		gui2::show_error_message(window.video(), _("The server responded with an error:") + "\n" + client_.get_last_server_error());
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + client_.get_last_server_error());
 	} else {
 		// FIXME: translation needed!
-		gui2::show_transient_message(window.video(), _("Response"), server_msg);
+		gui2::show_transient_message(_("Response"), server_msg);
 		fetch_addons_list(window);
 		reload_list_and_reselect_item(addon_id, window);
 	}
@@ -746,7 +745,7 @@ void addon_manager::execute_default_action(const addon_info& addon, window& wind
 		case ADDON_INSTALLED:
 			if(!tracking_info_[addon.id].can_publish) {
 				utils::string_map symbols{ { "addon", addon.display_title() } };
-				int res = gui2::show_message(window.video(), _("Uninstall add-on"),
+				int res = gui2::show_message(_("Uninstall add-on"),
 					vgettext("Do you want to uninstall '$addon|'?", symbols),
 					gui2::dialogs::message::ok_cancel_buttons);
 				if(res == gui2::window::OK) {

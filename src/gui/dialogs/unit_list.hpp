@@ -39,14 +39,14 @@ class unit_list : public modal_dialog
 public:
 	explicit unit_list(unit_ptr_vector& unit_list, map_location& scroll_to);
 
-	static bool execute(unit_ptr_vector& units, map_location& scroll_to, CVideo& video)
+	static bool execute(unit_ptr_vector& units, map_location& scroll_to)
 	{
 		if(units.empty()) {
-			show_transient_message(video, "", _("No units found."));
+			show_transient_message("", _("No units found."));
 			return false;
 		}
 
-		return unit_list(units, scroll_to).show(video);
+		return unit_list(units, scroll_to).show();
 	}
 
 private:

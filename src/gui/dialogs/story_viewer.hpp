@@ -35,12 +35,12 @@ public:
 
 	~story_viewer();
 
-	static void display(const std::string& scenario_name, const config& story, CVideo& video)
+	static void display(const std::string& scenario_name, const config& story)
 	{
 		try {
 			story_viewer viewer(scenario_name, story);
 			if(viewer.controller_.max_parts() > 0) {
-				viewer.show(video);
+				viewer.show();
 			}
 		} catch(std::out_of_range&) {}
 	}

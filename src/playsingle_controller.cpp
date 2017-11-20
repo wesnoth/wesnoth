@@ -164,7 +164,6 @@ void playsingle_controller::play_scenario_init()
 	if(!saved_game_.classification().random_mode.empty() && is_networked_mp()) {
 		// This won't cause errors later but we should notify the user about it in case he didn't knew it.
 		gui2::show_transient_message(
-			gui_->video(),
 			// TODO: find a better title
 			_("Game Error"),
 			_("This multiplayer game uses an alternative random mode, if you don't know what this message means, then most likely someone is cheating or someone reloaded a corrupt game.")
@@ -252,7 +251,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		}
 
 		if(!cfg.empty()) {
-			gui2::dialogs::story_viewer::display(get_scenario_name(), cfg, gui_->video());
+			gui2::dialogs::story_viewer::display(get_scenario_name(), cfg);
 		}
 	}
 	gui_->labels().read(level);
@@ -317,7 +316,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 			gamestate().board_.heal_all_survivors();
 		}
 		if(is_observer()) {
-			gui2::show_transient_message(gui_->video(), _("Game Over"), _("The game is over."));
+			gui2::show_transient_message(_("Game Over"), _("The game is over."));
 			return LEVEL_RESULT::OBSERVER_END;
 		}
 		// If we're a player, and the result is victory/defeat, then send
@@ -446,7 +445,7 @@ void playsingle_controller::show_turn_dialog(){
 		utils::string_map symbols;
 		symbols["name"] = gamestate().board_.get_team(current_side()).side_name();
 		message = utils::interpolate_variables_into_string(message, &symbols);
-		gui2::show_transient_message(gui_->video(), "", message);
+		gui2::show_transient_message("", message);
 	}
 }
 

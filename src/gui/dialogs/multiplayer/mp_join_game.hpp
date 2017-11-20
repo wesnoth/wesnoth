@@ -23,7 +23,6 @@
 #include "mp_game_settings.hpp"
 
 class config;
-class CVideo;
 
 namespace gui2
 {
@@ -41,12 +40,7 @@ public:
 
 	~mp_join_game();
 
-	/**
-	 * FIXME: We shouldn't need to pass a CVideo argument here. Optimally, this would be done in
-	 * post_build or pre_show, but there's a bug where the Faction Select dialog does not display
-	 * there. This should be changed to either of those functions once that's fixed.
-	 */
-	bool fetch_game_config(CVideo& video);
+	bool fetch_game_config();
 	bool started() const { return level_["started"].to_bool(); }
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

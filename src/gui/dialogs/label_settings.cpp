@@ -113,9 +113,9 @@ void label_settings::pre_show(window& window) {
 	}
 }
 
-bool label_settings::execute(display_context& dc, CVideo& video) {
+bool label_settings::execute(display_context& dc) {
 	label_settings window(dc);
-	if(!window.show(video)) return false;
+	if(!window.show()) return false;
 	std::vector<std::string> hidden_categories;
 	for(auto lbl : window.all_labels) {
 		if(lbl.second == false) {

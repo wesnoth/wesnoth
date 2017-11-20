@@ -214,7 +214,7 @@ void context_manager::load_map_dialog(bool force_same_context /* = false */)
 	dlg.set_title(_("Load Map"))
 	   .set_path(fn);
 
-	if(dlg.show(gui_.video())) {
+	if(dlg.show()) {
 		load_map(dlg.path(), !force_same_context);
 	}
 }
@@ -235,7 +235,7 @@ void context_manager::edit_side_dialog(int side_index)
 
 	editor_team_info team_info(t);
 
-	if(gui2::dialogs::editor_edit_side::execute(team_info, gui_.video())) {
+	if(gui2::dialogs::editor_edit_side::execute(team_info)) {
 		get_map_context().set_side_setup(team_info);
 	}
 }
@@ -258,7 +258,7 @@ void context_manager::edit_scenario_dialog()
 	bool random  = context.random_start_time();
 
 	const bool ok = gui2::dialogs::editor_edit_scenario::execute(
-		id, name, description, turns, xp_mod, victory, random, gui_.video()
+		id, name, description, turns, xp_mod, victory, random
 	);
 
 	if(!ok) {
@@ -277,7 +277,7 @@ void context_manager::new_map_dialog()
 	int w = get_map().w();
 	int h = get_map().h();
 
-	if(gui2::dialogs::editor_new_map::execute(_("New Map"), w, h, gui_.video())) {
+	if(gui2::dialogs::editor_new_map::execute(_("New Map"), w, h)) {
 		const t_translation::terrain_code& fill = get_selected_bg_terrain();
 		new_map(w, h, fill, true);
 	}
@@ -288,7 +288,7 @@ void context_manager::new_scenario_dialog()
 	int w = get_map().w();
 	int h = get_map().h();
 
-	if(gui2::dialogs::editor_new_map::execute(_("New Scenario"), w, h, gui_.video())) {
+	if(gui2::dialogs::editor_new_map::execute(_("New Scenario"), w, h)) {
 		const t_translation::terrain_code& fill = get_selected_bg_terrain();
 		new_scenario(w, h, fill, true);
 	}
@@ -472,16 +472,16 @@ void context_manager::apply_mask_dialog()
 	dlg.set_title(_("Apply Mask"))
 	   .set_path(fn);
 
-	if(dlg.show(gui_.video())) {
+	if(dlg.show()) {
 		try {
 			map_context mask(game_config_, dlg.path());
 			editor_action_apply_mask a(mask.get_map());
 			perform_refresh(a);
 		} catch (editor_map_load_exception& e) {
-			gui2::show_transient_message(gui_.video(), _("Error loading mask"), e.what());
+			gui2::show_transient_message(_("Error loading mask"), e.what());
 			return;
 		} catch (editor_action_exception& e) {
-			gui2::show_error_message(gui_.video(), e.what());
+			gui2::show_error_message(e.what());
 			return;
 		}
 	}
@@ -498,7 +498,7 @@ void context_manager::rename_area_dialog()
 	int active_area  = get_map_context().get_active_area();
 	std::string name = get_map_context().get_time_manager()->get_area_ids()[active_area];
 
-	if(gui2::dialogs::edit_text::execute(N_("Rename Area"), N_("Identifier:"), name, gui_.video())) {
+	if(gui2::dialogs::edit_text::execute(N_("Rename Area"), N_("Identifier:"), name)) {
 		get_map_context().get_time_manager()->set_area_id(active_area, name);
 	}
 }
@@ -515,16 +515,16 @@ void context_manager::create_mask_to_dialog()
 	dlg.set_title(_("Choose Target Map"))
 	   .set_path(fn);
 
-	if(dlg.show(gui_.video())) {
+	if(dlg.show()) {
 		try {
 			map_context map(game_config_, dlg.path());
 			editor_action_create_mask a(map.get_map());
 			perform_refresh(a);
 		} catch (editor_map_load_exception& e) {
-			gui2::show_transient_message(gui_.video(), _("Error loading map"), e.what());
+			gui2::show_transient_message(_("Error loading map"), e.what());
 			return;
 		} catch (editor_action_exception& e) {
-			gui2::show_error_message(gui_.video(), e.what());
+			gui2::show_error_message(e.what());
 			return;
 		}
 	}
@@ -577,7 +577,7 @@ void context_manager::resize_map_dialog()
 	gui2::dialogs::editor_resize_map::EXPAND_DIRECTION dir = gui2::dialogs::editor_resize_map::EXPAND_DIRECTION();
 	bool copy = false;
 
-	if(!gui2::dialogs::editor_resize_map::execute(w, h, dir, copy, gui_.video())) {
+	if(!gui2::dialogs::editor_resize_map::execute(w, h, dir, copy)) {
 		return;
 	}
 
@@ -650,7 +650,7 @@ void context_manager::save_map_as_dialog()
 	   .set_path(input_name)
 	   .set_extension(".map");
 
-	if(!dlg.show(gui_.video())) {
+	if(!dlg.show()) {
 		return;
 	}
 
@@ -671,7 +671,7 @@ void context_manager::save_scenario_as_dialog()
 	   .set_path(input_name)
 	   .set_extension(".cfg");
 
-	if(!dlg.show(gui_.video())) {
+	if(!dlg.show()) {
 		return;
 	}
 
@@ -698,13 +698,13 @@ void context_manager::init_map_generators(const config& game_config)
 void context_manager::generate_map_dialog()
 {
 	if(map_generators_.empty()) {
-		gui2::show_error_message(gui_.video(), _("No random map generators found."));
+		gui2::show_error_message(_("No random map generators found."));
 		return;
 	}
 
 	gui2::dialogs::editor_generate_map dialog(map_generators_);
 	dialog.select_map_generator(last_map_generator_);
-	dialog.show(gui_.video());
+	dialog.show();
 
 	if(dialog.get_retval() == gui2::window::OK) {
 		std::string map_string;
@@ -712,12 +712,12 @@ void context_manager::generate_map_dialog()
 		try {
 			map_string = map_generator->create_map(dialog.get_seed());
 		} catch (mapgen_exception& e) {
-			gui2::show_transient_message(gui_.video(), _("Map creation failed."), e.what());
+			gui2::show_transient_message(_("Map creation failed."), e.what());
 			return;
 		}
 
 		if(map_string.empty()) {
-			gui2::show_transient_message(gui_.video(), "", _("Map creation failed."));
+			gui2::show_transient_message("", _("Map creation failed."));
 		} else {
 			editor_map new_map(game_config_, map_string);
 			editor_action_whole_map a(new_map);
@@ -732,7 +732,7 @@ void context_manager::generate_map_dialog()
 bool context_manager::confirm_discard()
 {
 	if(get_map_context().modified()) {
-		const int res = gui2::show_message(gui_.video(), _("Unsaved Changes"),
+		const int res = gui2::show_message(_("Unsaved Changes"),
 			_("Do you want to discard all changes made to the map since the last save?"), gui2::dialogs::message::yes_no_buttons);
 		return gui2::window::CANCEL != res;
 	}
@@ -789,7 +789,7 @@ bool context_manager::save_scenario_as(const std::string& filename)
 {
 	size_t is_open = check_open_map(filename);
 	if(is_open < map_contexts_.size() && is_open != static_cast<unsigned>(current_context_index_)) {
-		gui2::show_transient_message(gui_.video(), _("This scenario is already open."), filename);
+		gui2::show_transient_message(_("This scenario is already open."), filename);
 		return false;
 	}
 
@@ -812,7 +812,7 @@ bool context_manager::save_map_as(const std::string& filename)
 {
 	size_t is_open = check_open_map(filename);
 	if(is_open < map_contexts_.size() && is_open != static_cast<unsigned>(current_context_index_)) {
-		gui2::show_transient_message(gui_.video(), _("This map is already open."), filename);
+		gui2::show_transient_message(_("This map is already open."), filename);
 		return false;
 	}
 
@@ -836,10 +836,10 @@ bool context_manager::write_scenario(bool display_confirmation)
 	try {
 		get_map_context().save_scenario();
 		if(display_confirmation) {
-			gui2::show_transient_message(gui_.video(), "", _("Scenario saved."));
+			gui2::show_transient_message("", _("Scenario saved."));
 		}
 	} catch (editor_map_save_exception& e) {
-		gui2::show_transient_message(gui_.video(), "", e.what());
+		gui2::show_transient_message("", e.what());
 		return false;
 	}
 
@@ -851,10 +851,10 @@ bool context_manager::write_map(bool display_confirmation)
 	try {
 		get_map_context().save_map();
 		if(display_confirmation) {
-			gui2::show_transient_message(gui_.video(), "", _("Map saved."));
+			gui2::show_transient_message("", _("Map saved."));
 		}
 	} catch (editor_map_save_exception& e) {
-		gui2::show_transient_message(gui_.video(), "", e.what());
+		gui2::show_transient_message("", e.what());
 		return false;
 	}
 
@@ -875,7 +875,7 @@ bool context_manager::check_switch_open_map(const std::string& fn)
 {
 	size_t i = check_open_map(fn);
 	if(i < map_contexts_.size()) {
-		gui2::show_transient_message(gui_.video(), _("This map is already open."), fn);
+		gui2::show_transient_message(_("This map is already open."), fn);
 		switch_context(i);
 		return true;
 	}
@@ -909,7 +909,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 
 		if(get_map_context().is_embedded()) {
 			const std::string& msg = _("Loaded embedded map data");
-			gui2::show_transient_message(gui_.video(), _("Map loaded from scenario"), msg);
+			gui2::show_transient_message(_("Map loaded from scenario"), msg);
 		} else {
 			if(get_map_context().get_filename() != filename) {
 				if(get_map_context().get_map_data_key().empty()) {
@@ -922,14 +922,14 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 					const std::string& msg = _("Loaded referenced map file:\n$new");
 					symbols["new"] = get_map_context().get_filename();
 					symbols["map_data"] = get_map_context().get_map_data_key();
-					gui2::show_transient_message(gui_.video(), _("Map loaded from scenario"),
+					gui2::show_transient_message(_("Map loaded from scenario"),
 						//TODO: msg is already translated does vgettext make sense?
 						vgettext(msg.c_str(), symbols));
 				}
 			}
 		}
 	} catch (editor_map_load_exception& e) {
-		gui2::show_transient_message(gui_.video(), _("Error loading map"), e.what());
+		gui2::show_transient_message(_("Error loading map"), e.what());
 		return;
 	}
 }

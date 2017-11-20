@@ -254,7 +254,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 		}));
 		button_add_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Add"), [this]() {
 			std::string newid;
-			if (gui2::dialogs::edit_text::execute(_("New Location Identifer"), "", newid, video())) {
+			if (gui2::dialogs::edit_text::execute(_("New Location Identifer"), "", newid)) {
 				add_item(newid);
 			}
 		}));

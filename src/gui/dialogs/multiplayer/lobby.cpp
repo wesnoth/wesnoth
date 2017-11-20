@@ -245,7 +245,7 @@ bool handle_addon_requirements_gui(CVideo& v, const std::vector<mp::game_info::r
 				err_msg += font::unicode_bullet + " " + a.message + "\n";
 			}
 		}
-		gui2::show_message(v, e_title, err_msg, message::auto_close);
+		gui2::show_message(e_title, err_msg, message::auto_close);
 
 		return false;
 	} else if(addon_outcome == mp::game_info::NEED_DOWNLOAD) {
@@ -267,7 +267,7 @@ bool handle_addon_requirements_gui(CVideo& v, const std::vector<mp::game_info::r
 
 		assert(needs_download.size() > 0);
 
-		if(gui2::show_message(v, e_title, err_msg, message::yes_no_buttons, true) == gui2::window::OK) {
+		if(gui2::show_message(e_title, err_msg, message::yes_no_buttons, true) == gui2::window::OK) {
 			// Begin download session
 			ad_hoc_addon_fetch_session(v, needs_download);
 
@@ -950,7 +950,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 	// Prompt user to download this game's required addons if its requirements have not been met
 	if(game.addons_outcome != mp::game_info::SATISFIED) {
 		if(game.required_addons.empty()) {
-			gui2::show_error_message(window.video(), _("Something is wrong with the addon version check database supporting the multiplayer lobby. Please report this at http://bugs.wesnoth.org."));
+			gui2::show_error_message(_("Something is wrong with the addon version check database supporting the multiplayer lobby. Please report this at http://bugs.wesnoth.org."));
 			return;
 		}
 
@@ -973,7 +973,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 	if(!join_data.empty() && try_join && game.password_required) {
 		std::string password;
 
-		if(!gui2::dialogs::mp_join_game_password_prompt::execute(password, window.video())) {
+		if(!gui2::dialogs::mp_join_game_password_prompt::execute(password)) {
 			return;
 		}
 
@@ -1114,7 +1114,7 @@ void mp_lobby::user_dialog_callback(mp::user_info* info)
 
 	lobby_delay_gamelist_update_guard g(*this);
 
-	dlg.show(get_window()->video());
+	dlg.show();
 
 	delay_playerlist_update_ = true;
 
