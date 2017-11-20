@@ -134,7 +134,7 @@ void game_config_manager::load_game_config_with_loadscreen(FORCE_RELOAD_CONFIG f
 		}
 	}
 
-	gui2::dialogs::loading_screen::display(video_, [this, force_reload, classification]() {
+	gui2::dialogs::loading_screen::display([this, force_reload, classification]() {
 		load_game_config(force_reload, classification);
 	});
 }

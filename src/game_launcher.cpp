@@ -933,7 +933,7 @@ bool game_launcher::change_language()
 
 void game_launcher::show_preferences()
 {
-	gui2::dialogs::preferences_dialog::display(video(),  game_config_manager::get()->game_config());
+	gui2::dialogs::preferences_dialog::display(game_config_manager::get()->game_config());
 }
 
 void game_launcher::launch_game(RELOAD_GAME_DATA reload)
@@ -945,7 +945,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		return;
 	}
 
-	gui2::dialogs::loading_screen::display(video(), [this, reload]() {
+	gui2::dialogs::loading_screen::display([this, reload]() {
 
 		gui2::dialogs::loading_screen::progress(loading_stage::load_data);
 		if(reload == RELOAD_DATA) {

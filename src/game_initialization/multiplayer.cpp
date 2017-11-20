@@ -585,7 +585,7 @@ void start_client(CVideo& video, const config& game_config,	saved_game& state, c
 	wesnothd_connection_ptr connection;
 	config lobby_config;
 
-	gui2::dialogs::loading_screen::display(video, [&]() {
+	gui2::dialogs::loading_screen::display([&]() {
 		std::tie(connection, lobby_config) = open_connection(video, host);
 	});
 

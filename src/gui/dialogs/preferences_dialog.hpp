@@ -69,12 +69,12 @@ namespace dialogs
 class preferences_dialog : public modal_dialog
 {
 public:
-	preferences_dialog(CVideo& video, const config& game_cfg, const preferences::PREFERENCE_VIEW& initial_view);
+	preferences_dialog(const config& game_cfg, const preferences::PREFERENCE_VIEW& initial_view);
 
 	/** The display function -- see @ref modal_dialog for more information. */
-	static void display(CVideo& video, const config& game_cfg, const preferences::PREFERENCE_VIEW initial_view = preferences::VIEW_DEFAULT)
+	static void display(const config& game_cfg, const preferences::PREFERENCE_VIEW initial_view = preferences::VIEW_DEFAULT)
 	{
-		preferences_dialog(video, game_cfg, initial_view).show();
+		preferences_dialog(game_cfg, initial_view).show();
 	}
 
 	typedef std::vector<const hotkey::hotkey_command*> t_visible_hotkeys;

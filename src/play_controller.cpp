@@ -206,7 +206,7 @@ struct throw_end_level
 void play_controller::init(CVideo& video, const config& level)
 {
 
-	gui2::dialogs::loading_screen::display(video, [this, &video, &level]() {
+	gui2::dialogs::loading_screen::display([this, &video, &level]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_level);
 
 		LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks()) << std::endl;

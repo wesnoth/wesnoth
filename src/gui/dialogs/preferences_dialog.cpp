@@ -75,8 +75,8 @@ using namespace preferences;
 
 REGISTER_DIALOG(preferences_dialog)
 
-preferences_dialog::preferences_dialog(CVideo& video, const config& game_cfg, const PREFERENCE_VIEW& initial_view)
-	: resolutions_(video.get_available_resolutions(true))
+preferences_dialog::preferences_dialog(const config& game_cfg, const PREFERENCE_VIEW& initial_view)
+	: resolutions_() // should be populated by set_resolution_list before use
 	, adv_preferences_cfg_()
 	, last_selected_item_(0)
 	, accl_speeds_({0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 3, 4, 8, 16})

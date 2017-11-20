@@ -200,7 +200,7 @@ void menu_handler::save_map()
 
 void menu_handler::preferences()
 {
-	gui2::dialogs::preferences_dialog::display(gui_->video(), game_config_);
+	gui2::dialogs::preferences_dialog::display(game_config_);
 	// Needed after changing fullscreen/windowed mode or display resolution
 	gui_->redraw_everything();
 }
