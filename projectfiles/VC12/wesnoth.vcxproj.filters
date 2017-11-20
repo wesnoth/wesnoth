@@ -488,6 +488,9 @@
     <ClCompile Include="..\..\src\gui\widgets\slider.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\widgets\slider_base.cpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\spacer.cpp">
       <Filter>Gui\Widgets</Filter>
     </ClCompile>
@@ -1211,6 +1214,9 @@
     <ClCompile Include="..\..\src\sdl\exception.cpp">
       <Filter>SDL</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\sdl\point.cpp">
+      <Filter>SDL</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\sdl\rect.cpp">
       <Filter>SDL</Filter>
     </ClCompile>
@@ -1371,6 +1377,9 @@
       <Filter>Units</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\units\id.cpp">
+      <Filter>Units</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\units\make.cpp">
       <Filter>Units</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\units\map.cpp">
@@ -1536,15 +1545,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\gui\widgets\slider_base.cpp">
-      <Filter>Gui\Widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\sdl\point.cpp">
-      <Filter>SDL</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\units\make.cpp">
-      <Filter>Units</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1885,6 +1885,9 @@
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\slider.hpp">
+      <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\widgets\slider_base.hpp">
       <Filter>Gui\Widgets</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\gui\widgets\spacer.hpp">
@@ -2607,6 +2610,9 @@
     <ClInclude Include="..\..\src\sdl\exception.hpp">
       <Filter>SDL</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\sdl\point.hpp">
+      <Filter>SDL</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\sdl\rect.hpp">
       <Filter>SDL</Filter>
     </ClInclude>
@@ -2785,6 +2791,9 @@
       <Filter>Units</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\units\id.hpp">
+      <Filter>Units</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\units\make.hpp">
       <Filter>Units</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\units\map.hpp">
@@ -2994,15 +3003,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\preferences\lobby.hpp">
       <Filter>Preferences</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\gui\widgets\slider_base.hpp">
-      <Filter>Gui\Widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\sdl\point.hpp">
-      <Filter>SDL</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\units\make.hpp">
-      <Filter>Units</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
