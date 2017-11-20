@@ -37,7 +37,12 @@ bool surrender_confirmation::surrender()
 				open_ = false;
 				return false;
 			} else {
-				synced_context::run_and_throw("surrender", replay_helper::get_init_side());
+				if(resources::controller->current_side() == resources::screen->viewing_side()) {
+					synced_context::run_and_throw("surrender", replay_helper::get_init_side());
+				}	else {
+					resources::recorder->add_surrender(resources::controller->current_side());
+				}
+				throw_quit_game_exception();
 			}
 			open_ = false;
 			return true;

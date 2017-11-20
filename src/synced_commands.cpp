@@ -683,13 +683,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_shroud, /*child*/, use_undo, /*show*/, /*e
 
 SYNCED_COMMAND_HANDLER_FUNCTION(surrender, child, /*use_undo*/, /*show*/, /*error_handler*/)
 {
-	if(child.has_attribute("side_number")) {
-		int side = child.get("side_number")->to_int(0);
-		resources::recorder->add_surrender();
-		if(side == resources::controller->current_side())
-			throw_quit_game_exception();
-	}
-
+	int side = child.get("side_number")->to_int();
+	resources::recorder->add_surrender(side);
 	return true;
 }
 
