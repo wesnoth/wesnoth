@@ -28,7 +28,6 @@ include(GNUInstallDirs)
 #Path options
 set(DATADIRNAME "wesnoth" CACHE STRING "change the name of the directory for the read-only architecture-independent game data")
 set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}" CACHE STRING "change the dir where binaries are placed right at compile time")
-set(LOCALEDIR "translations" CACHE STRING "change the name of the locale data directory to a non-default name")
 set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.wesnoth on unix)")
 set(DEFAULT_PREFS_FILE "" CACHE STRING "Set system wide preferences file")
 
@@ -484,8 +483,6 @@ if(X11_FOUND)
 	add_definitions(-D_X11)
 endif(X11_FOUND)
 
-add_definitions(-DLOCALEDIR="${LOCALEDIR}")
-
 # -NDEBUG is automatically added to all release build types, so manually remove
 # this define from the related variables
 MESSAGE ("removing NDEBUG flag from CMAKE_CXX_FLAGS_RELWITHDEBINFO")
@@ -761,11 +758,8 @@ if(ENABLE_GAME)
 	endif(ENABLE_HISTORY AND HISTORY_FOUND)
 endif(ENABLE_GAME)
 
-if(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_TOOLS OR ENABLE_TESTS)
-	find_package(Boost 1.50 REQUIRED COMPONENTS filesystem)
-
-	find_package(Boost 1.50 REQUIRED COMPONENTS locale)
-endif(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_TOOLS OR ENABLE_TESTS)
+find_package(Boost 1.50 REQUIRED COMPONENTS filesystem)
+find_package(Boost 1.50 REQUIRED COMPONENTS locale)
 
 if(ENABLE_POT_UPDATE_TARGET)
 	find_package(TranslationTools REQUIRED)
