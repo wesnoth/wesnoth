@@ -274,7 +274,7 @@ private:
 class create_engine
 {
 public:
-	create_engine(CVideo& v, saved_game& state);
+	explicit create_engine(saved_game& state);
 
 	enum MP_EXTRA { ERA, MOD };
 

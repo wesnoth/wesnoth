@@ -17,35 +17,36 @@
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 
 #include "game_config_manager.hpp"
-#include "preferences/game.hpp"
+#include "game_initialization/lobby_data.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/image.hpp"
+#include "gui/widgets/integer_selector.hpp"
+#include "gui/widgets/menu_button.hpp"
+#include "preferences/game.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
 #include "gui/widgets/listbox.hpp"
 #endif
+#include "formatter.hpp"
+#include "game_config.hpp"
 #include "gui/widgets/minimap.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/status_label_helper.hpp"
+#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/toggle_panel.hpp"
-#include "gui/widgets/text_box.hpp"
-#include "game_config.hpp"
 #include "log.hpp"
 #include "savegame.hpp"
 #include "settings.hpp"
-#include "formatter.hpp"
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "utils/functional.hpp"
@@ -73,9 +74,9 @@ namespace prefs = preferences;
 
 REGISTER_DIALOG(mp_create_game)
 
-mp_create_game::mp_create_game(const config& cfg, ng::create_engine& create_eng)
+mp_create_game::mp_create_game(const config& cfg, saved_game& state, bool local_mode, mp::user_info* host_info)
 	: cfg_(cfg)
-	, create_engine_(create_eng)
+	, create_engine_(state)
 	, config_engine_()
 	, options_manager_()
 	, selected_game_index_(-1)
@@ -101,6 +102,8 @@ mp_create_game::mp_create_game(const config& cfg, ng::create_engine& create_eng)
 	, action_bonus_(register_integer("action_bonus", true, prefs::countdown_action_bonus, prefs::set_countdown_action_bonus))
 	, mod_list_()
 	, eras_menu_button_()
+	, local_mode_(local_mode)
+	, host_info_(host_info)
 {
 	level_types_ = {
 		{ng::level::TYPE::SCENARIO, _("Scenarios")},
@@ -298,6 +301,26 @@ void mp_create_game::pre_show(window& win)
 	bind_status_label<slider>(&win, turn_bonus_->id());
 	bind_status_label<slider>(&win, reservoir_->id());
 	bind_status_label<slider>(&win, action_bonus_->id());
+
+	//
+	// Disable certain settings if we're playing a local game.
+	//
+
+	// Don't allow a 'registered users only' game if the host themselves isn't registered.
+	if(local_mode_ || (host_info_ && !host_info_->registered)) {
+		registered_users_->widget_set_enabled(win, false, false);
+	}
+
+	if(local_mode_) {
+		find_widget<text_box>(&win, "game_password", false).set_active(false);
+
+		observers_->widget_set_enabled(win, false, false);
+		strict_sync_->widget_set_enabled(win, false, false);
+	}
+
+	if(host_info_ && !host_info_->registered) {
+		registered_users_->widget_set_enabled(win, false, false);
+	}
 
 	//
 	// Set up tab control

@@ -470,11 +470,11 @@ void enter_create_mode(mp_workflow_helper_ptr helper)
 
 	bool dlg_cancel = false;
 	{
-		ng::create_engine create_eng(helper->video, helper->state);
+		bool local_mode = helper->connection == nullptr;
+		mp::user_info* host_info = helper->lobby_info->get_user(preferences::login());
 
-		gui2::dialogs::mp_create_game dlg(helper->game_config, create_eng);
-		dlg.show(helper->video);
-		dlg_cancel = dlg.get_retval() == gui2::window::CANCEL;
+		gui2::dialogs::mp_create_game dlg(helper->game_config, helper->state, local_mode, host_info);
+		dlg_cancel = !dlg.show(helper->video);
 	}
 
 	if(!dlg_cancel) {

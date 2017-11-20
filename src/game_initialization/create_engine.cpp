@@ -28,6 +28,7 @@
 #include "map/map.hpp"
 #include "minimap.hpp"
 #include "saved_game.hpp"
+#include "video.hpp"
 #include "wml_exception.hpp"
 
 #include "serialization/preprocessor.hpp"
@@ -226,7 +227,7 @@ void campaign::mark_if_completed()
 	}
 }
 
-create_engine::create_engine(CVideo& v, saved_game& state)
+create_engine::create_engine(saved_game& state)
 	: current_level_type_()
 	, current_level_index_(0)
 	, current_era_index_(0)
@@ -238,7 +239,7 @@ create_engine::create_engine(CVideo& v, saved_game& state)
 	, eras_()
 	, mods_()
 	, state_(state)
-	, video_(v)
+	, video_(CVideo::get_singleton())
 	, dependency_manager_(nullptr)
 	, generator_(nullptr)
 	, selected_campaign_difficulty_()

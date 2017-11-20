@@ -31,7 +31,7 @@ bool enter_create_mode(CVideo& video, const config& game_config, saved_game& sta
 	bool configure_canceled = false;
 
 	do {
-		ng::create_engine create_eng(video, state);
+		ng::create_engine create_eng(state);
 
 		create_eng.set_current_level_type(ng::level::TYPE::SP_CAMPAIGN);
 
