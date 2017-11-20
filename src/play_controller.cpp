@@ -826,7 +826,7 @@ void play_controller::save_game()
 		save_blocker::save_unblocker unblocker;
 		scoped_savegame_snapshot snapshot(*this);
 		savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
-		save.save_game_interactive(gui_->video(), "", savegame::savegame::OK_CANCEL);
+		save.save_game_interactive("", savegame::savegame::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_game);
 	}
@@ -839,7 +839,7 @@ void play_controller::save_game_auto(const std::string& filename)
 
 		scoped_savegame_snapshot snapshot(*this);
 		savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
-		save.save_game_automatic(gui_->video(), false, filename);
+		save.save_game_automatic(false, filename);
 	}
 }
 
@@ -848,7 +848,7 @@ void play_controller::save_replay()
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
 		savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
-		save.save_game_interactive(gui_->video(), "", savegame::savegame::OK_CANCEL);
+		save.save_game_interactive("", savegame::savegame::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_replay);
 	}
@@ -859,7 +859,7 @@ void play_controller::save_replay_auto(const std::string& filename)
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
 		savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
-		save.save_game_automatic(gui_->video(), false, filename);
+		save.save_game_automatic(false, filename);
 	}
 }
 
@@ -987,7 +987,7 @@ void play_controller::process_oos(const std::string& msg) const
 
 	scoped_savegame_snapshot snapshot(*this);
 	savegame::oos_savegame save(saved_game_, *gui_, ignore_replay_errors_);
-	save.save_game_interactive(gui_->video(), message.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
+	save.save_game_interactive(message.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
 }
 
 void play_controller::update_gui_to_player(const int team_index, const bool observe)
@@ -1009,7 +1009,7 @@ void play_controller::do_consolesave(const std::string& filename)
 {
 	scoped_savegame_snapshot snapshot(*this);
 	savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
-	save.save_game_automatic(gui_->video(), true, filename);
+	save.save_game_automatic(true, filename);
 }
 
 void play_controller::update_savegame_snapshot() const

@@ -149,7 +149,7 @@ bool loadgame::load_game_ingame()
 		return false;
 	}
 
-	if (!loadgame::check_version_compatibility(summary["version"].str(), video_)) {
+	if (!loadgame::check_version_compatibility(summary["version"].str())) {
 		return false;
 	}
 
@@ -214,10 +214,10 @@ bool loadgame::load_game()
 
 bool loadgame::check_version_compatibility()
 {
-	return loadgame::check_version_compatibility(gamestate_.classification().version, video_);
+	return loadgame::check_version_compatibility(gamestate_.classification().version);
 }
 
-bool loadgame::check_version_compatibility(const version_info & save_version, CVideo & video)
+bool loadgame::check_version_compatibility(const version_info & save_version)
 {
 	if (save_version == game_config::version) {
 		return true;
@@ -335,7 +335,7 @@ savegame::savegame(saved_game& gamestate, const compression::format compress_sav
 	, compress_saves_(compress_saves)
 {}
 
-bool savegame::save_game_automatic(CVideo& video, bool ask_for_overwrite, const std::string& filename)
+bool savegame::save_game_automatic(bool ask_for_overwrite, const std::string& filename)
 {
 	if (filename.empty())
 		create_filename();
@@ -343,33 +343,33 @@ bool savegame::save_game_automatic(CVideo& video, bool ask_for_overwrite, const 
 		filename_ = filename;
 
 	if (ask_for_overwrite){
-		if (!check_overwrite(video)) {
-			return save_game_interactive(video, "", savegame::OK_CANCEL);
+		if (!check_overwrite()) {
+			return save_game_interactive("", savegame::OK_CANCEL);
 		}
 	}
 
-	return save_game(&video);
+	return save_game();
 }
 
-bool savegame::save_game_interactive(CVideo& video, const std::string& message, DIALOG_TYPE dialog_type)
+bool savegame::save_game_interactive(const std::string& message, DIALOG_TYPE dialog_type)
 {
 	show_confirmation_ = true;
 	create_filename();
 
-	const int res = show_save_dialog(video, message, dialog_type);
+	const int res = show_save_dialog(message, dialog_type);
 
 	if (res == 2) {
 		throw_quit_game_exception(); //Quit game
 	}
 
-	if (res == gui2::window::OK && check_overwrite(video)) {
-		return save_game(&video);
+	if (res == gui2::window::OK && check_overwrite()) {
+		return save_game();
 	}
 
 	return false;
 }
 
-int savegame::show_save_dialog(CVideo& video, const std::string& message, DIALOG_TYPE dialog_type)
+int savegame::show_save_dialog(const std::string& message, DIALOG_TYPE dialog_type)
 {
 	int res = 0;
 
@@ -386,14 +386,14 @@ int savegame::show_save_dialog(CVideo& video, const std::string& message, DIALOG
 
 	set_filename(filename_);
 
-	if (!check_filename(filename_, video)) {
+	if (!check_filename(filename_)) {
 		res = gui2::window::CANCEL;
 	}
 
 	return res;
 }
 
-bool savegame::check_overwrite(CVideo& video)
+bool savegame::check_overwrite()
 {
 	if(!save_game_exists(filename_, compress_saves_)) {
 		return true;
@@ -406,7 +406,7 @@ bool savegame::check_overwrite(CVideo& video)
 
 }
 
-bool savegame::check_filename(const std::string& filename, CVideo& video)
+bool savegame::check_filename(const std::string& filename)
 {
 	if (filesystem::is_compressed_file(filename)) {
 		gui2::show_error_message(_("Save names should not end on '.gz' or '.bz2'. "
@@ -437,7 +437,7 @@ void savegame::before_save()
 {
 }
 
-bool savegame::save_game(CVideo* video, const std::string& filename)
+bool savegame::save_game(const std::string& filename)
 {
 
 	try {
@@ -458,16 +458,15 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		end = SDL_GetTicks();
 		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start << std::endl;
 
-		if (video != nullptr && show_confirmation_)
+		if (show_confirmation_)
 			gui2::show_transient_message(_("Saved"), _("The game has been saved."));
 		return true;
 	} catch(game::save_game_failed& e) {
 		ERR_SAVE << error_message_ << e.message << std::endl;
-		if (video != nullptr){
-			gui2::show_error_message(error_message_ + e.message);
-			//do not bother retrying, since the user can just try to save the game again
-			//maybe show a yes-no dialog for "disable autosaves now"?
-		}
+
+		gui2::show_error_message(error_message_ + e.message);
+		//do not bother retrying, since the user can just try to save the game again
+		//maybe show a yes-no dialog for "disable autosaves now"?
 
 		return false;
 	};
@@ -575,7 +574,7 @@ void autosave_savegame::autosave(const bool disable_autosave, const int autosave
 	if(disable_autosave)
 		return;
 
-	save_game_automatic(gui_.video());
+	save_game_automatic();
 
 	remove_old_auto_saves(autosave_max, infinite_autosaves);
 }
@@ -596,7 +595,7 @@ oos_savegame::oos_savegame(saved_game& gamestate, game_display& gui, bool& ignor
 	, ignore_(ignore)
 {}
 
-int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, DIALOG_TYPE /*dialog_type*/)
+int oos_savegame::show_save_dialog(const std::string& message, DIALOG_TYPE /*dialog_type*/)
 {
 	int res = 0;
 
@@ -610,7 +609,7 @@ int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, DI
 
 	set_filename(filename);
 
-	if (!check_filename(filename, video)) {
+	if (!check_filename(filename)) {
 		res = gui2::window::CANCEL;
 	}
 

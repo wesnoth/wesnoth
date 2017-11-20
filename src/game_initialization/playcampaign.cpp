@@ -327,7 +327,7 @@ LEVEL_RESULT campaign_controller::play_game()
 		}
 		if (preferences::save_replays() && end_level.replay_save) {
 			savegame::replay_savegame save(state_, preferences::save_compression_format());
-			save.save_game_automatic(video_, true);
+			save.save_game_automatic(true);
 		}
 
 		state_.convert_to_start_save();
@@ -398,7 +398,7 @@ LEVEL_RESULT campaign_controller::play_game()
 
 				savegame::scenariostart_savegame save(state_, preferences::save_compression_format());
 
-				save.save_game_automatic(video_);
+				save.save_game_automatic();
 			}
 
 		}

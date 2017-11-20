@@ -171,7 +171,7 @@ static bool fullscreen(CVideo& video)
 	return true;
 }
 
-static bool launch_lua_console(window& window)
+static bool launch_lua_console()
 {
 	gui2::dialogs::lua_interpreter::display(gui2::dialogs::lua_interpreter::APP);
 	return true;
@@ -247,7 +247,9 @@ void title_screen::pre_show(window& win)
 	});
 
 	win.register_hotkey(hotkey::HOTKEY_FULLSCREEN, std::bind(fullscreen, std::ref(win.video())));
-	win.register_hotkey(hotkey::LUA_CONSOLE, std::bind(&launch_lua_console, std::ref(win)));
+
+	// std::bind is needed here since the bare function signature isn't what register_hotkey expects.
+	win.register_hotkey(hotkey::LUA_CONSOLE, std::bind(&launch_lua_console));
 
 	//
 	// Background and logo images
@@ -421,7 +423,7 @@ void title_screen::pre_show(window& win)
 	//
 	// Cores
 	//
-	register_button(win, "cores", hotkey::TITLE_SCREEN__CORES, [](window& w) {
+	register_button(win, "cores", hotkey::TITLE_SCREEN__CORES, [](window&) {
 		int current = 0;
 		std::vector<config> cores;
 		for(const config& core : game_config_manager::get()->game_config().child_range("core")) {

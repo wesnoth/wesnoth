@@ -120,7 +120,7 @@ public:
 	}
 
 	/** GUI Dialog sequence which confirms attempts to load saves from previous game versions. */
-	static bool check_version_compatibility(const version_info & version, CVideo & video);
+	static bool check_version_compatibility(const version_info & version);
 
 	static bool is_replay_save(const config& cfg)
 	{
@@ -164,28 +164,27 @@ public:
 		This is used by automatically generated replays, start-of-scenario saves, autosaves,
 		and saves from the console (e.g. ":w").
 	*/
-	bool save_game_automatic(CVideo& video, bool ask_for_overwrite = false, const std::string& filename = "");
+	bool save_game_automatic(bool ask_for_overwrite = false, const std::string& filename = "");
 
 	/** Save a game interactively through the savegame dialog. Used for manual midgame and replay
 		saves. The return value denotes, if the save was successful or not. */
-	bool save_game_interactive(CVideo& video, const std::string& message,
+	bool save_game_interactive(const std::string& message,
 		DIALOG_TYPE dialog_type);
 
 	const std::string& filename() const { return filename_; }
 
 protected:
 	/**
-		Save a game without any further user interaction. If you want notifying messages
-		or error messages to appear, you have to provide the gui parameter.
+		Save a game without any further user interaction.
 		The return value denotes, if the save was successful or not.
 	*/
-	bool save_game(CVideo* video = nullptr, const std::string& filename = "");
+	bool save_game(const std::string& filename = "");
 
 	/** Sets the filename and removes invalid characters. Don't set the filename directly but
 		use this method instead. */
 	void set_filename(std::string filename);
 	/** Check, if the filename contains illegal constructs like ".gz". */
-	bool check_filename(const std::string& filename, CVideo& video);
+	bool check_filename(const std::string& filename);
 
 	/** Customize the standard error message */
 	void set_error_message(const std::string& error_message) { error_message_ = error_message; }
@@ -207,9 +206,9 @@ private:
 		override this to take effect. */
 	virtual void create_filename() {}
 	/** Display the save game dialog. */
-	virtual int show_save_dialog(CVideo& video, const std::string& message, DIALOG_TYPE dialog_type);
+	virtual int show_save_dialog(const std::string& message, DIALOG_TYPE dialog_type);
 	/** Ask the user if an existing file should be overwritten. */
-	bool check_overwrite(CVideo& video);
+	bool check_overwrite();
 
 	/** The actual method for saving the game to disk. All interactive filename choosing and
 		data manipulation has to happen before calling this method. */
@@ -286,7 +285,7 @@ public:
 
 private:
 	/** Display the save game dialog. */
-	virtual int show_save_dialog(CVideo& video, const std::string& message, DIALOG_TYPE dialog_type) override;
+	virtual int show_save_dialog(const std::string& message, DIALOG_TYPE dialog_type) override;
 	bool& ignore_;
 };
 

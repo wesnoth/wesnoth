@@ -537,7 +537,7 @@ int game_launcher::unit_test()
 		return 0; //we passed, huzzah!
 
 	savegame::replay_savegame save(state_, compression::NONE);
-	save.save_game_automatic(video(), false, "unit_test_replay"); //false means don't check for overwrite
+	save.save_game_automatic(false, "unit_test_replay"); //false means don't check for overwrite
 
 	load_data_.reset(new savegame::load_game_metadata{ "unit_test_replay" , "", true, true, false });
 

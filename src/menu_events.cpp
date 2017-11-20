@@ -660,7 +660,7 @@ typedef std::pair<const unit_type*, unit_race::GENDER> type_and_gender;
  * @returns the selected type and gender. If this is canceled, the
  *          returned type is nullptr.
  */
-type_and_gender choose_unit(game_display& gui)
+type_and_gender choose_unit()
 {
 	//
 	// The unit creation dialog makes sure unit types
@@ -726,7 +726,7 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 	assert(gui_ != nullptr);
 
 	// Let the user select the kind of unit to create.
-	type_and_gender selection = choose_unit(*gui_);
+	type_and_gender selection = choose_unit();
 	if(selection.first != nullptr) {
 		// Make it so.
 		create_and_place(*gui_, map(), units(), destination, *selection.first, selection.second);
