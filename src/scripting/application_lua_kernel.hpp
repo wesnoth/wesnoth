@@ -21,7 +21,6 @@
 #include <string>
 #include <vector>
 
-class CVideo;
 struct lua_State;
 
 class application_lua_kernel : public lua_kernel_base {

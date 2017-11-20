@@ -20,7 +20,6 @@
 #include "scripting/plugins/context.hpp"
 
 class config;
-class CVideo;
 class wesnothd_connection;
 namespace mp {
 

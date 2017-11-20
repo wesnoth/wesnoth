@@ -22,7 +22,6 @@
 #include "utils/functional.hpp"
 
 class config;
-class CVideo;
 
 namespace gui2
 {

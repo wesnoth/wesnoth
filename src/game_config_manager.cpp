@@ -45,10 +45,8 @@ static game_config_manager * singleton;
 
 game_config_manager::game_config_manager(
 		const commandline_options& cmdline_opts,
-		CVideo& video,
 		const bool jump_to_editor) :
 	cmdline_opts_(cmdline_opts),
-	video_(video),
 	jump_to_editor_(jump_to_editor),
 	game_config_(),
 	old_defines_map_(),

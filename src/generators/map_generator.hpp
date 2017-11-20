@@ -17,7 +17,6 @@
 #pragma once
 
 class config;
-class CVideo;
 
 #include "exceptions.hpp"
 #include "map/location.hpp"

@@ -25,7 +25,6 @@
 class config_writer;
 class game_display;
 class saved_game;
-class CVideo;
 class version_info;
 
 namespace savegame {
@@ -98,7 +97,7 @@ private:
 class loadgame
 {
 public:
-	loadgame(CVideo& video, const config& game_config, saved_game& gamestate);
+	loadgame(const config& game_config, saved_game& gamestate);
 	virtual ~loadgame() {}
 
 	/* In any of the following three function, a bool value of false indicates
@@ -136,7 +135,6 @@ private:
 	void copy_era(config& cfg);
 
 	const config& game_config_;
-	CVideo& video_;
 
 	saved_game& gamestate_; /** Primary output information. */
 

@@ -17,7 +17,6 @@
 #include "gui/dialogs/modal_dialog.hpp"
 
 class config;
-class CVideo;
 
 namespace gui2
 {

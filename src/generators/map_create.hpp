@@ -16,7 +16,6 @@
 
 class config;
 class map_generator;
-class CVideo;
 
 #include <string>
 

@@ -22,7 +22,6 @@
 #include <boost/algorithm/string.hpp>
 
 class config;
-class CVideo;
 namespace hotkey {
 
 /* forward declarations */

@@ -42,7 +42,6 @@
 #include "quit_confirmation.hpp"
 #include "video.hpp"
 
-class CVideo;
 class display;
 class plugins_context;
 

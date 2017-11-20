@@ -53,7 +53,6 @@
 #include "lua/lua.h"
 #include "lua/luaconf.h"
 
-class CVideo;
 struct lua_State;
 
 static lg::log_domain log_scripting_lua("scripting/lua");

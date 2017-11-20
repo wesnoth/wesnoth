@@ -77,9 +77,8 @@ void clean_saves(const std::string& label)
 	}
 }
 
-loadgame::loadgame(CVideo& video, const config& game_config, saved_game& gamestate)
+loadgame::loadgame(const config& game_config, saved_game& gamestate)
 	: game_config_(game_config)
-	, video_(video)
 	, gamestate_(gamestate)
 	, load_data_()
 {}
@@ -119,7 +118,7 @@ bool loadgame::show_difficulty_dialog()
 // throws a "load_game_exception" to signal a resulting load game request.
 bool loadgame::load_game_ingame()
 {
-	if (video_.faked()) {
+	if(CVideo::get_singleton().faked()) {
 		return false;
 	}
 

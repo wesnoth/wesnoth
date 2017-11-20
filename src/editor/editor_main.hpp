@@ -17,7 +17,6 @@
 #include <string>
 
 class config;
-class CVideo;
 
 namespace editor {
 

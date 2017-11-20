@@ -16,7 +16,7 @@
 
 class config;
 class display;
-class CVideo;
+
 #include <string>
 
 namespace preferences {

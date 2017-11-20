@@ -406,11 +406,11 @@ void title_screen::pre_show(window& win)
 	//
 	// Addons
 	//
-	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, [](window& w) {
+	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, [](window&) {
 		// NOTE: we need the help_manager to get access to the Add-ons section in the game help!
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
 
-		if(manage_addons(w.video())) {
+		if(manage_addons()) {
 			game_config_manager::get()->reload_changed_game_config();
 		}
 	});

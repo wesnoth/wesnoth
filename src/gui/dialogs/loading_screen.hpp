@@ -20,7 +20,6 @@
 #include <vector>
 #include <atomic>
 
-class CVideo;
 namespace boost
 {
 	class thread;

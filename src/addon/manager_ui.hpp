@@ -18,26 +18,20 @@
 #include <string>
 #include <vector>
 
-class display;
-class CVideo;
-
 /**
  * Shows the add-ons server connection dialog, for access to the various management front-ends.
- *
- * @param v         Target for UI rendering.
  *
  * @return @a true when one or more add-ons have been successfully installed or
  *         removed, thus requiring a local WML cache refresh. @a false otherwise.
  */
-bool manage_addons(CVideo& v);
+bool manage_addons();
 
 /**
  * Conducts an ad-hoc add-ons server connection to download an add-on with a particular id and all
  * it's dependencies. Launches gui dialogs when issues arise.
  *
- * @param v         Target for UI rendering.
  * @param addon_ids The ids of the target add-on.
  *
  * @return @a true when we successfully installed the target (possibly the user chose to ignore failures)
  */
-bool ad_hoc_addon_fetch_session(CVideo& v, const std::vector<std::string>& addon_ids);
+bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids);

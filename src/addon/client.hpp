@@ -47,10 +47,9 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param v       Target for UI rendering for the progress dialog.
 	 * @param address Add-ons server host address (i.e. localhost:15999).
 	 */
-	addons_client(CVideo& v, const std::string& address);
+	explicit addons_client(const std::string& address);
 
 	/**
 	 * Try to establish a connection to the add-ons server.
@@ -119,7 +118,6 @@ public:
 	bool delete_remote_addon(const std::string& id, std::string& response_message);
 
 private:
-	CVideo& v_;
 	std::string addr_;
 	std::string host_;
 	std::string port_;

@@ -21,8 +21,6 @@
 #include <string>
 #include <vector>
 
-class CVideo;
-
 namespace gui2
 {
 namespace dialogs

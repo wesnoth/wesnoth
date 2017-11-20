@@ -63,14 +63,14 @@ bool get_addons_list(addons_client& client, addons_list& list)
 	return true;
 }
 
-bool addons_manager_ui(CVideo& v, const std::string& remote_address)
+bool addons_manager_ui(const std::string& remote_address)
 {
 	bool need_wml_cache_refresh = false;
 
 	preferences::set_campaign_server(remote_address);
 
 	try {
-		addons_client client(v, remote_address);
+		addons_client client(remote_address);
 		client.connect();
 
 		gui2::dialogs::addon_manager dlg(client);
@@ -225,7 +225,7 @@ bool uninstall_local_addons()
 
 } // end anonymous namespace
 
-bool manage_addons(CVideo& v)
+bool manage_addons()
 {
 	static const int addon_download  = 0;
 	// NOTE: the following two values are also known by WML, so don't change them.
@@ -244,7 +244,7 @@ bool manage_addons(CVideo& v)
 
 	switch(res) {
 		case addon_download:
-			return addons_manager_ui(v, host_name);
+			return addons_manager_ui(host_name);
 		case addon_uninstall:
 			return uninstall_local_addons();
 		default:
@@ -252,14 +252,14 @@ bool manage_addons(CVideo& v)
 	}
 }
 
-bool ad_hoc_addon_fetch_session(CVideo& v, const std::vector<std::string>& addon_ids)
+bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids)
 {
 	std::string remote_address = preferences::campaign_server();
 
 	// These exception handlers copied from addon_manager_ui fcn above.
 	try {
 
-		addons_client client(v, remote_address);
+		addons_client client(remote_address);
 		client.connect();
 
 		addons_list addons;

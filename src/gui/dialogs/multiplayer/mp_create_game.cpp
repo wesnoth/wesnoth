@@ -782,7 +782,7 @@ void mp_create_game::update_map_settings(window& window)
 
 void mp_create_game::load_game_callback(window& window)
 {
-	savegame::loadgame load(window.video(), cfg_, create_engine_.get_state());
+	savegame::loadgame load(cfg_, create_engine_.get_state());
 
 	if(!load.load_multiplayer_game()) {
 		return;

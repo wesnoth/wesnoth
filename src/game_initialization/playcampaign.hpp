@@ -24,7 +24,6 @@
 #include <set>
 #include <string>
 
-class CVideo;
 class saved_game;
 class terrain_type_data;
 class team;

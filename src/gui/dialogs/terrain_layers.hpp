@@ -16,7 +16,6 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "terrain/builder.hpp"
 
-class CVideo;
 class display;
 
 namespace gui2

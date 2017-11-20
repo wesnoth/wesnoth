@@ -25,8 +25,6 @@
 
 #include <string>
 
-class CVideo;
-
 /**
  * The macro to use for the validation of WML
  *

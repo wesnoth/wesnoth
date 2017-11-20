@@ -17,7 +17,6 @@
 #include <SDL_rect.h>
 #include <string>
 
-class CVideo;
 class t_string;
 struct point;
 

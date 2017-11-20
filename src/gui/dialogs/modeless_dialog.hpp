@@ -17,8 +17,6 @@
 #include <memory>
 #include <string>
 
-class CVideo;
-
 namespace gui2
 {
 

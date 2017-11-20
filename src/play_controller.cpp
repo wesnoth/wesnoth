@@ -873,7 +873,7 @@ void play_controller::save_map()
 
 void play_controller::load_game()
 {
-	savegame::loadgame load(gui_->video(), game_config_, saved_game_);
+	savegame::loadgame load(game_config_, saved_game_);
 	load.load_game_ingame();
 }
 

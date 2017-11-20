@@ -38,9 +38,8 @@ static lg::log_domain log_addons_client("addons-client");
 
 using gui2::dialogs::network_transmission;
 
-addons_client::addons_client(CVideo& v, const std::string& address)
-	: v_(v)
-	, addr_(address)
+addons_client::addons_client(const std::string& address)
+	: addr_(address)
 	, host_()
 	, port_()
 	, conn_(nullptr)

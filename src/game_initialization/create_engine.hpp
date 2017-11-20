@@ -26,7 +26,6 @@
 #include <utility>
 #include <cctype>
 
-class CVideo;
 class saved_game;
 class gamemap;
 
@@ -449,8 +448,6 @@ private:
 	std::vector<extras_metadata_ptr> mods_;
 
 	saved_game& state_;
-
-	CVideo& video_;
 
 	// Never nullptr
 	std::unique_ptr<depcheck::manager> dependency_manager_;

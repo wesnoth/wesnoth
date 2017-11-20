@@ -239,7 +239,6 @@ create_engine::create_engine(saved_game& state)
 	, eras_()
 	, mods_()
 	, state_(state)
-	, video_(CVideo::get_singleton())
 	, dependency_manager_(nullptr)
 	, generator_(nullptr)
 	, selected_campaign_difficulty_()
@@ -267,7 +266,7 @@ create_engine::create_engine(saved_game& state)
 
 	// Initialize dependency_manager_ after refreshing game config.
 	dependency_manager_.reset(new depcheck::manager(
-		game_config_manager::get()->game_config(), type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER, video_));
+		game_config_manager::get()->game_config(), type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER));
 
 	// TODO: the editor dir is already configurable, is the preferences value
 	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &user_map_names_,

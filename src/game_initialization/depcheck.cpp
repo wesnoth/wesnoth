@@ -55,9 +55,8 @@ namespace ng
 {
 namespace depcheck
 {
-manager::manager(const config& gamecfg, bool mp, CVideo& video)
-	: video_(video)
-	, depinfo_()
+manager::manager(const config& gamecfg, bool mp)
+	: depinfo_()
 	, era_()
 	, scenario_()
 	, mods_()

@@ -647,8 +647,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 	gui2::init();
 	const gui2::event::manager gui_event_manager;
 
-	game_config_manager config_manager(cmdline_opts, game->video(),
-	    game->jump_to_editor());
+	game_config_manager config_manager(cmdline_opts, game->jump_to_editor());
 
 	gui2::dialogs::loading_screen::display([&res, &config_manager]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_config);

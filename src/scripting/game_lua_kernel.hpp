@@ -22,7 +22,6 @@
 #include <string>                       // for string
 
 class config;
-class CVideo;
 class unit;
 class vconfig;
 namespace ai { class engine_lua; }

@@ -21,7 +21,6 @@
 #include <cstdint>
 
 struct lua_State;
-class CVideo;
 class config;
 
 class lua_kernel_base {

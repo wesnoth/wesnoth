@@ -619,7 +619,7 @@ bool game_launcher::load_game()
 
 	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
 
-	savegame::loadgame load(video(), game_config_manager::get()->game_config(), state_);
+	savegame::loadgame load(game_config_manager::get()->game_config(), state_);
 	if (load_data_) {
 		std::unique_ptr<savegame::load_game_metadata> load_data = std::move(load_data_);
 		load.data() = std::move(*load_data);

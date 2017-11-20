@@ -230,7 +230,7 @@ std::string colorize(const std::string& str, const std::string& color)
 	return (formatter() << "<span color=\"" << color << "\">" << str << "</span>").str();
 }
 
-bool handle_addon_requirements_gui(CVideo& v, const std::vector<mp::game_info::required_addon>& reqs, mp::game_info::ADDON_REQ addon_outcome)
+bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_addon>& reqs, mp::game_info::ADDON_REQ addon_outcome)
 {
 	if(addon_outcome == mp::game_info::CANNOT_SATISFY) {
 		std::string e_title = _("Incompatible User-made Content.");
@@ -269,7 +269,7 @@ bool handle_addon_requirements_gui(CVideo& v, const std::vector<mp::game_info::r
 
 		if(gui2::show_message(e_title, err_msg, message::yes_no_buttons, true) == gui2::window::OK) {
 			// Begin download session
-			ad_hoc_addon_fetch_session(v, needs_download);
+			ad_hoc_addon_fetch_session(needs_download);
 
 			return true;
 		}
@@ -954,7 +954,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 			return;
 		}
 
-		if(!handle_addon_requirements_gui(window.video(), game.required_addons, game.addons_outcome)) {
+		if(!handle_addon_requirements_gui(game.required_addons, game.addons_outcome)) {
 			return;
 		}
 

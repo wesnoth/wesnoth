@@ -15,7 +15,6 @@
 #pragma once
 
 struct lua_State;
-class CVideo;
 class lua_kernel_base;
 class vconfig;
 class game_data;

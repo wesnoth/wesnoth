@@ -16,7 +16,6 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "statistics.hpp"
 
-class CVideo;
 class team;
 
 namespace gui2

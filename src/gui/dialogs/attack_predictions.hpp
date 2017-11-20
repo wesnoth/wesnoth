@@ -19,7 +19,6 @@
 #include "units/map.hpp"
 
 class battle_context;
-class CVideo;
 
 struct battle_context_unit_stats;
 struct combatant;
