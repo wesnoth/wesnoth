@@ -1022,7 +1022,7 @@ void mp_lobby::refresh_lobby()
 
 void mp_lobby::show_preferences_button_callback(window& window)
 {
-	gui2::dialogs::preferences_dialog::display(window.video(), game_config_);
+	gui2::dialogs::preferences_dialog::display(game_config_);
 
 	/**
 	 * The screen size might have changed force an update of the size.
