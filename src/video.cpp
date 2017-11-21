@@ -19,9 +19,9 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
+#include "sdl/userevent.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/window.hpp"
-#include "sdl/userevent.hpp"
 
 #include <cassert>
 #include <vector>
@@ -34,13 +34,14 @@ static lg::log_domain log_display("display");
 
 CVideo* CVideo::singleton_ = nullptr;
 
-namespace {
-	surface frameBuffer = nullptr;
-	bool fake_interactive = false;
+namespace
+{
+surface frameBuffer = nullptr;
+bool fake_interactive = false;
 }
 
-namespace video2 {
-
+namespace video2
+{
 std::list<events::sdl_handler*> draw_layers;
 
 draw_layering::draw_layering(const bool auto_join)
@@ -56,7 +57,8 @@ draw_layering::~draw_layering()
 	video2::trigger_full_redraw();
 }
 
-void trigger_full_redraw() {
+void trigger_full_redraw()
+{
 	SDL_Event event;
 	event.type = SDL_WINDOWEVENT;
 	event.window.event = SDL_WINDOWEVENT_RESIZED;
@@ -82,7 +84,7 @@ CVideo::CVideo(FAKE_TYPES type)
 	: window()
 	, fake_screen_(false)
 	, help_string_(0)
-	, updatesLocked_(0)
+	, updated_locked_(0)
 	, flip_locked_(0)
 	, refresh_rate_(0)
 {
@@ -92,14 +94,14 @@ CVideo::CVideo(FAKE_TYPES type)
 	initSDL();
 
 	switch(type) {
-		case NO_FAKE:
-			break;
-		case FAKE:
-			make_fake();
-			break;
-		case FAKE_TEST:
-			make_test_fake();
-			break;
+	case NO_FAKE:
+		break;
+	case FAKE:
+		make_fake();
+		break;
+	case FAKE_TEST:
+		make_test_fake();
+		break;
 	}
 }
 
@@ -144,25 +146,25 @@ SDL_Rect screen_area()
 	return {0, 0, size.x, size.y};
 }
 
-void CVideo::video_event_handler::handle_window_event(const SDL_Event &event)
+void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
 {
 	if(event.type == SDL_WINDOWEVENT) {
-		switch (event.window.event) {
-			case SDL_WINDOWEVENT_RESIZED:
-			case SDL_WINDOWEVENT_RESTORED:
-			case SDL_WINDOWEVENT_SHOWN:
-			case SDL_WINDOWEVENT_EXPOSED:
-				//if(display::get_singleton())
-					//display::get_singleton()->redraw_everything();
-				SDL_Event drawEvent;
-				sdl::UserEvent data(DRAW_ALL_EVENT);
+		switch(event.window.event) {
+		case SDL_WINDOWEVENT_RESIZED:
+		case SDL_WINDOWEVENT_RESTORED:
+		case SDL_WINDOWEVENT_SHOWN:
+		case SDL_WINDOWEVENT_EXPOSED:
+			// if(display::get_singleton())
+			// display::get_singleton()->redraw_everything();
+			SDL_Event drawEvent;
+			sdl::UserEvent data(DRAW_ALL_EVENT);
 
-				drawEvent.type = DRAW_ALL_EVENT;
-				drawEvent.user = data;
+			drawEvent.type = DRAW_ALL_EVENT;
+			drawEvent.user = data;
 
-				SDL_FlushEvent(DRAW_ALL_EVENT);
-				SDL_PushEvent(&drawEvent);
-				break;
+			SDL_FlushEvent(DRAW_ALL_EVENT);
+			SDL_PushEvent(&drawEvent);
+			break;
 		}
 	}
 }
@@ -170,10 +172,10 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event &event)
 void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rect* clip_rect)
 {
 	surface& target(getSurface());
-	SDL_Rect dst {x, y, 0, 0};
+	SDL_Rect dst{x, y, 0, 0};
 
 	const clip_rect_setter clip_setter(target, clip_rect, clip_rect != nullptr);
-	sdl_blit(surf,srcrect,target,&dst);
+	sdl_blit(surf, srcrect, target, &dst);
 }
 
 void CVideo::make_fake()
@@ -213,9 +215,6 @@ void CVideo::update_framebuffer()
 	}
 }
 
-/**
- * Creates a new window instance.
- */
 void CVideo::init_window()
 {
 	// Position
@@ -243,10 +242,7 @@ void CVideo::init_window()
 
 	std::cerr << "Setting mode to " << w << "x" << h << std::endl;
 
-	window->set_minimum_size(
-		preferences::min_window_width,
-		preferences::min_window_height
-	);
+	window->set_minimum_size(preferences::min_window_width, preferences::min_window_height);
 
 	SDL_DisplayMode currentDisplayMode;
 	SDL_GetCurrentDisplayMode(window->get_display_index(), &currentDisplayMode);
@@ -260,31 +256,33 @@ void CVideo::init_window()
 	}
 }
 
-void CVideo::setMode(int x, int y, const MODE_EVENT mode)
+void CVideo::set_window_mode(int x, int y, const MODE_EVENT mode)
 {
 	assert(window);
-	if(fake_screen_) return;
+	if(fake_screen_) {
+		return;
+	}
 
 	switch(mode) {
-		case TO_FULLSCREEN:
-			window->full_screen();
-			break;
+	case TO_FULLSCREEN:
+		window->full_screen();
+		break;
 
-		case TO_WINDOWED:
-			window->to_window();
-			window->restore();
-			break;
+	case TO_WINDOWED:
+		window->to_window();
+		window->restore();
+		break;
 
-		case TO_MAXIMIZED_WINDOW:
-			window->to_window();
-			window->maximize();
-			break;
+	case TO_MAXIMIZED_WINDOW:
+		window->to_window();
+		window->maximize();
+		break;
 
-		case TO_RES:
-			window->restore();
-			window->set_size(x, y);
-			window->center();
-			break;
+	case TO_RES:
+		window->restore();
+		window->set_size(x, y);
+		window->center();
+		break;
 	}
 
 	update_framebuffer();
@@ -332,15 +330,15 @@ void CVideo::flip()
 void CVideo::lock_updates(bool value)
 {
 	if(value == true) {
-		++updatesLocked_;
+		++updated_locked_;
 	} else {
-		--updatesLocked_;
+		--updated_locked_;
 	}
 }
 
 bool CVideo::update_locked() const
 {
-	return updatesLocked_ > 0;
+	return updated_locked_ > 0;
 }
 
 void CVideo::set_window_title(const std::string& title)
@@ -364,23 +362,25 @@ void CVideo::clear_screen()
 	window->fill(0, 0, 0, 255);
 }
 
-sdl::window *CVideo::get_window()
+sdl::window* CVideo::get_window()
 {
 	return window.get();
 }
 
 std::pair<float, float> CVideo::get_dpi_scale_factor() const
 {
-	std::pair<float, float> result {1.0f, 1.0f};
+	std::pair<float, float> result{1.0f, 1.0f};
 
 	if(!window) {
 		return result;
 	}
 
-/* This check is here because Travis CI builds with SDL 2.0.2.
- * The code isn't intended to be skipped: end users, distribution packagers etc.
- * should build the game with SDL 2.0.4 or above.
- * - Jyrki, 2017-06-03 */
+	/* This check is here because Travis CI builds with SDL 2.0.2.
+	 * The code isn't intended to be skipped: end users, distribution packagers etc.
+	 * should build the game with SDL 2.0.4 or above.
+	 *
+	 * - Jyrki, 2017-06-03
+	 */
 #if SDL_VERSION_ATLEAST(2, 0, 4)
 	float hdpi, vdpi;
 	SDL_GetDisplayDPI(window->get_display_index(), nullptr, &hdpi, &vdpi);
@@ -408,8 +408,8 @@ std::vector<std::pair<int, int>> CVideo::get_available_resolutions(const bool in
 		return result;
 	}
 
-	const std::pair<int,int> min_res = std::make_pair(preferences::min_window_width, preferences::min_window_height);
-	const std::pair<int,int> current_res = current_resolution();
+	const std::pair<int, int> min_res = std::make_pair(preferences::min_window_width, preferences::min_window_height);
+	const std::pair<int, int> current_res = current_resolution();
 
 #if 0
 	// DPI scale factor.
@@ -456,14 +456,14 @@ surface& CVideo::getSurface()
 	return frameBuffer;
 }
 
-std::pair<int,int> CVideo::current_resolution()
+std::pair<int, int> CVideo::current_resolution()
 {
 	SDL_Point size = window->get_size();
-
 	return std::make_pair(size.x, size.y);
 }
 
-bool CVideo::isFullScreen() const {
+bool CVideo::is_fullscreen() const
+{
 	return (window->get_flags() & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0;
 }
 
@@ -471,7 +471,7 @@ int CVideo::set_help_string(const std::string& str)
 {
 	font::remove_floating_label(help_string_);
 
-	const color_t color { 0, 0, 0, 0xbb };
+	const color_t color{0, 0, 0, 0xbb};
 
 	int size = font::SIZE_LARGE;
 
@@ -487,14 +487,15 @@ int CVideo::set_help_string(const std::string& str)
 
 	font::floating_label flabel(str);
 	flabel.set_font_size(size);
-	flabel.set_position(getx()/2, gety());
+	flabel.set_position(getx() / 2, gety());
 	flabel.set_bg_color(color);
 	flabel.set_border_size(border);
 
 	help_string_ = font::add_floating_label(flabel);
 
 	const SDL_Rect& rect = font::get_floating_label_rect(help_string_);
-	font::move_floating_label(help_string_,0.0,-double(rect.h));
+	font::move_floating_label(help_string_, 0.0, -double(rect.h));
+
 	return help_string_;
 }
 
@@ -513,10 +514,8 @@ void CVideo::clear_all_help_strings()
 
 void CVideo::set_fullscreen(bool ison)
 {
-
-	if(window && isFullScreen() != ison) {
-
-		const std::pair<int,int>& res = preferences::resolution();
+	if(window && is_fullscreen() != ison) {
+		const std::pair<int, int>& res = preferences::resolution();
 
 		MODE_EVENT mode;
 
@@ -526,7 +525,7 @@ void CVideo::set_fullscreen(bool ison)
 			mode = preferences::maximized() ? TO_MAXIMIZED_WINDOW : TO_WINDOWED;
 		}
 
-		setMode(res.first, res.second, mode);
+		set_window_mode(res.first, res.second, mode);
 
 		if(display::get_singleton()) {
 			display::get_singleton()->redraw_everything();
@@ -537,20 +536,19 @@ void CVideo::set_fullscreen(bool ison)
 	preferences::_set_fullscreen(ison);
 }
 
-void CVideo::set_resolution(const std::pair<int,int>& resolution)
+void CVideo::set_resolution(const std::pair<int, int>& resolution)
 {
 	set_resolution(resolution.first, resolution.second);
 }
 
 void CVideo::set_resolution(const unsigned width, const unsigned height)
 {
-	if(static_cast<unsigned int>(current_resolution().first)  == width &&
-		static_cast<unsigned int>(current_resolution().second) == height) {
-
+	if(static_cast<unsigned int>(current_resolution().first) == width
+			&& static_cast<unsigned int>(current_resolution().second) == height) {
 		return;
 	}
 
-	setMode(width, height, TO_RES);
+	set_window_mode(width, height, TO_RES);
 
 	if(display::get_singleton()) {
 		display::get_singleton()->redraw_everything();
@@ -561,7 +559,8 @@ void CVideo::set_resolution(const unsigned width, const unsigned height)
 	preferences::_set_maximized(false);
 }
 
-void CVideo::lock_flips(bool lock) {
+void CVideo::lock_flips(bool lock)
+{
 	if(lock) {
 		++flip_locked_;
 	} else {
