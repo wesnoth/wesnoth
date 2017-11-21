@@ -182,13 +182,24 @@ void CVideo::make_fake()
 {
 	fake_screen_ = true;
 	refresh_rate_ = 1;
+
+#if SDL_VERSION_ATLEAST(2, 0, 6)
+	frameBuffer = SDL_CreateRGBSurfaceWithFormat(0, 16, 16, 24, SDL_PIXELFORMAT_BGR888);
+#else
 	frameBuffer = SDL_CreateRGBSurface(0, 16, 16, 24, 0xFF0000, 0xFF00, 0xFF, 0);
+#endif
+
 	image::set_pixel_format(frameBuffer->format);
 }
 
 void CVideo::make_test_fake(const unsigned width, const unsigned height)
 {
+#if SDL_VERSION_ATLEAST(2, 0, 6)
+	frameBuffer = SDL_CreateRGBSurfaceWithFormat(0, width, height, 32, SDL_PIXELFORMAT_BGR888);
+#else
 	frameBuffer = SDL_CreateRGBSurface(0, width, height, 32, 0xFF0000, 0xFF00, 0xFF, 0);
+#endif
+
 	image::set_pixel_format(frameBuffer->format);
 
 	fake_interactive = true;

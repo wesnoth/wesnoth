@@ -719,8 +719,13 @@ void pango_text::rerender(const bool force)
 			}
 		}
 
+#if SDL_VERSION_ATLEAST(2, 0, 6)
+		surface_.assign(SDL_CreateRGBSurfaceWithFormatFrom(
+			&surface_buffer_[0], width, height, 32, stride, SDL_PIXELFORMAT_ARGB8888));
+#else
 		surface_.assign(SDL_CreateRGBSurfaceFrom(
 			&surface_buffer_[0], width, height, 32, stride, 0x00FF0000, 0x0000FF00, 0x000000FF, 0xFF000000));
+#endif
 	}
 }
 
