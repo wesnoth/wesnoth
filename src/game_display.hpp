@@ -44,8 +44,6 @@ public:
 			const config& level,
 			bool dummy=false);
 
-	static game_display* create_dummy_display();
-
 	~game_display();
 	static game_display* get_singleton()
 	{

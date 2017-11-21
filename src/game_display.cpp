@@ -86,17 +86,6 @@ game_display::game_display(game_board& board, std::weak_ptr<wb::manager> wb,
 	video().clear_screen();
 }
 
-game_display* game_display::create_dummy_display()
-{
-	static config dummy_cfg;
-	static config dummy_cfg2;
-	static game_board dummy_board(std::make_shared<terrain_type_data>(dummy_cfg), dummy_cfg2);
-	static tod_manager dummy_tod(dummy_cfg);
-	static reports rep_;
-	return new game_display(dummy_board, std::shared_ptr<wb::manager>(), rep_, dummy_tod,
-			dummy_cfg, dummy_cfg, true);
-}
-
 game_display::~game_display()
 {
 	try {
