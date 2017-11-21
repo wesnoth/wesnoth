@@ -32,7 +32,6 @@
 #include "utils/functional.hpp"
 
 #include "gettext.hpp"
-#include "video.hpp"
 
 namespace gui2
 {
@@ -113,13 +112,11 @@ void game_cache_options::pre_show(window& window)
 
 	connect_signal_mouse_left_click(*clean_button_,
 									std::bind(&game_cache_options::clean_cache_callback,
-												this,
-												std::ref(window.video())));
+												this));
 
 	connect_signal_mouse_left_click(*purge_button_,
 									std::bind(&game_cache_options::purge_cache_callback,
-												this,
-												std::ref(window.video())));
+												this));
 }
 
 void game_cache_options::post_show(window& /*window*/)
@@ -158,15 +155,14 @@ void game_cache_options::browse_cache_callback()
 	desktop::open_object(cache_path_);
 }
 
-void game_cache_options::clean_cache_callback(CVideo& video)
+void game_cache_options::clean_cache_callback()
 {
 	if(clean_cache()) {
-		show_message(video,
+		show_message(
 					 _("Cache Cleaned"),
 					 _("The game data cache has been cleaned."));
 	} else {
-		show_error_message(video,
-						   _("The game data cache could not be completely cleaned."));
+		show_error_message(_("The game data cache could not be completely cleaned."));
 	}
 
 	update_cache_size_display();
@@ -178,15 +174,14 @@ bool game_cache_options::clean_cache()
 	return game_config::config_cache::instance().clean_cache();
 }
 
-void game_cache_options::purge_cache_callback(CVideo& video)
+void game_cache_options::purge_cache_callback()
 {
 	if(purge_cache()) {
-		show_message(video,
+		show_message(
 					 _("Cache Purged"),
 					 _("The game data cache has been purged."));
 	} else {
-		show_error_message(video,
-						   _("The game data cache could not be purged."));
+		show_error_message(_("The game data cache could not be purged."));
 	}
 
 	update_cache_size_display();

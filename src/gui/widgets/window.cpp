@@ -284,10 +284,10 @@ window* manager::get_window(const unsigned id)
 
 } // namespace
 
-window::window(CVideo& video, const builder_window::window_resolution* definition)
+window::window(const builder_window::window_resolution* definition)
 	: panel(implementation::builder_window(::config {"definition", definition->definition}), get_control_type())
 	, cursor::setter(cursor::NORMAL)
-	, video_(video)
+	, video_(CVideo::get_singleton())
 	, status_(NEW)
 	, show_mode_(none)
 	, retval_(NONE)
@@ -329,7 +329,7 @@ window::window(CVideo& video, const builder_window::window_resolution* definitio
 
 	connect();
 
-	if (!video.faked())
+	if (!video_.faked())
 	{
 		connect_signal<event::DRAW>(std::bind(&window::draw, this));
 	}
@@ -1461,7 +1461,7 @@ void window::signal_handler_message_show_tooltip(const event::ui_event event,
 	event::message_show_tooltip& request
 			= dynamic_cast<event::message_show_tooltip&>(message);
 
-	dialogs::tip::show(video_, tooltip_.id, request.message, request.location, request.source_rect);
+	dialogs::tip::show(tooltip_.id, request.message, request.location, request.source_rect);
 
 	handled = true;
 }
@@ -1475,7 +1475,7 @@ void window::signal_handler_message_show_helptip(const event::ui_event event,
 	event::message_show_helptip& request
 			= dynamic_cast<event::message_show_helptip&>(message);
 
-	dialogs::tip::show(video_, helptip_.id, request.message, request.location, request.source_rect);
+	dialogs::tip::show(helptip_.id, request.message, request.location, request.source_rect);
 
 	handled = true;
 }

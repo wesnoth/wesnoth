@@ -14,6 +14,7 @@
 
 #include "sdl/point.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/window.hpp"
 #include "video.hpp"
 
 namespace sdl

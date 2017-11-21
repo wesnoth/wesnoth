@@ -53,7 +53,7 @@ void throw_wml_exception(
 	throw wml_exception(message, sstr.str());
 }
 
-void wml_exception::show(CVideo &video)
+void wml_exception::show()
 {
 	std::ostringstream sstr;
 
@@ -64,7 +64,7 @@ void wml_exception::show(CVideo &video)
 		<< _("When reporting the bug please include the following error message :")
 		<< "\n" << dev_message;
 
-	gui2::show_error_message(video, sstr.str());
+	gui2::show_error_message(sstr.str());
 }
 
 std::string missing_mandatory_wml_key(

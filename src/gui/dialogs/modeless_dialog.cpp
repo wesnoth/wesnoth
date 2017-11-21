@@ -33,17 +33,15 @@ modeless_dialog::~modeless_dialog()
 	hide();
 }
 
-void modeless_dialog::show(CVideo& video,
-				  const bool allow_interaction,
-				  const unsigned /*auto_close_time*/)
+void modeless_dialog::show(const bool allow_interaction, const unsigned /*auto_close_time*/)
 {
-	if(video.faked()) {
+	if(CVideo::get_singleton().faked()) {
 		return;
 	}
 
 	hide();
 
-	window_.reset(build_window(video));
+	window_.reset(build_window());
 
 	post_build(*window_);
 
@@ -69,9 +67,9 @@ void modeless_dialog::hide()
 		window_.reset(nullptr);	}
 }
 
-window* modeless_dialog::build_window(CVideo& video) const
+window* modeless_dialog::build_window() const
 {
-	return build(video, window_id());
+	return build(window_id());
 }
 
 void modeless_dialog::post_build(window& /*window*/)

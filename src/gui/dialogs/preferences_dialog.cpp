@@ -75,8 +75,8 @@ using namespace preferences;
 
 REGISTER_DIALOG(preferences_dialog)
 
-preferences_dialog::preferences_dialog(CVideo& video, const config& game_cfg, const PREFERENCE_VIEW& initial_view)
-	: resolutions_(video.get_available_resolutions(true))
+preferences_dialog::preferences_dialog(const config& game_cfg, const PREFERENCE_VIEW& initial_view)
+	: resolutions_() // should be populated by set_resolution_list before use
 	, adv_preferences_cfg_()
 	, last_selected_item_(0)
 	, accl_speeds_({0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 3, 4, 8, 16})
@@ -204,7 +204,7 @@ void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& t
 {
 	std::string username = textbox.text();
 	if(username.empty()) {
-		gui2::show_transient_message(window.video(), "", _("No username specified"), "", false, false, true);
+		gui2::show_transient_message("", _("No username specified"), "", false, false, true);
 		return;
 	}
 
@@ -222,7 +222,7 @@ void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& t
 	std::tie(entry, added_new) = add_acquaintance(username, (is_friend ? "friend": "ignore"), reason);
 
 	if(!entry) {
-		gui2::show_transient_message(window.video(), _("Error"), _("Invalid username"), "", false, false, true);
+		gui2::show_transient_message(_("Error"), _("Invalid username"), "", false, false, true);
 		return;
 	}
 
@@ -264,12 +264,12 @@ void preferences_dialog::remove_friend_list_entry(listbox& friends_list, text_bo
 	const std::string to_remove = !textbox.text().empty() ? textbox.text() : who->second.get_nick();
 
 	if(to_remove.empty()) {
-		gui2::show_transient_message(window.video(), "", _("No username specified"), "", false, false, true);
+		gui2::show_transient_message("", _("No username specified"), "", false, false, true);
 		return;
 	}
 
 	if(!remove_acquaintance(to_remove)) {
-		gui2::show_transient_error_message(window.video(), _("Not on friends or ignore lists"));
+		gui2::show_transient_error_message(_("Not on friends or ignore lists"));
 		return;
 	}
 
@@ -365,8 +365,7 @@ void preferences_dialog::post_build(window& window)
 
 	/* CACHE MANAGE */
 	connect_signal_mouse_left_click(find_widget<button>(&window, "cachemg", false),
-			std::bind(&gui2::dialogs::game_cache_options::display,
-			std::ref(window.video())));
+			std::bind(&gui2::dialogs::game_cache_options::display<>));
 
 	//
 	// DISPLAY PANEL
@@ -433,8 +432,7 @@ void preferences_dialog::post_build(window& window)
 	/* SELECT THEME */
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "choose_theme", false),
-			bind_void(&show_theme_dialog,
-			std::ref(window.video())));
+			bind_void(&show_theme_dialog));
 
 
 	//
@@ -548,14 +546,12 @@ void preferences_dialog::post_build(window& window)
 	/* ALERTS */
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "mp_alerts", false),
-			std::bind(&gui2::dialogs::mp_alerts_options::display,
-			std::ref(window.video())));
+			std::bind(&gui2::dialogs::mp_alerts_options::display<>));
 
 	/* SET WESNOTHD PATH */
 	connect_signal_mouse_left_click(
 			find_widget<button>(&window, "mp_wesnothd", false), std::bind(
-			&show_wesnothd_server_search,
-			std::ref(window.video())));
+			&show_wesnothd_server_search));
 
 
 	//
@@ -695,10 +691,9 @@ void preferences_dialog::post_build(window& window)
 	connect_signal_notify_modified(advanced, std::bind(
 		&preferences_dialog::on_advanced_prefs_list_select,
 		this,
-		std::ref(advanced),
-		std::ref(window)));
+		std::ref(advanced)));
 
-	on_advanced_prefs_list_select(advanced, window);
+	on_advanced_prefs_list_select(advanced);
 
 	//
 	// HOTKEYS PANEL
@@ -804,12 +799,11 @@ listbox& preferences_dialog::setup_hotkey_list(window& window)
 
 void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 {
-	CVideo& video = hotkeys.get_window()->video();
 	int row_number = hotkeys.get_selected_row();
 	const hotkey::hotkey_command& hotkey_item = *visible_hotkeys_[row_number];
 
 	gui2::dialogs::hotkey_bind bind_dlg(hotkey_item.command);
-	bind_dlg.show(video);
+	bind_dlg.show();
 
 	hotkey::hotkey_ptr newhk = bind_dlg.get_new_binding();
 	hotkey::hotkey_ptr oldhk;
@@ -839,7 +833,7 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 			{"new_hotkey_action", hotkey::get_description(newhk->get_command())}
 		});
 
-		const int res = gui2::show_message(video, _("Reassign Hotkey"), text, gui2::dialogs::message::yes_no_buttons, true);
+		const int res = gui2::show_message(_("Reassign Hotkey"), text, gui2::dialogs::message::yes_no_buttons, true);
 		if(res != gui2::window::OK) {
 			return;
 		}
@@ -856,7 +850,7 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 
 void preferences_dialog::default_hotkey_callback(window& window)
 {
-	gui2::show_transient_message(window.video(), _("Hotkeys Reset"), _("All hotkeys have been reset to their default values."),
+	gui2::show_transient_message(_("Hotkeys Reset"), _("All hotkeys have been reset to their default values."),
 			std::string(), false, false, true);
 
 	clear_hotkeys();
@@ -906,7 +900,7 @@ void preferences_dialog::hotkey_type_filter_callback(window& window) const
 	find_widget<listbox>(&window, "list_hotkeys", false).set_row_shown(res);
 }
 
-void preferences_dialog::on_advanced_prefs_list_select(listbox& list, window& window)
+void preferences_dialog::on_advanced_prefs_list_select(listbox& list)
 {
 	const int selected_row = list.get_selected_row();
 
@@ -917,11 +911,11 @@ void preferences_dialog::on_advanced_prefs_list_select(listbox& list, window& wi
 
 	if(selected_type == ADVANCED_PREF_TYPE::SPECIAL) {
 		if(selected_field == "advanced_graphic_options") {
-			gui2::dialogs::advanced_graphics_options::display(window.video());
+			gui2::dialogs::advanced_graphics_options::display();
 		} else if(selected_field == "logging") {
-			gui2::dialogs::log_settings::display(window.video());
+			gui2::dialogs::log_settings::display();
 		} else if(selected_field == "orb_color") {
-			gui2::dialogs::select_orb_colors::display(window.video());
+			gui2::dialogs::select_orb_colors::display();
 		} else {
 			WRN_GUI_L << "Invalid or unimplemented custom advanced prefs option: " << selected_field << "\n";
 		}

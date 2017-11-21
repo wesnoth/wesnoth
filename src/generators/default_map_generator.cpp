@@ -22,7 +22,6 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "seed_rng.hpp"
-#include "video.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -60,7 +59,7 @@ bool default_map_generator::allow_user_config() const { return true; }
 
 void default_map_generator::user_config()
 {
-	gui2::dialogs::generator_settings::execute(data_, CVideo::get_singleton());
+	gui2::dialogs::generator_settings::execute(data_);
 }
 
 std::string default_map_generator::name() const { return "default"; }

@@ -30,11 +30,8 @@ class generator_settings : public modal_dialog
 public:
 	explicit generator_settings(generator_data& data);
 
-	/** The execute function see @ref modal_dialog for more information. */
-	static bool execute(generator_data& data, CVideo& video)
-	{
-		return generator_settings(data).show(video);
-	}
+	/** The execute function. See @ref modal_dialog for more information. */
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(generator_settings)
 
 private:
 	virtual void pre_show(window& window) override;

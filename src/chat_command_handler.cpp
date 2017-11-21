@@ -17,7 +17,6 @@
 #include "chat_events.hpp"
 #include "preferences/game.hpp"
 #include "preferences/display.hpp"
-#include "video.hpp"
 #include "game_config_manager.hpp"
 
 namespace events {
@@ -150,8 +149,8 @@ void chat_command_handler::do_remove()
 
 void chat_command_handler::do_display()
 {
-	// TODO: add video and game config argument to chat_command_handler?
-	gui2::dialogs::preferences_dialog::display(CVideo::get_singleton(), game_config_manager::get()->game_config(),
+	// TODO: add game config argument to chat_command_handler?
+	gui2::dialogs::preferences_dialog::display(game_config_manager::get()->game_config(),
 		preferences::VIEW_FRIENDS);
 }
 

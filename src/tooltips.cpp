@@ -27,8 +27,6 @@
 
 namespace {
 
-CVideo* video_ = nullptr;
-
 static const int font_size = font::SIZE_NORMAL;
 static const int text_width = 400;
 
@@ -64,7 +62,7 @@ static void clear_tooltip()
 
 static void show_tooltip(const tooltip& tip)
 {
-	if(video_ == nullptr) {
+	if(CVideo::get_singleton().faked()) {
 		return;
 	}
 
@@ -108,10 +106,9 @@ static void show_tooltip(const tooltip& tip)
 
 namespace tooltips {
 
-manager::manager(CVideo& video)
+manager::manager()
 {
 	clear_tooltips();
-	video_ = &video;
 }
 
 manager::~manager()
@@ -119,7 +116,6 @@ manager::~manager()
 	try {
 	clear_tooltips();
 	} catch (...) {}
-	video_ = nullptr;
 }
 
 void clear_tooltips()

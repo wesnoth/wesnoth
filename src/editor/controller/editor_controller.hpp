@@ -79,7 +79,7 @@ class editor_controller : public controller_base,
 		 * to the map can be retrieved between the main loop's end and the controller's
 		 * destruction.
 		 */
-		editor_controller(const config &game_config, CVideo& video);
+		explicit editor_controller(const config &game_config);
 
 		~editor_controller();
 

@@ -442,7 +442,7 @@ bool game_launcher::init_lua_script()
 
 			return true;
 		} catch (std::exception & e) {
-			gui2::show_error_message(video(), std::string("When loading a plugin, error:\n") + e.what());
+			gui2::show_error_message(std::string("When loading a plugin, error:\n") + e.what());
 			error = true;
 		}
 	}
@@ -487,7 +487,7 @@ bool game_launcher::play_test()
 		load_game_config_for_game(state_.classification());
 
 	try {
-		campaign_controller ccontroller(video(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
 		ccontroller.play_game();
 	} catch (savegame::load_game_exception &e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
@@ -521,7 +521,7 @@ int game_launcher::unit_test()
 		load_game_config_for_game(state_.classification());
 
 	try {
-		campaign_controller ccontroller(video(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
+		campaign_controller ccontroller(state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
 		LEVEL_RESULT res = ccontroller.play_game();
 		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
 			return 1;
@@ -537,7 +537,7 @@ int game_launcher::unit_test()
 		return 0; //we passed, huzzah!
 
 	savegame::replay_savegame save(state_, compression::NONE);
-	save.save_game_automatic(video(), false, "unit_test_replay"); //false means don't check for overwrite
+	save.save_game_automatic(false, "unit_test_replay"); //false means don't check for overwrite
 
 	load_data_.reset(new savegame::load_game_metadata{ "unit_test_replay" , "", true, true, false });
 
@@ -547,7 +547,7 @@ int game_launcher::unit_test()
 	}
 
 	try {
-		campaign_controller ccontroller(video(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
+		campaign_controller ccontroller(state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
 		LEVEL_RESULT res = ccontroller.play_replay();
 		if (!(res == LEVEL_RESULT::VICTORY)) {
 			std::cerr << "Observed failure on replay" << std::endl;
@@ -571,7 +571,7 @@ bool game_launcher::play_screenshot_mode()
 
 	::init_textdomains(game_config_manager::get()->game_config());
 
-	editor::start(game_config_manager::get()->game_config(), video(),
+	editor::start(game_config_manager::get()->game_config(),
 	    screenshot_map_, true, screenshot_filename_);
 	return false;
 }
@@ -619,7 +619,7 @@ bool game_launcher::load_game()
 
 	DBG_GENERAL << "Current campaign type: " << state_.classification().campaign_type << std::endl;
 
-	savegame::loadgame load(video(), game_config_manager::get()->game_config(), state_);
+	savegame::loadgame load(game_config_manager::get()->game_config(), state_);
 	if (load_data_) {
 		std::unique_ptr<savegame::load_game_metadata> load_data = std::move(load_data_);
 		load.data() = std::move(*load_data);
@@ -641,28 +641,28 @@ bool game_launcher::load_game()
 
 	} catch(config::error& e) {
 		if(e.message.empty()) {
-			gui2::show_error_message(video(), _("The file you have tried to load is corrupt"));
+			gui2::show_error_message(_("The file you have tried to load is corrupt"));
 		}
 		else {
-			gui2::show_error_message(video(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
+			gui2::show_error_message(_("The file you have tried to load is corrupt: '") + e.message + '\'');
 		}
 		return false;
 	} catch(wml_exception& e) {
-		e.show(video());
+		e.show();
 		return false;
 	} catch(filesystem::io_exception& e) {
 		if(e.message.empty()) {
-			gui2::show_error_message(video(), _("File I/O Error while reading the game"));
+			gui2::show_error_message(_("File I/O Error while reading the game"));
 		} else {
-			gui2::show_error_message(video(), _("File I/O Error while reading the game: '") + e.message + '\'');
+			gui2::show_error_message(_("File I/O Error while reading the game: '") + e.message + '\'');
 		}
 		return false;
 	} catch(game::error& e) {
 		if(e.message.empty()) {
-			gui2::show_error_message(video(), _("The file you have tried to load is corrupt"));
+			gui2::show_error_message(_("The file you have tried to load is corrupt"));
 		}
 		else {
-			gui2::show_error_message(video(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
+			gui2::show_error_message(_("The file you have tried to load is corrupt: '") + e.message + '\'');
 		}
 		return false;
 	}
@@ -717,7 +717,7 @@ bool game_launcher::new_campaign()
 	state_.mp_settings().show_connect = false;
 	play_replay_ = false;
 
-	return sp::enter_create_mode(video(), game_config_manager::get()->game_config(),
+	return sp::enter_create_mode(game_config_manager::get()->game_config(),
 		state_, jump_to_campaign_);
 }
 
@@ -815,7 +815,7 @@ bool game_launcher::play_multiplayer(mp_selection res)
 				start_wesnothd();
 			} catch(game::mp_server_error&)
 			{
-				preferences::show_wesnothd_server_search(video());
+				preferences::show_wesnothd_server_search();
 
 				try {
 					start_wesnothd();
@@ -830,7 +830,7 @@ bool game_launcher::play_multiplayer(mp_selection res)
 
 		// If a server address wasn't specified, prompt for it now.
 		if(res != MP_LOCAL && multiplayer_server_.empty()) {
-			if(!gui2::dialogs::mp_connect::execute(CVideo::get_singleton())) {
+			if(!gui2::dialogs::mp_connect::execute()) {
 				return false;
 			}
 
@@ -849,48 +849,46 @@ bool game_launcher::play_multiplayer(mp_selection res)
 		cursor::set(cursor::NORMAL);
 
 		if(res == MP_LOCAL) {
-			mp::start_local_game(video(),
+			mp::start_local_game(
 			    game_config_manager::get()->game_config(), state_);
 		} else {
-			mp::start_client(video(), game_config_manager::get()->game_config(),
+			mp::start_client(game_config_manager::get()->game_config(),
 				state_, multiplayer_server_);
 			multiplayer_server_.clear();
 		}
 
 	} catch(game::mp_server_error& e) {
-		gui2::show_error_message(video(), _("Error while starting server: ") + e.message);
+		gui2::show_error_message(_("Error while starting server: ") + e.message);
 	} catch(game::load_game_failed& e) {
-		gui2::show_error_message(video(), _("The game could not be loaded: ") + e.message);
+		gui2::show_error_message(_("The game could not be loaded: ") + e.message);
 	} catch(game::game_error& e) {
-		gui2::show_error_message(video(), _("Error while playing the game: ") + e.message);
+		gui2::show_error_message(_("Error while playing the game: ") + e.message);
 	} catch (mapgen_exception& e) {
-		gui2::show_error_message(video(), _("Map generator error: ") + e.message);
+		gui2::show_error_message(_("Map generator error: ") + e.message);
 	} catch(wesnothd_error& e) {
 		if(!e.message.empty()) {
 			ERR_NET << "caught network error: " << e.message << std::endl;
-			gui2::show_transient_message(video()
-					, ""
-					, translation::gettext(e.message.c_str()));
+			gui2::show_transient_message("", translation::gettext(e.message.c_str()));
 		} else {
 			ERR_NET << "caught network error" << std::endl;
 		}
 	} catch(config::error& e) {
 		if(!e.message.empty()) {
 			ERR_CONFIG << "caught config::error: " << e.message << std::endl;
-			gui2::show_transient_message(video(), "", e.message);
+			gui2::show_transient_message("", e.message);
 		} else {
 			ERR_CONFIG << "caught config::error" << std::endl;
 		}
 	} catch(incorrect_map_format_error& e) {
-		gui2::show_error_message(video(), _("The game map could not be loaded: ") + e.message);
+		gui2::show_error_message(_("The game map could not be loaded: ") + e.message);
 	} catch (savegame::load_game_exception & e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(wml_exception& e) {
-		e.show(video());
+		e.show();
 	} catch (game::error & e) {
 		std::cerr << "caught game::error...\n";
-		gui2::show_error_message(video(), _("Error: ") + e.message);
+		gui2::show_error_message(_("Error: ") + e.message);
 	}
 
 	return false;
@@ -914,7 +912,7 @@ bool game_launcher::play_multiplayer_commandline()
 	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
 
-	mp::start_local_game_commandline(video(),
+	mp::start_local_game_commandline(
 	    game_config_manager::get()->game_config(), state_, cmdline_opts_);
 
 	return false;
@@ -923,7 +921,7 @@ bool game_launcher::play_multiplayer_commandline()
 bool game_launcher::change_language()
 {
 	gui2::dialogs::language_selection dlg;
-	dlg.show(video());
+	dlg.show();
 	if (dlg.get_retval() != gui2::window::OK) return false;
 
 	if (!(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test)) {
@@ -935,7 +933,7 @@ bool game_launcher::change_language()
 
 void game_launcher::show_preferences()
 {
-	gui2::dialogs::preferences_dialog::display(video(),  game_config_manager::get()->game_config());
+	gui2::dialogs::preferences_dialog::display(game_config_manager::get()->game_config());
 }
 
 void game_launcher::launch_game(RELOAD_GAME_DATA reload)
@@ -947,7 +945,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 		return;
 	}
 
-	gui2::dialogs::loading_screen::display(video(), [this, reload]() {
+	gui2::dialogs::loading_screen::display([this, reload]() {
 
 		gui2::dialogs::loading_screen::progress(loading_stage::load_data);
 		if(reload == RELOAD_DATA) {
@@ -961,26 +959,26 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 	});
 
 	try {
-		campaign_controller ccontroller(video(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
 		LEVEL_RESULT result = ccontroller.play_game();
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
 		if(result == LEVEL_RESULT::VICTORY && !state_.classification().is_normal_mp_game()) {
 			preferences::add_completed_campaign(state_.classification().campaign, state_.classification().difficulty);
 
-			gui2::dialogs::outro::display(state_.classification().end_text, state_.classification().end_text_duration, video());
+			gui2::dialogs::outro::display(state_.classification().end_text, state_.classification().end_text_duration);
 
 			if(state_.classification().end_credits) {
-				gui2::dialogs::end_credits::display(video(), state_.classification().campaign);
+				gui2::dialogs::end_credits::display(state_.classification().campaign);
 			}
 		}
 	} catch (savegame::load_game_exception &e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(wml_exception& e) {
-		e.show(video());
+		e.show();
 	} catch(mapgen_exception& e) {
-		gui2::show_error_message(video(), _("Map generator error: ") + e.message);
+		gui2::show_error_message(_("Map generator error: ") + e.message);
 	}
 }
 
@@ -988,13 +986,13 @@ void game_launcher::play_replay()
 {
 	assert(!load_data_);
 	try {
-		campaign_controller ccontroller(video(), state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
+		campaign_controller ccontroller(state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
 		ccontroller.play_replay();
 	} catch (savegame::load_game_exception &e) {
 		load_data_.reset(new savegame::load_game_metadata(std::move(e.data_)));
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(wml_exception& e) {
-		e.show(video());
+		e.show();
 	}
 }
 
@@ -1006,7 +1004,7 @@ editor::EXIT_STATUS game_launcher::start_editor(const std::string& filename)
 		::init_textdomains(game_config_manager::get()->game_config());
 
 		editor::EXIT_STATUS res = editor::start(
-		    game_config_manager::get()->game_config(), video(), filename);
+		    game_config_manager::get()->game_config(), filename);
 
 		if(res != editor::EXIT_RELOAD_DATA)
 			return res;

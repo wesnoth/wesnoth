@@ -608,7 +608,7 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 		lg::wml_error() << "replace_map: Unable to load map " << log_map_name << std::endl;
 		return;
 	} catch(wml_exception& e) {
-		e.show(resources::screen->video());
+		e.show();
 		return;
 	}
 
@@ -873,7 +873,7 @@ WML_HANDLER_FUNCTION(terrain_mask,, cfg)
 		ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied" << std::endl;
 		return;
 	} catch(wml_exception& e) {
-		e.show(resources::screen->video());
+		e.show();
 		return;
 	}
 

@@ -25,8 +25,6 @@
 
 #include <string>
 
-class CVideo;
-
 /**
  * The macro to use for the validation of WML
  *
@@ -117,10 +115,8 @@ struct wml_exception
 
 	/**
 	 * Shows the error in a dialog.
-	 *
-	 * @param video          Target for rendering the UI message.
 	 */
-	void show(CVideo& video);
+	void show();
 private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(wml_exception)
 };

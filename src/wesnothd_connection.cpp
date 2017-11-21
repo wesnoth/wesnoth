@@ -18,7 +18,6 @@
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "utils/functional.hpp"
-#include "video.hpp"
 
 #include <boost/thread.hpp>
 #include <SDL_timer.h>
@@ -394,7 +393,7 @@ bool wesnothd_connection::fetch_data_with_loading_screen(config& cfg, loading_st
 	assert(stage != loading_stage::none);
 
 	bool res = false;
-	gui2::dialogs::loading_screen::display(CVideo::get_singleton(), [&]() {
+	gui2::dialogs::loading_screen::display([&]() {
 		gui2::dialogs::loading_screen::progress(stage);
 
 		res = wait_and_receive_data(cfg);

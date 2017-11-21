@@ -150,7 +150,7 @@ void label::signal_handler_left_button_click(const event::ui_event /* event */, 
 	}
 
 	if (!desktop::open_object_is_supported()) {
-		show_message(get_window()->video(), "", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
+		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
 		handled = true;
 		return;
 	}
@@ -169,7 +169,7 @@ void label::signal_handler_left_button_click(const event::ui_event /* event */, 
 
 	DBG_GUI_E << "Clicked Link:\"" << link << "\"\n";
 
-	const int res = show_message(get_window()->video(), _("Confirm"), _("Do you want to open this link?") + std::string("\n\n") + link, dialogs::message::yes_no_buttons);
+	const int res = show_message(_("Confirm"), _("Do you want to open this link?") + std::string("\n\n") + link, dialogs::message::yes_no_buttons);
 	if(res == gui2::window::OK) {
 		desktop::open_object(link);
 	}
@@ -200,7 +200,7 @@ void label::signal_handler_right_button_click(const event::ui_event /* event */,
 
 	desktop::clipboard::copy_to_clipboard(link, false);
 
-	(void) show_message(get_window()->video(), "", _("Copied link!"), dialogs::message::auto_close);
+	(void) show_message("", _("Copied link!"), dialogs::message::auto_close);
 
 	handled = true;
 }

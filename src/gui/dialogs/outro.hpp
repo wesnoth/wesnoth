@@ -16,8 +16,6 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-class CVideo;
-
 namespace gui2
 {
 namespace dialogs
@@ -38,10 +36,7 @@ public:
 	 * @param duration In milliseconds, for how much time the text will
 	 *                 be displayed on screen.
 	 */
-	static void display(const std::string& text, unsigned int duration, CVideo& video)
-	{
-		outro(text, duration).show(video);
-	}
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(outro)
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

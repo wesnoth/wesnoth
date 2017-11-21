@@ -902,7 +902,7 @@ size_t mouse_handler::move_unit_along_route(const std::vector<map_location>& ste
 
 		if(u && u->can_recruit() && u->side() == gui().viewing_side()
 				&& !pc_.get_whiteboard()->allow_leader_to_move(*u)) {
-			gui2::show_transient_message(gui_->video(), "",
+			gui2::show_transient_message("",
 					_("You cannot move your leader away from the keep with some planned recruits or recalls left."));
 			return 0;
 		}
@@ -998,14 +998,14 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	);
 
 	if((*attacker).attacks().empty() || all_disabled) {
-		gui2::show_transient_message(gui_->video(), "No Attacks", _("This unit has no usable weapons."));
+		gui2::show_transient_message("No Attacks", _("This unit has no usable weapons."));
 
 		return -1;
 	}
 
 	gui2::dialogs::unit_attack dlg(attacker, defender, bc_vector, best);
 
-	dlg.show(gui_->video());
+	dlg.show();
 
 	if(dlg.get_retval() == gui2::window::OK) {
 		return dlg.get_selected_weapon();

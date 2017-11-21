@@ -59,17 +59,17 @@ static std::vector<std::string> saved_windows_;
 
 namespace editor {
 
-editor_controller::editor_controller(const config &game_config, CVideo& video)
+editor_controller::editor_controller(const config &game_config)
 	: controller_base(game_config)
 	, mouse_handler_base()
 	, quit_confirmation(std::bind(&editor_controller::quit_confirm, this))
 	, active_menu_(editor::MAP)
 	, reports_(new reports())
-	, gui_(new editor_display(*this, video, *reports_, controller_base::get_theme(game_config, "editor")))
+	, gui_(new editor_display(*this, *reports_, controller_base::get_theme(game_config, "editor")))
 	, tods_()
 	, context_manager_(new context_manager(*gui_.get(), game_config_))
 	, toolkit_(nullptr)
-	, tooltip_manager_(video)
+	, tooltip_manager_()
 	, floating_label_manager_(nullptr)
 	, help_manager_(nullptr)
 	, do_quit_(false)
@@ -174,10 +174,10 @@ EXIT_STATUS editor_controller::main_loop()
 			play_slice();
 		}
 	} catch (editor_exception& e) {
-		gui2::show_transient_message(gui().video(), _("Fatal error"), e.what());
+		gui2::show_transient_message(_("Fatal error"), e.what());
 		return EXIT_ERROR;
 	} catch (wml_exception& e) {
-		e.show(gui().video());
+		e.show();
 	}
 	return quit_mode_;
 }
@@ -192,7 +192,7 @@ void editor_controller::do_screenshot(const std::string& screenshot_filename /* 
 			ERR_ED << "Screenshot creation failed!\n";
 		}
 	} catch (wml_exception& e) {
-		e.show(gui().video());
+		e.show();
 	}
 }
 
@@ -216,14 +216,13 @@ bool editor_controller::quit_confirm()
 void editor_controller::custom_tods_dialog()
 {
 	if (tods_.empty()) {
-		gui2::show_error_message(gui().video(),
-				_("No editor time-of-day found."));
+		gui2::show_error_message(_("No editor time-of-day found."));
 		return;
 	}
 
 	tod_manager& manager = *get_current_map_context().get_time_manager();
 
-	if(gui2::dialogs::custom_tod::execute(manager.times(), manager.get_current_time(), gui().video())) {
+	if(gui2::dialogs::custom_tod::execute(manager.times(), manager.get_current_time())) {
 		// TODO save the new tod here
 	}
 
@@ -1100,7 +1099,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 void editor_controller::preferences()
 {
 	gui_->video().clear_all_help_strings();
-	gui2::dialogs::preferences_dialog::display(gui_->video(), game_config_);
+	gui2::dialogs::preferences_dialog::display(game_config_);
 
 	gui_->redraw_everything();
 }
@@ -1143,7 +1142,7 @@ void editor_controller::change_unit_id()
 
 	if(un != units.end()) {
 		std::string id = un->id();
-		if (gui2::dialogs::edit_text::execute(title, label, id, gui_->video())) {
+		if (gui2::dialogs::edit_text::execute(title, label, id)) {
 			un->set_id(id);
 		}
 	}
@@ -1160,7 +1159,7 @@ void editor_controller::rename_unit()
 
 	if(un != units.end()) {
 		std::string name = un->name();
-		if(gui2::dialogs::edit_text::execute(title, label, name, gui_->video())) {
+		if(gui2::dialogs::edit_text::execute(title, label, name)) {
 			//TODO we may not want a translated name here.
 			un->set_name(name);
 		}

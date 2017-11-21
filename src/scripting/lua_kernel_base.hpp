@@ -21,7 +21,6 @@
 #include <cstdint>
 
 struct lua_State;
-class CVideo;
 class config;
 
 class lua_kernel_base {
@@ -114,10 +113,6 @@ protected:
 
 	// Print text to the command log for this lua kernel. Used as a replacement impl for lua print.
 	int intf_print(lua_State * L);
-
-	using video_function = int (*)(lua_State*,CVideo&);
-	template<video_function> friend int video_dispatch(lua_State*);
-	int video_dispatch_impl(lua_State* L, video_function callback);
 
 	// Show the interactive lua console (for debugging purposes)
 	int intf_show_lua_console(lua_State * L);

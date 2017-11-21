@@ -647,10 +647,9 @@ static int do_gameloop(const std::vector<std::string>& args)
 	gui2::init();
 	const gui2::event::manager gui_event_manager;
 
-	game_config_manager config_manager(cmdline_opts, game->video(),
-	    game->jump_to_editor());
+	game_config_manager config_manager(cmdline_opts, game->jump_to_editor());
 
-	gui2::dialogs::loading_screen::display(game->video(), [&res, &config_manager]() {
+	gui2::dialogs::loading_screen::display([&res, &config_manager]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_config);
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
@@ -798,7 +797,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 		 * changes such as those dictated by window resolution.
 		 */
 		while(dlg.get_retval() == gui2::dialogs::title_screen::REDRAW_BACKGROUND) {
-			dlg.show(game->video());
+			dlg.show();
 		}
 
 		switch(dlg.get_retval()) {
@@ -824,7 +823,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			}
 			break;
 		case gui2::dialogs::title_screen::RELOAD_GAME_DATA:
-			gui2::dialogs::loading_screen::display(game->video(), [&config_manager]() {
+			gui2::dialogs::loading_screen::display([&config_manager]() {
 				config_manager.reload_changed_game_config();
 				image::flush_cache();
 			});
@@ -833,7 +832,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 			game->start_editor();
 			break;
 		case gui2::dialogs::title_screen::SHOW_ABOUT:
-			gui2::dialogs::end_credits::display(game->video());
+			gui2::dialogs::end_credits::display();
 			break;
 		case gui2::dialogs::title_screen::LAUNCH_GAME:
 			game->launch_game(should_reload);

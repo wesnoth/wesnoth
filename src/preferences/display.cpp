@@ -102,12 +102,12 @@ void set_idle_anim_rate(int rate) {
 	}
 }
 
-bool show_theme_dialog(CVideo& video)
+bool show_theme_dialog()
 {
 	std::vector<theme_info> themes = theme::get_known_themes();
 
 	if (themes.empty()) {
-		gui2::show_transient_message(video, "",
+		gui2::show_transient_message("",
 			_("No known themes. Try changing from within an existing game."));
 
 		return false;
@@ -121,7 +121,7 @@ bool show_theme_dialog(CVideo& video)
 		}
 	}
 
-	dlg.show(video);
+	dlg.show();
 	const int action = dlg.selected_index();
 
 	if (action >= 0) {
@@ -136,7 +136,7 @@ bool show_theme_dialog(CVideo& video)
 	return false;
 }
 
-void show_wesnothd_server_search(CVideo& video)
+void show_wesnothd_server_search()
 {
 #ifndef _WIN32
 	const std::string filename = "wesnothd";
@@ -161,7 +161,7 @@ void show_wesnothd_server_search(CVideo& video)
 	   .set_filename(filename)
 	   .set_path(path);
 
-	if(dlg.show(video)) {
+	if(dlg.show()) {
 		path = dlg.path();
 		preferences::set_mp_server_program_name(path);
 	}

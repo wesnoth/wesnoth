@@ -22,7 +22,6 @@
 #include "color.hpp"
 
 #include "serialization/string_utils.hpp"
-#include "video.hpp"
 #include "xBRZ/xbrz.hpp"
 
 #include <algorithm>
@@ -48,20 +47,27 @@ bool is_neutral(const surface& surf)
 }
 
 static SDL_PixelFormat& get_neutral_pixel_format()
-	{
-		static bool first_time = true;
-		static SDL_PixelFormat format;
+{
+	static bool first_time = true;
+	static SDL_PixelFormat format;
 
-		if(first_time) {
-			first_time = false;
-			surface surf(SDL_CreateRGBSurface(0,1,1,32,SDL_RED_MASK,SDL_GREEN_MASK,
-											  SDL_BLUE_MASK,SDL_ALPHA_MASK));
-			format = *surf->format;
-			format.palette = nullptr;
-		}
+	if(first_time) {
+		first_time = false;
 
-		return format;
+#if SDL_VERSION_ATLEAST(2, 0, 6)
+		surface surf(
+			SDL_CreateRGBSurfaceWithFormat(0, 1, 1, 32, SDL_PIXELFORMAT_ARGB8888));
+#else
+		surface surf(
+			SDL_CreateRGBSurface(0, 1, 1, 32, SDL_RED_MASK, SDL_GREEN_MASK, SDL_BLUE_MASK, SDL_ALPHA_MASK));
+#endif
+
+		format = *surf->format;
+		format.palette = nullptr;
 	}
+
+	return format;
+}
 
 surface make_neutral_surface(const surface &surf)
 {
@@ -83,12 +89,17 @@ surface create_neutral_surface(int w, int h)
 	}
 
 	SDL_PixelFormat format = get_neutral_pixel_format();
+
+#if SDL_VERSION_ATLEAST(2, 0, 6)
+	surface result = SDL_CreateRGBSurfaceWithFormat(0, w, h, format.BitsPerPixel, format.format);
+#else
 	surface result = SDL_CreateRGBSurface(0, w, h,
 			format.BitsPerPixel,
 			format.Rmask,
 			format.Gmask,
 			format.Bmask,
 			format.Amask);
+#endif
 
 	return result;
 }
@@ -2096,8 +2107,13 @@ surface create_compatible_surface(const surface &surf, int width, int height)
 	if(height == -1)
 		height = surf->h;
 
+#if SDL_VERSION_ATLEAST(2, 0, 6)
+	surface s = SDL_CreateRGBSurfaceWithFormat(0, width, height, surf->format->BitsPerPixel, surf->format->format);
+#else
 	surface s = SDL_CreateRGBSurface(0, width, height, surf->format->BitsPerPixel,
 		surf->format->Rmask, surf->format->Gmask, surf->format->Bmask, surf->format->Amask);
+#endif
+
 	if (surf->format->palette) {
 		SDL_SetPaletteColors(s->format->palette, surf->format->palette->colors, 0, surf->format->palette->ncolors);
 	}

@@ -34,9 +34,8 @@ public:
 	 *
 	 * See @ref modal_dialog for more information.
 	 */
-	static void display(CVideo& video) {
-		select_orb_colors().show(video);
-	}
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(select_orb_colors)
+
 private:
 	void setup_orb_group(const std::string& base_id, bool& shown, const std::string& initial, window& window, bool connect = true);
 	void handle_toggle_click(bool& storage);

@@ -41,10 +41,9 @@ static lg::log_domain log_engine("engine");
 
 playmp_controller::playmp_controller(const config& level,
 		saved_game& state_of_game, const config& game_config,
-		const ter_data_cache & tdata, CVideo& video,
+		const ter_data_cache & tdata,
 		mp_campaign_info* mp_info)
-	: playsingle_controller(level, state_of_game, game_config, tdata, video,
-			mp_info && mp_info->skip_replay)
+	: playsingle_controller(level, state_of_game, game_config, tdata, mp_info && mp_info->skip_replay)
 	, network_processing_stopped_(false)
 	, blindfold_(*gui_, mp_info && mp_info->skip_replay_blindfolded)
 	, mp_info_(mp_info)
@@ -379,7 +378,7 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 	}
 	scoped_savegame_snapshot snapshot(*this);
 	savegame::oos_savegame save(saved_game_, *gui_, ignore_replay_errors_);
-	save.save_game_interactive(gui_->video(), temp_buf.str(), savegame::savegame::YES_NO);
+	save.save_game_interactive(temp_buf.str(), savegame::savegame::YES_NO);
 }
 
 void playmp_controller::handle_generic_event(const std::string& name){

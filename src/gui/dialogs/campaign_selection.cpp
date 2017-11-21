@@ -39,7 +39,6 @@
 
 #include "utils/functional.hpp"
 #include "utils/irdya_datetime.hpp"
-#include "video.hpp"
 
 namespace gui2
 {

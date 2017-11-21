@@ -72,17 +72,8 @@ public:
 					   EXPAND_DIRECTION& expand_direction,
 					   bool& copy_edge_terrain);
 
-	/** The execute function see @ref modal_dialog for more information. */
-	static bool execute(int& width,
-						int& height,
-						EXPAND_DIRECTION& expand_direction,
-						bool& copy_edge_terrain,
-						CVideo& video)
-	{
-		return editor_resize_map(
-					   width, height, expand_direction, copy_edge_terrain)
-				.show(video);
-	}
+	/** The execute function. See @ref modal_dialog for more information. */
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(editor_resize_map)
 
 private:
 	/** The currently selected width. */

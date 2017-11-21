@@ -32,24 +32,8 @@ public:
 						  bool& victory_when_enemies_defeated,
 						  bool& random_start_time);
 
-	/** The execute function see @ref modal_dialog for more information. */
-	static bool execute(std::string& id,
-						std::string& name,
-						std::string& description,
-						int& turns,
-						int& experience_modifier,
-						bool& victory_when_enemies_defeated,
-						bool& random_start_time,
-						CVideo& video)
-	{
-		return editor_edit_scenario(id,
-									 name,
-									 description,
-									 turns,
-									 experience_modifier,
-									 victory_when_enemies_defeated,
-									 random_start_time).show(video);
-	}
+	/** The execute function. See @ref modal_dialog for more information. */
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(editor_edit_scenario)
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

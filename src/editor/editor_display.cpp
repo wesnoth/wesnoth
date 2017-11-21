@@ -54,12 +54,12 @@ const display_context * get_dummy_display_context() {
 
 // End dummy display context
 
-editor_display::editor_display(editor_controller& controller, CVideo& video, reports& reports_object, const config& theme_cfg)
-	: display(get_dummy_display_context(), video, std::shared_ptr<wb::manager>(), reports_object, theme_cfg, config())
+editor_display::editor_display(editor_controller& controller, reports& reports_object, const config& theme_cfg)
+	: display(get_dummy_display_context(), std::shared_ptr<wb::manager>(), reports_object, theme_cfg, config())
 	, brush_locations_()
 	, controller_(controller)
 {
-	video.clear_screen();
+	video().clear_screen();
 }
 
 void editor_display::add_brush_loc(const map_location& hex)

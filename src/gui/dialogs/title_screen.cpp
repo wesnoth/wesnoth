@@ -171,9 +171,9 @@ static bool fullscreen(CVideo& video)
 	return true;
 }
 
-static bool launch_lua_console(window& window)
+static bool launch_lua_console()
 {
-	gui2::dialogs::lua_interpreter::display(window.video(), gui2::dialogs::lua_interpreter::APP);
+	gui2::dialogs::lua_interpreter::display(gui2::dialogs::lua_interpreter::APP);
 	return true;
 }
 
@@ -190,7 +190,7 @@ static bool launch_lua_console(window& window)
  * - 150 to test with a borderline to insanely huge tooltip placement.
  * - 180 to test with an insanely huge tooltip placement.
  */
-static void debug_tooltip(window& window, bool& handled, const point& coordinate)
+static void debug_tooltip(window& /*window*/, bool& handled, const point& coordinate)
 {
 	std::string message = "Hello world.";
 
@@ -199,7 +199,7 @@ static void debug_tooltip(window& window, bool& handled, const point& coordinate
 	}
 
 	gui2::tip::remove();
-	gui2::tip::show(window.video(), "tooltip", message, coordinate);
+	gui2::tip::show("tooltip", message, coordinate);
 
 	handled = true;
 }
@@ -237,7 +237,7 @@ void title_screen::pre_show(window& win)
 		}
 		std::sort(options.begin(), options.end());
 		gui2::dialogs::simple_item_selector dlg(_("Choose Test"), "", options);
-		dlg.show(game_.video());
+		dlg.show();
 		int choice = dlg.selected_index();
 		if(choice >= 0) {
 			game_.set_test(options[choice]);
@@ -247,7 +247,9 @@ void title_screen::pre_show(window& win)
 	});
 
 	win.register_hotkey(hotkey::HOTKEY_FULLSCREEN, std::bind(fullscreen, std::ref(win.video())));
-	win.register_hotkey(hotkey::LUA_CONSOLE, std::bind(&launch_lua_console, std::ref(win)));
+
+	// std::bind is needed here since the bare function signature isn't what register_hotkey expects.
+	win.register_hotkey(hotkey::LUA_CONSOLE, std::bind(&launch_lua_console));
 
 	//
 	// Background and logo images
@@ -315,7 +317,7 @@ void title_screen::pre_show(window& win)
 	//
 	register_button(win, "help", hotkey::HOTKEY_HELP, [](window& w) {
 		if(gui2::new_widgets) {
-			gui2::dialogs::help_browser::display(w.video());
+			gui2::dialogs::help_browser::display();
 		}
 
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
@@ -325,7 +327,7 @@ void title_screen::pre_show(window& win)
 	//
 	// About
 	//
-	register_button(win, "about", hotkey::HOTKEY_NULL, std::bind(&game_version::display, std::ref(win.video())));
+	register_button(win, "about", hotkey::HOTKEY_NULL, std::bind(&game_version::display<>));
 
 	//
 	// Tutorial
@@ -344,7 +346,7 @@ void title_screen::pre_show(window& win)
 				w.set_retval(LAUNCH_GAME);
 			}
 		} catch (const config::error& e) {
-			gui2::show_error_message(w.video(), e.what());
+			gui2::show_error_message(e.what());
 		}
 	});
 
@@ -354,7 +356,7 @@ void title_screen::pre_show(window& win)
 	register_button(win, "multiplayer", hotkey::TITLE_SCREEN__MULTIPLAYER, [this](window& w) {
 		while(true) {
 			gui2::dialogs::mp_method_selection dlg;
-			dlg.show(w.video());
+			dlg.show();
 
 			if(dlg.get_retval() != gui2::window::OK) {
 				return;
@@ -363,7 +365,7 @@ void title_screen::pre_show(window& win)
 			const int res = dlg.get_choice();
 
 			if(res == 2 && preferences::mp_server_warning_disabled() < 2) {
-				if(!gui2::dialogs::mp_host_game_prompt::execute(w.video())) {
+				if(!gui2::dialogs::mp_host_game_prompt::execute()) {
 					continue;
 				}
 			}
@@ -404,11 +406,11 @@ void title_screen::pre_show(window& win)
 	//
 	// Addons
 	//
-	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, [](window& w) {
+	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, [](window&) {
 		// NOTE: we need the help_manager to get access to the Add-ons section in the game help!
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
 
-		if(manage_addons(w.video())) {
+		if(manage_addons()) {
 			game_config_manager::get()->reload_changed_game_config();
 		}
 	});
@@ -421,7 +423,7 @@ void title_screen::pre_show(window& win)
 	//
 	// Cores
 	//
-	register_button(win, "cores", hotkey::TITLE_SCREEN__CORES, [](window& w) {
+	register_button(win, "cores", hotkey::TITLE_SCREEN__CORES, [](window&) {
 		int current = 0;
 		std::vector<config> cores;
 		for(const config& core : game_config_manager::get()->game_config().child_range("core")) {
@@ -433,7 +435,7 @@ void title_screen::pre_show(window& win)
 		}
 
 		gui2::dialogs::core_selection core_dlg(cores, current);
-		if(core_dlg.show(w.video())) {
+		if(core_dlg.show()) {
 			const std::string& core_id = cores[core_dlg.get_choice()]["id"];
 
 			preferences::set_core_id(core_id);
@@ -456,7 +458,7 @@ void title_screen::pre_show(window& win)
 				on_resize(w);
 			}
 		} catch(std::runtime_error& e) {
-			gui2::show_error_message(w.video(), e.what());
+			gui2::show_error_message(e.what());
 		}
 	});
 
@@ -479,7 +481,7 @@ void title_screen::pre_show(window& win)
 	// Debug clock
 	//
 	register_button(win, "clock", hotkey::HOTKEY_NULL,
-		std::bind(&title_screen::show_debug_clock_window, this, std::ref(win.video())));
+		std::bind(&title_screen::show_debug_clock_window, this));
 
 	find_widget<button>(&win, "clock", false).set_visible(show_debug_clock_button
 		? widget::visibility::visible
@@ -523,7 +525,7 @@ void title_screen::update_tip(window& win, const bool previous)
 	win.set_is_dirty(true);
 }
 
-void title_screen::show_debug_clock_window(CVideo& video)
+void title_screen::show_debug_clock_window()
 {
 	assert(show_debug_clock_button);
 
@@ -531,7 +533,7 @@ void title_screen::show_debug_clock_window(CVideo& video)
 		debug_clock_.reset(nullptr);
 	} else {
 		debug_clock_.reset(new debug_clock());
-		debug_clock_->show(video, true);
+		debug_clock_->show(true);
 	}
 }
 

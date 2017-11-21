@@ -280,7 +280,7 @@ void unit_recall::dismiss_unit(window& window)
 	}
 
 	if(!message.str().empty()) {
-		const int res = gui2::show_message(window.video(), _("Dismiss Unit"), message.str(), message::yes_no_buttons);
+		const int res = gui2::show_message(_("Dismiss Unit"), message.str(), message::yes_no_buttons);
 
 		if(res != gui2::window::OK) {
 			return;

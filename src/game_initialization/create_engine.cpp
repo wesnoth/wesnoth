@@ -28,7 +28,6 @@
 #include "map/map.hpp"
 #include "minimap.hpp"
 #include "saved_game.hpp"
-#include "video.hpp"
 #include "wml_exception.hpp"
 
 #include "serialization/preprocessor.hpp"
@@ -239,7 +238,6 @@ create_engine::create_engine(saved_game& state)
 	, eras_()
 	, mods_()
 	, state_(state)
-	, video_(CVideo::get_singleton())
 	, dependency_manager_(nullptr)
 	, generator_(nullptr)
 	, selected_campaign_difficulty_()
@@ -267,7 +265,7 @@ create_engine::create_engine(saved_game& state)
 
 	// Initialize dependency_manager_ after refreshing game config.
 	dependency_manager_.reset(new depcheck::manager(
-		game_config_manager::get()->game_config(), type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER, video_));
+		game_config_manager::get()->game_config(), type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER));
 
 	// TODO: the editor dir is already configurable, is the preferences value
 	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &user_map_names_,
@@ -467,7 +465,7 @@ std::string create_engine::select_campaign_difficulty(int set_value)
 	// We don't pass the difficulties vector here because additional data is required
 	// to constrict the dialog
 	gui2::dialogs::campaign_difficulty dlg(current_level().data());
-	dlg.show(video_);
+	dlg.show();
 
 	selected_campaign_difficulty_ = dlg.selected_difficulty();
 

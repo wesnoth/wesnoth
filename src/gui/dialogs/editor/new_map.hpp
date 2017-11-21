@@ -43,11 +43,8 @@ public:
 	 */
 	editor_new_map(const t_string& title, int& width, int& height);
 
-	/** The execute function see @ref modal_dialog for more information. */
-	static bool execute(const t_string& title, int& width, int& height, CVideo& video)
-	{
-		return editor_new_map(title, width, height).show(video);
-	}
+	/** The execute function. See @ref modal_dialog for more information. */
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(editor_new_map)
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

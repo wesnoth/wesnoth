@@ -160,8 +160,7 @@ REGISTER_DIALOG(wml_message_right)
 
 REGISTER_DIALOG(wml_message_double)
 
-int show_wml_message(CVideo& video,
-					 const std::string& title,
+int show_wml_message(const std::string& title,
 					 const std::string& message,
 					 const wml_message_portrait* left,
 					 const wml_message_portrait* right,
@@ -186,7 +185,7 @@ int show_wml_message(CVideo& video,
 		dlg->set_option_list(options.option_list, &options.chosen_option);
 	}
 
-	dlg->show(video);
+	dlg->show();
 	return dlg->get_retval();
 }
 

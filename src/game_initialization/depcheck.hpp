@@ -20,8 +20,6 @@
 #include "gettext.hpp"
 #include "utils/make_enum.hpp"
 
-class CVideo;
-
 namespace ng
 {
 
@@ -54,7 +52,7 @@ MAKE_ENUM(component_availability,
 class manager
 {
 public:
-	manager(const config& gamecfg, bool mp, CVideo& video);
+	manager(const config& gamecfg, bool mp);
 
 	/**
 	 * Tries to set the selected era
@@ -186,9 +184,6 @@ private:
 
 		bool operator !=(const elem& e) const { return !(*this == e); }
 	};
-
-	/** the screen to display dialogs on */
-	CVideo& video_;
 
 	/** holds all required info about the components and their dependencies */
 	config depinfo_;

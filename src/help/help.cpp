@@ -238,7 +238,7 @@ void show_help(CVideo& video, const section &toplevel_sec,
 	catch (parse_error& e) {
 		std::stringstream msg;
 		msg << _("Parse error when parsing help text: ") << "'" << e.message << "'";
-		gui2::show_transient_message(video, "", msg.str());
+		gui2::show_transient_message("", msg.str());
 	}
 }
 

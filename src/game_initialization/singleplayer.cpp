@@ -26,7 +26,7 @@ static lg::log_domain log_engine("engine");
 
 namespace sp {
 
-bool enter_create_mode(CVideo& video, const config& game_config, saved_game& state, jump_to_campaign_info jump_to_campaign)
+bool enter_create_mode(const config& game_config, saved_game& state, jump_to_campaign_info jump_to_campaign)
 {
 	bool configure_canceled = false;
 
@@ -39,7 +39,7 @@ bool enter_create_mode(CVideo& video, const config& game_config, saved_game& sta
 			create_eng.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN);
 
 		if(campaigns.empty()) {
-			gui2::show_error_message(video, _("No campaigns are available."));
+			gui2::show_error_message(_("No campaigns are available."));
 			return false;
 		}
 
@@ -50,9 +50,9 @@ bool enter_create_mode(CVideo& video, const config& game_config, saved_game& sta
 			gui2::dialogs::campaign_selection dlg(create_eng);
 
 			try {
-				dlg.show(video);
+				dlg.show();
 			} catch(wml_exception& e) {
-				e.show(video);
+				e.show();
 				return false;
 			}
 
@@ -92,7 +92,7 @@ bool enter_create_mode(CVideo& video, const config& game_config, saved_game& sta
 			}
 
 			// Canceled difficulty dialog, relaunch the campaign selection dialog
-			return enter_create_mode(video, game_config, state, jump_to_campaign);
+			return enter_create_mode(game_config, state, jump_to_campaign);
 		}
 
 		create_eng.prepare_for_era_and_mods();
@@ -109,14 +109,14 @@ bool enter_create_mode(CVideo& video, const config& game_config, saved_game& sta
 			return false;
 		}
 
-		configure_canceled = !enter_configure_mode(video, game_config_manager::get()->game_config(), state, create_eng);
+		configure_canceled = !enter_configure_mode(game_config_manager::get()->game_config(), state, create_eng);
 
 	} while (configure_canceled);
 
 	return true;
 }
 
-bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& state, ng::create_engine& create_eng)
+bool enter_configure_mode(const config& game_config, saved_game& state, ng::create_engine& create_eng)
 {
 	// We create the config engine here in order to ensure values like use_map_settings are set correctly
 	// TODO: should this be passed to this function instead of created here?
@@ -125,19 +125,19 @@ bool enter_configure_mode(CVideo& video, const config& game_config, saved_game& 
 	// TODO: needed?
 	config_eng.update_initial_cfg(create_eng.current_level().data());
 
-	if(!gui2::dialogs::sp_options_configure::execute(create_eng, config_eng, video)) {
+	if(!gui2::dialogs::sp_options_configure::execute(create_eng, config_eng)) {
 		return false;
 	}
 
 	create_eng.get_parameters();
 	create_eng.prepare_for_new_level();
 
-	enter_connect_mode(video, game_config, state);
+	enter_connect_mode(game_config, state);
 
 	return true;
 }
 
-bool enter_connect_mode(CVideo& /*video*/, const config& /*game_config*/, saved_game& state)
+bool enter_connect_mode(const config& /*game_config*/, saved_game& state)
 {
 	ng::connect_engine connect_eng(state, true, nullptr);
 
@@ -147,11 +147,11 @@ bool enter_connect_mode(CVideo& /*video*/, const config& /*game_config*/, saved_
 		lobby_info li(game_config, std::vector<std::string>());
 
 		gui2::dialogs::mp_staging dlg(connect_eng, li);
-		dlg.show(video);
+		dlg.show();
 
 		if(dlg.get_retval() != gui2::window::OK) {
 			// TODO: enable the workflow loops from GUI1
-			//return enter_create_mode(video, game_config, state, jump_to_campaign_info(false, -1, "", ""));
+			//return enter_create_mode(game_config, state, jump_to_campaign_info(false, -1, "", ""));
 
 			return false;
 		}

@@ -348,7 +348,7 @@ public:
 
 	void handle_lua_button_clicked(window& window)
 	{
-		lua_interpreter::display(window.video(), lua_interpreter::GAME);
+		lua_interpreter::display(lua_interpreter::GAME);
 		// The game state could've changed, so reset the dialog
 		callbacks.clear();
 		controllers.clear();

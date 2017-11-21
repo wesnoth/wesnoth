@@ -17,14 +17,13 @@
 #include <string>
 #include "sdl/surface.hpp"
 
-class CVideo;
 struct SDL_Rect;
 
 namespace tooltips {
 
 struct manager
 {
-	manager(CVideo& video);
+	manager();
 	~manager();
 };
 

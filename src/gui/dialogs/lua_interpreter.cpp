@@ -57,8 +57,6 @@ static lg::log_domain log_lua_int("lua/interpreter");
 #define WRN_LUA LOG_STREAM(warn, log_lua_int)
 #define ERR_LUA LOG_STREAM(err, log_lua_int)
 
-class CVideo;
-
 namespace gui2
 {
 namespace dialogs
@@ -675,7 +673,7 @@ void lua_interpreter::controller::search(int direction)
 // Dialog implementation
 
 /** Display a new console, using given video and lua kernel */
-void lua_interpreter::display(CVideo& video, lua_kernel_base * lk) {
+void lua_interpreter::display(lua_kernel_base * lk) {
 #ifndef ALWAYS_HAVE_LUA_CONSOLE
 	if(!game_config::debug) {
 		return;
@@ -686,15 +684,15 @@ void lua_interpreter::display(CVideo& video, lua_kernel_base * lk) {
 		return;
 	}
 
-	lua_interpreter(*lk).show(video);
+	lua_interpreter(*lk).show();
 }
 
 /** Helper function to assist those callers which don't want to include resources.hpp */
-void lua_interpreter::display(CVideo& video, lua_interpreter::WHICH_KERNEL which) {
+void lua_interpreter::display(lua_interpreter::WHICH_KERNEL which) {
 	if (which == lua_interpreter::APP) {
-		display(video, plugins_manager::get()->get_kernel_base());
+		display(plugins_manager::get()->get_kernel_base());
 	} else if (which == lua_interpreter::GAME) {
-		display(video, resources::lua_kernel);
+		display(resources::lua_kernel);
 	}
 }
 

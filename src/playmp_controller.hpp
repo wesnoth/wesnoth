@@ -25,8 +25,7 @@ class playmp_controller : public playsingle_controller, public syncmp_handler
 public:
 	playmp_controller(const config& level, saved_game& state_of_game,
 		const config& game_config,
-		const ter_data_cache & tdata, CVideo& video,
-		mp_campaign_info* mp_info);
+		const ter_data_cache & tdata, mp_campaign_info* mp_info);
 	virtual ~playmp_controller();
 
 	void maybe_linger() override;

@@ -34,10 +34,7 @@ public:
 	 *
 	 * See @ref modal_dialog for more information.
 	 */
-	static void display(CVideo& video)
-	{
-		advanced_graphics_options().show(video);
-	}
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(advanced_graphics_options)
 
 	// These names must match the infixes of the widget ids in advanced_graphics_options.cfg
 	static const std::vector<std::string> scale_cases;

@@ -56,8 +56,7 @@ void transient_message::pre_show(window& window)
 }
 } // namespace dialogs
 
-void show_transient_message(CVideo& video,
-							const std::string& title,
+void show_transient_message(const std::string& title,
 							const std::string& message,
 							const std::string& image,
 							const bool message_use_markup,
@@ -68,17 +67,15 @@ void show_transient_message(CVideo& video,
 			title, title_use_markup, message, message_use_markup, image);
 
 	dlg.set_restore(restore_background);
-	dlg.show(video);
+	dlg.show();
 }
 
-void show_transient_error_message(CVideo& video,
-								  const std::string& message,
+void show_transient_error_message(const std::string& message,
 								  const std::string& image,
 								  const bool message_use_markup)
 {
 	LOG_STREAM(err, lg::general()) << message << '\n';
-	show_transient_message(
-			video, _("Error"), message, image, message_use_markup);
+	show_transient_message(_("Error"), message, image, message_use_markup);
 }
 
 } // namespace gui2

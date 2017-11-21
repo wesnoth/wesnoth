@@ -15,6 +15,7 @@
 
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 
+#include "events.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
@@ -45,7 +46,6 @@
 #include "mp_ui_alerts.hpp"
 #include "statistics.hpp"
 #include "units/types.hpp"
-#include "video.hpp"
 #include "wesnothd_connection.hpp"
 
 
@@ -87,7 +87,7 @@ mp_join_game::~mp_join_game()
 /*
  * Fetch the selected game's config from the server and prompts an initial faction selection.
  */
-bool mp_join_game::fetch_game_config(CVideo& video)
+bool mp_join_game::fetch_game_config()
 {
 	// Ask for the next scenario data, if applicable
 	if(!first_scenario_) {
@@ -215,7 +215,7 @@ bool mp_join_game::fetch_game_config(CVideo& video)
 		ng::flg_manager flg(era_factions, *side_choice, lock_settings, use_map_settings, saved_game);
 
 		gui2::dialogs::faction_select dlg(flg, color, side_num);
-		dlg.show(video);
+		dlg.show();
 
 		if(dlg.get_retval() != gui2::window::OK) {
 			return false;
@@ -450,7 +450,7 @@ void mp_join_game::network_handler(window& window)
 	find_widget<chatbox>(&window, "chat", false).process_network_data(data);
 
 	if(!data["message"].empty()) {
-		gui2::show_transient_message(window.video(), _("Response") , data["message"]);
+		gui2::show_transient_message(_("Response") , data["message"]);
 	}
 
 	if(data["failed"].to_bool()) {

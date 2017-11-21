@@ -68,8 +68,6 @@
 #include "lua/lauxlib.h"                // for luaL_checkinteger, etc
 #include "lua/lua.h"                    // for lua_setfield, etc
 
-class CVideo;
-
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
@@ -242,12 +240,12 @@ namespace lua_gui2 {
  * - Arg 3: function called at post-show.
  * - Ret 1: integer.
  */
-int show_dialog(lua_State* L, CVideo& video)
+int show_dialog(lua_State* L)
 {
 	config def_cfg = luaW_checkconfig(L, 1);
 
 	gui2::builder_window::window_resolution def(def_cfg);
-	scoped_dialog w(L, gui2::build(video, &def));
+	scoped_dialog w(L, gui2::build(&def));
 
 	if(!lua_isnoneornil(L, 2)) {
 		lua_pushvalue(L, 2);
@@ -273,7 +271,7 @@ int show_dialog(lua_State* L, CVideo& video)
  * - Ret 1: option chosen (if no options: 0 if there's text input, -2 if escape pressed, else -1)
  * - Ret 2: string entered (empty if none, nil if no text input)
  */
-int show_message_dialog(lua_State* L, CVideo& video)
+int show_message_dialog(lua_State* L)
 {
 	config txt_cfg;
 	const bool has_input = !lua_isnoneornil(L, 3) && luaW_toconfig(L, 3, txt_cfg) && !txt_cfg.empty();
@@ -357,7 +355,7 @@ int show_message_dialog(lua_State* L, CVideo& video)
 		right.reset(new portrait {def_cfg["second_portrait"], def_cfg["second_mirror"].to_bool(false)});
 	}
 
-	int dlg_result = gui2::dialogs::show_wml_message(video, title, message, left.get(), right.get(), options, input);
+	int dlg_result = gui2::dialogs::show_wml_message(title, message, left.get(), right.get(), options, input);
 
 	if(!has_input && options.option_list.empty()) {
 		lua_pushinteger(L, dlg_result);
@@ -380,12 +378,12 @@ int show_message_dialog(lua_State* L, CVideo& video)
  * - Arg 2: Message (allows Pango markup)
  * - Arg 3: Image (optional)
  */
-int show_popup_dialog(lua_State *L, CVideo & video) {
+int show_popup_dialog(lua_State *L) {
 	std::string title = luaL_checkstring(L, 1);
 	std::string msg = luaL_checkstring(L, 2);
 	std::string image = lua_isnoneornil(L, 3) ? "" : luaL_checkstring(L, 3);
 
-	gui2::show_transient_message(video, title, msg, image, true, true);
+	gui2::show_transient_message(title, msg, image, true, true);
 	return 0;
 }
 
@@ -394,10 +392,10 @@ int show_popup_dialog(lua_State *L, CVideo & video) {
  * - Arg 1: The story config
  * - Arg 2: The default title
  */
-int show_story(lua_State* L, CVideo& video) {
+int show_story(lua_State* L) {
 	config story = luaW_checkconfig(L, 1);
 	t_string title = luaW_checktstring(L, 2);
-	gui2::dialogs::story_viewer::display(title, story, video);
+	gui2::dialogs::story_viewer::display(title, story);
 	return 0;
 }
 
@@ -407,7 +405,7 @@ int show_story(lua_State* L, CVideo& video) {
  * - Arg 1: Configs defining each item, with keys icon, image/label, second_label, tooltip
  * - Args 2, 3: Initial selection (integer); whether to parse markup (boolean)
  */
-int show_menu(lua_State* L, CVideo& video) {
+int show_menu(lua_State* L) {
 	std::vector<config> items = lua_check<std::vector<config>>(L, 1);
 	SDL_Rect pos {1,1,1,1};
 	SDL_GetMouseState(&pos.x, &pos.y);
@@ -423,7 +421,7 @@ int show_menu(lua_State* L, CVideo& video) {
 	}
 
 	gui2::dialogs::drop_down_menu menu(pos, items, initial, markup, false);
-	menu.show(video);
+	menu.show();
 	lua_pushinteger(L, menu.selected_item() + 1);
 	return 1;
 }
@@ -431,7 +429,7 @@ int show_menu(lua_State* L, CVideo& video) {
 /**
  * Displays a simple message box.
  */
-int show_message_box(lua_State* L, CVideo& video) {
+int show_message_box(lua_State* L) {
 	const std::string title = luaL_checkstring(L, 1), message = luaL_checkstring(L, 2);
 	std::string button = luaL_optstring(L, 3, "ok");
 	std::transform(button.begin(), button.end(), button.begin(), [](char c) { return std::tolower(c); });
@@ -452,13 +450,13 @@ int show_message_box(lua_State* L, CVideo& video) {
 		style = button_style::yes_no_buttons;
 	}
 	if(style) {
-		int result = gui2::show_message(video, title, message, *style, markup, markup);
+		int result = gui2::show_message(title, message, *style, markup, markup);
 		if(style == button_style::ok_cancel_buttons || style == button_style::yes_no_buttons) {
 			lua_pushboolean(L, result == gui2::window::OK);
 			return 1;
 		}
 	} else {
-		gui2::show_message(video, title, message, button, false, markup, markup);
+		gui2::show_message(title, message, button, false, markup, markup);
 	}
 	return 0;
 }
@@ -938,16 +936,16 @@ int intf_set_dialog_visible(lua_State* L)
 	return 0;
 }
 
-int show_lua_console(lua_State* /*L*/, CVideo& video, lua_kernel_base* lk)
+int show_lua_console(lua_State* /*L*/, lua_kernel_base* lk)
 {
-	gui2::dialogs::lua_interpreter::display(video, lk);
+	gui2::dialogs::lua_interpreter::display(lk);
 	return 0;
 }
 
-int show_gamestate_inspector(CVideo& video, const vconfig& cfg, const game_data& data, const game_state& state)
+int show_gamestate_inspector(const vconfig& cfg, const game_data& data, const game_state& state)
 {
 	gui2::dialogs::gamestate_inspector inspect_dialog(data.get_variables(), *state.events_manager_, state.board_, cfg["name"]);
-	inspect_dialog.show(video);
+	inspect_dialog.show();
 	return 0;
 }
 

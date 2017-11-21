@@ -42,6 +42,7 @@ include(GNUInstallDirs)
 #Path options
 set(DATADIRNAME "wesnoth" CACHE STRING "change the name of the directory for the read-only architecture-independent game data")
 set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}" CACHE STRING "change the dir where binaries are placed right at compile time")
+set(LOCALEDIR "translations" CACHE STRING "change the name of the locale data directory to a non-default name")
 set(PREFERENCES_DIR "" CACHE STRING "Use a non-default preferences directory (.wesnoth on unix)")
 set(DEFAULT_PREFS_FILE "" CACHE STRING "Set system wide preferences file")
 
@@ -496,6 +497,8 @@ endif(NOT WIN32)
 if(X11_FOUND)
 	add_definitions(-D_X11)
 endif(X11_FOUND)
+
+add_definitions(-DLOCALEDIR="${LOCALEDIR}")
 
 # -DNDEBUG is automatically added to all release build types, so manually remove this define from the related variables
 RemoveFlag(CMAKE_CXX_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG" "Default C++ flags for RelWithDebInfo")

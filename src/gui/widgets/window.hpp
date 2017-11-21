@@ -62,13 +62,13 @@ class distributor;
 class window : public panel, public cursor::setter
 {
 	friend class debug_layout_graph;
-	friend window* build(CVideo&, const builder_window::window_resolution*);
+	friend window* build(const builder_window::window_resolution*);
 	friend struct window_implementation;
 	friend class invalidate_layout_blocker;
 	friend class pane;
 
 public:
-	window(CVideo& video, const builder_window::window_resolution* definition);
+	explicit window(const builder_window::window_resolution* definition);
 
 	~window();
 

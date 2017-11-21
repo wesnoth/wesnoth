@@ -159,7 +159,7 @@ void formula_debugger::show_gui()
 	}
 	if (game_config::debug) {
 		gui2::dialogs::formula_debugger debug_dialog(*this);
-		debug_dialog.show(resources::screen->video());
+		debug_dialog.show();
 	} else {
 		WRN_FDB << "do not showing debug window due to disabled --new-widgets"<< std::endl;
 	}

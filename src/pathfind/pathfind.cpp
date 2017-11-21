@@ -194,19 +194,27 @@ namespace {
 
 		// Constructor:
 		findroute_indexer(int a, int b) : w(a), h(b) { }
-		// Convert to an index: (returns -1 on out of bounds)
-		int operator()(int x, int y) const {
-			if ( x < 0  || w <= x  ||  y < 0 || h <= y )
-				return -1;
-			else
-				return x + y*w;
+		// Convert to an index: (throws on out of bounds)
+		unsigned operator()(int x, int y) const {
+			VALIDATE(this->on_board(x,y),
+				"Pathfind: Location not on board");
+			return x + static_cast<unsigned>(y)*w;
 		}
-		int operator()(const map_location& loc) const {
+		unsigned operator()(const map_location& loc) const {
 			return (*this)(loc.x, loc.y);
 		}
 		// Convert from an index:
-		map_location operator()(int index) const {
-			return map_location(index%w, index/w);
+		map_location operator()(unsigned index) const {
+			return map_location(
+				static_cast<int>(index%w),
+				static_cast<int>(index/w));
+		}
+		// Check if location is on board
+		inline bool on_board(const map_location& loc) const {
+			return this->on_board(loc.x, loc.y);
+		}
+		inline bool on_board(int x, int y) const {
+			return (x >= 0) && (x < w) && (y >= 0) && (y < h);
 		}
 	};
 
@@ -301,6 +309,8 @@ static void find_routes(
 	findroute_comp node_comp(nodes);
 	findroute_indexer index(map.w(), map.h());
 
+	assert(index.on_board(origin));
+
 	// Check if full_cost_map has the correct size.
 	// If not, ignore it. If yes, initialize the start position.
 	if ( full_cost_map ) {
@@ -318,16 +328,15 @@ static void find_routes(
 	int nb_dest = 1;
 
 	// Record the starting location.
-	assert(index(origin) >= 0);
 	nodes[index(origin)] = findroute_node(moves_left, turns_left,
 	                                      map_location::null_location(),
 	                                      search_counter);
 	// Begin the search at the starting location.
-	std::vector<int> hexes_to_process(1, index(origin));  // Will be maintained as a heap.
+	std::vector<unsigned> hexes_to_process(1, index(origin));  // Will be maintained as a heap.
 
 	while ( !hexes_to_process.empty() ) {
 		// Process the hex closest to the origin.
-		const int cur_index = hexes_to_process.front();
+		const unsigned cur_index = hexes_to_process.front();
 		const map_location cur_hex = index(cur_index);
 		const findroute_node& current = nodes[cur_index];
 		// Remove from the heap.
@@ -337,6 +346,18 @@ static void find_routes(
 		// Get the locations adjacent to current.
 		std::vector<map_location> adj_locs(6);
 		get_adjacent_tiles(cur_hex, &adj_locs[0]);
+
+		// Sort adjacents by on-boardness
+		auto off_board_it = std::partition(adj_locs.begin(), adj_locs.end(), [&index](map_location loc){
+			return index.on_board(loc);
+		});
+		// Store off-board edges if needed
+		if(edges != nullptr){
+			edges->insert(off_board_it, adj_locs.end());
+		}
+		// Remove off-board map locations
+		adj_locs.erase(off_board_it, adj_locs.end());
+
 		if ( teleporter ) {
 			std::set<map_location> allowed_teleports;
 			teleports.get_adjacents(allowed_teleports, cur_hex);
@@ -345,13 +366,7 @@ static void find_routes(
 		for ( int i = adj_locs.size()-1; i >= 0; --i ) {
 			// Get the node associated with this location.
 			const map_location & next_hex = adj_locs[i];
-			const int next_index = index(next_hex);
-			if ( next_index < 0 ) {
-				// Off the map.
-				if ( edges != nullptr )
-					edges->insert(next_hex);
-				continue;
-			}
+			const unsigned next_index = index(next_hex);
 			findroute_node & next = nodes[next_index];
 
 			// Skip nodes we have already collected.

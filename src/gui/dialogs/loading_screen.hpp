@@ -20,7 +20,6 @@
 #include <vector>
 #include <atomic>
 
-class CVideo;
 namespace boost
 {
 	class thread;
@@ -78,7 +77,7 @@ public:
 
 	~loading_screen();
 
-	static void display(CVideo& video, std::function<void()> f);
+	static void display(std::function<void()> f);
 	static bool displaying() { return current_load != nullptr; }
 
 	static void progress(loading_stage stage = loading_stage::none);

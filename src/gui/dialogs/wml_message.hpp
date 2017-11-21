@@ -237,7 +237,6 @@ struct wml_message_portrait
 /**
  *  Helper function to show a portrait.
  *
- *  @param video                  The display variable.
  *  @param title                  The title of the dialog.
  *  @param message                The message to show.
  *  @param left                   Portrait to show on the left.
@@ -245,8 +244,7 @@ struct wml_message_portrait
  *  @param options                Options to offer.
  *  @param input                  Info on text input.
  */
-int show_wml_message(CVideo& video,
-					 const std::string& title,
+int show_wml_message(const std::string& title,
 					 const std::string& message,
 					 const wml_message_portrait* left,
 					 const wml_message_portrait* right,

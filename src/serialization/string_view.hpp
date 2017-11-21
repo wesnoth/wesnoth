@@ -127,7 +127,7 @@ public:
 	// element access
 	BOOST_CONSTEXPR const_reference operator[](size_type pos) const BOOST_NOEXCEPT { return ptr_[pos]; }
 
-	BOOST_CONSTEXPR const_reference at(size_t pos) const {
+	const_reference at(size_t pos) const {
 		return pos >= len_ ? BOOST_THROW_EXCEPTION(std::out_of_range("boost::string_view::at")), ptr_[0] : ptr_[pos];
 	}
 

@@ -27,9 +27,9 @@ public:
 	game_save(std::string& filename, const std::string& title);
 
 	static bool
-	execute(std::string& filename, const std::string& title, CVideo& video)
+	execute(std::string& filename, const std::string& title)
 	{
-		return game_save(filename, title).show(video);
+		return game_save(filename, title).show();
 	}
 
 private:
@@ -44,13 +44,7 @@ public:
 					   const std::string& title,
 					   const std::string& message);
 
-	static bool execute(std::string& filename,
-						const std::string& title,
-						const std::string& message,
-						CVideo& video)
-	{
-		return game_save_message(filename, title, message).show(video);
-	}
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(game_save_message)
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
@@ -65,14 +59,7 @@ public:
 				   const std::string& title,
 				   const std::string& message);
 
-	static bool execute(bool& ignore_all,
-						std::string& filename,
-						const std::string& title,
-						const std::string& message,
-						CVideo& video)
-	{
-		return game_save_oos(ignore_all, filename, title, message).show(video);
-	}
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(game_save_oos)
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

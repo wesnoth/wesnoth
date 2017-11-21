@@ -68,7 +68,7 @@ namespace test_utils {
 		dummy_board_(std::make_shared<terrain_type_data>(dummy_cfg_), dummy_cfg2_),
 		dummy_tod_(dummy_cfg_),
 		main_event_context_(),
-		disp_(dummy_board_, video_, std::shared_ptr<wb::manager> (), dummy_reports, dummy_tod_,
+		disp_(dummy_board_, std::shared_ptr<wb::manager> (), dummy_reports, dummy_tod_,
 				dummy_cfg_, dummy_cfg_)
 	{
 	}

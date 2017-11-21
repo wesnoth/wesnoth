@@ -26,7 +26,6 @@
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
-#include "video.hpp"
 #include "wesnothd_connection.hpp"
 
 namespace gui2

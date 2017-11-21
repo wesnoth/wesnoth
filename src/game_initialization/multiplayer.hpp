@@ -20,7 +20,6 @@
 #include "scripting/plugins/context.hpp"
 
 class config;
-class CVideo;
 class wesnothd_connection;
 namespace mp {
 
@@ -33,10 +32,9 @@ const size_t max_login_size = 20;
 
 /** Starts a multiplayer game in single-user mode.
  *
- * @param video        The global display
  * @param game_config The global, top-level WML configuration for the game
  */
-void start_local_game(CVideo& video, const config& game_config,
+void start_local_game(const config& game_config,
 	saved_game& state);
 
 /** Starts a multiplayer game in single-user mode.
@@ -44,29 +42,28 @@ void start_local_game(CVideo& video, const config& game_config,
  * Same parameters as start_local_game plus:
  * cmdline_opts The commandline options
  */
-void start_local_game_commandline(CVideo& video, const config& game_config,
+void start_local_game_commandline(const config& game_config,
 	saved_game& state, const commandline_options& cmdline_opts);
 
 /** Starts a multiplayer game in client mode.
  *
- * @param video        The global display
  * @param game_config The global, top-level WML configuration for the game
  * @param host        The host to connect to.
  */
-void start_client(CVideo& video, const config& game_config,
+void start_client(const config& game_config,
 	saved_game& state, const std::string& host);
 
 /**
  * Opens mp::connect screen and sets game state according to the
  * changes made.
  */
-bool goto_mp_connect(CVideo& video, ng::connect_engine& engine,
+bool goto_mp_connect(ng::connect_engine& engine,
 	const config& game_config, wesnothd_connection* connection);
 
 /**
  * Opens mp::wait screen and sets game state according to the
  * changes made.
  */
-bool goto_mp_wait(CVideo& video, saved_game& state, const config& game_config, wesnothd_connection* connection, bool observe);
+bool goto_mp_wait(saved_game& state, const config& game_config, wesnothd_connection* connection, bool observe);
 
 }

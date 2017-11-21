@@ -25,7 +25,7 @@ lg::log_domain log_editor("editor");
 
 namespace editor {
 
-EXIT_STATUS start(const config& game_conf, CVideo& video, const std::string& filename /* = "" */,
+EXIT_STATUS start(const config& game_conf, const std::string& filename /* = "" */,
 	bool take_screenshot /* = false */, const std::string& screenshot_filename /* = "map_screenshot.bmp" */)
 {
 	EXIT_STATUS e = EXIT_ERROR;
@@ -33,7 +33,7 @@ EXIT_STATUS start(const config& game_conf, CVideo& video, const std::string& fil
 		hotkey::scope_changer h_;
 		hotkey::deactivate_all_scopes();
 		hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
-		editor_controller editor(game_conf, video);
+		editor_controller editor(game_conf);
 		if (!filename.empty() && filesystem::file_exists (filename)) {
 			if (filesystem::is_directory(filename)) {
 				editor.context_manager_->set_default_dir(filename);

@@ -32,7 +32,7 @@ public:
 	 *
 	 * See @ref modal_dialog for more information.
 	 */
-	static bool execute(display_context& dc, CVideo& video);
+	static bool execute(display_context& dc);
 private:
 	std::map<std::string, bool> all_labels;
 	std::map<std::string, t_string> labels_display;

@@ -19,7 +19,7 @@
 #include "gettext.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-
+#include "sdl/window.hpp"
 #include "video.hpp"		// CVideo class holds the window -> SDL_Window object which contains the handle of the main window
 
 NOTIFYICONDATA* windows_tray_notification::nid = nullptr;

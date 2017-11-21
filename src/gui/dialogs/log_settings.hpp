@@ -35,11 +35,7 @@ public:
 	 *
 	 * See @ref modal_dialog for more information.
 	 */
-	static void display(CVideo& video)
-	{
-		log_settings().show(video);
-	}
-
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(log_settings)
 
 private:
 	void set_logger(const std::basic_string<char> log_domain);

@@ -19,7 +19,6 @@
 #include "units/map.hpp"
 
 class battle_context;
-class CVideo;
 
 struct battle_context_unit_stats;
 struct combatant;
@@ -40,10 +39,7 @@ class attack_predictions : public modal_dialog
 public:
 	attack_predictions(battle_context& bc, const unit& attacker, const unit& defender);
 
-	static void display(battle_context& bc, const unit& attacker, const unit& defender, CVideo& video)
-	{
-		attack_predictions(bc, attacker, defender).show(video);
-	}
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(attack_predictions)
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

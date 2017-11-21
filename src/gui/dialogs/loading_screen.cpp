@@ -213,16 +213,16 @@ loading_screen::~loading_screen()
 	current_load = nullptr;
 }
 
-void loading_screen::display(CVideo& video, std::function<void()> f)
+void loading_screen::display(std::function<void()> f)
 {
 	const bool use_loadingscreen_animation = !preferences::disable_loadingscreen_animation();
 
-	if(current_load || video.faked()) {
+	if(current_load || CVideo::get_singleton().faked()) {
 		f();
 	} else if(use_loadingscreen_animation) {
-		loading_screen(f).show(video);
+		loading_screen(f).show();
 	} else {
-		loading_screen(std::function<void()>()).show(video);
+		loading_screen(std::function<void()>()).show();
 		f();
 	}
 }

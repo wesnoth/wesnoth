@@ -61,7 +61,7 @@ private:
 	template<void(ng::side_engine::*fptr)(int)>
 	void on_side_slider_change(ng::side_engine_ptr side, slider& slider);
 
-	void select_leader_callback(window& window, ng::side_engine_ptr side, grid& row_grid);
+	void select_leader_callback(ng::side_engine_ptr side, grid& row_grid);
 
 	void update_player_list(window& window);
 	void update_leader_display(ng::side_engine_ptr side, grid& row_grid);

@@ -37,7 +37,6 @@
 #include "settings.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
-#include "video.hpp"
 #include "wesnothd_connection.hpp"
 #include "resources.hpp"
 #include "replay.hpp"
@@ -50,7 +49,7 @@ static lg::log_domain log_mp("mp/main");
 namespace
 {
 /** Opens a new server connection and prompts the client for login credentials, if necessary. */
-std::pair<wesnothd_connection_ptr, config> open_connection(CVideo& video, std::string host)
+std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 {
 	DBG_MP << "opening connection" << std::endl;
 
@@ -209,7 +208,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(CVideo& video, std::s
 				warning_msg += "\n\n";
 				warning_msg += _("Do you want to continue?");
 
-				if(gui2::show_message(video, _("Warning"), warning_msg, gui2::dialogs::message::yes_no_buttons) != gui2::window::OK) {
+				if(gui2::show_message(_("Warning"), warning_msg, gui2::dialogs::message::yes_no_buttons) != gui2::window::OK) {
 					return std::make_pair(wesnothd_connection_ptr(), config());
 				}
 			}
@@ -223,7 +222,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(CVideo& video, std::s
 				std::string password = preferences::password(host, login);
 
 				bool fall_through = (*error)["force_confirmation"].to_bool() ?
-					(gui2::show_message(video, _("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::window::CANCEL) :
+					(gui2::show_message(_("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::window::CANCEL) :
 					false;
 
 				const bool is_pw_request = !((*error)["password_request"].empty()) && !(password.empty());
@@ -323,7 +322,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(CVideo& video, std::s
 				gui2::dialogs::mp_login dlg(host, error_message, !((*error)["password_request"].empty()));
 
 				// Need to show the dialog from the main thread or it won't appear.
-				events::call_in_main_thread([&dlg, &video]() { dlg.show(video); });
+				events::call_in_main_thread([&dlg]() { dlg.show(); });
 
 				switch(dlg.get_retval()) {
 					//Log in with password
@@ -360,15 +359,12 @@ std::pair<wesnothd_connection_ptr, config> open_connection(CVideo& video, std::s
 /** Helper struct to manage the MP workflow arguments. */
 struct mp_workflow_helper
 {
-	mp_workflow_helper(CVideo& video, const config& gc, saved_game& state, wesnothd_connection* connection, mp::lobby_info* li)
-		: video(video)
-		, game_config(gc)
+	mp_workflow_helper(const config& gc, saved_game& state, wesnothd_connection* connection, mp::lobby_info* li)
+		: game_config(gc)
 		, state(state)
 		, connection(connection)
 		, lobby_info(li)
 	{}
-
-	CVideo& video;
 
 	const config& game_config;
 
@@ -414,16 +410,16 @@ void enter_wait_mode(mp_workflow_helper_ptr helper, int game_id, bool observe)
 	{
 		gui2::dialogs::mp_join_game dlg(helper->state, *helper->lobby_info, *helper->connection, true, observe);
 
-		if(!dlg.fetch_game_config(helper->video)) {
+		if(!dlg.fetch_game_config()) {
 			return;
 		}
 
-		dlg.show(helper->video);
+		dlg.show();
 		dlg_ok = dlg.get_retval() == gui2::window::OK;
 	}
 
 	if(dlg_ok) {
-		campaign_controller controller(helper->video, helper->state, helper->game_config, game_config_manager::get()->terrain_types());
+		campaign_controller controller(helper->state, helper->game_config, game_config_manager::get()->terrain_types());
 		controller.set_mp_info(campaign_info.get());
 		controller.play_game();
 	}
@@ -449,12 +445,12 @@ void enter_staging_mode(mp_workflow_helper_ptr helper)
 		ng::connect_engine_ptr connect_engine(new ng::connect_engine(helper->state, true, campaign_info.get()));
 
 		gui2::dialogs::mp_staging dlg(*connect_engine, *helper->lobby_info, helper->connection);
-		dlg.show(helper->video);
+		dlg.show();
 		dlg_ok = dlg.get_retval() == gui2::window::OK;
 	} // end connect_engine_ptr, dlg scope
 
 	if(dlg_ok) {
-		campaign_controller controller(helper->video, helper->state, helper->game_config, game_config_manager::get()->terrain_types());
+		campaign_controller controller(helper->state, helper->game_config, game_config_manager::get()->terrain_types());
 		controller.set_mp_info(campaign_info.get());
 		controller.play_game();
 	}
@@ -474,7 +470,7 @@ void enter_create_mode(mp_workflow_helper_ptr helper)
 		mp::user_info* host_info = helper->lobby_info->get_user(preferences::login());
 
 		gui2::dialogs::mp_create_game dlg(helper->game_config, helper->state, local_mode, host_info);
-		dlg_cancel = !dlg.show(helper->video);
+		dlg_cancel = !dlg.show();
 	}
 
 	if(!dlg_cancel) {
@@ -516,7 +512,7 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 		{
 
 			gui2::dialogs::mp_lobby dlg(helper->game_config, li, *helper->connection);
-			dlg.show(helper->video);
+			dlg.show();
 			dlg_retval = dlg.get_retval();
 			dlg_joined_game_id = dlg.get_joined_game_id();
 		}
@@ -527,7 +523,7 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 					enter_create_mode(helper);
 				} catch(config::error& error) {
 					if(!error.message.empty()) {
-						gui2::show_error_message(helper->video, error.message);
+						gui2::show_error_message(error.message);
 					}
 
 					// Update lobby content
@@ -544,7 +540,7 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 					);
 				} catch(config::error& error) {
 					if(!error.message.empty()) {
-						gui2::show_error_message(helper->video, error.message);
+						gui2::show_error_message(error.message);
 					}
 
 					// Update lobby content
@@ -569,7 +565,7 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 /** Pubic entry points for the MP workflow */
 namespace mp
 {
-void start_client(CVideo& video, const config& game_config,	saved_game& state, const std::string& host)
+void start_client(const config& game_config,	saved_game& state, const std::string& host)
 {
 	const config* game_config_ptr = &game_config;
 
@@ -585,8 +581,8 @@ void start_client(CVideo& video, const config& game_config,	saved_game& state, c
 	wesnothd_connection_ptr connection;
 	config lobby_config;
 
-	gui2::dialogs::loading_screen::display(video, [&]() {
-		std::tie(connection, lobby_config) = open_connection(video, host);
+	gui2::dialogs::loading_screen::display([&]() {
+		std::tie(connection, lobby_config) = open_connection(host);
 	});
 
 	if(!connection) {
@@ -597,7 +593,7 @@ void start_client(CVideo& video, const config& game_config,	saved_game& state, c
 	bool re_enter = false;
 
 	do {
-		workflow_helper.reset(new mp_workflow_helper(video, *game_config_ptr, state, connection.get(), nullptr));
+		workflow_helper.reset(new mp_workflow_helper(*game_config_ptr, state, connection.get(), nullptr));
 
 		// A return of false means a config reload was requested, so do that and then loop.
 		re_enter = !enter_lobby_mode(workflow_helper, installed_addons, lobby_config);
@@ -616,21 +612,21 @@ void start_client(CVideo& video, const config& game_config,	saved_game& state, c
 	} while(re_enter);
 }
 
-bool goto_mp_connect(CVideo& video, ng::connect_engine& engine, const config& game_config, wesnothd_connection* connection)
+bool goto_mp_connect(ng::connect_engine& engine, const config& game_config, wesnothd_connection* connection)
 {
 	lobby_info li(game_config, {});
 
 	gui2::dialogs::mp_staging dlg(engine, li, connection);
-	return dlg.show(video);
+	return dlg.show();
 }
 
-bool goto_mp_wait(CVideo& video, saved_game& state, const config& game_config, wesnothd_connection* connection, bool observe)
+bool goto_mp_wait(saved_game& state, const config& game_config, wesnothd_connection* connection, bool observe)
 {
 	lobby_info li(game_config, std::vector<std::string>());
 
 	gui2::dialogs::mp_join_game dlg(state, li, *connection, false, observe);
 
-	if(!dlg.fetch_game_config(video)) {
+	if(!dlg.fetch_game_config()) {
 		return false;
 	}
 
@@ -638,10 +634,10 @@ bool goto_mp_wait(CVideo& video, saved_game& state, const config& game_config, w
 		return true;
 	}
 
-	return dlg.show(video);
+	return dlg.show();
 }
 
-void start_local_game(CVideo& video, const config& game_config, saved_game& state)
+void start_local_game(const config& game_config, saved_game& state)
 {
 	DBG_MP << "starting local game" << std::endl;
 
@@ -649,12 +645,12 @@ void start_local_game(CVideo& video, const config& game_config, saved_game& stat
 
 	// TODO: should lobby_info take a nullptr in this case, or should we pass the installed_addons data here too?
 	lobby_info li(game_config, {});
-	mp_workflow_helper_ptr workflow_helper = std::make_shared<mp_workflow_helper>(video, game_config, state, nullptr, &li);
+	mp_workflow_helper_ptr workflow_helper = std::make_shared<mp_workflow_helper>(game_config, state, nullptr, &li);
 
 	enter_create_mode(workflow_helper);
 }
 
-void start_local_game_commandline(CVideo& video, const config& game_config, saved_game& state, const commandline_options& cmdline_opts)
+void start_local_game_commandline(const config& game_config, saved_game& state, const commandline_options& cmdline_opts)
 {
 	DBG_MP << "starting local MP game from commandline" << std::endl;
 
@@ -750,7 +746,7 @@ void start_local_game_commandline(CVideo& video, const config& game_config, save
 	unsigned int repeat = (cmdline_opts.multiplayer_repeat) ? *cmdline_opts.multiplayer_repeat : 1;
 	for(unsigned int i = 0; i < repeat; i++){
 		saved_game state_copy(state);
-		campaign_controller controller(video, state_copy, game_config, game_config_manager::get()->terrain_types());
+		campaign_controller controller(state_copy, game_config, game_config_manager::get()->terrain_types());
 		controller.play_game();
 	}
 }

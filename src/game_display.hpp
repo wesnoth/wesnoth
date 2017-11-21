@@ -36,15 +36,13 @@ class game_board;
 class game_display : public display
 {
 public:
-	game_display(game_board& board, CVideo& video,
+	game_display(game_board& board,
 			std::weak_ptr<wb::manager> wb,
 			reports & reports_object,
 			const tod_manager& tod_manager,
 			const config& theme_cfg,
 			const config& level,
 			bool dummy=false);
-
-	static game_display* create_dummy_display(CVideo& video);
 
 	~game_display();
 	static game_display* get_singleton()

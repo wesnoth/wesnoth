@@ -32,12 +32,9 @@ namespace dialogs
 class end_credits : public modal_dialog
 {
 public:
-	explicit end_credits(const std::string& campaign);
+	explicit end_credits(const std::string& campaign = "");
 
-	static void display(CVideo& video, const std::string& campaign = "")
-	{
-		end_credits(campaign).show(video);
-	}
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(end_credits)
 
 private:
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

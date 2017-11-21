@@ -77,9 +77,8 @@ void clean_saves(const std::string& label)
 	}
 }
 
-loadgame::loadgame(CVideo& video, const config& game_config, saved_game& gamestate)
+loadgame::loadgame(const config& game_config, saved_game& gamestate)
 	: game_config_(game_config)
-	, video_(video)
 	, gamestate_(gamestate)
 	, load_data_()
 {}
@@ -99,7 +98,7 @@ bool loadgame::show_difficulty_dialog()
 		}
 
 		gui2::dialogs::campaign_difficulty difficulty_dlg(campaign);
-		difficulty_dlg.show(video_);
+		difficulty_dlg.show();
 
 		// Return if canceled, since otherwise load_data_.difficulty will be set to 'CANCEL'
 		if (difficulty_dlg.get_retval() != gui2::window::OK) {
@@ -119,11 +118,11 @@ bool loadgame::show_difficulty_dialog()
 // throws a "load_game_exception" to signal a resulting load game request.
 bool loadgame::load_game_ingame()
 {
-	if (video_.faked()) {
+	if(CVideo::get_singleton().faked()) {
 		return false;
 	}
 
-	if(!gui2::dialogs::game_load::execute(game_config_, load_data_, video_)) {
+	if(!gui2::dialogs::game_load::execute(game_config_, load_data_)) {
 		return false;
 	}
 
@@ -144,12 +143,12 @@ bool loadgame::load_game_ingame()
 	const config & summary = save_index_manager.get(load_data_.filename);
 
 	if (summary["corrupt"].to_bool(false)) {
-		gui2::show_error_message(video_,
+		gui2::show_error_message(
 				_("The file you have tried to load is corrupt: '"));
 		return false;
 	}
 
-	if (!loadgame::check_version_compatibility(summary["version"].str(), video_)) {
+	if (!loadgame::check_version_compatibility(summary["version"].str())) {
 		return false;
 	}
 
@@ -161,7 +160,7 @@ bool loadgame::load_game()
 	bool skip_version_check = true;
 
 	if(load_data_.filename.empty()){
-		if(!gui2::dialogs::game_load::execute(game_config_, load_data_, video_)) {
+		if(!gui2::dialogs::game_load::execute(game_config_, load_data_)) {
 			return false;
 		}
 		skip_version_check = false;
@@ -189,11 +188,11 @@ bool loadgame::load_game()
 
 	if(!error_log.empty()) {
         try {
-		    gui2::show_error_message(video_,
+		    gui2::show_error_message(
 				    _("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
 				    error_log);
         } catch (utf8::invalid_utf8_exception&) {
-		    gui2::show_error_message(video_,
+		    gui2::show_error_message(
 				    _("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
                     std::string("(UTF-8 ERROR)"));
         }
@@ -214,10 +213,10 @@ bool loadgame::load_game()
 
 bool loadgame::check_version_compatibility()
 {
-	return loadgame::check_version_compatibility(gamestate_.classification().version, video_);
+	return loadgame::check_version_compatibility(gamestate_.classification().version);
 }
 
-bool loadgame::check_version_compatibility(const version_info & save_version, CVideo & video)
+bool loadgame::check_version_compatibility(const version_info & save_version)
 {
 	if (save_version == game_config::version) {
 		return true;
@@ -244,7 +243,7 @@ bool loadgame::check_version_compatibility(const version_info & save_version, CV
 		const std::string message = _("This save is from an old, unsupported version ($version_number|) and cannot be loaded.");
 		utils::string_map symbols;
 		symbols["version_number"] = save_version.str();
-		gui2::show_error_message(video, utils::interpolate_variables_into_string(message, &symbols));
+		gui2::show_error_message(utils::interpolate_variables_into_string(message, &symbols));
 		return false;
 	}
 
@@ -252,7 +251,7 @@ bool loadgame::check_version_compatibility(const version_info & save_version, CV
 		const std::string message = _("This save is from a different version of the game ($version_number|). Do you wish to try to load it?");
 		utils::string_map symbols;
 		symbols["version_number"] = save_version.str();
-		const int res = gui2::show_message(video, _("Load Game"), utils::interpolate_variables_into_string(message, &symbols),
+		const int res = gui2::show_message(_("Load Game"), utils::interpolate_variables_into_string(message, &symbols),
 			gui2::dialogs::message::yes_no_buttons);
 		return res == gui2::window::OK;
 	}
@@ -267,7 +266,7 @@ void loadgame::set_gamestate()
 
 bool loadgame::load_multiplayer_game()
 {
-	if(!gui2::dialogs::game_load::execute(game_config_, load_data_, video_)) {
+	if(!gui2::dialogs::game_load::execute(game_config_, load_data_)) {
 		return false;
 	}
 
@@ -289,21 +288,21 @@ bool loadgame::load_multiplayer_game()
 	}
 
 	if(!error_log.empty()) {
-		gui2::show_error_message(video_,
+		gui2::show_error_message(
 				_("The file you have tried to load is corrupt: '") +
 				error_log);
 		return false;
 	}
 
 	if(is_replay_save(load_data_.summary)) {
-		gui2::show_transient_message(video_, _("Load Game"), _("Replays are not supported in multiplayer mode."));
+		gui2::show_transient_message(_("Load Game"), _("Replays are not supported in multiplayer mode."));
 		return false;
 	}
 
 	// We want to verify the game classification before setting the data, so we don't check on
 	// gamestate_.classification() and instead construct a game_classification object manually.
 	if(game_classification(load_data_.load_config).campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
-		gui2::show_transient_error_message(video_, _("This is not a multiplayer save."));
+		gui2::show_transient_error_message(_("This is not a multiplayer save."));
 		return false;
 	}
 
@@ -335,7 +334,7 @@ savegame::savegame(saved_game& gamestate, const compression::format compress_sav
 	, compress_saves_(compress_saves)
 {}
 
-bool savegame::save_game_automatic(CVideo& video, bool ask_for_overwrite, const std::string& filename)
+bool savegame::save_game_automatic(bool ask_for_overwrite, const std::string& filename)
 {
 	if (filename.empty())
 		create_filename();
@@ -343,57 +342,57 @@ bool savegame::save_game_automatic(CVideo& video, bool ask_for_overwrite, const 
 		filename_ = filename;
 
 	if (ask_for_overwrite){
-		if (!check_overwrite(video)) {
-			return save_game_interactive(video, "", savegame::OK_CANCEL);
+		if (!check_overwrite()) {
+			return save_game_interactive("", savegame::OK_CANCEL);
 		}
 	}
 
-	return save_game(&video);
+	return save_game();
 }
 
-bool savegame::save_game_interactive(CVideo& video, const std::string& message, DIALOG_TYPE dialog_type)
+bool savegame::save_game_interactive(const std::string& message, DIALOG_TYPE dialog_type)
 {
 	show_confirmation_ = true;
 	create_filename();
 
-	const int res = show_save_dialog(video, message, dialog_type);
+	const int res = show_save_dialog(message, dialog_type);
 
 	if (res == 2) {
 		throw_quit_game_exception(); //Quit game
 	}
 
-	if (res == gui2::window::OK && check_overwrite(video)) {
-		return save_game(&video);
+	if (res == gui2::window::OK && check_overwrite()) {
+		return save_game();
 	}
 
 	return false;
 }
 
-int savegame::show_save_dialog(CVideo& video, const std::string& message, DIALOG_TYPE dialog_type)
+int savegame::show_save_dialog(const std::string& message, DIALOG_TYPE dialog_type)
 {
 	int res = 0;
 
 	if (dialog_type == OK_CANCEL){
 		gui2::dialogs::game_save dlg(filename_, title_);
-		dlg.show(video);
+		dlg.show();
 		res = dlg.get_retval();
 	}
 	else if (dialog_type == YES_NO){
 		gui2::dialogs::game_save_message dlg(filename_, title_, message);
-		dlg.show(video);
+		dlg.show();
 		res = dlg.get_retval();
 	}
 
 	set_filename(filename_);
 
-	if (!check_filename(filename_, video)) {
+	if (!check_filename(filename_)) {
 		res = gui2::window::CANCEL;
 	}
 
 	return res;
 }
 
-bool savegame::check_overwrite(CVideo& video)
+bool savegame::check_overwrite()
 {
 	if(!save_game_exists(filename_, compress_saves_)) {
 		return true;
@@ -401,15 +400,15 @@ bool savegame::check_overwrite(CVideo& video)
 
 	std::ostringstream message;
 	message << _("Save already exists. Do you want to overwrite it?") << "\n" << _("Name: ") << filename_;
-	const int res = gui2::show_message(video, _("Overwrite?"), message.str(), gui2::dialogs::message::yes_no_buttons);
+	const int res = gui2::show_message(_("Overwrite?"), message.str(), gui2::dialogs::message::yes_no_buttons);
 	return res == gui2::window::OK;
 
 }
 
-bool savegame::check_filename(const std::string& filename, CVideo& video)
+bool savegame::check_filename(const std::string& filename)
 {
 	if (filesystem::is_compressed_file(filename)) {
-		gui2::show_error_message(video, _("Save names should not end on '.gz' or '.bz2'. "
+		gui2::show_error_message(_("Save names should not end on '.gz' or '.bz2'. "
 			"Please remove the extension."));
 		return false;
 	}
@@ -437,7 +436,7 @@ void savegame::before_save()
 {
 }
 
-bool savegame::save_game(CVideo* video, const std::string& filename)
+bool savegame::save_game(const std::string& filename)
 {
 
 	try {
@@ -458,16 +457,15 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		end = SDL_GetTicks();
 		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start << std::endl;
 
-		if (video != nullptr && show_confirmation_)
-			gui2::show_transient_message(*video, _("Saved"), _("The game has been saved."));
+		if (show_confirmation_)
+			gui2::show_transient_message(_("Saved"), _("The game has been saved."));
 		return true;
 	} catch(game::save_game_failed& e) {
 		ERR_SAVE << error_message_ << e.message << std::endl;
-		if (video != nullptr){
-			gui2::show_error_message(*video, error_message_ + e.message);
-			//do not bother retrying, since the user can just try to save the game again
-			//maybe show a yes-no dialog for "disable autosaves now"?
-		}
+
+		gui2::show_error_message(error_message_ + e.message);
+		//do not bother retrying, since the user can just try to save the game again
+		//maybe show a yes-no dialog for "disable autosaves now"?
 
 		return false;
 	};
@@ -575,7 +573,7 @@ void autosave_savegame::autosave(const bool disable_autosave, const int autosave
 	if(disable_autosave)
 		return;
 
-	save_game_automatic(gui_.video());
+	save_game_automatic();
 
 	remove_old_auto_saves(autosave_max, infinite_autosaves);
 }
@@ -596,7 +594,7 @@ oos_savegame::oos_savegame(saved_game& gamestate, game_display& gui, bool& ignor
 	, ignore_(ignore)
 {}
 
-int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, DIALOG_TYPE /*dialog_type*/)
+int oos_savegame::show_save_dialog(const std::string& message, DIALOG_TYPE /*dialog_type*/)
 {
 	int res = 0;
 
@@ -604,13 +602,13 @@ int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, DI
 
 	if (!ignore_){
 		gui2::dialogs::game_save_oos dlg(ignore_, filename, title(), message);
-		dlg.show(video);
+		dlg.show();
 		res = dlg.get_retval();
 	}
 
 	set_filename(filename);
 
-	if (!check_filename(filename, video)) {
+	if (!check_filename(filename)) {
 		res = gui2::window::CANCEL;
 	}
 

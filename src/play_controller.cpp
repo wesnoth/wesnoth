@@ -132,8 +132,7 @@ static void clear_resources()
 }
 
 play_controller::play_controller(const config& level, saved_game& state_of_game,
-		const config& game_config, const ter_data_cache& tdata,
-		CVideo& video, bool skip_replay)
+		const config& game_config, const ter_data_cache& tdata, bool skip_replay)
 	: controller_base(game_config)
 	, observer()
 	, quit_confirmation()
@@ -182,7 +181,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_GAME);
 	try {
-		init(video, level);
+		init(level);
 	} catch (...) {
 		clear_resources();
 		throw;
@@ -203,10 +202,9 @@ struct throw_end_level
 	}
 };
 
-void play_controller::init(CVideo& video, const config& level)
+void play_controller::init(const config& level)
 {
-
-	gui2::dialogs::loading_screen::display(video, [this, &video, &level]() {
+	gui2::dialogs::loading_screen::display([this, &level]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_level);
 
 		LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks()) << std::endl;
@@ -239,7 +237,7 @@ void play_controller::init(CVideo& video, const config& level)
 
 		LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks()) << std::endl;
 		gui2::dialogs::loading_screen::progress(loading_stage::build_terrain);
-		gui_.reset(new game_display(gamestate().board_, video, whiteboard_manager_, *gamestate().reports_, gamestate().tod_manager_, theme_cfg, level));
+		gui_.reset(new game_display(gamestate().board_, whiteboard_manager_, *gamestate().reports_, gamestate().tod_manager_, theme_cfg, level));
 		map_start_ = map_location(level.child_or_empty("display").child_or_empty("location"));
 		if (!gui_->video().faked()) {
 			if (saved_game_.mp_settings().mp_countdown)
@@ -334,7 +332,7 @@ void play_controller::init_managers()
 {
 	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks()) << std::endl;
 	preferences::set_preference_display_settings();
-	tooltips_manager_.reset(new tooltips::manager(gui_->video()));
+	tooltips_manager_.reset(new tooltips::manager());
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
 
 	resources::soundsources = soundsources_manager_.get();
@@ -826,7 +824,7 @@ void play_controller::save_game()
 		save_blocker::save_unblocker unblocker;
 		scoped_savegame_snapshot snapshot(*this);
 		savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
-		save.save_game_interactive(gui_->video(), "", savegame::savegame::OK_CANCEL);
+		save.save_game_interactive("", savegame::savegame::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_game);
 	}
@@ -839,7 +837,7 @@ void play_controller::save_game_auto(const std::string& filename)
 
 		scoped_savegame_snapshot snapshot(*this);
 		savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
-		save.save_game_automatic(gui_->video(), false, filename);
+		save.save_game_automatic(false, filename);
 	}
 }
 
@@ -848,7 +846,7 @@ void play_controller::save_replay()
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
 		savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
-		save.save_game_interactive(gui_->video(), "", savegame::savegame::OK_CANCEL);
+		save.save_game_interactive("", savegame::savegame::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_replay);
 	}
@@ -859,7 +857,7 @@ void play_controller::save_replay_auto(const std::string& filename)
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
 		savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
-		save.save_game_automatic(gui_->video(), false, filename);
+		save.save_game_automatic(false, filename);
 	}
 }
 
@@ -875,7 +873,7 @@ void play_controller::save_map()
 
 void play_controller::load_game()
 {
-	savegame::loadgame load(gui_->video(), game_config_, saved_game_);
+	savegame::loadgame load(game_config_, saved_game_);
 	load.load_game_ingame();
 }
 
@@ -987,7 +985,7 @@ void play_controller::process_oos(const std::string& msg) const
 
 	scoped_savegame_snapshot snapshot(*this);
 	savegame::oos_savegame save(saved_game_, *gui_, ignore_replay_errors_);
-	save.save_game_interactive(gui_->video(), message.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
+	save.save_game_interactive(message.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
 }
 
 void play_controller::update_gui_to_player(const int team_index, const bool observe)
@@ -1009,7 +1007,7 @@ void play_controller::do_consolesave(const std::string& filename)
 {
 	scoped_savegame_snapshot snapshot(*this);
 	savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
-	save.save_game_automatic(gui_->video(), true, filename);
+	save.save_game_automatic(true, filename);
 }
 
 void play_controller::update_savegame_snapshot() const
@@ -1260,7 +1258,7 @@ void play_controller::show_objectives() const
 	const team& t = gamestate().board_.teams()[gui_->viewing_team()];
 	static const std::string no_objectives(_("No objectives available"));
 	std::string objectives = utils::interpolate_variables_into_string(t.objectives(), *gamestate_->get_game_data());
-	gui2::show_transient_message(gui_->video(), get_scenario_name(), (objectives.empty() ? no_objectives : objectives), "", true);
+	gui2::show_transient_message(get_scenario_name(), (objectives.empty() ? no_objectives : objectives), "", true);
 	t.reset_objectives_changed();
 }
 

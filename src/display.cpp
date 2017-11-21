@@ -153,13 +153,13 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 	}
 }
 
-display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::manager> wb, reports & reports_object, const config& theme_cfg, const config& level, bool auto_join) :
+display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, reports & reports_object, const config& theme_cfg, const config& level, bool auto_join) :
 	video2::draw_layering(auto_join),
 	dc_(dc),
 	halo_man_(new halo::manager(*this)),
 	wb_(wb),
 	exclusive_unit_draw_requests_(),
-	screen_(video),
+	screen_(CVideo::get_singleton()),
 	currentTeam_(0),
 	dont_show_all_(false),
 	xpos_(0),
@@ -236,9 +236,9 @@ display::display(const display_context * dc, CVideo& video, std::weak_ptr<wb::ma
 
 	read(level.child_or_empty("display"));
 
-	if(video.non_interactive()
-		&& (video.getSurface() != nullptr
-		&& video.faked())) {
+	if(screen_.non_interactive()
+		&& (screen_.getSurface() != nullptr
+		&& screen_.faked())) {
 		screen_.lock_updates(true);
 	}
 

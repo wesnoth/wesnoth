@@ -19,15 +19,13 @@
 #include "filesystem.hpp"
 #include "terrain/type_data.hpp"
 
-class CVideo;
 class config;
 class game_classification;
 
 class game_config_manager
 {
 public:
-	game_config_manager(const commandline_options& cmdline_opts,
-		CVideo& video, const bool jump_to_editor);
+	game_config_manager(const commandline_options& cmdline_opts, const bool jump_to_editor);
 	~game_config_manager();
 	enum FORCE_RELOAD_CONFIG
 	{
@@ -68,7 +66,6 @@ private:
 	void set_unit_data();
 
 	const commandline_options& cmdline_opts_;
-	CVideo& video_;
 	const bool jump_to_editor_;
 
 	config game_config_;
