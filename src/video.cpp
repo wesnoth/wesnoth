@@ -186,9 +186,9 @@ void CVideo::make_fake()
 	image::set_pixel_format(frameBuffer->format);
 }
 
-void CVideo::make_test_fake(const unsigned width, const unsigned height, const unsigned bpp)
+void CVideo::make_test_fake(const unsigned width, const unsigned height)
 {
-	frameBuffer = SDL_CreateRGBSurface(0, width, height, bpp, 0xFF0000, 0xFF00, 0xFF, 0);
+	frameBuffer = SDL_CreateRGBSurface(0, width, height, 32, 0xFF0000, 0xFF00, 0xFF, 0);
 	image::set_pixel_format(frameBuffer->format);
 
 	fake_interactive = true;
@@ -365,6 +365,15 @@ void CVideo::clear_screen()
 sdl::window* CVideo::get_window()
 {
 	return window.get();
+}
+
+bool CVideo::window_has_flags(uint32_t flags) const
+{
+	if(!window) {
+		return false;
+	}
+
+	return (window->get_flags() & flags) != 0;
 }
 
 std::pair<float, float> CVideo::get_dpi_scale_factor() const

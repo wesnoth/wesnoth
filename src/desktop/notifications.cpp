@@ -55,18 +55,12 @@ bool available()
 
 void send(const std::string& owner, const std::string& message, type t)
 {
-	sdl::window* window = CVideo::get_singleton().get_window();
-	if(window == nullptr) {
-		return;
-	}
-
-	int app_state = window->get_flags();
+	CVideo& video = CVideo::get_singleton();
 
 	// Do not show notifications when the window is visible...
-	if ((app_state & SDL_WINDOW_SHOWN) != 0)
-	{
+	if(video.window_has_flags(SDL_WINDOW_SHOWN)) {
 		// ... and it has a focus.
-		if ((app_state & (SDL_WINDOW_MOUSE_FOCUS | SDL_WINDOW_INPUT_FOCUS)) != 0) {
+		if(video.window_has_flags(SDL_WINDOW_MOUSE_FOCUS | SDL_WINDOW_INPUT_FOCUS)) {
 			return;
 		}
 	}

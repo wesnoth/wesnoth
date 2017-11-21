@@ -142,7 +142,7 @@ void window::set_icon(const surface& icon)
 	SDL_SetWindowIcon(window_, icon);
 }
 
-int window::get_flags()
+uint32_t window::get_flags()
 {
 	return SDL_GetWindowFlags(window_);
 }

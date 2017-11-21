@@ -147,10 +147,8 @@ bool controller_base::have_keyboard_focus()
 
 bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, double x_axis, double y_axis)
 {
-	sdl::window* window = CVideo::get_singleton().get_window();
-
 	const bool mouse_in_window =
-		(window != nullptr && (window->get_flags() & SDL_WINDOW_MOUSE_FOCUS) != 0)
+		CVideo::get_singleton().window_has_flags(SDL_WINDOW_MOUSE_FOCUS)
 		|| preferences::get("scroll_when_mouse_outside", true);
 
 	int scroll_speed = preferences::scroll_speed();
@@ -308,8 +306,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 	}
 
 	// be nice when window is not visible	// NOTE should be handled by display instead, to only disable drawing
-	sdl::window* window = CVideo::get_singleton().get_window();
-	if(window != nullptr && is_delay_enabled && (window->get_flags() & SDL_WINDOW_SHOWN) == 0) {
+	if(is_delay_enabled && !CVideo::get_singleton().window_has_flags(SDL_WINDOW_SHOWN)) {
 		CVideo::delay(200);
 	}
 

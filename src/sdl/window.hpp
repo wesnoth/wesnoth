@@ -156,7 +156,7 @@ public:
 	 */
 	void set_icon(const surface& icon);
 
-	int get_flags();
+	uint32_t get_flags();
 
 	/**
 	 * Set mimimum size of the window.

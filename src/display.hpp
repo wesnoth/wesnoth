@@ -210,8 +210,9 @@ public:
 	 * mapx is the width of the portion of the display which shows the game area.
 	 * Between mapx and x is the sidebar region.
 	 */
-	int w() const { return screen_.get_window() ? screen_.get_window()->get_output_size().x : 0; }	/**< width */
-	int h() const { return screen_.get_window() ? screen_.get_window()->get_output_size().y : 0; }	/**< height */
+	int w() const { return screen_.getx(); }	/**< width */
+	int h() const { return screen_.gety(); }	/**< height */
+
 	const SDL_Rect& minimap_area() const
 		{ return theme_.mini_map_location(screen_area()); }
 	const SDL_Rect& palette_area() const

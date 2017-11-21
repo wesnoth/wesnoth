@@ -17,11 +17,15 @@
 #include "events.hpp"
 #include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
-#include "sdl/window.hpp"
 
 #include <memory>
 
 class surface;
+
+namespace sdl
+{
+class window;
+}
 
 SDL_Rect screen_area();
 
@@ -44,8 +48,6 @@ public:
 
 	/***** ***** ***** ***** Unit test-related functions ***** ***** ****** *****/
 
-	const static int DefaultBpp = 32;
-
 	void make_fake();
 
 	/**
@@ -53,9 +55,8 @@ public:
 	 *
 	 * @param width               The width of the buffer.
 	 * @param height              The height of the buffer.
-	 * @param bpp                 The bpp of the buffer.
 	 */
-	void make_test_fake(const unsigned width = 1024, const unsigned height = 768, const unsigned bpp = DefaultBpp);
+	void make_test_fake(const unsigned width = 1024, const unsigned height = 768);
 
 	bool faked() const
 	{
@@ -72,6 +73,7 @@ public:
 	/** Returns a pointer to the underlying SDL window. */
 	sdl::window* get_window();
 
+private:
 	enum MODE_EVENT { TO_RES, TO_FULLSCREEN, TO_WINDOWED, TO_MAXIMIZED_WINDOW };
 
 	/**
@@ -83,6 +85,7 @@ public:
 	 */
 	void set_window_mode(int x, int y, const MODE_EVENT mode);
 
+public:
 	void set_fullscreen(bool ison);
 
 	bool is_fullscreen() const;
@@ -110,6 +113,13 @@ public:
 
 	/** The current scale factor on High-DPI screens. */
 	std::pair<float, float> get_dpi_scale_factor() const;
+
+	/**
+	 * Tests whether the given flags are currently set on the SDL window.
+	 *
+	 * @param flags               The flags to test, OR'd together.
+	 */
+	bool window_has_flags(uint32_t flags) const;
 
 	/**
 	 * Sets the title of the main window.
