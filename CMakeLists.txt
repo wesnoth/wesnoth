@@ -19,15 +19,15 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 # function to remove a flag from a variable
-function(RemoveFlag VAR SCOPE FLAG)
+function(RemoveFlag VAR SET_IN FLAG DOCSTRING)
 	MESSAGE("Removing ${FLAG} flag from ${VAR}")
 	separate_arguments(${VAR})
 	list(REMOVE_ITEM ${VAR} ${FLAG})
 	string(REPLACE ";" " " ${VAR} "${${VAR}}")
 	
-	if("${SCOPE}" STREQUAL "CACHE")
-		set(${VAR} "${${VAR}}" CACHE STRING "" FORCE)
-	elseif("${SCOPE}" STREQUAL "PARENT")
+	if("${SET_IN}" STREQUAL "CACHE")
+		set(${VAR} "${${VAR}}" CACHE STRING "${DOCSTRING}" FORCE)
+	elseif("${SET_IN}" STREQUAL "SCRIPT")
 		set(${VAR} "${${VAR}}" PARENT_SCOPE)
 	endif()
 endfunction()
@@ -498,14 +498,14 @@ if(X11_FOUND)
 endif(X11_FOUND)
 
 # -DNDEBUG is automatically added to all release build types, so manually remove this define from the related variables
-RemoveFlag(CMAKE_CXX_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG")
-RemoveFlag(CMAKE_C_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG")
-RemoveFlag(CMAKE_CXX_FLAGS_MINSIZEREL CACHE "-DNDEBUG")
-RemoveFlag(CMAKE_C_FLAGS_MINSIZEREL CACHE "-DNDEBUG")
+RemoveFlag(CMAKE_CXX_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG" "Default C++ flags for RelWithDebInfo")
+RemoveFlag(CMAKE_C_FLAGS_RELWITHDEBINFO CACHE "-DNDEBUG" "Default C flags for RelWithDebInfo")
+RemoveFlag(CMAKE_CXX_FLAGS_MINSIZEREL CACHE "-DNDEBUG" "Default C++ flags for MinSizeRel")
+RemoveFlag(CMAKE_C_FLAGS_MINSIZEREL CACHE "-DNDEBUG" "Default C flags for MinSizeRel")
 
 # -rdynamic is automatically added, but we don't need it, and it increases the executable size
-RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS PARENT "-rdynamic")
-RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS PARENT "-rdynamic")
+RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS SCRIPT "-rdynamic" "")
+RemoveFlag(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS SCRIPT "-rdynamic" "")
 
 # #
 # Start determining options for Release build
