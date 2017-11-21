@@ -19,15 +19,15 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 # function to remove a flag from a variable
-function(RemoveFlag VAR SET_IN FLAG DOCSTRING)
+function(RemoveFlag VAR SCOPE FLAG DOCSTRING)
 	MESSAGE("Removing ${FLAG} flag from ${VAR}")
 	separate_arguments(${VAR})
 	list(REMOVE_ITEM ${VAR} ${FLAG})
 	string(REPLACE ";" " " ${VAR} "${${VAR}}")
 	
-	if("${SET_IN}" STREQUAL "CACHE")
+	if("${SCOPE}" STREQUAL "CACHE")
 		set(${VAR} "${${VAR}}" CACHE STRING "${DOCSTRING}" FORCE)
-	elseif("${SET_IN}" STREQUAL "SCRIPT")
+	elseif("${SCOPE}" STREQUAL "SCRIPT")
 		set(${VAR} "${${VAR}}" PARENT_SCOPE)
 	endif()
 endfunction()
