@@ -37,7 +37,6 @@
 #include "settings.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
-#include "video.hpp"
 #include "wesnothd_connection.hpp"
 #include "resources.hpp"
 #include "replay.hpp"

@@ -28,7 +28,6 @@
 #include "map/map.hpp"
 #include "minimap.hpp"
 #include "saved_game.hpp"
-#include "video.hpp"
 #include "wml_exception.hpp"
 
 #include "serialization/preprocessor.hpp"

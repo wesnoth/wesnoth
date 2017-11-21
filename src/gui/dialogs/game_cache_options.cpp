@@ -32,7 +32,6 @@
 #include "utils/functional.hpp"
 
 #include "gettext.hpp"
-#include "video.hpp"
 
 namespace gui2
 {

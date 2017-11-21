@@ -17,7 +17,6 @@
 #include "chat_events.hpp"
 #include "preferences/game.hpp"
 #include "preferences/display.hpp"
-#include "video.hpp"
 #include "game_config_manager.hpp"
 
 namespace events {

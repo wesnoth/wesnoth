@@ -18,7 +18,6 @@
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "utils/functional.hpp"
-#include "video.hpp"
 
 #include <boost/thread.hpp>
 #include <SDL_timer.h>

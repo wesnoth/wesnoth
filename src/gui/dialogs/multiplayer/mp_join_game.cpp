@@ -15,6 +15,7 @@
 
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 
+#include "events.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
@@ -45,7 +46,6 @@
 #include "mp_ui_alerts.hpp"
 #include "statistics.hpp"
 #include "units/types.hpp"
-#include "video.hpp"
 #include "wesnothd_connection.hpp"
 
 

@@ -37,7 +37,6 @@
 #include "scripting/push_check.hpp"
 
 #include "version.hpp"                  // for do_version_check, etc
-#include "video.hpp"
 #include "image.hpp"
 
 #include "formula/string_utils.hpp"

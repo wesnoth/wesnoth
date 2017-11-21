@@ -22,7 +22,6 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "seed_rng.hpp"
-#include "video.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
