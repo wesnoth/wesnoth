@@ -771,7 +771,7 @@ std::vector<std::string> pango_text::find_links(utils::string_view text) const {
 
 	int last_delim = -1;
 	for (size_t index = 0; index < text.size(); ++index) {
-		if (delim.find(text.at(index)) != std::string::npos) {
+		if (delim.find(text[index]) != std::string::npos) {
 			// want to include chars from range since last token, dont want to include any delimiters
 			utils::string_view token = text.substr(last_delim + 1, index - last_delim - 1);
 			if(looks_like_url(token)) {
