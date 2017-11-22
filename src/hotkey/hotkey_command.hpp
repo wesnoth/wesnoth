@@ -238,12 +238,7 @@ struct hotkey_command
 
 	hotkey_command(HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, bool toggle, hk_scopes scope, HOTKEY_CATEGORY category, const t_string& tooltip);
 
-	/** Needed for vector::erase. */
-	hotkey_command(hotkey_command&&) = default;
-	hotkey_command& operator=(hotkey_command&&) = default;
-
-	/** This shouldn't be copyable. */
-	hotkey_command(const hotkey_command&) = delete;
+	hotkey_command(const hotkey_command&) = default;
 	hotkey_command& operator=(const hotkey_command&) = default;
 
 	/// the names are strange: the "hotkey::HOTKEY_COMMAND" is named id, and the string to identify the object is called "command"
