@@ -142,13 +142,6 @@ set(tools-external-libs
 if(ENABLE_FRIBIDI AND FRIBIDI_FOUND)
 	set(game-external-libs ${game-external-libs} ${FRIBIDI_LIBRARIES})
 	include_directories(SYSTEM ${FRIBIDI_INCLUDE_DIRS} )
-	# latest FriBiDi deprecated some functions we rely on...
-	set_source_files_properties(
-		font/sdl_ttf.cpp
-		font/text_surface.cpp
-		PROPERTIES COMPILE_FLAGS
-			"-Wno-deprecated-declarations -Wno-unused-result"
-	)
 endif(ENABLE_FRIBIDI AND FRIBIDI_FOUND)
 
 if(X11_FOUND)
@@ -278,7 +271,7 @@ if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 	set_property(SOURCE
 		SOURCE ${lua_STAT_SRC}
 		APPEND_STRING PROPERTY COMPILE_FLAGS
-			" -x c++ -Wno-parentheses-equality -Wno-conditional-uninitialized"
+			" -x c++ -Wno-parentheses-equality"
 	)
 endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
 
@@ -292,19 +285,22 @@ add_library(lua ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${lua_STAT_SRC})
 # Disable the setting of -Wold-style-cast on some targets.
 # old style casts are not wanted by our coding style but some C based code
 # uses it. Force the flag off for these files.
-if(HAS_COMPILER_FLAG_WOLD_STYLE_CAST)
+if(ENABLE_STRICT_COMPILATION)
 	set(CXX_FLAG_NO_OLD_STYLE_CAST "-Wno-old-style-cast")
 endif()
 
-if(HAS_COMPILER_FLAG_WUSELESS_CAST)
+if(ENABLE_PEDANTIC_COMPILATION)
 	set(CXX_FLAG_NO_USELESS_CAST "-Wno-useless-cast")
 endif()
 
-set_target_properties(lua
-	PROPERTIES
+if(ENABLE_STRICT_COMPILATION OR ENABLE_PEDANTIC_COMPILATION)
+	MESSAGE("Adding flags to lua target: ${CXX_FLAG_NO_OLD_STYLE_CAST} ${CXX_FLAG_NO_USELESS_CAST}")
+	set_target_properties(lua
+		PROPERTIES
 		COMPILE_FLAGS
-			"${CXX_FLAG_NO_OLD_STYLE_CAST} ${CXX_FLAG_NO_USELESS_CAST}"
-)
+		"${CXX_FLAG_NO_OLD_STYLE_CAST} ${CXX_FLAG_NO_USELESS_CAST}"
+	)
+endif()
 
 ########### Helper libraries ###############
 

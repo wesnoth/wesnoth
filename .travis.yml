@@ -46,10 +46,9 @@ before_install:
     - if [ "$TRAVIS_OS_NAME" = osx ]; then export WML_TESTS=false CPP_TESTS=false PLAY_TEST=false MP_TEST=false; fi
     - if [ "$OPT" == "-O0" ]; then
           export STRICT_COMPILATION=true;
-          export EXTRA_FLAGS_RELEASE="-O0 -Wno-deprecated-declarations";
+          export EXTRA_FLAGS_RELEASE="-O0";
           export PLAY_TEST=false MP_TEST=false WML_TEST_TIME=20;
       fi
-    - if [[ "$OPT" == "-O0" ]] && [[ "$CXX" == "clang++" ]]; then export EXTRA_FLAGS_RELEASE="-O0 -Wno-deprecated-declarations -Wno-literal-suffix -Wno-deprecated-register"; fi
 
 install:
     - travis_wait ./utils/travis/install_deps.sh
