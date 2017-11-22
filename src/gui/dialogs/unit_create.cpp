@@ -44,7 +44,7 @@
 #include <boost/dynamic_bitset.hpp>
 
 static std::string last_chosen_type_id = "";
-static unit_race::GENDER last_gender = unit_race::MALE;
+static unit_gender last_gender = unit_gender::MALE;
 
 namespace gui2
 {
@@ -96,8 +96,8 @@ void unit_create::pre_show(window& window)
 	toggle_button& female_toggle
 			= find_widget<toggle_button>(&window, "female_toggle", false);
 
-	gender_toggle.add_member(&male_toggle, unit_race::MALE);
-	gender_toggle.add_member(&female_toggle, unit_race::FEMALE);
+	gender_toggle.add_member(&male_toggle, unit_gender::MALE);
+	gender_toggle.add_member(&female_toggle, unit_gender::FEMALE);
 
 	gender_toggle.set_member_states(last_gender);
 
@@ -203,7 +203,7 @@ void unit_create::list_item_clicked(window& window)
 
 	update_displayed_type();
 
-	gender_toggle.set_members_enabled([&](const unit_race::GENDER& gender)->bool {
+	gender_toggle.set_members_enabled([&](const unit_gender& gender)->bool {
 		return units_[selected_row]->has_gender_variation(gender);
 	});
 }

@@ -12,15 +12,15 @@
    See the COPYING file for more details.
 */
 
-#include "units/make.hpp"
-#include "units/unit.hpp"
+#pragma once
 
-unit_ptr make_unit_ptr(const config& cfg, bool use_traits, const vconfig* vcfg){
-    return { new unit(cfg, use_traits, vcfg) };
-}
-unit_ptr make_unit_ptr(const unit_type& t, int side, bool real_unit, unit_gender gender){
-    return { new unit(t, side, real_unit, gender) };
-}
-unit_ptr make_unit_ptr(const unit& u){
-    return { new unit(u) };
-}
+#include <iosfwd>
+
+enum class unit_gender {
+	MALE, FEMALE, NUM_GENDERS
+};
+
+std::ostream& operator<<(std::ostream& os, unit_gender gender);
+
+unit_gender string_gender(const std::string& str, unit_gender def=unit_gender::MALE);
+const std::string& gender_string(unit_gender gender);

@@ -651,7 +651,7 @@ unit_map::iterator menu_handler::current_unit()
 namespace
 {
 /// Allows a function to return both a type and a gender.
-typedef std::pair<const unit_type*, unit_race::GENDER> type_and_gender;
+typedef std::pair<const unit_type*, unit_gender> type_and_gender;
 
 /**
  * Allows the user to select a type of unit, using GUI2.
@@ -670,18 +670,18 @@ type_and_gender choose_unit()
 	create_dlg.show();
 
 	if(create_dlg.no_choice()) {
-		return type_and_gender(nullptr, unit_race::NUM_GENDERS);
+		return type_and_gender(nullptr, unit_gender::NUM_GENDERS);
 	}
 
 	const std::string& ut_id = create_dlg.choice();
 	const unit_type* utp = unit_types.find(ut_id);
 	if(!utp) {
 		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id '" << ut_id << "'." << std::endl;
-		return type_and_gender(static_cast<const unit_type*>(nullptr), unit_race::NUM_GENDERS);
+		return type_and_gender(static_cast<const unit_type*>(nullptr), unit_gender::NUM_GENDERS);
 	}
 	const unit_type& ut = *utp;
 
-	unit_race::GENDER gender = create_dlg.gender();
+	unit_gender gender = create_dlg.gender();
 	// Do not try to set bad genders, may mess up l10n
 	/// @todo Is this actually necessary?
 	/// (Maybe create_dlg can enforce proper gender selection?)
@@ -701,7 +701,7 @@ void create_and_place(game_display&,
 		unit_map&,
 		const map_location& loc,
 		const unit_type& u_type,
-		unit_race::GENDER gender = unit_race::NUM_GENDERS)
+		unit_gender gender = unit_gender::NUM_GENDERS)
 {
 	synced_context::run_and_throw("debug_create_unit",
 		config {

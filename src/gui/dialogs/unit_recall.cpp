@@ -264,17 +264,17 @@ void unit_recall::dismiss_unit(window& window)
 	// If the unit is of level > 1, or is close to advancing, we warn the player about it
 	std::stringstream message;
 	if(u.loyal()) {
-		message << _("This unit is loyal and requires no upkeep.") << " " << (u.gender() == unit_race::MALE
+		message << _("This unit is loyal and requires no upkeep.") << " " << (u.gender() == unit_gender::MALE
 		         ? _("Do you really want to dismiss him?")
 		         : _("Do you really want to dismiss her?"));
 
 	} else if(u.level() > 1) {
-		message << _("This unit is an experienced one, having advanced levels.") << " " << (u.gender() == unit_race::MALE
+		message << _("This unit is an experienced one, having advanced levels.") << " " << (u.gender() == unit_gender::MALE
 		         ? _("Do you really want to dismiss him?")
 		         : _("Do you really want to dismiss her?"));
 
 	} else if(u.experience() > u.max_experience()/2) {
-		message << _("This unit is close to advancing a level.") << " " << (u.gender() == unit_race::MALE
+		message << _("This unit is close to advancing a level.") << " " << (u.gender() == unit_gender::MALE
 		         ? _("Do you really want to dismiss him?")
 		         : _("Do you really want to dismiss her?"));
 	}

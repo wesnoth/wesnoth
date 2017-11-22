@@ -257,7 +257,7 @@ void unit_type::build_help_index(
 
 	// For simplicity in other parts of the code, we must have at least one gender.
 	if(genders_.empty()) {
-		genders_.push_back(unit_race::MALE);
+		genders_.push_back(unit_gender::MALE);
 	}
 
 	if(const config& abil_cfg = cfg_.child("abilities")) {
@@ -443,17 +443,17 @@ void unit_type::build(BUILD_STATUS status,
 const unit_type& unit_type::get_gender_unit_type(std::string gender) const
 {
 	if(gender == unit_race::s_female) {
-		return get_gender_unit_type(unit_race::FEMALE);
+		return get_gender_unit_type(unit_gender::FEMALE);
 	} else if(gender == unit_race::s_male) {
-		return get_gender_unit_type(unit_race::MALE);
+		return get_gender_unit_type(unit_gender::MALE);
 	}
 
 	return *this;
 }
 
-const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
+const unit_type& unit_type::get_gender_unit_type(unit_gender gender) const
 {
-	const size_t i = gender;
+	const size_t i = static_cast<size_t>(gender);
 	if(i < gender_types_.size() && gender_types_[i] != nullptr) {
 		return *gender_types_[i];
 	}
@@ -538,12 +538,12 @@ int unit_type::experience_needed(bool with_acceleration) const
 }
 
 #if 0
-const char* unit_type::alignment_description(unit_type::ALIGNMENT align, unit_race::GENDER gender)
+const char* unit_type::alignment_description(unit_type::ALIGNMENT align, unit_gender gender)
 {
 	static const char* aligns[] { N_("lawful"), N_("neutral"), N_("chaotic"), N_("liminal") };
 	static const char* aligns_female[] { N_("female^lawful"), N_("female^neutral"), N_("female^chaotic"),
 N_("female^liminal") };
-	const char** tlist = (gender == unit_race::MALE ? aligns : aligns_female);
+	const char** tlist = (gender == unit_gender::MALE ? aligns : aligns_female);
 
 	return (translation::sgettext(tlist[align]));
 }
@@ -911,7 +911,7 @@ MAKE_ENUM (ALIGNMENT_FEMALE_VARIATION,
 	(LIMINAL,        N_("female^liminal"))
 )
 
-std::string unit_type::alignment_description(ALIGNMENT align, unit_race::GENDER gender)
+std::string unit_type::alignment_description(ALIGNMENT align, unit_gender gender)
 {
 	static_assert(ALIGNMENT_FEMALE_VARIATION::count == ALIGNMENT::count,
 		"ALIGNMENT_FEMALE_VARIATION and ALIGNMENT do not have the same number of values");
@@ -920,7 +920,7 @@ std::string unit_type::alignment_description(ALIGNMENT align, unit_race::GENDER 
 
 	std::string str = std::string();
 
-	if(gender == unit_race::FEMALE) {
+	if(gender == unit_gender::FEMALE) {
 		ALIGNMENT_FEMALE_VARIATION fem = align.cast<ALIGNMENT_FEMALE_VARIATION::type>();
 		str = fem.to_string();
 	} else {

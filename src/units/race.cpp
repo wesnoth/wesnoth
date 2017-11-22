@@ -54,10 +54,10 @@ unit_race::unit_race() :
 		global_traits_(true),
 		undead_variation_()
 {
-	name_[MALE] = "";
-	name_[FEMALE] = "";
-	name_generator_[MALE].reset(new name_generator());
-	name_generator_[FEMALE].reset(new name_generator());
+	name_[static_cast<int>(unit_gender::MALE)] = "";
+	name_[static_cast<int>(unit_gender::FEMALE)] = "";
+	name_generator_[static_cast<int>(unit_gender::MALE)].reset(new name_generator());
+	name_generator_[static_cast<int>(unit_gender::FEMALE)].reset(new name_generator());
 }
 
 unit_race::unit_race(const config& cfg) :
@@ -82,31 +82,31 @@ unit_race::unit_race(const config& cfg) :
 	}
 
 	// use "name" if "male_name" or "female_name" aren't available
-	name_[MALE] = cfg["male_name"];
-	if(name_[MALE].empty()) {
-		name_[MALE] = (cfg["name"]);
+	name_[static_cast<int>(unit_gender::MALE)] = cfg["male_name"];
+	if(name_[static_cast<int>(unit_gender::MALE)].empty()) {
+		name_[static_cast<int>(unit_gender::MALE)] = (cfg["name"]);
 	}
-	name_[FEMALE] = cfg["female_name"];
-	if(name_[FEMALE].empty()) {
-		name_[FEMALE] = (cfg["name"]);
+	name_[static_cast<int>(unit_gender::FEMALE)] = cfg["female_name"];
+	if(name_[static_cast<int>(unit_gender::FEMALE)].empty()) {
+		name_[static_cast<int>(unit_gender::FEMALE)] = (cfg["name"]);
 	}
 
 	name_generator_factory generator_factory = name_generator_factory(cfg, {"male", "female"});
 
-	for(int i=MALE; i<NUM_GENDERS; i++) {
-		GENDER gender = static_cast<GENDER>(i);
+	for(int i = static_cast<int>(unit_gender::MALE); i < static_cast<int>(unit_gender::NUM_GENDERS); ++i) {
+		unit_gender gender = static_cast<unit_gender>(i);
 		name_generator_[i] = generator_factory.get_name_generator(gender_string(gender));
 	}
 }
 
-std::string unit_race::generate_name(unit_race::GENDER gender) const
+std::string unit_race::generate_name(unit_gender gender) const
 {
-    return name_generator_[gender]->generate();
+    return name_generator_[static_cast<int>(gender)]->generate();
 }
 
-const name_generator& unit_race::generator(unit_race::GENDER gender) const
+const name_generator& unit_race::generator(unit_gender gender) const
 {
-	return *name_generator_[gender];
+	return *name_generator_[static_cast<int>(gender)];
 }
 
 bool unit_race::uses_global_traits() const
@@ -126,22 +126,3 @@ const config::const_child_itors &unit_race::additional_topics() const
 
 unsigned int unit_race::num_traits() const { return ntraits_; }
 
-
-const std::string& gender_string(unit_race::GENDER gender) {
-	switch(gender) {
-	case unit_race::FEMALE:
-		return unit_race::s_female;
-	default:
-	case unit_race::MALE:
-		return unit_race::s_male;
-	}
-}
-
-unit_race::GENDER string_gender(const std::string& str, unit_race::GENDER def) {
-	if ( str == unit_race::s_male ) {
-		return unit_race::MALE;
-	} else if ( str == unit_race::s_female ) {
-		return unit_race::FEMALE;
-	}
-	return def;
-}

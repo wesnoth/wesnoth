@@ -249,11 +249,11 @@ namespace {
 	 * the specified gender is blank, then @a default_key is chosen instead.
 	 */
 	inline const config::attribute_value & gender_value(
-		const config & cfg, unit_race::GENDER gender, const std::string & male_key,
+		const config & cfg, unit_gender gender, const std::string & male_key,
 		const std::string & female_key, const std::string & default_key)
 	{
 		return default_value(cfg,
-		                     gender == unit_race::MALE ? male_key : female_key,
+		                     gender == unit_gender::MALE ? male_key : female_key,
 		                     default_key);
 	}
 }

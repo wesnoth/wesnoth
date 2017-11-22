@@ -16,7 +16,7 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
-#include "units/race.hpp"
+#include "units/gender.hpp"
 
 #include <string>
 #include <vector>
@@ -50,7 +50,7 @@ public:
 	}
 
 	/** Gender choice from the user. */
-	unit_race::GENDER gender()
+	unit_gender gender()
 	{
 		return gender_;
 	}
@@ -58,7 +58,7 @@ public:
 private:
 	std::vector<const unit_type*> units_;
 
-	unit_race::GENDER gender_;
+	unit_gender gender_;
 
 	std::string choice_;
 
@@ -80,7 +80,7 @@ private:
 
 	void update_displayed_type() const;
 
-	group<unit_race::GENDER> gender_toggle;
+	group<unit_gender> gender_toggle;
 };
 } // namespace dialogs
 } // namespace gui2

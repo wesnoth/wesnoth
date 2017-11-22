@@ -15,13 +15,13 @@
 #pragma once
 
 #include "config.hpp"
+#include "units/gender.hpp"
 #include "utils/name_generator.hpp"
 #include <memory>
 
 class unit_race
 {
 public:
-	enum GENDER { MALE, FEMALE, NUM_GENDERS };
 	static const std::string s_female;
 	static const std::string s_male;
 
@@ -31,12 +31,12 @@ public:
 	const config& get_cfg() const { return cfg_; }
 	const std::string& id() const { return id_; }
 	const std::string& editor_icon() const { return icon_; }
-	const t_string& name(GENDER gender=MALE) const { return name_[gender]; }
+	const t_string& name(unit_gender gender=unit_gender::MALE) const { return name_[static_cast<int>(gender)]; }
 	const t_string& plural_name() const { return plural_name_; }
 	const t_string& description() const { return description_; }
 
-	std::string generate_name(GENDER gender) const;
-	const name_generator& generator(GENDER gender) const;
+	std::string generate_name(unit_gender gender) const;
+	const name_generator& generator(unit_gender gender) const;
 
 	bool uses_global_traits() const;
 
@@ -56,19 +56,16 @@ private:
 
 	std::string id_;
 	std::string icon_;
-	t_string name_[NUM_GENDERS];
+	t_string name_[static_cast<int>(unit_gender::NUM_GENDERS)];
 	t_string plural_name_;
 	t_string description_;
 	unsigned int ntraits_;
-	std::shared_ptr<name_generator> name_generator_[NUM_GENDERS];
+	std::shared_ptr<name_generator> name_generator_[static_cast<int>(unit_gender::NUM_GENDERS)];
 
 	config::const_child_itors traits_;
 	config::const_child_itors topics_;
 	bool global_traits_;
 	std::string undead_variation_;
 };
-
-unit_race::GENDER string_gender(const std::string& str,unit_race::GENDER def=unit_race::MALE);
-const std::string& gender_string(unit_race::GENDER gender);
 
 typedef std::map<std::string,unit_race> race_map;

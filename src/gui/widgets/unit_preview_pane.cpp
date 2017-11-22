@@ -344,7 +344,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 			tree_view_node* header_node = nullptr;
 
 			for(const auto& tr : type.possible_traits()) {
-				t_string name = tr[type.genders().front() == unit_race::FEMALE ? "female_name" : "male_name"];
+				t_string name = tr[type.genders().front() == unit_gender::FEMALE ? "female_name" : "male_name"];
 				if(tr["availability"] != "musthave" || name.empty()) {
 					continue;
 				}

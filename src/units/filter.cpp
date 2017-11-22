@@ -429,7 +429,7 @@ void unit_filter_compound::fill(vconfig cfg)
 
 		create_attribute(literal["gender"],
 			[](const config::attribute_value& c) { return string_gender(c.str()); },
-			[](unit_race::GENDER gender, const unit_filter_args& args)
+			[](unit_gender gender, const unit_filter_args& args)
 			{
 				return gender == args.u.gender();
 			}

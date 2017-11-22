@@ -118,7 +118,7 @@ public:
 	 *
 	 * Only real_unit-s should have random traits, name and gender (to prevent OOS caused by RNG calls)
 	 */
-	unit(const unit_type& t, int side, bool real_unit, unit_race::GENDER gender = unit_race::NUM_GENDERS);
+	unit(const unit_type& t, int side, bool real_unit, unit_gender gender = unit_gender::NUM_GENDERS);
 
 	// Copy constructor
 	unit(const unit& u);
@@ -358,7 +358,7 @@ public:
 	}
 
 	/** The gender of this unit. */
-	unit_race::GENDER gender() const
+	unit_gender gender() const
 	{
 		return gender_;
 	}
@@ -1609,7 +1609,7 @@ private:
 
 	int side_;
 
-	unit_race::GENDER gender_;
+	unit_gender gender_;
 
 	std::unique_ptr<unit_formula_manager> formula_man_;
 

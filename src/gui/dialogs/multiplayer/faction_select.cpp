@@ -63,8 +63,8 @@ void faction_select::pre_show(window& window)
 	toggle_button& gender_female = find_widget<toggle_button>(&window, "gender_female", false);
 
 	gender_toggle_.add_member(&gender_rand,   "random");
-	gender_toggle_.add_member(&gender_male,   unit_race::s_male);
-	gender_toggle_.add_member(&gender_female, unit_race::s_female);
+	gender_toggle_.add_member(&gender_male,   gender_string(unit_gender::MALE));
+	gender_toggle_.add_member(&gender_female, gender_string(unit_gender::FEMALE));
 
 	gender_toggle_.set_member_states("random");
 

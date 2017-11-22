@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-#include "units/race.hpp"
+#include "units/gender.hpp"
 #include "units/ptr.hpp"
 
 class config;
@@ -20,5 +20,5 @@ class unit_type;
 class vconfig;
 
 unit_ptr make_unit_ptr(const config& cfg, bool use_traits = false, const vconfig* vcfg = nullptr);
-unit_ptr make_unit_ptr(const unit_type& t, int side, bool real_unit, unit_race::GENDER gender = unit_race::NUM_GENDERS);
+unit_ptr make_unit_ptr(const unit_type& t, int side, bool real_unit, unit_gender gender = unit_gender::NUM_GENDERS);
 unit_ptr make_unit_ptr(const unit& u);

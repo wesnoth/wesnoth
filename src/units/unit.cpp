@@ -207,9 +207,9 @@ static const unit_type& get_unit_type(const std::string& type_id)
 	return *i;
 }
 
-static unit_race::GENDER generate_gender(const unit_type& type, bool random_gender)
+static unit_gender generate_gender(const unit_type& type, bool random_gender)
 {
-	const std::vector<unit_race::GENDER>& genders = type.genders();
+	const std::vector<unit_gender>& genders = type.genders();
 	assert(genders.size() > 0);
 
 	if(random_gender == false  ||  genders.size() == 1) {
@@ -224,7 +224,7 @@ static unit_race::GENDER generate_gender(const unit_type& type, bool random_gend
 	}
 }
 
-static unit_race::GENDER generate_gender(const unit_type& u_type, const config& cfg)
+static unit_gender generate_gender(const unit_type& u_type, const config& cfg)
 {
 	const std::string& gender = cfg["gender"];
 	if(!gender.empty()) {
@@ -623,7 +623,7 @@ void unit::clear_status_caches()
 	units_with_cache.clear();
 }
 
-unit::unit(const unit_type& u_type, int side, bool real_unit, unit_race::GENDER gender)
+unit::unit(const unit_type& u_type, int side, bool real_unit, unit_gender gender)
 	: ref_count_(0)
 	, loc_()
 	, advances_to_()
@@ -647,7 +647,7 @@ unit::unit(const unit_type& u_type, int side, bool real_unit, unit_race::GENDER 
 	, image_mods_()
 	, unrenamable_(false)
 	, side_(side)
-	, gender_(gender != unit_race::NUM_GENDERS ? gender : generate_gender(u_type, real_unit))
+	, gender_(gender != unit_gender::NUM_GENDERS ? gender : generate_gender(u_type, real_unit))
 	, formula_man_(new unit_formula_manager())
 	, movement_(0)
 	, max_movement_(0)
@@ -2266,7 +2266,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 
 void unit::add_trait_description(const config& trait, const t_string& description)
 {
-	const std::string& gender_string = gender_ == unit_race::FEMALE ? "female_name" : "male_name";
+	const std::string& gender_string = gender_ == unit_gender::FEMALE ? "female_name" : "male_name";
 	const auto& gender_specific_name = trait[gender_string];
 
 	const t_string name = gender_specific_name.empty() ? trait["name"] : gender_specific_name;
