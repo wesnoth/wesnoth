@@ -16,6 +16,9 @@
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
 #include "video.hpp"
+#include "resources.hpp"
+#include "playmp_controller.hpp"
+#include "gui/dialogs/surrender_quit.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -59,5 +62,26 @@ bool quit_confirmation::show_prompt(const std::string& message)
 
 bool quit_confirmation::default_prompt()
 {
-	return show_prompt(_("Do you really want to quit?"));
+	playmp_controller* pmc = dynamic_cast<playmp_controller*>(resources::controller);
+
+	if(!(pmc == nullptr || pmc->is_linger_mode() || pmc->is_observer())) {
+		gui2::dialogs::surrender_quit sq;
+		sq.show();
+		int retval = sq.get_retval();
+		if(retval == 1)
+		{
+			pmc->surrender(display::get_singleton()->viewing_team());
+			return true;
+		}
+		else if(retval == 2)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	} else {
+		return show_prompt(_("Do you really want to quit?"));
+	}
 }
