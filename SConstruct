@@ -322,7 +322,7 @@ env.PrependENVPath('LD_LIBRARY_PATH', env["boostlibdir"])
 
 # Some tests require at least C++11
 if "gcc" in env["TOOLS"]:
-    env.AppendUnique(CCFLAGS = Split("-W -Wall"), CFLAGS = ["-std=c99"])
+    env.AppendUnique(CCFLAGS = Split("-Wall -Wextra -Werror=non-virtual-dtor"), CFLAGS = ["-std=c99"])
     env.AppendUnique(CXXFLAGS = "-std=c++" + env["cxx_std"])
 
 if env["prereqs"]:
@@ -470,12 +470,18 @@ for env in [test_env, client_env, env]:
 
     env.Append(CPPDEFINES = ["HAVE_CONFIG_H"])
 
+    if "clang" in env["CXX"]:
+# Silence warnings about unused -I options and unknown warning switches.
+        env.AppendUnique(CCFLAGS = Split("-Qunused-arguments -Wno-unknown-warning-option"))
+        if env['strict']:
+            env.AppendUnique(CCFLAGS = Split("-Wmismatched-tags -Wno-conditional-uninitialized"))
+
     if "gcc" in env["TOOLS"]:
         if env['openmp']:
             env.AppendUnique(CXXFLAGS = ["-fopenmp"], LIBS = ["gomp"])
 
         if env['strict']:
-            env.AppendUnique(CCFLAGS = Split("-Werror $(-Wno-unused-local-typedefs$) $(-Wno-maybe-uninitialized$)"))
+            env.AppendUnique(CCFLAGS = Split("-Werror -Wno-unused-local-typedefs -Wno-maybe-uninitialized"))
             env.AppendUnique(CXXFLAGS = Split("-Wold-style-cast"))
         if env['sanitize']:
             env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
@@ -560,10 +566,6 @@ for env in [test_env, client_env, env]:
 # #
 # End setting options for profile build
 # #
-
-    if "clang" in env["CXX"]:
-        # Silence warnings about unused -I options and unknown warning switches.
-        env.AppendUnique(CCFLAGS = Split("-Qunused-arguments -Wno-unknown-warning-option -Werror=non-virtual-dtor"))
 
     if env['internal_data']:
         env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
