@@ -26,6 +26,7 @@
 #include "terrain/type_data.hpp"
 #include "tod_manager.hpp"
 #include "game_state.hpp"
+#include "surrender_confirmation.hpp"
 
 #include <set>
 
@@ -72,7 +73,7 @@ namespace wb {
 // Holds gamestate related objects
 class game_state;
 
-class play_controller : public controller_base, public events::observer, public quit_confirmation
+class play_controller : public controller_base, public events::observer, public quit_confirmation, public surrender_confirmation
 {
 public:
 	play_controller(const config& level, saved_game& state_of_game,

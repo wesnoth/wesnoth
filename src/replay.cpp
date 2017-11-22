@@ -226,6 +226,12 @@ void replay::add_start()
 	cmd.add_child("start");
 }
 
+void replay::add_surrender(int side_number)
+{
+	config& cmd = add_command();
+	cmd.add_child("surrender")["side_number"] = side_number;
+}
+
 void replay::add_countdown_update(int value, int team)
 {
 	config& cmd = add_command();

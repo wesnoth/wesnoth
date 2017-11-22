@@ -136,6 +136,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	: controller_base(game_config)
 	, observer()
 	, quit_confirmation()
+	, surrender_confirmation()
 	, ticks_(SDL_GetTicks())
 	, tdata_(tdata)
 	, gamestate_()

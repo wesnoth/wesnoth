@@ -28,6 +28,7 @@
 #include "game_end_exceptions.hpp"
 #include "display.hpp"
 #include "quit_confirmation.hpp"
+#include "surrender_confirmation.hpp"
 #include "show_dialog.hpp"
 
 #include "utils/functional.hpp"
@@ -350,6 +351,9 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 			break;
 		case HOTKEY_QUIT_GAME:
 			quit_confirmation::quit_to_title();
+			break;
+		case HOTKEY_SURRENDER_GAME:
+			surrender_confirmation::surrender();
 			break;
 		default:
 			return false;

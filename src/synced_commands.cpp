@@ -681,3 +681,10 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_shroud, /*child*/, use_undo, /*show*/, /*e
 	return true;
 }
 
+SYNCED_COMMAND_HANDLER_FUNCTION(surrender, child, /*use_undo*/, /*show*/, /*error_handler*/)
+{
+	int side = child.get("side_number")->to_int();
+	resources::recorder->add_surrender(side);
+	return true;
+}
+
