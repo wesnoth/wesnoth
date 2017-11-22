@@ -21,14 +21,7 @@ that class. */
 
 #include <boost/version.hpp>
 
-/*
- * Earlier versions already have string_view, but fail to compile on some
- * compilers. The problem is that in string_view::at's ternary expression,
- * BOOST_THROW_EXCEPTION is not seen as a throw-expression. If a ternary branch
- * is not a throw-expression, it must be of the same type as the other branch,
- * necessitating the ', res[0]' workaround.
- */
-#if BOOST_VERSION >= 106400
+#if BOOST_VERSION > 106100
 
 /* Boost string_view is available, so we can just use it. */
 #include <boost/utility/string_view.hpp>
