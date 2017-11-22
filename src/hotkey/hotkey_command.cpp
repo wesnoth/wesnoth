@@ -22,6 +22,8 @@
 #include "log.hpp"
 #include "preferences/general.hpp"
 
+#include <array>
+
 static lg::log_domain log_config("config");
 #define ERR_G LOG_STREAM(err, lg::general())
 #define LOG_G LOG_STREAM(info, lg::general())
@@ -37,8 +39,14 @@ hk_scopes scope_game(1 << SCOPE_GAME);
 hk_scopes scope_editor(1 << SCOPE_EDITOR);
 hk_scopes scope_main(1 << SCOPE_MAIN_MENU);
 
-// This contains all static hotkeys
-hotkey_command_temp hotkey_list_[] {
+//
+// All static hotkeys.
+//
+// This array should always have the same number of entries as the HOTKEY_COMMAND enum.
+// Since HOTKEY_NULL is the last entry in said enum, we can use its index to dynamically
+// size the array.
+//
+std::array<hotkey_command_temp, HOTKEY_NULL - 1> hotkey_list_ {{
 	{ HOTKEY_SCROLL_UP, "scroll-up", N_("Scroll Up"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_SCROLL_DOWN, "scroll-down", N_("Scroll Down"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_SCROLL_LEFT, "scroll-left", N_("Scroll Left"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
@@ -272,9 +280,9 @@ hotkey_command_temp hotkey_list_[] {
 
 	//This list item must stay at the end since it is used as terminator for iterating.
 	{ HOTKEY_NULL, "null", N_("Unrecognized Command"), true, SCOPE_COUNT, HKCAT_PLACEHOLDER, "" }
-};
+}};
 
-std::set<HOTKEY_COMMAND> toggle_commands = {
+std::set<HOTKEY_COMMAND> toggle_commands {
 	HOTKEY_SCROLL_UP,
 	HOTKEY_SCROLL_DOWN,
 	HOTKEY_SCROLL_LEFT,
@@ -283,9 +291,9 @@ std::set<HOTKEY_COMMAND> toggle_commands = {
 
 // Contains copies of hotkey_list_ and all current active wml menu hotkeys
 // TODO: Maybe known_hotkeys is not a fitting name anymore.
-boost::ptr_vector<hotkey::hotkey_command> known_hotkeys;
+std::vector<hotkey::hotkey_command> known_hotkeys;
 
-// Index map for known_hotkeys. Since known_hotkeys begins with input_list_, they are also indexes for input_list_.
+// Index map for known_hotkeys. Since known_hotkeys begins with hotkey_list_, they are also indexes for hotkey_list_.
 std::map<std::string, size_t> command_map_;
 
 hk_scopes scope_active_(0);
@@ -342,7 +350,7 @@ const hotkey_command& get_hotkey_command(const std::string& command)
 	return known_hotkeys[command_map_[command]];
 }
 
-const boost::ptr_vector<hotkey_command>& get_hotkey_commands()
+const std::vector<hotkey_command>& get_hotkey_commands()
 {
 	return known_hotkeys;
 }
@@ -361,10 +369,12 @@ bool remove_wml_hotkey(const std::string& id)
 	} else {
 		LOG_G << "removing wml hotkey with id=" + id + "\n";
 
-		for(boost::ptr_vector<hotkey_command>::iterator itor = known_hotkeys.begin(); itor != known_hotkeys.end();
-				++itor) {
+		// Iterate in reverse since it's almost certain the appropriate hotkey will be near
+		// the end, since this function is used to removed WML hotkeys, which are added after
+		// the built-ins.
+		for(auto itor = known_hotkeys.rbegin(); itor != known_hotkeys.rend(); ++itor) {
 			if(itor->command == id) {
-				known_hotkeys.erase(itor);
+				known_hotkeys.erase(std::next(itor).base());
 				break;
 			}
 		}
@@ -372,7 +382,7 @@ bool remove_wml_hotkey(const std::string& id)
 		// command_map_ might be all wrong now, so we need to rebuild.
 		command_map_.clear();
 
-		for(size_t index = 0; index < known_hotkeys.size(); index++) {
+		for(size_t index = 0; index < known_hotkeys.size(); ++index) {
 			command_map_[known_hotkeys[index].command] = index;
 		}
 
@@ -399,8 +409,7 @@ void add_wml_hotkey(const std::string& id, const t_string& description, const co
 
 	DBG_G << "Added wml hotkey with id = '" << id << "' and description = '" << description << "'.\n";
 
-	known_hotkeys.push_back(new hotkey_command(
-		hotkey::HOTKEY_WML, id, description, false, false, scope_game, HKCAT_CUSTOM, t_string("")));
+	known_hotkeys.emplace_back(hotkey::HOTKEY_WML, id, description, false, false, scope_game, HKCAT_CUSTOM, t_string(""));
 
 	command_map_[id] = known_hotkeys.size() - 1;
 
@@ -415,6 +424,18 @@ void add_wml_hotkey(const std::string& id, const t_string& description, const co
 			ERR_CF << "failed to add default hotkey with id=" + id;
 		}
 	}
+}
+
+hotkey_command::hotkey_command(const hotkey_command_temp& temp_command)
+	: id(temp_command.id)
+	, command(temp_command.command)
+	, description(temp_command.description, "wesnoth-lib")
+	, hidden(temp_command.hidden)
+	, toggle(toggle_commands.count(temp_command.id) > 0)
+	, scope(temp_command.scope)
+	, category(temp_command.category)
+	, tooltip(temp_command.tooltip, "wesnoth-lib")
+{
 }
 
 hotkey_command::hotkey_command(hotkey::HOTKEY_COMMAND cmd,
@@ -474,8 +495,8 @@ const hotkey_command& hotkey_command::get_command_by_command(hotkey::HOTKEY_COMM
 
 const hotkey_command& get_hotkey_null()
 {
-	// it is the last entry in that array, and the indexes in hotkey_list_ and known_hotkeys are the same.
-	return known_hotkeys[sizeof(hotkey_list_) / sizeof(hotkey_list_[0]) - 1];
+	// It is the last entry in that array, and the indexes in hotkey_list_ and known_hotkeys are the same.
+	return known_hotkeys[hotkey_list_.size() - 1];
 }
 
 void delete_all_wml_hotkeys()
@@ -483,12 +504,7 @@ void delete_all_wml_hotkeys()
 	while(known_hotkeys.back().id == hotkey::HOTKEY_WML) {
 		command_map_.erase(known_hotkeys.back().command);
 
-		// according to some page in the Internet  .back() returns a reference not an iterator, so i use this.
-		boost::ptr_vector<hotkey_command>::iterator last_element = known_hotkeys.end();
-		--last_element;
-
-		// boost::ptr_vector<hotkey_command> will manage the deleting of the object for me.
-		known_hotkeys.erase(last_element);
+		known_hotkeys.pop_back();
 	}
 }
 
@@ -505,18 +521,20 @@ const std::string& get_tooltip(const std::string& command)
 
 void init_hotkey_commands()
 {
-	// the size value is just random set.
-	boost::ptr_vector<hotkey_command> known_hotkeys_temp(200);
-	known_hotkeys = known_hotkeys_temp;
+	known_hotkeys.clear();
+
+	// Reserve enough space for the built-in hotkeys and 20 extra spaces for WML hotkeys. This is
+	// to avoid reallocation of this huge vector when any of the latter are added. 20 is honestly
+	// overkill, since there's really no reason to ever have near that many hotkey-enabled WML menu
+	// items, but it doesn't cost us anything to have extra.
+	known_hotkeys.reserve(hotkey_list_.size() + 20);
 
 	size_t i = 0;
 	for(hotkey_command_temp& cmd : hotkey_list_) {
-		known_hotkeys.push_back(new hotkey_command(cmd.id, cmd.command, t_string(cmd.description, "wesnoth-lib"),
-				cmd.hidden, toggle_commands.count(cmd.id) > 0, cmd.scope, cmd.category,
-				t_string(cmd.tooltip, "wesnoth-lib")));
+		known_hotkeys.emplace_back(cmd);
 
 		command_map_[cmd.command] = i;
-		i++;
+		++i;
 	}
 }
 

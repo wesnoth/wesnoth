@@ -16,9 +16,10 @@
 
 #include "tooltips.hpp"
 #include "tstring.hpp"
-#include <boost/ptr_container/ptr_vector.hpp>
 
 #include <bitset>
+#include <vector>
+
 class config;
 
 namespace hotkey {
@@ -207,56 +208,79 @@ enum HOTKEY_CATEGORY {
 
 typedef std::bitset<SCOPE_COUNT> hk_scopes;
 
-/// Stores all information related to functions that can be bound to hotkeys.
-/// this is currently a semi struct: it haves a constructor, but only const-public members.
-struct hotkey_command {
-public:
-	hotkey_command() = delete;
-	hotkey_command(HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, bool toggle, hk_scopes scope, HOTKEY_CATEGORY category, const t_string& tooltip);
-	/// the names are strange: the "hotkey::HOTKEY_COMMAND" is named id, and the string to identify the object is called "command"
-	/// there is some inconstancy with that names in this file.
-	/// This binds the command to a function. Does not need to be unique.
-	const HOTKEY_COMMAND id;
-	/// The command is unique.
-	const std::string command;
-	// since the wml_menu hotkey_command s can have different textdomains we need t_string now.
-	const t_string description;
-	/// If hidden then don't show the command in the hotkey preferences.
-	const bool hidden;
-	/// Toggle hotkeys have some restrictions on what can be bound to them.
-	/// They require a binding that has two states, "pressed" and "released".
-	const bool toggle;
-	/// The visibility scope of the command.
-	const hk_scopes scope;
-	/// The category of the command.
-	const HOTKEY_CATEGORY category;
-
-	const t_string tooltip;
-
-	/// checks weather this is the null hotkey_command
-	bool null() const;
-	/// returns the command that is treated as null
-	static const hotkey_command& null_command();
-	/// the execute_command argument was changed from HOTKEY_COMMAND to hotkey_command,
-	/// to be able to call it with HOTKEY_COMMAND, this function was created
-	static const hotkey_command& get_command_by_command(HOTKEY_COMMAND command);
-};
-
 /// Do not use this outside hotkeys.cpp.
 /// hotkey_command uses t_string which might cause bugs when used at program startup, so use this for the hotkey_list_ (and only there).
-struct hotkey_command_temp {
+struct hotkey_command_temp
+{
 	HOTKEY_COMMAND id;
 
-	const char* command;
+	std::string command;
+
 	/// description, tooltip are untranslated
-	const char* description;
+	std::string description;
 
 	bool hidden;
 
 	hk_scopes scope;
 	HOTKEY_CATEGORY category;
 
-	const char* tooltip;
+	std::string tooltip;
+};
+
+/// Stores all information related to functions that can be bound to hotkeys.
+/// this is currently a semi struct: it haves a constructor, but only const-public members.
+struct hotkey_command
+{
+	hotkey_command() = delete;
+
+	/** Constuct a new command from a temporary static hotkey object. */
+	hotkey_command(const hotkey_command_temp& temp_command);
+
+	hotkey_command(HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, bool toggle, hk_scopes scope, HOTKEY_CATEGORY category, const t_string& tooltip);
+
+	/** Needed for vector::erase. */
+	hotkey_command(hotkey_command&&) = default;
+	hotkey_command& operator=(hotkey_command&&) = default;
+
+	/** This shouldn't be copyable. */
+	hotkey_command(const hotkey_command&) = delete;
+	hotkey_command& operator=(const hotkey_command&) = default;
+
+	/// the names are strange: the "hotkey::HOTKEY_COMMAND" is named id, and the string to identify the object is called "command"
+	/// there is some inconstancy with that names in this file.
+	/// This binds the command to a function. Does not need to be unique.
+	HOTKEY_COMMAND id;
+
+	/// The command is unique.
+	std::string command;
+
+	// since the wml_menu hotkey_command s can have different textdomains we need t_string now.
+	t_string description;
+
+	/// If hidden then don't show the command in the hotkey preferences.
+	bool hidden;
+
+	/// Toggle hotkeys have some restrictions on what can be bound to them.
+	/// They require a binding that has two states, "pressed" and "released".
+	bool toggle;
+
+	/// The visibility scope of the command.
+	hk_scopes scope;
+
+	/// The category of the command.
+	HOTKEY_CATEGORY category;
+
+	t_string tooltip;
+
+	/// checks weather this is the null hotkey_command
+	bool null() const;
+
+	/// returns the command that is treated as null
+	static const hotkey_command& null_command();
+
+	/// the execute_command argument was changed from HOTKEY_COMMAND to hotkey_command,
+	/// to be able to call it with HOTKEY_COMMAND, this function was created
+	static const hotkey_command& get_command_by_command(HOTKEY_COMMAND command);
 };
 
 class scope_changer {
@@ -266,10 +290,10 @@ public:
 private:
 	hk_scopes prev_scope_active_;
 };
-typedef boost::ptr_vector<hotkey_command> hotkey_command_list;
+
 /// returns a container that contains all currently active hotkey_commands.
 /// everything that wants a hotkey, must be in this container.
-const boost::ptr_vector<hotkey_command>& get_hotkey_commands();
+const std::vector<hotkey_command>& get_hotkey_commands();
 
 /// returns the hotkey_command with the given name
 const hotkey_command& get_hotkey_command(const std::string& command);

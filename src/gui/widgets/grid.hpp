@@ -16,6 +16,8 @@
 
 #include "gui/widgets/widget.hpp"
 
+#include <cassert>
+
 namespace gui2
 {
 
