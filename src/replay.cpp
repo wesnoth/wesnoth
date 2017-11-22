@@ -226,6 +226,12 @@ void replay::add_start()
 	cmd.add_child("start");
 }
 
+void replay::add_surrender(int side_number)
+{
+	config& cmd = add_nonundoable_command();
+	cmd.add_child("surrender")["side_number"] = side_number;
+}
+
 void replay::add_countdown_update(int value, int team)
 {
 	config& cmd = add_command();
@@ -731,6 +737,10 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 						preferences::message_bell());
 				}
 			}
+		}
+		else if (cfg->child("surrender"))
+		{
+			//prevent sending of a synced command for surrender
 		}
 		else if (const config &label_config = cfg->child("label"))
 		{
