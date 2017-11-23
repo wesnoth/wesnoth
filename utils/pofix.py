@@ -91,9 +91,8 @@ game_stringfixes = {
 ("Second, who you most", "Second, whom you most"),
 # fix added in 1.11.16+dev
 ("Who then is your leader? Who do we serve?", "Who then is your leader? Whom do we serve?"),
-),
 # fix added in 1.13.10+dev
-("Then you should look to the north and east. But, if you would, might we ask your assistance.", "Then you should look to the north and east. But, if you would, might we ask your assistance?"),
+("might we ask your assistance.", "might we ask your assistance?"),
 ),
 
 "wesnoth-low" : (
