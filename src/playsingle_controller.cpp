@@ -72,7 +72,7 @@ playsingle_controller::playsingle_controller(const config& level,
 	, cursor_setter_(cursor::NORMAL)
 	, textbox_info_()
 	, replay_sender_(*resources::recorder)
-	, network_reader_([this](config& cfg) {return recieve_from_wesnothd(cfg);})
+	, network_reader_([this](config& cfg) {return receive_from_wesnothd(cfg);})
 	, turn_data_(replay_sender_, network_reader_)
 	, end_turn_(END_TURN_NONE)
 	, skip_next_turn_(false)

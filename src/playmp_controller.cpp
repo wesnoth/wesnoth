@@ -300,12 +300,12 @@ void playmp_controller::wait_for_upload()
 			}
 
 		} catch(const quit_game_exception&) {
-			network_reader_.set_source([this](config& cfg) { return recieve_from_wesnothd(cfg);});
+			network_reader_.set_source([this](config& cfg) { return receive_from_wesnothd(cfg);});
 			turn_data_.send_data();
 			throw;
 		}
 	}
-	network_reader_.set_source([this](config& cfg) { return recieve_from_wesnothd(cfg);});
+	network_reader_.set_source([this](config& cfg) { return receive_from_wesnothd(cfg);});
 }
 
 void playmp_controller::after_human_turn(){
@@ -492,7 +492,7 @@ void playmp_controller::send_to_wesnothd(const config& cfg, const std::string&) 
 		mp_info_->connection.send_data(cfg);
 	}
 }
-bool playmp_controller::recieve_from_wesnothd(config& cfg) const
+bool playmp_controller::receive_from_wesnothd(config& cfg) const
 {
 	if (mp_info_ != nullptr) {
 		return mp_info_->connection.receive_data(cfg);
