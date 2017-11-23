@@ -315,8 +315,8 @@ LEVEL_RESULT campaign_controller::play_game()
 		if(res == LEVEL_RESULT::QUIT) {
 			return res;
 		}
-		// proceed_to_next_level <=> 'any human side recieved victory'
-		// If 'any human side recieved victory' we do the Save-management options
+		// proceed_to_next_level <=> 'any human side received victory'
+		// If 'any human side received victory' we do the Save-management options
 		// Otherwise we are done now
 		if(!end_level.proceed_to_next_level) {
 			return res;

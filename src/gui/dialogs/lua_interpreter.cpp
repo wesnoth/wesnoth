@@ -143,7 +143,7 @@ public:
 		//DBG_LUA << "incoming:\n" << lk.get_log().rdbuf() << "\n.\n";
 		log_ << lk.get_log().str() << std::flush;
 		L_.set_external_log([this](const std::string & str) { this->log_function(str); }); //register our log to get commands and output from the lua interpreter
-		//DBG_LUA << "recieved:\n" << log_.str() << "\n.\n";
+		//DBG_LUA << "received:\n" << log_.str() << "\n.\n";
 
 		DBG_LUA << "finished constructing a lua_interpreter::model\n";
 	}
