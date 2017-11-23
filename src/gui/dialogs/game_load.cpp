@@ -225,7 +225,7 @@ void game_load::display_savegame(window& window)
 	replay_toggle.set_value(is_replay);
 	replay_toggle.set_active(!is_replay && !is_scenario_start);
 
-	// Cancel orders doesnt make sense on replay saves or start-of-scenario saves
+	// Cancel orders doesn't make sense on replay saves or start-of-scenario saves
 	cancel_orders_toggle.set_active(!is_replay && !is_scenario_start);
 
 	// Changing difficulty doesn't make sense on non-start-of-scenario saves

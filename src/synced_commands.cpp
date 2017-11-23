@@ -58,7 +58,7 @@ synced_command::synced_command(const std::string & tag, handler function)
 
 synced_command::map& synced_command::registry()
 {
-	//Use a pointer to ensure that this object is not destructed when the programm ends.
+	//Use a pointer to ensure that this object is not destructed when the program ends.
 	static map* instance = new map();
 	return *instance;
 }
@@ -75,7 +75,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
 	if ( !from.valid() ) {
 		// This will be the case for AI recruits in replays saved
 		// before 1.11.2, so it is not more severe than a warning.
-		// EDIT:  we borke compability with 1.11.2 anyway so we should give an error.
+		// EDIT: we broke compability with 1.11.2 anyway so we should give an error.
 		error_handler("Missing leader location for recruitment.\n", false);
 	}
 	else if ( resources::gameboard->units().find(from) == resources::gameboard->units().end() ) {
@@ -359,7 +359,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child,  use_undo, /*show*/, /*error
 
 	bool active = child["active"].to_bool();
 	// We cannot update shroud here like 'if(active) resources::undo_stack->commit_vision();'.
-	// Becasue the undo.cpp code assumes exactly 1 entry in the undo stack per entry in the replay.
+	// because the undo.cpp code assumes exactly 1 entry in the undo stack per entry in the replay.
 	// And doing so would create a second entry in the undo stack for this 'auto_shroud' entry.
 	current_team.set_auto_shroud_updates(active);
 	resources::undo_stack->add_auto_shroud(active);
@@ -372,7 +372,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child,  use_undo, /*show*/, /*error
  * This may fire events and change the game state.
  * @param[in]  is_replay  Set to true when this is called during a replay.
  *
- * this means it ia synced command liek any other.
+ * This means it is a synced command like any other.
  */
 
 SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/,  use_undo, /*show*/, error_handler)

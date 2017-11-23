@@ -226,7 +226,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			resources::gameboard->side_drop_to(side_drop, ctrl);
 			return restart ? PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 		}
-		//null controlled side cannot be dropped becasue they aren't controlled by anyone.
+		//null controlled side cannot be dropped because they aren't controlled by anyone.
 		else if (ctrl != team::CONTROLLER::HUMAN) {
 			ERR_NW << "unknown controller type issued from server on side drop: " << ctrl.to_cstring() << std::endl;
 			throw ingame_wesnothd_error("");

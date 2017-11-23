@@ -179,7 +179,7 @@ private:
 	bool use_wml_menu_;
 
 	/**
-	 * If true, this item will be sended ot ther clients.
+	 * If true, this item will be sent ot ther clients.
 	 * The command shall not change the gamestate if !is_synced_
 	 */
 	bool is_synced_;

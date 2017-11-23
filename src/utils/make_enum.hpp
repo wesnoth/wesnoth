@@ -289,7 +289,7 @@ private: \
 	/*prevent automatic conversion for any other built-in types such as bool, int, etc*/ \
 	/*template<typename T> \
 	operator T () const; */\
-	/* For some unknown reason the following version doesnt compile: */ \
+	/* For some unknown reason the following version doesn't compile: */ \
 	/* template<typename T, typename = typename boost::enable_if<Cond>::type> \
 	operator T(); */\
 };

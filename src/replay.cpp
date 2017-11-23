@@ -187,7 +187,7 @@ void replay::delete_upcoming_commands()
 /*
 	TODO: there should be different types of OOS messages:
 		1)the normal OOS message
-		2) the 'is guarenteed you'll get an assertion error after this and therefore you cannot continur' OOS message
+		2) the 'is guaranteed you'll get an assertion error after this and therefore you cannot continue' OOS message
 		3) the 'do you want to overwrite calculated data with the data stored in replay' OOS error message.
 
 */
@@ -492,7 +492,7 @@ void replay::undo_cut(config& dst)
 	int cmd_index = ncommands() - 1;
 	for (; cmd_index >= 0; --cmd_index)
 	{
-		//"undo"=no means speak/label/remove_label, especialy attack, recruits etc. have "undo"=yes
+		//"undo"=no means speak/label/remove_label, especially attack, recruits etc. have "undo"=yes
 		//"async"=yes means rename_unit
 		//"dependent"=true means user input
 		const config &c = command(cmd_index);
@@ -544,7 +544,7 @@ void replay::undo_cut(config& dst)
 		}
 		else
 		{
-			ERR_REPLAY << "Coudn't handle command:\n" << cc << "\nwhen undoing.\n";
+			ERR_REPLAY << "Couldn't handle command:\n" << cc << "\nwhen undoing.\n";
 		}
 	}
 	set_to_end();
@@ -852,10 +852,10 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				LOG_REPLAY << "found commandname " << commandname << "in replay";
 
 				if((*cfg)["from_side"].to_int(0) != resources::controller->current_side()) {
-					ERR_REPLAY << "recieved a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Expacted was a [command] from side " << resources::controller->current_side() << "\n";
+					ERR_REPLAY << "received a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Expacted was a [command] from side " << resources::controller->current_side() << "\n";
 				}
 				else if((*cfg)["side_invalid"].to_bool(false)) {
-					ERR_REPLAY << "recieved a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Sent from wrong client.\n";
+					ERR_REPLAY << "received a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Sent from wrong client.\n";
 				}
 				/*
 					we need to use the undo stack during replays in order to make delayed shroud updated work.

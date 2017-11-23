@@ -863,7 +863,7 @@ bool game::is_legal_command(const simple_wml::node& command, const socket_ptr us
 	if(is_current) return true;
 	// Only single commands allowed.
 	// NOTE: some non-dependent commands like move,attack.. might contain a [checkup] tag after their first data.
-	// But those packages are only sended by the currently active player which we check above.
+	// But those packages are only sent by the currently active player which we check above.
 	if (!command.one_child()) return false;
 	// Chatting is never an illegal command.
 	if (command.child("speak")) return true;
@@ -898,7 +898,7 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr user) {
 	const simple_wml::node::child_list& commands = turn->children("command");
 	simple_wml::node::child_list::const_iterator command;
 	for (command = commands.begin(); command != commands.end(); ++command) {
-		DBG_GAME << "game " << id_ << " recieved ["  << (**command).first_child() << "] from player '" << username(user) << "'(" << user << ") during turn " << end_turn_ << "\n";
+		DBG_GAME << "game " << id_ << " received ["  << (**command).first_child() << "] from player '" << username(user) << "'(" << user << ") during turn " << end_turn_ << "\n";
 		if (!is_legal_command(**command, user)) {
 			LOG_GAME << "ILLEGAL COMMAND in game: " << id_ << " ((("
 				<< simple_wml::node_to_string(**command) << ")))\n";
@@ -1049,7 +1049,7 @@ void game::handle_controller_choice(const simple_wml::node& req)
 	command.set_attr("from_side", "server");
 	command.set_attr("dependent", "yes");
 	if(sides_[side_index] != 0) {
-		//calling send_to_one to 0 connect causes the package to be sended to all clients.
+		//calling send_to_one to 0 connect causes the package to be sent to all clients.
 		send_to_player(sides_[side_index], *mdata);
 	}
 	change_controller_wml.set_attr("is_local", "no");
@@ -1533,7 +1533,7 @@ void game::save_replay() {
 		replay_data << level_.output()
 		//This can result in having 2 [replay] at toplevel since level_ can contain one already. But the client can handle this (simply merges them).
 		<< "[replay]\n"
-		//The [start] is generated at the clients and not sended over the network so we add it here.
+		//The [start] is generated at the clients and not sent over the network so we add it here.
 		//It usualy contains some checkup data that is used to check whether the calculated results
 		//match the ones calculated in the replay. But thats not necessary
 		<< (has_old_replay ? "" : "\t[command]\n\t\t[start]\n\t\t[/start]\n\t[/command]\n")

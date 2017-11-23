@@ -214,7 +214,7 @@ void playsingle_controller::play_scenario_main_loop()
 			//
 			boost::dynamic_bitset<> local_players;
 			local_players.resize(gamestate().board_.teams().size(), true);
-			//Preserve side controllers, becasue we won't get the side controoller updates again when replaying.
+			//Preserve side controllers, because we won't get the side controoller updates again when replaying.
 			for(size_t i = 0; i < local_players.size(); ++i) {
 				local_players[i] = gamestate().board_.teams()[i].is_local();
 			}
@@ -652,7 +652,7 @@ void playsingle_controller::sync_end_turn()
 	assert(synced_context::synced_state() == synced_context::UNSYNCED);
 	if(end_turn_ == END_TURN_REQUIRED && current_team().is_local())
 	{
-		//TODO: we shodul also send this immideateley.
+		//TODO: we should also send this immediately.
 		resources::recorder->end_turn();
 		end_turn_ = END_TURN_SYNCED;
 	}
@@ -686,7 +686,7 @@ void playsingle_controller::reset_replay()
 		throw reset_gamestate_exception(replay_->get_reset_state(), false);
 	}
 	else {
-		ERR_NG << "recieved invalid reset replay\n";
+		ERR_NG << "received invalid reset replay\n";
 	}
 }
 

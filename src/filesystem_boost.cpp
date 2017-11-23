@@ -139,7 +139,7 @@ namespace {
 			throw "Not supported";
 		}
 
-		//there are still some methods which could be implemented but arent because boost filesystem won't use them.
+		//there are still some methods which could be implemented but aren't because boost filesystem won't use them.
 		std::codecvt_base::result do_in( std::mbstate_t& state,
 			const char* from,
 			const char* from_end,
@@ -187,7 +187,7 @@ namespace {
 		static_runner() {
 			// Boost uses the current locale to generate a UTF-8 one
 			std::locale utf8_loc = boost::locale::generator().generate("");
-			// use a custom locale becasue we want to use out log.hpp functions in case of an invalid string.
+			// use a custom locale because we want to use out log.hpp functions in case of an invalid string.
 			utf8_loc = std::locale(utf8_loc, new customcodecvt());
 			boost::filesystem::path::imbue(utf8_loc);
 		}
@@ -809,7 +809,7 @@ filesystem::scoped_istream istream_file(const std::string &fname, bool treat_fai
 	}
 
 	//mingw doesn't  support std::basic_ifstream::basic_ifstream(const wchar_t* fname)
-	//that why boost::filesystem::fstream.hpp doesnt work with mingw.
+	//that why boost::filesystem::fstream.hpp doesn't work with mingw.
 	try
 	{
 		boost::iostreams::file_descriptor_source fd(bfs::path(fname), std::ios_base::binary);
@@ -847,7 +847,7 @@ filesystem::scoped_ostream ostream_file(const std::string& fname, bool create_di
 	}
 	catch(BOOST_IOSTREAMS_FAILURE& e)
 	{
-		// If this operation failed because the parent directoy didn't exist, create the parent directoy and retry.
+		// If this operation failed because the parent directory didn't exist, create the parent directory and retry.
 		error_code ec_unused;
 		if(create_directory && bfs::create_directories(bfs::path(fname).parent_path(), ec_unused))
 		{
@@ -1206,9 +1206,9 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 
 std::string get_binary_file_location(const std::string& type, const std::string& filename)
 {
-	// We define ".." as "remove everything before" this is needed becasue
+	// We define ".." as "remove everything before" this is needed because
 	// on the one hand allowing ".." would be a security risk but
-	// especialy for terrains the c++ engine puts a hardcoded "terrain/" before filename
+	// especially for terrains the c++ engine puts a hardcoded "terrain/" before filename
 	// and there would be no way to "escape" from "terrain/" otherwise. This is not the
 	// best solution but we cannot remove it without another solution (subtypes maybe?).
 

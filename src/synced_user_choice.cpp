@@ -104,11 +104,11 @@ std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &
 	//pass sides by copy because we need a copy.
 	const bool is_synced = synced_context::is_synced();
 	const int max_side  = static_cast<int>(resources::gameboard->teams().size());
-	//we currently don't check for too early because luas sync choice doesn't necessarily show screen dialogs.
+	//we currently don't check for too early because lua's sync choice doesn't necessarily show screen dialogs.
 	//It (currently) in the responsibility of the user of sync choice to not use dialogs during prestart events..
 	if(!is_synced)
 	{
-		//we got called from inside luas wesnoth.synchronize_choice or from a select event.
+		//we got called from inside lua's wesnoth.synchronize_choice or from a select event.
 		replay::process_error("MP synchronization only works in a synced context (for example Select or preload events are no synced context).\n");
 		return std::map<int,config>();
 	}
@@ -155,7 +155,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 
 	if(!is_synced)
 	{
-		//we got called from inside luas wesnoth.synchronize_choice or from a select event (or maybe a preload event?).
+		//we got called from inside lua's wesnoth.synchronize_choice or from a select event (or maybe a preload event?).
 		//This doesn't cause problems and someone could use it for example to use a [message][option] inside a wesnoth.synchronize_choice which could be useful,
 		//so just give a warning.
 		LOG_REPLAY << "MP synchronization called during an unsynced context.\n";
@@ -171,7 +171,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 	}
 	//in start events it's unclear to decide on which side the function should be executed (default= side1 still).
 	//But for advancements we can just decide on the side that owns the unit and that's in the responsibility of advance_unit_at.
-	//For [message][option] and luas sync_choice the scenario designer is responsible for that.
+	//For [message][option] and lua's sync_choice the scenario designer is responsible for that.
 	//For [get_global_variable] side is never null.
 
 	/*
@@ -277,7 +277,7 @@ void user_choice_manager::search_in_replay()
 		int from_side = (*action)["from_side"].to_int(0);
 		if((*action)["side_invalid"].to_bool(false) == true)
 		{
-			//since this 'cheat' can have a quite heavy effect especialy in umc content we give an oos error .
+			//since this 'cheat' can have a quite heavy effect especially in umc content we give an oos error .
 			replay::process_error("MP synchronization: side_invalid in replay data, this could mean someone wants to cheat.\n");
 		}
 		if(required_.find(from_side) == required_.end())
@@ -343,14 +343,14 @@ void user_choice_manager::ask_local_choice()
 	if(res_.find(local_choice_) != res_.end()) {
 		// It might be possible that we this choice was already made by another client while we were in uch_.query_user
 		// becase our side might be ressigned while we made our choice.
-		WRN_REPLAY << "Discarding a local choice becasue we found it already on the replay";
+		WRN_REPLAY << "Discarding a local choice because we found it already on the replay";
 		return;
 	}
 	resources::recorder->user_input(tagname_, cfg, local_choice_);
 	res_[local_choice_] = cfg;
 
 	//send data to others.
-	//but if there wasn't any data sended during this turn, we don't want to bein wth that now.
+	//but if there wasn't any data sent during this turn, we don't want to bein wth that now.
 	//TODO: we should send user choices during nonundoable actions immideatley.
 	if(synced_context::is_simultaneously() || current_side_ != local_choice_)
 	{

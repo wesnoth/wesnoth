@@ -111,7 +111,7 @@ public:
 	*/
 	static std::shared_ptr<randomness::rng> get_rng_for_action();
 	/**
-		@return whether we already sended data about the current action to other clients. which means we cannot undo it.
+		@return whether we already sent data about the current action to other clients. which means we cannot undo it.
 		returns is_simultaneously_
 	*/
 	static bool is_simultaneously();
@@ -136,7 +136,7 @@ public:
 		virtual ~server_choice(){}
 		/// We are in a game with no mp server and need to do this choice locally
 		virtual config local_choice() const = 0;
-		/// the request which is sended to the mp server.
+		/// the request which is sent to the mp server.
 		virtual config request() const = 0;
 		virtual const char* name() const = 0;
 		void send_request() const;
@@ -157,9 +157,9 @@ private:
 	static synced_state state_;
 	/*
 		As soon as get_user_choice is used with side != current_side (for example in generate_random_seed) other sides execute the command simultaneously and is_simultaneously is set to true.
-		It's impossible to undo data that has been sended over the network.
+		It's impossible to undo data that has been sent over the network.
 
-		false = we are on a local turn and haven't sended anything yet.
+		false = we are on a local turn and haven't sent anything yet.
 
 		TODO: it would be better if the following variable were not static.
 	*/
@@ -169,7 +169,7 @@ private:
 	*/
 	static int last_unit_id_;
 	/**
-		Actions wml to be executed when the current actio is undone.
+		Actions wml to be executed when the current action is undone.
 	*/
 	static event_list undo_commands_;
 };

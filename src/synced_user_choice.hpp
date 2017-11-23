@@ -32,7 +32,7 @@ struct user_choice
 	virtual ~user_choice() {}
 	virtual config query_user(int side) const = 0;
 	virtual config random_choice(int side) const = 0;
-	///whether the choice is visible for the user like an advacement choice
+	///whether the choice is visible for the user like an advancement choice
 	///a non-visible choice is for example get_global_variable
 	virtual bool is_visible() const { return true; }
 	virtual std::string description() const { return "input"; }
@@ -63,7 +63,7 @@ config get_user_choice(const std::string &name, const user_choice &uch,
 	int side = 0);
 /**
  * Performs a choice for mutiple sides for WML events.
- * uch is called on all sies specified in sides, this in done simulaniously on all those sides (or one after another if one client controlls mutiple sides)
+ * uch is called on all sides specified in sides, this in done simultaneously on all those sides (or one after another if one client controlls mutiple sides)
  * and after all calls are executed the results are returned.
  */
 std::map<int, config> get_user_choice_multiple_sides(const std::string &name, const user_choice &uch,
@@ -77,12 +77,12 @@ class user_choice_manager : events::pump_monitor
 	std::set<int> required_;
 	// The results
 	std::map<int, config> res_;
-	// The side for which we shoudl do a choice locally (0 if no suhc side exists)
-	// Note that even if there is currently no localy choice to do it is still possible that we need to do a local choice later becasue we took control over a side
+	// The side for which we should do a choice locally (0 if no such side exists)
+	// Note that even if there is currently no locally choice to do it is still possible that we need to do a local choice later because we took control over a side
 	int local_choice_;
 	// the message displayed for sides which currently don't have to do a choice.
 	std::string wait_message_;
-	// If we failed to read the remote choices this flag is when which indicated that we shoudl do all choices locally
+	// If we failed to read the remote choices this flag is when which indicated that we should do all choices locally
 	bool oos_;
 
 	const mp_sync::user_choice& uch_;

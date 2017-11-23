@@ -56,7 +56,7 @@ namespace
 	public:
 		static const std::string& name()
 		{
-			//Use pointers becasue we don't want it to be destructed at programm end.
+			//Use pointers because we don't want it to be destructed at program end.
 			static default_utf8_locale_name* lname = new default_utf8_locale_name();
 			return lname->name_;
 		}
@@ -67,7 +67,7 @@ namespace
 			LOG_G << "Generating default locale\n";
 			try
 			{
-				//NOTE: the default_locale objects needs to live as least as long as the locale_info object. Otherwise the programm will segfault.
+				//NOTE: the default_locale objects needs to live as least as long as the locale_info object. Otherwise the program will segfault.
 				std::locale default_locale = bl::generator().generate("");
 				const bl::info& locale_info = std::use_facet<bl::info>(default_locale);
 				name_ += locale_info.language();
@@ -412,7 +412,7 @@ void set_default_textdomain(const char* domain)
 
 void set_language(const std::string& language, const std::vector<std::string>* /*alternates*/)
 {
-	// why shoudl we need alternates? which languages we support shoudl only be related
+	// why should we need alternates? which languages we support should only be related
 	// to which languages we ship with and not which the os supports
 	LOG_G << "setting language to  '" << language << "' \n";
 	get_manager().set_language(language);

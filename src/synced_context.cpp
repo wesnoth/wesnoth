@@ -123,7 +123,7 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 	case(synced_context::LOCAL_CHOICE):
 		ERR_REPLAY << "trying to execute action while being in a local_choice" << std::endl;
 		//we reject it because such actions usually change the gamestate badly which is not intented during a local_choice.
-		//Also we cannot invoke synced commands here, becasue multiple clients might run local choices
+		//Also we cannot invoke synced commands here, because multiple clients might run local choices
 		//simultaniously so it could result in invoking different synced commands simultaniously.
 		return false;
 	case(synced_context::SYNCED):
@@ -186,7 +186,7 @@ namespace
 		{
 			return config {"new_seed", seed_rng::next_seed_str()};
 		}
-		/// the request which is sended to the mp server.
+		/// the request which is sent to the mp server.
 		virtual config request() const
 		{
 			return config();
@@ -225,7 +225,7 @@ bool synced_context::can_undo()
 {
 	//this method should only works in a synced context.
 	assert(is_synced());
-	//if we called the rng or if we sended data of this action over the network already, undoing is impossible.
+	//if we called the rng or if we sent data of this action over the network already, undoing is impossible.
 	return (!is_simultaneously_) && (randomness::generator->get_random_calls() == 0);
 }
 
@@ -319,7 +319,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 
 			//here we can get into the situation that the decision has already been made but not received yet.
 			synced_context::pull_remote_user_input();
-			//FIXME: we shoudl call play_controller::play_silce or the application will freeze while waiting for a remote choice.
+			//FIXME: we should call play_controller::play_silce or the application will freeze while waiting for a remote choice.
 			resources::controller->play_slice();
 			/*
 				we don't want to send multiple "require_random" to the server.

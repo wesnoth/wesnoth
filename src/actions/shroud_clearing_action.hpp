@@ -60,7 +60,7 @@ struct shroud_clearing_action
 	/// The number of the side that preivously owned the village that the unit stepped on
 	/// Note, that recruit/recall actions can also take a village if the unit was recruits/recalled onto a village.
 	int original_village_owner;
-	/// Whether this actions got a timebonus becasue it took a village.
+	/// Whether this actions got a timebonus because it took a village.
 	bool take_village_timebonus;
 
 	/// Change village owner on undo.

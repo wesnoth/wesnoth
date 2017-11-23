@@ -38,7 +38,7 @@ public:
 /**
 	This checkup compares whether the results calculated during the original game match the ones calculated during replay.
 	Whether this checkup also compares the calculated results of different clients in a a mp game depends on whether
-	there was already data sended about the current synced command.
+	there was already data sent about the current synced command.
 */
 class synced_checkup : public checkup
 {

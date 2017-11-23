@@ -28,7 +28,7 @@ syncmp_handler::~syncmp_handler()
 
 std::vector<syncmp_handler*>& syncmp_registry::handlers()
 {
-	//using pointer in order to prevent destruction at programm end. Although in this simple case it shouldn't matter.
+	//using pointer in order to prevent destruction at program end. Although in this simple case it shouldn't matter.
 	static handler_list* handlers_ = new handler_list();
 	return *handlers_;
 }
