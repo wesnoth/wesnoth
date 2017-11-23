@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2017-09-21 23:28+0300\n"
-"PO-Revision-Date: 2017-06-13 21:39+0200\n"
+"PO-Revision-Date: 2017-11-20 11:44+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -306,6 +306,9 @@ msgid ""
 "A welcome sight to any traveler, an oasis allows units to heal as if "
 "stationed in a village, but provides no income or defensive advantage."
 msgstr ""
+"Una agradable visión para cualquier viajero, un oasis permite a las unidades "
+"sanarse como si se encontraran en una aldea, pero no produce ingresos ni "
+"ventajas defensivas."
 
 #. [terrain_type]: id=sand_rubble
 #: data/core/terrain.cfg:332
@@ -581,17 +584,13 @@ msgstr "Montañas desérticas"
 
 #. [terrain_type]: id=regular_stone_floor
 #: data/core/terrain.cfg:812
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Stone Floor"
-msgstr "Suelo de madera"
+msgstr "Suelo de piedra"
 
 #. [terrain_type]: id=regular_stone_floor
 #: data/core/terrain.cfg:815
-#, fuzzy
-#| msgid "Basic Wooden Floor"
 msgid "Basic Stone Floor"
-msgstr "Suelo básico de madera"
+msgstr "Suelo básico de piedra"
 
 #. [terrain_type]: id=wood_floor
 #: data/core/terrain.cfg:822
@@ -834,10 +833,8 @@ msgstr "Muro blanco recto"
 
 #. [terrain_type]: id=wall_stone_clean
 #: data/core/terrain.cfg:1189
-#, fuzzy
-#| msgid "Stone Wall"
 msgid "Clean Stone Wall"
-msgstr "Muro de piedra"
+msgstr "Muro de piedra intacto"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -892,20 +889,16 @@ msgstr "Puerta de madera"
 #. [terrain_type]: id=portal_gate_rusty_open_n
 #: data/core/terrain.cfg:1286 data/core/terrain.cfg:1298
 #: data/core/terrain.cfg:1310
-#, fuzzy
-#| msgid "Rusty Gate"
 msgid "Open Rusty Gate"
-msgstr "Verja herrumbrosa"
+msgstr "Verja herrumbrosa abierta"
 
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
 #. [terrain_type]: id=portal_door_wooden_open_n
 #: data/core/terrain.cfg:1322 data/core/terrain.cfg:1334
 #: data/core/terrain.cfg:1346
-#, fuzzy
-#| msgid "Wooden Door"
 msgid "Open Wooden Door"
-msgstr "Puerta de madera"
+msgstr "Puerta de madera abierta"
 
 #. [terrain_type]: id=p_open_rusty
 #: data/core/terrain.cfg:1390
@@ -1170,10 +1163,8 @@ msgstr "Campamento"
 
 #. [terrain_type]: id=encampment_ruin
 #: data/core/terrain.cfg:1881
-#, fuzzy
-#| msgid "Aquatic Encampment"
 msgid "Ruined Encampment"
-msgstr "Campamento acuático"
+msgstr "Campamento en ruinas"
 
 #. [terrain_type]: id=encampment_snow
 #: data/core/terrain.cfg:1893
@@ -1284,10 +1275,8 @@ msgstr "Tienda de campamento"
 
 #. [terrain_type]: id=encampment_ruin_keep
 #: data/core/terrain.cfg:2079
-#, fuzzy
-#| msgid "Encampment Keep"
 msgid "Ruined Encampment Keep"
-msgstr "Tienda de campamento"
+msgstr "Torreón de campamento en ruinas"
 
 #. [terrain_type]: id=encampment_keep_tall
 #: data/core/terrain.cfg:2092
@@ -2434,27 +2423,23 @@ msgstr "Jugar una campaña"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:217
-#, fuzzy
-#| msgid "Sort players:"
 msgid "Sort by:"
-msgstr "Ordenar jugadores:"
+msgstr "Ordenado por:"
 
 #. [toggle_button]: id=sort_name
 #: data/gui/window/campaign_dialog.cfg:230
 msgid "Sort by full campaign name in alphabetical order"
-msgstr ""
+msgstr "Ordenar alfabéticamente por el nombre completo de la campaña"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:242
-#, fuzzy
-#| msgid "Date"
 msgid "Dates"
-msgstr "Fecha"
+msgstr "Fechas"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:243
 msgid "Sort in approximate chronological order of story events"
-msgstr ""
+msgstr "Ordenar por el orden cronológico aproximado de los eventos históricos"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:279
@@ -4368,14 +4353,6 @@ msgstr "Multijugador"
 # Por favor, no eliminar la coletilla "(Sólo en inglés)"
 #. [text_box]: id=user_name
 #: data/gui/window/mp_method_selection.cfg:92
-#, fuzzy
-#| msgid ""
-#| "You may login to the official multiplayer server with your forum username "
-#| "and password.\n"
-#| "Note that registration is not required to join the server: you need to "
-#| "supply a password only if you wish to use a registered username.\n"
-#| "\n"
-#| "The Battle for Wesnoth forum can be found at http://forums.wesnoth.org/"
 msgid ""
 "You may login to the official multiplayer server with your forum username "
 "and password.\n"
@@ -4384,13 +4361,13 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at https://forums.wesnoth.org/"
 msgstr ""
-"Puede unirse al servidor multijugador oficial con su nombre de usuario y "
+"Podría acceder al servidor multijugador oficial con su nombre de usuario y "
 "contraseña del foro.\n"
-"No obstante, registrarse no es necesario para unirse al servidor. Sólo "
-"necesita proveer una contraseña, si desea utilizar un nombre de usuario "
+"No obstante, registrarse no es necesario para unirse al servidor: sólo "
+"necesita dar una contraseña si desea utilizar un nombre de usuario "
 "registrado.\n"
 "\n"
-"El foro de «La batalla por Wesnoth» se encuentra en http://forums.wesnoth."
+"El foro de «La batalla por Wesnoth» se encuentra en https://forums.wesnoth."
 "org/ (sólo en inglés)."
 
 #. [column]
@@ -5605,10 +5582,8 @@ msgid "addons_view^Upgradable"
 msgstr "Actualizable"
 
 #: src/gui/dialogs/addon/manager.cpp:217
-#, fuzzy
-#| msgid "addons_view^Installed"
 msgid "addons_view^Publishable"
-msgstr "Instalado"
+msgstr "Publicable"
 
 #: src/gui/dialogs/addon/manager.cpp:218
 msgid "addons_view^Not Installed"
