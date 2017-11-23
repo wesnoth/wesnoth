@@ -103,29 +103,32 @@ local function generate_objectives(cfg)
 	end
 
 	for obj in helper.child_range(cfg, "gold_carryover") do
-		local gold_carryover_bullet = obj.bullet or bullet
-		local r = obj.red or 255
-		local g = obj.green or 255
-		local b = obj.blue or 192
+		local show_if = helper.get_child(obj, "show_if")
+		if not show_if or wesnoth.eval_conditional(show_if) then
+			local gold_carryover_bullet = obj.bullet or bullet
+			local r = obj.red or 255
+			local g = obj.green or 255
+			local b = obj.blue or 192
 
-		if obj.bonus ~= nil then
-			if obj.bonus then
-				gold_carryover = color_prefix(r, g, b) .. gold_carryover_bullet .. "<small>" .. _"Early finish bonus." .. "</small></span>\n"
-			else
-				gold_carryover = color_prefix(r, g, b) .. gold_carryover_bullet .. "<small>" .. _"No early finish bonus." .. "</small></span>\n"
-			end
-		end
-
-		if obj.carryover_percentage then
-			local carryover_amount_string = ""
-
-			if obj.carryover_percentage == 0 then
-				carryover_amount_string = _"No gold carried over to the next scenario."
-			else
-				carryover_amount_string = string.format(tostring(_ "%d%% of gold carried over to the next scenario."), obj.carryover_percentage)
+			if obj.bonus ~= nil then
+				if obj.bonus then
+					gold_carryover = color_prefix(r, g, b) .. gold_carryover_bullet .. "<small>" .. _"Early finish bonus." .. "</small></span>\n"
+				else
+					gold_carryover = color_prefix(r, g, b) .. gold_carryover_bullet .. "<small>" .. _"No early finish bonus." .. "</small></span>\n"
+				end
 			end
 
-			gold_carryover = gold_carryover .. color_prefix(r, g, b) .. gold_carryover_bullet .. "<small>" .. carryover_amount_string .. "</small></span>\n"
+			if obj.carryover_percentage then
+				local carryover_amount_string = ""
+
+				if obj.carryover_percentage == 0 then
+					carryover_amount_string = _"No gold carried over to the next scenario."
+				else
+					carryover_amount_string = string.format(tostring(_ "%d%% of gold carried over to the next scenario."), obj.carryover_percentage)
+				end
+
+				gold_carryover = gold_carryover .. color_prefix(r, g, b) .. gold_carryover_bullet .. "<small>" .. carryover_amount_string .. "</small></span>\n"
+			end
 		end
 	end
 
