@@ -539,23 +539,23 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-generate=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags generating PGO data" FORCE)
 		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-generate=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags generating PGO data" FORCE)
 	endif()
-	
+
 	if(PGO_DATA STREQUAL "use")
 		MESSAGE("Using PGO data from previous runs")
 		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-correction -fprofile-use=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags for using PGO data" FORCE)
 		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-correction -fprofile-use=${CMAKE_SOURCE_DIR}/pgo_data/" CACHE STRING "Release build flags for using PGO data" FORCE)
 	endif()
-	
+
 	if(ENABLE_LTO)
 		if(NOT LTO_JOBS)
 			MESSAGE("LTO_JOBS not set, defaulting to 1")
 			set(LTO_JOBS "1" CACHE STRING "Number of threads to use for LTO with gcc" FORCE)
 		endif(NOT LTO_JOBS)
-		
+
 		MESSAGE("added -flto=${LTO_JOBS} to Release build")
 		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto=${LTO_JOBS}" CACHE STRING "Release build flags with LTO" FORCE)
 		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto=${LTO_JOBS}" CACHE STRING "Release build flags with LTO" FORCE)
-		
+
 		MESSAGE("Using GCC gold linker")
 		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -fuse-ld=gold" CACHE STRING "" FORCE)
 	endif(ENABLE_LTO)
@@ -568,18 +568,18 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-instr-generate=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth-%p.profraw" CACHE STRING "Release build flags generating PGO data" FORCE)
 		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-instr-generate=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth-%p.profraw" CACHE STRING "Release build flags generating PGO data" FORCE)
 	endif()
-	
+
 	if(PGO_DATA STREQUAL "use")
 		MESSAGE("Using PGO data from previous runs")
 		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fprofile-instr-use=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth.profdata" CACHE STRING "Release build flags for using PGO data" FORCE)
 		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -fprofile-instr-use=${CMAKE_SOURCE_DIR}/pgo_data/wesnoth.profdata" CACHE STRING "Release build flags for using PGO data" FORCE)
 	endif()
-	
+
 	if(ENABLE_LTO)
 		MESSAGE("added -flto=thin to Release build")
 		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -flto=thin" CACHE STRING "Release build flags with LTO" FORCE)
 		set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -flto=thin" CACHE STRING "Release build flags with LTO" FORCE)
-		
+
 		MESSAGE("Using Clang LLD linker")
 		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -fuse-ld=lld" CACHE STRING "Linker flag for building with LTO and clang" FORCE)
 	endif(ENABLE_LTO)
@@ -712,7 +712,7 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 		find_package(VorbisFile REQUIRED)
 		find_package( PkgConfig REQUIRED )
 		pkg_check_modules( CAIRO REQUIRED cairo>=1.10 )
-		pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.21.3 )
+		pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.36.8 )
 		pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.1 )
 		pkg_check_modules( SYSTEMD systemd )
 	endif(NOT MSVC)
@@ -751,7 +751,7 @@ if(ENABLE_GAME)
 	if(ENABLE_LIBPNG AND PNG_FOUND)
 		add_definitions(-DHAVE_LIBPNG)
 	else(ENABLE_LIBPNG AND PNG_FOUND)
-		message("Could not find lib PNG. Disabling support for writing PNG images.")	
+		message("Could not find lib PNG. Disabling support for writing PNG images.")
 	endif(ENABLE_LIBPNG AND PNG_FOUND)
 
 	find_package( History )

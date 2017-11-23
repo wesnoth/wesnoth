@@ -41,12 +41,7 @@
 namespace font {
 
 pango_text::pango_text()
-#if PANGO_VERSION_CHECK(1,22,0)
 	: context_(pango_font_map_create_context(pango_cairo_font_map_get_default()), g_object_unref)
-#else
-	: context_(pango_cairo_font_map_create_context((
-		reinterpret_cast<PangoCairoFontMap*>(pango_cairo_font_map_get_default()))), g_object_unref)
-#endif
 	, layout_(pango_layout_new(context_.get()), g_object_unref)
 	, rect_()
 	, sublayouts_()
