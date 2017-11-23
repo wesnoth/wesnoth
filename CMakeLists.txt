@@ -676,12 +676,12 @@ endif()
 add_definitions(-DFIFODIR="${FIFO_DIR}")
 
 if(PREFERENCES_DIR)
-	add_definitions(-DPREFERENCES_DIR="${PREFERENCES_DIR"})
+	add_definitions(-DPREFERENCES_DIR="${PREFERENCES_DIR}")
 endif(PREFERENCES_DIR)
 
 
 if(DEFAULT_PREFS_FILE)
-	add_definitions(-DDEFAULT_PREFS_PATH="${DEFAULT_PREFS_FILE"})
+	add_definitions(-DDEFAULT_PREFS_PATH="${DEFAULT_PREFS_FILE}")
 
 	if(NOT DEFAULT_PREFS_FILE MATCHES "^/")
 		add_definitions(-DHAS_RELATIVE_DEFPREF)
