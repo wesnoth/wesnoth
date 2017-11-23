@@ -100,9 +100,14 @@ int lua_kernel_base::intf_print(lua_State* L)
 	DBG_LUA << "intf_print called:\n";
 	size_t nargs = lua_gettop(L);
 
+	lua_getglobal(L, "tostring");
 	for (size_t i = 1; i <= nargs; ++i) {
-		const char * str = lua_tostring(L,i);
+		lua_pushvalue(L, -1); // function to call: "tostring"
+		lua_pushvalue(L, i); // value to pass through tostring() before printing
+		lua_call(L, 1, 1);
+		const char * str = lua_tostring(L, -1);
 		if (!str) {
+			LOG_LUA << "'tostring' must return a value to 'print'\n";
 			str = "";
 		}
 		if (i > 1) {
@@ -110,7 +115,9 @@ int lua_kernel_base::intf_print(lua_State* L)
 		}
 		cmd_log_ << str;
 		DBG_LUA << "'" << str << "'\n";
+		lua_pop(L, 1); // Pop the output of tostrring()
 	}
+	lua_pop(L, 1); // Pop 'tostring' global
 
 	cmd_log_ << "\n";
 	DBG_LUA << "\n";
