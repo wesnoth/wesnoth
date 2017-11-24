@@ -8,22 +8,7 @@ function(GetSources source_list store_in_var)
 endfunction()
 
 ## some includes ##
-if(MSVC)
-	# This seems to break on some Linux systems in combination with strict
-	# compilation, so disabled for now. The problem occurred on Gentoo with
-	# boost 1.37. Debian with boost 1.34, 1.35 and 1.38 works properly.
-	include_directories(SYSTEM ${Boost_INCLUDE_DIR} )
-
-	#additional MSVC includes
-	include_directories(SYSTEM ${PANGO_INCLUDE_DIR} )
-	include_directories(SYSTEM ${CAIRO_INCLUDE_DIR} )
-	include_directories(SYSTEM ${GLIB_INCLUDE_DIR} )
-	include_directories(SYSTEM ${GLIBCONFIG_INCLUDE_PATH} )
-else(MSVC)
-	include_directories(SYSTEM ${FONTCONFIG_INCLUDE_DIRS} )
-endif(MSVC)
-
-
+include_directories(SYSTEM ${FONTCONFIG_INCLUDE_DIRS} )
 include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS} )
 include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR} )
 include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS} )
@@ -63,23 +48,12 @@ link_directories(
 	${LIBDBUS_LIBRARY_DIRS}
 )
 
-if(MSVC)
-	# Since MSVC does autolinking of boost adding those files will duplicate
-	# the includes and cause build errors.
-	set(common-external-libs
-		${sdl-lib}
-		${sdlmain-lib}
-		ws2_32.lib
-		shlwapi.lib
-	)
-else(MSVC)
-	set(common-external-libs
-		${sdl-lib}
-		${Boost_IOSTREAMS_LIBRARY}
-		${Boost_REGEX_LIBRARY}
-		${Boost_PROGRAM_OPTIONS_LIBRARY}
-	)
-endif(MSVC)
+set(common-external-libs
+	${sdl-lib}
+	${Boost_IOSTREAMS_LIBRARY}
+	${Boost_REGEX_LIBRARY}
+	${Boost_PROGRAM_OPTIONS_LIBRARY}
+)
 
 set(common-external-libs
 	${common-external-libs}
@@ -116,16 +90,6 @@ if(ENABLE_HISTORY AND HISTORY_FOUND)
 	)
 endif(ENABLE_HISTORY AND HISTORY_FOUND)
 
-if(MSVC)
-	set(game-external-libs
-		${game-external-libs}
-		${PANGO_LIBRARY}
-		${PANGOCAIRO_LIBRARY}
-		${CAIRO_LIBRARY}
-		${GOBJECT_LIBRARY}
-	)
-endif(MSVC)
-
 set(server-external-libs
 	${common-external-libs}
 	${Boost_SYSTEM_LIBRARIES}
@@ -148,48 +112,6 @@ if(X11_FOUND)
 	include_directories(SYSTEM ${X11_INCLUDE_DIR} )
 	set(game-external-libs ${game-external-libs} ${X11_LIBRARIES})
 endif(X11_FOUND)
-
-if(MSVC)
-	SOURCE_GROUP("src" REGULAR_EXPRESSION ".*")
-	SOURCE_GROUP("src ai" REGULAR_EXPRESSION "ai/.*")
-	SOURCE_GROUP("src ai composite" REGULAR_EXPRESSION "ai/composite/.*")
-	SOURCE_GROUP("src ai default" REGULAR_EXPRESSION "ai/default/.*")
-	SOURCE_GROUP("src ai dfool" REGULAR_EXPRESSION "ai/dfool/.*")
-	SOURCE_GROUP("src ai formula" REGULAR_EXPRESSION "ai/formula/.*")
-	SOURCE_GROUP("src ai testing" REGULAR_EXPRESSION "ai/testing/.*")
-	SOURCE_GROUP("src campaign_server" REGULAR_EXPRESSION "campaign_server/.*")
-	SOURCE_GROUP("src editor" REGULAR_EXPRESSION "editor/.*")
-	SOURCE_GROUP("src editor action" REGULAR_EXPRESSION "editor/action/.*")
-	SOURCE_GROUP("src editor action mouse" REGULAR_EXPRESSION "editor/action/mouse/.*")
-	SOURCE_GROUP("src editor palette" REGULAR_EXPRESSION "editor/palette/.*")
-	SOURCE_GROUP("src editor toolkit" REGULAR_EXPRESSION "editor/toolkit/.*")
-	SOURCE_GROUP("src editor map" REGULAR_EXPRESSION "editor/map/.*")
-	SOURCE_GROUP("src gui" REGULAR_EXPRESSION "gui/.*")
-	SOURCE_GROUP("src gui auxiliary" REGULAR_EXPRESSION "gui/auxiliary/.*")
-	SOURCE_GROUP("src gui auxiliary event" REGULAR_EXPRESSION "gui/core/event/.*")
-	SOURCE_GROUP("src gui auxiliary widget_definition" REGULAR_EXPRESSION "gui/core/widget_definition/.*")
-	SOURCE_GROUP("src gui auxiliary window_builder" REGULAR_EXPRESSION "gui/core/window_builder/.*")
-	SOURCE_GROUP("src gui dialogs" REGULAR_EXPRESSION "gui/dialogs/.*")
-	SOURCE_GROUP("src gui dialogs lobby" REGULAR_EXPRESSION "gui/dialogs/lobby/.*")
-	SOURCE_GROUP("src lua" REGULAR_EXPRESSION "lua/.*")
-	SOURCE_GROUP("src widgets" REGULAR_EXPRESSION "widgets/.*")
-	SOURCE_GROUP("src gui widgets" REGULAR_EXPRESSION "gui/widgets/.*")
-	SOURCE_GROUP("src pathfind" REGULAR_EXPRESSION "pathfind/.*")
-	SOURCE_GROUP("src scripting" REGULAR_EXPRESSION "scripting/.*")
-	SOURCE_GROUP("src serialization" REGULAR_EXPRESSION "serialization/.*")
-	SOURCE_GROUP("src server" REGULAR_EXPRESSION "server/.*")
-	SOURCE_GROUP("src storyscreen" REGULAR_EXPRESSION "storyscreen/.*")
-	SOURCE_GROUP("src tests" REGULAR_EXPRESSION "tests/.*")
-	SOURCE_GROUP("src tests gui" REGULAR_EXPRESSION "tests/gui/.*")
-	SOURCE_GROUP("src tests utils" REGULAR_EXPRESSION "tests/utils/.*")
-	SOURCE_GROUP("src tools" REGULAR_EXPRESSION "tools/.*")
-	SOURCE_GROUP("src tools schema" REGULAR_EXPRESSION "tools/schema/.*")
-	SOURCE_GROUP("src utils" REGULAR_EXPRESSION "utils/.*")
-	SOURCE_GROUP("src whiteboard" REGULAR_EXPRESSION "whiteboard/.*")
-
-endif(MSVC)
-
-
 
 ########### Set Library mode ###############
 

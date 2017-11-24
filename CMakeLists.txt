@@ -1,10 +1,3 @@
-# most stuff should be implemented so far, what is not working so far:
-# * some other smaller stuff
-# * nice INSTALL howto
-# * Detect Python and install Python tools
-# * Rewrite the po4a-update
-# * Test everything
-# * install .desktop files taking binary prefix and suffix into account
 
 # set minimum version
 cmake_minimum_required(VERSION 2.8.5)
@@ -95,23 +88,15 @@ find_package(Gettext)
 
 find_package(X11)
 
-if(NOT MSVC)
-	#needed to get some SDL2 defines in... (as of rev31694 -D_GNU_SOURCE=1 is required!)
-	set(SDL2_CONFIG "sdl2-config" CACHE STRING "Path to sdl2-config script")
-	exec_program(${SDL2_CONFIG} ARGS "--cflags" OUTPUT_VARIABLE SDL2_CFLAGS)
-	add_definitions(${SDL2_CFLAGS})
-endif(NOT MSVC)
+# needed to get some SDL2 defines in... (as of rev31694 -D_GNU_SOURCE=1 is required!)
+set(SDL2_CONFIG "sdl2-config" CACHE STRING "Path to sdl2-config script")
+exec_program(${SDL2_CONFIG} ARGS "--cflags" OUTPUT_VARIABLE SDL2_CFLAGS)
+add_definitions(${SDL2_CFLAGS})
 
 if(NOT WIN32)
 	# Use the safer `mkstemp' instead of `tmpnam' on POSIX systems.
 	add_definitions(-DLUA_USE_POSIX)
 endif(NOT WIN32)
-
-if(MSVC)
-	add_definitions(-D_SCL_SECURE_NO_WARNINGS)
-	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
-	add_definitions(-DNOMINMAX)
-endif(MSVC)
 
 #check for some compiler/arch specific things and export defines accordingly...
 include(SearchForStuff)
@@ -120,7 +105,7 @@ include(SearchForStuff)
 # optimization (c.f. bug #23445), work around this by enforcing "release" type
 # if nothing was selected
 if(NOT CMAKE_BUILD_TYPE)
-	set( CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release Profile RelWithDebInfo MinSizeRel." FORCE)
+	set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release Profile RelWithDebInfo MinSizeRel." FORCE)
 endif(NOT CMAKE_BUILD_TYPE)
 
 if(NOT DEFINED ENABLE_DISPLAY_REVISION)
@@ -175,12 +160,7 @@ option(ENABLE_DEBUG_WINDOW_LAYOUT "Add the debug option to allow the generation 
 option(ENABLE_DESIGN_DOCUMENTS "Enables the generation of design documents, and has additional dependencies" OFF)
 option(ENABLE_LTO "Sets Link Time Optimization for Release builds" OFF)
 option(GLIBCXX_DEBUG "Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC" OFF)
-
-#misc options
-if(NOT MSVC)
-	# Pot updates don't work at Windows so no reason to even try
-	option(ENABLE_POT_UPDATE_TARGET "Enables the tools to update the pot files and manuals. This target has extra dependencies." OFF)
-endif(NOT MSVC)
+option(ENABLE_POT_UPDATE_TARGET "Enables the tools to update the pot files and manuals. This target has extra dependencies." OFF)
 
 if(UNIX AND NOT APPLE AND NOT CYGWIN)
 	option(ENABLE_NOTIFICATIONS "Enable Window manager notification messages" ON)
@@ -221,28 +201,7 @@ if(NOT DEFINED CXX_FLAGS_USER)
 
 endif(NOT DEFINED CXX_FLAGS_USER)
 
-
-### Set default Wesnoth project compiler flags
-if(MSVC AND NOT DEFINED CXX_FLAGS_MSVC)
-	# MSVC sets some initial compilation flags, these need to
-	# be preserved.
-	set(CXX_FLAGS_MSVC
-		"${CMAKE_CXX_FLAGS_INIT}"
-		CACHE
-		STRING
-		"The initial CXX flags for MSVC"
-		FORCE
-	)
-endif(MSVC AND NOT DEFINED CXX_FLAGS_MSVC)
-
-set(CXX_FLAGS_PROJECT "-std=c++11 -Wextra -Werror=non-virtual-dtor")
-
-# MSVC's -Wall is not like gcc's, it really enables *all* warnings which include zillions for system headers and doesn't make sense.
-if(NOT MSVC)
-	set(CXX_FLAGS_PROJECT "${CXX_FLAGS_PROJECT} -Wall")
-endif(NOT MSVC)
-
-set(COMPILER_FLAGS "${CXX_FLAGS_PROJECT}")
+set(COMPILER_FLAGS "-std=c++11 -Wall -Wextra -Werror=non-virtual-dtor")
 
 ### Set strict compiler flags.
 
@@ -272,10 +231,6 @@ if(ENABLE_PEDANTIC_COMPILATION)
 endif(ENABLE_PEDANTIC_COMPILATION)
 
 ### Set the final compiler flags.
-
-if(MSVC)
-	set(COMPILER_FLAGS "${CXX_FLAGS_MSVC} ${COMPILER_FLAGS}")
-endif(MSVC)
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 	set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option")
@@ -514,18 +469,16 @@ endif(ENABLE_DEBUG_WINDOW_LAYOUT)
 if(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
 	find_package( SDL2_image 2.0.0 REQUIRED )
 endif(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
+
 if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package( SDL2_mixer 2.0.0 REQUIRED )
 	find_package( SDL2_ttf 2.0.12 REQUIRED )
-	if(NOT MSVC)
-		find_package(VorbisFile REQUIRED)
-		find_package( PkgConfig REQUIRED )
-		pkg_check_modules( CAIRO REQUIRED cairo>=1.10 )
-		pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.21.3 )
-		pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.1 )
-		pkg_check_modules( SYSTEMD systemd )
-	endif(NOT MSVC)
-
+	find_package(VorbisFile REQUIRED)
+	find_package( PkgConfig REQUIRED )
+	pkg_check_modules( CAIRO REQUIRED cairo>=1.10 )
+	pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.21.3 )
+	pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.1 )
+	pkg_check_modules( SYSTEMD systemd )
 endif(ENABLE_GAME OR ENABLE_TESTS)
 if(ENABLE_TOOLS)
 	find_package( ZLIB REQUIRED )
