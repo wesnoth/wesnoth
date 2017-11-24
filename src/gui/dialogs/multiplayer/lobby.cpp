@@ -175,22 +175,15 @@ mp_lobby::~mp_lobby()
 	}
 }
 
-static bool fullscreen(CVideo& video)
-{
-	video.set_fullscreen(!preferences::fullscreen());
-	return true;
-}
-
 void mp_lobby::post_build(window& win)
 {
 	/** @todo Should become a global hotkey after 1.8, then remove it here. */
-	win.register_hotkey(hotkey::HOTKEY_FULLSCREEN, std::bind(fullscreen, std::ref(win.video())));
+	win.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
+		std::bind(&CVideo::set_fullscreen, std::ref(win.video()), !preferences::fullscreen()));
 
 	/*** Local hotkeys. ***/
-	win.register_hotkey(hotkey::HOTKEY_PREFERENCES, [this](event::dispatcher& w, hotkey::HOTKEY_COMMAND)->bool {
-		show_preferences_button_callback(dynamic_cast<window&>(w));
-		return true;
-	});
+	win.register_hotkey(hotkey::HOTKEY_PREFERENCES,
+		std::bind(&mp_lobby::show_preferences_button_callback, this, std::ref(win)));
 }
 
 namespace

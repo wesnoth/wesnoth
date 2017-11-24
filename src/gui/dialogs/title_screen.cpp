@@ -155,26 +155,16 @@ using btn_callback = std::function<void(window&)>;
 static void register_button(window& win, const std::string& id, hotkey::HOTKEY_COMMAND hk, btn_callback callback)
 {
 	if(hk != hotkey::HOTKEY_NULL) {
-		win.register_hotkey(hk, [callback](event::dispatcher& w, hotkey::HOTKEY_COMMAND) {
-			callback(dynamic_cast<window&>(w));
-			return true;
-		});
+		win.register_hotkey(hk, std::bind(callback, std::ref(win)));
 	}
 
 	event::connect_signal_mouse_left_click(find_widget<button>(&win, id, false),
 		[callback](event::dispatcher& w, event::ui_event, bool&, bool&) { callback(dynamic_cast<window&>(w)); });
 }
 
-static bool fullscreen(CVideo& video)
-{
-	video.set_fullscreen(!preferences::fullscreen());
-	return true;
-}
-
-static bool launch_lua_console()
+static void launch_lua_console()
 {
 	gui2::dialogs::lua_interpreter::display(gui2::dialogs::lua_interpreter::APP);
-	return true;
 }
 
 #ifdef DEBUG_TOOLTIP
@@ -222,10 +212,8 @@ void title_screen::pre_show(window& win)
 	//
 	// General hotkeys
 	//
-	win.register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML, [](event::dispatcher& w, hotkey::HOTKEY_COMMAND) {
-		dynamic_cast<window&>(w).set_retval(RELOAD_GAME_DATA);
-		return true;
-	});
+	win.register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML,
+		std::bind(&gui2::window::set_retval, std::ref(win), RELOAD_GAME_DATA, true));
 
 	win.register_hotkey(hotkey::TITLE_SCREEN__TEST, [this](event::dispatcher& w, hotkey::HOTKEY_COMMAND) {
 		game_config_manager::get()->load_game_config_for_create(false, true);
@@ -243,12 +231,13 @@ void title_screen::pre_show(window& win)
 			game_.set_test(options[choice]);
 			dynamic_cast<window&>(w).set_retval(LAUNCH_GAME);
 		}
-		return true;
 	});
 
-	win.register_hotkey(hotkey::HOTKEY_FULLSCREEN, std::bind(fullscreen, std::ref(win.video())));
+	win.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
+		std::bind(&CVideo::set_fullscreen, std::ref(win.video()), !preferences::fullscreen()));
 
-	// std::bind is needed here since the bare function signature isn't what register_hotkey expects.
+	// A wrapper is needed here since the relevant display function is overloaded, and
+	// since the wrapper's signature doesn't exactly match what register_hotkey expects.
 	win.register_hotkey(hotkey::LUA_CONSOLE, std::bind(&launch_lua_console));
 
 	//

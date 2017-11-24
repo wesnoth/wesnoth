@@ -183,7 +183,7 @@ static void delay_event(const SDL_Event& event, const Uint32 delay)
  *
  * The event is used to show the helptip for the currently focused widget.
  */
-static bool helptip()
+static void helptip()
 {
 	DBG_GUI_E << "Pushing SHOW_HELPTIP_EVENT event in queue.\n";
 
@@ -194,8 +194,6 @@ static bool helptip()
 	event.user = data;
 
 	SDL_PushEvent(&event);
-
-	return true;
 }
 
 /**

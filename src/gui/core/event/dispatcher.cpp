@@ -190,15 +190,15 @@ void dispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id, const hotkey_f
 	hotkeys_[id] = function;
 }
 
-bool dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
+void dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
 {
 	std::map<hotkey::HOTKEY_COMMAND, hotkey_function>::iterator itor = hotkeys_.find(id);
 
 	if(itor == hotkeys_.end()) {
-		return false;
+		return;
 	}
 
-	return itor->second(dynamic_cast<widget&>(*this), id);
+	itor->second(dynamic_cast<widget&>(*this), id);
 }
 
 void connect_signal_pre_key_press(dispatcher& dispatcher, const signal_keyboard_function& signal)

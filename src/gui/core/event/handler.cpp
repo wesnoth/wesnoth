@@ -257,7 +257,9 @@ private:
 	 *
 	 * @param key                 The hotkey item pressed.
 	 *
-	 * @returns                   True if the hotkey is handled false otherwise.
+	 * @returns                   True if there was a valid dispatcher with
+	 *                            which to execute the hotkey callback, false
+	 *                            otherwise.
 	 */
 	bool hotkey_pressed(const hotkey::hotkey_ptr key);
 
@@ -741,11 +743,11 @@ bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr key)
 {
 	dispatcher* dispatcher = keyboard_dispatcher();
 
-	if(!dispatcher) {
-		return false;
+	if(dispatcher) {
+		dispatcher->execute_hotkey(hotkey::get_id(key->get_command()));
 	}
 
-	return dispatcher->execute_hotkey(hotkey::get_id(key->get_command()));
+	return dispatcher != nullptr;
 }
 
 void sdl_event_handler::key_down(const SDL_Keycode key,

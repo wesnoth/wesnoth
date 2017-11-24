@@ -140,8 +140,7 @@ typedef std::function<void(widget& dispatcher,
 						   int32_t select_len)> signal_text_input_function;
 
 /** Hotkey function handler signature. */
-typedef std::function<bool(widget& dispatcher,
-							 hotkey::HOTKEY_COMMAND id)> hotkey_function;
+typedef std::function<void(widget& dispatcher, hotkey::HOTKEY_COMMAND id)> hotkey_function;
 
 /**
  * Base class for event handling.
@@ -795,11 +794,8 @@ public:
 	 * Executes a hotkey.
 	 *
 	 * @param id                  The hotkey to execute.
-	 *
-	 * @returns                   true if the hotkey is handled, false
-	 *                            otherwise.
 	 */
-	bool execute_hotkey(const hotkey::HOTKEY_COMMAND id);
+	void execute_hotkey(const hotkey::HOTKEY_COMMAND id);
 
 private:
 	/** The mouse behavior for the dispatcher. */
