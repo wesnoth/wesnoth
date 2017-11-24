@@ -1068,20 +1068,20 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 		if(hits) {
 			const unit& defender_unit = defender.get_unit();
 			if(attacker_stats->poisons && !defender_unit.get_state(unit::STATE_POISONED)) {
-				float_text << (defender_unit.gender() == unit_gender::FEMALE ? _("female^poisoned") : _("poisoned"))
+				float_text << defender_unit.gender().gender_string(_("poisoned"), _("female^poisoned"))
 						   << '\n';
 
 				extra_hit_sounds.push_back(game_config::sounds::status::poisoned);
 			}
 
 			if(attacker_stats->slows && !defender_unit.get_state(unit::STATE_SLOWED)) {
-				float_text << (defender_unit.gender() == unit_gender::FEMALE ? _("female^slowed") : _("slowed")) << '\n';
+				float_text << defender_unit.gender().gender_string(_("slowed"), _("female^slowed")) << '\n';
 
 				extra_hit_sounds.push_back(game_config::sounds::status::slowed);
 			}
 
 			if(attacker_stats->petrifies) {
-				float_text << (defender_unit.gender() == unit_gender::FEMALE ? _("female^petrified") : _("petrified"))
+				float_text << defender_unit.gender().gender_string(_("petrified"), _("female^petrified"))
 						   << '\n';
 
 				extra_hit_sounds.push_back(game_config::sounds::status::petrified);
@@ -1297,7 +1297,7 @@ void attack::unit_killed(unit_info& attacker,
 		if(const unit_type* reanimator = unit_types.find(attacker_stats->plague_type)) {
 			LOG_NG << "found unit type:" << reanimator->id() << '\n';
 
-			unit_ptr newunit(new unit(*reanimator, attacker.get_unit().side(), true, unit_gender::MALE));
+			unit_ptr newunit(new unit(*reanimator, attacker.get_unit().side(), true, &unit_gender::male()));
 			newunit->set_attacks(0);
 			newunit->set_movement(0, true);
 			newunit->set_facing(map_location::get_opposite_dir(attacker.get_unit().facing()));

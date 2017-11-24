@@ -344,7 +344,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 			tree_view_node* header_node = nullptr;
 
 			for(const auto& tr : type.possible_traits()) {
-				t_string name = tr[type.genders().front() == unit_gender::FEMALE ? "female_name" : "male_name"];
+				t_string name = tr[type.genders().front()->gender_string("male_name", "female_name")];
 				if(tr["availability"] != "musthave" || name.empty()) {
 					continue;
 				}
@@ -429,7 +429,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 	}
 
 	if(label_race_) {
-		label_race_->set_label(u.race()->name(u.gender()));
+		label_race_->set_label(u.race()->name(&u.gender()));
 	}
 
 	if(icon_race_) {
@@ -442,7 +442,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 		icon_alignment_->set_label("icons/alignments/alignment_" + alignment_name + "_30.png");
 		icon_alignment_->set_tooltip(unit_type::alignment_description(
 			u.alignment(),
-			u.gender()));
+			&u.gender()));
 	}
 
 	if(label_details_) {

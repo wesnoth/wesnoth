@@ -237,8 +237,8 @@ std::string unit_topic_generator::operator()() const {
 	std::stringstream ss;
 	std::string clear_stringstream;
 	const std::string detailed_description = type_.unit_description();
-	const unit_type& female_type = type_.get_gender_unit_type(unit_gender::FEMALE);
-	const unit_type& male_type = type_.get_gender_unit_type(unit_gender::MALE);
+	const unit_type& female_type = type_.get_gender_unit_type(unit_gender::female());
+	const unit_type& male_type = type_.get_gender_unit_type(unit_gender::male());
 
 	const int screen_width = CVideo::get_singleton().getx();
 

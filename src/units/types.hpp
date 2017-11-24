@@ -125,7 +125,7 @@ public:
 	 */
 	const unit_type& get_gender_unit_type(std::string gender) const;
 	/// Returns a gendered variant of this unit_type based on the given parameter.
-	const unit_type& get_gender_unit_type(unit_gender gender) const;
+	const unit_type& get_gender_unit_type(const unit_gender& gender) const;
 
 	const unit_type& get_variation(const std::string& id) const;
 	/** Info on the type of unit that the unit reanimates as. */
@@ -184,7 +184,7 @@ public:
 	)
 
 	ALIGNMENT alignment() const { return alignment_; }
-	static std::string alignment_description(ALIGNMENT align, unit_gender gender = unit_gender::MALE);
+	static std::string alignment_description(ALIGNMENT align, const unit_gender *gender);
 
 	const std::vector<t_string>& abilities() const { return abilities_; }
 	const std::vector<t_string>& ability_tooltips() const { return ability_tooltips_; }
@@ -218,10 +218,10 @@ public:
 
 	/// The returned vector will not be empty, provided this has been built
 	/// to the HELP_INDEXED status.
-	const std::vector<unit_gender>& genders() const { return genders_; }
-	bool has_gender_variation(const unit_gender gender) const
+	const std::vector<const unit_gender*>& genders() const { return genders_; }
+	bool has_gender_variation(const unit_gender& gender) const
 	{
-		return std::find(genders_.begin(), genders_.end(), gender) != genders_.end();
+		return std::find(genders_.begin(), genders_.end(), &gender) != genders_.end();
 	}
 
 	std::vector<std::string> variations() const;
@@ -297,7 +297,7 @@ private:
 
 	unsigned int num_traits_;
 
-	std::array<std::unique_ptr<unit_type>, 2> gender_types_;
+	std::array<std::unique_ptr<unit_type>, unit_gender::num_genders()> gender_types_;
 
 	variations_map variations_;
 	std::string default_variation_;
@@ -321,7 +321,7 @@ private:
 
 	config possible_traits_;
 
-	std::vector<unit_gender> genders_;
+	std::vector<const unit_gender*> genders_;
 
 	// animations are loaded only after the first animations() call
 	mutable std::vector<unit_animation> animations_;

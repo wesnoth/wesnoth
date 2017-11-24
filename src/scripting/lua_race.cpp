@@ -74,13 +74,13 @@ static int impl_race_get(lua_State* L)
 		return 1;
 	}
 	if (strcmp(m, "male_name_gen") == 0) {
-		new(L) proxy_name_generator(race.generator(unit_gender::MALE));
+		new(L) proxy_name_generator(race.generator(unit_gender::male()));
 		luaL_getmetatable(L, Gen);
 		lua_setmetatable(L, -2);
 		return 1;
 	}
 	if (strcmp(m, "female_name_gen") == 0) {
-		new(L) proxy_name_generator(race.generator(unit_gender::FEMALE));
+		new(L) proxy_name_generator(race.generator(unit_gender::female()));
 		luaL_getmetatable(L, Gen);
 		lua_setmetatable(L, -2);
 		return 1;

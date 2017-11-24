@@ -271,8 +271,7 @@ namespace {
 
 			std::string cure_text = "";
 			if ( nearest->cure_poison )
-				cure_text = nearest->healed.gender() == unit_gender::FEMALE ?
-					            _("female^cured") : _("cured");
+				cure_text = nearest->healed.gender().gender_string(_("cured"), _("female^cured"));
 
 			// The heal (animated, then actual):
 			unit_display::unit_healing(nearest->healed, nearest->healers,

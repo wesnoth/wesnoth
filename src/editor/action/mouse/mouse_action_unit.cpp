@@ -120,7 +120,7 @@ editor_action* mouse_action_unit::up_left(editor_display& disp, int x, int y)
 	}
 
 	const unit_type &ut = *new_unit_type;
-	unit_gender gender = ut.genders().front();
+	const unit_gender* gender = ut.genders().front();
 
 	unit new_unit(ut, disp.viewing_side(), true, gender);
 	editor_action* action = new editor_action_unit(hex, new_unit);

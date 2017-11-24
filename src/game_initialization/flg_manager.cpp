@@ -342,8 +342,8 @@ void flg_manager::update_available_genders()
 				available_genders_.push_back("random");
 			}
 
-			for(unit_gender gender : unit->genders()) {
-				const std::string gender_str = gender_string(gender);
+			for(const unit_gender* gender : unit->genders()) {
+				const std::string gender_str = gender->str();
 
 				// Add default gender to the top of the list.
 				if(default_leader_gender_ == gender_str) {

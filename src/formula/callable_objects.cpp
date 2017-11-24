@@ -251,7 +251,7 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "race") {
 		return variant(u_.race()->id());
 	} else if(key == "gender") {
-		return variant(gender_string(u_.gender()));
+		return variant(u_.gender().str());
 	} else if(key == "variation") {
 		return variant(u_.variation());
 	} else if(key == "zoc") {

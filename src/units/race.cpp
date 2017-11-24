@@ -27,11 +27,6 @@
 
 /// Dummy race used when a race is not yet known.
 const unit_race unit_race::null_race;
-/// Standard string id (not translatable) for FEMALE
-const std::string unit_race::s_female("female");
-/// Standard string id (not translatable) for MALE
-const std::string unit_race::s_male("male");
-
 
 static const config &empty_traits() {
 		static config cfg;
@@ -54,10 +49,10 @@ unit_race::unit_race() :
 		global_traits_(true),
 		undead_variation_()
 {
-	name_[static_cast<int>(unit_gender::MALE)] = "";
-	name_[static_cast<int>(unit_gender::FEMALE)] = "";
-	name_generator_[static_cast<int>(unit_gender::MALE)].reset(new name_generator());
-	name_generator_[static_cast<int>(unit_gender::FEMALE)].reset(new name_generator());
+	name_[static_cast<int>(unit_gender::male())] = "";
+	name_[static_cast<int>(unit_gender::female())] = "";
+	name_generator_[static_cast<int>(unit_gender::male())].reset(new name_generator());
+	name_generator_[static_cast<int>(unit_gender::female())].reset(new name_generator());
 }
 
 unit_race::unit_race(const config& cfg) :
@@ -82,29 +77,38 @@ unit_race::unit_race(const config& cfg) :
 	}
 
 	// use "name" if "male_name" or "female_name" aren't available
-	name_[static_cast<int>(unit_gender::MALE)] = cfg["male_name"];
-	if(name_[static_cast<int>(unit_gender::MALE)].empty()) {
-		name_[static_cast<int>(unit_gender::MALE)] = (cfg["name"]);
+	name_[static_cast<int>(unit_gender::male())] = cfg["male_name"];
+	if(name_[static_cast<int>(unit_gender::male())].empty()) {
+		name_[static_cast<int>(unit_gender::male())] = (cfg["name"]);
 	}
-	name_[static_cast<int>(unit_gender::FEMALE)] = cfg["female_name"];
-	if(name_[static_cast<int>(unit_gender::FEMALE)].empty()) {
-		name_[static_cast<int>(unit_gender::FEMALE)] = (cfg["name"]);
+	name_[static_cast<int>(unit_gender::female())] = cfg["female_name"];
+	if(name_[static_cast<int>(unit_gender::female())].empty()) {
+		name_[static_cast<int>(unit_gender::female())] = (cfg["name"]);
 	}
 
 	name_generator_factory generator_factory = name_generator_factory(cfg, {"male", "female"});
 
-	for(int i = static_cast<int>(unit_gender::MALE); i < static_cast<int>(unit_gender::NUM_GENDERS); ++i) {
-		unit_gender gender = static_cast<unit_gender>(i);
+	for(int i = 0; i < unit_gender::num_genders(); ++i) {
+		const unit_gender* gender = unit_gender::from_int(i);
+		assert(gender);
 		name_generator_[i] = generator_factory.get_name_generator(gender_string(gender));
 	}
 }
 
-std::string unit_race::generate_name(unit_gender gender) const
+const t_string& unit_race::name(const unit_gender* gender) const
+{
+	if(gender){
+		return name_[static_cast<int>(*gender)];
+	}
+	return name_[static_cast<int>(unit_gender::male())];
+}
+
+std::string unit_race::generate_name(const unit_gender& gender) const
 {
     return name_generator_[static_cast<int>(gender)]->generate();
 }
 
-const name_generator& unit_race::generator(unit_gender gender) const
+const name_generator& unit_race::generator(const unit_gender& gender) const
 {
 	return *name_generator_[static_cast<int>(gender)];
 }

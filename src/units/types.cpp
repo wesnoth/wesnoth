@@ -257,7 +257,7 @@ void unit_type::build_help_index(
 
 	// For simplicity in other parts of the code, we must have at least one gender.
 	if(genders_.empty()) {
-		genders_.push_back(unit_gender::MALE);
+		genders_.push_back(&unit_gender::male());
 	}
 
 	if(const config& abil_cfg = cfg_.child("abilities")) {
@@ -440,20 +440,19 @@ void unit_type::build(BUILD_STATUS status,
 	}
 }
 
-const unit_type& unit_type::get_gender_unit_type(std::string gender) const
+const unit_type& unit_type::get_gender_unit_type(std::string str_gender) const
 {
-	if(gender == unit_race::s_female) {
-		return get_gender_unit_type(unit_gender::FEMALE);
-	} else if(gender == unit_race::s_male) {
-		return get_gender_unit_type(unit_gender::MALE);
+	const unit_gender* gender = unit_gender::from_string(str_gender);
+	if(gender) {
+		return get_gender_unit_type(*gender);
 	}
 
 	return *this;
 }
 
-const unit_type& unit_type::get_gender_unit_type(unit_gender gender) const
+const unit_type& unit_type::get_gender_unit_type(const unit_gender& gender) const
 {
-	const size_t i = static_cast<size_t>(gender);
+	const unsigned i = static_cast<int>(gender);
 	if(i < gender_types_.size() && gender_types_[i] != nullptr) {
 		return *gender_types_[i];
 	}
@@ -911,7 +910,7 @@ MAKE_ENUM (ALIGNMENT_FEMALE_VARIATION,
 	(LIMINAL,        N_("female^liminal"))
 )
 
-std::string unit_type::alignment_description(ALIGNMENT align, unit_gender gender)
+std::string unit_type::alignment_description(ALIGNMENT align, const unit_gender* gender)
 {
 	static_assert(ALIGNMENT_FEMALE_VARIATION::count == ALIGNMENT::count,
 		"ALIGNMENT_FEMALE_VARIATION and ALIGNMENT do not have the same number of values");
@@ -920,7 +919,7 @@ std::string unit_type::alignment_description(ALIGNMENT align, unit_gender gender
 
 	std::string str = std::string();
 
-	if(gender == unit_gender::FEMALE) {
+	if(gender == &unit_gender::female()) {
 		ALIGNMENT_FEMALE_VARIATION fem = align.cast<ALIGNMENT_FEMALE_VARIATION::type>();
 		str = fem.to_string();
 	} else {

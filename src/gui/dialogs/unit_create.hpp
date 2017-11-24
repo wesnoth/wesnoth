@@ -50,7 +50,7 @@ public:
 	}
 
 	/** Gender choice from the user. */
-	unit_gender gender()
+	const unit_gender* gender()
 	{
 		return gender_;
 	}
@@ -58,7 +58,7 @@ public:
 private:
 	std::vector<const unit_type*> units_;
 
-	unit_gender gender_;
+	const unit_gender* gender_;
 
 	std::string choice_;
 
@@ -80,7 +80,7 @@ private:
 
 	void update_displayed_type() const;
 
-	group<unit_gender> gender_toggle;
+	group<const unit_gender*> gender_toggle;
 };
 } // namespace dialogs
 } // namespace gui2

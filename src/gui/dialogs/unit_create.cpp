@@ -44,7 +44,7 @@
 #include <boost/dynamic_bitset.hpp>
 
 static std::string last_chosen_type_id = "";
-static unit_gender last_gender = unit_gender::MALE;
+static const unit_gender* last_gender = &unit_gender::male();
 
 namespace gui2
 {
@@ -96,8 +96,8 @@ void unit_create::pre_show(window& window)
 	toggle_button& female_toggle
 			= find_widget<toggle_button>(&window, "female_toggle", false);
 
-	gender_toggle.add_member(&male_toggle, unit_gender::MALE);
-	gender_toggle.add_member(&female_toggle, unit_gender::FEMALE);
+	gender_toggle.add_member(&male_toggle, &unit_gender::male());
+	gender_toggle.add_member(&female_toggle, &unit_gender::female());
 
 	gender_toggle.set_member_states(last_gender);
 
@@ -189,7 +189,7 @@ void unit_create::update_displayed_type() const
 		= find_widget<listbox>(w, "unit_type_list", false).get_selected_row();
 
 	find_widget<unit_preview_pane>(w, "unit_details", false)
-		.set_displayed_type(units_[selected_row]->get_gender_unit_type(gender_));
+		.set_displayed_type(units_[selected_row]->get_gender_unit_type(*gender_));
 }
 
 void unit_create::list_item_clicked(window& window)
@@ -203,8 +203,8 @@ void unit_create::list_item_clicked(window& window)
 
 	update_displayed_type();
 
-	gender_toggle.set_members_enabled([&](const unit_gender& gender)->bool {
-		return units_[selected_row]->has_gender_variation(gender);
+	gender_toggle.set_members_enabled([&](const unit_gender* gender)->bool {
+		return units_[selected_row]->has_gender_variation(*gender);
 	});
 }
 

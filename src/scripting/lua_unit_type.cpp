@@ -145,13 +145,13 @@ static int impl_unit_type_next(lua_State* L)
 	decltype(unit_map)::const_iterator it = unit_map.end();
 	if(lua_isnoneornil(L, 2)) {
 		if(base) {
-			if(base->has_gender_variation(unit_gender::MALE)) {
+			if(base->has_gender_variation(unit_gender::male())) {
 				lua_pushstring(L, "male");
-				luaW_pushunittype(L, base->get_gender_unit_type(unit_gender::MALE));
+				luaW_pushunittype(L, base->get_gender_unit_type(unit_gender::male()));
 				return 2;
-			} else if(base->has_gender_variation(unit_gender::FEMALE)) {
+			} else if(base->has_gender_variation(unit_gender::female())) {
 				lua_pushstring(L, "female");
-				luaW_pushunittype(L, base->get_gender_unit_type(unit_gender::FEMALE));
+				luaW_pushunittype(L, base->get_gender_unit_type(unit_gender::female()));
 				return 2;
 			}
 		}
@@ -159,9 +159,9 @@ static int impl_unit_type_next(lua_State* L)
 	} else {
 		const std::string id = luaL_checkstring(L, 2);
 		if(base) {
-			if(id == "male" && base->has_gender_variation(unit_gender::FEMALE)) {
+			if(id == "male" && base->has_gender_variation(unit_gender::female())) {
 				lua_pushstring(L, "female");
-				luaW_pushunittype(L, base->get_gender_unit_type(unit_gender::FEMALE));
+				luaW_pushunittype(L, base->get_gender_unit_type(unit_gender::female()));
 				return 2;
 			} else if(id == "male" || id == "female") {
 				it = unit_map.begin();

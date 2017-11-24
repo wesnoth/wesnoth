@@ -12,13 +12,14 @@
    See the COPYING file for more details.
 */
 
+#include "units/gender.hpp"
 #include "units/make.hpp"
 #include "units/unit.hpp"
 
 unit_ptr make_unit_ptr(const config& cfg, bool use_traits, const vconfig* vcfg){
     return { new unit(cfg, use_traits, vcfg) };
 }
-unit_ptr make_unit_ptr(const unit_type& t, int side, bool real_unit, unit_gender gender){
+unit_ptr make_unit_ptr(const unit_type& t, int side, bool real_unit, const unit_gender* gender){
     return { new unit(t, side, real_unit, gender) };
 }
 unit_ptr make_unit_ptr(const unit& u){

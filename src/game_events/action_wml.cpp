@@ -115,7 +115,7 @@ namespace { // Support functions
 			side_num = 1;
 		}
 
-		unit_gender gender = string_gender(cfg["gender"]);
+		const unit_gender* gender = unit_gender::from_string(cfg["gender"]);
 		const unit_type *ut = unit_types.find(type);
 		if (!ut) return fake_unit_ptr();
 		fake_unit_ptr fake = fake_unit_ptr(unit_ptr(new unit(*ut, side_num, false, gender)));

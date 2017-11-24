@@ -16,11 +16,42 @@
 
 #include <iosfwd>
 
-enum class unit_gender {
-	MALE, FEMALE, NUM_GENDERS
+class t_string;
+class unit_gender;
+
+class unit_gender {
+public:
+	static const unit_gender& male();
+	static const unit_gender& female();
+	static constexpr int num_genders(){
+		return 2;
+	}
+
+	static const unit_gender* from_string(const std::string&);
+	static const unit_gender& from_string(const std::string&, const unit_gender& fallback);
+	static const unit_gender* from_int(int);
+
+	bool operator==(const unit_gender& other) const {
+		return this == &other;
+	}
+
+	explicit operator int() const { return index_; }
+	explicit operator const std::string&() const { return this->str(); }
+	const std::string& str() const { return name_; }
+
+	const char* gender_string(const char* male_string, const char* female_string) const;
+	const std::string& gender_string(const std::string& male_string, const std::string& female_string) const;
+	const t_string& gender_string(const t_string& male_string, const t_string& female_string) const;
+private:
+	unit_gender(int index, const std::string& name);
+	unit_gender(unit_gender&) = delete;
+	const int index_;
+	const std::string& name_;
 };
 
-std::ostream& operator<<(std::ostream& os, unit_gender gender);
+// Shows underlying integer type
+std::ostream& operator<<(std::ostream&, unit_gender);
 
-unit_gender string_gender(const std::string& str, unit_gender def=unit_gender::MALE);
-const std::string& gender_string(unit_gender gender);
+const unit_gender* string_gender(const std::string& str);
+const unit_gender& string_gender(const std::string& str, const unit_gender& def);
+const std::string& gender_string(const unit_gender* gender);

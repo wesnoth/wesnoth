@@ -207,9 +207,9 @@ static const unit_type& get_unit_type(const std::string& type_id)
 	return *i;
 }
 
-static unit_gender generate_gender(const unit_type& type, bool random_gender)
+static const unit_gender* generate_gender(const unit_type& type, bool random_gender)
 {
-	const std::vector<unit_gender>& genders = type.genders();
+	const std::vector<const unit_gender*>& genders = type.genders();
 	assert(genders.size() > 0);
 
 	if(random_gender == false  ||  genders.size() == 1) {
@@ -224,11 +224,11 @@ static unit_gender generate_gender(const unit_type& type, bool random_gender)
 	}
 }
 
-static unit_gender generate_gender(const unit_type& u_type, const config& cfg)
+static const unit_gender* generate_gender(const unit_type& u_type, const config& cfg)
 {
 	const std::string& gender = cfg["gender"];
 	if(!gender.empty()) {
-		return string_gender(gender);
+		return &string_gender(gender, unit_gender::male());
 	}
 
 	return generate_gender(u_type, cfg["random_gender"].to_bool());
@@ -623,7 +623,7 @@ void unit::clear_status_caches()
 	units_with_cache.clear();
 }
 
-unit::unit(const unit_type& u_type, int side, bool real_unit, unit_gender gender)
+unit::unit(const unit_type& u_type, int side, bool real_unit, const unit_gender* gender)
 	: ref_count_(0)
 	, loc_()
 	, advances_to_()
@@ -647,7 +647,7 @@ unit::unit(const unit_type& u_type, int side, bool real_unit, unit_gender gender
 	, image_mods_()
 	, unrenamable_(false)
 	, side_(side)
-	, gender_(gender != unit_gender::NUM_GENDERS ? gender : generate_gender(u_type, real_unit))
+	, gender_(gender ? gender : generate_gender(u_type, real_unit))
 	, formula_man_(new unit_formula_manager())
 	, movement_(0)
 	, max_movement_(0)
@@ -798,7 +798,7 @@ void unit::generate_name()
 	if(!name_.empty() || !generate_name_) {
 		return;
 	}
-	name_ = race_->generate_name(gender_);
+	name_ = race_->generate_name(*gender_);
 	generate_name_ = false;
 }
 
@@ -885,7 +885,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	// For reference, the type before this advancement.
 	const unit_type& old_type = type();
 	// Adjust the new type for gender and variation.
-	const unit_type& new_type = u_type.get_gender_unit_type(gender_).get_variation(variation_);
+	const unit_type& new_type = u_type.get_gender_unit_type(*gender_).get_variation(variation_);
 
 	// Reset the scalar values first
 	trait_names_.clear();
@@ -1435,7 +1435,7 @@ void unit::write(config& cfg) const
 	// Support for unit formulas in [ai] and unit-specific variables in [ai] [vars]
 	formula_man_->write(cfg);
 
-	cfg["gender"] = gender_string(gender_);
+	cfg["gender"] = gender_->str();
 	cfg["variation"] = variation_;
 	cfg["role"] = role_;
 
@@ -2266,7 +2266,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 
 void unit::add_trait_description(const config& trait, const t_string& description)
 {
-	const std::string& gender_string = gender_ == unit_gender::FEMALE ? "female_name" : "male_name";
+	const std::string& gender_string = gender_->gender_string("male_name", "female_name");
 	const auto& gender_specific_name = trait[gender_string];
 
 	const t_string name = gender_specific_name.empty() ? trait["name"] : gender_specific_name;

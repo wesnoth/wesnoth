@@ -17,26 +17,79 @@
 
 #include <ostream>
 
+namespace {
+	/// Standard string id (not translatable) for FEMALE
+	const std::string s_female("female");
+	/// Standard string id (not translatable) for MALE
+	const std::string s_male("male");
+}
+
+/*static*/ const unit_gender& unit_gender::male(){
+	static unit_gender male = {0, s_male};
+	return male;
+}
+/*static*/ const unit_gender& unit_gender::female(){
+	static unit_gender female = {1, s_female};
+	return female;
+}
+
+unit_gender::unit_gender(int index, const std::string& name)
+	: index_(index)
+	, name_(name)
+{
+	assert(index < unit_gender::num_genders());
+}
+
 std::ostream& operator<<(std::ostream& os, unit_gender gender){
 	os << static_cast<int>(gender);
 	return os;
 }
 
-const std::string& gender_string(unit_gender gender) {
-	switch(gender) {
-	case unit_gender::FEMALE:
-		return unit_race::s_female;
+/*static*/ const unit_gender* unit_gender::from_string(const std::string& str_gender){
+	return string_gender(str_gender);
+}
+/*static*/ const unit_gender& unit_gender::from_string(const std::string& str_gender, const unit_gender& fallback){
+	return string_gender(str_gender, fallback);
+}
+/*static*/ const unit_gender* unit_gender::from_int(int index){
+	//FIXME: this is a hack
+	switch(index){
+	case 0:
+		return &unit_gender::male();
+	case 1:
+		return &unit_gender::female();
 	default:
-	case unit_gender::MALE:
-		return unit_race::s_male;
+		return nullptr;
 	}
 }
 
-unit_gender string_gender(const std::string& str, unit_gender def) {
-	if ( str == unit_race::s_male ) {
-		return unit_gender::MALE;
-	} else if ( str == unit_race::s_female ) {
-		return unit_gender::FEMALE;
+const char* unit_gender::gender_string(const char* male_string, const char* female_string) const {
+	return *this == female() ? female_string : male_string;
+}
+const std::string& unit_gender::gender_string(const std::string& male_string, const std::string& female_string) const {
+	return *this == female() ? female_string : male_string;
+}
+const t_string& unit_gender::gender_string(const t_string& male_string, const t_string& female_string) const {
+	return *this == female() ? female_string : male_string;
+}
+
+const std::string& gender_string(const unit_gender* gender) {
+	if(gender){
+		return gender->str();
 	}
-	return def;
+	return unit_gender::male().str();
+}
+
+
+const unit_gender* string_gender(const std::string& str) {
+	if ( str == s_male ) {
+		return &unit_gender::male();
+	} else if ( str == s_female ) {
+		return &unit_gender::female();
+	}
+	return nullptr;
+}
+const unit_gender& string_gender(const std::string& str, const unit_gender& def) {
+	const unit_gender* gender = string_gender(str);
+	return gender ? *gender : def;
 }

@@ -354,7 +354,7 @@ static int impl_unit_get(lua_State *L)
 	return_bool_attrib("resting", u.resting());
 	return_string_attrib("role", u.get_role());
 	return_string_attrib("race", u.race()->id());
-	return_string_attrib("gender", gender_string(u.gender()));
+	return_string_attrib("gender", u.gender().str());
 	return_string_attrib("variation", u.variation());
 	return_bool_attrib("zoc", u.get_emit_zoc());
 	return_string_attrib("facing", map_location::write_direction(u.facing()));
