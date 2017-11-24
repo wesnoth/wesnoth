@@ -455,6 +455,9 @@ private:
 	std::unique_ptr<map_generator> generator_;
 
 	std::string selected_campaign_difficulty_;
+
+	/** Reference to the main game config. */
+	const config& game_config_;
 };
 
 } // end namespace ng

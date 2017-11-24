@@ -241,6 +241,7 @@ create_engine::create_engine(saved_game& state)
 	, dependency_manager_(nullptr)
 	, generator_(nullptr)
 	, selected_campaign_difficulty_()
+	, game_config_(game_config_manager::get()->game_config())
 {
 	// Set up the type map. Do this first!
 	type_map_.emplace(level::TYPE::SCENARIO, type_list());
@@ -262,7 +263,7 @@ create_engine::create_engine(saved_game& state)
 
 	// Initialize dependency_manager_ after refreshing game config.
 	dependency_manager_.reset(new depcheck::manager(
-		game_config_manager::get()->game_config(), type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER));
+		game_config_, type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER));
 
 	// TODO: the editor dir is already configurable, is the preferences value
 	filesystem::get_files_in_dir(filesystem::get_user_data_dir() + "/editor/maps", &user_map_names_,
@@ -280,7 +281,7 @@ create_engine::create_engine(saved_game& state)
 	state_.mp_settings().saved_game = false;
 
 	for(const std::string& str : preferences::modifications(state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER)) {
-		if(game_config_manager::get()->game_config().find_child("modification", "id", str)) {
+		if(game_config_.find_child("modification", "id", str)) {
 			state_.mp_settings().active_mods.push_back(str);
 		}
 	}
@@ -372,11 +373,9 @@ void create_engine::prepare_for_new_level()
 
 void create_engine::prepare_for_era_and_mods()
 {
-	const config& game_manager_config = game_config_manager::get()->game_config();
-
-	state_.classification().era_define = game_manager_config.find_child("era", "id", get_parameters().mp_era)["define"].str();
+	state_.classification().era_define = game_config_.find_child("era", "id", get_parameters().mp_era)["define"].str();
 	for(const std::string& mod_id : get_parameters().active_mods) {
-		state_.classification().mod_defines.push_back(game_manager_config.find_child("modification", "id", mod_id)["define"].str());
+		state_.classification().mod_defines.push_back(game_config_.find_child("modification", "id", mod_id)["define"].str());
 	}
 }
 
@@ -644,7 +643,7 @@ const mp_game_settings& create_engine::get_parameters()
 
 void create_engine::init_all_levels()
 {
-	if(const config& generic_multiplayer = game_config_manager::get()->game_config().child("generic_multiplayer")) {
+	if(const config& generic_multiplayer = game_config_.child("generic_multiplayer")) {
 		config gen_mp_data = generic_multiplayer;
 
 		// User maps.
@@ -708,7 +707,7 @@ void create_engine::init_all_levels()
 	}
 
 	// Stand-alone scenarios.
-	for(const config& data : game_config_manager::get()->game_config().child_range("multiplayer"))
+	for(const config& data : game_config_.child_range("multiplayer"))
 	{
 		if(!data["allow_new_game"].to_bool(true))
 			continue;
@@ -724,7 +723,7 @@ void create_engine::init_all_levels()
 	}
 
 	// Campaigns.
-	for(const config& data : game_config_manager::get()->game_config().child_range("campaign"))
+	for(const config& data : game_config_.child_range("campaign"))
 	{
 		const std::string& type = data["type"];
 		bool mp = state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
@@ -761,7 +760,7 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 		: ng::depcheck::component_availability::HYBRID;
 
 	std::set<std::string> found_ids;
-	for(const config& extra : game_config_manager::get()->game_config().child_range(extra_name))
+	for(const config& extra : game_config_.child_range(extra_name))
 	{
 		ng::depcheck::component_availability type = extra["type"].to_enum(default_availabilty);
 		bool mp = state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
