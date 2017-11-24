@@ -15,11 +15,22 @@
 #include "units/gender.hpp"
 #include "units/race.hpp"
 
+#include <vector>
+
 namespace {
 	/// Standard string id (not translatable) for FEMALE
 	const std::string s_female("female");
 	/// Standard string id (not translatable) for MALE
 	const std::string s_male("male");
+	/// Storage for gender map
+	std::vector<const unit_gender*> gender_map = std::vector<const unit_gender*>(unit_gender::num_genders(), nullptr);
+	// Populate the map
+	auto & m_ = unit_gender::male();
+	auto & f_ = unit_gender::female();
+
+	// C++17 as_const
+	template<class T>
+	T const& constant(T& v){ return v; }
 }
 
 /*static*/ const unit_gender& unit_gender::male(){
@@ -36,6 +47,8 @@ unit_gender::unit_gender(int index, const std::string& name)
 	, name_(name)
 {
 	assert(index < unit_gender::num_genders());
+	assert(gender_map[index] == nullptr);
+	gender_map[index] = this;
 }
 
 /*static*/ const unit_gender* unit_gender::from_string(const std::string& str_gender){
@@ -51,15 +64,10 @@ unit_gender::unit_gender(int index, const std::string& name)
 	return gender ? *gender : fallback;
 }
 /*static*/ const unit_gender* unit_gender::from_int(int index){
-	//FIXME: this is a hack
-	switch(index){
-	case 0:
-		return &unit_gender::male();
-	case 1:
-		return &unit_gender::female();
-	default:
-		return nullptr;
-	}
+	assert(index < unit_gender::num_genders());
+	auto gender = gender_map[index];
+	assert(gender);
+	return gender;
 }
 
 const char* unit_gender::gender_string(const char* male_string, const char* female_string) const {
