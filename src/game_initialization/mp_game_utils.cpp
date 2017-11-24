@@ -130,10 +130,8 @@ config initial_level_config(saved_game& state)
 void level_to_gamestate(const config& level, saved_game& state)
 {
 	game_classification::CAMPAIGN_TYPE type = state.classification().campaign_type;
-	bool show_connect = state.mp_settings().show_connect;
 	state = saved_game(level);
 	state.classification().campaign_type = type;
-	state.mp_settings().show_connect = show_connect;
 }
 
 void check_response(bool res, const config& data)

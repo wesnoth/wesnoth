@@ -776,8 +776,6 @@ static void convert_old_saves_1_13_0(config& cfg)
 	if(!cfg.has_child("multiplayer")) {
 		cfg.add_child("multiplayer", config {
 			"mp_era", "era_blank",
-			"show_connect", false,
-			"show_configure", false,
 			"mp_use_map_settings", true,
 		});
 	}

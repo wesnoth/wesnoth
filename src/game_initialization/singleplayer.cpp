@@ -140,24 +140,6 @@ bool enter_configure_mode(const config& game_config, saved_game& state, ng::crea
 bool enter_connect_mode(const config& /*game_config*/, saved_game& state)
 {
 	ng::connect_engine connect_eng(state, true, nullptr);
-
-	// TODO: fix. Dialog starts game regardless of selection
-#if 0
-	if(state.mp_settings().show_connect) {
-		lobby_info li(game_config, std::vector<std::string>());
-
-		gui2::dialogs::mp_staging dlg(connect_eng, li);
-		dlg.show();
-
-		if(dlg.get_retval() != gui2::window::OK) {
-			// TODO: enable the workflow loops from GUI1
-			//return enter_create_mode(game_config, state, jump_to_campaign_info(false, -1, "", ""));
-
-			return false;
-		}
-	}
-#endif
-
 	connect_eng.start_game();
 
 	return true;

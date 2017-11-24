@@ -43,8 +43,6 @@ struct mp_game_settings
 	std::vector<std::string> active_mods;
 	std::map<std::string, std::string> side_users;
 
-	bool show_connect;
-
 	int num_turns;
 	int village_gold;
 	int village_support;

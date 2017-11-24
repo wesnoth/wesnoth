@@ -461,7 +461,6 @@ void game_launcher::set_test(const std::string& id)
 	state_.classification().campaign_define = "TEST";
 
 	state_.mp_settings().mp_era = "era_default";
-	state_.mp_settings().show_connect = false;
 
 	state_.set_carryover_sides_start(
 		config {"next_scenario", id}
@@ -696,7 +695,6 @@ void game_launcher::set_tutorial()
 	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::TUTORIAL;
 	state_.classification().campaign_define = "TUTORIAL";
 	state_.mp_settings().mp_era = "era_default";
-	state_.mp_settings().show_connect = false;
 	state_.set_carryover_sides_start(
 		config {"next_scenario", "tutorial"}
 	);
@@ -714,7 +712,6 @@ bool game_launcher::new_campaign()
 {
 	state_.clear();
 	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::SCENARIO;
-	state_.mp_settings().show_connect = false;
 	play_replay_ = false;
 
 	return sp::enter_create_mode(game_config_manager::get()->game_config(),

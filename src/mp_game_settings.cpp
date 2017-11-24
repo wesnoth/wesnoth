@@ -39,7 +39,6 @@ mp_game_settings::mp_game_settings() :
 	mp_campaign(),
 	active_mods(),
 	side_users(),
-	show_connect(true),
 	num_turns(0),
 	village_gold(0),
 	village_support(1),
@@ -73,7 +72,6 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, mp_campaign(cfg["mp_campaign"].str())
 	, active_mods(utils::split(cfg["active_mods"], ','))
 	, side_users(utils::map_split(cfg["side_users"]))
-	, show_connect(cfg["show_connect"].to_bool(true))
 	, num_turns(cfg["mp_num_turns"])
 	, village_gold(cfg["mp_village_gold"])
 	, village_support(cfg["mp_village_support"])
@@ -115,7 +113,6 @@ config mp_game_settings::to_config() const
 	cfg["mp_campaign"] = mp_campaign;
 	cfg["active_mods"] = utils::join(active_mods, ",");
 	cfg["side_users"] = utils::join_map(side_users);
-	cfg["show_connect"] = show_connect;
 	cfg["experience_modifier"] = xp_modifier;
 	cfg["mp_countdown"] = mp_countdown;
 	cfg["mp_countdown_init_time"] = mp_countdown_init_time;
