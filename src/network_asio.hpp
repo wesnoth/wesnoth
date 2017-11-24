@@ -132,8 +132,8 @@ private:
 
 	bool done_;
 
-	boost::asio::streambuf write_buf_;
-	boost::asio::streambuf read_buf_;
+	std::unique_ptr<boost::asio::streambuf> write_buf_;
+	std::unique_ptr<boost::asio::streambuf> read_buf_;
 
 	void handle_resolve(const boost::system::error_code& ec, resolver::iterator iterator);
 
