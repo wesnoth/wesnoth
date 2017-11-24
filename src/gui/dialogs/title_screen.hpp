@@ -67,18 +67,15 @@ public:
 	};
 
 private:
-	game_launcher& game_;
-
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
-	void on_resize(window& window);
+	/***** ***** ***** ***** Callbacks ***** ***** ****** *****/
 
-	/** Holds the debug clock dialog. */
-	std::unique_ptr<modeless_dialog> debug_clock_;
+	void on_resize(window& window);
 
 	/**
 	 * Updates the tip of day widget.
@@ -90,6 +87,18 @@ private:
 
 	/** Shows the debug clock. */
 	void show_debug_clock_window();
+
+	void hotkey_callback_select_tests(window& window);
+
+	void button_callback_multiplayer(window& window);
+
+	void button_callback_cores();
+
+	/** Holds the debug clock dialog. */
+	std::unique_ptr<modeless_dialog> debug_clock_;
+
+	game_launcher& game_;
+
 };
 
 } // namespace dialogs

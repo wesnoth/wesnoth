@@ -21,7 +21,6 @@
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "game_launcher.hpp"
-#include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/tips.hpp"
@@ -32,12 +31,12 @@
 #include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
-#include "game_config_manager.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/multiplayer/mp_host_game_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "log.hpp"
+#include "preferences/game.hpp"
 //#define DEBUG_TOOLTIP
 #ifdef DEBUG_TOOLTIP
 #include "gui/dialogs/tooltip.hpp"
@@ -51,7 +50,6 @@
 #include "help/help.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "video.hpp"
-
 #include "utils/functional.hpp"
 
 #include <algorithm>
@@ -150,16 +148,15 @@ title_screen::~title_screen()
 {
 }
 
-using btn_callback = std::function<void(window&)>;
+using btn_callback = std::function<void()>;
 
 static void register_button(window& win, const std::string& id, hotkey::HOTKEY_COMMAND hk, btn_callback callback)
 {
 	if(hk != hotkey::HOTKEY_NULL) {
-		win.register_hotkey(hk, std::bind(callback, std::ref(win)));
+		win.register_hotkey(hk, std::bind(callback));
 	}
 
-	event::connect_signal_mouse_left_click(find_widget<button>(&win, id, false),
-		[callback](event::dispatcher& w, event::ui_event, bool&, bool&) { callback(dynamic_cast<window&>(w)); });
+	connect_signal_mouse_left_click(find_widget<button>(&win, id, false), std::bind(callback));
 }
 
 static void launch_lua_console()
@@ -215,23 +212,8 @@ void title_screen::pre_show(window& win)
 	win.register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML,
 		std::bind(&gui2::window::set_retval, std::ref(win), RELOAD_GAME_DATA, true));
 
-	win.register_hotkey(hotkey::TITLE_SCREEN__TEST, [this](event::dispatcher& w, hotkey::HOTKEY_COMMAND) {
-		game_config_manager::get()->load_game_config_for_create(false, true);
-		std::vector<std::string> options;
-		for(const config &sc : game_config_manager::get()->game_config().child_range("test")) {
-			if(!sc["is_unit_test"].to_bool(false)) {
-				options.emplace_back(sc["id"]);
-			}
-		}
-		std::sort(options.begin(), options.end());
-		gui2::dialogs::simple_item_selector dlg(_("Choose Test"), "", options);
-		dlg.show();
-		int choice = dlg.selected_index();
-		if(choice >= 0) {
-			game_.set_test(options[choice]);
-			dynamic_cast<window&>(w).set_retval(LAUNCH_GAME);
-		}
-	});
+	win.register_hotkey(hotkey::TITLE_SCREEN__TEST,
+		std::bind(&title_screen::hotkey_callback_select_tests, this, std::ref(win)));
 
 	win.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
 		std::bind(&CVideo::set_fullscreen, std::ref(win.video()), !preferences::fullscreen()));
@@ -298,19 +280,20 @@ void title_screen::pre_show(window& win)
 
 	register_button(win, "next_tip", hotkey::TITLE_SCREEN__NEXT_TIP,
 		std::bind(&title_screen::update_tip, this, std::ref(win), true));
+
 	register_button(win, "previous_tip", hotkey::TITLE_SCREEN__PREVIOUS_TIP,
 		std::bind(&title_screen::update_tip, this, std::ref(win), false));
 
 	//
 	// Help
 	//
-	register_button(win, "help", hotkey::HOTKEY_HELP, [](window& w) {
+	register_button(win, "help", hotkey::HOTKEY_HELP, [&win]() {
 		if(gui2::new_widgets) {
 			gui2::dialogs::help_browser::display();
 		}
 
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
-		help::show_help(w.video());
+		help::show_help(win.video());
 	});
 
 	//
@@ -321,18 +304,18 @@ void title_screen::pre_show(window& win)
 	//
 	// Tutorial
 	//
-	register_button(win, "tutorial", hotkey::TITLE_SCREEN__TUTORIAL, [this](window& w) {
+	register_button(win, "tutorial", hotkey::TITLE_SCREEN__TUTORIAL, [this, &win]() {
 		game_.set_tutorial();
-		w.set_retval(LAUNCH_GAME);
+		win.set_retval(LAUNCH_GAME);
 	});
 
 	//
 	// Campaign
 	//
-	register_button(win, "campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this](window& w) {
+	register_button(win, "campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this, &win]() {
 		try{
 			if(game_.new_campaign()) {
-				w.set_retval(LAUNCH_GAME);
+				win.set_retval(LAUNCH_GAME);
 			}
 		} catch (const config::error& e) {
 			gui2::show_error_message(e.what());
@@ -342,51 +325,15 @@ void title_screen::pre_show(window& win)
 	//
 	// Multiplayer
 	//
-	register_button(win, "multiplayer", hotkey::TITLE_SCREEN__MULTIPLAYER, [this](window& w) {
-		while(true) {
-			gui2::dialogs::mp_method_selection dlg;
-			dlg.show();
-
-			if(dlg.get_retval() != gui2::window::OK) {
-				return;
-			}
-
-			const int res = dlg.get_choice();
-
-			if(res == 2 && preferences::mp_server_warning_disabled() < 2) {
-				if(!gui2::dialogs::mp_host_game_prompt::execute()) {
-					continue;
-				}
-			}
-
-			switch(res) {
-				case 0:
-					game_.select_mp_server(preferences::server_list().front().address);
-					w.set_retval(MP_CONNECT);
-					break;
-				case 1:
-					game_.select_mp_server("");
-					w.set_retval(MP_CONNECT);
-					break;
-				case 2:
-					game_.select_mp_server("localhost");
-					w.set_retval(MP_HOST);
-					break;
-				case 3:
-					w.set_retval(MP_LOCAL);
-					break;
-			}
-
-			return;
-		}
-	});
+	register_button(win, "multiplayer", hotkey::TITLE_SCREEN__MULTIPLAYER,
+		std::bind(&title_screen::button_callback_multiplayer, this, std::ref(win)));
 
 	//
 	// Load game
 	//
-	register_button(win, "load", hotkey::HOTKEY_LOAD_GAME, [this](window& w) {
+	register_button(win, "load", hotkey::HOTKEY_LOAD_GAME, [this, &win]() {
 		if(game_.load_game()) {
-			w.set_retval(LAUNCH_GAME);
+			win.set_retval(LAUNCH_GAME);
 		} else {
 			game_.clear_loaded_game();
 		}
@@ -395,7 +342,7 @@ void title_screen::pre_show(window& win)
 	//
 	// Addons
 	//
-	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, [](window&) {
+	register_button(win, "addons", hotkey::TITLE_SCREEN__ADDONS, []() {
 		// NOTE: we need the help_manager to get access to the Add-ons section in the game help!
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
 
@@ -407,30 +354,13 @@ void title_screen::pre_show(window& win)
 	//
 	// Editor
 	//
-	register_button(win, "editor", hotkey::TITLE_SCREEN__EDITOR, [&](window& w) { w.set_retval(MAP_EDITOR); });
+	register_button(win, "editor", hotkey::TITLE_SCREEN__EDITOR, [this, &win]() { win.set_retval(MAP_EDITOR); });
 
 	//
 	// Cores
 	//
-	register_button(win, "cores", hotkey::TITLE_SCREEN__CORES, [](window&) {
-		int current = 0;
-		std::vector<config> cores;
-		for(const config& core : game_config_manager::get()->game_config().child_range("core")) {
-			cores.push_back(core);
-
-			if(core["id"] == preferences::core_id()) {
-				current = cores.size() - 1;
-			}
-		}
-
-		gui2::dialogs::core_selection core_dlg(cores, current);
-		if(core_dlg.show()) {
-			const std::string& core_id = cores[core_dlg.get_choice()]["id"];
-
-			preferences::set_core_id(core_id);
-			game_config_manager::get()->reload_changed_game_config();
-		}
-	});
+	register_button(win, "cores", hotkey::TITLE_SCREEN__CORES,
+		std::bind(&title_screen::button_callback_cores, this));
 
 	if(game_config_manager::get()->game_config().child_range("core").size() <= 1) {
 		find_widget<button>(&win, "cores", false).set_visible(widget::visibility::invisible);
@@ -439,12 +369,12 @@ void title_screen::pre_show(window& win)
 	//
 	// Language
 	//
-	register_button(win, "language", hotkey::HOTKEY_LANGUAGE, [this](window& w) {
+	register_button(win, "language", hotkey::HOTKEY_LANGUAGE, [this, &win]() {
 		try {
 			if(game_.change_language()) {
 				t_string::reset_translations();
 				::image::flush_cache();
-				on_resize(w);
+				on_resize(win);
 			}
 		} catch(std::runtime_error& e) {
 			gui2::show_error_message(e.what());
@@ -454,17 +384,17 @@ void title_screen::pre_show(window& win)
 	//
 	// Preferences
 	//
-	register_button(win, "preferences", hotkey::HOTKEY_PREFERENCES, [this](window&) { game_.show_preferences(); });
+	register_button(win, "preferences", hotkey::HOTKEY_PREFERENCES, [this]() { game_.show_preferences(); });
 
 	//
 	// Credits
 	//
-	register_button(win, "credits", hotkey::TITLE_SCREEN__CREDITS, [&](window& w) { w.set_retval(SHOW_ABOUT); });
+	register_button(win, "credits", hotkey::TITLE_SCREEN__CREDITS, [this, &win]() { win.set_retval(SHOW_ABOUT); });
 
 	//
 	// Quit
 	//
-	register_button(win, "quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [&](window& w) { w.set_retval(QUIT_GAME); });
+	register_button(win, "quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [this, &win]() { win.set_retval(QUIT_GAME); });
 
 	//
 	// Debug clock
@@ -523,6 +453,91 @@ void title_screen::show_debug_clock_window()
 	} else {
 		debug_clock_.reset(new debug_clock());
 		debug_clock_->show(true);
+	}
+}
+
+void title_screen::hotkey_callback_select_tests(window& window)
+{
+	game_config_manager::get()->load_game_config_for_create(false, true);
+
+	std::vector<std::string> options;
+	for(const config &sc : game_config_manager::get()->game_config().child_range("test")) {
+		if(!sc["is_unit_test"].to_bool(false)) {
+			options.emplace_back(sc["id"]);
+		}
+	}
+
+	std::sort(options.begin(), options.end());
+
+	gui2::dialogs::simple_item_selector dlg(_("Choose Test"), "", options);
+	dlg.show();
+
+	int choice = dlg.selected_index();
+	if(choice >= 0) {
+		game_.set_test(options[choice]);
+		window.set_retval(LAUNCH_GAME);
+	}
+}
+
+void title_screen::button_callback_multiplayer(window& window)
+{
+	while(true) {
+		gui2::dialogs::mp_method_selection dlg;
+		dlg.show();
+
+		if(dlg.get_retval() != gui2::window::OK) {
+			return;
+		}
+
+		const int res = dlg.get_choice();
+
+		if(res == 2 && preferences::mp_server_warning_disabled() < 2) {
+			if(!gui2::dialogs::mp_host_game_prompt::execute()) {
+				continue;
+			}
+		}
+
+		switch(res) {
+		case 0:
+			game_.select_mp_server(preferences::server_list().front().address);
+			window.set_retval(MP_CONNECT);
+			break;
+		case 1:
+			game_.select_mp_server("");
+			window.set_retval(MP_CONNECT);
+			break;
+		case 2:
+			game_.select_mp_server("localhost");
+			window.set_retval(MP_HOST);
+			break;
+		case 3:
+			window.set_retval(MP_LOCAL);
+			break;
+		}
+
+		return;
+	}
+}
+
+void title_screen::button_callback_cores()
+{
+	int current = 0;
+
+	std::vector<config> cores;
+	for(const config& core : game_config_manager::get()->game_config().child_range("core")) {
+		cores.push_back(core);
+
+		if(core["id"] == preferences::core_id()) {
+			current = cores.size() - 1;
+		}
+	}
+
+	gui2::dialogs::core_selection core_dlg(cores, current);
+	if(core_dlg.show()) {
+		const std::string& core_id = cores[core_dlg.get_choice()]["id"];
+
+		preferences::set_core_id(core_id);
+		game_config_manager::get()->reload_changed_game_config();
 	}
 }
 
