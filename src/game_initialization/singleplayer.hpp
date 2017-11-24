@@ -14,20 +14,17 @@
 
 #pragma once
 
-#include "game_launcher.hpp"
-#include "create_engine.hpp"
 #include "configure_engine.hpp"
 #include "connect_engine.hpp"
+#include "create_engine.hpp"
+#include "game_launcher.hpp"
 
-namespace sp {
+namespace sp
+{
+bool enter_create_mode(saved_game& state, jump_to_campaign_info jump_to);
 
-bool enter_create_mode(const config& game_config,
-	saved_game& state, jump_to_campaign_info jump_to);
+bool enter_configure_mode(saved_game& state, ng::create_engine& create_eng);
 
-bool enter_configure_mode(const config& game_config,
-	saved_game& state, ng::create_engine& create_eng);
-
-bool enter_connect_mode(const config& game_config,
-	saved_game& state);
+void enter_connect_mode(saved_game& state);
 
 } // end namespace sp

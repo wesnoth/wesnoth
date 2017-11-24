@@ -714,8 +714,7 @@ bool game_launcher::new_campaign()
 	state_.classification().campaign_type = game_classification::CAMPAIGN_TYPE::SCENARIO;
 	play_replay_ = false;
 
-	return sp::enter_create_mode(game_config_manager::get()->game_config(),
-		state_, jump_to_campaign_);
+	return sp::enter_create_mode(state_, jump_to_campaign_);
 }
 
 std::string game_launcher::jump_to_campaign_id() const

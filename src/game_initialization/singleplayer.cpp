@@ -12,8 +12,8 @@
 */
 
 #include "game_initialization/singleplayer.hpp"
+
 #include "config.hpp"
-#include "game_config_manager.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
@@ -24,9 +24,9 @@
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-namespace sp {
-
-bool enter_create_mode(const config& game_config, saved_game& state, jump_to_campaign_info jump_to_campaign)
+namespace sp
+{
+bool enter_create_mode(saved_game& state, jump_to_campaign_info jump_to_campaign)
 {
 	bool configure_canceled = false;
 
@@ -92,7 +92,7 @@ bool enter_create_mode(const config& game_config, saved_game& state, jump_to_cam
 			}
 
 			// Canceled difficulty dialog, relaunch the campaign selection dialog
-			return enter_create_mode(game_config, state, jump_to_campaign);
+			return enter_create_mode(state, jump_to_campaign);
 		}
 
 		create_eng.prepare_for_era_and_mods();
@@ -109,14 +109,14 @@ bool enter_create_mode(const config& game_config, saved_game& state, jump_to_cam
 			return false;
 		}
 
-		configure_canceled = !enter_configure_mode(game_config_manager::get()->game_config(), state, create_eng);
+		configure_canceled = !enter_configure_mode(state, create_eng);
 
 	} while (configure_canceled);
 
 	return true;
 }
 
-bool enter_configure_mode(const config& game_config, saved_game& state, ng::create_engine& create_eng)
+bool enter_configure_mode(saved_game& state, ng::create_engine& create_eng)
 {
 	// We create the config engine here in order to ensure values like use_map_settings are set correctly
 	// TODO: should this be passed to this function instead of created here?
@@ -132,17 +132,15 @@ bool enter_configure_mode(const config& game_config, saved_game& state, ng::crea
 	create_eng.get_parameters();
 	create_eng.prepare_for_new_level();
 
-	enter_connect_mode(game_config, state);
+	enter_connect_mode(state);
 
 	return true;
 }
 
-bool enter_connect_mode(const config& /*game_config*/, saved_game& state)
+void enter_connect_mode(saved_game& state)
 {
 	ng::connect_engine connect_eng(state, true, nullptr);
 	connect_eng.start_game();
-
-	return true;
 }
 
 } // end namespace sp
