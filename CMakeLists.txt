@@ -20,15 +20,17 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
 # function to remove a flag from a variable
 function(RemoveFlag VAR SCOPE FLAG DOCSTRING)
-	MESSAGE("Removing ${FLAG} flag from ${VAR}")
-	separate_arguments(${VAR})
-	list(REMOVE_ITEM ${VAR} ${FLAG})
-	string(REPLACE ";" " " ${VAR} "${${VAR}}")
+	if(NOT "${${VAR}}" STREQUAL "")
+		MESSAGE("Removing ${FLAG} flag from ${VAR}")
+		separate_arguments(${VAR})
+		list(REMOVE_ITEM ${VAR} ${FLAG})
+		string(REPLACE ";" " " ${VAR} "${${VAR}}")
 
-	if("${SCOPE}" STREQUAL "CACHE")
-		set(${VAR} "${${VAR}}" CACHE STRING "${DOCSTRING}" FORCE)
-	elseif("${SCOPE}" STREQUAL "SCRIPT")
-		set(${VAR} "${${VAR}}" PARENT_SCOPE)
+		if("${SCOPE}" STREQUAL "CACHE")
+			set(${VAR} "${${VAR}}" CACHE STRING "${DOCSTRING}" FORCE)
+		elseif("${SCOPE}" STREQUAL "SCRIPT")
+			set(${VAR} "${${VAR}}" PARENT_SCOPE)
+		endif()
 	endif()
 endfunction()
 
@@ -191,36 +193,6 @@ set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 # Handle options (set paths/definitions/etc...)
 #
 
-##### Set the compiler flags.
-
-# This macro checks whether a compiler supports a compiler flag.
-#
-# If the flag is supported the flag will be added to the target compiler flags.
-# GCC seems to be quite happy to accept flags it does not support when there is
-# a `no' in it e.g. -Wno-not_supported_flag but will fail to compile with
-# -Wnot_supported_flag. For that case all not-named parameters will be added to
-# the target instead.
-#
-# param target			  The variable to add the compiler flag to.
-# param flag			  The compiler flag to test.
-# param variable		  The test macro needs a variable to store the
-#				  result of the test, this paramter holds that
-#				  variable.
-# param ...			  If this variable is set it will be added to
-#				  target instead of flag when the compiler
-#				  supports flag.
-macro(check_compiler_has_flag target flag variable)
-	check_cxx_compiler_flag(${flag} ${variable})
-	if(${variable})
-		if(${ARGC} GREATER 3)
-			set(${target} "${${target}} ${ARGN}")
-		else(${ARGC} GREATER 3)
-			set(${target} "${${target}} ${flag}")
-		endif(${ARGC} GREATER 3)
-	endif(${variable})
-endmacro(check_compiler_has_flag)
-
-
 ### Set the environment compiler flags.
 
 if(CONFIGURED)
@@ -263,215 +235,52 @@ if(MSVC AND NOT DEFINED CXX_FLAGS_MSVC)
 	)
 endif(MSVC AND NOT DEFINED CXX_FLAGS_MSVC)
 
-set(CXX_FLAGS_PROJECT)
-check_compiler_has_flag(CXX_FLAGS_PROJECT "-std=c++11" HAS_COMPILER_FLAG_STD)
-check_compiler_has_flag(CXX_FLAGS_PROJECT "-W" HAS_COMPILER_FLAG_W)
+set(CXX_FLAGS_PROJECT "-std=c++11 -Wextra -Werror=non-virtual-dtor")
+
 # MSVC's -Wall is not like gcc's, it really enables *all* warnings which include zillions for system headers and doesn't make sense.
 if(NOT MSVC)
-check_compiler_has_flag(CXX_FLAGS_PROJECT "-Wall" HAS_COMPILER_FLAG_WALL)
+	set(CXX_FLAGS_PROJECT "${CXX_FLAGS_PROJECT} -Wall")
 endif(NOT MSVC)
+
+set(COMPILER_FLAGS "${CXX_FLAGS_PROJECT}")
 
 ### Set strict compiler flags.
 
-set(CXX_FLAGS_STRICT_COMPILATION)
-check_compiler_has_flag(
-	CXX_FLAGS_STRICT_COMPILATION
-	"-Werror"
-	HAS_COMPILER_FLAG_WERROR
-)
+if(ENABLE_STRICT_COMPILATION)
+	set(CXX_FLAGS_STRICT_COMPILATION "-Werror -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast")
+	
+	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+		set(CXX_FLAGS_STRICT_COMPILATION "${CXX_FLAGS_STRICT_COMPILATION} -Wmismatched-tags -Wno-conditional-uninitialized")
+	endif()
+	
+	set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_STRICT_COMPILATION}")
 
-# The current unit test code breaks strict aliasing with g++ 4.4.
-check_compiler_has_flag(
-	CXX_FLAGS_STRICT_COMPILATION
-	"-Wstrict-aliasing"
-	HAS_COMPILER_FLAG_WERROR_STRICT_ALIASING
-	"-Wno-strict-aliasing"
-)
-
-# This flag is/will be added in gcc-4.8 and fails with BOOST_STATIC_ASSERT
-check_compiler_has_flag(
-	CXX_FLAGS_STRICT_COMPILATION
-	"-Wunused-local-typedefs"
-	HAS_COMPILER_FLAG_WUNUSED_LOCAL_TYPEDEFS
-	"-Wno-unused-local-typedefs"
-)
-
-# This flag is/will be added in gcc-4.8 and fails with png in C++11 mode
-check_compiler_has_flag(
-	CXX_FLAGS_STRICT_COMPILATION
-	"-Wliteral-suffix"
-	HAS_COMPILER_FLAG_WLITERAL_SUFFIX
-	"-Wno-literal-suffix"
-)
-
-# This flag is too aggressive and keeps giving false positives.
-check_compiler_has_flag(
-	CXX_FLAGS_STRICT_COMPILATION
-	"-Wmaybe-uninitialized"
-	HAS_COMPILER_FLAG_WMAYBE_UNINITIALIZED
-	"-Wno-maybe-uninitialized"
-)
-
-# This removes a lot of warnings from Clang regarding unused -I arguments
-check_compiler_has_flag(
-	CXX_FLAGS_STRICT_COMPILATION
-	"-Qunused-arguments"
-	HAS_COMPILER_FLAG_QUNUSED_ARGUMENTS
-)
-
-# Silences Clang warnings about declaring a class a class first and
-# a struct later.
-check_compiler_has_flag(
-	CXX_FLAGS_STRICT_COMPILATION
-	"-Wmismatched-tags"
-	HAS_COMPILER_FLAG_WMISMATCHED_TAGS
-	"-Wno-mismatched-tags"
-)
-
-check_compiler_has_flag(
-	CXX_FLAGS_STRICT_COMPILATION
-	"-Wnull-conversion"
-	HAS_COMPILER_FLAG_WNULL_CONVERSION
-	"-Wno-null-conversion"
-)
-
-if(NOT CMAKE_COMPILER_IS_GNUCXX)
-	# Silences warnings about overloaded virtuals.
-	# (GCC doesn't complain Clang 3.2 does. Clang 3.4 no longer does.)
-	check_compiler_has_flag(
-		CXX_FLAGS_STRICT_COMPILATION
-		"-Woverloaded-virtual"
-		HAS_COMPILER_FLAG_WOVERLOADED_VIRTUAL
-		"-Wno-overloaded-virtual"
-	)
-endif(NOT CMAKE_COMPILER_IS_GNUCXX)
-
-check_compiler_has_flag(
-	CXX_FLAGS_STRICT_COMPILATION
-	"-Wold-style-cast"
-	HAS_COMPILER_FLAG_WOLD_STYLE_CAST
-)
-
-check_compiler_has_flag(
-	CXX_FLAGS_STRICT_COMPILATION
-	"-Wdeprecated-register"
-	HAS_COMPILER_FLAG_WDEPRECATED_REGISTER
-	"-Wno-deprecated-register"
-)
-
+endif(ENABLE_STRICT_COMPILATION)
 
 ### Set pedantic compiler flags.
 
-set(CXX_FLAGS_PEDANTIC_COMPILATION)
-check_compiler_has_flag(
-	CXX_FLAGS_PEDANTIC_COMPILATION
-	"-Wextra"
-	HAS_COMPILER_FLAG_WEXTRA
-)
+if(ENABLE_PEDANTIC_COMPILATION)
 
-check_compiler_has_flag(
-	CXX_FLAGS_PEDANTIC_COMPILATION
-	"-Winit-self"
-	HAS_COMPILER_FLAG_WINIT_SELF
-)
+	set(CXX_FLAGS_PEDANTIC_COMPILATION "-Wlogical-op -Wmissing-declarations -Wredundant-decls -Wctor-dtor-privacy -Wnon-virtual-dtor -Wdouble-promotion -Wuseless-cast -Wnoexcept")
 
-check_compiler_has_flag(
-	CXX_FLAGS_PEDANTIC_COMPILATION
-	"-Wlogical-op"
-	HAS_COMPILER_FLAG_WLOGICAL_OP
-)
+	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+		set(CXX_FLAGS_PEDANTIC_COMPILATION "${CXX_FLAGS_PEDANTIC_COMPILATION} -Wmismatched-tags -Wdocumentation -Wno-documentation-deprecated-sync")
+	endif()
+	
+	set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_PEDANTIC_COMPILATION}")
 
-check_compiler_has_flag(
-	CXX_FLAGS_PEDANTIC_COMPILATION
-	"-Wmissing-declarations"
-	HAS_COMPILER_FLAG_WMISSING_DECLARATIONS
-)
-
-check_compiler_has_flag(
-	CXX_FLAGS_PEDANTIC_COMPILATION
-	"-Wredundant-decls"
-	HAS_COMPILER_FLAG_WREDUNDANT_DECLS
-)
-
-check_compiler_has_flag(
-	CXX_FLAGS_PEDANTIC_COMPILATION
-	"-Wctor-dtor-privacy"
-	HAS_COMPILER_FLAG_WCTOR_DTOR_PRIVACY
-)
-
-check_compiler_has_flag(
-	CXX_FLAGS_PEDANTIC_COMPILATION
-	"-Wnon-virtual-dtor"
-	HAS_COMPILER_FLAG_WNON_VIRTUAL_DTOR
-)
-
-check_compiler_has_flag(
-	CXX_FLAGS_PEDANTIC_COMPILATION
-	"-Wdouble-promotion"
-	HAS_COMPILER_FLAG_WDOUBLE_PROMOTION
-)
-
-check_compiler_has_flag(
-	CXX_FLAGS_PEDANTIC_COMPILATION
-	"-Wmismatched-tags"
-	HAS_COMPILER_FLAG_WMISMATCHED_TAGS
-)
-
-check_compiler_has_flag(
-	CXX_FLAGS_PEDANTIC_COMPILATION
-	"-Wuseless-cast"
-	HAS_COMPILER_FLAG_WUSELESS_CAST
-)
-
-check_compiler_has_flag(
-	CXX_FLAGS_PEDANTIC_COMPILATION
-	"-Wc++11-compat"
-	HAS_COMPILER_FLAG_WCXX_11_COMPAT
-)
-
-check_compiler_has_flag(
-	CXX_FLAGS_PEDANTIC_COMPILATION
-	"-Wnoexcept"
-	HAS_COMPILER_FLAG_WNOEXCEPT
-)
-
-check_compiler_has_flag(
-	CXX_FLAGS_PEDANTIC_COMPILATION
-	"-Wdocumentation"
-	HAS_COMPILER_FLAG_WDOCUMENTATION
-)
-
-check_compiler_has_flag(
-	CXX_FLAGS_PEDANTIC_COMPILATION
-	"-Wdocumentation-deprecated-sync"
-	HAS_COMPILER_FLAG_WDOCUMENTATION
-	"-Wno-documentation-deprecated-sync"
-)
-
-check_compiler_has_flag(
-	CXX_FLAGS_PEDANTIC_COMPILATION
-	"-Wextra-semi"
-	HAS_COMPILER_FLAG_WEXTRA_SEMI
-)
-
-check_compiler_has_flag(
-	CXX_FLAGS_STRICT_COMPILATION
-	"-Wconditional-uninitialized"
-	HAS_COMPILER_FLAG_WCONDITIONAL_INITIALIZED
-)
+endif(ENABLE_PEDANTIC_COMPILATION)
 
 ### Set the final compiler flags.
 
-set(COMPILER_FLAGS "${CXX_FLAGS_PROJECT}")
 if(MSVC)
 	set(COMPILER_FLAGS "${CXX_FLAGS_MSVC} ${COMPILER_FLAGS}")
 endif(MSVC)
-if(ENABLE_STRICT_COMPILATION)
-	set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_STRICT_COMPILATION}")
-endif(ENABLE_STRICT_COMPILATION)
-if(ENABLE_PEDANTIC_COMPILATION)
-	set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_PEDANTIC_COMPILATION}")
-endif(ENABLE_PEDANTIC_COMPILATION)
+
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+	set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option")
+endif()
+
 set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_USER}")
 
 if(NOT "${CMAKE_CXX_FLAGS}" STREQUAL "${COMPILER_FLAGS}")
@@ -798,15 +607,15 @@ install(DIRECTORY data fonts images sounds DESTINATION ${CMAKE_INSTALL_DATADIR}/
 #
 if(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 	# do some crude string replacing to have the real binary name in the .desktop file (read in original .desktop file, replace the Exec= line with the correct value and output the generated file)
-	#  file(READ icons/wesnoth.desktop wesnoth-desktop-orig)
-	#string(REGEX REPLACE "(\nName.*=.*)\n" "\\1 (${BINARY_SUFFIX})\n" wesnoth-desktop-modified ${wesnoth-desktop-orig} )
-	#  string(REPLACE "Exec=wesnoth" "Exec=${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}" wesnoth-desktop-modified ${wesnoth-desktop-orig} )
-	#  file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop ${wesnoth-desktop-modified} )
+	# file(READ icons/wesnoth.desktop wesnoth-desktop-orig)
+	# string(REGEX REPLACE "(\nName.*=.*)\n" "\\1 (${BINARY_SUFFIX})\n" wesnoth-desktop-modified ${wesnoth-desktop-orig} )
+	# string(REPLACE "Exec=wesnoth" "Exec=${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}" wesnoth-desktop-modified ${wesnoth-desktop-orig} )
+	# file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop ${wesnoth-desktop-modified} )
 
-	#execute_process(COMMAND sed "-i" "'s/^\(Name.*=.*\)$/\1TEST/g'" ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop )
-	#exec_program(sed ARGS "-i" "'s/^\(Name.*=.*\)$/\1TEST/g'" ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop )
+	# execute_process(COMMAND sed "-i" "'s/^\(Name.*=.*\)$/\1TEST/g'" ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop )
+	# exec_program(sed ARGS "-i" "'s/^\(Name.*=.*\)$/\1TEST/g'" ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop )
 	# install the generated .desktop file
-	#  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
+	# install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
 	install(FILES icons/wesnoth.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
 	install(FILES icons/wesnoth-icon.png DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/64x64/apps )
 endif(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
@@ -814,13 +623,13 @@ endif(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 
 if(ENABLE_SERVER AND FIFO_DIR)
 	install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory \$ENV{DESTDIR}/${FIFO_DIR})")
-    # install systemd stuff if it is installed
-    if(SYSTEMD_FOUND)
-#	 configure_file(packaging/systemd/wesnothd.tmpfiles.conf.in ${CMAKE_BINARY_DIR}/wesnothd.conf)
-#	 configure_file(packaging/systemd/wesnothd.service.in ${CMAKE_BINARY_DIR}/wesnothd.service)
-#	 install(FILES ${CMAKE_BINARY_DIR}/wesnothd.conf DESTINATION lib/tmpfiles.d)
+#	install systemd stuff if it is installed
+	if(SYSTEMD_FOUND)
+#	configure_file(packaging/systemd/wesnothd.tmpfiles.conf.in ${CMAKE_BINARY_DIR}/wesnothd.conf)
+#	configure_file(packaging/systemd/wesnothd.service.in ${CMAKE_BINARY_DIR}/wesnothd.service)
+#	install(FILES ${CMAKE_BINARY_DIR}/wesnothd.conf DESTINATION lib/tmpfiles.d)
 #	install(FILES ${CMAKE_BINARY_DIR}/wesnothd.service DESTINATION lib/systemd/system)
-    endif()
+	endif()
 	if(SERVER_UID AND SERVER_GID)
 		install(CODE "execute_process(COMMAND chown ${SERVER_UID}:${SERVER_GID} \$ENV{DESTDIR}/${FIFO_DIR})")
 	endif()

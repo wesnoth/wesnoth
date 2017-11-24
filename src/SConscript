@@ -110,7 +110,7 @@ if env_lua["enable_lto"] == True:
     env_lua["RANLIB"] = 'gcc-ranlib'
 
 env_lua["wesnoth_lua_config"] = File("#/src/wesnoth_lua_config.h").rfile()
-env_lua.Append(CCFLAGS = Split("-include $wesnoth_lua_config -Wno-deprecated-declarations"))
+env_lua.Append(CCFLAGS = Split("-include $wesnoth_lua_config"))
 
 objs_lua = env_lua.Object(lua_sources)
 for obj in objs_lua:

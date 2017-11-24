@@ -109,14 +109,16 @@ void connection::transfer(const config& request, config& response)
 	io_service_.reset();
 	done_ = false;
 
-	std::ostream os(&write_buf_);
+	write_buf_.reset(new boost::asio::streambuf);
+	read_buf_.reset(new boost::asio::streambuf);
+	std::ostream os(write_buf_.get());
 	write_gz(os, request);
 
-	bytes_to_write_ = write_buf_.size() + 4;
+	bytes_to_write_ = write_buf_->size() + 4;
 	bytes_written_ = 0;
 	payload_size_ = htonl(bytes_to_write_ - 4);
 
-	boost::asio::streambuf::const_buffers_type gzipped_data = write_buf_.data();
+	boost::asio::streambuf::const_buffers_type gzipped_data = write_buf_->data();
 	std::deque<boost::asio::const_buffer> bufs(gzipped_data.begin(), gzipped_data.end());
 
 	bufs.push_front(boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4));
@@ -124,7 +126,7 @@ void connection::transfer(const config& request, config& response)
 	boost::asio::async_write(socket_, bufs, std::bind(&connection::is_write_complete, this, _1, _2),
 		std::bind(&connection::handle_write, this, _1, _2));
 
-	boost::asio::async_read(socket_, read_buf_, std::bind(&connection::is_read_complete, this, _1, _2),
+	boost::asio::async_read(socket_, *read_buf_, std::bind(&connection::is_read_complete, this, _1, _2),
 		std::bind(&connection::handle_read, this, _1, _2, std::ref(response)));
 }
 
@@ -138,6 +140,10 @@ void connection::cancel()
 			WRN_NW << "Failed to cancel network operations: " << ec.message() << std::endl;
 		}
 	}
+	bytes_to_write_ = 0;
+	bytes_written_ = 0;
+	bytes_to_read_ = 0;
+	bytes_read_ = 0;
 }
 
 std::size_t connection::is_write_complete(const boost::system::error_code& ec, std::size_t bytes_transferred)
@@ -153,7 +159,8 @@ std::size_t connection::is_write_complete(const boost::system::error_code& ec, s
 void connection::handle_write(const boost::system::error_code& ec, std::size_t bytes_transferred)
 {
 	DBG_NW << "Written " << bytes_transferred << " bytes.\n";
-	write_buf_.consume(bytes_transferred);
+	if(write_buf_)
+		write_buf_->consume(bytes_transferred);
 
 	if(ec) {
 		throw system_error(ec);
@@ -172,7 +179,7 @@ std::size_t connection::is_read_complete(const boost::system::error_code& ec, st
 	}
 
 	if(!bytes_to_read_) {
-		std::istream is(&read_buf_);
+		std::istream is(read_buf_.get());
 		data_union data_size;
 
 		is.read(data_size.binary, 4);
@@ -199,7 +206,7 @@ void connection::handle_read(const boost::system::error_code& ec, std::size_t by
 		throw system_error(ec);
 	}
 
-	std::istream is(&read_buf_);
+	std::istream is(read_buf_.get());
 	read_gz(response, is);
 }
 }

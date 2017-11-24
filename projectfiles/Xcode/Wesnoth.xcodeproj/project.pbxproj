@@ -1209,6 +1209,7 @@
 		ECE272491FA03ADD004F0908 /* player_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECE272471FA03ADC004F0908 /* player_info.cpp */; };
 		ECEEB7F01A1E8AB20006575B /* default_map_generator_job.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECEEB7EF1A1E8AB20006575B /* default_map_generator_job.cpp */; };
 		ECF3A0B318AD3E8800DD643A /* wml_error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF3A0B118AD3E8700DD643A /* wml_error.cpp */; };
+		ECF44F6A1FC8A82B00B404D6 /* make.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF44F681FC8A82A00B404D6 /* make.cpp */; };
 		ECF9D43D19F3FF9400E6C9D9 /* filesystem_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */; settings = {COMPILER_FLAGS = "-DPREFERENCES_DIR='\"Library/Application Support/Wesnoth_1.13\"' -DHAS_RELATIVE_LOCALEDIR"; }; };
 		ECF9D43E19F3FF9400E6C9D9 /* filesystem_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */; };
 		ECF9D44119F4042700E6C9D9 /* libboost_filesystem-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF9D43F19F4026D00E6C9D9 /* libboost_filesystem-mt.dylib */; };
@@ -2617,6 +2618,8 @@
 		ECEEB7EF1A1E8AB20006575B /* default_map_generator_job.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = default_map_generator_job.cpp; sourceTree = "<group>"; };
 		ECF3A0B118AD3E8700DD643A /* wml_error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wml_error.cpp; sourceTree = "<group>"; };
 		ECF3A0B218AD3E8800DD643A /* wml_error.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = wml_error.hpp; sourceTree = "<group>"; };
+		ECF44F681FC8A82A00B404D6 /* make.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = make.cpp; sourceTree = "<group>"; };
+		ECF44F691FC8A82A00B404D6 /* make.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = make.hpp; sourceTree = "<group>"; };
 		ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filesystem_boost.cpp; sourceTree = "<group>"; };
 		ECF9D43F19F4026D00E6C9D9 /* libboost_filesystem-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_filesystem-mt.dylib"; path = "lib/libboost_filesystem-mt.dylib"; sourceTree = "<group>"; };
 		ECFA82DA184E59F3006782FB /* command_executor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = command_executor.cpp; sourceTree = "<group>"; };
@@ -3696,6 +3699,8 @@
 				B52EE8C8121359A600CFBDAB /* helper.hpp */,
 				B55999750EC62181008DD061 /* id.cpp */,
 				B55999740EC62181008DD061 /* id.hpp */,
+				ECF44F681FC8A82A00B404D6 /* make.cpp */,
+				ECF44F691FC8A82A00B404D6 /* make.hpp */,
 				B55999730EC62181008DD061 /* map.cpp */,
 				B55999720EC62181008DD061 /* map.hpp */,
 				91B6219C1B76735200B00E0F /* ptr.hpp */,
@@ -4935,6 +4940,7 @@
 				B5A9BD340ECA805A002BE442 /* generate_map.cpp in Sources */,
 				B559A0160EC8FE2E008DD061 /* editor_main.cpp in Sources */,
 				6295C3C2150FC9750077D8C5 /* editor_map.cpp in Sources */,
+				ECF44F6A1FC8A82B00B404D6 /* make.cpp in Sources */,
 				B5A9BD350ECA805A002BE442 /* new_map.cpp in Sources */,
 				6295C3D6150FC9EB0077D8C5 /* editor_palettes.cpp in Sources */,
 				EC3863641EB6286E0048B0C8 /* lua_audio.cpp in Sources */,
