@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include <iosfwd>
+#include <string>
 
 class t_string;
 class unit_gender;
@@ -27,9 +27,9 @@ public:
 		return 2;
 	}
 
-	static const unit_gender* from_string(const std::string&);
-	static const unit_gender& from_string(const std::string&, const unit_gender& fallback);
-	static const unit_gender* from_int(int);
+	static const unit_gender* from_string(const std::string& str_gender);
+	static const unit_gender& from_string(const std::string& str_gender, const unit_gender& fallback);
+	static const unit_gender* from_int(int index);
 
 	bool operator==(const unit_gender& other) const {
 		return this == &other;
@@ -48,6 +48,3 @@ private:
 	const int index_;
 	const std::string& name_;
 };
-
-// Shows underlying integer type
-std::ostream& operator<<(std::ostream&, unit_gender);

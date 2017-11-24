@@ -15,8 +15,6 @@
 #include "units/gender.hpp"
 #include "units/race.hpp"
 
-#include <ostream>
-
 namespace {
 	/// Standard string id (not translatable) for FEMALE
 	const std::string s_female("female");
@@ -38,11 +36,6 @@ unit_gender::unit_gender(int index, const std::string& name)
 	, name_(name)
 {
 	assert(index < unit_gender::num_genders());
-}
-
-std::ostream& operator<<(std::ostream& os, unit_gender gender){
-	os << static_cast<int>(gender);
-	return os;
 }
 
 /*static*/ const unit_gender* unit_gender::from_string(const std::string& str_gender){
