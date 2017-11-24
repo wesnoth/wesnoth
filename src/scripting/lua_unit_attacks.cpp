@@ -319,6 +319,9 @@ static int impl_unit_attack_match(lua_State* L)
 {
 	const_attack_ptr atk = luaW_toweapon(L, 1);
 	config cfg = luaW_checkconfig(L, 2);
+	if(!atk) {
+		return luaL_argerror(L, 1, "invalid attack");
+	}
 	lua_pushboolean(L, atk->matches_filter(cfg));
 	return 1;
 }
