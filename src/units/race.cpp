@@ -91,7 +91,7 @@ unit_race::unit_race(const config& cfg) :
 	for(int i = 0; i < unit_gender::num_genders(); ++i) {
 		const unit_gender* gender = unit_gender::from_int(i);
 		assert(gender);
-		name_generator_[i] = generator_factory.get_name_generator(gender_string(gender));
+		name_generator_[i] = generator_factory.get_name_generator(gender->str());
 	}
 }
 

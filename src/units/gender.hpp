@@ -51,7 +51,3 @@ private:
 
 // Shows underlying integer type
 std::ostream& operator<<(std::ostream&, unit_gender);
-
-const unit_gender* string_gender(const std::string& str);
-const unit_gender& string_gender(const std::string& str, const unit_gender& def);
-const std::string& gender_string(const unit_gender* gender);

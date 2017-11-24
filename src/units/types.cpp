@@ -252,7 +252,7 @@ void unit_type::build_help_index(
 
 	const std::vector<std::string> genders = utils::split(cfg_["gender"]);
 	for(std::vector<std::string>::const_iterator g = genders.begin(); g != genders.end(); ++g) {
-		genders_.push_back(string_gender(*g));
+		genders_.push_back(unit_gender::from_string(*g));
 	}
 
 	// For simplicity in other parts of the code, we must have at least one gender.

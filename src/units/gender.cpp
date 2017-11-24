@@ -46,10 +46,16 @@ std::ostream& operator<<(std::ostream& os, unit_gender gender){
 }
 
 /*static*/ const unit_gender* unit_gender::from_string(const std::string& str_gender){
-	return string_gender(str_gender);
+	if ( str_gender == s_male ) {
+		return &unit_gender::male();
+	} else if ( str_gender == s_female ) {
+		return &unit_gender::female();
+	}
+	return nullptr;
 }
 /*static*/ const unit_gender& unit_gender::from_string(const std::string& str_gender, const unit_gender& fallback){
-	return string_gender(str_gender, fallback);
+	const unit_gender* gender = from_string(str_gender);
+	return gender ? *gender : fallback;
 }
 /*static*/ const unit_gender* unit_gender::from_int(int index){
 	//FIXME: this is a hack
@@ -71,25 +77,4 @@ const std::string& unit_gender::gender_string(const std::string& male_string, co
 }
 const t_string& unit_gender::gender_string(const t_string& male_string, const t_string& female_string) const {
 	return *this == female() ? female_string : male_string;
-}
-
-const std::string& gender_string(const unit_gender* gender) {
-	if(gender){
-		return gender->str();
-	}
-	return unit_gender::male().str();
-}
-
-
-const unit_gender* string_gender(const std::string& str) {
-	if ( str == s_male ) {
-		return &unit_gender::male();
-	} else if ( str == s_female ) {
-		return &unit_gender::female();
-	}
-	return nullptr;
-}
-const unit_gender& string_gender(const std::string& str, const unit_gender& def) {
-	const unit_gender* gender = string_gender(str);
-	return gender ? *gender : def;
 }

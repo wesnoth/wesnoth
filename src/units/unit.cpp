@@ -228,7 +228,7 @@ static const unit_gender* generate_gender(const unit_type& u_type, const config&
 {
 	const std::string& gender = cfg["gender"];
 	if(!gender.empty()) {
-		return &string_gender(gender, unit_gender::male());
+		return &unit_gender::from_string(gender, unit_gender::male());
 	}
 
 	return generate_gender(u_type, cfg["random_gender"].to_bool());

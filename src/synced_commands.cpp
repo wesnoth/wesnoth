@@ -470,7 +470,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 	debug_notification("A unit was created using debug command during turn of $player");
 	map_location loc(child);
 	resources::whiteboard->on_kill_unit();
-	const unit_gender* gender = string_gender(child["gender"]);
+	const unit_gender* gender = unit_gender::from_string(child["gender"]);
 	const unit_type *u_type = unit_types.find(child["type"]);
 	if (!u_type) {
 		error_handler("Invalid unit type", true);

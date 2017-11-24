@@ -708,7 +708,7 @@ void create_and_place(game_display&,
 			"x", loc.wml_x(),
 			"y", loc.wml_y(),
 			"type", u_type.id(),
-			"gender", gender_string(gender),
+			"gender", gender ? gender->str() : unit_gender::male().str(),
 		}
 	);
 }
