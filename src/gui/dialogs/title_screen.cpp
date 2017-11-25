@@ -135,8 +135,8 @@ REGISTER_DIALOG(title_screen)
 bool show_debug_clock_button = false;
 
 title_screen::title_screen(game_launcher& game)
-	: game_(game)
-	, debug_clock_()
+	: debug_clock_()
+	, game_(game)
 {
 	set_restore(false);
 
@@ -354,7 +354,7 @@ void title_screen::pre_show(window& win)
 	//
 	// Editor
 	//
-	register_button(win, "editor", hotkey::TITLE_SCREEN__EDITOR, [this, &win]() { win.set_retval(MAP_EDITOR); });
+	register_button(win, "editor", hotkey::TITLE_SCREEN__EDITOR, [&win]() { win.set_retval(MAP_EDITOR); });
 
 	//
 	// Cores
@@ -389,12 +389,12 @@ void title_screen::pre_show(window& win)
 	//
 	// Credits
 	//
-	register_button(win, "credits", hotkey::TITLE_SCREEN__CREDITS, [this, &win]() { win.set_retval(SHOW_ABOUT); });
+	register_button(win, "credits", hotkey::TITLE_SCREEN__CREDITS, [&win]() { win.set_retval(SHOW_ABOUT); });
 
 	//
 	// Quit
 	//
-	register_button(win, "quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [this, &win]() { win.set_retval(QUIT_GAME); });
+	register_button(win, "quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [&win]() { win.set_retval(QUIT_GAME); });
 
 	//
 	// Debug clock
