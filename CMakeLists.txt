@@ -53,8 +53,6 @@ set(FIFO_DIR "/var/run/wesnothd" CACHE STRING "Directory for the wesnothd fifo s
 option(ENABLE_GAME "Enable compilation of the game" ON)
 option(ENABLE_CAMPAIGN_SERVER "Enable compilation of campaign server")
 option(ENABLE_SERVER "Enable compilation of server" ON)
-option(ENABLE_TOOLS "Enable building and installation of tools for artists and WML maintainers")
-option(ENABLE_SDL2_TOOLS "Enable building and installation of tools for testing with SDL2" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ON)
 option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
@@ -466,9 +464,9 @@ endif(ENABLE_DEBUG_WINDOW_LAYOUT)
 # Libraries that are only required by some targets
 #
 
-if(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
+if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package( SDL2_image 2.0.0 REQUIRED )
-endif(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
+endif(ENABLE_GAME OR ENABLE_TESTS)
 
 if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package( SDL2_mixer 2.0.0 REQUIRED )
@@ -480,10 +478,7 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	pkg_check_modules( FONTCONFIG REQUIRED fontconfig>=2.4.1 )
 	pkg_check_modules( SYSTEMD systemd )
 endif(ENABLE_GAME OR ENABLE_TESTS)
-if(ENABLE_TOOLS)
-	find_package( ZLIB REQUIRED )
-	find_package( PNG REQUIRED )
-endif(ENABLE_TOOLS)
+
 if(ENABLE_TESTS)
 	find_package( Boost 1.36 REQUIRED COMPONENTS unit_test_framework )
 endif(ENABLE_TESTS)
