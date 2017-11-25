@@ -4,76 +4,84 @@ sudo:     required
 services:
     - docker
 
-compiler:
-    - gcc
-    - clang
-addons:
-  apt:
-    packages:
-    - libsdl2-dev
-env:
-    - OPT=-O0 CXXSTD=11 NLS=false
-    - OPT=-O2 CXXSTD=11 NLS=false
-    - OPT=-O2 CXXSTD=1y NLS=false
-    - NLS=true
-    - CXXSTD=11 NLS=false USE_CMAKE=true
 matrix:
-  exclude:
-    - compiler: gcc
-      env: OPT=-O2 CXXSTD=11 NLS=false
-    - compiler: gcc
-      env: NLS=true
-    - compiler: clang
-      env: OPT=-O2 CXXSTD=1y NLS=false
-    - compiler: clang
-      env: OPT=-O0 CXXSTD=11 NLS=false
   include:
+    - compiler: clang
+      env: CXXSTD=11 NLS=true TOOL=scons
+      
+    - compiler: gcc
+      env: CXXSTD=14 NLS=false TOOL=scons
+      
+    - compiler: gcc
+      env: CXXSTD=11 NLS=false TOOL=scons OPT=-O0
+      
+    - compiler: gcc
+      env: CXXSTD=11 NLS=false TOOL=cmake
+      
+    - compiler: clang
+      env: CXXSTD=11 NLS=false TOOL=scons OPT=-O0
+      
+    - compiler: clang
+      env: CXXSTD=11 NLS=false TOOL=cmake
+      
     - os: osx
       compiler: clang
-      env: opt=-O0 CXXSTD=11 NLS=false
+      env: CXXSTD=11 NLS=false TOOL=scons OPT=-O0
 
 before_install:
     - export TARGETS="wesnoth wesnothd campaignd boost_unit_tests"
-    - export STRICT_COMPILATION=false
     - export EXTRA_FLAGS_RELEASE=""
-    - export WML_TESTS=true CPP_TESTS=false PLAY_TEST=true MP_TEST=true
+    - export WML_TESTS=true
+    - export CPP_TESTS=false
+    - export PLAY_TEST=true
+    - export MP_TEST=true
     - export WML_TEST_TIME=15
 
-    - if $NLS; then
-          export TARGETS="translations" CXXSTD=11;
-          export WML_TESTS=false CPP_TESTS=false PLAY_TEST=false MP_TEST=false;
+    - if [ "$NLS" == "true" ]; then
+          export TARGETS="translations";
+          export WML_TESTS=false;
+          export CPP_TESTS=false;
+          export PLAY_TEST=false;
+          export MP_TEST=false;
       fi
-    - if [ "$TRAVIS_OS_NAME" = osx ]; then export WML_TESTS=false CPP_TESTS=false PLAY_TEST=false MP_TEST=false; fi
     - if [ "$OPT" == "-O0" ]; then
-          export STRICT_COMPILATION=true;
           export EXTRA_FLAGS_RELEASE="-O0";
-          export PLAY_TEST=false MP_TEST=false WML_TEST_TIME=20;
+          export PLAY_TEST=false;
+          export MP_TEST=false;
+          export WML_TEST_TIME=20;
       fi
 
 install:
-    - travis_wait ./utils/travis/install_deps.sh
-    - if [ "$TRAVIS_OS_NAME" = osx ]; then
-          export CXXFLAGS="-I/usr/local/opt/openssl/include $CFLAGS" LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS";
+    - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+          travis_wait ./utils/travis/install_deps.sh;
+          export CXXFLAGS="-I/usr/local/opt/openssl/include $CFLAGS";
+          export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS";
+      else
+          docker build -t wesnoth-ubuntu:16.04 .;
       fi
 
 script: 
-    - ./utils/travis/check_utf8.sh
-    - ./utils/travis/utf8_bom_dog.sh
-    - $CXX --version
-    - if [ "$USE_CMAKE" = true  ]; then
-          cmake . -DENABLE_STRICT_COMPILATION=$STRICT_COMPILATION -DENABLE_NLS=$NLS -DENABLE_TESTS=$CPP_TESTS && make VERBOSE=1 -j2;
+    - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+          ./utils/travis/check_utf8.sh;
+          ./utils/travis/utf8_bom_dog.sh;
+          $CXX --version;
+          scons cxxtool=$CXX ctool=$CC --debug=time build=release extra_flags_config="-pipe" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=true $TARGETS cxx_std=$CXXSTD nls=$NLS jobs=2;
       else
-          scons cxxtool=$CXX ctool=$CC --debug=time build=release extra_flags_config=-pipe extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=$STRICT_COMPILATION $TARGETS cxx_std=$CXXSTD nls=$NLS jobs=2;
+          export DISPLAY=:99.0;
+          /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24;
+          
+          if [ "$TOOL" == "cmake"  ]; then
+              docker run wesnoth-ubuntu:16.04 bash -c "$CXX --version; cmake -DCMAKE_BUILD_TYPE=Release -DEXTRA_FLAGS_CONFIG="-pipe" -DEXTRA_FLAGS_RELEASE="$EXTRA_FLAGS_RELEASE" -DENABLE_STRICT_COMPILATION=true -DENABLE_NLS=$NLS -DENABLE_TESTS=$CPP_TESTS && make VERBOSE=1 -j2";
+          else
+              docker run wesnoth-ubuntu:16.04 bash -c "$CXX --version; scons cxxtool=$CXX ctool=$CC --debug=time build=release extra_flags_config="-pipe" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=true $TARGETS cxx_std=$CXXSTD nls=$NLS jobs=2";
+          fi
       fi
-    - "export DISPLAY=:99.0"
-    - "if [ \"$TRAVIS_OS_NAME\" != osx ]; then /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24; fi"
-    - if [ "$CPP_TESTS" = true ]; then ./utils/travis/test_wrapper.sh; fi
-    - if [ "$WML_TESTS" = true ]; then ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"; fi
-    - if [ "$PLAY_TEST" = true ]; then ./utils/travis/play_test_executor.sh; fi
-    - if [ "$MP_TEST" = true ]; then ./utils/travis/mp_test_executor.sh; fi
 
 after_failure:
-    - if [ -f "errors.log" ]; then echo -e "\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n"; cat errors.log; fi
+    - if [ -f "errors.log" ]; then
+          echo -e "\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n";
+          cat errors.log;
+      fi
     - ./utils/travis/test_executor.sh;
 
 notifications:
