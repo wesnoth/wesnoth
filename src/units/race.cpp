@@ -88,10 +88,8 @@ unit_race::unit_race(const config& cfg) :
 
 	name_generator_factory generator_factory = name_generator_factory(cfg, {"male", "female"});
 
-	for(int i = 0; i < unit_gender::num_genders(); ++i) {
-		const unit_gender* gender = unit_gender::from_int(i);
-		assert(gender);
-		name_generator_[i] = generator_factory.get_name_generator(gender->str());
+	for(const auto& gender: unit_gender::genders()){
+		name_generator_[static_cast<int>(gender)] = generator_factory.get_name_generator(gender.str());
 	}
 }
 

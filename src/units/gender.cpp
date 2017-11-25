@@ -63,11 +63,8 @@ unit_gender::unit_gender(int index, const std::string& name)
 	const unit_gender* gender = from_string(str_gender);
 	return gender ? *gender : fallback;
 }
-/*static*/ const unit_gender* unit_gender::from_int(int index){
-	assert(index < unit_gender::num_genders());
-	auto gender = gender_map[index];
-	assert(gender);
-	return gender;
+/*static*/ gender_list unit_gender::genders(){
+	return {};
 }
 
 const char* unit_gender::gender_string(const char* male_string, const char* female_string) const {
@@ -78,4 +75,30 @@ const std::string& unit_gender::gender_string(const std::string& male_string, co
 }
 const t_string& unit_gender::gender_string(const t_string& male_string, const t_string& female_string) const {
 	return *this == female() ? female_string : male_string;
+}
+
+gender_list::const_iterator gender_list::begin(){
+	return {0};
+}
+gender_list::const_iterator gender_list::end(){
+	return {unit_gender::num_genders()};
+}
+const unit_gender& gender_list::const_iterator::operator*() const {
+	assert(ix_ >= 0);
+	assert(ix_ < unit_gender::num_genders());
+	return *gender_map[ix_];
+}
+gender_list::const_iterator& gender_list::const_iterator::operator++() {
+	++ix_;
+	return *this;
+}
+bool gender_list::const_iterator::operator==(const const_iterator& other) const {
+	return ix_ == other.ix_;
+}
+bool gender_list::const_iterator::operator!=(const const_iterator& other) const {
+	return !(*this == other);
+}
+gender_list::const_iterator::const_iterator(int ix) : ix_(ix) {
+	assert(ix >= 0);
+	assert(ix <= unit_gender::num_genders());
 }

@@ -19,6 +19,23 @@
 class t_string;
 class unit_gender;
 
+class gender_list {
+public:
+	class const_iterator {
+	public:
+		const unit_gender& operator*() const;
+		const_iterator& operator++();
+		bool operator==(const const_iterator& other) const;
+		bool operator!=(const const_iterator& other) const;
+	private:
+		const_iterator(int ix);
+		int ix_;
+		friend gender_list;
+	};
+	const_iterator begin();
+	const_iterator end();
+};
+
 class unit_gender {
 public:
 	static const unit_gender& male();
@@ -29,7 +46,7 @@ public:
 
 	static const unit_gender* from_string(const std::string& str_gender);
 	static const unit_gender& from_string(const std::string& str_gender, const unit_gender& fallback);
-	static const unit_gender* from_int(int index);
+	static gender_list genders();
 
 	bool operator==(const unit_gender& other) const {
 		return this == &other;
