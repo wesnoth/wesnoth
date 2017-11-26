@@ -33,6 +33,11 @@ public:
 		add_surface_ref(surface_);
 	}
 
+	surface(surface&& s) : surface_(s.get())
+	{
+		s.surface_ = nullptr;
+	}
+
 	~surface()
 	{
 		free_surface();
@@ -51,6 +56,14 @@ public:
 	surface& operator=(const surface& s)
 	{
 		assign(s);
+		return *this;
+	}
+
+	surface& operator=(surface&& s)
+	{
+		free_surface();
+		surface_ = s.surface_;
+		s.surface_ = nullptr;
 		return *this;
 	}
 

@@ -13,6 +13,8 @@ Version 1.13.10+dev:
  * Performance:
    * GUI2 windows no longer redraw everything 50 times per second. This reduces
      CPU usage in fullscreen windows such as MP lobby by about 85 %.
+   * Miscellaneous low-level optimizations in game rendering code, improving
+     performance ingame by up to 50 %.
  * Miscellaneous and bug fixes:
    * Fixed ingame help showing units you haven't encountered (bug #2135)
 

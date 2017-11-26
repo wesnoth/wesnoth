@@ -53,8 +53,10 @@
 
 #include <SDL_image.h>
 
+#include <array>
 #include <cmath>
 #include <iomanip>
+#include <utility>
 
 #ifdef _WIN32
 #include <windows.h>
@@ -988,8 +990,8 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 {
 	std::vector<std::string> names;
 
-	map_location adjacent[6];
-	get_adjacent_tiles(loc,adjacent);
+	std::array<map_location, 6> adjacent;
+	get_adjacent_tiles(loc, adjacent.data());
 
 	enum visibility {FOG=0, SHROUD=1, CLEAR=2};
 	visibility tiles[6];
@@ -1073,11 +1075,11 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 	return res;
 }
 
-std::vector<surface> display::get_terrain_images(const map_location &loc,
+const std::vector<surface>& display::get_terrain_images(const map_location &loc,
 	const std::string& timeid,
 	TERRAIN_TYPE terrain_type)
 {
-	std::vector<surface> res;
+	terrain_image_vector_.clear();
 
 	terrain_builder::TERRAIN_TYPE builder_terrain_type =
 	      (terrain_type == FOREGROUND ?
@@ -1091,8 +1093,12 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 	const time_of_day& tod = get_time_of_day(loc);
 
 	//get all the light transitions
-	map_location adjs[6];
-	get_adjacent_tiles(loc,adjs);
+	std::array<map_location, 6> adjs;
+	std::array<const time_of_day*, 6> atods;
+	get_adjacent_tiles(loc, adjs.data());
+	for(size_t d = 0; d < adjs.size(); ++d){
+		atods[d] = &get_time_of_day(adjs[d]);
+	}
 
 	for(int d=0; d<6; ++d){
 		/* concave
@@ -1106,8 +1112,8 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 		\  tod  /
 		 \_____/*/
 
-		const time_of_day& atod1 = get_time_of_day(adjs[d]);
-		const time_of_day& atod2 = get_time_of_day(adjs[(d + 1) % 6]);
+		const time_of_day& atod1 = *atods[d];
+		const time_of_day& atod2 = *atods[(d + 1) % 6];
 
 		if(atod1.color == tod.color || atod2.color == tod.color || atod1.color != atod2.color)
 			continue;
@@ -1134,8 +1140,8 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 		\  tod  /
 		 \_____/*/
 
-		const time_of_day& atod1 = get_time_of_day(adjs[d]);
-		const time_of_day& atod2 = get_time_of_day(adjs[(d + 1) % 6]);
+		const time_of_day& atod1 = *atods[d];
+		const time_of_day& atod2 = *atods[(d + 1) % 6];
 
 		if(atod1.color == tod.color || atod1.color == atod2.color)
 			continue;
@@ -1162,8 +1168,8 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 		\  tod  /
 		 \_____/*/
 
-		const time_of_day& atod1 = get_time_of_day(adjs[d]);
-		const time_of_day& atod2 = get_time_of_day(adjs[(d + 1) % 6]);
+		const time_of_day& atod1 = *atods[d];
+		const time_of_day& atod2 = *atods[(d + 1) % 6];
 
 		if(atod2.color == tod.color || atod1.color == atod2.color)
 			continue;
@@ -1212,12 +1218,12 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			}
 
 			if (!surf.null()) {
-				res.push_back(surf);
+				terrain_image_vector_.push_back(std::move(surf));
 			}
 		}
 	}
 
-	return res;
+	return terrain_image_vector_;
 }
 
 void display::drawing_buffer_add(const drawing_layer layer,
@@ -2559,16 +2565,14 @@ void display::draw_hex(const map_location& loc) {
 	int num_images_bg = 0;
 
 	if(!shrouded(loc)) {
-		std::vector<surface> images_fg = get_terrain_images(loc,tod.id, FOREGROUND);
-		std::vector<surface> images_bg = get_terrain_images(loc,tod.id, BACKGROUND);
-
-		num_images_fg = images_fg.size();
+		// unshrouded terrain (the normal case)
+		const std::vector<surface>& images_bg = get_terrain_images(loc, tod.id, BACKGROUND);
+		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, images_bg);
 		num_images_bg = images_bg.size();
 
-		// unshrouded terrain (the normal case)
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, images_bg);
-
+		const std::vector<surface>& images_fg = get_terrain_images(loc, tod.id, FOREGROUND);
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, images_fg);
+		num_images_fg = images_fg.size();
 
 		// Draw the grid, if that's been enabled
 		if(grid_) {

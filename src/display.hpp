@@ -716,7 +716,8 @@ protected:
 
 	enum TERRAIN_TYPE { BACKGROUND, FOREGROUND};
 
-	std::vector<surface> get_terrain_images(const map_location &loc,
+	// Warning: the returned vector will be invalidated on the next call!
+	const std::vector<surface>& get_terrain_images(const map_location &loc,
 					const std::string& timeid,
 					TERRAIN_TYPE terrain_type);
 
@@ -800,6 +801,10 @@ private:
 
 	/** Animated flags for each team */
 	std::vector<animated<image::locator> > flags_;
+
+	// This vector is a class member to avoid repeated memory allocations in get_terrain_images(),
+	// which turned out to be a significant bottleneck while profiling.
+	std::vector<surface> terrain_image_vector_;
 
 public:
 	/**
