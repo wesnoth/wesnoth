@@ -794,8 +794,11 @@ public:
 	 * Executes a hotkey.
 	 *
 	 * @param id                  The hotkey to execute.
+	 *
+	 * @returns                   true if the hotkey is handled, false
+	 *                            otherwise.
 	 */
-	void execute_hotkey(const hotkey::HOTKEY_COMMAND id);
+	bool execute_hotkey(const hotkey::HOTKEY_COMMAND id);
 
 private:
 	/** The mouse behavior for the dispatcher. */

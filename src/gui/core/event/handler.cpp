@@ -741,13 +741,11 @@ void sdl_event_handler::text_editing(const std::string& unicode, int32_t start, 
 
 bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr key)
 {
-	dispatcher* dispatcher = keyboard_dispatcher();
-
-	if(dispatcher) {
-		dispatcher->execute_hotkey(hotkey::get_id(key->get_command()));
+	if(dispatcher* dispatcher = keyboard_dispatcher()) {
+		return dispatcher->execute_hotkey(hotkey::get_id(key->get_command()));
 	}
 
-	return dispatcher != nullptr;
+	return false;
 }
 
 void sdl_event_handler::key_down(const SDL_Keycode key,
