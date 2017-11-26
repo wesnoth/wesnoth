@@ -205,7 +205,7 @@ bool dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
 	 * the signature to return void, but if there's ever a need to restore the bool
 	 * retval on the hotkey functions, this is where it should be handled.
 	 *
-	 * -- vultraz, 2017-27-2017
+	 * -- vultraz, 2017-11-27
 	 */
 	return true;
 }
