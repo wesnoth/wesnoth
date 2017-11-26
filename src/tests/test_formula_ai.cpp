@@ -17,10 +17,6 @@
 #include <boost/test/unit_test.hpp>
 
 
-
-#include "tests/utils/play_scenario.hpp"
-
-
 BOOST_AUTO_TEST_SUITE( formula_ai )
 
 //BOOST_AUTO_TEST_CASE( test_move )
