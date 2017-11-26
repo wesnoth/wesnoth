@@ -17,7 +17,6 @@ include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR} )
 
 include_directories(SYSTEM ${SDL2_INCLUDE_DIR} )
 set(sdl-lib ${SDL2_LIBRARY})
-set(sdlmain-lib ${SDL2MAIN_LIBRARY})
 #optional dependencies
 if(SDL2IMAGE_INCLUDE_DIR)
 	include_directories(SYSTEM ${SDL2IMAGE_INCLUDE_DIR} )
