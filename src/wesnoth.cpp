@@ -947,12 +947,7 @@ static void restart_process()
 #define error_exit(res) return res
 #endif
 
-#ifdef __APPLE__
-extern "C" int wesnoth_main(int argc, char** argv);
-int wesnoth_main(int argc, char** argv)
-#else
 int main(int argc, char** argv)
-#endif
 {
 #ifdef _WIN32
 	(void)argc;

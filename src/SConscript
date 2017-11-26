@@ -151,7 +151,7 @@ for env in [test_env, client_env, env]:
 # used to set the executable icon for wesnoth and wesnothd
 libwesnoth_objects = libwesnoth_client + liblua + libwesnoth_core + libwesnoth_game + libwesnoth_sdl + libwesnoth_client
 if env["PLATFORM"] == 'darwin':
-    client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects + ["macosx/SDLMain.mm"], have_client_prereqs)
+    client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects, have_client_prereqs)
 elif env["PLATFORM"] == 'win32':
     client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects + env["wesnoth_res"], have_client_prereqs)
 else:
