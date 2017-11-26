@@ -184,8 +184,6 @@ void playmp_controller::play_human_turn()
 			throw;
 		}
 		turn_data_.send_data();
-
-		gui_->draw();
 	}
 }
 
