@@ -21,6 +21,7 @@
 #include <memory>
 
 class surface;
+struct point;
 
 namespace sdl
 {
@@ -79,31 +80,33 @@ private:
 	/**
 	 * Sets the window's mode - ie, changing it to fullscreen, maximizing, etc.
 	 *
-	 * @param x                   The new window width, if @a mode is TO_RES.
-	 * @param y                   The new window height, if @a mode is TO_RES.
 	 * @param mode                The action to perform.
+	 * @param size                The new window size. Utilized if @a mode is TO_RES.
 	 */
-	void set_window_mode(int x, int y, const MODE_EVENT mode);
+	void set_window_mode(const MODE_EVENT mode, const point& size);
 
 public:
 	void set_fullscreen(bool ison);
 
+	void toggle_fullscreen();
+
 	bool is_fullscreen() const;
 
-	void set_resolution(const std::pair<int, int>& res);
+	bool set_resolution(const unsigned width, const unsigned height);
 
 	/**
-	 * Set the resolution.
+	 * Set the window resolution.
 	 *
-	 * @param width               The new width.
-	 * @param height              The new height.
+	 * @param resolution          The new width and height.
+	 * 
+	 * @returns                   Whether the resolution was sucessfully changed.
 	 */
-	void set_resolution(const unsigned width, const unsigned height);
+	bool set_resolution(const point& resolution);
 
-	std::pair<int, int> current_resolution();
+	point current_resolution();
 
 	/** Returns the list of available screen resolutions. */
-	std::vector<std::pair<int, int>> get_available_resolutions(const bool include_current = false);
+	std::vector<point> get_available_resolutions(const bool include_current = false);
 
 	/** The current width of the window, is screen coordinates. */
 	int getx() const;

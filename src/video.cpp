@@ -19,6 +19,7 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
+#include "sdl/point.hpp"
 #include "sdl/userevent.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/window.hpp"
@@ -233,8 +234,8 @@ void CVideo::init_window()
 	const int y = preferences::fullscreen() ? SDL_WINDOWPOS_UNDEFINED : SDL_WINDOWPOS_CENTERED;
 
 	// Dimensions
-	const int w = preferences::resolution().first;
-	const int h = preferences::resolution().second;
+	const int w = preferences::resolution().x;
+	const int h = preferences::resolution().y;
 
 	// Video flags
 	int video_flags = 0;
@@ -267,7 +268,7 @@ void CVideo::init_window()
 	}
 }
 
-void CVideo::set_window_mode(int x, int y, const MODE_EVENT mode)
+void CVideo::set_window_mode(const MODE_EVENT mode, const point& size)
 {
 	assert(window);
 	if(fake_screen_) {
@@ -291,7 +292,7 @@ void CVideo::set_window_mode(int x, int y, const MODE_EVENT mode)
 
 	case TO_RES:
 		window->restore();
-		window->set_size(x, y);
+		window->set_size(size.x, size.y);
 		window->center();
 		break;
 	}
@@ -412,9 +413,9 @@ std::pair<float, float> CVideo::get_dpi_scale_factor() const
 	return result;
 }
 
-std::vector<std::pair<int, int>> CVideo::get_available_resolutions(const bool include_current)
+std::vector<point> CVideo::get_available_resolutions(const bool include_current)
 {
-	std::vector<std::pair<int, int>> result;
+	std::vector<point> result;
 
 	if(!window) {
 		return result;
@@ -428,8 +429,7 @@ std::vector<std::pair<int, int>> CVideo::get_available_resolutions(const bool in
 		return result;
 	}
 
-	const std::pair<int, int> min_res = std::make_pair(preferences::min_window_width, preferences::min_window_height);
-	const std::pair<int, int> current_res = current_resolution();
+	const point min_res(preferences::min_window_width, preferences::min_window_height);
 
 #if 0
 	// DPI scale factor.
@@ -451,7 +451,7 @@ std::vector<std::pair<int, int>> CVideo::get_available_resolutions(const bool in
 				continue;
 			}
 
-			if(mode.w >= min_res.first && mode.h >= min_res.second) {
+			if(mode.w >= min_res.x && mode.h >= min_res.y) {
 				result.emplace_back(mode.w, mode.h);
 			}
 		}
@@ -462,7 +462,7 @@ std::vector<std::pair<int, int>> CVideo::get_available_resolutions(const bool in
 	}
 
 	if(include_current) {
-		result.push_back(current_res);
+		result.push_back(current_resolution());
 	}
 
 	std::sort(result.begin(), result.end());
@@ -476,10 +476,9 @@ surface& CVideo::getSurface()
 	return frameBuffer;
 }
 
-std::pair<int, int> CVideo::current_resolution()
+point CVideo::current_resolution()
 {
-	SDL_Point size = window->get_size();
-	return std::make_pair(size.x, size.y);
+	return point(window->get_size()); // Convert from plain SDL_Point
 }
 
 bool CVideo::is_fullscreen() const
@@ -535,7 +534,7 @@ void CVideo::clear_all_help_strings()
 void CVideo::set_fullscreen(bool ison)
 {
 	if(window && is_fullscreen() != ison) {
-		const std::pair<int, int>& res = preferences::resolution();
+		const point& res = preferences::resolution();
 
 		MODE_EVENT mode;
 
@@ -545,10 +544,10 @@ void CVideo::set_fullscreen(bool ison)
 			mode = preferences::maximized() ? TO_MAXIMIZED_WINDOW : TO_WINDOWED;
 		}
 
-		set_window_mode(res.first, res.second, mode);
+		set_window_mode(mode, res);
 
-		if(display::get_singleton()) {
-			display::get_singleton()->redraw_everything();
+		if(display* d = display::get_singleton()) {
+			d->redraw_everything();
 		}
 	}
 
@@ -556,27 +555,37 @@ void CVideo::set_fullscreen(bool ison)
 	preferences::_set_fullscreen(ison);
 }
 
-void CVideo::set_resolution(const std::pair<int, int>& resolution)
+void CVideo::toggle_fullscreen()
 {
-	set_resolution(resolution.first, resolution.second);
+	set_fullscreen(!preferences::fullscreen());
 }
 
-void CVideo::set_resolution(const unsigned width, const unsigned height)
+bool CVideo::set_resolution(const unsigned width, const unsigned height)
 {
-	if(static_cast<unsigned int>(current_resolution().first) == width
-			&& static_cast<unsigned int>(current_resolution().second) == height) {
-		return;
+	return set_resolution(point(width, height));
+}
+
+bool CVideo::set_resolution(const point& resolution)
+{
+	if(resolution == current_resolution()) {
+		return false;
 	}
 
-	set_window_mode(width, height, TO_RES);
+	set_window_mode(TO_RES, resolution);
 
-	if(display::get_singleton()) {
-		display::get_singleton()->redraw_everything();
+	if(display* d = display::get_singleton()) {
+		d->redraw_everything();
 	}
 
-	// Change the config values.
-	preferences::_set_resolution(std::make_pair(width, height));
+	// Change the saved values in preferences.
+	preferences::_set_resolution(resolution);
 	preferences::_set_maximized(false);
+
+	// Push a window-resized event to the queue. This is necessary so various areas
+	// of the game (like GUI2) update properly with the new size.
+	events::raise_resize_event();
+
+	return true;
 }
 
 void CVideo::lock_flips(bool lock)

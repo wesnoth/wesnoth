@@ -21,11 +21,21 @@
 /** Holds a 2D point. */
 struct point
 {
-	point() : x(0), y(0)
+	point()
+		: x(0)
+		, y(0)
 	{
 	}
 
-	point(const int x_, const int y_) : x(x_), y(y_)
+	point(const int x_, const int y_)
+		: x(x_)
+		, y(y_)
+	{
+	}
+
+	point(const SDL_Point& p)
+		: x(p.x)
+		, y(p.y)
 	{
 	}
 
@@ -42,10 +52,12 @@ struct point
 	{
 		return x == point.x && y == point.y;
 	}
+
 	bool operator!=(const point& point) const
 	{
-		return x != point.x || y != point.y;
+		return !operator==(point);
 	}
+
 	bool operator<(const point& point) const
 	{
 		return x < point.x || (x == point.x && y < point.y);

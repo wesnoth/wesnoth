@@ -213,7 +213,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 		const int xres = std::get<0>(*cmdline_opts_.resolution);
 		const int yres = std::get<1>(*cmdline_opts_.resolution);
 		if(xres > 0 && yres > 0) {
-			preferences::_set_resolution(std::make_pair(xres, yres));
+			preferences::_set_resolution(point(xres, yres));
 			preferences::_set_maximized(false);
 		}
 	}

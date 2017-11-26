@@ -19,18 +19,20 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "preferences/general.hpp"
+
 #include "config.hpp"
+#include "credentials.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
-#include "credentials.hpp"
-#include "preferences/general.hpp"
-#include "sound.hpp"
-#include "video.hpp" // non_interactive()
+#include "sdl/point.hpp"
 #include "serialization/parser.hpp"
+#include "sound.hpp"
 #include "utils/general.hpp"
+#include "video.hpp" // non_interactive()
 
 #include <sys/stat.h> // for setting the permissions of the preferences file
 #ifndef _WIN32
@@ -135,7 +137,7 @@ void prefs_event_handler::handle_window_event(const SDL_Event& event)
 
 	switch(event.window.event) {
 	case SDL_WINDOWEVENT_RESIZED:
-		_set_resolution(std::make_pair(event.window.data1,event.window.data2));
+		_set_resolution(point(event.window.data1,event.window.data2));
 
 		break;
 
@@ -370,19 +372,19 @@ void set_scroll_to_action(bool ison)
 	prefs["scroll_to_action"] = ison;
 }
 
-std::pair<int,int> resolution()
+point resolution()
 {
 	const std::string& x = prefs["xresolution"], y = prefs["yresolution"];
 
 	if (!x.empty() && !y.empty()) {
 		try {
-			return std::make_pair(
+			return point(
 				std::max(std::stoi(x), min_window_width),
 				std::max(std::stoi(y), min_window_height));
 		} catch(std::invalid_argument) {}
 	}
 
-	return std::pair<int,int>(def_window_width, def_window_height);
+	return point(def_window_width, def_window_height);
 }
 
 bool maximized()
@@ -395,10 +397,10 @@ bool fullscreen()
 	return get("fullscreen", false);
 }
 
-void _set_resolution(const std::pair<int, int>& res)
+void _set_resolution(const point& res)
 {
-	preferences::set("xresolution", std::to_string(res.first));
-	preferences::set("yresolution", std::to_string(res.second));
+	preferences::set("xresolution", std::to_string(res.x));
+	preferences::set("yresolution", std::to_string(res.y));
 }
 
 void _set_maximized(bool ison)

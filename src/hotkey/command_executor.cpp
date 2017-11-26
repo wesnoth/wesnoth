@@ -561,7 +561,7 @@ void execute_command(const hotkey_command& command, command_executor* executor, 
 			executor->recalculate_minimap();
 			break;
 		case HOTKEY_FULLSCREEN:
-			executor->get_video().set_fullscreen(!preferences::fullscreen());
+			executor->get_video().toggle_fullscreen();
 			break;
 		case HOTKEY_SCREENSHOT:
 			make_screenshot(_("Screenshot"), executor->get_video(), &::screenshot);

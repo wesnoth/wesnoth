@@ -119,18 +119,20 @@ void preferences_dialog::set_resolution_list(menu_button& res_list, CVideo& vide
 	resolutions_ = video.get_available_resolutions(true);
 
 	std::vector<config> options;
-	for(const auto& res : resolutions_)
-	{
+	for(const point& res : resolutions_) {
 		config option;
-		option["label"] = formatter() << res.first << font::unicode_multiplication_sign << res.second;
+		option["label"] = formatter() << res.x << font::unicode_multiplication_sign << res.y;
 
-		const int div = boost::math::gcd(res.first, res.second);
-		const int ratio[2] {res.first/div, res.second/div};
-		if(ratio[0] <= 10 || ratio[1] <= 10) {
-			option["details"] = formatter() << "<span color='#777777'>(" << ratio[0] << ':' << ratio[1] << ")</span>";
+		const int div = boost::math::gcd(res.x, res.y);
+
+		const int x_ratio = res.x / div;
+		const int y_ratio = res.y / div;
+
+		if(x_ratio <= 10 || y_ratio <= 10) {
+			option["details"] = formatter() << "<span color='#777777'>(" << y_ratio << ':' << y_ratio << ")</span>";
 		}
 
-		options.push_back(option);
+		options.push_back(std::move(option));
 	}
 
 	const unsigned current_res = std::find(resolutions_.begin(), resolutions_.end(),
@@ -1037,15 +1039,10 @@ void preferences_dialog::fullscreen_toggle_callback(window& window)
 void preferences_dialog::handle_res_select(window& window)
 {
 	menu_button& res_list = find_widget<menu_button>(&window, "resolution_set", false);
-	const int choice = res_list.get_value();
 
-	if(resolutions_[static_cast<size_t>(choice)] == window.video().current_resolution()) {
-		return;
+	if(window.video().set_resolution(resolutions_[res_list.get_value()])) {
+		set_resolution_list(res_list, window.video());
 	}
-
-	window.video().set_resolution(resolutions_[static_cast<size_t>(choice)]);
-	events::raise_resize_event();
-	set_resolution_list(res_list, window.video());
 }
 
 void preferences_dialog::on_page_select(window& window)

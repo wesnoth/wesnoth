@@ -24,6 +24,8 @@ class display;
 
 #include <utility>
 
+struct point;
+
 namespace hotkey {
 	class hotkey_item;
 }
@@ -81,8 +83,8 @@ namespace preferences {
 	bool scroll_to_action();
 	void set_scroll_to_action(bool ison);
 
-	std::pair<int,int> resolution();
-	void _set_resolution(const std::pair<int,int>& res);
+	point resolution();
+	void _set_resolution(const point& res);
 
 	bool maximized();
 	void _set_maximized(bool ison);

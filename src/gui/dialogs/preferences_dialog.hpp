@@ -30,6 +30,8 @@ namespace hotkey {
 	struct hotkey_command;
 }
 
+struct point;
+
 namespace preferences {
 	enum PREFERENCE_VIEW {
 		VIEW_DEFAULT,
@@ -125,7 +127,7 @@ private:
 		(SPECIAL, "custom")
 	)
 
-	std::vector<std::pair<int,int> > resolutions_;
+	std::vector<point> resolutions_;
 	std::vector<config> adv_preferences_cfg_;
 
 	int last_selected_item_;
