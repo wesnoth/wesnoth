@@ -129,7 +129,7 @@ void preferences_dialog::set_resolution_list(menu_button& res_list, CVideo& vide
 		const int y_ratio = res.y / div;
 
 		if(x_ratio <= 10 || y_ratio <= 10) {
-			option["details"] = formatter() << "<span color='#777777'>(" << y_ratio << ':' << y_ratio << ")</span>";
+			option["details"] = formatter() << "<span color='#777777'>(" << x_ratio << ':' << y_ratio << ")</span>";
 		}
 
 		options.push_back(std::move(option));
