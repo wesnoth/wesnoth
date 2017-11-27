@@ -43,13 +43,13 @@ static lg::log_domain log_config("config");
 
 namespace {
 
-bool screenshot(const std::string& filename, CVideo& video)
+bool screenshot(const std::string& filename)
 {
-	return image::save_image(video.getSurface(), filename);
+	return image::save_image(CVideo::get_singleton().getSurface(), filename);
 }
 
 template<typename TFunc>
-void make_screenshot(const std::string& name, CVideo& video, const TFunc& func)
+void make_screenshot(const std::string& name, const TFunc& func)
 {
 	std::string filename = filesystem::get_screenshot_dir() + "/" + name + "_";
 #ifdef HAVE_LIBPNG
@@ -58,7 +58,7 @@ void make_screenshot(const std::string& name, CVideo& video, const TFunc& func)
 	const std::string ext = ".bmp";
 #endif
 	filename = filesystem::get_next_filename(filename, ext);
-	const bool res = func(filename, video);
+	const bool res = func(filename);
 	if (res) {
 		gui2::dialogs::screenshot_notification::display(filename);
 	} else {
@@ -561,10 +561,10 @@ void execute_command(const hotkey_command& command, command_executor* executor, 
 			executor->recalculate_minimap();
 			break;
 		case HOTKEY_FULLSCREEN:
-			executor->get_video().toggle_fullscreen();
+			CVideo::get_singleton().toggle_fullscreen();
 			break;
 		case HOTKEY_SCREENSHOT:
-			make_screenshot(_("Screenshot"), executor->get_video(), &::screenshot);
+			make_screenshot(_("Screenshot"), &::screenshot);
 			break;
 		case HOTKEY_ANIMATE_MAP:
 			preferences::set_animate_map(!preferences::animate_map());
@@ -669,11 +669,6 @@ void command_executor_default::recalculate_minimap()
 	get_display().recalculate_minimap();
 }
 
-CVideo& command_executor_default::get_video()
-{
-	return get_display().video();
-}
-
 void command_executor_default::lua_console()
 {
 	if (get_display().in_game()) {
@@ -712,9 +707,7 @@ void command_executor_default::zoom_default()
 
 void command_executor_default::map_screenshot()
 {
-	make_screenshot(_("Map-Screenshot"), get_video(),
-		[this](const std::string& filename, const CVideo&)
-	{
+	make_screenshot(_("Map-Screenshot"), [this](const std::string& filename) {
 		return get_display().screenshot(filename, true);
 	});
 }
