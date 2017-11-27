@@ -121,22 +121,14 @@ const unsigned LAYOUT = 0;
 #endif
 
 /**
- * The interval between draw events.
- *
- * When the window is shown this value is set, the callback function always
- * uses this value instead of the parameter send, that way the window can stop
- * drawing when it wants.
+ * Pushes a single draw event to the queue. To be used before calling
+ * events::pump when drawing windows.
+ * 
+ * @todo: in the future we should simply call draw functions directly
+ * from events::pump and do away with the custom drawing events, but
+ * that's a 1.15 target. For now, this will have to do.
  */
-static int draw_interval = 0;
-
-/**
- * SDL_AddTimer() callback for the draw event.
- *
- * When this callback is called it pushes a new draw event in the event queue.
- *
- * @returns                       The new timer interval, 0 to stop.
- */
-static Uint32 draw_timer(Uint32, void*)
+static void push_draw_event()
 {
 	//	DBG_GUI_E << "Pushing draw event in queue.\n";
 
@@ -147,7 +139,6 @@ static Uint32 draw_timer(Uint32, void*)
 	event.user = data;
 
 	SDL_PushEvent(&event);
-	return draw_interval;
 }
 
 /**
@@ -438,25 +429,21 @@ window* window::window_instance(const unsigned handle)
 
 void window::update_screen_size()
 {
-	// Only if we're the toplevel window we need to update the size, otherwise
-	// it's done in the resize event.
-	if(draw_interval == 0) {
-		const SDL_Rect rect = screen_area();
-		settings::screen_width = rect.w;
-		settings::screen_height = rect.h;
+	const SDL_Rect rect = screen_area();
+	settings::screen_width = rect.w;
+	settings::screen_height = rect.h;
 
-		settings::gamemap_width = settings::screen_width;
-		settings::gamemap_height = settings::screen_height;
+	settings::gamemap_width = settings::screen_width;
+	settings::gamemap_height = settings::screen_height;
 
-		display* display = display::get_singleton();
-		if(display) {
-			const SDL_Rect rect_gm = display->map_outside_area();
+	display* display = display::get_singleton();
+	if(display) {
+		const SDL_Rect rect_gm = display->map_outside_area();
 
-			if(rect_gm.w && rect_gm.h) {
-				settings::gamemap_width = rect_gm.w;
-				settings::gamemap_height = rect_gm.h;
-				settings::gamemap_x_offset = rect_gm.x;
-			}
+		if(rect_gm.w && rect_gm.h) {
+			settings::gamemap_width = rect_gm.w;
+			settings::gamemap_height = rect_gm.h;
+			settings::gamemap_x_offset = rect_gm.x;
 		}
 	}
 }
@@ -525,6 +512,8 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 	invalidate_layout();
 	suspend_drawing_ = false;
 
+	push_draw_event();
+
 	events::pump();
 }
 
@@ -539,43 +528,11 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 	show_mode_ = modal;
 	restore_ = restore;
 
-	/**
-	 * Helper class to set and restore the drawing interval.
-	 *
-	 * We need to make sure we restore the value when the function ends, be it
-	 * normally or due to an exception.
-	 */
-	class draw_interval_setter
-	{
-	public:
-		draw_interval_setter() : interval_(draw_interval)
-		{
-			if(interval_ == 0) {
-				draw_interval = 20;
-				SDL_AddTimer(draw_interval, draw_timer, nullptr);
-
-				// There might be some time between creation and showing so
-				// reupdate the sizes.
-				update_screen_size();
-			}
-		}
-
-		~draw_interval_setter()
-		{
-			draw_interval = interval_;
-		}
-
-	private:
-		int interval_;
-	};
-
 	log_scope2(log_gui_draw, LOG_SCOPE_HEADER);
 
 	generate_dot_file("show", SHOW);
 
 	assert(status_ == NEW);
-
-	draw_interval_setter draw_interval_setter;
 
 	/*
 	 * Before show has been called, some functions might have done some testing
@@ -605,6 +562,8 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 		// Start our loop drawing will happen here as well.
 		bool mouse_button_state_initialized = false;
 		for(status_ = SHOWING; status_ != CLOSED;) {
+			push_draw_event();
+
 			// process installed callback if valid, to allow e.g. network
 			// polling
 			events::pump();
