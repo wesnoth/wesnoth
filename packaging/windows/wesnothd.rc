@@ -1,6 +1,8 @@
 #include "windows.h"
 #include "../../src/wesconfig.h"
 
+WESNOTH_ICON						ICON		"wesnoth-icon.ico"
+
 VS_VERSION_INFO	VERSIONINFO
 FILEVERSION		RC_VERSION_MAJOR, RC_VERSION_MINOR, RC_VERSION_REVISION, 0
 PRODUCTVERSION	RC_VERSION_MAJOR, RC_VERSION_MINOR, RC_VERSION_REVISION, 0
@@ -18,7 +20,7 @@ BEGIN
             VALUE "ProductVersion",		VERSION "\0"
             VALUE "ProductName",		"The Battle for Wesnoth\0"
             VALUE "CompanyName",		"The Battle for Wesnoth Project\0"
-            VALUE "LegalCopyright",		"(C) The Battle for Wesnoth Project\0"
+            VALUE "LegalCopyright",		"(C) 2003-2017 The Battle for Wesnoth Project\0"
         END
     END
     BLOCK "VarFileInfo"
