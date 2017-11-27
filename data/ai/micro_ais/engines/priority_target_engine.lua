@@ -58,7 +58,7 @@ return {
 
                 -- We also want to set aggression=1 and caution=0,
                 -- otherwise there could be turns on which nothing happens
-                wesnoth.append_ai{ aggression = 1, caution = 0 }
+                wesnoth.append_ai(wesnoth.current.side, { aggression = 1, caution = 0 })
             end
 
             return 0
