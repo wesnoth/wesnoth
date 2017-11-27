@@ -87,7 +87,6 @@ editor_controller::editor_controller(const config &game_config)
 
 	gui().create_buttons();
 	gui().redraw_everything();
-    events::raise_draw_event();
 }
 
 void editor_controller::init_gui()
@@ -710,11 +709,9 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			return true;
 		case HOTKEY_EDITOR_PALETTE_UPSCROLL:
 			toolkit_->get_palette_manager()->scroll_up();
-			gui_->draw(true,false);
 			return true;
 		case HOTKEY_EDITOR_PALETTE_DOWNSCROLL:
 			toolkit_->get_palette_manager()->scroll_down();
-			gui_->draw(true,false);
 			return true;
 
 		case HOTKEY_QUIT_GAME:

@@ -963,7 +963,6 @@ void menu_handler::unit_hold_position(mouse_handler& mousehandler, int side_num)
 		gui_->invalidate(mousehandler.get_selected_hex());
 
 		mousehandler.set_current_paths(pathfind::paths());
-		gui_->draw();
 
 		if(un->hold_position()) {
 			mousehandler.cycle_units(false);
@@ -979,7 +978,6 @@ void menu_handler::end_unit_turn(mouse_handler& mousehandler, int side_num)
 		gui_->invalidate(mousehandler.get_selected_hex());
 
 		mousehandler.set_current_paths(pathfind::paths());
-		gui_->draw();
 
 		if(un->user_end_turn()) {
 			mousehandler.cycle_units(false);

@@ -964,7 +964,6 @@ void attack::fire_event(const std::string& n)
 
 		if(update_display_) {
 			resources::screen->redraw_minimap();
-			resources::screen->draw(true, true);
 		}
 
 		fire_event("attack_end");
@@ -1473,7 +1472,6 @@ void attack::perform()
 		resources::screen->invalidate_unit();
 		resources::screen->invalidate(a_.loc_);
 		resources::screen->invalidate(d_.loc_);
-		resources::screen->draw(true, true);
 	}
 
 	if(OOS_error_) {

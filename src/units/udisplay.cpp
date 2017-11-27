@@ -268,20 +268,6 @@ void unit_mover::start(unit_ptr u)
 		// If it does not fit we might be able to do a better scroll later.
 		disp_->scroll_to_tiles(path_, game_display::ONSCREEN, true, true, 0.0, false);
 	}
-	// We need to clear big invalidation before the move and have a smooth animation
-	// (mainly black stripes and invalidation after canceling attack dialog).
-	// Two draw calls are needed to also redraw the previously invalidated hexes.
-	// We use update=false because we don't need delay here (no time wasted)
-	// and no screen refresh (will be done by last 3rd draw() and it optimizes
-	// the double blitting done by these invalidations).
-	disp_->draw(false);
-	disp_->draw(false);
-
-	// The last draw() was still slow, and its initial new_animation_frame() call
-	// is now old, so we do another draw() to get a fresh one
-	// TODO: replace that by a new_animation_frame() before starting anims
-	//       don't forget to change the previous draw(false) to true
-	disp_->draw(true);
 
 	// extra immobile movement animation for take-off
 	animator_.add_animation(temp_unit_ptr_.get(), "pre_movement", path_[0], path_[1]);

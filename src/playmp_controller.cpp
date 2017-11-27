@@ -112,7 +112,6 @@ void playmp_controller::play_linger_turn()
 			}
 		}
 		play_slice();
-		gui_->draw();
 	}
 }
 
@@ -200,7 +199,6 @@ void playmp_controller::play_idle_loop()
 			process_network_data();
 			play_slice_catch();
 			SDL_Delay(1);
-			gui_->draw();
 		}
 		catch(...)
 		{
@@ -347,8 +345,6 @@ void playmp_controller::play_network_turn(){
 		if (!network_processing_stopped_){
 			turn_data_.send_data();
 		}
-
-		gui_->draw();
 	}
 
 	LOG_NG << "finished networked...\n";

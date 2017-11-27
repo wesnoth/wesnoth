@@ -620,8 +620,6 @@ namespace { // Private helpers for move_unit()
 		if (ambush_string_.empty()) {
 			ambush_string_ = _("Ambushed!");
 		}
-		// Update the display.
-		resources::screen->draw();
 	}
 
 
@@ -1108,7 +1106,6 @@ namespace { // Private helpers for move_unit()
 
 		// Update the screen.
 		resources::screen->redraw_minimap();
-		resources::screen->draw();
 	}
 
 
@@ -1120,8 +1117,6 @@ namespace { // Private helpers for move_unit()
 		// Alias some resources.
 		game_display &disp = *resources::screen;
 
-		bool redraw = false;
-
 		// Multiple messages may be displayed simultaneously
 		// this variable is used to keep them from overlapping
 		std::string message_prefix = "";
@@ -1130,7 +1125,6 @@ namespace { // Private helpers for move_unit()
 		if ( ambushed_  &&  show_ambush_alert_ ) {
 			disp.announce(message_prefix + ambush_string_, font::BAD_COLOR);
 			message_prefix += " \n";
-			redraw = true;
 		}
 
 		display::announce_options announce_options;
@@ -1141,7 +1135,6 @@ namespace { // Private helpers for move_unit()
 			std::string teleport_string = _("Failed teleport! Exit not empty");
 			disp.announce(message_prefix + teleport_string, font::BAD_COLOR, announce_options);
 			message_prefix += " \n";
-			redraw = true;
 		}
 
 		// Sighted units feedback?
@@ -1171,7 +1164,6 @@ namespace { // Private helpers for move_unit()
 
 			disp.announce(message_prefix + message, msg_color, announce_options);
 			message_prefix += " \n";
-			redraw = true;
 		}
 
 		// Suggest "continue move"?
@@ -1184,13 +1176,7 @@ namespace { // Private helpers for move_unit()
 				std::string message = vgettext("(press $hotkey to keep moving)", symbols);
 				disp.announce(message_prefix + message, font::NORMAL_COLOR, announce_options);
 				message_prefix += " \n";
-				redraw = true;
 			}
-		}
-
-		// Update the screen.
-		if (redraw) {
-			disp.draw();
 		}
 	}
 

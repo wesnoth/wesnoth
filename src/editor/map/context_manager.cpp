@@ -141,7 +141,6 @@ void context_manager::refresh_all()
 	get_map_context().set_needs_terrain_rebuild(false);
 	gui_.create_buttons();
 	gui_.invalidate_all();
-	gui_.draw(false);
 	get_map_context().clear_changed_locations();
 	gui_.recalculate_minimap();
 }

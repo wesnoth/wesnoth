@@ -282,8 +282,6 @@ void mouse_handler_base::right_mouse_up(int x, int y, const bool browse)
 		return;
 	}
 
-	gui().draw(); // redraw highlight (and maybe some more)
-
 	const theme::menu* const m = gui().get_theme().context_menu();
 	if(m != nullptr) {
 		show_menu_ = true;
