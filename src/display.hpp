@@ -716,8 +716,7 @@ protected:
 
 	enum TERRAIN_TYPE { BACKGROUND, FOREGROUND};
 
-	// Warning: the returned vector will be invalidated on the next call!
-	const std::vector<surface>& get_terrain_images(const map_location &loc,
+	void get_terrain_images(const map_location &loc,
 					const std::string& timeid,
 					TERRAIN_TYPE terrain_type);
 
@@ -930,6 +929,10 @@ protected:
 	class blit_helper
 	{
 	public:
+		// We don't want to copy this.
+		// It's expensive when done frequently due to the surface vector.
+		blit_helper(const blit_helper&) = delete;
+
 		blit_helper(const drawing_layer layer, const map_location& loc,
 				const int x, const int y, const surface& surf,
 				const SDL_Rect& clip)

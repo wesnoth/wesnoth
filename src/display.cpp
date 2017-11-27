@@ -1067,15 +1067,15 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 	std::vector<surface> res;
 
 	for (std::string& name : names) {
-		const surface surf(image::get_image(name, image_type));
+		surface surf(image::get_image(name, image_type));
 		if (surf)
-			res.push_back(surf);
+			res.push_back(std::move(surf));
 	}
 
 	return res;
 }
 
-const std::vector<surface>& display::get_terrain_images(const map_location &loc,
+void display::get_terrain_images(const map_location &loc,
 	const std::string& timeid,
 	TERRAIN_TYPE terrain_type)
 {
@@ -1222,15 +1222,13 @@ const std::vector<surface>& display::get_terrain_images(const map_location &loc,
 			}
 		}
 	}
-
-	return terrain_image_vector_;
 }
 
 void display::drawing_buffer_add(const drawing_layer layer,
 		const map_location& loc, int x, int y, const surface& surf,
 		const SDL_Rect &clip)
 {
-	drawing_buffer_.push_back(blit_helper(layer, loc, x, y, surf, clip));
+	drawing_buffer_.emplace_back(layer, loc, x, y, surf, clip);
 }
 
 void display::drawing_buffer_add(const drawing_layer layer,
@@ -1238,7 +1236,7 @@ void display::drawing_buffer_add(const drawing_layer layer,
 		const std::vector<surface> &surf,
 		const SDL_Rect &clip)
 {
-	drawing_buffer_.push_back(blit_helper(layer, loc, x, y, surf, clip));
+	drawing_buffer_.emplace_back(layer, loc, x, y, surf, clip);
 }
 
 // FIXME: temporary method. Group splitting should be made
@@ -2566,13 +2564,13 @@ void display::draw_hex(const map_location& loc) {
 
 	if(!shrouded(loc)) {
 		// unshrouded terrain (the normal case)
-		const std::vector<surface>& images_bg = get_terrain_images(loc, tod.id, BACKGROUND);
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, images_bg);
-		num_images_bg = images_bg.size();
+		get_terrain_images(loc, tod.id, BACKGROUND); // updates terrain_image_vector_
+		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, terrain_image_vector_);
+		num_images_bg = terrain_image_vector_.size();
 
-		const std::vector<surface>& images_fg = get_terrain_images(loc, tod.id, FOREGROUND);
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, images_fg);
-		num_images_fg = images_fg.size();
+		get_terrain_images(loc, tod.id, FOREGROUND); // updates terrain_image_vector_
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, xpos, ypos, terrain_image_vector_);
+		num_images_fg = terrain_image_vector_.size();
 
 		// Draw the grid, if that's been enabled
 		if(grid_) {
