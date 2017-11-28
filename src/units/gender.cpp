@@ -33,12 +33,14 @@ namespace {
 	T const& constant(T& v){ return v; }
 }
 
-/*static*/ const unit_gender& unit_gender::male(){
+const unit_gender& unit_gender::male()
+{
 	static unit_gender male = {0, s_male};
 	return male;
 }
 
-/*static*/ const unit_gender& unit_gender::female(){
+const unit_gender& unit_gender::female()
+{
 	static unit_gender female = {1, s_female};
 	return female;
 }
@@ -52,7 +54,8 @@ unit_gender::unit_gender(int index, const std::string& name)
 	gender_map[index] = this;
 }
 
-/*static*/ const unit_gender* unit_gender::from_string(const std::string& str_gender){
+const unit_gender* unit_gender::from_string(const std::string& str_gender)
+{
 	if ( str_gender == s_male ) {
 		return &unit_gender::male();
 	} else if ( str_gender == s_female ) {
@@ -61,55 +64,67 @@ unit_gender::unit_gender(int index, const std::string& name)
 	return nullptr;
 }
 
-/*static*/ const unit_gender& unit_gender::from_string(const std::string& str_gender, const unit_gender& fallback){
+const unit_gender& unit_gender::from_string(const std::string& str_gender, const unit_gender& fallback)
+{
 	const unit_gender* gender = from_string(str_gender);
 	return gender ? *gender : fallback;
 }
 
-/*static*/ gender_list unit_gender::genders(){
+gender_list unit_gender::genders()
+{
 	return {};
 }
 
-const char* unit_gender::gender_string(const char* male_string, const char* female_string) const {
+const char* unit_gender::gender_string(const char* male_string, const char* female_string) const
+{
 	return *this == female() ? female_string : male_string;
 }
 
-const std::string& unit_gender::gender_string(const std::string& male_string, const std::string& female_string) const {
+const std::string& unit_gender::gender_string(const std::string& male_string, const std::string& female_string) const
+{
 	return *this == female() ? female_string : male_string;
 }
 
-const t_string& unit_gender::gender_string(const t_string& male_string, const t_string& female_string) const {
+const t_string& unit_gender::gender_string(const t_string& male_string, const t_string& female_string) const
+{
 	return *this == female() ? female_string : male_string;
 }
 
-gender_list::const_iterator gender_list::begin(){
+gender_list::const_iterator gender_list::begin()
+{
 	return {0};
 }
 
-gender_list::const_iterator gender_list::end(){
+gender_list::const_iterator gender_list::end()
+{
 	return {unit_gender::num_genders()};
 }
 
-const unit_gender& gender_list::const_iterator::operator*() const {
+const unit_gender& gender_list::const_iterator::operator*() const
+{
 	assert(ix_ >= 0);
 	assert(ix_ < unit_gender::num_genders());
 	return *gender_map[ix_];
 }
 
-gender_list::const_iterator& gender_list::const_iterator::operator++() {
+gender_list::const_iterator& gender_list::const_iterator::operator++()
+{
 	++ix_;
 	return *this;
 }
 
-bool gender_list::const_iterator::operator==(const const_iterator& other) const {
+bool gender_list::const_iterator::operator==(const const_iterator& other) const
+{
 	return ix_ == other.ix_;
 }
 
-bool gender_list::const_iterator::operator!=(const const_iterator& other) const {
+bool gender_list::const_iterator::operator!=(const const_iterator& other) const
+{
 	return !(*this == other);
 }
 
-gender_list::const_iterator::const_iterator(int ix) : ix_(ix) {
+gender_list::const_iterator::const_iterator(int ix) : ix_(ix)
+{
 	assert(ix >= 0);
 	assert(ix <= unit_gender::num_genders());
 }
