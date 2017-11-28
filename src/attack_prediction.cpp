@@ -1763,7 +1763,8 @@ double calculate_probability_of_debuff(double initial_prob, bool enemy_gives, do
 {
 	assert(initial_prob >= 0.0 && initial_prob <= 1.0);
 	assert(prob_touched >= 0.0 && prob_touched <= 1.0);
-	assert(prob_stay_alive >= 0.0 && prob_stay_alive <= 1.0);
+	// Prob_stay_alive can get slightly negative because of a rounding error, so ensure that it gets non-negative.
+	prob_stay_alive = std::max(prob_stay_alive, 0.0);
 	// Prob_kill can creep a bit above 100 % if the AI simulates an unit being attacked by multiple units in a row, due to rounding error.
 	// Simply limit it to suitable range.
 	prob_kill = std::min(prob_kill, 1.0);
