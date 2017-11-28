@@ -57,14 +57,13 @@ event_handler::event_handler(const config& cfg, bool imi)
 
 void event_handler::disable()
 {
-	assert(!disabled_);;
+	assert(!disabled_);
 	disabled_ = true;
 }
 
 
 void event_handler::handle_event(const queued_event& event_info, game_lua_kernel& lk)
 {
-	// If this even is disabled, do nothing.
 	if(disabled_) {
 		return;
 	}
@@ -73,7 +72,6 @@ void event_handler::handle_event(const queued_event& event_info, game_lua_kernel
 		DBG_NG << cfg_["name"] << " will now invoke the following command(s):\n" << cfg_;
 	}
 
-	// Disable this handler if it's a one-time event.
 	if(first_time_only_) {
 		disable();
 	}
