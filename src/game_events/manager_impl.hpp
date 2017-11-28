@@ -26,7 +26,7 @@ class event_handlers
 {
 private:
 	typedef std::unordered_map<std::string, handler_list> map_t;
-	typedef std::unordered_map<std::string, std::weak_ptr<event_handler>> id_map_t;
+	typedef std::unordered_map<std::string, weak_handler_ptr> id_map_t;
 
 	/**
 	 * Active event handlers. Will not have elements removed unless the event_handlers is clear()ed.
@@ -61,8 +61,8 @@ public:
 	{
 	}
 
-	/** Read-only access to the handlers with varying event names. */
-	const handler_list& get_dynamic() const
+	/** Access to the handlers with varying event names. */
+	handler_list& get_dynamic()
 	{
 		return dynamic_;
 	}
@@ -73,8 +73,8 @@ public:
 		return active_;
 	}
 
-	/** Read-only access to the handlers with fixed event names, by event name. */
-	const handler_list& get(const std::string& name) const;
+	/** Access to the handlers with fixed event names, by event name. */
+	handler_list& get(const std::string& name);
 
 	/** Adds an event handler. */
 	void add_event_handler(const config& cfg, manager& man, bool is_menu_item = false);

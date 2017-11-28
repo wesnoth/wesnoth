@@ -80,10 +80,10 @@ std::string event_handlers::standardize_name(const std::string& name)
 /**
  * Read-only access to the handlers with fixed event names, by event name.
  */
-const handler_list& event_handlers::get(const std::string& name) const
+handler_list& event_handlers::get(const std::string& name)
 {
 	// Empty list for the "not found" case.
-	static const handler_list empty_list;
+	static handler_list empty_list;
 
 	// Look for the name in the name map.
 	auto find_it = by_name_.find(standardize_name(name));

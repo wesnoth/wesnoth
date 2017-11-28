@@ -24,8 +24,8 @@
 #pragma once
 
 #include "config.hpp"
-#include "utils/smart_list.hpp"
 
+#include <list>
 #include <memory>
 #include <set>
 #include <string>
@@ -80,104 +80,6 @@ private:
 	config cfg_;
 };
 
-/**
- * This is a wrapper for a list of weak pointers to handlers. It allows forward
- * iterations of the list, with each element returned as a shared pointer.
- * (Weak pointers that fail to lock are silently removed from the list.) These
- * iterations can be used recursively, even when the innermost iteration might
- * erase arbitrary elements from the list.
- *
- * The interface is not the standard list interface because that would be
- * inconvenient. The functionality implemented is that required by Wesnoth.
- */
-class handler_list
-{
-	/// The weak pointers that are used internally.
-	typedef std::weak_ptr<event_handler> internal_ptr;
-
-	/// The underlying list.
-	typedef utils::smart_list<internal_ptr> list_t;
-
-public:
-	/**
-	 * Handler list iterators are rather limited. They can be constructed
-	 * from a reference iterator (not default constructed), incremented,
-	 * and dereferenced. Consecutive dereferences are not guaranteed to
-	 * return the same element (if the list mutates between them, the next
-	 * element might be returned). An increment guarantees that the next
-	 * dereference will differ from the previous (unless at the end of the
-	 * list). The end of the list is indicated by dereferencing to a null
-	 * pointer.
-	 */
-	class iterator
-	{
-		/// The current element.
-		list_t::iterator iter_;
-
-	public:
-		/// Initialized constructor (to be called by handler_list).
-		explicit iterator(const list_t::iterator& base_iter)
-			: iter_(base_iter)
-		{
-		}
-
-		/// Increment.
-		iterator& operator++()
-		{
-			++iter_;
-			return *this;
-		}
-		/// Dereference.
-		handler_ptr operator*();
-	};
-	friend class iterator;
-	typedef iterator const_iterator;
-
-public:
-	/**
-	 * Default constructor.
-	 * Note: This explicit definition is required (by the more pedantic
-	 *       compilers) in order to declare a default-constructed, static,
-	 *       and const variable in event_handlers::get(), in handlers.cpp.
-	 */
-	handler_list()
-		: data_()
-	{
-	}
-
-	const_iterator begin() const
-	{
-		return iterator(const_cast<list_t&>(data_).begin());
-	}
-
-	// The above const_cast is so the iterator can remove obsolete entries.
-	const_iterator end() const
-	{
-		return iterator(const_cast<list_t&>(data_).end());
-	}
-
-	// push_front() is probably unneeded, but I'll leave the code here, just in case.
-	// (These lists must be maintained in index order, which means pushing to the back.)
-	void push_front(const handler_ptr& p)
-	{
-		data_.push_front(internal_ptr(p));
-	}
-
-	void push_back(const handler_ptr& p)
-	{
-		data_.push_back(internal_ptr(p));
-	}
-
-	void clear()
-	{
-		data_.clear();
-	}
-
-private:
-	/// No implementation of operator=() since smart_list does not support it.
-	handler_list& operator=(const handler_list&);
-
-	/// The actual list.
-	list_t data_;
-};
+using weak_handler_ptr = std::weak_ptr<event_handler>;
+using handler_list = std::list<weak_handler_ptr>;
 }

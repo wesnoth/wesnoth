@@ -45,29 +45,6 @@ static lg::log_domain log_event_handler("event_handler");
 // This file is in the game_events namespace.
 namespace game_events
 {
-/* ** handler_list::iterator ** */
-
-/**
- * Dereference.
- * If the current element has become invalid, we will increment first.
- */
-handler_ptr handler_list::iterator::operator*()
-{
-	// Check for an available handler.
-	while(iter_.derefable()) {
-		// Handler still accessible?
-		if(handler_ptr lock = iter_->lock()) {
-			return lock;
-		} else {
-			// Remove the now-defunct entry.
-			iter_ = list_t::erase(iter_);
-		}
-	}
-
-	// End of the list.
-	return handler_ptr();
-}
-
 /* ** event_handler ** */
 
 event_handler::event_handler(const config& cfg, bool imi, handler_vec::size_type index, manager& man)
