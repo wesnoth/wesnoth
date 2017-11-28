@@ -6,6 +6,8 @@ Version 1.13.10+dev:
      * Added a full set of hints on easy difficulty.
    * Delfador's Memoirs:
      * Iliah-Malal can now be killed by either undead or Delfador in S19
+     * S19 has been rebalanced to increase difficulty and allow player & enemy
+       to field more units.
  * Packaging
    * Renamed the target and binary for the Boost unit tests from `test` to
      `boost_unit_tests`. This quells warnings from CMake about reserved target
@@ -48,6 +50,8 @@ Version 1.13.10+dev:
      GNU/Linux and macOS.
    * File paths are now case sensitive even on Windows.
    * [show_if] is now usable in [objectives] subtag [gold_carryover].
+   * Macro SCEPTRE_OF_FIRE_EFFECT damage increased to 15x4 so Sceptre is an
+     improvement over the uncut ruby of fire (14x4) in TRoW.
  * Miscellaneous and bug fixes:
    * Fixed ingame help showing units you haven't encountered (bug #2135)
    * Fixed the opacity IPF resetting to 0 if the value given was 100% or
