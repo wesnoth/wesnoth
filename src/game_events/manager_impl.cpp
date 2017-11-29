@@ -110,23 +110,23 @@ void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 	}
 
 	// Create a new handler.
+	// Do note active_ holds the main shared_ptr, and the other three containers
+	// construct weak_ptrs from the shared one.
 	DBG_EH << "inserting event handler for name=" << name << " with id=" << id << "\n";
-	handler_ptr new_handler(new event_handler(cfg, is_menu_item));
-
-	active_.push_back(new_handler);
+	active_.emplace_back(new event_handler(cfg, is_menu_item));
 
 	// File by name.
 	if(utils::might_contain_variables(name)) {
-		dynamic_.push_back(new_handler);
+		dynamic_.emplace_back(active_.back());
 	} else {
 		for(const std::string& single_name : utils::split(name)) {
-			by_name_[standardize_name(single_name)].push_back(new_handler);
+			by_name_[standardize_name(single_name)].emplace_back(active_.back());
 		}
 	}
 
 	// File by ID.
 	if(!id.empty()) {
-		id_map_[id] = new_handler;
+		id_map_[id] = active_.back();
 	}
 
 	log_handlers();
