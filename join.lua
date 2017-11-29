@@ -95,8 +95,13 @@ local function plugin()
 
   events, context, info = coroutine.yield()
 
-  context.chat({message = "done first join"})
-  
+  -- Don't know why THIS context has to chat member but it doesn't
+  -- Adding the guard if to bypass a script crash and get mp_tests running.
+  -- GAL 28NOV2017
+  if context.chat then
+    context.chat({message = "done first join"})
+  end
+
   while not (info.name == "Dialog" or info.name == "Multiplayer Join") do
     if context.join then
       context.join({})
