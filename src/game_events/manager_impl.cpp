@@ -149,14 +149,15 @@ void event_handlers::remove_event_handler(const std::string& id)
 	if(find_it != id_map_.end()) {
 		handler_ptr handler = find_it->second.lock();
 
-		// Remove handler.
-		if(handler) {
+		if(handler && !handler->disabled()) {
 			handler->disable();
 		}
 
 		// Do this even if the lock failed.
-		// The index by name will self-adjust later. No need to adjust it now.
 		id_map_.erase(find_it);
+
+		// Remove handler from other lists.
+		clean_up_expired_handlers(handler->get_config()["name"]);
 	}
 
 	log_handlers();
@@ -171,10 +172,13 @@ void event_handlers::clean_up_expired_handlers(const std::string& event_name)
 
 	active_.erase(to_remove, active_.end());
 
-	// Then remove any now-unlockable weak_ptrs from tbe by-name list.
-	get(event_name).remove_if(
-		[](weak_handler_ptr ptr) { return ptr.expired(); }
-	);
+	// Then remove any now-unlockable weak_ptrs from the by-name list.
+	// Might be more than one so we split.
+	for(const std::string& name : utils::split(event_name)) {
+		get(name).remove_if(
+			[](weak_handler_ptr ptr) { return ptr.expired(); }
+		);
+	}
 
 	// And finally remove any now-unlockable weak_ptrs from the with-variables name list.
 	dynamic_.remove_if(

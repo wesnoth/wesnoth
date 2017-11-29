@@ -57,10 +57,9 @@ event_handler::event_handler(const config& cfg, bool imi)
 
 void event_handler::disable()
 {
-	assert(!disabled_);
+	assert(!disabled_ && "Trying to disable a disabled event. Shouldn't happen!");
 	disabled_ = true;
 }
-
 
 void event_handler::handle_event(const queued_event& event_info, game_lua_kernel& lk)
 {
