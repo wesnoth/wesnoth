@@ -5,16 +5,14 @@ set -v #Print shell commands as they are read
 
 TIMEOUT_TIME=300
 LOOP_TIME=6
-HOSTLOG=/tmp/host.log
-JOINLOG=/tmp/join.log
 
 ./wesnothd --port 12345 --log-debug=server --log-warning=config &
 serverpid=$!
 
-./wesnoth --plugin=host.lua --server=localhost:12345 --username=host --mp-test --noaddons --nogui 2> >(tee $HOSTLOG >&2) &
+./wesnoth --plugin=host.lua --server=localhost:12345 --username=host --mp-test --noaddons --nogui &
 hostpid=$!
 
-./wesnoth --plugin=join.lua --server=localhost:12345 --username=join --mp-test --noaddons --nogui 2> >(tee $JOINLOG >&2) &
+./wesnoth --plugin=join.lua --server=localhost:12345 --username=join --mp-test --noaddons --nogui &
 joinpid=$!
 
 START_TIME=$SECONDS
@@ -57,15 +55,9 @@ done
 
 STATUS=0
 
-wait $hostpid || (
-    grep "Could not initialize SDL_video" $HOSTLOG && \
-    echo -e "\nFailed to initialize video.\nThis is a common CI issue.\nTreating the test as successful.\n"
-) || STATUS=1
+wait $hostpid || STATUS=1
 
-wait $joinpid || (
-    grep "Could not initialize SDL_video" $JOINLOG && \
-    echo -e "\nFailed to initialize video.\nThis is a common CI issue.\nTreating the test as successful.\n"
-) || STATUS=1
+wait $joinpid || STATUS=1
 
 kill $serverpid
 
