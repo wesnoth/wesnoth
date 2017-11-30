@@ -97,7 +97,7 @@ handler_list& event_handlers::get(const std::string& name)
  */
 void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 {
-	const std::string name = cfg["name"];
+	std::string name = cfg["name"];
 	std::string id = cfg["id"];
 
 	if(!id.empty()) {
@@ -109,18 +109,38 @@ void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 		}
 	}
 
+	// Make a copy of the event cfg here in order to do some standardization on the
+	// name field. Will be moved into the handler.
+	config event_cfg = cfg;
+
+	// Split the name field...
+	std::vector<std::string> standardized_names = utils::split(cfg["name"]);
+
+	// ...and standardize each one individually. This ensures they're all valid for by-name lookup.
+	for(std::string& single_name : standardized_names) {
+		single_name = standardize_name(single_name);
+	}
+
+	// Write the new name back to the config.
+	name = utils::join(standardized_names);
+	event_cfg["name"] = name;
+
 	// Create a new handler.
 	// Do note active_ holds the main shared_ptr, and the other three containers
 	// construct weak_ptrs from the shared one.
 	DBG_EH << "inserting event handler for name=" << name << " with id=" << id << "\n";
-	active_.emplace_back(new event_handler(cfg, is_menu_item));
+	active_.emplace_back(new event_handler(std::move(event_cfg), is_menu_item));
+
+	//
+	//  !! event_cfg is invalid past this point! DO NOT USE!
+	//
 
 	// File by name.
 	if(utils::might_contain_variables(name)) {
 		dynamic_.emplace_back(active_.back());
 	} else {
-		for(const std::string& single_name : utils::split(name)) {
-			by_name_[standardize_name(single_name)].emplace_back(active_.back());
+		for(const std::string& single_name : standardized_names) {
+			by_name_[single_name].emplace_back(active_.back());
 		}
 	}
 

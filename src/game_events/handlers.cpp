@@ -47,7 +47,7 @@ namespace game_events
 {
 /* ** event_handler ** */
 
-event_handler::event_handler(const config& cfg, bool imi)
+event_handler::event_handler(config&& cfg, bool imi)
 	: first_time_only_(cfg["first_time_only"].to_bool(true))
 	, is_menu_item_(imi)
 	, disabled_(false)

@@ -46,7 +46,7 @@ using handler_list = std::list<weak_handler_ptr>;
 class event_handler
 {
 public:
-	event_handler(const config& cfg, bool is_menu_item);
+	event_handler(config&& cfg, bool is_menu_item);
 
 	bool disabled() const
 	{
