@@ -408,7 +408,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 				}
 
 				const std::string tc_color = team::get_side_color_id_from_config(u);
-				const std::string tc_color_scenario = side["color"].str;
+				const std::string tc_color_scenario = side["color"];
 				
 				// Don't count it among the troops
 				units--;
