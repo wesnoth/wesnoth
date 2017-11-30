@@ -176,8 +176,14 @@ void event_handlers::remove_event_handler(const std::string& id)
 		// Do this even if the lock failed.
 		id_map_.erase(find_it);
 
-		// Remove handler from other lists.
-		clean_up_expired_handlers(handler->get_config()["name"]);
+		// Remove handler from other lists if we got a lock. If we didn't, the handler
+		// was already from the main list previously, so any other weak_ptrs to it in
+		// the by-name or with-vars list should already have been dropped. If for some
+		// reason they haven't, no problem. They don't do anything and will be dropped
+		// next cleanup.
+		if(handler) {
+			clean_up_expired_handlers(handler->get_config()["name"]);
+		}
 	}
 
 	log_handlers();
