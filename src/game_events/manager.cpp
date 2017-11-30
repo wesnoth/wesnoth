@@ -144,8 +144,6 @@ static handler_ptr lock_ptr(const handler_list& list, handler_list::iterator ite
 	if(iter != list.end()) {
 		if(handler_ptr ptr = iter->lock()) {
 			return ptr;
-		} else {
-			assert(false && "Found null handler in handler list!");
 		}
 	}
 
