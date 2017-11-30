@@ -49,14 +49,22 @@ void push_unit_attacks_table(lua_State* L, int idx)
 
 void luaW_pushweapon(lua_State* L, attack_ptr weapon)
 {
-	new(L) attack_ref(weapon);
-	luaL_setmetatable(L, uattackKey);
+	if(weapon != nullptr) {
+		new(L) attack_ref(weapon);
+		luaL_setmetatable(L, uattackKey);
+	} else {
+		lua_pushnil(L);
+	}
 }
 
 void luaW_pushweapon(lua_State* L, const_attack_ptr weapon)
 {
-	new(L) attack_ref(weapon);
-	luaL_setmetatable(L, uattackKey);
+	if(weapon != nullptr) {
+		new(L) attack_ref(weapon);
+		luaL_setmetatable(L, uattackKey);
+	} else {
+		lua_pushnil(L);
+	}
 }
 
 static attack_ref& luaW_checkweapon_ref(lua_State* L, int idx)
