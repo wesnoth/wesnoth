@@ -188,8 +188,7 @@ void game_load::display_savegame(window& window)
 
 		if(leader_image.empty()) {
 			leader_image = "units/unknown-unit.png" + leader["leader_image_tc_modifier"].str();
-		}
-		else {
+		} else {
 			leader_image+= leader["leader_image_tc_modifier"].str();
 		}
 		item["label"] = leader_image;
