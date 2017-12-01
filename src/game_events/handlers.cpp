@@ -19,18 +19,14 @@
  */
 
 #include "game_events/handlers.hpp"
-#include "game_events/manager_impl.hpp"
-#include "game_events/menu_item.hpp"
-#include "game_events/pump.hpp"
 
 #include "formula/string_utils.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
-#include "reports.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "serialization/string_utils.hpp"
 #include "sound.hpp"
-#include "soundsource.hpp"
+#include "variable.hpp"
 
 #include <iostream>
 

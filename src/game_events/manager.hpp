@@ -14,8 +14,9 @@
 
 #pragma once
 
-#include "game_events/handlers.hpp"
+#include "game_events/fwd.hpp"
 #include "game_events/wmi_manager.hpp"
+#include "config.hpp"
 
 #include <functional>
 #include <set>

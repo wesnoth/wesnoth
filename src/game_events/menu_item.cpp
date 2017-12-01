@@ -24,10 +24,8 @@
 #include "game_events/pump.hpp"
 
 #include "game_config.hpp"
-#include "game_data.hpp"
 #include "hotkey/hotkey_handler.hpp"
 #include "log.hpp"
-#include "play_controller.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "synced_context.hpp"

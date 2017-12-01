@@ -24,8 +24,6 @@
 
 #include "display_chat_manager.hpp"
 #include "game_config.hpp"
-#include "game_data.hpp"
-#include "game_display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "play_controller.hpp"

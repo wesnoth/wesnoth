@@ -19,15 +19,9 @@
 #include "game_events/menu_item.hpp"
 #include "game_events/pump.hpp"
 
-#include "filter_context.hpp"
-#include "formula/string_utils.hpp"
-#include "game_data.hpp"
 #include "log.hpp"
-#include "reports.hpp"
 #include "resources.hpp"
-#include "scripting/game_lua_kernel.hpp"
 #include "serialization/string_utils.hpp"
-#include "soundsource.hpp"
 
 #include <iostream>
 

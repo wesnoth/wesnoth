@@ -25,9 +25,6 @@
 
 #include "config.hpp"
 
-#include <list>
-#include <memory>
-#include <set>
 #include <string>
 
 class game_data;
@@ -36,12 +33,6 @@ class game_lua_kernel;
 namespace game_events
 {
 struct queued_event;
-class event_handler; // Defined a few lines down.
-class manager;
-
-using handler_ptr = std::shared_ptr<event_handler>;
-using weak_handler_ptr = std::weak_ptr<event_handler>;
-using handler_list = std::list<weak_handler_ptr>;
 
 class event_handler
 {

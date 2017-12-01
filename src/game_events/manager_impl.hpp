@@ -14,9 +14,9 @@
 
 #pragma once
 
-#include "game_events/handlers.hpp"
+#include "game_events/fwd.hpp"
+#include "config.hpp"
 
-#include <memory>
 #include <unordered_map>
 
 namespace game_events

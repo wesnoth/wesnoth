@@ -29,7 +29,6 @@
 
 #include "game_events/fwd.hpp"
 #include "game_events/entity_location.hpp"
-#include "game_events/handlers.hpp"
 #include "game_events/manager.hpp"
 
 #include "config.hpp"

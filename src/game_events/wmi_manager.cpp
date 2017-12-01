@@ -18,7 +18,6 @@
  */
 
 #include "game_events/wmi_manager.hpp"
-#include "game_events/handlers.hpp"
 #include "game_events/menu_item.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
