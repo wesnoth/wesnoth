@@ -49,7 +49,7 @@ install:
           export CXXFLAGS="-I/usr/local/opt/openssl/include $CFLAGS";
           export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS";
       else
-          docker build -t wesnoth-ubuntu:16.04 -f Dockerfile1604 .;
+          docker build -t wesnoth-repo:16.04 -f docker/Dockerfile-travis .;
       fi
 
 script: 
@@ -62,7 +62,7 @@ script:
           export DISPLAY=:99.0;
           /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24;
           
-          docker run wesnoth-ubuntu:16.04 bash -c "./docker_run.sh \"$NLS\" \"$TOOL\" \"$CC\" \"$CXX\" \"$CXXSTD\" \"$EXTRA_FLAGS_RELEASE\" \"$WML_TESTS\" \"$WML_TEST_TIME\" \"$PLAY_TEST\" \"$MP_TEST\" \"$BOOST_TEST\"";
+          docker run wesnoth-repo:16.04 bash -c "./docker_run.sh \"$NLS\" \"$TOOL\" \"$CC\" \"$CXX\" \"$CXXSTD\" \"$EXTRA_FLAGS_RELEASE\" \"$WML_TESTS\" \"$WML_TEST_TIME\" \"$PLAY_TEST\" \"$MP_TEST\" \"$BOOST_TEST\"";
       fi
 
 notifications:
