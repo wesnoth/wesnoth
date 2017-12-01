@@ -6,7 +6,7 @@
 About
 =====
 
-**The Battle for Wesnoth** is a Free, turn-based tactical strategy game with a
+**The Battle for Wesnoth** is an Open Source, turn-based tactical strategy game with a
 high fantasy theme, featuring both singleplayer and online/hotseat multiplayer
 combat. Fight a desperate battle to reclaim the throne of Wesnoth, or take
 hand in any number of other adventures.
@@ -15,16 +15,9 @@ hand in any number of other adventures.
 License
 -------
 
-The game's source code and artwork, sound, and music assets are provided under
-the terms of the GNU General Public License version 2, or (at your option) any
-later version. Note that for artwork, sound, and music, we interpret
-"preferred form of the work for making modifications" as the modifiable form
-that the author chooses to ship us for the source tree. For convenience, a
-reference copy of the GNU GPL version 2 is provided in the COPYING file in
-this distribution.
+Please see the wiki for information regarding The Battle for Wesnoth's licensing:
 
-Some portions of the source code can be used under different license terms,
-whenever stated as such in the source.
+  <https://wiki.wesnoth.org/Wesnoth:Copyrights>
 
 
 Installing
@@ -44,7 +37,7 @@ official Battle for Wesnoth web site.
 A (translated) description of how to play the game can be found in
 doc/manual/manual.*.html, or online at:
 
-  <http://manual.wesnoth.org/>
+  <https://wiki.wesnoth.org/WesnothManual>
 
 The official Battle for Wesnoth Forums (with over 400,000 posts from more than
 20,000 registered members) can be found at:
