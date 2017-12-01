@@ -63,12 +63,4 @@ namespace game_events
 		/// Tracks the known action handlers.
 		static map registry_;
 	};
-
-
-	/**
-	 * Changes a terrain location.
-	 * Ensures that villages are properly lost and that new terrains are discovered.
-	 */
-	void change_terrain(const map_location &loc, const t_translation::terrain_code &t,
-	                    terrain_type_data::merge_mode mode, bool replace_if_failed);
 }
