@@ -131,6 +131,7 @@ private:
 	socket socket_;
 
 	bool done_;
+	bool canceled_;
 
 	std::unique_ptr<boost::asio::streambuf> write_buf_;
 	std::unique_ptr<boost::asio::streambuf> read_buf_;

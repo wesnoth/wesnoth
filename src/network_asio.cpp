@@ -36,6 +36,7 @@ connection::connection(const std::string& host, const std::string& service)
 	, resolver_(io_service_)
 	, socket_(io_service_)
 	, done_(false)
+	, canceled_(false)
 	, write_buf_()
 	, read_buf_()
 	, handshake_response_()
@@ -139,11 +140,33 @@ void connection::cancel()
 		if(ec) {
 			WRN_NW << "Failed to cancel network operations: " << ec.message() << std::endl;
 		}
+		bytes_to_write_ = 0;
+		bytes_written_ = 0;
+		bytes_to_read_ = 0;
+		bytes_read_ = 0;
+
+		// send a message to server out-of-band so it would cancel transfer
+		socket_.send(boost::asio::buffer(&bytes_read_, 1), boost::asio::socket_base::message_out_of_band);
+
+		// drop data that server sent before canceling
+		canceled_ = true;
+		#define BOOST_ASIO_OS_DEF_SO_OOBINLINE SO_OOBINLINE
+		typedef boost::asio::detail::socket_option::boolean<
+			BOOST_ASIO_OS_DEF(SOL_SOCKET), BOOST_ASIO_OS_DEF(SO_OOBINLINE)>
+			  out_of_band_inline;
+		out_of_band_inline option(true);
+		socket_.set_option(option);
+
+		// TODO: this should be made async but changes to dialogs needed
+		std::unique_ptr<char[]> buf { new char[1024] };
+		while(canceled_) {
+			socket_.receive(boost::asio::buffer(buf.get(), 1024), boost::asio::socket_base::message_peek);
+			if(socket_.at_mark()) {
+				canceled_ = false;
+			}
+			socket_.receive(boost::asio::buffer(buf.get(), 1024));
+		}
 	}
-	bytes_to_write_ = 0;
-	bytes_written_ = 0;
-	bytes_to_read_ = 0;
-	bytes_read_ = 0;
 }
 
 std::size_t connection::is_write_complete(const boost::system::error_code& ec, std::size_t bytes_transferred)

@@ -231,6 +231,13 @@ void server::handle_new_client(socket_ptr socket)
 					  );
 }
 
+void server::handle_out_of_band(socket_ptr socket, char data)
+{
+	socket->cancel();
+	socket->send(boost::asio::buffer(&data, 1), boost::asio::socket_base::message_out_of_band);
+	handle_new_client(socket);
+}
+
 void server::handle_request(socket_ptr socket, std::shared_ptr<simple_wml::document> doc)
 {
 	config data;

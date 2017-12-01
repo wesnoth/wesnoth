@@ -120,6 +120,34 @@ void server_base::handle_handshake(const boost::system::error_code& error, socke
 				[=](const boost::system::error_code& error, size_t)
 					{ if(!check_error(error, socket)) this->handle_new_client(socket); }
 	);
+
+	read_oob_data(socket);
+}
+
+void server_base::read_oob_data(socket_ptr socket)
+{
+	boost::shared_array<char> buf { new char[1] };
+	socket_weak_ptr socket_weak { socket };
+	socket->async_receive(boost::asio::buffer(buf.get(), 1), boost::asio::socket_base::message_out_of_band,
+		[=](const boost::system::error_code& error, std::size_t)
+			{ this->handle_oob_data(error, socket_weak, buf); }
+		);
+}
+
+void server_base::handle_oob_data(const boost::system::error_code& error, socket_weak_ptr socket, boost::shared_array<char> buf)
+{
+	if(socket.expired())
+		return;
+	if(error) {
+		if(error.value() != boost::system::errc::invalid_argument) {
+			ERR_SERVER << client_address(socket.lock()) << "\terror reading out-of-band data: " << error.message() << std::endl;
+		}
+		return;
+	} else {
+		handle_out_of_band(socket.lock(), buf.get()[0]);
+	}
+
+	read_oob_data(socket.lock());
 }
 
 #ifndef _WIN32

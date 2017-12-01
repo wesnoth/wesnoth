@@ -37,6 +37,7 @@ public:
 
 private:
 	void handle_new_client(socket_ptr socket);
+	void handle_out_of_band(socket_ptr socket, char);
 
 	void handle_version(socket_ptr socket);
 	void read_version(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);

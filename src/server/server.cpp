@@ -514,6 +514,11 @@ void server::handle_new_client(socket_ptr socket)
 				   );
 }
 
+void server::handle_out_of_band(socket_ptr, char)
+{
+
+}
+
 void server::handle_version(socket_ptr socket)
 {
 	async_receive_doc(socket,

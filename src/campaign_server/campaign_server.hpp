@@ -100,6 +100,7 @@ private:
 	boost::asio::basic_waitable_timer<std::chrono::steady_clock> flush_timer_;
 
 	void handle_new_client(socket_ptr socket);
+	void handle_out_of_band(socket_ptr socket, char data);
 	void handle_request(socket_ptr socket, std::shared_ptr<simple_wml::document> doc);
 
 #ifndef _WIN32

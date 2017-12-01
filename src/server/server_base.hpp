@@ -26,6 +26,7 @@
 #include <boost/shared_array.hpp>
 
 typedef std::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;
+typedef std::weak_ptr<boost::asio::ip::tcp::socket> socket_weak_ptr;
 
 struct server_shutdown : public game::error
 {
@@ -55,7 +56,11 @@ protected:
 	void serverside_handshake(socket_ptr socket);
 	void handle_handshake(const boost::system::error_code& error, socket_ptr socket, boost::shared_array<char> buf);
 
+	void read_oob_data(socket_ptr socket);
+	void handle_oob_data(const boost::system::error_code& error, socket_weak_ptr socket, boost::shared_array<char> buf);
+
 	virtual void handle_new_client(socket_ptr socket) = 0;
+	virtual void handle_out_of_band(socket_ptr socket, char) = 0;
 
 	virtual bool accepting_connections() const { return true; }
 	virtual std::string is_ip_banned(const std::string&) const { return std::string(); }
