@@ -89,9 +89,6 @@ private:
 		game_data* gamedata_;
 	};
 
-	// Performs an assertion check to ensure these members are not null.
-	friend void event_handler::disable();
-
 	const std::unique_ptr<event_handlers> event_handlers_;
 	std::set<std::string> unit_wml_ids_;
 
