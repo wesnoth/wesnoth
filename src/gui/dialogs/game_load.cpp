@@ -179,11 +179,17 @@ void game_load::display_savegame(window& window)
 		string_map item;
 
 		// First, we evaluate whether the leader image as provided exists.
-		// If not, we try getting a binary-path independent path. If that still doesn't
+		// If not, we try getting a binary path-independent path. If that still doesn't
 		// work, we fallback on unknown-unit.png.
 		std::string leader_image = leader["leader_image"].str();
 		if(!::image::exists(leader_image)) {
 			leader_image = filesystem::get_independent_image_path(leader_image);
+
+			// The leader TC modifier isn't appending if the independent image path can't
+			// be resolved during save_index entry creation, so we need to add it here.
+			if(!leader_image.empty()) {
+				leader_image += leader["leader_image_tc_modifier"].str();
+			}
 		}
 
 		if(leader_image.empty()) {
