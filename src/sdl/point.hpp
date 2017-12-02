@@ -46,7 +46,7 @@ struct point
 	int y;
 
 	/** Allow implicit conversion to SDL_Point. */
-	operator SDL_Point();
+	operator SDL_Point() const;
 
 	bool operator==(const point& point) const
 	{

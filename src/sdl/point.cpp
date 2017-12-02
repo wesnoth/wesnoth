@@ -18,7 +18,7 @@
 
 #include <iostream>
 
-point::operator SDL_Point()
+point::operator SDL_Point() const
 {
 	return {x, y};
 }
