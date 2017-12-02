@@ -24,7 +24,6 @@ class config;
 class filter_context;
 class unit;
 class unit_filter;
-class unit_map;
 class team;
 
 //side_filter: a class that implements the Standard Side Filter

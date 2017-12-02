@@ -22,8 +22,6 @@
 namespace gui2
 {
 
-class toggle_button;
-
 namespace dialogs
 {
 

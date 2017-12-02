@@ -27,7 +27,6 @@
 
 class display;
 class display_context;
-class gamemap;
 class team;
 class unit_animation_component;
 class unit_formula_manager;

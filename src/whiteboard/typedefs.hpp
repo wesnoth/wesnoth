@@ -35,7 +35,6 @@ static lg::log_domain log_whiteboard("whiteboard");
 class arrow;
 class config;
 class fake_unit_manager;
-class game_board;
 struct map_location; //not used in the typedefs, saves a few forward declarations
 class unit;
 class unit_map; //not used in the typedefs, saves a few forward declarations

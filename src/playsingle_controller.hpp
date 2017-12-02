@@ -24,8 +24,6 @@
 #include "saved_game.hpp"
 #include "replay_controller.hpp"
 
-class team;
-
 struct reset_gamestate_exception
 {
 	reset_gamestate_exception(std::shared_ptr<config> l, bool s = true) : level(l), start_replay(s) {}

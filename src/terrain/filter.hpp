@@ -23,8 +23,6 @@ class config;
 class filter_context;
 class unit;
 class unit_filter;
-class unit_map;
-class team;
 
 //terrain_filter: a class that implements the Standard Location Filter
 class terrain_filter : public xy_pred {

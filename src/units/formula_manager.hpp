@@ -19,7 +19,6 @@
 #include<string>
 
 class config;
-struct map_location;
 class unit;
 
 class unit_formula_manager {

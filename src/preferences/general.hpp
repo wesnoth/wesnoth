@@ -16,8 +16,6 @@
 
 #pragma once
 
-class display;
-
 #include "config.hpp"
 #include "terrain/translation.hpp"
 #include "utils/make_enum.hpp"

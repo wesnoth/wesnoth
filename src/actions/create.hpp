@@ -20,10 +20,8 @@
 
 #pragma once
 
-class config;
 class team;
 class unit_type;
-class vconfig;
 
 #include "unit_creator.hpp"
 

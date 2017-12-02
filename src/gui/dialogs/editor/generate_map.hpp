@@ -21,13 +21,9 @@
 #include <memory>
 
 class map_generator;
-class display;
 
 namespace gui2
 {
-
-class label;
-class text_box;
 
 namespace dialogs
 {

@@ -19,7 +19,6 @@
 class config;
 class tod_manager;
 class team;
-class unit_map;
 class game_board;
 
 #include "chat_events.hpp"

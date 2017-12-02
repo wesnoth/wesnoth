@@ -22,11 +22,8 @@
 #include <set>
 #include <string>
 
-class game_lua_kernel;
 class filter_context;
-class game_display;
 class game_data;
-class unit_map;
 
 namespace game_events
 {

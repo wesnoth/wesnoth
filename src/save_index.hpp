@@ -18,9 +18,6 @@
 #include "config.hpp"
 #include "serialization/compression.hpp"
 
-class config_writer;
-class game_display;
-
 namespace savegame
 {
 /** Filename and modification date for a file list */

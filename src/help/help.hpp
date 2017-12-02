@@ -15,7 +15,6 @@
 #pragma once
 
 class config;
-class display;
 class terrain_type;
 class unit;
 class unit_type;

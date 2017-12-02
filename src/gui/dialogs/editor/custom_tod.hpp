@@ -21,11 +21,7 @@
 
 namespace gui2
 {
-
-class label;
-class image;
 class slider;
-class text_box;
 
 namespace dialogs
 {

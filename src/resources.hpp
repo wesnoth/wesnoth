@@ -18,9 +18,7 @@
 #include <vector>
 
 class game_board;
-class game_config_manager;
 class game_display;
-class gamemap;
 class game_data;
 class filter_context;
 class game_lua_kernel;

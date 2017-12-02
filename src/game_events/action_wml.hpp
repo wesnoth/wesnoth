@@ -29,7 +29,6 @@
 #include <string>
 
 class  config;
-struct map_location;
 class  vconfig;
 
 namespace t_translation {

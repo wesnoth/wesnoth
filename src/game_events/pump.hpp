@@ -36,9 +36,6 @@
 #include <sstream>
 #include <string>
 
-class game_display;
-class vconfig;
-
 namespace lg
 {
 class logger;

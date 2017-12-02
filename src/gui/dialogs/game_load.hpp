@@ -25,8 +25,6 @@
 
 namespace gui2
 {
-
-class listbox;
 class text_box_base;
 
 namespace dialogs

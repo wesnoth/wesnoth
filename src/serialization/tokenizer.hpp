@@ -22,8 +22,6 @@
 #include <istream>
 #include <string>
 
-class config;
-
 struct token
 {
 	token() :

@@ -25,7 +25,6 @@
 
 namespace gui2
 {
-class listbox;
 class text_box_base;
 class text_box;
 class pane;

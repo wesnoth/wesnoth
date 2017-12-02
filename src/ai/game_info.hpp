@@ -26,12 +26,6 @@ namespace pathfind {
 #include <map>
 #include <memory>
 
-class game_display;
-class gamemap;
-class unit_map;
-class team;
-class tod_manager;
-
 /**
  * info is structure which holds references to all the important objects
  * that an AI might need access to, in order to make and implement its

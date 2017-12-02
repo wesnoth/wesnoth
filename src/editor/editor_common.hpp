@@ -34,7 +34,6 @@ extern lg::log_domain log_editor;
 #define SCOPE_ED log_scope2(log_editor, __func__)
 
 class display;
-class gamemap;
 
 namespace editor {
 

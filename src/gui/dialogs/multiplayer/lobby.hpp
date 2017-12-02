@@ -22,8 +22,6 @@
 #include "game_initialization/multiplayer.hpp"
 #include "quit_confirmation.hpp"
 
-class display;
-
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #endif

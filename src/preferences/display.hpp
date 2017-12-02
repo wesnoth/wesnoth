@@ -14,9 +14,6 @@
 
 #pragma once
 
-class config;
-class display;
-
 #include <string>
 
 namespace preferences {

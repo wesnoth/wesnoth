@@ -14,8 +14,6 @@
 
 #pragma once
 
-class config;
-class display;
 class surface;
 
 #include "cursor.hpp"

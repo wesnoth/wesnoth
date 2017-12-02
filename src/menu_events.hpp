@@ -26,7 +26,6 @@ class game_state;
 class gamemap;
 class game_data;
 class game_board;
-class gamemap;
 class play_controller;
 class team;
 class unit_map;

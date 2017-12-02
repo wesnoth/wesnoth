@@ -22,7 +22,6 @@ class battle_context;
 
 struct battle_context_unit_stats;
 struct combatant;
-struct map_location;
 
 namespace gui2
 {

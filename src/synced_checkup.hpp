@@ -15,7 +15,6 @@
 #pragma once
 
 class config;
-struct map_location;
 /**
 	A class to check whether the results that were calculated in the replay match the results calculated during the original game.
 	note, that you shouldn't add new checkups to existent user actions or you might break replay compability by bringing the [checkups] tag of older saves in unorder.

@@ -16,7 +16,6 @@
 #include <SDL_timer.h>
 
 class team;
-struct mp_game_settings;
 class countdown_clock : public events::pump_monitor
 {
 public:

@@ -16,8 +16,6 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-class display;
-
 namespace gui2
 {
 namespace dialogs

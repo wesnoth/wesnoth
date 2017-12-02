@@ -32,7 +32,6 @@ struct plain_route;
 class unit;
 class unit_type;
 class team;
-class gamemap;
 
 namespace ai {
 

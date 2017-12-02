@@ -26,10 +26,7 @@
 #include <map>
 #include <set>
 class replay_recorder_base;
-class game_display;
 class terrain_label;
-class unit_map;
-class play_controller;
 class config;
 struct time_of_day;
 

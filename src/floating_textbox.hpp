@@ -22,8 +22,6 @@
 #include <set>
 
 class game_display;
-class team;
-class unit_map;
 
 namespace gui{
 

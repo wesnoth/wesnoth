@@ -24,11 +24,9 @@
 #include "units/animation.hpp"
 
 class attack_type;
-class fake_unit_manager;
 class game_board;
 class game_display;
 class unit;
-class vconfig;
 
 /**
  *  Contains a number of free functions which display units

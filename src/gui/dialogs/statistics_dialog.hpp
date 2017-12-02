@@ -21,8 +21,6 @@ class team;
 namespace gui2
 {
 
-class menu_button;
-
 namespace dialogs
 {
 

@@ -19,8 +19,6 @@
 
 namespace gui2
 {
-class label;
-class toggle_button;
 namespace dialogs
 {
 

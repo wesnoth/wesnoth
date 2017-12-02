@@ -18,7 +18,6 @@
 #include <vector>
 
 class config;
-class gamemap;
 class team;
 class team_builder;
 class game_board;
