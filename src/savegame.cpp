@@ -454,6 +454,15 @@ bool savegame::save_game(const std::string& filename)
 			resources::persist ->start_transaction();
 		}
 
+		// Create an entry in the save_index. Doing this here ensures all leader image paths
+		// sre expanded in a context-independent fashion and can appear in the Load Game dialog
+		// even if a campaign-specific sprite is used. This is because the image's full path is
+		// only available if the binary-path context its a part of is loaded. Without this, if
+		// a player saves a game and exits the game or reloads the cache, the leader image will
+		// only be available within that specific binary context (when playing another game from
+		// the came campaign, for example).
+		save_index_manager.rebuild(filename_);
+
 		end = SDL_GetTicks();
 		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start << std::endl;
 
