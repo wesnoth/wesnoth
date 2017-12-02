@@ -182,7 +182,7 @@ config suppose_dead::to_config() const
 	config loc_cfg;
 	loc_cfg["x"]=loc_.wml_x();
 	loc_cfg["y"]=loc_.wml_y();
-	final_cfg.add_child("loc_",loc_cfg);
+	final_cfg.add_child("loc_", std::move(loc_cfg));
 
 	return final_cfg;
 }

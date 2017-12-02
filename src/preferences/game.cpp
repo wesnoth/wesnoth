@@ -166,7 +166,7 @@ manager::~manager()
 			config cfg; // [line]
 
 			cfg["message"] = line;
-			history_id_cfg.add_child("line", cfg);
+			history_id_cfg.add_child("line", std::move(cfg));
 		}
 
 		history.add_child(history_id.first, history_id_cfg);

@@ -93,8 +93,8 @@ config replay_helper::get_attack(const map_location& a, const map_location& b,
 	a.write(src);
 	b.write(dst);
 
-	move.add_child("source",src);
-	move.add_child("destination",dst);
+	move.add_child("source", std::move(src));
+	move.add_child("destination", std::move(dst));
 
 
 	move["weapon"] = att_weapon;

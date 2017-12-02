@@ -214,7 +214,7 @@ config recruit::to_config() const
 	config loc_cfg;
 	loc_cfg["x"]=recruit_hex_.wml_x();
 	loc_cfg["y"]=recruit_hex_.wml_y();
-	final_cfg.add_child("recruit_hex_",loc_cfg);
+	final_cfg.add_child("recruit_hex_", std::move(loc_cfg));
 
 	return final_cfg;
 }

@@ -173,7 +173,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	}
 
 	config request_buf, response_buf;
-	request_buf.add_child("upload", cfg).add_child("data", addon_data);
+	request_buf.add_child("upload", cfg).add_child("data", std::move(addon_data));
 
 	LOG_ADDONS << "sending " << id << '\n';
 

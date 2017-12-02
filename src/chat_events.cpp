@@ -151,7 +151,7 @@ void chat_handler::send_whisper(const std::string& receiver, const std::string& 
 	cwhisper["receiver"] = receiver;
 	cwhisper["message"] = message;
 	cwhisper["sender"] = preferences::login();
-	data.add_child("whisper", cwhisper);
+	data.add_child("whisper", std::move(cwhisper));
 	send_to_server(data);
 }
 
@@ -176,7 +176,7 @@ void chat_handler::send_chat_room_message(const std::string& room,
 	cmsg["room"] = room;
 	cmsg["message"] = message;
 	cmsg["sender"] = preferences::login();
-	data.add_child("message", cmsg);
+	data.add_child("message", std::move(cmsg));
 	send_to_server(data);
 }
 

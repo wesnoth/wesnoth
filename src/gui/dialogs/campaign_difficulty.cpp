@@ -104,7 +104,7 @@ config generate_difficulty_config(const config& source)
 			temp["default"] = parsed.is_default();
 			temp["old_markup"] = true; // To prevent double parentheses in the dialog
 
-			result.add_child("difficulty", temp);
+			result.add_child("difficulty", std::move(temp));
 		}
 	}
 

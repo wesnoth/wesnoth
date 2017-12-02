@@ -314,7 +314,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 					goal_config["value"] = criteria_config["value"];
 					criteria_config.remove_attribute("value");
 				}
-				parsed_config.add_child("goal", goal_config);
+				parsed_config.add_child("goal", std::move(goal_config));
 				continue;
 			}
 			// Now there's two possibilities. If the tag is [attacks] or contains either value= or [value],
@@ -366,7 +366,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 		base_config.add_child(child.key, child.cfg);
 	}
 	cfg.clear_children("ai");
-	cfg.add_child("ai", base_config);
+	cfg.add_child("ai", std::move(base_config));
 }
 
 } //end of namespace ai

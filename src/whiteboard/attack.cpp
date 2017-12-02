@@ -263,7 +263,7 @@ config attack::to_config() const
 	config target_hex_cfg;
 	target_hex_cfg["x"]=target_hex_.wml_x();
 	target_hex_cfg["y"]=target_hex_.wml_y();
-	final_cfg.add_child("target_hex_",target_hex_cfg);
+	final_cfg.add_child("target_hex_", std::move(target_hex_cfg));
 
 	return final_cfg;
 }

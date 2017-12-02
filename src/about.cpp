@@ -76,7 +76,7 @@ void set_about(const config &cfg)
 		gather_images(about, images_default);
 	}
 	if(!misc.empty()) {
-		about_list.add_child("credits_group", misc);
+		about_list.add_child("credits_group", std::move(misc));
 	}
 
 	for(const config& campaign : cfg.child_range("campaign")) {
@@ -95,7 +95,7 @@ void set_about(const config &cfg)
 			gather_images(about, images[id]);
 		}
 
-		about_list.add_child("credits_group", temp);
+		about_list.add_child("credits_group", std::move(temp));
 	}
 }
 

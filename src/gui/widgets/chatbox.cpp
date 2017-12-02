@@ -491,7 +491,7 @@ void chatbox::close_window(size_t idx)
 		::config data, msg;
 		msg["room"] = t.name;
 		msg["player"] = preferences::login();
-		data.add_child("room_part", msg);
+		data.add_child("room_part", std::move(msg));
 
 		send_to_server(data);
 	}

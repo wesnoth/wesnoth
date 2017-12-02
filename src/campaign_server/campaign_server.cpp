@@ -560,7 +560,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	}
 
 	config response;
-	response.add_child("campaigns", campaign_list);
+	response.add_child("campaigns", std::move(campaign_list));
 
 	std::ostringstream ostr;
 	write(ostr, response);

@@ -78,7 +78,7 @@ manager::manager(const config& gamecfg, bool mp)
 			copy_keys(info, cfg, "era");
 			copy_keys(info, cfg, "modification");
 
-			depinfo_.add_child("modification", info);
+			depinfo_.add_child("modification", std::move(info));
 		}
 	}
 
@@ -93,7 +93,7 @@ manager::manager(const config& gamecfg, bool mp)
 			copy_keys(info, cfg, "scenario");
 			copy_keys(info, cfg, "modification", true);
 
-			depinfo_.add_child("era", info);
+			depinfo_.add_child("era", std::move(info));
 		}
 	}
 
@@ -106,7 +106,7 @@ manager::manager(const config& gamecfg, bool mp)
 			copy_keys(info, cfg, "era");
 			copy_keys(info, cfg, "modification", true);
 
-			depinfo_.add_child("scenario", info);
+			depinfo_.add_child("scenario", std::move(info));
 		}
 	}
 
@@ -119,7 +119,7 @@ manager::manager(const config& gamecfg, bool mp)
 		copy_keys(info, cfg, "era");
 		copy_keys(info, cfg, "modification", true);
 
-		depinfo_.add_child("scenario", info);
+		depinfo_.add_child("scenario", std::move(info));
 	}
 }
 

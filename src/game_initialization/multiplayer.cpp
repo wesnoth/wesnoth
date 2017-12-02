@@ -145,7 +145,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 			config cfg;
 			config res;
 			cfg["version"] = game_config::version;
-			res.add_child("version", cfg);
+			res.add_child("version", std::move(cfg));
 			sock->send_data(res);
 		}
 

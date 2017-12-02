@@ -509,7 +509,7 @@ config move::to_config() const
 		config loc_cfg;
 		loc_cfg["x"]=loc.wml_x();
 		loc_cfg["y"]=loc.wml_y();
-		route_cfg.add_child("step",loc_cfg);
+		route_cfg.add_child("step", std::move(loc_cfg));
 	}
 	typedef std::pair<map_location,pathfind::marked_route::mark> pair_loc_mark;
 	for(pair_loc_mark const& item : route_->marks)
@@ -521,9 +521,9 @@ config move::to_config() const
 		mark_cfg["zoc"]=item.second.zoc;
 		mark_cfg["capture"]=item.second.capture;
 		mark_cfg["invisible"]=item.second.invisible;
-		route_cfg.add_child("mark",mark_cfg);
+		route_cfg.add_child("mark", std::move(mark_cfg));
 	}
-	final_cfg.add_child("route_",route_cfg);
+	final_cfg.add_child("route_", std::move(route_cfg));
 
 	return final_cfg;
 }

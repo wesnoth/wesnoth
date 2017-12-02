@@ -293,7 +293,7 @@ void connect_engine::update_and_send_diff(bool /*update_time_of_day*/)
 	config diff = level_.get_diff(old_level);
 	if(!diff.empty()) {
 		config scenario_diff;
-		scenario_diff.add_child("scenario_diff", diff);
+		scenario_diff.add_child("scenario_diff", std::move(diff));
 		send_to_server(scenario_diff);
 	}
 }

@@ -328,7 +328,7 @@ void story_viewer::draw_floating_image(window& window, floating_image_list::cons
 	// TODO: implement handling of the tiling options.
 	//image["resize_mode"] = "tile_centered"
 
-	cfg.add_child("image", image);
+	cfg.add_child("image", std::move(image));
 
 	canvas& window_canvas = window.get_canvas(0);
 

@@ -1436,7 +1436,7 @@ void generate_contents()
 			config hidden_cfg = *help_config;
 			// Change the toplevel to our new, custom built one.
 			hidden_cfg.clear_children("toplevel");
-			hidden_cfg.add_child("toplevel", hidden_toplevel);
+			hidden_cfg.add_child("toplevel", std::move(hidden_toplevel));
 			hidden_sections = parse_config(&hidden_cfg);
 		}
 		catch (parse_error& e) {

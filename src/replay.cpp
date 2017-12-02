@@ -232,7 +232,7 @@ void replay::add_countdown_update(int value, int team)
 	config val;
 	val["value"] = value;
 	val["team"] = team;
-	cmd.add_child("countdown_update",val);
+	cmd.add_child("countdown_update", std::move(val));
 }
 void replay::add_synced_command(const std::string& name, const config& command)
 {
@@ -277,7 +277,7 @@ void replay::clear_labels(const std::string& team_name, bool force)
 	config val;
 	val["team_name"] = team_name;
 	val["force"] = force;
-	cmd.add_child("clear_labels",val);
+	cmd.add_child("clear_labels", std::move(val));
 }
 
 void replay::add_rename(const std::string& name, const map_location& loc)
@@ -287,7 +287,7 @@ void replay::add_rename(const std::string& name, const map_location& loc)
 	config val;
 	loc.write(val);
 	val["name"] = name;
-	cmd.add_child("rename", val);
+	cmd.add_child("rename", std::move(val));
 }
 
 

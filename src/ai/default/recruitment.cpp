@@ -1798,11 +1798,11 @@ recruitment_aspect::recruitment_aspect(readonly_context &context, const config &
 	// First, transform simplified tags into [recruit] tags.
 	for (config pattern : parsed_cfg.child_range("pattern")) {
 		parsed_cfg["pattern"] = true;
-		parsed_cfg.add_child("recruit", pattern);
+		parsed_cfg.add_child("recruit", std::move(pattern));
 	}
 	for (config total : parsed_cfg.child_range("total")) {
 		parsed_cfg["total"] = true;
-		parsed_cfg.add_child("recruit", total);
+		parsed_cfg.add_child("recruit", std::move(total));
 	}
 	parsed_cfg.clear_children("pattern", "total");
 	// Then, if there's no [recruit], add one.

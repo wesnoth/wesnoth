@@ -83,7 +83,7 @@ void map_labels::write(config& res) const
 			config item;
 			label.second.write(item);
 
-			res.add_child("label", item);
+			res.add_child("label", std::move(item));
 		}
 	}
 }

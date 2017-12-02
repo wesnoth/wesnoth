@@ -466,7 +466,7 @@ void addon_manager::load_addon_list(window& window)
 			addons_[id] = addon;
 
 			// Add the addon to the config entry
-			cfg_.add_child("campaign", pbl_cfg);
+			cfg_.add_child("campaign", std::move(pbl_cfg));
 		}
 	}
 
