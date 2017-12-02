@@ -206,22 +206,12 @@ add_library(lua ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${lua_STAT_SRC})
 # Disable the setting of -Wold-style-cast on some targets.
 # old style casts are not wanted by our coding style but some C based code
 # uses it. Force the flag off for these files.
-if(ENABLE_STRICT_COMPILATION)
-	set(CXX_FLAG_NO_OLD_STYLE_CAST "-Wno-old-style-cast")
-endif()
+set_target_properties(lua
+	PROPERTIES
+	COMPILE_FLAGS
+	"-Wno-old-style-cast -Wno-useless-cast"
+)
 
-if(ENABLE_PEDANTIC_COMPILATION)
-	set(CXX_FLAG_NO_USELESS_CAST "-Wno-useless-cast")
-endif()
-
-if(ENABLE_STRICT_COMPILATION OR ENABLE_PEDANTIC_COMPILATION)
-	MESSAGE("Adding flags to lua target: ${CXX_FLAG_NO_OLD_STYLE_CAST} ${CXX_FLAG_NO_USELESS_CAST}")
-	set_target_properties(lua
-		PROPERTIES
-		COMPILE_FLAGS
-		"${CXX_FLAG_NO_OLD_STYLE_CAST} ${CXX_FLAG_NO_USELESS_CAST}"
-	)
-endif()
 
 ########### Helper libraries ###############
 
