@@ -7,6 +7,8 @@ configuration:
 platform: win32
 skip_branch_with_pr: true
 shallow_clone: true
+matrix:
+  fast_finish: true # Stop after a build failure
 before_build:
   - cd ..
   - ps: wget https://github.com/aquileia/external/archive/VC12.zip -O VC12.zip
@@ -15,5 +17,13 @@ before_build:
   - cd wesnoth
   - set PATH=C:\projects\external\dll;%PATH%
 
-on_failure:
-  - "python utils\\appveyor\\irc-notify.py wesnoth-dev {bold}{project_name} - {configuration_name} {color_green}{author}{plain} {bold}{short_commit}: {plain}{message} {color_red}Failed,{bold}Details: {plain}{build_url}"
+notifications:
+  - provider: Webhook
+    url: http://ai0867.net:6661/wesnoth
+    headers:
+      User-Agent: WesnothAppveyor/1.0
+      Version: vs2013
+      Num-Versions: 3
+      Authorization: TODO
+    on_build_success: true
+    on_build_failure: true
