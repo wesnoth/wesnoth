@@ -199,19 +199,16 @@ if(NOT DEFINED CXX_FLAGS_USER)
 
 endif(NOT DEFINED CXX_FLAGS_USER)
 
-set(COMPILER_FLAGS "-std=c++11 -Wall -Wextra -Werror=non-virtual-dtor")
+set(COMPILER_FLAGS "-std=c++11 -Wall -Wextra -Werror=non-virtual-dtor -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast")
+
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+	set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized")
+endif()
 
 ### Set strict compiler flags.
 
 if(ENABLE_STRICT_COMPILATION)
-	set(CXX_FLAGS_STRICT_COMPILATION "-Werror -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast")
-	
-	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-		set(CXX_FLAGS_STRICT_COMPILATION "${CXX_FLAGS_STRICT_COMPILATION} -Wmismatched-tags -Wno-conditional-uninitialized")
-	endif()
-	
-	set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_STRICT_COMPILATION}")
-
+	set(COMPILER_FLAGS "${COMPILER_FLAGS} -Werror")
 endif(ENABLE_STRICT_COMPILATION)
 
 ### Set pedantic compiler flags.
@@ -229,10 +226,6 @@ if(ENABLE_PEDANTIC_COMPILATION)
 endif(ENABLE_PEDANTIC_COMPILATION)
 
 ### Set the final compiler flags.
-
-if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-	set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option")
-endif()
 
 set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_USER}")
 
