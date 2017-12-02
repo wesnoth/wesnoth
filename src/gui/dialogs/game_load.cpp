@@ -184,12 +184,14 @@ void game_load::display_savegame(window& window)
 		std::string leader_image = leader["leader_image"].str();
 		if(!::image::exists(leader_image)) {
 			leader_image = filesystem::get_independent_image_path(leader_image);
+			if(!leader_image.empty()) {
+				leader_image+= leader["leader_image_tc_modifier"].str();
+			}
 		}
 
 		if(leader_image.empty()) {
 			leader_image = "units/unknown-unit.png" + leader["leader_image_tc_modifier"].str();
 		}
-
 		item["label"] = leader_image;
 		data.emplace("imgLeader", item);
 
