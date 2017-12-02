@@ -187,7 +187,6 @@ void game_load::display_savegame(window& window)
 			if(!leader_image.empty()) {
 				leader_image+= leader["leader_image_tc_modifier"].str();
 			}
-						   
 		}
 
 		if(leader_image.empty()) {
