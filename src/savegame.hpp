@@ -23,7 +23,6 @@
 #include <exception>
 
 class config_writer;
-class game_display;
 class saved_game;
 class version_info;
 
@@ -236,8 +235,7 @@ private:
 class ingame_savegame : public savegame
 {
 public:
-	ingame_savegame(saved_game& gamestate,
-		game_display& gui, const compression::format compress_saves);
+	ingame_savegame(saved_game& gamestate, const compression::format compress_saves);
 
 private:
 	/** Create a filename for automatic saves */
@@ -245,9 +243,6 @@ private:
 
 
 	void write_game(config_writer &out) override;
-
-protected:
-	game_display& gui_;
 };
 
 /** Class for replay saves (either manually or automatically). */
@@ -267,8 +262,7 @@ private:
 class autosave_savegame : public ingame_savegame
 {
 public:
-	autosave_savegame(saved_game &gamestate,
-					 game_display& gui, const compression::format compress_saves);
+	autosave_savegame(saved_game &gamestate, const compression::format compress_saves);
 
 	void autosave(const bool disable_autosave, const int autosave_max, const int infinite_autosaves);
 private:
@@ -279,7 +273,7 @@ private:
 class oos_savegame : public ingame_savegame
 {
 public:
-	oos_savegame(saved_game& gamestate, game_display& gui, bool& ignore);
+	oos_savegame(saved_game& gamestate, bool& ignore);
 
 private:
 	/** Display the save game dialog. */

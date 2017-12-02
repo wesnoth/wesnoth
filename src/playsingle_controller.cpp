@@ -347,7 +347,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 	} catch(wesnothd_error& e) {
 
 		scoped_savegame_snapshot snapshot(*this);
-		savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
+		savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
 		save.save_game_interactive(_("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"), savegame::savegame::YES_NO);
 		if(dynamic_cast<ingame_wesnothd_error*>(&e)) {
 			return LEVEL_RESULT::QUIT;
@@ -423,7 +423,7 @@ void playsingle_controller::before_human_turn()
 
 	if(init_side_done_now_) {
 		scoped_savegame_snapshot snapshot(*this);
-		savegame::autosave_savegame save(saved_game_, *gui_, preferences::save_compression_format());
+		savegame::autosave_savegame save(saved_game_, preferences::save_compression_format());
 		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 	}
 

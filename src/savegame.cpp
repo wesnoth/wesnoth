@@ -22,7 +22,6 @@
 #include "format_time_summary.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
-#include "game_display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_errors.hpp"
 #include "preferences/game.hpp"
@@ -43,6 +42,7 @@
 #include "serialization/parser.hpp"
 #include "statistics.hpp"
 #include "version.hpp"
+#include "video.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_SAVE LOG_STREAM(info, log_engine)
@@ -570,9 +570,8 @@ void replay_savegame::write_game(config_writer &out) {
 
 }
 
-autosave_savegame::autosave_savegame(saved_game &gamestate,
-					game_display& gui, const compression::format compress_saves)
-	: ingame_savegame(gamestate, gui, compress_saves)
+autosave_savegame::autosave_savegame(saved_game &gamestate, const compression::format compress_saves)
+	: ingame_savegame(gamestate, compress_saves)
 {
 	set_error_message(_("Could not auto save the game. Please save the game manually."));
 }
@@ -598,8 +597,8 @@ void autosave_savegame::create_filename()
 	set_filename(filename);
 }
 
-oos_savegame::oos_savegame(saved_game& gamestate, game_display& gui, bool& ignore)
-	: ingame_savegame(gamestate, gui, preferences::save_compression_format())
+oos_savegame::oos_savegame(saved_game& gamestate, bool& ignore)
+	: ingame_savegame(gamestate, preferences::save_compression_format())
 	, ignore_(ignore)
 {}
 
@@ -624,10 +623,8 @@ int oos_savegame::show_save_dialog(const std::string& message, DIALOG_TYPE /*dia
 	return res;
 }
 
-ingame_savegame::ingame_savegame(saved_game &gamestate,
-					game_display& gui, const compression::format compress_saves)
-	: savegame(gamestate, compress_saves, _("Save Game")),
-	gui_(gui)
+ingame_savegame::ingame_savegame(saved_game &gamestate, const compression::format compress_saves)
+	: savegame(gamestate, compress_saves, _("Save Game"))
 {
 }
 

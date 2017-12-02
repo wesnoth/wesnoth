@@ -823,7 +823,7 @@ void play_controller::save_game()
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
 		scoped_savegame_snapshot snapshot(*this);
-		savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
+		savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
 		save.save_game_interactive("", savegame::savegame::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_game);
@@ -836,7 +836,7 @@ void play_controller::save_game_auto(const std::string& filename)
 		save_blocker::save_unblocker unblocker;
 
 		scoped_savegame_snapshot snapshot(*this);
-		savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
+		savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
 		save.save_game_automatic(false, filename);
 	}
 }
@@ -984,7 +984,7 @@ void play_controller::process_oos(const std::string& msg) const
 	message << "\n\n" << _("Error details:") << "\n\n" << msg;
 
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::oos_savegame save(saved_game_, *gui_, ignore_replay_errors_);
+	savegame::oos_savegame save(saved_game_, ignore_replay_errors_);
 	save.save_game_interactive(message.str(), savegame::savegame::YES_NO); // can throw quit_game_exception
 }
 
@@ -998,14 +998,14 @@ void play_controller::update_gui_to_player(const int team_index, const bool obse
 void play_controller::do_autosave()
 {
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::autosave_savegame save(saved_game_, *gui_, preferences::save_compression_format());
+	savegame::autosave_savegame save(saved_game_, preferences::save_compression_format());
 	save.autosave(false, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 }
 
 void play_controller::do_consolesave(const std::string& filename)
 {
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::ingame_savegame save(saved_game_, *gui_, preferences::save_compression_format());
+	savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
 	save.save_game_automatic(true, filename);
 }
 

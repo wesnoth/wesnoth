@@ -371,7 +371,7 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 		temp_buf << " \n";
 	}
 	scoped_savegame_snapshot snapshot(*this);
-	savegame::oos_savegame save(saved_game_, *gui_, ignore_replay_errors_);
+	savegame::oos_savegame save(saved_game_, ignore_replay_errors_);
 	save.save_game_interactive(temp_buf.str(), savegame::savegame::YES_NO);
 }
 
