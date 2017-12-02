@@ -21,12 +21,8 @@ namespace sdl
 {
 bool point_in_rect(int x, int y, const SDL_Rect& rect)
 {
-#if SDL_VERSION_ATLEAST(2, 0, 4)
 	SDL_Point p {x, y};
 	return SDL_PointInRect(&p, &rect) != SDL_FALSE;
-#else
-	return x >= rect.x && y >= rect.y && x < rect.x + rect.w && y < rect.y + rect.h;
-#endif
 }
 
 bool point_in_rect(const point& point, const SDL_Rect& rect)

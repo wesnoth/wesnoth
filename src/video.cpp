@@ -396,19 +396,11 @@ std::pair<float, float> CVideo::get_dpi_scale_factor() const
 		return result;
 	}
 
-	/* This check is here because Travis CI builds with SDL 2.0.2.
-	 * The code isn't intended to be skipped: end users, distribution packagers etc.
-	 * should build the game with SDL 2.0.4 or above.
-	 *
-	 * - Jyrki, 2017-06-03
-	 */
-#if SDL_VERSION_ATLEAST(2, 0, 4)
 	float hdpi, vdpi;
 	SDL_GetDisplayDPI(window->get_display_index(), nullptr, &hdpi, &vdpi);
 
 	result.first = hdpi / MAGIC_DPI_SCALE_NUMBER;
 	result.second = vdpi / MAGIC_DPI_SCALE_NUMBER;
-#endif
 
 	return result;
 }
