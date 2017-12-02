@@ -150,9 +150,8 @@ void connection::cancel()
 
 		// drop data that server sent before canceling
 		canceled_ = true;
-		#define BOOST_ASIO_OS_DEF_SO_OOBINLINE SO_OOBINLINE
 		typedef boost::asio::detail::socket_option::boolean<
-			BOOST_ASIO_OS_DEF(SOL_SOCKET), BOOST_ASIO_OS_DEF(SO_OOBINLINE)>
+			SOL_SOCKET, SO_OOBINLINE>
 			  out_of_band_inline;
 		out_of_band_inline option(true);
 		socket_.set_option(option);
