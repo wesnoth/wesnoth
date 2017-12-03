@@ -1097,11 +1097,12 @@ color_t unit::xp_color() const
 
 	color_t color = normal_color;
 	bool hidden_amla = false;
-	for (const config& adv : get_modification_advances()){
+	for(const config& adv:get_modification_advances()){
 if(adv[ "hidden_amla" ].to_bool ()){
-hidden_amla = true;
+hidden_amla=true;
 }
-	}
+}
+
 if(advances_to().size() || hidden_amla == true){
 		if(near_advance){
 			color=near_advance_color;
