@@ -1102,8 +1102,7 @@ color_t unit::xp_color() const
 major_amla=true;
 		}
 	}
-	
-		if(advances_to().size() || major_amla == true){
+	if(advances_to().size() || major_amla == true){
 		if(near_advance){
 			color=near_advance_color;
 		} else if(mid_advance){
