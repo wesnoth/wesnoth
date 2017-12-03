@@ -183,18 +183,14 @@ file(GLOB wesnoth_lua_config wesnoth_lua_config.h)
 set_source_files_properties(${lua_STAT_SRC} PROPERTIES COMPILE_FLAGS "-include ${wesnoth_lua_config}")
 set_source_files_properties(${lua_STAT_SRC} PROPERTIES OBJECT_DEPENDS ${wesnoth_lua_config})
 
-if(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
-	# Assume the compiler is the clang compiler.
-	# It needs the files to be forced as c++ manually, it might be a newer
-	# version of cmake will be able to this for us.
-	#
-	# Also silence some Clang specific warnings due to extra parenthesis in if statements when comparing instead
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+# silence a Clang specific warning due to extra parenthesis in if statements when comparing instead
 	set_property(SOURCE
 		SOURCE ${lua_STAT_SRC}
 		APPEND_STRING PROPERTY COMPILE_FLAGS
-			" -x c++ -Wno-parentheses-equality"
+			" -Wno-parentheses-equality"
 	)
-endif(UNIX AND NOT CMAKE_COMPILER_IS_GNUCXX)
+endif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
@@ -203,7 +199,7 @@ add_library(lua ${LIBRARY_TYPE} EXCLUDE_FROM_ALL ${lua_STAT_SRC})
 
 ########### Old style cast flags ###############
 
-# Disable the setting of -Wold-style-cast on some targets.
+# Disable the setting of -Wold-style-cast and Wuseless-cast on some targets.
 # old style casts are not wanted by our coding style but some C based code
 # uses it. Force the flag off for these files.
 set_target_properties(lua
