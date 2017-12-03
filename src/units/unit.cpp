@@ -1102,10 +1102,8 @@ color_t unit::xp_color() const
 hidden_amla=true;
 		}
 	}
-		
-
-
-if(advances_to().size() || hidden_amla == true){
+	
+		if(advances_to().size() || hidden_amla == true){
 		if(near_advance){
 			color=near_advance_color;
 		} else if(mid_advance){
