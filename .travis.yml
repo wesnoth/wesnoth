@@ -36,7 +36,7 @@ before_install:
     - export WML_TEST_TIME=15
     - export BOOST_TEST=false
 
-    - if [ "$OPT" == "-O0" ]; then
+    - if [ "$OPT" = "-O0" ]; then
           export EXTRA_FLAGS_RELEASE="-O0";
           export PLAY_TEST=false;
           export MP_TEST=false;
@@ -44,7 +44,7 @@ before_install:
       fi
 
 install:
-    - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+    - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
           travis_wait ./utils/travis/install_deps.sh;
           export CXXFLAGS="-I/usr/local/opt/openssl/include $CFLAGS";
           export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS";
@@ -53,16 +53,16 @@ install:
       fi
 
 script: 
-    - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+    - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
           ./utils/travis/check_utf8.sh;
           ./utils/travis/utf8_bom_dog.sh;
-          $CXX --version;
-          scons wesnoth wesnothd campaignd boost_unit_tests build=release ctool=$CC cxxtool=$CXX --debug=time extra_flags_config="-pipe" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=true cxx_std=$CXXSTD nls=$NLS jobs=2;
+          "$CXX" --version;
+          scons wesnoth wesnothd campaignd boost_unit_tests build=release ctool="$CC" cxxtool="$CXX" --debug=time extra_flags_config="-pipe" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=true cxx_std="$CXXSTD" nls="$NLS" jobs=2;
       else
           export DISPLAY=:99.0;
           /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24;
           
-          docker run wesnoth-repo:16.04 bash -c "./docker_run.sh \"$NLS\" \"$TOOL\" \"$CC\" \"$CXX\" \"$CXXSTD\" \"$EXTRA_FLAGS_RELEASE\" \"$WML_TESTS\" \"$WML_TEST_TIME\" \"$PLAY_TEST\" \"$MP_TEST\" \"$BOOST_TEST\"";
+          docker run wesnoth-repo:16.04 bash -c './docker_run.sh "$@"' bash "$NLS" "$TOOL" "$CC" "$CXX" "$CXXSTD" "$EXTRA_FLAGS_RELEASE" "$WML_TESTS" "$WML_TEST_TIME" "$PLAY_TEST" "$MP_TEST" "$BOOST_TEST";
       fi
 
 notifications:
