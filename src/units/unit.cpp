@@ -1099,7 +1099,7 @@ color_t unit::xp_color() const
 	bool major_amla = false;
 	for(const config& adv:get_modification_advances()){
 		if(adv["major_amla"].to_bool ()){
-major_amla=true;
+			major_amla = true;
 		}
 	}
 	if(advances_to().size() || major_amla == true){
