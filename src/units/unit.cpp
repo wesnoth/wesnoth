@@ -1096,9 +1096,9 @@ color_t unit::xp_color() const
 	const bool far_advance  = static_cast<int>(experience_to_advance()) <= game_config::kill_experience*3;
 
 	color_t color = normal_color;
-	bool major_amla;
+	bool major_amla = false;
 	for(const config& adv:get_modification_advances()){
-		major_amla = adv["major_amla"].to_bool();
+		major_amla |= adv["major_amla"].to_bool();
 	}
 	if(advances_to().size() ||major_amla){
 		if(near_advance){
