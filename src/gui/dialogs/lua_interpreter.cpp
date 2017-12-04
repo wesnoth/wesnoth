@@ -80,12 +80,14 @@ REGISTER_DIALOG(lua_interpreter)
 class lua_interpreter::view {
 private:
 	scroll_label* msg_label; //the view is extremely simple, it's pretty much just this one widget that gets updated
+	window* window_;
 
 public:
-	view() : msg_label(nullptr) {}
+	view() : msg_label(nullptr), window_(nullptr) {}
 
 	/** Bind the scroll label widget to my pointer, and configure */
 	void bind(window& window) {
+		window_ = &window;
 		msg_label = find_widget<scroll_label>(&window, "msg", false, true);
 		msg_label->set_use_markup(true);
 		msg_label->set_vertical_scrollbar_mode(scrollbar_container::ALWAYS_VISIBLE);
@@ -98,7 +100,10 @@ public:
 		assert(msg_label);
 
 		msg_label->set_label(str);
-		msg_label->scroll_vertical_scrollbar(scrollbar_base::END);
+		window_->set_callback_next_draw([this]()
+		{
+			msg_label->scroll_vertical_scrollbar(scrollbar_base::END);
+		});
 	}
 
 	void pg_up()
