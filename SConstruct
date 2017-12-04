@@ -89,6 +89,7 @@ opts.AddVariables(
     ('server_gid', 'group id of the user who runs wesnothd', ""),
     ('server_uid', 'user id of the user who runs wesnothd', ""),
     BoolVariable('strict', 'Set to strict compilation', False),
+    BoolVariable('pedantic', 'Set to pedantic compilation', False),
     BoolVariable('static_test', 'Staticaly build against boost test (Not supported yet)', False),
     BoolVariable('verbose', 'Emit progress messages during data installation.', False),
     PathVariable('sdldir', 'Directory of SDL installation.', "", OptionalPath),
@@ -468,15 +469,22 @@ for env in [test_env, client_env, env]:
     if "clang" in env["CXX"]:
 # Silence warnings about unused -I options and unknown warning switches.
         env.AppendUnique(CCFLAGS = Split("-Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized"))
+        
+        if env['pedantic']:
+            env.AppendUnique(CXXFLAGS = Split("-Wdocumentation -Wno-documentation-deprecated-sync"))
 
     if "gcc" in env["TOOLS"]:
         if env['openmp']:
             env.AppendUnique(CXXFLAGS = ["-fopenmp"], LIBS = ["gomp"])
         
-        env.AppendUnique(CCFLAGS = Split("-Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast"))
+        env.AppendUnique(CCFLAGS = Split("-Wno-unused-local-typedefs -Wno-maybe-uninitialized"))
+        env.AppendUnique(CXXFLAGS = Split("-Wold-style-cast"))
         
         if env['strict']:
             env.AppendUnique(CCFLAGS = Split("-Werror"))
+        if env['pedantic']:
+            env.AppendUnique(CCFLAGS = Split("-Wlogical-op -Wmissing-declarations -Wredundant-decls -Wdouble-promotion"))
+            env.AppendUnique(CXXFLAGS = Split("-Wctor-dtor-privacy -Wuseless-cast -Wnoexcept"))
         if env['sanitize']:
             env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
         

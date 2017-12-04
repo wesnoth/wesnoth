@@ -215,10 +215,10 @@ endif(ENABLE_STRICT_COMPILATION)
 
 if(ENABLE_PEDANTIC_COMPILATION)
 
-	set(CXX_FLAGS_PEDANTIC_COMPILATION "-Wlogical-op -Wmissing-declarations -Wredundant-decls -Wctor-dtor-privacy -Wnon-virtual-dtor -Wdouble-promotion -Wuseless-cast -Wnoexcept")
+	set(CXX_FLAGS_PEDANTIC_COMPILATION "-Wlogical-op -Wmissing-declarations -Wredundant-decls -Wctor-dtor-privacy -Wdouble-promotion -Wuseless-cast -Wnoexcept")
 
 	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-		set(CXX_FLAGS_PEDANTIC_COMPILATION "${CXX_FLAGS_PEDANTIC_COMPILATION} -Wmismatched-tags -Wdocumentation -Wno-documentation-deprecated-sync")
+		set(CXX_FLAGS_PEDANTIC_COMPILATION "${CXX_FLAGS_PEDANTIC_COMPILATION} -Wdocumentation -Wno-documentation-deprecated-sync")
 	endif()
 	
 	set(COMPILER_FLAGS "${COMPILER_FLAGS} ${CXX_FLAGS_PEDANTIC_COMPILATION}")
