@@ -215,8 +215,7 @@ bool click(int mousex, int mousey)
 {
 	for(std::map<int, tooltip>::const_iterator i = tips.begin(); i != tips.end(); ++i) {
 		if(!i->second.action.empty() && sdl::point_in_rect(mousex, mousey, i->second.rect)) {
-			display* disp = resources::screen;
-			help::show_help(disp->video(), i->second.action);
+			help::show_help(i->second.action);
 			return true;
 		}
 	}

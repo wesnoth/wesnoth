@@ -1404,7 +1404,7 @@ int game_lua_kernel::intf_message(lua_State *L)
 int game_lua_kernel::intf_open_help(lua_State *L)
 {
 	if (game_display_) {
-		help::show_help(game_display_->video(), luaL_checkstring(L, 1));
+		help::show_help(luaL_checkstring(L, 1));
 	}
 	return 0;
 }

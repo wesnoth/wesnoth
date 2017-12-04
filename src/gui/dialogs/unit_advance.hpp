@@ -42,7 +42,7 @@ private:
 
 	void list_item_clicked(window& window);
 
-	void show_help(window& window);
+	void show_help();
 
 	const unit_ptr_vector& previews_;
 

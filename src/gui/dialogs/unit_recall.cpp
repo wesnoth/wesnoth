@@ -178,7 +178,7 @@ void unit_recall::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "show_help", false),
-		std::bind(&unit_recall::show_help, this, std::ref(window)));
+		std::bind(&unit_recall::show_help, this));
 
 	for(const unit_const_ptr& unit : recall_list_) {
 		std::map<std::string, string_map> row_data;
@@ -314,9 +314,9 @@ void unit_recall::dismiss_unit(window& window)
 	}
 }
 
-void unit_recall::show_help(window& window)
+void unit_recall::show_help()
 {
-	help::show_help(window.video(), "recruit_and_recall");
+	help::show_help("recruit_and_recall");
 }
 
 void unit_recall::list_item_clicked(window& window)

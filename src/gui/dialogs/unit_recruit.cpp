@@ -70,7 +70,7 @@ void unit_recruit::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "show_help", false),
-		std::bind(&unit_recruit::show_help, this, std::ref(window)));
+		std::bind(&unit_recruit::show_help, this));
 
 	for(const auto& recruit : recruit_list_)
 	{
@@ -122,9 +122,9 @@ void unit_recruit::list_item_clicked(window& window)
 		.set_displayed_type(*recruit_list_[selected_row]);
 }
 
-void unit_recruit::show_help(window& window)
+void unit_recruit::show_help()
 {
-	help::show_help(window.video(), "recruit_and_recall");
+	help::show_help("recruit_and_recall");
 }
 
 void unit_recruit::post_show(window& window)

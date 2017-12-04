@@ -63,9 +63,9 @@ addon_connect::addon_connect(std::string& host_name,
 	register_text("host_name", false, host_name, true);
 }
 
-void addon_connect::help_button_callback(window& window)
+void addon_connect::help_button_callback(window& /*window*/)
 {
-	help::show_help(window.video(), "installing_addons");
+	help::show_help("installing_addons");
 }
 
 void addon_connect::pre_show(window& window)

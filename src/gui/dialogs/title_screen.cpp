@@ -293,7 +293,7 @@ void title_screen::pre_show(window& win)
 		}
 
 		help::help_manager help_manager(&game_config_manager::get()->game_config());
-		help::show_help(win.video());
+		help::show_help();
 	});
 
 	//

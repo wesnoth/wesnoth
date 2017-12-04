@@ -43,7 +43,7 @@ private:
 
 	void list_item_clicked(window& window);
 
-	void show_help(window& window);
+	void show_help();
 
 	std::vector<const unit_type*>& recruit_list_;
 

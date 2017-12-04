@@ -57,7 +57,7 @@ void unit_advance::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "show_help", false),
-		std::bind(&unit_advance::show_help, this, std::ref(window)));
+		std::bind(&unit_advance::show_help, this));
 
 	for(size_t i = 0; i < previews_.size(); i++) {
 		const unit& sample = *previews_[i];
@@ -111,9 +111,9 @@ void unit_advance::list_item_clicked(window& window)
 		.set_displayed_unit(*previews_[selected_row]);
 }
 
-void unit_advance::show_help(window& window)
+void unit_advance::show_help()
 {
-	help::show_help(window.video(), "advancement");
+	help::show_help("advancement");
 }
 
 void unit_advance::post_show(window& window)

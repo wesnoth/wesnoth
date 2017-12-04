@@ -123,7 +123,7 @@ private:
 	void copy_url_callback(text_box& url_box);
 
 	void apply_filters(window& window);
-	void show_help(window& window);
+	void show_help();
 
 	boost::dynamic_bitset<> get_name_filter_visibility(const window& window) const;
 	boost::dynamic_bitset<> get_status_filter_visibility(const window& window) const;

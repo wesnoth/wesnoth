@@ -533,7 +533,7 @@ void unit_preview_pane::profile_button_callback()
 	if(get_window()) {
 		const unit_type* ut = unit_types.find(current_type_);
 		if(ut != nullptr) {
-			help::show_unit_description((*get_window()).video(), *ut);
+			help::show_unit_description(*ut);
 		}
 	}
 }

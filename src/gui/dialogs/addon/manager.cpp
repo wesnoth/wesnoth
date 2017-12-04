@@ -403,7 +403,7 @@ void addon_manager::pre_show(window& window)
 
 	connect_signal_mouse_left_click(
 		find_widget<button>(&window, "show_help", false),
-		std::bind(&addon_manager::show_help, this, std::ref(window)));
+		std::bind(&addon_manager::show_help, this));
 
 	if(stacked_widget* stk = find_widget<stacked_widget>(&window, "main_stack", false, false)) {
 		button& btn = find_widget<button>(&window, "details_toggle", false);
@@ -765,9 +765,9 @@ void addon_manager::execute_default_action(const addon_info& addon, window& wind
 	}
 }
 
-void addon_manager::show_help(window& window)
+void addon_manager::show_help()
 {
-	help::show_help(window.video(), "installing_addons");
+	help::show_help("installing_addons");
 }
 
 void addon_manager::browse_url_callback(text_box& url_box)

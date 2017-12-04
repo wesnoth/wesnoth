@@ -55,17 +55,17 @@ static lg::log_domain log_help("help");
 
 namespace help {
 
-void show_unit_description(CVideo& video, const unit &u)
+void show_unit_description(const unit &u)
 {
-	help::show_unit_description(video, u.type());
+	help::show_unit_description(u.type());
 }
 
-void show_terrain_description(CVideo& video, const terrain_type &t)
+void show_terrain_description(const terrain_type &t)
 {
-	help::show_terrain_help(video, t.id(), t.hide_in_editor() || t.is_combined());
+	help::show_terrain_help(t.id(), t.hide_in_editor() || t.is_combined());
 }
 
-void show_unit_description(CVideo& video, const unit_type &t)
+void show_unit_description(const unit_type &t)
 {
 	std::string var_id = t.get_cfg()["variation_id"].str();
 	if (var_id.empty())
@@ -83,9 +83,9 @@ void show_unit_description(CVideo& video, const unit_type &t)
 	}
 
 	if (use_variation)
-		help::show_variation_help(video, t.id(), var_id, hide_help);
+		help::show_variation_help(t.id(), var_id, hide_help);
 	else
-		help::show_unit_help(video, t.id(), t.show_variations_in_help(), hide_help);
+		help::show_unit_help(t.id(), t.show_variations_in_help(), hide_help);
 }
 
 extern config dummy_cfg;
@@ -113,9 +113,9 @@ help_manager::~help_manager()
  *
  * If show_topic is the empty string, the default topic will be shown.
  */
-void show_help(CVideo& video, const std::string& show_topic, int xloc, int yloc)
+void show_help(const std::string& show_topic, int xloc, int yloc)
 {
-	show_help(video, default_toplevel, show_topic, xloc, yloc);
+	show_help(default_toplevel, show_topic, xloc, yloc);
 }
 
 /**
@@ -123,9 +123,9 @@ void show_help(CVideo& video, const std::string& show_topic, int xloc, int yloc)
  *
  * If show_topic is the empty string, the default topic will be shown.
  */
-void show_unit_help(CVideo& video, const std::string& show_topic, bool has_variations, bool hidden, int xloc, int yloc)
+void show_unit_help(const std::string& show_topic, bool has_variations, bool hidden, int xloc, int yloc)
 {
-	show_help(video, default_toplevel,
+	show_help(default_toplevel,
 			  hidden_symbol(hidden) + (has_variations ? ".." : "") + unit_prefix + show_topic, xloc, yloc);
 }
 
@@ -134,19 +134,17 @@ void show_unit_help(CVideo& video, const std::string& show_topic, bool has_varia
  *
  * If show_topic is the empty string, the default topic will be shown.
  */
-void show_terrain_help(CVideo& video, const std::string& show_topic, bool hidden, int xloc, int yloc)
+void show_terrain_help(const std::string& show_topic, bool hidden, int xloc, int yloc)
 {
-	show_help(video, default_toplevel, hidden_symbol(hidden) + terrain_prefix + show_topic, xloc, yloc);
+	show_help(default_toplevel, hidden_symbol(hidden) + terrain_prefix + show_topic, xloc, yloc);
 }
-
-
 
 /**
  * Open the help browser, show the variation of the unit matching.
  */
-void show_variation_help(CVideo& video, const std::string& unit, const std::string &variation, bool hidden, int xloc, int yloc)
+void show_variation_help(const std::string& unit, const std::string &variation, bool hidden, int xloc, int yloc)
 {
-	show_help(video, default_toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation, xloc, yloc);
+	show_help(default_toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation, xloc, yloc);
 }
 
 /**
@@ -155,10 +153,12 @@ void show_variation_help(CVideo& video, const std::string& unit, const std::stri
  * This allows for complete customization of the contents, although not in a
  * very easy way.
  */
-void show_help(CVideo& video, const section &toplevel_sec,
+void show_help(const section &toplevel_sec,
 			   const std::string& show_topic,
 			   int xloc, int yloc)
 {
+	CVideo& video = CVideo::get_singleton();
+
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
 
