@@ -706,8 +706,6 @@ void pango_text::rerender(const bool force)
 
 		render(*layout_, rect_, 0u, stride);
 
-		static_assert(sizeof(uint32_t) == 4, "Something is wrong with our typedefs");
-
 		// The cairo surface is in CAIRO_FORMAT_ARGB32 which uses
 		// pre-multiplied alpha. SDL doesn't use that so the pixels need to be
 		// decoded again.
