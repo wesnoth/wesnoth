@@ -1947,8 +1947,8 @@
     <ClCompile Include="..\..\src\gui\dialogs\surrender_quit.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\dialogs\terrain_layers.cpp">
@@ -3785,6 +3785,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\sp_options_configure.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\statistics_dialog.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\story_viewer.hpp" />
+    <ClInclude Include="..\..\src\gui\dialogs\surrender_quit.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\terrain_layers.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\theme_list.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\title_screen.hpp" />
