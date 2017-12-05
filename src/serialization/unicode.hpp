@@ -26,7 +26,7 @@
 /**
  * For Win32 API.
  *
- * On Windows, wchar_t is defined as Uint16.
+ * On Windows, wchar_t is defined as uint16_t.
  * Wide strings are expected to be UTF-16.
  */
 namespace utf16 {

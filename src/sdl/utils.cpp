@@ -133,11 +133,11 @@ surface stretch_surface_horizontal(
 		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
 
-		const Uint32* const src_pixels = src_lock.pixels();
-		Uint32* dst_pixels = dst_lock.pixels();
+		const uint32_t* const src_pixels = src_lock.pixels();
+		uint32_t* dst_pixels = dst_lock.pixels();
 
 		for(unsigned y = 0; y < static_cast<unsigned>(src->h); ++y) {
-			const Uint32 pixel = src_pixels [y * src->w];
+			const uint32_t pixel = src_pixels [y * src->w];
 			for(unsigned x = 0; x < w; ++x) {
 
 				*dst_pixels++ = pixel;
@@ -178,8 +178,8 @@ surface stretch_surface_vertical(
 		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
 
-		const Uint32* const src_pixels = src_lock.pixels();
-		Uint32* dst_pixels = dst_lock.pixels();
+		const uint32_t* const src_pixels = src_lock.pixels();
+		uint32_t* dst_pixels = dst_lock.pixels();
 
 		for(unsigned y = 0; y < static_cast<unsigned>(h); ++y) {
 		  for(unsigned x = 0; x < static_cast<unsigned>(src->w); ++x) {
@@ -304,8 +304,8 @@ surface scale_surface(const surface &surf, int w, int h)
 		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
 
-		const Uint32* const src_pixels = src_lock.pixels();
-		Uint32* const dst_pixels = dst_lock.pixels();
+		const uint32_t* const src_pixels = src_lock.pixels();
+		uint32_t* const dst_pixels = dst_lock.pixels();
 
 		fixed_t xratio = fxpdiv(surf->w,w);
 		fixed_t yratio = fxpdiv(surf->h,h);
@@ -317,15 +317,15 @@ surface scale_surface(const surface &surf, int w, int h)
 				const int xsrcint = fxptoi(xsrc);
 				const int ysrcint = fxptoi(ysrc);
 
-				const Uint32* const src_word = src_pixels + ysrcint*src->w + xsrcint;
-				Uint32* const dst_word = dst_pixels +    ydst*dst->w + xdst;
+				const uint32_t* const src_word = src_pixels + ysrcint*src->w + xsrcint;
+				uint32_t* const dst_word = dst_pixels +    ydst*dst->w + xdst;
 				const int dx = (xsrcint + 1 < src->w) ? 1 : 0;
 				const int dy = (ysrcint + 1 < src->h) ? src->w : 0;
 
-				Uint8 r,g,b,a;
-				Uint32 rr,gg,bb,aa, temp;
+				uint8_t r,g,b,a;
+				uint32_t rr,gg,bb,aa, temp;
 
-				Uint32 pix[4], bilin[4];
+				uint32_t pix[4], bilin[4];
 
 				// This next part is the fixed point
 				// equivalent of "take everything to
@@ -431,8 +431,8 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
 
-		const Uint32* const src_pixels = src_lock.pixels();
-		Uint32* const dst_pixels = dst_lock.pixels();
+		const uint32_t* const src_pixels = src_lock.pixels();
+		uint32_t* const dst_pixels = dst_lock.pixels();
 
 		fixed_t xratio = fxpdiv(surf->w,w);
 		fixed_t yratio = fxpdiv(surf->h,h);
@@ -444,15 +444,15 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 				const int xsrcint = fxptoi(xsrc);
 				const int ysrcint = fxptoi(ysrc);
 
-				const Uint32* const src_word = src_pixels + ysrcint*src->w + xsrcint;
-				Uint32* const dst_word = dst_pixels +    ydst*dst->w + xdst;
+				const uint32_t* const src_word = src_pixels + ysrcint*src->w + xsrcint;
+				uint32_t* const dst_word = dst_pixels +    ydst*dst->w + xdst;
 				const int dx = (xsrcint + 1 < src->w) ? 1 : 0;
 				const int dy = (ysrcint + 1 < src->h) ? src->w : 0;
 
-				Uint8 r,g,b,a;
-				Uint32 rr,gg,bb,aa;
-				Uint16 avg_r, avg_g, avg_b;
-				Uint32 pix[4], bilin[4];
+				uint8_t r,g,b,a;
+				uint32_t rr,gg,bb,aa;
+				uint16_t avg_r, avg_g, avg_b;
+				uint32_t pix[4], bilin[4];
 
 				// This next part is the fixed point
 				// equivalent of "take everything to
@@ -521,9 +521,9 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 				  g = pix[loc] >> 8;
 				  b = pix[loc] >> 0;
 				  if (a == 0) {
-				    r = static_cast<Uint8>(avg_r);
-				    g = static_cast<Uint8>(avg_g);
-				    b = static_cast<Uint8>(avg_b);
+				    r = static_cast<uint8_t>(avg_r);
+				    g = static_cast<uint8_t>(avg_g);
+				    b = static_cast<uint8_t>(avg_b);
 				  }
 				  rr += r * bilin[loc];
 				  gg += g * bilin[loc];
@@ -576,8 +576,8 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
 
-		const Uint32* const src_pixels = src_lock.pixels();
-		Uint32* const dst_pixels = dst_lock.pixels();
+		const uint32_t* const src_pixels = src_lock.pixels();
+		uint32_t* const dst_pixels = dst_lock.pixels();
 
 		float xratio = static_cast<float>(surf->w) / w;
 		float yratio = static_cast<float>(surf->h) / h;
@@ -600,7 +600,7 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 						const int ysrcint = std::max<int>(0,std::min<int>(src->h-1,static_cast<int>(ysrc)));
 						const float ysize = std::min<float>(std::floor(yloc+1)-yloc,ysrc+yratio-yloc);
 
-						Uint8 r,g,b,a;
+						uint8_t r,g,b,a;
 
 						SDL_GetRGBA(src_pixels[ysrcint*src->w + xsrcint],src->format,&r,&g,&b,&a);
 						float value = xsize * ysize;
@@ -654,8 +654,8 @@ surface tile_surface(const surface& surf, int w, int h, bool centered)
 		const_surface_lock srclock(src);
 		surface_lock destlock(dest);
 
-		const Uint32* srcpixels = srclock.pixels();
-		Uint32* destpixels = destlock.pixels();
+		const uint32_t* srcpixels = srclock.pixels();
+		uint32_t* destpixels = destlock.pixels();
 
 		const int& sw = src->w;
 		const int& sh = src->h;
@@ -699,14 +699,14 @@ surface adjust_surface_color(const surface &surf, int red, int green, int blue)
 
 	{
 		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
+		uint32_t* beg = lock.pixels();
+		uint32_t* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
-			Uint8 alpha = (*beg) >> 24;
+			uint8_t alpha = (*beg) >> 24;
 
 			if(alpha) {
-				Uint8 r, g, b;
+				uint8_t r, g, b;
 				r = (*beg) >> 16;
 				g = (*beg) >> 8;
 				b = (*beg) >> 0;
@@ -738,27 +738,27 @@ surface greyscale_image(const surface &surf)
 
 	{
 		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
+		uint32_t* beg = lock.pixels();
+		uint32_t* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
-			Uint8 alpha = (*beg) >> 24;
+			uint8_t alpha = (*beg) >> 24;
 
 			if(alpha) {
-				Uint8 r, g, b;
+				uint8_t r, g, b;
 				r = (*beg) >> 16;
 				g = (*beg) >> 8;
 				b = (*beg);
-				//const Uint8 avg = (red+green+blue)/3;
+				//const uint8_t avg = (red+green+blue)/3;
 
 				// Use the correct formula for RGB to grayscale conversion.
 				// Ok, this is no big deal :)
 				// The correct formula being:
 				// gray=0.299red+0.587green+0.114blue
-				const Uint8 avg = static_cast<Uint8>((
-					77  * static_cast<Uint16>(r) +
-					150 * static_cast<Uint16>(g) +
-					29  * static_cast<Uint16>(b)  ) / 256);
+				const uint8_t avg = static_cast<uint8_t>((
+					77  * static_cast<uint16_t>(r) +
+					150 * static_cast<uint16_t>(g) +
+					29  * static_cast<uint16_t>(b)  ) / 256);
 
 				*beg = (alpha << 24) | (avg << 16) | (avg << 8) | avg;
 			}
@@ -783,14 +783,14 @@ surface monochrome_image(const surface &surf, const int threshold)
 
 	{
 		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
+		uint32_t* beg = lock.pixels();
+		uint32_t* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
-			Uint8 alpha = (*beg) >> 24;
+			uint8_t alpha = (*beg) >> 24;
 
 			if(alpha) {
-				Uint8 r, g, b, result;
+				uint8_t r, g, b, result;
 				r = (*beg) >> 16;
 				g = (*beg) >> 8;
 				b = (*beg);
@@ -798,7 +798,7 @@ surface monochrome_image(const surface &surf, const int threshold)
 				// first convert the pixel to grayscale
 				// if the resulting value is above the threshold make it black
 				// else make it white
-				result = static_cast<Uint8>(0.299 * r + 0.587 * g + 0.114 * b) > threshold ? 255 : 0;
+				result = static_cast<uint8_t>(0.299 * r + 0.587 * g + 0.114 * b) > threshold ? 255 : 0;
 
 				*beg = (alpha << 24) | (result << 16) | (result << 8) | result;
 			}
@@ -823,14 +823,14 @@ surface sepia_image(const surface &surf)
 
 	{
 		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
+		uint32_t* beg = lock.pixels();
+		uint32_t* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
-			Uint8 alpha = (*beg) >> 24;
+			uint8_t alpha = (*beg) >> 24;
 
 			if(alpha) {
-				Uint8 r, g, b;
+				uint8_t r, g, b;
 				r = (*beg) >> 16;
 				g = (*beg) >> 8;
 				b = (*beg);
@@ -838,9 +838,9 @@ surface sepia_image(const surface &surf)
 				// this is the formula for applying a sepia effect
 				// that can be found on various web sites
 				// for example here: https://software.intel.com/sites/default/files/article/346220/sepiafilter-intelcilkplus.pdf
-				Uint8 outRed = std::min(255, static_cast<int>((r * 0.393) + (g * 0.769) + (b * 0.189)));
-				Uint8 outGreen = std::min(255, static_cast<int>((r * 0.349) + (g * 0.686) + (b * 0.168)));
-				Uint8 outBlue = std::min(255, static_cast<int>((r * 0.272) + (g * 0.534) + (b * 0.131)));
+				uint8_t outRed = std::min(255, static_cast<int>((r * 0.393) + (g * 0.769) + (b * 0.189)));
+				uint8_t outGreen = std::min(255, static_cast<int>((r * 0.349) + (g * 0.686) + (b * 0.168)));
+				uint8_t outBlue = std::min(255, static_cast<int>((r * 0.272) + (g * 0.534) + (b * 0.131)));
 
 				*beg = (alpha << 24) | (outRed << 16) | (outGreen << 8) | (outBlue);
 			}
@@ -865,14 +865,14 @@ surface negative_image(const surface &surf, const int thresholdR, const int thre
 
 	{
 		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
+		uint32_t* beg = lock.pixels();
+		uint32_t* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
-			Uint8 alpha = (*beg) >> 24;
+			uint8_t alpha = (*beg) >> 24;
 
 			if(alpha) {
-				Uint8 r, g, b, newR, newG, newB;
+				uint8_t r, g, b, newR, newG, newB;
 				r = (*beg) >> 16;
 				g = (*beg) >> 8;
 				b = (*beg);
@@ -880,7 +880,7 @@ surface negative_image(const surface &surf, const int thresholdR, const int thre
 				// invert he channel only if its value is greater than the supplied threshold
 				// this can be used for solarization effects
 				// for a full negative effect, use a value of -1
-				// 255 is a no-op value (doesn't do anything, since a Uint8 cannot contain a greater value than that)
+				// 255 is a no-op value (doesn't do anything, since a uint8_t cannot contain a greater value than that)
 				newR = r > thresholdR ? 255 - r : r;
 				newG = g > thresholdG ? 255 - g : g;
 				newB = b > thresholdB ? 255 - b : b;
@@ -908,11 +908,11 @@ surface alpha_to_greyscale(const surface &surf)
 
 	{
 		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
+		uint32_t* beg = lock.pixels();
+		uint32_t* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
-			Uint8 alpha = (*beg) >> 24;
+			uint8_t alpha = (*beg) >> 24;
 
 			*beg = (0xff << 24) | (alpha << 16) | (alpha << 8) | alpha;
 
@@ -936,8 +936,8 @@ surface wipe_alpha(const surface &surf)
 
 	{
 		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
+		uint32_t* beg = lock.pixels();
+		uint32_t* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
 
@@ -966,11 +966,11 @@ surface shadow_image(const surface &surf)
 
 	{
 		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
+		uint32_t* beg = lock.pixels();
+		uint32_t* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
-			Uint8 alpha = (*beg) >> 24;
+			uint8_t alpha = (*beg) >> 24;
 
 			if(alpha) {
 				// increase alpha and color in black (RGB=0)
@@ -1000,14 +1000,14 @@ surface swap_channels_image(const surface& surf, channel r, channel g, channel b
 
 	{
 		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
+		uint32_t* beg = lock.pixels();
+		uint32_t* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
-			Uint8 alpha = (*beg) >> 24;
+			uint8_t alpha = (*beg) >> 24;
 
 			if(alpha) {
-				Uint8 red, green, blue, newRed, newGreen, newBlue, newAlpha;
+				uint8_t red, green, blue, newRed, newGreen, newBlue, newAlpha;
 				red = (*beg) >> 16;
 				green = (*beg) >> 8;
 				blue = (*beg);
@@ -1106,16 +1106,16 @@ surface recolor_image(surface surf, const color_range_map& map_rgb)
 	}
 
 	surface_lock lock(nsurf);
-	Uint32* beg = lock.pixels();
-	Uint32* end = beg + nsurf->w*surf->h;
+	uint32_t* beg = lock.pixels();
+	uint32_t* end = beg + nsurf->w*surf->h;
 
 	while(beg != end) {
-		Uint8 alpha = (*beg) >> 24;
+		uint8_t alpha = (*beg) >> 24;
 
 		// Don't recolor invisible pixels.
 		if(alpha) {
 			// Palette use only RGB channels, so remove alpha
-			Uint32 oldrgb = (*beg) | 0xFF000000;
+			uint32_t oldrgb = (*beg) | 0xFF000000;
 
 			auto i = map_rgb.find(color_t::from_argb_bytes(oldrgb));
 			if(i != map_rgb.end()) {
@@ -1144,15 +1144,15 @@ surface brighten_image(const surface &surf, fixed_t amount)
 
 	{
 		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
+		uint32_t* beg = lock.pixels();
+		uint32_t* end = beg + nsurf->w*surf->h;
 
 		if (amount < 0) amount = 0;
 		while(beg != end) {
-			Uint8 alpha = (*beg) >> 24;
+			uint8_t alpha = (*beg) >> 24;
 
 			if(alpha) {
-				Uint8 r, g, b;
+				uint8_t r, g, b;
 				r = (*beg) >> 16;
 				g = (*beg) >> 8;
 				b = (*beg);
@@ -1177,7 +1177,7 @@ void adjust_surface_alpha(surface& surf, fixed_t amount)
 		return;
 	}
 
-	SDL_SetSurfaceAlphaMod(surf, Uint8(amount));
+	SDL_SetSurfaceAlphaMod(surf, uint8_t(amount));
 }
 
 surface adjust_surface_alpha_add(const surface &surf, int amount)
@@ -1195,19 +1195,19 @@ surface adjust_surface_alpha_add(const surface &surf, int amount)
 
 	{
 		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
+		uint32_t* beg = lock.pixels();
+		uint32_t* end = beg + nsurf->w*surf->h;
 
 		while(beg != end) {
-			Uint8 alpha = (*beg) >> 24;
+			uint8_t alpha = (*beg) >> 24;
 
 			if(alpha) {
-				Uint8 r, g, b;
+				uint8_t r, g, b;
 				r = (*beg) >> 16;
 				g = (*beg) >> 8;
 				b = (*beg);
 
-				alpha = Uint8(std::max<int>(0,std::min<int>(255,int(alpha) + amount)));
+				alpha = uint8_t(std::max<int>(0,std::min<int>(255,int(alpha) + amount)));
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
 
@@ -1253,21 +1253,21 @@ surface mask_surface(const surface &surf, const surface &mask, bool* empty_resul
 		surface_lock lock(nsurf);
 		const_surface_lock mlock(nmask);
 
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
-		const Uint32* mbeg = mlock.pixels();
-		const Uint32* mend = mbeg + nmask->w*nmask->h;
+		uint32_t* beg = lock.pixels();
+		uint32_t* end = beg + nsurf->w*surf->h;
+		const uint32_t* mbeg = mlock.pixels();
+		const uint32_t* mend = mbeg + nmask->w*nmask->h;
 
 		while(beg != end && mbeg != mend) {
-			Uint8 alpha = (*beg) >> 24;
+			uint8_t alpha = (*beg) >> 24;
 
 			if(alpha) {
-				Uint8 r, g, b;
+				uint8_t r, g, b;
 				r = (*beg) >> 16;
 				g = (*beg) >> 8;
 				b = (*beg);
 
-				Uint8 malpha = (*mbeg) >> 24;
+				uint8_t malpha = (*mbeg) >> 24;
 				if (alpha > malpha) {
 					alpha = malpha;
 				}
@@ -1313,15 +1313,15 @@ bool in_mask_surface(const surface &surf, const surface &mask)
 		surface_lock lock(nsurf);
 		const_surface_lock mlock(nmask);
 
-		const Uint32* mbeg = mlock.pixels();
-		const Uint32* mend = mbeg + nmask->w*nmask->h;
-		Uint32* beg = lock.pixels();
+		const uint32_t* mbeg = mlock.pixels();
+		const uint32_t* mend = mbeg + nmask->w*nmask->h;
+		uint32_t* beg = lock.pixels();
 		// no need for 'end', because both surfaces have same size
 
 		while(mbeg != mend) {
-			Uint8 malpha = (*mbeg) >> 24;
+			uint8_t malpha = (*mbeg) >> 24;
 			if(malpha == 0) {
-				Uint8 alpha = (*beg) >> 24;
+				uint8_t alpha = (*beg) >> 24;
 				if (alpha)
 					return false;
 			}
@@ -1344,16 +1344,16 @@ surface submerge_alpha(const surface &surf, int depth, float alpha_base, float a
 	{
 		surface_lock lock(nsurf);
 
-		Uint32* beg = lock.pixels();
-		Uint32* limit = beg + (nsurf->h-depth) * nsurf->w ;
-		Uint32* end = beg + nsurf->w * nsurf->h;
+		uint32_t* beg = lock.pixels();
+		uint32_t* limit = beg + (nsurf->h-depth) * nsurf->w ;
+		uint32_t* end = beg + nsurf->w * nsurf->h;
 		beg = limit; // directlt jump to the bottom part
 
 		while(beg != end){
-			Uint8 alpha = (*beg) >> 24;
+			uint8_t alpha = (*beg) >> 24;
 
 			if(alpha) {
-				Uint8 r, g, b;
+				uint8_t r, g, b;
 				r = (*beg) >> 16;
 				g = (*beg) >> 8;
 				b = (*beg);
@@ -1369,16 +1369,16 @@ surface submerge_alpha(const surface &surf, int depth, float alpha_base, float a
 
 /*
 		for(int y = submerge_height; y < nsurf->h; ++y) {
-			Uint32* cur = beg + y * nsurf->w;
-			Uint32* row_end = beg + (y+1) * nsurf->w;
+			uint32_t* cur = beg + y * nsurf->w;
+			uint32_t* row_end = beg + (y+1) * nsurf->w;
 			float d = y * 1.0 / depth;
 			double a = 0.2;//std::max<double>(0, (1-d)*0.3);
 			fixed_t amount = ftofxp(a);
 			while(cur != row_end) {
-				Uint8 alpha = (*cur) >> 24;
+				uint8_t alpha = (*cur) >> 24;
 
 				if(alpha) {
-					Uint8 r, g, b;
+					uint8_t r, g, b;
 					r = (*cur) >> 16;
 					g = (*cur) >> 8;
 					b = (*cur);
@@ -1423,21 +1423,21 @@ surface light_surface(const surface &surf, const surface &lightmap)
 		surface_lock lock(nsurf);
 		const_surface_lock llock(lightmap);
 
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w * nsurf->h;
-		const Uint32* lbeg = llock.pixels();
-		const Uint32* lend = lbeg + lightmap->w * lightmap->h;
+		uint32_t* beg = lock.pixels();
+		uint32_t* end = beg + nsurf->w * nsurf->h;
+		const uint32_t* lbeg = llock.pixels();
+		const uint32_t* lend = lbeg + lightmap->w * lightmap->h;
 
 		while(beg != end && lbeg != lend) {
-			Uint8 alpha = (*beg) >> 24;
+			uint8_t alpha = (*beg) >> 24;
  			if(alpha) {
-				Uint8 lr, lg, lb;
+				uint8_t lr, lg, lb;
 
 				lr = (*lbeg) >> 16;
 				lg = (*lbeg) >> 8;
 				lb = (*lbeg);
 
-				Uint8 r, g, b;
+				uint8_t r, g, b;
 				r = (*beg) >> 16;
 				g = (*beg) >> 8;
 				b = (*beg);
@@ -1445,7 +1445,7 @@ surface light_surface(const surface &surf, const surface &lightmap)
 				int dr = (static_cast<int>(lr) - 128) * 2;
 				int dg = (static_cast<int>(lg) - 128) * 2;
 				int db = (static_cast<int>(lb) - 128) * 2;
-				//note that r + dr will promote r to int (needed to avoid Uint8 math)
+				//note that r + dr will promote r to int (needed to avoid uint8_t math)
 				r = std::max<int>(0,std::min<int>(255, r + dr));
 				g = std::max<int>(0,std::min<int>(255, g + dg));
 				b = std::max<int>(0,std::min<int>(255, b + db));
@@ -1491,19 +1491,19 @@ void blur_surface(surface& surf, SDL_Rect rect, int depth)
 		depth = max_blur;
 	}
 
-	Uint32 queue[max_blur];
-	const Uint32* end_queue = queue + max_blur;
+	uint32_t queue[max_blur];
+	const uint32_t* end_queue = queue + max_blur;
 
-	const Uint32 ff = 0xff;
+	const uint32_t ff = 0xff;
 
 	const unsigned pixel_offset = rect.y * surf->w + rect.x;
 
 	surface_lock lock(surf);
 	for(int y = 0; y < rect.h; ++y) {
-		const Uint32* front = &queue[0];
-		Uint32* back = &queue[0];
-		Uint32 red = 0, green = 0, blue = 0, avg = 0;
-		Uint32* p = lock.pixels() + pixel_offset + y * surf->w;
+		const uint32_t* front = &queue[0];
+		uint32_t* back = &queue[0];
+		uint32_t red = 0, green = 0, blue = 0, avg = 0;
+		uint32_t* p = lock.pixels() + pixel_offset + y * surf->w;
 		for(int x = 0; x <= depth && x < rect.w; ++x, ++p) {
 			red += ((*p) >> 16)&0xFF;
 			green += ((*p) >> 8)&0xFF;
@@ -1534,7 +1534,7 @@ void blur_surface(surface& surf, SDL_Rect rect, int depth)
 			}
 
 			if(x + depth+1 < rect.w) {
-				Uint32* q = p + depth+1;
+				uint32_t* q = p + depth+1;
 				red += ((*q) >> 16)&0xFF;
 				green += ((*q) >> 8)&0xFF;
 				blue += (*q)&0xFF;
@@ -1548,10 +1548,10 @@ void blur_surface(surface& surf, SDL_Rect rect, int depth)
 	}
 
 	for(int x = 0; x < rect.w; ++x) {
-		const Uint32* front = &queue[0];
-		Uint32* back = &queue[0];
-		Uint32 red = 0, green = 0, blue = 0, avg = 0;
-		Uint32* p = lock.pixels() + pixel_offset + x;
+		const uint32_t* front = &queue[0];
+		uint32_t* back = &queue[0];
+		uint32_t red = 0, green = 0, blue = 0, avg = 0;
+		uint32_t* p = lock.pixels() + pixel_offset + x;
 		for(int y = 0; y <= depth && y < rect.h; ++y, p += surf->w) {
 			red += ((*p) >> 16)&0xFF;
 			green += ((*p) >> 8)&0xFF;
@@ -1582,7 +1582,7 @@ void blur_surface(surface& surf, SDL_Rect rect, int depth)
 			}
 
 			if(y + depth+1 < rect.h) {
-				Uint32* q = p + (depth+1)*surf->w;
+				uint32_t* q = p + (depth+1)*surf->w;
 				red += ((*q) >> 16)&0xFF;
 				green += ((*q) >> 8)&0xFF;
 				blue += (*q)&0xFF;
@@ -1615,21 +1615,21 @@ surface blur_alpha_surface(const surface &surf, int depth)
 	}
 
 	struct Pixel{
-		Uint8 alpha;
-		Uint8 red;
-		Uint8 green;
-		Uint8 blue;
-		Pixel(Uint32* p)
+		uint8_t alpha;
+		uint8_t red;
+		uint8_t green;
+		uint8_t blue;
+		Pixel(uint32_t* p)
 		  : alpha(((*p) >> 24)&0xFF)
 		  , red(((*p) >> 16)&0xFF)
 		  , green(((*p) >> 8)&0xFF)
 		  , blue((*p)&0xFF) {}
 	};
 	struct Average{
-		Uint32 alpha;
-		Uint32 red;
-		Uint32 green;
-		Uint32 blue;
+		uint32_t alpha;
+		uint32_t red;
+		uint32_t green;
+		uint32_t blue;
 		Average() : alpha(), red(), green(), blue()
 		{}
 		Average& operator+=(const Pixel& pix){
@@ -1646,8 +1646,8 @@ surface blur_alpha_surface(const surface &surf, int depth)
 			alpha -= pix.alpha;
 			return *this;
 		}
-		Uint32 operator()(unsigned num){
-			const Uint32 ff = 0xff;
+		uint32_t operator()(unsigned num){
+			const uint32_t ff = 0xff;
 			if(!alpha){
 				return 0;
 			}
@@ -1668,7 +1668,7 @@ surface blur_alpha_surface(const surface &surf, int depth)
 		Average avg;
 
 		// Preload the first depth+1 pixels
-		Uint32* p = lock.pixels() + y*res->w;
+		uint32_t* p = lock.pixels() + y*res->w;
 		for(x = 0; x <= depth && x < res->w; ++x, ++p) {
 			assert(!queue.full());
 			queue.push_back(Pixel{p});
@@ -1679,7 +1679,7 @@ surface blur_alpha_surface(const surface &surf, int depth)
 		p = lock.pixels() + y*res->w;
 		for(x = 0; x < res->w; ++x, ++p) {
 			// Write the current average
-			const Uint32 num = queue.size();
+			const uint32_t num = queue.size();
 			*p = avg(num);
 
 			// Unload earlier pixels that are now too far away
@@ -1691,7 +1691,7 @@ surface blur_alpha_surface(const surface &surf, int depth)
 
 			// Add new pixels
 			if(x + depth+1 < res->w) {
-				Uint32* q = p + depth+1;
+				uint32_t* q = p + depth+1;
 				assert(!queue.full());
 				queue.push_back(Pixel{q});
 				avg += queue.back();
@@ -1707,7 +1707,7 @@ surface blur_alpha_surface(const surface &surf, int depth)
 		Average avg;
 
 		// Preload the first depth+1 pixels
-		Uint32* p = lock.pixels() + x;
+		uint32_t* p = lock.pixels() + x;
 		for(y = 0; y <= depth && y < res->h; ++y, p += res->w) {
 			assert(!queue.full());
 			queue.push_back(Pixel{p});
@@ -1718,7 +1718,7 @@ surface blur_alpha_surface(const surface &surf, int depth)
 		p = lock.pixels() + x;
 		for(y = 0; y < res->h; ++y, p += res->w) {
 			// Write the current average
-			const Uint32 num = queue.size();
+			const uint32_t num = queue.size();
 			*p = avg(num);
 
 			// Unload earlier pixels that are now too far away
@@ -1730,7 +1730,7 @@ surface blur_alpha_surface(const surface &surf, int depth)
 
 			// Add new pixels
 			if(y + depth+1 < res->h) {
-				Uint32* q = p + (depth+1)*res->w;
+				uint32_t* q = p + (depth+1)*res->w;
 				assert(!queue.full());
 				queue.push_back(Pixel{q});
 				avg += queue.back();
@@ -1787,12 +1787,12 @@ surface cut_surface(const surface &surf, SDL_Rect const &r)
 	const_surface_lock slock(surf);
 	surface_lock rlock(res);
 
-	const Uint8* src = reinterpret_cast<const Uint8 *>(slock.pixels());
-	Uint8* dest = reinterpret_cast<Uint8 *>(rlock.pixels());
+	const uint8_t* src = reinterpret_cast<const uint8_t *>(slock.pixels());
+	uint8_t* dest = reinterpret_cast<uint8_t *>(rlock.pixels());
 
 	for(int y = 0; y < src_rect.h && (src_rect.y + y) < surf->h; ++y) {
-		const Uint8* line_src  = src  + (src_rect.y + y) * spitch + src_rect.x * sbpp;
-		Uint8* line_dest = dest + (dst_rect.y + y) * rpitch + dst_rect.x * rbpp;
+		const uint8_t* line_src  = src  + (src_rect.y + y) * spitch + src_rect.x * sbpp;
+		uint8_t* line_dest = dest + (dst_rect.y + y) * rpitch + dst_rect.x * rbpp;
 		size_t size = src_rect.w + src_rect.x <= surf->w ? src_rect.w : surf->w - src_rect.x;
 
 		assert(rpitch >= src_rect.w * rbpp);
@@ -1819,20 +1819,20 @@ surface blend_surface(
 
 	{
 		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w*surf->h;
+		uint32_t* beg = lock.pixels();
+		uint32_t* end = beg + nsurf->w*surf->h;
 
-		Uint16 ratio = amount * 256;
-		const Uint16 red   = ratio * color.r;
-		const Uint16 green = ratio * color.g;
-		const Uint16 blue  = ratio * color.b;
+		uint16_t ratio = amount * 256;
+		const uint16_t red   = ratio * color.r;
+		const uint16_t green = ratio * color.g;
+		const uint16_t blue  = ratio * color.b;
 		ratio = 256 - ratio;
 
 		while(beg != end) {
-			Uint8 a = static_cast<Uint8>(*beg >> 24);
-			Uint8 r = (ratio * static_cast<Uint8>(*beg >> 16) + red)   >> 8;
-			Uint8 g = (ratio * static_cast<Uint8>(*beg >> 8)  + green) >> 8;
-			Uint8 b = (ratio * static_cast<Uint8>(*beg)       + blue)  >> 8;
+			uint8_t a = static_cast<uint8_t>(*beg >> 24);
+			uint8_t r = (ratio * static_cast<uint8_t>(*beg >> 16) + red)   >> 8;
+			uint8_t g = (ratio * static_cast<uint8_t>(*beg >> 8)  + green) >> 8;
+			uint8_t b = (ratio * static_cast<uint8_t>(*beg)       + blue)  >> 8;
 
 			*beg = (a << 24) | (r << 16) | (g << 8) | b;
 
@@ -1905,17 +1905,17 @@ surface rotate_any_surface(const surface& surf, float angle, int zoom, int offse
 	return dst;
 }
 
-void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, Uint32 pixel)
+void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, uint32_t pixel)
 {
 	const int bpp = surf->format->BytesPerPixel;
 	/* dst is the address to the pixel we want to set */
-	Uint8* const dst = reinterpret_cast<Uint8*>(surf_lock.pixels()) + y * surf->pitch + x * bpp;
+	uint8_t* const dst = reinterpret_cast<uint8_t*>(surf_lock.pixels()) + y * surf->pitch + x * bpp;
 	switch (bpp) {
 	case 1:
 		*dst = pixel;
 		break;
 	case 2:
-		*reinterpret_cast<Uint16*>(dst) = pixel;
+		*reinterpret_cast<uint16_t*>(dst) = pixel;
 		break;
 	case 3:
 		if (SDL_BYTEORDER == SDL_BIG_ENDIAN) {
@@ -1929,23 +1929,23 @@ void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, Uint3
 		}
 		break;
 	case 4:
-		*reinterpret_cast<Uint32*>(dst) = pixel;
+		*reinterpret_cast<uint32_t*>(dst) = pixel;
 		break;
 	default:
 		break;
 	}
 }
 
-Uint32 get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x, int y)
+uint32_t get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x, int y)
 {
 	const int bpp = surf->format->BytesPerPixel;
 	/* p is the address to the pixel we want to retrieve */
-	const Uint8* const src = reinterpret_cast<const Uint8*>(surf_lock.pixels()) + y * surf->pitch + x * bpp;
+	const uint8_t* const src = reinterpret_cast<const uint8_t*>(surf_lock.pixels()) + y * surf->pitch + x * bpp;
 	switch (bpp) {
 	case 1:
 		return *src;
 	case 2:
-		return *reinterpret_cast<const Uint16*>(src);
+		return *reinterpret_cast<const uint16_t*>(src);
 	case 3:
 		if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
 			return src[0] << 16 | src[1] << 8 | src[2];
@@ -1953,7 +1953,7 @@ Uint32 get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x
 			return src[0] | src[1] << 8 | src[2] << 16;
 		break;
 	case 4:
-		return *reinterpret_cast<const Uint32*>(src);
+		return *reinterpret_cast<const uint32_t*>(src);
 	}
 	return 0;
 }
@@ -1974,7 +1974,7 @@ surface rotate_180_surface(const surface &surf)
 
 	{// Code block to limit the scope of the surface lock.
 		surface_lock lock(nsurf);
-		Uint32* const pixels = lock.pixels();
+		uint32_t* const pixels = lock.pixels();
 
 		// Swap pixels in the upper half of the image with
 		// those in the lower half.
@@ -2019,8 +2019,8 @@ surface rotate_90_surface(const surface &surf, bool clockwise)
 		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
 
-		const Uint32* const src_pixels = src_lock.pixels();
-		Uint32* const dst_pixels = dst_lock.pixels();
+		const uint32_t* const src_pixels = src_lock.pixels();
+		uint32_t* const dst_pixels = dst_lock.pixels();
 
 		// Copy the pixels.
 		for ( int y = 0; y != src->h; ++y ) {
@@ -2053,7 +2053,7 @@ surface flip_surface(const surface &surf)
 
 	{
 		surface_lock lock(nsurf);
-		Uint32* const pixels = lock.pixels();
+		uint32_t* const pixels = lock.pixels();
 
 		for(int y = 0; y != nsurf->h; ++y) {
 			for(int x = 0; x != nsurf->w/2; ++x) {
@@ -2082,7 +2082,7 @@ surface flop_surface(const surface &surf)
 
 	{
 		surface_lock lock(nsurf);
-		Uint32* const pixels = lock.pixels();
+		uint32_t* const pixels = lock.pixels();
 
 		for(int x = 0; x != nsurf->w; ++x) {
 			for(int y = 0; y != nsurf->h/2; ++y) {
@@ -2188,8 +2188,8 @@ void blit_surface(const surface& surf,
 		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
 
-		const Uint32* const src_pixels = src_lock.pixels();
-		Uint32* dst_pixels = dst_lock.pixels();
+		const uint32_t* const src_pixels = src_lock.pixels();
+		uint32_t* dst_pixels = dst_lock.pixels();
 
 		for(unsigned y = 0; y < height; ++y) {
 			for(unsigned x = 0; x < width; ++x) {
@@ -2204,8 +2204,8 @@ void blit_surface(const surface& surf,
 
 				const int src_offset = (y + src_rect.y) * src->w + (x + src_rect.x);
 				assert(src_offset < src->w * src->h);
-				const Uint32 src_pixel = src_pixels[src_offset];
-				const Uint8 src_a = (src_pixel & 0xFF000000) >> 24;
+				const uint32_t src_pixel = src_pixels[src_offset];
+				const uint8_t src_a = (src_pixel & 0xFF000000) >> 24;
 
 				if(!src_a) {
 					// Fully transparent source, ignore
@@ -2220,8 +2220,8 @@ void blit_surface(const surface& surf,
 					continue;
 				}
 
-				const Uint32 dst_pixel = dst_pixels[dst_offset];
-				Uint8 dst_a = (dst_pixel & 0xFF000000) >> 24;
+				const uint32_t dst_pixel = dst_pixels[dst_offset];
+				uint8_t dst_a = (dst_pixel & 0xFF000000) >> 24;
 
 				if(!dst_a) {
 					// Fully transparent destination, copy
@@ -2229,13 +2229,13 @@ void blit_surface(const surface& surf,
 					continue;
 				}
 
-				const Uint8 src_r = (src_pixel & 0x00FF0000) >> 16;
-				const Uint8 src_g = (src_pixel & 0x0000FF00) >> 8;
-				const Uint8 src_b = src_pixel & 0x000000FF;
+				const uint8_t src_r = (src_pixel & 0x00FF0000) >> 16;
+				const uint8_t src_g = (src_pixel & 0x0000FF00) >> 8;
+				const uint8_t src_b = src_pixel & 0x000000FF;
 
-				Uint8 dst_r = (dst_pixel & 0x00FF0000) >> 16;
-				Uint8 dst_g = (dst_pixel & 0x0000FF00) >> 8;
-				Uint8 dst_b = dst_pixel & 0x000000FF;
+				uint8_t dst_r = (dst_pixel & 0x00FF0000) >> 16;
+				uint8_t dst_g = (dst_pixel & 0x0000FF00) >> 8;
+				uint8_t dst_b = dst_pixel & 0x000000FF;
 
 				if(dst_a == 255) {
 
@@ -2308,8 +2308,8 @@ struct not_alpha
 	not_alpha() {}
 
 	// we assume neutral format
-	bool operator()(Uint32 pixel) const {
-		Uint8 alpha = pixel >> 24;
+	bool operator()(uint32_t pixel) const {
+		uint8_t alpha = pixel >> 24;
 		return alpha != 0x00;
 	}
 };
@@ -2328,12 +2328,12 @@ SDL_Rect get_non_transparent_portion(const surface &surf)
 	const not_alpha calc;
 
 	surface_lock lock(nsurf);
-	const Uint32* const pixels = lock.pixels();
+	const uint32_t* const pixels = lock.pixels();
 
 	int n;
 	for(n = 0; n != nsurf->h; ++n) {
-		const Uint32* const start_row = pixels + n*nsurf->w;
-		const Uint32* const end_row = start_row + nsurf->w;
+		const uint32_t* const start_row = pixels + n*nsurf->w;
+		const uint32_t* const end_row = start_row + nsurf->w;
 
 		if(std::find_if(start_row,end_row,calc) != end_row)
 			break;
@@ -2342,8 +2342,8 @@ SDL_Rect get_non_transparent_portion(const surface &surf)
 	res.y = n;
 
 	for(n = 0; n != nsurf->h-res.y; ++n) {
-		const Uint32* const start_row = pixels + (nsurf->h-n-1)*surf->w;
-		const Uint32* const end_row = start_row + nsurf->w;
+		const uint32_t* const start_row = pixels + (nsurf->h-n-1)*surf->w;
+		const uint32_t* const end_row = start_row + nsurf->w;
 
 		if(std::find_if(start_row,end_row,calc) != end_row)
 			break;
@@ -2357,7 +2357,7 @@ SDL_Rect get_non_transparent_portion(const surface &surf)
 	for(n = 0; n != nsurf->w; ++n) {
 		int y;
 		for(y = 0; y != nsurf->h; ++y) {
-			const Uint32 pixel = pixels[y*nsurf->w + n];
+			const uint32_t pixel = pixels[y*nsurf->w + n];
 			if(calc(pixel))
 				break;
 		}
@@ -2371,7 +2371,7 @@ SDL_Rect get_non_transparent_portion(const surface &surf)
 	for(n = 0; n != nsurf->w-res.x; ++n) {
 		int y;
 		for(y = 0; y != nsurf->h; ++y) {
-			const Uint32 pixel = pixels[y*nsurf->w + surf->w - n - 1];
+			const uint32_t pixel = pixels[y*nsurf->w + surf->w - n - 1];
 			if(calc(pixel))
 				break;
 		}
@@ -2389,7 +2389,7 @@ void draw_centered_on_background(surface surf, const SDL_Rect& rect, const color
 {
 	clip_rect_setter clip_setter(target, &rect);
 
-	Uint32 col = SDL_MapRGBA(target->format, color.r, color.g, color.b, color.a);
+	uint32_t col = SDL_MapRGBA(target->format, color.r, color.g, color.b, color.a);
 	//TODO: only draw background outside the image
 	SDL_Rect r = rect;
 	sdl::fill_surface_rect(target, &r, col);

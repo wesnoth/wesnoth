@@ -238,7 +238,7 @@ void mouse_action_unit::set_unit_mouse_overlay(editor_display& disp, const unit_
 			<< team::get_side_color_id(disp.viewing_side()) << ')';
 
 	surface image(image::get_image(filename.str()));
-	Uint8 alpha = 196;
+	uint8_t alpha = 196;
 	//TODO don't hardcode
 	int size = 72;
 	//int size = image->w;

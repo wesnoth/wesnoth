@@ -334,8 +334,8 @@ SDL_Rect get_non_transparent_portion(const surface &surf);
  * @param x              The position in the row of the pixel.
  * @param y              The row of the pixel.
  */
-void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, Uint32 pixel);
-Uint32 get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x, int y);
+void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, uint32_t pixel);
+uint32_t get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x, int y);
 
 // blit the image on the center of the rectangle
 // and a add a colored background

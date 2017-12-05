@@ -457,7 +457,7 @@ bool init_sound()
 void close_sound()
 {
 	int frequency, channels;
-	Uint16 format;
+	uint16_t format;
 
 	if(mix_ok) {
 		stop_bell();

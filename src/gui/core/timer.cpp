@@ -31,7 +31,7 @@ struct timer
 	}
 
 	SDL_TimerID sdl_id;
-	Uint32 interval;
+	uint32_t interval;
 	std::function<void(size_t id)> callback;
 };
 
@@ -84,7 +84,7 @@ public:
 
 extern "C" {
 
-static Uint32 timer_callback(Uint32, void* id)
+static uint32_t timer_callback(uint32_t, void* id)
 {
 	DBG_GUI_E << "Pushing timer event in queue.\n";
 
@@ -108,7 +108,7 @@ static Uint32 timer_callback(Uint32, void* id)
 
 } // extern "C"
 
-size_t add_timer(const Uint32 interval,
+size_t add_timer(const uint32_t interval,
 				 const std::function<void(size_t id)>& callback,
 				 const bool repeat)
 {

@@ -678,7 +678,7 @@ inline ter_layer get_layer_mask_(ter_layer terrain)
 	if((terrain & 0x000000FF) == 0x0000002A) return 0xFFFFFF00;
 
 /*
-	Uint8 *ptr = (Uint8 *) &terrain;
+	uint8_t *ptr = (uint8_t *) &terrain;
 
 	if(ptr[3] == 0x2A) return 0x00000000;
 	if(ptr[2] == 0x2A) return 0xFF000000;

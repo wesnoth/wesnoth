@@ -56,7 +56,7 @@ namespace event
  *
  * @returns                       The new timer interval, 0 to stop.
  */
-static Uint32 popup_callback(Uint32 /*interval*/, void* /*param*/)
+static uint32_t popup_callback(uint32_t /*interval*/, void* /*param*/)
 {
 	DBG_GUI_E << "Pushing popup removal event in queue.\n";
 
@@ -506,7 +506,7 @@ void mouse_button<T>::signal_handler_sdl_button_up(const event::ui_event event, 
 template<typename T>
 void mouse_button<T>::mouse_button_click(widget* widget)
 {
-	Uint32 stamp = SDL_GetTicks();
+	uint32_t stamp = SDL_GetTicks();
 	if(last_click_stamp_ + settings::double_click_time >= stamp
 	   && last_clicked_widget_ == widget) {
 
@@ -589,7 +589,7 @@ distributor::~distributor()
 
 void distributor::initialize_state()
 {
-	const Uint8 button_state = SDL_GetMouseState(nullptr, nullptr);
+	const uint8_t button_state = SDL_GetMouseState(nullptr, nullptr);
 
 	mouse_button_left::initialize_state((button_state & SDL_BUTTON(1)) != 0);
 	mouse_button_middle::initialize_state((button_state & SDL_BUTTON(2)) != 0);

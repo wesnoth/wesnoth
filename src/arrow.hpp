@@ -48,7 +48,7 @@ public:
 	/**
 	 * The string color parameter is in the same format expected by the
 	 * image::locator modifiers parameter. Examples: red is "red" or "FF0000" or "255,0,0".
-	 * Feel free to add another method that accepts an Uint32 as a parameter instead.
+	 * Feel free to add another method that accepts an uint32_t as a parameter instead.
 	 */
 	virtual void set_color(const std::string& color);
 

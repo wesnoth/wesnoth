@@ -49,7 +49,7 @@ namespace gui2
  * @returns                       The id of the timer.
  * @retval [0]                    Failed to create a timer.
  */
-size_t add_timer(const Uint32 interval,
+size_t add_timer(const uint32_t interval,
 				 const std::function<void(size_t id)>& callback,
 				 const bool repeat = false);
 

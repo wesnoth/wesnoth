@@ -598,7 +598,7 @@ struct inverse_table
 		}
 	}
 
-	unsigned operator[](Uint8 i) const { return values[i]; }
+	unsigned operator[](uint8_t i) const { return values[i]; }
 };
 
 static const inverse_table inverse_table_;
@@ -607,7 +607,7 @@ static const inverse_table inverse_table_;
  * Helper function for un-premultiplying alpha
  * Div should be the high-precision inverse for the alpha value.
  */
-static void unpremultiply(Uint8 & value, const unsigned div) {
+static void unpremultiply(uint8_t & value, const unsigned div) {
 	unsigned temp = (value * div) / 256u;
 	// Note: It's always the case that alpha * div < 256 if div is the inverse
 	// for alpha, so if cairo is computing premultiplied alpha by rounding down,
@@ -623,19 +623,19 @@ static void unpremultiply(Uint8 & value, const unsigned div) {
  * Converts from cairo-format ARGB32 premultiplied alpha to plain alpha.
  * @param c a uint32 representing the color
  */
-static void from_cairo_format(Uint32 & c)
+static void from_cairo_format(uint32_t & c)
 {
-	Uint8 a = (c >> 24) & 0xff;
-	Uint8 r = (c >> 16) & 0xff;
-	Uint8 g = (c >> 8) & 0xff;
-	Uint8 b = c & 0xff;
+	uint8_t a = (c >> 24) & 0xff;
+	uint8_t r = (c >> 16) & 0xff;
+	uint8_t g = (c >> 8) & 0xff;
+	uint8_t b = c & 0xff;
 
 	const unsigned div = inverse_table_[a];
 	unpremultiply(r, div);
 	unpremultiply(g, div);
 	unpremultiply(b, div);
 
-	c = (static_cast<Uint32>(a) << 24) | (static_cast<Uint32>(r) << 16) | (static_cast<Uint32>(g) << 8) | static_cast<Uint32>(b);
+	c = (static_cast<uint32_t>(a) << 24) | (static_cast<uint32_t>(r) << 16) | (static_cast<uint32_t>(g) << 8) | static_cast<uint32_t>(b);
 }
 
 void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const size_t surface_buffer_offset, const unsigned stride)
@@ -706,12 +706,12 @@ void pango_text::rerender(const bool force)
 
 		render(*layout_, rect_, 0u, stride);
 
-		static_assert(sizeof(Uint32) == 4, "Something is wrong with our typedefs");
+		static_assert(sizeof(uint32_t) == 4, "Something is wrong with our typedefs");
 
 		// The cairo surface is in CAIRO_FORMAT_ARGB32 which uses
 		// pre-multiplied alpha. SDL doesn't use that so the pixels need to be
 		// decoded again.
-		Uint32 * pixels = reinterpret_cast<Uint32 *>(&surface_buffer_[0]);
+		uint32_t * pixels = reinterpret_cast<uint32_t *>(&surface_buffer_[0]);
 
 		for(int y = 0; y < height; ++y) {
 			for(int x = 0; x < width; ++x) {

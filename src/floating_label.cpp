@@ -122,7 +122,7 @@ surface floating_label::create_surface()
 				return surf_ = foreground;
 			}
 
-			Uint32 color = SDL_MapRGBA(foreground->format, bgcolor_.r, bgcolor_.g, bgcolor_.b, bgalpha_);
+			uint32_t color = SDL_MapRGBA(foreground->format, bgcolor_.r, bgcolor_.g, bgcolor_.b, bgalpha_);
 			sdl::fill_surface_rect(background, nullptr, color);
 
 			// we make the text less transparent, because the blitting on the

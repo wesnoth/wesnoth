@@ -27,8 +27,8 @@ window::window(const std::string& title,
 				 const int y,
 				 const int w,
 				 const int h,
-				 const Uint32 window_flags,
-				 const Uint32 render_flags)
+				 const uint32_t window_flags,
+				 const uint32_t render_flags)
 	: window_(SDL_CreateWindow(title.c_str(), x, y, w, h, window_flags))
 	, pixel_format_(SDL_PIXELFORMAT_UNKNOWN)
 {
@@ -118,7 +118,7 @@ void window::full_screen()
 	SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN_DESKTOP);
 }
 
-void window::fill(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+void window::fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
 	SDL_SetRenderDrawColor(*this, r, g, b, a);
 	if(SDL_RenderClear(*this) != 0) {

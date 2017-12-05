@@ -67,8 +67,8 @@ public:
 			const int y,
 			const int w,
 			const int h,
-			const Uint32 window_flags,
-			const Uint32 render_flags);
+			const uint32_t window_flags,
+			const uint32_t render_flags);
 
 	~window();
 
@@ -130,7 +130,7 @@ public:
 	 * @param g                   Green value of the color.
 	 * @param b                   Blue value of the color.
 	 */
-	void fill(Uint8 r, Uint8 g, Uint8 b, Uint8 a = 0);
+	void fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 0);
 
 	/** Renders the contents of the window. */
 	void render();
@@ -186,7 +186,7 @@ private:
 	SDL_Window* window_;
 
 	/** The preferred pixel format for the renderer. */
-	Uint32 pixel_format_;
+	uint32_t pixel_format_;
 };
 
 } // namespace sdl

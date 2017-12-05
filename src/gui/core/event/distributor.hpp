@@ -189,7 +189,7 @@ public:
 
 protected:
 	/** The time of the last click used for double clicking. */
-	Uint32 last_click_stamp_;
+	uint32_t last_click_stamp_;
 
 	/** The widget the last click was on, used for double clicking. */
 	widget* last_clicked_widget_;

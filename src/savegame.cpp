@@ -440,7 +440,7 @@ bool savegame::save_game(const std::string& filename)
 {
 
 	try {
-		Uint32 start, end;
+		uint32_t start, end;
 		start = SDL_GetTicks();
 
 		if (filename_.empty())

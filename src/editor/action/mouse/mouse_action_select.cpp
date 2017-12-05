@@ -65,7 +65,7 @@ void mouse_action_select::set_mouse_overlay(editor_display& disp)
 	} else {
 		image = image::get_image("editor/tool-overlay-select-brush.png");
 	}
-	Uint8 alpha = 196;
+	uint8_t alpha = 196;
 	int size = image->w;
 	int zoom = static_cast<int>(size * disp.get_zoom_factor());
 

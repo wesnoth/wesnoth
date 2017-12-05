@@ -75,7 +75,7 @@ static unsigned event_poll_interval = 0;
  *
  * @returns                       The new timer interval, 0 to stop.
  */
-static Uint32 timer_sdl_draw_event(Uint32, void*)
+static uint32_t timer_sdl_draw_event(uint32_t, void*)
 {
 	// DBG_GUI_E << "Pushing draw event in queue.\n";
 
@@ -96,7 +96,7 @@ static Uint32 timer_sdl_draw_event(Uint32, void*)
  *
  * @returns                       The new timer interval, 0 to stop.
  */
-static Uint32 timer_sdl_poll_events(Uint32, void*)
+static uint32_t timer_sdl_poll_events(uint32_t, void*)
 {
 	try
 	{
@@ -195,7 +195,7 @@ private:
 	 * @param button                 The SDL id of the button that caused the
 	 *                               event.
 	 */
-	void mouse_button_up(const point& position, const Uint8 button);
+	void mouse_button_up(const point& position, const uint8_t button);
 
 	/**
 	 * Fires a mouse button down event.
@@ -204,7 +204,7 @@ private:
 	 * @param button                 The SDL id of the button that caused the
 	 *                               event.
 	 */
-	void mouse_button_down(const point& position, const Uint8 button);
+	void mouse_button_down(const point& position, const uint8_t button);
 
 	/**
 	 * Fires a mouse wheel event.
@@ -460,7 +460,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		default:
 #ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
-			WRN_GUI_E << "Unhandled event " << static_cast<Uint32>(event.type)
+			WRN_GUI_E << "Unhandled event " << static_cast<uint32_t>(event.type)
 			          << ".\n";
 #endif
 			break;
@@ -598,7 +598,7 @@ void sdl_event_handler::mouse(const ui_event event, const point& position)
 	}
 }
 
-void sdl_event_handler::mouse_button_up(const point& position, const Uint8 button)
+void sdl_event_handler::mouse_button_up(const point& position, const uint8_t button)
 {
 	switch(button) {
 		case SDL_BUTTON_LEFT:
@@ -613,13 +613,13 @@ void sdl_event_handler::mouse_button_up(const point& position, const Uint8 butto
 		default:
 #ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
 			WRN_GUI_E << "Unhandled 'mouse button up' event for button "
-					  << static_cast<Uint32>(button) << ".\n";
+					  << static_cast<uint32_t>(button) << ".\n";
 #endif
 			break;
 	}
 }
 
-void sdl_event_handler::mouse_button_down(const point& position, const Uint8 button)
+void sdl_event_handler::mouse_button_down(const point& position, const uint8_t button)
 {
 	switch(button) {
 		case SDL_BUTTON_LEFT:
@@ -634,7 +634,7 @@ void sdl_event_handler::mouse_button_down(const point& position, const Uint8 but
 		default:
 #ifdef GUI2_SHOW_UNHANDLED_EVENT_WARNINGS
 			WRN_GUI_E << "Unhandled 'mouse button down' event for button "
-					  << static_cast<Uint32>(button) << ".\n";
+					  << static_cast<uint32_t>(button) << ".\n";
 #endif
 			break;
 	}

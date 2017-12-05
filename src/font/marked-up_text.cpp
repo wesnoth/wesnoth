@@ -88,7 +88,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 				// Very primitive parsing for rgb value
 				// should look like <213,14,151>
 				++i1;
-				Uint8 red=0, green=0, blue=0, temp=0;
+				uint8_t red=0, green=0, blue=0, temp=0;
 				while (i1 != i2 && *i1 >= '0' && *i1<='9') {
 					temp*=10;
 					temp += lexical_cast<int, char>(*i1);

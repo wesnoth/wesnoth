@@ -238,7 +238,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	const std::string resourceToProcess(*cmdline_opts.preprocess_path);
 	const std::string targetDir(*cmdline_opts.preprocess_target);
 
-	Uint32 startTime = SDL_GetTicks();
+	uint32_t startTime = SDL_GetTicks();
 	// if the users add the SKIP_CORE define we won't preprocess data/core
 	bool skipCore = false;
 	bool skipTerrainGFX = false;

@@ -224,7 +224,7 @@ surface wipe_alpha_modification::operator()(const surface& src) const
 class pixel_callable : public wfl::formula_callable
 {
 public:
-	pixel_callable(SDL_Point p, color_t clr, Uint32 w, Uint32 h)
+	pixel_callable(SDL_Point p, color_t clr, uint32_t w, uint32_t h)
 		: p(p), clr(clr), w(w), h(h)
 	{}
 
@@ -267,7 +267,7 @@ public:
 private:
 	SDL_Point p;
 	color_t clr;
-	Uint32 w, h;
+	uint32_t w, h;
 };
 
 surface adjust_alpha_modification::operator()(const surface & src) const
@@ -287,9 +287,9 @@ surface adjust_alpha_modification::operator()(const surface & src) const
 
 	{
 		surface_lock lock(nsurf);
-		Uint32* cur = lock.pixels();
-		Uint32* const end = cur + nsurf->w * src->h;
-		Uint32* const beg = cur;
+		uint32_t* cur = lock.pixels();
+		uint32_t* const end = cur + nsurf->w * src->h;
+		uint32_t* const beg = cur;
 
 		while(cur != end) {
 			color_t pixel;
@@ -334,9 +334,9 @@ surface adjust_channels_modification::operator()(const surface & src) const
 
 	{
 		surface_lock lock(nsurf);
-		Uint32* cur = lock.pixels();
-		Uint32* const end = cur + nsurf->w * src->h;
-		Uint32* const beg = cur;
+		uint32_t* cur = lock.pixels();
+		uint32_t* const end = cur + nsurf->w * src->h;
+		uint32_t* const beg = cur;
 
 		while(cur != end) {
 			color_t pixel;
@@ -541,18 +541,18 @@ surface o_modification::operator()(const surface& src) const
 		return nullptr;
 	}
 
-	Uint16 amount = ftofxp(opacity_);
+	uint16_t amount = ftofxp(opacity_);
 
 	{
 		surface_lock lock(nsurf);
-		Uint32* beg = lock.pixels();
-		Uint32* end = beg + nsurf->w * src->h;
+		uint32_t* beg = lock.pixels();
+		uint32_t* end = beg + nsurf->w * src->h;
 
 		while(beg != end) {
-			Uint8 alpha = (*beg) >> 24;
+			uint8_t alpha = (*beg) >> 24;
 
 			if(alpha) {
-				Uint8 r, g, b;
+				uint8_t r, g, b;
 				r = (*beg) >> 16;
 				g = (*beg) >> 8;
 				b = (*beg);
@@ -982,16 +982,16 @@ REGISTER_MOD_PARSER(CROP, args)
 
 	SDL_Rect slice_rect { 0, 0, 0, 0 };
 
-	slice_rect.x = lexical_cast_default<Sint16, const std::string&>(slice_params[0]);
+	slice_rect.x = lexical_cast_default<int16_t, const std::string&>(slice_params[0]);
 
 	if(s > 1) {
-		slice_rect.y = lexical_cast_default<Sint16, const std::string&>(slice_params[1]);
+		slice_rect.y = lexical_cast_default<int16_t, const std::string&>(slice_params[1]);
 	}
 	if(s > 2) {
-		slice_rect.w = lexical_cast_default<Uint16, const std::string&>(slice_params[2]);
+		slice_rect.w = lexical_cast_default<uint16_t, const std::string&>(slice_params[2]);
 	}
 	if(s > 3) {
-		slice_rect.h = lexical_cast_default<Uint16, const std::string&>(slice_params[3]);
+		slice_rect.h = lexical_cast_default<uint16_t, const std::string&>(slice_params[3]);
 	}
 
 	return new crop_modification(slice_rect);

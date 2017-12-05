@@ -272,7 +272,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 	const double joysticky = values.second;
 
 	int mousex, mousey;
-	Uint8 mouse_flags = SDL_GetMouseState(&mousex, &mousey);
+	uint8_t mouse_flags = SDL_GetMouseState(&mousex, &mousey);
 
 	// TODO enable after an axis choosing mechanism is implemented
 #if 0

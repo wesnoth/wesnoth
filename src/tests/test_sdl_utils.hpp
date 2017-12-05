@@ -19,14 +19,14 @@
 #include "utils/functional.hpp"
 
 typedef std::function<
-		void(const surface&, const double, const Uint32)>
+		void(const surface&, const double, const uint32_t)>
 		tblend_functor;
 
 
 inline void
 blend_image(const surface& src, tblend_functor functor)
 {
-	for(Uint32 color = 0x00FF0000; color != 0x00000000; color >>= 8) {
+	for(uint32_t color = 0x00FF0000; color != 0x00000000; color >>= 8) {
 		for(int i = 0xf; i < 0x100; i += 0x10) {
 			const surface dst = blend_surface(src, i / 255., color);
 			if(functor) {
@@ -37,7 +37,7 @@ blend_image(const surface& src, tblend_functor functor)
 }
 
 inline std::string
-blend_get_filename(std::string root, const Uint8 amount, const Uint32 color)
+blend_get_filename(std::string root, const uint8_t amount, const uint32_t color)
 {
 	// The name of the file is
 	// A the amount of blended [0..256) as hex.

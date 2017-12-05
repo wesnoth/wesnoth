@@ -148,7 +148,7 @@ static void push_draw_event()
  *
  * @return                        The new timer interval (always 0).
  */
-static Uint32 delay_event_callback(const Uint32, void* event)
+static uint32_t delay_event_callback(const uint32_t, void* event)
 {
 	SDL_PushEvent(static_cast<SDL_Event*>(event));
 	delete static_cast<SDL_Event*>(event);
@@ -164,7 +164,7 @@ static Uint32 delay_event_callback(const Uint32, void* event)
  * @param event                   The event to delay.
  * @param delay                   The number of ms to delay the event.
  */
-static void delay_event(const SDL_Event& event, const Uint32 delay)
+static void delay_event(const SDL_Event& event, const uint32_t delay)
 {
 	SDL_AddTimer(delay, delay_event_callback, new SDL_Event(event));
 }

@@ -339,7 +339,7 @@ void mouse_action_paste::set_mouse_overlay(editor_display& disp)
 	SDL_Rect r {6, 6, 0, 0};
 	sdl_blit(image60, nullptr, image, &r);
 
-	Uint8 alpha = 196;
+	uint8_t alpha = 196;
 	int size = image->w;
 	int zoom = static_cast<int>(size * disp.get_zoom_factor());
 
@@ -457,7 +457,7 @@ void mouse_action_starting_position::set_mouse_overlay(editor_display& disp)
 	SDL_Rect r {6, 6, 0, 0};
 	sdl_blit(image60, nullptr, image, &r);
 
-	Uint8 alpha = 196;
+	uint8_t alpha = 196;
 	int size = image->w;
 	int zoom = static_cast<int>(size * disp.get_zoom_factor());
 

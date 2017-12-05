@@ -51,25 +51,25 @@ static SDL_Cursor* create_cursor(surface surf)
 		cursor_width += 8 - (cursor_width%8);
 	}
 #endif
-	std::vector<Uint8> data((cursor_width*nsurf->h)/8,0);
-	std::vector<Uint8> mask(data.size(),0);
+	std::vector<uint8_t> data((cursor_width*nsurf->h)/8,0);
+	std::vector<uint8_t> mask(data.size(),0);
 
 	// See http://sdldoc.csn.ul.ie/sdlcreatecursor.php for documentation
 	// on the format that data has to be in to pass to SDL_CreateCursor
 	const_surface_lock lock(nsurf);
-	const Uint32* const pixels = lock.pixels();
+	const uint32_t* const pixels = lock.pixels();
 	for(int y = 0; y != nsurf->h; ++y) {
 		for(int x = 0; x != nsurf->w; ++x) {
 
 			if (static_cast<size_t>(x) < cursor_width) {
-				Uint8 r,g,b,a;
+				uint8_t r,g,b,a;
 				SDL_GetRGBA(pixels[y*nsurf->w + x],nsurf->format,&r,&g,&b,&a);
 
 				const size_t index = y*cursor_width + x;
 				const size_t shift = 7 - (index % 8);
 
-				const Uint8 trans = (a < 128 ? 0 : 1) << shift;
-				const Uint8 black = (trans == 0 || (r+g + b) / 3 > 128 ? 0 : 1) << shift;
+				const uint8_t trans = (a < 128 ? 0 : 1) << shift;
+				const uint8_t black = (trans == 0 || (r+g + b) / 3 > 128 ? 0 : 1) << shift;
 
 				data[index/8] |= black;
 				mask[index/8] |= trans;

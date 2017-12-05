@@ -396,7 +396,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 	size_t unfilled = static_cast<size_t>(height * (1.0 - filled));
 
 	if(unfilled < height && alpha >= ftofxp(0.3)) {
-		const Uint8 r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
+		const uint8_t r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
 		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = sdl::create_rect(0, 0, bar_loc.w, height-unfilled);
 		sdl::fill_surface_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
@@ -405,7 +405,7 @@ void unit_drawer::draw_bar(const std::string& image, int xpos, int ypos,
 }
 
 struct is_energy_color {
-	bool operator()(Uint32 color) const { return (color&0xFF000000) > 0x10000000 &&
+	bool operator()(uint32_t color) const { return (color&0xFF000000) > 0x10000000 &&
 	                                              (color&0x00FF0000) < 0x00100000 &&
 												  (color&0x0000FF00) < 0x00001000 &&
 												  (color&0x000000FF) < 0x00000010; }
@@ -423,12 +423,12 @@ const SDL_Rect& unit_drawer::calculate_energy_bar(surface surf) const
 	surface image(make_neutral_surface(surf));
 
 	const_surface_lock image_lock(image);
-	const Uint32* const begin = image_lock.pixels();
+	const uint32_t* const begin = image_lock.pixels();
 
 	for(int y = 0; y != image->h; ++y) {
-		const Uint32* const i1 = begin + image->w*y;
-		const Uint32* const i2 = i1 + image->w;
-		const Uint32* const itor = std::find_if(i1,i2,is_energy_color());
+		const uint32_t* const i1 = begin + image->w*y;
+		const uint32_t* const i2 = i1 + image->w;
+		const uint32_t* const itor = std::find_if(i1,i2,is_energy_color());
 		const int count = std::count_if(itor,i2,is_energy_color());
 
 		if(itor != i2) {

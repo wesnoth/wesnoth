@@ -54,8 +54,8 @@
 //	const_surface_lock src_lock(src);
 //	const_surface_lock dst_lock(dst);
 //
-//	const Uint32* src_pixels = src_lock.pixels();
-//	const Uint32* dst_pixels = dst_lock.pixels();
+//	const uint32_t* src_pixels = src_lock.pixels();
+//	const uint32_t* dst_pixels = dst_lock.pixels();
 //
 //	const unsigned pixels = src->w * src->h;
 //
@@ -75,12 +75,12 @@
 //}
 
 //static void
-//test_blend(const surface& dst, const Uint8 amount, const Uint32 color)
+//test_blend(const surface& dst, const uint8_t amount, const uint32_t color)
 //{
 //	std::stringstream sstr;
 //	sstr << std::hex << std::setfill('0')
 //			<< "Blend image amount »"
-//			<< std::setw(2) << static_cast<Uint32>(amount)
+//			<< std::setw(2) << static_cast<uint32_t>(amount)
 //			<< "« color »"
 //			<< std::setw(8) << color
 //			<< "« : ";

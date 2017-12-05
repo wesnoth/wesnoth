@@ -25,13 +25,13 @@ static lg::log_domain log_filesystem("filesystem");
 namespace filesystem {
 
 // Arbitrary numbers larger than 5
-static const Uint32 read_type = 7;
-static const Uint32 write_type = 8;
+static const uint32_t read_type = 7;
+static const uint32_t write_type = 8;
 
-static Sint64 ifs_size (struct SDL_RWops * context);
-static Sint64 ofs_size (struct SDL_RWops * context);
-static Sint64 SDLCALL ifs_seek(struct SDL_RWops *context, Sint64 offset, int whence);
-static Sint64 SDLCALL ofs_seek(struct SDL_RWops *context, Sint64 offset, int whence);
+static int64_t ifs_size (struct SDL_RWops * context);
+static int64_t ofs_size (struct SDL_RWops * context);
+static int64_t SDLCALL ifs_seek(struct SDL_RWops *context, int64_t offset, int whence);
+static int64_t SDLCALL ofs_seek(struct SDL_RWops *context, int64_t offset, int whence);
 static size_t SDLCALL ifs_read(struct SDL_RWops *context, void *ptr, size_t size, size_t maxnum);
 static size_t SDLCALL ofs_read(struct SDL_RWops *context, void *ptr, size_t size, size_t maxnum);
 static size_t SDLCALL ifs_write(struct SDL_RWops *context, const void *ptr, size_t size, size_t num);
@@ -85,7 +85,7 @@ rwops_ptr make_write_RWops(const std::string &path) {
 	return rw;
 }
 
-static Sint64 ifs_size (struct SDL_RWops * context) {
+static int64_t ifs_size (struct SDL_RWops * context) {
 	std::istream *ifs = static_cast<std::istream*>(context->hidden.unknown.data1);
 	std::streampos orig = ifs->tellg();
 
@@ -97,7 +97,7 @@ static Sint64 ifs_size (struct SDL_RWops * context) {
 
 	return len;
 }
-static Sint64 ofs_size (struct SDL_RWops * context) {
+static int64_t ofs_size (struct SDL_RWops * context) {
 	std::ostream *ofs = static_cast<std::ostream*>(context->hidden.unknown.data1);
 	std::streampos orig = ofs->tellp();
 
@@ -110,22 +110,22 @@ static Sint64 ofs_size (struct SDL_RWops * context) {
 	return len;
 }
 
-typedef std::pair<Sint64, std::ios_base::seekdir> offset_dir;
+typedef std::pair<int64_t, std::ios_base::seekdir> offset_dir;
 
-static offset_dir translate_seekdir(Sint64 offset, int whence) {
+static offset_dir translate_seekdir(int64_t offset, int whence) {
 	switch(whence){
 	case RW_SEEK_SET:
-		return std::make_pair(std::max<Sint64>(0, offset), std::ios_base::beg);
+		return std::make_pair(std::max<int64_t>(0, offset), std::ios_base::beg);
 	case RW_SEEK_CUR:
 		return std::make_pair(offset, std::ios_base::cur);
 	case RW_SEEK_END:
-		return std::make_pair(std::min<Sint64>(0, offset), std::ios_base::end);
+		return std::make_pair(std::min<int64_t>(0, offset), std::ios_base::end);
 	default:
 		assert(false);
 		throw "assertion ignored";
 	}
 }
-static Sint64 SDLCALL ifs_seek(struct SDL_RWops *context, Sint64 offset, int whence) {
+static int64_t SDLCALL ifs_seek(struct SDL_RWops *context, int64_t offset, int whence) {
 	std::ios_base::seekdir seekdir;
 	std::tie(offset, seekdir) = translate_seekdir(offset, whence);
 
@@ -142,7 +142,7 @@ static Sint64 SDLCALL ifs_seek(struct SDL_RWops *context, Sint64 offset, int whe
 	std::streamsize pos = ifs->tellg();
 	return static_cast<int>(pos);
 }
-static Sint64 SDLCALL ofs_seek(struct SDL_RWops *context, Sint64 offset, int whence) {
+static int64_t SDLCALL ofs_seek(struct SDL_RWops *context, int64_t offset, int whence) {
 	std::ios_base::seekdir seekdir;
 	std::tie(offset, seekdir) = translate_seekdir(offset, whence);
 
