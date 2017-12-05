@@ -287,7 +287,7 @@ void title_screen::pre_show(window& win)
 	//
 	// Help
 	//
-	register_button(win, "help", hotkey::HOTKEY_HELP, [&win]() {
+	register_button(win, "help", hotkey::HOTKEY_HELP, []() {
 		if(gui2::new_widgets) {
 			gui2::dialogs::help_browser::display();
 		}
