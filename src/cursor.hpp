@@ -37,10 +37,6 @@ void set(CURSOR_TYPE type = NUM_CURSORS);
 void set_dragging(bool drag);
 CURSOR_TYPE get();
 
-// These aren't used, but leaving the prototypes doesn't hurt and allows avoiding an SDL include
-void draw(surface screen);
-void undraw(surface screen);
-
 void set_focus(bool focus);
 
 struct setter
