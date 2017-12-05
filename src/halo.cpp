@@ -326,6 +326,7 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 
 	}
 	haloes.emplace(id, effect(disp, x, y, image_vector, loc, orientation, infinite));
+	invalidated_haloes.insert(id);
 	if(haloes.find(id)->second.does_change() || !infinite) {
 		changing_haloes.insert(id);
 	}
