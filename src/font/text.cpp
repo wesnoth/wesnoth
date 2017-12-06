@@ -849,7 +849,9 @@ void pango_text::split_surface()
 	sublayouts_.emplace_back(upper_layout, g_object_unref);
 	sublayouts_.emplace_back(lower_layout, g_object_unref);
 
-	layout_.reset(nullptr);
+	// Freeing the old layout causes all text to use
+	// default line spacing in the future.
+	// layout_.reset(nullptr);
 }
 
 void pango_text::copy_layout_properties(PangoLayout& src, PangoLayout& dst)
