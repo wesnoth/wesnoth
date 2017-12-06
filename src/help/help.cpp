@@ -162,7 +162,7 @@ void show_help(const section &toplevel_sec,
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
 
-	SDL_Rect screen_area = video.screen_area(false);
+	SDL_Rect screen_area = video.screen_area();
 
 	const int width  = std::min<int>(font::relative_size(1200), screen_area.w - font::relative_size(20));
 	const int height = std::min<int>(font::relative_size(850), screen_area.h - font::relative_size(150));
