@@ -425,12 +425,6 @@ void playmp_controller::maybe_linger()
 	}
 }
 
-void playmp_controller::surrender(int side_number) {
-	undo_stack().clear();
-	resources::recorder->add_surrender(side_number);
-	turn_data_.send_data();
-}
-
 void playmp_controller::pull_remote_choice()
 {
 	// when using a remote user choice undoing must be impossible because that network traffic cannot be undone

@@ -116,7 +116,6 @@ public:
 	virtual void zoom_out() {}
 	virtual void zoom_default() {}
 	virtual void map_screenshot() {}
-	virtual void surrender_quit_game() {}
 
 	virtual void set_button_state() {}
 	virtual void recalculate_minimap() {}

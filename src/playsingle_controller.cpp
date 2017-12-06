@@ -597,11 +597,14 @@ void playsingle_controller::play_network_turn()
 	ERR_NG << "Networked team encountered by playsingle_controller." << std::endl;
 }
 
+
 void playsingle_controller::handle_generic_event(const std::string& name){
 	if (name == "ai_user_interact"){
 		play_slice(false);
 	}
 }
+
+
 
 void playsingle_controller::end_turn(){
 	if (linger_)

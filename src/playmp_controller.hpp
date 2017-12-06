@@ -33,7 +33,6 @@ public:
 
 	void pull_remote_choice() override;
 	void send_user_choice() override;
-	void surrender(int side_number);
 
 	class hotkey_handler;
 

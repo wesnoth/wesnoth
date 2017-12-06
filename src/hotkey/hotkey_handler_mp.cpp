@@ -71,7 +71,7 @@ bool playmp_controller::hotkey_handler::can_execute_command(const hotkey::hotkey
 		case hotkey::HOTKEY_STOP_NETWORK:
 			res = is_observer();
 			break;
-		default:
+	    default:
 			return playsingle_controller::hotkey_handler::can_execute_command(cmd, index);
 	}
 	return res;
