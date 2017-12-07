@@ -73,22 +73,6 @@ resolution_definition_ptr;
 typedef std::shared_ptr<const resolution_definition>
 resolution_definition_const_ptr;
 
-/**
- * Casts a resolution_definition_const_ptr to another type.
- *
- * @tparam T                      The type to cast to, the non const version.
- *
- * @param ptr                     The pointer to cast.
- *
- * @returns                       A reference to type casted to.
- */
-template <class T>
-const T& cast(resolution_definition_const_ptr ptr)
-{
-	std::shared_ptr<const T> conf = std::make_shared<const T>(ptr);
-	assert(conf);
-	return *conf;
-}
 
 struct styled_widget_definition
 {
