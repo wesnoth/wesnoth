@@ -21,26 +21,8 @@
 #include "gui/core/log.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/core/window_builder/instance.hpp"
-#include "gui/widgets/button.hpp"
-#include "gui/widgets/drawing.hpp"
-#include "gui/widgets/horizontal_scrollbar.hpp"
-#include "gui/widgets/image.hpp"
-#include "gui/widgets/label.hpp"
-#include "gui/widgets/matrix.hpp"
-#include "gui/widgets/menu_button.hpp"
-#include "gui/widgets/minimap.hpp"
 #include "gui/widgets/pane.hpp"
-#include "gui/widgets/password_box.hpp"
-#include "gui/widgets/repeating_button.hpp"
-#include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/scrollbar_panel.hpp"
 #include "gui/widgets/settings.hpp"
-#include "gui/widgets/size_lock.hpp"
-#include "gui/widgets/slider.hpp"
-#include "gui/widgets/stacked_widget.hpp"
-#include "gui/widgets/toggle_button.hpp"
-#include "gui/widgets/unit_preview_pane.hpp"
-#include "gui/widgets/vertical_scrollbar.hpp"
 #include "gui/widgets/viewport.hpp"
 #include "gui/widgets/window.hpp"
 #include "wml_exception.hpp"
@@ -128,17 +110,8 @@ builder_widget_ptr create_builder_widget(const config& cfg)
 	config::const_all_children_itors children = cfg.all_children_range();
 	VALIDATE(children.size() == 1, "Grid cell does not have exactly 1 child.");
 
-	for(const auto& item : builder_widget_lookup()) {
-		if(item.first == "window" || item.first == "tooltip") {
-			continue;
-		}
-		if(const config& c = cfg.child(item.first)) {
-			return item.second(c);
-		}
-	}
-
-	if(const config& c = cfg.child("grid")) {
-		return std::make_shared<builder_grid>(c);
+	if(const config& grid = cfg.child("grid")) {
+		return std::make_shared<builder_grid>(grid);
 	}
 
 	if(const config& instance = cfg.child("instance")) {
@@ -153,53 +126,19 @@ builder_widget_ptr create_builder_widget(const config& cfg)
 		return std::make_shared<implementation::builder_viewport>(viewport);
 	}
 
-/*
- * This is rather odd, when commented out the classes no longer seem to be in
- * the executable, no real idea why, except maybe of an overzealous optimizer
- * while linking. It seems that all these classes aren't explicitly
- * instantiated but only implicitly. Also when looking at the symbols in
- * libwesnoth-game.a the repeating button is there regardless of this #if but
- * in the final binary only if the #if is enabled.
- *
- * If this code is executed, which it will cause an assertion failure.
- *
- * Its likeley that this happens because some build this as a library file
- * which is then used by the wesnoth executable. For msvc a good try to fix
- * this issue is to add __pragma(comment(linker, "/include:" #TYPE)) or
- * similar in the REGISTER_WIDGET3 macro. For gcc and similar this can only
- * be fixed by using --whole-archive flag when linking this library.
- */
-#if 1
-#define TRY(name)                                                                                                      \
-	do {                                                                                                               \
-		if(const config& c = cfg.child(#name)) {                                                                       \
-			builder_widget_ptr p = std::make_shared<implementation::builder_##name>(c);                                \
-			assert(false);                                                                                             \
-		}                                                                                                              \
-	} while(0)
-
-	TRY(stacked_widget);
-	TRY(scrollbar_panel);
-	TRY(horizontal_scrollbar);
-	TRY(repeating_button);
-	TRY(vertical_scrollbar);
-	TRY(label);
-	TRY(image);
-	TRY(toggle_button);
-	TRY(slider);
-	TRY(scroll_label);
-	TRY(matrix);
-	TRY(minimap);
-	TRY(button);
-	TRY(menu_button);
-	TRY(drawing);
-	TRY(password_box);
-	TRY(unit_preview_pane);
-	TRY(size_lock);
-#undef TRY
-#endif
+	for(const auto& item : builder_widget_lookup()) {
+		if(item.first == "window" || item.first == "tooltip") {
+			continue;
+		}
+		if(const config& c = cfg.child(item.first)) {
+			return item.second(c);
+		}
+	}
 
 	// FAIL() doesn't return
+	//
+	// To fix this: add your new widget to source-lists/libwesnoth_widgets and rebuild.
+
 	FAIL("Unknown widget type " + cfg.ordered_begin()->key);
 }
 
