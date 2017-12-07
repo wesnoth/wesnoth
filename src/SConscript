@@ -79,6 +79,10 @@ if env["png"]:
 
 libwesnoth_sdl = client_env.Library("wesnoth-sdl", libwesnoth_sdl_sources)
 
+#---libwesnoth_widgets---
+libwesnoth_widgets_sources = GetSources("libwesnoth_widgets")
+libwesnoth_widgets = client_env.Library("wesnoth-widgets", libwesnoth_widgets_sources)
+
 #---wesnoth---
 # Used by both 'wesnoth' and 'boost_unit_tests' targets
 
@@ -145,6 +149,7 @@ def WesnothProgram(env, target, source, can_build, **kw):
         AlwaysBuild(bin)
     locals()[target] = bin
     Export(target)
+    return bin
 
 for env in [test_env, client_env, env]:
     env.AddMethod(WesnothProgram)
@@ -154,11 +159,15 @@ for env in [test_env, client_env, env]:
 # used to set the executable icon for wesnoth and wesnothd
 libwesnoth_objects = libwesnoth_client + liblua + libwesnoth_core + libwesnoth_game + libwesnoth_sdl + libwesnoth_client
 if env["PLATFORM"] == 'darwin':
-    client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects, have_client_prereqs)
+    wesnoth = client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects, have_client_prereqs)
+    client_env.Append(LINKFLAGS=['-Wl,-force_load', libwesnoth_widgets])
 elif env["PLATFORM"] == 'win32':
-    client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects + env["wesnoth_res"], have_client_prereqs)
+    wesnoth = client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects + env["wesnoth_res"], have_client_prereqs)
+    client_env.Append(LINKFLAGS=['-Wl,--whole-archive', libwesnoth_widgets, '-Wl,--no-whole-archive'])
 else:
-    client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects, have_client_prereqs)
+    wesnoth = client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects, have_client_prereqs)
+    client_env.Append(LINKFLAGS=['-Wl,--whole-archive', libwesnoth_widgets, '-Wl,--no-whole-archive'])
+Depends(wesnoth, libwesnoth_widgets)
 
 #---wesnothd---
 wesnothd_sources = GetSources("wesnothd")
@@ -173,7 +182,16 @@ env.WesnothProgram("campaignd", campaignd_sources + libwesnoth_core, have_server
 
 #---boost_unit_tests---
 test_sources = GetSources("boost_unit_tests")
-boost_unit_tests = test_env.WesnothProgram("boost_unit_tests", test_sources + libwesnoth_objects, have_test_prereqs)
+if env["PLATFORM"] == 'darwin':
+    boost_unit_tests = test_env.WesnothProgram("boost_unit_tests", test_sources + libwesnoth_objects, have_client_prereqs)
+    test_env.Append(LINKFLAGS=['-Wl,-force_load', libwesnoth_widgets])
+elif env["PLATFORM"] == 'win32':
+    boost_unit_tests = test_env.WesnothProgram("boost_unit_tests", test_sources + libwesnoth_objects, have_client_prereqs)
+    test_env.Append(LINKFLAGS=['-Wl,--whole-archive', libwesnoth_widgets, '-Wl,--no-whole-archive'])
+else:
+    boost_unit_tests = test_env.WesnothProgram("boost_unit_tests", test_sources + libwesnoth_objects, have_client_prereqs)
+    test_env.Append(LINKFLAGS=['-Wl,--whole-archive', libwesnoth_widgets, '-Wl,--no-whole-archive'])
+Depends(boost_unit_tests, libwesnoth_widgets)
 #---end of getting sources---
 
 sources = []

@@ -233,6 +233,20 @@ target_link_libraries(wesnoth-sdl
 	${sdl_image-lib}
 )
 
+GetSources("libwesnoth_widgets" wesnoth-widgets_SRC)
+
+add_library(wesnoth-widgets
+	${LIBRARY_TYPE}
+	EXCLUDE_FROM_ALL
+	${wesnoth-widgets_SRC}
+)
+
+if (APPLE)
+	set(WIDGETS_LIB -Wl,-force_load wesnoth-widgets)
+else()
+	set(WIDGETS_LIB -Wl,--whole-archive wesnoth-widgets -Wl,--no-whole-archive)
+endif()
+
 ########### Wesnoth main source files ###############
 
 # create libwesnoth-client.a if building the client or the boost unit tests
@@ -285,6 +299,7 @@ if(ENABLE_GAME)
 		wesnoth-core
 		wesnoth-game
 		wesnoth-sdl
+		${WIDGETS_LIB}
 		wesnoth-client
 		${game-external-libs}
 	)
@@ -354,6 +369,7 @@ if(ENABLE_TESTS)
 		wesnoth-core
 		wesnoth-game
 		wesnoth-sdl
+		${WIDGETS_LIB}
 		wesnoth-client
 		${game-external-libs}
 		boost_unit_test_framework
