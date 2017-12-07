@@ -440,60 +440,66 @@ void styled_widget::definition_load_configuration(const std::string& control_typ
 	update_canvas();
 }
 
-point styled_widget::get_best_text_size(point minimum_size,
-									point maximum_size) const
+point styled_widget::get_best_text_size(point minimum_size, point maximum_size) const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
 	assert(!label_.empty());
 
-	const point border(config_->text_extra_width, config_->text_extra_height);
-	point size = minimum_size - border;
-
-	renderer_.set_link_aware(get_link_aware())
-			.set_link_color(get_link_color());
-
-	renderer_.set_text(label_, use_markup_);
-
-	renderer_.set_family_class(config_->text_font_family);
-	renderer_.set_font_size(config_->text_font_size);
-	renderer_.set_font_style(config_->text_font_style);
-	renderer_.set_alignment(text_alignment_);
-
 	// Try with the minimum wanted size.
-	const int maximum_width = text_maximum_width_ != 0 ? text_maximum_width_
-													   : maximum_size.x;
+	const int maximum_width = text_maximum_width_ != 0
+		? text_maximum_width_
+		: maximum_size.x;
 
-	renderer_.set_maximum_width(maximum_width);
+	/* 
+	 * NOTE: text rendering does *not* happen here. That happens in the text_shape
+	 * canvas class. Instead, this just leverages the pango text rendering engine to
+	 * calculate the area this widget will need to sucessfully render its text later.
+	 */
+	renderer_
+		.set_link_aware(get_link_aware())
+		.set_link_color(get_link_color())
+		.set_family_class(config_->text_font_family)
+		.set_font_size(config_->text_font_size)
+		.set_font_style(config_->text_font_style)
+		.set_alignment(text_alignment_)
+		.set_maximum_width(maximum_width)
+		.set_ellipse_mode(get_text_ellipse_mode())
+		.set_characters_per_line(get_characters_per_line())
+		.set_text(label_, use_markup_);
 
-	renderer_.set_ellipse_mode(get_text_ellipse_mode());
-
-	renderer_.set_characters_per_line(get_characters_per_line());
 	if(get_characters_per_line() != 0 && !can_wrap()) {
-		WRN_GUI_L
-		<< LOG_HEADER << " Limited the number of characters per line, "
-		<< "but wrapping is not set, output may not be as expected.\n";
+		WRN_GUI_L << LOG_HEADER
+			<< " Limited the number of characters per line, "
+			<< "but wrapping is not set, output may not be as expected.\n";
 	}
 
-	DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
-			  << "' status: "
-			  << " minimum_size " << minimum_size << " maximum_size "
-			  << maximum_size << " text_maximum_width_ " << text_maximum_width_
-			  << " can_wrap " << can_wrap() << " characters_per_line "
-			  << get_characters_per_line() << " truncated "
-			  << renderer_.is_truncated() << " renderer size "
-			  << renderer_.get_size() << ".\n";
+	DBG_GUI_L << LOG_HEADER << "\n"
+		<< std::boolalpha
+		<< "Label: '" << debug_truncate(label_) << "'\n\n"
+		<< "Status:\n"
+		<< "minimum_size: " << minimum_size << "\n"
+		<< "maximum_size: " << maximum_size << "\n"
+		<< "text_maximum_width_: " << text_maximum_width_ << "\n"
+		<< "can_wrap: " << can_wrap() << "\n"
+		<< "characters_per_line: " << get_characters_per_line() << "\n"
+		<< "truncated: " << renderer_.is_truncated() << "\n"
+		<< "renderer size: " << renderer_.get_size() << "\n\n"
+		<< std::noboolalpha;
+
+	const point border(config_->text_extra_width, config_->text_extra_height);
 
 	// If doesn't fit try the maximum.
 	if(renderer_.is_truncated() && !can_wrap()) {
 		// FIXME if maximum size is defined we should look at that
 		// but also we don't adjust for the extra text space yet!!!
 		maximum_size = point(config_->max_width, config_->max_height);
-		renderer_.set_maximum_width(maximum_size.x ? maximum_size.x - border.x
-												   : -1);
+
+		renderer_.set_maximum_width(maximum_size.x ? maximum_size.x - border.x : -1);
 	}
 
-	size = renderer_.get_size() + border;
+	// Get the resulting size.
+	point size = renderer_.get_size() + border;
 
 	if(size.x < minimum_size.x) {
 		size.x = minimum_size.x;
