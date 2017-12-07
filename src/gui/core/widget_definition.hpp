@@ -17,8 +17,8 @@
 #include "config.hpp"
 #include "font/font_options.hpp"
 #include "font/text.hpp"
-#include "gui/core/canvas.hpp"
 #include "gui/core/linked_group_definition.hpp"
+
 #include <vector>
 
 namespace gui2
@@ -35,7 +35,7 @@ struct state_definition
 {
 	explicit state_definition(const config& cfg);
 
-	canvas canvas_;
+	config canvas_cfg_;
 };
 
 

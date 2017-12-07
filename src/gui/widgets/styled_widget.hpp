@@ -14,10 +14,11 @@
 
 #pragma once
 
+#include "font/text.hpp"
+#include "gui/core/canvas.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/widget.hpp"
-#include "font/text.hpp" // We want the file in src/
 
 namespace gui2
 {
@@ -77,7 +78,7 @@ public:
 protected:
 	/** Returns the id of the state.
 	 *
-	 * The current state is also the index canvas_.
+	 * The current state is also the index canvases_.
 	 */
 	virtual unsigned get_state() const = 0;
 
@@ -248,13 +249,13 @@ public:
 	// const versions will be added when needed
 	std::vector<canvas>& get_canvases()
 	{
-		return canvas_;
+		return canvases_;
 	}
 
 	canvas& get_canvas(const unsigned index)
 	{
-		assert(index < canvas_.size());
-		return canvas_[index];
+		assert(index < canvases_.size());
+		return canvases_[index];
 	}
 
 	virtual void set_text_alignment(const PangoAlignment text_alignment);
@@ -377,16 +378,6 @@ private:
 	t_string help_message_;
 
 	/**
-	 * Holds all canvas objects for a styled_widget.
-	 *
-	 * A styled_widget can have multiple states, which are defined in the classes
-	 * inheriting from us. For every state there is a separate canvas, which is
-	 * stored here. When drawing the state is determined and that canvas is
-	 * drawn.
-	 */
-	std::vector<canvas> canvas_;
-
-	/**
 	 * Contains the pointer to the configuration.
 	 *
 	 * Every styled_widget has a definition of how it should look, this contains a
@@ -398,14 +389,14 @@ private:
 	resolution_definition_ptr config_;
 
 	/**
-	 * Loads the configuration of the widget.
+	 * Holds all canvas objects for a styled_widget.
 	 *
-	 * Controls have their definition stored in a definition object. In order to
-	 * determine sizes and drawing the widget this definition needs to be
-	 * loaded. The member definition_ contains the name of the definition and
-	 * function load the proper configuration.
+	 * A styled_widget can have multiple states, which are defined in the classes
+	 * inheriting from us. For every state there is a separate canvas, which is
+	 * stored here. When drawing the state is determined and that canvas is
+	 * drawn.
 	 */
-	void definition_load_configuration(const std::string& control_type);
+	std::vector<canvas> canvases_;
 
 public:
 	/**

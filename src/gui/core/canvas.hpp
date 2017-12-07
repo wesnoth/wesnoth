@@ -87,6 +87,9 @@ public:
 	typedef std::shared_ptr<const shape> const_shape_ptr;
 
 	canvas();
+	canvas(const canvas&) = delete;
+	canvas(canvas&& c);
+
 	~canvas();
 
 	/**

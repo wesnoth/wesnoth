@@ -16,16 +16,16 @@
 
 #include "gui/widgets/styled_widget.hpp"
 
+#include "formatter.hpp"
 #include "formula/string_utils.hpp"
+#include "gettext.hpp"
 #include "gui/auxiliary/iterator/walker_widget.hpp"
-#include "gui/core/log.hpp"
 #include "gui/core/event/message.hpp"
+#include "gui/core/log.hpp"
 #include "gui/dialogs/tooltip.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "hotkey/hotkey_item.hpp"
-#include "formatter.hpp"
-#include "gettext.hpp"
 #include "sdl/rect.hpp"
 #include "wml_exception.hpp"
 
@@ -52,18 +52,28 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 	, use_tooltip_on_label_overflow_(builder.use_tooltip_on_label_overflow)
 	, tooltip_(builder.tooltip)
 	, help_message_(builder.help)
-	, canvas_()
-	, config_(nullptr)
+	, config_(get_control(control_type, definition_))
+	, canvases_(config_->state.size()) // One canvas per state
 	, renderer_()
 	, text_maximum_width_(0)
 	, text_alignment_(PANGO_ALIGN_LEFT)
 	, text_ellipse_mode_(PANGO_ELLIPSIZE_END)
 	, shrunken_(false)
 {
-	definition_load_configuration(control_type);
+	/*
+	 * Fill in each canvas from the widget state definitons.
+	 *
+	 * Most widgets have a single canvas. However, some widgets such as toggle_panel
+	 * and toggle_button have a variable canvas count determined by their definitions.
+	 */
+	for(unsigned i = 0; i < config_->state.size(); ++i) {
+		canvases_[i].set_cfg(config_->state[i].canvas_cfg_);
+	}
+
+	// Initialize all the canvas variables.
+	update_canvas();
 
 	// Enable hover behavior if a tooltip was provided.
-	// TODO: maybe don't duplicate this call with set_tooltip?
 	set_wants_mouse_hover(!tooltip_.empty());
 
 	connect_signal<event::SHOW_TOOLTIP>(std::bind(
@@ -254,7 +264,7 @@ point styled_widget::calculate_best_size() const
 void styled_widget::place(const point& origin, const point& size)
 {
 	// resize canvasses
-	for(auto & canvas : canvas_)
+	for(auto & canvas : canvases_)
 	{
 		canvas.set_width(size.x);
 		canvas.set_height(size.y);
@@ -360,7 +370,7 @@ void styled_widget::update_canvas()
 	const int max_height = get_text_maximum_height();
 
 	// set label in canvases
-	for(auto & canvas : canvas_)
+	for(auto & canvas : canvases_)
 	{
 		canvas.set_variable("text", wfl::variant(label_));
 		canvas.set_variable("text_markup", wfl::variant(use_markup_));
@@ -421,25 +431,6 @@ void styled_widget::impl_draw_foreground(surface& /*frame_buffer*/
 	/* DO NOTHING */
 }
 
-void styled_widget::definition_load_configuration(const std::string& control_type)
-{
-	assert(!config_);
-
-	set_config(get_control(control_type, definition_));
-
-	/**
-	 * Fill in each canvas from the widget state definitons.
-	 *
-	 * Most widgets have a single canvas. However, some widgets such as toggle_panel
-	 * and toggle_button have a variable canvas count determined by their definitions.
-	 */
-	for(const auto& widget_state : config_->state) {
-		canvas_.emplace_back(std::move(widget_state.canvas_));
-	}
-
-	update_canvas();
-}
-
 point styled_widget::get_best_text_size(point minimum_size, point maximum_size) const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
@@ -451,7 +442,7 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 		? text_maximum_width_
 		: maximum_size.x;
 
-	/* 
+	/*
 	 * NOTE: text rendering does *not* happen here. That happens in the text_shape
 	 * canvas class. Instead, this just leverages the pango text rendering engine to
 	 * calculate the area this widget will need to sucessfully render its text later.

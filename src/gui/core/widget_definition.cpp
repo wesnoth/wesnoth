@@ -43,13 +43,10 @@ namespace gui2
  * @end{parent}{name="generic/"}
  *
  */
-state_definition::state_definition(const config& cfg) : canvas_()
+state_definition::state_definition(const config& cfg)
+	: canvas_cfg_(cfg ? cfg.child("draw") : cfg)
 {
-	const config& draw = *(cfg ? &cfg.child("draw") : &cfg);
-
-	VALIDATE(draw, _("No state or draw section defined."));
-
-	canvas_.set_cfg(draw);
+	VALIDATE(canvas_cfg_, _("No state or draw section defined."));
 }
 
 /*WIKI
