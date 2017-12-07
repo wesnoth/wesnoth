@@ -328,8 +328,8 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 		if(!out->fail()) {
 			config_writer writer(*out, false);
 
-			for(preproc_map::iterator itor = defines_map.begin(); itor != defines_map.end(); ++itor) {
-				(*itor).second.write(writer, (*itor).first);
+			for(auto& define_pair : defines_map) {
+				define_pair.second.write(writer, define_pair.first);
 			}
 		} else {
 			std::cerr << "couldn't open the file.\n";
@@ -436,10 +436,9 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.log) {
-		for(std::vector<std::pair<int, std::string>>::const_iterator it = cmdline_opts.log->begin();
-				it != cmdline_opts.log->end(); ++it) {
-			const std::string log_domain = it->second;
-			const int severity = it->first;
+		for(const auto& log_pair : cmdline_opts.log.get()) {
+			const std::string log_domain = log_pair.second;
+			const int severity = log_pair.first;
 			if(!lg::set_log_domain_severity(log_domain, severity)) {
 				std::cerr << "unknown log domain: " << log_domain << '\n';
 				return 2;
