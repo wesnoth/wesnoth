@@ -131,12 +131,6 @@ private:
 	lua_kernel_base & L_;
 	std::stringstream log_;
 
-	// Lua kernel sends log strings to this function
-	// This is arranged by set_external_log call
-	void log_function(const std::string & str) {
-		log_ << font::escape_text(str);
-	}
-
 public:
 	lua_model (lua_kernel_base & lk)
 		: L_(lk)
@@ -145,7 +139,10 @@ public:
 		DBG_LUA << "constructing a lua_interpreter::model\n";
 		//DBG_LUA << "incoming:\n" << lk.get_log().rdbuf() << "\n.\n";
 		log_ << lk.get_log().str() << std::flush;
-		L_.set_external_log([this](const std::string & str) { this->log_function(str); }); //register our log to get commands and output from the lua interpreter
+		// Lua kernel sends log strings to this function
+		L_.set_external_log([this](const std::string & str) {
+			log_ << font::escape_text(str);
+		});
 		//DBG_LUA << "received:\n" << log_.str() << "\n.\n";
 
 		DBG_LUA << "finished constructing a lua_interpreter::model\n";
