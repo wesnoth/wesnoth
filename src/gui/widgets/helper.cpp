@@ -29,20 +29,6 @@
 
 namespace gui2
 {
-static bool initialized_ = false;
-
-bool init()
-{
-	if(initialized_) {
-		return true;
-	}
-
-	load_settings();
-
-	initialized_ = true;
-	return initialized_;
-}
-
 SDL_Rect create_rect(const point& origin, const point& size)
 {
 	return {origin.x, origin.y, size.x, size.y};

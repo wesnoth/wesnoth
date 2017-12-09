@@ -1546,6 +1546,15 @@
     <ClCompile Include="..\..\src\preferences\lobby.cpp">
       <Filter>Preferences</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\gui.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\gui_definition.cpp">
+      <Filter>Gui\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\static_registry.cpp">
+      <Filter>Gui\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -3000,6 +3009,15 @@
     </ClInclude>
     <ClInclude Include="..\..\src\preferences\lobby.hpp">
       <Filter>Preferences</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\gui.hpp">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\gui_definition.hpp">
+      <Filter>Gui\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\core\static_registry.hpp">
+      <Filter>Gui\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

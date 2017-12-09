@@ -33,15 +33,6 @@ class map_formula_callable;
 
 namespace gui2
 {
-
-/**
- * Initializes the gui subsystems.
- *
- * This function needs to be called before other parts of the gui engine are
- * used.
- */
-bool init();
-
 /**
  * Creates a rectangle.
  *

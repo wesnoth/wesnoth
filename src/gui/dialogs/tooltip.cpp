@@ -16,8 +16,9 @@
 
 #include "gui/dialogs/tooltip.hpp"
 
-#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/core/gui_definition.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
 #include "gui/dialogs/modeless_dialog.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"

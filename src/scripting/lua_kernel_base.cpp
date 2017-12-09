@@ -17,7 +17,7 @@
 #include "exceptions.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
-#include "gui/widgets/settings.hpp"
+#include "gui/core/gui_definition.hpp"
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"  // for lua_jailbreak_exception
 #include "random.hpp"

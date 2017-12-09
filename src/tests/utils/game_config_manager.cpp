@@ -28,7 +28,7 @@
 #include "language.hpp"
 #include "units/types.hpp"
 
-#include "gui/widgets/helper.hpp"
+#include "gui/gui.hpp"
 
 #include <clocale>
 

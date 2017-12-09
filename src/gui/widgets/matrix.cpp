@@ -275,7 +275,7 @@ builder_matrix::builder_matrix(const config& cfg)
 	, builder_bottom(nullptr)
 	, builder_left(nullptr)
 	, builder_right(nullptr)
-	, builder_main(create_builder_widget(cfg.child("main", "[matrix]")))
+	, builder_main(create_widget_builder(cfg.child("main", "[matrix]")))
 {
 	if(const config& top = cfg.child("top")) {
 		builder_top = std::make_shared<builder_grid>(top);

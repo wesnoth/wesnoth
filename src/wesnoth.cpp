@@ -33,7 +33,7 @@
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp"      // for show_error_message
 #include "gui/dialogs/title_screen.hpp" // for title_screen, etc
-#include "gui/widgets/helper.hpp"       // for init
+#include "gui/gui.hpp"                  // for init
 #include "image.hpp"                    // for flush_cache, etc
 #include "log.hpp"                      // for LOG_STREAM, general, logger, etc
 #include "preferences/general.hpp"      // for core_id, etc

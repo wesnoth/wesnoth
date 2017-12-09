@@ -41,7 +41,7 @@
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "gui/core/event/handler.hpp"
-#include "gui/widgets/helper.hpp"
+#include "gui/gui.hpp"
 #include "config.hpp"
 #include "log.hpp"
 

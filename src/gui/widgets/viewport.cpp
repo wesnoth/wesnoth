@@ -220,7 +220,7 @@ namespace implementation
 
 builder_viewport::builder_viewport(const config& cfg)
 	: builder_widget(cfg)
-	, widget_(create_builder_widget(cfg.child("widget", "[viewport]")))
+	, widget_(create_widget_builder(cfg.child("widget", "[viewport]")))
 {
 }
 

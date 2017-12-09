@@ -16,6 +16,7 @@
 
 #include "gui/auxiliary/old_markup.hpp"
 #include "gui/core/canvas.hpp"
+#include "gui/core/gui_definition.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/dialogs/drop_down_menu.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
@@ -30,7 +31,6 @@
 #include "gui/widgets/multimenu_button.hpp"
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/selectable_item.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/text_box.hpp"

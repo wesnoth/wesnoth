@@ -23,7 +23,6 @@
 
 #include "config.hpp"
 #include "cursor.hpp"
-#include "display.hpp"
 #include "events.hpp"
 #include "floating_label.hpp"
 #include "formula/callable.hpp"
@@ -123,7 +122,7 @@ const unsigned LAYOUT = 0;
 /**
  * Pushes a single draw event to the queue. To be used before calling
  * events::pump when drawing windows.
- * 
+ *
  * @todo: in the future we should simply call draw functions directly
  * from events::pump and do away with the custom drawing events, but
  * that's a 1.15 target. For now, this will have to do.
@@ -425,28 +424,6 @@ window::~window()
 window* window::window_instance(const unsigned handle)
 {
 	return manager::instance().get_window(handle);
-}
-
-void window::update_screen_size()
-{
-	const SDL_Rect rect = CVideo::get_singleton().screen_area();
-
-	settings::screen_width = rect.w;
-	settings::screen_height = rect.h;
-
-	settings::gamemap_width = settings::screen_width;
-	settings::gamemap_height = settings::screen_height;
-
-	display* display = display::get_singleton();
-	if(display) {
-		const SDL_Rect rect_gm = display->map_outside_area();
-
-		if(rect_gm.w && rect_gm.h) {
-			settings::gamemap_width = rect_gm.w;
-			settings::gamemap_height = rect_gm.h;
-			settings::gamemap_x_offset = rect_gm.x;
-		}
-	}
 }
 
 /*WIKI

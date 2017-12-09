@@ -150,11 +150,13 @@ gui/core/canvas.cpp
 gui/core/event/dispatcher.cpp
 gui/core/event/distributor.cpp
 gui/core/event/handler.cpp
+gui/core/gui_definition.cpp
 gui/core/linked_group_definition.cpp
 gui/core/log.cpp
 gui/core/placer.cpp
 gui/core/placer/horizontal_list.cpp
 gui/core/placer/vertical_list.cpp
+gui/core/static_registry.cpp
 gui/core/timer.cpp
 gui/core/widget_definition.cpp
 gui/core/window_builder.cpp
@@ -243,6 +245,7 @@ gui/dialogs/unit_recall.cpp
 gui/dialogs/unit_recruit.cpp
 gui/dialogs/wml_error.cpp
 gui/dialogs/wml_message.cpp
+gui/gui.cpp
 gui/widgets/container_base.cpp
 gui/widgets/debug.cpp
 gui/widgets/generator.cpp
