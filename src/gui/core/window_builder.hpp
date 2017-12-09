@@ -48,7 +48,7 @@ public:
 	 * using and `[instance]' widget this decision can be postponed until
 	 * instantiation.
 	 */
-	typedef std::map<std::string, std::shared_ptr<builder_widget> > replacements_map;
+	typedef std::map<std::string, std::shared_ptr<builder_widget>> replacements_map;
 
 	explicit builder_widget(const config& cfg);
 
@@ -71,20 +71,6 @@ public:
 typedef std::shared_ptr<builder_widget> builder_widget_ptr;
 typedef std::shared_ptr<const builder_widget> builder_widget_const_ptr;
 
-using widget_builder_func_t = std::function<builder_widget_ptr(config)>;
-
-/**
- * Registers a widget to be build.
- *
- * @warning This function runs before @ref main() so needs to be careful
- * regarding the static initialization problem.
- *
- * @param id                      The id of the widget as used in WML.
- * @param functor                 The functor to create the widget.
- */
-void
-register_builder_widget(const std::string& id, widget_builder_func_t functor);
-
 /**
  * Create a widget builder.
  *
@@ -95,7 +81,7 @@ register_builder_widget(const std::string& id, widget_builder_func_t functor);
  *
  * @returns                       The builder for the widget instance.
  */
-builder_widget_ptr create_builder_widget(const config& cfg);
+builder_widget_ptr create_widget_builder(const config& cfg);
 
 /**
  * Helper function to implement @ref build_single_widget_instance. This keeps the main
@@ -145,7 +131,6 @@ public:
 
 	grid* build() const;
 	widget* build(const replacements_map& replacements) const;
-
 
 	grid* build(grid* grid) const;
 	void build(grid& grid, const replacements_map& replacements) const;

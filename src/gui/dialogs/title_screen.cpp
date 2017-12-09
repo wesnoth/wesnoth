@@ -256,7 +256,7 @@ void title_screen::pre_show(window& win)
 	//
 	multi_page& tip_pages = find_widget<multi_page>(&win, "tips", false);
 
-	std::vector<game_tip> tips(settings::get_tips());
+	std::vector<game_tip> tips = tip_of_the_day::shuffle(settings::tips);
 	if(tips.empty()) {
 		WRN_CF << "There are no tips of day available." << std::endl;
 	}

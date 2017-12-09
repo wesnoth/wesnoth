@@ -14,13 +14,15 @@
 
 #pragma once
 
+#include "gui/core/static_registry.hpp"
+
 /**
  * Registers a widget.
  *
  * Call this function to register a widget. Use this macro in the
  * implementation, inside the gui2 namespace.
  *
- * See @ref gui2::load_widget_definitions for more information.
+ * See @ref register_widget for more information.
  *
  * @note When the type is foo_definition, the id "foo" and no special key best
  * use RESISTER_WIDGET(foo) instead.
@@ -41,7 +43,7 @@
 				register_widget(#id,                                                                                   \
 					[](const config& cfg) { return std::make_shared<type>(cfg); }, key);                               \
                                                                                                                        \
-				register_builder_widget(#id,                                                                           \
+				register_widget_builder(#id,                                                                           \
 					[](const config& cfg) { return std::make_shared<implementation::builder_##id>(cfg); });            \
 			}                                                                                                          \
 		};                                                                                                             \

@@ -19,6 +19,8 @@
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/core/log.hpp"
+#include "gui/core/gui_definition.hpp"
+#include "gui/core/static_registry.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "gui/core/window_builder/instance.hpp"
 #include "gui/widgets/pane.hpp"
@@ -31,12 +33,6 @@
 
 namespace gui2
 {
-static std::map<std::string, widget_builder_func_t>& builder_widget_lookup()
-{
-	static std::map<std::string, widget_builder_func_t> result;
-	return result;
-}
-
 /*WIKI
  * @page = GUIWidgetInstanceWML
  * @order = 1
@@ -100,12 +96,7 @@ builder_widget::builder_widget(const config& cfg)
 {
 }
 
-void register_builder_widget(const std::string& id, widget_builder_func_t functor)
-{
-	builder_widget_lookup().emplace(id, functor);
-}
-
-builder_widget_ptr create_builder_widget(const config& cfg)
+builder_widget_ptr create_widget_builder(const config& cfg)
 {
 	config::const_all_children_itors children = cfg.all_children_range();
 	VALIDATE(children.size() == 1, "Grid cell does not have exactly 1 child.");
@@ -126,10 +117,11 @@ builder_widget_ptr create_builder_widget(const config& cfg)
 		return std::make_shared<implementation::builder_viewport>(viewport);
 	}
 
-	for(const auto& item : builder_widget_lookup()) {
+	for(const auto& item : widget_builder_lookup()) {
 		if(item.first == "window" || item.first == "tooltip") {
 			continue;
 		}
+
 		if(const config& c = cfg.child(item.first)) {
 			return item.second(c);
 		}
@@ -144,8 +136,8 @@ builder_widget_ptr create_builder_widget(const config& cfg)
 
 widget* build_single_widget_instance_helper(const std::string& type, const config& cfg)
 {
-	const auto& iter = builder_widget_lookup().find(type);
-	VALIDATE(iter != builder_widget_lookup().end(), "Invalid widget type '" + type + "'");
+	const auto& iter = widget_builder_lookup().find(type);
+	VALIDATE(iter != widget_builder_lookup().end(), "Invalid widget type '" + type + "'");
 
 	widget_builder_func_t& builder = iter->second;
 	return builder(cfg)->build();
@@ -429,7 +421,7 @@ builder_grid::builder_grid(const config& cfg)
 				col_grow_factor.push_back(c["grow_factor"]);
 			}
 
-			widgets.push_back(create_builder_widget(c));
+			widgets.push_back(create_widget_builder(c));
 
 			++col;
 		}

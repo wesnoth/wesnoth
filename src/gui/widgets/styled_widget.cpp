@@ -21,6 +21,7 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/iterator/walker_widget.hpp"
 #include "gui/core/event/message.hpp"
+#include "gui/core/gui_definition.hpp"
 #include "gui/core/log.hpp"
 #include "gui/dialogs/tooltip.hpp"
 #include "gui/widgets/settings.hpp"

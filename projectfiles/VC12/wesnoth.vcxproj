@@ -1384,6 +1384,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Core\Event\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Core\Event\</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\gui_definition.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\core\linked_group_definition.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
@@ -1418,6 +1425,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Core\Placer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Core\Placer\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Core\Placer\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\core\static_registry.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\core\timer.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Core\</ObjectFileName>
@@ -2034,6 +2048,13 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\Dialogs\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\gui.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Gui\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Gui\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Gui\</ObjectFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Gui\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\gui\widgets\addon_list.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Gui\Widgets\</ObjectFileName>
@@ -3692,6 +3713,7 @@
     <ClInclude Include="..\..\src\gui\core\event\distributor.hpp" />
     <ClInclude Include="..\..\src\gui\core\event\handler.hpp" />
     <ClInclude Include="..\..\src\gui\core\event\message.hpp" />
+    <ClInclude Include="..\..\src\gui\core\gui_definition.hpp" />
     <ClInclude Include="..\..\src\gui\core\layout_exception.hpp" />
     <ClInclude Include="..\..\src\gui\core\linked_group_definition.hpp" />
     <ClInclude Include="..\..\src\gui\core\log.hpp" />
@@ -3701,6 +3723,7 @@
     <ClInclude Include="..\..\src\gui\core\placer\horizontal_list.hpp" />
     <ClInclude Include="..\..\src\gui\core\placer\vertical_list.hpp" />
     <ClInclude Include="..\..\src\gui\core\register_widget.hpp" />
+    <ClInclude Include="..\..\src\gui\core\static_registry.hpp" />
     <ClInclude Include="..\..\src\gui\core\timer.hpp" />
     <ClInclude Include="..\..\src\gui\core\widget_definition.hpp" />
     <ClInclude Include="..\..\src\gui\core\window_builder.hpp" />
@@ -3791,6 +3814,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\unit_recruit.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\wml_error.hpp" />
     <ClInclude Include="..\..\src\gui\dialogs\wml_message.hpp" />
+    <ClInclude Include="..\..\src\gui\gui.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\addon_list.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\button.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\chatbox.hpp" />

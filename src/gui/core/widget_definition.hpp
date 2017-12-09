@@ -38,7 +38,6 @@ struct state_definition
 	config canvas_cfg_;
 };
 
-
 /** Base class of a resolution, contains the common keys for a resolution. */
 struct resolution_definition
 {
@@ -61,6 +60,7 @@ struct resolution_definition
 	unsigned text_extra_width;
 	unsigned text_extra_height;
 	unsigned text_font_size;
+
 	font::family_class text_font_family;
 	font::pango_text::FONT_STYLE text_font_style;
 
@@ -73,16 +73,14 @@ resolution_definition_ptr;
 typedef std::shared_ptr<const resolution_definition>
 resolution_definition_const_ptr;
 
-
 struct styled_widget_definition
 {
 	explicit styled_widget_definition(const config& cfg);
 
-	template <class T>
+	template<class T>
 	void load_resolutions(const config& cfg)
 	{
-		for (const auto & resolution : cfg.child_range("resolution"))
-		{
+		for(const config& resolution : cfg.child_range("resolution")) {
 			resolutions.emplace_back(std::make_shared<T>(resolution));
 		}
 	}

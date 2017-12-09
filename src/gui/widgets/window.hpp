@@ -73,16 +73,6 @@ public:
 	~window();
 
 	/**
-	 * Update the size of the screen variables in settings.
-	 *
-	 * Before a window gets build the screen sizes need to be updated. This
-	 * function does that. It's only done when no other window is active, if
-	 * another window is active it already updates the sizes with it's resize
-	 * event.
-	 */
-	static void update_screen_size();
-
-	/**
 	 * Returns the instance of a window.
 	 *
 	 * @param handle              The instance id of the window.
