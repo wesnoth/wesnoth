@@ -417,7 +417,7 @@ int apply_modifier( const int number, const std::string &amount, const int minim
 	int value = 0;
 	try {
 		value = std::stoi(amount);
-	} catch(std::invalid_argument) {}
+	} catch(std::invalid_argument&) {}
 	if(amount[amount.size()-1] == '%') {
 		value = div100rounded(number * value);
 	}
@@ -818,7 +818,7 @@ std::pair<int, int> parse_range(const std::string& str)
 		if (res.second < res.first) {
 			res.second = res.first;
 		}
-	} catch(std::invalid_argument) {}
+	} catch(std::invalid_argument&) {}
 
 	return res;
 }

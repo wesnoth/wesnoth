@@ -193,7 +193,7 @@ map_location::map_location(const config& cfg, const variable_set *variables) :
 	if(xs.empty() == false && xs != "recall") {
 		try {
 			x = std::stoi(xs) - 1;
-		} catch(std::invalid_argument) {
+		} catch(std::invalid_argument&) {
 			ERR_CF << "Invalid map coordinate: " << xs << "\n";
 		}
 	}
@@ -201,7 +201,7 @@ map_location::map_location(const config& cfg, const variable_set *variables) :
 	if(ys.empty() == false && ys != "recall") {\
 		try {
 			y = std::stoi(ys) - 1;
-		} catch(std::invalid_argument) {
+		} catch(std::invalid_argument&) {
 			ERR_CF << "Invalid map coordinate: " << ys << "\n";
 		}
 	}
@@ -345,7 +345,7 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 			try {
 				bot = std::stoi(beg) - 1;
 				top = std::stoi(end) - 1;
-			} catch(std::invalid_argument) {
+			} catch(std::invalid_argument&) {
 				ERR_CF << "Invalid map coordinate: " << end << ", " << beg << "\n";
 			}
 
@@ -356,7 +356,7 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 
 			try {
 				xval = std::stoi(xloc) - 1;
-			} catch(std::invalid_argument) {
+			} catch(std::invalid_argument&) {
 				ERR_CF << "Invalid map coordinate: " << xloc << "\n";
 			}
 
@@ -377,7 +377,7 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 			try {
 				bot = std::stoi(beg) - 1;
 				top = std::stoi(end) - 1;
-			} catch(std::invalid_argument) {
+			} catch(std::invalid_argument&) {
 				ERR_CF << "Invalid map coordinate: " << end << ", " << beg << "\n";
 			}
 
@@ -388,7 +388,7 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 
 			try {
 				yval = std::stoi(yloc) - 1;
-			} catch(std::invalid_argument) {
+			} catch(std::invalid_argument&) {
 				ERR_CF << "Invalid map coordinate: " << yloc << "\n";
 			}
 

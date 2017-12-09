@@ -318,7 +318,7 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 			str = sub_items.front();
 			try {
 				time = std::stoi(sub_items.back());
-			} catch(std::invalid_argument) {
+			} catch(std::invalid_argument&) {
 				ERR_DP << "Invalid time value found when constructing halo: " << sub_items.back() << "\n";
 			}
 		}

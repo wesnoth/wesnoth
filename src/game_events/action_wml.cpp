@@ -150,7 +150,7 @@ namespace { // Support functions
 				try {
 					src.set_wml_x(std::stoi(xvals[i]));
 					src.set_wml_y(std::stoi(yvals[i]));
-				} catch(std::invalid_argument) {
+				} catch(std::invalid_argument&) {
 					ERR_CF << "Invalid move_unit_fake source: " << xvals[i] << ", " << yvals[i] << '\n';
 					continue;
 				}
@@ -169,7 +169,7 @@ namespace { // Support functions
 			try {
 				dst.set_wml_x(std::stoi(xvals[i]));
 				dst.set_wml_y(std::stoi(yvals[i]));
-			} catch(std::invalid_argument) {
+			} catch(std::invalid_argument&) {
 				ERR_CF << "Invalid move_unit_fake destination: " << xvals[i] << ", " << yvals[i] << '\n';
 			}
 			if (!game_map->on_board(dst)) {

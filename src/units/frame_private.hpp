@@ -92,7 +92,7 @@ public:
 
 			try {
 				time = (colon_split.size() > 1) ? std::stoi(colon_split[1]) : time_chunk;
-			} catch(std::invalid_argument) {
+			} catch(std::invalid_argument&) {
 				//ERR_NG << "Invalid time in unit animation: " << colon_split[1] << "\n";
 			}
 
@@ -102,7 +102,7 @@ public:
 				T range1 = (range.size() > 1) ? lexical_cast<T>(range[1]) : range0;
 
 				base_data.push_back({{range0, range1}, time});
-			} catch(bad_lexical_cast) {}
+			} catch(bad_lexical_cast&) {}
 		}
 	}
 
@@ -169,7 +169,7 @@ public:
 				if(second_pass.size() > 1) {
 					try {
 						total_specified_time += std::stoi(second_pass[1]);
-					} catch(std::invalid_argument) {
+					} catch(std::invalid_argument&) {
 						//ERR_NG << "Invalid time in unit animation: " << second_pass[1] << "\n";
 					}
 				}
@@ -183,7 +183,7 @@ public:
 			if(second_pass.size() > 1) {
 				try {
 					base_data.push_back({std::move(second_pass[0]), std::stoi(second_pass[1])});
-				} catch(std::invalid_argument) {
+				} catch(std::invalid_argument&) {
 					//ERR_NG << "Invalid time in unit animation: " << second_pass[1] << "\n";
 				}
 			} else {

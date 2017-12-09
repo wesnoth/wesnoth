@@ -340,7 +340,7 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 			str = sub_items.front();
 			try {
 				time = std::max<int>(1, std::stoi(sub_items.back()));
-			} catch(std::invalid_argument) {
+			} catch(std::invalid_argument&) {
 				ERR_DP << "Invalid time value found when constructing flag for side " << n << ": " << sub_items.back() << "\n";
 			}
 		}

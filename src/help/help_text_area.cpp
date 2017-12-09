@@ -252,7 +252,7 @@ void help_text_area::handle_jump_cfg(const config &cfg)
 		try {
 			amount = lexical_cast<unsigned, std::string>(amount_str);
 		}
-		catch (bad_lexical_cast) {
+		catch (bad_lexical_cast&) {
 			throw parse_error("Invalid amount the amount attribute in jump markup.");
 		}
 		jump_to += amount;
@@ -262,7 +262,7 @@ void help_text_area::handle_jump_cfg(const config &cfg)
 		try {
 			to = lexical_cast<unsigned, std::string>(to_str);
 		}
-		catch (bad_lexical_cast) {
+		catch (bad_lexical_cast&) {
 			throw parse_error("Invalid amount in the to attribute in jump markup.");
 		}
 		if (to < jump_to) {

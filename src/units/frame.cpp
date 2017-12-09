@@ -94,7 +94,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 	if(color.size() == 3) {
 		try {
 			text_color_ = color_t(std::stoi(color[0]), std::stoi(color[1]), std::stoi(color[2]));
-		} catch(std::invalid_argument) {
+		} catch(std::invalid_argument&) {
 			ERR_NG << "Invalid RGB color value in unit animation: " << color[0] << ", " << color[1] << ", " << color[2] << "\n";
 		}
 	}
@@ -117,7 +117,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 	if(color.size() == 3) {
 		try {
 			blend_with_ = color_t(std::stoi(color[0]), std::stoi(color[1]), std::stoi(color[2]));
-		} catch(std::invalid_argument) {
+		} catch(std::invalid_argument&) {
 			ERR_NG << "Invalid RGB color value in unit animation: " << color[0] << ", " << color[1] << ", " << color[2] << "\n";
 		}
 	}

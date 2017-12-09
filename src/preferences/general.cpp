@@ -381,7 +381,7 @@ point resolution()
 			return point(
 				std::max(std::stoi(x), min_window_width),
 				std::max(std::stoi(y), min_window_height));
-		} catch(std::invalid_argument) {}
+		} catch(std::invalid_argument&) {}
 	}
 
 	return point(def_window_width, def_window_height);

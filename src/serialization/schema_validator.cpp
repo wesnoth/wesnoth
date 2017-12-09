@@ -158,7 +158,7 @@ bool schema_validator::read_config_file(const std::string &filename){
 			try{
 				types_[type["name"].str()] = boost::regex( type["value"].str());
 			}
-			catch (std::exception){
+			catch (std::exception&){
 			// Need to check all type values in schema-generator
 			}
 		}

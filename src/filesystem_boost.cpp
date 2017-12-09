@@ -824,7 +824,7 @@ filesystem::scoped_istream istream_file(const std::string &fname, bool treat_fai
 		}
 		return filesystem::scoped_istream(new boost::iostreams::stream<boost::iostreams::file_descriptor_source>(fd, 4096, 0));
 	}
-	catch(const std::exception ex)
+	catch(const std::exception&)
 	{
 		if(treat_failure_as_error)
 		{

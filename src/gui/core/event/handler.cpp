@@ -714,7 +714,7 @@ void sdl_event_handler::key_down(const SDL_Event& event)
 		if(event.type == SDL_TEXTINPUT) {
 			text_input(event.text.text);
 		} else {
-			key_down(event.key.keysym.sym, static_cast<const SDL_Keymod>(event.key.keysym.mod), "");
+			key_down(event.key.keysym.sym, static_cast<SDL_Keymod>(event.key.keysym.mod), "");
 		}
 	}
 }

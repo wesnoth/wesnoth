@@ -1012,7 +1012,7 @@ void mouse_handler::attack_enemy(const map_location& attacker_loc, const map_loc
 {
 	try {
 		attack_enemy_(attacker_loc, defender_loc, choice);
-	} catch(std::bad_alloc) {
+	} catch(std::bad_alloc&) {
 		lg::wml_error() << "Memory exhausted a unit has either a lot hitpoints or a negative amount.\n";
 	}
 }

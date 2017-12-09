@@ -465,7 +465,7 @@ bool terrain_builder::load_images(building_rule& rule)
 						if(items.size() > 1) {
 							try {
 								time = std::stoi(items.back());
-							} catch(std::invalid_argument) {
+							} catch(std::invalid_argument&) {
 								ERR_NG << "Invalid 'time' value in terrain image builder: " << items.back() << "\n";
 							}
 						}
@@ -693,7 +693,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 				try {
 					basex = std::stoi(base[0]);
 					basey = std::stoi(base[1]);
-				} catch(std::invalid_argument) {
+				} catch(std::invalid_argument&) {
 					ERR_NG << "Invalid 'base' value in terrain image builder: " << base[0] << ", " << base[1] << "\n";
 				}
 			}
@@ -706,7 +706,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 				try {
 					center_x = std::stoi(center[0]);
 					center_y = std::stoi(center[1]);
-				} catch(std::invalid_argument) {
+				} catch(std::invalid_argument&) {
 					ERR_NG << "Invalid 'center' value in terrain image builder: " << center[0] << ", " << center[1]
 						   << "\n";
 				}

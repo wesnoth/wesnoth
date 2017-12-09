@@ -20,34 +20,42 @@
 namespace sdl
 {
 
-class UserEvent : public SDL_UserEvent
+class UserEvent
 {
 public:
-	UserEvent() : SDL_UserEvent()
+	UserEvent()
 	{
-		std::memset(this, 0, sizeof(*this));
+		std::memset(&event_, 0, sizeof(event_));
 	}
 
 	UserEvent(int type) : UserEvent()
 	{
-		this->type = type;
+		event_.type = type;
 	}
 
 	UserEvent(int type, int code) : UserEvent(type)
 	{
-		this->code = code;
+		event_.code = code;
 	}
 
 	UserEvent(int type, int data1, int data2) : UserEvent(type)
 	{
-		this->data1 = reinterpret_cast<void*>(data1);
-		this->data2 = reinterpret_cast<void*>(data2);
+		event_.data1 = reinterpret_cast<void*>(data1);
+		event_.data2 = reinterpret_cast<void*>(data2);
 	}
 
 	UserEvent(int type, void* data1) : UserEvent(type)
 	{
-		this->data1 = data1;
+		event_.data1 = data1;
 	}
+
+	operator SDL_UserEvent()
+	{
+		return event_;
+	}
+
+private:
+	SDL_UserEvent event_;
 };
 
 }

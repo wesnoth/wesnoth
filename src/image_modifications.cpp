@@ -810,7 +810,7 @@ REGISTER_MOD_PARSER(BW, args)
 		}  else {
 			return new bw_modification(threshold);
 		}
-	} catch (std::invalid_argument) {
+	} catch (std::invalid_argument&) {
 		ERR_DP << "unsupported argument in ~BW() function" << std::endl;
 		return nullptr;
 	}
@@ -843,7 +843,7 @@ REGISTER_MOD_PARSER(NEG, args)
 				} else {
 					return new negative_modification(threshold, threshold, threshold);
 				}
-			} catch (std::invalid_argument) {
+			} catch (std::invalid_argument&) {
 				ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
 				return nullptr;
 			}
@@ -859,7 +859,7 @@ REGISTER_MOD_PARSER(NEG, args)
 				} else {
 					return new negative_modification(thresholdRed, thresholdGreen, thresholdBlue);
 				}
-			} catch (std::invalid_argument) {
+			} catch (std::invalid_argument&) {
 				ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
 				return nullptr;
 			}

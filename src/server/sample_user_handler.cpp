@@ -28,12 +28,7 @@ suh::suh(config c)
 	if(c["user_expiration"].empty()) {
 		user_expiration_ = 60;
 	} else {
-		try {
-			user_expiration_ = lexical_cast_default<int>(c["user_expiration"]);
-		} catch (bad_lexical_cast) {
-			std::cerr << "Bad lexical cast reading 'user_expiration', using default value.\n";
-			user_expiration_ = 60;
-		}
+		user_expiration_ = lexical_cast_default<int>(c["user_expiration"], 60);
 	}
 }
 

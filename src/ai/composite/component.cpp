@@ -160,7 +160,7 @@ static component *find_component(component *root, const std::string &path, path_
 		} else {
 			try {
 				pe.position = std::stoi(position);
-			} catch (std::invalid_argument){
+			} catch (std::invalid_argument&) {
 				pe.position = -2;
 			}
 		}
