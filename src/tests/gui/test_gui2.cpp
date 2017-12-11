@@ -127,6 +127,7 @@ using namespace gui2::dialogs;
 
 namespace gui2 {
 
+static
 std::set<std::string>& unit_test_registered_window_list()
 {
 	static std::set<std::string> result = registered_window_types();
