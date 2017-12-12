@@ -411,6 +411,7 @@ void enter_wait_mode(mp_workflow_helper_ptr helper, int game_id, bool observe)
 		gui2::dialogs::mp_join_game dlg(helper->state, *helper->lobby_info, *helper->connection, true, observe);
 
 		if(!dlg.fetch_game_config()) {
+			helper->connection->send_data(config("leave_game"));
 			return;
 		}
 
@@ -627,6 +628,7 @@ bool goto_mp_wait(saved_game& state, const config& game_config, wesnothd_connect
 	gui2::dialogs::mp_join_game dlg(state, li, *connection, false, observe);
 
 	if(!dlg.fetch_game_config()) {
+		connection->send_data(config("leave_game"));
 		return false;
 	}
 

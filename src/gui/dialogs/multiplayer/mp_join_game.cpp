@@ -517,6 +517,8 @@ void mp_join_game::post_show(window& window)
 		mp::level_to_gamestate(level_, state_);
 
 		mp_ui_alerts::game_has_begun();
+	} else if(observe_game_) {
+		network_connection_.send_data(config("observer_quit", config { "name", preferences::login() }));
 	} else {
 		network_connection_.send_data(config("leave_game"));
 	}

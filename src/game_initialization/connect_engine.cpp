@@ -711,7 +711,6 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 		}
 	}
 
-
 	if(const config& change_faction = data.child("change_faction")) {
 		int side_taken = find_user_side_index_by_id(change_faction["name"]);
 		if(side_taken != -1 || !first_scenario_) {
@@ -727,11 +726,12 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 
 	if(const config& observer = data.child("observer_quit")) {
 		const t_string& observer_name = observer["name"];
-		if(!observer_name.empty()) {
-			if((connected_users().find(observer_name) != connected_users().end()) &&
-				(find_user_side_index_by_id(observer_name) != -1)) {
 
-				connected_users_rw().erase(observer_name);
+		if(connected_users().find(observer_name) != connected_users().end()) {
+			connected_users_rw().erase(observer_name);
+
+			// If the observer was assigned a side, we need to update the controllers.
+			if(find_user_side_index_by_id(observer_name) != -1) {
 				update_side_controller_options();
 				update_and_send_diff();
 			}
