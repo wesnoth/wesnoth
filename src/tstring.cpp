@@ -23,10 +23,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 
-#include <boost/functional/hash_fwd.hpp>
 #include <boost/multi_index/hashed_index.hpp>
-#include <boost/multi_index/member.hpp>
-#include <boost/multi_index_container.hpp>
 
 #include <map>
 #include <mutex>
