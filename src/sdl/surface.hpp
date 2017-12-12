@@ -162,7 +162,9 @@ struct clip_rect_setter
 	{
 		if(operate_){
 			SDL_GetClipRect(surface_, &rect_);
-			SDL_SetClipRect(surface_, r);
+			SDL_Rect final_rect;
+			SDL_IntersectRect(&rect_, r, &final_rect);
+			SDL_SetClipRect(surface_, &final_rect);
 		}
 	}
 
