@@ -138,7 +138,7 @@ public:
 	{
 		DBG_LUA << "constructing a lua_interpreter::model\n";
 		//DBG_LUA << "incoming:\n" << lk.get_log().rdbuf() << "\n.\n";
-		log_ << lk.get_log().str() << std::flush;
+		log_ << font::escape_text(lk.get_log().str()) << std::flush;
 		// Lua kernel sends log strings to this function
 		L_.set_external_log([this](const std::string & str) {
 			log_ << font::escape_text(str);
