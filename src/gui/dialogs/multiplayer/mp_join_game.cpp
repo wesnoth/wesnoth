@@ -72,6 +72,7 @@ mp_join_game::mp_join_game(saved_game& state, mp::lobby_info& lobby_info, wesnot
 	, first_scenario_(first_scenario)
 	, observe_game_(observe_game)
 	, stop_updates_(false)
+	, player_list_(nullptr)
 {
 	set_show_even_without_video(true);
 }
@@ -288,6 +289,11 @@ void mp_join_game::pre_show(window& window)
 	chat.active_window_changed();
 
 	//
+	// Set up player list
+	//
+	player_list_.reset(new player_list_helper(&window));
+
+	//
 	// Set up the network handling
 	//
 	update_timer_ = add_timer(game_config::lobby_network_timer, std::bind(&mp_join_game::network_handler, this, std::ref(window)), true);
@@ -416,23 +422,6 @@ void mp_join_game::generate_side_list(window& window)
 	}
 }
 
-void mp_join_game::update_player_list(window& window, const config::const_child_itors& users)
-{
-	listbox& player_list = find_widget<listbox>(&window, "player_list", false);
-
-	player_list.clear();
-
-	for(const auto& user : users) {
-		std::map<std::string, string_map> data;
-		string_map item;
-
-		item["label"] = user["name"];
-		data.emplace("player_name", item);
-
-		player_list.add_row(data);
-	}
-}
-
 void mp_join_game::network_handler(window& window)
 {
 	// If the game has already started, close the dialog immediately.
@@ -484,9 +473,8 @@ void mp_join_game::network_handler(window& window)
 	}
 
 	// Update player list
-	// TODO: optimally, it wouldn't regenerate the entire list every single refresh cycle
-	if(data.has_child("user")) {
-		update_player_list(window, data.child_range("user"));
+	if(data.has_child("userlist")) {
+		player_list_->update_list(data.child("userlist").child_range("user"));
 	}
 }
 

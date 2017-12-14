@@ -14,12 +14,12 @@
 #pragma once
 
 #include "ai/configuration.hpp"
-#include "gui/dialogs/modal_dialog.hpp"
-#include "game_initialization/lobby_info.hpp"
-#include "gui/dialogs/multiplayer/plugin_executor.hpp"
-
 #include "game_initialization/connect_engine.hpp"
+#include "game_initialization/lobby_info.hpp"
 #include "game_initialization/multiplayer.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
+#include "gui/dialogs/multiplayer/player_list_helper.hpp"
+#include "gui/dialogs/multiplayer/plugin_executor.hpp"
 #include "mp_game_settings.hpp"
 
 class config;
@@ -63,7 +63,6 @@ private:
 
 	void select_leader_callback(ng::side_engine_ptr side, grid& row_grid);
 
-	void update_player_list(window& window);
 	void update_leader_display(ng::side_engine_ptr side, grid& row_grid);
 	void update_status_label_and_buttons(window& window);
 
@@ -88,6 +87,8 @@ private:
 
 	std::map<std::string, tree_view_node*> team_tree_map_;
 	std::map<ng::side_engine_ptr, tree_view_node*> side_tree_map_;
+
+	std::unique_ptr<player_list_helper> player_list_;
 };
 
 } // namespace dialogs

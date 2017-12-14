@@ -14,12 +14,12 @@
 #pragma once
 
 #include "ai/configuration.hpp"
-#include "gui/dialogs/modal_dialog.hpp"
-#include "game_initialization/lobby_info.hpp"
-#include "gui/dialogs/multiplayer/plugin_executor.hpp"
-
 #include "game_initialization/connect_engine.hpp"
+#include "game_initialization/lobby_info.hpp"
 #include "game_initialization/multiplayer.hpp"
+#include "gui/dialogs/modal_dialog.hpp"
+#include "gui/dialogs/multiplayer/player_list_helper.hpp"
+#include "gui/dialogs/multiplayer/plugin_executor.hpp"
 #include "mp_game_settings.hpp"
 
 class config;
@@ -54,8 +54,6 @@ private:
 
 	void generate_side_list(window& window);
 
-	void update_player_list(window& window, const config::const_child_itors& users);
-
 	void network_handler(window& window);
 
 	config& get_scenario();
@@ -76,6 +74,8 @@ private:
 	bool stop_updates_;
 
 	std::map<std::string, tree_view_node*> team_tree_map_;
+
+	std::unique_ptr<player_list_helper> player_list_;
 };
 
 } // namespace dialogs

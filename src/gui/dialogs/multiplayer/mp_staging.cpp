@@ -58,6 +58,7 @@ mp_staging::mp_staging(ng::connect_engine& connect_engine, mp::lobby_info& lobby
 	, state_changed_(false)
 	, team_tree_map_()
 	, side_tree_map_()
+	, player_list_(nullptr)
 {
 	set_show_even_without_video(true);
 
@@ -112,14 +113,12 @@ void mp_staging::pre_show(window& window)
 	//
 	// Set up player list
 	//
-	update_player_list(window);
+	player_list_.reset(new player_list_helper(&window));
 
 	//
 	// Set up the network handling
 	//
 	update_timer_ = add_timer(game_config::lobby_network_timer, std::bind(&mp_staging::network_handler, this, std::ref(window)), true);
-
-	network_handler(window);
 
 	//
 	// Set up the Lua plugin context
@@ -309,23 +308,6 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	}
 }
 
-void mp_staging::update_player_list(window& window)
-{
-	listbox& player_list = find_widget<listbox>(&window, "player_list", false);
-
-	player_list.clear();
-
-	for(const auto& player : connect_engine_.connected_users()) {
-		std::map<std::string, string_map> data;
-		string_map item;
-
-		item["label"] = player;
-		data.emplace("player_name", item);
-
-		player_list.add_row(data);
-	}
-}
-
 void mp_staging::on_controller_select(ng::side_engine_ptr side, grid& row_grid)
 {
 	menu_button& ai_selection         = find_widget<menu_button>(&row_grid, "ai_controller", false);
@@ -497,8 +479,9 @@ void mp_staging::network_handler(window& window)
 	}
 
 	// Update player list
-	// TODO: optimally, it wouldn't regenerate the entire list every single refresh cycle
-	update_player_list(window);
+	if(data.has_child("userlist")) {
+		player_list_->update_list(data.child("userlist").child_range("user"));
+	}
 
 	// Update status label and buttons
 	update_status_label_and_buttons(window);

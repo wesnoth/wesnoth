@@ -114,6 +114,11 @@ game::game(player_connections& player_connections, socket_ptr host,
 	// Mark the host as unavailable in the lobby.
 	iter->info().mark_available(id_, name_);
 	iter->info().set_status(player::PLAYING);
+
+	// Send player list to the host. At this point, it only contains the host themelves.
+	// This *could* therefor be handled on the client side, but having the server send it
+	// means we can have the same code handle the player list UI in multiple dialogs.
+	send_user_list();
 }
 
 game::~game()
@@ -1320,22 +1325,30 @@ bool game::remove_player(const socket_ptr player, const bool disconnect, const b
 	return false;
 }
 
-void game::send_user_list(const socket_ptr exclude) const {
-	//if the game hasn't started yet, then send all players a list
-	//of the users in the game
-	if (started_ || description_ == nullptr) return;
-	/** @todo Should be renamed to userlist. */
+void game::send_user_list(const socket_ptr exclude) const
+{
+	// If the game hasn't started yet, then send all players a list of the users in the game.
+	if(started_ /*|| description_ == nullptr*/) {
+		return;
+	}
+
 	simple_wml::document cfg;
-	cfg.root().add_child("gamelist");
-	user_vector users = all_game_users();
-	for(user_vector::const_iterator p = users.begin(); p != users.end(); ++p) {
-		const auto pl = player_connections_.find(*p);
-		if (pl != player_connections_.end()) {
-			//don't need to duplicate pl->second.name().c_str() because the
-			//document will be destroyed by the end of the function
-			cfg.root().add_child("user").set_attr("name", pl->info().name().c_str());
+	simple_wml::node& list = cfg.root().add_child("userlist");
+
+	for(const socket_ptr& user_ptr : all_game_users()) {
+		const auto pl = player_connections_.find(user_ptr);
+
+		if(pl != player_connections_.end()) {
+			simple_wml::node& user = list.add_child("user");
+
+			// Don't need to duplicate pl->second.name().c_str() because the
+			// document will be destroyed by the end of the function
+			user.set_attr("name", pl->info().name().c_str());
+			user.set_attr("host", is_owner(user_ptr) ? "yes" : "no");
+			user.set_attr("observer", is_observer(user_ptr) ? "yes" : "no");
 		}
 	}
+
 	send_data(cfg, exclude);
 }
 
