@@ -1071,6 +1071,30 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr& user)
 				}
 			}
 		} else if (command->child("surrender")) {
+			size_t side_index = 0;
+
+			for(auto s : sides_) {
+				if(s == user) {
+					break;
+				}
+				++side_index;
+			}
+
+			if(side_index < sides_.size()) {
+				simple_wml::document cfg;
+				std::string playername;
+				cfg.root().set_attr("side", std::to_string(side_index + 1).c_str());
+
+				// figure out who gets the surrendered side
+				if(owner_ == user) {
+					playername = username(sides_[(side_index + 1) % sides_.size()]);
+				} else {
+					playername = username(owner_);
+				}
+
+				cfg.root().set_attr("player", playername.c_str());
+				transfer_side_control(user, cfg.root());
+			}
 			send_and_record_server_message(username(user) + " has surrendered.");
 		} else if(is_current_player(user) && (*command).child("end_turn")) {
 			turn_ended = end_turn();

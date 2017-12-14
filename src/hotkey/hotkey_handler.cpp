@@ -296,7 +296,6 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 	case hotkey::HOTKEY_OBJECTIVES:
 	case hotkey::HOTKEY_UNIT_LIST:
 	case hotkey::HOTKEY_STATISTICS:
-	case hotkey::HOTKEY_SURRENDER:
 	case hotkey::HOTKEY_QUIT_GAME:
 	case hotkey::HOTKEY_QUIT_TO_DESKTOP:
 	case hotkey::HOTKEY_SEARCH:
@@ -324,6 +323,16 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 	case hotkey::HOTKEY_SCROLL_RIGHT:
 		return true;
 
+	case hotkey::HOTKEY_SURRENDER: {
+		size_t humans_notme_cnt = 0;
+		for(const auto& t : play_controller_.get_teams_const()) {
+			if(t.is_network_human()) {
+				++humans_notme_cnt;
+			}
+		}
+
+		return !(humans_notme_cnt < 1 || play_controller_.is_linger_mode() || play_controller_.is_observer());
+	}
 	// Commands that have some preconditions:
 	case hotkey::HOTKEY_SAVE_GAME:
 		return !events::commands_disabled;
