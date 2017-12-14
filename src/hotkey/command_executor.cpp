@@ -29,6 +29,8 @@
 #include "display.hpp"
 #include "quit_confirmation.hpp"
 #include "show_dialog.hpp"
+#include "../resources.hpp"
+#include "../playmp_controller.hpp"
 
 #include "utils/functional.hpp"
 
@@ -352,7 +354,7 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 			quit_confirmation::quit_to_title();
 			break;
 		case HOTKEY_SURRENDER:
-
+			surrender_game();
 			break;
 		default:
 			return false;
@@ -362,9 +364,10 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 
 void command_executor::surrender_game() {
 	if(gui2::show_message(_("Surrender"), _("Do you really want to surrender the game?"), gui2::dialogs::message::yes_no_buttons) != gui2::window::CANCEL) {
-
-	} else {
-
+		playmp_controller* pmc = dynamic_cast<playmp_controller*>(resources::controller);
+		if(pmc && !pmc->is_linger_mode() && !pmc->is_observer()) {
+			pmc->surrender(display::get_singleton()->viewing_team());
+		}
 	}
 }
 

@@ -63,8 +63,17 @@ bool quit_confirmation::show_prompt(const std::string& message)
 bool quit_confirmation::default_prompt()
 {
 	playmp_controller* pmc = dynamic_cast<playmp_controller*>(resources::controller);
+	size_t humans_notme_cnt = 0;
 
-	if(!(pmc == nullptr || pmc->is_linger_mode() || pmc->is_observer())) {
+	if(pmc != nullptr) {
+		for(const auto& t : pmc->get_teams_const()) {
+			if(t.is_network_human()) {
+				++humans_notme_cnt;
+			}
+		}
+	}
+
+	if(!(pmc == nullptr || humans_notme_cnt < 1 || pmc->is_linger_mode() || pmc->is_observer())) {
 		gui2::dialogs::surrender_quit sq;
 		sq.show();
 		int retval = sq.get_retval();
