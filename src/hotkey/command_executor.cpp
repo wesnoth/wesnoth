@@ -351,12 +351,22 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 		case HOTKEY_QUIT_GAME:
 			quit_confirmation::quit_to_title();
 			break;
+		case HOTKEY_SURRENDER:
+
+			break;
 		default:
 			return false;
 	}
 	return true;
 }
 
+void command_executor::surrender_game() {
+	if(gui2::show_message(_("Surrender"), _("Do you really want to surrender the game?"), gui2::dialogs::message::yes_no_buttons) != gui2::window::CANCEL) {
+
+	} else {
+
+	}
+}
 
 void command_executor::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool /*context_menu*/, display& gui)
 {
