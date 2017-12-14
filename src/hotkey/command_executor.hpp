@@ -130,7 +130,7 @@ public:
 	std::string get_menu_image(display& disp, const std::string& command, int index=-1) const;
 	// Returns a vector of images for a given menu.
 	void get_menu_images(display &, std::vector<config>& items);
-
+	void surrender_game();
 	virtual void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
 	void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
 
