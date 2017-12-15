@@ -14,22 +14,21 @@
 
 #pragma once
 
-#include "player_connection.hpp"
+#include "mt_rng.hpp"
 #include "player.hpp"
-
+#include "player_connection.hpp"
 #include "simple_wml.hpp"
+#include "utils/make_enum.hpp"
+
+#include <boost/ptr_container/ptr_vector.hpp>
 
 #include <map>
 #include <vector>
 
-#include "mt_rng.hpp"
-#include "utils/make_enum.hpp"
+// class player;
 
-#include <boost/ptr_container/ptr_vector.hpp>
-//class player;
-
-namespace wesnothd {
-
+namespace wesnothd
+{
 typedef std::vector<socket_ptr> user_vector;
 typedef std::vector<socket_ptr> side_vector;
 
@@ -42,17 +41,34 @@ public:
 		(EMPTY, "null")
 	)
 
-	game(player_connections& player_connections, socket_ptr host,
-			const std::string& name="", bool save_replays=false,
-			const std::string& replay_save_path="");
+	game(player_connections& player_connections,
+			socket_ptr host,
+			const std::string& name = "",
+			bool save_replays = false,
+			const std::string& replay_save_path = "");
+
 	~game();
 
-	int id() const { return id_; }
-	const std::string& name() const { return name_; }
+	int id() const
+	{
+		return id_;
+	}
 
-	bool is_owner(const socket_ptr player) const { return (player == owner_); }
+	const std::string& name() const
+	{
+		return name_;
+	}
+
+	bool is_owner(const socket_ptr player) const
+	{
+		return (player == owner_);
+	}
+
 	bool is_member(const socket_ptr player) const
-	{ return is_player(player) || is_observer(player); }
+	{
+		return is_player(player) || is_observer(player);
+	}
+
 	bool allow_observers() const;
 	bool registered_users_only() const;
 	bool is_observer(const socket_ptr player) const;
@@ -60,38 +76,63 @@ public:
 
 	/** Checks whether the connection's ip address is banned. */
 	bool player_is_banned(const socket_ptr player) const;
-	bool level_init() const { return level_.child("snapshot") || level_.child("scenario"); }
+
+	bool level_init() const
+	{
+		return level_.child("snapshot") || level_.child("scenario");
+	}
+
 	static simple_wml::node* starting_pos(simple_wml::node& data)
 	{
-		if(simple_wml::node* scenario = data.child("scenario"))
+		if(simple_wml::node* scenario = data.child("scenario")) {
 			return scenario;
-		else if(simple_wml::node* snapshot = data.child("snapshot"))
+		} else if(simple_wml::node* snapshot = data.child("snapshot")) {
 			return snapshot;
-		else
-			return &data;
+		}
+
+		return &data;
 	}
+
 	static const simple_wml::node* starting_pos(const simple_wml::node& data)
 	{
-		if(const simple_wml::node* scenario = data.child("scenario"))
+		if(const simple_wml::node* scenario = data.child("scenario")) {
 			return scenario;
-		else if(const simple_wml::node* snapshot = data.child("snapshot"))
+		} else if(const simple_wml::node* snapshot = data.child("snapshot")) {
 			return snapshot;
-		else
-			return &data;
-	}
-	const simple_wml::node::child_list & get_sides_list() const
-	{
-		return starting_pos( level_.root())->children("side");
-	}
-	bool started() const { return started_; }
+		}
 
-	size_t nplayers() const { return players_.size(); }
-	size_t nobservers() const { return observers_.size(); }
-	size_t current_turn() const { return (nsides_ ? end_turn_ / nsides_ + 1 : 0); }
+		return &data;
+	}
+
+	const simple_wml::node::child_list& get_sides_list() const
+	{
+		return starting_pos(level_.root())->children("side");
+	}
+
+	bool started() const
+	{
+		return started_;
+	}
+
+	size_t nplayers() const
+	{
+		return players_.size();
+	}
+
+	size_t nobservers() const
+	{
+		return observers_.size();
+	}
+
+	size_t current_turn() const
+	{
+		return (nsides_ ? end_turn_ / nsides_ + 1 : 0);
+	}
+
 	void set_current_turn(int turn)
 	{
 		int current_side = end_turn_ % nsides_;
-		end_turn_ = current_side + nsides_ * ( turn - 1);
+		end_turn_ = current_side + nsides_ * (turn - 1);
 	}
 
 	void mute_all_observers();
@@ -138,22 +179,25 @@ public:
 	 *                            no more players or the host left on a not yet
 	 *                            started game.
 	 */
-	bool remove_player(const socket_ptr player, const bool disconnect=false, const bool destruct=false);
+	bool remove_player(const socket_ptr player, const bool disconnect = false, const bool destruct = false);
 
 	/** Adds players and observers into one vector and returns that. */
 	const user_vector all_game_users() const;
 
 	void start_game(const socket_ptr starter);
-	//this is performed just before starting and before [start_game] signal
-	//send scenario_diff's specific to each client so that they locally
-	//control their human sides
+
+	// this is performed just before starting and before [start_game] signal
+	// send scenario_diff's specific to each client so that they locally
+	// control their human sides
 	void perform_controller_tweaks();
 
 	void update_game();
 
 	/** A user (player only?) asks for the next scenario to advance to. */
-	void load_next_scenario(const socket_ptr user); //const
-	// iceiceice: I unmarked this const because I want to send and record server messages when I fail to tweak sides properly
+	void load_next_scenario(const socket_ptr user); // const
+
+	// iceiceice: I unmarked this const because I want to send and record server messages when I fail to tweak sides
+	// properly
 
 	/** Resets the side configuration according to the scenario data. */
 	void update_side_data();
@@ -186,49 +230,66 @@ public:
 	 */
 	bool describe_slots();
 
-	void send_server_message_to_all(const char* message, socket_ptr exclude=socket_ptr()) const;
-	void send_server_message_to_all(const std::string& message, socket_ptr exclude=socket_ptr()) const
+	void send_server_message_to_all(const char* message, socket_ptr exclude = socket_ptr()) const;
+	void send_server_message_to_all(const std::string& message, socket_ptr exclude = socket_ptr()) const
 	{
 		send_server_message_to_all(message.c_str(), exclude);
 	}
 
-	void send_server_message(const char* message, socket_ptr sock=socket_ptr(), simple_wml::document* doc=nullptr) const;
-	void send_server_message(const std::string& message, socket_ptr sock=socket_ptr(), simple_wml::document* doc=nullptr) const
+	void send_server_message(
+			const char* message, socket_ptr sock = socket_ptr(), simple_wml::document* doc = nullptr) const;
+	void send_server_message(
+			const std::string& message, socket_ptr sock = socket_ptr(), simple_wml::document* doc = nullptr) const
 	{
 		send_server_message(message.c_str(), sock, doc);
 	}
 
 	/** Send data to all players in this game except 'exclude'. */
-	void send_and_record_server_message(const char* message, const socket_ptr exclude=socket_ptr());
-	void send_and_record_server_message(const std::string& message,	const socket_ptr exclude=socket_ptr())
+	void send_and_record_server_message(const char* message, const socket_ptr exclude = socket_ptr());
+	void send_and_record_server_message(const std::string& message, const socket_ptr exclude = socket_ptr())
 	{
 		send_and_record_server_message(message.c_str(), exclude);
 	}
 
-	void send_data(simple_wml::document& data, const socket_ptr exclude=socket_ptr(), std::string packet_type = "") const;
+	void send_data(
+			simple_wml::document& data, const socket_ptr exclude = socket_ptr(), std::string packet_type = "") const;
 
 	void clear_history();
 	void record_data(simple_wml::document* data);
 	void save_replay();
 
 	/** The full scenario data. */
-	simple_wml::document& level() { return level_; }
+	simple_wml::document& level()
+	{
+		return level_;
+	}
 
 	/**
 	 * Functions to set/get the address of the game's summary description as
 	 * sent to players in the lobby.
 	 */
 	void set_description(simple_wml::node* desc);
-	simple_wml::node* description() const { return description_; }
 
-	void set_password(const std::string& passwd) { password_ = passwd; }
-	bool password_matches(const std::string& passwd) const {
+	simple_wml::node* description() const
+	{
+		return description_;
+	}
+
+	void set_password(const std::string& passwd)
+	{
+		password_ = passwd;
+	}
+
+	bool password_matches(const std::string& passwd) const
+	{
 		return password_.empty() || passwd == password_;
 	}
 
-	const std::string& termination_reason() const {
+	const std::string& termination_reason() const
+	{
 		static const std::string aborted = "aborted";
 		static const std::string not_started = "not started";
+
 		return started_ ? (termination_.empty() ? aborted : termination_) : not_started;
 	}
 
@@ -240,26 +301,46 @@ public:
 
 	void handle_controller_choice(const simple_wml::node& data);
 
-	void reset_last_synced_context_id() { last_choice_request_id_ = -1; }
+	void reset_last_synced_context_id()
+	{
+		last_choice_request_id_ = -1;
+	}
+
 	/**
 	 * Function which returns true iff 'player' controls any of the sides spcified in 'sides'.
 	 */
 	bool controls_side(const std::vector<int>& sides, const socket_ptr player) const;
+
 private:
-	//forbidden operations
+	// forbidden operations
 	game(const game&);
 	void operator=(const game&);
 
-	size_t current_side() const { return (nsides_ ? end_turn_ % nsides_ : 0); }
+	size_t current_side() const
+	{
+		return (nsides_ ? end_turn_ % nsides_ : 0);
+	}
+
 	socket_ptr current_player() const
-	{ return (nsides_ ? sides_[current_side()] : socket_ptr()); }
+	{
+		return (nsides_ ? sides_[current_side()] : socket_ptr());
+	}
+
 	bool is_current_player(const socket_ptr player) const
-	{ return (current_player() == player); }
+	{
+		return (current_player() == player);
+	}
+
 	bool is_muted_observer(const socket_ptr player) const;
-	bool all_observers_muted() const { return all_observers_muted_; }
+	bool all_observers_muted() const
+	{
+		return all_observers_muted_;
+	}
+
 	void send_muted_observers(const socket_ptr user) const;
 
 	bool send_taken_side(simple_wml::document& cfg, const simple_wml::node::child_list::const_iterator side) const;
+
 	/**
 	 * Figures out which side to take and tells that side to the game owner.
 	 *
@@ -281,18 +362,23 @@ private:
 			const bool player_left = true);
 	void transfer_ai_sides(const socket_ptr player);
 	void send_leave_game(socket_ptr user) const;
+
 	/**
 		@param sides a comma sperated list of side numbers to which the package should be sent,
 	*/
-	void send_data_sides(simple_wml::document& data, const simple_wml::string_span& sides,
-			const socket_ptr exclude=socket_ptr(), std::string packet_type = "") const;
-	void send_data_observers(simple_wml::document& data, const socket_ptr exclude=socket_ptr(), std::string packet_type = "") const;
+	void send_data_sides(simple_wml::document& data,
+			const simple_wml::string_span& sides,
+			const socket_ptr exclude = socket_ptr(),
+			std::string packet_type = "") const;
+
+	void send_data_observers(
+			simple_wml::document& data, const socket_ptr exclude = socket_ptr(), std::string packet_type = "") const;
 
 	/**
 	 * Send [observer] tags of all the observers in the game to the user or
 	 * everyone if none given.
 	 */
-	void send_observerjoins(const socket_ptr sock=socket_ptr()) const;
+	void send_observerjoins(const socket_ptr sock = socket_ptr()) const;
 	void send_observerquit(const socket_ptr observer) const;
 	void send_history(const socket_ptr sock) const;
 
@@ -302,8 +388,16 @@ private:
 	/** Shortcut to a convenience function for finding a user by name. */
 	socket_ptr find_user(const simple_wml::string_span& name);
 
-	bool observers_can_label() const { return false; }
-	bool observers_can_chat() const { return true; }
+	bool observers_can_label() const
+	{
+		return false;
+	}
+
+	bool observers_can_chat() const
+	{
+		return true;
+	}
+
 	bool is_legal_command(const simple_wml::node& command, const socket_ptr user);
 
 	/**
@@ -326,7 +420,7 @@ private:
 	 *
 	 * Only sends data if the game is initialized but not yet started.
 	 */
-	void send_user_list(const socket_ptr exclude=socket_ptr()) const;
+	void send_user_list(const socket_ptr exclude = socket_ptr()) const;
 
 	/** Returns the name of the user or "(unfound)". */
 	std::string username(const socket_ptr pl) const;
@@ -339,8 +433,10 @@ private:
 
 	/** calculates the initial value for sides_, side_controllerds_, nsides_*/
 	void reset_sides();
+
 	/** Helps debugging player and observer lists. */
 	std::string debug_player_info() const;
+
 	/** Helps debugging controller tweaks. */
 	std::string debug_sides_info() const;
 
@@ -413,19 +509,36 @@ private:
 	int last_choice_request_id_;
 };
 
-struct game_is_member {
-	game_is_member(socket_ptr sock) : sock_(sock) {}
-	bool operator()(const game& g) const { return g.is_owner(sock_) || g.is_member(sock_); }
+struct game_is_member
+{
+	game_is_member(socket_ptr sock)
+		: sock_(sock)
+	{
+	}
+
+	bool operator()(const game& g) const
+	{
+		return g.is_owner(sock_) || g.is_member(sock_);
+	}
 
 private:
 	socket_ptr sock_;
 };
 
-struct game_id_matches {
-	game_id_matches(int id) : id_(id) {}
-	bool operator()(const game& g) const { return g.id() == id_; }
+struct game_id_matches
+{
+	game_id_matches(int id)
+		: id_(id)
+	{
+	}
+
+	bool operator()(const game& g) const
+	{
+		return g.id() == id_;
+	}
 
 private:
 	int id_;
 };
-}
+
+} // namespace wesnothd
