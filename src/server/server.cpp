@@ -2691,7 +2691,6 @@ void server::delete_game(int gameid) {
 	for (const titer& it : range_vctor) {
 		player_connections_.get<game_t>().modify(it, player_record::enter_lobby);
 	}
-	game_ptr->send_data(games_and_users_list_);
 }
 
 void server::update_game_in_lobby(const wesnothd::game& g, const socket_ptr& exclude)
