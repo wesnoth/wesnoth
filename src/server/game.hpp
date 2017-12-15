@@ -339,7 +339,7 @@ private:
 
 	void send_muted_observers(const socket_ptr user) const;
 
-	bool send_taken_side(simple_wml::document& cfg, const simple_wml::node::child_list::const_iterator side) const;
+	bool send_taken_side(simple_wml::document& cfg, const simple_wml::node* side) const;
 
 	/**
 	 * Figures out which side to take and tells that side to the game owner.
