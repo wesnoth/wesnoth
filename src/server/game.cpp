@@ -1756,9 +1756,6 @@ void game::save_replay()
 	std::stringstream replay_data;
 	try {
 		// level_.set_attr_dup("label", name.str().c_str());
-		// TODO: comment where mp_game_title= is used.
-		level_.set_attr_dup("mp_game_title", name_.c_str());
-
 		const bool has_old_replay = level_.child("replay") != nullptr;
 
 		// If there is already a replay in the level_, which means this is a reloaded game,
