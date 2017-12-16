@@ -71,17 +71,4 @@ typedef multi_index_container<
 	>
 > player_connections;
 
-void send_to_player(socket_ptr socket, simple_wml::document& doc);
-
-template<typename Container>
-void send_to_players(simple_wml::document& data, const Container& players, socket_ptr exclude = socket_ptr())
-{
-	typename Container::const_iterator iter = players.begin(), iter_end = players.end();
-	for(;iter != iter_end; ++iter)
-		if(*iter != exclude)
-			send_to_player(*iter, data);
-}
-
-void send_server_message(socket_ptr socket, const std::string& message);
-
 } // namespace wesnothd

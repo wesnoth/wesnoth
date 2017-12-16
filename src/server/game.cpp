@@ -21,6 +21,7 @@
 #include "preferences/credentials.hpp"
 #include "serialization/string_utils.hpp"
 #include "server/player_network.hpp"
+#include "server/server.hpp"
 
 #include <cstdio>
 #include <iomanip>
@@ -72,6 +73,16 @@ std::vector<TResult> split(const simple_wml::string_span& val, TConvert conv, co
 
 namespace wesnothd
 {
+template<typename Container>
+void send_to_players(simple_wml::document& data, const Container& players, socket_ptr exclude = socket_ptr())
+{
+	for(const auto& player : players) {
+		if(player != exclude) {
+			send_to_player(player, data);
+		}
+	}
+}
+
 int game::id_num = 1;
 
 void game::missing_user(socket_ptr /*socket*/, const std::string& func) const

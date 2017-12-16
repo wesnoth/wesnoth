@@ -113,8 +113,8 @@ namespace wesnothd {
 
 		bool operator>(const banned& b) const;
 
-		struct error : public game::error {
-			error(const std::string& message) : game::error(message) {}
+		struct error : public ::game::error {
+			error(const std::string& message) : ::game::error(message) {}
 		};
 	};
 

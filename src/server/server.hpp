@@ -225,4 +225,8 @@ private:
 	void handle_graceful_timeout(const boost::system::error_code& error);
 };
 
+void send_to_player(socket_ptr socket, simple_wml::document& doc);
+
+void send_server_message(socket_ptr socket, const std::string& message);
+
 }
