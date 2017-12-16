@@ -24,7 +24,7 @@
 #include <string>
 
 class config;
-class display_context;
+class display;
 class team;
 class terrain_label;
 
@@ -207,7 +207,7 @@ private:
 	void clear();
 	void draw();
 	bool hidden() const;
-	bool viewable(const display_context& dc) const;
+	bool viewable(const display& disp) const;
 
 	int handle_;
 	int tooltip_handle_;

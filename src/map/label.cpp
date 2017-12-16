@@ -265,6 +265,11 @@ void map_labels::enable(bool is_enabled)
  */
 bool map_labels::visible_global_label(const map_location& loc) const
 {
+	if(team_ == nullptr) {
+		// We're in the editor. All global labels can be shown.
+		return true;
+	}
+
 	const team_label_map::const_iterator glabels = labels_.find(team_name());
 	return glabels == labels_.end() || glabels->second.find(loc) == glabels->second.end();
 }
@@ -529,7 +534,7 @@ void terrain_label::draw()
 
 	clear();
 
-	if(!viewable(disp->get_disp_context())) {
+	if(!viewable(*disp)) {
 		return;
 	}
 
@@ -609,19 +614,19 @@ bool terrain_label::hidden() const
  * creating a label. Conditions that can change during unit movement (disregarding
  * potential WML events) should not be listed here; they belong in hidden().
  */
-bool terrain_label::viewable(const display_context& dc) const
+bool terrain_label::viewable(const display& disp) const
 {
 	if(!parent_->enabled()) {
 		return false;
 	}
 
 	// In the editor, all labels are viewable.
-	if(dc.teams().empty()) {
+	if(disp.in_editor()) {
 		return true;
 	}
 
 	// Observers are not privvy to team labels.
-	const bool can_see_team_labels = !dc.is_observer();
+	const bool can_see_team_labels = !disp.get_disp_context().is_observer();
 
 	// Global labels are shown unless covered by a team label.
 	if(team_name_.empty()) {
