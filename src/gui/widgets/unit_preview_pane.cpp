@@ -125,7 +125,7 @@ static inline std::string get_hp_tooltip(const utils::string_map& res, const std
 	bool att_def_diff = false;
 	for(const utils::string_map::value_type &resist : res) {
 		std::ostringstream line;
-		line << translation::gettext(resist.first.c_str()) << ": ";
+		line << translation::dgettext("wesnoth", resist.first.c_str()) << ": ";
 
 		// Some units have different resistances when attacking or defending.
 		const int res_att = 100 - get(resist.first, true);
