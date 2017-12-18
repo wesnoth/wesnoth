@@ -27,14 +27,26 @@ function wesnoth.wml_actions.heal_unit(cfg)
 	local heal_amount_set = false
 	for i,u in ipairs(who) do
 		local heal_amount = u.max_hitpoints - u.hitpoints
+		local new_hitpoints
 		if heal_full then
-			u.hitpoints = u.max_hitpoints
+			new_hitpoints = u.max_hitpoints
 		else
 			heal_amount = tonumber(cfg.amount) or heal_amount
-			local new_hitpoints = math.max(1, math.min(u.max_hitpoints, u.hitpoints + heal_amount))
+			new_hitpoints = math.max(1, math.min(u.max_hitpoints, u.hitpoints + heal_amount))
 			heal_amount = new_hitpoints - u.hitpoints
-			u.hitpoints = new_hitpoints
 		end
+
+		if cfg.animate then
+			local animator = wesnoth.create_animator()
+			animator:add(u, 'healed', 'hit',
+				{value = heal_amount, text = heal_amount, color = {0, 255, 0}})
+			if #healers > 0 then
+				animator:add(healers[1], 'healing', 'hit', {value = heal_amount})
+			end
+			animator:run()
+		end
+
+		u.hitpoints = new_hitpoints
 
 		if moves_full then
 			u.moves = u.max_moves
@@ -56,15 +68,6 @@ function wesnoth.wml_actions.heal_unit(cfg)
 		if not heal_amount_set then
 			heal_amount_set = true
 			wesnoth.set_variable("heal_amount", heal_amount)
-		end
-
-		if cfg.animate then
-			local animator = wesnoth.create_animator()
-			animator:add(u, 'healed', 'hit', {value = heal_amount})
-			if #healers > 0 then
-				animator:add(healers[1], 'healing', 'hit', {value = heal_amount})
-			end
-			animator:run()
 		end
 	end
 end
