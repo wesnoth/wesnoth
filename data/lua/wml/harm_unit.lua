@@ -176,7 +176,7 @@ function wml_actions.harm_unit(cfg)
 			end
 
 			if kill ~= false and unit_to_harm.hitpoints <= 0 then
-				wml_actions.kill { id = unit_to_harm.id, animate = toboolean( animate ), fire_event = fire_event }
+				wml_actions.kill { id = unit_to_harm.id, animate = toboolean( animate ), fire_event = fire_event, T.secondary_unit { id = harmer.id } }
 			end
 
 			if animate then
