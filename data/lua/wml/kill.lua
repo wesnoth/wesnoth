@@ -11,7 +11,7 @@ function wesnoth.wml_actions.kill(cfg)
 		secondary_unit = wesnoth.get_units(secondary_unit)[1]
 		if cfg.fire_event then
 			if secondary_unit then
-				killer_loc = {secondary_unit.loc}
+				killer_loc = { x = tonumber(secondary_unit.x) or 0, y = tonumber(secondary_unit.y) or 0 }
 			else
 				wesnoth.log("warn", "failed to match [secondary_unit] in [kill] with a single on-board unit")
 			end
@@ -39,7 +39,7 @@ function wesnoth.wml_actions.kill(cfg)
 		if can_fire then
 			wesnoth.fire_event("last breath", death_loc, killer_loc)
 		end
-		if cfg.animate then
+		if cfg.animate and unit.valid == "map" then
 			wesnoth.scroll_to_tile(death_loc)
 			local anim = wesnoth.create_animator()
 			local primary = helper.get_child(cfg, "primary_attack")
