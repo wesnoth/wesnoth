@@ -311,7 +311,7 @@ class CampaignClient:
                     print(("Ignored dir", name))
                     return None
 
-            dataNode = append_tag("dir")
+            dataNode = append_tag(None, "dir")
             append_attributes(dataNode, name = name)
             for fn in glob.glob(path + "/*"):
                 if os.path.isdir(fn):
