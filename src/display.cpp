@@ -485,7 +485,7 @@ void display::fill_images_list(const std::string& prefix, std::vector<std::strin
 		images.emplace_back();
 }
 
-const std::string& display::get_variant(const std::vector<std::string>& variants, const map_location &loc) const
+const std::string& display::get_variant(const std::vector<std::string>& variants, const map_location &loc)
 {
 	//TODO use better noise function
 	return variants[std::abs(loc.x + loc.y) % variants.size()];
@@ -577,7 +577,7 @@ const SDL_Rect& display::map_area() const
 	return res;
 }
 
-bool display::outside_area(const SDL_Rect& area, const int x, const int y) const
+bool display::outside_area(const SDL_Rect& area, const int x, const int y)
 {
 	const int x_thresh = hex_size();
 	const int y_thresh = hex_size();
@@ -2010,12 +2010,12 @@ bool display::scroll(int xmove, int ymove, bool force)
 	return true;
 }
 
-bool display::zoom_at_max() const
+bool display::zoom_at_max()
 {
 	return zoom_ == MaxZoom;
 }
 
-bool display::zoom_at_min() const
+bool display::zoom_at_min()
 {
 	return zoom_ == MinZoom;
 }

@@ -237,7 +237,7 @@ public:
 		max_map_area() : theme_.main_map_location(screen_.screen_area()); }
 
 	/** Check if the bbox of the hex at x,y has pixels outside the area rectangle. */
-	bool outside_area(const SDL_Rect& area, const int x,const int y) const;
+	static bool outside_area(const SDL_Rect& area, const int x,const int y);
 
 	/**
 	 * Function which returns the width of a hex in pixels,
@@ -245,16 +245,16 @@ public:
 	 * (i.e. not entirely from tip to tip -- use hex_size()
 	 * to get the distance from tip to tip)
 	 */
-	int hex_width() const { return (zoom_*3)/4; }
+	static int hex_width() { return (zoom_*3)/4; }
 
 	/**
 	 * Function which returns the size of a hex in pixels
 	 * (from top tip to bottom tip or left edge to right edge).
 	 */
-	int hex_size() const { return zoom_; }
+	static int hex_size(){ return zoom_; }
 
 	/** Returns the current zoom factor. */
-	double get_zoom_factor() const { return double(zoom_)/double(game_config::tile_size); }
+	static double get_zoom_factor() { return double(zoom_)/double(game_config::tile_size); }
 
 	/**
 	 * given x,y co-ordinates of an onscreen pixel, will return the
@@ -388,7 +388,7 @@ public:
 	std::shared_ptr<gui::button> find_action_button(const std::string& id);
 	std::shared_ptr<gui::button> find_menu_button(const std::string& id);
 
-	gui::button::TYPE string_to_button_type(std::string type);
+	static gui::button::TYPE string_to_button_type(std::string type);
 	void create_buttons();
 
 	void layout_buttons();
@@ -503,8 +503,8 @@ public:
 	/** Sets the display zoom to the specified amount. */
 	bool set_zoom(unsigned int amount, const bool validate_value_and_set_index = true);
 
-	bool zoom_at_max() const;
-	bool zoom_at_min() const;
+	static bool zoom_at_max();
+	static bool zoom_at_min();
 
 	/** Sets the zoom amount to the default. */
 	void set_default_zoom();
@@ -720,9 +720,9 @@ protected:
 
 	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type,bool force = true);
 
-	void fill_images_list(const std::string& prefix, std::vector<std::string>& images);
+	static void fill_images_list(const std::string& prefix, std::vector<std::string>& images);
 
-	const std::string& get_variant(const std::vector<std::string>& variants, const map_location &loc) const;
+	static const std::string& get_variant(const std::vector<std::string>& variants, const map_location &loc);
 
 	CVideo& screen_;
 	size_t currentTeam_;
