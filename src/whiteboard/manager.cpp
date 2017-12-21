@@ -1076,6 +1076,11 @@ int manager::get_spent_gold_for(int side)
 	return resources::gameboard->get_team(side).get_side_actions()->get_gold_spent();
 }
 
+bool manager::should_clear_undo() const
+{
+	return resources::controller->is_networked_mp();
+}
+
 void manager::options_dlg()
 {
 	int v_side = viewer_side();
