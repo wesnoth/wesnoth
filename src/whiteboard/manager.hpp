@@ -181,8 +181,8 @@ public:
 	int get_spent_gold_for(int side);
 
 	/** Determines whether or not the undo_stack should be cleared.
-	 *  @todo Only when there are networked allies and we have set a preferences option */
-	bool should_clear_undo() const {return true;}
+	 *  @todo When there are network allies, only clear the undo stack when we have set a preferences option */
+	bool should_clear_undo() const;
 
 	/** Displays the whiteboard options dialog. */
 	void options_dlg();
