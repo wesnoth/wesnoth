@@ -43,50 +43,6 @@ class event_handlers;
 class manager
 {
 private:
-	/**
-	 * This class is similar to an input iterator through event handlers,
-	 * except each instance knows its own end (determined when constructed).
-	 * Subsequent dereferences are not guaranteed to return the same element,
-	 * so it is important to assign a dereference to a variable if you want
-	 * to use it more than once. On the other hand, a dereference will not
-	 * return a null pointer until the end of the iteration is reached (and
-	 * this is how to detect the end of the iteration).
-	 *
-	 * For simplicity, this class is neither assignable nor equality
-	 * comparable nor default constructable, and there is no postincrement.
-	 * Typedefs are also skipped.
-	 */
-	class iteration
-	{
-	public:
-		/// Event-specific constructor.
-		explicit iteration(const std::string& event_name, manager&);
-
-		// Increment:
-		iteration& operator++();
-		// Dereference:
-		handler_ptr operator*();
-
-	private:
-		/// The fixed-name event handlers for this iteration.
-		handler_list& main_list_;
-		/// The varying-name event handlers for this iteration.
-		handler_list& var_list_;
-		/// The event name for this iteration.
-		const std::string event_name_;
-
-		/// Set to true upon dereferencing.
-		bool current_is_known_;
-		/// true if the most recent dereference was taken from main_list_.
-		bool main_is_current_;
-		/// The current (or next) element from main_list_.
-		handler_list::iterator main_it_;
-		/// The current (or next) element from var_list_.
-		handler_list::iterator var_it_;
-
-		game_data* gamedata_;
-	};
-
 	const std::unique_ptr<event_handlers> event_handlers_;
 	std::set<std::string> unit_wml_ids_;
 
