@@ -85,6 +85,10 @@ function wesnoth.wml_actions.kill(cfg)
 		-- Test that it's valid (and still on the map) first, in case the event erased (or extracted) it.
 		if unit.valid == "map" then unit:erase() end
 
+		-- Ensure that Lua VM releases the reference to the animation, if any, and therefore allows the
+		-- unit halo, if any, to disappear (see pull request #2313)
+		collectgarbage()
+
 		-- wesnoth.wml_actions.redraw{}
 
 		number_killed = number_killed + 1
