@@ -111,6 +111,8 @@ game::game(player_connections& player_connections,
 	, level_()
 	, history_()
 	, description_(nullptr)
+	, current_turn_(0)
+	, current_side_index_(0)
 	, end_turn_(0)
 	, num_turns_(0)
 	, all_observers_muted_(false)
@@ -355,11 +357,12 @@ void game::start_game(const socket_ptr& starter)
 		side = lexical_cast_default<int>((*snapshot)["playing_team"], 0);
 		LOG_GAME << "Reload from turn: " << turn << ". Current side is: " << side + 1 << ".\n";
 	}
-
-	end_turn_ = (turn - 1) * nsides_ + side - 1;
+	current_turn_ = turn;
+	// -1 becasue we are increasing it below in that end_turn() call.
+	current_side_index_ = side - 1;
 	num_turns_ = lexical_cast_default<int>((*starting_pos(level_.root()))["turns"], -1);
 
-	end_turn();
+	end_turn(0);
 	clear_history();
 
 	// Send [observer] tags for all observers that are already in the game.
@@ -1078,7 +1081,9 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr& user)
 			}
 			send_and_record_server_message(username(user) + " has surrendered.");
 		} else if(is_current_player(user) && (*command).child("end_turn")) {
-			turn_ended = end_turn();
+			simple_wml::node& endturn = *(*command).child("end_turn");
+			// fixme handle next_player_number
+			turn_ended = end_turn(endturn["next_player_number"].to_int());
 		}
 
 		++index;
@@ -1312,28 +1317,28 @@ void game::process_change_turns_wml(simple_wml::document& data, const socket_ptr
 	// Don't send or store this change, all players should have gotten it by wml.
 }
 
-bool game::end_turn()
+bool game::end_turn(int new_side)
 {
 	// It's a new turn every time each side in the game ends their turn.
-	++end_turn_;
-
-	bool turn_ended = false;
-	if((current_side()) == 0) {
-		turn_ended = true;
+	if(new_side > 0) {
+		current_side_index_ = new_side - 1;
+	}
+	else {
+		++current_side_index_;
 	}
 
 	// Skip over empty sides.
 	for(int i = 0; i < nsides_ && side_controllers_[current_side()] == CONTROLLER::EMPTY; ++i) {
-		++end_turn_;
-
-		if(current_side() == 0) {
-			turn_ended = true;
-		}
+		++current_side_index_;
 	}
+	
+	auto res = std::div(current_side_index_, nsides_ > 0 ? nsides_ : 1);
 
-	if(!turn_ended) {
+	if(res.quot == 0) {
 		return false;
 	}
+	current_side_index_ = res.rem;
+	current_turn_ += res.quot;
 
 	if(description_ == nullptr) {
 		return false;

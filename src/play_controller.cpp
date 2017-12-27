@@ -1170,41 +1170,59 @@ void play_controller::play_turn()
 		LOG_AIT << "Turn " << turn() << ":" << std::endl;
 	}
 
-	for (; gamestate_->player_number_ <= int(gamestate().board_.teams().size()); ++gamestate_->player_number_)
+	int last_player_number = gamestate_->player_number_;
+	int next_player_number = gamestate_->next_player_number_;
+
+	while(gamestate_->player_number_ <= int(gamestate().board_.teams().size()))
 	{
+		gamestate_->next_player_number_ = gamestate_->player_number_ + 1;
+		next_player_number = gamestate_->next_player_number_;
+		last_player_number = gamestate_->player_number_;
+
 		// If a side is empty skip over it.
-		if (current_team().is_empty()) {
-			continue;
-		}
-		init_side_begin();
-		if(gamestate_->init_side_done()) {
-			// This is the case in a reloaded game where the side was initialized before saving the game.
-			init_side_end();
+		if (!current_team().is_empty()) {
+			init_side_begin();
+			if(gamestate_->init_side_done()) {
+				// This is the case in a reloaded game where the side was initialized before saving the game.
+				init_side_end();
+			}
+
+			ai_testing::log_turn_start(current_side());
+			play_side();
+			//ignore any changes to next_player_number_ that happen after the [end_turn] is sended to the server, otherwise we will get OOS.
+			next_player_number = gamestate_->next_player_number_;
+			assert(next_player_number <= 2 * int(gamestate().board_.teams().size()));
+			if(is_regular_game_end()) {
+				return;
+			}
+			//note: play_side() send the [end_turn] to the sever and finish_side_turn() callsie the side turn end events.
+			//      this means that during the side turn end events the clients think it is still the last sides turn while
+			//      the server thinks that it is already the next plyers turn. i don'T think this is a problem though.
+			finish_side_turn();
+			if(is_regular_game_end()) {
+				return;
+			}
+			if(gui_->video().non_interactive()) {
+				LOG_AIT << " Player " << current_side() << ": " <<
+					current_team().villages().size() << " Villages" <<
+					std::endl;
+				ai_testing::log_turn_end(current_side());
+			}
 		}
 
-		ai_testing::log_turn_start(current_side());
-		play_side();
-		if(is_regular_game_end()) {
-			return;
-		}
-		finish_side_turn();
-		if(is_regular_game_end()) {
-			return;
-		}
-		if(gui_->video().non_interactive()) {
-			LOG_AIT << " Player " << current_side() << ": " <<
-				current_team().villages().size() << " Villages" <<
-				std::endl;
-			ai_testing::log_turn_end(current_side());
-		}
+		gamestate_->player_number_ = next_player_number;
 	}
 	// If the loop exits due to the last team having been processed.
-	gamestate_->player_number_ = gamestate().board_.teams().size();
+	gamestate_->player_number_ = last_player_number;
 
 	finish_turn();
 
 	// Time has run out
 	check_time_over();
+	
+	if (!is_regular_game_end()) {
+		gamestate_->player_number_ = modulo(next_player_number, gamestate().board_.teams().size(), 1);
+	}
 }
 
 void play_controller::check_time_over()

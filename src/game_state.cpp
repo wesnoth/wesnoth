@@ -55,6 +55,7 @@ game_state::game_state(const config & level, play_controller & pc, const ter_dat
 	//      so we might want to move the innitialisation of undo_stack_ to game_state::init
 	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
 	player_number_(level["playing_team"].to_int() + 1),
+	next_player_number_(level["next_player_number"].to_int(player_number_ + 1)),
 	init_side_done_(level["init_side_done"].to_bool(false)),
 	start_event_fired_(!level["playing_team"].empty()),
 	server_request_number_(level["server_request_number"].to_int()),
@@ -79,6 +80,7 @@ game_state::game_state(const config & level, play_controller & pc, game_board& b
 	ai_manager_(),
 	events_manager_(new game_events::manager()),
 	player_number_(level["playing_team"].to_int() + 1),
+	next_player_number_(level["next_player_number"].to_int(player_number_ + 1)),
 	end_level_data_(),
 	init_side_done_(level["init_side_done"].to_bool(false)),
 	start_event_fired_(!level["playing_team"].empty()),
@@ -237,6 +239,7 @@ void game_state::write(config& cfg) const
 	cfg["init_side_done"] = init_side_done_;
 	if(gamedata_.phase() == game_data::PLAY) {
 		cfg["playing_team"] = player_number_ - 1;
+		cfg["next_player_number"] = next_player_number_;
 	}
 	cfg["server_request_number"] = server_request_number_;
 	//Call the lua save_game functions

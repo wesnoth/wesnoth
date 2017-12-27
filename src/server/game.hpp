@@ -126,13 +126,12 @@ public:
 
 	size_t current_turn() const
 	{
-		return (nsides_ ? end_turn_ / nsides_ + 1 : 0);
+		return current_turn_;
 	}
 
 	void set_current_turn(int turn)
 	{
-		int current_side = end_turn_ % nsides_;
-		end_turn_ = current_side + nsides_ * (turn - 1);
+		current_turn_ = turn;
 	}
 
 	void mute_all_observers();
@@ -318,7 +317,7 @@ private:
 
 	size_t current_side() const
 	{
-		return (nsides_ ? end_turn_ % nsides_ : 0);
+		return nsides_ ? (current_side_index_ % nsides_) : 0;
 	}
 
 	const socket_ptr current_player() const
@@ -413,7 +412,7 @@ private:
 	 * the game's description when appropriate. Will return true iff there has
 	 * been a change.
 	 */
-	bool end_turn();
+	bool end_turn(int new_side);
 
 	/**
 	 * Function to send a list of users to all clients.
@@ -493,6 +492,8 @@ private:
 	/** Pointer to the game's description in the games_and_users_list_. */
 	simple_wml::node* description_;
 
+	int current_turn_;
+	int current_side_index_;
 	int end_turn_;
 	int num_turns_;
 	bool all_observers_muted_;

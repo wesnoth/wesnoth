@@ -297,10 +297,12 @@ void replay::add_rename(const std::string& name, const map_location& loc)
 }
 
 
-void replay::end_turn()
+void replay::end_turn(int next_player_number)
 {
 	config& cmd = add_command();
-	cmd.add_child("end_turn");
+	config& end_turn = cmd.add_child("end_turn");
+	
+	end_turn["next_player_number"] = next_player_number;
 }
 
 
@@ -795,7 +797,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 
 		//if there is an end turn directive
-		else if (cfg->child("end_turn"))
+		else if (const config& end_turn = cfg->child("end_turn"))
 		{
 			if(is_synced)
 			{
@@ -808,7 +810,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				if (const config &cfg_verify = cfg->child("verify")) {
 					verify(resources::gameboard->units(), cfg_verify);
 				}
-
+				resources::controller->gamestate().next_player_number_ = end_turn["next_player_number"];
 				return REPLAY_FOUND_END_TURN;
 			}
 		}
