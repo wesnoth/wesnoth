@@ -609,8 +609,9 @@ static lg::log_domain log_server("server");
 
 
 
-	void ban_manager::list_bans(std::ostringstream& out, const std::string& mask) const
+	void ban_manager::list_bans(std::ostringstream& out, const std::string& mask)
 	{
+		expire_bans();
 		if (bans_.empty())
 		{
 			out << "No bans set.";
@@ -652,8 +653,9 @@ static lg::log_domain log_server("server");
 	}
 
 
-	std::string ban_manager::is_ip_banned(const std::string& ip) const
+	std::string ban_manager::is_ip_banned(const std::string& ip)
 	{
+		expire_bans();
 		ip_mask pair;
 		try {
 			pair = parse_ip(ip);

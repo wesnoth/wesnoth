@@ -485,7 +485,7 @@ void server::load_config() {
 	}
 }
 
-std::string server::is_ip_banned(const std::string& ip) const {
+std::string server::is_ip_banned(const std::string& ip) {
 	if (!tor_ip_list_.empty()) {
 		if (find(tor_ip_list_.begin(), tor_ip_list_.end(), ip) != tor_ip_list_.end()) return "TOR IP";
 	}

@@ -135,6 +135,10 @@ namespace wesnothd {
 		{ return c - '0'; }
 
 		void init_ban_help();
+		void check_ban_times(time_t time_now);
+		inline void expire_bans() {
+			check_ban_times(time(nullptr));
+		}
 	public:
 		ban_manager();
 		~ban_manager();
@@ -155,12 +159,10 @@ namespace wesnothd {
 		void unban_group(std::ostringstream& os, const std::string& group);
 
 
-		void check_ban_times(time_t time_now);
-
 		void list_deleted_bans(std::ostringstream& out, const std::string& mask = "*") const;
-		void list_bans(std::ostringstream& out, const std::string& mask = "*") const;
+		void list_bans(std::ostringstream& out, const std::string& mask = "*");
 
-		std::string is_ip_banned(const std::string& ip) const;
+		std::string is_ip_banned(const std::string& ip);
 
 		const std::string& get_ban_help() const
 		{ return ban_help_; }

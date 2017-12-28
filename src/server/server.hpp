@@ -156,7 +156,7 @@ private:
 	void load_config();
 
 	bool ip_exceeds_connection_limit(const std::string& ip) const;
-	std::string is_ip_banned(const std::string& ip) const;
+	std::string is_ip_banned(const std::string& ip);
 
 	simple_wml::document version_query_response_;
 	simple_wml::document login_response_;

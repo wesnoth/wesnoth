@@ -58,7 +58,7 @@ protected:
 	virtual void handle_new_client(socket_ptr socket) = 0;
 
 	virtual bool accepting_connections() const { return true; }
-	virtual std::string is_ip_banned(const std::string&) const { return std::string(); }
+	virtual std::string is_ip_banned(const std::string&) { return std::string(); }
 
 #ifndef _WIN32
 	boost::asio::posix::stream_descriptor input_;
