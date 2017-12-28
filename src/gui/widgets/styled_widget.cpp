@@ -611,7 +611,6 @@ std::string styled_widget::get_label_link(const point & position) const
  *                                     text of that message. This field may not
  *                                     be empty when 'help' is set. $
  *
- *
  *     help & t_string & "" &           If you hover over a widget and press F10
  *                                     (or the key the user defined for the help
  *                                     tip) a help message can show up. This
@@ -619,6 +618,10 @@ std::string styled_widget::get_label_link(const point & position) const
  *                                     tooltip but in general (if used) this
  *                                     message should show more help. This
  *                                     defines the text of that message. $
+ *
+ *    use_markup & bool & false &      Whether to format the text using Pango
+ *                                     markup. Applies to Labels and
+ *                                     other Widgets with text. $
  *
  *    use_tooltip_on_label_overflow & bool & true &
  *                                     If the text on the label is truncated and
