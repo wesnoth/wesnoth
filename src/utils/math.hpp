@@ -46,7 +46,7 @@ inline int bounded_add(int base, int increment, int max_sum, int min_sum=0) {
 		return std::max(base+increment, std::min(base, min_sum));
 }
 
-/** Guarantees portable results for division by 100; round towards 0 */
+/** Guarantees portable results for division by 100; round half up, to the nearest integer. */
 inline int div100rounded(int num) {
 	return (num < 0) ? -(((-num) + 50) / 100) : (num + 50) / 100;
 }
