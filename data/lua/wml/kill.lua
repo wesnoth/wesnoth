@@ -69,6 +69,7 @@ function wesnoth.wml_actions.kill(cfg)
 				anim:add(secondary_unit, "victory", "kill", {primary = secondary, secondary = primary})
 			end
 			anim:run()
+			anim:clear()
 		end
 		-- wesnoth.wml_actions.redraw{}
 
