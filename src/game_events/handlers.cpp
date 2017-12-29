@@ -43,11 +43,12 @@ namespace game_events
 {
 /* ** event_handler ** */
 
-event_handler::event_handler(config&& cfg, bool imi)
+event_handler::event_handler(config&& cfg, bool imi, const std::vector<std::string>& types)
 	: first_time_only_(cfg["first_time_only"].to_bool(true))
 	, is_menu_item_(imi)
 	, disabled_(false)
 	, cfg_(cfg)
+	, types_(types)
 {
 }
 
@@ -73,72 +74,6 @@ void event_handler::handle_event(const queued_event& event_info, game_lua_kernel
 
 	lk.run_wml_action("command", vconfig(cfg_, false), event_info);
 	sound::commit_music_changes();
-}
-
-bool event_handler::matches_name(const std::string& name, const game_data* gd) const
-{
-	const std::string my_names = !gd
-		? cfg_["name"].str()
-		: utils::interpolate_variables_into_string(cfg_["name"], *gd);
-
-	std::string::const_iterator
-		itor, it_begin = my_names.begin(),
-		it_end         = my_names.end(),
-		match_it       = name.begin(),
-		match_begin    = name.begin(),
-		match_end      = name.end();
-
-	int skip_count = 0;
-	for(itor = it_begin; itor != it_end; ++itor) {
-		bool do_eat = false, do_skip = false;
-
-		switch(*itor) {
-		case ',':
-			if(itor - it_begin - skip_count == match_it - match_begin && match_it == match_end) {
-				return true;
-			}
-			it_begin = itor + 1;
-			match_it = match_begin;
-			skip_count = 0;
-			continue;
-		case '\f':
-		case '\n':
-		case '\r':
-		case '\t':
-		case '\v':
-			do_skip = (match_it == match_begin || match_it == match_end);
-			break;
-		case ' ':
-			do_skip = (match_it == match_begin || match_it == match_end);
-			FALLTHROUGH;
-		case '_':
-			do_eat = (match_it != match_end && (*match_it == ' ' || *match_it == '_'));
-			break;
-		default:
-			do_eat = (match_it != match_end && *match_it == *itor);
-			break;
-		}
-
-		if(do_eat) {
-			++match_it;
-		} else if(do_skip) {
-			++skip_count;
-		} else {
-			itor = std::find(itor, it_end, ',');
-			if(itor == it_end) {
-				return false;
-			}
-			it_begin = itor + 1;
-			match_it = match_begin;
-			skip_count = 0;
-		}
-	}
-
-	if(itor - it_begin - skip_count == match_it - match_begin && match_it == match_end) {
-		return true;
-	}
-
-	return false;
 }
 
 } // end namespace game_events

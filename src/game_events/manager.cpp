@@ -19,6 +19,8 @@
 #include "game_events/menu_item.hpp"
 #include "game_events/pump.hpp"
 
+#include "formula/string_utils.hpp"
+#include "game_data.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 #include "serialization/string_utils.hpp"
@@ -119,26 +121,65 @@ void manager::write_events(config& cfg) const
 
 void manager::execute_on_events(const std::string& event_id, manager::event_func_t func)
 {
-	// Start with a list of weak_ptrs to all matching event names (ie, "moveto").
-	handler_list matching_events = event_handlers_->get(event_id);
+	const std::string standardized_event_id = event_handlers::standardize_name(event_id);
+	const game_data* gd = resources::gamedata;
+	auto& active_handlers = event_handlers_->get_active();
 
-	// Then check events with variables in their names for a match.
-	for(const auto& handler : event_handlers_->get_dynamic()) {
-		if(handler_ptr ptr = handler.lock()) {
-			if(ptr->matches_name(event_id, resources::gamedata)) {
-				matching_events.push_back(handler);
+	// Save the end outside the loop so the end point remains constant,
+	// even if new events are added to the queue.
+	const unsigned saved_end = active_handlers.size();
+
+	// It's possible for this function to call itself again. If list cleanup occurred
+	// after each recursive call, the saved_end variable in the call above it would no
+	// longer be a valid end index. To work around that, we delay cleanup until the
+	// toplevel call is done running through the events (ie, when recursion_depth is 0).
+	static unsigned recursion_depth = 0;
+	++recursion_depth;
+
+	for(unsigned i = 0; i < saved_end; ++i) {
+		handler_ptr handler = nullptr;
+
+		try {
+			handler = active_handlers.at(i);
+		} catch(const std::out_of_range&) {
+			continue;
+		}
+
+		// Shouldn't happen, but we're just being safe.
+		if(!handler || handler->disabled()) {
+			continue;
+		}
+
+		// Could be more than one.
+		for(const std::string& name : handler->names()) {
+			bool matches = false;
+
+			if(utils::might_contain_variables(name)) {
+				// If we don't have gamedata, we can't interpolate variables, so there's
+				// no way the name will match. Move on to the next one in that case.
+				if(!gd) {
+					continue;
+				}
+
+				matches = standardized_event_id ==
+					event_handlers::standardize_name(utils::interpolate_variables_into_string(name, *gd));
+			} else {
+				matches = standardized_event_id == name;
+			}
+
+			if(matches) {
+				func(*this, handler);
+				break;
 			}
 		}
 	}
 
-	for(auto& handler : matching_events) {
-		if(handler_ptr ptr = handler.lock()) {
-			func(*this, ptr);
-		}
-	}
+	--recursion_depth;
 
 	// Clean up expired ptrs. This saves us effort later since it ensures every ptr is valid.
-	event_handlers_->clean_up_expired_handlers(event_id);
+	if(recursion_depth == 0) {
+		event_handlers_->clean_up_expired_handlers(standardized_event_id);
+	}
 }
 
 game_events::wml_event_pump& manager::pump()

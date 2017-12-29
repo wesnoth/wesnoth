@@ -37,14 +37,17 @@ struct queued_event;
 class event_handler
 {
 public:
-	event_handler(config&& cfg, bool is_menu_item);
+	event_handler(config&& cfg, bool is_menu_item, const std::vector<std::string>& types);
+
+	const std::vector<std::string>& names() const
+	{
+		return types_;
+	}
 
 	bool disabled() const
 	{
 		return disabled_;
 	}
-
-	bool matches_name(const std::string& name, const game_data* data) const;
 
 	bool is_menu_item() const
 	{
@@ -71,6 +74,7 @@ private:
 	bool is_menu_item_;
 	bool disabled_;
 	config cfg_;
+	std::vector<std::string> types_;
 };
 
 }

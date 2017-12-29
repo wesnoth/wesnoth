@@ -97,6 +97,7 @@ void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 	if(!id.empty()) {
 		// Ignore this handler if there is already one with this ID.
 		auto find_it = id_map_.find(id);
+
 		if(find_it != id_map_.end() && !find_it->second.expired()) {
 			DBG_EH << "ignoring event handler for name='" << name << "' with id '" << id << "'\n";
 			return;
@@ -112,8 +113,12 @@ void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 
 	// ...and standardize each one individually. This ensures they're all valid for by-name lookup.
 	for(std::string& single_name : standardized_names) {
-		single_name = standardize_name(single_name);
+		if(!utils::might_contain_variables(single_name)) {
+			single_name = standardize_name(single_name);
+		}
 	}
+
+	assert(standardized_names.size() != 0);
 
 	// Write the new name back to the config.
 	name = utils::join(standardized_names);
@@ -123,7 +128,7 @@ void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 	// Do note active_ holds the main shared_ptr, and the other three containers
 	// construct weak_ptrs from the shared one.
 	DBG_EH << "inserting event handler for name=" << name << " with id=" << id << "\n";
-	active_.emplace_back(new event_handler(std::move(event_cfg), is_menu_item));
+	active_.emplace_back(new event_handler(std::move(event_cfg), is_menu_item, standardized_names));
 
 	//
 	//  !! event_cfg is invalid past this point! DO NOT USE!
@@ -170,14 +175,10 @@ void event_handlers::remove_event_handler(const std::string& id)
 		// Do this even if the lock failed.
 		id_map_.erase(find_it);
 
-		// Remove handler from other lists if we got a lock. If we didn't, the handler
-		// was already from the main list previously, so any other weak_ptrs to it in
-		// the by-name or with-vars list should already have been dropped. If for some
-		// reason they haven't, no problem. They don't do anything and will be dropped
-		// next cleanup.
-		if(handler) {
-			clean_up_expired_handlers(handler->get_config()["name"]);
-		}
+		// We don't delete the handler from the other lists just yet. This is to ensure
+		// the main handler list's size doesn't change when iterating over the handlers.
+		// Any disabled handlers don't get executed, and will be removed during the next
+		// cleanup pass.
 	}
 
 	log_handlers();

@@ -47,10 +47,10 @@ private:
 
 	void log_handlers();
 
+public:
 	/** Utility to standardize the event names used in by_name_. */
 	static std::string standardize_name(const std::string& name);
 
-public:
 	event_handlers()
 		: active_()
 		, by_name_()
@@ -67,6 +67,11 @@ public:
 
 	/** Read-only access to the active event handlers. Essentially gives all events. */
 	const handler_vec_t& get_active() const
+	{
+		return active_;
+	}
+
+	handler_vec_t& get_active()
 	{
 		return active_;
 	}
