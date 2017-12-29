@@ -78,23 +78,8 @@ void server_base::accept_connection(const boost::system::error_code& error, sock
 		return;
 	}
 
-	const std::string ip = client_address(socket);
-
-	const std::string reason = is_ip_banned(ip);
-	if (!reason.empty()) {
-		LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
-		async_send_error(socket, "You are banned. Reason: " + reason);
-		return;
-	} else if (ip_exceeds_connection_limit(ip)) {
-		LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
-		async_send_error(socket, "Too many connections from your IP.");
-		return;
-	} else {
-
-		DBG_SERVER << ip << "\tnew connection accepted\n";
-		serverside_handshake(socket);
-	}
-
+	DBG_SERVER << client_address(socket) << "\tnew connection tentatively accepted\n";
+	serverside_handshake(socket);
 }
 
 void server_base::serverside_handshake(socket_ptr socket)
@@ -118,7 +103,25 @@ void server_base::handle_handshake(const boost::system::error_code& error, socke
 	async_write(
 				*socket, boost::asio::buffer(handshake_response_.buf, 4),
 				[=](const boost::system::error_code& error, size_t)
-					{ if(!check_error(error, socket)) this->handle_new_client(socket); }
+					{
+						if(!check_error(error, socket)) {
+							const std::string ip = client_address(socket);
+
+							const std::string reason = is_ip_banned(ip);
+							if (!reason.empty()) {
+								LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
+								async_send_error(socket, "You are banned. Reason: " + reason);
+								return;
+							} else if (ip_exceeds_connection_limit(ip)) {
+								LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
+								async_send_error(socket, "Too many connections from your IP.");
+								return;
+							} else {
+								DBG_SERVER << ip << "\tnew connection fully accepted\n";
+								this->handle_new_client(socket);
+							}
+						}
+					}
 	);
 }
 

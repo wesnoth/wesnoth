@@ -853,6 +853,8 @@ bool game_launcher::play_multiplayer(mp_selection res)
 			multiplayer_server_.clear();
 		}
 
+	} catch(wesnothd_rejected_client_error& e) {
+		gui2::show_error_message(e.message);
 	} catch(game::mp_server_error& e) {
 		gui2::show_error_message(_("Error while starting server: ") + e.message);
 	} catch(game::load_game_failed& e) {
