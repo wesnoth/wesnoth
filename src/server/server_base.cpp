@@ -85,10 +85,10 @@ void server_base::accept_connection(const boost::system::error_code& error, sock
 		LOG_SERVER << ip << "\trejected banned user. Reason: " << reason << "\n";
 		async_send_error(socket, "You are banned. Reason: " + reason);
 		return;
-		/*} else if (ip_exceeds_connection_limit(ip)) {
+	} else if (ip_exceeds_connection_limit(ip)) {
 		LOG_SERVER << ip << "\trejected ip due to excessive connections\n";
 		async_send_error(socket, "Too many connections from your IP.");
-		return;*/
+		return;
 	} else {
 
 		DBG_SERVER << ip << "\tnew connection accepted\n";
@@ -153,7 +153,7 @@ void server_base::run() {
 	}
 }
 
-std::string client_address(socket_ptr socket)
+std::string client_address(const socket_ptr socket)
 {
 	boost::system::error_code error;
 	std::string result = socket->remote_endpoint(error).address().to_string();

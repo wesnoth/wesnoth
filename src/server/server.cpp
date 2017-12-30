@@ -485,6 +485,18 @@ void server::load_config() {
 	}
 }
 
+bool server::ip_exceeds_connection_limit(const std::string& ip) const
+{
+	if (concurrent_connections_ == 0) return false;
+	size_t connections = 0;
+	for(const auto& player: player_connections_) {
+		if (client_address(player.socket()) == ip) {
+			++connections;
+		}
+	}
+	return connections >= concurrent_connections_;
+}
+
 std::string server::is_ip_banned(const std::string& ip) {
 	if (!tor_ip_list_.empty()) {
 		if (find(tor_ip_list_.begin(), tor_ip_list_.end(), ip) != tor_ip_list_.end()) return "TOR IP";

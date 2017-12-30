@@ -59,6 +59,7 @@ protected:
 
 	virtual bool accepting_connections() const { return true; }
 	virtual std::string is_ip_banned(const std::string&) { return std::string(); }
+	virtual bool ip_exceeds_connection_limit(const std::string&) const { return false; }
 
 #ifndef _WIN32
 	boost::asio::posix::stream_descriptor input_;
