@@ -2451,6 +2451,7 @@ void server::kickban_handler(const std::string& issuer_name, const std::string& 
 				if (banned) *out << "\n";
 				else banned = true;
 				const std::string ip = client_address(player.socket());
+				*out << ban_manager_.ban(ip, parsed_time, reason, issuer_name, dummy_group, target);
 				users_to_kick.push_back(player.socket());
 			}
 		}
