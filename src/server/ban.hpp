@@ -155,7 +155,7 @@ namespace wesnothd {
 		bool parse_time(const std::string& duration, time_t* time) const;
 
 		std::string ban(const std::string&, const time_t&, const std::string&, const std::string&, const std::string&, const std::string& = "");
-		void unban(std::ostringstream& os, const std::string& ip);
+		void unban(std::ostringstream& os, const std::string& ip, bool immediate_write=true);
 		void unban_group(std::ostringstream& os, const std::string& group);
 
 
