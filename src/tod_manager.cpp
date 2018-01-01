@@ -289,6 +289,12 @@ void tod_manager::replace_schedule(const std::vector<time_of_day>& schedule)
 {
 	int bonus = times_[currentTime_].lawful_bonus;
 	times_ = schedule;
+
+	if(schedule.empty()) {
+		// Make sure that there is at least one ToD
+		times_.emplace_back();
+	}
+
 	currentTime_ = 0;
 	if (bonus != times_[currentTime_].lawful_bonus) {
 		has_tod_bonus_changed_ = true;
