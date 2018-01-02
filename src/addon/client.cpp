@@ -43,7 +43,6 @@ addons_client::addons_client(const std::string& address)
 	, host_()
 	, port_()
 	, conn_(nullptr)
-	, stat_(nullptr)
 	, last_error_()
 	, last_error_data_()
 {
@@ -516,40 +515,40 @@ void addons_client::send_simple_request(const std::string& request_string, confi
 }
 struct read_addon_connection_data : public network_transmission::connection_data
 {
-	read_addon_connection_data(network_asio::connection& conn) : conn_(conn) {}
+	read_addon_connection_data(network_asio::connection& conn, addons_client& client)
+		: conn_(conn), client_(client) {}
 	size_t total() override { return conn_.bytes_to_read(); }
 	virtual size_t current()  override { return conn_.bytes_read(); }
 	virtual bool finished() override { return conn_.done(); }
-	virtual void cancel() override { return conn_.cancel(); }
+	virtual void cancel() override { client_.connect(); }
 	virtual void poll() override { conn_.poll(); }
 	network_asio::connection& conn_;
+	addons_client& client_;
 };
 struct write_addon_connection_data : public network_transmission::connection_data
 {
-	write_addon_connection_data(network_asio::connection& conn) : conn_(conn) {}
+	write_addon_connection_data(network_asio::connection& conn, addons_client& client)
+		: conn_(conn), client_(client) {}
 	size_t total() override { return conn_.bytes_to_write(); }
 	virtual size_t current()  override { return conn_.bytes_written(); }
 	virtual bool finished() override { return conn_.done(); }
-	virtual void cancel() override { return conn_.cancel(); }
+	virtual void cancel() override { client_.connect(); }
 	virtual void poll() override { conn_.poll(); }
 	network_asio::connection& conn_;
+	addons_client& client_;
 };
 void addons_client::wait_for_transfer_done(const std::string& status_message, bool track_upload)
 {
 	check_connected();
 	std::unique_ptr<network_transmission::connection_data> cd;
 	if(track_upload)
-		cd.reset(new write_addon_connection_data{ *conn_ });
+		cd.reset(new write_addon_connection_data{*conn_, *this});
 	else
-		cd.reset(new read_addon_connection_data{ *conn_ });
-	if(!stat_) {
-		stat_.reset(new network_transmission(*cd, _("Add-ons Manager"), status_message));
-	} else {
-		stat_->set_subtitle(status_message);
-		stat_->set_connection_data(*cd);
-	}
+		cd.reset(new read_addon_connection_data{*conn_, *this});
 
-	if(!stat_->show()) {
+	gui2::dialogs::network_transmission stat(*cd, _("Add-ons Manager"), status_message);
+
+	if(!stat.show()) {
 		// Notify the caller chain that the user aborted the operation.
 		throw user_exit();
 	}

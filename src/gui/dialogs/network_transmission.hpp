@@ -69,12 +69,6 @@ public:
 						  const std::string& title,
 						  const std::string& subtitle);
 
-	void set_subtitle(const std::string&);
-	void set_connection_data(connection_data& connection)
-	{
-		connection_ = &connection;
-	}
-
 protected:
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;

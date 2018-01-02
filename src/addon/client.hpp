@@ -122,7 +122,6 @@ private:
 	std::string host_;
 	std::string port_;
 	std::unique_ptr<network_asio::connection> conn_;
-	std::unique_ptr<gui2::dialogs::network_transmission> stat_;
 	std::string last_error_;
 	std::string last_error_data_;
 
