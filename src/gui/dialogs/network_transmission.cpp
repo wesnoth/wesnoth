@@ -73,11 +73,6 @@ network_transmission::network_transmission(
 	set_restore(true);
 }
 
-void network_transmission::set_subtitle(const std::string& subtitle)
-{
-	subtitle_ = subtitle;
-}
-
 void network_transmission::pre_show(window& window)
 {
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
@@ -94,7 +89,10 @@ void network_transmission::pre_show(window& window)
 void network_transmission::post_show(window& /*window*/)
 {
 	pump_monitor_.window_.reset();
-	connection_->cancel();
+
+	if(get_retval() == window::retval::CANCEL) {
+		connection_->cancel();
+	}
 }
 
 } // namespace dialogs
