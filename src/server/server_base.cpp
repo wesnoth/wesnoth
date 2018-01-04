@@ -53,7 +53,7 @@ void server_base::start_server()
 	acceptor_.listen();
 	serve();
 
-	handshake_response_.connection_num = 42;
+	handshake_response_.connection_num = htonl(42);
 
 #ifndef _WIN32
 	sighup_.async_wait(
