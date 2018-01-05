@@ -28,6 +28,8 @@
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 
+#include <stdexcept>
+
 #include "addon/client.hpp"
 
 static lg::log_domain log_addons_client("addons-client");
@@ -69,7 +71,8 @@ void addons_client::connect()
 	conn_.reset(new network_asio::connection(host_, port_));
 
 	this->wait_for_transfer_done(
-		vgettext("Connecting to $server_address|...", i18n_symbols));
+		vgettext("Connecting to $server_address|...", i18n_symbols),
+		transfer_mode::connect);
 }
 
 bool addons_client::request_addons_list(config& cfg)
@@ -178,7 +181,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 
 	this->send_request(request_buf, response_buf);
 	this->wait_for_transfer_done(vgettext("Sending add-on <i>$addon_title</i>...", i18n_symbols
-	), true);
+	), transfer_mode::upload);
 
 	if(const config& message_cfg = response_buf.child("message")) {
 		response_message = message_cfg["message"].str();
@@ -525,6 +528,18 @@ struct read_addon_connection_data : public network_transmission::connection_data
 	network_asio::connection& conn_;
 	addons_client& client_;
 };
+struct connect_connection_data : public network_transmission::connection_data
+{
+	connect_connection_data(network_asio::connection& conn, addons_client& client)
+		: conn_(conn), client_(client) {}
+	size_t total() override { return conn_.bytes_to_read(); }
+	size_t current() override { return conn_.bytes_read(); }
+	bool finished() override { return conn_.done(); }
+	void cancel() override { client_.disconnect(); }
+	void poll() override { conn_.poll(); }
+	network_asio::connection& conn_;
+	addons_client& client_;
+};
 struct write_addon_connection_data : public network_transmission::connection_data
 {
 	write_addon_connection_data(network_asio::connection& conn, addons_client& client)
@@ -537,14 +552,23 @@ struct write_addon_connection_data : public network_transmission::connection_dat
 	network_asio::connection& conn_;
 	addons_client& client_;
 };
-void addons_client::wait_for_transfer_done(const std::string& status_message, bool track_upload)
+void addons_client::wait_for_transfer_done(const std::string& status_message, transfer_mode mode)
 {
 	check_connected();
 	std::unique_ptr<network_transmission::connection_data> cd;
-	if(track_upload)
-		cd.reset(new write_addon_connection_data{*conn_, *this});
-	else
+	switch(mode) {
+	case transfer_mode::download:
 		cd.reset(new read_addon_connection_data{*conn_, *this});
+		break;
+	case transfer_mode::connect:
+		cd.reset(new connect_connection_data{*conn_, *this});
+		break;
+	case transfer_mode::upload:
+		cd.reset(new write_addon_connection_data{*conn_, *this});
+		break;
+	default:
+		throw std::invalid_argument("Addon client: invalid transfer mode");
+	}
 
 	gui2::dialogs::network_transmission stat(*cd, _("Add-ons Manager"), status_message);
 

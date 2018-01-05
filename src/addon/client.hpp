@@ -56,11 +56,19 @@ public:
 	 */
 	void connect();
 
+	/**
+	 * Disconnect from the add-on server.
+	 */
+	void disconnect() { conn_.reset(); }
+
 	/** Returns the last error message sent by the server, or an empty string. */
 	const std::string& get_last_server_error() const { return last_error_; }
 
 	/** Returns the last error message extra data sent by the server, or an empty string. */
 	const std::string& get_last_server_error_data() const { return last_error_data_; }
+
+	/** Returns true if the client is connected to the server. */
+	bool is_connected() { return conn_ != nullptr; }
 
 	/**
 	 * Request the add-ons list from the server.
@@ -118,6 +126,8 @@ public:
 	bool delete_remote_addon(const std::string& id, std::string& response_message);
 
 private:
+	enum class transfer_mode {download, connect, upload};
+
 	std::string addr_;
 	std::string host_;
 	std::string port_;
@@ -198,7 +208,7 @@ private:
 	 * will throw a @a user_exit exception if the user cancels the
 	 * transfer by canceling the status window.
 	 */
-	void wait_for_transfer_done(const std::string& status_message, bool track_upload = false);
+	void wait_for_transfer_done(const std::string& status_message, transfer_mode mode = transfer_mode::download);
 
 	bool update_last_error(config& response_cfg);
 };
