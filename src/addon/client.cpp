@@ -158,8 +158,8 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 			vgettext("The add-on <i>$addon_title</i> has an invalid file or directory "
 				"name and cannot be published. "
 
-				"File or directory names may not contain whitespace, control characters or any of the following characters: '&quot; * / : &lt; &gt; ? \\ | ~'. "
-				"It also may not contain '..' end with '.' or be longer than 255 characters."
+				"File or directory names may not contain '..' or end with '.' or be longer than 255 characters. "
+				"It also may not contain whitespace, control characters, or any of the following characters:\n\n' * / : &lt; &gt; ? \\ | ~"
 				, i18n_symbols);
 		this->last_error_data_ = font::escape_text(utils::join(badnames, "\n"));
 		return false;
