@@ -133,11 +133,6 @@ game::game(player_connections& player_connections,
 	// Mark the host as unavailable in the lobby.
 	iter->info().mark_available(id_, name_);
 	iter->info().set_status(player::PLAYING);
-
-	// Send player list to the host. At this point, it only contains the host themelves.
-	// This *could* therefor be handled on the client side, but having the server send it
-	// means we can have the same code handle the player list UI in multiple dialogs.
-	send_user_list();
 }
 
 game::~game()
