@@ -1519,7 +1519,7 @@ void game::send_user_list(const socket_ptr exclude) const
 	}
 
 	simple_wml::document cfg;
-	simple_wml::node& list = cfg.root().add_child("userlist");
+	simple_wml::node& list = cfg.root();
 
 	for(const socket_ptr& user_ptr : all_game_users()) {
 		const auto pl = player_connections_.find(user_ptr);
@@ -1527,7 +1527,7 @@ void game::send_user_list(const socket_ptr exclude) const
 		if(pl != player_connections_.end()) {
 			simple_wml::node& user = list.add_child("user");
 
-			// Don't need to duplicate pl->second.name().c_str() because the
+			// Don't need to duplicate pl->info().name().c_str() because the
 			// document will be destroyed by the end of the function
 			user.set_attr("name", pl->info().name().c_str());
 			user.set_attr("host", is_owner(user_ptr) ? "yes" : "no");

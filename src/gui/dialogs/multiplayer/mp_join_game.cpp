@@ -473,8 +473,8 @@ void mp_join_game::network_handler(window& window)
 	}
 
 	// Update player list
-	if(data.has_child("userlist")) {
-		player_list_->update_list(data.child("userlist").child_range("user"));
+	if(data.has_child("user")) {
+		player_list_->update_list(data.child_range("user"));
 	}
 }
 
