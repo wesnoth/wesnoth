@@ -17,7 +17,7 @@ SRC=$SOURCES/$VERSION
 DATA=$SRC
 LOG=$DIR/logs
 TMPOUT=$DIR/output
-OUT="/srv/www/html/units/$VERSION"
+OUT=${OUT:-"/srv/www/html/units/$VERSION"}
 TRANS=$DIR/translations
 BUILD=$DIR/build
 # always using the master version
