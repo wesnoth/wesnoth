@@ -111,6 +111,16 @@ class CampaignClient:
 
 
     def make_packet(self, doc):
+
+        # The Wesnoth campaign server only accepts "simple WML", which
+        # requires all attributes to be sorted alphabetically.
+        def sorter(tag):
+            if isinstance(tag, wmlparser.TagNode):
+                tag.data.sort(key = lambda node: node.name)
+                for tag2 in tag.data:
+                    sorter(tag2)
+        sorter(doc)
+        
         return doc.wml()
 
     def send_packet(self, packet):
