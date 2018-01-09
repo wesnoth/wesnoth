@@ -33,7 +33,7 @@ editor_action* mouse_action_map_label::click_left(editor_display& disp, int x, i
 	map_location hex = disp.hex_clicked_on(x, y);
 	clicked_on_ = hex;
 	last_draged_ = hex;
-	return new editor_action_chain();
+	return nullptr;
 }
 
 editor_action* mouse_action_map_label::drag_left(editor_display& disp, int x, int y
