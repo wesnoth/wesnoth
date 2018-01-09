@@ -53,6 +53,9 @@ Version 1.13.10+dev:
    * Fixed crash when modifying an existing friend entry in Preferences.
    * Fixed players being unable to start campaigns in MP mode.
  * WML Engine:
+   * Added a major_amla option in AMLAs to keep the XP bar teal-white rather
+     than purple for AMLAs that behave similar to regular advancements.
+     (for example, Quenoth Youth in UtBS or similar unit lines)
    * File paths with backslashes are no longer allowed. This ensures that a UMC
      author can't accidentally use them and make an add-on that breaks on
      GNU/Linux and macOS.
