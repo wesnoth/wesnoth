@@ -574,6 +574,10 @@ void addons_client::wait_for_transfer_done(const std::string& status_message, tr
 
 	if(!stat.show()) {
 		// Notify the caller chain that the user aborted the operation.
-		throw user_exit();
+		if(mode == transfer_mode::connect) {
+			throw user_disconnect();
+		} else {
+			throw user_exit();
+		}
 	}
 }

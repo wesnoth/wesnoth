@@ -597,10 +597,6 @@ void addon_manager::execute_action_on_selected_addon(window& window)
 		(this->*fptr)(*addon, window);
 	} catch(const addons_client::user_exit&) {
 		// User canceled the op.
-		if(!client_.is_connected()) {
-			// User also canceled reconnecting to server, the addon manager is no longer usable.
-			throw;
-		}
 	}
 }
 
