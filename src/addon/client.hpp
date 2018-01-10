@@ -40,6 +40,7 @@ public:
 	struct invalid_server_address {};
 	struct not_connected_to_server {};
 	struct user_exit {};
+	struct user_disconnect {};
 
 	addons_client(const addons_client&) = delete;
 	addons_client& operator=(const addons_client&) = delete;

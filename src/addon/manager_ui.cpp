@@ -99,6 +99,8 @@ bool addons_manager_ui(const std::string& remote_address)
 		e.show();
 	} catch(const addons_client::user_exit&) {
 		LOG_AC << "initial connection canceled by user\n";
+	} catch(const addons_client::user_disconnect&) {
+		LOG_AC << "attempt to reconnect canceled by user\n";
 	} catch(const addons_client::invalid_server_address&) {
 		gui2::show_error_message(_("The add-ons server address specified is not valid."));
 	}
