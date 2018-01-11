@@ -80,7 +80,7 @@ using widget_builder_func_t = std::function<builder_widget_ptr(const config&)>;
  * @warning This function runs before @ref main() so needs to be careful
  * regarding the static initialization problem.
  *
- * @param id                  The id of the widget as used in WML.
+ * @param type                The type of the widget as used in WML.
  * @param functor             The functor to create the widget.
  */
 void register_widget_builder(const std::string& type, widget_builder_func_t functor);
