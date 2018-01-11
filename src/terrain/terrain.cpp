@@ -97,7 +97,8 @@ terrain_type::terrain_type(const config& cfg) :
 		combined_(false),
 		editor_default_base_(t_translation::read_terrain_code(cfg["default_base"])),
 		hide_help_(cfg["hide_help"].to_bool(false)),
-		hide_in_editor_(cfg["hidden"].to_bool(false))
+		hide_in_editor_(cfg["hidden"].to_bool(false)),
+		hide_if_impassable_(cfg["hide_if_impassable"].to_bool(false))
 {
 /**
  *  @todo reenable these validations. The problem is that all MP

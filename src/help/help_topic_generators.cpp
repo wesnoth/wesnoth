@@ -636,12 +636,16 @@ std::string unit_topic_generator::operator()() const {
 				continue;
 			}
 			const terrain_type& info = tdata->get_terrain_info(terrain);
+			const int moves = movement_type.movement_cost(terrain);
+			const bool cannot_move = moves > type_.movement();
+			if (cannot_move && info.hide_if_impassable()) {
+				continue;
+			}
 
 			if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
 				std::vector<item> row;
 				const std::string& name = info.name();
 				const std::string& id = info.id();
-				const int moves = movement_type.movement_cost(terrain);
 				const int views = movement_type.vision_cost(terrain);
 				const int jams  = movement_type.jamming_cost(terrain);
 
@@ -677,7 +681,6 @@ std::string unit_topic_generator::operator()() const {
 
 				//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
 				str.str(clear_stringstream);
-				const bool cannot_move = moves > type_.movement();
 				if (cannot_move) {		// cannot move in this terrain
 					color = "red";
 				} else if (moves > 1) {
