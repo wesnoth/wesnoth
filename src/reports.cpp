@@ -645,6 +645,14 @@ REPORT_GENERATOR(selected_unit_moves, rc)
 	return unit_moves(rc, u);
 }
 
+static inline const color_t attack_info_percent_color(int resistance)
+{
+	// Compare unit_helper::resistance_color()
+	if (resistance < 0) return font::BAD_COLOR;
+	if (resistance > 0) return font::GOOD_COLOR;
+	return font::YELLOW_COLOR;
+}
+
 static int attack_info(reports::context & rc, const attack_type &at, config &res, const unit &u, const map_location &displayed_unit_hex)
 {
 	std::ostringstream str, tooltip;
@@ -776,8 +784,11 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	for (const resist_units &resist : resistances) {
 		int damage_with_resistance = round_damage(specials_damage, damage_multiplier * resist.first, damage_divisor);
 		tooltip << "<b>" << damage_with_resistance << "</b>  "
-			<< "<i>(" << utils::signed_percent(resist.first-100) << ")</i> : "
-			<< utils::join(resist.second, ", ") << '\n';
+			<< "<span color='" << attack_info_percent_color(resist.first-100).to_hex_string() << "'>"
+			<< "<i>(" << utils::signed_percent(resist.first-100) << ")</i>"
+			<< naps
+			<< " :  \t" // spaces to align the tab to a multiple of 8
+			<< utils::join(resist.second, " " + font::unicode_bullet + " ") << '\n';
 	}
 	add_text(res, flush(str), flush(tooltip));
 
