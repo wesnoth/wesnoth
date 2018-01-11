@@ -39,6 +39,7 @@ public:
 
 	bool hide_help() const { return hide_help_; }
 	bool hide_in_editor() const { return hide_in_editor_; }
+	bool hide_if_impassable() const { return hide_if_impassable_; }
 
 	//the character representing this terrain
 	t_translation::terrain_code number() const { return number_; }
@@ -135,7 +136,7 @@ private:
 
 	bool overlay_, combined_;
 	t_translation::terrain_code editor_default_base_;
-	bool hide_help_, hide_in_editor_;
+	bool hide_help_, hide_in_editor_, hide_if_impassable_;
 };
 
 void create_terrain_maps(const config::const_child_itors &cfgs,
