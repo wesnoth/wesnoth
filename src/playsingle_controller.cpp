@@ -538,8 +538,6 @@ void playsingle_controller::play_ai_turn()
 	end_turn_enable(false);
 	gui_->recalculate_minimap();
 
-	const cursor::setter cursor_setter(cursor::WAIT);
-
 	// Correct an oddball case where a human could have left delayed shroud
 	// updates on before giving control to the AI. (The AI does not bother
 	// with the undo stack, so it cannot delay shroud updates.)
