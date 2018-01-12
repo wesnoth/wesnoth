@@ -328,6 +328,7 @@ void playmp_controller::after_human_turn(){
 
 void playmp_controller::play_network_turn(){
 	LOG_NG << "is networked...\n";
+	cursor_tmp_setter_.reset();
 
 	end_turn_enable(false);
 	turn_data_.send_data();
@@ -347,6 +348,7 @@ void playmp_controller::play_network_turn(){
 		}
 	}
 
+	cursor_tmp_setter_.reset(new cursor::setter{cursor::WAIT});
 	LOG_NG << "finished networked...\n";
 }
 
