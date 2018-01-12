@@ -70,6 +70,7 @@ playsingle_controller::playsingle_controller(const config& level,
 	const config& game_config, const ter_data_cache & tdata, bool skip_replay)
 	: play_controller(level, state_of_game, game_config, tdata, skip_replay)
 	, cursor_setter_(cursor::NORMAL)
+	, cursor_tmp_setter_(new cursor::setter{cursor::WAIT})
 	, textbox_info_()
 	, replay_sender_(*resources::recorder)
 	, network_reader_([this](config& cfg) {return receive_from_wesnothd(cfg);})
@@ -427,6 +428,7 @@ void playsingle_controller::before_human_turn()
 		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 	}
 
+	cursor_tmp_setter_.reset();
 	if(preferences::turn_bell()) {
 		sound::play_bell(game_config::sounds::turn_bell);
 	}
@@ -526,6 +528,7 @@ void playsingle_controller::after_human_turn()
 	// Clear moves from the GUI.
 	gui_->set_route(nullptr);
 	gui_->unhighlight_reach();
+	cursor_tmp_setter_.reset(new cursor::setter{cursor::WAIT});
 }
 
 void playsingle_controller::play_ai_turn()

@@ -76,6 +76,7 @@ protected:
 	virtual void init_gui() override;
 
 	const cursor::setter cursor_setter_;
+	std::unique_ptr<cursor::setter> cursor_tmp_setter_;
 	gui::floating_textbox textbox_info_;
 
 	replay_network_sender replay_sender_;
