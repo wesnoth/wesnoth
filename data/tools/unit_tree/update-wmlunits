@@ -42,7 +42,8 @@ mkdir -p "$trans"
 # we only need the parser, but have to build the game executable for that
 echo BUILDING
 cd "$dir" || exit # the scons build places the wesnoth executable in the current directory
-TRAVIS=1 TRAVIS_OS_NAME=Linux scons -Y "$src" --option-cache="$build/.scons-option-cache"
+# continue on failure if there is an executable from a previous build
+TRAVIS=1 TRAVIS_OS_NAME=Linux scons -Y "$src" --option-cache="$build/.scons-option-cache" || [ -x wesnoth ]
 
 # later can just rebuild updated campaigns, but for now rebuild everything
 rm -f "$dir/overview.txt"
