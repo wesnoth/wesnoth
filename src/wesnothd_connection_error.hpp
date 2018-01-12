@@ -23,6 +23,15 @@ struct wesnothd_error : public game::error
 	wesnothd_error(const std::string& error) : game::error(error) {}
 };
 
+/**
+ * Error used when the client is rejected by the MP server.
+ * Technically, this is not an error but the only way to handle the condition is as if it were an error.
+ */
+struct wesnothd_rejected_client_error : public game::error
+{
+    wesnothd_rejected_client_error (const std::string& msg) : game::error (msg) {}
+};
+
 ///We received invalid data from wesnothd during a game
 ///This means we cannot continue with the game but we can stay connected to wesnothd and start a new game
 ///TODO: find a short name

@@ -485,7 +485,19 @@ void server::load_config() {
 	}
 }
 
-std::string server::is_ip_banned(const std::string& ip) const {
+bool server::ip_exceeds_connection_limit(const std::string& ip) const
+{
+	if (concurrent_connections_ == 0) return false;
+	size_t connections = 0;
+	for(const auto& player: player_connections_) {
+		if (client_address(player.socket()) == ip) {
+			++connections;
+		}
+	}
+	return connections >= concurrent_connections_;
+}
+
+std::string server::is_ip_banned(const std::string& ip) {
 	if (!tor_ip_list_.empty()) {
 		if (find(tor_ip_list_.begin(), tor_ip_list_.end(), ip) != tor_ip_list_.end()) return "TOR IP";
 	}
@@ -2439,6 +2451,7 @@ void server::kickban_handler(const std::string& issuer_name, const std::string& 
 				if (banned) *out << "\n";
 				else banned = true;
 				const std::string ip = client_address(player.socket());
+				*out << ban_manager_.ban(ip, parsed_time, reason, issuer_name, dummy_group, target);
 				users_to_kick.push_back(player.socket());
 			}
 		}

@@ -264,6 +264,7 @@ static lg::log_domain log_server("server");
 			return;
 		LOG_SERVER << "Reading bans from " <<  filename_ << "\n";
 		config cfg;
+		dirty_ = false;
 		filesystem::scoped_istream ban_file = filesystem::istream_file(filename_);
 		read_gz(cfg, *ban_file);
 
@@ -518,10 +519,11 @@ static lg::log_domain log_server("server");
 			return e.message;
 		}
 		dirty_ = true;
+		write();
 		return ret.str();
 	}
 
-	void ban_manager::unban(std::ostringstream& os, const std::string& ip)
+	void ban_manager::unban(std::ostringstream& os, const std::string& ip, bool immediate_write)
 	{
 		ban_set::iterator ban;
 		try {
@@ -543,7 +545,9 @@ static lg::log_domain log_server("server");
 		if ((*ban)->get_group().empty()) deleted_bans_.push_back(*ban);
 		bans_.erase(ban);
 		dirty_ = true;
-
+		if (immediate_write) {
+			write();
+		}
 	}
 
 	void ban_manager::unban_group(std::ostringstream& os, const std::string& group)
@@ -555,6 +559,7 @@ static lg::log_domain log_server("server");
 		os << "Removed " << (bans_.size() - temp.size()) << " bans";
 		bans_.swap(temp);
 		dirty_ = true;
+		write();
 	}
 
 	void ban_manager::check_ban_times(time_t time_now)
@@ -573,7 +578,7 @@ static lg::log_domain log_server("server");
 			// This ban is going to expire so delete it.
 			LOG_SERVER << "Remove a ban " << ban->get_ip() << ". time: " << time_now << " end_time " << ban->get_end_time() << "\n";
 			std::ostringstream os;
-			unban(os, ban->get_ip());
+			unban(os, ban->get_ip(), false);
 			time_queue_.pop();
 
 		}
@@ -609,8 +614,9 @@ static lg::log_domain log_server("server");
 
 
 
-	void ban_manager::list_bans(std::ostringstream& out, const std::string& mask) const
+	void ban_manager::list_bans(std::ostringstream& out, const std::string& mask)
 	{
+		expire_bans();
 		if (bans_.empty())
 		{
 			out << "No bans set.";
@@ -652,8 +658,9 @@ static lg::log_domain log_server("server");
 	}
 
 
-	std::string ban_manager::is_ip_banned(const std::string& ip) const
+	std::string ban_manager::is_ip_banned(const std::string& ip)
 	{
+		expire_bans();
 		ip_mask pair;
 		try {
 			pair = parse_ip(ip);

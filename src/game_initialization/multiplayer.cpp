@@ -158,6 +158,13 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 			std::swap(initial_lobby_config, data);
 		}
 
+		if(data.has_child("error")) {
+			std::string error_message;
+			config* error = &data.child("error");
+			error_message = (*error)["message"].str();
+			throw wesnothd_rejected_client_error(error_message);
+		}
+
 		// Continue if we did not get a direction to login
 		if(!data.has_child("mustlogin")) {
 			continue;

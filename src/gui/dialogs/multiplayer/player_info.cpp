@@ -207,7 +207,7 @@ void lobby_player_info::kick_ban_button_callback(window& w)
 void lobby_player_info::do_kick_ban(bool ban)
 {
 	std::stringstream ss;
-	ss << (ban ? "kban" : "kick ") << info_.name;
+	ss << (ban ? "kban " : "kick ") << info_.name;
 	if(ban && !time_->get_value().empty()) {
 		ss << " " << time_->get_value();
 	}
