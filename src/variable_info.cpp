@@ -121,7 +121,7 @@ void variable_info<V>::calculate_value()
 }
 
 template<typename V>
-bool variable_info<V>::explicit_index() const NOEXCEPT
+bool variable_info<V>::explicit_index() const
 {
 	throw_on_invalid();
 	return state_.type_ == state_start || state_.type_ == state_indexed;

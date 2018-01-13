@@ -46,7 +46,7 @@ public:
 
 	std::string get_error_message() const;
 
-	bool explicit_index() const NOEXCEPT;
+	bool explicit_index() const;
 
 	/** @throws                 invalid_variablename_exception */
 	bool exists_as_attribute() const;
