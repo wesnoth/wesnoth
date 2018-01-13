@@ -123,6 +123,7 @@ public:
 		use_flat_tod_ = u.use_flat_tod_;
 		impl_ = std::move(u.impl_);
 		max_matches_ = u.max_matches_;
+		return *this;
 	}
 #else
 	unit_filter(unit_filter&&) = default;
