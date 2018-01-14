@@ -232,6 +232,15 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wml.variable.set = wesnoth.set_variable
 	wml.variable.get_all = wesnoth.get_all_vars
 
+	wml.variables = setmetatable({}, {
+		__index = function(_, key)
+			return wesnoth.get_variable(key)
+		end,
+		__newindex = function(_, key, value)
+			wesnoth.set_variable(key, value)
+		end
+	})
+
 	--[========[Variable Proxy Table]========]
 
 	local variable_mt = {
