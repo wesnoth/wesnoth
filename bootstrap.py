@@ -420,7 +420,9 @@ if platform.system() != 'Windows':
   sys.exit('Error: This script only works on a Windows OS')
 maxcores = multiprocessing.cpu_count()
 print('The system has %s cores.' % maxcores)
-CORECOUNT = raw_input('Enter number of cores to build boost and wesnoth with: ')[0].lower()
+# Use non-interactive mode until AppVeyor test pass
+#CORECOUNT = raw_input('Enter number of cores to build boost and wesnoth with: ')[0].lower()
+CORECOUNT = maxcores
 
 print('---[ download dependencies ]---')
 
