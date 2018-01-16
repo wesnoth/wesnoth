@@ -186,7 +186,17 @@ void game::perform_controller_tweaks() {
 				user_name = username(user);
 			}
 
-			change_controller(side_num, sides_[side_num], user_name , false, (**s)["controller"].to_string());
+			// Issue change_controller command, transfering this side to its owner with proper name and controller.
+			// Ensures that what the server now thinks is true is effected on all of the clients.
+			//
+			// We use the "player_left" field as follows. Normally change_controller sends one message to the owner,
+			// and one message to everyone else. In case that a player drops, the owner is gone and should not get
+			// a message, instead the host gets a [side_drop] message.
+			//
+			// In the server controller tweaks, we want to avoid sending controller change messages to the host.
+			// Doing this has the negative consequence that all of the AI side names are given the owners name.
+			// Therefore, if the side belongs to the host, we pass player_left = true, otherwise player_left = false.
+			change_controller(side_num, sides_[side_num], user_name , sides_[side_num] == owner_, (**s)["controller"].to_string());
 
 			//next lines change controller types found in level_ to be what is appropriate for an observer at game start.
 			if ((**s)["controller"] == "ai") {
