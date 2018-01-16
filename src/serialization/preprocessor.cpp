@@ -693,7 +693,7 @@ class preprocessor_data : public preprocessor
 
 public:
 	preprocessor_data(preprocessor_streambuf&,
-			std::istream*,
+			filesystem::scoped_istream,
 			const std::string& history,
 			const std::string& name,
 			int line,
@@ -783,7 +783,7 @@ void preprocessor_file::init()
 	if(!file_stream->good()) {
 		ERR_PREPROC << "Could not open file " << name_ << std::endl;
 	} else {
-		parent_.add_preprocessor<preprocessor_data>(file_stream.release(), "",
+		parent_.add_preprocessor<preprocessor_data>(std::move(file_stream), "",
 			filesystem::get_short_wml_path(name_), 1,
 			filesystem::directory_name(name_), parent_.textdomain_, nullptr
 		);
@@ -791,7 +791,7 @@ void preprocessor_file::init()
 }
 
 preprocessor_data::preprocessor_data(preprocessor_streambuf& t,
-		std::istream* i,
+		filesystem::scoped_istream i,
 		const std::string& history,
 		const std::string& name,
 		int linenum,
@@ -800,8 +800,8 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf& t,
 		std::map<std::string, std::string>* defines,
 		bool is_define)
 	: preprocessor(t)
-	, in_scope_(i)
-	, in_(*i)
+	, in_scope_(std::move(i))
+	, in_(*in_scope_)
 	, directory_(directory)
 	, strings_()
 	, local_defines_(defines)
@@ -1494,7 +1494,7 @@ bool preprocessor_data::get_chunk()
 							temp_defines->insert(defines->begin(), defines->end());
 
 							buf->add_preprocessor<preprocessor_data>(
-								buffer.release(), val.location, "", val.linenum, dir, val.textdomain, temp_defines, false);
+								std::move(buffer), val.location, "", val.linenum, dir, val.textdomain, temp_defines, false);
 
 							std::ostringstream res;
 							res << in.rdbuf();
@@ -1524,7 +1524,7 @@ bool preprocessor_data::get_chunk()
 					DBG_PREPROC << "substituting macro " << symbol << '\n';
 
 					parent_.add_preprocessor<preprocessor_data>(
-						buffer.release(), val.location, "", val.linenum, dir, val.textdomain, defines, true);
+						std::move(buffer), val.location, "", val.linenum, dir, val.textdomain, defines, true);
 				} else {
 					DBG_PREPROC << "substituting (slow) macro " << symbol << '\n';
 
@@ -1538,7 +1538,7 @@ bool preprocessor_data::get_chunk()
 					{
 						std::istream in(buf.get());
 						buf->add_preprocessor<preprocessor_data>(
-							buffer.release(), val.location, "", val.linenum, dir, val.textdomain, defines, true);
+							std::move(buffer), val.location, "", val.linenum, dir, val.textdomain, defines, true);
 
 						res << in.rdbuf();
 					}
