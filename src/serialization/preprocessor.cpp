@@ -1488,13 +1488,13 @@ bool preprocessor_data::get_chunk()
 							buf->textdomain_ = parent_.textdomain_;
 							std::istream in(buf.get());
 
-							std::istringstream* buffer = new std::istringstream(argument.second);
+							filesystem::scoped_istream buffer{new std::istringstream(argument.second)};
 
 							std::map<std::string, std::string>* temp_defines = new std::map<std::string, std::string>;
 							temp_defines->insert(defines->begin(), defines->end());
 
 							buf->add_preprocessor<preprocessor_data>(
-								buffer, val.location, "", val.linenum, dir, val.textdomain, temp_defines, false);
+								buffer.release(), val.location, "", val.linenum, dir, val.textdomain, temp_defines, false);
 
 							std::ostringstream res;
 							res << in.rdbuf();
@@ -1516,7 +1516,7 @@ bool preprocessor_data::get_chunk()
 					parent_.error(error.str(), linenum_);
 				}
 
-				std::istringstream* buffer = new std::istringstream(val.value);
+				filesystem::scoped_istream buffer{new std::istringstream(val.value)};
 
 				pop_token();
 
@@ -1524,7 +1524,7 @@ bool preprocessor_data::get_chunk()
 					DBG_PREPROC << "substituting macro " << symbol << '\n';
 
 					parent_.add_preprocessor<preprocessor_data>(
-						buffer, val.location, "", val.linenum, dir, val.textdomain, defines, true);
+						buffer.release(), val.location, "", val.linenum, dir, val.textdomain, defines, true);
 				} else {
 					DBG_PREPROC << "substituting (slow) macro " << symbol << '\n';
 
@@ -1538,7 +1538,7 @@ bool preprocessor_data::get_chunk()
 					{
 						std::istream in(buf.get());
 						buf->add_preprocessor<preprocessor_data>(
-							buffer, val.location, "", val.linenum, dir, val.textdomain, defines, true);
+							buffer.release(), val.location, "", val.linenum, dir, val.textdomain, defines, true);
 
 						res << in.rdbuf();
 					}
