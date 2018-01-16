@@ -699,7 +699,7 @@ public:
 			int line,
 			const std::string& dir,
 			const std::string& domain,
-			std::map<std::string, std::string>* defines,
+			std::unique_ptr<std::map<std::string, std::string>> defines,
 			bool is_define = false);
 
 	virtual bool get_chunk() override;
@@ -797,14 +797,14 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf& t,
 		int linenum,
 		const std::string& directory,
 		const std::string& domain,
-		std::map<std::string, std::string>* defines,
+		std::unique_ptr<std::map<std::string, std::string>> defines,
 		bool is_define)
 	: preprocessor(t)
 	, in_scope_(std::move(i))
 	, in_(*in_scope_)
 	, directory_(directory)
 	, strings_()
-	, local_defines_(defines)
+	, local_defines_(std::move(defines))
 	, tokens_()
 	, slowpath_(0)
 	, skipping_(0)
@@ -1441,7 +1441,7 @@ bool preprocessor_data::get_chunk()
 				size_t nb_arg = strings_.size() - token.stack_pos - 1;
 				size_t optional_arg_num = 0;
 
-				std::map<std::string, std::string>* defines = new std::map<std::string, std::string>;
+				std::unique_ptr<std::map<std::string, std::string>> defines{new std::map<std::string, std::string>};
 				const std::string& dir = filesystem::directory_name(val.location.substr(0, val.location.find(' ')));
 
 				for(size_t i = 0; i < nb_arg; ++i) {
@@ -1490,11 +1490,11 @@ bool preprocessor_data::get_chunk()
 
 							filesystem::scoped_istream buffer{new std::istringstream(argument.second)};
 
-							std::map<std::string, std::string>* temp_defines = new std::map<std::string, std::string>;
+							std::unique_ptr<std::map<std::string, std::string>> temp_defines{new std::map<std::string, std::string>};
 							temp_defines->insert(defines->begin(), defines->end());
 
 							buf->add_preprocessor<preprocessor_data>(
-								std::move(buffer), val.location, "", val.linenum, dir, val.textdomain, temp_defines, false);
+								std::move(buffer), val.location, "", val.linenum, dir, val.textdomain, std::move(temp_defines), false);
 
 							std::ostringstream res;
 							res << in.rdbuf();
@@ -1524,7 +1524,7 @@ bool preprocessor_data::get_chunk()
 					DBG_PREPROC << "substituting macro " << symbol << '\n';
 
 					parent_.add_preprocessor<preprocessor_data>(
-						std::move(buffer), val.location, "", val.linenum, dir, val.textdomain, defines, true);
+						std::move(buffer), val.location, "", val.linenum, dir, val.textdomain, std::move(defines), true);
 				} else {
 					DBG_PREPROC << "substituting (slow) macro " << symbol << '\n';
 
@@ -1538,7 +1538,7 @@ bool preprocessor_data::get_chunk()
 					{
 						std::istream in(buf.get());
 						buf->add_preprocessor<preprocessor_data>(
-							std::move(buffer), val.location, "", val.linenum, dir, val.textdomain, defines, true);
+							std::move(buffer), val.location, "", val.linenum, dir, val.textdomain, std::move(defines), true);
 
 						res << in.rdbuf();
 					}
