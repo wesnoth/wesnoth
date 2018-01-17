@@ -637,6 +637,10 @@ void ingame_savegame::create_filename()
 void ingame_savegame::write_game(config_writer &out) {
 	log_scope("write_game");
 
+	if(!gamestate().get_starting_pos().validate_wml()) {
+		throw game::save_game_failed(_("Game state is corrupted"));
+	}
+
 	savegame::write_game(out);
 
 	gamestate().write_carryover(out);

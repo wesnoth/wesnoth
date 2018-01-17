@@ -761,6 +761,17 @@ public:
 	//this is a cheap O(1) operation
 	void swap(config& cfg);
 
+	/**
+	 * Returns true for valid WML tag names, false for all other strings.
+	 */
+	static bool is_valid_wml_tag_name(config_key_type name);
+
+	/**
+	 * Returns true if this object represents valid WML,
+	 * i.e. can be saved to disk and again loaded by the WML parser.
+	 */
+	bool validate_wml() const;
+
 private:
 	/**
 	 * Removes the child at position @a pos of @a l.

@@ -25,10 +25,12 @@
 #include "utils/const_clone.hpp"
 #include "utils/functional.hpp"
 
+#include <algorithm>
 #include <cstdlib>
 #include <cstring>
 #include <deque>
 #include <istream>
+#include <locale>
 
 #include <boost/variant/apply_visitor.hpp>
 #include <boost/variant/get.hpp>
@@ -1301,6 +1303,33 @@ void config::swap(config& cfg)
 void swap(config& lhs, config& rhs)
 {
 	lhs.swap(rhs);
+}
+
+bool config::is_valid_wml_tag_name(config_key_type name)
+{
+	if(name == "") {
+		// Empty strings not allowed
+		return false;
+	} else if(name[0] == '_') {
+		// Underscore can't be the first character
+		return false;
+	} else {
+		return std::all_of(name.begin(), name.end(), [](const char& c)
+		{
+			// Only alphanumeric ASCII characters and underscores are allowed
+			return std::isalnum(static_cast<unsigned char>(c), std::locale::classic()) || c == '_';
+		});
+	}
+}
+
+bool config::validate_wml() const
+{
+	return std::all_of(children_.begin(), children_.end(), [](const child_map::value_type& pair)
+	{
+		return is_valid_wml_tag_name(pair.first) &&
+			std::all_of(pair.second.begin(), pair.second.end(),
+			[](const std::unique_ptr<config>& c) { return c->validate_wml(); });
+	});
 }
 
 bool operator==(const config& a, const config& b)
