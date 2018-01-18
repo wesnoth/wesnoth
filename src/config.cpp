@@ -30,6 +30,7 @@
 #include <cstring>
 #include <deque>
 #include <istream>
+#include <locale>
 
 #include <boost/variant/apply_visitor.hpp>
 #include <boost/variant/get.hpp>
@@ -1316,8 +1317,7 @@ bool config::is_valid_wml_tag_name(config_key_type name)
 		return std::all_of(name.begin(), name.end(), [](const char& c)
 		{
 			// Only alphanumeric ASCII characters and underscores are allowed
-			return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') ||
-				(c >= '0' && c <= '9') || c == '_';
+			return std::isalnum((c), std::locale::classic()) || c == '_';
 		});
 	}
 }
