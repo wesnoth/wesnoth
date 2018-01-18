@@ -472,16 +472,20 @@ void enter_create_mode(mp_workflow_helper_ptr helper)
 {
 	DBG_MP << "entering create mode" << std::endl;
 
-	bool dlg_cancel = false;
+	bool dlg_ok = false;
 	{
 		bool local_mode = helper->connection == nullptr;
 		mp::user_info* host_info = helper->lobby_info->get_user(preferences::login());
 
 		gui2::dialogs::mp_create_game dlg(helper->game_config, helper->state, local_mode, host_info);
-		dlg_cancel = !dlg.show();
+		dlg.show();
+
+		// The Create Game dialog also has a LOAD_GAME retval besides OK.
+		// Do a did-not-cancel check here to catch that
+		dlg_ok = dlg.get_retval() != gui2::window::CANCEL;
 	}
 
-	if(!dlg_cancel) {
+	if(dlg_ok) {
 		enter_staging_mode(helper);
 	} else if(helper->connection) {
 		helper->connection->send_data(config("refresh_lobby"));
