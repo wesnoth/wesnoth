@@ -17,6 +17,7 @@
 #include "game_events/fwd.hpp"
 #include "config.hpp"
 
+#include <deque>
 #include <unordered_map>
 
 namespace game_events
@@ -25,7 +26,7 @@ namespace game_events
 class event_handlers
 {
 private:
-	using handler_vec_t = std::vector<handler_ptr>;
+	using handler_queue_t = std::deque<handler_ptr>;
 	using map_t = std::unordered_map<std::string, handler_list>;
 	using id_map_t = std::unordered_map<std::string, weak_handler_ptr>;
 
@@ -34,7 +35,7 @@ private:
 	 * This is the only container that actually 'owns' any events in the form of shared_ptrs. The other
 	 * three storage methods own weak_ptrs.
 	 */
-	handler_vec_t active_;
+	handler_queue_t active_;
 
 	/** Active event handlers with fixed event names, organized by event name. */
 	map_t by_name_;
@@ -66,12 +67,12 @@ public:
 	}
 
 	/** Read-only access to the active event handlers. Essentially gives all events. */
-	const handler_vec_t& get_active() const
+	const handler_queue_t& get_active() const
 	{
 		return active_;
 	}
 
-	handler_vec_t& get_active()
+	handler_queue_t& get_active()
 	{
 		return active_;
 	}
