@@ -93,7 +93,7 @@ end
 function wml.child_array(cfg, tag)
 	ensure_config(cfg)
 	local result = {}
-	for val in helper.child_range(cfg, tag) do
+	for val in wml.child_range(cfg, tag) do
 		table.insert(result, val)
 	end
 	return result
@@ -159,7 +159,7 @@ function wesnoth.deprecation_message(elem_name, level, version, detail)
 		message = wesnoth.format(_"$elem has been deprecated indefinitely.", message_params)
 	elseif level == 2 then
 		logger = function(msg) wesnoth.log("warn", msg) end
-		if wesnoth.compare_versions(game_config.version, "<", version) then
+		if wesnoth.compare_versions(wesnoth.game_config.version, "<", version) then
 			message_params.version = version
 			message = wesnoth.format(_"$elem has been deprecated and may be removed in version $version.", message_params)
 		else
@@ -185,7 +185,9 @@ end
 function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, detail_msg)
 	local message = detail_msg or ''
 	if replacement then
-		message = message .. " " .. wesnoth.format(_"(Note: You should use $replacement instead in new code)", {replacement = replacement})
+		message = message .. " " .. wesnoth.format(
+			_"(Note: You should use $replacement instead in new code)",
+			{replacement = replacement})
 	end
 	if type(level) ~= "number" or level < 1 or level > 4 then
 		error("Invalid deprecation level! Must be 1-4.")
