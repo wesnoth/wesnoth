@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2017 by Dominic Bolin <dominic.bolin@exong.net>
+   Copyright (C) 2006 - 2018 by Dominic Bolin <dominic.bolin@exong.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

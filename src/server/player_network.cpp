@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
-   Copyright (C) 2009 - 2017 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
+   Copyright (C) 2009 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

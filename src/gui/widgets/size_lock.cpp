@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 - 2017 Jyrki Vesterinen <sandgtx@gmail.com>
+   Copyright (C) 2016 - 2018 Jyrki Vesterinen <sandgtx@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

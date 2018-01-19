@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2017 by Eugen Jiresch
+   Copyright (C) 2009 - 2018 by Eugen Jiresch
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

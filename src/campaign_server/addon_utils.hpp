@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2017 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
                  2013 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 

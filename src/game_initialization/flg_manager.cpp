@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 - 2017 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2018 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

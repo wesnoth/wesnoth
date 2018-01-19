@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2017 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2018 by Philippe Plantier <ayin@anathas.org>
 
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 

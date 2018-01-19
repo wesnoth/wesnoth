@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2017 by Jörg Hinrichs, refactored from various
+   Copyright (C) 2003 - 2018 by Jörg Hinrichs, refactored from various
    places formerly created by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 

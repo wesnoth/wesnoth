@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2016 - 2017 by Sergey Popov <dave@whitevine.net>
+   Copyright (C) 2016 - 2018 by Sergey Popov <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
