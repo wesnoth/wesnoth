@@ -970,9 +970,5 @@ WML_HANDLER_FUNCTION(on_undo, event_info, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(on_redo, , )
-{
-}
-
 } // end namespace game_events
 
