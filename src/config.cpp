@@ -178,13 +178,30 @@ config& config::operator=(config&& cfg)
 	return *this;
 }
 
-bool config::valid_id(config_key_type id)
+bool config::valid_tag(config_key_type name)
 {
-	if(id.empty()) {
+	if(name == "") {
+		// Empty strings not allowed
+		return false;
+	} else if(name[0] == '_') {
+		// Underscore can't be the first character
+		return false;
+	} else {
+		return std::all_of(name.begin(), name.end(), [](const char& c)
+		{
+			// Only alphanumeric ASCII characters and underscores are allowed
+			return std::isalnum(c, std::locale::classic()) || c == '_';
+		});
+	}
+}
+
+bool config::valid_attribute(config_key_type name)
+{
+	if(name.empty()) {
 		return false;
 	}
 
-	for(char c : id) {
+	for(char c : name) {
 		if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_') {
 			// valid character.
 		} else {
@@ -1305,28 +1322,11 @@ void swap(config& lhs, config& rhs)
 	lhs.swap(rhs);
 }
 
-bool config::is_valid_wml_tag_name(config_key_type name)
-{
-	if(name == "") {
-		// Empty strings not allowed
-		return false;
-	} else if(name[0] == '_') {
-		// Underscore can't be the first character
-		return false;
-	} else {
-		return std::all_of(name.begin(), name.end(), [](const char& c)
-		{
-			// Only alphanumeric ASCII characters and underscores are allowed
-			return std::isalnum((c), std::locale::classic()) || c == '_';
-		});
-	}
-}
-
 bool config::validate_wml() const
 {
 	return std::all_of(children_.begin(), children_.end(), [](const child_map::value_type& pair)
 	{
-		return is_valid_wml_tag_name(pair.first) &&
+		return valid_tag(pair.first) &&
 			std::all_of(pair.second.begin(), pair.second.end(),
 			[](const std::unique_ptr<config>& c) { return c->validate_wml(); });
 	});

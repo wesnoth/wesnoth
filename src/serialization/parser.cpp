@@ -702,7 +702,7 @@ static void write_internal(config const& cfg, std::ostream& out, std::string& te
 	}
 
 	for(const config::attribute& i : cfg.attribute_range()) {
-		if(!config::valid_id(i.first)) {
+		if(!config::valid_attribute(i.first)) {
 			ERR_CF << "Config contains invalid attribute name '" << i.first << "', skipping...\n";
 			continue;
 		}
@@ -711,7 +711,7 @@ static void write_internal(config const& cfg, std::ostream& out, std::string& te
 	}
 
 	for(const config::any_child& item : cfg.all_children_range()) {
-		if(!config::valid_id(item.key)) {
+		if(!config::valid_tag(item.key)) {
 			ERR_CF << "Config contains invalid tag name '" << item.key << "', skipping...\n";
 			continue;
 		}
@@ -735,7 +735,7 @@ static void write_internal(configr_of const& cfg, std::ostream& out, std::string
 	for(const auto& pair : cfg.subtags_) {
 		assert(pair.first && pair.second);
 
-		if(!config::valid_id(*pair.first)) {
+		if(!config::valid_tag(*pair.first)) {
 			ERR_CF << "Config contains invalid tag name '" << *pair.first << "', skipping...\n";
 			continue;
 		}

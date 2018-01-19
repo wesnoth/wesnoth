@@ -132,8 +132,11 @@ public:
 
 	~config();
 
-	// Verifies that the string can be used as an attribute or tag name
-	static bool valid_id(config_key_type id);
+	// Verifies that the string can be used as a tag name
+	static bool valid_tag(config_key_type name);
+
+	// Verifies that the string can be used as an attribute name
+	static bool valid_attribute(config_key_type name);
 
 	explicit operator bool() const
 	{ return this != &invalid; }
@@ -760,11 +763,6 @@ public:
 
 	//this is a cheap O(1) operation
 	void swap(config& cfg);
-
-	/**
-	 * Returns true for valid WML tag names, false for all other strings.
-	 */
-	static bool is_valid_wml_tag_name(config_key_type name);
 
 	/**
 	 * Returns true if this object represents valid WML,
