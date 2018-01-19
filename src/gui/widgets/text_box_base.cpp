@@ -539,6 +539,13 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			handle_key_backspace(modifier, handled);
 			break;
 
+		case SDLK_u:
+			if(!(modifier & KMOD_CTRL)) {
+				return;
+			}
+			handle_key_clear_line(modifier, handled);
+			break;
+
 		case SDLK_DELETE:
 			handle_key_delete(modifier, handled);
 			break;
