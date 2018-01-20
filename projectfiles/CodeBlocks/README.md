@@ -9,7 +9,7 @@
 2.  Install CodeBlocks from <http://www.codeblocks.org/>.
     MinGW is not needed.
 
-3.  Download and unpack mingw64 from links https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/7.2.0/threads-posix/dwarf/i686-7.2.0-release-posix-dwarf-rt_v5-rev0.7z or
+3.  Download and unpack MinGW-w64 from https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/7.2.0/threads-posix/dwarf/i686-7.2.0-release-posix-dwarf-rt_v5-rev0.7z or
     https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/7.2.0/threads-posix/sjlj/i686-7.2.0-release-posix-sjlj-rt_v5-rev0.7z.
     Note that the project files in `wesnoth_root/projectfiles/CodeBlocks/` may
     contain a setting to compile with OpenMP support, so you should make sure
