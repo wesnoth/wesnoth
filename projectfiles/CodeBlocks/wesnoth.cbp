@@ -482,6 +482,8 @@
 		<Unit filename="../../src/gui/core/canvas.cpp" />
 		<Unit filename="../../src/gui/core/canvas.hpp" />
 		<Unit filename="../../src/gui/core/canvas_private.hpp" />
+		<Unit filename="../../src/gui/core/gui_definition.cpp" />
+		<Unit filename="../../src/gui/core/gui_definition.hpp" />
 		<Unit filename="../../src/gui/core/event/dispatcher.cpp" />
 		<Unit filename="../../src/gui/core/event/dispatcher.hpp" />
 		<Unit filename="../../src/gui/core/event/dispatcher_private.hpp" />
@@ -503,10 +505,10 @@
 		<Unit filename="../../src/gui/core/placer/horizontal_list.hpp" />
 		<Unit filename="../../src/gui/core/placer/vertical_list.cpp" />
 		<Unit filename="../../src/gui/core/placer/vertical_list.hpp" />
-		<Unit filename="../../src/gui/core/point.cpp" />
-		<Unit filename="../../src/gui/core/point.hpp" />
 		<Unit filename="../../src/gui/core/timer.cpp" />
 		<Unit filename="../../src/gui/core/timer.hpp" />
+		<Unit filename="../../src/gui/core/static_registry.cpp" />
+		<Unit filename="../../src/gui/core/static_registry.hpp" />
 		<Unit filename="../../src/gui/core/widget_definition.cpp" />
 		<Unit filename="../../src/gui/core/widget_definition.hpp" />
 		<Unit filename="../../src/gui/core/window_builder.cpp" />
@@ -597,10 +599,6 @@
 		<Unit filename="../../src/gui/dialogs/language_selection.hpp" />
 		<Unit filename="../../src/gui/dialogs/loading_screen.cpp" />
 		<Unit filename="../../src/gui/dialogs/loading_screen.hpp" />
-		<Unit filename="../../src/gui/dialogs/lobby/lobby.cpp" />
-		<Unit filename="../../src/gui/dialogs/lobby/lobby.hpp" />
-		<Unit filename="../../src/gui/dialogs/lobby/player_info.cpp" />
-		<Unit filename="../../src/gui/dialogs/lobby/player_info.hpp" />
 		<Unit filename="../../src/gui/dialogs/log_settings.cpp" />
 		<Unit filename="../../src/gui/dialogs/log_settings.hpp" />
 		<Unit filename="../../src/gui/dialogs/lua_interpreter.cpp" />
@@ -613,12 +611,12 @@
 		<Unit filename="../../src/gui/dialogs/modeless_dialog.hpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/faction_select.cpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/faction_select.hpp" />
+		<Unit filename="../../src/gui/dialogs/multiplayer/lobby.cpp" />
+		<Unit filename="../../src/gui/dialogs/multiplayer/lobby.hpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_alerts_options.cpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_alerts_options.hpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_change_control.cpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_change_control.hpp" />
-		<Unit filename="../../src/gui/dialogs/multiplayer/mp_cmd_wrapper.cpp" />
-		<Unit filename="../../src/gui/dialogs/multiplayer/mp_cmd_wrapper.hpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_connect.cpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_connect.hpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_create_game.cpp" />
@@ -637,6 +635,10 @@
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_options_helper.hpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_staging.cpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/mp_staging.hpp" />
+		<Unit filename="../../src/gui/dialogs/multiplayer/player_info.cpp" />
+		<Unit filename="../../src/gui/dialogs/multiplayer/player_info.hpp" />
+		<Unit filename="../../src/gui/dialogs/multiplayer/player_list_helper.cpp" />
+		<Unit filename="../../src/gui/dialogs/multiplayer/player_list_helper.hpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/synced_choice_wait.cpp" />
 		<Unit filename="../../src/gui/dialogs/multiplayer/synced_choice_wait.hpp" />
 		<Unit filename="../../src/gui/dialogs/network_transmission.cpp" />
@@ -683,6 +685,8 @@
 		<Unit filename="../../src/gui/dialogs/wml_error.hpp" />
 		<Unit filename="../../src/gui/dialogs/wml_message.cpp" />
 		<Unit filename="../../src/gui/dialogs/wml_message.hpp" />
+		<Unit filename="../../src/gui/gui.cpp" />
+		<Unit filename="../../src/gui/gui.hpp" />
 		<Unit filename="../../src/gui/widgets/addon_list.cpp" />
 		<Unit filename="../../src/gui/widgets/addon_list.hpp" />
 		<Unit filename="../../src/gui/widgets/button.cpp" />
@@ -753,6 +757,8 @@
 		<Unit filename="../../src/gui/widgets/size_lock.hpp" />
 		<Unit filename="../../src/gui/widgets/slider.cpp" />
 		<Unit filename="../../src/gui/widgets/slider.hpp" />
+		<Unit filename="../../src/gui/widgets/slider_base.cpp" />
+		<Unit filename="../../src/gui/widgets/slider_base.hpp" />
 		<Unit filename="../../src/gui/widgets/spacer.cpp" />
 		<Unit filename="../../src/gui/widgets/spacer.hpp" />
 		<Unit filename="../../src/gui/widgets/stacked_widget.cpp" />
@@ -992,6 +998,8 @@
 		<Unit filename="../../src/scripting/plugins/manager.hpp" />
 		<Unit filename="../../src/sdl/exception.cpp" />
 		<Unit filename="../../src/sdl/exception.hpp" />
+		<Unit filename="../../src/sdl/point.cpp" />
+		<Unit filename="../../src/sdl/point.hpp" />
 		<Unit filename="../../src/sdl/rect.cpp" />
 		<Unit filename="../../src/sdl/surface.cpp" />
 		<Unit filename="../../src/sdl/surface.hpp" />
@@ -1107,6 +1115,8 @@
 		<Unit filename="../../src/units/helper.hpp" />
 		<Unit filename="../../src/units/id.cpp" />
 		<Unit filename="../../src/units/id.hpp" />
+		<Unit filename="../../src/units/make.cpp" />
+		<Unit filename="../../src/units/make.hpp" />
 		<Unit filename="../../src/units/map.cpp" />
 		<Unit filename="../../src/units/map.hpp" />
 		<Unit filename="../../src/units/ptr.hpp" />
@@ -1203,3 +1213,4 @@
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
+
