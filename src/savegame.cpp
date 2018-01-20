@@ -418,7 +418,7 @@ bool savegame::check_filename(const std::string& filename)
 
 bool savegame::is_illegal_file_char(char c)
 {
-	return c == '/' || c == '\\' || c == ':'
+	return c == '/' || c == '\\' || c == ':' || c < 0x20
 #ifdef _WIN32
 	|| c == '?' || c == '|' || c == '<' || c == '>' || c == '*' || c == '"'
 #endif
