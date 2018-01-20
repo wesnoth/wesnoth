@@ -18,6 +18,7 @@
 
 #include <cassert>
 #include <functional>
+#include <locale>
 
 #include <boost/algorithm/string.hpp>
 
@@ -58,7 +59,7 @@ version_info::version_info(const std::string& str)
 		const std::string right_side = v.substr(breakpoint_pos);
 		assert(right_side.empty() == false);
 
-		if((right_side[0] >= 'A' && right_side[0] <= 'Z') || (right_side[0] >= 'a' && right_side[0] <= 'z')) {
+		if(std::isalpha(right_side[0], std::locale::classic())) {
 			special_separator_ = '\0';
 			special_ = right_side;
 		}

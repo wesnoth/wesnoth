@@ -31,6 +31,8 @@
 #include "wml_exception.hpp"
 #include "preferences/general.hpp"
 
+#include <locale>
+
 namespace font {
 
 // NOTE: if you add more markup characters below, you'll need to update
@@ -89,7 +91,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 				// should look like <213,14,151>
 				++i1;
 				uint8_t red=0, green=0, blue=0, temp=0;
-				while (i1 != i2 && *i1 >= '0' && *i1<='9') {
+				while (i1 != i2 && std::isdigit(*i1, std::locale::classic())) {
 					temp*=10;
 					temp += lexical_cast<int, char>(*i1);
 					++i1;
@@ -98,7 +100,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 				temp=0;
 				if (i1 != i2 && ',' == (*i1)) {
 					++i1;
-					while(i1 != i2 && *i1 >= '0' && *i1<='9'){
+					while(i1 != i2 && std::isdigit(*i1, std::locale::classic())){
 						temp*=10;
 						temp += lexical_cast<int, char>(*i1);
 						++i1;
@@ -108,7 +110,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 				}
 				if (i1 != i2 && ',' == (*i1)) {
 					++i1;
-					while(i1 != i2 && *i1 >= '0' && *i1<='9'){
+					while(i1 != i2 && std::isdigit(*i1, std::locale::classic())){
 						temp*=10;
 						temp += lexical_cast<int, char>(*i1);
 						++i1;
