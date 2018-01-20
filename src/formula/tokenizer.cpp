@@ -12,9 +12,10 @@
    See the COPYING file for more details.
 */
 
-#include <sstream>
-
 #include "formula/tokenizer.hpp"
+
+#include <locale>
+#include <sstream>
 
 namespace wfl
 {
@@ -48,7 +49,7 @@ token get_token(iterator& i1, const iterator i2) {
 		// check if we parse now TOKEN_IDENTIFIER or TOKEN_OPERATOR/KEYWORD based on string
 		if( *i1 <= 'Z' || ( *i1 >= 'a' && *it <= 'z' ) || *i1 == '_' ) {
 
-			while( i1 != i2 && ( ( *i1 >= 'a' && *i1 <= 'z' ) || *i1 == '_' || ( *i1 >= 'A' && *i1 <= 'Z' ) ) )
+			while(i1 != i2 && (std::isalpha(*i1, std::locale::classic()) || *i1 == '_'))
 				++i1;
 
 			int diff = i1 - it;
