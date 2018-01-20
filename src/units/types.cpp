@@ -34,6 +34,8 @@
 
 #include <boost/regex.hpp>
 
+#include <locale>
+
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define WRN_CF LOG_STREAM(warn, log_config)
@@ -1434,12 +1436,7 @@ void unit_type::check_id(std::string& id)
 
 	for(size_t pos = 0; pos < id.size(); ++pos) {
 		const char c = id[pos];
-		const bool valid =
-			c == '_' ||
-			c == ' ' ||
-			(c >= 'a' && c <= 'z') ||
-			(c >= 'A' && c <= 'Z') ||
-			(c >= '0' && c <= '9');
+		const bool valid = std::isalnum(c, std::locale::classic()) || c == '_' || c == ' ';
 
 		if(!valid) {
 			if(!gave_warning) {

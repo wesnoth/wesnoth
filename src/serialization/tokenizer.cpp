@@ -18,6 +18,7 @@
 #include "wesconfig.h"
 #include "serialization/tokenizer.hpp"
 
+#include <locale>
 
 tokenizer::tokenizer(std::istream& in) :
 	current_(EOF),
@@ -31,11 +32,11 @@ tokenizer::tokenizer(std::istream& in) :
 	for (int c = 0; c < 128; ++c)
 	{
 		int t = 0;
-		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_') {
+		if(std::isalpha(c, std::locale::classic()) || c == '_') {
 			t = TOK_ALPHA;
-		} else if (c >= '0' && c <= '9') {
+		} else if(std::isdigit(c, std::locale::classic())) {
 			t = TOK_NUMERIC;
-		} else if (c == ' ' || c == '\t') {
+		} else if(c == ' ' || c == '\t') {
 			t = TOK_SPACE;
 		}
 		char_types_[c] = t;

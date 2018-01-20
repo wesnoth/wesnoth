@@ -19,6 +19,7 @@
 #include <set>
 #include <map>
 #include <list>
+#include <locale>
 #include <queue>
 #include <ctime>
 
@@ -130,7 +131,7 @@ namespace wesnothd {
 		bool dirty_;
 
 		bool is_digit(const char& c) const
-		{ return c >= '0' && c <= '9'; }
+		{ return std::isdigit(c, std::locale::classic()); }
 		size_t to_digit(const char& c) const
 		{ return c - '0'; }
 

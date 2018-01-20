@@ -34,6 +34,7 @@
 #include "utils/general.hpp"
 #include "video.hpp" // non_interactive()
 
+#include <locale>
 #include <sys/stat.h> // for setting the permissions of the preferences file
 #ifndef _WIN32
 #include <unistd.h>
@@ -293,7 +294,7 @@ void set_show_partial_orb(bool show_orb) {
 
 static std::string fix_orb_color_name(const std::string& color) {
 	if (color.substr(0,4) == "orb_") {
-		if(color[4] >= '0' && color[4] <= '9') {
+		if(std::isdigit(color[4], std::locale::classic())) {
 			return color.substr(5);
 		} else {
 			return color.substr(4);
