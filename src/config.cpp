@@ -202,9 +202,7 @@ bool config::valid_attribute(config_key_type name)
 	}
 
 	for(char c : name) {
-		if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_') {
-			// valid character.
-		} else {
+		if(!std::isalnum(c, std::locale::classic()) && c != '_') {
 			return false;
 		}
 	}
