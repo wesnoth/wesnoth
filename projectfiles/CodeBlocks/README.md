@@ -9,15 +9,14 @@
 2.  Install CodeBlocks from <http://www.codeblocks.org/>.
     MinGW is not needed.
 
-3.  Download and unpack i686-7.2.0-release-posix-dwarf-rt_v5-rev0.7Z or i686-7.2.0-release-posix-sjlj-rt_v5-rev0.7Z
+3.  Download and unpack mingw64 poisix version 32bits
     from <http://sourceforge.net/projects/mingw-w64/files/?source=navbar>.
     Note that the project files in `wesnoth_root/projectfiles/CodeBlocks/` may
     contain a setting to compile with OpenMP support, so you should make sure
     that this option is enabled while installing the compiler (mark the
     checkbox for this when choosing components to install).
 
-    NOTE: You must make sure to download the 32-bit version
-    (i686-7.2.0-release-posix-dwarf-rt_v5-rev0.7Z or i686-7.2.0-release-posix-sjlj-rt_v5-rev0.7Z),. 
+    NOTE: You must make sure to download the 32-bit version.
     Building a 64-bit Wesnoth executable on Windows is currently not supported and will
     fail with the SDK package provided in the next step.
 
