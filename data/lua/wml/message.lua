@@ -1,7 +1,6 @@
 
 local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
-local location_set = wesnoth.require "location_set"
 local _ = wesnoth.textdomain "wesnoth"
 
 local function log(msg, level)
@@ -51,7 +50,7 @@ end
 
 local function get_pango_color(color)
 	local pango_color = "#"
-	
+
 	-- if a hex color was passed in
 	-- or if a color string was passed in - contains no non-letter characters
 	-- just use that
@@ -63,113 +62,113 @@ local function get_pango_color(color)
 			pango_color = pango_color .. tonumber(s, 16)
 		end
 	end
-	
+
 	return pango_color
 end
 
 -- add formatting
 local function add_formatting(cfg, text)
 	-- span tag
-	local formatting = "<span"  
-	
+	local formatting = "<span"
+
 	-- if message text, add formatting
 	if text and cfg then
 		-- add font
 		if cfg.font and cfg.font ~= '' then
 			formatting = formatting .. " font='" .. cfg.font .. "'"
 		end
-		
+
 		-- add font_family
 		if cfg.font_family and cfg.font_family ~= '' then
 			formatting = formatting .. " font_family='" .. cfg.font_family .. "'"
 		end
-		
+
 		-- add font_size
 		if cfg.font_size and cfg.font_size ~= '' then
 			formatting = formatting .. " font_size='" .. cfg.font_size .. "'"
 		end
-		
+
 		-- font_style
 		if cfg.font_style and cfg.font_style ~= '' then
 			formatting = formatting .. " font_style='" .. cfg.font_style .. "'"
 		end
-		
+
 		-- font_weight
 		if cfg.font_weight and cfg.font_weight ~= '' then
 			formatting = formatting .. " font_weight='" .. cfg.font_weight .. "'"
 		end
-		
+
 		-- font_variant
 		if cfg.font_variant and cfg.font_variant ~= '' then
 			formatting = formatting .. " font_variant='" .. cfg.font_variant .. "'"
 		end
-		
+
 		-- font_stretch
 		if cfg.font_stretch and cfg.font_stretch ~= '' then
 			formatting = formatting .. " font_stretch='" .. cfg.font_stretch .. "'"
 		end
-		
+
 		-- add color
 		if cfg.color and cfg.color ~= '' then
 			formatting = formatting .. " color='" .. get_pango_color(cfg.color) .. "'"
 		end
-		
+
 		-- bgcolor
 		if cfg.bgcolor and cfg.bgcolor ~= '' then
 			formatting = formatting .. " bgcolor='" .. get_pango_color(cfg.bgcolor) .. "'"
 		end
-		
+
 		-- underline
 		if cfg.underline and cfg.underline ~= '' then
 			formatting = formatting .. " underline='" .. cfg.underline .. "'"
 		end
-		
+
 		-- underline_color
 		if cfg.underline_color and cfg.underline_color ~= '' then
 			formatting = formatting .. " underline_color='" .. get_pango_color(cfg.underline_color) .. "'"
 		end
-		
+
 		-- rise
 		if cfg.rise and cfg.rise ~= '' then
 			formatting = formatting .. " rise='" .. cfg.rise .. "'"
 		end
-		
+
 		-- strikethrough
 		if cfg.strikethrough and tostring(cfg.strikethrough) ~= '' then
 			formatting = formatting .. " strikethrough='" .. tostring(cfg.strikethrough) .. "'"
 		end
-		
+
 		-- strikethrough_color
 		if cfg.strikethrough_color and cfg.strikethrough_color ~= '' then
 			formatting = formatting .. " strikethrough_color='" .. get_pango_color(cfg.strikethrough_color) .. "'"
 		end
-		
+
 		-- fallback
 		if cfg.fallback and tostring(cfg.fallback) ~= '' then
 			formatting = formatting .. " fallback='" .. tostring(cfg.fallback) .. "'"
 		end
-		
+
 		-- letter_spacing
 		if cfg.letter_spacing and cfg.letter_spacing ~= '' then
 			formatting = formatting .. " letter_spacing='" .. cfg.letter_spacing .. "'"
 		end
-		
+
 		-- gravity
 		if cfg.gravity and cfg.gravity ~= '' then
 			formatting = formatting .. " gravity='" .. cfg.gravity .. "'"
 		end
-		
+
 		-- gravity_hint
 		if cfg.gravity_hint and cfg.gravity_hint ~= '' then
 			formatting = formatting .. " gravity_hint='" .. cfg.gravity_hint .. "'"
 		end
-		
+
 		-- wrap in span tags and return if a color was added
 		if formatting ~= "<span" then
 			return formatting .. ">" .. text .. "</span>"
 		end
- 	end
- 	
+	end
+
 	-- or return unmodified message
 	return text
 end
@@ -204,7 +203,7 @@ local function message_user_choice(cfg, speaker, options, text_input, sound, voi
 		second_portrait = cfg.second_image,
 		second_mirror = cfg.second_mirror,
 	}
-	
+
 	if speaker ~= nil then
 		if cfg.male_message ~= nil and speaker.gender == "male" then
 			msg_cfg.message = cfg.male_message
@@ -212,10 +211,10 @@ local function message_user_choice(cfg, speaker, options, text_input, sound, voi
 			msg_cfg.message = cfg.female_message
 		end
 	end
-	
+
 	-- add formatting
 	msg_cfg.message = add_formatting(cfg, msg_cfg.message)
-	
+
 	-- Parse input text, if not available all fields are empty
 	if text_input then
 		local input_max_size = tonumber(text_input.max_length) or 256
@@ -282,12 +281,12 @@ function wesnoth.wml_actions.message(cfg)
 
 	-- Only the first text_input tag is considered
 	local text_input
-	for cfg in helper.child_range(cfg, "text_input") do
+	for cfg_text in helper.child_range(cfg, "text_input") do
 		if text_input ~= nil then
-			log("Too many [text_input] tags, only one accepted", "warning")
+			log("Too many [text_input] tags, only first one accepted", "warning")
 			break
 		end
-		text_input = cfg
+		text_input = cfg_text
 	end
 
 	local options, option_events = {}, {}
@@ -345,7 +344,10 @@ function wesnoth.wml_actions.message(cfg)
 		-- Sanity checks on side number and controller
 		for side in utils.split(sides_for) do
 			side = tonumber(side)
-			if side > 0 and side < #wesnoth.sides and wesnoth.sides[side].controller == "human" and wesnoth.sides[side].is_local then
+			if side > 0 and side < #wesnoth.sides
+				and wesnoth.sides[side].controller == "human"
+				and wesnoth.sides[side].is_local
+			then
 				show_for_side = true
 				break
 			end
@@ -401,7 +403,7 @@ function wesnoth.wml_actions.message(cfg)
 			wesnoth.set_variable(text_input.variable or "input", choice.text)
 		end
 	end
-	
+
 	-- Unhilight the speaker
 	if speaker and not cfg.highlight == false then
 		wesnoth.deselect_hex()

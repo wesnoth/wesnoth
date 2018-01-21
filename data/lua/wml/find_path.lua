@@ -28,23 +28,30 @@ function wesnoth.wml_actions.find_path(cfg)
 
 	if not cfg.check_visibility then viewing_side = 0 end -- if check_visiblity then shroud is taken in account
 
-	local locations = wesnoth.get_locations(filter_location) -- only the location with the lowest distance and lowest movement cost will match. If there will still be more than 1, only the 1st maching one.
+	-- only the location with the lowest distance and lowest movement cost
+	-- will match. If there will still be more than 1, only the 1st maching one.
+	local locations = wesnoth.get_locations(filter_location)
+
 	local max_cost = nil
 	if not allow_multiple_turns then max_cost = unit.moves end --to avoid wrong calculation on already moved units
 	local current_distance, current_cost = math.huge, math.huge
 	local current_location = {}
 
-	local width,heigth,border = wesnoth.get_map_size() -- data for test below
+	local width,heigth = wesnoth.get_map_size() -- data for test below
 
 	for index, location in ipairs(locations) do
-		-- we test if location passed to pathfinder is invalid (border); if is, do nothing, do not return and continue the cycle
+		-- we test if location passed to pathfinder is invalid (border);
+		-- if it is, do not return and continue the cycle
 		if location[1] == 0 or location[1] == ( width + 1 ) or location[2] == 0 or location[2] == ( heigth + 1 ) then
 		else
 			local distance = wesnoth.map.distance_between ( unit.x, unit.y, location[1], location[2] )
 			-- if we pass an unreachable locations an high value will be returned
 			local path, cost = wesnoth.find_path( unit, location[1], location[2], { max_cost = max_cost, ignore_units = ignore_units, ignore_teleport = ignore_teleport, viewing_side = viewing_side } )
 
-			if ( distance < current_distance and cost <= current_cost ) or ( cost < current_cost and distance <= current_distance ) then -- to avoid changing the hex with one with less distance and more cost, or vice versa
+			if distance < current_distance and cost <= current_cost
+				or cost < current_cost and distance <= current_distance
+			then
+				-- avoid changing the hex with one less distance and more cost, or vice versa
 				current_distance = distance
 				current_cost = cost
 				current_location = location
@@ -54,7 +61,15 @@ function wesnoth.wml_actions.find_path(cfg)
 
 	if #current_location == 0 then wesnoth.message("WML warning","[find_path]'s filter didn't match any location")
 	else
-		local path, cost = wesnoth.find_path( unit, current_location[1], current_location[2], { max_cost = max_cost, ignore_units = ignore_units, ignore_teleport = ignore_teleport, viewing_side = viewing_side } )
+		local path, cost = wesnoth.find_path(
+			unit,
+			current_location[1], current_location[2],
+			{
+				max_cost = max_cost,
+				ignore_units = ignore_units,
+				ignore_teleport = ignore_teleport,
+				viewing_side = viewing_side
+			})
 		local turns
 
 		if cost == 0 then -- if location is the same, of course it doesn't cost any MP
@@ -77,10 +92,27 @@ function wesnoth.wml_actions.find_path(cfg)
 			utils.end_var_scope("this_unit", this_unit)
 		return end -- skip the cycles below
 
-		wesnoth.set_variable ( string.format( "%s", variable ), { hexes = current_distance, from_x = unit.x, from_y = unit.y, to_x = current_location[1], to_y = current_location[2], movement_cost = cost, required_turns = turns } )
+		wesnoth.set_variable (
+			string.format( "%s", variable ),
+			{
+				hexes = current_distance,
+				from_x = unit.x, from_y = unit.y,
+				to_x = current_location[1], to_y = current_location[2],
+				movement_cost = cost,
+				required_turns = turns
+			} )
 
 		for index, path_loc in ipairs(path) do
-			local sub_path, sub_cost = wesnoth.find_path( unit, path_loc[1], path_loc[2], { max_cost = max_cost, ignore_units = ignore_units, ignore_teleport = ignore_teleport, viewing_side = viewing_side } )
+			local sub_path, sub_cost = wesnoth.find_path(
+				unit,
+				path_loc[1],
+				path_loc[2],
+				{
+					max_cost = max_cost,
+					ignore_units = ignore_units,
+					ignore_teleport = ignore_teleport,
+					viewing_side = viewing_side
+				} )
 			local sub_turns
 
 			if sub_cost == 0 then
@@ -89,7 +121,14 @@ function wesnoth.wml_actions.find_path(cfg)
 				sub_turns = math.ceil( ( ( sub_cost - unit.moves ) / unit.max_moves ) + 1 )
 			end
 
-			wesnoth.set_variable ( string.format( "%s.step[%d]", variable, index - 1 ), { x = path_loc[1], y = path_loc[2], terrain = wesnoth.get_terrain( path_loc[1], path_loc[2] ), movement_cost = sub_cost, required_turns = sub_turns } ) -- this structure takes less space in the inspection window
+			wesnoth.set_variable (
+				string.format( "%s.step[%d]", variable, index - 1 ),
+				{  -- this structure takes less space in the inspection window
+					x = path_loc[1], y = path_loc[2],
+					terrain = wesnoth.get_terrain( path_loc[1], path_loc[2] ),
+					movement_cost = sub_cost,
+					required_turns = sub_turns
+				} )
 		end
 	end
 

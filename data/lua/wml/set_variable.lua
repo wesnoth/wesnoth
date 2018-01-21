@@ -63,7 +63,7 @@ function wesnoth.wml_actions.set_variable(cfg)
 		elseif round_val == "floor" then
 			wesnoth.set_variable(name, math.floor(var))
 		else
-			local decimals, discarded = math.modf(tonumber(round_val) or 0)
+			local decimals = math.modf(tonumber(round_val) or 0)
 			local value = var * (10 ^ decimals)
 			value = helper.round(value)
 			value = value * (10 ^ -decimals)
@@ -75,7 +75,7 @@ function wesnoth.wml_actions.set_variable(cfg)
 	-- the value already contained in the variable
 	-- but on the value assigned to the respective key
 	if cfg.ipart then
-		local ivalue, fvalue = math.modf(tonumber(cfg.ipart) or 0)
+		local ivalue = math.modf(tonumber(cfg.ipart) or 0)
 		wesnoth.set_variable(name, ivalue)
 	end
 

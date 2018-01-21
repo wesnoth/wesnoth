@@ -85,7 +85,7 @@ function wesnoth.wml_actions.role(cfg)
 
 	if search_recall then
 		-- then try to match units on the recall lists
-		i = 1
+		local i = 1
 		repeat
 			if #types > 0 then
 				filter.type = types[i]
