@@ -40,6 +40,20 @@ inline int div100rounded(int num) {
 }
 
 /**
+ * Returns base + increment, but will not increase base above max_sum, nor
+ * decrease it below min_sum.
+ * (If base is already below the applicable limit, base will be returned.)
+ */
+inline int bounded_add(int base, int increment, int max_sum, int min_sum = 0)
+{
+	if(increment >= 0) {
+		return std::min(base + increment, std::max(base, max_sum));
+	} else {
+		return std::max(base + increment, std::min(base, min_sum));
+	}
+}
+
+/**
  *  round (base_damage * bonus / divisor) to the closest integer,
  *  but up or down towards base_damage
  */

@@ -55,7 +55,7 @@ public:
 	/// gives a @a base bonus.
 	int light_bonus(int base) const
 	{
-		return utils::clamp(base + light_modification_, min_light_, max_light_);
+		return bounded_add(base, light_modification_, max_light_, min_light_);
 	}
 
 	int unit_height_adjust() const { return height_adjust_; }
