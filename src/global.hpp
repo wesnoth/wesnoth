@@ -48,8 +48,10 @@
 
 #define UNUSED(x)  ((void)(x))     /* to avoid warnings */
 
-// To allow using some optional C++14 features
-#if __cplusplus >= 201402L
+// To allow using some optional C++14 and C++17 features
+#if __cplusplus == 201703L
+#define HAVE_CXX17
+#elif __cplusplus == 201402L
 #define HAVE_CXX14
 #endif
 
