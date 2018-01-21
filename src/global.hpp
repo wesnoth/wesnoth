@@ -49,10 +49,11 @@
 #define UNUSED(x)  ((void)(x))     /* to avoid warnings */
 
 // To allow using some optional C++14 and C++17 features
-#if __cplusplus == 201703L
-#define HAVE_CXX17
-#elif __cplusplus == 201402L
+#if __cplusplus >= 201402L
 #define HAVE_CXX14
+#if __cplusplus >= 201703L
+#define HAVE_CXX17
+#endif
 #endif
 
 // Some C++11 features are not available on all supported platforms
