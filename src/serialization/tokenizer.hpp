@@ -95,7 +95,7 @@ private:
 
 	void next_char()
 	{
-		if (UNLIKELY(current_ == '\n'))
+		if (current_ == '\n')
 			++lineno_;
 		next_char_fast();
 	}
@@ -104,15 +104,15 @@ private:
 	{
 		do {
 			current_ = in_.get();
-		} while (UNLIKELY(current_ == '\r'));
+		} while (current_ == '\r');
 #if 0
 			/// @todo disabled untill campaign server is fixed
-			if(LIKELY(in_.good())) {
+			if(in_.good()) {
 				current_ = in_.get();
-				if (UNLIKELY(current_ == '\r'))
+				if (current_ == '\r')
 				{
 					// we assume that there is only one '\r'
-					if(LIKELY(in_.good())) {
+					if(in_.good()) {
 						current_ = in_.get();
 					} else {
 						current_ = EOF;

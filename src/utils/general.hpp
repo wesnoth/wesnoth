@@ -18,14 +18,6 @@
 #include <algorithm>
 #include <cctype>
 
-#ifdef __GNUC__
-#define LIKELY(a)    __builtin_expect((a),1) // Tells GCC to optimize code so that if is likely to happen
-#define UNLIKELY(a)  __builtin_expect((a),0) // Tells GCC to optimize code so that if is unlikely to happen
-#else
-#define LIKELY(a)    a
-#define UNLIKELY(a)  a
-#endif
-
 inline bool chars_equal_insensitive(char a, char b) { return tolower(a) == tolower(b); }
 inline bool chars_less_insensitive(char a, char b) { return tolower(a) < tolower(b); }
 
