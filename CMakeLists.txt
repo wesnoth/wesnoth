@@ -51,10 +51,10 @@ set(FIFO_DIR "/var/run/wesnothd" CACHE STRING "Directory for the wesnothd fifo s
 
 #build options
 option(ENABLE_GAME "Enable compilation of the game" ON)
-option(ENABLE_CAMPAIGN_SERVER "Enable compilation of campaign server")
-option(ENABLE_SERVER "Enable compilation of server" ON)
+option(ENABLE_CAMPAIGN_SERVER "Enable compilation of campaign(add-ons) server")
+option(ENABLE_SERVER "Enable compilation of MP server" ON)
 option(ENABLE_TESTS "Build unit tests")
-option(ENABLE_NLS "Enable building of translations" ON)
+option(ENABLE_NLS "Enable building of translations" ENABLE_GAME)
 option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
 option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)" ON)
 option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
@@ -539,24 +539,19 @@ add_subdirectory(src)
 #
 # Install files
 #
-install(DIRECTORY data fonts images sounds DESTINATION ${CMAKE_INSTALL_DATADIR}/${DATADIRNAME} USE_SOURCE_PERMISSIONS PATTERN ".git" EXCLUDE )
+if(ENABLE_GAME)
+	install(DIRECTORY data fonts images sounds DESTINATION ${CMAKE_INSTALL_DATADIR}/${DATADIRNAME} USE_SOURCE_PERMISSIONS PATTERN ".git" EXCLUDE )
+endif(ENABLE_GAME)
 
+# install file for add-ons server
+if(ENABLE_CAMPAIGN_SERVER AND NOT ENABLE_GAME)
+	install(FILES data/COPYING.txt DESTINATION ${CMAKE_INSTALL_DATADIR}/${DATADIRNAME}/data)
+endif(ENABLE_CAMPAIGN_SERVER AND NOT ENABLE_GAME)
 
 #
 # Install desktop file so wesnoth appears in the application start menu with an icon
-# TODO: string replacement to have the real binary name in does not work atm, because in the Categories= block semicolons are lost...
 #
 if(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
-	# do some crude string replacing to have the real binary name in the .desktop file (read in original .desktop file, replace the Exec= line with the correct value and output the generated file)
-	# file(READ icons/wesnoth.desktop wesnoth-desktop-orig)
-	# string(REGEX REPLACE "(\nName.*=.*)\n" "\\1 (${BINARY_SUFFIX})\n" wesnoth-desktop-modified ${wesnoth-desktop-orig} )
-	# string(REPLACE "Exec=wesnoth" "Exec=${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}" wesnoth-desktop-modified ${wesnoth-desktop-orig} )
-	# file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop ${wesnoth-desktop-modified} )
-
-	# execute_process(COMMAND sed "-i" "'s/^\(Name.*=.*\)$/\1TEST/g'" ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop )
-	# exec_program(sed ARGS "-i" "'s/^\(Name.*=.*\)$/\1TEST/g'" ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop )
-	# install the generated .desktop file
-	# install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
 	install(FILES packaging/wesnoth.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications )
 	install(DIRECTORY packaging/icons/hicolor DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons )
 endif(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
@@ -564,20 +559,15 @@ endif(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 
 if(ENABLE_SERVER AND FIFO_DIR)
 	install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory \$ENV{DESTDIR}/${FIFO_DIR})")
-#	install systemd stuff if it is installed
-	if(SYSTEMD_FOUND)
-#	configure_file(packaging/systemd/wesnothd.tmpfiles.conf.in ${CMAKE_BINARY_DIR}/wesnothd.conf)
-#	configure_file(packaging/systemd/wesnothd.service.in ${CMAKE_BINARY_DIR}/wesnothd.service)
-#	install(FILES ${CMAKE_BINARY_DIR}/wesnothd.conf DESTINATION lib/tmpfiles.d)
-#	install(FILES ${CMAKE_BINARY_DIR}/wesnothd.service DESTINATION lib/systemd/system)
-	endif()
 	if(SERVER_UID AND SERVER_GID)
 		install(CODE "execute_process(COMMAND chown ${SERVER_UID}:${SERVER_GID} \$ENV{DESTDIR}/${FIFO_DIR})")
 	endif()
 endif()
 
 # Index for checking states of localized images at runtime.
-install(FILES l10n-track DESTINATION ${CMAKE_INSTALL_DATADIR}/${DATADIRNAME})
+if(ENABLE_GAME)
+	install(FILES l10n-track DESTINATION ${CMAKE_INSTALL_DATADIR}/${DATADIRNAME})
+endif(ENABLE_GAME)
 
 #
 # uninstall
