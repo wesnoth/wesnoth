@@ -16,6 +16,7 @@
 
 #include "config.hpp"
 #include "terrain/translation.hpp"
+#include "utils/general.hpp"
 #include "utils/math.hpp"
 
 class terrain_type
@@ -53,7 +54,9 @@ public:
 	/// Returns the light (lawful) bonus for this terrain when the time of day
 	/// gives a @a base bonus.
 	int light_bonus(int base) const
-		{ return bounded_add(base, light_modification_, max_light_, min_light_); }
+	{
+		return utils::clamp(base + light_modification_, min_light_, max_light_);
+	}
 
 	int unit_height_adjust() const { return height_adjust_; }
 	double unit_submerge() const { return submerge_; }

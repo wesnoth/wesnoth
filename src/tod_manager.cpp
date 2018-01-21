@@ -250,8 +250,7 @@ const time_of_day tod_manager::get_illuminated_time_of_day(const unit_map & unit
 		int best_result = terrain_light;
 		const int base_light = terrain_light + (net_darker ? most_add : most_sub);
 		for ( size_t i = 0; i != mod_list.size(); ++i ) {
-			int result =
-				bounded_add(base_light, mod_list[i], max_list[i], min_list[i]);
+			int result = utils::clamp(base_light + mod_list[i], min_list[i], max_list[i]);
 
 			if ( net_darker  &&  result < best_result )
 				best_result = result;

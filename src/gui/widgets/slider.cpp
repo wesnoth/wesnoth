@@ -31,6 +31,8 @@
 
 #include "utils/functional.hpp"
 
+#include <boost/math/common_factor_rt.hpp>
+
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
@@ -260,7 +262,7 @@ void slider::set_value_range(int min_value, int max_value)
 	int diff = max_value - min_value;
 	int old_value = get_value();
 
-	step_size_ = gcd(diff, step_size_);
+	step_size_ = boost::math::gcd(diff, step_size_);
 	minimum_value_ = min_value;
 
 	slider_set_item_last(diff / step_size_);
@@ -279,7 +281,7 @@ void slider::set_step_size(int step_size)
 	const int range_diff = get_item_count() - 1;
 	const int old_value = get_value();
 
-	step_size_ = gcd(range_diff, step_size);
+	step_size_ = boost::math::gcd(range_diff, step_size);
 	slider_set_item_last(range_diff / step_size_);
 	set_value(old_value);
 

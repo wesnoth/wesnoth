@@ -34,18 +34,6 @@ inline bool is_even(T num) { return num % 2 == 0; }
 template<typename T>
 inline bool is_odd(T num) { return !is_even(num); }
 
-/**
- * Returns base + increment, but will not increase base above max_sum, nor
- * decrease it below min_sum.
- * (If base is already beyond the applicable limit, base will be returned.)
- */
-inline int bounded_add(int base, int increment, int max_sum, int min_sum=0) {
-	if ( increment >= 0 )
-		return std::min(base+increment, std::max(base, max_sum));
-	else
-		return std::max(base+increment, std::min(base, min_sum));
-}
-
 /** Guarantees portable results for division by 100; round half up, to the nearest integer. */
 inline int div100rounded(int num) {
 	return (num < 0) ? -(((-num) + 50) / 100) : (num + 50) / 100;
@@ -76,15 +64,11 @@ inline double round_portable(double d) {
 }
 
 template<typename Cmp>
-bool in_ranges(const Cmp c, const std::vector<std::pair<Cmp, Cmp> >&ranges) {
-	typename std::vector<std::pair<Cmp,Cmp> >::const_iterator range,
-		range_end = ranges.end();
-	for (range = ranges.begin(); range != range_end; ++range) {
-		if(range->first <= c && c <= range->second) {
-			return true;
-		}
-	}
-	return false;
+bool in_ranges(const Cmp c, const std::vector<std::pair<Cmp, Cmp>>& ranges)
+{
+	return std::any_of(ranges.begin(), ranges.end(), [c](const std::pair<Cmp, Cmp>& range) {
+		return range.first <= c && c <= range.second;
+	});
 }
 
 /**
@@ -297,15 +281,11 @@ inline unsigned int count_leading_ones(N n) {
 	return count_leading_zeros<N>(~n);
 }
 
-inline int gcd(int a, int b) {
-	return b == 0 ?  a : gcd(b, a % b);
-}
-
 //Probably not postable.
 inline int rounded_division(int a, int b)
 {
 	auto res = std::div(a,b);
-	return 2 * res.rem > b ? (res.quot + 1) : res.quot; 
+	return 2 * res.rem > b ? (res.quot + 1) : res.quot;
 }
 
 
