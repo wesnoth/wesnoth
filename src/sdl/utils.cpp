@@ -20,8 +20,6 @@
 #include "sdl/utils.hpp"
 #include "sdl/rect.hpp"
 #include "color.hpp"
-
-#include "serialization/string_utils.hpp"
 #include "xBRZ/xbrz.hpp"
 
 #include <algorithm>

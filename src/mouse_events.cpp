@@ -35,7 +35,6 @@
 #include "play_controller.hpp"               // for playing_side, set_button_state
 #include "replay_helper.hpp"
 #include "scripting/game_lua_kernel.hpp"
-#include "serialization/string_utils.hpp" // for unicode_em_dash
 #include "sound.hpp"
 #include "synced_context.hpp"
 #include "team.hpp" // for team

@@ -15,7 +15,6 @@
 #include "linked_group_definition.hpp"
 
 #include "formula/string_utils.hpp"
-#include "serialization/string_utils.hpp"
 #include "wml_exception.hpp"
 
 namespace gui2

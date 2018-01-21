@@ -15,9 +15,9 @@
 
 /** @file */
 
-#include "wesconfig.h"
+#include "global.hpp"
 #include "serialization/tokenizer.hpp"
-
+#include "wesconfig.h"
 
 tokenizer::tokenizer(std::istream& in) :
 	current_(EOF),

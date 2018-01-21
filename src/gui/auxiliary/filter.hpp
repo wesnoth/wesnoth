@@ -21,7 +21,6 @@
 
 #include "gui/widgets/text_box.hpp"
 #include "lexical_cast.hpp"
-#include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 
 namespace gui2

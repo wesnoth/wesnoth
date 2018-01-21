@@ -28,7 +28,6 @@
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-#include "serialization/string_utils.hpp"
 
 #include "utils/functional.hpp"
 

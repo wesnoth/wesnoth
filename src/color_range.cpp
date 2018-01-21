@@ -22,7 +22,6 @@
 
 #include "game_config.hpp"
 #include "map/map.hpp"
-#include "serialization/string_utils.hpp"
 
 #include <iomanip>
 #include <unordered_set>

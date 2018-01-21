@@ -19,7 +19,6 @@
 #include "desktop/clipboard.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/timer.hpp"
-#include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 
 #include "utils/functional.hpp"

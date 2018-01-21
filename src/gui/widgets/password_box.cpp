@@ -21,7 +21,6 @@
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
-#include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 
 #include "desktop/clipboard.hpp"

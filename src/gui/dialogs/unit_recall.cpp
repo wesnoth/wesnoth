@@ -43,9 +43,8 @@
 #include "units/types.hpp"
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
-#include "utils/general.hpp"
-
 #include "utils/functional.hpp"
+
 #include <boost/dynamic_bitset.hpp>
 
 static lg::log_domain log_display("display");

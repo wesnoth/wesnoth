@@ -35,7 +35,6 @@
 #include "gui/widgets/window.hpp"
 #include "lexical_cast.hpp"
 #include "preferences/game.hpp"
-#include "serialization/string_utils.hpp"
 
 #include "utils/functional.hpp"
 #include "utils/irdya_datetime.hpp"

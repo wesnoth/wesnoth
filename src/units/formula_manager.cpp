@@ -17,7 +17,6 @@
 #include "formula/callable_objects.hpp"
 #include "config.hpp"
 #include "formula/formula.hpp"
-#include "formula/string_utils.hpp"
 #include "map/location.hpp"
 #include "log.hpp"
 

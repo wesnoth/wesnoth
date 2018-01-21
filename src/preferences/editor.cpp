@@ -16,7 +16,6 @@
 #include "config.hpp"
 #include "preferences/game.hpp"
 #include "lexical_cast.hpp"
-#include "serialization/string_utils.hpp"
 
 namespace preferences {
 

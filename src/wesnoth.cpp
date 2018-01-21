@@ -45,7 +45,6 @@
 #include "serialization/binary_or_text.hpp" // for config_writer
 #include "serialization/parser.hpp"         // for read
 #include "serialization/preprocessor.hpp"   // for preproc_define, etc
-#include "serialization/string_utils.hpp"
 #include "serialization/unicode_cast.hpp"
 #include "serialization/validator.hpp" // for strict_validation_enabled
 #include "sound.hpp"                   // for commit_music_changes, etc

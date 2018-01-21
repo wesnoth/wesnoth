@@ -21,7 +21,6 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
-#include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 
 #if !defined(_WIN32) && !defined(__APPLE__)

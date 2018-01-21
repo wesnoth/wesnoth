@@ -19,7 +19,6 @@
 #include "color.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
-#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/event/dispatcher.hpp"

@@ -15,9 +15,9 @@
 #include "server/user_handler.hpp"
 #include "config.hpp"
 #include "random.hpp"
-#include "serialization/string_utils.hpp"
 
 #include <ctime>
+#include <sstream>
 
 bool user_handler::send_mail(const std::string& to_user,
 		const std::string& /*subject*/, const std::string& /*message*/) {
