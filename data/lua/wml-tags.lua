@@ -125,7 +125,7 @@ end
 
 function wml_actions.store_unit_type_ids(cfg)
 	local types = {}
-	for k,v in pairs(wesnoth.unit_types) do
+	for k in pairs(wesnoth.unit_types) do
 		table.insert(types, k)
 	end
 	table.sort(types)
@@ -276,7 +276,7 @@ function wml_actions.unit_worth(cfg)
 end
 
 function wml_actions.lua(cfg)
-	local cfg = helper.shallow_literal(cfg)
+	cfg = helper.shallow_literal(cfg)
 	local bytecode, message = load(cfg.code or "")
 	if not bytecode then error("~lua:" .. message, 0) end
 	bytecode(helper.get_child(cfg, "args"))
@@ -580,7 +580,7 @@ function wml_actions.transform_unit(cfg)
 
 			unit.hitpoints = hitpoints
 			unit.experience = experience
-			recall_cost = unit.recall_cost
+			unit.recall_cost = recall_cost
 
 			for key, value in pairs(status) do unit.status[key] = value end
 			if unit.status.unpoisonable then unit.status.poisoned = nil end
@@ -650,7 +650,7 @@ end
 
 function wml_actions.store_starting_location(cfg)
 	local writer = utils.vwriter.init(cfg, "location")
-	for possibly_wrong_index, side in ipairs(wesnoth.get_sides(cfg)) do
+	for _, side in ipairs(wesnoth.get_sides(cfg)) do
 		local loc = wesnoth.get_starting_location(side.side)
 		if loc then
 			local terrain = wesnoth.get_terrain(loc[1], loc[2])
@@ -847,7 +847,7 @@ wml_actions.unstore_unit = function(cfg)
 			x,y = wesnoth.find_vacant_tile(x, y, check_passability and unit)
 		end
 		unit:to_map(x, y, cfg.fire_event)
-		local text = nil
+		local text
 		if unit_cfg.gender == "female" then
 			text = cfg.female_text or cfg.text
 		else
@@ -956,7 +956,7 @@ function wesnoth.wml_actions.store_unit_defense(cfg)
 	local unit = wesnoth.get_units(cfg)[1] or helper.wml_error "[store_unit_defense]'s filter didn't match any unit"
 	local terrain = cfg.terrain
 	local defense
-	
+
 	if terrain then
 		defense = wesnoth.unit_defense(unit, terrain)
 	elseif cfg.loc_x and cfg.loc_y then

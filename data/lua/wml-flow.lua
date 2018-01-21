@@ -44,7 +44,7 @@ wml_actions["while"] = function( cfg )
 	if helper.child_count(cfg, "do") == 0 then
 		helper.wml_error "[while] does not contain any [do] tags"
 	end
-	
+
 	-- execute [do] up to 65536 times
 	for i = 1, 65536 do
 		if wesnoth.eval_conditional( cfg ) then
@@ -80,7 +80,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 	if helper.child_count(cfg, "do") == 0 then
 		helper.wml_error "[for] does not contain any [do] tags"
 	end
-	
+
 	local loop_lim = {}
 	local first
 	if cfg.array ~= nil then
@@ -154,7 +154,7 @@ wml_actions["repeat"] = function(cfg)
 	if helper.child_count(cfg, "do") == 0 then
 		helper.wml_error "[repeat] does not contain any [do] tags"
 	end
-	
+
 	local times = cfg.times or 1
 	for i = 1, times do
 		for do_child in helper.child_range( cfg, "do" ) do
@@ -176,7 +176,7 @@ function wml_actions.foreach(cfg)
 	if helper.child_count(cfg, "do") == 0 then
 		helper.wml_error "[foreach] does not contain any [do] tags"
 	end
-	
+
 	local array_name = cfg.array or helper.wml_error "[foreach] missing required array= attribute"
 	local array = helper.get_variable_array(array_name)
 	if #array == 0 then return end -- empty and scalars unwanted
@@ -185,7 +185,7 @@ function wml_actions.foreach(cfg)
 	local i_name = cfg.index_var or "i"
 	local i = utils.start_var_scope(i_name) -- if i is already set
 	local array_length = wesnoth.get_variable(array_name .. ".length")
-	
+
 	for index, value in ipairs(array) do
 		-- Some protection against external modification
 		-- It's not perfect, though - it'd be nice if *any* change could be detected
@@ -214,21 +214,21 @@ function wml_actions.foreach(cfg)
 		end
 	end
 	::exit::
-	
+
 	-- house cleaning
 	utils.end_var_scope(item_name, this_item)
 	utils.end_var_scope(i_name, i)
-	
+
 	--[[
 		This forces the readonly key to be taken literally.
-		
+
 		If readonly=yes, then this line guarantees that the array
 		is unchanged after the [foreach] loop ends.
-		
+
 		If readonly=no, then this line updates the array with any
 		changes the user has applied through the $this_item
 		variable (or whatever variable was given in item_var).
-		
+
 		Note that altering the array via indexing (with the index_var)
 		is not supported; any such changes will be reverted by this line.
 	]]
@@ -242,7 +242,7 @@ function wml_actions.switch(cfg)
 	-- Execute all the [case]s where the value matches.
 	for v in helper.child_range(cfg, "case") do
 		for w in utils.split(v.value) do
-			if w == tostring(var_value) then 
+			if w == tostring(var_value) then
 				local action = utils.handle_event_commands(v, "switch")
 				found = true
 				if action ~= "none" then goto exit end

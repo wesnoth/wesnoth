@@ -164,11 +164,6 @@ function helper.get_user_choice(attr, options)
 	return result
 end
 
-local adjacent_offset = {
-	[false] = { {0,-1}, {1,-1}, {1,0}, {0,1}, {-1,0}, {-1,-1} },
-	[true] = { {0,-1}, {1,0}, {1,1}, {0,1}, {-1,1}, {-1,0} }
-}
-
 --! Returns an iterator over adjacent locations that can be used in a for-in loop.
 -- Not deprecated because, unlike wesnoth.map.get_adjacent_tiles,
 -- this verifies that the locations are on the map.
@@ -196,7 +191,9 @@ end
 
 function helper.rand (possible_values, random_func)
 	random_func = random_func or wesnoth.random
-	assert(type(possible_values) == "table" or type(possible_values) == "string", string.format("helper.rand expects a string or table as parameter, got %s instead", type(possible_values)))
+	assert(type(possible_values) == "table" or type(possible_values) == "string",
+		string.format("helper.rand expects a string or table as parameter, got %s instead",
+		type(possible_values)))
 
 	local items = {}
 	local num_choices = 0
@@ -297,11 +294,13 @@ function helper.round( number )
 	return number
 end
 
-function helper.shuffle( t, random_func)
+function helper.shuffle( t, random_func )
 	random_func = random_func or wesnoth.random
 	-- since tables are passed by reference, this is an in-place shuffle
 	-- it uses the Fisher-Yates algorithm, also known as Knuth shuffle
-	assert( type( t ) == "table", string.format( "helper.shuffle expects a table as parameter, got %s instead", type( t ) ) )
+	assert(
+		type( t ) == "table",
+		string.format( "helper.shuffle expects a table as parameter, got %s instead", type( t ) ) )
 	local length = #t
 	for index = length, 2, -1 do
 		local random = random_func( 1, index )

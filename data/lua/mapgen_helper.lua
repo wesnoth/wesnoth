@@ -24,10 +24,6 @@ local function loc_to_index(map,x,y)
 	return x + 1 + y * map.w
 end
 
-local function index_to_loc(map,index)
-	return (index - 1) % map.w, math.floor((index - 1) / map.w)
-end
-
 function map_mt.__index.set_tile(map, x, y, val)
 	map[loc_to_index(map, x, y)] = val
 end

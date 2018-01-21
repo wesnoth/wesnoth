@@ -1,7 +1,6 @@
 local helper = wesnoth.require "helper"
 local MG = wesnoth.require "mapgen_helper"
 local LS = wesnoth.require "location_set"
-local T = helper.set_wml_tag_metatable {}
 local random = wesnoth.random
 
 local callbacks = {}
@@ -123,7 +122,7 @@ function callbacks.generate_map(params)
 			local laziness = math.max(v.data.laziness or 1, 1)
 			local width = math.max(v.data.width or 1, 1)
 			local jagged = v.data.jagged or 0
-			local calc = function(x, y, current_cost)
+			local calc = function(x, y)
 				local res = 1.0
 				if map:get_tile(x, y) == params.terrain_wall then
 					res = laziness
@@ -133,7 +132,8 @@ function callbacks.generate_map(params)
 				end
 				return res
 			end
-			local path, cost = wesnoth.find_path(v.start_x, v.start_y, v.dest_x, v.dest_y, calc, params.map_width, params.map_height)
+			local path = wesnoth.find_path(
+				v.start_x, v.start_y, v.dest_x, v.dest_y, calc, params.map_width, params.map_height)
 			for i, loc in ipairs(path) do
 				local locs_set = LS.create()
 				build_chamber(loc[1], loc[2], locs_set, width, jagged)
@@ -168,7 +168,7 @@ function callbacks.generate_scenario(params)
 	local scenario = helper.get_child(params, "scenario")
 	scenario.map_data = callbacks.generate_map(params)
 	for chamber in helper.child_range(params, "chamber") do
-		local items = helper.get_child(chamber, "items")
+		local chamber_items = helper.get_child(chamber, "items")
 		if chamber.chance == 100 and chamber_items then
 			-- TODO: Should we support [event]same_location_as_previous=yes?
 			for i,tag in ipairs(chamber_items) do

@@ -65,8 +65,8 @@ function utils.get_sides(cfg, key_name, filter_name)
 end
 
 function utils.optional_side_filter(cfg, key_name, filter_name)
-	local key_name = key_name or "side"
-	local filter_name = filter_name or "filter_side"
+	key_name = key_name or "side"
+	filter_name = filter_name or "filter_side"
 	if cfg[key_name] == nil and helper.get_child(cfg, filter_name) == nil then
 		return true
 	end
@@ -116,7 +116,7 @@ function utils.handle_event_commands(cfg, scope_type)
 		local insert_from
 		if cmd == "insert_tag" then
 			cmd = arg.name
-			local from = arg.variable or 
+			local from = arg.variable or
 				helper.wml_error("[insert_tag] found with no variable= field")
 
 			arg = wesnoth.get_variable(from)

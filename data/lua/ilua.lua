@@ -16,7 +16,6 @@ local sub = string.sub
 local push = table.insert
 local pop = table.remove
 local pack = table.pack
-local floor = math.floor
 
 local declared = {}
 
@@ -69,7 +68,7 @@ function ilua.join(tbl,delim,limit,depth)
             if k > limit then
                 res = res.." ... "
                 break
-            end            
+            end
         end
     end
     pop(jstack)

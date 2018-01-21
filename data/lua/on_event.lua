@@ -23,9 +23,9 @@ local function on_event(eventname, arg1, arg2)
 		end
 	end
 	local priority = 0
-	local handler = nil
+	local handler
 	if type(arg1) == "function" then
-		handler = arg1	
+		handler = arg1
 	else
 		priority = arg1
 		handler = arg2
