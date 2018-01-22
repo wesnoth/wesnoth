@@ -59,7 +59,8 @@ terrain_type::terrain_type() :
 		combined_(false),
 		editor_default_base_(t_translation::VOID_TERRAIN),
 		hide_help_(false),
-		hide_in_editor_(false)
+		hide_in_editor_(false),
+		hide_if_impassable_(false)
 {}
 
 terrain_type::terrain_type(const config& cfg) :
@@ -227,7 +228,8 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	combined_(true),
 	editor_default_base_(),
 	hide_help_(base.hide_help_ || overlay.hide_help_),
-	hide_in_editor_(base.hide_in_editor_ || overlay.hide_in_editor_)
+	hide_in_editor_(base.hide_in_editor_ || overlay.hide_in_editor_),
+	hide_if_impassable_(base.hide_if_impassable_ || overlay.hide_if_impassable_)
 {
 	if(description_.empty()) {
 		description_ = base.description();
