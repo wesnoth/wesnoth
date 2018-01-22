@@ -51,17 +51,17 @@ bool luaW_getmetafield(lua_State *L, int idx, const char* key);
 /**
  * Pushes a vconfig on the top of the stack.
  */
-void luaW_pushvconfig(lua_State *L, vconfig const &cfg);
+void luaW_pushvconfig(lua_State *L, const vconfig& cfg);
 
 /**
  * Pushes a t_string on the top of the stack.
  */
-void luaW_pushtstring(lua_State *L, t_string const &v);
+void luaW_pushtstring(lua_State *L, const t_string& v);
 
 /**
  * Converts an attribute value into a Lua object pushed at the top of the stack.
  */
-void luaW_pushscalar(lua_State *L, config::attribute_value const &v);
+void luaW_pushscalar(lua_State *L, const config::attribute_value& v);
 
 /**
  * Converts the value at the top of the stack to an attribute value
@@ -83,12 +83,12 @@ t_string luaW_checktstring(lua_State *L, int index);
  * The destination table should be at the top of the stack on entry. It is
  * still at the top on exit.
  */
-void luaW_filltable(lua_State *L, config const &cfg);
+void luaW_filltable(lua_State *L, const config& cfg);
 
 /**
  * Converts a map location object to a Lua table pushed at the top of the stack.
  */
-void luaW_pushlocation(lua_State *L, map_location const &loc);
+void luaW_pushlocation(lua_State *L, const map_location& loc);
 
 /**
  * Converts an optional table or pair of integers to a map location object.
@@ -107,7 +107,7 @@ map_location luaW_checklocation(lua_State *L, int index);
 /**
  * Converts a config object to a Lua table pushed at the top of the stack.
  */
-void luaW_pushconfig(lua_State *L, config const &cfg);
+void luaW_pushconfig(lua_State *L, const config& cfg);
 
 /**
  * Converts an optional table or vconfig to a config object.

@@ -133,8 +133,8 @@ map_location find_vacant_castle(const unit & leader)
  *
  * @return true iff a visible enemy exerts zone of control over loc.
  */
-bool enemy_zoc(team const &current_team, map_location const &loc,
-               team const &viewing_team, bool see_all)
+bool enemy_zoc(const team& current_team, const map_location& loc,
+               const team& viewing_team, bool see_all)
 {
 	// Check the adjacent tiles.
 	map_location locs[6];
@@ -540,7 +540,7 @@ paths::paths(const unit& u, bool force_ignore_zoc,
 		int additional_turns, bool see_all, bool ignore_units)
 	: destinations()
 {
-	std::vector<team> const &teams = resources::gameboard->teams();
+	const std::vector<team>& teams = resources::gameboard->teams();
 	if (u.side() < 1 || u.side() > int(teams.size())) {
 		return;
 	}
@@ -572,7 +572,7 @@ paths::~paths()
  * @param loc        The location from which the viewing occurs
  *                   (does not have to be the unit's location).
  */
-vision_path::vision_path(const unit& viewer, map_location const &loc,
+vision_path::vision_path(const unit& viewer, const map_location& loc,
                          const std::map<map_location, int>& jamming_map)
 	: paths(), edges()
 {
@@ -580,7 +580,7 @@ vision_path::vision_path(const unit& viewer, map_location const &loc,
 
 	// The three nullptr parameters indicate (in order):
 	// ignore units, ignore ZoC (no effect), and don't build a cost_map.
-	team const& viewing_team = resources::gameboard->teams()[resources::screen->viewing_team()];
+	const team& viewing_team = resources::gameboard->teams()[resources::screen->viewing_team()];
 	find_routes(loc, viewer.movement_type().get_vision(),
 	            viewer.get_state(unit::STATE_SLOWED), sight_range, sight_range,
 	            0, destinations, &edges, &viewer, nullptr, nullptr, &viewing_team, &jamming_map, nullptr, true);
@@ -604,7 +604,7 @@ vision_path::vision_path(const movetype::terrain_costs & view_costs, bool slowed
 {
 	// The three nullptr parameters indicate (in order):
 	// ignore units, ignore ZoC (no effect), and don't build a cost_map.
-	team const& viewing_team = resources::gameboard->teams()[resources::screen->viewing_team()];
+	const team& viewing_team = resources::gameboard->teams()[resources::screen->viewing_team()];
 	const unit_map::const_iterator u = resources::gameboard->units().find(loc);
 	find_routes(loc, view_costs, slowed, sight_range, sight_range, 0,
 	            destinations, &edges, u.valid() ? &*u : nullptr, nullptr, nullptr, &viewing_team, &jamming_map, nullptr, true);
@@ -625,7 +625,7 @@ vision_path::~vision_path()
  * @param loc        The location from which the jamming occurs
  *                   (does not have to be the unit's location).
  */
-jamming_path::jamming_path(const unit& jammer, map_location const &loc)
+jamming_path::jamming_path(const unit& jammer, const map_location& loc)
 	: paths()
 {
 	const int jamming_range = jammer.jamming();
@@ -651,7 +651,7 @@ marked_route mark_route(const plain_route &rt)
 
 	unit_map::const_iterator it = resources::gameboard->units().find(rt.steps.front());
 	if (it == resources::gameboard->units().end()) return marked_route();
-	unit const& u = *it;
+	const unit& u = *it;
 
 	int turns = 0;
 	int movement = u.movement_left();
@@ -667,7 +667,7 @@ marked_route mark_route(const plain_route &rt)
 		assert(last_step || resources::gameboard->map().on_board(*(i+1)));
 		const int move_cost = last_step ? 0 : u.movement_cost((resources::gameboard->map())[*(i+1)]);
 
-		team const& viewing_team = resources::gameboard->teams()[resources::screen->viewing_team()];
+		const team& viewing_team = resources::gameboard->teams()[resources::screen->viewing_team()];
 
 		if (last_step || zoc || move_cost > movement) {
 			// check if we stop an a village and so maybe capture it
@@ -704,8 +704,8 @@ marked_route mark_route(const plain_route &rt)
 	return res;
 }
 
-shortest_path_calculator::shortest_path_calculator(unit const &u, team const &t,
-		std::vector<team> const &teams, gamemap const &map,
+shortest_path_calculator::shortest_path_calculator(const unit& u, const team& t,
+		const std::vector<team>& teams, const gamemap& map,
 		bool ignore_unit, bool ignore_defense, bool see_all)
 	: unit_(u), viewing_team_(t), teams_(teams), map_(map),
 	  movement_left_(unit_.movement_left()),
@@ -795,7 +795,7 @@ double shortest_path_calculator::cost(const map_location& loc, const double so_f
 	return move_cost + (defense_subcost + other_unit_subcost) / 10000.0;
 }
 
-move_type_path_calculator::move_type_path_calculator(const movetype& mt, int movement_left, int total_movement, team const &t, gamemap const &map)
+move_type_path_calculator::move_type_path_calculator(const movetype& mt, int movement_left, int total_movement, const team& t, const gamemap& map)
 	: movement_type_(mt), movement_left_(movement_left),
 	  total_movement_(total_movement), viewing_team_(t), map_(map)
 {}
@@ -892,7 +892,7 @@ full_cost_map::full_cost_map(bool force_ignore_zoc,
  */
 void full_cost_map::add_unit(const unit& u, bool use_max_moves)
 {
-	std::vector<team> const &teams = resources::gameboard->teams();
+	const std::vector<team>& teams = resources::gameboard->teams();
 	if (u.side() < 1 || u.side() > int(teams.size())) {
 		return;
 	}

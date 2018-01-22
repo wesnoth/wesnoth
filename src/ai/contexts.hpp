@@ -207,7 +207,7 @@ public:
 
 
 	//@note: following part is in alphabetic order
-	virtual defensive_position const& best_defensive_position(const map_location& unit,
+	virtual const defensive_position& best_defensive_position(const map_location& unit,
 			const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const = 0;
 
 
@@ -616,7 +616,7 @@ public:
 	}
 
 	//@note: following part is in alphabetic order
-	defensive_position const& best_defensive_position(const map_location& unit,
+	const defensive_position& best_defensive_position(const map_location& unit,
 			const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const override
 	{
 		return target_->best_defensive_position(unit,dstsrc,srcdst,enemy_dstsrc);
@@ -1308,7 +1308,7 @@ public:
 
 
 	//@note: following functions are in alphabetic order
-	defensive_position const& best_defensive_position(const map_location& unit,
+	const defensive_position& best_defensive_position(const map_location& unit,
 			const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const override;
 
 

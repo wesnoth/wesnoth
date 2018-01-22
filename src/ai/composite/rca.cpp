@@ -120,7 +120,7 @@ bool candidate_action_factory::is_duplicate(const std::string& name)
 
 //============================================================================
 
-std::ostream &operator<<(std::ostream &s, ai::candidate_action const &ca) {
+std::ostream &operator<<(std::ostream &s, const ai::candidate_action& ca) {
 	s << "candidate action with name ["<< ca.get_name() <<"]";
 	return s;
 }

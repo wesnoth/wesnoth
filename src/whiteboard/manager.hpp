@@ -79,7 +79,7 @@ public:
 	/** Used to ask the whiteboard if its action reordering hotkeys should be available to the user */
 	bool can_enable_reorder_hotkeys() const;
 	/** Used to ask permission to the wb to move a leader, to avoid invalidating planned recruits */
-	bool allow_leader_to_move(unit const& leader) const;
+	bool allow_leader_to_move(const unit& leader) const;
 	/** @ return true if the whiteboard is ready to end turn. Triggers the execution of remaining planned actions. */
 	bool allow_end_turn();
 	/**
@@ -101,9 +101,9 @@ public:
 	/** Called by replay_network_sender to add whiteboard data to the outgoing network packets */
 	void send_network_data();
 	/** Called by turn_info::process_network_data() when network data needs to be processed */
-	void process_network_data(config const&);
+	void process_network_data(const config&);
 	/** Adds a side_actions::net_cmd to net_buffer_[team_index], whereupon it will (later) be sent to all allies */
-	void queue_net_cmd(size_t team_index, side_actions::net_cmd const&);
+	void queue_net_cmd(size_t team_index, const side_actions::net_cmd&);
 
 	/** Whether the current side has actions in the first turn of its planned actions queue */
 	static bool current_side_has_actions();
@@ -154,7 +154,7 @@ public:
 	bool save_recall(const unit& unit, int side_num, const map_location& recall_hex);
 
 	/** Creates a suppose-dead action for the current side */
-	void save_suppose_dead(unit& curr_unit, map_location const& loc);
+	void save_suppose_dead(unit& curr_unit, const map_location& loc);
 
 	/** Executes first action in the queue for current side */
 	void contextual_execute();

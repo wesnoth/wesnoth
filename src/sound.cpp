@@ -139,12 +139,12 @@ public:
 		return data_;
 	}
 
-	bool operator==(sound_cache_chunk const& scc) const
+	bool operator==(const sound_cache_chunk& scc) const
 	{
 		return file == scc.file;
 	}
 
-	bool operator!=(sound_cache_chunk const& scc) const
+	bool operator!=(const sound_cache_chunk& scc) const
 	{
 		return !operator==(scc);
 	}

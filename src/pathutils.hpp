@@ -23,7 +23,7 @@ class gamemap;
 class xy_pred
 {
 public:
-	virtual bool operator()(map_location const&) const = 0;
+	virtual bool operator()(const map_location&) const = 0;
 protected:
 	virtual ~xy_pred() {}
 };

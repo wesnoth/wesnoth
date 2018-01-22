@@ -258,7 +258,7 @@ bool manager::can_enable_reorder_hotkeys() const
 	return can_enable_modifier_hotkeys() && highlighter_ && highlighter_->get_bump_target();
 }
 
-bool manager::allow_leader_to_move(unit const& leader) const
+bool manager::allow_leader_to_move(const unit& leader) const
 {
 	if(!has_actions())
 		return true;
@@ -439,7 +439,7 @@ void manager::validate_viewer_actions()
 }
 
 //helper fcn
-static void draw_numbers(map_location const& hex, side_actions::numbers_t numbers)
+static void draw_numbers(const map_location& hex, side_actions::numbers_t numbers)
 {
 	std::vector<int>& numbers_to_draw = numbers.numbers_to_draw;
 	std::vector<size_t>& team_numbers = numbers.team_numbers;
@@ -492,7 +492,7 @@ namespace
 			action->accept(*this);
 		}
 
-		std::set<size_t> const& get_units_owning_moves() {
+		const std::set<size_t>& get_units_owning_moves() {
 			return move_owners_;
 		}
 
@@ -628,20 +628,20 @@ void manager::send_network_data()
 	}
 }
 
-void manager::process_network_data(config const& cfg)
+void manager::process_network_data(const config& cfg)
 {
-	if(config const& wb_cfg = cfg.child("whiteboard"))
+	if(const config& wb_cfg = cfg.child("whiteboard"))
 	{
 		size_t count = wb_cfg.child_count("net_cmd");
 		LOG_WB << "Received wb data (" << count << ").\n";
 
 		team& team_from = resources::gameboard->get_team(wb_cfg["side"]);
-		for(side_actions::net_cmd const& cmd : wb_cfg.child_range("net_cmd"))
+		for(const side_actions::net_cmd& cmd : wb_cfg.child_range("net_cmd"))
 			team_from.get_side_actions()->execute_net_cmd(cmd);
 	}
 }
 
-void manager::queue_net_cmd(size_t team_index, side_actions::net_cmd const& cmd)
+void manager::queue_net_cmd(size_t team_index, const side_actions::net_cmd& cmd)
 {
 	assert(team_index < net_buffer_.size());
 	net_buffer_[team_index].add_child("net_cmd",cmd);
@@ -659,7 +659,7 @@ void manager::create_temp_move()
 	if ( !active_ || !can_modify_game_state() )
 		return;
 
-	pathfind::marked_route const& route =
+	const pathfind::marked_route& route =
 			resources::controller->get_mouse_handler_base().get_current_route();
 
 	if (route.steps.empty() || route.steps.size() < 2) return;
@@ -752,7 +752,7 @@ void manager::create_temp_move()
 void manager::erase_temp_move()
 {
 	move_arrows_.clear();
-	for(fake_unit_ptr const& tmp : fake_units_) {
+	for(const fake_unit_ptr& tmp : fake_units_) {
 		if(tmp) {
 			tmp->anim_comp().invalidate(*game_display::get_singleton());
 		}
@@ -908,7 +908,7 @@ bool manager::save_recall(const unit& unit, int side_num, const map_location& re
 	return created_planned_recall;
 }
 
-void manager::save_suppose_dead(unit& curr_unit, map_location const& loc)
+void manager::save_suppose_dead(unit& curr_unit, const map_location& loc)
 {
 	if(active_ && !executing_actions_ && !resources::controller->is_linger_mode())
 	{

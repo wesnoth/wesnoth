@@ -75,7 +75,7 @@ bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2);
  * @return                        The intersection of rect1 and rect2, or
  *                                empty_rect if they don't overlap.
  */
-SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2);
+SDL_Rect intersect_rects(const SDL_Rect& rect1, const SDL_Rect& rect2);
 
 /**
  * Calculates the union of two rectangles. Note: "union" here doesn't mean the

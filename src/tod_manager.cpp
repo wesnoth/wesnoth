@@ -354,7 +354,7 @@ void tod_manager::add_time_area(const gamemap & map, const config& cfg)
 	area.xsrc = cfg["x"].str();
 	area.ysrc = cfg["y"].str();
 	area.currentTime = cfg["current_time"].to_int(0);
-	std::vector<map_location> const& locs (map.parse_location_range(area.xsrc, area.ysrc, true));
+	const std::vector<map_location>& locs (map.parse_location_range(area.xsrc, area.ysrc, true));
 	area.hexes.insert(locs.begin(), locs.end());
 	time_of_day::parse_times(cfg, area.times);
 	has_tod_bonus_changed_ = true;

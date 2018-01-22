@@ -580,7 +580,7 @@ private:
  */
 struct background_modification : modification
 {
-	background_modification(color_t const &c): color_(c) {}
+	background_modification(const color_t& c): color_(c) {}
 	virtual surface operator()(const surface &src) const;
 
 	const color_t& get_color() const

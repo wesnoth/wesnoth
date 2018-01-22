@@ -169,10 +169,10 @@ struct map_locker
 };
 
 
-void game_lua_kernel::extract_preload_scripts(config const &game_config)
+void game_lua_kernel::extract_preload_scripts(const config& game_config)
 {
 	game_lua_kernel::preload_scripts.clear();
-	for (config const &cfg : game_config.child_range("lua")) {
+	for (const config& cfg : game_config.child_range("lua")) {
 		game_lua_kernel::preload_scripts.push_back(cfg);
 	}
 	game_lua_kernel::preload_config = game_config.child("game_config");
@@ -885,7 +885,7 @@ int game_lua_kernel::intf_shroud_op(lua_State *L, bool place_shroud)
 		std::set<map_location> locs(locs_v.begin(), locs_v.end());
 		team &t = board().get_team(side_num);
 
-		for (map_location const &loc : locs)
+		for (const map_location& loc : locs)
 		{
 			if (place_shroud) {
 				t.place_shroud(loc);
@@ -973,7 +973,7 @@ int game_lua_kernel::intf_get_terrain(lua_State *L)
 {
 	map_location loc = luaW_checklocation(L, 1);
 
-	t_translation::terrain_code const &t = board().map().
+	const t_translation::terrain_code& t = board().map().
 		get_terrain(loc);
 	lua_pushstring(L, t_translation::write_terrain_code(t).c_str());
 	return 1;
@@ -1022,7 +1022,7 @@ int game_lua_kernel::intf_get_terrain_info(lua_State *L)
 	char const *m = luaL_checkstring(L, 1);
 	t_translation::terrain_code t = t_translation::read_terrain_code(m);
 	if (t == t_translation::NONE_TERRAIN) return 0;
-	terrain_type const &info = board().map().tdata()->get_terrain_info(t);
+	const terrain_type& info = board().map().tdata()->get_terrain_info(t);
 
 	lua_newtable(L);
 	lua_pushstring(L, info.id().c_str());
@@ -2837,7 +2837,7 @@ int game_lua_kernel::intf_get_locations(lua_State *L)
 
 	lua_createtable(L, res.size(), 0);
 	int i = 1;
-	for (map_location const &loc : res)
+	for (const map_location& loc : res)
 	{
 		lua_createtable(L, 2, 0);
 		lua_pushinteger(L, loc.wml_x());
@@ -4350,7 +4350,7 @@ void game_lua_kernel::save_game(config &cfg)
  * Executes the game_events.on_event function.
  * Returns false if there was no lua handler for this event
  */
-bool game_lua_kernel::run_event(game_events::queued_event const &ev)
+bool game_lua_kernel::run_event(const game_events::queued_event& ev)
 {
 	lua_State *L = mState;
 
@@ -4485,8 +4485,8 @@ void game_lua_kernel::set_wml_condition(const std::string& cmd, wml_conditional_
  * @note @a cfg should be either volatile or long-lived since the Lua
  *       code may grab it for an arbitrary long time.
  */
-bool game_lua_kernel::run_wml_action(const std::string& cmd, vconfig const &cfg,
-	game_events::queued_event const &ev)
+bool game_lua_kernel::run_wml_action(const std::string& cmd, const vconfig& cfg,
+	const game_events::queued_event& ev)
 {
 	lua_State *L = mState;
 
@@ -4546,7 +4546,7 @@ bool game_lua_kernel::run_filter(char const *name, const map_location& l)
 * Runs a script from a unit filter.
 * The script is an already compiled function given by its name.
 */
-bool game_lua_kernel::run_filter(char const *name, unit const &u)
+bool game_lua_kernel::run_filter(char const *name, const unit& u)
 {
 	lua_State *L = mState;
 	unit_map::const_unit_iterator ui = units().find(u.get_location());

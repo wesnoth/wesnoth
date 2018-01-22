@@ -352,7 +352,7 @@ void menu::update_size()
 	}
 
 	use_ellipsis_ = false;
-	std::vector<int> const &widths = column_widths();
+	const std::vector<int>& widths = column_widths();
 	int w = std::accumulate(widths.begin(), widths.end(), 0);
 	if (items_.size() > max_items_onscreen())
 		w += scrollbar_width();
@@ -375,7 +375,7 @@ int menu::selection() const
 	return items_[selected_].id;
 }
 
-void menu::set_inner_location(SDL_Rect const &rect)
+void menu::set_inner_location(const SDL_Rect& rect)
 {
 	itemRects_.clear();
 	update_scrollbar_grip_height();
@@ -912,8 +912,8 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 {
 	//called from style, draws one row's contents in a generic and adaptable way
 	const std::vector<std::string>& row = (type == HEADING_ROW) ? heading_ : items_[row_index].fields;
-	SDL_Rect const &area = video().screen_area();
-	SDL_Rect const &loc = inner_location();
+	const SDL_Rect& area = video().screen_area();
+	const SDL_Rect& loc = inner_location();
 	const std::vector<int>& widths = column_widths();
 	bool lang_rtl = current_language_rtl();
 	int dir = (lang_rtl) ? -1 : 1;
@@ -1060,7 +1060,7 @@ void menu::draw()
 
 int menu::hit(int x, int y) const
 {
-	SDL_Rect const &loc = inner_location();
+	const SDL_Rect& loc = inner_location();
 	if (x >= loc.x  && x < loc.x + loc.w && y >= loc.y && y < loc.y + loc.h) {
 		for(size_t i = 0; i != items_.size(); ++i) {
 			const SDL_Rect& rect = get_item_rect(i);
@@ -1074,7 +1074,7 @@ int menu::hit(int x, int y) const
 
 int menu::hit_column(int x) const
 {
-	std::vector<int> const &widths = column_widths();
+	const std::vector<int>& widths = column_widths();
 	int j = -1, j_end = widths.size();
 	for(x -= location().x; x >= 0; x -= widths[j]) {
 		if(++j == j_end) {
@@ -1127,7 +1127,7 @@ SDL_Rect menu::get_item_rect_internal(size_t item) const
 	if(i != itemRects_.end())
 		return i->second;
 
-	SDL_Rect const &loc = inner_location();
+	const SDL_Rect& loc = inner_location();
 
 	int y = loc.y + heading_height();
 	if (item != first_item_on_screen) {
@@ -1137,7 +1137,7 @@ SDL_Rect menu::get_item_rect_internal(size_t item) const
 
 	SDL_Rect res = sdl::create_rect(loc.x, y, loc.w, get_item_height(item));
 
-	SDL_Rect const &screen_area = video().screen_area();
+	const SDL_Rect& screen_area = video().screen_area();
 
 	if(res.x > screen_area.w) {
 		return sdl::empty_rect;

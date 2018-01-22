@@ -57,7 +57,7 @@ surface_restorer::~surface_restorer()
 	restore();
 }
 
-void surface_restorer::restore(SDL_Rect const &dst) const
+void surface_restorer::restore(const SDL_Rect& dst) const
 {
 	if(surface_.null()) {
 		return;

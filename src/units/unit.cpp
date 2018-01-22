@@ -2357,7 +2357,7 @@ bool unit::invisible(const map_location& loc, const display_context& dc, bool se
 
 bool unit::is_visible_to_team(const team& team,const  display_context& dc, bool const see_all) const
 {
-	map_location const& loc = get_location();
+	const map_location& loc = get_location();
 	if(!dc.map().on_board(loc)) {
 		return false;
 	}

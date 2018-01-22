@@ -35,11 +35,11 @@ public:
 
 protected:
 	virtual sdl_handler_vector handler_members();
-	virtual void update_location(SDL_Rect const &rect);
+	virtual void update_location(const SDL_Rect& rect);
 	virtual void handle_event(const SDL_Event& event);
 	virtual void process_event();
 	virtual void scroll(unsigned int pos) = 0;
-	virtual void set_inner_location(SDL_Rect const &rect) = 0;
+	virtual void set_inner_location(const SDL_Rect& rect) = 0;
 
 	SDL_Rect inner_location() const;
 	unsigned scrollbar_width() const;

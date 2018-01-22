@@ -32,11 +32,11 @@
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
-std::ostream &operator<<(std::ostream &s, map_location const &l) {
+std::ostream &operator<<(std::ostream &s, const map_location& l) {
 	s << (l.wml_x()) << ',' << (l.wml_y());
 	return s;
 }
-std::ostream &operator<<(std::ostream &s, std::vector<map_location> const &v) {
+std::ostream &operator<<(std::ostream &s, const std::vector<map_location>& v) {
 	std::vector<map_location>::const_iterator i = v.begin();
 	for(; i!= v.end(); ++i) {
 		s << "(" << *i << ") ";
@@ -55,7 +55,7 @@ const std::vector<map_location::DIRECTION> & map_location::default_dirs() {
 	return dirs;
 }
 
-std::size_t hash_value(map_location  const & a){
+std::size_t hash_value(const map_location& a){
 	std::hash<size_t> h;
 	return h( (static_cast<uint32_t>(a.x) << 16) ^ static_cast<uint32_t>(a.y) );
 }

@@ -238,7 +238,7 @@ public:
 		: scoped_wml_variable(var_name), data_(data) {}
 	void activate();
 private:
-	config const &data_;
+	const config& data_;
 };
 
 class scoped_xy_unit : public scoped_wml_variable

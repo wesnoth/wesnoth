@@ -495,13 +495,13 @@ bool luaW_getmetafield(lua_State *L, int idx, const char* key)
 	return luaL_getmetafield(L, idx, key) != 0;
 }
 
-void luaW_pushvconfig(lua_State *L, vconfig const &cfg)
+void luaW_pushvconfig(lua_State *L, const vconfig& cfg)
 {
 	new(L) vconfig(cfg);
 	luaL_setmetatable(L, vconfigKey);
 }
 
-void luaW_pushtstring(lua_State *L, t_string const &v)
+void luaW_pushtstring(lua_State *L, const t_string& v)
 {
 	new(L) t_string(v);
 	luaL_setmetatable(L, tstringKey);
@@ -514,7 +514,7 @@ namespace {
 		lua_State *L;
 		luaW_pushscalar_visitor(lua_State *l): L(l) {}
 
-		void operator()(boost::blank const &) const
+		void operator()(const boost::blank&) const
 		{ lua_pushnil(L); }
 		void operator()(bool b) const
 		{ lua_pushboolean(L, b); }
@@ -526,12 +526,12 @@ namespace {
 		{ lua_pushnumber(L, d); }
 		void operator()(const std::string& s) const
 		{ lua_pushstring(L, s.c_str()); }
-		void operator()(t_string const &s) const
+		void operator()(const t_string& s) const
 		{ luaW_pushtstring(L, s); }
 	};
 }//unnamed namespace for luaW_pushscalar_visitor
 
-void luaW_pushscalar(lua_State *L, config::attribute_value const &v)
+void luaW_pushscalar(lua_State *L, const config::attribute_value& v)
 {
 	v.apply_visitor(luaW_pushscalar_visitor(L));
 }
@@ -596,7 +596,7 @@ t_string luaW_checktstring(lua_State *L, int index)
 	return result;
 }
 
-void luaW_filltable(lua_State *L, config const &cfg)
+void luaW_filltable(lua_State *L, const config& cfg)
 {
 	if (!lua_checkstack(L, LUA_MINSTACK))
 		return;
@@ -687,7 +687,7 @@ map_location luaW_checklocation(lua_State *L, int index)
 	return result;
 }
 
-void luaW_pushconfig(lua_State *L, config const &cfg)
+void luaW_pushconfig(lua_State *L, const config& cfg)
 {
 	lua_newtable(L);
 	luaW_filltable(L, cfg);

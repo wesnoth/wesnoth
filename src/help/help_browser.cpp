@@ -87,7 +87,7 @@ void help_browser::adjust_layout()
 	set_dirty(true);
 }
 
-void help_browser::update_location(SDL_Rect const &)
+void help_browser::update_location(const SDL_Rect&)
 {
 	adjust_layout();
 }

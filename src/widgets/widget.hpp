@@ -26,8 +26,8 @@ namespace gui {
 class widget : public events::sdl_handler
 {
 public:
-	SDL_Rect const &location() const;
-	virtual void set_location(SDL_Rect const &rect);
+	const SDL_Rect& location() const;
+	virtual void set_location(const SDL_Rect& rect);
 	void set_location(int x, int y);
 	void set_width(int w);
 	void set_height(int h);
@@ -69,15 +69,15 @@ public:
 	virtual void process_tooltip_string(int mousex, int mousey);
 
 protected:
-	widget(widget const &o);
+	widget(const widget& o);
 	widget(CVideo& video, const bool auto_join=true);
 	virtual ~widget();
 
 	// During each relocation, this function should be called to register
 	// the rectangles the widget needs to refresh automatically
-	void bg_register(SDL_Rect const &rect);
+	void bg_register(const SDL_Rect& rect);
 	void bg_restore() const;
-	void bg_restore(SDL_Rect const &rect) const;
+	void bg_restore(const SDL_Rect& rect) const;
 	void bg_update();
 	void bg_cancel();
 
@@ -87,13 +87,13 @@ public:
 	virtual void draw();
 protected:
 	virtual void draw_contents() {}
-	virtual void update_location(SDL_Rect const &rect);
+	virtual void update_location(const SDL_Rect& rect);
 
 	const SDL_Rect* clip_rect() const;
 	virtual sdl_handler_vector member_handlers() { return sdl_handler::handler_members(); }
 
-	virtual void handle_event(SDL_Event const &);
-	virtual void handle_window_event(SDL_Event const &event);
+	virtual void handle_event(const SDL_Event&);
+	virtual void handle_window_event(const SDL_Event& event);
 	bool focus_;		// Should user input be ignored?
 
 	bool mouse_locked() const;

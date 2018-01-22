@@ -268,7 +268,7 @@ std::vector<std::tuple<t_string, t_string, t_string> > unit::ability_tooltips(bo
 	{
 		if ( !active_list || ability_active(ab.key, ab.cfg, loc_) )
 		{
-			t_string const &name =
+			const t_string& name =
 				gender_value(ab.cfg, gender_, "name", "female_name", "name").t_str();
 
 			if (!name.empty()) {
@@ -283,10 +283,10 @@ std::vector<std::tuple<t_string, t_string, t_string> > unit::ability_tooltips(bo
 		else
 		{
 			// See if an inactive name was specified.
-			config::attribute_value const &inactive_value =
+			const config::attribute_value& inactive_value =
 				gender_value(ab.cfg, gender_, "name_inactive",
 				             "female_name_inactive", "name_inactive");
-			t_string const &name = !inactive_value.blank() ? inactive_value.t_str() :
+			const t_string& name = !inactive_value.blank() ? inactive_value.t_str() :
 				gender_value(ab.cfg, gender_, "name", "female_name", "name").t_str();
 
 			if (!name.empty()) {
@@ -420,12 +420,12 @@ public:
 	// Constructor stores the default value.
 	get_ability_value_visitor(T def, const TFuncFormula& formula_handler) : def_(def), formula_handler_(formula_handler) {}
 
-	T operator()(boost::blank const &) const { return def_; }
+	T operator()(const boost::blank&) const { return def_; }
 	T operator()(bool)                 const { return def_; }
 	T operator()(int i)                const { return static_cast<T>(i); }
 	T operator()(unsigned long long u) const { return static_cast<T>(u); }
 	T operator()(double d)             const { return static_cast<T>(d); }
-	T operator()(t_string const &)     const { return def_; }
+	T operator()(const t_string&)     const { return def_; }
 	T operator()(const std::string& s) const
 	{
 		if(s.size() >= 2 && s[0] == '(') {
@@ -482,7 +482,7 @@ std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& k
 	int abs_max = 0;
 	int flat = 0;
 	int stack = 0;
-	for (unit_ability const &p : cfgs_)
+	for (const unit_ability& p : cfgs_)
 	{
 		int value = get_single_ability_value((*p.first)[key], def, p.second, loc(),[&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 			return formula.evaluate(callable).as_int();
@@ -649,7 +649,7 @@ std::vector<std::pair<t_string, t_string> > attack_type::special_tooltips(
 					active_list->push_back(true);
 			}
 		} else {
-			t_string const &name = default_value(sp.cfg, "name_inactive", "name").t_str();
+			const t_string& name = default_value(sp.cfg, "name_inactive", "name").t_str();
 			if (!name.empty()) {
 				res.emplace_back(name, default_value(sp.cfg, "description_inactive", "description").t_str() );
 				active_list->push_back(false);

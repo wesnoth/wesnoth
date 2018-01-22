@@ -1121,32 +1121,32 @@ void sim_gamestate_changed(action_result *result, bool gamestate_changed){
 } //end of namespace ai
 
 
-std::ostream &operator<<(std::ostream &s, ai::attack_result const &r) {
+std::ostream &operator<<(std::ostream &s, const ai::attack_result& r) {
 	s << r.do_describe();
 	return s;
 }
 
-std::ostream &operator<<(std::ostream &s, ai::move_result const &r) {
+std::ostream &operator<<(std::ostream &s, const ai::move_result& r) {
 	s << r.do_describe();
 	return s;
 }
 
-std::ostream &operator<<(std::ostream &s, ai::recall_result const &r) {
+std::ostream &operator<<(std::ostream &s, const ai::recall_result& r) {
 	s << r.do_describe();
 	return s;
 }
 
-std::ostream &operator<<(std::ostream &s, ai::recruit_result const &r) {
+std::ostream &operator<<(std::ostream &s, const ai::recruit_result& r) {
 	s << r.do_describe();
 	return s;
 }
 
-std::ostream &operator<<(std::ostream &s, ai::stopunit_result const &r) {
+std::ostream &operator<<(std::ostream &s, const ai::stopunit_result& r) {
 	s << r.do_describe();
 	return s;
 }
 
-std::ostream &operator<<(std::ostream &s, ai::synced_command_result const &r) {
+std::ostream &operator<<(std::ostream &s, const ai::synced_command_result& r) {
 	s << r.do_describe();
 	return s;
 }

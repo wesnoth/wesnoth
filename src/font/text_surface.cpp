@@ -134,7 +134,7 @@ void text_surface::measure() const
 	w_ = 0;
 	h_ = 0;
 
-	for(text_chunk const &chunk : chunks_)
+	for(const text_chunk& chunk : chunks_)
 	{
 		TTF_Font* ttfont = sdl_ttf::get_font(font_id(chunk.subset, font_size_, style_));
 		if(ttfont == nullptr) {
@@ -168,7 +168,7 @@ size_t text_surface::height() const
 	return h_;
 }
 
-std::vector<surface> const &text_surface::get_surfaces() const
+const std::vector<surface>& text_surface::get_surfaces() const
 {
 	if(initialized_)
 		return surfs_;
@@ -180,7 +180,7 @@ std::vector<surface> const &text_surface::get_surfaces() const
 	if(width() > max_text_line_width)
 		return surfs_;
 
-	for(text_chunk const &chunk : chunks_)
+	for(const text_chunk& chunk : chunks_)
 	{
 		TTF_Font* ttfont = sdl_ttf::get_font(font_id(chunk.subset, font_size_, style_));
 
@@ -192,7 +192,7 @@ std::vector<surface> const &text_surface::get_surfaces() const
 	return surfs_;
 }
 
-bool text_surface::operator==(text_surface const &t) const {
+bool text_surface::operator==(const text_surface& t) const {
 	return hash_ == t.hash_ && font_size_ == t.font_size_
 		&& color_ == t.color_ && style_ == t.style_ && str_ == t.str_;
 }

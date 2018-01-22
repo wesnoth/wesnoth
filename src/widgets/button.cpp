@@ -208,7 +208,7 @@ void button::calculate_size()
 		set_location(loc_image);
 		return;
 	}
-	SDL_Rect const &loc = location();
+	const SDL_Rect& loc = location();
 	bool change_size = loc.h == 0 || loc.w == 0;
 
 	if (!change_size) {
@@ -328,7 +328,7 @@ void button::draw_contents()
 		break;
 	}
 
-	SDL_Rect const &loc = location();
+	const SDL_Rect& loc = location();
 	SDL_Rect clipArea = loc;
 	const int texty = loc.y + loc.h / 2 - textRect_.h / 2 + offset;
 	int textx;
@@ -437,7 +437,7 @@ void button::set_label(const std::string& val)
 	set_dirty(true);
 }
 
-void button::mouse_motion(SDL_MouseMotionEvent const &event)
+void button::mouse_motion(const SDL_MouseMotionEvent& event)
 {
 	if (hit(event.x, event.y)) {
 		// the cursor is over the widget
@@ -471,7 +471,7 @@ void button::mouse_motion(SDL_MouseMotionEvent const &event)
 	}
 }
 
-void button::mouse_down(SDL_MouseButtonEvent const &event)
+void button::mouse_down(const SDL_MouseButtonEvent& event)
 {
 	if (hit(event.x, event.y) && event.button == SDL_BUTTON_LEFT) {
 
@@ -499,7 +499,7 @@ void button::release(){
 	draw_contents();
 }
 
-void button::mouse_up(SDL_MouseButtonEvent const &event)
+void button::mouse_up(const SDL_MouseButtonEvent& event)
 {
 	if (!(hit(event.x, event.y) && event.button == SDL_BUTTON_LEFT))
 		return;

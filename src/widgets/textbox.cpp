@@ -50,14 +50,14 @@ textbox::~textbox()
 {
 }
 
-void textbox::update_location(SDL_Rect const &rect)
+void textbox::update_location(const SDL_Rect& rect)
 {
 	scrollarea::update_location(rect);
 	update_text_cache(true);
 	set_dirty(true);
 }
 
-void textbox::set_inner_location(SDL_Rect const &rect)
+void textbox::set_inner_location(const SDL_Rect& rect)
 {
 	bg_register(rect);
 	if (text_image_.null()) return;
@@ -184,7 +184,7 @@ void textbox::draw_cursor(int pos) const
 
 void textbox::draw_contents()
 {
-	SDL_Rect const &loc = inner_location();
+	const SDL_Rect& loc = inner_location();
 
 	surface& surf = video().getSurface();
 
@@ -631,7 +631,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 		grabmouse_ = false;
 	}
 
-	SDL_Rect const &loc = inner_location();
+	const SDL_Rect& loc = inner_location();
 	bool clicked_inside = !mouse_locked() && (event.type == SDL_MOUSEBUTTONDOWN
 					   && (mousebuttons & SDL_BUTTON(1))
 					   && sdl::point_in_rect(mousex, mousey, loc));

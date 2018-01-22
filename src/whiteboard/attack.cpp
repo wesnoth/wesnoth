@@ -63,7 +63,7 @@ attack::attack(size_t team_index, bool hidden, unit& u, const map_location& targ
 	this->init();
 }
 
-attack::attack(config const& cfg, bool hidden)
+attack::attack(const config& cfg, bool hidden)
 	: move(cfg,hidden)
 	, target_hex_(cfg.child("target_hex_")["x"],cfg.child("target_hex_")["y"], wml_loc())
 	, weapon_choice_(cfg["weapon_choice_"].to_int(-1)) //default value: -1

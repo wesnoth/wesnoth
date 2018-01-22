@@ -1741,7 +1741,7 @@ surface blur_alpha_surface(const surface &surf, int depth)
 	return res;
 }
 
-surface cut_surface(const surface &surf, SDL_Rect const &r)
+surface cut_surface(const surface &surf, const SDL_Rect& r)
 {
 	if(surf == nullptr)
 		return nullptr;

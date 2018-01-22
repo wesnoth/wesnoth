@@ -66,7 +66,7 @@ recall::recall(size_t team_index, bool hidden, const unit& unit, const map_locat
 	this->init();
 }
 
-recall::recall(config const& cfg, bool hidden)
+recall::recall(const config& cfg, bool hidden)
 	: action(cfg,hidden)
 	, temp_unit_()
 	, recall_hex_(cfg.child("recall_hex_")["x"],cfg.child("recall_hex_")["y"], wml_loc())
@@ -173,7 +173,7 @@ void recall::remove_temp_modifier(unit_map& unit_map)
 	resources::gameboard->teams().at(team_index()).recall_list().add(temp_unit_);
 }
 
-void recall::draw_hex(map_location const& hex)
+void recall::draw_hex(const map_location& hex)
 {
 	if (hex == recall_hex_)
 	{

@@ -80,7 +80,7 @@ void widget::bg_cancel()
 	restorer_.clear();
 }
 
-void widget::set_location(SDL_Rect const &rect)
+void widget::set_location(const SDL_Rect& rect)
 {
 	if(rect_.x == rect.x && rect_.y == rect.y && rect_.w == rect.w && rect_.h == rect.h)
 		return;
@@ -94,7 +94,7 @@ void widget::set_location(SDL_Rect const &rect)
 	update_location(rect);
 }
 
-void widget::update_location(SDL_Rect const &rect)
+void widget::update_location(const SDL_Rect& rect)
 {
 	bg_register(rect);
 }
@@ -104,7 +104,7 @@ const SDL_Rect* widget::clip_rect() const
 	return clip_ ? &clip_rect_ : nullptr;
 }
 
-void widget::bg_register(SDL_Rect const &rect)
+void widget::bg_register(const SDL_Rect& rect)
 {
 	restorer_.emplace_back(&video(), rect);
 }
@@ -258,7 +258,7 @@ void widget::bg_restore() const
 	}
 }
 
-void widget::bg_restore(SDL_Rect const &rect) const
+void widget::bg_restore(const SDL_Rect& rect) const
 {
 	clip_rect_setter clipper(video().getSurface(), &clip_rect_, clip_);
 
@@ -335,14 +335,14 @@ void widget::process_tooltip_string(int mousex, int mousey)
 	}
 }
 
-void widget::handle_event(SDL_Event const &event) {
+void widget::handle_event(const SDL_Event& event) {
 	if (event.type == DRAW_ALL_EVENT) {
 		set_dirty();
 		draw();
 	}
 }
 
-void widget::handle_window_event(SDL_Event const &event) {
+void widget::handle_window_event(const SDL_Event& event) {
 	if (event.type == SDL_WINDOWEVENT) {
 		switch (event.window.event) {
 		case SDL_WINDOWEVENT_RESIZED:

@@ -195,9 +195,9 @@ public:
 
 
 	template<typename T>
-	bool operator()(T const &) const { return false; }
+	bool operator()(const T&) const { return false; }
 
-	bool operator()(t_string const&)    const { return true; }
+	bool operator()(const t_string&)    const { return true; }
 
 	bool operator()(const std::string& s) const
 	{

@@ -72,7 +72,7 @@ void arrow::show()
 		SCREEN->add_arrow(*this);
 }
 
-void arrow::set_path(arrow_path_t const& path)
+void arrow::set_path(const arrow_path_t& path)
 {
 	if (valid_path(path))
 	{
@@ -120,23 +120,23 @@ void arrow::set_style(const std::string& style)
 	}
 }
 
-arrow_path_t const& arrow::get_path() const
+const arrow_path_t& arrow::get_path() const
 {
 	return path_;
 }
 
-arrow_path_t const& arrow::get_previous_path() const
+const arrow_path_t& arrow::get_previous_path() const
 {
 	return previous_path_;
 }
 
-bool arrow::path_contains(map_location const& hex) const
+bool arrow::path_contains(const map_location& hex) const
 {
 	bool contains = symbols_map_.find(hex) != symbols_map_.end();
 	return contains;
 }
 
-void arrow::draw_hex(map_location const& hex)
+void arrow::draw_hex(const map_location& hex)
 {
 	if(path_contains(hex))
 	{
@@ -145,7 +145,7 @@ void arrow::draw_hex(map_location const& hex)
 	}
 }
 
-bool arrow::valid_path(arrow_path_t const& path)
+bool arrow::valid_path(const arrow_path_t& path)
 {
 	if (path.size() >= 2)
 		return true;
@@ -283,11 +283,11 @@ void arrow::update_symbols()
 	}
 }
 
-void arrow::invalidate_arrow_path(arrow_path_t const& path)
+void arrow::invalidate_arrow_path(const arrow_path_t& path)
 {
 	if(!SCREEN) return;
 
-	for (map_location const& loc : path)
+	for (const map_location& loc : path)
 	{
 		SCREEN->invalidate(loc);
 	}

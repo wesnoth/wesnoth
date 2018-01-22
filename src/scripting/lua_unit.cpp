@@ -263,7 +263,7 @@ static int impl_unit_get(lua_State *L)
 		return luaL_argerror(L, 1, "unknown unit");
 	}
 
-	unit const &u = *pu;
+	const unit& u = *pu;
 
 	// Find the corresponding attribute.
 	return_int_attrib("x", u.get_location().wml_x());

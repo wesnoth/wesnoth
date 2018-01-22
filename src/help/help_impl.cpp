@@ -252,7 +252,7 @@ section parse_config(const config *cfg)
 {
 	section sec;
 	if (cfg != nullptr) {
-		config const &toplevel_cfg = cfg->child("toplevel");
+		const config& toplevel_cfg = cfg->child("toplevel");
 		parse_config_internal(cfg, toplevel_cfg ? &toplevel_cfg : nullptr, sec);
 	}
 	return sec;
@@ -332,7 +332,7 @@ topic_text::~topic_text()
 		delete generator_;
 }
 
-topic_text::topic_text(topic_text const &t): parsed_text_(t.parsed_text_), generator_(t.generator_)
+topic_text::topic_text(const topic_text& t): parsed_text_(t.parsed_text_), generator_(t.generator_)
 {
 	if (generator_)
 		++generator_->count;
@@ -510,10 +510,10 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 			desc_vecs[1] = &type.adv_ability_tooltips();
 
 			for(int i=0; i<2; ++i) {
-				std::vector<t_string> const& abil_vec = *abil_vecs[i];
-				std::vector<t_string> const& desc_vec = *desc_vecs[i];
+				const std::vector<t_string>& abil_vec = *abil_vecs[i];
+				const std::vector<t_string>& desc_vec = *desc_vecs[i];
 				for(size_t j=0; j < abil_vec.size(); ++j) {
-					t_string const& abil_name = abil_vec[j];
+					const t_string& abil_name = abil_vec[j];
 					const std::string abil_desc =
 						j >= desc_vec.size() ? "" : desc_vec[j].str();
 
@@ -1030,7 +1030,7 @@ std::string generate_about_text()
 
 std::string generate_contents_links(const std::string& section_name, config const *help_cfg)
 {
-	config const &section_cfg = help_cfg->find_child("section", "id", section_name);
+	const config& section_cfg = help_cfg->find_child("section", "id", section_name);
 	if (!section_cfg) {
 		return std::string();
 	}
@@ -1046,7 +1046,7 @@ std::string generate_contents_links(const std::string& section_name, config cons
 		std::vector<std::string>::iterator t;
 		// Find all topics in this section.
 		for (t = topics.begin(); t != topics.end(); ++t) {
-			if (config const &topic_cfg = help_cfg->find_child("topic", "id", *t)) {
+			if (const config& topic_cfg = help_cfg->find_child("topic", "id", *t)) {
 				std::string id = topic_cfg["id"];
 				if (is_visible_id(id))
 					topics_links.emplace_back(topic_cfg["title"], id);

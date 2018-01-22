@@ -252,7 +252,7 @@ void class_tag::printl(std::ostream &os,int level, int step){
 	 return nullptr;
 
  }
-// class_tag & class_tag::operator= (class_tag const& t){
+// class_tag & class_tag::operator= (const class_tag& t){
 //	 if (&t != this){
 //		 name_ = t.name_;
 //		 min_ = t.min_;

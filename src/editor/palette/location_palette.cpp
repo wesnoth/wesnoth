@@ -64,7 +64,7 @@ public:
 		return sdl::point_in_rect(x, y, location());
 	}
 
-	void mouse_up(SDL_MouseButtonEvent const &e)
+	void mouse_up(const SDL_MouseButtonEvent& e)
 	{
 		if (!(hit(e.x, e.y)))
 			return;

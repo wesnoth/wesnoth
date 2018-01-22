@@ -67,7 +67,7 @@ REGISTER_DIALOG(simple_item_selector)
 
 simple_item_selector::simple_item_selector(const std::string& title,
 											 const std::string& message,
-											 list_type const& items,
+											 const list_type& items,
 											 bool title_uses_markup,
 											 bool message_uses_markup)
 	: index_(-1)

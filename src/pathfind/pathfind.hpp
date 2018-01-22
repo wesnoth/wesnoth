@@ -49,8 +49,8 @@ map_location find_vacant_tile(const map_location& loc,
 map_location find_vacant_castle(const unit & leader);
 
 /** Determines if a given location is in an enemy zone of control. */
-bool enemy_zoc(team const &current_team, map_location const &loc,
-               team const &viewing_team, bool see_all=false);
+bool enemy_zoc(const team& current_team, const map_location& loc,
+               const team& viewing_team, bool see_all=false);
 
 
 struct cost_calculator
@@ -105,7 +105,7 @@ struct paths
 struct vision_path : public paths
 {
 	/// Construct a list of seen hexes for a unit.
-	vision_path(const unit& viewer, map_location const &loc,
+	vision_path(const unit& viewer, const map_location& loc,
 	            const std::map<map_location, int>& jamming_map);
 	vision_path(const movetype::terrain_costs & view_costs, bool slowed,
 	            int sight_range, const map_location & loc,
@@ -122,7 +122,7 @@ struct vision_path : public paths
 struct jamming_path : public paths
 {
 	/// Construct a list of jammed hexes for a unit.
-	jamming_path(const unit& jammer, map_location const &loc);
+	jamming_path(const unit& jammer, const map_location& loc);
 	virtual ~jamming_path();
 };
 
@@ -189,7 +189,7 @@ struct marked_route
 	mark_map marks;
 };
 
-plain_route a_star_search(map_location const &src, map_location const &dst,
+plain_route a_star_search(const map_location& src, const map_location& dst,
 		double stop_at, const cost_calculator& costCalculator,
 		const size_t parWidth, const size_t parHeight,
 		const teleport_map* teleports = nullptr, bool border = false);
@@ -209,10 +209,10 @@ struct shortest_path_calculator : cost_calculator
 	virtual double cost(const map_location& loc, const double so_far) const;
 
 private:
-	unit const &unit_;
-	team const &viewing_team_;
-	std::vector<team> const &teams_;
-	gamemap const &map_;
+	const unit& unit_;
+	const team& viewing_team_;
+	const std::vector<team>& teams_;
+	const gamemap& map_;
 	const int movement_left_;
 	const int total_movement_;
 	bool const ignore_unit_;
@@ -229,8 +229,8 @@ private:
 	const movetype &movement_type_;
 	const int movement_left_;
 	const int total_movement_;
-	team const &viewing_team_;
-	gamemap const &map_;
+	const team& viewing_team_;
+	const gamemap& map_;
 };
 
 /**
@@ -243,8 +243,8 @@ struct emergency_path_calculator : cost_calculator
 	virtual double cost(const map_location& loc, const double so_far) const;
 
 private:
-	unit const &unit_;
-	gamemap const &map_;
+	const unit& unit_;
+	const gamemap& map_;
 };
 
 /**

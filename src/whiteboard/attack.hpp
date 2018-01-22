@@ -28,7 +28,7 @@ class attack: public move
 public:
 	attack(size_t team_index, bool hidden, unit& mover, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
-	attack(config const&, bool hidden); // For deserialization
+	attack(const config&, bool hidden); // For deserialization
 	virtual ~attack();
 
 	virtual std::ostream& print(std::ostream& s) const;
@@ -55,7 +55,7 @@ public:
 	/** Redrawing function, called each time the action situation might have changed. */
 	virtual void redraw();
 
-	map_location const& get_target_hex() const {return target_hex_; }
+	const map_location& get_target_hex() const {return target_hex_; }
 
 	virtual config to_config() const;
 

@@ -117,10 +117,10 @@ class logger {
 	int severity_;
 public:
 	logger(char const *name, int severity): name_(name), severity_(severity) {}
-	std::ostream &operator()(log_domain const &domain,
+	std::ostream &operator()(const log_domain& domain,
 		bool show_names = true, bool do_indent = false) const;
 
-	bool dont_log(log_domain const &domain) const
+	bool dont_log(const log_domain& domain) const
 	{
 		return severity_ > domain.domain_->second;
 	}
@@ -150,12 +150,12 @@ class scope_logger
 	std::ostream *output_;
 	std::string str_;
 public:
-	scope_logger(log_domain const &domain, const char* str) :
+	scope_logger(const log_domain& domain, const char* str) :
 		output_(nullptr)
 	{
 		if (!debug().dont_log(domain)) do_log_entry(domain, str);
 	}
-	scope_logger(log_domain const &domain, const std::string& str) :
+	scope_logger(const log_domain& domain, const std::string& str) :
 		output_(nullptr)
 	{
 		if (!debug().dont_log(domain)) do_log_entry(domain, str);
@@ -166,7 +166,7 @@ public:
 	}
 	void do_indent() const;
 private:
-	void do_log_entry(log_domain const &domain, const std::string& str) NOEXCEPT;
+	void do_log_entry(const log_domain& domain, const std::string& str) NOEXCEPT;
 	void do_log_exit() NOEXCEPT;
 };
 

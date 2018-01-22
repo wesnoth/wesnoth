@@ -222,7 +222,7 @@ void tristate_button::draw_contents() {
 	image = base;
 
 	const int image_w = image->w;
-	SDL_Rect const &loc = location();
+	const SDL_Rect& loc = location();
 	SDL_Rect clipArea = loc;
 	const int texty = loc.y + loc.h / 2 - textRect_.h / 2 + offset;
 	int textx;
@@ -266,7 +266,7 @@ bool tristate_button::hit(int x, int y) const {
 	return sdl::point_in_rect(x, y, location());
 }
 
-void tristate_button::mouse_motion(SDL_MouseMotionEvent const &event) {
+void tristate_button::mouse_motion(const SDL_MouseMotionEvent& event) {
 
 	if (hit(event.x, event.y))
 	{ // the cursor is over the widget
@@ -321,7 +321,7 @@ void tristate_button::mouse_motion(SDL_MouseMotionEvent const &event) {
 	}
 }
 
-void tristate_button::mouse_down(SDL_MouseButtonEvent const &event) {
+void tristate_button::mouse_down(const SDL_MouseButtonEvent& event) {
 
 	if (!hit(event.x, event.y))
 		return;
@@ -347,7 +347,7 @@ void tristate_button::release() {
 	draw_contents();
 }
 
-void tristate_button::mouse_up(SDL_MouseButtonEvent const &event) {
+void tristate_button::mouse_up(const SDL_MouseButtonEvent& event) {
 
 	if (!(hit(event.x, event.y)))
 		return;

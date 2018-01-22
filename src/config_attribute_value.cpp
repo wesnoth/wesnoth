@@ -256,13 +256,13 @@ public:
 	// Constructor stores the default value.
 	attribute_numeric_visitor(T def) : def_(def) {}
 
-	T operator()(boost::blank const &) const { return def_; }
+	T operator()(const boost::blank&) const { return def_; }
 	T operator()(bool)                 const { return def_; }
 	T operator()(int i)                const { return static_cast<T>(i); }
 	T operator()(unsigned long long u) const { return static_cast<T>(u); }
 	T operator()(double d)             const { return static_cast<T>(d); }
 	T operator()(const std::string& s) const { return lexical_cast_default<T>(s, def_); }
-	T operator()(t_string const &)     const { return def_; }
+	T operator()(const t_string&)     const { return def_; }
 
 private:
 	const T def_;
@@ -314,7 +314,7 @@ public:
 	std::string operator()(unsigned long long u) const { return lexical_cast<std::string>(u); }
 	std::string operator()(double d)             const { return lexical_cast<std::string>(d); }
 	std::string operator()(const std::string& s) const { return s; }
-	std::string operator()(t_string const &s)    const { return s.str(); }
+	std::string operator()(const t_string& s)    const { return s.str(); }
 };
 
 std::string config_attribute_value::str(const std::string& fallback) const

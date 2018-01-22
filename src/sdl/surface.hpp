@@ -107,7 +107,7 @@ struct surface_restorer
 	~surface_restorer();
 
 	void restore() const;
-	void restore(SDL_Rect const &dst) const;
+	void restore(const SDL_Rect& dst) const;
 	void update();
 	void cancel();
 

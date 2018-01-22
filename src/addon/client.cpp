@@ -481,7 +481,7 @@ addons_client::install_result addons_client::install_addon_with_checks(const add
 
 bool addons_client::update_last_error(config& response_cfg)
 {
-	if(config const &error = response_cfg.child("error")) {
+	if(const config& error = response_cfg.child("error")) {
 		this->last_error_ = font::escape_text(error["message"].str());
 		this->last_error_data_ = font::escape_text(error["extra_data"].str());
 		ERR_ADDONS << "server error: " << error << '\n';

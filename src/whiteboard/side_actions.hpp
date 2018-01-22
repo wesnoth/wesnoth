@@ -159,7 +159,7 @@ public:
 	template <typename T>
 	typename action_set::index<T>::type& get(){ return actions_.get<T>(); }
 	template <typename T>
-	typename action_set::index<T>::type const& get() const { return actions_.get<T>(); }
+	typename const action_set::index<T>::type& get() const { return actions_.get<T>(); }
 
 	/**
 	 * Projects an iterator on a given index.
@@ -252,7 +252,7 @@ public:
 	size_t turn_size(size_t turn_num) const { return turn_end(turn_num) - turn_begin(turn_num); }
 
 	/** Get the underlying action container */
-	action_set const& actions() const { return actions_; }
+	const action_set& actions() const { return actions_; }
 
 
 private:
@@ -464,25 +464,25 @@ public:
 	 * Finds the first action that belongs to this unit, starting the search at the specified position.
 	 * @return The position, or end() if not found.
 	 */
-	iterator find_first_action_of(unit const& unit, iterator start_position);
+	iterator find_first_action_of(const unit& unit, iterator start_position);
 	/** Variant of this method that always start searching at the beginning of the queue */
-	iterator find_first_action_of(unit const& unit){ return find_first_action_of(unit, begin()); }
+	iterator find_first_action_of(const unit& unit){ return find_first_action_of(unit, begin()); }
 
 	/**
 	 * Finds the last action that belongs to this unit, starting the search backwards from the specified position.
 	 * @return The position, or end() if not found.
 	 */
-	iterator find_last_action_of(unit const& unit, iterator start_position);
+	iterator find_last_action_of(const unit& unit, iterator start_position);
 	/** const variant of the previous function */
-	const_iterator find_last_action_of(unit const& unit, const_iterator start_position) const;
+	const_iterator find_last_action_of(const unit& unit, const_iterator start_position) const;
 	/** Variant of the previous method that always start searching at the end of the queue */
-	iterator find_last_action_of(unit const& unit);
+	iterator find_last_action_of(const unit& unit);
 	/** const variant of the previous function */
-	const_iterator find_last_action_of(unit const& unit) const;
+	const_iterator find_last_action_of(const unit& unit) const;
 
-	bool unit_has_actions(unit const& unit);
-	size_t count_actions_of(unit const& unit);
-	std::deque<action_ptr> actions_of(unit const& unit);
+	bool unit_has_actions(const unit& unit);
+	size_t count_actions_of(const unit& unit);
+	std::deque<action_ptr> actions_of(const unit& unit);
 
 	/**
 	 * Determines the appropriate turn number for the next action planned for this unit
@@ -491,7 +491,7 @@ public:
 	 *
 	 * @retval 0 if the unit doesn't have any planned action
 	 */
-	size_t get_turn_num_of(unit const&) const;
+	size_t get_turn_num_of(const unit&) const;
 
 	/** Used to track gold spending by recruits/recalls when building the future unit map */
 	int get_gold_spent() const { return gold_spent_; }
@@ -533,7 +533,7 @@ public:
 	 * Queues a suppose_dead to be executed last
 	 * @return The queued suppose_dead's position (an iterator to it)
 	 */
-	iterator queue_suppose_dead(size_t turn_num, unit& curr_unit, map_location const& loc);
+	iterator queue_suppose_dead(size_t turn_num, unit& curr_unit, const map_location& loc);
 
 	/**
 	 * Network code. A net_cmd object (a config in disguise) represents a modification
@@ -542,12 +542,12 @@ public:
 	 * convenient for building specific types of net_cmds.
 	 */
 	typedef config net_cmd;
-	void execute_net_cmd(net_cmd const&);
+	void execute_net_cmd(const net_cmd&);
 	net_cmd make_net_cmd_insert(size_t turn_num, size_t pos, action_const_ptr) const;
-	net_cmd make_net_cmd_insert(const_iterator const& pos, action_const_ptr) const;
-	net_cmd make_net_cmd_replace(const_iterator const& pos, action_const_ptr) const;
-	net_cmd make_net_cmd_remove(const_iterator const& pos) const;
-	net_cmd make_net_cmd_bump_later(const_iterator const& pos) const;
+	net_cmd make_net_cmd_insert(const const_iterator& pos, action_const_ptr) const;
+	net_cmd make_net_cmd_replace(const const_iterator& pos, action_const_ptr) const;
+	net_cmd make_net_cmd_remove(const const_iterator& pos) const;
+	net_cmd make_net_cmd_bump_later(const const_iterator& pos) const;
 	net_cmd make_net_cmd_clear() const;
 	net_cmd make_net_cmd_refresh() const;
 
@@ -556,7 +556,7 @@ private:
 	iterator synced_erase(iterator itor);
 	iterator synced_insert(iterator itor, action_ptr to_insert);
 	iterator synced_enqueue(size_t turn_num, action_ptr to_insert);
-	iterator safe_erase(iterator const& itor);
+	iterator safe_erase(const iterator& itor);
 
 	container actions_;
 
@@ -570,7 +570,7 @@ private:
 };
 
 /** Dumps side_actions on a stream, for debug purposes. */
-std::ostream& operator<<(std::ostream &out, wb::side_actions const &side_actions);
+std::ostream& operator<<(std::ostream &out, const wb::side_actions& side_actions);
 
 struct side_actions::numbers_t
 {

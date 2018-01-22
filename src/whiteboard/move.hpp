@@ -33,7 +33,7 @@ class move : public action
 public:
 	move(size_t team_index, bool hidden, unit& mover, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
-	move(config const&, bool hidden); // For deserialization
+	move(const config&, bool hidden); // For deserialization
 	virtual ~move();
 
 	virtual std::ostream& print(std::ostream& s) const;
@@ -72,7 +72,7 @@ public:
 	virtual void remove_temp_modifier(unit_map& unit_map);
 
 	/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
-	virtual void draw_hex(map_location const& hex);
+	virtual void draw_hex(const map_location& hex);
 	/** Redrawing function, called each time the action situation might have changed. */
 	void redraw();
 

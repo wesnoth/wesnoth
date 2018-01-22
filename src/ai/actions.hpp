@@ -453,10 +453,10 @@ static std::map<int,std::string> error_names_;
 
 } //end of namespace ai
 
-std::ostream &operator<<(std::ostream &s, ai::attack_result const &r);
-std::ostream &operator<<(std::ostream &s, ai::move_result const &r);
-std::ostream &operator<<(std::ostream &s, ai::recall_result const &r);
-std::ostream &operator<<(std::ostream &s, ai::recruit_result const &r);
-std::ostream &operator<<(std::ostream &s, ai::stopunit_result const &r);
-std::ostream &operator<<(std::ostream &s, ai::synced_command_result const &r);
+std::ostream &operator<<(std::ostream &s, const ai::attack_result& r);
+std::ostream &operator<<(std::ostream &s, const ai::move_result& r);
+std::ostream &operator<<(std::ostream &s, const ai::recall_result& r);
+std::ostream &operator<<(std::ostream &s, const ai::recruit_result& r);
+std::ostream &operator<<(std::ostream &s, const ai::stopunit_result& r);
+std::ostream &operator<<(std::ostream &s, const ai::synced_command_result& r);
 

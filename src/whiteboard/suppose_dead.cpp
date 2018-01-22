@@ -57,7 +57,7 @@ std::ostream& suppose_dead::print(std::ostream &s) const
 	return s;
 }
 
-suppose_dead::suppose_dead(size_t team_index, bool hidden, unit& curr_unit, map_location const& loc)
+suppose_dead::suppose_dead(size_t team_index, bool hidden, unit& curr_unit, const map_location& loc)
 	: action(team_index,hidden)
 	, unit_underlying_id_(curr_unit.underlying_id())
 	, unit_id_(curr_unit.id())
@@ -66,7 +66,7 @@ suppose_dead::suppose_dead(size_t team_index, bool hidden, unit& curr_unit, map_
 	this->init();
 }
 
-suppose_dead::suppose_dead(config const& cfg, bool hidden)
+suppose_dead::suppose_dead(const config& cfg, bool hidden)
 	: action(cfg,hidden)
 	, unit_underlying_id_(0)
 	, unit_id_()

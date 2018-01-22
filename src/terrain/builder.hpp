@@ -442,7 +442,7 @@ private:
 		 */
 		bool local;
 
-		bool operator<(building_rule const& that) const
+		bool operator<(const building_rule& that) const
 		{
 			return precedence < that.precedence;
 		}

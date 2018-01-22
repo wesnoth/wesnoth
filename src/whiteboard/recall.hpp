@@ -28,7 +28,7 @@ class recall: public action
 {
 public:
 	recall(size_t team_index, bool hidden, const unit& unit, const map_location& recall_hex);
-	recall(config const&, bool hidden); // For deserialization
+	recall(const config&, bool hidden); // For deserialization
 	virtual ~recall();
 
 	virtual std::ostream& print(std::ostream& s) const;

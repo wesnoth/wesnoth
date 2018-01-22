@@ -86,11 +86,11 @@ struct preproc_define
 
 	static preproc_map::value_type read_pair(const config&);
 
-	bool operator==(preproc_define const&) const;
+	bool operator==(const preproc_define&) const;
 
-	bool operator<(preproc_define const&) const;
+	bool operator<(const preproc_define&) const;
 
-	bool operator!=(preproc_define const& v) const
+	bool operator!=(const preproc_define& v) const
 	{
 		return !operator==(v);
 	}

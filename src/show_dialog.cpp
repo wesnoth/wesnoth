@@ -112,7 +112,7 @@ dialog_frame::dimension_measurements::dimension_measurements() :
 	interior(sdl::empty_rect), exterior(sdl::empty_rect), title(sdl::empty_rect), button_row(sdl::empty_rect)
 {}
 
-dialog_frame::dimension_measurements dialog_frame::layout(SDL_Rect const& rect) {
+dialog_frame::dimension_measurements dialog_frame::layout(const SDL_Rect& rect) {
 	return layout(rect.x, rect.y, rect.w, rect.h);
 }
 

@@ -1242,10 +1242,10 @@ void game::process_whiteboard(simple_wml::document& data, const socket_ptr user)
 		return;
 	}
 
-	simple_wml::node const& wb_node = *data.child("whiteboard");
+	const simple_wml::node& wb_node = *data.child("whiteboard");
 
 	// Ensure "side" attribute match with user
-	simple_wml::string_span const& to_sides = wb_node["to_sides"];
+	const simple_wml::string_span& to_sides = wb_node["to_sides"];
 	size_t const side_index = wb_node["side"].to_int() - 1;
 
 	if(side_index >= sides_.size() || sides_[side_index] != user) {
@@ -1269,7 +1269,7 @@ void game::process_change_turns_wml(simple_wml::document& data, const socket_ptr
 		return;
 	}
 
-	simple_wml::node const& ctw_node = *data.child("change_turns_wml");
+	const simple_wml::node& ctw_node = *data.child("change_turns_wml");
 	const int current_turn = ctw_node["current"].to_int();
 	const int num_turns = ctw_node["max"].to_int();
 	if(num_turns > 10000 || current_turn > 10000) {

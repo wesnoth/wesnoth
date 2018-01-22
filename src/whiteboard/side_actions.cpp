@@ -47,7 +47,7 @@ namespace wb
 {
 
 /** Dumps side_actions on a stream, for debug purposes. */
-std::ostream &operator<<(std::ostream &out, wb::side_actions const& side_actions)
+std::ostream &operator<<(std::ostream &out, const wb::side_actions& side_actions)
 {
 	out << "Content of side_actions:";
 	for(size_t turn = 0; turn < side_actions.num_turns(); ++turn) {
@@ -559,21 +559,21 @@ side_actions::iterator side_actions::find_first_action_at(map_location hex)
 	return find_first_action_of(actions_.get<container::by_hex>().equal_range(hex), begin(), std::less<iterator>());
 }
 
-side_actions::iterator side_actions::find_first_action_of(unit const& unit, side_actions::iterator start_position)
+side_actions::iterator side_actions::find_first_action_of(const unit& unit, side_actions::iterator start_position)
 {
 	return find_first_action_of(actions_.get<container::by_unit>().equal_range(unit.underlying_id()), start_position, std::less<iterator>());
 }
 
-side_actions::const_iterator side_actions::find_last_action_of(unit const& unit, side_actions::const_iterator start_position) const {
+side_actions::const_iterator side_actions::find_last_action_of(const unit& unit, side_actions::const_iterator start_position) const {
 	return find_first_action_of(actions_.get<container::by_unit>().equal_range(unit.underlying_id()), start_position, std::greater<iterator>());
 }
 
-side_actions::iterator side_actions::find_last_action_of(unit const& unit, side_actions::iterator start_position)
+side_actions::iterator side_actions::find_last_action_of(const unit& unit, side_actions::iterator start_position)
 {
 	return find_first_action_of(actions_.get<container::by_unit>().equal_range(unit.underlying_id()), start_position, std::greater<iterator>());
 }
 
-side_actions::const_iterator side_actions::find_last_action_of(unit const& unit) const
+side_actions::const_iterator side_actions::find_last_action_of(const unit& unit) const
 {
 	if(end() == begin()) {
 		return end();
@@ -581,7 +581,7 @@ side_actions::const_iterator side_actions::find_last_action_of(unit const& unit)
 	return find_last_action_of(unit, end() - 1);
 }
 
-side_actions::iterator side_actions::find_last_action_of(unit const& unit)
+side_actions::iterator side_actions::find_last_action_of(const unit& unit)
 {
 	if(end() == begin()) {
 		return end();
@@ -589,17 +589,17 @@ side_actions::iterator side_actions::find_last_action_of(unit const& unit)
 	return find_last_action_of(unit, end() - 1);
 }
 
-bool side_actions::unit_has_actions(unit const& unit)
+bool side_actions::unit_has_actions(const unit& unit)
 {
 	return actions_.get<container::by_unit>().find(unit.underlying_id()) != actions_.get<container::by_unit>().end();
 }
 
-size_t side_actions::count_actions_of(unit const& unit)
+size_t side_actions::count_actions_of(const unit& unit)
 {
 	return actions_.get<container::by_unit>().count(unit.underlying_id());
 }
 
-std::deque<action_ptr> side_actions::actions_of(unit const &target)
+std::deque<action_ptr> side_actions::actions_of(const unit& target)
 {
 	typedef container::action_set::index<container::by_unit>::type::iterator unit_iterator;
 	std::pair<unit_iterator, unit_iterator> action_its = actions_.get<container::by_unit>().equal_range(target.underlying_id());
@@ -608,7 +608,7 @@ std::deque<action_ptr> side_actions::actions_of(unit const &target)
 	return actions;
 }
 
-size_t side_actions::get_turn_num_of(unit const& u) const
+size_t side_actions::get_turn_num_of(const unit& u) const
 {
 	const_iterator itor = find_last_action_of(u);
 	if(itor == end()) {
@@ -664,7 +664,7 @@ side_actions::iterator side_actions::synced_enqueue(size_t turn_num, action_ptr 
 	return result;
 }
 
-side_actions::iterator side_actions::safe_erase(iterator const& itor)
+side_actions::iterator side_actions::safe_erase(const iterator& itor)
 {
 	action_ptr action = *itor;
 	resources::whiteboard->pre_delete_action(action); //misc cleanup
@@ -696,13 +696,13 @@ side_actions::iterator side_actions::queue_recall(size_t turn, const unit& unit,
 	return queue_action(turn, new_recall);
 }
 
-side_actions::iterator side_actions::queue_suppose_dead(size_t turn, unit& curr_unit, map_location const& loc)
+side_actions::iterator side_actions::queue_suppose_dead(size_t turn, unit& curr_unit, const map_location& loc)
 {
 	suppose_dead_ptr new_suppose_dead(std::make_shared<suppose_dead>(team_index(), hidden_, std::ref(curr_unit), loc));
 	return queue_action(turn, new_suppose_dead);
 }
 
-void side_actions::execute_net_cmd(net_cmd const& cmd)
+void side_actions::execute_net_cmd(const net_cmd& cmd)
 {
 	std::string type = cmd["type"];
 
@@ -792,7 +792,7 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 	} else if(type=="refresh") {
 		LOG_WB << "Command received: refresh\n";
 		clear();
-		for(net_cmd const& sub_cmd : cmd.child_range("net_cmd"))
+		for(const net_cmd& sub_cmd : cmd.child_range("net_cmd"))
 			execute_net_cmd(sub_cmd);
 	} else {
 		ERR_WB << "side_actions::execute_network_command(): received invalid type!" << std::endl;
@@ -811,7 +811,7 @@ side_actions::net_cmd side_actions::make_net_cmd_insert(size_t turn_num, size_t 
 	result.add_child("action", act->to_config());
 	return result;
 }
-side_actions::net_cmd side_actions::make_net_cmd_insert(const_iterator const& pos, action_const_ptr act) const
+side_actions::net_cmd side_actions::make_net_cmd_insert(const const_iterator& pos, action_const_ptr act) const
 {
 	if(pos == begin()) {
 		return make_net_cmd_insert(0,0,act);
@@ -820,7 +820,7 @@ side_actions::net_cmd side_actions::make_net_cmd_insert(const_iterator const& po
 		return make_net_cmd_insert(get_turn(prec), actions_.position_in_turn(prec)+1, act);
 	}
 }
-side_actions::net_cmd side_actions::make_net_cmd_replace(const_iterator const& pos, action_const_ptr act) const
+side_actions::net_cmd side_actions::make_net_cmd_replace(const const_iterator& pos, action_const_ptr act) const
 {
 	net_cmd result;
 	result["type"] = "replace";
@@ -829,7 +829,7 @@ side_actions::net_cmd side_actions::make_net_cmd_replace(const_iterator const& p
 	result.add_child("action", act->to_config());
 	return result;
 }
-side_actions::net_cmd side_actions::make_net_cmd_remove(const_iterator const& pos) const
+side_actions::net_cmd side_actions::make_net_cmd_remove(const const_iterator& pos) const
 {
 	net_cmd result;
 	result["type"] = "remove";
@@ -837,7 +837,7 @@ side_actions::net_cmd side_actions::make_net_cmd_remove(const_iterator const& po
 	result["pos"] = static_cast<int>(actions_.position_in_turn(pos));
 	return result;
 }
-side_actions::net_cmd side_actions::make_net_cmd_bump_later(const_iterator const& pos) const
+side_actions::net_cmd side_actions::make_net_cmd_bump_later(const const_iterator& pos) const
 {
 	net_cmd result;
 	result["type"] = "bump_later";
@@ -867,7 +867,7 @@ void side_actions::raw_turn_shift()
 {
 	//find units who still have plans for turn 0 (i.e. were too lazy to finish their jobs)
 	std::set<unit_const_ptr> lazy_units;
-	for(action_ptr const& act : iter_turn(0)) {
+	for(const action_ptr& act : iter_turn(0)) {
 		unit_const_ptr u = act->get_unit();
 		if(u) {
 			lazy_units.insert(u);

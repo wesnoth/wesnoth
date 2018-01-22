@@ -297,7 +297,7 @@ public:
 								class_tag & root) ;
 #endif
 
-//	class_tag & operator= (class_tag const& );
+//	class_tag & operator= (const class_tag&);
 
 private:
 	/** name of tag*/

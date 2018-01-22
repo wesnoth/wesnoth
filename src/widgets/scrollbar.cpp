@@ -81,7 +81,7 @@ sdl_handler_vector scrollbar::handler_members()
 	return h;
 }
 
-void scrollbar::update_location(SDL_Rect const &rect)
+void scrollbar::update_location(const SDL_Rect& rect)
 {
 	int uh = uparrow_.height(), dh = downarrow_.height();
 	uparrow_.set_location(rect.x, rect.y);
@@ -220,7 +220,7 @@ SDL_Rect scrollbar::groove_area() const
 
 SDL_Rect scrollbar::grip_area() const
 {
-	SDL_Rect const &loc = groove_area();
+	const SDL_Rect& loc = groove_area();
 	if (full_height_ == grip_height_)
 		return loc;
 	int h = static_cast<int>(loc.h) * grip_height_ / full_height_;
@@ -323,21 +323,21 @@ void scrollbar::handle_event(const SDL_Event& event)
 		return;
 
 	STATE new_state = state_;
-	SDL_Rect const &grip = grip_area();
-	SDL_Rect const &groove = groove_area();
+	const SDL_Rect& grip = grip_area();
+	const SDL_Rect& groove = groove_area();
 
 
 	switch (event.type) {
 	case SDL_MOUSEBUTTONUP:
 	{
-		SDL_MouseButtonEvent const &e = event.button;
+		const SDL_MouseButtonEvent& e = event.button;
 		bool on_grip = sdl::point_in_rect(e.x, e.y, grip);
 		new_state = on_grip ? ACTIVE : NORMAL;
 		break;
 	}
 	case SDL_MOUSEBUTTONDOWN:
 	{
-		SDL_MouseButtonEvent const &e = event.button;
+		const SDL_MouseButtonEvent& e = event.button;
 		bool on_grip = sdl::point_in_rect(e.x, e.y, grip);
 		bool on_groove = sdl::point_in_rect(e.x, e.y, groove);
 		if (on_grip && e.button == SDL_BUTTON_LEFT) {
@@ -357,7 +357,7 @@ void scrollbar::handle_event(const SDL_Event& event)
 	}
 	case SDL_MOUSEMOTION:
 	{
-		SDL_MouseMotionEvent const &e = event.motion;
+		const SDL_MouseMotionEvent& e = event.motion;
 		if (state_ == NORMAL || state_ == ACTIVE) {
 			bool on_grip = sdl::point_in_rect(e.x, e.y, grip);
 			new_state = on_grip ? ACTIVE : NORMAL;

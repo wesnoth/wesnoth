@@ -76,7 +76,7 @@ unit_const_ptr find_backup_leader(const unit & leader)
 	return unit_const_ptr();
 }
 
-unit* find_recruiter(size_t team_index, map_location const& hex)
+unit* find_recruiter(size_t team_index, const map_location& hex)
 {
 	if ( !resources::gameboard->map().is_castle(hex) )
 		return nullptr;
@@ -110,20 +110,20 @@ unit* future_visible_unit(int on_side, map_location hex, int viewer_side)
 		return nullptr;
 }
 
-int path_cost(std::vector<map_location> const& path, unit const& u)
+int path_cost(const std::vector<map_location>& path, const unit& u)
 {
 	if(path.size() < 2)
 		return 0;
 
-	team const& u_team = resources::gameboard->get_team(u.side());
-	map_location const& dest = path.back();
+	const team& u_team = resources::gameboard->get_team(u.side());
+	const map_location& dest = path.back();
 	if ( (resources::gameboard->map().is_village(dest) && !u_team.owns_village(dest))
 	     || pathfind::enemy_zoc(u_team, dest, u_team) )
 		return u.total_movement();
 
 	int result = 0;
-	gamemap const& map = resources::gameboard->map();
-	for(map_location const& loc : std::make_pair(path.begin()+1,path.end())) {
+	const gamemap& map = resources::gameboard->map();
+	for(const map_location& loc : std::make_pair(path.begin()+1,path.end())) {
 		result += u.movement_cost(map[loc]);
 	}
 	return result;
@@ -207,7 +207,7 @@ action_ptr find_action_at(map_location hex, team_filter team_filter)
 	return result;
 }
 
-std::deque<action_ptr> find_actions_of(unit const &target)
+std::deque<action_ptr> find_actions_of(const unit& target)
 {
 	return resources::gameboard->get_team(target.side()).get_side_actions()->actions_of(target);
 }

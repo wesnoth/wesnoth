@@ -240,8 +240,8 @@ BOOST_AUTO_TEST_CASE(test_pal_modification_decoding)
 	// The dynamic_cast returns nullptr if the argument doesn't match the type
 	BOOST_REQUIRE(mod != nullptr);
 
-	std::vector<color_t> const& old_palette = game_config::tc_info("000000,005000");
-	std::vector<color_t> const& new_palette = game_config::tc_info("FFFFFF,FF00FF");
+	const std::vector<color_t>& old_palette = game_config::tc_info("000000,005000");
+	const std::vector<color_t>& new_palette = game_config::tc_info("FFFFFF,FF00FF");
 	color_range_map expected;
 
 	for(size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {

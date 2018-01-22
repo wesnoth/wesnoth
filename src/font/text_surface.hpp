@@ -42,10 +42,10 @@ public:
 #ifdef	HAVE_FRIBIDI
 	bool is_rtl() const { return is_rtl_; }	// Right-To-Left alignment
 #endif
-	std::vector<surface> const & get_surfaces() const;
+	const std::vector<surface>& get_surfaces() const;
 
-	bool operator==(text_surface const &t) const;
-	bool operator!=(text_surface const &t) const { return !operator==(t); }
+	bool operator==(const text_surface& t) const;
+	bool operator!=(const text_surface& t) const { return !operator==(t); }
 private:
 	int hash_;
 	int font_size_;

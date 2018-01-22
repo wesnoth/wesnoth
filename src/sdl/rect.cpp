@@ -36,7 +36,7 @@ bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2)
 			rect1.y < rect2.y+rect2.h && rect2.y < rect1.y+rect1.h);
 }
 
-SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
+SDL_Rect intersect_rects(const SDL_Rect& rect1, const SDL_Rect& rect2)
 {
 	SDL_Rect res;
 	if(!SDL_IntersectRect(&rect1, &rect2, &res)) {
@@ -46,7 +46,7 @@ SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
 	return res;
 }
 
-SDL_Rect union_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
+SDL_Rect union_rects(const SDL_Rect& rect1, const SDL_Rect& rect2)
 {
 	SDL_Rect res;
 	SDL_UnionRect(&rect1, &rect2, &res);

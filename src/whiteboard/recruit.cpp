@@ -64,7 +64,7 @@ recruit::recruit(size_t team_index, bool hidden, const std::string& unit_name, c
 	this->init();
 }
 
-recruit::recruit(config const& cfg, bool hidden)
+recruit::recruit(const config& cfg, bool hidden)
 	: action(cfg,hidden)
 	, unit_name_(cfg["unit_name_"])
 	, recruit_hex_(cfg.child("recruit_hex_")["x"],cfg.child("recruit_hex_")["y"], wml_loc())
@@ -144,7 +144,7 @@ void recruit::remove_temp_modifier(unit_map& unit_map)
 	assert(temp_unit_.get());
 }
 
-void recruit::draw_hex(map_location const& hex)
+void recruit::draw_hex(const map_location& hex)
 {
 	if (hex == recruit_hex_)
 	{

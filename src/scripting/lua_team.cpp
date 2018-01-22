@@ -88,7 +88,7 @@ static int impl_side_get(lua_State *L)
 	return_bool_attrib("share_view", t.share_view());
 
 	if (strcmp(m, "recruit") == 0) {
-		std::set<std::string> const &recruits = t.recruits();
+		const std::set<std::string>& recruits = t.recruits();
 		lua_createtable(L, recruits.size(), 0);
 		int i = 1;
 		for (const std::string& r : t.recruits()) {

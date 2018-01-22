@@ -233,9 +233,9 @@ void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
  * locs by a chain of at most @a radius tiles, each of which matches @a pred.
  * @a result must be a std::set of locations.
  */
-void get_tiles_radius(gamemap const &map, std::vector<map_location> const &locs,
+void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
                       size_t radius, std::set<map_location> &result,
-                      bool with_border, xy_pred const &pred)
+                      bool with_border, const xy_pred& pred)
 {
 	typedef std::set<map_location> location_set;
 
@@ -252,7 +252,7 @@ void get_tiles_radius(gamemap const &map, std::vector<map_location> const &locs,
 			map_location adj[6];
 			get_adjacent_tiles(*it, adj);
 			for(size_t i = 0; i != 6; ++i) {
-				map_location const &loc = adj[i];
+				const map_location& loc = adj[i];
 				if ( with_border ? map.on_board_with_border(loc) :
 				                   map.on_board(loc) ) {
 					if ( !result.count(loc) && !filtered_out.count(loc) ) {

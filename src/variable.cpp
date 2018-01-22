@@ -297,7 +297,7 @@ namespace {
 		config::attribute_value &result;
 
 		vconfig_expand_visitor(config::attribute_value &r): result(r) {}
-		template<typename T> void operator()(T const &) const {}
+		template<typename T> void operator()(const T&) const {}
 		void operator()(const std::string &s) const
 		{
 			result = utils::interpolate_variables_into_string(s, *(resources::gamedata));

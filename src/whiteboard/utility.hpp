@@ -46,13 +46,13 @@ side_actions_ptr current_side_actions();
  * For a given leader on a keep, find another leader on another keep in the same castle.
  * @retval nullptr if no such leader has been found
  */
-unit_const_ptr find_backup_leader(unit const& leader);
+unit_const_ptr find_backup_leader(const unit& leader);
 
 /**
  * @return a leader from the specified team who can recruit on the specified hex
  * @retval nullptr if no such leader has been found
  */
-unit* find_recruiter(size_t team_index, map_location const&);
+unit* find_recruiter(size_t team_index, const map_location&);
 
 /// Applies the future unit map and @return a pointer to the unit at hex
 /// @retval nullptr if none is visible to the specified viewer side
@@ -64,7 +64,7 @@ unit* future_visible_unit(map_location hex, int viewer_side = wb::viewer_side())
 unit* future_visible_unit(int on_side, map_location hex, int viewer_side = wb::viewer_side());
 
 /// Computes the MP cost for u to travel path
-int path_cost(std::vector<map_location> const& path, unit const& u);
+int path_cost(const std::vector<map_location>& path, const unit& u);
 
 struct temporary_unit_hider {
 	temporary_unit_hider(unit& u);
@@ -145,6 +145,6 @@ action_ptr find_action_at(map_location hex, team_filter team_filter = team_has_v
  *
  * @param target the unit owning the actions.
  */
-std::deque<action_ptr> find_actions_of(unit const &target);
+std::deque<action_ptr> find_actions_of(const unit& target);
 
 } //end namespace wb

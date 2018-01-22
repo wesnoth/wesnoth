@@ -39,7 +39,7 @@ public:
 	void show_topic(const std::string &topic_id);
 
 protected:
-	virtual void update_location(SDL_Rect const &rect);
+	virtual void update_location(const SDL_Rect& rect);
 	virtual void process_event();
 	virtual void handle_event(const SDL_Event &event);
 

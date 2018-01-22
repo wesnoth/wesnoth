@@ -110,7 +110,7 @@ struct map_location {
 	// Rotates the map_location clockwise in 60 degree increments around a center point. Negative numbers of steps are permitted.
 	map_location rotate_right_around_center(const map_location & center, int k) const;
 
-	friend std::size_t hash_value(map_location const &a);
+	friend std::size_t hash_value(const map_location& a);
 
 	int wml_x() const { return x + 1; }
 	int wml_y() const { return y + 1; }
@@ -159,9 +159,9 @@ void read_locations(const config& cfg, std::vector<map_location>& locs);
 void write_locations(const std::vector<map_location>& locs, config& cfg);
 
 /** Dumps a position on a stream, for debug purposes. */
-std::ostream &operator<<(std::ostream &s, map_location const &l);
+std::ostream &operator<<(std::ostream &s, const map_location& l);
 /** Dumps a vector of positions on a stream, for debug purposes. */
-std::ostream &operator<<(std::ostream &s, std::vector<map_location> const &v);
+std::ostream &operator<<(std::ostream &s, const std::vector<map_location>& v);
 
 namespace std {
 template<>

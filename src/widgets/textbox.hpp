@@ -50,8 +50,8 @@ public:
 
 protected:
 	virtual void draw_contents();
-	virtual void update_location(SDL_Rect const &rect);
-	virtual void set_inner_location(SDL_Rect const &);
+	virtual void update_location(const SDL_Rect& rect);
+	virtual void set_inner_location(const SDL_Rect& );
 	virtual void scroll(unsigned int pos);
 
 private:

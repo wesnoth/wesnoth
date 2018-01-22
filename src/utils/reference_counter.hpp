@@ -38,8 +38,8 @@ public:
 	enum {NEW=0, NOT_COUNTED = -1};
 
 	explicit ref_counter(T_integral x = 0) : count_(x) {}
-	ref_counter(ref_counter const &a) : count_(a.count_) {}
-	ref_counter & operator=(ref_counter const &a){count_ = a.count_; return *this;}
+	ref_counter(const ref_counter& a) : count_(a.count_) {}
+	ref_counter & operator=(const ref_counter& a){count_ = a.count_; return *this;}
 
 	operator T_integral const () const {return count_;}
 

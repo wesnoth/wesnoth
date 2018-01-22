@@ -85,7 +85,7 @@ move::move(size_t team_index, bool hidden, unit& u, const pathfind::marked_route
 	this->init();
 }
 
-move::move(config const& cfg, bool hidden)
+move::move(const config& cfg, bool hidden)
 	: action(cfg,hidden)
 	, unit_underlying_id_(0)
 	, unit_id_()
@@ -106,14 +106,14 @@ move::move(config const& cfg, bool hidden)
 	unit_underlying_id_ = unit_itor->underlying_id();
 
 	// Construct and validate route_
-	config const& route_cfg = cfg.child("route_");
+	const config& route_cfg = cfg.child("route_");
 	if(!route_cfg)
 		throw action::ctor_err("move: Invalid route_");
 	route_->move_cost = route_cfg["move_cost"];
-	for(config const& loc_cfg : route_cfg.child_range("step")) {
+	for(const config& loc_cfg : route_cfg.child_range("step")) {
 		route_->steps.emplace_back(loc_cfg["x"],loc_cfg["y"], wml_loc());
 	}
-	for(config const& mark_cfg : route_cfg.child_range("mark")) {
+	for(const config& mark_cfg : route_cfg.child_range("mark")) {
 		route_->marks[map_location(mark_cfg["x"],mark_cfg["y"], wml_loc())]
 			= pathfind::marked_route::mark(mark_cfg["turns"],
 				mark_cfg["zoc"].to_bool(),
@@ -122,7 +122,7 @@ move::move(config const& cfg, bool hidden)
 	}
 
 	// Validate route_ some more
-	std::vector<map_location> const& steps = route_->steps;
+	const std::vector<map_location>& steps = route_->steps;
 	if(steps.empty())
 		throw action::ctor_err("move: Invalid route_");
 
@@ -384,7 +384,7 @@ void move::remove_temp_modifier(unit_map&)
 	mover_.reset();
 }
 
-void move::draw_hex(map_location const& hex)
+void move::draw_hex(const map_location& hex)
 {
 	//display turn info for turns 2 and above
 	if (hex == get_dest_hex() && turn_number_ >= 2)
@@ -504,7 +504,7 @@ config move::to_config() const
 	//Serialize route_
 	config route_cfg;
 	route_cfg["move_cost"]=route_->move_cost;
-	for(map_location const& loc : route_->steps)
+	for(const map_location& loc : route_->steps)
 	{
 		config loc_cfg;
 		loc_cfg["x"]=loc.wml_x();
@@ -512,7 +512,7 @@ config move::to_config() const
 		route_cfg.add_child("step", std::move(loc_cfg));
 	}
 	typedef std::pair<map_location,pathfind::marked_route::mark> pair_loc_mark;
-	for(pair_loc_mark const& item : route_->marks)
+	for(const pair_loc_mark& item : route_->marks)
 	{
 		config mark_cfg;
 		mark_cfg["x"]=item.first.wml_x();

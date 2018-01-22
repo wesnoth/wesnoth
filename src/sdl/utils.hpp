@@ -240,7 +240,7 @@ void blur_surface(surface& surf, SDL_Rect rect, int depth = 1);
 surface blur_alpha_surface(const surface &surf, int depth = 1);
 
 /** Cuts a rectangle from a surface. */
-surface cut_surface(const surface &surf, SDL_Rect const &r);
+surface cut_surface(const surface &surf, const SDL_Rect& r);
 
 /**
  * Blends a surface with a color.

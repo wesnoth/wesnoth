@@ -524,7 +524,7 @@ public:
 
 	// Generic visitor just streams "key=value".
 	template<typename T>
-	void operator()(T const& v) const
+	void operator()(const T& v) const
 	{
 		indent();
 		out_ << key_ << '=' << v << '\n';
@@ -534,7 +534,7 @@ public:
 	// Specialized visitors for things that go in quotes:
 	//
 
-	void operator()(boost::blank const&) const
+	void operator()(const boost::blank&) const
 	{
 		// Treat blank values as nonexistent which fits better than treating them as empty strings.
 	}
@@ -545,7 +545,7 @@ public:
 		out_ << key_ << '=' << '"' << escaped_string(s) << '"' << '\n';
 	}
 
-	void operator()(t_string const& s) const;
+	void operator()(const t_string& s) const;
 
 private:
 	void indent() const
@@ -569,7 +569,7 @@ private:
  *       That is the reason for not outputting the key beforehand and
  *       letting this function do it.
  */
-void write_key_val_visitor::operator()(t_string const& value) const
+void write_key_val_visitor::operator()(const t_string& value) const
 {
 	bool first = true;
 
@@ -695,7 +695,7 @@ void write_close_child(std::ostream& out, const std::string& child, unsigned int
 	out << std::string(level, '\t') << "[/" << child << "]\n";
 }
 
-static void write_internal(config const& cfg, std::ostream& out, std::string& textdomain, size_t tab = 0)
+static void write_internal(const config& cfg, std::ostream& out, std::string& textdomain, size_t tab = 0)
 {
 	if(tab > max_recursion_levels) {
 		throw config::error("Too many recursion levels in config write");
@@ -722,7 +722,7 @@ static void write_internal(config const& cfg, std::ostream& out, std::string& te
 	}
 }
 
-static void write_internal(configr_of const& cfg, std::ostream& out, std::string& textdomain, size_t tab = 0)
+static void write_internal(const configr_of& cfg, std::ostream& out, std::string& textdomain, size_t tab = 0)
 {
 	if(tab > max_recursion_levels) {
 		throw config::error("Too many recursion levels in config write");
@@ -746,14 +746,14 @@ static void write_internal(configr_of const& cfg, std::ostream& out, std::string
 	}
 }
 
-void write(std::ostream& out, configr_of const& cfg, unsigned int level)
+void write(std::ostream& out, const configr_of& cfg, unsigned int level)
 {
 	std::string textdomain = PACKAGE;
 	write_internal(cfg, out, textdomain, level);
 }
 
 template<typename compressor>
-void write_compressed(std::ostream& out, configr_of const& cfg)
+void write_compressed(std::ostream& out, const configr_of& cfg)
 {
 	boost::iostreams::filtering_stream<boost::iostreams::output> filter;
 	filter.push(compressor());
@@ -765,12 +765,12 @@ void write_compressed(std::ostream& out, configr_of const& cfg)
 	filter << "\n";
 }
 
-void write_gz(std::ostream& out, configr_of const& cfg)
+void write_gz(std::ostream& out, const configr_of& cfg)
 {
 	write_compressed<boost::iostreams::gzip_compressor>(out, cfg);
 }
 
-void write_bz2(std::ostream& out, configr_of const& cfg)
+void write_bz2(std::ostream& out, const configr_of& cfg)
 {
 	write_compressed<boost::iostreams::bzip2_compressor>(out, cfg);
 }

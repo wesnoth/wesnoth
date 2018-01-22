@@ -61,7 +61,7 @@ class game_lua_kernel : public lua_kernel_base
 
 	const game_events::queued_event & get_event_info();
 
-	static void extract_preload_scripts(config const & game_config);
+	static void extract_preload_scripts(const config& game_config);
 	static std::vector<config> preload_scripts;
 	static config preload_config;
 
@@ -199,16 +199,16 @@ public:
 	void initialize(const config& level);
 	void save_game(config & level);
 	void load_game(const config& level);
-	bool run_event(game_events::queued_event const &);
+	bool run_event(const game_events::queued_event&);
 	void push_builtin_effect();
 	void set_wml_action(const std::string&, game_events::wml_action::handler);
 	void set_wml_condition(const std::string&, bool(*)(const vconfig&));
-	bool run_wml_action(const std::string&, vconfig const &,
-		game_events::queued_event const &);
-	bool run_filter(char const *name, unit const &u);
-	bool run_filter(char const *name, map_location const &l);
+	bool run_wml_action(const std::string&, const vconfig&,
+		const game_events::queued_event&);
+	bool run_filter(char const *name, const unit& u);
+	bool run_filter(char const *name, const map_location& l);
 	bool run_filter(char const *name, int nArgs);
-	bool run_wml_conditional(const std::string&, vconfig const &);
+	bool run_wml_conditional(const std::string&, const vconfig&);
 
 	virtual void log_error(char const* msg, char const* context = "Lua error") override;
 

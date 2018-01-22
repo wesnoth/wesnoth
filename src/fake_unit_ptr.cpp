@@ -50,7 +50,7 @@ fake_unit_ptr & fake_unit_ptr::operator=(fake_unit_ptr other) {
  * The overriding function can be almost the same, except "new (this)" should
  * be followed by the derived class instead of "fake_unit(a)".
  */
-/*fake_unit & fake_unit::operator=(unit const & a)
+/*fake_unit & fake_unit::operator=(const unit& a)
 {
 	if ( this != &a ) {
 		fake_unit_manager * mgr = my_manager_;

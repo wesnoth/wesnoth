@@ -101,7 +101,7 @@ public:
 	{
 	}
 	topic_text &operator=(topic_generator *g);
-	topic_text(topic_text const &t);
+	topic_text(const topic_text& t);
 
     const std::vector<std::string>& parsed_text() const;
 };

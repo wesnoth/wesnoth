@@ -82,7 +82,7 @@ class lua_unit
 	unit_ptr ptr;
 	int side;
 	unit* c_ptr;
-	lua_unit(lua_unit const &) = delete;
+	lua_unit(const lua_unit&) = delete;
 	lua_unit& operator=(const lua_unit&) = delete;
 
 	template<typename... Args>

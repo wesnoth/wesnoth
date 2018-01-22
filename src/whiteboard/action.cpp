@@ -56,7 +56,7 @@ config action::to_config() const
 }
 
 /* static */
-action_ptr action::from_config(config const& cfg, bool hidden)
+action_ptr action::from_config(const config& cfg, bool hidden)
 {
 	std::string type = cfg["type"];
 
@@ -71,7 +71,7 @@ action_ptr action::from_config(config const& cfg, bool hidden)
 			return action_ptr(new recall(cfg,hidden));
 		else if(type=="suppose_dead")
 			return action_ptr(new suppose_dead(cfg,hidden));
-	} catch(action::ctor_err const&) {}
+	} catch(const action::ctor_err&) {}
 
 	return action_ptr();
 }
@@ -98,7 +98,7 @@ action::action(size_t team_index, bool hidden)
 {
 }
 
-action::action(config const& cfg, bool hidden)
+action::action(const config& cfg, bool hidden)
 	: team_index_()
 	, hidden_(hidden)
 {

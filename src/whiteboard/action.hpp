@@ -33,7 +33,7 @@ class action : public std::enable_shared_from_this<action>
 {
 public:
 	action(size_t team_index, bool hidden);
-	action(config const&, bool hidden); // For deserialization
+	action(const config&, bool hidden); // For deserialization
 	virtual ~action();
 
 	virtual std::ostream& print(std::ostream& s) const = 0;
@@ -88,7 +88,7 @@ public:
 	/** Constructs and returns a config object representing this object. */
 	virtual config to_config() const;
 	/** Constructs an object of a subclass of wb::action using a config. Current behavior is to return a null pointer for unrecognized config. */
-	static action_ptr from_config(config const&, bool hidden);
+	static action_ptr from_config(const config&, bool hidden);
 
 	struct ctor_err	: public game::error
 	{

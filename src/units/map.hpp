@@ -550,7 +550,7 @@ private:
 	}
 
 	template<typename X>
-	unit_map::unit_iterator make_unit_iterator(X const& i)
+	unit_map::unit_iterator make_unit_iterator(const X& i)
 	{
 		if(!is_found(i)) {
 			return unit_iterator(umap_.end(), this);
@@ -560,7 +560,7 @@ private:
 	}
 
 	template<typename X>
-	unit_map::const_unit_iterator make_const_unit_iterator(X const& i) const
+	unit_map::const_unit_iterator make_const_unit_iterator(const X& i) const
 	{
 		if(!is_found(i)) {
 			return const_unit_iterator(umap_.end(), this);

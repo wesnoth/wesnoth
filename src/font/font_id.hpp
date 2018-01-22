@@ -61,8 +61,8 @@ struct text_chunk
 	{
 	}
 
-	bool operator==(text_chunk const & t) const { return subset == t.subset && text == t.text; }
-	bool operator!=(text_chunk const & t) const { return !operator==(t); }
+	bool operator==(const text_chunk& t) const { return subset == t.subset && text == t.text; }
+	bool operator!=(const text_chunk& t) const { return !operator==(t); }
 
 	subset_id subset;
 	std::string text;

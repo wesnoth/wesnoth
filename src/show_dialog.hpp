@@ -75,7 +75,7 @@ public:
 	~dialog_frame();
 
 	dimension_measurements layout(int x, int y, int w, int h);
-	dimension_measurements layout(SDL_Rect const& frame_area);
+	dimension_measurements layout(const SDL_Rect& frame_area);
 	void set_layout(dimension_measurements &new_dim) { dim_ = new_dim; }
 	dimension_measurements get_layout() const { return dim_; }
 

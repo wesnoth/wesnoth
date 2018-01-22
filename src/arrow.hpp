@@ -40,7 +40,7 @@ public:
 	void hide();
 	void show();
 
-	virtual void set_path(arrow_path_t const& path);
+	virtual void set_path(const arrow_path_t& path);
 
 	///invalidates and clears the present path, forgets the previous path, clears the symbols map
 	virtual void reset();
@@ -68,17 +68,17 @@ public:
 	static const std::string STYLE_FOCUS;
 	static const std::string STYLE_FOCUS_INVALID;
 
-	arrow_path_t const& get_path() const;
-	arrow_path_t const& get_previous_path() const;
+	const arrow_path_t& get_path() const;
+	const arrow_path_t& get_previous_path() const;
 
-	bool path_contains(map_location const& hex) const;
+	bool path_contains(const map_location& hex) const;
 
-	virtual void draw_hex(map_location const& hex);
+	virtual void draw_hex(const map_location& hex);
 
 	/// Checks that the path is not of length 0 or 1
-	static bool valid_path(arrow_path_t const& path);
+	static bool valid_path(const arrow_path_t& path);
 	/// Invalidates every hex along the given path
-	static void invalidate_arrow_path(arrow_path_t const& path);
+	static void invalidate_arrow_path(const arrow_path_t& path);
 
 	virtual void notify_arrow_changed();
 

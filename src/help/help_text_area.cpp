@@ -48,7 +48,7 @@ help_text_area::help_text_area(CVideo &video, const section &toplevel) :
 	set_scroll_rate(40);
 }
 
-void help_text_area::set_inner_location(SDL_Rect const &rect)
+void help_text_area::set_inner_location(const SDL_Rect& rect)
 {
 	bg_register(rect);
 	if (shown_topic_)
@@ -113,7 +113,7 @@ void help_text_area::set_items()
 		down_one_line();
 	}
 	// Parse and add the text.
-	std::vector<std::string> const &parsed_items = shown_topic_->text.parsed_text();
+	const std::vector<std::string>& parsed_items = shown_topic_->text.parsed_text();
 	std::vector<std::string>::const_iterator it;
 	for (it = parsed_items.begin(); it != parsed_items.end(); ++it) {
 		if (!(*it).empty() && (*it)[0] == '[') {
@@ -527,7 +527,7 @@ int help_text_area::get_remaining_width()
 
 void help_text_area::draw_contents()
 {
-	SDL_Rect const &loc = inner_location();
+	const SDL_Rect& loc = inner_location();
 	bg_restore();
 	surface& screen = video().getSurface();
 	clip_rect_setter clip_rect_set(screen, &loc);

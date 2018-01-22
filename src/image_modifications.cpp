@@ -648,7 +648,7 @@ REGISTER_MOD_PARSER(TC, args)
 		// This side is not initialized; use default "n"
 		try {
 			team_color = std::to_string(side_n);
-		} catch(bad_lexical_cast const&) {
+		} catch(const bad_lexical_cast&) {
 			ERR_DP << "bad things happen" << std::endl;
 
 			return nullptr;
@@ -672,7 +672,7 @@ REGISTER_MOD_PARSER(TC, args)
 		const std::vector<color_t>& old_color = game_config::tc_info(params[1]);
 
 		rc_map = recolor_range(new_color,old_color);
-	} catch(config::error const& e) {
+	} catch(const config::error& e) {
 		ERR_DP << "caught config::error while processing TC: "
 		       << e.message
 		       << '\n'
@@ -760,7 +760,7 @@ REGISTER_MOD_PARSER(FL, args)
 // Rotations
 REGISTER_MOD_PARSER(ROTATE, args)
 {
-	std::vector<std::string> const& slice_params = utils::split(args, ',', utils::STRIP_SPACES);
+	const std::vector<std::string>& slice_params = utils::split(args, ',', utils::STRIP_SPACES);
 	const size_t s = slice_params.size();
 
 	switch(s) {
@@ -972,7 +972,7 @@ REGISTER_MOD_PARSER(BLEND, args)
 // Crop/slice
 REGISTER_MOD_PARSER(CROP, args)
 {
-	std::vector<std::string> const& slice_params = utils::split(args, ',', utils::STRIP_SPACES);
+	const std::vector<std::string>& slice_params = utils::split(args, ',', utils::STRIP_SPACES);
 	const size_t s = slice_params.size();
 
 	if(s == 0 || (s == 1 && slice_params[0].empty())) {
@@ -1087,7 +1087,7 @@ REGISTER_MOD_PARSER(L, args)
 // Scale
 REGISTER_MOD_PARSER(SCALE, args)
 {
-	std::vector<std::string> const& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
+	const std::vector<std::string>& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
 	const size_t s = scale_params.size();
 
 	if(s == 0 || (s == 1 && scale_params[0].empty())) {
@@ -1108,7 +1108,7 @@ REGISTER_MOD_PARSER(SCALE, args)
 
 REGISTER_MOD_PARSER(SCALE_SHARP, args)
 {
-	std::vector<std::string> const& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
+	const std::vector<std::string>& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
 	const size_t s = scale_params.size();
 
 	if(s == 0 || (s == 1 && scale_params[0].empty())) {
@@ -1129,7 +1129,7 @@ REGISTER_MOD_PARSER(SCALE_SHARP, args)
 
 REGISTER_MOD_PARSER(SCALE_INTO, args)
 {
-	std::vector<std::string> const& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
+	const std::vector<std::string>& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
 	const size_t s = scale_params.size();
 
 	if(s == 0 || (s == 1 && scale_params[0].empty())) {
@@ -1150,7 +1150,7 @@ REGISTER_MOD_PARSER(SCALE_INTO, args)
 
 REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 {
-	std::vector<std::string> const& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
+	const std::vector<std::string>& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
 	const size_t s = scale_params.size();
 
 	if(s == 0 || (s == 1 && scale_params[0].empty())) {

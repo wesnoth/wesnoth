@@ -207,7 +207,7 @@ static void print_precise_timestamp(std::ostream & out) NOEXCEPT
 	} catch(...) {}
 }
 
-std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool do_indent) const
+std::ostream &logger::operator()(const log_domain& domain, bool show_names, bool do_indent) const
 {
 	if (severity_ > domain.domain_->second) {
 		return null_ostream;
@@ -237,7 +237,7 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool
 	}
 }
 
-void scope_logger::do_log_entry(log_domain const &domain, const std::string& str) NOEXCEPT
+void scope_logger::do_log_entry(const log_domain& domain, const std::string& str) NOEXCEPT
 {
 	output_ = &debug()(domain, false, true);
 	str_ = str;

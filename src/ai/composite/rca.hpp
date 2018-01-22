@@ -193,7 +193,7 @@ public:
 
 //============================================================================
 
-std::ostream &operator<<(std::ostream &s, ai::candidate_action const &ca);
+std::ostream &operator<<(std::ostream &s, const ai::candidate_action& ca);
 
 } //end of namespace ai
 

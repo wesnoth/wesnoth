@@ -46,7 +46,7 @@ static int impl_race_get(lua_State* L)
 	lua_rawget(L, 1);
 	const unit_race* raceptr = unit_types.find_race(lua_tostring(L, -1));
 	if(!raceptr) return luaL_argerror(L, 1, "unknown race");
-	unit_race const &race = *raceptr;
+	const unit_race& race = *raceptr;
 
 	return_tstring_attrib("description", race.description());
 	return_tstring_attrib("name", race.name());

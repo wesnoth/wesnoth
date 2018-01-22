@@ -342,7 +342,7 @@ SDL_Rect draw_text_line(surface& gui_surface, const SDL_Rect& area, int size,
 {
 	size = preferences::font_scaled(size);
 	if (gui_surface.null()) {
-		text_surface const &u = text_cache::find(text_surface(text, size, color, style));
+		const text_surface& u = text_cache::find(text_surface(text, size, color, style));
 		return sdl::create_rect(0, 0, u.width(), u.height());
 	}
 

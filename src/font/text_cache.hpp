@@ -27,7 +27,7 @@ namespace font {
 class text_cache
 {
 public:
-	static text_surface &find(text_surface const &t);
+	static text_surface &find(const text_surface& t);
 	static void resize(unsigned int size);
 private:
 	typedef std::list< text_surface > text_list;
