@@ -40,7 +40,7 @@ namespace ucs4
 			update();
 		}
 
-		iterator_base(typename const string_type::const_iterator& begin, typename const string_type::const_iterator& end)
+		iterator_base(typename string_type::const_iterator const& begin, typename string_type::const_iterator const& end)
 			: current_char(0)
 			, string_end(end)
 			, current_substr(std::make_pair(begin, begin))

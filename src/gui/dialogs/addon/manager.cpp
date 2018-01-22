@@ -144,7 +144,7 @@ namespace {
 	 *         before running this function.
 	 */
 	template <typename MapT>
-	typename const MapT::mapped_type& const_at(typename const MapT::key_type& key,
+	typename MapT::mapped_type const& const_at(typename MapT::key_type const& key,
 										   const MapT& map)
 	{
 		typename MapT::const_iterator it = map.find(key);

@@ -159,7 +159,7 @@ public:
 	template <typename T>
 	typename action_set::index<T>::type& get(){ return actions_.get<T>(); }
 	template <typename T>
-	typename const action_set::index<T>::type& get() const { return actions_.get<T>(); }
+	typename action_set::index<T>::type const& get() const { return actions_.get<T>(); }
 
 	/**
 	 * Projects an iterator on a given index.
