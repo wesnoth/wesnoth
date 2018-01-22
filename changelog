@@ -64,6 +64,8 @@ Version 1.13.10+dev:
    * [show_if] is now usable in [objectives] subtag [gold_carryover].
    * Macro SCEPTRE_OF_FIRE_EFFECT damage increased to 15x4 so Sceptre is an
      improvement over the uncut ruby of fire (14x4) in TRoW.
+   * Added [lua] as a conditional tag.
+   * Lua errors now cause as a condition to fail instead of pass.
  * Miscellaneous and bug fixes:
    * Fixed crash after canceling add-on download (bug #2203)
    * Fixed ingame help showing units you haven't encountered (bug #2135)
@@ -71,7 +73,7 @@ Version 1.13.10+dev:
      greater (bug #2185).
    * Fix recalls updating shroud immediately when "Delay Shroud Updates" is set
      (bug #2196)
-   * Fixed not being able to undo previous moves after entering planning mode 
+   * Fixed not being able to undo previous moves after entering planning mode
      (bug #2303)
 
 Version 1.13.10:

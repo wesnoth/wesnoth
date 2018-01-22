@@ -4502,25 +4502,31 @@ bool game_lua_kernel::run_wml_action(const std::string& cmd, vconfig const &cfg,
 
 
 /**
- * Runs a command from an event handler.
- * @return true if there is a handler for the command.
- * @note @a cfg should be either volatile or long-lived since the Lua
- *       code may grab it for an arbitrary long time.
+ * Evaluates a WML conidition.
+ *
+ * @returns Whether the condition passed.
+ * @note    @a cfg should be either volatile or long-lived since the Lua
+ *          code may grab it for an arbitrarily long time.
  */
-bool game_lua_kernel::run_wml_conditional(const std::string& cmd, vconfig const &cfg)
+bool game_lua_kernel::run_wml_conditional(const std::string& cmd, const vconfig& cfg)
 {
-	lua_State *L = mState;
+	lua_State* L = mState;
 
-
-	if (!luaW_getglobal(L, "wesnoth", "wml_conditionals", cmd)) {
+	// If an invalid coniditional tag is used, consider it a pass.
+	if(!luaW_getglobal(L, "wesnoth", "wml_conditionals", cmd)) {
 		lg::wml_error() << "unknown conditional wml: [" << cmd << "]\n";
 		return true;
 	}
 
 	luaW_pushvconfig(L, cfg);
-	luaW_pcall(L, 1, 1, true);
+
+	// Any runtime error is considered a fail.
+	if(!luaW_pcall(L, 1, 1, true)) {
+		return false;
+	}
 
 	bool b = luaW_toboolean(L, -1);
+
 	lua_pop(L, 1);
 	return b;
 }

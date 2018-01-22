@@ -15,6 +15,7 @@ function wesnoth.game_events.on_save()
 	return {}
 end
 
+wesnoth.require "wml-conditionals"
 wesnoth.require "wml-flow"
 wesnoth.require "wml"
 
@@ -937,15 +938,6 @@ end
 function wesnoth.wml_actions.story(cfg)
 	local title = cfg.title or helper.wml_error "Missing title key in [story] ActionWML"
 	wesnoth.show_story(cfg, title)
-end
-
-function wesnoth.wml_conditionals.proceed_to_next_scenario(cfg)
-	local endlevel_data = wesnoth.get_end_level_data()
-	if not endlevel_data then
-		return false
-	else
-		return endlevel_data.proceed_to_next_level
-	end
 end
 
 function wesnoth.wml_actions.cancel_action(cfg)
