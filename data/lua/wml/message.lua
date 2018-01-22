@@ -281,12 +281,12 @@ function wesnoth.wml_actions.message(cfg)
 
 	-- Only the first text_input tag is considered
 	local text_input
-	for cfg_text in helper.child_range(cfg, "text_input") do
+	for text_input_cfg in helper.child_range(cfg, "text_input") do
 		if text_input ~= nil then
 			log("Too many [text_input] tags, only first one accepted", "warning")
 			break
 		end
-		text_input = cfg_text
+		text_input = text_input_cfg
 	end
 
 	local options, option_events = {}, {}

@@ -28,8 +28,7 @@ function wesnoth.wml_actions.find_path(cfg)
 
 	if not cfg.check_visibility then viewing_side = 0 end -- if check_visiblity then shroud is taken in account
 
-	-- only the location with the lowest distance and lowest movement cost
-	-- will match. If there will still be more than 1, only the 1st maching one.
+	-- only the first location with the lowest distance and lowest movement cost will match.
 	local locations = wesnoth.get_locations(filter_location)
 
 	local max_cost = nil
@@ -79,21 +78,21 @@ function wesnoth.wml_actions.find_path(cfg)
 		end
 
 		if cost >= 42424242 then -- it's the high value returned for unwalkable or busy terrains
-			wesnoth.set_variable ( string.format("%s", variable), { hexes = 0 } ) -- set only length, nil all other values
+			wesnoth.set_variable ( tostring(variable), { hexes = 0 } ) -- set only length, nil all other values
 			-- support for $this_unit
 			wesnoth.set_variable ( "this_unit" ) -- clearing this_unit
 			utils.end_var_scope("this_unit", this_unit)
 		return end
 
 		if not allow_multiple_turns and turns > 1 then -- location cannot be reached in one turn
-			wesnoth.set_variable ( string.format("%s", variable), { hexes = 0 } )
+			wesnoth.set_variable ( tostring(variable), { hexes = 0 } )
 			-- support for $this_unit
 			wesnoth.set_variable ( "this_unit" ) -- clearing this_unit
 			utils.end_var_scope("this_unit", this_unit)
 		return end -- skip the cycles below
 
 		wesnoth.set_variable (
-			string.format( "%s", variable ),
+			tostring( variable ),
 			{
 				hexes = current_distance,
 				from_x = unit.x, from_y = unit.y,

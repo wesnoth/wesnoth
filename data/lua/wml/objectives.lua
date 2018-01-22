@@ -194,7 +194,7 @@ function wml_actions.objectives(cfg)
 		cfg = helper.parsed(cfg)
 	end
 
-	local cfg_sides = wesnoth.get_sides(cfg)
+	local sides_cfg = wesnoth.get_sides(cfg)
 	local silent = cfg.silent
 
 	local objectives = generate_objectives(cfg)
@@ -207,12 +207,12 @@ function wml_actions.objectives(cfg)
 			team.objectives_changed = not silent
 		end
 	end
-	if #cfg_sides == #wesnoth.sides or #cfg_sides == 0 then
+	if #sides_cfg == #wesnoth.sides or #sides_cfg == 0 then
 		scenario_objectives[0] = helper.literal(cfg)
 		remove_ssf_info_from(scenario_objectives[0])
 		set_objectives(wesnoth.sides)
 	else
-		set_objectives(cfg_sides, true)
+		set_objectives(sides_cfg, true)
 	end
 end
 
