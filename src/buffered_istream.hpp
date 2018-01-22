@@ -164,7 +164,7 @@ private:
 				eof_ = true;
 			} else {
 				buffer_offset_ = 0;
-				buffer_size_ = stream_.readsome(buffer_, sizeof(buffer_));
+				buffer_size_ = static_cast<unsigned> (stream_.readsome(buffer_, sizeof(buffer_)));
 			}
 		}
 	}
