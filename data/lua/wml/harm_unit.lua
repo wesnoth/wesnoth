@@ -48,14 +48,15 @@ function wml_actions.harm_unit(cfg)
 						with_bars = true,
 						T.filter { id = harmer.id },
 						T.primary_attack ( primary_attack ),
-						T.secondary_attack ( secondary_attack ), 
+						T.secondary_attack ( secondary_attack ),
 						T.facing { x = unit_to_harm.x, y = unit_to_harm.y },
 					}
 				end
 				wesnoth.scroll_to_tile(unit_to_harm.x, unit_to_harm.y, true)
 			end
 
-			-- the two functions below are taken straight from the C++ engine, utils.cpp and actions.cpp, with a few unuseful parts removed
+			-- the two functions below are taken straight from the C++ engine,
+			-- utils.cpp and actions.cpp, with a few unuseful parts removed
 			-- may be moved in helper.lua in 1.11
 			local function round_damage( base_damage, bonus, divisor )
 				local rounding
@@ -148,7 +149,7 @@ function wml_actions.harm_unit(cfg)
 						T.facing { x = harmer.x, y = harmer.y },
 					}
 				else
-					wml_actions.animate_unit { 
+					wml_actions.animate_unit {
 						flag = "defend",
 						hits = true,
 						with_bars = true,
@@ -166,7 +167,9 @@ function wml_actions.harm_unit(cfg)
 				else return level * 8 end
 			end
 
-			if experience ~= false and harmer and harmer.valid and wesnoth.is_enemy( unit_to_harm.side, harmer.side ) then -- no XP earned for harming friendly units
+			if experience ~= false and harmer and harmer.valid
+				and wesnoth.is_enemy( unit_to_harm.side, harmer.side )
+			then
 				if kill ~= false and unit_to_harm.hitpoints <= 0 then
 					harmer.experience = harmer.experience + calc_xp( unit_to_harm.__cfg.level )
 				else

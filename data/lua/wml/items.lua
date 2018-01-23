@@ -11,7 +11,16 @@ local function add_overlay(x, y, cfg)
 		items = {}
 		scenario_items[x * 10000 + y] = items
 	end
-	table.insert(items, { x = x, y = y, image = cfg.image, halo = cfg.halo, team_name = cfg.team_name, visible_in_fog = cfg.visible_in_fog, redraw = cfg.redraw, name = cfg.name })
+	table.insert(items,
+		{
+			x = x, y = y,
+			image = cfg.image,
+			halo = cfg.halo,
+			team_name = cfg.team_name,
+			visible_in_fog = cfg.visible_in_fog,
+			redraw = cfg.redraw,
+			name = cfg.name
+		})
 end
 
 local function remove_overlay(x, y, name)
@@ -78,7 +87,7 @@ function wml_actions.item(cfg)
 	local redraw = cfg.redraw
 	if redraw == nil then redraw = true end
 	if redraw then wml_actions.redraw {} end
-	if cfg.write_name then wesnoth.set_variable(write_name, cfg.name) end
+	if cfg.write_name then wesnoth.set_variable(cfg.write_name, cfg.name) end
 	return cfg.name
 end
 

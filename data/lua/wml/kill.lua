@@ -31,7 +31,9 @@ function wesnoth.wml_actions.kill(cfg)
 				if wesnoth.current.event_context.name == "die" or wesnoth.current.event_context.name == "last breath" then
 					if recursion >= 10 then
 						can_fire = false;
-						wesnoth.log("error", "tried to fire 'die' or 'last breath' event on unit from the unit's 'die' or 'last breath' event with first_time_only=no!")
+						wesnoth.log("error", "tried to fire 'die' or 'last breath' event "
+							.. "on unit from the unit's 'die' or 'last breath' event "
+							.. "with first_time_only=no!")
 					end
 				end
 			end
@@ -57,7 +59,7 @@ function wesnoth.wml_actions.kill(cfg)
 				wesnoth.log('err', "Primary weapon:\n" .. wml.tostring(primary.__cfg))
 			end
 			if secondary then
-				if primary_unit then
+				if primary then
 					secondary = helper.find_attack(unit, secondary)
 				else
 					secondary = wesnoth.create_weapon(secondary)

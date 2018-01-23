@@ -84,7 +84,9 @@ local function generate_objectives(cfg)
 					win_objectives = win_objectives .. caption .. "\n"
 				end
 
-				win_objectives = win_objectives .. color_prefix(r, g, b) .. objective_bullet .. description .. turn_counter .. "</span>" .. "\n"
+				win_objectives = win_objectives
+					.. color_prefix(r, g, b) .. objective_bullet
+					.. description .. turn_counter .. "</span>" .. "\n"
 			elseif condition == "lose" then
 				local caption = obj.caption
 				local r = obj.red or 255
@@ -95,7 +97,9 @@ local function generate_objectives(cfg)
 					lose_objectives = lose_objectives .. caption .. "\n"
 				end
 
-				lose_objectives = lose_objectives .. color_prefix(r, g, b) .. objective_bullet .. description .. turn_counter .. "</span>" .. "\n"
+				lose_objectives = lose_objectives
+					.. color_prefix(r, g, b) .. objective_bullet.. description
+					.. turn_counter .. "</span>" .. "\n"
 			else
 				wesnoth.message "Unknown condition, ignoring."
 			end
@@ -112,14 +116,16 @@ local function generate_objectives(cfg)
 
 			if obj.bonus ~= nil then
 				if obj.bonus then
-					gold_carryover = color_prefix(r, g, b) .. gold_carryover_bullet .. "<small>" .. _"Early finish bonus." .. "</small></span>\n"
+					gold_carryover = color_prefix(r, g, b) .. gold_carryover_bullet
+						.. "<small>" .. _"Early finish bonus." .. "</small></span>\n"
 				else
-					gold_carryover = color_prefix(r, g, b) .. gold_carryover_bullet .. "<small>" .. _"No early finish bonus." .. "</small></span>\n"
+					gold_carryover = color_prefix(r, g, b) .. gold_carryover_bullet
+					.. "<small>" .. _"No early finish bonus." .. "</small></span>\n"
 				end
 			end
 
 			if obj.carryover_percentage then
-				local carryover_amount_string = ""
+				local carryover_amount_string
 
 				if obj.carryover_percentage == 0 then
 					carryover_amount_string = _"No gold carried over to the next scenario."
@@ -127,7 +133,9 @@ local function generate_objectives(cfg)
 					carryover_amount_string = string.format(tostring(_ "%d%% of gold carried over to the next scenario."), obj.carryover_percentage)
 				end
 
-				gold_carryover = gold_carryover .. color_prefix(r, g, b) .. gold_carryover_bullet .. "<small>" .. carryover_amount_string .. "</small></span>\n"
+				gold_carryover = gold_carryover
+					.. color_prefix(r, g, b) .. gold_carryover_bullet
+					.. "<small>" .. carryover_amount_string .. "</small></span>\n"
 			end
 		end
 	end
@@ -186,7 +194,7 @@ function wml_actions.objectives(cfg)
 		cfg = helper.parsed(cfg)
 	end
 
-	local sides = wesnoth.get_sides(cfg)
+	local sides_cfg = wesnoth.get_sides(cfg)
 	local silent = cfg.silent
 
 	local objectives = generate_objectives(cfg)
@@ -199,12 +207,12 @@ function wml_actions.objectives(cfg)
 			team.objectives_changed = not silent
 		end
 	end
-	if #sides == #wesnoth.sides or #sides == 0 then
+	if #sides_cfg == #wesnoth.sides or #sides_cfg == 0 then
 		scenario_objectives[0] = helper.literal(cfg)
 		remove_ssf_info_from(scenario_objectives[0])
 		set_objectives(wesnoth.sides)
 	else
-		set_objectives(sides, true)
+		set_objectives(sides_cfg, true)
 	end
 end
 

@@ -25,7 +25,7 @@ function wesnoth.wml_actions.endlevel(cfg)
 	if end_credits ~= nil then
 		wesnoth.set_end_campaign_credits(end_credits)
 	end
-	
+
 	local side_results = {}
 	for result in helper.child_range(parsed, "result") do
 		local side = result.side or helper.wml_error("[result] in [endlevel] missing required side= key")
@@ -82,7 +82,7 @@ function wesnoth.wml_actions.endlevel(cfg)
 		end
 	end
 
-	local proceed_to_next_level = there_is_a_human_victory or (not there_is_a_human_defeat and cfg.result ~= "defeat") 
+	local proceed_to_next_level = there_is_a_human_victory or (not there_is_a_human_defeat and cfg.result ~= "defeat")
 	local victory = there_is_a_local_human_victory or (not there_is_a_local_human_defeat and proceed_to_next_level)
 
 	if cfg.music then
