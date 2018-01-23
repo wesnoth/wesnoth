@@ -86,8 +86,8 @@ playsingle_controller::playsingle_controller(const config& level,
 	linger_ = this->is_regular_game_end();
 
 	ai::game_info ai_info;
-	ai::manager::set_ai_info(ai_info);
-	ai::manager::add_observer(this) ;
+	ai::manager::get_singleton().set_ai_info(ai_info);
+	ai::manager::get_singleton().add_observer(this);
 
 	plugins_context_->set_accessor_string("level_result", std::bind(&playsingle_controller::describe_result, this));
 	plugins_context_->set_accessor_int("turn", std::bind(&play_controller::turn, this));
@@ -108,8 +108,8 @@ std::string playsingle_controller::describe_result() const
 
 playsingle_controller::~playsingle_controller()
 {
-	ai::manager::remove_observer(this) ;
-	ai::manager::clear_ais() ;
+	ai::manager::get_singleton().remove_observer(this);
+	ai::manager::get_singleton().clear_ais();
 }
 
 void playsingle_controller::init_gui()
@@ -552,7 +552,7 @@ void playsingle_controller::play_ai_turn()
 	try {
 		try {
 			if (!should_return_to_play_side()) {
-				ai::manager::play_turn(current_side());
+				ai::manager::get_singleton().play_turn(current_side());
 			}
 		}
 		catch (return_to_play_side_exception&) {

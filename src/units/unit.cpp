@@ -1129,7 +1129,7 @@ void unit::set_recruits(const std::vector<std::string>& recruits)
 	recruit_list_ = recruits;
 	//TODO crab
 	//info_.minimum_recruit_price = 0;
-	//ai::manager::raise_recruit_list_changed();
+	//ai::manager::get_singleton().raise_recruit_list_changed();
 }
 
 const std::vector<std::string> unit::advances_to_translated() const

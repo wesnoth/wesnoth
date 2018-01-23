@@ -262,7 +262,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 bool attack_analysis::attack_close(const map_location& loc) const
 {
-	std::set<map_location> &attacks = manager::get_ai_info().recent_attacks;
+	std::set<map_location> &attacks = manager::get_singleton().get_ai_info().recent_attacks;
 	for(std::set<map_location>::const_iterator i = attacks.begin(); i != attacks.end(); ++i) {
 		if(distance_between(*i,loc) < 4) {
 			return true;

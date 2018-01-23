@@ -699,7 +699,7 @@ void team_mode_controller::show_list(tree_view_node& node, int side)
 
 void team_mode_controller::show_ai(tree_view_node& node, int side)
 {
-	model().set_data(ai::manager::get_active_ai_overview_for_side(side));
+	model().set_data(ai::manager::get_singleton().get_active_ai_overview_for_side(side));
 
 	if(node.count_children() > 0) {
 		return;
@@ -743,7 +743,7 @@ void team_mode_controller::show_ai_components(tree_view_node& node, int side)
 	if(label* lbl = dynamic_cast<label*>(w)) {
 		std::string tag = lbl->get_label();
 		tag.pop_back();
-		model().set_data(config_to_string(ai::manager::to_config(side), tag));
+		model().set_data(config_to_string(ai::manager::get_singleton().to_config(side), tag));
 	}
 }
 
@@ -774,7 +774,7 @@ void team_mode_controller::show_recall_unit(tree_view_node& node, int side)
 
 void team_mode_controller::show_ai_tree(tree_view_node&, int side)
 {
-	model().set_data(ai::manager::get_active_ai_structure_for_side(side));
+	model().set_data(ai::manager::get_singleton().get_active_ai_structure_for_side(side));
 }
 
 void team_mode_controller::show_units(tree_view_node&, int side)

@@ -161,7 +161,7 @@ bool action_result::is_execution() const
 
 game_info& action_result::get_info() const
 {
-	return manager::get_active_ai_info_for_side(get_side());
+	return manager::get_singleton().get_active_ai_info_for_side(get_side());
 }
 
 team& action_result::get_my_team() const
@@ -311,7 +311,7 @@ void attack_result::do_execute()
 	get_info().recent_attacks.insert(defender_loc_);
 	//end of ugly hack
 	try {
-		manager::raise_gamestate_changed();
+		manager::get_singleton().raise_gamestate_changed();
 	} catch (...) {
 		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
 		throw;
@@ -510,7 +510,7 @@ void move_result::do_execute()
 
 	if (is_gamestate_changed()) {
 		try {
-			manager::raise_gamestate_changed();
+			manager::get_singleton().raise_gamestate_changed();
 		} catch (...) {
 			if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
 			throw;
@@ -660,7 +660,7 @@ void recall_result::do_execute()
 
 	set_gamestate_changed();
 	try {
-		manager::raise_gamestate_changed();
+		manager::get_singleton().raise_gamestate_changed();
 	} catch (...) {
 		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
 		throw;
@@ -807,7 +807,7 @@ void recruit_result::do_execute()
 
 	set_gamestate_changed();
 	try {
-		manager::raise_gamestate_changed();
+		manager::get_singleton().raise_gamestate_changed();
 	} catch (...) {
 		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
 		throw;
@@ -907,12 +907,12 @@ void stopunit_result::do_execute()
 		if (remove_movement_){
 			un->remove_movement_ai();
 			set_gamestate_changed();
-			manager::raise_gamestate_changed();
+			manager::get_singleton().raise_gamestate_changed();
 		}
 		if (remove_attacks_){
 			un->remove_attacks_ai();
 			set_gamestate_changed();
-			manager::raise_gamestate_changed();//to be on the safe side
+			manager::get_singleton().raise_gamestate_changed();//to be on the safe side
 		}
 	} catch (...) {
 		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
@@ -972,7 +972,7 @@ void synced_command_result::do_execute()
 
 	try {
 		set_gamestate_changed();
-		manager::raise_gamestate_changed();
+		manager::get_singleton().raise_gamestate_changed();
 	} catch (...) {
 		if (!is_ok()) { DBG_AI_ACTIONS << "Return value of AI ACTION was not checked." << std::endl; } //Demotes to DBG "unchecked result" warning
 		throw;
@@ -1114,7 +1114,7 @@ std::map<int,std::string> actions::error_names_;
 void sim_gamestate_changed(action_result *result, bool gamestate_changed){
 	if(gamestate_changed){
 		result->set_gamestate_changed();
-		manager::raise_gamestate_changed();
+		manager::get_singleton().raise_gamestate_changed();
 	}
 }
 

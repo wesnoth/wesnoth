@@ -46,14 +46,15 @@ aspect::aspect(readonly_context &context, const config &cfg, const std::string &
 
 aspect::~aspect()
 	{
+		manager& manager = manager::get_singleton();
 		if (invalidate_on_turn_start_) {
-			manager::remove_turn_started_observer(this);
+			manager.remove_turn_started_observer(this);
 		}
 		if (invalidate_on_tod_change_) {
-			manager::remove_tod_changed_observer(this);
+			manager.remove_tod_changed_observer(this);
 		}
 		if (invalidate_on_gamestate_change_) {
-			manager::remove_gamestate_observer(this);
+			manager.remove_gamestate_observer(this);
 		}
 		if (invalidate_on_minor_gamestate_change_) {
 			///@todo 1.9 add minor_gamestate_change_observer
@@ -72,14 +73,16 @@ void aspect::on_create()
 
 bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 {
+	manager& manager = manager::get_singleton();
+
 	if (invalidate_on_turn_start_) {
-		manager::remove_turn_started_observer(this);
+		manager.remove_turn_started_observer(this);
 	}
 	if (invalidate_on_tod_change_) {
-		manager::remove_tod_changed_observer(this);
+		manager.remove_tod_changed_observer(this);
 	}
 	if (invalidate_on_gamestate_change_) {
-		manager::remove_gamestate_observer(this);
+		manager.remove_gamestate_observer(this);
 	}
 	if (invalidate_on_minor_gamestate_change_) {
 		///@todo 1.9 add minor_gamestate_change_observer
@@ -99,13 +102,13 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 	id_ = cfg["id"].str();
 	DBG_AI_ASPECT << "redeploying aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]"<< std::endl;
 	if (invalidate_on_turn_start_) {
-		manager::add_turn_started_observer(this);
+		manager.add_turn_started_observer(this);
 	}
 	if (invalidate_on_tod_change_) {
-		manager::add_tod_changed_observer(this);
+		manager.add_tod_changed_observer(this);
 	}
 	if (invalidate_on_gamestate_change_) {
-		manager::add_gamestate_observer(this);
+		manager.add_gamestate_observer(this);
 	}
 	if (invalidate_on_minor_gamestate_change_) {
 		///@todo 1.9 add minor_gamestate_change_observer

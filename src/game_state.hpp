@@ -16,6 +16,7 @@
 
 class config;
 
+#include "ai/manager.hpp"
 #include "filter_context.hpp"
 #include "game_board.hpp"
 #include "game_data.hpp"
@@ -47,6 +48,7 @@ public:
 	std::unique_ptr<pathfind::manager> pathfind_manager_;
 	const std::unique_ptr<reports> reports_;
 	std::unique_ptr<game_lua_kernel> lua_kernel_;
+	ai::manager ai_manager_;
 	const std::unique_ptr<game_events::manager> events_manager_;
 	/// undo_stack_ is never nullptr. It is implemented as a pointer so that
 	/// undo_list can be an incomplete type at this point (which reduces the

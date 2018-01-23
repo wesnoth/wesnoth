@@ -49,6 +49,7 @@ game_state::game_state(const config & level, play_controller & pc, const ter_dat
 	pathfind_manager_(new pathfind::manager(level)),
 	reports_(new reports()),
 	lua_kernel_(new game_lua_kernel(*this, pc, *reports_)),
+	ai_manager_(),
 	events_manager_(new game_events::manager()),
 	//TODO: this construct units (in dimiss undo action) but resrouces:: are not available yet,
 	//      so we might want to move the innitialisation of undo_stack_ to game_state::init
@@ -75,6 +76,7 @@ game_state::game_state(const config & level, play_controller & pc, game_board& b
 	pathfind_manager_(new pathfind::manager(level)),
 	reports_(new reports()),
 	lua_kernel_(new game_lua_kernel(*this, pc, *reports_)),
+	ai_manager_(),
 	events_manager_(new game_events::manager()),
 	player_number_(level["playing_team"].to_int() + 1),
 	end_level_data_(),

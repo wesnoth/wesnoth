@@ -636,7 +636,7 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 
 	resources::screen->reload_map();
 	resources::screen->needs_rebuild(true);
-	ai::manager::raise_map_changed();
+	ai::manager::get_singleton().raise_map_changed();
 }
 
 /// Experimental data persistence
