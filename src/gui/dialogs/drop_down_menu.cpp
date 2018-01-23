@@ -90,7 +90,7 @@ namespace
 		 */
 		grid* row_grid = list.get_row_grid(list.get_selected_row());
 		if(toggle_button* checkbox = find_widget<toggle_button>(row_grid, "checkbox", false, false)) {
-			checkbox->set_value_bool(!checkbox->get_value_bool());
+			checkbox->set_value_bool(!checkbox->get_value_bool(), true);
 		}
 	}
 
