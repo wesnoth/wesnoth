@@ -1953,7 +1953,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 	 *
 	 * const int label_[x,y]_adjust = [x,y]pos_ - new_[x,y];
 	 */
-	font::scroll_floating_labels(-xmove, -ymove);
+	font::scroll_floating_labels(diff_x, diff_y);
 
 	labels().recalculate_shroud();
 
