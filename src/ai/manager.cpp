@@ -303,13 +303,13 @@ component* holder::get_component(component *root, const std::string &path) {
 
 
 manager::manager()
-	: user_interact_("ai_user_interact")
+	: map_changed_("ai_map_changed")
+	, recruit_list_changed_("ai_recruit_list_changed")
+	, user_interact_("ai_user_interact")
 	, sync_network_("ai_sync_network")
 	, tod_changed_("ai_tod_changed")
 	, gamestate_changed_("ai_gamestate_changed")
 	, turn_started_("ai_turn_started")
-	, recruit_list_changed_("ai_recruit_list_changed")
-	, map_changed_("ai_map_changed")
 	, last_interact_(0)
 	, num_interact_(0)
 {
