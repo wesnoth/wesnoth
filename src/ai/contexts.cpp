@@ -92,13 +92,13 @@ int readwrite_context_impl::get_recursion_count() const
 
 void readonly_context_impl::raise_user_interact() const
 {
-	manager::raise_user_interact();
+	manager::get_singleton().raise_user_interact();
 }
 
 
 void readwrite_context_impl::raise_gamestate_changed() const
 {
-	manager::raise_gamestate_changed();
+	manager::get_singleton().raise_gamestate_changed();
 }
 
 
@@ -227,7 +227,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		villages_per_scout_()
 	{
 		init_side_context_proxy(context);
-		manager::add_gamestate_observer(this);
+		manager::get_singleton().add_gamestate_observer(this);
 
 		add_known_aspect("advancements", advancements_);
 		add_known_aspect("aggression",aggression_);
@@ -305,7 +305,7 @@ config readonly_context_impl::to_readonly_context_config() const
 
 readonly_context_impl::~readonly_context_impl()
 {
-	manager::remove_gamestate_observer(this);
+	manager::get_singleton().remove_gamestate_observer(this);
 }
 
 void readonly_context_impl::handle_generic_event(const std::string& /*event_name*/)
@@ -315,12 +315,12 @@ void readonly_context_impl::handle_generic_event(const std::string& /*event_name
 
 
 const game_info& readonly_context_impl::get_info() const{
-	return manager::get_active_ai_info_for_side(get_side());
+	return manager::get_singleton().get_active_ai_info_for_side(get_side());
 }
 
 
 game_info& readwrite_context_impl::get_info_w(){
-	return manager::get_active_ai_info_for_side(get_side());
+	return manager::get_singleton().get_active_ai_info_for_side(get_side());
 }
 
 void readonly_context_impl::diagnostic(const std::string& msg)
@@ -950,15 +950,15 @@ keeps_cache::keeps_cache()
 	: map_(nullptr)
 	, keeps_()
 {
-	ai::manager::add_turn_started_observer(this);
-	ai::manager::add_map_changed_observer(this);
+	ai::manager::get_singleton().add_turn_started_observer(this);
+	ai::manager::get_singleton().add_map_changed_observer(this);
 }
 
 
 keeps_cache::~keeps_cache()
 {
-	ai::manager::remove_turn_started_observer(this);
-	ai::manager::remove_map_changed_observer(this);
+	ai::manager::get_singleton().remove_turn_started_observer(this);
+	ai::manager::get_singleton().remove_map_changed_observer(this);
 }
 
 void keeps_cache::clear()

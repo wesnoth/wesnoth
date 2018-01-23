@@ -694,11 +694,11 @@ bool formula_ai::execute_candidate_action(ca_ptr fai_ca)
 formula_ai::gamestate_change_observer::gamestate_change_observer() :
 	set_var_counter_(), set_unit_var_counter_(), continue_counter_()
 {
-	ai::manager::add_gamestate_observer(this);
+	ai::manager::get_singleton().add_gamestate_observer(this);
 }
 
 formula_ai::gamestate_change_observer::~gamestate_change_observer() {
-	ai::manager::remove_gamestate_observer(this);
+	ai::manager::get_singleton().remove_gamestate_observer(this);
 }
 
 void formula_ai::gamestate_change_observer::handle_generic_event(const std::string& /*event_name*/) {

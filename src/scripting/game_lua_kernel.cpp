@@ -2970,7 +2970,7 @@ static int intf_modify_ai(lua_State *L, const char* action)
 		"path", path
 	};
 	if(strcmp(action, "delete") == 0) {
-		ai::manager::modify_active_ai_for_side(side_num, cfg);
+		ai::manager::get_singleton().modify_active_ai_for_side(side_num, cfg);
 		return 0;
 	}
 	config component = luaW_checkconfig(L, 3);
@@ -2980,7 +2980,7 @@ static int intf_modify_ai(lua_State *L, const char* action)
 		len = open_brak - dot - 1;
 	}
 	cfg.add_child(path.substr(dot + 1, len), component);
-	ai::manager::modify_active_ai_for_side(side_num, cfg);
+	ai::manager::get_singleton().modify_active_ai_for_side(side_num, cfg);
 	return 0;
 }
 
@@ -2989,13 +2989,13 @@ static int intf_switch_ai(lua_State *L)
 	int side_num = luaL_checkinteger(L, 1);
 	if(lua_isstring(L, 2)) {
 		std::string file = luaL_checkstring(L, 2);
-		if(!ai::manager::add_ai_for_side_from_file(side_num, file)) {
+		if(!ai::manager::get_singleton().add_ai_for_side_from_file(side_num, file)) {
 			std::string err = formatter() << "Could not load AI for side " << side_num << " from file " << file;
 			lua_pushlstring(L, err.c_str(), err.length());
 			return lua_error(L);
 		}
 	} else {
-		ai::manager::add_ai_for_side_from_config(side_num, luaW_checkconfig(L, 2));
+		ai::manager::get_singleton().add_ai_for_side_from_config(side_num, luaW_checkconfig(L, 2));
 	}
 	return 0;
 }
@@ -3020,7 +3020,7 @@ static int intf_append_ai(lua_State *L)
 			}
 		}
 	}
-	ai::manager::append_active_ai_for_side(side_num, cfg.child("ai"));
+	ai::manager::get_singleton().append_active_ai_for_side(side_num, cfg.child("ai"));
 	return 0;
 }
 
@@ -3348,7 +3348,7 @@ static int intf_modify_ai_old(lua_State *L)
 	luaW_toconfig(L, 1, cfg);
 	int side = cfg["side"];
 	WRN_LUA << "wesnoth.modify_ai is deprecated\n";
-	ai::manager::modify_active_ai_for_side(side, cfg);
+	ai::manager::get_singleton().modify_active_ai_for_side(side, cfg);
 	return 0;
 }
 
@@ -3461,7 +3461,7 @@ static int intf_debug_ai(lua_State *L)
 	int side = lua_tointeger(L, 1);
 	lua_pop(L, 1);
 
-	ai::component* c = ai::manager::get_active_ai_holder_for_side_dbg(side).get_component(nullptr, "");
+	ai::component* c = ai::manager::get_singleton().get_active_ai_holder_for_side_dbg(side).get_component(nullptr, "");
 
 	// Bad, but works
 	std::vector<ai::component*> engines = c->get_children("engine");
@@ -3475,7 +3475,7 @@ static int intf_debug_ai(lua_State *L)
 	}
 
 	// Better way, but doesn't work
-	//ai::component* e = ai::manager::get_active_ai_holder_for_side_dbg(side).get_component(c, "engine[lua]");
+	//ai::component* e = ai::manager::get_singleton().get_active_ai_holder_for_side_dbg(side).get_component(c, "engine[lua]");
 	//ai::engine_lua* lua_engine = dynamic_cast<ai::engine_lua *>(e);
 
 	if (lua_engine == nullptr)

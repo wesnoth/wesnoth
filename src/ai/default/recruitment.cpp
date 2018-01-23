@@ -1756,8 +1756,8 @@ void recruitment::update_scouts_wanted() {
  */
 recruitment::recruit_situation_change_observer::recruit_situation_change_observer()
 	: recruit_list_changed_(false), gamestate_changed_(0) {
-	manager::add_recruit_list_changed_observer(this);
-	manager::add_gamestate_observer(this);
+	manager::get_singleton().add_recruit_list_changed_observer(this);
+	manager::get_singleton().add_gamestate_observer(this);
 }
 
 void recruitment::recruit_situation_change_observer::handle_generic_event(
@@ -1771,8 +1771,8 @@ void recruitment::recruit_situation_change_observer::handle_generic_event(
 }
 
 recruitment::recruit_situation_change_observer::~recruit_situation_change_observer() {
-	manager::remove_recruit_list_changed_observer(this);
-	manager::remove_gamestate_observer(this);
+	manager::get_singleton().remove_recruit_list_changed_observer(this);
+	manager::get_singleton().remove_gamestate_observer(this);
 }
 
 bool recruitment::recruit_situation_change_observer::recruit_list_changed() {

@@ -164,7 +164,7 @@ void candidate_action_evaluation_loop::remove_completed_cas()
 		cfg["path"] = path;
 		cfg["action"] = "delete";
 
-		ai::manager::modify_active_ai_for_side(this->get_side(), cfg); // we remove the CA
+		ai::manager::get_singleton().modify_active_ai_for_side(this->get_side(), cfg); // we remove the CA
 	}
 
 
@@ -181,7 +181,7 @@ void candidate_action_evaluation_loop::remove_completed_cas()
 // 			cfg["path"] = path;
 // 			cfg["action"] = "delete";
 //
-// 			ai::manager::modify_active_ai_for_side(this->get_side(), cfg);
+// 			ai::manager::get_singleton().modify_active_ai_for_side(this->get_side(), cfg);
 // 		}
 // 		else
 // 		{

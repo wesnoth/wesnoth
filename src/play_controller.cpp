@@ -306,6 +306,10 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 
 	gui_->labels().set_team(nullptr);
 
+	/* First destroy the old game state, then create the new one.
+	This is necessary to ensure that while the old AI manager is being destroyed,
+	all its member objects access the old manager instead of the new. */
+	gamestate_.reset();
 	gamestate_.reset(new game_state(level, *this, tdata_));
 	resources::gameboard = &gamestate().board_;
 	resources::gamedata = &gamestate().gamedata_;
@@ -956,7 +960,7 @@ void play_controller::check_victory()
 	if (gui_->video().non_interactive()) {
 		LOG_AIT << "winner: ";
 		for (unsigned l : not_defeated) {
-			std::string ai = ai::manager::get_active_ai_identifier_for_side(l);
+			std::string ai = ai::manager::get_singleton().get_active_ai_identifier_for_side(l);
 			if (ai.empty()) ai = "default ai";
 			LOG_AIT << l << " (using " << ai << ") ";
 		}

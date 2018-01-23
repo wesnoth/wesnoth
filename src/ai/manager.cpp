@@ -21,7 +21,6 @@
 
 #include "config.hpp"             // for config, etc
 #include "game_events/pump.hpp"
-#include "generic_event.hpp"      // for generic_event, etc
 #include "log.hpp"
 #include "map/location.hpp"       // for map_location
 #include "resources.hpp"
@@ -303,17 +302,22 @@ component* holder::get_component(component *root, const std::string &path) {
 // =======================================================================
 
 
-manager::AI_map_of_stacks manager::ai_map_;
-std::unique_ptr<game_info> manager::ai_info_;
-events::generic_event manager::user_interact_("ai_user_interact");
-events::generic_event manager::sync_network_("ai_sync_network");
-events::generic_event manager::tod_changed_("ai_tod_changed");
-events::generic_event manager::gamestate_changed_("ai_gamestate_changed");
-events::generic_event manager::turn_started_("ai_turn_started");
-events::generic_event manager::recruit_list_changed_("ai_recruit_list_changed");
-events::generic_event manager::map_changed_("ai_map_changed");
-int manager::last_interact_ = 0;
-int manager::num_interact_ = 0;
+manager::manager()
+	: user_interact_("ai_user_interact")
+	, sync_network_("ai_sync_network")
+	, tod_changed_("ai_tod_changed")
+	, gamestate_changed_("ai_gamestate_changed")
+	, turn_started_("ai_turn_started")
+	, recruit_list_changed_("ai_recruit_list_changed")
+	, map_changed_("ai_map_changed")
+	, last_interact_(0)
+	, num_interact_(0)
+{
+	singleton_ = this;
+}
+
+
+manager* manager::singleton_ = nullptr;
 
 
 void manager::set_ai_info(const game_info& i)
@@ -480,7 +484,7 @@ const std::string manager::evaluate_command( side_number side, const std::string
 }
 
 
-bool manager::should_intercept( const std::string& str )
+bool manager::should_intercept( const std::string& str ) const
 {
 	if (str.length()<1) {
 		return false;
@@ -494,9 +498,6 @@ bool manager::should_intercept( const std::string& str )
 	return false;
 
 }
-
-std::deque< command_history_item > manager::history_;
-long manager::history_item_counter_ = 1;
 
 //this is stub code to allow testing of basic 'history', 'repeat-last-command', 'add/remove/replace ai' capabilities.
 //yes, it doesn't look nice. but it is usable.
@@ -703,13 +704,13 @@ void manager::append_active_ai_for_side(side_number side, const config& cfg)
 	get_active_ai_holder_for_side(side).append_ai(cfg);
 }
 
-std::string manager::get_active_ai_overview_for_side( side_number side)
+std::string manager::get_active_ai_overview_for_side( side_number side )
 {
 	return get_active_ai_holder_for_side(side).get_ai_overview();
 }
 
 
-std::string manager::get_active_ai_structure_for_side( side_number side)
+std::string manager::get_active_ai_structure_for_side( side_number side )
 {
 	return get_active_ai_holder_for_side(side).get_ai_structure();
 }
@@ -720,7 +721,7 @@ std::string manager::get_active_ai_identifier_for_side( side_number side )
 	return get_active_ai_holder_for_side(side).get_ai_identifier();
 }
 
-ai::holder& manager::get_active_ai_holder_for_side_dbg(side_number side)
+ai::holder& manager::get_active_ai_holder_for_side_dbg( side_number side )
 {
 	if (!game_config::debug)
 	{
@@ -737,13 +738,13 @@ config manager::to_config( side_number side )
 }
 
 
-game_info& manager::get_active_ai_info_for_side( side_number /*side*/ )
+game_info& manager::get_active_ai_info_for_side( side_number /*side*/ ) const
 {
 	return *ai_info_;
 }
 
 
-game_info& manager::get_ai_info()
+game_info& manager::get_ai_info() const
 {
 	return *ai_info_;
 }
