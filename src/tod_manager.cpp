@@ -125,26 +125,39 @@ config tod_manager::to_config() const
 	cfg["current_time"] = currentTime_;
 	cfg["random_start_time"] = random_tod_;
 	cfg["it_is_a_new_turn"] = !has_turn_event_fired_;
-	std::vector<time_of_day>::const_iterator t;
-	for(t = times_.begin(); t != times_.end(); ++t) {
-		t->write(cfg.add_child("time"));
+
+	for(const time_of_day& tod : times_) {
+		// Don't write the stub default ToD if it happens to be present.
+		if(tod.id != "nulltod") {
+			tod.write(cfg.add_child("time"));
+		}
 	}
-	for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
+
+	for(const area_time_of_day& a_tod : areas_) {
 		config& area = cfg.add_child("time_area");
-		// if no ranges, then use hexes to generate ranges
-		if(i->xsrc.empty() && i->ysrc.empty()) {
-			write_location_range(i->hexes, area);
+
+		// If no ranges, then use hexes to generate ranges
+		if(a_tod.xsrc.empty() && a_tod.ysrc.empty()) {
+			write_location_range(a_tod.hexes, area);
 		} else {
-			area["x"] = i->xsrc;
-			area["y"] = i->ysrc;
+			area["x"] = a_tod.xsrc;
+			area["y"] = a_tod.ysrc;
 		}
-		for(t = i->times.begin(); t != i->times.end(); ++t) {
-			t->write(area.add_child("time"));
+
+		for(const time_of_day& tod : a_tod.times) {
+			// Don't write the stub default ToD if it happens to be present.
+			if(tod.id != "nulltod") {
+				tod.write(area.add_child("time"));
+			}
 		}
-		area["current_time"] = i->currentTime;
-		if (!i->id.empty())
-			area["id"] = i->id;
+
+		area["current_time"] = a_tod.currentTime;
+
+		if(!a_tod.id.empty()) {
+			area["id"] = a_tod.id;
+		}
 	}
+
 	return cfg;
 }
 
