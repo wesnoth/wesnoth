@@ -203,10 +203,14 @@ void team::team_info::read(const config& cfg)
 	if(!user_team_name.translatable())
 		user_team_name = t_string::from_serialized(user_team_name);
 
-	if(cfg.has_attribute("ai_config")) {
-		ai::manager::get_singleton().add_ai_for_side_from_file(side, cfg["ai_config"], true);
-	} else {
-		ai::manager::get_singleton().add_ai_for_side_from_config(side, cfg, true);
+	display* disp = display::get_singleton();
+
+	if(disp && !disp->in_editor()) {
+		if(cfg.has_attribute("ai_config")) {
+			ai::manager::get_singleton().add_ai_for_side_from_file(side, cfg["ai_config"], true);
+		} else {
+			ai::manager::get_singleton().add_ai_for_side_from_config(side, cfg, true);
+		}
 	}
 
 	std::vector<std::string> recruits = utils::split(cfg["recruit"]);
