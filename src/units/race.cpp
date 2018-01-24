@@ -19,6 +19,7 @@
 
 #include "units/race.hpp"
 
+#include "filesystem.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode_cast.hpp"
@@ -144,4 +145,21 @@ unit_race::GENDER string_gender(const std::string& str, unit_race::GENDER def) {
 		return unit_race::FEMALE;
 	}
 	return def;
+}
+
+std::string unit_race::get_icon_path_stem() const
+{
+	if(!icon_.empty()) {
+		return icon_;
+	}
+
+	std::string path = "icons/unit-groups/race_" + id_;
+
+	// FIXME: hardcoded '30' is bad...
+	if(!filesystem::file_exists(filesystem::get_binary_file_location("images", path + "_30.png"))) {
+		std::cerr << "path not found: " << "images/" + path + "_30.png" << std::endl;
+		path = "icons/unit-groups/race_custom";
+	}
+
+	return path;
 }

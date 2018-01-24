@@ -50,11 +50,7 @@ void unit_palette::setup(const config& /*cfg*/)
 		config cfg;
 		cfg["id"] = i.second.id();
 		cfg["name"] = i.second.plural_name();
-		if(i.second.editor_icon().empty()) {
-			cfg["icon"] = "icons/unit-groups/race_" + i.second.id();
-		} else {
-			cfg["icon"] = i.second.editor_icon();
-		}
+		cfg["icon"] = i.second.get_icon_path_stem();
 		cfg["core"] = true;
 		groups_.emplace_back(cfg);
 	}

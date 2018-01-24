@@ -284,7 +284,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 	}
 
 	if(icon_race_) {
-		icon_race_->set_label("icons/unit-groups/race_" + type.race_id() + "_30.png");
+		icon_race_->set_label(type.race()->get_icon_path_stem() + "_30.png");
 	}
 
 	if(icon_alignment_) {

@@ -45,6 +45,21 @@ public:
 	unsigned int num_traits() const;
 	const std::string& undead_variation() const { return undead_variation_; }
 
+	/**
+	 * Gets this race's icon path without state/size suffix and extension.
+	 *
+	 * This doesn't return the full path. Its output looks something like this:
+	 * @c icons/unit-groups/race_elf
+	 *
+	 * This is because this output is used in the editor for a GUI1 button's icon,
+	 * and GUI1 automatically appends the state extension, such as "_30-pressed.png"
+	 *
+	 * If a custom icon has been provided, that is used. Else, it checks if an
+	 * appropriate icon exists in icons/unit-groups/. If not, a generic custom race
+	 * icon will be used.
+	 */
+	std::string get_icon_path_stem() const;
+
 	/// Dummy race used when a race is not yet known.
 	static const unit_race null_race;
 
