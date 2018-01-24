@@ -128,13 +128,7 @@ static int impl_unit_type_new(lua_State* L)
 
 static int impl_unit_type_count(lua_State* L)
 {
-	lua_pushstring(L, "base");
-	lua_rawget(L, 1);
-	if(const unit_type* base = luaW_tounittype(L, -1)) {
-		lua_pushnumber(L, base->variations().size() + base->genders().size());
-	} else {
-		lua_pushnumber(L, unit_types.types().size());
-	}
+	lua_pushnumber(L, unit_types.types().size());
 	return 1;
 }
 
