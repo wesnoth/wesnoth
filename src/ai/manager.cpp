@@ -303,7 +303,8 @@ component* holder::get_component(component *root, const std::string &path) {
 
 
 manager::manager()
-	: map_changed_("ai_map_changed")
+	: history_item_counter_(0)
+	, map_changed_("ai_map_changed")
 	, recruit_list_changed_("ai_recruit_list_changed")
 	, user_interact_("ai_user_interact")
 	, sync_network_("ai_sync_network")
