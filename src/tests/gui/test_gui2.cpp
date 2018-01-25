@@ -270,7 +270,7 @@ namespace {
 	void test_tip_resolutions(const resolution_list& resolutions
 			, const std::string& id)
 	{
-		for(const resolution& resolution : resolutions) {
+		for(const auto& resolution : resolutions) {
 			std::set<std::string>& list = gui2::unit_test_registered_window_list();
 			list.erase(id);
 
