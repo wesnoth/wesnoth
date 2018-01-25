@@ -981,6 +981,9 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			location_palette* lp = dynamic_cast<location_palette*>(&toolkit_->get_palette_manager()->active_palette());
 			if (lp) {
 				perform_delete(new editor_action_starting_position(map_location(), lp->selected_item()));
+				// No idea if this is the right thing to call, but it ensures starting
+				// position labels get removed on delete.
+				context_manager_->refresh_after_action();
 			}
 			return true;
 		}
