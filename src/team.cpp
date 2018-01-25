@@ -205,7 +205,16 @@ void team::team_info::read(const config& cfg)
 
 	display* disp = display::get_singleton();
 
-	if(disp && !disp->in_editor()) {
+	//
+	// FIXME: the display isn't constructed at this point when launching a game,
+	// but we still want to add the ai config. On the other hand, when creating
+	// a scenario in the editor, the display IS constructed, but there's no AI
+	// manager. All of which leads to this awkward conditional. We really should
+	// figure out a better one...
+	//
+	// --vultraz, 2018-01-26
+	//
+	if(!disp || !disp->in_editor()) {
 		if(cfg.has_attribute("ai_config")) {
 			ai::manager::get_singleton().add_ai_for_side_from_file(side, cfg["ai_config"], true);
 		} else {
