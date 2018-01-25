@@ -67,6 +67,7 @@ public:
 			icon_ = rhs.icon_;
 			label_ = rhs.label_;
 			desc_ = rhs.desc_;
+			default_ = rhs.default_;
 		}
 		return *this;
 	}
