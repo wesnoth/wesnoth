@@ -25,7 +25,7 @@ class unit_type;
  */
 namespace lua_unit_type {
 	std::string register_metatable(lua_State *);
-	std::string register_table(lua_State *);
+	void register_table(lua_State *);
 } //end namespace lua_team
 
 /// Create a lua object containing a reference to a unittype, and a

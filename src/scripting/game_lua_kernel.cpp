@@ -3508,6 +3508,37 @@ static int intf_debug_ai(lua_State *L)
 	return 1;
 }
 
+static int intf_index(lua_State *L)
+{
+	// Create a copy of the table index. Lua_rawget() pops it from the stack and we may need the copy.
+	lua_pushvalue(L, 2);
+	// Get the value from the table.
+	lua_rawget(L, 1);
+	if(!lua_isnil(L, -1)) {
+		// The value is there, return it.
+		return 1;
+	}
+	else {
+		if(lua_isstring(L, 2)) {
+			std::string key = luaL_checkstring(L, 2);
+			if(key == "unit_types") {
+				// The developer accessed wesnoth.unit_types and it hasn't been created yet.
+				// Create it.
+				lua_unit_type::register_table(L);
+
+				// And now fetching the table will work.
+				lua_getglobal(L, "wesnoth");
+				lua_pushvalue(L, 2);
+				lua_rawget(L, -2);
+				return 1;
+			}
+		}
+	}
+
+	// Mistyped key or even a wrong type. Return nothing.
+	return 0;
+}
+
 /// Allow undo sets the flag saying whether the event has mutated the game to false.
 int game_lua_kernel::intf_allow_end_turn(lua_State * L)
 {
@@ -4123,9 +4154,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	// Create the vconfig metatable.
 	cmd_log_ << lua_common::register_vconfig_metatable(L);
 
-	// Create the unit_types table
-	cmd_log_ << lua_unit_type::register_table(L);
-
 	// Create the ai elements table.
 	cmd_log_ << "Adding ai elements table...\n";
 
@@ -4211,6 +4239,15 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		push_builtin_effect();
 		lua_rawset(L, -3);
 	}
+	lua_settop(L, 0);
+
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	lua_pushcfunction(L, &intf_index);
+	lua_setfield(L, -2, "__index");
+	lua_pushstring(L, "Wesnoth API table");
+	lua_setfield(L, -2, "__metatable");
+	lua_setmetatable(L, -2);
 	lua_settop(L, 0);
 }
 
