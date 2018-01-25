@@ -472,10 +472,11 @@ public:
 				side);
 		}
 		// Expand initially selected node
-		callbacks[{0}](find_widget<tree_view>(&window, "stuff_list", false).get_root_node().get_child_at(0));
+		callbacks[initially_selected_node](find_widget<tree_view>(&window, "stuff_list", false).get_root_node().get_child_at(0));
 	}
 
 private:
+	static const std::vector<int> initially_selected_node;
 	model& model_;
 	view& view_;
 	using node_callback = std::function<void(tree_view_node&)>;
@@ -486,6 +487,7 @@ private:
 	const game_events::manager& events_;
 	const display_context& dc_;
 };
+const std::vector<int> gamestate_inspector::controller::initially_selected_node = std::vector<int>({0});
 
 gamestate_inspector::model& single_mode_controller::model() {
 	return c.model_;
