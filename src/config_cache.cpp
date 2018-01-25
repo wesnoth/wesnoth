@@ -47,14 +47,8 @@ config_cache::config_cache()
 	, use_cache_(true)
 	, fake_invalid_cache_(false)
 	, defines_map_()
-	, cache_file_prefix_()
+	, cache_file_prefix_("cache-v" + boost::algorithm::replace_all_copy(game_config::revision, ":", "_") + "-")
 {
-	cache_file_prefix_
-			= "cache-v" +
-			  boost::algorithm::replace_all_copy(game_config::revision,
-												 ":", "_") +
-			  "-";
-
 	// To set-up initial defines map correctly
 	clear_defines();
 }
