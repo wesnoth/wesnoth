@@ -235,6 +235,13 @@ config_attribute_value& config_attribute_value::operator=(const t_string& v)
 	return *this;
 }
 
+void config_attribute_value::write_if_not_empty(const std::string& v)
+{
+	if(!v.empty()) {
+		*this = v;
+	}
+}
+
 bool config_attribute_value::to_bool(bool def) const
 {
 	if(const yes_no* p = boost::get<const yes_no>(&value_))

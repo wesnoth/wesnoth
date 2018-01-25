@@ -177,6 +177,10 @@ public:
 	{
 		return operator=(T::enum_to_string(v));
 	}
+
+	/** Calls @ref operator=(const std::string&) if @a v is not empty. */
+	void write_if_not_empty(const std::string& v);
+
 	// Extracting as a specific type:
 	bool to_bool(bool def = false) const;
 	int to_int(int def = 0) const;
