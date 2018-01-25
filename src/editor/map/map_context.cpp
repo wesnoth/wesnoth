@@ -523,7 +523,7 @@ config map_context::to_config()
 		side["no_leader"] = t->no_leader();
 
 		side["team_name"] = t->team_name();
-		side["user_team_name"] = t->user_team_name();
+		side["user_team_name"].write_if_not_empty(t->user_team_name());
 
 		// TODO
 		// side["allow_player"] = "yes";
@@ -547,7 +547,7 @@ config map_context::to_config()
 				i->get_location().write(u);
 
 				u["type"] = i->type_id();
-				u["name"] = i->name();
+				u["name"].write_if_not_empty(i->name());
 				u["facing"] = map_location::write_direction(i->facing());
 
 				if(!boost::regex_match(i->id(), boost::regex(".*-[0-9]+"))) {
