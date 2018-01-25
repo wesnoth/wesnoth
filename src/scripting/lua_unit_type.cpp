@@ -51,6 +51,20 @@ static void push_string_vec(lua_State* L, const std::vector<std::string>& vec, c
 	lua_setfield(L, -2, key.c_str());
 }
 
+static void push_traits(lua_State* L, const unit_type& ut)
+{
+	lua_newtable(L);
+
+	for(const config& trait : ut.possible_traits()) {
+		const std::string& id = trait["id"];
+		lua_pushlstring(L, id.c_str(), id.length());
+		luaW_pushconfig(L, trait);
+		lua_rawset(L, -3);
+	}
+
+	lua_setfield(L, -2, "traits");
+}
+
 static void push_unit_type(lua_State* L, const unit_type& ut)
 {
 	lua_newtable(L);
@@ -83,8 +97,13 @@ static void push_unit_type(lua_State* L, const unit_type& ut)
 	push_string_vec(L, ut.advances_from(), "advances_from");
 	luaW_pushconfig(L, ut.get_cfg());
 	lua_setfield(L, -2, "__cfg");
+	push_traits(L, ut);
+	push_string_vec(L, ut.get_ability_list(), "abilities");
+	push_unit_attacks_table(L, -1);
+	lua_setfield(L, -2, "attacks");
 
-	// TODO: traits, abilities, attacks and variations
+	// TODO: add unit type variations and genders
+	// TODO: write-protect the tables
 
 	lua_setfield(L, -2, ut.id().c_str());
 }
