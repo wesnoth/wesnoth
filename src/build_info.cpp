@@ -172,7 +172,6 @@ version_table_manager::version_table_manager()
 	, features()
 {
 	SDL_version sdl_version;
-	const SDL_version* sdl_rt_version = nullptr;
 
 
 	//
@@ -194,7 +193,7 @@ version_table_manager::version_table_manager()
 	SDL_IMAGE_VERSION(&sdl_version);
 	compiled[LIB_SDL_IMAGE] = format_version(sdl_version);
 
-	sdl_rt_version = IMG_Linked_Version();
+	const SDL_version* sdl_rt_version = IMG_Linked_Version();
 	if(sdl_rt_version) {
 		linked[LIB_SDL_IMAGE] = format_version(*sdl_rt_version);
 	}
