@@ -59,10 +59,12 @@ void time_of_day::write(config& cfg) const
 	cfg["blue"] = color.b;
 	cfg["image"] = image;
 	cfg["name"] = name;
-	cfg["description"] = description;
 	cfg["id"] = id;
-	cfg["mask"] = image_mask;
-	cfg["sound"] = sounds;
+
+	// Optional keys
+	cfg["description"].write_if_not_empty(description);
+	cfg["mask"].write_if_not_empty(image_mask);
+	cfg["sound"].write_if_not_empty(sounds);
 }
 
 void time_of_day::parse_times(const config& cfg, std::vector<time_of_day>& times)

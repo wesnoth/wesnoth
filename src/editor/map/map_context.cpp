@@ -488,18 +488,23 @@ config map_context::to_config()
 
 	labels_.write(scenario);
 
-	overlay_map::const_iterator it;
-	for(it = overlays_.begin(); it != overlays_.end(); ++it) {
+	for(const auto& overlay_pair : overlays_) {
 		config& item = scenario.add_child("item");
 
-		it->first.write(item);
+		// Write x,y location
+		overlay_pair.first.write(item);
 
-		item["image"] = it->second.image;
-		item["id"] = it->second.id;
-		item["halo"] = it->second.halo;
-		item["visible_in_fog"] = it->second.visible_in_fog;
-		item["name"] = it->second.name;
-		item["team_name"] = it->second.team_name;
+		const overlay& o = overlay_pair.second;
+
+		// These should always have a value
+		item["image"] = o.image;
+		item["visible_in_fog"] = o.visible_in_fog;
+
+		// Optional keys
+		item["id"].write_if_not_empty(o.id);
+		item["name"].write_if_not_empty(o.name);
+		item["team_name"].write_if_not_empty(o.team_name);
+		item["halo"].write_if_not_empty(o.halo);
 	}
 
 	for(const music_map::value_type& track : music_tracks_) {
