@@ -1105,33 +1105,30 @@ void image_shape::draw(surface& canvas,
 	surface surf;
 
 	// Test whether we need to scale and do the scaling if needed.
-	if(w || h) {
-		bool done = false;
-		bool stretch_image = (resize_mode_ == stretch) && (!!w ^ !!h);
-		if(!w) {
-			if(stretch_image) {
+	if ((w == 0) && (h == 0)) {
+		surf = image_;
+	}
+	else { // assert((w != 0) || (h != 0))
+		if(w == 0) { // assert(h != 0)
+			if(resize_mode_ == stretch) {
 				DBG_GUI_D << "Image: vertical stretch from " << image_->w << ','
 						  << image_->h << " to a height of " << h << ".\n";
 
 				surf = stretch_surface_vertical(image_, h);
-				done = true;
 			}
 			w = image_->w;
 		}
-
-		if(!h) {
-			if(stretch_image) {
+		else if(h == 0) { // assert(w != 0)
+			if(resize_mode_ == stretch) {
 				DBG_GUI_D << "Image: horizontal stretch from " << image_->w
 						  << ',' << image_->h << " to a width of " << w
 						  << ".\n";
 
 				surf = stretch_surface_horizontal(image_, w);
-				done = true;
 			}
 			h = image_->h;
 		}
-
-		if(!done) {
+		else { // assert((w != 0) && (h != 0))
 
 			if(resize_mode_ == tile) {
 				DBG_GUI_D << "Image: tiling from " << image_->w << ','
@@ -1157,8 +1154,6 @@ void image_shape::draw(surface& canvas,
 		}
 		src_clip.w = w;
 		src_clip.h = h;
-	} else {
-		surf = image_;
 	}
 
 	if(vertical_mirror_(local_variables)) {
