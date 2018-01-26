@@ -28,8 +28,6 @@ static lg::log_domain log_arrows("arrows");
 #define LOG_ARR LOG_STREAM(info, log_arrows)
 #define DBG_ARR LOG_STREAM(debug, log_arrows)
 
-#define SCREEN (static_cast<display*>(game_display::get_singleton()))
-
 arrow::arrow(bool hidden)
 	: layer_(display::LAYER_ARROWS)
 	, color_("red")
@@ -54,10 +52,9 @@ void arrow::hide()
 		return;
 	hidden_ = true;
 
-	if (SCREEN)
-	{
+	if(display* disp = display::get_singleton()) {
 		invalidate_arrow_path(path_);
-		SCREEN->remove_arrow(*this);
+		disp->remove_arrow(*this);
 	}
 }
 
@@ -67,8 +64,9 @@ void arrow::show()
 		return;
 	hidden_ = false;
 
-	if(SCREEN)
-		SCREEN->add_arrow(*this);
+	if(display* disp = display::get_singleton()) {
+		display::get_singleton()->add_arrow(*this);
+	}
 }
 
 void arrow::set_path(const arrow_path_t& path)
@@ -139,7 +137,8 @@ void arrow::draw_hex(const map_location& hex)
 {
 	if(path_contains(hex))
 	{
-		SCREEN->render_image(SCREEN->get_location_x(hex), SCREEN->get_location_y(hex), layer_,
+		display* disp = display::get_singleton();
+		disp->render_image(disp->get_location_x(hex), disp->get_location_y(hex), layer_,
 					hex, image::get_image(symbols_map_[hex], image::SCALED_TO_ZOOM));
 	}
 }
@@ -284,17 +283,16 @@ void arrow::update_symbols()
 
 void arrow::invalidate_arrow_path(const arrow_path_t& path)
 {
-	if(!SCREEN) return;
-
-	for (const map_location& loc : path)
-	{
-		SCREEN->invalidate(loc);
+	if(display* disp = display::get_singleton()) {
+		for(const map_location& loc : path) {
+			disp->invalidate(loc);
+		}
 	}
 }
 
 void arrow::notify_arrow_changed()
 {
-	if(!SCREEN) return;
-
-	SCREEN->update_arrow(*this);
+	if(display* disp = display::get_singleton()) {
+		disp->update_arrow(*this);
+	}
 }
