@@ -321,7 +321,7 @@ void map_context::load_scenario(const config& game_config)
 		read(scenario, *(preprocess_file(filename_)));
 	} catch(config::error& e) {
 		LOG_ED << "Caught a config error while parsing file: '" << filename_ << "'\n" << e.message << std::endl;
-		throw e;
+		throw;
 	}
 
 	scenario_id_ = scenario["id"].str();

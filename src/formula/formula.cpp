@@ -963,7 +963,7 @@ public:
 				sub.calculation.reset(new formula(formula_str));
 			} catch(formula_error& e) {
 				e.filename += " - string substitution";
-				throw e;
+				throw;
 			}
 
 			subs_.push_back(sub);
