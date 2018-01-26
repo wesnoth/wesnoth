@@ -157,7 +157,6 @@ std::string unit_race::get_icon_path_stem() const
 
 	// FIXME: hardcoded '30' is bad...
 	if(!filesystem::file_exists(filesystem::get_binary_file_location("images", path + "_30.png"))) {
-		std::cerr << "path not found: " << "images/" + path + "_30.png" << std::endl;
 		path = "icons/unit-groups/race_custom";
 	}
 
