@@ -15,20 +15,21 @@
 // In this domain since it compares a shared string from this domain.
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include <boost/test/unit_test.hpp>
-
 #include "addon/client.hpp"
 #include "addon/info.hpp"
 #include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "formula/debugger.hpp"
-#include "gettext.hpp"
 #include "game_classification.hpp"
 #include "game_config.hpp"
 #include "game_display.hpp"
-#include "game_launcher.hpp"
 #include "game_events/manager.hpp"
+#include "game_initialization/create_engine.hpp"
+#include "game_initialization/lobby_data.hpp"
+#include "game_initialization/lobby_info.hpp"
+#include "game_launcher.hpp"
 #include "generators/map_create.hpp"
+#include "gettext.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
@@ -40,12 +41,14 @@
 #include "gui/dialogs/chat_log.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
+#include "gui/dialogs/depcheck_confirm_change.hpp"
+#include "gui/dialogs/depcheck_select_new.hpp"
 #include "gui/dialogs/edit_label.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/editor/custom_tod.hpp"
-#include "gui/dialogs/editor/edit_side.hpp"
 #include "gui/dialogs/editor/edit_label.hpp"
 #include "gui/dialogs/editor/edit_scenario.hpp"
+#include "gui/dialogs/editor/edit_side.hpp"
 #include "gui/dialogs/editor/generate_map.hpp"
 #include "gui/dialogs/editor/generator_settings.hpp"
 #include "gui/dialogs/editor/new_map.hpp"
@@ -58,9 +61,9 @@
 #include "gui/dialogs/game_cache_options.hpp"
 #include "gui/dialogs/game_delete.hpp"
 #include "gui/dialogs/game_load.hpp"
-#include "gui/dialogs/game_version.hpp"
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/game_stats.hpp"
+#include "gui/dialogs/game_version.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/hotkey_bind.hpp"
@@ -78,21 +81,19 @@
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
+#include "gui/dialogs/multiplayer/mp_login.hpp"
+#include "gui/dialogs/multiplayer/mp_method_selection.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 #include "gui/dialogs/multiplayer/player_info.hpp"
 #include "gui/dialogs/outro.hpp"
-#include "gui/dialogs/depcheck_confirm_change.hpp"
-#include "gui/dialogs/depcheck_select_new.hpp"
-#include "gui/dialogs/multiplayer/mp_login.hpp"
-#include "gui/dialogs/multiplayer/mp_method_selection.hpp"
-#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/sp_options_configure.hpp"
 #include "gui/dialogs/statistics_dialog.hpp"
 #include "gui/dialogs/story_viewer.hpp"
-#include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/terrain_layers.hpp"
+#include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/tooltip.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -107,18 +108,18 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
-#include "game_initialization/create_engine.hpp"
-#include "game_initialization/lobby_data.hpp"
-#include "game_initialization/lobby_info.hpp"
-#include "tests/utils/fake_display.hpp"
+#include "map/map.hpp"
 #include "replay.hpp"
 #include "saved_game.hpp"
+#include "terrain/type_data.hpp"
+#include "tests/utils/fake_display.hpp"
 //#include "scripting/lua_kernel_base.hpp"
+#include "utils/functional.hpp"
 #include "video.hpp"
 #include "wesnothd_connection.hpp"
 #include "wml_exception.hpp"
 
-#include "utils/functional.hpp"
+#include <boost/test/unit_test.hpp>
 
 #include <memory>
 
@@ -357,22 +358,31 @@ void test_tip(const std::string& id)
 
 class dummy_display_context : public display_context
 {
-	config dummy_cfg1;
-
-	editor_map em;
-	unit_map u;
-	std::vector<team> t;
-	std::vector<std::string> lbls;
-
 public:
-	dummy_display_context() : dummy_cfg1(), em(dummy_cfg1), u(), t(), lbls() {}
+	dummy_display_context()
+		: dummy_cfg()
+		, m(std::make_shared<terrain_type_data>(dummy_cfg), "")
+		, u()
+		, t()
+		, lbls()
+	{
+	}
+
 	virtual ~dummy_display_context(){}
 
-	virtual const gamemap & map() const { return em; }
+	virtual const gamemap & map() const { return m; }
 	virtual const unit_map & units() const { return u; }
 	virtual unit_map& units() { return u; }
 	virtual const std::vector<team> & teams() const { return t; }
 	virtual const std::vector<std::string> & hidden_label_categories() const { return lbls; }
+
+private:
+	config dummy_cfg;
+
+	gamemap m;
+	unit_map u;
+	std::vector<team> t;
+	std::vector<std::string> lbls;
 };
 
 const display_context& get_dummy_display_context()
