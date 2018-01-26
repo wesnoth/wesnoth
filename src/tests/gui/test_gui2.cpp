@@ -20,7 +20,6 @@
 #include "addon/client.hpp"
 #include "addon/info.hpp"
 #include "config_cache.hpp"
-#include "editor/editor_display.hpp" // for dummy display context
 #include "filesystem.hpp"
 #include "formula/debugger.hpp"
 #include "gettext.hpp"
@@ -354,6 +353,32 @@ void test_tip(const std::string& id)
 
 		gui2::new_widgets = true;
 	}
+}
+
+class dummy_display_context : public display_context
+{
+	config dummy_cfg1;
+
+	editor_map em;
+	unit_map u;
+	std::vector<team> t;
+	std::vector<std::string> lbls;
+
+public:
+	dummy_display_context() : dummy_cfg1(), em(dummy_cfg1), u(), t(), lbls() {}
+	virtual ~dummy_display_context(){}
+
+	virtual const gamemap & map() const { return em; }
+	virtual const unit_map & units() const { return u; }
+	virtual unit_map& units() { return u; }
+	virtual const std::vector<team> & teams() const { return t; }
+	virtual const std::vector<std::string> & hidden_label_categories() const { return lbls; }
+};
+
+const display_context& get_dummy_display_context()
+{
+	static const dummy_display_context dedc = dummy_display_context();
+	return dedc;
 }
 
 } // namespace
@@ -750,8 +775,7 @@ struct dialog_tester<gamestate_inspector>
 	game_events::manager events;
 	gamestate_inspector* create()
 	{
-		const display_context* dc = editor::get_dummy_display_context();
-		return new gamestate_inspector(vars, events, *dc, "Unit Test");
+		return new gamestate_inspector(vars, events, get_dummy_display_context(), "Unit Test");
 	}
 
 };
@@ -1125,8 +1149,7 @@ struct dialog_tester<game_stats>
 	int i = 1;
 	game_stats* create()
 	{
-		const display_context* ctx = editor::get_dummy_display_context();
-		return new game_stats(*ctx, 1, i);
+		return new game_stats(get_dummy_display_context(), 1, i);
 	}
 };
 
