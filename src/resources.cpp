@@ -30,7 +30,6 @@ namespace resources
 	fake_unit_manager    *fake_units = nullptr;
 	pathfind::manager    *tunnels = nullptr;
 	actions::undo_list   *undo_stack = nullptr;
-	unit_map             *units = nullptr;
 	std::shared_ptr<wb::manager> whiteboard = std::shared_ptr<wb::manager>();
 	game_classification  *classification = nullptr;
 	bool                 simulation_ = false;

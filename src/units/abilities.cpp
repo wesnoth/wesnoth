@@ -17,6 +17,7 @@
  *  Manage unit-abilities, like heal, cure, and weapon_specials.
  */
 
+#include "display.hpp"
 #include "display_context.hpp"
 #include "game_board.hpp"
 #include "lexical_cast.hpp"
@@ -145,8 +146,8 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		}
 	}
 
-	assert(resources::units);
-	const unit_map& units = *resources::units;
+	assert(display::get_singleton());
+	const unit_map& units = display::get_singleton()->get_units();
 
 	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
@@ -186,8 +187,8 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		}
 	}
 
-	assert(resources::units);
-	const unit_map& units = *resources::units;
+	assert(display::get_singleton());
+	const unit_map& units = display::get_singleton()->get_units();
 
 	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
@@ -312,8 +313,8 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 
-	assert(resources::units);
-	const unit_map& units = *resources::units;
+	assert(display::get_singleton());
+	const unit_map& units = display::get_singleton()->get_units();
 
 	for (const config &i : cfg.child_range("filter_adjacent"))
 	{
@@ -449,15 +450,17 @@ T get_single_ability_value(const config::attribute_value& v, T def, const map_lo
 	return v.apply_visitor(make_get_ability_value_visitor(def, [&](const std::string& s) {
 
 			try {
-				assert(resources::units);
-				auto u_itor = resources::units->find(sender_loc);
+				assert(display::get_singleton());
+				const unit_map& units = display::get_singleton()->get_units();
 
-				if(u_itor == resources::units->end()) {
+				auto u_itor = units.find(sender_loc);
+
+				if(u_itor == units.end()) {
 					return def;
 				}
 				wfl::map_formula_callable callable(std::make_shared<wfl::unit_callable>(*u_itor));
-				u_itor = resources::units->find(receiver_loc);
-				if(u_itor != resources::units->end()) {
+				u_itor = units.find(receiver_loc);
+				if(u_itor != units.end()) {
 					callable.add("other", wfl::variant(std::make_shared<wfl::unit_callable>(*u_itor)));
 				}
 				return formula_handler(wfl::formula(s, new wfl::gamestate_function_symbol_table), callable);
@@ -913,8 +916,8 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	}
 
 	// Get the units involved.
-	assert(resources::units);
-	const unit_map& units = *resources::units;
+	assert(display::get_singleton());
+	const unit_map& units = display::get_singleton()->get_units();
 
 	unit_map::const_iterator self  = units.find(self_loc_);
 	unit_map::const_iterator other = units.find(other_loc_);

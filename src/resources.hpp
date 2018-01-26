@@ -57,7 +57,6 @@ namespace resources
 	extern ::tod_manager          *tod_manager;
 	extern pathfind::manager      *tunnels;
 	extern actions::undo_list     *undo_stack;
-	extern unit_map               *units;
 	extern std::shared_ptr<wb::manager> whiteboard;
 	extern bool                   simulation_;
 }

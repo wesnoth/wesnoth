@@ -125,7 +125,6 @@ static void clear_resources()
 	resources::tunnels = nullptr;
 	resources::undo_stack = nullptr;
 	resources::recorder = nullptr;
-	resources::units = nullptr;
 	resources::whiteboard.reset();
 	resources::classification = nullptr;
 }
@@ -212,7 +211,6 @@ void play_controller::init(const config& level)
 		resources::gameboard = &gamestate().board_;
 		resources::gamedata = &gamestate().gamedata_;
 		resources::tod_manager = &gamestate().tod_manager_;
-		resources::units = &gamestate().board_.units_;
 		resources::filter_con = &gamestate();
 		resources::undo_stack = &undo_stack();
 		resources::game_events = gamestate().events_manager_.get();
@@ -295,7 +293,6 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	resources::gameboard = nullptr;
 	resources::gamedata = nullptr;
 	resources::tod_manager = nullptr;
-	resources::units = nullptr;
 	resources::filter_con = nullptr;
 	resources::lua_kernel = nullptr;
 	resources::game_events = nullptr;
@@ -312,7 +309,6 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	resources::gameboard = &gamestate().board_;
 	resources::gamedata = &gamestate().gamedata_;
 	resources::tod_manager = &gamestate().tod_manager_;
-	resources::units = &gamestate().board_.units_;
 	resources::filter_con = &gamestate();
 	resources::undo_stack = &undo_stack();
 	resources::game_events = gamestate().events_manager_.get();
