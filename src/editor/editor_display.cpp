@@ -43,6 +43,7 @@ public:
 
 	virtual const gamemap & map() const { return em; }
 	virtual const unit_map & units() const { return u; }
+	virtual unit_map& units() { return u; }
 	virtual const std::vector<team> & teams() const { return t; }
 	virtual const std::vector<std::string> & hidden_label_categories() const { return lbls; }
 };

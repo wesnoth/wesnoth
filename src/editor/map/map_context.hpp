@@ -143,6 +143,9 @@ public:
 	virtual const unit_map & units() const {
 		return units_;
 	}
+	virtual unit_map& units() {
+		return units_;
+	}
 	virtual const std::vector<team>& teams() const {
 		return teams_;
 	}
