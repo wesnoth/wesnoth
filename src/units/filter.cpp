@@ -71,7 +71,7 @@ std::vector<const unit *> unit_filter::all_matches_on_map(const map_location* lo
 
 unit_const_ptr unit_filter::first_match_on_map() const {
 	const unit_map & units = fc_->get_disp_context().units();
-	for(unit_map::const_iterator u = units.begin(); u != units.end(); u++) {
+	for(unit_map::const_iterator u = units.begin(); u != units.end(); ++u) {
 		if (matches(*u, u->get_location())) {
 			return u.get_shared_ptr();
 		}

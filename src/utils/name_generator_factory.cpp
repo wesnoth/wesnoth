@@ -26,7 +26,7 @@ std::string name_generator::generate(const std::map<std::string,std::string>& va
 name_generator_factory::name_generator_factory(const config& config, std::vector<std::string> ids) : name_generators_() {
 	add_name_generator_from_config(config, "", "");
 
-	for (std::vector<std::string>::iterator it = std::begin(ids); it!=std::end(ids); it++) {
+	for (std::vector<std::string>::iterator it = std::begin(ids); it!=std::end(ids); ++it) {
 		std::string id = *it;
 		add_name_generator_from_config(config, id, (id + "_"));
 	}

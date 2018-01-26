@@ -196,7 +196,7 @@ void highlighter::last_action_redraw(move_ptr move)
 		{
 			// Note: the planned actions seem to only get removed from the screen when
 			// a redraw is triggered by the mouse cursor moving over them.
-			for (side_actions::iterator iterator = sa.begin(); iterator < sa.end(); iterator++)
+			for (side_actions::iterator iterator = sa.begin(); iterator < sa.end(); ++iterator)
 			{
 				if (iterator->get()->get_unit() == nullptr)
 					sa.remove_action (iterator);

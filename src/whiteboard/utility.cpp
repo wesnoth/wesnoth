@@ -65,7 +65,7 @@ unit_const_ptr find_backup_leader(const unit & leader)
 {
 	assert(leader.can_recruit());
 	assert(resources::gameboard->map().is_keep(leader.get_location()));
-	for (unit_map::const_iterator unit = resources::gameboard->units().begin(); unit != resources::gameboard->units().end(); unit++)
+	for (unit_map::const_iterator unit = resources::gameboard->units().begin(); unit != resources::gameboard->units().end(); ++unit)
 	{
 		if (unit->can_recruit() && unit->id() != leader.id())
 		{
