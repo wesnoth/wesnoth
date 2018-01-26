@@ -148,7 +148,7 @@ void statistics_dialog::add_damage_row(
 	str << damage << " / "
 		<< static_cast<double>(shifted) * 0.1
 		<< "    " // TODO: should probably make this two columns
-		<< ((dsa < 0) ^ (expected < 0) ? "" : "+")
+		<< (((dsa < 0) ^ (expected < 0)) ? "" : "+")
 		<< (expected == 0 ? 0 : 100 * dsa / expected) << '%';
 
 	item["label"] = str.str();
@@ -161,7 +161,7 @@ void statistics_dialog::add_damage_row(
 		str << turn_damage << " / "
 			<< static_cast<double>(turn_shifted) * 0.1
 			<< "    " // TODO: should probably make this two columns
-			<< ((dst < 0) ^ (turn_expected < 0) ? "" : "+")
+			<< (((dst < 0) ^ (turn_expected < 0)) ? "" : "+")
 			<< (turn_expected == 0 ? 0 : 100 * dst / turn_expected) << '%';
 
 		item["label"] = str.str();
