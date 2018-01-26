@@ -56,7 +56,7 @@ const display_context * get_dummy_display_context() {
 // End dummy display context
 
 editor_display::editor_display(editor_controller& controller, reports& reports_object, const config& theme_cfg)
-	: display(get_dummy_display_context(), std::shared_ptr<wb::manager>(), reports_object, theme_cfg, config())
+	: display(nullptr, std::shared_ptr<wb::manager>(), reports_object, theme_cfg, config())
 	, brush_locations_()
 	, controller_(controller)
 {
