@@ -65,7 +65,7 @@ void arrow::show()
 	hidden_ = false;
 
 	if(display* disp = display::get_singleton()) {
-		display::get_singleton()->add_arrow(*this);
+		disp->add_arrow(*this);
 	}
 }
 
