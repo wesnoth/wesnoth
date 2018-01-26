@@ -134,7 +134,7 @@ namespace
 		}
 
 		u = resources::gameboard->units().find(loc);
-		resources::screen->invalidate_unit();
+		game_display::get_singleton()->invalidate_unit();
 
 		if (animate && u != resources::gameboard->units().end() && !CVideo::get_singleton().update_locked()) {
 			unit_animator animator;
@@ -142,11 +142,11 @@ namespace
 			animator.start_animations();
 			animator.wait_for_end();
 			animator.set_all_standing();
-			resources::screen->invalidate(loc);
+			game_display::get_singleton()->invalidate(loc);
 			events::pump();
 		}
 
-		resources::screen->invalidate_all();
+		game_display::get_singleton()->invalidate_all();
 
 		return true;
 	}

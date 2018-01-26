@@ -663,9 +663,9 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 	}
 	// Make sure the unit appears (if either !show or the animation is suppressed).
 	new_unit_itor->set_hidden(false);
-	if ( resources::screen != nullptr ) {
-		resources::screen->invalidate(current_loc);
-		resources::screen->redraw_minimap();
+	if ( game_display::get_singleton() != nullptr ) {
+		game_display::get_singleton()->invalidate(current_loc);
+		game_display::get_singleton()->redraw_minimap();
 	}
 
 	// Village capturing.
@@ -724,8 +724,8 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 	}
 
 	// Update the screen.
-	if ( resources::screen != nullptr )
-		resources::screen->invalidate_game_status();
+	if ( game_display::get_singleton() != nullptr )
+		game_display::get_singleton()->invalidate_game_status();
 		// Other updates were done by place_recruit().
 }
 
@@ -771,8 +771,8 @@ bool recall_unit(const std::string & id, team & current_team,
 	}
 
 	// Update the screen.
-	if ( resources::screen != nullptr )
-		resources::screen->invalidate_game_status();
+	if ( game_display::get_singleton() != nullptr )
+		game_display::get_singleton()->invalidate_game_status();
 		// Other updates were done by place_recruit().
 
 	return true;

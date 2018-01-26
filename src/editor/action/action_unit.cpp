@@ -103,8 +103,8 @@ void editor_action_unit_replace::perform_without_undo(map_context& mc) const
 	*/
 
 	// TODO check if that is useful
-	//	resources::screen->invalidate_unit_after_move(loc_, new_loc_);
-	//	resources::screen->draw();
+	//	game_display::get_singleton()->invalidate_unit_after_move(loc_, new_loc_);
+	//	game_display::get_singleton()->draw();
 }
 
 IMPLEMENT_ACTION(unit_facing)

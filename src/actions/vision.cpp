@@ -272,13 +272,13 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
 
 	// Possible screen invalidation.
 	if ( was_fogged ) {
-		resources::screen->invalidate(loc);
+		game_display::get_singleton()->invalidate(loc);
 		// Need to also invalidate adjacent hexes to get rid of the
 		// "fog edge" graphics.
 		map_location adjacent[6];
 		get_adjacent_tiles(loc, adjacent);
 		for ( int i = 0; i != 6; ++i )
-			resources::screen->invalidate(adjacent[i]);
+			game_display::get_singleton()->invalidate(adjacent[i]);
 	}
 
 	// Check for units?
@@ -336,8 +336,8 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
                                 move_unit_spectator * spectator, bool instant)
 {
 	// Give animations a chance to progress; see bug #20324.
-	if ( !instant  &&  resources::screen )
-		resources::screen->draw(true);
+	if ( !instant  &&  game_display::get_singleton() )
+		game_display::get_singleton()->draw(true);
 
 	bool cleared_something = false;
 	// Dummy variables to make some logic simpler.
@@ -351,15 +351,15 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 	if ( view_team_ != &view_team ) {
 		calculate_jamming(&view_team);
 		// Give animations a chance to progress; see bug #20324.
-		if ( !instant  &&  resources::screen )
-			resources::screen->draw(true);
+		if ( !instant  &&  game_display::get_singleton() )
+			game_display::get_singleton()->draw(true);
 	}
 
 	// Determine the hexes to clear.
 	pathfind::vision_path sight(costs, slowed, sight_range, view_loc, jamming_);
 	// Give animations a chance to progress; see bug #20324.
-	if ( !instant  &&  resources::screen )
-		resources::screen->draw(true);
+	if ( !instant  &&  game_display::get_singleton() )
+		game_display::get_singleton()->draw(true);
 
 	// Clear the fog.
 	for (const pathfind::paths::step &dest : sight.destinations) {
@@ -580,9 +580,9 @@ game_events::pump_result_t shroud_clearer::fire_events()
  */
 void shroud_clearer::invalidate_after_clear()
 {
-	resources::screen->invalidate_game_status();
-	resources::screen->recalculate_minimap();
-	resources::screen->labels().recalculate_shroud();
+	game_display::get_singleton()->invalidate_game_status();
+	game_display::get_singleton()->recalculate_minimap();
+	game_display::get_singleton()->labels().recalculate_shroud();
 	// The tiles are invalidated as they are cleared, so no need
 	// to invalidate them here.
 }
@@ -721,7 +721,7 @@ void recalculate_fog(int side)
 	tm.refog();
 	// Invalidate the screen before clearing the shroud.
 	// This speeds up the invalidations within clear_shroud_unit().
-	resources::screen->invalidate_all();
+	game_display::get_singleton()->invalidate_all();
 
 	shroud_clearer clearer;
 	for (const unit &u : resources::gameboard->units())

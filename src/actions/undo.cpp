@@ -350,7 +350,7 @@ void undo_list::undo()
 
 	const events::command_disabler disable_commands;
 
-	game_display & gui = *resources::screen;
+	game_display & gui = *game_display::get_singleton();
 
 	// Get the action to undo. (This will be placed on the redo stack, but
 	// only if the undo is successful.)
@@ -400,7 +400,7 @@ void undo_list::redo()
 
 	const events::command_disabler disable_commands;
 
-	game_display & gui = *resources::screen;
+	game_display & gui = *game_display::get_singleton();
 
 	// Get the action to redo. (This will be placed on the undo stack, but
 	// only if the redo is successful.)
@@ -437,7 +437,7 @@ void undo_list::redo()
  */
 bool undo_list::apply_shroud_changes() const
 {
-	game_display &disp = *resources::screen;
+	game_display &disp = *game_display::get_singleton();
 	team &tm = resources::gameboard->get_team(side_);
 	// No need to do clearing if fog/shroud has been kept up-to-date.
 	if ( tm.auto_shroud_updates()  ||  !tm.fog_or_shroud() ) {

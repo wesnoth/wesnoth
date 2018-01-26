@@ -132,23 +132,23 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	if (const config &message = cfg.child("message"))
 	{
-		resources::screen->get_chat_manager().add_chat_message(time(nullptr), message["sender"], message["side"],
+		game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), message["sender"], message["side"],
 				message["message"], events::chat_handler::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
 	else if (const config &whisper = cfg.child("whisper") /*&& is_observer()*/)
 	{
-		resources::screen->get_chat_manager().add_chat_message(time(nullptr), "whisper: " + whisper["sender"].str(), 0,
+		game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), "whisper: " + whisper["sender"].str(), 0,
 				whisper["message"], events::chat_handler::MESSAGE_PRIVATE,
 				preferences::message_bell());
 	}
 	else if (const config &observer = cfg.child("observer") )
 	{
-		resources::screen->get_chat_manager().add_observer(observer["name"]);
+		game_display::get_singleton()->get_chat_manager().add_observer(observer["name"]);
 	}
 	else if (const config &observer_quit = cfg.child("observer_quit"))
 	{
-		resources::screen->get_chat_manager().remove_observer(observer_quit["name"]);
+		game_display::get_singleton()->get_chat_manager().remove_observer(observer_quit["name"]);
 	}
 	else if (cfg.child("leave_game")) {
 		throw ingame_wesnothd_error("");
@@ -186,21 +186,21 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			resources::controller->on_not_observer();
 		}
 
-		if (resources::gameboard->is_observer() || (resources::gameboard->teams())[resources::screen->playing_team()].is_local_human()) {
-			resources::screen->set_team(resources::screen->playing_team());
-			resources::screen->redraw_everything();
-			resources::screen->recalculate_minimap();
+		if (resources::gameboard->is_observer() || (resources::gameboard->teams())[game_display::get_singleton()->playing_team()].is_local_human()) {
+			game_display::get_singleton()->set_team(game_display::get_singleton()->playing_team());
+			game_display::get_singleton()->redraw_everything();
+			game_display::get_singleton()->recalculate_minimap();
 		} else if (tm.is_local_human()) {
-			resources::screen->set_team(side - 1);
-			resources::screen->redraw_everything();
-			resources::screen->recalculate_minimap();
+			game_display::get_singleton()->set_team(side - 1);
+			game_display::get_singleton()->redraw_everything();
+			game_display::get_singleton()->recalculate_minimap();
 		}
 
 		resources::whiteboard->on_change_controller(side,tm);
 
-		resources::screen->labels().recalculate_labels();
+		game_display::get_singleton()->labels().recalculate_labels();
 
-		const bool restart = resources::screen->playing_side() == side && (was_local || tm.is_local());
+		const bool restart = game_display::get_singleton()->playing_side() == side && (was_local || tm.is_local());
 		return restart ? PROCESS_RESTART_TURN : PROCESS_CONTINUE;
 	}
 
@@ -209,7 +209,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const int  side_drop = side_drop_c["side_num"].to_int(0);
 		size_t index = side_drop -1;
 
-		bool restart = side_drop == resources::screen->playing_side();
+		bool restart = side_drop == game_display::get_singleton()->playing_side();
 
 		if (index >= resources::gameboard->teams().size()) {
 			ERR_NW << "unknown side " << side_drop << " is dropping game" << std::endl;
@@ -267,7 +267,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			first_observer_option_idx = options.size();
 
 			//get all observers in as options to transfer control
-			for (const std::string &screen_observers : resources::screen->observers()) {
+			for (const std::string &screen_observers : game_display::get_singleton()->observers()) {
 				t_vars["player"] = screen_observers;
 				options.emplace_back(vgettext("Give control to observer $player", t_vars));
 				observers.push_back(screen_observers);
@@ -347,7 +347,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	// The host has ended linger mode in a campaign -> enable the "End scenario" button
 	// and tell we did get the notification.
 	else if (cfg.child("notify_next_scenario")) {
-		std::shared_ptr<gui::button> btn_end = resources::screen->find_action_button("button-endturn");
+		std::shared_ptr<gui::button> btn_end = game_display::get_singleton()->find_action_button("button-endturn");
 		if(btn_end) {
 			btn_end->enable(true);
 		}

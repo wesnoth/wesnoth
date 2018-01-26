@@ -21,7 +21,6 @@
 #include "game_display.hpp"
 #include "font/text_formatting.hpp"
 #include "map/label.hpp"
-#include "resources.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -43,7 +42,7 @@ namespace dialogs
 REGISTER_DIALOG(label_settings)
 
 label_settings::label_settings(display_context& dc) : viewer(dc) {
-	const std::vector<std::string>& all_categories = resources::screen->labels().all_categories();
+	const std::vector<std::string>& all_categories = game_display::get_singleton()->labels().all_categories();
 	const std::vector<std::string>& hidden_categories = viewer.hidden_label_categories();
 
 	for(size_t i = 0; i < all_categories.size(); i++) {

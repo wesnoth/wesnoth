@@ -18,7 +18,6 @@
 #include <vector>
 
 class game_board;
-class game_display;
 class game_data;
 class filter_context;
 class game_lua_kernel;
@@ -51,7 +50,6 @@ namespace resources
 	extern game_lua_kernel              *lua_kernel;     // Set by game_events::manager.
 	extern persist_manager        *persist;
 	extern game_classification    *classification;
-	extern game_display           *screen;
 	extern filter_context	      *filter_con;
 	extern soundsource::manager   *soundsources;
 	extern replay                 *recorder;

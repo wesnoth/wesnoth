@@ -21,7 +21,6 @@
 #include "game_display.hpp"
 #include "preferences/game.hpp"
 #include "log.hpp"
-#include "resources.hpp"
 
 #include <ctime>
 
@@ -139,7 +138,7 @@ namespace gui{
 			text.append(line_start ? ": " : " ");
 		} else if (matches.size() > 1) {
 			std::string completion_list = utils::join(matches, " ");
-			resources::screen->get_chat_manager().add_chat_message(time(nullptr), "", 0, completion_list,
+			game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), "", 0, completion_list,
 					events::chat_handler::MESSAGE_PRIVATE, false);
 		}
 		box_->set_text(text);

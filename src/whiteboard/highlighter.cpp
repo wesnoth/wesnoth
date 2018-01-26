@@ -64,7 +64,7 @@ highlighter::highlighter(side_actions_ptr side_actions)
 highlighter::~highlighter()
 {
 	try {
-	if(resources::screen && owner_unit_) {
+	if(game_display::get_singleton() && owner_unit_) {
 		unhighlight();
 	}
 	} catch (...) {}
@@ -146,7 +146,7 @@ void highlighter::highlight()
 		find_secondary_highlights();
 
 		//Make sure owner unit is the only one displayed in its hex
-		resources::screen->add_exclusive_draw(owner_unit_->get_location(), *owner_unit_);
+		game_display::get_singleton()->add_exclusive_draw(owner_unit_->get_location(), *owner_unit_);
 		exclusive_display_hexes_.insert(owner_unit_->get_location());
 
 		if(!secondary_highlights_.empty()) {
@@ -179,7 +179,7 @@ void highlighter::unhighlight()
 
 	//unhide other units if needed
 	for(map_location hex : exclusive_display_hexes_) {
-		resources::screen->remove_exclusive_draw(hex);
+		game_display::get_singleton()->remove_exclusive_draw(hex);
 	}
 	exclusive_display_hexes_.clear();
 }
@@ -225,7 +225,7 @@ void highlighter::find_main_highlight()
 	assert(main_highlight_.expired());
 	//@todo re-enable the following assert once I find out what happends to
 	// viewing side assignments after victory
-	//assert(side_actions_->team_index() == resources::screen->viewing_team());
+	//assert(side_actions_->team_index() == game_display::get_singleton()->viewing_team());
 
 	main_highlight_ = find_action_at(mouseover_hex_);
 	if(action_ptr main = main_highlight_.lock()) {
@@ -293,7 +293,7 @@ void highlighter::highlight_main_visitor::visit(move_ptr move)
 		///@todo find some highlight animation
 		move->get_fake_unit()->anim_comp().set_ghosted(true);
 		//Make sure the fake unit is the only one displayed in its hex
-		resources::screen->add_exclusive_draw(move->get_fake_unit()->get_location(), *move->get_fake_unit());
+		game_display::get_singleton()->add_exclusive_draw(move->get_fake_unit()->get_location(), *move->get_fake_unit());
 		highlighter_.exclusive_display_hexes_.insert(move->get_fake_unit()->get_location());
 
 		highlighter_.last_action_redraw(move);
@@ -312,7 +312,7 @@ void highlighter::highlight_main_visitor::visit(recruit_ptr recruit)
 		///@todo: find some suitable effect for mouseover on planned recruit.
 
 		//Make sure the fake unit is the only one displayed in its hex
-		resources::screen->add_exclusive_draw(recruit->get_fake_unit()->get_location(), *recruit->get_fake_unit());
+		game_display::get_singleton()->add_exclusive_draw(recruit->get_fake_unit()->get_location(), *recruit->get_fake_unit());
 		highlighter_.exclusive_display_hexes_.insert(recruit->get_fake_unit()->get_location());
 	}
 }
@@ -325,7 +325,7 @@ void highlighter::highlight_secondary_visitor::visit(move_ptr move)
 	if(move->get_fake_unit()) {
 		move->get_fake_unit()->anim_comp().set_ghosted(true);
 		//Make sure the fake unit is the only one displayed in its hex
-		resources::screen->add_exclusive_draw(move->get_fake_unit()->get_location(), *move->get_fake_unit());
+		game_display::get_singleton()->add_exclusive_draw(move->get_fake_unit()->get_location(), *move->get_fake_unit());
 		highlighter_.exclusive_display_hexes_.insert(move->get_fake_unit()->get_location());
 
 		highlighter_.last_action_redraw(move);
@@ -360,7 +360,7 @@ void highlighter::unhighlight_visitor::visit(recall_ptr recall)
 		//@todo: find some suitable effect for mouseover on planned recall.
 
 		//Make sure the fake unit is the only one displayed in its hex
-		resources::screen->add_exclusive_draw(recall->get_fake_unit()->get_location(), *recall->get_fake_unit());
+		game_display::get_singleton()->add_exclusive_draw(recall->get_fake_unit()->get_location(), *recall->get_fake_unit());
 		highlighter_.exclusive_display_hexes_.insert(recall->get_fake_unit()->get_location());
 	}
 }

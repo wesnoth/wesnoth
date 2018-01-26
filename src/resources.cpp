@@ -24,7 +24,6 @@ namespace resources
 	game_events::manager *game_events = nullptr;
 	game_lua_kernel            *lua_kernel = nullptr;
 	persist_manager      *persist = nullptr;
-	game_display         *screen = nullptr;
 	soundsource::manager *soundsources = nullptr;
 	replay               *recorder = nullptr;
 	::tod_manager        *tod_manager = nullptr;

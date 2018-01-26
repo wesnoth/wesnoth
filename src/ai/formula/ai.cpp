@@ -135,7 +135,7 @@ void formula_ai::handle_exception(formula_error& e, const std::string& failed_op
 
 void formula_ai::display_message(const std::string& msg) const
 {
-	resources::screen->get_chat_manager().add_chat_message(time(nullptr), "wfl", get_side(), msg,
+	game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), "wfl", get_side(), msg,
 				events::chat_handler::MESSAGE_PUBLIC, false);
 
 }

@@ -84,7 +84,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 			if(!map.on_board_with_border(loc))
 				continue;
 
-			const bool shrouded = (resources::screen != nullptr && resources::screen->is_blindfolded()) || (vw != nullptr && vw->shrouded(loc));
+			const bool shrouded = (game_display::get_singleton() != nullptr && game_display::get_singleton()->is_blindfolded()) || (vw != nullptr && vw->shrouded(loc));
 			// shrouded hex are not considered fogged (no need to fog a black image)
 			const bool fogged = (vw != nullptr && !shrouded && vw->fogged(loc));
 

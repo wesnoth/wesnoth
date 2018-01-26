@@ -161,7 +161,7 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 
 	resources::gameboard->teams().at(team_index()).get_side_actions()->change_gold_spent_by(cost);
 	// Update gold in top bar
-	resources::screen->invalidate_game_status();
+	game_display::get_singleton()->invalidate_game_status();
 }
 
 void recall::remove_temp_modifier(unit_map& unit_map)
@@ -191,14 +191,14 @@ void recall::draw_hex(const map_location& hex)
 		}
 		size_t font_size = 16;
 		color_t color {255, 0, 0}; //red
-		resources::screen->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+		game_display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
 						number_text.str(), font_size, color, x_offset, y_offset);
 	}
 }
 
 void recall::redraw()
 {
-	resources::screen->invalidate(recall_hex_);
+	game_display::get_singleton()->invalidate(recall_hex_);
 }
 
 action::error recall::check_validity() const

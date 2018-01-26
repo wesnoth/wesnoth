@@ -580,7 +580,7 @@ vision_path::vision_path(const unit& viewer, const map_location& loc,
 
 	// The three nullptr parameters indicate (in order):
 	// ignore units, ignore ZoC (no effect), and don't build a cost_map.
-	const team& viewing_team = resources::gameboard->teams()[resources::screen->viewing_team()];
+	const team& viewing_team = resources::gameboard->teams()[game_display::get_singleton()->viewing_team()];
 	find_routes(loc, viewer.movement_type().get_vision(),
 	            viewer.get_state(unit::STATE_SLOWED), sight_range, sight_range,
 	            0, destinations, &edges, &viewer, nullptr, nullptr, &viewing_team, &jamming_map, nullptr, true);
@@ -604,7 +604,7 @@ vision_path::vision_path(const movetype::terrain_costs & view_costs, bool slowed
 {
 	// The three nullptr parameters indicate (in order):
 	// ignore units, ignore ZoC (no effect), and don't build a cost_map.
-	const team& viewing_team = resources::gameboard->teams()[resources::screen->viewing_team()];
+	const team& viewing_team = resources::gameboard->teams()[game_display::get_singleton()->viewing_team()];
 	const unit_map::const_iterator u = resources::gameboard->units().find(loc);
 	find_routes(loc, view_costs, slowed, sight_range, sight_range, 0,
 	            destinations, &edges, u.valid() ? &*u : nullptr, nullptr, nullptr, &viewing_team, &jamming_map, nullptr, true);
@@ -667,7 +667,7 @@ marked_route mark_route(const plain_route &rt)
 		assert(last_step || resources::gameboard->map().on_board(*(i+1)));
 		const int move_cost = last_step ? 0 : u.movement_cost((resources::gameboard->map())[*(i+1)]);
 
-		const team& viewing_team = resources::gameboard->teams()[resources::screen->viewing_team()];
+		const team& viewing_team = resources::gameboard->teams()[game_display::get_singleton()->viewing_team()];
 
 		if (last_step || zoc || move_cost > movement) {
 			// check if we stop an a village and so maybe capture it

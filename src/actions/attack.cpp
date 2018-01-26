@@ -963,7 +963,7 @@ void attack::fire_event(const std::string& n)
 		actions::recalculate_fog(defender_side);
 
 		if(update_display_) {
-			resources::screen->redraw_minimap();
+			game_display::get_singleton()->redraw_minimap();
 		}
 
 		fire_event("attack_end");
@@ -1227,7 +1227,7 @@ void attack::unit_killed(unit_info& attacker,
 	attacker.xp_ = game_config::kill_xp(defender.get_unit().level());
 	defender.xp_ = 0;
 
-	resources::screen->invalidate(attacker.loc_);
+	game_display::get_singleton()->invalidate(attacker.loc_);
 
 	game_events::entity_location death_loc(defender.loc_, defender.id_);
 	game_events::entity_location attacker_loc(attacker.loc_, attacker.id_);
@@ -1321,7 +1321,7 @@ void attack::unit_killed(unit_info& attacker,
 			preferences::encountered_units().insert(newunit->type_id());
 
 			if(update_display_) {
-				resources::screen->invalidate(death_loc);
+				game_display::get_singleton()->invalidate(death_loc);
 			}
 		}
 	} else {
@@ -1450,7 +1450,7 @@ void attack::perform()
 
 	// TODO: if we knew the viewing team, we could skip this display update
 	if(update_minimap_ && update_display_) {
-		resources::screen->redraw_minimap();
+		game_display::get_singleton()->redraw_minimap();
 	}
 
 	if(a_.valid()) {
@@ -1469,9 +1469,9 @@ void attack::perform()
 			d_.loc_, d_.valid() ? &d_.get_unit() : nullptr);
 
 	if(update_display_) {
-		resources::screen->invalidate_unit();
-		resources::screen->invalidate(a_.loc_);
-		resources::screen->invalidate(d_.loc_);
+		game_display::get_singleton()->invalidate_unit();
+		game_display::get_singleton()->invalidate(a_.loc_);
+		game_display::get_singleton()->invalidate(d_.loc_);
 	}
 
 	if(OOS_error_) {

@@ -174,8 +174,8 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
 	}
 
 	if(not_defeated) {
-		if (resources::screen != nullptr) {
-			resources::screen->invalidate(loc);
+		if (game_display::get_singleton() != nullptr) {
+			game_display::get_singleton()->invalidate(loc);
 		}
 		return t->get_village(loc, old_owner_side, fire_event ? resources::gamedata : nullptr);
 	}
@@ -348,7 +348,7 @@ namespace { // Private helpers for move_unit()
 		: spectator_(move_spectator)
 		, skip_sighting_(skip_sightings)
 		, skip_ally_sighting_(skip_ally_sightings)
-		, playing_team_is_viewing_(resources::screen->playing_team() == resources::screen->viewing_team() ||  resources::screen->show_everything())
+		, playing_team_is_viewing_(game_display::get_singleton()->playing_team() == game_display::get_singleton()->viewing_team() ||  game_display::get_singleton()->show_everything())
 		, route_(route)
 		, begin_(route.begin())
 		, full_end_(route.end())
@@ -510,7 +510,7 @@ namespace { // Private helpers for move_unit()
 	                                const route_iterator & step_to,
 	                                unit_display::unit_mover & animator)
 	{
-		game_display &disp = *resources::screen;
+		game_display &disp = *game_display::get_singleton();
 
 		// Adjust the movement even if we cannot move yet.
 		// We will eventually be able to move if nothing unexpected
@@ -875,7 +875,7 @@ namespace { // Private helpers for move_unit()
 	{
 		// Convenient alias:
 		unit_map &units = resources::gameboard->units();
-		game_display &disp = *resources::screen;
+		game_display &disp = *game_display::get_singleton();
 
 		// Find the unit at the indicated location.
 		unit_map::iterator ambusher = units.find(hex);
@@ -1105,7 +1105,7 @@ namespace { // Private helpers for move_unit()
 		}
 
 		// Update the screen.
-		resources::screen->redraw_minimap();
+		game_display::get_singleton()->redraw_minimap();
 	}
 
 
@@ -1115,7 +1115,7 @@ namespace { // Private helpers for move_unit()
 	void unit_mover::feedback() const
 	{
 		// Alias some resources.
-		game_display &disp = *resources::screen;
+		game_display &disp = *game_display::get_singleton();
 
 		// Multiple messages may be displayed simultaneously
 		// this variable is used to keep them from overlapping

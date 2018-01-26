@@ -67,7 +67,7 @@ void recall_action::write(config & cfg) const
  */
 bool recall_action::undo(int side)
 {
-	game_display & gui = *resources::screen;
+	game_display & gui = *game_display::get_singleton();
 	unit_map &   units = resources::gameboard->units();
 	team &current_team = resources::gameboard->get_team(side);
 

@@ -732,10 +732,10 @@ void recruitment::show_important_hexes() const {
 	if (!game_config::debug) {
 		return;
 	}
-	resources::screen->labels().clear_all();
+	game_display::get_singleton()->labels().clear_all();
 	for (const map_location& loc : important_hexes_) {
 		// Little hack: use map_location north from loc and make 2 linebreaks to center the "X".
-		resources::screen->labels().set_label(loc.get_direction(map_location::NORTH), "\n\nX");
+		game_display::get_singleton()->labels().set_label(loc.get_direction(map_location::NORTH), "\n\nX");
 	}
 }
 

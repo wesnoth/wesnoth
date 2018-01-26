@@ -85,14 +85,14 @@ suppose_dead::suppose_dead(const config& cfg, bool hidden)
 
 void suppose_dead::init()
 {
-	resources::screen->invalidate(loc_);
+	game_display::get_singleton()->invalidate(loc_);
 }
 
 suppose_dead::~suppose_dead()
 {
 	//invalidate hex so that skull indicator is properly cleared
-	if(resources::screen)
-		resources::screen->invalidate(loc_);
+	if(game_display::get_singleton())
+		game_display::get_singleton()->invalidate(loc_);
 }
 
 unit_ptr suppose_dead::get_unit() const
@@ -140,16 +140,16 @@ void suppose_dead::draw_hex(const map_location& hex)
 		//@todo: Possibly use a different layer
 		const display::drawing_layer layer = display::LAYER_ARROWS;
 
-		int xpos = resources::screen->get_location_x(loc_);
-		int ypos = resources::screen->get_location_y(loc_);
-		resources::screen->drawing_buffer_add(layer, loc_, xpos, ypos,
+		int xpos = game_display::get_singleton()->get_location_x(loc_);
+		int ypos = game_display::get_singleton()->get_location_y(loc_);
+		game_display::get_singleton()->drawing_buffer_add(layer, loc_, xpos, ypos,
 				image::get_image("whiteboard/suppose_dead.png", image::SCALED_TO_HEX));
 	}
 }
 
 void suppose_dead::redraw()
 {
-	resources::screen->invalidate(loc_);
+	game_display::get_singleton()->invalidate(loc_);
 }
 
 action::error suppose_dead::check_validity() const

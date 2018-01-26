@@ -66,7 +66,7 @@ void move_action::write(config & cfg) const
  */
 bool move_action::undo(int)
 {
-	game_display & gui = *resources::screen;
+	game_display & gui = *game_display::get_singleton();
 	unit_map &   units = resources::gameboard->units();
 
 	// Copy some of our stored data.

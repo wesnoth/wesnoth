@@ -326,7 +326,7 @@ game_info& readwrite_context_impl::get_info_w(){
 void readonly_context_impl::diagnostic(const std::string& msg)
 {
 	if(game_config::debug) {
-		resources::screen->set_diagnostic(msg);
+		game_display::get_singleton()->set_diagnostic(msg);
 	}
 }
 
@@ -340,7 +340,7 @@ const team& readonly_context_impl::current_team() const
 void readonly_context_impl::log_message(const std::string& msg)
 {
 	if(game_config::debug) {
-		resources::screen->get_chat_manager().add_chat_message(time(nullptr), "ai", get_side(), msg,
+		game_display::get_singleton()->get_chat_manager().add_chat_message(time(nullptr), "ai", get_side(), msg,
 				events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 }

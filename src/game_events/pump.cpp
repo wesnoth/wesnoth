@@ -308,8 +308,8 @@ void wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& e
 		resources::gamedata->last_selected = ev.loc1;
 	}
 
-	if(resources::screen != nullptr) {
-		resources::screen->maybe_rebuild();
+	if(game_display::get_singleton() != nullptr) {
+		game_display::get_singleton()->maybe_rebuild();
 	}
 }
 
@@ -365,7 +365,7 @@ void wml_event_pump::show_wml_messages(std::stringstream& source, const std::str
 			msg << " (" << itor->second << ")";
 		}
 
-		resources::screen->get_chat_manager().add_chat_message(
+		game_display::get_singleton()->get_chat_manager().add_chat_message(
 			time(nullptr), caption, 0, msg.str(), events::chat_handler::MESSAGE_PUBLIC, false);
 
 		if(to_cerr) {
@@ -511,7 +511,7 @@ void wml_event_pump::raise(const std::string& event,
 		const entity_location& loc2,
 		const config& data)
 {
-	if(resources::screen == nullptr)
+	if(game_display::get_singleton() == nullptr)
 		return;
 
 	DBG_EH << "raising event name=" << event << ", id=" << id << "\n";
@@ -522,7 +522,7 @@ void wml_event_pump::raise(const std::string& event,
 pump_result_t wml_event_pump::operator()()
 {
 	// Quick aborts:
-	if(resources::screen == nullptr) {
+	if(game_display::get_singleton() == nullptr) {
 		return pump_result_t();
 	}
 
@@ -621,7 +621,7 @@ pump_result_t wml_event_pump::operator()()
 void wml_event_pump::flush_messages()
 {
 	// Dialogs can only be shown if the display is not locked
-	if(resources::screen && !CVideo::get_singleton().update_locked()) {
+	if(game_display::get_singleton() && !CVideo::get_singleton().update_locked()) {
 		show_wml_errors();
 		show_wml_messages();
 	}

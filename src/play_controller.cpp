@@ -120,7 +120,6 @@ static void clear_resources()
 	resources::game_events = nullptr;
 	resources::lua_kernel = nullptr;
 	resources::persist = nullptr;
-	resources::screen = nullptr;
 	resources::soundsources = nullptr;
 	resources::tod_manager = nullptr;
 	resources::tunnels = nullptr;
@@ -249,7 +248,6 @@ void play_controller::init(const config& level)
 		gui2::dialogs::loading_screen::progress(loading_stage::init_display);
 		mouse_handler_.set_gui(gui_.get());
 		menu_handler_.set_gui(gui_.get());
-		resources::screen = gui_.get();
 
 		LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks()) << std::endl;
 

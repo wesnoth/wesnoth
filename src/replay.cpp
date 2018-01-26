@@ -668,7 +668,7 @@ REPLAY_RETURN do_replay(bool one_move)
 	log_scope("do replay");
 
 	if (!resources::controller->is_skipping_replay()) {
-		resources::screen->recalculate_minimap();
+		game_display::get_singleton()->recalculate_minimap();
 	}
 
 	update_locker lock_update(CVideo::get_singleton(), resources::controller->is_skipping_replay());
@@ -725,7 +725,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				DBG_REPLAY << "tried to add a chat message twice.\n";
 				if (!resources::controller->is_skipping_replay() || is_whisper) {
 					int side = speak["side"];
-					resources::screen->get_chat_manager().add_chat_message(get_time(speak), speaker_name, side, message,
+					game_display::get_singleton()->get_chat_manager().add_chat_message(get_time(speak), speaker_name, side, message,
 						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
 						: events::chat_handler::MESSAGE_PRIVATE),
 						preferences::message_bell());
@@ -734,9 +734,9 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 		else if (const config &label_config = cfg->child("label"))
 		{
-			terrain_label label(resources::screen->labels(), label_config);
+			terrain_label label(game_display::get_singleton()->labels(), label_config);
 
-			resources::screen->labels().set_label(label.location(),
+			game_display::get_singleton()->labels().set_label(label.location(),
 						label.text(),
 						label.creator(),
 						label.team_name(),
@@ -744,7 +744,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 		else if (const config &clear_labels = cfg->child("clear_labels"))
 		{
-			resources::screen->labels().clear(std::string(clear_labels["team_name"]), clear_labels["force"].to_bool());
+			game_display::get_singleton()->labels().clear(std::string(clear_labels["team_name"]), clear_labels["force"].to_bool());
 		}
 		else if (const config &rename = cfg->child("rename"))
 		{

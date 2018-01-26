@@ -238,7 +238,7 @@ namespace {
 			patient.heal(amount);
 		else if ( amount < 0 )
 			patient.take_hit(-amount);
-		resources::screen->invalidate_unit();
+		game_display::get_singleton()->invalidate_unit();
 	}
 
 
@@ -347,7 +347,7 @@ void calculate_healing(int side, bool update_display)
 		}
 
 		const team & viewing_team =
-			resources::gameboard->teams()[resources::screen->viewing_team()];
+			resources::gameboard->teams()[game_display::get_singleton()->viewing_team()];
 		if (!resources::controller->is_skipping_replay() && update_display &&
 		    patient.is_visible_to_team(viewing_team, *resources::gameboard, false) )
 		{

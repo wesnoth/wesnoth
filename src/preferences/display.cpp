@@ -126,8 +126,8 @@ bool show_theme_dialog()
 
 	if (action >= 0) {
 		preferences::set_theme(themes[action].id);
-		if(resources::screen && resources::controller && resources::gamedata && resources::gamedata->get_theme().empty()) {
-			resources::screen->set_theme(resources::controller->get_theme(game_config_manager::get()->game_config(), themes[action].id));
+		if(game_display::get_singleton() && resources::controller && resources::gamedata && resources::gamedata->get_theme().empty()) {
+			game_display::get_singleton()->set_theme(resources::controller->get_theme(game_config_manager::get()->game_config(), themes[action].id));
 		}
 
 		return true;

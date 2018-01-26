@@ -31,13 +31,13 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
-#include "resources.hpp" // for resources::screen, resources::gamedata
+#include "resources.hpp" // for game_display::get_singleton(), resources::gamedata
 #include "team.hpp" //for team
 #include "units/unit.hpp" // for unit
 #include "units/udisplay.hpp" // for unit_display
 #include "variable.hpp" // for vconfig
 
-#include "game_display.hpp" // for resources::screen
+#include "game_display.hpp" // for game_display::get_singleton()
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -221,7 +221,7 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 		preferences::encountered_units().insert(new_unit.type_id());
 	}
 
-	bool show = show_ && (resources::screen !=nullptr) && !resources::screen->fogged(loc);
+	bool show = show_ && (game_display::get_singleton() !=nullptr) && !game_display::get_singleton()->fogged(loc);
 	bool animate = show && anim;
 
 	if (get_village_) {
@@ -236,10 +236,10 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 		resources::game_events->pump().fire("unit_placed", loc);
 	}
 
-	if (resources::screen!=nullptr) {
+	if (game_display::get_singleton()!=nullptr) {
 
 		if (invalidate_ ) {
-			resources::screen->invalidate(loc);
+			game_display::get_singleton()->invalidate(loc);
 		}
 
 		if (animate) {

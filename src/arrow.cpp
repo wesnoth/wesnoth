@@ -21,7 +21,6 @@
 
 #include "game_display.hpp"
 #include "log.hpp"
-#include "resources.hpp"
 
 static lg::log_domain log_arrows("arrows");
 #define ERR_ARR LOG_STREAM(err, log_arrows)
@@ -29,7 +28,7 @@ static lg::log_domain log_arrows("arrows");
 #define LOG_ARR LOG_STREAM(info, log_arrows)
 #define DBG_ARR LOG_STREAM(debug, log_arrows)
 
-#define SCREEN (static_cast<display*>(resources::screen))
+#define SCREEN (static_cast<display*>(game_display::get_singleton()))
 
 arrow::arrow(bool hidden)
 	: layer_(display::LAYER_ARROWS)

@@ -35,7 +35,6 @@
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "menu_events.hpp"
-#include "resources.hpp"
 #include "team.hpp"
 
 #include "utils/functional.hpp"
@@ -130,7 +129,7 @@ void mp_change_control::pre_show(window& window)
 		}
 	}
 
-	const std::set<std::string>& observers = resources::screen->observers();
+	const std::set<std::string>& observers = game_display::get_singleton()->observers();
 	temp_nicks.insert(observers.begin(), observers.end());
 
 	// In case we are an observer, it isn't in the observers set and has to be added manually.

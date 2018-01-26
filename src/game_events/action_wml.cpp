@@ -368,7 +368,7 @@ WML_HANDLER_FUNCTION(modify_turns,, cfg)
 			ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ")" << std::endl;
 		} else if(new_turn_number_u != current_turn_number) {
 			tod_man.set_turn_by_wml(new_turn_number_u, resources::gamedata);
-			resources::screen->new_turn();
+			game_display::get_singleton()->new_turn();
 		}
 	}
 }
@@ -634,8 +634,8 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 		lg::wml_error() << *errmsg << std::endl;
 	}
 
-	resources::screen->reload_map();
-	resources::screen->needs_rebuild(true);
+	game_display::get_singleton()->reload_map();
+	game_display::get_singleton()->needs_rebuild(true);
 	ai::manager::get_singleton().raise_map_changed();
 }
 
@@ -882,7 +882,7 @@ WML_HANDLER_FUNCTION(terrain_mask,, cfg)
 	}
 
 	resources::gameboard->overlay_map(mask_map, cfg.get_parsed_config(), loc);
-	resources::screen->needs_rebuild(true);
+	game_display::get_singleton()->needs_rebuild(true);
 }
 
 WML_HANDLER_FUNCTION(tunnel,, cfg)

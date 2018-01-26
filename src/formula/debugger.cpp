@@ -23,7 +23,6 @@
 #include "formula/function.hpp"
 #include "game_display.hpp"
 #include "log.hpp"
-#include "resources.hpp"
 #include "gui/dialogs/formula_debugger.hpp"
 #include "gui/widgets/settings.hpp"
 
@@ -153,7 +152,7 @@ void formula_debugger::check_breakpoints()
 
 void formula_debugger::show_gui()
 {
-	if (resources::screen == nullptr) {
+	if (game_display::get_singleton() == nullptr) {
 		WRN_FDB << "do not showing debug window due to nullptr gui" << std::endl;
 		return;
 	}
