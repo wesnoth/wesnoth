@@ -286,7 +286,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 			return true; //general hotkeys we can always do
 
 		case hotkey::HOTKEY_UNIT_LIST:
-			return !get_current_map_context().get_units().empty();
+			return !get_current_map_context().units().empty();
 
 		case HOTKEY_STATUS_TABLE:
 			return !get_current_map_context().get_teams().empty();
@@ -306,7 +306,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_UNIT_DESCRIPTION:
 		{
 			map_location loc = gui_->mouseover_hex();
-			const unit_map& units = get_current_map_context().get_units();
+			const unit_map& units = get_current_map_context().units();
 			return (toolkit_->is_mouse_action_set(HOTKEY_EDITOR_TOOL_UNIT) &&
 					units.find(loc) != units.end());
 		}
@@ -454,20 +454,20 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
 	{
 		unit_map::const_unit_iterator un =
-				get_current_map_context().get_units().find(gui_->mouseover_hex());
+				get_current_map_context().units().find(gui_->mouseover_hex());
 		return un->loyal() ? ACTION_ON : ACTION_OFF;
 
 	}
 	case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
 	{
 		unit_map::const_unit_iterator un =
-				get_current_map_context().get_units().find(gui_->mouseover_hex());
+				get_current_map_context().units().find(gui_->mouseover_hex());
 		return un->can_recruit() ? ACTION_ON : ACTION_OFF;
 	}
 	case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
 	{
 		unit_map::const_unit_iterator un =
-				get_current_map_context().get_units().find(gui_->mouseover_hex());
+				get_current_map_context().units().find(gui_->mouseover_hex());
 		return (!un->unrenamable()) ? ACTION_ON : ACTION_OFF;
 	}
 	//TODO remove hardcoded hotkey names
@@ -573,8 +573,8 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 			}
 		case editor::UNIT_FACING:
 			{
-				unit_map::const_unit_iterator un = get_current_map_context().get_units().find(gui_->mouseover_hex());
-				assert(un != get_current_map_context().get_units().end());
+				unit_map::const_unit_iterator un = get_current_map_context().units().find(gui_->mouseover_hex());
+				assert(un != get_current_map_context().units().end());
 				return un->facing() == index ? ACTION_SELECTED : ACTION_DESELECTED;
 			}
 		}
@@ -671,8 +671,8 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 				}
 			case UNIT_FACING:
 				{
-					unit_map::unit_iterator un = get_current_map_context().get_units().find(gui_->mouseover_hex());
-					assert(un != get_current_map_context().get_units().end());
+					unit_map::unit_iterator un = get_current_map_context().units().find(gui_->mouseover_hex());
+					assert(un != get_current_map_context().units().end());
 					un->set_facing(map_location::DIRECTION(index));
 					un->anim_comp().set_standing();
 					return true;
@@ -766,7 +766,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_EDITOR_UNIT_RECRUIT_ASSIGN:
 		{
 			map_location loc = gui_->mouseover_hex();
-			const unit_map::unit_iterator un = get_current_map_context().get_units().find(loc);
+			const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
 			const std::set<std::string>& recruit_set = toolkit_->get_palette_manager()->unit_palette_->get_selected_bg_items();
 			std::vector<std::string> recruits(recruit_set.begin(), recruit_set.end());
 			un->set_recruits(recruits);
@@ -775,7 +775,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
 		{
 			map_location loc = gui_->mouseover_hex();
-			const unit_map::unit_iterator un = get_current_map_context().get_units().find(loc);
+			const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
 			bool unrenamable = un->unrenamable();
 			un->set_unrenamable(!unrenamable);
 		}
@@ -783,7 +783,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT:
 		{
 			map_location loc = gui_->mouseover_hex();
-			const unit_map::unit_iterator un = get_current_map_context().get_units().find(loc);
+			const unit_map::unit_iterator un = get_current_map_context().units().find(loc);
 			bool canrecruit = un->can_recruit();
 			un->set_can_recruit(!canrecruit);
 			un->anim_comp().set_standing();
@@ -1113,7 +1113,7 @@ void editor_controller::toggle_grid()
 void editor_controller::unit_description()
 {
 	map_location loc = gui_->mouseover_hex();
-	const unit_map & units = get_current_map_context().get_units();
+	const unit_map & units = get_current_map_context().units();
 	const unit_map::const_unit_iterator un = units.find(loc);
 	if(un != units.end()) {
 		help::show_unit_help(un->type_id(), un->type().show_variations_in_help(), false);
@@ -1134,7 +1134,7 @@ void editor_controller::copy_selection()
 void editor_controller::change_unit_id()
 {
 	map_location loc = gui_->mouseover_hex();
-	unit_map& units = get_current_map_context().get_units();
+	unit_map& units = get_current_map_context().units();
 	const unit_map::unit_iterator& un = units.find(loc);
 
 	const std::string title(N_("Change Unit ID"));
@@ -1151,7 +1151,7 @@ void editor_controller::change_unit_id()
 void editor_controller::rename_unit()
 {
 	map_location loc = gui_->mouseover_hex();
-	unit_map& units = get_current_map_context().get_units();
+	unit_map& units = get_current_map_context().units();
 	const unit_map::unit_iterator& un = units.find(loc);
 
 	const std::string title(N_("Rename Unit"));

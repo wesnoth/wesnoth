@@ -152,7 +152,7 @@ editor_action* mouse_action_unit::click_right(editor_display& disp, int x, int y
 	start_hex_ = hex;
 	previous_move_hex_ = hex;
 
-	const unit_map& units = disp.get_units();
+	const unit_map& units = disp.units();
 	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
 
 	if (unit_it != units.end()) {
@@ -173,7 +173,7 @@ editor_action* mouse_action_unit::click_right(editor_display& disp, int x, int y
 //	click_ = (start_hex_ == hex);
 //	previous_move_hex_ = hex;
 //
-//	const unit_map& units = disp.get_units();
+//	const unit_map& units = disp.units();
 //
 //	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
 //	if (unit_it != units.end()) {
@@ -194,7 +194,7 @@ editor_action* mouse_action_unit::click_right(editor_display& disp, int x, int y
 //	if (!click_) return nullptr;
 //	click_ = false;
 //
-//	const unit_map& units = disp.get_units();
+//	const unit_map& units = disp.units();
 //	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
 //	if (unit_it != units.end()) {
 //		return new editor_action_unit_delete(start_hex_);
@@ -213,7 +213,7 @@ editor_action* mouse_action_unit::click_right(editor_display& disp, int x, int y
 //
 //	if(new_direction_ != old_direction_) {
 //
-//	const unit_map& units = disp.get_units();
+//	const unit_map& units = disp.units();
 //	const unit_map::const_unit_iterator unit_it = units.find(start_hex_);
 //		if (unit_it != units.end()) {
 //			return new editor_action_unit_facing(start_hex_, new_direction_, old_direction_);

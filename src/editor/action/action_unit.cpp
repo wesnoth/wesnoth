@@ -40,8 +40,8 @@ editor_action* editor_action_unit::perform(map_context& mc) const
 
 void editor_action_unit::perform_without_undo(map_context& mc) const
 {
-	mc.get_units().add(loc_, u_);
-	mc.get_units().find(loc_)->set_location(loc_);
+	mc.units().add(loc_, u_);
+	mc.units().find(loc_)->set_location(loc_);
 	mc.add_changed_location(loc_);
 }
 
@@ -49,7 +49,7 @@ IMPLEMENT_ACTION(unit_delete)
 
 editor_action* editor_action_unit_delete::perform(map_context& mc) const
 {
-	unit_map& units = mc.get_units();
+	unit_map& units = mc.units();
 	unit_map::const_unit_iterator unit_it = units.find(loc_);
 
 	editor_action_ptr undo;
@@ -64,7 +64,7 @@ editor_action* editor_action_unit_delete::perform(map_context& mc) const
 
 void editor_action_unit_delete::perform_without_undo(map_context& mc) const
 {
-	unit_map& units = mc.get_units();
+	unit_map& units = mc.units();
 	if(!units.erase(loc_)) {
 		ERR_ED << "Could not delete unit on " << loc_ << std::endl;
 	} else {
@@ -84,7 +84,7 @@ editor_action* editor_action_unit_replace::perform(map_context& mc) const
 
 void editor_action_unit_replace::perform_without_undo(map_context& mc) const
 {
-	unit_map& units = mc.get_units();
+	unit_map& units = mc.units();
 	units.move(loc_, new_loc_);
 	unit::clear_status_caches();
 
@@ -118,7 +118,7 @@ editor_action* editor_action_unit_facing::perform(map_context& mc) const
 
 void editor_action_unit_facing::perform_without_undo(map_context& mc) const
 {
-	unit_map& units = mc.get_units();
+	unit_map& units = mc.units();
 	unit_map::unit_iterator unit_it = units.find(loc_);
 
 	if(unit_it != units.end()) {

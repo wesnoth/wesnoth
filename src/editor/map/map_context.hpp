@@ -126,15 +126,6 @@ public:
 		return labels_;
 	}
 
-	/** Get the unit map from the current map context object */
-	unit_map& get_units() {
-		return units_;
-	}
-
-	const unit_map& get_units() const {
-		return units_;
-	}
-
 	void replace_schedule(const std::vector<time_of_day>& schedule);
 
 	/**
