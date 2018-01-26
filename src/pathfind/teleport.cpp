@@ -72,13 +72,12 @@ public:
 		um_ = &empty_unit_map;
 	}
 	const unit_map & units() const { return *um_; }
-	unit_map& units() { return *um_; }
 	const gamemap & map() const { return *gm_; }
 	const std::vector<team> & teams() const { return *tm_; }
 	const std::vector<std::string> & hidden_label_categories() const { return *lbls_; }
 
 private:
-	unit_map * um_;
+	const unit_map * um_;
 	const gamemap * gm_;
 	const std::vector<team> * tm_;
 	const std::vector<std::string> * lbls_;
