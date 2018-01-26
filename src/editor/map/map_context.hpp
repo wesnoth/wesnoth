@@ -128,12 +128,22 @@ public:
 
 	void replace_schedule(const std::vector<time_of_day>& schedule);
 
+	// Import symbol from base class.
+	using display_context::units;
+
 	/**
 	 * Const accessor names needed to implement "display_context" interface
 	 */
 	virtual const unit_map & units() const {
 		return units_;
 	}
+
+	/** Local non-const overload of @ref units */
+	unit_map& units()
+	{
+		return units_;
+	}
+
 	virtual const std::vector<team>& teams() const {
 		return teams_;
 	}
