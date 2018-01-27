@@ -24,8 +24,9 @@ std::vector<std::string>& display_context::hidden_label_categories_ref() {
 	return const_cast<std::vector<std::string>&>(this->hidden_label_categories());
 }
 
-const team& display_context::get_team(int side) const {
-	return teams()[side-1];
+const team& display_context::get_team(int side) const
+{
+	return teams().at(side - 1);
 }
 
 bool display_context::would_be_discovered(const map_location & loc, int side_num, bool see_all)

@@ -91,7 +91,7 @@ public:
 
 	virtual const std::vector<team> & teams() const { return teams_; }
 	using display_context::get_team; // so as not to hide the const version
-	team& get_team(int i) {return teams_[i - 1];}
+	team& get_team(int i) {return teams_.at(i - 1);}
 	virtual std::vector<team> & teams() { return teams_; }
 	virtual const gamemap & map() const { return *map_; }
 	virtual const unit_map & units() const { return units_; }
