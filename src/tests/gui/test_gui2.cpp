@@ -370,10 +370,10 @@ public:
 
 	virtual ~dummy_display_context(){}
 
-	virtual const gamemap & map() const { return m; }
-	virtual const unit_map & units() const { return u; }
-	virtual const std::vector<team> & teams() const { return t; }
-	virtual const std::vector<std::string> & hidden_label_categories() const { return lbls; }
+	virtual const gamemap & map() const override { return m; }
+	virtual const unit_map & units() const override { return u; }
+	virtual const std::vector<team> & teams() const override { return t; }
+	virtual const std::vector<std::string> & hidden_label_categories() const override { return lbls; }
 
 private:
 	config dummy_cfg;

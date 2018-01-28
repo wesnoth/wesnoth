@@ -71,10 +71,10 @@ public:
 		static unit_map empty_unit_map;
 		um_ = &empty_unit_map;
 	}
-	const unit_map & units() const { return *um_; }
-	const gamemap & map() const { return *gm_; }
-	const std::vector<team> & teams() const { return *tm_; }
-	const std::vector<std::string> & hidden_label_categories() const { return *lbls_; }
+	const unit_map & units() const override { return *um_; }
+	const gamemap & map() const override { return *gm_; }
+	const std::vector<team> & teams() const override { return *tm_; }
+	const std::vector<std::string> & hidden_label_categories() const override { return *lbls_; }
 
 private:
 	const unit_map * um_;
