@@ -160,17 +160,6 @@ public:
 		return *map_contexts_[current_context_index_];
 	}
 
-	/** Get the map from the current map context object - const version*/
-	const editor_map& get_map() const
-	{
-		return get_map_context().get_map();
-	}
-
-	map_labels& get_labels()
-	{
-		return get_map_context().get_labels();
-	}
-
 	/** Set the default dir (where the filebrowser is pointing at when there is no map file opened) */
 	void set_default_dir(const std::string& str)
 	{
@@ -225,12 +214,6 @@ public:
 	 * The map context contains details of what needs to be refreshed.
 	 */
 	void refresh_after_action(bool drag_part = false);
-
-	/** Get the map from the current map context object */
-	editor_map& get_map()
-	{
-		return get_map_context().get_map();
-	}
 
 	/** Closes the active map context. Switches to a valid context afterward or creates a dummy one. */
 	void close_current_context();

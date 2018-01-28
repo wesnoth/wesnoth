@@ -48,7 +48,7 @@ editor_action* editor_action_select::perform(map_context& mc) const
 void editor_action_select::perform_without_undo(map_context& mc) const
 {
 	for(const map_location& loc : area_) {
-		mc.get_map().add_to_selection(loc);
+		mc.map().add_to_selection(loc);
 		mc.add_changed_location(loc);
 	}
 }
@@ -70,7 +70,7 @@ editor_action* editor_action_deselect::perform(map_context& mc) const
 {
 	std::set<map_location> undo_locs;
 	for(const map_location& loc : area_) {
-		if(mc.get_map().in_selection(loc)) {
+		if(mc.map().in_selection(loc)) {
 			undo_locs.insert(loc);
 			mc.add_changed_location(loc);
 		}
@@ -83,7 +83,7 @@ editor_action* editor_action_deselect::perform(map_context& mc) const
 void editor_action_deselect::perform_without_undo(map_context& mc) const
 {
 	for(const map_location& loc : area_) {
-		mc.get_map().remove_from_selection(loc);
+		mc.map().remove_from_selection(loc);
 		mc.add_changed_location(loc);
 	}
 }
@@ -92,10 +92,10 @@ IMPLEMENT_ACTION(select_all)
 
 editor_action_select* editor_action_select_all::perform(map_context& mc) const
 {
-	std::set<map_location> current = mc.get_map().selection();
-	mc.get_map().select_all();
+	std::set<map_location> current = mc.map().selection();
+	mc.map().select_all();
 
-	std::set<map_location> all = mc.get_map().selection();
+	std::set<map_location> all = mc.map().selection();
 	std::set<map_location> undo_locs;
 
 	std::set_difference(
@@ -107,7 +107,7 @@ editor_action_select* editor_action_select_all::perform(map_context& mc) const
 
 void editor_action_select_all::perform_without_undo(map_context& mc) const
 {
-	mc.get_map().select_all();
+	mc.map().select_all();
 	mc.set_everything_changed();
 }
 
@@ -115,15 +115,15 @@ IMPLEMENT_ACTION(select_none)
 
 editor_action_select* editor_action_select_none::perform(map_context& mc) const
 {
-	std::set<map_location> current = mc.get_map().selection();
-	mc.get_map().clear_selection();
+	std::set<map_location> current = mc.map().selection();
+	mc.map().clear_selection();
 	mc.set_everything_changed();
 	return new editor_action_select(current);
 }
 
 void editor_action_select_none::perform_without_undo(map_context& mc) const
 {
-	mc.get_map().clear_selection();
+	mc.map().clear_selection();
 	mc.set_everything_changed();
 }
 
@@ -137,7 +137,7 @@ editor_action_select_inverse* editor_action_select_inverse::perform(map_context&
 
 void editor_action_select_inverse::perform_without_undo(map_context& mc) const
 {
-	mc.get_map().invert_selection();
+	mc.map().invert_selection();
 	mc.set_everything_changed();
 }
 

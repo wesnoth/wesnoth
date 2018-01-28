@@ -288,7 +288,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 			return !get_current_map_context().units().empty();
 
 		case HOTKEY_STATUS_TABLE:
-			return !get_current_map_context().get_teams().empty();
+			return !get_current_map_context().teams().empty();
 
 		case HOTKEY_TERRAIN_DESCRIPTION:
 			return gui().mouseover_hex().valid();
@@ -331,7 +331,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 
 		case HOTKEY_EDITOR_SIDE_EDIT:
 		case HOTKEY_EDITOR_SIDE_REMOVE:
-			return !get_current_map_context().get_teams().empty();
+			return !get_current_map_context().teams().empty();
 
 		// brushes
 		case HOTKEY_EDITOR_BRUSH_NEXT:
@@ -377,7 +377,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 			return !get_current_map_context().is_pure_map();
 		case HOTKEY_EDITOR_TOOL_UNIT:
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
-			return !get_current_map_context().get_teams().empty();
+			return !get_current_map_context().teams().empty();
 
 		case HOTKEY_EDITOR_AREA_REMOVE:
 		case HOTKEY_EDITOR_AREA_RENAME:
@@ -388,16 +388,16 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_AREA_SAVE:
 			return 	!get_current_map_context().is_pure_map() &&
 					!get_current_map_context().get_time_manager()->get_area_ids().empty()
-					&& !context_manager_->get_map().selection().empty();
+					&& !get_current_map_context().map().selection().empty();
 
 		case HOTKEY_EDITOR_SELECTION_EXPORT:
 		case HOTKEY_EDITOR_SELECTION_CUT:
 		case HOTKEY_EDITOR_SELECTION_COPY:
 		case HOTKEY_EDITOR_SELECTION_FILL:
-			return !context_manager_->get_map().selection().empty()
+			return !get_current_map_context().map().selection().empty()
 					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
-			return (context_manager_->get_map().selection().size() > 1
+			return (get_current_map_context().map().selection().size() > 1
 					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE));
 		case HOTKEY_EDITOR_SELECTION_ROTATE:
 		case HOTKEY_EDITOR_SELECTION_FLIP:
@@ -415,8 +415,8 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_SELECT_NONE:
 			return !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 		case HOTKEY_EDITOR_SELECT_INVERSE:
-			return !get_current_map_context().get_map().selection().empty()
-					&& !get_current_map_context().get_map().everything_selected()
+			return !get_current_map_context().map().selection().empty()
+					&& !get_current_map_context().map().everything_selected()
 					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 		case HOTKEY_EDITOR_MAP_RESIZE:
 		case HOTKEY_EDITOR_MAP_GENERATE:
@@ -493,10 +493,10 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	case HOTKEY_TOGGLE_GRID:
 		return preferences::grid() ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_EDITOR_SELECT_ALL:
-		return get_current_map_context().get_map().everything_selected() ?
+		return get_current_map_context().map().everything_selected() ?
 				ACTION_SELECTED : ACTION_DESELECTED;
 	case HOTKEY_EDITOR_SELECT_NONE:
-		return get_current_map_context().get_map().selection().empty() ?
+		return get_current_map_context().map().selection().empty() ?
 				ACTION_SELECTED : ACTION_DESELECTED;
 	case HOTKEY_EDITOR_TOOL_FILL:
 	case HOTKEY_EDITOR_TOOL_LABEL:
@@ -852,7 +852,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			export_selection_coords();
 			return true;
 		case HOTKEY_EDITOR_SELECT_ALL:
-			if(!context_manager_->get_map().everything_selected()) {
+			if(!get_current_map_context().map().everything_selected()) {
 				context_manager_->perform_refresh(editor_action_select_all());
 				return true;
 			}
@@ -868,7 +868,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			return true;
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
 			context_manager_->perform_refresh(editor_action_shuffle_area(
-					context_manager_->get_map().selection()));
+					get_current_map_context().map().selection()));
 			return true;
 
 		case HOTKEY_EDITOR_SCENARIO_EDIT:
@@ -999,7 +999,7 @@ void editor_controller::show_help()
 void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
 	if(context_menu) {
-		if(!context_manager_->get_map().on_board_with_border(gui().hex_clicked_on(xloc, yloc))) {
+		if(!get_current_map_context().map().on_board_with_border(gui().hex_clicked_on(xloc, yloc))) {
 			return;
 		}
 	}
@@ -1124,8 +1124,8 @@ void editor_controller::unit_description()
 
 void editor_controller::copy_selection()
 {
-	if (!context_manager_->get_map().selection().empty()) {
-		context_manager_->get_clipboard() = map_fragment(context_manager_->get_map(), context_manager_->get_map().selection());
+	if (!get_current_map_context().map().selection().empty()) {
+		context_manager_->get_clipboard() = map_fragment(get_current_map_context().map(), get_current_map_context().map().selection());
 		context_manager_->get_clipboard().center_by_mass();
 	}
 }
@@ -1173,30 +1173,30 @@ void editor_controller::unit_list()
 void editor_controller::cut_selection()
 {
 	copy_selection();
-	context_manager_->perform_refresh(editor_action_paint_area(context_manager_->get_map().selection(), get_selected_bg_terrain()));
+	context_manager_->perform_refresh(editor_action_paint_area(get_current_map_context().map().selection(), get_selected_bg_terrain()));
 }
 
 void editor_controller::save_area()
 {
-	const std::set<map_location>& area = context_manager_->get_map().selection();
+	const std::set<map_location>& area = get_current_map_context().map().selection();
 	get_current_map_context().save_area(area);
 }
 
 void editor_controller::add_area()
 {
-	const std::set<map_location>& area = context_manager_->get_map().selection();
+	const std::set<map_location>& area = get_current_map_context().map().selection();
 	get_current_map_context().new_area(area);
 }
 
 void editor_controller::export_selection_coords()
 {
 	std::stringstream ssx, ssy;
-	std::set<map_location>::const_iterator i = context_manager_->get_map().selection().begin();
-	if (i != context_manager_->get_map().selection().end()) {
+	std::set<map_location>::const_iterator i = get_current_map_context().map().selection().begin();
+	if (i != get_current_map_context().map().selection().end()) {
 		ssx << "x = " << i->wml_x();
 		ssy << "y = " << i->wml_y();
 		++i;
-		while (i != context_manager_->get_map().selection().end()) {
+		while (i != get_current_map_context().map().selection().end()) {
 			ssx << ", " << i->wml_x();
 			ssy << ", " << i->wml_y();
 			++i;
@@ -1253,15 +1253,15 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/,
 {
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
 	map_location hex_clicked = gui().hex_clicked_on(x, y);
-	if (context_manager_->get_map().on_board_with_border(drag_from_hex_) && is_dragging()) {
+	if (get_current_map_context().map().on_board_with_border(drag_from_hex_) && is_dragging()) {
 		editor_action* a = nullptr;
 		bool partial = false;
 		editor_action* last_undo = get_current_map_context().last_undo_action();
 		if (dragging_left_ && (SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(1)) != 0) {
-			if (!context_manager_->get_map().on_board_with_border(hex_clicked)) return;
+			if (!get_current_map_context().map().on_board_with_border(hex_clicked)) return;
 			a = get_mouse_action().drag_left(*gui_, x, y, partial, last_undo);
 		} else if (dragging_right_ && (SDL_GetMouseState(nullptr, nullptr) & SDL_BUTTON(3)) != 0) {
-			if (!context_manager_->get_map().on_board_with_border(hex_clicked)) return;
+			if (!get_current_map_context().map().on_board_with_border(hex_clicked)) return;
 			a = get_mouse_action().drag_right(*gui_, x, y, partial, last_undo);
 		}
 		//Partial means that the mouse action has modified the
@@ -1284,7 +1284,7 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/,
 
 bool editor_controller::allow_mouse_wheel_scroll(int x, int y)
 {
-	return context_manager_->get_map().on_board_with_border(gui().hex_clicked_on(x,y));
+	return get_current_map_context().map().on_board_with_border(gui().hex_clicked_on(x,y));
 }
 
 bool editor_controller::right_click_show_menu(int /*x*/, int /*y*/, const bool /*browse*/)
@@ -1300,7 +1300,7 @@ bool editor_controller::left_click(int x, int y, const bool browse)
 
 	LOG_ED << "Left click, after generic handling\n";
 	map_location hex_clicked = gui().hex_clicked_on(x, y);
-	if (!context_manager_->get_map().on_board_with_border(hex_clicked))
+	if (!get_current_map_context().map().on_board_with_border(hex_clicked))
 		return true;
 
 	LOG_ED << "Left click action " << hex_clicked << "\n";
@@ -1332,7 +1332,7 @@ bool editor_controller::right_click(int x, int y, const bool browse)
 	if (mouse_handler_base::right_click(x, y, browse)) return true;
 	LOG_ED << "Right click, after generic handling\n";
 	map_location hex_clicked = gui().hex_clicked_on(x, y);
-	if (!context_manager_->get_map().on_board_with_border(hex_clicked)) return true;
+	if (!get_current_map_context().map().on_board_with_border(hex_clicked)) return true;
 	LOG_ED << "Right click action " << hex_clicked << "\n";
 	editor_action* a = get_mouse_action().click_right(*gui_, x, y);
 	perform_refresh_delete(a, true);
@@ -1361,10 +1361,10 @@ void editor_controller::right_mouse_up(int x, int y, const bool browse)
 void editor_controller::terrain_description()
 {
 	const map_location& loc = gui().mouseover_hex();
-	if (context_manager_->get_map().on_board(loc) == false)
+	if (get_current_map_context().map().on_board(loc) == false)
 		return;
 
-	const terrain_type& type = context_manager_->get_map().get_terrain_info(loc);
+	const terrain_type& type = get_current_map_context().map().get_terrain_info(loc);
 	help::show_terrain_description(type);
 }
 

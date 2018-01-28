@@ -237,7 +237,7 @@ void map_context::new_side()
 	cfg["hidden"] = false;
 
 	// TODO: build might be slight overkill here just to set the side...
-	teams_.back().build(cfg, get_map());
+	teams_.back().build(cfg, map());
 
 	++actions_since_save_;
 }

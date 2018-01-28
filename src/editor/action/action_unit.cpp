@@ -97,7 +97,7 @@ void editor_action_unit_replace::perform_without_undo(map_context& mc) const
 	mc.add_changed_location(new_loc_);
 
 	/* @todo
-	  if (mc.get_map().is_village(new_loc_)) {
+	  if (mc.map().is_village(new_loc_)) {
 		(*(resources::gameboard->teams()))[u.side()].get_village(new_loc_);
 	}
 	*/

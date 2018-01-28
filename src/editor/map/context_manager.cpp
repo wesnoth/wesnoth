@@ -105,7 +105,7 @@ void context_manager::refresh_on_context_change()
 	reload_map();
 
 	// Enable the labels of the current context;
-	get_labels().enable(true);
+	get_map_context().get_labels().enable(true);
 
 	set_window_title();
 }
@@ -205,7 +205,7 @@ void context_manager::load_mru_item(unsigned int index, bool force_same_context 
 
 void context_manager::edit_side_dialog(int side_index)
 {
-	team& t = get_map_context().get_teams()[side_index];
+	team& t = get_map_context().teams()[side_index];
 
 	editor_team_info team_info(t);
 
@@ -248,8 +248,10 @@ void context_manager::edit_scenario_dialog()
 
 void context_manager::new_map_dialog()
 {
-	int w = get_map().w();
-	int h = get_map().h();
+	const editor_map& map = get_map_context().map();
+
+	int w = map.w();
+	int h = map.h();
 
 	if(gui2::dialogs::editor_new_map::execute(_("New Map"), w, h)) {
 		const t_translation::terrain_code& fill = get_selected_bg_terrain();
@@ -259,8 +261,10 @@ void context_manager::new_map_dialog()
 
 void context_manager::new_scenario_dialog()
 {
-	int w = get_map().w();
-	int h = get_map().h();
+	const editor_map& map = get_map_context().map();
+
+	int w = map.w();
+	int h = map.h();
 
 	if(gui2::dialogs::editor_new_map::execute(_("New Scenario"), w, h)) {
 		const t_translation::terrain_code& fill = get_selected_bg_terrain();
@@ -363,7 +367,7 @@ void context_manager::expand_areas_menu(std::vector<config>& items, int i)
 
 		const bool changed =
 			mci == static_cast<size_t>(get_map_context().get_active_area())
-			&& tod->get_area_by_index(mci) != get_map_context().get_map().selection();
+			&& tod->get_area_by_index(mci) != get_map_context().map().selection();
 
 		const std::string label = ss.str();
 		const std::string details = get_menu_marker(changed);
@@ -379,9 +383,9 @@ void context_manager::expand_sides_menu(std::vector<config>& items, int i)
 	auto pos = items.erase(items.begin() + i);
 	std::vector<config> contexts;
 
-	for(size_t mci = 0; mci < get_map_context().get_teams().size(); ++mci) {
+	for(size_t mci = 0; mci < get_map_context().teams().size(); ++mci) {
 
-		const team& t = get_map_context().get_teams()[mci];
+		const team& t = get_map_context().teams()[mci];
 		const std::string& teamname = t.user_team_name();
 		std::stringstream label;
 		label << "[" << mci+1 << "] ";
@@ -449,7 +453,7 @@ void context_manager::apply_mask_dialog()
 	if(dlg.show()) {
 		try {
 			map_context mask(game_config_, dlg.path());
-			editor_action_apply_mask a(mask.get_map());
+			editor_action_apply_mask a(mask.map());
 			perform_refresh(a);
 		} catch (editor_map_load_exception& e) {
 			gui2::show_transient_message(_("Error loading mask"), e.what());
@@ -492,7 +496,7 @@ void context_manager::create_mask_to_dialog()
 	if(dlg.show()) {
 		try {
 			map_context map(game_config_, dlg.path());
-			editor_action_create_mask a(map.get_map());
+			editor_action_create_mask a(map.map());
 			perform_refresh(a);
 		} catch (editor_map_load_exception& e) {
 			gui2::show_transient_message(_("Error loading map"), e.what());
@@ -545,8 +549,10 @@ void context_manager::refresh_after_action(bool drag_part)
 
 void context_manager::resize_map_dialog()
 {
-	int w = get_map().w();
-	int h = get_map().h();
+	const editor_map& map = get_map_context().map();
+
+	int w = map.w();
+	int h = map.h();
 
 	gui2::dialogs::editor_resize_map::EXPAND_DIRECTION dir = gui2::dialogs::editor_resize_map::EXPAND_DIRECTION();
 	bool copy = false;
@@ -555,14 +561,14 @@ void context_manager::resize_map_dialog()
 		return;
 	}
 
-	if(w != get_map().w() || h != get_map().h()) {
+	if(w != map.w() || h != map.h()) {
 		t_translation::terrain_code fill = get_selected_bg_terrain();
 		if(copy) {
 			fill = t_translation::NONE_TERRAIN;
 		}
 
-		int x_offset = get_map().w() - w;
-		int y_offset = get_map().h() - h;
+		int x_offset = map.w() - w;
+		int y_offset = map.h() - h;
 
 		switch (dir) {
 			case gui2::dialogs::editor_resize_map::EXPAND_BOTTOM_RIGHT:
@@ -716,7 +722,7 @@ bool context_manager::confirm_discard()
 
 void context_manager::fill_selection()
 {
-	perform_refresh(editor_action_paint_area(get_map().selection(), get_selected_bg_terrain()));
+	perform_refresh(editor_action_paint_area(get_map_context().map().selection(), get_selected_bg_terrain()));
 }
 
 void context_manager::save_all_maps(bool auto_save_windows)
@@ -1030,7 +1036,7 @@ void context_manager::switch_context(const int index, const bool force)
 
 	// Disable the labels of the current context before switching.
 	// The refresher handles enabling the new ones.
-	get_labels().enable(false);
+	get_map_context().get_labels().enable(false);
 
 	current_context_index_ = index;
 

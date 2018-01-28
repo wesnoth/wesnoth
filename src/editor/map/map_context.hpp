@@ -86,16 +86,6 @@ public:
 	 */
 	bool select_area(int index);
 
-	/**
-	 * Map accessor
-	 */
-	editor_map& get_map() { return map_; }
-
-	/**
-	 * Map accessor - const version
-	 */
-	const editor_map& get_map() const { return map_; }
-
 	/** Adds a new side to the map */
 	void new_side();
 
@@ -117,24 +107,20 @@ public:
 
 	void remove_area(int index);
 
-	/** Get the team from the current map context object */
-	std::vector<team>& get_teams() {
-		return teams_;
-	}
-
 	map_labels& get_labels() {
 		return labels_;
 	}
 
 	void replace_schedule(const std::vector<time_of_day>& schedule);
 
-	// Import symbol from base class.
+	// Import symbols from base class.
 	using display_context::units;
+	using display_context::teams;
+	using display_context::map;
 
-	/**
-	 * Const accessor names needed to implement "display_context" interface
-	 */
-	virtual const unit_map & units() const {
+	/** Const units accessor. */
+	virtual const unit_map& units() const override
+	{
 		return units_;
 	}
 
@@ -144,13 +130,32 @@ public:
 		return units_;
 	}
 
-	virtual const std::vector<team>& teams() const {
+	/** Const teams accessor. */
+	virtual const std::vector<team>& teams() const override
+	{
 		return teams_;
 	}
-	virtual const gamemap & map() const {
+
+	/** Local non-const overload of @ref teams */
+	std::vector<team>& teams()
+	{
+		return teams_;
+	}
+
+	/** Const map accessor. */
+	virtual const editor_map& map() const override
+	{
 		return map_;
 	}
-	virtual const std::vector<std::string>& hidden_label_categories() const {
+
+	/** Local non-const overload of @ref map */
+	editor_map& map()
+	{
+		return map_;
+	}
+
+	virtual const std::vector<std::string>& hidden_label_categories() const override
+	{
 		return lbl_categories_;
 	}
 
