@@ -51,8 +51,6 @@ faction_select::faction_select(ng::flg_manager& flg_manager, const std::string& 
 
 void faction_select::pre_show(window& window)
 {
-	window.set_escape_disabled(true);
-
 	find_widget<label>(&window, "starting_pos", false).set_label(std::to_string(side_));
 
 	//
