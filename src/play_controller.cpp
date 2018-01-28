@@ -903,8 +903,12 @@ const std::string& play_controller::select_music(bool victory) const
 		? (gamestate_->get_game_data()->get_victory_music().empty() ? game_config::default_victory_music : gamestate_->get_game_data()->get_victory_music())
 		: (gamestate_->get_game_data()->get_defeat_music().empty() ? game_config::default_defeat_music : gamestate_->get_game_data()->get_defeat_music());
 
-	if(music_list.empty())
-		return "";
+	if(music_list.empty()) {
+		// Since this function returns a reference, we can't return a temporary empty string.
+		static const std::string empty_str = "";
+		return empty_str;
+	}
+
 	return music_list[randomness::rng::default_instance().get_random_int(0, music_list.size()-1)];
 }
 
