@@ -4141,9 +4141,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	// Create the getside metatable.
 	cmd_log_ << lua_team::register_metatable(L);
 
-	// Create the gettype metatable.
-	cmd_log_ << lua_unit_type::register_metatable(L);
-
 	//Create the getrace metatable
 	cmd_log_ << lua_race::register_metatable(L);
 
