@@ -16,6 +16,7 @@
 
 #include "log.hpp"
 #include "scripting/lua_common.hpp"
+#include "scripting/lua_kernel_base.hpp"
 #include "scripting/lua_unit_attacks.hpp"
 #include "scripting/push_check.hpp"
 #include "units/types.hpp"
@@ -51,6 +52,9 @@ static void push_string_vec(lua_State* L, const std::vector<std::string>& vec, c
 		lua_seti(L, -2, i);
 	}
 
+	lua_getfield(L, LUA_REGISTRYINDEX, lua_kernel_base::read_only);
+	lua_setmetatable(L, -2);
+
 	lua_setfield(L, -2, key.c_str());
 }
 
@@ -64,6 +68,9 @@ static void push_traits(lua_State* L, const unit_type& ut)
 		luaW_pushconfig(L, trait);
 		lua_rawset(L, -3);
 	}
+
+	lua_getfield(L, LUA_REGISTRYINDEX, lua_kernel_base::read_only);
+	lua_setmetatable(L, -2);
 
 	lua_setfield(L, -2, "traits");
 }
@@ -87,6 +94,9 @@ static void push_variations_and_genders(lua_State* L, const unit_type& ut)
 			push_unit_type(L, gender_unit_type, gender_string(g));
 		}
 	}
+
+	lua_getfield(L, LUA_REGISTRYINDEX, lua_kernel_base::read_only);
+	lua_setmetatable(L, -2);
 
 	lua_setfield(L, -2, "variations");
 }
@@ -129,7 +139,8 @@ static void push_unit_type(lua_State* L, const unit_type& ut, const std::string&
 	lua_setfield(L, -2, "attacks");
 	push_variations_and_genders(L, ut);
 
-	// TODO: write-protect the tables
+	lua_getfield(L, LUA_REGISTRYINDEX, lua_kernel_base::read_only);
+	lua_setmetatable(L, -2);
 
 	lua_setfield(L, -2, id.c_str());
 }
@@ -317,6 +328,9 @@ namespace lua_unit_type {
 
 		LOG_LUA << "wesnoth.unit_types constructed in " <<
 			std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << " ms\n";
+
+		lua_getfield(L, LUA_REGISTRYINDEX, lua_kernel_base::read_only);
+		lua_setmetatable(L, -2);
 
 		lua_setfield(L, -2, "unit_types");
 		lua_pop(L, 1);

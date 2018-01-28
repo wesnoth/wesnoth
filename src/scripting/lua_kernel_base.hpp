@@ -28,6 +28,9 @@ public:
 	lua_kernel_base();
 	virtual ~lua_kernel_base();
 
+	/** The name of a read-only metatable (that can be used as a metatable for any Lua table) in the Lua registry. */
+	static const char* read_only;
+
 	/** Runs a [lua] tag. Doesn't throw lua_error.*/
 	void run_lua_tag(const config& cfg);
 

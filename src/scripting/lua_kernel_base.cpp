@@ -67,8 +67,18 @@ static lg::log_domain log_user("scripting/lua/user");
 
 // Registry key for metatable
 static const char * Gen = "name generator";
+const char* lua_kernel_base::read_only = "read-only table";
 
 // Callback implementations
+
+/**
+ * Always raises a Lua error.
+ */
+static int intf_readonly_newindex(lua_State* L)
+{
+	lua_pushstring(L, "table is read-only");
+	return lua_error(L);
+}
 
 /**
  * Compares 2 version strings - which is newer.
@@ -409,6 +419,14 @@ lua_kernel_base::lua_kernel_base()
 	// Store the error handler.
 	cmd_log_ << "Adding error handler...\n";
 	push_error_handler(L);
+
+	// Create the read-only metatable.
+	lua_newtable(L);
+	lua_pushcfunction(L, &intf_readonly_newindex);
+	lua_setfield(L, -2, "__newindex");
+	lua_pushstring(L, "read-only table");
+	lua_setfield(L, -2, "__metatable");
+	lua_setfield(L, LUA_REGISTRYINDEX, read_only);
 
 	// Create the gettext metatable.
 	cmd_log_ << lua_common::register_gettext_metatable(L);
