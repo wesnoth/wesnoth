@@ -57,7 +57,7 @@ script:
           ./utils/travis/check_utf8.sh;
           ./utils/travis/utf8_bom_dog.sh;
           "$CXX" --version;
-          scons wesnoth wesnothd campaignd boost_unit_tests build=release ctool="$CC" cxxtool="$CXX" --debug=time extra_flags_config="-pipe" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=true cxx_std="$CXXSTD" nls="$NLS" jobs=2;
+          scons wesnoth wesnothd campaignd boost_unit_tests build=release ctool="$CC" cxxtool="$CXX" --debug=time extra_flags_config="-pipe" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict=true cxx_std="$CXXSTD" nls="$NLS" jobs=2 enable_lto=false;
       else
           export DISPLAY=:99.0;
           /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24;
