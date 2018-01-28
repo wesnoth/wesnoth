@@ -897,10 +897,6 @@ bool play_controller::can_redo() const
 	return !linger_ && !is_browsing() && !events::commands_disabled && undo_stack().can_redo();
 }
 
-namespace {
-	static const std::string empty_str = "";
-}
-
 const std::string& play_controller::select_music(bool victory) const
 {
 	const std::vector<std::string>& music_list = victory
@@ -908,7 +904,7 @@ const std::string& play_controller::select_music(bool victory) const
 		: (gamestate_->get_game_data()->get_defeat_music().empty() ? game_config::default_defeat_music : gamestate_->get_game_data()->get_defeat_music());
 
 	if(music_list.empty())
-		return empty_str;
+		return "";
 	return music_list[randomness::rng::default_instance().get_random_int(0, music_list.size()-1)];
 }
 
