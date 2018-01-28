@@ -216,6 +216,9 @@ private:
 	 */
 	void create_default_context();
 
+	/** Performs the necessary housekeeping necessary when switching contexts. */
+	void refresh_on_context_change();
+
 public:
 	/**
 	 * Refresh the display after an action has been performed.

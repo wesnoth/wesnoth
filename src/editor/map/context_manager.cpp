@@ -63,52 +63,6 @@ static const std::string get_menu_marker(const bool changed)
 	return ss.str();
 }
 
-/**
- * Utility class to properly refresh the display when the map context object is replaced
- * without duplicating code.
- */
-class map_context_refresher
-{
-public:
-	map_context_refresher(context_manager& ec)
-		: context_manager_(ec)
-		, refreshed_(false)
-	{
-	}
-
-	~map_context_refresher()
-	{
-		if(!refreshed_) refresh();
-	}
-
-	void refresh()
-	{
-		context_manager_.gui().change_display_context(&context_manager_.get_map_context());
-
-		// TODO register the tod_manager with the gui?
-		resources::tod_manager = context_manager_.get_map_context().get_time_manager();
-		resources::filter_con = &context_manager_.gui();
-
-		context_manager_.gui().replace_overlay_map(&context_manager_.get_map_context().get_overlays());
-
-		resources::classification = &context_manager_.get_map_context().get_classification();
-
-		context_manager_.gui().init_flags();
-
-		context_manager_.reload_map();
-
-		// Enable the labels of the current context;
-		context_manager_.get_labels().enable(true);
-
-		refreshed_ = true;
-	}
-
-private:
-	context_manager& context_manager_;
-	bool refreshed_;
-};
-
-
 context_manager::context_manager(editor_display& gui, const config& game_config)
 	: gui_(gui)
 	, game_config_(game_config)
@@ -132,6 +86,28 @@ context_manager::~context_manager()
 {
 	// Restore default window title
 	CVideo::get_singleton().set_window_title(game_config::get_default_title_string());
+}
+
+void context_manager::refresh_on_context_change()
+{
+	gui().change_display_context(&get_map_context());
+
+	// TODO register the tod_manager with the gui?
+	resources::tod_manager = get_map_context().get_time_manager();
+	resources::filter_con = &gui();
+
+	gui().replace_overlay_map(&get_map_context().get_overlays());
+
+	resources::classification = &get_map_context().get_classification();
+
+	gui().init_flags();
+
+	reload_map();
+
+	// Enable the labels of the current context;
+	get_labels().enable(true);
+
+	set_window_title();
 }
 
 void context_manager::refresh_all()
@@ -1003,10 +979,8 @@ void context_manager::replace_map_context(const T&... args)
 
 void context_manager::replace_map_context_with(context_ptr&& mc)
 {
-	map_context_refresher mcr(*this);
 	map_contexts_[current_context_index_].swap(mc);
-
-	set_window_title();
+	refresh_on_context_change();
 }
 
 void context_manager::create_default_context()
@@ -1040,8 +1014,7 @@ void context_manager::close_current_context()
 		map_contexts_.erase(map_contexts_.begin() + current_context_index_);
 	}
 
-	map_context_refresher(*this);
-	set_window_title();
+	refresh_on_context_change();
 }
 
 void context_manager::switch_context(const int index, const bool force)
@@ -1059,10 +1032,9 @@ void context_manager::switch_context(const int index, const bool force)
 	// The refresher handles enabling the new ones.
 	get_labels().enable(false);
 
-	map_context_refresher mcr(*this);
 	current_context_index_ = index;
 
-	set_window_title();
+	refresh_on_context_change();
 }
 
 void context_manager::set_window_title()
