@@ -39,6 +39,9 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 static const char UnitType[] = "unit type";
 static const char UnitTypeTable[] = "unit types";
 
+// Forward declarations
+void push_unit_type(lua_State* L, const unit_type& ut, const std::string& id);
+
 static void push_string_vec(lua_State* L, const std::vector<std::string>& vec, const std::string& key)
 {
 	lua_newtable(L);
@@ -65,7 +68,30 @@ static void push_traits(lua_State* L, const unit_type& ut)
 	lua_setfield(L, -2, "traits");
 }
 
-static void push_unit_type(lua_State* L, const unit_type& ut)
+// Requires that the unit type table is at the top of the Lua stack.
+static void push_variations_and_genders(lua_State* L, const unit_type& ut)
+{
+	lua_newtable(L);
+
+	for(const auto& v : ut.variation_types()) {
+		push_unit_type(L, v.second, v.first);
+	}
+
+	for(unit_race::GENDER g : ut.genders()) {
+		const unit_type& gender_unit_type = ut.get_gender_unit_type(g);
+		if(&gender_unit_type == &ut) {
+			// Push a reference to the unit type table.
+			lua_pushvalue(L, -2);
+			lua_setfield(L, -2, gender_string(g).c_str());
+		} else {
+			push_unit_type(L, gender_unit_type, gender_string(g));
+		}
+	}
+
+	lua_setfield(L, -2, "variations");
+}
+
+static void push_unit_type(lua_State* L, const unit_type& ut, const std::string& id)
 {
 	lua_newtable(L);
 
@@ -101,11 +127,11 @@ static void push_unit_type(lua_State* L, const unit_type& ut)
 	push_string_vec(L, ut.get_ability_list(), "abilities");
 	push_unit_attacks_table(L, -1);
 	lua_setfield(L, -2, "attacks");
+	push_variations_and_genders(L, ut);
 
-	// TODO: add unit type variations and genders
 	// TODO: write-protect the tables
 
-	lua_setfield(L, -2, ut.id().c_str());
+	lua_setfield(L, -2, id.c_str());
 }
 
 /**
@@ -284,7 +310,7 @@ namespace lua_unit_type {
 		start = std::chrono::high_resolution_clock::now();
 
 		for(const auto& ut : unit_types.types()) {
-			push_unit_type(L, ut.second);
+			push_unit_type(L, ut.second, ut.first);
 		}
 
 		end = std::chrono::high_resolution_clock::now();
