@@ -509,36 +509,4 @@ private:
 	int last_choice_request_id_;
 };
 
-struct game_is_member
-{
-	game_is_member(const socket_ptr& sock)
-		: sock_(sock)
-	{
-	}
-
-	bool operator()(const game& g) const
-	{
-		return g.is_owner(sock_) || g.is_member(sock_);
-	}
-
-private:
-	const socket_ptr& sock_;
-};
-
-struct game_id_matches
-{
-	game_id_matches(int id)
-		: id_(id)
-	{
-	}
-
-	bool operator()(const game& g) const
-	{
-		return g.id() == id_;
-	}
-
-private:
-	int id_;
-};
-
 } // namespace wesnothd
