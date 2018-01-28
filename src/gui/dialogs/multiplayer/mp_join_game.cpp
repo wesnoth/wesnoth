@@ -219,7 +219,7 @@ bool mp_join_game::fetch_game_config()
 		dlg.show();
 
 		if(dlg.get_retval() != gui2::window::OK) {
-			return false;
+			return true;
 		}
 
 		config faction;
