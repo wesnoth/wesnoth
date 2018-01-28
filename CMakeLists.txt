@@ -72,12 +72,7 @@ else()
 	message(WARNING "You are cross-compiling. Skipping IEEE 754 test.")
 endif()
 
-if(DEFINED ENV{TRAVIS})
-	find_package(SDL2 2.0.2 REQUIRED)
-else()
-	find_package(SDL2 2.0.4 REQUIRED)
-endif()
-
+find_package(SDL2 2.0.4 REQUIRED)
 find_package(Crypto 1.0 REQUIRED)
 find_package(Boost 1.50 REQUIRED COMPONENTS iostreams program_options regex system thread random)
 
