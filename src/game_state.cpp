@@ -303,20 +303,20 @@ bool game_state::can_recruit_from(const map_location& leader_loc, int side) cons
 {
 	const gamemap& map = board_.map();
 
-	if( !map.is_keep(leader_loc) )
+	if(!map.is_keep(leader_loc)) {
 		return false;
+	}
 
-	if ( side < 1  ||  board_.teams().size() < static_cast<size_t>(side) ) {
+	try {
+		return pathfind::find_vacant_tile(leader_loc, pathfind::VACANT_CASTLE, nullptr, &board_.get_team(side))
+			!= map_location::null_location();
+	} catch(const std::out_of_range&) {
 		// Invalid side specified.
 		// Currently this cannot happen, but it could conceivably be used in
 		// the future to request that shroud and visibility be ignored. Until
 		// that comes to pass, just return.
- 		return false;
+		return false;
 	}
-
-	return pathfind::find_vacant_tile(leader_loc, pathfind::VACANT_CASTLE, nullptr,
-	                                  &(board_.teams())[side-1])
-	       != map_location::null_location();
 }
 
 bool game_state::can_recruit_from(const unit& leader) const
@@ -335,35 +335,41 @@ bool game_state::can_recruit_on(const map_location& leader_loc, const map_locati
 {
 	const gamemap& map = board_.map();
 
-	if( !map.is_castle(recruit_loc) )
+	if(!map.is_castle(recruit_loc)) {
 		return false;
+	}
 
-	if( !map.is_keep(leader_loc) )
+	if(!map.is_keep(leader_loc)) {
 		return false;
+	}
 
-	if ( side < 1  ||  board_.teams().size() < static_cast<size_t>(side) ) {
+	try {
+		const team& view_team = board_.get_team(side);
+
+		if(view_team.shrouded(recruit_loc)) {
+			return false;
+		}
+
+		if(board_.has_visible_unit(recruit_loc, view_team)) {
+			return false;
+		}
+
+		castle_cost_calculator calc(map, view_team);
+
+		// The limit computed in the third argument is more than enough for
+		// any convex castle on the map. Strictly speaking it could be
+		// reduced to sqrt(map.w()**2 + map.h()**2).
+		pathfind::plain_route rt =
+			pathfind::a_star_search(leader_loc, recruit_loc, map.w() + map.h(), calc, map.w(), map.h());
+
+		return !rt.steps.empty();
+	} catch(const std::out_of_range&) {
 		// Invalid side specified.
 		// Currently this cannot happen, but it could conceivably be used in
 		// the future to request that shroud and visibility be ignored. Until
 		// that comes to pass, just return.
 		return false;
 	}
-	const team & view_team = board_.get_team(side);
-
-	if ( view_team.shrouded(recruit_loc) )
-		return false;
-
-	if ( board_.has_visible_unit(recruit_loc, view_team) )
-		return false;
-
-	castle_cost_calculator calc(map, view_team);
-	// The limit computed in the third argument is more than enough for
-	// any convex castle on the map. Strictly speaking it could be
-	// reduced to sqrt(map.w()**2 + map.h()**2).
-	pathfind::plain_route rt =
-		pathfind::a_star_search(leader_loc, recruit_loc, map.w()+map.h(), calc,
-		                        map.w(), map.h());
-	return !rt.steps.empty();
 }
 
 bool game_state::can_recruit_on(const unit& leader, const map_location& recruit_loc) const

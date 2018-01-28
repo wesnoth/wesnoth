@@ -540,18 +540,24 @@ paths::paths(const unit& u, bool force_ignore_zoc,
 		int additional_turns, bool see_all, bool ignore_units)
 	: destinations()
 {
-	const std::vector<team>& teams = resources::gameboard->teams();
-	if (u.side() < 1 || u.side() > int(teams.size())) {
-		return;
+	try {
+		find_routes(
+			u.get_location(),
+			u.movement_type().get_movement(),
+			u.get_state(unit::STATE_SLOWED),
+			u.movement_left(),
+			u.total_movement(),
+			additional_turns,
+			destinations,
+			nullptr,
+			allow_teleport   ? &u      : nullptr,
+			ignore_units     ? nullptr : &resources::gameboard->get_team(u.side()),
+			force_ignore_zoc ? nullptr : &u,
+			see_all          ? nullptr : &viewing_team
+		);
+	} catch(const std::out_of_range&) {
+		// Invalid unit side.
 	}
-
-	find_routes(u.get_location(), u.movement_type().get_movement(),
-	            u.get_state(unit::STATE_SLOWED), u.movement_left(),
-	            u.total_movement(), additional_turns, destinations, nullptr,
-	            allow_teleport ? &u : nullptr,
-	            ignore_units ? nullptr : &teams[u.side()-1],
-	            force_ignore_zoc ? nullptr : &u,
-	            see_all ? nullptr : &viewing_team);
 }
 
 /**
@@ -892,23 +898,29 @@ full_cost_map::full_cost_map(bool force_ignore_zoc,
  */
 void full_cost_map::add_unit(const unit& u, bool use_max_moves)
 {
-	const std::vector<team>& teams = resources::gameboard->teams();
-	if (u.side() < 1 || u.side() > int(teams.size())) {
-		return;
+	try {
+		// We don't need the destinations, but find_routes() wants to have this parameter
+		paths::dest_vect dummy = paths::dest_vect();
+
+		find_routes(
+			u.get_location(),
+			u.movement_type().get_movement(),
+			u.get_state(unit::STATE_SLOWED),
+			(use_max_moves) ? u.total_movement() : u.movement_left(),
+			u.total_movement(),
+			99,
+			dummy,
+			nullptr,
+			allow_teleport_   ? &u      : nullptr,
+			ignore_units_     ? nullptr : &resources::gameboard->get_team(u.side()),
+			force_ignore_zoc_ ? nullptr : &u,
+			see_all_          ? nullptr : &viewing_team_,
+			nullptr,
+			&cost_map
+		);
+	} catch(const std::out_of_range&) {
+		// Invalid unit side.
 	}
-
-	// We don't need the destinations, but find_routes() wants to have this parameter
-	paths::dest_vect dummy = paths::dest_vect();
-
-		find_routes(u.get_location(), u.movement_type().get_movement(),
-		            u.get_state(unit::STATE_SLOWED),
-		            (use_max_moves) ? u.total_movement() : u.movement_left(),
-		            u.total_movement(), 99, dummy, nullptr,
-		            allow_teleport_ ? &u : nullptr,
-		            ignore_units_ ? nullptr : &teams[u.side()-1],
-		            force_ignore_zoc_ ? nullptr : &u,
-		            see_all_ ? nullptr : &viewing_team_,
-		            nullptr, &cost_map);
 }
 
 /**

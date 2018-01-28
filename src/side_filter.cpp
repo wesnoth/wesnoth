@@ -249,7 +249,7 @@ bool side_filter::match_internal(const team &t) const
 bool side_filter::match(int side) const
 {
 	assert(fc_);
-	return this->match((fc_->get_disp_context().teams())[side-1]);
+	return this->match((fc_->get_disp_context().get_team(side)));
 }
 
 bool side_filter::match(const team& t) const

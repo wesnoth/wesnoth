@@ -193,7 +193,7 @@ unit* game_board::get_visible_unit(const map_location &loc,
 }
 
 void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl, team::PROXY_CONTROLLER proxy) {
-	team &tm = teams_[side_num-1];
+	team& tm = get_team(side_num);
 
 	tm.change_controller(ctrl);
 	tm.change_proxy(proxy);
@@ -206,7 +206,7 @@ void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl, team::PROXY_C
 }
 
 void game_board::side_change_controller(int side_num, bool is_local, const std::string& pname) {
-	team &tm = teams_[side_num-1];
+	team &tm = get_team(side_num);
 
 	tm.set_local(is_local);
 
@@ -245,10 +245,9 @@ bool game_board::team_is_defeated(const team& t) const
 
 bool game_board::try_add_unit_to_recall_list(const map_location&, const unit_ptr u)
 {
-	teams_[u->side()-1].recall_list().add(u);
+	get_team(u->side()).recall_list().add(u);
 	return true;
 }
-
 
 boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
 	boost::optional<std::string> ret = boost::optional<std::string> ();
