@@ -31,7 +31,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-std=c++11" />
+			<Add option="-std=c++14" />
 			<Add option="-U__STRICT_ANSI__" />
 			<Add option="-include ../../src/wesnoth_lua_config.h" />
 			<Add directory="../../src" />
