@@ -552,9 +552,7 @@ int game_lua_kernel::intf_get_units(lua_State *L)
 {
 	vconfig filter = luaW_checkvconfig(L, 1, true);
 
-	// note that if filter is null, this yields a null filter matching everything (and doing no work)
-	filter_context & fc = game_state_;
-	unit_filter filt(filter, &fc);
+	unit_filter filt(filter);
 	std::vector<const unit*> units;
 
 	if(unit* u_adj = luaW_tounit(L, 2)) {
@@ -605,8 +603,6 @@ int game_lua_kernel::intf_match_unit(lua_State *L)
 		return 1;
 	}
 
-	filter_context & fc = game_state_;
-
 	if(unit* u_adj = luaW_tounit(L, 3)) {
 		if(int side = u.on_recall_list()) {
 			WRN_LUA << "wesnoth.match_unit called with a secondary unit (3rd argument), ";
@@ -614,24 +610,24 @@ int game_lua_kernel::intf_match_unit(lua_State *L)
 			WRN_LUA << "Thus the 3rd argument is ignored.\n";
 			team &t = board().get_team(side);
 			scoped_recall_unit auto_store("this_unit", t.save_id(), t.recall_list().find_index(u->id()));
-			lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, map_location()));
+			lua_pushboolean(L, unit_filter(filter).matches(*u, map_location()));
 			return 1;
 		}
 		if (!u_adj) {
 			return luaL_argerror(L, 3, "unit not found");
 		}
-		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, *u_adj));
+		lua_pushboolean(L, unit_filter(filter).matches(*u, *u_adj));
 	} else if(int side = u.on_recall_list()) {
 		map_location loc;
 		luaW_tolocation(L, 3, loc); // If argument 3 isn't a location, loc is unchanged
 		team &t = board().get_team(side);
 		scoped_recall_unit auto_store("this_unit", t.save_id(), t.recall_list().find_index(u->id()));
-		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, loc));
+		lua_pushboolean(L, unit_filter(filter).matches(*u, loc));
 		return 1;
 	} else {
 		map_location loc = u->get_location();
 		luaW_tolocation(L, 3, loc); // If argument 3 isn't a location, loc is unchanged
-		lua_pushboolean(L, unit_filter(filter, &fc).matches(*u, loc));
+		lua_pushboolean(L, unit_filter(filter).matches(*u, loc));
 	}
 	return 1;
 }
@@ -651,8 +647,7 @@ int game_lua_kernel::intf_get_recall_units(lua_State *L)
 	lua_settop(L, 0);
 	lua_newtable(L);
 	int i = 1, s = 1;
-	filter_context & fc = game_state_;
-	const unit_filter ufilt(filter, &fc);
+	const unit_filter ufilt(filter);
 	for (team &t : teams())
 	{
 		for (unit_ptr & u : t.recall_list())
@@ -1815,8 +1810,7 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	}
 	else if (!filter.null())  // 1. arg - filter
 	{
-		filter_context & fc = game_state_;
-		boost::copy(unit_filter(filter, &fc).all_matches_on_map() | boost::adaptors::filtered(&intf_find_cost_map_helper), std::back_inserter(real_units));
+		boost::copy(unit_filter(filter).all_matches_on_map() | boost::adaptors::filtered(&intf_find_cost_map_helper), std::back_inserter(real_units));
 	}
 	else  // 1. arg - coordinates
 	{

@@ -132,7 +132,7 @@ namespace { // Helpers for get_recalls()
 		const team& leader_team = resources::gameboard->get_team(leader->side());
 		const std::string& save_id = leader_team.save_id();
 
-		const unit_filter ufilt(vconfig(leader->recall_filter()), resources::filter_con);
+		const unit_filter ufilt(vconfig(leader->recall_filter()));
 
 		for (const unit_const_ptr & recall_unit_ptr : leader_team.recall_list())
 		{
@@ -248,7 +248,7 @@ namespace { // Helpers for check_recall_location()
 		scoped_recall_unit this_unit("this_unit", recall_team.save_id(),
 						recall_team.recall_list().find_index(recall_unit.id()));
 
-		const unit_filter ufilt(vconfig(recaller.recall_filter()), resources::filter_con);
+		const unit_filter ufilt(vconfig(recaller.recall_filter()));
 		if ( !ufilt(recall_unit, map_location::null_location()) )
 			return RECRUIT_NO_ABLE_LEADER;
 

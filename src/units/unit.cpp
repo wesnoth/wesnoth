@@ -2167,7 +2167,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		// Apply SUF.
 		if(const config& afilter = effect.child("filter")) {
 			// @FIXME: during gamestate construction resources::filter_con is not available
-			if(resources::filter_con && !unit_filter(vconfig(afilter), resources::filter_con).matches(*this, loc_)) {
+			if(resources::filter_con && !unit_filter(vconfig(afilter)).matches(*this, loc_)) {
 				continue;
 			}
 		}

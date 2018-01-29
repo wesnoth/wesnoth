@@ -29,8 +29,8 @@
 #include "utils/make_enum.hpp"
 
 #include "display_context.hpp"
-#include "units/map.hpp"
 #include "filter_context.hpp"
+#include "units/map.hpp"
 #include "variable.hpp"
 
 #include <memory>
@@ -96,14 +96,7 @@ namespace unit_filter_impl
 class unit_filter
 {
 public:
-	unit_filter(vconfig cfg, const filter_context * fc)
-		: cfg_(cfg)
-		, fc_(fc)
-		, use_flat_tod_(false)
-		, impl_(cfg_)
-		, max_matches_(-1)
-	{
-	}
+	explicit unit_filter(vconfig cfg);
 
 	unit_filter(const unit_filter&) = default;
 	unit_filter& operator=(const unit_filter&) = default;

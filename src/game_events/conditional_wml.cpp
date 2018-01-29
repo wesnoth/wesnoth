@@ -52,7 +52,7 @@ namespace builtin_conditions {
 		std::vector<std::pair<int,int> > counts = cfg.has_attribute("count")
 			? utils::parse_ranges(cfg["count"]) : default_counts;
 		int match_count = 0;
-		const unit_filter ufilt(cfg, resources::filter_con);
+		const unit_filter ufilt(cfg);
 		for(const unit &i : resources::gameboard->units()) {
 			if(i.hitpoints() > 0 && ufilt(i)) {
 				++match_count;

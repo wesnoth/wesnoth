@@ -483,8 +483,8 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 		recall_list_manager & avail = resources::gameboard->teams()[index].recall_list();
 		std::vector<unit_map::unit_iterator> leaders = resources::gameboard->units().find_leaders(index + 1);
 
-		const unit_filter ufilt(unit_filter_cfg, resources::filter_con);
-		const unit_filter lfilt(leader_filter, resources::filter_con); // Note that if leader_filter is null, this correctly gives a null filter that matches all units.
+		const unit_filter ufilt(unit_filter_cfg);
+		const unit_filter lfilt(leader_filter); // Note that if leader_filter is null, this correctly gives a null filter that matches all units.
 		for(std::vector<unit_ptr>::iterator u = avail.begin(); u != avail.end(); ++u) {
 			DBG_NG << "checking unit against filter...\n";
 			scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
@@ -500,7 +500,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 					DBG_NG << "...considering " + leader->id() + " as the recalling leader...\n";
 					map_location loc = cfg_loc;
 					if ( lfilt(*leader)  &&
-					     unit_filter(vconfig(leader->recall_filter()), resources::filter_con).matches( *(*u),map_location() ) ) {
+					     unit_filter(vconfig(leader->recall_filter())).matches( *(*u),map_location() ) ) {
 						DBG_NG << "...matched the leader filter and is able to recall the unit.\n";
 						if(!resources::gameboard->map().on_board(loc))
 							loc = leader->get_location();

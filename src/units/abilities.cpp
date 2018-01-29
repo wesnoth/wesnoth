@@ -307,7 +307,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 	bool illuminates = ability == "illuminates";
 
 	if (const config &afilter = cfg.child("filter"))
-		if ( !unit_filter(vconfig(afilter), resources::filter_con).set_use_flat_tod(illuminates).matches(*this, loc) )
+		if ( !unit_filter(vconfig(afilter)).set_use_flat_tod(illuminates).matches(*this, loc) )
 			return false;
 
 	map_location adjacent[6];
@@ -319,7 +319,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 	for (const config &i : cfg.child_range("filter_adjacent"))
 	{
 		size_t count = 0;
-		unit_filter ufilt(vconfig(i), resources::filter_con);
+		unit_filter ufilt{ vconfig(i) };
 		ufilt.set_use_flat_tod(illuminates);
 		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
 		for (const map_location::DIRECTION index : dirs)
@@ -391,7 +391,7 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 		}
 		const config &filter = i.child("filter");
 		if (!filter || //filter tag given
-			unit_filter(vconfig(filter), resources::filter_con).set_use_flat_tod(illuminates).matches(*this, loc, from) ) {
+			unit_filter(vconfig(filter)).set_use_flat_tod(illuminates).matches(*this, loc, from) ) {
 			return true;
 		}
 	}
@@ -403,7 +403,7 @@ bool unit::ability_affects_self(const std::string& ability,const config& cfg,con
 	const config &filter = cfg.child("filter_self");
 	bool affect_self = cfg["affect_self"].to_bool(true);
 	if (!filter || !affect_self) return affect_self;
-	return unit_filter(vconfig(filter), resources::filter_con).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
+	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
 }
 
 bool unit::has_ability_type(const std::string& ability) const
@@ -853,7 +853,7 @@ namespace { // Helpers for attack_type::special_active()
 			return false;
 		}
 
-		unit_filter ufilt(vconfig(filter_child), resources::filter_con);
+		unit_filter ufilt{vconfig(filter_child)};
 
 		// If the other unit doesn't exist, try matching without it
 		if (!u2.valid()) {
@@ -952,7 +952,7 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	{
 		size_t count = 0;
 		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
-		unit_filter filter(vconfig(i), resources::filter_con);
+		unit_filter filter{ vconfig(i) };
 		for (const map_location::DIRECTION index : dirs)
 		{
 			if (index == map_location::NDIRECTIONS)
