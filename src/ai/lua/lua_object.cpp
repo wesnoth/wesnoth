@@ -49,7 +49,7 @@ namespace ai {
 		if(lua_istable(L, -1)) {
 			vconfig vcfg(config(), true);
 			if(luaW_tovconfig(L, -1, vcfg)) {
-				att->filter_own_.reset(new unit_filter(vcfg, resources::filter_con));
+				att->filter_own_.reset(new unit_filter(vcfg));
 			}
 		} else if(lua_isfunction(L, -1)) {
 			att->lua = L;
@@ -60,7 +60,7 @@ namespace ai {
 		if(lua_istable(L, -1)) {
 			vconfig vcfg(config(), true);
 			if(luaW_tovconfig(L, -1, vcfg)) {
-				att->filter_enemy_.reset(new unit_filter(vcfg, resources::filter_con));
+				att->filter_enemy_.reset(new unit_filter(vcfg));
 			}
 		} else if(lua_isfunction(L, -1)) {
 			att->lua = L;

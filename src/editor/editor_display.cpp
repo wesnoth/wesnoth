@@ -121,14 +121,9 @@ void editor_display::draw_sidebar()
 	}
 }
 
-const tod_manager& editor_display::get_tod_man() const
-{
-	return *controller_.get_current_map_context().get_time_manager();
-}
-
 const time_of_day& editor_display::get_time_of_day(const map_location& /*loc*/) const
 {
-	return get_tod_man().get_time_of_day();
+	return controller_.get_current_map_context().get_time_manager()->get_time_of_day();
 }
 
 } //end namespace editor

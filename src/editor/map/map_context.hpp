@@ -177,6 +177,10 @@ public:
 		++actions_since_save_;
 	}
 
+	const tod_manager* get_time_manager() const {
+		return tod_manager_.get();
+	}
+
 	tod_manager* get_time_manager() {
 		return tod_manager_.get();
 	}

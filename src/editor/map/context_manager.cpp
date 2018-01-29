@@ -74,6 +74,8 @@ context_manager::context_manager(editor_display& gui, const config& game_config)
 	, map_contexts_()
 	, clipboard_()
 {
+	resources::filter_con = this;
+
 	if(default_dir_.empty()) {
 		default_dir_ = filesystem::get_dir(filesystem::get_user_data_dir() + "/editor");
 	}
@@ -86,6 +88,8 @@ context_manager::~context_manager()
 {
 	// Restore default window title
 	CVideo::get_singleton().set_window_title(game_config::get_default_title_string());
+
+	resources::filter_con = nullptr;
 }
 
 void context_manager::refresh_on_context_change()
@@ -94,7 +98,6 @@ void context_manager::refresh_on_context_change()
 
 	// TODO register the tod_manager with the gui?
 	resources::tod_manager = get_map_context().get_time_manager();
-	resources::filter_con = &gui();
 
 	gui().replace_overlay_map(&get_map_context().get_overlays());
 

@@ -440,16 +440,6 @@ const time_of_day & display::get_time_of_day(const map_location& /*loc*/) const
 	return tod;
 }
 
-/**
- * Display objects don't hold a tod maanger, instead game_display objects do. If the base version of this method is called,
- * try to get it from resources and use an assert to check for failure.
- */
-const tod_manager & display::get_tod_man() const
-{
-	assert(resources::tod_manager);
-	return *resources::tod_manager;
-}
-
 void display::update_tod(const time_of_day* tod_override)
 {
 	const time_of_day* tod = tod_override;
