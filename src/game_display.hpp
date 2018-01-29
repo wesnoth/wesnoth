@@ -140,7 +140,7 @@ protected:
 
 	virtual void post_commit() override;
 
-	void draw_hex(const map_location& loc);
+	virtual void draw_hex(const map_location& loc) override;
 
 public:
 	/** Set the attack direction indicator. */
