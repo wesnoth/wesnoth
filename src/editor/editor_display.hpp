@@ -34,9 +34,6 @@ public:
 	void rebuild_terrain(const map_location &loc);
 
 	/** Inherited from display. */
-	virtual const tod_manager& get_tod_man() const override;
-
-	/** Inherited from display. */
 	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location()) const override;
 
 	editor_controller& get_controller()

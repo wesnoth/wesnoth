@@ -92,10 +92,10 @@ public:
 		, lk_(fc.get_lua_kernel())
 	{}
 
-	const display_context & get_disp_context() const { return dc_; }
-	const tod_manager & get_tod_man() const { return *tod_; }
-	const game_data * get_game_data() const { return gd_; }
-	game_lua_kernel * get_lua_kernel() const { return lk_; }
+	const display_context & get_disp_context() const override { return dc_; }
+	const tod_manager & get_tod_man() const override { return *tod_; }
+	const game_data * get_game_data() const override { return gd_; }
+	game_lua_kernel * get_lua_kernel() const override { return lk_; }
 
 private:
 	const ignore_units_display_context dc_;
@@ -119,7 +119,7 @@ void teleport_group::get_teleport_pair(
 	vconfig filter(cfg_.child_or_empty("filter"), true);
 	vconfig source(cfg_.child_or_empty("source"), true);
 	vconfig target(cfg_.child_or_empty("target"), true);
-	const unit_filter ufilt(filter, resources::filter_con); //Note: Don't use the ignore units filter context here, only for the terrain filters. (That's how it worked before the filter contexts were introduced)
+	const unit_filter ufilt(filter); //Note: Don't use the ignore units filter context here, only for the terrain filters. (That's how it worked before the filter contexts were introduced)
 	if (ufilt.matches(u)) {
 		terrain_filter source_filter(source, fc);
 		source_filter.get_locations(reversed_ ? loc_pair.second : loc_pair.first, u);

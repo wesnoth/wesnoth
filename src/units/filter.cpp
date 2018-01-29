@@ -44,6 +44,15 @@ static lg::log_domain log_config("config");
 
 using namespace unit_filter_impl;
 
+unit_filter::unit_filter(vconfig cfg)
+	: cfg_(cfg)
+	, fc_(resources::filter_con)
+	, use_flat_tod_(false)
+	, impl_(cfg_)
+	, max_matches_(-1)
+{
+}
+
 bool unit_filter::matches(const unit& u) const {
 	return impl_.matches(unit_filter_impl::unit_filter_args{u, u.get_location(), nullptr, fc_, use_flat_tod_});
 }

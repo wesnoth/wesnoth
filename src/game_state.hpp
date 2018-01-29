@@ -83,10 +83,29 @@ public:
 
 	void write(config& cfg) const;
 
-	virtual const display_context & get_disp_context() const { return board_; }
-	virtual const tod_manager & get_tod_man() const { return tod_manager_; }
-	virtual const game_data * get_game_data() const { return &gamedata_; }
-	virtual game_lua_kernel * get_lua_kernel() const { return lua_kernel_.get(); }
+	/** Inherited from @ref filter_context. */
+	virtual const display_context& get_disp_context() const override
+	{
+		return board_; 
+	}
+
+	/** Inherited from @ref filter_context. */
+	virtual const tod_manager& get_tod_man() const override 
+	{ 
+		return tod_manager_;
+	}
+
+	/** Inherited from @ref filter_context. */
+	virtual const game_data* get_game_data() const override 
+	{
+		return &gamedata_;
+	}
+
+	/** Inherited from @ref filter_context. */
+	virtual game_lua_kernel* get_lua_kernel() const override 
+	{
+		return lua_kernel_.get();
+	}
 
 	/// Checks to see if a leader at @a leader_loc could recruit somewhere.
 	bool can_recruit_from(const map_location& leader_loc, int side) const;

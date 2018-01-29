@@ -124,7 +124,7 @@ bool side_filter::match_internal(const team &t) const
 	if(cfg_.has_child("has_unit")) {
 		const vconfig & ufilt_cfg = cfg_.child("has_unit");
 		if (!ufilter_) {
-			ufilter_.reset(new unit_filter(ufilt_cfg.make_safe(), fc_));
+			ufilter_.reset(new unit_filter(ufilt_cfg.make_safe()));
 			ufilter_->set_use_flat_tod(flat_);
 		}
 		bool found = false;

@@ -15,15 +15,16 @@
 #pragma once
 
 #include "editor/map/map_context.hpp"
-#include "preferences/editor.hpp"
 #include "editor/map/map_fragment.hpp"
+#include "filter_context.hpp"
+#include "preferences/editor.hpp"
 
 class map_generator;
 
 namespace editor
 {
 
-class context_manager
+class context_manager : public filter_context
 {
 public:
 	using context_ptr = std::unique_ptr<map_context>;
@@ -164,6 +165,30 @@ public:
 	void set_default_dir(const std::string& str)
 	{
 		default_dir_ = str;
+	}
+
+	/** Inherited from @ref filter_context. */
+	virtual const display_context& get_disp_context() const override
+	{
+		return get_map_context();
+	}
+
+	/** Inherited from @ref filter_context. */
+	virtual const tod_manager& get_tod_man() const override
+	{
+		return *get_map_context().get_time_manager();
+	}
+
+	/** Inherited from @ref filter_context. */
+	virtual const game_data* get_game_data() const override
+	{
+		return nullptr; // No game_data in the editor.
+	}
+
+	/** Inherited from @ref filter_context. */
+	virtual game_lua_kernel* get_lua_kernel() const override
+	{
+		return nullptr; // No Lua kernel in the editor.
 	}
 
 private:

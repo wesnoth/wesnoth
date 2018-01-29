@@ -414,7 +414,7 @@ int unit_animation::matches(const display& disp, const map_location& loc, const 
 		}
 
 		for(const auto& filter : unit_filter_) {
-			unit_filter f(vconfig(filter), &disp);
+			unit_filter f{ vconfig(filter) };
 			if(!f(*my_unit, loc)) return MATCH_FAIL;
 			++result;
 		}
@@ -426,7 +426,7 @@ int unit_animation::matches(const display& disp, const map_location& loc, const 
 			}
 
 			for(const config& c : secondary_unit_filter_) {
-				unit_filter f(vconfig(c), &disp);
+				unit_filter f{ vconfig(c) };
 				if(!f(*unit, second_loc)) return MATCH_FAIL;
 				result++;
 			}

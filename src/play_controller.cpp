@@ -234,7 +234,7 @@ void play_controller::init(const config& level)
 
 		LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks()) << std::endl;
 		gui2::dialogs::loading_screen::progress(loading_stage::build_terrain);
-		gui_.reset(new game_display(gamestate().board_, whiteboard_manager_, *gamestate().reports_, gamestate().tod_manager_, theme_cfg, level));
+		gui_.reset(new game_display(gamestate().board_, whiteboard_manager_, *gamestate().reports_, theme_cfg, level));
 		map_start_ = map_location(level.child_or_empty("display").child_or_empty("location"));
 		if (!gui_->video().faked()) {
 			if (saved_game_.mp_settings().mp_countdown)
@@ -318,7 +318,6 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	gamestate().set_game_display(gui_.get());
 	resources::tunnels = gamestate().pathfind_manager_.get();
 
-	gui_->reset_tod_manager(gamestate().tod_manager_);
 	gui_->reset_reports(*gamestate().reports_);
 	gui_->change_display_context(&gamestate().board_);
 	saved_game_.get_replay().set_pos(replay_pos);

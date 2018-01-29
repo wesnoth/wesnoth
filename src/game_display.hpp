@@ -17,7 +17,6 @@
 #pragma once
 
 class config;
-class tod_manager;
 class team;
 class game_board;
 
@@ -38,7 +37,6 @@ public:
 	game_display(game_board& board,
 			std::weak_ptr<wb::manager> wb,
 			reports & reports_object,
-			const tod_manager& tod_manager,
 			const config& theme_cfg,
 			const config& level,
 			bool dummy=false);
@@ -123,11 +121,9 @@ public:
 	/** Same as invalidate_unit() if moving the displayed unit. */
 	void invalidate_unit_after_move(const map_location& src, const map_location& dst);
 
-	const time_of_day& get_time_of_day(const map_location& loc) const;
+	virtual const time_of_day& get_time_of_day(const map_location& loc) const override;
 
 	bool has_time_area() const;
-
-	const tod_manager & get_tod_man() const { return *tod_manager_; } /**< Allows this class to properly implement filter context, used for animations */
 
 protected:
 	/**
@@ -146,11 +142,7 @@ protected:
 
 	void draw_hex(const map_location& loc);
 
-
 public:
-
-
-
 	/** Set the attack direction indicator. */
 	void set_attack_indicator(const map_location& src, const map_location& dst);
 	void clear_attack_indicator();
@@ -174,9 +166,7 @@ public:
 	 */
 	void set_playing_team(size_t team);
 
-
 	const map_location &displayed_unit_hex() const { return displayedUnitHex_; }
-
 
 	/**
 	 * annotate hex with number, useful for debugging or UI prototype
@@ -196,7 +186,6 @@ public:
 	void begin_game();
 
 	virtual bool in_game() const { return in_game_; }
-
 
 	/**
 	 * Sets the linger mode for the display.
@@ -218,10 +207,7 @@ public:
 
 	/// Rebuilds the screen if needs_rebuild(true) was previously called, and resets the flag.
 	bool maybe_rebuild();
-	void reset_tod_manager(const tod_manager& tod_manager)
-	{
-		tod_manager_ = &tod_manager;
-	}
+
 private:
 	game_display(const game_display&);
 	void operator=(const game_display&);
@@ -234,11 +220,7 @@ private:
 	map_location attack_indicator_src_;
 	map_location attack_indicator_dst_;
 
-
-
 	pathfind::marked_route route_;
-
-	const tod_manager* tod_manager_;
 
 	void invalidate_route();
 
