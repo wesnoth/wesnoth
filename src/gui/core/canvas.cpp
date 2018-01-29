@@ -1109,27 +1109,28 @@ void image_shape::draw(surface& canvas,
 		surf = image_;
 	}
 	else { // assert((w != 0) || (h != 0))
-		if(w == 0) { // assert(h != 0)
-			if(resize_mode_ == stretch) {
-				DBG_GUI_D << "Image: vertical stretch from " << image_->w << ','
-						  << image_->h << " to a height of " << h << ".\n";
+		if(w == 0 && resize_mode_ == stretch) {
+			DBG_GUI_D << "Image: vertical stretch from " << image_->w << ','
+					  << image_->h << " to a height of " << h << ".\n";
 
-				surf = stretch_surface_vertical(image_, h);
-			}
+			surf = stretch_surface_vertical(image_, h);
 			w = image_->w;
 		}
-		else if(h == 0) { // assert(w != 0)
-			if(resize_mode_ == stretch) {
-				DBG_GUI_D << "Image: horizontal stretch from " << image_->w
-						  << ',' << image_->h << " to a width of " << w
-						  << ".\n";
+		else if(h == 0 && resize_mode_ == stretch) {
+			DBG_GUI_D << "Image: horizontal stretch from " << image_->w
+					  << ',' << image_->h << " to a width of " << w
+					  << ".\n";
 
-				surf = stretch_surface_horizontal(image_, w);
-			}
+			surf = stretch_surface_horizontal(image_, w);
 			h = image_->h;
 		}
-		else { // assert((w != 0) && (h != 0))
-
+		else {
+			if(w == 0) {
+				w = image_->w;
+			}
+			if(h == 0) {
+				h = image_->h;
+			}
 			if(resize_mode_ == tile) {
 				DBG_GUI_D << "Image: tiling from " << image_->w << ','
 						  << image_->h << " to " << w << ',' << h << ".\n";
