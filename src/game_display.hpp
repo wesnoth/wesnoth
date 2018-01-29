@@ -54,7 +54,7 @@ public:
 	 */
 	void new_turn();
 
-	const std::set<std::string>& observers() const { return chat_man_->observers(); }
+	virtual const std::set<std::string>& observers() const override { return chat_man_->observers(); }
 	/**
 	 * Scrolls to the leader of a certain side.
 	 *
@@ -68,7 +68,7 @@ public:
 	 * If a unit is in the location, and there is no unit in the currently
 	 * highlighted hex, the unit will be displayed in the sidebar.
 	 */
-	virtual void select_hex(map_location hex);
+	virtual void select_hex(map_location hex) override;
 
 	/**
 	 * Function to highlight a location.
@@ -77,7 +77,7 @@ public:
 	 * Selection is used when a unit has been clicked on, while highlighting is
 	 * used when a location has been moused over.
 	 */
-	virtual void highlight_hex(map_location hex);
+	virtual void highlight_hex(map_location hex) override;
 
 	/**
 	 * Change the unit to be displayed in the sidebar.
@@ -123,22 +123,22 @@ public:
 
 	virtual const time_of_day& get_time_of_day(const map_location& loc) const override;
 
-	bool has_time_area() const;
+	virtual bool has_time_area() const override;
 
 protected:
 	/**
 	 * game_display pre_draw does specific things related e.g. to unit rendering
 	 * and calls the whiteboard pre-draw method.
 	 */
-	void pre_draw();
+	virtual void pre_draw() override;
 	/**
 	 * Calls the whiteboard's post-draw method.
 	 */
-	void post_draw();
+	virtual void post_draw() override;
 
-	void draw_invalidated();
+	virtual void draw_invalidated() override;
 
-	void post_commit();
+	virtual void post_commit() override;
 
 	void draw_hex(const map_location& loc);
 
@@ -158,15 +158,7 @@ public:
 	//void draw_terrain_palette(int x, int y, terrain_type::TERRAIN selected);
 	t_translation::terrain_code get_terrain_on(int palx, int paly, int x, int y);
 
-	/**
-	 * Sets the team controlled by the player using the computer.
-	 *
-	 * Data from this team will be displayed in the game status.
-	 * set_playing_team sets the team whose turn it currently is
-	 */
-	void set_playing_team(size_t team);
-
-	const map_location &displayed_unit_hex() const { return displayedUnitHex_; }
+	virtual const map_location &displayed_unit_hex() const override { return displayedUnitHex_; }
 
 	/**
 	 * annotate hex with number, useful for debugging or UI prototype
@@ -176,7 +168,7 @@ public:
 
 
 	/** The playing team is the team whose turn it is. */
-	int playing_side() const { return activeTeam_ + 1; }
+	virtual int playing_side() const override { return activeTeam_ + 1; }
 
 
 	std::string current_team_name() const;
@@ -185,7 +177,7 @@ public:
 
 	void begin_game();
 
-	virtual bool in_game() const { return in_game_; }
+	virtual bool in_game() const override { return in_game_; }
 
 	/**
 	 * Sets the linger mode for the display.
@@ -212,7 +204,7 @@ private:
 	game_display(const game_display&);
 	void operator=(const game_display&);
 
-	void draw_sidebar();
+	virtual void draw_sidebar() override;
 
 	overlay_map overlay_map_;
 

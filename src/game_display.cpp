@@ -649,14 +649,6 @@ std::string game_display::current_team_name() const
 	return std::string();
 }
 
-
-void game_display::set_playing_team(size_t teamindex)
-{
-	assert(teamindex < dc_->teams().size());
-	activeTeam_ = teamindex;
-	invalidate_game_status();
-}
-
 void game_display::begin_game()
 {
 	in_game_ = true;
