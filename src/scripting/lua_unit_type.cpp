@@ -135,8 +135,8 @@ static int impl_unit_type_count(lua_State* L)
 static int impl_unit_type_next(lua_State* L)
 {
 	const unit_type* base = *static_cast<const unit_type**>(luaL_checkudata(L, 1, UnitTypeTable));
-	auto unit_map = base ? base->variation_types() : unit_types.types();
-	decltype(unit_map)::const_iterator it = unit_map.end();
+	const auto& unit_map = base ? base->variation_types() : unit_types.types();
+	auto it = unit_map.end();
 	if(lua_isnoneornil(L, 2)) {
 		if(base) {
 			if(base->has_gender_variation(unit_race::MALE)) {
