@@ -354,6 +354,12 @@ public:
 		return current_level_type_;
 	}
 
+	/** Wrapper to simplify the is-type-campaign-or-sp-campaign check. */
+	bool is_campaign() const
+	{
+		return current_level_type_ == level::TYPE::CAMPAIGN || current_level_type_ == level::TYPE::SP_CAMPAIGN;
+	}
+
 	void set_current_level(const size_t index);
 
 	void set_current_era_index(const size_t index, bool force = false);

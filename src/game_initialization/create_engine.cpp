@@ -357,7 +357,7 @@ bool create_engine::current_level_has_side_data()
 	// however, leave open the possibility of scenarios that require preprocessing before their
 	// side data is accessible, but that's an unlikely occurrence.
 	//
-	if(current_level_type_ == level::TYPE::CAMPAIGN || current_level_type_ == level::TYPE::SP_CAMPAIGN) {
+	if(is_campaign()) {
 		return true;
 	}
 
@@ -774,7 +774,7 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 				new_extras_metadata->description = extra["description"].str();
 				new_extras_metadata->cfg = &extra;
 
-				extras.push_back(std::move(new_extras_metadata));		
+				extras.push_back(std::move(new_extras_metadata));
 			}
 			else {
 				//TODO: use a more visible error message.

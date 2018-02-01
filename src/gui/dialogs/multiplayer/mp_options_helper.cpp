@@ -67,10 +67,9 @@ void mp_options_helper::update_all_options()
 
 void mp_options_helper::update_game_options()
 {
-	const ng::level::TYPE current_type = create_engine_.current_level_type();
 	std::string type;
 
-	if(current_type == ng::level::TYPE::CAMPAIGN || current_type == ng::level::TYPE::SP_CAMPAIGN) {
+	if(create_engine_.is_campaign()) {
 		type = "campaign";
 	} else {
 		type = "multiplayer";

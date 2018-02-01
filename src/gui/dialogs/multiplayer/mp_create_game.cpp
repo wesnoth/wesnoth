@@ -826,9 +826,7 @@ bool mp_create_game::dialog_exit_hook(window& /*window*/)
 		return false;
 	}
 
-	if(create_engine_.current_level_type() != ng::level::TYPE::CAMPAIGN &&
-	   create_engine_.current_level_type() != ng::level::TYPE::SP_CAMPAIGN
-	) {
+	if(!create_engine_.is_campaign()) {
 		return true;
 	}
 
