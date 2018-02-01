@@ -934,10 +934,7 @@ void mp_create_game::post_show(window& window)
 		prefs::set_random_faction_mode(mp_game_settings::RANDOM_FACTION_MODE::enum_to_string(rfm_types_[selected_rfm_index_]));
 
 		// Save custom option settings
-		const config options_config = options_manager_->get_options_config();
-
-		config_engine_->set_options(options_config);
-		prefs::set_options(options_config);
+		config_engine_->set_options(options_manager_->get_options_config());
 
 		// Set game name
 		const std::string name = find_widget<text_box>(&window, "game_name", false).get_value();

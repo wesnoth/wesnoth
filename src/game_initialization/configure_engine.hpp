@@ -16,7 +16,6 @@
 
 #include "gettext.hpp"
 #include "mp_game_settings.hpp"
-#include "preferences/game.hpp"
 #include "saved_game.hpp"
 
 namespace ng
@@ -241,10 +240,7 @@ public:
 		parameters_.random_faction_mode = val;
 	}
 
-	void set_options(const config& cfg)
-	{
-		parameters_.options = cfg;
-	}
+	void set_options(const config& cfg);
 
 	//
 	// Parameter defaults

@@ -17,6 +17,7 @@
 #include "game_config_manager.hpp"
 #include "mp_game_settings.hpp"
 #include "preferences/credentials.hpp"
+#include "preferences/game.hpp"
 #include "settings.hpp"
 #include "tod_manager.hpp"
 
@@ -158,6 +159,12 @@ mp_game_settings::RANDOM_FACTION_MODE configure_engine::random_faction_mode_defa
 {
 	return mp_game_settings::RANDOM_FACTION_MODE::string_to_enum(
 		preferences::random_faction_mode(), mp_game_settings::RANDOM_FACTION_MODE::DEFAULT);
+}
+
+void configure_engine::set_options(const config& cfg)
+{
+	parameters_.options = cfg;
+	preferences::set_options(cfg);
 }
 
 const config& configure_engine::options_default() const
