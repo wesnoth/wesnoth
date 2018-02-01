@@ -67,7 +67,14 @@ void mp_options_helper::update_all_options()
 
 void mp_options_helper::update_game_options()
 {
-	const std::string type = create_engine_.current_level_type() == ng::level::TYPE::CAMPAIGN ? "campaign" : "multiplayer";
+	const ng::level::TYPE current_type = create_engine_.current_level_type();
+	std::string type;
+
+	if(current_type == ng::level::TYPE::CAMPAIGN || current_type == ng::level::TYPE::SP_CAMPAIGN) {
+		type = "campaign";
+	} else {
+		type = "multiplayer";
+	}
 
 	// For game options, we check for both types and remove them. This is to prevent options from a game
 	// of one type remaining visible when selecting a game of another type.
