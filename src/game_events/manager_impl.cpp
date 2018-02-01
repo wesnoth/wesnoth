@@ -91,6 +91,11 @@ handler_list& event_handlers::get(const std::string& name)
  */
 void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 {
+	// Someone decided to register an empty event... bail.
+	if(cfg.empty()) {
+		return;
+	}
+
 	std::string name = cfg["name"];
 	std::string id = cfg["id"];
 
@@ -104,12 +109,17 @@ void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 		}
 	}
 
+	if(name.empty()) {
+		lg::wml_error() << "[event] is missing name field\n";
+		return;
+	}
+
 	// Make a copy of the event cfg here in order to do some standardization on the
 	// name field. Will be moved into the handler.
 	config event_cfg = cfg;
 
 	// Split the name field...
-	std::vector<std::string> standardized_names = utils::split(cfg["name"]);
+	std::vector<std::string> standardized_names = utils::split(name);
 
 	// ...and standardize each one individually. This ensures they're all valid for by-name lookup.
 	for(std::string& single_name : standardized_names) {
@@ -118,7 +128,7 @@ void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 		}
 	}
 
-	assert(standardized_names.size() != 0);
+	assert(!standardized_names.empty());
 
 	// Write the new name back to the config.
 	name = utils::join(standardized_names);
