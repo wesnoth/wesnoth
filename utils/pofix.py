@@ -100,6 +100,12 @@ game_stringfixes = {
 ("Who then is your leader? Who do we serve?", "Who then is your leader? Whom do we serve?"),
 # fix added in 1.13.10+dev
 ("might we ask your assistance.", "might we ask your assistance?"),
+("Onward men!", "Onward, men!"),
+("No we have not.", "No, we have not."),
+("If it is necessary, princess, I will ask", "If it is necessary, Princess, I will ask"),
+("What secret Delfador?", "What secret, Delfador?"),
+("I High Provost", "I, High Provost"),
+("both a great combatant and leader", "both a great combatant and a leader"),
 ),
 
 "wesnoth-low" : (
