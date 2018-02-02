@@ -66,6 +66,8 @@ Version 1.13.10+dev:
      improvement over the uncut ruby of fire (14x4) in TRoW.
    * Added [lua] as a conditional tag.
    * Lua errors now cause as a condition to fail instead of pass.
+   * New formula= key in [set_variable] allows evaluating a WFL formula with
+     the variable, which may be either a scalar or a container.
  * Miscellaneous and bug fixes:
    * Fixed crash after canceling add-on download (bug #2203)
    * Fixed ingame help showing units you haven't encountered (bug #2135)

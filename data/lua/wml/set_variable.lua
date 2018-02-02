@@ -98,6 +98,11 @@ function wesnoth.wml_actions.set_variable(cfg)
 		wesnoth.set_variable(name, helper.rand(tostring(cfg.rand)))
 	end
 
+	if cfg.formula then
+		local fcn = wesnoth.compile_formula(cfg.formula)
+		wesnoth.set_variable(name, fcn(wesnoth.get_variable(name)))
+	end
+
 	local join_child = helper.get_child(cfg, "join")
 	if join_child then
 		local array_name = join_child.variable or helper.wml_error "missing variable= attribute in [join]"
