@@ -111,7 +111,7 @@ private:
 	field_integer* turn_bonus_;
 	field_integer* reservoir_;
 	field_integer* action_bonus_;
-	
+
 	listbox* mod_list_;
 	menu_button* eras_menu_button_;
 
@@ -127,12 +127,12 @@ private:
 	void on_era_select(window& window);
 	void on_mod_toggle(window& window, const int index, toggle_button* sender);
 	void on_random_faction_mode_select(window& window);
-	
+
 	std::vector<std::string> get_active_mods();
 	void set_active_mods(const std::vector<std::string>& val);
-	
+
 	void sync_with_depcheck(window& window);
-	
+
 	void show_description(window& window, const std::string& new_description);
 
 	void update_details(window& window);

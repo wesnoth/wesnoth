@@ -295,7 +295,7 @@ void config::append(const config& cfg)
 void config::append(config&& cfg)
 {
 	append_children(std::move(cfg));
-	
+
 	if(values_.empty()) {
 		//optimisation.
 		values_ = std::move(cfg.values_);

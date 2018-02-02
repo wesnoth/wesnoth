@@ -74,7 +74,7 @@ bool horizontal_scrollbar::on_positioner(const point& coordinate) const
 {
 	SDL_Rect positioner_rect =
 		sdl::create_rect(get_positioner_offset(), 0, get_positioner_length(), get_height());
-	
+
 	// Note we assume the positioner is over the entire height of the widget.
 	return sdl::point_in_rect(coordinate, positioner_rect);
 }

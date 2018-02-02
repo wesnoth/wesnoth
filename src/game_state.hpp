@@ -86,23 +86,23 @@ public:
 	/** Inherited from @ref filter_context. */
 	virtual const display_context& get_disp_context() const override
 	{
-		return board_; 
+		return board_;
 	}
 
 	/** Inherited from @ref filter_context. */
-	virtual const tod_manager& get_tod_man() const override 
-	{ 
+	virtual const tod_manager& get_tod_man() const override
+	{
 		return tod_manager_;
 	}
 
 	/** Inherited from @ref filter_context. */
-	virtual const game_data* get_game_data() const override 
+	virtual const game_data* get_game_data() const override
 	{
 		return &gamedata_;
 	}
 
 	/** Inherited from @ref filter_context. */
-	virtual game_lua_kernel* get_lua_kernel() const override 
+	virtual game_lua_kernel* get_lua_kernel() const override
 	{
 		return lua_kernel_.get();
 	}
