@@ -78,6 +78,13 @@ game_stringfixes = {
 ("Choose file", "Choose File"),
 ),
 
+"wesnoth-help" : (
+# fix added in 1.13.10+dev
+("displayed in the upper right, (under the default theme)", "displayed in the upper right (under the default theme)"),
+("However the few implements", "However, the few implements"),
+("humans can learn to wield it and able to learn", "humans can learn to wield it and are able to learn"),
+),
+
 "wesnoth-lib" : (
 # conversion added in 1.11.15+dev
 ("SP/MP Campaigns", "SP/MP campaigns"),
