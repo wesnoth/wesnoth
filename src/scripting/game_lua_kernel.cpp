@@ -3523,7 +3523,7 @@ int game_lua_kernel::intf_allow_undo(lua_State * L)
 
 int game_lua_kernel::intf_cancel_action(lua_State*)
 {
-	play_controller_.pump().action_canceled();
+	play_controller_.pump().set_action_canceled();
 	return 0;
 }
 
