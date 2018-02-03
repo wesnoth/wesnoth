@@ -92,7 +92,7 @@ else
   
   if [ "$BOOST_TEST" == "true" ]; then
     echo "Executing boost unit tests"
-    ./utils/travis/test_wrapper.sh
+    ./utils/travis/test_executor.sh
     RET=$?
     if [ $RET != 0 ]; then
       EXIT_VAL=$RET
@@ -102,7 +102,6 @@ else
   if [ -f "errors.log" ]; then
     echo -e "\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n"
     cat errors.log
-    ./utils/travis/test_executor.sh
   fi
   
   exit $EXIT_VAL
