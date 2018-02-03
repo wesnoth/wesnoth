@@ -626,10 +626,14 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 	const map_location leader_loc = !show ? map_location::null_location() :
 			find_recruit_leader(u->side(), recruit_location, recruited_from);
 	u->set_location(recruit_location);
+
+	unit_map::unit_iterator new_unit_itor;
+	bool success = false;
+
 	// Add the unit to the board.
-	std::pair<unit_map::iterator, bool> add_result = resources::gameboard->units().insert(u);
-	assert(add_result.second);
-	unit_map::iterator & new_unit_itor = add_result.first;
+	std::tie(new_unit_itor, success) = resources::gameboard->units().insert(u);
+	assert(success);
+
 	map_location current_loc = recruit_location;
 
 	if (facing == map_location::NDIRECTIONS) {

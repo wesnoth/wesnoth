@@ -483,8 +483,12 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 	// Create the unit.
 	unit_ptr created(new unit(*u_type, side_num, true, gender));
 	created->new_turn();
+
+	unit_map::unit_iterator unit_it;
+
 	// Add the unit to the board.
-	std::pair<unit_map::iterator, bool> add_result = resources::gameboard->units().replace(loc, created);
+	std::tie(unit_it, std::ignore) = resources::gameboard->units().replace(loc, created);
+
 	game_display::get_singleton()->invalidate_unit();
 	resources::game_events->pump().fire("unit_placed", loc);
 	unit_display::unit_recruited(loc);
@@ -498,8 +502,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 	actions::shroud_clearer clearer;
 	clearer.clear_unit(loc, *created);
 	clearer.fire_events();
-	if ( add_result.first.valid() ) // In case sighted events messed with the unit.
-		actions::actor_sighted(*add_result.first);
+	if (unit_it.valid() ) // In case sighted events messed with the unit.
+		actions::actor_sighted(*unit_it);
 
 	return true;
 }

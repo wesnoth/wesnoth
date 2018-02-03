@@ -94,19 +94,24 @@ bool simulated_attack(const map_location& attacker_loc, const map_location& defe
 	return true;
 }
 
-bool simulated_move(int side, const map_location& from, const map_location& to, int steps, map_location& unit_location){
+bool simulated_move(int side, const map_location& from, const map_location& to, int steps, map_location& unit_location)
+{
 	LOG_AI_SIM_ACTIONS << "Simulated move" << std::endl;
 
+	unit_map::unit_iterator move_unit;
+	bool success = false;
+
 	// In simulation, AI should not know if there is a enemy's ambusher.
-	std::pair<unit_map::unit_iterator, bool> unit_move = resources::gameboard->units().move(from, to);
-	bool is_ok = unit_move.second;
-	if(!is_ok){
-		unit_location = to;	// This happened because in some CAs like get_village_phase and move_leader_to_keep phase,
-							// if the destination is already occupied will not be checked before execute. Just silent
-							// errors in ai/actions and tell rca the game state isn't changed.
+	std::tie(move_unit, success) = resources::gameboard->units().move(from, to);
+
+	if(!success) {
+		// This happened because in some CAs like get_village_phase and move_leader_to_keep phase,
+		// if the destination is already occupied will not be checked before execute. Just silent
+		// errors in ai/actions and tell rca the game state isn't changed.
+		unit_location = to;
 		return false;
 	}
-	unit_map::unit_iterator move_unit = unit_move.first;
+
 	move_unit->set_movement(move_unit->movement_left()-steps);	// Following original logic, remove_movement_ will be considered outside.
 
 	unit_location = move_unit->get_location();	// For check_after.
@@ -216,9 +221,11 @@ void helper_place_unit(const unit& u, const map_location& loc){
 	new_unit->heal_fully();
 	new_unit->set_location(loc);
 
-	std::pair<unit_map::iterator, bool> add_result = resources::gameboard->units().insert(new_unit);
-	assert(add_result.second);
-	unit_map::iterator& new_unit_itor = add_result.first;
+	unit_map::unit_iterator new_unit_itor;
+	bool success = false;
+
+	std::tie(new_unit_itor, success) = resources::gameboard->units().insert(new_unit);
+	assert(success);
 
 	if(resources::gameboard->map().is_village(loc)){
 		helper_check_village(loc, new_unit_itor->side());

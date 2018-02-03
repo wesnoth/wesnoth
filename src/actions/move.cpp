@@ -522,14 +522,15 @@ namespace { // Private helpers for move_unit()
 		// Invalidate before moving so we invalidate neighbor hexes if needed.
 		move_it_->anim_comp().invalidate(disp);
 
-		// Attempt actually moving.
-		// (Fails if *step_to is occupied).
-		std::pair<unit_map::iterator, bool> move_result =
-			resources::gameboard->units().move(*move_loc_, *step_to);
-		if ( move_result.second )
-		{
+		// Attempt actually moving. Fails if *step_to is occupied.
+		unit_map::unit_iterator unit_it;
+		bool success = false;
+
+		std::tie(unit_it, success) = resources::gameboard->units().move(*move_loc_, *step_to);
+
+		if(success) {
 			// Update the moving unit.
-			move_it_ = move_result.first;
+			move_it_ = unit_it;
 			move_it_->set_facing(step_from->get_relative_dir(*step_to));
 			// Disable bars. The expectation here is that the animation
 			// unit_mover::finish() will clean after us at a later point. Ugly,
@@ -546,7 +547,7 @@ namespace { // Private helpers for move_unit()
 			disp.redraw_minimap();
 		}
 
-		return move_result.second;
+		return success;
 	}
 
 

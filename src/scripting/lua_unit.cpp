@@ -70,10 +70,14 @@ unit_ptr lua_unit::get_shared()
 bool lua_unit::put_map(const map_location &loc)
 {
 	if (ptr) {
-		std::pair<unit_map::unit_iterator, bool> res = resources::gameboard->units().replace(loc, ptr);
-		if (res.second) {
+		unit_map::unit_iterator unit_it;
+		bool success = false;
+
+		std::tie(unit_it, success) = resources::gameboard->units().replace(loc, ptr);
+
+		if(success) {
 			ptr.reset();
-			uid = res.first->underlying_id();
+			uid = unit_it->underlying_id();
 		} else {
 			ERR_LUA << "Could not move unit " << ptr->underlying_id() << " onto map location " << loc << '\n';
 			return false;
