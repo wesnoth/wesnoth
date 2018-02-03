@@ -427,11 +427,47 @@ static int impl_unit_set(lua_State *L)
 		}
 		return 0;
 	}
+
 	if(!lu->on_map()) {
 		map_location loc = u.get_location();
 		modify_int_attrib("x", loc.set_wml_x(value); u.set_location(loc));
 		modify_int_attrib("y", loc.set_wml_y(value); u.set_location(loc));
 		modify_string_attrib("id", u.set_id(value));
+	} else {
+		const bool is_key_x = strcmp(m, "x") == 0;
+		const bool is_key_y = strcmp(m, "y") == 0;
+
+		// Handle moving an on-map unit
+		if(is_key_x || is_key_y) {
+			game_board* gb = resources::gameboard;
+
+			if(!gb) {
+				return 0;
+			}
+
+			map_location src = u.get_location();
+			map_location dst = src;
+
+			if(is_key_x) {
+				dst.set_wml_x(static_cast<int>(luaL_checknumber(L, 3)));
+			} else {
+				dst.set_wml_y(static_cast<int>(luaL_checknumber(L, 3)));
+			}
+
+			// TODO: could probably be relegated to a helper function.
+			if(src != dst) {
+				unit_map::iterator u = gb->units().end();
+				bool success = false;
+
+				std::tie(u, success) = gb->units().move(src, dst);
+
+				if(success) {
+					u->anim_comp().set_standing();
+				}
+			}
+
+			return 0;
+		}
 	}
 
 	std::string err_msg = "unknown modifiable property of unit: ";

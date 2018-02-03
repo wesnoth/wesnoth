@@ -36,6 +36,7 @@ Version 1.13.10+dev:
    * New wesnoth.unit_types[].advances_to getter.
    * New wesnoth.unit_types[].advances_from getter.
    * unit.id is now a modifiable field for off-map (Lua-only) units.
+   * Allow moving on-map units by setting unit.x an unit.y fields.
  * Multiplayer:
    * Dark Forecast: Fixed broken faction and leader selection.
    * Rename the Khalifate to Dunefolk.
