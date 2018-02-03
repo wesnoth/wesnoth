@@ -68,6 +68,8 @@ Version 1.13.10+dev:
    * Lua errors now cause as a condition to fail instead of pass.
    * New formula= key in [set_variable] allows evaluating a WFL formula with
      the variable, which may be either a scalar or a container.
+   * A missing [event] name= key will now raise a WML error instead of being
+     silently ignored.
  * Miscellaneous and bug fixes:
    * Fixed crash after canceling add-on download (bug #2203)
    * Fixed ingame help showing units you haven't encountered (bug #2135)
