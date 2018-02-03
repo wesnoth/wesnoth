@@ -34,7 +34,7 @@ before_install:
     - export PLAY_TEST=true
     - export MP_TEST=true
     - export WML_TEST_TIME=15
-    - export BOOST_TEST=false
+    - export BOOST_TEST=true
 
     - if [ "$OPT" = "-O0" ]; then
           export EXTRA_FLAGS_RELEASE="-O0";
