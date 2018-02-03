@@ -189,6 +189,8 @@ namespace {
 	void test_resolutions(const resolution_list& resolutions)
 	{
 		for(const resolution& resolution : resolutions) {
+			test_utils::get_fake_display(resolution.first, resolution.second);
+
 			dialog_tester<T> ctor;
 			const std::unique_ptr<modal_dialog> dlg(ctor.create());
 			BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
@@ -226,6 +228,8 @@ namespace {
 		bool interact = false;
 		for(int i = 0; i < 2; ++i) {
 			for(const resolution& resolution : resolutions) {
+				test_utils::get_fake_display(resolution.first, resolution.second);
+
 				dialog_tester<T> ctor;
 				const std::unique_ptr<modeless_dialog> dlg(ctor.create());
 				BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
@@ -271,6 +275,8 @@ namespace {
 			, const std::string& id)
 	{
 		for(const auto& resolution : resolutions) {
+			test_utils::get_fake_display(resolution.first, resolution.second);
+
 			std::set<std::string>& list = gui2::unit_test_registered_window_list();
 			list.erase(id);
 
@@ -548,6 +554,8 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 
 BOOST_AUTO_TEST_CASE(test_make_test_fake)
 {
+	test_utils::get_fake_display(10, 10);
+
 	try {
 		message dlg("title", "message", true, false, false);
 		dlg.show(1);
