@@ -453,9 +453,9 @@ static int impl_unit_set(lua_State *L)
 			map_location dst = src;
 
 			if(is_key_x) {
-				dst.set_wml_x(static_cast<int>(luaL_checknumber(L, 3)));
+				dst.set_wml_x(static_cast<int>(luaL_checkinteger(L, 3)));
 			} else {
-				dst.set_wml_y(static_cast<int>(luaL_checknumber(L, 3)));
+				dst.set_wml_y(static_cast<int>(luaL_checkinteger(L, 3)));
 			}
 
 			// TODO: could probably be relegated to a helper function.
