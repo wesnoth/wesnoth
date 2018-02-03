@@ -431,6 +431,7 @@ static int impl_unit_set(lua_State *L)
 		map_location loc = u.get_location();
 		modify_int_attrib("x", loc.set_wml_x(value); u.set_location(loc));
 		modify_int_attrib("y", loc.set_wml_y(value); u.set_location(loc));
+		modify_string_attrib("id", u.set_id(value));
 	}
 
 	std::string err_msg = "unknown modifiable property of unit: ";
