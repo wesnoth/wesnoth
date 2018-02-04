@@ -455,7 +455,7 @@ surface light_modification::operator()(const surface& src) const {
 		nsurf = make_neutral_surface(surf_);
 	}
 
-	return light_surface(src, nsurf);;
+	return light_surface(src, nsurf);
 }
 
 surface scale_modification::operator()(const surface& src) const

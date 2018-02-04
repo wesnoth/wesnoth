@@ -253,7 +253,7 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 	}
 
 	if(!part.empty()){
-			ERR_GENERAL << "Mismatched parenthesis:\n"<<val<< std::endl;;
+			ERR_GENERAL << "Mismatched parenthesis:\n"<<val<< std::endl;
 	}
 
 	return res;
@@ -376,7 +376,7 @@ std::vector<std::string> parenthetical_split(const std::string& val,
 		res.push_back(std::move(new_val));
 
 	if(!part.empty()){
-			ERR_GENERAL << "Mismatched parenthesis:\n"<<val<< std::endl;;
+			ERR_GENERAL << "Mismatched parenthesis:\n"<<val<< std::endl;
 	}
 
 	return res;

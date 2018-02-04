@@ -92,7 +92,7 @@ public:
 	/** Inherited from selectable_item */
 	unsigned get_value() const override
 	{
-		return state_num_;;
+		return state_num_;
 	}
 
 	/** Inherited from selectable_item */

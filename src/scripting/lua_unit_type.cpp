@@ -238,5 +238,5 @@ const unit_type* luaW_tounittype(lua_State* L, int idx)
 
 const unit_type& luaW_checkunittype(lua_State* L, int idx)
 {
-	return **static_cast<const unit_type**>(luaL_checkudata(L, idx, UnitType));;
+	return **static_cast<const unit_type**>(luaL_checkudata(L, idx, UnitType));
 }

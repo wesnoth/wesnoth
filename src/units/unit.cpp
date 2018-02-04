@@ -1965,7 +1965,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 			max_experience_ = utils::apply_modifier(max_experience_, increase, 1);
 		}
 	} else if(apply_to == upkeep_loyal::type()) {
-		upkeep_ = upkeep_loyal();;
+		upkeep_ = upkeep_loyal();
 	} else if(apply_to == "status") {
 		const std::string& add = effect["add"];
 		const std::string& remove = effect["remove"];

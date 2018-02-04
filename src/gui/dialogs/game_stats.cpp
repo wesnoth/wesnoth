@@ -201,7 +201,7 @@ void game_stats::pre_show(window& window)
 		column_settings["label"] = team.uses_fog() ? _("yes") : _("no");
 		row_data_settings.emplace("team_fog", column_settings);
 
-		column_settings["label"] = team.uses_shroud() ? _("yes") : _("no");;
+		column_settings["label"] = team.uses_shroud() ? _("yes") : _("no");
 		row_data_settings.emplace("team_shroud", column_settings);
 
 		settings_list.add_row(row_data_settings);
