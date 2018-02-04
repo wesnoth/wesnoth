@@ -14,9 +14,11 @@
 
 #include "scripting/lua_unit.hpp"
 
+#include "formatter.hpp"
 #include "game_board.hpp"
 #include "log.hpp"
 #include "map/location.hpp"             // for map_location
+#include "map/map.hpp"
 #include "resources.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_unit_attacks.hpp"
@@ -463,6 +465,12 @@ static int impl_unit_set(lua_State *L)
 
 			// TODO: could probably be relegated to a helper function.
 			if(src != dst) {
+				// If the dst isn't on the map, the unit will be clobbered. Guard against that.
+				if(!gb->map().on_board(dst)) {
+					std::string err_msg = formatter() << "destination hex not on map (excluding border): " << dst;
+					return luaL_argerror(L, 2, err_msg.c_str());
+				}
+
 				unit_map::iterator u = gb->units().end();
 				bool success = false;
 
