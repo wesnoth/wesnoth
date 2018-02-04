@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 23:32+0300\n"
+"POT-Creation-Date: 2018-02-04 12:40 UTC\n"
 "PO-Revision-Date: 2016-01-10 14:11+0100\n"
 "Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -319,11 +319,10 @@ msgstr ""
 msgid "Joystick: deadzone of the thruster"
 msgstr ""
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1072
+#: data/lua/wml/harm_unit.lua:126
 msgid "poisoned"
 msgstr "förgiftad"
 
@@ -342,17 +341,17 @@ msgid "Notes:"
 msgstr "Anmärkningar:"
 
 #. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:154 data/english.cfg:3
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:153 data/english.cfg:3
 msgid "Easy"
 msgstr "Lätt"
 
 #. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:155 data/english.cfg:4
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:154 data/english.cfg:4
 msgid "Medium"
 msgstr "Mellan"
 
 #. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:156 data/english.cfg:5
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:155 data/english.cfg:5
 msgid "Hard"
 msgstr "Svårt"
 
@@ -367,49 +366,49 @@ msgid "General Purpose Administration and Coordination"
 msgstr "Administratörer och koordinatörer"
 
 #. [about]
-#: data/core/about.cfg:277
+#: data/core/about.cfg:284
+msgid "Internationalization Managers"
+msgstr "Översättningsamordnare"
+
+#. [about]
+#: data/core/about.cfg:309
 msgid "Artwork and Graphics"
 msgstr "Grafik och illustrationer"
 
 #. [about]
-#: data/core/about.cfg:693
+#: data/core/about.cfg:725
 msgid "Music"
 msgstr "Musik"
 
 #. [about]
-#: data/core/about.cfg:730
+#: data/core/about.cfg:762
 msgid "Sound Effects"
 msgstr "Ljudeffekter"
 
 #. [about]
-#: data/core/about.cfg:754
+#: data/core/about.cfg:786
 msgid "Campaign Design"
 msgstr "Kampanjdesign"
 
 #. [about]
-#: data/core/about.cfg:837
+#: data/core/about.cfg:869
 msgid "Multiplayer Maps and Balancing"
 msgstr "Gruppspelskartor och gruppspelsbalansering"
 
 #. [about]
-#: data/core/about.cfg:882
+#: data/core/about.cfg:914
 msgid "Packagers"
 msgstr "Paketerare"
 
 #. [about]
-#: data/core/about.cfg:981
+#: data/core/about.cfg:1013
 msgid "Miscellaneous Contributors"
 msgstr "Diverse medarbetare"
 
 #. [about]
-#: data/core/about.cfg:1594
+#: data/core/about.cfg:1665
 msgid "Bots"
 msgstr "Bots"
-
-#. [about]
-#: data/core/about.cfg:1613
-msgid "Internationalization Managers"
-msgstr "Översättningsamordnare"
 
 #. [about]
 #: data/core/about_i18n.cfg:4
@@ -1497,17 +1496,17 @@ msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(bonus för tidig seger)</small>"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:57 data/lua/wml/objectives.lua:113
+#: data/core/macros/deprecated-utils.cfg:57 data/lua/wml/objectives.lua:120
 msgid "Early finish bonus."
 msgstr "Bonus för tidig seger."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:60 data/lua/wml/objectives.lua:115
+#: data/core/macros/deprecated-utils.cfg:60 data/lua/wml/objectives.lua:123
 msgid "No early finish bonus."
 msgstr "Ingen bonus för tidig seger."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:63 data/lua/wml/objectives.lua:123
+#: data/core/macros/deprecated-utils.cfg:63 data/lua/wml/objectives.lua:131
 msgid "No gold carried over to the next scenario."
 msgstr "Inget guld fördes över till nästa scenario."
 
@@ -2587,7 +2586,7 @@ msgstr ""
 "Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,"
 "Ziyad,Zubayr,Zuhayr"
 
-#. Generator for male khalifate human names
+#. Generator for male dunefolk human names
 #: data/core/macros/names.cfg:145
 msgid ""
 "\n"
@@ -2605,7 +2604,7 @@ msgid ""
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 msgstr ""
 
-#. Generator for female khalifate human names
+#. Generator for female dunefolk human names
 #: data/core/macros/names.cfg:156
 msgid ""
 "\n"
@@ -2998,13 +2997,19 @@ msgstr "Alternativt mål:"
 msgid "Bonus objective:"
 msgstr "Bonusmål:"
 
+#: data/core/macros/objective-utils.cfg:30
+#, fuzzy
+#| msgid "Bonus objective:"
+msgid "Optional objective:"
+msgstr "Bonusmål:"
+
 #. [note]: description=<b>
-#: data/core/macros/objective-utils.cfg:48
+#: data/core/macros/objective-utils.cfg:52
 msgid "This is the last scenario."
 msgstr "Detta är det sista scenariot."
 
 #. [note]: description=<b>
-#: data/core/macros/objective-utils.cfg:54
+#: data/core/macros/objective-utils.cfg:58
 msgid "No turn limit"
 msgstr ""
 
@@ -3280,9 +3285,8 @@ msgstr "Vit"
 msgid "Teal"
 msgstr "Turkos"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=gold
-#: data/core/team-colors.cfg:107 src/reports.cpp:1247
+#: data/core/team-colors.cfg:107
 msgid "Gold"
 msgstr "Guld"
 
@@ -3376,18 +3380,20 @@ msgstr "Kan ej gås på"
 msgid "Impassable"
 msgstr "Oframkomlig"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:420
+#: data/core/team-colors.cfg:224
 msgid "Fog"
 msgstr "Dimma"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:423
-#: src/game_initialization/lobby_data.cpp:426
+#: data/core/team-colors.cfg:230
 msgid "Shroud"
 msgstr "Slöja"
+
+#. [deprecated_message]
+#: data/core/units/dunefolk/deprecated.cfg:13
+msgid "This unit has been renamed to: {NEW_NAME}"
+msgstr ""
 
 #. [core]: id=default
 #: data/cores.cfg:5
@@ -3720,6 +3726,13 @@ msgstr ""
 msgid "Defaults"
 msgstr "Förval"
 
+#. [label]
+#: data/gui/macros/player_list_panel.cfg:28
+#, fuzzy
+#| msgid "Computer Player"
+msgid "Connected Players"
+msgstr "Datorspelare"
+
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
 msgid "Install Dependencies"
@@ -3789,65 +3802,57 @@ msgstr ""
 
 #. [lua]: wesnoth.deprecation_message
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/core.lua:175 data/lua/wml-tags.lua:893
+#: data/lua/core.lua:175 data/lua/wml-tags.lua:894
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 
 #. [lua]: wesnoth.deprecate_api
-#: data/lua/core.lua:188
+#: data/lua/core.lua:189
 msgid "(Note: You should use $replacement instead in new code)"
 msgstr ""
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1072
+#: data/lua/wml/harm_unit.lua:126
 msgid "female^poisoned"
 msgstr "förgiftad"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1079
+#: data/lua/wml/harm_unit.lua:128
 msgid "female^slowed"
 msgstr "nersaktad"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1079
+#: data/lua/wml/harm_unit.lua:128
 msgid "slowed"
 msgstr "nersaktad"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1085
+#: data/lua/wml/harm_unit.lua:129
 msgid "female^petrified"
 msgstr "förstenad"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1085
+#: data/lua/wml/harm_unit.lua:129
 msgid "petrified"
 msgstr "förstenad"
 
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129
+#: data/lua/wml/harm_unit.lua:130
 msgid "female^unhealable"
 msgstr "ej helningsbar"
 
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129
+#: data/lua/wml/harm_unit.lua:130
 msgid "unhealable"
 msgstr "ej helningsbar"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:390 src/scripting/game_lua_kernel.cpp:2752
-#: src/scripting/game_lua_kernel.cpp:2787
+#: data/lua/wml/message.lua:392
 msgid "input"
 msgstr "inmatning"
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:50 src/game_initialization/mp_game_utils.cpp:73
+#: data/lua/wml/objectives.lua:50
 msgid "Victory:"
 msgstr "Seger:"
 
@@ -3866,18 +3871,16 @@ msgstr[0] "(sista draget)"
 msgstr[1] "(sista draget)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:125
+#: data/lua/wml/objectives.lua:133
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% guld fördes över till nästa scenario."
 
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:174
-#: src/game_initialization/mp_game_utils.cpp:75
 msgid "Defeat enemy leader(s)"
 msgstr "Besegra fiendens ledare"
 
-#: data/scenario-test.cfg:1031 src/game_initialization/depcheck.cpp:476
+#: data/scenario-test.cfg:1031
 msgid "OK"
 msgstr "OK"
 
@@ -3886,12 +3889,12 @@ msgid "Cancel"
 msgstr "Avbryt"
 
 #. [language]
-#: data/scenario-test.cfg:4060
+#: data/scenario-test.cfg:4066
 msgid "very long"
 msgstr "väldigt långt"
 
 #. [language]
-#: data/scenario-test.cfg:4061
+#: data/scenario-test.cfg:4067
 msgid "electrical"
 msgstr "elektrisk"
 
@@ -3997,97 +4000,74 @@ msgstr "Det klassiska temat från före 1.12"
 
 #. [menu]: id=menu-main
 #: data/themes/classic.cfg:86 data/themes/cutscene.cfg:37
-#: data/themes/default.cfg:80 data/themes/unit_box.cfg:107
-#: data/themes/widescreen.cfg:89
+#: data/themes/default.cfg:80
 msgid "Menu"
 msgstr "Meny"
 
 #. [menu]: id=actions-menu
 #: data/themes/classic.cfg:97 data/themes/default.cfg:98
-#: data/themes/unit_box.cfg:118 data/themes/widescreen.cfg:100
 msgid "Actions"
 msgstr "Handlingar"
 
 #. [action]: id=button-endturn
-#. [menu]: id=button-endturn
 #: data/themes/classic.cfg:120 data/themes/cutscene.cfg:53
-#: data/themes/default.cfg:130 data/themes/unit_box.cfg:313
-#: data/themes/widescreen.cfg:115
+#: data/themes/default.cfg:130
 msgid "End Turn"
 msgstr "Avsluta draget"
 
 #. [action]: id=button-endturn
-#. [menu]: id=button-endturn
 #: data/themes/classic.cfg:121 data/themes/cutscene.cfg:54
-#: data/themes/default.cfg:131 data/themes/unit_box.cfg:314
-#: data/themes/widescreen.cfg:116
+#: data/themes/default.cfg:131
 msgid "End Scenario"
 msgstr "Avsluta scenariot"
 
 #. [label]: id=label-hp
-#. [label]: id=selected-label-hp
 #: data/themes/classic.cfg:195 data/themes/default.cfg:143
-#: data/themes/unit_box.cfg:372 data/themes/widescreen.cfg:168
-#: data/themes/widescreen.cfg:188
 msgid "HP"
 msgstr "HP"
 
 #. [label]: id=label-xp
-#. [label]: id=selected-label-xp
 #: data/themes/classic.cfg:204 data/themes/default.cfg:152
-#: data/themes/unit_box.cfg:382 data/themes/widescreen.cfg:177
-#: data/themes/widescreen.cfg:197
 msgid "XP"
 msgstr "EP"
 
 #. [label]: id=gold-icon
 #: data/themes/classic.cfg:214 data/themes/default.cfg:177
-#: data/themes/unit_box.cfg:401 data/themes/widescreen.cfg:207
 msgid "gold"
 msgstr "guld"
 
 #. [label]: id=villages-icon
 #: data/themes/classic.cfg:223 data/themes/default.cfg:186
-#: data/themes/unit_box.cfg:410 data/themes/widescreen.cfg:216
 msgid "villages"
 msgstr "byar"
 
 #. [label]: id=units-icon
 #: data/themes/classic.cfg:232 data/themes/default.cfg:195
-#: data/themes/unit_box.cfg:419 data/themes/widescreen.cfg:225
 msgid "units"
 msgstr "trupper"
 
 #. [label]: id=upkeep-icon
 #: data/themes/classic.cfg:241 data/themes/default.cfg:204
-#: data/themes/unit_box.cfg:428 data/themes/widescreen.cfg:234
 msgid "upkeep"
 msgstr "underhåll"
 
 #. [label]: id=income-icon
 #: data/themes/classic.cfg:250 data/themes/default.cfg:213
-#: data/themes/unit_box.cfg:437 data/themes/widescreen.cfg:243
 msgid "income"
 msgstr "inkomst"
 
 #. [unit_level]: id=unit-level
-#. [selected_unit_level]: id=selected-unit-level
-#: data/themes/classic.cfg:412 data/themes/widescreen.cfg:422
-#: data/themes/widescreen.cfg:548
+#: data/themes/classic.cfg:412
 msgid "statuspanel^level"
 msgstr "nivå"
 
 #. [unit_moves]: id=unit-moves
-#. [selected_unit_moves]: id=selected-unit-moves
-#: data/themes/classic.cfg:442 data/themes/widescreen.cfg:452
-#: data/themes/widescreen.cfg:578
+#: data/themes/classic.cfg:442
 msgid "statuspanel^moves"
 msgstr "förflyttas"
 
 #. [unit_defense]: id=unit-defense
-#. [selected_unit_defense]: id=selected-unit-defense
-#: data/themes/classic.cfg:451 data/themes/widescreen.cfg:461
-#: data/themes/widescreen.cfg:587
+#: data/themes/classic.cfg:451
 msgid "statuspanel^terrain def."
 msgstr "försvar"
 
@@ -4107,7 +4087,7 @@ msgid "Back to..."
 msgstr "Tillbaka till…"
 
 #. [label]: id=label-mp
-#: data/themes/default.cfg:160 data/themes/unit_box.cfg:391
+#: data/themes/default.cfg:160
 msgid "MP"
 msgstr "GS"
 
@@ -4120,26 +4100,6 @@ msgstr "förv"
 #: data/themes/default.cfg:394
 msgid "statuspanel^lvl"
 msgstr "nivå"
-
-#. [theme]: id=UnitBox
-#: data/themes/unit_box.cfg:11
-msgid "theme^UnitBox"
-msgstr "UnitBox"
-
-#. [theme]: id=UnitBox
-#: data/themes/unit_box.cfg:12
-msgid "An experimental work-in-progress replacement for the default theme"
-msgstr "En experimentell ersättning för förvalt tema som är under utarbetande"
-
-#. [theme]: id=Widescreen
-#: data/themes/widescreen.cfg:20
-msgid "theme^Widescreen"
-msgstr "Widescreen"
-
-#. [theme]: id=Widescreen
-#: data/themes/widescreen.cfg:21
-msgid "An experimental theme optimized for widescreen resolutions"
-msgstr "Ett experimentellt tema optimerat för widescreen-upplösning"
 
 #. [tip]
 #: data/tips.cfg:4
@@ -4206,10 +4166,10 @@ msgstr ""
 #: data/tips.cfg:49 data/tips.cfg:65 data/tips.cfg:69 data/tips.cfg:73
 #: data/tips.cfg:77 data/tips.cfg:81 data/tips.cfg:93 data/tips.cfg:97
 #: data/tips.cfg:101 data/tips.cfg:113 data/tips.cfg:121 data/tips.cfg:125
-#: data/tips.cfg:133 data/tips.cfg:157 data/tips.cfg:161 data/tips.cfg:165
-#: data/tips.cfg:173 data/tips.cfg:181 data/tips.cfg:189 data/tips.cfg:193
-#: data/tips.cfg:201 data/tips.cfg:205 data/tips.cfg:209 data/tips.cfg:213
-#: data/tips.cfg:221 data/tips.cfg:241 data/tips.cfg:249 data/tips.cfg:254
+#: data/tips.cfg:133 data/tips.cfg:161 data/tips.cfg:165 data/tips.cfg:169
+#: data/tips.cfg:177 data/tips.cfg:185 data/tips.cfg:193 data/tips.cfg:197
+#: data/tips.cfg:205 data/tips.cfg:209 data/tips.cfg:213 data/tips.cfg:217
+#: data/tips.cfg:225 data/tips.cfg:245 data/tips.cfg:253 data/tips.cfg:262
 msgid "<i>― The Wesnoth Tactical Guide</i>"
 msgstr "<i>― Wesnoths taktikguide</i>"
 
@@ -4285,7 +4245,7 @@ msgstr ""
 "rutor."
 
 #. [tip]
-#: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:225 data/tips.cfg:237
+#: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:229 data/tips.cfg:241
 msgid "<i>― High Lord Kalenz, 470YW</i>"
 msgstr "<i>― Storfurst Kalenz, 470 eW</i>"
 
@@ -4353,7 +4313,7 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
-#: data/tips.cfg:229
+#: data/tips.cfg:233
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
 msgstr "<i>― Handbok för Taktisk Analys, Volym I - Haldric II, 42 eW</i>"
 
@@ -4503,7 +4463,7 @@ msgstr ""
 "byar eller borgar."
 
 #. [tip]
-#: data/tips.cfg:105 data/tips.cfg:185
+#: data/tips.cfg:105 data/tips.cfg:189
 msgid "<i>― Sir Kaylan, 498YW</i>"
 msgstr "<i>― Sir Kaylan, 498 eW</i>"
 
@@ -4635,23 +4595,39 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:152
+msgid ""
+"For any player, controlling villages is often key to winning a scenario. You "
+"may use this knowledge to lure your opponents into a trap by leaving some "
+"villages unoccupied, but keep in mind that an enemy unit becomes much harder "
+"to dislodge from a village! Plan your movements accordingly."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:153
+#, fuzzy
+#| msgid "<i>― King Konrad, 536YW</i>"
+msgid "<i>― Kai Laudiss, 623YW</i>"
+msgstr "<i>― Kung Konrad, 536 eW</i>"
+
+#. [tip]
+#: data/tips.cfg:156
 msgid "Use lines of troops to screen your injured units while they recover."
 msgstr ""
 "Använd dig av trupplinjer för att skydda skadade trupper så att de kan "
 "återhämta sig."
 
 #. [tip]
-#: data/tips.cfg:153
+#: data/tips.cfg:157
 msgid "<i>― Princess Li’sar, 515YW</i>"
 msgstr "<i>― Prinsessan Li'sar, 515 eW</i>"
 
 #. [tip]
-#: data/tips.cfg:156
+#: data/tips.cfg:160
 msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
 msgstr "Läs listan över <b>snabbtangenter</b> i <b>Inställningar</b>."
 
 #. [tip]
-#: data/tips.cfg:160
+#: data/tips.cfg:164
 msgid ""
 "If you move a unit, but don’t attack or discover any additional information, "
 "you can undo your move by pressing <b>u</b>."
@@ -4660,7 +4636,7 @@ msgstr ""
 "förflyttningen så kan du ångra förflyttningen genom att trycka på <b>u</b>."
 
 #. [tip]
-#: data/tips.cfg:164
+#: data/tips.cfg:168
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
@@ -4669,7 +4645,7 @@ msgstr ""
 "muspekaren över truppen."
 
 #. [tip]
-#: data/tips.cfg:168
+#: data/tips.cfg:172
 msgid ""
 "Use healers to support your attacks — they will win you battles without "
 "needing to attack anything themselves."
@@ -4678,12 +4654,12 @@ msgstr ""
 "dina slag för dig utan att själva attackera."
 
 #. [tip]
-#: data/tips.cfg:169 data/tips.cfg:217
+#: data/tips.cfg:173 data/tips.cfg:221
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
 msgstr "<i>― Chantals Skrift, 516 eW</i>"
 
 #. [tip]
-#: data/tips.cfg:172
+#: data/tips.cfg:176
 msgid ""
 "The <i>Slow</i> attack makes enemy units move slower and halves the damage "
 "they do on all attacks until they end a turn."
@@ -4693,17 +4669,17 @@ msgstr ""
 "tills de avslutar sitt nästa drag."
 
 #. [tip]
-#: data/tips.cfg:176
+#: data/tips.cfg:180
 msgid "<i>Arcane</i> attacks are very powerful against undead."
 msgstr "<i>Ockulta</i> attacker är mycket kraftfulla mot vandöda trupper."
 
 #. [tip]
-#: data/tips.cfg:177
+#: data/tips.cfg:181
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
 msgstr "<i>― Den vise Dacyn, 626 eW</i>"
 
 #. [tip]
-#: data/tips.cfg:180
+#: data/tips.cfg:184
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
@@ -4712,7 +4688,7 @@ msgstr ""
 "kan det vända en strid."
 
 #. [tip]
-#: data/tips.cfg:184
+#: data/tips.cfg:188
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
@@ -4720,7 +4696,7 @@ msgstr ""
 "Stormande trupper används bäst mot fiender som de kan döda med ett enda slag."
 
 #. [tip]
-#: data/tips.cfg:188
+#: data/tips.cfg:192
 msgid ""
 "Instead of leveling up, high-level units gain an <i>After Maximum Level "
 "Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
@@ -4735,7 +4711,7 @@ msgstr ""
 "mer fördelaktigt att försöka få trupper på lägre nivåer att befordras."
 
 #. [tip]
-#: data/tips.cfg:192
+#: data/tips.cfg:196
 msgid ""
 "Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
 "mouse pointer over any button or icon to get a description or explanation of "
@@ -4745,7 +4721,7 @@ msgstr ""
 "dem med muspekaren för att få en förklaring eller beskrivning av begreppet."
 
 #. [tip]
-#: data/tips.cfg:196
+#: data/tips.cfg:200
 msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
 "veteran to damage a joint target heavily enough for the junior partner to "
@@ -4756,12 +4732,12 @@ msgstr ""
 "truppen kan dela ut dödsstöten."
 
 #. [tip]
-#: data/tips.cfg:197
+#: data/tips.cfg:201
 msgid "<i>― Queen Li’sar, 528YW</i>"
 msgstr "<i>― Drottning Li'sar, 528 eW</i>"
 
 #. [tip]
-#: data/tips.cfg:200
+#: data/tips.cfg:204
 msgid ""
 "You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
 "the <b>Delay Shroud Updates</b> option when you need to move units while "
@@ -4773,7 +4749,7 @@ msgstr ""
 "det nya whiteboard-planeringsverktyget."
 
 #. [tip]
-#: data/tips.cfg:204
+#: data/tips.cfg:208
 msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
@@ -4782,7 +4758,7 @@ msgstr ""
 "du genom att lägga beslag på den terrängen beröva fienden dessa fördelar."
 
 #. [tip]
-#: data/tips.cfg:208
+#: data/tips.cfg:212
 msgid ""
 "Few units have good defenses in water; a line of attackers along the edge of "
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
@@ -4793,7 +4769,7 @@ msgstr ""
 "skogs- respektive bergkanter på ett liknande sätt."
 
 #. [tip]
-#: data/tips.cfg:212
+#: data/tips.cfg:216
 msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
@@ -4803,7 +4779,7 @@ msgstr ""
 "genom att högerklicka."
 
 #. [tip]
-#: data/tips.cfg:216
+#: data/tips.cfg:220
 msgid ""
 "The <i>Slow</i> ability is extremely powerful because it has such wide-"
 "ranging effects. Enemy undead get half the normal benefit from their "
@@ -4821,7 +4797,7 @@ msgstr ""
 "lättare att hela dem."
 
 #. [tip]
-#: data/tips.cfg:220
+#: data/tips.cfg:224
 msgid ""
 "Try to operate units with a small number of powerful attacks—such as Dark "
 "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
@@ -4834,7 +4810,7 @@ msgstr ""
 "första attack missar, något som kommer att ske förr eller senare."
 
 #. [tip]
-#: data/tips.cfg:224
+#: data/tips.cfg:228
 msgid ""
 "Units with three or more attacks—especially magical attacks—are ideal for "
 "finishing off enemies with only a few hitpoints remaining. Be sure to use "
@@ -4848,7 +4824,7 @@ msgstr ""
 "en eller två attacker."
 
 #. [tip]
-#: data/tips.cfg:228
+#: data/tips.cfg:232
 msgid ""
 "Think twice before dismissing any unit from your recall list, no matter how "
 "little experience it has. Sometimes it’s worth paying a premium to know "
@@ -4859,7 +4835,7 @@ msgstr ""
 "karaktärsdrag en ny trupp har."
 
 #. [tip]
-#: data/tips.cfg:232
+#: data/tips.cfg:236
 msgid ""
 "When a tough unit is heavily injured, send it to heal in a village several "
 "turns’ movement away from the fighting. Then it can recover in peace (at 10 "
@@ -4870,12 +4846,12 @@ msgstr ""
 "(med 10 HP / drag) utan att lägga beslag på strategiska byar vid fronten."
 
 #. [tip]
-#: data/tips.cfg:233 data/tips.cfg:245
+#: data/tips.cfg:237 data/tips.cfg:249
 msgid "<i>― Lord Hamel of Knalga</i>"
 msgstr "<i>― Furst Hamel från Knalga</i>"
 
 #. [tip]
-#: data/tips.cfg:236
+#: data/tips.cfg:240
 msgid ""
 "Combining multiple special abilities can be deadly. While it may take some "
 "work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
@@ -4887,7 +4863,7 @@ msgstr ""
 "imponerande."
 
 #. [tip]
-#: data/tips.cfg:240
+#: data/tips.cfg:244
 msgid ""
 "While finishing early gives a gold bonus, and reduces the opportunities for "
 "enemies to kill your valuable troops, it also means you lose chances to earn "
@@ -4900,7 +4876,7 @@ msgstr ""
 "viktigast för tillfället när du har möjlighet att avsluta scenariot tidigare."
 
 #. [tip]
-#: data/tips.cfg:244
+#: data/tips.cfg:248
 msgid ""
 "If your forces have weak defenses everywhere on the map, occupy the areas "
 "where your enemies can only attack you by sharing the same disadvantages. "
@@ -4915,7 +4891,7 @@ msgstr ""
 "platser där terrängen ger dig övertaget."
 
 #. [tip]
-#: data/tips.cfg:248
+#: data/tips.cfg:252
 msgid ""
 "The recruitment cost of some units may exceed the usual recall expenditure "
 "of 20 gold. In a campaign, always check if recalling a unit of the same type "
@@ -4923,7 +4899,21 @@ msgid ""
 msgstr ""
 
 #. [tip]
-#: data/tips.cfg:253
+#: data/tips.cfg:256
+msgid ""
+"You must accept some losses in battle. It is not uncommon for beginners to "
+"lose sight of victory as they attempt to keep every unit alive."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:257
+#, fuzzy
+#| msgid "<i>― Queen Li’sar, 528YW</i>"
+msgid "<i>― Queen Asheviere, 503YW</i>"
+msgstr "<i>― Drottning Li'sar, 528 eW</i>"
+
+#. [tip]
+#: data/tips.cfg:261
 msgid ""
 "<i>Feral</i> units, such as Bats and wild animals, will avoid villages. Even "
 "if they occupy a village hex, they do not gain any defensive benefits from "
@@ -4933,2572 +4923,1951 @@ msgstr ""
 "byar. Även om de står på en by-ruta får de inga försvarsfördelar. De blir "
 "dock fortfarande helade."
 
-#: src/actions/attack.cpp:392 src/actions/attack.cpp:661
-#: src/actions/attack.cpp:1354
-msgid "An invalid attacker weapon got selected."
-msgstr "Ogiltigt attackvapen valt"
-
-#: src/actions/attack.cpp:399
-msgid "An invalid defender weapon got selected."
-msgstr "Ogiltigt försvarsvapen valt"
-
-#: src/actions/create.cpp:338
-msgid "You do not have a leader to recall with."
-msgstr "Du har ingen ledare att återkalla med."
-
-#: src/actions/create.cpp:342
-msgid "None of your leaders are able to recall that unit."
-msgstr "Ingen av dina ledare kan återkalla den truppen."
-
-#: src/actions/create.cpp:346
-msgid "You must have a leader on a keep who is able to recall that unit."
-msgstr "Du måste ha en ledare i ett kärntorn som kan återkalla trupper."
-
-#: src/actions/create.cpp:350
-msgid "There are no vacant castle tiles in which to recall the unit."
-msgstr "Det finns inga lediga borgrutor att placera återkallade trupper på."
-
-#: src/actions/create.cpp:360 src/actions/create.cpp:496
-msgid "An unrecognized error has occurred."
-msgstr "Ett okänt fel har uppstått."
-
-#: src/actions/create.cpp:474
-msgid "You do not have a leader to recruit with."
-msgstr "Du har ingen ledare att rekrytera med."
-
-#: src/actions/create.cpp:478
-msgid "None of your leaders are able to recruit that unit."
-msgstr "Ingen av dina ledare kan rekrytera den trupptypen."
-
-#: src/actions/create.cpp:482
-msgid "You must have a leader on a keep who is able to recruit the unit."
-msgstr "Du måste ha en ledare i ett kärntorn som kan rekrytera truppen."
-
-#: src/actions/create.cpp:486
-msgid "There are no vacant castle tiles in which to recruit the unit."
-msgstr "Det finns inga lediga borgrutor att placera nyrekryterade trupper på."
-
-#: src/actions/heal.cpp:275
-msgid "cured"
-msgstr "botad"
-
-#: src/actions/heal.cpp:275
-msgid "female^cured"
-msgstr "botad"
-
-#: src/actions/move.cpp:621
-msgid "Ambushed!"
-msgstr "Bakhåll!"
-
-#: src/actions/move.cpp:1138
-msgid "Failed teleport! Exit not empty"
-msgstr "Misslyckad teleportering! Destinationen upptagen"
-
-#: src/actions/move.cpp:1155
-msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
-msgid_plural "$friends friendly"
-msgstr[0] "1 allierad trupp"
-msgstr[1] "$friends allierade trupper"
-
-#: src/actions/move.cpp:1156
-msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
-msgid_plural "$enemies enemy"
-msgstr[0] "1 fiende"
-msgstr[1] "$enemies fiender"
-
-#: src/actions/move.cpp:1157
-msgid "Units sighted! ($friendphrase, $enemyphrase)"
-msgstr "Trupper inom synhåll! ($friendphrase, $enemyphrase)"
-
-#: src/actions/move.cpp:1161
-msgid "Enemy unit sighted!"
-msgid_plural "$enemies enemy units sighted!"
-msgstr[0] "Fiendetrupp inom synhåll!"
-msgstr[1] "$enemies fiendetrupper inom synhåll!"
-
-#: src/actions/move.cpp:1165
-msgid "Friendly unit sighted"
-msgid_plural "$friends friendly units sighted"
-msgstr[0] "Allierad trupp inom synhåll"
-msgstr[1] "$friends allierade trupper inom synhåll"
-
-#: src/actions/move.cpp:1181
-msgid "(press $hotkey to keep moving)"
-msgstr "(tryck $hotkey för att fortsätta)"
-
-#: src/addon/client.cpp:71
-msgid "Connecting to $server_address|..."
-msgstr "Ansluter till $server_address|..."
-
-#: src/addon/client.cpp:84
-msgid "Downloading list of add-ons..."
-msgstr "Hämtar lista över extramaterial…"
-
-#: src/addon/client.cpp:98
-msgid "Requesting distribution terms..."
-msgstr "Begär distributionsvillkor…"
-
-#: src/addon/client.cpp:144
-msgid "Sending add-on <i>$addon_title</i>..."
-msgstr "Hämtar extramaterial <i>$addon_title</i>..."
-
-#: src/addon/client.cpp:177
-msgid "Removing add-on <i>$addon_title</i> from the server..."
-msgstr "Tar bort extramaterialet <i>$addon_title</i> fråne servern…"
-
-#: src/addon/client.cpp:204
-msgid "Downloading add-on <i>$addon_title</i>..."
-msgstr "Hämtar extramaterial <i>$addon_title</i>..."
-
-#: src/addon/client.cpp:218
-msgid ""
-"The add-on <i>$addon_title</i> has an invalid file or directory name and "
-"cannot be installed."
-msgstr ""
-"Extramaterialet <i>$addon_title</i> har ett ogiltigt fil- eller katalognamn "
-"och kan inte installeras."
-
-#: src/addon/client.cpp:276
-msgid "The server responded with an error:"
-msgstr "Felmeddelande från servern: "
-
-#: src/addon/client.cpp:316
-msgid ""
-"The selected add-on has the following dependency, which is not currently "
-"installed or available from the server. Do you wish to continue?"
-msgid_plural ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed or available from the server. Do you wish to continue?"
-msgstr[0] ""
-"Det valda extramaterialet kräver det nedan angivna, vilket för närvarande "
-"inte finns installerat eller tillgängligt på servern. Vill du fortsätta?"
-msgstr[1] ""
-"Det valda extramaterialet kräver det nedan angivna, vilket för närvarande "
-"inte finns installerat eller tillgängligt på servern. Vill du fortsätta?"
-
-#: src/addon/client.cpp:325
-msgid "Broken Dependencies"
-msgstr "Brutna behövda moduler"
-
-#: src/addon/client.cpp:368
-msgid ""
-"The following dependency could not be installed. Do you still wish to "
-"continue?"
-msgid_plural ""
-"The following dependencies could not be installed. Do you still wish to "
-"continue?"
-msgstr[0] ""
-"Den följande behövda modulen kunde inte installeras. Vill du fortsätta ändå?"
-msgstr[1] ""
-"De följande behövda modulerna kunde inte installeras. Vill du fortsätta ändå?"
-
-#: src/addon/client.cpp:372
-msgid "Dependencies Installation Failed"
-msgstr "Installationen av behövda moduler misslyckades"
-
-#: src/addon/client.cpp:395
-msgid ""
-"The add-on '$addon|' is already installed and contains additional "
-"information that will be permanently lost if you continue:"
-msgstr ""
-"Extramaterialet '$addon|' är redan installerat och innehåller ytterligare "
-"information som kommer att gå förlorat om du fortsätter:"
-
-#: src/addon/client.cpp:399
-msgid "Publishing information file (.pbl)"
-msgstr "Publiceringsinformationsfil (.pbl)"
-
-#: src/addon/client.cpp:403
-msgid "Version control system (VCS) information"
-msgstr "Information om versionskontrollsystem (VCS)"
-
-#: src/addon/client.cpp:407
-msgid "Do you really wish to continue?"
-msgstr "Vill du verkligen fortsätta?"
-
-#: src/addon/client.cpp:409 src/addon/manager_ui.cpp:173
-#: src/game_initialization/multiplayer.cpp:197
-msgid "Confirm"
-msgstr "Bekräfta"
-
-#: src/addon/client.cpp:502
-msgid "Add-ons Manager"
-msgstr "Extramaterialshanterare"
-
-#: src/addon/info.cpp:159
-msgid "addon_type^Campaign"
-msgstr "Kampanj"
-
-#: src/addon/info.cpp:161
-msgid "addon_type^Scenario"
-msgstr "Scenario"
-
-#: src/addon/info.cpp:163
-msgid "addon_type^SP/MP Campaign"
-msgstr "Gruppspelskampanj"
-
-#: src/addon/info.cpp:165
-msgid "addon_type^MP era"
-msgstr "Gruppspelsera"
-
-#: src/addon/info.cpp:167
-msgid "addon_type^MP faction"
-msgstr "Gruppspelsfraktion"
-
-#: src/addon/info.cpp:169
-msgid "addon_type^MP map-pack"
-msgstr "Gruppspelskartsamling"
-
-#: src/addon/info.cpp:171
-msgid "addon_type^MP scenario"
-msgstr "Gruppspelsscenario"
-
-#: src/addon/info.cpp:173
-msgid "addon_type^MP campaign"
-msgstr "Gruppspelskampanj"
-
-#: src/addon/info.cpp:175
-msgid "addon_type^MP modification"
-msgstr "Gruppspelsjustering"
-
-#: src/addon/info.cpp:177
-msgid "addon_type^Core"
-msgstr "Kärna"
-
-#: src/addon/info.cpp:179
-msgid "addon_type^Resources"
-msgstr "Resurser"
-
-#: src/addon/info.cpp:181
-msgid "addon_type^Other"
-msgstr "Övrigt"
-
-#: src/addon/info.cpp:183
-msgid "addon_type^(unknown)"
-msgstr "(okänd)"
-
-#: src/addon/info.cpp:223
-msgid "unit_byte^B"
-msgstr "unit_byte^B"
-
-#: src/addon/manager_ui.cpp:82 src/addon/manager_ui.cpp:292
-msgid "Network communication error."
-msgstr "Nätverksfel."
-
-#: src/addon/manager_ui.cpp:85 src/addon/manager_ui.cpp:295
-msgid "Remote host disconnected."
-msgstr "Anslutningen avbruten."
-
-#: src/addon/manager_ui.cpp:88 src/addon/manager_ui.cpp:298
-msgid ""
-"A problem occurred when trying to create the files necessary to install this "
-"add-on."
-msgstr ""
-"Problem uppstod i skapandet av de filer som behövs för att installera detta "
-"extramaterial."
-
-#: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:307
-msgid ""
-"A local file with add-on publishing information could not be read.\n"
-"\n"
-"File: $path\n"
-"Error message: $msg"
-msgstr ""
-"En lokal fil med publikationsinformation om extratillägg kunde inte läsas.\n"
-"\n"
-"Fil: $path\n"
-"Felmeddelande: $msg"
-
-#: src/addon/manager_ui.cpp:103 src/addon/manager_ui.cpp:313
-msgid "The add-ons server address specified is not valid."
-msgstr "Den angivna adressen till extramaterialsservern är inte giltig."
-
-#: src/addon/manager_ui.cpp:117
-msgid "You have no add-ons installed."
-msgstr "Du har inget extramaterial installerat."
-
-#: src/addon/manager_ui.cpp:168
-msgid "Are you sure you want to remove the following installed add-on?"
-msgid_plural "Are you sure you want to remove the following installed add-ons?"
-msgstr[0] ""
-"Är du säker på att du vill ta bort följande installerat extramaterial?"
-msgstr[1] ""
-"Är du säker på att du vill ta bort följande installerat extramaterial?"
-
-#: src/addon/manager_ui.cpp:194
-msgid ""
-"The following add-on appears to have publishing or version control "
-"information stored locally, and will not be removed:"
-msgid_plural ""
-"The following add-ons appear to have publishing or version control "
-"information stored locally, and will not be removed:"
-msgstr[0] ""
-"Följande extramaterial verkar ha information om publikation eller "
-"versionskontroll lagrat lokalt, och kommer inte att tas bort:"
-msgstr[1] ""
-"Följande extramaterial verkar ha information om publikation eller "
-"versionskontroll lagrat lokalt, och kommer inte att tas bort:"
-
-#: src/addon/manager_ui.cpp:204
-msgid "The following add-on could not be deleted properly:"
-msgid_plural "The following add-ons could not be deleted properly:"
-msgstr[0] "Följande extramaterial kunde inte tas bort:"
-msgstr[1] "Följande extramaterial kunde inte tas bort:"
-
-#: src/addon/manager_ui.cpp:211
-msgid "Add-on Deleted"
-msgid_plural "Add-ons Deleted"
-msgstr[0] "Extramaterial har raderats"
-msgstr[1] "Extramaterialet har raderats"
-
-#: src/addon/manager_ui.cpp:213
-msgid "The following add-on was successfully deleted:"
-msgid_plural "The following add-ons were successfully deleted:"
-msgstr[0] "Följande extramaterial har tagits bort:"
-msgstr[1] "Följande extramaterial har tagits bort:"
-
-#: src/addon/manager_ui.cpp:269
-msgid "An error occurred while downloading the add-ons list from the server."
-msgstr ""
-"Ett problem uppstod när listan över extramaterial skulle hämtas från servern."
-
-#: src/addon/manager_ui.cpp:283
-msgid "Could not find an add-on matching id $addon_id on the add-on server."
-msgstr ""
-"Kunde inte hitta något extramaterial med id  $addon_id på "
-"extramaterialsservern."
-
-#: src/chat_command_handler.cpp:112
-msgid "Added to ignore list: $nick"
-msgstr "Lagd i ignoreralistan: $nick"
-
-#: src/chat_command_handler.cpp:112
-msgid "ignores list"
-msgstr "ignoreralistan"
-
-#: src/chat_command_handler.cpp:116 src/chat_command_handler.cpp:135
-msgid "Invalid username: $nick"
-msgstr "Ogiltigt användarnamn: $nick"
-
-#: src/chat_command_handler.cpp:131
-msgid "Added to friends list: $nick"
-msgstr "Lagd i vänlistan: $nick"
-
-#: src/chat_command_handler.cpp:131
-msgid "friends list"
-msgstr "vänlistan"
-
-#: src/chat_command_handler.cpp:147
-msgid "Removed from list: $nick"
-msgstr "Borttagen från listan: $nick"
-
-#: src/chat_command_handler.cpp:147
-msgid "friends and ignores list"
-msgstr "vän- och ignoreralistan"
-
-#: src/chat_command_handler.cpp:159
-msgid "version"
-msgstr "version"
-
-#: src/chat_command_handler.cpp:175
-msgid "registering with password *** and no email address"
-msgstr "registrerar med lösenord *** och ingen epostadress"
-
-#: src/chat_command_handler.cpp:180
-msgid "registering with password *** and email address $email"
-msgstr "registrerar med lösenord *** och epostadress $email"
-
-#: src/chat_command_handler.cpp:183 src/chat_command_handler.cpp:194
-#: src/chat_command_handler.cpp:212 src/chat_command_handler.cpp:226
-msgid "nick registration"
-msgstr "registrering av användarnamn"
-
-#: src/chat_command_handler.cpp:194
-msgid "dropping your username"
-msgstr "säger upp användarnamn"
-
-#: src/chat_command_handler.cpp:212
-msgid "setting $var to $value"
-msgstr "sätter $var till $value"
-
-#: src/chat_command_handler.cpp:226
-msgid "requesting information for user $nick"
-msgstr "begär information om användare $nick"
-
-#: src/chat_command_handler.hpp:66
-msgid "(A) — admin command"
-msgstr "(A) - admin kommando"
-
-#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1128
-msgid "(admin only)"
-msgstr "(enbart admin)"
-
-#: src/chat_command_handler.hpp:88
-msgid ""
-"Send a query to the server. Without arguments the server should tell you the "
-"available commands."
-msgstr ""
-"Skicka en fråga till servern. Utan argument ska servern lista alla "
-"tillgängliga kommandon."
-
-#: src/chat_command_handler.hpp:92
-msgid ""
-"Ban and kick a player or observer. If he is not in the game but on the "
-"server he will only be banned."
-msgstr ""
-"Banlys eller kasta ut en spelare eller observatör. Om denne inte är i spelet "
-"utan bara på servern blir denne bara banlyst."
-
-#: src/chat_command_handler.hpp:93 src/chat_command_handler.hpp:96
-#: src/chat_command_handler.hpp:98 src/chat_command_handler.hpp:100
-#: src/chat_command_handler.hpp:102 src/chat_command_handler.hpp:129
-#: src/chat_command_handler.hpp:131 src/chat_command_handler.hpp:133
-#: src/chat_command_handler.hpp:144
-msgid "<nickname>"
-msgstr "<användarnamn>"
-
-#: src/chat_command_handler.hpp:95
-msgid "Unban a user. He does not have to be in the game but on the server."
-msgstr ""
-"Ta bort spärren från en användare. Han/hon behöver inte vara med i spelet, "
-"men måste vara på på servern."
-
-#: src/chat_command_handler.hpp:98
-msgid "Kick a player or observer."
-msgstr "Sparka en spelare eller en observatör."
-
-#: src/chat_command_handler.hpp:100
-msgid "Mute an observer. Without an argument displays the mute status."
-msgstr ""
-"Tysta ner en åskådare. Utan växlar visar kommandot statusen för de tysta."
-
-#: src/chat_command_handler.hpp:102
-msgid "Unmute an observer. Without an argument unmutes everyone."
-msgstr ""
-"Låt en åskådare prata igen. Utan växlar låter kommandot alla tala igen."
-
-#: src/chat_command_handler.hpp:104
-msgid "Mute/Unmute all observers. (toggles)"
-msgstr "Tysta ner alla observatörer. (på/av)"
-
-#: src/chat_command_handler.hpp:114
-msgid ""
-"Report abuse, rule violations, etc. to the server moderators. Make sure to "
-"mention relevant nicknames, etc."
-msgstr ""
-"Anmäl påhopp, regelbrott osv till serverns moderatorer. Var noga med att "
-"nämna relevanta användarnamn mm."
-
-#: src/chat_command_handler.hpp:118
-msgid "<message>"
-msgstr "<meddelande>"
-
-#: src/chat_command_handler.hpp:118
-msgid "Send an emotion or personal action in chat."
-msgstr "Skicka en humörsymbol eller en personlig handling."
-
-#: src/chat_command_handler.hpp:121
-msgid ""
-"Sends a private message. You cannot send private messages to players in a "
-"running game you observe or play in."
-msgstr ""
-"Skickar ett privat meddelande. Du kan inte skicka privata meddelanden till "
-"spelare i ett spel som du deltar i eller är åskådare till."
-
-#: src/chat_command_handler.hpp:123
-msgid "<nickname> <message>"
-msgstr "<användarnamn> <meddelande>"
-
-#: src/chat_command_handler.hpp:127
-msgid "<level> <domain>"
-msgstr "<nivå> <domän>"
-
-#: src/chat_command_handler.hpp:127
-msgid "Change the log level of a log domain."
-msgstr "Ändra loggnivån för en loggdomän."
-
-#: src/chat_command_handler.hpp:129
-msgid "Add a nickname to your ignores list."
-msgstr "Lägg till ett användarnamn till din ignoreralista."
-
-#: src/chat_command_handler.hpp:131
-msgid "Add a nickname to your friends list."
-msgstr "Lägg till ett användarnamn till din lista över vänner."
-
-#: src/chat_command_handler.hpp:133
-msgid "Remove a nickname from your ignores or friends list."
-msgstr "Ta bort ett användarnamn från listan över vänner eller ignorerade."
-
-#: src/chat_command_handler.hpp:135
-msgid "Display version information."
-msgstr "Visa versionsinformation."
-
-#: src/chat_command_handler.hpp:137
-msgid "<password> <email (optional)>"
-msgstr "<lösenord> <epost (valfritt)>"
-
-#: src/chat_command_handler.hpp:137
+#~ msgid "theme^UnitBox"
+#~ msgstr "UnitBox"
+
+#~ msgid "An experimental work-in-progress replacement for the default theme"
+#~ msgstr ""
+#~ "En experimentell ersättning för förvalt tema som är under utarbetande"
+
+#~ msgid "theme^Widescreen"
+#~ msgstr "Widescreen"
+
+#~ msgid "An experimental theme optimized for widescreen resolutions"
+#~ msgstr "Ett experimentellt tema optimerat för widescreen-upplösning"
+
+#~ msgid "An invalid attacker weapon got selected."
+#~ msgstr "Ogiltigt attackvapen valt"
+
+#~ msgid "An invalid defender weapon got selected."
+#~ msgstr "Ogiltigt försvarsvapen valt"
+
+#~ msgid "You do not have a leader to recall with."
+#~ msgstr "Du har ingen ledare att återkalla med."
+
+#~ msgid "None of your leaders are able to recall that unit."
+#~ msgstr "Ingen av dina ledare kan återkalla den truppen."
+
+#~ msgid "You must have a leader on a keep who is able to recall that unit."
+#~ msgstr "Du måste ha en ledare i ett kärntorn som kan återkalla trupper."
+
+#~ msgid "There are no vacant castle tiles in which to recall the unit."
+#~ msgstr "Det finns inga lediga borgrutor att placera återkallade trupper på."
+
+#~ msgid "An unrecognized error has occurred."
+#~ msgstr "Ett okänt fel har uppstått."
+
+#~ msgid "You do not have a leader to recruit with."
+#~ msgstr "Du har ingen ledare att rekrytera med."
+
+#~ msgid "None of your leaders are able to recruit that unit."
+#~ msgstr "Ingen av dina ledare kan rekrytera den trupptypen."
+
+#~ msgid "You must have a leader on a keep who is able to recruit the unit."
+#~ msgstr "Du måste ha en ledare i ett kärntorn som kan rekrytera truppen."
+
+#~ msgid "There are no vacant castle tiles in which to recruit the unit."
+#~ msgstr ""
+#~ "Det finns inga lediga borgrutor att placera nyrekryterade trupper på."
+
+#~ msgid "cured"
+#~ msgstr "botad"
+
+#~ msgid "female^cured"
+#~ msgstr "botad"
+
+#~ msgid "Ambushed!"
+#~ msgstr "Bakhåll!"
+
+#~ msgid "Failed teleport! Exit not empty"
+#~ msgstr "Misslyckad teleportering! Destinationen upptagen"
+
+#~ msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
+#~ msgid_plural "$friends friendly"
+#~ msgstr[0] "1 allierad trupp"
+#~ msgstr[1] "$friends allierade trupper"
+
+#~ msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
+#~ msgid_plural "$enemies enemy"
+#~ msgstr[0] "1 fiende"
+#~ msgstr[1] "$enemies fiender"
+
+#~ msgid "Units sighted! ($friendphrase, $enemyphrase)"
+#~ msgstr "Trupper inom synhåll! ($friendphrase, $enemyphrase)"
+
+#~ msgid "Enemy unit sighted!"
+#~ msgid_plural "$enemies enemy units sighted!"
+#~ msgstr[0] "Fiendetrupp inom synhåll!"
+#~ msgstr[1] "$enemies fiendetrupper inom synhåll!"
+
+#~ msgid "Friendly unit sighted"
+#~ msgid_plural "$friends friendly units sighted"
+#~ msgstr[0] "Allierad trupp inom synhåll"
+#~ msgstr[1] "$friends allierade trupper inom synhåll"
+
+#~ msgid "(press $hotkey to keep moving)"
+#~ msgstr "(tryck $hotkey för att fortsätta)"
+
+#~ msgid "Connecting to $server_address|..."
+#~ msgstr "Ansluter till $server_address|..."
+
+#~ msgid "Downloading list of add-ons..."
+#~ msgstr "Hämtar lista över extramaterial…"
+
+#~ msgid "Requesting distribution terms..."
+#~ msgstr "Begär distributionsvillkor…"
+
+#~ msgid "Sending add-on <i>$addon_title</i>..."
+#~ msgstr "Hämtar extramaterial <i>$addon_title</i>..."
+
+#~ msgid "Removing add-on <i>$addon_title</i> from the server..."
+#~ msgstr "Tar bort extramaterialet <i>$addon_title</i> fråne servern…"
+
+#~ msgid "Downloading add-on <i>$addon_title</i>..."
+#~ msgstr "Hämtar extramaterial <i>$addon_title</i>..."
+
+#~ msgid ""
+#~ "The add-on <i>$addon_title</i> has an invalid file or directory name and "
+#~ "cannot be installed."
+#~ msgstr ""
+#~ "Extramaterialet <i>$addon_title</i> har ett ogiltigt fil- eller "
+#~ "katalognamn och kan inte installeras."
+
+#~ msgid "The server responded with an error:"
+#~ msgstr "Felmeddelande från servern: "
+
+#~ msgid ""
+#~ "The selected add-on has the following dependency, which is not currently "
+#~ "installed or available from the server. Do you wish to continue?"
+#~ msgid_plural ""
+#~ "The selected add-on has the following dependencies, which are not "
+#~ "currently installed or available from the server. Do you wish to continue?"
+#~ msgstr[0] ""
+#~ "Det valda extramaterialet kräver det nedan angivna, vilket för närvarande "
+#~ "inte finns installerat eller tillgängligt på servern. Vill du fortsätta?"
+#~ msgstr[1] ""
+#~ "Det valda extramaterialet kräver det nedan angivna, vilket för närvarande "
+#~ "inte finns installerat eller tillgängligt på servern. Vill du fortsätta?"
+
+#~ msgid "Broken Dependencies"
+#~ msgstr "Brutna behövda moduler"
+
+#~ msgid ""
+#~ "The following dependency could not be installed. Do you still wish to "
+#~ "continue?"
+#~ msgid_plural ""
+#~ "The following dependencies could not be installed. Do you still wish to "
+#~ "continue?"
+#~ msgstr[0] ""
+#~ "Den följande behövda modulen kunde inte installeras. Vill du fortsätta "
+#~ "ändå?"
+#~ msgstr[1] ""
+#~ "De följande behövda modulerna kunde inte installeras. Vill du fortsätta "
+#~ "ändå?"
+
+#~ msgid "Dependencies Installation Failed"
+#~ msgstr "Installationen av behövda moduler misslyckades"
+
+#~ msgid ""
+#~ "The add-on '$addon|' is already installed and contains additional "
+#~ "information that will be permanently lost if you continue:"
+#~ msgstr ""
+#~ "Extramaterialet '$addon|' är redan installerat och innehåller ytterligare "
+#~ "information som kommer att gå förlorat om du fortsätter:"
+
+#~ msgid "Publishing information file (.pbl)"
+#~ msgstr "Publiceringsinformationsfil (.pbl)"
+
+#~ msgid "Version control system (VCS) information"
+#~ msgstr "Information om versionskontrollsystem (VCS)"
+
+#~ msgid "Do you really wish to continue?"
+#~ msgstr "Vill du verkligen fortsätta?"
+
+#~ msgid "Confirm"
+#~ msgstr "Bekräfta"
+
+#~ msgid "Add-ons Manager"
+#~ msgstr "Extramaterialshanterare"
+
+#~ msgid "addon_type^Campaign"
+#~ msgstr "Kampanj"
+
+#~ msgid "addon_type^Scenario"
+#~ msgstr "Scenario"
+
+#~ msgid "addon_type^SP/MP Campaign"
+#~ msgstr "Gruppspelskampanj"
+
+#~ msgid "addon_type^MP era"
+#~ msgstr "Gruppspelsera"
+
+#~ msgid "addon_type^MP faction"
+#~ msgstr "Gruppspelsfraktion"
+
+#~ msgid "addon_type^MP map-pack"
+#~ msgstr "Gruppspelskartsamling"
+
+#~ msgid "addon_type^MP scenario"
+#~ msgstr "Gruppspelsscenario"
+
+#~ msgid "addon_type^MP campaign"
+#~ msgstr "Gruppspelskampanj"
+
+#~ msgid "addon_type^MP modification"
+#~ msgstr "Gruppspelsjustering"
+
+#~ msgid "addon_type^Core"
+#~ msgstr "Kärna"
+
+#~ msgid "addon_type^Resources"
+#~ msgstr "Resurser"
+
+#~ msgid "addon_type^Other"
+#~ msgstr "Övrigt"
+
+#~ msgid "addon_type^(unknown)"
+#~ msgstr "(okänd)"
+
+#~ msgid "unit_byte^B"
+#~ msgstr "unit_byte^B"
+
+#~ msgid "Network communication error."
+#~ msgstr "Nätverksfel."
+
+#~ msgid "Remote host disconnected."
+#~ msgstr "Anslutningen avbruten."
+
+#~ msgid ""
+#~ "A problem occurred when trying to create the files necessary to install "
+#~ "this add-on."
+#~ msgstr ""
+#~ "Problem uppstod i skapandet av de filer som behövs för att installera "
+#~ "detta extramaterial."
+
+#~ msgid ""
+#~ "A local file with add-on publishing information could not be read.\n"
+#~ "\n"
+#~ "File: $path\n"
+#~ "Error message: $msg"
+#~ msgstr ""
+#~ "En lokal fil med publikationsinformation om extratillägg kunde inte "
+#~ "läsas.\n"
+#~ "\n"
+#~ "Fil: $path\n"
+#~ "Felmeddelande: $msg"
+
+#~ msgid "The add-ons server address specified is not valid."
+#~ msgstr "Den angivna adressen till extramaterialsservern är inte giltig."
+
+#~ msgid "You have no add-ons installed."
+#~ msgstr "Du har inget extramaterial installerat."
+
+#~ msgid "Are you sure you want to remove the following installed add-on?"
+#~ msgid_plural ""
+#~ "Are you sure you want to remove the following installed add-ons?"
+#~ msgstr[0] ""
+#~ "Är du säker på att du vill ta bort följande installerat extramaterial?"
+#~ msgstr[1] ""
+#~ "Är du säker på att du vill ta bort följande installerat extramaterial?"
+
+#~ msgid ""
+#~ "The following add-on appears to have publishing or version control "
+#~ "information stored locally, and will not be removed:"
+#~ msgid_plural ""
+#~ "The following add-ons appear to have publishing or version control "
+#~ "information stored locally, and will not be removed:"
+#~ msgstr[0] ""
+#~ "Följande extramaterial verkar ha information om publikation eller "
+#~ "versionskontroll lagrat lokalt, och kommer inte att tas bort:"
+#~ msgstr[1] ""
+#~ "Följande extramaterial verkar ha information om publikation eller "
+#~ "versionskontroll lagrat lokalt, och kommer inte att tas bort:"
+
+#~ msgid "The following add-on could not be deleted properly:"
+#~ msgid_plural "The following add-ons could not be deleted properly:"
+#~ msgstr[0] "Följande extramaterial kunde inte tas bort:"
+#~ msgstr[1] "Följande extramaterial kunde inte tas bort:"
+
+#~ msgid "Add-on Deleted"
+#~ msgid_plural "Add-ons Deleted"
+#~ msgstr[0] "Extramaterial har raderats"
+#~ msgstr[1] "Extramaterialet har raderats"
+
+#~ msgid "The following add-on was successfully deleted:"
+#~ msgid_plural "The following add-ons were successfully deleted:"
+#~ msgstr[0] "Följande extramaterial har tagits bort:"
+#~ msgstr[1] "Följande extramaterial har tagits bort:"
+
+#~ msgid ""
+#~ "An error occurred while downloading the add-ons list from the server."
+#~ msgstr ""
+#~ "Ett problem uppstod när listan över extramaterial skulle hämtas från "
+#~ "servern."
+
+#~ msgid "Could not find an add-on matching id $addon_id on the add-on server."
+#~ msgstr ""
+#~ "Kunde inte hitta något extramaterial med id  $addon_id på "
+#~ "extramaterialsservern."
+
+#~ msgid "Added to ignore list: $nick"
+#~ msgstr "Lagd i ignoreralistan: $nick"
+
+#~ msgid "ignores list"
+#~ msgstr "ignoreralistan"
+
+#~ msgid "Invalid username: $nick"
+#~ msgstr "Ogiltigt användarnamn: $nick"
+
+#~ msgid "Added to friends list: $nick"
+#~ msgstr "Lagd i vänlistan: $nick"
+
+#~ msgid "friends list"
+#~ msgstr "vänlistan"
+
+#~ msgid "Removed from list: $nick"
+#~ msgstr "Borttagen från listan: $nick"
+
+#~ msgid "friends and ignores list"
+#~ msgstr "vän- och ignoreralistan"
+
+#~ msgid "version"
+#~ msgstr "version"
+
+#~ msgid "registering with password *** and no email address"
+#~ msgstr "registrerar med lösenord *** och ingen epostadress"
+
+#~ msgid "registering with password *** and email address $email"
+#~ msgstr "registrerar med lösenord *** och epostadress $email"
+
+#~ msgid "nick registration"
+#~ msgstr "registrering av användarnamn"
+
+#~ msgid "dropping your username"
+#~ msgstr "säger upp användarnamn"
+
+#~ msgid "setting $var to $value"
+#~ msgstr "sätter $var till $value"
+
+#~ msgid "requesting information for user $nick"
+#~ msgstr "begär information om användare $nick"
+
+#~ msgid "(A) — admin command"
+#~ msgstr "(A) - admin kommando"
+
+#~ msgid "(admin only)"
+#~ msgstr "(enbart admin)"
+
+#~ msgid ""
+#~ "Send a query to the server. Without arguments the server should tell you "
+#~ "the available commands."
+#~ msgstr ""
+#~ "Skicka en fråga till servern. Utan argument ska servern lista alla "
+#~ "tillgängliga kommandon."
+
+#~ msgid ""
+#~ "Ban and kick a player or observer. If he is not in the game but on the "
+#~ "server he will only be banned."
+#~ msgstr ""
+#~ "Banlys eller kasta ut en spelare eller observatör. Om denne inte är i "
+#~ "spelet utan bara på servern blir denne bara banlyst."
+
+#~ msgid "<nickname>"
+#~ msgstr "<användarnamn>"
+
+#~ msgid "Unban a user. He does not have to be in the game but on the server."
+#~ msgstr ""
+#~ "Ta bort spärren från en användare. Han/hon behöver inte vara med i "
+#~ "spelet, men måste vara på på servern."
+
+#~ msgid "Kick a player or observer."
+#~ msgstr "Sparka en spelare eller en observatör."
+
+#~ msgid "Mute an observer. Without an argument displays the mute status."
+#~ msgstr ""
+#~ "Tysta ner en åskådare. Utan växlar visar kommandot statusen för de tysta."
+
+#~ msgid "Unmute an observer. Without an argument unmutes everyone."
+#~ msgstr ""
+#~ "Låt en åskådare prata igen. Utan växlar låter kommandot alla tala igen."
+
+#~ msgid "Mute/Unmute all observers. (toggles)"
+#~ msgstr "Tysta ner alla observatörer. (på/av)"
+
+#~ msgid ""
+#~ "Report abuse, rule violations, etc. to the server moderators. Make sure "
+#~ "to mention relevant nicknames, etc."
+#~ msgstr ""
+#~ "Anmäl påhopp, regelbrott osv till serverns moderatorer. Var noga med att "
+#~ "nämna relevanta användarnamn mm."
+
+#~ msgid "<message>"
+#~ msgstr "<meddelande>"
+
+#~ msgid "Send an emotion or personal action in chat."
+#~ msgstr "Skicka en humörsymbol eller en personlig handling."
+
+#~ msgid ""
+#~ "Sends a private message. You cannot send private messages to players in a "
+#~ "running game you observe or play in."
+#~ msgstr ""
+#~ "Skickar ett privat meddelande. Du kan inte skicka privata meddelanden "
+#~ "till spelare i ett spel som du deltar i eller är åskådare till."
+
+#~ msgid "<nickname> <message>"
+#~ msgstr "<användarnamn> <meddelande>"
+
+#~ msgid "<level> <domain>"
+#~ msgstr "<nivå> <domän>"
+
+#~ msgid "Change the log level of a log domain."
+#~ msgstr "Ändra loggnivån för en loggdomän."
+
+#~ msgid "Add a nickname to your ignores list."
+#~ msgstr "Lägg till ett användarnamn till din ignoreralista."
+
+#~ msgid "Add a nickname to your friends list."
+#~ msgstr "Lägg till ett användarnamn till din lista över vänner."
+
+#~ msgid "Remove a nickname from your ignores or friends list."
+#~ msgstr "Ta bort ett användarnamn från listan över vänner eller ignorerade."
+
+#~ msgid "Display version information."
+#~ msgstr "Visa versionsinformation."
+
+#~ msgid "<password> <email (optional)>"
+#~ msgstr "<lösenord> <epost (valfritt)>"
+
 #, fuzzy
-#| msgid "Drop your nickname."
-msgid "Register your nickname"
-msgstr "Slopa ditt användarnamn."
+#~| msgid "Drop your nickname."
+#~ msgid "Register your nickname"
+#~ msgstr "Slopa ditt användarnamn."
 
-#: src/chat_command_handler.hpp:139
-msgid "Drop your nickname."
-msgstr "Slopa ditt användarnamn."
+#~ msgid "Drop your nickname."
+#~ msgstr "Slopa ditt användarnamn."
 
-#: src/chat_command_handler.hpp:141
-msgid "Update details for your nickname. For possible details see '/details'."
-msgstr ""
-"Uppdatera detaljer för ditt användarnamn. För möjliga detaljer se ’/details’."
+#~ msgid ""
+#~ "Update details for your nickname. For possible details see '/details'."
+#~ msgstr ""
+#~ "Uppdatera detaljer för ditt användarnamn. För möjliga detaljer se ’/"
+#~ "details’."
 
-#: src/chat_command_handler.hpp:142
-msgid "<detail> <value>"
-msgstr "<detalj> <värde>"
+#~ msgid "<detail> <value>"
+#~ msgstr "<detalj> <värde>"
 
-#: src/chat_command_handler.hpp:144
-msgid "Request information about a nickname."
-msgstr "Begär information om ett användarnamn."
+#~ msgid "Request information about a nickname."
+#~ msgstr "Begär information om ett användarnamn."
 
-#: src/chat_command_handler.hpp:146
-msgid "Request a list of details you can set for your registered nickname."
-msgstr ""
-"Begär en lista med detaljer du kan ange för ditt registrerade användarnamn."
+#~ msgid "Request a list of details you can set for your registered nickname."
+#~ msgstr ""
+#~ "Begär en lista med detaljer du kan ange för ditt registrerade "
+#~ "användarnamn."
 
-#: src/chat_command_handler.hpp:148 src/chat_command_handler.hpp:151
-#: src/chat_command_handler.hpp:153
-msgid "<room>"
-msgstr "<rum>"
+#~ msgid "<room>"
+#~ msgstr "<rum>"
 
-#: src/chat_command_handler.hpp:148
-msgid "Join a room."
-msgstr "Anslut till rum."
+#~ msgid "Join a room."
+#~ msgstr "Anslut till rum."
 
-#: src/chat_command_handler.hpp:151
-msgid "Part a room."
-msgstr "Lämna ett rum."
+#~ msgid "Part a room."
+#~ msgstr "Lämna ett rum."
 
-#: src/chat_command_handler.hpp:153
-msgid "List room members."
-msgstr "Visa en lista med deltagare i rummet."
+#~ msgid "List room members."
+#~ msgstr "Visa en lista med deltagare i rummet."
 
-#: src/chat_command_handler.hpp:155
-msgid "List available rooms."
-msgstr "Lista tillgängliga rum."
+#~ msgid "List available rooms."
+#~ msgstr "Lista tillgängliga rum."
 
-#: src/chat_command_handler.hpp:157
-msgid "<room> <msg>"
-msgstr "<rum> <meddelande>"
+#~ msgid "<room> <msg>"
+#~ msgstr "<rum> <meddelande>"
 
-#: src/chat_command_handler.hpp:157
-msgid "Room message."
-msgstr "Rumsmeddelande."
+#~ msgid "Room message."
+#~ msgstr "Rumsmeddelande."
 
-#: src/chat_command_handler.hpp:159
-msgid "<room> <type> [value]"
-msgstr "<rum> <typ> [värde]"
+#~ msgid "<room> <type> [value]"
+#~ msgstr "<rum> <typ> [värde]"
 
-#: src/chat_command_handler.hpp:159
-msgid "Room query."
-msgstr "Rumsförfrågan"
+#~ msgid "Room query."
+#~ msgstr "Rumsförfrågan"
 
-#: src/chat_events.cpp:62
-msgid "Unknown debug level: '$level'."
-msgstr "Okänd debugnivå: '$level'."
+#~ msgid "Unknown debug level: '$level'."
+#~ msgstr "Okänd debugnivå: '$level'."
 
-#: src/chat_events.cpp:64 src/chat_events.cpp:73
-msgid "error"
-msgstr "fel"
+#~ msgid "error"
+#~ msgstr "fel"
 
-#: src/chat_events.cpp:71
-msgid "Unknown debug domain: '$domain'."
-msgstr "Okänd debugdomän: '$domain'."
+#~ msgid "Unknown debug domain: '$domain'."
+#~ msgstr "Okänd debugdomän: '$domain'."
 
-#: src/chat_events.cpp:81
-msgid "Switched domain: '$domain' to level: '$level'."
-msgstr "Ändrade domän: '$domain' till nivå: '$level'."
+#~ msgid "Switched domain: '$domain' to level: '$level'."
+#~ msgstr "Ändrade domän: '$domain' till nivå: '$level'."
 
-#: src/chat_events.cpp:162
-msgid "whisper to $receiver"
-msgstr "viska till $receiver"
+#~ msgid "whisper to $receiver"
+#~ msgstr "viska till $receiver"
 
-#: src/chat_events.cpp:169
-msgid "whisper: $sender"
-msgstr "viskning: $sender"
+#~ msgid "whisper: $sender"
+#~ msgstr "viskning: $sender"
 
 # översatt
-#: src/desktop/notifications.cpp:88
-msgid "Chat message"
-msgstr "Chatmeddelande"
+#~ msgid "Chat message"
+#~ msgstr "Chatmeddelande"
 
-#: src/desktop/windows_tray_notification.cpp:125 src/game_config.cpp:562
-msgid "The Battle for Wesnoth"
-msgstr "Kampen om Wesnoth"
+#~ msgid "The Battle for Wesnoth"
+#~ msgstr "Kampen om Wesnoth"
 
-#: src/font/text_formatting.cpp:47
-msgid "Invalid Color"
-msgstr "Ogiltig färg"
+#~ msgid "Invalid Color"
+#~ msgstr "Ogiltig färg"
 
 # Timeformat (hours, minutes) for 24-hourclock: %H == hours, %M == minutes
-#: src/format_time_summary.cpp:46
-msgid "%H:%M"
-msgstr "%H:%M"
+#~ msgid "%H:%M"
+#~ msgstr "%H:%M"
 
 # Timeformat (hours, minutes) for 12-hour clock, %I == 12hour hours, %M == minutes, %p == am/pm
-#: src/format_time_summary.cpp:49
-msgid "%I:%M %p"
-msgstr "%I:%M %p"
+#~ msgid "%I:%M %p"
+#~ msgstr "%I:%M %p"
 
-#: src/format_time_summary.cpp:54
-msgid "%A, %H:%M"
-msgstr "%A %H:%M"
+#~ msgid "%A, %H:%M"
+#~ msgstr "%A %H:%M"
 
-#: src/format_time_summary.cpp:57
-msgid "%A, %I:%M %p"
-msgstr "%A %H:%M"
+#~ msgid "%A, %I:%M %p"
+#~ msgstr "%A %H:%M"
 
-#: src/format_time_summary.cpp:61
-msgid "%b %d"
-msgstr "%e %b"
+#~ msgid "%b %d"
+#~ msgstr "%e %b"
 
-#: src/format_time_summary.cpp:65
-msgid "%b %d %Y"
-msgstr "%F"
+#~ msgid "%b %d %Y"
+#~ msgstr "%F"
 
-#: src/game_config.cpp:510
 #, fuzzy
-#| msgid "Invalid color range: "
-msgid "Invalid color in range: "
-msgstr "Ogiltig färgskala: "
+#~| msgid "Invalid color range: "
+#~ msgid "Invalid color in range: "
+#~ msgstr "Ogiltig färgskala: "
 
-#: src/game_config_manager.cpp:197 src/game_config_manager.cpp:207
-#: src/game_config_manager.cpp:220
-msgid "Error validating data core."
-msgstr "Fel vid validering av kärndata."
+#~ msgid "Error validating data core."
+#~ msgstr "Fel vid validering av kärndata."
 
-#: src/game_config_manager.cpp:198
-msgid "Found a core without id attribute."
-msgstr "Fann kärna utan ID-attribut."
+#~ msgid "Found a core without id attribute."
+#~ msgstr "Fann kärna utan ID-attribut."
 
-#: src/game_config_manager.cpp:199 src/game_config_manager.cpp:210
-#: src/game_config_manager.cpp:224
-msgid "Skipping the core."
-msgstr "Skippar kärna."
+#~ msgid "Skipping the core."
+#~ msgstr "Skippar kärna."
 
-#: src/game_config_manager.cpp:208 src/game_config_manager.cpp:221
-#: src/game_config_manager.cpp:245
-msgid "Core ID: "
-msgstr "Kärn-ID"
+#~ msgid "Core ID: "
+#~ msgstr "Kärn-ID"
 
-#: src/game_config_manager.cpp:209
-msgid "The ID is already in use."
-msgstr "Detta ID används redan"
+#~ msgid "The ID is already in use."
+#~ msgstr "Detta ID används redan"
 
-#: src/game_config_manager.cpp:222
-msgid "Core Path: "
-msgstr "Kärnsökväg:"
+#~ msgid "Core Path: "
+#~ msgstr "Kärnsökväg:"
 
-#: src/game_config_manager.cpp:223
-msgid "File not found."
-msgstr "Kan ej hitta filen."
+#~ msgid "File not found."
+#~ msgstr "Kan ej hitta filen."
 
-#: src/game_config_manager.cpp:244 src/game_config_manager.cpp:257
-msgid "Error loading core data."
-msgstr "Fel vid inläsning av kärn-data."
+#~ msgid "Error loading core data."
+#~ msgstr "Fel vid inläsning av kärn-data."
 
-#: src/game_config_manager.cpp:246
-msgid "Error loading the core with named id."
-msgstr "Fel vid inläsning av kärna med angivet ID."
+#~ msgid "Error loading the core with named id."
+#~ msgstr "Fel vid inläsning av kärna med angivet ID."
 
-#: src/game_config_manager.cpp:247
-msgid "Falling back to the default core."
-msgstr "Faller tillbaka till förvald kärna."
+#~ msgid "Falling back to the default core."
+#~ msgstr "Faller tillbaka till förvald kärna."
 
-#: src/game_config_manager.cpp:258
-msgid "Can't locate the default core."
-msgstr "Kan inte lokalisera förvald kärna."
+#~ msgid "Can't locate the default core."
+#~ msgstr "Kan inte lokalisera förvald kärna."
 
-#: src/game_config_manager.cpp:259
-msgid "The game will now exit."
-msgstr "Spelet kommer nu att avslutas."
+#~ msgid "The game will now exit."
+#~ msgstr "Spelet kommer nu att avslutas."
 
-#: src/game_config_manager.cpp:320
-msgid ""
-"Error loading custom game configuration files. The game will try without "
-"loading add-ons."
-msgstr ""
-"Fel uppstod när anpassade spelkonfigurationsfiler skulle läsas in. Spelet "
-"kommer försöka utan att läsa in extramaterial."
+#~ msgid ""
+#~ "Error loading custom game configuration files. The game will try without "
+#~ "loading add-ons."
+#~ msgstr ""
+#~ "Fel uppstod när anpassade spelkonfigurationsfiler skulle läsas in. Spelet "
+#~ "kommer försöka utan att läsa in extramaterial."
 
-#: src/game_config_manager.cpp:327
-msgid ""
-"Error loading custom game configuration files. The game will fallback to the "
-"default core files."
-msgstr ""
-"Fel vid inläsning av användarinställda spelkonfigurationsfiler. Spelet "
-"kommer falla tillbaka till förvalda kärnfiler."
+#~ msgid ""
+#~ "Error loading custom game configuration files. The game will fallback to "
+#~ "the default core files."
+#~ msgstr ""
+#~ "Fel vid inläsning av användarinställda spelkonfigurationsfiler. Spelet "
+#~ "kommer falla tillbaka till förvalda kärnfiler."
 
-#: src/game_config_manager.cpp:336
-msgid ""
-"Error loading default core game configuration files. The game will now exit."
-msgstr ""
-"Fel vid inläsning av förvalda kärnkonfigurationsfiler. Spelet kommer nu "
-"avslutas."
+#~ msgid ""
+#~ "Error loading default core game configuration files. The game will now "
+#~ "exit."
+#~ msgstr ""
+#~ "Fel vid inläsning av förvalda kärnkonfigurationsfiler. Spelet kommer nu "
+#~ "avslutas."
 
-#: src/game_config_manager.cpp:463
-msgid "The following add-on had errors and could not be loaded:"
-msgid_plural "The following add-ons had errors and could not be loaded:"
-msgstr[0] "Följande extramaterial innehöll fel och kunde inte öppnas:"
-msgstr[1] "Följande extramaterial innehöll fel och kunde inte öppnas:"
+#~ msgid "The following add-on had errors and could not be loaded:"
+#~ msgid_plural "The following add-ons had errors and could not be loaded:"
+#~ msgstr[0] "Följande extramaterial innehöll fel och kunde inte öppnas:"
+#~ msgstr[1] "Följande extramaterial innehöll fel och kunde inte öppnas:"
 
-#: src/game_config_manager.cpp:467
-msgid "Please report this to the author or maintainer of this add-on."
-msgid_plural ""
-"Please report this to the respective authors or maintainers of these add-ons."
-msgstr[0] ""
-"Rapportera detta till författaren eller ansvarig för detta extramaterial."
-msgstr[1] ""
-"Rapportera detta till författaren eller ansvarig för detta extramaterial."
+#~ msgid "Please report this to the author or maintainer of this add-on."
+#~ msgid_plural ""
+#~ "Please report this to the respective authors or maintainers of these add-"
+#~ "ons."
+#~ msgstr[0] ""
+#~ "Rapportera detta till författaren eller ansvarig för detta extramaterial."
+#~ msgstr[1] ""
+#~ "Rapportera detta till författaren eller ansvarig för detta extramaterial."
 
-#: src/game_events/pump.cpp:483 src/game_launcher.cpp:877
-msgid "Error: "
-msgstr "Fel:"
+#~ msgid "Error: "
+#~ msgstr "Fel:"
 
-#: src/game_events/pump.cpp:485
-msgid "Warning: "
-msgstr "Varning:"
+#~ msgid "Warning: "
+#~ msgstr "Varning:"
 
-#: src/game_events/pump.cpp:487
-msgid "Debug: "
-msgstr "Avlusning:"
+#~ msgid "Debug: "
+#~ msgstr "Avlusning:"
 
-#: src/game_events/pump.cpp:489
-msgid "Info: "
-msgstr "Info:"
+#~ msgid "Info: "
+#~ msgstr "Info:"
 
-#: src/game_initialization/configure_engine.cpp:102
-#: src/game_initialization/create_engine.cpp:469
-msgid "$login|’s game"
-msgstr "$login|s spel"
+#~ msgid "$login|’s game"
+#~ msgstr "$login|s spel"
 
-#: src/game_initialization/connect_engine.cpp:105
-msgid "Team"
-msgstr "Lag"
+#~ msgid "Team"
+#~ msgstr "Lag"
 
-#: src/game_initialization/connect_engine.cpp:982
-msgid "Anonymous player"
-msgstr "Anonym spelare"
+#~ msgid "Anonymous player"
+#~ msgstr "Anonym spelare"
 
-#: src/game_initialization/connect_engine.cpp:987
-#: src/game_initialization/connect_engine.cpp:1286
-msgid "Computer Player"
-msgstr "Datorspelare"
+#~ msgid "$playername $side"
+#~ msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1029
-msgid "$playername $side"
-msgstr "$playername $side"
+#~ msgid "Network Player"
+#~ msgstr "Nätverksspelare"
 
-#: src/game_initialization/connect_engine.cpp:1282
-msgid "Network Player"
-msgstr "Nätverksspelare"
+#~ msgid "Local Player"
+#~ msgstr "Lokal spelare"
 
-#: src/game_initialization/connect_engine.cpp:1285
-msgid "Local Player"
-msgstr "Lokal spelare"
+#~ msgid "Empty"
+#~ msgstr "Tom"
 
-#: src/game_initialization/connect_engine.cpp:1287
-msgid "Empty"
-msgstr "Tom"
+#~ msgid "Reserved"
+#~ msgstr "Reserverad"
 
-#: src/game_initialization/connect_engine.cpp:1290
-msgid "Reserved"
-msgstr "Reserverad"
+#~ msgid "--give--"
+#~ msgstr "--ge--"
 
-#: src/game_initialization/connect_engine.cpp:1294
-msgid "--give--"
-msgstr "--ge--"
+#~ msgid "Map could not be loaded: "
+#~ msgstr "Kartan kunde inte läsas in:"
 
-#: src/game_initialization/create_engine.cpp:75
-#: src/game_initialization/create_engine.cpp:676
-msgid "Map could not be loaded: "
-msgstr "Kartan kunde inte läsas in:"
+#~ msgid "Map could not be loaded."
+#~ msgstr "Kartan kunde inte läsas in."
 
-#: src/game_initialization/create_engine.cpp:79
-msgid "Map could not be loaded."
-msgstr "Kartan kunde inte läsas in."
+#~ msgid "not available."
+#~ msgstr "ej tillgänglig"
 
-#: src/game_initialization/create_engine.cpp:96
-msgid "not available."
-msgstr "ej tillgänglig"
+#~ msgid "User made map"
+#~ msgstr "Användarkarta"
 
-#: src/game_initialization/create_engine.cpp:149
-msgid "User made map"
-msgstr "Användarkarta"
+#~ msgid "Failed to resolve dependencies"
+#~ msgstr "Kunde inte uppfylla kravspecifikationer"
 
-#: src/game_initialization/depcheck.cpp:476
-msgid "Failed to resolve dependencies"
-msgstr "Kunde inte uppfylla kravspecifikationer"
+#~ msgid "Scenario can't be activated. Some dependencies are missing: "
+#~ msgstr "Scenariot kan inte aktiveras. Några behövda moduler saknas:"
 
-#: src/game_initialization/depcheck.cpp:501
-msgid "Scenario can't be activated. Some dependencies are missing: "
-msgstr "Scenariot kan inte aktiveras. Några behövda moduler saknas:"
+#~ msgid "No compatible eras found."
+#~ msgstr "Inga kompatibla eror funna."
 
-#: src/game_initialization/depcheck.cpp:555
-#: src/game_initialization/depcheck.cpp:678
-msgid "No compatible eras found."
-msgstr "Inga kompatibla eror funna."
+#~ msgid "Era can't be activated. Some dependencies are missing: "
+#~ msgstr "Eran kan inte aktiveras. Några behövda moduler saknas: "
 
-#: src/game_initialization/depcheck.cpp:570
-msgid "Era can't be activated. Some dependencies are missing: "
-msgstr "Eran kan inte aktiveras. Några behövda moduler saknas: "
+#~ msgid "No compatible scenarios found."
+#~ msgstr "Inga kompatibla scenarion hittades."
 
-#: src/game_initialization/depcheck.cpp:623
-#: src/game_initialization/depcheck.cpp:715
-msgid "No compatible scenarios found."
-msgstr "Inga kompatibla scenarion hittades."
+#~ msgid ""
+#~ "Not all of the chosen modifications are compatible. Some of them will be "
+#~ "disabled."
+#~ msgstr ""
+#~ "Inte alla de valda justeringarna är kompatibla. Några av dem kommer att "
+#~ "avaktiveras."
 
-#: src/game_initialization/depcheck.cpp:652
-msgid ""
-"Not all of the chosen modifications are compatible. Some of them will be "
-"disabled."
-msgstr ""
-"Inte alla de valda justeringarna är kompatibla. Några av dem kommer att "
-"avaktiveras."
+#~ msgid "Only random sides in the current era."
+#~ msgstr "Bara slumpmässiga i denna era."
 
-#: src/game_initialization/depcheck.hpp:317
-#: src/game_initialization/depcheck.hpp:329
-msgid "A component"
-msgstr ""
+#~ msgid "Unable to find a leader type for faction $faction"
+#~ msgstr "Kan ej finna lämplig ledare för fraktionen $faction"
 
-#: src/game_initialization/flg_manager.cpp:190
-msgid "Only random sides in the current era."
-msgstr "Bara slumpmässiga i denna era."
+#~ msgid "Cannot obtain genders for invalid leader $leader"
+#~ msgstr "Kan inte utläsa kön för ogiltig ledare $leader"
 
-#: src/game_initialization/flg_manager.cpp:212
-msgid "Unable to find a leader type for faction $faction"
-msgstr "Kan ej finna lämplig ledare för fraktionen $faction"
+#~ msgid "Missing addon: $id"
+#~ msgstr "Saknar extramaterial: $id"
 
-#: src/game_initialization/flg_manager.cpp:235
-msgid "Cannot obtain genders for invalid leader $leader"
-msgstr "Kan inte utläsa kön för ogiltig ledare $leader"
+#~ msgid "Unknown era: $era_id"
+#~ msgstr "Okänd era: $era_id"
 
-#: src/game_initialization/lobby_data.cpp:216
-msgid "Missing addon: $id"
-msgstr "Saknar extramaterial: $id"
+#~ msgid "Unknown era"
+#~ msgstr "Okänd era"
 
-#: src/game_initialization/lobby_data.cpp:251
-msgid "Unknown era: $era_id"
-msgstr "Okänd era: $era_id"
-
-#: src/game_initialization/lobby_data.cpp:258
-msgid "Unknown era"
-msgstr "Okänd era"
-
-#: src/game_initialization/lobby_data.cpp:280
 #, fuzzy
-#| msgid " (missing)"
-msgid "(missing)"
-msgstr "(saknas)"
+#~| msgid " (missing)"
+#~ msgid "(missing)"
+#~ msgstr "(saknas)"
 
-#: src/game_initialization/lobby_data.cpp:324
-msgid "(S)"
-msgstr ""
+#~ msgid "Remote scenario"
+#~ msgstr "Nätverksscenario"
 
-#: src/game_initialization/lobby_data.cpp:343
-msgid "Remote scenario"
-msgstr "Nätverksscenario"
+#~ msgid "Unknown scenario: $scenario_id"
+#~ msgstr "Okänt scenario: $scenario_id"
 
-#: src/game_initialization/lobby_data.cpp:354
-msgid "Unknown scenario: $scenario_id"
-msgstr "Okänt scenario: $scenario_id"
+#~ msgid "Unknown campaign: $campaign_id"
+#~ msgstr "Okänd kampanj: $campaign_id"
 
-#: src/game_initialization/lobby_data.cpp:362
-msgid "(C)"
-msgstr ""
+#~ msgid "Unknown scenario"
+#~ msgstr "Okänt scenario"
 
-#: src/game_initialization/lobby_data.cpp:385
-msgid "Unknown campaign: $campaign_id"
-msgstr "Okänd kampanj: $campaign_id"
+#~ msgid "Reloaded game"
+#~ msgstr "Öppna spel igen"
 
-#: src/game_initialization/lobby_data.cpp:390
-msgid "Unknown scenario"
-msgstr "Okänt scenario"
+#~ msgid "Turn"
+#~ msgstr "Drag"
 
-#: src/game_initialization/lobby_data.cpp:400
-msgid "Reloaded game"
-msgstr "Öppna spel igen"
+#~ msgid "Vacant Slot:"
+#~ msgid_plural "Vacant Slots:"
+#~ msgstr[0] "Ledig plats:"
+#~ msgstr[1] "Lediga platser:"
 
-#: src/game_initialization/lobby_data.cpp:411 src/savegame.cpp:630
-msgid "Turn"
-msgstr "Drag"
+#~ msgid "none"
+#~ msgstr "inget"
 
-#: src/game_initialization/lobby_data.cpp:415
-msgid "Vacant Slot:"
-msgid_plural "Vacant Slots:"
-msgstr[0] "Ledig plats:"
-msgstr[1] "Lediga platser:"
-
-#: src/game_initialization/lobby_data.cpp:428
-msgid "none"
-msgstr "inget"
-
-#: src/game_initialization/lobby_data.cpp:469
 #, fuzzy
-#| msgid ""
-#| "Host's version of $addon is too old: host's version $host_ver < your "
-#| "version $local_ver."
-msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
-msgstr ""
-"Värdens version av $addon är för gammal: värdens version $host_ver < din "
-"version $local_ver."
+#~| msgid ""
+#~| "Host's version of $addon is too old: host's version $host_ver < your "
+#~| "version $local_ver."
+#~ msgid ""
+#~ "The host's version of <i>$addon</i> is incompatible. They have version <b>"
+#~ "$host_ver</b> while you have version <b>$local_ver</b>."
+#~ msgstr ""
+#~ "Värdens version av $addon är för gammal: värdens version $host_ver < din "
+#~ "version $local_ver."
 
-#: src/game_initialization/lobby_data.cpp:484
 #, fuzzy
-#| msgid ""
-#| "Your version of $addon is out of date: host's version $host_ver > your "
-#| "version $local_ver."
-msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
-msgstr ""
-"Din version av $addon är utdaterad: värdens version $host_ver > din version "
-"$local_ver."
+#~| msgid ""
+#~| "Your version of $addon is out of date: host's version $host_ver > your "
+#~| "version $local_ver."
+#~ msgid ""
+#~ "Your version of <i>$addon</i> is incompatible. You have version <b>"
+#~ "$local_ver</b> while the host has version <b>$host_ver</b>."
+#~ msgstr ""
+#~ "Din version av $addon är utdaterad: värdens version $host_ver > din "
+#~ "version $local_ver."
 
-#: src/game_initialization/mp_game_utils.cpp:94
-msgid "Cannot find era $era"
-msgstr "Kan ej finna $era|-eran"
+#~ msgid "Cannot find era $era"
+#~ msgstr "Kan ej finna $era|-eran"
 
-#: src/game_initialization/mp_game_utils.cpp:136
-msgid "Connection timed out"
-msgstr "Anslutningstiden tog slut"
+#~ msgid "Connection timed out"
+#~ msgstr "Anslutningstiden tog slut"
 
-#: src/game_initialization/multiplayer.cpp:109
 #, fuzzy
-#| msgid ""
-#| "The server accepts versions '$version1' while you are using version "
-#| "'$version2'"
-msgid ""
-"The server accepts versions '$required_version', but you are using version "
-"'$your_version'"
-msgstr ""
-"Servern kräver version ’$version1’ av spelet, medan du använder version "
-"’$version2’."
+#~| msgid ""
+#~| "The server accepts versions '$version1' while you are using version "
+#~| "'$version2'"
+#~ msgid ""
+#~ "The server accepts versions '$required_version', but you are using "
+#~ "version '$your_version'"
+#~ msgstr ""
+#~ "Servern kräver version ’$version1’ av spelet, medan du använder version "
+#~ "’$version2’."
 
-#: src/game_initialization/multiplayer.cpp:120
-msgid "Server-side redirect loop"
-msgstr "Omdirigeringsloop hos servern"
+#~ msgid "Server-side redirect loop"
+#~ msgstr "Omdirigeringsloop hos servern"
 
-#: src/game_initialization/multiplayer.cpp:172
-msgid ""
-"The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
-"nickname until you activate your account via email or ask an administrator "
-"to do it for you."
-msgstr ""
-"Användarnamnet \"$nick\" är inaktivt. För att återta detta användarnamn "
-"behöver du aktivera ditt konto via ett email eller fråga en administratör "
-"som kan göra det åt dig."
+#~ msgid ""
+#~ "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
+#~ "nickname until you activate your account via email or ask an "
+#~ "administrator to do it for you."
+#~ msgstr ""
+#~ "Användarnamnet \"$nick\" är inaktivt. För att återta detta användarnamn "
+#~ "behöver du aktivera ditt konto via ett email eller fråga en administratör "
+#~ "som kan göra det åt dig."
 
-#: src/game_initialization/multiplayer.cpp:181
-msgid "Do you want to continue?"
-msgstr "Vill du fortsätta?"
+#~ msgid "Do you want to continue?"
+#~ msgstr "Vill du fortsätta?"
 
-#: src/game_initialization/multiplayer.cpp:183
-msgid "Warning"
-msgstr "Varning"
+#~ msgid "Warning"
+#~ msgstr "Varning"
 
-#: src/game_initialization/multiplayer.cpp:225
-msgid "Bad data received from server"
-msgstr "Trasig data mottagen från servern."
+#~ msgid "Bad data received from server"
+#~ msgstr "Trasig data mottagen från servern."
 
-#: src/game_initialization/multiplayer.cpp:260
-msgid "You must login first."
-msgstr "Du måste logga in först."
+#~ msgid "You must login first."
+#~ msgstr "Du måste logga in först."
 
-#: src/game_initialization/multiplayer.cpp:262
-msgid "The nickname ‘$nick’ is already taken."
-msgstr "Användarnamnet ’$nick’ är upptaget."
+#~ msgid "The nickname ‘$nick’ is already taken."
+#~ msgstr "Användarnamnet ’$nick’ är upptaget."
 
-#: src/game_initialization/multiplayer.cpp:264
-msgid ""
-"The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
-"characters, underscores and hyphens are allowed."
-msgstr ""
-"Användarnamnet '$nick' innehåller otillåtna tecken. Enbart bokstäver, "
-"siffror, understreck och bindestreck är tillåtna."
+#~ msgid ""
+#~ "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
+#~ "characters, underscores and hyphens are allowed."
+#~ msgstr ""
+#~ "Användarnamnet '$nick' innehåller otillåtna tecken. Enbart bokstäver, "
+#~ "siffror, understreck och bindestreck är tillåtna."
 
-#: src/game_initialization/multiplayer.cpp:268
-msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
-msgstr ""
-"Användarnamnet ’$nick’ är för långt. Användarnamn får högst vara 20 tecken."
+#~ msgid ""
+#~ "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
+#~ msgstr ""
+#~ "Användarnamnet ’$nick’ är för långt. Användarnamn får högst vara 20 "
+#~ "tecken."
 
-#: src/game_initialization/multiplayer.cpp:271
-msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
-msgstr "Användarnamnet ’$nick’ är reserverat och kan inte användas av spelare."
+#~ msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
+#~ msgstr ""
+#~ "Användarnamnet ’$nick’ är reserverat och kan inte användas av spelare."
 
-#: src/game_initialization/multiplayer.cpp:273
-msgid "The nickname ‘$nick’ is not registered on this server."
-msgstr "Användarnamnet ’$nick’ är inte registrerat på den här servern."
+#~ msgid "The nickname ‘$nick’ is not registered on this server."
+#~ msgstr "Användarnamnet ’$nick’ är inte registrerat på den här servern."
 
-#: src/game_initialization/multiplayer.cpp:274
-msgid " This server disallows unregistered nicknames."
-msgstr "Den här servern tillåter inte oregistrerade användarnamn."
+#~ msgid " This server disallows unregistered nicknames."
+#~ msgstr "Den här servern tillåter inte oregistrerade användarnamn."
 
-#: src/game_initialization/multiplayer.cpp:276
-#: src/game_initialization/multiplayer.cpp:278
-msgid "The nickname ‘$nick’ is registered on this server."
-msgstr "Användarnamnet ’$nick’ är registrerat på den här servern."
+#~ msgid "The nickname ‘$nick’ is registered on this server."
+#~ msgstr "Användarnamnet ’$nick’ är registrerat på den här servern."
 
-#: src/game_initialization/multiplayer.cpp:279
-msgid ""
-"WARNING: There is already a client using this nickname, logging in will "
-"cause that client to be kicked!"
-msgstr ""
-"VARNING: Det finns redan en klient med det här användarnamnet. Om du loggar "
-"in med samma namn blir denne utslängd."
+#~ msgid ""
+#~ "WARNING: There is already a client using this nickname, logging in will "
+#~ "cause that client to be kicked!"
+#~ msgstr ""
+#~ "VARNING: Det finns redan en klient med det här användarnamnet. Om du "
+#~ "loggar in med samma namn blir denne utslängd."
 
-#: src/game_initialization/multiplayer.cpp:282
-msgid ""
-"Error in the login procedure (the server had no seed for your connection)."
-msgstr "Fel i inloggningen (servern har ingen källa för din anslutning)."
+#~ msgid ""
+#~ "Error in the login procedure (the server had no seed for your connection)."
+#~ msgstr "Fel i inloggningen (servern har ingen källa för din anslutning)."
 
-#: src/game_initialization/multiplayer.cpp:285
-msgid "The password you provided was incorrect."
-msgstr "Inkorrekt lösenord."
+#~ msgid "The password you provided was incorrect."
+#~ msgstr "Inkorrekt lösenord."
 
-#: src/game_initialization/multiplayer.cpp:287
-msgid "You have made too many login attempts."
-msgstr "Du har försökt logga in för många gånger."
+#~ msgid "You have made too many login attempts."
+#~ msgstr "Du har försökt logga in för många gånger."
 
-#: src/game_initialization/playcampaign.cpp:62
-msgid "Remaining gold: "
-msgstr "Resterande guld: "
+#~ msgid "Remaining gold: "
+#~ msgstr "Resterande guld: "
 
-#: src/game_initialization/playcampaign.cpp:66
-msgid "Turns finished early: "
-msgstr "Tidigt avklarade drag: "
+#~ msgid "Turns finished early: "
+#~ msgstr "Tidigt avklarade drag: "
 
-#: src/game_initialization/playcampaign.cpp:67
-msgid " per turn"
-msgstr "per drag"
+#~ msgid " per turn"
+#~ msgstr "per drag"
 
-#: src/game_initialization/playcampaign.cpp:67
-msgid "Early finish bonus: "
-msgstr "Bonus för tidig seger: "
+#~ msgid "Early finish bonus: "
+#~ msgstr "Bonus för tidig seger: "
 
-#: src/game_initialization/playcampaign.cpp:68
-msgid "Total bonus: "
-msgstr "Total bonus: "
+#~ msgid "Total bonus: "
+#~ msgstr "Total bonus: "
 
-#: src/game_initialization/playcampaign.cpp:70
-msgid "Total gold: "
-msgstr "Totalt guld: "
+#~ msgid "Total gold: "
+#~ msgstr "Totalt guld: "
 
-#: src/game_initialization/playcampaign.cpp:73
-msgid "Carryover percentage: "
-msgstr "Fortsättningsandel: "
+#~ msgid "Carryover percentage: "
+#~ msgstr "Fortsättningsandel: "
 
-#: src/game_initialization/playcampaign.cpp:76
-msgid "Bonus gold: "
-msgstr "Bonusguld: "
+#~ msgid "Bonus gold: "
+#~ msgstr "Bonusguld: "
 
-#: src/game_initialization/playcampaign.cpp:78
-msgid "Retained gold: "
-msgstr "Bibehållet guld: "
+#~ msgid "Retained gold: "
+#~ msgstr "Bibehållet guld: "
 
-#: src/game_initialization/playcampaign.cpp:91
-msgid ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgid_plural ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgstr[0] ""
-"Du startar nästa scenario med $gold guldstycke mer än scenariots minimala "
-"mängd startguld."
-msgstr[1] ""
-"Du startar nästa scenario med $gold guldstycken mer än scenariots minimala "
-"mängd startguld."
+#~ msgid ""
+#~ "You will start the next scenario with $gold on top of the defined minimum "
+#~ "starting gold."
+#~ msgid_plural ""
+#~ "You will start the next scenario with $gold on top of the defined minimum "
+#~ "starting gold."
+#~ msgstr[0] ""
+#~ "Du startar nästa scenario med $gold guldstycke mer än scenariots minimala "
+#~ "mängd startguld."
+#~ msgstr[1] ""
+#~ "Du startar nästa scenario med $gold guldstycken mer än scenariots "
+#~ "minimala mängd startguld."
 
-#: src/game_initialization/playcampaign.cpp:99
-msgid ""
-"You will start the next scenario with the defined minimum starting gold."
-msgid_plural ""
-"You will start the next scenario with the defined minimum starting gold."
-msgstr[0] "Du startar nästa scenario med scenariots minimala mängd startguld."
-msgstr[1] "Du startar nästa scenario med scenariots minimala mängd startguld."
+#~ msgid ""
+#~ "You will start the next scenario with the defined minimum starting gold."
+#~ msgid_plural ""
+#~ "You will start the next scenario with the defined minimum starting gold."
+#~ msgstr[0] ""
+#~ "Du startar nästa scenario med scenariots minimala mängd startguld."
+#~ msgstr[1] ""
+#~ "Du startar nästa scenario med scenariots minimala mängd startguld."
 
-#: src/game_initialization/playcampaign.cpp:107
-msgid ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgid_plural ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgstr[0] ""
-"Du startar nästa scenario med $gold guldstycke eller scenariots minimala "
-"mängd startguld, om denna är högre."
-msgstr[1] ""
-"Du startar nästa scenario med $gold guldstycken eller scenariots minimala "
-"mängd startguld, om denna är högre."
+#~ msgid ""
+#~ "You will start the next scenario with $gold or its defined minimum "
+#~ "starting gold, whichever is higher."
+#~ msgid_plural ""
+#~ "You will start the next scenario with $gold or its defined minimum "
+#~ "starting gold, whichever is higher."
+#~ msgstr[0] ""
+#~ "Du startar nästa scenario med $gold guldstycke eller scenariots minimala "
+#~ "mängd startguld, om denna är högre."
+#~ msgstr[1] ""
+#~ "Du startar nästa scenario med $gold guldstycken eller scenariots minimala "
+#~ "mängd startguld, om denna är högre."
 
-#: src/game_initialization/playcampaign.cpp:137
-msgid "Scenario Report"
-msgstr "Scenariorapport"
+#~ msgid "Scenario Report"
+#~ msgstr "Scenariorapport"
 
-#: src/game_initialization/playcampaign.cpp:139
-msgid "Victory"
-msgstr "Seger"
+#~ msgid "Victory"
+#~ msgstr "Seger"
 
-#: src/game_initialization/playcampaign.cpp:140
-msgid "You have emerged victorious!"
-msgstr "Du har segrat!"
+#~ msgid "You have emerged victorious!"
+#~ msgstr "Du har segrat!"
 
-#: src/game_initialization/playcampaign.cpp:142
-msgid "Defeat"
-msgstr "Nederlag"
+#~ msgid "Defeat"
+#~ msgstr "Nederlag"
 
-#: src/game_initialization/playcampaign.cpp:143
-msgid "You have been defeated!"
-msgstr "Du har förlorat!"
+#~ msgid "You have been defeated!"
+#~ msgstr "Du har förlorat!"
 
-#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:847
-msgid "The game could not be loaded: "
-msgstr "Spelet kunde inte öppnas: "
+#~ msgid "The game could not be loaded: "
+#~ msgstr "Spelet kunde inte öppnas: "
 
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:849
-msgid "Error while playing the game: "
-msgstr "Fel under spel: "
+#~ msgid "Error while playing the game: "
+#~ msgstr "Fel under spel: "
 
-#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:869
-msgid "The game map could not be loaded: "
-msgstr "Kartan kunde inte öppnas: "
+#~ msgid "The game map could not be loaded: "
+#~ msgstr "Kartan kunde inte öppnas: "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:851
-#: src/game_launcher.cpp:967
-msgid "Map generator error: "
-msgstr "Kartgeneratorsfel: "
+#~ msgid "Map generator error: "
+#~ msgstr "Kartgeneratorsfel: "
 
-#: src/game_initialization/playcampaign.cpp:305
-msgid "Error while reading the WML: "
-msgstr "Fel vid läsning av WML: "
+#~ msgid "Error while reading the WML: "
+#~ msgstr "Fel vid läsning av WML: "
 
-#: src/game_initialization/playcampaign.cpp:342
-#: src/playsingle_controller.cpp:314
-msgid "Game Over"
-msgstr "Spelet är slut"
+#~ msgid "Game Over"
+#~ msgstr "Spelet är slut"
 
-#: src/game_initialization/playcampaign.cpp:343
-msgid "This scenario has ended. Do you want to continue the campaign?"
-msgstr "Scenariot är slut. Vill du fortsätta spela kampanjen?"
+#~ msgid "This scenario has ended. Do you want to continue the campaign?"
+#~ msgstr "Scenariot är slut. Vill du fortsätta spela kampanjen?"
 
-#: src/game_initialization/playcampaign.cpp:408
-msgid "Unknown scenario: '$scenario|'"
-msgstr "Okänt scenario: '$scenario|'"
+#~ msgid "Unknown scenario: '$scenario|'"
+#~ msgstr "Okänt scenario: '$scenario|'"
 
-#: src/game_initialization/singleplayer.cpp:42
 #, fuzzy
-#| msgid "No campaigns are available.\n"
-msgid "No campaigns are available."
-msgstr "Inga kampanjer är tillgängliga.\n"
+#~| msgid "No campaigns are available.\n"
+#~ msgid "No campaigns are available."
+#~ msgstr "Inga kampanjer är tillgängliga.\n"
 
-#: src/game_launcher.cpp:643 src/game_launcher.cpp:661
-msgid "The file you have tried to load is corrupt"
-msgstr "Filen du försöker öppna är felaktig"
+#~ msgid "The file you have tried to load is corrupt"
+#~ msgstr "Filen du försöker öppna är felaktig"
 
-#: src/game_launcher.cpp:646 src/game_launcher.cpp:664
-#: src/hotkey/hotkey_handler_sp.cpp:311 src/savegame.cpp:148
-#: src/savegame.cpp:293
-msgid "The file you have tried to load is corrupt: '"
-msgstr "Filen du försöker öppna är felaktig: '"
+#~ msgid "The file you have tried to load is corrupt: '"
+#~ msgstr "Filen du försöker öppna är felaktig: '"
 
-#: src/game_launcher.cpp:654
-msgid "File I/O Error while reading the game"
-msgstr "I/O-fel vid läsning från fil"
+#~ msgid "File I/O Error while reading the game"
+#~ msgstr "I/O-fel vid läsning från fil"
 
-#: src/game_launcher.cpp:656
-msgid "File I/O Error while reading the game: '"
-msgstr "I/O-fel vid läsning från fil: '"
+#~ msgid "File I/O Error while reading the game: '"
+#~ msgstr "I/O-fel vid läsning från fil: '"
 
-#: src/game_launcher.cpp:845
-msgid "Error while starting server: "
-msgstr "Fel under serverstart: "
+#~ msgid "Error while starting server: "
+#~ msgstr "Fel under serverstart: "
 
-#: src/generators/default_map_generator_job.cpp:691
 #, fuzzy
-#| msgid "Random maps with an odd width aren't supported."
-msgid "Random maps with an odd width aren't supported."
-msgstr "Slumpkartor med udda bredd stöds inte."
+#~| msgid "Random maps with an odd width aren't supported."
+#~ msgid "Random maps with an odd width aren't supported."
+#~ msgstr "Slumpkartor med udda bredd stöds inte."
 
-#: src/generators/default_map_generator_job.cpp:953
-msgid ""
-"No valid castle location found. Too many or too few mountain hexes? (please "
-"check the 'max hill size' parameter)"
-msgstr ""
-"Ingen godkänd plats för en borg funnen. För många eller för få bergsrutor? "
-"(vänligen kontrollera 'max hill size' parametern)"
+#~ msgid ""
+#~ "No valid castle location found. Too many or too few mountain hexes? "
+#~ "(please check the 'max hill size' parameter)"
+#~ msgstr ""
+#~ "Ingen godkänd plats för en borg funnen. För många eller för få "
+#~ "bergsrutor? (vänligen kontrollera 'max hill size' parametern)"
 
-#: src/gui/core/linked_group_definition.cpp:40
-msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
-msgstr ""
+#~ msgid ""
+#~ "The selected add-on has the following dependency, which is not currently "
+#~ "installed. Do you wish to install it before continuing?"
+#~ msgid_plural ""
+#~ "The selected add-on has the following dependencies, which are not "
+#~ "currently installed. Do you wish to install them before continuing?"
+#~ msgstr[0] ""
+#~ "Det valda extramaterialet kräver det nedan angivna, vilket för närvarande "
+#~ "inte är installerat. Vill du installera detta innan du fortsätter?"
+#~ msgstr[1] ""
+#~ "Det valda extramaterialet kräver det nedan angivna, vilket för närvarande "
+#~ "inte är installerat. Vill du installera detta innan du fortsätter?"
 
-#: src/gui/dialogs/addon/install_dependencies.cpp:38
-msgid ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
-msgid_plural ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
-msgstr[0] ""
-"Det valda extramaterialet kräver det nedan angivna, vilket för närvarande "
-"inte är installerat. Vill du installera detta innan du fortsätter?"
-msgstr[1] ""
-"Det valda extramaterialet kräver det nedan angivna, vilket för närvarande "
-"inte är installerat. Vill du installera detta innan du fortsätter?"
+#~ msgid "No Saved Games"
+#~ msgstr "Inga sparade spel"
 
-#: src/gui/dialogs/game_load.hpp:43
-msgid "No Saved Games"
-msgstr "Inga sparade spel"
-
-#: src/gui/dialogs/game_load.hpp:43
 #, fuzzy
-#| msgid "The file you have tried to load is corrupt"
-msgid "There are no save files to load"
-msgstr "Filen du försöker öppna är felaktig"
+#~| msgid "The file you have tried to load is corrupt"
+#~ msgid "There are no save files to load"
+#~ msgstr "Filen du försöker öppna är felaktig"
 
-#: src/gui/dialogs/game_stats.hpp:43
 #, fuzzy
-#| msgid "No multiplayer sides found"
-msgid "No visible sides found."
-msgstr "Inga sidor för gruppspel funna"
+#~| msgid "No multiplayer sides found"
+#~ msgid "No visible sides found."
+#~ msgstr "Inga sidor för gruppspel funna"
 
-#: src/gui/dialogs/lobby/player_info.cpp:103
-msgid "In game:"
-msgstr "Spelnamn:"
+#~ msgid "In game:"
+#~ msgstr "Spelnamn:"
 
-#: src/gui/dialogs/lobby/player_info.cpp:105
-msgid "(observing)"
-msgstr "(observerar)"
+#~ msgid "(observing)"
+#~ msgstr "(observerar)"
 
-#: src/gui/dialogs/lobby/player_info.cpp:107
-msgid "(playing)"
-msgstr "(spelar)"
+#~ msgid "(playing)"
+#~ msgstr "(spelar)"
 
-#: src/gui/dialogs/lobby/player_info.cpp:110
-msgid "In lobby"
-msgstr "I lobby"
+#~ msgid "In lobby"
+#~ msgstr "I lobby"
 
-#: src/gui/dialogs/lobby/player_info.cpp:139
-msgid "On friends list"
-msgstr "I vänlistan"
+#~ msgid "On friends list"
+#~ msgstr "I vänlistan"
 
-#: src/gui/dialogs/lobby/player_info.cpp:144
-msgid "On ignores list"
-msgstr "I ignoreralistan"
+#~ msgid "On ignores list"
+#~ msgstr "I ignoreralistan"
 
-#: src/gui/dialogs/lobby/player_info.cpp:149
-msgid "Neither a friend nor ignored"
-msgstr "Varken vän eller ignorerad"
+#~ msgid "Neither a friend nor ignored"
+#~ msgstr "Varken vän eller ignorerad"
 
-#: src/gui/dialogs/lobby/player_info.cpp:154
-msgid "You"
-msgstr "Du"
+#~ msgid "You"
+#~ msgstr "Du"
 
-#: src/gui/dialogs/lobby/player_info.cpp:157
-msgid "Error"
-msgstr "Fel"
+#~ msgid "Error"
+#~ msgstr "Fel"
 
-#: src/gui/dialogs/unit_list.hpp:45
 #, fuzzy
-#| msgid "No eras found."
-msgid "No units found."
-msgstr "Inga eror funna."
+#~| msgid "No eras found."
+#~ msgid "No units found."
+#~ msgstr "Inga eror funna."
 
-#: src/gui/widgets/status_label_helper.hpp:34
-msgid "no"
-msgstr "nej"
+#~ msgid "no"
+#~ msgstr "nej"
 
-#: src/gui/widgets/status_label_helper.hpp:34
-msgid "yes"
-msgstr "ja"
+#~ msgid "yes"
+#~ msgstr "ja"
 
-#: src/help/help_browser.cpp:152
-msgid "Reference to unknown topic: "
-msgstr "Referens till okänt ämne: "
+#~ msgid "Reference to unknown topic: "
+#~ msgstr "Referens till okänt ämne: "
 
-#: src/help/help_impl.cpp:366
-msgid "Only available during a scenario."
-msgstr "Endast tillgängligt under ett scenario."
+#~ msgid "Only available during a scenario."
+#~ msgstr "Endast tillgängligt under ett scenario."
 
-#: src/help/help_impl.cpp:383
-msgid "Schedule"
-msgstr "Schema"
+#~ msgid "Schedule"
+#~ msgstr "Schema"
 
-#: src/help/help_impl.cpp:475
-msgid "<header>text='Units with this special attack'</header>"
-msgstr "<header>text=’Trupper med den här specialattacken’</header>"
+#~ msgid "<header>text='Units with this special attack'</header>"
+#~ msgstr "<header>text=’Trupper med den här specialattacken’</header>"
 
-#: src/help/help_impl.cpp:541
-msgid "<header>text='Units with this ability'</header>"
-msgstr "<header>text=’Trupper med den här egenskapen’</header>"
+#~ msgid "<header>text='Units with this ability'</header>"
+#~ msgstr "<header>text=’Trupper med den här egenskapen’</header>"
 
-#: src/help/help_impl.cpp:569
-msgid "Era:"
-msgstr "Era:"
+#~ msgid "Era:"
+#~ msgstr "Era:"
 
-#: src/help/help_impl.cpp:577
-msgid "Factions"
-msgstr "Fraktioner"
+#~ msgid "Factions"
+#~ msgstr "Fraktioner"
 
-#: src/help/help_impl.cpp:626
-msgid "Races: "
-msgstr "Raser: "
+#~ msgid "Races: "
+#~ msgstr "Raser: "
 
-#: src/help/help_impl.cpp:635 src/help/help_impl.cpp:981
-msgid "Alignments: "
-msgstr "Sinnelag: "
+#~ msgid "Alignments: "
+#~ msgstr "Sinnelag: "
 
-#: src/help/help_impl.cpp:642
-msgid "Leaders"
-msgstr "Ledare"
+#~ msgid "Leaders"
+#~ msgstr "Ledare"
 
-#: src/help/help_impl.cpp:651
-msgid "Recruits"
-msgstr "Rekryter"
+#~ msgid "Recruits"
+#~ msgstr "Rekryter"
 
-#: src/help/help_impl.cpp:708 src/help/help_impl.cpp:710
 #, fuzzy
-#| msgid "Ability: "
-msgid "Availability: "
-msgstr "Förmågor: "
+#~| msgid "Ability: "
+#~ msgid "Availability: "
+#~ msgstr "Förmågor: "
 
-#: src/help/help_impl.cpp:708
-msgid "Must-have"
-msgstr ""
-
-#: src/help/help_impl.cpp:710
 #, fuzzy
-#| msgid "not available."
-msgid "Unavailable"
-msgstr "ej tillgänglig"
-
-#: src/help/help_impl.cpp:794 src/help/help_impl.cpp:969
-#: src/help/help_topic_generators.cpp:383
-msgid "race^Miscellaneous"
-msgstr "Diverse"
-
-#: src/help/help_impl.cpp:981 src/help/help_topic_generators.cpp:485
-#: src/reports.cpp:348
-msgid "Alignment: "
-msgstr "Sinnelag: "
-
-#: src/help/help_impl.cpp:988
-msgid "<header>text='Units of this race'</header>"
-msgstr "<header>text='Trupper av den här rasen'</header>"
-
-#: src/help/help_impl.cpp:1343
-msgid "corrupted original file"
-msgstr "trasig originalfil"
-
-#: src/help/help_topic_generators.cpp:46
-msgid "Best of"
-msgstr "Bästa av"
-
-#: src/help/help_topic_generators.cpp:46
-msgid "Worst of"
-msgstr "Sämsta av"
-
-#: src/help/help_topic_generators.cpp:142
-msgid "Base Terrain: "
-msgstr "Basterräng: "
-
-#: src/help/help_topic_generators.cpp:161
-msgid "Movement properties: "
-msgstr "Förflyttningsegenskaper: "
-
-#: src/help/help_topic_generators.cpp:165
-msgid "Defense properties: "
-msgstr "Försvarsegenskaper: "
-
-#: src/help/help_topic_generators.cpp:305
-msgid "Advances from: "
-msgstr "Befordras från: "
-
-#: src/help/help_topic_generators.cpp:307
-msgid "Advances to: "
-msgstr "Kan befordras till: "
-
-#: src/help/help_topic_generators.cpp:336
-msgid "Base unit: "
-msgstr "Bastrupp: "
-
-#: src/help/help_topic_generators.cpp:341
-msgid "Base units: "
-msgstr "Bastrupper: "
-
-#: src/help/help_topic_generators.cpp:359
-msgid "Variations: "
-msgstr "Variationer: "
-
-#: src/help/help_topic_generators.cpp:385 src/reports.cpp:186
-msgid "Race: "
-msgstr "Ras: "
-
-#: src/help/help_topic_generators.cpp:411
-#: src/help/help_topic_generators.cpp:434
-msgid "Traits"
-msgstr "Karaktärsdrag"
-
-#: src/help/help_topic_generators.cpp:444
-msgid "Abilities: "
-msgstr "Förmågor: "
-
-#: src/help/help_topic_generators.cpp:460
-msgid "Ability Upgrades: "
-msgstr "Uppgradering av förmågor: "
-
-#: src/help/help_topic_generators.cpp:476
-msgid "HP: "
-msgstr "HP: "
-
-#: src/help/help_topic_generators.cpp:477
-msgid "Moves: "
-msgstr "Förflyttning: "
-
-#: src/help/help_topic_generators.cpp:479
-msgid "Vision: "
-msgstr "Version: "
-
-#: src/help/help_topic_generators.cpp:482
-msgid "Jamming: "
-msgstr "Varning:"
-
-#: src/help/help_topic_generators.cpp:484
-msgid "Cost: "
-msgstr "Kostnad: "
-
-#: src/help/help_topic_generators.cpp:489
-msgid "Required XP: "
-msgstr "EP för nästa nivå: "
-
-#: src/help/help_topic_generators.cpp:498
-msgid "unit help^Attacks"
-msgstr "Attacker"
-
-#: src/help/help_topic_generators.cpp:505
-msgid "unit help^Name"
-msgstr "Namn"
-
-#: src/help/help_topic_generators.cpp:506
-msgid "Type"
-msgstr "Typ"
-
-#: src/help/help_topic_generators.cpp:507
-msgid "Strikes"
-msgstr "Slag"
-
-#: src/help/help_topic_generators.cpp:508
-msgid "Range"
-msgstr "Räckvidd"
-
-#: src/help/help_topic_generators.cpp:509
-msgid "Special"
-msgstr "Specialitet"
-
-#: src/help/help_topic_generators.cpp:571
-msgid "Resistances"
-msgstr "Motståndskraft mot olika attacker"
-
-#: src/help/help_topic_generators.cpp:575
-msgid "Attack Type"
-msgstr "Attacktyp"
-
-#: src/help/help_topic_generators.cpp:576
-msgid "Resistance"
-msgstr "Motståndskraft"
-
-#: src/help/help_topic_generators.cpp:605
-msgid "Terrain Modifiers"
-msgstr "Terrängavdrag"
-
-#: src/help/help_topic_generators.cpp:609
-msgid "Terrain"
-msgstr "Terräng"
-
-#: src/help/help_topic_generators.cpp:610
-msgid "Defense"
-msgstr "Försvar"
-
-#: src/help/help_topic_generators.cpp:611
-msgid "Movement Cost"
-msgstr "Förflyttningskostnad"
-
-#: src/help/help_topic_generators.cpp:615
-msgid "Defense Cap"
-msgstr "Försvarstak:"
-
-#: src/help/help_topic_generators.cpp:620
-msgid "Vision Cost"
-msgstr "Version: "
-
-#: src/help/help_topic_generators.cpp:624
-msgid "Jamming Cost"
-msgstr ""
-
-#: src/hotkey/command_executor.cpp:66
-msgid ""
-"Screenshot creation failed.\n"
-"\n"
-"Make sure there is enough space on the drive holding Wesnoth’s player "
-"resource files and that file permissions are set up correctly."
-msgstr ""
-"Kunde inte skapa skärmdump.\n"
-"\n"
-"Kontrollera så det finns nog med utrymme på disken där Wesnoths "
-"spelarresursfiler finns och att filbehörigheter är korrekt inställda."
-
-#: src/hotkey/command_executor.cpp:567
-msgid "Screenshot"
-msgstr "Skärmdump"
-
-#: src/hotkey/command_executor.cpp:715
-msgid "Map-Screenshot"
-msgstr "Kartskärmdump"
-
-#: src/hotkey/hotkey_handler.cpp:213
-msgid "(press $hk to disable)"
-msgstr "(tryck $hk för att avaktivera)"
-
-#: src/hotkey/hotkey_handler.cpp:213
-msgid "Accelerated speed enabled!"
-msgstr "Accelererad fart aktiverad!"
-
-#: src/hotkey/hotkey_handler.cpp:217
-msgid "Accelerated speed disabled!"
-msgstr "Accelererad fart avaktiverad!"
-
-#: src/hotkey/hotkey_handler.cpp:390 src/save_index.cpp:285 src/savegame.cpp:70
-#: src/savegame.cpp:587 src/savegame.cpp:589
-msgid "Auto-Save"
-msgstr "Autosparat"
-
-#: src/hotkey/hotkey_handler.cpp:394
-msgid "Back to Turn "
-msgstr "Tillbaka till drag "
-
-#: src/hotkey/hotkey_handler.cpp:400
-msgid "Back to Start"
-msgstr "Tillbaka till början"
-
-#: src/hotkey/hotkey_handler_sp.cpp:144
-msgid "(press $hotkey to deactivate)"
-msgstr "(tryck $hotkey för att avaktivera)"
-
-#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1923
-msgid "Planning mode activated!"
-msgstr "Planeringsläge aktiverat!"
-
-#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1926
-msgid "Planning mode deactivated!"
-msgstr "Planeringsläge avaktiverat!"
-
-#: src/language.cpp:102
-msgid "System default language"
-msgstr "Systemets standardspråk"
-
-#: src/map/location.cpp:164
-msgid "North"
-msgstr "Norr"
-
-#: src/map/location.cpp:166
-msgid "North East"
-msgstr "Nordöst"
-
-#: src/map/location.cpp:168
-msgid "North West"
-msgstr "Nordväst"
-
-#: src/map/location.cpp:170
-msgid "South"
-msgstr "Syd"
-
-#: src/map/location.cpp:172
-msgid "South East"
-msgstr "Sydöst"
-
-#: src/map/location.cpp:174
-msgid "South West"
-msgstr "Sydväst"
-
-#: src/map_command_handler.hpp:187
-msgid "This command is currently unavailable."
-msgstr "Detta kommando är inte tillgängligt för tillfället."
-
-#: src/map_command_handler.hpp:194
-msgid ""
-"Unknown command '$command', try $help_command for a list of available "
-"commands."
-msgstr ""
-"Okänt kommando '$command', se $help_command för en lista över tillgängliga "
-"kommandon."
-
-#: src/map_command_handler.hpp:210
-msgid "Error:"
-msgstr "Fel:"
-
-#: src/map_command_handler.hpp:216
-msgid ""
-"Available commands list and command-specific help. Use \"help all\" to "
-"include currently unavailable commands."
-msgstr ""
-"Tillgänglig kommandolista och kommadospecifik hjälp. Använd \"help all\" för "
-"att inkluderar för närvarande otillgängliga kommandon."
-
-#: src/map_command_handler.hpp:218
-msgid "do not translate the 'all'^[all|<command>]"
-msgstr "[all|<kommando>]"
-
-#: src/map_command_handler.hpp:263
-msgid "Missing argument $arg_id"
-msgstr "Saknar argument $arg_id"
-
-#: src/map_command_handler.hpp:311
-msgid ""
-"Available commands $flags_description:\n"
-"$list_of_commands"
-msgstr ""
-"Tillgängliga kommandon $flags_description:\n"
-"$list_of_commands"
-
-#: src/map_command_handler.hpp:311 src/map_command_handler.hpp:312
-#: src/map_command_handler.hpp:336
-msgid "help"
-msgstr "hjälp"
-
-#: src/map_command_handler.hpp:312
-msgid "Type $help_command <command> for more info."
-msgstr "Ange $help_command <kommando> för mer info."
-
-#: src/map_command_handler.hpp:323
-msgid " No help available."
-msgstr "Ingen hjälp tillgänglig."
-
-#: src/map_command_handler.hpp:329
-msgid "Usage:"
-msgstr "Användning: "
-
-#: src/map_command_handler.hpp:334
-msgid "aliases:"
-msgstr "alias:"
-
-#: src/menu_events.cpp:181
+#~| msgid "not available."
+#~ msgid "Unavailable"
+#~ msgstr "ej tillgänglig"
+
+#~ msgid "race^Miscellaneous"
+#~ msgstr "Diverse"
+
+#~ msgid "Alignment: "
+#~ msgstr "Sinnelag: "
+
+#~ msgid "<header>text='Units of this race'</header>"
+#~ msgstr "<header>text='Trupper av den här rasen'</header>"
+
+#~ msgid "corrupted original file"
+#~ msgstr "trasig originalfil"
+
+#~ msgid "Best of"
+#~ msgstr "Bästa av"
+
+#~ msgid "Worst of"
+#~ msgstr "Sämsta av"
+
+#~ msgid "Base Terrain: "
+#~ msgstr "Basterräng: "
+
+#~ msgid "Movement properties: "
+#~ msgstr "Förflyttningsegenskaper: "
+
+#~ msgid "Defense properties: "
+#~ msgstr "Försvarsegenskaper: "
+
+#~ msgid "Advances from: "
+#~ msgstr "Befordras från: "
+
+#~ msgid "Advances to: "
+#~ msgstr "Kan befordras till: "
+
+#~ msgid "Base unit: "
+#~ msgstr "Bastrupp: "
+
+#~ msgid "Base units: "
+#~ msgstr "Bastrupper: "
+
+#~ msgid "Variations: "
+#~ msgstr "Variationer: "
+
+#~ msgid "Race: "
+#~ msgstr "Ras: "
+
+#~ msgid "Traits"
+#~ msgstr "Karaktärsdrag"
+
+#~ msgid "Abilities: "
+#~ msgstr "Förmågor: "
+
+#~ msgid "Ability Upgrades: "
+#~ msgstr "Uppgradering av förmågor: "
+
+#~ msgid "HP: "
+#~ msgstr "HP: "
+
+#~ msgid "Moves: "
+#~ msgstr "Förflyttning: "
+
+#~ msgid "Vision: "
+#~ msgstr "Version: "
+
+#~ msgid "Jamming: "
+#~ msgstr "Varning:"
+
+#~ msgid "Cost: "
+#~ msgstr "Kostnad: "
+
+#~ msgid "Required XP: "
+#~ msgstr "EP för nästa nivå: "
+
+#~ msgid "unit help^Attacks"
+#~ msgstr "Attacker"
+
+#~ msgid "unit help^Name"
+#~ msgstr "Namn"
+
+#~ msgid "Type"
+#~ msgstr "Typ"
+
+#~ msgid "Strikes"
+#~ msgstr "Slag"
+
+#~ msgid "Range"
+#~ msgstr "Räckvidd"
+
+#~ msgid "Special"
+#~ msgstr "Specialitet"
+
+#~ msgid "Resistances"
+#~ msgstr "Motståndskraft mot olika attacker"
+
+#~ msgid "Attack Type"
+#~ msgstr "Attacktyp"
+
+#~ msgid "Resistance"
+#~ msgstr "Motståndskraft"
+
+#~ msgid "Terrain Modifiers"
+#~ msgstr "Terrängavdrag"
+
+#~ msgid "Terrain"
+#~ msgstr "Terräng"
+
+#~ msgid "Defense"
+#~ msgstr "Försvar"
+
+#~ msgid "Movement Cost"
+#~ msgstr "Förflyttningskostnad"
+
+#~ msgid "Defense Cap"
+#~ msgstr "Försvarstak:"
+
+#~ msgid "Vision Cost"
+#~ msgstr "Version: "
+
+#~ msgid ""
+#~ "Screenshot creation failed.\n"
+#~ "\n"
+#~ "Make sure there is enough space on the drive holding Wesnoth’s player "
+#~ "resource files and that file permissions are set up correctly."
+#~ msgstr ""
+#~ "Kunde inte skapa skärmdump.\n"
+#~ "\n"
+#~ "Kontrollera så det finns nog med utrymme på disken där Wesnoths "
+#~ "spelarresursfiler finns och att filbehörigheter är korrekt inställda."
+
+#~ msgid "Screenshot"
+#~ msgstr "Skärmdump"
+
+#~ msgid "Map-Screenshot"
+#~ msgstr "Kartskärmdump"
+
+#~ msgid "(press $hk to disable)"
+#~ msgstr "(tryck $hk för att avaktivera)"
+
+#~ msgid "Accelerated speed enabled!"
+#~ msgstr "Accelererad fart aktiverad!"
+
+#~ msgid "Accelerated speed disabled!"
+#~ msgstr "Accelererad fart avaktiverad!"
+
+#~ msgid "Auto-Save"
+#~ msgstr "Autosparat"
+
+#~ msgid "Back to Turn "
+#~ msgstr "Tillbaka till drag "
+
+#~ msgid "Back to Start"
+#~ msgstr "Tillbaka till början"
+
+#~ msgid "(press $hotkey to deactivate)"
+#~ msgstr "(tryck $hotkey för att avaktivera)"
+
+#~ msgid "Planning mode activated!"
+#~ msgstr "Planeringsläge aktiverat!"
+
+#~ msgid "Planning mode deactivated!"
+#~ msgstr "Planeringsläge avaktiverat!"
+
+#~ msgid "System default language"
+#~ msgstr "Systemets standardspråk"
+
+#~ msgid "North"
+#~ msgstr "Norr"
+
+#~ msgid "North East"
+#~ msgstr "Nordöst"
+
+#~ msgid "North West"
+#~ msgstr "Nordväst"
+
+#~ msgid "South"
+#~ msgstr "Syd"
+
+#~ msgid "South East"
+#~ msgstr "Sydöst"
+
+#~ msgid "South West"
+#~ msgstr "Sydväst"
+
+#~ msgid "This command is currently unavailable."
+#~ msgstr "Detta kommando är inte tillgängligt för tillfället."
+
+#~ msgid ""
+#~ "Unknown command '$command', try $help_command for a list of available "
+#~ "commands."
+#~ msgstr ""
+#~ "Okänt kommando '$command', se $help_command för en lista över "
+#~ "tillgängliga kommandon."
+
+#~ msgid "Error:"
+#~ msgstr "Fel:"
+
+#~ msgid ""
+#~ "Available commands list and command-specific help. Use \"help all\" to "
+#~ "include currently unavailable commands."
+#~ msgstr ""
+#~ "Tillgänglig kommandolista och kommadospecifik hjälp. Använd \"help all\" "
+#~ "för att inkluderar för närvarande otillgängliga kommandon."
+
+#~ msgid "do not translate the 'all'^[all|<command>]"
+#~ msgstr "[all|<kommando>]"
+
+#~ msgid "Missing argument $arg_id"
+#~ msgstr "Saknar argument $arg_id"
+
+#~ msgid ""
+#~ "Available commands $flags_description:\n"
+#~ "$list_of_commands"
+#~ msgstr ""
+#~ "Tillgängliga kommandon $flags_description:\n"
+#~ "$list_of_commands"
+
+#~ msgid "help"
+#~ msgstr "hjälp"
+
+#~ msgid "Type $help_command <command> for more info."
+#~ msgstr "Ange $help_command <kommando> för mer info."
+
+#~ msgid " No help available."
+#~ msgstr "Ingen hjälp tillgänglig."
+
+#~ msgid "Usage:"
+#~ msgstr "Användning: "
+
+#~ msgid "aliases:"
+#~ msgstr "alias:"
+
 #, fuzzy
-#| msgid "Save the Map As"
-msgid "Save Map As"
-msgstr "Spara kartan som"
-
-#: src/menu_events.cpp:192
-msgid "Map saved."
-msgstr "Kartan sparad."
-
-#: src/menu_events.cpp:196
-msgid "Could not save the map: $msg"
-msgstr "Kunde inte spara kartan: $msg"
-
-#: src/menu_events.cpp:225
-msgid "Message:"
-msgstr "Meddelande: "
-
-#: src/menu_events.cpp:227
-msgid "Send to observers only"
-msgstr "Skicka enbart till åskådare"
-
-#: src/menu_events.cpp:228
-msgid "Send to allies only"
-msgstr "Skicka enbart till allierade"
-
-#: src/menu_events.cpp:277
-msgid "You have no units available to recruit."
-msgstr "Det finns inte några trupper tillgängliga att värva till armén."
-
-#: src/menu_events.cpp:314
-msgid "You do not have enough gold to recruit that unit"
-msgstr "Du har inte tillräckligt med guld för att rekrytera den truppen"
-
-#: src/menu_events.cpp:352
-msgid "You are separated from your soldiers and may not recall them"
-msgstr ""
-"Du är inte tillsammans med dina soldater och kan därför inte återkalla dem"
-
-#: src/menu_events.cpp:371
-msgid ""
-"There are no troops available to recall\n"
-"(You must have veteran survivors from a previous scenario)"
-msgstr ""
-"Det finns inga trupper att återkalla\n"
-"(Du måste ha överlevande veteraner från ett tidigare scenario)"
-
-#: src/menu_events.cpp:375
-msgid "You currently can't recall at the highlighted location"
-msgstr "Du kan för närvarande inte återkalla på den upplysta platsen"
-
-#: src/menu_events.cpp:402
-msgid "You must have at least 1 gold piece to recall a unit"
-msgid_plural "You must have at least $cost gold pieces to recall this unit"
-msgstr[0] ""
-"Du måste ha åtminstone 1 guldstycke för att kunna återkalla en trupp"
-msgstr[1] ""
-"Du måste ha åtminstone $cost guldstycken för att kunna återkalla en trupp"
-
-#: src/menu_events.cpp:528
-msgid "You cannot end your turn yet!"
-msgstr "Du kan inte avsluta ditt drag än!"
-
-#: src/menu_events.cpp:541
-msgid ""
-"You have not started your turn yet. Do you really want to end your turn?"
-msgstr "Vill du verkligen avsluta ditt drag utan att göra något?"
-
-#: src/menu_events.cpp:550
-msgid "Some units have movement left. Do you really want to end your turn?"
-msgstr ""
-"Några trupper kan fortfarande flytta. Vill du verkligen avsluta ditt drag?"
-
-#: src/menu_events.cpp:559
-msgid "Some units have not moved. Do you really want to end your turn?"
-msgstr ""
-"Några trupper har inte flyttat än. Vill du verkligen avsluta ditt drag?"
-
-#: src/menu_events.cpp:615
-msgid "Rename Unit"
-msgstr "Döp om truppen"
-
-#: src/menu_events.cpp:616
-msgid "Name:"
-msgstr "Namn:"
-
-#: src/menu_events.cpp:980
-msgid "Search"
-msgstr "Sök"
-
-#: src/menu_events.cpp:1119
-msgid "(D) — debug only, (N) — network only, (A) — admin only"
-msgstr "(D) - enbart felsökning, (N) - enbart nätvärk, (A) - enbart admin"
-
-#: src/menu_events.cpp:1126
-msgid "(debug command)"
-msgstr "(debugkommandon)"
-
-#: src/menu_events.cpp:1127
-msgid "(network only)"
-msgstr "(enbart nätverk)"
-
-#: src/menu_events.cpp:1129
-msgid "(not during other events)"
-msgstr "(inte under andra händelser)"
-
-#: src/menu_events.cpp:1157
-msgid "Refresh gui."
-msgstr "Rita om användargränssnittet."
-
-#: src/menu_events.cpp:1158
-msgid "Switch a side to/from AI control."
-msgstr "Byt en sida till/från AI-kontroll."
-
-#: src/menu_events.cpp:1159 src/menu_events.cpp:1161
-msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr "[<sida> [on/off]]"
-
-#: src/menu_events.cpp:1160
-msgid "Switch a side to/from idle state."
-msgstr "Tilldela/ta ifrån en sida spelare."
-
-#: src/menu_events.cpp:1164
-msgid "<side> <nickname>"
-msgstr "<sida> <användarnamn>"
-
-#: src/menu_events.cpp:1164
-msgid "Assign control of a side to a different player or observer."
-msgstr "Ge kontroll av en sida till en annan spelare eller observatör."
-
-#: src/menu_events.cpp:1165
-msgid "Query the controller status of a side."
-msgstr "Begär kontrollstatus för en sida."
-
-#: src/menu_events.cpp:1166
-msgid "<side>"
-msgstr "<sida>"
-
-#: src/menu_events.cpp:1167
-msgid "Clear chat history."
-msgstr "Rensa chathistoriken."
-
-#: src/menu_events.cpp:1168
-msgid "Debug foreground terrain."
-msgstr "Felsök förgrundsterräng."
-
-#: src/menu_events.cpp:1170
-msgid "Debug layers from terrain under the mouse."
-msgstr "Felsök lagren i terrängen under muspekaren."
-
-#: src/menu_events.cpp:1171
-msgid "Show fps."
-msgstr "Visa bildfrekvens"
-
-#: src/menu_events.cpp:1173
-msgid "Save game."
-msgstr "Spara spelet."
-
-#: src/menu_events.cpp:1175
-msgid "Quit game."
-msgstr "Avsluta spelet."
-
-#: src/menu_events.cpp:1178
-msgid "Save and quit."
-msgstr "Spara och avsluta."
-
-#: src/menu_events.cpp:1180
-msgid "Ignore replay errors."
-msgstr "Ignorerar omspelsfel."
-
-#: src/menu_events.cpp:1181
-msgid "Disable autosaves."
-msgstr "Avaktivera autospara spel."
-
-#: src/menu_events.cpp:1183
-msgid "<id>"
-msgstr "<id>"
-
-#: src/menu_events.cpp:1183
-msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr ""
-"Fortsätt till nästa nästa scenario eller scenariot identifierat av 'id'"
-
-#: src/menu_events.cpp:1185
-msgid "Choose next scenario"
-msgstr "Välj nästa scenario"
-
-#: src/menu_events.cpp:1188
-msgid ""
-"Change turn number (and time of day), or increase by one if no number is "
-"specified."
-msgstr ""
-"Ändra antalet gjorda drag (och dygnstid), eller stega fram bägge ett steg "
-"ifall ingen siffra anges."
-
-#: src/menu_events.cpp:1188
-msgid "[turn]"
-msgstr "[drag]"
-
-#: src/menu_events.cpp:1191
-msgid ""
-"Change turn limit, or turn the turn limit off if no number is specified or "
-"it’s −1."
-msgstr ""
-"Ändra max antal drag, eller ta bort maxgränsen ifall ingen siffra anges "
-"eller ifall -1 anges."
-
-#: src/menu_events.cpp:1191
-msgid "[limit]"
-msgstr "[gräns]"
-
-#: src/menu_events.cpp:1193
-msgid "Turn debug mode on."
-msgstr "Sätt på avlusningsläge."
-
-#: src/menu_events.cpp:1194
-msgid "Turn debug mode off."
-msgstr "Stäng av avlusningsläge."
-
-#: src/menu_events.cpp:1196 src/menu_events.cpp:1200
-msgid "<command>[;<command>...]"
-msgstr "<kommando>[;<kommando>...]"
-
-#: src/menu_events.cpp:1196
-msgid "Execute a Lua statement."
-msgstr "Kör ett lua-kommando."
-
-#: src/menu_events.cpp:1198
-msgid "Grant higher privileges to Lua scripts."
-msgstr "Ge högre rättigheter till lua-scripts."
-
-#: src/menu_events.cpp:1199
-msgid "Set the command used by the custom command hotkey"
-msgstr "Sätt kommandot som används av snabbtangenten inställbart kommando"
-
-#: src/menu_events.cpp:1202
-msgid "Invoke a dialog allowing changing control of MP sides."
-msgstr "Öppna en dialogruta för byte av sidor i gruppspel"
-
-#: src/menu_events.cpp:1203
-msgid "Launch the gamestate inspector"
-msgstr "Starta spelstatus -inspektorn."
-
-#: src/menu_events.cpp:1205
-msgid "<name>[=<command>]"
-msgstr "<namn>[=<kommando>]"
-
-#: src/menu_events.cpp:1205
-msgid "Set or show alias to a command"
-msgstr "Sätt eller visa alias till ett kommando"
-
-#: src/menu_events.cpp:1207
-msgid "<var>=<value>"
-msgstr "<var>=<värde>"
-
-#: src/menu_events.cpp:1207
-msgid "Set a scenario variable."
-msgstr "Sätt en scenariovariabel."
-
-#: src/menu_events.cpp:1208
-msgid "<var>"
-msgstr "<var>"
-
-#: src/menu_events.cpp:1208
-msgid "Show a scenario variable."
-msgstr "Visa en scenariovariabel."
-
-#: src/menu_events.cpp:1210
-msgid "Modify a unit variable. (Only top level keys are supported.)"
-msgstr "Ändra en truppvariabel. (Endast toppnivå-nycklar stöds.)"
-
-#: src/menu_events.cpp:1216
-msgid "Discover all units in help."
-msgstr "Upptäck alla trupper i hjälpavsnitten."
-
-#: src/menu_events.cpp:1217
-msgid "'Undiscover' all units in help."
-msgstr "'Oupptäck' alla trupper i hjälpavsnitten."
-
-#: src/menu_events.cpp:1218
-msgid "Create a unit."
-msgstr "Skapa en trupp."
-
-#: src/menu_events.cpp:1219
-msgid "Toggle fog for the current player."
-msgstr "Sätt på/stäng av slöja för aktuell sida."
-
-#: src/menu_events.cpp:1220
-msgid "Toggle shroud for the current player."
-msgstr "Sätt på/stäng av slöja för aktuell sida."
-
-#: src/menu_events.cpp:1221
-msgid "Give gold to the current player."
-msgstr "Ge guld till aktuell spelare."
-
-#: src/menu_events.cpp:1222
-msgid "Fire a game event."
-msgstr "Aktivera en spelhändelse."
-
-#: src/menu_events.cpp:1225
-msgid "Toggle overlaying of x,y coordinates on hexes."
-msgstr "Växla visning av x- och y-koordinater på hexagoner."
-
-#: src/menu_events.cpp:1228
-msgid "Toggle overlaying of terrain codes on hexes."
-msgstr "Växa visning av terrängkoder på hexagoner."
-
-#: src/menu_events.cpp:1231
+#~| msgid "Save the Map As"
+#~ msgid "Save Map As"
+#~ msgstr "Spara kartan som"
+
+#~ msgid "Map saved."
+#~ msgstr "Kartan sparad."
+
+#~ msgid "Could not save the map: $msg"
+#~ msgstr "Kunde inte spara kartan: $msg"
+
+#~ msgid "Message:"
+#~ msgstr "Meddelande: "
+
+#~ msgid "Send to observers only"
+#~ msgstr "Skicka enbart till åskådare"
+
+#~ msgid "Send to allies only"
+#~ msgstr "Skicka enbart till allierade"
+
+#~ msgid "You have no units available to recruit."
+#~ msgstr "Det finns inte några trupper tillgängliga att värva till armén."
+
+#~ msgid "You do not have enough gold to recruit that unit"
+#~ msgstr "Du har inte tillräckligt med guld för att rekrytera den truppen"
+
+#~ msgid "You are separated from your soldiers and may not recall them"
+#~ msgstr ""
+#~ "Du är inte tillsammans med dina soldater och kan därför inte återkalla dem"
+
+#~ msgid ""
+#~ "There are no troops available to recall\n"
+#~ "(You must have veteran survivors from a previous scenario)"
+#~ msgstr ""
+#~ "Det finns inga trupper att återkalla\n"
+#~ "(Du måste ha överlevande veteraner från ett tidigare scenario)"
+
+#~ msgid "You currently can't recall at the highlighted location"
+#~ msgstr "Du kan för närvarande inte återkalla på den upplysta platsen"
+
+#~ msgid "You must have at least 1 gold piece to recall a unit"
+#~ msgid_plural "You must have at least $cost gold pieces to recall this unit"
+#~ msgstr[0] ""
+#~ "Du måste ha åtminstone 1 guldstycke för att kunna återkalla en trupp"
+#~ msgstr[1] ""
+#~ "Du måste ha åtminstone $cost guldstycken för att kunna återkalla en trupp"
+
+#~ msgid "You cannot end your turn yet!"
+#~ msgstr "Du kan inte avsluta ditt drag än!"
+
+#~ msgid ""
+#~ "You have not started your turn yet. Do you really want to end your turn?"
+#~ msgstr "Vill du verkligen avsluta ditt drag utan att göra något?"
+
+#~ msgid "Some units have movement left. Do you really want to end your turn?"
+#~ msgstr ""
+#~ "Några trupper kan fortfarande flytta. Vill du verkligen avsluta ditt drag?"
+
+#~ msgid "Some units have not moved. Do you really want to end your turn?"
+#~ msgstr ""
+#~ "Några trupper har inte flyttat än. Vill du verkligen avsluta ditt drag?"
+
+#~ msgid "Rename Unit"
+#~ msgstr "Döp om truppen"
+
+#~ msgid "Name:"
+#~ msgstr "Namn:"
+
+#~ msgid "Search"
+#~ msgstr "Sök"
+
+#~ msgid "(D) — debug only, (N) — network only, (A) — admin only"
+#~ msgstr "(D) - enbart felsökning, (N) - enbart nätvärk, (A) - enbart admin"
+
+#~ msgid "(debug command)"
+#~ msgstr "(debugkommandon)"
+
+#~ msgid "(network only)"
+#~ msgstr "(enbart nätverk)"
+
+#~ msgid "(not during other events)"
+#~ msgstr "(inte under andra händelser)"
+
+#~ msgid "Refresh gui."
+#~ msgstr "Rita om användargränssnittet."
+
+#~ msgid "Switch a side to/from AI control."
+#~ msgstr "Byt en sida till/från AI-kontroll."
+
+#~ msgid "do not translate the on/off^[<side> [on/off]]"
+#~ msgstr "[<sida> [on/off]]"
+
+#~ msgid "Switch a side to/from idle state."
+#~ msgstr "Tilldela/ta ifrån en sida spelare."
+
+#~ msgid "<side> <nickname>"
+#~ msgstr "<sida> <användarnamn>"
+
+#~ msgid "Assign control of a side to a different player or observer."
+#~ msgstr "Ge kontroll av en sida till en annan spelare eller observatör."
+
+#~ msgid "Query the controller status of a side."
+#~ msgstr "Begär kontrollstatus för en sida."
+
+#~ msgid "<side>"
+#~ msgstr "<sida>"
+
+#~ msgid "Clear chat history."
+#~ msgstr "Rensa chathistoriken."
+
+#~ msgid "Debug foreground terrain."
+#~ msgstr "Felsök förgrundsterräng."
+
+#~ msgid "Debug layers from terrain under the mouse."
+#~ msgstr "Felsök lagren i terrängen under muspekaren."
+
+#~ msgid "Show fps."
+#~ msgstr "Visa bildfrekvens"
+
+#~ msgid "Save game."
+#~ msgstr "Spara spelet."
+
+#~ msgid "Quit game."
+#~ msgstr "Avsluta spelet."
+
+#~ msgid "Save and quit."
+#~ msgstr "Spara och avsluta."
+
+#~ msgid "Ignore replay errors."
+#~ msgstr "Ignorerar omspelsfel."
+
+#~ msgid "Disable autosaves."
+#~ msgstr "Avaktivera autospara spel."
+
+#~ msgid "<id>"
+#~ msgstr "<id>"
+
+#~ msgid "Advance to the next scenario, or scenario identified by 'id'"
+#~ msgstr ""
+#~ "Fortsätt till nästa nästa scenario eller scenariot identifierat av 'id'"
+
+#~ msgid "Choose next scenario"
+#~ msgstr "Välj nästa scenario"
+
+#~ msgid ""
+#~ "Change turn number (and time of day), or increase by one if no number is "
+#~ "specified."
+#~ msgstr ""
+#~ "Ändra antalet gjorda drag (och dygnstid), eller stega fram bägge ett steg "
+#~ "ifall ingen siffra anges."
+
+#~ msgid "[turn]"
+#~ msgstr "[drag]"
+
+#~ msgid ""
+#~ "Change turn limit, or turn the turn limit off if no number is specified "
+#~ "or it’s −1."
+#~ msgstr ""
+#~ "Ändra max antal drag, eller ta bort maxgränsen ifall ingen siffra anges "
+#~ "eller ifall -1 anges."
+
+#~ msgid "[limit]"
+#~ msgstr "[gräns]"
+
+#~ msgid "Turn debug mode on."
+#~ msgstr "Sätt på avlusningsläge."
+
+#~ msgid "Turn debug mode off."
+#~ msgstr "Stäng av avlusningsläge."
+
+#~ msgid "<command>[;<command>...]"
+#~ msgstr "<kommando>[;<kommando>...]"
+
+#~ msgid "Execute a Lua statement."
+#~ msgstr "Kör ett lua-kommando."
+
+#~ msgid "Grant higher privileges to Lua scripts."
+#~ msgstr "Ge högre rättigheter till lua-scripts."
+
+#~ msgid "Set the command used by the custom command hotkey"
+#~ msgstr "Sätt kommandot som används av snabbtangenten inställbart kommando"
+
+#~ msgid "Invoke a dialog allowing changing control of MP sides."
+#~ msgstr "Öppna en dialogruta för byte av sidor i gruppspel"
+
+#~ msgid "Launch the gamestate inspector"
+#~ msgstr "Starta spelstatus -inspektorn."
+
+#~ msgid "<name>[=<command>]"
+#~ msgstr "<namn>[=<kommando>]"
+
+#~ msgid "Set or show alias to a command"
+#~ msgstr "Sätt eller visa alias till ett kommando"
+
+#~ msgid "<var>=<value>"
+#~ msgstr "<var>=<värde>"
+
+#~ msgid "Set a scenario variable."
+#~ msgstr "Sätt en scenariovariabel."
+
+#~ msgid "<var>"
+#~ msgstr "<var>"
+
+#~ msgid "Show a scenario variable."
+#~ msgstr "Visa en scenariovariabel."
+
+#~ msgid "Modify a unit variable. (Only top level keys are supported.)"
+#~ msgstr "Ändra en truppvariabel. (Endast toppnivå-nycklar stöds.)"
+
+#~ msgid "Discover all units in help."
+#~ msgstr "Upptäck alla trupper i hjälpavsnitten."
+
+#~ msgid "'Undiscover' all units in help."
+#~ msgstr "'Oupptäck' alla trupper i hjälpavsnitten."
+
+#~ msgid "Create a unit."
+#~ msgstr "Skapa en trupp."
+
+#~ msgid "Toggle fog for the current player."
+#~ msgstr "Sätt på/stäng av slöja för aktuell sida."
+
+#~ msgid "Toggle shroud for the current player."
+#~ msgstr "Sätt på/stäng av slöja för aktuell sida."
+
+#~ msgid "Give gold to the current player."
+#~ msgstr "Ge guld till aktuell spelare."
+
+#~ msgid "Fire a game event."
+#~ msgstr "Aktivera en spelhändelse."
+
+#~ msgid "Toggle overlaying of x,y coordinates on hexes."
+#~ msgstr "Växla visning av x- och y-koordinater på hexagoner."
+
+#~ msgid "Toggle overlaying of terrain codes on hexes."
+#~ msgstr "Växa visning av terrängkoder på hexagoner."
+
 #, fuzzy
-#| msgid "Toggle overlaying of terrain codes on hexes."
-msgid "Toggle overlaying of number of bitmaps on hexes."
-msgstr "Växa visning av terrängkoder på hexagoner."
+#~| msgid "Toggle overlaying of terrain codes on hexes."
+#~ msgid "Toggle overlaying of number of bitmaps on hexes."
+#~ msgstr "Växa visning av terrängkoder på hexagoner."
 
-#: src/menu_events.cpp:1233
-msgid "Toggle planning mode."
-msgstr "Växla planeringsläge av/på."
+#~ msgid "Toggle planning mode."
+#~ msgstr "Växla planeringsläge av/på."
 
-#: src/menu_events.cpp:1236
-msgid "Access whiteboard options dialog."
-msgstr "Få tillgång till dialogen för whiteboard-inställningar."
+#~ msgid "Access whiteboard options dialog."
+#~ msgstr "Få tillgång till dialogen för whiteboard-inställningar."
 
-#: src/menu_events.cpp:1356
-msgid "Could not find label or unit containing the string ‘$search’."
-msgstr ""
-"Kunde inte finna etikett eller trupp som innehöll textsträngen ’$search’."
+#~ msgid "Could not find label or unit containing the string ‘$search’."
+#~ msgstr ""
+#~ "Kunde inte finna etikett eller trupp som innehöll textsträngen ’$search’."
 
-#: src/menu_events.cpp:1399
-msgid "Can't droid invalid side: '$side'."
-msgstr "AI:n kan inte ta över en ogiltig sida: '$side'."
+#~ msgid "Can't droid invalid side: '$side'."
+#~ msgstr "AI:n kan inte ta över en ogiltig sida: '$side'."
 
-#: src/menu_events.cpp:1404
-msgid "Can't droid networked side: '$side'."
-msgstr "AI:n kan inte ta över en nätverkssida: '$side'."
+#~ msgid "Can't droid networked side: '$side'."
+#~ msgstr "AI:n kan inte ta över en nätverkssida: '$side'."
 
-#: src/menu_events.cpp:1422
-msgid "Can't droid a local ai side: '$side'."
-msgstr "AI:n kan inte ta över en lokal AI-sida: '$side'."
+#~ msgid "Can't droid a local ai side: '$side'."
+#~ msgstr "AI:n kan inte ta över en lokal AI-sida: '$side'."
 
-#: src/menu_events.cpp:1438
-msgid "Can't idle invalid side: '$side'."
-msgstr "Kan inte ange att en ogiltig sida skall sakna spelare: '$side'."
+#~ msgid "Can't idle invalid side: '$side'."
+#~ msgstr "Kan inte ange att en ogiltig sida skall sakna spelare: '$side'."
 
-#: src/menu_events.cpp:1443
-msgid "Can't idle networked side: '$side'."
-msgstr "Kan inte ange att en nätverkssida skall sakna spelare: '$side'."
+#~ msgid "Can't idle networked side: '$side'."
+#~ msgstr "Kan inte ange att en nätverkssida skall sakna spelare: '$side'."
 
-#: src/menu_events.cpp:1448
-msgid "Can't idle local ai side: '$side'."
-msgstr "Kan inte ange att en lokal AI-sida skall sakna spelare: '$side'."
+#~ msgid "Can't idle local ai side: '$side'."
+#~ msgstr "Kan inte ange att en lokal AI-sida skall sakna spelare: '$side'."
 
-#: src/menu_events.cpp:1508
-msgid "Can't change control of invalid side: '$side'."
-msgstr "Kan inte byta kontroll på ogiltig sida: '$side'."
+#~ msgid "Can't change control of invalid side: '$side'."
+#~ msgstr "Kan inte byta kontroll på ogiltig sida: '$side'."
 
-#: src/menu_events.cpp:1518
-msgid "Can't change control of out-of-bounds side: '$side'."
-msgstr "Kan inte byta kontroll på icke-existerande sida: '$side'."
+#~ msgid "Can't change control of out-of-bounds side: '$side'."
+#~ msgstr "Kan inte byta kontroll på icke-existerande sida: '$side'."
 
-#: src/menu_events.cpp:1535
-msgid "Can't query control of invalid side: '$side'."
-msgstr "Kan inte efterfråga kontroll av ogiltig sida: '$side'."
+#~ msgid "Can't query control of invalid side: '$side'."
+#~ msgstr "Kan inte efterfråga kontroll av ogiltig sida: '$side'."
 
-#: src/menu_events.cpp:1542
-msgid "Can't query control of out-of-bounds side: '$side'."
-msgstr "Kan inte byta kontroll på icke-existerande sida: '$side'."
+#~ msgid "Can't query control of out-of-bounds side: '$side'."
+#~ msgstr "Kan inte byta kontroll på icke-existerande sida: '$side'."
 
-#: src/menu_events.cpp:1660
-msgid "Choose Scenario (Debug!)"
-msgstr "Välj scenario (Avlusning!)"
+#~ msgid "Choose Scenario (Debug!)"
+#~ msgstr "Välj scenario (Avlusning!)"
 
-#: src/menu_events.cpp:1696
-msgid "Debug mode activated!"
-msgstr "Debugläge aktiverat!"
+#~ msgid "Debug mode activated!"
+#~ msgstr "Debugläge aktiverat!"
 
-#: src/menu_events.cpp:1699
-msgid "Debug mode not available in network games"
-msgstr "Avlusningsläge är inte tillgängligt i nätverksspel"
+#~ msgid "Debug mode not available in network games"
+#~ msgstr "Avlusningsläge är inte tillgängligt i nätverksspel"
 
-#: src/menu_events.cpp:1706
-msgid "Debug mode deactivated!"
-msgstr "Debugläge avaktiverat!"
+#~ msgid "Debug mode deactivated!"
+#~ msgstr "Debugläge avaktiverat!"
 
-#: src/menu_events.cpp:1726
-msgid "WARNING! Unsafe Lua Mode"
-msgstr ""
+#~ msgid "Unsafe mode enabled!"
+#~ msgstr "Osäkert läge aktiverat!"
 
-#: src/menu_events.cpp:1727
-msgid ""
-"Executing Lua code in in this manner opens your computer to potential "
-"security breaches from any malicious add-ons or other programs you may have "
-"installed.\n"
-"\n"
-"Do not continue unless you really know what you are doing."
-msgstr ""
+#~ msgid "Variable not found"
+#~ msgstr "Kan ej finna variabel"
 
-#: src/menu_events.cpp:1732
-msgid "Unsafe mode enabled!"
-msgstr "Osäkert läge aktiverat!"
+#~ msgid ""
+#~ "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
+#~ "chaotic, or liminal."
+#~ msgstr ""
+#~ "Okänt sinnelag: '$alignment', behöver vara antingen redbar, neutral, "
+#~ "ljusskygg eller perifer."
 
-#: src/menu_events.cpp:1781
-msgid "Variable not found"
-msgstr "Kan ej finna variabel"
+#~ msgid "Do you wish to clear all of your discovered units from help?"
+#~ msgstr "Vill du rensa ut alla dina upptäckta trupper från hjälpavsnitten?"
 
-#: src/menu_events.cpp:1830
-msgid ""
-"Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
-"chaotic, or liminal."
-msgstr ""
-"Okänt sinnelag: '$alignment', behöver vara antingen redbar, neutral, "
-"ljusskygg eller perifer."
+#~ msgid "Invalid unit type"
+#~ msgstr "Ogiltigt trupp-namn"
 
-#: src/menu_events.cpp:1856
-msgid "Do you wish to clear all of your discovered units from help?"
-msgstr "Vill du rensa ut alla dina upptäckta trupper från hjälpavsnitten?"
+#~ msgid "Invalid location"
+#~ msgstr "Ogiltig plats"
 
-#: src/menu_events.cpp:1870
-msgid "Invalid unit type"
-msgstr "Ogiltigt trupp-namn"
+#~ msgid "prompt^Command:"
+#~ msgstr "Kommando:"
 
-#: src/menu_events.cpp:1877
-msgid "Invalid location"
-msgstr "Ogiltig plats"
+#~ msgid ""
+#~ "You cannot move your leader away from the keep with some planned recruits "
+#~ "or recalls left."
+#~ msgstr ""
+#~ "Du kan inte flytta din ledare från kärntornet medan du fortfarande har "
+#~ "rekryteringar eller återkallelser planerade."
 
-#: src/menu_events.cpp:1950 src/menu_events.cpp:1976
-msgid "prompt^Command:"
-msgstr "Kommando:"
-
-#: src/mouse_events.cpp:841
-msgid ""
-"You cannot move your leader away from the keep with some planned recruits or "
-"recalls left."
-msgstr ""
-"Du kan inte flytta din ledare från kärntornet medan du fortfarande har "
-"rekryteringar eller återkallelser planerade."
-
-#: src/mouse_events.cpp:933
 #, fuzzy
-#| msgid "No usable weapon"
-msgid "This unit has no usable weapons."
-msgstr "Inget användbart vapen"
+#~| msgid "No usable weapon"
+#~ msgid "This unit has no usable weapons."
+#~ msgstr "Inget användbart vapen"
 
-#: src/mp_game_settings.hpp:68
-msgid "Independent"
-msgstr ""
+#~ msgid "A player has joined"
+#~ msgstr "En spelare har anslutit sig"
 
-#: src/mp_game_settings.hpp:69
-msgid "No Mirror"
-msgstr ""
+#~ msgid "Wesnoth"
+#~ msgstr "Wesnoth"
 
-#: src/mp_game_settings.hpp:70
-msgid "No Ally Mirror"
-msgstr ""
+#~ msgid "A player has left"
+#~ msgstr "En spelare har lämnat spelet"
 
-#: src/mp_ui_alerts.cpp:66
-msgid "A player has joined"
-msgstr "En spelare har anslutit sig"
+#~ msgid "Ready to start!"
+#~ msgstr "Klar att börja!"
 
-#: src/mp_ui_alerts.cpp:66 src/mp_ui_alerts.cpp:80 src/mp_ui_alerts.cpp:149
-#: src/mp_ui_alerts.cpp:160
-msgid "Wesnoth"
-msgstr "Wesnoth"
+#~ msgid "Game has begun!"
+#~ msgstr "Spelet har börjat!"
 
-#: src/mp_ui_alerts.cpp:80
-msgid "A player has left"
-msgstr "En spelare har lämnat spelet"
+#~ msgid "$name has taken control"
+#~ msgstr "$name har tagit över kontrollen"
 
-#: src/mp_ui_alerts.cpp:149
-msgid "Ready to start!"
-msgstr "Klar att börja!"
+#~ msgid "Turn changed"
+#~ msgstr "Bytt drag"
 
-#: src/mp_ui_alerts.cpp:160
-msgid "Game has begun!"
-msgstr "Spelet har börjat!"
+#~ msgid "Terrain with a movement cost less than 1 encountered."
+#~ msgstr "Stötte på terräng med en förflyttningskostnad mindre än 1."
 
-#: src/mp_ui_alerts.cpp:170
-msgid "$name has taken control"
-msgstr "$name har tagit över kontrollen"
+#~ msgid "time left for current turn"
+#~ msgstr "tid kvar för nuvarande drag"
 
-#: src/mp_ui_alerts.cpp:170
-msgid "Turn changed"
-msgstr "Bytt drag"
+#~ msgid "current local time"
+#~ msgstr "nuvarande lokal tid"
 
-#: src/pathfind/pathfind.cpp:709
-msgid "Terrain with a movement cost less than 1 encountered."
-msgstr "Stötte på terräng med en förflyttningskostnad mindre än 1."
+#~ msgid ""
+#~ "The game is out of sync. It might not make much sense to continue. Do you "
+#~ "want to save your game?"
+#~ msgstr ""
+#~ "Spelet är inte längre synkroniserat. Det finns troligen ingen anledning "
+#~ "att fortsätta nu. Vill du spara spelet?"
 
-#: src/play_controller.cpp:245
-msgid "time left for current turn"
-msgstr "tid kvar för nuvarande drag"
+#~ msgid "Error details:"
+#~ msgstr "Fel:"
 
-#: src/play_controller.cpp:247 src/replay_controller.cpp:114
-msgid "current local time"
-msgstr "nuvarande lokal tid"
+#~ msgid "No objectives available"
+#~ msgstr "Inga mål tillgängliga"
 
-#: src/play_controller.cpp:984
-msgid ""
-"The game is out of sync. It might not make much sense to continue. Do you "
-"want to save your game?"
-msgstr ""
-"Spelet är inte längre synkroniserat. Det finns troligen ingen anledning att "
-"fortsätta nu. Vill du spara spelet?"
+#~ msgid "Undoing moves not yet transmitted to the server."
+#~ msgstr "Ångrar förflyttningar som inte har skickats till servern än."
 
-#: src/play_controller.cpp:985
-msgid "Error details:"
-msgstr "Fel:"
+#~ msgid ""
+#~ "The game is out of sync, and cannot continue. There are a number of "
+#~ "reasons this could happen: this can occur if you or another player have "
+#~ "modified their game settings. This may mean one of the players is "
+#~ "attempting to cheat. It could also be due to a bug in the game, but this "
+#~ "is less likely.\n"
+#~ "\n"
+#~ "Do you want to save an error log of your game?"
+#~ msgstr ""
+#~ "Spelet är osynkroniserat och måste avslutas. Det kan finnas flera "
+#~ "anledningar till detta. Till exempel kan det inträffa om du eller någon "
+#~ "annan spelare ändrat i spelets datafiler. Detta kan betyda att någon av "
+#~ "spelarna försöker fuska. Det kan också bero på ett programmeringsfel i "
+#~ "spelet, men detta är mindre troligt.\n"
+#~ "\n"
+#~ "Vill du spara en fellogg?"
 
-#: src/play_controller.cpp:1260
-msgid "No objectives available"
-msgstr "Inga mål tillgängliga"
+#~ msgid ""
+#~ "This side is in an idle state. To proceed with the game, it must be "
+#~ "assigned to another controller. You may use :droid, :control or :"
+#~ "give_control for example."
+#~ msgstr ""
+#~ "Sidan saknar spelare. För att fortsätta spelet krävs att den tilldelas en "
+#~ "annan spelare. Du kan t ex använda :droid, :control eller :give_control."
 
-#: src/playmp_controller.cpp:155
-msgid "Undoing moves not yet transmitted to the server."
-msgstr "Ångrar förflyttningar som inte har skickats till servern än."
+#~ msgid "Game Error"
+#~ msgstr "Spelfel"
 
-#: src/playmp_controller.cpp:371
-msgid ""
-"The game is out of sync, and cannot continue. There are a number of reasons "
-"this could happen: this can occur if you or another player have modified "
-"their game settings. This may mean one of the players is attempting to "
-"cheat. It could also be due to a bug in the game, but this is less likely.\n"
-"\n"
-"Do you want to save an error log of your game?"
-msgstr ""
-"Spelet är osynkroniserat och måste avslutas. Det kan finnas flera "
-"anledningar till detta. Till exempel kan det inträffa om du eller någon "
-"annan spelare ändrat i spelets datafiler. Detta kan betyda att någon av "
-"spelarna försöker fuska. Det kan också bero på ett programmeringsfel i "
-"spelet, men detta är mindre troligt.\n"
-"\n"
-"Vill du spara en fellogg?"
+#~ msgid ""
+#~ "This multiplayer game uses an alternative random mode, if you don't know "
+#~ "what this message means, then most likely someone is cheating or someone "
+#~ "reloaded a corrupt game."
+#~ msgstr ""
+#~ "Detta gruppspel använder sig av en alternativ slumpvalsmetod, om du inte "
+#~ "förstår vad detta meddelande betyder så är det troligt att någon fuskar "
+#~ "eller att någon har läst in ett korrupt spel."
 
-#: src/playmp_controller.cpp:414
-msgid ""
-"This side is in an idle state. To proceed with the game, it must be assigned "
-"to another controller. You may use :droid, :control or :give_control for "
-"example."
-msgstr ""
-"Sidan saknar spelare. För att fortsätta spelet krävs att den tilldelas en "
-"annan spelare. Du kan t ex använda :droid, :control eller :give_control."
+#~ msgid "The game is over."
+#~ msgstr "Spelet är slut"
 
-#: src/playsingle_controller.cpp:163
-msgid "Game Error"
-msgstr "Spelfel"
+#~ msgid ""
+#~ "A network disconnection has occurred, and the game cannot continue. Do "
+#~ "you want to save the game?"
+#~ msgstr ""
+#~ "Anslutningen har kopplats ner och spelet kan inte fortsätta. Vill du "
+#~ "spara spelet?"
 
-#: src/playsingle_controller.cpp:164
-msgid ""
-"This multiplayer game uses an alternative random mode, if you don't know "
-"what this message means, then most likely someone is cheating or someone "
-"reloaded a corrupt game."
-msgstr ""
-"Detta gruppspel använder sig av en alternativ slumpvalsmetod, om du inte "
-"förstår vad detta meddelande betyder så är det troligt att någon fuskar "
-"eller att någon har läst in ett korrupt spel."
+#~ msgid "It is now $name|’s turn"
+#~ msgstr "Nu är det $name|s drag"
 
-#: src/playsingle_controller.cpp:314
-msgid "The game is over."
-msgstr "Spelet är slut"
-
-#: src/playsingle_controller.cpp:349
-msgid ""
-"A network disconnection has occurred, and the game cannot continue. Do you "
-"want to save the game?"
-msgstr ""
-"Anslutningen har kopplats ner och spelet kan inte fortsätta. Vill du spara "
-"spelet?"
-
-#: src/playsingle_controller.cpp:439
-msgid "It is now $name|’s turn"
-msgstr "Nu är det $name|s drag"
-
-#: src/playturn.cpp:263
 #, fuzzy
-#| msgid "Give gold to the current player."
-msgid "Give control to their ally $player"
-msgstr "Ge guld till aktuell spelare."
+#~| msgid "Give gold to the current player."
+#~ msgid "Give control to their ally $player"
+#~ msgstr "Ge guld till aktuell spelare."
 
-#: src/playturn.cpp:272
 #, fuzzy
-#| msgid "Give gold to the current player."
-msgid "Give control to observer $player"
-msgstr "Ge guld till aktuell spelare."
+#~| msgid "Give gold to the current player."
+#~ msgid "Give control to observer $player"
+#~ msgstr "Ge guld till aktuell spelare."
 
-#: src/playturn.cpp:277
-msgid "Replace with AI"
-msgstr "Ersätt spelare med datorn"
+#~ msgid "Replace with AI"
+#~ msgstr "Ersätt spelare med datorn"
 
-#: src/playturn.cpp:278
-msgid "Replace with local player"
-msgstr "Ersätt med lokal spelare"
+#~ msgid "Replace with local player"
+#~ msgstr "Ersätt med lokal spelare"
 
-#: src/playturn.cpp:279
-msgid "Set side to idle"
-msgstr "Ange att sidan saknar spelare"
+#~ msgid "Set side to idle"
+#~ msgstr "Ange att sidan saknar spelare"
 
-#: src/playturn.cpp:280
-msgid "Save and abort game"
-msgstr "Spara och avbryt spelet"
+#~ msgid "Save and abort game"
+#~ msgstr "Spara och avbryt spelet"
 
-#: src/playturn.cpp:283
-msgid "$player has left the game. What do you want to do?"
-msgstr "$player har lämnat spelet. Vad vill du göra?"
+#~ msgid "$player has left the game. What do you want to do?"
+#~ msgstr "$player har lämnat spelet. Vad vill du göra?"
 
-#: src/quit_confirmation.cpp:56
-msgid "Quit"
-msgstr "Avsluta"
+#~ msgid "Quit"
+#~ msgstr "Avsluta"
 
-#: src/quit_confirmation.cpp:62
-msgid "Do you really want to quit?"
-msgstr "Vill du verkligen sluta?"
+#~ msgid "Do you really want to quit?"
+#~ msgstr "Vill du verkligen sluta?"
 
-#: src/reports.cpp:145 src/savegame.cpp:403
-msgid "Name: "
-msgstr "Namn:"
+#~ msgid "Name: "
+#~ msgstr "Namn:"
 
-#: src/reports.cpp:166
-msgid "Type: "
-msgstr "Typ:"
+#~ msgid "Type: "
+#~ msgstr "Typ:"
 
-#: src/reports.cpp:236
-msgid "Level: "
-msgstr "Nivå:"
+#~ msgid "Level: "
+#~ msgstr "Nivå:"
 
-#: src/reports.cpp:239
-msgid "No advancement"
-msgstr "Inga befordringar"
+#~ msgid "No advancement"
+#~ msgstr "Inga befordringar"
 
-#: src/reports.cpp:241
-msgid "Advances to:"
-msgstr "Kan befordras till: "
+#~ msgid "Advances to:"
+#~ msgstr "Kan befordras till: "
 
-#: src/reports.cpp:281
-msgid "Trait: "
-msgstr "Karaktärsdrag:"
+#~ msgid "Trait: "
+#~ msgstr "Karaktärsdrag:"
 
-#: src/reports.cpp:304
-msgid "invisible: "
-msgstr "osynlig: "
+#~ msgid "invisible: "
+#~ msgstr "osynlig: "
 
-#: src/reports.cpp:305
-msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
-msgstr ""
-"Den här truppen är osynlig. Den kan inte bli sedd eller attackeras av "
-"fiendetrupper"
+#~ msgid ""
+#~ "This unit is invisible. It cannot be seen or attacked by enemy units."
+#~ msgstr ""
+#~ "Den här truppen är osynlig. Den kan inte bli sedd eller attackeras av "
+#~ "fiendetrupper"
 
-#: src/reports.cpp:308
-msgid "slowed: "
-msgstr "långsam: "
+#~ msgid "slowed: "
+#~ msgstr "långsam: "
 
-#: src/reports.cpp:309
-msgid ""
-"This unit has been slowed. It will only deal half its normal damage when "
-"attacking and its movement cost is doubled."
-msgstr ""
-"Denna trupp är nersaktad. Vid anfall kan den bara vålla halva normala skadan "
-"och dessutom är dess förflyttningskostnad är dubblad."
+#~ msgid ""
+#~ "This unit has been slowed. It will only deal half its normal damage when "
+#~ "attacking and its movement cost is doubled."
+#~ msgstr ""
+#~ "Denna trupp är nersaktad. Vid anfall kan den bara vålla halva normala "
+#~ "skadan och dessutom är dess förflyttningskostnad är dubblad."
 
-#: src/reports.cpp:312
-msgid "poisoned: "
-msgstr "förgiftad: "
+#~ msgid "poisoned: "
+#~ msgstr "förgiftad: "
 
-#: src/reports.cpp:313
-msgid ""
-"This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
-"to the poison in a village or from a friendly unit with the ‘cures’ "
-"ability.\n"
-"\n"
-"Units cannot be killed by poison alone. The poison will not reduce it below "
-"1 HP."
-msgstr ""
-"Den här truppen är förgiftad och kommer att förlora 8 HP per drag tills den "
-"kan hitta ett motmedel i en by eller få hjälp av en allierad med förmågan "
-"att bota.\n"
-"\n"
-"Trupper kan inte dö av enbart förgiftning, så truppen kommer inte att få "
-"mindre än 1 HP."
+#~ msgid ""
+#~ "This unit is poisoned. It will lose 8 HP every turn until it can seek a "
+#~ "cure to the poison in a village or from a friendly unit with the ‘cures’ "
+#~ "ability.\n"
+#~ "\n"
+#~ "Units cannot be killed by poison alone. The poison will not reduce it "
+#~ "below 1 HP."
+#~ msgstr ""
+#~ "Den här truppen är förgiftad och kommer att förlora 8 HP per drag tills "
+#~ "den kan hitta ett motmedel i en by eller få hjälp av en allierad med "
+#~ "förmågan att bota.\n"
+#~ "\n"
+#~ "Trupper kan inte dö av enbart förgiftning, så truppen kommer inte att få "
+#~ "mindre än 1 HP."
 
-#: src/reports.cpp:316
-msgid "petrified: "
-msgstr "förstenad:"
+#~ msgid "petrified: "
+#~ msgstr "förstenad:"
 
-#: src/reports.cpp:317
-msgid "This unit has been petrified. It may not move or attack."
-msgstr ""
-"Denna trupp har förstenats. Den kan inte förflytta sig eller attackera."
+#~ msgid "This unit has been petrified. It may not move or attack."
+#~ msgstr ""
+#~ "Denna trupp har förstenats. Den kan inte förflytta sig eller attackera."
 
-#: src/reports.cpp:389
-msgid "Ability: "
-msgstr "Förmågor: "
+#~ msgid "Ability: "
+#~ msgstr "Förmågor: "
 
-#: src/reports.cpp:391 src/reports.cpp:818
-msgid " (inactive)"
-msgstr "(inaktiv)"
+#~ msgid " (inactive)"
+#~ msgstr "(inaktiv)"
 
-#: src/reports.cpp:443
-msgid "Resistances: "
-msgstr "Motståndskraft: "
+#~ msgid "Resistances: "
+#~ msgstr "Motståndskraft: "
 
-#: src/reports.cpp:445
-msgid "(Att / Def)"
-msgstr "(Att / Försv)"
+#~ msgid "(Att / Def)"
+#~ msgstr "(Att / Försv)"
 
-#: src/reports.cpp:471
-msgid "Experience Modifier: "
-msgstr "Erfarenhetsmodifierare:"
+#~ msgid "Experience Modifier: "
+#~ msgstr "Erfarenhetsmodifierare:"
 
-#: src/reports.cpp:522
-msgid "Terrain: "
-msgstr "Terräng:"
+#~ msgid "Terrain: "
+#~ msgstr "Terräng:"
 
-#: src/reports.cpp:539
-msgid "maximum^max."
-msgstr "max."
+#~ msgid "maximum^max."
+#~ msgstr "max."
 
-#: src/reports.cpp:539
-msgid "minimum^min."
-msgstr "min."
+#~ msgid "minimum^min."
+#~ msgstr "min."
 
-#: src/reports.cpp:544
-msgid "Defense: "
-msgstr "Försvar:"
+#~ msgid "Defense: "
+#~ msgstr "Försvar:"
 
-#: src/reports.cpp:567
-msgid "vision: "
-msgstr "Version: "
+#~ msgid "vision: "
+#~ msgstr "Version: "
 
-#: src/reports.cpp:595
-msgid "Movement Costs:"
-msgstr "Förflyttningskostnader:"
+#~ msgid "Movement Costs:"
+#~ msgstr "Förflyttningskostnader:"
 
-#: src/reports.cpp:685 src/reports.cpp:893 src/reports.cpp:905
-msgid "Weapon: "
-msgstr "Vapen: "
+#~ msgid "Weapon: "
+#~ msgstr "Vapen: "
 
-#: src/reports.cpp:686 src/reports.cpp:894
-msgid "Damage: "
-msgstr "Skada:"
+#~ msgid "Damage: "
+#~ msgstr "Skada:"
 
-#: src/reports.cpp:690
-msgid "Base damage: "
-msgstr "Grundskada:"
+#~ msgid "Base damage: "
+#~ msgstr "Grundskada:"
 
-#: src/reports.cpp:692 src/reports.cpp:726 src/reports.cpp:736
-msgid "With specials: "
-msgstr "Med specialiteter: "
+#~ msgid "With specials: "
+#~ msgstr "Med specialiteter: "
 
-#: src/reports.cpp:695
-msgid "Time of day: "
-msgstr "Tid på dygnet:"
+#~ msgid "Time of day: "
+#~ msgstr "Tid på dygnet:"
 
-#: src/reports.cpp:699
-msgid "Leadership: "
-msgstr "Ledarskap:"
+#~ msgid "Leadership: "
+#~ msgstr "Ledarskap:"
 
-#: src/reports.cpp:703
-msgid "Slowed: "
-msgstr "Långsam: "
+#~ msgid "Slowed: "
+#~ msgstr "Långsam: "
 
-#: src/reports.cpp:707
-msgid "Attacks: "
-msgstr "Attacker:"
+#~ msgid "Attacks: "
+#~ msgstr "Attacker:"
 
-#: src/reports.cpp:711
-msgid "Max swarm bonus: "
-msgstr "Största svärmbonus: "
+#~ msgid "Max swarm bonus: "
+#~ msgstr "Största svärmbonus: "
 
-#: src/reports.cpp:712 src/reports.cpp:731
-msgid "Swarm: "
-msgstr "Svärma:"
+#~ msgid "Swarm: "
+#~ msgstr "Svärma:"
 
-#: src/reports.cpp:713 src/reports.cpp:724 src/reports.cpp:735
-msgid "Base attacks: "
-msgstr "Grundattacker:"
+#~ msgid "Base attacks: "
+#~ msgstr "Grundattacker:"
 
-#: src/reports.cpp:719
-msgid "Specials: "
-msgstr "Specialiteter: "
+#~ msgid "Specials: "
+#~ msgstr "Specialiteter: "
 
-#: src/reports.cpp:729
-msgid "Subject to swarm: "
-msgstr "Kan svärma: "
+#~ msgid "Subject to swarm: "
+#~ msgstr "Kan svärma: "
 
-#: src/reports.cpp:748
-msgid "Weapon range: "
-msgstr "Vapenräckvidd: "
+#~ msgid "Weapon range: "
+#~ msgstr "Vapenräckvidd: "
 
-#: src/reports.cpp:749
-msgid "Damage type: "
-msgstr "Skadetyp: "
+#~ msgid "Damage type: "
+#~ msgstr "Skadetyp: "
 
-#: src/reports.cpp:750
-msgid "Damage versus: "
-msgstr "Skada gentemot: "
+#~ msgid "Damage versus: "
+#~ msgstr "Skada gentemot: "
 
-#: src/reports.cpp:791
-msgid "Accuracy:"
-msgstr "Träffsäkerhet:"
+#~ msgid "Accuracy:"
+#~ msgstr "Träffsäkerhet:"
 
-#: src/reports.cpp:796
-msgid "Parry:"
-msgstr "Parera:"
+#~ msgid "Parry:"
+#~ msgstr "Parera:"
 
-#: src/reports.cpp:816
-msgid "Weapon special: "
-msgstr "Vapenspecialiteter:"
+#~ msgid "Weapon special: "
+#~ msgstr "Vapenspecialiteter:"
 
-#: src/reports.cpp:877
-msgid "None"
-msgstr "Inget"
+#~ msgid "None"
+#~ msgstr "Inget"
 
-#: src/reports.cpp:906
-msgid "Total damage"
-msgstr "Total skada"
+#~ msgid "Total damage"
+#~ msgstr "Total skada"
 
-#: src/reports.cpp:968
 #, fuzzy
-#| msgid "Attacker"
-msgid "Attack"
-msgid_plural "Attacks"
-msgstr[0] "Anfallare"
-msgstr[1] "Anfallare"
+#~| msgid "Attacker"
+#~ msgid "Attack"
+#~ msgid_plural "Attacks"
+#~ msgstr[0] "Anfallare"
+#~ msgstr[1] "Anfallare"
 
-#: src/reports.cpp:1104 src/reports.cpp:1156
-msgid "Lawful units: "
-msgstr "Redbara trupper: "
+#~ msgid "Lawful units: "
+#~ msgstr "Redbara trupper: "
 
-#: src/reports.cpp:1106 src/reports.cpp:1158
-msgid "Neutral units: "
-msgstr "Neutrala trupper: "
+#~ msgid "Neutral units: "
+#~ msgstr "Neutrala trupper: "
 
-#: src/reports.cpp:1107 src/reports.cpp:1159
-msgid "Chaotic units: "
-msgstr "Ljusskygga trupper: "
+#~ msgid "Chaotic units: "
+#~ msgstr "Ljusskygga trupper: "
 
-#: src/reports.cpp:1109 src/reports.cpp:1161
-msgid "Liminal units: "
-msgstr "Perifera trupper: "
+#~ msgid "Liminal units: "
+#~ msgstr "Perifera trupper: "
 
-#: src/reports.cpp:1220
 #, fuzzy
-#| msgid "Turn "
-msgid "Turn Number"
-msgstr "Drag "
+#~| msgid "Turn "
+#~ msgid "Turn Number"
+#~ msgstr "Drag "
 
-#: src/reports.cpp:1222
-msgid ""
-"When the game reaches the number of turns indicated by the second number, it "
-"will end."
-msgstr ""
+#~ msgid "Villages"
+#~ msgstr "Byar"
 
-#: src/reports.cpp:1247
-msgid ""
-"The amount of gold currently available to recruit and maintain your army."
-msgstr ""
+#~ msgid "Units"
+#~ msgstr "Trupper"
 
-#: src/reports.cpp:1266
-msgid "The fraction of known villages that your side has captured."
-msgstr ""
+#~ msgid "Upkeep"
+#~ msgstr "Underhåll"
 
-#: src/reports.cpp:1266
-msgid "Villages"
-msgstr "Byar"
+#~ msgid "Income"
+#~ msgstr "Inkomst"
 
-#: src/reports.cpp:1271
-msgid "The total number of units on your side."
-msgstr ""
-
-#: src/reports.cpp:1271
-msgid "Units"
-msgstr "Trupper"
-
-#: src/reports.cpp:1281
-msgid ""
-"The expenses incurred at the end of every turn to maintain your army. The "
-"first number is the amount of gold that will be deducted. The second is the "
-"total cost of upkeep, including that covered by villages — in other words, "
-"the amount of gold that would be deducted if you lost all villages."
-msgstr ""
-
-#: src/reports.cpp:1281
-msgid "Upkeep"
-msgstr "Underhåll"
-
-#: src/reports.cpp:1318
-msgid "Income"
-msgstr "Inkomst"
-
-#: src/reports.cpp:1318
-msgid ""
-"The amount of gold you gain each turn from your controlled villages, or the "
-"amount of gold you will lose each turn for unit upkeep."
-msgstr ""
-
-#: src/reports.cpp:1486
-msgid "Observers:"
-msgstr "Åskådare: "
-
-#: src/reports.cpp:1526
-msgid "Clock"
-msgstr ""
-
-#: src/reports.cpp:1552
-msgid "Countdown until your turn automatically ends."
-msgstr ""
-
-#: src/reports.cpp:1552
-msgid "Turn Countdown"
-msgstr ""
+#~ msgid "Observers:"
+#~ msgstr "Åskådare: "
 
 # Timeformat for 24-hour clock:
 # %a == abbr. weekday name
@@ -7509,9 +6878,8 @@ msgstr ""
 # %M == minutes
 # %p == am/pm
 # %Y == year
-#: src/save_index.cpp:195
-msgid "%a %b %d %H:%M %Y"
-msgstr "%a %Y-%m-%d %H:%M"
+#~ msgid "%a %b %d %H:%M %Y"
+#~ msgstr "%a %Y-%m-%d %H:%M"
 
 # Timeformat for 12-hour clock:
 # %a == abbr. weekday name
@@ -7522,232 +6890,176 @@ msgstr "%a %Y-%m-%d %H:%M"
 # %M == minutes
 # %p == am/pm
 # %Y == year
-#: src/save_index.cpp:195
-msgid "%a %b %d %I:%M %p %Y"
-msgstr "%a %Y-%m-%d %I:%M %p"
+#~ msgid "%a %b %d %I:%M %p %Y"
+#~ msgstr "%a %Y-%m-%d %I:%M %p"
 
-#: src/save_index.cpp:219 src/save_index.cpp:221
-msgid " replay"
-msgstr " repris"
+#~ msgid " replay"
+#~ msgstr " repris"
 
-#: src/savegame.cpp:193 src/savegame.cpp:197
-msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
-msgstr "Varning: Filen du försöker öppna är felaktig. Försöker ändå.\n"
+#~ msgid ""
+#~ "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
+#~ msgstr "Varning: Filen du försöker öppna är felaktig. Försöker ändå.\n"
 
-#: src/savegame.cpp:244
-msgid ""
-"This save is from an old, unsupported version ($version_number|) and cannot "
-"be loaded."
-msgstr ""
-"Detta sparade spel är från en för gammal, ej stödd spelversion "
-"($version_number|) och kan inte läsas in."
+#~ msgid ""
+#~ "This save is from an old, unsupported version ($version_number|) and "
+#~ "cannot be loaded."
+#~ msgstr ""
+#~ "Detta sparade spel är från en för gammal, ej stödd spelversion "
+#~ "($version_number|) och kan inte läsas in."
 
-#: src/savegame.cpp:252
-msgid ""
-"This save is from a different version of the game ($version_number|). Do you "
-"wish to try to load it?"
-msgstr ""
-"Detta sparade spel är från en annan spelversion ($version_number|). Vill du "
-"försöka öppna spelet ändå?"
+#~ msgid ""
+#~ "This save is from a different version of the game ($version_number|). Do "
+#~ "you wish to try to load it?"
+#~ msgstr ""
+#~ "Detta sparade spel är från en annan spelversion ($version_number|). Vill "
+#~ "du försöka öppna spelet ändå?"
 
-#: src/savegame.cpp:255 src/savegame.cpp:299
-msgid "Load Game"
-msgstr "Sparade spel"
+#~ msgid "Load Game"
+#~ msgstr "Sparade spel"
 
-#: src/savegame.cpp:299
-msgid "Replays are not supported in multiplayer mode."
-msgstr ""
+#~ msgid "This is not a multiplayer save."
+#~ msgstr "Detta är inte ett sparat gruppspel."
 
-#: src/savegame.cpp:306
-msgid "This is not a multiplayer save."
-msgstr "Detta är inte ett sparat gruppspel."
+#~ msgid "The game could not be saved: "
+#~ msgstr "Spelet kunde inte sparas:"
 
-#: src/savegame.cpp:333
-msgid "The game could not be saved: "
-msgstr "Spelet kunde inte sparas:"
+#~ msgid "Save already exists. Do you want to overwrite it?"
+#~ msgstr "Det sparade spelet finns redan, vill du skriva över det?"
 
-#: src/savegame.cpp:403
-msgid "Save already exists. Do you want to overwrite it?"
-msgstr "Det sparade spelet finns redan, vill du skriva över det?"
+#~ msgid "Overwrite?"
+#~ msgstr "Skriva över?"
 
-#: src/savegame.cpp:404
-msgid "Overwrite?"
-msgstr "Skriva över?"
+#~ msgid ""
+#~ "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
+#~ msgstr ""
+#~ "Du får inte använda ändelsen '.gz' or '.bz2' när du sparar ett spel. Var "
+#~ "vänlig välj en annan fil-extension."
 
-#: src/savegame.cpp:412
-msgid ""
-"Save names should not end on '.gz' or '.bz2'. Please remove the extension."
-msgstr ""
-"Du får inte använda ändelsen '.gz' or '.bz2' när du sparar ett spel. Var "
-"vänlig välj en annan fil-extension."
+#~ msgid "Saved"
+#~ msgstr "Sparat"
 
-#: src/savegame.cpp:462
-msgid "Saved"
-msgstr "Sparat"
+#~ msgid "The game has been saved."
+#~ msgstr "Spelet har sparats."
 
-#: src/savegame.cpp:462
-msgid "The game has been saved."
-msgstr "Spelet har sparats."
+#~ msgid "Could not write to file"
+#~ msgstr "Kunde inte skriva till fil"
 
-#: src/savegame.cpp:493 src/savegame.cpp:513
-msgid "Could not write to file"
-msgstr "Kunde inte skriva till fil"
+#~ msgid "Save Replay"
+#~ msgstr "Spara repris"
 
-#: src/savegame.cpp:546
-msgid "Save Replay"
-msgstr "Spara repris"
+#~ msgid "replay"
+#~ msgstr "repris"
 
-#: src/savegame.cpp:551
-msgid "replay"
-msgstr "repris"
+#~ msgid "Could not auto save the game. Please save the game manually."
+#~ msgstr "Kunde inte autospara spelet. Var vänlig och spara spelet manuellt."
 
-#: src/savegame.cpp:570
-msgid "Could not auto save the game. Please save the game manually."
-msgstr "Kunde inte autospara spelet. Var vänlig och spara spelet manuellt."
+#~ msgid "Save Game"
+#~ msgstr "Spara spelet"
 
-#: src/savegame.cpp:622
-msgid "Save Game"
-msgstr "Spara spelet"
+#~ msgid "Unexpected characters at line start"
+#~ msgstr "Oväntade tecken vid radens början"
 
-#: src/serialization/parser.cpp:153
-msgid "Unexpected characters at line start"
-msgstr "Oväntade tecken vid radens början"
+#~ msgid "Missing closing tag for tag [$tag]"
+#~ msgstr "Avslutande tag saknas för taggen [$tag]"
 
-#: src/serialization/parser.cpp:174
-msgid "Missing closing tag for tag [$tag]"
-msgstr "Avslutande tag saknas för taggen [$tag]"
+#~ msgid "expected at $pos"
+#~ msgstr "förväntad på $pos"
 
-#: src/serialization/parser.cpp:175
-msgid "expected at $pos"
-msgstr "förväntad på $pos"
+#~ msgid "opened at $pos"
+#~ msgstr "påbörjad på $pos"
 
-#: src/serialization/parser.cpp:176 src/serialization/parser.cpp:260
-msgid "opened at $pos"
-msgstr "påbörjad på $pos"
+#~ msgid "Unterminated [element] tag"
+#~ msgstr "Oavslutad [element]-tag"
 
-#: src/serialization/parser.cpp:193
-msgid "Unterminated [element] tag"
-msgstr "Oavslutad [element]-tag"
+#~ msgid "Invalid tag name"
+#~ msgstr "Ogiltigt tag-namn"
 
-#: src/serialization/parser.cpp:208 src/serialization/parser.cpp:275
-msgid "Invalid tag name"
-msgstr "Ogiltigt tag-namn"
+#~ msgid "Unterminated [+element] tag"
+#~ msgstr "Oavslutad [+element]-tag"
 
-#: src/serialization/parser.cpp:214
-msgid "Unterminated [+element] tag"
-msgstr "Oavslutad [+element]-tag"
+#~ msgid "Invalid closing tag name"
+#~ msgstr "Ogiltig avslutande tag-namn"
 
-#: src/serialization/parser.cpp:237
-msgid "Invalid closing tag name"
-msgstr "Ogiltig avslutande tag-namn"
+#~ msgid "Unterminated closing tag"
+#~ msgstr "Oavslutad avslutningstag"
 
-#: src/serialization/parser.cpp:243
-msgid "Unterminated closing tag"
-msgstr "Oavslutad avslutningstag"
+#~ msgid "Unexpected closing tag"
+#~ msgstr "Oväntat avslutningstag"
 
-#: src/serialization/parser.cpp:247
-msgid "Unexpected closing tag"
-msgstr "Oväntat avslutningstag"
+#~ msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
+#~ msgstr "Ogiltig avslutningstagg [/$tag2] funnen för tagg [$tag1]"
 
-#: src/serialization/parser.cpp:259
-msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
-msgstr "Ogiltig avslutningstagg [/$tag2] funnen för tagg [$tag1]"
+#~ msgid "closed at $pos"
+#~ msgstr "avslutad på $pos"
 
-#: src/serialization/parser.cpp:261
-msgid "closed at $pos"
-msgstr "avslutad på $pos"
+#~ msgid "Empty variable name"
+#~ msgstr "Tomt variabelnamn"
 
-#: src/serialization/parser.cpp:297 src/serialization/parser.cpp:313
-msgid "Empty variable name"
-msgstr "Tomt variabelnamn"
+#~ msgid "Unexpected characters after variable name (expected , or =)"
+#~ msgstr "Oväntade tecken efter variabelnamn (borde vara , eller =)"
 
-#: src/serialization/parser.cpp:305
-msgid "Unexpected characters after variable name (expected , or =)"
-msgstr "Oväntade tecken efter variabelnamn (borde vara , eller =)"
+#~ msgid "Unterminated quoted string"
+#~ msgstr "Oavslutad citatsträng"
 
-#: src/serialization/parser.cpp:352 src/serialization/parser.cpp:392
-msgid "Unterminated quoted string"
-msgstr "Oavslutad citatsträng"
+#~ msgid "at $pos"
+#~ msgstr "på $pos"
 
-#: src/serialization/parser.cpp:459
-msgid "at $pos"
-msgstr "på $pos"
+#~ msgid "Value: '$value' Previous: '$previous_value'"
+#~ msgstr "Värde: ’$value’ Föregående: ’$previous_value’"
 
-#: src/serialization/parser.cpp:472
-msgid "Value: '$value' Previous: '$previous_value'"
-msgstr "Värde: ’$value’ Föregående: ’$previous_value’"
+#~ msgid "prefix_milli^m"
+#~ msgstr "m"
 
-#: src/serialization/string_utils.cpp:558
-msgid "prefix_milli^m"
-msgstr "m"
+#~ msgid "prefix_micro^µ"
+#~ msgstr "μ"
 
-#: src/serialization/string_utils.cpp:559
-msgid "prefix_micro^µ"
-msgstr "μ"
+#~ msgid "prefix_nano^n"
+#~ msgstr "n"
 
-#: src/serialization/string_utils.cpp:560
-msgid "prefix_nano^n"
-msgstr "n"
+#~ msgid "prefix_pico^p"
+#~ msgstr "p"
 
-#: src/serialization/string_utils.cpp:561
-msgid "prefix_pico^p"
-msgstr "p"
+#~ msgid "prefix_femto^f"
+#~ msgstr "f"
 
-#: src/serialization/string_utils.cpp:562
-msgid "prefix_femto^f"
-msgstr "f"
+#~ msgid "prefix_atto^a"
+#~ msgstr "a"
 
-#: src/serialization/string_utils.cpp:563
-msgid "prefix_atto^a"
-msgstr "a"
+#~ msgid "prefix_zepto^z"
+#~ msgstr "z"
 
-#: src/serialization/string_utils.cpp:564
-msgid "prefix_zepto^z"
-msgstr "z"
+#~ msgid "prefix_yocto^y"
+#~ msgstr "y"
 
-#: src/serialization/string_utils.cpp:565
-msgid "prefix_yocto^y"
-msgstr "y"
+#~ msgid "prefix_kibi^K"
+#~ msgstr "K"
 
-#: src/serialization/string_utils.cpp:577
-msgid "prefix_kibi^K"
-msgstr "K"
+#~ msgid "prefix_kilo^k"
+#~ msgstr "k"
 
-#: src/serialization/string_utils.cpp:578
-msgid "prefix_kilo^k"
-msgstr "k"
+#~ msgid "prefix_mega^M"
+#~ msgstr "M"
 
-#: src/serialization/string_utils.cpp:580
-msgid "prefix_mega^M"
-msgstr "M"
+#~ msgid "prefix_giga^G"
+#~ msgstr "G"
 
-#: src/serialization/string_utils.cpp:581
-msgid "prefix_giga^G"
-msgstr "G"
+#~ msgid "prefix_tera^T"
+#~ msgstr "T"
 
-#: src/serialization/string_utils.cpp:582
-msgid "prefix_tera^T"
-msgstr "T"
+#~ msgid "prefix_peta^P"
+#~ msgstr "P"
 
-#: src/serialization/string_utils.cpp:583
-msgid "prefix_peta^P"
-msgstr "P"
+#~ msgid "prefix_exa^E"
+#~ msgstr "E"
 
-#: src/serialization/string_utils.cpp:584
-msgid "prefix_exa^E"
-msgstr "E"
+#~ msgid "prefix_zetta^Z"
+#~ msgstr "Z"
 
-#: src/serialization/string_utils.cpp:585
-msgid "prefix_zetta^Z"
-msgstr "Z"
+#~ msgid "prefix_yotta^Y"
+#~ msgstr "Y"
 
-#: src/serialization/string_utils.cpp:586
-msgid "prefix_yotta^Y"
-msgstr "Y"
-
-#: src/serialization/string_utils.cpp:600
-msgid "infix_binary^i"
-msgstr "i"
+#~ msgid "infix_binary^i"
+#~ msgstr "i"
 
 #, fuzzy
 #~| msgid "lawful"

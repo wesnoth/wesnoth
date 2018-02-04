@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 20:27 UTC\n"
+"POT-Creation-Date: 2018-02-04 12:39 UTC\n"
 "PO-Revision-Date: 2013-06-23 01:15-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,6 +28,13 @@ msgstr "IA Solita (RCA)"
 #: data/ai/ais/ai_generic_rush.cfg:10
 msgid "Multiplayer_AI^Experimental AI"
 msgstr "IA Experimentalis"
+
+#. [ai]: id=idle_ai
+#: data/ai/ais/idle_ai.cfg:4
+#, fuzzy
+#| msgid "Multiplayer_AI^Default AI (RCA)"
+msgid "Multiplayer_AI^Dev AI: Idle AI"
+msgstr "IA Solita (RCA)"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
@@ -49,13 +56,6 @@ msgstr "IA Experimentalis"
 #, fuzzy
 #| msgid "Multiplayer_AI^Default AI (RCA)"
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
-msgstr "IA Solita (RCA)"
-
-#. [ai]: id=idle_ai
-#: data/ai/dev/idle_ai.cfg:4
-#, fuzzy
-#| msgid "Multiplayer_AI^Default AI (RCA)"
-msgid "Multiplayer_AI^Dev AI: Idle AI"
 msgstr "IA Solita (RCA)"
 
 #: data/ai/lua/patrol.lua:4

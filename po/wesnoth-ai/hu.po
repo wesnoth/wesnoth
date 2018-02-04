@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 20:27 UTC\n"
+"POT-Creation-Date: 2018-02-04 12:39 UTC\n"
 "PO-Revision-Date: 2014-10-31 22:38+0100\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -33,6 +33,11 @@ msgstr "Alapértelmezett MI (RCA)"
 msgid "Multiplayer_AI^Experimental AI"
 msgstr "Kísérleti MI"
 
+#. [ai]: id=idle_ai
+#: data/ai/ais/idle_ai.cfg:4
+msgid "Multiplayer_AI^Dev AI: Idle AI"
+msgstr "Fejlesztői MI: tétlen MI"
+
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 #, fuzzy
@@ -49,11 +54,6 @@ msgstr "Fejlesztői MI: alapértelmezett + kísérleti toborzás (minta MI)"
 #: data/ai/dev/formula_ai_poisoning.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
 msgstr "Fejlesztői MI: alapértelmezett + mérgezés (minta MI)"
-
-#. [ai]: id=idle_ai
-#: data/ai/dev/idle_ai.cfg:4
-msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Fejlesztői MI: tétlen MI"
 
 #: data/ai/lua/patrol.lua:4
 msgid "Use the Patrols Micro AI instead of patrol.lua."

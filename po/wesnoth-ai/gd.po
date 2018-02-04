@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth AI\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 20:27 UTC\n"
+"POT-Creation-Date: 2018-02-04 12:39 UTC\n"
 "PO-Revision-Date: 2014-07-17 11:53+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
@@ -30,6 +30,11 @@ msgstr "IF tùsail (RCA)"
 msgid "Multiplayer_AI^Experimental AI"
 msgstr "IF deuchainneach"
 
+#. [ai]: id=idle_ai
+#: data/ai/ais/idle_ai.cfg:4
+msgid "Multiplayer_AI^Dev AI: Idle AI"
+msgstr "IF nan Dev: IF 'na thàmh"
+
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 #, fuzzy
@@ -46,11 +51,6 @@ msgstr "IF nan Dev: Coitcheann &#204A; Trusadh deuchainneach (Formula AI)"
 #: data/ai/dev/formula_ai_poisoning.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
 msgstr "IF nan Dev: Coitcheann &#204A; puinnseanachadh (Formula AI)"
-
-#. [ai]: id=idle_ai
-#: data/ai/dev/idle_ai.cfg:4
-msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "IF nan Dev: IF 'na thàmh"
 
 #: data/ai/lua/patrol.lua:4
 msgid "Use the Patrols Micro AI instead of patrol.lua."

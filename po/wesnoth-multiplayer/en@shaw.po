@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 20:28 UTC\n"
+"POT-Creation-Date: 2018-02-04 12:39 UTC\n"
 "PO-Revision-Date: 2009-10-09 19:50-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -56,35 +56,35 @@ msgid ""
 "balanced."
 msgstr ""
 
-#. [era]: id=era_khalifate
+#. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:83
-msgid "Default + Khalifate"
+msgid "Default + Dunefolk"
 msgstr ""
 
-#. [era]: id=era_khalifate
+#. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:84
 msgid ""
 "An era featuring an additional faction besides the six factions from Default "
-"Era. Khalifate units use no magic, but instead rely on careful use of "
-"terrain and coordinated strikes around dusk or dawn.\n"
+"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
+"around dusk or dawn.\n"
 "\n"
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
 
-#. [era]: id=era_khalifate_heroes
+#. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:94
 #, fuzzy
 #| msgid "Age of Heroes"
-msgid "Age of Heroes + Khalifate"
+msgid "Age of Heroes + Dunefolk"
 msgstr "𐑱𐑡 𐑝 𐑣𐑽𐑴𐑟"
 
-#. [era]: id=era_khalifate_heroes
+#. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:95
 msgid ""
 "An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Khalifate units use no magic, but instead rely on careful use of "
-"terrain and coordinated strikes around dusk or dawn.\n"
+"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
+"strikes around dusk or dawn.\n"
 "\n"
 "This era is still under development, so please be sure to report any "
 "problems that arise."
@@ -131,23 +131,23 @@ msgid ""
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction."
 msgstr ""
 
-#. [multiplayer_side]: id=Khalifate, type=random
-#: data/multiplayer/factions/khalifate-aoh.cfg:4
-#: data/multiplayer/factions/khalifate-default.cfg:4
-msgid "Khalifate"
+#. [multiplayer_side]: id=Dunefolk, type=random
+#: data/multiplayer/factions/dunefolk-aoh.cfg:4
+#: data/multiplayer/factions/dunefolk-default.cfg:4
+msgid "Dunefolk"
 msgstr ""
 
-#. [multiplayer_side]: id=Khalifate, type=random
-#: data/multiplayer/factions/khalifate-aoh.cfg:14
-#: data/multiplayer/factions/khalifate-default.cfg:14
+#. [multiplayer_side]: id=Dunefolk, type=random
+#: data/multiplayer/factions/dunefolk-aoh.cfg:14
+#: data/multiplayer/factions/dunefolk-default.cfg:14
 msgid ""
-"The <bold>text='Khalifate'</bold> are a faction of humans from the deserts "
-"and hills of the southern lands. Lacking magic users, the Khalifate instead "
-"specialize in using terrain features to coordinate attacks at dawn or dusk. "
-"Their ranks boast lawful and liminal units, healers, high-accuracy melee "
-"fighters, and fearsome horse-mounted archers. While Khalifate units tend to "
-"be more expensive than those of the Loyalist faction, they make up for this "
-"with high mobility — especially on hilly terrains."
+"The <bold>text='Dunefolk'</bold> are a faction of humans from the deserts "
+"and hills of the southern lands. The Dunefolk specialize in using terrain "
+"features to coordinate attacks at dawn or dusk. Their ranks boast lawful and "
+"liminal units, healers, high-accuracy melee fighters, and fearsome horse-"
+"mounted archers. While Dunefolk units tend to be more expensive than those "
+"of the Loyalist faction, they make up for this with high mobility — "
+"especially on hilly terrains."
 msgstr ""
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
@@ -991,48 +991,48 @@ msgstr "𐑮𐑦𐑝𐑴𐑤𐑑"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:52
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:68
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:72
 msgid "teamname^Human"
 msgstr "𐑣𐑿𐑥𐑩𐑯"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:99
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:107
 #, fuzzy
 msgid "Death of your leader"
 msgstr "𐑛𐑧𐑔 𐑝 𐑿𐑼 𐑑𐑰𐑥 𐑤𐑰𐑛𐑼𐑟."
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:100
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:108
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr ""
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:103
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:111
 #, fuzzy
 msgid "Death of both of your team’s leaders"
 msgstr "𐑛𐑧𐑔 𐑝 𐑿𐑼 𐑑𐑰𐑥 𐑤𐑰𐑛𐑼𐑟."
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:104
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:112
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:125
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:133
 #, fuzzy
 msgid "Survive and defeat all enemy waves"
 msgstr "𐑕𐑻𐑝𐑲𐑝 𐑷𐑤 𐑧𐑯𐑩𐑥𐑦 𐑩𐑑𐑨𐑒𐑕."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:145
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:153
 msgid "Dark Forecast — a random survival scenario"
 msgstr "𐑛𐑸𐑒 𐑓𐑹𐑒𐑭𐑕𐑑 - 𐑩 𐑮𐑨𐑯𐑛𐑩𐑥 𐑕𐑻𐑝𐑲𐑝𐑩𐑤 𐑕𐑦𐑯𐑺𐑰𐑴"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:150
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:158
 #, fuzzy
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
@@ -1078,13 +1078,13 @@ msgstr ""
 "- WML 𐑦𐑥𐑐𐑤𐑩𐑥𐑧𐑯𐑑𐑱𐑖𐑩𐑯"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:170
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:178
 #, fuzzy
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "𐑕𐑴 𐑞𐑦𐑕 𐑦𐑟 𐑞 𐑩𐑒𐑻𐑕𐑑 𐑝𐑨𐑤𐑰 - 𐑩 𐑤𐑨𐑯𐑛 𐑬𐑼𐑟 𐑓𐑹 𐑞 𐑑𐑱𐑒𐑦𐑙."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:174
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:182
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -1094,21 +1094,21 @@ msgstr ""
 "𐑜𐑴𐑦𐑙 𐑑 𐑚𐑰 𐑩𐑯𐑩𐑐𐑴𐑟𐑛. 𐑢𐑰 𐑥𐑳𐑕𐑑 𐑚𐑰 𐑐𐑮𐑦𐑐𐑺𐑛 𐑓𐑹 𐑞 𐑕𐑻𐑐𐑮𐑲𐑟𐑦𐑟 𐑝 𐑞𐑦𐑕 𐑤𐑨𐑯𐑛."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:178
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:186
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
 msgstr "𐑞𐑧𐑯 𐑤𐑧𐑑 𐑳𐑕 𐑛𐑦𐑕𐑒𐑳𐑝𐑼 𐑢𐑪𐑑 𐑤𐑲𐑟 𐑦𐑯 𐑢𐑱𐑑𐑦𐑙 𐑯 𐑑𐑰𐑡 𐑞𐑧𐑥 𐑯𐑪𐑑 𐑑 𐑩𐑐𐑴𐑟 𐑬𐑼 𐑒𐑤𐑱𐑥."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:197
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:205
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr "𐑳𐑜! 𐑣𐑬 𐑒𐑨𐑯 𐑞𐑦𐑕 𐑚𐑰? 𐑛𐑦𐑓𐑰𐑑𐑩𐑛 𐑚𐑲 𐑥𐑽 𐑚𐑸𐑚𐑺𐑦𐑩𐑯𐑟! 𐑥𐑲 𐑜𐑪𐑛𐑟 𐑣𐑨𐑝 𐑓𐑹𐑕𐑱𐑒𐑩𐑯 𐑥𐑰..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:211
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:219
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -1117,7 +1117,7 @@ msgstr ""
 "𐑥𐑴𐑥𐑩𐑯𐑑𐑕 𐑢𐑦𐑞 𐑐𐑘𐑫𐑼 𐑣𐑱𐑑."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:233
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:241
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -1127,7 +1127,7 @@ msgstr ""
 "𐑛𐑮𐑱𐑯 𐑩𐑢𐑱 𐑿𐑼 𐑢𐑦𐑤, 𐑿 𐑮𐑾𐑤𐑲𐑟 𐑞𐑨𐑑 𐑿𐑼 𐑑𐑲𐑥 𐑦𐑯 𐑞𐑦𐑕 𐑤𐑨𐑯𐑛 𐑦𐑟 𐑴𐑝𐑼."
 
 #. [slider]: id=enemey_gold_factor
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:244
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:252
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr ""
 
@@ -2535,6 +2535,11 @@ msgid ""
 msgstr ""
 "𐑩 ·𐑢𐑧𐑕𐑯𐑷𐑔 𐑚𐑧𐑯𐑗𐑥𐑸𐑒, 𐑿𐑟 --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#, fuzzy
+#~| msgid "Age of Heroes"
+#~ msgid "Age of Heroes + Khalifate"
+#~ msgstr "𐑱𐑡 𐑝 𐑣𐑽𐑴𐑟"
 
 #, fuzzy
 #~ msgid ""

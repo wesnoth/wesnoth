@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 20:28 UTC\n"
+"POT-Creation-Date: 2018-02-04 12:39 UTC\n"
 "PO-Revision-Date: 2015-07-10 19:23+0300\n"
 "Last-Translator: Gvido Bruveris <huhims@gmail.com>\n"
 "Language-Team: none\n"
@@ -26,8 +26,15 @@ msgstr "DG"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
+#, fuzzy
+#| msgid ""
+#| "A young Knight, Deoran, is dispatched to take command of the South "
+#| "Guard... Note: This campaign is designed as an introduction to Wesnoth. "
+#| "The ‘Civilian’ difficulty level is aimed at first-time players.\n"
+#| "\n"
 msgid ""
-"A young Knight, Deoran, is dispatched to take command of the South Guard... "
+"A young Knight, Deoran, is dispatched to take command of the South Guard.\n"
+"\n"
 "Note: This campaign is designed as an introduction to Wesnoth. The "
 "‘Civilian’ difficulty level is aimed at first-time players.\n"
 "\n"
@@ -38,58 +45,58 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:21
+#: data/campaigns/The_South_Guard/_main.cfg:23
 msgid "(Novice level, 9 scenarios.)"
 msgstr "(Iesācēju līmenis, 9 scenāriji.)"
 
 #. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:23
+#: data/campaigns/The_South_Guard/_main.cfg:25
 #, fuzzy
 #| msgid "(Beginner)"
 msgid "Beginner"
 msgstr "(Iesācējs)"
 
 #. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:23
+#: data/campaigns/The_South_Guard/_main.cfg:25
 msgid "Civilian"
 msgstr "Civilais"
 
 #. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:24
+#: data/campaigns/The_South_Guard/_main.cfg:26
 #, fuzzy
 #| msgid "(Easy)"
 msgid "Easy"
 msgstr "(Viegls)"
 
 #. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:24
+#: data/campaigns/The_South_Guard/_main.cfg:26
 msgid "Recruit"
 msgstr "Jauniesauktais"
 
 #. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:25
+#: data/campaigns/The_South_Guard/_main.cfg:27
 #, fuzzy
 #| msgid "(Normal)"
 msgid "Normal"
 msgstr "(Normāls)"
 
 #. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:25
+#: data/campaigns/The_South_Guard/_main.cfg:27
 msgid "Soldier"
 msgstr "Kareivis"
 
 #. [about]
-#: data/campaigns/The_South_Guard/_main.cfg:30
+#: data/campaigns/The_South_Guard/_main.cfg:32
 msgid "Campaign Design"
 msgstr "Kampaņas veidošana"
 
 #. [about]
-#: data/campaigns/The_South_Guard/_main.cfg:36
+#: data/campaigns/The_South_Guard/_main.cfg:38
 msgid "Campaign Maintenance"
 msgstr "Kampaņas uzturēšana"
 
 #. [about]
-#: data/campaigns/The_South_Guard/_main.cfg:49
+#: data/campaigns/The_South_Guard/_main.cfg:51
 msgid "Artwork and Graphics Design"
 msgstr "Mākslas un grafiskā veidošana"
 
@@ -119,9 +126,9 @@ msgstr "Deorans"
 
 #. [side]: id=Deoran
 #. [side]: type=Horseman Commander, id=Deoran
+#. [side]: type=Lieutenant, id=Plynry
 #. [side]: type=Troll Hero, id=Grek
 #. [side]
-#. [side]: type=Lieutenant, id=Plynry
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:38
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:42
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:38
@@ -182,7 +189,7 @@ msgstr "Sakauj Martinu Urzu"
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:127
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:238
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:229
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:241
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:258
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:264
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:535
@@ -200,7 +207,7 @@ msgstr "Deorana nāve"
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:136
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:242
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:233
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:245
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:262
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:268
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:539
@@ -727,7 +734,7 @@ msgstr "Nogalini Nalmatu Urzu, bandītu līderi"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:251
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:237
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:249
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:266
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:272
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:543
@@ -1001,13 +1008,19 @@ msgstr "Izmisīgais pārgājiens"
 msgid "Urza Fastik"
 msgstr "Fastiks Urza"
 
+#. [side]
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:157
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:101
+msgid "Elves"
+msgstr "Elfi"
+
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:184
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:196
 msgid "Deoran and his men came to the eastern border of the Aethenwood..."
 msgstr "Deorans un viņa vīri nonāca pie Eitenvudas austrumu robežas..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:190
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:202
 msgid ""
 "Look, men! There is the forest of the Elves to the northwest. Let us hasten "
 "across the river and the hills."
@@ -1016,7 +1029,7 @@ msgstr ""
 "pāri upei un pāri pauguriem."
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:195
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:207
 msgid ""
 "Be careful, Deoran. No man has set foot in the elvish woods for many a year. "
 "We do not know how they will receive us. Sir Loris thought that it was some "
@@ -1027,7 +1040,7 @@ msgstr ""
 "viņu viltība, mēģinot ievest viņu mežos..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:200
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:212
 msgid ""
 "But if we do not discover the source of these undead warriors, the whole "
 "province shall surely be swallowed up by them, and then their bandit masters "
@@ -1038,7 +1051,7 @@ msgstr ""
 "nebūs viegli. Mēs to nevaram pieļaut!"
 
 #. [message]: speaker=Urza Fastik
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:205
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:217
 msgid ""
 "I have lost two brothers to Deoran — I shall not allow him to reach the "
 "accursed elves! Deoran will die before he reaches the western forest!"
@@ -1047,7 +1060,7 @@ msgstr ""
 "elfus! Deorans mirs vēl pirms rietumu meža sasniegšanas!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:213
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:225
 msgid ""
 "You must move Deoran to the center of the elvish citadel. Be sure to recruit "
 "a force strong enough to drive off the bandits before moving Deoran from his "
@@ -1058,22 +1071,22 @@ msgstr ""
 "bandītus!"
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:225
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:237
 msgid "Move Deoran to the elvish city in the northern woods"
 msgstr "Pārvieto Deoranu uz elfu pilsētu, ziemeļu mežos"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:255
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:267
 msgid "There is so much ground to cover. If only our riders would arrive!"
 msgstr "Mums ir tik tāls ceļš priekšā. Ja vien ierastos mūsu jātnieki!"
 
 #. [unit]: id=Jarek
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:265
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:277
 msgid "Jarek"
 msgstr "Jareks"
 
 #. [message]: speaker=Jarek
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:277
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:290
 msgid ""
 "Commander, I received your request for reinforcements, and I have brought my "
 "riders with me!"
@@ -1082,7 +1095,7 @@ msgstr ""
 "jātniekus sev līdzi!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:284
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:297
 #, fuzzy
 #| msgid ""
 #| "You may now recruit Cavalrymen. They are fast and deadly on grassland, "
@@ -1098,12 +1111,12 @@ msgstr ""
 "tos, lai apsargātu Deoranu!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:286
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:299
 msgid "You may now recruit Cavalrymen."
 msgstr "Tagad tu vari iesaukt kavalēristus."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:304
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:317
 msgid ""
 "What have we done?! Even our undead allies cannot stand against this "
 "commander!"
@@ -1112,7 +1125,7 @@ msgstr ""
 "komandierim!"
 
 #. [message]: role=second
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:320
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:333
 #, fuzzy
 #| msgid ""
 #| "I hope that’s the last of the bandits! How many more of these foul undead "
@@ -1125,7 +1138,7 @@ msgstr ""
 "būs jācīnās?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:327
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:340
 msgid ""
 "If we are to check the advance of the dead, I must reach the home of the "
 "elves!"
@@ -1134,52 +1147,52 @@ msgstr ""
 "elfu mājas!"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:342
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:355
 msgid "Linderion"
 msgstr "Linderions"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:343
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:356
 msgid "Mithalwe"
 msgstr "Mitalve"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:344
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:357
 msgid "Sidaurios"
 msgstr "Sidarioss"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:345
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:358
 msgid "Eltenmir"
 msgstr "Eltemirs"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:346
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:359
 msgid "Vardanos"
 msgstr "Vardans"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:347
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:360
 msgid "Talchar"
 msgstr "Talkars"
 
 #. [unit]: type=Elvish Shyde, id=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:352
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:374
 msgid "Ethiliel"
 msgstr "Etilela"
 
 #. [message]: speaker=Linderion
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:367
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:389
 msgid "Halt! Who has entered our citadel without leave?"
 msgstr "Stāt! Kurš ir ienācis mūsu cietoksnī bez atļaujas?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:372
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:394
 msgid "De..."
 msgstr "De..."
 
 #. [message]: speaker=Linderion
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:377
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:399
 msgid ""
 "Speak carefully, for the penalty for trespass on our lands is death, and "
 "your life is thus forfeit."
@@ -1188,12 +1201,12 @@ msgstr ""
 "apdraudēta."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:382
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:404
 msgid "Deora..."
 msgstr "Deora..."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:388
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:410
 msgid ""
 "Stay a moment. This man wears the colors of Wesnoth, and Kalenz told us not "
 "all the folk of Wesnoth are foes of the elves. Tell us, then, what brings "
@@ -1204,7 +1217,7 @@ msgstr ""
 "atvedis uz svēto Elratas cietoksni?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:393
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:415
 msgid ""
 "My lady, we have come to the elves to seek guidance. Bandits and criminals "
 "in our land have summoned the dead to help them plunder our farms and "
@@ -1216,7 +1229,7 @@ msgstr ""
 "fermas un ciemus. Tie nāk pāri upei no Dižā meža, zemes dienvidos."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:398
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:420
 msgid ""
 "The elves know of the great southern forest, and have walked its paths many "
 "times. What would you do, Deoran?"
@@ -1225,7 +1238,7 @@ msgstr ""
 "grasies darīt, Deoran?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:403
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:425
 msgid ""
 "I would lead my men south of the river to find the source of these beings of "
 "darkness that we might destroy it. For surely, ere that be done, we cannot "
@@ -1236,7 +1249,7 @@ msgstr ""
 "nestāvēsim."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:408
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:430
 msgid ""
 "Indeed you are brave to face such foes. But I fear that alone you will fail "
 "and fall. One elf now lives who remembers the secrets of the undead that we "
@@ -1249,7 +1262,7 @@ msgstr ""
 "nošķirti kalnos, netālu no šejienes. Es aizvedīšu tevi pie viņa."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:414
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:436
 msgid "My thanks, lady."
 msgstr "Liels paldies, lēdij."
 
@@ -1277,7 +1290,7 @@ msgstr "Mal a’kais"
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:56
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:107
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:61
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:93
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:94
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:55
 msgid "Undead"
 msgstr "Nedzīvais"
@@ -2400,11 +2413,6 @@ msgstr ""
 msgid "The Long March"
 msgstr "Garais maršs"
 
-#. [side]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:101
-msgid "Elves"
-msgstr "Elfi"
-
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:325
 msgid "Fssth"
@@ -2962,87 +2970,96 @@ msgid "Pebbles in the Flood"
 msgstr "Oļi plūdos"
 
 #. [side]: type=Lich, id=Mal Tera
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:90
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:91
 msgid "Mal Tera"
 msgstr "Terass Mals"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:133
-msgid "Sgt. Finde"
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:134
+#, fuzzy
+#| msgid "Sgt. Finde"
+msgid "Finde"
 msgstr "Serž. Finde"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:134
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:135
 msgid "Maelvas"
 msgstr "Maelvass"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:135
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:136
 msgid "Orome"
 msgstr "Orome"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:136
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:137
 msgid "Mitche"
 msgstr "Mičess"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:140
-msgid "Lt. Illan"
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:141
+#, fuzzy
+#| msgid "Lt. Illan"
+msgid "Illan"
 msgstr "Leit. Illans"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:141
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:142
 msgid "Rheban"
 msgstr "Rebans"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:142
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:143
 msgid "Jul"
 msgstr "Džals"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:146
-msgid "Lt. Meris"
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:147
+#, fuzzy
+#| msgid "Lt. Meris"
+msgid "Meris"
 msgstr "Leit. Meriss"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:147
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:148
 msgid "Findlas"
 msgstr "Findlass"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:148
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:149
 msgid "Chumet"
 msgstr "Čumets"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:149
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:150
 msgid "Neras"
 msgstr "Nerass"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:150
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:151
 msgid "Eera"
 msgstr "Ēra"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:154
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:155
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:156
 msgid "Death Guard"
 msgstr "Nāves sargs"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:176
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:177
+#, fuzzy
+#| msgid ""
+#| "We have escaped the great forest, but look! The undead are chasing us — "
+#| "we must not have rooted them all out of the wood."
 msgid ""
-"We have escaped the great forest, but look! The undead are chasing us — we "
-"must not have rooted them all out of the wood."
+"We have escaped the great forest, but look! The undead are still chasing us."
 msgstr ""
 "Esam izmukuši no Dižā meža, bet skat! Nedzīvie mūs vajā — mēs nedrīkstam "
 "ļaut tiem iziet no meža!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:180
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:181
 msgid ""
 "My lord, you must hasten back to Westin to prepare a defense against them. I "
 "will command the defense of the border forts."
@@ -3051,7 +3068,7 @@ msgstr ""
 "sērgu. Bet es aizkavēšu viņus pie šī forta."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:184
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:185
 msgid ""
 "I too will make my stand here — I owe you my life and must atone for my "
 "crimes. Together we will hold off the foul undead as long as we can."
@@ -3060,7 +3077,7 @@ msgstr ""
 "grēki. Kopā mēs turēsim nedzīvos, cik vien ilgi varēsim."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:188
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:189
 msgid ""
 "Minister Hylas, ride with me to Westin — you must summon the Council of "
 "Westin while I prepare the city’s defenses. We shall return as soon as we "
@@ -3071,7 +3088,7 @@ msgstr ""
 "un nomainīsim jūs."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:192
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:193
 msgid ""
 "Make no promises you know you cannot keep. Organize the defense of Westin, "
 "and if you survive, remember those who fell here."
@@ -3080,7 +3097,7 @@ msgstr ""
 "izdzīvo - atceries tos kuri šeit krita."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:199
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:200
 msgid ""
 "Your name will be sounded in the roll of heroes, and you will be avenged. "
 "Thank you, my friend."
@@ -3088,8 +3105,8 @@ msgstr ""
 "Tavs vārds tiks pieminēts varoņu tīstokļos, un tavs upuris netiks aizmirsts. "
 "Paldies, mans draugs."
 
-#. [message]: speaker=Lt. Illan
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:222
+#. [message]: speaker=Illan
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:223
 msgid ""
 "We are yours to command, Sir Gerrick. Our men are not the great warriors "
 "that you and Deoran are, but we will hold our lines staunchly, until the "
@@ -3099,28 +3116,41 @@ msgstr ""
 "Deoranu, bet mēs turēsim mūsu līnijas uzticami, līdz pašām beigām."
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:228
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:229
 msgid "Hold the line: Keep Sir Gerrick alive as long as possible"
 msgstr "Noturi līniju: noturi seru Geriku dzīvu, cik vien ilgi iespējams"
 
+#. [note]
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:238
+msgid ""
+"Starting with turn 6, each additional turn you survive strengthens the "
+"defenses of Westin."
+msgstr ""
+
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:240
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:244
+#, fuzzy
+#| msgid ""
+#| "There is no way to win this scenario, and no way to lose. Hold off the "
+#| "undead hordes as long as you can. Keep Sir Gerrick alive as long as you "
+#| "can. Every turn that passes strengthens the defenses of Westin."
 msgid ""
 "There is no way to win this scenario, and no way to lose. Hold off the "
 "undead hordes as long as you can. Keep Sir Gerrick alive as long as you can. "
-"Every turn that passes strengthens the defenses of Westin."
+"Starting with turn 6, every turn that passes strengthens the defenses of "
+"Westin."
 msgstr ""
 "Šo scenāriju nav iespējams uzvarēt, un arī zaudēt. Noturi nedzīvo barus cik "
 "vien ilgi spēj. Noturi seru Geriku dzīvu cik vien ilgi spēj. Katrs "
 "izturētais gājiens stiprina Vestinas aizsardzību."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:274
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:278
 msgid "Now I will never see my home again... Hold back the undead, Gerrick!"
 msgstr "Nu es vairs nekad neredzēšu savas mājas... Noturi nedzīvos, Gerik!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:286
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:290
 msgid ""
 "I only hope we have bought Deoran enough time to secure Westin for the "
 "onslaught!"
@@ -3129,7 +3159,7 @@ msgstr ""
 "nocietinātu Vestinu!"
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:294
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:298
 msgid ""
 "We will crush Westin as we have crushed you! No one shall stand between us "
 "and our home."
@@ -3233,7 +3263,9 @@ msgstr "Provinces sargs"
 
 #. [value]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:152
-msgid "Lt. Nilaf"
+#, fuzzy
+#| msgid "Lt. Nilaf"
+msgid "Nilaf"
 msgstr "Leit. Nilafs"
 
 #. [message]: speaker=Deoran
@@ -3281,7 +3313,7 @@ msgstr ""
 "Kamēr viņa varonīgā cīņa mums deva laiku, mēs esam sasaukuši visu "
 "provinciālo sardzi un pilnībā sagatavojuši pilsētu kaujai!"
 
-#. [message]: speaker=Lt. Nilaf
+#. [message]: speaker=Nilaf
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:353
 msgid "Indeed, Lord, we are ready to defend our homes!"
 msgstr "Tik tiešām, kungs, mēs esam gatavi aizsargāt mūsu mājas!"
@@ -3386,7 +3418,7 @@ msgstr "Tagad es vairs nekad neredzēšu Vestinu brīvu..."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:546
-#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:93
+#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:98
 msgid "Far from home I fall — but not in vain! Guard our people, Deoran!"
 msgstr "Es krītu tālu no mājām — bet ne veltīgi! Sargā mūsu ļaudis, Deoran!"
 
@@ -3716,6 +3748,13 @@ msgstr "Nogaršo šo dzelzi dēls!"
 msgid "I have lost all helping the humans... Now they will surely perish!"
 msgstr ""
 "Esmu zaudējusi visu, palīdzot cilvēkiem... Tagad tie noteikti ies bojā!"
+
+#. [message]: speaker=unit
+#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:104
+#, fuzzy
+#| msgid "Far from home I fall — but not in vain! Guard our people, Deoran!"
+msgid "Far from home I fall — but not in vain!"
+msgstr "Es krītu tālu no mājām — bet ne veltīgi! Sargā mūsu ļaudis, Deoran!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:29

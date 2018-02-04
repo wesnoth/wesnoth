@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-Dev Japanese\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 23:27+0300\n"
+"POT-Creation-Date: 2018-02-04 12:39 UTC\n"
 "PO-Revision-Date: 2016-04-17 12:35+0000\n"
 "Last-Translator: SUTO Shigeyoshi <suto3suto3@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/wesnoth-jp/wesnoth-dev-"
@@ -234,10 +234,16 @@ msgstr "開始地点ツール"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:68
+#, fuzzy
+#| msgid ""
+#| "Defines the side leader starting position\n"
+#| "\n"
+#| "This tool gives only limited control over the start locations of certain."
 msgid ""
 "Defines the side leader starting position\n"
 "\n"
-"This tool gives only limited control over the start locations of certain."
+"This tool sets the side leaders' default starting locations, and named "
+"special locations."
 msgstr ""
 "陣営のリーダーの開始地点を定義します\n"
 "\n"
@@ -2283,45 +2289,45 @@ msgstr ""
 "は夜間として扱われます。\n"
 "\n"
 
-#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:340 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "夜明け"
 
-#. [topic]: id=time_of_day
 #. [time]: id=morning
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:341 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "朝"
 
-#. [topic]: id=time_of_day
 #. [time]: id=afternoon
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:342 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "午後"
 
-#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:343 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "夕方"
 
-#. [topic]: id=time_of_day
 #. [time]: id=first_watch
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:344 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "夜"
 
-#. [topic]: id=time_of_day
 #. [time]: id=second_watch
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:345 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
@@ -2755,11 +2761,18 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:441
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "You can see what basic types a mixed terrain is comprised of by mousing "
+#| "over its hex and checking the terrain type icons displayed in the upper "
+#| "right, (under the default theme)."
 msgid ""
 "\n"
 "\n"
 "You can see what basic types a mixed terrain is comprised of by mousing over "
-"its hex and checking the terrain type icons displayed in the upper right, "
+"its hex and checking the terrain type icons displayed in the upper right "
 "(under the default theme)."
 msgstr ""
 "\n"
@@ -4995,6 +5008,74 @@ msgstr "ドレーク"
 
 #. [race]: id=drake
 #: data/core/units.cfg:58
+#, fuzzy
+#| msgid ""
+#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
+#| "true dragons. On average, an adult drake stands around three meters tall "
+#| "and easily weighs more than a man and a horse combined. Their skin is "
+#| "made up of hard scales, resistant to most physical strikes except "
+#| "piercing and cold damage. Most drakes are capable of true flight and can "
+#| "travel long distances quickly. However, their sheer weight and bulk "
+#| "limits their flight ability somewhat, making them ungainly in the air. "
+#| "Where possible, they make use of terrain features such as hills, "
+#| "mountains and trees as launch points in order to gain greater height and "
+#| "speed. Fortunately for their enemies, they are still quite clumsy "
+#| "creatures and surprisingly slow in combat. This, combined with their "
+#| "large size, renders them easy targets for those who dare attack them.\n"
+#| "\n"
+#| "Drakes are inherently magical creatures, with a mysterious internal fire "
+#| "fueling their very lives. This can easily be witnessed when one of their "
+#| "kind perishes in combat; its internal fire is released, burning their "
+#| "remains in to ashes. Their internal fire is also their greatest weakness; "
+#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
+#| "nature, drakes are incapable of channeling magic in a controlled manner. "
+#| "While the magic imbued within a drake’s body enables it to spit fire and "
+#| "gives it life, they have no willful control over the functions of this "
+#| "magic.\n"
+#| "\n"
+#| "<header>text='Society'</header>\n"
+#| "Drakes are a relatively warlike race and their societies can be best "
+#| "described as cultured martial societies. The core of a drake tribe is a "
+#| "small group of veteran warriors headed by a mutually respected — or "
+#| "simply feared — dominant who rules the society with an iron fist. Every "
+#| "drake is expected to earn their place in the strict hierarchy, to obey "
+#| "their superiors and command their inferiors. Entry to the ruling elite is "
+#| "only possible through challenging and defeating a superior in single "
+#| "combat, which is the way the hierarchy within the elite itself is "
+#| "established. The use of deception of any kind towards any fellow drake "
+#| "is, without exception, seen as cowardly and unacceptable.\n"
+#| "\n"
+#| "While their warlike nature and sense of territory drives them to defend "
+#| "their territories savagely, drakes rarely invade or trespass on areas "
+#| "already occupied by the other major races. Instead, they settle in "
+#| "unpopulated areas to establish their own territory there. They primarily "
+#| "feed on large game they hunt in the lowlands around their homes, but "
+#| "hatchlings and lower caste drakes are known to feed also on certain kinds "
+#| "of moss and fungi they cultivate deep in their caverns. The only "
+#| "technology drakes value is armor- and weapon-smithing, and neither know "
+#| "or need other science and culture besides this. However the few "
+#| "implements they do fashion are almost unrivaled in quality, only matched "
+#| "by those produced in the finest Dwarvish foundries.\n"
+#| "\n"
+#| "Drakes are hatched from eggs and usually live naturally between 20 to 30 "
+#| "years. Death in battle is the most preferred way for a drake to leave "
+#| "this world. Unlike the elder members of other races, drakes naturally "
+#| "grow more aggressive and reckless towards the ends of their natural "
+#| "lives, perhaps to help ensure their place in the heroic legends of their "
+#| "kind.\n"
+#| "\n"
+#| "<header>text='Geography'</header>\n"
+#| "Drakes originated from an archipelago of volcanic islands called "
+#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
+#| "text='Great Ocean'</ref>. A combination of population pressure and the "
+#| "subsidence of many of their home islands has caused colonies of drakes to "
+#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
+#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
+#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
+#| "warmth, their internal fire is more than capable of sustaining them even "
+#| "in a relatively cold climate, a feature which has allowed them to "
+#| "populate even some of the mountains of the far north of the Great "
+#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -5039,13 +5120,13 @@ msgid ""
 "hatchlings and lower caste drakes are known to feed also on certain kinds of "
 "moss and fungi they cultivate deep in their caverns. The only technology "
 "drakes value is armor- and weapon-smithing, and neither know or need other "
-"science and culture besides this. However the few implements they do fashion "
-"are almost unrivaled in quality, only matched by those produced in the "
-"finest Dwarvish foundries.\n"
+"science and culture besides this. However, the few implements they do "
+"fashion are almost unrivaled in quality, only matched by those produced in "
+"the finest Dwarvish foundries.\n"
 "\n"
-"Drakes are hatched from eggs and usually live naturally between 20 to 30 "
-"years. Death in battle is the most preferred way for a drake to leave this "
-"world. Unlike the elder members of other races, drakes naturally grow more "
+"Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
+"Death in battle is the most preferred way for a drake to leave this world. "
+"Unlike the elder members of other races, drakes naturally grow more "
 "aggressive and reckless towards the ends of their natural lives, perhaps to "
 "help ensure their place in the heroic legends of their kind.\n"
 "\n"
@@ -5417,19 +5498,61 @@ msgstr "人間"
 
 #. [race]: id=human
 #: data/core/units.cfg:187
+#, fuzzy
+#| msgid ""
+#| "The race of men is an extremely diverse one. Although they originally "
+#| "came from the Old Continent, men have spread all over the world and split "
+#| "into many different cultures and races. Although they are not imbued with "
+#| "magic like other creatures, humans can learn to wield it and able to "
+#| "learn more types than most others. They have no extra special abilities "
+#| "or aptitudes except their versatility and drive. While often at odds with "
+#| "other races, they can occasionally form alliances with the less "
+#| "aggressive races such as elves and dwarves. The less scrupulous among "
+#| "them do not shrink back from hiring orcish mercenaries, either. They have "
+#| "no natural enemies, although the majority of men, like most people of all "
+#| "races, have an instinctive dislike of the undead. Men are shorter than "
+#| "the elves, but taller still than dwarves. Their skin color can vary, from "
+#| "almost white to dark brown.\n"
+#| "\n"
+#| "<header>text='Subjects of the Crown'</header>\n"
+#| "Many different groups of men exist, but the majority of them on the Great "
+#| "Continent live under the rule of the Crown of Wesnoth. The humans first "
+#| "appeared on the Great Continent from a land far across the ocean to the "
+#| "West, the Green Isle, and soon established their capital at the inland "
+#| "city of Weldyn. Over the following centuries they have built up a number "
+#| "cities across the continent. The soldiers from the Crown of Wesnoth "
+#| "protect the country, forming the most organized military force in the "
+#| "known world. Its warriors come from the main provinces, where all men are "
+#| "conscripted at an early age.\n"
+#| "\n"
+#| "<header>text='The Clansmen'</header>\n"
+#| "The eastern provinces of Wesnoth, known as the Clan Homelands, have a "
+#| "geography consisting of more open plains and rolling hills than the "
+#| "western, more civilized provinces. They are home to the Horse Clans, who "
+#| "are allied with the Crown of Wesnoth but operate independently and "
+#| "maintain their own identity. Some consider them to be a tributary state, "
+#| "which sends food and soldiers to Crown in exchange for protection. Others "
+#| "say they are on equal footing with the western half of Wesnoth. In any "
+#| "case, the eastern provinces do not have a conscript army the way Western "
+#| "Wesnoth does. Training for fighting is part of the way of life of the "
+#| "Clans; the parents teach the children to ride horses, fight and shoot a "
+#| "bow from an early age. In general, the Clan warriors are less organized "
+#| "than the civilized fighters, and the strengths and weaknesses of these "
+#| "groups complement each other."
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
 "many different cultures and races. Although they are not imbued with magic "
-"like other creatures, humans can learn to wield it and able to learn more "
-"types than most others. They have no extra special abilities or aptitudes "
-"except their versatility and drive. While often at odds with other races, "
-"they can occasionally form alliances with the less aggressive races such as "
-"elves and dwarves. The less scrupulous among them do not shrink back from "
-"hiring orcish mercenaries, either. They have no natural enemies, although "
-"the majority of men, like most people of all races, have an instinctive "
-"dislike of the undead. Men are shorter than the elves, but taller still than "
-"dwarves. Their skin color can vary, from almost white to dark brown.\n"
+"like other creatures, humans can learn to wield it and are able to learn "
+"more types than most others. They have no extra special abilities or "
+"aptitudes except their versatility and drive. While often at odds with other "
+"races, they can occasionally form alliances with the less aggressive races "
+"such as elves and dwarves. The less scrupulous among them do not shrink back "
+"from hiring orcish mercenaries, either. They have no natural enemies, "
+"although the majority of men, like most people of all races, have an "
+"instinctive dislike of the undead. Men are shorter than the elves, but "
+"taller still than dwarves. Their skin color can vary, from almost white to "
+"dark brown.\n"
 "\n"
 "<header>text='Subjects of the Crown'</header>\n"
 "Many different groups of men exist, but the majority of them on the Great "
@@ -5489,53 +5612,63 @@ msgstr ""
 "一族の戦士たちは文明化した戦士たちよりも組織立っていません。これらのグループ"
 "の長所と短所は互いに補完しあいます。"
 
+#. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:203
-msgid "race^Khalifate Human"
-msgstr "カリフェイト"
+#: data/core/units.cfg:203 data/core/units.cfg:218
+#, fuzzy
+#| msgid "race^Human"
+msgid "race^Dunefolk Human"
+msgstr "人間"
 
+#. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:204
-msgid "race+female^Khalifate Human"
-msgstr "カリフェイト"
+#: data/core/units.cfg:204 data/core/units.cfg:219
+#, fuzzy
+#| msgid "race+female^Human"
+msgid "race+female^Dunefolk Human"
+msgstr "人間"
 
+#. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:205
-msgid "race+plural^Khalifate"
-msgstr "カリフェイト"
+#: data/core/units.cfg:205 data/core/units.cfg:220
+#, fuzzy
+#| msgid "race+plural^Undead"
+msgid "race+plural^Dunefolk"
+msgstr "アンデッド"
 
+#. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:206
+#: data/core/units.cfg:206 data/core/units.cfg:221
 msgid "This race does not have a description yet."
 msgstr "この一団の説明はまだありません。"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:217
+#: data/core/units.cfg:232
 msgid "race^Saurian"
 msgstr "トカゲ"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:218
+#: data/core/units.cfg:233
 msgid "race+female^Saurian"
 msgstr "トカゲ"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:219
+#: data/core/units.cfg:234
 msgid "race^Saurians"
 msgstr "トカゲ"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:229
+#: data/core/units.cfg:244
 msgid "race^Mechanical"
 msgstr "機械"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:230
+#: data/core/units.cfg:245
 msgid "race+plural^Mechanical"
 msgstr "機械"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:231
+#: data/core/units.cfg:246
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -5547,22 +5680,22 @@ msgstr ""
 "物は魔法的な力によってそうします。"
 
 #. [race]: id=merman
-#: data/core/units.cfg:240
+#: data/core/units.cfg:255
 msgid "race^Merman"
 msgstr "マーフォーク"
 
 #. [race]: id=merman
-#: data/core/units.cfg:241
+#: data/core/units.cfg:256
 msgid "race^Mermaid"
 msgstr "マーフォーク"
 
 #. [race]: id=merman
-#: data/core/units.cfg:242
+#: data/core/units.cfg:257
 msgid "race^Mermen"
 msgstr "マーフォーク"
 
 #. [race]: id=merman
-#: data/core/units.cfg:244
+#: data/core/units.cfg:259
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -5584,22 +5717,22 @@ msgstr ""
 "ので、典型的には、彼らは乾燥した土地を嫌います。"
 
 #. [race]: id=monster
-#: data/core/units.cfg:252
+#: data/core/units.cfg:267
 msgid "race^Monster"
 msgstr "モンスター"
 
 #. [race]: id=monster
-#: data/core/units.cfg:253
+#: data/core/units.cfg:268
 msgid "race+female^Monster"
 msgstr "モンスター"
 
 #. [race]: id=monster
-#: data/core/units.cfg:254
+#: data/core/units.cfg:269
 msgid "race^Monsters"
 msgstr "モンスター"
 
 #. [race]: id=monster
-#: data/core/units.cfg:255
+#: data/core/units.cfg:270
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -5610,22 +5743,22 @@ msgstr ""
 "い伝えに出現していることも多いのです。"
 
 #. [race]: id=naga
-#: data/core/units.cfg:262
+#: data/core/units.cfg:277
 msgid "race^Naga"
 msgstr "ナーガ"
 
 #. [race]: id=naga
-#: data/core/units.cfg:263
+#: data/core/units.cfg:278
 msgid "race^Nagini"
 msgstr "ナーガ"
 
 #. [race]: id=naga
-#: data/core/units.cfg:264
+#: data/core/units.cfg:279
 msgid "race^Nagas"
 msgstr "ナーガ"
 
 #. [race]: id=naga
-#: data/core/units.cfg:265
+#: data/core/units.cfg:280
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -5654,22 +5787,22 @@ msgstr ""
 "ます。"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:273
+#: data/core/units.cfg:288
 msgid "race^Ogre"
 msgstr "オーガ"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:274
+#: data/core/units.cfg:289
 msgid "race+female^Ogre"
 msgstr "オーガ"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:275
+#: data/core/units.cfg:290
 msgid "race^Ogres"
 msgstr "オーガ"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:276
+#: data/core/units.cfg:291
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -5699,22 +5832,22 @@ msgstr ""
 "か、それとも単なる日和見主義なのかは分かっていません。"
 
 #. [race]: id=orc
-#: data/core/units.cfg:284
+#: data/core/units.cfg:299
 msgid "race^Orc"
 msgstr "オーク"
 
 #. [race]: id=orc
-#: data/core/units.cfg:285
+#: data/core/units.cfg:300
 msgid "race+female^Orc"
 msgstr "オーク"
 
 #. [race]: id=orc
-#: data/core/units.cfg:286
+#: data/core/units.cfg:301
 msgid "race^Orcs"
 msgstr "オーク"
 
 #. [race]: id=orc
-#: data/core/units.cfg:287
+#: data/core/units.cfg:302
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans. They are warlike, savage, and cruel by nature. "
@@ -5821,22 +5954,22 @@ msgstr ""
 "大部分は、弓術や暗殺術といった別の技能に特化していきます。"
 
 #. [race]: id=troll
-#: data/core/units.cfg:303
+#: data/core/units.cfg:318
 msgid "race^Troll"
 msgstr "トロル"
 
 #. [race]: id=troll
-#: data/core/units.cfg:304
+#: data/core/units.cfg:319
 msgid "race+female^Troll"
 msgstr "トロル"
 
 #. [race]: id=troll
-#: data/core/units.cfg:305
+#: data/core/units.cfg:320
 msgid "race^Trolls"
 msgstr "トロル"
 
 #. [race]: id=troll
-#: data/core/units.cfg:306
+#: data/core/units.cfg:321
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5906,22 +6039,22 @@ msgstr ""
 "るところならどこでも。"
 
 #. [race]: id=undead
-#: data/core/units.cfg:326
+#: data/core/units.cfg:341
 msgid "race^Undead"
 msgstr "アンデッド"
 
 #. [race]: id=undead
-#: data/core/units.cfg:327
+#: data/core/units.cfg:342
 msgid "race+female^Undead"
 msgstr "アンデッド"
 
 #. [race]: id=undead
-#: data/core/units.cfg:328
+#: data/core/units.cfg:343
 msgid "race+plural^Undead"
 msgstr "アンデッド"
 
 #. [race]: id=undead
-#: data/core/units.cfg:329
+#: data/core/units.cfg:344
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5968,32 +6101,32 @@ msgstr ""
 "てまったく聞いたことがありませんでした。"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:342
+#: data/core/units.cfg:357
 msgid "race^Wolf"
 msgstr "狼"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:343
+#: data/core/units.cfg:358
 msgid "race+female^Wolf"
 msgstr "狼"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:344
+#: data/core/units.cfg:359
 msgid "race^Wolves"
 msgstr "狼"
 
 #. [race]: id=wose
-#: data/core/units.cfg:354
+#: data/core/units.cfg:369
 msgid "race^Wose"
 msgstr "ウーズ"
 
 #. [race]: id=wose
-#: data/core/units.cfg:355
+#: data/core/units.cfg:370
 msgid "race^Woses"
 msgstr "ウーズ"
 
 #. [race]: id=wose
-#: data/core/units.cfg:356
+#: data/core/units.cfg:371
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -6063,21 +6196,27 @@ msgstr ""
 "ん。彼らは衛兵のように何世紀も立っているだけで満足し、文明世界に無関心です。"
 "住処である自然世界と森を守るためだけに奮起するのです。"
 
-#: data/lua/feeding.lua:27 data/lua/feeding.lua:40
+#: data/lua/feeding.lua:32 data/lua/feeding.lua:45
 msgid "+1 max HP"
 msgstr "最大 HP +1"
 
-#: src/help/help.cpp:182
-msgid "Close"
-msgstr "閉じる"
+#~ msgid "race^Khalifate Human"
+#~ msgstr "カリフェイト"
 
-#: src/help/help.cpp:185
-msgid "The Battle for Wesnoth Help"
-msgstr "The Battle for Wesnoth ヘルプ"
+#~ msgid "race+female^Khalifate Human"
+#~ msgstr "カリフェイト"
 
-#: src/help/help.cpp:240
-msgid "Parse error when parsing help text: "
-msgstr "ヘルプ文書を解析中にエラー: "
+#~ msgid "race+plural^Khalifate"
+#~ msgstr "カリフェイト"
+
+#~ msgid "Close"
+#~ msgstr "閉じる"
+
+#~ msgid "The Battle for Wesnoth Help"
+#~ msgstr "The Battle for Wesnoth ヘルプ"
+
+#~ msgid "Parse error when parsing help text: "
+#~ msgstr "ヘルプ文書を解析中にエラー: "
 
 #~ msgid "female^nightstalk"
 #~ msgstr "隠密"

@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
-"POT-Creation-Date: 2017-09-21 23:28+0300\n"
+"POT-Creation-Date: 2018-02-04 15:39+0300\n"
 "PO-Revision-Date: 2017-11-21 10:18+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
@@ -30,8 +30,8 @@ msgstr "WESNOTH"
 #. type: TH
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
-msgid "2017"
-msgstr "2017"
+msgid "2018"
+msgstr ""
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -503,8 +503,12 @@ msgstr "B<--nogui>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:186
+#, fuzzy
+#| msgid ""
+#| "runs the game without the GUI. Only availaible in combination with B<--"
+#| "multiplayer> or B<--screenshot> or B<--plugin>."
 msgid ""
-"runs the game without the GUI. Only availaible in combination with B<--"
+"runs the game without the GUI. Only available in combination with B<--"
 "multiplayer> or B<--screenshot> or B<--plugin>."
 msgstr ""
 "ejecuta el juego sin la GUI. Solo disponible en combinación con B<--"
@@ -582,11 +586,21 @@ msgstr "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
 # El preprocesador que lo preprocese, buen preprocesador será.
 #. type: Plain text
 #: doc/man/wesnoth.6:214
+#, fuzzy
+#| msgid ""
+#| "preprocesses a specified file/folder. For each file(s) a plain .cfg file "
+#| "and a processed .cfg file will be written in specified target directory. "
+#| "If a folder is specified, it will be preprocessed recursively based on "
+#| "the known preprocessor rules. The common macroses from the \"data/core/"
+#| "macros\" directory will be preprocessed before the specified resources.  "
+#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> For details "
+#| "regarding the preprocessor visit: https://wiki.wesnoth.org/"
+#| "PreprocessorRef#Command-line_preprocessor"
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
 "folder is specified, it will be preprocessed recursively based on the known "
-"preprocessor rules. The common macroses from the \"data/core/macros\" "
+"preprocessor rules. The common macros from the \"data/core/macros\" "
 "directory will be preprocessed before the specified resources.  Example: B<-"
 "p ~/wesnoth/data/campaigns/tutorial ~/result.> For details regarding the "
 "preprocessor visit: https://wiki.wesnoth.org/PreprocessorRef#Command-"
@@ -2040,6 +2054,9 @@ msgstr ""
 #: doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+#~ msgid "2017"
+#~ msgstr "2017"
 
 # Esto que es? el año?
 #~ msgid "2013"

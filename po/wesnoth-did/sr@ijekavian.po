@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-did\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 20:27 UTC\n"
+"POT-Creation-Date: 2018-02-04 12:38 UTC\n"
 "PO-Revision-Date: 2011-12-10 10:16+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -209,12 +209,13 @@ msgstr ""
 msgid "Defenders"
 msgstr "Браниоци"
 
+#. [side]: type=Orcish Warlord, id=Borth
 #. [side]: type=Orcish Warrior, id=Kreg'a'shar Trr
 #. [side]: type=Orcish Warlord, id=Gron'r Hronk
 #. [side]: type=Orcish Warlord, id=K'rrlar Oban
-#. [side]: type=Orcish Warlord, id=Borth
 #. [side]: type=Orcish Warlord, id=P'Gareth
 #. [side]: type=Orcish Warlord, id=K'Vark
+#. [modify_side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:77
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:55
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:82
@@ -222,6 +223,7 @@ msgstr "Браниоци"
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:94
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:131
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:61
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:276
 msgid "Orcs"
 msgstr "Оркови"
 
@@ -231,8 +233,8 @@ msgstr "Оркови"
 msgid "Kreg’a’shar Trr"
 msgstr "Крегашар Тр"
 
-#. [side]: type=Sergeant, id=Drogan
 #. [side]: type=Lieutenant, id=Drogan
+#. [side]: type=Sergeant, id=Drogan
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:107
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:90
 msgid "Drogan"
@@ -243,22 +245,30 @@ msgstr "Дроган"
 msgid "Defend the river fort for two nights"
 msgstr "Одбраниш ли рјечну утврду двије ноћи"
 
+#. [objective]: condition=win
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:156
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:165
+#, fuzzy
+#| msgid "Kill the orc leaders"
+msgid "Kill the orc leader"
+msgstr "Побијеш ли орковске вође"
+
 #. [objective]: condition=lose
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:155
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:160
 msgid "Orcs break through the river fort defenses"
 msgstr "Пробију ли се оркови кроз бедеме рјечне утврде"
 
 #. [objective]: condition=lose
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:159
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:164
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:95
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:137
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:139
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:121
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:183
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:190
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:464
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:272
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:72
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:316
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:318
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:116
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:369
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:433
@@ -268,12 +278,12 @@ msgid "Death of Malin Keshar"
 msgstr "Настрада ли Малин Кешар"
 
 #. [objective]: condition=lose
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:163
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:168
 msgid "Death of Drogan"
 msgstr "Настрада ли Дроган"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:181
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:186
 msgid ""
 "Malin, troubled by his father’s death, argues to no avail that Darken Volk "
 "be allowed to stay to help defend the town. The necromancer leaves Parthyn "
@@ -283,12 +293,12 @@ msgstr ""
 "дозволи да остане и помогне одбрану града. Некромант мирно напусти Партин."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:187
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:192
 msgid "Several weeks pass..."
 msgstr "Прође неколико седмица..."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:192
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:197
 msgid ""
 "Although I dislike sending a raiding party out so early, they should clear "
 "out the orc encampments and leave us a relatively quiet summer."
@@ -297,12 +307,12 @@ msgstr ""
 "орковске логоре и обезбиједи нам сразмјерно тихо љето."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:197
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:202
 msgid "So much for quiet, Drogan. Orcs mass north of the river!"
 msgstr "Толико о тихом, Дрогане. Оркови се гомилају сјеверно од ријеке!"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:202
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:207
 msgid ""
 "Curse them! You must hold the river fort, Malin, or they shall surely "
 "overrun the town. I will bring what soldiers remain to your aid. The raiding "
@@ -315,12 +325,12 @@ msgstr ""
 "силу која им стиже из позадине."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:216
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:221
 msgid "What in blazes is that thing? Has the necromancer returned?"
 msgstr "Сто му громова, каква је то грозота? Је ли се то некромант вратио?"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:222
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:227
 msgid ""
 "No, Drogan. I raised this corpse with the skills Darken Volk taught to me "
 "before he left. While I have no love for it, without the help of the dead we "
@@ -333,7 +343,7 @@ msgstr ""
 "свјестан тога!"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:227
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:232
 msgid ""
 "No benefit is worth the price of defiling the bodies of our dead! You have "
 "been very close-mouthed about why the mages sent you home from Alduin; if it "
@@ -344,7 +354,7 @@ msgstr ""
 "у овакве вјештине, није ни чудо што те избацише!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:232
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:237
 msgid ""
 "No! No... it was nothing like that... But I will not stand by and allow the "
 "orcs to destroy my home while I have the skills to prevent it!"
@@ -353,30 +363,30 @@ msgstr ""
 "униште мој дом, када имам знања да то спријечим!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:247
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:252
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:317
 msgid "Welcome to Parthyn"
 msgstr "Добро дошли у Партин"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:262
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:267
 msgid ""
 "Fear is the path to the dark side. Fear leads to anger. Anger leads to hate. "
 "Hate leads to suffering."
 msgstr ""
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:278
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:284
 msgid "The orcs have broken through our line. Parthyn is open to attack!"
 msgstr "Оркови пробише наше редове. Партин је отворен за напад!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:294
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:300
 msgid "Who will be left to defend Parthyn?"
 msgstr "Ко ће остати да брани Партин?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:309
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:315
 msgid ""
 "The raiding party returns, and the orcs flee in the face of a superior force."
 msgstr ""
@@ -384,12 +394,12 @@ msgstr ""
 "разбјежаше."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:326
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:332
 msgid "The orcs are broken, dead or fled."
 msgstr "Оркови су разбијени, што мртви што побјегли."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:353
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:359
 msgid ""
 "By all rights, I should have you executed on the spot, Malin. I certainly "
 "should have not given the necromancer the chance to corrupt you. Since I "
@@ -402,13 +412,13 @@ msgstr ""
 "прогнаним из Партина и цијелог Веснотског краљевства."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:358
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:364
 msgid ""
 "Would you rather have let the orcs overrun the town and seen us both dead?"
 msgstr "Радије би да смо пустили оркове да прегазе град и обојица страдали?"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:363
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:369
 msgid ""
 "Aye, better that than to even dabble in dark magic. People would have "
 "rebuilt the town, just as they always have in the past. Would that the mages "
@@ -419,13 +429,13 @@ msgstr ""
 "више здравог разума."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:368
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:374
 msgid ""
 "The mages taught me enough. You won’t truly banish me, will you, Drogan?"
 msgstr "Магови ме довољно научише. Нећеш ме заиста изгнати, зар не, Дрогане?"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:373
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:379
 msgid ""
 "Begone, now. I’ve no wish to be forced to send the soldiers after you. Your "
 "father would be ashamed to see the end to which you’ve come."
@@ -434,7 +444,7 @@ msgstr ""
 "да види на колико ниске гране му је син пао."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:379
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:385
 msgid ""
 "That was bravely done, lad, holding the orcs off by yourself. The mages "
 "taught you well. But there is grave news from the village; your sister Dela "
@@ -446,7 +456,7 @@ msgstr ""
 "се старају о њој, али су јој слаби изгледи."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:384
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:390
 msgid ""
 "Orcs. Foul, pestilent creatures. The wide green world would be a better "
 "place with them all dead. Dead!"
@@ -455,7 +465,7 @@ msgstr ""
 "су сви до једног мртви. Мртви!"
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:389
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:395
 msgid ""
 "Perhaps, but if kings and great mages have not abolished them neither you "
 "nor I are ever likely to."
@@ -464,7 +474,7 @@ msgstr ""
 "и ја ту можемо учинити."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:394
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:400
 msgid ""
 "Perhaps I cannot kill them all... but I see the back-trail of this band we "
 "defeated, and there will be more orcs at the other end of it. I shall pursue "
@@ -474,17 +484,17 @@ msgstr ""
 "поразисмо, и на његовом крају сигурно чека још оркова. Кренућу на њих."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:399
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:405
 msgid "And leave your sister?"
 msgstr "И оставити сестру?"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:404
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:410
 msgid "My hands were never apt for healing. But revenge I can give her."
 msgstr "Никада нисам био умјешан у видању. Али освету јој могу подарити."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:409
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:415
 msgid ""
 "No! We need every man who can fight here, not lost in doomed attempt to "
 "harry the orcs in their own country!"
@@ -493,12 +503,12 @@ msgstr ""
 "покушају да на оркове удари у њиховом сопственом забрану!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:414
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:420
 msgid "I am resolved."
 msgstr "Одлучио сам."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:419
+#: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:425
 msgid ""
 "You’ll go without my blessing or my men, then. I won’t spare any on such an "
 "errand."
@@ -548,7 +558,7 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:41
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:38
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Alone_at_Last.cfg:37
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:244
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:257
 #: data/campaigns/Descent_Into_Darkness/utils/characters.cfg:6
 msgid "Malin Keshar"
 msgstr "Малин Кешар"
@@ -571,12 +581,12 @@ msgstr "Освојиш ли сва гоблинска села"
 
 #. [objective]: condition=lose
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:99
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:141
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:143
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:125
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:187
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:276
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:76
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:320
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:322
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:120
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:373
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:437
@@ -673,17 +683,17 @@ msgstr ""
 "ће користити твом подучавању да ти и ја испитамо ову мочвару."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:286
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:285
 msgid "Rise, rise from the realms of death and decay!"
 msgstr "Дижите се, дижите се из царстава смрти и распада!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:314
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:313
 msgid "What are those things?"
 msgstr "Какве су то ствари?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:319
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:318
 msgid ""
 "They are ghouls. Once, they were... evil men... murderers and outlaws. "
 "Through magic they have been transformed so their outsides match the spirits "
@@ -696,12 +706,12 @@ msgstr ""
 "природним стањем распада."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:324
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:323
 msgid "It seems cruel to turn men into such a hideous form."
 msgstr "Дјелује окрутно мијењати људе у тако гнусна обличја."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:329
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:328
 msgid ""
 "In their present form they can best serve the greater good. Even now they "
 "will aid you in defeating this goblin rabble. Besides, as I said, these were "
@@ -712,12 +722,12 @@ msgstr ""
 "су то врло зли људи. Нема те казне која би им била прекомјерна."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:334
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:333
 msgid "I suppose so..."
 msgstr "Ако је тако..."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:370
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:369
 msgid ""
 "Sacking goblin villages is all well and good, but walking corpses and bats "
 "won’t stand up to full orcish warriors."
@@ -726,7 +736,7 @@ msgstr ""
 "шишмиши не могу се мерити са пунокрвним орковским ратницима."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:375
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:374
 msgid ""
 "Your training is just beginning, Malin. With the souls from these goblins "
 "now available for our use, you will see your forces grow quickly."
@@ -735,7 +745,7 @@ msgstr ""
 "услузи, видјећеш како ће твоје снаге брзо расти."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:380
+#: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:379
 msgid "Excellent. I’m eager to move on to the real foes."
 msgstr "Изврсно. Нестрпљив сам да ударимо на праве противнике."
 
@@ -758,40 +768,40 @@ msgstr ""
 
 #. [side]: type=Dwarvish Steelclad, id=Dap Horner
 #. [side]: type=Bandit, id=Gorak Cole
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:52
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:79
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:53
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:81
 msgid "Outlaws"
 msgstr "Одметници"
 
 # |, no-check-spell
 #. [side]: type=Dwarvish Steelclad, id=Dap Horner
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:57
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:58
 msgid "Dap Horner"
 msgstr "Дап Хорнер"
 
 #. [side]: type=Dwarvish Steelclad, id=Dap Horner
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:64
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:65
 msgid "Watchman"
 msgstr "стражар"
 
 # |, no-check-spell
 #. [side]: type=Bandit, id=Gorak Cole
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:84
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:86
 msgid "Gorak Cole"
 msgstr "Горак Коул"
 
 #. [side]
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:99
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:101
 msgid "Free Undead"
 msgstr "Слободни немртви"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:133
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:135
 msgid "Clear the cave of enemies"
 msgstr "Очистиш ли пећину од непријатеља"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:186
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:188
 msgid ""
 "Winter comes on fast, and we need a sheltered place to spend it. This cave "
 "looks promising, but from the tracks in and out several bands of outlaws "
@@ -803,7 +813,7 @@ msgstr ""
 "смјестити."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:200
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:202
 msgid ""
 "Be careful when imprisoning a soul and use all your might to retain control "
 "over it or it might attempt to break free and destroy you!"
@@ -812,12 +822,12 @@ msgstr ""
 "њом, иначе може покушати да се отргне и уништи те!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:205
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:207
 msgid "I... I will try."
 msgstr "Ја... покушаћу."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:220
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:222
 msgid ""
 "Dwarves! They have often been our allies against the orc hordes. Surely they "
 "will allow us to winter with them."
@@ -826,7 +836,7 @@ msgstr ""
 "пустити да презимимо крај њих."
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:229
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:231
 msgid ""
 "Two necromancers are at the cave entrance! Up yer axes, boys, if ye dinna’ "
 "want tae be a walking pile o’ bones."
@@ -835,12 +845,12 @@ msgstr ""
 "радије да постанете ходајуће вреће костију."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:234
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:236
 msgid "Or not. Why do they hate us so much?"
 msgstr "А можда и неће. Зашто нас толико мрзе?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:239
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:241
 msgid ""
 "People fear that which they don’t understand, and death, after all, is the "
 "greatest mystery. Those who dare to investigate that mystery are bound to "
@@ -855,12 +865,12 @@ msgstr ""
 "никаквог избора."
 
 #. [event]: id=Tortured Soul
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:265
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:267
 msgid "Tortured Soul"
 msgstr "измучена душа"
 
 #. [message]
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:274
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:276
 msgid ""
 "Free! Your foul spells cannot enslave me any longer, Malin the Damned. You "
 "shall pay for keeping me from my final rest!"
@@ -869,7 +879,7 @@ msgstr ""
 "Платићеш што си ме одвраћао од коначног починка!"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:279
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:281
 msgid ""
 "Fool boy! Your will must be stronger or you will never be able to control "
 "your soldiers well enough to face the orcs. Many are the young necromancers "
@@ -882,12 +892,12 @@ msgstr ""
 "тебе."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:284
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:286
 msgid "But why are they attacking me? And what should I do?!"
 msgstr "Али зашто ме нападају? И шта сада да учиним?!"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:289
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:291
 msgid ""
 "Destroy the rebel quickly and all will be well. Wait, and he will begin to "
 "turn the rest of your forces against you."
@@ -896,7 +906,7 @@ msgstr ""
 "твојих снага да се окреће на тебе."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:323
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:325
 msgid ""
 "I think I’ve got the rest of them under control now. That was a close call."
 msgstr "Мислим да сам сада преостале ухватио под контролу. То је било близу."
@@ -957,7 +967,7 @@ msgid "Kill the orc leaders"
 msgstr "Побијеш ли орковске вође"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:151
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:197
 msgid ""
 "Orcs block the way out of the mountain pass. Destroy them, and we will move "
 "on to bigger targets."
@@ -966,31 +976,37 @@ msgstr ""
 "веће мете."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:156
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:202
+#, fuzzy
+#| msgid ""
+#| "With the might of the undead at my command, many orcs will die this day. "
+#| "They shall pay for getting me banished from Parthyn."
 msgid ""
 "With the might of the undead at my command, many orcs will die this day. "
-"They shall pay for getting me banished from Parthyn."
+"They shall pay for attacking Parthyn."
 msgstr ""
 "Уз моћ немртвих којом сам овладао, многи ће оркови изгинути данас. Платиће "
 "за моје изгнанство из Партина."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:174
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:220
 msgid "Feel my wrath, vile creature!"
 msgstr "Суочи се с мојим бијесом, злокобно створење!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:194
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:240
 msgid "The ice doesn’t look very thick..."
 msgstr "Лед не дјелује посебно дебело..."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:199
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:245
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:451
 msgid "..."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:249
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:295
 msgid ""
 "The weak ice gives way beneath the undead creature, who becomes mired in the "
 "thick mud at the lake’s bottom."
@@ -999,7 +1015,7 @@ msgstr ""
 "на дну језера."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:256
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:302
 msgid ""
 "The weak ice gives way beneath the heavy warrior, who drowns in the frigid "
 "mountain waters."
@@ -1080,7 +1096,7 @@ msgid "River Longlier"
 msgstr "Лонглијер"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:212
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:210
 msgid ""
 "Since the very founding of Wesnoth you have hounded humans at every turn. "
 "You have raided my home at every opportunity. You have trampled our fields, "
@@ -1102,7 +1118,7 @@ msgstr ""
 "мом побједоносном повратку."
 
 #. [message]: speaker=Borth
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:217
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:215
 msgid ""
 "Stop your silly talk, foul necromancer. You have caused enough trouble. It "
 "is time for you to die."
@@ -1111,12 +1127,12 @@ msgstr ""
 "умреш."
 
 #. [message]: speaker=P'Gareth
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:222
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:220
 msgid "Ummm... unless... you are already dead, like the skeletons?"
 msgstr "Овај... осим... ако си већ мртав, као скелети?"
 
 #. [message]: speaker=K'Vark
-#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:227
+#: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:225
 msgid "Then, it will be time for you to die again!"
 msgstr "У том случају, вријеме је да опет умреш!"
 
@@ -1190,13 +1206,6 @@ msgstr "Гардисти"
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:99
 msgid "River fort guard"
 msgstr "стражар рјечне утврде"
-
-#. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:165
-#, fuzzy
-#| msgid "Kill the orc leaders"
-msgid "Kill the orc leader"
-msgstr "Побијеш ли орковске вође"
 
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:179
@@ -1586,8 +1595,13 @@ msgstr "житељ"
 msgid "Move Malin and Darken Volk into the Mage Lord’s manor"
 msgstr "Уђу ли Малин и Даркен Волк у замак господара мага"
 
+#. [note]
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:287
+msgid "This scenario takes place entirely at night."
+msgstr ""
+
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:310
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:314
 msgid ""
 "The stolen book lies within Lord Karres’s manor on the north end of the "
 "city. We cannot defeat the entire city guard, so we must stay hidden as long "
@@ -1602,36 +1616,45 @@ msgstr ""
 "довољно јаке да заузмемо цио град."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:315
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:319
 msgid ""
 "Note: Only the units you recruit now will be available to you once inside."
 msgstr "Напомена: Само јединице које унајмиш сада биће ти доступне пошто уђеш."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:333
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:343
 msgid ""
 "Sir! Undead creatures are coming out of the forest! Wake the guard "
 "immediately!"
 msgstr "Сер! Немртва створења куљају из шуме! Из ових стопа будите гарду!"
 
 #. [message]: speaker=Taylor
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:338
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:348
 msgid "To arms, men!"
 msgstr "На оружје, људи!"
 
+#. [message]: speaker=Taylor
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:354
+#, fuzzy
+#| msgid ""
+#| "Sir! Undead creatures are coming out of the forest! Wake the guard "
+#| "immediately!"
+msgid "Undead creatures are coming out of the forest! To arms, men!"
+msgstr "Сер! Немртва створења куљају из шуме! Из ових стопа будите гарду!"
+
 # |, no-check-spell
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:357
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:375
 msgid "Ooouuuh! It burns... burrrrnnns..."
 msgstr "Оооо! Гори... гооорррриии..."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:379
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:397
 msgid "What in the name of all demons of hell was this thing?"
 msgstr "Свих му ђавола пакла, шта би та ствар?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:384
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:402
 msgid ""
 "This was the impact of what is known as holy water among common people. It "
 "is brewed in a complicated and mysterious procedure only known to a few "
@@ -1642,7 +1665,7 @@ msgstr ""
 "користи у борби против оживљених створења."
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:412
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:430
 msgid "Here is the entrance! Hurry!"
 msgstr "Ево улаза! Пожурите!"
 
@@ -1651,11 +1674,11 @@ msgstr "Ево улаза! Пожурите!"
 msgid "A Small Favor — Part 2"
 msgstr "Мала услуга, део други"
 
+#. [event]
 #. [side]
 #. [command]
-#. [event]
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:48
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:175
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:177
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_A_Small_Favor3.cfg:150
 msgid "Guard"
 msgstr "стражар"
@@ -1671,7 +1694,7 @@ msgid "Lord Karres"
 msgstr "господар Карес"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:281
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:283
 msgid ""
 "Malin and Darken Volk enter the mage lord’s manor, quickly closing the heavy "
 "gates behind them."
@@ -1680,14 +1703,14 @@ msgstr ""
 "капију за собом."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:286
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:288
 msgid ""
 "That gate won’t hold back the soldiers for more than a few hours. We’d "
 "better hurry."
 msgstr "Капија неће задржати војнике више од неколико сати. Боље да пожуримо."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:305
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:307
 msgid ""
 "I feel the breaking of an illusion spell. The book must be in the great "
 "hall, in the northwest corner of the manor. Let us move quickly now!"
@@ -1696,12 +1719,12 @@ msgstr ""
 "у сјеверозападном углу замка. Пођимо хитро тамо!"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:312
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:314
 msgid "Move through the passageway in the northwest leading to the great hall"
 msgstr "Прођеш ли кроз пролаз на сјеверозападу, који води у велику дворану"
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:336
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:338
 #, fuzzy
 #| msgid ""
 #| "I think I have found the passage to the great hall. Follow me quickly!"
@@ -2117,7 +2140,7 @@ msgstr ""
 
 #. [side]
 #: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:46
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:34
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:39
 #: data/campaigns/Descent_Into_Darkness/utils/characters.cfg:15
 msgid "Mal Keshar"
 msgstr "мал Кешар"
@@ -2131,17 +2154,17 @@ msgstr "Тролови"
 
 # |, no-check-spell
 #. [unit]: type=Ancient Wose, id=Dumdumbadoom
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:203
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:234
 msgid "Dumdumbadoom"
 msgstr "Дамдамбадум"
 
 #. [message]: role=advisor
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:274
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:287
 msgid "Master, you are gravely injured!"
 msgstr "Господару, озбиљно си рањен!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:279
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:292
 msgid ""
 "I won’t go down like this, felled by an orc’s blade. I won’t see them defeat "
 "me!"
@@ -2150,12 +2173,12 @@ msgstr ""
 "побиједе!"
 
 #. [message]: role=advisor
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:284
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:297
 msgid "There is another way, master. Remember the book..."
 msgstr "Постоји други излаз, господару. Присјети се књиге..."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:289
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:302
 msgid ""
 "Yes... yes. The orcs are too strong for me now, but once I have undergone "
 "the transformation they’ll begin to fall before me. And I will continue to "
@@ -2166,93 +2189,96 @@ msgstr ""
 "остане!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:294
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:307
 msgid "Leave me now while I prepare."
 msgstr "Остави ме сада, да се припремим."
 
 #. [message]: role=advisor
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:299
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:312
 msgid "Yes, master."
 msgstr "Да, господару."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:307
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:320
 msgid ""
 "With his last bits of strength, Malin assembles an altar as the book "
 "instructs."
 msgstr "Посљедњом искром снаге, Малин састави олтар по упуту из књиге."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:330
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:343
 msgid "I pray that I am strong enough to complete the spell."
 msgstr "Само да будем довољно јак да довршим чаролију."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:335
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:348
 msgid "I’m ready. Do it."
 msgstr "Спреман сам. Урадимо то."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:392
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:405
 msgid "There is darkness..."
 msgstr "Тама..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:402
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:415
 msgid "and peace..."
 msgstr "...и мир..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:412
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:425
 msgid "for a moment."
 msgstr "...на тренутак."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:422
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:435
 msgid ""
 "Then they are replaced by a pulling, a pain too strong to resist, and then..."
 msgstr "Онда их замени повлачење, бол прејак да би му се одољело, и коначно..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:428
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:441
 msgid "by emptiness."
 msgstr "...празнина."
 
 # |, no-check-spell
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:461
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:474
 msgid "<big>AAAaaiiigghh!!</big>"
 msgstr "<big>АААаајјјггхх!!</big>"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:466
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:479
 msgid "The cold, it burns!"
 msgstr "Хладноћа, пече!"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:471
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:484
 msgid "I need warmth... life... I sense some here!"
 msgstr "Треба ми топлоте.... живот... осјећам нешто овдје!"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:527
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:540
 msgid "Regain your strength"
 msgstr "Повратиш ли снагу"
 
 #. [objective]: condition=lose
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:531
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:635
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:75
+#. [objective]: condition=win
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:544
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:672
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:96
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:105
 msgid "Destruction of Mal Keshar"
 msgstr "Униште ли мала Кешара"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:557
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:571
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:591
 msgid "Yes! I can draw energy even from these insignificant creatures."
 msgstr "Да! Могу да црпим силу чак и из ових безначајних створења."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:591
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:628
 #, fuzzy
 #| msgid ""
 #| "There, in along this old road, I sense a place worthy of being my home. "
@@ -2268,7 +2294,7 @@ msgstr ""
 "морам да обновим снагу."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:596
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:633
 msgid ""
 "I will need a castle from which to call upon my soldiers. I sense one nearby."
 msgstr ""
@@ -2276,17 +2302,17 @@ msgstr ""
 "близини."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:619
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:656
 msgid "Yes, this will do until I can take my new home."
 msgstr "Да, послужиће док не пријеђем у свој нови дом."
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:631
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:668
 msgid "Clear your new home of trolls"
 msgstr "Очистиш ли свој нови дом од тролова"
 
 #. [message]: speaker=Dumdumbadoom
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:718
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:738
 #, fuzzy
 #| msgid ""
 #| "Who has awoken me from my slumber? Undead? I shall not suffer the "
@@ -2300,7 +2326,7 @@ msgstr ""
 
 # |, no-check-spell
 #. [message]
-#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:738
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Descent_into_Darkness.cfg:762
 msgid "<big>AAAaaaggghhhh!! ...</big>"
 msgstr "<big>АААааагггхххх!! ...</big>"
 
@@ -2310,7 +2336,7 @@ msgid "Endless Night"
 msgstr "Ноћ без краја"
 
 #. [part]
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:15
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:20
 msgid ""
 "Years pass. Every summer when the mountain passes become clear, the lich "
 "sends his soldiers to attack the orcs, removing any human, elven, or "
@@ -2324,7 +2350,7 @@ msgstr ""
 "у пећине."
 
 #. [part]
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:19
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:24
 msgid ""
 "Rumors circulate of a lich that preys on scouting patrols. A hero, gathering "
 "his loyal troops to him, decides to put an end to the evil."
@@ -2333,30 +2359,71 @@ msgstr ""
 "одлучи да стане у крај том злу, те окупи одану војску."
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:71
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:72
 msgid "Defeat the foolish hero"
 msgstr "Поразиш ли непромишљеног јунака"
+
+#. [objective]: condition=win
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:80
+#, fuzzy
+#| msgid "Defeat the foolish hero"
+msgid "Defeat another foolish hero"
+msgstr "Поразиш ли непромишљеног јунака"
+
+#. [objective]: condition=win
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:88
+#, fuzzy
+#| msgid "Defeat the foolish hero"
+msgid "Defeat yet another foolish hero"
+msgstr "Поразиш ли непромишљеног јунака"
+
+#. [note]: description=<b>
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:116
+#, fuzzy
+#| msgid "Endless Night"
+msgid "Endless Night $timesForever"
+msgstr "Ноћ без краја"
 
 #. [unit]: type=Royal Guard, id=Foolish Hero
 #. [unit]: type=Assassin, id=Foolish Hero
 #. [unit]: type=Elvish Marshal, id=Foolish Hero
 #. [unit]: type=Dwarvish Lord, id=Foolish Hero
 #. [unit]: type=Orcish Warlord, id=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:133
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:157
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:177
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:201
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:225
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:163
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:190
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:213
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:240
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:267
 msgid "Foolish Hero"
 msgstr "Непромишљени јунак"
 
+#. [modify_side]
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:172
+msgid "Humans"
+msgstr ""
+
+#. [modify_side]
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:199
+msgid "Bandits"
+msgstr ""
+
+#. [modify_side]
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:222
+msgid "Elves"
+msgstr ""
+
+#. [modify_side]
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:249
+msgid "Dwarves"
+msgstr ""
+
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:283
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:328
 msgid "Your doom is at hand, foul lich! I shall bring you down by my own hand."
 msgstr "Пропаст ти је близу, косцу гадни! Овом ћу те руком посећи."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:288
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:333
 msgid ""
 "The only doom at hand is yours, if you do not leave now. Go back to your "
 "manors and taverns, and do not trouble me further."
@@ -2365,7 +2432,7 @@ msgstr ""
 "замковима и крчмама, и не досађуј ми даље."
 
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:296
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:341
 msgid ""
 "You have preyed on too many of my boys. I have come here to end this, once "
 "and for all."
@@ -2374,12 +2441,12 @@ msgstr ""
 "свагда."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:301
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:346
 msgid "Not even real soldiers. I will sweep you aside."
 msgstr "Нисте чак ни прави војници. Отрћу вас једним замахом."
 
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:309
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:354
 msgid ""
 "Your kind is an abomination. I am here to see that you inflict no more harm "
 "on the spirits that have passed on."
@@ -2388,7 +2455,7 @@ msgstr ""
 "духовима упокојених."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:314
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:359
 msgid ""
 "Fool! By leaving your forests and coming into my domain, you have sacrificed "
 "your own spirits."
@@ -2397,7 +2464,7 @@ msgstr ""
 "сопствене духове."
 
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:322
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:367
 msgid ""
 "I’ve been itching for a chance to break some bones with my hammer, and now "
 "you’ve given me cause. Goodness knows you’ve got plenty of bones over there."
@@ -2406,7 +2473,7 @@ msgstr ""
 "дајеш одличан повод. Као дан је јасно да тамо око тебе има хрпа костију."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:327
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:372
 msgid ""
 "Go back to your tunnels and your mines, and do not trouble me unless you "
 "want your hammers to work for me once you are dead."
@@ -2415,7 +2482,7 @@ msgstr ""
 "ти ваши чекићи служе мени пошто страдате."
 
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:332
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:377
 msgid ""
 "Hear that boys, he’s threatening us! It’s time he learned what real dwarves "
 "are made of."
@@ -2424,7 +2491,7 @@ msgstr ""
 "патуљци."
 
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:340
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:385
 msgid ""
 "So, I’ve finally found your lair, lich. You, who have been attacking the "
 "orcs for years and have destroyed many of our tribes."
@@ -2433,7 +2500,7 @@ msgstr ""
 "оркове и који разори многа наша племена."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:345
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:390
 msgid ""
 "Orcs? It is you who have forced me to choose the dark path, and it is you "
 "who ended my mortal life and made me turn into a lich. I am actually "
@@ -2446,7 +2513,7 @@ msgstr ""
 "сам у прилици да вас убијам!"
 
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:350
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:395
 msgid ""
 "Nothing will stop me from taking revenge for my father who died at your hand "
 "and for the rest of my people you and your minions have killed, lich. Orcs, "
@@ -2457,7 +2524,17 @@ msgstr ""
 "у напад! Ко ми донесе кошчеву лобању, слиједи му врећа злата."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:364
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:411
+msgid "I will destroy you like the last foolish hero."
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:418
+msgid "Another foolish hero? Seriously?"
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:425
 msgid ""
 "Is there an endless supply of foolish heroes with death wishes? Honestly, "
 "where do you all come from?"
@@ -2465,13 +2542,69 @@ msgstr ""
 "Има ли то небројено море будаластих јунака жељних смрти? Уистину, одакле ли "
 "вас само толико пристиже?"
 
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:437
+msgid "Am I doomed to fight foolish heroes forever?"
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:444
+msgid "Is this going to keep happening?"
+msgstr ""
+
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:401
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:495
+msgid "His evil deeds have come to an end, and he has meet his doom."
+msgstr ""
+
+#. [message]: role=second
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:500
+msgid "Who do you think he was before starting down the path of darkness?"
+msgstr ""
+
+#. [message]: speaker=Foolish Hero
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:505
+msgid ""
+"It matters not who the lich was. He embraced death over life, and we have "
+"done our duty to defend life."
+msgstr ""
+
+#. [message]: role=second
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:510
+#, fuzzy
+#| msgid "Yes, master."
+msgid "Yes, sir."
+msgstr "Да, господару."
+
+#. [message]: speaker=Foolish Hero
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:518
+msgid "It is done. He will trouble us no more."
+msgstr ""
+
+#. [message]: role=second
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:523
+msgid "Who do you think he was before becoming a lich?"
+msgstr ""
+
+#. [message]: speaker=Foolish Hero
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:528
+msgid "Probably an outlaw like us. Does it matter?"
+msgstr ""
+
+#. [message]: role=second
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:533
+#, fuzzy
+#| msgid "No, I suppose it does not."
+msgid "No, I guess not."
+msgstr "Па, ваљда и није."
+
+#. [message]: speaker=Foolish Hero
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:541
 msgid "Well, that is the end of his evil ways."
 msgstr "И то је крај његовим злодјелима."
 
 #. [message]: role=second
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:406
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:546
 msgid ""
 "I wonder who he was in life, before falling into the evil ways that led him "
 "to today."
@@ -2480,7 +2613,7 @@ msgstr ""
 "данас водише."
 
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:411
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:551
 msgid ""
 "Once he chose this unlife for himself and his soldiers, he forfeited any "
 "claim to our compassion. Does it even matter who he was?"
@@ -2489,9 +2622,48 @@ msgstr ""
 "права на самилост. Зар је уопште битно ко је био?"
 
 #. [message]: role=second
-#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:416
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:556
 msgid "No, I suppose it does not."
 msgstr "Па, ваљда и није."
+
+#. [message]: speaker=Foolish Hero
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:564
+msgid "Hearing the crack of his bones was satisfying."
+msgstr ""
+
+#. [message]: role=second
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:569
+msgid ""
+"Who do you think he was before becoming the bones crushed by our hammers?"
+msgstr ""
+
+#. [message]: speaker=Foolish Hero
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:574
+msgid ""
+"Probably some angst-ridden mage that could not make it at that magic academy "
+"those humans have. And when he did dark magic and got outlawed from Wesnoth, "
+"he came to hide in these caves."
+msgstr ""
+
+#. [message]: role=second
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:579
+msgid "I guess we'll never know for sure."
+msgstr ""
+
+#. [message]: speaker=Foolish Hero
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:587
+msgid "Finally, my father and my people are avenged!"
+msgstr ""
+
+#. [message]: role=second
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:592
+msgid "Who you think he was, boss?"
+msgstr ""
+
+#. [message]: speaker=Foolish Hero
+#: data/campaigns/Descent_Into_Darkness/scenarios/12_Endless_Night.cfg:597
+msgid "Who cares!"
+msgstr ""
 
 #. [unit_type]: id=Apprentice Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:4
