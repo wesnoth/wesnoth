@@ -35,6 +35,8 @@ Version 1.13.11:
  * Lua API:
    * New wesnoth.unit_types[].advances_to getter.
    * New wesnoth.unit_types[].advances_from getter.
+   * wml module now offers another new way of accessing WML variables:
+     wml.variables is a simple wrapper around wml.get|set_variable.
    * unit.id is now a modifiable field for off-map (Lua-only) units.
    * Allow moving on-map units by setting unit.x and unit.y fields, or with
      unit.loc = {x, y} or unit.loc = {x = x, y = y}
@@ -57,6 +59,8 @@ Version 1.13.11:
    * Greatly improved behavior of sliders.
    * Fixed crash when modifying an existing friend entry in Preferences.
    * Fixed players being unable to start campaigns in MP mode.
+ * WFL Engine:
+   * A new string insert() function has been added, similar to replace()
  * WML Engine:
    * Added a major_amla option in AMLAs to keep the XP bar teal-white rather
      than purple for AMLAs that behave similar to regular advancements.
@@ -65,10 +69,11 @@ Version 1.13.11:
      author can't accidentally use them and make an add-on that breaks on
      GNU/Linux and macOS.
    * File paths are now case sensitive even on Windows.
-   * [show_if] is now usable in [objectives] subtag [gold_carryover].
+   * [show_if] is now usable in the [objectives] subtag [gold_carryover].
    * Macro SCEPTRE_OF_FIRE_EFFECT damage increased to 15x4 so Sceptre is an
      improvement over the uncut ruby of fire (14x4) in TRoW.
-   * Added [lua] as a conditional tag.
+   * Added [lua] as a conditional tag, with identical syntax.
+     The code in such a tag must return a true or false value.
    * Lua errors now cause as a condition to fail instead of pass.
    * New formula= key in [set_variable] allows evaluating a WFL formula with
      the variable, which may be either a scalar or a container.
