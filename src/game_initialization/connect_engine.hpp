@@ -89,8 +89,20 @@ public:
 			throw "No scenariodata found";
 	}
 	const std::set<std::string>& connected_users() const;
-	const std::vector<std::string>& user_team_names() const
-		{ return user_team_names_; }
+
+	struct team_data_pod
+	{
+		std::string team_name;
+		std::string user_team_name; // TODO: use t_string?
+
+		bool is_player_team;
+	};
+
+	const std::vector<team_data_pod>& team_data() const
+	{
+		return team_data_;
+	}
+
 	std::vector<side_engine_ptr>& side_engines() { return side_engines_; }
 	const mp_game_settings& params() const { return params_; }
 	bool first_scenario() const { return first_scenario_; }
@@ -129,9 +141,7 @@ private:
 
 	std::vector<side_engine_ptr> side_engines_;
 	std::vector<const config*> era_factions_;
-	std::vector<std::string> team_names_;
-	std::vector<std::string> user_team_names_;
-	std::vector<std::string> player_teams_;
+	std::vector<team_data_pod> team_data_;
 
 	std::set<std::string>& connected_users_rw();
 	void send_to_server(const config& cfg) const;
@@ -214,8 +224,6 @@ public:
 	bool waiting_to_choose_faction() const { return waiting_to_choose_faction_; }
 	void set_waiting_to_choose_status(bool status) { waiting_to_choose_faction_ = status;}
 	bool allow_shuffle() const { return !disallow_shuffle_;}
-	const std::vector<std::string>& player_teams() const
-		{ return parent_.player_teams_; }
 	flg_manager& flg() { return flg_; }
 
 	const std::string color_id() const { return color_id_; }
@@ -223,12 +231,12 @@ public:
 
 	const std::string team_name() const
 	{
-		return parent_.team_names_[team_];
+		return parent_.team_data_[team_].team_name;
 	}
 
 	const std::string user_team_name() const
 	{
-		return t_string::from_serialized(parent_.user_team_names_[team_]);
+		return t_string::from_serialized(parent_.team_data_[team_].user_team_name);
 	}
 
 private:

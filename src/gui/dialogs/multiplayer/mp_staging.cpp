@@ -89,11 +89,9 @@ void mp_staging::pre_show(window& window)
 	// Set up sides list
 	//
 	for(const auto& side : connect_engine_.side_engines()) {
-		if(!side->allow_player() && !game_config::debug) {
-			continue;
+		if(side->allow_player() || game_config::debug) {
+			add_side_node(window, side);;
 		}
-
-		add_side_node(window, side);
 	}
 
 	//
@@ -198,7 +196,7 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 
 	// We use an index-based loop in order to get the index of the selected option
 	std::vector<config> ai_options;
-	for(unsigned i = 0; i < ai_algorithms_.size(); i++) {
+	for(unsigned i = 0; i < ai_algorithms_.size(); ++i) {
 		ai_options.emplace_back(config {"label", ai_algorithms_[i]->text});
 
 		if(ai_algorithms_[i]->id == side->ai_algorithm()) {
@@ -243,17 +241,36 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	// Team
 	//
 	std::vector<config> team_names;
-	for(const auto& team : side->player_teams()) {
-		team_names.emplace_back(config {"label", team});
+	unsigned initial_team_selection = 0;
+
+	for(unsigned i = 0; i < connect_engine_.team_data().size(); ++i) {
+		const ng::connect_engine::team_data_pod& tdata = connect_engine_.team_data()[i];
+
+		if(!tdata.is_player_team && !game_config::debug) {
+			continue;
+		}
+
+		config entry;
+		entry["label"] = t_string::from_serialized(tdata.user_team_name);
+
+		// Since we're not necessarily displaying every every team, we need to store the
+		// index a displayed team has in the connect_engine's team_data vector. This is
+		// then utilized in the click callback.
+		entry["team_index"] = i;
+
+		team_names.push_back(std::move(entry));
+
+		// Since, again, every team might not be displayed, and side_engine::team() returns
+		// an index into the team_data vector, get an initial selection index for the menu
+		// adjusted for the displayed named.
+		if(side->team() == i) {
+			initial_team_selection = team_names.size() - 1;
+		}
 	}
 
 	menu_button& team_selection = find_widget<menu_button>(&row_grid, "side_team", false);
 
-	// HACK: side->team() does not get its index from side->player_teams(), but rather side->team_names().
-	// As such, the index is off if there is only 1 playable team. This is a hack to make sure the menu_button
-	// widget doesn't assert with the invalid initial selection. The connect_engine should be fixed once the GUI1
-	// dialog is dropped
-	team_selection.set_values(team_names, std::min<int>(team_names.size() - 1, side->team()));
+	team_selection.set_values(team_names, initial_team_selection);
 	team_selection.set_active(!saved_game);
 	team_selection.connect_click_handler(std::bind(&mp_staging::on_team_select, this, std::ref(window), side, std::ref(team_selection), _3, _4));
 
@@ -338,11 +355,17 @@ void mp_staging::on_color_select(ng::side_engine_ptr side, grid& row_grid)
 
 void mp_staging::on_team_select(window& window, ng::side_engine_ptr side, menu_button& team_menu, bool& handled, bool& halt)
 {
-	if(static_cast<int>(team_menu.get_value()) == side->team()) {
+	// Since we're not necessarily displaying every every team in the menu, we can't just
+	// use the selected index to set a side's team. Instead, we grab the index we stored
+	// in add_side_node from the selected config, which should correspond to the
+	// appropriate entry in the connect_engine's team name vector.
+	const unsigned team_index = team_menu.get_value_config()["team_index"].to_unsigned();
+
+	if(team_index == side->team()) {
 		return;
 	}
 
-	side->set_team(team_menu.get_value());
+	side->set_team(team_index);
 
 	// First, remove the node from the tree
 	find_widget<tree_view>(&window, "side_list", false).remove_node(side_tree_map_[side]);

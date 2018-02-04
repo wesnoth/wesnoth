@@ -80,9 +80,7 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	, force_lock_settings_()
 	, side_engines_()
 	, era_factions_()
-	, team_names_()
-	, user_team_names_()
-	, player_teams_()
+	, team_data_()
 {
 	// Initial level config from the mp_game_settings.
 	level_ = mp::initial_level_config(state_);
@@ -123,10 +121,9 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 		bool add_team = true;
 		if(params_.use_map_settings) {
 			// Only add a team if it is not found.
-			bool found = std::find(team_names_.begin(), team_names_.end(),
-				team_name.str()) != team_names_.end();
-
-			if(found) {
+			if(std::any_of(team_data_.begin(), team_data_.end(), [&team_name](const team_data_pod& data){
+				return data.team_name == team_name.str();
+			})) {
 				add_team = false;
 			}
 		} else {
@@ -147,12 +144,12 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 		}
 
 		if(add_team) {
-			team_names_.push_back(params_.use_map_settings ? team_name : "Team " + side_str);
-			user_team_names_.push_back(user_team_name.t_str().to_serialized());
+			team_data_pod data;
+			data.team_name = params_.use_map_settings ? team_name : "Team " + side_str;
+			data.user_team_name = user_team_name.t_str().to_serialized();
+			data.is_player_team = side["allow_player"].to_bool(true);
 
-			if(side["allow_player"].to_bool(true) || game_config::debug) {
-				player_teams_.push_back(user_team_name.str());
-			}
+			team_data_.push_back(data);
 		}
 
 		++side_count;
@@ -928,15 +925,16 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 
 	// Initialize team and color.
 	unsigned team_name_index = 0;
-	for(const std::string& name : parent_.team_names_) {
-		if(name == cfg["team_name"]) {
+	for(const connect_engine::team_data_pod& data : parent_.team_data_) {
+		if(data.team_name == cfg["team_name"]) {
 			break;
 		}
 
-		team_name_index++;
+		++team_name_index;
 	}
-	if(team_name_index >= parent_.team_names_.size()) {
-		assert(!parent_.team_names_.empty());
+
+	if(team_name_index >= parent_.team_data_.size()) {
+		assert(!parent_.team_data_.empty());
 		team_ = 0;
 		WRN_MP << "In side_engine constructor: Could not find my team_name " << cfg["team_name"] << " among the mp connect engine's list of team names. I am being assigned to the first team. This may indicate a bug!" << std::endl;
 	} else {
@@ -1103,7 +1101,7 @@ config side_engine::new_config() const
 			(*leader)["gender"] = "null";
 		}
 
-		res["team_name"] = parent_.team_names_[team_];
+		res["team_name"] = parent_.team_data_[team_].team_name;
 
 		// TODO: Fix this mess!
 		//
@@ -1140,7 +1138,7 @@ config side_engine::new_config() const
 		// I'm tired, and I'm cranky from wasting a over day on this, and so I'm exercising
 		// my prerogative as a grey-beard and leaving this for someone else to clean up.
 		if(res["user_team_name"].empty() || !parent_.params_.use_map_settings) {
-			res["user_team_name"] = parent_.user_team_names_[team_];
+			res["user_team_name"] = parent_.team_data_[team_].user_team_name;
 		}
 
 		res["allow_player"] = allow_player_;
