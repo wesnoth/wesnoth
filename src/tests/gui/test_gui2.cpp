@@ -92,6 +92,7 @@
 #include "gui/dialogs/sp_options_configure.hpp"
 #include "gui/dialogs/statistics_dialog.hpp"
 #include "gui/dialogs/story_viewer.hpp"
+#include "gui/dialogs/surrender_quit.hpp"
 #include "gui/dialogs/terrain_layers.hpp"
 #include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/title_screen.hpp"
@@ -477,6 +478,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<select_orb_colors>();
 	test<sp_options_configure>();
 	test<statistics_dialog>();
+	test<surrender_quit>();
 	//test<story_viewer>();
 	test<theme_list>();
 	//test<terrain_layers>();
@@ -1204,6 +1206,16 @@ struct dialog_tester<statistics_dialog>
 	statistics_dialog* create()
 	{
 		return new statistics_dialog(t);
+	}
+};
+
+template<>
+struct dialog_tester<surrender_quit>
+{
+	dialog_tester() {}
+	surrender_quit* create()
+	{
+		return new surrender_quit();
 	}
 };
 
