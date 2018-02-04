@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-04 12:39 UTC\n"
+"POT-Creation-Date: 2017-09-21 23:27+0300\n"
 "PO-Revision-Date: 2013-10-25 16:24+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -223,8 +223,7 @@ msgstr ""
 msgid ""
 "Defines the side leader starting position\n"
 "\n"
-"This tool sets the side leaders' default starting locations, and named "
-"special locations."
+"This tool gives only limited control over the start locations of certain."
 msgstr ""
 
 #. [topic]: id=editor_tool_label
@@ -2051,45 +2050,45 @@ msgstr ""
 "현재의 시간대는 스테이터스 창의 미니맵 밑에 보여집니다. 일반적인 낮/밤 사이클"
 "에서는 아침과 오후는 낮으로, 초경과 삼경은 밤으로 칩니다.\n"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:340 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "새벽"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
+#. [time]: id=morning
 #: data/core/help.cfg:341 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "아침"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
+#. [time]: id=afternoon
 #: data/core/help.cfg:342 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "오후"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:343 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "황혼"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
+#. [time]: id=first_watch
 #: data/core/help.cfg:344 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "초경"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
+#. [time]: id=second_watch
 #: data/core/help.cfg:345 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
@@ -2522,7 +2521,7 @@ msgid ""
 "\n"
 "\n"
 "You can see what basic types a mixed terrain is comprised of by mousing over "
-"its hex and checking the terrain type icons displayed in the upper right "
+"its hex and checking the terrain type icons displayed in the upper right, "
 "(under the default theme)."
 msgstr ""
 
@@ -4660,13 +4659,13 @@ msgid ""
 "hatchlings and lower caste drakes are known to feed also on certain kinds of "
 "moss and fungi they cultivate deep in their caverns. The only technology "
 "drakes value is armor- and weapon-smithing, and neither know or need other "
-"science and culture besides this. However, the few implements they do "
-"fashion are almost unrivaled in quality, only matched by those produced in "
-"the finest Dwarvish foundries.\n"
+"science and culture besides this. However the few implements they do fashion "
+"are almost unrivaled in quality, only matched by those produced in the "
+"finest Dwarvish foundries.\n"
 "\n"
-"Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
-"Death in battle is the most preferred way for a drake to leave this world. "
-"Unlike the elder members of other races, drakes naturally grow more "
+"Drakes are hatched from eggs and usually live naturally between 20 to 30 "
+"years. Death in battle is the most preferred way for a drake to leave this "
+"world. Unlike the elder members of other races, drakes naturally grow more "
 "aggressive and reckless towards the ends of their natural lives, perhaps to "
 "help ensure their place in the heroic legends of their kind.\n"
 "\n"
@@ -4920,16 +4919,15 @@ msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
 "many different cultures and races. Although they are not imbued with magic "
-"like other creatures, humans can learn to wield it and are able to learn "
-"more types than most others. They have no extra special abilities or "
-"aptitudes except their versatility and drive. While often at odds with other "
-"races, they can occasionally form alliances with the less aggressive races "
-"such as elves and dwarves. The less scrupulous among them do not shrink back "
-"from hiring orcish mercenaries, either. They have no natural enemies, "
-"although the majority of men, like most people of all races, have an "
-"instinctive dislike of the undead. Men are shorter than the elves, but "
-"taller still than dwarves. Their skin color can vary, from almost white to "
-"dark brown.\n"
+"like other creatures, humans can learn to wield it and able to learn more "
+"types than most others. They have no extra special abilities or aptitudes "
+"except their versatility and drive. While often at odds with other races, "
+"they can occasionally form alliances with the less aggressive races such as "
+"elves and dwarves. The less scrupulous among them do not shrink back from "
+"hiring orcish mercenaries, either. They have no natural enemies, although "
+"the majority of men, like most people of all races, have an instinctive "
+"dislike of the undead. Men are shorter than the elves, but taller still than "
+"dwarves. Their skin color can vary, from almost white to dark brown.\n"
 "\n"
 "<header>text='Subjects of the Crown'</header>\n"
 "Many different groups of men exist, but the majority of them on the Great "
@@ -4957,63 +4955,53 @@ msgid ""
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
 
-#. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:203 data/core/units.cfg:218
-#, fuzzy
-#| msgid "race^Human"
-msgid "race^Dunefolk Human"
+#: data/core/units.cfg:203
+msgid "race^Khalifate Human"
 msgstr "인간"
 
-#. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:204 data/core/units.cfg:219
-#, fuzzy
-#| msgid "race+female^Human"
-msgid "race+female^Dunefolk Human"
+#: data/core/units.cfg:204
+msgid "race+female^Khalifate Human"
 msgstr "인간"
 
-#. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:205 data/core/units.cfg:220
-#, fuzzy
-#| msgid "race+plural^Undead"
-msgid "race+plural^Dunefolk"
-msgstr "언데드"
+#: data/core/units.cfg:205
+msgid "race+plural^Khalifate"
+msgstr "기계"
 
-#. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:206 data/core/units.cfg:221
+#: data/core/units.cfg:206
 msgid "This race does not have a description yet."
 msgstr "이 종족에 대한 설명은 아직 존재하지 않습니다."
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:232
+#: data/core/units.cfg:217
 msgid "race^Saurian"
 msgstr "사우리언"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:233
+#: data/core/units.cfg:218
 msgid "race+female^Saurian"
 msgstr "사우리언"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:234
+#: data/core/units.cfg:219
 msgid "race^Saurians"
 msgstr "사우리언족"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:244
+#: data/core/units.cfg:229
 msgid "race^Mechanical"
 msgstr "기계"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:245
+#: data/core/units.cfg:230
 msgid "race+plural^Mechanical"
 msgstr "기계"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:246
+#: data/core/units.cfg:231
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -5022,22 +5010,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=merman
-#: data/core/units.cfg:255
+#: data/core/units.cfg:240
 msgid "race^Merman"
 msgstr "인어 ♂"
 
 #. [race]: id=merman
-#: data/core/units.cfg:256
+#: data/core/units.cfg:241
 msgid "race^Mermaid"
 msgstr "인어"
 
 #. [race]: id=merman
-#: data/core/units.cfg:257
+#: data/core/units.cfg:242
 msgid "race^Mermen"
 msgstr "인어족"
 
 #. [race]: id=merman
-#: data/core/units.cfg:259
+#: data/core/units.cfg:244
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -5051,22 +5039,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=monster
-#: data/core/units.cfg:267
+#: data/core/units.cfg:252
 msgid "race^Monster"
 msgstr "괴물"
 
 #. [race]: id=monster
-#: data/core/units.cfg:268
+#: data/core/units.cfg:253
 msgid "race+female^Monster"
 msgstr "몬스터들"
 
 #. [race]: id=monster
-#: data/core/units.cfg:269
+#: data/core/units.cfg:254
 msgid "race^Monsters"
 msgstr "몬스터들"
 
 #. [race]: id=monster
-#: data/core/units.cfg:270
+#: data/core/units.cfg:255
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -5074,22 +5062,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=naga
-#: data/core/units.cfg:277
+#: data/core/units.cfg:262
 msgid "race^Naga"
 msgstr "나가 ♂"
 
 #. [race]: id=naga
-#: data/core/units.cfg:278
+#: data/core/units.cfg:263
 msgid "race^Nagini"
 msgstr "나가 ♀"
 
 #. [race]: id=naga
-#: data/core/units.cfg:279
+#: data/core/units.cfg:264
 msgid "race^Nagas"
 msgstr "나가족"
 
 #. [race]: id=naga
-#: data/core/units.cfg:280
+#: data/core/units.cfg:265
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -5107,22 +5095,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=ogre
-#: data/core/units.cfg:288
+#: data/core/units.cfg:273
 msgid "race^Ogre"
 msgstr "오우거"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:289
+#: data/core/units.cfg:274
 msgid "race+female^Ogre"
 msgstr "오우거"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:290
+#: data/core/units.cfg:275
 msgid "race^Ogres"
 msgstr "오우거족"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:291
+#: data/core/units.cfg:276
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -5141,22 +5129,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:299
+#: data/core/units.cfg:284
 msgid "race^Orc"
 msgstr "오크"
 
 #. [race]: id=orc
-#: data/core/units.cfg:300
+#: data/core/units.cfg:285
 msgid "race+female^Orc"
 msgstr "오크"
 
 #. [race]: id=orc
-#: data/core/units.cfg:301
+#: data/core/units.cfg:286
 msgid "race^Orcs"
 msgstr "오크족"
 
 #. [race]: id=orc
-#: data/core/units.cfg:302
+#: data/core/units.cfg:287
 msgid ""
 "In appearance, orcs are half men and half beasts. They are taller, sturdier "
 "and stronger than humans. They are warlike, savage, and cruel by nature. "
@@ -5216,22 +5204,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=troll
-#: data/core/units.cfg:318
+#: data/core/units.cfg:303
 msgid "race^Troll"
 msgstr "트롤"
 
 #. [race]: id=troll
-#: data/core/units.cfg:319
+#: data/core/units.cfg:304
 msgid "race+female^Troll"
 msgstr "트롤"
 
 #. [race]: id=troll
-#: data/core/units.cfg:320
+#: data/core/units.cfg:305
 msgid "race^Trolls"
 msgstr "트롤족"
 
 #. [race]: id=troll
-#: data/core/units.cfg:321
+#: data/core/units.cfg:306
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -5270,22 +5258,22 @@ msgid ""
 msgstr ""
 
 #. [race]: id=undead
-#: data/core/units.cfg:341
+#: data/core/units.cfg:326
 msgid "race^Undead"
 msgstr "언데드"
 
 #. [race]: id=undead
-#: data/core/units.cfg:342
+#: data/core/units.cfg:327
 msgid "race+female^Undead"
 msgstr "언데드"
 
 #. [race]: id=undead
-#: data/core/units.cfg:343
+#: data/core/units.cfg:328
 msgid "race+plural^Undead"
 msgstr "언데드"
 
 #. [race]: id=undead
-#: data/core/units.cfg:344
+#: data/core/units.cfg:329
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -5334,32 +5322,32 @@ msgstr ""
 "시점 이전에는 엘프나 드워프들에 대해 한번도 들어본 적이 없었다."
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:357
+#: data/core/units.cfg:342
 msgid "race^Wolf"
 msgstr "늑대"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:358
+#: data/core/units.cfg:343
 msgid "race+female^Wolf"
 msgstr "늑대과"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:359
+#: data/core/units.cfg:344
 msgid "race^Wolves"
 msgstr "늑대과"
 
 #. [race]: id=wose
-#: data/core/units.cfg:369
+#: data/core/units.cfg:354
 msgid "race^Wose"
 msgstr "나모"
 
 #. [race]: id=wose
-#: data/core/units.cfg:370
+#: data/core/units.cfg:355
 msgid "race^Woses"
 msgstr "나모족"
 
 #. [race]: id=wose
-#: data/core/units.cfg:371
+#: data/core/units.cfg:356
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -5401,24 +5389,21 @@ msgid ""
 "home."
 msgstr ""
 
-#: data/lua/feeding.lua:32 data/lua/feeding.lua:45
+#: data/lua/feeding.lua:27 data/lua/feeding.lua:40
 msgid "+1 max HP"
 msgstr "최대 HP +1"
 
-#~ msgid "race^Khalifate Human"
-#~ msgstr "인간"
+#: src/help/help.cpp:182
+msgid "Close"
+msgstr "닫기"
 
-#~ msgid "race+female^Khalifate Human"
-#~ msgstr "인간"
+#: src/help/help.cpp:185
+msgid "The Battle for Wesnoth Help"
+msgstr "Battle for Wesnoth 도움말"
 
-#~ msgid "race+plural^Khalifate"
-#~ msgstr "기계"
-
-#~ msgid "Close"
-#~ msgstr "닫기"
-
-#~ msgid "The Battle for Wesnoth Help"
-#~ msgstr "Battle for Wesnoth 도움말"
+#: src/help/help.cpp:240
+msgid "Parse error when parsing help text: "
+msgstr ""
 
 #~ msgid "female^nightstalk"
 #~ msgstr "암습"

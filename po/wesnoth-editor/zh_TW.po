@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-04 12:39 UTC\n"
+"POT-Creation-Date: 2017-09-21 23:27+0300\n"
 "PO-Revision-Date: 2013-02-07 15:14+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -254,168 +254,300 @@ msgstr ""
 msgid "Assign Time Schedule"
 msgstr ""
 
-#~ msgid "Fatal error"
-#~ msgstr "嚴重錯誤"
+#: src/editor/action/mouse/mouse_action_unit.cpp:62
+msgid "Identifier: "
+msgstr ""
 
-#~ msgid "Do you really want to quit?"
-#~ msgstr "您確定要退出嗎？"
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
+msgid "Name: "
+msgstr ""
 
+#: src/editor/action/mouse/mouse_action_unit.cpp:64
+msgid "Type: "
+msgstr ""
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:65
+msgid "Level: "
+msgstr ""
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:66
+msgid "Cost: "
+msgstr ""
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:67
+msgid "Recruit: "
+msgstr ""
+
+#: src/editor/controller/editor_controller.cpp:177
+msgid "Fatal error"
+msgstr "嚴重錯誤"
+
+#: src/editor/controller/editor_controller.cpp:206
+msgid "Do you really want to quit?"
+msgstr "您確定要退出嗎？"
+
+#: src/editor/controller/editor_controller.cpp:208
 #, fuzzy
-#~| msgid ""
-#~| "Do you really want to quit? Changes in the map since the last save will "
-#~| "be lost."
-#~ msgid ""
-#~ "Do you really want to quit? Changes to this map since the last save will "
-#~ "be lost."
-#~ msgstr "您確定要退出嗎？對地圖所作的更動將遺失。"
+#| msgid ""
+#| "Do you really want to quit? Changes in the map since the last save will "
+#| "be lost."
+msgid ""
+"Do you really want to quit? Changes to this map since the last save will be "
+"lost."
+msgstr "您確定要退出嗎？對地圖所作的更動將遺失。"
 
-#~ msgid ""
-#~ "Do you really want to quit? The following maps were modified and all "
-#~ "changes since the last save will be lost:"
-#~ msgstr "您確定要退出嗎？以下地圖已修改，而對地圖所作的更動將遺失:"
+#: src/editor/controller/editor_controller.cpp:210
+msgid ""
+"Do you really want to quit? The following maps were modified and all changes "
+"since the last save will be lost:"
+msgstr "您確定要退出嗎？以下地圖已修改，而對地圖所作的更動將遺失:"
 
-#~ msgid "No editor time-of-day found."
-#~ msgstr "沒有找到時間編輯器。"
+#: src/editor/controller/editor_controller.cpp:220
+msgid "No editor time-of-day found."
+msgstr "沒有找到時間編輯器。"
 
+#: src/editor/controller/editor_controller.cpp:1141
+msgid "Change Unit ID"
+msgstr ""
+
+#: src/editor/controller/editor_controller.cpp:1142
+msgid "ID:"
+msgstr ""
+
+#: src/editor/controller/editor_controller.cpp:1158
+msgid "Rename Unit"
+msgstr ""
+
+#: src/editor/controller/editor_controller.cpp:1159
+msgid "Name:"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:214
+msgid "Load Map"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:280 src/editor/map/map_context.cpp:828
 #, fuzzy
-#~| msgid "(New Map)"
-#~ msgid "New Map"
-#~ msgstr "（新地圖）"
+#| msgid "(New Map)"
+msgid "New Map"
+msgstr "（新地圖）"
 
+#: src/editor/map/context_manager.cpp:291 src/editor/map/map_context.cpp:828
 #, fuzzy
-#~| msgid "(New Map)"
-#~ msgid "New Scenario"
-#~ msgstr "（新地圖）"
+#| msgid "(New Map)"
+msgid "New Scenario"
+msgstr "（新地圖）"
 
+#: src/editor/map/context_manager.cpp:347
+msgid "No Recent Files"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:385
 #, fuzzy
-#~| msgid "(New Map)"
-#~ msgid "Unnamed Area"
-#~ msgstr "（新地圖）"
+#| msgid "(New Map)"
+msgid "Unnamed Area"
+msgstr "（新地圖）"
 
+#: src/editor/map/context_manager.cpp:416
 #, fuzzy
-#~| msgid "(New Map)"
-#~ msgid "New Side"
-#~ msgstr "（新地圖）"
+#| msgid "(New Map)"
+msgid "New Side"
+msgstr "（新地圖）"
 
-#~ msgid "Error loading mask"
-#~ msgstr "讀取遮罩時錯誤"
+#: src/editor/map/context_manager.cpp:472
+msgid "Apply Mask"
+msgstr ""
 
-#~ msgid "Choose Target Map"
-#~ msgstr "選擇目標地圖"
+#: src/editor/map/context_manager.cpp:481
+msgid "Error loading mask"
+msgstr "讀取遮罩時錯誤"
 
-#~ msgid "Error loading map"
-#~ msgstr "讀取地圖錯誤"
+#: src/editor/map/context_manager.cpp:501
+msgid "Identifier:"
+msgstr ""
 
+#: src/editor/map/context_manager.cpp:501
+msgid "Rename Area"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:515
+msgid "Choose Target Map"
+msgstr "選擇目標地圖"
+
+#: src/editor/map/context_manager.cpp:524
+#: src/editor/map/context_manager.cpp:932
+msgid "Error loading map"
+msgstr "讀取地圖錯誤"
+
+#: src/editor/map/context_manager.cpp:648
 #, fuzzy
-#~| msgid "Save the Map As"
-#~ msgid "Save Map As"
-#~ msgstr "另存地圖"
+#| msgid "Save the Map As"
+msgid "Save Map As"
+msgstr "另存地圖"
 
+#: src/editor/map/context_manager.cpp:669
 #, fuzzy
-#~| msgid "Save the Map As"
-#~ msgid "Save Scenario As"
-#~ msgstr "另存地圖"
+#| msgid "Save the Map As"
+msgid "Save Scenario As"
+msgstr "另存地圖"
 
-#~ msgid "No random map generators found."
-#~ msgstr "沒有找到隨機地圖產生器？"
+#: src/editor/map/context_manager.cpp:701
+msgid "No random map generators found."
+msgstr "沒有找到隨機地圖產生器？"
 
-#~ msgid "Map creation failed."
-#~ msgstr "創造地圖失敗。"
+#: src/editor/map/context_manager.cpp:715
+#: src/editor/map/context_manager.cpp:720
+msgid "Map creation failed."
+msgstr "創造地圖失敗。"
 
-#~ msgid "Unsaved Changes"
-#~ msgstr "未儲存的更動"
+#: src/editor/map/context_manager.cpp:735
+msgid "Unsaved Changes"
+msgstr "未儲存的更動"
 
+#: src/editor/map/context_manager.cpp:736
 #, fuzzy
-#~| msgid ""
-#~| "Do you want to discard all changes you made to the map since the last "
-#~| "save?"
-#~ msgid ""
-#~ "Do you want to discard all changes made to the map since the last save?"
-#~ msgstr "您確定要放棄所有對地圖的更動？"
+#| msgid ""
+#| "Do you want to discard all changes you made to the map since the last "
+#| "save?"
+msgid "Do you want to discard all changes made to the map since the last save?"
+msgstr "您確定要放棄所有對地圖的更動？"
 
+#: src/editor/map/context_manager.cpp:792
 #, fuzzy
-#~| msgid "This map is already open."
-#~ msgid "This scenario is already open."
-#~ msgstr "這個地圖已被開啟。"
+#| msgid "This map is already open."
+msgid "This scenario is already open."
+msgstr "這個地圖已被開啟。"
 
-#~ msgid "This map is already open."
-#~ msgstr "這個地圖已被開啟。"
+#: src/editor/map/context_manager.cpp:815
+#: src/editor/map/context_manager.cpp:878
+msgid "This map is already open."
+msgstr "這個地圖已被開啟。"
 
+#: src/editor/map/context_manager.cpp:839
 #, fuzzy
-#~| msgid "Map saved."
-#~ msgid "Scenario saved."
-#~ msgstr "地圖已儲存。"
+#| msgid "Map saved."
+msgid "Scenario saved."
+msgstr "地圖已儲存。"
 
-#~ msgid "Map saved."
-#~ msgstr "地圖已儲存。"
+#: src/editor/map/context_manager.cpp:854
+msgid "Map saved."
+msgstr "地圖已儲存。"
 
-#~ msgid "Loaded embedded map data"
-#~ msgstr "已讀取嵌入地圖的資料"
+#: src/editor/map/context_manager.cpp:911
+msgid "Loaded embedded map data"
+msgstr "已讀取嵌入地圖的資料"
 
-#~ msgid "Map loaded from scenario"
-#~ msgstr "已從任務中讀取地圖"
+#: src/editor/map/context_manager.cpp:912
+#: src/editor/map/context_manager.cpp:925
+msgid "Map loaded from scenario"
+msgstr "已從任務中讀取地圖"
 
-#~ msgid ""
-#~ "Loaded referenced map file:\n"
-#~ "$new"
-#~ msgstr ""
-#~ "已讀取地圖引用檔案:\n"
-#~ "$new"
+#: src/editor/map/context_manager.cpp:922
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+"已讀取地圖引用檔案:\n"
+"$new"
 
+#: src/editor/map/editor_map.cpp:149
+#: src/editor/palette/location_palette.cpp:111
 #, fuzzy
-#~| msgid "Player $player_number"
-#~ msgid "Player $side_num"
-#~ msgstr "玩家 $player_number"
+#| msgid "Player $player_number"
+msgid "Player $side_num"
+msgstr "玩家 $player_number"
 
-#~ msgid "The size of the target map is different from the current map"
-#~ msgstr "目標地圖尺寸與當前地圖不同"
+#: src/editor/map/editor_map.cpp:264
+msgid "The size of the target map is different from the current map"
+msgstr "目標地圖尺寸與當前地圖不同"
 
-#~ msgid "File not found"
-#~ msgstr "檔案不存在"
+#: src/editor/map/map_context.cpp:146
+msgid "File not found"
+msgstr "檔案不存在"
 
+#: src/editor/map/map_context.cpp:153
 #, fuzzy
-#~| msgid "Empty map file"
-#~ msgid "Empty file"
-#~ msgstr "空白地圖檔案"
+#| msgid "Empty map file"
+msgid "Empty file"
+msgstr "空白地圖檔案"
 
-#~ msgid ""
-#~ "The map file looks like a scenario, but the map_data value does not point "
-#~ "to an existing file"
-#~ msgstr "這份地圖檔案像是一個任務，但是地圖資料連結一個不存在的檔案。"
+#: src/editor/map/map_context.cpp:209
+msgid ""
+"The map file looks like a scenario, but the map_data value does not point to "
+"an existing file"
+msgstr "這份地圖檔案像是一個任務，但是地圖資料連結一個不存在的檔案。"
 
+#: src/editor/map/map_context.cpp:597
 #, fuzzy
-#~| msgid "Could not save the map: $msg"
-#~ msgid "Could not save the scenario: $msg"
-#~ msgstr "無法儲存地圖： $msg"
+#| msgid "Could not save the map: $msg"
+msgid "Could not save the scenario: $msg"
+msgstr "無法儲存地圖： $msg"
 
-#~ msgid "Could not save into scenario"
-#~ msgstr "無法儲存地圖"
+#: src/editor/map/map_context.cpp:629
+msgid "Could not save into scenario"
+msgstr "無法儲存地圖"
 
-#~ msgid "Could not save the map: $msg"
-#~ msgstr "無法儲存地圖： $msg"
+#: src/editor/map/map_context.cpp:639
+msgid "Could not save the map: $msg"
+msgstr "無法儲存地圖： $msg"
 
-#~ msgid "(non-core)"
-#~ msgstr "（非核心）"
+#: src/editor/palette/editor_palettes.cpp:51
+msgid "(Unknown Group)"
+msgstr ""
 
-#~ msgid "Will not work in game without extra care."
-#~ msgstr "如果不特別注意，在遊戲中就不會正常運作。"
+#: src/editor/palette/editor_palettes.cpp:284
+msgid "(non-core)"
+msgstr "（非核心）"
 
-#~ msgid "FG: "
-#~ msgstr "前景地形"
+#: src/editor/palette/editor_palettes.cpp:285
+msgid "Will not work in game without extra care."
+msgstr "如果不特別注意，在遊戲中就不會正常運作。"
 
-#~ msgid "BG: "
-#~ msgstr "背景地形"
+#: src/editor/palette/location_palette.cpp:248
+msgid "Go To"
+msgstr ""
 
+#: src/editor/palette/location_palette.cpp:255
+msgid "Add"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:257
+msgid "New Location Identifer"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:261
+msgid "Delete"
+msgstr ""
+
+#: src/editor/palette/terrain_palettes.cpp:231
+msgid "FG: "
+msgstr "前景地形"
+
+#: src/editor/palette/terrain_palettes.cpp:232
+msgid "BG: "
+msgstr "背景地形"
+
+#: src/gui/dialogs/editor/custom_tod.cpp:139
+msgid "Clipboard support not found, contact your packager"
+msgstr ""
+
+#: src/gui/dialogs/editor/custom_tod.cpp:203
 #, fuzzy
-#~| msgid "Choose player"
-#~ msgid "Choose File"
-#~ msgstr "選擇玩家"
+#| msgid "Choose player"
+msgid "Choose File"
+msgstr "選擇玩家"
 
-#~ msgid "player^None"
-#~ msgstr "無"
+#: src/gui/dialogs/editor/custom_tod.cpp:204
+msgid "Select"
+msgstr ""
 
-#~ msgid "Player $player_number"
-#~ msgstr "玩家 $player_number"
+#: src/gui/dialogs/editor/set_starting_position.cpp:88
+msgid "player^None"
+msgstr "無"
+
+#: src/gui/dialogs/editor/set_starting_position.cpp:101
+msgid "Player $player_number"
+msgstr "玩家 $player_number"
 
 #~ msgid "(New Map)"
 #~ msgstr "（新地圖）"

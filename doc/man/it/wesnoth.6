@@ -55,9 +55,8 @@ comprime un file in formato bzip2, lo memorizza come \fIinfile\fP.bz2 e rimuove
 \fIinfile\fP.
 .TP 
 \fB\-c[\fP\fIid_campaign\fP\fB],\ \-\-campaign[\fP\fI=id_campagna\fP\fB]\fP
-salta direttamente alla campagna con identificatore
-\fIid_campagna\fP. Apparirà' un menu selezione se non si specifica alcun
-identificatore.
+goes directly to the campaign with id \fIid_campaign\fP.  A selection menu will
+appear if no id was specified.
 .TP 
 \fB\-\-campaign\-difficulty[\fP\fI=difficoltà\fP\fB]\fP
 La difficoltà di una specifica campagna (da 1 a max). Se non specificato,
@@ -75,12 +74,12 @@ nell'identificatore.
 sostituisce la directory dei dati con quella specificata
 .TP 
 \fB\-\-data\-path\fP
-stampa il percorso della cartella dati ed esce.
+prints the path of the data directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
-abilita le opzioni aggiuntive di controllo all’interno del gioco (vedi il
-wiki presso https://www.wesnoth.org/wiki/CommandMode per maggiori
-informazioni sulla shell di comando).
+enables additional command mode options in\-game (see the wiki page at
+https://www.wesnoth.org/wiki/CommandMode for more information about command
+mode).
 .TP 
 \fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
 avvia il gioco direttamente dall’editor per le partite. Se \fIfile\fP è
@@ -106,10 +105,10 @@ mostra un riepilogo delle opzioni tramite riga di comando verso un output
 standard ed esce.
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ file\fP
-carica il salvataggio \fIfile\fP dalla directory standard dei salvataggi. Se
-usato insieme alle opzioni \fB\-e\fP o \fB\-\-editor\fP, lancia l’editor con aperta
-la mappa del \fIfile\fP. Se è una directory, l’editor lancerà una finestra di
-dialogo con un elenco di mappe caricabili.
+loads the savegame \fIfile\fP from the standard save game directory. If the
+\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
+from \fIfile\fP open. If it is a directory, the editor will start with a load
+map dialog opened there.
 .TP 
 \fB\-L,\ \-\-language\fP\fI\ linguaggio\fP
 usa il linguaggio \fIlang\fP (simbolo) per questa sessione.  Example:
@@ -129,13 +128,12 @@ sia l’esito della vittoria. Ha rilevanza soltanto se utilizzato con
 l’opzione \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filtro\fP\fB]\fP
-fornisce un elenco dei log domains definiti ( soltanto quelli contenenti
-\fIfilter\fP, se usata) e termina.
+lists defined log domains (only the ones containing \fIfilter\fP if used) and
+exits
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
-il numero di immagini al secondo che il gioco può mostrare, il valore
-dovrebbe essere compreso tra \fI1\fP e \fI1000\fP; il valore predefinito è pari
-alla frequenza di aggiornamento del monitor.
+the number of frames per second the game can show, the value should be
+between \fI1\fP and \fI1000\fP, the default is the monitor's refresh rate.
 .TP 
 \fB\-m, \-\-multiplayer\fP
 esegue una partita multigiocatore. Ci sono opzioni aggiuntive che possono
@@ -145,8 +143,8 @@ essere usate con \fB\-\-mutiplayer\fP, come spiegato di seguito.
 carica gli scenari di test mp.
 .TP 
 \fB\-\-no\-delay\fP
-esegue il gioco senza ritardi per stabilire le prestazioni del
-sistema. Questa opzione è abilitata automaticamente da \fB\-\-nogui\fP.
+runs the game without any delays for graphic benchmarking. This is
+automatically enabled by \fB\-\-nogui\fP.
 .TP 
 \fB\-\-noaddons\fP
 disabilita il caricamento delle estensioni utente.
@@ -155,7 +153,7 @@ disabilita il caricamento delle estensioni utente.
 disabilita la cache dei dati di gioco.
 .TP 
 \fB\-\-nogui\fP
-runs the game without the GUI. Only available in combination with
+runs the game without the GUI. Only availaible in combination with
 \fB\-\-multiplayer\fP or \fB\-\-screenshot\fP or \fB\-\-plugin\fP.
 .TP 
 \fB\-\-nomusic\fP
@@ -169,8 +167,8 @@ insieme all’opzione \fB\-u\fP.
 esegue il gioco senza suono e musica.
 .TP 
 \fB\-\-password\fP\fI\ password\fP
-utilizza \fIpassword\fP per la connessione ad un server, ignorando le altre
-scelte. Opzione non sicura.
+uses \fIpassword\fP when connecting to a server, ignoring other
+preferences. Unsafe.
 .TP 
 \fB\-\-path\fP
 stampa il nome della cartella contenente i dati del gioco ed esce.
@@ -179,72 +177,66 @@ stampa il nome della cartella contenente i dati del gioco ed esce.
 preprocesses a specified file/folder. For each file(s) a plain .cfg file and
 a processed .cfg file will be written in specified target directory. If a
 folder is specified, it will be preprocessed recursively based on the known
-preprocessor rules. The common macros from the "data/core/macros" directory
-will be preprocessed before the specified resources.  Example: \fB\-p
-~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
+preprocessor rules. The common macroses from the "data/core/macros"
+directory will be preprocessed before the specified resources.  Example:
+\fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
 preprocessor visit:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
 .TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-lista di definizioni separate da una virgola per il comando
-\fB\-\-preprocess\fP. Se il valore \fBSKIP_CORE\fP è presente nella lista di
-definizioni della directory "data/core", la directory stessa non sarà
-processata.
+comma separated list of defines to be used by the \fB\-\-preprocess\fP
+command. If \fBSKIP_CORE\fP is in the define list the "data/core" directory
+won't be preprocessed.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ file sorgente\fP
-usato soltanto dal comando \fB\-preprocess\fP. Specifica il file che contiene i
-\fB[preproc_define]\fP che devono essere inclusi prima del preprocessing.
+used only by the \fB\-\-preprocess\fP command. Specifies a file that contains
+\fB[preproc_define]\fPs to be included before preprocessing.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=file\-destinazione\fP\fB]\fP
-usato soltanto dal comando \fB\-preprocess\fP. Stamperà tutte le macro
-preprocessate nel file destinazione. Se il file non viene specificato verrà
-utilizzato il file “_MACROS_.cfg” nella directory destinazione del comando
-di preprocess. Il file in uscita può essere passato a
-\fB\-\-preprocess\-input\-macros\fP. Questo parametro deve essere immesso prima del
-comando \fB\-preprocess\fP.
+used only by the \fB\-\-preprocess\fP command. Will output all preprocessed
+macros in the target file. If the file is not specified the output will be
+file '_MACROS_.cfg' in the target directory of preprocess's command. The
+output file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch
+should be typed before the \fB\-\-preprocess\fP command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 imposta la risoluzione dello schermo. Esempio: \fB\-r 800x600\fP
 .TP 
 \fB\-\-render\-image\fP\fI\ immagine\fP\fB\ \fP\fIoutput\fP
-prenda una stringa valida 'image path string' con funzioni immagine per
-wesnoth e restituisce un file in formato .png, L’uscita sarà in ua finestra
-\&.bmp se il nome del file termina con .bmp o se la libreria libpng non è
-disponibile. Le funzione per cartella immagini sono documentate in
-https://wiki.wesnoth.org/ImagePathFunctionWML.
+takes a valid wesnoth 'image path string' with image path functions, and
+outputs to a .png file. Outputs to a windows .bmp file if the filename ends
+with .bmp or if libpng is not availaible. Image path functions are
+documented at https://wiki.wesnoth.org/ImagePathFunctionWML.
 .TP 
 \fB\-R,\ \-\-report\fP
 inizializza le cartelle di gioco, stampa le informazioni di compilazione
 utilizzate per i report dei bugs, indi esce.
 .TP 
 \fB\-\-rng\-seed\fP\fI\ seme\fP
-inizializza il generatore di numeri casuali con il numero <seme>.
-Example: \fB\-\-rng\-seed 0\fP
+seeds the random number generator with number <arg>. Example:
+\fB\-\-rng\-seed 0\fP
 .TP 
 \fB\-\-screenshot\fP\fI\ mappa\fP\fB\ \fP\fIoutput\fP
-salva una schermata della \fImappa\fP nel file \fIoutput\fP senza inizializzare
-uno schermo.
+saves a screenshot of \fImap\fP to \fIoutput\fP without initializing a screen.
 .TP 
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 si connette al server specificato se fornito, se no si connette al primo
 server delle preferenze. Esempio: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-\-showgui\fP
-esegue il gioco con l’interfaccia grafica, sovrascrivendo ogni implicito
-\fB\-\-nogui.\fP
+runs the game with the GUI, overriding any implicit \fB\-\-nogui\fP.
 .TP 
 \fB\-\-strict\-validation\fP
 errori di validazione sono trattati come errori fatali.
 .TP 
 \fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
-esegue il gioco in un piccolo scenario di test. Lo scenario dovrebbe essere
-uno di quelli definiti con un tag WML \fB[test]\fP. Una dimostrazione delle
-caratteristiche delle \fB[micro_ai]\fP può essere avviata con
-\fBmicro_ai_test\fP. Implica \fB\-\-nogui.\fP
+runs the game in a small test scenario. The scenario should be one defined
+with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
+\fB[micro_ai]\fP feature can be started with \fBmicro_ai_test\fP.  Implies
+\fB\-\-nogui\fP.
 .TP 
 \fB\-u,\ \-\-unit\fP\fI\ id_scenario\fP
-esegue lo scenario di test specificato come un test unità. Implica
-\fB\-\-nogui.\fP
+runs the specified test scenario as a unit test. Implies \fB\-\-nogui\fP.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ nome\fP
 imposta la directory di configurazione dell’utente a \fInome\fP sotto $HOME o
@@ -269,8 +261,7 @@ directory relativa al directory di lavoro del processo, utilizzando un
 percorso che inizia con ".\e" or "..\e".
 .TP 
 \fB\-\-username\fP\fI\ username\fP
-utilizza \fIusername\fP per la connessione ad un server, ignorando le altre
-scelte.
+uses \fIusername\fP when connecting to a server, ignoring other preferences.
 .TP 
 \fB\-\-userdata\-path\fP
 stampa il percorso della cartella di configurazione dell’utente ed esce.
@@ -341,24 +332,22 @@ seleziona una fazione dell’era attuale per questa squadra. La fazione è
 scelta per ID. Le fazioni sono descritte nel file data/multiplayer.cfg.
 .TP 
 \fB\-\-turns\fP\fI\ valore\fP
-imposta il numero di turni per lo scenario scelto. L’impostazione standard è
-senza limiti.
+sets the number of turns for the chosen scenario. By default no turn limit
+is set.
 .
 .SH "STATO DI USCITA"
 .
-Il normale stato di uscita è 0. Uno stato di uscita pari a 1 indica un
-errore di inizializzazione (SDL, video, fonts, ecc.). Uno stato di uscita
-pari a 2 indica un errore con le opzioni della linea di comando.
+Normal exit status is 0.  An exit status of 1 indicates an (SDL, video,
+fonts, etc) initialization error. An exit status of 2 indicates an error
+with the command line options.
 .br
-Quando si eseguono test unità (con\fB\ \-u\fP), i valori di uscita sono
-diversi. Uno stato di uscita 0 indica che il test è positivo, 1 indica che
-il test è fallito. Una uscita con valore 3 indica che il test è riuscito, ma
-ha prodotto un file di replay non valido. Uno stato di uscita con valore 4
-indica che il test è riuscito, ma che il replay produce errori. Questi due
-ultimi stati vengono restituiti soltanto se il parametro \fB\-\-noreplaycheck\fP
-non viene utilizzato. Uno stato di uscita con valore 2 indica che il test ha
-esaurito il tempo massimo a disposizione, quando viene utilizzata l’opzione
-\fB\-\-timeout\fP (deprecata).
+When running unit tests (with\fB\ \-u\fP), the exit status is different. An exit
+status of 0 indicates that the test passed, and 1 indicates that the test
+failed. An exit status of 3 indicates that the test passed, but produced an
+invalid replay file. An exit status of 4 indicates that the test passed, but
+the replay produced errors. These latter two are only returned if
+\fB\-\-noreplaycheck\fP is not passed. An exit status of 2 indicates that the
+test timed out, when used with the deprecated \fB\-\-timeout\fP option.
 .
 .SH AUTORE
 .
@@ -370,7 +359,7 @@ Edito da Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
 Questa pagina di manuale è stata scritta in origine da Cyril Bouthors
 <cyril@bouthors.org>.
 .br
-Visita la pagina home ufficiale: https://www.wesnoth.org/
+Visit the official homepage: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .

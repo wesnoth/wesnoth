@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-04 12:39 UTC\n"
+"POT-Creation-Date: 2017-09-21 20:28 UTC\n"
 "PO-Revision-Date: 2015-03-29 14:36+0300\n"
 "Last-Translator: Gvido Bruveris <huhims@gmail.com>\n"
 "Language-Team: none\n"
@@ -54,25 +54,17 @@ msgstr ""
 "vienības ar pirmo un otro līmeni. Sastāv no sešām frakcijām. Neskaitās "
 "nobalansēts."
 
-#. [era]: id=era_dunefolk
+#. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:83
-msgid "Default + Dunefolk"
-msgstr ""
+msgid "Default + Khalifate"
+msgstr "Noklusēti + Kalifāts"
 
-#. [era]: id=era_dunefolk
+#. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:84
-#, fuzzy
-#| msgid ""
-#| "An era featuring an additional faction besides the six factions from "
-#| "Default Era. Khalifate units use no magic, but instead rely on careful "
-#| "use of terrain and coordinated strikes around dusk or dawn.\n"
-#| "\n"
-#| "This era is still under development, so please be sure to report any "
-#| "problems that arise."
 msgid ""
 "An era featuring an additional faction besides the six factions from Default "
-"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
-"around dusk or dawn.\n"
+"Era. Khalifate units use no magic, but instead rely on careful use of "
+"terrain and coordinated strikes around dusk or dawn.\n"
 "\n"
 "This era is still under development, so please be sure to report any "
 "problems that arise."
@@ -83,27 +75,17 @@ msgstr ""
 "Pie Ēras joprojām tiek strādāts, tāka nekautrējies paziņot par pamanītām "
 "problēmām."
 
-#. [era]: id=era_dunefolk_heroes
+#. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:94
-#, fuzzy
-#| msgid "Age of Heroes"
-msgid "Age of Heroes + Dunefolk"
-msgstr "Varoņu laikmets"
+msgid "Age of Heroes + Khalifate"
+msgstr "Varoņu laikmets + Kalifāts"
 
-#. [era]: id=era_dunefolk_heroes
+#. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:95
-#, fuzzy
-#| msgid ""
-#| "An era featuring an additional faction besides the six factions from Age "
-#| "of Heroes Era. Khalifate units use no magic, but instead rely on careful "
-#| "use of terrain and coordinated strikes around dusk or dawn.\n"
-#| "\n"
-#| "This era is still under development, so please be sure to report any "
-#| "problems that arise."
 msgid ""
 "An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
-"strikes around dusk or dawn.\n"
+"Heroes Era. Khalifate units use no magic, but instead rely on careful use of "
+"terrain and coordinated strikes around dusk or dawn.\n"
 "\n"
 "This era is still under development, so please be sure to report any "
 "problems that arise."
@@ -157,23 +139,23 @@ msgid ""
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction."
 msgstr ""
 
-#. [multiplayer_side]: id=Dunefolk, type=random
-#: data/multiplayer/factions/dunefolk-aoh.cfg:4
-#: data/multiplayer/factions/dunefolk-default.cfg:4
-msgid "Dunefolk"
-msgstr ""
+#. [multiplayer_side]: id=Khalifate, type=random
+#: data/multiplayer/factions/khalifate-aoh.cfg:4
+#: data/multiplayer/factions/khalifate-default.cfg:4
+msgid "Khalifate"
+msgstr "Kalifāts"
 
-#. [multiplayer_side]: id=Dunefolk, type=random
-#: data/multiplayer/factions/dunefolk-aoh.cfg:14
-#: data/multiplayer/factions/dunefolk-default.cfg:14
+#. [multiplayer_side]: id=Khalifate, type=random
+#: data/multiplayer/factions/khalifate-aoh.cfg:14
+#: data/multiplayer/factions/khalifate-default.cfg:14
 msgid ""
-"The <bold>text='Dunefolk'</bold> are a faction of humans from the deserts "
-"and hills of the southern lands. The Dunefolk specialize in using terrain "
-"features to coordinate attacks at dawn or dusk. Their ranks boast lawful and "
-"liminal units, healers, high-accuracy melee fighters, and fearsome horse-"
-"mounted archers. While Dunefolk units tend to be more expensive than those "
-"of the Loyalist faction, they make up for this with high mobility — "
-"especially on hilly terrains."
+"The <bold>text='Khalifate'</bold> are a faction of humans from the deserts "
+"and hills of the southern lands. Lacking magic users, the Khalifate instead "
+"specialize in using terrain features to coordinate attacks at dawn or dusk. "
+"Their ranks boast lawful and liminal units, healers, high-accuracy melee "
+"fighters, and fearsome horse-mounted archers. While Khalifate units tend to "
+"be more expensive than those of the Loyalist faction, they make up for this "
+"with high mobility — especially on hilly terrains."
 msgstr ""
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
@@ -1001,17 +983,17 @@ msgstr "Ienaidnieks"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:52
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:72
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:68
 msgid "teamname^Human"
 msgstr "Spēlētājs"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:107
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:99
 msgid "Death of your leader"
 msgstr "Tava līdera nāve"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:108
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:100
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
@@ -1019,28 +1001,28 @@ msgstr ""
 "Tākā komandā ir tikai viens līderis, pretinieku uzbrukumi nebūs pilnā spēkā."
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:111
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:103
 msgid "Death of both of your team’s leaders"
 msgstr "Mirst abi komanda līderi"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:112
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:104
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr "Tākā komandā ir divi līderi, pretinieku uzbrukumi būs pilnā spēkā."
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:133
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:125
 msgid "Survive and defeat all enemy waves"
 msgstr "Izturi visus pretinieka uzbrukumus"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:153
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:145
 msgid "Dark Forecast — a random survival scenario"
 msgstr "Tumšā prognoze — nejaušs izdzīvošanas scenārijs"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:158
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:150
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -1085,12 +1067,12 @@ msgstr ""
 "• WML realizācija"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:178
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:170
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "Šī ir tā ieleja — tikai pastiep roku un būs kārtība."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:182
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:174
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -1100,7 +1082,7 @@ msgstr ""
 "un mūsu klātbūtne te netiks akceptēta. Mums jābūt gataviem uz pārsteigumiem."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:186
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:178
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
@@ -1108,21 +1090,21 @@ msgstr ""
 "Tad uzmetīsim aci, kas te notiek... un parādīsim, kurš te ir saimnieks."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:205
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:197
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr "ahh! Kā tas var būt? Barbari mani piebeidza! Dievi mani pameta..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:219
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:211
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
 msgstr "Ienaidnieku gaviles ir pēdējais ko Tu dzirdi, krītot nāves skavās..."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:241
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:233
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -1132,7 +1114,7 @@ msgstr ""
 "jau ir beigušās..."
 
 #. [slider]: id=enemey_gold_factor
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:252
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:244
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr ""
 
@@ -2495,15 +2477,6 @@ msgid ""
 msgstr ""
 "Vesnotas izejas punkts izmanto --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
-
-#~ msgid "Default + Khalifate"
-#~ msgstr "Noklusēti + Kalifāts"
-
-#~ msgid "Age of Heroes + Khalifate"
-#~ msgstr "Varoņu laikmets + Kalifāts"
-
-#~ msgid "Khalifate"
-#~ msgstr "Kalifāts"
 
 #~ msgid "Aethermaw — Created by Doc Paterson"
 #~ msgstr "Aterpūslis. Autors - Doc Paterson"

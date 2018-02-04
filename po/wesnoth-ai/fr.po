@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-04 12:39 UTC\n"
+"POT-Creation-Date: 2017-09-21 20:27 UTC\n"
 "PO-Revision-Date: 2015-01-21 21:17+0100\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
@@ -29,11 +29,6 @@ msgstr "IA par défaut (RCA)"
 msgid "Multiplayer_AI^Experimental AI"
 msgstr "IA expérimentale"
 
-#. [ai]: id=idle_ai
-#: data/ai/ais/idle_ai.cfg:4
-msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Dév : IA passive"
-
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 #, fuzzy
@@ -50,6 +45,11 @@ msgstr "Dév : IA par défaut + recrutement expériemental (Formula AI)"
 #: data/ai/dev/formula_ai_poisoning.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
 msgstr "Dév : IA par défaut + poison (Formula AI)"
+
+#. [ai]: id=idle_ai
+#: data/ai/dev/idle_ai.cfg:4
+msgid "Multiplayer_AI^Dev AI: Idle AI"
+msgstr "Dév : IA passive"
 
 #: data/ai/lua/patrol.lua:4
 msgid "Use the Patrols Micro AI instead of patrol.lua."

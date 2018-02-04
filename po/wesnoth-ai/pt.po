@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth-ai)\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-04 12:39 UTC\n"
+"POT-Creation-Date: 2017-09-21 20:27 UTC\n"
 "PO-Revision-Date: 2014-10-28 12:29-0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -28,12 +28,6 @@ msgstr "IA Padrão (RCA)"
 #: data/ai/ais/ai_generic_rush.cfg:10
 msgid "Multiplayer_AI^Experimental AI"
 msgstr "IA Experimental"
-
-#
-#. [ai]: id=idle_ai
-#: data/ai/ais/idle_ai.cfg:4
-msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "IA em desenvolvimento: ociosa"
 
 #
 #. [ai]: id=ai_default_rca_alternate_recruiting
@@ -57,6 +51,12 @@ msgstr ""
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
 msgstr ""
 "IA em desenvolvimento: Padrão + Envenenamento (escrito em linguagem formula)"
+
+#
+#. [ai]: id=idle_ai
+#: data/ai/dev/idle_ai.cfg:4
+msgid "Multiplayer_AI^Dev AI: Idle AI"
+msgstr "IA em desenvolvimento: ociosa"
 
 #: data/ai/lua/patrol.lua:4
 msgid "Use the Patrols Micro AI instead of patrol.lua."

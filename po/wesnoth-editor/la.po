@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-editor 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-04 12:39 UTC\n"
+"POT-Creation-Date: 2017-09-21 23:27+0300\n"
 "PO-Revision-Date: 2013-06-23 02:19-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -255,196 +255,306 @@ msgstr ""
 msgid "Assign Time Schedule"
 msgstr ""
 
-#~ msgid "Name: "
-#~ msgstr "Nomen: "
+#: src/editor/action/mouse/mouse_action_unit.cpp:62
+msgid "Identifier: "
+msgstr ""
 
-#~ msgid "Type: "
-#~ msgstr "Genus: "
+#: src/editor/action/mouse/mouse_action_unit.cpp:63
+msgid "Name: "
+msgstr "Nomen: "
 
-#~ msgid "Level: "
-#~ msgstr "Ordo: "
+#: src/editor/action/mouse/mouse_action_unit.cpp:64
+msgid "Type: "
+msgstr "Genus: "
 
-#~ msgid "Cost: "
-#~ msgstr "Impendium: "
+#: src/editor/action/mouse/mouse_action_unit.cpp:65
+msgid "Level: "
+msgstr "Ordo: "
 
-#~ msgid "Fatal error"
-#~ msgstr "Error gravis"
+#: src/editor/action/mouse/mouse_action_unit.cpp:66
+msgid "Cost: "
+msgstr "Impendium: "
 
-#~ msgid "Do you really want to quit?"
-#~ msgstr "Itane vis exire?"
+#: src/editor/action/mouse/mouse_action_unit.cpp:67
+msgid "Recruit: "
+msgstr ""
 
+#: src/editor/controller/editor_controller.cpp:177
+msgid "Fatal error"
+msgstr "Error gravis"
+
+#: src/editor/controller/editor_controller.cpp:206
+msgid "Do you really want to quit?"
+msgstr "Itane vis exire?"
+
+#: src/editor/controller/editor_controller.cpp:208
 #, fuzzy
-#~| msgid ""
-#~| "Do you really want to quit? Changes in the map since the last save will "
-#~| "be lost."
-#~ msgid ""
-#~ "Do you really want to quit? Changes to this map since the last save will "
-#~ "be lost."
-#~ msgstr ""
-#~ "Itane vis exire? Omnes mutationes in charta post servatum delebuntur."
+#| msgid ""
+#| "Do you really want to quit? Changes in the map since the last save will "
+#| "be lost."
+msgid ""
+"Do you really want to quit? Changes to this map since the last save will be "
+"lost."
+msgstr "Itane vis exire? Omnes mutationes in charta post servatum delebuntur."
 
-#~ msgid ""
-#~ "Do you really want to quit? The following maps were modified and all "
-#~ "changes since the last save will be lost:"
-#~ msgstr ""
-#~ "Itane vis exire? Hae chartae mutatae sunt et omnes mutationes post "
-#~ "servatumdelebuntur:"
+#: src/editor/controller/editor_controller.cpp:210
+msgid ""
+"Do you really want to quit? The following maps were modified and all changes "
+"since the last save will be lost:"
+msgstr ""
+"Itane vis exire? Hae chartae mutatae sunt et omnes mutationes post "
+"servatumdelebuntur:"
 
-#~ msgid "No editor time-of-day found."
-#~ msgstr "Hora pro chartographia non inventa est."
+#: src/editor/controller/editor_controller.cpp:220
+msgid "No editor time-of-day found."
+msgstr "Hora pro chartographia non inventa est."
 
-#~ msgid "Rename Unit"
-#~ msgstr "Nomen Novum Dare"
+#: src/editor/controller/editor_controller.cpp:1141
+msgid "Change Unit ID"
+msgstr ""
 
-#~ msgid "Name:"
-#~ msgstr "Nomen:"
+#: src/editor/controller/editor_controller.cpp:1142
+msgid "ID:"
+msgstr ""
 
+#: src/editor/controller/editor_controller.cpp:1158
+msgid "Rename Unit"
+msgstr "Nomen Novum Dare"
+
+#: src/editor/controller/editor_controller.cpp:1159
+msgid "Name:"
+msgstr "Nomen:"
+
+#: src/editor/map/context_manager.cpp:214
+msgid "Load Map"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:280 src/editor/map/map_context.cpp:828
 #, fuzzy
-#~| msgid "(New Map)"
-#~ msgid "New Map"
-#~ msgstr "(Charta Nova)"
+#| msgid "(New Map)"
+msgid "New Map"
+msgstr "(Charta Nova)"
 
+#: src/editor/map/context_manager.cpp:291 src/editor/map/map_context.cpp:828
 #, fuzzy
-#~| msgid "(New Side)"
-#~ msgid "New Scenario"
-#~ msgstr "(Nova Manus)"
+#| msgid "(New Side)"
+msgid "New Scenario"
+msgstr "(Nova Manus)"
 
+#: src/editor/map/context_manager.cpp:347
+msgid "No Recent Files"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:385
 #, fuzzy
-#~| msgid "(New Area)"
-#~ msgid "Unnamed Area"
-#~ msgstr "(Nova Harena)"
+#| msgid "(New Area)"
+msgid "Unnamed Area"
+msgstr "(Nova Harena)"
 
+#: src/editor/map/context_manager.cpp:416
 #, fuzzy
-#~| msgid "(New Side)"
-#~ msgid "New Side"
-#~ msgstr "(Nova Manus)"
+#| msgid "(New Side)"
+msgid "New Side"
+msgstr "(Nova Manus)"
 
-#~ msgid "Error loading mask"
-#~ msgstr "Error dum persona arcessitur"
+#: src/editor/map/context_manager.cpp:472
+msgid "Apply Mask"
+msgstr ""
 
+#: src/editor/map/context_manager.cpp:481
+msgid "Error loading mask"
+msgstr "Error dum persona arcessitur"
+
+#: src/editor/map/context_manager.cpp:501
+msgid "Identifier:"
+msgstr ""
+
+#: src/editor/map/context_manager.cpp:501
 #, fuzzy
-#~| msgid "Rename Unit"
-#~ msgid "Rename Area"
-#~ msgstr "Nomen Novum Dare"
+#| msgid "Rename Unit"
+msgid "Rename Area"
+msgstr "Nomen Novum Dare"
 
-#~ msgid "Choose Target Map"
-#~ msgstr "Chartam Eligere"
+#: src/editor/map/context_manager.cpp:515
+msgid "Choose Target Map"
+msgstr "Chartam Eligere"
 
-#~ msgid "Error loading map"
-#~ msgstr "Error dum charta arcessitur"
+#: src/editor/map/context_manager.cpp:524
+#: src/editor/map/context_manager.cpp:932
+msgid "Error loading map"
+msgstr "Error dum charta arcessitur"
 
+#: src/editor/map/context_manager.cpp:648
 #, fuzzy
-#~| msgid "Save the Map As"
-#~ msgid "Save Map As"
-#~ msgstr "Chartam Servare ut..."
+#| msgid "Save the Map As"
+msgid "Save Map As"
+msgstr "Chartam Servare ut..."
 
+#: src/editor/map/context_manager.cpp:669
 #, fuzzy
-#~| msgid "Save the Map As"
-#~ msgid "Save Scenario As"
-#~ msgstr "Chartam Servare ut..."
+#| msgid "Save the Map As"
+msgid "Save Scenario As"
+msgstr "Chartam Servare ut..."
 
-#~ msgid "No random map generators found."
-#~ msgstr "Nulli generatores chartarum fortunae inventi sunt."
+#: src/editor/map/context_manager.cpp:701
+msgid "No random map generators found."
+msgstr "Nulli generatores chartarum fortunae inventi sunt."
 
-#~ msgid "Map creation failed."
-#~ msgstr "Chartam creare male evenit."
+#: src/editor/map/context_manager.cpp:715
+#: src/editor/map/context_manager.cpp:720
+msgid "Map creation failed."
+msgstr "Chartam creare male evenit."
 
-#~ msgid "Unsaved Changes"
-#~ msgstr "Mutationes Non Servatae"
+#: src/editor/map/context_manager.cpp:735
+msgid "Unsaved Changes"
+msgstr "Mutationes Non Servatae"
 
+#: src/editor/map/context_manager.cpp:736
 #, fuzzy
-#~| msgid ""
-#~| "Do you want to discard all changes you made to the map since the last "
-#~| "save?"
-#~ msgid ""
-#~ "Do you want to discard all changes made to the map since the last save?"
-#~ msgstr "Itane vis omnes mutationes in charta post servatum delere?"
+#| msgid ""
+#| "Do you want to discard all changes you made to the map since the last "
+#| "save?"
+msgid "Do you want to discard all changes made to the map since the last save?"
+msgstr "Itane vis omnes mutationes in charta post servatum delere?"
 
+#: src/editor/map/context_manager.cpp:792
 #, fuzzy
-#~| msgid "This map is already open."
-#~ msgid "This scenario is already open."
-#~ msgstr "Charta iam aperta est."
+#| msgid "This map is already open."
+msgid "This scenario is already open."
+msgstr "Charta iam aperta est."
 
-#~ msgid "This map is already open."
-#~ msgstr "Charta iam aperta est."
+#: src/editor/map/context_manager.cpp:815
+#: src/editor/map/context_manager.cpp:878
+msgid "This map is already open."
+msgstr "Charta iam aperta est."
 
+#: src/editor/map/context_manager.cpp:839
 #, fuzzy
-#~| msgid "Map saved."
-#~ msgid "Scenario saved."
-#~ msgstr "Charta servata est."
+#| msgid "Map saved."
+msgid "Scenario saved."
+msgstr "Charta servata est."
 
-#~ msgid "Map saved."
-#~ msgstr "Charta servata est."
+#: src/editor/map/context_manager.cpp:854
+msgid "Map saved."
+msgstr "Charta servata est."
 
-#~ msgid "Map loaded from scenario"
-#~ msgstr "Charta ab scaenario arcessita"
+#: src/editor/map/context_manager.cpp:911
+msgid "Loaded embedded map data"
+msgstr ""
 
-#~ msgid ""
-#~ "Loaded referenced map file:\n"
-#~ "$new"
-#~ msgstr ""
-#~ "Fasciculus chartae arcessitus:\n"
-#~ "$new"
+#: src/editor/map/context_manager.cpp:912
+#: src/editor/map/context_manager.cpp:925
+msgid "Map loaded from scenario"
+msgstr "Charta ab scaenario arcessita"
 
+#: src/editor/map/context_manager.cpp:922
+msgid ""
+"Loaded referenced map file:\n"
+"$new"
+msgstr ""
+"Fasciculus chartae arcessitus:\n"
+"$new"
+
+#: src/editor/map/editor_map.cpp:149
+#: src/editor/palette/location_palette.cpp:111
 #, fuzzy
-#~| msgid "Player $player_number"
-#~ msgid "Player $side_num"
-#~ msgstr "Lusor $player_number"
+#| msgid "Player $player_number"
+msgid "Player $side_num"
+msgstr "Lusor $player_number"
 
-#~ msgid "The size of the target map is different from the current map"
-#~ msgstr "Magnitudo chartae electae dissimilis chartae praesenti est"
+#: src/editor/map/editor_map.cpp:264
+msgid "The size of the target map is different from the current map"
+msgstr "Magnitudo chartae electae dissimilis chartae praesenti est"
 
-#~ msgid "File not found"
-#~ msgstr "Fasciculus non inventus est"
+#: src/editor/map/map_context.cpp:146
+msgid "File not found"
+msgstr "Fasciculus non inventus est"
 
+#: src/editor/map/map_context.cpp:153
 #, fuzzy
-#~| msgid "Empty map file"
-#~ msgid "Empty file"
-#~ msgstr "Fasciculus inanis chartae"
+#| msgid "Empty map file"
+msgid "Empty file"
+msgstr "Fasciculus inanis chartae"
 
-#~ msgid ""
-#~ "The map file looks like a scenario, but the map_data value does not point "
-#~ "to an existing file"
-#~ msgstr ""
-#~ "Fasciculus chartae scaenarium esse videtur, sed numerus map_data "
-#~ "fasciculum verum non indicat"
+#: src/editor/map/map_context.cpp:209
+msgid ""
+"The map file looks like a scenario, but the map_data value does not point to "
+"an existing file"
+msgstr ""
+"Fasciculus chartae scaenarium esse videtur, sed numerus map_data fasciculum "
+"verum non indicat"
 
+#: src/editor/map/map_context.cpp:597
 #, fuzzy
-#~| msgid "Could not save the map: $msg"
-#~ msgid "Could not save the scenario: $msg"
-#~ msgstr "Non potest ut charta servetur: $msg"
+#| msgid "Could not save the map: $msg"
+msgid "Could not save the scenario: $msg"
+msgstr "Non potest ut charta servetur: $msg"
 
-#~ msgid "Could not save into scenario"
-#~ msgstr "Non potest ut ad scaenarium servetur"
+#: src/editor/map/map_context.cpp:629
+msgid "Could not save into scenario"
+msgstr "Non potest ut ad scaenarium servetur"
 
-#~ msgid "Could not save the map: $msg"
-#~ msgstr "Non potest ut charta servetur: $msg"
+#: src/editor/map/map_context.cpp:639
+msgid "Could not save the map: $msg"
+msgstr "Non potest ut charta servetur: $msg"
 
-#~ msgid "(Unknown Group)"
-#~ msgstr "(Classis Ignota)"
+#: src/editor/palette/editor_palettes.cpp:51
+msgid "(Unknown Group)"
+msgstr "(Classis Ignota)"
 
-#~ msgid "(non-core)"
-#~ msgstr "(innucleum)"
+#: src/editor/palette/editor_palettes.cpp:284
+msgid "(non-core)"
+msgstr "(innucleum)"
 
-#~ msgid "Will not work in game without extra care."
-#~ msgstr "Hae sine cura singulare deerint."
+#: src/editor/palette/editor_palettes.cpp:285
+msgid "Will not work in game without extra care."
+msgstr "Hae sine cura singulare deerint."
+
+#: src/editor/palette/location_palette.cpp:248
+msgid "Go To"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:255
+msgid "Add"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:257
+msgid "New Location Identifer"
+msgstr ""
+
+#: src/editor/palette/location_palette.cpp:261
+msgid "Delete"
+msgstr ""
 
 # Eminentia
-#~ msgid "FG: "
-#~ msgstr "EM: "
+#: src/editor/palette/terrain_palettes.cpp:231
+msgid "FG: "
+msgstr "EM: "
 
 # Abscedentia
-#~ msgid "BG: "
-#~ msgstr "AB: "
+#: src/editor/palette/terrain_palettes.cpp:232
+msgid "BG: "
+msgstr "AB: "
 
-#~ msgid "Choose File"
-#~ msgstr "Fasciculum eligere"
+#: src/gui/dialogs/editor/custom_tod.cpp:139
+msgid "Clipboard support not found, contact your packager"
+msgstr ""
 
-#~ msgid "player^None"
-#~ msgstr "Nemo"
+#: src/gui/dialogs/editor/custom_tod.cpp:203
+msgid "Choose File"
+msgstr "Fasciculum eligere"
 
-#~ msgid "Player $player_number"
-#~ msgstr "Lusor $player_number"
+#: src/gui/dialogs/editor/custom_tod.cpp:204
+msgid "Select"
+msgstr ""
+
+#: src/gui/dialogs/editor/set_starting_position.cpp:88
+msgid "player^None"
+msgstr "Nemo"
+
+#: src/gui/dialogs/editor/set_starting_position.cpp:101
+msgid "Player $player_number"
+msgstr "Lusor $player_number"
 
 #~ msgid "(New Map)"
 #~ msgstr "(Charta Nova)"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-04 12:39 UTC\n"
+"POT-Creation-Date: 2017-09-21 23:27+0300\n"
 "PO-Revision-Date: 2014-06-05 23:38+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -222,8 +222,7 @@ msgstr ""
 msgid ""
 "Defines the side leader starting position\n"
 "\n"
-"This tool sets the side leaders' default starting locations, and named "
-"special locations."
+"This tool gives only limited control over the start locations of certain."
 msgstr ""
 
 #. [topic]: id=editor_tool_label
@@ -2422,45 +2421,45 @@ msgstr ""
 "trạng thái. Đối với chu kỳ ngày/đêm thông thường, buổi sáng và buổi chiều "
 "tính là ngày, canh một và canh hai tính là đêm:\n"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:340 data/core/macros/schedules.cfg:14
 #: data/core/macros/schedules.cfg:275 data/test/maps/pathfind_1.cfg:64
 msgid "Dawn"
 msgstr "Bình minh"
 
-#. [time]: id=morning
 #. [topic]: id=time_of_day
+#. [time]: id=morning
 #: data/core/help.cfg:341 data/core/macros/schedules.cfg:26
 #: data/test/maps/pathfind_1.cfg:75
 msgid "Morning"
 msgstr "Buổi sáng"
 
-#. [time]: id=afternoon
 #. [topic]: id=time_of_day
+#. [time]: id=afternoon
 #: data/core/help.cfg:342 data/core/macros/schedules.cfg:44
 #: data/test/maps/pathfind_1.cfg:86
 msgid "Afternoon"
 msgstr "Buổi chiều"
 
+#. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#. [topic]: id=time_of_day
 #: data/core/help.cfg:343 data/core/macros/schedules.cfg:53
 #: data/core/macros/schedules.cfg:396 data/test/maps/pathfind_1.cfg:97
 msgid "Dusk"
 msgstr "Chạng vạng"
 
-#. [time]: id=first_watch
 #. [topic]: id=time_of_day
+#. [time]: id=first_watch
 #: data/core/help.cfg:344 data/core/macros/schedules.cfg:65
 #: data/test/maps/pathfind_1.cfg:108
 msgid "First Watch"
 msgstr "Canh một"
 
-#. [time]: id=second_watch
 #. [topic]: id=time_of_day
+#. [time]: id=second_watch
 #: data/core/help.cfg:345 data/core/macros/schedules.cfg:89
 #: data/test/maps/pathfind_1.cfg:119
 msgid "Second Watch"
@@ -2891,7 +2890,7 @@ msgid ""
 "\n"
 "\n"
 "You can see what basic types a mixed terrain is comprised of by mousing over "
-"its hex and checking the terrain type icons displayed in the upper right "
+"its hex and checking the terrain type icons displayed in the upper right, "
 "(under the default theme)."
 msgstr ""
 
@@ -5304,13 +5303,13 @@ msgid ""
 "hatchlings and lower caste drakes are known to feed also on certain kinds of "
 "moss and fungi they cultivate deep in their caverns. The only technology "
 "drakes value is armor- and weapon-smithing, and neither know or need other "
-"science and culture besides this. However, the few implements they do "
-"fashion are almost unrivaled in quality, only matched by those produced in "
-"the finest Dwarvish foundries.\n"
+"science and culture besides this. However the few implements they do fashion "
+"are almost unrivaled in quality, only matched by those produced in the "
+"finest Dwarvish foundries.\n"
 "\n"
-"Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
-"Death in battle is the most preferred way for a drake to leave this world. "
-"Unlike the elder members of other races, drakes naturally grow more "
+"Drakes are hatched from eggs and usually live naturally between 20 to 30 "
+"years. Death in battle is the most preferred way for a drake to leave this "
+"world. Unlike the elder members of other races, drakes naturally grow more "
 "aggressive and reckless towards the ends of their natural lives, perhaps to "
 "help ensure their place in the heroic legends of their kind.\n"
 "\n"
@@ -5707,61 +5706,19 @@ msgstr "Con người"
 
 #. [race]: id=human
 #: data/core/units.cfg:187
-#, fuzzy
-#| msgid ""
-#| "The race of men is an extremely diverse one. Although they originally "
-#| "came from the Old Continent, men have spread all over the world and split "
-#| "into many different cultures and races. Although they are not imbued with "
-#| "magic like other creatures, humans can learn to wield it and able to "
-#| "learn more types than most others. They have no extra special abilities "
-#| "or aptitudes except their versatility and drive. While often at odds with "
-#| "other races, they can occasionally form alliances with the less "
-#| "aggressive races such as elves and dwarves. The less scrupulous among "
-#| "them do not shrink back from hiring orcish mercenaries, either. They have "
-#| "no natural enemies, although the majority of men, like most people of all "
-#| "races, have an instinctive dislike of the undead. Men are shorter than "
-#| "the elves, but taller still than dwarves. Their skin color can vary, from "
-#| "almost white to dark brown.\n"
-#| "\n"
-#| "<header>text='Subjects of the Crown'</header>\n"
-#| "Many different groups of men exist, but the majority of them on the Great "
-#| "Continent live under the rule of the Crown of Wesnoth. The humans first "
-#| "appeared on the Great Continent from a land far across the ocean to the "
-#| "West, the Green Isle, and soon established their capital at the inland "
-#| "city of Weldyn. Over the following centuries they have built up a number "
-#| "cities across the continent. The soldiers from the Crown of Wesnoth "
-#| "protect the country, forming the most organized military force in the "
-#| "known world. Its warriors come from the main provinces, where all men are "
-#| "conscripted at an early age.\n"
-#| "\n"
-#| "<header>text='The Clansmen'</header>\n"
-#| "The eastern provinces of Wesnoth, known as the Clan Homelands, have a "
-#| "geography consisting of more open plains and rolling hills than the "
-#| "western, more civilized provinces. They are home to the Horse Clans, who "
-#| "are allied with the Crown of Wesnoth but operate independently and "
-#| "maintain their own identity. Some consider them to be a tributary state, "
-#| "which sends food and soldiers to Crown in exchange for protection. Others "
-#| "say they are on equal footing with the western half of Wesnoth. In any "
-#| "case, the eastern provinces do not have a conscript army the way Western "
-#| "Wesnoth does. Training for fighting is part of the way of life of the "
-#| "Clans; the parents teach the children to ride horses, fight and shoot a "
-#| "bow from an early age. In general, the Clan warriors are less organized "
-#| "than the civilized fighters, and the strengths and weaknesses of these "
-#| "groups complement each other."
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
 "many different cultures and races. Although they are not imbued with magic "
-"like other creatures, humans can learn to wield it and are able to learn "
-"more types than most others. They have no extra special abilities or "
-"aptitudes except their versatility and drive. While often at odds with other "
-"races, they can occasionally form alliances with the less aggressive races "
-"such as elves and dwarves. The less scrupulous among them do not shrink back "
-"from hiring orcish mercenaries, either. They have no natural enemies, "
-"although the majority of men, like most people of all races, have an "
-"instinctive dislike of the undead. Men are shorter than the elves, but "
-"taller still than dwarves. Their skin color can vary, from almost white to "
-"dark brown.\n"
+"like other creatures, humans can learn to wield it and able to learn more "
+"types than most others. They have no extra special abilities or aptitudes "
+"except their versatility and drive. While often at odds with other races, "
+"they can occasionally form alliances with the less aggressive races such as "
+"elves and dwarves. The less scrupulous among them do not shrink back from "
+"hiring orcish mercenaries, either. They have no natural enemies, although "
+"the majority of men, like most people of all races, have an instinctive "
+"dislike of the undead. Men are shorter than the elves, but taller still than "
+"dwarves. Their skin color can vary, from almost white to dark brown.\n"
 "\n"
 "<header>text='Subjects of the Crown'</header>\n"
 "Many different groups of men exist, but the majority of them on the Great "
@@ -5825,63 +5782,53 @@ msgstr ""
 "chung, các chiến binh thị tộc ít tính tổ chức hơn các đấu sĩ triều đình, sức "
 "mạnh và điểm yếu của hai nhóm này bổ sung lẫn nhau."
 
-#. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:203 data/core/units.cfg:218
-#, fuzzy
-#| msgid "race^Human"
-msgid "race^Dunefolk Human"
-msgstr "Con người"
+#: data/core/units.cfg:203
+msgid "race^Khalifate Human"
+msgstr "Con người Khalifate"
 
-#. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:204 data/core/units.cfg:219
-#, fuzzy
-#| msgid "race+female^Human"
-msgid "race+female^Dunefolk Human"
-msgstr "Con người"
+#: data/core/units.cfg:204
+msgid "race+female^Khalifate Human"
+msgstr "Con người Khalifate"
 
-#. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:205 data/core/units.cfg:220
-#, fuzzy
-#| msgid "race+plural^Undead"
-msgid "race+plural^Dunefolk"
-msgstr "Ma quái"
+#: data/core/units.cfg:205
+msgid "race+plural^Khalifate"
+msgstr "Khalifate"
 
-#. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:206 data/core/units.cfg:221
+#: data/core/units.cfg:206
 msgid "This race does not have a description yet."
 msgstr "Chủng tộc này chưa có mô tả."
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:232
+#: data/core/units.cfg:217
 msgid "race^Saurian"
 msgstr "Thằn lằn"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:233
+#: data/core/units.cfg:218
 msgid "race+female^Saurian"
 msgstr "Thằn lằn"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:234
+#: data/core/units.cfg:219
 msgid "race^Saurians"
 msgstr "Thằn lằn"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:244
+#: data/core/units.cfg:229
 msgid "race^Mechanical"
 msgstr "Máy móc"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:245
+#: data/core/units.cfg:230
 msgid "race+plural^Mechanical"
 msgstr "Máy móc"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:246
+#: data/core/units.cfg:231
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -5894,22 +5841,22 @@ msgstr ""
 "nghĩ, nhưng một số có thể làm thế nhờ bùa mê phép thuật."
 
 #. [race]: id=merman
-#: data/core/units.cfg:255
+#: data/core/units.cfg:240
 msgid "race^Merman"
 msgstr "Người cá"
 
 #. [race]: id=merman
-#: data/core/units.cfg:256
+#: data/core/units.cfg:241
 msgid "race^Mermaid"
 msgstr "Người cá"
 
 #. [race]: id=merman
-#: data/core/units.cfg:257
+#: data/core/units.cfg:242
 msgid "race^Mermen"
 msgstr "Người cá"
 
 #. [race]: id=merman
-#: data/core/units.cfg:259
+#: data/core/units.cfg:244
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -5932,22 +5879,22 @@ msgstr ""
 "phải vật lộn để di chuyển qua địa hình rừng hoặc gồ ghề."
 
 #. [race]: id=monster
-#: data/core/units.cfg:267
+#: data/core/units.cfg:252
 msgid "race^Monster"
 msgstr "Quái vật"
 
 #. [race]: id=monster
-#: data/core/units.cfg:268
+#: data/core/units.cfg:253
 msgid "race+female^Monster"
 msgstr "Quái vật"
 
 #. [race]: id=monster
-#: data/core/units.cfg:269
+#: data/core/units.cfg:254
 msgid "race^Monsters"
 msgstr "Quái vật"
 
 #. [race]: id=monster
-#: data/core/units.cfg:270
+#: data/core/units.cfg:255
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -5959,22 +5906,22 @@ msgstr ""
 "dân."
 
 #. [race]: id=naga
-#: data/core/units.cfg:277
+#: data/core/units.cfg:262
 msgid "race^Naga"
 msgstr "Người rắn"
 
 #. [race]: id=naga
-#: data/core/units.cfg:278
+#: data/core/units.cfg:263
 msgid "race^Nagini"
 msgstr "Người rắn"
 
 #. [race]: id=naga
-#: data/core/units.cfg:279
+#: data/core/units.cfg:264
 msgid "race^Nagas"
 msgstr "Người rắn"
 
 #. [race]: id=naga
-#: data/core/units.cfg:280
+#: data/core/units.cfg:265
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -6006,22 +5953,22 @@ msgstr ""
 "trống trải."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:288
+#: data/core/units.cfg:273
 msgid "race^Ogre"
 msgstr "Quỷ khổng lồ"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:289
+#: data/core/units.cfg:274
 msgid "race+female^Ogre"
 msgstr "Quỷ khổng lồ"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:290
+#: data/core/units.cfg:275
 msgid "race^Ogres"
 msgstr "Quỷ khổng lồ"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:291
+#: data/core/units.cfg:276
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -6054,22 +6001,22 @@ msgstr ""
 "hội qua lại."
 
 #. [race]: id=orc
-#: data/core/units.cfg:299
+#: data/core/units.cfg:284
 msgid "race^Orc"
 msgstr "Người thú"
 
 #. [race]: id=orc
-#: data/core/units.cfg:300
+#: data/core/units.cfg:285
 msgid "race+female^Orc"
 msgstr "Người thú"
 
 #. [race]: id=orc
-#: data/core/units.cfg:301
+#: data/core/units.cfg:286
 msgid "race^Orcs"
 msgstr "Người thú"
 
 #. [race]: id=orc
-#: data/core/units.cfg:302
+#: data/core/units.cfg:287
 #, fuzzy
 #| msgid ""
 #| "In appearance, orcs are half men and half beasts. They are taller, "
@@ -6244,22 +6191,22 @@ msgstr ""
 "môn hóa các kỹ năng khác, như bắn cung hoặc ám sát."
 
 #. [race]: id=troll
-#: data/core/units.cfg:318
+#: data/core/units.cfg:303
 msgid "race^Troll"
 msgstr "Quỷ núi"
 
 #. [race]: id=troll
-#: data/core/units.cfg:319
+#: data/core/units.cfg:304
 msgid "race+female^Troll"
 msgstr "Quỷ núi"
 
 #. [race]: id=troll
-#: data/core/units.cfg:320
+#: data/core/units.cfg:305
 msgid "race^Trolls"
 msgstr "Quỷ núi"
 
 #. [race]: id=troll
-#: data/core/units.cfg:321
+#: data/core/units.cfg:306
 #, fuzzy
 #| msgid ""
 #| "Trolls are ancient creatures, one of the oldest known races known to "
@@ -6370,22 +6317,22 @@ msgstr ""
 "qua."
 
 #. [race]: id=undead
-#: data/core/units.cfg:341
+#: data/core/units.cfg:326
 msgid "race^Undead"
 msgstr "Ma quái"
 
 #. [race]: id=undead
-#: data/core/units.cfg:342
+#: data/core/units.cfg:327
 msgid "race+female^Undead"
 msgstr "Ma quái"
 
 #. [race]: id=undead
-#: data/core/units.cfg:343
+#: data/core/units.cfg:328
 msgid "race+plural^Undead"
 msgstr "Ma quái"
 
 #. [race]: id=undead
-#: data/core/units.cfg:344
+#: data/core/units.cfg:329
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -6438,32 +6385,32 @@ msgstr ""
 "nghe nói về chúng trước đó."
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:357
+#: data/core/units.cfg:342
 msgid "race^Wolf"
 msgstr "Chó sói"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:358
+#: data/core/units.cfg:343
 msgid "race+female^Wolf"
 msgstr "Chó sói"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:359
+#: data/core/units.cfg:344
 msgid "race^Wolves"
 msgstr "Chó sói"
 
 #. [race]: id=wose
-#: data/core/units.cfg:369
+#: data/core/units.cfg:354
 msgid "race^Wose"
 msgstr "Thần rừng"
 
 #. [race]: id=wose
-#: data/core/units.cfg:370
+#: data/core/units.cfg:355
 msgid "race^Woses"
 msgstr "Thần rừng"
 
 #. [race]: id=wose
-#: data/core/units.cfg:371
+#: data/core/units.cfg:356
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -6542,27 +6489,21 @@ msgstr ""
 "văn minh, thần rừng sẽ chỉ nhúc nhích khi cần chiến đấu bảo vệ thế giới tự "
 "nhiên và những khu rừng mà họ gọi là nhà."
 
-#: data/lua/feeding.lua:32 data/lua/feeding.lua:45
+#: data/lua/feeding.lua:27 data/lua/feeding.lua:40
 msgid "+1 max HP"
 msgstr "+1 máu tối đa"
 
-#~ msgid "race^Khalifate Human"
-#~ msgstr "Con người Khalifate"
+#: src/help/help.cpp:182
+msgid "Close"
+msgstr "Đóng"
 
-#~ msgid "race+female^Khalifate Human"
-#~ msgstr "Con người Khalifate"
+#: src/help/help.cpp:185
+msgid "The Battle for Wesnoth Help"
+msgstr "Trợ giúp Trận chiến vì Wesnoth"
 
-#~ msgid "race+plural^Khalifate"
-#~ msgstr "Khalifate"
-
-#~ msgid "Close"
-#~ msgstr "Đóng"
-
-#~ msgid "The Battle for Wesnoth Help"
-#~ msgstr "Trợ giúp Trận chiến vì Wesnoth"
-
-#~ msgid "Parse error when parsing help text: "
-#~ msgstr "Lỗi phân tích khi phân tích văn bản trợ giúp: "
+#: src/help/help.cpp:240
+msgid "Parse error when parsing help text: "
+msgstr "Lỗi phân tích khi phân tích văn bản trợ giúp: "
 
 #~ msgid "female^nightstalk"
 #~ msgstr "săn đêm"

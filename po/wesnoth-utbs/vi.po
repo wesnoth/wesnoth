@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-04 12:39 UTC\n"
+"POT-Creation-Date: 2017-09-21 20:29 UTC\n"
 "PO-Revision-Date: 2014-06-24 23:32+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:11
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:295
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:350
 msgid "Under the Burning Suns"
 msgstr "Dưới mặt trời cháy bỏng"
 
@@ -45,72 +45,108 @@ msgstr ""
 msgid "(Expert level, 10 scenarios.)"
 msgstr "(Mức độ chuyên gia, 10 màn chơi)"
 
+#. [unit_type]: id=Desert Hunter, race=elf
 #. [campaign]: id=Under_the_Burning_Suns
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-#, fuzzy
-#| msgid "Desert Fighter"
-msgid "Fighter"
-msgstr "Đấu sĩ sa mạc"
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:24
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hunter.cfg:5
+msgid "Desert Hunter"
+msgstr "Thợ săn sa mạc"
 
 #. [campaign]: id=Under_the_Burning_Suns
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:24
 #, fuzzy
 #| msgid "(Normal)"
 msgid "Normal"
 msgstr "(Bình thường)"
 
 #. [campaign]: id=Under_the_Burning_Suns
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:25
 #, fuzzy
 #| msgid "(Challenging)"
 msgid "Challenging"
 msgstr "(Thử thách)"
 
-#. [advancement]: id=warrior_1
+#. [unit_type]: id=Desert Sentinel, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:25
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sentinel.cfg:4
+msgid "Desert Sentinel"
+msgstr "Lính gác sa mạc"
+
+#. [unit_type]: id=Desert Prowler, race=elf
+#. [campaign]: id=Under_the_Burning_Suns
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Prowler.cfg:4
+msgid "Desert Prowler"
+msgstr "Kẻ lảng vảng sa mạc"
+
+#. [campaign]: id=Under_the_Burning_Suns
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
+#, fuzzy
+#| msgid "(Nightmare)"
+msgid "Nightmare"
+msgstr "(Ác mộng)"
+
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:33
+#, fuzzy
+#| msgid "Desert Fighter"
+msgid "Fighter"
+msgstr "Đấu sĩ sa mạc"
+
+#. [campaign]: id=Under_the_Burning_Suns
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
+msgid "Normal, redesigned elf units"
+msgstr ""
+
+#. [campaign]: id=Under_the_Burning_Suns
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:28
+msgid "Challenging, redesigned elf units"
+msgstr ""
+
+#. [advancement]: id=warrior_1
+#. [campaign]: id=Under_the_Burning_Suns
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:28
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:32
 #, fuzzy
 #| msgid "Arisen Warrior"
 msgid "Warrior"
 msgstr "Chiến binh nổi dậy"
 
 #. [campaign]: id=Under_the_Burning_Suns
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:28
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:29
 #, fuzzy
 #| msgid "Desert Champion"
 msgid "Champion"
 msgstr "Nhà vô địch sa mạc"
 
 #. [campaign]: id=Under_the_Burning_Suns
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:28
-#, fuzzy
-#| msgid "(Nightmare)"
-msgid "Nightmare"
-msgstr "(Ác mộng)"
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:29
+msgid "Nightmare, redesigned elf units"
+msgstr ""
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:32
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:33
 msgid "Campaign Design"
 msgstr "Thiết kế chiến dịch"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:41
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:42
 msgid "Campaign Maintenance"
 msgstr "Bảo trì chiến dịch"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:62
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:63
 msgid "Artwork and Graphics Design"
 msgstr "Thiết kế nghệ thuật và đồ họa"
 
 #. [about]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:128
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:129
 msgid "Miscellaneous"
 msgstr "Đóng góp hỗn hợp"
 
 #. [entry]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:146
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:147
 msgid "And special thanks to everyone else who I forgot to mention."
 msgstr "Và lời cảm ơn chân thành đến những người tôi quên chưa nêu tên."
 
@@ -161,10 +197,10 @@ msgstr "Buổi sáng hôm sau"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:31
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:32
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:33
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:35
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:44
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:32
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:31
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/01_The_Morning_After.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/02_Across_the_Harsh_Sands.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/03_Stirring_in_the_Night.cfg:41
@@ -5854,10 +5890,10 @@ msgstr "Một khi các bạn đã hoàn thành đưa người vào vị trí, t�
 msgid "Troll Brute"
 msgstr "Quỷ núi tàn bạo"
 
+#. [event]
 #. [unit]: type=Troll
 #. [unit]: type=Troll Rocklobber
 #. [unit]: type=Troll Whelp
-#. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:490
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:493
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:497
@@ -5927,8 +5963,8 @@ msgstr "Những kẻ xâm lược! Giết chúng!"
 msgid "Tell us where your leader is hiding!"
 msgstr "Nói cho bọn ta thủ lĩnh của ngươi đang nấp ở đâu!"
 
-#. [message]: speaker=Kaleh
 #. [message]: speaker=Wounded Dwarf
+#. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:641
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:582
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/06a_In_the_Tunnels_of_Trolls.cfg:641
@@ -6485,23 +6521,16 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1903
-#, fuzzy
-#| msgid ""
-#| "For a troll this is quite an ornate tomb. The coffin itself is quite "
-#| "impressive. Inside, the skeleton has crumbled to dust and there are a few "
-#| "colored stones and trinkets, but what really sticks out is this emerald "
-#| "wand. I don’t have much experience with magical items, but the asp with "
-#| "emerald eyes and large fangs carved around its shaft leave little doubt "
-#| "as to its power. We don’t normally tolerate using poison, but extreme "
-#| "circumstances call for extreme measures and I have a feeling we may find "
-#| "this useful before our journey is over."
+#: data/campaigns/Under_the_Burning_Suns/scenarios_old/06a_In_the_Tunnels_of_Trolls.cfg:1903
 msgid ""
 "For a troll this is quite an ornate tomb. The coffin itself is quite "
 "impressive. Inside, the skeleton has crumbled to dust and there are a few "
 "colored stones and trinkets, but what really sticks out is this emerald "
 "wand. I don’t have much experience with magical items, but the asp with "
 "emerald eyes and large fangs carved around its shaft leave little doubt as "
-"to its power. We may find this useful before our journey is over."
+"to its power. We don’t normally tolerate using poison, but extreme "
+"circumstances call for extreme measures and I have a feeling we may find "
+"this useful before our journey is over."
 msgstr ""
 "Đối với một con quỷ núi, đây là một ngôi mộ tương đối cầu kỳ. Chiếc quan tài "
 "khá ấn tượng. Bên trong, bộ xương đã vỡ tan thành bụi, có một ít đá và đồ "
@@ -6576,7 +6605,7 @@ msgstr "Kẻ thù"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:77
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:53
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:54
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:51
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:50
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/06b_In_the_Domain_of_Dwarves.cfg:77
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/07a_Dealing_with_Dwarves.cfg:53
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/07b_Talking_with_Trolls.cfg:54
@@ -12654,11 +12683,11 @@ msgstr ""
 "Ta đến với các ngươi cùng tin thảm khốc: một người trong số các ngươi đã "
 "phản bội ta, và là kẻ phản bội sự nghiệp của các ngươi."
 
-#. [message]
 #. [message]: speaker=Zhul
+#. [message]
 #. [message]: type=Desert Hunter3, Desert Hunter4, Desert Hunter5, Desert Hunter6, Desert Hunter7, Desert Hunter8
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1752
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:329
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:328
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/09_Blood_is_Thicker_Than_Water.cfg:1743
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:328
 msgid "No!"
@@ -13768,7 +13797,7 @@ msgid "Speaking with the Fishes"
 msgstr "Nói chuyện với cá"
 
 #. [side]: id=Melusand, type=Mermaid Diviner
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:39
 msgid "Melusand"
 msgstr "Melusand"
@@ -13777,12 +13806,12 @@ msgstr "Melusand"
 #. [unit]: type=Merman Hoplite
 #. [unit]: type=Merman Spearman
 #. [unit]: type=Merman Entangler
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:91
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:99
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:107
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:115
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:123
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:131
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:90
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:98
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:106
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:114
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:122
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:130
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:90
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:98
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:106
@@ -13793,13 +13822,13 @@ msgid "Merfolk Guard"
 msgstr "Vệ sĩ người cá"
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:151
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:150
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:150
 msgid "Hail Kaleh, long have I waited to see you in person."
 msgstr "Chào Kaleh, tôi đã chờ đợi để gặp cậu từ lâu."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:156
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:155
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:155
 msgid ""
 "Greetings. I’m afraid I am at a disadvantage, for you know my name and I do "
@@ -13809,7 +13838,7 @@ msgstr ""
 "không biết tên bà."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:161
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:160
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:160
 msgid ""
 "I am known as Melusand. I am what you might call a high priest among my "
@@ -13819,13 +13848,13 @@ msgstr ""
 "số các người cá."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:166
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:165
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:165
 msgid "This is—"
 msgstr "Đây là -"
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:179
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:178
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:178
 msgid ""
 "No, you don’t have to introduce yourselves. I already know who you are and "
@@ -13839,13 +13868,13 @@ msgstr ""
 "chúng tôi."
 
 #. [message]: speaker=Grog
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:184
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:183
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:183
 msgid "Grog says thank you."
 msgstr "Grog nói cảm ơn."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:190
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:189
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:189
 msgid ""
 "No, you don’t have to introduce yourselves. I already know who you are and "
@@ -13859,13 +13888,13 @@ msgstr ""
 "chúng tôi."
 
 #. [message]: speaker=Nog
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:195
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:194
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:194
 msgid "Nog says thank you."
 msgstr "Nog nói cảm ơn."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:201
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:200
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:200
 msgid ""
 "No, you don’t have to introduce yourselves. I already know who you are and "
@@ -13880,15 +13909,15 @@ msgstr ""
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:206
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:217
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:205
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:216
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:205
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:216
 msgid "Thank you for your kindness."
 msgstr "Cảm ơn vì lòng tốt của bà."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:212
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:211
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:211
 msgid ""
 "No, you don’t have to introduce yourselves. I already know who you are and "
@@ -13902,7 +13931,7 @@ msgstr ""
 "chúng tôi."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:225
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:224
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:224
 msgid ""
 "No, you don’t have to introduce yourselves. I already know who you are and "
@@ -13912,21 +13941,21 @@ msgstr ""
 "bạn lại đi đến tận đây."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:232
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:231
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:231
 msgid "If you know so much why did you drag us all the way out here?"
 msgstr ""
 "Nếu bà biết nhiều vậy, tại sao bà lại lôi kéo tất cả chúng tôi đến đây?"
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:237
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:236
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:236
 msgid "Patience, young lady. All will be revealed in good time."
 msgstr ""
 "Bình tĩnh nào, cô gái trẻ. Tất cả sẽ được tiết lộ vào thời điểm thích hợp."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:242
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:241
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:241
 msgid ""
 "I have been watching your progress with great interest, but I could not "
@@ -13944,13 +13973,13 @@ msgstr ""
 "trò chuyện mà không bị nghe lỏm. Ngoài ra, cẩn thận chẳng bao giờ là thừa."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:247
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:246
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:246
 msgid "Whose spies?"
 msgstr "Quân do thám của ai?"
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:252
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:251
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:251
 msgid ""
 "Perhaps I should start at the beginning. Make yourselves comfortable, for "
@@ -13962,7 +13991,7 @@ msgstr ""
 "đổ của cái mà các bạn gọi là ‘Thời Đại Vàng’."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:259
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:258
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:258
 msgid ""
 "A long time ago there was a great empire of humans known as the Empire of "
@@ -13975,13 +14004,13 @@ msgstr ""
 "tối sâu dưới lòng đất. Đó là thời đại của hòa bình, ánh sáng và thịnh vượng."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:264
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:263
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:263
 msgid "Yes, we know about this age."
 msgstr "Đúng, chúng tôi biết về thời đại này."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:269
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:268
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:268
 msgid ""
 "This will go much faster if you don’t interrupt me. Now, as I was saying the "
@@ -14011,7 +14040,7 @@ msgstr ""
 "tối mãi mãi."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:274
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:273
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:273
 msgid ""
 "But with their prosperity and power, over the generations the humans grew "
@@ -14040,7 +14069,7 @@ msgstr ""
 "Trong khoảnh khắc, trung tâm của đế chế Wesnoth bị phá hủy hoàn toàn."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:279
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:278
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:278
 msgid ""
 "The king and his family were all killed, and soon petty warlords tore apart "
@@ -14054,7 +14083,7 @@ msgstr ""
 "tối tăm, bóng tối và hỗn loạn nuốt chửng vùng đất."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:284
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:283
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:283
 msgid ""
 "The two suns, a monument to the power and hubris of the fallen Empire of "
@@ -14086,7 +14115,7 @@ msgstr ""
 "thống trị."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:289
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:288
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:288
 msgid ""
 "What can we merfolk do? We see much with our magics, but we do not have the "
@@ -14105,7 +14134,7 @@ msgstr ""
 "trên bờ."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:294
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:293
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:293
 msgid ""
 "You are probably wondering why I know all this history. Far out in the sea "
@@ -14135,7 +14164,7 @@ msgstr ""
 "bộ lịch sử kết cục của Thời Đại Vàng."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:299
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:298
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:298
 msgid ""
 "The islands seemed lush and bountiful so we decided to settle in the shallow "
@@ -14164,7 +14193,7 @@ msgstr ""
 "lực bói cầu tiên tri của chúng tôi."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:304
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:303
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:303
 msgid ""
 "The island was declared cursed, and we stayed as far away from it as we "
@@ -14181,7 +14210,7 @@ msgstr ""
 "sẽ ổn."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:309
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:308
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:308
 msgid ""
 "But then that night came, I still remember it, as if it was yesterday. As "
@@ -14202,7 +14231,7 @@ msgstr ""
 "may mắn khi vẫn cứu được nhiều người."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:314
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:313
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:313
 msgid ""
 "In hindsight I blame the humans. With their experiments I think they woke "
@@ -14226,13 +14255,13 @@ msgstr ""
 "các anh cũng đã thấy."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:319
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:318
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:318
 msgid "Does she have a name?"
 msgstr "Mụ có tên không?"
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:324
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:323
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:323
 msgid ""
 "She has many names. We call her the Eater of Souls. But in the old tongue "
@@ -14242,7 +14271,7 @@ msgstr ""
 "tên của mụ là Yechnagoth."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:334
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:333
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:333
 msgid ""
 "Yes, I thought that name would be familiar to you. Always is she looking for "
@@ -14261,13 +14290,13 @@ msgstr ""
 "diệt mụ."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:339
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:338
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:338
 msgid "You seem powerful, why can’t you destroy her yourselves?"
 msgstr "Bà có vẻ mạnh, tại sao bà không thể tự mình tiêu diệt mụ?"
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:344
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:343
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:343
 msgid ""
 "Years of battle have taken their toll; my people are few in number and have "
@@ -14280,7 +14309,7 @@ msgstr ""
 "bạn, chúng tôi có thể có cơ hội."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:349
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:348
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:348
 msgid ""
 "You must realize that if she is not stopped, who knows how far her "
@@ -14293,7 +14322,7 @@ msgstr ""
 "đứng lên, ai sẽ đứng lên?"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:354
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:353
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:353
 msgid ""
 "How can we trust you? How do we know you aren’t servants of Yechnagoth, sent "
@@ -14303,7 +14332,7 @@ msgstr ""
 "tớ của Yechnagoth, được phái đến để lừa chúng tôi?"
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:359
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:358
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:358
 msgid ""
 "If you knew anything about us you would not ask such a question! The idea is "
@@ -14319,7 +14348,7 @@ msgstr ""
 "làm bằng chứng ư?"
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:364
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:363
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:363
 msgid ""
 "Because in the end, I’m afraid you just have to trust us. If we wanted to "
@@ -14338,7 +14367,7 @@ msgstr ""
 "khiếp."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:369
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:368
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:368
 msgid ""
 "Indeed, that is what she is expecting. Like the few others that have "
@@ -14356,7 +14385,7 @@ msgstr ""
 "mụ không thể điều khiển."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:374
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:373
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:373
 msgid ""
 "You have given us much to think about. But we cannot make such an important "
@@ -14368,7 +14397,7 @@ msgstr ""
 "gian để nói chuyện và thảo luận về vấn đề này."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:379
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:378
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:378
 msgid ""
 "Of course. We will withdraw to the shallows and give you some privacy. But "
@@ -14380,25 +14409,25 @@ msgstr ""
 "lâu nữa tôi sẽ trở lại."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:405
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:404
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:404
 msgid "Well, what do you all think?"
 msgstr "Ừm, mọi người nghĩ gì?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:410
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:409
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:409
 msgid "It’s a heck of a story."
 msgstr "Còn nhiều hơn cả một câu chuyện."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:415
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:414
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:414
 msgid "I’m not sure what to think. It’s all so much information."
 msgstr "Tôi không chắc chắn đang nghĩ gì. Thật quá nhiều thông tin."
 
 #. [message]: speaker=Grog
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:422
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:421
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:421
 msgid ""
 "Grog not sure if he trust fish lady. What if she just want you elves to "
@@ -14408,7 +14437,7 @@ msgstr ""
 "thần tiên các bạn chiến đấu thay cho bà ấy?"
 
 #. [message]: speaker=Nog
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:428
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:427
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:427
 msgid ""
 "Nog not sure if he trust fish lady. What if she just want you elves to fight "
@@ -14419,8 +14448,8 @@ msgstr ""
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:434
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:440
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:433
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:439
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:433
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:439
 msgid ""
@@ -14431,7 +14460,7 @@ msgstr ""
 "tất cả các bạn chiến đấu thay cho bà ấy?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:445
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:444
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:444
 msgid ""
 "The point is, it’s not her fight, it’s our fight too. I for one believe her "
@@ -14448,7 +14477,7 @@ msgstr ""
 "thành một nhóm tín đồ mất trí?"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:450
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:449
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:449
 msgid ""
 "Whether this was all planned or not, what’s important is what should we do "
@@ -14458,7 +14487,7 @@ msgstr ""
 "với chính mình? Chúng ta có bổn phận phải bảo vệ người của chúng ta."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:455
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:454
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:454
 msgid ""
 "No, no, no! Too much blood has been spilled. This has gone on way too far "
@@ -14470,13 +14499,13 @@ msgstr ""
 "Tanstafaal, máu của họ ở trên tay tôi, tôi sẽ báo thù!"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:460
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:459
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:459
 msgid "Even if we turn around and leave now, where will we go?"
 msgstr "Kể cả nếu bây giờ chúng ta quay lưng và rời đi, chúng ta sẽ đi đâu?"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:465
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:464
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:464
 msgid ""
 "I admit that Melusand does have a point. We cannot return under the "
@@ -14495,13 +14524,13 @@ msgstr ""
 "hết."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:470
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:469
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:469
 msgid "This entire journey has been based on a lie—"
 msgstr "Toàn bộ cuộc hành trình này chỉ dựa trên một lời nói dối -"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:475
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:474
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:474
 msgid ""
 "I know! I know! Would you like me to kill myself as punishment, or step down "
@@ -14523,13 +14552,13 @@ msgstr ""
 "xảy ra!"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:480
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:479
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:479
 msgid "No, no, no one is blaming you, Kaleh."
 msgstr "Không, không, không ai trách anh đâu, Kaleh."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:485
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:484
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:484
 msgid ""
 "Many who have seen dark times wish they could go back and remake the past. "
@@ -14544,7 +14573,7 @@ msgstr ""
 "không, Yechnagoth đã chiến thắng."
 
 #. [message]: speaker=$ally_name
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:497
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:496
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:496
 msgid ""
 "Yes, remember boy, the fight is not yet lost while we still draw breath."
@@ -14553,7 +14582,7 @@ msgstr ""
 "còn thở."
 
 #. [message]: speaker=$ally_name
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:504
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:503
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:503
 msgid ""
 "Do not give up yet, little one. The battle is not yet lost while we still "
@@ -14563,7 +14592,7 @@ msgstr ""
 "chúng ta còn chiến đấu."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:511
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:510
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:510
 msgid ""
 "You are right. I believe Melusand, strange as her tale sounds. From all I "
@@ -14578,7 +14607,7 @@ msgstr ""
 "chọn mà tôi có thể quyết định cho tất cả người dân của chúng ta."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:516
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:515
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:515
 msgid ""
 "She should be made to pay for all that she has done to our people, and if I "
@@ -14590,7 +14619,7 @@ msgstr ""
 "anh đâu, Kaleh."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:521
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:520
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:520
 msgid ""
 "As strange as it may sound, there are some things in this world that are "
@@ -14611,7 +14640,7 @@ msgstr ""
 "đời của mình để chứng kiến những điều tốt đẹp đó sống sót."
 
 #. [message]: speaker=Grog
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:528
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:527
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:527
 msgid ""
 "Even in deepest tunnels my people could not escape Yechnagoth’s power "
@@ -14626,7 +14655,7 @@ msgstr ""
 "những gì anh ấy có thể để thấy mụ bị tiêu diệt."
 
 #. [message]: speaker=Nog
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:534
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:533
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:533
 msgid ""
 "Even in deepest tunnels my people could not escape Yechnagoth’s power "
@@ -14642,8 +14671,8 @@ msgstr ""
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:540
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:546
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:539
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:545
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:539
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:545
 msgid ""
@@ -14659,7 +14688,7 @@ msgstr ""
 "tất cả những gì có thể để thấy mụ bị tiêu diệt."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:551
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:550
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:550
 msgid ""
 "Then it is decided. Still in this matter we cannot speak for all our people. "
@@ -14678,7 +14707,7 @@ msgstr ""
 "có thể sống trong hòa bình mà họ tìm được."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:556
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:555
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:555
 msgid ""
 "That is very compassionate of you, but I doubt that many of our surviving "
@@ -14690,19 +14719,19 @@ msgstr ""
 "và cậu đi đâu, chúng tôi đều sẽ theo."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:561
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:560
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:560
 msgid "Time passes."
 msgstr "Thời gian trôi qua."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:576
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:575
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:575
 msgid "Have you come to a decision?"
 msgstr "Các bạn đã đi đến quyết định chưa?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:581
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:580
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:580
 msgid ""
 "Yes we have. Yechnagoth has played us like fools. We have all lost loved "
@@ -14714,7 +14743,7 @@ msgstr ""
 "không bị phản kháng. Chúng tôi sẽ giúp các bạn."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:586
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:585
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:585
 msgid ""
 "Excellent. Due to our limited numbers, we cannot mount a full frontal "
@@ -14736,7 +14765,7 @@ msgstr ""
 "ơn nghĩa. Họ đã tình nguyện hướng dẫn và hộ tống các bạn đến đích."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:591
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:590
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:590
 msgid ""
 "Although her magic has clouded the isles from my scrying, it is the largest "
@@ -14747,13 +14776,13 @@ msgstr ""
 "tôi cảm nhận được sức mạnh lớn nhất."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:596
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:595
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:595
 msgid "Why is it called Zocthanol Isle?"
 msgstr "Tại sao nó lại được gọi là đảo Zocthanol?"
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:601
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:600
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:600
 msgid ""
 "Because Zocthanol means accursed in our tongue. Anyway, it is there that I "
@@ -14771,7 +14800,7 @@ msgstr ""
 "nó trước khi đám thuộc hạ còn lại của Yechnagoth có thời gian đáp trả."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:606
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:605
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:605
 msgid ""
 "And on a related subject I can offer you a glimmer of hope in this dark "
@@ -14790,7 +14819,7 @@ msgstr ""
 "Nhưng điều đó lại là chuyện để nói vào một ngày khác."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:611
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:610
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:610
 msgid ""
 "Before you go I have one thing to give you. I’m afraid that where you are "
@@ -14809,7 +14838,7 @@ msgstr ""
 "cũng bảo vệ các bạn theo một cách nào đó."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:616
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:615
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:615
 msgid "We thank you for such beautiful gifts. We will wear them with honor."
 msgstr ""
@@ -14817,19 +14846,19 @@ msgstr ""
 "niềm vinh dự."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:621
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:620
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:620
 msgid "We have one favor to ask of you."
 msgstr "Chúng tôi có một đề nghị muốn hỏi bà."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:626
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:625
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:625
 msgid "Yes, anything."
 msgstr "Được, bất cứ điều gì."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:631
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:630
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:630
 msgid ""
 "We go into this darkness knowing that perhaps none of us will return alive. "
@@ -14848,7 +14877,7 @@ msgstr ""
 "những vùng hoang dã xa xôi."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:636
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:635
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:635
 msgid ""
 "I will do as you ask. It is only fair. But if this battle goes ill I do not "
@@ -14858,7 +14887,7 @@ msgstr ""
 "không nghĩ sẽ còn nhiều nơi an toàn trên các vùng đất đã biết."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:641
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:640
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:640
 msgid ""
 "Before we leave, there’s one thing I don’t understand. When he first met "
@@ -14870,7 +14899,7 @@ msgstr ""
 "ta biết về Yechnagoth, còn Zhangor là ai?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:646
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:645
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:645
 msgid ""
 "I remember when Yechnagoth was posing as Eloh, she said she was the slayer "
@@ -14880,7 +14909,7 @@ msgstr ""
 "Zhangor."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:651
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:650
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:650
 msgid ""
 "I wonder where Yechnagoth heard of the story of the demon lord Zhangor. It "
@@ -14892,7 +14921,7 @@ msgstr ""
 "bây giờ là lúc thích hợp."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:656
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:655
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:655
 msgid ""
 "It all started in the years before the Great Fall. The elves of Wesmere "
@@ -14907,7 +14936,7 @@ msgstr ""
 "Zhangor."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:661
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:660
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:660
 msgid ""
 "Zhangor appeared to them in the guise of a beautiful elven youth and told "
@@ -14931,7 +14960,7 @@ msgstr ""
 "tế."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:666
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:665
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:665
 msgid ""
 "And so as the rest of the lands succumbed to darkness and chaos, Wesmere "
@@ -14960,7 +14989,7 @@ msgstr ""
 "tìm thấy trong những vùng đất ở gần."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:671
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:670
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:670
 msgid ""
 "By this point most of the other forests had been burned, and Eloh was "
@@ -14986,7 +15015,7 @@ msgstr ""
 "thề báo thù cho những đứa trẻ bị hiến tế, chúng tôi tấn công với toàn lực."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:676
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:675
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:675
 msgid ""
 "Driven on by their dark priests and by their fear of Zhangor’s wrath, the "
@@ -15013,7 +15042,7 @@ msgstr ""
 "đầu hắn và quẳng xác hắn xuống dưới mặt đất."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:681
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:680
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:680
 msgid ""
 "By this point the entire forest was being engulfed by flame, and friend and "
@@ -15039,7 +15068,7 @@ msgstr ""
 "vớt."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:686
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:685
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:685
 msgid ""
 "Our priests also declared that Zhangor’s name and his story were forbidden "
@@ -15062,13 +15091,13 @@ msgstr ""
 "hành động dại dột khi quý trọng tri thức hơn hạnh phúc của nhân dân."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:691
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:690
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:690
 msgid "I wonder what other forbidden lore you’ve been taught."
 msgstr "Tôi tự hỏi bà còn được truyền những câu chuyện cấm nào khác."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:696
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:695
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:695
 msgid ""
 "Foolish girl! Do not ask such a question. Trust me, it is better not to "
@@ -15086,7 +15115,7 @@ msgstr ""
 "này, tôi cảm thấy rằng các bạn nên biết một chút sự thực."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:701
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:700
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:700
 msgid ""
 "That is very interesting. In truth, I’d never heard of Zhangor before when I "
@@ -15114,7 +15143,7 @@ msgstr ""
 "tính thực sự của mụ đã khiến người của cậu phải trả giá đắt như vậy."
 
 #. [message]: speaker=Melusand
-#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:706
+#: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:705
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/10_Speaking_with_the_Fishes.cfg:705
 msgid ""
 "And now I must bid you farewell. The merfolk you rescued will help show you "
@@ -16407,7 +16436,7 @@ msgid "Epilogue"
 msgstr "Hồi kết"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:62
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:61
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:61
 msgid ""
 "I stumbled out into the daylight, scarcely believing that we were "
@@ -16429,7 +16458,7 @@ msgstr ""
 "phép."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:67
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:66
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:66
 msgid ""
 "Indeed with Yechnagoth’s death it seems that all of her minions reverted to "
@@ -16447,7 +16476,7 @@ msgstr ""
 "nhất là một lần chúng tôi cũng được an toàn."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:72
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:71
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:71
 msgid ""
 "A few days later Melusand herself appeared and she declared the cleansing of "
@@ -16480,7 +16509,7 @@ msgstr ""
 "đã trả..."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:86
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:85
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:85
 msgid ""
 "If you had told me at the start of our journey the price I was to pay in "
@@ -16500,7 +16529,7 @@ msgstr ""
 "mình có thể quay lại và làm lại từ đầu."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:114
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:113
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:113
 msgid ""
 "If you had told me at the start of our journey the price I was to pay in "
@@ -16520,7 +16549,7 @@ msgstr ""
 "và làm lại từ đầu."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:118
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:117
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:117
 msgid ""
 "Although I believe that our battle in the black citadel was our finest hour, "
@@ -16545,7 +16574,7 @@ msgstr ""
 "đôi khi điều đó dường như chỉ là một niềm an ủi nhỏ."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:133
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:132
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:132
 msgid ""
 "If you had told me at the start of our journey the price I was to pay in "
@@ -16565,7 +16594,7 @@ msgstr ""
 "lại và làm lại từ đầu."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:137
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:136
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:136
 msgid ""
 "Although I believe that our battle in the black citadel was our finest hour, "
@@ -16590,7 +16619,7 @@ msgstr ""
 "đôi khi điều đó dường như chỉ là một niềm an ủi nhỏ."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:153
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:152
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:152
 msgid ""
 "If you had told me at the start of our journey the price I was to pay in "
@@ -16610,7 +16639,7 @@ msgstr ""
 "quay lại và làm lại từ đầu."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:157
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:156
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:156
 msgid ""
 "Although I believe that our battle in the black citadel was our finest hour, "
@@ -16637,7 +16666,7 @@ msgstr ""
 "chiến đấu dưới lòng đất, điều đó dường như chỉ là một niềm an ủi nhỏ."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:163
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:162
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:162
 msgid ""
 "If you had told me at the start of our journey the price I was to pay in "
@@ -16657,7 +16686,7 @@ msgstr ""
 "quay lại và làm lại từ đầu."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:167
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:166
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:166
 msgid ""
 "Although I believe that our battle in the black citadel was our finest hour, "
@@ -16684,7 +16713,7 @@ msgstr ""
 "chiến đấu dưới lòng đất, điều đó dường như chỉ là một niềm an ủi nhỏ."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:173
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:172
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:172
 msgid ""
 "If you had told me at the start of our journey the price I was to pay in "
@@ -16704,7 +16733,7 @@ msgstr ""
 "có thể quay lại và làm lại từ đầu."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:177
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:176
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:176
 msgid ""
 "Although I believe that our battle in the black citadel was our finest hour, "
@@ -16733,7 +16762,7 @@ msgstr ""
 "ủi nhỏ."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:183
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:182
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:182
 msgid ""
 "If you had told me at the start of our journey the price I was to pay in "
@@ -16753,7 +16782,7 @@ msgstr ""
 "quay lại và làm lại từ đầu."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:187
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:186
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:186
 msgid ""
 "Although I believe that our battle in the black citadel was our finest hour, "
@@ -16780,7 +16809,7 @@ msgstr ""
 "chiến đấu dưới lòng đất, điều đó dường như chỉ là một niềm an ủi nhỏ."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:204
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:203
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:203
 msgid ""
 "If you had told me at the start of our journey the price I was to pay in "
@@ -16800,7 +16829,7 @@ msgstr ""
 "có thể quay lại và làm lại từ đầu."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:209
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:208
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:208
 msgid ""
 "Although I believe that our battle in the black citadel was our finest hour, "
@@ -16825,7 +16854,7 @@ msgstr ""
 "là xứng đáng. Nhưng tôi vẫn nhớ họ một cách da diết."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:225
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:224
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:224
 msgid ""
 "We carried Nym to a small island to the north which had a single peak with a "
@@ -16852,7 +16881,7 @@ msgstr ""
 "mắt của cô ấy, tôi nhớ nụ cười của cô ấy, tôi nhớ..."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:241
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:240
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:240
 msgid ""
 "Zhul’s funeral was a huge ceremony, like those she told us about from ages "
@@ -16877,7 +16906,7 @@ msgstr ""
 "tôi hy vọng giờ bà ấy ở bên Eloh, ở một nơi tốt hơn."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:259
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:258
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:258
 msgid ""
 "I am saddened by the death of Grog, but by saving my life in the end he did "
@@ -16903,7 +16932,7 @@ msgstr ""
 "sẽ nhớ mãi sự giúp đỡ mà người của anh ấy đã làm cho chúng tôi."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:266
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:265
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:265
 msgid ""
 "I am saddened by the death of Nog, but by saving my life in the end he did "
@@ -16929,7 +16958,7 @@ msgstr ""
 "giúp đỡ mà người của anh ấy đã làm cho chúng tôi."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:273
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:272
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:272
 msgid ""
 "I am saddened by the death of Rogrimir, but by saving my life in the end he "
@@ -16956,7 +16985,7 @@ msgstr ""
 "tôi."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:280
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:279
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:279
 msgid ""
 "I am saddened by the death of Jarl, but by saving my life in the end he did "
@@ -16982,7 +17011,7 @@ msgstr ""
 "sẽ nhớ mãi sự giúp đỡ mà người của anh ấy đã làm cho chúng tôi."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:297
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:296
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:296
 msgid ""
 "Although I am not as devout as Zhul is, I thank Eloh every day that Nym "
@@ -17009,7 +17038,7 @@ msgstr ""
 "có thể thịnh vượng ở bất cứ đâu chúng tôi có nghị lực sống."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:313
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:312
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:312
 msgid ""
 "The oldest of the surviving elves, Zhul is moving slower now, but she still "
@@ -17041,7 +17070,7 @@ msgstr ""
 "ngày xưa đã quay trở lại."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:331
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:330
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:330
 msgid ""
 "By saving my life, Grog fulfilled his life debt to me, but we convinced him "
@@ -17074,7 +17103,7 @@ msgstr ""
 "làm để giúp đỡ chúng tôi."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:338
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:337
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:337
 msgid ""
 "By saving my life, Nog fulfilled his life debt to me, but we convinced him "
@@ -17107,7 +17136,7 @@ msgstr ""
 "làm để giúp đỡ chúng tôi."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:345
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:344
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:344
 msgid ""
 "By saving my life, Rogrimir fulfilled his life debt to me, but we convinced "
@@ -17140,7 +17169,7 @@ msgstr ""
 "những gì anh ấy đã làm để giúp đỡ chúng tôi."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:352
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:351
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:351
 msgid ""
 "By saving my life, Jarl fulfilled his life debt to me, but we convinced him "
@@ -17173,7 +17202,7 @@ msgstr ""
 "làm để giúp đỡ chúng tôi."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:377
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:376
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:376
 msgid ""
 "And I will always remember Grog who died along our journey. A braver warrior "
@@ -17185,7 +17214,7 @@ msgstr ""
 "nhưng tôi vẫn quý trọng khoảng thời gian ngắn mà tôi quen biết anh ấy."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:384
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:383
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:383
 msgid ""
 "And I will always remember Nog who died along our journey. A braver warrior "
@@ -17197,7 +17226,7 @@ msgstr ""
 "nhưng tôi vẫn quý trọng khoảng thời gian ngắn mà tôi quen biết anh ấy."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:391
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:390
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:390
 msgid ""
 "And I will always remember Rogrimir who died along our journey. A braver "
@@ -17209,7 +17238,7 @@ msgstr ""
 "sớm, nhưng tôi vẫn quý trọng khoảng thời gian ngắn mà tôi quen biết anh ấy."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:398
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:397
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:397
 msgid ""
 "And I will always remember Jarl who died along our journey. A braver warrior "
@@ -17221,7 +17250,7 @@ msgstr ""
 "nhưng tôi vẫn quý trọng khoảng thời gian ngắn mà tôi quen biết anh ấy."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:407
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:406
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:406
 msgid ""
 "So much has happened since we left the desert, but looking back upon our "
@@ -17243,7 +17272,7 @@ msgstr ""
 "luôn nhớ đến ông ấy."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:412
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:411
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:411
 msgid ""
 "As for the Black Citadel, after much discussion we decided to go back to the "
@@ -17273,7 +17302,7 @@ msgstr ""
 "mạng để tiêu diệt nó."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:417
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:416
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:416
 msgid ""
 "It has been several years since the events that I chronicle here, and I’m "
@@ -17302,31 +17331,31 @@ msgstr ""
 "các bạn."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:459
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:458
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:457
 msgid "Hey Kaleh, how’s the writing going?"
 msgstr "Ê, Kaleh, ghi chép thế nào rồi?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:464
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:463
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:462
 msgid "Actually I just finished."
 msgstr "Thực ra tôi vừa hoàn thành."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:469
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:468
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:467
 msgid "You’ve been working on that thing for months. I’m impressed."
 msgstr "Anh đã làm việc với thứ đó mấy tháng rồi. Tôi rất ấn tượng đấy."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:474
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:473
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:472
 msgid "Yes, it feels good to finally be done."
 msgstr "Đúng vậy, thật tuyệt vì cuối cùng cũng xong việc."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:479
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:478
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:477
 msgid ""
 "Well, your timing was perfect. Zhul is dedicating the new grove to Eloh, and "
@@ -17337,7 +17366,7 @@ msgstr ""
 "sau đó đấy."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:484
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:483
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:482
 msgid ""
 "I suppose we wouldn’t want to miss that. I wonder if they will still have "
@@ -17347,7 +17376,7 @@ msgstr ""
 "từ năm ngoái không?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:489
+#: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:488
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/13_Epilogue.cfg:487
 msgid "We’ll just have to find out. Come on!"
 msgstr "Chúng ta sẽ phải tìm hiểu. Đi thôi!"
@@ -17434,28 +17463,6 @@ msgstr ""
 "nham. Cũng vì nhiệt trong hang động, tất cả các đơn vị trên ô lục giác nền "
 "hang sẽ chịu $heat_damage điểm thiệt hại ở đầu mỗi lượt. Thiệt hại do nhiệt "
 "này có thể giảm máu một đơn vị xuống 1, nhưng không thể giết nó."
-
-#. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios_old/06a_In_the_Tunnels_of_Trolls.cfg:1903
-msgid ""
-"For a troll this is quite an ornate tomb. The coffin itself is quite "
-"impressive. Inside, the skeleton has crumbled to dust and there are a few "
-"colored stones and trinkets, but what really sticks out is this emerald "
-"wand. I don’t have much experience with magical items, but the asp with "
-"emerald eyes and large fangs carved around its shaft leave little doubt as "
-"to its power. We don’t normally tolerate using poison, but extreme "
-"circumstances call for extreme measures and I have a feeling we may find "
-"this useful before our journey is over."
-msgstr ""
-"Đối với một con quỷ núi, đây là một ngôi mộ tương đối cầu kỳ. Chiếc quan tài "
-"khá ấn tượng. Bên trong, bộ xương đã vỡ tan thành bụi, có một ít đá và đồ "
-"trang sức nhiều màu, nhưng thứ thực sự đập vào mắt là chiếc gậy màu ngọc "
-"bích này. Tôi không có nhiều kinh nghiệm với những đồ vật có phép thuật, "
-"nhưng hình con rắn với đôi mắt xanh và những chiếc răng nanh lớn khắc xung "
-"quanh tay cầm của nó khiến tôi không còn nghi ngờ gì nữa về sức mạnh của nó. "
-"Chúng ta thường không dung thứ việc sử dụng chất độc, nhưng những tình huống "
-"cùng cực cần những biện pháp cùng cực, và tôi có cảm giác chúng ta có thể "
-"thấy vật này hữu ích trước khi hành trình của chúng ta kết thúc."
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios_old/06b_In_the_Domain_of_Dwarves.cfg:235
@@ -17558,8 +17565,8 @@ msgstr "Kẻ báo thù sa mạc"
 #. [unit_type]: id=Desert Captain, race=elf
 #. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Captain.cfg:4
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:480
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:491
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:479
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:490
 msgid "Desert Captain"
 msgstr "Thủ lĩnh sa mạc"
 
@@ -17577,7 +17584,7 @@ msgstr ""
 #. [unit_type]: id=Desert Champion, race=elf
 #. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Champion.cfg:4
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:548
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:547
 msgid "Desert Champion"
 msgstr "Nhà vô địch sa mạc"
 
@@ -17612,10 +17619,10 @@ msgstr ""
 #. [unit_type]: id=Desert Fighter, race=elf
 #. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Fighter.cfg:5
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:420
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:433
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:446
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:459
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:419
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:432
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:445
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:458
 msgid "Desert Fighter"
 msgstr "Đấu sĩ sa mạc"
 
@@ -17634,8 +17641,8 @@ msgstr ""
 #. [unit_type]: id=Desert Hero, race=elf
 #. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hero.cfg:4
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:526
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:537
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:525
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:536
 msgid "Desert Hero"
 msgstr "Anh hùng sa mạc"
 
@@ -17670,11 +17677,6 @@ msgstr ""
 "tiên đã cải thiện một cách đáng kể năng lực cưỡi ngựa."
 
 #. [unit_type]: id=Desert Hunter, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hunter.cfg:5
-msgid "Desert Hunter"
-msgstr "Thợ săn sa mạc"
-
-#. [unit_type]: id=Desert Hunter, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hunter.cfg:18
 msgid ""
 "Desert Hunters are trained to scour the sands for prey and enemies. They can "
@@ -17689,10 +17691,10 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Hunter.cfg:35
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Prowler.cfg:37
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sentinel.cfg:36
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:57
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:56
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Nym.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:41
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:86
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:85
 msgid "bolas"
 msgstr "bẫy"
 
@@ -17728,7 +17730,7 @@ msgstr "Thiện xạ sa mạc"
 #. [unit_type]: id=Desert Marshal, race=elf
 #. [variation]
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Marshal.cfg:4
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:502
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:501
 msgid "Desert Marshal"
 msgstr "Nguyên soái sa mạc"
 
@@ -17760,11 +17762,6 @@ msgstr ""
 "Phi ngựa như gió, người mở đường sa mạc lướt trên cát để đánh vào các đơn vị "
 "yếu và những mặt sườn bị hở. Thành thạo kiếm, và được đào tạo cung, họ đánh "
 "mạnh trước khi bay vào cát để tránh bị đánh trả."
-
-#. [unit_type]: id=Desert Prowler, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Prowler.cfg:4
-msgid "Desert Prowler"
-msgstr "Kẻ lảng vảng sa mạc"
 
 #. [unit_type]: id=Desert Prowler, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Prowler.cfg:21
@@ -17836,11 +17833,6 @@ msgid ""
 msgstr ""
 "Trinh sát sa mạc di chuyển nhanh chóng trên cát. Kỹ năng cưỡi ngựa của họ "
 "gần như vô địch, mặc dù họ thiếu sức mạnh khi chiến đấu."
-
-#. [unit_type]: id=Desert Sentinel, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sentinel.cfg:4
-msgid "Desert Sentinel"
-msgstr "Lính gác sa mạc"
 
 #. [unit_type]: id=Desert Sentinel, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Desert_Sentinel.cfg:20
@@ -17979,41 +17971,41 @@ msgstr ""
 "Các hiện thân thần thánh được cho là thứ gần nhất với hình dạng thực sự của "
 "một vị thần trong thế giới này, vừa kinh hoàng vừa đáng sợ."
 
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:38
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:37
 msgid "a leader in battle"
 msgstr "một nhà lãnh đạo trong chiến trận"
 
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:52
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:51
 msgid "trained by Nym in using the bolas"
 msgstr "được Nym đào tạo sử dụng bẫy"
 
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:99
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:113
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:126
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:98
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:112
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:125
 msgid "a better swordsman"
 msgstr "một lính kiếm tốt hơn"
 
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:141
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:156
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:170
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:140
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:155
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:169
 msgid "a better archer"
 msgstr "một cung thủ tốt hơn"
 
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:184
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:183
 msgid "a marksman with the bow"
 msgstr "một thiện xạ với cung"
 
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:201
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:200
 msgid "gain +20% resistance under the sun"
 msgstr "tăng +20% sức kháng cự dưới ánh mặt trời"
 
 #. [resistance]: id=sustenance
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:209
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:208
 msgid "sustenance"
 msgstr "thích nghi"
 
 #. [resistance]: id=sustenance
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:210
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:209
 msgid ""
 "This unit’s resistances are increased by 20% in daylight, on defense and "
 "attack. Vulnerabilities are not affected."
@@ -18021,23 +18013,23 @@ msgstr ""
 "Sức kháng cự của đơn vị này tăng thêm 20% dưới ánh mặt trời, khi phòng thủ "
 "và tấn công. Sức kháng cự âm không bị ảnh hưởng."
 
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:232
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:231
 msgid "gain +10% resistance to blade, pierce and impact"
 msgstr "tăng +10% sức kháng cự với chém, đâm và va đập"
 
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:249
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:248
 msgid "gain a stunning attack that disrupts enemy ZOC"
 msgstr "thêm một đòn tấn công gây choáng phá vỡ vùng kiểm soát của kẻ thù"
 
 #. [dummy]: id=stun
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:259
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:261
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:258
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:260
 msgid "stun"
 msgstr "gây choáng"
 
 #. [dummy]: id=stun
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:260
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:262
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:259
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:261
 msgid ""
 "This attack puts enormous pressure on the enemy, disrupting his ZOC if a hit "
 "is landed. Not active on defense."
@@ -18045,19 +18037,19 @@ msgstr ""
 "Đòn tấn công này gây áp lực lớn lên kẻ thù, phá vỡ vùng kiểm soát của nó nếu "
 "đánh trúng. Không kích hoạt khi phòng thủ."
 
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:273
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:272
 msgid "skilled in surviving the desert"
 msgstr "khéo léo trong việc sống sót trên sa mạc"
 
 #. [hides]: id=camouflage
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:279
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:280
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:281
 msgid "camouflage"
 msgstr "ngụy trang"
 
 #. [hides]: id=camouflage
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:282
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:285
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:281
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:284
 msgid ""
 "This unit can hide in desert dunes, desert mountains and craters, and remain "
 "undetected by its enemies.\n"
@@ -18076,7 +18068,7 @@ msgstr ""
 "di chuyển còn lại."
 
 #. [unit_type]: id=Kaleh, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:303
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:302
 msgid "Kaleh of the Quenoth Elves"
 msgstr "Kaleh của thần tiên Quenoth"
 
@@ -18084,10 +18076,10 @@ msgstr "Kaleh của thần tiên Quenoth"
 #. [unit_type]: id=Quenoth Youth, race=elf
 #. [unit_type]: id=Quenoth Youth 2, race=elf
 #. [unit_type]: id=Quenoth Youth 3, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:315
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:419
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:471
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:525
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:314
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:418
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:470
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:524
 msgid ""
 "Kaleh is still a young Elf of the Quenoth, on the verge of adulthood. He "
 "trained with his father with the bow and sword, joining him in lighter "
@@ -18104,7 +18096,7 @@ msgstr ""
 "của mình trong tương lai sẽ hướng về anh để được chỉ dẫn nhiều đến mức nào."
 
 #. [variation]
-#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:394
+#: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:393
 msgid "Desert Youth"
 msgstr "Thanh niên sa mạc"
 
@@ -18335,11 +18327,15 @@ msgstr "Quỷ Ixthala"
 #. [unit_type]: id=Ixthala Demon, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Ixthala_Demon.cfg:22
 msgid ""
-"Are these monsters some beast-soldiers of a bygone era? Or are they spirits "
-"from another plane of existence? Knowledge of their origins is lost, all "
-"that is known is that they can spell trouble for those who go poking around "
-"in caverns and ruins."
+"Very few people who have ever faced an Ixthala Demon have survived to tell "
+"the tale. Some believe that they come from some other plane of existence, "
+"others believe that they were some demented creation of a fire mage. But "
+"whatever they are, all agree that they are extremely dangerous."
 msgstr ""
+"Rất ít người đã từng đối mặt với một con quỷ Ixthala mà còn sống sót để kể "
+"chuyện. Một số người tin rằng chúng đến từ một thế giới nào đó, người khác "
+"lại tin rằng chúng là một tác phẩm điên cuồng của một pháp sư lửa. Nhưng dù "
+"chúng là gì, tất cả đều đồng ý rằng chúng cực kỳ nguy hiểm."
 
 #. [attack]: type=fire
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Ixthala_Demon.cfg:26
@@ -18529,19 +18525,19 @@ msgstr ""
 msgid "blowgun"
 msgstr ""
 
-#. [unit_type]: id=Quenoth Pathfinder, race=elf
+#. [unit_type]: id=Quenoth Horseman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Horseman.cfg:5
 #, fuzzy
-#| msgid "Desert Outrider"
-msgid "Quenoth Pathfinder"
-msgstr "Người mở đường sa mạc"
+#| msgid "Desert Horseman"
+msgid "Quenoth Horseman"
+msgstr "Kỵ sĩ sa mạc"
 
-#. [unit_type]: id=Quenoth Pathfinder, race=elf
+#. [unit_type]: id=Quenoth Horseman, race=elf
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Horseman.cfg:21
 msgid ""
 "In most cases, turning and fleeing from an engagement is a risky tactic. "
-"These elusive Pathfinders, however, are masters of weakening an enemy while "
-"at the same time provoking them to give chase — often into a trap."
+"These elusive Horsemen, however, are masters of weakening an enemy while at "
+"the same time provoking them to give chase — often into a trap."
 msgstr ""
 
 #. [unit_type]: id=Quenoth Marksman, race=elf
@@ -18683,8 +18679,8 @@ msgstr "Trinh sát con người"
 #| "Desert Scouts move swiftly across the sands. Their skill on horseback is "
 #| "virtually unmatched, although they do lack power in combat."
 msgid ""
-"The Quenoth Scouts move swiftly across the sands. Their riding skill are "
-"unmatched, and these they use to harry and incapacitate enemies."
+"The Quenoth Scouts move swiftly across the sands. Their skill on horseback "
+"is virtually unmatched, which they use to harry and incapacitate enemies."
 msgstr ""
 "Trinh sát sa mạc di chuyển nhanh chóng trên cát. Kỹ năng cưỡi ngựa của họ "
 "gần như vô địch, mặc dù họ thiếu sức mạnh khi chiến đấu."
@@ -18780,73 +18776,73 @@ msgid "Quenoth Warrior"
 msgstr "Chiến binh nổi dậy"
 
 #. [advancement]: id=hunter_1
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:65
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:64
 #, fuzzy
 #| msgid "Naga Hunter"
 msgid "Hunter"
 msgstr "Thợ săn người rắn"
 
 #. [advancement]: id=leader_1
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:103
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:102
 #, fuzzy
 #| msgid "Naga Leader"
 msgid "Leader"
 msgstr "Chỉ huy người rắn"
 
 #. [advancement]: id=warrior_2_1
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:142
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:141
 msgid "Warrior (choose only one): specialize in melee combat"
 msgstr ""
 
 #. [advancement]: id=warrior_2_2
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:164
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:163
 msgid "Warrior (choose only one): specialize in archery"
 msgstr ""
 
 #. [advancement]: id=hunter_2_1
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:188
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:187
 msgid "Hunter (choose only one): specialize in surprise attacks"
 msgstr ""
 
 #. [advancement]: id=hunter_2_2
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:217
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:216
 msgid "Hunter (choose only one): specialize in skirmishing"
 msgstr ""
 
 #. [advancement]: id=leader_2_1
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:245
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:244
 msgid "Leader (choose only one): specialize in supporting allies"
 msgstr ""
 
 #. [advancement]: id=leader_2_2
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:277
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:276
 msgid "Leader (choose only one): specialize in distracting enemies"
 msgstr ""
 
 #. [unit_type]: id=Quenoth Youth, race=elf
 #. [unit_type]: id=Quenoth Youth 2, race=elf
 #. [unit_type]: id=Quenoth Youth 3, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:407
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:459
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:513
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:406
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:458
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:512
 #, fuzzy
 #| msgid "Desert Youth"
 msgid "Quenoth Youth"
 msgstr "Thanh niên sa mạc"
 
 #. [female]
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:444
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:498
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:552
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:443
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:497
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:551
 #, fuzzy
 #| msgid "team_name^Quenoth Elves"
 msgid "female^Quenoth Youth"
 msgstr "Thần tiên Quenoth"
 
 #. [female]
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:447
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:501
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:555
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:446
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:500
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:554
 #, fuzzy
 #| msgid ""
 #| "Nym is Kaleh’s childhood friend who follows the tradition of a family of "
@@ -19312,7 +19308,7 @@ msgid "female^stunned"
 msgstr "bị choáng"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:6
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:12
 msgid ""
 "Note: This campaign is probably not appropriate for beginners. It changes "
 "certain Wesnoth standards, such as the elves’ stats and the day/night cycle. "
@@ -19330,7 +19326,7 @@ msgstr ""
 "phải bắt đầu lại."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:10
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:17
 msgid ""
 "This is the chronicle of the journey of the Quenoth elves from their "
 "homeland in the Great Southern Desert. I write this story so that our "
@@ -19344,7 +19340,7 @@ msgstr ""
 "đã học."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:14
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:21
 msgid ""
 "Chapter 1: I, Kaleh, grew up amid the shifting sands, under our two suns "
 "Sela and Naia. It was a land of hot dry days and cold nights, of roaming "
@@ -19372,7 +19368,7 @@ msgstr ""
 "một đêm định mệnh, khi lửa từ trên trời rơi xuống..."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:18
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:25
 msgid ""
 "I remember that night as if it were yesterday. I was not prone to dreaming, "
 "but as I slept I had a strange vision. I didn’t have long to ponder it "
@@ -19403,7 +19399,7 @@ msgstr ""
 "khỏi chân trời, như thể chính Naia cũng bị sốc khi chứng kiến cảnh tàn phá."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:26
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:33
 msgid ""
 "Chapter 2: When I was fifteen I went on my first raid, against an orcish "
 "incursion to the west. A large band of orcs under some new banner had come "
@@ -19416,7 +19412,7 @@ msgstr ""
 "qua sa mạc, giết bất kỳ thứ gì chúng có thể nhúng bàn tay bẩn thỉu vào."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:29
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:36
 msgid ""
 "Sneaking amongst the dunes we crept up to their camp and ambushed them at "
 "dawn. To a young boy the fighting was overwhelming: crashing blades, blood, "
@@ -19440,7 +19436,7 @@ msgstr ""
 "thần tiên của mình nằm chết trên cát."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:32
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:39
 msgid ""
 "I was giddy on the journey back home, my heart pumping with elation and "
 "pride. I had fought my first battle; now I was a man like my father. Then "
@@ -19463,7 +19459,7 @@ msgstr ""
 "tối tăm và mù mịt..."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:35
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:42
 msgid ""
 "The next thing I remember, someone was bending over me shaking me awake. I "
 "was half buried in sand, and I felt weak but alive. Our equipment was "
@@ -19488,7 +19484,7 @@ msgstr ""
 "ẩn nấp ngay phía trên chân trời."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:38
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:45
 msgid ""
 "Now I journeyed out again across the sands, but this time it was not just "
 "myself, but my entire people that I had to protect. They were depending on "
@@ -19504,7 +19500,7 @@ msgstr ""
 "bắc."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:46
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:53
 msgid ""
 "Chapter 3: As we continued north through the desert, the looming hills and "
 "mountains promised blessed relief from the seemingly never-ending sand. Soon "
@@ -19521,7 +19517,7 @@ msgstr ""
 "những đỉnh núi trắng lấp lánh dường như xa lạ và đầy điềm gở."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:50
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:57
 msgid ""
 "I worried if I was doing the right thing, leading my people to strange "
 "lands. Despite Eloh’s promises, I was not as confident as Zhul was that it "
@@ -19538,7 +19534,7 @@ msgstr ""
 "ngờ một vị thần?"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:54
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:61
 msgid ""
 "That night, as I slept, I dreamt again, for the first time since that first "
 "fateful night. Eloh came to me again, and this time she appeared in a vision "
@@ -19570,7 +19566,7 @@ msgstr ""
 "một tiếng thét trong đêm."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:62
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:69
 msgid ""
 "Chapter 4: We found the crumbling obsidian tower that Eloh had described, "
 "and we camped at the edge of the foothills before the mountains. I was still "
@@ -19589,7 +19585,7 @@ msgstr ""
 "nhiều lần khi còn là một đứa trẻ:"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:66
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:73
 msgid ""
 "A long, long time ago was the golden age among elves. Our people lived in "
 "harmony with nature in lands filled with trees, trees as far as the eye "
@@ -19611,7 +19607,7 @@ msgstr ""
 "mãi."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:70
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:77
 msgid ""
 "Eventually peace and prosperity fostered corruption and decadence. Through "
 "her powers of deception and guile, Uria cultivated secret groups of "
@@ -19650,7 +19646,7 @@ msgstr ""
 "còn sót lại, hỗn loạn đe dọa chôn vùi tất cả chúng tôi."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:74
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:81
 msgid ""
 "In this time of troubles Eloh first appeared to a select number of us, those "
 "few that still doggedly fought to preserve our homeland and our heritage. "
@@ -19683,7 +19679,7 @@ msgstr ""
 "hơn cho con cháu."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:78
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:85
 msgid ""
 "Had the golden age been just a story? What kind of world could I be able to "
 "create for future generations of our people? All I knew of the past were the "
@@ -19703,7 +19699,7 @@ msgstr ""
 "hơn vùng đất nơi chúng tôi được sinh ra?"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:86
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:93
 msgid ""
 "Chapter 5: We plunged into the darkness, shepherding long lines of our "
 "people along the cramped passageway deeper and deeper beneath the roots of "
@@ -19722,7 +19718,7 @@ msgstr ""
 "thiu và tiếng bước chân của chúng tôi vang vọng khắp hành lang."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:90
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:97
 msgid ""
 "This seemed as alien an environment as we could ever imagine. We were a "
 "people of the open sands, and even during the long dark we could look up and "
@@ -19744,7 +19740,7 @@ msgstr ""
 "ngoài việc tiếp tục tiến về phía trước."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:94
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:101
 msgid ""
 "Looking back, I think the bravest thing that my people ever did was to "
 "follow me into the darkness solely on the promises of Eloh and their faith "
@@ -19767,7 +19763,7 @@ msgstr ""
 "đã qua, dù lúc đó mới chỉ mười ngày từ khi làng của chúng tôi bị phá hủy."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:98
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:105
 msgid ""
 "What lurked in the darkness? Who were the unbelievers that Eloh had so "
 "cryptically referred to? My heart beat loudly in my chest, everything seemed "
@@ -19784,7 +19780,7 @@ msgstr ""
 "lúc này."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:106
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:113
 msgid ""
 "Chapter 6: The dwarf Grimnir led us through a maze of twisting passages "
 "speaking scarcely a word. Finally, after what seemed like hours of marching, "
@@ -19805,7 +19801,7 @@ msgstr ""
 "với lòng quyết tâm mới mẻ và thề thực hiện đến cùng nhiệm vụ này."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:114
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:121
 msgid ""
 "Chapter 6: The troll Zurg led us through a maze of twisting passages "
 "speaking scarcely a word. Finally after what seemed like hours of marching "
@@ -19827,7 +19823,7 @@ msgstr ""
 "thề thực hiện đến cùng nhiệm vụ này."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:122
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:129
 msgid ""
 "Chapter 7: We returned quickly and found the rest of our people, safely "
 "hidden a few miles back from the fighting. Seeing Grimnir with us, a troop "
@@ -19844,7 +19840,7 @@ msgstr ""
 "của người lùn."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:126
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:133
 msgid ""
 "I do not know how long we tramped through those tiny dark passages; time "
 "seemed to flow differently down there, deep under the earth. But when we "
@@ -19865,7 +19861,7 @@ msgstr ""
 "người lùn. Nó lớn hơn bất kỳ ngôi làng nào tôi từng thấy."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:130
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:137
 msgid ""
 "The dwarves led us through to the far side of the city, where they let us "
 "stay in several auxiliary caverns, which normally served as store rooms. The "
@@ -19878,7 +19874,7 @@ msgstr ""
 "thấy an toàn."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:134
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:141
 msgid ""
 "The dwarf king was away cleaning up after the recent battle, and would not "
 "be back for several days. I happily spent what little time I had learning as "
@@ -19900,7 +19896,7 @@ msgstr ""
 "gặp vị vua người lùn..."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:142
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:149
 msgid ""
 "Chapter 7: We returned quickly and found the rest of our people, safely "
 "hidden a few miles back from the fighting. Once we had assured the rest of "
@@ -19914,7 +19910,7 @@ msgstr ""
 "mật."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:146
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:153
 msgid ""
 "I do not know how long we tramped through those tiny dark passages; time "
 "seemed to flow differently down there, deep under the earth. But finally we "
@@ -19941,7 +19937,7 @@ msgstr ""
 "gian cho chúng tôi ngủ nghỉ, và các người lùn đã bỏ lại nhiều đồ dự trữ."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:150
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:157
 msgid ""
 "Zurg told us that they had just captured this city from the dwarves, and "
 "that the Great Leader had moved here to set up his base of operations. They "
@@ -19964,7 +19960,7 @@ msgstr ""
 "bởi một hội đồng các pháp sư của họ."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:154
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:161
 msgid ""
 "I wish I could have spent more time learning about these misunderstood "
 "creatures, but we could not tarry long. Even protected by the trolls, caught "
@@ -19979,7 +19975,7 @@ msgstr ""
 "kiến với Đại Thủ Lĩnh."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:162
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:169
 msgid ""
 "Chapter 9: Nym and Esanoo led us north, across the sands and through the "
 "dunes, towards the human encampment where the merfolk were being held. I "
@@ -19992,7 +19988,7 @@ msgstr ""
 "chính tôi phải nhìn thấy."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:165
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:172
 msgid ""
 "Just then we crested over the last dune and I indeed saw what she meant. "
 "Sparkling blue covered the entire horizon. I fell to my knees in awe, I had "
@@ -20013,7 +20009,7 @@ msgstr ""
 "giới nước này là thứ kỳ lạ nhất trong tất cả các nơi."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:168
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:175
 msgid ""
 "Which brings me to the other alien concept I was trying to comprehend: our "
 "goddess Eloh. What was her plan? Why did she want me to surrender to the "
@@ -20041,7 +20037,7 @@ msgstr ""
 "sẽ không dẫn người của mình vào một cái bẫy..."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:176
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:183
 msgid ""
 "Chapter 8: I set out with a lightened heart and quickened step; we were "
 "going back up and I was sure that soon this underground gauntlet would be "
@@ -20058,7 +20054,7 @@ msgstr ""
 "tôi để cho tâm trí mình lang thang đến những vấn đề lớn hơn."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:180
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:187
 msgid ""
 "What kind of home had Eloh prepared for us on the other side of the "
 "mountains? Was there anywhere in the world that hadn’t been plagued with war "
@@ -20078,7 +20074,7 @@ msgstr ""
 "trên số ít những người sống sót."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:184
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:191
 msgid ""
 "At first I thought that if we could just leave the desert, we could find a "
 "peaceful place away from all the bloodshed and death. But even underground "
@@ -20101,7 +20097,7 @@ msgstr ""
 "đạm?"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:188
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:195
 msgid ""
 "And yet, here in the dark, Eloh says she is powerless. Here she cannot help "
 "us, we must fend for ourselves. Though she is our god, I cannot just lie "
@@ -20125,7 +20121,7 @@ msgstr ""
 "hành trình."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:192
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:199
 msgid ""
 "And so, bolstered with a new resolve, I continued the march up out of the "
 "darkness and towards a new land."
@@ -20134,7 +20130,7 @@ msgstr ""
 "bóng tối và hướng về một vùng đất mới."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:200
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:207
 msgid ""
 "Chapter 10: The merfolk helped us pilot our ships far into the ocean. Some "
 "of the younger elves were actually quite adept at climbing the rigging and "
@@ -20150,7 +20146,7 @@ msgstr ""
 "có sự giúp đỡ của các người cá, chúng tôi sẽ lạc trong vô vọng."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:204
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:211
 msgid ""
 "That afternoon three of the merfolk sat in a circle and performed their "
 "ritual to determine the location of their master. Apparently it was a "
@@ -20161,7 +20157,7 @@ msgstr ""
 "tôi thẳng hướng mặt trời lặn."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:208
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:215
 msgid ""
 "The next morning we reached our destination. It wasn’t even an island, just "
 "a sandbar sticking out above the water. We lowered down a longboat and the "
@@ -20173,7 +20169,7 @@ msgstr ""
 "thực sự thành thạo với các mái chèo."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:212
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:219
 msgid ""
 "In the water around the sand bar were a large number of merfolk guards. "
 "Standing alone on top of the sand was one of the oldest merfolk I have ever "
@@ -20184,7 +20180,7 @@ msgstr ""
 "từng thấy. Bà ra hiệu cho chúng tôi và chúng tôi lại gần..."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:221
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:228
 msgid ""
 "Chapter 11: Our boats slipped softly through the water, shrouded in the pre-"
 "dawn darkness. At this moment the merfolk would be launching their "
@@ -20199,7 +20195,7 @@ msgstr ""
 "tăm và đầy đe dọa."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:225
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:232
 msgid ""
 "In the end, almost all of my people decided to join in this final battle. I "
 "was surprised. They had gone through so much, and yet they still had faith "
@@ -20221,7 +20217,7 @@ msgstr ""
 "chính bản thân mình."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:229
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:236
 msgid ""
 "But Zhul is right, if we had come all this way just for a chance to help the "
 "merfolk defeat Yechnagoth then our journey was not in vain. We were "
@@ -20246,7 +20242,7 @@ msgstr ""
 "tất cả bọn họ sẽ được trả thù."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:233
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:240
 msgid ""
 "This conflict is greater than just us. These lands were once places of "
 "beauty and hope. The great empires may be gone, but still people struggle to "
@@ -20266,7 +20262,7 @@ msgstr ""
 "nơi tốt hơn. Cầu mong điều này không phải là hoàn toàn vô ích..."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:241
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:248
 msgid ""
 "Chapter 12: True strength is not measured in might or knowledge, but in what "
 "you can do for those you love."
@@ -20293,22 +20289,6 @@ msgstr "Lâu đài ma"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:48
 msgid "Phantom Keep"
 msgstr "Pháo đài ma"
-
-#~ msgid ""
-#~ "Very few people who have ever faced an Ixthala Demon have survived to "
-#~ "tell the tale. Some believe that they come from some other plane of "
-#~ "existence, others believe that they were some demented creation of a fire "
-#~ "mage. But whatever they are, all agree that they are extremely dangerous."
-#~ msgstr ""
-#~ "Rất ít người đã từng đối mặt với một con quỷ Ixthala mà còn sống sót để "
-#~ "kể chuyện. Một số người tin rằng chúng đến từ một thế giới nào đó, người "
-#~ "khác lại tin rằng chúng là một tác phẩm điên cuồng của một pháp sư lửa. "
-#~ "Nhưng dù chúng là gì, tất cả đều đồng ý rằng chúng cực kỳ nguy hiểm."
-
-#, fuzzy
-#~| msgid "Desert Horseman"
-#~ msgid "Quenoth Horseman"
-#~ msgstr "Kỵ sĩ sa mạc"
 
 #~ msgid "sword"
 #~ msgstr "kiếm"
