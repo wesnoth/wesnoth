@@ -92,6 +92,12 @@ public:
 		return values_[selected_]["label"];
 	}
 
+	/** Returns the entire config object for the selected row. */
+	const ::config& get_value_config() const
+	{
+		return values_[selected_];
+	}
+
 	void set_keep_open(const bool keep_open)
 	{
 		keep_open_ = keep_open;
