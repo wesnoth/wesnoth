@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 20:27 UTC\n"
+"POT-Creation-Date: 2018-02-04 16:40 UTC\n"
 "PO-Revision-Date: 2014-06-24 22:26+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -32,6 +32,11 @@ msgstr "TTNT mặc định (RCA)"
 msgid "Multiplayer_AI^Experimental AI"
 msgstr "TTNT thử nghiệm"
 
+#. [ai]: id=idle_ai
+#: data/ai/ais/idle_ai.cfg:4
+msgid "Multiplayer_AI^Dev AI: Idle AI"
+msgstr "TTNT phát triển: TTNT rảnh rỗi"
+
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 #, fuzzy
@@ -48,11 +53,6 @@ msgstr "TTNT phát triển: Mặc định + Tuyển quân thử nghiệm (TTNT c
 #: data/ai/dev/formula_ai_poisoning.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
 msgstr "TTNT phát triển: Mặc định + Đầu độc (TTNT công thức)"
-
-#. [ai]: id=idle_ai
-#: data/ai/dev/idle_ai.cfg:4
-msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "TTNT phát triển: TTNT rảnh rỗi"
 
 #: data/ai/lua/patrol.lua:4
 msgid "Use the Patrols Micro AI instead of patrol.lua."

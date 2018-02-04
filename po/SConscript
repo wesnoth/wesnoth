@@ -48,7 +48,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
         if domain in po4a_domains:
             continue
 
-        with open(join(domain, "POTFILES.in"), "w") as potfiles
+        with open(join(domain, "POTFILES.in"), "w") as potfiles:
             potfiles.writelines([line + "\n" for line in sorted(domain_sources[domain[7:]])])
         sources = [Dir("#").File(x) for x in domain_sources[domain[7:]]]
         if sources:

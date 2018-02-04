@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 23:32+0300\n"
+"POT-Creation-Date: 2018-02-04 19:40+0300\n"
 "PO-Revision-Date: 2017-03-23 13:36+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -315,7 +315,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1072
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1071
 msgid "poisoned"
 msgstr "apnuodytas"
 
@@ -334,17 +334,17 @@ msgid "Notes:"
 msgstr "Pastabos:"
 
 #. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:154 data/english.cfg:3
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:153 data/english.cfg:3
 msgid "Easy"
 msgstr "Lengva"
 
 #. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:155 data/english.cfg:4
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:154 data/english.cfg:4
 msgid "Medium"
 msgstr "Vidutiniška"
 
 #. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:156 data/english.cfg:5
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:155 data/english.cfg:5
 msgid "Hard"
 msgstr "Sunku"
 
@@ -359,49 +359,49 @@ msgid "General Purpose Administration and Coordination"
 msgstr "Bendro pobūdžio administravimas ir koordinavimas"
 
 #. [about]
-#: data/core/about.cfg:277
+#: data/core/about.cfg:284
+msgid "Internationalization Managers"
+msgstr "Internacionalizavimo koordinatoriai"
+
+#. [about]
+#: data/core/about.cfg:309
 msgid "Artwork and Graphics"
 msgstr "Grafika"
 
 #. [about]
-#: data/core/about.cfg:693
+#: data/core/about.cfg:725
 msgid "Music"
 msgstr "Muzika"
 
 #. [about]
-#: data/core/about.cfg:730
+#: data/core/about.cfg:762
 msgid "Sound Effects"
 msgstr "Garso efektai"
 
 #. [about]
-#: data/core/about.cfg:754
+#: data/core/about.cfg:786
 msgid "Campaign Design"
 msgstr "Kampanijų kūrimas"
 
 #. [about]
-#: data/core/about.cfg:837
+#: data/core/about.cfg:869
 msgid "Multiplayer Maps and Balancing"
 msgstr "Daugelio žaidėjų žemėlapiai ir balansavimas"
 
 #. [about]
-#: data/core/about.cfg:882
+#: data/core/about.cfg:914
 msgid "Packagers"
 msgstr "Pakuotojai"
 
 #. [about]
-#: data/core/about.cfg:981
+#: data/core/about.cfg:1013
 msgid "Miscellaneous Contributors"
 msgstr "Įvairūs talkininkai"
 
 #. [about]
-#: data/core/about.cfg:1594
+#: data/core/about.cfg:1665
 msgid "Bots"
 msgstr "Botai"
-
-#. [about]
-#: data/core/about.cfg:1613
-msgid "Internationalization Managers"
-msgstr "Internacionalizavimo koordinatoriai"
 
 #. [about]
 #: data/core/about_i18n.cfg:4
@@ -1493,17 +1493,17 @@ msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(ankstyvo pabaigimo premija)</small>"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:57 data/lua/wml/objectives.lua:113
+#: data/core/macros/deprecated-utils.cfg:57 data/lua/wml/objectives.lua:120
 msgid "Early finish bonus."
 msgstr "Ankstyvo pabaigimo premija."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:60 data/lua/wml/objectives.lua:115
+#: data/core/macros/deprecated-utils.cfg:60 data/lua/wml/objectives.lua:123
 msgid "No early finish bonus."
 msgstr "Nėra ankstyvo pabaigimo premijos."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:63 data/lua/wml/objectives.lua:123
+#: data/core/macros/deprecated-utils.cfg:63 data/lua/wml/objectives.lua:131
 msgid "No gold carried over to the next scenario."
 msgstr "Nė kiek aukso nepernešama į kitą scenarijų."
 
@@ -2557,7 +2557,7 @@ msgid ""
 "Ziyad,Zubayr,Zuhayr"
 msgstr ""
 
-#. Generator for male khalifate human names
+#. Generator for male dunefolk human names
 #: data/core/macros/names.cfg:145
 msgid ""
 "\n"
@@ -2575,7 +2575,7 @@ msgid ""
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 msgstr ""
 
-#. Generator for female khalifate human names
+#. Generator for female dunefolk human names
 #: data/core/macros/names.cfg:156
 msgid ""
 "\n"
@@ -2993,13 +2993,19 @@ msgstr "Alternatyvus tikslas:"
 msgid "Bonus objective:"
 msgstr "Premijinis tikslas:"
 
+#: data/core/macros/objective-utils.cfg:30
+#, fuzzy
+#| msgid "Bonus objective:"
+msgid "Optional objective:"
+msgstr "Premijinis tikslas:"
+
 #. [note]: description=<b>
-#: data/core/macros/objective-utils.cfg:48
+#: data/core/macros/objective-utils.cfg:52
 msgid "This is the last scenario."
 msgstr "Tai paskutinis scenarijus."
 
 #. [note]: description=<b>
-#: data/core/macros/objective-utils.cfg:54
+#: data/core/macros/objective-utils.cfg:58
 msgid "No turn limit"
 msgstr ""
 
@@ -3265,7 +3271,7 @@ msgstr "Žalsvai mėlyna"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=gold
-#: data/core/team-colors.cfg:107 src/reports.cpp:1247
+#: data/core/team-colors.cfg:107 src/reports.cpp:1258
 msgid "Gold"
 msgstr "Auksas"
 
@@ -3329,8 +3335,9 @@ msgstr "Urvas"
 msgid "Fungus"
 msgstr "Grybai"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
-#: data/core/team-colors.cfg:188
+#: data/core/team-colors.cfg:188 src/terrain/terrain.cpp:176
 msgid "Village"
 msgstr "Kaimas"
 
@@ -3361,16 +3368,21 @@ msgstr "Nepereinama"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:420
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:442
 msgid "Fog"
 msgstr "Rūkas"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:423
-#: src/game_initialization/lobby_data.cpp:426
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:445
+#: src/game_initialization/lobby_data.cpp:448
 msgid "Shroud"
 msgstr "Uždanga"
+
+#. [deprecated_message]
+#: data/core/units/dunefolk/deprecated.cfg:13
+msgid "This unit has been renamed to: {NEW_NAME}"
+msgstr ""
 
 #. [core]: id=default
 #: data/cores.cfg:5
@@ -3688,6 +3700,13 @@ msgstr ""
 msgid "Defaults"
 msgstr "Numatyta"
 
+#. [label]
+#: data/gui/macros/player_list_panel.cfg:28
+#, fuzzy
+#| msgid "Computer Player"
+msgid "Connected Players"
+msgstr "Kompiuterio žaidėjas"
+
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
 msgid "Install Dependencies"
@@ -3750,65 +3769,65 @@ msgstr ""
 
 #. [lua]: wesnoth.deprecation_message
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/core.lua:175 data/lua/wml-tags.lua:893
+#: data/lua/core.lua:175 data/lua/wml-tags.lua:894
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 
 #. [lua]: wesnoth.deprecate_api
-#: data/lua/core.lua:188
+#: data/lua/core.lua:189
 msgid "(Note: You should use $replacement instead in new code)"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1072
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1071
 msgid "female^poisoned"
 msgstr "apnuodyta"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1079
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1078
 msgid "female^slowed"
 msgstr "sulėtinta"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1079
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1078
 msgid "slowed"
 msgstr "sulėtintas"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1085
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1084
 msgid "female^petrified"
 msgstr "suakmenėjusi"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1085
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1084
 msgid "petrified"
 msgstr "suakmenėjęs"
 
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129
+#: data/lua/wml/harm_unit.lua:130
 msgid "female^unhealable"
 msgstr "negydoma"
 
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129
+#: data/lua/wml/harm_unit.lua:130
 msgid "unhealable"
 msgstr "negydomas"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:390 src/scripting/game_lua_kernel.cpp:2752
-#: src/scripting/game_lua_kernel.cpp:2787
+#: data/lua/wml/message.lua:392 src/scripting/game_lua_kernel.cpp:2740
+#: src/scripting/game_lua_kernel.cpp:2775
 msgid "input"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:50 src/game_initialization/mp_game_utils.cpp:73
+#: data/lua/wml/objectives.lua:50 src/game_initialization/mp_game_utils.cpp:74
 msgid "Victory:"
 msgstr "Pergalė:"
 
@@ -3828,18 +3847,18 @@ msgstr[2] "(liko šis ėjimas)"
 msgstr[3] "(liko šis ėjimas)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:125
+#: data/lua/wml/objectives.lua:133
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% aukso pernešama į kitą scenarijų."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:174
-#: src/game_initialization/mp_game_utils.cpp:75
+#: src/game_initialization/mp_game_utils.cpp:76
 msgid "Defeat enemy leader(s)"
 msgstr "Nugalėkite priešų vadus"
 
-#: data/scenario-test.cfg:1031 src/game_initialization/depcheck.cpp:476
+#: data/scenario-test.cfg:1031 src/game_initialization/depcheck.cpp:491
 msgid "OK"
 msgstr "Gerai"
 
@@ -3848,12 +3867,12 @@ msgid "Cancel"
 msgstr "Atšaukti"
 
 #. [language]
-#: data/scenario-test.cfg:4060
+#: data/scenario-test.cfg:4066
 msgid "very long"
 msgstr "labai tolima"
 
 #. [language]
-#: data/scenario-test.cfg:4061
+#: data/scenario-test.cfg:4067
 msgid "electrical"
 msgstr "elektrinė"
 
@@ -3962,98 +3981,75 @@ msgstr ""
 
 #. [menu]: id=menu-main
 #: data/themes/classic.cfg:86 data/themes/cutscene.cfg:37
-#: data/themes/default.cfg:80 data/themes/unit_box.cfg:107
-#: data/themes/widescreen.cfg:89
+#: data/themes/default.cfg:80
 msgid "Menu"
 msgstr "Meniu"
 
 #. [menu]: id=actions-menu
 #: data/themes/classic.cfg:97 data/themes/default.cfg:98
-#: data/themes/unit_box.cfg:118 data/themes/widescreen.cfg:100
 msgid "Actions"
 msgstr "Veiksmai"
 
 #. [action]: id=button-endturn
-#. [menu]: id=button-endturn
 #: data/themes/classic.cfg:120 data/themes/cutscene.cfg:53
-#: data/themes/default.cfg:130 data/themes/unit_box.cfg:313
-#: data/themes/widescreen.cfg:115
+#: data/themes/default.cfg:130
 msgid "End Turn"
 msgstr "Baigti ėjimą"
 
 #. [action]: id=button-endturn
-#. [menu]: id=button-endturn
 #: data/themes/classic.cfg:121 data/themes/cutscene.cfg:54
-#: data/themes/default.cfg:131 data/themes/unit_box.cfg:314
-#: data/themes/widescreen.cfg:116
+#: data/themes/default.cfg:131
 msgid "End Scenario"
 msgstr "Baigti scenarijų"
 
 #. [label]: id=label-hp
-#. [label]: id=selected-label-hp
 #: data/themes/classic.cfg:195 data/themes/default.cfg:143
-#: data/themes/unit_box.cfg:372 data/themes/widescreen.cfg:168
-#: data/themes/widescreen.cfg:188
 msgid "HP"
 msgstr "GT"
 
 #. [label]: id=label-xp
-#. [label]: id=selected-label-xp
 #: data/themes/classic.cfg:204 data/themes/default.cfg:152
-#: data/themes/unit_box.cfg:382 data/themes/widescreen.cfg:177
-#: data/themes/widescreen.cfg:197
 msgid "XP"
 msgstr "PT"
 
 #. [label]: id=gold-icon
 #: data/themes/classic.cfg:214 data/themes/default.cfg:177
-#: data/themes/unit_box.cfg:401 data/themes/widescreen.cfg:207
 msgid "gold"
 msgstr "auksas"
 
 #. [label]: id=villages-icon
 #: data/themes/classic.cfg:223 data/themes/default.cfg:186
-#: data/themes/unit_box.cfg:410 data/themes/widescreen.cfg:216
 msgid "villages"
 msgstr "kaimai"
 
 #. [label]: id=units-icon
 #: data/themes/classic.cfg:232 data/themes/default.cfg:195
-#: data/themes/unit_box.cfg:419 data/themes/widescreen.cfg:225
 msgid "units"
 msgstr "daliniai"
 
 #. [label]: id=upkeep-icon
 #: data/themes/classic.cfg:241 data/themes/default.cfg:204
-#: data/themes/unit_box.cfg:428 data/themes/widescreen.cfg:234
 msgid "upkeep"
 msgstr "išlaikymas"
 
 #. [label]: id=income-icon
 #: data/themes/classic.cfg:250 data/themes/default.cfg:213
-#: data/themes/unit_box.cfg:437 data/themes/widescreen.cfg:243
 msgid "income"
 msgstr "pajamos"
 
 #. [unit_level]: id=unit-level
-#. [selected_unit_level]: id=selected-unit-level
-#: data/themes/classic.cfg:412 data/themes/widescreen.cfg:422
-#: data/themes/widescreen.cfg:548
+#: data/themes/classic.cfg:412
 msgid "statuspanel^level"
 msgstr "lygis"
 
 #. [unit_moves]: id=unit-moves
-#. [selected_unit_moves]: id=selected-unit-moves
-#: data/themes/classic.cfg:442 data/themes/widescreen.cfg:452
-#: data/themes/widescreen.cfg:578
+#: data/themes/classic.cfg:442
 #, fuzzy
 msgid "statuspanel^moves"
 msgstr "lyg"
 
 #. [unit_defense]: id=unit-defense
-#. [selected_unit_defense]: id=selected-unit-defense
-#: data/themes/classic.cfg:451 data/themes/widescreen.cfg:461
-#: data/themes/widescreen.cfg:587
+#: data/themes/classic.cfg:451
 #, fuzzy
 msgid "statuspanel^terrain def."
 msgstr "lyg"
@@ -4074,7 +4070,7 @@ msgid "Back to..."
 msgstr "Atgal į..."
 
 #. [label]: id=label-mp
-#: data/themes/default.cfg:160 data/themes/unit_box.cfg:391
+#: data/themes/default.cfg:160
 msgid "MP"
 msgstr "DŽ"
 
@@ -4087,27 +4083,6 @@ msgstr "gyn"
 #: data/themes/default.cfg:394
 msgid "statuspanel^lvl"
 msgstr "lyg"
-
-#. [theme]: id=UnitBox
-#: data/themes/unit_box.cfg:11
-#, fuzzy
-msgid "theme^UnitBox"
-msgstr "Pandora"
-
-#. [theme]: id=UnitBox
-#: data/themes/unit_box.cfg:12
-msgid "An experimental work-in-progress replacement for the default theme"
-msgstr ""
-
-#. [theme]: id=Widescreen
-#: data/themes/widescreen.cfg:20
-msgid "theme^Widescreen"
-msgstr ""
-
-#. [theme]: id=Widescreen
-#: data/themes/widescreen.cfg:21
-msgid "An experimental theme optimized for widescreen resolutions"
-msgstr ""
 
 #. [tip]
 #: data/tips.cfg:4
@@ -4169,10 +4144,10 @@ msgstr ""
 #: data/tips.cfg:49 data/tips.cfg:65 data/tips.cfg:69 data/tips.cfg:73
 #: data/tips.cfg:77 data/tips.cfg:81 data/tips.cfg:93 data/tips.cfg:97
 #: data/tips.cfg:101 data/tips.cfg:113 data/tips.cfg:121 data/tips.cfg:125
-#: data/tips.cfg:133 data/tips.cfg:157 data/tips.cfg:161 data/tips.cfg:165
-#: data/tips.cfg:173 data/tips.cfg:181 data/tips.cfg:189 data/tips.cfg:193
-#: data/tips.cfg:201 data/tips.cfg:205 data/tips.cfg:209 data/tips.cfg:213
-#: data/tips.cfg:221 data/tips.cfg:241 data/tips.cfg:249 data/tips.cfg:254
+#: data/tips.cfg:133 data/tips.cfg:161 data/tips.cfg:165 data/tips.cfg:169
+#: data/tips.cfg:177 data/tips.cfg:185 data/tips.cfg:193 data/tips.cfg:197
+#: data/tips.cfg:205 data/tips.cfg:209 data/tips.cfg:213 data/tips.cfg:217
+#: data/tips.cfg:225 data/tips.cfg:245 data/tips.cfg:253 data/tips.cfg:262
 msgid "<i>― The Wesnoth Tactical Guide</i>"
 msgstr "<i>― Vesnoto taktinis gidas</i>"
 
@@ -4247,7 +4222,7 @@ msgstr ""
 "galimybės paeiti vieną langelį ar du."
 
 #. [tip]
-#: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:225 data/tips.cfg:237
+#: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:229 data/tips.cfg:241
 msgid "<i>― High Lord Kalenz, 470YW</i>"
 msgstr "<i>― Didysis valdovas Kalenzas, 470VM</i>"
 
@@ -4312,7 +4287,7 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
-#: data/tips.cfg:229
+#: data/tips.cfg:233
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
 msgstr "<i>― Haldrikas II, 42VM, iš Taktinės analizės vadovas: I tomas</i>"
 
@@ -4436,7 +4411,7 @@ msgstr ""
 "pilyse."
 
 #. [tip]
-#: data/tips.cfg:105 data/tips.cfg:185
+#: data/tips.cfg:105 data/tips.cfg:189
 msgid "<i>― Sir Kaylan, 498YW</i>"
 msgstr "<i>― Seras Kajlanas, 498VM</i>"
 
@@ -4559,24 +4534,40 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:152
+msgid ""
+"For any player, controlling villages is often key to winning a scenario. You "
+"may use this knowledge to lure your opponents into a trap by leaving some "
+"villages unoccupied, but keep in mind that an enemy unit becomes much harder "
+"to dislodge from a village! Plan your movements accordingly."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:153
+#, fuzzy
+#| msgid "<i>― King Konrad, 536YW</i>"
+msgid "<i>― Kai Laudiss, 623YW</i>"
+msgstr "<i>― Karalius Konradas, 536VM</i>"
+
+#. [tip]
+#: data/tips.cfg:156
 msgid "Use lines of troops to screen your injured units while they recover."
 msgstr ""
 "Rikiuokite karius į eilę, kad užstotumėte sužeistuosius ir leistumėte jiems "
 "atsitiesti."
 
 #. [tip]
-#: data/tips.cfg:153
+#: data/tips.cfg:157
 msgid "<i>― Princess Li’sar, 515YW</i>"
 msgstr "<i>― Princesė Li’sar, 515VM</i>"
 
 #. [tip]
-#: data/tips.cfg:156
+#: data/tips.cfg:160
 msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
 msgstr ""
 "<b>Nustatymų</b> meniu galite susipažinti su <b>sparčiaisiais klavišais</b>."
 
 #. [tip]
-#: data/tips.cfg:160
+#: data/tips.cfg:164
 msgid ""
 "If you move a unit, but don’t attack or discover any additional information, "
 "you can undo your move by pressing <b>u</b>."
@@ -4585,7 +4576,7 @@ msgstr ""
 "informacijos, galite atšaukti ėjimą spausdami <b>u</b>."
 
 #. [tip]
-#: data/tips.cfg:164
+#: data/tips.cfg:168
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
@@ -4594,7 +4585,7 @@ msgstr ""
 "ženkliuką virš jų."
 
 #. [tip]
-#: data/tips.cfg:168
+#: data/tips.cfg:172
 msgid ""
 "Use healers to support your attacks — they will win you battles without "
 "needing to attack anything themselves."
@@ -4603,12 +4594,12 @@ msgstr ""
 "nepuldami."
 
 #. [tip]
-#: data/tips.cfg:169 data/tips.cfg:217
+#: data/tips.cfg:173 data/tips.cfg:221
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
 msgstr "<i>― Čantal pergamento ritinys, 516VM</i>"
 
 #. [tip]
-#: data/tips.cfg:172
+#: data/tips.cfg:176
 msgid ""
 "The <i>Slow</i> attack makes enemy units move slower and halves the damage "
 "they do on all attacks until they end a turn."
@@ -4617,17 +4608,17 @@ msgstr ""
 "ir perpus sumažina jų daromą žalą iki jų ėjimo pabaigos."
 
 #. [tip]
-#: data/tips.cfg:176
+#: data/tips.cfg:180
 msgid "<i>Arcane</i> attacks are very powerful against undead."
 msgstr "<i>Paslaptingos</i> atakos labai veiksmingos prieš nemirėlius."
 
 #. [tip]
-#: data/tips.cfg:177
+#: data/tips.cfg:181
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
 msgstr "<i>― Didis išminčius Deisynas, 626VM</i>"
 
 #. [tip]
-#: data/tips.cfg:180
+#: data/tips.cfg:184
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
@@ -4636,14 +4627,14 @@ msgstr ""
 "apsukti mūšio eigą."
 
 #. [tip]
-#: data/tips.cfg:184
+#: data/tips.cfg:188
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
 msgstr ""
 
 #. [tip]
-#: data/tips.cfg:188
+#: data/tips.cfg:192
 msgid ""
 "Instead of leveling up, high-level units gain an <i>After Maximum Level "
 "Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
@@ -4653,7 +4644,7 @@ msgid ""
 msgstr ""
 
 #. [tip]
-#: data/tips.cfg:192
+#: data/tips.cfg:196
 msgid ""
 "Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
 "mouse pointer over any button or icon to get a description or explanation of "
@@ -4664,7 +4655,7 @@ msgstr ""
 "aprašymą, ką jis daro."
 
 #. [tip]
-#: data/tips.cfg:196
+#: data/tips.cfg:200
 msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
 "veteran to damage a joint target heavily enough for the junior partner to "
@@ -4675,12 +4666,12 @@ msgstr ""
 "kad jaunajam partneriui pakaktų jėgų suduoti lemiamą smūgį."
 
 #. [tip]
-#: data/tips.cfg:197
+#: data/tips.cfg:201
 msgid "<i>― Queen Li’sar, 528YW</i>"
 msgstr "<i>― Karalienė Li’sar, 528VM</i>"
 
 #. [tip]
-#: data/tips.cfg:200
+#: data/tips.cfg:204
 #, fuzzy
 msgid ""
 "You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
@@ -4692,14 +4683,14 @@ msgstr ""
 "dalinius, neprarandant galimybės atšaukti ėjimą."
 
 #. [tip]
-#: data/tips.cfg:204
+#: data/tips.cfg:208
 msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr ""
 
 #. [tip]
-#: data/tips.cfg:208
+#: data/tips.cfg:212
 msgid ""
 "Few units have good defenses in water; a line of attackers along the edge of "
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
@@ -4710,7 +4701,7 @@ msgstr ""
 "o dvarfai tą patį gali daryti su kalnais."
 
 #. [tip]
-#: data/tips.cfg:212
+#: data/tips.cfg:216
 msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
@@ -4720,7 +4711,7 @@ msgstr ""
 "kontekstinį meniu."
 
 #. [tip]
-#: data/tips.cfg:216
+#: data/tips.cfg:220
 msgid ""
 "The <i>Slow</i> ability is extremely powerful because it has such wide-"
 "ranging effects. Enemy undead get half the normal benefit from their "
@@ -4731,7 +4722,7 @@ msgid ""
 msgstr ""
 
 #. [tip]
-#: data/tips.cfg:220
+#: data/tips.cfg:224
 msgid ""
 "Try to operate units with a small number of powerful attacks—such as Dark "
 "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
@@ -4740,7 +4731,7 @@ msgid ""
 msgstr ""
 
 #. [tip]
-#: data/tips.cfg:224
+#: data/tips.cfg:228
 msgid ""
 "Units with three or more attacks—especially magical attacks—are ideal for "
 "finishing off enemies with only a few hitpoints remaining. Be sure to use "
@@ -4749,7 +4740,7 @@ msgid ""
 msgstr ""
 
 #. [tip]
-#: data/tips.cfg:228
+#: data/tips.cfg:232
 msgid ""
 "Think twice before dismissing any unit from your recall list, no matter how "
 "little experience it has. Sometimes it’s worth paying a premium to know "
@@ -4760,7 +4751,7 @@ msgstr ""
 "sužinotumėte, kokius bruožus turės naujas dalinys."
 
 #. [tip]
-#: data/tips.cfg:232
+#: data/tips.cfg:236
 msgid ""
 "When a tough unit is heavily injured, send it to heal in a village several "
 "turns’ movement away from the fighting. Then it can recover in peace (at 10 "
@@ -4771,12 +4762,12 @@ msgstr ""
 "ėjimą) ir neužimti kaimų prie fronto."
 
 #. [tip]
-#: data/tips.cfg:233 data/tips.cfg:245
+#: data/tips.cfg:237 data/tips.cfg:249
 msgid "<i>― Lord Hamel of Knalga</i>"
 msgstr "<i>― Knalgos valdovas Hamelis</i>"
 
 #. [tip]
-#: data/tips.cfg:236
+#: data/tips.cfg:240
 msgid ""
 "Combining multiple special abilities can be deadly. While it may take some "
 "work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
@@ -4784,7 +4775,7 @@ msgid ""
 msgstr ""
 
 #. [tip]
-#: data/tips.cfg:240
+#: data/tips.cfg:244
 msgid ""
 "While finishing early gives a gold bonus, and reduces the opportunities for "
 "enemies to kill your valuable troops, it also means you lose chances to earn "
@@ -4797,7 +4788,7 @@ msgstr ""
 "laiko, pasverkite kas jums naudingiau."
 
 #. [tip]
-#: data/tips.cfg:244
+#: data/tips.cfg:248
 msgid ""
 "If your forces have weak defenses everywhere on the map, occupy the areas "
 "where your enemies can only attack you by sharing the same disadvantages. "
@@ -4807,7 +4798,7 @@ msgid ""
 msgstr ""
 
 #. [tip]
-#: data/tips.cfg:248
+#: data/tips.cfg:252
 msgid ""
 "The recruitment cost of some units may exceed the usual recall expenditure "
 "of 20 gold. In a campaign, always check if recalling a unit of the same type "
@@ -4815,7 +4806,21 @@ msgid ""
 msgstr ""
 
 #. [tip]
-#: data/tips.cfg:253
+#: data/tips.cfg:256
+msgid ""
+"You must accept some losses in battle. It is not uncommon for beginners to "
+"lose sight of victory as they attempt to keep every unit alive."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:257
+#, fuzzy
+#| msgid "<i>― Queen Li’sar, 528YW</i>"
+msgid "<i>― Queen Asheviere, 503YW</i>"
+msgstr "<i>― Karalienė Li’sar, 528VM</i>"
+
+#. [tip]
+#: data/tips.cfg:261
 msgid ""
 "<i>Feral</i> units, such as Bats and wild animals, will avoid villages. Even "
 "if they occupy a village hex, they do not gain any defensive benefits from "
@@ -4880,15 +4885,15 @@ msgstr "pagydytas"
 msgid "female^cured"
 msgstr "pagydyta"
 
-#: src/actions/move.cpp:621
+#: src/actions/move.cpp:622
 msgid "Ambushed!"
 msgstr "Pasala!"
 
-#: src/actions/move.cpp:1138
+#: src/actions/move.cpp:1136
 msgid "Failed teleport! Exit not empty"
 msgstr "Nepavyko teleportuotis! Išėjimas ne laisvas"
 
-#: src/actions/move.cpp:1155
+#: src/actions/move.cpp:1152
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "$friends draugiškas"
@@ -4896,7 +4901,7 @@ msgstr[1] "$friends draugiški"
 msgstr[2] "$friends draugiškų"
 msgstr[3] "$friends draugiškas"
 
-#: src/actions/move.cpp:1156
+#: src/actions/move.cpp:1153
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "$enemies priešiškas"
@@ -4904,11 +4909,11 @@ msgstr[1] "$enemies priešiški"
 msgstr[2] "$enemies priešiškų"
 msgstr[3] "$enemies priešiškas"
 
-#: src/actions/move.cpp:1157
+#: src/actions/move.cpp:1154
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Pastebėti daliniai! ($friendphrase, $enemyphrase)"
 
-#: src/actions/move.cpp:1161
+#: src/actions/move.cpp:1158
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Pastebėtas priešiškas dalinys"
@@ -4916,7 +4921,7 @@ msgstr[1] "Pastebėti $enemies priešiški daliniai"
 msgstr[2] "Pastebėta $enemies priešiškų dalinių"
 msgstr[3] "Pastebėtas $enemies priešiškas dalinys"
 
-#: src/actions/move.cpp:1165
+#: src/actions/move.cpp:1162
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Pastebėtas draugiškas dalinys"
@@ -4924,51 +4929,90 @@ msgstr[1] "Pastebėti $friends draugiški daliniai"
 msgstr[2] "Pastebėta $friends draugiškų dalinių"
 msgstr[3] "Pastebėtas $friends draugiškas dalinys"
 
-#: src/actions/move.cpp:1181
+#: src/actions/move.cpp:1177
 msgid "(press $hotkey to keep moving)"
 msgstr "(paspauskite $hotkey ėjimo tęsimui)"
 
-#: src/addon/client.cpp:71
+#: src/addon/client.cpp:74
 msgid "Connecting to $server_address|..."
 msgstr "Jungiamasi prie $server_address|..."
 
-#: src/addon/client.cpp:84
+#: src/addon/client.cpp:88
 #, fuzzy
 msgid "Downloading list of add-ons..."
 msgstr "Užklausiamas priedų sąrašas"
 
-#: src/addon/client.cpp:98
+#: src/addon/client.cpp:102
 #, fuzzy
 msgid "Requesting distribution terms..."
 msgstr "Užklausiamas priedų sąrašas"
 
-#: src/addon/client.cpp:144
+#: src/addon/client.cpp:126
+#, fuzzy
+msgid ""
+"The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
+"published."
+msgstr "Priedo failo arba aplanko vardas neteisingas ir negali būti įdiegtas."
+
+#: src/addon/client.cpp:152
+#, fuzzy
+msgid ""
+"The add-on <i>$addon_title</i> has a file or directory containing invalid "
+"characters and cannot be published."
+msgstr "Priedo failo arba aplanko vardas neteisingas ir negali būti įdiegtas."
+
+#: src/addon/client.cpp:160
+msgid ""
+"The add-on <i>$addon_title</i> has an invalid file or directory name and "
+"cannot be published. File or directory names may not contain '..' or end "
+"with '.' or be longer than 255 characters. It also may not contain "
+"whitespace, control characters, or any of the following characters:\n"
+"\n"
+"&quot; * / : &lt; &gt; ? \\ | ~"
+msgstr ""
+
+#: src/addon/client.cpp:171
+#, fuzzy
+msgid ""
+"The add-on <i>$addon_title</i> contains files or directories with case "
+"conflicts. File or directory names may not be differently-cased versions of "
+"the same string."
+msgstr "Priedo failo arba aplanko vardas neteisingas ir negali būti įdiegtas."
+
+#: src/addon/client.cpp:183
 #, fuzzy
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Atsiunčiamas priedas: $addon_title|..."
 
-#: src/addon/client.cpp:177
+#: src/addon/client.cpp:216
 #, fuzzy
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Atsiunčiamas priedas: $addon_title|..."
 
-#: src/addon/client.cpp:204
+#: src/addon/client.cpp:243
 #, fuzzy
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Atsiunčiamas priedas: $addon_title|..."
 
-#: src/addon/client.cpp:218
+#: src/addon/client.cpp:257
 #, fuzzy
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr "Priedo failo arba aplanko vardas neteisingas ir negali būti įdiegtas."
 
-#: src/addon/client.cpp:276
+#: src/addon/client.cpp:263
+#, fuzzy
+msgid ""
+"The add-on <i>$addon_title</i> has file or directory names with case "
+"conflicts. This may cause problems."
+msgstr "Priedo failo arba aplanko vardas neteisingas ir negali būti įdiegtas."
+
+#: src/addon/client.cpp:320
 msgid "The server responded with an error:"
 msgstr "Serveris atsakė su klaida:"
 
-#: src/addon/client.cpp:316
+#: src/addon/client.cpp:360
 #, fuzzy
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
@@ -4981,11 +5025,11 @@ msgstr[1] "Pažymėtas priedas turi šias priklausomybes. Ar norite jas įdiegti
 msgstr[2] "Pažymėtas priedas turi šias priklausomybes. Ar norite jas įdiegti?"
 msgstr[3] "Pažymėtas priedas turi šias priklausomybes. Ar norite jas įdiegti?"
 
-#: src/addon/client.cpp:325
+#: src/addon/client.cpp:369
 msgid "Broken Dependencies"
 msgstr "Sugadintos priklausomybės"
 
-#: src/addon/client.cpp:368
+#: src/addon/client.cpp:412
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -4997,11 +5041,11 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/addon/client.cpp:372
+#: src/addon/client.cpp:416
 msgid "Dependencies Installation Failed"
 msgstr "Priklausomybių diegimas nepavyko"
 
-#: src/addon/client.cpp:395
+#: src/addon/client.cpp:439
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5009,101 +5053,101 @@ msgstr ""
 "Priedas „$addon|“ jau įdiegtas ir turi papildomos informacijos, kuri bus "
 "negrįžtamai prarasta, jeigu tęsite:"
 
-#: src/addon/client.cpp:399
+#: src/addon/client.cpp:443
 msgid "Publishing information file (.pbl)"
 msgstr "Viešinamos informacijos failas (.pbl)"
 
-#: src/addon/client.cpp:403
+#: src/addon/client.cpp:447
 msgid "Version control system (VCS) information"
 msgstr "Versijų kontrolės sistemos (VCS) informacija"
 
-#: src/addon/client.cpp:407
+#: src/addon/client.cpp:451
 msgid "Do you really wish to continue?"
 msgstr "Tikrai norite tęsti?"
 
-#: src/addon/client.cpp:409 src/addon/manager_ui.cpp:173
-#: src/game_initialization/multiplayer.cpp:197
+#: src/addon/client.cpp:453 src/addon/manager_ui.cpp:174
+#: src/game_initialization/multiplayer.cpp:232
 msgid "Confirm"
 msgstr "Patvirtinti"
 
-#: src/addon/client.cpp:502
+#: src/addon/client.cpp:573
 msgid "Add-ons Manager"
 msgstr "Priedas tvarkyklė"
 
-#: src/addon/info.cpp:159
+#: src/addon/info.cpp:153
 msgid "addon_type^Campaign"
 msgstr "Kampanija"
 
-#: src/addon/info.cpp:161
+#: src/addon/info.cpp:155
 msgid "addon_type^Scenario"
 msgstr "Scenarijus"
 
-#: src/addon/info.cpp:163
+#: src/addon/info.cpp:157
 #, fuzzy
 msgid "addon_type^SP/MP Campaign"
 msgstr "DŽ kampanija"
 
-#: src/addon/info.cpp:165
+#: src/addon/info.cpp:159
 msgid "addon_type^MP era"
 msgstr "DŽ era"
 
-#: src/addon/info.cpp:167
+#: src/addon/info.cpp:161
 msgid "addon_type^MP faction"
 msgstr "DŽ frakcija"
 
-#: src/addon/info.cpp:169
+#: src/addon/info.cpp:163
 msgid "addon_type^MP map-pack"
 msgstr "DŽ žemėlapių rinkinys"
 
-#: src/addon/info.cpp:171
+#: src/addon/info.cpp:165
 msgid "addon_type^MP scenario"
 msgstr "DŽ scenarijus"
 
-#: src/addon/info.cpp:173
+#: src/addon/info.cpp:167
 msgid "addon_type^MP campaign"
 msgstr "DŽ kampanija"
 
-#: src/addon/info.cpp:175
+#: src/addon/info.cpp:169
 #, fuzzy
 msgid "addon_type^MP modification"
 msgstr "DŽ frakcija"
 
-#: src/addon/info.cpp:177
+#: src/addon/info.cpp:171
 #, fuzzy
 msgid "addon_type^Core"
 msgstr "Resursai"
 
-#: src/addon/info.cpp:179
+#: src/addon/info.cpp:173
 msgid "addon_type^Resources"
 msgstr "Resursai"
 
-#: src/addon/info.cpp:181
+#: src/addon/info.cpp:175
 msgid "addon_type^Other"
 msgstr "Kitas"
 
-#: src/addon/info.cpp:183
+#: src/addon/info.cpp:177
 msgid "addon_type^(unknown)"
 msgstr "(nežinomas)"
 
-#: src/addon/info.cpp:223
+#: src/addon/info.cpp:217
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/addon/manager_ui.cpp:82 src/addon/manager_ui.cpp:292
+#: src/addon/manager_ui.cpp:82 src/addon/manager_ui.cpp:293
 msgid "Network communication error."
 msgstr "Bendravimo tinklu klaida."
 
-#: src/addon/manager_ui.cpp:85 src/addon/manager_ui.cpp:295
+#: src/addon/manager_ui.cpp:85 src/addon/manager_ui.cpp:296
 msgid "Remote host disconnected."
 msgstr "Atsijungė nutolęs mazgas."
 
-#: src/addon/manager_ui.cpp:88 src/addon/manager_ui.cpp:298
+#: src/addon/manager_ui.cpp:88 src/addon/manager_ui.cpp:299
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr "Įvyko klaida bandant sukurti failus, reikalingus įdiegti šį priedą."
 
-#: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:307
+#: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:308
 msgid ""
 "A local file with add-on publishing information could not be read.\n"
 "\n"
@@ -5111,15 +5155,15 @@ msgid ""
 "Error message: $msg"
 msgstr ""
 
-#: src/addon/manager_ui.cpp:103 src/addon/manager_ui.cpp:313
+#: src/addon/manager_ui.cpp:105 src/addon/manager_ui.cpp:314
 msgid "The add-ons server address specified is not valid."
 msgstr "Nurodytas neteisingas priedų serverio adresas."
 
-#: src/addon/manager_ui.cpp:117
+#: src/addon/manager_ui.cpp:118
 msgid "You have no add-ons installed."
 msgstr "Neturite įdiegtų priedų."
 
-#: src/addon/manager_ui.cpp:168
+#: src/addon/manager_ui.cpp:169
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "Ar tiktai norite pašalinti šį priedą?"
@@ -5127,7 +5171,7 @@ msgstr[1] "Ar tiktai norite pašalinti šiuos priedus?"
 msgstr[2] "Ar tiktai norite pašalinti šiuos priedus?"
 msgstr[3] "Ar tiktai norite pašalinti šiuos priedus?"
 
-#: src/addon/manager_ui.cpp:194
+#: src/addon/manager_ui.cpp:195
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -5139,7 +5183,7 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/addon/manager_ui.cpp:204
+#: src/addon/manager_ui.cpp:205
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "Šis priedas negali būti tinkamai ištrintas:"
@@ -5147,7 +5191,7 @@ msgstr[1] "Šie priedai negali būti tinkamai ištrinti:"
 msgstr[2] "Šie priedai negali būti tinkamai ištrinti:"
 msgstr[3] "Šie priedai negali būti tinkamai ištrinti:"
 
-#: src/addon/manager_ui.cpp:211
+#: src/addon/manager_ui.cpp:212
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Priedas pašalintas"
@@ -5155,7 +5199,7 @@ msgstr[1] "Priedai pašalinti"
 msgstr[2] "Priedai pašalinti"
 msgstr[3] "Priedai pašalinti"
 
-#: src/addon/manager_ui.cpp:213
+#: src/addon/manager_ui.cpp:214
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "Šis priedas sėkmingai pašalintas:"
@@ -5163,69 +5207,69 @@ msgstr[1] "Šie priedai sėkmingai pašalinti:"
 msgstr[2] "Šie priedai sėkmingai pašalinti:"
 msgstr[3] "Šie priedai sėkmingai pašalinti:"
 
-#: src/addon/manager_ui.cpp:269
+#: src/addon/manager_ui.cpp:270
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Įvyko klaida, siunčiant priedų sąrašą iš serverio."
 
-#: src/addon/manager_ui.cpp:283
+#: src/addon/manager_ui.cpp:284
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr ""
 
-#: src/chat_command_handler.cpp:112
+#: src/chat_command_handler.cpp:111
 msgid "Added to ignore list: $nick"
 msgstr "Pridėti į ignoruojamųjų sąrašą: $nick"
 
-#: src/chat_command_handler.cpp:112
+#: src/chat_command_handler.cpp:111
 msgid "ignores list"
 msgstr "Ignoruojamųjų sąrašas"
 
-#: src/chat_command_handler.cpp:116 src/chat_command_handler.cpp:135
+#: src/chat_command_handler.cpp:115 src/chat_command_handler.cpp:134
 msgid "Invalid username: $nick"
 msgstr "Netinkamas naudotojo vardas: $nick"
 
-#: src/chat_command_handler.cpp:131
+#: src/chat_command_handler.cpp:130
 msgid "Added to friends list: $nick"
 msgstr "Pridėti į draugų sąrašą: $nick"
 
-#: src/chat_command_handler.cpp:131
+#: src/chat_command_handler.cpp:130
 msgid "friends list"
 msgstr "Draugų sąrašas"
 
-#: src/chat_command_handler.cpp:147
+#: src/chat_command_handler.cpp:146
 msgid "Removed from list: $nick"
 msgstr "Pašalintas iš sąrašo: $nick"
 
-#: src/chat_command_handler.cpp:147
+#: src/chat_command_handler.cpp:146
 msgid "friends and ignores list"
 msgstr "draugų ir ignoruojamųjų sąrašas"
 
-#: src/chat_command_handler.cpp:159
+#: src/chat_command_handler.cpp:158
 msgid "version"
 msgstr "versija"
 
-#: src/chat_command_handler.cpp:175
+#: src/chat_command_handler.cpp:174
 msgid "registering with password *** and no email address"
 msgstr "registruojamasi su slaptažodžiu *** ir be e. pašto adreso"
 
-#: src/chat_command_handler.cpp:180
+#: src/chat_command_handler.cpp:179
 msgid "registering with password *** and email address $email"
 msgstr "registruojamasi su slaptažodžiu *** ir e. pašto adresu $email"
 
-#: src/chat_command_handler.cpp:183 src/chat_command_handler.cpp:194
-#: src/chat_command_handler.cpp:212 src/chat_command_handler.cpp:226
+#: src/chat_command_handler.cpp:182 src/chat_command_handler.cpp:193
+#: src/chat_command_handler.cpp:211 src/chat_command_handler.cpp:225
 msgid "nick registration"
 msgstr "slapyvardžio registracija"
 
-#: src/chat_command_handler.cpp:194
+#: src/chat_command_handler.cpp:193
 #, fuzzy
 msgid "dropping your username"
 msgstr "pakeisti savo  vardą"
 
-#: src/chat_command_handler.cpp:212
+#: src/chat_command_handler.cpp:211
 msgid "setting $var to $value"
 msgstr "kintamasis $var nustatomas į $value"
 
-#: src/chat_command_handler.cpp:226
+#: src/chat_command_handler.cpp:225
 msgid "requesting information for user $nick"
 msgstr "užklausiama informacija apie naudotoją $nick"
 
@@ -5233,7 +5277,7 @@ msgstr "užklausiama informacija apie naudotoją $nick"
 msgid "(A) — admin command"
 msgstr ""
 
-#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1128
+#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1139
 msgid "(admin only)"
 msgstr "(tik administravimo)"
 
@@ -5426,7 +5470,7 @@ msgstr "šnabždesys: $receiver"
 msgid "whisper: $sender"
 msgstr "šnabždesys: $sender"
 
-#: src/desktop/notifications.cpp:88
+#: src/desktop/notifications.cpp:82
 msgid "Chat message"
 msgstr "Pokalbio žinutė"
 
@@ -5467,59 +5511,59 @@ msgstr "%Y %b %d"
 msgid "Invalid color in range: "
 msgstr "Netinkamas spalvos intervalas: "
 
-#: src/game_config_manager.cpp:197 src/game_config_manager.cpp:207
-#: src/game_config_manager.cpp:220
+#: src/game_config_manager.cpp:195 src/game_config_manager.cpp:204
+#: src/game_config_manager.cpp:216
 msgid "Error validating data core."
 msgstr ""
 
-#: src/game_config_manager.cpp:198
+#: src/game_config_manager.cpp:196
 msgid "Found a core without id attribute."
 msgstr ""
 
-#: src/game_config_manager.cpp:199 src/game_config_manager.cpp:210
-#: src/game_config_manager.cpp:224
+#: src/game_config_manager.cpp:197 src/game_config_manager.cpp:207
+#: src/game_config_manager.cpp:220
 msgid "Skipping the core."
 msgstr ""
 
-#: src/game_config_manager.cpp:208 src/game_config_manager.cpp:221
-#: src/game_config_manager.cpp:245
+#: src/game_config_manager.cpp:205 src/game_config_manager.cpp:217
+#: src/game_config_manager.cpp:240
 msgid "Core ID: "
 msgstr ""
 
-#: src/game_config_manager.cpp:209
+#: src/game_config_manager.cpp:206
 msgid "The ID is already in use."
 msgstr ""
 
-#: src/game_config_manager.cpp:222
+#: src/game_config_manager.cpp:218
 msgid "Core Path: "
 msgstr ""
 
-#: src/game_config_manager.cpp:223
+#: src/game_config_manager.cpp:219
 msgid "File not found."
 msgstr "Failas nerastas."
 
-#: src/game_config_manager.cpp:244 src/game_config_manager.cpp:257
+#: src/game_config_manager.cpp:239 src/game_config_manager.cpp:251
 msgid "Error loading core data."
 msgstr ""
 
-#: src/game_config_manager.cpp:246
+#: src/game_config_manager.cpp:241
 msgid "Error loading the core with named id."
 msgstr ""
 
-#: src/game_config_manager.cpp:247
+#: src/game_config_manager.cpp:242
 msgid "Falling back to the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:258
+#: src/game_config_manager.cpp:252
 msgid "Can't locate the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:259
+#: src/game_config_manager.cpp:253
 #, fuzzy
 msgid "The game will now exit."
 msgstr "Žaidimas baigtas."
 
-#: src/game_config_manager.cpp:320
+#: src/game_config_manager.cpp:313
 #, fuzzy
 msgid ""
 "Error loading custom game configuration files. The game will try without "
@@ -5528,7 +5572,7 @@ msgstr ""
 "Įvyko klaida, įkeliant žaidimo konfigūracijos failus. Žaidimas dabar "
 "išsijungs."
 
-#: src/game_config_manager.cpp:327
+#: src/game_config_manager.cpp:320
 #, fuzzy
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
@@ -5537,7 +5581,7 @@ msgstr ""
 "Įvyko klaida, įkeliant žaidimo konfigūracijos failus. Žaidimas dabar "
 "išsijungs."
 
-#: src/game_config_manager.cpp:336
+#: src/game_config_manager.cpp:329
 #, fuzzy
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
@@ -5545,7 +5589,7 @@ msgstr ""
 "Įvyko klaida, įkeliant žaidimo konfigūracijos failus. Žaidimas dabar "
 "išsijungs."
 
-#: src/game_config_manager.cpp:463
+#: src/game_config_manager.cpp:456
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Šis priedas turėjo klaidų ir negali būti įkeltas:"
@@ -5553,7 +5597,7 @@ msgstr[1] "Šie priedai turėjo klaidų ir negali būti įkelti:"
 msgstr[2] "Šie priedai turėjo klaidų ir negali būti įkelti:"
 msgstr[3] "Šie priedai turėjo klaidų ir negali būti įkelti:"
 
-#: src/game_config_manager.cpp:467
+#: src/game_config_manager.cpp:460
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -5562,24 +5606,24 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/game_events/pump.cpp:483 src/game_launcher.cpp:877
+#: src/game_events/pump.cpp:481 src/game_launcher.cpp:889
 msgid "Error: "
 msgstr "Klaida: "
 
-#: src/game_events/pump.cpp:485
+#: src/game_events/pump.cpp:483
 msgid "Warning: "
 msgstr "Įspėjimas: "
 
-#: src/game_events/pump.cpp:487
+#: src/game_events/pump.cpp:485
 msgid "Debug: "
 msgstr "Derinimas: "
 
-#: src/game_events/pump.cpp:489
+#: src/game_events/pump.cpp:487
 msgid "Info: "
 msgstr "Informacija: "
 
-#: src/game_initialization/configure_engine.cpp:102
-#: src/game_initialization/create_engine.cpp:469
+#: src/game_initialization/configure_engine.cpp:65
+#: src/game_initialization/create_engine.cpp:480
 msgid "$login|’s game"
 msgstr "$login žaidimas"
 
@@ -5587,42 +5631,38 @@ msgstr "$login žaidimas"
 msgid "Team"
 msgstr "Komanda"
 
-#: src/game_initialization/connect_engine.cpp:982
+#: src/game_initialization/connect_engine.cpp:977
 #, fuzzy
 msgid "Anonymous player"
 msgstr "Anoniminis vietinis žaidėjas"
 
-#: src/game_initialization/connect_engine.cpp:987
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:982
+#: src/game_initialization/connect_engine.cpp:1280
 msgid "Computer Player"
 msgstr "Kompiuterio žaidėjas"
 
-#: src/game_initialization/connect_engine.cpp:1029
+#: src/game_initialization/connect_engine.cpp:1024
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1282
+#: src/game_initialization/connect_engine.cpp:1276
 msgid "Network Player"
 msgstr "Tinklo žaidėjas"
 
-#: src/game_initialization/connect_engine.cpp:1285
+#: src/game_initialization/connect_engine.cpp:1279
 msgid "Local Player"
 msgstr "Vietinis žaidėjas"
 
-#: src/game_initialization/connect_engine.cpp:1287
+#: src/game_initialization/connect_engine.cpp:1281
 msgid "Empty"
 msgstr "Tuščia"
 
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1284
 msgid "Reserved"
 msgstr "Rezervuota"
 
-#: src/game_initialization/connect_engine.cpp:1294
-msgid "--give--"
-msgstr "--duoti--"
-
 #: src/game_initialization/create_engine.cpp:75
-#: src/game_initialization/create_engine.cpp:676
+#: src/game_initialization/create_engine.cpp:664
 msgid "Map could not be loaded: "
 msgstr "Žemėlapis negali būti įkeltas: "
 
@@ -5636,32 +5676,32 @@ msgid "not available."
 msgstr " Nėra prieinamos pagalbos."
 
 #: src/game_initialization/create_engine.cpp:149
-msgid "User made map"
+msgid "Custom map."
 msgstr ""
 
-#: src/game_initialization/depcheck.cpp:476
+#: src/game_initialization/depcheck.cpp:491
 msgid "Failed to resolve dependencies"
 msgstr "Nepavyko išspręsti priklausomybių"
 
-#: src/game_initialization/depcheck.cpp:501
+#: src/game_initialization/depcheck.cpp:516
 msgid "Scenario can't be activated. Some dependencies are missing: "
 msgstr "Neišeina aktyvuoti scenarijaus. Trūksta kai kurių priklausomybių: "
 
-#: src/game_initialization/depcheck.cpp:555
-#: src/game_initialization/depcheck.cpp:678
+#: src/game_initialization/depcheck.cpp:570
+#: src/game_initialization/depcheck.cpp:693
 msgid "No compatible eras found."
 msgstr "Nerasta suderinamų erų."
 
-#: src/game_initialization/depcheck.cpp:570
+#: src/game_initialization/depcheck.cpp:585
 msgid "Era can't be activated. Some dependencies are missing: "
 msgstr "Neišeina aktyvuoti eros. Trūksta kai kurių priklausomybių: "
 
-#: src/game_initialization/depcheck.cpp:623
-#: src/game_initialization/depcheck.cpp:715
+#: src/game_initialization/depcheck.cpp:638
+#: src/game_initialization/depcheck.cpp:730
 msgid "No compatible scenarios found."
 msgstr "Nerasta suderinamų scenarijų."
 
-#: src/game_initialization/depcheck.cpp:652
+#: src/game_initialization/depcheck.cpp:667
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
@@ -5669,74 +5709,74 @@ msgstr ""
 "Ne visos pasirinktos modifikacijos suderinamos tarpusavyje. Kai kurios bus "
 "išjungtos."
 
-#: src/game_initialization/depcheck.hpp:317
-#: src/game_initialization/depcheck.hpp:329
+#: src/game_initialization/depcheck.hpp:312
+#: src/game_initialization/depcheck.hpp:324
 msgid "A component"
 msgstr ""
 
-#: src/game_initialization/flg_manager.cpp:190
+#: src/game_initialization/flg_manager.cpp:192
 msgid "Only random sides in the current era."
 msgstr "Tik atsitiktinės pusės dabartinėje eroje."
 
-#: src/game_initialization/flg_manager.cpp:212
+#: src/game_initialization/flg_manager.cpp:214
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Nepavyko rasti lyderio tipo frakcijai $faction"
 
-#: src/game_initialization/flg_manager.cpp:235
+#: src/game_initialization/flg_manager.cpp:237
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:216
+#: src/game_initialization/lobby_data.cpp:236
+#, fuzzy
+msgid "Missing addon: $name"
+msgstr "Trūksta argumento $arg_id"
+
+#: src/game_initialization/lobby_data.cpp:238
 #, fuzzy
 msgid "Missing addon: $id"
 msgstr "Trūksta argumento $arg_id"
 
-#: src/game_initialization/lobby_data.cpp:251
-msgid "Unknown era: $era_id"
-msgstr "Nežinoma era: $era_id"
+#: src/game_initialization/lobby_data.cpp:275
+#, fuzzy
+msgid "$era_name (missing)"
+msgstr " (trūksta)"
 
-#: src/game_initialization/lobby_data.cpp:258
+#: src/game_initialization/lobby_data.cpp:282
 msgid "Unknown era"
 msgstr "Nežinoma era"
 
-#: src/game_initialization/lobby_data.cpp:280
+#: src/game_initialization/lobby_data.cpp:299
 #, fuzzy
 msgid "(missing)"
 msgstr " (trūksta)"
 
-#: src/game_initialization/lobby_data.cpp:324
-msgid "(S)"
+#: src/game_initialization/lobby_data.cpp:345
+#: src/game_initialization/lobby_data.cpp:375
+msgid "S"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:343
+#: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
 msgstr "Nutolęs scenarijus"
 
-#: src/game_initialization/lobby_data.cpp:354
-msgid "Unknown scenario: $scenario_id"
-msgstr "Nežinomas scenarijus: $scenario_id"
-
-#: src/game_initialization/lobby_data.cpp:362
-msgid "(C)"
+#: src/game_initialization/lobby_data.cpp:383
+#: src/game_initialization/lobby_data.cpp:406
+msgid "C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:385
-msgid "Unknown campaign: $campaign_id"
-msgstr "Nežinoma kampanija: $campaign_id"
-
-#: src/game_initialization/lobby_data.cpp:390
+#: src/game_initialization/lobby_data.cpp:411
 msgid "Unknown scenario"
 msgstr "Nežinomas scenarijus"
 
-#: src/game_initialization/lobby_data.cpp:400
+#: src/game_initialization/lobby_data.cpp:421
 msgid "Reloaded game"
 msgstr "Iš naujo įkeltas žaidimas"
 
-#: src/game_initialization/lobby_data.cpp:411 src/savegame.cpp:630
+#: src/game_initialization/lobby_data.cpp:433 src/savegame.cpp:634
 msgid "Turn"
 msgstr "Ėjimas"
 
-#: src/game_initialization/lobby_data.cpp:415
+#: src/game_initialization/lobby_data.cpp:437
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Laisva vieta:"
@@ -5744,31 +5784,32 @@ msgstr[1] "Laisvų vietų:"
 msgstr[2] "Laisvų vietų:"
 msgstr[3] "Laisvų vietų:"
 
-#: src/game_initialization/lobby_data.cpp:428
+#: src/game_initialization/lobby_data.cpp:450
+#: src/game_initialization/lobby_data.cpp:459
 msgid "none"
 msgstr "nieko"
 
-#: src/game_initialization/lobby_data.cpp:469
+#: src/game_initialization/lobby_data.cpp:498
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:484
+#: src/game_initialization/lobby_data.cpp:512
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 
-#: src/game_initialization/mp_game_utils.cpp:94
+#: src/game_initialization/mp_game_utils.cpp:101
 msgid "Cannot find era $era"
 msgstr "Nepavyksta rasti $era eros"
 
-#: src/game_initialization/mp_game_utils.cpp:136
+#: src/game_initialization/mp_game_utils.cpp:140
 msgid "Connection timed out"
 msgstr "Pasibaigė ryšio laikas"
 
-#: src/game_initialization/multiplayer.cpp:109
+#: src/game_initialization/multiplayer.cpp:123
 #, fuzzy
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
@@ -5776,69 +5817,73 @@ msgid ""
 msgstr ""
 "Serveris reikalauja „$version1“ versijos, o jūs naudojate „$version2“ versiją"
 
-#: src/game_initialization/multiplayer.cpp:120
+#: src/game_initialization/multiplayer.cpp:133
 msgid "Server-side redirect loop"
 msgstr "Serveryje vyksta nukreipimo ciklas"
 
-#: src/game_initialization/multiplayer.cpp:172
+#: src/game_initialization/multiplayer.cpp:207
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
 "to do it for you."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:181
+#: src/game_initialization/multiplayer.cpp:216
 msgid "Do you want to continue?"
 msgstr "Ar norite tęsti?"
 
-#: src/game_initialization/multiplayer.cpp:183
+#: src/game_initialization/multiplayer.cpp:218
 msgid "Warning"
 msgstr "Įspėjimas"
 
-#: src/game_initialization/multiplayer.cpp:225
+#: src/game_initialization/multiplayer.cpp:260
 msgid "Bad data received from server"
 msgstr "Iš serverio gauti blogi duomenys"
 
-#: src/game_initialization/multiplayer.cpp:260
+#: src/game_initialization/multiplayer.cpp:297
 msgid "You must login first."
 msgstr "Pirmiausia privalote prisijungti."
 
-#: src/game_initialization/multiplayer.cpp:262
+#: src/game_initialization/multiplayer.cpp:299
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Slapyvardis „$nick“ jau naudojamas."
 
-#: src/game_initialization/multiplayer.cpp:264
+#: src/game_initialization/multiplayer.cpp:301
+#, fuzzy
+#| msgid ""
+#| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
+#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
-"characters, underscores and hyphens are allowed."
+"characters (one at minimum), underscores and hyphens are allowed."
 msgstr ""
 "Slapyvardyje „$nick“ yra neleidžiamų simbolių. Galima naudoti tik skaičius, "
 "raides, pabraukimą ir brūkšnelį."
 
-#: src/game_initialization/multiplayer.cpp:268
+#: src/game_initialization/multiplayer.cpp:305
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "Slapyvardis „$nick“ yra per ilgas. Slapyvardžiai privalo būti neilgesni nei "
 "20 simbolių."
 
-#: src/game_initialization/multiplayer.cpp:271
+#: src/game_initialization/multiplayer.cpp:308
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "Slapyvardis „$nick“ rezervuotas, žaidėjams jo naudoti negalima."
 
-#: src/game_initialization/multiplayer.cpp:273
+#: src/game_initialization/multiplayer.cpp:310
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Slapyvardis „$nick“ neužregistruotas šiame serveryje."
 
-#: src/game_initialization/multiplayer.cpp:274
+#: src/game_initialization/multiplayer.cpp:311
 msgid " This server disallows unregistered nicknames."
 msgstr " Šis serveris neleidžia neregistruotų slapyvardžių."
 
-#: src/game_initialization/multiplayer.cpp:276
-#: src/game_initialization/multiplayer.cpp:278
+#: src/game_initialization/multiplayer.cpp:313
+#: src/game_initialization/multiplayer.cpp:315
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Slapyvardis „$nick“ prisiregistravęs šiame serveryje."
 
-#: src/game_initialization/multiplayer.cpp:279
+#: src/game_initialization/multiplayer.cpp:316
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -5846,17 +5891,17 @@ msgstr ""
 "DĖMESIO: jau yra klientas naudojantis šį slapyvardį, prisijungimas sukels to "
 "kliento išmetimą!"
 
-#: src/game_initialization/multiplayer.cpp:282
+#: src/game_initialization/multiplayer.cpp:319
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
 "Klaida, registravimosi procedūroje (serveris neturėjo jūsų ryšio sėklos)."
 
-#: src/game_initialization/multiplayer.cpp:285
+#: src/game_initialization/multiplayer.cpp:322
 msgid "The password you provided was incorrect."
 msgstr "Jūsų pateiktas slaptažodis buvo neteisingas."
 
-#: src/game_initialization/multiplayer.cpp:287
+#: src/game_initialization/multiplayer.cpp:324
 msgid "You have made too many login attempts."
 msgstr "Per daug kartų bandėte jungtis."
 
@@ -5971,20 +6016,20 @@ msgstr "Pralaimėjimas"
 msgid "You have been defeated!"
 msgstr "Jūs buvote nugalėtas!"
 
-#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:847
+#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:861
 msgid "The game could not be loaded: "
 msgstr "Žaidimas negali būti įkeltas: "
 
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:849
+#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:863
 msgid "Error while playing the game: "
 msgstr "Įvyko klaida, žaidžiant žaidimą: "
 
-#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:869
+#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:881
 msgid "The game map could not be loaded: "
 msgstr "Žaidimo žemėlapis negali būti įkeltas: "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:851
-#: src/game_launcher.cpp:967
+#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:865
+#: src/game_launcher.cpp:979
 msgid "Map generator error: "
 msgstr ""
 
@@ -5993,7 +6038,7 @@ msgid "Error while reading the WML: "
 msgstr "Klaida, skaitant WML: "
 
 #: src/game_initialization/playcampaign.cpp:342
-#: src/playsingle_controller.cpp:314
+#: src/playsingle_controller.cpp:316
 msgid "Game Over"
 msgstr "Žaidimas baigtas"
 
@@ -6015,8 +6060,8 @@ msgid "The file you have tried to load is corrupt"
 msgstr "Failas, kurį bandėte įkelti, yra sugadintas"
 
 #: src/game_launcher.cpp:646 src/game_launcher.cpp:664
-#: src/hotkey/hotkey_handler_sp.cpp:311 src/savegame.cpp:148
-#: src/savegame.cpp:293
+#: src/hotkey/hotkey_handler_sp.cpp:312 src/savegame.cpp:147
+#: src/savegame.cpp:292
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Failas, kurį bandėte įkelti, sugadintas: „"
 
@@ -6028,7 +6073,7 @@ msgstr "Failo I/O klaida, nuskaitant žaidimą"
 msgid "File I/O Error while reading the game: '"
 msgstr "Failo I/O klaida, nuskaitant žaidimą: „"
 
-#: src/game_launcher.cpp:845
+#: src/game_launcher.cpp:859
 msgid "Error while starting server: "
 msgstr "Įvyko klaida, paleidžiant serverį: "
 
@@ -6037,7 +6082,7 @@ msgstr "Įvyko klaida, paleidžiant serverį: "
 msgid "Random maps with an odd width aren't supported."
 msgstr "Atsitiktiniai žemėlapiai su nelyginiu pločiu nepalaikomi."
 
-#: src/generators/default_map_generator_job.cpp:953
+#: src/generators/default_map_generator_job.cpp:954
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -6045,7 +6090,7 @@ msgstr ""
 "Tinkamos vietos piliai nerasta. Per daug arba per mažai kalnų laukelių? "
 "(Prašome pasirinkti „maksimalaus kalno dydžio“ parametrą)"
 
-#: src/gui/core/linked_group_definition.cpp:40
+#: src/gui/core/linked_group_definition.cpp:39
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 
@@ -6062,12 +6107,12 @@ msgstr[1] "Pažymėtas priedas turi šias priklausomybes. Ar norite jas įdiegti
 msgstr[2] "Pažymėtas priedas turi šias priklausomybes. Ar norite jas įdiegti?"
 msgstr[3] "Pažymėtas priedas turi šias priklausomybes. Ar norite jas įdiegti?"
 
-#: src/gui/dialogs/game_load.hpp:43
+#: src/gui/dialogs/game_load.hpp:41
 #, fuzzy
 msgid "No Saved Games"
 msgstr "Išsaugoti žaidimą"
 
-#: src/gui/dialogs/game_load.hpp:43
+#: src/gui/dialogs/game_load.hpp:41
 #, fuzzy
 msgid "There are no save files to load"
 msgstr "Failas, kurį bandėte įkelti, yra sugadintas"
@@ -6077,39 +6122,39 @@ msgstr "Failas, kurį bandėte įkelti, yra sugadintas"
 msgid "No visible sides found."
 msgstr "Nerasta daugelio žaidėjų pusių"
 
-#: src/gui/dialogs/lobby/player_info.cpp:103
+#: src/gui/dialogs/multiplayer/player_info.cpp:104
 msgid "In game:"
 msgstr "Žaidime:"
 
-#: src/gui/dialogs/lobby/player_info.cpp:105
+#: src/gui/dialogs/multiplayer/player_info.cpp:106
 msgid "(observing)"
 msgstr "(stebi)"
 
-#: src/gui/dialogs/lobby/player_info.cpp:107
+#: src/gui/dialogs/multiplayer/player_info.cpp:108
 msgid "(playing)"
 msgstr "(žaidžia)"
 
-#: src/gui/dialogs/lobby/player_info.cpp:110
+#: src/gui/dialogs/multiplayer/player_info.cpp:111
 msgid "In lobby"
 msgstr "Vestibiulyje"
 
-#: src/gui/dialogs/lobby/player_info.cpp:139
+#: src/gui/dialogs/multiplayer/player_info.cpp:140
 msgid "On friends list"
 msgstr "Draugų sąraše"
 
-#: src/gui/dialogs/lobby/player_info.cpp:144
+#: src/gui/dialogs/multiplayer/player_info.cpp:145
 msgid "On ignores list"
 msgstr "Ignoruojamųjų sąraše"
 
-#: src/gui/dialogs/lobby/player_info.cpp:149
+#: src/gui/dialogs/multiplayer/player_info.cpp:150
 msgid "Neither a friend nor ignored"
 msgstr "Nei draugas, nei ignoruojamasis"
 
-#: src/gui/dialogs/lobby/player_info.cpp:154
+#: src/gui/dialogs/multiplayer/player_info.cpp:155
 msgid "You"
 msgstr "Tu"
 
-#: src/gui/dialogs/lobby/player_info.cpp:157
+#: src/gui/dialogs/multiplayer/player_info.cpp:158
 msgid "Error"
 msgstr "Klaida"
 
@@ -6159,7 +6204,7 @@ msgstr "Veiksmai"
 msgid "Races: "
 msgstr "Rasės: "
 
-#: src/help/help_impl.cpp:635 src/help/help_impl.cpp:981
+#: src/help/help_impl.cpp:635 src/help/help_impl.cpp:985
 #, fuzzy
 msgid "Alignments: "
 msgstr "Prigimtis: "
@@ -6172,35 +6217,39 @@ msgstr "Vadai"
 msgid "Recruits"
 msgstr "Samdymai"
 
-#: src/help/help_impl.cpp:708 src/help/help_impl.cpp:710
+#: src/help/help_impl.cpp:712 src/units/types.cpp:479
+msgid "No description available."
+msgstr "Nėra jokio aprašymo."
+
+#: src/help/help_impl.cpp:716 src/help/help_impl.cpp:718
 #, fuzzy
 msgid "Availability: "
 msgstr "Gebėjimas: "
 
-#: src/help/help_impl.cpp:708
+#: src/help/help_impl.cpp:716
 msgid "Must-have"
 msgstr ""
 
-#: src/help/help_impl.cpp:710
+#: src/help/help_impl.cpp:718
 #, fuzzy
 msgid "Unavailable"
 msgstr " Nėra prieinamos pagalbos."
 
-#: src/help/help_impl.cpp:794 src/help/help_impl.cpp:969
-#: src/help/help_topic_generators.cpp:383
+#: src/help/help_impl.cpp:798 src/help/help_impl.cpp:973
+#: src/help/help_topic_generators.cpp:384
 msgid "race^Miscellaneous"
 msgstr ""
 
-#: src/help/help_impl.cpp:981 src/help/help_topic_generators.cpp:485
+#: src/help/help_impl.cpp:985 src/help/help_topic_generators.cpp:486
 #: src/reports.cpp:348
 msgid "Alignment: "
 msgstr "Prigimtis: "
 
-#: src/help/help_impl.cpp:988
+#: src/help/help_impl.cpp:992
 msgid "<header>text='Units of this race'</header>"
 msgstr ""
 
-#: src/help/help_impl.cpp:1343
+#: src/help/help_impl.cpp:1347
 msgid "corrupted original file"
 msgstr ""
 
@@ -6227,138 +6276,138 @@ msgstr "Judėjimo kainos:"
 msgid "Defense properties: "
 msgstr "Gynyba:"
 
-#: src/help/help_topic_generators.cpp:305
+#: src/help/help_topic_generators.cpp:306
 #, fuzzy
 msgid "Advances from: "
 msgstr "Tobulėja į:"
 
-#: src/help/help_topic_generators.cpp:307
+#: src/help/help_topic_generators.cpp:308
 #, fuzzy
 msgid "Advances to: "
 msgstr "Tobulėja į:"
 
-#: src/help/help_topic_generators.cpp:336
+#: src/help/help_topic_generators.cpp:337
 #, fuzzy
 msgid "Base unit: "
 msgstr "Bazinės atakos:"
 
-#: src/help/help_topic_generators.cpp:341
+#: src/help/help_topic_generators.cpp:342
 #, fuzzy
 msgid "Base units: "
 msgstr "Šviesos daliniai: "
 
-#: src/help/help_topic_generators.cpp:359
+#: src/help/help_topic_generators.cpp:360
 #, fuzzy
 msgid "Variations: "
 msgstr "Pakeitimai:"
 
-#: src/help/help_topic_generators.cpp:385 src/reports.cpp:186
+#: src/help/help_topic_generators.cpp:386 src/reports.cpp:186
 msgid "Race: "
 msgstr "Rasė: "
 
-#: src/help/help_topic_generators.cpp:411
-#: src/help/help_topic_generators.cpp:434
+#: src/help/help_topic_generators.cpp:412
+#: src/help/help_topic_generators.cpp:435
 msgid "Traits"
 msgstr "Bruožai"
 
-#: src/help/help_topic_generators.cpp:444
+#: src/help/help_topic_generators.cpp:445
 msgid "Abilities: "
 msgstr "Gebėjimai: "
 
-#: src/help/help_topic_generators.cpp:460
+#: src/help/help_topic_generators.cpp:461
 msgid "Ability Upgrades: "
 msgstr "Gebėjimų patobulinimai: "
 
-#: src/help/help_topic_generators.cpp:476
+#: src/help/help_topic_generators.cpp:477
 msgid "HP: "
 msgstr "GT: "
 
-#: src/help/help_topic_generators.cpp:477
+#: src/help/help_topic_generators.cpp:478
 msgid "Moves: "
 msgstr "Žingsniai: "
 
-#: src/help/help_topic_generators.cpp:479
+#: src/help/help_topic_generators.cpp:480
 #, fuzzy
 msgid "Vision: "
 msgstr "matymas: "
 
-#: src/help/help_topic_generators.cpp:482
+#: src/help/help_topic_generators.cpp:483
 #, fuzzy
 msgid "Jamming: "
 msgstr "Įspėjimas: "
 
-#: src/help/help_topic_generators.cpp:484
+#: src/help/help_topic_generators.cpp:485
 msgid "Cost: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:489
+#: src/help/help_topic_generators.cpp:490
 msgid "Required XP: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:498
+#: src/help/help_topic_generators.cpp:499
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:505
+#: src/help/help_topic_generators.cpp:506
 msgid "unit help^Name"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:506
+#: src/help/help_topic_generators.cpp:507
 msgid "Type"
 msgstr "Tipas"
 
-#: src/help/help_topic_generators.cpp:507
+#: src/help/help_topic_generators.cpp:508
 msgid "Strikes"
 msgstr "Smūgiai"
 
-#: src/help/help_topic_generators.cpp:508
+#: src/help/help_topic_generators.cpp:509
 msgid "Range"
 msgstr "Nuotolis"
 
-#: src/help/help_topic_generators.cpp:509
+#: src/help/help_topic_generators.cpp:510
 #, fuzzy
 msgid "Special"
 msgstr "Ginklų ypatybės: "
 
-#: src/help/help_topic_generators.cpp:571
+#: src/help/help_topic_generators.cpp:572
 msgid "Resistances"
 msgstr "Atsparumai"
 
-#: src/help/help_topic_generators.cpp:575
+#: src/help/help_topic_generators.cpp:576
 msgid "Attack Type"
 msgstr "Atakos tipas"
 
-#: src/help/help_topic_generators.cpp:576
+#: src/help/help_topic_generators.cpp:577
 msgid "Resistance"
 msgstr "Atsparumas"
 
-#: src/help/help_topic_generators.cpp:605
+#: src/help/help_topic_generators.cpp:606
 msgid "Terrain Modifiers"
 msgstr "Vietovės modifikatoriai"
 
-#: src/help/help_topic_generators.cpp:609
+#: src/help/help_topic_generators.cpp:610
 msgid "Terrain"
 msgstr "Vietovė"
 
-#: src/help/help_topic_generators.cpp:610
+#: src/help/help_topic_generators.cpp:611
 msgid "Defense"
 msgstr "Gynyba"
 
-#: src/help/help_topic_generators.cpp:611
+#: src/help/help_topic_generators.cpp:612
 msgid "Movement Cost"
 msgstr "Judėjimo kaina"
 
-#: src/help/help_topic_generators.cpp:615
+#: src/help/help_topic_generators.cpp:616
 #, fuzzy
 msgid "Defense Cap"
 msgstr "Gynyba:"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:621
 #, fuzzy
 msgid "Vision Cost"
 msgstr "matymas: "
 
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:625
 msgid "Jamming Cost"
 msgstr ""
 
@@ -6374,7 +6423,7 @@ msgstr ""
 msgid "Screenshot"
 msgstr "Ekranvaizdis"
 
-#: src/hotkey/command_executor.cpp:715
+#: src/hotkey/command_executor.cpp:710
 msgid "Map-Screenshot"
 msgstr "Žemėlapio ekranvaizdis"
 
@@ -6391,8 +6440,8 @@ msgstr ""
 msgid "Accelerated speed disabled!"
 msgstr ""
 
-#: src/hotkey/hotkey_handler.cpp:390 src/save_index.cpp:285 src/savegame.cpp:70
-#: src/savegame.cpp:587 src/savegame.cpp:589
+#: src/hotkey/hotkey_handler.cpp:390 src/save_index.cpp:335 src/savegame.cpp:70
+#: src/savegame.cpp:593 src/savegame.cpp:595
 msgid "Auto-Save"
 msgstr "Autoišsaugojimas"
 
@@ -6409,11 +6458,11 @@ msgstr "Atgal į pradžią"
 msgid "(press $hotkey to deactivate)"
 msgstr "(paspauskite $hotkey ėjimo tęsimui)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1923
+#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1933
 msgid "Planning mode activated!"
 msgstr "Įjungtas planavimo režimas!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1926
+#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1936
 msgid "Planning mode deactivated!"
 msgstr "Planavimo režimas išjungtas!"
 
@@ -6538,11 +6587,11 @@ msgstr "Nėra dalinių, kuriuos galite samdyti."
 msgid "You do not have enough gold to recruit that unit"
 msgstr "Neturite pakankamai aukso, kad pasamdytumėte šį dalinį"
 
-#: src/menu_events.cpp:352
+#: src/menu_events.cpp:351
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Esate atskirtas nuo savo karių ir negalite grąžinti jų"
 
-#: src/menu_events.cpp:371
+#: src/menu_events.cpp:370
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -6550,11 +6599,11 @@ msgstr ""
 "Nėra dalinių, kuriuos būtų galima grąžinti\n"
 "(Privalote turėti išgyvenusių veteranų iš ankstesnio scenarijaus)"
 
-#: src/menu_events.cpp:375
+#: src/menu_events.cpp:374
 msgid "You currently can't recall at the highlighted location"
 msgstr ""
 
-#: src/menu_events.cpp:402
+#: src/menu_events.cpp:401
 #, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall this unit"
@@ -6563,133 +6612,133 @@ msgstr[1] "Privalote turėti bent $cost auksinius, kad grąžintumėte dalinį."
 msgstr[2] "Privalote turėti bent $cost auksinių, kad grąžintumėte dalinį."
 msgstr[3] "Privalote turėti bent $cost auksinį, kad grąžintumėte dalinį."
 
-#: src/menu_events.cpp:528
+#: src/menu_events.cpp:541
 msgid "You cannot end your turn yet!"
 msgstr "Dar negalite baigti savo ėjimo!"
 
-#: src/menu_events.cpp:541
+#: src/menu_events.cpp:554
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Jūs dar nepradėjote savo ėjimo. Ar tikrai norite pabaigti ėjimą?"
 
-#: src/menu_events.cpp:550
+#: src/menu_events.cpp:563
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Kai kurie daliniai dar gali judėti. Ar tikrai norite baigti ėjimą?"
 
-#: src/menu_events.cpp:559
+#: src/menu_events.cpp:572
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr "Kai kurie kariai nepajudėjo. Ar tikrai norite baigti ėjimą?"
 
-#: src/menu_events.cpp:615
+#: src/menu_events.cpp:628
 msgid "Rename Unit"
 msgstr "Pervadinti dalinį"
 
-#: src/menu_events.cpp:616
+#: src/menu_events.cpp:629
 msgid "Name:"
 msgstr "Vardas:"
 
-#: src/menu_events.cpp:980
+#: src/menu_events.cpp:991
 msgid "Search"
 msgstr "Ieškoti"
 
-#: src/menu_events.cpp:1119
+#: src/menu_events.cpp:1130
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr "(D) – tik derinimo, (N) – tik tinklo, (A) – tik administravimo"
 
-#: src/menu_events.cpp:1126
+#: src/menu_events.cpp:1137
 msgid "(debug command)"
 msgstr "(derinimo komanda)"
 
-#: src/menu_events.cpp:1127
+#: src/menu_events.cpp:1138
 msgid "(network only)"
 msgstr "(tik tinklo)"
 
-#: src/menu_events.cpp:1129
+#: src/menu_events.cpp:1140
 msgid "(not during other events)"
 msgstr ""
 
-#: src/menu_events.cpp:1157
+#: src/menu_events.cpp:1168
 msgid "Refresh gui."
 msgstr "Atnaujinti grafinę sąsają."
 
-#: src/menu_events.cpp:1158
+#: src/menu_events.cpp:1169
 msgid "Switch a side to/from AI control."
 msgstr "Perjungti pusę į/iš DI kontrolės."
 
-#: src/menu_events.cpp:1159 src/menu_events.cpp:1161
+#: src/menu_events.cpp:1170 src/menu_events.cpp:1172
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<pusė> [on/off]]"
 
-#: src/menu_events.cpp:1160
+#: src/menu_events.cpp:1171
 #, fuzzy
 msgid "Switch a side to/from idle state."
 msgstr "Perjungti pusę į/iš DI kontrolės."
 
-#: src/menu_events.cpp:1164
+#: src/menu_events.cpp:1175
 msgid "<side> <nickname>"
 msgstr "<pusė> <slapyvardis>"
 
-#: src/menu_events.cpp:1164
+#: src/menu_events.cpp:1175
 msgid "Assign control of a side to a different player or observer."
 msgstr "Paskirti pusės valdymą kitam žaidėjui ar stebėtojui."
 
-#: src/menu_events.cpp:1165
+#: src/menu_events.cpp:1176
 msgid "Query the controller status of a side."
 msgstr ""
 
-#: src/menu_events.cpp:1166
+#: src/menu_events.cpp:1177
 msgid "<side>"
 msgstr "<pusė>"
 
-#: src/menu_events.cpp:1167
+#: src/menu_events.cpp:1178
 msgid "Clear chat history."
 msgstr "Išvalyti pokalbių istoriją."
 
-#: src/menu_events.cpp:1168
+#: src/menu_events.cpp:1179
 msgid "Debug foreground terrain."
 msgstr "Derinti fono vietovę."
 
-#: src/menu_events.cpp:1170
+#: src/menu_events.cpp:1181
 msgid "Debug layers from terrain under the mouse."
 msgstr "Derinti sluoksnius iš vietovės po pele."
 
-#: src/menu_events.cpp:1171
+#: src/menu_events.cpp:1182
 msgid "Show fps."
 msgstr "Rodyti kadrus per sekundę."
 
-#: src/menu_events.cpp:1173
+#: src/menu_events.cpp:1184
 msgid "Save game."
 msgstr "Išsaugoti žaidimą."
 
-#: src/menu_events.cpp:1175
+#: src/menu_events.cpp:1186
 msgid "Quit game."
 msgstr "Išjungti žaidimą."
 
-#: src/menu_events.cpp:1178
+#: src/menu_events.cpp:1189
 msgid "Save and quit."
 msgstr "Išsaugoti ir išjungti."
 
-#: src/menu_events.cpp:1180
+#: src/menu_events.cpp:1191
 msgid "Ignore replay errors."
 msgstr "Ignoruoti peržaidimo klaidas."
 
-#: src/menu_events.cpp:1181
+#: src/menu_events.cpp:1192
 msgid "Disable autosaves."
 msgstr "Uždrausti autoišsaugojimus."
 
-#: src/menu_events.cpp:1183
+#: src/menu_events.cpp:1194
 msgid "<id>"
 msgstr "<id>"
 
-#: src/menu_events.cpp:1183
+#: src/menu_events.cpp:1194
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Pereiti į sekantį scenarijų, arba į scenarijų, nurodytą prie „id“"
 
-#: src/menu_events.cpp:1185
+#: src/menu_events.cpp:1196
 msgid "Choose next scenario"
 msgstr "Pasirinkite kitą scenarijų..."
 
-#: src/menu_events.cpp:1188
+#: src/menu_events.cpp:1199
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -6697,11 +6746,11 @@ msgstr ""
 "Pakeisti ėjimų skaičių (ir dienos laiką), arba padidinti vienetu, jeigu "
 "numeris nenurodytas."
 
-#: src/menu_events.cpp:1188
+#: src/menu_events.cpp:1199
 msgid "[turn]"
 msgstr "[ėjimas]"
 
-#: src/menu_events.cpp:1191
+#: src/menu_events.cpp:1202
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
@@ -6709,196 +6758,196 @@ msgstr ""
 "Keisti ėjimų ribą, arba išjungti ją, jei joks numeris nenurodytas arba yra "
 "−1."
 
-#: src/menu_events.cpp:1191
+#: src/menu_events.cpp:1202
 msgid "[limit]"
 msgstr "[riba]"
 
-#: src/menu_events.cpp:1193
+#: src/menu_events.cpp:1204
 msgid "Turn debug mode on."
 msgstr "Įjungti derinimo režimą."
 
-#: src/menu_events.cpp:1194
+#: src/menu_events.cpp:1205
 msgid "Turn debug mode off."
 msgstr "Išjungti derinimo režimą."
 
-#: src/menu_events.cpp:1196 src/menu_events.cpp:1200
+#: src/menu_events.cpp:1207 src/menu_events.cpp:1211
 msgid "<command>[;<command>...]"
 msgstr "<komanda>[;<komanda>...]"
 
-#: src/menu_events.cpp:1196
+#: src/menu_events.cpp:1207
 msgid "Execute a Lua statement."
 msgstr "Įvykdyti Lua reiškinį"
 
-#: src/menu_events.cpp:1198
+#: src/menu_events.cpp:1209
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Lua scenarijams suteikti aukštesnes privilegijas."
 
-#: src/menu_events.cpp:1199
+#: src/menu_events.cpp:1210
 #, fuzzy
 msgid "Set the command used by the custom command hotkey"
 msgstr "Nustatyti komandą naudojamą pasirinktinės komandos sparčiųjų klavišų"
 
-#: src/menu_events.cpp:1202
+#: src/menu_events.cpp:1213
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr ""
 
-#: src/menu_events.cpp:1203
+#: src/menu_events.cpp:1214
 msgid "Launch the gamestate inspector"
 msgstr "Įjungti žaidimo būklės inspektorių"
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1216
 msgid "<name>[=<command>]"
 msgstr "<pavadinimas>[=<komanda>]"
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1216
 msgid "Set or show alias to a command"
 msgstr "Nustatyti arba rodyti komandos sinonimą"
 
-#: src/menu_events.cpp:1207
+#: src/menu_events.cpp:1218
 msgid "<var>=<value>"
 msgstr "<kintamasis>=<reikšmė>"
 
-#: src/menu_events.cpp:1207
+#: src/menu_events.cpp:1218
 msgid "Set a scenario variable."
 msgstr "Nustatyti scenarijaus kintamąjį."
 
-#: src/menu_events.cpp:1208
+#: src/menu_events.cpp:1219
 msgid "<var>"
 msgstr "<kintamasis>"
 
-#: src/menu_events.cpp:1208
+#: src/menu_events.cpp:1219
 msgid "Show a scenario variable."
 msgstr "Rodyti scenarijaus kintamąjį."
 
-#: src/menu_events.cpp:1210
+#: src/menu_events.cpp:1221
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 "Modifikuoti dalinio kintamąjį. (Tik aukščiausio lygio klavišai yra "
 "palaikomi.)"
 
-#: src/menu_events.cpp:1216
+#: src/menu_events.cpp:1227
 msgid "Discover all units in help."
 msgstr "Aptikti visus dalinius, esančius pagalboje."
 
-#: src/menu_events.cpp:1217
+#: src/menu_events.cpp:1228
 msgid "'Undiscover' all units in help."
 msgstr "„Aptikti“ visus dalinius, esančius pagalboje."
 
-#: src/menu_events.cpp:1218
+#: src/menu_events.cpp:1229
 msgid "Create a unit."
 msgstr "Sukurti dalinį."
 
-#: src/menu_events.cpp:1219
+#: src/menu_events.cpp:1230
 msgid "Toggle fog for the current player."
 msgstr "Perjungti rūką dabartiniam žaidėjui."
 
-#: src/menu_events.cpp:1220
+#: src/menu_events.cpp:1231
 msgid "Toggle shroud for the current player."
 msgstr "Perjungti uždangą dabartiniam žaidėjui."
 
-#: src/menu_events.cpp:1221
+#: src/menu_events.cpp:1232
 msgid "Give gold to the current player."
 msgstr "Duoti aukso dabartiniam žaidėjui."
 
-#: src/menu_events.cpp:1222
+#: src/menu_events.cpp:1233
 msgid "Fire a game event."
 msgstr "Iškviesti žaidimo įvykį."
 
-#: src/menu_events.cpp:1225
+#: src/menu_events.cpp:1236
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Perjungti x,y koordinačių rodymą ant laukelių."
 
-#: src/menu_events.cpp:1228
+#: src/menu_events.cpp:1239
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Perjungti vietovės kodų rodymą ant laukelių."
 
-#: src/menu_events.cpp:1231
+#: src/menu_events.cpp:1242
 #, fuzzy
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "Perjungti vietovės kodų rodymą ant laukelių."
 
-#: src/menu_events.cpp:1233
+#: src/menu_events.cpp:1244
 msgid "Toggle planning mode."
 msgstr "Perjungti planavimo režimą."
 
-#: src/menu_events.cpp:1236
+#: src/menu_events.cpp:1247
 msgid "Access whiteboard options dialog."
 msgstr ""
 
-#: src/menu_events.cpp:1356
+#: src/menu_events.cpp:1367
 #, fuzzy
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "Nepavyksta surasti žymės ar dalinio turinčio eilutę „$search“."
 
-#: src/menu_events.cpp:1399
+#: src/menu_events.cpp:1410
 #, fuzzy
 msgid "Can't droid invalid side: '$side'."
 msgstr "Negali Droido negaliojančių pusėje: „$side“."
 
-#: src/menu_events.cpp:1404
+#: src/menu_events.cpp:1415
 #, fuzzy
 msgid "Can't droid networked side: '$side'."
 msgstr "Negali droid'o tinklo pusėje: „$side“."
 
-#: src/menu_events.cpp:1422
+#: src/menu_events.cpp:1433
 #, fuzzy
 msgid "Can't droid a local ai side: '$side'."
 msgstr "Negali Droido negaliojančių pusėje: „$side“."
 
-#: src/menu_events.cpp:1438
+#: src/menu_events.cpp:1449
 #, fuzzy
 msgid "Can't idle invalid side: '$side'."
 msgstr "Negali Droido negaliojančių pusėje: „$side“."
 
-#: src/menu_events.cpp:1443
+#: src/menu_events.cpp:1454
 #, fuzzy
 msgid "Can't idle networked side: '$side'."
 msgstr "Negali droid'o tinklo pusėje: „$side“."
 
-#: src/menu_events.cpp:1448
+#: src/menu_events.cpp:1459
 #, fuzzy
 msgid "Can't idle local ai side: '$side'."
 msgstr "Negali Droido negaliojančių pusėje: „$side“."
 
-#: src/menu_events.cpp:1508
+#: src/menu_events.cpp:1519
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Negalima pakeisti negaliojančios pusės kontrolės: „$side“."
 
-#: src/menu_events.cpp:1518
+#: src/menu_events.cpp:1529
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Negalima pakeisti pusės, esančios už ribų, kontrolės: „$side“."
 
-#: src/menu_events.cpp:1535
+#: src/menu_events.cpp:1546
 #, fuzzy
 msgid "Can't query control of invalid side: '$side'."
 msgstr "Negalima pakeisti negaliojančios pusės kontrolės: „$side“."
 
-#: src/menu_events.cpp:1542
+#: src/menu_events.cpp:1553
 #, fuzzy
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "Negalima pakeisti pusės, esančios už ribų, kontrolės: „$side“."
 
-#: src/menu_events.cpp:1660
+#: src/menu_events.cpp:1671
 msgid "Choose Scenario (Debug!)"
 msgstr "Pasirinkti scenarijų (Derinimas!)"
 
-#: src/menu_events.cpp:1696
+#: src/menu_events.cpp:1707
 msgid "Debug mode activated!"
 msgstr "Įjungtas derinimo režimas!"
 
-#: src/menu_events.cpp:1699
+#: src/menu_events.cpp:1710
 msgid "Debug mode not available in network games"
 msgstr "Derinimo režimas neprieinamas tinklo žaidimuose"
 
-#: src/menu_events.cpp:1706
+#: src/menu_events.cpp:1717
 msgid "Debug mode deactivated!"
 msgstr "Išjungtas derinimo režimas!"
 
-#: src/menu_events.cpp:1726
+#: src/menu_events.cpp:1737
 msgid "WARNING! Unsafe Lua Mode"
 msgstr ""
 
-#: src/menu_events.cpp:1727
+#: src/menu_events.cpp:1738
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -6907,15 +6956,15 @@ msgid ""
 "Do not continue unless you really know what you are doing."
 msgstr ""
 
-#: src/menu_events.cpp:1732
+#: src/menu_events.cpp:1743
 msgid "Unsafe mode enabled!"
 msgstr "Įjungtas nesaugus režimas!"
 
-#: src/menu_events.cpp:1781
+#: src/menu_events.cpp:1792
 msgid "Variable not found"
 msgstr "Kintamasis nerastas"
 
-#: src/menu_events.cpp:1830
+#: src/menu_events.cpp:1840
 #, fuzzy
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
@@ -6924,23 +6973,23 @@ msgstr ""
 "Neteisinga prigimtis: „$alignment“, turi būti viena iš šviesos, neutralių, "
 "chaotiškų arba prieblandos."
 
-#: src/menu_events.cpp:1856
+#: src/menu_events.cpp:1866
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "Ar norite išvalyti iš pagalbos visus savo atrastus dalinius?"
 
-#: src/menu_events.cpp:1870
+#: src/menu_events.cpp:1880
 msgid "Invalid unit type"
 msgstr "Netinkamas dalinio tipas"
 
-#: src/menu_events.cpp:1877
+#: src/menu_events.cpp:1887
 msgid "Invalid location"
 msgstr "Netinkama vietovė"
 
-#: src/menu_events.cpp:1950 src/menu_events.cpp:1976
+#: src/menu_events.cpp:1960 src/menu_events.cpp:1986
 msgid "prompt^Command:"
 msgstr "Komanda:"
 
-#: src/mouse_events.cpp:841
+#: src/mouse_events.cpp:900
 #, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
@@ -6948,20 +6997,20 @@ msgid ""
 msgstr ""
 "Jūsų vadas turi būti bokšte, kad galėtumėte samdyti arba grąžinti dalinius."
 
-#: src/mouse_events.cpp:933
+#: src/mouse_events.cpp:994
 #, fuzzy
 msgid "This unit has no usable weapons."
 msgstr "Nėra naudingo ginklo"
 
-#: src/mp_game_settings.hpp:68
+#: src/mp_game_settings.hpp:66
 msgid "Independent"
 msgstr ""
 
-#: src/mp_game_settings.hpp:69
+#: src/mp_game_settings.hpp:67
 msgid "No Mirror"
 msgstr ""
 
-#: src/mp_game_settings.hpp:70
+#: src/mp_game_settings.hpp:68
 msgid "No Ally Mirror"
 msgstr ""
 
@@ -6995,19 +7044,19 @@ msgstr "$name perėmė valdymą"
 msgid "Turn changed"
 msgstr "Pasikeitė ėjimas"
 
-#: src/pathfind/pathfind.cpp:709
+#: src/pathfind/pathfind.cpp:735
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Rasta vietovė su judėjimo kaina mažesne nei 1."
 
-#: src/play_controller.cpp:245
+#: src/play_controller.cpp:241
 msgid "time left for current turn"
 msgstr "šiam ėjimui likęs laikas"
 
-#: src/play_controller.cpp:247 src/replay_controller.cpp:114
+#: src/play_controller.cpp:243 src/replay_controller.cpp:114
 msgid "current local time"
 msgstr "dabartinis vietinis laikas"
 
-#: src/play_controller.cpp:984
+#: src/play_controller.cpp:980
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7015,19 +7064,19 @@ msgstr ""
 "Šis žaidimas išsisinchronizavo. Nėra prasmės tęsti žaidimą. Ar norite "
 "išsaugoti žaidimą?"
 
-#: src/play_controller.cpp:985
+#: src/play_controller.cpp:981
 msgid "Error details:"
 msgstr "Klaidos detalės:"
 
-#: src/play_controller.cpp:1260
+#: src/play_controller.cpp:1252
 msgid "No objectives available"
 msgstr "Nėra jokių tikslų"
 
-#: src/playmp_controller.cpp:155
+#: src/playmp_controller.cpp:153
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Atšaukiami dar neperduoti serveriui ėjimai."
 
-#: src/playmp_controller.cpp:371
+#: src/playmp_controller.cpp:364
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7043,29 +7092,29 @@ msgstr ""
 "\n"
 " Ar norite išsaugoti žaidimo klaidų žurnalą?"
 
-#: src/playmp_controller.cpp:414
+#: src/playmp_controller.cpp:407
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
 
-#: src/playsingle_controller.cpp:163
+#: src/playsingle_controller.cpp:165
 msgid "Game Error"
 msgstr "Žaidimo klaida"
 
-#: src/playsingle_controller.cpp:164
+#: src/playsingle_controller.cpp:166
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
 "reloaded a corrupt game."
 msgstr ""
 
-#: src/playsingle_controller.cpp:314
+#: src/playsingle_controller.cpp:316
 msgid "The game is over."
 msgstr "Žaidimas baigtas."
 
-#: src/playsingle_controller.cpp:349
+#: src/playsingle_controller.cpp:351
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7073,7 +7122,7 @@ msgstr ""
 "Nutrūko tinklo ryšys ir žaidimas negali tęstis. Ar norite išsaugoti šį "
 "žaidimą?"
 
-#: src/playsingle_controller.cpp:439
+#: src/playsingle_controller.cpp:440
 msgid "It is now $name|’s turn"
 msgstr "Dabar $name| ėjimas"
 
@@ -7115,7 +7164,7 @@ msgstr "Išjungti"
 msgid "Do you really want to quit?"
 msgstr "Ar tikrai norite išjungti?"
 
-#: src/reports.cpp:145 src/savegame.cpp:403
+#: src/reports.cpp:145 src/savegame.cpp:402
 msgid "Name: "
 msgstr "Vardas: "
 
@@ -7191,7 +7240,7 @@ msgstr "Šis dalinys buvo paverstas akmeniu. Jis negali judėti ar pulti."
 msgid "Ability: "
 msgstr "Gebėjimas: "
 
-#: src/reports.cpp:391 src/reports.cpp:818
+#: src/reports.cpp:391 src/reports.cpp:829
 msgid " (inactive)"
 msgstr " (neaktyvus)"
 
@@ -7231,95 +7280,95 @@ msgstr "matymas: "
 msgid "Movement Costs:"
 msgstr "Judėjimo kainos:"
 
-#: src/reports.cpp:685 src/reports.cpp:893 src/reports.cpp:905
+#: src/reports.cpp:693 src/reports.cpp:904 src/reports.cpp:916
 msgid "Weapon: "
 msgstr "Ginklas: "
 
-#: src/reports.cpp:686 src/reports.cpp:894
+#: src/reports.cpp:694 src/reports.cpp:905
 msgid "Damage: "
 msgstr "Žala: "
 
-#: src/reports.cpp:690
+#: src/reports.cpp:698
 msgid "Base damage: "
 msgstr "Bazinė žala: "
 
-#: src/reports.cpp:692 src/reports.cpp:726 src/reports.cpp:736
+#: src/reports.cpp:700 src/reports.cpp:734 src/reports.cpp:744
 #, fuzzy
 msgid "With specials: "
 msgstr "Ginklų ypatybės: "
 
-#: src/reports.cpp:695
+#: src/reports.cpp:703
 msgid "Time of day: "
 msgstr "Paros laikas: "
 
-#: src/reports.cpp:699
+#: src/reports.cpp:707
 msgid "Leadership: "
 msgstr "Vadovavimas: "
 
-#: src/reports.cpp:703
+#: src/reports.cpp:711
 msgid "Slowed: "
 msgstr "Sulėtintas: "
 
-#: src/reports.cpp:707
+#: src/reports.cpp:715
 msgid "Attacks: "
 msgstr "Atakos: "
 
-#: src/reports.cpp:711
+#: src/reports.cpp:719
 #, fuzzy
 msgid "Max swarm bonus: "
 msgstr "Ėjimo premija: "
 
-#: src/reports.cpp:712 src/reports.cpp:731
+#: src/reports.cpp:720 src/reports.cpp:739
 #, fuzzy
 msgid "Swarm: "
 msgstr "Pulkas:"
 
-#: src/reports.cpp:713 src/reports.cpp:724 src/reports.cpp:735
+#: src/reports.cpp:721 src/reports.cpp:732 src/reports.cpp:743
 msgid "Base attacks: "
 msgstr "Bazinės atakos:"
 
-#: src/reports.cpp:719
+#: src/reports.cpp:727
 #, fuzzy
 msgid "Specials: "
 msgstr "Ginklų ypatybės: "
 
-#: src/reports.cpp:729
+#: src/reports.cpp:737
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:748
+#: src/reports.cpp:756
 msgid "Weapon range: "
 msgstr "Ginklo nuotolis: "
 
-#: src/reports.cpp:749
+#: src/reports.cpp:757
 msgid "Damage type: "
 msgstr "Žalos tipas: "
 
-#: src/reports.cpp:750
+#: src/reports.cpp:758
 msgid "Damage versus: "
 msgstr "Žala prieš: "
 
-#: src/reports.cpp:791
+#: src/reports.cpp:802
 msgid "Accuracy:"
 msgstr "Taiklumas:"
 
-#: src/reports.cpp:796
+#: src/reports.cpp:807
 msgid "Parry:"
 msgstr "Atrėmimas:"
 
-#: src/reports.cpp:816
+#: src/reports.cpp:827
 msgid "Weapon special: "
 msgstr "Ginklų ypatybės: "
 
-#: src/reports.cpp:877
+#: src/reports.cpp:888
 msgid "None"
 msgstr "Nėra"
 
-#: src/reports.cpp:906
+#: src/reports.cpp:917
 msgid "Total damage"
 msgstr "Bendra žala"
 
-#: src/reports.cpp:968
+#: src/reports.cpp:979
 #, fuzzy
 #| msgid "Attacks: "
 msgid "Attack"
@@ -7329,58 +7378,58 @@ msgstr[1] "Atakos: "
 msgstr[2] "Atakos: "
 msgstr[3] "Atakos: "
 
-#: src/reports.cpp:1104 src/reports.cpp:1156
+#: src/reports.cpp:1115 src/reports.cpp:1167
 msgid "Lawful units: "
 msgstr "Šviesos daliniai: "
 
-#: src/reports.cpp:1106 src/reports.cpp:1158
+#: src/reports.cpp:1117 src/reports.cpp:1169
 msgid "Neutral units: "
 msgstr "Neutralūs daliniai: "
 
-#: src/reports.cpp:1107 src/reports.cpp:1159
+#: src/reports.cpp:1118 src/reports.cpp:1170
 msgid "Chaotic units: "
 msgstr "Chaotiški daliniai: "
 
-#: src/reports.cpp:1109 src/reports.cpp:1161
+#: src/reports.cpp:1120 src/reports.cpp:1172
 msgid "Liminal units: "
 msgstr "Prieblandos daliniai:"
 
-#: src/reports.cpp:1220
+#: src/reports.cpp:1231
 msgid "Turn Number"
 msgstr ""
 
-#: src/reports.cpp:1222
+#: src/reports.cpp:1233
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1247
+#: src/reports.cpp:1258
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1266
+#: src/reports.cpp:1277
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
-#: src/reports.cpp:1266
+#: src/reports.cpp:1277
 #, fuzzy
 #| msgid "Village"
 msgid "Villages"
 msgstr "Kaimas"
 
-#: src/reports.cpp:1271
+#: src/reports.cpp:1282
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1271
+#: src/reports.cpp:1282
 #, fuzzy
 #| msgid "units"
 msgid "Units"
 msgstr "daliniai"
 
-#: src/reports.cpp:1281
+#: src/reports.cpp:1292
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
@@ -7388,65 +7437,65 @@ msgid ""
 "the amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1281
+#: src/reports.cpp:1292
 #, fuzzy
 #| msgid "upkeep"
 msgid "Upkeep"
 msgstr "išlaikymas"
 
-#: src/reports.cpp:1318
+#: src/reports.cpp:1329
 #, fuzzy
 #| msgid "income"
 msgid "Income"
 msgstr "pajamos"
 
-#: src/reports.cpp:1318
+#: src/reports.cpp:1329
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
 msgstr ""
 
-#: src/reports.cpp:1486
+#: src/reports.cpp:1497
 msgid "Observers:"
 msgstr "Stebėtojai:"
 
-#: src/reports.cpp:1526
+#: src/reports.cpp:1537
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1552
+#: src/reports.cpp:1563
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1552
+#: src/reports.cpp:1563
 msgid "Turn Countdown"
 msgstr ""
 
-#: src/save_index.cpp:195
-msgid "%a %b %d %H:%M %Y"
-msgstr "%Y %b %d %a %H:%M"
-
-#: src/save_index.cpp:195
+#: src/save_index.cpp:233
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%Y %b %d %a %H:%M"
 
-#: src/save_index.cpp:219 src/save_index.cpp:221
+#: src/save_index.cpp:234
+msgid "%a %b %d %H:%M %Y"
+msgstr "%Y %b %d %a %H:%M"
+
+#: src/save_index.cpp:255 src/save_index.cpp:262
 msgid " replay"
 msgstr " peržaidimas"
 
-#: src/savegame.cpp:193 src/savegame.cpp:197
+#: src/savegame.cpp:192 src/savegame.cpp:196
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Dėmesio: Failas, kurį bandote įkelti yra sugadintas. Įkeliama vis tiek.\n"
 
-#: src/savegame.cpp:244
+#: src/savegame.cpp:243
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
 msgstr ""
 "Išsaugojimas yra iš per senos versijos ($version_number|), kad būtų įkeltas."
 
-#: src/savegame.cpp:252
+#: src/savegame.cpp:251
 msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
@@ -7454,66 +7503,70 @@ msgstr ""
 "Išsaugojimas yra iš kitos žaidimo versijos  ($version_number|). Ar norite "
 "pabandyti jį įkelti?"
 
-#: src/savegame.cpp:255 src/savegame.cpp:299
+#: src/savegame.cpp:254 src/savegame.cpp:298
 msgid "Load Game"
 msgstr "Įkelti žaidimą"
 
-#: src/savegame.cpp:299
+#: src/savegame.cpp:298
 msgid "Replays are not supported in multiplayer mode."
 msgstr ""
 
-#: src/savegame.cpp:306
+#: src/savegame.cpp:305
 msgid "This is not a multiplayer save."
 msgstr "Tai nėra daugelio žaidėjų žaidimo išsaugojimas."
 
-#: src/savegame.cpp:333
+#: src/savegame.cpp:332
 msgid "The game could not be saved: "
 msgstr "Žaidimas negali būti išsaugotas: "
 
-#: src/savegame.cpp:403
+#: src/savegame.cpp:402
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Išsaugojimas jau egzistuoja. Ar norite jį perrašyti?"
 
-#: src/savegame.cpp:404
+#: src/savegame.cpp:403
 msgid "Overwrite?"
 msgstr "Perrašyti?"
 
-#: src/savegame.cpp:412
+#: src/savegame.cpp:411
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr ""
 "Išsaugojimų pavadinimai neturėtų baigtis „.gz“ arba „.bz2“. Prašome "
 "pašalintį šį plėtinį."
 
-#: src/savegame.cpp:462
+#: src/savegame.cpp:470
 msgid "Saved"
 msgstr "Išsaugota"
 
-#: src/savegame.cpp:462
+#: src/savegame.cpp:470
 msgid "The game has been saved."
 msgstr "Žaidimas išsaugotas."
 
-#: src/savegame.cpp:493 src/savegame.cpp:513
+#: src/savegame.cpp:500 src/savegame.cpp:520
 msgid "Could not write to file"
 msgstr "Nepavyksta įrašyti į failą"
 
-#: src/savegame.cpp:546
+#: src/savegame.cpp:553
 msgid "Save Replay"
 msgstr "Išsaugoti peržaidimą"
 
-#: src/savegame.cpp:551
+#: src/savegame.cpp:558
 msgid "replay"
 msgstr "peržaidimas"
 
-#: src/savegame.cpp:570
+#: src/savegame.cpp:576
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Nepavyko automatiškai išsaugoti žaidimo. Prašome išsaugoti žaidimą rankiniu "
 "būdu."
 
-#: src/savegame.cpp:622
+#: src/savegame.cpp:627
 msgid "Save Game"
 msgstr "Išsaugoti žaidimą"
+
+#: src/savegame.cpp:641
+msgid "Game state is corrupted"
+msgstr ""
 
 #: src/serialization/parser.cpp:153
 msgid "Unexpected characters at line start"
@@ -7661,111 +7714,264 @@ msgstr "Y"
 msgid "infix_binary^i"
 msgstr "i"
 
+#: src/synced_user_choice.cpp:328
+msgid "waiting for $desc from side(s) $sides"
+msgstr ""
+
+#: src/terrain/terrain.cpp:181
+msgid "Allied village"
+msgstr "Draugų kaimas"
+
+#: src/terrain/terrain.cpp:186
+msgid "Enemy village"
+msgstr "Priešų kaimas"
+
+#: src/terrain/terrain.cpp:191
+msgid "Owned village"
+msgstr "Nuosavas kaimas"
+
+#: src/theme.cpp:308
+msgid "border_size should be between 0.0 and 0.5."
+msgstr "border_size turi būti tarp 0.0 ir 0.5."
+
+#: src/theme.cpp:551 src/theme.cpp:556
+msgid "Hotkey(s): "
+msgstr ""
+
+#: src/time_of_day.cpp:45
+#, fuzzy
+msgid "Stub Time of Day"
+msgstr "Paros laikas"
+
+#: src/time_of_day.cpp:46
+msgid "This Time of Day is only a Stub!"
+msgstr ""
+
+#. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:351
+#, fuzzy
+msgid "<span color=\"$color\">$number_or_percent</span> damage"
+msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
+msgstr[0] "per ėjimą"
+msgstr[1] "per ėjimą"
+msgstr[2] "per ėjimą"
+msgstr[3] "per ėjimą"
+
+#: src/units/attack_type.cpp:360
+#, fuzzy
+msgid "$number damage"
+msgid_plural "$number damage"
+msgstr[0] "žalos"
+msgstr[1] "žalos"
+msgstr[2] "žalos"
+msgstr[3] "žalos"
+
+#. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:369
+#, fuzzy
+msgid "<span color=\"$color\">$number_or_percent</span> strike"
+msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
+msgstr[0] "per ėjimą"
+msgstr[1] "per ėjimą"
+msgstr[2] "per ėjimą"
+msgstr[3] "per ėjimą"
+
+#. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:378
+#, fuzzy
+msgid "$number strike"
+msgid_plural "$number strikes"
+msgstr[0] "smūgis"
+msgstr[1] "smūgiai"
+msgstr[2] "smūgių"
+msgstr[3] "smūgis"
+
+#. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:387
+#, fuzzy
+msgid "$number| accuracy"
+msgstr "% atrėmimas"
+
+#. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:394
+#, fuzzy
+msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
+msgstr "per ėjimą"
+
+#. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:401
+#, fuzzy
+msgid "$number parry"
+msgstr "% atrėmimas"
+
+#. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:408
+#, fuzzy
+msgid "<span color=\"$color\">$number_or_percent</span> parry"
+msgstr "per ėjimą"
+
+#. TRANSLATORS: Current value for WML code set_movement, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:415
+#, fuzzy
+msgid "$number movement point"
+msgid_plural "$number movement points"
+msgstr[0] "Judėjimo kainos:"
+msgstr[1] "Judėjimo kainos:"
+msgstr[2] "Judėjimo kainos:"
+msgstr[3] "Judėjimo kainos:"
+
+#. TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:424
+#, fuzzy
+msgid "<span color=\"$color\">$number_or_percent movement</span> point"
+msgid_plural "<span color=\"$color\">$number_or_percent movement</span> points"
+msgstr[0] "per ėjimą"
+msgstr[1] "per ėjimą"
+msgstr[2] "per ėjimą"
+msgstr[3] "per ėjimą"
+
+#: src/units/types.cpp:545 src/units/types.hpp:181
+msgid "chaotic"
+msgstr "chaotiškas"
+
+#: src/units/types.cpp:545 src/units/types.hpp:179
+msgid "lawful"
+msgstr "šviesus"
+
+#: src/units/types.cpp:545 src/units/types.hpp:182
+msgid "liminal"
+msgstr "prieblandos"
+
+#: src/units/types.cpp:545 src/units/types.hpp:180
+msgid "neutral"
+msgstr "neutralus"
+
+#: src/units/types.cpp:546 src/units/types.cpp:912
+msgid "female^chaotic"
+msgstr "chaotiška"
+
+#: src/units/types.cpp:546 src/units/types.cpp:910
+msgid "female^lawful"
+msgstr "šviesi"
+
+#: src/units/types.cpp:546 src/units/types.cpp:911
+msgid "female^neutral"
+msgstr "neutrali"
+
+#: src/units/types.cpp:547 src/units/types.cpp:913
+msgid "female^liminal"
+msgstr "prieblandos"
+
+#: src/units/unit.cpp:1774
+msgid "$attack_list|: $effect_description"
+msgstr "$attack_list|: $effect_description"
+
+#: src/units/unit.cpp:1780
+msgid "wesnoth"
+msgstr ""
+
+#: src/units/unit.cpp:1791
+#, fuzzy
+msgid "<span color=\"$color\">$number_or_percent</span> move"
+msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
+msgstr[0] "per ėjimą"
+msgstr[1] "per ėjimą"
+msgstr[2] "per ėjimą"
+msgstr[3] "per ėjimą"
+
+#: src/units/unit.cpp:1797
+#, fuzzy
+msgid "<span color=\"$color\">$number_or_percent</span> vision"
+msgstr "per ėjimą"
+
+#: src/units/unit.cpp:1801
+#, fuzzy
+msgid "<span color=\"$color\">$number_or_percent</span> jamming"
+msgstr "per ėjimą"
+
+#: src/units/unit.cpp:1806
+#, fuzzy
+msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
+msgstr "per ėjimą"
+
+#: src/units/unit.cpp:1810
+#, fuzzy
+msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
+msgid_plural ""
+"<span color=\"$color\">$number_or_percent</span> attacks per turn"
+msgstr[0] "per ėjimą"
+msgstr[1] "per ėjimą"
+msgstr[2] "per ėjimą"
+msgstr[3] "per ėjimą"
+
+#: src/units/unit.cpp:1817
+#, fuzzy
+msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
+msgstr "per ėjimą"
+
+#: src/units/unit.cpp:2222
+msgid "$effect_description per level"
+msgstr "$effect_description lygiui"
+
+#. TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
+#: src/utils/irdya_datetime.cpp:59
+msgid "$year BW"
+msgstr ""
+
+#. TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
+#: src/utils/irdya_datetime.cpp:62
+msgid "$year YW"
+msgstr ""
+
+#. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
+#: src/utils/irdya_datetime.cpp:65
+msgid "$year BF"
+msgstr ""
+
+#. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesonth
+#: src/utils/irdya_datetime.cpp:68
+msgid "$year AF"
+msgstr ""
+
+#: src/whiteboard/manager.cpp:1094
+msgid "SHOW ALL allies’ plans"
+msgstr "RODYTI VISUS sąjungininkų planus"
+
+#: src/whiteboard/manager.cpp:1095
+msgid "HIDE ALL allies’ plans"
+msgstr "SLĖPTI VISUS sąjungininkų planus"
+
+#: src/whiteboard/manager.cpp:1109
+msgid "Show plans for $player"
+msgstr "Rodyti žaidėjo $player planus"
+
+#: src/whiteboard/manager.cpp:1111
+msgid "Hide plans for $player"
+msgstr "Slėpti žaidėjo $player planus"
+
+#: src/whiteboard/manager.cpp:1114
+msgid "Whiteboard Options"
+msgstr ""
+
+#, fuzzy
+#~ msgid "theme^UnitBox"
+#~ msgstr "Pandora"
+
+#~ msgid "--give--"
+#~ msgstr "--duoti--"
+
+#~ msgid "Unknown era: $era_id"
+#~ msgstr "Nežinoma era: $era_id"
+
+#~ msgid "Unknown scenario: $scenario_id"
+#~ msgstr "Nežinomas scenarijus: $scenario_id"
+
+#~ msgid "Unknown campaign: $campaign_id"
+#~ msgstr "Nežinoma kampanija: $campaign_id"
+
 #, fuzzy
 #~ msgid "wfl"
 #~ msgstr "šviesos"
-
-#~ msgid "Allied village"
-#~ msgstr "Draugų kaimas"
-
-#~ msgid "Enemy village"
-#~ msgstr "Priešų kaimas"
-
-#~ msgid "Owned village"
-#~ msgstr "Nuosavas kaimas"
-
-#~ msgid "border_size should be between 0.0 and 0.5."
-#~ msgstr "border_size turi būti tarp 0.0 ir 0.5."
-
-#, fuzzy
-#~ msgid "Stub Time of Day"
-#~ msgstr "Paros laikas"
-
-#, fuzzy
-#~ msgid "$number damage"
-#~ msgid_plural "$number damage"
-#~ msgstr[0] "žalos"
-#~ msgstr[1] "žalos"
-#~ msgstr[2] "žalos"
-#~ msgstr[3] "žalos"
-
-#, fuzzy
-#~ msgid "$number strike"
-#~ msgid_plural "$number strikes"
-#~ msgstr[0] "smūgis"
-#~ msgstr[1] "smūgiai"
-#~ msgstr[2] "smūgių"
-#~ msgstr[3] "smūgis"
-
-#, fuzzy
-#~ msgid "$number| accuracy"
-#~ msgstr "% atrėmimas"
-
-#, fuzzy
-#~ msgid "$number parry"
-#~ msgstr "% atrėmimas"
-
-#, fuzzy
-#~ msgid "$number movement point"
-#~ msgid_plural "$number movement points"
-#~ msgstr[0] "Judėjimo kainos:"
-#~ msgstr[1] "Judėjimo kainos:"
-#~ msgstr[2] "Judėjimo kainos:"
-#~ msgstr[3] "Judėjimo kainos:"
-
-#~ msgid "No description available."
-#~ msgstr "Nėra jokio aprašymo."
-
-#~ msgid "female^lawful"
-#~ msgstr "šviesi"
-
-#~ msgid "female^neutral"
-#~ msgstr "neutrali"
-
-#~ msgid "female^chaotic"
-#~ msgstr "chaotiška"
-
-#~ msgid "female^liminal"
-#~ msgstr "prieblandos"
-
-#~ msgid "lawful"
-#~ msgstr "šviesus"
-
-#~ msgid "neutral"
-#~ msgstr "neutralus"
-
-#~ msgid "chaotic"
-#~ msgstr "chaotiškas"
-
-#~ msgid "liminal"
-#~ msgstr "prieblandos"
-
-#~ msgid "$attack_list|: $effect_description"
-#~ msgstr "$attack_list|: $effect_description"
-
-#, fuzzy
-#~ msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
-#~ msgid_plural ""
-#~ "<span color=\"$color\">$number_or_percent</span> attacks per turn"
-#~ msgstr[0] "per ėjimą"
-#~ msgstr[1] "per ėjimą"
-#~ msgstr[2] "per ėjimą"
-#~ msgstr[3] "per ėjimą"
-
-#~ msgid "$effect_description per level"
-#~ msgstr "$effect_description lygiui"
-
-#~ msgid "SHOW ALL allies’ plans"
-#~ msgstr "RODYTI VISUS sąjungininkų planus"
-
-#~ msgid "HIDE ALL allies’ plans"
-#~ msgstr "SLĖPTI VISUS sąjungininkų planus"
-
-#~ msgid "Show plans for $player"
-#~ msgstr "Rodyti žaidėjo $player planus"
-
-#~ msgid "Hide plans for $player"
-#~ msgstr "Slėpti žaidėjo $player planus"
 
 #~ msgid " and "
 #~ msgstr " ir "

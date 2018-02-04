@@ -33,9 +33,9 @@ wesnothd \- Servidor de partidas multijugador para La batalla por \fBWesnoth\fP
 .
 .SH DESCRIPCIÓN
 .
-Manages Battle for Wesnoth multiplayer games. See
-https://www.wesnoth.org/wiki/ServerAdministration on what commands the
-server accepts via the wesnoth client (/query ...) or the fifo.
+Administra partidas multijugador para La batalla por Wesnoth. Vea
+https://www.wesnoth.org/wiki/ServerAdministration para saber qué comandos
+acepta el servidor a través del cliente de wesnoth (/query ...) o del FIFO.
 .
 .SH OPCIONES
 .
@@ -118,9 +118,10 @@ comodines. Vea \fBglob\fP(7) para más detalles. Los valores por defecto
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/wesnothd/socket\fP).
+La ruta al FIFO a través del cual puede enviarle comandos al servidor
+(equivalente a /query ... en Wesnoth). Si no se especifica, se usará por
+omisión la ruta del momento de la compilación (por omisión:
+\fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 El número máximo de mensajes permitidos en un lapso de tiempo definido por
@@ -288,7 +289,7 @@ Soliton <soliton.de@gmail.com> y Thomas Baumhauer
 <thomas.baumhauer@gmail.com>.  Esta página de manual fue
 originalmente escrita por Cyril Bouthors <cyril@bouthors.org>.
 .br
-Visit the official homepage: https://www.wesnoth.org/
+Visite la página web oficial: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .

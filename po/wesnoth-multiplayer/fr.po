@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Multiplayer-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 20:28 UTC\n"
+"POT-Creation-Date: 2018-02-04 16:40 UTC\n"
 "PO-Revision-Date: 2014-04-14 12:29+0100\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
@@ -63,17 +63,25 @@ msgstr ""
 "peut recruter des niveaux deux. Contient six factions, pas nécessairement "
 "équilibrées."
 
-#. [era]: id=era_khalifate
+#. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:83
-msgid "Default + Khalifate"
-msgstr "Par défaut + khâlifat"
+msgid "Default + Dunefolk"
+msgstr ""
 
-#. [era]: id=era_khalifate
+#. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:84
+#, fuzzy
+#| msgid ""
+#| "An era featuring an additional faction besides the six factions from "
+#| "Default Era. Khalifate units use no magic, but instead rely on careful "
+#| "use of terrain and coordinated strikes around dusk or dawn.\n"
+#| "\n"
+#| "This era is still under development, so please be sure to report any "
+#| "problems that arise."
 msgid ""
 "An era featuring an additional faction besides the six factions from Default "
-"Era. Khalifate units use no magic, but instead rely on careful use of "
-"terrain and coordinated strikes around dusk or dawn.\n"
+"Era. Dunefolk units rely on careful use of terrain and coordinated strikes "
+"around dusk or dawn.\n"
 "\n"
 "This era is still under development, so please be sure to report any "
 "problems that arise."
@@ -86,17 +94,27 @@ msgstr ""
 "Cette ère est encore en développement, n'hésitez pas à signaler les "
 "problèmes que vous rencontrez."
 
-#. [era]: id=era_khalifate_heroes
+#. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:94
-msgid "Age of Heroes + Khalifate"
-msgstr "Âge des héros + khâlifat"
+#, fuzzy
+#| msgid "Age of Heroes"
+msgid "Age of Heroes + Dunefolk"
+msgstr "Âge des héros"
 
-#. [era]: id=era_khalifate_heroes
+#. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:95
+#, fuzzy
+#| msgid ""
+#| "An era featuring an additional faction besides the six factions from Age "
+#| "of Heroes Era. Khalifate units use no magic, but instead rely on careful "
+#| "use of terrain and coordinated strikes around dusk or dawn.\n"
+#| "\n"
+#| "This era is still under development, so please be sure to report any "
+#| "problems that arise."
 msgid ""
 "An era featuring an additional faction besides the six factions from Age of "
-"Heroes Era. Khalifate units use no magic, but instead rely on careful use of "
-"terrain and coordinated strikes around dusk or dawn.\n"
+"Heroes Era. Dunefolk units rely on careful use of terrain and coordinated "
+"strikes around dusk or dawn.\n"
 "\n"
 "This era is still under development, so please be sure to report any "
 "problems that arise."
@@ -152,23 +170,23 @@ msgid ""
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction."
 msgstr ""
 
-#. [multiplayer_side]: id=Khalifate, type=random
-#: data/multiplayer/factions/khalifate-aoh.cfg:4
-#: data/multiplayer/factions/khalifate-default.cfg:4
-msgid "Khalifate"
-msgstr "Khâlifat"
+#. [multiplayer_side]: id=Dunefolk, type=random
+#: data/multiplayer/factions/dunefolk-aoh.cfg:4
+#: data/multiplayer/factions/dunefolk-default.cfg:4
+msgid "Dunefolk"
+msgstr ""
 
-#. [multiplayer_side]: id=Khalifate, type=random
-#: data/multiplayer/factions/khalifate-aoh.cfg:14
-#: data/multiplayer/factions/khalifate-default.cfg:14
+#. [multiplayer_side]: id=Dunefolk, type=random
+#: data/multiplayer/factions/dunefolk-aoh.cfg:14
+#: data/multiplayer/factions/dunefolk-default.cfg:14
 msgid ""
-"The <bold>text='Khalifate'</bold> are a faction of humans from the deserts "
-"and hills of the southern lands. Lacking magic users, the Khalifate instead "
-"specialize in using terrain features to coordinate attacks at dawn or dusk. "
-"Their ranks boast lawful and liminal units, healers, high-accuracy melee "
-"fighters, and fearsome horse-mounted archers. While Khalifate units tend to "
-"be more expensive than those of the Loyalist faction, they make up for this "
-"with high mobility — especially on hilly terrains."
+"The <bold>text='Dunefolk'</bold> are a faction of humans from the deserts "
+"and hills of the southern lands. The Dunefolk specialize in using terrain "
+"features to coordinate attacks at dawn or dusk. Their ranks boast lawful and "
+"liminal units, healers, high-accuracy melee fighters, and fearsome horse-"
+"mounted archers. While Dunefolk units tend to be more expensive than those "
+"of the Loyalist faction, they make up for this with high mobility — "
+"especially on hilly terrains."
 msgstr ""
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
@@ -1039,17 +1057,17 @@ msgstr "Rebelles"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:52
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:68
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:72
 msgid "teamname^Human"
 msgstr "Humains"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:99
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:107
 msgid "Death of your leader"
 msgstr "Mort de votre chef"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:100
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:108
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
@@ -1058,12 +1076,12 @@ msgstr ""
 "fortes."
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:103
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:111
 msgid "Death of both of your team’s leaders"
 msgstr "Mort des deux chefs de votre camp"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:104
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:112
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr ""
@@ -1071,17 +1089,17 @@ msgstr ""
 "puissance."
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:125
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:133
 msgid "Survive and defeat all enemy waves"
 msgstr "Survivre à toutes les attaques ennemies"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:145
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:153
 msgid "Dark Forecast — a random survival scenario"
 msgstr "Prévisions funestes : un scénario aléatoire de survie"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:150
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:158
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -1126,12 +1144,12 @@ msgstr ""
 "- Implémentation WML"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:170
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:178
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "Voici donc cette vallée maudite ; nous allons la conquérir."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:174
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:182
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -1142,7 +1160,7 @@ msgstr ""
 "surprises."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:178
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:186
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
@@ -1151,7 +1169,7 @@ msgstr ""
 "s'opposer à nous."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:197
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:205
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
@@ -1160,7 +1178,7 @@ msgstr ""
 "m'ont abandonné..."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:211
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:219
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -1170,7 +1188,7 @@ msgstr ""
 "haine absolue."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:233
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:241
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -1181,7 +1199,7 @@ msgstr ""
 "existence sur terre est terminée."
 
 #. [slider]: id=enemey_gold_factor
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:244
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:252
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr ""
 
@@ -2614,6 +2632,15 @@ msgid ""
 msgstr ""
 "Benchmark de Wesnoth ; options --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "Default + Khalifate"
+#~ msgstr "Par défaut + khâlifat"
+
+#~ msgid "Age of Heroes + Khalifate"
+#~ msgstr "Âge des héros + khâlifat"
+
+#~ msgid "Khalifate"
+#~ msgstr "Khâlifat"
 
 #~ msgid "Aethermaw — Created by Doc Paterson"
 #~ msgstr "Aethermaw - créé by Doc Paterson"

@@ -35,9 +35,10 @@ wesnothd \- Demone di rete per multigiocatore di Battle for
 .
 .SH DESCRIZIONE
 .
-Manages Battle for Wesnoth multiplayer games. See
-https://www.wesnoth.org/wiki/ServerAdministration on what commands the
-server accepts via the wesnoth client (/query ...) or the fifo.
+Gestisce le partite multigiocatore di Battle for Wesnoth. Vedi
+https://www.wesnoth.org/wiki/ServerAdministration per sapere quali comandi
+sono accettati dal server attraverso il client di wesnoth (/query ...) o il
+socket.
 .
 .SH OPZIONI
 .
@@ -121,9 +122,10 @@ predefiniti (usati in mancanza di specifiche diverse) sono:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/wesnothd/socket\fP).
+Il path della fifo alla quale inviare i comandi del server (come in /query
+\&... per wesnoth). Se non diversamente specificato invia allo standard
+utilizzato come path al momento della compilazione del sorgente (default:
+\fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
 Il numero di messaggi permessi in un periodo di \fBmessages_time_period\fP
@@ -137,7 +139,7 @@ messaggi (valore predefinito: \fB10\fP secondi).
 Il messaggio del giorno.
 .TP 
 \fBnew_room_policy\fP
-Stabilisce chi possa creare nuove stanze sul server. Valori possibli sono
+Stabilisce chi possa creare nuove stanze sul server. Valori possibili sono
 \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP e \fBnobody\fP per concedere i permessi
 rispettivamente a tutti, ad utenti registrati, ad utenti amministratori o
 per disabilitare la creazione di nuove stanze. Il valore di default è
@@ -290,7 +292,7 @@ Soliton <soliton.de@gmail.com> w Thomas Bauhauer
 <thomas.baumhauer@gmailcom>. Questo manuale è stato scritto in
 origine da Cyril Bouthors <cyril@bouthors.org>.
 .br
-Visit the official homepage: https://www.wesnoth.org/
+Visita la pagina home ufficiale: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .

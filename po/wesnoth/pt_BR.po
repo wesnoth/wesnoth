@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 23:32+0300\n"
+"POT-Creation-Date: 2018-02-04 19:40+0300\n"
 "PO-Revision-Date: 2012-10-29 18:41-0300\n"
 "Last-Translator: gilberto dos santos alves <gsavix@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -504,7 +504,7 @@ msgstr "Controle: Deadzone do Acelerador (Thruster)"
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1072
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1071
 msgid "poisoned"
 msgstr "envenenado"
 
@@ -535,7 +535,7 @@ msgstr "Notas:"
 # File: data/english.cfg, line: 3
 # File: data/english.cfg, line: 3
 #. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:154 data/english.cfg:3
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:153 data/english.cfg:3
 msgid "Easy"
 msgstr "Fácil"
 
@@ -544,7 +544,7 @@ msgstr "Fácil"
 # File: data/english.cfg, line: 4
 # File: data/english.cfg, line: 4
 #. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:155 data/english.cfg:4
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:154 data/english.cfg:4
 msgid "Medium"
 msgstr "Médio"
 
@@ -553,7 +553,7 @@ msgstr "Médio"
 # File: data/english.cfg, line: 5
 # File: data/english.cfg, line: 5
 #. [language]
-#: data/campaigns/Under_the_Burning_Suns/_main.cfg:156 data/english.cfg:5
+#: data/campaigns/Under_the_Burning_Suns/_main.cfg:155 data/english.cfg:5
 msgid "Hard"
 msgstr "Difícil"
 
@@ -576,11 +576,20 @@ msgid "General Purpose Administration and Coordination"
 msgstr "+  Admnistradores e Coordenadores Gerais"
 
 #
+# File: data/core/about.cfg, line: 1285
+# File: data/core/about.cfg, line: 1285
+# File: data/core/about.cfg, line: 1285
+#. [about]
+#: data/core/about.cfg:284
+msgid "Internationalization Managers"
+msgstr "Gerentes de Internacionalização"
+
+#
 # File: data/core/about.cfg, line: 254
 # File: data/core/about.cfg, line: 254
 # File: data/core/about.cfg, line: 254
 #. [about]
-#: data/core/about.cfg:277
+#: data/core/about.cfg:309
 msgid "Artwork and Graphics"
 msgstr "Arte e Gráficos"
 
@@ -589,7 +598,7 @@ msgstr "Arte e Gráficos"
 # File: data/core/about.cfg, line: 642
 # File: data/core/about.cfg, line: 642
 #. [about]
-#: data/core/about.cfg:693
+#: data/core/about.cfg:725
 msgid "Music"
 msgstr "Música"
 
@@ -598,7 +607,7 @@ msgstr "Música"
 # File: data/core/about.cfg, line: 679
 # File: data/core/about.cfg, line: 679
 #. [about]
-#: data/core/about.cfg:730
+#: data/core/about.cfg:762
 msgid "Sound Effects"
 msgstr "Efeitos Sonoros"
 
@@ -607,7 +616,7 @@ msgstr "Efeitos Sonoros"
 # File: data/core/about.cfg, line: 695
 # File: data/core/about.cfg, line: 695
 #. [about]
-#: data/core/about.cfg:754
+#: data/core/about.cfg:786
 msgid "Campaign Design"
 msgstr "Designer de Campanha"
 
@@ -616,7 +625,7 @@ msgstr "Designer de Campanha"
 # File: data/core/about.cfg, line: 766
 # File: data/core/about.cfg, line: 766
 #. [about]
-#: data/core/about.cfg:837
+#: data/core/about.cfg:869
 msgid "Multiplayer Maps and Balancing"
 msgstr "Balanceamento de Mapas Multijogador"
 
@@ -625,7 +634,7 @@ msgstr "Balanceamento de Mapas Multijogador"
 # File: data/core/about.cfg, line: 807
 # File: data/core/about.cfg, line: 807
 #. [about]
-#: data/core/about.cfg:882
+#: data/core/about.cfg:914
 msgid "Packagers"
 msgstr "Criadores de Pacotes"
 
@@ -634,7 +643,7 @@ msgstr "Criadores de Pacotes"
 # File: data/core/about.cfg, line: 882
 # File: data/core/about.cfg, line: 882
 #. [about]
-#: data/core/about.cfg:981
+#: data/core/about.cfg:1013
 msgid "Miscellaneous Contributors"
 msgstr "Contribuidores Diversos"
 
@@ -643,18 +652,9 @@ msgstr "Contribuidores Diversos"
 # File: data/core/about.cfg, line: 2947
 # File: data/core/about.cfg, line: 2947
 #. [about]
-#: data/core/about.cfg:1594
+#: data/core/about.cfg:1665
 msgid "Bots"
 msgstr "Robôs"
-
-#
-# File: data/core/about.cfg, line: 1285
-# File: data/core/about.cfg, line: 1285
-# File: data/core/about.cfg, line: 1285
-#. [about]
-#: data/core/about.cfg:1613
-msgid "Internationalization Managers"
-msgstr "Gerentes de Internacionalização"
 
 #
 # File: data/core/about.cfg, line: 1317
@@ -2285,7 +2285,7 @@ msgstr "<small>(bônus por fim prematuro)</small>"
 # File: data/core/macros/objective-utils.cfg, line: 14
 # File: data/lua/wml/objectives.lua, line: 1537
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:57 data/lua/wml/objectives.lua:113
+#: data/core/macros/deprecated-utils.cfg:57 data/lua/wml/objectives.lua:120
 msgid "Early finish bonus."
 msgstr "Bônus por fim prematuro."
 
@@ -2297,7 +2297,7 @@ msgstr "Bônus por fim prematuro."
 # File: data/core/macros/objective-utils.cfg, line: 17
 # File: data/lua/wml/objectives.lua, line: 1539
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:60 data/lua/wml/objectives.lua:115
+#: data/core/macros/deprecated-utils.cfg:60 data/lua/wml/objectives.lua:123
 msgid "No early finish bonus."
 msgstr "Sem bônus por fim prematuro."
 
@@ -2309,7 +2309,7 @@ msgstr "Sem bônus por fim prematuro."
 # File: data/core/macros/objective-utils.cfg, line: 29
 # File: data/lua/wml/objectives.lua, line: 1547
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:63 data/lua/wml/objectives.lua:123
+#: data/core/macros/deprecated-utils.cfg:63 data/lua/wml/objectives.lua:131
 msgid "No gold carried over to the next scenario."
 msgstr "Nenhum ouro transferido ao próximo cenário."
 
@@ -3500,7 +3500,7 @@ msgid ""
 "Ziyad,Zubayr,Zuhayr"
 msgstr ""
 
-#. Generator for male khalifate human names
+#. Generator for male dunefolk human names
 #: data/core/macros/names.cfg:145
 msgid ""
 "\n"
@@ -3518,7 +3518,7 @@ msgid ""
 "centre=ʿ|ʾ|hi|sa|kar|da|na|ja|tay|ki|hai|saw\n"
 msgstr ""
 
-#. Generator for female khalifate human names
+#. Generator for female dunefolk human names
 #: data/core/macros/names.cfg:156
 msgid ""
 "\n"
@@ -3968,17 +3968,27 @@ msgid "Bonus objective:"
 msgstr "Objetivo Bônus:"
 
 #
+# File: data/core/macros/objective-utils.cfg, line: 52
+# File: data/core/macros/objective-utils.cfg, line: 52
+# File: data/core/macros/objective-utils.cfg, line: 52
+#: data/core/macros/objective-utils.cfg:30
+#, fuzzy
+#| msgid "Bonus objective:"
+msgid "Optional objective:"
+msgstr "Objetivo Bônus:"
+
+#
 # out.2012
 # File: data/core/macros/objective-utils.cfg, line: 74
 # File: data/core/macros/objective-utils.cfg, line: 74
 # File: data/core/macros/objective-utils.cfg, line: 74
 #. [note]: description=<b>
-#: data/core/macros/objective-utils.cfg:48
+#: data/core/macros/objective-utils.cfg:52
 msgid "This is the last scenario."
 msgstr "Último Cenário"
 
 #. [note]: description=<b>
-#: data/core/macros/objective-utils.cfg:54
+#: data/core/macros/objective-utils.cfg:58
 msgid "No turn limit"
 msgstr ""
 
@@ -4355,7 +4365,7 @@ msgstr "Anil"
 # File: src/multiplayer_connect.cpp, line: 1069
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=gold
-#: data/core/team-colors.cfg:107 src/reports.cpp:1247
+#: data/core/team-colors.cfg:107 src/reports.cpp:1258
 msgid "Gold"
 msgstr "Ouro"
 
@@ -4432,8 +4442,9 @@ msgstr ""
 # File: src/terrain.cpp, line: 158
 # File: src/terrain.cpp, line: 158
 # File: src/terrain.cpp, line: 158
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
-#: data/core/team-colors.cfg:188
+#: data/core/team-colors.cfg:188 src/terrain/terrain.cpp:176
 msgid "Village"
 msgstr "Vila"
 
@@ -4477,7 +4488,7 @@ msgstr ""
 # File: src/multiplayer_lobby.cpp, line: 601
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:420
+#: data/core/team-colors.cfg:224 src/game_initialization/lobby_data.cpp:442
 msgid "Fog"
 msgstr "Fumaça"
 
@@ -4499,10 +4510,15 @@ msgstr "Fumaça"
 # File: src/multiplayer_lobby.cpp, line: 611
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:423
-#: src/game_initialization/lobby_data.cpp:426
+#: data/core/team-colors.cfg:230 src/game_initialization/lobby_data.cpp:445
+#: src/game_initialization/lobby_data.cpp:448
 msgid "Shroud"
 msgstr "Escuridão"
+
+#. [deprecated_message]
+#: data/core/units/dunefolk/deprecated.cfg:13
+msgid "This unit has been renamed to: {NEW_NAME}"
+msgstr ""
 
 #. [core]: id=default
 #: data/cores.cfg:5
@@ -4890,6 +4906,20 @@ msgid "Defaults"
 msgstr ""
 
 #
+# File: src/multiplayer_connect.cpp, line: 647
+# File: src/multiplayer_connect.cpp, line: 1658
+# File: src/multiplayer_connect.cpp, line: 647
+# File: src/multiplayer_connect.cpp, line: 1658
+# File: src/multiplayer_connect.cpp, line: 647
+# File: src/multiplayer_connect.cpp, line: 1658
+#. [label]
+#: data/gui/macros/player_list_panel.cfg:28
+#, fuzzy
+#| msgid "Computer Player"
+msgid "Connected Players"
+msgstr "Computador"
+
+#
 # File: src/addon/manager_ui.cpp, line: 204
 # File: src/addon/manager_ui.cpp, line: 204
 # File: src/addon/manager_ui.cpp, line: 204
@@ -4984,12 +5014,12 @@ msgstr ""
 
 #. [lua]: wesnoth.deprecation_message
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/core.lua:175 data/lua/wml-tags.lua:893
+#: data/lua/core.lua:175 data/lua/wml-tags.lua:894
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 
 #. [lua]: wesnoth.deprecate_api
-#: data/lua/core.lua:188
+#: data/lua/core.lua:189
 msgid "(Note: You should use $replacement instead in new code)"
 msgstr ""
 
@@ -5002,7 +5032,7 @@ msgstr ""
 # File: src/actions/attack.cpp, line: 800
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1072
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1071
 msgid "female^poisoned"
 msgstr "envenenada"
 
@@ -5015,7 +5045,7 @@ msgstr "envenenada"
 # File: src/actions/attack.cpp, line: 805
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1079
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1078
 msgid "female^slowed"
 msgstr "lenta"
 
@@ -5028,7 +5058,7 @@ msgstr "lenta"
 # File: src/actions/attack.cpp, line: 805
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1079
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1078
 msgid "slowed"
 msgstr "lento"
 
@@ -5041,7 +5071,7 @@ msgstr "lento"
 # File: src/actions/attack.cpp, line: 810
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1085
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1084
 msgid "female^petrified"
 msgstr "petrificada"
 
@@ -5054,7 +5084,7 @@ msgstr "petrificada"
 # File: src/actions/attack.cpp, line: 810
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1085
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1084
 msgid "petrified"
 msgstr "petrificado"
 
@@ -5063,7 +5093,7 @@ msgstr "petrificado"
 # File: data/lua/wml-tags.lua, line: 1120
 # File: data/lua/wml-tags.lua, line: 1120
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129
+#: data/lua/wml/harm_unit.lua:130
 msgid "female^unhealable"
 msgstr "incurável"
 
@@ -5072,14 +5102,14 @@ msgstr "incurável"
 # File: data/lua/wml-tags.lua, line: 1120
 # File: data/lua/wml-tags.lua, line: 1120
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129
+#: data/lua/wml/harm_unit.lua:130
 msgid "unhealable"
 msgstr "incurável"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:390 src/scripting/game_lua_kernel.cpp:2752
-#: src/scripting/game_lua_kernel.cpp:2787
+#: data/lua/wml/message.lua:392 src/scripting/game_lua_kernel.cpp:2740
+#: src/scripting/game_lua_kernel.cpp:2775
 msgid "input"
 msgstr ""
 
@@ -5092,7 +5122,7 @@ msgstr ""
 # File: src/multiplayer_connect.cpp, line: 1855
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:50 src/game_initialization/mp_game_utils.cpp:73
+#: data/lua/wml/objectives.lua:50 src/game_initialization/mp_game_utils.cpp:74
 msgid "Victory:"
 msgstr "Vitória:"
 
@@ -5123,7 +5153,7 @@ msgstr[1] "(resta um turno)"
 # File: data/lua/wml/objectives.lua, line: 1549
 # File: data/lua/wml/objectives.lua, line: 1549
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:125
+#: data/lua/wml/objectives.lua:133
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% de ouro transferido ao próximo cenário."
 
@@ -5134,7 +5164,7 @@ msgstr "%d%% de ouro transferido ao próximo cenário."
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:174
-#: src/game_initialization/mp_game_utils.cpp:75
+#: src/game_initialization/mp_game_utils.cpp:76
 msgid "Defeat enemy leader(s)"
 msgstr "Derrote o(s) lídere(s) inimigo(s)"
 
@@ -5154,7 +5184,7 @@ msgstr "Derrote o(s) lídere(s) inimigo(s)"
 # File: src/mp_depcheck.cpp, line: 458
 # File: src/mp_options.cpp, line: 227
 # File: src/multiplayer_create.cpp, line: 101
-#: data/scenario-test.cfg:1031 src/game_initialization/depcheck.cpp:476
+#: data/scenario-test.cfg:1031 src/game_initialization/depcheck.cpp:491
 msgid "OK"
 msgstr "OK"
 
@@ -5192,7 +5222,7 @@ msgstr "Cancelar"
 # File: data/scenario-test.cfg, line: 3670
 # File: data/scenario-test.cfg, line: 3670
 #. [language]
-#: data/scenario-test.cfg:4060
+#: data/scenario-test.cfg:4066
 msgid "very long"
 msgstr "muito longe"
 
@@ -5201,7 +5231,7 @@ msgstr "muito longe"
 # File: data/scenario-test.cfg, line: 3671
 # File: data/scenario-test.cfg, line: 3671
 #. [language]
-#: data/scenario-test.cfg:4061
+#: data/scenario-test.cfg:4067
 msgid "electrical"
 msgstr "elétrico"
 
@@ -5390,8 +5420,7 @@ msgstr ""
 # File: data/themes/widescreen.cfg, line: 137
 #. [menu]: id=menu-main
 #: data/themes/classic.cfg:86 data/themes/cutscene.cfg:37
-#: data/themes/default.cfg:80 data/themes/unit_box.cfg:107
-#: data/themes/widescreen.cfg:89
+#: data/themes/default.cfg:80
 msgid "Menu"
 msgstr "Menu"
 
@@ -5410,7 +5439,6 @@ msgstr "Menu"
 # File: data/themes/widescreen.cfg, line: 148
 #. [menu]: id=actions-menu
 #: data/themes/classic.cfg:97 data/themes/default.cfg:98
-#: data/themes/unit_box.cfg:118 data/themes/widescreen.cfg:100
 msgid "Actions"
 msgstr "Ações"
 
@@ -5425,10 +5453,8 @@ msgstr "Ações"
 # File: data/themes/dfool.cfg, line: 157
 # File: data/themes/widescreen.cfg, line: 178
 #. [action]: id=button-endturn
-#. [menu]: id=button-endturn
 #: data/themes/classic.cfg:120 data/themes/cutscene.cfg:53
-#: data/themes/default.cfg:130 data/themes/unit_box.cfg:313
-#: data/themes/widescreen.cfg:115
+#: data/themes/default.cfg:130
 msgid "End Turn"
 msgstr "Terminar Turno"
 
@@ -5447,10 +5473,8 @@ msgstr "Terminar Turno"
 # File: data/themes/dfool.cfg, line: 158
 # File: data/themes/widescreen.cfg, line: 179
 #. [action]: id=button-endturn
-#. [menu]: id=button-endturn
 #: data/themes/classic.cfg:121 data/themes/cutscene.cfg:54
-#: data/themes/default.cfg:131 data/themes/unit_box.cfg:314
-#: data/themes/widescreen.cfg:116
+#: data/themes/default.cfg:131
 msgid "End Scenario"
 msgstr "Terminar o Cenário"
 
@@ -5480,10 +5504,7 @@ msgstr "Terminar o Cenário"
 # File: src/unit.cpp, line: 2409
 # File: src/unit.cpp, line: 2609
 #. [label]: id=label-hp
-#. [label]: id=selected-label-hp
 #: data/themes/classic.cfg:195 data/themes/default.cfg:143
-#: data/themes/unit_box.cfg:372 data/themes/widescreen.cfg:168
-#: data/themes/widescreen.cfg:188
 msgid "HP"
 msgstr "HP"
 
@@ -5510,10 +5531,7 @@ msgstr "HP"
 # File: src/dialogs.cpp, line: 327
 # File: src/dialogs.cpp, line: 499
 #. [label]: id=label-xp
-#. [label]: id=selected-label-xp
 #: data/themes/classic.cfg:204 data/themes/default.cfg:152
-#: data/themes/unit_box.cfg:382 data/themes/widescreen.cfg:177
-#: data/themes/widescreen.cfg:197
 msgid "XP"
 msgstr "XP"
 
@@ -5532,7 +5550,6 @@ msgstr "XP"
 # File: data/themes/widescreen.cfg, line: 276
 #. [label]: id=gold-icon
 #: data/themes/classic.cfg:214 data/themes/default.cfg:177
-#: data/themes/unit_box.cfg:401 data/themes/widescreen.cfg:207
 msgid "gold"
 msgstr "ouro"
 
@@ -5551,7 +5568,6 @@ msgstr "ouro"
 # File: data/themes/widescreen.cfg, line: 285
 #. [label]: id=villages-icon
 #: data/themes/classic.cfg:223 data/themes/default.cfg:186
-#: data/themes/unit_box.cfg:410 data/themes/widescreen.cfg:216
 msgid "villages"
 msgstr "vilas"
 
@@ -5570,7 +5586,6 @@ msgstr "vilas"
 # File: data/themes/widescreen.cfg, line: 294
 #. [label]: id=units-icon
 #: data/themes/classic.cfg:232 data/themes/default.cfg:195
-#: data/themes/unit_box.cfg:419 data/themes/widescreen.cfg:225
 msgid "units"
 msgstr "unidades"
 
@@ -5589,7 +5604,6 @@ msgstr "unidades"
 # File: data/themes/widescreen.cfg, line: 303
 #. [label]: id=upkeep-icon
 #: data/themes/classic.cfg:241 data/themes/default.cfg:204
-#: data/themes/unit_box.cfg:428 data/themes/widescreen.cfg:234
 msgid "upkeep"
 msgstr "manutenção"
 
@@ -5608,7 +5622,6 @@ msgstr "manutenção"
 # File: data/themes/widescreen.cfg, line: 312
 #. [label]: id=income-icon
 #: data/themes/classic.cfg:250 data/themes/default.cfg:213
-#: data/themes/unit_box.cfg:437 data/themes/widescreen.cfg:243
 msgid "income"
 msgstr "receita"
 
@@ -5629,9 +5642,7 @@ msgstr "receita"
 # File: data/themes/widescreen.cfg, line: 491
 # File: data/themes/widescreen.cfg, line: 617
 #. [unit_level]: id=unit-level
-#. [selected_unit_level]: id=selected-unit-level
-#: data/themes/classic.cfg:412 data/themes/widescreen.cfg:422
-#: data/themes/widescreen.cfg:548
+#: data/themes/classic.cfg:412
 msgid "statuspanel^level"
 msgstr "nível"
 
@@ -5649,9 +5660,7 @@ msgstr "nível"
 # File: data/themes/widescreen.cfg, line: 521
 # File: data/themes/widescreen.cfg, line: 647
 #. [unit_moves]: id=unit-moves
-#. [selected_unit_moves]: id=selected-unit-moves
-#: data/themes/classic.cfg:442 data/themes/widescreen.cfg:452
-#: data/themes/widescreen.cfg:578
+#: data/themes/classic.cfg:442
 msgid "statuspanel^moves"
 msgstr "movimentos"
 
@@ -5669,9 +5678,7 @@ msgstr "movimentos"
 # File: data/themes/widescreen.cfg, line: 530
 # File: data/themes/widescreen.cfg, line: 656
 #. [unit_defense]: id=unit-defense
-#. [selected_unit_defense]: id=selected-unit-defense
-#: data/themes/classic.cfg:451 data/themes/widescreen.cfg:461
-#: data/themes/widescreen.cfg:587
+#: data/themes/classic.cfg:451
 msgid "statuspanel^terrain def."
 msgstr "def. do terreno"
 
@@ -5700,7 +5707,7 @@ msgstr "Voltar ao turno "
 # File: data/themes/dfool.cfg, line: 249
 # File: data/themes/dfool.cfg, line: 249
 #. [label]: id=label-mp
-#: data/themes/default.cfg:160 data/themes/unit_box.cfg:391
+#: data/themes/default.cfg:160
 msgid "MP"
 msgstr "MJ"
 
@@ -5731,26 +5738,6 @@ msgstr ""
 #| msgid "statuspanel^level"
 msgid "statuspanel^lvl"
 msgstr "nível"
-
-#. [theme]: id=UnitBox
-#: data/themes/unit_box.cfg:11
-msgid "theme^UnitBox"
-msgstr ""
-
-#. [theme]: id=UnitBox
-#: data/themes/unit_box.cfg:12
-msgid "An experimental work-in-progress replacement for the default theme"
-msgstr ""
-
-#. [theme]: id=Widescreen
-#: data/themes/widescreen.cfg:20
-msgid "theme^Widescreen"
-msgstr ""
-
-#. [theme]: id=Widescreen
-#: data/themes/widescreen.cfg:21
-msgid "An experimental theme optimized for widescreen resolutions"
-msgstr ""
 
 #. [tip]
 #: data/tips.cfg:4
@@ -6017,10 +6004,10 @@ msgstr ""
 #: data/tips.cfg:49 data/tips.cfg:65 data/tips.cfg:69 data/tips.cfg:73
 #: data/tips.cfg:77 data/tips.cfg:81 data/tips.cfg:93 data/tips.cfg:97
 #: data/tips.cfg:101 data/tips.cfg:113 data/tips.cfg:121 data/tips.cfg:125
-#: data/tips.cfg:133 data/tips.cfg:157 data/tips.cfg:161 data/tips.cfg:165
-#: data/tips.cfg:173 data/tips.cfg:181 data/tips.cfg:189 data/tips.cfg:193
-#: data/tips.cfg:201 data/tips.cfg:205 data/tips.cfg:209 data/tips.cfg:213
-#: data/tips.cfg:221 data/tips.cfg:241 data/tips.cfg:249 data/tips.cfg:254
+#: data/tips.cfg:133 data/tips.cfg:161 data/tips.cfg:165 data/tips.cfg:169
+#: data/tips.cfg:177 data/tips.cfg:185 data/tips.cfg:193 data/tips.cfg:197
+#: data/tips.cfg:205 data/tips.cfg:209 data/tips.cfg:213 data/tips.cfg:217
+#: data/tips.cfg:225 data/tips.cfg:245 data/tips.cfg:253 data/tips.cfg:262
 msgid "<i>― The Wesnoth Tactical Guide</i>"
 msgstr "<i>― O Guia Tático de Wesnoth</i>"
 
@@ -6141,7 +6128,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 213
 # File: data/hardwired/tips.cfg, line: 225
 #. [tip]
-#: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:225 data/tips.cfg:237
+#: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:229 data/tips.cfg:241
 msgid "<i>― High Lord Kalenz, 470YW</i>"
 msgstr "<i>― Lorde Kalenz, 470dW</i>"
 
@@ -6255,7 +6242,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 217
 #. [tip]
 #: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
-#: data/tips.cfg:229
+#: data/tips.cfg:233
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
 msgstr ""
 "<i>― Haldric II, 42dW, do Manual de Bolso de Análise Tática: Volume I</i>"
@@ -6468,7 +6455,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 93
 # File: data/hardwired/tips.cfg, line: 173
 #. [tip]
-#: data/tips.cfg:105 data/tips.cfg:185
+#: data/tips.cfg:105 data/tips.cfg:189
 msgid "<i>― Sir Kaylan, 498YW</i>"
 msgstr "<i>― Sir Kaylan, 498dW</i>"
 
@@ -6651,12 +6638,32 @@ msgstr ""
 "vila e te atacar, enquanto se beneficia da defesa e cura que a vila "
 "proporciona."
 
+#. [tip]
+#: data/tips.cfg:152
+msgid ""
+"For any player, controlling villages is often key to winning a scenario. You "
+"may use this knowledge to lure your opponents into a trap by leaving some "
+"villages unoccupied, but keep in mind that an enemy unit becomes much harder "
+"to dislodge from a village! Plan your movements accordingly."
+msgstr ""
+
+#
+# File: data/hardwired/tips.cfg, line: 13
+# File: data/hardwired/tips.cfg, line: 13
+# File: data/hardwired/tips.cfg, line: 13
+#. [tip]
+#: data/tips.cfg:153
+#, fuzzy
+#| msgid "<i>― King Konrad, 536YW</i>"
+msgid "<i>― Kai Laudiss, 623YW</i>"
+msgstr "<i>― Rei Konrad, 536dW</i>"
+
 #
 # File: data/hardwired/tips.cfg, line: 140
 # File: data/hardwired/tips.cfg, line: 140
 # File: data/hardwired/tips.cfg, line: 140
 #. [tip]
-#: data/tips.cfg:152
+#: data/tips.cfg:156
 msgid "Use lines of troops to screen your injured units while they recover."
 msgstr ""
 "Use linhas de unidades para defender unidades feridas enquanto elas se "
@@ -6667,7 +6674,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 141
 # File: data/hardwired/tips.cfg, line: 141
 #. [tip]
-#: data/tips.cfg:153
+#: data/tips.cfg:157
 msgid "<i>― Princess Li’sar, 515YW</i>"
 msgstr "<i>― Princesa Li’sar, 515dW</i>"
 
@@ -6676,7 +6683,7 @@ msgstr "<i>― Princesa Li’sar, 515dW</i>"
 # File: data/hardwired/tips.cfg, line: 144
 # File: data/hardwired/tips.cfg, line: 144
 #. [tip]
-#: data/tips.cfg:156
+#: data/tips.cfg:160
 msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
 msgstr ""
 "Aprenda a lista de <b>teclas de atalho</b> no <b>menu de preferências</b>."
@@ -6686,7 +6693,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 148
 # File: data/hardwired/tips.cfg, line: 148
 #. [tip]
-#: data/tips.cfg:160
+#: data/tips.cfg:164
 msgid ""
 "If you move a unit, but don’t attack or discover any additional information, "
 "you can undo your move by pressing <b>u</b>."
@@ -6699,7 +6706,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 152
 # File: data/hardwired/tips.cfg, line: 152
 #. [tip]
-#: data/tips.cfg:164
+#: data/tips.cfg:168
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
@@ -6712,7 +6719,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 156
 # File: data/hardwired/tips.cfg, line: 156
 #. [tip]
-#: data/tips.cfg:168
+#: data/tips.cfg:172
 msgid ""
 "Use healers to support your attacks — they will win you battles without "
 "needing to attack anything themselves."
@@ -6728,7 +6735,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 157
 # File: data/hardwired/tips.cfg, line: 205
 #. [tip]
-#: data/tips.cfg:169 data/tips.cfg:217
+#: data/tips.cfg:173 data/tips.cfg:221
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
 msgstr "<i>― O Pergaminho de Chantal, 516dW</i>"
 
@@ -6737,7 +6744,7 @@ msgstr "<i>― O Pergaminho de Chantal, 516dW</i>"
 # File: data/hardwired/tips.cfg, line: 160
 # File: data/hardwired/tips.cfg, line: 160
 #. [tip]
-#: data/tips.cfg:172
+#: data/tips.cfg:176
 msgid ""
 "The <i>Slow</i> attack makes enemy units move slower and halves the damage "
 "they do on all attacks until they end a turn."
@@ -6751,7 +6758,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 164
 # File: data/hardwired/tips.cfg, line: 164
 #. [tip]
-#: data/tips.cfg:176
+#: data/tips.cfg:180
 msgid "<i>Arcane</i> attacks are very powerful against undead."
 msgstr "Ataques <i>arcanos</i> são poderosos contra mortos-vivos."
 
@@ -6760,7 +6767,7 @@ msgstr "Ataques <i>arcanos</i> são poderosos contra mortos-vivos."
 # File: data/hardwired/tips.cfg, line: 165
 # File: data/hardwired/tips.cfg, line: 165
 #. [tip]
-#: data/tips.cfg:177
+#: data/tips.cfg:181
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
 msgstr "<i>―Grande Sábio Dacyn, 626dW</i>"
 
@@ -6769,7 +6776,7 @@ msgstr "<i>―Grande Sábio Dacyn, 626dW</i>"
 # File: data/hardwired/tips.cfg, line: 168
 # File: data/hardwired/tips.cfg, line: 168
 #. [tip]
-#: data/tips.cfg:180
+#: data/tips.cfg:184
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
@@ -6782,7 +6789,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 172
 # File: data/hardwired/tips.cfg, line: 172
 #. [tip]
-#: data/tips.cfg:184
+#: data/tips.cfg:188
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
@@ -6795,7 +6802,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 176
 # File: data/hardwired/tips.cfg, line: 176
 #. [tip]
-#: data/tips.cfg:188
+#: data/tips.cfg:192
 msgid ""
 "Instead of leveling up, high-level units gain an <i>After Maximum Level "
 "Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
@@ -6815,7 +6822,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 180
 # File: data/hardwired/tips.cfg, line: 180
 #. [tip]
-#: data/tips.cfg:192
+#: data/tips.cfg:196
 msgid ""
 "Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
 "mouse pointer over any button or icon to get a description or explanation of "
@@ -6830,7 +6837,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 184
 # File: data/hardwired/tips.cfg, line: 184
 #. [tip]
-#: data/tips.cfg:196
+#: data/tips.cfg:200
 msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
 "veteran to damage a joint target heavily enough for the junior partner to "
@@ -6845,7 +6852,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 185
 # File: data/hardwired/tips.cfg, line: 185
 #. [tip]
-#: data/tips.cfg:197
+#: data/tips.cfg:201
 msgid "<i>― Queen Li’sar, 528YW</i>"
 msgstr "<i>―Rainha Li'sar, 528dW</i>"
 
@@ -6854,7 +6861,7 @@ msgstr "<i>―Rainha Li'sar, 528dW</i>"
 # File: data/hardwired/tips.cfg, line: 188
 # File: data/hardwired/tips.cfg, line: 188
 #. [tip]
-#: data/tips.cfg:200
+#: data/tips.cfg:204
 msgid ""
 "You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
 "the <b>Delay Shroud Updates</b> option when you need to move units while "
@@ -6870,7 +6877,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 192
 # File: data/hardwired/tips.cfg, line: 192
 #. [tip]
-#: data/tips.cfg:204
+#: data/tips.cfg:208
 msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
@@ -6883,7 +6890,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 196
 # File: data/hardwired/tips.cfg, line: 196
 #. [tip]
-#: data/tips.cfg:208
+#: data/tips.cfg:212
 msgid ""
 "Few units have good defenses in water; a line of attackers along the edge of "
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
@@ -6899,7 +6906,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 200
 # File: data/hardwired/tips.cfg, line: 200
 #. [tip]
-#: data/tips.cfg:212
+#: data/tips.cfg:216
 msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
@@ -6913,7 +6920,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 204
 # File: data/hardwired/tips.cfg, line: 204
 #. [tip]
-#: data/tips.cfg:216
+#: data/tips.cfg:220
 msgid ""
 "The <i>Slow</i> ability is extremely powerful because it has such wide-"
 "ranging effects. Enemy undead get half the normal benefit from their "
@@ -6934,7 +6941,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 208
 # File: data/hardwired/tips.cfg, line: 208
 #. [tip]
-#: data/tips.cfg:220
+#: data/tips.cfg:224
 msgid ""
 "Try to operate units with a small number of powerful attacks—such as Dark "
 "Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
@@ -6951,7 +6958,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 212
 # File: data/hardwired/tips.cfg, line: 212
 #. [tip]
-#: data/tips.cfg:224
+#: data/tips.cfg:228
 msgid ""
 "Units with three or more attacks—especially magical attacks—are ideal for "
 "finishing off enemies with only a few hitpoints remaining. Be sure to use "
@@ -6968,7 +6975,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 216
 # File: data/hardwired/tips.cfg, line: 216
 #. [tip]
-#: data/tips.cfg:228
+#: data/tips.cfg:232
 msgid ""
 "Think twice before dismissing any unit from your recall list, no matter how "
 "little experience it has. Sometimes it’s worth paying a premium to know "
@@ -6984,7 +6991,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 220
 # File: data/hardwired/tips.cfg, line: 220
 #. [tip]
-#: data/tips.cfg:232
+#: data/tips.cfg:236
 msgid ""
 "When a tough unit is heavily injured, send it to heal in a village several "
 "turns’ movement away from the fighting. Then it can recover in peace (at 10 "
@@ -7003,7 +7010,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 221
 # File: data/hardwired/tips.cfg, line: 233
 #. [tip]
-#: data/tips.cfg:233 data/tips.cfg:245
+#: data/tips.cfg:237 data/tips.cfg:249
 msgid "<i>― Lord Hamel of Knalga</i>"
 msgstr "<i>― Lorde Hamel de Knalga</i>"
 
@@ -7012,7 +7019,7 @@ msgstr "<i>― Lorde Hamel de Knalga</i>"
 # File: data/hardwired/tips.cfg, line: 224
 # File: data/hardwired/tips.cfg, line: 224
 #. [tip]
-#: data/tips.cfg:236
+#: data/tips.cfg:240
 msgid ""
 "Combining multiple special abilities can be deadly. While it may take some "
 "work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
@@ -7027,7 +7034,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 228
 # File: data/hardwired/tips.cfg, line: 228
 #. [tip]
-#: data/tips.cfg:240
+#: data/tips.cfg:244
 msgid ""
 "While finishing early gives a gold bonus, and reduces the opportunities for "
 "enemies to kill your valuable troops, it also means you lose chances to earn "
@@ -7044,7 +7051,7 @@ msgstr ""
 # File: data/hardwired/tips.cfg, line: 232
 # File: data/hardwired/tips.cfg, line: 232
 #. [tip]
-#: data/tips.cfg:244
+#: data/tips.cfg:248
 msgid ""
 "If your forces have weak defenses everywhere on the map, occupy the areas "
 "where your enemies can only attack you by sharing the same disadvantages. "
@@ -7058,19 +7065,37 @@ msgstr ""
 "e tome controle de qualquer hexágono onde o terreno favoreça você."
 
 #. [tip]
-#: data/tips.cfg:248
+#: data/tips.cfg:252
 msgid ""
 "The recruitment cost of some units may exceed the usual recall expenditure "
 "of 20 gold. In a campaign, always check if recalling a unit of the same type "
 "may be cheaper."
 msgstr ""
 
+#. [tip]
+#: data/tips.cfg:256
+msgid ""
+"You must accept some losses in battle. It is not uncommon for beginners to "
+"lose sight of victory as they attempt to keep every unit alive."
+msgstr ""
+
+#
+# File: data/hardwired/tips.cfg, line: 185
+# File: data/hardwired/tips.cfg, line: 185
+# File: data/hardwired/tips.cfg, line: 185
+#. [tip]
+#: data/tips.cfg:257
+#, fuzzy
+#| msgid "<i>― Queen Li’sar, 528YW</i>"
+msgid "<i>― Queen Asheviere, 503YW</i>"
+msgstr "<i>―Rainha Li'sar, 528dW</i>"
+
 #
 # File: data/hardwired/tips.cfg, line: 237
 # File: data/hardwired/tips.cfg, line: 237
 # File: data/hardwired/tips.cfg, line: 237
 #. [tip]
-#: data/tips.cfg:253
+#: data/tips.cfg:261
 msgid ""
 "<i>Feral</i> units, such as Bats and wild animals, will avoid villages. Even "
 "if they occupy a village hex, they do not gain any defensive benefits from "
@@ -7205,7 +7230,7 @@ msgstr "lenta"
 # File: src/actions/move.cpp, line: 965
 # File: src/actions/move.cpp, line: 965
 # File: src/actions/move.cpp, line: 965
-#: src/actions/move.cpp:621
+#: src/actions/move.cpp:622
 msgid "Ambushed!"
 msgstr "Emboscada!"
 
@@ -7213,7 +7238,7 @@ msgstr "Emboscada!"
 # File: src/actions/move.cpp, line: 1072
 # File: src/actions/move.cpp, line: 1072
 # File: src/actions/move.cpp, line: 1072
-#: src/actions/move.cpp:1138
+#: src/actions/move.cpp:1136
 msgid "Failed teleport! Exit not empty"
 msgstr "Teleporte falhou! A saída não está vazia"
 
@@ -7221,7 +7246,7 @@ msgstr "Teleporte falhou! A saída não está vazia"
 # File: src/actions/move.cpp, line: 1089
 # File: src/actions/move.cpp, line: 1089
 # File: src/actions/move.cpp, line: 1089
-#: src/actions/move.cpp:1155
+#: src/actions/move.cpp:1152
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] "1 aliada"
@@ -7231,7 +7256,7 @@ msgstr[1] "$friends aliadas"
 # File: src/actions/move.cpp, line: 1090
 # File: src/actions/move.cpp, line: 1090
 # File: src/actions/move.cpp, line: 1090
-#: src/actions/move.cpp:1156
+#: src/actions/move.cpp:1153
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1 inimiga"
@@ -7241,7 +7266,7 @@ msgstr[1] "$enemies inimigas"
 # File: src/actions/move.cpp, line: 1091
 # File: src/actions/move.cpp, line: 1091
 # File: src/actions/move.cpp, line: 1091
-#: src/actions/move.cpp:1157
+#: src/actions/move.cpp:1154
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
 msgstr "Unidades vistas! ($friendphrase, $enemyphrase)"
 
@@ -7249,7 +7274,7 @@ msgstr "Unidades vistas! ($friendphrase, $enemyphrase)"
 # File: src/actions/move.cpp, line: 1095
 # File: src/actions/move.cpp, line: 1095
 # File: src/actions/move.cpp, line: 1095
-#: src/actions/move.cpp:1161
+#: src/actions/move.cpp:1158
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] "Unidade inimiga à vista!"
@@ -7259,7 +7284,7 @@ msgstr[1] "$enemies unidades inimigas à vista!"
 # File: src/actions/move.cpp, line: 1099
 # File: src/actions/move.cpp, line: 1099
 # File: src/actions/move.cpp, line: 1099
-#: src/actions/move.cpp:1165
+#: src/actions/move.cpp:1162
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] "Unidade aliada à vista"
@@ -7269,7 +7294,7 @@ msgstr[1] "$friends unidades aliadas à vista"
 # File: src/actions/move.cpp, line: 1115
 # File: src/actions/move.cpp, line: 1115
 # File: src/actions/move.cpp, line: 1115
-#: src/actions/move.cpp:1181
+#: src/actions/move.cpp:1177
 msgid "(press $hotkey to keep moving)"
 msgstr "(aperte $hotkey para continuar o movimento)"
 
@@ -7277,7 +7302,7 @@ msgstr "(aperte $hotkey para continuar o movimento)"
 # File: src/addon/client.cpp, line: 65
 # File: src/addon/client.cpp, line: 65
 # File: src/addon/client.cpp, line: 65
-#: src/addon/client.cpp:71
+#: src/addon/client.cpp:74
 #, fuzzy
 msgid "Connecting to $server_address|..."
 msgstr "Conectando ao servidor..."
@@ -7286,7 +7311,7 @@ msgstr "Conectando ao servidor..."
 # File: src/addon/client.cpp, line: 77
 # File: src/addon/client.cpp, line: 77
 # File: src/addon/client.cpp, line: 77
-#: src/addon/client.cpp:84
+#: src/addon/client.cpp:88
 #, fuzzy
 msgid "Downloading list of add-ons..."
 msgstr "Requisitando a lista de extras"
@@ -7295,16 +7320,66 @@ msgstr "Requisitando a lista de extras"
 # File: src/addon/client.cpp, line: 91
 # File: src/addon/client.cpp, line: 91
 # File: src/addon/client.cpp, line: 91
-#: src/addon/client.cpp:98
+#: src/addon/client.cpp:102
 #, fuzzy
 msgid "Requesting distribution terms..."
 msgstr "Solicitando os termos"
 
 #
+# File: src/addon/client.cpp, line: 212
+# File: src/addon/client.cpp, line: 212
+# File: src/addon/client.cpp, line: 212
+#: src/addon/client.cpp:126
+#, fuzzy
+msgid ""
+"The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
+"published."
+msgstr ""
+"Este extra tem nome de arquivo ou diretório inválido e não pode ser "
+"instalado."
+
+#
+# File: src/addon/client.cpp, line: 212
+# File: src/addon/client.cpp, line: 212
+# File: src/addon/client.cpp, line: 212
+#: src/addon/client.cpp:152
+#, fuzzy
+msgid ""
+"The add-on <i>$addon_title</i> has a file or directory containing invalid "
+"characters and cannot be published."
+msgstr ""
+"Este extra tem nome de arquivo ou diretório inválido e não pode ser "
+"instalado."
+
+#: src/addon/client.cpp:160
+msgid ""
+"The add-on <i>$addon_title</i> has an invalid file or directory name and "
+"cannot be published. File or directory names may not contain '..' or end "
+"with '.' or be longer than 255 characters. It also may not contain "
+"whitespace, control characters, or any of the following characters:\n"
+"\n"
+"&quot; * / : &lt; &gt; ? \\ | ~"
+msgstr ""
+
+#
+# File: src/addon/client.cpp, line: 212
+# File: src/addon/client.cpp, line: 212
+# File: src/addon/client.cpp, line: 212
+#: src/addon/client.cpp:171
+#, fuzzy
+msgid ""
+"The add-on <i>$addon_title</i> contains files or directories with case "
+"conflicts. File or directory names may not be differently-cased versions of "
+"the same string."
+msgstr ""
+"Este extra tem nome de arquivo ou diretório inválido e não pode ser "
+"instalado."
+
+#
 # File: src/addon/client.cpp, line: 140
 # File: src/addon/client.cpp, line: 140
 # File: src/addon/client.cpp, line: 140
-#: src/addon/client.cpp:144
+#: src/addon/client.cpp:183
 #, fuzzy
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Baixando o extra: $addon_title|..."
@@ -7313,7 +7388,7 @@ msgstr "Baixando o extra: $addon_title|..."
 # File: src/addon/client.cpp, line: 174
 # File: src/addon/client.cpp, line: 174
 # File: src/addon/client.cpp, line: 174
-#: src/addon/client.cpp:177
+#: src/addon/client.cpp:216
 #, fuzzy
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Baixando o extra: $addon_title|..."
@@ -7322,7 +7397,7 @@ msgstr "Baixando o extra: $addon_title|..."
 # File: src/addon/client.cpp, line: 198
 # File: src/addon/client.cpp, line: 198
 # File: src/addon/client.cpp, line: 198
-#: src/addon/client.cpp:204
+#: src/addon/client.cpp:243
 #, fuzzy
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Baixando o extra: $addon_title|..."
@@ -7331,11 +7406,24 @@ msgstr "Baixando o extra: $addon_title|..."
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
-#: src/addon/client.cpp:218
+#: src/addon/client.cpp:257
 #, fuzzy
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
+msgstr ""
+"Este extra tem nome de arquivo ou diretório inválido e não pode ser "
+"instalado."
+
+#
+# File: src/addon/client.cpp, line: 212
+# File: src/addon/client.cpp, line: 212
+# File: src/addon/client.cpp, line: 212
+#: src/addon/client.cpp:263
+#, fuzzy
+msgid ""
+"The add-on <i>$addon_title</i> has file or directory names with case "
+"conflicts. This may cause problems."
 msgstr ""
 "Este extra tem nome de arquivo ou diretório inválido e não pode ser "
 "instalado."
@@ -7356,7 +7444,7 @@ msgstr ""
 # File: src/addon/manager_ui.cpp, line: 328
 # File: src/addon/manager_ui.cpp, line: 333
 # File: src/addon/manager_ui.cpp, line: 815
-#: src/addon/client.cpp:276
+#: src/addon/client.cpp:320
 #, fuzzy
 msgid "The server responded with an error:"
 msgstr "O servidor respondeu com um erro: \""
@@ -7365,7 +7453,7 @@ msgstr "O servidor respondeu com um erro: \""
 # File: src/addon/manager_ui.cpp, line: 148
 # File: src/addon/manager_ui.cpp, line: 148
 # File: src/addon/manager_ui.cpp, line: 148
-#: src/addon/client.cpp:316
+#: src/addon/client.cpp:360
 #, fuzzy
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
@@ -7381,7 +7469,7 @@ msgstr[1] ""
 # File: src/addon/manager_ui.cpp, line: 157
 # File: src/addon/manager_ui.cpp, line: 157
 # File: src/addon/manager_ui.cpp, line: 157
-#: src/addon/client.cpp:325
+#: src/addon/client.cpp:369
 #, fuzzy
 msgid "Broken Dependencies"
 msgstr "Instalar dependências"
@@ -7390,7 +7478,7 @@ msgstr "Instalar dependências"
 # File: src/addon/manager_ui.cpp, line: 252
 # File: src/addon/manager_ui.cpp, line: 252
 # File: src/addon/manager_ui.cpp, line: 252
-#: src/addon/client.cpp:368
+#: src/addon/client.cpp:412
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -7404,7 +7492,7 @@ msgstr[1] ""
 # File: src/addon/manager_ui.cpp, line: 256
 # File: src/addon/manager_ui.cpp, line: 256
 # File: src/addon/manager_ui.cpp, line: 256
-#: src/addon/client.cpp:372
+#: src/addon/client.cpp:416
 #, fuzzy
 msgid "Dependencies Installation Failed"
 msgstr "A instalação falhou"
@@ -7413,7 +7501,7 @@ msgstr "A instalação falhou"
 # File: src/addon/manager_ui.cpp, line: 279
 # File: src/addon/manager_ui.cpp, line: 279
 # File: src/addon/manager_ui.cpp, line: 279
-#: src/addon/client.cpp:395
+#: src/addon/client.cpp:439
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -7423,7 +7511,7 @@ msgstr ""
 # File: src/addon/manager_ui.cpp, line: 283
 # File: src/addon/manager_ui.cpp, line: 283
 # File: src/addon/manager_ui.cpp, line: 283
-#: src/addon/client.cpp:399
+#: src/addon/client.cpp:443
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
@@ -7431,7 +7519,7 @@ msgstr ""
 # File: src/addon/manager_ui.cpp, line: 287
 # File: src/addon/manager_ui.cpp, line: 287
 # File: src/addon/manager_ui.cpp, line: 287
-#: src/addon/client.cpp:403
+#: src/addon/client.cpp:447
 msgid "Version control system (VCS) information"
 msgstr ""
 
@@ -7439,7 +7527,7 @@ msgstr ""
 # File: src/addon/manager_ui.cpp, line: 291
 # File: src/addon/manager_ui.cpp, line: 291
 # File: src/addon/manager_ui.cpp, line: 291
-#: src/addon/client.cpp:407
+#: src/addon/client.cpp:451
 #, fuzzy
 msgid "Do you really wish to continue?"
 msgstr "Você quer continuar?"
@@ -7457,8 +7545,8 @@ msgstr "Você quer continuar?"
 # File: src/addon/manager_ui.cpp, line: 304
 # File: src/addon/manager_ui.cpp, line: 970
 # File: src/multiplayer.cpp, line: 272
-#: src/addon/client.cpp:409 src/addon/manager_ui.cpp:173
-#: src/game_initialization/multiplayer.cpp:197
+#: src/addon/client.cpp:453 src/addon/manager_ui.cpp:174
+#: src/game_initialization/multiplayer.cpp:232
 msgid "Confirm"
 msgstr "Confirmar"
 
@@ -7469,7 +7557,7 @@ msgstr "Confirmar"
 # File: src/addon/manager_ui.cpp, line: 682
 # File: src/addon/client.cpp, line: 300
 # File: src/addon/manager_ui.cpp, line: 682
-#: src/addon/client.cpp:502
+#: src/addon/client.cpp:573
 #, fuzzy
 msgid "Add-ons Manager"
 msgstr "Extra instalado"
@@ -7478,7 +7566,7 @@ msgstr "Extra instalado"
 # File: src/addon/info.cpp, line: 148
 # File: src/addon/info.cpp, line: 148
 # File: src/addon/info.cpp, line: 148
-#: src/addon/info.cpp:159
+#: src/addon/info.cpp:153
 msgid "addon_type^Campaign"
 msgstr "Campanha"
 
@@ -7486,7 +7574,7 @@ msgstr "Campanha"
 # File: src/addon/info.cpp, line: 150
 # File: src/addon/info.cpp, line: 150
 # File: src/addon/info.cpp, line: 150
-#: src/addon/info.cpp:161
+#: src/addon/info.cpp:155
 msgid "addon_type^Scenario"
 msgstr "Cenário"
 
@@ -7494,7 +7582,7 @@ msgstr "Cenário"
 # File: src/addon/info.cpp, line: 160
 # File: src/addon/info.cpp, line: 160
 # File: src/addon/info.cpp, line: 160
-#: src/addon/info.cpp:163
+#: src/addon/info.cpp:157
 #, fuzzy
 #| msgid "addon_type^MP campaign"
 msgid "addon_type^SP/MP Campaign"
@@ -7504,7 +7592,7 @@ msgstr "Campanha MP"
 # File: src/addon/info.cpp, line: 152
 # File: src/addon/info.cpp, line: 152
 # File: src/addon/info.cpp, line: 152
-#: src/addon/info.cpp:165
+#: src/addon/info.cpp:159
 msgid "addon_type^MP era"
 msgstr "Era MP"
 
@@ -7512,7 +7600,7 @@ msgstr "Era MP"
 # File: src/addon/info.cpp, line: 154
 # File: src/addon/info.cpp, line: 154
 # File: src/addon/info.cpp, line: 154
-#: src/addon/info.cpp:167
+#: src/addon/info.cpp:161
 msgid "addon_type^MP faction"
 msgstr "Facção MP"
 
@@ -7520,7 +7608,7 @@ msgstr "Facção MP"
 # File: src/addon/info.cpp, line: 156
 # File: src/addon/info.cpp, line: 156
 # File: src/addon/info.cpp, line: 156
-#: src/addon/info.cpp:169
+#: src/addon/info.cpp:163
 msgid "addon_type^MP map-pack"
 msgstr "Pack de mapa MP"
 
@@ -7528,7 +7616,7 @@ msgstr "Pack de mapa MP"
 # File: src/addon/info.cpp, line: 158
 # File: src/addon/info.cpp, line: 158
 # File: src/addon/info.cpp, line: 158
-#: src/addon/info.cpp:171
+#: src/addon/info.cpp:165
 msgid "addon_type^MP scenario"
 msgstr "Cenário MP"
 
@@ -7536,7 +7624,7 @@ msgstr "Cenário MP"
 # File: src/addon/info.cpp, line: 160
 # File: src/addon/info.cpp, line: 160
 # File: src/addon/info.cpp, line: 160
-#: src/addon/info.cpp:173
+#: src/addon/info.cpp:167
 msgid "addon_type^MP campaign"
 msgstr "Campanha MP"
 
@@ -7544,7 +7632,7 @@ msgstr "Campanha MP"
 # File: src/addon/info.cpp, line: 162
 # File: src/addon/info.cpp, line: 162
 # File: src/addon/info.cpp, line: 162
-#: src/addon/info.cpp:175
+#: src/addon/info.cpp:169
 #, fuzzy
 msgid "addon_type^MP modification"
 msgstr "Facção MP"
@@ -7553,7 +7641,7 @@ msgstr "Facção MP"
 # File: src/addon/info.cpp, line: 164
 # File: src/addon/info.cpp, line: 164
 # File: src/addon/info.cpp, line: 164
-#: src/addon/info.cpp:177
+#: src/addon/info.cpp:171
 #, fuzzy
 #| msgid "addon_type^Resources"
 msgid "addon_type^Core"
@@ -7563,7 +7651,7 @@ msgstr "Recursos"
 # File: src/addon/info.cpp, line: 164
 # File: src/addon/info.cpp, line: 164
 # File: src/addon/info.cpp, line: 164
-#: src/addon/info.cpp:179
+#: src/addon/info.cpp:173
 msgid "addon_type^Resources"
 msgstr "Recursos"
 
@@ -7571,7 +7659,7 @@ msgstr "Recursos"
 # File: src/addon/info.cpp, line: 166
 # File: src/addon/info.cpp, line: 166
 # File: src/addon/info.cpp, line: 166
-#: src/addon/info.cpp:181
+#: src/addon/info.cpp:175
 msgid "addon_type^Other"
 msgstr "Outro"
 
@@ -7579,7 +7667,7 @@ msgstr "Outro"
 # File: src/addon/info.cpp, line: 168
 # File: src/addon/info.cpp, line: 168
 # File: src/addon/info.cpp, line: 168
-#: src/addon/info.cpp:183
+#: src/addon/info.cpp:177
 msgid "addon_type^(unknown)"
 msgstr "(desconhecido)"
 
@@ -7587,7 +7675,7 @@ msgstr "(desconhecido)"
 # File: src/addon/info.cpp, line: 205
 # File: src/addon/info.cpp, line: 205
 # File: src/addon/info.cpp, line: 205
-#: src/addon/info.cpp:223
+#: src/addon/info.cpp:217
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -7595,7 +7683,7 @@ msgstr "B"
 # File: src/addon/manager_ui.cpp, line: 912
 # File: src/addon/manager_ui.cpp, line: 912
 # File: src/addon/manager_ui.cpp, line: 912
-#: src/addon/manager_ui.cpp:82 src/addon/manager_ui.cpp:292
+#: src/addon/manager_ui.cpp:82 src/addon/manager_ui.cpp:293
 msgid "Network communication error."
 msgstr "Erro de comunicação com a rede."
 
@@ -7606,7 +7694,7 @@ msgstr "Erro de comunicação com a rede."
 # File: src/addon/manager_ui.cpp, line: 918
 # File: src/addon/manager_ui.cpp, line: 915
 # File: src/addon/manager_ui.cpp, line: 918
-#: src/addon/manager_ui.cpp:85 src/addon/manager_ui.cpp:295
+#: src/addon/manager_ui.cpp:85 src/addon/manager_ui.cpp:296
 msgid "Remote host disconnected."
 msgstr "O servidor remoto se desconectou."
 
@@ -7614,14 +7702,14 @@ msgstr "O servidor remoto se desconectou."
 # File: src/addon/manager_ui.cpp, line: 921
 # File: src/addon/manager_ui.cpp, line: 921
 # File: src/addon/manager_ui.cpp, line: 921
-#: src/addon/manager_ui.cpp:88 src/addon/manager_ui.cpp:298
+#: src/addon/manager_ui.cpp:88 src/addon/manager_ui.cpp:299
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr ""
 "Houve um problema criando os arquivos necessários para instalar este extra."
 
-#: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:307
+#: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:308
 msgid ""
 "A local file with add-on publishing information could not be read.\n"
 "\n"
@@ -7633,7 +7721,7 @@ msgstr ""
 # File: src/addon/manager_ui.cpp, line: 927
 # File: src/addon/manager_ui.cpp, line: 927
 # File: src/addon/manager_ui.cpp, line: 927
-#: src/addon/manager_ui.cpp:103 src/addon/manager_ui.cpp:313
+#: src/addon/manager_ui.cpp:105 src/addon/manager_ui.cpp:314
 msgid "The add-ons server address specified is not valid."
 msgstr ""
 
@@ -7641,7 +7729,7 @@ msgstr ""
 # File: src/addon/manager_ui.cpp, line: 941
 # File: src/addon/manager_ui.cpp, line: 941
 # File: src/addon/manager_ui.cpp, line: 941
-#: src/addon/manager_ui.cpp:117
+#: src/addon/manager_ui.cpp:118
 msgid "You have no add-ons installed."
 msgstr "Você não tem nenhum Extra instalado."
 
@@ -7649,7 +7737,7 @@ msgstr "Você não tem nenhum Extra instalado."
 # File: src/addon/manager_ui.cpp, line: 965
 # File: src/addon/manager_ui.cpp, line: 965
 # File: src/addon/manager_ui.cpp, line: 965
-#: src/addon/manager_ui.cpp:168
+#: src/addon/manager_ui.cpp:169
 #, fuzzy
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
@@ -7661,7 +7749,7 @@ msgstr[1] "Você tem certeza de que deseja remover o extra '$addon|'?"
 # File: src/addon/manager_ui.cpp, line: 991
 # File: src/addon/manager_ui.cpp, line: 991
 # File: src/addon/manager_ui.cpp, line: 991
-#: src/addon/manager_ui.cpp:194
+#: src/addon/manager_ui.cpp:195
 #, fuzzy
 msgid ""
 "The following add-on appears to have publishing or version control "
@@ -7680,7 +7768,7 @@ msgstr[1] ""
 # File: src/addon/manager_ui.cpp, line: 1001
 # File: src/addon/manager_ui.cpp, line: 1001
 # File: src/addon/manager_ui.cpp, line: 1001
-#: src/addon/manager_ui.cpp:204
+#: src/addon/manager_ui.cpp:205
 #, fuzzy
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
@@ -7691,7 +7779,7 @@ msgstr[1] "O extra não pode ser deletado corretamente:"
 # File: src/addon/manager_ui.cpp, line: 1008
 # File: src/addon/manager_ui.cpp, line: 1008
 # File: src/addon/manager_ui.cpp, line: 1008
-#: src/addon/manager_ui.cpp:211
+#: src/addon/manager_ui.cpp:212
 #, fuzzy
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
@@ -7702,7 +7790,7 @@ msgstr[1] "Extra apagado"
 # File: src/addon/manager_ui.cpp, line: 1010
 # File: src/addon/manager_ui.cpp, line: 1010
 # File: src/addon/manager_ui.cpp, line: 1010
-#: src/addon/manager_ui.cpp:213
+#: src/addon/manager_ui.cpp:214
 #, fuzzy
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
@@ -7716,12 +7804,12 @@ msgstr[1] "Os seguintes extras tiveram erros e não puderam ser carregados:"
 # File: src/addon/manager_ui.cpp, line: 894
 # File: src/addon/manager_ui.cpp, line: 884
 # File: src/addon/manager_ui.cpp, line: 894
-#: src/addon/manager_ui.cpp:269
+#: src/addon/manager_ui.cpp:270
 #, fuzzy
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Erro ao se comunicar com o servidor."
 
-#: src/addon/manager_ui.cpp:283
+#: src/addon/manager_ui.cpp:284
 msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgstr ""
 
@@ -7729,7 +7817,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 2297
 # File: src/menu_events.cpp, line: 2298
 # File: src/menu_events.cpp, line: 2298
-#: src/chat_command_handler.cpp:112
+#: src/chat_command_handler.cpp:111
 msgid "Added to ignore list: $nick"
 msgstr "Adicionados à lista de ignorados: $nick"
 
@@ -7743,7 +7831,7 @@ msgstr "Adicionados à lista de ignorados: $nick"
 # File: src/menu_events.cpp, line: 2291
 # File: src/menu_events.cpp, line: 2298
 # File: src/menu_events.cpp, line: 2346
-#: src/chat_command_handler.cpp:112
+#: src/chat_command_handler.cpp:111
 msgid "ignores list"
 msgstr "lista de ignorados"
 
@@ -7754,7 +7842,7 @@ msgstr "lista de ignorados"
 # File: src/menu_events.cpp, line: 2320
 # File: src/menu_events.cpp, line: 2301
 # File: src/menu_events.cpp, line: 2320
-#: src/chat_command_handler.cpp:116 src/chat_command_handler.cpp:135
+#: src/chat_command_handler.cpp:115 src/chat_command_handler.cpp:134
 msgid "Invalid username: $nick"
 msgstr "Nome de usuário inválido: $nick"
 
@@ -7762,7 +7850,7 @@ msgstr "Nome de usuário inválido: $nick"
 # File: src/menu_events.cpp, line: 2317
 # File: src/menu_events.cpp, line: 2317
 # File: src/menu_events.cpp, line: 2317
-#: src/chat_command_handler.cpp:131
+#: src/chat_command_handler.cpp:130
 msgid "Added to friends list: $nick"
 msgstr "Adicionados à lista de amigos: $nick"
 
@@ -7776,7 +7864,7 @@ msgstr "Adicionados à lista de amigos: $nick"
 # File: src/menu_events.cpp, line: 2310
 # File: src/menu_events.cpp, line: 2317
 # File: src/menu_events.cpp, line: 2342
-#: src/chat_command_handler.cpp:131
+#: src/chat_command_handler.cpp:130
 msgid "friends list"
 msgstr "lista de amigos"
 
@@ -7784,7 +7872,7 @@ msgstr "lista de amigos"
 # File: src/menu_events.cpp, line: 2333
 # File: src/menu_events.cpp, line: 2332
 # File: src/menu_events.cpp, line: 2332
-#: src/chat_command_handler.cpp:147
+#: src/chat_command_handler.cpp:146
 msgid "Removed from list: $nick"
 msgstr "Removidos da lista: $nick"
 
@@ -7795,7 +7883,7 @@ msgstr "Removidos da lista: $nick"
 # File: src/menu_events.cpp, line: 2350
 # File: src/menu_events.cpp, line: 2332
 # File: src/menu_events.cpp, line: 2350
-#: src/chat_command_handler.cpp:147
+#: src/chat_command_handler.cpp:146
 msgid "friends and ignores list"
 msgstr "lista de amigos e ignorados"
 
@@ -7803,7 +7891,7 @@ msgstr "lista de amigos e ignorados"
 # File: src/menu_events.cpp, line: 2356
 # File: src/menu_events.cpp, line: 2355
 # File: src/menu_events.cpp, line: 2355
-#: src/chat_command_handler.cpp:159
+#: src/chat_command_handler.cpp:158
 msgid "version"
 msgstr "versão"
 
@@ -7811,7 +7899,7 @@ msgstr "versão"
 # File: src/menu_events.cpp, line: 2372
 # File: src/menu_events.cpp, line: 2371
 # File: src/menu_events.cpp, line: 2371
-#: src/chat_command_handler.cpp:175
+#: src/chat_command_handler.cpp:174
 msgid "registering with password *** and no email address"
 msgstr "registrando com password *** e sem endereço de email"
 
@@ -7819,7 +7907,7 @@ msgstr "registrando com password *** e sem endereço de email"
 # File: src/menu_events.cpp, line: 2376
 # File: src/menu_events.cpp, line: 2375
 # File: src/menu_events.cpp, line: 2375
-#: src/chat_command_handler.cpp:180
+#: src/chat_command_handler.cpp:179
 msgid "registering with password *** and email address $email"
 msgstr "registrando com password *** e endereço de email $email"
 
@@ -7836,8 +7924,8 @@ msgstr "registrando com password *** e endereço de email $email"
 # File: src/menu_events.cpp, line: 2389
 # File: src/menu_events.cpp, line: 2407
 # File: src/menu_events.cpp, line: 2421
-#: src/chat_command_handler.cpp:183 src/chat_command_handler.cpp:194
-#: src/chat_command_handler.cpp:212 src/chat_command_handler.cpp:226
+#: src/chat_command_handler.cpp:182 src/chat_command_handler.cpp:193
+#: src/chat_command_handler.cpp:211 src/chat_command_handler.cpp:225
 msgid "nick registration"
 msgstr "registro de nick"
 
@@ -7845,7 +7933,7 @@ msgstr "registro de nick"
 # File: src/menu_events.cpp, line: 2390
 # File: src/menu_events.cpp, line: 2389
 # File: src/menu_events.cpp, line: 2389
-#: src/chat_command_handler.cpp:194
+#: src/chat_command_handler.cpp:193
 msgid "dropping your username"
 msgstr "descartando seu nome de usuário"
 
@@ -7853,7 +7941,7 @@ msgstr "descartando seu nome de usuário"
 # File: src/menu_events.cpp, line: 2408
 # File: src/menu_events.cpp, line: 2407
 # File: src/menu_events.cpp, line: 2407
-#: src/chat_command_handler.cpp:212
+#: src/chat_command_handler.cpp:211
 msgid "setting $var to $value"
 msgstr "alterando valor de $var para $value"
 
@@ -7861,7 +7949,7 @@ msgstr "alterando valor de $var para $value"
 # File: src/menu_events.cpp, line: 2422
 # File: src/menu_events.cpp, line: 2421
 # File: src/menu_events.cpp, line: 2421
-#: src/chat_command_handler.cpp:226
+#: src/chat_command_handler.cpp:225
 msgid "requesting information for user $nick"
 msgstr "requisitando informação sobre o usuário $nick"
 
@@ -7880,7 +7968,7 @@ msgstr "(A) - comando de administrador"
 # File: src/menu_events.cpp, line: 1937
 # File: src/menu_events.cpp, line: 1730
 # File: src/menu_events.cpp, line: 1937
-#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1128
+#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1139
 msgid "(admin only)"
 msgstr "(só administradores)"
 
@@ -8287,7 +8375,7 @@ msgstr "sussurro: $sender"
 # File: data/advanced_preferences.cfg, line: 131
 # File: data/advanced_preferences.cfg, line: 131
 # File: data/advanced_preferences.cfg, line: 131
-#: src/desktop/notifications.cpp:88
+#: src/desktop/notifications.cpp:82
 #, fuzzy
 msgid "Chat message"
 msgstr "Tempo máximo de mensagem no chat"
@@ -8401,30 +8489,30 @@ msgstr "%b %d %y"
 msgid "Invalid color in range: "
 msgstr "Faixa de cor inválida: "
 
-#: src/game_config_manager.cpp:197 src/game_config_manager.cpp:207
-#: src/game_config_manager.cpp:220
+#: src/game_config_manager.cpp:195 src/game_config_manager.cpp:204
+#: src/game_config_manager.cpp:216
 msgid "Error validating data core."
 msgstr ""
 
-#: src/game_config_manager.cpp:198
+#: src/game_config_manager.cpp:196
 msgid "Found a core without id attribute."
 msgstr ""
 
-#: src/game_config_manager.cpp:199 src/game_config_manager.cpp:210
-#: src/game_config_manager.cpp:224
+#: src/game_config_manager.cpp:197 src/game_config_manager.cpp:207
+#: src/game_config_manager.cpp:220
 msgid "Skipping the core."
 msgstr ""
 
-#: src/game_config_manager.cpp:208 src/game_config_manager.cpp:221
-#: src/game_config_manager.cpp:245
+#: src/game_config_manager.cpp:205 src/game_config_manager.cpp:217
+#: src/game_config_manager.cpp:240
 msgid "Core ID: "
 msgstr ""
 
-#: src/game_config_manager.cpp:209
+#: src/game_config_manager.cpp:206
 msgid "The ID is already in use."
 msgstr ""
 
-#: src/game_config_manager.cpp:222
+#: src/game_config_manager.cpp:218
 msgid "Core Path: "
 msgstr ""
 
@@ -8432,25 +8520,25 @@ msgstr ""
 # File: src/menu_events.cpp, line: 2927
 # File: src/menu_events.cpp, line: 2926
 # File: src/menu_events.cpp, line: 2926
-#: src/game_config_manager.cpp:223
+#: src/game_config_manager.cpp:219
 #, fuzzy
 #| msgid "Variable not found"
 msgid "File not found."
 msgstr "Variável não encontrada"
 
-#: src/game_config_manager.cpp:244 src/game_config_manager.cpp:257
+#: src/game_config_manager.cpp:239 src/game_config_manager.cpp:251
 msgid "Error loading core data."
 msgstr ""
 
-#: src/game_config_manager.cpp:246
+#: src/game_config_manager.cpp:241
 msgid "Error loading the core with named id."
 msgstr ""
 
-#: src/game_config_manager.cpp:247
+#: src/game_config_manager.cpp:242
 msgid "Falling back to the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:258
+#: src/game_config_manager.cpp:252
 msgid "Can't locate the default core."
 msgstr ""
 
@@ -8458,7 +8546,7 @@ msgstr ""
 # File: src/game_controller.cpp, line: 1062
 # File: src/game_controller.cpp, line: 1062
 # File: src/game_controller.cpp, line: 1062
-#: src/game_config_manager.cpp:259
+#: src/game_config_manager.cpp:253
 #, fuzzy
 #| msgid "' (The game will now exit)"
 msgid "The game will now exit."
@@ -8468,7 +8556,7 @@ msgstr "' (O programa vai terminar agora)"
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
-#: src/game_config_manager.cpp:320
+#: src/game_config_manager.cpp:313
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -8480,7 +8568,7 @@ msgstr "Erro carregando arquivo de configuração do jogo: '"
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
-#: src/game_config_manager.cpp:327
+#: src/game_config_manager.cpp:320
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -8492,7 +8580,7 @@ msgstr "Erro carregando arquivo de configuração do jogo: '"
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
 # File: src/game_controller.cpp, line: 1061
-#: src/game_config_manager.cpp:336
+#: src/game_config_manager.cpp:329
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -8503,13 +8591,13 @@ msgstr "Erro carregando arquivo de configuração do jogo: '"
 # File: src/game_controller.cpp, line: 1021
 # File: src/game_controller.cpp, line: 1021
 # File: src/game_controller.cpp, line: 1021
-#: src/game_config_manager.cpp:463
+#: src/game_config_manager.cpp:456
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "O seguintes extra teve erro e não pode ser carregado:"
 msgstr[1] "Os seguintes extras tiveram erros e não puderam ser carregados:"
 
-#: src/game_config_manager.cpp:467
+#: src/game_config_manager.cpp:460
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -8520,7 +8608,7 @@ msgstr[1] ""
 # File: src/game_events.cpp, line: 187
 # File: src/game_events.cpp, line: 187
 # File: src/game_events.cpp, line: 187
-#: src/game_events/pump.cpp:483 src/game_launcher.cpp:877
+#: src/game_events/pump.cpp:481 src/game_launcher.cpp:889
 msgid "Error: "
 msgstr "Erro:"
 
@@ -8528,7 +8616,7 @@ msgstr "Erro:"
 # File: src/game_events.cpp, line: 190
 # File: src/game_events.cpp, line: 190
 # File: src/game_events.cpp, line: 190
-#: src/game_events/pump.cpp:485
+#: src/game_events/pump.cpp:483
 msgid "Warning: "
 msgstr "Aviso:"
 
@@ -8536,7 +8624,7 @@ msgstr "Aviso:"
 # File: src/game_events.cpp, line: 193
 # File: src/game_events.cpp, line: 193
 # File: src/game_events.cpp, line: 193
-#: src/game_events/pump.cpp:487
+#: src/game_events/pump.cpp:485
 msgid "Debug: "
 msgstr "Debug: "
 
@@ -8544,7 +8632,7 @@ msgstr "Debug: "
 # File: src/game_events.cpp, line: 196
 # File: src/game_events.cpp, line: 196
 # File: src/game_events.cpp, line: 196
-#: src/game_events/pump.cpp:489
+#: src/game_events/pump.cpp:487
 msgid "Info: "
 msgstr "Info: "
 
@@ -8552,8 +8640,8 @@ msgstr "Info: "
 # File: src/multiplayer_create.cpp, line: 296
 # File: src/multiplayer_create.cpp, line: 296
 # File: src/multiplayer_create.cpp, line: 296
-#: src/game_initialization/configure_engine.cpp:102
-#: src/game_initialization/create_engine.cpp:469
+#: src/game_initialization/configure_engine.cpp:65
+#: src/game_initialization/create_engine.cpp:480
 msgid "$login|’s game"
 msgstr "nome de $login"
 
@@ -8575,7 +8663,7 @@ msgstr "Time"
 # File: src/multiplayer_connect.cpp, line: 634
 # File: src/multiplayer_connect.cpp, line: 634
 # File: src/multiplayer_connect.cpp, line: 634
-#: src/game_initialization/connect_engine.cpp:982
+#: src/game_initialization/connect_engine.cpp:977
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
@@ -8588,8 +8676,8 @@ msgstr "Jogador local anônimo"
 # File: src/multiplayer_connect.cpp, line: 1658
 # File: src/multiplayer_connect.cpp, line: 647
 # File: src/multiplayer_connect.cpp, line: 1658
-#: src/game_initialization/connect_engine.cpp:987
-#: src/game_initialization/connect_engine.cpp:1286
+#: src/game_initialization/connect_engine.cpp:982
+#: src/game_initialization/connect_engine.cpp:1280
 msgid "Computer Player"
 msgstr "Computador"
 
@@ -8597,7 +8685,7 @@ msgstr "Computador"
 # File: src/multiplayer_connect.cpp, line: 650
 # File: src/multiplayer_connect.cpp, line: 650
 # File: src/multiplayer_connect.cpp, line: 650
-#: src/game_initialization/connect_engine.cpp:1029
+#: src/game_initialization/connect_engine.cpp:1024
 msgid "$playername $side"
 msgstr "$playername $side"
 
@@ -8605,7 +8693,7 @@ msgstr "$playername $side"
 # File: src/multiplayer_connect.cpp, line: 1655
 # File: src/multiplayer_connect.cpp, line: 1655
 # File: src/multiplayer_connect.cpp, line: 1655
-#: src/game_initialization/connect_engine.cpp:1282
+#: src/game_initialization/connect_engine.cpp:1276
 msgid "Network Player"
 msgstr "Jogador Remoto"
 
@@ -8613,7 +8701,7 @@ msgstr "Jogador Remoto"
 # File: src/multiplayer_connect.cpp, line: 1657
 # File: src/multiplayer_connect.cpp, line: 1657
 # File: src/multiplayer_connect.cpp, line: 1657
-#: src/game_initialization/connect_engine.cpp:1285
+#: src/game_initialization/connect_engine.cpp:1279
 msgid "Local Player"
 msgstr "Jogador Local"
 
@@ -8621,7 +8709,7 @@ msgstr "Jogador Local"
 # File: src/multiplayer_connect.cpp, line: 1659
 # File: src/multiplayer_connect.cpp, line: 1659
 # File: src/multiplayer_connect.cpp, line: 1659
-#: src/game_initialization/connect_engine.cpp:1287
+#: src/game_initialization/connect_engine.cpp:1281
 msgid "Empty"
 msgstr "Vazio"
 
@@ -8629,17 +8717,9 @@ msgstr "Vazio"
 # File: src/multiplayer_connect.cpp, line: 763
 # File: src/multiplayer_connect.cpp, line: 763
 # File: src/multiplayer_connect.cpp, line: 763
-#: src/game_initialization/connect_engine.cpp:1290
+#: src/game_initialization/connect_engine.cpp:1284
 msgid "Reserved"
 msgstr "Reservado"
-
-#
-# File: src/multiplayer_connect.cpp, line: 764
-# File: src/multiplayer_connect.cpp, line: 764
-# File: src/multiplayer_connect.cpp, line: 764
-#: src/game_initialization/connect_engine.cpp:1294
-msgid "--give--"
-msgstr "--ceder--"
 
 #
 # File: src/game_controller.cpp, line: 819
@@ -8652,7 +8732,7 @@ msgstr "--ceder--"
 # File: src/playcampaign.cpp, line: 214
 # File: src/playcampaign.cpp, line: 503
 #: src/game_initialization/create_engine.cpp:75
-#: src/game_initialization/create_engine.cpp:676
+#: src/game_initialization/create_engine.cpp:664
 #, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded: "
@@ -8684,15 +8764,24 @@ msgstr "O jogo não pôde ser carregado: "
 msgid "not available."
 msgstr " Nenhuma ajuda disponível."
 
+#
+# File: src/menu_events.cpp, line: 3119
+# File: src/menu_events.cpp, line: 3149
+# File: src/menu_events.cpp, line: 3118
+# File: src/menu_events.cpp, line: 3148
+# File: src/menu_events.cpp, line: 3118
+# File: src/menu_events.cpp, line: 3148
 #: src/game_initialization/create_engine.cpp:149
-msgid "User made map"
-msgstr ""
+#, fuzzy
+#| msgid "prompt^Command:"
+msgid "Custom map."
+msgstr "Comando:"
 
 #
 # File: src/mp_depcheck.cpp, line: 458
 # File: src/mp_depcheck.cpp, line: 458
 # File: src/mp_depcheck.cpp, line: 458
-#: src/game_initialization/depcheck.cpp:476
+#: src/game_initialization/depcheck.cpp:491
 #, fuzzy
 msgid "Failed to resolve dependencies"
 msgstr "Instalar dependências"
@@ -8701,7 +8790,7 @@ msgstr "Instalar dependências"
 # File: src/mp_depcheck.cpp, line: 484
 # File: src/mp_depcheck.cpp, line: 484
 # File: src/mp_depcheck.cpp, line: 484
-#: src/game_initialization/depcheck.cpp:501
+#: src/game_initialization/depcheck.cpp:516
 msgid "Scenario can't be activated. Some dependencies are missing: "
 msgstr ""
 
@@ -8712,8 +8801,8 @@ msgstr ""
 # File: src/mp_depcheck.cpp, line: 663
 # File: src/mp_depcheck.cpp, line: 540
 # File: src/mp_depcheck.cpp, line: 663
-#: src/game_initialization/depcheck.cpp:555
-#: src/game_initialization/depcheck.cpp:678
+#: src/game_initialization/depcheck.cpp:570
+#: src/game_initialization/depcheck.cpp:693
 #, fuzzy
 msgid "No compatible eras found."
 msgstr "Nenhuma Era encontrada."
@@ -8722,7 +8811,7 @@ msgstr "Nenhuma Era encontrada."
 # File: src/mp_depcheck.cpp, line: 556
 # File: src/mp_depcheck.cpp, line: 556
 # File: src/mp_depcheck.cpp, line: 556
-#: src/game_initialization/depcheck.cpp:570
+#: src/game_initialization/depcheck.cpp:585
 msgid "Era can't be activated. Some dependencies are missing: "
 msgstr ""
 
@@ -8733,8 +8822,8 @@ msgstr ""
 # File: src/mp_depcheck.cpp, line: 700
 # File: src/mp_depcheck.cpp, line: 609
 # File: src/mp_depcheck.cpp, line: 700
-#: src/game_initialization/depcheck.cpp:623
-#: src/game_initialization/depcheck.cpp:715
+#: src/game_initialization/depcheck.cpp:638
+#: src/game_initialization/depcheck.cpp:730
 #, fuzzy
 msgid "No compatible scenarios found."
 msgstr "Sem lados multijogadores."
@@ -8743,14 +8832,14 @@ msgstr "Sem lados multijogadores."
 # File: src/mp_depcheck.cpp, line: 638
 # File: src/mp_depcheck.cpp, line: 638
 # File: src/mp_depcheck.cpp, line: 638
-#: src/game_initialization/depcheck.cpp:652
+#: src/game_initialization/depcheck.cpp:667
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
 msgstr ""
 
-#: src/game_initialization/depcheck.hpp:317
-#: src/game_initialization/depcheck.hpp:329
+#: src/game_initialization/depcheck.hpp:312
+#: src/game_initialization/depcheck.hpp:324
 msgid "A component"
 msgstr ""
 
@@ -8758,7 +8847,7 @@ msgstr ""
 # File: src/multiplayer_connect.cpp, line: 945
 # File: src/multiplayer_connect.cpp, line: 945
 # File: src/multiplayer_connect.cpp, line: 945
-#: src/game_initialization/flg_manager.cpp:190
+#: src/game_initialization/flg_manager.cpp:192
 msgid "Only random sides in the current era."
 msgstr "Sem lados não aleatórios na era atual."
 
@@ -8769,11 +8858,11 @@ msgstr "Sem lados não aleatórios na era atual."
 # File: src/multiplayer_connect.cpp, line: 972
 # File: src/gamestatus.cpp, line: 650
 # File: src/multiplayer_connect.cpp, line: 972
-#: src/game_initialization/flg_manager.cpp:212
+#: src/game_initialization/flg_manager.cpp:214
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Não encontro um líder para a facção $faction"
 
-#: src/game_initialization/flg_manager.cpp:235
+#: src/game_initialization/flg_manager.cpp:237
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
@@ -8781,22 +8870,31 @@ msgstr ""
 # File: src/menu_events.cpp, line: 1532
 # File: src/menu_events.cpp, line: 1532
 # File: src/menu_events.cpp, line: 1532
-#: src/game_initialization/lobby_data.cpp:216
+#: src/game_initialization/lobby_data.cpp:236
+#, fuzzy
+#| msgid "Missing argument $arg_id"
+msgid "Missing addon: $name"
+msgstr "Faltando argumento $arg_id"
+
+#
+# File: src/menu_events.cpp, line: 1532
+# File: src/menu_events.cpp, line: 1532
+# File: src/menu_events.cpp, line: 1532
+#: src/game_initialization/lobby_data.cpp:238
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $id"
 msgstr "Faltando argumento $arg_id"
 
 #
-# File: src/gui/dialogs/lobby/lobby_data.cpp, line: 205
-# File: src/multiplayer_lobby.cpp, line: 462
-# File: src/gui/dialogs/lobby/lobby_data.cpp, line: 205
-# File: src/multiplayer_lobby.cpp, line: 462
-# File: src/gui/dialogs/lobby/lobby_data.cpp, line: 205
-# File: src/multiplayer_lobby.cpp, line: 462
-#: src/game_initialization/lobby_data.cpp:251
-msgid "Unknown era: $era_id"
-msgstr "Era desconhecida: $era_id"
+# File: src/gui/dialogs/lobby_player_info.cpp, line: 100
+# File: src/gui/dialogs/lobby_player_info.cpp, line: 100
+# File: src/gui/dialogs/lobby_player_info.cpp, line: 100
+#: src/game_initialization/lobby_data.cpp:275
+#, fuzzy
+#| msgid "(observing)"
+msgid "$era_name (missing)"
+msgstr "(observando)"
 
 #
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 210
@@ -8805,7 +8903,7 @@ msgstr "Era desconhecida: $era_id"
 # File: src/multiplayer_lobby.cpp, line: 466
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 210
 # File: src/multiplayer_lobby.cpp, line: 466
-#: src/game_initialization/lobby_data.cpp:258
+#: src/game_initialization/lobby_data.cpp:282
 msgid "Unknown era"
 msgstr "Era desconhecida"
 
@@ -8813,14 +8911,15 @@ msgstr "Era desconhecida"
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 100
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 100
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 100
-#: src/game_initialization/lobby_data.cpp:280
+#: src/game_initialization/lobby_data.cpp:299
 #, fuzzy
 #| msgid "(observing)"
 msgid "(missing)"
 msgstr "(observando)"
 
-#: src/game_initialization/lobby_data.cpp:324
-msgid "(S)"
+#: src/game_initialization/lobby_data.cpp:345
+#: src/game_initialization/lobby_data.cpp:375
+msgid "S"
 msgstr ""
 
 #
@@ -8830,43 +8929,23 @@ msgstr ""
 # File: src/multiplayer_lobby.cpp, line: 528
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 266
 # File: src/multiplayer_lobby.cpp, line: 528
-#: src/game_initialization/lobby_data.cpp:343
+#: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
 msgstr "Cenário remoto"
 
-#
-# File: src/gui/dialogs/lobby/lobby_data.cpp, line: 274
-# File: src/multiplayer_lobby.cpp, line: 535
-# File: src/gui/dialogs/lobby/lobby_data.cpp, line: 274
-# File: src/multiplayer_lobby.cpp, line: 535
-# File: src/gui/dialogs/lobby/lobby_data.cpp, line: 274
-# File: src/multiplayer_lobby.cpp, line: 535
-#: src/game_initialization/lobby_data.cpp:354
-msgid "Unknown scenario: $scenario_id"
-msgstr "Cenário desconhecido: $scenario_id'"
-
-#: src/game_initialization/lobby_data.cpp:362
-msgid "(C)"
+#: src/game_initialization/lobby_data.cpp:383
+#: src/game_initialization/lobby_data.cpp:406
+msgid "C"
 msgstr ""
 
 #
-# File: src/dialogs.cpp, line: 843
-# File: src/dialogs.cpp, line: 843
-# File: src/dialogs.cpp, line: 843
-#: src/game_initialization/lobby_data.cpp:385
-#, fuzzy
-#| msgid "Campaign: $campaign_name"
-msgid "Unknown campaign: $campaign_id"
-msgstr "Campanha: $campaign_name"
-
-#
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 279
 # File: src/multiplayer_lobby.cpp, line: 539
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 279
 # File: src/multiplayer_lobby.cpp, line: 539
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 279
 # File: src/multiplayer_lobby.cpp, line: 539
-#: src/game_initialization/lobby_data.cpp:390
+#: src/game_initialization/lobby_data.cpp:411
 msgid "Unknown scenario"
 msgstr "Cenário desconhecido"
 
@@ -8877,7 +8956,7 @@ msgstr "Cenário desconhecido"
 # File: src/multiplayer_lobby.cpp, line: 570
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 285
 # File: src/multiplayer_lobby.cpp, line: 570
-#: src/game_initialization/lobby_data.cpp:400
+#: src/game_initialization/lobby_data.cpp:421
 msgid "Reloaded game"
 msgstr "Jogo Regravado"
 
@@ -8888,7 +8967,7 @@ msgstr "Jogo Regravado"
 # File: src/savegame.cpp, line: 1142
 # File: src/dialogs.cpp, line: 864
 # File: src/savegame.cpp, line: 1142
-#: src/game_initialization/lobby_data.cpp:411 src/savegame.cpp:630
+#: src/game_initialization/lobby_data.cpp:433 src/savegame.cpp:634
 msgid "Turn"
 msgstr "Turno"
 
@@ -8899,7 +8978,7 @@ msgstr "Turno"
 # File: src/multiplayer_lobby.cpp, line: 590
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 300
 # File: src/multiplayer_lobby.cpp, line: 590
-#: src/game_initialization/lobby_data.cpp:415
+#: src/game_initialization/lobby_data.cpp:437
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Espaço vago:"
@@ -8912,17 +8991,18 @@ msgstr[1] "Espaços vagos:"
 # File: src/multiplayer_lobby.cpp, line: 615
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 314
 # File: src/multiplayer_lobby.cpp, line: 615
-#: src/game_initialization/lobby_data.cpp:428
+#: src/game_initialization/lobby_data.cpp:450
+#: src/game_initialization/lobby_data.cpp:459
 msgid "none"
 msgstr "nada"
 
-#: src/game_initialization/lobby_data.cpp:469
+#: src/game_initialization/lobby_data.cpp:498
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version <b>"
 "$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:484
+#: src/game_initialization/lobby_data.cpp:512
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version <b>"
 "$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -8932,7 +9012,7 @@ msgstr ""
 # File: src/multiplayer_connect.cpp, line: 1816
 # File: src/multiplayer_connect.cpp, line: 1816
 # File: src/multiplayer_connect.cpp, line: 1816
-#: src/game_initialization/mp_game_utils.cpp:94
+#: src/game_initialization/mp_game_utils.cpp:101
 msgid "Cannot find era $era"
 msgstr "Não conseguiu encontrar a era $era"
 
@@ -8946,7 +9026,7 @@ msgstr "Não conseguiu encontrar a era $era"
 # File: src/multiplayer.cpp, line: 235
 # File: src/multiplayer.cpp, line: 320
 # File: src/multiplayer_ui.cpp, line: 84
-#: src/game_initialization/mp_game_utils.cpp:136
+#: src/game_initialization/mp_game_utils.cpp:140
 msgid "Connection timed out"
 msgstr "Time out na conexão"
 
@@ -8954,7 +9034,7 @@ msgstr "Time out na conexão"
 # File: src/multiplayer.cpp, line: 177
 # File: src/multiplayer.cpp, line: 177
 # File: src/multiplayer.cpp, line: 177
-#: src/game_initialization/multiplayer.cpp:109
+#: src/game_initialization/multiplayer.cpp:123
 #, fuzzy
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
@@ -8966,7 +9046,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 188
 # File: src/multiplayer.cpp, line: 188
 # File: src/multiplayer.cpp, line: 188
-#: src/game_initialization/multiplayer.cpp:120
+#: src/game_initialization/multiplayer.cpp:133
 msgid "Server-side redirect loop"
 msgstr "Redirecionamento em loop do servidor"
 
@@ -8974,7 +9054,7 @@ msgstr "Redirecionamento em loop do servidor"
 # File: src/multiplayer.cpp, line: 247
 # File: src/multiplayer.cpp, line: 247
 # File: src/multiplayer.cpp, line: 247
-#: src/game_initialization/multiplayer.cpp:172
+#: src/game_initialization/multiplayer.cpp:207
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -8987,7 +9067,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 256
 # File: src/multiplayer.cpp, line: 256
 # File: src/multiplayer.cpp, line: 256
-#: src/game_initialization/multiplayer.cpp:181
+#: src/game_initialization/multiplayer.cpp:216
 msgid "Do you want to continue?"
 msgstr "Você quer continuar?"
 
@@ -8995,7 +9075,7 @@ msgstr "Você quer continuar?"
 # File: src/multiplayer.cpp, line: 258
 # File: src/multiplayer.cpp, line: 258
 # File: src/multiplayer.cpp, line: 258
-#: src/game_initialization/multiplayer.cpp:183
+#: src/game_initialization/multiplayer.cpp:218
 msgid "Warning"
 msgstr "Atenção"
 
@@ -9003,7 +9083,7 @@ msgstr "Atenção"
 # File: src/multiplayer.cpp, line: 302
 # File: src/multiplayer.cpp, line: 302
 # File: src/multiplayer.cpp, line: 302
-#: src/game_initialization/multiplayer.cpp:225
+#: src/game_initialization/multiplayer.cpp:260
 msgid "Bad data received from server"
 msgstr "Dados corrompidos recebido do servidor"
 
@@ -9011,7 +9091,7 @@ msgstr "Dados corrompidos recebido do servidor"
 # File: src/multiplayer.cpp, line: 343
 # File: src/multiplayer.cpp, line: 343
 # File: src/multiplayer.cpp, line: 343
-#: src/game_initialization/multiplayer.cpp:260
+#: src/game_initialization/multiplayer.cpp:297
 msgid "You must login first."
 msgstr "Você deve fazer o login primeiro."
 
@@ -9019,7 +9099,7 @@ msgstr "Você deve fazer o login primeiro."
 # File: src/multiplayer.cpp, line: 345
 # File: src/multiplayer.cpp, line: 345
 # File: src/multiplayer.cpp, line: 345
-#: src/game_initialization/multiplayer.cpp:262
+#: src/game_initialization/multiplayer.cpp:299
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "O apelido '$nick' já está sendo usado."
 
@@ -9027,10 +9107,14 @@ msgstr "O apelido '$nick' já está sendo usado."
 # File: src/multiplayer.cpp, line: 347
 # File: src/multiplayer.cpp, line: 347
 # File: src/multiplayer.cpp, line: 347
-#: src/game_initialization/multiplayer.cpp:264
+#: src/game_initialization/multiplayer.cpp:301
+#, fuzzy
+#| msgid ""
+#| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
+#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
-"characters, underscores and hyphens are allowed."
+"characters (one at minimum), underscores and hyphens are allowed."
 msgstr ""
 "O apelido '$nick' contém caracteres inválidos. São permitidos apenas "
 "caracteres alfanuméricos, underlines (\"_\") e hífens (\"-\")."
@@ -9039,7 +9123,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 351
 # File: src/multiplayer.cpp, line: 351
 # File: src/multiplayer.cpp, line: 351
-#: src/game_initialization/multiplayer.cpp:268
+#: src/game_initialization/multiplayer.cpp:305
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "O apelido '$nick' é muito grande. Nicks devem conter 20 caracteres ou menos."
@@ -9048,7 +9132,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 354
 # File: src/multiplayer.cpp, line: 354
 # File: src/multiplayer.cpp, line: 354
-#: src/game_initialization/multiplayer.cpp:271
+#: src/game_initialization/multiplayer.cpp:308
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "O apelido '$nick' é reservado e não pode ser usado por jogadores."
 
@@ -9056,7 +9140,7 @@ msgstr "O apelido '$nick' é reservado e não pode ser usado por jogadores."
 # File: src/multiplayer.cpp, line: 356
 # File: src/multiplayer.cpp, line: 356
 # File: src/multiplayer.cpp, line: 356
-#: src/game_initialization/multiplayer.cpp:273
+#: src/game_initialization/multiplayer.cpp:310
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "O apelido '$nick' não está registrado neste servidor."
 
@@ -9064,7 +9148,7 @@ msgstr "O apelido '$nick' não está registrado neste servidor."
 # File: src/multiplayer.cpp, line: 357
 # File: src/multiplayer.cpp, line: 357
 # File: src/multiplayer.cpp, line: 357
-#: src/game_initialization/multiplayer.cpp:274
+#: src/game_initialization/multiplayer.cpp:311
 msgid " This server disallows unregistered nicknames."
 msgstr "Este servidor não permite apelidos não registrados."
 
@@ -9075,8 +9159,8 @@ msgstr "Este servidor não permite apelidos não registrados."
 # File: src/multiplayer.cpp, line: 361
 # File: src/multiplayer.cpp, line: 359
 # File: src/multiplayer.cpp, line: 361
-#: src/game_initialization/multiplayer.cpp:276
-#: src/game_initialization/multiplayer.cpp:278
+#: src/game_initialization/multiplayer.cpp:313
+#: src/game_initialization/multiplayer.cpp:315
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "O nick '$nick' está registrado neste servidor."
 
@@ -9084,7 +9168,7 @@ msgstr "O nick '$nick' está registrado neste servidor."
 # File: src/multiplayer.cpp, line: 362
 # File: src/multiplayer.cpp, line: 362
 # File: src/multiplayer.cpp, line: 362
-#: src/game_initialization/multiplayer.cpp:279
+#: src/game_initialization/multiplayer.cpp:316
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -9096,7 +9180,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 365
 # File: src/multiplayer.cpp, line: 365
 # File: src/multiplayer.cpp, line: 365
-#: src/game_initialization/multiplayer.cpp:282
+#: src/game_initialization/multiplayer.cpp:319
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr ""
@@ -9107,7 +9191,7 @@ msgstr ""
 # File: src/multiplayer.cpp, line: 368
 # File: src/multiplayer.cpp, line: 368
 # File: src/multiplayer.cpp, line: 368
-#: src/game_initialization/multiplayer.cpp:285
+#: src/game_initialization/multiplayer.cpp:322
 msgid "The password you provided was incorrect."
 msgstr "Você forneceu um password incorreto."
 
@@ -9116,7 +9200,7 @@ msgstr "Você forneceu um password incorreto."
 # File: src/multiplayer.cpp, line: 370
 # File: src/multiplayer.cpp, line: 370
 # File: src/multiplayer.cpp, line: 370
-#: src/game_initialization/multiplayer.cpp:287
+#: src/game_initialization/multiplayer.cpp:324
 #, fuzzy
 msgid "You have made too many login attempts."
 msgstr "Você fez muitas tentativas de login."
@@ -9311,7 +9395,7 @@ msgstr "Você foi derrotado!"
 # File: src/game_controller.cpp, line: 819
 # File: src/playcampaign.cpp, line: 214
 # File: src/playcampaign.cpp, line: 503
-#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:847
+#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:861
 msgid "The game could not be loaded: "
 msgstr "O jogo não pôde ser carregado: "
 
@@ -9325,7 +9409,7 @@ msgstr "O jogo não pôde ser carregado: "
 # File: src/game_controller.cpp, line: 821
 # File: src/playcampaign.cpp, line: 216
 # File: src/playcampaign.cpp, line: 506
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:849
+#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:863
 msgid "Error while playing the game: "
 msgstr "Erro durante o jogo: "
 
@@ -9339,12 +9423,12 @@ msgstr "Erro durante o jogo: "
 # File: src/game_controller.cpp, line: 839
 # File: src/playcampaign.cpp, line: 218
 # File: src/playcampaign.cpp, line: 509
-#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:869
+#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:881
 msgid "The game map could not be loaded: "
 msgstr "O mapa do jogo não pôde ser carregado: "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:851
-#: src/game_launcher.cpp:967
+#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:865
+#: src/game_launcher.cpp:979
 msgid "Map generator error: "
 msgstr ""
 
@@ -9364,7 +9448,7 @@ msgstr "Erro na leitura do WML: "
 # File: src/playcampaign.cpp, line: 549
 # File: src/playsingle_controller.cpp, line: 462
 #: src/game_initialization/playcampaign.cpp:342
-#: src/playsingle_controller.cpp:314
+#: src/playsingle_controller.cpp:316
 msgid "Game Over"
 msgstr "Fim do Jogo"
 
@@ -9416,8 +9500,8 @@ msgstr "O Arquivo que você tentou carregar está corrompido"
 # File: src/game_controller.cpp, line: 431
 # File: src/savegame.cpp, line: 733
 #: src/game_launcher.cpp:646 src/game_launcher.cpp:664
-#: src/hotkey/hotkey_handler_sp.cpp:311 src/savegame.cpp:148
-#: src/savegame.cpp:293
+#: src/hotkey/hotkey_handler_sp.cpp:312 src/savegame.cpp:147
+#: src/savegame.cpp:292
 msgid "The file you have tried to load is corrupt: '"
 msgstr "O Arquivo que você tentou carregar está corrompido: '"
 
@@ -9441,7 +9525,7 @@ msgstr "Erro de E/S ao ler o jogo: '"
 # File: src/game_controller.cpp, line: 817
 # File: src/game_controller.cpp, line: 817
 # File: src/game_controller.cpp, line: 817
-#: src/game_launcher.cpp:845
+#: src/game_launcher.cpp:859
 msgid "Error while starting server: "
 msgstr "Erro ao iniciar o server: "
 
@@ -9459,7 +9543,7 @@ msgstr "Mapas aleatórios com largura ímpar não são suportados."
 # File: src/mapgen.cpp, line: 1006
 # File: src/mapgen.cpp, line: 1006
 # File: src/mapgen.cpp, line: 1006
-#: src/generators/default_map_generator_job.cpp:953
+#: src/generators/default_map_generator_job.cpp:954
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the 'max hill size' parameter)"
@@ -9467,7 +9551,7 @@ msgstr ""
 "Não há uma localização válida para um castelo. Muitos ou muito poucos "
 "hexágonos de montanha? (verifique o parâmetro 'Tamanho máximo das montanhas')"
 
-#: src/gui/core/linked_group_definition.cpp:40
+#: src/gui/core/linked_group_definition.cpp:39
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 
@@ -9491,7 +9575,7 @@ msgstr[1] ""
 # File: src/dialogs.cpp, line: 945
 # File: src/dialogs.cpp, line: 945
 # File: src/dialogs.cpp, line: 945
-#: src/gui/dialogs/game_load.hpp:43
+#: src/gui/dialogs/game_load.hpp:41
 msgid "No Saved Games"
 msgstr "Não há jogos salvos"
 
@@ -9502,7 +9586,7 @@ msgstr "Não há jogos salvos"
 # File: src/game_controller.cpp, line: 428
 # File: src/game_controller.cpp, line: 410
 # File: src/game_controller.cpp, line: 428
-#: src/gui/dialogs/game_load.hpp:43
+#: src/gui/dialogs/game_load.hpp:41
 #, fuzzy
 #| msgid "The file you have tried to load is corrupt"
 msgid "There are no save files to load"
@@ -9522,7 +9606,7 @@ msgstr "Sem lados multijogadores."
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 98
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 98
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 98
-#: src/gui/dialogs/lobby/player_info.cpp:103
+#: src/gui/dialogs/multiplayer/player_info.cpp:104
 msgid "In game:"
 msgstr "Em jogo"
 
@@ -9530,7 +9614,7 @@ msgstr "Em jogo"
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 100
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 100
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 100
-#: src/gui/dialogs/lobby/player_info.cpp:105
+#: src/gui/dialogs/multiplayer/player_info.cpp:106
 msgid "(observing)"
 msgstr "(observando)"
 
@@ -9538,7 +9622,7 @@ msgstr "(observando)"
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 102
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 102
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 102
-#: src/gui/dialogs/lobby/player_info.cpp:107
+#: src/gui/dialogs/multiplayer/player_info.cpp:108
 msgid "(playing)"
 msgstr "(jogando)"
 
@@ -9546,7 +9630,7 @@ msgstr "(jogando)"
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 105
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 105
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 105
-#: src/gui/dialogs/lobby/player_info.cpp:110
+#: src/gui/dialogs/multiplayer/player_info.cpp:111
 msgid "In lobby"
 msgstr "Na sala"
 
@@ -9554,7 +9638,7 @@ msgstr "Na sala"
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 129
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 129
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 129
-#: src/gui/dialogs/lobby/player_info.cpp:139
+#: src/gui/dialogs/multiplayer/player_info.cpp:140
 msgid "On friends list"
 msgstr "Adicionados à lista de amigos"
 
@@ -9562,7 +9646,7 @@ msgstr "Adicionados à lista de amigos"
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 134
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 134
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 134
-#: src/gui/dialogs/lobby/player_info.cpp:144
+#: src/gui/dialogs/multiplayer/player_info.cpp:145
 msgid "On ignores list"
 msgstr "Adicionados à lista de ignorados"
 
@@ -9570,7 +9654,7 @@ msgstr "Adicionados à lista de ignorados"
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 139
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 139
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 139
-#: src/gui/dialogs/lobby/player_info.cpp:149
+#: src/gui/dialogs/multiplayer/player_info.cpp:150
 msgid "Neither a friend nor ignored"
 msgstr "Nem amigo nem ignorado"
 
@@ -9578,7 +9662,7 @@ msgstr "Nem amigo nem ignorado"
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 144
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 144
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 144
-#: src/gui/dialogs/lobby/player_info.cpp:154
+#: src/gui/dialogs/multiplayer/player_info.cpp:155
 msgid "You"
 msgstr "Você"
 
@@ -9589,7 +9673,7 @@ msgstr "Você"
 # File: src/multiplayer_create.cpp, line: 666
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 147
 # File: src/multiplayer_create.cpp, line: 666
-#: src/gui/dialogs/lobby/player_info.cpp:157
+#: src/gui/dialogs/multiplayer/player_info.cpp:158
 msgid "Error"
 msgstr "Erro"
 
@@ -9698,7 +9782,7 @@ msgstr "Raça: "
 # File: src/reports.cpp, line: 343
 # File: src/reports.cpp, line: 343
 # File: src/reports.cpp, line: 343
-#: src/help/help_impl.cpp:635 src/help/help_impl.cpp:981
+#: src/help/help_impl.cpp:635 src/help/help_impl.cpp:985
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignments: "
@@ -9729,16 +9813,24 @@ msgid "Recruits"
 msgstr "Recrutamentos"
 
 #
+# File: src/unit_types.cpp, line: 762
+# File: src/unit_types.cpp, line: 762
+# File: src/unit_types.cpp, line: 762
+#: src/help/help_impl.cpp:712 src/units/types.cpp:479
+msgid "No description available."
+msgstr "Descrição não disponível."
+
+#
 # File: src/reports.cpp, line: 383
 # File: src/reports.cpp, line: 383
 # File: src/reports.cpp, line: 383
-#: src/help/help_impl.cpp:708 src/help/help_impl.cpp:710
+#: src/help/help_impl.cpp:716 src/help/help_impl.cpp:718
 #, fuzzy
 #| msgid "Ability: "
 msgid "Availability: "
 msgstr "Habilidades: "
 
-#: src/help/help_impl.cpp:708
+#: src/help/help_impl.cpp:716
 msgid "Must-have"
 msgstr ""
 
@@ -9746,14 +9838,14 @@ msgstr ""
 # File: src/menu_events.cpp, line: 1592
 # File: src/menu_events.cpp, line: 1592
 # File: src/menu_events.cpp, line: 1592
-#: src/help/help_impl.cpp:710
+#: src/help/help_impl.cpp:718
 #, fuzzy
 #| msgid " No help available."
 msgid "Unavailable"
 msgstr " Nenhuma ajuda disponível."
 
-#: src/help/help_impl.cpp:794 src/help/help_impl.cpp:969
-#: src/help/help_topic_generators.cpp:383
+#: src/help/help_impl.cpp:798 src/help/help_impl.cpp:973
+#: src/help/help_topic_generators.cpp:384
 msgid "race^Miscellaneous"
 msgstr ""
 
@@ -9761,16 +9853,16 @@ msgstr ""
 # File: src/reports.cpp, line: 343
 # File: src/reports.cpp, line: 343
 # File: src/reports.cpp, line: 343
-#: src/help/help_impl.cpp:981 src/help/help_topic_generators.cpp:485
+#: src/help/help_impl.cpp:985 src/help/help_topic_generators.cpp:486
 #: src/reports.cpp:348
 msgid "Alignment: "
 msgstr "Alinhamento: "
 
-#: src/help/help_impl.cpp:988
+#: src/help/help_impl.cpp:992
 msgid "<header>text='Units of this race'</header>"
 msgstr ""
 
-#: src/help/help_impl.cpp:1343
+#: src/help/help_impl.cpp:1347
 msgid "corrupted original file"
 msgstr ""
 
@@ -9810,7 +9902,7 @@ msgstr "Defesa:"
 # File: src/reports.cpp, line: 245
 # File: src/reports.cpp, line: 245
 # File: src/reports.cpp, line: 245
-#: src/help/help_topic_generators.cpp:305
+#: src/help/help_topic_generators.cpp:306
 #, fuzzy
 #| msgid "Advances to:"
 msgid "Advances from: "
@@ -9820,7 +9912,7 @@ msgstr "Avança para: "
 # File: src/reports.cpp, line: 245
 # File: src/reports.cpp, line: 245
 # File: src/reports.cpp, line: 245
-#: src/help/help_topic_generators.cpp:307
+#: src/help/help_topic_generators.cpp:308
 #, fuzzy
 #| msgid "Advances to:"
 msgid "Advances to: "
@@ -9836,7 +9928,7 @@ msgstr "Avança para: "
 # File: src/reports.cpp, line: 707
 # File: src/reports.cpp, line: 718
 # File: src/reports.cpp, line: 729
-#: src/help/help_topic_generators.cpp:336
+#: src/help/help_topic_generators.cpp:337
 #, fuzzy
 #| msgid "Base attacks: "
 msgid "Base unit: "
@@ -9846,7 +9938,7 @@ msgstr "Ataques base: "
 # File: src/reports.cpp, line: 1078
 # File: src/reports.cpp, line: 1078
 # File: src/reports.cpp, line: 1078
-#: src/help/help_topic_generators.cpp:341
+#: src/help/help_topic_generators.cpp:342
 #, fuzzy
 msgid "Base units: "
 msgstr "Unidades Ordeiras: "
@@ -9855,7 +9947,7 @@ msgstr "Unidades Ordeiras: "
 # File: data/advanced_preferences.cfg, line: 99
 # File: data/advanced_preferences.cfg, line: 99
 # File: data/advanced_preferences.cfg, line: 99
-#: src/help/help_topic_generators.cpp:359
+#: src/help/help_topic_generators.cpp:360
 #, fuzzy
 msgid "Variations: "
 msgstr "Desabilitar notificações."
@@ -9864,7 +9956,7 @@ msgstr "Desabilitar notificações."
 # File: src/reports.cpp, line: 198
 # File: src/reports.cpp, line: 198
 # File: src/reports.cpp, line: 198
-#: src/help/help_topic_generators.cpp:385 src/reports.cpp:186
+#: src/help/help_topic_generators.cpp:386 src/reports.cpp:186
 msgid "Race: "
 msgstr "Raça: "
 
@@ -9872,8 +9964,8 @@ msgstr "Raça: "
 # File: src/dialogs.cpp, line: 500
 # File: src/dialogs.cpp, line: 500
 # File: src/dialogs.cpp, line: 500
-#: src/help/help_topic_generators.cpp:411
-#: src/help/help_topic_generators.cpp:434
+#: src/help/help_topic_generators.cpp:412
+#: src/help/help_topic_generators.cpp:435
 msgid "Traits"
 msgstr "Características"
 
@@ -9881,7 +9973,7 @@ msgstr "Características"
 # File: src/reports.cpp, line: 383
 # File: src/reports.cpp, line: 383
 # File: src/reports.cpp, line: 383
-#: src/help/help_topic_generators.cpp:444
+#: src/help/help_topic_generators.cpp:445
 #, fuzzy
 #| msgid "Ability: "
 msgid "Abilities: "
@@ -9891,7 +9983,7 @@ msgstr "Habilidades: "
 # File: src/reports.cpp, line: 383
 # File: src/reports.cpp, line: 383
 # File: src/reports.cpp, line: 383
-#: src/help/help_topic_generators.cpp:460
+#: src/help/help_topic_generators.cpp:461
 #, fuzzy
 #| msgid "Ability: "
 msgid "Ability Upgrades: "
@@ -9901,7 +9993,7 @@ msgstr "Habilidades: "
 # File: src/dialogs.cpp, line: 1196
 # File: src/dialogs.cpp, line: 1196
 # File: src/dialogs.cpp, line: 1196
-#: src/help/help_topic_generators.cpp:476
+#: src/help/help_topic_generators.cpp:477
 msgid "HP: "
 msgstr "HP: "
 
@@ -9909,7 +10001,7 @@ msgstr "HP: "
 # File: src/dialogs.cpp, line: 1203
 # File: src/dialogs.cpp, line: 1203
 # File: src/dialogs.cpp, line: 1203
-#: src/help/help_topic_generators.cpp:477
+#: src/help/help_topic_generators.cpp:478
 msgid "Moves: "
 msgstr "Movimento: "
 
@@ -9917,7 +10009,7 @@ msgstr "Movimento: "
 # File: src/reports.cpp, line: 560
 # File: src/reports.cpp, line: 560
 # File: src/reports.cpp, line: 560
-#: src/help/help_topic_generators.cpp:479
+#: src/help/help_topic_generators.cpp:480
 #, fuzzy
 msgid "Vision: "
 msgstr "Versão: "
@@ -9926,25 +10018,25 @@ msgstr "Versão: "
 # File: src/game_events.cpp, line: 190
 # File: src/game_events.cpp, line: 190
 # File: src/game_events.cpp, line: 190
-#: src/help/help_topic_generators.cpp:482
+#: src/help/help_topic_generators.cpp:483
 #, fuzzy
 #| msgid "Warning: "
 msgid "Jamming: "
 msgstr "Aviso:"
 
-#: src/help/help_topic_generators.cpp:484
+#: src/help/help_topic_generators.cpp:485
 msgid "Cost: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:489
+#: src/help/help_topic_generators.cpp:490
 msgid "Required XP: "
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:498
+#: src/help/help_topic_generators.cpp:499
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:505
+#: src/help/help_topic_generators.cpp:506
 msgid "unit help^Name"
 msgstr ""
 
@@ -9964,7 +10056,7 @@ msgstr ""
 # File: src/dialogs.cpp, line: 321
 # File: src/dialogs.cpp, line: 496
 # File: src/menu_events.cpp, line: 965
-#: src/help/help_topic_generators.cpp:506
+#: src/help/help_topic_generators.cpp:507
 msgid "Type"
 msgstr "Tipo"
 
@@ -9975,7 +10067,7 @@ msgstr "Tipo"
 # File: src/unit_types.cpp, line: 327
 # File: src/unit_types.cpp, line: 250
 # File: src/unit_types.cpp, line: 327
-#: src/help/help_topic_generators.cpp:507
+#: src/help/help_topic_generators.cpp:508
 #, fuzzy
 #| msgid "strike"
 #| msgid_plural "strikes"
@@ -9989,7 +10081,7 @@ msgstr "golpe"
 # File: data/core/team-colors.cfg, line: 107
 # File: data/core/team-colors.cfg, line: 62
 # File: data/core/team-colors.cfg, line: 107
-#: src/help/help_topic_generators.cpp:508
+#: src/help/help_topic_generators.cpp:509
 #, fuzzy
 #| msgid "Orange"
 msgid "Range"
@@ -9999,7 +10091,7 @@ msgstr "Laranja"
 # File: src/reports.cpp, line: 713
 # File: src/reports.cpp, line: 713
 # File: src/reports.cpp, line: 713
-#: src/help/help_topic_generators.cpp:509
+#: src/help/help_topic_generators.cpp:510
 #, fuzzy
 msgid "Special"
 msgstr "Efeitos das Armas:"
@@ -10008,7 +10100,7 @@ msgstr "Efeitos das Armas:"
 # File: src/reports.cpp, line: 438
 # File: src/reports.cpp, line: 438
 # File: src/reports.cpp, line: 438
-#: src/help/help_topic_generators.cpp:571
+#: src/help/help_topic_generators.cpp:572
 #, fuzzy
 #| msgid "Resistances: "
 msgid "Resistances"
@@ -10021,7 +10113,7 @@ msgstr "Resistências: "
 # File: src/attack_prediction_display.cpp, line: 236
 # File: src/attack_prediction_display.cpp, line: 104
 # File: src/attack_prediction_display.cpp, line: 236
-#: src/help/help_topic_generators.cpp:575
+#: src/help/help_topic_generators.cpp:576
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack Type"
@@ -10031,7 +10123,7 @@ msgstr "Atacante"
 # File: src/reports.cpp, line: 438
 # File: src/reports.cpp, line: 438
 # File: src/reports.cpp, line: 438
-#: src/help/help_topic_generators.cpp:576
+#: src/help/help_topic_generators.cpp:577
 #, fuzzy
 #| msgid "Resistances: "
 msgid "Resistance"
@@ -10041,7 +10133,7 @@ msgstr "Resistências: "
 # File: src/reports.cpp, line: 466
 # File: src/reports.cpp, line: 466
 # File: src/reports.cpp, line: 466
-#: src/help/help_topic_generators.cpp:605
+#: src/help/help_topic_generators.cpp:606
 #, fuzzy
 msgid "Terrain Modifiers"
 msgstr "Modificador de Experiência: "
@@ -10050,7 +10142,7 @@ msgstr "Modificador de Experiência: "
 # File: src/reports.cpp, line: 517
 # File: src/reports.cpp, line: 517
 # File: src/reports.cpp, line: 517
-#: src/help/help_topic_generators.cpp:609
+#: src/help/help_topic_generators.cpp:610
 #, fuzzy
 #| msgid "Terrain: "
 msgid "Terrain"
@@ -10060,13 +10152,13 @@ msgstr "Terreno:"
 # File: src/reports.cpp, line: 539
 # File: src/reports.cpp, line: 539
 # File: src/reports.cpp, line: 539
-#: src/help/help_topic_generators.cpp:610
+#: src/help/help_topic_generators.cpp:611
 #, fuzzy
 #| msgid "Defense: "
 msgid "Defense"
 msgstr "Defesa:"
 
-#: src/help/help_topic_generators.cpp:611
+#: src/help/help_topic_generators.cpp:612
 msgid "Movement Cost"
 msgstr ""
 
@@ -10074,7 +10166,7 @@ msgstr ""
 # File: src/reports.cpp, line: 539
 # File: src/reports.cpp, line: 539
 # File: src/reports.cpp, line: 539
-#: src/help/help_topic_generators.cpp:615
+#: src/help/help_topic_generators.cpp:616
 #, fuzzy
 #| msgid "Defense: "
 msgid "Defense Cap"
@@ -10084,12 +10176,12 @@ msgstr "Defesa:"
 # File: src/reports.cpp, line: 560
 # File: src/reports.cpp, line: 560
 # File: src/reports.cpp, line: 560
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:621
 #, fuzzy
 msgid "Vision Cost"
 msgstr "Versão: "
 
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:625
 msgid "Jamming Cost"
 msgstr ""
 
@@ -10105,7 +10197,7 @@ msgstr ""
 msgid "Screenshot"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:715
+#: src/hotkey/command_executor.cpp:710
 msgid "Map-Screenshot"
 msgstr ""
 
@@ -10142,8 +10234,8 @@ msgstr ""
 # File: src/savegame.cpp, line: 477
 # File: src/savegame.cpp, line: 1098
 # File: src/savegame.cpp, line: 1100
-#: src/hotkey/hotkey_handler.cpp:390 src/save_index.cpp:285 src/savegame.cpp:70
-#: src/savegame.cpp:587 src/savegame.cpp:589
+#: src/hotkey/hotkey_handler.cpp:390 src/save_index.cpp:335 src/savegame.cpp:70
+#: src/savegame.cpp:593 src/savegame.cpp:595
 msgid "Auto-Save"
 msgstr "Salvo-automaticamente"
 
@@ -10181,7 +10273,7 @@ msgstr "(aperte $hotkey para continuar o movimento)"
 # File: src/playsingle_controller.cpp, line: 221
 # File: src/menu_events.cpp, line: 3092
 # File: src/playsingle_controller.cpp, line: 221
-#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1923
+#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1933
 msgid "Planning mode activated!"
 msgstr "Modo de planejamento ativado!"
 
@@ -10192,7 +10284,7 @@ msgstr "Modo de planejamento ativado!"
 # File: src/playsingle_controller.cpp, line: 224
 # File: src/menu_events.cpp, line: 3095
 # File: src/playsingle_controller.cpp, line: 224
-#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1926
+#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1936
 msgid "Planning mode deactivated!"
 msgstr "Modo de planejamento desativado!"
 
@@ -10413,7 +10505,7 @@ msgstr "Você não tem ouro o suficiente para recrutar essa unidade"
 # File: src/menu_events.cpp, line: 650
 # File: src/menu_events.cpp, line: 650
 # File: src/menu_events.cpp, line: 650
-#: src/menu_events.cpp:352
+#: src/menu_events.cpp:351
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Você está afastado de seus soldados e não pode convocá-los"
 
@@ -10421,7 +10513,7 @@ msgstr "Você está afastado de seus soldados e não pode convocá-los"
 # File: src/menu_events.cpp, line: 677
 # File: src/menu_events.cpp, line: 677
 # File: src/menu_events.cpp, line: 677
-#: src/menu_events.cpp:371
+#: src/menu_events.cpp:370
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -10434,7 +10526,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 683
 # File: src/menu_events.cpp, line: 683
 # File: src/menu_events.cpp, line: 683
-#: src/menu_events.cpp:375
+#: src/menu_events.cpp:374
 #, fuzzy
 msgid "You currently can't recall at the highlighted location"
 msgstr "Você não pode reconectar ao local escolhido"
@@ -10443,7 +10535,7 @@ msgstr "Você não pode reconectar ao local escolhido"
 # File: src/menu_events.cpp, line: 695
 # File: src/menu_events.cpp, line: 695
 # File: src/menu_events.cpp, line: 695
-#: src/menu_events.cpp:402
+#: src/menu_events.cpp:401
 #, fuzzy
 #| msgid "You must have at least 1 gold piece to recall a unit"
 #| msgid_plural "You must have at least $cost gold pieces to recall a unit"
@@ -10458,7 +10550,7 @@ msgstr[1] ""
 # File: src/menu_events.cpp, line: 814
 # File: src/menu_events.cpp, line: 814
 # File: src/menu_events.cpp, line: 814
-#: src/menu_events.cpp:528
+#: src/menu_events.cpp:541
 msgid "You cannot end your turn yet!"
 msgstr "Você ainda não pode acabar o turno!"
 
@@ -10466,7 +10558,7 @@ msgstr "Você ainda não pode acabar o turno!"
 # File: src/menu_events.cpp, line: 828
 # File: src/menu_events.cpp, line: 828
 # File: src/menu_events.cpp, line: 828
-#: src/menu_events.cpp:541
+#: src/menu_events.cpp:554
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Você ainda não começou o seu turno. Você realmente quer terminá-lo?"
@@ -10478,7 +10570,7 @@ msgstr "Você ainda não começou o seu turno. Você realmente quer terminá-lo?
 # File: src/menu_events.cpp, line: 842
 # File: src/menu_events.cpp, line: 835
 # File: src/menu_events.cpp, line: 842
-#: src/menu_events.cpp:550
+#: src/menu_events.cpp:563
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Algumas unidades ainda podem se mover. Quer realmente terminar o turno?"
@@ -10490,7 +10582,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 842
 # File: src/menu_events.cpp, line: 835
 # File: src/menu_events.cpp, line: 842
-#: src/menu_events.cpp:559
+#: src/menu_events.cpp:572
 #, fuzzy
 #| msgid "Some units have movement left. Do you really want to end your turn?"
 msgid "Some units have not moved. Do you really want to end your turn?"
@@ -10501,7 +10593,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 882
 # File: src/menu_events.cpp, line: 882
 # File: src/menu_events.cpp, line: 882
-#: src/menu_events.cpp:615
+#: src/menu_events.cpp:628
 #, fuzzy
 msgid "Rename Unit"
 msgstr "Avançar a Unidade"
@@ -10510,7 +10602,7 @@ msgstr "Avançar a Unidade"
 # File: src/menu_events.cpp, line: 883
 # File: src/menu_events.cpp, line: 883
 # File: src/menu_events.cpp, line: 883
-#: src/menu_events.cpp:616
+#: src/menu_events.cpp:629
 #, fuzzy
 msgid "Name:"
 msgstr "Nome:"
@@ -10519,7 +10611,7 @@ msgstr "Nome:"
 # File: src/menu_events.cpp, line: 1279
 # File: src/menu_events.cpp, line: 1279
 # File: src/menu_events.cpp, line: 1279
-#: src/menu_events.cpp:980
+#: src/menu_events.cpp:991
 msgid "Search"
 msgstr "Procurar"
 
@@ -10527,7 +10619,7 @@ msgstr "Procurar"
 # File: src/menu_events.cpp, line: 1929
 # File: src/menu_events.cpp, line: 1929
 # File: src/menu_events.cpp, line: 1929
-#: src/menu_events.cpp:1119
+#: src/menu_events.cpp:1130
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr ""
 "(D) - somente em debug, (N) - somente em rede, (A) - somente administrador"
@@ -10536,7 +10628,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 1935
 # File: src/menu_events.cpp, line: 1935
 # File: src/menu_events.cpp, line: 1935
-#: src/menu_events.cpp:1126
+#: src/menu_events.cpp:1137
 msgid "(debug command)"
 msgstr "(comando de debug)"
 
@@ -10544,11 +10636,11 @@ msgstr "(comando de debug)"
 # File: src/menu_events.cpp, line: 1936
 # File: src/menu_events.cpp, line: 1936
 # File: src/menu_events.cpp, line: 1936
-#: src/menu_events.cpp:1127
+#: src/menu_events.cpp:1138
 msgid "(network only)"
 msgstr "(somente em rede)"
 
-#: src/menu_events.cpp:1129
+#: src/menu_events.cpp:1140
 msgid "(not during other events)"
 msgstr ""
 
@@ -10556,7 +10648,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 1961
 # File: src/menu_events.cpp, line: 1961
 # File: src/menu_events.cpp, line: 1961
-#: src/menu_events.cpp:1157
+#: src/menu_events.cpp:1168
 msgid "Refresh gui."
 msgstr "Atualizar interface gráfica."
 
@@ -10564,7 +10656,7 @@ msgstr "Atualizar interface gráfica."
 # File: src/menu_events.cpp, line: 1963
 # File: src/menu_events.cpp, line: 1963
 # File: src/menu_events.cpp, line: 1963
-#: src/menu_events.cpp:1158
+#: src/menu_events.cpp:1169
 msgid "Switch a side to/from AI control."
 msgstr "Mudar um lado de/para controle por IA."
 
@@ -10572,7 +10664,7 @@ msgstr "Mudar um lado de/para controle por IA."
 # File: src/menu_events.cpp, line: 1963
 # File: src/menu_events.cpp, line: 1963
 # File: src/menu_events.cpp, line: 1963
-#: src/menu_events.cpp:1159 src/menu_events.cpp:1161
+#: src/menu_events.cpp:1170 src/menu_events.cpp:1172
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<time> [on/off]]"
 
@@ -10580,7 +10672,7 @@ msgstr "[<time> [on/off]]"
 # File: src/menu_events.cpp, line: 1963
 # File: src/menu_events.cpp, line: 1963
 # File: src/menu_events.cpp, line: 1963
-#: src/menu_events.cpp:1160
+#: src/menu_events.cpp:1171
 #, fuzzy
 #| msgid "Switch a side to/from AI control."
 msgid "Switch a side to/from idle state."
@@ -10590,7 +10682,7 @@ msgstr "Mudar um lado de/para controle por IA."
 # File: src/menu_events.cpp, line: 1966
 # File: src/menu_events.cpp, line: 1966
 # File: src/menu_events.cpp, line: 1966
-#: src/menu_events.cpp:1164
+#: src/menu_events.cpp:1175
 msgid "<side> <nickname>"
 msgstr "<time> <apelido>"
 
@@ -10598,16 +10690,16 @@ msgstr "<time> <apelido>"
 # File: src/menu_events.cpp, line: 1966
 # File: src/menu_events.cpp, line: 1966
 # File: src/menu_events.cpp, line: 1966
-#: src/menu_events.cpp:1164
+#: src/menu_events.cpp:1175
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
 "Atribuir o controle de um lado para um jogador diferente ou um observador."
 
-#: src/menu_events.cpp:1165
+#: src/menu_events.cpp:1176
 msgid "Query the controller status of a side."
 msgstr ""
 
-#: src/menu_events.cpp:1166
+#: src/menu_events.cpp:1177
 msgid "<side>"
 msgstr ""
 
@@ -10615,7 +10707,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 1968
 # File: src/menu_events.cpp, line: 1968
 # File: src/menu_events.cpp, line: 1968
-#: src/menu_events.cpp:1167
+#: src/menu_events.cpp:1178
 msgid "Clear chat history."
 msgstr "Limpa o histórico das mensagens."
 
@@ -10623,7 +10715,7 @@ msgstr "Limpa o histórico das mensagens."
 # File: src/menu_events.cpp, line: 1972
 # File: src/menu_events.cpp, line: 1972
 # File: src/menu_events.cpp, line: 1972
-#: src/menu_events.cpp:1168
+#: src/menu_events.cpp:1179
 msgid "Debug foreground terrain."
 msgstr "Depurar (debug) terreno de primeiro plano"
 
@@ -10631,7 +10723,7 @@ msgstr "Depurar (debug) terreno de primeiro plano"
 # File: src/menu_events.cpp, line: 1974
 # File: src/menu_events.cpp, line: 1974
 # File: src/menu_events.cpp, line: 1974
-#: src/menu_events.cpp:1170
+#: src/menu_events.cpp:1181
 msgid "Debug layers from terrain under the mouse."
 msgstr "Depurar (debug) camadas de terrenos sob o mouse."
 
@@ -10639,7 +10731,7 @@ msgstr "Depurar (debug) camadas de terrenos sob o mouse."
 # File: src/menu_events.cpp, line: 1975
 # File: src/menu_events.cpp, line: 1975
 # File: src/menu_events.cpp, line: 1975
-#: src/menu_events.cpp:1171
+#: src/menu_events.cpp:1182
 msgid "Show fps."
 msgstr "Mostrar FPS (frames por segundo)."
 
@@ -10647,7 +10739,7 @@ msgstr "Mostrar FPS (frames por segundo)."
 # File: src/menu_events.cpp, line: 1977
 # File: src/menu_events.cpp, line: 1977
 # File: src/menu_events.cpp, line: 1977
-#: src/menu_events.cpp:1173
+#: src/menu_events.cpp:1184
 msgid "Save game."
 msgstr "Salvar Jogo."
 
@@ -10655,7 +10747,7 @@ msgstr "Salvar Jogo."
 # File: src/menu_events.cpp, line: 1979
 # File: src/menu_events.cpp, line: 1979
 # File: src/menu_events.cpp, line: 1979
-#: src/menu_events.cpp:1175
+#: src/menu_events.cpp:1186
 msgid "Quit game."
 msgstr "Sair do jogo."
 
@@ -10663,7 +10755,7 @@ msgstr "Sair do jogo."
 # File: src/menu_events.cpp, line: 1983
 # File: src/menu_events.cpp, line: 1983
 # File: src/menu_events.cpp, line: 1983
-#: src/menu_events.cpp:1178
+#: src/menu_events.cpp:1189
 msgid "Save and quit."
 msgstr "Salvar e sair"
 
@@ -10671,7 +10763,7 @@ msgstr "Salvar e sair"
 # File: src/menu_events.cpp, line: 1986
 # File: src/menu_events.cpp, line: 1986
 # File: src/menu_events.cpp, line: 1986
-#: src/menu_events.cpp:1180
+#: src/menu_events.cpp:1191
 msgid "Ignore replay errors."
 msgstr "Ignorar erros do replay."
 
@@ -10679,7 +10771,7 @@ msgstr "Ignorar erros do replay."
 # File: src/menu_events.cpp, line: 1988
 # File: src/menu_events.cpp, line: 1988
 # File: src/menu_events.cpp, line: 1988
-#: src/menu_events.cpp:1181
+#: src/menu_events.cpp:1192
 msgid "Disable autosaves."
 msgstr "Desabilitar salvamento automático."
 
@@ -10687,7 +10779,7 @@ msgstr "Desabilitar salvamento automático."
 # File: src/menu_events.cpp, line: 1990
 # File: src/menu_events.cpp, line: 1990
 # File: src/menu_events.cpp, line: 1990
-#: src/menu_events.cpp:1183
+#: src/menu_events.cpp:1194
 msgid "<id>"
 msgstr "<id>"
 
@@ -10695,7 +10787,7 @@ msgstr "<id>"
 # File: src/menu_events.cpp, line: 1990
 # File: src/menu_events.cpp, line: 1990
 # File: src/menu_events.cpp, line: 1990
-#: src/menu_events.cpp:1183
+#: src/menu_events.cpp:1194
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Avançar para o próximo cenário, ou cenário identificado pela 'id'"
 
@@ -10703,7 +10795,7 @@ msgstr "Avançar para o próximo cenário, ou cenário identificado pela 'id'"
 # File: src/menu_events.cpp, line: 1993
 # File: src/menu_events.cpp, line: 1993
 # File: src/menu_events.cpp, line: 1993
-#: src/menu_events.cpp:1185
+#: src/menu_events.cpp:1196
 msgid "Choose next scenario"
 msgstr "Escolha o próximo cenário"
 
@@ -10711,7 +10803,7 @@ msgstr "Escolha o próximo cenário"
 # File: src/menu_events.cpp, line: 1996
 # File: src/menu_events.cpp, line: 1996
 # File: src/menu_events.cpp, line: 1996
-#: src/menu_events.cpp:1188
+#: src/menu_events.cpp:1199
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -10723,7 +10815,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 1996
 # File: src/menu_events.cpp, line: 1996
 # File: src/menu_events.cpp, line: 1996
-#: src/menu_events.cpp:1188
+#: src/menu_events.cpp:1199
 msgid "[turn]"
 msgstr "[turno]"
 
@@ -10731,7 +10823,7 @@ msgstr "[turno]"
 # File: src/menu_events.cpp, line: 1998
 # File: src/menu_events.cpp, line: 1998
 # File: src/menu_events.cpp, line: 1998
-#: src/menu_events.cpp:1191
+#: src/menu_events.cpp:1202
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
@@ -10743,7 +10835,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 1998
 # File: src/menu_events.cpp, line: 1998
 # File: src/menu_events.cpp, line: 1998
-#: src/menu_events.cpp:1191
+#: src/menu_events.cpp:1202
 msgid "[limit]"
 msgstr "[limite]"
 
@@ -10751,7 +10843,7 @@ msgstr "[limite]"
 # File: src/menu_events.cpp, line: 2000
 # File: src/menu_events.cpp, line: 2000
 # File: src/menu_events.cpp, line: 2000
-#: src/menu_events.cpp:1193
+#: src/menu_events.cpp:1204
 msgid "Turn debug mode on."
 msgstr "Comandos do modo de Debug"
 
@@ -10759,7 +10851,7 @@ msgstr "Comandos do modo de Debug"
 # File: src/menu_events.cpp, line: 2002
 # File: src/menu_events.cpp, line: 2002
 # File: src/menu_events.cpp, line: 2002
-#: src/menu_events.cpp:1194
+#: src/menu_events.cpp:1205
 msgid "Turn debug mode off."
 msgstr "Desligar modo debug."
 
@@ -10770,7 +10862,7 @@ msgstr "Desligar modo debug."
 # File: src/menu_events.cpp, line: 2008
 # File: src/menu_events.cpp, line: 2004
 # File: src/menu_events.cpp, line: 2008
-#: src/menu_events.cpp:1196 src/menu_events.cpp:1200
+#: src/menu_events.cpp:1207 src/menu_events.cpp:1211
 msgid "<command>[;<command>...]"
 msgstr "<comando>[;<comando>...]"
 
@@ -10778,7 +10870,7 @@ msgstr "<comando>[;<comando>...]"
 # File: src/menu_events.cpp, line: 2004
 # File: src/menu_events.cpp, line: 2004
 # File: src/menu_events.cpp, line: 2004
-#: src/menu_events.cpp:1196
+#: src/menu_events.cpp:1207
 msgid "Execute a Lua statement."
 msgstr "Executar um comando lua."
 
@@ -10786,7 +10878,7 @@ msgstr "Executar um comando lua."
 # File: src/menu_events.cpp, line: 2006
 # File: src/menu_events.cpp, line: 2006
 # File: src/menu_events.cpp, line: 2006
-#: src/menu_events.cpp:1198
+#: src/menu_events.cpp:1209
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Concede altos privilegios aos scripts Lua."
 
@@ -10794,7 +10886,7 @@ msgstr "Concede altos privilegios aos scripts Lua."
 # File: src/menu_events.cpp, line: 2008
 # File: src/menu_events.cpp, line: 2008
 # File: src/menu_events.cpp, line: 2008
-#: src/menu_events.cpp:1199
+#: src/menu_events.cpp:1210
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 "Estabelece o comando usado pela tecla de atalho de comando personalizado."
@@ -10803,7 +10895,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 2011
 # File: src/menu_events.cpp, line: 2011
 # File: src/menu_events.cpp, line: 2011
-#: src/menu_events.cpp:1202
+#: src/menu_events.cpp:1213
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr "Abre um diálogo que permite alterar o controle dos times."
 
@@ -10811,7 +10903,7 @@ msgstr "Abre um diálogo que permite alterar o controle dos times."
 # File: src/menu_events.cpp, line: 2015
 # File: src/menu_events.cpp, line: 2015
 # File: src/menu_events.cpp, line: 2015
-#: src/menu_events.cpp:1203
+#: src/menu_events.cpp:1214
 msgid "Launch the gamestate inspector"
 msgstr "Inicia o inspetor de estado do jogo."
 
@@ -10819,7 +10911,7 @@ msgstr "Inicia o inspetor de estado do jogo."
 # File: src/menu_events.cpp, line: 2019
 # File: src/menu_events.cpp, line: 2019
 # File: src/menu_events.cpp, line: 2019
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1216
 msgid "<name>[=<command>]"
 msgstr "<nome>[=<comando>]"
 
@@ -10827,7 +10919,7 @@ msgstr "<nome>[=<comando>]"
 # File: src/menu_events.cpp, line: 2019
 # File: src/menu_events.cpp, line: 2019
 # File: src/menu_events.cpp, line: 2019
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1216
 msgid "Set or show alias to a command"
 msgstr "Define ou exibe um atalho para um comando."
 
@@ -10835,7 +10927,7 @@ msgstr "Define ou exibe um atalho para um comando."
 # File: src/menu_events.cpp, line: 2021
 # File: src/menu_events.cpp, line: 2021
 # File: src/menu_events.cpp, line: 2021
-#: src/menu_events.cpp:1207
+#: src/menu_events.cpp:1218
 msgid "<var>=<value>"
 msgstr "<var>=<valor>"
 
@@ -10843,7 +10935,7 @@ msgstr "<var>=<valor>"
 # File: src/menu_events.cpp, line: 2021
 # File: src/menu_events.cpp, line: 2021
 # File: src/menu_events.cpp, line: 2021
-#: src/menu_events.cpp:1207
+#: src/menu_events.cpp:1218
 msgid "Set a scenario variable."
 msgstr "Define uma variável do cenário."
 
@@ -10851,7 +10943,7 @@ msgstr "Define uma variável do cenário."
 # File: src/menu_events.cpp, line: 2023
 # File: src/menu_events.cpp, line: 2023
 # File: src/menu_events.cpp, line: 2023
-#: src/menu_events.cpp:1208
+#: src/menu_events.cpp:1219
 msgid "<var>"
 msgstr "<var>"
 
@@ -10859,7 +10951,7 @@ msgstr "<var>"
 # File: src/menu_events.cpp, line: 2023
 # File: src/menu_events.cpp, line: 2023
 # File: src/menu_events.cpp, line: 2023
-#: src/menu_events.cpp:1208
+#: src/menu_events.cpp:1219
 msgid "Show a scenario variable."
 msgstr "Mostra uma variável do cenário."
 
@@ -10867,7 +10959,7 @@ msgstr "Mostra uma variável do cenário."
 # File: src/menu_events.cpp, line: 2025
 # File: src/menu_events.cpp, line: 2025
 # File: src/menu_events.cpp, line: 2025
-#: src/menu_events.cpp:1210
+#: src/menu_events.cpp:1221
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 "Modifica uma variável de unidade. (Somente chaves de primeiro nível são "
@@ -10877,7 +10969,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 2032
 # File: src/menu_events.cpp, line: 2032
 # File: src/menu_events.cpp, line: 2032
-#: src/menu_events.cpp:1216
+#: src/menu_events.cpp:1227
 msgid "Discover all units in help."
 msgstr "Revela todas as unidades na ajuda."
 
@@ -10885,7 +10977,7 @@ msgstr "Revela todas as unidades na ajuda."
 # File: src/menu_events.cpp, line: 2034
 # File: src/menu_events.cpp, line: 2034
 # File: src/menu_events.cpp, line: 2034
-#: src/menu_events.cpp:1217
+#: src/menu_events.cpp:1228
 msgid "'Undiscover' all units in help."
 msgstr "Oculta todas as unidades na ajuda."
 
@@ -10893,7 +10985,7 @@ msgstr "Oculta todas as unidades na ajuda."
 # File: src/menu_events.cpp, line: 2036
 # File: src/menu_events.cpp, line: 2036
 # File: src/menu_events.cpp, line: 2036
-#: src/menu_events.cpp:1218
+#: src/menu_events.cpp:1229
 msgid "Create a unit."
 msgstr "Criar uma unidade"
 
@@ -10901,7 +10993,7 @@ msgstr "Criar uma unidade"
 # File: src/menu_events.cpp, line: 2038
 # File: src/menu_events.cpp, line: 2038
 # File: src/menu_events.cpp, line: 2038
-#: src/menu_events.cpp:1219
+#: src/menu_events.cpp:1230
 msgid "Toggle fog for the current player."
 msgstr "Liga/Desliga a Névoa para o jogador atual."
 
@@ -10909,7 +11001,7 @@ msgstr "Liga/Desliga a Névoa para o jogador atual."
 # File: src/menu_events.cpp, line: 2040
 # File: src/menu_events.cpp, line: 2040
 # File: src/menu_events.cpp, line: 2040
-#: src/menu_events.cpp:1220
+#: src/menu_events.cpp:1231
 msgid "Toggle shroud for the current player."
 msgstr "Liga/Desliga a Escuridão para o jogador atual."
 
@@ -10917,7 +11009,7 @@ msgstr "Liga/Desliga a Escuridão para o jogador atual."
 # File: src/menu_events.cpp, line: 2042
 # File: src/menu_events.cpp, line: 2042
 # File: src/menu_events.cpp, line: 2042
-#: src/menu_events.cpp:1221
+#: src/menu_events.cpp:1232
 msgid "Give gold to the current player."
 msgstr "Entregar ouro para o jogador atual."
 
@@ -10925,7 +11017,7 @@ msgstr "Entregar ouro para o jogador atual."
 # File: src/menu_events.cpp, line: 2044
 # File: src/menu_events.cpp, line: 2044
 # File: src/menu_events.cpp, line: 2044
-#: src/menu_events.cpp:1222
+#: src/menu_events.cpp:1233
 msgid "Fire a game event."
 msgstr "Disparar um evento do jogo."
 
@@ -10933,7 +11025,7 @@ msgstr "Disparar um evento do jogo."
 # File: src/menu_events.cpp, line: 2047
 # File: src/menu_events.cpp, line: 2047
 # File: src/menu_events.cpp, line: 2047
-#: src/menu_events.cpp:1225
+#: src/menu_events.cpp:1236
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Liga/desliga exibição das coordenadas x,y sobre os hexágonos."
 
@@ -10941,7 +11033,7 @@ msgstr "Liga/desliga exibição das coordenadas x,y sobre os hexágonos."
 # File: src/menu_events.cpp, line: 2050
 # File: src/menu_events.cpp, line: 2050
 # File: src/menu_events.cpp, line: 2050
-#: src/menu_events.cpp:1228
+#: src/menu_events.cpp:1239
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Liga/desliga a exibição dos códigos de terreno nos hexágonos."
 
@@ -10949,7 +11041,7 @@ msgstr "Liga/desliga a exibição dos códigos de terreno nos hexágonos."
 # File: src/menu_events.cpp, line: 2050
 # File: src/menu_events.cpp, line: 2050
 # File: src/menu_events.cpp, line: 2050
-#: src/menu_events.cpp:1231
+#: src/menu_events.cpp:1242
 #, fuzzy
 #| msgid "Toggle overlaying of terrain codes on hexes."
 msgid "Toggle overlaying of number of bitmaps on hexes."
@@ -10959,7 +11051,7 @@ msgstr "Liga/desliga a exibição dos códigos de terreno nos hexágonos."
 # File: src/menu_events.cpp, line: 2053
 # File: src/menu_events.cpp, line: 2053
 # File: src/menu_events.cpp, line: 2053
-#: src/menu_events.cpp:1233
+#: src/menu_events.cpp:1244
 msgid "Toggle planning mode."
 msgstr "Alternar para modo planejamento."
 
@@ -10967,7 +11059,7 @@ msgstr "Alternar para modo planejamento."
 # File: src/menu_events.cpp, line: 2056
 # File: src/menu_events.cpp, line: 2056
 # File: src/menu_events.cpp, line: 2056
-#: src/menu_events.cpp:1236
+#: src/menu_events.cpp:1247
 msgid "Access whiteboard options dialog."
 msgstr "Acessa o diálogo de opções do quadro-branco."
 
@@ -10975,7 +11067,7 @@ msgstr "Acessa o diálogo de opções do quadro-branco."
 # File: src/menu_events.cpp, line: 2539
 # File: src/menu_events.cpp, line: 2538
 # File: src/menu_events.cpp, line: 2538
-#: src/menu_events.cpp:1356
+#: src/menu_events.cpp:1367
 #, fuzzy
 #| msgid "Couldn't find label or unit containing the string '$search'."
 msgid "Could not find label or unit containing the string ‘$search’."
@@ -10985,7 +11077,7 @@ msgstr "Não pude encontrar nome ou unidade contendo '$search'."
 # File: src/menu_events.cpp, line: 2578
 # File: src/menu_events.cpp, line: 2577
 # File: src/menu_events.cpp, line: 2577
-#: src/menu_events.cpp:1399
+#: src/menu_events.cpp:1410
 msgid "Can't droid invalid side: '$side'."
 msgstr "Não é possível 'droid' no time inválido: '$side'."
 
@@ -10993,7 +11085,7 @@ msgstr "Não é possível 'droid' no time inválido: '$side'."
 # File: src/menu_events.cpp, line: 2583
 # File: src/menu_events.cpp, line: 2582
 # File: src/menu_events.cpp, line: 2582
-#: src/menu_events.cpp:1404
+#: src/menu_events.cpp:1415
 msgid "Can't droid networked side: '$side'."
 msgstr "Não é possível 'droid' no time de rede: '$side'."
 
@@ -11001,7 +11093,7 @@ msgstr "Não é possível 'droid' no time de rede: '$side'."
 # File: src/menu_events.cpp, line: 2578
 # File: src/menu_events.cpp, line: 2577
 # File: src/menu_events.cpp, line: 2577
-#: src/menu_events.cpp:1422
+#: src/menu_events.cpp:1433
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't droid a local ai side: '$side'."
@@ -11011,7 +11103,7 @@ msgstr "Não é possível 'droid' no time inválido: '$side'."
 # File: src/menu_events.cpp, line: 2578
 # File: src/menu_events.cpp, line: 2577
 # File: src/menu_events.cpp, line: 2577
-#: src/menu_events.cpp:1438
+#: src/menu_events.cpp:1449
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle invalid side: '$side'."
@@ -11021,7 +11113,7 @@ msgstr "Não é possível 'droid' no time inválido: '$side'."
 # File: src/menu_events.cpp, line: 2583
 # File: src/menu_events.cpp, line: 2582
 # File: src/menu_events.cpp, line: 2582
-#: src/menu_events.cpp:1443
+#: src/menu_events.cpp:1454
 #, fuzzy
 #| msgid "Can't droid networked side: '$side'."
 msgid "Can't idle networked side: '$side'."
@@ -11031,7 +11123,7 @@ msgstr "Não é possível 'droid' no time de rede: '$side'."
 # File: src/menu_events.cpp, line: 2578
 # File: src/menu_events.cpp, line: 2577
 # File: src/menu_events.cpp, line: 2577
-#: src/menu_events.cpp:1448
+#: src/menu_events.cpp:1459
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle local ai side: '$side'."
@@ -11041,7 +11133,7 @@ msgstr "Não é possível 'droid' no time inválido: '$side'."
 # File: src/menu_events.cpp, line: 2621
 # File: src/menu_events.cpp, line: 2620
 # File: src/menu_events.cpp, line: 2620
-#: src/menu_events.cpp:1508
+#: src/menu_events.cpp:1519
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Não é possível alterar o controle do time inválido: '$side'."
 
@@ -11049,7 +11141,7 @@ msgstr "Não é possível alterar o controle do time inválido: '$side'."
 # File: src/menu_events.cpp, line: 2627
 # File: src/menu_events.cpp, line: 2626
 # File: src/menu_events.cpp, line: 2626
-#: src/menu_events.cpp:1518
+#: src/menu_events.cpp:1529
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Não é possível alterar o controle do time fora dos limites: '$side'."
 
@@ -11057,7 +11149,7 @@ msgstr "Não é possível alterar o controle do time fora dos limites: '$side'."
 # File: src/menu_events.cpp, line: 2621
 # File: src/menu_events.cpp, line: 2620
 # File: src/menu_events.cpp, line: 2620
-#: src/menu_events.cpp:1535
+#: src/menu_events.cpp:1546
 #, fuzzy
 #| msgid "Can't change control of invalid side: '$side'."
 msgid "Can't query control of invalid side: '$side'."
@@ -11067,7 +11159,7 @@ msgstr "Não é possível alterar o controle do time inválido: '$side'."
 # File: src/menu_events.cpp, line: 2627
 # File: src/menu_events.cpp, line: 2626
 # File: src/menu_events.cpp, line: 2626
-#: src/menu_events.cpp:1542
+#: src/menu_events.cpp:1553
 #, fuzzy
 #| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can't query control of out-of-bounds side: '$side'."
@@ -11077,7 +11169,7 @@ msgstr "Não é possível alterar o controle do time fora dos limites: '$side'."
 # File: src/menu_events.cpp, line: 2815
 # File: src/menu_events.cpp, line: 2814
 # File: src/menu_events.cpp, line: 2814
-#: src/menu_events.cpp:1660
+#: src/menu_events.cpp:1671
 msgid "Choose Scenario (Debug!)"
 msgstr "Escolher cenário (Debug!)"
 
@@ -11085,7 +11177,7 @@ msgstr "Escolher cenário (Debug!)"
 # File: src/menu_events.cpp, line: 2861
 # File: src/menu_events.cpp, line: 2860
 # File: src/menu_events.cpp, line: 2860
-#: src/menu_events.cpp:1696
+#: src/menu_events.cpp:1707
 msgid "Debug mode activated!"
 msgstr "Modo debug ativado!"
 
@@ -11093,7 +11185,7 @@ msgstr "Modo debug ativado!"
 # File: src/menu_events.cpp, line: 2864
 # File: src/menu_events.cpp, line: 2863
 # File: src/menu_events.cpp, line: 2863
-#: src/menu_events.cpp:1699
+#: src/menu_events.cpp:1710
 msgid "Debug mode not available in network games"
 msgstr "Modo debug não está disponível nos jogos em rede"
 
@@ -11101,15 +11193,15 @@ msgstr "Modo debug não está disponível nos jogos em rede"
 # File: src/menu_events.cpp, line: 2869
 # File: src/menu_events.cpp, line: 2868
 # File: src/menu_events.cpp, line: 2868
-#: src/menu_events.cpp:1706
+#: src/menu_events.cpp:1717
 msgid "Debug mode deactivated!"
 msgstr "Modo debug desativado!"
 
-#: src/menu_events.cpp:1726
+#: src/menu_events.cpp:1737
 msgid "WARNING! Unsafe Lua Mode"
 msgstr ""
 
-#: src/menu_events.cpp:1727
+#: src/menu_events.cpp:1738
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -11122,7 +11214,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 2884
 # File: src/menu_events.cpp, line: 2883
 # File: src/menu_events.cpp, line: 2883
-#: src/menu_events.cpp:1732
+#: src/menu_events.cpp:1743
 msgid "Unsafe mode enabled!"
 msgstr "Modo não-seguro ativado!"
 
@@ -11130,7 +11222,7 @@ msgstr "Modo não-seguro ativado!"
 # File: src/menu_events.cpp, line: 2927
 # File: src/menu_events.cpp, line: 2926
 # File: src/menu_events.cpp, line: 2926
-#: src/menu_events.cpp:1781
+#: src/menu_events.cpp:1792
 msgid "Variable not found"
 msgstr "Variável não encontrada"
 
@@ -11138,7 +11230,7 @@ msgstr "Variável não encontrada"
 # File: src/menu_events.cpp, line: 2978
 # File: src/menu_events.cpp, line: 2977
 # File: src/menu_events.cpp, line: 2977
-#: src/menu_events.cpp:1830
+#: src/menu_events.cpp:1840
 #, fuzzy
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
@@ -11151,7 +11243,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 3034
 # File: src/menu_events.cpp, line: 3033
 # File: src/menu_events.cpp, line: 3033
-#: src/menu_events.cpp:1856
+#: src/menu_events.cpp:1866
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "Você quer ocultar todas as unidades já descobertas da ajuda?"
 
@@ -11159,7 +11251,7 @@ msgstr "Você quer ocultar todas as unidades já descobertas da ajuda?"
 # File: src/menu_events.cpp, line: 3045
 # File: src/menu_events.cpp, line: 3044
 # File: src/menu_events.cpp, line: 3044
-#: src/menu_events.cpp:1870
+#: src/menu_events.cpp:1880
 msgid "Invalid unit type"
 msgstr "Tipo de unidade inválido"
 
@@ -11167,7 +11259,7 @@ msgstr "Tipo de unidade inválido"
 # File: src/menu_events.cpp, line: 3058
 # File: src/menu_events.cpp, line: 3057
 # File: src/menu_events.cpp, line: 3057
-#: src/menu_events.cpp:1877
+#: src/menu_events.cpp:1887
 msgid "Invalid location"
 msgstr "Local inválido"
 
@@ -11178,7 +11270,7 @@ msgstr "Local inválido"
 # File: src/menu_events.cpp, line: 3148
 # File: src/menu_events.cpp, line: 3118
 # File: src/menu_events.cpp, line: 3148
-#: src/menu_events.cpp:1950 src/menu_events.cpp:1976
+#: src/menu_events.cpp:1960 src/menu_events.cpp:1986
 msgid "prompt^Command:"
 msgstr "Comando:"
 
@@ -11186,7 +11278,7 @@ msgstr "Comando:"
 # File: src/mouse_events.cpp, line: 725
 # File: src/mouse_events.cpp, line: 725
 # File: src/mouse_events.cpp, line: 725
-#: src/mouse_events.cpp:841
+#: src/mouse_events.cpp:900
 #, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
@@ -11202,21 +11294,21 @@ msgstr ""
 # File: src/mouse_events.cpp, line: 842
 # File: src/attack_prediction_display.cpp, line: 260
 # File: src/mouse_events.cpp, line: 842
-#: src/mouse_events.cpp:933
+#: src/mouse_events.cpp:994
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
 msgstr "Nenhuma arma possível"
 
-#: src/mp_game_settings.hpp:68
+#: src/mp_game_settings.hpp:66
 msgid "Independent"
 msgstr ""
 
-#: src/mp_game_settings.hpp:69
+#: src/mp_game_settings.hpp:67
 msgid "No Mirror"
 msgstr ""
 
-#: src/mp_game_settings.hpp:70
+#: src/mp_game_settings.hpp:68
 msgid "No Ally Mirror"
 msgstr ""
 
@@ -11266,7 +11358,7 @@ msgstr "Turno trocado"
 # File: src/pathfind/pathfind.cpp, line: 681
 # File: src/pathfind/pathfind.cpp, line: 681
 # File: src/pathfind/pathfind.cpp, line: 681
-#: src/pathfind/pathfind.cpp:709
+#: src/pathfind/pathfind.cpp:735
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Encontrado terreno com um custo de movimento menor de 1."
 
@@ -11274,7 +11366,7 @@ msgstr "Encontrado terreno com um custo de movimento menor de 1."
 # File: src/play_controller.cpp, line: 252
 # File: src/play_controller.cpp, line: 252
 # File: src/play_controller.cpp, line: 252
-#: src/play_controller.cpp:245
+#: src/play_controller.cpp:241
 msgid "time left for current turn"
 msgstr "tempo restante para o próximo turno"
 
@@ -11285,7 +11377,7 @@ msgstr "tempo restante para o próximo turno"
 # File: src/replay_controller.cpp, line: 142
 # File: src/play_controller.cpp, line: 254
 # File: src/replay_controller.cpp, line: 142
-#: src/play_controller.cpp:247 src/replay_controller.cpp:114
+#: src/play_controller.cpp:243 src/replay_controller.cpp:114
 msgid "current local time"
 msgstr "hora local"
 
@@ -11293,7 +11385,7 @@ msgstr "hora local"
 # File: src/play_controller.cpp, line: 1414
 # File: src/play_controller.cpp, line: 1414
 # File: src/play_controller.cpp, line: 1414
-#: src/play_controller.cpp:984
+#: src/play_controller.cpp:980
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -11308,7 +11400,7 @@ msgstr ""
 # File: src/replay_controller.cpp, line: 334
 # File: src/play_controller.cpp, line: 1415
 # File: src/replay_controller.cpp, line: 334
-#: src/play_controller.cpp:985
+#: src/play_controller.cpp:981
 msgid "Error details:"
 msgstr "Detalhes do erro:"
 
@@ -11316,7 +11408,7 @@ msgstr "Detalhes do erro:"
 # File: src/dialogs.cpp, line: 451
 # File: src/dialogs.cpp, line: 451
 # File: src/dialogs.cpp, line: 451
-#: src/play_controller.cpp:1260
+#: src/play_controller.cpp:1252
 msgid "No objectives available"
 msgstr "Nenhum objetivo disponível"
 
@@ -11324,7 +11416,7 @@ msgstr "Nenhum objetivo disponível"
 # File: src/playmp_controller.cpp, line: 181
 # File: src/playmp_controller.cpp, line: 181
 # File: src/playmp_controller.cpp, line: 181
-#: src/playmp_controller.cpp:155
+#: src/playmp_controller.cpp:153
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Anulação de movimentos ainda não transmitidas ao servidor."
 
@@ -11332,7 +11424,7 @@ msgstr "Anulação de movimentos ainda não transmitidas ao servidor."
 # File: src/playmp_controller.cpp, line: 488
 # File: src/playmp_controller.cpp, line: 488
 # File: src/playmp_controller.cpp, line: 488
-#: src/playmp_controller.cpp:371
+#: src/playmp_controller.cpp:364
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -11349,7 +11441,7 @@ msgstr ""
 "\n"
 "Você quer salvar um registro de erros em seu jogo?"
 
-#: src/playmp_controller.cpp:414
+#: src/playmp_controller.cpp:407
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
@@ -11363,13 +11455,13 @@ msgstr ""
 # File: src/multiplayer_create.cpp, line: 666
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 147
 # File: src/multiplayer_create.cpp, line: 666
-#: src/playsingle_controller.cpp:163
+#: src/playsingle_controller.cpp:165
 #, fuzzy
 #| msgid "Error"
 msgid "Game Error"
 msgstr "Erro"
 
-#: src/playsingle_controller.cpp:164
+#: src/playsingle_controller.cpp:166
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
@@ -11380,7 +11472,7 @@ msgstr ""
 # File: src/playsingle_controller.cpp, line: 463
 # File: src/playsingle_controller.cpp, line: 463
 # File: src/playsingle_controller.cpp, line: 463
-#: src/playsingle_controller.cpp:314
+#: src/playsingle_controller.cpp:316
 msgid "The game is over."
 msgstr "O jogo terminou."
 
@@ -11388,7 +11480,7 @@ msgstr "O jogo terminou."
 # File: src/playsingle_controller.cpp, line: 544
 # File: src/playsingle_controller.cpp, line: 544
 # File: src/playsingle_controller.cpp, line: 544
-#: src/playsingle_controller.cpp:349
+#: src/playsingle_controller.cpp:351
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -11400,7 +11492,7 @@ msgstr ""
 # File: src/playsingle_controller.cpp, line: 712
 # File: src/playsingle_controller.cpp, line: 712
 # File: src/playsingle_controller.cpp, line: 712
-#: src/playsingle_controller.cpp:439
+#: src/playsingle_controller.cpp:440
 msgid "It is now $name|’s turn"
 msgstr "Agora é o turno de $name|"
 
@@ -11496,7 +11588,7 @@ msgstr "Você realmente quer mandá-lo embora?"
 # File: src/multiplayer_connect.cpp, line: 1156
 # File: src/reports.cpp, line: 158
 # File: src/savegame.cpp, line: 888
-#: src/reports.cpp:145 src/savegame.cpp:403
+#: src/reports.cpp:145 src/savegame.cpp:402
 msgid "Name: "
 msgstr "Nome:"
 
@@ -11637,7 +11729,7 @@ msgstr "Habilidades: "
 # File: src/reports.cpp, line: 809
 # File: src/reports.cpp, line: 385
 # File: src/reports.cpp, line: 809
-#: src/reports.cpp:391 src/reports.cpp:818
+#: src/reports.cpp:391 src/reports.cpp:829
 msgid " (inactive)"
 msgstr ""
 
@@ -11725,7 +11817,7 @@ msgstr ""
 # File: src/reports.cpp, line: 679
 # File: src/reports.cpp, line: 894
 # File: src/reports.cpp, line: 906
-#: src/reports.cpp:685 src/reports.cpp:893 src/reports.cpp:905
+#: src/reports.cpp:693 src/reports.cpp:904 src/reports.cpp:916
 msgid "Weapon: "
 msgstr "Arma:"
 
@@ -11736,7 +11828,7 @@ msgstr "Arma:"
 # File: src/reports.cpp, line: 895
 # File: src/reports.cpp, line: 680
 # File: src/reports.cpp, line: 895
-#: src/reports.cpp:686 src/reports.cpp:894
+#: src/reports.cpp:694 src/reports.cpp:905
 msgid "Damage: "
 msgstr "Dano:"
 
@@ -11744,7 +11836,7 @@ msgstr "Dano:"
 # File: src/reports.cpp, line: 684
 # File: src/reports.cpp, line: 684
 # File: src/reports.cpp, line: 684
-#: src/reports.cpp:690
+#: src/reports.cpp:698
 msgid "Base damage: "
 msgstr "Dano base: "
 
@@ -11758,7 +11850,7 @@ msgstr "Dano base: "
 # File: src/reports.cpp, line: 686
 # File: src/reports.cpp, line: 720
 # File: src/reports.cpp, line: 730
-#: src/reports.cpp:692 src/reports.cpp:726 src/reports.cpp:736
+#: src/reports.cpp:700 src/reports.cpp:734 src/reports.cpp:744
 #, fuzzy
 msgid "With specials: "
 msgstr "Efeitos das Armas:"
@@ -11767,7 +11859,7 @@ msgstr "Efeitos das Armas:"
 # File: src/reports.cpp, line: 689
 # File: src/reports.cpp, line: 689
 # File: src/reports.cpp, line: 689
-#: src/reports.cpp:695
+#: src/reports.cpp:703
 msgid "Time of day: "
 msgstr "Período do dia: "
 
@@ -11775,7 +11867,7 @@ msgstr "Período do dia: "
 # File: src/reports.cpp, line: 693
 # File: src/reports.cpp, line: 693
 # File: src/reports.cpp, line: 693
-#: src/reports.cpp:699
+#: src/reports.cpp:707
 msgid "Leadership: "
 msgstr "Liderança:"
 
@@ -11783,7 +11875,7 @@ msgstr "Liderança:"
 # File: src/reports.cpp, line: 697
 # File: src/reports.cpp, line: 697
 # File: src/reports.cpp, line: 697
-#: src/reports.cpp:703
+#: src/reports.cpp:711
 msgid "Slowed: "
 msgstr "Lento:"
 
@@ -11791,7 +11883,7 @@ msgstr "Lento:"
 # File: src/reports.cpp, line: 701
 # File: src/reports.cpp, line: 701
 # File: src/reports.cpp, line: 701
-#: src/reports.cpp:707
+#: src/reports.cpp:715
 msgid "Attacks: "
 msgstr "Ataques: "
 
@@ -11799,7 +11891,7 @@ msgstr "Ataques: "
 # File: src/reports.cpp, line: 705
 # File: src/reports.cpp, line: 705
 # File: src/reports.cpp, line: 705
-#: src/reports.cpp:711
+#: src/reports.cpp:719
 #, fuzzy
 msgid "Max swarm bonus: "
 msgstr "Bnus por Turno: "
@@ -11811,7 +11903,7 @@ msgstr "Bnus por Turno: "
 # File: src/reports.cpp, line: 725
 # File: src/reports.cpp, line: 706
 # File: src/reports.cpp, line: 725
-#: src/reports.cpp:712 src/reports.cpp:731
+#: src/reports.cpp:720 src/reports.cpp:739
 msgid "Swarm: "
 msgstr "Enxame: "
 
@@ -11825,7 +11917,7 @@ msgstr "Enxame: "
 # File: src/reports.cpp, line: 707
 # File: src/reports.cpp, line: 718
 # File: src/reports.cpp, line: 729
-#: src/reports.cpp:713 src/reports.cpp:724 src/reports.cpp:735
+#: src/reports.cpp:721 src/reports.cpp:732 src/reports.cpp:743
 msgid "Base attacks: "
 msgstr "Ataques base: "
 
@@ -11833,7 +11925,7 @@ msgstr "Ataques base: "
 # File: src/reports.cpp, line: 713
 # File: src/reports.cpp, line: 713
 # File: src/reports.cpp, line: 713
-#: src/reports.cpp:719
+#: src/reports.cpp:727
 #, fuzzy
 msgid "Specials: "
 msgstr "Efeitos das Armas:"
@@ -11842,7 +11934,7 @@ msgstr "Efeitos das Armas:"
 # File: src/reports.cpp, line: 723
 # File: src/reports.cpp, line: 723
 # File: src/reports.cpp, line: 723
-#: src/reports.cpp:729
+#: src/reports.cpp:737
 msgid "Subject to swarm: "
 msgstr ""
 
@@ -11850,7 +11942,7 @@ msgstr ""
 # File: src/reports.cpp, line: 742
 # File: src/reports.cpp, line: 742
 # File: src/reports.cpp, line: 742
-#: src/reports.cpp:748
+#: src/reports.cpp:756
 msgid "Weapon range: "
 msgstr "Alcance da arma: "
 
@@ -11858,7 +11950,7 @@ msgstr "Alcance da arma: "
 # File: src/reports.cpp, line: 743
 # File: src/reports.cpp, line: 743
 # File: src/reports.cpp, line: 743
-#: src/reports.cpp:749
+#: src/reports.cpp:757
 msgid "Damage type: "
 msgstr "Tipo de dano: "
 
@@ -11866,7 +11958,7 @@ msgstr "Tipo de dano: "
 # File: src/reports.cpp, line: 744
 # File: src/reports.cpp, line: 744
 # File: src/reports.cpp, line: 744
-#: src/reports.cpp:750
+#: src/reports.cpp:758
 msgid "Damage versus: "
 msgstr "Dano versus:"
 
@@ -11874,7 +11966,7 @@ msgstr "Dano versus:"
 # File: src/reports.cpp, line: 783
 # File: src/reports.cpp, line: 783
 # File: src/reports.cpp, line: 783
-#: src/reports.cpp:791
+#: src/reports.cpp:802
 msgid "Accuracy:"
 msgstr "Precisão:"
 
@@ -11882,7 +11974,7 @@ msgstr "Precisão:"
 # File: src/reports.cpp, line: 788
 # File: src/reports.cpp, line: 788
 # File: src/reports.cpp, line: 788
-#: src/reports.cpp:796
+#: src/reports.cpp:807
 msgid "Parry:"
 msgstr "Defesa:"
 
@@ -11890,7 +11982,7 @@ msgstr "Defesa:"
 # File: src/reports.cpp, line: 807
 # File: src/reports.cpp, line: 807
 # File: src/reports.cpp, line: 807
-#: src/reports.cpp:816
+#: src/reports.cpp:827
 msgid "Weapon special: "
 msgstr "Efeitos das Armas:"
 
@@ -11898,7 +11990,7 @@ msgstr "Efeitos das Armas:"
 # File: src/reports.cpp, line: 878
 # File: src/reports.cpp, line: 878
 # File: src/reports.cpp, line: 878
-#: src/reports.cpp:877
+#: src/reports.cpp:888
 msgid "None"
 msgstr "Nenhuma"
 
@@ -11909,7 +12001,7 @@ msgstr "Nenhuma"
 # File: src/reports.cpp, line: 907
 # File: src/attack_prediction_display.cpp, line: 253
 # File: src/reports.cpp, line: 907
-#: src/reports.cpp:906
+#: src/reports.cpp:917
 msgid "Total damage"
 msgstr "Dano total"
 
@@ -11920,7 +12012,7 @@ msgstr "Dano total"
 # File: src/attack_prediction_display.cpp, line: 236
 # File: src/attack_prediction_display.cpp, line: 104
 # File: src/attack_prediction_display.cpp, line: 236
-#: src/reports.cpp:968
+#: src/reports.cpp:979
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
@@ -11932,7 +12024,7 @@ msgstr[1] "Atacante"
 # File: src/reports.cpp, line: 1078
 # File: src/reports.cpp, line: 1078
 # File: src/reports.cpp, line: 1078
-#: src/reports.cpp:1104 src/reports.cpp:1156
+#: src/reports.cpp:1115 src/reports.cpp:1167
 #, fuzzy
 msgid "Lawful units: "
 msgstr "Unidades Ordeiras: "
@@ -11941,7 +12033,7 @@ msgstr "Unidades Ordeiras: "
 # File: src/reports.cpp, line: 1080
 # File: src/reports.cpp, line: 1080
 # File: src/reports.cpp, line: 1080
-#: src/reports.cpp:1106 src/reports.cpp:1158
+#: src/reports.cpp:1117 src/reports.cpp:1169
 msgid "Neutral units: "
 msgstr "Unidades Neutras: "
 
@@ -11949,7 +12041,7 @@ msgstr "Unidades Neutras: "
 # File: src/reports.cpp, line: 1081
 # File: src/reports.cpp, line: 1081
 # File: src/reports.cpp, line: 1081
-#: src/reports.cpp:1107 src/reports.cpp:1159
+#: src/reports.cpp:1118 src/reports.cpp:1170
 msgid "Chaotic units: "
 msgstr "Unidades Caóticas: "
 
@@ -11957,7 +12049,7 @@ msgstr "Unidades Caóticas: "
 # File: src/reports.cpp, line: 1083
 # File: src/reports.cpp, line: 1083
 # File: src/reports.cpp, line: 1083
-#: src/reports.cpp:1109 src/reports.cpp:1161
+#: src/reports.cpp:1120 src/reports.cpp:1172
 msgid "Liminal units: "
 msgstr "Unidades Liminares: "
 
@@ -11968,24 +12060,24 @@ msgstr "Unidades Liminares: "
 # File: src/multiplayer_lobby.cpp, line: 586
 # File: src/gui/dialogs/lobby/lobby_data.cpp, line: 296
 # File: src/multiplayer_lobby.cpp, line: 586
-#: src/reports.cpp:1220
+#: src/reports.cpp:1231
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "Turno "
 
-#: src/reports.cpp:1222
+#: src/reports.cpp:1233
 msgid ""
 "When the game reaches the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1247
+#: src/reports.cpp:1258
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1266
+#: src/reports.cpp:1277
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
@@ -11996,11 +12088,11 @@ msgstr ""
 # File: src/menu_events.cpp, line: 194
 # File: src/leader_scroll_dialog.cpp, line: 48
 # File: src/menu_events.cpp, line: 194
-#: src/reports.cpp:1266
+#: src/reports.cpp:1277
 msgid "Villages"
 msgstr "Vilas"
 
-#: src/reports.cpp:1271
+#: src/reports.cpp:1282
 msgid "The total number of units on your side."
 msgstr ""
 
@@ -12017,13 +12109,13 @@ msgstr ""
 # File: data/themes/dfool.cfg, line: 276
 # File: data/themes/experimental.cfg, line: 215
 # File: data/themes/widescreen.cfg, line: 294
-#: src/reports.cpp:1271
+#: src/reports.cpp:1282
 #, fuzzy
 #| msgid "units"
 msgid "Units"
 msgstr "unidades"
 
-#: src/reports.cpp:1281
+#: src/reports.cpp:1292
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. The second is the "
@@ -12038,7 +12130,7 @@ msgstr ""
 # File: src/menu_events.cpp, line: 196
 # File: src/leader_scroll_dialog.cpp, line: 50
 # File: src/menu_events.cpp, line: 196
-#: src/reports.cpp:1281
+#: src/reports.cpp:1292
 msgid "Upkeep"
 msgstr "Manutenção"
 
@@ -12055,11 +12147,11 @@ msgstr "Manutenção"
 # File: src/menu_events.cpp, line: 197
 # File: src/multiplayer_connect.cpp, line: 1070
 # File: src/multiplayer_wait.cpp, line: 520
-#: src/reports.cpp:1318
+#: src/reports.cpp:1329
 msgid "Income"
 msgstr "Receita"
 
-#: src/reports.cpp:1318
+#: src/reports.cpp:1329
 msgid ""
 "The amount of gold you gain each turn from your controlled villages, or the "
 "amount of gold you will lose each turn for unit upkeep."
@@ -12069,19 +12161,19 @@ msgstr ""
 # File: src/reports.cpp, line: 1324
 # File: src/reports.cpp, line: 1324
 # File: src/reports.cpp, line: 1324
-#: src/reports.cpp:1486
+#: src/reports.cpp:1497
 msgid "Observers:"
 msgstr "Observadores:"
 
-#: src/reports.cpp:1526
+#: src/reports.cpp:1537
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1552
+#: src/reports.cpp:1563
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1552
+#: src/reports.cpp:1563
 msgid "Turn Countdown"
 msgstr ""
 
@@ -12092,29 +12184,29 @@ msgstr ""
 # File: src/savegame.cpp, line: 306
 # File: src/dialogs.cpp, line: 809
 # File: src/savegame.cpp, line: 306
-#: src/save_index.cpp:195
-msgid "%a %b %d %H:%M %Y"
-msgstr "%a %b %d %H:%M %Y"
-
-#
-# File: src/dialogs.cpp, line: 809
-# File: src/savegame.cpp, line: 306
-# File: src/dialogs.cpp, line: 809
-# File: src/savegame.cpp, line: 306
-# File: src/dialogs.cpp, line: 809
-# File: src/savegame.cpp, line: 306
-#: src/save_index.cpp:195
+#: src/save_index.cpp:233
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %b %d %I:%M %p %Y"
 
 #
+# File: src/dialogs.cpp, line: 809
+# File: src/savegame.cpp, line: 306
+# File: src/dialogs.cpp, line: 809
+# File: src/savegame.cpp, line: 306
+# File: src/dialogs.cpp, line: 809
+# File: src/savegame.cpp, line: 306
+#: src/save_index.cpp:234
+msgid "%a %b %d %H:%M %Y"
+msgstr "%a %b %d %H:%M %Y"
+
+#
 # File: src/savegame.cpp, line: 384
 # File: src/savegame.cpp, line: 386
 # File: src/savegame.cpp, line: 384
 # File: src/savegame.cpp, line: 386
 # File: src/savegame.cpp, line: 384
 # File: src/savegame.cpp, line: 386
-#: src/save_index.cpp:219 src/save_index.cpp:221
+#: src/save_index.cpp:255 src/save_index.cpp:262
 msgid " replay"
 msgstr "replay"
 
@@ -12125,7 +12217,7 @@ msgstr "replay"
 # File: src/savegame.cpp, line: 630
 # File: src/savegame.cpp, line: 626
 # File: src/savegame.cpp, line: 630
-#: src/savegame.cpp:193 src/savegame.cpp:197
+#: src/savegame.cpp:192 src/savegame.cpp:196
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Aviso: O Arquivo que você tentou carregar está corrompido. Vou tentar "
@@ -12135,7 +12227,7 @@ msgstr ""
 # File: src/savegame.cpp, line: 673
 # File: src/savegame.cpp, line: 673
 # File: src/savegame.cpp, line: 673
-#: src/savegame.cpp:244
+#: src/savegame.cpp:243
 #, fuzzy
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
@@ -12147,7 +12239,7 @@ msgstr ""
 # File: src/savegame.cpp, line: 682
 # File: src/savegame.cpp, line: 682
 # File: src/savegame.cpp, line: 682
-#: src/savegame.cpp:252
+#: src/savegame.cpp:251
 #, fuzzy
 msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
@@ -12166,11 +12258,11 @@ msgstr ""
 # File: src/dialogs.cpp, line: 971
 # File: src/multiplayer_create.cpp, line: 125
 # File: src/savegame.cpp, line: 685
-#: src/savegame.cpp:255 src/savegame.cpp:299
+#: src/savegame.cpp:254 src/savegame.cpp:298
 msgid "Load Game"
 msgstr "Continuar um Jogo"
 
-#: src/savegame.cpp:299
+#: src/savegame.cpp:298
 msgid "Replays are not supported in multiplayer mode."
 msgstr ""
 
@@ -12178,7 +12270,7 @@ msgstr ""
 # File: src/savegame.cpp, line: 739
 # File: src/savegame.cpp, line: 739
 # File: src/savegame.cpp, line: 739
-#: src/savegame.cpp:306
+#: src/savegame.cpp:305
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
@@ -12188,7 +12280,7 @@ msgstr "Este não é um jogo salvo de multijogadores"
 # File: src/savegame.cpp, line: 806
 # File: src/savegame.cpp, line: 806
 # File: src/savegame.cpp, line: 806
-#: src/savegame.cpp:333
+#: src/savegame.cpp:332
 msgid "The game could not be saved: "
 msgstr "O jogo não pôde ser salvo:"
 
@@ -12196,7 +12288,7 @@ msgstr "O jogo não pôde ser salvo:"
 # File: src/savegame.cpp, line: 888
 # File: src/savegame.cpp, line: 888
 # File: src/savegame.cpp, line: 888
-#: src/savegame.cpp:403
+#: src/savegame.cpp:402
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Arquivo já existente. Você quer sobreescrevê-lo?"
 
@@ -12204,7 +12296,7 @@ msgstr "Arquivo já existente. Você quer sobreescrevê-lo?"
 # File: src/savegame.cpp, line: 889
 # File: src/savegame.cpp, line: 889
 # File: src/savegame.cpp, line: 889
-#: src/savegame.cpp:404
+#: src/savegame.cpp:403
 msgid "Overwrite?"
 msgstr "Sobreescrever?"
 
@@ -12212,7 +12304,7 @@ msgstr "Sobreescrever?"
 # File: src/savegame.cpp, line: 899
 # File: src/savegame.cpp, line: 899
 # File: src/savegame.cpp, line: 899
-#: src/savegame.cpp:412
+#: src/savegame.cpp:411
 #, fuzzy
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
@@ -12224,7 +12316,7 @@ msgstr ""
 # File: src/savegame.cpp, line: 965
 # File: src/savegame.cpp, line: 965
 # File: src/savegame.cpp, line: 965
-#: src/savegame.cpp:462
+#: src/savegame.cpp:470
 msgid "Saved"
 msgstr "Salvo"
 
@@ -12232,7 +12324,7 @@ msgstr "Salvo"
 # File: src/savegame.cpp, line: 965
 # File: src/savegame.cpp, line: 965
 # File: src/savegame.cpp, line: 965
-#: src/savegame.cpp:462
+#: src/savegame.cpp:470
 #, fuzzy
 #| msgid "The game has been saved"
 msgid "The game has been saved."
@@ -12245,7 +12337,7 @@ msgstr "O jogo foi salvo"
 # File: src/savegame.cpp, line: 1020
 # File: src/savegame.cpp, line: 999
 # File: src/savegame.cpp, line: 1020
-#: src/savegame.cpp:493 src/savegame.cpp:513
+#: src/savegame.cpp:500 src/savegame.cpp:520
 msgid "Could not write to file"
 msgstr "Não foi possível escrever no arquivo"
 
@@ -12253,7 +12345,7 @@ msgstr "Não foi possível escrever no arquivo"
 # File: src/savegame.cpp, line: 1054
 # File: src/savegame.cpp, line: 1054
 # File: src/savegame.cpp, line: 1054
-#: src/savegame.cpp:546
+#: src/savegame.cpp:553
 msgid "Save Replay"
 msgstr "Salvar Replay"
 
@@ -12261,7 +12353,7 @@ msgstr "Salvar Replay"
 # File: src/savegame.cpp, line: 1063
 # File: src/savegame.cpp, line: 1063
 # File: src/savegame.cpp, line: 1063
-#: src/savegame.cpp:551
+#: src/savegame.cpp:558
 msgid "replay"
 msgstr "replay"
 
@@ -12269,7 +12361,7 @@ msgstr "replay"
 # File: src/savegame.cpp, line: 1081
 # File: src/savegame.cpp, line: 1081
 # File: src/savegame.cpp, line: 1081
-#: src/savegame.cpp:570
+#: src/savegame.cpp:576
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Não pude salvar o jogo automaticamente. Por favor salve o jogo manualmente."
@@ -12278,9 +12370,13 @@ msgstr ""
 # File: src/savegame.cpp, line: 1130
 # File: src/savegame.cpp, line: 1130
 # File: src/savegame.cpp, line: 1130
-#: src/savegame.cpp:622
+#: src/savegame.cpp:627
 msgid "Save Game"
 msgstr "Salvar o Jogo"
+
+#: src/savegame.cpp:641
+msgid "Game state is corrupted"
+msgstr ""
 
 #
 # File: src/serialization/parser.cpp, line: 127
@@ -12577,6 +12673,430 @@ msgstr "Y"
 msgid "infix_binary^i"
 msgstr "i"
 
+#: src/synced_user_choice.cpp:328
+msgid "waiting for $desc from side(s) $sides"
+msgstr ""
+
+#
+# File: src/terrain.cpp, line: 163
+# File: src/terrain.cpp, line: 163
+# File: src/terrain.cpp, line: 163
+#: src/terrain/terrain.cpp:181
+msgid "Allied village"
+msgstr "Vila Aliada"
+
+#
+# File: src/terrain.cpp, line: 168
+# File: src/terrain.cpp, line: 168
+# File: src/terrain.cpp, line: 168
+#: src/terrain/terrain.cpp:186
+msgid "Enemy village"
+msgstr "Vila Inimiga"
+
+#
+# File: src/terrain.cpp, line: 173
+# File: src/terrain.cpp, line: 173
+# File: src/terrain.cpp, line: 173
+#: src/terrain/terrain.cpp:191
+msgid "Owned village"
+msgstr "Vila Dominada"
+
+#
+# File: src/theme.cpp, line: 313
+# File: src/theme.cpp, line: 313
+# File: src/theme.cpp, line: 313
+#: src/theme.cpp:308
+msgid "border_size should be between 0.0 and 0.5."
+msgstr "border_size deve estar entre 0.0 e 0.5."
+
+#: src/theme.cpp:551 src/theme.cpp:556
+msgid "Hotkey(s): "
+msgstr ""
+
+#
+# File: src/attack_prediction_display.cpp, line: 214
+# File: src/attack_prediction_display.cpp, line: 214
+# File: src/attack_prediction_display.cpp, line: 214
+#: src/time_of_day.cpp:45
+#, fuzzy
+#| msgid "Time of day"
+msgid "Stub Time of Day"
+msgstr "Período do dia"
+
+#: src/time_of_day.cpp:46
+msgid "This Time of Day is only a Stub!"
+msgstr ""
+
+#
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+#. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:351
+#, fuzzy
+#| msgid "per turn"
+msgid "<span color=\"$color\">$number_or_percent</span> damage"
+msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
+msgstr[0] "por turno"
+msgstr[1] "por turno"
+
+#
+# File: src/unit_types.cpp, line: 239
+# File: src/unit_types.cpp, line: 319
+# File: src/unit_types.cpp, line: 239
+# File: src/unit_types.cpp, line: 319
+# File: src/unit_types.cpp, line: 239
+# File: src/unit_types.cpp, line: 319
+#: src/units/attack_type.cpp:360
+#, fuzzy
+#| msgid "damage"
+#| msgid_plural "damage"
+msgid "$number damage"
+msgid_plural "$number damage"
+msgstr[0] "dano"
+msgstr[1] "danos"
+
+#
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+#. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:369
+#, fuzzy
+#| msgid "per turn"
+msgid "<span color=\"$color\">$number_or_percent</span> strike"
+msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
+msgstr[0] "por turno"
+msgstr[1] "por turno"
+
+#
+# File: src/unit_types.cpp, line: 250
+# File: src/unit_types.cpp, line: 327
+# File: src/unit_types.cpp, line: 250
+# File: src/unit_types.cpp, line: 327
+# File: src/unit_types.cpp, line: 250
+# File: src/unit_types.cpp, line: 327
+#. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:378
+#, fuzzy
+#| msgid "strike"
+#| msgid_plural "strikes"
+msgid "$number strike"
+msgid_plural "$number strikes"
+msgstr[0] "golpe"
+msgstr[1] "golpes"
+
+#
+# File: src/unit_types.cpp, line: 273
+# File: src/unit_types.cpp, line: 273
+# File: src/unit_types.cpp, line: 273
+#. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:387
+#, fuzzy
+#| msgid "% parry"
+msgid "$number| accuracy"
+msgstr "% defesa"
+
+#
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+#. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:394
+#, fuzzy
+#| msgid "per turn"
+msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
+msgstr "por turno"
+
+#
+# File: src/unit_types.cpp, line: 273
+# File: src/unit_types.cpp, line: 273
+# File: src/unit_types.cpp, line: 273
+#. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:401
+#, fuzzy
+#| msgid "% parry"
+msgid "$number parry"
+msgstr "% defesa"
+
+#
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+#. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:408
+#, fuzzy
+#| msgid "per turn"
+msgid "<span color=\"$color\">$number_or_percent</span> parry"
+msgstr "por turno"
+
+#. TRANSLATORS: Current value for WML code set_movement, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:415
+msgid "$number movement point"
+msgid_plural "$number movement points"
+msgstr[0] ""
+msgstr[1] ""
+
+#
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+#. TRANSLATORS: Current value for WML code increase_movement, documented in https://wiki.wesnoth.org/EffectWML
+#: src/units/attack_type.cpp:424
+#, fuzzy
+#| msgid "per turn"
+msgid "<span color=\"$color\">$number_or_percent movement</span> point"
+msgid_plural "<span color=\"$color\">$number_or_percent movement</span> points"
+msgstr[0] "por turno"
+msgstr[1] "por turno"
+
+#
+# File: src/unit_types.cpp, line: 818
+# File: src/unit_types.cpp, line: 818
+# File: src/unit_types.cpp, line: 818
+#: src/units/types.cpp:545 src/units/types.hpp:181
+msgid "chaotic"
+msgstr "caótico"
+
+#
+# File: src/unit_types.cpp, line: 819
+# File: src/unit_types.cpp, line: 819
+# File: src/unit_types.cpp, line: 819
+#: src/units/types.cpp:545 src/units/types.hpp:179
+#, fuzzy
+#| msgid "female^lawful"
+msgid "lawful"
+msgstr "ordeira"
+
+#
+# File: src/unit_types.cpp, line: 818
+# File: src/unit_types.cpp, line: 818
+# File: src/unit_types.cpp, line: 818
+#: src/units/types.cpp:545 src/units/types.hpp:182
+msgid "liminal"
+msgstr "liminar"
+
+#
+# File: src/unit_types.cpp, line: 818
+# File: src/unit_types.cpp, line: 818
+# File: src/unit_types.cpp, line: 818
+#: src/units/types.cpp:545 src/units/types.hpp:180
+msgid "neutral"
+msgstr "neutro"
+
+#
+# File: src/unit_types.cpp, line: 819
+# File: src/unit_types.cpp, line: 819
+# File: src/unit_types.cpp, line: 819
+#: src/units/types.cpp:546 src/units/types.cpp:912
+msgid "female^chaotic"
+msgstr "caótica"
+
+#
+# File: src/unit_types.cpp, line: 819
+# File: src/unit_types.cpp, line: 819
+# File: src/unit_types.cpp, line: 819
+#: src/units/types.cpp:546 src/units/types.cpp:910
+msgid "female^lawful"
+msgstr "ordeira"
+
+#
+# File: src/unit_types.cpp, line: 819
+# File: src/unit_types.cpp, line: 819
+# File: src/unit_types.cpp, line: 819
+#: src/units/types.cpp:546 src/units/types.cpp:911
+msgid "female^neutral"
+msgstr "neutra"
+
+#
+# File: src/unit_types.cpp, line: 819
+# File: src/unit_types.cpp, line: 819
+# File: src/unit_types.cpp, line: 819
+#: src/units/types.cpp:547 src/units/types.cpp:913
+msgid "female^liminal"
+msgstr "Liminar"
+
+#
+# File: src/unit.cpp, line: 2379
+# File: src/unit.cpp, line: 2379
+# File: src/unit.cpp, line: 2379
+#: src/units/unit.cpp:1774
+msgid "$attack_list|: $effect_description"
+msgstr "$attack_list|: $effect_description"
+
+#: src/units/unit.cpp:1780
+msgid "wesnoth"
+msgstr ""
+
+#
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+#: src/units/unit.cpp:1791
+#, fuzzy
+#| msgid "per turn"
+msgid "<span color=\"$color\">$number_or_percent</span> move"
+msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
+msgstr[0] "por turno"
+msgstr[1] "por turno"
+
+#
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+#: src/units/unit.cpp:1797
+#, fuzzy
+#| msgid "per turn"
+msgid "<span color=\"$color\">$number_or_percent</span> vision"
+msgstr "por turno"
+
+#
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+#: src/units/unit.cpp:1801
+#, fuzzy
+#| msgid "per turn"
+msgid "<span color=\"$color\">$number_or_percent</span> jamming"
+msgstr "por turno"
+
+#
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+#: src/units/unit.cpp:1806
+#, fuzzy
+#| msgid "per turn"
+msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
+msgstr "por turno"
+
+#
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+#: src/units/unit.cpp:1810
+#, fuzzy
+#| msgid "per turn"
+msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
+msgid_plural ""
+"<span color=\"$color\">$number_or_percent</span> attacks per turn"
+msgstr[0] "por turno"
+msgstr[1] "por turno"
+
+#
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+# File: src/playsingle_controller.cpp, line: 274
+#: src/units/unit.cpp:1817
+#, fuzzy
+#| msgid "per turn"
+msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
+msgstr "por turno"
+
+#
+# File: src/unit.cpp, line: 2630
+# File: src/unit.cpp, line: 2630
+# File: src/unit.cpp, line: 2630
+#: src/units/unit.cpp:2222
+msgid "$effect_description per level"
+msgstr "$effect_description por nível"
+
+#. TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
+#: src/utils/irdya_datetime.cpp:59
+msgid "$year BW"
+msgstr ""
+
+#. TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
+#: src/utils/irdya_datetime.cpp:62
+msgid "$year YW"
+msgstr ""
+
+#. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
+#: src/utils/irdya_datetime.cpp:65
+msgid "$year BF"
+msgstr ""
+
+#. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesonth
+#: src/utils/irdya_datetime.cpp:68
+msgid "$year AF"
+msgstr ""
+
+#
+# File: src/whiteboard/manager.cpp, line: 1094
+# File: src/whiteboard/manager.cpp, line: 1094
+# File: src/whiteboard/manager.cpp, line: 1094
+#: src/whiteboard/manager.cpp:1094
+msgid "SHOW ALL allies’ plans"
+msgstr "MOSTRAR planos de TODOS aliados"
+
+#
+# File: src/whiteboard/manager.cpp, line: 1095
+# File: src/whiteboard/manager.cpp, line: 1095
+# File: src/whiteboard/manager.cpp, line: 1095
+#: src/whiteboard/manager.cpp:1095
+msgid "HIDE ALL allies’ plans"
+msgstr "ESCONDER planos de TODOS aliados"
+
+#
+# File: src/whiteboard/manager.cpp, line: 1109
+# File: src/whiteboard/manager.cpp, line: 1109
+# File: src/whiteboard/manager.cpp, line: 1109
+#: src/whiteboard/manager.cpp:1109
+msgid "Show plans for $player"
+msgstr "Mostrar planos para $player"
+
+#
+# File: src/whiteboard/manager.cpp, line: 1111
+# File: src/whiteboard/manager.cpp, line: 1111
+# File: src/whiteboard/manager.cpp, line: 1111
+#: src/whiteboard/manager.cpp:1111
+msgid "Hide plans for $player"
+msgstr "Esconder planos de $player"
+
+#
+# File: src/whiteboard/manager.cpp, line: 1114
+# File: src/whiteboard/manager.cpp, line: 1114
+# File: src/whiteboard/manager.cpp, line: 1114
+#: src/whiteboard/manager.cpp:1114
+msgid "Whiteboard Options"
+msgstr "Opções do Quadro-Branco"
+
+#
+# File: src/multiplayer_connect.cpp, line: 764
+# File: src/multiplayer_connect.cpp, line: 764
+# File: src/multiplayer_connect.cpp, line: 764
+#~ msgid "--give--"
+#~ msgstr "--ceder--"
+
+#
+# File: src/gui/dialogs/lobby/lobby_data.cpp, line: 205
+# File: src/multiplayer_lobby.cpp, line: 462
+# File: src/gui/dialogs/lobby/lobby_data.cpp, line: 205
+# File: src/multiplayer_lobby.cpp, line: 462
+# File: src/gui/dialogs/lobby/lobby_data.cpp, line: 205
+# File: src/multiplayer_lobby.cpp, line: 462
+#~ msgid "Unknown era: $era_id"
+#~ msgstr "Era desconhecida: $era_id"
+
+#
+# File: src/gui/dialogs/lobby/lobby_data.cpp, line: 274
+# File: src/multiplayer_lobby.cpp, line: 535
+# File: src/gui/dialogs/lobby/lobby_data.cpp, line: 274
+# File: src/multiplayer_lobby.cpp, line: 535
+# File: src/gui/dialogs/lobby/lobby_data.cpp, line: 274
+# File: src/multiplayer_lobby.cpp, line: 535
+#~ msgid "Unknown scenario: $scenario_id"
+#~ msgstr "Cenário desconhecido: $scenario_id'"
+
+#
+# File: src/dialogs.cpp, line: 843
+# File: src/dialogs.cpp, line: 843
+# File: src/dialogs.cpp, line: 843
+#, fuzzy
+#~| msgid "Campaign: $campaign_name"
+#~ msgid "Unknown campaign: $campaign_id"
+#~ msgstr "Campanha: $campaign_name"
+
 #
 # File: src/unit_types.cpp, line: 818
 # File: src/unit_types.cpp, line: 818
@@ -12585,217 +13105,6 @@ msgstr "i"
 #~| msgid "lawful"
 #~ msgid "wfl"
 #~ msgstr "ordeiro"
-
-#
-# File: src/terrain.cpp, line: 163
-# File: src/terrain.cpp, line: 163
-# File: src/terrain.cpp, line: 163
-#~ msgid "Allied village"
-#~ msgstr "Vila Aliada"
-
-#
-# File: src/terrain.cpp, line: 168
-# File: src/terrain.cpp, line: 168
-# File: src/terrain.cpp, line: 168
-#~ msgid "Enemy village"
-#~ msgstr "Vila Inimiga"
-
-#
-# File: src/terrain.cpp, line: 173
-# File: src/terrain.cpp, line: 173
-# File: src/terrain.cpp, line: 173
-#~ msgid "Owned village"
-#~ msgstr "Vila Dominada"
-
-#
-# File: src/theme.cpp, line: 313
-# File: src/theme.cpp, line: 313
-# File: src/theme.cpp, line: 313
-#~ msgid "border_size should be between 0.0 and 0.5."
-#~ msgstr "border_size deve estar entre 0.0 e 0.5."
-
-#
-# File: src/attack_prediction_display.cpp, line: 214
-# File: src/attack_prediction_display.cpp, line: 214
-# File: src/attack_prediction_display.cpp, line: 214
-#, fuzzy
-#~| msgid "Time of day"
-#~ msgid "Stub Time of Day"
-#~ msgstr "Período do dia"
-
-#
-# File: src/unit_types.cpp, line: 239
-# File: src/unit_types.cpp, line: 319
-# File: src/unit_types.cpp, line: 239
-# File: src/unit_types.cpp, line: 319
-# File: src/unit_types.cpp, line: 239
-# File: src/unit_types.cpp, line: 319
-#, fuzzy
-#~| msgid "damage"
-#~| msgid_plural "damage"
-#~ msgid "$number damage"
-#~ msgid_plural "$number damage"
-#~ msgstr[0] "dano"
-#~ msgstr[1] "danos"
-
-#
-# File: src/unit_types.cpp, line: 250
-# File: src/unit_types.cpp, line: 327
-# File: src/unit_types.cpp, line: 250
-# File: src/unit_types.cpp, line: 327
-# File: src/unit_types.cpp, line: 250
-# File: src/unit_types.cpp, line: 327
-#, fuzzy
-#~| msgid "strike"
-#~| msgid_plural "strikes"
-#~ msgid "$number strike"
-#~ msgid_plural "$number strikes"
-#~ msgstr[0] "golpe"
-#~ msgstr[1] "golpes"
-
-#
-# File: src/unit_types.cpp, line: 273
-# File: src/unit_types.cpp, line: 273
-# File: src/unit_types.cpp, line: 273
-#, fuzzy
-#~| msgid "% parry"
-#~ msgid "$number| accuracy"
-#~ msgstr "% defesa"
-
-#
-# File: src/unit_types.cpp, line: 273
-# File: src/unit_types.cpp, line: 273
-# File: src/unit_types.cpp, line: 273
-#, fuzzy
-#~| msgid "% parry"
-#~ msgid "$number parry"
-#~ msgstr "% defesa"
-
-#
-# File: src/unit_types.cpp, line: 762
-# File: src/unit_types.cpp, line: 762
-# File: src/unit_types.cpp, line: 762
-#~ msgid "No description available."
-#~ msgstr "Descrição não disponível."
-
-#
-# File: src/unit_types.cpp, line: 819
-# File: src/unit_types.cpp, line: 819
-# File: src/unit_types.cpp, line: 819
-#~ msgid "female^lawful"
-#~ msgstr "ordeira"
-
-#
-# File: src/unit_types.cpp, line: 819
-# File: src/unit_types.cpp, line: 819
-# File: src/unit_types.cpp, line: 819
-#~ msgid "female^neutral"
-#~ msgstr "neutra"
-
-#
-# File: src/unit_types.cpp, line: 819
-# File: src/unit_types.cpp, line: 819
-# File: src/unit_types.cpp, line: 819
-#~ msgid "female^chaotic"
-#~ msgstr "caótica"
-
-#
-# File: src/unit_types.cpp, line: 819
-# File: src/unit_types.cpp, line: 819
-# File: src/unit_types.cpp, line: 819
-#~ msgid "female^liminal"
-#~ msgstr "Liminar"
-
-#
-# File: src/unit_types.cpp, line: 819
-# File: src/unit_types.cpp, line: 819
-# File: src/unit_types.cpp, line: 819
-#, fuzzy
-#~| msgid "female^lawful"
-#~ msgid "lawful"
-#~ msgstr "ordeira"
-
-#
-# File: src/unit_types.cpp, line: 818
-# File: src/unit_types.cpp, line: 818
-# File: src/unit_types.cpp, line: 818
-#~ msgid "neutral"
-#~ msgstr "neutro"
-
-#
-# File: src/unit_types.cpp, line: 818
-# File: src/unit_types.cpp, line: 818
-# File: src/unit_types.cpp, line: 818
-#~ msgid "chaotic"
-#~ msgstr "caótico"
-
-#
-# File: src/unit_types.cpp, line: 818
-# File: src/unit_types.cpp, line: 818
-# File: src/unit_types.cpp, line: 818
-#~ msgid "liminal"
-#~ msgstr "liminar"
-
-#
-# File: src/unit.cpp, line: 2379
-# File: src/unit.cpp, line: 2379
-# File: src/unit.cpp, line: 2379
-#~ msgid "$attack_list|: $effect_description"
-#~ msgstr "$attack_list|: $effect_description"
-
-#
-# File: src/playsingle_controller.cpp, line: 274
-# File: src/playsingle_controller.cpp, line: 274
-# File: src/playsingle_controller.cpp, line: 274
-#, fuzzy
-#~| msgid "per turn"
-#~ msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
-#~ msgid_plural ""
-#~ "<span color=\"$color\">$number_or_percent</span> attacks per turn"
-#~ msgstr[0] "por turno"
-#~ msgstr[1] "por turno"
-
-#
-# File: src/unit.cpp, line: 2630
-# File: src/unit.cpp, line: 2630
-# File: src/unit.cpp, line: 2630
-#~ msgid "$effect_description per level"
-#~ msgstr "$effect_description por nível"
-
-#
-# File: src/whiteboard/manager.cpp, line: 1094
-# File: src/whiteboard/manager.cpp, line: 1094
-# File: src/whiteboard/manager.cpp, line: 1094
-#~ msgid "SHOW ALL allies’ plans"
-#~ msgstr "MOSTRAR planos de TODOS aliados"
-
-#
-# File: src/whiteboard/manager.cpp, line: 1095
-# File: src/whiteboard/manager.cpp, line: 1095
-# File: src/whiteboard/manager.cpp, line: 1095
-#~ msgid "HIDE ALL allies’ plans"
-#~ msgstr "ESCONDER planos de TODOS aliados"
-
-#
-# File: src/whiteboard/manager.cpp, line: 1109
-# File: src/whiteboard/manager.cpp, line: 1109
-# File: src/whiteboard/manager.cpp, line: 1109
-#~ msgid "Show plans for $player"
-#~ msgstr "Mostrar planos para $player"
-
-#
-# File: src/whiteboard/manager.cpp, line: 1111
-# File: src/whiteboard/manager.cpp, line: 1111
-# File: src/whiteboard/manager.cpp, line: 1111
-#~ msgid "Hide plans for $player"
-#~ msgstr "Esconder planos de $player"
-
-#
-# File: src/whiteboard/manager.cpp, line: 1114
-# File: src/whiteboard/manager.cpp, line: 1114
-# File: src/whiteboard/manager.cpp, line: 1114
-#~ msgid "Whiteboard Options"
-#~ msgstr "Opções do Quadro-Branco"
 
 #
 # File: src/unit.cpp, line: 2368

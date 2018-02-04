@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 20:27 UTC\n"
+"POT-Creation-Date: 2018-02-04 16:40 UTC\n"
 "PO-Revision-Date: 2016-12-02 19:12+0100\n"
 "Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
@@ -29,6 +29,11 @@ msgstr "Výchozí AI (RCA)"
 msgid "Multiplayer_AI^Experimental AI"
 msgstr "Pokusná AI"
 
+#. [ai]: id=idle_ai
+#: data/ai/ais/idle_ai.cfg:4
+msgid "Multiplayer_AI^Dev AI: Idle AI"
+msgstr "Vývojová AI: Klidná AI"
+
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 #, fuzzy
@@ -45,11 +50,6 @@ msgstr "Vývojová AI: Výchozí + Pokusné verbování (Formula AI)"
 #: data/ai/dev/formula_ai_poisoning.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
 msgstr "Vývojová AI: Výchozí + Používání otravy (Formula AI)"
-
-#. [ai]: id=idle_ai
-#: data/ai/dev/idle_ai.cfg:4
-msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Vývojová AI: Klidná AI"
 
 #: data/ai/lua/patrol.lua:4
 msgid "Use the Patrols Micro AI instead of patrol.lua."

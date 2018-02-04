@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 23:27+0300\n"
+"POT-Creation-Date: 2018-02-04 19:39+0300\n"
 "PO-Revision-Date: 2014-06-05 21:43+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -270,15 +270,15 @@ msgstr "Chi phí: "
 msgid "Recruit: "
 msgstr "Tuyển quân: "
 
-#: src/editor/controller/editor_controller.cpp:177
+#: src/editor/controller/editor_controller.cpp:175
 msgid "Fatal error"
 msgstr "Lỗi nghiêm trọng"
 
-#: src/editor/controller/editor_controller.cpp:206
+#: src/editor/controller/editor_controller.cpp:204
 msgid "Do you really want to quit?"
 msgstr "Bạn có thực sự muốn thoát không?"
 
-#: src/editor/controller/editor_controller.cpp:208
+#: src/editor/controller/editor_controller.cpp:206
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -290,7 +290,7 @@ msgstr ""
 "Bạn có thực sự muốn thoát không? Các thay đổi trong bản đồ kể từ lần lưu "
 "cuối cùng sẽ bị mất."
 
-#: src/editor/controller/editor_controller.cpp:210
+#: src/editor/controller/editor_controller.cpp:208
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -298,109 +298,109 @@ msgstr ""
 "Bạn có thực sự muốn thoát không? Các bản đồ sau đã bị sửa đổi và mọi thay "
 "đổi kể từ lần lưu cuối cùng sẽ bị mất:"
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:217
 msgid "No editor time-of-day found."
 msgstr "Không tìm thấy thời điểm trong ngày của trình hiệu chỉnh."
 
-#: src/editor/controller/editor_controller.cpp:1141
+#: src/editor/controller/editor_controller.cpp:1139
 msgid "Change Unit ID"
 msgstr "Thay đổi định danh đơn vị"
 
-#: src/editor/controller/editor_controller.cpp:1142
+#: src/editor/controller/editor_controller.cpp:1140
 msgid "ID:"
 msgstr "Định danh:"
 
-#: src/editor/controller/editor_controller.cpp:1158
+#: src/editor/controller/editor_controller.cpp:1156
 msgid "Rename Unit"
 msgstr "Đổi tên đơn vị"
 
-#: src/editor/controller/editor_controller.cpp:1159
+#: src/editor/controller/editor_controller.cpp:1157
 msgid "Name:"
 msgstr "Tên:"
 
-#: src/editor/map/context_manager.cpp:214
+#: src/editor/map/context_manager.cpp:191
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:280 src/editor/map/map_context.cpp:828
+#: src/editor/map/context_manager.cpp:259 src/editor/map/map_context.cpp:833
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Bản đồ mới)"
 
-#: src/editor/map/context_manager.cpp:291 src/editor/map/map_context.cpp:828
+#: src/editor/map/context_manager.cpp:272 src/editor/map/map_context.cpp:833
 #, fuzzy
 #| msgid "(New Scenario)"
 msgid "New Scenario"
 msgstr "(Màn chơi mới)"
 
-#: src/editor/map/context_manager.cpp:347
+#: src/editor/map/context_manager.cpp:328
 msgid "No Recent Files"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:385
+#: src/editor/map/context_manager.cpp:366
 #, fuzzy
 #| msgid "(Unnamed Area)"
 msgid "Unnamed Area"
 msgstr "(Khu vực không đặt tên)"
 
-#: src/editor/map/context_manager.cpp:416
+#: src/editor/map/context_manager.cpp:397
 #, fuzzy
 #| msgid "(New Side)"
 msgid "New Side"
 msgstr "(Phe mới)"
 
-#: src/editor/map/context_manager.cpp:472
+#: src/editor/map/context_manager.cpp:453
 msgid "Apply Mask"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:481
+#: src/editor/map/context_manager.cpp:462
 msgid "Error loading mask"
 msgstr "Lỗi khi tải mặt nạ"
 
-#: src/editor/map/context_manager.cpp:501
+#: src/editor/map/context_manager.cpp:482
 msgid "Identifier:"
 msgstr "Định danh:"
 
-#: src/editor/map/context_manager.cpp:501
+#: src/editor/map/context_manager.cpp:482
 msgid "Rename Area"
 msgstr "Đổi tên khu vực"
 
-#: src/editor/map/context_manager.cpp:515
+#: src/editor/map/context_manager.cpp:496
 msgid "Choose Target Map"
 msgstr "Chọn bản đồ đích"
 
-#: src/editor/map/context_manager.cpp:524
-#: src/editor/map/context_manager.cpp:932
+#: src/editor/map/context_manager.cpp:505
+#: src/editor/map/context_manager.cpp:915
 msgid "Error loading map"
 msgstr "Lỗi khi tải bản đồ"
 
-#: src/editor/map/context_manager.cpp:648
+#: src/editor/map/context_manager.cpp:631
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Lưu bản đồ thành"
 
-#: src/editor/map/context_manager.cpp:669
+#: src/editor/map/context_manager.cpp:652
 #, fuzzy
 #| msgid "Save the Scenario As"
 msgid "Save Scenario As"
 msgstr "Lưu màn chơi thành"
 
-#: src/editor/map/context_manager.cpp:701
+#: src/editor/map/context_manager.cpp:684
 msgid "No random map generators found."
 msgstr "Không tìm thấy trình tạo bản đồ ngẫu nhiên."
 
-#: src/editor/map/context_manager.cpp:715
-#: src/editor/map/context_manager.cpp:720
+#: src/editor/map/context_manager.cpp:698
+#: src/editor/map/context_manager.cpp:703
 msgid "Map creation failed."
 msgstr "Tạo bản đồ thất bại."
 
-#: src/editor/map/context_manager.cpp:735
+#: src/editor/map/context_manager.cpp:718
 msgid "Unsaved Changes"
 msgstr "Thay đổi không được lưu"
 
-#: src/editor/map/context_manager.cpp:736
+#: src/editor/map/context_manager.cpp:719
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -410,33 +410,33 @@ msgstr ""
 "Bạn có thực sự muốn loại bỏ tất cả các thay đổi bạn đã thực hiện với bản đồ "
 "kể từ lần lưu cuối cùng không?"
 
-#: src/editor/map/context_manager.cpp:792
+#: src/editor/map/context_manager.cpp:775
 msgid "This scenario is already open."
 msgstr "Màn chơi này đã được mở."
 
-#: src/editor/map/context_manager.cpp:815
-#: src/editor/map/context_manager.cpp:878
+#: src/editor/map/context_manager.cpp:798
+#: src/editor/map/context_manager.cpp:861
 msgid "This map is already open."
 msgstr "Bản đồ này đã được mở."
 
-#: src/editor/map/context_manager.cpp:839
+#: src/editor/map/context_manager.cpp:822
 msgid "Scenario saved."
 msgstr "Đã lưu màn chơi."
 
-#: src/editor/map/context_manager.cpp:854
+#: src/editor/map/context_manager.cpp:837
 msgid "Map saved."
 msgstr "Đã lưu bản đồ."
 
-#: src/editor/map/context_manager.cpp:911
+#: src/editor/map/context_manager.cpp:894
 msgid "Loaded embedded map data"
 msgstr "Dữ liệu bản đồ nhúng đã tải"
 
-#: src/editor/map/context_manager.cpp:912
-#: src/editor/map/context_manager.cpp:925
+#: src/editor/map/context_manager.cpp:895
+#: src/editor/map/context_manager.cpp:908
 msgid "Map loaded from scenario"
 msgstr "Bản đồ tải từ màn chơi"
 
-#: src/editor/map/context_manager.cpp:922
+#: src/editor/map/context_manager.cpp:905
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -471,15 +471,15 @@ msgstr ""
 "Tập tin bản đồ trông giống như một màn chơi, nhưng giá trị map_data không "
 "chỉ đến một tập tin tồn tại"
 
-#: src/editor/map/map_context.cpp:597
+#: src/editor/map/map_context.cpp:602
 msgid "Could not save the scenario: $msg"
 msgstr "Không thể lưu màn chơi: $msg"
 
-#: src/editor/map/map_context.cpp:629
+#: src/editor/map/map_context.cpp:634
 msgid "Could not save into scenario"
 msgstr "Không thể lưu vào màn chơi"
 
-#: src/editor/map/map_context.cpp:639
+#: src/editor/map/map_context.cpp:644
 msgid "Could not save the map: $msg"
 msgstr "Không thể lưu bản đồ: $msg"
 

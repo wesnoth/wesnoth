@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 20:27 UTC\n"
+"POT-Creation-Date: 2018-02-04 16:40 UTC\n"
 "PO-Revision-Date: 2017-05-28 11:03+0800\n"
 "Last-Translator: Brian lee <haiyuan.2007@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -30,6 +30,11 @@ msgstr "默认AI（RCA）"
 msgid "Multiplayer_AI^Experimental AI"
 msgstr "试验性AI"
 
+#. [ai]: id=idle_ai
+#: data/ai/ais/idle_ai.cfg:4
+msgid "Multiplayer_AI^Dev AI: Idle AI"
+msgstr "开发用AI：空闲AI"
+
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
@@ -44,11 +49,6 @@ msgstr "开发用AI：默认 + 试验性征募规则（公式AI）"
 #: data/ai/dev/formula_ai_poisoning.cfg:9
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
 msgstr "开发用AI：默认 + 使毒（公式AI）"
-
-#. [ai]: id=idle_ai
-#: data/ai/dev/idle_ai.cfg:4
-msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "开发用AI：空闲AI"
 
 #: data/ai/lua/patrol.lua:4
 msgid "Use the Patrols Micro AI instead of patrol.lua."

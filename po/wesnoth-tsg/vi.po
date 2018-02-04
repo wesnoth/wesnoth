@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 20:28 UTC\n"
+"POT-Creation-Date: 2018-02-04 16:40 UTC\n"
 "PO-Revision-Date: 2013-09-18 10:57+0700\n"
 "Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -28,8 +28,15 @@ msgstr "ĐBVPN"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
+#, fuzzy
+#| msgid ""
+#| "A young Knight, Deoran, is dispatched to take command of the South "
+#| "Guard... Note: This campaign is designed as an introduction to Wesnoth. "
+#| "The ‘Civilian’ difficulty level is aimed at first-time players.\n"
+#| "\n"
 msgid ""
-"A young Knight, Deoran, is dispatched to take command of the South Guard... "
+"A young Knight, Deoran, is dispatched to take command of the South Guard.\n"
+"\n"
 "Note: This campaign is designed as an introduction to Wesnoth. The "
 "‘Civilian’ difficulty level is aimed at first-time players.\n"
 "\n"
@@ -40,58 +47,58 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:21
+#: data/campaigns/The_South_Guard/_main.cfg:23
 msgid "(Novice level, 9 scenarios.)"
 msgstr "(Mức độ mới bắt đầu, 9 màn chơi)"
 
 #. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:23
+#: data/campaigns/The_South_Guard/_main.cfg:25
 #, fuzzy
 #| msgid "(Beginner)"
 msgid "Beginner"
 msgstr "(Mới bắt đầu)"
 
 #. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:23
+#: data/campaigns/The_South_Guard/_main.cfg:25
 msgid "Civilian"
 msgstr "Thường dân"
 
 #. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:24
+#: data/campaigns/The_South_Guard/_main.cfg:26
 #, fuzzy
 #| msgid "(Easy)"
 msgid "Easy"
 msgstr "(Dễ)"
 
 #. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:24
+#: data/campaigns/The_South_Guard/_main.cfg:26
 msgid "Recruit"
 msgstr "Tân binh"
 
 #. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:25
+#: data/campaigns/The_South_Guard/_main.cfg:27
 #, fuzzy
 #| msgid "(Normal)"
 msgid "Normal"
 msgstr "(Bình thường)"
 
 #. [campaign]: id=The_South_Guard
-#: data/campaigns/The_South_Guard/_main.cfg:25
+#: data/campaigns/The_South_Guard/_main.cfg:27
 msgid "Soldier"
 msgstr "Lính"
 
 #. [about]
-#: data/campaigns/The_South_Guard/_main.cfg:30
+#: data/campaigns/The_South_Guard/_main.cfg:32
 msgid "Campaign Design"
 msgstr "Thiết kế chiến dịch"
 
 #. [about]
-#: data/campaigns/The_South_Guard/_main.cfg:36
+#: data/campaigns/The_South_Guard/_main.cfg:38
 msgid "Campaign Maintenance"
 msgstr "Bảo trì chiến dịch"
 
 #. [about]
-#: data/campaigns/The_South_Guard/_main.cfg:49
+#: data/campaigns/The_South_Guard/_main.cfg:51
 msgid "Artwork and Graphics Design"
 msgstr "Thiết kế nghệ thuật và đồ họa"
 
@@ -121,9 +128,9 @@ msgstr "Deoran"
 
 #. [side]: id=Deoran
 #. [side]: type=Horseman Commander, id=Deoran
+#. [side]: type=Lieutenant, id=Plynry
 #. [side]: type=Troll Hero, id=Grek
 #. [side]
-#. [side]: type=Lieutenant, id=Plynry
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:38
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:42
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:38
@@ -184,7 +191,7 @@ msgstr "Đánh bại Urza Mathin"
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:127
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:238
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:229
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:241
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:258
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:264
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:535
@@ -202,7 +209,7 @@ msgstr "Deoran chết"
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:136
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:242
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:233
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:245
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:262
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:268
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:539
@@ -737,7 +744,7 @@ msgstr "Giết tướng cướp Urza Nalmath"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:251
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:237
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:249
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:266
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:272
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:543
@@ -1015,14 +1022,20 @@ msgstr "Chuyến đi liều lĩnh"
 msgid "Urza Fastik"
 msgstr "Urza Fastik"
 
+#. [side]
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:157
+#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:101
+msgid "Elves"
+msgstr "Thần tiên"
+
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:184
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:196
 msgid "Deoran and his men came to the eastern border of the Aethenwood..."
 msgstr ""
 "Deoran và binh lính của mình đến biên giới phía đông khu rừng Aethenwood..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:190
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:202
 msgid ""
 "Look, men! There is the forest of the Elves to the northwest. Let us hasten "
 "across the river and the hills."
@@ -1031,7 +1044,7 @@ msgstr ""
 "chóng băng qua sông và những ngọn đồi."
 
 #. [message]: speaker=Minister Hylas
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:195
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:207
 msgid ""
 "Be careful, Deoran. No man has set foot in the elvish woods for many a year. "
 "We do not know how they will receive us. Sir Loris thought that it was some "
@@ -1042,7 +1055,7 @@ msgstr ""
 "Loris đã nghĩ rằng họ âm mưu tìm cách dụ ông ấy vào rừng..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:200
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:212
 msgid ""
 "But if we do not discover the source of these undead warriors, the whole "
 "province shall surely be swallowed up by them, and then their bandit masters "
@@ -1053,7 +1066,7 @@ msgstr ""
 "chúng sẽ còn đi xa hơn. Chúng ta không thể để điều đó xảy ra!"
 
 #. [message]: speaker=Urza Fastik
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:205
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:217
 msgid ""
 "I have lost two brothers to Deoran — I shall not allow him to reach the "
 "accursed elves! Deoran will die before he reaches the western forest!"
@@ -1063,7 +1076,7 @@ msgstr ""
 "được khu rừng phía tây!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:213
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:225
 msgid ""
 "You must move Deoran to the center of the elvish citadel. Be sure to recruit "
 "a force strong enough to drive off the bandits before moving Deoran from his "
@@ -1074,22 +1087,22 @@ msgstr ""
 "khỏi doanh trại!"
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:225
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:237
 msgid "Move Deoran to the elvish city in the northern woods"
 msgstr "Di chuyển Deoran đến thành phố của thần tiên ở khu rừng phía bắc"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:255
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:267
 msgid "There is so much ground to cover. If only our riders would arrive!"
 msgstr "Địa hình trống trải quá. Giá như kỵ binh của chúng ta đến kịp!"
 
 #. [unit]: id=Jarek
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:265
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:277
 msgid "Jarek"
 msgstr "Jarek"
 
 #. [message]: speaker=Jarek
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:277
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:290
 msgid ""
 "Commander, I received your request for reinforcements, and I have brought my "
 "riders with me!"
@@ -1098,7 +1111,7 @@ msgstr ""
 "mang theo kỵ binh đến đây!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:284
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:297
 #, fuzzy
 #| msgid ""
 #| "You may now recruit Cavalrymen. They are fast and deadly on grassland, "
@@ -1114,12 +1127,12 @@ msgstr ""
 "để bảo vệ anh ta!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:286
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:299
 msgid "You may now recruit Cavalrymen."
 msgstr "Bây giờ bạn có thể tuyển Kỵ binh."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:304
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:317
 msgid ""
 "What have we done?! Even our undead allies cannot stand against this "
 "commander!"
@@ -1128,7 +1141,7 @@ msgstr ""
 "chống lại tên chỉ huy này!"
 
 #. [message]: role=second
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:320
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:333
 #, fuzzy
 #| msgid ""
 #| "I hope that’s the last of the bandits! How many more of these foul undead "
@@ -1141,7 +1154,7 @@ msgstr ""
 "bao nhiêu ma quái bẩn thỉu nữa?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:327
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:340
 msgid ""
 "If we are to check the advance of the dead, I must reach the home of the "
 "elves!"
@@ -1150,52 +1163,52 @@ msgstr ""
 "thần tiên!"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:342
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:355
 msgid "Linderion"
 msgstr "Linderion"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:343
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:356
 msgid "Mithalwe"
 msgstr "Mithalwe"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:344
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:357
 msgid "Sidaurios"
 msgstr "Sidaurios"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:345
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:358
 msgid "Eltenmir"
 msgstr "Eltenmir"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:346
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:359
 msgid "Vardanos"
 msgstr "Vardanos"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:347
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:360
 msgid "Talchar"
 msgstr "Talchar"
 
 #. [unit]: type=Elvish Shyde, id=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:352
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:374
 msgid "Ethiliel"
 msgstr "Ethiliel"
 
 #. [message]: speaker=Linderion
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:367
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:389
 msgid "Halt! Who has entered our citadel without leave?"
 msgstr "Dừng lại! Kẻ nào dám vào thành của chúng ta mà không xin phép?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:372
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:394
 msgid "De..."
 msgstr "De..."
 
 #. [message]: speaker=Linderion
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:377
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:399
 msgid ""
 "Speak carefully, for the penalty for trespass on our lands is death, and "
 "your life is thus forfeit."
@@ -1204,12 +1217,12 @@ msgstr ""
 "cái chết, và ngươi sẽ phải mất mạng."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:382
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:404
 msgid "Deora..."
 msgstr "Deora..."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:388
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:410
 msgid ""
 "Stay a moment. This man wears the colors of Wesnoth, and Kalenz told us not "
 "all the folk of Wesnoth are foes of the elves. Tell us, then, what brings "
@@ -1220,7 +1233,7 @@ msgstr ""
 "hãy nói cho bọn ta biết, điều gì mang ngươi đến thành trì Elrath linh thiêng?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:393
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:415
 msgid ""
 "My lady, we have come to the elves to seek guidance. Bandits and criminals "
 "in our land have summoned the dead to help them plunder our farms and "
@@ -1233,7 +1246,7 @@ msgstr ""
 "vùng đất của chúng tôi, nơi chưa con người nào từng đặt chân đến."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:398
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:420
 msgid ""
 "The elves know of the great southern forest, and have walked its paths many "
 "times. What would you do, Deoran?"
@@ -1242,7 +1255,7 @@ msgstr ""
 "nhiều lần. Deoran, anh sẽ làm gì?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:403
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:425
 msgid ""
 "I would lead my men south of the river to find the source of these beings of "
 "darkness that we might destroy it. For surely, ere that be done, we cannot "
@@ -1253,7 +1266,7 @@ msgstr ""
 "không thể trụ được lâu trước bọn chúng."
 
 #. [message]: speaker=Ethiliel
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:408
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:430
 msgid ""
 "Indeed you are brave to face such foes. But I fear that alone you will fail "
 "and fall. One elf now lives who remembers the secrets of the undead that we "
@@ -1267,7 +1280,7 @@ msgstr ""
 "đồi gần đây. Tôi sẽ dẫn anh đến chỗ ông ấy."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:414
+#: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:436
 msgid "My thanks, lady."
 msgstr "Xin cảm ơn, quý cô."
 
@@ -1295,7 +1308,7 @@ msgstr "Mal A’kai"
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:56
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_the_Depths.cfg:107
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:61
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:93
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:94
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:55
 msgid "Undead"
 msgstr "Ma quái"
@@ -2454,11 +2467,6 @@ msgstr ""
 msgid "The Long March"
 msgstr "Cuộc trường chinh"
 
-#. [side]
-#: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:101
-msgid "Elves"
-msgstr "Thần tiên"
-
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:325
 msgid "Fssth"
@@ -3037,87 +3045,96 @@ msgid "Pebbles in the Flood"
 msgstr "Sỏi trong nước lũ"
 
 #. [side]: type=Lich, id=Mal Tera
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:90
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:91
 msgid "Mal Tera"
 msgstr "Mal Tera"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:133
-msgid "Sgt. Finde"
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:134
+#, fuzzy
+#| msgid "Sgt. Finde"
+msgid "Finde"
 msgstr "Trung sĩ Finde"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:134
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:135
 msgid "Maelvas"
 msgstr "Maelvas"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:135
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:136
 msgid "Orome"
 msgstr "Orome"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:136
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:137
 msgid "Mitche"
 msgstr "Mitche"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:140
-msgid "Lt. Illan"
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:141
+#, fuzzy
+#| msgid "Lt. Illan"
+msgid "Illan"
 msgstr "Trung úy Illan"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:141
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:142
 msgid "Rheban"
 msgstr "Rheban"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:142
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:143
 msgid "Jul"
 msgstr "Jul"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:146
-msgid "Lt. Meris"
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:147
+#, fuzzy
+#| msgid "Lt. Meris"
+msgid "Meris"
 msgstr "Trung úy Meris"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:147
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:148
 msgid "Findlas"
 msgstr "Findlas"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:148
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:149
 msgid "Chumet"
 msgstr "Chumet"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:149
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:150
 msgid "Neras"
 msgstr "Neras"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:150
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:151
 msgid "Eera"
 msgstr "Eera"
 
 #. [event]
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:154
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:155
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:156
 msgid "Death Guard"
 msgstr "Vệ binh chết chóc"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:176
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:177
+#, fuzzy
+#| msgid ""
+#| "We have escaped the great forest, but look! The undead are chasing us — "
+#| "we must not have rooted them all out of the wood."
 msgid ""
-"We have escaped the great forest, but look! The undead are chasing us — we "
-"must not have rooted them all out of the wood."
+"We have escaped the great forest, but look! The undead are still chasing us."
 msgstr ""
 "Chúng ta đã thoát khỏi khu rừng lớn, nhưng nhìn kìa! Lũ ma quái đang đuổi "
 "theo chúng ta. Chúng ta đã không nhổ tận gốc chúng khỏi khu rừng."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:180
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:181
 msgid ""
 "My lord, you must hasten back to Westin to prepare a defense against them. I "
 "will command the defense of the border forts."
@@ -3126,7 +3143,7 @@ msgstr ""
 "lại chúng. Tôi sẽ chỉ huy lực lượng phòng thủ của các pháo đài biên giới."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:184
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:185
 msgid ""
 "I too will make my stand here — I owe you my life and must atone for my "
 "crimes. Together we will hold off the foul undead as long as we can."
@@ -3136,7 +3153,7 @@ msgstr ""
 "thể."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:188
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:189
 msgid ""
 "Minister Hylas, ride with me to Westin — you must summon the Council of "
 "Westin while I prepare the city’s defenses. We shall return as soon as we "
@@ -3147,7 +3164,7 @@ msgstr ""
 "sẽ trở lại với lực lượng đông đảo ngay khi có thể để giải cứu các ông."
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:192
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:193
 msgid ""
 "Make no promises you know you cannot keep. Organize the defense of Westin, "
 "and if you survive, remember those who fell here."
@@ -3156,7 +3173,7 @@ msgstr ""
 "và nếu ngài sống sót, hãy nhớ những người đã ngã xuống ở đây."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:199
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:200
 msgid ""
 "Your name will be sounded in the roll of heroes, and you will be avenged. "
 "Thank you, my friend."
@@ -3164,8 +3181,8 @@ msgstr ""
 "Tên của ông sẽ được nhắc đến trong danh sách các anh hùng, ông sẽ được trả "
 "thù. Cảm ơn, bạn của tôi."
 
-#. [message]: speaker=Lt. Illan
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:222
+#. [message]: speaker=Illan
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:223
 msgid ""
 "We are yours to command, Sir Gerrick. Our men are not the great warriors "
 "that you and Deoran are, but we will hold our lines staunchly, until the "
@@ -3176,30 +3193,43 @@ msgstr ""
 "phòng tuyến của chúng ta, đến hơi thở cuối cùng."
 
 #. [objective]: condition=win
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:228
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:229
 msgid "Hold the line: Keep Sir Gerrick alive as long as possible"
 msgstr "Trấn giữ phòng tuyến: giữ ngài Gerrick sống sót càng lâu càng tốt"
 
+#. [note]
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:238
+msgid ""
+"Starting with turn 6, each additional turn you survive strengthens the "
+"defenses of Westin."
+msgstr ""
+
 #. [message]: speaker=narrator
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:240
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:244
+#, fuzzy
+#| msgid ""
+#| "There is no way to win this scenario, and no way to lose. Hold off the "
+#| "undead hordes as long as you can. Keep Sir Gerrick alive as long as you "
+#| "can. Every turn that passes strengthens the defenses of Westin."
 msgid ""
 "There is no way to win this scenario, and no way to lose. Hold off the "
 "undead hordes as long as you can. Keep Sir Gerrick alive as long as you can. "
-"Every turn that passes strengthens the defenses of Westin."
+"Starting with turn 6, every turn that passes strengthens the defenses of "
+"Westin."
 msgstr ""
 "Không có cách nào để thắng màn chơi này, cũng không có cách nào để thua. "
 "Trấn giữ các đạo quân ma quái lâu đến mức có thể. Giữ ngài Gerrick sống càng "
 "lâu càng tốt. Mỗi lượt trôi qua sẽ củng cố khả năng phòng thủ của Westin."
 
 #. [message]: speaker=Urza Afalas
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:274
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:278
 msgid "Now I will never see my home again... Hold back the undead, Gerrick!"
 msgstr ""
 "Giờ ta sẽ chẳng bao giờ nhìn thấy quê hương nữa... Hãy trấn giữ lũ ma quái, "
 "Gerrick!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:286
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:290
 msgid ""
 "I only hope we have bought Deoran enough time to secure Westin for the "
 "onslaught!"
@@ -3208,7 +3238,7 @@ msgstr ""
 "cuộc công kích!"
 
 #. [message]: speaker=Mal M'Brin
-#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:294
+#: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:298
 msgid ""
 "We will crush Westin as we have crushed you! No one shall stand between us "
 "and our home."
@@ -3314,7 +3344,9 @@ msgstr "Vệ binh cấp tỉnh"
 
 #. [value]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:152
-msgid "Lt. Nilaf"
+#, fuzzy
+#| msgid "Lt. Nilaf"
+msgid "Nilaf"
 msgstr "Trung úy Nilaf"
 
 #. [message]: speaker=Deoran
@@ -3365,7 +3397,7 @@ msgstr ""
 "chúng ta, chúng ta đã huy động được toàn bộ đội bảo vệ cấp tỉnh và dàn thế "
 "trận toàn thành phố!"
 
-#. [message]: speaker=Lt. Nilaf
+#. [message]: speaker=Nilaf
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:353
 msgid "Indeed, Lord, we are ready to defend our homes!"
 msgstr "Đúng vậy, thưa ngài, chúng tôi sẵn sàng bảo vệ quê hương!"
@@ -3469,7 +3501,7 @@ msgstr "Giờ ta sẽ chẳng bao giờ thấy Westin tự do nữa..."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:546
-#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:93
+#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:98
 msgid "Far from home I fall — but not in vain! Guard our people, Deoran!"
 msgstr ""
 "Ta đã ngã xuống xa quê hương - nhưng không phải là vô ích! Hãy bảo vệ người "
@@ -3808,6 +3840,15 @@ msgstr "Hãy nếm đòn của ta!"
 msgid "I have lost all helping the humans... Now they will surely perish!"
 msgstr ""
 "Ta đã mất tất cả khả năng giúp đỡ con người... Giờ chắc chắn họ sẽ bỏ mạng!"
+
+#. [message]: speaker=unit
+#: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:104
+#, fuzzy
+#| msgid "Far from home I fall — but not in vain! Guard our people, Deoran!"
+msgid "Far from home I fall — but not in vain!"
+msgstr ""
+"Ta đã ngã xuống xa quê hương - nhưng không phải là vô ích! Hãy bảo vệ người "
+"của chúng ta, Deoran!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:29

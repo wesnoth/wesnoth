@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 23:27+0300\n"
+"POT-Creation-Date: 2018-02-04 19:39+0300\n"
 "PO-Revision-Date: 2011-11-30 13:52+0100\n"
 "Last-Translator: daMark <daMark@arcor.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -270,15 +270,15 @@ msgstr "Kosten: "
 msgid "Recruit: "
 msgstr "Ausbilden:"
 
-#: src/editor/controller/editor_controller.cpp:177
+#: src/editor/controller/editor_controller.cpp:175
 msgid "Fatal error"
 msgstr "Kritischer Fehler"
 
-#: src/editor/controller/editor_controller.cpp:206
+#: src/editor/controller/editor_controller.cpp:204
 msgid "Do you really want to quit?"
 msgstr "Wollt Ihr wirklich beenden?"
 
-#: src/editor/controller/editor_controller.cpp:208
+#: src/editor/controller/editor_controller.cpp:206
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -286,7 +286,7 @@ msgstr ""
 "Wollt Ihr wirklich beenden? Sämtliche Änderungen an der Karte seit dem "
 "letzten Speichern werden verloren gehen."
 
-#: src/editor/controller/editor_controller.cpp:210
+#: src/editor/controller/editor_controller.cpp:208
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -294,135 +294,135 @@ msgstr ""
 "Wollt Ihr wirklich beenden? Die folgenden Karten wurden seit dem letzten "
 "Speichern verändert und sämtliche Änderungen werden verloren gehen:"
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:217
 msgid "No editor time-of-day found."
 msgstr "Keine Tageszeiten-Definitionen für den Editor gefunden."
 
-#: src/editor/controller/editor_controller.cpp:1141
+#: src/editor/controller/editor_controller.cpp:1139
 msgid "Change Unit ID"
 msgstr "Einheitenkennung ändern"
 
-#: src/editor/controller/editor_controller.cpp:1142
+#: src/editor/controller/editor_controller.cpp:1140
 msgid "ID:"
 msgstr "Kennung:"
 
-#: src/editor/controller/editor_controller.cpp:1158
+#: src/editor/controller/editor_controller.cpp:1156
 msgid "Rename Unit"
 msgstr "Einheit umbenennen"
 
-#: src/editor/controller/editor_controller.cpp:1159
+#: src/editor/controller/editor_controller.cpp:1157
 msgid "Name:"
 msgstr "Name: "
 
-#: src/editor/map/context_manager.cpp:214
+#: src/editor/map/context_manager.cpp:191
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:280 src/editor/map/map_context.cpp:828
+#: src/editor/map/context_manager.cpp:259 src/editor/map/map_context.cpp:833
 msgid "New Map"
 msgstr "Neue Karte"
 
-#: src/editor/map/context_manager.cpp:291 src/editor/map/map_context.cpp:828
+#: src/editor/map/context_manager.cpp:272 src/editor/map/map_context.cpp:833
 msgid "New Scenario"
 msgstr "Neues Szenario"
 
-#: src/editor/map/context_manager.cpp:347
+#: src/editor/map/context_manager.cpp:328
 msgid "No Recent Files"
 msgstr "Keine vorherigen Dateien"
 
-#: src/editor/map/context_manager.cpp:385
+#: src/editor/map/context_manager.cpp:366
 #, fuzzy
 #| msgid "(Unnamed Area)"
 msgid "Unnamed Area"
 msgstr "(Unbenanntes Gebiet)"
 
-#: src/editor/map/context_manager.cpp:416
+#: src/editor/map/context_manager.cpp:397
 #, fuzzy
 #| msgid "(New Side)"
 msgid "New Side"
 msgstr "(Neue Fraktion)"
 
-#: src/editor/map/context_manager.cpp:472
+#: src/editor/map/context_manager.cpp:453
 msgid "Apply Mask"
 msgstr "Maske anwenden"
 
-#: src/editor/map/context_manager.cpp:481
+#: src/editor/map/context_manager.cpp:462
 msgid "Error loading mask"
 msgstr "Fehler beim Laden der Maske"
 
-#: src/editor/map/context_manager.cpp:501
+#: src/editor/map/context_manager.cpp:482
 msgid "Identifier:"
 msgstr "Kennung:"
 
-#: src/editor/map/context_manager.cpp:501
+#: src/editor/map/context_manager.cpp:482
 msgid "Rename Area"
 msgstr "Das Gebiet umbenennen"
 
-#: src/editor/map/context_manager.cpp:515
+#: src/editor/map/context_manager.cpp:496
 msgid "Choose Target Map"
 msgstr "Wählt die Zielkarte"
 
-#: src/editor/map/context_manager.cpp:524
-#: src/editor/map/context_manager.cpp:932
+#: src/editor/map/context_manager.cpp:505
+#: src/editor/map/context_manager.cpp:915
 msgid "Error loading map"
 msgstr "Fehler beim Laden der Karte"
 
-#: src/editor/map/context_manager.cpp:648
+#: src/editor/map/context_manager.cpp:631
 msgid "Save Map As"
 msgstr "Karte speichern unter"
 
-#: src/editor/map/context_manager.cpp:669
+#: src/editor/map/context_manager.cpp:652
 #, fuzzy
 #| msgid "Save the Scenario As"
 msgid "Save Scenario As"
 msgstr "Szenario speichern als"
 
-#: src/editor/map/context_manager.cpp:701
+#: src/editor/map/context_manager.cpp:684
 msgid "No random map generators found."
 msgstr "Keine Generatoren für Zufallskarten gefunden."
 
-#: src/editor/map/context_manager.cpp:715
-#: src/editor/map/context_manager.cpp:720
+#: src/editor/map/context_manager.cpp:698
+#: src/editor/map/context_manager.cpp:703
 msgid "Map creation failed."
 msgstr "Erstellen der Karte fehlgeschlagen"
 
-#: src/editor/map/context_manager.cpp:735
+#: src/editor/map/context_manager.cpp:718
 msgid "Unsaved Changes"
 msgstr "Nicht gespeicherte Änderungen"
 
-#: src/editor/map/context_manager.cpp:736
+#: src/editor/map/context_manager.cpp:719
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Wollt Ihr alle Änderungen an der Karte, die seit dem letzten Speichern "
 "gemacht wurden, verwerfen?"
 
-#: src/editor/map/context_manager.cpp:792
+#: src/editor/map/context_manager.cpp:775
 msgid "This scenario is already open."
 msgstr "Dieses Szenario ist bereits geöffnet."
 
-#: src/editor/map/context_manager.cpp:815
-#: src/editor/map/context_manager.cpp:878
+#: src/editor/map/context_manager.cpp:798
+#: src/editor/map/context_manager.cpp:861
 msgid "This map is already open."
 msgstr "Diese Karte ist bereits geöffnet."
 
-#: src/editor/map/context_manager.cpp:839
+#: src/editor/map/context_manager.cpp:822
 msgid "Scenario saved."
 msgstr "Szenario gespeichert."
 
-#: src/editor/map/context_manager.cpp:854
+#: src/editor/map/context_manager.cpp:837
 msgid "Map saved."
 msgstr "Karte gespeichert."
 
-#: src/editor/map/context_manager.cpp:911
+#: src/editor/map/context_manager.cpp:894
 msgid "Loaded embedded map data"
 msgstr "Eingebettete Karte geladen"
 
-#: src/editor/map/context_manager.cpp:912
-#: src/editor/map/context_manager.cpp:925
+#: src/editor/map/context_manager.cpp:895
+#: src/editor/map/context_manager.cpp:908
 msgid "Map loaded from scenario"
 msgstr "Karte aus Szenario Datei geladen"
 
-#: src/editor/map/context_manager.cpp:922
+#: src/editor/map/context_manager.cpp:905
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -455,15 +455,15 @@ msgstr ""
 "Diese Karte scheint eine Szenario Datei zu sein, doch der Wert für "
 "»map_data« verweist nicht auf eine existierende Datei"
 
-#: src/editor/map/map_context.cpp:597
+#: src/editor/map/map_context.cpp:602
 msgid "Could not save the scenario: $msg"
 msgstr "Das Szenario konnte nicht gespeichert werden: $msg"
 
-#: src/editor/map/map_context.cpp:629
+#: src/editor/map/map_context.cpp:634
 msgid "Could not save into scenario"
 msgstr "Konnte nicht in die Szenario Datei speichern"
 
-#: src/editor/map/map_context.cpp:639
+#: src/editor/map/map_context.cpp:644
 msgid "Could not save the map: $msg"
 msgstr "Die Karte konnte nicht gespeichert werden: $msg"
 

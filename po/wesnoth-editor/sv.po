@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 23:27+0300\n"
+"POT-Creation-Date: 2018-02-04 19:39+0300\n"
 "PO-Revision-Date: 2016-01-10 14:34+0100\n"
 "Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -275,15 +275,15 @@ msgstr "Kostnad: "
 msgid "Recruit: "
 msgstr "Rekrytera: "
 
-#: src/editor/controller/editor_controller.cpp:177
+#: src/editor/controller/editor_controller.cpp:175
 msgid "Fatal error"
 msgstr "Allvarligt fel"
 
-#: src/editor/controller/editor_controller.cpp:206
+#: src/editor/controller/editor_controller.cpp:204
 msgid "Do you really want to quit?"
 msgstr "Vill du verkligen avsluta?"
 
-#: src/editor/controller/editor_controller.cpp:208
+#: src/editor/controller/editor_controller.cpp:206
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -295,7 +295,7 @@ msgstr ""
 "Vill du verkligen avsluta? Ändringar i kartan sedan den senast sparats "
 "kommer att förloras."
 
-#: src/editor/controller/editor_controller.cpp:210
+#: src/editor/controller/editor_controller.cpp:208
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -303,137 +303,137 @@ msgstr ""
 "Vill du verkligen avsluta? Följande kartor har modifierats och alla "
 "ändringar sedan de senast sparats kommer att förloras."
 
-#: src/editor/controller/editor_controller.cpp:220
+#: src/editor/controller/editor_controller.cpp:217
 msgid "No editor time-of-day found."
 msgstr "Ingen redigerare för tid-på-dagen hittades."
 
-#: src/editor/controller/editor_controller.cpp:1141
+#: src/editor/controller/editor_controller.cpp:1139
 msgid "Change Unit ID"
 msgstr "Byt trupp-ID"
 
-#: src/editor/controller/editor_controller.cpp:1142
+#: src/editor/controller/editor_controller.cpp:1140
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1158
+#: src/editor/controller/editor_controller.cpp:1156
 msgid "Rename Unit"
 msgstr "Döp om trupp"
 
-#: src/editor/controller/editor_controller.cpp:1159
+#: src/editor/controller/editor_controller.cpp:1157
 msgid "Name:"
 msgstr "Namn:"
 
-#: src/editor/map/context_manager.cpp:214
+#: src/editor/map/context_manager.cpp:191
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:280 src/editor/map/map_context.cpp:828
+#: src/editor/map/context_manager.cpp:259 src/editor/map/map_context.cpp:833
 msgid "New Map"
 msgstr "Ny karta"
 
-#: src/editor/map/context_manager.cpp:291 src/editor/map/map_context.cpp:828
+#: src/editor/map/context_manager.cpp:272 src/editor/map/map_context.cpp:833
 msgid "New Scenario"
 msgstr "Nytt scenario"
 
-#: src/editor/map/context_manager.cpp:347
+#: src/editor/map/context_manager.cpp:328
 msgid "No Recent Files"
 msgstr "Inga nyligen använda filer"
 
-#: src/editor/map/context_manager.cpp:385
+#: src/editor/map/context_manager.cpp:366
 #, fuzzy
 #| msgid "(Unnamed Area)"
 msgid "Unnamed Area"
 msgstr "(Område utan namn)"
 
-#: src/editor/map/context_manager.cpp:416
+#: src/editor/map/context_manager.cpp:397
 #, fuzzy
 #| msgid "(New Side)"
 msgid "New Side"
 msgstr "(Ny sida)"
 
-#: src/editor/map/context_manager.cpp:472
+#: src/editor/map/context_manager.cpp:453
 msgid "Apply Mask"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:481
+#: src/editor/map/context_manager.cpp:462
 msgid "Error loading mask"
 msgstr "Fel vid öppning av markering"
 
-#: src/editor/map/context_manager.cpp:501
+#: src/editor/map/context_manager.cpp:482
 msgid "Identifier:"
 msgstr "Identifierare:"
 
-#: src/editor/map/context_manager.cpp:501
+#: src/editor/map/context_manager.cpp:482
 msgid "Rename Area"
 msgstr "Döp om område"
 
-#: src/editor/map/context_manager.cpp:515
+#: src/editor/map/context_manager.cpp:496
 msgid "Choose Target Map"
 msgstr "Välj målkarta"
 
-#: src/editor/map/context_manager.cpp:524
-#: src/editor/map/context_manager.cpp:932
+#: src/editor/map/context_manager.cpp:505
+#: src/editor/map/context_manager.cpp:915
 msgid "Error loading map"
 msgstr "Fel vid öppning av karta"
 
-#: src/editor/map/context_manager.cpp:648
+#: src/editor/map/context_manager.cpp:631
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Spara kartan som"
 
-#: src/editor/map/context_manager.cpp:669
+#: src/editor/map/context_manager.cpp:652
 #, fuzzy
 #| msgid "Save the Scenario As"
 msgid "Save Scenario As"
 msgstr "Spara scenariot som"
 
-#: src/editor/map/context_manager.cpp:701
+#: src/editor/map/context_manager.cpp:684
 msgid "No random map generators found."
 msgstr "Ingen slumpgeneratorer för kartor hittades."
 
-#: src/editor/map/context_manager.cpp:715
-#: src/editor/map/context_manager.cpp:720
+#: src/editor/map/context_manager.cpp:698
+#: src/editor/map/context_manager.cpp:703
 msgid "Map creation failed."
 msgstr "Misslyckades med att skapa karta."
 
-#: src/editor/map/context_manager.cpp:735
+#: src/editor/map/context_manager.cpp:718
 msgid "Unsaved Changes"
 msgstr "Osparade ändringar"
 
-#: src/editor/map/context_manager.cpp:736
+#: src/editor/map/context_manager.cpp:719
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Vill du överge alla ändringar du har gjort i kartan sedan den senast "
 "sparades?"
 
-#: src/editor/map/context_manager.cpp:792
+#: src/editor/map/context_manager.cpp:775
 msgid "This scenario is already open."
 msgstr "Det här scenariot är redan öppet."
 
-#: src/editor/map/context_manager.cpp:815
-#: src/editor/map/context_manager.cpp:878
+#: src/editor/map/context_manager.cpp:798
+#: src/editor/map/context_manager.cpp:861
 msgid "This map is already open."
 msgstr "Den här kartan är redan öppen."
 
-#: src/editor/map/context_manager.cpp:839
+#: src/editor/map/context_manager.cpp:822
 msgid "Scenario saved."
 msgstr "Scenariot har sparats."
 
-#: src/editor/map/context_manager.cpp:854
+#: src/editor/map/context_manager.cpp:837
 msgid "Map saved."
 msgstr "Kartan har sparats."
 
-#: src/editor/map/context_manager.cpp:911
+#: src/editor/map/context_manager.cpp:894
 msgid "Loaded embedded map data"
 msgstr "Laddade inbyggd kart-data"
 
-#: src/editor/map/context_manager.cpp:912
-#: src/editor/map/context_manager.cpp:925
+#: src/editor/map/context_manager.cpp:895
+#: src/editor/map/context_manager.cpp:908
 msgid "Map loaded from scenario"
 msgstr "Karta från scenario laddad"
 
-#: src/editor/map/context_manager.cpp:922
+#: src/editor/map/context_manager.cpp:905
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -468,15 +468,15 @@ msgstr ""
 "Kartfilen ser ut som ett scenario, men värdet i map_data pekar inte på en "
 "existerande fil"
 
-#: src/editor/map/map_context.cpp:597
+#: src/editor/map/map_context.cpp:602
 msgid "Could not save the scenario: $msg"
 msgstr "Kunde inte spara scenariot: $msg"
 
-#: src/editor/map/map_context.cpp:629
+#: src/editor/map/map_context.cpp:634
 msgid "Could not save into scenario"
 msgstr "Kunde inte spara till ett scenario"
 
-#: src/editor/map/map_context.cpp:639
+#: src/editor/map/map_context.cpp:644
 msgid "Could not save the map: $msg"
 msgstr "Kunde inte spara kartan: $msg"
 
