@@ -1727,7 +1727,6 @@
 		91BE783D1DD8F5DE00528C21 /* po_message.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = po_message.hpp; sourceTree = "<group>"; };
 		91BE783E1DD8F5DE00528C21 /* po_message_adapted.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = po_message_adapted.hpp; sourceTree = "<group>"; };
 		91BE783F1DD8F5DE00528C21 /* version.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = version.hpp; sourceTree = "<group>"; };
-		91BE78401DD8F5DE00528C21 /* spirit_po.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = spirit_po.hpp; sourceTree = "<group>"; };
 		91C548CE1D8866ED00FE6A7B /* campaignd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = campaignd; sourceTree = BUILT_PRODUCTS_DIR; };
 		91C548CF1D886AF000FE6A7B /* send_receive_wml_helpers.ipp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = send_receive_wml_helpers.ipp; sourceTree = "<group>"; };
 		91C548D01D886AF000FE6A7B /* server_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server_base.cpp; sourceTree = "<group>"; };
@@ -1780,7 +1779,6 @@
 		91EED9651DE0D13D00759295 /* size_lock.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = size_lock.hpp; sourceTree = "<group>"; };
 		91EF6BFC1C9E22E400E2A733 /* const_clone.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = const_clone.hpp; sourceTree = "<group>"; };
 		91EF6C001C9E22E400E2A733 /* reference_counter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = reference_counter.hpp; sourceTree = "<group>"; };
-		91EF6C041C9E22E400E2A733 /* smart_list.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = smart_list.hpp; sourceTree = "<group>"; };
 		91F06A7C1D85FE6E0005C353 /* end_credits.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = end_credits.cpp; sourceTree = "<group>"; };
 		91F06A7D1D85FE6E0005C353 /* end_credits.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = end_credits.hpp; sourceTree = "<group>"; };
 		91F462821C71139B0050A9C9 /* preferences_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = preferences_dialog.cpp; sourceTree = "<group>"; };
@@ -3096,7 +3094,6 @@
 				B559999D0EC62181008DD061 /* soundsource.cpp */,
 				B559999C0EC62181008DD061 /* soundsource.hpp */,
 				91BE78361DD8F5DE00528C21 /* spirit_po */,
-				91BE78401DD8F5DE00528C21 /* spirit_po.hpp */,
 				B559999B0EC62181008DD061 /* statistics.cpp */,
 				B559999A0EC62181008DD061 /* statistics.hpp */,
 				B597EC0B0FC0835900CE81F5 /* storyscreen */,
@@ -3637,7 +3634,6 @@
 				913D26751D3C9697002FF3AB /* name_generator_factory.cpp */,
 				913D26761D3C9697002FF3AB /* name_generator_factory.hpp */,
 				91EF6C001C9E22E400E2A733 /* reference_counter.hpp */,
-				91EF6C041C9E22E400E2A733 /* smart_list.hpp */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -6163,6 +6159,7 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
@@ -6204,6 +6201,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
@@ -6238,8 +6236,7 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				FRAMEWORK_SEARCH_PATHS = ./lib;
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -6307,8 +6304,7 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				FRAMEWORK_SEARCH_PATHS = ./lib;
 				GCC_DYNAMIC_NO_PIC = YES;
