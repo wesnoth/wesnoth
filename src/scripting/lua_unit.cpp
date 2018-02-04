@@ -440,9 +440,10 @@ static int impl_unit_set(lua_State *L)
 	} else {
 		const bool is_key_x = strcmp(m, "x") == 0;
 		const bool is_key_y = strcmp(m, "y") == 0;
+		const bool is_loc_key = strcmp(m, "loc") == 0;
 
 		// Handle moving an on-map unit
-		if(is_key_x || is_key_y) {
+		if(is_key_x || is_key_y || is_loc_key) {
 			game_board* gb = resources::gameboard;
 
 			if(!gb) {
@@ -453,9 +454,23 @@ static int impl_unit_set(lua_State *L)
 			map_location dst = src;
 
 			if(is_key_x) {
-				dst.set_wml_x(static_cast<int>(luaL_checkinteger(L, 3)));
+				dst.set_wml_x(luaL_checkinteger(L, 3));
+			} else if(is_key_y) {
+				dst.set_wml_y(luaL_checkinteger(L, 3));
+			} else if(lua_istable(L, 3)) { // is_loc_key
+				const auto& v = lua_check<std::vector<int>>(L, 3);
+
+				if(v.size() != 2) {
+					std::string err_msg = "both x, y coordinates not provided when assigning unit.loc";
+					return luaL_argerror(L, 2, err_msg.c_str());
+				}
+
+				dst.set_wml_x(v[0]);
+				dst.set_wml_y(v[1]);
 			} else {
-				dst.set_wml_y(static_cast<int>(luaL_checkinteger(L, 3)));
+				// This should only happen if trying to assign unit.loc with a non-table value.
+				std::string err_msg = "unknown value type for unit.loc, expected table";
+				return luaL_argerror(L, 2, err_msg.c_str());
 			}
 
 			// TODO: could probably be relegated to a helper function.
