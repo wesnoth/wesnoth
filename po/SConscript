@@ -30,16 +30,15 @@ linguas = Split(open("LINGUAS").read())
 if "pot-update" in COMMAND_LINE_TARGETS:
     from collections import defaultdict
     domain_sources = defaultdict(list)
-    def fill_source_list(arg, dir, files):
+    for root, dirs, files in os.walk("../src"):
         for file in files:
             if fnmatch(file, "*.[hc]pp"):
-                match = re.search('^#define\\s+GETTEXT_DOMAIN\\s+"wesnoth(-.*)"', Dir(dir).File(file).get_contents().decode("utf-8"), re.MULTILINE)
+                match = re.search('^#define\\s+GETTEXT_DOMAIN\\s+"wesnoth(-.*)"', Dir(root).File(file).get_contents().decode("utf-8"), re.MULTILINE)
                 if match:
                     source_domain = match.group(1)
                 else:
                     source_domain = ""
-                domain_sources[source_domain].append(Dir(dir).File(file).path)
-    os.walk("../src", fill_source_list, None)
+                domain_sources[source_domain].append(Dir(root).File(file).path)
 
     for domain in textdomains:
         pot = File(join(domain, domain + ".pot"))
@@ -49,8 +48,8 @@ if "pot-update" in COMMAND_LINE_TARGETS:
         if domain in po4a_domains:
             continue
 
-        potfiles = open(join(domain, "POTFILES.in"), "w")
-        potfiles.writelines([line + "\n" for line in sorted(domain_sources[domain[7:]])])
+        with open(join(domain, "POTFILES.in"), "w") as potfiles
+            potfiles.writelines([line + "\n" for line in sorted(domain_sources[domain[7:]])])
         sources = [Dir("#").File(x) for x in domain_sources[domain[7:]]]
         if sources:
             source_pot = env.Command(
