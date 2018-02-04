@@ -457,20 +457,8 @@ static int impl_unit_set(lua_State *L)
 				dst.set_wml_x(luaL_checkinteger(L, 3));
 			} else if(is_key_y) {
 				dst.set_wml_y(luaL_checkinteger(L, 3));
-			} else if(lua_istable(L, 3)) { // is_loc_key
-				const auto& v = lua_check<std::vector<int>>(L, 3);
-
-				if(v.size() != 2) {
-					std::string err_msg = "both x, y coordinates not provided when assigning unit.loc";
-					return luaL_argerror(L, 2, err_msg.c_str());
-				}
-
-				dst.set_wml_x(v[0]);
-				dst.set_wml_y(v[1]);
 			} else {
-				// This should only happen if trying to assign unit.loc with a non-table value.
-				std::string err_msg = "unknown value type for unit.loc, expected table";
-				return luaL_argerror(L, 2, err_msg.c_str());
+				dst = luaW_checklocation(L, 3);
 			}
 
 			// TODO: could probably be relegated to a helper function.
