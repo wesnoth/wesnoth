@@ -495,6 +495,8 @@ void game_config_manager::reload_changed_game_config()
 	old_defines_map_.clear();
 	filesystem::clear_binary_paths_cache();
 	init_game_config(FORCE_RELOAD);
+
+	image::flush_cache();
 }
 
 void game_config_manager::load_game_config_for_editor()

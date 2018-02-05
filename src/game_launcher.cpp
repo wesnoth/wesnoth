@@ -1008,7 +1008,6 @@ editor::EXIT_STATUS game_launcher::start_editor(const std::string& filename)
 			return res;
 
 		game_config_manager::get()->reload_changed_game_config();
-		image::flush_cache();
 	}
 	return editor::EXIT_ERROR; // not supposed to happen
 }

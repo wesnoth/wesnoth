@@ -888,7 +888,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 		case gui2::dialogs::title_screen::RELOAD_GAME_DATA:
 			gui2::dialogs::loading_screen::display([&config_manager]() {
 				config_manager.reload_changed_game_config();
-				image::flush_cache();
 			});
 			break;
 		case gui2::dialogs::title_screen::MAP_EDITOR:
