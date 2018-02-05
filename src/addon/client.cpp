@@ -132,8 +132,8 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	// generate a random passphrase and write it to disk
 	// if the .pbl file doesn't provide one already
 	if(passphrase.empty()) {
-		passphrase.resize(8);
-		for(size_t n = 0; n != 8; ++n) {
+		passphrase.resize(16);
+		for(size_t n = 0; n < passphrase.size(); ++n) {
 			passphrase[n] = randomness::generator->get_random_int('a', 'z');
 		}
 		cfg["passphrase"] = passphrase;
