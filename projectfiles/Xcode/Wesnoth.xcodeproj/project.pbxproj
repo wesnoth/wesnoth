@@ -10,6 +10,7 @@
 		1EF6CE8214D9846D00ECBE58 /* mp_host_game_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */; };
 		4664B9441F462ED9009E4881 /* irdya_datetime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */; };
 		468C1B971F09245F002DF652 /* function_gamestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468C1B951F09245E002DF652 /* function_gamestate.cpp */; };
+		469EC8EC20287C4A008A0CAD /* surrender_quit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469EC8EA20287C49008A0CAD /* surrender_quit.cpp */; };
 		4944F40D1354FB760027E614 /* drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40C1354FB760027E614 /* drawing.cpp */; };
 		4944F4121354FB970027E614 /* debug_clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40E1354FB970027E614 /* debug_clock.cpp */; };
 		4944F4131354FB970027E614 /* mp_login.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40F1354FB970027E614 /* mp_login.cpp */; };
@@ -1395,6 +1396,8 @@
 		1EF6CE8114D9846D00ECBE58 /* mp_host_game_prompt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_host_game_prompt.hpp; sourceTree = "<group>"; };
 		468C1B951F09245E002DF652 /* function_gamestate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = function_gamestate.cpp; sourceTree = "<group>"; };
 		468C1B961F09245E002DF652 /* function_gamestate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = function_gamestate.hpp; sourceTree = "<group>"; };
+		469EC8EA20287C49008A0CAD /* surrender_quit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surrender_quit.cpp; sourceTree = "<group>"; };
+		469EC8EB20287C49008A0CAD /* surrender_quit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = surrender_quit.hpp; sourceTree = "<group>"; };
 		46DF5BCB1F46173700BE6D24 /* irdya_datetime.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = irdya_datetime.hpp; sourceTree = "<group>"; };
 		46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = irdya_datetime.cpp; sourceTree = "<group>"; };
 		4944F40C1354FB760027E614 /* drawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drawing.cpp; sourceTree = "<group>"; };
@@ -4380,6 +4383,8 @@
 				9157B6011DE0FCBB00E46192 /* statistics_dialog.hpp */,
 				ECB107D61E84B52600379898 /* story_viewer.cpp */,
 				ECB107D71E84B52600379898 /* story_viewer.hpp */,
+				469EC8EA20287C49008A0CAD /* surrender_quit.cpp */,
+				469EC8EB20287C49008A0CAD /* surrender_quit.hpp */,
 				915C68ED1DF1DCD200594B07 /* terrain_layers.cpp */,
 				915C68EE1DF1DCD200594B07 /* terrain_layers.hpp */,
 				EC3381C518B520120020DD6F /* theme_list.cpp */,
@@ -4872,6 +4877,7 @@
 				F40A13BC1A3A88BA00C4D071 /* apple_notification.mm in Sources */,
 				EC218E9C1A1064F4007C910C /* application_lua_kernel.cpp in Sources */,
 				B52EE8CB121359A600CFBDAB /* arrow.cpp in Sources */,
+				469EC8EC20287C4A008A0CAD /* surrender_quit.cpp in Sources */,
 				B59F96E71034791200A57C1A /* aspect_attacks.cpp in Sources */,
 				B59F96D5103478C900A57C1A /* aspect.cpp in Sources */,
 				B55BE03211234AAB00154E6C /* astarsearch.cpp in Sources */,
