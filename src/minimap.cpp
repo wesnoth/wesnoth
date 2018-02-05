@@ -16,22 +16,20 @@
 
 #include "minimap.hpp"
 
+#include "color.hpp"
+#include "display.hpp"
+#include "formula/string_utils.hpp"
 #include "game_board.hpp"
 #include "gettext.hpp"
 #include "image.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
+#include "preferences/general.hpp"
 #include "resources.hpp"
-#include "color.hpp"
 #include "sdl/surface.hpp"
 #include "team.hpp"
 #include "terrain/type_data.hpp"
 #include "wml_exception.hpp"
-#include "formula/string_utils.hpp"
-
-#include "game_display.hpp"
-
-#include "preferences/general.hpp"
 
 static lg::log_domain log_display("display");
 #define DBG_DP LOG_STREAM(debug, log_display)
@@ -84,7 +82,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 			if(!map.on_board_with_border(loc))
 				continue;
 
-			const bool shrouded = (game_display::get_singleton() != nullptr && game_display::get_singleton()->is_blindfolded()) || (vw != nullptr && vw->shrouded(loc));
+			const bool shrouded = (display::get_singleton() != nullptr && display::get_singleton()->is_blindfolded()) || (vw != nullptr && vw->shrouded(loc));
 			// shrouded hex are not considered fogged (no need to fog a black image)
 			const bool fogged = (vw != nullptr && !shrouded && vw->fogged(loc));
 
