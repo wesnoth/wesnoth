@@ -333,7 +333,7 @@ This way, the documentation will not be outdated or unmaintained.
 
 @section interfaces	Commenting interfaces
 
-Concise comments are prefered, as long as the explanation
+Concise comments are preferred, as long as the explanation
 is correct, is not open to interpretation and does not
 assume extensive knowledge of other parts of the system.
 
