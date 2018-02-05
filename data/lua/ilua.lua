@@ -4,7 +4,7 @@
 -- will try to print out tables recursively, subject to the pretty_print_limit value.
 -- Steve Donovan, 2007
 -- Adapted by iceiceice for wesnoth, 2014
--- Retrived from: http://lua-users.org/files/wiki_insecure/users/steved/ilua.lua
+-- Retrieeved from: http://lua-users.org/files/wiki_insecure/users/steved/ilua.lua
 -- Note: This file is loaded automatically by the engine.
 
 local pretty_print_limit = 20

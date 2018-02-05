@@ -55,7 +55,7 @@ def find_enemies_part( ai*, locations_map)
 	)
 	where enemy_leaders = enemy_leaders( ai );
 
-# Returns a List of those enemy leaders wich are near to the important locations #
+# Returns a List of those enemy leaders which are near to the important locations #
 def find_enemies( ai*, locations_map)
 	filter( keys(enemies_part), 'leader',
 		enemies_part[leader] <= average( values( enemies_part ) )
@@ -78,7 +78,7 @@ def direct_enemies_recruits( ai* )
 		)
 	);
 
-# returns map of important locations and number of their occurences on a gamemap #
+# returns map of important locations and number of their occurrences on a gamemap #
 # for example: [ 'forest' -> 10 ] #
 # all terrains inside side_terrain are considered. #
 def important_locations_map(ai*)

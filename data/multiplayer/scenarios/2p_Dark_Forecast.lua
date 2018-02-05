@@ -257,7 +257,7 @@ local function final_spawn()
 	place_units(types, spawn.x, spawn.y)
 end
 
--- convert all 'veteran' units from side 2 to the more agressive side 1
+-- convert all 'veteran' units from side 2 to the more aggressive side 1
 -- this must happen before the new units are created from spawns.
 on_event("new turn", function()
 	for i, unit in ipairs(wesnoth.get_units { side = 2 }) do
@@ -491,5 +491,3 @@ on_event("side 3 turn", function()
 		error("unknown weather '" .. tostring(weather_event.weather_id) .. "'")
 	end
 end)
-
-
