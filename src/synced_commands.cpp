@@ -394,7 +394,7 @@ namespace
 		symbols["player"] = resources::controller->current_team().current_player();
 		display::announce_options announce_options;
 		announce_options.lifetime = 1000;
-		game_display::get_singleton()->announce(vgettext(message, symbols), font::NORMAL_COLOR, announce_options);
+		display::get_singleton()->announce(vgettext(message, symbols), font::NORMAL_COLOR, announce_options);
 	}
 }
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_handler*/)
@@ -456,7 +456,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 	if (name == "fail") { //testcase for bug #18488
 		assert(i.valid());
 	}
-	game_display::get_singleton()->invalidate(loc);
+	display::get_singleton()->invalidate(loc);
 	game_display::get_singleton()->invalidate_unit();
 
 	return true;
@@ -535,7 +535,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_h
 		if (i.valid()) {
 			unit_display::unit_die(loc, *i);
 		}
-		game_display::get_singleton()->redraw_minimap();
+		display::get_singleton()->redraw_minimap();
 		if (i.valid()) {
 			i->set_hitpoints(0);
 		}
@@ -582,7 +582,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn_limit, child, use_undo, /*show*/, /*e
 	debug_notification(":turn_limit debug command was used during turn of $player");
 
 	resources::tod_manager->set_number_of_turns(child["turn_limit"].to_int(-1));
-	game_display::get_singleton()->redraw_everything();
+	display::get_singleton()->redraw_everything();
 	return true;
 }
 
@@ -597,7 +597,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn, child, use_undo, /*show*/, /*error_h
 	resources::tod_manager->set_turn(child["turn"].to_int(1), resources::gamedata);
 
 	game_display::get_singleton()->new_turn();
-	game_display::get_singleton()->redraw_everything();
+	display::get_singleton()->redraw_everything();
 
 	return true;
 }
@@ -629,7 +629,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_gold, child, use_undo, /*show*/, /*error_h
 	debug_notification(":gold debug command was used during turn of $player");
 
 	resources::controller->current_team().spend_gold(-child["gold"].to_int(0));
-	game_display::get_singleton()->redraw_everything();
+	display::get_singleton()->redraw_everything();
 	return true;
 }
 
@@ -643,7 +643,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_event, child, use_undo, /*show*/, /*error_
 	debug_notification(":throw debug command was used during turn of $player");
 
 	resources::controller->pump().fire(child["eventname"]);
-	game_display::get_singleton()->redraw_everything();
+	display::get_singleton()->redraw_everything();
 
 	return true;
 }
@@ -661,8 +661,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_fog, /*child*/, use_undo, /*show*/, /*erro
 	current_team.set_fog(!current_team.uses_fog());
 	actions::recalculate_fog(current_team.side());
 
-	game_display::get_singleton()->recalculate_minimap();
-	game_display::get_singleton()->redraw_everything();
+	display::get_singleton()->recalculate_minimap();
+	display::get_singleton()->redraw_everything();
 
 	return true;
 }
@@ -680,8 +680,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_shroud, /*child*/, use_undo, /*show*/, /*e
 	current_team.set_shroud(!current_team.uses_shroud());
 	actions::clear_shroud(current_team.side());
 
-	game_display::get_singleton()->recalculate_minimap();
-	game_display::get_singleton()->redraw_everything();
+	display::get_singleton()->recalculate_minimap();
+	display::get_singleton()->redraw_everything();
 
 	return true;
 }

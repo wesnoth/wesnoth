@@ -86,7 +86,7 @@ attack::attack(const config& cfg, bool hidden)
 
 void attack::init()
 {
-	game_display::get_singleton()->invalidate(target_hex_);
+	display::get_singleton()->invalidate(target_hex_);
 }
 
 attack::~attack()
@@ -102,11 +102,11 @@ void attack::accept(visitor& v)
 /* private */
 void attack::invalidate()
 {
-	if(game_display::get_singleton())
+	if(display::get_singleton())
 	{
 		//invalidate dest and target hex so attack indicator is properly cleared
-		game_display::get_singleton()->invalidate(get_dest_hex());
-		game_display::get_singleton()->invalidate(target_hex_);
+		display::get_singleton()->invalidate(get_dest_hex());
+		display::get_singleton()->invalidate(target_hex_);
 	}
 }
 
@@ -200,18 +200,18 @@ void attack::draw_hex(const map_location& hex)
 
 		if (hex == get_dest_hex()) //add symbol to attacker hex
 		{
-			int xpos = game_display::get_singleton()->get_location_x(get_dest_hex());
-			int ypos = game_display::get_singleton()->get_location_y(get_dest_hex());
+			int xpos = display::get_singleton()->get_location_x(get_dest_hex());
+			int ypos = display::get_singleton()->get_location_y(get_dest_hex());
 
-			game_display::get_singleton()->drawing_buffer_add(layer, get_dest_hex(), xpos, ypos,
+			display::get_singleton()->drawing_buffer_add(layer, get_dest_hex(), xpos, ypos,
 					image::get_image("whiteboard/attack-indicator-src-" + direction_text + ".png", image::SCALED_TO_HEX));
 		}
 		else if (hex == target_hex_) //add symbol to defender hex
 		{
-			int xpos = game_display::get_singleton()->get_location_x(target_hex_);
-			int ypos = game_display::get_singleton()->get_location_y(target_hex_);
+			int xpos = display::get_singleton()->get_location_x(target_hex_);
+			int ypos = display::get_singleton()->get_location_y(target_hex_);
 
-			game_display::get_singleton()->drawing_buffer_add(layer, target_hex_, xpos, ypos,
+			display::get_singleton()->drawing_buffer_add(layer, target_hex_, xpos, ypos,
 					image::get_image("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::SCALED_TO_HEX));
 		}
 	}
@@ -220,7 +220,7 @@ void attack::draw_hex(const map_location& hex)
 void attack::redraw()
 {
 	move::redraw();
-	game_display::get_singleton()->invalidate(target_hex_);
+	display::get_singleton()->invalidate(target_hex_);
 }
 
 action::error attack::check_validity() const

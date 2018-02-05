@@ -14,8 +14,8 @@
 
 #include "units/animation.hpp"
 
+#include "display.hpp"
 #include "filter_context.hpp"
-#include "game_display.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
@@ -1003,7 +1003,7 @@ bool unit_animation::animation_finished_potential() const
 
 void unit_animation::update_last_draw_time()
 {
-	double acceleration = unit_anim_.accelerate ? game_display::get_singleton()->turbo_speed() : 1.0;
+	double acceleration = unit_anim_.accelerate ? display::get_singleton()->turbo_speed() : 1.0;
 	unit_anim_.update_last_draw_time(acceleration);
 	for(auto& anim : sub_anims_) {
 		anim.second.update_last_draw_time(acceleration);

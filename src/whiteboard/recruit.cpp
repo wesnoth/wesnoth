@@ -134,7 +134,7 @@ void recruit::apply_temp_modifier(unit_map& unit_map)
 	unit_map.insert(temp_unit_);
 
 	// Update gold in the top bar
-	game_display::get_singleton()->invalidate_game_status();
+	display::get_singleton()->invalidate_game_status();
 }
 
 void recruit::remove_temp_modifier(unit_map& unit_map)
@@ -155,14 +155,14 @@ void recruit::draw_hex(const map_location& hex)
 		number_text << font::unicode_minus << cost_;
 		size_t font_size = 16;
 		color_t color {255, 0, 0}; //red
-		game_display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
 						number_text.str(), font_size, color, x_offset, y_offset);
 	}
 }
 
 void recruit::redraw()
 {
-	game_display::get_singleton()->invalidate(recruit_hex_);
+	display::get_singleton()->invalidate(recruit_hex_);
 }
 
 

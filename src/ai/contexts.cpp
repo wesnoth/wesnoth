@@ -326,7 +326,7 @@ game_info& readwrite_context_impl::get_info_w(){
 void readonly_context_impl::diagnostic(const std::string& msg)
 {
 	if(game_config::debug) {
-		game_display::get_singleton()->set_diagnostic(msg);
+		display::get_singleton()->set_diagnostic(msg);
 	}
 }
 

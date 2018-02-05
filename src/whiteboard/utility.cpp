@@ -26,7 +26,7 @@
 #include "whiteboard/side_actions.hpp"
 
 #include "actions/create.hpp"
-#include "game_display.hpp"
+#include "display.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
@@ -39,18 +39,18 @@ namespace wb {
 
 size_t viewer_team()
 {
-	return game_display::get_singleton()->viewing_team();
+	return display::get_singleton()->viewing_team();
 }
 
 int viewer_side()
 {
-	return game_display::get_singleton()->viewing_side();
+	return display::get_singleton()->viewing_side();
 }
 
 side_actions_ptr viewer_actions()
 {
 	side_actions_ptr side_actions =
-			resources::gameboard->teams()[game_display::get_singleton()->viewing_team()].get_side_actions();
+			resources::gameboard->teams()[display::get_singleton()->viewing_team()].get_side_actions();
 	return side_actions;
 }
 
@@ -142,13 +142,13 @@ temporary_unit_hider::~temporary_unit_hider()
 void ghost_owner_unit(unit* unit)
 {
 	unit->anim_comp().set_disabled_ghosted(false);
-	game_display::get_singleton()->invalidate(unit->get_location());
+	display::get_singleton()->invalidate(unit->get_location());
 }
 
 void unghost_owner_unit(unit* unit)
 {
 	unit->anim_comp().set_standing(true);
-	game_display::get_singleton()->invalidate(unit->get_location());
+	display::get_singleton()->invalidate(unit->get_location());
 }
 
 bool has_actions()

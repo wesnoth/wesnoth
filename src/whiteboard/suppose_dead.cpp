@@ -25,7 +25,7 @@
 
 #include "arrow.hpp"
 #include "config.hpp"
-#include "game_display.hpp"
+#include "display.hpp"
 #include "game_end_exceptions.hpp"
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
@@ -85,14 +85,14 @@ suppose_dead::suppose_dead(const config& cfg, bool hidden)
 
 void suppose_dead::init()
 {
-	game_display::get_singleton()->invalidate(loc_);
+	display::get_singleton()->invalidate(loc_);
 }
 
 suppose_dead::~suppose_dead()
 {
 	//invalidate hex so that skull indicator is properly cleared
-	if(game_display::get_singleton())
-		game_display::get_singleton()->invalidate(loc_);
+	if(display::get_singleton())
+		display::get_singleton()->invalidate(loc_);
 }
 
 unit_ptr suppose_dead::get_unit() const
@@ -140,16 +140,16 @@ void suppose_dead::draw_hex(const map_location& hex)
 		//@todo: Possibly use a different layer
 		const display::drawing_layer layer = display::LAYER_ARROWS;
 
-		int xpos = game_display::get_singleton()->get_location_x(loc_);
-		int ypos = game_display::get_singleton()->get_location_y(loc_);
-		game_display::get_singleton()->drawing_buffer_add(layer, loc_, xpos, ypos,
+		int xpos = display::get_singleton()->get_location_x(loc_);
+		int ypos = display::get_singleton()->get_location_y(loc_);
+		display::get_singleton()->drawing_buffer_add(layer, loc_, xpos, ypos,
 				image::get_image("whiteboard/suppose_dead.png", image::SCALED_TO_HEX));
 	}
 }
 
 void suppose_dead::redraw()
 {
-	game_display::get_singleton()->invalidate(loc_);
+	display::get_singleton()->invalidate(loc_);
 }
 
 action::error suppose_dead::check_validity() const

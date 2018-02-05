@@ -391,7 +391,7 @@ void move::draw_hex(const map_location& hex)
 	{
 		std::stringstream turn_text;
 		turn_text << turn_number_;
-		game_display::get_singleton()->draw_text_in_hex(hex, display::LAYER_MOVE_INFO, turn_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
+		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_MOVE_INFO, turn_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
 	}
 }
 
@@ -537,7 +537,7 @@ void move::calculate_move_cost()
 
 		// @todo: find a better treatment of movement points when defining moves out-of-turn
 		if(get_unit()->movement_left() - route_->move_cost < 0
-				&& resources::controller->current_side() == game_display::get_singleton()->viewing_side()) {
+				&& resources::controller->current_side() == display::get_singleton()->viewing_side()) {
 			WRN_WB << "Move defined with insufficient movement left." << std::endl;
 		}
 
@@ -555,8 +555,8 @@ void move::calculate_move_cost()
 
 void move::redraw()
 {
-	game_display::get_singleton()->invalidate(get_source_hex());
-	game_display::get_singleton()->invalidate(get_dest_hex());
+	display::get_singleton()->invalidate(get_source_hex());
+	display::get_singleton()->invalidate(get_dest_hex());
 	update_arrow_style();
 }
 

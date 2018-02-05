@@ -553,7 +553,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 			my_y -= current_data.directional_y;
 		}
 
-		game_display::get_singleton()->render_image(my_x, my_y,
+		display::get_singleton()->render_image(my_x, my_y,
 			static_cast<display::drawing_layer>(display::LAYER_UNIT_FIRST + current_data.drawing_layer),
 			src, image, facing_west, false,
 			ftofxp(current_data.highlight_ratio), current_data.blend_with ? *current_data.blend_with : color_t(),
@@ -604,16 +604,16 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 
 	if(direction != map_location::SOUTH_WEST && direction != map_location::NORTH_WEST) {
 		halo_id = halo_man.add(
-			static_cast<int>(x + current_data.halo_x * game_display::get_singleton()->get_zoom_factor()),
-			static_cast<int>(y + current_data.halo_y * game_display::get_singleton()->get_zoom_factor()),
+			static_cast<int>(x + current_data.halo_x * display::get_singleton()->get_zoom_factor()),
+			static_cast<int>(y + current_data.halo_y * display::get_singleton()->get_zoom_factor()),
 			current_data.halo  + current_data.halo_mod,
 			map_location(-1, -1),
 			orientation
 		);
 	} else {
 		halo_id = halo_man.add(
-			static_cast<int>(x - current_data.halo_x * game_display::get_singleton()->get_zoom_factor()),
-			static_cast<int>(y + current_data.halo_y * game_display::get_singleton()->get_zoom_factor()),
+			static_cast<int>(x - current_data.halo_x * display::get_singleton()->get_zoom_factor()),
+			static_cast<int>(y + current_data.halo_y * display::get_singleton()->get_zoom_factor()),
 			current_data.halo  + current_data.halo_mod,
 			map_location(-1, -1),
 			orientation
@@ -635,7 +635,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
 	const frame_parameters current_data = merge_parameters(frame_time, animation_val, engine_val);
 
 	double tmp_offset = current_data.offset;
-	const int d2 = game_display::get_singleton()->hex_size() / 2;
+	const int d2 = display::get_singleton()->hex_size() / 2;
 
 	image::locator image_loc;
 	if(direction != map_location::NORTH && direction != map_location::SOUTH) {

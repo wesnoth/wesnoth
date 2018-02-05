@@ -186,19 +186,19 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			resources::controller->on_not_observer();
 		}
 
-		if (resources::gameboard->is_observer() || (resources::gameboard->teams())[game_display::get_singleton()->playing_team()].is_local_human()) {
-			game_display::get_singleton()->set_team(game_display::get_singleton()->playing_team());
-			game_display::get_singleton()->redraw_everything();
-			game_display::get_singleton()->recalculate_minimap();
+		if (resources::gameboard->is_observer() || (resources::gameboard->teams())[display::get_singleton()->playing_team()].is_local_human()) {
+			display::get_singleton()->set_team(display::get_singleton()->playing_team());
+			display::get_singleton()->redraw_everything();
+			display::get_singleton()->recalculate_minimap();
 		} else if (tm.is_local_human()) {
-			game_display::get_singleton()->set_team(side - 1);
-			game_display::get_singleton()->redraw_everything();
-			game_display::get_singleton()->recalculate_minimap();
+			display::get_singleton()->set_team(side - 1);
+			display::get_singleton()->redraw_everything();
+			display::get_singleton()->recalculate_minimap();
 		}
 
 		resources::whiteboard->on_change_controller(side,tm);
 
-		game_display::get_singleton()->labels().recalculate_labels();
+		display::get_singleton()->labels().recalculate_labels();
 
 		const bool restart = game_display::get_singleton()->playing_side() == side && (was_local || tm.is_local());
 		return restart ? PROCESS_RESTART_TURN : PROCESS_CONTINUE;
@@ -347,7 +347,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	// The host has ended linger mode in a campaign -> enable the "End scenario" button
 	// and tell we did get the notification.
 	else if (cfg.child("notify_next_scenario")) {
-		std::shared_ptr<gui::button> btn_end = game_display::get_singleton()->find_action_button("button-endturn");
+		std::shared_ptr<gui::button> btn_end = display::get_singleton()->find_action_button("button-endturn");
 		if(btn_end) {
 			btn_end->enable(true);
 		}

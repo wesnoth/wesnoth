@@ -24,10 +24,10 @@
 #include "whiteboard/visitor.hpp"
 
 #include "actions/create.hpp"
+#include "display.hpp"
 #include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "game_board.hpp"
-#include "game_display.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
 #include "replay_helper.hpp"
@@ -161,7 +161,7 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 
 	resources::gameboard->teams().at(team_index()).get_side_actions()->change_gold_spent_by(cost);
 	// Update gold in top bar
-	game_display::get_singleton()->invalidate_game_status();
+	display::get_singleton()->invalidate_game_status();
 }
 
 void recall::remove_temp_modifier(unit_map& unit_map)
@@ -191,14 +191,14 @@ void recall::draw_hex(const map_location& hex)
 		}
 		size_t font_size = 16;
 		color_t color {255, 0, 0}; //red
-		game_display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
 						number_text.str(), font_size, color, x_offset, y_offset);
 	}
 }
 
 void recall::redraw()
 {
-	game_display::get_singleton()->invalidate(recall_hex_);
+	display::get_singleton()->invalidate(recall_hex_);
 }
 
 action::error recall::check_validity() const

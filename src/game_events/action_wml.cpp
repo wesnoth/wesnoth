@@ -634,7 +634,7 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 		lg::wml_error() << *errmsg << std::endl;
 	}
 
-	game_display::get_singleton()->reload_map();
+	display::get_singleton()->reload_map();
 	game_display::get_singleton()->needs_rebuild(true);
 	ai::manager::get_singleton().raise_map_changed();
 }

@@ -18,7 +18,7 @@
 #include <vector>
 #include "utils/functional.hpp"
 #include "gettext.hpp"
-#include "game_display.hpp"
+#include "display.hpp"
 #include "font/text_formatting.hpp"
 #include "map/label.hpp"
 #include "gui/auxiliary/find_widget.hpp"
@@ -42,7 +42,7 @@ namespace dialogs
 REGISTER_DIALOG(label_settings)
 
 label_settings::label_settings(display_context& dc) : viewer(dc) {
-	const std::vector<std::string>& all_categories = game_display::get_singleton()->labels().all_categories();
+	const std::vector<std::string>& all_categories = display::get_singleton()->labels().all_categories();
 	const std::vector<std::string>& hidden_categories = viewer.hidden_label_categories();
 
 	for(size_t i = 0; i < all_categories.size(); i++) {

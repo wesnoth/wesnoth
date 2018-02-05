@@ -97,7 +97,7 @@ manager::~manager()
 #if 0
 static void print_to_chat(const std::string& title, const std::string& message)
 {
-	game_display::get_singleton()->add_chat_message(time(nullptr), title, 0, message,
+	display::get_singleton()->add_chat_message(time(nullptr), title, 0, message,
 			events::chat_handler::MESSAGE_PRIVATE, false);
 }
 #endif
@@ -469,7 +469,7 @@ static void draw_numbers(const map_location& hex, side_actions::numbers_t number
 		color_t color = team::get_side_color(static_cast<int>(team_numbers[i]+1));
 		const double x_in_hex = x_origin + x_offset;
 		const double y_in_hex = y_origin + y_offset;
-		game_display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
 				number_text, font_size, color, x_in_hex, y_in_hex);
 		x_offset += x_offset_base;
 		y_offset += y_offset_base;
@@ -601,7 +601,7 @@ void manager::on_gamestate_change()
 	// Set mutated flag so action queue gets validated on next future map build
 	gamestate_mutated_ = true;
 	//Clear exclusive draws that might not get a chance to be cleared the normal way
-	game_display::get_singleton()->clear_exclusive_draws();
+	display::get_singleton()->clear_exclusive_draws();
 }
 
 void manager::send_network_data()
@@ -669,7 +669,7 @@ void manager::create_temp_move()
 	if (!temp_moved_unit) temp_moved_unit =
 			future_visible_unit(resources::controller->get_mouse_handler_base().get_last_hex(), viewer_side());
 	if (!temp_moved_unit) return;
-	if (temp_moved_unit->side() != game_display::get_singleton()->viewing_side()) return;
+	if (temp_moved_unit->side() != display::get_singleton()->viewing_side()) return;
 
 	/*
 	 * DONE CHECKING PRE-CONDITIONS, CREATE THE TEMP MOVE
@@ -847,8 +847,8 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 
 		print_help_once();
 
-		game_display::get_singleton()->invalidate(defender_loc);
-		game_display::get_singleton()->invalidate(attacker_loc);
+		display::get_singleton()->invalidate(defender_loc);
+		display::get_singleton()->invalidate(attacker_loc);
 		erase_temp_move();
 		LOG_WB << *viewer_actions() << "\n";
 	}
@@ -859,7 +859,7 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 	bool created_planned_recruit = false;
 
 	if (active_ && !executing_actions_ && !resources::controller->is_linger_mode()) {
-		if (side_num != game_display::get_singleton()->viewing_side())
+		if (side_num != display::get_singleton()->viewing_side())
 		{
 			LOG_WB <<"manager::save_recruit called for a different side than viewing side.\n";
 			created_planned_recruit = false;
@@ -888,7 +888,7 @@ bool manager::save_recall(const unit& unit, int side_num, const map_location& re
 
 	if (active_ && !executing_actions_ && !resources::controller->is_linger_mode())
 	{
-		if (side_num != game_display::get_singleton()->viewing_side())
+		if (side_num != display::get_singleton()->viewing_side())
 		{
 			LOG_WB <<"manager::save_recall called for a different side than viewing side.\n";
 			created_planned_recall = false;

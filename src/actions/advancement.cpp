@@ -142,11 +142,11 @@ namespace
 			animator.start_animations();
 			animator.wait_for_end();
 			animator.set_all_standing();
-			game_display::get_singleton()->invalidate(loc);
+			display::get_singleton()->invalidate(loc);
 			events::pump();
 		}
 
-		game_display::get_singleton()->invalidate_all();
+		display::get_singleton()->invalidate_all();
 
 		return true;
 	}

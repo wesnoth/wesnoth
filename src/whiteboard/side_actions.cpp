@@ -35,7 +35,7 @@
 
 #include "actions/create.hpp"
 #include "actions/undo.hpp"
-#include "game_display.hpp"
+#include "display.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_state.hpp"
 #include "map/map.hpp"
@@ -726,7 +726,7 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 		//update numbering hexes as necessary
 		++itor;
 		for(iterator end_itor = end(); itor != end_itor; ++itor) {
-			game_display::get_singleton()->invalidate((*itor)->get_numbering_hex());
+			display::get_singleton()->invalidate((*itor)->get_numbering_hex());
 		}
 	} else if(type=="replace") {
 		size_t turn = cmd["turn"].to_int();
@@ -765,7 +765,7 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 
 		//update numbering hexes as necessary
 		for(iterator end_itor = end(); itor != end_itor; ++itor) {
-			game_display::get_singleton()->invalidate((*itor)->get_numbering_hex());
+			display::get_singleton()->invalidate((*itor)->get_numbering_hex());
 		}
 	} else if(type=="bump_later") {
 		size_t turn = cmd["turn"].to_int();
@@ -784,8 +784,8 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 		LOG_WB << "Command received: action bumped later from turn #" << turn << ", position #" << pos << "\n";
 
 		//update numbering hexes as necessary
-		game_display::get_singleton()->invalidate(first_action->get_numbering_hex());
-		game_display::get_singleton()->invalidate(second_action->get_numbering_hex());
+		display::get_singleton()->invalidate(first_action->get_numbering_hex());
+		display::get_singleton()->invalidate(second_action->get_numbering_hex());
 	} else if(type=="clear") {
 		LOG_WB << "Command received: clear\n";
 		clear();

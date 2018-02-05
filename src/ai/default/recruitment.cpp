@@ -25,9 +25,9 @@
 #include "ai/manager.hpp"
 #include "actions/attack.hpp"
 #include "attack_prediction.hpp"
+#include "display.hpp"
 #include "filter_context.hpp"
 #include "game_board.hpp"
-#include "game_display.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/label.hpp"
@@ -732,10 +732,10 @@ void recruitment::show_important_hexes() const {
 	if (!game_config::debug) {
 		return;
 	}
-	game_display::get_singleton()->labels().clear_all();
+	display::get_singleton()->labels().clear_all();
 	for (const map_location& loc : important_hexes_) {
 		// Little hack: use map_location north from loc and make 2 linebreaks to center the "X".
-		game_display::get_singleton()->labels().set_label(loc.get_direction(map_location::NORTH), "\n\nX");
+		display::get_singleton()->labels().set_label(loc.get_direction(map_location::NORTH), "\n\nX");
 	}
 }
 

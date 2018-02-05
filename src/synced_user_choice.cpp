@@ -15,8 +15,8 @@
 #include "synced_user_choice.hpp"
 
 #include "actions/undo.hpp"
+#include "display.hpp"
 #include "floating_label.hpp"
-#include "game_display.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
 #include "play_controller.hpp"
@@ -79,7 +79,7 @@ namespace
 		void start_show_label()
 		{
 			assert(label_id_ == -1);
-			SDL_Rect area = game_display::get_singleton()->map_outside_area();
+			SDL_Rect area = display::get_singleton()->map_outside_area();
 			font::floating_label flabel(message_);
 			flabel.set_font_size(font::SIZE_XLARGE);
 			flabel.set_color(font::NORMAL_COLOR);

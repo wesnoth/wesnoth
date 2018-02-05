@@ -174,8 +174,8 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
 	}
 
 	if(not_defeated) {
-		if (game_display::get_singleton() != nullptr) {
-			game_display::get_singleton()->invalidate(loc);
+		if (display::get_singleton() != nullptr) {
+			display::get_singleton()->invalidate(loc);
 		}
 		return t->get_village(loc, old_owner_side, fire_event ? resources::gamedata : nullptr);
 	}
@@ -348,7 +348,7 @@ namespace { // Private helpers for move_unit()
 		: spectator_(move_spectator)
 		, skip_sighting_(skip_sightings)
 		, skip_ally_sighting_(skip_ally_sightings)
-		, playing_team_is_viewing_(game_display::get_singleton()->playing_team() == game_display::get_singleton()->viewing_team() ||  game_display::get_singleton()->show_everything())
+		, playing_team_is_viewing_(display::get_singleton()->playing_team() == display::get_singleton()->viewing_team() || display::get_singleton()->show_everything())
 		, route_(route)
 		, begin_(route.begin())
 		, full_end_(route.end())
@@ -1106,7 +1106,7 @@ namespace { // Private helpers for move_unit()
 		}
 
 		// Update the screen.
-		game_display::get_singleton()->redraw_minimap();
+		display::get_singleton()->redraw_minimap();
 	}
 
 
