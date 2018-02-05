@@ -134,11 +134,11 @@ void context_manager::reload_map()
 bool context_manager::is_active_transitions_hotkey(const std::string& item)
 {
 	switch (auto_update_transitions_) {
-		case preferences::editor::TransitionUpdateMode::on:
+		case preferences::editor::TRANSITION_UPDATE_ON:
 			return (item == "editor-auto-update-transitions");
-		case preferences::editor::TransitionUpdateMode::partial:
+		case preferences::editor::TRANSITION_UPDATE_PARTIAL:
 			return (item == "editor-partial-update-transitions");
-		case preferences::editor::TransitionUpdateMode::off:
+		case preferences::editor::TRANSITION_UPDATE_OFF:
 			return (item == "editor-no-update-transitions");
 	}
 
@@ -147,10 +147,10 @@ bool context_manager::is_active_transitions_hotkey(const std::string& item)
 
 bool context_manager::toggle_update_transitions()
 {
-	auto_update_transitions_ = (auto_update_transitions_ + 1) % preferences::editor::TransitionUpdateMode::count;
+	auto_update_transitions_ = (auto_update_transitions_ + 1) % preferences::editor::TRANSITION_UPDATE_COUNT;
 	preferences::editor::set_auto_update_transitions(auto_update_transitions_);
 
-	if(auto_update_transitions_ != preferences::editor::TransitionUpdateMode::on) {
+	if(auto_update_transitions_ != preferences::editor::TRANSITION_UPDATE_ON) {
 		return true;
 	}
 
@@ -521,8 +521,8 @@ void context_manager::refresh_after_action(bool drag_part)
 	const std::set<map_location>& changed_locs = get_map_context().changed_locations();
 
 	if(get_map_context().needs_terrain_rebuild()) {
-		if((auto_update_transitions_ == preferences::editor::TransitionUpdateMode::on)
-		|| ((auto_update_transitions_ == preferences::editor::TransitionUpdateMode::partial)
+		if((auto_update_transitions_ == preferences::editor::TRANSITION_UPDATE_ON)
+		|| ((auto_update_transitions_ == preferences::editor::TRANSITION_UPDATE_PARTIAL)
 		&& (!drag_part || get_map_context().everything_changed())))
 		{
 			gui_.rebuild_all();

@@ -22,7 +22,7 @@ namespace preferences {
 namespace editor {
 
 	int auto_update_transitions() {
-		return lexical_cast_default<int>(preferences::get("editor_auto_update_transitions"), TransitionUpdateMode::partial);
+		return lexical_cast_default<int>(preferences::get("editor_auto_update_transitions"), TRANSITION_UPDATE_PARTIAL);
 	}
 
 	void set_auto_update_transitions(int value) {

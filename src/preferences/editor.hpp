@@ -21,12 +21,12 @@ namespace preferences {
 
 namespace editor {
 
-	namespace TransitionUpdateMode {
-		const int off = 0;
-		const int on = 1;
-		const int partial = 2;
-		const int count = 3;
-	}
+	enum TRANSITION_UPDATE_MODE : int {
+		TRANSITION_UPDATE_OFF = 0,
+		TRANSITION_UPDATE_ON = 1,
+		TRANSITION_UPDATE_PARTIAL = 2,
+		TRANSITION_UPDATE_COUNT = 3
+	};
 
 	int auto_update_transitions();
 	void set_auto_update_transitions(int value);
