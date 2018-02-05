@@ -135,9 +135,19 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 
 			shown_hosts.emplace(host, port);
 
+			gui2::dialogs::loading_screen::progress(loading_stage::redirect);
+
 			// Open a new connection with the new host and port.
 			sock = wesnothd_connection_ptr();
 			sock = wesnothd_connection::create(host, std::to_string(port));
+
+			// Wait for new handshake.
+			while(!sock->handshake_finished()) {
+				sock->poll();
+				SDL_Delay(1);
+			}
+
+			gui2::dialogs::loading_screen::progress(loading_stage::waiting);
 			continue;
 		}
 
