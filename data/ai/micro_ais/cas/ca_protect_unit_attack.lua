@@ -48,7 +48,7 @@ function ca_protect_unit_attack:evaluation(cfg)
                     if counter_damage_table[str] then  -- If so, use saved value
                         max_counter_damage = max_counter_damage + counter_damage_table[str]
                     else  -- if not, calculate it and save value
-                        -- Go thru all weapons, as "best weapon" might be different later on
+                        -- Go through all weapons, as "best weapon" might be different later on
                         local min_hp = unit.hitpoints
                         for n_weapon,weapon in ipairs(enemy_attack.enemy.attacks) do
                             -- Terrain does not matter for this, we're only interested in the maximum damage
