@@ -64,6 +64,8 @@ game_stringfixes = {
 "wesnoth" : (
 # conversion added in 1.11.10+dev
 ("Save and Abort game", "Save and abort game"),
+("Filters on addon descripton,", "Filters on addon description,"),
+("Messanger Waypoint 1", "Messenger Waypoint 1"),
 
 # conversion added in 1.13.5+dev
 ("You don’t have a leader to", "You do not have a leader to"),
@@ -83,6 +85,7 @@ game_stringfixes = {
 ("displayed in the upper right, (under the default theme)", "displayed in the upper right (under the default theme)"),
 ("However the few implements", "However, the few implements"),
 ("humans can learn to wield it and able to learn", "humans can learn to wield it and are able to learn"),
+("toggle bewteen human and AI.", "toggle between human and AI."),
 ),
 
 "wesnoth-lib" : (
@@ -152,7 +155,7 @@ game_stringfixes = {
 ("Shujas are", "Shuja are"),
 ("Mudafis excel", "Mudafi excel"),
 ("uses to this advantage", "uses this to their advantage"),
-
+("and are valuable enough that auxilliaries who specialize", "and are valuable enough that auxiliaries who specialize"),
 ),
 
 "wesnoth-utbs" : (
