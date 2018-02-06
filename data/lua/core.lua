@@ -286,7 +286,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	end
 
 	local root_variable_mt = {
-		__metatable = "WML variables",
+		__metatable = "WML variables proxy",
 		__index    = function(t, k)    return get_variable_proxy(k)    end,
 		__newindex = function(t, k, v)
 			if type(v) == "function" then
