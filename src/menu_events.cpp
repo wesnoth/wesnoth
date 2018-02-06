@@ -799,8 +799,16 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 void menu_handler::clear_labels()
 {
 	if(gui_->team_valid() && !board().is_observer()) {
-		gui_->labels().clear(gui_->current_team_name(), false);
-		resources::recorder->clear_labels(gui_->current_team_name(), false);
+		const int res = gui2::show_message(
+			_("Clear Labels"),
+			_("Are you sure you want to clear map labels?"),
+			gui2::dialogs::message::yes_no_buttons
+		);
+
+		if(res == gui2::window::OK) {
+			gui_->labels().clear(gui_->current_team_name(), false);
+			resources::recorder->clear_labels(gui_->current_team_name(), false);
+		}
 	}
 }
 
