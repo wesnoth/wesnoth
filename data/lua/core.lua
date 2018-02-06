@@ -235,6 +235,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wml.variable.get_all = wesnoth.get_all_vars
 
 	wml.variables = setmetatable({}, {
+		__metatable = "WML variables",
 		__index = function(_, key)
 			return wesnoth.get_variable(key)
 		end,
