@@ -1017,7 +1017,7 @@ config side_engine::new_config() const
 		LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " faction=" << faction["id"] << " recruit=" << faction["recruit"] << "\n";
 		res["faction_name"] = faction["name"];
 		res["faction"] = faction["id"];
-		faction.remove_attributes("id", "name", "image", "gender", "type");
+		faction.remove_attributes("id", "name", "image", "gender", "type", "description");
 		res.append(faction);
 	}
 
