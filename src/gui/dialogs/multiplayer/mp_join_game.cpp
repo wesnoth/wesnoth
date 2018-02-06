@@ -388,10 +388,10 @@ void mp_join_game::generate_side_list(window& window)
 		std::string gender_icon = "icons/icon-random.png";
 		if(side["gender"] != "null") {
 			gender_icon = formatter() << "icons/icon-" << leader_gender << ".png";
+			item["tooltip"] = side["gender"];
 		}
 
 		item["label"] = gender_icon;
-		item["tooltip"] = side["gender"];
 		data.emplace("leader_gender", item);
 
 		item.clear();
