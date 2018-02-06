@@ -165,7 +165,7 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 		if(add_team) {
 			team_data_pod data;
 			data.team_name = params_.use_map_settings ? team_name : "Team " + side_str;
-			data.user_team_name = user_team_name;
+			data.user_team_name = user_team_name.str();
 			data.is_player_team = side["allow_player"].to_bool(true);
 
 			team_data_.push_back(data);
