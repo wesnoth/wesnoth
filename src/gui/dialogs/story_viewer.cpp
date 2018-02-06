@@ -138,29 +138,49 @@ void story_viewer::display_part(window& window)
 		has_background |= !layer.file().empty();
 
 		const bool preserve_ratio = layer.keep_aspect_ratio();
+		const bool tile_h = layer.tile_horizontally();
+		const bool tile_v = layer.tile_vertically();
 
 		// By default, no scaling will be applied.
 		std::string width_formula  = "(image_original_width)";
 		std::string height_formula = "(image_original_height)";
 
+		// Background layers are almost always centered. In case of tiling, we want the full
+		// area in the horizontal or vertical direction, so set the origin to 0 for that axis.
+		// The resize mode will center the original image in the available area first/
+		std::string x_formula;
+		std::string y_formula;
+
+		if(tile_h) {
+			x_formula = "0";
+		} else {
+			x_formula = "(max(pos, 0) where pos = (width  / 2 - image_width  / 2))";
+		}
+
+		if(tile_v) {
+			y_formula = "0";
+		} else {
+			y_formula = "(max(pos, 0) where pos = (height / 2 - image_height / 2))";
+		}
+
 		if(layer.scale_horizontally() && preserve_ratio) {
 			height_formula = "(min((image_original_height * width  / image_original_width), height))";
-		} else if(layer.scale_vertically()) {
+		} else if(layer.scale_vertically() || tile_v) {
 			height_formula = "(height)";
 		}
 
 		if(layer.scale_vertically() && preserve_ratio) {
 			width_formula  = "(min((image_original_width  * height / image_original_height), width))";
-		} else if(layer.scale_horizontally()) {
+		} else if(layer.scale_horizontally() || tile_h) {
 			width_formula  = "(width)";
 		}
 
-		// Background layers are always centered.
-		image["x"] = "(max(pos, 0) where pos = (width  / 2 - image_width  / 2))";
-		image["y"] = "(max(pos, 0) where pos = (height / 2 - image_height / 2))";
+		image["x"] = x_formula;
+		image["y"] = y_formula;
 		image["w"] = width_formula;
 		image["h"] = height_formula;
 		image["name"] = layer.file();
+		image["resize_mode"] = (tile_h || tile_v) ? "tile_center" : "scale";
 
 		config& layer_image = cfg.add_child("image", image);
 
