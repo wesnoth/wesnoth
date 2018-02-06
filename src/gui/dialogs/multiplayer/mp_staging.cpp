@@ -24,6 +24,7 @@
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/chatbox.hpp"
+#include "gui/widgets/drawing.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/image.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -423,7 +424,7 @@ void mp_staging::update_leader_display(ng::side_engine_ptr side, grid& row_grid)
 		current_leader = type.type_name();
 	}
 
-	find_widget<image>(&row_grid, "leader_image", false).set_label(new_image);
+	find_widget<drawing>(&row_grid, "leader_image", false).set_label(new_image);
 
 	// Faction and leader
 	if(!side->cfg()["name"].empty()) {
