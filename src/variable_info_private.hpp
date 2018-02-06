@@ -128,7 +128,7 @@ public:
 	get_variable_key_visitor(const std::string& key)
 		: key_(key)
 	{
-		if(!config::valid_tag(key_)) {
+		if(!config::valid_attribute(key_)) {
 			throw invalid_variablename_exception();
 		}
 	}
