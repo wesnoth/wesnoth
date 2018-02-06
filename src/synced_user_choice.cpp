@@ -153,6 +153,16 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 	const int max_side  = static_cast<int>(resources::gameboard->teams().size());
 	bool is_side_null_controlled;
 
+	/* side = 0 should default to the currently active side per definition. */
+	if(side < 1 || max_side < side) {
+		if(side != 0) {
+			ERR_REPLAY << "Invalid parameter for side in get_user_choice." << std::endl;
+		}
+
+		side = resources::controller->current_side();
+		LOG_REPLAY << " side changed to " << side << "\n";
+	}
+
 	if(!is_synced)
 	{
 		//we got called from inside lua's wesnoth.synchronize_choice or from a select event (or maybe a preload event?).
@@ -174,18 +184,6 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 	//For [message][option] and lua's sync_choice the scenario designer is responsible for that.
 	//For [get_global_variable] side is never null.
 
-	/*
-		side = 0 should default to the currently active side per definition.
-	*/
-	if ( side < 1  ||  max_side < side )
-	{
-		if(side != 0)
-		{
-			ERR_REPLAY << "Invalid parameter for side in get_user_choice." << std::endl;
-		}
-		side = resources::controller->current_side();
-		LOG_REPLAY << " side changed to " << side << "\n";
-	}
 	is_side_null_controlled = resources::gameboard->get_team(side).is_empty();
 
 	LOG_REPLAY << "get_user_choice_called with"
