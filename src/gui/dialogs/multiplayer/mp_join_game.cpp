@@ -332,7 +332,7 @@ void mp_join_game::generate_side_list(window& window)
 			std::map<std::string, string_map> data;
 			string_map item;
 
-			item["label"] = (formatter() << _("Team:") << " " << side["user_team_name"]).str();
+			item["label"] = (formatter() << _("Team:") << " " << t_string::from_serialized(side["user_team_name"])).str();
 			data.emplace("tree_view_node_label", item);
 
 			tree_view_node& team_node = tree.add_node("team_header", data);

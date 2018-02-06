@@ -143,10 +143,29 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 			user_team_name = team_prefix + side_str;
 		}
 
+		// Write the serialized translatable team name back to the config. Without this,
+		// the string can appear all messed up after leaving and rejoining a game (see
+		// issue #2040. This affected the mp_join_game dialog). I don't know why that issue
+		// didn't appear the first time you join a game, but whatever.
+		//
+		// The difference between that dialog and mp_staging is that the latter has access
+		// to connect_engine object, meaning it has access to serialized versions of the
+		// user_team_name string stored in the team_data_ vector. mp_join_game handled the
+		// raw side config instead. Again, I don't know why issues only cropped up on a
+		// subsequent join and not the first, but it doesn't really matter.
+		//
+		// This ensures both dialogs have access to the serialized form of the utn string.
+		// As for why this needs to be done in the first place, apparently the simple_wml
+		// format the server (wesnothd) uses doesn't preserve translatable strings (see
+		// issue #342).
+		//
+		// --vultraz, 2018-02-06
+		user_team_name = user_team_name.t_str().to_serialized();
+
 		if(add_team) {
 			team_data_pod data;
 			data.team_name = params_.use_map_settings ? team_name : "Team " + side_str;
-			data.user_team_name = user_team_name.t_str().to_serialized();
+			data.user_team_name = user_team_name;
 			data.is_player_team = side["allow_player"].to_bool(true);
 
 			team_data_.push_back(data);
