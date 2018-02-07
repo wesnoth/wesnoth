@@ -324,8 +324,8 @@ void loadgame::copy_era(config &cfg)
 }
 
 savegame::savegame(saved_game& gamestate, const compression::format compress_saves, const std::string& title)
-	: gamestate_(gamestate)
-	, filename_()
+	: filename_()
+	, gamestate_(gamestate)
 	, title_(title)
 	, error_message_(_("The game could not be saved: "))
 	, show_confirmation_(false)
