@@ -30,7 +30,7 @@ namespace savegame {
 /** converts saves from older versions of wesnoth*/
 void convert_old_saves(config& cfg);
 /** Returns true if there is already a savegame with that name. */
-bool save_game_exists(const std::string& name, compression::format compressed);
+bool save_game_exists(std::string name, compression::format compressed);
 
 /** Delete all autosaves of a certain scenario. */
 void clean_saves(const std::string& label);

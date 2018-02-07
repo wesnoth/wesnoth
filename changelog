@@ -83,6 +83,7 @@ Version 1.13.11:
    * A missing [event] name= key will now raise a WML error instead of being
      silently ignored.
  * Miscellaneous and bug fixes:
+   * Suggested save file names now use spaces instead of underscores.
    * Fixed crash after canceling add-on download (bug #2203)
    * Fixed ingame help showing units you haven't encountered (bug #2135)
    * Fixed the opacity IPF resetting to 0 if the value given was 100% or

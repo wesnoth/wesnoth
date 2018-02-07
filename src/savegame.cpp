@@ -44,6 +44,8 @@
 #include "version.hpp"
 #include "video.hpp"
 
+#include <algorithm>
+
 static lg::log_domain log_engine("engine");
 #define LOG_SAVE LOG_STREAM(info, log_engine)
 #define ERR_SAVE LOG_STREAM(err, log_engine)
@@ -54,14 +56,10 @@ static lg::log_domain log_enginerefac("enginerefac");
 
 namespace savegame {
 
-bool save_game_exists(const std::string& name, compression::format compressed)
+bool save_game_exists(std::string name, compression::format compressed)
 {
-	std::string fname = name;
-	replace_space2underbar(fname);
-
-	fname += compression::format_extension(compressed);
-
-	return filesystem::file_exists(filesystem::get_saves_dir() + "/" + fname);
+	name += compression::format_extension(compressed);
+	return filesystem::file_exists(filesystem::get_saves_dir() + "/" + name);
 }
 
 void clean_saves(const std::string& label)
@@ -428,6 +426,7 @@ std::string savegame::create_filename(unsigned int turn_number) const
 	std::string filename = create_initial_filename(turn_number);
 	filename.erase(std::remove_if(filename.begin(), filename.end(),
 	            is_illegal_file_char), filename.end());
+	std::replace(filename.begin(), filename.end(), '_', ' ');
 	return filename;
 }
 
@@ -527,11 +526,8 @@ void savegame::finish_save_game(const config_writer &out)
 // Throws game::save_game_failed
 filesystem::scoped_ostream savegame::open_save_game(const std::string &label)
 {
-	std::string name = label;
-	replace_space2underbar(name);
-
 	try {
-		return filesystem::ostream_file(filesystem::get_saves_dir() + "/" + name);
+		return filesystem::ostream_file(filesystem::get_saves_dir() + "/" + label);
 	} catch(filesystem::io_exception& e) {
 		throw game::save_game_failed(e.what());
 	}

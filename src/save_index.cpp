@@ -38,26 +38,13 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
-void replace_underbar2space(std::string& name)
-{
-	std::replace(name.begin(), name.end(), '_', ' ');
-}
-
-void replace_space2underbar(std::string& name)
-{
-	std::replace(name.begin(), name.end(), ' ', '_');
-}
-
 namespace savegame
 {
 void extract_summary_from_config(config&, config&);
 
 void save_index_class::rebuild(const std::string& name)
 {
-	std::string filename = name;
-	replace_space2underbar(filename);
-
-	time_t modified = filesystem::file_modified_time(filesystem::get_saves_dir() + "/" + filename);
+	time_t modified = filesystem::file_modified_time(filesystem::get_saves_dir() + "/" + name);
 	rebuild(name, modified);
 }
 
@@ -206,12 +193,8 @@ std::vector<save_info> get_saves_list(const std::string* dir, const std::string*
 	filesystem::get_files_in_dir(creator.dir, &filenames);
 
 	if(filter) {
-		// Replace the spaces in the filter
-		std::string filter_replaced(filter->begin(), filter->end());
-		replace_space2underbar(filter_replaced);
-
 		filenames.erase(
-			std::remove_if(filenames.begin(), filenames.end(), filename_filter(filter_replaced)), filenames.end());
+			std::remove_if(filenames.begin(), filenames.end(), filename_filter(*filter)), filenames.end());
 	}
 
 	std::vector<save_info> result;
@@ -267,15 +250,11 @@ bool save_info_less_time::operator()(const save_info& a, const save_info& b) con
 }
 
 static filesystem::scoped_istream find_save_file(
-		const std::string& name, const std::string& alt_name, const std::vector<std::string>& suffixes)
+		const std::string& name, const std::vector<std::string>& suffixes)
 {
 	for(const std::string& suf : suffixes) {
 		filesystem::scoped_istream file_stream =
 			filesystem::istream_file(filesystem::get_saves_dir() + "/" + name + suf);
-
-		if(file_stream->fail()) {
-			file_stream = filesystem::istream_file(filesystem::get_saves_dir() + "/" + alt_name + suf);
-		}
 
 		if(!file_stream->fail()) {
 			return file_stream;
@@ -288,11 +267,8 @@ static filesystem::scoped_istream find_save_file(
 
 void read_save_file(const std::string& name, config& cfg, std::string* error_log)
 {
-	std::string modified_name = name;
-	replace_space2underbar(modified_name);
-
 	static const std::vector<std::string> suffixes{"", ".gz", ".bz2"};
-	filesystem::scoped_istream file_stream = find_save_file(modified_name, name, suffixes);
+	filesystem::scoped_istream file_stream = find_save_file(name, suffixes);
 
 	cfg.clear();
 	try {
@@ -300,9 +276,9 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 		 * Test the modified name, since it might use a .gz
 		 * file even when not requested.
 		 */
-		if(filesystem::is_gzip_file(modified_name)) {
+		if(filesystem::is_gzip_file(name)) {
 			read_gz(cfg, *file_stream);
-		} else if(filesystem::is_bzip2_file(modified_name)) {
+		} else if(filesystem::is_bzip2_file(name)) {
 			read_bz2(cfg, *file_stream);
 		} else {
 			read(cfg, *file_stream);
@@ -350,11 +326,7 @@ void remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves)
 
 void delete_game(const std::string& name)
 {
-	std::string modified_name = name;
-	replace_space2underbar(modified_name);
-
 	filesystem::delete_file(filesystem::get_saves_dir() + "/" + name);
-	filesystem::delete_file(filesystem::get_saves_dir() + "/" + modified_name);
 
 	save_index_manager.remove(name);
 }
@@ -366,12 +338,9 @@ create_save_info::create_save_info(const std::string* d)
 
 save_info create_save_info::operator()(const std::string& filename) const
 {
-	std::string name = filename;
-	replace_underbar2space(name);
-
 	time_t modified = filesystem::file_modified_time(dir + "/" + filename);
-	save_index_manager.set_modified(name, modified);
-	return save_info(name, modified);
+	save_index_manager.set_modified(filename, modified);
+	return save_info(filename, modified);
 }
 
 void extract_summary_from_config(config& cfg_save, config& cfg_summary)
