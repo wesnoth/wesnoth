@@ -394,10 +394,14 @@ void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& item
 	std::vector<config> newitems;
 	std::vector<std::string> newsaves;
 
-	const std::string& start_name = saved_game_.classification().label;
+	compression::format compression_format = preferences::save_compression_format();
+	savegame::autosave_savegame autosave(saved_game_, compression_format);
+	savegame::scenariostart_savegame scenariostart_save(saved_game_, compression_format);
+
+	const std::string start_name = scenariostart_save.create_filename();
 
 	for(unsigned int turn = play_controller_.turn(); turn != 0; turn--) {
-		const std::string name = formatter() << start_name << "-" << _("Auto-Save") << turn;
+		const std::string name = autosave.create_filename(turn);
 
 		if(savegame::save_game_exists(name, comp_format)) {
 			newsaves.emplace_back(name + compression::format_extension(comp_format));

@@ -337,7 +337,7 @@ savegame::savegame(saved_game& gamestate, const compression::format compress_sav
 bool savegame::save_game_automatic(bool ask_for_overwrite, const std::string& filename)
 {
 	if (filename.empty())
-		create_filename();
+		filename_ = create_filename();
 	else
 		filename_ = filename;
 
@@ -353,7 +353,7 @@ bool savegame::save_game_automatic(bool ask_for_overwrite, const std::string& fi
 bool savegame::save_game_interactive(const std::string& message, DIALOG_TYPE dialog_type)
 {
 	show_confirmation_ = true;
-	create_filename();
+	filename_ = create_filename();
 
 	const int res = show_save_dialog(message, dialog_type);
 
@@ -382,8 +382,6 @@ int savegame::show_save_dialog(const std::string& message, DIALOG_TYPE dialog_ty
 		dlg.show();
 		res = dlg.get_retval();
 	}
-
-	set_filename(filename_);
 
 	if (!check_filename(filename_)) {
 		res = gui2::window::CANCEL;
@@ -425,11 +423,12 @@ bool savegame::is_illegal_file_char(char c)
 	;
 }
 
-void savegame::set_filename(std::string filename)
+std::string savegame::create_filename(unsigned int turn_number) const
 {
+	std::string filename = create_initial_filename(turn_number);
 	filename.erase(std::remove_if(filename.begin(), filename.end(),
 	            is_illegal_file_char), filename.end());
-	filename_ = filename;
+	return filename;
 }
 
 void savegame::before_save()
@@ -541,7 +540,12 @@ filesystem::scoped_ostream savegame::open_save_game(const std::string &label)
 scenariostart_savegame::scenariostart_savegame(saved_game &gamestate, const compression::format compress_saves)
 	: savegame(gamestate, compress_saves)
 {
-	set_filename(gamestate.classification().label);
+	filename_ = create_filename();
+}
+
+std::string scenariostart_savegame::create_initial_filename(unsigned int) const
+{
+	return gamestate().classification().label;
 }
 
 void scenariostart_savegame::write_game(config_writer &out){
@@ -553,9 +557,9 @@ replay_savegame::replay_savegame(saved_game &gamestate, const compression::forma
 	: savegame(gamestate, compress_saves, _("Save Replay"))
 {}
 
-void replay_savegame::create_filename()
+std::string replay_savegame::create_initial_filename(unsigned int) const
 {
-	set_filename(formatter() << gamestate().classification().label << " " << _("replay"));
+	return formatter() << gamestate().classification().label << " " << _("replay");
 }
 
 void replay_savegame::write_game(config_writer &out) {
@@ -586,15 +590,15 @@ void autosave_savegame::autosave(const bool disable_autosave, const int autosave
 	remove_old_auto_saves(autosave_max, infinite_autosaves);
 }
 
-void autosave_savegame::create_filename()
+std::string autosave_savegame::create_initial_filename(unsigned int turn_number) const
 {
 	std::string filename;
-	if (gamestate().classification().label.empty())
+	if(gamestate().classification().label.empty())
 		filename = _("Auto-Save");
 	else
-		filename = gamestate().classification().label + "-" + _("Auto-Save") + gamestate().get_starting_pos()["turn_at"];
+		filename = gamestate().classification().label + "-" + _("Auto-Save") + std::to_string(turn_number);
 
-	set_filename(filename);
+	return filename;
 }
 
 oos_savegame::oos_savegame(saved_game& gamestate, bool& ignore)
@@ -606,17 +610,13 @@ int oos_savegame::show_save_dialog(const std::string& message, DIALOG_TYPE /*dia
 {
 	int res = 0;
 
-	std::string filename = this->filename();
-
 	if (!ignore_){
-		gui2::dialogs::game_save_oos dlg(ignore_, filename, title(), message);
+		gui2::dialogs::game_save_oos dlg(ignore_, filename_, title(), message);
 		dlg.show();
 		res = dlg.get_retval();
 	}
 
-	set_filename(filename);
-
-	if (!check_filename(filename)) {
+	if (!check_filename(filename_)) {
 		res = gui2::window::CANCEL;
 	}
 
@@ -628,10 +628,10 @@ ingame_savegame::ingame_savegame(saved_game &gamestate, const compression::forma
 {
 }
 
-void ingame_savegame::create_filename()
+std::string ingame_savegame::create_initial_filename(unsigned int turn_number) const
 {
-	set_filename(formatter() << gamestate().classification().label
-		<< " " << _("Turn") << " " << gamestate().get_starting_pos()["turn_at"]);
+	return formatter() << gamestate().classification().label
+		<< " " << _("Turn") << " " << turn_number;
 }
 
 void ingame_savegame::write_game(config_writer &out) {

@@ -18,12 +18,12 @@
 #include "config.hpp"
 #include "filesystem.hpp"
 #include "lua_jailbreak_exception.hpp"
+#include "saved_game.hpp"
 #include "serialization/compression.hpp"
 
 #include <exception>
 
 class config_writer;
-class saved_game;
 class version_info;
 
 namespace savegame {
@@ -170,6 +170,15 @@ public:
 
 	const std::string& filename() const { return filename_; }
 
+	/** Build the filename according to the specific savegame's needs. */
+	std::string create_filename() const
+	{
+		return create_filename(gamestate().get_starting_pos()["turn_at"]);
+	}
+
+	/** Build the filename for the specified turn. */
+	std::string create_filename(unsigned int turn_number) const;
+
 protected:
 	/**
 		Save a game without any further user interaction.
@@ -177,9 +186,6 @@ protected:
 	*/
 	bool save_game(const std::string& filename = "");
 
-	/** Sets the filename and removes invalid characters. Don't set the filename directly but
-		use this method instead. */
-	void set_filename(std::string filename);
 	/** Check, if the filename contains illegal constructs like ".gz". */
 	bool check_filename(const std::string& filename);
 
@@ -195,13 +201,15 @@ protected:
 	/** Writing the savegame config to a file. */
 	virtual void write_game(config_writer &out);
 
+	/** Filename of the savegame file on disk */
+	std::string filename_;
+
 private:
 	/** Checks if a certain character is allowed in a savefile name. */
 	static bool is_illegal_file_char(char c);
 
-	/** Build the filename according to the specific savegame's needs. Subclasses will have to
-		override this to take effect. */
-	virtual void create_filename() {}
+	/** Subclass-specific part of filename building. */
+	virtual std::string create_initial_filename(unsigned int turn_number) const = 0;
 	/** Display the save game dialog. */
 	virtual int show_save_dialog(const std::string& message, DIALOG_TYPE dialog_type);
 	/** Ask the user if an existing file should be overwritten. */
@@ -218,8 +226,6 @@ private:
 	friend class save_info;
 	//before_save (write replay data) changes this so it cannot be const
 	saved_game& gamestate_;
-	/** Filename of the savegame file on disk */
-	std::string filename_;
 
 	const std::string title_; /** Title of the savegame dialog */
 
@@ -239,7 +245,7 @@ public:
 
 private:
 	/** Create a filename for automatic saves */
-	virtual void create_filename() override;
+	virtual std::string create_initial_filename(unsigned int turn_number) const override;
 
 
 	void write_game(config_writer &out) override;
@@ -253,7 +259,7 @@ public:
 
 private:
 	/** Create a filename for automatic saves */
-	virtual void create_filename() override;
+	virtual std::string create_initial_filename(unsigned int turn_number) const override;
 
 	void write_game(config_writer &out) override;
 };
@@ -267,7 +273,7 @@ public:
 	void autosave(const bool disable_autosave, const int autosave_max, const int infinite_autosaves);
 private:
 	/** Create a filename for automatic saves */
-	virtual void create_filename() override;
+	virtual std::string create_initial_filename(unsigned int turn_number) const override;
 };
 
 class oos_savegame : public ingame_savegame
@@ -288,6 +294,9 @@ public:
 	scenariostart_savegame(saved_game& gamestate, const compression::format compress_saves);
 
 private:
+	/** Create a filename for automatic saves */
+	virtual std::string create_initial_filename(unsigned int turn_number) const override;
+
 	void write_game(config_writer &out) override;
 };
 
