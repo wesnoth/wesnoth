@@ -155,7 +155,7 @@ public:
 	 */
 	struct rule_image_variant
 	{
-		/** Constructor for the normal defaut case */
+		/** Constructor for the normal default case */
 		rule_image_variant(const std::string& image_string, const std::string& variations, int random_start = -1)
 			: image_string(image_string)
 			, variations(variations)
@@ -533,7 +533,7 @@ private:
 	/**
 	 * Starts the animation on a rule.
 	 *
-	 * @param rule  The rule on which ot start animations
+	 * @param rule  The rule on which to start animations
 	 *
 	 * @return		true
 	 */
@@ -767,7 +767,7 @@ private:
 	 * Checks whether a terrain code matches a given list of terrain codes.
 	 *
 	 * @param tcode 	The terrain to check
-	 * @param terrains	The terrain list agains which to check the terrain.
+	 * @param terrains	The terrain list against which to check the terrain.
 	 *	May contain the metacharacters
 	 *	- '*' STAR, meaning "all terrains"
 	 *	- '!' NOT,  meaning "all terrains except those present in the list."

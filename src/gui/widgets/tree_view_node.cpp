@@ -108,7 +108,7 @@ tree_view_node::tree_view_node(
 		return;
 	}
 
-	// Only reached if no matching node definiton was found in the above loop
+	// Only reached if no matching node definition was found in the above loop
 	FAIL_WITH_DEV_MESSAGE(_("Unknown builder id for tree view node."), id);
 }
 

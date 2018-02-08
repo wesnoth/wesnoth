@@ -89,7 +89,7 @@ public:
 	 * For the most part, this seems to return the same result as @ref get_output_size. However,
 	 * SDL indicates for high DPI displays these two functions could differ. I could not observe
 	 * any change in behavior with DPI virtualization on or off, but to be safe, I'm keeping the
-	 * two functions seperate and using this for matters of window resolution.
+	 * two functions separate and using this for matters of window resolution.
 	 *
 	 * - vultraz, 6/27/2017
 	 */
@@ -159,7 +159,7 @@ public:
 	uint32_t get_flags();
 
 	/**
-	 * Set mimimum size of the window.
+	 * Set minimum size of the window.
 	 *
 	 * This is a wrapper for @ref SDL_SetWindowMinimumWindowSize.
 	 */

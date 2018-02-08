@@ -188,7 +188,7 @@ private:
 
 	uint32_t payload_size_;
 
-	// TODO: do i need to guard the follwing 4 values with a mutex?
+	// TODO: do i need to guard the following 4 values with a mutex?
 	std::size_t bytes_to_write_;
 	std::size_t bytes_written_;
 	std::size_t bytes_to_read_;

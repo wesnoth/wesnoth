@@ -111,7 +111,7 @@ void highlighter::set_mouseover_hex(const map_location& hex)
 	}
 	for(action_ptr act : boost::adaptors::reverse(*side_actions_)) {
 		/**@todo "is_numbering_hex" is not the "correct" criterion by which to
-		 * select the hightlighted/selected action. It's just convenient for me
+		 * select the highlighted/selected action. It's just convenient for me
 		 * to use at the moment since it happens to coincide with the "correct"
 		 * criterion, which is to use find_main_highlight.*/
 		if(act->is_numbering_hex(hex)) {

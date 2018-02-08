@@ -80,7 +80,7 @@ private:
   };
 
 public:
-  // nonempty return is an error mesage
+  // nonempty return is an error message
   std::string parse_header(const std::string & header) {
     const char * const default_charset = SPIRIT_PO_DEFAULT_CHARSET;
 #undef SPIRIT_PO_DEFAULT_CHARSET

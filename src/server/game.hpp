@@ -481,7 +481,7 @@ private:
 		(like controller == null) that are definitely needed by the server and
 		in this case we should try to modify the client to inform the server if
 		a change of those properties occur. Ofc we shouldn't update level_
-		then, but rather store that information in a seperate object
+		then, but rather store that information in a separate object
 		(like in side_controllers_).
 	*/
 	simple_wml::document level_;

@@ -117,7 +117,7 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 	if (i1 == val.end()) return res;
 
 	if (!separator) {
-		ERR_GENERAL << "Separator must be specified for square bracket split funtion." << std::endl;
+		ERR_GENERAL << "Separator must be specified for square bracket split function." << std::endl;
 		return res;
 	}
 

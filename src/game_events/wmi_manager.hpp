@@ -64,7 +64,7 @@ public:
 	 * Gets the menu item with the specified ID.
 	 *
 	 * @param id            Item id.
-	 * @returns             Pointer to the relavent item, or nullptr if not found.
+	 * @returns             Pointer to the relevant item, or nullptr if not found.
 	 */
 	item_ptr get_item(const std::string& id) const;
 

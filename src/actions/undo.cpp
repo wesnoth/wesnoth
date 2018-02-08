@@ -413,7 +413,7 @@ void undo_list::redo()
 	resources::recorder->redo(const_cast<const config&>(*action));
 
 
-	// synced_context::run readds the undo command with the normal undo_lis::add function whihc clears the
+	// synced_context::run readds the undo command with the normal undo_lis::add function which clears the
 	// redo stack which makes redoign of more than one move impossible. to work around that we save redo stack here and set it later.
 	redos_list temp;
 	temp.swap(redos_);
@@ -473,7 +473,7 @@ bool undo_list::apply_shroud_changes() const
 	// If we clear fog or shroud outside a synced context we get OOS
 	// Note that it can happen that we call this function from ouside a synced context
 	// when we reload  a game and want to prevent undoing. But in this case this is
-	// preceeded by a manual update_shroud call so that cleared_shroud is false.
+	// preceded by a manual update_shroud call so that cleared_shroud is false.
 	assert(synced_context::is_synced());
 
 	// The entire stack needs to be cleared in order to preserve replays.

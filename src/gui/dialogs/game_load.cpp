@@ -287,7 +287,7 @@ void game_load::filter_text_changed(text_box_base* textbox, const std::string& t
 	// Disable Load button if no games are available
 	find_widget<button>(&window, "ok", false).set_active(any_shown);
 
-	// Diable 'Enter' loading if no games are available
+	// Disable 'Enter' loading if no games are available
 	window.set_enter_disabled(!any_shown);
 }
 

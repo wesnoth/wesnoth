@@ -291,7 +291,7 @@ private:
 	/**
 	 * Updates the slider.
 	 *
-	 * Needs to be called when someting changes eg number of items or available size.
+	 * Needs to be called when something changes eg number of items or available size.
 	 * It can only be called once we have a size otherwise we can't calculate a thing.
 	 */
 	void recalculate();

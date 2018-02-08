@@ -385,7 +385,7 @@ private:
 	 * If needed frees the other surface and then creates a new buffer and
 	 * initializes the entire buffer with values 0.
 	 *
-	 * NOTE eventhough we're clearly modifying function we don't change the
+	 * NOTE even though we're clearly modifying function we don't change the
 	 * state of the object. The const is needed so other functions can also be
 	 * marked const (those also don't change the state of the object.
 	 *

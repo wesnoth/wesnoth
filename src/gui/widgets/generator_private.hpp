@@ -133,7 +133,7 @@ struct one_item : public virtual generator_base
 	 * function should always call do_select_item() so the new item does get
 	 * selected.
 	 *
-	 * Since this funcion controls the maximum selection count it should only
+	 * Since this function controls the maximum selection count it should only
 	 * be used to select items, not to deselect them.
 	 *
 	 * @pre                       @p select == @c true

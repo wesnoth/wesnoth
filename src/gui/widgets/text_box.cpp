@@ -231,7 +231,7 @@ void text_box::delete_selection()
 	}
 
 	// If we have a negative range change it to a positive range.
-	// This makes the rest of the algoritms easier.
+	// This makes the rest of the algorithms easier.
 	int len = get_selection_length();
 	unsigned start = get_selection_start();
 	if(len < 0) {

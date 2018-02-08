@@ -178,7 +178,7 @@ GetSources("lua" lua_STAT_SRC)
 set_source_files_properties(${lua_STAT_SRC} PROPERTIES LANGUAGE CXX)
 
 # Inject a header into the Lua sources for Wesnoth-specific changes
-# makedepend won't see it so we have to specifically add it as a dependancy.
+# makedepend won't see it so we have to specifically add it as a dependency.
 file(GLOB wesnoth_lua_config wesnoth_lua_config.h)
 set_source_files_properties(${lua_STAT_SRC} PROPERTIES COMPILE_FLAGS "-include ${wesnoth_lua_config}")
 set_source_files_properties(${lua_STAT_SRC} PROPERTIES OBJECT_DEPENDS ${wesnoth_lua_config})

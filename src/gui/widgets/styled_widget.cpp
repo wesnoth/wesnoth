@@ -446,7 +446,7 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 	/*
 	 * NOTE: text rendering does *not* happen here. That happens in the text_shape
 	 * canvas class. Instead, this just leverages the pango text rendering engine to
-	 * calculate the area this widget will need to sucessfully render its text later.
+	 * calculate the area this widget will need to successfully render its text later.
 	 */
 	renderer_
 		.set_link_aware(get_link_aware())

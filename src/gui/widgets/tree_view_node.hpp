@@ -198,7 +198,7 @@ public:
 	tree_view_node& get_child_at(int index);
 
 	/**
-	 * Calculates the node indicies needed to get from the root node to this node.
+	 * Calculates the node indices needed to get from the root node to this node.
 	 */
 	std::vector<int> describe_path();
 

@@ -327,9 +327,9 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 			continue;
 		}
 		// TODO: afaik run_in_synced_context_if_not_already thows exceptions when the executed action end the scenario or the turn.
-		//       This could cause problems, specially when its unclear whether that excetion is caught by lua or not...
+		//       This could cause problems, specially when its unclear whether that exception is caught by lua or not...
 
-		//Note that this fires related events and everthing else that also happen normally.
+		//Note that this fires related events and everything else that also happens normally.
 		//have to watch out with the undo stack, therefore forbid [auto_shroud] and [update_shroud] here...
 		synced_context::run_in_synced_context_if_not_already(
 			/*commandname*/ i.get_key(),
@@ -546,7 +546,7 @@ namespace {
 		std::string filename_;
 		virtual config query_user(int /*side*/) const
 		{
-			//Do a regex check for the file format to prevent sending aribitary files to other clients.
+			//Do a regex check for the file format to prevent sending arbitrary files to other clients.
 			//Note: this allows only the new format.
 			static const std::string s_simple_terrain = R"""([A-Za-z\\|/]{1,4})""";
 			static const std::string s_terrain = s_simple_terrain + R"""((\^)""" + s_simple_terrain + ")?";
@@ -971,4 +971,3 @@ WML_HANDLER_FUNCTION(on_undo, event_info, cfg)
 }
 
 } // end namespace game_events
-

@@ -121,7 +121,7 @@ public:
 	virtual void set_button_state() {}
 	virtual void recalculate_minimap() {}
 
-	// execute_command's parameter is changed to "hotkey_command& command" and this not maybe that is too inconsitent.
+	// execute_command's parameter is changed to "hotkey_command& command" and this not maybe that is too inconsistent.
 	// Gets the action's image (if any). Displayed left of the action text in menus.
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND /*command*/, int /*index*/) const { return ""; }
 	// Does the action control a toggle switch? If so, return the state of the action (on or off).

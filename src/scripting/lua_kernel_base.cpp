@@ -826,7 +826,7 @@ int lua_kernel_base::impl_game_config_set(lua_State* L)
  * Loads the "package" package into the Lua environment.
  * This action is inherently unsafe, as Lua scripts will now be able to
  * load C libraries on their own, hence granting them the same privileges
- * as the Wesnoth binary itsef.
+ * as the Wesnoth binary itself.
  */
 void lua_kernel_base::load_package()
 {

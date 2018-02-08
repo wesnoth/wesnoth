@@ -97,7 +97,7 @@ public:
 	}
 
 	/**
-	 * Used to indicate that a hotkey is overriden and should be treated as
+	 * Used to indicate that a hotkey is overridden and should be treated as
 	 * a user-set hotkey.
 	 */
 	void unset_default()

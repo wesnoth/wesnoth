@@ -95,7 +95,7 @@ private:
 /**
  * Makes it so the village at the given location is owned by the given side.
  * Returns true if getting the village triggered a mutating event.
- * side can be 0 to make teh village uncaptured.
+ * side can be 0 to make the village uncaptured.
  */
 game_events::pump_result_t get_village(const map_location& loc, int side, bool *time_bonus = nullptr, bool fire_event = true);
 

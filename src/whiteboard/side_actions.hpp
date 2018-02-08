@@ -257,7 +257,7 @@ public:
 
 private:
 	/**
-	 * Binary search to find the occuring turn of the action pointed by an iterator.
+	 * Binary search to find the occurring turn of the action pointed by an iterator.
 	 */
 	size_t get_turn_impl(size_t begin, size_t end, const_iterator it) const;
 

@@ -17,7 +17,7 @@
 #include <boost/system/error_code.hpp>
 #include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
-///An error occured during when trying to coommunicate with the wesnothd server.
+///An error occurred during when trying to coommunicate with the wesnothd server.
 struct wesnothd_error : public game::error
 {
 	wesnothd_error(const std::string& error) : game::error(error) {}
@@ -42,7 +42,7 @@ struct ingame_wesnothd_error : public wesnothd_error ,public lua_jailbreak_excep
 };
 
 
-///an error occured inside the underlying network comminication code (boost asio)
+///an error occurred inside the underlying network communication code (boost asio)
 ///TODO: find a short name
 struct wesnothd_connection_error : public wesnothd_error ,public lua_jailbreak_exception
 {

@@ -77,7 +77,7 @@ typename ucs4_convert_impl::enableif<TD, typename TS::value_type>::type unicode_
 	}
 	catch(utf8::invalid_utf8_exception&)
 	{
-		// TODO: use a ERR_.. stream but i dont know whether i can so to in header easily.
+		// TODO: use a ERR_.. stream but I don't know whether I can do so in header easily.
 		std::cerr << "Failed to convert a string from " << impl_reader::get_name() << " to " << impl_writer::get_name() << "\n";
 		return res;
 	}
@@ -106,7 +106,7 @@ TD unicode_cast(ucs4::char_t onechar)
 	}
 	catch(utf8::invalid_utf8_exception&)
 	{
-		// TODO: use a ERR_.. stream but i dont know whether i can so to in header easily.
+		// TODO: use a ERR_.. stream but I don't know whether I can do so in header easily.
 		std::cerr << "Failed to convert a string from " << impl_reader::get_name() << " to " << impl_writer::get_name() << "\n";
 		return res;
 	}

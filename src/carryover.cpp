@@ -130,7 +130,7 @@ carryover_info::carryover_info(const config& cfg, bool from_snpashot)
 	{
 		if(side["lost"].to_bool(false) || !side["persistent"].to_bool(true))
 		{
-			//this shouldnt happen outside a snpshot.
+			//this shouldn't happen outside a snpshot.
 			assert(from_snpashot);
 			continue;
 		}

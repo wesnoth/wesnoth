@@ -216,7 +216,7 @@ BOOST_AUTO_TEST_CASE ( test_variable_info )
 		BOOST_CHECK_EQUAL (variable_access_const("a.b.length", c2).as_scalar(), 1);
 		BOOST_CHECK_EQUAL (variable_access_const("a.b.c.length", c2).as_scalar(), 2);
 		BOOST_CHECK_EQUAL (variable_access_const("a.b.c[1].d.e.f.length", c2).as_scalar(), 3);
-		// we setted g as a scalar
+		// we set g as a scalar
 		BOOST_CHECK_EQUAL (variable_access_const("a.b.c[1].d.e.f[2].g.length", c2).as_scalar(), 0);
 		BOOST_CHECK_EQUAL (variable_access_const("a.b.c[1].d.e.f[2].g", c2).as_scalar(), 84);
 	}

@@ -283,7 +283,7 @@ private:
 	///select an item on the dialog
 	bool num_selects_;
 	// These two variables are used to get the correct double click
-	// behavior so that a click that causes one double click wont be
+	// behavior so that a click that causes one double click won't be
 	// counted as a first click in the "next" double click.
 	bool ignore_next_doubleclick_;
 	bool last_was_doubleclick_;

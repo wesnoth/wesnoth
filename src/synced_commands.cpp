@@ -75,7 +75,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
 	if ( !from.valid() ) {
 		// This will be the case for AI recruits in replays saved
 		// before 1.11.2, so it is not more severe than a warning.
-		// EDIT: we broke compability with 1.11.2 anyway so we should give an error.
+		// EDIT: we broke compatibility with 1.11.2 anyway so we should give an error.
 		error_handler("Missing leader location for recruitment.\n", false);
 	}
 	else if ( resources::gameboard->units().find(from) == resources::gameboard->units().end() ) {
@@ -140,7 +140,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, use_undo, show, error_handler)
 
 	if ( !actions::recall_unit(unit_id, current_team, loc, from, map_location::NDIRECTIONS, show, use_undo) ) {
 		error_handler("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n", true);
-		//when recall_unit returned false nothing happend so we can safety return false;
+		//when recall_unit returned false nothing happened so we can safety return false;
 		return false;
 	}
 	return true;
@@ -333,7 +333,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  use_undo, /*show*/, /*error_
 		undoable = undoable & !std::get<0>(resources::game_events->pump().fire(event_name));
 	}
 
-	// Not clearing the undo stack here casues OOS because we added an entry to the replay but no entry to the undo stack.
+	// Not clearing the undo stack here causes OOS because we added an entry to the replay but no entry to the undo stack.
 	if(use_undo) {
 		if(!undoable) {
 			resources::undo_stack->clear();

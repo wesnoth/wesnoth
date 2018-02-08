@@ -156,7 +156,7 @@ private:
 
 		int carryover_percentage;
 		bool carryover_add;
-		// TODO: maybe make this integer percentage? I like the float version more but this might casue OOS error because of floating point rounding differences on different hardware.
+		// TODO: maybe make this integer percentage? I like the float version more but this might cause OOS error because of floating point rounding differences on different hardware.
 		double carryover_bonus;
 		int carryover_gold;
 		config variables;

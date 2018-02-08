@@ -238,7 +238,7 @@ namespace lua_check_impl
 		else
 		{
 			luaL_argerror(L, n, "Table expected");
-			throw "luaL_argerror returned"; //shouldnt happen, luaL_argerror always throws.
+			throw "luaL_argerror returned"; //shouldn't happen, luaL_argerror always throws.
 		}
 	}
 

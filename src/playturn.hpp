@@ -42,7 +42,7 @@ public:
 		PROCESS_END_LINGER,
 		/** When we couldn't process the network data because we found a dependent command, this should only happen if we were called playmp_controller::from handle_generic_event -> sync_network*/
 		PROCESS_FOUND_DEPENDENT,
-		/** We foudn a player action in the replay that caused the game to end*/
+		/** We found a player action in the replay that caused the game to end*/
 		PROCESS_END_LEVEL
 	};
 

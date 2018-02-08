@@ -32,7 +32,7 @@ struct builder_styled_widget;
 /**
  * Base class for creating containers with one or two scrollbar(s).
  *
- * For now users can't instanciate this class directly and needs to use small
+ * For now users can't instantiate this class directly and needs to use small
  * wrapper classes. Maybe in the future users can use the class directly.
  *
  * @todo events are not yet send to the content grid.

@@ -31,7 +31,7 @@ public:
 	 * Constructor.
 	 *
 	 * @param name 		the type of which we want to select a new item
-	 * @param options 	the names of the components which can be choosed
+	 * @param options 	the names of the components which can be chosen
 	 */
 	depcheck_select_new(ng::depcheck::component_type name,
 							const std::vector<std::string>& options);

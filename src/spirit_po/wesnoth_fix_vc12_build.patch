@@ -14,7 +14,7 @@ index a9b154d..271d080 100644
 +++ b/src/spirit_po/catalog.hpp
 @@ -49,7 +49,7 @@ class catalog {
    hashmap_type hashmap_;
- 
+
  public:
 -  static constexpr char EOT = static_cast<char>(4);
 +  static const char EOT = '\x4';
@@ -27,13 +27,12 @@ index 1ff2439..d2f02c0 100644
 +++ b/src/spirit_po/catalog_metadata.hpp
 @@ -82,7 +82,7 @@ private:
  public:
-   // nonempty return is an error mesage
+   // nonempty return is an error message
    std::string parse_header(const std::string & header) {
 -    constexpr const char * default_charset = DEFAULT_CHARSET;
 +    const char * default_charset = DEFAULT_CHARSET;
  #undef DEFAULT_CHARSET
- 
-     project_id = find_header_line(header, "Project-Id-Version:");
--- 
-2.10.1.windows.1
 
+     project_id = find_header_line(header, "Project-Id-Version:");
+--
+2.10.1.windows.1

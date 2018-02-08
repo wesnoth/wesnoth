@@ -320,7 +320,7 @@ public:
 	}
 
 	/**
-	 * Attemps to this unit's translatable display name, taking the 'unrenamable' flag into account.
+	 * Attempts to rename this unit's translatable display name, taking the 'unrenamable' flag into account.
 	 *
 	 * If a direct rename is desired, use @ref set_name.
 	 * @todo should this also take a t_string?
@@ -516,7 +516,7 @@ public:
 		recall_cost_ = recall_cost;
 	}
 
-	/** Gets the filter contraints upon which units this unit may recall, if able. */
+	/** Gets the filter constraints upon which units this unit may recall, if able. */
 	const config& recall_filter() const
 	{
 		return filter_recall_;
@@ -1688,7 +1688,7 @@ private:
 	std::string profile_;
 	std::string small_profile_;
 
-	//Used to check whether the moving units during a move needs ot be updated
+	//Used to check whether the moving units during a move needs to be updated
 	mutable bool appearance_changed_ = true;
 
 	void parse_upkeep(const config::attribute_value& upkeep);

@@ -61,7 +61,7 @@ static std::string get_calling_file(lua_State* L)
 	return currentdir;
 }
 /// resolves @a filename to an absolute path
-/// @returns true if the filename was sucessfully resolved.
+/// @returns true if the filename was successfully resolved.
 static bool resolve_filename(std::string& filename, std::string currentdir, std::string* rel = nullptr)
 {
 	if(filename.size() < 2) {
@@ -201,7 +201,7 @@ public:
 		*size = lfs->pistream_->gcount();
 #if 0
 		ERR_LUA << "read bytes from " << startpos << " to " << newpos << " in total " *size << " from steam\n";
-		ERR_LUA << "streamstate beeing "
+		ERR_LUA << "streamstate being "
 			<< " goodbit:" << lfs->pistream_->good()
 			<< " endoffile:" << lfs->pistream_->eof()
 			<< " badbit:" <<  lfs->pistream_->bad()

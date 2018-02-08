@@ -907,16 +907,16 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 		cfg_.remove_attribute("controller");
 
 		cfg_["previous_save_id"] = parent_.side_engines()[side_cntr_index]->previous_save_id();
-		ERR_MP << "contoller=<number> is deperecated\n";
+		ERR_MP << "controller=<number> is deperecated\n";
 	}
 
 	if(!parent_.params_.saved_game && cfg_["save_id"].str().empty()) {
-		assert(cfg_["id"].empty()); // we already setted "save_id" to "id" if "id" existed.
+		assert(cfg_["id"].empty()); // we already set "save_id" to "id" if "id" existed.
 		cfg_["save_id"] = parent_.scenario()["id"].str() + "_" + std::to_string(index);
 	}
 
 	if(cfg_["controller"] != "human" && cfg_["controller"] != "ai" && cfg_["controller"] != "null") {
-		//an invalid contoller type was specified. Remove it to prevent asertion failures later.
+		//an invalid controller type was specified. Remove it to prevent asertion failures later.
 		cfg_.remove_attribute("controller");
 	}
 
@@ -1007,7 +1007,7 @@ config side_engine::new_config() const
 {
 	config res = cfg_;
 
-	// In case of 'shuffle sides' the side index in cfg_ might be wrong which will confuse the team constuctor later.
+	// In case of 'shuffle sides' the side index in cfg_ might be wrong which will confuse the team constructor later.
 	res["side"] = index_ + 1;
 
 	// If the user is allowed to change type, faction, leader etc,  then import their new values in the config.

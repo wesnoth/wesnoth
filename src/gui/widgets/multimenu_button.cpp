@@ -147,7 +147,7 @@ void multimenu_button::signal_handler_left_button_click(const event::ui_event ev
 		}
 	}
 
-	/* In order to allow toggle button states to be specified by verious dialogs in the values config, we write the state
+	/* In order to allow toggle button states to be specified by various dialogs in the values config, we write the state
 	 * bools to the values_ config here, but only if a checkbox= key was already provided. The value of the checkbox= key
 	 * is handled by the drop_down_menu widget.
 	 *

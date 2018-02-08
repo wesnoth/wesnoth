@@ -28,7 +28,7 @@
 namespace font {
 
 /**
- * Retuns a Pango formatting string using the provided color_t object.
+ * Returns a Pango formatting string using the provided color_t object.
  *
  * The string returned will be in format: &lt;span foreground=#color>
  * Callers will need to manually append the closing &lt;/span>' tag.

@@ -16,7 +16,7 @@
 
 #include<vector>
 /*
-	Automaticly registrates itself in the registry in the constructor.
+	Automatically registrates itself in the registry in the constructor.
 */
 class syncmp_handler
 {

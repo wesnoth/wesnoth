@@ -140,7 +140,7 @@ namespace {
 	 * It fails an @a assert() check or throws an exception if the requested element
 	 * does not exist.
 	 *
-	 * @return An element from the container that is guranteed to have existed
+	 * @return An element from the container that is guaranteed to have existed
 	 *         before running this function.
 	 */
 	template <typename MapT>

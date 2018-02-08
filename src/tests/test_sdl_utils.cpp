@@ -46,7 +46,7 @@
 //			, message
 //				<< "source height »"
 //				<< src->w
-//				<< "« destination heigth »"
+//				<< "« destination height »"
 //				<< dst->w
 //				<< "«.\n"
 //			);
@@ -103,4 +103,3 @@
 //
 //	blend_image(base, std::bind(&test_blend, _1, _2, _3));
 //}
-

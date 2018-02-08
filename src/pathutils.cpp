@@ -138,7 +138,7 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 
 	/**
 	 * Function that interprets @a collected_tiles and adds to @a result those
-	 * whose y-coordinate satisifies row_begin <= y < row_end.
+	 * whose y-coordinate satisfies row_begin <= y < row_end.
 	 * When passed to this function, @a result must not be empty. (This allows
 	 * a code simplification and is currently always the case anyway.)
 	 */

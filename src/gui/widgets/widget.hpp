@@ -545,7 +545,7 @@ public:
 	 *
 	 * The clipping rectangle is used then the @ref redraw_action_ is
 	 * @ref redraw_action::partly. Since the drawing can be offsetted it also
-	 * needs offset paramters.
+	 * needs offset parameters.
 	 *
 	 * @param x_offset            The offset in the x-direction when drawn.
 	 * @param y_offset            The offset in the y-direction when drawn.

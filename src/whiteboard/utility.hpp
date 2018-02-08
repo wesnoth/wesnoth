@@ -129,7 +129,7 @@ void for_each_action(std::function<void(action*)> function,
                      team_filter team_filter = team_has_visible_plan);
 
 /**
- * Find the first action occuring on a given hex.
+ * Find the first action occurring on a given hex.
  *
  * The actions are processed chronologically.
  * The second parameter is a @ref team_filter, it is called for each team, if it returns false, the actions of this team won't be considered.

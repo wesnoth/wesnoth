@@ -16,7 +16,7 @@
  *
  *	A savefile can contain:
  *
- *  - General information (toplevel atributes, [multiplayer])
+ *  - General information (toplevel attributes, [multiplayer])
  *	  This is present in all savefiles
  *
  *  - [statistics]
@@ -562,7 +562,7 @@ std::string saved_game::get_scenario_id()
 		scenario_id = carryover_["next_scenario"].str();
 	} else {
 		assert(!"cannot figure out scenario_id");
-		throw "assertion ingnored";
+		throw "assertion ignored";
 	}
 
 	return scenario_id == "null" ? "" : scenario_id;

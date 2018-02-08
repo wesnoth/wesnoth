@@ -31,7 +31,7 @@ class play_controller;
  * NOTE: This class is broken and you probably shouldn't use it. Calling a save
  * game dialog from the destructor of a class is a bad idea, because those
  * functions throw exceptions. For example if the user decides to quit the game,
- * or there is a filesystem erorr. If the destructor throws exceptions, it will
+ * or there is a filesystem error. If the destructor throws exceptions, it will
  * cause memory leaks and crashes.
  * http://wiki.wesnoth.org/CodingStandards#Destructors_must_not_throw_exceptions
  *

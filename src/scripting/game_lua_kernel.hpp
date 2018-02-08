@@ -186,7 +186,7 @@ public:
 		note that we don't check for the dtor of lua owned units because we assume that
 		we operate on such a unit that the lua function that invoked the operation on that unit
 		(like wesnoth.add_modification, wesnoth.match_unit ..) have a local copy of that
-		lua_unit* userdata in its stack that prevents it from beeing collected.
+		lua_unit* userdata in its stack that prevents it from being collected.
 	*/
 	int map_locked_;
 	game_lua_kernel(game_state &, play_controller &, reports &);

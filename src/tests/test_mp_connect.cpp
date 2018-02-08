@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2013 - 2018 by Andrius Silinskas <silinskas.andrius@gmail.com>
-   Part of thie Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -387,4 +387,3 @@ BOOST_AUTO_TEST_CASE( flg_saved_game )
 }
 
 BOOST_AUTO_TEST_SUITE_END()
-

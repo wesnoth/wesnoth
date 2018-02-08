@@ -31,9 +31,9 @@ public:
 	{
 		/// Always reload config
 		FORCE_RELOAD,
-		/// Dont reload if the previous defines equal the new defines
+		/// Don't reload if the previous defines equal the new defines
 		NO_FORCE_RELOAD,
-		/// Dont reload if the previous defines include the new defines
+		/// Don't reload if the previous defines include the new defines
 		NO_INCLUDE_RELOAD,
 	};
 

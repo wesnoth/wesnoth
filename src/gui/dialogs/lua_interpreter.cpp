@@ -623,7 +623,7 @@ void lua_interpreter::controller::tab()
 	}
 
 	//bool line_start = utils::word_completion(text, matches);
-	if (text.size() > 0) { // this if is to avoid wierd behavior in word_completion, where it thinks nothing matches the empty string
+	if (text.size() > 0) { // this if is to avoid weird behavior in word_completion, where it thinks nothing matches the empty string
 		utils::word_completion(text, matches);
 	}
 

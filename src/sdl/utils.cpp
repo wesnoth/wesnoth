@@ -340,7 +340,7 @@ surface scale_surface(const surface &surf, int w, int h)
 				// That is, the bilin array holds the
 				// "geometric" weights. I.E. If I'm scaling
 				// a 2 x 2 block a 10 x 10 block, then for
-				// pixel (2,2) of ouptut, the upper left
+				// pixel (2,2) of output, the upper left
 				// pixel should be 10:1 more influential than
 				// the upper right, and also 10:1 more influential
 				// than lower left, and 100:1 more influential

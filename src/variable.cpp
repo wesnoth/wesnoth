@@ -476,7 +476,7 @@ config &scoped_wml_variable::store(const config &var_value)
 	}
 	catch(const invalid_variablename_exception&)
 	{
-		assert(false && "invalid variable name of autostored varaible");
+		assert(false && "invalid variable name of autostored variable");
 		throw "assertion ignored";
 	}
 

@@ -284,7 +284,7 @@ namespace {
 			std::string exception;
 			try {
 				tip::show(id
-						, "Test messsage for a tooltip."
+						, "Test message for a tooltip."
 						, point(0, 0)
 						, {0,0,0,0});
 			} catch(gui2::layout_exception_width_modified&) {
@@ -1220,4 +1220,3 @@ struct dialog_tester<surrender_quit>
 };
 
 } // namespace
-

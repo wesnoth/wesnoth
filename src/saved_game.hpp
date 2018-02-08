@@ -95,7 +95,7 @@ public:
 	void convert_to_start_save();
 	/// sets the random seed if that didn't already happen.
 	void set_random_seed();
-	/// @return the starting pos for replays. Usualy this is [replay_start] but it can also be a [scenario] if no [replay_start] is present
+	/// @return the starting pos for replays. Usually this is [replay_start] but it can also be a [scenario] if no [replay_start] is present
 	const config& get_replay_starting_pos();
 	/// @return the id of the currently played scenario or the id of the next scenario if this is a between-scenaios-save (also called start-of-scenario-save).
 	std::string get_scenario_id();

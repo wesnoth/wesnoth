@@ -174,8 +174,8 @@ void class_tag::remove_keys_by_type (const std::string & type){
  * @begin{tag}{name="tag"}{min=0}{max=1}
  * @begin{table}{config}
  *     name & string & &          The name of tag. $
- *     min & int & &           The min number of occurences. $
- *     max & int & &           The max number of occurences. $
+ *     min & int & &           The min number of occurrences. $
+ *     max & int & &           The max number of occurrences. $
  *     super & string & "" &   The super-tag of this tag $
  * @end{table}
  * @begin{tag}{name="link"}{min=0}{max=-1}

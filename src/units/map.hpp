@@ -43,7 +43,7 @@
  * underlying_id. The reference counting is what guarantees the persistent iterators. Storing an
  * iterator only prevents that dead unit's id-map entry from being recovered.
  *
- * @note Prefered usages for tight loops follows:
+ * @note Preferred usages for tight loops follows:
  *
  * Use the std::pair<iterator, bool> format which checks the preconditions and returns false
  * (second) to indicate failure and no change to the unit_map. True indicates success along with the
@@ -77,7 +77,7 @@
  *
  *
  * @note The previous implementation was 2 binary tree based maps: a location map pointing to another.
- * Lookups were O(2*log(N)) and O(log(N)). Order was implicit in the id map choosen as the base.
+ * Lookups were O(2*log(N)) and O(log(N)). Order was implicit in the id map chosen as the base.
  * Persistence was provided by reference counting all iterators collectively and only recovering space
  * when there were no iterators outstanding. Even 1 iterator being stored caused a leak, because all
  * space for dead units was not recovered.

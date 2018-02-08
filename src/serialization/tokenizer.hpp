@@ -106,7 +106,7 @@ private:
 			current_ = in_.get();
 		} while (current_ == '\r');
 #if 0
-			/// @todo disabled untill campaign server is fixed
+			/// @todo disabled until the campaign server is fixed
 			if(in_.good()) {
 				current_ = in_.get();
 				if (current_ == '\r')

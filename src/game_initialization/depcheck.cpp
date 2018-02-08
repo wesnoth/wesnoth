@@ -221,7 +221,7 @@ bool manager::conflicts(const elem& elem1, const elem& elem2, bool directonly) c
 		return false;
 	}
 
-	// We ignore nonexistant elements at this point, they will generate
+	// We ignore nonexistent elements at this point, they will generate
 	// errors in change_era()/change_scenario() anyways.
 	if(!exists(elem1) || !exists(elem2)) {
 		return false;

@@ -495,7 +495,7 @@ void display::reload_map()
 void display::change_display_context(const display_context * dc)
 {
 	dc_ = dc;
- 	builder_->change_map(&dc_->map()); //TODO: Should display_context own and initalize the builder object?
+ 	builder_->change_map(&dc_->map()); //TODO: Should display_context own and initialize the builder object?
 }
 
 void display::reset_halo_manager()
@@ -692,7 +692,7 @@ const display::rect_of_hexes display::hexes_under_rect(const SDL_Rect& r) const
 	// we minus "0.(3)", for horizontal imbrication.
 	// reason is: two adjacent hexes each overlap 1/4 of their width, so for
 	// grid calculation 3/4 of tile width is used, which by default gives
-	// 18/54=0.(3). Note that, while tile_width is zoom dependand, 0.(3) is not.
+	// 18/54=0.(3). Note that, while tile_width is zoom dependent, 0.(3) is not.
 	res.left = static_cast<int>(std::floor(-border + x / tile_width - 0.3333333));
 	// we remove 1 pixel of the rectangle dimensions
 	// (the rounded division take one pixel more than needed)
@@ -2012,7 +2012,7 @@ bool display::zoom_at_min()
 
 bool display::set_zoom(bool increase)
 {
-	// Ensure we don't try to access nonexistant vector indices.
+	// Ensure we don't try to access nonexistent vector indices.
 	zoom_index_ = utils::clamp(increase ? zoom_index_ + 1 : zoom_index_ - 1, 0, final_zoom_index);
 
 	// No validation check is needed in the next step since we've already set the index here and

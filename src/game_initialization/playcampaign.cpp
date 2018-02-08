@@ -143,7 +143,7 @@ void campaign_controller::show_carryover_message(playsingle_controller& playcont
 		report <<  _("You have been defeated!");
 	}
 
-	//We need to write the carryover amount to the team thats why we need non const
+	//We need to write the carryover amount to the team that's why we need non const
 	std::vector<team>& teams = resources::gameboard->teams();
 	int persistent_teams = 0;
 	for (const team &t : teams) {
