@@ -137,7 +137,7 @@ const token &tokenizer::next_token()
 		FALLTHROUGH;
 
 	default:
-		if (is_alnum(current_)) {
+		if (is_alnum(current_) || current_ == '$') {
 			token_.type = token::STRING;
 			do {
 				token_.value += current_;
@@ -146,7 +146,7 @@ const token &tokenizer::next_token()
 					skip_comment();
 					next_char_fast();
 				}
-			} while (is_alnum(current_));
+			} while (is_alnum(current_) || current_ == '$');
 		} else {
 			token_.type = token::MISC;
 			token_.value += current_;
