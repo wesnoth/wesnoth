@@ -1450,6 +1450,9 @@ void attack::perform()
 		}
 	}
 
+	// Set by attacker_hits and defender_hits events.
+	resources::gamedata->clear_variable("damage_inflicted");
+
 	if(update_def_fog_) {
 		actions::recalculate_fog(defender_side);
 	}
