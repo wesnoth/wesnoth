@@ -1,15 +1,17 @@
 # translation of wesnoth-lib.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 - 2011 Wesnoth development team
+# Copyright (C) 2004 - 2018 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Czech Wesnoth translation team <wesnoth-cs-l@nospam.buchtovi.cz>,
+# Czech Wesnoth translation team <hrubymar10@gmail.com>,
+#
 #
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2018.
 #
 msgid ""
 msgstr ""
@@ -18,13 +20,12 @@ msgstr ""
 "POT-Creation-Date: 2018-02-04 19:40+0300\n"
 "PO-Revision-Date: 2016-11-14 23:41+0100\n"
 "Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
-"Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
+"Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Poedit-Basepath: D:/Dev/wesnoth-trunk\n"
 "X-Generator: Poedit 1.8.11\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
@@ -907,7 +908,7 @@ msgstr ""
 #: data/core/terrain.cfg:1248 data/core/terrain.cfg:1261
 #: data/core/terrain.cfg:1275 data/core/terrain.cfg:1413
 msgid "Rusty Gate"
-msgstr ""
+msgstr "Rezavá brána"
 
 #. [terrain_type]: id=portal_door_wooden_sw
 #. [terrain_type]: id=portal_door_wooden_se
@@ -922,7 +923,7 @@ msgstr ""
 #: data/core/terrain.cfg:1381 data/core/terrain.cfg:1394
 #: data/core/terrain.cfg:1427 data/core/terrain.cfg:1456
 msgid "Door"
-msgstr ""
+msgstr "Dveře"
 
 #. [terrain_type]: id=portal_door_wooden_sw
 #. [terrain_type]: id=portal_door_wooden_se
@@ -930,10 +931,8 @@ msgstr ""
 #. [terrain_type]: id=portal_door_wooden
 #: data/core/terrain.cfg:1289 data/core/terrain.cfg:1302
 #: data/core/terrain.cfg:1316 data/core/terrain.cfg:1428
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Wooden Door"
-msgstr "Dřevěná podlaha"
+msgstr "Dřevěné dveře"
 
 #. [terrain_type]: id=portal_gate_rusty_open_sw
 #. [terrain_type]: id=portal_gate_rusty_open_se
@@ -948,10 +947,8 @@ msgstr ""
 #. [terrain_type]: id=portal_door_wooden_open_n
 #: data/core/terrain.cfg:1370 data/core/terrain.cfg:1382
 #: data/core/terrain.cfg:1395
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Open Wooden Door"
-msgstr "Dřevěná podlaha"
+msgstr "Otevřené dřevěné dveře"
 
 #. [terrain_type]: id=p_open_rusty
 #: data/core/terrain.cfg:1443
@@ -960,10 +957,8 @@ msgstr ""
 
 #. [terrain_type]: id=p_open_wooden
 #: data/core/terrain.cfg:1457
-#, fuzzy
-#| msgid "Wooden Floor"
 msgid "Wooden Open Door"
-msgstr "Dřevěná podlaha"
+msgstr "Otevřené dřevěné dveře"
 
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:1473
@@ -2004,15 +1999,10 @@ msgstr "Koleje"
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2992
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rails'</italic> are used to transport ore. By Dwarfs. "
-#| "Mostly."
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore, mostly by dwarves."
 msgstr ""
-"<italic>text='Koleje'</italic> se používají pro převážení rudy. Trpaslíky. "
-"Většinou."
+"<italic>text='Koleje'</italic> využívají převážně trpaslíci k převážení rudy."
 
 #. [settings]
 #: data/gui/default.cfg:23
@@ -2068,20 +2058,16 @@ msgstr ""
 #. [button]: id=single_update
 #. [button]: id=update
 #: data/gui/widget/addon_list.cfg:389 data/gui/window/addon_manager.cfg:225
-#, fuzzy
-#| msgid "Update Add-ons"
 msgid "Update add-on"
-msgstr "Aktualizace rozšíření"
+msgstr "Aktualizovat rozšíření"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:247
 #: src/gui/dialogs/addon/manager.cpp:747
-#, fuzzy
-#| msgid "Searching for installed add-ons"
 msgid "Uninstall add-on"
-msgstr "Vyhledávání nainstalovaných rozšíření"
+msgstr "Odinstalovat rozříření"
 
 #. [label]: id=room
 #: data/gui/widget/chatbox.cfg:23
@@ -2220,14 +2206,12 @@ msgstr "Popis není dostupný."
 #. [button]: id=publish
 #: data/gui/window/addon_manager.cfg:270 src/gui/widgets/addon_list.cpp:273
 msgid "Publish add-on"
-msgstr ""
+msgstr "Publikuj rozšíření"
 
 #. [button]: id=delete
 #: data/gui/window/addon_manager.cfg:284
-#, fuzzy
-#| msgid "Delete ToD"
 msgid "Delete add-on"
-msgstr "Smazat ToD"
+msgstr "Smazat rozšíření"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:318 data/gui/window/addon_manager.cfg:732
@@ -2322,17 +2306,13 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:706
-#, fuzzy
-#| msgid "Status:"
 msgid "State:"
 msgstr "Stav:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:820 data/gui/window/addon_manager.cfg:995
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Get Add-ons"
-msgstr "Rozšíření"
+msgstr "Získat rozšíření"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
@@ -2344,15 +2324,14 @@ msgstr "Podrobnosti:"
 
 #. [button]: id=update_all
 #: data/gui/window/addon_manager.cfg:934 data/gui/window/addon_manager.cfg:1098
-#, fuzzy
-#| msgid "Update Add-ons"
 msgid "Update All"
-msgstr "Aktualizace rozšíření"
+msgstr "Aktualizovat vše"
 
+# TODO
 #. [button]: id=cancel
 #: data/gui/window/addon_manager.cfg:948 data/gui/window/addon_manager.cfg:1112
 msgid "Exit"
-msgstr ""
+msgstr "Konec"
 
 #. [scroll_label]
 #: data/gui/window/addon_uninstall_list.cfg:70
@@ -2533,10 +2512,8 @@ msgstr "Hraj tažení"
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:214
-#, fuzzy
-#| msgid "Sort players:"
 msgid "Sort by:"
-msgstr "Řazení hráčů:"
+msgstr "Řadit podle:"
 
 #. [toggle_button]: id=sort_name
 #: data/gui/window/campaign_dialog.cfg:227
@@ -2545,10 +2522,8 @@ msgstr ""
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:239
-#, fuzzy
-#| msgid "Date"
 msgid "Dates"
-msgstr "Datum"
+msgstr "Data:"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/window/campaign_dialog.cfg:240
@@ -3332,10 +3307,8 @@ msgstr "Vůdce"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/window/game_stats.cfg:49
-#, fuzzy
-#| msgid "Team 1"
 msgid "Team"
-msgstr "Tým 1"
+msgstr "Tým"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
@@ -3358,10 +3331,8 @@ msgstr "Vesnic:"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/game_stats.cfg:90
-#, fuzzy
-#| msgid "Unit List"
 msgid "Units"
-msgstr "Seznam jednotek"
+msgstr "Jednotky"
 
 #. [toggle_button]: id=sort_5
 #: data/gui/window/game_stats.cfg:104
@@ -3388,12 +3359,12 @@ msgstr "Strana"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:311
-#, fuzzy
-#| msgid "Starting game"
 msgid ""
 "Starting\n"
 "Gold"
-msgstr "Začátek hry"
+msgstr ""
+"Počáteční\n"
+"Zlato"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/window/game_stats.cfg:325
@@ -3406,12 +3377,12 @@ msgstr "Příjem:"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/game_stats.cfg:340
-#, fuzzy
-#| msgid "Gold per village"
 msgid ""
 "Gold Per\n"
 "Village"
-msgstr "Zlaté na vesnici"
+msgstr ""
+"Zlaté na\n"
+"vesnici"
 
 #. [toggle_button]: id=sort_5
 #: data/gui/window/game_stats.cfg:355
@@ -3506,7 +3477,7 @@ msgstr "Verze sestavení"
 #. [label]
 #: data/gui/window/game_version.cfg:215
 msgid "library^Runtime version"
-msgstr "Verze běhového prostředí"
+msgstr "Verze runtime"
 
 #. [label]
 #: data/gui/window/game_version.cfg:293
@@ -4034,7 +4005,7 @@ msgstr "Ukaž seznam"
 #. [label]
 #: data/gui/window/mp_create_game.cfg:119
 msgid "Eras:"
-msgstr ""
+msgstr "Éry:"
 
 #. [label]
 #: data/gui/window/mp_create_game.cfg:155
@@ -5184,10 +5155,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:129
-#, fuzzy
-#| msgid "Image"
 msgid "Damage"
-msgstr "Obrázek"
+msgstr "Poškození"
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:141
@@ -5196,10 +5165,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/statistics_dialog.cfg:153
-#, fuzzy
-#| msgid "Turn"
 msgid "This Turn"
-msgstr "Kolo"
+msgstr "Toto kolo"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -5209,15 +5176,11 @@ msgstr "Statistiky"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:485
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Scenario"
-msgstr "Začátek scénáře"
+msgstr "Scénář"
 
 #. [widget]: id=tab_label
 #: data/gui/window/statistics_dialog.cfg:498
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Campaign"
 msgstr "Tažení"
 
@@ -5275,10 +5238,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:105
-#, fuzzy
-#| msgid "Centered"
 msgid "Center"
-msgstr "Vystředěný"
+msgstr "Střed"
 
 #. [label]
 #: data/gui/window/terrain_layers.cfg:339
@@ -5721,7 +5682,7 @@ msgstr "Počet sloupců se liší."
 
 #: src/gui/dialogs/addon/manager.cpp:214
 msgid "addons_view^All Add-ons"
-msgstr "Odinstalace rozšíření"
+msgstr "Všechna rozšíření"
 
 #: src/gui/dialogs/addon/manager.cpp:215
 msgid "addons_view^Installed"
@@ -5743,39 +5704,39 @@ msgstr "Nenainstalované"
 
 #: src/gui/dialogs/addon/manager.cpp:222
 msgid "addons_of_type^Campaigns"
-msgstr "Kampaň"
+msgstr "Tažení"
 
 #: src/gui/dialogs/addon/manager.cpp:223
 msgid "addons_of_type^Scenarios"
-msgstr "Scénář"
+msgstr "Scénáře"
 
 #: src/gui/dialogs/addon/manager.cpp:224
 msgid "addons_of_type^SP/MP campaigns"
-msgstr "Kampaň pro jednoho nebo více hráčů"
+msgstr "Tažení SP nebo MP"
 
 #: src/gui/dialogs/addon/manager.cpp:225
 msgid "addons_of_type^MP campaigns"
-msgstr "Kampaň pro hru více hráčů"
+msgstr "Tažení MP"
 
 #: src/gui/dialogs/addon/manager.cpp:226
 msgid "addons_of_type^MP scenarios"
-msgstr "Scénáře pro hru více hráčů"
+msgstr "Scénář MP"
 
 #: src/gui/dialogs/addon/manager.cpp:227
 msgid "addons_of_type^MP map-packs"
-msgstr "Sady map"
+msgstr "Sady map MP"
 
 #: src/gui/dialogs/addon/manager.cpp:228
 msgid "addons_of_type^MP eras"
-msgstr "Éra pro hru více hráčů"
+msgstr "Éra MP"
 
 #: src/gui/dialogs/addon/manager.cpp:229
 msgid "addons_of_type^MP factions"
-msgstr "Věky pro hru více hráčů"
+msgstr "Frakce MP"
 
 #: src/gui/dialogs/addon/manager.cpp:230
 msgid "addons_of_type^MP modifications"
-msgstr "Modifikace pro hru více hráčů"
+msgstr "Modifikace MP"
 
 #: src/gui/dialogs/addon/manager.cpp:231
 msgid "addons_of_type^Cores"
@@ -5939,8 +5900,6 @@ msgstr "Skutečně chcete otevřít tento odkaz?"
 #: src/gui/dialogs/addon/manager.cpp:832 src/gui/dialogs/addon/manager.cpp:846
 #: src/gui/dialogs/campaign_selection.cpp:275
 #: src/gui/dialogs/multiplayer/lobby.cpp:466
-#, fuzzy
-#| msgid "url^None"
 msgid "None"
 msgstr "Žádná"
 
@@ -6012,17 +5971,15 @@ msgstr "Ostrov"
 
 #: src/gui/dialogs/file_dialog.cpp:110
 msgid "Find File"
-msgstr ""
+msgstr "Najít soubor"
 
 #: src/gui/dialogs/file_dialog.cpp:186
 msgid "Open"
-msgstr ""
+msgstr "Otevřít"
 
 #: src/gui/dialogs/file_dialog.cpp:186
-#, fuzzy
-#| msgid "Save Map"
 msgid "Save"
-msgstr "Ulož mapu"
+msgstr "Uložit"
 
 #: src/gui/dialogs/file_dialog.cpp:307
 #, fuzzy
@@ -6843,7 +6800,7 @@ msgstr[2] ""
 #: src/gui/widgets/multimenu_button.cpp:182
 #: src/gui/widgets/multimenu_button.cpp:239
 msgid "multimenu^None Selected"
-msgstr ""
+msgstr "Žádný nevybrán"
 
 #: src/gui/widgets/pane.cpp:429
 msgid "Need at least 1 parallel item."
@@ -6920,7 +6877,7 @@ msgstr "Lvl $lvl"
 #: src/gui/widgets/unit_preview_pane.cpp:464
 #: src/gui/widgets/unit_preview_pane.cpp:477
 msgid "HP: "
-msgstr "HP:"
+msgstr "HP: "
 
 #: src/gui/widgets/unit_preview_pane.cpp:315
 #: src/gui/widgets/unit_preview_pane.cpp:331
@@ -6975,7 +6932,7 @@ msgstr "Posunout vpravo"
 
 #: src/hotkey/hotkey_command.cpp:55
 msgid "cancel"
-msgstr "Zrušit"
+msgstr "zrušit"
 
 #: src/hotkey/hotkey_command.cpp:56
 msgid "Select Hex"
@@ -7127,7 +7084,7 @@ msgstr "Pozastav síťovou hru"
 
 #: src/hotkey/hotkey_command.cpp:104
 msgid "Continue Network Game"
-msgstr "pokračuj v síťové hře"
+msgstr "Pokračuj v síťové hře"
 
 #: src/hotkey/hotkey_command.cpp:105
 msgid "Quit to Titlescreen"
@@ -7426,7 +7383,7 @@ msgstr "Může verbovat"
 
 #: src/hotkey/hotkey_command.cpp:182
 msgid "Toggle the recruit attribute of a unit."
-msgstr "Povolí u verbování jednotky"
+msgstr "Povolí atribut verbování u jednotky."
 
 #: src/hotkey/hotkey_command.cpp:183
 msgid "Can be Renamed"

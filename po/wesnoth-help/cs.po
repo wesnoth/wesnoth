@@ -1,31 +1,32 @@
-# translation of wesnoth.pot to Czech
+# translation of wesnoth-help.pot to Czech
 # Czech translations for Battle for Wesnoth package.
 # Český překlad hry Battle for Wesnoth (Bitva o Wesnoth).
-# Copyright (C) 2004 - 2011 Wesnoth development team
+# Copyright (C) 2004 - 2018 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Czech Wesnoth translation team <wesnoth-cs-l@nospam.buchtovi.cz>,
+# Czech Wesnoth translation team <hrubymar10@gmail.com>,
 #
 #
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007, 2010.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
+# Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2018.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-04 19:39+0300\n"
-"PO-Revision-Date: 2016-11-21 23:09+0100\n"
-"Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
-"Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
+"PO-Revision-Date: 2017-09-22 19:00+0200\n"
+"Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
+"Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Poedit-Basepath: D:/Dev/wesnoth-trunk\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.4\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:495
@@ -3223,6 +3224,15 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:549
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Set or toggle player on side between human and AI player. The player/"
+#| "client who controls that side needs to issue this command. If no second "
+#| "parameter is supplied, toggle between human and AI. If it is ‘on’, set an "
+#| "AI controller. If it is ‘off’ set a human controller. Defaults to the "
+#| "currently active side if no parameter is supplied.\n"
+#| "\n"
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -5478,17 +5488,17 @@ msgstr ""
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:132
 msgid "race^Falcon"
-msgstr "race^Sokol"
+msgstr "Sokol"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:133
 msgid "race+female^Falcon"
-msgstr "race+female^Sokol"
+msgstr "Sokol"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:134
 msgid "race^Falcons"
-msgstr "race^Sokoli"
+msgstr "Sokoli"
 
 #. [race]: id=goblin
 #: data/core/units.cfg:145
@@ -5864,7 +5874,7 @@ msgstr "Nagini"
 #. [race]: id=naga
 #: data/core/units.cfg:279
 msgid "race^Nagas"
-msgstr "Nagy"
+msgstr "Nágy"
 
 #. [race]: id=naga
 #: data/core/units.cfg:280
