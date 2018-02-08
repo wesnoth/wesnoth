@@ -119,7 +119,7 @@ private:
 	 */
 	bool read_config_file(const std::string & filename);
 	/**
-	 * Shows, if validator is intialized with schema file;
+	 * Shows, if validator is initialized with schema file;
 	 */
 	bool config_read_;
 	/**

@@ -1440,7 +1440,7 @@ void unit_type::check_id(std::string& id)
 
 		if(!valid) {
 			if(!gave_warning) {
-				ERR_UT << "Found unit type id with invalid chracters: \"" << id << "\"\n";
+				ERR_UT << "Found unit type id with invalid characters: \"" << id << "\"\n";
 				gave_warning = true;
 			}
 

@@ -631,7 +631,7 @@ void file_dialog::on_bookmark_selected(window& window)
 
 	if(new_selection < 0) {
 		if(current_bookmark_ >= 0) {
-			// Don't allow the user to unselect the selected bookmark. That wouldn't
+			// Don't allow the user to deselect the selected bookmark. That wouldn't
 			// make any sense.
 			bookmarks_bar.select_row(unsigned(current_bookmark_));
 		}

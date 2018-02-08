@@ -2769,7 +2769,7 @@ static int intf_synchronize_choice(lua_State *L)
 }
 /**
  * Ensures a value is synchronized among all the clients.
- * - Arg 1: optional string the id of this type of user input, may only contain chracters a-z and '_'
+ * - Arg 1: optional string the id of this type of user input, may only contain characters a-z and '_'
  * - Arg 2: function to compute the value, called if the client is the master.
  * - Arg 3: an optional function to compute the value, if the side was null/empty controlled.
  * - Arg 4: an array of integers specifying, on which side the function should be evaluated.
@@ -2805,7 +2805,7 @@ static int intf_synchronize_choices(lua_State *L)
 
 /**
  * Calls a function in an unsynced context (this specially means that all random calls used by that function will be unsynced).
- * This is usualy used together with an unsynced if like 'if controller != network'
+ * This is usually used together with an unsynced if like 'if controller != network'
  * - Arg 1: function that will be called during the unsynced context.
  */
 static int intf_do_unsynced(lua_State *L)

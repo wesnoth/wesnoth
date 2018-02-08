@@ -243,7 +243,7 @@ struct ptr_vector_pushback
 		vec_->push_back(new config(cfg));
 	}
 
-	//Dont use reference to be copyable.
+	//Don't use reference to be copyable.
 	boost::ptr_vector<config>* vec_;
 };
 

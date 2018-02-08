@@ -85,7 +85,7 @@ map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
 				&& pass_check->movement_cost(map[l]) == movetype::UNREACHABLE;
 			//If the unit can't reach the tile and we have searched
 			//an area of at least radius 10 (arbitrary), skip the tile.
-			//Neccessary for cases such as an unreachable
+			//Necessary for cases such as an unreachable
 			//starting hex surrounded by 6 other unreachable hexes, in which case
 			//the algorithm would not even search distance==1
 			//even if there's a reachable hex for distance==2.

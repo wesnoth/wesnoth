@@ -273,7 +273,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 	} else {
 		filter_ptr_->get_locations(items);
 	}
-	DBG_AI_GOAL << "side " << get_side() << ": seaching for threats in "+goal_type+" goal" << std::endl;
+	DBG_AI_GOAL << "side " << get_side() << ": searching for threats in "+goal_type+" goal" << std::endl;
 	// Look for directions to protect a specific location or specific unit.
 	for (const map_location &loc : items)
 	{

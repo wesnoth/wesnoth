@@ -39,7 +39,7 @@ namespace preferences {
 	};
 
 	/**
-	 * Map containing page mappings that can be used to set the initally displayed page
+	 * Map containing page mappings that can be used to set the initially displayed page
 	 * of the dialog. The pair is in an 0-indexed toplevel stack/substack format, where
 	 * the first is the list of main Preference categories (such as General and Display)
 	 * and the second is any sub-stack found on that page.

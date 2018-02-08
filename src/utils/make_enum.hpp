@@ -164,9 +164,9 @@ struct NAME : public enum_tag \
 	}; \
 	type v; \
 	NAME(type v) : v(v) {} \
-	/*We don't want a default contructor but we need one in order to make lexical_cast working*/ \
+	/* We don't want a default constructor but we need one in order to make lexical_cast working */ \
 	NAME() : v() {} \
-	/*operator type() const { return v; } */\
+	/* operator type() const { return v; } */\
 	static NAME string_to_enum (const std::string& str, NAME def) \
 	{ \
 		PP_SEQ_FOR_EACH_I_PAIR(EXPAND_ENUMFUNC_NORMAL, str , CONTENT) \

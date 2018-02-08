@@ -75,7 +75,7 @@ private:
 	 *  @param seed         The initial value for the random engine.
 	 *  @param call_count   Upon loading we need to restore the state at saving
 	 *                      so set the number of times a random number is
-	 *                      generated for replays the orginal value is
+	 *                      generated for replays the original value is
 	 *                      required.
 	 */
 	void seed_random(const uint32_t seed, const unsigned int call_count = 0);

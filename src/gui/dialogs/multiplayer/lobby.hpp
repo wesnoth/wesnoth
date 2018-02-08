@@ -123,7 +123,7 @@ private:
 	 *
 	 * This assembles the game request for the server and handles any applicable
 	 * pre-join actions, such as prompting the player for the game's password or
-	 * informing them additonal content needs installing.
+	 * informing them additional content needs installing.
 	 *
 	 * The lobby window will be closed on completion, assuming an error wasn't
 	 * encountered.

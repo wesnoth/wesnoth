@@ -41,7 +41,7 @@ namespace dialogs
 
 REGISTER_DIALOG(edit_text)
 
-//TODO: add  a way to disallow certain chracters (like spaces or ")
+//TODO: add  a way to disallow certain characters (like spaces or ")
 edit_text::edit_text(const std::string& title,
 					   const std::string& label,
 					   std::string& text)

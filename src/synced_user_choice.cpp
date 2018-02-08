@@ -213,7 +213,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 	std::map<int, config> retv = user_choice_manager::get_user_choice_internal(name, uch, sides);
 	if(retv.find(side) == retv.end())
 	{
-		//An error occured, get_user_choice_internal should have given an oos error message
+		//An error occurred, get_user_choice_internal should have given an oos error message
 		return config();
 	}
 	return retv[side];
@@ -309,7 +309,7 @@ void user_choice_manager::update_local_choice()
 	std::string sides_str;
 	for(int side : required_)
 	{
-		//and we havent already received our answer from that side
+		//and we haven't already received our answer from that side
 		if(res_.find(side) == res_.end())
 		{
 			sides_str += " ";
@@ -340,7 +340,7 @@ void user_choice_manager::ask_local_choice()
 	config cfg = uch_.query_user(local_choice_);
 	if(res_.find(local_choice_) != res_.end()) {
 		// It might be possible that we this choice was already made by another client while we were in uch_.query_user
-		// becase our side might be ressigned while we made our choice.
+		// because our side might be ressigned while we made our choice.
 		WRN_REPLAY << "Discarding a local choice because we found it already on the replay";
 		return;
 	}
@@ -348,7 +348,7 @@ void user_choice_manager::ask_local_choice()
 	res_[local_choice_] = cfg;
 
 	//send data to others.
-	//but if there wasn't any data sent during this turn, we don't want to bein wth that now.
+	//but if there wasn't any data sent during this turn, we don't want to begin with that now.
 	//TODO: we should send user choices during nonundoable actions immideatley.
 	if(synced_context::is_simultaneously() || current_side_ != local_choice_)
 	{
@@ -380,7 +380,7 @@ static void wait_ingame(user_choice_manager& man)
 		if(resources::gamedata->phase() == game_data::PLAY || resources::gamedata->phase() == game_data::START)
 		{
 			//during the prestart/preload event the screen is locked and we shouldn't call user_interact.
-			//because that might result in crashs if someone clicks anywhere during screenlock.
+			//because that might result in crashes if someone clicks anywhere during screenlock.
 
 			// calls man.pull via events.cpp -> pump_monitor::process
 			resources::controller->play_slice();
@@ -430,5 +430,3 @@ void user_choice_manager::process(events::pump_info&)
 		pull();
 	}
 }
-
-

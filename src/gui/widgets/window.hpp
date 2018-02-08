@@ -436,7 +436,7 @@ public:
 	 *
 	 * A window will only close if this function returns true.
 	 *
-	 * @param func A function taking a window reference and returing a boolean result.
+	 * @param func A function taking a window reference and returning a boolean result.
 	 */
 	void set_exit_hook(std::function<bool(window&)> func)
 	{

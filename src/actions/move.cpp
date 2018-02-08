@@ -891,7 +891,7 @@ namespace { // Private helpers for move_unit()
 			if (spectator_) {
 				spectator_->set_ambusher(ambusher);
 			}
-			// Override the default ambushed messge?
+			// Override the default ambushed message?
 			if ( update_alert ) {
 				// Observers don't get extra information.
 				if ( playing_team_is_viewing_ || !disp.fogged(hex) ) {

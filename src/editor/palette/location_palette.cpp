@@ -72,7 +72,7 @@ public:
 			parent_.select_item(id_);
 		}
 		if (e.button == SDL_BUTTON_RIGHT) {
-			//TODO: add a context menu with the follwing options:
+			//TODO: add a context menu with the following options:
 			// 1) 'copy it to clipboard'
 			// 2) 'jump to item'
 			// 3) 'delete item'.
@@ -254,7 +254,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 		}));
 		button_add_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Add"), [this]() {
 			std::string newid;
-			if (gui2::dialogs::edit_text::execute(_("New Location Identifer"), "", newid)) {
+			if (gui2::dialogs::edit_text::execute(_("New Location Identifier"), "", newid)) {
 				add_item(newid);
 			}
 		}));

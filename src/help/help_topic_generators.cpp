@@ -50,7 +50,7 @@ static std::string best_str(bool best) {
 }
 
 typedef t_translation::ter_list::const_iterator ter_iter;
-// Gets an english desription of a terrain ter_list alias behavior: "Best of cave, hills", "Worst of Swamp, Forest" etc.
+// Gets an english description of a terrain ter_list alias behavior: "Best of cave, hills", "Worst of Swamp, Forest" etc.
 static std::string print_behavior_description(ter_iter start, ter_iter end, const ter_data_cache & tdata, bool first_level = true, bool begin_best = true)
 {
 

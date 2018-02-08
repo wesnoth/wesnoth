@@ -205,7 +205,7 @@ const std::string help_msg = "Available commands are: adminmsg <msg>,"
 							 " netstats [all], [lobby]msg <message>, motd [<message>],"
 							 " pm|privatemsg <nickname> <message>, requests, sample, searchlog <mask>,"
 							 " signout, stats, status [<mask>], unban <ipmask>\n"
-							 "Specific strings (those not inbetween <> like the command names)"
+							 "Specific strings (those not in between <> like the command names)"
 							 " are case insensitive.";
 
 server::server(int port, bool keep_alive, const std::string& config_file, size_t /*min_threads*/,
@@ -467,7 +467,7 @@ void server::load_config() {
 	// If there is a [user_handler] tag in the config file
 	// allow nick registration, otherwise we set user_handler_
 	// to nullptr. Thus we must check user_handler_ for not being
-	// nullptr everytime we want to use it.
+	// nullptr every time we want to use it.
 	user_handler_.reset();
 
 	if (const config &user_handler = cfg_.child("user_handler")) {
@@ -1071,7 +1071,7 @@ void server::handle_nickserv(socket_ptr socket, simple_wml::node& nickserv)
 		}
 
 		// With the current policy of dissallowing to log in with a
-		// registerd username without the password we should never get
+		// registered username without the password we should never get
 		// to call this
 		if(!(player_connections_.find(socket)->info().registered())) {
 			send_server_message(socket, "You are not logged in.");
@@ -1352,7 +1352,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		send_to_lobby(diff);
 		/** @todo FIXME: Why not save the level data in the history_? */
 		return;
-		// Everything below should only be processed if the game is already intialized.
+		// Everything below should only be processed if the game is already initialized.
 	} else if (!g.level_init()) {
 		WRN_SERVER << client_address(socket) << "\tReceived unknown data from: "
 				   << player.name() << " (socket:" << socket

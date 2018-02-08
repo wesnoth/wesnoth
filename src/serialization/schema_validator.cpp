@@ -38,7 +38,7 @@ static std::string at(const std::string & file, int line){
 static void print_output(const std::string & message,bool flag_exception = false ){
 #ifndef VALIDATION_ERRORS_LOG
 	if(flag_exception){
-			throw wml_exception("Validation error occured",message);
+			throw wml_exception("Validation error occurred",message);
 		}else{
 	ERR_VL << message;
 }

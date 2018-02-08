@@ -97,7 +97,7 @@ public:
 	 *
 	 * @param resolution          The new width and height.
 	 *
-	 * @returns                   Whether the resolution was sucessfully changed.
+	 * @returns                   Whether the resolution was successfully changed.
 	 */
 	bool set_resolution(const point& resolution);
 

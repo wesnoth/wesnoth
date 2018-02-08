@@ -66,6 +66,7 @@ game_stringfixes = {
 ("Save and Abort game", "Save and abort game"),
 ("Filters on addon descripton,", "Filters on addon description,"),
 ("Messanger Waypoint 1", "Messenger Waypoint 1"),
+("Identifer", "Identifier"),
 
 # conversion added in 1.13.5+dev
 ("You don’t have a leader to", "You do not have a leader to"),

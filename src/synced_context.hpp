@@ -44,13 +44,13 @@ public:
 		however, if you cannot call this function you can also use set_scontext_synced directly (use it like it's used in this method).
 
 		movement commands are currently treated specially,
-			thats because actions::move_unit returns a value and some function use that value.
+			that's because actions::move_unit returns a value and some function use that value.
 			maybe i should add a way here to return a value.
 
 		ai's attacks are also treated special because the ai wants to pass advancement_aspects.
 
 
-		redoing does normaly not take place in a synced context, because we saved the dependent=true replaycommands in the replaystack data.
+		redoing does normally not take place in a synced context, because we saved the dependent=true replaycommands in the replaystack data.
 			also there are no events of similar fired when redoing an action (in most cases).
 
 		@param use_undo this parameter is used to ignore undos during an ai move to optimize.
@@ -192,14 +192,14 @@ class set_scontext_synced : set_scontext_synced_base
 public:
 	set_scontext_synced();
 	/*
-		use this contructor if you have multiple synced_context but only one replay entry.
+		use this constructor if you have multiple synced_context but only one replay entry.
 	*/
 	set_scontext_synced(int num);
 	~set_scontext_synced();
 	int get_random_calls();
 	void do_final_checkup(bool dont_throw = false);
 private:
-	//only called by contructors.
+	//only called by constructors.
 	void init();
 	static checkup* generate_checkup(const std::string& tagname);
 	checkup* old_checkup_;

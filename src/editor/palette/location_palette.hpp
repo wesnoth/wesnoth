@@ -100,7 +100,7 @@ private:
 protected:
 
 	int item_size_;
-	// the heigh of a row, the size of an item including borders.
+	// the height of a row, the size of an item including borders.
 	int item_space_;
 
 private:

@@ -10,7 +10,7 @@
    See the COPYING file for more details.
 
    This is a derivative work of the xBRZ component of the HqMAME project
-   by Zenju. The original Licensing statment follows, indented with //
+   by Zenju. The original Licensing statement follows, indented with //
    The primary changes are, syntactic to make it compile with C99+Boost,
    and to make it handle an alpha channel in the image in a manner proper
    for SDL.
@@ -468,7 +468,7 @@ double distYCbCr(uint32_t pix1, uint32_t pix2, double lumaWeight)
     //YCbCr conversion is a matrix multiplication => take advantage of linearity by subtracting first!
     const int r_diff = static_cast<int>(getRed  (pix1)) - getRed  (pix2); //we may delay division by 255 to after matrix multiplication
     const int g_diff = static_cast<int>(getGreen(pix1)) - getGreen(pix2); //
-    const int b_diff = static_cast<int>(getBlue (pix1)) - getBlue (pix2); //substraction for int is noticeable faster than for double!
+    const int b_diff = static_cast<int>(getBlue (pix1)) - getBlue (pix2); //subtraction for int is noticeable faster than for double!
 
     const double k_b = 0.0722; //ITU-R BT.709 conversion
     const double k_r = 0.2126; //
@@ -571,7 +571,7 @@ input kernel area naming convention:
 -----------------
 | A | B | C | D |
 ----|---|---|---|
-| E | F | G | H |   //evalute the four corners between F, G, J, K
+| E | F | G | H |   //evaluate the four corners between F, G, J, K
 ----|---|---|---|   //input pixel is at position F
 | I | J | K | L |
 ----|---|---|---|
@@ -813,7 +813,7 @@ void scaleImage(const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,
             const int x_p1 = std::min(x + 1, srcWidth - 1);
             const int x_p2 = std::min(x + 2, srcWidth - 1);
 
-            Kernel_4x4 ker; //perf: initialization is negligable
+            Kernel_4x4 ker; //perf: initialization is negligible
             ker.a = s_m1[x_m1]; //read sequentially from memory as far as possible
             ker.b = s_m1[x];
             ker.c = s_m1[x_p1];
@@ -838,7 +838,7 @@ void scaleImage(const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,
             /*
             preprocessing blend result:
             ---------
-            | F | G |   //evalute corner between F, G, J, K
+            | F | G |   //evaluate corner between F, G, J, K
             ----|---|   //input pixel is at position F
             | J | K |
             ---------
@@ -875,7 +875,7 @@ void scaleImage(const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,
             //evaluate the four corners on bottom-right of current pixel
             unsigned char blend_xy = 0; //for current (x, y) position
             {
-                Kernel_4x4 ker; //perf: initialization is negligable
+                Kernel_4x4 ker; //perf: initialization is negligible
                 ker.a = s_m1[x_m1]; //read sequentially from memory as far as possible
                 ker.b = s_m1[x];
                 ker.c = s_m1[x_p1];
@@ -900,8 +900,8 @@ void scaleImage(const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,
                 /*
                 preprocessing blend result:
                 ---------
-                | F | G |   //evalute corner between F, G, J, K
-                ----|---|   //current input pixel is at position F
+                | F | G |   // evaluate corner between F, G, J, K
+                ----|---|   // current input pixel is at position F
                 | J | K |
                 ---------
                 */
@@ -924,7 +924,7 @@ void scaleImage(const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,
             //blend four corners of current pixel
             if (blendingNeeded(blend_xy)) //good 20% perf-improvement
             {
-                Kernel_3x3 ker; //perf: initialization is negligable
+                Kernel_3x3 ker; //perf: initialization is negligible
 
                 ker.a = s_m1[x_m1]; //read sequentially from memory as far as possible
                 ker.b = s_m1[x];
@@ -1036,7 +1036,7 @@ struct Scaler3x
     {
         //model a round corner
         alphaBlend<45, 100>(out.template ref<2, 2>(), col); //exact: 0.4545939598
-        //alphaBlend<14, 1000>(out.template ref<2, 1>(), col); //0.01413008627 -> negligable
+        //alphaBlend<14, 1000>(out.template ref<2, 1>(), col); //0.01413008627 -> negligible
         //alphaBlend<14, 1000>(out.template ref<1, 2>(), col); //0.01413008627
     }
 };
@@ -1180,7 +1180,7 @@ struct Scaler5x
         alphaBlend<86, 100>(out.template ref<4, 4>(), col); //exact: 0.8631434088
         alphaBlend<23, 100>(out.template ref<4, 3>(), col); //0.2306749731
         alphaBlend<23, 100>(out.template ref<3, 4>(), col); //0.2306749731
-        //alphaBlend<8, 1000>(out.template ref<4, 2>(), col); //0.008384061834 -> negligable
+        //alphaBlend<8, 1000>(out.template ref<4, 2>(), col); //0.008384061834 -> negligible
         //alphaBlend<8, 1000>(out.template ref<2, 4>(), col); //0.008384061834
     }
 };

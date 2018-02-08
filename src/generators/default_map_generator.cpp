@@ -133,7 +133,7 @@ std::string default_map_generator::generate_map(std::map<map_location,std::strin
 	std::map<map_location,std::string> labels_copy;
 	std::map<map_location,std::string>* labels_ptr = labels ? &labels_copy : nullptr;
 
-	// Iinitilize the job outside the loop so that we really get a different result everytime we run the loop.
+	// Iinitilize the job outside the loop so that we really get a different result every time we run the loop.
 	default_map_generator_job job(seed);
 
 	int tries = 10;

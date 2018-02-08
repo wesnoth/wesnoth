@@ -696,7 +696,7 @@ static int modulo(int num, int mod, int min)
 	//n is now in [0, mod)
 	n = n + min;
 	return n;
-	// the folowing properties are easy to verify:
+	// the following properties are easy to verify:
 	//  1) For all m: modulo(num, mod, min) == modulo(num + mod*m, mod, min)
 	//  2) For all 0 <= m < mod: modulo(min + m, mod, min) == min + m
 }

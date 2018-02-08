@@ -60,8 +60,8 @@ namespace actions {
 	struct undo_action : undo_action_base
 	{
 		/// Default constructor.
-		/// It is assumed that undo actions are contructed after the action is performed
-		/// so that the unit id diff does not change after this contructor.
+		/// It is assumed that undo actions are constructed after the action is performed
+		/// so that the unit id diff does not change after this constructor.
 		undo_action();
 		undo_action(const config& cfg);
 		// Virtual destructor to support derived classes.

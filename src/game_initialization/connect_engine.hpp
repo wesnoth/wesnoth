@@ -264,8 +264,8 @@ private:
 	// set during create_engines constructor never set after that.
 	// the name of the player who is preferred for this side,
 	// if controller_ == reserved only this player can take this side.
-	// can also be a number of a side if this side shoudl be controlled
-	// by the player who controlls  that side
+	// can also be a number of a side if this side should be controlled
+	// by the player who controls  that side
 	std::string reserved_for_;
 	std::string player_id_;
 	std::string ai_algorithm_;

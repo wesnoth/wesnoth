@@ -235,12 +235,12 @@ public:
 
 	/**
 	 * Tags are usually organized in tree.
-	 * This fuction helps to add tag to his exact place in tree
+	 * This function helps to add a tag to his exact place in tree
 	 * @param path - path in subtree to exact place of tag
 	 * @param tag  - tag to add
 	 * @param root - root of schema tree - use to support of adding to link.
 	 * Path is getting shotter and shoter with each call.
-	 * Path schould look like tag1/tag2/parent/ Slash at end is mandatory.
+	 * Path should look like tag1/tag2/parent/ Slash at end is mandatory.
 	 */
 	void add_tag (const std::string & path,const class_tag & tag,
 				  class_tag &root);
@@ -310,7 +310,7 @@ private:
 	 * name of tag to extend "super-tag"
 	 * Extension is smth like inheritance and is used in case
 	 * when you need to use another tag with all his
-	 * keys, childs, etc. But you also want to allow extra subtags of that tags,
+	 * keys, children, etc. But you also want to allow extra subtags of that tags,
 	 * so just linking that tag wouldn't help at all.
 	 */
 	std::string super_;

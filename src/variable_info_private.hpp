@@ -478,7 +478,7 @@ public:
 		// The merge_with function only accepts configs so we convert vector -> config.
 		config datatemp;
 
-		// Add emtpy config to 'shift' the merge to startindex
+		// Add empty config to 'shift' the merge to startindex
 		for(int index = 0; index < startindex; ++index) {
 			datatemp.add_child(key);
 		}

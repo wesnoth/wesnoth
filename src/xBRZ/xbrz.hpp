@@ -10,7 +10,7 @@
    See the COPYING file for more details.
 
    This is a derivative work of the xBRZ component of the HqMAME project
-   by Zenju. The original Licensing statment follows, indented with //
+   by Zenju. The original Licensing statement follows, indented with //
    The primary changes are, syntactic to make it compile with C99+Boost,
    and to make it handle an alpha channel in the image in a manner proper
    for SDL.

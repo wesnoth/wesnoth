@@ -758,7 +758,7 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg)
 				if (i > 1) str << ',';
 				str << item;
 			}
-			// If there are any string keys, it's misformed
+			// If there are any string keys, it's malformed
 			for (lua_pushnil(L); lua_next(L, subindex); lua_pop(L, 1)) {
 				if (lua_type(L, -2) != LUA_TNUMBER) return_misformed();
 			}

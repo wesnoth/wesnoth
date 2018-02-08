@@ -32,7 +32,7 @@ class synced_command {
 		*/
 		typedef std::function<void(const std::string&, bool)> error_handler_function;
 		/*
-			returns: true if the action succeeded correclty,
+			returns: true if the action succeeded correctly,
 
 		*/
 		typedef bool (*handler)(const config &, bool use_undo, bool show, error_handler_function error_handler);

@@ -33,7 +33,7 @@ output*. Each call to `SDL_PNGFormatAlpha` produces a **new** SDL_Surface that
 **must** be freed using `SDL_FreeSurface`.
 
 ```
-//safest way, usefull for 'screen' surface
+//safest way, useful for 'screen' surface
 SDL_Surface *tmp = SDL_PNGFormatAlpha(screen);
 SDL_SavePNG(tmp, "screenshot.png");
 SDL_FreeSurface(tmp)

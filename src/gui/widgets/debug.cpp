@@ -128,7 +128,7 @@ void debug_layout_graph::set_level(const std::string& level)
 	{
 		if(param == "all") {
 			level_ = ALL;
-			// No need to look further eventhough invalid items are now
+			// No need to look further even though invalid items are now
 			// ignored.
 			return;
 		} else if(param == "size") {
@@ -156,7 +156,7 @@ void debug_layout_graph::set_domain(const std::string& domain)
 	{
 		if(param == "all") {
 			domain_ = ALL;
-			// No need to look further eventhough invalid items are now
+			// No need to look further even though invalid items are now
 			// ignored.
 			return;
 		} else if(param == "show") {

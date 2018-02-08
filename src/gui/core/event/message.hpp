@@ -14,7 +14,7 @@
 
 /**
  * @file
- * This file contains the defintions for the @ref gui2::event::message class.
+ * This file contains the definitions for the @ref gui2::event::message class.
  *
  * The class is used in the @ref gui2::event::signal_message_function
  */

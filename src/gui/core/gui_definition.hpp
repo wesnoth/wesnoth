@@ -25,7 +25,7 @@ class config;
 namespace gui2
 {
 /**
- * A GUI theme definiton.
+ * A GUI theme definition.
  *
  * Each theme defines the appearance and layout of widgets and windows. At least one theme
  * (the default) must exist for the game to run. That theme is expected to contain at least
@@ -33,7 +33,7 @@ namespace gui2
  * static registry. Do note that a widget type may have any number of definitions defined
  * per theme, but a window may only have one layout.
  *
- * Non-default themes may omit a default widget defintion or a window layout, in which case
+ * Non-default themes may omit a default widget definition or a window layout, in which case
  * the game will fall back on the default definition (for widgets) or the layout (for windows)
  * specified in the default theme.
  *
@@ -126,12 +126,12 @@ struct window_builder_invalid_id
  */
 const builder_window::window_resolution& get_window_builder(const std::string& type);
 
-/** Adds a widget definiton to the default GUI. */
+/** Adds a widget definition to the default GUI. */
 bool add_single_widget_definition(const std::string& widget_type,
 		const std::string& definition_id,
 		const config& cfg);
 
-/** Removes a widget definiton from the default GUI. */
+/** Removes a widget definition from the default GUI. */
 void remove_single_widget_definition(const std::string& widget_type,
 		const std::string& definition_id);
 

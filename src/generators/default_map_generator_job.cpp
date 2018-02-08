@@ -341,11 +341,11 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 	}
 
 	// Find the highest and lowest points on the map for normalization:
-	int heighest = 0, lowest = 100000, x;
+	int highest = 0, lowest = 100000, x;
 	for(x = 0; size_t(x) != res.size(); ++x) {
 		for(int y = 0; size_t(y) != res[x].size(); ++y) {
-			if(res[x][y] > heighest) {
-				heighest = res[x][y];
+			if(res[x][y] > highest) {
+				highest = res[x][y];
 			}
 
 			if(res[x][y] < lowest) {
@@ -355,13 +355,13 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 	}
 
 	// Normalize the heights to the range 0-1000:
-	heighest -= lowest;
+	highest -= lowest;
 	for(x = 0; size_t(x) != res.size(); ++x) {
 		for(int y = 0; size_t(y) != res[x].size(); ++y) {
 			res[x][y] -= lowest;
 			res[x][y] *= 1000;
-			if(heighest != 0) {
-				res[x][y] /= heighest;
+			if(highest != 0) {
+				res[x][y] /= highest;
 			}
 		}
 	}

@@ -147,13 +147,13 @@ namespace
 template<typename To>
 bool from_string_verify(const std::string& source, To& res)
 {
-	// Check 1: convertable to the target type.
+	// Check 1: convertible to the target type.
 	std::istringstream in_str(source);
 	if(!(in_str >> res)) {
 		return false;
 	}
 
-	// Check 2: convertable back to the same string.
+	// Check 2: convertible back to the same string.
 	std::ostringstream out_str;
 	out_str << res;
 	return out_str.str() == source;
@@ -413,7 +413,7 @@ bool config_attribute_value::equals(const std::string& str) const
 	config_attribute_value v;
 	v = str;
 	return *this == v;
-	// if c["a"] = "1" then this solution would have resulted in c["a"] == "1" beeing false
+	// if c["a"] = "1" then this solution would have resulted in c["a"] == "1" being false
 	// because a["a"] is '1' and not '"1"'.
 	// return boost::apply_visitor(std::bind( equality_visitor(), _1, std::cref(str) ), value_);
 	// that's why we don't use it.

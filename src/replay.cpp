@@ -838,7 +838,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			//this means user choice.
 			// it never makes sense to try to execute a user choice.
 			// but we are called from
-			// the only other option for "dependent" command is checksum wich is already checked.
+			// the only other option for "dependent" command is checksum which is already checked.
 			assert(cfg->all_children_count() == 1);
 			std::string child_name = cfg->all_children_range().front().key;
 			DBG_REPLAY << "got an dependent action name = " << child_name <<"\n";

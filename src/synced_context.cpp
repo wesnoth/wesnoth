@@ -122,7 +122,7 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 	}
 	case(synced_context::LOCAL_CHOICE):
 		ERR_REPLAY << "trying to execute action while being in a local_choice" << std::endl;
-		//we reject it because such actions usually change the gamestate badly which is not intented during a local_choice.
+		//we reject it because such actions usually change the gamestate badly which is not intended during a local_choice.
 		//Also we cannot invoke synced commands here, because multiple clients might run local choices
 		//simultaniously so it could result in invoking different synced commands simultaniously.
 		return false;
@@ -280,7 +280,7 @@ void synced_context::server_choice::send_request() const
 config synced_context::ask_server_choice(const server_choice& sch)
 {
 	if (!is_synced()) {
-		ERR_REPLAY << "Trying to ask the server for a '" << sch.name() << "' choice in a unsynced context, doing the choice locally. This can casue OOS.\n";
+		ERR_REPLAY << "Trying to ask the server for a '" << sch.name() << "' choice in a unsynced context, doing the choice locally. This can cause OOS.\n";
 		return sch.local_choice();
 	}
 	set_is_simultaneously();
@@ -423,7 +423,7 @@ checkup* set_scontext_synced::generate_checkup(const std::string& tagname)
 }
 
 /*
-	so we dont have to write the same code 3 times.
+	so we don't have to write the same code 3 times.
 */
 void set_scontext_synced::init()
 {

@@ -479,7 +479,7 @@ inline bool fire_event(const ui_event event,
  * @pre                           w != nullptr
  *
  * @tparam T                      The signal type of the event to handle.
- * @tparam F                      The paramater pack type.
+ * @tparam F                      The parameter pack type.
  *
  *
  * @param event                   The event to fire.

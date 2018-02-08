@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2008 - 2018 by Pauli Nieminen <paniemin@cc.hut.fi>
-   Part of thie Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -287,4 +287,3 @@ BOOST_AUTO_TEST_CASE( track_fake_unit_by_iterator ) {
 
 /* vim: set ts=4 sw=4: */
 BOOST_AUTO_TEST_SUITE_END()
-

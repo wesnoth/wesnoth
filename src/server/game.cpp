@@ -273,7 +273,7 @@ void game::perform_controller_tweaks()
 				user_name = username(user->socket());
 			}
 
-			// Issue change_controller command, transfering this side to its owner with proper name and controller.
+			// Issue change_controller command, transferring this side to its owner with proper name and controller.
 			// Ensures that what the server now thinks is true is effected on all of the clients.
 			//
 			// We use the "player_left" field as follows. Normally change_controller sends one message to the owner,
@@ -572,7 +572,7 @@ void game::transfer_side_control(const socket_ptr& sock, const simple_wml::node&
 	// Not supported anymore.
 	if(newplayer_name.empty()) {
 		std::stringstream msg;
-		msg << "Recived invalid [change_controller] with no player= attribute specified";
+		msg << "Received invalid [change_controller] with no player= attribute specified";
 		DBG_GAME << msg.str() << "\n";
 		send_server_message(msg.str(), sock);
 		return;
@@ -1321,7 +1321,7 @@ void game::process_change_turns_wml(simple_wml::document& data, const socket_ptr
 
 	assert(static_cast<int>(this->current_turn()) == current_turn);
 	description_->set_attr_dup("turn", describe_turns(current_turn, num_turns_).c_str());
-	// Dont send or store this change, all players should have gotten it by wml.
+	// Don't send or store this change, all players should have gotten it by wml.
 }
 
 bool game::end_turn()
@@ -1813,15 +1813,15 @@ void game::save_replay()
 		const bool has_old_replay = level_.child("replay") != nullptr;
 
 		// If there is already a replay in the level_, which means this is a reloaded game,
-		// then we dont need to add the [start] in the replay.
+		// then we don't need to add the [start] in the replay.
 		replay_data
 			<< level_.output()
 			// This can result in having 2 [replay] at toplevel since level_ can contain one already. But the
 			// client can handle this (simply merges them).
 			<< "[replay]\n"
 			// The [start] is generated at the clients and not sent over the network so we add it here.
-			// It usualy contains some checkup data that is used to check whether the calculated results
-			// match the ones calculated in the replay. But thats not necessary
+			// It usually contains some checkup data that is used to check whether the calculated results
+			// match the ones calculated in the replay. But that's not necessary
 			<< (has_old_replay ? "" : "\t[command]\n\t\t[start]\n\t\t[/start]\n\t[/command]\n")
 			<< replay_commands << "[/replay]\n";
 

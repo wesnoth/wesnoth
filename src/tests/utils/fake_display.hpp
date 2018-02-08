@@ -25,7 +25,7 @@ namespace test_utils {
 	 * than zero.
 	 *
 	 * @param width               The width of the display.
-	 * @param height              The height of the dislay.
+	 * @param height              The height of the display.
 	 *
 	 * @returns                   The display.
 	 */

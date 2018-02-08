@@ -132,7 +132,7 @@ base_manager::~base_manager()
 void prefs_event_handler::handle_window_event(const SDL_Event& event)
 {
 
-	// Saftey check to make sure this is a window event
+	// Safety check to make sure this is a window event
 	if (event.type != SDL_WINDOWEVENT) return;
 
 	switch(event.window.event) {
@@ -1086,4 +1086,3 @@ void set_damage_prediction_allow_monte_carlo_simulation(bool value)
 }
 
 } // end namespace preferences
-

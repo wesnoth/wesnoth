@@ -204,7 +204,7 @@ void game_state::init(const config& level, play_controller & pc)
 		build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
 	}
-	//Initilize the lua kernel before the units are created.
+	//Initialize the lua kernel before the units are created.
 	lua_kernel_->initialize(level);
 
 	{

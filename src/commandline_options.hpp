@@ -147,9 +147,9 @@ public:
 	bool preprocess;
 	/// Defines that were given to the --preprocess option.
 	boost::optional<std::vector<std::string> > preprocess_defines;
-	/// Non-empty if --preprocess-input-macros was given on the command line. Specifies a file that contains [preproc_define]s to be included before preprocessing. Dependant on --preprocess.
+	/// Non-empty if --preprocess-input-macros was given on the command line. Specifies a file that contains [preproc_define]s to be included before preprocessing. Dependent on --preprocess.
 	boost::optional<std::string> preprocess_input_macros;
-	/// Non-empty if --preprocess-output-macros was given on the command line. Outputs all preprocessed macros to the specified file. Dependant on --preprocess.
+	/// Non-empty if --preprocess-output-macros was given on the command line. Outputs all preprocessed macros to the specified file. Dependent on --preprocess.
 	boost::optional<std::string> preprocess_output_macros;
 	/// Path to parse that was given to the --preprocess option.
 	boost::optional<std::string> preprocess_path;
@@ -191,7 +191,7 @@ public:
 	bool headless_unit_test;
 	/// Non-empty if --timeout was given on the command line. Dependent on --unit.
 	boost::optional<unsigned int> timeout;
-	/// True if --noreplaycheck was given on the comand line. Dependent on --unit.
+	/// True if --noreplaycheck was given on the command line. Dependent on --unit.
 	bool noreplaycheck;
 	/// True if --mp-test was given on the command line.
 	bool mptest;

@@ -17,7 +17,7 @@
 class config;
 /**
 	A class to check whether the results that were calculated in the replay match the results calculated during the original game.
-	note, that you shouldn't add new checkups to existent user actions or you might break replay compability by bringing the [checkups] tag of older saves in unorder.
+	note, that you shouldn't add new checkups to existent user actions or you might break replay compatibility by bringing the [checkups] tag of older saves in unorder.
 
 	so if you really want to add new checkups, you should wrap your checkup_instance->... call in a if(resources::state_of_game->classification.version ....) or similar.
 */

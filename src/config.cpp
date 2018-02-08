@@ -43,7 +43,7 @@ static lg::log_domain log_config("config");
 
 namespace
 {
-// std::map::operator[] does not support heterogenous lookup so we need this to work around.
+// std::map::operator[] does not support heterogeneous lookup so we need this to work around.
 template<typename Map, typename Key>
 typename Map::mapped_type& map_get(Map& map, Key&& key)
 {
@@ -56,7 +56,7 @@ typename Map::mapped_type& map_get(Map& map, Key&& key)
 	return res->second;
 }
 
-// std::map::erase does not support heterogenous lookup so we need this to work around.
+// std::map::erase does not support heterogeneous lookup so we need this to work around.
 template<typename Map, typename Key>
 int map_erase_key(Map& map, Key&& key)
 {
@@ -302,7 +302,7 @@ void config::append(config&& cfg)
 	}
 	else {
 		for(const attribute& v : cfg.values_) {
-			//TODO: move the attributes aswell?
+			//TODO: move the attributes as well?
 			values_[v.first] = v.second;
 		}
 	}

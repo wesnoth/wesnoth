@@ -23,7 +23,7 @@ namespace ng
 /**
  * configure_engine
  *
- * this class wraps the parameters relevent to mp_configure,
+ * this class wraps the parameters relevant to mp_configure,
  * as well as providing defaults for these parameters.
  */
 class configure_engine
