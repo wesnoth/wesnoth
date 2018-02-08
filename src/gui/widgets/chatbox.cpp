@@ -225,7 +225,17 @@ void chatbox::add_chat_message(const time_t& /*time*/,
 	const std::string& message,
 	events::chat_handler::MESSAGE_TYPE /*type*/)
 {
-	const std::string text = formatter() << "<b>" << speaker << ":</b> " << font::escape_text(message);
+	std::string text;
+
+	// FIXME: the chat_command_handler class (which handles chat commands) dispatches a
+	// message consisting of '/me insert text here' in the case the '/me' or '/emote'
+	// commands are used, so we need to do some manual preprocessing here.
+	if(message.compare(0, 4, "/me ") == 0) {
+		text = formatter() << "<i>" << speaker << " " << font::escape_text(message.substr(4)) << "</i>";
+	} else {
+		text = formatter() << "<b>" << speaker << ":</b> " << font::escape_text(message);
+	}
+
 	append_to_chatbox(text);
 }
 
