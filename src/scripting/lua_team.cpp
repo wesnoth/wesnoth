@@ -86,6 +86,7 @@ static int impl_side_get(lua_State *L)
 	return_string_attrib("share_vision", t.share_vision().to_string());
 	return_bool_attrib("share_maps", t.share_maps());
 	return_bool_attrib("share_view", t.share_view());
+	return_bool_attrib("chose_random", t.chose_random());
 
 	if (strcmp(m, "recruit") == 0) {
 		const std::set<std::string>& recruits = t.recruits();

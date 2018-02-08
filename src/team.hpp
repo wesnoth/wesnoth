@@ -398,6 +398,12 @@ public:
 		info_.handle_legacy_share_vision(cfg);
 	}
 	std::string allied_human_teams() const;
+
+	bool chose_random() const
+	{
+		return info_.chose_random;
+	}
+
 private:
 
 	const std::vector<const shroud_map*>& ally_shroud(const std::vector<team>& teams) const;
