@@ -947,6 +947,12 @@ void attack::fire_event(const std::string& n)
 		return;
 	}
 
+	// damage_inflicted is set in these two events.
+	// TODO: should we set this value from unit_info::damage, or continue using the WML variable?
+	if(n == "attacker_hits" || n == "defender_hits") {
+		ev_data["damage_inflicted"] = resources::gamedata->get_variable("damage_inflicted");
+	}
+
 	const int defender_side = d_.get_unit().side();
 
 	resources::game_events->pump().fire(n,

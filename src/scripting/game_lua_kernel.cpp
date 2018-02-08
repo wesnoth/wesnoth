@@ -1359,6 +1359,12 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 		if (const config &weapon = ev.data.child("second")) {
 			cfg.add_child("second_weapon", weapon);
 		}
+
+		const config::attribute_value di = ev.data["damage_inflicted"];
+		if(!di.empty()) {
+			cfg["damage_inflicted"] = di;
+		}
+
 		if (ev.loc1.valid()) {
 			cfg["x1"] = ev.loc1.filter_loc().wml_x();
 			cfg["y1"] = ev.loc1.filter_loc().wml_y();
