@@ -52,7 +52,7 @@ tokenizer::~tokenizer()
 
 const token &tokenizer::next_token()
 {
-#if DEBUG_TOKENIZER
+#ifdef DEBUG_TOKENIZER
 	previous_token_ = token_;
 #endif
 	token_.value.clear();
