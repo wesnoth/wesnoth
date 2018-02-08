@@ -6245,7 +6245,6 @@
 					"$(OTHER_CFLAGS)",
 					"-include",
 					"../../src/boost-patched/bind/arg.hpp",
-					"-I/usr/local/opt/openssl@1.1/include",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -6277,8 +6276,7 @@
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-include",
-					"../../src/boost-patched/bind/arg.hpp",
-					"-I/usr/local/opt/openssl@1.1/include",
+					"$(PROJECT_DIR)/../../src/boost-patched/bind/arg.hpp",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -6321,15 +6319,15 @@
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					../../src,
-					./Headers,
-					"./Headers/glib-2.0",
-					./Headers/cairo,
-					./lib/SDL2.framework/Headers,
-					./lib/SDL2_ttf.framework/Headers,
-					./lib/SDL2_image.framework/Headers,
-					./lib/SDL2_mixer.framework/Headers,
-					./lib/SDL2_net.framework/Headers,
+					"$(PROJECT_DIR)/../../src",
+					"$(PROJECT_DIR)/Headers",
+					"$(PROJECT_DIR)/Headers/cairo",
+					"$(PROJECT_DIR)/Headers/glib-2.0",
+					"$(PROJECT_DIR)/lib/SDL2.framework/Headers",
+					"$(PROJECT_DIR)/lib/SDL2_ttf.framework/Headers",
+					"$(PROJECT_DIR)/lib/SDL2_image.framework/Headers",
+					"$(PROJECT_DIR)/lib/SDL2_mixer.framework/Headers",
+					"$(PROJECT_DIR)/lib/SDL2_net.framework/Headers",
 				);
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
@@ -6346,7 +6344,7 @@
 					"-lbz2",
 				);
 				SDKROOT = macosx;
-				SYSTEM_HEADER_SEARCH_PATHS = $PROJECT_DIR/Headers;
+				SYSTEM_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Headers";
 				WARNING_CFLAGS = (
 					"-Werror=format",
 					"-Werror=missing-braces",
@@ -6373,15 +6371,15 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					../../src,
-					./Headers,
-					"./Headers/glib-2.0",
-					./Headers/cairo,
-					./lib/SDL2.framework/Headers,
-					./lib/SDL2_ttf.framework/Headers,
-					./lib/SDL2_image.framework/Headers,
-					./lib/SDL2_mixer.framework/Headers,
-					./lib/SDL2_net.framework/Headers,
+					"$(PROJECT_DIR)/../../src",
+					"$(PROJECT_DIR)/Headers",
+					"$(PROJECT_DIR)/Headers/cairo",
+					"$(PROJECT_DIR)/Headers/glib-2.0",
+					"$(PROJECT_DIR)/lib/SDL2.framework/Headers",
+					"$(PROJECT_DIR)/lib/SDL2_ttf.framework/Headers",
+					"$(PROJECT_DIR)/lib/SDL2_image.framework/Headers",
+					"$(PROJECT_DIR)/lib/SDL2_mixer.framework/Headers",
+					"$(PROJECT_DIR)/lib/SDL2_net.framework/Headers",
 				);
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
@@ -6395,7 +6393,7 @@
 					"-lbz2",
 				);
 				SDKROOT = macosx;
-				SYSTEM_HEADER_SEARCH_PATHS = $PROJECT_DIR/Headers;
+				SYSTEM_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Headers";
 				WARNING_CFLAGS = (
 					"-Werror=format",
 					"-Werror=missing-braces",
