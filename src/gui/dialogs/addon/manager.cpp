@@ -227,7 +227,7 @@ const std::vector<std::pair<ADDON_TYPE, std::string>> addon_manager::type_filter
 	{ADDON_MP_MAPS,        N_("addons_of_type^MP map-packs")},
 	{ADDON_MP_ERA,         N_("addons_of_type^MP eras")},
 	{ADDON_MP_FACTION,     N_("addons_of_type^MP factions")},
-	{ADDON_MP_MOD,         N_("addons_of_type^MP modifications")},
+	{ADDON_MOD,            N_("addons_of_type^Modifications")},
 	{ADDON_CORE,           N_("addons_of_type^Cores")},
 	{ADDON_MEDIA,          N_("addons_of_type^Resources")},
 	// FIXME: (also in WML) should this and Unknown be a single option in the UI?

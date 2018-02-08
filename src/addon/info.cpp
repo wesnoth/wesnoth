@@ -165,8 +165,8 @@ std::string addon_info::display_type() const
 		return _("addon_type^MP scenario");
 	case ADDON_MP_CAMPAIGN:
 		return _("addon_type^MP campaign");
-	case ADDON_MP_MOD:
-		return _("addon_type^MP modification");
+	case ADDON_MOD:
+		return _("addon_type^Modification");
 	case ADDON_CORE:
 		return _("addon_type^Core");
 	case ADDON_MEDIA:

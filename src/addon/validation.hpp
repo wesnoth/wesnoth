@@ -49,7 +49,7 @@ enum ADDON_TYPE {
 	ADDON_MP_ERA,		/**< Multiplayer era. */
 	ADDON_MP_FACTION,	/**< Multiplayer faction. */
 	// NOTE: following two still require proper engine support
-	ADDON_MP_MOD,		/**< Modification of the game for MP. */
+	ADDON_MOD,		/**< Modification of the game. */
 	//ADDON_GUI,			// GUI add-ons/themes.
 	ADDON_MEDIA,		/**< Miscellaneous content/media (unit packs, terrain packs, music packs, etc.). */
 	ADDON_OTHER,		/**< an add-on that fits in no other category */
