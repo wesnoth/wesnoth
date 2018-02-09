@@ -133,35 +133,12 @@ namespace {
 		const std::vector<std::string> filtertext_;
 	};
 
-	/**
-	 * Retrieves an element from the given associative container or dies in some
-	 * way.
-	 *
-	 * It fails an @a assert() check or throws an exception if the requested element
-	 * does not exist.
-	 *
-	 * @return An element from the container that is guaranteed to have existed
-	 *         before running this function.
-	 */
-	template <typename MapT>
-	typename MapT::mapped_type const& const_at(typename MapT::key_type const& key,
-										   const MapT& map)
-	{
-		typename MapT::const_iterator it = map.find(key);
-		if(it == map.end()) {
-			assert(it != map.end());
-			throw std::out_of_range(
-					"const_at()"); // Shouldn't get here without disabling assert()
-		}
-		return it->second;
-	}
-
 	std::string make_display_dependencies(
 		const std::string& addon_id,
 		const addons_list& addons_list,
 		const addons_tracking_list& addon_states)
 	{
-		const addon_info& addon = const_at(addon_id, addons_list);
+		const addon_info& addon = addons_list.at(addon_id);
 		std::string str;
 
 		const std::set<std::string>& deps = addon.resolve_dependencies(addons_list);
