@@ -67,7 +67,7 @@ script:
           export DISPLAY=:99.0;
           /sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24;
           
-          docker run -v `pwd`/build-cache:/home/wesnoth-travis/build wesnoth-repo:16.04 bash -c './docker_run.sh "$@"' bash "$NLS" "$TOOL" "$CC" "$CXX" "$CXXSTD" "$EXTRA_FLAGS_RELEASE" "$WML_TESTS" "$WML_TEST_TIME" "$PLAY_TEST" "$MP_TEST" "$BOOST_TEST";
+          docker run -v "$PWD"/build-cache:/home/wesnoth-travis/build wesnoth-repo:16.04 bash -c './docker_run.sh "$@"' bash "$NLS" "$TOOL" "$CC" "$CXX" "$CXXSTD" "$EXTRA_FLAGS_RELEASE" "$WML_TESTS" "$WML_TEST_TIME" "$PLAY_TEST" "$MP_TEST" "$BOOST_TEST";
       fi
 
 notifications:
