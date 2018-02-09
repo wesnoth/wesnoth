@@ -1502,13 +1502,19 @@ void display::draw_all_panels()
 	render_buttons();
 }
 
-
 static void draw_background(surface screen, const SDL_Rect& area, const std::string& image)
 {
+	// No background image, just fill in black.
+	if(image.empty()) {
+		sdl::fill_rectangle(area, color_t(0, 0, 0));
+		return;
+	}
+
 	const surface background(image::get_image(image));
 	if(background.null()) {
 		return;
 	}
+
 	const unsigned int width = background->w;
 	const unsigned int height = background->h;
 

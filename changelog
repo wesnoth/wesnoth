@@ -66,6 +66,8 @@ Version 1.13.11:
    * Added confirmation prompt when clearing map labels.
    * Added show_border= key to the [main_map_border] to control whether map
      borders draw. Right now this is utilized in the cutscene themes.
+   * If [main_map_border] background_image= is empty, the game map background
+     will be plain black.
  * WFL Engine:
    * A new string insert() function has been added, similar to replace()
  * WML Engine:
