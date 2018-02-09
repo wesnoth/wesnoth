@@ -170,7 +170,7 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	theme_(theme_cfg, screen_.screen_area()),
 	zoom_index_(0),
 	fake_unit_man_(new fake_unit_manager(*this)),
-	builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image)),
+	builder_(new terrain_builder(level, (dc_ ? &dc_->map() : nullptr), theme_.border().tile_image, theme_.border().show_border)),
 	minimap_(nullptr),
 	minimap_location_(sdl::empty_rect),
 	redrawMinimap_(false),
@@ -277,6 +277,7 @@ display::~display()
 
 void display::set_theme(config theme_cfg) {
 	theme_ = theme(theme_cfg, screen_.screen_area());
+	builder_->set_draw_border(theme_.border().show_border);
 	menu_buttons_.clear();
 	action_buttons_.clear();
 	create_buttons();

@@ -81,13 +81,15 @@ public:
 	 *						off map image (see add_off_map_rule()).
 	 *						This image automatically gets the 'terrain/' prefix
 	 *						and '.png' suffix
+	 * @para draw_border    Whether the map border flag should be set to allow
+	 *                      its drawing.
 	 */
-	terrain_builder(const config& level, const gamemap* map, const std::string& offmap_image);
+	terrain_builder(const config& level, const gamemap* map, const std::string& offmap_image, bool draw_border);
 
 	/**  Set the config where we will parse the global terrain rules.
 	 *   This also flushes the terrain rules cache.
 	 *
-	 * @param cfg			The main grame configuration object, where the
+	 * @param cfg			The main game configuration object, where the
 	 *						[terrain_graphics] rule reside.
 	 */
 	static void set_terrain_rules_cfg(const config& cfg);
@@ -147,6 +149,11 @@ public:
 	void rebuild_all();
 
 	void rebuild_cache_all();
+
+	void set_draw_border(bool do_draw)
+	{
+		draw_border_ = do_draw;
+	}
 
 	/**
 	 * An image variant. The in-memory representation of the [variant]
@@ -843,6 +850,9 @@ private:
 	 * A map representing all locations whose terrain is of a given type.
 	 */
 	terrain_by_type_map terrain_by_type_;
+
+	/** Whether the map border should be drawn. */
+	bool draw_border_;
 
 	/** Parsed terrain rules. Cached between instances */
 	static building_ruleset building_rules_;

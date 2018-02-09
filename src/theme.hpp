@@ -85,6 +85,8 @@ class theme
 
 		std::string background_image;
 		std::string tile_image;
+
+		bool show_border;
 	};
 
 public:

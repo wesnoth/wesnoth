@@ -241,11 +241,12 @@ const terrain_builder::tile& terrain_builder::tilemap::operator[](const map_loca
 	return tiles_[(loc.x + 2) + (loc.y + 2) * (x_ + 4)];
 }
 
-terrain_builder::terrain_builder(const config& level, const gamemap* m, const std::string& offmap_image)
+terrain_builder::terrain_builder(const config& level, const gamemap* m, const std::string& offmap_image, bool draw_border)
 	: tilewidth_(game_config::tile_size)
 	, map_(m)
 	, tile_map_(m ? map().w() : 0, m ? map().h() : 0)
 	, terrain_by_type_()
+	, draw_border_(draw_border)
 {
 	image::precache_file_existence("terrain/");
 
@@ -1142,7 +1143,7 @@ void terrain_builder::build_terrains()
 
 			// Flag all hexes according to whether they're on the border or not,
 			// to make it easier for WML to draw the borders
-			if(!map().on_board(loc)) {
+			if(draw_border_&& !map().on_board(loc)) {
 				tile_map_[loc].flags.insert("_border");
 			} else {
 				tile_map_[loc].flags.insert("_board");

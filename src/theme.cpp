@@ -297,6 +297,7 @@ theme::border_t::border_t()
 	: size(0.0)
 	, background_image()
 	, tile_image()
+	, show_border(true)
 {
 }
 
@@ -304,6 +305,7 @@ theme::border_t::border_t(const config& cfg)
 	: size(cfg["border_size"].to_double())
 	, background_image(cfg["background_image"])
 	, tile_image(cfg["tile_image"])
+	, show_border(cfg["show_border"].to_bool(true))
 {
 	VALIDATE(size >= 0.0 && size <= 0.5, _("border_size should be between 0.0 and 0.5."));
 }
