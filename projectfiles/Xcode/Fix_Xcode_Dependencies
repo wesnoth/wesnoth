@@ -4,6 +4,8 @@
 # Martin Hrubý (hrubymar10), 2016-2018
 #
 
+###TODO: check if file isn't already downloaded or extracted
+
 starttimestamp=`date +%s`
 
 MY_PATH="`dirname \"$0\"`"              # relative
@@ -182,7 +184,7 @@ if [ "$sdl2_path" == "none" ]; then
         wget "https://www.libsdl.org/release/SDL2-$sdl2_required_version.dmg" -q --show-progress
         #TODO: check checksum of downloaded file
         hdiutil attach "SDL2-$sdl2_required_version.dmg" > /dev/null
-        cp -rf /Volumes/SDL2/SDL2.framework SDL2.framework
+        cp -Rf /Volumes/SDL2/SDL2.framework SDL2.framework
         hdiutil detach /Volumes/SDL2 > /dev/null
         sdl2_path="$MY_PATH/temp/SDL2.framework"
 fi
@@ -215,7 +217,7 @@ if [ "$sdl2_image_path" == "none" ]; then
         wget "https://www.libsdl.org/projects/SDL_image/release/SDL2_image-$sdl2_image_required_version.dmg" -q --show-progress
         #TODO: check checksum of downloaded file
         hdiutil attach "SDL2_image-$sdl2_image_required_version.dmg" > /dev/null
-        cp -rf /Volumes/SDL2_image/SDL2_image.framework SDL2_image.framework
+        cp -Rf /Volumes/SDL2_image/SDL2_image.framework SDL2_image.framework
         hdiutil detach /Volumes/SDL2_image > /dev/null
         sdl2_image_path="$MY_PATH/temp/SDL2_image.framework"
 fi
@@ -248,7 +250,7 @@ if [ "$sdl2_mixer_path" == "none" ]; then
         wget "https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-$sdl2_mixer_required_version.dmg" -q --show-progress
         #TODO: check checksum of downloaded file
         hdiutil attach "SDL2_mixer-$sdl2_mixer_required_version.dmg" > /dev/null
-        cp -rf /Volumes/SDL2_mixer/SDL2_mixer.framework SDL2_mixer.framework
+        cp -Rf /Volumes/SDL2_mixer/SDL2_mixer.framework SDL2_mixer.framework
         hdiutil detach /Volumes/SDL2_mixer > /dev/null
         sdl2_mixer_path="$MY_PATH/temp/SDL2_mixer.framework"
 fi
@@ -281,7 +283,7 @@ if [ "$sdl2_net_path" == "none" ]; then
         wget "https://www.libsdl.org/projects/SDL_net/release/SDL2_net-$sdl2_net_required_version.dmg" -q --show-progress
         #TODO: check checksum of downloaded file
         hdiutil attach "SDL2_net-$sdl2_net_required_version.dmg" > /dev/null
-        cp -rf /Volumes/SDL2_net/SDL2_net.framework SDL2_net.framework
+        cp -Rf /Volumes/SDL2_net/SDL2_net.framework SDL2_net.framework
         hdiutil detach /Volumes/SDL2_net > /dev/null
         sdl2_net_path="$MY_PATH/temp/SDL2_net.framework"
 fi
@@ -314,7 +316,7 @@ if [ "$sdl2_ttf_path" == "none" ]; then
         wget "https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-$sdl2_ttf_required_version.dmg" -q --show-progress
         #TODO: check checksum of downloaded file
         hdiutil attach "SDL2_ttf-$sdl2_ttf_required_version.dmg" > /dev/null
-        cp -rf /Volumes/SDL2_ttf/SDL2_ttf.framework SDL2_ttf.framework
+        cp -Rf /Volumes/SDL2_ttf/SDL2_ttf.framework SDL2_ttf.framework
         hdiutil detach /Volumes/SDL2_ttf > /dev/null
         sdl2_ttf_path="$MY_PATH/temp/SDL2_ttf.framework"
 fi
@@ -347,7 +349,7 @@ if [ "$growl_path" == "none" ]; then
         wget "http://growl.cachefly.net/Growl-$growl_required_version-SDK.zip" -q --show-progress
         #TODO: check checksum of downloaded file
         unzip "Growl-$growl_required_version-SDK.zip" > /dev/null
-        cp -rf "Growl-$growl_required_version-SDK/Framework/Growl.framework" Growl.framework
+        cp -Rf "Growl-$growl_required_version-SDK/Framework/Growl.framework" Growl.framework
         growl_path="$MY_PATH/temp/Growl.framework"
 fi
 ###/Growl
@@ -413,6 +415,7 @@ fi
 
 ln -s "$sdl2_path"
 ln -s "$sdl2_image_path"
+ln -s "$sdl2_mixer_path"
 ln -s "$sdl2_net_path"
 ln -s "$sdl2_ttf_path"
 ln -s "$growl_path"
