@@ -505,7 +505,7 @@
 		91A216381CAD9D4400927AEA /* viewport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6216A91B1551CCF700E13C2D /* viewport.cpp */; };
 		91A2163A1CAD9D4400927AEA /* widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BD1F0ECA805A002BE442 /* widget.cpp */; };
 		91A2163C1CAD9D4400927AEA /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BD210ECA805A002BE442 /* window.cpp */; };
-		91A41F901CA22A98008B10D5 /* libreadline.6.3.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.6.3.dylib */; };
+		91A41F901CA22A98008B10D5 /* libreadline.7.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.7.0.dylib */; };
 		91B6217C1B74E6D200B00E0F /* label_settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B6217A1B74E6D100B00E0F /* label_settings.cpp */; };
 		91B621A21B76A3CC00B00E0F /* build_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B621A11B76A3CC00B00E0F /* build_info.cpp */; };
 		91B621BA1B76B2C900B00E0F /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B621B91B76B2C900B00E0F /* version.cpp */; };
@@ -1210,7 +1210,7 @@
 		ECA563871A47BA36006278A5 /* hotkey_handler_mp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563831A47BA36006278A5 /* hotkey_handler_mp.cpp */; };
 		ECA563891A47BA36006278A5 /* hotkey_handler_sp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563851A47BA36006278A5 /* hotkey_handler_sp.cpp */; };
 		ECA5638A1A47BA36006278A5 /* hotkey_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563861A47BA36006278A5 /* hotkey_handler.cpp */; };
-		ECA9E7471CA20AA800A947D6 /* libreadline.6.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.6.3.dylib */; };
+		ECA9E7471CA20AA800A947D6 /* libreadline.7.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.7.0.dylib */; };
 		ECAA3FE718E0E4EF002E8998 /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAA3FE518E0E4EF002E8998 /* unicode.cpp */; };
 		ECAA3FE818E0E4EF002E8998 /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAA3FE518E0E4EF002E8998 /* unicode.cpp */; };
 		ECAB84551B0C1934001A3EB7 /* shroud_clearing_action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAB844E1B0C1933001A3EB7 /* shroud_clearing_action.cpp */; };
@@ -1404,7 +1404,7 @@
 				EC6C6B8B1D77CB0800807ED1 /* libpcre.1.dylib in Copy Frameworks */,
 				91B6221A1B76C0A600B00E0F /* libpixman-1.0.dylib in Copy Frameworks */,
 				91B6221B1B76C0A600B00E0F /* libpng16.16.dylib in Copy Frameworks */,
-				91A41F901CA22A98008B10D5 /* libreadline.6.3.dylib in Copy Frameworks */,
+				91A41F901CA22A98008B10D5 /* libreadline.7.0.dylib in Copy Frameworks */,
 				91B6221C1B76C0A600B00E0F /* libz.1.dylib in Copy Frameworks */,
 				B5599E8C0EC64CF2008DD061 /* SDL2_image.framework in Copy Frameworks */,
 				B5599E8E0EC64CF2008DD061 /* SDL2_mixer.framework in Copy Frameworks */,
@@ -2604,7 +2604,7 @@
 		ECA563831A47BA36006278A5 /* hotkey_handler_mp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_handler_mp.cpp; sourceTree = "<group>"; };
 		ECA563851A47BA36006278A5 /* hotkey_handler_sp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_handler_sp.cpp; sourceTree = "<group>"; };
 		ECA563861A47BA36006278A5 /* hotkey_handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_handler.cpp; sourceTree = "<group>"; };
-		ECA9E7461CA20AA800A947D6 /* libreadline.6.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libreadline.6.3.dylib; path = lib/libreadline.6.3.dylib; sourceTree = "<group>"; };
+		ECA9E7461CA20AA800A947D6 /* libreadline.7.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libreadline.7.0.dylib; path = lib/libreadline.7.0.dylib; sourceTree = "<group>"; };
 		ECAA3FE518E0E4EF002E8998 /* unicode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unicode.cpp; sourceTree = "<group>"; };
 		ECAA3FE618E0E4EF002E8998 /* unicode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unicode.hpp; sourceTree = "<group>"; };
 		ECAB844E1B0C1933001A3EB7 /* shroud_clearing_action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shroud_clearing_action.cpp; sourceTree = "<group>"; };
@@ -2751,7 +2751,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECA9E7471CA20AA800A947D6 /* libreadline.6.3.dylib in Frameworks */,
+				ECA9E7471CA20AA800A947D6 /* libreadline.7.0.dylib in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */,
 				B508D13F10013BF900B12852 /* Growl.framework in Frameworks */,
@@ -3237,7 +3237,7 @@
 				91C554661D77A545002DB0C8 /* libpcre.1.dylib */,
 				B513B2280ED36BFB0006E551 /* libpixman-1.0.dylib */,
 				EC5C243118EF07B4001FA499 /* libpng16.16.dylib */,
-				ECA9E7461CA20AA800A947D6 /* libreadline.6.3.dylib */,
+				ECA9E7461CA20AA800A947D6 /* libreadline.7.0.dylib */,
 				EC5C243A18EF07B4001FA499 /* libz.1.dylib */,
 				1058C7A0FEA54F0111CA2CBB /* Linked System Frameworks */,
 				B5A5E3AD12132C790047782D /* lua */,
@@ -4719,6 +4719,7 @@
 				B5599E8F0EC64D18008DD061 /* Copy Frameworks */,
 				B5BB6CFC0F8948FB00444FBF /* Copy Game Server */,
 				91C2A6EB1B843AA900346948 /* Copy Translations (if present) */,
+				46E8F1F7202D9C350032453F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -4862,6 +4863,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cd \"$SOURCE_ROOT/../..\"\n./utils/autorevision.sh -t h > src/revision.h";
+		};
+		46E8F1F7202D9C350032453F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "wesnothd_path=\"$TARGET_BUILD_DIR/$EXECUTABLE_FOLDER_PATH/wesnothd\"\nwesnoth_path=\"$TARGET_BUILD_DIR/$EXECUTABLE_FOLDER_PATH/Wesnoth\"\n\nif [ -f \"$wesnothd_path\" ]; then\n    install_name_tool -change \"/usr/lib/libz.1.dylib\" \"@executable_path/../Frameworks/libz.1.dylib\" \"$wesnothd_path\"\n    install_name_tool -change \"/usr/lib/libbz2.1.0.dylib\" \"@executable_path/../Frameworks/libbz2.1.0.dylib\" \"$wesnothd_path\"\n    install_name_tool -change \"/usr/local/opt/openssl@1.1/lib/libcrypto.1.1.dylib\" \"@executable_path/../Frameworks/libcrypto.1.1.dylib\" \"$wesnothd_path\"\n    install_name_tool -change \"/usr/local/opt/boost/lib/libboost_filesystem-mt.dylib\" \"@executable_path/../Frameworks/libboost_filesystem-mt.dylib\" \"$wesnothd_path\"\n    install_name_tool -change \"/usr/local/opt/boost/lib/libboost_iostreams-mt.dylib\" \"@executable_path/../Frameworks/libboost_iostreams-mt.dylib\" \"$wesnothd_path\"\n    install_name_tool -change \"/usr/local/opt/boost/lib/libboost_locale-mt.dylib\" \"@executable_path/../Frameworks/libboost_locale-mt.dylib\" \"$wesnothd_path\"\n    install_name_tool -change \"/usr/local/opt/boost/lib/libboost_random-mt.dylib\" \"@executable_path/../Frameworks/libboost_random-mt.dylib\" \"$wesnothd_path\"\n    install_name_tool -change \"/usr/local/opt/boost/lib/libboost_system-mt.dylib\" \"@executable_path/../Frameworks/libboost_system-mt.dylib\" \"$wesnothd_path\"\n    install_name_tool -change \"/usr/local/opt/pcre/lib/libpcre.1.dylib\" \"@executable_path/../Frameworks/libpcre.1.dylib\" \"$wesnothd_path\"\nfi\n\nif [ -f \"$wesnoth_path\" ]; then\n    install_name_tool -change \"/usr/lib/libz.1.dylib\" \"@executable_path/../Frameworks/libz.1.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/lib/libbz2.1.0.dylib\" \"@executable_path/../Frameworks/libbz2.1.0.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/readline/lib/libreadline.7.dylib\" \"@executable_path/../Frameworks/libreadline.7.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/boost/lib/libboost_filesystem-mt.dylib\" \"@executable_path/../Frameworks/libboost_filesystem-mt.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/boost/lib/libboost_iostreams-mt.dylib\" \"@executable_path/../Frameworks/libboost_iostreams-mt.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/boost/lib/libboost_locale-mt.dylib\" \"@executable_path/../Frameworks//usr/local/opt/boost/lib/libboost_locale-mt.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/boost/lib/libboost_program_options-mt.dylib\" \"@executable_path/../Frameworks/libboost_program_options-mt.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/boost/lib/libboost_random-mt.dylib\" \"@executable_path/../Frameworks/libboost_random-mt.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/boost/lib/libboost_regex-mt.dylib\" \"@executable_path/../Frameworks/libboost_regex-mt.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/boost/lib/libboost_system-mt.dylib\" \"@executable_path/../Frameworks/libboost_system-mt.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/boost/lib/libboost_thread-mt.dylib\" \"@executable_path/../Frameworks/libboost_thread-mt.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/openssl@1.1/lib/libcrypto.1.1.dylib\" \"@executable_path/../Frameworks/libcrypto.1.1.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/cairo/lib/libcairo.2.dylib\" \"@executable_path/../Frameworks/libcairo.2.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/lib/libexpat.1.dylib\" \"@executable_path/../Frameworks/libexpat.1.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/libffi/lib/libffi.6.dylib\" \"@executable_path/../Frameworks/libffi.6.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/fontconfig/lib/libfontconfig.1.dylib\" \"@executable_path/../Frameworks/libfontconfig.1.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/freetype/lib/libfreetype.6.dylib\" \"@executable_path/../Frameworks/libfreetype.6.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/glib/lib/libglib-2.0.0.dylib\" \"@executable_path/../Frameworks/libglib-2.0.0.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/glib/lib/libgmodule-2.0.0.dylib\" \"@executable_path/../Frameworks/libgmodule-2.0.0.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/glib/lib/libgobject-2.0.0.dylib\" \"@executable_path/../Frameworks/libgobject-2.0.0.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/graphite2/lib/libgraphite2.3.dylib\" \"@executable_path/../Frameworks/libgraphite2.3.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/glib/lib/libgthread-2.0.0.dylib\" \"@executable_path/../Frameworks/libgthread-2.0.0.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/harfbuzz/lib/libharfbuzz.0.dylib\" \"@executable_path/../Frameworks/libharfbuzz.0.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/lib/libiconv.2.dylib\" \"@executable_path/../Frameworks/libiconv.2.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/pango/lib/libpango-1.0.0.dylib\" \"@executable_path/../Frameworks/libpango-1.0.0.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/pango/lib/libpangocairo-1.0.0.dylib\" \"@executable_path/../Frameworks/libpangocairo-1.0.0.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/pcre/lib/libpcre.1.dylib\" \"@executable_path/../Frameworks/libpcre.1.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/pango/lib/libpangoft2-1.0.0.dylib\" \"@executable_path/../Frameworks/libpangoft2-1.0.0.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/pixman/lib/libpixman-1.0.dylib\" \"@executable_path/../Frameworks/libpixman-1.0.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/libpng/lib/libpng16.16.dylib\" \"@executable_path/../Frameworks/libpng16.16.dylib\" \"$wesnoth_path\"\n    install_name_tool -change \"/usr/local/opt/gettext/lib/libintl.8.dylib\" \"@executable_path/../Frameworks/libintl.8.dylib\" \"$wesnoth_path\"\nfi";
 		};
 		91C2A6EB1B843AA900346948 /* Copy Translations (if present) */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -6295,7 +6309,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				FRAMEWORK_SEARCH_PATHS = ./lib;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
 				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_INPUT_FILETYPE = automatic;
@@ -6362,7 +6376,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				FRAMEWORK_SEARCH_PATHS = ./lib;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
 				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",

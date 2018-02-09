@@ -1,0 +1,448 @@
+#!/usr/bin/env bash
+#
+# Fix_Xcode_Dependencies
+# Martin Hrubý (hrubymar10), 2016-2018
+#
+
+starttimestamp=`date +%s`
+
+MY_PATH="`dirname \"$0\"`"              # relative
+MY_PATH="`( cd \"$MY_PATH\" && pwd )`"  # absolutized and normalized
+if [ -z "$MY_PATH" ] ; then
+        # error; for some reason, the path is not accessible
+        # to the script (e.g. permissions re-evaled after suid)
+        exit 1  # fail
+fi
+cd "$MY_PATH"
+
+if ! [ -d "Wesnoth.xcodeproj" ]; then
+        echo "I am in bad directory! I must be in wesnoth/projectfiles/Xcode !"
+        exit 1
+fi
+
+###TODO: xcode commandline tools check
+
+if ! [ -x "$(command -v brew)" ]; then
+        echo 'Error: Homebrew is not installed. See https://brew.sh/' >&2
+        exit 1
+fi
+
+if ! brew ls --versions gettext > /dev/null; then
+        echo "==> Installing gettext"
+        brew install gettext
+fi
+
+if ! brew ls --versions boost > /dev/null; then
+        echo "==> Installing boost"
+        brew install boost
+fi
+
+if ! brew ls --versions libpng > /dev/null; then
+        echo "==> Installing libpng"
+        brew install libpng
+fi
+
+if ! brew ls --versions fontconfig > /dev/null; then
+        echo "==> Installing fontconfig"
+        brew install fontconfig
+fi
+
+if ! brew ls --versions cairo > /dev/null; then
+        echo "==> Installing cairo"
+        brew install cairo
+fi
+
+if ! brew ls --versions pango > /dev/null; then
+        echo "==> Installing pango"
+        brew install pango
+fi
+
+if ! brew ls --versions sdl2 > /dev/null; then
+        echo "==> Installing sdl2"
+        brew install sdl2
+fi
+
+if ! brew ls --versions sdl2_image > /dev/null; then
+        echo "==> Installing sdl2_image"
+        brew install sdl2_image
+fi
+
+if ! brew ls --versions sdl2_mixer > /dev/null; then
+        echo "==> Installing sdl2_mixer"
+        brew install sdl2_mixer
+fi
+
+if ! brew ls --versions sdl2_net > /dev/null; then
+        echo "==> Installing sdl2_net"
+        brew install sdl2_net
+fi
+
+if ! brew ls --versions sdl2_ttf > /dev/null; then
+        echo "==> Installing sdl2_ttf"
+        brew install sdl2_ttf
+fi
+
+if ! brew ls --versions openssl@1.1 > /dev/null; then
+        echo "==> Installing openssl@1.1"
+        brew install openssl@1.1
+fi
+
+if ! brew ls --versions libffi > /dev/null; then
+        echo "==> Installing libffi"
+        brew install libffi
+fi
+
+if ! brew ls --versions freetype > /dev/null; then
+        echo "==> Installing freetype"
+        brew install freetype
+fi
+
+if ! brew ls --versions glib > /dev/null; then
+        echo "==> Installing glib"
+        brew install glib
+fi
+
+if ! brew ls --versions graphite2 > /dev/null; then
+        echo "==> Installing graphite2"
+        brew install graphite2
+fi
+
+if ! brew ls --versions readline > /dev/null; then
+        echo "==> Installing readline"
+        brew install readline
+fi
+
+if ! brew ls --versions harfbuzz > /dev/null; then
+        echo "==> Installing harfbuzz"
+        brew install harfbuzz
+fi
+
+if ! brew ls --versions pcre > /dev/null; then
+        echo "==> Installing pcre"
+        brew install pcre
+fi
+
+if ! brew ls --versions pixman > /dev/null; then
+        echo "==> Installing pixman"
+        brew install pixman
+fi
+
+if ! brew ls --versions wget > /dev/null; then
+        echo "==> Installing wget"
+        brew install wget
+fi
+
+if [ -d "Headers" ]; then
+        rm -rf Headers
+fi
+mkdir Headers
+cd Headers
+ln -s /usr/local/opt/boost/include/boost
+ln -s /usr/local/opt/cairo/include/cairo
+ln -s /usr/local/opt/fontconfig/include/fontconfig
+ln -s /usr/local/opt/glib/include/glib-2.0
+ln -s /usr/local/opt/glib/lib/glib-2.0/include/glibconfig.h
+ln -s /usr/local/opt/gettext/include/libintl.h
+ln -s /usr/local/opt/openssl@1.1/include/openssl
+ln -s /usr/local/opt/pango/include/pango-1.0/pango
+ln -s /usr/local/opt/libpng/include/libpng16/png.h
+ln -s /usr/local/opt/libpng/include/libpng16/pngconf.h
+ln -s /usr/local/opt/libpng/include/libpng16/pnglibconf.h
+ln -s /usr/local/opt/readline/include/readline
+cd ..
+
+if ! [ -d temp ]; then
+        mkdir temp
+fi
+cd temp
+###SDL2
+sdl2_path="none"
+sdl2_required_version="2.0.7"
+if [ -d "/Library/Frameworks/SDL2.framework" ]; then
+        sdl2_version=`defaults read /Library/Frameworks/SDL2.framework/Versions/A/Resources/Info.plist CFBundleVersion`
+        if [ "$sdl2_version" == "$sdl2_required_version" ]; then
+                echo "==> Using SDL2.framework from /Library/Frameworks"
+                sdl2_path="/Library/Frameworks/SDL2.framework"
+        fi
+fi
+if [ "$sdl2_path" == "none" ]; then
+        if [ -d "$MY_PATH/temp/SDL2.framework" ]; then
+                sdl2_version=`defaults read $MY_PATH/temp/SDL2.framework/Versions/A/Resources/Info.plist CFBundleVersion`
+                if [ "$sdl2_version" == "$sdl2_required_version" ]; then
+                        echo "==> Using SDL2.framework from temp"
+                        sdl2_path="$MY_PATH/temp/SDL2.framework"
+                else
+                        echo "==> Found old SDL2.framework in temp"
+                        rm -rf SDL2.framework
+                fi  
+        fi
+fi
+if [ "$sdl2_path" == "none" ]; then
+        echo "==> Downloading SDL2 $sdl2_required_version"
+        wget "https://www.libsdl.org/release/SDL2-$sdl2_required_version.dmg" -q --show-progress
+        #TODO: check checksum of downloaded file
+        hdiutil attach "SDL2-$sdl2_required_version.dmg" > /dev/null
+        cp -rf /Volumes/SDL2/SDL2.framework SDL2.framework
+        hdiutil detach /Volumes/SDL2 > /dev/null
+        sdl2_path="$MY_PATH/temp/SDL2.framework"
+fi
+###/SDL2
+
+###SDL2_image
+sdl2_image_path="none"
+sdl2_image_required_version="2.0.2"
+if [ -d "/Library/Frameworks/SDL2_image.framework" ]; then
+        sdl2_image_version=`defaults read /Library/Frameworks/SDL2_image.framework/Versions/A/Resources/Info.plist CFBundleVersion`
+        if [ "$sdl2_image_version" == "$sdl2_image_required_version" ]; then
+                echo "==> Using SDL2_image.framework from /Library/Frameworks"
+                sdl2_image_path="/Library/Frameworks/SDL2_image.framework"
+        fi
+fi
+if [ "$sdl2_image_path" == "none" ]; then
+        if [ -d "$MY_PATH/temp/SDL2_image.framework" ]; then
+                sdl2_image_version=`defaults read $MY_PATH/temp/SDL2_image.framework/Versions/A/Resources/Info.plist CFBundleVersion`
+                if [ "$sdl2_image_version" == "$sdl2_image_required_version" ]; then
+                        echo "==> Using SDL2_image.framework from temp"
+                        sdl2_image_path="$MY_PATH/temp/SDL2_image.framework"
+                else
+                        echo "==> Found old SDL2_image.framework in temp"
+                        rm -rf SDL2_image.framework
+                fi  
+        fi
+fi
+if [ "$sdl2_image_path" == "none" ]; then
+        echo "==> Downloading SDL2_image $sdl2_image_required_version"
+        wget "https://www.libsdl.org/projects/SDL_image/release/SDL2_image-$sdl2_image_required_version.dmg" -q --show-progress
+        #TODO: check checksum of downloaded file
+        hdiutil attach "SDL2_image-$sdl2_image_required_version.dmg" > /dev/null
+        cp -rf /Volumes/SDL2_image/SDL2_image.framework SDL2_image.framework
+        hdiutil detach /Volumes/SDL2_image > /dev/null
+        sdl2_image_path="$MY_PATH/temp/SDL2_image.framework"
+fi
+###/SDL2_image
+
+###SDL2_mixer
+sdl2_mixer_path="none"
+sdl2_mixer_required_version="2.0.2"
+if [ -d "/Library/Frameworks/SDL2_mixer.framework" ]; then
+        sdl2_mixer_version=`defaults read /Library/Frameworks/SDL2_mixer.framework/Versions/A/Resources/Info.plist CFBundleVersion`
+        if [ "$sdl2_mixer_version" == "$sdl2_mixer_required_version" ]; then
+                echo "==> Using SDL2_mixer.framework from /Library/Frameworks"
+                sdl2_mixer_path="/Library/Frameworks/SDL2_mixer.framework"
+        fi
+fi
+if [ "$sdl2_mixer_path" == "none" ]; then
+        if [ -d "$MY_PATH/temp/SDL2_mixer.framework" ]; then
+                sdl2_mixer_version=`defaults read $MY_PATH/temp/SDL2_mixer.framework/Versions/A/Resources/Info.plist CFBundleVersion`
+                if [ "$sdl2_mixer_version" == "$sdl2_mixer_required_version" ]; then
+                        echo "==> Using SDL2_mixer.framework from temp"
+                        sdl2_mixer_path="$MY_PATH/temp/SDL2_mixer.framework"
+                else
+                        echo "==> Found old SDL2_mixer.framework in temp"
+                        rm -rf SDL2_mixer.framework
+                fi  
+        fi
+fi
+if [ "$sdl2_mixer_path" == "none" ]; then
+        echo "==> Downloading SDL2_mixer $sdl2_mixer_required_version"
+        wget "https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-$sdl2_mixer_required_version.dmg" -q --show-progress
+        #TODO: check checksum of downloaded file
+        hdiutil attach "SDL2_mixer-$sdl2_mixer_required_version.dmg" > /dev/null
+        cp -rf /Volumes/SDL2_mixer/SDL2_mixer.framework SDL2_mixer.framework
+        hdiutil detach /Volumes/SDL2_mixer > /dev/null
+        sdl2_mixer_path="$MY_PATH/temp/SDL2_mixer.framework"
+fi
+###/SDL2_mixer
+
+###SDL2_net
+sdl2_net_path="none"
+sdl2_net_required_version="2.0.1"
+if [ -d "/Library/Frameworks/SDL2_net.framework" ]; then
+        sdl2_net_version=`defaults read /Library/Frameworks/SDL2_net.framework/Versions/A/Resources/Info.plist CFBundleVersion`
+        if [ "$sdl2_net_version" == "$sdl2_net_required_version" ]; then
+                echo "==> Using SDL2_net.framework from /Library/Frameworks"
+                sdl2_net_path="/Library/Frameworks/SDL2_net.framework"
+        fi
+fi
+if [ "$sdl2_net_path" == "none" ]; then
+        if [ -d "$MY_PATH/temp/SDL2_net.framework" ]; then
+                sdl2_net_version=`defaults read $MY_PATH/temp/SDL2_net.framework/Versions/A/Resources/Info.plist CFBundleVersion`
+                if [ "$sdl2_net_version" == "$sdl2_net_required_version" ]; then
+                        echo "==> Using SDL2_net.framework from temp"
+                        sdl2_net_path="$MY_PATH/temp/SDL2_net.framework"
+                else
+                        echo "==> Found old SDL2_net.framework in temp"
+                        rm -rf SDL2_net.framework
+                fi  
+        fi
+fi
+if [ "$sdl2_net_path" == "none" ]; then
+        echo "==> Downloading SDL2_net $sdl2_net_required_version"
+        wget "https://www.libsdl.org/projects/SDL_net/release/SDL2_net-$sdl2_net_required_version.dmg" -q --show-progress
+        #TODO: check checksum of downloaded file
+        hdiutil attach "SDL2_net-$sdl2_net_required_version.dmg" > /dev/null
+        cp -rf /Volumes/SDL2_net/SDL2_net.framework SDL2_net.framework
+        hdiutil detach /Volumes/SDL2_net > /dev/null
+        sdl2_net_path="$MY_PATH/temp/SDL2_net.framework"
+fi
+###/SDL2_net
+
+###SDL2_ttf
+sdl2_ttf_path="none"
+sdl2_ttf_required_version="2.0.14"
+if [ -d "/Library/Frameworks/SDL2_ttf.framework" ]; then
+        sdl2_ttf_version=`defaults read /Library/Frameworks/SDL2_ttf.framework/Versions/A/Resources/Info.plist CFBundleVersion`
+        if [ "$sdl2_ttf_version" == "$sdl2_ttf_required_version" ]; then
+                echo "==> Using SDL2_ttf.framework from /Library/Frameworks"
+                sdl2_ttf_path="/Library/Frameworks/SDL2_ttf.framework"
+        fi
+fi
+if [ "$sdl2_ttf_path" == "none" ]; then
+        if [ -d "$MY_PATH/temp/SDL2_ttf.framework" ]; then
+                sdl2_ttf_version=`defaults read $MY_PATH/temp/SDL2_ttf.framework/Versions/A/Resources/Info.plist CFBundleVersion`
+                if [ "$sdl2_ttf_version" == "$sdl2_ttf_required_version" ]; then
+                        echo "==> Using SDL2_ttf.framework from temp"
+                        sdl2_ttf_path="$MY_PATH/temp/SDL2_ttf.framework"
+                else
+                        echo "==> Found old SDL2_ttf.framework in temp"
+                        rm -rf SDL2_ttf.framework
+                fi  
+        fi
+fi
+if [ "$sdl2_ttf_path" == "none" ]; then
+        echo "==> Downloading SDL2_ttf $sdl2_ttf_required_version"
+        wget "https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-$sdl2_ttf_required_version.dmg" -q --show-progress
+        #TODO: check checksum of downloaded file
+        hdiutil attach "SDL2_ttf-$sdl2_ttf_required_version.dmg" > /dev/null
+        cp -rf /Volumes/SDL2_ttf/SDL2_ttf.framework SDL2_ttf.framework
+        hdiutil detach /Volumes/SDL2_ttf > /dev/null
+        sdl2_ttf_path="$MY_PATH/temp/SDL2_ttf.framework"
+fi
+###/SDL2_ttf
+
+###Growl
+growl_path="none"
+growl_required_version="2.0.1"
+if [ -d "/Library/Frameworks/Growl.framework" ]; then
+        growl_version=`defaults read /Library/Frameworks/Growl.framework/Versions/A/Resources/Info.plist CFBundleVersion`
+        if [ "$growl_version" == "$growl_required_version" ]; then
+                echo "==> Using Growl.framework from /Library/Frameworks"
+                growl_path="/Library/Frameworks/Growl.framework"
+        fi
+fi
+if [ "$growl_path" == "none" ]; then
+        if [ -d "$MY_PATH/temp/Growl.framework" ]; then
+                growl_version=`defaults read $MY_PATH/temp/Growl.framework/Versions/A/Resources/Info.plist CFBundleVersion`
+                if [ "$growl_version" == "$growl_required_version" ]; then
+                        echo "==> Using Growl.framework from temp"
+                        growl_path="$MY_PATH/temp/Growl.framework"
+                else
+                        echo "==> Found old Growl.framework in temp"
+                        rm -rf Growl.framework
+                fi  
+        fi
+fi
+if [ "$growl_path" == "none" ]; then
+        echo "==> Downloading Growl $growl_required_version"
+        wget "http://growl.cachefly.net/Growl-$growl_required_version-SDK.zip" -q --show-progress
+        #TODO: check checksum of downloaded file
+        unzip "Growl-$growl_required_version-SDK.zip" > /dev/null
+        cp -rf "Growl-$growl_required_version-SDK/Framework/Growl.framework" Growl.framework
+        growl_path="$MY_PATH/temp/Growl.framework"
+fi
+###/Growl
+cd ..
+
+if [ -d "lib" ]; then
+        rm -rf lib
+fi
+mkdir lib
+cd lib
+ln -s /usr/local/opt/boost/lib/libboost_filesystem-mt.dylib
+ln -s /usr/local/opt/boost/lib/libboost_iostreams-mt.dylib
+ln -s /usr/local/opt/boost/lib/libboost_locale-mt.dylib
+ln -s /usr/local/opt/boost/lib/libboost_program_options-mt.dylib
+ln -s /usr/local/opt/boost/lib/libboost_random-mt.dylib
+ln -s /usr/local/opt/boost/lib/libboost_regex-mt.dylib
+ln -s /usr/local/opt/boost/lib/libboost_system-mt.dylib
+ln -s /usr/local/opt/boost/lib/libboost_thread-mt.dylib
+ln -s /usr/local/opt/boost/lib/libboost_unit_test_framework-mt.dylib
+if ! [ -f /usr/lib/libbz2.1.0.dylib ]; then
+        echo "Error: File /usr/lib/libbz2.1.0.dylib doesn't exist in your instalation. Please contact support here: https://github.com/wesnoth/wesnoth/issues/new"
+        exit 1
+else
+        ln -s /usr/lib/libbz2.1.0.dylib
+fi
+ln -s /usr/local/opt/cairo/lib/libcairo.2.dylib
+ln -s /usr/local/opt/openssl@1.1/lib/libcrypto.1.1.dylib
+if ! [ -f /usr/lib/libexpat.1.dylib ]; then
+        echo "Error: File /usr/lib/libexpat.1.dylib doesn't exist in your instalation. Please contact support here: https://github.com/wesnoth/wesnoth/issues/new"
+        exit 1
+else
+        ln -s /usr/lib/libexpat.1.dylib
+fi
+ln -s /usr/local/opt/libffi/lib/libffi.6.dylib
+ln -s /usr/local/opt/fontconfig/lib/libfontconfig.1.dylib
+ln -s /usr/local/opt/freetype/lib/libfreetype.6.dylib
+ln -s /usr/local/opt/glib/lib/libglib-2.0.0.dylib
+ln -s /usr/local/opt/glib/lib/libgmodule-2.0.0.dylib
+ln -s /usr/local/opt/glib/lib/libgobject-2.0.0.dylib
+ln -s /usr/local/opt/graphite2/lib/libgraphite2.3.0.1.dylib libgraphite2.3.dylib
+ln -s /usr/local/opt/glib/lib/libgthread-2.0.0.dylib
+ln -s /usr/local/opt/harfbuzz/lib/libharfbuzz.0.dylib
+if ! [ -f /usr/lib/libiconv.2.dylib ]; then
+        echo "Error: File /usr/lib/libiconv.2.dylib doesn't exist in your instalation. Please contact support here: https://github.com/wesnoth/wesnoth/issues/new"
+        exit 1
+else
+        ln -s /usr/lib/libiconv.2.dylib
+fi
+ln -s /usr/local/opt/gettext/lib/libintl.8.dylib
+ln -s /usr/local/opt/pango/lib/libpango-1.0.0.dylib
+ln -s /usr/local/opt/pango/lib/libpangocairo-1.0.0.dylib
+ln -s /usr/local/opt/pango/lib/libpangoft2-1.0.0.dylib
+ln -s /usr/local/opt/pcre/lib/libpcre.1.dylib
+ln -s /usr/local/opt/pixman/lib/libpixman-1.0.dylib
+ln -s /usr/local/opt/libpng/lib/libpng16.16.dylib
+ln -s /usr/local/opt/readline/lib/libreadline.7.0.dylib
+if ! [ -f /usr/lib/libz.1.dylib ]; then
+        echo "Error: File /usr/lib/libz.1.dylib doesn't exist in your instalation. Please contact support here: https://github.com/wesnoth/wesnoth/issues/new"
+        exit 1
+else
+        ln -s /usr/lib/libz.1.dylib
+fi
+
+ln -s "$sdl2_path"
+ln -s "$sdl2_image_path"
+ln -s "$sdl2_net_path"
+ln -s "$sdl2_ttf_path"
+ln -s "$growl_path"
+
+endtimestamp=`date +%s`
+
+echo "==> DONE ..."
+echo
+declare -i timestamp
+declare -i days
+declare -i hours
+declare -i minutes
+declare -i seconds
+timestamp=$endtimestamp-$starttimestamp
+
+days=$timestamp/60/60/24
+hours=$((($timestamp-($days*60*60*24))/60/60))
+minutes=$((($timestamp-($days*60*60*24)-($hours*60*60))/60))
+seconds=$((($timestamp-($days*60*60*24)-($hours*60*60)-($minutes*60))))
+if [ $days -eq 0 ]; then
+    if [ $hours -eq 0 ]; then
+        if [ $minutes -eq 0 ]; then
+            echo "==> Operation took $seconds seconds ..."
+        else
+            echo "==> Operation took $minutes minutes and $seconds seconds ..."
+        fi
+    else
+        echo "==> Operation took $hours hours $minutes minutes and $seconds seconds ..."
+    fi
+else
+    echo "==> Operation took $days days $hours hours $minutes minutes and $seconds seconds ..."
+fi
+echo
