@@ -2,5 +2,7 @@ FROM wesnoth/wesnoth:16.04
 
 COPY ./ /home/wesnoth-travis/
 
+RUN apt install -y -qq python3
+
 WORKDIR /home/wesnoth-travis
 
