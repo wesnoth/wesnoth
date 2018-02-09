@@ -15,6 +15,7 @@
 
 #include "addon/info.hpp"
 #include "addon/manager.hpp"
+#include "addon/state.hpp"
 #include "addon/validation.hpp"
 #include "cursor.hpp"
 #include "font/pango/escape.hpp"
@@ -342,10 +343,20 @@ addons_client::install_result addons_client::do_resolve_addon_dependencies(const
 	std::vector<std::string> broken_deps;
 
 	for(const std::string& dep : deps) {
-		if(!is_addon_installed(dep)) {
-			if(addons.find(dep) != addons.end()) {
+		try {
+			addon_tracking_info info = get_addon_tracking_info(addons.at(dep));
+
+			// ADDON_NONE means not installed.
+			if(info.state == ADDON_NONE) {
 				missing_deps.push_back(dep);
-			} else {
+			} else if(info.state == ADDON_INSTALLED_UPGRADABLE) {
+				// Tight now, we don't need to distinguish the lists of missing
+				// and outdated addons, so just add them to missing.
+				missing_deps.push_back(dep);
+			}
+		} catch(const std::out_of_range&) {
+			// Dependency wasn't found on server, check locally directly.
+			if(!is_addon_installed(dep)) {
 				broken_deps.push_back(dep);
 			}
 		}
@@ -380,8 +391,7 @@ addons_client::install_result addons_client::do_resolve_addon_dependencies(const
 	{
 		addons_list options;
 		for(const std::string& dep : missing_deps) {
-			const addon_info& missing_addon = addons.at(dep);
-			options[dep] = missing_addon;
+			options[dep] = addons.at(dep);
 		}
 
 		gui2::dialogs::install_dependencies dlg(options);

@@ -35,8 +35,8 @@ void install_dependencies::pre_show(window& window)
 {
 	find_widget<label>(&window, "label", false).set_label(t_string(
 		_n(
-			"The selected add-on has the following dependency, which is not currently installed. Do you wish to install it before continuing?",
-			"The selected add-on has the following dependencies, which are not currently installed. Do you wish to install them before continuing?",
+			"The selected add-on has the following dependency, which is outdated or not currently installed. Do you wish to install it before continuing?",
+			"The selected add-on has the following dependencies, which are outdated or not currently installed. Do you wish to install them before continuing?",
 			addons_.size())
 	));
 
