@@ -471,13 +471,13 @@ static int impl_unit_set(lua_State *L)
 					return luaL_argerror(L, 2, err_msg.c_str());
 				}
 
-				unit_map::iterator u = gb->units().end();
+				unit_map::iterator unit_iterator = gb->units().end();
 				bool success = false;
 
-				std::tie(u, success) = gb->units().move(src, dst);
+				std::tie(unit_iterator, success) = gb->units().move(src, dst);
 
 				if(success) {
-					u->anim_comp().set_standing();
+					unit_iterator->anim_comp().set_standing();
 				}
 			}
 
