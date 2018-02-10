@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "POT-Creation-Date: 2018-02-04 19:40+0300\n"
-"PO-Revision-Date: 2017-09-25 12:38+1000\n"
+"PO-Revision-Date: 2018-02-10 02:28+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -31,7 +31,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2018"
-msgstr ""
+msgstr "2018"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -494,15 +494,11 @@ msgstr "B<--nogui>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:186
-#, fuzzy
-#| msgid ""
-#| "runs the game without the GUI. Only availaible in combination with B<--"
-#| "multiplayer> or B<--screenshot> or B<--plugin>."
 msgid ""
 "runs the game without the GUI. Only available in combination with B<--"
 "multiplayer> or B<--screenshot> or B<--plugin>."
 msgstr ""
-"runs the game without the GUI. Only availaible in combination with B<--"
+"runs the game without the GUI. Only available in combination with B<--"
 "multiplayer> or B<--screenshot> or B<--plugin>."
 
 #. type: TP
@@ -577,16 +573,6 @@ msgstr "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
 # TODO: port changes to the original
 #. type: Plain text
 #: doc/man/wesnoth.6:214
-#, fuzzy
-#| msgid ""
-#| "preprocesses a specified file/folder. For each file(s) a plain .cfg file "
-#| "and a processed .cfg file will be written in specified target directory. "
-#| "If a folder is specified, it will be preprocessed recursively based on "
-#| "the known preprocessor rules. The common macroses from the \"data/core/"
-#| "macros\" directory will be preprocessed before the specified resources.  "
-#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> For details "
-#| "regarding the preprocessor visit: https://wiki.wesnoth.org/"
-#| "PreprocessorRef#Command-line_preprocessor"
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "

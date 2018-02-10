@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-04 16:40 UTC\n"
-"PO-Revision-Date: 2017-09-25 12:49+1000\n"
+"PO-Revision-Date: 2018-02-10 02:33+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:9
@@ -32,12 +32,6 @@ msgstr "TSG"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
-#, fuzzy
-#| msgid ""
-#| "A young Knight, Deoran, is dispatched to take command of the South "
-#| "Guard... Note: This campaign is designed as an introduction to Wesnoth. "
-#| "The ‘Civilian’ difficulty level is aimed at first-time players.\n"
-#| "\n"
 msgid ""
 "A young Knight, Deoran, is dispatched to take command of the South Guard.\n"
 "\n"
@@ -45,7 +39,8 @@ msgid ""
 "‘Civilian’ difficulty level is aimed at first-time players.\n"
 "\n"
 msgstr ""
-"A young Knight, Deoran, is dispatched to take command of the South Guard... "
+"A young Knight, Deoran, is dispatched to take command of the South Guard.\n"
+"\n"
 "Note: This campaign is designed as an introduction to Wesnoth. The "
 "‘Civilian’ difficulty level is aimed at first-time players.\n"
 "\n"
@@ -2925,10 +2920,8 @@ msgstr "Mal Tera"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:134
-#, fuzzy
-#| msgid "Sgt. Finde"
 msgid "Finde"
-msgstr "Sgt Finde"
+msgstr "Finde"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:135
@@ -2947,10 +2940,8 @@ msgstr "Mitche"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:141
-#, fuzzy
-#| msgid "Lt. Illan"
 msgid "Illan"
-msgstr "Lt Illan"
+msgstr "Illan"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:142
@@ -2964,10 +2955,8 @@ msgstr "Jul"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:147
-#, fuzzy
-#| msgid "Lt. Meris"
 msgid "Meris"
-msgstr "Lt Meris"
+msgstr "Meris"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:148
@@ -2997,15 +2986,10 @@ msgstr "Death Guard"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:177
-#, fuzzy
-#| msgid ""
-#| "We have escaped the great forest, but look! The undead are chasing us — "
-#| "we must not have rooted them all out of the wood."
 msgid ""
 "We have escaped the great forest, but look! The undead are still chasing us."
 msgstr ""
-"We have escaped the great forest, but look! The undead are chasing us — we "
-"must not have rooted them all out of the wood."
+"We have escaped the great forest, but look! The undead are still chasing us."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:181
@@ -3076,14 +3060,11 @@ msgid ""
 "Starting with turn 6, each additional turn you survive strengthens the "
 "defenses of Westin."
 msgstr ""
+"Starting with turn 6, each additional turn you survive strengthens the "
+"defences of Westin."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:244
-#, fuzzy
-#| msgid ""
-#| "There is no way to win this scenario, and no way to lose. Hold off the "
-#| "undead hordes as long as you can. Keep Sir Gerrick alive as long as you "
-#| "can. Every turn that passes strengthens the defenses of Westin."
 msgid ""
 "There is no way to win this scenario, and no way to lose. Hold off the "
 "undead hordes as long as you can. Keep Sir Gerrick alive as long as you can. "
@@ -3092,7 +3073,8 @@ msgid ""
 msgstr ""
 "There is no way to win this scenario, and no way to lose. Hold off the "
 "undead hordes as long as you can. Keep Sir Gerrick alive as long as you can. "
-"Every turn that passes strengthens the defences of Westin."
+"Starting with turn 6, every turn that passes strengthens the defences of "
+"Westin."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_in_the_Flood.cfg:278
@@ -3213,10 +3195,8 @@ msgstr "Provincial Guard"
 
 #. [value]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:152
-#, fuzzy
-#| msgid "Lt. Nilaf"
 msgid "Nilaf"
-msgstr "Lt Nilaf"
+msgstr "Nilaf"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:294
@@ -3702,10 +3682,8 @@ msgstr "I have lost all helping the humans... Now they will surely perish!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:104
-#, fuzzy
-#| msgid "Far from home I fall — but not in vain! Guard our people, Deoran!"
 msgid "Far from home I fall — but not in vain!"
-msgstr "Far from home I fall — but not in vain! Guard our people, Deoran!"
+msgstr "Far from home I fall — but not in vain!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:29

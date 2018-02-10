@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-04 19:40+0300\n"
-"PO-Revision-Date: 2017-09-25 12:20+1000\n"
+"PO-Revision-Date: 2018-02-10 01:49+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -3206,10 +3206,8 @@ msgid "Bonus objective:"
 msgstr "Bonus objective:"
 
 #: data/core/macros/objective-utils.cfg:30
-#, fuzzy
-#| msgid "Bonus objective:"
 msgid "Optional objective:"
-msgstr "Bonus objective:"
+msgstr "Optional objective:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:52
@@ -3592,7 +3590,7 @@ msgstr "Shroud"
 #. [deprecated_message]
 #: data/core/units/dunefolk/deprecated.cfg:13
 msgid "This unit has been renamed to: {NEW_NAME}"
-msgstr ""
+msgstr "This unit has been renamed to: {NEW_NAME}"
 
 #. [core]: id=default
 #: data/cores.cfg:5
@@ -4008,10 +4006,8 @@ msgstr "Defaults"
 
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:28
-#, fuzzy
-#| msgid "Computer Player"
 msgid "Connected Players"
-msgstr "Computer Player"
+msgstr "Connected Players"
 
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
@@ -4788,8 +4784,8 @@ msgid ""
 "Patience is often key. Rather than attacking in bad conditions or with few "
 "troops, wait for better conditions and then attack."
 msgstr ""
-"Patience is often key. Rather than attacking in bad conditions, or with few "
-"troops, wait for better conditions and then attack."
+"Patience is often the key. Rather than attacking in bad conditions, or with "
+"few troops, wait for better conditions and then attack."
 
 #. [tip]
 #: data/tips.cfg:124
@@ -4877,13 +4873,15 @@ msgid ""
 "villages unoccupied, but keep in mind that an enemy unit becomes much harder "
 "to dislodge from a village! Plan your movements accordingly."
 msgstr ""
+"For any player, controlling villages is often the key to winning a scenario. "
+"You may use this knowledge to lure your opponents into a trap by leaving "
+"some villages unoccupied, but keep in mind that an enemy unit becomes much "
+"harder to dislodge from a village! Plan your movements accordingly."
 
 #. [tip]
 #: data/tips.cfg:153
-#, fuzzy
-#| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Kai Laudiss, 623YW</i>"
-msgstr "<i>― King Konrad, 536YW</i>"
+msgstr "<i>― Kai Laudiss, 623YW</i>"
 
 #. [tip]
 #: data/tips.cfg:156
@@ -5177,13 +5175,13 @@ msgid ""
 "You must accept some losses in battle. It is not uncommon for beginners to "
 "lose sight of victory as they attempt to keep every unit alive."
 msgstr ""
+"You must accept some losses in battle. It is not uncommon for beginners to "
+"lose sight of victory as they attempt to keep every unit alive."
 
 #. [tip]
 #: data/tips.cfg:257
-#, fuzzy
-#| msgid "<i>― Queen Li’sar, 528YW</i>"
 msgid "<i>― Queen Asheviere, 503YW</i>"
-msgstr "<i>― Queen Li’sar, 528YW</i>"
+msgstr "<i>― Queen Asheviere, 503YW</i>"
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5302,28 +5300,20 @@ msgid "Requesting distribution terms..."
 msgstr "Requesting distribution terms..."
 
 #: src/addon/client.cpp:126
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 msgstr ""
-"The add-on <i>$addon_title</i> has an invalid file or directory name and "
-"cannot be installed."
+"The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
+"published."
 
 #: src/addon/client.cpp:152
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
 msgstr ""
-"The add-on <i>$addon_title</i> has an invalid file or directory name and "
-"cannot be installed."
+"The add-on <i>$addon_title</i> has a file or directory containing invalid "
+"characters and cannot be published."
 
 #: src/addon/client.cpp:160
 msgid ""
@@ -5334,19 +5324,22 @@ msgid ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 msgstr ""
+"The add-on <i>$addon_title</i> has an invalid file or directory name and "
+"cannot be published. File or directory names may not contain '..' or end "
+"with '.' or be longer than 255 characters. It also may not contain white-"
+"space, control characters, or any of the following characters:\n"
+"\n"
+"&quot; * / : &lt; &gt; ? \\ | ~"
 
 #: src/addon/client.cpp:171
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
 "the same string."
 msgstr ""
-"The add-on <i>$addon_title</i> has an invalid file or directory name and "
-"cannot be installed."
+"The add-on <i>$addon_title</i> contains files or directories with case "
+"conflicts. File or directory names may not be differently-cased versions of "
+"the same string."
 
 #: src/addon/client.cpp:183
 msgid "Sending add-on <i>$addon_title</i>..."
@@ -5369,16 +5362,12 @@ msgstr ""
 "cannot be installed."
 
 #: src/addon/client.cpp:263
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
 msgstr ""
-"The add-on <i>$addon_title</i> has an invalid file or directory name and "
-"cannot be installed."
+"The add-on <i>$addon_title</i> has file or directory names with case "
+"conflicts. This may cause problems."
 
 #: src/addon/client.cpp:320
 msgid "The server responded with an error:"
@@ -6032,10 +6021,8 @@ msgid "not available."
 msgstr "not available."
 
 #: src/game_initialization/create_engine.cpp:149
-#, fuzzy
-#| msgid "Custom"
 msgid "Custom map."
-msgstr "Custom"
+msgstr "Custom map."
 
 #: src/game_initialization/depcheck.cpp:491
 msgid "Failed to resolve dependencies"
@@ -6085,20 +6072,16 @@ msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Cannot obtain genders for invalid leader $leader"
 
 #: src/game_initialization/lobby_data.cpp:236
-#, fuzzy
-#| msgid "Missing addon: $id"
 msgid "Missing addon: $name"
-msgstr "Missing add-on: $id"
+msgstr "Missing add-on: $name"
 
 #: src/game_initialization/lobby_data.cpp:238
 msgid "Missing addon: $id"
 msgstr "Missing add-on: $id"
 
 #: src/game_initialization/lobby_data.cpp:275
-#, fuzzy
-#| msgid " (missing)"
 msgid "$era_name (missing)"
-msgstr " (missing)"
+msgstr "$era_name (missing)"
 
 #: src/game_initialization/lobby_data.cpp:282
 msgid "Unknown era"
@@ -6111,7 +6094,7 @@ msgstr "(missing)"
 #: src/game_initialization/lobby_data.cpp:345
 #: src/game_initialization/lobby_data.cpp:375
 msgid "S"
-msgstr ""
+msgstr "S"
 
 #: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
@@ -6120,7 +6103,7 @@ msgstr "Remote scenario"
 #: src/game_initialization/lobby_data.cpp:383
 #: src/game_initialization/lobby_data.cpp:406
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #: src/game_initialization/lobby_data.cpp:411
 msgid "Unknown scenario"
@@ -6212,16 +6195,12 @@ msgid "The nickname ‘$nick’ is already taken."
 msgstr "The nickname ‘$nick’ is already taken."
 
 #: src/game_initialization/multiplayer.cpp:301
-#, fuzzy
-#| msgid ""
-#| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
-#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
 msgstr ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
-"characters, underscores and hyphens are allowed."
+"characters (one at minimum), underscores and hyphens are allowed."
 
 #: src/game_initialization/multiplayer.cpp:305
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
@@ -7870,7 +7849,7 @@ msgstr "Save Game"
 
 #: src/savegame.cpp:641
 msgid "Game state is corrupted"
-msgstr ""
+msgstr "Game state is corrupted"
 
 #: src/serialization/parser.cpp:153
 msgid "Unexpected characters at line start"
@@ -8181,22 +8160,22 @@ msgstr "$effect_description per level"
 #. TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:59
 msgid "$year BW"
-msgstr ""
+msgstr "$year BW"
 
 #. TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:62
 msgid "$year YW"
-msgstr ""
+msgstr "$year YW"
 
 #. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:65
 msgid "$year BF"
-msgstr ""
+msgstr "$year BF"
 
 #. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesonth
 #: src/utils/irdya_datetime.cpp:68
 msgid "$year AF"
-msgstr ""
+msgstr "$year AF"
 
 #: src/whiteboard/manager.cpp:1094
 msgid "SHOW ALL allies’ plans"

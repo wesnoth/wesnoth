@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-04 19:40+0300\n"
-"PO-Revision-Date: 2017-09-25 12:24+1000\n"
+"PO-Revision-Date: 2018-02-10 02:27+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -359,7 +359,7 @@ msgstr "Camp Fire"
 #. [terrain_type]: id=wallfire
 #: data/core/terrain.cfg:437
 msgid "Sconce"
-msgstr ""
+msgstr "Sconce"
 
 #. [terrain_type]: id=brazier
 #: data/core/terrain.cfg:446
@@ -594,26 +594,22 @@ msgstr "Basic Stone Floor"
 #: data/core/terrain.cfg:831 data/core/terrain.cfg:841
 #: data/core/terrain.cfg:851
 msgid "Rug"
-msgstr ""
+msgstr "Rug"
 
 #. [terrain_type]: id=rug_floor
 #: data/core/terrain.cfg:834
 msgid "Royal Rug"
-msgstr ""
+msgstr "Royal Rug"
 
 #. [terrain_type]: id=rug2_floor
 #: data/core/terrain.cfg:844
-#, fuzzy
-#| msgid "Normal Replays"
 msgid "Normal Rug"
-msgstr "Normal Replays"
+msgstr "Normal Rug"
 
 #. [terrain_type]: id=rug3_floor
 #: data/core/terrain.cfg:854
-#, fuzzy
-#| msgid "Cave"
 msgid "Cave Rug"
-msgstr "Cave"
+msgstr "Cave Rug"
 
 #. [terrain_type]: id=wood_floor
 #: data/core/terrain.cfg:861
@@ -687,19 +683,6 @@ msgstr "Rockbound Cave"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:967
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#| "water and wind, carrying erosive particles that carve the rock. It "
-#| "resembles a scraggy underground cavern which reduces efficiency of most "
-#| "units, but shoulders defense. Dwarves and trolls, who are main settlers "
-#| "of caves, have a relatively easy time navigating this terrain. Dwarves, "
-#| "who by dint of their small size have the full advantage of navigation in "
-#| "such topography. Occasionally caves are "
-#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>\n"
-#| "\n"
-#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#| "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -716,15 +699,16 @@ msgid ""
 msgstr ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
-"a scraggy underground cavern which reduces efficiency of most units, but "
-"shoulders defence. Dwarves and trolls, who are main settlers of caves, have "
-"a relatively easy time navigating this terrain. Dwarves, who by dint of "
-"their small size have the full advantage of navigation in such topography. "
-"Occasionally caves are <ref>dst='terrain_illuminated_cave' "
-"text='illuminated'</ref>\n"
+"a scraggy underground cavern which shoulders defence, but is hard for most "
+"units to traverse. Only settlers of caves, such as dwarves and trolls, are "
+"fully capable of navigating such topography.\n"
 "\n"
 "Most units have about 50% defence in rocky caves, whereas cavalry are "
-"limited to 40%. Dwarves enjoy 60% defence in rock-bound caves."
+"limited to 40%. Dwarves, by dint of their small size, enjoy 60% defence in "
+"rock-bound caves.\n"
+"\n"
+"Occasionally caves are <ref>dst='terrain_illuminated_cave' "
+"text='illuminated'</ref>."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -1251,10 +1235,8 @@ msgstr "Elven Castle"
 
 #. [terrain_type]: id=elven_castle_ruin
 #: data/core/terrain.cfg:2019
-#, fuzzy
-#| msgid "Elven Castle"
 msgid "Elven Castle Ruin"
-msgstr "Elven Castle"
+msgstr "Elven Castle Ruin"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:2031
@@ -1297,10 +1279,8 @@ msgstr "Ruined Desert Castle"
 
 #. [terrain_type]: id=troll_encampment
 #: data/core/terrain.cfg:2105
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Troll Encampment"
-msgstr "Tall Encampment Keep"
+msgstr "Troll Encampment"
 
 #. [terrain_type]: id=aquatic_camp
 #: data/core/terrain.cfg:2117
@@ -1383,10 +1363,8 @@ msgstr "Elven Castle Keep"
 
 #. [terrain_type]: id=elven_keep_ruin
 #: data/core/terrain.cfg:2262
-#, fuzzy
-#| msgid "Elven Castle Keep"
 msgid "Elven Keep Ruin"
-msgstr "Elven Castle Keep"
+msgstr "Elven Keep Ruin"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2275
@@ -1434,10 +1412,8 @@ msgstr "Aquatic Encampment Keep"
 
 #. [terrain_type]: id=troll_campkeep
 #: data/core/terrain.cfg:2366
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Troll Encampment Keep"
-msgstr "Tall Encampment Keep"
+msgstr "Troll Encampment Keep"
 
 #. [terrain_type]: id=merman_castlekeep
 #: data/core/terrain.cfg:2379
@@ -1592,10 +1568,8 @@ msgstr "Shroud"
 
 #. [terrain_type]: id=fake_shroud_overlay
 #: data/core/terrain.cfg:2752
-#, fuzzy
-#| msgid "Shroud"
 msgid "Fake Shroud"
-msgstr "Shroud"
+msgstr "Fake Shroud"
 
 #. [terrain_type]: id=fog
 #. [toggle_button]: id=sort_6
@@ -2277,6 +2251,8 @@ msgstr "Visit this URL with a web browser"
 
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:694
+#, fuzzy
+#| msgid "Filters on addon description, version, type or author."
 msgid "Filters on addon descripton, version, type or author."
 msgstr "Filters on add-on descripton, version, type or author."
 
@@ -5873,10 +5849,8 @@ msgid "Version: "
 msgstr "Version: "
 
 #: src/gui/dialogs/game_stats.cpp:79
-#, fuzzy
-#| msgid "controller^Idle"
 msgid "controller^AI"
-msgstr "Idle"
+msgstr "AI"
 
 #: src/gui/dialogs/game_stats.cpp:79
 msgid "controller^Idle"
@@ -6002,7 +5976,7 @@ msgstr "Getting game data"
 
 #: src/gui/dialogs/loading_screen.cpp:72
 msgid "Downloading lobby data"
-msgstr ""
+msgstr "Downloading lobby data"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:105
 msgid "Selected Game"
@@ -6061,52 +6035,40 @@ msgid "Era:"
 msgstr "Era:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:476
-#, fuzzy
-#| msgid "Settings"
 msgid "Settings:"
-msgstr "Settings"
+msgstr "Settings:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:480
-#, fuzzy
-#| msgid "Registered Users Only"
 msgid "Registered users only:"
-msgstr "Registered Users Only"
+msgstr "Registered users only:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:481
-#, fuzzy
-#| msgid "Reloaded game"
 msgid "Reloaded:"
-msgstr "Reloaded game"
+msgstr "Reloaded:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:482
-#, fuzzy
-#| msgid "Share Vision:"
 msgid "Shared vision:"
-msgstr "Share Vision:"
+msgstr "Shared vision:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:483
-#, fuzzy
-#| msgid "Shuffle Sides"
 msgid "Shuffle sides:"
-msgstr "Shuffle Sides"
+msgstr "Shuffle sides:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:484
-#, fuzzy
-#| msgid "Time limit"
 msgid "Time limit:"
-msgstr "Time limit"
+msgstr "Time limit:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:485
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use map settings:"
-msgstr "Use map settings"
+msgstr "Use map settings:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:493
 msgid ""
 "One or more items need to be installed\n"
 "in order to join this game."
 msgstr ""
+"One or more items need to be installed\n"
+"in order to join this game."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:518
 msgid "Observers allowed"
@@ -6141,28 +6103,20 @@ msgid "Scenarios"
 msgstr "Scenarios"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:110
-#, fuzzy
-#| msgid "Multiplayer Options"
 msgid "Multiplayer Campaigns"
-msgstr "Multiplayer Options"
+msgstr "Multiplayer Campaigns"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:111
-#, fuzzy
-#| msgid "Start a new single player campaign"
 msgid "Singleplayer Campaigns"
-msgstr "Start a new single player campaign"
+msgstr "Single-Player Campaigns"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:112
-#, fuzzy
-#| msgid "Custom Options"
 msgid "Custom Maps"
-msgstr "Custom Options"
+msgstr "Custom Maps"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:113
-#, fuzzy
-#| msgid "User Scenarios"
 msgid "Custom Scenarios"
-msgstr "User Scenarios"
+msgstr "Custom Scenarios"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:114
 msgid "Random Maps"
@@ -6199,7 +6153,7 @@ msgstr "No eras available for this game."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:825
 msgid "The selected game has no sides!"
-msgstr ""
+msgstr "The selected game has no sides!"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:891
 msgid "Choose Starting Scenario"

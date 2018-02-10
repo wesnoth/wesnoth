@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-04 16:40 UTC\n"
-"PO-Revision-Date: 2017-09-25 12:50+1000\n"
+"PO-Revision-Date: 2018-02-10 01:36+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [lua]: wml_actions.select_character
 #: data/campaigns/tutorial/lua/character_selection.lua:26
@@ -102,6 +102,9 @@ msgid ""
 "Part 1 will teach you the basics about movement, attacking, healing, and "
 "recruiting. Firstly, you’ll choose a hero (both heroes play the same)."
 msgstr ""
+"This is a two-part tutorial intended for people who are new to the game. "
+"Part 1 will teach you the basics about movement, attacking, healing, and "
+"recruiting. Firstly, you’ll choose a hero (both heroes play the same)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:159
@@ -147,15 +150,6 @@ msgstr "Movement"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:211
-#, fuzzy
-#| msgid ""
-#| "When you select a unit, in this case Konrad, the places he can move to "
-#| "are highlighted. All units have a certain number of <i>movement points</"
-#| "i>, which dictate how many hexes that unit can move per turn. Normally, "
-#| "moving one hex uses one movement point, but moving across different types "
-#| "of hexes, or <i>terrains</i>, can use up more. You will learn more about "
-#| "that later. To move, simply click on your destination. You can press "
-#| "<b>u</b> to undo a move if you move to the wrong place."
 msgid ""
 "When you select a unit, in this case Konrad, the places he can move to are "
 "highlighted. All units have a certain number of <i>movement points</i>, "
@@ -167,22 +161,12 @@ msgstr ""
 "When you select a unit, in this case Konrad, the places he can move to are "
 "highlighted. All units have a certain number of <i>movement points</i>, "
 "which dictate how many hexes that unit can move per turn. Normally, moving "
-"one hex uses one movement point, but moving across different types of hexes, "
-"or <i>terrains</i>, can use up more. You will learn more about that later. "
-"To move, simply click on your destination. You can press <b>u</b> to undo a "
-"move if you move to the wrong place."
+"one hex on flat terrain uses one movement point. To move, simply click on "
+"your destination. (You can press <b>u</b> to undo a move if you move to the "
+"wrong place.)"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:219
-#, fuzzy
-#| msgid ""
-#| "When you select a unit, in this case Li’sar, the places she can move to "
-#| "are highlighted. All units have a certain number of <i>movement points</"
-#| "i>, which dictate how many hexes that unit can move per turn. Normally, "
-#| "moving one hex uses one movement point, but moving across different types "
-#| "of hexes, or <i>terrains</i>, can use up more. You will learn more about "
-#| "that later. To move, simply click on your destination. You can press "
-#| "<b>u</b> to undo a move if you move to the wrong place."
 msgid ""
 "When you select a unit, in this case Li’sar, the places she can move to are "
 "highlighted. All units have a certain number of <i>movement points</i>, "
@@ -194,10 +178,9 @@ msgstr ""
 "When you select a unit, in this case Li’sar, the places she can move to are "
 "highlighted. All units have a certain number of <i>movement points</i>, "
 "which dictate how many hexes that unit can move per turn. Normally, moving "
-"one hex uses one movement point, but moving across different types of hexes, "
-"or <i>terrains</i>, can use up more. You will learn more about that later. "
-"To move, simply click on your destination. You can press <b>u</b> to undo a "
-"move if you move to the wrong place."
+"one hex on flat terrain uses one movement point. To move, simply click on "
+"your destination. (You can press <b>u</b> to undo a move if you move to the "
+"wrong place.)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:230
@@ -280,33 +263,23 @@ msgstr "Attacking"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:340
-#, fuzzy
-#| msgid ""
-#| "To attack the quintain, first select the attacker (Konrad) then the "
-#| "target (the quintain). You will see an attack description. When you click "
-#| "<b>OK</b>, Konrad will attack."
 msgid ""
 "To attack the quintain, first select the attacker (Konrad), then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Konrad will attack."
 msgstr ""
-"To attack the quintain, first select the attacker (Konrad) then the target "
+"To attack the quintain, first select the attacker (Konrad), then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Konrad will attack."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:347
-#, fuzzy
-#| msgid ""
-#| "To attack the quintain, first select the attacker (Li’sar) then the "
-#| "target (the quintain). You will see an attack description. When you click "
-#| "<b>OK</b>, Li’sar will attack."
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar), then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Li’sar will attack."
 msgstr ""
-"To attack the quintain, first select the attacker (Li’sar) then the target "
+"To attack the quintain, first select the attacker (Li’sar), then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Li’sar will attack."
 
@@ -381,18 +354,13 @@ msgstr "The <i>dummy</i> gets a turn?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:413
-#, fuzzy
-#| msgid ""
-#| "Yes. It’s a magical quintain! It gets 5 chances to hit you for 3 damage "
-#| "each. If it hits every time, you’ll drop from $student_hp to "
-#| "$($student_hp-15) hitpoints. Brace yourself!"
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
 "chances. If it hits every time, you’ll drop from $student_hp to "
 "$($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
-"Yes. It’s a magical quintain! It gets 5 chances to hit you for 3 damage "
-"each. If it hits every time, you’ll drop from $student_hp to "
+"Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
+"chances. If it hits every time, you’ll drop from $student_hp to "
 "$($student_hp-15) hit-points. Brace yourself!"
 
 #. [message]: speaker=narrator
@@ -463,13 +431,6 @@ msgstr "Villages"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:469
-#, fuzzy
-#| msgid ""
-#| "You have captured a village! It now flies your colors and has been added "
-#| "to your total village count (the house icon at the top of the screen "
-#| "shows how many villages you currently control). Villages provide the gold "
-#| "needed to recruit units. Each turn, you gain two gold plus one for every "
-#| "village you own."
 msgid ""
 "You have captured a village! It now flies your colors and has been added to "
 "your total village count (the house icon at the top of the screen shows how "
@@ -479,8 +440,7 @@ msgstr ""
 "You have captured a village! It now flies your colours and has been added to "
 "your total village count (the house icon at the top of the screen shows how "
 "many villages you currently control). Villages provide the gold needed to "
-"recruit units. Each turn, you gain two gold plus one for every village you "
-"own."
+"recruit units. Each turn, you gain 2 gold, plus 1 for every village you own."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:491
@@ -563,14 +523,6 @@ msgstr "Traits"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:557
-#, fuzzy
-#| msgid ""
-#| "Be sure to examine the <i>traits</i> of your new recruits. They are "
-#| "listed under its race in the sidebar. Traits can subtly affect how you "
-#| "use your troops. For example, units with the <i>quick</i> trait can move "
-#| "a extra hex each turn, or units with the <i>intelligent</i> trait require "
-#| "20% less experience to level up. A full list of all possible traits may "
-#| "be found in help."
 msgid ""
 "Be sure to examine the <i>traits</i> of your new recruits. They are listed "
 "under its race in the sidebar. Traits can subtly affect how you use your "
@@ -581,9 +533,8 @@ msgstr ""
 "Be sure to examine the <i>traits</i> of your new recruits. They are listed "
 "under its race in the sidebar. Traits can subtly affect how you use your "
 "troops. For example, units with the <i>quick</i> trait can move a extra hex "
-"each turn, or units with the <i>intelligent</i> trait require 20% less "
-"experience to level up. A full list of all possible traits may be found in "
-"help."
+"each turn, and units with the <i>intelligent</i> trait require 20% less "
+"experience to level up."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:593
@@ -626,17 +577,14 @@ msgstr "I’ll tell them to use the one that does more damage!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:615
-#, fuzzy
-#| msgid ""
-#| "And which would that be? The sword (5×4) or the bow (3×3)? I suppose "
-#| "you’ll find out..."
 msgid ""
 "And which would that be? The sword (5×4; or 5 damage on each hit, with 4 "
 "attacks) or the bow (3×3; or 3 damage on each hit, with 3 attacks)? I "
 "suppose you’ll find out..."
 msgstr ""
-"And which would that be? The sword (5×4) or the bow (3×3)? I suppose you’ll "
-"find out..."
+"And which would that be? The sword (5×4; or 5 damage on each hit, with 4 "
+"attacks) or the bow (3×3; or 3 damage on each hit, with 3 attacks)? I "
+"suppose you’ll find out..."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:618
@@ -656,36 +604,27 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:660
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5×4; or 5 damage, 4 attacks), which is a <i>melee</"
-#| "i> attack. The quintain defended with its melee attack (3×5). The ranged "
-#| "attack (the bow) would have been safer."
 msgid ""
 "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
 "or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
 "have been safer."
 msgstr ""
-"Your elf used a sword (5×4; or 5 damage, 4 attacks), which is a <i>melee</i> "
-"attack. The quintain defended with its melee attack (3×5). The ranged attack "
-"(the bow) would have been safer."
+"Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), which "
+"is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
+"or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
+"have been safer."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:672
-#, fuzzy
-#| msgid ""
-#| "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage, 3 "
-#| "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#| "could not defend itself."
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
-"Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage, 3 "
-"attacks). The quintain has no ranged attack, only a melee attack, so it "
-"could not defend itself."
+"Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
+"each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
+"attack, so it could not defend itself."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:687
@@ -771,15 +710,6 @@ msgstr "Defences"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:773
-#, fuzzy
-#| msgid ""
-#| "Whenever one of your units is selected, you’ll see varying percentages as "
-#| "you move the mouse over the map. The higher the percentage, the more "
-#| "<i>defense</i> that unit has in that kind of terrain. For example, most "
-#| "units have good defenses in castles and villages but poor defenses in "
-#| "rivers. However, these quintains use a <i>magical</i> attack, which "
-#| "always has a 70% chance of hitting no matter what terrain its target "
-#| "occupies."
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -793,8 +723,9 @@ msgstr ""
 "you move the mouse over the map. The higher the percentage, the more "
 "<i>defence</i> that unit has in that kind of terrain. For example, most "
 "units have good defences in castles and villages but poor defences in "
-"rivers. However, these quintains use a <i>magical</i> attack, which always "
-"has a 70% chance of hitting no matter what terrain its target occupies."
+"rivers. Some units, like these quintains, have a <i>magical</i> attack, "
+"which always has a 70% chance of hitting no matter what terrain their "
+"targets occupy."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:785
@@ -978,6 +909,9 @@ msgid ""
 "teach you about recalling units, abilities and weapon specials, income and "
 "upkeep, long-distance movement, zone of control, and time of day."
 msgstr ""
+"Welcome back! This is second part of the two-part tutorial. Part 2 will "
+"teach you about recalling units, abilities and weapon specials, income and "
+"upkeep, long-distance movement, zone of control, and time of day."
 
 #. [message]: speaker=student
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:156
@@ -1088,10 +1022,6 @@ msgstr "Let’s go! Attack!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:195
-#, fuzzy
-#| msgid ""
-#| "Hang on! You need to gather your forces. Or do you intend to fight the "
-#| "orcs singlehandedly?"
 msgid ""
 "Hang on! You need to gather your forces. Or do you intend to fight the orcs "
 "single-handedly?"
@@ -1200,26 +1130,6 @@ msgstr "Abilities and Weapon Specials"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:268
-#, fuzzy
-#| msgid ""
-#| "Certain unit types have special <i>abilities</i>. Unlike traits, which "
-#| "usually provide small buffs or debuffs, abilities give units special "
-#| "behaviors that normal units do not have. In this case, the Elvish Shaman "
-#| "has the Heal ability, which allows her to heal allied adjacent units 4 "
-#| "hitpoints at the start of each turn. Unit types with abilities, "
-#| "especially ones like Heal, can be very useful, so be careful when sending "
-#| "them into battle.\n"
-#| "\n"
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. Once again, in this case, the Shaman has the Slows special "
-#| "on her entangle attack. When this attack is used on an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in help."
 msgid ""
 "Certain unit types have special <i>abilities</i>. Unlike traits, which "
 "usually provide small buffs or debuffs, abilities give units special "
@@ -1231,42 +1141,13 @@ msgstr ""
 "Certain unit types have special <i>abilities</i>. Unlike traits, which "
 "usually provide small buffs or debuffs, abilities give units special "
 "behaviours that normal units do not have. In this case, the Elvish Shaman "
-"has the Heal ability, which allows her to heal allied adjacent units 4 hit-"
-"points at the start of each turn. Unit types with abilities, especially ones "
-"like Heal, can be very useful, so be careful when sending them into battle.\n"
-"\n"
-"Weapon specials are special attack modifiers that make certain attacks more "
-"powerful. Once again, in this case, the Shaman has the Slows special on her "
-"entangle attack. When this attack is used on an enemy, it will halve the "
-"damage they do for one turn. Other weapon specials include First Strike, "
-"which allows that attack to always hit first no matter who attacks first, "
-"and Magical, which gives that attack a constant 70% chance to hit.\n"
-"\n"
-"A full list of abilities and weapons specials, along with traits, may be "
-"found in help."
+"has the Heal ability, which allows her to heal allied adjacent units 4 "
+"hitpoints at the start of each turn. Unit types with abilities, especially "
+"ones like Heal, can be very useful, so be careful when sending them into "
+"battle."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:275
-#, fuzzy
-#| msgid ""
-#| "Certain unit types have special <i>abilities</i>. Unlike traits, which "
-#| "usually provide small buffs or debuffs, abilities give units special "
-#| "behaviors that normal units do not have. In this case, the Elvish Shaman "
-#| "has the Heal ability, which allows her to heal allied adjacent units 4 "
-#| "hitpoints at the start of each turn. Unit types with abilities, "
-#| "especially ones like Heal, can be very useful, so be careful when sending "
-#| "them into battle.\n"
-#| "\n"
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. Once again, in this case, the Shaman has the Slows special "
-#| "on her entangle attack. When this attack is used on an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in help."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. Once again, in this case, the Shaman has the Slows special on her "
@@ -1278,13 +1159,6 @@ msgid ""
 "A full list of abilities and weapons specials, along with traits, may be "
 "found in help."
 msgstr ""
-"Certain unit types have special <i>abilities</i>. Unlike traits, which "
-"usually provide small buffs or debuffs, abilities give units special "
-"behaviours that normal units do not have. In this case, the Elvish Shaman "
-"has the Heal ability, which allows her to heal allied adjacent units 4 hit-"
-"points at the start of each turn. Unit types with abilities, especially ones "
-"like Heal, can be very useful, so be careful when sending them into battle.\n"
-"\n"
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. Once again, in this case, the Shaman has the Slows special on her "
 "entangle attack. When this attack is used on an enemy, it will halve the "
@@ -1368,7 +1242,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:361
 msgid "Status Table"
-msgstr ""
+msgstr "Status Table"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
@@ -1378,6 +1252,10 @@ msgid ""
 "a side may be hidden. It is useful to check this table when a scenario "
 "begins."
 msgstr ""
+"The Status Table details the sides’ current status and starting conditions. "
+"Fog and shroud will affect what you can see in this table, and occasionally "
+"a side may be hidden. It is useful to check this table when a scenario "
+"begins."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:381
@@ -1676,10 +1554,8 @@ msgid ""
 "attack you!"
 msgstr ""
 "It’s very dangerous to stand in water when there are enemies about! Your "
-"unit will have an 80% chance of being hit! Cancel, and wait It’s very "
-"dangerous to stand in water when there are enemies about! Your unit will "
-"have an 80% chance of being hit. Get back, and wait for them to attack you!"
-"for them to attack you!"
+"unit will have an 80% chance of being hit. Get back, and wait for them to "
+"attack you!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:619
