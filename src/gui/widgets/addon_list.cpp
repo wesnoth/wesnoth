@@ -36,6 +36,15 @@
 
 namespace gui2
 {
+namespace
+{
+const color_t color_outdated {255, 127, 0};
+
+const unsigned CONTROL_STACK_LAYER_INSTALL = 0;
+const unsigned CONTROL_STACK_LAYER_UPDATE  = 1;
+const unsigned CONTROL_STACK_LAYER_PUBLISH = 2;
+
+} // end anon namespace
 
 REGISTER_WIDGET(addon_list)
 
@@ -50,8 +59,6 @@ addon_list::addon_list(const implementation::builder_addon_list& builder)
 	, delete_function_()
 {
 }
-
-static color_t color_outdated {255, 127, 0};
 
 std::string addon_list::colorize_addon_state_string(const std::string& str, ADDON_STATUS state, bool verbose)
 {
@@ -88,7 +95,7 @@ std::string addon_list::colorize_addon_state_string(const std::string& str, ADDO
 
 std::string addon_list::describe_status(const addon_tracking_info& info)
 {
-	std::string tc, tx;
+	std::string tx;
 
 	switch(info.state) {
 	case ADDON_NONE:
@@ -211,84 +218,77 @@ void addon_list::set_addons(const addons_list& addons)
 		// Set special retval for the toggle panels
 		find_widget<toggle_panel>(row_grid, "list_panel", false).set_retval(DEFAULT_ACTION_RETVAL);
 
-		grid* control_grid = find_widget<grid>(row_grid, "single_install_buttons", false, false);
-		if(!control_grid) {
-			continue;
-		}
+		//
+		// Set up the inline control buttons.
+		//
 		stacked_widget& install_update_stack = find_widget<stacked_widget>(row_grid, "install_update_stack", false);
 
-		if(!tracking_info.can_publish) {
-			const bool is_updatable = tracking_info.state == ADDON_INSTALLED_UPGRADABLE;
-			const bool is_installed =
-				tracking_info.state == ADDON_INSTALLED || tracking_info.state == ADDON_INSTALLED_UPGRADABLE;
+		// These three buttons are in the install_update_stack. Only one is shown depending on the addon's state.
+		button& install_button   = find_widget<button>(row_grid, "single_install", false);
+		button& update_button    = find_widget<button>(row_grid, "single_update", false);
+		button& publish_button   = find_widget<button>(row_grid, "single_publish", false);
 
-			install_update_stack.select_layer(static_cast<int>(is_updatable));
+		// This button is always shown.
+		button& uninstall_button = find_widget<button>(row_grid, "single_uninstall", false);
 
-			if(!is_updatable) {
-				button& install_button = find_widget<button>(control_grid, "single_install", false);
-				install_button.set_active(!is_installed);
+		const bool is_installed = is_installed_addon_status(tracking_info.state);
+		const bool is_local = tracking_info.state == ADDON_INSTALLED_LOCAL_ONLY;
 
-				if(install_function_ != nullptr) {
-					connect_signal_mouse_left_click(install_button,
-						std::bind(&addon_list::addon_action_wrapper, this, install_function_, std::ref(addon), _3, _4));
-				}
-			} else {
-				button& update_button = find_widget<button>(control_grid, "single_update", false);
-				update_button.set_active(true);
+		// Select the right button layer and set its callback.
+		if(tracking_info.can_publish) {
+			install_update_stack.select_layer(CONTROL_STACK_LAYER_PUBLISH);
 
-				if(update_function_ != nullptr) {
-					connect_signal_mouse_left_click(update_button,
-						std::bind(&addon_list::addon_action_wrapper, this, update_function_, std::ref(addon), _3, _4));
-				}
-			}
+			publish_button.set_active(true);
 
-			if(is_installed) {
-				if(uninstall_function_ != nullptr) {
-					connect_signal_mouse_left_click(
-						find_widget<button>(control_grid, "single_uninstall", false),
-						std::bind(&addon_list::addon_action_wrapper, this, uninstall_function_, std::ref(addon), _3, _4));
-				}
-			}
-
-			find_widget<button>(control_grid, "single_uninstall", false).set_active(is_installed);
-
-			find_widget<grid>(control_grid, "single_install_buttons", false).set_visible(install_buttons_visibility_);
-			find_widget<label>(row_grid, "installation_status", false).set_visible(install_status_visibility_);
-		} else {
-			const bool is_updatable = tracking_info.state == ADDON_INSTALLED_OUTDATED;
-			const bool can_delete = !addon.local_only;
-
-			button& install_button = find_widget<button>(control_grid, "single_install", false);
-			button& update_button = find_widget<button>(control_grid, "single_update", false);
-			button& uninstall_button = find_widget<button>(control_grid, "single_uninstall", false);
-
-			install_button.set_active(true);
-			update_button.set_active(true);
-			uninstall_button.set_active(can_delete);
-
-			if(true) {
-				connect_signal_mouse_left_click(install_button,
+			if(publish_function_ != nullptr) {
+				connect_signal_mouse_left_click(publish_button,
 					std::bind(&addon_list::addon_action_wrapper, this, publish_function_, std::ref(addon), _3, _4));
 
 				install_button.set_tooltip(_("Publish add-on"));
 			}
+		} else if(tracking_info.state == ADDON_INSTALLED_UPGRADABLE) {
+			install_update_stack.select_layer(CONTROL_STACK_LAYER_UPDATE);
 
-			if(is_updatable) {
+			update_button.set_active(true);
+
+			if(update_function_ != nullptr) {
 				connect_signal_mouse_left_click(update_button,
-					std::bind(&addon_list::addon_action_wrapper, this, publish_function_, std::ref(addon), _3, _4));
-
-				update_button.set_tooltip(_("Send new version to server"));
+					std::bind(&addon_list::addon_action_wrapper, this, update_function_, std::ref(addon), _3, _4));
 			}
+		} else {
+			install_update_stack.select_layer(CONTROL_STACK_LAYER_INSTALL);
 
-			if(can_delete) {
+			install_button.set_active(!is_installed);
+
+			if(install_function_ != nullptr) {
+				connect_signal_mouse_left_click(install_button,
+					std::bind(&addon_list::addon_action_wrapper, this, install_function_, std::ref(addon), _3, _4));
+			}
+		}
+
+		// Set up the Uninstall button.
+		if(tracking_info.can_publish) {
+			// Use the uninstall button as a delete-from-server button if the addon's already been published...
+			uninstall_button.set_active(!addon.local_only);
+
+			if(!addon.local_only && delete_function_ != nullptr) {
 				connect_signal_mouse_left_click(uninstall_button,
 					std::bind(&addon_list::addon_action_wrapper, this, delete_function_, std::ref(addon), _3, _4));
 
 				uninstall_button.set_tooltip(_("Delete add-on from server"));
 			}
+		} else {
+			// ... else it functions as normal.
+			uninstall_button.set_active(is_installed);
 
-			install_update_stack.select_layer(static_cast<int>(is_updatable));
+			if(is_installed && uninstall_function_ != nullptr) {
+				connect_signal_mouse_left_click(uninstall_button,
+					std::bind(&addon_list::addon_action_wrapper, this, uninstall_function_, std::ref(addon), _3, _4));
+			}
 		}
+
+		find_widget<grid>(row_grid, "single_install_buttons", false).set_visible(install_buttons_visibility_);
+		find_widget<label>(row_grid, "installation_status", false).set_visible(install_status_visibility_);
 	}
 
 	select_first_addon();
