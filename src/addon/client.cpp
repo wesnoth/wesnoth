@@ -88,7 +88,7 @@ bool addons_client::request_addons_list(config& cfg)
 	this->send_simple_request("request_campaign_list", response_buf);
 	this->wait_for_transfer_done(_("Downloading list of add-ons..."));
 
-	cfg = response_buf.child("campaigns");
+	cfg = std::move(response_buf.child("campaigns"));
 
 	return !this->update_last_error(response_buf);
 }
