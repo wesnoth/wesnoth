@@ -24,6 +24,7 @@
 #include "gui/core/event/dispatcher.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/generator.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/settings.hpp"
@@ -360,6 +361,19 @@ void addon_list::finalize_setup()
 
 	auto order = std::make_pair(0, gui2::listbox::SORT_ASCENDING);
 	list.set_active_sorting_option(order);
+}
+
+void addon_list::set_addon_order(addon_sort_func func)
+{
+	listbox& list = get_listbox();
+
+	generator_base::order_func generator_func = [this, func](unsigned a, unsigned b)
+	{
+		return func(*addon_vector_[a], *addon_vector_[b]);
+	};
+
+	list.mark_as_unsorted();
+	list.order_by(generator_func);
 }
 
 void addon_list::select_first_addon()

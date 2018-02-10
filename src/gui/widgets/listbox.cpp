@@ -656,6 +656,15 @@ const listbox::order_pair listbox::get_active_sorting_option()
 	return std::make_pair(-1, SORT_NONE);
 }
 
+void listbox::mark_as_unsorted()
+{
+	for(auto& pair : orders_) {
+		if(pair.first != nullptr) {
+			pair.first->set_value(SORT_NONE);
+		}
+	}
+}
+
 void listbox::set_content_size(const point& origin, const point& size)
 {
 	/** @todo This function needs more testing. */

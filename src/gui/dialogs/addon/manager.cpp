@@ -30,7 +30,6 @@
 #include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/addon_list.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/menu_button.hpp"
@@ -212,6 +211,30 @@ const std::vector<std::pair<ADDON_TYPE, std::string>> addon_manager::type_filter
 	{ADDON_UNKNOWN,        N_("addons_of_type^Unknown")},
 };
 
+const std::vector<addon_manager::addon_order> addon_manager::all_orders_{
+	{N_("addons_order^Name ($order)"),
+	[](const addon_info& a, const addon_info& b) { return a.title < b.title; },
+	[](const addon_info& a, const addon_info& b) { return a.title > b.title; }},
+	{N_("addons_order^Author ($order)"),
+	[](const addon_info& a, const addon_info& b) { return a.author < b.author; },
+	[](const addon_info& a, const addon_info& b) { return a.author > b.author; }},
+	{N_("addons_order^Size ($order)"),
+	[](const addon_info& a, const addon_info& b) { return a.size < b.size; },
+	[](const addon_info& a, const addon_info& b) { return a.size > b.size; }},
+	{N_("addons_order^Downloads ($order)"),
+	[](const addon_info& a, const addon_info& b) { return a.downloads < b.downloads; },
+	[](const addon_info& a, const addon_info& b) { return a.downloads > b.downloads; }},
+	{N_("addons_order^Type ($order)"),
+	[](const addon_info& a, const addon_info& b) { return a.display_type() < b.display_type(); },
+	[](const addon_info& a, const addon_info& b) { return a.display_type() > b.display_type(); }},
+	{N_("addons_order^Last updated ($order)"),
+	[](const addon_info& a, const addon_info& b) { return a.updated < b.updated; },
+	[](const addon_info& a, const addon_info& b) { return a.updated > b.updated; }},
+	{N_("addons_order^First uploaded ($order)"),
+	[](const addon_info& a, const addon_info& b) { return a.created < b.created; },
+	[](const addon_info& a, const addon_info& b) { return a.created > b.created; }}
+};
+
 addon_manager::addon_manager(addons_client& client)
 	: orders_()
 	, cfg_()
@@ -328,6 +351,25 @@ void addon_manager::pre_show(window& window)
 	type_filter.set_values(type_filter_entries);
 
 	connect_signal_notify_modified(type_filter, std::bind(&addon_manager::apply_filters, this, std::ref(window)));
+
+	menu_button& order_dropdown = find_widget<menu_button>(&window, "order_dropdown", false);
+
+	std::vector<config> order_dropdown_entries;
+	for(const auto& f : all_orders_) {
+		utils::string_map symbols;
+
+		// TRANSLATORS: ascending
+		symbols["order"] = _("asc");
+		config entry{"label", VGETTEXT(f.label.c_str(), symbols)};
+		order_dropdown_entries.push_back(entry);
+		// TRANSLATORS: descending
+		symbols["order"] = _("desc");
+		entry["label"] = VGETTEXT(f.label.c_str(), symbols);
+		order_dropdown_entries.push_back(entry);
+	}
+
+	order_dropdown.set_values(order_dropdown_entries);
+	order_dropdown.connect_click_handler(std::bind(&addon_manager::order_addons, this, std::ref(window)));
 
 	button& url_go_button = find_widget<button>(&window, "url_go", false);
 	button& url_copy_button = find_widget<button>(&window, "url_copy", false);
@@ -553,6 +595,21 @@ void addon_manager::apply_filters(window& window)
 		& get_type_filter_visibility(window)
 		& get_name_filter_visibility(window);
 	find_widget<addon_list>(&window, "addons", false).set_addon_shown(res);
+}
+
+void addon_manager::order_addons(window& window)
+{
+	const menu_button& order_menu = find_widget<const menu_button>(&window, "order_dropdown", false);
+	const addon_order& order_struct = all_orders_.at(order_menu.get_value() / 2);
+	sort_order order = order_menu.get_value() % 2 == 0 ? sort_order::ascending : sort_order::descending;
+	addon_list::addon_sort_func func;
+	if(order == sort_order::ascending) {
+		func = order_struct.sort_func_asc;
+	} else {
+		func = order_struct.sort_func_desc;
+	}
+
+	find_widget<addon_list>(&window, "addons", false).set_addon_order(func);
 }
 
 template<void(addon_manager::*fptr)(const addon_info& addon, window& window)>

@@ -19,6 +19,7 @@
 #include "addon/state.hpp"
 
 #include "gui/dialogs/modal_dialog.hpp"
+#include "gui/widgets/addon_list.hpp"
 #include "gui/widgets/pane.hpp"
 
 #include <boost/dynamic_bitset.hpp>
@@ -46,6 +47,19 @@ public:
 	}
 
 private:
+	enum class sort_order {ascending, descending};
+
+	struct addon_order
+	{
+		std::string label;
+		addon_list::addon_sort_func sort_func_asc;
+		addon_list::addon_sort_func sort_func_desc;
+
+		addon_order(std::string label_, addon_list::addon_sort_func sort_func_asc_, addon_list::addon_sort_func sort_func_desc_)
+			: label(label_), sort_func_asc(sort_func_asc_), sort_func_desc(sort_func_desc_)
+		{}
+	};
+
 	void on_filtertext_changed(text_box_base* textbox);
 
 	std::vector<selectable_item*> orders_;
@@ -75,6 +89,7 @@ private:
 
 	static const std::vector<std::pair<ADDON_STATUS_FILTER, std::string>> status_filter_types_;
 	static const std::vector<std::pair<ADDON_TYPE, std::string>> type_filter_types_;
+	static const std::vector<addon_order> all_orders_;
 
 	bool need_wml_cache_refresh_;
 
@@ -123,6 +138,7 @@ private:
 	void copy_url_callback(text_box& url_box);
 
 	void apply_filters(window& window);
+	void order_addons(window& window);
 	void show_help();
 
 	boost::dynamic_bitset<> get_name_filter_visibility(const window& window) const;

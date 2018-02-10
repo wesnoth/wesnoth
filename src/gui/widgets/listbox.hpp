@@ -288,6 +288,9 @@ public:
 
 	const order_pair get_active_sorting_option();
 
+	/** Deactivates all sorting toggle buttons at the top, making the list look like it's not sorted. */
+	void mark_as_unsorted();
+
 protected:
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 

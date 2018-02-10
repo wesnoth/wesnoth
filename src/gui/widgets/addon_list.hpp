@@ -38,6 +38,8 @@ class addon_list : public container_base
 	friend struct implementation::builder_addon_list;
 
 public:
+	using addon_sort_func = std::function<bool(const addon_info&, const addon_info&)>;
+
 	explicit addon_list(const implementation::builder_addon_list& builder);
 
 	/** Special retval for the toggle panels in the addons list */
@@ -105,6 +107,8 @@ public:
 	{
 		get_listbox().set_row_shown(shown);
 	}
+
+	void set_addon_order(addon_sort_func func);
 
 	/**
 	 * Changes the color of an add-on state string (installed, outdated, etc.) according to the state itself.
