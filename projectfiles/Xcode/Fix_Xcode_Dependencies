@@ -5,6 +5,8 @@
 # Victor Sergienko (singalen), 2018
 #
 
+starttimestamp=$(date +%s)
+
 ###Required Version Defines
 sdl2_required_version="2.0.7"
 sdl2_image_required_version="2.0.2"
@@ -110,14 +112,16 @@ edit_dylib_deps() {
         done
 }
 
-calculate_runtime() {
-        endtimestamp=`date +%s`
+time_interval_to_string() {
+        local START=$1
+        local END=$2
+
         declare -i timestamp
         declare -i days
         declare -i hours
         declare -i minutes
         declare -i seconds
-        timestamp=$endtimestamp-$starttimestamp
+        timestamp=$END-$START
 
         days=$timestamp/60/60/24
         hours=$((($timestamp-($days*60*60*24))/60/60))
@@ -155,17 +159,10 @@ if ! [ -d "Wesnoth.xcodeproj" ]; then
         exit 1
 fi
 
-if type xcode-select >&- && xpath=$( xcode-select --print-path ) && test -d "${xpath}" && test -x "${xpath}" ; then
-        echo "==> Xcode Command Line Tools are installed"
+if xcode-select --install 2>&1 | grep installed; then
+        echo "==> Xcode Command Line Tools are installed..."
 else
         echo "==> Xcode Command Line Tools aren't installed, installing..."
-        xcode-select --install
-fi
-
-if xcode-select --install 2>&1 | grep installed; then
-        echo installed;
-else
-        echo "Xcode Command Line Tools aren't installed, installing..."
         xcode-select --install
 fi
 
@@ -238,30 +235,18 @@ if [ -d "lib" ]; then
 fi
 mkdir lib
 cd lib
-cp /usr/local/opt/boost/lib/libboost_filesystem-mt.dylib ./
-cp /usr/local/opt/boost/lib/libboost_iostreams-mt.dylib ./
-cp /usr/local/opt/boost/lib/libboost_locale-mt.dylib ./
-cp /usr/local/opt/boost/lib/libboost_program_options-mt.dylib ./
-cp /usr/local/opt/boost/lib/libboost_random-mt.dylib ./
-cp /usr/local/opt/boost/lib/libboost_regex-mt.dylib ./
-cp /usr/local/opt/boost/lib/libboost_system-mt.dylib ./
-cp /usr/local/opt/boost/lib/libboost_thread-mt.dylib ./
-cp /usr/local/opt/boost/lib/libboost_unit_test_framework-mt.dylib ./
+cp /usr/local/opt/boost/lib/libboost_filesystem-mt.dylib /usr/local/opt/boost/lib/libboost_iostreams-mt.dylib /usr/local/opt/boost/lib/libboost_locale-mt.dylib /usr/local/opt/boost/lib/libboost_program_options-mt.dylib /usr/local/opt/boost/lib/libboost_random-mt.dylib /usr/local/opt/boost/lib/libboost_regex-mt.dylib /usr/local/opt/boost/lib/libboost_system-mt.dylib /usr/local/opt/boost/lib/libboost_thread-mt.dylib /usr/local/opt/boost/lib/libboost_unit_test_framework-mt.dylib ./
 cp /usr/local/opt/cairo/lib/libcairo.2.dylib ./
 cp /usr/local/opt/openssl@1.1/lib/libcrypto.1.1.dylib ./
 cp /usr/local/opt/libffi/lib/libffi.6.dylib ./
 cp /usr/local/opt/fontconfig/lib/libfontconfig.1.dylib ./
 cp /usr/local/opt/freetype/lib/libfreetype.6.dylib ./
-cp /usr/local/opt/glib/lib/libglib-2.0.0.dylib ./
-cp /usr/local/opt/glib/lib/libgmodule-2.0.0.dylib ./
-cp /usr/local/opt/glib/lib/libgobject-2.0.0.dylib ./
+cp /usr/local/opt/glib/lib/libglib-2.0.0.dylib /usr/local/opt/glib/lib/libgmodule-2.0.0.dylib /usr/local/opt/glib/lib/libgobject-2.0.0.dylib ./
 cp /usr/local/opt/graphite2/lib/libgraphite2.3.0.1.dylib ./libgraphite2.3.dylib
 cp /usr/local/opt/glib/lib/libgthread-2.0.0.dylib ./
 cp /usr/local/opt/harfbuzz/lib/libharfbuzz.0.dylib ./
 cp /usr/local/opt/gettext/lib/libintl.8.dylib ./
-cp /usr/local/opt/pango/lib/libpango-1.0.0.dylib ./
-cp /usr/local/opt/pango/lib/libpangocairo-1.0.0.dylib ./
-cp /usr/local/opt/pango/lib/libpangoft2-1.0.0.dylib ./
+cp /usr/local/opt/pango/lib/libpango-1.0.0.dylib /usr/local/opt/pango/lib/libpangocairo-1.0.0.dylib /usr/local/opt/pango/lib/libpangoft2-1.0.0.dylib ./
 cp /usr/local/opt/pcre/lib/libpcre.1.dylib ./
 cp /usr/local/opt/pixman/lib/libpixman-1.0.dylib ./
 cp /usr/local/opt/libpng/lib/libpng16.16.dylib ./
@@ -273,30 +258,10 @@ for filename in * ; do
         edit_dylib_deps $filename
 done
 
-if ! [ -f /usr/lib/libbz2.1.0.dylib ]; then
-        echo "Error: File /usr/lib/libbz2.1.0.dylib doesn't exist in your instalation. Please contact support here: https://github.com/wesnoth/wesnoth/issues/new" >&2
-        exit 1
-else
-        ln -s /usr/lib/libbz2.1.0.dylib
-fi
-if ! [ -f /usr/lib/libexpat.1.dylib ]; then
-        echo "Error: File /usr/lib/libexpat.1.dylib doesn't exist in your instalation. Please contact support here: https://github.com/wesnoth/wesnoth/issues/new" >&2
-        exit 1
-else
-        ln -s /usr/lib/libexpat.1.dylib
-fi
-if ! [ -f /usr/lib/libiconv.2.dylib ]; then
-        echo "Error: File /usr/lib/libiconv.2.dylib doesn't exist in your instalation. Please contact support here: https://github.com/wesnoth/wesnoth/issues/new" >&2
-        exit 1
-else
-        ln -s /usr/lib/libiconv.2.dylib
-fi
-if ! [ -f /usr/lib/libz.1.dylib ]; then
-        echo "Error: File /usr/lib/libz.1.dylib doesn't exist in your instalation. Please contact support here: https://github.com/wesnoth/wesnoth/issues/new" >&2
-        exit 1
-else
-        ln -s /usr/lib/libz.1.dylib
-fi
+ln -s /usr/lib/libbz2.1.0.dylib
+ln -s /usr/lib/libexpat.1.dylib
+ln -s /usr/lib/libiconv.2.dylib
+ln -s /usr/lib/libz.1.dylib
 
 ln -s "$sdl2_path"
 ln -s "$sdl2_image_path"
@@ -309,6 +274,5 @@ ln -s "$growl_path"
 
 echo "==> DONE ..."
 echo
-
-calculate_runtime
+time_interval_to_string "$starttimestamp" "$(date +%s)"
 echo
