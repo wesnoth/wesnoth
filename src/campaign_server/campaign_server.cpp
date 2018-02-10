@@ -130,7 +130,7 @@ server::server(const std::string& cfg_file)
 
 	// Ensure all campaigns to use secure hash passphrase storage
 	if(!read_only_) {
-		for(config& campaign : campaigns().child_range("campaign")) {
+		for(config& campaign : addons().child_range("addon")) {
 			// Campaign already has a hashed password
 			if(campaign["passphrase"].empty()) {
 				continue;
@@ -207,7 +207,7 @@ void server::load_config()
 
 	// Ensure the campaigns list WML exists even if empty, other functions
 	// depend on its existence.
-	cfg_.child_or_add("campaigns");
+	cfg_.child_or_add("addons");
 
 	// Certain config values are saved to WML again so that a given server
 	// instance's parameters remain constant even if the code defaults change
@@ -303,7 +303,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 		} else {
 			const std::string& addon_id = ctl[1];
 			const std::string& newpass = ctl[2];
-			config& campaign = get_campaign(addon_id);
+			config& campaign = get_addon(addon_id);
 
 			if(!campaign) {
 				ERR_CS << "Add-on '" << addon_id << "' not found, cannot set passphrase\n";
@@ -505,7 +505,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	const std::string& name = req.cfg["name"];
 	const std::string& lang = req.cfg["language"];
 
-	for(const config& i : campaigns().child_range("campaign"))
+	for(const config& i : addons().child_range("addon"))
 	{
 		if(!name.empty() && name != i["name"]) {
 			continue;
@@ -536,10 +536,10 @@ void server::handle_request_campaign_list(const server::request& req)
 			}
 		}
 
-		campaign_list.add_child("campaign", i);
+		campaign_list.add_child("addon", i);
 	}
 
-	for(config& j : campaign_list.child_range("campaign"))
+	for(config& j : campaign_list.child_range("addon"))
 	{
 		j["passphrase"] = "";
 		j["passhash"] = "";
@@ -560,7 +560,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	}
 
 	config response;
-	response.add_child("campaigns", std::move(campaign_list));
+	response.add_child("addons", std::move(campaign_list));
 
 	std::ostringstream ostr;
 	write(ostr, response);
@@ -575,7 +575,7 @@ void server::handle_request_campaign(const server::request& req)
 {
 	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " using gzip\n";
 
-	config& campaign = get_campaign(req.cfg["name"]);
+	config& campaign = get_addon(req.cfg["name"]);
 
 	if(!campaign) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
@@ -644,7 +644,7 @@ void server::handle_upload(const server::request& req)
 		const std::string& lc_name = utf8::lowercase(name);
 		passed_name_utf8_check = true;
 
-		for(config& c : campaigns().child_range("campaign"))
+		for(config& c : addons().child_range("addon"))
 		{
 			if(utf8::lowercase(c["name"]) == lc_name) {
 				campaign = &c;
@@ -747,7 +747,7 @@ void server::handle_upload(const server::request& req)
 		std::string message = "Add-on accepted.";
 
 		if(campaign == nullptr) {
-			campaign = &campaigns().add_child("campaign");
+			campaign = &addons().add_child("addon");
 			(*campaign)["original_timestamp"] = upload_ts;
 		}
 
@@ -826,7 +826,7 @@ void server::handle_delete(const server::request& req)
 
 	LOG_CS << "deleting campaign '" << erase["name"] << "' requested from " << req.addr << "\n";
 
-	config& campaign = get_campaign(erase["name"]);
+	config& campaign = get_addon(erase["name"]);
 
 	if(!campaign) {
 		send_error("The add-on does not exist.", req.sock);
@@ -834,8 +834,8 @@ void server::handle_delete(const server::request& req)
 	}
 
 	if(!authenticate(campaign, erase["passphrase"])
-		&& (campaigns()["master_password"].empty()
-		|| campaigns()["master_password"] != erase["passphrase"]))
+		&& (addons()["master_password"].empty()
+		|| addons()["master_password"] != erase["passphrase"]))
 	{
 		send_error("The passphrase is incorrect.", req.sock);
 		return;
@@ -849,11 +849,11 @@ void server::handle_delete(const server::request& req)
 			   << '\n';
 	}
 
-	config::child_itors itors = campaigns().child_range("campaign");
+	config::child_itors itors = addons().child_range("addon");
 	for(size_t index = 0; !itors.empty(); ++index, itors.pop_front())
 	{
 		if(&campaign == &itors.front()) {
-			campaigns().remove_child("campaign", index);
+			addons().remove_child("addon", index);
 			break;
 		}
 	}
@@ -876,7 +876,7 @@ void server::handle_change_passphrase(const server::request& req)
 		return;
 	}
 
-	config& campaign = get_campaign(cpass["name"]);
+	config& campaign = get_addon(cpass["name"]);
 
 	if(!campaign) {
 		send_error("No add-on with that name exists.", req.sock);

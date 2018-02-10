@@ -199,10 +199,14 @@ void read_addons_list(const config& cfg, addons_list& dest)
 
 	unsigned order = 0;
 
-	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness
-	 */
-	const config::const_child_itors &addon_cfgs = cfg.child_range("campaign");
-	for(const config& addon_cfg : addon_cfgs) {
+	std::string key = "addon";
+
+	// Legacy support. The entry key used to be "campaign".
+	if(!cfg.has_child(key)) {
+		key = "campaign";
+	}
+
+	for(const config& addon_cfg : cfg.child_range(key)) {
 		const std::string& id = addon_cfg["name"].str();
 		if(dest.find(id) != dest.end()) {
 			ERR_AC << "add-ons list has multiple entries for '" << id << "', not good; ignoring them" << std::endl;

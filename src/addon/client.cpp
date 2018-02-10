@@ -82,13 +82,15 @@ bool addons_client::request_addons_list(config& cfg)
 
 	config response_buf;
 
-	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness
-	 */
-
 	this->send_simple_request("request_campaign_list", response_buf);
 	this->wait_for_transfer_done(_("Downloading list of add-ons..."));
 
-	cfg = std::move(response_buf.child("campaigns"));
+	// Legacy support. The response key used to be "campaigns".
+	if(response_buf.has_child("campaigns")) {
+		cfg = std::move(response_buf.child("campaigns"));
+	} else {
+		cfg = std::move(response_buf.child("addons"));
+	}
 
 	return !this->update_last_error(response_buf);
 }
