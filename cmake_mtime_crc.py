@@ -52,7 +52,7 @@ if os.path.isfile(mtime_file):
         line_list = line.strip().split(":")
         crc_dict_prev.update({line_list[0] : int(line_list[1])})
     readfile.close()
-    
+
 # compare file CRCs between the set of CRCs from the previous run and the current run
 # if the file has changed, or is brand new, set its mtime to today so that cmake will know to recompile it
     for key, value in crc_dict_curr.items():
