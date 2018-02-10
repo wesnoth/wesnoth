@@ -83,6 +83,8 @@ void addon_info::read(const config& cfg)
 
 	this->updated = cfg["timestamp"].to_time_t();
 	this->created = cfg["original_timestamp"].to_time_t();
+
+	this->local_only = cfg["local_only"].to_bool();
 }
 
 void addon_info::write(config& cfg) const

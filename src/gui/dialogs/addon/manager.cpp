@@ -475,13 +475,15 @@ void addon_manager::load_addon_list(window& window)
 		if(addons_.find(id) == addons_.end()) {
 			// Get a config from the addon's pbl file
 			// Note that the name= key is necessary or stuff breaks, since the filter code uses this key
-			// to match add-ons in the config list. It also fills in addon_info's id field.
+			// to match add-ons in the config list. It also fills in addon_info's id field. It's also
+			// neccessay to set local_only here so that flag can be properly set after addons_ is cleared
+			// and recreated by read_addons_list.
 			config pbl_cfg = get_addon_pbl_info(id);
 			pbl_cfg["name"] = id;
+			pbl_cfg["local_only"] = true;
 
 			// Add the add-on to the list.
 			addon_info addon(pbl_cfg);
-			addon.local_only = true;
 			addons_[id] = addon;
 
 			// Add the addon to the config entry
