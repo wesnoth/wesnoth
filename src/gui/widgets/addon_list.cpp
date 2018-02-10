@@ -269,9 +269,9 @@ void addon_list::set_addons(const addons_list& addons)
 		// Set up the Uninstall button.
 		if(tracking_info.can_publish) {
 			// Use the uninstall button as a delete-from-server button if the addon's already been published...
-			uninstall_button.set_active(!addon.local_only);
+			uninstall_button.set_active(!is_local);
 
-			if(!addon.local_only && delete_function_ != nullptr) {
+			if(!is_local && delete_function_ != nullptr) {
 				connect_signal_mouse_left_click(uninstall_button,
 					std::bind(&addon_list::addon_action_wrapper, this, delete_function_, std::ref(addon), _3, _4));
 
