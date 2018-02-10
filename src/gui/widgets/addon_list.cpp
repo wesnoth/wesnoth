@@ -219,18 +219,24 @@ void addon_list::set_addons(const addons_list& addons)
 		// Set special retval for the toggle panels
 		find_widget<toggle_panel>(row_grid, "list_panel", false).set_retval(DEFAULT_ACTION_RETVAL);
 
+		// The control button grid is excluded on lower resolutions.
+		grid* control_grid = find_widget<grid>(row_grid, "single_install_buttons", false, false);
+		if(!control_grid) {
+			continue;
+		}
+
 		//
 		// Set up the inline control buttons.
 		//
-		stacked_widget& install_update_stack = find_widget<stacked_widget>(row_grid, "install_update_stack", false);
+		stacked_widget& install_update_stack = find_widget<stacked_widget>(control_grid, "install_update_stack", false);
 
 		// These three buttons are in the install_update_stack. Only one is shown depending on the addon's state.
-		button& install_button   = find_widget<button>(row_grid, "single_install", false);
-		button& update_button    = find_widget<button>(row_grid, "single_update", false);
-		button& publish_button   = find_widget<button>(row_grid, "single_publish", false);
+		button& install_button   = find_widget<button>(control_grid, "single_install", false);
+		button& update_button    = find_widget<button>(control_grid, "single_update", false);
+		button& publish_button   = find_widget<button>(control_grid, "single_publish", false);
 
 		// This button is always shown.
-		button& uninstall_button = find_widget<button>(row_grid, "single_uninstall", false);
+		button& uninstall_button = find_widget<button>(control_grid, "single_uninstall", false);
 
 		const bool is_installed = is_installed_addon_status(tracking_info.state);
 		const bool is_local = tracking_info.state == ADDON_INSTALLED_LOCAL_ONLY;
@@ -288,7 +294,7 @@ void addon_list::set_addons(const addons_list& addons)
 			}
 		}
 
-		find_widget<grid>(row_grid, "single_install_buttons", false).set_visible(install_buttons_visibility_);
+		control_grid->set_visible(install_buttons_visibility_);
 		find_widget<label>(row_grid, "installation_status", false).set_visible(install_status_visibility_);
 	}
 
