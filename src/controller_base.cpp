@@ -132,7 +132,11 @@ void controller_base::handle_event(const SDL_Event& event)
 		break;
 
 	case SDL_MOUSEWHEEL:
+#if defined(_WIN32) || defined(__APPLE__)
 		mh_base.mouse_wheel(-event.wheel.x, event.wheel.y, is_browsing());
+#else
+		mh_base.mouse_wheel(event.wheel.x, event.wheel.y, is_browsing());
+#endif
 		break;
 
 	default:
