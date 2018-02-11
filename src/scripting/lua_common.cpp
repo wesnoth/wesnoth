@@ -595,6 +595,17 @@ t_string luaW_checktstring(lua_State *L, int index)
 	return result;
 }
 
+bool luaW_isstring(lua_State* L, int index)
+{
+	if(lua_isstring(L, index)) {
+		return true;
+	}
+	if(lua_isuserdata(L, index) && luaL_testudata(L, index, tstringKey)) {
+		return true;
+	}
+	return false;
+}
+
 void luaW_filltable(lua_State *L, const config& cfg)
 {
 	if (!lua_checkstack(L, LUA_MINSTACK))
