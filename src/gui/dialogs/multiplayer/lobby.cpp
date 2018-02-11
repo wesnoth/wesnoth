@@ -262,9 +262,7 @@ bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_add
 
 		if(gui2::show_message(e_title, err_msg, message::yes_no_buttons, true) == gui2::window::OK) {
 			// Begin download session
-			ad_hoc_addon_fetch_session(needs_download);
-
-			return true;
+			return ad_hoc_addon_fetch_session(needs_download);
 		}
 	}
 
