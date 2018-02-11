@@ -167,7 +167,7 @@ void team::team_info::read(const config& cfg)
 	gold = cfg["gold"];
 	income = cfg["income"];
 	team_name = cfg["team_name"].str();
-	user_team_name = cfg["user_team_name"].t_str().to_serialized();
+	user_team_name = cfg["user_team_name"];
 	side_name = cfg["side_name"];
 	faction = cfg["faction"].str();
 	faction_name = cfg["faction_name"];
@@ -200,6 +200,9 @@ void team::team_info::read(const config& cfg)
 	color = get_side_color_id_from_config(cfg);
 
 	// If starting new scenario override settings from [ai] tags
+	if(!user_team_name.translatable())
+		user_team_name = t_string::from_serialized(user_team_name);
+
 	if(ai::manager::has_manager()) {
 		if(cfg.has_attribute("ai_config")) {
 			ai::manager::get_singleton().add_ai_for_side_from_file(side, cfg["ai_config"], true);
