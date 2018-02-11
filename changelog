@@ -4,6 +4,10 @@ Version 1.13.11:
      latest update or original upload (issue #1747)
    * Players will now be prompted to update outdated dependencies alongside
      downloading missing ones when installing an add-on.
+ * Add-ons server:
+   * Empty passphrases from malfunctioning clients that do not provide or
+     generate a passphrase otherwise are now rejected instead of treated as
+     valid.
  * Campaigns:
    * The Cutscene_Minimal theme is now used in all dialog only scenarios that
      have linger=no in [end_level].

@@ -715,6 +715,9 @@ void server::handle_upload(const server::request& req)
 			"Add-on rejected: The add-on contains files or directories with case conflicts. "
 			"File or directory names may not be differently-cased versions of the same string.",
 			filelist, req.sock);
+	} else if(upload["passphrase"].empty()) {
+		LOG_CS << "Upload aborted - missing passphrase.\n";
+		send_error("No passphrase was specified.", req.sock);
 	} else if(campaign && !authenticate(*campaign, upload["passphrase"])) {
 		LOG_CS << "Upload aborted - incorrect passphrase.\n";
 		send_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect.", req.sock);
@@ -833,9 +836,16 @@ void server::handle_delete(const server::request& req)
 		return;
 	}
 
-	if(!authenticate(campaign, erase["passphrase"])
+	const config::attribute_value& pass = erase["passphrase"];
+
+	if(pass.empty()) {
+		send_error("No passphrase was specified.", req.sock);
+		return;
+	}
+
+	if(!authenticate(campaign, pass)
 		&& (campaigns()["master_password"].empty()
-		|| campaigns()["master_password"] != erase["passphrase"]))
+		|| campaigns()["master_password"] != pass))
 	{
 		send_error("The passphrase is incorrect.", req.sock);
 		return;
