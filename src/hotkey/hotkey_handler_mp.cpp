@@ -68,8 +68,10 @@ bool playmp_controller::hotkey_handler::can_execute_command(const hotkey::hotkey
 			res = playmp_controller_.is_networked_mp();
 			break;
 		case hotkey::HOTKEY_START_NETWORK:
+			res = is_observer() && playmp_controller_.network_processing_stopped_;
+			break;
 		case hotkey::HOTKEY_STOP_NETWORK:
-			res = is_observer();
+			res = is_observer() && !playmp_controller_.network_processing_stopped_;
 			break;
 	    default:
 			return playsingle_controller::hotkey_handler::can_execute_command(cmd, index);
