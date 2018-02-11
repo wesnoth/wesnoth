@@ -79,10 +79,10 @@ function ca_fast_combat:evaluation(cfg, data)
 
     for i = #data.fast_combat_units,1,-1 do
         local unit = data.fast_combat_units[i]
-        local unit_info = FAU.get_unit_info(unit, data.gamedata)
-        local unit_copy = FAU.get_unit_copy(unit.id, data.gamedata)
 
-        if (unit.attacks_left > 0) and (#unit.attacks > 0) then
+        if unit and unit.valid and (unit.attacks_left > 0) and (#unit.attacks > 0) then
+            local unit_info = FAU.get_unit_info(unit, data.gamedata)
+            local unit_copy = FAU.get_unit_copy(unit.id, data.gamedata)
             local attacks = AH.get_attacks({ unit }, { include_occupied = cfg.include_occupied_attack_hexes, viewing_side = viewing_side })
 
             if (#attacks > 0) then
