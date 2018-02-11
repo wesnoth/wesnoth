@@ -18,6 +18,7 @@
 #include "addon/client.hpp"
 #include "addon/info.hpp"
 #include "config_cache.hpp"
+#include "editor/editor_display.hpp" // for dummy display context
 #include "filesystem.hpp"
 #include "formula/debugger.hpp"
 #include "game_classification.hpp"
@@ -361,40 +362,6 @@ void test_tip(const std::string& id)
 
 		gui2::new_widgets = true;
 	}
-}
-
-class dummy_display_context : public display_context
-{
-public:
-	dummy_display_context()
-		: dummy_cfg()
-		, m(std::make_shared<terrain_type_data>(dummy_cfg), "")
-		, u()
-		, t()
-		, lbls()
-	{
-	}
-
-	virtual ~dummy_display_context(){}
-
-	virtual const gamemap & map() const override { return m; }
-	virtual const unit_map & units() const override { return u; }
-	virtual const std::vector<team> & teams() const override { return t; }
-	virtual const std::vector<std::string> & hidden_label_categories() const override { return lbls; }
-
-private:
-	config dummy_cfg;
-
-	gamemap m;
-	unit_map u;
-	std::vector<team> t;
-	std::vector<std::string> lbls;
-};
-
-const display_context& get_dummy_display_context()
-{
-	static const dummy_display_context dedc = dummy_display_context();
-	return dedc;
 }
 
 } // namespace
@@ -794,7 +761,8 @@ struct dialog_tester<gamestate_inspector>
 	game_events::manager events;
 	gamestate_inspector* create()
 	{
-		return new gamestate_inspector(vars, events, get_dummy_display_context(), "Unit Test");
+		const display_context* dc = editor::get_dummy_display_context();
+		return new gamestate_inspector(vars, events, *dc, "Unit Test");
 	}
 
 };
@@ -1168,7 +1136,8 @@ struct dialog_tester<game_stats>
 	int i = 1;
 	game_stats* create()
 	{
-		return new game_stats(get_dummy_display_context(), 1, i);
+		const display_context* ctx = editor::get_dummy_display_context();
+		return new game_stats(*ctx, 1, i);
 	}
 };
 

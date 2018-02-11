@@ -26,6 +26,35 @@ namespace wb {
 
 namespace editor {
 
+// Define dummy display context;
+
+class dummy_editor_display_context : public display_context
+{
+	config dummy_cfg1;
+
+	editor_map em;
+	unit_map u;
+	std::vector<team> t;
+	std::vector<std::string> lbls;
+
+public:
+	dummy_editor_display_context() : dummy_cfg1(), em(dummy_cfg1), u(), t(), lbls() {}
+	virtual ~dummy_editor_display_context(){}
+
+	virtual const gamemap & map() const { return em; }
+	virtual const unit_map & units() const { return u; }
+	virtual unit_map& units() { return u; }
+	virtual const std::vector<team> & teams() const { return t; }
+	virtual const std::vector<std::string> & hidden_label_categories() const { return lbls; }
+};
+
+const display_context * get_dummy_display_context() {
+	static const dummy_editor_display_context dedc = dummy_editor_display_context();
+	return &dedc;
+}
+
+// End dummy display context
+
 editor_display::editor_display(editor_controller& controller, reports& reports_object, const config& theme_cfg)
 	: display(nullptr, std::shared_ptr<wb::manager>(), reports_object, theme_cfg, config())
 	, brush_locations_()

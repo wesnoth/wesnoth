@@ -19,6 +19,8 @@
 
 namespace editor {
 
+const display_context * get_dummy_display_context();
+
 class editor_display : public display
 {
 public:
