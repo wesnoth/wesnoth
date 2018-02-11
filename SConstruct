@@ -525,7 +525,7 @@ for env in [test_env, client_env, env]:
         rel_comp_flags = rel_comp_flags + env["arch"]
         
 # PGO and LTO setup
-        if "gcc" in env["CXX"]:
+        if "gcc" in env["CC"]:
             if env["pgo_data"] == "generate":
                 rel_comp_flags = rel_comp_flags + " -fprofile-generate=pgo_data/"
                 rel_link_flags = "-fprofile-generate=pgo_data/"
