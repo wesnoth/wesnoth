@@ -104,12 +104,6 @@ protected:
 			_("Mute/Unmute all observers. (toggles)"), "");
 		register_command("ping", &chat_command_handler::do_network_send,
 			"");
-		register_command("green", &chat_command_handler::do_network_send_req_arg,
-			"", "", "A");
-		register_command("red", &chat_command_handler::do_network_send_req_arg,
-			"", "", "A");
-		register_command("yellow", &chat_command_handler::do_network_send_req_arg,
-			"", "", "A");
 		register_command("report", &chat_command_handler::do_network_send_req_arg,
 			_("Report abuse, rule violations, etc. to the server moderators. "
 				"Make sure to mention relevant nicknames, etc."), "");

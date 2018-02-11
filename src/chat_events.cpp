@@ -99,15 +99,6 @@ void chat_handler::send_command(const std::string& cmd, const std::string& args 
 	else if (cmd == "ping") {
 		data[cmd] = std::to_string(time(nullptr));
 	}
-	else if (cmd == "green") {
-		data.add_child("query")["type"] = "lobbymsg @" + args;
-	}
-	else if (cmd == "red") {
-		data.add_child("query")["type"] = "lobbymsg #" + args;
-	}
-	else if (cmd == "yellow") {
-		data.add_child("query")["type"] = "lobbymsg <255,255,0>" + args;
-	}
 	else if (cmd == "report") {
 		data.add_child("query")["type"] = "report " + args;
 	}
