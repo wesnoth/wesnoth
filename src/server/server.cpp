@@ -2676,8 +2676,6 @@ void server::dul_handler(const std::string& /*issuer_name*/, const std::string& 
 }
 
 void server::delete_game(int gameid) {
-	std::shared_ptr<game> game_ptr = player_connections_.get<game_t>().find(gameid)->get_game();
-
 	// Set the availability status for all quitting users.
 	using titer = player_connections::index<game_t>::type::iterator;
 	auto range_pair = player_connections_.get<game_t>().equal_range(gameid);
@@ -2697,14 +2695,17 @@ void server::delete_game(int gameid) {
 		}
 	}
 
-	//send users in the game a notification to leave the game since it has ended
-	static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
-	game_ptr->send_data(leave_game_doc);
 	// Put the remaining users back in the lobby.
 	for (const titer& it : range_vctor) {
 		player_connections_.get<game_t>().modify(it, player_record::enter_lobby);
 	}
-	game_ptr->send_data(games_and_users_list_);
+
+	//send users in the game a notification to leave the game since it has ended
+	static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
+	for (const titer& it : range_vctor) {
+		send_to_player(it->socket(), leave_game_doc);
+		send_to_player(it->socket(), games_and_users_list_);
+	}
 }
 
 void server::update_game_in_lobby(const wesnothd::game& g, const socket_ptr& exclude)
