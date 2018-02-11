@@ -2696,6 +2696,8 @@ void server::delete_game(int gameid) {
 	}
 
 	// Put the remaining users back in the lobby.
+	// This will call cleanup_game() deleter since there won't
+	// be any references to that game from player_connections_ anymore
 	for (const titer& it : range_vctor) {
 		player_connections_.get<game_t>().modify(it, player_record::enter_lobby);
 	}
