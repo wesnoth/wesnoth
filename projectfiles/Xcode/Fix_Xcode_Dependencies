@@ -1,0 +1,278 @@
+#!/usr/bin/env bash
+#
+# Fix_Xcode_Dependencies
+# Martin Hrubý (hrubymar10), 2016 - 2018
+# Victor Sergienko (singalen), 2018
+#
+
+starttimestamp=$(date +%s)
+
+###Required Version Defines
+sdl2_required_version="2.0.7"
+sdl2_image_required_version="2.0.2"
+sdl2_mixer_required_version="2.0.2"
+sdl2_net_required_version="2.0.1"
+sdl2_ttf_required_version="2.0.14"
+growl_required_version="2.0.1"
+###/Required Version Defines
+
+###Sha256
+sdl2_dmg_sha256="5b9556cbb5f90bb3e03d482a165f278cfc4515bc411f944f5d4c8fb5f595fcdd"
+sdl2_image_dmg_sha256="3e22f043e312ff585e73ececd3c379c7b9a485ed7c964e2be5b0afea3f5c92fe"
+sdl2_mixer_dmg_sha256="174a371e2acdfa7ae26be71134b9925f46e5257c8c8d608f09a6726a0368606b"
+sdl2_net_dmg_sha256="3a126e31b323d832be0ef4b9941fc3113b931e42a26e9bcc989487fd5348f858"
+sdl2_ttf_dmg_sha256="7cdfb4239aaacfed2fd235c12f600b21b193b6ceb60b32b1cbb674fbde04e9f3"
+growl_zip_sha256="f57c3beeba51738c44f1f741c008815c54352282d1085076e0ed61d6f17806a8"
+###/Sha256
+
+###Functions
+brew_install() {
+        local PACKAGE=$1
+        if ! brew ls --versions ${PACKAGE} > /dev/null; then
+                echo "==> Installing ${PACKAGE}"
+                brew install ${PACKAGE}
+        fi
+}
+
+framework_install() {
+        local PACKAGE=$1
+        local REQUIRED_VERSION=$2
+        local SHA256=$3
+        path="none"
+        if [ -d "/Library/Frameworks/$PACKAGE.framework" ]; then
+                VERSION=`defaults read /Library/Frameworks/$PACKAGE.framework/Versions/A/Resources/Info.plist CFBundleVersion`
+                if [ "$VERSION" == "$REQUIRED_VERSION" ]; then
+                        echo "==> Using $PACKAGE.framework from /Library/Frameworks"
+                        path="/Library/Frameworks/$PACKAGE.framework"
+                fi
+        fi
+        if [ "$path" == "none" ]; then
+                if [ -d "$MY_PATH/temp/$PACKAGE.framework" ]; then
+                        VERSION=`defaults read $MY_PATH/temp/$PACKAGE.framework/Versions/A/Resources/Info.plist CFBundleVersion`
+                        if [ "$VERSION" == "$REQUIRED_VERSION" ]; then
+                                echo "==> Using $PACKAGE.framework from temp"
+                                path="$MY_PATH/temp/$PACKAGE.framework"
+                        else
+                                echo "==> Found old $PACKAGE.framework in temp"
+                                rm -rf $PACKAGE.framework
+                        fi  
+                fi
+        fi
+        if [ "$path" == "none" ]; then
+                echo "==> Downloading $PACKAGE $REQUIRED_VERSION"
+                if [ "$PACKAGE" != "Growl" ]; then
+                        if [ -f "$PACKAGE-$REQUIRED_VERSION.dmg" ]; then
+                                rm "$PACKAGE-$REQUIRED_VERSION.dmg"
+                        fi
+                        if [ "$PACKAGE" == "SDL2" ]; then
+                                wget "https://www.libsdl.org/release/$PACKAGE-$REQUIRED_VERSION.dmg" -q --show-progress
+                        else
+                                wget "https://www.libsdl.org/projects/$(echo "$PACKAGE" | sed -e 's/SDL2/SDL/g')/release/$PACKAGE-$REQUIRED_VERSION.dmg" -q --show-progress
+                        fi
+                        if [ "$(shasum -a 256 $PACKAGE-$REQUIRED_VERSION.dmg | awk '{print $1}')" != $SHA256 ]; then
+                                echo "Error: SHA256 Checksum of $PACKAGE-$REQUIRED_VERSION.dmg doesn't match!" >&2
+                                exit 1
+                        fi
+                        hdiutil attach "$PACKAGE-$REQUIRED_VERSION.dmg" > /dev/null
+                        cp -Rf /Volumes/$PACKAGE/$PACKAGE.framework $PACKAGE.framework
+                        hdiutil detach /Volumes/$PACKAGE > /dev/null
+                        path="$MY_PATH/temp/$PACKAGE.framework"
+                else
+                        if [ -f "$PACKAGE-$REQUIRED_VERSION-SDK.zip" ]; then
+                                rm "$PACKAGE-$REQUIRED_VERSION-SDK.zip"
+                        fi
+                        wget "http://growl.cachefly.net/$PACKAGE-$REQUIRED_VERSION-SDK.zip" -q --show-progress
+                        if [ "$(shasum -a 256 $PACKAGE-$REQUIRED_VERSION-SDK.zip | awk '{print $1}')" != $SHA256 ]; then
+                                echo "Error: SHA256 Checksum of $PACKAGE-$REQUIRED_VERSION-SDK.zip doesn't match!" >&2
+                                exit 1
+                        fi
+                        if [ -d "$PACKAGE-$REQUIRED_VERSION-SDK" ]; then
+                                rm -rf "$PACKAGE-$REQUIRED_VERSION-SDK"
+                        fi
+                        unzip "$PACKAGE-$REQUIRED_VERSION-SDK.zip" > /dev/null
+                        cp -Rf "$PACKAGE-$REQUIRED_VERSION-SDK/Framework/$PACKAGE.framework" Growl.framework
+                        path="$MY_PATH/temp/$PACKAGE.framework"
+                fi
+        fi
+}
+
+edit_dylib_deps() {
+        DYLIB=$1
+        DEPS=$(otool -L ${DYLIB} | awk '{print $1;}' | tail -n +2)
+
+        for DEP in $DEPS; do
+                DEP_BASE=$(basename ${DEP})
+                if [ "$DEP_BASE" == "$(basename $DYLIB)" ]; then
+                        continue
+                fi
+                # Is this our redistributable file?
+                if [ -f $(dirname ${DYLIB})/${DEP_BASE} ]; then
+                        install_name_tool -change "${DEP}" "@loader_path/${DEP_BASE}" ${DYLIB}
+                fi
+        done
+}
+
+time_interval_to_string() {
+        local START=$1
+        local END=$2
+
+        declare -i timestamp
+        declare -i days
+        declare -i hours
+        declare -i minutes
+        declare -i seconds
+        timestamp=$END-$START
+
+        days=$timestamp/60/60/24
+        hours=$((($timestamp-($days*60*60*24))/60/60))
+        minutes=$((($timestamp-($days*60*60*24)-($hours*60*60))/60))
+        seconds=$((($timestamp-($days*60*60*24)-($hours*60*60)-($minutes*60))))
+        if [ $days -eq 0 ]; then
+        if [ $hours -eq 0 ]; then
+                if [ $minutes -eq 0 ]; then
+                echo "==> Operation took $seconds seconds ..."
+                else
+                echo "==> Operation took $minutes minutes and $seconds seconds ..."
+                fi
+        else
+                echo "==> Operation took $hours hours $minutes minutes and $seconds seconds ..."
+        fi
+        else
+        echo "==> Operation took $days days $hours hours $minutes minutes and $seconds seconds ..."
+        fi
+}
+###/Functions
+
+starttimestamp=`date +%s`
+
+MY_PATH=$(cd `dirname $0` && pwd)
+if [ -z "$MY_PATH" ] ; then
+        # error; for some reason, the path is not accessible
+        # to the script (e.g. permissions re-evaled after suid)
+        echo 'Error: Script path is for some reason not accessible' >&2
+        exit 1  # fail
+fi
+cd "$MY_PATH"
+
+if ! [ -d "Wesnoth.xcodeproj" ]; then
+        echo "Error: I am in bad directory! I must be in wesnoth/projectfiles/Xcode !" >&2
+        exit 1
+fi
+
+if xcode-select --install 2>&1 | grep installed; then
+        echo "==> Xcode Command Line Tools are installed..."
+else
+        echo "==> Xcode Command Line Tools aren't installed, installing..."
+        xcode-select --install
+fi
+
+if ! [ -x "$(command -v brew)" ]; then
+        echo 'Error: Homebrew is not installed. See https://brew.sh/' >&2
+        exit 1
+fi
+
+BREW_PACKAGES="boost cairo fontconfig freetype gettext glib graphite2 harfbuzz libffi libpng openssl@1.1 pcre pixman readline wget"
+for PACKAGE in ${BREW_PACKAGES}; do
+        brew_install ${PACKAGE}
+done
+
+if [ -d "Headers" ]; then
+        rm -rf Headers
+fi
+mkdir Headers
+cd Headers
+ln -s /usr/local/opt/boost/include/boost
+ln -s /usr/local/opt/cairo/include/cairo
+ln -s /usr/local/opt/fontconfig/include/fontconfig
+ln -s /usr/local/opt/glib/include/glib-2.0
+ln -s /usr/local/opt/glib/lib/glib-2.0/include/glibconfig.h
+ln -s /usr/local/opt/gettext/include/libintl.h
+ln -s /usr/local/opt/openssl@1.1/include/openssl
+ln -s /usr/local/opt/pango/include/pango-1.0/pango
+ln -s /usr/local/opt/libpng/include/libpng16/png.h
+ln -s /usr/local/opt/libpng/include/libpng16/pngconf.h
+ln -s /usr/local/opt/libpng/include/libpng16/pnglibconf.h
+ln -s /usr/local/opt/readline/include/readline
+cd ..
+
+if ! [ -d temp ]; then
+        mkdir temp
+fi
+cd temp
+###SDL2
+framework_install "SDL2" "$sdl2_required_version" "$sdl2_dmg_sha256"
+sdl2_path="$path"
+###/SDL2
+
+###SDL2_image
+framework_install "SDL2_image" "$sdl2_image_required_version" "$sdl2_image_dmg_sha256"
+sdl2_image_path="$path"
+###/SDL2_image
+
+###SDL2_mixer
+framework_install "SDL2_mixer" "$sdl2_mixer_required_version" "$sdl2_mixer_dmg_sha256"
+sdl2_mixer_path="$path"
+###/SDL2_mixer
+
+###SDL2_net
+framework_install "SDL2_net" "$sdl2_net_required_version" "$sdl2_net_dmg_sha256"
+sdl2_net_path="$path"
+###/SDL2_net
+
+###SDL2_ttf
+framework_install "SDL2_ttf" "$sdl2_ttf_required_version" "$sdl2_ttf_dmg_sha256"
+sdl2_ttf_path="$path"
+###/SDL2_ttf
+
+###Growl
+framework_install "Growl" "$growl_required_version" "$growl_zip_sha256"
+growl_path="$path"
+###/Growl
+cd ..
+
+if [ -d "lib" ]; then
+        rm -rf lib
+fi
+mkdir lib
+cd lib
+cp /usr/local/opt/boost/lib/libboost_filesystem-mt.dylib /usr/local/opt/boost/lib/libboost_iostreams-mt.dylib /usr/local/opt/boost/lib/libboost_locale-mt.dylib /usr/local/opt/boost/lib/libboost_program_options-mt.dylib /usr/local/opt/boost/lib/libboost_random-mt.dylib /usr/local/opt/boost/lib/libboost_regex-mt.dylib /usr/local/opt/boost/lib/libboost_system-mt.dylib /usr/local/opt/boost/lib/libboost_thread-mt.dylib /usr/local/opt/boost/lib/libboost_unit_test_framework-mt.dylib ./
+cp /usr/local/opt/cairo/lib/libcairo.2.dylib ./
+cp /usr/local/opt/openssl@1.1/lib/libcrypto.1.1.dylib ./
+cp /usr/local/opt/libffi/lib/libffi.6.dylib ./
+cp /usr/local/opt/fontconfig/lib/libfontconfig.1.dylib ./
+cp /usr/local/opt/freetype/lib/libfreetype.6.dylib ./
+cp /usr/local/opt/glib/lib/libglib-2.0.0.dylib /usr/local/opt/glib/lib/libgmodule-2.0.0.dylib /usr/local/opt/glib/lib/libgobject-2.0.0.dylib ./
+cp /usr/local/opt/graphite2/lib/libgraphite2.3.0.1.dylib ./libgraphite2.3.dylib
+cp /usr/local/opt/glib/lib/libgthread-2.0.0.dylib ./
+cp /usr/local/opt/harfbuzz/lib/libharfbuzz.0.dylib ./
+cp /usr/local/opt/gettext/lib/libintl.8.dylib ./
+cp /usr/local/opt/pango/lib/libpango-1.0.0.dylib /usr/local/opt/pango/lib/libpangocairo-1.0.0.dylib /usr/local/opt/pango/lib/libpangoft2-1.0.0.dylib ./
+cp /usr/local/opt/pcre/lib/libpcre.1.dylib ./
+cp /usr/local/opt/pixman/lib/libpixman-1.0.dylib ./
+cp /usr/local/opt/libpng/lib/libpng16.16.dylib ./
+cp /usr/local/opt/readline/lib/libreadline.7.0.dylib ./
+chmod 755 *
+
+for filename in * ; do
+        install_name_tool -id "@executable_path/../Frameworks/$filename" "$filename"
+        edit_dylib_deps $filename
+done
+
+ln -s /usr/lib/libbz2.1.0.dylib
+ln -s /usr/lib/libexpat.1.dylib
+ln -s /usr/lib/libiconv.2.dylib
+ln -s /usr/lib/libz.1.dylib
+
+ln -s "$sdl2_path"
+ln -s "$sdl2_image_path"
+ln -s "$sdl2_mixer_path"
+ln -s "$sdl2_net_path"
+ln -s "$sdl2_ttf_path"
+ln -s "$growl_path"
+
+
+
+echo "==> DONE ..."
+echo
+time_interval_to_string "$starttimestamp" "$(date +%s)"
+echo
