@@ -238,7 +238,7 @@ bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_add
 				err_msg += font::unicode_bullet + " " + a.message + "\n";
 			}
 		}
-		gui2::show_message(e_title, err_msg, message::auto_close);
+		gui2::show_message(e_title, err_msg, message::auto_close, true);
 
 		return false;
 	} else if(addon_outcome == mp::game_info::NEED_DOWNLOAD) {
