@@ -330,7 +330,17 @@ void addon_list::select_addon(const std::string& id)
 		[&id](const addon_info* a) { return a->id == id; }
 	);
 
-	assert(iter != addon_vector_.end());
+	// Corner case: if you publish an addon with an out-of-folder .pbl file and
+	// delete it locally before deleting it from the server, the game will try
+	// to reselect an addon that now doesn't exist.
+	//
+	// I don't anticipate this check will match very often, but in the case that
+	// some other weird corner case crops up, it's probably better to just exit
+	// silently than asserting, as was the pervious behavior.
+	if(iter == addon_vector_.end()) {
+		return;
+	}
+
 	const addon_info& info = **iter;
 
 	for(unsigned int i = 0u; i < list.get_item_count(); ++i) {
