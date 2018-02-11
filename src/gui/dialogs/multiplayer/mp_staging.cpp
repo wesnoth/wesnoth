@@ -296,14 +296,26 @@ void mp_staging::add_side_node(window& window, ng::side_engine_ptr side)
 	//
 	// Gold and Income
 	//
+	const auto slider_setup_helper = [](slider& slider, const int value) {
+		// For the gold and income sliders, the usual min and max values are set in
+		// the dialog WML. However, if a side specifies a value out of that range,
+		// we adjust the bounds to accommodate it.
+		slider.set_value_range(
+			std::min(value, slider.get_minimum_value()),
+			std::max(value, slider.get_maximum_value())
+		);
+
+		slider.set_value(value);
+	};
+
 	slider& slider_gold = find_widget<slider>(&row_grid, "side_gold_slider", false);
-	slider_gold.set_value(side->cfg()["gold"].to_int(100));
+	slider_setup_helper(slider_gold, side->gold());
 
 	connect_signal_notify_modified(slider_gold, std::bind(
 		&mp_staging::on_side_slider_change<&ng::side_engine::set_gold>, this, side, std::ref(slider_gold)));
 
 	slider& slider_income = find_widget<slider>(&row_grid, "side_income_slider", false);
-	slider_income.set_value(side->cfg()["income"]);
+	slider_setup_helper(slider_income, side->income());
 
 	connect_signal_notify_modified(slider_income, std::bind(
 		&mp_staging::on_side_slider_change<&ng::side_engine::set_income>, this, side, std::ref(slider_income)));
