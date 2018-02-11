@@ -44,8 +44,6 @@ if __name__ == "__main__":
     argumentparser.add_argument("-c", "--campaigns-dir",
         help="directory where add-ons are stored",
         default=".")
-    argumentparser.add_argument("-P", "--password",
-        help="password to use")
     argumentparser.add_argument("-d", "--download",
         help="download the named add-on; " +
         "name may be a Python regexp matched against all add-on names " +
@@ -73,9 +71,9 @@ if __name__ == "__main__":
     argumentparser.add_argument("-V", "--verbose",
         help="be even more verbose for everything",
         action="store_true",)
-    argumentparser.add_argument("-r", "--remove",
-        help="remove the named add-on from the server, " +
-        "set the password -P")
+    argumentparser.add_argument("-r", "--remove", nargs=2,
+        metavar=("ADD-ON", "PASSPHRASE"),
+        help="remove the named add-on from the server")
     argumentparser.add_argument("-R", "--raw-download",
         action="store_true",
         help="download as a binary WML packet")
@@ -277,7 +275,7 @@ if __name__ == "__main__":
         cs.unpackdir(decoded, args.campaigns_dir,  verbose=True)
     elif args.remove:
         cs = CampaignClient(address)
-        data = cs.delete_campaign(args.remove, args.password)
+        data = cs.delete_campaign(*args.remove)
         print_messages(data)
 
     elif args.change_passphrase:
