@@ -109,7 +109,7 @@ private:
 		int recall_cost;
 		std::set<std::string> can_recruit;
 		std::string team_name;
-		t_string user_team_name;
+		std::string user_team_name;
 		t_string side_name;
 		std::string faction;
 		t_string faction_name;
@@ -292,7 +292,12 @@ public:
 	void toggle_idle()  { info_.proxy_controller = (info_.proxy_controller == PROXY_CONTROLLER::PROXY_IDLE) ? PROXY_CONTROLLER::PROXY_HUMAN : PROXY_CONTROLLER::PROXY_IDLE; }
 
 	const std::string& team_name() const { return info_.team_name; }
-	const t_string &user_team_name() const { return info_.user_team_name; }
+
+	const t_string user_team_name() const
+	{
+		return t_string::from_serialized(info_.user_team_name);
+	}
+
 	void change_team(const std::string &name, const t_string &user_name);
 
 	const std::string& flag() const { return info_.flag; }
