@@ -385,7 +385,7 @@ unit::unit(const config& cfg, bool use_traits, const vconfig* vcfg)
 	, modification_descriptions_()
 	, anim_comp_(new unit_animation_component(*this))
 	, getsHit_(0)
-	, hidden_(false)
+	, hidden_(cfg["hidden"].to_bool(false))
 	, hp_bar_scaling_(cfg["hp_bar_scaling"].blank() ? type_->hp_bar_scaling() : cfg["hp_bar_scaling"])
 	, xp_bar_scaling_(cfg["xp_bar_scaling"].blank() ? type_->xp_bar_scaling() : cfg["xp_bar_scaling"])
 	, modifications_()
@@ -1491,6 +1491,8 @@ void unit::write(config& cfg) const
 	cfg["attacks_left"] = attacks_left_;
 	cfg["max_attacks"] = max_attacks_;
 	cfg["zoc"] = emit_zoc_;
+
+	cfg["hidden"] = hidden_;
 
 	cfg.clear_children("attack");
 	for(attack_ptr i : attacks_) {
