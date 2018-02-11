@@ -78,6 +78,12 @@ bool luaW_totstring(lua_State *L, int index, t_string &str);
  */
 t_string luaW_checktstring(lua_State *L, int index);
 
+/*
+ * Test if a scalar is either a plain or translatable string.
+ * Also returns true if it's a number since that's convertible to string.
+ */
+bool luaW_isstring(lua_State* L, int index);
+
 /**
  * Converts a config object to a Lua table.
  * The destination table should be at the top of the stack on entry. It is
