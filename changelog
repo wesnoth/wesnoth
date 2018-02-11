@@ -96,6 +96,8 @@ Version 1.13.11:
    * A missing [event] name= key will now raise a WML error instead of being
      silently ignored.
    * Units hidden with [hide_unit] will remain hidden after reloading saves.
+   * Fixed regression where most SUF keys would match all units if given "" as
+     a value.
  * Miscellaneous and bug fixes:
    * Suggested save file names now use spaces instead of underscores.
    * Fixed crash after canceling add-on download (bug #2203)

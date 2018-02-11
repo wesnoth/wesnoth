@@ -280,7 +280,7 @@ void unit_filter_compound::create_child(const vconfig& c, F func)
 template<typename C, typename F>
 void unit_filter_compound::create_attribute(const config::attribute_value v, C conv, F func)
 {
-	if(v.empty()) {
+	if(v.blank()) {
 	}
 	else if(v.apply_visitor(contains_dollar_visitor())) {
 		children_.emplace_back(new unit_filter_attribute_literal<C, F>(std::move(v.str()), std::move(conv), std::move(func)));
