@@ -16,12 +16,41 @@
 
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
+#include "formula/string_utils.hpp"
 #include "random.hpp"
 #include "serialization/string_utils.hpp"
+#include "log.hpp"
 
 #include <cassert>
 #include <set>
 #include <sstream>
+
+// This is here only for the below initialization code.
+// If other logging is required in this file, it should use a different logdomain
+// (probably "scripting/formula" or something)
+static lg::log_domain log_engine("engine");
+#define ERR_NG LOG_STREAM(err, log_engine)
+
+namespace utils {
+	namespace detail {
+		std::string evaluate_formula_impl(const std::string& formula) {
+			try {
+				const wfl::formula form(formula);
+				return form.evaluate().string_cast();
+			} catch(wfl::formula_error& e) {
+				ERR_NG << "Formula in WML string cannot be evaluated due to "
+					<< e.type << "\n\t--> \"";
+				return "";
+			}
+		}
+
+		struct formula_initer {
+			formula_initer() {
+				evaluate_formula = &evaluate_formula_impl;
+			}
+		} init;
+	}
+}
 
 namespace wfl
 {

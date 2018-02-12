@@ -1095,13 +1095,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Formula\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Formula\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\formula\string_utils.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Formula\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Formula\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Formula\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Formula\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Formula\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\formula\tokenizer.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Formula\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Formula\</ObjectFileName>
@@ -3663,7 +3656,6 @@
     <ClInclude Include="..\..\src\formula\formula_fwd.hpp" />
     <ClInclude Include="..\..\src\formula\function_gamestate.hpp" />
     <ClInclude Include="..\..\src\formula\function.hpp" />
-    <ClInclude Include="..\..\src\formula\string_utils.hpp" />
     <ClInclude Include="..\..\src\formula\tokenizer.hpp" />
     <ClInclude Include="..\..\src\formula\variant.hpp" />
     <ClInclude Include="..\..\src\formula\variant_value.hpp" />

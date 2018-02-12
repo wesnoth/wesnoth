@@ -21,6 +21,10 @@ class variable_set;
 
 namespace utils {
 
+	namespace detail {
+		extern std::string(* evaluate_formula)(const std::string& formula);
+	}
+
 /**
  * Determines if a string might contain variables to interpolate.
  * This can allow one to skip future interpolations (plural -- if there is only
