@@ -33,6 +33,8 @@ static lg::log_domain log_engine("engine");
 
 namespace utils {
 	namespace detail {
+		std::string evaluate_formula_impl(const std::string&);
+
 		std::string evaluate_formula_impl(const std::string& formula) {
 			try {
 				const wfl::formula form(formula);

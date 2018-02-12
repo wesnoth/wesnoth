@@ -2832,3 +2832,6 @@ int main(int argc, char** argv) {
 
 	return 0;
 }
+
+void deprecated_message(const std::string&, int, const version_info&, const std::string&);
+void deprecated_message(const std::string&, int, const version_info&, const std::string&) {}
