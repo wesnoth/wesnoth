@@ -537,9 +537,6 @@ for env in [test_env, client_env, env]:
             if env["enable_lto"] == True:
                 rel_comp_flags = rel_comp_flags + " -flto=" + str(env["jobs"])
                 rel_link_flags = rel_comp_flags + " -fuse-ld=gold"
-        ''' Disabled because LTO+Clang causes builds to fail on some systems
-        and LTO is enabled by default - without this, building with Clang would be impossible
-        for some users.
         elif "clang" in env["CXX"]:
             if env["pgo_data"] == "generate":
                 rel_comp_flags = rel_comp_flags + " -fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"
@@ -552,7 +549,6 @@ for env in [test_env, client_env, env]:
             if env["enable_lto"] == True:
                 rel_comp_flags = rel_comp_flags + " -flto=thin"
                 rel_link_flags = rel_comp_flags + " -fuse-ld=lld"
-        '''
 
 # #
 # End setting options for release build
