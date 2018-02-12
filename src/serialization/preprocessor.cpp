@@ -28,6 +28,7 @@
 #include "serialization/string_utils.hpp"
 #include "version.hpp"
 #include "wesconfig.h"
+#include "deprecation.hpp"
 
 #include <stdexcept>
 #include <deque>
@@ -1152,8 +1153,10 @@ bool preprocessor_data::get_chunk()
 
 			std::string symbol = items.front();
 			items.erase(items.begin());
-			int found_arg = 0, found_enddef = 0;
-			std::string buffer;
+			int found_arg = 0, found_enddef = 0, found_deprecate = 0;
+			int deprecation_level = -1;
+			std::string buffer, deprecation_detail;
+			version_info deprecation_version = game_config::wesnoth_version;
 			for(;;) {
 				if(in_.eof())
 					break;
@@ -1164,6 +1167,8 @@ bool preprocessor_data::get_chunk()
 				if(d == '#') {
 					if(in_.peek() == 'a') {
 						found_arg = 1;
+					} else if(in_.peek() == 'd') {
+						found_deprecate = 1;
 					} else {
 						found_enddef = 1;
 					}
@@ -1207,6 +1212,28 @@ bool preprocessor_data::get_chunk()
 						}
 					}
 
+					if(found_deprecate > 0 && ++found_deprecate == 11) {
+						if(std::equal(buffer.end() - 10, buffer.end(), "deprecated")) {
+							buffer.erase(buffer.end() - 11, buffer.end());
+							skip_spaces();
+							try {
+								deprecation_level = std::max(deprecation_level, std::stoi(read_word()));
+							} catch(std::invalid_argument&) {
+								deprecation_level = 0;
+							}
+							deprecation_version = game_config::wesnoth_version;
+							if(deprecation_level == 2 || deprecation_level == 3) {
+								skip_spaces();
+								deprecation_version = std::max(deprecation_version, version_info(read_word()));
+							}
+							skip_spaces();
+							if(!deprecation_detail.empty()){
+								deprecation_detail += '\n';
+							}
+							deprecation_detail = read_rest_of_line();
+						}
+					}
+
 					if(found_enddef > 0 && ++found_enddef == 7) {
 						if(std::equal(buffer.end() - 6, buffer.end(), "enddef")) {
 							break;
@@ -1244,7 +1271,8 @@ bool preprocessor_data::get_chunk()
 
 				buffer.erase(buffer.end() - 7, buffer.end());
 				(*parent_.defines_)[symbol]
-						= preproc_define(buffer, items, optargs, parent_.textdomain_, linenum, parent_.location_);
+						= preproc_define(buffer, items, optargs, parent_.textdomain_, linenum, parent_.location_,
+						deprecation_detail, deprecation_level, deprecation_version);
 
 				LOG_PREPROC << "defining macro " << symbol << " (location " << get_location(parent_.location_) << ")\n";
 			}
@@ -1366,6 +1394,21 @@ bool preprocessor_data::get_chunk()
 			} else {
 				DBG_PREPROC << "Skipped a warning\n";
 			}
+		} else if(command == "deprecated") {
+			// The current file is deprecated, so print a message
+			skip_spaces();
+			int level = 0;
+			try {
+				level = std::stoi(read_word());
+			} catch(std::invalid_argument&) {}
+			version_info version = game_config::wesnoth_version;
+			if(level == 2 || level == 3) {
+				skip_spaces();
+				version = version_info(read_word());
+			}
+			skip_spaces();
+			std::string detail = read_rest_of_line();
+			deprecated_message(get_filename(parent_.location_), level, version, detail);
 		} else {
 			comment = token.type != token_desc::MACRO_SPACE;
 		}
@@ -1443,6 +1486,10 @@ bool preprocessor_data::get_chunk()
 
 				std::unique_ptr<std::map<std::string, std::string>> defines{new std::map<std::string, std::string>};
 				const std::string& dir = filesystem::directory_name(val.location.substr(0, val.location.find(' ')));
+
+				if(val.is_deprecated()) {
+					deprecated_message(symbol, val.deprecation_level, val.deprecation_version, val.deprecation_message);
+				}
 
 				for(size_t i = 0; i < nb_arg; ++i) {
 					if(i < val.arguments.size()) {

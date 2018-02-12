@@ -23,6 +23,7 @@
 #include <vector>
 
 #include "exceptions.hpp"
+#include "version.hpp"
 
 class config_writer;
 class config;
@@ -56,13 +57,18 @@ struct preproc_define
 			const std::map<std::string, std::string>& optargs,
 			const std::string& domain,
 			int line,
-			const std::string& loc)
+			const std::string& loc,
+			const std::string& dep_msg,
+			int dep_lvl, const version_info& dep_ver)
 		: value(val)
 		, arguments(args)
 		, optional_arguments(optargs)
 		, textdomain(domain)
 		, linenum(line)
 		, location(loc)
+		, deprecation_message(dep_msg)
+		, deprecation_level(dep_lvl)
+		, deprecation_version(dep_ver)
 	{
 	}
 
@@ -77,6 +83,16 @@ struct preproc_define
 	int linenum;
 
 	std::string location;
+
+	std::string deprecation_message;
+
+	int deprecation_level = -1;
+
+	version_info deprecation_version;
+
+	bool is_deprecated() const {
+		return deprecation_level > 0;
+	}
 
 	void write(config_writer&, const std::string&) const;
 	void write_argument(config_writer&, const std::string&) const;
