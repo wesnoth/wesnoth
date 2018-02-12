@@ -53,7 +53,7 @@ opts.AddVariables(
     ('extra_flags_release', 'Extra compiler and linker flags to use for release builds', ""),
     ('extra_flags_debug', 'Extra compiler and linker flags to use for debug builds', ""),
     ('extra_flags_profile', 'Extra compiler and linker flags to use for profile builds', ""),
-    BoolVariable('enable_lto', 'Whether to enable Link Time Optimization for build=release', True),
+    BoolVariable('enable_lto', 'Whether to enable Link Time Optimization for build=release', False),
     ('arch', 'What -march option to use for build=release, will default to pentiumpro on Windows', ""),
     BoolVariable('glibcxx_debug', 'Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC for build=debug', False),
     EnumVariable('profiler', 'profiler to be used for build=profile', "gprof", ["gprof", "gcov", "gperftools", "perf"]),
@@ -505,10 +505,6 @@ for env in [test_env, client_env, env]:
 # End determining options for debug build
 # Start setting options for release build
 # #
-        
-# disable LTO for Windows only - does not work with TDM-GCC
-        if env["PLATFORM"] == "win32":
-            env["enable_lto"] = False
         
 # default compiler flags
         rel_comp_flags = "-O3"
