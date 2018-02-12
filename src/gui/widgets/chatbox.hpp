@@ -246,6 +246,9 @@ public:
 	void process_message(const ::config& data, bool whisper = false);
 
 	void process_network_data(const ::config& data);
+
+private:
+	void signal_handler_receive_keyboard_focus(const event::ui_event event);
 };
 
 // }---------- DEFINITION ---------{

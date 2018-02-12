@@ -44,6 +44,8 @@ static lg::log_domain log_lobby("lobby");
 #define LOG_LB LOG_STREAM(info, log_lobby)
 #define ERR_LB LOG_STREAM(err, log_lobby)
 
+#define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
+#define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
 namespace gui2
 {
@@ -62,6 +64,14 @@ chatbox::chatbox(const implementation::builder_chatbox& builder)
 	, lobby_info_(nullptr)
 	, wesnothd_connection_(nullptr)
 {
+	// We only implement a RECEIVE_KEYBOARD_FOCUS handler; LOSE_KEYBOARD_FOCUS
+	// isn't needed. This handler forwards focus to the input textbox, meaning
+	// if keyboard_focus is called on a chatbox, distributor::keyboard_focus_
+	// will immediately be set to the input textbox, which will then handle focus
+	// loss itself when applicable. Nothing else happens in the interim while
+	// keyboard_focus_ equals `this` to warrent cleanup.
+	connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(
+		std::bind(&chatbox::signal_handler_receive_keyboard_focus, this, _2));
 }
 
 void chatbox::finalize_setup()
@@ -721,6 +731,14 @@ void chatbox::process_network_data(const ::config& data)
 	} else if(const ::config& room_query_response = data.child("room_query_response")) {
 		process_room_query_response(room_query_response);
 	}
+}
+
+void chatbox::signal_handler_receive_keyboard_focus(const event::ui_event event)
+{
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+
+	// Forward focus to the input textbox.
+	get_window()->keyboard_capture(chat_input_);
 }
 
 // }---------- DEFINITION ---------{
