@@ -127,7 +127,7 @@
       <OpenMPSupport>true</OpenMPSupport>
       <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <DisableSpecificWarnings>4503;4127;4512;4003;4068;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4503;4351;4127;4512;4003;4068;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ForcedIncludeFiles>boost-patched/bind/arg.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <TreatSpecificWarningsAsErrors>4239</TreatSpecificWarningsAsErrors>
@@ -166,7 +166,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <DisableSpecificWarnings>4503</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4503;4351;</DisableSpecificWarnings>
       <ForcedIncludeFiles>boost-patched/bind/arg.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <TreatSpecificWarningsAsErrors>4239</TreatSpecificWarningsAsErrors>
     </ClCompile>
@@ -209,7 +209,7 @@
       <OpenMPSupport>true</OpenMPSupport>
       <WarningLevel>Level4</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <DisableSpecificWarnings>4503;4127;4512;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4503;4351;4127;4512;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ForcedIncludeFiles>boost-patched/bind/arg.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <TreatSpecificWarningsAsErrors>4239</TreatSpecificWarningsAsErrors>
@@ -247,7 +247,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <DisableSpecificWarnings>4503</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4503;4351;</DisableSpecificWarnings>
       <ForcedIncludeFiles>boost-patched/bind/arg.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <TreatSpecificWarningsAsErrors>4239</TreatSpecificWarningsAsErrors>
     </ClCompile>
@@ -294,7 +294,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <DisableSpecificWarnings>4503</DisableSpecificWarnings>
+      <DisableSpecificWarnings>4503;4351;</DisableSpecificWarnings>
       <ForcedIncludeFiles>boost-patched/bind/arg.hpp;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <TreatSpecificWarningsAsErrors>4239</TreatSpecificWarningsAsErrors>
     </ClCompile>
