@@ -727,10 +727,7 @@ void mp_lobby::pre_show(window& window)
 	connect_signal_notify_modified(*gamelistbox_,
 			std::bind(&mp_lobby::gamelist_change_callback, this));
 
-	window.keyboard_capture(gamelistbox_);
-
 	player_list_.init(window);
-
 	player_list_.sort_by_name->set_value(preferences::playerlist_sort_name());
 	player_list_.sort_by_relation->set_value(preferences::playerlist_sort_relation());
 	player_list_.update_sort_icons();
@@ -747,6 +744,9 @@ void mp_lobby::pre_show(window& window)
 	window.set_exit_hook(std::bind(&mp_lobby::exit_hook, this, std::ref(window)));
 
 	chatbox_ = find_widget<chatbox>(&window, "chat", false, true);
+
+	window.keyboard_capture(chatbox_);
+
 	chatbox_->set_lobby_info(lobby_info_);
 	chatbox_->set_wesnothd_connection(network_connection_);
 	chatbox_->set_active_window_changed_callback([this]() { player_list_dirty_ = true; });
