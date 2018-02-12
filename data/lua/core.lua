@@ -146,6 +146,9 @@ end
 
 --[========[Deprecation Helpers]========]
 
+-- Need a textdomain for translatable deprecation strings.
+-- Note that these strings are all duplicated in src/deprecation.cpp
+-- Any changes here should also be reflected there.
 local _ = wesnoth.textdomain "wesnoth"
 
 -- Note: When using version (for level 2 or 3 deprecation), specify the first version
@@ -167,21 +170,31 @@ function wesnoth.deprecation_message(elem_name, level, version, detail)
 		end
 	elseif level == 3 then
 		logger = function(msg) wesnoth.log("err", msg) end
-		message = wesnoth.format(_"$elem has been deprecated and will be removed in the next version.", message_params)
+		message_params.version = version
+		message = wesnoth.format(_"$elem has been deprecated and will be removed in the next version ($version).", message_params)
 	elseif level == 4 then
 		logger = error
 		message = wesnoth.format(_"$elem has been deprecated and removed.", message_params)
 	else
-		error(_"Invalid deprecation level (should be 1-4)")
+		local err_params = {level = level}
+		error(wesnoth.format(_"Invalid deprecation level $level (should be 1-4)", err_params))
 	end
 	if #detail > 0 then
-		logger(message .. "\n  " .. detail)
+		logger(tostring(message .. "\n  " .. detail))
 	else
-		logger(message)
+		logger(tostring(message))
 	end
 end
 
--- Usage: module.something = wesnoth.deprecate(module.something, "something", ...)
+-- Marks a function or subtable as deprecated.
+-- Parameters:
+---- elem_name: the full name of the element being deprecated (including the module)
+---- replacement: the name of the element that will replace it (including the module)
+---- level: deprecation level (1-4)
+---- version: the version at which the element may be removed (level 2 or 3 only)
+---- Set to nil if deprecation level is 1 or 4
+---- elem: The actual element being deprecated
+---- detail_msg: An optional message to add to the deprecation message
 function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, detail_msg)
 	local message = detail_msg or ''
 	if replacement then
@@ -190,7 +203,8 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 			{replacement = replacement})
 	end
 	if type(level) ~= "number" or level < 1 or level > 4 then
-		error("Invalid deprecation level! Must be 1-4.")
+		local err_params = {level = level}
+		error(wesnoth.format(_"Invalid deprecation level $level (should be 1-4)", err_params))
 	end
 	local msg_shown = false
 	if type(elem) == "function" then
@@ -201,16 +215,16 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 			end
 			return elem(...)
 		end
-	elseif type(elem) == "table" or type(elem) == "userdata" then
+	elseif type(elem) == "table" then
 		local mt = {
-			__index = function(key)
+			__index = function(self, key)
 				if not msg_shown then
 					msg_shown = true
 					wesnoth.deprecation_message(elem_name, level, version, message)
 				end
 				return elem[key]
 			end,
-			__newindex = function(key, val)
+			__newindex = function(self, key, val)
 				if not msg_shown then
 					msg_shown = true
 					wesnoth.deprecation_message(elem_name, level, version, message)
@@ -218,6 +232,11 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 				elem[key] = val
 			end,
 		}
+		-- Don't clobber the old metatable.
+		local old_mt = getmetatable(elem)
+		if type(old_mt) == "table" then
+			setmetatable(mt, old_mt)
+		end
 		return setmetatable({}, mt)
 	else
 		wesnoth.log('warn', "Attempted to deprecate something that is not a table or function: " ..

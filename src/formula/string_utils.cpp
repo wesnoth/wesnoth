@@ -19,15 +19,19 @@
 
 #include "config.hpp"
 #include "log.hpp"
-#include "formula/formula.hpp"
 #include "gettext.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
+#define WRN_NG LOG_STREAM(warn, log_engine)
 
 static bool two_dots(char a, char b) { return a == '.' && b == '.'; }
 
 namespace utils {
+
+	namespace detail {
+		std::string(* evaluate_formula)(const std::string& formula) = nullptr;
+	}
 
 template <typename T>
 class string_map_variable_set : public variable_set
@@ -109,6 +113,11 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 				// TODO: support escape sequences when/if they are allowed in FormulaAI strings
 				}
 			} while(++var_end != res.end() && paren_nesting_level > 0);
+			if(utils::detail::evaluate_formula == nullptr) {
+				WRN_NG << "Formula substitution ignored (and removed) because WFL engine is not present in the server.\n";
+				res.replace(var_begin, var_end, "");
+				continue;
+			}
 			if(paren_nesting_level > 0) {
 				ERR_NG << "Formula in WML string cannot be evaluated due to "
 					<< "a missing closing parenthesis:\n\t--> \""
@@ -116,15 +125,7 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 				res.replace(var_begin, var_end, "");
 				continue;
 			}
-			try {
-				const wfl::formula form(std::string(var_begin+2, var_end-1));
-				res.replace(var_begin, var_end, form.evaluate().string_cast());
-			} catch(wfl::formula_error& e) {
-				ERR_NG << "Formula in WML string cannot be evaluated due to "
-					<< e.type << "\n\t--> \""
-					<< e.formula << "\"\n";
-				res.replace(var_begin, var_end, "");
-			}
+			res.replace(var_begin, var_end, utils::detail::evaluate_formula(std::string(var_begin+2, var_end-1)));
 			continue;
 		}
 

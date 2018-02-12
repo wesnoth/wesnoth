@@ -17,6 +17,9 @@
     <Filter Include="Utils">
       <UniqueIdentifier>{dd5bcb3f-5af9-4dce-bcf3-9c23cec65372}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Formula">
+      <UniqueIdentifier>{89506bfd-cc4a-4db3-84f4-b90d70040b9c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\serialization\binary_or_text.cpp">
@@ -59,6 +62,10 @@
     <ClCompile Include="..\..\src\font\constants.cpp">
       <Filter>Font</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\formula\string_utils.cpp">
+      <Filter>Formula</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\deprecation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\serialization\binary_or_text.hpp">
@@ -140,5 +147,9 @@
     <ClInclude Include="..\..\src\utils\type_trait_aliases.hpp">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\formula\string_utils.hpp">
+      <Filter>Formula</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\deprecation.hpp" />
   </ItemGroup>
 </Project>
