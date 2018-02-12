@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 20:27 UTC\n"
+"POT-Creation-Date: 2018-02-12 17:01 UTC\n"
 "PO-Revision-Date: 2009-02-05 10:16+0100\n"
 "Last-Translator: Gustav Tiger <admin@tigge.org>\n"
 "Language-Team: Swedish\n"
@@ -64,55 +64,86 @@ msgstr "Du måste överlev tills drag 25."
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:71
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:85
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:99
-msgid "teamname^Team 1"
-msgstr "Lag 1"
+#, fuzzy
+#| msgid "teamname^Center"
+msgid "teamname^Settlers"
+msgstr "Centrum"
 
 #. [side]: type=Death Knight
 #. [side]: type=Orcish Sovereign
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:116
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:145
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:174
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:203
-msgid "teamname^Team 2"
-msgstr "Lag 2"
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:117
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:148
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:179
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:210
+#, fuzzy
+#| msgid "teamname^East"
+msgid "teamname^Enemies"
+msgstr "Öst"
+
+#. [side]: type=Death Knight
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:126
+msgid "Mal Sevu"
+msgstr ""
+
+#. [side]: type=Orcish Sovereign
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:157
+msgid "Gol Goroth"
+msgstr ""
+
+#. [side]: type=Orcish Sovereign
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:188
+msgid "Greg"
+msgstr ""
+
+#. [side]: type=Death Knight
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:219
+msgid "Mal Shiki"
+msgstr ""
+
+#. [side]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:245
+#, fuzzy
+#| msgid "teamname^Center"
+msgid "teamname^Prisoners"
+msgstr "Centrum"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:416
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:426
 msgid ""
 "You destroy the mushroom mine. The northwest undead now have 10 less income."
 msgstr ""
 "Du förstörde svampgruvan. De vandöda i nordväst har nu 10 mindre i inkomst."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:439
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:449
 msgid ""
 "You destroy the mushroom mine. The northeast orcs now have 10 less income."
 msgstr ""
 "Du förstörde svampgruvan. Orcherna i nordöst har nu 10 mindre i inkomst."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:462
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:472
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
 msgstr ""
 "Du förstörde svampgruvan. Orcherna i sydväst har nu 10 mindre i inkomst."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:485
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:495
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
 msgstr ""
 "Du förstörde svampgruvan. De vandöda i sydöst har nu 10 mindre i inkomst."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:594
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:604
 msgid ""
 "One of your peasants has happened upon some spiders’ nests in the north and "
 "south."
 msgstr "En av dina arbetare har stött på lite spindelbon i norr och söder."
 
 #. [message]: type=Peasant
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:600
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:610
 #, fuzzy
 #| msgid ""
 #| "I swear I saw somebody trapped in the spider’s web. Maybe we should "
@@ -125,7 +156,7 @@ msgstr ""
 "rädda dem?"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:622
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:632
 msgid ""
 "Move any unit next to these captives and they will join your side. The "
 "spiders guarding each captive are currently wounded, the sooner you get "
@@ -133,7 +164,7 @@ msgid ""
 msgstr "Flytta någon av dina trupper till dessa fångar "
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:634
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:644
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
 msgstr ""
@@ -141,7 +172,7 @@ msgstr ""
 "och väster."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:640
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:650
 msgid ""
 "It would seem the enemy has built some underground mushroom mines nearby — "
 "it must be where the mainstay of their resources are produced. If we could "
@@ -152,7 +183,7 @@ msgstr ""
 "kan förstöra dem så skulle våra chanser att överleva inte vara lika små."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:662
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:672
 msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy’s income by 10."
@@ -161,12 +192,12 @@ msgstr ""
 "du förstör kommer att minska fiendens inkomst med 10."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:675
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:685
 msgid "This battle is nearly at an end. Victory is close at hand!"
 msgstr "Denna strid är nästan slut. Segern är inom räckhåll!"
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:687
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:697
 msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
@@ -174,27 +205,27 @@ msgstr ""
 "Vi har överlevt angreppet! Stridens vindar har vänt. Vi kan inte förlora nu!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:691
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:701
 msgid "You have won the game, but you may continue if you wish..."
 msgstr "Du har vunnit spelet, men du får fortsätta om du önskar..."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:707
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:717
 msgid "I have fallen, but all is not lost!"
 msgstr "Jag har fallit, men allt är inte förlorat!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:720
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:730
 msgid "I am done for, but we have yet to lose this battle!"
 msgstr "Jag är nere för räkning, men ännu har vi inte förlora denna strid!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:733
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:743
 msgid "Comrades, avenge me!"
 msgstr "Hämnas mig kamrater!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:746
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:756
 msgid "Do not fear, there is hope for us still!"
 msgstr "Var inte rädd, det finns fortfarande hopp för oss!"
 
@@ -835,6 +866,12 @@ msgstr "Kostnad: 7g"
 msgid "Clear the Ground"
 msgstr "Rensa marken"
 
+#~ msgid "teamname^Team 1"
+#~ msgstr "Lag 1"
+
+#~ msgid "teamname^Team 2"
+#~ msgstr "Lag 2"
+
 #~ msgid "Convert to Grassland"
 #~ msgstr "Konvertera till slätt"
 
@@ -1457,9 +1494,6 @@ msgstr "Rensa marken"
 #~ msgid "teamname^West"
 #~ msgstr "Väst"
 
-#~ msgid "teamname^East"
-#~ msgstr "Öst"
-
 #~ msgid "2p - Hamlets"
 #~ msgstr "2s - Byar"
 
@@ -1805,9 +1839,6 @@ msgstr "Rensa marken"
 
 #~ msgid "teamname^Northwest"
 #~ msgstr "Nordväst"
-
-#~ msgid "teamname^Center"
-#~ msgstr "Centrum"
 
 #~ msgid "5p - Forest of Fear"
 #~ msgstr "5s - Fruktans skog"

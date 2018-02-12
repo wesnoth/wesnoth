@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-anl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 20:27 UTC\n"
+"POT-Creation-Date: 2018-02-12 17:01 UTC\n"
 "PO-Revision-Date: 2009-02-24 18:21+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -67,20 +67,51 @@ msgstr "25. el dayanmalısınız."
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:71
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:85
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:99
-msgid "teamname^Team 1"
+#, fuzzy
+#| msgid "teamname^Team 1"
+msgid "teamname^Settlers"
 msgstr "Ekip 1"
 
 #. [side]: type=Death Knight
 #. [side]: type=Orcish Sovereign
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:116
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:145
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:174
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:203
-msgid "teamname^Team 2"
-msgstr "Ekip 2"
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:117
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:148
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:179
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:210
+#, fuzzy
+#| msgid "teamname^Team 1"
+msgid "teamname^Enemies"
+msgstr "Ekip 1"
+
+#. [side]: type=Death Knight
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:126
+msgid "Mal Sevu"
+msgstr ""
+
+#. [side]: type=Orcish Sovereign
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:157
+msgid "Gol Goroth"
+msgstr ""
+
+#. [side]: type=Orcish Sovereign
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:188
+msgid "Greg"
+msgstr ""
+
+#. [side]: type=Death Knight
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:219
+msgid "Mal Shiki"
+msgstr ""
+
+#. [side]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:245
+#, fuzzy
+#| msgid "teamname^Team 1"
+msgid "teamname^Prisoners"
+msgstr "Ekip 1"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:416
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:426
 msgid ""
 "You destroy the mushroom mine. The northwest undead now have 10 less income."
 msgstr ""
@@ -88,21 +119,21 @@ msgstr ""
 "azaldı."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:439
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:449
 msgid ""
 "You destroy the mushroom mine. The northeast orcs now have 10 less income."
 msgstr ""
 "Mantar tarlalarını yok ettiniz. Kuzeydoğu orklarının geliri 10 altın azaldı."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:462
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:472
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
 msgstr ""
 "Mantar tarlalarını yok ettiniz. Güneybatı orklarının geliri 10 altın azaldı."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:485
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:495
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
 msgstr ""
@@ -110,14 +141,14 @@ msgstr ""
 "azaldı."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:594
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:604
 msgid ""
 "One of your peasants has happened upon some spiders’ nests in the north and "
 "south."
 msgstr "Birer vatandaşınız kuzey ve güneydeki örümceklere tutsak düşmüş."
 
 #. [message]: type=Peasant
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:600
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:610
 #, fuzzy
 #| msgid ""
 #| "I swear I saw somebody trapped in the spider’s web. Maybe we should "
@@ -130,7 +161,7 @@ msgstr ""
 "kurtarabiliriz."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:622
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:632
 msgid ""
 "Move any unit next to these captives and they will join your side. The "
 "spiders guarding each captive are currently wounded, the sooner you get "
@@ -141,14 +172,14 @@ msgstr ""
 "onları kurtarma şansınız daha yüksek. Her el bu daha da güçleşecek."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:634
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:644
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
 msgstr ""
 "Adamlarınız doğu ve batıdaki mağaralardan tuhaf sesler geldiğini rapor etti."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:640
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:650
 msgid ""
 "It would seem the enemy has built some underground mushroom mines nearby — "
 "it must be where the mainstay of their resources are produced. If we could "
@@ -159,7 +190,7 @@ msgstr ""
 "zayıflatmış oluruz."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:662
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:672
 msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy’s income by 10."
@@ -169,12 +200,12 @@ msgstr ""
 "açacak."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:675
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:685
 msgid "This battle is nearly at an end. Victory is close at hand!"
 msgstr "Savaşın bitmesi yakın. Zafer bizim olacak!"
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:687
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:697
 msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
@@ -183,27 +214,27 @@ msgstr ""
 "kaçırdık!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:691
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:701
 msgid "You have won the game, but you may continue if you wish..."
 msgstr "Oyunu kazandınız, ama isterseniz devam edebilirsiniz..."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:707
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:717
 msgid "I have fallen, but all is not lost!"
 msgstr "Ben ölüyorum ama bu herşeyin kaybedildiği anlamına gelmez!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:720
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:730
 msgid "I am done for, but we have yet to lose this battle!"
 msgstr "Ben bittim ama henüz bu savaşı kaybetmedik!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:733
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:743
 msgid "Comrades, avenge me!"
 msgstr "İntikamımı yerde bırakmayın!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:746
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:756
 msgid "Do not fear, there is hope for us still!"
 msgstr "Korkma, hala bir umut var!"
 
@@ -845,6 +876,9 @@ msgstr "Bedeli: 7 altın"
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:576
 msgid "Clear the Ground"
 msgstr "Toprağı Düzelt"
+
+#~ msgid "teamname^Team 2"
+#~ msgstr "Ekip 2"
 
 #~ msgid "Convert to Grassland"
 #~ msgstr "Çayıra dönüştür"

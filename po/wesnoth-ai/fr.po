@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-04 16:40 UTC\n"
+"POT-Creation-Date: 2018-02-12 17:01 UTC\n"
 "PO-Revision-Date: 2015-01-21 21:17+0100\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
@@ -1794,9 +1794,9 @@ msgstr "Escorte de messager"
 msgid "Vanak"
 msgstr "Vanak"
 
+#. [event]
 #. [side]
 #. [unit]: type=Dragoon, id=messenger
-#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:37
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:71
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:72
@@ -1805,8 +1805,10 @@ msgstr "Messager"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:121
-msgid "Messanger Waypoint 1"
-msgstr "Étape du messager 1"
+#, fuzzy
+#| msgid "Messenger Waypoint 2"
+msgid "Messenger Waypoint 1"
+msgstr "Étape du messager 2"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:123
@@ -3224,6 +3226,9 @@ msgstr ""
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:87
 msgid "Kiressh"
 msgstr "Kiressh"
+
+#~ msgid "Messanger Waypoint 1"
+#~ msgstr "Étape du messager 1"
 
 #~ msgid "Multiplayer_AI^Strong AI (RCA)"
 #~ msgstr "IA améliorée (RCA)"

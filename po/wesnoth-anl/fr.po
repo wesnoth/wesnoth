@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: A_New_Land-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 20:27 UTC\n"
+"POT-Creation-Date: 2018-02-12 17:01 UTC\n"
 "PO-Revision-Date: 2011-08-30 09:50+0200\n"
 "Last-Translator: Pascal Guillaume <guillaume.pascal43@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
@@ -69,20 +69,51 @@ msgstr "Vous devez survivre jusqu'au tour 25."
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:71
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:85
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:99
-msgid "teamname^Team 1"
-msgstr "Équipe 1"
+#, fuzzy
+#| msgid "teamname^Center"
+msgid "teamname^Settlers"
+msgstr "Centre"
 
 #. [side]: type=Death Knight
 #. [side]: type=Orcish Sovereign
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:116
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:145
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:174
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:203
-msgid "teamname^Team 2"
-msgstr "Équipe 2"
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:117
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:148
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:179
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:210
+#, fuzzy
+#| msgid "teamname^East"
+msgid "teamname^Enemies"
+msgstr "Est"
+
+#. [side]: type=Death Knight
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:126
+msgid "Mal Sevu"
+msgstr ""
+
+#. [side]: type=Orcish Sovereign
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:157
+msgid "Gol Goroth"
+msgstr ""
+
+#. [side]: type=Orcish Sovereign
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:188
+msgid "Greg"
+msgstr ""
+
+#. [side]: type=Death Knight
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:219
+msgid "Mal Shiki"
+msgstr ""
+
+#. [side]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:245
+#, fuzzy
+#| msgid "teamname^Center"
+msgid "teamname^Prisoners"
+msgstr "Centre"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:416
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:426
 msgid ""
 "You destroy the mushroom mine. The northwest undead now have 10 less income."
 msgstr ""
@@ -90,7 +121,7 @@ msgstr ""
 "diminue de 10 pièces d'or."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:439
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:449
 msgid ""
 "You destroy the mushroom mine. The northeast orcs now have 10 less income."
 msgstr ""
@@ -98,7 +129,7 @@ msgstr ""
 "10 pièces d'or."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:462
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:472
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
 msgstr ""
@@ -106,7 +137,7 @@ msgstr ""
 "de 10 pièces d'or."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:485
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:495
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
 msgstr ""
@@ -114,7 +145,7 @@ msgstr ""
 "diminue de 10 pièces d'or."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:594
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:604
 msgid ""
 "One of your peasants has happened upon some spiders’ nests in the north and "
 "south."
@@ -122,7 +153,7 @@ msgstr ""
 "Un de vos paysans vient de découvrir des nids d'araignées au nord et au sud."
 
 #. [message]: type=Peasant
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:600
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:610
 msgid ""
 "I swear I saw somebody trapped in the spider’s web. Maybe we should rescue "
 "him?"
@@ -131,7 +162,7 @@ msgstr ""
 "peut-être le secourir ?"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:622
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:632
 msgid ""
 "Move any unit next to these captives and they will join your side. The "
 "spiders guarding each captive are currently wounded, the sooner you get "
@@ -142,7 +173,7 @@ msgstr ""
 "vous aurez de chances de les tuer."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:634
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:644
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
 msgstr ""
@@ -150,7 +181,7 @@ msgstr ""
 "l'ouest."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:640
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:650
 msgid ""
 "It would seem the enemy has built some underground mushroom mines nearby — "
 "it must be where the mainstay of their resources are produced. If we could "
@@ -161,7 +192,7 @@ msgstr ""
 "ne seraient plus si minces."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:662
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:672
 msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy’s income by 10."
@@ -170,12 +201,12 @@ msgstr ""
 "réduire les revenus adverses de 10 pièces d'or."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:675
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:685
 msgid "This battle is nearly at an end. Victory is close at hand!"
 msgstr "Cette bataille est presque finie. La victoire est à portée de main !"
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:687
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:697
 msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
@@ -184,27 +215,27 @@ msgstr ""
 "victoire ne peut plus nous échapper maintenant !"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:691
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:701
 msgid "You have won the game, but you may continue if you wish..."
 msgstr "Vous avez gagné, vous pouvez continuer si vous le désirez..."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:707
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:717
 msgid "I have fallen, but all is not lost!"
 msgstr "Je tombe, mais rien n'est perdu !"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:720
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:730
 msgid "I am done for, but we have yet to lose this battle!"
 msgstr "Je suis fichu, mais la bataille n'est pas encore perdue !"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:733
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:743
 msgid "Comrades, avenge me!"
 msgstr "Vengez-moi, camarades !"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:746
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:756
 msgid "Do not fear, there is hope for us still!"
 msgstr "Pas de panique, il y a encore de l'espoir !"
 
@@ -824,6 +855,12 @@ msgstr "Coût : 7 po"
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:576
 msgid "Clear the Ground"
 msgstr "Déblayer"
+
+#~ msgid "teamname^Team 1"
+#~ msgstr "Équipe 1"
+
+#~ msgid "teamname^Team 2"
+#~ msgstr "Équipe 2"
 
 #~ msgid "Convert to Grassland"
 #~ msgstr "Convertir en prairie"
@@ -1461,9 +1498,6 @@ msgstr "Déblayer"
 #~ msgid "teamname^West"
 #~ msgstr "Ouest"
 
-#~ msgid "teamname^East"
-#~ msgstr "Est"
-
 #~ msgid "2p - Hamlets"
 #~ msgstr "2j - Hameaux"
 
@@ -1825,9 +1859,6 @@ msgstr "Déblayer"
 
 #~ msgid "teamname^Northwest"
 #~ msgstr "Nord-Ouest"
-
-#~ msgid "teamname^Center"
-#~ msgstr "Centre"
 
 #~ msgid "5p - Forest of Fear"
 #~ msgstr "5j - La Forêt de la peur"

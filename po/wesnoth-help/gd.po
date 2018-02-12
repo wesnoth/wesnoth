@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-04 19:39+0300\n"
+"POT-Creation-Date: 2018-02-12 20:01+0300\n"
 "PO-Revision-Date: 2017-05-25 12:25+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
@@ -3314,11 +3314,20 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:549
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Set or toggle player on side between human and AI player. The player/"
+#| "client who controls that side needs to issue this command. If no second "
+#| "parameter is supplied, toggle bewteen human and AI. If it is ‘on’, set an "
+#| "AI controller. If it is ‘off’ set a human controller. Defaults to the "
+#| "currently active side if no parameter is supplied.\n"
+#| "\n"
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
 "who controls that side needs to issue this command. If no second parameter "
-"is supplied, toggle bewteen human and AI. If it is ‘on’, set an AI "
+"is supplied, toggle between human and AI. If it is ‘on’, set an AI "
 "controller. If it is ‘off’ set a human controller. Defaults to the currently "
 "active side if no parameter is supplied.\n"
 "\n"
@@ -5138,23 +5147,38 @@ msgstr ""
 "beatha is 1 phuing gluasaid as lugha agus nì iad 1 phuing as lugha de "
 "dhochann ann an sabaid dhlùth."
 
+#: data/core/units.cfg:11
+msgid ""
+"Despite orcs' reliance on raw strength, few of their children are destined "
+"to grow to possess any. Goblins are, despite their appearance, born as "
+"siblings to the orcs and members of the same race. While other races usually "
+"bear children singly or in pairs, orcs will have large litters of children "
+"all at once, causing their populations to explode. Within any litter, there "
+"will be only one or two who grow to the strength of a \"true orc\", a few "
+"who are born slightly smaller and weaker, and the rest, often a full half of "
+"any litter, are much weaker and destined to be goblins. Almost as newborns "
+"the class system of orcish society is visible, with the weak put in their "
+"place by their stronger siblings. The stronger ones will routinely grab most "
+"of the food and thus grow stronger still, while their weaker siblings do not."
+msgstr ""
+
 #. [race]: id=bats
-#: data/core/units.cfg:43
+#: data/core/units.cfg:46
 msgid "race^Bat"
 msgstr "Ialtag"
 
 #. [race]: id=bats
-#: data/core/units.cfg:44
+#: data/core/units.cfg:47
 msgid "race+female^Bat"
 msgstr "Ban-ialtag"
 
 #. [race]: id=bats
-#: data/core/units.cfg:45
+#: data/core/units.cfg:48
 msgid "race^Bats"
 msgstr "Ialtagan"
 
 #. [race]: id=bats
-#: data/core/units.cfg:46
+#: data/core/units.cfg:49
 msgid ""
 "Bats come in many shapes and sizes, and most are fairly harmless, feeding on "
 "insects and other small animals. The larger and more vicious breeds are "
@@ -5171,22 +5195,22 @@ msgstr ""
 "an oidhche."
 
 #. [race]: id=drake
-#: data/core/units.cfg:55
+#: data/core/units.cfg:58
 msgid "race^Drake"
 msgstr "Dràc"
 
 #. [race]: id=drake
-#: data/core/units.cfg:56
+#: data/core/units.cfg:59
 msgid "race+female^Drake"
 msgstr "Ban-dhràc"
 
 #. [race]: id=drake
-#: data/core/units.cfg:57
+#: data/core/units.cfg:60
 msgid "race^Drakes"
 msgstr "Dràic"
 
 #. [race]: id=drake
-#: data/core/units.cfg:58
+#: data/core/units.cfg:61
 #, fuzzy
 #| msgid ""
 #| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
@@ -5388,22 +5412,22 @@ msgstr ""
 "beanntan fada tuath air a’ Mhòr-thir Fharsaing."
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:91
+#: data/core/units.cfg:94
 msgid "race^Dwarf"
 msgstr "Troich"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:92
+#: data/core/units.cfg:95
 msgid "race+female^Dwarf"
 msgstr "Troich"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:93
+#: data/core/units.cfg:96
 msgid "race^Dwarves"
 msgstr "Troichean"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:94
+#: data/core/units.cfg:97
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -5502,22 +5526,22 @@ msgstr ""
 "gus gleusan sònraichte ’nam broinn a mheudachadh."
 
 #. [race]: id=elf
-#: data/core/units.cfg:111
+#: data/core/units.cfg:114
 msgid "race^Elf"
 msgstr "Sìthiche"
 
 #. [race]: id=elf
-#: data/core/units.cfg:112
+#: data/core/units.cfg:115
 msgid "race+female^Elf"
 msgstr "Ban-sìthiche"
 
 #. [race]: id=elf
-#: data/core/units.cfg:113
+#: data/core/units.cfg:116
 msgid "race^Elves"
 msgstr "Sìthichean"
 
 #. [race]: id=elf
-#: data/core/units.cfg:115
+#: data/core/units.cfg:118
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -5599,55 +5623,70 @@ msgstr ""
 "teagamh."
 
 #. [race]: id=falcon, description=
-#: data/core/units.cfg:132
+#: data/core/units.cfg:135
 msgid "race^Falcon"
 msgstr "Seabhag"
 
 #. [race]: id=falcon, description=
-#: data/core/units.cfg:133
+#: data/core/units.cfg:136
 msgid "race+female^Falcon"
 msgstr "Seabhag"
 
 #. [race]: id=falcon, description=
-#: data/core/units.cfg:134
+#: data/core/units.cfg:137
 msgid "race^Falcons"
 msgstr "Seabhagan"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:145
+#: data/core/units.cfg:148
 msgid "race^Goblin"
 msgstr "Bòcan"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:146
+#: data/core/units.cfg:149
 msgid "race+female^Goblin"
 msgstr "Bana-bhòcan"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:147
+#: data/core/units.cfg:150
 msgid "race^Goblins"
 msgstr "Bòcain"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:148
+#: data/core/units.cfg:151
+#, fuzzy
+#| msgid ""
+#| "Goblins are, despite their appearance, born as siblings to the orcs and "
+#| "members of the same race. While other races usually bear children singly "
+#| "or in pairs, orcs will have large litters of children all at once, "
+#| "causing their populations to explode rather quickly. Within any litter, "
+#| "there will only be one or two true orcs, who will grow to the full size "
+#| "and strength of their race. A few more will be half-orcs, notably weaker "
+#| "than their big brothers, and relegated to supporting roles in combat, "
+#| "such as archery. The rest, often a full half of more of any litter, will "
+#| "be goblins. Goblins are puny and quite frail, rarely growing past the "
+#| "size and stature of a human child. Goblins are born into a lifetime of "
+#| "near-slavery to their larger kin, and used as sword-fodder in battle. "
+#| "They thrive in spite of their tragic fate; in part because they are so "
+#| "very numerous, and also because their brother orcs are well aware how "
+#| "dependent they are on the goblins.\n"
+#| "\n"
+#| "Goblins perform the bulk of manual labor needed by the orcs, with the "
+#| "sole exception of jobs that require the brute strength of true orcs. "
+#| "Those the orcs revel in as proof of their prowess."
 msgid ""
-"Goblins are, despite their appearance, born as siblings to the orcs and "
-"members of the same race. While other races usually bear children singly or "
-"in pairs, orcs will have large litters of children all at once, causing "
-"their populations to explode rather quickly. Within any litter, there will "
-"only be one or two true orcs, who will grow to the full size and strength of "
-"their race. A few more will be half-orcs, notably weaker than their big "
-"brothers, and relegated to supporting roles in combat, such as archery. The "
-"rest, often a full half of more of any litter, will be goblins. Goblins are "
-"puny and quite frail, rarely growing past the size and stature of a human "
-"child. Goblins are born into a lifetime of near-slavery to their larger kin, "
-"and used as sword-fodder in battle. They thrive in spite of their tragic "
-"fate; in part because they are so very numerous, and also because their "
-"brother orcs are well aware how dependent they are on the goblins.\n"
 "\n"
-"Goblins perform the bulk of manual labor needed by the orcs, with the sole "
-"exception of jobs that require the brute strength of true orcs. Those the "
-"orcs revel in as proof of their prowess."
+"\n"
+"Goblins are puny and quite frail, rarely growing past the size and stature "
+"of a human child.\n"
+"\n"
+"Goblins are born into a lifetime of near-slavery to their larger kin, and "
+"used as sword-fodder in battle. They thrive in spite of their tragic fate; "
+"in part because they are so very numerous, and also because their brother "
+"orcs are well aware how dependent they are on the goblins. They perform the "
+"bulk of manual labor needed by the orcs, with the sole exception of jobs "
+"that require the brute strength of true orcs. Those the orcs revel in as "
+"proof of their prowess."
 msgstr ""
 "A dh’aindeoin an coltais a th’ orra, ’s e clann nan deamhan a th’ anns na "
 "bòcain is tha iad ’nam phàirt den aon chinneadh. Fhad ’s nach beir na "
@@ -5670,22 +5709,22 @@ msgstr ""
 "na deamhain tlachd às na h-obraichean sin mar fhianais air an treuntachd."
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:163
+#: data/core/units.cfg:168
 msgid "race^Gryphon"
 msgstr "Iolair-leòmhann"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:164
+#: data/core/units.cfg:169
 msgid "race+female^Gryphon"
 msgstr "Ban-iolair-leòmhann"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:165
+#: data/core/units.cfg:170
 msgid "race^Gryphons"
 msgstr "Iolair-leòmhannan"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:166
+#: data/core/units.cfg:171
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -5707,22 +5746,22 @@ msgstr ""
 "deach a’ cheist cò às a thàinig iad."
 
 #. [race]: id=human
-#: data/core/units.cfg:184
+#: data/core/units.cfg:189
 msgid "race^Human"
 msgstr "Duine"
 
 #. [race]: id=human
-#: data/core/units.cfg:185
+#: data/core/units.cfg:190
 msgid "race+female^Human"
 msgstr "Bean"
 
 #. [race]: id=human
-#: data/core/units.cfg:186
+#: data/core/units.cfg:191
 msgid "race^Humans"
 msgstr "An cinne-daonna"
 
 #. [race]: id=human
-#: data/core/units.cfg:187
+#: data/core/units.cfg:192
 #, fuzzy
 #| msgid ""
 #| "The race of men is an extremely diverse one. Although they originally "
@@ -5847,7 +5886,7 @@ msgstr ""
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:203 data/core/units.cfg:218
+#: data/core/units.cfg:208 data/core/units.cfg:223
 #, fuzzy
 #| msgid "race^Human"
 msgid "race^Dunefolk Human"
@@ -5855,7 +5894,7 @@ msgstr "Duine"
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:204 data/core/units.cfg:219
+#: data/core/units.cfg:209 data/core/units.cfg:224
 #, fuzzy
 #| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
@@ -5863,45 +5902,51 @@ msgstr "Bean"
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:205 data/core/units.cfg:220
+#: data/core/units.cfg:210 data/core/units.cfg:225
 #, fuzzy
 #| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
 msgstr "Closaich"
 
 #. [race]: id=dunefolk
+#: data/core/units.cfg:211
+msgid ""
+"The Dunefolk are a human culture inhabiting the dry deserts in the southern "
+"region of the Great Continent."
+msgstr ""
+
 #. [race]: id=khalifate
-#: data/core/units.cfg:206 data/core/units.cfg:221
+#: data/core/units.cfg:226
 msgid "This race does not have a description yet."
 msgstr "Chan eil mìneachadh airson a’ chinnidh seo ri làimh fhathast."
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:232
+#: data/core/units.cfg:237
 msgid "race^Saurian"
 msgstr "Laghairt"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:233
+#: data/core/units.cfg:238
 msgid "race+female^Saurian"
 msgstr "Laghairt"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:234
+#: data/core/units.cfg:239
 msgid "race^Saurians"
 msgstr "Laghairtean"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:244
+#: data/core/units.cfg:249
 msgid "race^Mechanical"
 msgstr "Innealach"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:245
+#: data/core/units.cfg:250
 msgid "race+plural^Mechanical"
 msgstr "Innealaichean"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:246
+#: data/core/units.cfg:251
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -5915,22 +5960,22 @@ msgstr ""
 "a nì cuid co-dhiù air sàilleibh geasaidh."
 
 #. [race]: id=merman
-#: data/core/units.cfg:255
+#: data/core/units.cfg:260
 msgid "race^Merman"
 msgstr "Duine-mara"
 
 #. [race]: id=merman
-#: data/core/units.cfg:256
+#: data/core/units.cfg:261
 msgid "race^Mermaid"
 msgstr "Bean-mara"
 
 #. [race]: id=merman
-#: data/core/units.cfg:257
+#: data/core/units.cfg:262
 msgid "race^Mermen"
 msgstr "Sluagh-mara"
 
 #. [race]: id=merman
-#: data/core/units.cfg:259
+#: data/core/units.cfg:264
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -5954,22 +5999,22 @@ msgstr ""
 "mhòr a dhèanamh ach am faigh iad tro choille no tìr gharbh."
 
 #. [race]: id=monster
-#: data/core/units.cfg:267
+#: data/core/units.cfg:272
 msgid "race^Monster"
 msgstr "Biast"
 
 #. [race]: id=monster
-#: data/core/units.cfg:268
+#: data/core/units.cfg:273
 msgid "race+female^Monster"
 msgstr "Biast"
 
 #. [race]: id=monster
-#: data/core/units.cfg:269
+#: data/core/units.cfg:274
 msgid "race^Monsters"
 msgstr "Biastan"
 
 #. [race]: id=monster
-#: data/core/units.cfg:270
+#: data/core/units.cfg:275
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -5981,22 +6026,22 @@ msgstr ""
 "nan daoine a dh’fhuiricheas ann."
 
 #. [race]: id=naga
-#: data/core/units.cfg:277
+#: data/core/units.cfg:282
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:278
+#: data/core/units.cfg:283
 msgid "race^Nagini"
 msgstr "Nagini"
 
 #. [race]: id=naga
-#: data/core/units.cfg:279
+#: data/core/units.cfg:284
 msgid "race^Nagas"
 msgstr "Nagaidhean"
 
 #. [race]: id=naga
-#: data/core/units.cfg:280
+#: data/core/units.cfg:285
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -6030,22 +6075,22 @@ msgstr ""
 "air boglaich no aibhnichean ris an uisge fhosgailte."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:288
+#: data/core/units.cfg:293
 msgid "race^Ogre"
 msgstr "Duin’-itheach"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:289
+#: data/core/units.cfg:294
 msgid "race+female^Ogre"
 msgstr "Ban-duin’-itheach"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:290
+#: data/core/units.cfg:295
 msgid "race^Ogres"
 msgstr "Duin’-ithich"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:291
+#: data/core/units.cfg:296
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -6079,29 +6124,88 @@ msgstr ""
 "simplidh."
 
 #. [race]: id=orc
-#: data/core/units.cfg:299
+#: data/core/units.cfg:304
 msgid "race^Orc"
 msgstr "Deamhan"
 
 #. [race]: id=orc
-#: data/core/units.cfg:300
+#: data/core/units.cfg:305
 msgid "race+female^Orc"
 msgstr "Ban-deamhan"
 
 #. [race]: id=orc
-#: data/core/units.cfg:301
+#: data/core/units.cfg:306
 msgid "race^Orcs"
 msgstr "Deamhain"
 
 #. [race]: id=orc
-#: data/core/units.cfg:302
+#: data/core/units.cfg:307
+#, fuzzy
+#| msgid ""
+#| "In appearance, orcs are half men and half beasts. They are taller, "
+#| "sturdier and stronger than humans. They are warlike, savage, and cruel by "
+#| "nature. Their blood is darker and thicker than that of normal humans and "
+#| "they have little care for personal hygiene or their personal appearance. "
+#| "Although Orcs are violent even among themselves, they are pack-oriented; "
+#| "an orc never travels long or lives in groups smaller than half a dozen.\n"
+#| "\n"
+#| "<header>text='Society'</header>\n"
+#| "Almost every orc is a member of a tribe or a clan. Relations between "
+#| "neighboring tribes are usually violent, except in cases of a mutual enemy "
+#| "threatens their existence or prospects of great plunder override mutual "
+#| "animosity. Occasionally, a single strong chieftain may emerge to lead "
+#| "multiple tribes from time to time, usually through intimidation of "
+#| "followers. An orc tribe in times of peace tends to focus almost solely on "
+#| "strengthening itself in preparation for the next armed conflict. Orcs are "
+#| "known to possess a crude system of writing — usually in blood — although "
+#| "it’s most commonly used to trade insults or threats among tribal "
+#| "leaders.\n"
+#| "\n"
+#| "Orc societies are based on little else but strength; might makes right, "
+#| "and a leader leads and survives only as long as no one manages to wrest "
+#| "the title from him. A constant struggle for power simmers among potential "
+#| "tribal chiefs. An orcish leader rarely lives more than a handful of years "
+#| "to enjoy his absolute authority before being killed for his position — "
+#| "although history knows some notable exceptions. Orcs hold no particular "
+#| "honor code and while indisputable raw strength is usually the preferred "
+#| "method of displaying power, assassination, poisoning and backstabbing are "
+#| "completely viable means to further one’s own goals.\n"
+#| "\n"
+#| "Orcs mostly live in rural areas, often in foothills or mountainous "
+#| "regions, sometimes in caves. They grow no crops nor keep livestock, but "
+#| "are competent hunters as a result of their physical stature and "
+#| "brutality. Due to their large numbers they are capable of hunting an area "
+#| "virtually clean of anything larger than rodents in relatively short "
+#| "period of time. Due to this and their unstable leadership, orcish tribes "
+#| "tend to lead a semi-nomadic lifestyle, never settling in one region for "
+#| "too long. The larger tribes may establish themselves firmly in an area "
+#| "for years or even decades and build large encampments almost resembling "
+#| "cities, but even these are easily dismantled and abandoned if there is a "
+#| "need to relocate the horde.\n"
+#| "\n"
+#| "The oldest known orcs have been around 50 to 60 years of age, but very "
+#| "few individuals ever live to see over two or three decades before meeting "
+#| "their end either in war or by the hand of one of their kin. The oldest "
+#| "orcs are often shamans, which are perhaps the only ones most of their "
+#| "kind sees as being trustworthy and neutral. The origins of this custom "
+#| "are unknown, as the shamans do not directly contribute much to orcish "
+#| "societies but only act as advisors — not something orcs tend to otherwise "
+#| "tolerate. Shamans are in many ways the opposite of most other orcs: they "
+#| "are often physically withered and frail in comparison and lack skill in "
+#| "battle. Despite their reliance on raw strength, not nearly all orcs are "
+#| "destined to grow to possess any. Many orcs are born smaller and weaker "
+#| "than the rest, and already almost as newborns are put in their place by "
+#| "their stronger siblings. The stronger ones will routinely grab most of "
+#| "the food and thus grow stronger still, while their weaker siblings do "
+#| "not. Many of these individuals tend to specialize in other skills, like "
+#| "archery or assassination."
 msgid ""
-"In appearance, orcs are half men and half beasts. They are taller, sturdier "
-"and stronger than humans. They are warlike, savage, and cruel by nature. "
-"Their blood is darker and thicker than that of normal humans and they have "
-"little care for personal hygiene or their personal appearance. Although Orcs "
-"are violent even among themselves, they are pack-oriented; an orc never "
-"travels long or lives in groups smaller than half a dozen.\n"
+"In appearance, orcs resemble humans but with some bestial features. They are "
+"taller, sturdier and stronger than humans. They are warlike, savage, and "
+"cruel by nature. Their blood is darker and thicker than that of humans, and "
+"they have little care for personal hygiene or their personal appearance. "
+"Although Orcs are violent even among themselves, they are pack-oriented; an "
+"orc never travels alone or lives in groups smaller than half a dozen.\n"
 "\n"
 "<header>text='Society'</header>\n"
 "Almost every orc is a member of a tribe or a clan. Relations between "
@@ -6143,14 +6247,8 @@ msgid ""
 "the shamans do not directly contribute much to orcish societies but only act "
 "as advisors — not something orcs tend to otherwise tolerate. Shamans are in "
 "many ways the opposite of most other orcs: they are often physically "
-"withered and frail in comparison and lack skill in battle. Despite their "
-"reliance on raw strength, not nearly all orcs are destined to grow to "
-"possess any. Many orcs are born smaller and weaker than the rest, and "
-"already almost as newborns are put in their place by their stronger "
-"siblings. The stronger ones will routinely grab most of the food and thus "
-"grow stronger still, while their weaker siblings do not. Many of these "
-"individuals tend to specialize in other skills, like archery or "
-"assassination."
+"withered and frail in comparison and lack skill in battle.\n"
+"\n"
 msgstr ""
 "Tha coltas de mheasgachadh eadar daoine is biastan air na deamhain. Tha iad "
 "nas àirde, nas seasmhaiche is nas treasa na a’ chinne-daonna. Tha iad "
@@ -6213,23 +6311,32 @@ msgstr ""
 "col-dhaltan as laige. Ionnsaichidh an fheadhainn lag sgilean sònraichte a "
 "leithid boghadaireachd no foill-mhuirt."
 
-#. [race]: id=troll
+#. [race]: id=orc
 #: data/core/units.cfg:318
+msgid ""
+"\n"
+"\n"
+"Orcs who were not the strongest of their litter tend to specialize in other "
+"skills, like archery or assassination."
+msgstr ""
+
+#. [race]: id=troll
+#: data/core/units.cfg:327
 msgid "race^Troll"
 msgstr "Athach"
 
 #. [race]: id=troll
-#: data/core/units.cfg:319
+#: data/core/units.cfg:328
 msgid "race+female^Troll"
 msgstr "Ban-athach"
 
 #. [race]: id=troll
-#: data/core/units.cfg:320
+#: data/core/units.cfg:329
 msgid "race^Trolls"
 msgstr "Athaich"
 
 #. [race]: id=troll
-#: data/core/units.cfg:321
+#: data/core/units.cfg:330
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -6305,22 +6412,22 @@ msgstr ""
 "Beasnad agus àite sam bith a shiubhlas buidhnean de dheamhan."
 
 #. [race]: id=undead
-#: data/core/units.cfg:341
+#: data/core/units.cfg:350
 msgid "race^Undead"
 msgstr "Closach"
 
 #. [race]: id=undead
-#: data/core/units.cfg:342
+#: data/core/units.cfg:351
 msgid "race+female^Undead"
 msgstr "Ban-chlosach"
 
 #. [race]: id=undead
-#: data/core/units.cfg:343
+#: data/core/units.cfg:352
 msgid "race+plural^Undead"
 msgstr "Closaich"
 
 #. [race]: id=undead
-#: data/core/units.cfg:344
+#: data/core/units.cfg:353
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -6375,32 +6482,32 @@ msgstr ""
 "Taldraig I, bhiodh na sìthichean is troichean eòlach air a leithid roimhe."
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:357
+#: data/core/units.cfg:366
 msgid "race^Wolf"
 msgstr "Madadh-allaidh"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:358
+#: data/core/units.cfg:367
 msgid "race+female^Wolf"
 msgstr "Bana-mhadadh-allaidh"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:359
+#: data/core/units.cfg:368
 msgid "race^Wolves"
 msgstr "Madaidhean-allaidh"
 
 #. [race]: id=wose
-#: data/core/units.cfg:369
+#: data/core/units.cfg:378
 msgid "race^Wose"
 msgstr "Gille-dubh"
 
 #. [race]: id=wose
-#: data/core/units.cfg:370
+#: data/core/units.cfg:379
 msgid "race^Woses"
 msgstr "Gillean-dubha"
 
 #. [race]: id=wose
-#: data/core/units.cfg:371
+#: data/core/units.cfg:380
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-04 16:40 UTC\n"
+"POT-Creation-Date: 2018-02-12 17:01 UTC\n"
 "PO-Revision-Date: 2014-10-23 21:29+0100\n"
 "Last-Translator: Svistwarrior273 <romanbeno273@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1781,9 +1781,9 @@ msgstr "Eskorta Posla"
 msgid "Vanak"
 msgstr "Vanak"
 
+#. [event]
 #. [side]
 #. [unit]: type=Dragoon, id=messenger
-#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:37
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:71
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:72
@@ -1792,8 +1792,10 @@ msgstr "Posol"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:121
-msgid "Messanger Waypoint 1"
-msgstr "Poslov smerový bod 1"
+#, fuzzy
+#| msgid "Messenger Waypoint 2"
+msgid "Messenger Waypoint 1"
+msgstr "Poslov smerový bod 2"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:123
@@ -3196,6 +3198,9 @@ msgstr ""
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:87
 msgid "Kiressh"
 msgstr "Kireš"
+
+#~ msgid "Messanger Waypoint 1"
+#~ msgstr "Poslov smerový bod 1"
 
 #~ msgid "Multiplayer_AI^Strong AI (RCA)"
 #~ msgstr "Multiplayer_AI^Silné AI (RCA)"

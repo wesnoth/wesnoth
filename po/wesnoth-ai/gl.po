@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-04 16:40 UTC\n"
+"POT-Creation-Date: 2018-02-12 17:01 UTC\n"
 "PO-Revision-Date: 2016-05-13 06:31+0100\n"
 "Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
 "com>\n"
@@ -1841,9 +1841,9 @@ msgstr "Escolta dun mensaxeiro"
 msgid "Vanak"
 msgstr "Vanan"
 
+#. [event]
 #. [side]
 #. [unit]: type=Dragoon, id=messenger
-#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:37
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:71
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:72
@@ -1852,8 +1852,10 @@ msgstr "Mensaxeiro"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:121
-msgid "Messanger Waypoint 1"
-msgstr "Punto 1 do camiño do mensaxeiro"
+#, fuzzy
+#| msgid "Messenger Waypoint 2"
+msgid "Messenger Waypoint 1"
+msgstr "Punto 2 do camiño do mensaxeiro"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:123
@@ -3290,6 +3292,9 @@ msgstr ""
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:87
 msgid "Kiressh"
 msgstr "Quires"
+
+#~ msgid "Messanger Waypoint 1"
+#~ msgstr "Punto 1 do camiño do mensaxeiro"
 
 #~ msgid "Multiplayer_AI^Strong AI (RCA)"
 #~ msgstr "IA difícil (RCA)"

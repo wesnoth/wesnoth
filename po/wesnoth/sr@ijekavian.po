@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-04 19:40+0300\n"
+"POT-Creation-Date: 2018-02-12 20:02+0300\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -327,7 +327,7 @@ msgstr "Џојстик: мртва зона ручке потиска"
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1071
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1077
 msgid "poisoned"
 msgstr "отрован"
 
@@ -1543,26 +1543,26 @@ msgstr ""
 "Посебно: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 
-#: data/core/macros/deprecated-utils.cfg:54
+#: data/core/macros/deprecated-utils.cfg:64
 msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(бонус за рани завршетак)</small>"
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:57 data/lua/wml/objectives.lua:120
+#: data/core/macros/deprecated-utils.cfg:67 data/lua/wml/objectives.lua:120
 msgid "Early finish bonus."
 msgstr "Бонус за рани завршетак."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:60 data/lua/wml/objectives.lua:123
+#: data/core/macros/deprecated-utils.cfg:70 data/lua/wml/objectives.lua:123
 msgid "No early finish bonus."
 msgstr "Без бонуса за рани завршетак."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:63 data/lua/wml/objectives.lua:131
+#: data/core/macros/deprecated-utils.cfg:73 data/lua/wml/objectives.lua:131
 msgid "No gold carried over to the next scenario."
 msgstr "Злато се не преноси у сљедећи сценарио."
 
-#: data/core/macros/deprecated-utils.cfg:66
+#: data/core/macros/deprecated-utils.cfg:76
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
@@ -1570,7 +1570,7 @@ msgstr ""
 "\n"
 "100% злата на крају преноси се у сљедећи сценарио."
 
-#: data/core/macros/deprecated-utils.cfg:70
+#: data/core/macros/deprecated-utils.cfg:80
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -1578,7 +1578,7 @@ msgstr ""
 "\n"
 "40% злата на крају преноси се у сљедећи сценарио."
 
-#: data/core/macros/deprecated-utils.cfg:74
+#: data/core/macros/deprecated-utils.cfg:84
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -3790,14 +3790,14 @@ msgid "Install Dependencies"
 msgstr "Инсталирање зависности"
 
 #. [button]: id=ok
-#: data/gui/window/install_dependencies.cfg:83
+#: data/gui/window/install_dependencies.cfg:85
 #, fuzzy
 #| msgid "yes"
 msgid "Yes"
 msgstr "да"
 
 #. [button]: id=cancel
-#: data/gui/window/install_dependencies.cfg:94
+#: data/gui/window/install_dependencies.cfg:96
 #, fuzzy
 #| msgid "None"
 msgid "No"
@@ -3826,69 +3826,81 @@ msgstr ""
 msgid "DejaVu Sans Mono"
 msgstr ""
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecation_message
-#: data/lua/core.lua:159
+#: data/lua/core.lua:162 src/deprecation.cpp:33
 msgid "$elem has been deprecated indefinitely."
 msgstr ""
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecation_message
-#: data/lua/core.lua:164
+#: data/lua/core.lua:167 src/deprecation.cpp:38
 msgid "$elem has been deprecated and may be removed in version $version."
 msgstr ""
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecation_message
-#: data/lua/core.lua:166
+#: data/lua/core.lua:169 src/deprecation.cpp:40
 msgid "$elem has been deprecated and may be removed at any time."
 msgstr ""
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecation_message
-#: data/lua/core.lua:170
-msgid "$elem has been deprecated and will be removed in the next version."
+#: data/lua/core.lua:174 src/deprecation.cpp:45
+msgid ""
+"$elem has been deprecated and will be removed in the next version ($version)."
 msgstr ""
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecation_message
-#: data/lua/core.lua:173
+#: data/lua/core.lua:177 src/deprecation.cpp:48
 msgid "$elem has been deprecated and removed."
 msgstr ""
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecation_message
-#. [lua]: wml_actions.deprecated_message
-#: data/lua/core.lua:175 data/lua/wml-tags.lua:894
-msgid "Invalid deprecation level (should be 1-4)"
+#. [lua]: wesnoth.deprecate_api
+#: data/lua/core.lua:180 data/lua/core.lua:207 src/deprecation.cpp:51
+msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr ""
 
 #. [lua]: wesnoth.deprecate_api
-#: data/lua/core.lua:189
+#: data/lua/core.lua:202
 msgid "(Note: You should use $replacement instead in new code)"
+msgstr ""
+
+#. [lua]: wml_actions.deprecated_message
+#: data/lua/wml-tags.lua:894
+msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1071
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1077
 msgid "female^poisoned"
 msgstr "отрована"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1078
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1084
 msgid "female^slowed"
 msgstr "успорена"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1078
+#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1084
 msgid "slowed"
 msgstr "успорен"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1084
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1090
 msgid "female^petrified"
 msgstr "окамењена"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1084
+#: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1090
 msgid "petrified"
 msgstr "окамењен"
 
@@ -3904,8 +3916,8 @@ msgstr "неисцјељив"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:392 src/scripting/game_lua_kernel.cpp:2740
-#: src/scripting/game_lua_kernel.cpp:2775
+#: data/lua/wml/message.lua:392 src/scripting/game_lua_kernel.cpp:2746
+#: src/scripting/game_lua_kernel.cpp:2781
 msgid "input"
 msgstr ""
 
@@ -3938,7 +3950,7 @@ msgstr "%d%% злата се преноси у сљедећи сценарио."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:174
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:113
 #: src/game_initialization/mp_game_utils.cpp:76
 msgid "Defeat enemy leader(s)"
 msgstr "Поразиш ли противничке вође"
@@ -3962,98 +3974,98 @@ msgid "electrical"
 msgstr "електрични"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:448 data/themes/_initial.cfg:608
+#: data/themes/_initial.cfg:447 data/themes/_initial.cfg:607
 msgid "Play"
 msgstr "Играј"
 
 #. [action]: id=button-playreplay, type=image
-#: data/themes/_initial.cfg:449 data/themes/_initial.cfg:609
+#: data/themes/_initial.cfg:448 data/themes/_initial.cfg:608
 msgid "continuous replay"
 msgstr "снимак без паузе"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:463 data/themes/_initial.cfg:622
+#: data/themes/_initial.cfg:462 data/themes/_initial.cfg:621
 msgid "Stop"
 msgstr "Стани"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:464
+#: data/themes/_initial.cfg:463
 msgid "pause after current move"
 msgstr ""
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:479 data/themes/_initial.cfg:636
+#: data/themes/_initial.cfg:478 data/themes/_initial.cfg:635
 msgid "Reset"
 msgstr "Ресетуј"
 
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/_initial.cfg:480 data/themes/_initial.cfg:637
+#: data/themes/_initial.cfg:479 data/themes/_initial.cfg:636
 msgid "reset to beginning"
 msgstr "врати на почетак"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:495 data/themes/_initial.cfg:650
+#: data/themes/_initial.cfg:494 data/themes/_initial.cfg:649
 msgid "Next Turn"
 msgstr "Сљедећи потез"
 
 #. [action]: id=button-nextturn, type=image
-#: data/themes/_initial.cfg:496 data/themes/_initial.cfg:651
+#: data/themes/_initial.cfg:495 data/themes/_initial.cfg:650
 msgid "play turn"
 msgstr "пусти потез"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:511 data/themes/_initial.cfg:664
+#: data/themes/_initial.cfg:510 data/themes/_initial.cfg:663
 msgid "Next Side"
 msgstr "Сљедећа страна"
 
 #. [action]: id=button-nextside, type=image
-#: data/themes/_initial.cfg:512 data/themes/_initial.cfg:665
+#: data/themes/_initial.cfg:511 data/themes/_initial.cfg:664
 msgid "play side turn"
 msgstr "пусти потез стране"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:526 data/themes/_initial.cfg:678
+#: data/themes/_initial.cfg:525 data/themes/_initial.cfg:677
 #, fuzzy
 #| msgid "Next Side"
 msgid "Next Move"
 msgstr "Сљедећа страна"
 
 #. [action]: id=button-nextmove, type=image
-#: data/themes/_initial.cfg:527 data/themes/_initial.cfg:679
+#: data/themes/_initial.cfg:526 data/themes/_initial.cfg:678
 #, fuzzy
 #| msgid "play side turn"
 msgid "play single move"
 msgstr "пусти потез стране"
 
 #. [menu]: id=show-what
-#: data/themes/_initial.cfg:539 data/themes/_initial.cfg:691
+#: data/themes/_initial.cfg:538 data/themes/_initial.cfg:690
 msgid "Point of view"
 msgstr "тачка гледишта"
 
 #. [action]: id=button-continue
-#: data/themes/_initial.cfg:550
+#: data/themes/_initial.cfg:549
 #, fuzzy
 #| msgid "continuous replay"
 msgid "Continue Play"
 msgstr "снимак без паузе"
 
 #. [action]: id=button-continue
-#: data/themes/_initial.cfg:551
+#: data/themes/_initial.cfg:550
 msgid "Exit the replay mode and continue playing normally."
 msgstr ""
 
 #. [action]: id=skip-animation, type=checkbox
-#: data/themes/_initial.cfg:563 data/themes/_initial.cfg:703
+#: data/themes/_initial.cfg:562 data/themes/_initial.cfg:702
 msgid "Skip animation"
 msgstr "Прескочи анимацију"
 
 #. [label]: id=replay-label
-#: data/themes/_initial.cfg:593
+#: data/themes/_initial.cfg:592
 msgid "Replay"
 msgstr "Снимак"
 
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/_initial.cfg:623
+#: data/themes/_initial.cfg:622
 msgid "pause"
 msgstr ""
 
@@ -4987,7 +4999,7 @@ msgstr ""
 "предности; мада ће ипак бити лечене."
 
 #: src/actions/attack.cpp:392 src/actions/attack.cpp:661
-#: src/actions/attack.cpp:1354
+#: src/actions/attack.cpp:1360
 msgid "An invalid attacker weapon got selected."
 msgstr "Изабрано је лоше оружје за нападача."
 
@@ -5093,25 +5105,25 @@ msgstr[3] "Уочена савезничка јединица"
 msgid "(press $hotkey to keep moving)"
 msgstr "(притисните $hotkey да продужи)"
 
-#: src/addon/client.cpp:74
+#: src/addon/client.cpp:75
 #, fuzzy
 #| msgid "Connecting to Server..."
 msgid "Connecting to $server_address|..."
 msgstr "Повезујем се са сервером..."
 
-#: src/addon/client.cpp:88
+#: src/addon/client.cpp:89
 #, fuzzy
 #| msgid "Requesting list of add-ons"
 msgid "Downloading list of add-ons..."
 msgstr "Тражим списак додатака"
 
-#: src/addon/client.cpp:102
+#: src/addon/client.cpp:103
 #, fuzzy
 #| msgid "Requesting terms"
 msgid "Requesting distribution terms..."
 msgstr "Тражим услове"
 
-#: src/addon/client.cpp:126
+#: src/addon/client.cpp:127
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5120,7 +5132,7 @@ msgid ""
 "published."
 msgstr "Додатак има лоше име датотеке или фасцикле и не може се инсталирати."
 
-#: src/addon/client.cpp:152
+#: src/addon/client.cpp:153
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5129,7 +5141,7 @@ msgid ""
 "characters and cannot be published."
 msgstr "Додатак има лоше име датотеке или фасцикле и не може се инсталирати."
 
-#: src/addon/client.cpp:160
+#: src/addon/client.cpp:161
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5139,7 +5151,7 @@ msgid ""
 "&quot; * / : &lt; &gt; ? \\ | ~"
 msgstr ""
 
-#: src/addon/client.cpp:171
+#: src/addon/client.cpp:172
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5149,25 +5161,25 @@ msgid ""
 "the same string."
 msgstr "Додатак има лоше име датотеке или фасцикле и не може се инсталирати."
 
-#: src/addon/client.cpp:183
+#: src/addon/client.cpp:184
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Преузимам додатак: $addon_title|..."
 
-#: src/addon/client.cpp:216
+#: src/addon/client.cpp:217
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Преузимам додатак: $addon_title|..."
 
-#: src/addon/client.cpp:243
+#: src/addon/client.cpp:244
 #, fuzzy
 #| msgid "Downloading add-on: $addon_title|..."
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Преузимам додатак: $addon_title|..."
 
-#: src/addon/client.cpp:257
+#: src/addon/client.cpp:258
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5176,7 +5188,7 @@ msgid ""
 "cannot be installed."
 msgstr "Додатак има лоше име датотеке или фасцикле и не може се инсталирати."
 
-#: src/addon/client.cpp:263
+#: src/addon/client.cpp:264
 #, fuzzy
 #| msgid ""
 #| "The add-on has an invalid file or directory name and cannot be installed."
@@ -5185,13 +5197,13 @@ msgid ""
 "conflicts. This may cause problems."
 msgstr "Додатак има лоше име датотеке или фасцикле и не може се инсталирати."
 
-#: src/addon/client.cpp:320
+#: src/addon/client.cpp:321
 #, fuzzy
 #| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
 msgstr "Сервер је одговорио грешком: \""
 
-#: src/addon/client.cpp:360
+#: src/addon/client.cpp:371
 #, fuzzy
 #| msgid ""
 #| "The selected add-on has the following dependency. Do you want to install "
@@ -5215,13 +5227,13 @@ msgstr[3] ""
 "Изабрани додатак има следећу зависност. Желите ли да је инсталирате?"
 
 # >> @title:window
-#: src/addon/client.cpp:369
+#: src/addon/client.cpp:380
 #, fuzzy
 #| msgid "Install dependencies"
 msgid "Broken Dependencies"
 msgstr "Инсталирање зависности"
 
-#: src/addon/client.cpp:412
+#: src/addon/client.cpp:422
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5233,110 +5245,110 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/addon/client.cpp:416
+#: src/addon/client.cpp:426
 #, fuzzy
 #| msgid "Installation failed"
 msgid "Dependencies Installation Failed"
 msgstr "Инсталирање није успело"
 
-#: src/addon/client.cpp:439
+#: src/addon/client.cpp:449
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 
-#: src/addon/client.cpp:443
+#: src/addon/client.cpp:453
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
-#: src/addon/client.cpp:447
+#: src/addon/client.cpp:457
 msgid "Version control system (VCS) information"
 msgstr ""
 
-#: src/addon/client.cpp:451
+#: src/addon/client.cpp:461
 #, fuzzy
 #| msgid "Do you want to continue?"
 msgid "Do you really wish to continue?"
 msgstr "Желите ли да наставите?"
 
 # >> @title:window
-#: src/addon/client.cpp:453 src/addon/manager_ui.cpp:174
-#: src/game_initialization/multiplayer.cpp:232
+#: src/addon/client.cpp:463 src/addon/manager_ui.cpp:174
+#: src/game_initialization/multiplayer.cpp:242
 msgid "Confirm"
 msgstr "Потврда"
 
-#: src/addon/client.cpp:573
+#: src/addon/client.cpp:583
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Manager"
 msgstr "Додатак инсталиран"
 
-#: src/addon/info.cpp:153
+#: src/addon/info.cpp:155
 msgid "addon_type^Campaign"
 msgstr "поход"
 
-#: src/addon/info.cpp:155
+#: src/addon/info.cpp:157
 msgid "addon_type^Scenario"
 msgstr "сценарио"
 
 # well-spelled: вигр
-#: src/addon/info.cpp:157
+#: src/addon/info.cpp:159
 #, fuzzy
 #| msgid "addon_type^MP campaign"
 msgid "addon_type^SP/MP Campaign"
 msgstr "вигр. поход"
 
 # well-spelled: вигр
-#: src/addon/info.cpp:159
+#: src/addon/info.cpp:161
 msgid "addon_type^MP era"
 msgstr "вигр. раздобље"
 
 # well-spelled: вигр
-#: src/addon/info.cpp:161
+#: src/addon/info.cpp:163
 msgid "addon_type^MP faction"
 msgstr "вигр. фракција"
 
 # well-spelled: вигр
-#: src/addon/info.cpp:163
+#: src/addon/info.cpp:165
 msgid "addon_type^MP map-pack"
 msgstr "вигр. пакета мапа"
 
 # well-spelled: вигр
-#: src/addon/info.cpp:165
+#: src/addon/info.cpp:167
 msgid "addon_type^MP scenario"
 msgstr "вигр. сценарио"
 
 # well-spelled: вигр
-#: src/addon/info.cpp:167
+#: src/addon/info.cpp:169
 msgid "addon_type^MP campaign"
 msgstr "вигр. поход"
 
 # well-spelled: вигр
-#: src/addon/info.cpp:169
+#: src/addon/info.cpp:171
 #, fuzzy
 #| msgid "addon_type^MP faction"
-msgid "addon_type^MP modification"
+msgid "addon_type^Modification"
 msgstr "вигр. фракција"
 
-#: src/addon/info.cpp:171
+#: src/addon/info.cpp:173
 #, fuzzy
 #| msgid "addon_type^Resources"
 msgid "addon_type^Core"
 msgstr "ресурси"
 
-#: src/addon/info.cpp:173
+#: src/addon/info.cpp:175
 msgid "addon_type^Resources"
 msgstr "ресурси"
 
-#: src/addon/info.cpp:175
+#: src/addon/info.cpp:177
 msgid "addon_type^Other"
 msgstr "друго"
 
-#: src/addon/info.cpp:177
+#: src/addon/info.cpp:179
 msgid "addon_type^(unknown)"
 msgstr "(непознато)"
 
-#: src/addon/info.cpp:217
+#: src/addon/info.cpp:219
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -5497,7 +5509,7 @@ msgid "(A) — admin command"
 msgstr "(A) — админ. наредба"
 
 # well-spelled: админ
-#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1139
+#: src/chat_command_handler.hpp:73 src/menu_events.cpp:1147
 msgid "(admin only)"
 msgstr "(само админ.)"
 
@@ -5518,9 +5530,9 @@ msgstr ""
 
 #: src/chat_command_handler.hpp:93 src/chat_command_handler.hpp:96
 #: src/chat_command_handler.hpp:98 src/chat_command_handler.hpp:100
-#: src/chat_command_handler.hpp:102 src/chat_command_handler.hpp:129
-#: src/chat_command_handler.hpp:131 src/chat_command_handler.hpp:133
-#: src/chat_command_handler.hpp:144
+#: src/chat_command_handler.hpp:102 src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:125 src/chat_command_handler.hpp:127
+#: src/chat_command_handler.hpp:138
 msgid "<nickname>"
 msgstr "<надимак>"
 
@@ -5544,7 +5556,7 @@ msgstr "Укида утишаност посматрача. Без аргуме�
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Утишава или укида утишаност свих посматрача."
 
-#: src/chat_command_handler.hpp:114
+#: src/chat_command_handler.hpp:108
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -5552,15 +5564,15 @@ msgstr ""
 "Пријављује злоупотребе, кршења правила, итд. модераторима сервера. Пазите да "
 "поменете релевантне надимке, и сл."
 
-#: src/chat_command_handler.hpp:118
+#: src/chat_command_handler.hpp:112
 msgid "<message>"
 msgstr "<порука>"
 
-#: src/chat_command_handler.hpp:118
+#: src/chat_command_handler.hpp:112
 msgid "Send an emotion or personal action in chat."
 msgstr "Шаље емоцију или личну радњу у ћаскање."
 
-#: src/chat_command_handler.hpp:121
+#: src/chat_command_handler.hpp:115
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -5568,98 +5580,98 @@ msgstr ""
 "Шаље приватну поруку. Не можете слати приватне поруке играчима у текућој "
 "партији коју посматрате или у њој играте."
 
-#: src/chat_command_handler.hpp:123
+#: src/chat_command_handler.hpp:117
 msgid "<nickname> <message>"
 msgstr "<надимак> <порука>"
 
-#: src/chat_command_handler.hpp:127
+#: src/chat_command_handler.hpp:121
 msgid "<level> <domain>"
 msgstr "<ниво> <домен>"
 
-#: src/chat_command_handler.hpp:127
+#: src/chat_command_handler.hpp:121
 msgid "Change the log level of a log domain."
 msgstr "Мијења ниво биљежења за домен биљежења."
 
-#: src/chat_command_handler.hpp:129
+#: src/chat_command_handler.hpp:123
 msgid "Add a nickname to your ignores list."
 msgstr "Додаје надимак на списак игнорисаних."
 
-#: src/chat_command_handler.hpp:131
+#: src/chat_command_handler.hpp:125
 msgid "Add a nickname to your friends list."
 msgstr "Додаје надимак на списак пријатеља."
 
-#: src/chat_command_handler.hpp:133
+#: src/chat_command_handler.hpp:127
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Уклања играча са списка игнорисаних или пријатеља."
 
-#: src/chat_command_handler.hpp:135
+#: src/chat_command_handler.hpp:129
 msgid "Display version information."
 msgstr "Приказује податак о верзији."
 
-#: src/chat_command_handler.hpp:137
+#: src/chat_command_handler.hpp:131
 msgid "<password> <email (optional)>"
 msgstr "<лозинка> <е-пошта (опционо)>"
 
-#: src/chat_command_handler.hpp:137
+#: src/chat_command_handler.hpp:131
 #, fuzzy
 #| msgid "Drop your nickname."
 msgid "Register your nickname"
 msgstr "Испушта ваш надимак."
 
-#: src/chat_command_handler.hpp:139
+#: src/chat_command_handler.hpp:133
 msgid "Drop your nickname."
 msgstr "Испушта ваш надимак."
 
-#: src/chat_command_handler.hpp:141
+#: src/chat_command_handler.hpp:135
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr "Ажурира детаље вашег надимка. За могуће детаље, извршити „/details“."
 
-#: src/chat_command_handler.hpp:142
+#: src/chat_command_handler.hpp:136
 msgid "<detail> <value>"
 msgstr "<детаљ> <вриједност>"
 
-#: src/chat_command_handler.hpp:144
+#: src/chat_command_handler.hpp:138
 msgid "Request information about a nickname."
 msgstr "Затражите податке о надимку."
 
-#: src/chat_command_handler.hpp:146
+#: src/chat_command_handler.hpp:140
 msgid "Request a list of details you can set for your registered nickname."
 msgstr "Захтијева списак детаља које можете задати уз регистровани надимак."
 
-#: src/chat_command_handler.hpp:148 src/chat_command_handler.hpp:151
-#: src/chat_command_handler.hpp:153
+#: src/chat_command_handler.hpp:142 src/chat_command_handler.hpp:145
+#: src/chat_command_handler.hpp:147
 msgid "<room>"
 msgstr "<соба>"
 
-#: src/chat_command_handler.hpp:148
+#: src/chat_command_handler.hpp:142
 msgid "Join a room."
 msgstr "Придружи се соби."
 
-#: src/chat_command_handler.hpp:151
+#: src/chat_command_handler.hpp:145
 msgid "Part a room."
 msgstr "Напусти собу."
 
-#: src/chat_command_handler.hpp:153
+#: src/chat_command_handler.hpp:147
 msgid "List room members."
 msgstr "Наброји чланове собе."
 
-#: src/chat_command_handler.hpp:155
+#: src/chat_command_handler.hpp:149
 msgid "List available rooms."
 msgstr "Наброји доступне собе."
 
-#: src/chat_command_handler.hpp:157
+#: src/chat_command_handler.hpp:151
 msgid "<room> <msg>"
 msgstr "<соба> <порука>"
 
-#: src/chat_command_handler.hpp:157
+#: src/chat_command_handler.hpp:151
 msgid "Room message."
 msgstr "Порука собе."
 
-#: src/chat_command_handler.hpp:159
+#: src/chat_command_handler.hpp:153
 msgid "<room> <type> [value]"
 msgstr "<соба> <тип> [вредност]"
 
-#: src/chat_command_handler.hpp:159
+#: src/chat_command_handler.hpp:153
 msgid "Room query."
 msgstr "Упит собе."
 
@@ -5679,11 +5691,11 @@ msgstr "Непознат исправљачки домен: ‘$domain|’."
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Домен пребачен: ‘$domain|’ на ниво: ‘$level|’."
 
-#: src/chat_events.cpp:162
+#: src/chat_events.cpp:153
 msgid "whisper to $receiver"
 msgstr "шапат за $receiver"
 
-#: src/chat_events.cpp:169
+#: src/chat_events.cpp:160
 msgid "whisper: $sender"
 msgstr "шапат: $sender"
 
@@ -5856,38 +5868,38 @@ msgstr "Податак: "
 msgid "$login|’s game"
 msgstr "$login|-ова игра"
 
-#: src/game_initialization/connect_engine.cpp:105
+#: src/game_initialization/connect_engine.cpp:103
 msgid "Team"
 msgstr "тим"
 
-#: src/game_initialization/connect_engine.cpp:977
+#: src/game_initialization/connect_engine.cpp:994
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "Никоговић"
 
-#: src/game_initialization/connect_engine.cpp:982
-#: src/game_initialization/connect_engine.cpp:1280
+#: src/game_initialization/connect_engine.cpp:999
+#: src/game_initialization/connect_engine.cpp:1297
 msgid "Computer Player"
 msgstr "рачунарски играч"
 
-#: src/game_initialization/connect_engine.cpp:1024
+#: src/game_initialization/connect_engine.cpp:1041
 msgid "$playername $side"
 msgstr "$playername ($side)"
 
-#: src/game_initialization/connect_engine.cpp:1276
+#: src/game_initialization/connect_engine.cpp:1293
 msgid "Network Player"
 msgstr "мрежни играч"
 
-#: src/game_initialization/connect_engine.cpp:1279
+#: src/game_initialization/connect_engine.cpp:1296
 msgid "Local Player"
 msgstr "локални играч"
 
-#: src/game_initialization/connect_engine.cpp:1281
+#: src/game_initialization/connect_engine.cpp:1298
 msgid "Empty"
 msgstr "празно"
 
-#: src/game_initialization/connect_engine.cpp:1284
+#: src/game_initialization/connect_engine.cpp:1301
 msgid "Reserved"
 msgstr "резервисано"
 
@@ -6018,7 +6030,7 @@ msgstr "непознат сценарио"
 msgid "Reloaded game"
 msgstr "учитана позиција"
 
-#: src/game_initialization/lobby_data.cpp:433 src/savegame.cpp:634
+#: src/game_initialization/lobby_data.cpp:433 src/savegame.cpp:630
 msgid "Turn"
 msgstr "потез"
 
@@ -6069,7 +6081,7 @@ msgstr "Сервер захтијева верзију '$version1', док је 
 msgid "Server-side redirect loop"
 msgstr "Петља преусмјеравања на страни сервера"
 
-#: src/game_initialization/multiplayer.cpp:207
+#: src/game_initialization/multiplayer.cpp:217
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6079,27 +6091,27 @@ msgstr ""
 "док не активирате свој налог, преко е-поште или захтевом администратору да "
 "то уради за вас."
 
-#: src/game_initialization/multiplayer.cpp:216
+#: src/game_initialization/multiplayer.cpp:226
 msgid "Do you want to continue?"
 msgstr "Желите ли да наставите?"
 
-#: src/game_initialization/multiplayer.cpp:218
+#: src/game_initialization/multiplayer.cpp:228
 msgid "Warning"
 msgstr "Упозорење"
 
-#: src/game_initialization/multiplayer.cpp:260
+#: src/game_initialization/multiplayer.cpp:270
 msgid "Bad data received from server"
 msgstr "Лоши подаци примљени са сервера"
 
-#: src/game_initialization/multiplayer.cpp:297
+#: src/game_initialization/multiplayer.cpp:307
 msgid "You must login first."
 msgstr "Морате се прво пријавити."
 
-#: src/game_initialization/multiplayer.cpp:299
+#: src/game_initialization/multiplayer.cpp:309
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Надимак „$nick“ већ је заузет."
 
-#: src/game_initialization/multiplayer.cpp:301
+#: src/game_initialization/multiplayer.cpp:311
 #, fuzzy
 #| msgid ""
 #| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
@@ -6111,28 +6123,28 @@ msgstr ""
 "Надимак „$nick“ садржи лоше знакове. Дозвољена су само слова, бројеви, "
 "подвлаке и цртице."
 
-#: src/game_initialization/multiplayer.cpp:305
+#: src/game_initialization/multiplayer.cpp:315
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "Надимак „$nick“ је предугачак. Не може имати више од 20 знакова."
 
-#: src/game_initialization/multiplayer.cpp:308
+#: src/game_initialization/multiplayer.cpp:318
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr "Надимак „$nick“ је резервисан и играчи га не могу узети."
 
-#: src/game_initialization/multiplayer.cpp:310
+#: src/game_initialization/multiplayer.cpp:320
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Надимак „$nick“ није регистрован на овом серверу."
 
-#: src/game_initialization/multiplayer.cpp:311
+#: src/game_initialization/multiplayer.cpp:321
 msgid " This server disallows unregistered nicknames."
 msgstr " Овај сервер не дозвољава нерегистроване надимке."
 
-#: src/game_initialization/multiplayer.cpp:313
-#: src/game_initialization/multiplayer.cpp:315
+#: src/game_initialization/multiplayer.cpp:323
+#: src/game_initialization/multiplayer.cpp:325
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Надимак „$nick“ регистрован је на овом серверу."
 
-#: src/game_initialization/multiplayer.cpp:316
+#: src/game_initialization/multiplayer.cpp:326
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6140,16 +6152,16 @@ msgstr ""
 "УПОЗОРЕЊЕ: Један клијент већ има овај надимак, пријављивањем ћете га "
 "избацити!"
 
-#: src/game_initialization/multiplayer.cpp:319
+#: src/game_initialization/multiplayer.cpp:329
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
 msgstr "Грешка у поступку пријављивања (сервер нема семе за вашу везу)."
 
-#: src/game_initialization/multiplayer.cpp:322
+#: src/game_initialization/multiplayer.cpp:332
 msgid "The password you provided was incorrect."
 msgstr "Дали сте неисправну лозинку."
 
-#: src/game_initialization/multiplayer.cpp:324
+#: src/game_initialization/multiplayer.cpp:334
 msgid "You have made too many login attempts."
 msgstr "Превише пута сте покушали да се пријавите."
 
@@ -6316,8 +6328,8 @@ msgid "The file you have tried to load is corrupt"
 msgstr "Датотека коју сте покушали да отворите искварена је"
 
 #: src/game_launcher.cpp:646 src/game_launcher.cpp:664
-#: src/hotkey/hotkey_handler_sp.cpp:312 src/savegame.cpp:147
-#: src/savegame.cpp:292
+#: src/hotkey/hotkey_handler_sp.cpp:312 src/savegame.cpp:145
+#: src/savegame.cpp:290
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Датотека коју сте покушали да учитате искварена је: '"
 
@@ -6360,11 +6372,11 @@ msgstr ""
 #| "The selected add-on has the following dependencies. Do you want to "
 #| "install them?"
 msgid ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
+"The selected add-on has the following dependency, which is outdated or not "
+"currently installed. Do you wish to install it before continuing?"
 msgid_plural ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
+"The selected add-on has the following dependencies, which are outdated or "
+"not currently installed. Do you wish to install them before continuing?"
 msgstr[0] ""
 "Изабрани додатак има следеће зависности. Желите ли да их инсталирате?"
 msgstr[1] ""
@@ -6720,7 +6732,7 @@ msgstr "Верзија: "
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:66
+#: src/hotkey/command_executor.cpp:68
 msgid ""
 "Screenshot creation failed.\n"
 "\n"
@@ -6728,11 +6740,21 @@ msgid ""
 "resource files and that file permissions are set up correctly."
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:567
+#: src/hotkey/command_executor.cpp:366
+#, fuzzy
+#| msgid "Do you really want to start the server?"
+msgid "Do you really want to surrender the game?"
+msgstr "Желите ли заиста да покренете сервер?"
+
+#: src/hotkey/command_executor.cpp:366
+msgid "Surrender"
+msgstr ""
+
+#: src/hotkey/command_executor.cpp:580
 msgid "Screenshot"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:710
+#: src/hotkey/command_executor.cpp:723
 msgid "Map-Screenshot"
 msgstr ""
 
@@ -6750,18 +6772,13 @@ msgstr ""
 msgid "Accelerated speed disabled!"
 msgstr ""
 
-#: src/hotkey/hotkey_handler.cpp:390 src/save_index.cpp:335 src/savegame.cpp:70
-#: src/savegame.cpp:593 src/savegame.cpp:595
-msgid "Auto-Save"
-msgstr "Аутопозиција"
-
-#: src/hotkey/hotkey_handler.cpp:394
+#: src/hotkey/hotkey_handler.cpp:408
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Turn "
 msgstr "Назад на потез "
 
-#: src/hotkey/hotkey_handler.cpp:400
+#: src/hotkey/hotkey_handler.cpp:414
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Start"
@@ -6773,11 +6790,11 @@ msgstr "Назад на потез "
 msgid "(press $hotkey to deactivate)"
 msgstr "(притисните $hotkey да продужи)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1933
+#: src/hotkey/hotkey_handler_sp.cpp:144 src/menu_events.cpp:1941
 msgid "Planning mode activated!"
 msgstr "Режим планирања активиран!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1936
+#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:1944
 msgid "Planning mode deactivated!"
 msgstr "Режим планирања деактивиран!"
 
@@ -6960,328 +6977,342 @@ msgstr "Преименуј јединицу"
 msgid "Name:"
 msgstr "Име: "
 
-#: src/menu_events.cpp:991
+#: src/menu_events.cpp:803
+#, fuzzy
+#| msgid "Clear all orders"
+msgid "Clear Labels"
+msgstr "Очисти сва наређења"
+
+#: src/menu_events.cpp:804
+#, fuzzy
+#| msgid "Are you sure you want to remove the following installed add-on?"
+#| msgid_plural ""
+#| "Are you sure you want to remove the following installed add-ons?"
+msgid "Are you sure you want to clear map labels?"
+msgstr "Желите ли заиста да уклоните следеће инсталиране додатке?"
+
+#: src/menu_events.cpp:999
 msgid "Search"
 msgstr "Тражи"
 
 # well-spelled: админ
-#: src/menu_events.cpp:1130
+#: src/menu_events.cpp:1138
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr "(D) — само исправљање, (N) — само мрежа, (A) — само админ"
 
-#: src/menu_events.cpp:1137
+#: src/menu_events.cpp:1145
 msgid "(debug command)"
 msgstr "(исправљачка наредба)"
 
-#: src/menu_events.cpp:1138
+#: src/menu_events.cpp:1146
 msgid "(network only)"
 msgstr "(само мрежа)"
 
-#: src/menu_events.cpp:1140
+#: src/menu_events.cpp:1148
 msgid "(not during other events)"
 msgstr ""
 
-#: src/menu_events.cpp:1168
+#: src/menu_events.cpp:1176
 msgid "Refresh gui."
 msgstr "Освјежава сучеље."
 
-#: src/menu_events.cpp:1169
+#: src/menu_events.cpp:1177
 msgid "Switch a side to/from AI control."
 msgstr "Даје или одузима управљање страном ВИ."
 
-#: src/menu_events.cpp:1170 src/menu_events.cpp:1172
+#: src/menu_events.cpp:1178 src/menu_events.cpp:1180
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<страна> [on/off]]"
 
-#: src/menu_events.cpp:1171
+#: src/menu_events.cpp:1179
 #, fuzzy
 #| msgid "Switch a side to/from AI control."
 msgid "Switch a side to/from idle state."
 msgstr "Даје или одузима управљање страном ВИ."
 
-#: src/menu_events.cpp:1175
+#: src/menu_events.cpp:1183
 msgid "<side> <nickname>"
 msgstr "<страна> <надимак>"
 
-#: src/menu_events.cpp:1175
+#: src/menu_events.cpp:1183
 msgid "Assign control of a side to a different player or observer."
 msgstr "Додјељује управљање страном другом играчу или посматрачу."
 
-#: src/menu_events.cpp:1176
+#: src/menu_events.cpp:1184
 msgid "Query the controller status of a side."
 msgstr ""
 
-#: src/menu_events.cpp:1177
+#: src/menu_events.cpp:1185
 msgid "<side>"
 msgstr ""
 
-#: src/menu_events.cpp:1178
+#: src/menu_events.cpp:1186
 msgid "Clear chat history."
 msgstr "Чисти историјат ћаскања."
 
-#: src/menu_events.cpp:1179
+#: src/menu_events.cpp:1187
 msgid "Debug foreground terrain."
 msgstr "Исправа предњи план терена."
 
-#: src/menu_events.cpp:1181
+#: src/menu_events.cpp:1189
 msgid "Debug layers from terrain under the mouse."
 msgstr "Исправља слојева терена под мишем."
 
-#: src/menu_events.cpp:1182
+#: src/menu_events.cpp:1190
 msgid "Show fps."
 msgstr "Приказује број кадрова у секунди."
 
-#: src/menu_events.cpp:1184
+#: src/menu_events.cpp:1192
 msgid "Save game."
 msgstr "Уписује позицију."
 
-#: src/menu_events.cpp:1186
+#: src/menu_events.cpp:1194
 msgid "Quit game."
 msgstr "Напушта игру."
 
-#: src/menu_events.cpp:1189
+#: src/menu_events.cpp:1197
 msgid "Save and quit."
 msgstr "Уписује и напушта."
 
-#: src/menu_events.cpp:1191
+#: src/menu_events.cpp:1199
 msgid "Ignore replay errors."
 msgstr "Игнорише грешке у снимку."
 
-#: src/menu_events.cpp:1192
+#: src/menu_events.cpp:1200
 msgid "Disable autosaves."
 msgstr "Искључује аутопозиције."
 
-#: src/menu_events.cpp:1194
+#: src/menu_events.cpp:1202
 msgid "<id>"
 msgstr "<ид>"
 
-#: src/menu_events.cpp:1194
+#: src/menu_events.cpp:1202
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Прелази на сљедећи сценарио, или онај са датим идентификатором."
 
-#: src/menu_events.cpp:1196
+#: src/menu_events.cpp:1204
 msgid "Choose next scenario"
 msgstr "Избор наредног сценарија."
 
-#: src/menu_events.cpp:1199
+#: src/menu_events.cpp:1207
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
 msgstr ""
 "Мења број потеза (и доба дана), или га повећава за један ако се број не зада."
 
-#: src/menu_events.cpp:1199
+#: src/menu_events.cpp:1207
 msgid "[turn]"
 msgstr "[потез]"
 
-#: src/menu_events.cpp:1202
+#: src/menu_events.cpp:1210
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
 "Мења ограничење потеза, или га искључује ако се не зада број или се зада −1."
 
-#: src/menu_events.cpp:1202
+#: src/menu_events.cpp:1210
 msgid "[limit]"
 msgstr "[ограничење]"
 
-#: src/menu_events.cpp:1204
+#: src/menu_events.cpp:1212
 msgid "Turn debug mode on."
 msgstr "Укључује исправљачки режим."
 
-#: src/menu_events.cpp:1205
+#: src/menu_events.cpp:1213
 msgid "Turn debug mode off."
 msgstr "Искључује исправљачки режим."
 
-#: src/menu_events.cpp:1207 src/menu_events.cpp:1211
+#: src/menu_events.cpp:1215 src/menu_events.cpp:1219
 msgid "<command>[;<command>...]"
 msgstr "<наредба>[;<наредба>...]"
 
-#: src/menu_events.cpp:1207
+#: src/menu_events.cpp:1215
 msgid "Execute a Lua statement."
 msgstr "Извршава луа исказ."
 
-#: src/menu_events.cpp:1209
+#: src/menu_events.cpp:1217
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Даје већа овлашћења луа скриптама."
 
-#: src/menu_events.cpp:1210
+#: src/menu_events.cpp:1218
 msgid "Set the command used by the custom command hotkey"
 msgstr "Поставља наредбу на пречицу посебне наредбе."
 
-#: src/menu_events.cpp:1213
+#: src/menu_events.cpp:1221
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr "Позива дијалог за промену управљања над вишеиграчким странама."
 
-#: src/menu_events.cpp:1214
+#: src/menu_events.cpp:1222
 msgid "Launch the gamestate inspector"
 msgstr "Покреће испитивач стања игре."
 
-#: src/menu_events.cpp:1216
+#: src/menu_events.cpp:1224
 msgid "<name>[=<command>]"
 msgstr "<име>[=<наредба>]"
 
-#: src/menu_events.cpp:1216
+#: src/menu_events.cpp:1224
 msgid "Set or show alias to a command"
 msgstr "Поставља или приказује алијас наредбе."
 
-#: src/menu_events.cpp:1218
+#: src/menu_events.cpp:1226
 msgid "<var>=<value>"
 msgstr "<промјенљива>=<вриједност>"
 
-#: src/menu_events.cpp:1218
+#: src/menu_events.cpp:1226
 msgid "Set a scenario variable."
 msgstr "Поставља промјенљиву сценарија."
 
-#: src/menu_events.cpp:1219
+#: src/menu_events.cpp:1227
 msgid "<var>"
 msgstr "<промјенљива>"
 
-#: src/menu_events.cpp:1219
+#: src/menu_events.cpp:1227
 msgid "Show a scenario variable."
 msgstr "Приказује промјенљиву сценарија."
 
-#: src/menu_events.cpp:1221
+#: src/menu_events.cpp:1229
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 "Мијења промјенљиву јединице. (Подржани су само кључеви највишег нивоа.)"
 
-#: src/menu_events.cpp:1227
+#: src/menu_events.cpp:1235
 msgid "Discover all units in help."
 msgstr "Открива све јединице у помоћи."
 
 # well-spelled: Одоткрива
-#: src/menu_events.cpp:1228
+#: src/menu_events.cpp:1236
 msgid "'Undiscover' all units in help."
 msgstr "„Одоткрива“ све јединице у помоћи."
 
-#: src/menu_events.cpp:1229
+#: src/menu_events.cpp:1237
 msgid "Create a unit."
 msgstr "Ствара јединицу."
 
-#: src/menu_events.cpp:1230
+#: src/menu_events.cpp:1238
 msgid "Toggle fog for the current player."
 msgstr "Магла за текућег играча."
 
-#: src/menu_events.cpp:1231
+#: src/menu_events.cpp:1239
 msgid "Toggle shroud for the current player."
 msgstr "Са или без покрова за текућег играча."
 
-#: src/menu_events.cpp:1232
+#: src/menu_events.cpp:1240
 msgid "Give gold to the current player."
 msgstr "Даје злато текућем играчу."
 
-#: src/menu_events.cpp:1233
+#: src/menu_events.cpp:1241
 msgid "Fire a game event."
 msgstr "Окида догађај у игри."
 
-#: src/menu_events.cpp:1236
+#: src/menu_events.cpp:1244
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Преклапање x- и y-координата по пољима."
 
-#: src/menu_events.cpp:1239
+#: src/menu_events.cpp:1247
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Преклапање теренских кодова по пољима."
 
-#: src/menu_events.cpp:1242
+#: src/menu_events.cpp:1250
 #, fuzzy
 #| msgid "Toggle overlaying of terrain codes on hexes."
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "Преклапање теренских кодова по пољима."
 
-#: src/menu_events.cpp:1244
+#: src/menu_events.cpp:1252
 msgid "Toggle planning mode."
 msgstr "Режим планирања."
 
-#: src/menu_events.cpp:1247
+#: src/menu_events.cpp:1255
 msgid "Access whiteboard options dialog."
 msgstr "Приступ дијалогу опција блокчета."
 
-#: src/menu_events.cpp:1367
+#: src/menu_events.cpp:1375
 #, fuzzy
 #| msgid "Couldn't find label or unit containing the string '$search'."
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "Не могу да нађем етикету или јединицу која садржи ‘$search|’."
 
 # well-spelled: дроидовати
-#: src/menu_events.cpp:1410
+#: src/menu_events.cpp:1418
 msgid "Can't droid invalid side: '$side'."
 msgstr "Не може се дроидовати лоша страна: ‘$side|’."
 
 # well-spelled: дроидовати
-#: src/menu_events.cpp:1415
+#: src/menu_events.cpp:1423
 msgid "Can't droid networked side: '$side'."
 msgstr "Не може се дроидовати умрежена страна: ‘$side|’."
 
 # well-spelled: дроидовати
-#: src/menu_events.cpp:1433
+#: src/menu_events.cpp:1441
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't droid a local ai side: '$side'."
 msgstr "Не може се дроидовати лоша страна: ‘$side|’."
 
 # well-spelled: дроидовати
-#: src/menu_events.cpp:1449
+#: src/menu_events.cpp:1457
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle invalid side: '$side'."
 msgstr "Не може се дроидовати лоша страна: ‘$side|’."
 
 # well-spelled: дроидовати
-#: src/menu_events.cpp:1454
+#: src/menu_events.cpp:1462
 #, fuzzy
 #| msgid "Can't droid networked side: '$side'."
 msgid "Can't idle networked side: '$side'."
 msgstr "Не може се дроидовати умрежена страна: ‘$side|’."
 
 # well-spelled: дроидовати
-#: src/menu_events.cpp:1459
+#: src/menu_events.cpp:1467
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle local ai side: '$side'."
 msgstr "Не може се дроидовати лоша страна: ‘$side|’."
 
-#: src/menu_events.cpp:1519
+#: src/menu_events.cpp:1527
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Не може се промијенити управљање над лошом страном: ‘$side|’."
 
-#: src/menu_events.cpp:1529
+#: src/menu_events.cpp:1537
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr "Не може се промијенити управљање над страном ван граница: ‘$side|’."
 
-#: src/menu_events.cpp:1546
+#: src/menu_events.cpp:1554
 #, fuzzy
 #| msgid "Can't change control of invalid side: '$side'."
 msgid "Can't query control of invalid side: '$side'."
 msgstr "Не може се промијенити управљање над лошом страном: ‘$side|’."
 
-#: src/menu_events.cpp:1553
+#: src/menu_events.cpp:1561
 #, fuzzy
 #| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "Не може се промијенити управљање над страном ван граница: ‘$side|’."
 
-#: src/menu_events.cpp:1671
+#: src/menu_events.cpp:1679
 msgid "Choose Scenario (Debug!)"
 msgstr "Избор сценарија (испр.!)"
 
-#: src/menu_events.cpp:1707
+#: src/menu_events.cpp:1715
 msgid "Debug mode activated!"
 msgstr "Исправљање активирано!"
 
-#: src/menu_events.cpp:1710
+#: src/menu_events.cpp:1718
 msgid "Debug mode not available in network games"
 msgstr "Исправљање није доступно у мрежним партијама."
 
-#: src/menu_events.cpp:1717
+#: src/menu_events.cpp:1725
 msgid "Debug mode deactivated!"
 msgstr "Исправљање деактивирано!"
 
-#: src/menu_events.cpp:1737
+#: src/menu_events.cpp:1745
 msgid "WARNING! Unsafe Lua Mode"
 msgstr ""
 
-#: src/menu_events.cpp:1738
+#: src/menu_events.cpp:1746
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7290,15 +7321,15 @@ msgid ""
 "Do not continue unless you really know what you are doing."
 msgstr ""
 
-#: src/menu_events.cpp:1743
+#: src/menu_events.cpp:1751
 msgid "Unsafe mode enabled!"
 msgstr "Укључен небезбиједан режим!"
 
-#: src/menu_events.cpp:1792
+#: src/menu_events.cpp:1800
 msgid "Variable not found"
 msgstr "Промјенљива није нађена"
 
-#: src/menu_events.cpp:1840
+#: src/menu_events.cpp:1848
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -7306,19 +7337,19 @@ msgstr ""
 "Лош аргумент: ‘$alignment’ мора бити једно од lawful, neutral, chaotic или "
 "liminal."
 
-#: src/menu_events.cpp:1866
+#: src/menu_events.cpp:1874
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "Желите ли да очистите све откривене јединице из помоћи?"
 
-#: src/menu_events.cpp:1880
+#: src/menu_events.cpp:1888
 msgid "Invalid unit type"
 msgstr "Лош тип јединице"
 
-#: src/menu_events.cpp:1887
+#: src/menu_events.cpp:1895
 msgid "Invalid location"
 msgstr "Лоша локација"
 
-#: src/menu_events.cpp:1960 src/menu_events.cpp:1986
+#: src/menu_events.cpp:1968 src/menu_events.cpp:1994
 msgid "prompt^Command:"
 msgstr "наредба:"
 
@@ -7497,17 +7528,17 @@ msgstr "Прекини игру"
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player напусти игру. Шта желите да учините?"
 
-#: src/quit_confirmation.cpp:56
+#: src/quit_confirmation.cpp:59
 msgid "Quit"
 msgstr "Напусти"
 
-#: src/quit_confirmation.cpp:62
+#: src/quit_confirmation.cpp:94
 #, fuzzy
 #| msgid "Do you really want to dismiss him?"
 msgid "Do you really want to quit?"
 msgstr "Желите ли заиста да га отпустите?"
 
-#: src/reports.cpp:145 src/savegame.cpp:402
+#: src/reports.cpp:145 src/savegame.cpp:398
 msgid "Name: "
 msgstr "Име: "
 
@@ -7816,25 +7847,30 @@ msgid "Turn Countdown"
 msgstr ""
 
 # >> Datetime format, see 'man strftime' for possible placeholders.
-#: src/save_index.cpp:233
+#: src/save_index.cpp:216
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %b %d %H.%M %Y"
 
-#: src/save_index.cpp:234
+#: src/save_index.cpp:217
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H.%M %Y"
 
-#: src/save_index.cpp:255 src/save_index.cpp:262
+#: src/save_index.cpp:238 src/save_index.cpp:245
 msgid " replay"
 msgstr " снимак"
 
-#: src/savegame.cpp:192 src/savegame.cpp:196
+#: src/save_index.cpp:311 src/savegame.cpp:68 src/savegame.cpp:593
+#: src/savegame.cpp:595
+msgid "Auto-Save"
+msgstr "Аутопозиција"
+
+#: src/savegame.cpp:190 src/savegame.cpp:194
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Упозорење: Датотека коју сте покушали да учитате искварена је. Свеједно "
 "учитавам.\n"
 
-#: src/savegame.cpp:243
+#: src/savegame.cpp:241
 #, fuzzy
 #| msgid "This save is from a version too old to be loaded."
 msgid ""
@@ -7842,7 +7878,7 @@ msgid ""
 "be loaded."
 msgstr "Ова позиција је сачувана престаром верзијом игре да би се учитала."
 
-#: src/savegame.cpp:251
+#: src/savegame.cpp:249
 #, fuzzy
 #| msgid ""
 #| "This save is from a different version of the game. Do you want to try to "
@@ -7854,50 +7890,50 @@ msgstr ""
 "Ова позиција је сачувана различитом верзијом игре. Желите ли да покушате "
 "учитавање?"
 
-#: src/savegame.cpp:254 src/savegame.cpp:298
+#: src/savegame.cpp:252 src/savegame.cpp:296
 msgid "Load Game"
 msgstr "Учитавање позиције"
 
-#: src/savegame.cpp:298
+#: src/savegame.cpp:296
 msgid "Replays are not supported in multiplayer mode."
 msgstr ""
 
-#: src/savegame.cpp:305
+#: src/savegame.cpp:303
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
 msgstr "Ово није вишеиграчка позиција"
 
-#: src/savegame.cpp:332
+#: src/savegame.cpp:330
 msgid "The game could not be saved: "
 msgstr "Не могу да сачувам позицију: "
 
-#: src/savegame.cpp:402
+#: src/savegame.cpp:398
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Позиција већ постоји. Желите ли да је пребришете?"
 
-#: src/savegame.cpp:403
+#: src/savegame.cpp:399
 msgid "Overwrite?"
 msgstr "Пребрисати?"
 
-#: src/savegame.cpp:411
+#: src/savegame.cpp:407
 #, fuzzy
 #| msgid "Save names should not end on '.gz'. Please choose a different name."
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr "Имена позиција не треба завршавати са ‘.gz’. Задајте другачије име."
 
-#: src/savegame.cpp:470
+#: src/savegame.cpp:468
 msgid "Saved"
 msgstr "Сачувано"
 
-#: src/savegame.cpp:470
+#: src/savegame.cpp:468
 #, fuzzy
 #| msgid "The game has been saved"
 msgid "The game has been saved."
 msgstr "Позиција је сачувана"
 
-#: src/savegame.cpp:500 src/savegame.cpp:520
+#: src/savegame.cpp:498 src/savegame.cpp:518
 msgid "Could not write to file"
 msgstr "Не могу да пишем у датотеку"
 
@@ -7914,11 +7950,11 @@ msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Не могу да сачувам позицију аутоматски. Покушајте да је сачувате ручно."
 
-#: src/savegame.cpp:627
+#: src/savegame.cpp:623
 msgid "Save Game"
 msgstr "Сачувај позицију"
 
-#: src/savegame.cpp:641
+#: src/savegame.cpp:637
 msgid "Game state is corrupted"
 msgstr ""
 
@@ -8070,7 +8106,7 @@ msgstr "Y"
 msgid "infix_binary^i"
 msgstr "i"
 
-#: src/synced_user_choice.cpp:328
+#: src/synced_user_choice.cpp:326
 msgid "waiting for $desc from side(s) $sides"
 msgstr ""
 
@@ -8086,11 +8122,11 @@ msgstr "противничко село"
 msgid "Owned village"
 msgstr "запосједнуто село"
 
-#: src/theme.cpp:308
+#: src/theme.cpp:310
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size треба да је између 0,0 и 0,5."
 
-#: src/theme.cpp:551 src/theme.cpp:556
+#: src/theme.cpp:553 src/theme.cpp:558
 msgid "Hotkey(s): "
 msgstr ""
 
@@ -8231,15 +8267,15 @@ msgstr "неутрална"
 msgid "female^liminal"
 msgstr "двојствена"
 
-#: src/units/unit.cpp:1774
+#: src/units/unit.cpp:1822
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1780
+#: src/units/unit.cpp:1828
 msgid "wesnoth"
 msgstr ""
 
-#: src/units/unit.cpp:1791
+#: src/units/unit.cpp:1839
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8249,25 +8285,25 @@ msgstr[1] "по потезу"
 msgstr[2] "по потезу"
 msgstr[3] "по потезу"
 
-#: src/units/unit.cpp:1797
+#: src/units/unit.cpp:1845
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "по потезу"
 
-#: src/units/unit.cpp:1801
+#: src/units/unit.cpp:1849
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "по потезу"
 
-#: src/units/unit.cpp:1806
+#: src/units/unit.cpp:1854
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "по потезу"
 
-#: src/units/unit.cpp:1810
+#: src/units/unit.cpp:1858
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8278,13 +8314,13 @@ msgstr[1] "по потезу"
 msgstr[2] "по потезу"
 msgstr[3] "по потезу"
 
-#: src/units/unit.cpp:1817
+#: src/units/unit.cpp:1865
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "по потезу"
 
-#: src/units/unit.cpp:2222
+#: src/units/unit.cpp:2270
 msgid "$effect_description per level"
 msgstr "$effect_description по нивоу"
 
@@ -9736,11 +9772,6 @@ msgstr "Опције блокчета"
 #~ msgstr "Напушта игру."
 
 #, fuzzy
-#~| msgid "Clear all orders"
-#~ msgid "Clear Labels"
-#~ msgstr "Очисти сва наређења"
-
-#, fuzzy
 #~| msgid "Save Replay"
 #~ msgid "Play Replay"
 #~ msgstr "Сачувај снимак"
@@ -10237,9 +10268,6 @@ msgstr "Опције блокчета"
 
 #~ msgid "Choose the add-on to download."
 #~ msgstr "Изаберите додатак за преузимање."
-
-#~ msgid "Do you really want to start the server?"
-#~ msgstr "Желите ли заиста да покренете сервер?"
 
 #~ msgid ""
 #~ "The server will run in a background process until all users have "

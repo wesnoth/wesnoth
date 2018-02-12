@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-04 19:39+0300\n"
+"POT-Creation-Date: 2018-02-12 20:01+0300\n"
 "PO-Revision-Date: 2017-05-23 11:05+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: wesnoth-es-trad-1_14@googlegroups.com\n"
@@ -3305,11 +3305,20 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:549
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Set or toggle player on side between human and AI player. The player/"
+#| "client who controls that side needs to issue this command. If no second "
+#| "parameter is supplied, toggle bewteen human and AI. If it is ‘on’, set an "
+#| "AI controller. If it is ‘off’ set a human controller. Defaults to the "
+#| "currently active side if no parameter is supplied.\n"
+#| "\n"
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
 "who controls that side needs to issue this command. If no second parameter "
-"is supplied, toggle bewteen human and AI. If it is ‘on’, set an AI "
+"is supplied, toggle between human and AI. If it is ‘on’, set an AI "
 "controller. If it is ‘off’ set a human controller. Defaults to the currently "
 "active side if no parameter is supplied.\n"
 "\n"
@@ -5123,23 +5132,38 @@ msgstr ""
 "reducción de 8 PV y sufren de un decremento de 1 punto en el movimiento y en "
 "ataques cuerpo a cuerpo."
 
+#: data/core/units.cfg:11
+msgid ""
+"Despite orcs' reliance on raw strength, few of their children are destined "
+"to grow to possess any. Goblins are, despite their appearance, born as "
+"siblings to the orcs and members of the same race. While other races usually "
+"bear children singly or in pairs, orcs will have large litters of children "
+"all at once, causing their populations to explode. Within any litter, there "
+"will be only one or two who grow to the strength of a \"true orc\", a few "
+"who are born slightly smaller and weaker, and the rest, often a full half of "
+"any litter, are much weaker and destined to be goblins. Almost as newborns "
+"the class system of orcish society is visible, with the weak put in their "
+"place by their stronger siblings. The stronger ones will routinely grab most "
+"of the food and thus grow stronger still, while their weaker siblings do not."
+msgstr ""
+
 #. [race]: id=bats
-#: data/core/units.cfg:43
+#: data/core/units.cfg:46
 msgid "race^Bat"
 msgstr "Murciélago"
 
 #. [race]: id=bats
-#: data/core/units.cfg:44
+#: data/core/units.cfg:47
 msgid "race+female^Bat"
 msgstr "Murciélago"
 
 #. [race]: id=bats
-#: data/core/units.cfg:45
+#: data/core/units.cfg:48
 msgid "race^Bats"
 msgstr "Murciélagos"
 
 #. [race]: id=bats
-#: data/core/units.cfg:46
+#: data/core/units.cfg:49
 msgid ""
 "Bats come in many shapes and sizes, and most are fairly harmless, feeding on "
 "insects and other small animals. The larger and more vicious breeds are "
@@ -5155,7 +5179,7 @@ msgstr ""
 "ocasionalmente domesticados) por aquellos que comparten su amor por la noche."
 
 #. [race]: id=drake
-#: data/core/units.cfg:55
+#: data/core/units.cfg:58
 msgid "race^Drake"
 msgstr "Draco"
 
@@ -5165,17 +5189,17 @@ msgstr "Draco"
 # Weird!
 # Draca sounds weird, yet, drakes' lore is a "work in progress".
 #. [race]: id=drake
-#: data/core/units.cfg:56
+#: data/core/units.cfg:59
 msgid "race+female^Drake"
 msgstr "Draconesa"
 
 #. [race]: id=drake
-#: data/core/units.cfg:57
+#: data/core/units.cfg:60
 msgid "race^Drakes"
 msgstr "Dracos"
 
 #. [race]: id=drake
-#: data/core/units.cfg:58
+#: data/core/units.cfg:61
 #, fuzzy
 #| msgid ""
 #| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
@@ -5380,22 +5404,22 @@ msgstr ""
 "lejanas montañas al norte del gran continente."
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:91
+#: data/core/units.cfg:94
 msgid "race^Dwarf"
 msgstr "Enano"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:92
+#: data/core/units.cfg:95
 msgid "race+female^Dwarf"
 msgstr "Enana"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:93
+#: data/core/units.cfg:96
 msgid "race^Dwarves"
 msgstr "Enanos"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:94
+#: data/core/units.cfg:97
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -5494,22 +5518,22 @@ msgstr ""
 "su naturaleza."
 
 #. [race]: id=elf
-#: data/core/units.cfg:111
+#: data/core/units.cfg:114
 msgid "race^Elf"
 msgstr "Elfo"
 
 #. [race]: id=elf
-#: data/core/units.cfg:112
+#: data/core/units.cfg:115
 msgid "race+female^Elf"
 msgstr "Elfa"
 
 #. [race]: id=elf
-#: data/core/units.cfg:113
+#: data/core/units.cfg:116
 msgid "race^Elves"
 msgstr "Elfos"
 
 #. [race]: id=elf
-#: data/core/units.cfg:115
+#: data/core/units.cfg:118
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -5586,55 +5610,70 @@ msgstr ""
 "con fiabilidad, pero indudablemente han estado allí más de un milenio."
 
 #. [race]: id=falcon, description=
-#: data/core/units.cfg:132
+#: data/core/units.cfg:135
 msgid "race^Falcon"
 msgstr "Halcón"
 
 #. [race]: id=falcon, description=
-#: data/core/units.cfg:133
+#: data/core/units.cfg:136
 msgid "race+female^Falcon"
 msgstr "Halcón"
 
 #. [race]: id=falcon, description=
-#: data/core/units.cfg:134
+#: data/core/units.cfg:137
 msgid "race^Falcons"
 msgstr "Halcones"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:145
+#: data/core/units.cfg:148
 msgid "race^Goblin"
 msgstr "Goblin"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:146
+#: data/core/units.cfg:149
 msgid "race+female^Goblin"
 msgstr "Goblin"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:147
+#: data/core/units.cfg:150
 msgid "race^Goblins"
 msgstr "Goblins"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:148
+#: data/core/units.cfg:151
+#, fuzzy
+#| msgid ""
+#| "Goblins are, despite their appearance, born as siblings to the orcs and "
+#| "members of the same race. While other races usually bear children singly "
+#| "or in pairs, orcs will have large litters of children all at once, "
+#| "causing their populations to explode rather quickly. Within any litter, "
+#| "there will only be one or two true orcs, who will grow to the full size "
+#| "and strength of their race. A few more will be half-orcs, notably weaker "
+#| "than their big brothers, and relegated to supporting roles in combat, "
+#| "such as archery. The rest, often a full half of more of any litter, will "
+#| "be goblins. Goblins are puny and quite frail, rarely growing past the "
+#| "size and stature of a human child. Goblins are born into a lifetime of "
+#| "near-slavery to their larger kin, and used as sword-fodder in battle. "
+#| "They thrive in spite of their tragic fate; in part because they are so "
+#| "very numerous, and also because their brother orcs are well aware how "
+#| "dependent they are on the goblins.\n"
+#| "\n"
+#| "Goblins perform the bulk of manual labor needed by the orcs, with the "
+#| "sole exception of jobs that require the brute strength of true orcs. "
+#| "Those the orcs revel in as proof of their prowess."
 msgid ""
-"Goblins are, despite their appearance, born as siblings to the orcs and "
-"members of the same race. While other races usually bear children singly or "
-"in pairs, orcs will have large litters of children all at once, causing "
-"their populations to explode rather quickly. Within any litter, there will "
-"only be one or two true orcs, who will grow to the full size and strength of "
-"their race. A few more will be half-orcs, notably weaker than their big "
-"brothers, and relegated to supporting roles in combat, such as archery. The "
-"rest, often a full half of more of any litter, will be goblins. Goblins are "
-"puny and quite frail, rarely growing past the size and stature of a human "
-"child. Goblins are born into a lifetime of near-slavery to their larger kin, "
-"and used as sword-fodder in battle. They thrive in spite of their tragic "
-"fate; in part because they are so very numerous, and also because their "
-"brother orcs are well aware how dependent they are on the goblins.\n"
 "\n"
-"Goblins perform the bulk of manual labor needed by the orcs, with the sole "
-"exception of jobs that require the brute strength of true orcs. Those the "
-"orcs revel in as proof of their prowess."
+"\n"
+"Goblins are puny and quite frail, rarely growing past the size and stature "
+"of a human child.\n"
+"\n"
+"Goblins are born into a lifetime of near-slavery to their larger kin, and "
+"used as sword-fodder in battle. They thrive in spite of their tragic fate; "
+"in part because they are so very numerous, and also because their brother "
+"orcs are well aware how dependent they are on the goblins. They perform the "
+"bulk of manual labor needed by the orcs, with the sole exception of jobs "
+"that require the brute strength of true orcs. Those the orcs revel in as "
+"proof of their prowess."
 msgstr ""
 "Los goblins han nacido, a pesar de su apariencia, como hermanos de los orcos "
 "y son miembros de la misma raza. Mientras que otras razas tienen a sus hijos "
@@ -5657,7 +5696,7 @@ msgstr ""
 "hazaña."
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:163
+#: data/core/units.cfg:168
 msgid "race^Gryphon"
 msgstr "Grifo"
 
@@ -5665,17 +5704,17 @@ msgstr "Grifo"
 # Weird!
 # Myths do not really specify wether this creatures have gender or if it is diferentiated...
 #. [race]: id=gryphon
-#: data/core/units.cfg:164
+#: data/core/units.cfg:169
 msgid "race+female^Gryphon"
 msgstr "Grifo hembra"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:165
+#: data/core/units.cfg:170
 msgid "race^Gryphons"
 msgstr "Grifos"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:166
+#: data/core/units.cfg:171
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -5696,22 +5735,22 @@ msgstr ""
 "sus orígenes."
 
 #. [race]: id=human
-#: data/core/units.cfg:184
+#: data/core/units.cfg:189
 msgid "race^Human"
 msgstr "Humano"
 
 #. [race]: id=human
-#: data/core/units.cfg:185
+#: data/core/units.cfg:190
 msgid "race+female^Human"
 msgstr "Humana"
 
 #. [race]: id=human
-#: data/core/units.cfg:186
+#: data/core/units.cfg:191
 msgid "race^Humans"
 msgstr "Humanos"
 
 #. [race]: id=human
-#: data/core/units.cfg:187
+#: data/core/units.cfg:192
 #, fuzzy
 #| msgid ""
 #| "The race of men is an extremely diverse one. Although they originally "
@@ -5837,7 +5876,7 @@ msgstr ""
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:203 data/core/units.cfg:218
+#: data/core/units.cfg:208 data/core/units.cfg:223
 #, fuzzy
 #| msgid "race^Human"
 msgid "race^Dunefolk Human"
@@ -5845,7 +5884,7 @@ msgstr "Humano"
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:204 data/core/units.cfg:219
+#: data/core/units.cfg:209 data/core/units.cfg:224
 #, fuzzy
 #| msgid "race+female^Human"
 msgid "race+female^Dunefolk Human"
@@ -5853,45 +5892,51 @@ msgstr "Humana"
 
 #. [race]: id=dunefolk
 #. [race]: id=khalifate
-#: data/core/units.cfg:205 data/core/units.cfg:220
+#: data/core/units.cfg:210 data/core/units.cfg:225
 #, fuzzy
 #| msgid "race+plural^Undead"
 msgid "race+plural^Dunefolk"
 msgstr "No muertos"
 
 #. [race]: id=dunefolk
+#: data/core/units.cfg:211
+msgid ""
+"The Dunefolk are a human culture inhabiting the dry deserts in the southern "
+"region of the Great Continent."
+msgstr ""
+
 #. [race]: id=khalifate
-#: data/core/units.cfg:206 data/core/units.cfg:221
+#: data/core/units.cfg:226
 msgid "This race does not have a description yet."
 msgstr "Esta raza aún no tiene descripción."
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:232
+#: data/core/units.cfg:237
 msgid "race^Saurian"
 msgstr "Saurio"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:233
+#: data/core/units.cfg:238
 msgid "race+female^Saurian"
 msgstr "Sauria"
 
 #. [race]: id=lizard, description=
-#: data/core/units.cfg:234
+#: data/core/units.cfg:239
 msgid "race^Saurians"
 msgstr "Saurios"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:244
+#: data/core/units.cfg:249
 msgid "race^Mechanical"
 msgstr "Mecánico"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:245
+#: data/core/units.cfg:250
 msgid "race+plural^Mechanical"
 msgstr "Mecánicos"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:246
+#: data/core/units.cfg:251
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -5904,22 +5949,22 @@ msgstr ""
 "si solos, pero algunos lo hacen como resultado de un encantamiento mágico."
 
 #. [race]: id=merman
-#: data/core/units.cfg:255
+#: data/core/units.cfg:260
 msgid "race^Merman"
 msgstr "Sirénido"
 
 #. [race]: id=merman
-#: data/core/units.cfg:256
+#: data/core/units.cfg:261
 msgid "race^Mermaid"
 msgstr "Sirénida"
 
 #. [race]: id=merman
-#: data/core/units.cfg:257
+#: data/core/units.cfg:262
 msgid "race^Mermen"
 msgstr "Sirénidos"
 
 #. [race]: id=merman
-#: data/core/units.cfg:259
+#: data/core/units.cfg:264
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -5944,22 +5989,22 @@ msgstr ""
 "accidentado o boscoso."
 
 #. [race]: id=monster
-#: data/core/units.cfg:267
+#: data/core/units.cfg:272
 msgid "race^Monster"
 msgstr "Monstruo"
 
 #. [race]: id=monster
-#: data/core/units.cfg:268
+#: data/core/units.cfg:273
 msgid "race+female^Monster"
 msgstr "Monstruo"
 
 #. [race]: id=monster
-#: data/core/units.cfg:269
+#: data/core/units.cfg:274
 msgid "race^Monsters"
 msgstr "Monstruos"
 
 #. [race]: id=monster
-#: data/core/units.cfg:270
+#: data/core/units.cfg:275
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -5970,22 +6015,22 @@ msgstr ""
 "menudo en los cuentos y en las pesadillas de sus vecinos."
 
 #. [race]: id=naga
-#: data/core/units.cfg:277
+#: data/core/units.cfg:282
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:278
+#: data/core/units.cfg:283
 msgid "race^Nagini"
 msgstr "Nagini"
 
 #. [race]: id=naga
-#: data/core/units.cfg:279
+#: data/core/units.cfg:284
 msgid "race^Nagas"
 msgstr "Nagas"
 
 #. [race]: id=naga
-#: data/core/units.cfg:280
+#: data/core/units.cfg:285
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -6017,23 +6062,23 @@ msgstr ""
 "prefieren los ríos y los pantanos tanto como el mar abierto."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:288
+#: data/core/units.cfg:293
 msgid "race^Ogre"
 msgstr "Ogro"
 
 # Hum, weird, yet less weird than others...
 #. [race]: id=ogre
-#: data/core/units.cfg:289
+#: data/core/units.cfg:294
 msgid "race+female^Ogre"
 msgstr "Ogresa"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:290
+#: data/core/units.cfg:295
 msgid "race^Ogres"
 msgstr "Ogros"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:291
+#: data/core/units.cfg:296
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -6067,7 +6112,7 @@ msgstr ""
 "cooperación, domesticación o simplemente oportunismo mutuo."
 
 #. [race]: id=orc
-#: data/core/units.cfg:299
+#: data/core/units.cfg:304
 msgid "race^Orc"
 msgstr "Orco"
 
@@ -6075,24 +6120,83 @@ msgstr "Orco"
 # Perseo-> "Las orcas no son tan grandes, mujer orco, como en el de los otros"
 # Humm! Las orcas, esos animales marinos tan grandes... Realmente da lugar a confusión...
 #. [race]: id=orc
-#: data/core/units.cfg:300
+#: data/core/units.cfg:305
 msgid "race+female^Orc"
 msgstr "Orca"
 
 #. [race]: id=orc
-#: data/core/units.cfg:301
+#: data/core/units.cfg:306
 msgid "race^Orcs"
 msgstr "Orcos"
 
 #. [race]: id=orc
-#: data/core/units.cfg:302
+#: data/core/units.cfg:307
+#, fuzzy
+#| msgid ""
+#| "In appearance, orcs are half men and half beasts. They are taller, "
+#| "sturdier and stronger than humans. They are warlike, savage, and cruel by "
+#| "nature. Their blood is darker and thicker than that of normal humans and "
+#| "they have little care for personal hygiene or their personal appearance. "
+#| "Although Orcs are violent even among themselves, they are pack-oriented; "
+#| "an orc never travels long or lives in groups smaller than half a dozen.\n"
+#| "\n"
+#| "<header>text='Society'</header>\n"
+#| "Almost every orc is a member of a tribe or a clan. Relations between "
+#| "neighboring tribes are usually violent, except in cases of a mutual enemy "
+#| "threatens their existence or prospects of great plunder override mutual "
+#| "animosity. Occasionally, a single strong chieftain may emerge to lead "
+#| "multiple tribes from time to time, usually through intimidation of "
+#| "followers. An orc tribe in times of peace tends to focus almost solely on "
+#| "strengthening itself in preparation for the next armed conflict. Orcs are "
+#| "known to possess a crude system of writing — usually in blood — although "
+#| "it’s most commonly used to trade insults or threats among tribal "
+#| "leaders.\n"
+#| "\n"
+#| "Orc societies are based on little else but strength; might makes right, "
+#| "and a leader leads and survives only as long as no one manages to wrest "
+#| "the title from him. A constant struggle for power simmers among potential "
+#| "tribal chiefs. An orcish leader rarely lives more than a handful of years "
+#| "to enjoy his absolute authority before being killed for his position — "
+#| "although history knows some notable exceptions. Orcs hold no particular "
+#| "honor code and while indisputable raw strength is usually the preferred "
+#| "method of displaying power, assassination, poisoning and backstabbing are "
+#| "completely viable means to further one’s own goals.\n"
+#| "\n"
+#| "Orcs mostly live in rural areas, often in foothills or mountainous "
+#| "regions, sometimes in caves. They grow no crops nor keep livestock, but "
+#| "are competent hunters as a result of their physical stature and "
+#| "brutality. Due to their large numbers they are capable of hunting an area "
+#| "virtually clean of anything larger than rodents in relatively short "
+#| "period of time. Due to this and their unstable leadership, orcish tribes "
+#| "tend to lead a semi-nomadic lifestyle, never settling in one region for "
+#| "too long. The larger tribes may establish themselves firmly in an area "
+#| "for years or even decades and build large encampments almost resembling "
+#| "cities, but even these are easily dismantled and abandoned if there is a "
+#| "need to relocate the horde.\n"
+#| "\n"
+#| "The oldest known orcs have been around 50 to 60 years of age, but very "
+#| "few individuals ever live to see over two or three decades before meeting "
+#| "their end either in war or by the hand of one of their kin. The oldest "
+#| "orcs are often shamans, which are perhaps the only ones most of their "
+#| "kind sees as being trustworthy and neutral. The origins of this custom "
+#| "are unknown, as the shamans do not directly contribute much to orcish "
+#| "societies but only act as advisors — not something orcs tend to otherwise "
+#| "tolerate. Shamans are in many ways the opposite of most other orcs: they "
+#| "are often physically withered and frail in comparison and lack skill in "
+#| "battle. Despite their reliance on raw strength, not nearly all orcs are "
+#| "destined to grow to possess any. Many orcs are born smaller and weaker "
+#| "than the rest, and already almost as newborns are put in their place by "
+#| "their stronger siblings. The stronger ones will routinely grab most of "
+#| "the food and thus grow stronger still, while their weaker siblings do "
+#| "not. Many of these individuals tend to specialize in other skills, like "
+#| "archery or assassination."
 msgid ""
-"In appearance, orcs are half men and half beasts. They are taller, sturdier "
-"and stronger than humans. They are warlike, savage, and cruel by nature. "
-"Their blood is darker and thicker than that of normal humans and they have "
-"little care for personal hygiene or their personal appearance. Although Orcs "
-"are violent even among themselves, they are pack-oriented; an orc never "
-"travels long or lives in groups smaller than half a dozen.\n"
+"In appearance, orcs resemble humans but with some bestial features. They are "
+"taller, sturdier and stronger than humans. They are warlike, savage, and "
+"cruel by nature. Their blood is darker and thicker than that of humans, and "
+"they have little care for personal hygiene or their personal appearance. "
+"Although Orcs are violent even among themselves, they are pack-oriented; an "
+"orc never travels alone or lives in groups smaller than half a dozen.\n"
 "\n"
 "<header>text='Society'</header>\n"
 "Almost every orc is a member of a tribe or a clan. Relations between "
@@ -6134,14 +6238,8 @@ msgid ""
 "the shamans do not directly contribute much to orcish societies but only act "
 "as advisors — not something orcs tend to otherwise tolerate. Shamans are in "
 "many ways the opposite of most other orcs: they are often physically "
-"withered and frail in comparison and lack skill in battle. Despite their "
-"reliance on raw strength, not nearly all orcs are destined to grow to "
-"possess any. Many orcs are born smaller and weaker than the rest, and "
-"already almost as newborns are put in their place by their stronger "
-"siblings. The stronger ones will routinely grab most of the food and thus "
-"grow stronger still, while their weaker siblings do not. Many of these "
-"individuals tend to specialize in other skills, like archery or "
-"assassination."
+"withered and frail in comparison and lack skill in battle.\n"
+"\n"
 msgstr ""
 "En apariencia, los orcos son mitad hombres y mitad bestias. Son más altos, "
 "más fuertes y resistentes que los humanos. Son belicosos, salvajes y crueles "
@@ -6206,23 +6304,32 @@ msgstr ""
 "no lo hacen. Muchas de estos individuos tienden a especializarse en otras "
 "competencias, como el tiro con arco o el asesinato."
 
-#. [race]: id=troll
+#. [race]: id=orc
 #: data/core/units.cfg:318
+msgid ""
+"\n"
+"\n"
+"Orcs who were not the strongest of their litter tend to specialize in other "
+"skills, like archery or assassination."
+msgstr ""
+
+#. [race]: id=troll
+#: data/core/units.cfg:327
 msgid "race^Troll"
 msgstr "Trol"
 
 #. [race]: id=troll
-#: data/core/units.cfg:319
+#: data/core/units.cfg:328
 msgid "race+female^Troll"
 msgstr "Trol"
 
 #. [race]: id=troll
-#: data/core/units.cfg:320
+#: data/core/units.cfg:329
 msgid "race^Trolls"
 msgstr "Troles"
 
 #. [race]: id=troll
-#: data/core/units.cfg:321
+#: data/core/units.cfg:330
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple-minded, and live extremely "
@@ -6299,22 +6406,22 @@ msgstr ""
 "orcas."
 
 #. [race]: id=undead
-#: data/core/units.cfg:341
+#: data/core/units.cfg:350
 msgid "race^Undead"
 msgstr "No muerto"
 
 #. [race]: id=undead
-#: data/core/units.cfg:342
+#: data/core/units.cfg:351
 msgid "race+female^Undead"
 msgstr "No muerta"
 
 #. [race]: id=undead
-#: data/core/units.cfg:343
+#: data/core/units.cfg:352
 msgid "race+plural^Undead"
 msgstr "No muertos"
 
 #. [race]: id=undead
-#: data/core/units.cfg:344
+#: data/core/units.cfg:353
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Almost any dead creature can, by a sufficiently skilled necromancer, "
@@ -6369,33 +6476,33 @@ msgstr ""
 "desconocidos por elfos y enanos antes de tal acontecimiento."
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:357
+#: data/core/units.cfg:366
 msgid "race^Wolf"
 msgstr "Lobo"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:358
+#: data/core/units.cfg:367
 msgid "race+female^Wolf"
 msgstr "Loba"
 
 #. [race]: id=wolf, description=
-#: data/core/units.cfg:359
+#: data/core/units.cfg:368
 msgid "race^Wolves"
 msgstr "Lobos"
 
 #. [race]: id=wose
-#: data/core/units.cfg:369
+#: data/core/units.cfg:378
 msgid "race^Wose"
 msgstr "Wose"
 
 #. [race]: id=wose
-#: data/core/units.cfg:370
+#: data/core/units.cfg:379
 msgid "race^Woses"
 msgstr "Woses"
 
 # En español no se usa faerie para la magia de este tipo: celtas, druidas, hadas, etc. No existe un equivalente: digamos que vendría a ser un poder místico o algo así.
 #. [race]: id=wose
-#: data/core/units.cfg:371
+#: data/core/units.cfg:380
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "

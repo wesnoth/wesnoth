@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2017-09-21 20:27 UTC\n"
+"POT-Creation-Date: 2018-02-12 17:01 UTC\n"
 "PO-Revision-Date: 2009-10-12 18:45-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -66,51 +66,82 @@ msgstr "𐑿 𐑥𐑳𐑕𐑑 𐑕𐑻𐑝𐑲𐑝 𐑳𐑯𐑑𐑦𐑤 𐑑𐑻
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:71
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:85
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:99
-msgid "teamname^Team 1"
+#, fuzzy
+#| msgid "teamname^Team 1"
+msgid "teamname^Settlers"
 msgstr "𐑑𐑰𐑥 1"
 
 #. [side]: type=Death Knight
 #. [side]: type=Orcish Sovereign
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:116
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:145
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:174
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:203
-msgid "teamname^Team 2"
-msgstr "𐑑𐑰𐑥 2"
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:117
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:148
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:179
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:210
+#, fuzzy
+#| msgid "teamname^Team 1"
+msgid "teamname^Enemies"
+msgstr "𐑑𐑰𐑥 1"
+
+#. [side]: type=Death Knight
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:126
+msgid "Mal Sevu"
+msgstr ""
+
+#. [side]: type=Orcish Sovereign
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:157
+msgid "Gol Goroth"
+msgstr ""
+
+#. [side]: type=Orcish Sovereign
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:188
+msgid "Greg"
+msgstr ""
+
+#. [side]: type=Death Knight
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:219
+msgid "Mal Shiki"
+msgstr ""
+
+#. [side]
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:245
+#, fuzzy
+#| msgid "teamname^Team 1"
+msgid "teamname^Prisoners"
+msgstr "𐑑𐑰𐑥 1"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:416
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:426
 msgid ""
 "You destroy the mushroom mine. The northwest undead now have 10 less income."
 msgstr "𐑿 𐑛𐑩𐑕𐑑𐑮𐑶 𐑞 𐑥𐑳𐑖𐑮𐑵𐑥 𐑥𐑲𐑯. 𐑞 𐑯𐑹𐑔𐑢𐑧𐑕𐑑 𐑳𐑯𐑛𐑧𐑛 𐑯𐑬 𐑣𐑨𐑝 10 𐑤𐑧𐑕 𐑦𐑯𐑒𐑳𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:439
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:449
 msgid ""
 "You destroy the mushroom mine. The northeast orcs now have 10 less income."
 msgstr "𐑿 𐑛𐑩𐑕𐑑𐑮𐑶 𐑞 𐑥𐑳𐑖𐑮𐑵𐑥 𐑥𐑲𐑯. 𐑞 𐑯𐑹𐑔𐑰𐑕𐑑 𐑹𐑒𐑕 𐑯𐑬 𐑣𐑨𐑝 10 𐑤𐑧𐑕 𐑦𐑯𐑒𐑳𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:462
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:472
 msgid ""
 "You destroy the mushroom mine. The southwest orcs now have 10 less income."
 msgstr "𐑿 𐑛𐑩𐑕𐑑𐑮𐑶 𐑞 𐑥𐑳𐑖𐑮𐑵𐑥 𐑥𐑲𐑯. 𐑞 𐑕𐑬𐑔𐑢𐑧𐑕𐑑 𐑹𐑒𐑕 𐑯𐑬 𐑣𐑨𐑝 10 𐑤𐑧𐑕 𐑦𐑯𐑒𐑳𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:485
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:495
 msgid ""
 "You destroy the mushroom mine. The southeast undead now have 10 less income."
 msgstr "𐑿 𐑛𐑩𐑕𐑑𐑮𐑶 𐑞 𐑥𐑳𐑖𐑮𐑵𐑥 𐑥𐑲𐑯. 𐑞 𐑕𐑬𐑔𐑰𐑕𐑑 𐑳𐑯𐑛𐑧𐑛 𐑯𐑬 𐑣𐑨𐑝 10 𐑤𐑧𐑕 𐑦𐑯𐑒𐑳𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:594
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:604
 msgid ""
 "One of your peasants has happened upon some spiders’ nests in the north and "
 "south."
 msgstr "𐑢𐑳𐑯 𐑝 𐑿𐑼 𐑐𐑧𐑟𐑩𐑯𐑑𐑕 𐑣𐑨𐑟 𐑣𐑨𐑐𐑩𐑯𐑛 𐑩𐑐𐑪𐑯 𐑕𐑳𐑥 𐑕𐑐𐑲𐑛𐑻𐑟 𐑯𐑧𐑕𐑑𐑕 𐑦𐑯 𐑞 𐑯𐑹𐑔 𐑯 𐑕𐑬𐑔."
 
 #. [message]: type=Peasant
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:600
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:610
 #, fuzzy
 #| msgid ""
 #| "I swear I saw somebody trapped in the spider’s web. Maybe we should "
@@ -121,7 +152,7 @@ msgid ""
 msgstr "𐑲 𐑕𐑢𐑺 𐑲 𐑕𐑷 𐑕𐑳𐑥𐑚𐑪𐑛𐑦 𐑑𐑮𐑨𐑐𐑑 𐑦𐑯 𐑞 𐑕𐑐𐑲𐑛𐑻𐑟 𐑢𐑧𐑚. 𐑥𐑱𐑚𐑰 𐑢𐑰 𐑖𐑫𐑛 𐑮𐑧𐑕𐑒𐑿 𐑞𐑧𐑥?"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:622
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:632
 msgid ""
 "Move any unit next to these captives and they will join your side. The "
 "spiders guarding each captive are currently wounded, the sooner you get "
@@ -131,13 +162,13 @@ msgstr ""
 "𐑒𐑨𐑐𐑑𐑦𐑝 𐑸 𐑒𐑳𐑮𐑩𐑯𐑑𐑤𐑦 𐑢𐑵𐑯𐑛𐑩𐑛, 𐑞 𐑕𐑵𐑯𐑼 𐑿 𐑜𐑧𐑑 𐑞𐑺 𐑞 𐑚𐑧𐑑𐑼 𐑗𐑭𐑯𐑕 𐑿 𐑣𐑨𐑝 𐑝 𐑒𐑦𐑤𐑦𐑙 𐑞𐑧𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:634
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:644
 msgid ""
 "Your men report strange sounds coming from some caves to the east and west."
 msgstr "𐑿𐑼 𐑥𐑧𐑯 𐑮𐑩𐑐𐑹𐑑 𐑕𐑑𐑮𐑱𐑯𐑡 𐑕𐑬𐑯𐑛𐑟 𐑒𐑳𐑥𐑦𐑙 𐑓𐑮𐑪𐑥 𐑕𐑳𐑥 𐑒𐑱𐑝𐑟 𐑑 𐑞 𐑰𐑕𐑑 𐑯 𐑢𐑧𐑕𐑑."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:640
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:650
 msgid ""
 "It would seem the enemy has built some underground mushroom mines nearby — "
 "it must be where the mainstay of their resources are produced. If we could "
@@ -148,7 +179,7 @@ msgstr ""
 "𐑕𐑴 𐑕𐑤𐑦𐑥."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:662
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:672
 msgid ""
 "Move any unit onto these villages to destroy the mine. Each one you destroy "
 "will reduce the enemy’s income by 10."
@@ -157,12 +188,12 @@ msgstr ""
 "𐑧𐑯𐑩𐑥𐑦'𐑟 𐑦𐑯𐑒𐑳𐑥 𐑚𐑲 10."
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:675
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:685
 msgid "This battle is nearly at an end. Victory is close at hand!"
 msgstr "𐑞𐑦𐑕 𐑚𐑨𐑑𐑩𐑤 𐑦𐑟 𐑯𐑽𐑤𐑦 𐑨𐑑 𐑩𐑯 𐑧𐑯𐑛. 𐑝𐑦𐑒𐑑𐑼𐑦 𐑦𐑟 𐑒𐑤𐑴𐑟 𐑨𐑑 𐑣𐑨𐑯𐑛!"
 
 #. [message]
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:687
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:697
 msgid ""
 "We have survived the onslaught! The tide of the battle has turned, victory "
 "cannot elude us now!"
@@ -170,27 +201,27 @@ msgstr ""
 "𐑢𐑰 𐑣𐑨𐑝 𐑕𐑻𐑝𐑲𐑝𐑛 𐑞 𐑪𐑯𐑕𐑤𐑪𐑑! 𐑞 𐑑𐑲𐑛 𐑝 𐑞 𐑚𐑨𐑑𐑩𐑤 𐑣𐑨𐑟 𐑑𐑻𐑯𐑛, 𐑝𐑦𐑒𐑑𐑼𐑦 𐑒𐑨𐑯𐑪𐑑 𐑦𐑤𐑵𐑛 𐑳𐑕 𐑯𐑬!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:691
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:701
 msgid "You have won the game, but you may continue if you wish..."
 msgstr "𐑿 𐑣𐑨𐑝 𐑢𐑳𐑯 𐑞 𐑜𐑱𐑥, 𐑚𐑳𐑑 𐑿 𐑥𐑱 𐑒𐑩𐑯𐑑𐑦𐑯𐑿 𐑦𐑓 𐑿 𐑢𐑦𐑖..."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:707
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:717
 msgid "I have fallen, but all is not lost!"
 msgstr "𐑲 𐑣𐑨𐑝 𐑓𐑷𐑤𐑩𐑯, 𐑚𐑳𐑑 𐑷𐑤 𐑦𐑟 𐑯𐑪𐑑 𐑤𐑪𐑕𐑑!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:720
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:730
 msgid "I am done for, but we have yet to lose this battle!"
 msgstr "𐑲 𐑨𐑥 𐑛𐑳𐑯 𐑓𐑹, 𐑚𐑳𐑑 𐑢𐑰 𐑣𐑨𐑝 𐑘𐑧𐑑 𐑑 𐑤𐑵𐑟 𐑞𐑦𐑕 𐑚𐑨𐑑𐑩𐑤!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:733
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:743
 msgid "Comrades, avenge me!"
 msgstr "𐑒𐑪𐑥𐑮𐑩𐑛𐑟, 𐑩𐑝𐑧𐑯𐑡 𐑥𐑰!"
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/4p_A_New_Land.cfg:746
+#: data/multiplayer/scenarios/4p_A_New_Land.cfg:756
 msgid "Do not fear, there is hope for us still!"
 msgstr "𐑛𐑵 𐑯𐑪𐑑 𐑓𐑽, 𐑞𐑺 𐑦𐑟 𐑣𐑴𐑐 𐑓𐑹 𐑳𐑕 𐑕𐑑𐑦𐑤!"
 
@@ -827,6 +858,9 @@ msgstr "𐑒𐑪𐑕𐑑: 7g"
 #: data/multiplayer/scenarios/ANL_utils/ANL_worker_options.cfg:576
 msgid "Clear the Ground"
 msgstr "𐑒𐑤𐑽 𐑞 𐑜𐑮𐑬𐑯𐑛"
+
+#~ msgid "teamname^Team 2"
+#~ msgstr "𐑑𐑰𐑥 2"
 
 #~ msgid "Convert to Grassland"
 #~ msgstr "𐑒𐑩𐑯𐑝𐑻𐑑 𐑑 𐑜𐑮𐑨𐑕𐑤𐑨𐑯𐑛"

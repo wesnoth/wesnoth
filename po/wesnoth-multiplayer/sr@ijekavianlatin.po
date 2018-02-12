@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-multiplayer\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-04 16:40 UTC\n"
+"POT-Creation-Date: 2018-02-12 17:02 UTC\n"
 "PO-Revision-Date: 2011-12-26 13:33+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -288,7 +288,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:53
-#: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:25
+#: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:37
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:24
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:37
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:34
@@ -298,12 +298,11 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:47
 #: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:23
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:21
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:67
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:71
 #: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:23
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:22
 #: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:25
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:67
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:132
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:21
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:20
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:20
@@ -329,7 +328,7 @@ msgstr "Sjever"
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:34
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:65
-#: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:37
+#: data/multiplayer/scenarios/2p_Clearing_Gushes.cfg:25
 #: data/multiplayer/scenarios/2p_Cynsaun_Battlefield.cfg:36
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:26
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:22
@@ -339,12 +338,11 @@ msgstr "Sjever"
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:36
 #: data/multiplayer/scenarios/2p_Ruphus_Isle.cfg:34
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:32
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:55
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:59
 #: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:34
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:33
 #: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:37
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:55
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:120
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:32
 #: data/multiplayer/scenarios/4p_Geothermal.cfg:20
 #: data/multiplayer/scenarios/4p_Geothermal.cfg:42
@@ -445,6 +443,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:35
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:40
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:32
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:60
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:31
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
 #: data/multiplayer/scenarios/3p_Morituri.cfg:31
@@ -478,6 +477,7 @@ msgstr "Istok"
 #: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:24
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:24
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:21
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:72
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:42
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
 #: data/multiplayer/scenarios/3p_Morituri.cfg:42
@@ -523,8 +523,17 @@ msgstr ""
 "predanja. Okamenjena obličja njegovih žrtava stoje kao spomenici njegovoj "
 "surovoj moći."
 
+#. [side]
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:89
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:91
+#, fuzzy
+#| msgid "teamname^Southwest"
+msgid "teamname^Statues"
+msgstr "Jugozapad"
+
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:86
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:94
 msgid ""
 "The winds of the dark sky blew so cold,\n"
 "The moon was high, the night was old,\n"
@@ -570,12 +579,12 @@ msgstr ""
 "(urezao Plamenobojnik)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:108
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:116
 msgid "Xikkrisx"
 msgstr "Ksikrisks"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:114
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:122
 msgid ""
 "Xikkrisx of Syrsszk was a powerful Saurian warrior, sent to this region by "
 "the Elders of the Rysssrylosszkk Clan (translation: “The Hunts-Foes-In-"
@@ -616,12 +625,12 @@ msgstr ""
 "pećinu, i prileže da predahne. Probudio ga je krik što ledi krv u žilama."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:117
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:125
 msgid "Oxsrrsk"
 msgstr "Oksirsks"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:120
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:128
 msgid ""
 "Oxsrrsk was a powerful Saurian Oracle, who had, in a raid against the rival "
 "Xraxss Clan, acquired (from the vaults of the now-dead Oracle Hesx-Rzzak) a "
@@ -661,7 +670,7 @@ msgstr ""
 "otisnu se Oksirsks na put..."
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:126
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:134
 msgid ""
 "Slim of Stature, dexterous Hands\n"
 "— Seven Stones and Eleven\n"
@@ -683,12 +692,12 @@ msgstr ""
 "(urezao Gvateamus)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:137
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:145
 msgid "Blum Duk"
 msgstr "Blam Duk"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:139
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:147
 msgid ""
 "Blum Duk was renowned among his goblin clan for having tamed one of the Dire "
 "Wolves of the mountains, and he had the courage to match. His leadership and "
@@ -723,12 +732,12 @@ msgstr ""
 "(urezao Vilin-pljačkaš)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:146
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:154
 msgid "Rah Ihn Mar"
 msgstr "Rah In Mar"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:148
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:156
 msgid ""
 "Rah Ihn Mar, Champion of the Burning Hills, made his way to the Ruaskkolin "
 "Lake region in pursuit of the Elvish Hero Terowydlithrol, known among Elves "
@@ -750,7 +759,7 @@ msgstr ""
 "koliko dan ranije. Izgarajući za osvetom, Rah In Mar otpoče lov..."
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:155
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:163
 msgid ""
 "He had lived there for ages upon ages, in the depths of the water, preying "
 "upon the various fish and frogs and merfolk that entered his domain. It was "
@@ -769,7 +778,7 @@ msgstr ""
 "(urezao Turin)"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:163
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:171
 msgid ""
 "It would seem that no one knows the tale of this brave spider.\n"
 "(inscribed by WinnerA)"
@@ -778,7 +787,7 @@ msgstr ""
 "(urezao Pobednik-A)"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:171
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:179
 msgid ""
 "The tale of this unlucky highwayman is yet to be told.\n"
 "(inscribed by WinnerB)"
@@ -787,7 +796,7 @@ msgstr ""
 "(urezao Pobednik-B)"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:179
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:187
 msgid ""
 "A brave hero of Wesnoth’s Golden Age, this great rider and commander of men "
 "came to this evil place while on a raid against the orcs. Caught unaware by "
@@ -807,12 +816,12 @@ msgstr ""
 "(urezao Finmir)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:184
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:192
 msgid "Bramwythl"
 msgstr "Bramvitl"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:186
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:194
 msgid ""
 "Bramwythl the Wose was always considered a slow, taciturn fellow, even by "
 "other Woses. More than any other Wose, he enjoyed simply standing alone in "
@@ -850,12 +859,12 @@ msgstr ""
 "(urezao Vilin-pljačkaš)"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:193
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:201
 msgid "Talael Ryndoc"
 msgstr "Talajel Rindok"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:196
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:204
 msgid ""
 "General Talael Ryndoc came to this place to fight a duel with the Grand "
 "Marshal Aethec Corryn, but the two men never found one another. "
@@ -864,12 +873,12 @@ msgstr ""
 "Korinom, ali se dva čovjeka nikada ne sretoše."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:199
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:207
 msgid "Aethec Corryn"
 msgstr "Etek Korin"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:202
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:210
 msgid ""
 "The last words spoken by Grand Marshal Aethec Corryn: “Talael Ryndoc! I am "
 "through searching for you! I shall make my way back to Haldric’s Hall, and "
@@ -886,12 +895,12 @@ msgstr ""
 "Možda nije trebalo da viče toliko glasno..."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:208
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:216
 msgid "Rilhon"
 msgstr "Rilon"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:210
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:218
 msgid ""
 "This brave warrior, known as Rilhon among the Naga, heard tell of a fabulous "
 "treasure that had been lost in these watery caves— a spear whose head was "
@@ -918,7 +927,7 @@ msgstr ""
 "(urezao Paterson)"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:218
+#: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:226
 msgid ""
 "Through waves and rocky channels\n"
 "blue and white\n"
@@ -1492,8 +1501,20 @@ msgstr ""
 "Igrači moraju gaziti preko svakakvog terena u poteri za pobjedom na ovoj "
 "višefrontovskoj mapi za dvoboj."
 
+#. [side]
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:38
+#, fuzzy
+#| msgid "teamname^Center"
+msgid "teamname^Shapeshifter"
+msgstr "Centar"
+
+#. [unit]: type=Tentacle of the Deep
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:52
+msgid "Nani the Shapeshifter"
+msgstr ""
+
 #. [effect]: type=arcane
-#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:77
+#: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:82
 msgid "evil eye"
 msgstr "zlo oko"
 
@@ -1508,12 +1529,12 @@ msgid "This is a sculpture made of stone."
 msgstr "Skulptura načinjena od kamena."
 
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:39
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:43
 msgid "2p — Sulla’s Ruins"
 msgstr "2i: Ruševine Sule"
 
 #. [multiplayer]: id=multiplayer_Sullas_Ruins
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:40
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:44
 msgid ""
 "Flooded by the seas and battered by the winter elements, only ruins, water "
 "and ice now remain in the shadow of this once mighty empire."
@@ -1522,12 +1543,12 @@ msgstr ""
 "kao sijenka ovoga nekada moćnog carstva."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:86
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:98
 msgid "Statue of Sulla"
 msgstr "Kip Sule"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:89
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:101
 msgid ""
 "A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "
 "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking Glacier, "
@@ -1538,42 +1559,42 @@ msgstr ""
 "Sula Ponosita i Sula Istinoljubiva."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:91
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:103
 msgid "Statue of Lhun-dup"
 msgstr "Kip Lun-dupa"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:93
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:105
 msgid "A stone-carved likeness of Lhun-dup, Servant of Sulla."
 msgstr "U kamen uklesano naličje Lun-dupa, sljedbenika Sulinog."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:107
 msgid "Statue of Ri-nzen"
 msgstr "Kip Ri-nzena"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:97
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:109
 msgid "A stone-carved likeness of Ri-nzen, Servant of Sulla."
 msgstr "U kamen uklesano naličje Ri-nzena, sljedbenika Sulinog."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:99
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:111
 msgid "Statue of Ten-zin"
 msgstr "Kip Ten-zina"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:101
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:113
 msgid "A stone-carved likeness of Ten-zin, Servant of Sulla."
 msgstr "U kamen uklesano naličje Ten-zina, sljedbenika Sulinog."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:103
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:115
 msgid "Statue of Lo-bsang"
 msgstr "Kip Lo-bsanga"
 
 #. [unit]
-#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:105
+#: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:117
 msgid "A stone-carved likeness of Lo-bsang, Servant of Sulla."
 msgstr "U kamen uklesano naličje Lo-bsanga, sljedbenika Sulinog."
 
@@ -1654,14 +1675,6 @@ msgid "A strange place. Designed by Doc Paterson"
 msgstr "Čudno mesto. Dizajnirao Dok Paterson."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:85
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:86
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:87
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:88
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:89
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:90
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:91
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:92
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:93
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:94
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:95
@@ -1720,6 +1733,14 @@ msgstr "Čudno mesto. Dizajnirao Dok Paterson."
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:148
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:149
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:150
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:151
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:152
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:153
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:154
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:155
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:156
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:157
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:158
 msgid "Statue"
 msgstr "kip"
 
@@ -1741,14 +1762,14 @@ msgid ""
 msgstr ""
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:179
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:118
 msgid ""
 "The map contains mausoleums and campfires that shift the time of the day by "
 "one step toward night and day, respectively."
 msgstr ""
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:182
+#: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:121
 msgid ""
 "The tile in the centre, which contains the casket of the titular "
 "necromancer, is always covered in pitch black fog."
@@ -2273,86 +2294,86 @@ msgid "Attacker"
 msgstr "napadač"
 
 #. [side]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:278
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:291
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:304
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:317
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:330
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:343
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:280
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:294
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:308
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:322
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:336
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:350
 msgid "Defender"
 msgstr "branilac"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:361
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:369
 msgid "Survive all enemy attacks"
 msgstr "Preživiš li sve neprijateljske nalete"
 
 #. [objective]: condition=lose
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:367
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
 msgid "Death of your team leaders"
 msgstr "Stradaju li vam vođi timova"
 
 #. [note]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:372
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:380
 msgid "Hint: Learning the enemy spawn points and types helps a lot."
 msgstr ""
 "Savet: Upoznavanje neprijateljskih mjesta izranjanja i tipova dosta pomaže."
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:378
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:386
 msgid "Turn 2: Loyalists"
 msgstr "Potez 2: Lojalisti"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:383
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:391
 msgid "Turn 5: Knalgans"
 msgstr "Potez 5: Knalganci"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:388
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:396
 msgid "Turn 8: Rebels"
 msgstr "Potez 8: Pobunjenici"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:393
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:401
 msgid "Turn 11: Northerners"
 msgstr "Potez 11: Sjevernjaci"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:398
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:406
 msgid "Turn 14: Drakes"
 msgstr "Potez 14: Zmagovi"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:403
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:411
 msgid "Turn 17: Undead"
 msgstr "Potez 17: Nemrtvi"
 
 #. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:408
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:416
 msgid "Tower of Doom"
 msgstr "Kula propasti"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:515
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:523
 msgid "Faery"
 msgstr "Vila"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:516
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:524
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible!"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:530
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:538
 msgid "Death"
 msgstr "Smrt"
 
 # well-spelled: Бвахахахаааа
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:532
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:540
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth AI\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-04 16:40 UTC\n"
+"POT-Creation-Date: 2018-02-12 17:01 UTC\n"
 "PO-Revision-Date: 2014-07-17 11:53+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
@@ -1489,9 +1489,9 @@ msgstr ""
 msgid "Vanak"
 msgstr ""
 
+#. [event]
 #. [side]
 #. [unit]: type=Dragoon, id=messenger
-#. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:37
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:71
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:72
@@ -1500,8 +1500,10 @@ msgstr "Teachdaire"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:121
-msgid "Messanger Waypoint 1"
-msgstr "Puing-shlighe teachdaire 1"
+#, fuzzy
+#| msgid "Messenger Waypoint 2"
+msgid "Messenger Waypoint 1"
+msgstr "Puing-shlighe teachdaire 2"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:123
@@ -2653,6 +2655,9 @@ msgstr ""
 #: data/ai/scenarios/scenario-lua_ai_old_syntax.cfg:87
 msgid "Kiressh"
 msgstr ""
+
+#~ msgid "Messanger Waypoint 1"
+#~ msgstr "Puing-shlighe teachdaire 1"
 
 #~ msgid "Multiplayer_AI^Strong AI (RCA)"
 #~ msgstr "IF làidir (RCA)"
