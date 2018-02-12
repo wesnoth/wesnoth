@@ -301,7 +301,7 @@ if __name__ == "__main__":
 
             # New style with _server.pbl
             pbl_file_name = os.path.join(args.upload, "_server.pbl")
-            name = os.path.basename(args.upload)
+            name = os.path.basename(os.path.realpath(args.upload))
             wmldir = args.upload
             cfgfile = None # _main.cfg will be uploaded with the rest
             ignfile = os.path.join(args.upload, "_server.ign")
