@@ -41,7 +41,6 @@ font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 		{"bold",      font::pango_text::STYLE_BOLD},
 		{"italic",    font::pango_text::STYLE_ITALIC},
 		{"underline", font::pango_text::STYLE_UNDERLINE},
-		{"light",     font::pango_text::STYLE_LIGHT},
 	};
 
 	if(style.empty()) {
