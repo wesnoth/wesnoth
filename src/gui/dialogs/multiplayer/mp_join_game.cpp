@@ -246,7 +246,7 @@ static std::string generate_user_description(const config& side)
 	}
 
 	const std::string controller_type = side["controller"].str();
-	const std::string reservation = side["reserved_for"].str();
+	const std::string reservation = side["current_player"].str();
 	const std::string owner = side["player_id"].str();
 
 	if(controller_type == "ai") {
