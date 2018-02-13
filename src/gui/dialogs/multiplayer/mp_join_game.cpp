@@ -125,6 +125,8 @@ bool mp_join_game::fetch_game_config()
 			}
 
 			has_scenario_and_controllers = true;
+		} else if(revc.has_child("became_observer")) {
+			observe_game_ = true;
 		}
 	}
 

@@ -69,8 +69,8 @@ private:
 	size_t update_timer_;
 
 	const bool first_scenario_;
-	const bool observe_game_;
 
+	bool observe_game_;
 	bool stop_updates_;
 
 	std::map<std::string, tree_view_node*> team_tree_map_;
