@@ -61,6 +61,7 @@ listbox::listbox(const implementation::builder_styled_widget& builder,
 	, list_builder_(list_builder)
 	, need_layout_(false)
 	, orders_()
+	, callback_order_change_()
 {
 }
 
@@ -596,14 +597,20 @@ void listbox::order_by_column(unsigned column, widget& widget)
 		}
 	}
 
-	if(selectable.get_value() > orders_[column].second.size()) {
+	SORT_ORDER order = static_cast<SORT_ORDER>(selectable.get_value());
+
+	if(static_cast<unsigned int>(order) > orders_[column].second.size()) {
 		return;
 	}
 
-	if(selectable.get_value() == SORT_NONE) {
+	if(order == SORT_NONE) {
 		order_by(std::less<unsigned>());
 	} else {
-		order_by(orders_[column].second[selectable.get_value() - 1]);
+		order_by(orders_[column].second[order - 1]);
+	}
+
+	if(callback_order_change_ != nullptr) {
+		callback_order_change_(column, order);
 	}
 }
 

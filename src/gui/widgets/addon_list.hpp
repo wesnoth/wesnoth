@@ -131,6 +131,11 @@ public:
 	/** Adds the internal listbox to the keyboard event chain. */
 	void add_list_to_keyboard_chain();
 
+	/** Sets up a callback that will be called when the player changes the sorting order. */
+	void set_callback_order_change(std::function<void(unsigned, listbox::SORT_ORDER)> callback) {
+		get_listbox().set_callback_order_change(callback);
+	}
+
 	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool) override
 	{

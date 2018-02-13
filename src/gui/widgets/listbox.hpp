@@ -23,6 +23,7 @@
 #include "gui/core/window_builder.hpp"
 
 #include <boost/dynamic_bitset.hpp>
+#include <functional>
 
 namespace gui2
 {
@@ -291,6 +292,12 @@ public:
 	/** Deactivates all sorting toggle buttons at the top, making the list look like it's not sorted. */
 	void mark_as_unsorted();
 
+	/** Registers a callback to be called when the active sorting option changes. */
+	void set_callback_order_change(std::function<void(unsigned, SORT_ORDER)> callback)
+	{
+		callback_order_change_ = callback;
+	}
+
 protected:
 	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 
@@ -357,6 +364,9 @@ private:
 
 	typedef std::vector<std::pair<selectable_item*, generator_sort_array>> torder_list;
 	torder_list orders_;
+
+	std::function<void(unsigned, SORT_ORDER)> callback_order_change_;
+
 	/**
 	 * Resizes the content.
 	 *

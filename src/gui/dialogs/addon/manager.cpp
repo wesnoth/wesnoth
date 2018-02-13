@@ -212,25 +212,25 @@ const std::vector<std::pair<ADDON_TYPE, std::string>> addon_manager::type_filter
 };
 
 const std::vector<addon_manager::addon_order> addon_manager::all_orders_{
-	{N_("addons_order^Name ($order)"),
+	{N_("addons_order^Name ($order)"), 0,
 	[](const addon_info& a, const addon_info& b) { return a.title < b.title; },
 	[](const addon_info& a, const addon_info& b) { return a.title > b.title; }},
-	{N_("addons_order^Author ($order)"),
+	{N_("addons_order^Author ($order)"), 1,
 	[](const addon_info& a, const addon_info& b) { return a.author < b.author; },
 	[](const addon_info& a, const addon_info& b) { return a.author > b.author; }},
-	{N_("addons_order^Size ($order)"),
+	{N_("addons_order^Size ($order)"), 2,
 	[](const addon_info& a, const addon_info& b) { return a.size < b.size; },
 	[](const addon_info& a, const addon_info& b) { return a.size > b.size; }},
-	{N_("addons_order^Downloads ($order)"),
+	{N_("addons_order^Downloads ($order)"), 3,
 	[](const addon_info& a, const addon_info& b) { return a.downloads < b.downloads; },
 	[](const addon_info& a, const addon_info& b) { return a.downloads > b.downloads; }},
-	{N_("addons_order^Type ($order)"),
+	{N_("addons_order^Type ($order)"), 4,
 	[](const addon_info& a, const addon_info& b) { return a.display_type() < b.display_type(); },
 	[](const addon_info& a, const addon_info& b) { return a.display_type() > b.display_type(); }},
-	{N_("addons_order^Last updated ($order)"),
+	{N_("addons_order^Last updated ($order)"), -1,
 	[](const addon_info& a, const addon_info& b) { return a.updated < b.updated; },
 	[](const addon_info& a, const addon_info& b) { return a.updated > b.updated; }},
-	{N_("addons_order^First uploaded ($order)"),
+	{N_("addons_order^First uploaded ($order)"), -1,
 	[](const addon_info& a, const addon_info& b) { return a.created < b.created; },
 	[](const addon_info& a, const addon_info& b) { return a.created > b.created; }}
 };
@@ -437,6 +437,9 @@ void addon_manager::pre_show(window& window)
 	window.keyboard_capture(&filter);
 	list.add_list_to_keyboard_chain();
 
+	list.set_callback_order_change(std::bind(&addon_manager::on_order_changed, this, std::ref(window),
+		std::placeholders::_1, std::placeholders::_2));
+
 	// Use handle the special addon_list retval to allow installing addons on double click
 	window.set_exit_hook(std::bind(&addon_manager::exit_hook, this, std::ref(window)));
 }
@@ -603,15 +606,27 @@ void addon_manager::order_addons(window& window)
 {
 	const menu_button& order_menu = find_widget<const menu_button>(&window, "order_dropdown", false);
 	const addon_order& order_struct = all_orders_.at(order_menu.get_value() / 2);
-	sort_order order = order_menu.get_value() % 2 == 0 ? sort_order::ascending : sort_order::descending;
+	listbox::SORT_ORDER order = order_menu.get_value() % 2 == 0 ? listbox::SORT_ASCENDING : listbox::SORT_DESCENDING;
 	addon_list::addon_sort_func func;
-	if(order == sort_order::ascending) {
+	if(order == listbox::SORT_ASCENDING) {
 		func = order_struct.sort_func_asc;
 	} else {
 		func = order_struct.sort_func_desc;
 	}
 
 	find_widget<addon_list>(&window, "addons", false).set_addon_order(func);
+}
+
+void addon_manager::on_order_changed(window& window, unsigned int sort_column, listbox::SORT_ORDER order)
+{
+	menu_button& order_menu = find_widget<menu_button>(&window, "order_dropdown", false);
+	auto order_it = std::find_if(all_orders_.begin(), all_orders_.end(),
+		[sort_column](const addon_order& order) {return order.column_index == static_cast<int>(sort_column);});
+	int index = 2 * (order_it - all_orders_.begin());
+	if(order == listbox::SORT_DESCENDING) {
+		++index;
+	}
+	order_menu.set_value(index);
 }
 
 template<void(addon_manager::*fptr)(const addon_info& addon, window& window)>
