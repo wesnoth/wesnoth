@@ -69,6 +69,7 @@ public:
 	// In unit_abilities.cpp:
 
 	bool get_special_bool(const std::string& special, bool simple_check=false) const;
+	bool get_special_bool_color(const std::string& special, bool simple_check=false) const;
 	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string> > special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials(bool only_active=false, bool is_backstab=false) const;
@@ -102,6 +103,7 @@ private:
 	enum AFFECTS { AFFECT_SELF=1, AFFECT_OTHER=2, AFFECT_EITHER=3 };
 	bool special_active(const config& special, AFFECTS whom,
 	                    bool include_backstab=true) const;
+	bool special_active_colored(const config& special,AFFECTS whom) const;
 
 	// Used via set_specials_context() to control which specials are
 	// considered active.
