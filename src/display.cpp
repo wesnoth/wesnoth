@@ -3170,6 +3170,13 @@ void display::invalidate_animations()
 	} while (new_inval);
 }
 
+void display::reset_standing_animations()
+{
+	for(const unit & u : dc_->units()) {
+		u.anim_comp().set_standing();
+	}
+}
+
 void display::add_arrow(arrow& arrow)
 {
 	const arrow_path_t & arrow_path = arrow.get_path();

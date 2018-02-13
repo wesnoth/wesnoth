@@ -961,16 +961,6 @@ void set_animate_water(bool value)
 	set("animate_water", value);
 }
 
-bool show_standing_animations()
-{
-	return preferences::get("unit_standing_animations", true);
-}
-
-void set_show_standing_animations(bool value)
-{
-	set("unit_standing_animations", value);
-}
-
 bool show_fps()
 {
 	return fps;

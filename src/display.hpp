@@ -430,6 +430,8 @@ public:
 	 */
 	void invalidate_animations_location(const map_location& loc);
 
+	void reset_standing_animations();
+
 	/**
 	 * mouseover_hex_overlay_ require a prerendered surface
 	 * and is drawn underneath the mouse's location

@@ -101,6 +101,20 @@ void set_idle_anim_rate(int rate) {
 	}
 }
 
+bool show_standing_animations()
+{
+	return preferences::get("unit_standing_animations", true);
+}
+
+void set_show_standing_animations(bool value)
+{
+	set("unit_standing_animations", value);
+
+	if(display* d = display::get_singleton()) {
+		d->reset_standing_animations();
+	}
+}
+
 bool show_theme_dialog()
 {
 	std::vector<theme_info> themes = theme::get_known_themes();

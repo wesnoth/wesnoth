@@ -260,9 +260,6 @@ namespace preferences {
 	bool minimap_draw_terrain();
 	void toggle_minimap_draw_terrain();
 
-	bool show_standing_animations();
-	void set_show_standing_animations(bool value);
-
 	bool show_fps();
 	void set_show_fps(bool value);
 
