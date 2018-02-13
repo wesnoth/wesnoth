@@ -353,15 +353,15 @@ void mp_join_game::generate_side_list(window& window)
 
 		std::string leader_image = ng::random_enemy_picture;
 		std::string leader_type = side["type"];
+		std::string leader_gender = side["gender"];
 		std::string leader_name;
-
-		const std::string leader_gender = side["gender"];
 
 		// If there is a unit which can recruit, use it as a leader.
 		// Necessary to display leader information when loading saves.
 		for(const config& side_unit : side.child_range("unit")) {
 			if(side_unit["canrecruit"].to_bool()) {
 				leader_type = side_unit["type"].str();
+				leader_gender = side_unit["gender"].str();
 				break;
 			}
 		}
@@ -388,9 +388,9 @@ void mp_join_game::generate_side_list(window& window)
 		data.emplace("leader_faction", item);
 
 		std::string gender_icon = "icons/icon-random.png";
-		if(side["gender"] != "null") {
+		if(leader_gender != "null") {
 			gender_icon = formatter() << "icons/icon-" << leader_gender << ".png";
-			item["tooltip"] = side["gender"];
+			item["tooltip"] = leader_gender;
 		}
 
 		item["label"] = gender_icon;
