@@ -1409,14 +1409,6 @@ bool game::add_player(const socket_ptr& player, bool observer)
 	player_connections_.find(user)->info().set_status((observer) ? player::OBSERVING : player::PLAYING);
 	DBG_GAME << debug_player_info();
 
-	// If a player was switched to an observer, notify them of the fact.
-	if(became_observer) {
-		simple_wml::document became_observer_notif;
-		became_observer_notif.root().add_child("became_observer");
-
-		send_to_player(player, became_observer_notif);
-	}
-
 	// Send the user the game data.
 	send_to_player(player, level_);
 

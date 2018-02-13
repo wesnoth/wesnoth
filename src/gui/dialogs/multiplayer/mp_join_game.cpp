@@ -125,8 +125,6 @@ bool mp_join_game::fetch_game_config()
 			}
 
 			has_scenario_and_controllers = true;
-		} else if(revc.has_child("became_observer")) {
-			observe_game_ = true;
 		}
 	}
 
@@ -185,7 +183,8 @@ bool mp_join_game::fetch_game_config()
 	}
 
 	if(!side_choice) {
-		return false;
+		observe_game_ = true;
+		return true;
 	}
 
 	// If the client is allowed to choose their team, do that here instead of having it set by the server
