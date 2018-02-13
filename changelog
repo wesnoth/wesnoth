@@ -9,8 +9,8 @@ Version 1.13.11:
      generate a passphrase otherwise are now rejected instead of treated as
      valid.
  * Campaigns:
-   * The Cutscene_Minimal theme is now used in all dialog only scenarios that
-     have linger=no in [end_level].
+   * The Cutscene_Minimal theme is now used in all dialog-only scenarios that
+     have `linger=no` in [end_level].
    * An Orcish Incursion:
      * New story art.
    * A Tale of Two Brothers:
@@ -43,17 +43,19 @@ Version 1.13.11:
    * Updated translations: British English, Chinese (Simplified), Czech,
      Italian, Spanish
  * Lua API:
-   * New wesnoth.unit_types[].advances_to getter.
-   * New wesnoth.unit_types[].advances_from getter.
-   * wml module now offers another new way of accessing WML variables:
+   * New wesnoth.unit_types[] getters:
+     * `advances_to`
+     * `advances_from`
+     * `profile`
+     * `small_profile`
+   * The wml module now offers another new way of accessing WML variables:
      wml.variables is a simple wrapper around wml.get|set_variable.
    * unit.id is now a modifiable field for off-map (Lua-only) units.
-   * Allow moving on-map units by setting unit.x and unit.y fields, or with
-     unit.loc = {x, y} or unit.loc = {x = x, y = y}
-   * Added side.chose_random getter.
-   * Added unit_type.profile and unit_type.small_profile getters.
+   * Allow moving on-map units by setting `unit.x` and `unit.y` fields, or with
+     `unit.loc = {x, y}` or `unit.loc = {x = x, y = y}`
+   * Added `side.chose_random` getter.
    * Lua GUI2 API: added support for slider callbacks via
-     wesnoth.set_dialog_callback.
+     `wesnoth.set_dialog_callback`.
  * Multiplayer:
    * Dark Forecast: Fixed broken faction and leader selection.
    * Rename the Khalifate to Dunefolk. This includes renaming all the faction's
@@ -82,9 +84,9 @@ Version 1.13.11:
      will be plain black.
    * New really nice HD main menu/storyscreen background.
  * WFL Engine:
-   * A new string insert() function has been added, similar to replace()
+   * A new string `insert()` function has been added, similar to `replace()`.
  * WML Engine:
-   * Added a major_amla option in AMLAs to keep the XP bar teal-white rather
+   * Added a `major_amla` option in AMLAs to keep the XP bar teal-white rather
      than purple for AMLAs that behave similar to regular advancements.
      (for example, Quenoth Youth in UtBS or similar unit lines)
    * File paths with backslashes are no longer allowed. This ensures that a UMC
@@ -97,9 +99,9 @@ Version 1.13.11:
    * Added [lua] as a conditional tag, with identical syntax.
      The code in such a tag must return a true or false value.
    * Lua errors now cause as a condition to fail instead of pass.
-   * New formula= key in [set_variable] allows evaluating a WFL formula with
+   * New `formula=` key in [set_variable] allows evaluating a WFL formula with
      the variable, which may be either a scalar or a container.
-   * A missing [event] name= key will now raise a WML error instead of being
+   * A missing [event] `name=` key will now raise a WML error instead of being
      silently ignored.
    * Units hidden with [hide_unit] will remain hidden after reloading saves.
    * Fixed regression where most SUF keys would match all units if given "" as
