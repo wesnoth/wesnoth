@@ -26,7 +26,8 @@ enum family_class
 {
 	FONT_SANS_SERIF,
 	FONT_MONOSPACE,
-	FONT_LIGHT
+	FONT_LIGHT,
+	FONT_SCRIPT,
 };
 
 inline family_class str_to_family_class(const std::string& str)
@@ -35,6 +36,8 @@ inline family_class str_to_family_class(const std::string& str)
 		return FONT_MONOSPACE;
 	} else if(str == "light") {
 		return FONT_LIGHT;
+	} else if(str == "script") {
+		return FONT_SCRIPT;
 	}
 
 	return FONT_SANS_SERIF;

@@ -115,6 +115,7 @@ bool is_valid_font_file(const std::string& file)
 t_string family_order_sans;
 t_string family_order_mono;
 t_string family_order_light;
+t_string family_order_script;
 
 } // end anon namespace
 
@@ -160,6 +161,7 @@ bool load_font_config()
 	family_order_sans = fonts_config["family_order"];
 	family_order_mono = fonts_config["family_order_monospace"];
 	family_order_light = fonts_config["family_order_light"];
+	family_order_script = fonts_config["family_order_script"];
 
 	if(family_order_mono.empty()) {
 		ERR_FT << "No monospace font family order defined, falling back to sans serif order\n";
@@ -169,6 +171,11 @@ bool load_font_config()
 	if(family_order_light.empty()) {
 		ERR_FT << "No light font family order defined, falling back to sans serif order\n";
 		family_order_light = family_order_sans;
+	}
+
+	if(family_order_script.empty()) {
+		ERR_FT << "No script font family order defined, falling back to sans serif order\n";
+		family_order_script = family_order_sans;
 	}
 
 	std::vector<font::subset_descriptor> fontlist;
@@ -196,6 +203,8 @@ const t_string& get_font_families(family_class fclass)
 		return family_order_mono;
 	case FONT_LIGHT:
 		return family_order_light;
+	case FONT_SCRIPT:
+		return family_order_script;
 	default:
 		return family_order_sans;
 	}
