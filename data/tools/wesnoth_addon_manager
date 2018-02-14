@@ -325,9 +325,9 @@ if __name__ == "__main__":
         for key_value_pair in args.pbl_key or []:
             key = key_value_pair[0]
             value = key_value_pair[1]
-            if not re.match("^[a-zA-Z]+$", key):
+            if not re.match("^[a-zA-Z]+[_a-zA-Z]*$", key):
                 raise ValueError("non-standard --pbl-key " + key)
-            pbl_text = pbl_text + '\n' + key + '="' + value.replace('"', '\\"') + '"'
+            pbl_text = pbl_text + '\n' + key + '="' + value.replace('"', '""') + '"'
 
         pbl = parse_wml_text(pbl_text)
         if os.path.exists(ignfile):
