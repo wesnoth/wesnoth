@@ -81,7 +81,9 @@ bool check_font_file(std::string name) {
 	return true;
 }
 
-static bool add_font_to_fontlist(const config &fonts_config,
+namespace
+{
+bool add_font_to_fontlist(const config &fonts_config,
 	std::vector<font::subset_descriptor>& fontlist, const std::string& name)
 {
 	const config &font = fonts_config.find_child("font", "name", name);
@@ -95,11 +97,26 @@ static bool add_font_to_fontlist(const config &fonts_config,
 	return true;
 }
 
+bool is_valid_font_file(const std::string& file)
+{
+	static const std::array<std::string, 3> font_exts { ".ttf", ".ttc", ".otf" };
+
+	for(const std::string& ext : font_exts) {
+		if(filesystem::ends_with(file, ext)) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 // Current font family for sanserif and monospace fonts in the game
 
 t_string family_order_sans;
 t_string family_order_mono;
 t_string family_order_light;
+
+} // end anon namespace
 
 /***
  * Public interface
@@ -220,7 +237,7 @@ manager::manager()
 			filesystem::get_files_in_dir(path, &files, nullptr, filesystem::ENTIRE_FILE_PATH);
 		}
 		for(const std::string& file : files) {
-			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
+			if(is_valid_font_file(file))
 			{
 				const std::wstring wfile = unicode_cast<std::wstring>(file);
 				AddFontResourceExW(wfile.c_str(), FR_PRIVATE, nullptr);
@@ -242,7 +259,7 @@ manager::~manager()
 		if(filesystem::is_directory(path))
 			filesystem::get_files_in_dir(path, &files, nullptr, filesystem::ENTIRE_FILE_PATH);
 		for(const std::string& file : files) {
-			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
+			if(is_valid_font_file(file))
 			{
 				const std::wstring wfile = unicode_cast<std::wstring>(file);
 				RemoveFontResourceExW(wfile.c_str(), FR_PRIVATE, nullptr);
