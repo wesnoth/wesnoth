@@ -55,6 +55,11 @@ if __name__ == "__main__":
         help="When used together with --download, create tarballs of any " +
         "downloaded addons and put into the specified directory.")
     argumentparser.add_argument("--pbl", help="override standard PBL location")
+    argumentparser.add_argument("--pbl-key", action='append', nargs=2,
+        metavar=("KEY", "VALUE"),
+        help="When uploading, override KEY with VALUE in _server.pbl. " +
+        "No changes are written to disk, only the upload is affected. " +
+        "This option only makes sense with --upload.")
     argumentparser.add_argument("-u", "--upload",
         help="Upload an add-on. " +
         "UPLOAD should be either the name of an add-on subdirectory," +
@@ -179,6 +184,11 @@ if __name__ == "__main__":
         p.parse_file(name)
         return p.root
 
+    def parse_wml_text(text):
+        p = wmlparser.Parser()
+        p.parse_text(text)
+        return p.root
+
     def get_info(name):
         """
         Get info for a locally installed add-on. It expects a direct path
@@ -290,14 +300,14 @@ if __name__ == "__main__":
             args.upload = args.upload.rstrip("/")
 
             # New style with _server.pbl
-            pblfile = os.path.join(args.upload, "_server.pbl")
+            pbl_file_name = os.path.join(args.upload, "_server.pbl")
             name = os.path.basename(args.upload)
             wmldir = args.upload
             cfgfile = None # _main.cfg will be uploaded with the rest
             ignfile = os.path.join(args.upload, "_server.ign")
         else:
             # Old style with external .pbl file
-            pblfile = args.upload
+            pbl_file_name = args.upload
             name = os.path.basename(args.upload)
             name = os.path.splitext(name)[0]
             wmldir = os.path.join(os.path.dirname(args.upload), name)
@@ -305,9 +315,19 @@ if __name__ == "__main__":
             ignfile = args.upload.replace(".pbl", ".ign")
 
         if args.pbl:
-            pblfile = args.pbl
+            pbl_file_name = args.pbl
 
-        pbl = parse_wml_file(pblfile)
+        with open(pbl_file_name, 'r') as pbl_file:
+            pbl_text = pbl_file.read()
+
+        for key_value_pair in args.pbl_key or []:
+            key = key_value_pair[0]
+            value = key_value_pair[1]
+            if not re.match("^[a-zA-Z]+[_a-zA-Z]*$", key):
+                raise ValueError("non-standard --pbl-key " + key)
+            pbl_text = pbl_text + '\n' + key + '="' + value.replace('"', '""') + '"'
+
+        pbl = parse_wml_text(pbl_text)
         if os.path.exists(ignfile):
             ign = open(ignfile).readlines()
             # strip line endings and whitespace
