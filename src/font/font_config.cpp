@@ -97,6 +97,7 @@ bool add_font_to_fontlist(const config &fonts_config,
 	return true;
 }
 
+#ifdef CAIRO_HAS_WIN32_FONT
 bool is_valid_font_file(const std::string& file)
 {
 	static const std::array<std::string, 3> font_exts { ".ttf", ".ttc", ".otf" };
@@ -109,6 +110,7 @@ bool is_valid_font_file(const std::string& file)
 
 	return false;
 }
+#endif
 
 // Current font family for sanserif and monospace fonts in the game
 
@@ -239,7 +241,7 @@ manager::manager()
 	}
 #endif
 
-#if CAIRO_HAS_WIN32_FONT
+#ifdef CAIRO_HAS_WIN32_FONT
 	for(const std::string& path : filesystem::get_binary_paths("fonts")) {
 		std::vector<std::string> files;
 		if(filesystem::is_directory(path)) {
@@ -262,7 +264,7 @@ manager::~manager()
 	FcConfigAppFontClear(FcConfigGetCurrent());
 #endif
 
-#if CAIRO_HAS_WIN32_FONT
+#ifdef CAIRO_HAS_WIN32_FONT
 	for(const std::string& path : filesystem::get_binary_paths("fonts")) {
 		std::vector<std::string> files;
 		if(filesystem::is_directory(path))
