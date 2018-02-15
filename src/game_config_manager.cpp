@@ -408,7 +408,7 @@ void game_config_manager::load_addons_cfg()
 					core = "default";
 				}
 
-				addon.addon_title = info_tag["title"];
+				addon.addon_title = info_tag["title"].str();
 
 				// Skip add-ons not matching our current core.
 				//
