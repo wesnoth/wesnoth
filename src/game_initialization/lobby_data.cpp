@@ -474,18 +474,12 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 
 		remote_min_ver = std::min(remote_min_ver, remote_ver);
 
-		// Use content name if provided, else fall back on the addon id.
-		// TODO: should this use t_string?
-		const std::string content_name = local_item.has_attribute("name")
-			? local_item["name"].str()
-			: local_item["addon_id"].str();
-
 		// Check if the host is too out of date to play.
 		if(local_min_ver > remote_ver) {
 			r.outcome = CANNOT_SATISFY;
 
 			r.message = vgettext("The host's version of <i>$addon</i> is incompatible. They have version <b>$host_ver</b> while you have version <b>$local_ver</b>.", {
-				{"addon",     content_name},
+				{"addon",     local_item["addon_title"]},
 				{"host_ver",  remote_ver.str()},
 				{"local_ver", local_ver.str()}
 			});
@@ -499,7 +493,7 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 			r.outcome = NEED_DOWNLOAD;
 
 			r.message = vgettext("Your version of <i>$addon</i> is incompatible. You have version <b>$local_ver</b> while the host has version <b>$host_ver</b>.", {
-				{"addon",     content_name},
+				{"addon",     local_item["addon_title"]},
 				{"host_ver",  remote_ver.str()},
 				{"local_ver", local_ver.str()}
 			});

@@ -339,9 +339,11 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 	paths_manager_.set_paths(game_config());
 }
 
-struct addon_source {
+struct addon_source
+{
 	std::string main_cfg;
 	std::string addon_id;
+	std::string addon_title;
 	version_info version;
 };
 
@@ -394,19 +396,35 @@ void game_config_manager::load_addons_cfg()
 		addon.main_cfg = main_cfg;
 		addon.addon_id = addon_id;
 
-		if (filesystem::file_exists(main_cfg)) {
-			if (filesystem::file_exists(info_cfg)) {
+		if(filesystem::file_exists(main_cfg)) {
+			if(filesystem::file_exists(info_cfg)) {
 				config info;
 				cache_.get_config(info_cfg, info);
-				const config info_tag = info.child_or_empty("info");
+
+				const config& info_tag = info.child_or_empty("info");
+
 				std::string core = info_tag["core"];
-				if (core.empty()) core = "default";
-				if ( !info_tag.empty() && // Don't skip addons which have no [info], they are most likely manually installed.
-						info_tag["type"] != "core" && // Don't skip cores, we want them selectable at all times.
-						core != preferences::core_id() // Don't skip addons matching our current core.
-				) {
-					continue; // Skip add-ons not matching our current core.
+				if(core.empty()) {
+					core = "default";
 				}
+
+				addon.addon_title = info_tag["title"];
+
+				// Skip add-ons not matching our current core.
+				//
+				// Don't skip:
+				// - addons which have no [info], they are most likely manually installed.
+				// - cores, we want them selectable at all times.
+				// - addons matching our current core.
+				if(!info_tag.empty() && info_tag["type"] != "core" && core != preferences::core_id()) {
+					continue;
+				}
+			}
+
+			// Fall back to ID if no title was found (most likely in the case of missing _info.cfg).
+			// TODO: account for case where _info.cfg is missing but a .pbl file is present.
+			if(addon.addon_title.empty()) {
+				addon.addon_title = addon_id;
 			}
 
 			// Ask the addon manager to find version info for us (from info, pbl file)
@@ -429,6 +447,7 @@ void game_config_manager::load_addons_cfg()
 				if(tags_with_addon_id.count(child.key) > 0) {
 					auto& cfg = child.cfg;
 					cfg["addon_id"] = addon.addon_id;
+					cfg["addon_title"] = addon.addon_title;
 					// Note that this may reformat the string in a canonical form.
 					cfg["addon_version"] = addon.version.str();
 				}

@@ -145,6 +145,7 @@ config mp_game_settings::to_config() const
 mp_game_settings::addon_version_info::addon_version_info(const config & cfg)
 	: version()
 	, min_version()
+	, name(cfg["name"])
 {
 	if (!cfg["version"].empty()) {
 		version = cfg["version"].str();
@@ -161,6 +162,8 @@ void mp_game_settings::addon_version_info::write(config & cfg) const {
 	if (min_version) {
 		cfg["min_version"] = *min_version;
 	}
+
+	cfg["name"]	= name;
 }
 
 void mp_game_settings::update_addon_requirements(const config & cfg) {

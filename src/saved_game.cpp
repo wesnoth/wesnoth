@@ -233,11 +233,14 @@ void saved_game::expand_scenario()
 
 			// Add addon_id information if it exists.
 			if(!scenario["addon_id"].empty() && scenario["require_scenario"].to_bool(false)) {
-				mp_settings_.update_addon_requirements(config {
-					"id", scenario["addon_id"],
-					"version", scenario["addon_version"],
-					"min_version", scenario["addon_min_version"]
-				});
+				config required_scenario;
+
+				required_scenario["id"] = scenario["addon_id"];
+				required_scenario["name"] = scenario["addon_title"];
+				required_scenario["version"] = scenario["addon_version"];
+				required_scenario["min_version"] = scenario["addon_min_version"];
+
+				mp_settings_.update_addon_requirements(required_scenario);
 			}
 
 			update_label();
@@ -282,8 +285,14 @@ void saved_game::load_mod(const std::string& type, const std::string& id)
 		bool require_default = (type == "era");
 
 		if(!cfg["addon_id"].empty() && cfg[require_attr].to_bool(require_default)) {
-			mp_settings_.update_addon_requirements(config{
-				"id", cfg["addon_id"], "version", cfg["addon_version"], "min_version", cfg["addon_min_version"]});
+			config required_mod;
+
+			required_mod["id"] = cfg["addon_id"];
+			required_mod["name"] = cfg["addon_title"];
+			required_mod["version"] = cfg["addon_version"];
+			required_mod["min_version"] = cfg["addon_min_version"];
+
+			mp_settings_.update_addon_requirements(required_mod);
 		}
 
 		// Copy events

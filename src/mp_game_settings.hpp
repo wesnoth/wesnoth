@@ -72,9 +72,12 @@ struct mp_game_settings
 
 	config options;
 
-	struct addon_version_info {
+	struct addon_version_info
+	{
 		boost::optional<version_info> version;
 		boost::optional<version_info> min_version;
+
+		std::string name;
 
 		explicit addon_version_info(const config &);
 		void write(config &) const;
@@ -82,7 +85,10 @@ struct mp_game_settings
 
 	std::map<std::string, addon_version_info> addons; // the key is the addon_id
 
-	// Takes a config with addon metadata (id =, version =, min_version =), formatted similarly to how mp_game_settings is written that is,
-	// and adds this as a requirement, updating the min_version if there was already an entry for this addon_id.
-	void update_addon_requirements(const config & addon_cfg);
+	/**
+	 * Takes a config with addon metadata (id, name, version, min_version) and adds
+	 * it as a requirement for this game. It also updates min_version if there was
+	 * already an entry for this addon_id.
+	 */
+	void update_addon_requirements(const config& addon_cfg);
 };
