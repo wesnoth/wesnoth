@@ -1134,23 +1134,29 @@ int game_lua_kernel::intf_get_village_owner(lua_State *L)
 int game_lua_kernel::intf_set_village_owner(lua_State *L)
 {
 	map_location loc = luaW_checklocation(L, 1);
-	int new_side = lua_isnoneornil(L, 2) ? 0 : luaL_checkinteger(L, 2);
-
-	if (!board().map().is_village(loc))
-		return 0;
-
-	int old_side = board().village_owner(loc) + 1;
-
-	if (new_side == old_side || new_side < 0 || new_side > static_cast<int>(teams().size()) || board().team_is_defeated(board().get_team(new_side))) {
+	if(!board().map().is_village(loc)) {
 		return 0;
 	}
 
-	if (old_side) {
-		board().get_team(old_side).lose_village(loc);
+	const int new_side = lua_isnoneornil(L, 2) ? 0 : luaL_checkinteger(L, 2);
+	const int old_side = board().village_owner(loc) + 1;
+
+	try {
+		if(new_side == old_side || board().team_is_defeated(board().get_team(new_side))) {
+			return 0;
+		}
+
+		if(old_side > 0) {
+			board().get_team(old_side).lose_village(loc);
+		}
+
+		if(new_side > 0) {
+			board().get_team(new_side).get_village(loc, old_side, (luaW_toboolean(L, 4) ? &gamedata() : nullptr) );
+		}
+	} catch(const std::out_of_range&) {
+		// new_side was invalid, or old_side was 0 (de-assign village).
 	}
-	if (new_side) {
-		board().get_team(new_side).get_village(loc, old_side, (luaW_toboolean(L, 4) ? &gamedata() : nullptr) );
-	}
+
 	return 0;
 }
 
