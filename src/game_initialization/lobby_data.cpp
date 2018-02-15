@@ -479,7 +479,7 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 			r.outcome = CANNOT_SATISFY;
 
 			r.message = vgettext("The host's version of <i>$addon</i> is incompatible. They have version <b>$host_ver</b> while you have version <b>$local_ver</b>.", {
-				{"addon",     local_item["addon_title"]},
+				{"addon",     local_item["addon_title"].str()},
 				{"host_ver",  remote_ver.str()},
 				{"local_ver", local_ver.str()}
 			});
@@ -493,7 +493,7 @@ game_info::ADDON_REQ game_info::check_addon_version_compatibility(const config& 
 			r.outcome = NEED_DOWNLOAD;
 
 			r.message = vgettext("Your version of <i>$addon</i> is incompatible. You have version <b>$local_ver</b> while the host has version <b>$host_ver</b>.", {
-				{"addon",     local_item["addon_title"]},
+				{"addon",     local_item["addon_title"].str()},
 				{"host_ver",  remote_ver.str()},
 				{"local_ver", local_ver.str()}
 			});
