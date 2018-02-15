@@ -224,18 +224,19 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	, required_addons()
 	, addons_outcome(SATISFIED)
 {
-	const auto parse_requirements = [&](const config& c, const std::string& id_key) {
-		if(c.has_attribute(id_key)) {
-			if(std::find(installed_addons.begin(), installed_addons.end(), c[id_key].str()) == installed_addons.end()) {
+	// Parse the list of addons required to join this game.
+	for(const config& addon : game.child_range("addon")) {
+		if(addon.has_attribute("id")) {
+			if(std::find(installed_addons.begin(), installed_addons.end(), addon["id"].str()) == installed_addons.end()) {
 				required_addon r;
-				r.addon_id = c[id_key].str();
+				r.addon_id = addon["id"].str();
 				r.outcome = NEED_DOWNLOAD;
 
 				// Use addon name if provided, else fall back on the addon id.
-				if(c.has_attribute("name")) {
-					r.message = vgettext("Missing addon: $name", {{"name", c["name"].str()}});
+				if(addon.has_attribute("name")) {
+					r.message = vgettext("Missing addon: $name", {{"name", addon["name"].str()}});
 				} else {
-					r.message = vgettext("Missing addon: $id", {{"id", c[id_key].str()}});
+					r.message = vgettext("Missing addon: $id", {{"id", addon["id"].str()}});
 				}
 
 				required_addons.push_back(std::move(r));
@@ -245,18 +246,6 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 				}
 			}
 		}
-	};
-
-	for(const config& addon : game.child_range("addon")) {
-		parse_requirements(addon, "id");
-	}
-
-	/*
-	 * Modifications have a different format than addons. The id and addon_id are keys sent by the
-	 * server, so we have to parse them separately here and add them to the required_addons vector.
-	 */
-	for(const config& mod : game.child_range("modification")) {
-		parse_requirements(mod, "addon_id");
 	}
 
 	if(!game["mp_era"].empty()) {
