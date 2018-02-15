@@ -443,7 +443,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 			path_step[1] = paths[un][step];
 			unit_display::move_unit(path_step, units[un].get_unit_ptr());
 			units[un]->set_location(path_step[1]);
-			units[un]->anim_comp().set_standing();
+			units[un]->anim_comp().set_standing(false);
 		}
 	}
 
