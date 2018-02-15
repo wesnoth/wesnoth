@@ -1145,28 +1145,21 @@ int game_lua_kernel::intf_set_village_owner(lua_State *L)
 		return 0;
 	}
 
-	team* old_side = nullptr;
-	team* new_side = nullptr;
-
 	try {
-		old_side = &board().get_team(old_side_num);
+		board().get_team(old_side_num).lose_village(loc);
 	} catch(const std::out_of_range&) {
-		// old_side_num is invalid (which should really never happen), exit.
-		return 0;
+		// old_side_num is invalid, most likely because the village wasn't captured.
 	}
 
-	old_side->lose_village(loc);
-
 	try {
-		new_side = &board().get_team(new_side_num);
+		team& new_side = board().get_team(new_side_num);
+
+		if(!board().team_is_defeated(new_side)) {
+			new_side.get_village(loc, old_side_num, (luaW_toboolean(L, 4) ? &gamedata() : nullptr));
+		}
 	} catch(const std::out_of_range&) {
-		// new_side_num is invalid, exit. This also covers the case where it equals 0,
+		// new_side_num is invalid. This covers the case where it equals 0,
 		// which is supposed to only un-assign the side (done above).
-		return 0;
-	}
-
-	if(!board().team_is_defeated(*new_side)) {
-		new_side->get_village(loc, old_side_num, (luaW_toboolean(L, 4) ? &gamedata() : nullptr));
 	}
 
 	return 0;
