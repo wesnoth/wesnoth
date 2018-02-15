@@ -28,7 +28,7 @@ def getAllFiles(start):
 # Variables
 # #
 today = time()
-yesterday = time() - (24*60*60)
+yesterday = today - (24*60*60)
 mtime_file = "build/cmake_mtime_crc.txt"
 
 # #
@@ -50,7 +50,8 @@ if os.path.isfile(mtime_file):
 
     for line in readfile:
         line_list = line.strip().split(":")
-        crc_dict_prev.update({line_list[0] : int(line_list[1])})
+        if len(line_list) == 2:
+            crc_dict_prev.update({line_list[0] : int(line_list[1])})
     readfile.close()
 
 # compare file CRCs between the set of CRCs from the previous run and the current run
