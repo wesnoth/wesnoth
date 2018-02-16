@@ -24,18 +24,15 @@ CHANGES
 [/list]
 [/rasection]
 
-
 [rawarn="Deprecations and breaking changes"]
 [list]
-[*] File paths with backslashes are no longer accepted. Use forward slashes instead.
 [/list]
 [/rawarn]
 
-
- [rasection="New lua/wml features"]
- [list]
- [/list]
- [/rasection]
+[rasection="New lua/wml features"]
+[list]
+[/list]
+[/rasection]
 
 ==========
 KNOWN BUGS
@@ -45,7 +42,11 @@ KNOWN BUGS
 [b]General bugs:[/b]
 
 [list]
-[*]The MP server has trouble with Local player types in campaigns (bug [bug]21965[/bug]). We have decided to postpone dealing with this. In the meantime, you might try assigning such sides to the host, or running multiple instances of Wesnoth.
+[/list]
+
+[b]Bugs specific to macOS:[/b]
+[list]
+[*]The game may crash when opening the file dialog.
 [/list]
 [/raissue]
 
@@ -59,14 +60,12 @@ KNOWN BUGS
 [b]Bugs specific to Microsoft Windows:[/b]
 
 [list]
-[*]ClearType font rendering is disabled as it causes glitches (bug [bug]21648[/bug]).
-This is likely caused by outdated libraries in the packaging process.
 [/list]
 
 [b]Bugs specific to macOS:[/b]
 
 [list]
 [*]Trackpad tap clicking is sometimes not recognized ([url=http://forums.wesnoth.org/viewtopic.php?f=4&t=39788]forum post[/url]).
-[*]Unofficial builds with OpenMP support enabled randomly freeze (bug [bug]18144[/bug]).
+[*]Unofficial builds with OpenMP support enabled randomly freeze (bug [issue]1260[/issue]).
 [/list]
 [/raissue]
