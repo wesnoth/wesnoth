@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-                 2013 - 2015 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+                 2013 - 2015 by Iris Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

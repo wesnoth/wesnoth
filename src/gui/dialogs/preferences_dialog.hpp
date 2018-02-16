@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011, 2015 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2011, 2015 by Iris Morelle <shadowm2006@gmail.com>
    Copyright (C) 2016 - 2018 by Charles Dang <exodia339gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 

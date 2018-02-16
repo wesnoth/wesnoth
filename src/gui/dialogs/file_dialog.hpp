@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011, 2018 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2011, 2018 by Iris Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
