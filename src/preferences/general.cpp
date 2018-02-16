@@ -67,8 +67,8 @@ namespace preferences {
 const int min_window_width  = 800;
 const int min_window_height = 600;
 
-const int def_window_width  = 1024;
-const int def_window_height = 768;
+const int def_window_width  = 1280;
+const int def_window_height = 720;
 
 const int min_font_scaling  = 80;
 const int max_font_scaling  = 150;
@@ -395,7 +395,7 @@ bool maximized()
 
 bool fullscreen()
 {
-	return get("fullscreen", false);
+	return get("fullscreen", true);
 }
 
 void _set_resolution(const point& res)
