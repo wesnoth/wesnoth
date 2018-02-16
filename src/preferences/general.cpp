@@ -374,17 +374,18 @@ void set_scroll_to_action(bool ison)
 
 point resolution()
 {
-	const std::string& x = prefs["xresolution"], y = prefs["yresolution"];
+	const unsigned x_res = prefs["xresolution"].to_unsigned();
+	const unsigned y_res = prefs["yresolution"].to_unsigned();
 
-	if (!x.empty() && !y.empty()) {
-		try {
-			return point(
-				std::max(std::stoi(x), min_window_width),
-				std::max(std::stoi(y), min_window_height));
-		} catch(std::invalid_argument&) {}
+	// Either resolution was unspecified, return default.
+	if(x_res == 0 || y_res == 0) {
+		return point(def_window_width, def_window_height);
 	}
 
-	return point(def_window_width, def_window_height);
+	return point(
+		std::max<unsigned>(x_res, min_window_width),
+		std::max<unsigned>(y_res, min_window_height)
+	);
 }
 
 bool maximized()

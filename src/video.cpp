@@ -223,23 +223,23 @@ void CVideo::init_window()
 	const int y = preferences::fullscreen() ? SDL_WINDOWPOS_UNDEFINED : SDL_WINDOWPOS_CENTERED;
 
 	// Dimensions
-	const int w = preferences::resolution().x;
-	const int h = preferences::resolution().y;
+	const point res = preferences::resolution();
+	const int w = res.x;
+	const int h = res.y;
 
-	// Video flags
-	int video_flags = 0;
+	uint32_t window_flags = 0;
 
 	// Add any more default flags here
-	video_flags |= SDL_WINDOW_RESIZABLE;
+	window_flags |= SDL_WINDOW_RESIZABLE;
 
 	if(preferences::fullscreen()) {
-		video_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
+		window_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
 	} else if(preferences::maximized()) {
-		video_flags |= SDL_WINDOW_MAXIMIZED;
+		window_flags |= SDL_WINDOW_MAXIMIZED;
 	}
 
 	// Initialize window
-	window.reset(new sdl::window("", x, y, w, h, video_flags, SDL_RENDERER_SOFTWARE));
+	window.reset(new sdl::window("", x, y, w, h, window_flags, SDL_RENDERER_SOFTWARE));
 
 	std::cerr << "Setting mode to " << w << "x" << h << std::endl;
 
