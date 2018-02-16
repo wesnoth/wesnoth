@@ -53,10 +53,17 @@ else
     cd src/
     ln -s ../build CMakeFiles
     cd ..
+    
 # run cmake separately so config.h will be seen by the md5 script
     cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS=false -DEXTRA_FLAGS_CONFIG="-pipe" -DEXTRA_FLAGS_RELEASE="$EXTRA_FLAGS_RELEASE" -DENABLE_STRICT_COMPILATION="$STRICT"
 # run manual md5 file tracking/mtime modification script for cmake
     python3 cmake_mtime_crc.py
+    PY_RES=$?
+    if [ "$PY_RES" != "0" ]; then
+      rm build/cmake_mtime_crc.txt
+      echo "Failed to update cmake file mtimes!"
+      exit 1
+    fi
     
     make VERBOSE=1 -j2
     
@@ -64,9 +71,16 @@ else
     scons wesnoth wesnothd campaignd boost_unit_tests build=release ctool=$CC cxxtool=$CXX --debug=time extra_flags_config="-pipe" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict="$STRICT" cxx_std=$CXXSTD nls=false jobs=2
   fi
   
-# check if the build was successful
+# check if the build failed
   BUILD_RET=$?
   if [ $BUILD_RET != 0 ]; then
+# if the failed build was using cmake, clear out everything so it's recompiled from scratch next time
+# otherwise, it is possible for there to be source files that didn't change between runs, but still need to be recompiled, and they would be missed which would corrupt the cache
+# this is especially possible when there are unrelated commits that don't involve C++ changes made between the original bad commit and the commit fixing the issue
+    if [ "$TOOL" = "cmake" ]; then
+      rm -R build/*
+    fi
+    
     exit $BUILD_RET
   fi
   
@@ -78,6 +92,7 @@ else
     ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"
     RET=$?
     if [ $RET != 0 ]; then
+      echo "WML Tests Failed!"
       EXIT_VAL=$RET
     fi
   fi
@@ -87,6 +102,7 @@ else
     ./utils/travis/play_test_executor.sh
     RET=$?
     if [ $RET != 0 ]; then
+      echo "Play Tests Failed!"
       EXIT_VAL=$RET
     fi
   fi
@@ -96,6 +112,7 @@ else
     ./utils/travis/mp_test_executor.sh
     RET=$?
     if [ $RET != 0 ]; then
+      echo "MP Tests Failed!"
       EXIT_VAL=$RET
     fi
   fi
@@ -105,6 +122,7 @@ else
     ./utils/travis/test_executor.sh
     RET=$?
     if [ $RET != 0 ]; then
+      echo "Boost Tests Failed!"
       EXIT_VAL=$RET
     fi
   fi
