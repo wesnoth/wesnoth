@@ -49,19 +49,13 @@ if [ "$NLS" == "true" ]; then
 else
 # if not doing the translations, build wesnoth, wesnothd, campaignd, boost_unit_tests
   if [ "$TOOL" == "cmake" ]; then
-# softlink to build/ for cmake, since that's where the docker mount point is
-    cd src/
-    ln -s ../build CMakeFiles
-    cd ..
-# run cmake separately so config.h will be seen by the md5 script
-    cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS=false -DEXTRA_FLAGS_CONFIG="-pipe" -DEXTRA_FLAGS_RELEASE="$EXTRA_FLAGS_RELEASE" -DENABLE_STRICT_COMPILATION="$STRICT"
-# run manual md5 file tracking/mtime modification script for cmake
-    python3 cmake_mtime_crc.py
+# set ccache configurations
+    echo "max_size = 200M" > $HOME/.ccache/ccache.conf
+    echo "compiler_check = content" >> $HOME/.ccache/ccache.conf
     
-    make VERBOSE=1 -j2
-    
+    cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS=false -DEXTRA_FLAGS_CONFIG="-pipe" -DEXTRA_FLAGS_RELEASE="$EXTRA_FLAGS_RELEASE" -DENABLE_STRICT_COMPILATION="$STRICT" -DENABLE_LTO=false -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache && make VERBOSE=1 -j2
   else
-    scons wesnoth wesnothd campaignd boost_unit_tests build=release ctool=$CC cxxtool=$CXX --debug=time extra_flags_config="-pipe" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict="$STRICT" cxx_std=$CXXSTD nls=false jobs=2
+    scons wesnoth wesnothd campaignd boost_unit_tests build=release ctool=$CC cxxtool=$CXX --debug=time extra_flags_config="-pipe" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict="$STRICT" cxx_std=$CXXSTD nls=false jobs=2 enable_lto=false
   fi
   
 # check if the build was successful
@@ -78,6 +72,7 @@ else
     ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"
     RET=$?
     if [ $RET != 0 ]; then
+      echo "WML tests failed!"
       EXIT_VAL=$RET
     fi
   fi
@@ -87,6 +82,7 @@ else
     ./utils/travis/play_test_executor.sh
     RET=$?
     if [ $RET != 0 ]; then
+      echo "Play tests failed!"
       EXIT_VAL=$RET
     fi
   fi
@@ -96,6 +92,7 @@ else
     ./utils/travis/mp_test_executor.sh
     RET=$?
     if [ $RET != 0 ]; then
+      echo "MP tests failed!"
       EXIT_VAL=$RET
     fi
   fi
@@ -105,6 +102,7 @@ else
     ./utils/travis/test_executor.sh
     RET=$?
     if [ $RET != 0 ]; then
+      echo "Boost tests failed!"
       EXIT_VAL=$RET
     fi
   fi
