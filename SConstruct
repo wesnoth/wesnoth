@@ -385,7 +385,7 @@ if env["prereqs"]:
         conf.CheckPNG() & \
         conf.CheckJPG() & \
         conf.CheckCairo(min_version = "1.10") & \
-        conf.CheckPango("cairo", require_version = "1.21.3") & \
+        conf.CheckPango("cairo", require_version = "1.22.0") & \
         conf.CheckPKG("fontconfig") & \
         conf.CheckBoost("program_options", require_version = boost_version) & \
         conf.CheckBoost("thread") & \
