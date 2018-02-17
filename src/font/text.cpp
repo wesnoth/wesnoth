@@ -369,24 +369,6 @@ pango_text& pango_text::set_maximum_width(int width)
 	}
 
 	if(width != maximum_width_) {
-		// assert(context_);
-#if 0
-		/**
-		 * todo Adding 4 extra pixels feels a bit hacky.
-		 *
-		 * For some reason it's needed since the following scenario fails:
-		 * - pango_layout_set_width(value)
-		 * - pango_layout_get_pixel_extents() -> max_width_1
-		 * - pango_layout_set_width(max_width_1)
-		 * - pango_layout_get_pixel_extents() -> max_width_2
-		 *
-		 * Now it can happen max_width_2 < max_width_1. Adding the 4 seems to
-		 * "fix" the problem.
-		 */
-		pango_layout_set_width(layout_, width == -1
-				? -1
-				: (width + 4) * PANGO_SCALE);
-#endif
 		maximum_width_ = width;
 		calculation_dirty_ = true;
 		surface_dirty_ = true;
@@ -535,31 +517,16 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 		maximum_width = std::min(maximum_width, maximum_width_);
 	}
 
-	/*
-	 * See set_maximum_width for some more background info as well.
-	 * In order to fix the problem first set a width which seems to render
-	 * correctly then lower it to fit. For the campaigns the 4 does "the
-	 * right thing" for the terrain labels it should use the value 0 to set
-	 * the ellipse properly. Need to see whether this is a bug in pango or
-	 * a bug in my understanding of the pango api.
-	 */
-	int hack = 4;
-	do {
-		pango_layout_set_width(&layout, maximum_width == -1
-			? -1
-			: (maximum_width + hack) * PANGO_SCALE);
-		pango_layout_get_pixel_extents(&layout, nullptr, &size);
+	pango_layout_set_width(&layout, maximum_width == -1
+		? -1
+		: maximum_width * PANGO_SCALE);
+	pango_layout_get_pixel_extents(&layout, nullptr, &size);
 
-		DBG_GUI_L << "pango_text::" << __func__
-			<< " text '" << gui2::debug_truncate(text_)
-			<< "' maximum_width " << maximum_width
-			<< " hack " << hack
-			<< " width " << size.x + size.width
-			<< ".\n";
-
-		--hack;
-	} while(maximum_width != -1
-		&& hack >= 0 && size.x + size.width > maximum_width);
+	DBG_GUI_L << "pango_text::" << __func__
+		<< " text '" << gui2::debug_truncate(text_)
+		<< "' maximum_width " << maximum_width
+		<< " width " << size.x + size.width
+		<< ".\n";
 
 	DBG_GUI_L << "pango_text::" << __func__
 		<< " text '" << gui2::debug_truncate(text_)
