@@ -258,11 +258,6 @@ for filename in * ; do
         edit_dylib_deps $filename
 done
 
-ln -s /usr/lib/libbz2.1.0.dylib
-ln -s /usr/lib/libexpat.1.dylib
-ln -s /usr/lib/libiconv.2.dylib
-ln -s /usr/lib/libz.1.dylib
-
 ln -s "$sdl2_path"
 ln -s "$sdl2_image_path"
 ln -s "$sdl2_mixer_path"
