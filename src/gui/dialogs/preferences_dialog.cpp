@@ -716,7 +716,7 @@ void preferences_dialog::post_build(window& window)
 	listbox& hotkey_list = setup_hotkey_list(window);
 
 	// Action column
-	hotkey_list.register_sorting_option(0, [this](const int i) { return visible_hotkeys_[i]->description.str(); });
+	hotkey_list.register_translatable_sorting_option(0, [this](const int i) { return visible_hotkeys_[i]->description.str(); });
 
 	// Hotkey column
 	hotkey_list.register_sorting_option(1, [this](const int i) { return hotkey::get_names(visible_hotkeys_[i]->command); });

@@ -151,8 +151,8 @@ void unit_create::pre_show(window& window)
 				  << std::endl;
 	}
 
-	list.register_sorting_option(0, [this](const int i) { return (*units_[i]).race()->plural_name().str(); });
-	list.register_sorting_option(1, [this](const int i) { return (*units_[i]).type_name().str(); });
+	list.register_translatable_sorting_option(0, [this](const int i) { return (*units_[i]).race()->plural_name().str(); });
+	list.register_translatable_sorting_option(1, [this](const int i) { return (*units_[i]).type_name().str(); });
 
 	list.set_active_sorting_option({0, listbox::SORT_ASCENDING}, true);
 

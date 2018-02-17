@@ -208,11 +208,12 @@ void game_stats::pre_show(window& window)
 	}
 
 	// Sorting options for the status list
-	stats_list.register_sorting_option(0, [this](const int i) {
+	stats_list.register_translatable_sorting_option(0, [this](const int i) {
 		unit_const_ptr leader = get_leader(i + 1);
 		return leader ? leader->name().str() : ""; });
 
-	stats_list.register_sorting_option(1, [this](const int i) { return board_.teams()[i].user_team_name().str(); });
+	stats_list.register_translatable_sorting_option(1, [this](const int i) {
+		return board_.teams()[i].user_team_name().str(); });
 	stats_list.register_sorting_option(2, [this](const int i) { return board_.teams()[i].gold(); });
 	stats_list.register_sorting_option(3, [this](const int i) { return board_.teams()[i].villages(); });
 	stats_list.register_sorting_option(4, [this](const int i) { return team_data_[i].units; });
@@ -220,7 +221,7 @@ void game_stats::pre_show(window& window)
 	stats_list.register_sorting_option(6, [this](const int i) { return team_data_[i].net_income; });
 
 	// Sorting options for the settings list
-	settings_list.register_sorting_option(0, [this](const int i) {
+	settings_list.register_translatable_sorting_option(0, [this](const int i) {
 		unit_const_ptr leader = get_leader(i + 1);
 		return leader ? leader->name().str() : ""; });
 
