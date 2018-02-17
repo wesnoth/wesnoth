@@ -1141,25 +1141,44 @@ int game_lua_kernel::intf_set_village_owner(lua_State *L)
 	const int old_side_num = board().village_owner(loc) + 1;
 	const int new_side_num = lua_isnoneornil(L, 2) ? 0 : luaL_checkinteger(L, 2);
 
+	team* old_side = nullptr;
+	team* new_side = nullptr;
+
 	if(old_side_num == new_side_num) {
 		return 0;
 	}
 
 	try {
-		board().get_team(old_side_num).lose_village(loc);
+		old_side = &board().get_team(old_side_num);
 	} catch(const std::out_of_range&) {
 		// old_side_num is invalid, most likely because the village wasn't captured.
+		old_side = nullptr;
 	}
 
 	try {
-		team& new_side = board().get_team(new_side_num);
-
-		if(!board().team_is_defeated(new_side)) {
-			new_side.get_village(loc, old_side_num, (luaW_toboolean(L, 4) ? &gamedata() : nullptr));
-		}
+		new_side = &board().get_team(new_side_num);
 	} catch(const std::out_of_range&) {
-		// new_side_num is invalid. This covers the case where it equals 0,
-		// which is supposed to only un-assign the side (done above).
+		// new_side_num is invalid.
+		new_side = nullptr;
+	}
+
+	// The new side was valid, but already defeated. Do nothing.
+	if(new_side && board().team_is_defeated(*new_side)) {
+		return 0;
+	}
+
+	// Even if the new side is not valid, we still want to remove the village from the old side.
+	// This covers the case where new_side_num equals 0. The behavior in that case is to simply
+	// un-assign the village from the old side, which of course we also want to happen if the new
+	// side IS valid. If the village in question hadn't been captured, this won't fire (old_side
+	// will be a nullptr).
+	if(old_side) {
+		old_side->lose_village(loc);
+	}
+
+	// If the new side was valid, re-assign the village.
+	if(new_side) {
+		new_side->get_village(loc, old_side_num, (luaW_toboolean(L, 4) ? &gamedata() : nullptr));
 	}
 
 	return 0;
