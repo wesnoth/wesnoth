@@ -2,7 +2,5 @@ FROM wesnoth/wesnoth:16.04
 
 COPY ./ /home/wesnoth-travis/
 
-RUN apt install -y -qq ccache
-
 WORKDIR /home/wesnoth-travis
 
