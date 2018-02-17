@@ -426,7 +426,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 		DBG_NG << "Path " << paths.size() - 1 << " has length " << paths.back().size() << '\n';
 
 		u->set_location(paths.back().front());
-		u.place_on_fake_unit_manager(resources::fake_units);
+		units.back().place_on_fake_unit_manager(resources::fake_units);
 	}
 
 	LOG_NG << "Units placed, longest path is " << longest_path << " long\n";
