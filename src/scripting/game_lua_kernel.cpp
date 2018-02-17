@@ -1178,7 +1178,7 @@ int game_lua_kernel::intf_set_village_owner(lua_State *L)
 
 	// If the new side was valid, re-assign the village.
 	if(new_side) {
-		new_side->get_village(loc, old_side_num, (luaW_toboolean(L, 4) ? &gamedata() : nullptr));
+		new_side->get_village(loc, old_side_num, (luaW_toboolean(L, 3) ? &gamedata() : nullptr));
 	}
 
 	return 0;
