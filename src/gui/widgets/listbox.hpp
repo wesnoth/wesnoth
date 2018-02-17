@@ -266,6 +266,11 @@ public:
 		}});
 	}
 
+	using translatable_sorter_func_t = std::function<std::string(const int)>;
+
+	/** Registers a special sorting function specifically for translatable values. */
+	void register_translatable_sorting_option(const int col, translatable_sorter_func_t f);
+
 	enum SORT_ORDER {
 		SORT_NONE,
 		SORT_ASCENDING,

@@ -631,6 +631,14 @@ void listbox::set_column_order(unsigned col, const generator_sort_array& func)
 	orders_[col].second = func;
 }
 
+void listbox::register_translatable_sorting_option(const int col, translatable_sorter_func_t f)
+{
+	set_column_order(col, {{
+		[f](int lhs, int rhs) { return translation::icompare(f(lhs), f(rhs)) < 0; },
+		[f](int lhs, int rhs) { return translation::icompare(f(lhs), f(rhs)) > 0; }
+	}});
+}
+
 void listbox::set_active_sorting_option(const order_pair& sort_by, const bool select_first)
 {
 	// TODO: should this be moved to a public header_grid() getter function?
