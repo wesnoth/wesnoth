@@ -325,6 +325,8 @@ void playsingle_controller::hotkey_handler::replay_exit()
 {
 	if(!playsingle_controller_.is_networked_mp()) {
 		resources::recorder->delete_upcoming_commands();
+	} else {
+		resources::recorder->set_to_end();
 	}
 	playsingle_controller_.set_player_type_changed();
 }
