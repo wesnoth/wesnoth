@@ -1211,9 +1211,9 @@ static void parse_where_clauses(const tk::token* i1, const tk::token* i2, expr_t
 	std::string var_name;
 
 	while(i1 != i2) {
-		if(i1->type == tk::TOKEN_LPARENS) {
+		if(i1->type == tk::TOKEN_LPARENS || i1->type == tk::TOKEN_LSQUARE) {
 			++parens;
-		} else if(i1->type == tk::TOKEN_RPARENS) {
+		} else if(i1->type == tk::TOKEN_RPARENS || i1->type == tk::TOKEN_RSQUARE) {
 			--parens;
 		} else if(!parens) {
 			if(i1->type == tk::TOKEN_COMMA) {
@@ -1231,7 +1231,7 @@ static void parse_where_clauses(const tk::token* i1, const tk::token* i2, expr_t
 				if(op_name == "=") {
 					if(beg->type != tk::TOKEN_IDENTIFIER) {
 						if(i1 == original_i1_cached) {
-							throw formula_error("There is 'where <expression' but 'where name=<expression>' was needed",
+							throw formula_error("There is 'where <expression>' but 'where name=<expression>' was needed",
 								tokens_to_string(begin, end - 1), *i1->filename, i1->line_number);
 						} else {
 							throw formula_error("There is 'where <expression>=<expression>' but 'where name=<expression>' was needed",
