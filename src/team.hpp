@@ -302,7 +302,7 @@ public:
 	void set_flag_icon(const std::string& flag_icon) { info_.flag_icon = flag_icon; }
 
 	const std::string& side_name() const { return info_.side_name.empty() ? info_.current_player : info_.side_name.str(); }
-	t_string side_name_tstr() const { return info_.side_name.empty() ? info_.current_player : info_.side_name; }
+	t_string side_name_tstr() const { return info_.side_name.empty() ? t_string(info_.current_player) : info_.side_name; }
 	void set_side_name(const t_string& new_name) {info_.side_name = new_name;}
 	const std::string& faction() const { return info_.faction; }
 	const t_string& faction_name() const { return info_.faction_name; }
