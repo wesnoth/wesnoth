@@ -98,6 +98,7 @@ function wml_actions.select_character()
 			canrecruit = true,
 			facing = unit.facing,
 		}, unit.x, unit.y )
+		wesnoth.sides[1].side_name = _"Li’sar"
 	else
 		wesnoth.put_unit(unit)
 	end
