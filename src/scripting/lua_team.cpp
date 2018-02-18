@@ -87,6 +87,7 @@ static int impl_side_get(lua_State *L)
 	return_bool_attrib("share_maps", t.share_maps());
 	return_bool_attrib("share_view", t.share_view());
 	return_bool_attrib("chose_random", t.chose_random());
+	return_tstring_attrib("side_name", t.side_name_tstr());
 
 	if (strcmp(m, "recruit") == 0) {
 		const std::set<std::string>& recruits = t.recruits();
@@ -151,6 +152,7 @@ static int impl_side_set(lua_State *L)
 	modify_bool_attrib("shroud", t.set_shroud(value));
 	modify_bool_attrib("fog", t.set_fog(value));
 	modify_string_attrib("flag_icon", t.set_flag_icon(value));
+	modify_tstring_attrib("side_name", t.set_side_name(value));
 	modify_string_attrib("share_vision", {
 		team::SHARE_VISION v;
 		if(v.parse(value)) {

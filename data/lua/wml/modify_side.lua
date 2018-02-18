@@ -17,6 +17,9 @@ function wesnoth.wml_actions.modify_side(cfg)
 		if cfg.user_team_name then
 			side.user_team_name = cfg.user_team_name
 		end
+		if cfg.side_name then
+			side.side_name = cfg.side_name
+		end
 		if cfg.controller then
 			side.controller = cfg.controller
 		end

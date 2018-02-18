@@ -1,4 +1,6 @@
 Version 1.13.11+dev:
+ * Lua API:
+   * Add side_name to unit proxy
  * User Interface:
    * Improved outro screen.
    * Fixed a few cases of data not displaying in the MP Join Game screen.
@@ -7,6 +9,7 @@ Version 1.13.11+dev:
  * WML engine:
    * Fixed units shown with [move_units_fake] disappearing between steps
      (bug #1516).
+   * [modify_side] now supports side_name
  * Miscellaneous and bug fixes:
    * Fixed standing animation toggle not taking immediate effect (bug
      #1653).
