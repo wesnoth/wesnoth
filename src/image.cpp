@@ -81,24 +81,18 @@ struct hash<image::locator::value>
 {
 	size_t operator()(const image::locator::value& val) const
 	{
-		using boost::hash_value;
-		using boost::hash_combine;
+		size_t hash = std::hash<unsigned>{}(val.type_);
 
-		/*
-		 * Boost 1.51.0 seems not longer accept an enumerate value in its hash
-		 * function so cast it to a type it does like.
-		 */
-		size_t hash = hash_value(static_cast<unsigned>(val.type_));
 		if(val.type_ == image::locator::FILE || val.type_ == image::locator::SUB_FILE) {
-			hash_combine(hash, val.filename_);
+			boost::hash_combine(hash, val.filename_);
 		}
 
 		if(val.type_ == image::locator::SUB_FILE) {
-			hash_combine(hash, val.loc_.x);
-			hash_combine(hash, val.loc_.y);
-			hash_combine(hash, val.center_x_);
-			hash_combine(hash, val.center_y_);
-			hash_combine(hash, val.modifications_);
+			boost::hash_combine(hash, val.loc_.x);
+			boost::hash_combine(hash, val.loc_.y);
+			boost::hash_combine(hash, val.center_x_);
+			boost::hash_combine(hash, val.center_y_);
+			boost::hash_combine(hash, val.modifications_);
 		}
 
 		return hash;
