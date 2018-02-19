@@ -180,9 +180,9 @@ namespace {
 		{ }
 
 		// Compare these nodes based on movement consumed.
-		bool operator<(const findroute_node& o) const {
-			return turns_left > o.turns_left ||
-				  (turns_left == o.turns_left && moves_left > o.moves_left);
+		bool operator<(const findroute_node& o) const
+		{
+			return std::tie(turns_left, moves_left) > std::tie(o.turns_left, o.moves_left);
 		}
 	};
 

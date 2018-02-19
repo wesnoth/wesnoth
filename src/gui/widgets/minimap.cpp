@@ -89,10 +89,7 @@ struct key_type
 
 static bool operator<(const key_type& lhs, const key_type& rhs)
 {
-	return lhs.w < rhs.w
-		   || (lhs.w == rhs.w
-			   && (lhs.h < rhs.h
-				   || (lhs.h == rhs.h && lhs.map_data < rhs.map_data)));
+	return std::tie(lhs.w, lhs.h, lhs.map_data) < std::tie(rhs.w, rhs.h, rhs.map_data);
 }
 
 /** Value type for the cache. */

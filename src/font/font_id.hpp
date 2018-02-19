@@ -19,6 +19,8 @@
 #pragma once
 
 #include <string>
+#include <tuple>
+
 #include <SDL_ttf.h>
 
 /***
@@ -42,7 +44,7 @@ struct font_id
 	}
 	bool operator<(const font_id& o) const
 	{
-		return subset < o.subset || (subset == o.subset && size < o.size) || (subset == o.subset && size == o.size && style < o.style);
+		return std::tie(subset, size, style) < std::tie(o.subset, o.size, o.style);
 	}
 
 	subset_id subset;

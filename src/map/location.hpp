@@ -24,6 +24,7 @@ class variable_set;
 #include <cstdlib>
 #include <set>
 #include <string>
+#include <tuple>
 #include <vector>
 #include <algorithm>
 #include <utility>
@@ -81,7 +82,7 @@ struct map_location {
 	bool matches_range(const std::string& xloc, const std::string& yloc) const;
 
 	// Inlining those for performance reasons
-	bool operator<(const map_location& a) const { return x < a.x || (x == a.x && y < a.y); }
+	bool operator<(const map_location& a) const { return std::tie(x, y) < std::tie(a.x, a.y); }
 	bool operator==(const map_location& a) const { return x == a.x && y == a.y; }
 	bool operator!=(const map_location& a) const { return !operator==(a); }
 

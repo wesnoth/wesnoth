@@ -64,7 +64,7 @@ namespace t_translation {
 	const terrain_code NONE_TERRAIN = terrain_code();
 
 	inline bool operator<(const terrain_code& a, const terrain_code& b)
-		{ return a.base < b.base ||  (a.base == b.base && a.overlay < b.overlay); }
+		{ return std::tie(a.base, a.overlay) < std::tie(b.base, b.overlay); };
 
 	inline bool operator==(const terrain_code& a, const terrain_code& b)
 		{ return a.base == b.base && a.overlay == b.overlay; }

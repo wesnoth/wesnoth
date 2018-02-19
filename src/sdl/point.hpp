@@ -17,6 +17,7 @@
 #include <SDL_rect.h>
 
 #include <iosfwd>
+#include <tuple>
 
 /** Holds a 2D point. */
 struct point
@@ -60,7 +61,7 @@ struct point
 
 	bool operator<(const point& point) const
 	{
-		return x < point.x || (x == point.x && y < point.y);
+		return std::tie(x, y) < std::tie(point.x, point.y);
 	}
 
 	bool operator<=(const point& point) const

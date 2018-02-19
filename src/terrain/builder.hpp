@@ -353,7 +353,7 @@ public:
 			/** sort by layer first then by basey */
 			bool operator<(const rule_image_rand& o) const
 			{
-				return ri->layer < o.ri->layer || (ri->layer == o.ri->layer && ri->basey < o.ri->basey);
+				return std::tie(ri->layer, ri->basey) < std::tie(o.ri->layer, o.ri->basey);
 			}
 
 			const rule_image* ri;
