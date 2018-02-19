@@ -171,7 +171,7 @@ if ! [ -x "$(command -v brew)" ]; then
         exit 1
 fi
 
-BREW_PACKAGES="boost cairo fontconfig freetype gettext glib graphite2 harfbuzz libffi libpng openssl@1.1 pcre pixman readline wget"
+BREW_PACKAGES="boost cairo fontconfig freetype gettext glib graphite2 harfbuzz libffi libpng openssl@1.1 pango pcre pixman readline wget"
 for PACKAGE in ${BREW_PACKAGES}; do
         brew_install ${PACKAGE}
 done
