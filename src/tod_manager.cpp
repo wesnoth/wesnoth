@@ -234,10 +234,10 @@ const time_of_day tod_manager::get_illuminated_time_of_day(const unit_map & unit
 		int most_sub = 0;
 
 		// Find the "illuminates" effects from units that can affect loc.
-		map_location locs[7];
+		std::array<map_location, 7> locs;
 		locs[0] = loc;
-		get_adjacent_tiles(loc,locs+1);
-		for ( size_t i = 0; i != 7; ++i ) {
+		get_adjacent_tiles(loc, locs.data() + 1); // start at [1]
+		for ( size_t i = 0; i < locs.size(); ++i ) {
 			const unit_map::const_iterator itor = units.find(locs[i]);
 			if (itor != units.end() &&
 			    itor->get_ability_bool("illuminates", *resources::gameboard) &&

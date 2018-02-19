@@ -275,9 +275,9 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
 		display::get_singleton()->invalidate(loc);
 		// Need to also invalidate adjacent hexes to get rid of the
 		// "fog edge" graphics.
-		map_location adjacent[6];
-		get_adjacent_tiles(loc, adjacent);
-		for ( int i = 0; i != 6; ++i )
+		adjacent_loc_array_t adjacent;
+		get_adjacent_tiles(loc, adjacent.data());
+		for (unsigned i = 0; i < adjacent.size(); ++i )
 			display::get_singleton()->invalidate(adjacent[i]);
 	}
 
@@ -511,9 +511,9 @@ bool shroud_clearer::clear_dest(const map_location &dest, const unit &viewer)
 
 	// Clear the adjacent hexes (will be seen even if vision is 0, and the
 	// graphics do not work so well for an isolated cleared hex).
-	map_location adjacent[6];
-	get_adjacent_tiles(dest, adjacent);
-	for ( int i = 0; i != 6; ++i )
+	adjacent_loc_array_t adjacent;
+	get_adjacent_tiles(dest, adjacent.data());
+	for (unsigned i = 0; i < adjacent.size(); ++i )
 		if ( clear_loc(viewing_team, adjacent[i], dest, real_loc, viewer_id,
 		               true, enemies, friends) )
 			cleared_something = true;

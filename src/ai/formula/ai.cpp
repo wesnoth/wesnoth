@@ -221,10 +221,10 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
         const map_location::DIRECTION preferred = destination.get_relative_dir(src);
 
         int best_rating = 100;//smaller is better
-        map_location adj[6];
-        get_adjacent_tiles(destination,adj);
+        adjacent_loc_array_t adj;
+        get_adjacent_tiles(destination,adj.data());
 
-        for(size_t n = 0; n != 6; ++n) {
+        for(size_t n = 0; n < adj.size(); ++n) {
                 if(resources::gameboard->map().on_board(adj[n]) == false) {
                         continue;
                 }
@@ -606,9 +606,9 @@ variant formula_ai::get_keeps() const
 			for(size_t y = 0; y != size_t(resources::gameboard->map().h()); ++y) {
 				const map_location loc(x,y);
 				if(resources::gameboard->map().is_keep(loc)) {
-					map_location adj[6];
-					get_adjacent_tiles(loc,adj);
-					for(size_t n = 0; n != 6; ++n) {
+					adjacent_loc_array_t adj;
+					get_adjacent_tiles(loc,adj.data());
+					for(size_t n = 0; n < adj.size(); ++n) {
 						if(resources::gameboard->map().is_castle(adj[n])) {
 							vars.emplace_back(std::make_shared<location_callable>(loc));
 							break;

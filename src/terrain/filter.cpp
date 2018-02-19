@@ -199,8 +199,8 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 
 	//Allow filtering on adjacent locations
 	if(cfg_.has_child("filter_adjacent_location")) {
-		map_location adjacent[6];
-		get_adjacent_tiles(loc, adjacent);
+		adjacent_loc_array_t adjacent;
+		get_adjacent_tiles(loc, adjacent.data());
 		const vconfig::child_list& adj_cfgs = cfg_.get_children("filter_adjacent_location");
 		vconfig::child_list::const_iterator i, i_end, i_begin = adj_cfgs.begin();
 		for (i = i_begin, i_end = adj_cfgs.end(); i != i_end; ++i) {

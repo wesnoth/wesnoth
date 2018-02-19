@@ -51,10 +51,10 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	assert(defend_it != units.end());
 
 	// See if the target is a threat to our leader or an ally's leader.
-	map_location adj[6];
-	get_adjacent_tiles(target,adj);
+	adjacent_loc_array_t adj;
+	get_adjacent_tiles(target,adj.data());
 	size_t tile;
-	for(tile = 0; tile != 6; ++tile) {
+	for(tile = 0; tile < adj.size(); ++tile) {
 		const unit_map::const_iterator leader = units.find(adj[tile]);
 		if(leader != units.end() && leader->can_recruit() && !ai_obj.current_team().is_enemy(leader->side())) {
 			break;

@@ -149,9 +149,9 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
 
-	map_location adjacent[6];
-	get_adjacent_tiles(loc,adjacent);
-	for(int i = 0; i != 6; ++i) {
+	adjacent_loc_array_t adjacent;
+	get_adjacent_tiles(loc,adjacent.data());
+	for(unsigned i = 0; i < adjacent.size(); ++i) {
 		const unit_map::const_iterator it = units.find(adjacent[i]);
 		if (it == units.end() || it->incapacitated())
 			continue;
@@ -190,9 +190,9 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
 
-	map_location adjacent[6];
-	get_adjacent_tiles(loc,adjacent);
-	for(int i = 0; i != 6; ++i) {
+	adjacent_loc_array_t adjacent;
+	get_adjacent_tiles(loc,adjacent.data());
+	for(unsigned i = 0; i < adjacent.size(); ++i) {
 		const unit_map::const_iterator it = units.find(adjacent[i]);
 		if (it == units.end() || it->incapacitated())
 			continue;
@@ -312,8 +312,8 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 		if ( !unit_filter(vconfig(afilter)).set_use_flat_tod(illuminates).matches(*this, loc) )
 			return false;
 
-	map_location adjacent[6];
-	get_adjacent_tiles(loc,adjacent);
+	adjacent_loc_array_t adjacent;
+	get_adjacent_tiles(loc,adjacent.data());
 
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
@@ -946,8 +946,8 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing_, "filter_defender"))
 		return false;
 
-	map_location adjacent[6];
-	get_adjacent_tiles(self_loc_, adjacent);
+	adjacent_loc_array_t adjacent;
+	get_adjacent_tiles(self_loc_, adjacent.data());
 
 	// Filter the adjacent units.
 	for (const config &i : special.child_range("filter_adjacent"))

@@ -122,9 +122,9 @@ std::set<map_location> editor_map::get_contiguous_terrain_tiles(const map_locati
 	queue.push_back(start);
 	//this is basically a breadth-first search along adjacent hexes
 	do {
-		map_location adj[6];
-		get_adjacent_tiles(queue.front(), adj);
-		for (int i = 0; i < 6; ++i) {
+		adjacent_loc_array_t adj;
+		get_adjacent_tiles(queue.front(), adj.data());
+		for (unsigned i = 0; i < adj.size(); ++i) {
 			if (on_board_with_border(adj[i]) && get_terrain(adj[i]) == terrain
 			&& result.find(adj[i]) == result.end()) {
 				result.insert(adj[i]);

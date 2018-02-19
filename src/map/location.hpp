@@ -19,6 +19,7 @@
 class config;
 class variable_set;
 
+#include <array>
 #include <cmath>
 #include <cstdlib>
 #include <set>
@@ -124,6 +125,8 @@ struct map_location {
 
 	int x, y;
 };
+
+using adjacent_loc_array_t = std::array<map_location, 6>;
 
 /** Function which tells if two locations are adjacent. */
 bool tiles_adjacent(const map_location& a, const map_location& b);

@@ -207,7 +207,7 @@ namespace {
 			pq.pop_back();
 			n.in = search_counter;
 
-			get_adjacent_tiles(n.loc_, &locs[0]);
+			get_adjacent_tiles(n.loc_, locs.data());
 			for (int i = teleports.count(n.loc_) ? locs.size() : 6; i-- > 0;) {
 				if (!locs[i].valid(map.w(), map.h())) continue;
 
@@ -444,10 +444,10 @@ DEFINE_WFL_FUNCTION(castle_locs, 1, 1)
 
 				visited_locs.insert(loc);
 
-				map_location adj[6];
-				get_adjacent_tiles(loc, adj);
+				adjacent_loc_array_t adj;
+				get_adjacent_tiles(loc, adj.data());
 
-				for(int n = 0; n != 6; ++n) {
+				for(unsigned n = 0; n < adj.size(); ++n) {
 					if (resources::gameboard->map().on_board(adj[n]) && visited_locs.find( adj[n] ) == visited_locs.end() ) {
 						if (resources::gameboard->map().get_terrain_info(adj[n]).is_keep() ||
 								resources::gameboard->map().get_terrain_info(adj[n]).is_castle() ) {

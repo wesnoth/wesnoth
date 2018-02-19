@@ -456,8 +456,8 @@ bool default_map_generator_job::generate_river_internal(const height_map& height
 	}
 
 	map_location current_loc(x,y);
-	map_location adj[6];
-	get_adjacent_tiles(current_loc,adj);
+	adjacent_loc_array_t adj;
+	get_adjacent_tiles(current_loc,adj.data());
 	std::shuffle(std::begin(adj), std::end(adj), rng_);
 
 	// Mark that we have attempted from this map_location
@@ -629,9 +629,9 @@ static map_location place_village(const t_translation::ter_map& map,
 			}
 
 			int rating = child["rating"];
-			map_location adj[6];
-			get_adjacent_tiles(map_location(i.x,i.y),adj);
-			for(size_t n = 0; n != 6; ++n) {
+			adjacent_loc_array_t adj;
+			get_adjacent_tiles(map_location(i.x,i.y),adj.data());
+			for(size_t n = 0; n < adj.size(); ++n) {
 				if(adj[n].x < 0 || adj[n].y < 0 ||
 						adj[n].x >= map.w ||
 						adj[n].y >= map.h) {
@@ -658,8 +658,8 @@ static void flood_name(const map_location& start, const std::string& name, std::
 	const t_translation::ter_match& tile_types, const terrain_map& terrain,
 	unsigned width, unsigned height,
 	size_t label_count, std::map<map_location,std::string>* labels, const std::string& full_name) {
-	map_location adj[6];
-	get_adjacent_tiles(start,adj);
+	adjacent_loc_array_t adj;
+	get_adjacent_tiles(start,adj.data());
 	size_t n;
 	//if adjacent tiles are tiles and unnamed, name them
 	for(n = 0; n < 6; n++) {
@@ -1060,8 +1060,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				const map_location& last = *(step-1);
 				const map_location& next = *(step+1);
 
-				map_location adj[6];
-				get_adjacent_tiles(*step,adj);
+				adjacent_loc_array_t adj;
+				get_adjacent_tiles(*step,adj.data());
 
 				int direction = -1;
 
@@ -1290,8 +1290,8 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 				const map_location loc(res.x-data.width/3,res.y-data.height/3);
 
-				map_location adj[6];
-				get_adjacent_tiles(loc,adj);
+				adjacent_loc_array_t adj;
+				get_adjacent_tiles(loc,adj.data());
 
 				std::string name_type = "village";
 				const t_translation::ter_list

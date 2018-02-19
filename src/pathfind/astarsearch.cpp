@@ -196,7 +196,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 
 		int i = locs.size();
 
-		get_adjacent_tiles(n.curr, &locs[0]);
+		get_adjacent_tiles(n.curr, locs.data());
 
 		for (; i-- > 0;) {
 			if (!locs[i].valid(width, height, border)) continue;

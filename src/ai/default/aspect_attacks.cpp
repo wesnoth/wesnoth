@@ -109,8 +109,8 @@ std::shared_ptr<attacks_vector> aspect_attacks_base::analyze_targets() const
 				if (!is_allowed_enemy(*j)) {
 					continue;
 				}
-				map_location adjacent[6];
-				get_adjacent_tiles(j->get_location(), adjacent);
+				adjacent_loc_array_t adjacent;
+				get_adjacent_tiles(j->get_location(), adjacent.data());
 				attack_analysis analysis;
 				analysis.target = j->get_location();
 				analysis.vulnerability = 0.0;
@@ -130,7 +130,7 @@ void aspect_attacks_base::do_attack_analysis(
 	                 const move_map& srcdst, const move_map& dstsrc,
 					 const move_map& fullmove_srcdst, const move_map& fullmove_dstsrc,
 	                 const move_map& enemy_srcdst, const move_map& enemy_dstsrc,
-					 const map_location* tiles, bool* used_locations,
+					 const adjacent_loc_array_t& tiles, bool* used_locations,
 	                 std::vector<map_location>& units,
 	                 std::vector<attack_analysis>& result,
 					 attack_analysis& cur_analysis,
@@ -193,8 +193,8 @@ void aspect_attacks_base::do_attack_analysis(
                bool is_flanked = false;
                int enemy_units_around = 0;
                int accessible_tiles = 0;
-               map_location adj[6];
-               get_adjacent_tiles(current_unit, adj);
+               adjacent_loc_array_t adj;
+               get_adjacent_tiles(current_unit, adj.data());
 
                size_t tile;
                for(tile = 0; tile != 3; ++tile) {
@@ -237,7 +237,7 @@ void aspect_attacks_base::do_attack_analysis(
 		int cur_position = -1;
 
 		// Iterate over positions adjacent to the unit, finding the best rated one.
-		for(int j = 0; j != 6; ++j) {
+		for(unsigned j = 0; j < tiles.size(); ++j) {
 
 			// If in this planned attack, a unit is already in this location.
 			if(used_locations[j]) {

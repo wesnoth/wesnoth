@@ -92,8 +92,8 @@ map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
 			if (pass_check_and_unreachable && distance > 10) continue;
 			//If the hex is empty and we do either no pass check or the hex is reachable, return it.
 			if (units.find(l) == units.end() && !pass_check_and_unreachable) return l;
-			map_location adjs[6];
-			get_adjacent_tiles(l,adjs);
+			adjacent_loc_array_t adjs;
+			get_adjacent_tiles(l,adjs.data());
 			for (const map_location &l2 : adjs)
 			{
 				if (!map.on_board(l2)) continue;
@@ -137,9 +137,9 @@ bool enemy_zoc(const team& current_team, const map_location& loc,
                const team& viewing_team, bool see_all)
 {
 	// Check the adjacent tiles.
-	map_location locs[6];
-	get_adjacent_tiles(loc,locs);
-	for (int i = 0; i != 6; ++i)
+	adjacent_loc_array_t locs;
+	get_adjacent_tiles(loc,locs.data());
+	for (unsigned i = 0; i < locs.size(); ++i)
 	{
 		const unit *u = resources::gameboard->get_visible_unit(locs[i], viewing_team, see_all);
 		if ( u  &&  current_team.is_enemy(u->side())  &&  u->emits_zoc() )
@@ -345,7 +345,7 @@ static void find_routes(
 
 		// Get the locations adjacent to current.
 		std::vector<map_location> adj_locs(6);
-		get_adjacent_tiles(cur_hex, &adj_locs[0]);
+		get_adjacent_tiles(cur_hex, adj_locs.data());
 
 		// Sort adjacents by on-boardness
 		auto off_board_it = std::partition(adj_locs.begin(), adj_locs.end(), [&index](map_location loc){

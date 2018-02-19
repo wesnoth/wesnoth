@@ -981,7 +981,7 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 {
 	std::vector<std::string> names;
 
-	std::array<map_location, 6> adjacent;
+	adjacent_loc_array_t adjacent;
 	get_adjacent_tiles(loc, adjacent.data());
 
 	enum visibility {FOG=0, SHROUD=1, CLEAR=2};
@@ -990,7 +990,7 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 	const std::string* image_prefix[] =
 		{ &game_config::fog_prefix, &game_config::shroud_prefix};
 
-	for(int i = 0; i != 6; ++i) {
+	for(int i = 0; i < 6; ++i) {
 		if(shrouded(adjacent[i])) {
 			tiles[i] = SHROUD;
 		} else if(!fogged(loc) && fogged(adjacent[i])) {
@@ -1084,7 +1084,7 @@ void display::get_terrain_images(const map_location &loc,
 	const time_of_day& tod = get_time_of_day(loc);
 
 	//get all the light transitions
-	std::array<map_location, 6> adjs;
+	adjacent_loc_array_t adjs;
 	std::array<const time_of_day*, 6> atods;
 	get_adjacent_tiles(loc, adjs.data());
 	for(size_t d = 0; d < adjs.size(); ++d){

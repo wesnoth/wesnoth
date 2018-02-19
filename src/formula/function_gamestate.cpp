@@ -29,11 +29,11 @@ namespace gamestate {
 DEFINE_WFL_FUNCTION(adjacent_locs, 1, 1)
 {
 	const map_location loc = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "adjacent_locs:location")).convert_to<location_callable>()->loc();
-	map_location adj[6];
-	get_adjacent_tiles(loc, adj);
+	adjacent_loc_array_t adj;
+	get_adjacent_tiles(loc, adj.data());
 
 	std::vector<variant> v;
-	for(int n = 0; n != 6; ++n) {
+	for(unsigned n = 0; n < adj.size(); ++n) {
 		if(resources::gameboard->map().on_board(adj[n])) {
 			v.emplace_back(std::make_shared<location_callable>(adj[n]));
 		}

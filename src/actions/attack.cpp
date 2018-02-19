@@ -1633,12 +1633,12 @@ bool backstab_check(const map_location& attacker_loc,
 		return false; // No defender
 	}
 
-	map_location adj[6];
-	get_adjacent_tiles(defender_loc, adj);
+	adjacent_loc_array_t adj;
+	get_adjacent_tiles(defender_loc, adj.data());
 
-	int i;
+	unsigned i;
 
-	for(i = 0; i != 6; ++i) {
+	for(i = 0; i < adj.size(); ++i) {
 		if(adj[i] == attacker_loc) {
 			break;
 		}

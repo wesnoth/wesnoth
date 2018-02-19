@@ -420,9 +420,9 @@ namespace { // Private helpers for move_unit()
 		const unit_map &units = resources::gameboard->units();
 
 		// Need to check each adjacent hex for hidden enemies.
-		map_location adjacent[6];
-		get_adjacent_tiles(hex, adjacent);
-		for ( int i = 0; i != 6; ++i )
+		adjacent_loc_array_t adjacent;
+		get_adjacent_tiles(hex, adjacent.data());
+		for (unsigned i = 0; i < adjacent.size(); ++i )
 		{
 			const unit_map::const_iterator neighbor_it = units.find(adjacent[i]);
 

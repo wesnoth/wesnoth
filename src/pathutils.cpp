@@ -249,9 +249,9 @@ void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
 
 		result.insert(it, it_end);
 		for(; it != it_end; ++it) {
-			map_location adj[6];
-			get_adjacent_tiles(*it, adj);
-			for(size_t i = 0; i != 6; ++i) {
+			adjacent_loc_array_t adj;
+			get_adjacent_tiles(*it, adj.data());
+			for(size_t i = 0; i < adj.size(); ++i) {
 				const map_location& loc = adj[i];
 				if ( with_border ? map.on_board_with_border(loc) :
 				                   map.on_board(loc) ) {

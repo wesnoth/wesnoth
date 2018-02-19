@@ -664,9 +664,9 @@ double move_to_targets_phase::compare_groups(const std::set<map_location>& our_g
 void move_to_targets_phase::enemies_along_path(const std::vector<map_location>& route, const move_map& dstsrc, std::set<map_location>& res)
 {
 	for(std::vector<map_location>::const_iterator i = route.begin(); i != route.end(); ++i) {
-		map_location adj[6];
-		get_adjacent_tiles(*i,adj);
-		for(size_t n = 0; n != 6; ++n) {
+		adjacent_loc_array_t adj;
+		get_adjacent_tiles(*i,adj.data());
+		for(size_t n = 0; n < adj.size(); ++n) {
 			const std::pair<move_map::const_iterator,move_map::const_iterator> itors = dstsrc.equal_range(adj[n]);
 			for(move_map::const_iterator j = itors.first; j != itors.second; ++j) {
 				res.insert(j->second);
@@ -743,10 +743,10 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 	}
 
 	if(next.valid()) {
-		map_location adj[6];
-		get_adjacent_tiles(dst,adj);
+		adjacent_loc_array_t adj;
+		get_adjacent_tiles(dst,adj.data());
 
-		direction = std::find(adj,adj+6,next) - adj;
+		direction = std::distance(adj.begin(), std::find(adj.begin(), adj.end(), next));
 	}
 
 	std::deque<map_location> preferred_moves;
@@ -803,9 +803,9 @@ bool move_to_targets_phase::move_group(const map_location& dst, const std::vecto
 			preferred_moves.erase(std::find(preferred_moves.begin(),preferred_moves.end(),best_loc));
 
 			//find locations that are 'perpendicular' to the direction of movement for further units to move to.
-			map_location adj[6];
-			get_adjacent_tiles(best_loc,adj);
-			for(size_t n = 0; n != 6; ++n) {
+			adjacent_loc_array_t adj;
+			get_adjacent_tiles(best_loc,adj.data());
+			for(size_t n = 0; n < adj.size(); ++n) {
 				if(n != direction && ((n+3)%6) != direction && map_.on_board(adj[n]) &&
 				   units_.count(adj[n]) == 0 && std::count(preferred_moves.begin(),preferred_moves.end(),adj[n]) == 0) {
 					preferred_moves.push_front(adj[n]);

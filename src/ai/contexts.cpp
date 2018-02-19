@@ -981,9 +981,9 @@ const std::set<map_location>& keeps_cache::get()
 			for(int y = 0; y != map_->h(); ++y) {
 				const map_location loc(x,y);
 				if(map_->is_keep(loc)) {
-					map_location adj[6];
-					get_adjacent_tiles(loc,adj);
-					for(size_t n = 0; n != 6; ++n) {
+					adjacent_loc_array_t adj;
+					get_adjacent_tiles(loc,adj.data());
+					for(size_t n = 0; n < adj.size(); ++n) {
 						if(map_->is_castle(adj[n])) {
 							keeps_.insert(loc);
 							break;
@@ -1058,8 +1058,8 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 	std::fill_n(ratings, 0, 6);
 	int num_used_locs = 0;
 
-	map_location locs[6];
-	get_adjacent_tiles(loc,locs);
+	adjacent_loc_array_t locs;
+	get_adjacent_tiles(loc,locs.data());
 
 	const gamemap& map_ = resources::gameboard->map();
 	unit_map& units_ = resources::gameboard->units();

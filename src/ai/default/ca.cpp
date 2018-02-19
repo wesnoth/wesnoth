@@ -1406,15 +1406,15 @@ double retreat_phase::evaluate()
 	calculate_possible_moves(dummy_possible_moves, fullmove_srcdst, fullmove_dstsrc,
 			false, true, &get_avoid());
 
-	/*map_location leader_adj[6];
+	/*adjacent_loc_array_t leader_adj;
 	if(leader != units_.end()) {
-		get_adjacent_tiles(leader->get_location(), leader_adj);
+		get_adjacent_tiles(leader->get_location(), leader_adj.data());
 	}*/
 	//int leader_adj_count = 0;
 	std::vector<map_location> leaders_adj_v;
 	for (unit_map::const_iterator leader : leaders) {
-		map_location tmp_leader_adj[6];
-		get_adjacent_tiles(leader->get_location(), tmp_leader_adj);
+		adjacent_loc_array_t tmp_leader_adj;
+		get_adjacent_tiles(leader->get_location(), tmp_leader_adj.data());
 		for (map_location &loc : tmp_leader_adj) {
 			bool found = false;
 			for (map_location &new_loc : leaders_adj_v) {

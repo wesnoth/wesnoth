@@ -381,12 +381,12 @@ void unit_mover::wait_for_anims()
 		/// not left on screen after unit movement in particular.
 		if ( disp_ ) { // Should always be true if we get here.
 			// Invalidate the hexes around the move that prompted this wait.
-			map_location arr[6];
-			get_adjacent_tiles(path_[current_-1], arr);
-			for ( unsigned i = 0; i < 6; ++i )
+			adjacent_loc_array_t arr;
+			get_adjacent_tiles(path_[current_-1], arr.data());
+			for ( unsigned i = 0; i < arr.size(); ++i )
 				disp_->invalidate(arr[i]);
-			get_adjacent_tiles(path_[current_], arr);
-			for ( unsigned i = 0; i < 6; ++i )
+			get_adjacent_tiles(path_[current_], arr.data());
+			for ( unsigned i = 0; i < arr.size(); ++i )
 				disp_->invalidate(arr[i]);
 		}
 	}
