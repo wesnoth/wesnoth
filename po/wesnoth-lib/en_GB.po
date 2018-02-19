@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 20:01+0300\n"
-"PO-Revision-Date: 2018-02-10 02:27+1100\n"
+"PO-Revision-Date: 2018-02-15 13:35+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -2254,10 +2254,8 @@ msgstr "Visit this URL with a web browser"
 
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:694
-#, fuzzy
-#| msgid "Filters on addon description, version, type or author."
 msgid "Filters on addon description, version, type or author."
-msgstr "Filters on add-on descripton, version, type or author."
+msgstr "Filters on add-on description, version, type or author."
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:706
@@ -2266,17 +2264,13 @@ msgstr "State:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:759
-#, fuzzy
-#| msgid "Leader:"
 msgid "Order:"
-msgstr "Leader:"
+msgstr "Order:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:845 data/gui/window/addon_manager.cfg:1020
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-ons Manager"
-msgstr "Add-ons"
+msgstr "Add-ons Manager"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
@@ -4980,22 +4974,18 @@ msgstr "Skip"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/window/surrender_quit.cfg:40 src/hotkey/hotkey_command.cpp:105
-#, fuzzy
-#| msgid "Create Game"
 msgid "Surrender Game"
-msgstr "Create Game"
+msgstr "Surrender Game"
 
 #. [label]: id=lblMessage
 #: data/gui/window/surrender_quit.cfg:60
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender and quit the game?"
-msgstr "Do you really want to delete this game?"
+msgstr "Do you really want to surrender and quit the game?"
 
 #. [button]: id=quit_and_surrender
 #: data/gui/window/surrender_quit.cfg:85
 msgid "Surrender & Quit"
-msgstr ""
+msgstr "Surrender & Quit"
 
 #. [label]: id=lblTitle
 #: data/gui/window/synced_choice_wait.cfg:40
@@ -5526,10 +5516,8 @@ msgid "addons_of_type^MP factions"
 msgstr "MP factions"
 
 #: src/gui/dialogs/addon/manager.cpp:206
-#, fuzzy
-#| msgid "addons_of_type^MP modifications"
 msgid "addons_of_type^Modifications"
-msgstr "MP modifications"
+msgstr "Modifications"
 
 #: src/gui/dialogs/addon/manager.cpp:207
 msgid "addons_of_type^Cores"
@@ -5549,33 +5537,31 @@ msgstr "Unknown"
 
 #: src/gui/dialogs/addon/manager.cpp:215
 msgid "addons_order^Name ($order)"
-msgstr ""
+msgstr "Name ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:218
 msgid "addons_order^Author ($order)"
-msgstr ""
+msgstr "Author ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:221
 msgid "addons_order^Size ($order)"
-msgstr ""
+msgstr "Size ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:224
 msgid "addons_order^Downloads ($order)"
-msgstr ""
+msgstr "Downloads ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:227
-#, fuzzy
-#| msgid "addons_of_type^Cores"
 msgid "addons_order^Type ($order)"
-msgstr "Cores"
+msgstr "Type ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:230
 msgid "addons_order^Last updated ($order)"
-msgstr ""
+msgstr "Last updated ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:233
 msgid "addons_order^First uploaded ($order)"
-msgstr ""
+msgstr "First uploaded ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -5640,12 +5626,12 @@ msgstr "Unknown"
 #. TRANSLATORS: ascending
 #: src/gui/dialogs/addon/manager.cpp:362
 msgid "asc"
-msgstr ""
+msgstr "asc"
 
 #. TRANSLATORS: descending
 #: src/gui/dialogs/addon/manager.cpp:366
 msgid "desc"
-msgstr ""
+msgstr "desc"
 
 #: src/gui/dialogs/addon/manager.cpp:382 src/gui/dialogs/chat_log.cpp:421
 #: src/gui/dialogs/game_cache_options.cpp:105

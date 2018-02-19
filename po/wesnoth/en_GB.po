@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 20:02+0300\n"
-"PO-Revision-Date: 2018-02-10 01:49+1100\n"
+"PO-Revision-Date: 2018-02-15 13:13+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -4064,11 +4064,10 @@ msgstr "$elem has been deprecated and may be removed at any time."
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecation_message
 #: data/lua/core.lua:174 src/deprecation.cpp:45
-#, fuzzy
-#| msgid "$elem has been deprecated and will be removed in the next version."
 msgid ""
 "$elem has been deprecated and will be removed in the next version ($version)."
-msgstr "$elem has been deprecated and will be removed in the next version."
+msgstr ""
+"$elem has been deprecated and will be removed in the next version ($version)."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecation_message
@@ -4080,10 +4079,8 @@ msgstr "$elem has been deprecated and removed."
 #. [lua]: wesnoth.deprecation_message
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:180 data/lua/core.lua:207 src/deprecation.cpp:51
-#, fuzzy
-#| msgid "Invalid deprecation level (should be 1-4)"
 msgid "Invalid deprecation level $level (should be 1-4)"
-msgstr "Invalid deprecation level (should be 1-4)"
+msgstr "Invalid deprecation level $level (should be 1-4)"
 
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:202
@@ -5487,10 +5484,8 @@ msgid "addon_type^MP campaign"
 msgstr "MP campaign"
 
 #: src/addon/info.cpp:171
-#, fuzzy
-#| msgid "addon_type^MP modification"
 msgid "addon_type^Modification"
-msgstr "MP modification"
+msgstr "Modification"
 
 #: src/addon/info.cpp:173
 msgid "addon_type^Core"
@@ -6434,13 +6429,6 @@ msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 
 #: src/gui/dialogs/addon/install_dependencies.cpp:38
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency, which is not currently "
-#| "installed. Do you wish to install it before continuing?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies, which are not "
-#| "currently installed. Do you wish to install them before continuing?"
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -6448,11 +6436,11 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are outdated or "
 "not currently installed. Do you wish to install them before continuing?"
 msgstr[0] ""
-"The selected add-on has the following dependency, which is not currently "
-"installed. Do you wish to install it before continuing?"
+"The selected add-on has the following dependency, which is outdated or not "
+"currently installed. Do you wish to install it before continuing?"
 msgstr[1] ""
-"The selected add-on has the following dependencies, which are not currently "
-"installed. Do you wish to install them before continuing?"
+"The selected add-on has the following dependencies, which are outdated or "
+"not currently installed. Do you wish to install them before continuing?"
 
 #: src/gui/dialogs/game_load.hpp:41
 msgid "No Saved Games"
@@ -6750,14 +6738,12 @@ msgstr ""
 "resource files and that file permissions are set up correctly."
 
 #: src/hotkey/command_executor.cpp:366
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to surrender the game?"
-msgstr "Do you really want to quit?"
+msgstr "Do you really want to surrender the game?"
 
 #: src/hotkey/command_executor.cpp:366
 msgid "Surrender"
-msgstr ""
+msgstr "Surrender"
 
 #: src/hotkey/command_executor.cpp:580
 msgid "Screenshot"
@@ -6969,18 +6955,12 @@ msgid "Name:"
 msgstr "Name:"
 
 #: src/menu_events.cpp:803
-#, fuzzy
-#| msgid "Clear all orders"
 msgid "Clear Labels"
-msgstr "Clear all orders"
+msgstr "Clear Labels"
 
 #: src/menu_events.cpp:804
-#, fuzzy
-#| msgid "Are you sure you want to remove the following installed add-on?"
-#| msgid_plural ""
-#| "Are you sure you want to remove the following installed add-ons?"
 msgid "Are you sure you want to clear map labels?"
-msgstr "Are you sure you want to remove the following installed add-on?"
+msgstr "Are you sure you want to clear map labels?"
 
 #: src/menu_events.cpp:999
 msgid "Search"
