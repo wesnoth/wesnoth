@@ -441,34 +441,38 @@ std::string unit_topic_generator::operator()() const {
 
 	// Print the abilities the units has, cross-reference them
 	// to their respective topics. TODO: Update this according to musthave trait effects, similar to movetype below
-	if (!type_.abilities().empty()) {
+	if(!type_.abilities_metadata().empty()) {
 		ss << _("Abilities: ");
-		for(std::vector<t_string>::const_iterator ability_it = type_.abilities().begin(),
-			ability_end = type_.abilities().end();
-			ability_it != ability_end; ++ability_it) {
-			const std::string ref_id = "ability_" + ability_it->base_str();
-			std::string lang_ability = translation::gettext(ability_it->c_str());
+
+		for(auto iter = type_.abilities_metadata().begin(); iter != type_.abilities_metadata().end(); ++iter) {
+			const std::string ref_id = ability_prefix + iter->id + iter->name.base_str();
+
+			std::string lang_ability = translation::gettext(iter->name.c_str());
 			ss << make_link(lang_ability, ref_id);
-			if (ability_it + 1 != ability_end) {
+
+			if(std::next(iter) != type_.abilities_metadata().end()) {
 				ss << ", ";
 			}
 		}
+
 		ss << "\n\n";
 	}
 
 	// Print the extra AMLA upgrade abilities, cross-reference them to their respective topics.
-	if (!type_.adv_abilities().empty()) {
+	if(!type_.adv_abilities_metadata().empty()) {
 		ss << _("Ability Upgrades: ");
-		for(std::vector<t_string>::const_iterator ability_it = type_.adv_abilities().begin(),
-				ability_end = type_.adv_abilities().end();
-				ability_it != ability_end; ++ability_it) {
-			const std::string ref_id = "ability_" + ability_it->base_str();
-			std::string lang_ability = translation::gettext(ability_it->c_str());
+
+		for(auto iter = type_.adv_abilities_metadata().begin(); iter != type_.adv_abilities_metadata().end(); ++iter) {
+			const std::string ref_id = ability_prefix + iter->id + iter->name.base_str();
+
+			std::string lang_ability = translation::gettext(iter->name.c_str());
 			ss << make_link(lang_ability, ref_id);
-			if (ability_it + 1 != ability_end) {
+
+			if(std::next(iter) != type_.adv_abilities_metadata().end()) {
 				ss << ", ";
 			}
 		}
+
 		ss << "\n\n";
 	}
 

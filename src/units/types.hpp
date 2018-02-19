@@ -185,12 +185,31 @@ public:
 	ALIGNMENT alignment() const { return alignment_; }
 	static std::string alignment_description(ALIGNMENT align, unit_race::GENDER gender = unit_race::MALE);
 
-	const std::vector<t_string>& abilities() const { return abilities_; }
-	const std::vector<t_string>& ability_tooltips() const { return ability_tooltips_; }
+	struct ability_metadata
+	{
+		explicit ability_metadata(const config& cfg);
 
-	// some extra abilities may be gained through AMLA advancements
-	const std::vector<t_string>& adv_abilities() const { return adv_abilities_; }
-	const std::vector<t_string>& adv_ability_tooltips() const { return adv_ability_tooltips_; }
+		std::string id;
+
+		t_string name;
+		t_string name_inactive;
+
+		t_string female_name;
+		t_string female_name_inactive;
+
+		t_string description;
+		t_string description_inactive;
+
+		bool affect_self;
+		bool affect_allies;
+		bool affect_enemies;
+		bool cumulative;
+	};
+
+	const std::vector<ability_metadata>& abilities_metadata() const { return abilities_; }
+
+	/** Some extra abilities that may be gained through AMLA advancements. */
+	const std::vector<ability_metadata>& adv_abilities_metadata() const { return adv_abilities_; }
 
 	bool can_advance() const { return !advances_to_.empty(); }
 
@@ -304,8 +323,7 @@ private:
 
 	const unit_race* race_;	/// Never nullptr, but may point to the null race.
 
-	std::vector<t_string> abilities_, adv_abilities_;
-	std::vector<t_string> ability_tooltips_, adv_ability_tooltips_;
+	std::vector<ability_metadata> abilities_, adv_abilities_;
 
 	bool zoc_, hide_help_, do_not_list_;
 

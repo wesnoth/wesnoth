@@ -342,6 +342,7 @@ extern const std::string race_prefix;
 extern const std::string faction_prefix;
 extern const std::string era_prefix;
 extern const std::string variation_prefix;
+extern const std::string ability_prefix;
 
 // id starting with '.' are hidden
 std::string hidden_symbol(bool hidden = true);

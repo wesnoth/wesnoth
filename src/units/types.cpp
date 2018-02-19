@@ -81,8 +81,6 @@ unit_type::unit_type(const unit_type& o)
 	, race_(o.race_)
 	, abilities_(o.abilities_)
 	, adv_abilities_(o.adv_abilities_)
-	, ability_tooltips_(o.ability_tooltips_)
-	, adv_ability_tooltips_(o.adv_ability_tooltips_)
 	, zoc_(o.zoc_)
 	, hide_help_(o.hide_help_)
 	, do_not_list_(o.do_not_list_)
@@ -134,8 +132,6 @@ unit_type::unit_type(const config& cfg, const std::string& parent_id)
 	, race_(&unit_race::null_race)
 	, abilities_()
 	, adv_abilities_()
-	, ability_tooltips_()
-	, adv_ability_tooltips_()
 	, zoc_(false)
 	, hide_help_(false)
 	, do_not_list_(cfg_["do_not_list"].to_bool(false))
@@ -154,6 +150,21 @@ unit_type::unit_type(const config& cfg, const std::string& parent_id)
 }
 
 unit_type::~unit_type()
+{
+}
+
+unit_type::ability_metadata::ability_metadata(const config& cfg)
+	: id(cfg["id"])
+	, name(cfg["name"])
+	, name_inactive(cfg["name_inactive"])
+	, female_name(cfg["female_name"])
+	, female_name_inactive(cfg["female_name_inactive"])
+	, description(cfg["description"])
+	, description_inactive(cfg["description_inactive"])
+	, affect_self(cfg["affect_self"].to_bool())
+	, affect_allies(cfg["affect_allies"].to_bool())
+	, affect_enemies(cfg["affect_enemies"].to_bool())
+	, cumulative(cfg["cumulative"].to_bool())
 {
 }
 
@@ -264,12 +275,7 @@ void unit_type::build_help_index(
 
 	if(const config& abil_cfg = cfg_.child("abilities")) {
 		for(const config::any_child& ab : abil_cfg.all_children_range()) {
-			const config::attribute_value& name = ab.cfg["name"];
-
-			if(!name.empty()) {
-				abilities_.push_back(name.t_str());
-				ability_tooltips_.push_back(ab.cfg["description"].t_str());
-			}
+			abilities_.emplace_back(ab.cfg);
 		}
 	}
 
@@ -282,12 +288,7 @@ void unit_type::build_help_index(
 			}
 
 			for(const config::any_child& ab : abil_cfg.all_children_range()) {
-				const config::attribute_value& name = ab.cfg["name"];
-
-				if(!name.empty()) {
-					adv_abilities_.push_back(name.t_str());
-					adv_ability_tooltips_.push_back(ab.cfg["description"].t_str());
-				}
+				abilities_.emplace_back(ab.cfg);
 			}
 		}
 	}

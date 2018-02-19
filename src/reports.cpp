@@ -368,14 +368,15 @@ static config unit_abilities(const unit* u)
 	config res;
 
 	boost::dynamic_bitset<> active;
-	const std::vector<std::tuple<t_string,t_string,t_string> > &abilities = u->ability_tooltips(&active);
+	const std::vector<std::tuple<std::string, t_string,t_string,t_string> > &abilities = u->ability_tooltips(&active);
 	const size_t abilities_size = abilities.size();
 	for ( size_t i = 0; i != abilities_size; ++i )
 	{
 		// Aliases for readability:
-		const std::string &base_name = std::get<0>(abilities[i]).base_str();
-		const t_string &display_name = std::get<1>(abilities[i]);
-		const t_string &description  = std::get<2>(abilities[i]);
+		const std::string& id        = std::get<0>(abilities[i]);
+		const std::string& base_name = std::get<1>(abilities[i]).base_str();
+		const t_string& display_name = std::get<2>(abilities[i]);
+		const t_string& description  = std::get<3>(abilities[i]);
 
 		std::ostringstream str, tooltip;
 
@@ -391,7 +392,7 @@ static config unit_abilities(const unit* u)
 			tooltip << "<i>" << _(" (inactive)") << "</i>";
 		tooltip << '\n' << description;
 
-		add_text(res, str.str(), tooltip.str(), "ability_" + base_name);
+		add_text(res, str.str(), tooltip.str(), "ability_" + id + base_name);
 	}
 	return res;
 }

@@ -1467,10 +1467,10 @@ public:
 	 *                            will be the same length as the returned one and will indicate whether or
 	 *                            not the corresponding ability is active.
 	 *
-	 * @returns                   A list of triples consisting of (in order) base name, male or female name as
-	 *                            appropriate for the unit, and description.
+	 * @returns                   A list of triples consisting of (in order) id, base name, male or female
+	 *                            name as appropriate for the unit, and description.
 	 */
-	std::vector<std::tuple<t_string, t_string, t_string>>
+	std::vector<std::tuple<std::string, t_string, t_string, t_string>>
 	ability_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 
 	/** Get a list of all abilities by ID. */

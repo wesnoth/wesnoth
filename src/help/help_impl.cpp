@@ -92,6 +92,7 @@ const std::string race_prefix = "race_";
 const std::string faction_prefix = "faction_";
 const std::string era_prefix = "era_";
 const std::string variation_prefix = "variation_";
+const std::string ability_prefix = "ability_";
 
 bool section_is_referenced(const std::string &section_id, const config &cfg)
 {
@@ -486,69 +487,66 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 	return topics;
 }
 
-
 std::vector<topic> generate_ability_topics(const bool sort_generated)
 {
 	std::vector<topic> topics;
-	std::map<t_string, std::string> ability_description;
-	std::map<t_string, std::set<std::string, string_less> > ability_units;
-	// Look through all the unit types, check if a unit of this type
-	// should have a full description, if so, add this units abilities
-	// for display. We do not want to show abilities that the user has
-	// not encountered yet.
-	for (const unit_type_data::unit_type_map::value_type &type_mapping : unit_types.types())
-	{
-		const unit_type &type = type_mapping.second;
-		if (description_type(type) == FULL_DESCRIPTION) {
 
-			std::vector<t_string> const* abil_vecs[2];
-			abil_vecs[0] = &type.abilities();
-			abil_vecs[1] = &type.adv_abilities();
+	std::map<std::string, const unit_type::ability_metadata*> ability_topic_data;
+	std::map<std::string, std::set<std::string, string_less>> ability_units;
 
-			std::vector<t_string> const* desc_vecs[2];
-			desc_vecs[0] = &type.ability_tooltips();
-			desc_vecs[1] = &type.adv_ability_tooltips();
+	const auto parse = [&](const unit_type& type, const unit_type::ability_metadata& ability) {
+		// NOTE: neither ability names nor ability ids are necessarily unique. Creating
+		// topics for either each unique name or each unique id means certain abilities
+		// will be excluded from help. So... the ability topic ref id is a combination
+		// of id and (untranslated) name. It's rather ugly, but it works.
+		const std::string topic_ref = ability.id + ability.name.base_str();
 
-			for(int i=0; i<2; ++i) {
-				const std::vector<t_string>& abil_vec = *abil_vecs[i];
-				const std::vector<t_string>& desc_vec = *desc_vecs[i];
-				for(size_t j=0; j < abil_vec.size(); ++j) {
-					const t_string& abil_name = abil_vec[j];
-					const std::string abil_desc =
-						j >= desc_vec.size() ? "" : desc_vec[j].str();
+		ability_topic_data.emplace(topic_ref, &ability);
 
-					ability_description.emplace(abil_name, abil_desc);
+		if(!type.hide_help()) {
+			// Add a link in the list of units with this ability
+			// We put the translated name at the beginning of the hyperlink,
+			// so the automatic alphabetic sorting of std::set can use it
+			const std::string link = make_link(type.type_name(), unit_prefix + type.id());
+			ability_units[topic_ref].insert(link);
+		}
+	};
 
-					if (!type.hide_help()) {
-						//add a link in the list of units with this ability
-						std::string type_name = type.type_name();
-						std::string ref_id = unit_prefix +  type.id();
-						//we put the translated name at the beginning of the hyperlink,
-						//so the automatic alphabetic sorting of std::set can use it
-						std::string link = make_link(type_name, ref_id);
-						ability_units[abil_name].insert(link);
-					}
-				}
-			}
+	// Look through all the unit types. If a unit of that type would have a full
+	// description, add its abilities to the potential topic list. We don't want
+	// to show abilities that the user has not encountered yet.
+	for(const auto& type_mapping : unit_types.types()) {
+		const unit_type& type = type_mapping.second;
+
+		if(description_type(type) != FULL_DESCRIPTION) {
+			continue;
+		}
+
+		for(const unit_type::ability_metadata& ability : type.abilities_metadata()) {
+			parse(type, ability);
+		}
+
+		for(const unit_type::ability_metadata& ability : type.adv_abilities_metadata()) {
+			parse(type, ability);
 		}
 	}
 
-	for (std::map<t_string, std::string>::iterator a = ability_description.begin(); a != ability_description.end(); ++a) {
-		// we generate topic's id using the untranslated version of the ability's name
-		std::string id = "ability_" + a->first.base_str();
-		std::stringstream text;
-		text << a->second;  //description
+	for(const auto& a : ability_topic_data) {
+		std::ostringstream text;
+		text << a.second->description;
 		text << "\n\n" << _("<header>text='Units with this ability'</header>") << "\n";
-		std::set<std::string, string_less> &units = ability_units[a->first];
-		for (std::set<std::string, string_less>::iterator u = units.begin(); u != units.end(); ++u) {
-			text << font::unicode_bullet << " " << (*u) << "\n";
+
+		for(const auto& u : ability_units[a.first]) { // first is the topic ref id
+			text << font::unicode_bullet << " " << u << "\n";
 		}
 
-		topics.emplace_back(a->first, id, text.str());
+		topics.emplace_back(a.second->name, ability_prefix + a.first, text.str());
 	}
 
-	if (sort_generated)
+	if(sort_generated) {
 		std::sort(topics.begin(), topics.end(), title_less());
+	}
+
 	return topics;
 }
 

@@ -259,9 +259,9 @@ namespace {
 	}
 }
 
-std::vector<std::tuple<t_string, t_string, t_string> > unit::ability_tooltips(boost::dynamic_bitset<>* active_list) const
+std::vector<std::tuple<std::string, t_string, t_string, t_string> > unit::ability_tooltips(boost::dynamic_bitset<>* active_list) const
 {
-	std::vector<std::tuple<t_string,t_string,t_string> > res;
+	std::vector<std::tuple<std::string, t_string,t_string,t_string> > res;
 	if ( active_list )
 		active_list->clear();
 
@@ -274,6 +274,7 @@ std::vector<std::tuple<t_string, t_string, t_string> > unit::ability_tooltips(bo
 
 			if (!name.empty()) {
 				res.emplace_back(
+						ab.cfg["id"],
 						ab.cfg["name"].t_str(),
 						name,
 						ab.cfg["description"].t_str() );
@@ -292,6 +293,7 @@ std::vector<std::tuple<t_string, t_string, t_string> > unit::ability_tooltips(bo
 
 			if (!name.empty()) {
 				res.emplace_back(
+						ab.cfg["id"],
 						default_value(ab.cfg, "name_inactive", "name").t_str(),
 						name,
 						default_value(ab.cfg, "description_inactive", "description").t_str() );

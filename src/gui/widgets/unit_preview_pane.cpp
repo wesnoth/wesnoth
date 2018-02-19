@@ -41,19 +41,7 @@
 #include "units/helper.hpp"
 #include "units/unit.hpp"
 
-#include <boost/iterator/zip_iterator.hpp>
-
 #include "utils/functional.hpp"
-
-namespace {
-	template <typename... T>
-	auto zip(const T&... containers) -> boost::iterator_range<boost::zip_iterator<decltype(boost::make_tuple(std::begin(containers)...))>>
-	{
-		auto zip_begin = boost::make_zip_iterator(boost::make_tuple(std::begin(containers)...));
-		auto zip_end = boost::make_zip_iterator(boost::make_tuple(std::end(containers)...));
-		return boost::make_iterator_range(zip_begin, zip_end);
-	}
-}
 
 namespace gui2
 {
@@ -366,7 +354,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 		}
 
 		// Print ability details
-		if(!type.abilities().empty()) {
+		if(!type.abilities_metadata().empty()) {
 
 			auto& header_node = add_name_tree_node(
 				tree_details_->get_root_node(),
@@ -374,13 +362,15 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 				"<b>" + _("Abilities") + "</b>"
 			);
 
-			for(const auto& ab : zip(type.abilities() , type.ability_tooltips())) {
-				add_name_tree_node(
-					header_node,
-					"item",
-					boost::get<0>(ab),
-					(formatter() << "<span size='x-large'>" << boost::get<0>(ab) << "</span>\n" << boost::get<1>(ab)).str()
-				);
+			for(const auto& ab : type.abilities_metadata()) {
+				if(!ab.name.empty()) {
+					add_name_tree_node(
+						header_node,
+						"item",
+						ab.name,
+						(formatter() << "<span size='x-large'>" << ab.name << "</span>\n" << ab.description).str()
+					);
+				}
 			}
 		}
 
@@ -519,8 +509,8 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 				add_name_tree_node(
 					header_node,
 					"item",
-					std::get<1>(ab),
-					std::get<2>(ab)
+					std::get<2>(ab),
+					std::get<3>(ab)
 				);
 			}
 		}
