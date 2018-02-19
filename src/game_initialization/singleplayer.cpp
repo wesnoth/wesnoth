@@ -78,7 +78,7 @@ bool enter_create_mode(saved_game& state, jump_to_campaign_info jump_to_campaign
 				return false;
 			}
 
-			create_eng.set_current_level(campaign - campaigns.begin());
+			create_eng.set_current_level(std::distance(campaigns.begin(), campaign));
 		}
 
 		state.classification().random_mode = random_mode;

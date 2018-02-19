@@ -497,13 +497,13 @@ void node::remove_child(const string_span& name, size_t index)
 		return;
 	}
 
-	remove_ordered_child(itor - children_.begin(), index);
+	remove_ordered_child(std::distance(children_.begin(), itor), index);
 
 	debug_delete(list[index]);
 	list.erase(list.begin() + index);
 
 	if(list.empty()) {
-		remove_ordered_child_list(itor - children_.begin());
+		remove_ordered_child_list(std::distance(children_.begin(), itor));
 		children_.erase(itor);
 	}
 }
@@ -659,7 +659,7 @@ int node::get_children(const string_span& name)
 {
 	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
 		if(i->first == name) {
-			return i - children_.begin();
+			return std::distance(children_.begin(), i);
 		}
 	}
 

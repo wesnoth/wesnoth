@@ -335,7 +335,7 @@ void game_board::write_config(config & cfg) const
 {
 	cfg["next_underlying_unit_id"] = unit_id_manager_.get_save_id();
 	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		int side_num = t - teams_.begin() + 1;
+		int side_num = std::distance(teams_.begin(), t) + 1;
 
 		config& side = cfg.add_child("side");
 		t->write(side);

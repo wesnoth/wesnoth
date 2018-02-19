@@ -667,7 +667,7 @@ void config::remove_children(config_key_type key, std::function<bool(const confi
 
 	auto child_it = std::find_if(pos->second.begin(), pos->second.end(), predicate);
 	while(child_it != pos->second.end()) {
-		unsigned index = child_it - pos->second.begin();
+		unsigned index = std::distance(pos->second.begin(), child_it);
 		remove_child(pos, index);
 		child_it = std::find_if(pos->second.begin() + index, pos->second.end(), predicate);
 	}

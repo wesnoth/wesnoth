@@ -487,7 +487,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 		const unit_filter lfilt(leader_filter); // Note that if leader_filter is null, this correctly gives a null filter that matches all units.
 		for(std::vector<unit_ptr>::iterator u = avail.begin(); u != avail.end(); ++u) {
 			DBG_NG << "checking unit against filter...\n";
-			scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
+			scoped_recall_unit auto_store("this_unit", player_id, std::distance(avail.begin(), u));
 			if (ufilt(*(*u), map_location())) {
 				DBG_NG << (*u)->id() << " matched the filter...\n";
 				const unit_ptr to_recruit = *u;

@@ -582,10 +582,12 @@ boost::dynamic_bitset<> addon_manager::get_type_filter_visibility(const window& 
 		boost::dynamic_bitset<> res;
 
 		for(const auto& a : addons_) {
-			int index = std::find_if(type_filter_types_.begin(), type_filter_types_.end(),
-				[&a](const std::pair<ADDON_TYPE, std::string>& entry) {
-					return entry.first == a.second.type;
-				}) - type_filter_types_.begin();
+			int index = std::distance(type_filter_types_.begin(),
+				std::find_if(type_filter_types_.begin(), type_filter_types_.end(),
+					[&a](const std::pair<ADDON_TYPE, std::string>& entry) {
+						return entry.first == a.second.type;
+					})
+				);
 			res.push_back(toggle_states[index]);
 		}
 
@@ -622,7 +624,7 @@ void addon_manager::on_order_changed(window& window, unsigned int sort_column, l
 	menu_button& order_menu = find_widget<menu_button>(&window, "order_dropdown", false);
 	auto order_it = std::find_if(all_orders_.begin(), all_orders_.end(),
 		[sort_column](const addon_order& order) {return order.column_index == static_cast<int>(sort_column);});
-	int index = 2 * (order_it - all_orders_.begin());
+	int index = 2 * (std::distance(all_orders_.begin(), order_it));
 	if(order == listbox::SORT_DESCENDING) {
 		++index;
 	}

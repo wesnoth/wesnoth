@@ -193,7 +193,7 @@ namespace
 
 					for(std::vector<std::string>::const_iterator a = options.begin(); a != options.end(); ++a) {
 						if (std::find(allowed.begin(), allowed.end(), *a) != allowed.end()){
-							res = a - options.begin();
+							res = std::distance(options.begin(), a);
 							break;
 						}
 					}

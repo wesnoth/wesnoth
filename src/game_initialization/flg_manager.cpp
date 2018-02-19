@@ -444,7 +444,7 @@ void flg_manager::select_default_faction()
 		});
 
 	if(default_faction_it != choosable_factions_.end()) {
-		set_current_faction(default_faction_it - choosable_factions_.begin());
+		set_current_faction(std::distance(choosable_factions_.begin(), default_faction_it));
 	} else {
 		set_current_faction(0u);
 	}

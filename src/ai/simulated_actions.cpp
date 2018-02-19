@@ -195,7 +195,7 @@ void helper_check_village(const map_location& loc, int side){
 	// Strip the village off all other sides.
 	int old_owner_side = 0;
 	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i){
-		int i_side = i - teams.begin() + 1;
+		int i_side = std::distance(teams.begin(), i) + 1;
 		if(!t || has_leader || t->is_enemy(i_side)){
 			if(i->owns_village(loc)){
 				old_owner_side = i_side;

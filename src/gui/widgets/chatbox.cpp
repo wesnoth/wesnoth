@@ -429,9 +429,9 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 
 void chatbox::close_window_button_callback(std::string room_name, bool& handled, bool& halt)
 {
-	const int index = std::find_if(open_windows_.begin(), open_windows_.end(),
+	const int index = std::distance(open_windows_.begin(), std::find_if(open_windows_.begin(), open_windows_.end(),
 		[&room_name](const lobby_chat_window& room) { return room.name == room_name; }
-	) - open_windows_.begin();
+	));
 
 	close_window(index);
 

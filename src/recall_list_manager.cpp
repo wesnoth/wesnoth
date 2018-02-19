@@ -70,7 +70,7 @@ size_t recall_list_manager::find_index(const std::string & unit_id) const
 	std::vector<unit_ptr >::const_iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
 		[&unit_id](const unit_ptr & ptr) { return ptr->id() == unit_id; });
 
-	return it - recall_list_.begin();
+	return std::distance(recall_list_.begin(), it);
 }
 
 unit_ptr recall_list_manager::extract_if_matches_id(const std::string &unit_id)

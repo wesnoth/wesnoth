@@ -80,7 +80,7 @@ int tree_view::remove_node(tree_view_node* node)
 
 	assert(node_itor != siblings.end());
 
-	const int position = node_itor - siblings.begin();
+	const int position = std::distance(siblings.begin(), node_itor);
 
 	siblings.erase(node_itor);
 

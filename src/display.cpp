@@ -249,7 +249,7 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 
 	set_idle_anim_rate(preferences::idle_anim_rate());
 
-	zoom_index_ = std::find(zoom_levels.begin(), zoom_levels.end(), zoom_) - zoom_levels.begin();
+	zoom_index_ = std::distance(zoom_levels.begin(), std::find(zoom_levels.begin(), zoom_levels.end(), zoom_));
 
 	image::set_zoom(zoom_);
 
@@ -1737,7 +1737,7 @@ const theme::action* display::action_pressed()
 {
 	for(auto i = action_buttons_.begin(); i != action_buttons_.end(); ++i) {
 		if((*i)->pressed()) {
-			const size_t index = i - action_buttons_.begin();
+			const size_t index = std::distance(action_buttons_.begin(), i);
 			if(index >= theme_.actions().size()) {
 				assert(false);
 				return nullptr;
@@ -1753,7 +1753,7 @@ const theme::menu* display::menu_pressed()
 {
 	for(auto i = menu_buttons_.begin(); i != menu_buttons_.end(); ++i) {
 		if((*i)->pressed()) {
-			const size_t index = i - menu_buttons_.begin();
+			const size_t index = std::distance(menu_buttons_.begin(), i);
 			if(index >= theme_.menus().size()) {
 				assert(false);
 				return nullptr;
@@ -1774,7 +1774,7 @@ void display::enable_menu(const std::string& item, bool enable)
 		);
 
 		if(hasitem != menu->items().end()) {
-			const size_t index = menu - theme_.menus().begin();
+			const size_t index = std::distance(theme_.menus().begin(), menu);
 			if(index >= menu_buttons_.size()) {
 				continue;
 			}
@@ -2055,7 +2055,7 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 		}
 
 		new_zoom = *iter;
-		zoom_index_ = iter - zoom_levels.begin();
+		zoom_index_ = std::distance(zoom_levels.begin(), iter);
 	}
 
 	const SDL_Rect& area = map_area();

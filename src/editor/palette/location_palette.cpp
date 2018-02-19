@@ -384,7 +384,7 @@ void location_palette::add_item(const std::string& id)
 		pos = items_.size() - 1;
 	}
 	else {
-		pos = itor - items_.begin();
+		pos = std::distance(items_.begin(), itor);
 	}
 	selected_item_ = id;
 	items_start_ = std::max(pos - num_visible_items() + 1, items_start_);

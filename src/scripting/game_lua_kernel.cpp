@@ -3619,7 +3619,7 @@ int game_lua_kernel::intf_set_time_of_day(lua_State * L)
 	if (lua_isstring(L, 2)) {
 		area_id = lua_tostring(L, 1);
 		std::vector<std::string> area_ids = tod_man().get_area_ids();
-		area_i = std::find(area_ids.begin(), area_ids.end(), area_id) - area_ids.begin();
+		area_i = std::distance(area_ids.begin(), std::find(area_ids.begin(), area_ids.end(), area_id));
 		if(area_i >= area_ids.size()) {
 			return luaL_argerror(L, 1, "invalid time area ID");
 		}

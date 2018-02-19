@@ -971,7 +971,7 @@ public:
 			}
 
 			const std::string formula_str(i+1, j);
-			const int pos = i - str.begin();
+			const int pos = std::distance(str.begin(), i);
 			if(j - i == 2 && (i[1] == '(' || i[1] == '\'' || i[1] == ')')) {
 				// Bracket contained nothing but a quote or parenthesis.
 				// This means it was intended as a literal quote or square bracket.

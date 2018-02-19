@@ -135,8 +135,8 @@ void preferences_dialog::set_resolution_list(menu_button& res_list, CVideo& vide
 		options.push_back(std::move(option));
 	}
 
-	const unsigned current_res = std::find(resolutions_.begin(), resolutions_.end(),
-		video.current_resolution()) - resolutions_.begin();
+	const unsigned current_res = std::distance(resolutions_.begin(), std::find(resolutions_.begin(), resolutions_.end(),
+		video.current_resolution()));
 
 	res_list.set_values(options, current_res);
 }
@@ -314,7 +314,7 @@ void preferences_dialog::post_build(window& window)
 		[&](widget& w) { disable_widget_on_toggle<slider>(window, w, "turbo_slider"); }, true);
 
 	const auto accl_load = [this]()->int {
-		return std::find(accl_speeds_.begin(), accl_speeds_.end(), turbo_speed()) - accl_speeds_.begin() + 1;
+		return std::distance(accl_speeds_.begin() + 1, std::find(accl_speeds_.begin(), accl_speeds_.end(), turbo_speed()));
 	};
 
 	const auto accl_save = [this](int i) {
@@ -652,8 +652,8 @@ void preferences_dialog::post_build(window& window)
 					option_ids.push_back(choice["id"]);
 				}
 
-				const unsigned selected = std::find(option_ids.begin(), option_ids.end(),
-					get(pref_name, option["default"].str())) - option_ids.begin();
+				const unsigned selected = std::distance(option_ids.begin(), std::find(option_ids.begin(), option_ids.end(),
+					get(pref_name, option["default"].str())));
 
 				menu_button* setter_widget = build_single_widget_instance<menu_button>("menu_button");
 				setter_widget->set_id("setter");

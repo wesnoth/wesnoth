@@ -221,7 +221,7 @@ side_actions_container::iterator side_actions_container::erase(iterator position
 				turn_beginnings_.pop_back();
 			}
 		} else {
-			size_t turn_of_position = beginning - turn_beginnings_.begin();
+			size_t turn_of_position = std::distance(turn_beginnings_.begin(), beginning);
 			// If we still have action this turn
 			if(get_turn(next) == turn_of_position) {
 				*beginning = next; // We modify the beginning of the turn

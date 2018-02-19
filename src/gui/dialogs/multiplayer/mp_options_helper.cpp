@@ -288,7 +288,7 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 				auto iter = std::find(combo_values.begin(), combo_values.end(), val.str());
 
 				if(iter != combo_values.end()) {
-					menu->set_selected(iter - combo_values.begin());
+					menu->set_selected(std::distance(combo_values.begin(), iter));
 				}
 
 				menu->connect_click_handler(

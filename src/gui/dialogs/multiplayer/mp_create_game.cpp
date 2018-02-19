@@ -198,7 +198,7 @@ void mp_create_game::pre_show(window& win)
 		});
 
 		if(index != level_types_.end()) {
-			return index - level_types_.begin();
+			return std::distance(level_types_.begin(), index);
 		}
 
 		return 0;
@@ -278,9 +278,9 @@ void mp_create_game::pre_show(window& win)
 	rfm_options[1]["tooltip"] = _("No Mirror: No two players will get the same faction");
 	rfm_options[2]["tooltip"] = _("No Ally Mirror: No two allied players will get the same faction");
 
-	const int initial_index = std::find(rfm_types_.begin(), rfm_types_.end(),
+	const int initial_index = std::distance(rfm_types_.begin(), std::find(rfm_types_.begin(), rfm_types_.end(),
 		mp_game_settings::RANDOM_FACTION_MODE::string_to_enum(prefs::random_faction_mode(), mp_game_settings::RANDOM_FACTION_MODE::DEFAULT))
-		- rfm_types_.begin();
+	);
 
 	menu_button& rfm_menu_button = find_widget<menu_button>(&win, "random_faction_mode", false);
 
@@ -462,7 +462,7 @@ void mp_create_game::sync_with_depcheck(window& window)
 			selected_game_index_ = new_level_index.second;
 
 			auto& game_types_list = find_widget<menu_button>(&window, "game_types", false);
-			game_types_list.set_value(std::find_if(level_types_.begin(), level_types_.begin(), [&](const level_type_info& info){ return info.first == new_level_index.first; }) - level_types_.begin());
+			game_types_list.set_value(std::distance(level_types_.begin(), std::find_if(level_types_.begin(), level_types_.begin(), [&](const level_type_info& info){ return info.first == new_level_index.first; })));
 
 			if(different_type) {
 				display_games_of_type(window, new_level_index.first, create_engine_.current_level().id());
@@ -661,7 +661,7 @@ void mp_create_game::regenerate_random_map(window& window)
 int mp_create_game::convert_to_game_filtered_index(const unsigned int initial_index)
 {
 	const std::vector<size_t>& filtered_indices = create_engine_.get_filtered_level_indices(create_engine_.current_level_type());
-	return std::find(filtered_indices.begin(), filtered_indices.end(), initial_index) - filtered_indices.begin();
+	return std::distance(filtered_indices.begin(), std::find(filtered_indices.begin(), filtered_indices.end(), initial_index));
 }
 
 void mp_create_game::update_details(window& win)

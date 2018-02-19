@@ -137,7 +137,7 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 
 				team_name = "Team " + std::to_string(original_team_names.size());
 			} else {
-				team_name = "Team " + std::to_string(name_itor - original_team_names.begin() + 1);
+				team_name = "Team " + std::to_string(std::distance(original_team_names.begin(), name_itor) + 1);
 			}
 
 			user_team_name = team_prefix + side_str;
@@ -971,7 +971,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 
 			if(iter != color_options_.end()) {
 				color_id_ = *iter;
-				color_ = iter - color_options_.begin();
+				color_ = std::distance(color_options_.begin(), iter);
 			} else {
 				color_options_.push_back(custom_color);
 

@@ -1674,7 +1674,7 @@ void console_handler::do_choose_level()
 		}
 	}
 	std::sort(options.begin(), options.end());
-	int choice = std::lower_bound(options.begin(), options.end(), next) - options.begin();
+	int choice = std::distance(options.begin(), std::lower_bound(options.begin(), options.end(), next));
 	{
 		gui2::dialogs::simple_item_selector dlg(_("Choose Scenario (Debug!)"), "", options);
 		dlg.set_selected_index(choice);

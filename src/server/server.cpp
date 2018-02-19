@@ -139,7 +139,7 @@ static bool make_delete_diff(const simple_wml::node& src,
 	if(itor == children.end()) {
 		return false;
 	}
-	const int index = itor - children.begin();
+	const int index = std::distance(children.begin(), itor);
 	simple_wml::node& del = top->add_child("delete_child");
 	del.set_attr_int("index", index);
 	del.add_child(type);
@@ -171,7 +171,7 @@ static bool make_change_diff(const simple_wml::node& src,
 
 	simple_wml::node& diff = *top;
 	simple_wml::node& del = diff.add_child("delete_child");
-	const int index = itor - children.begin();
+	const int index = std::distance(children.begin(), itor);
 	del.set_attr_int("index", index);
 	del.add_child(type);
 
@@ -1168,7 +1168,7 @@ void server::cleanup_game(game* game_ptr)
 	const simple_wml::node::child_list::const_iterator g =
 			std::find(games.begin(), games.end(), game_ptr->description());
 	if (g != games.end()) {
-		const size_t index = g - games.begin();
+		const size_t index = std::distance(games.begin(), g);
 		gamelist->remove_child("game", index);
 	} else {
 		// Can happen when the game ends before the scenario was transferred.
@@ -1634,7 +1634,7 @@ void server::remove_player(socket_ptr socket)
 		g->remove_player(socket, true, false);
 
 	const simple_wml::node::child_list& users = games_and_users_list_.root().children("user");
-	const size_t index = std::find(users.begin(), users.end(), iter->info().config_address()) - users.begin();
+	const size_t index = std::distance(users.begin(), std::find(users.begin(), users.end(), iter->info().config_address()));
 
 	// Notify other players in lobby
 	simple_wml::document diff;
