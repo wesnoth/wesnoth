@@ -294,7 +294,7 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 		case hotkey::HOTKEY_REPLAY_RESET:
 			return playsingle_controller_.get_replay_controller() && playsingle_controller_.get_replay_controller()->can_execute_command(cmd, index);
 		case hotkey::HOTKEY_REPLAY_EXIT:
-			return playsingle_controller_.is_replay();
+			return playsingle_controller_.is_replay() && (!playsingle_controller_.is_networked_mp() || resources::recorder->at_end());
 		default: return play_controller::hotkey_handler::can_execute_command(cmd, index);
 	}
 	return res;
