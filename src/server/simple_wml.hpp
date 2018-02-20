@@ -37,7 +37,7 @@ public:
 	{}
 	string_span(const char* str, int size) : str_(str), size_(size)
 	{}
-	string_span(const char* str) : str_(str), size_(strlen(str))
+	explicit string_span(const char* str) : str_(str), size_(strlen(str))
 	{}
 	string_span(const char* begin, const char* end) : str_(begin), size_(end - begin)
 	{}

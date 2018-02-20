@@ -1399,7 +1399,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 		// If there is no shroud, then tell players in the lobby
 		// what the map looks like.
 		const simple_wml::node& s = *wesnothd::game::starting_pos(g.level().root());
-		desc.set_attr_dup("map_data", s["mp_shroud"].to_bool() ? "" :
+		desc.set_attr_dup("map_data", s["mp_shroud"].to_bool() ? simple_wml::string_span("") :
 																 s["map_data"]);
 		if (const simple_wml::node* e = data.child("era")) {
 			if (!e->attr("require_era").to_bool(true)) {
