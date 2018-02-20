@@ -636,7 +636,7 @@ const mp_game_settings& create_engine::get_parameters()
 
 	int era_index = current_level().allow_era_choice() ? current_era_index_ : 0;
 	state_.mp_settings().mp_era = eras_[era_index]->id;
-	state_.mp_settings().mp_era_name = (*eras_[era_index]->cfg)["name"].str();
+	state_.mp_settings().mp_era_name = eras_[era_index]->name;
 
 	return state_.mp_settings();
 }
