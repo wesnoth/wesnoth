@@ -40,7 +40,7 @@ std::stack<std::set<int>> label_contexts;
 
 namespace font
 {
-floating_label::floating_label(const std::string& text, const surface& surf)
+	floating_label::floating_label(const std::string& text, const surface& surf)
 #if 0
 	: img_(),
 #else
@@ -66,6 +66,10 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 	, border_(0)
 	, scroll_(ANCHOR_LABEL_SCREEN)
 	, use_markup_(true)
+{
+}
+floating_label::floating_label(const std::string& text)
+	: floating_label(text, surface())
 {
 }
 
@@ -107,7 +111,7 @@ surface floating_label::create_surface()
 
 		if(foreground == nullptr) {
 			ERR_FT << "could not create floating label's text" << std::endl;
-			return nullptr;
+			return surface();
 		}
 
 		// combine foreground text with its background

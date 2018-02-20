@@ -827,7 +827,7 @@ bool display::screenshot(const std::string& filename, bool map_screenshot)
 #endif
 
 		//NOTE: need to be sure that we free this huge surface (is it enough?)
-		map_screenshot_surf_ = nullptr;
+		map_screenshot_surf_ = surface();
 
 		// restore normal rendering
 		map_screenshot_= false;

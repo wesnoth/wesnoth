@@ -708,7 +708,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 	show_cursor_at_ = SDL_GetTicks();
 
 	if(changed || old_cursor != cursor_ || old_selstart != selstart_ || old_selend != selend_) {
-		text_image_ = nullptr;
+		text_image_ = surface();
 		handle_text_changed(text_);
 	}
 

@@ -439,7 +439,7 @@ public:
 		{ mouseover_hex_overlay_ = image; }
 
 	void clear_mouseover_hex_overlay()
-		{ mouseover_hex_overlay_ = nullptr; }
+		{ mouseover_hex_overlay_ = surface(); }
 
 	/** Toggle to continuously redraw the screen. */
 	static void toggle_benchmark();
@@ -608,7 +608,7 @@ public:
 	 * Schedule the minimap for recalculation.
 	 * Useful if any terrain in the map has changed.
 	 */
-	void recalculate_minimap() {minimap_ = nullptr; redrawMinimap_ = true; }
+	void recalculate_minimap() {minimap_ = surface(); redrawMinimap_ = true; }
 
 	/**
 	 * Schedule the minimap to be redrawn.

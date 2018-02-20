@@ -71,10 +71,10 @@ surface make_neutral_surface(const surface &surf)
 {
 	if(surf == nullptr) {
 		std::cerr << "null neutral surface...\n";
-		return nullptr;
+		return surface();
 	}
 
-	surface result = SDL_ConvertSurface(surf,&get_neutral_pixel_format(),0);
+	surface result(SDL_ConvertSurface(surf,&get_neutral_pixel_format(),0));
 
 	return result;
 }
@@ -83,20 +83,25 @@ surface create_neutral_surface(int w, int h)
 {
 	if (w < 0 || h < 0) {
 		std::cerr << "error : neutral surface with negative dimensions\n";
-		return nullptr;
+		return surface();
 	}
 
 	SDL_PixelFormat format = get_neutral_pixel_format();
 
 #if SDL_VERSION_ATLEAST(2, 0, 6)
-	surface result = SDL_CreateRGBSurfaceWithFormat(0, w, h, format.BitsPerPixel, format.format);
+	surface result(SDL_CreateRGBSurfaceWithFormat(0, w, h, format.BitsPerPixel, format.format));
 #else
-	surface result = SDL_CreateRGBSurface(0, w, h,
+	surface result(
+		SDL_CreateRGBSurface(0,
+			w,
+			h,
 			format.BitsPerPixel,
 			format.Rmask,
 			format.Gmask,
 			format.Bmask,
-			format.Amask);
+			format.Amask
+		)
+	);
 #endif
 
 	return result;
@@ -109,7 +114,7 @@ surface stretch_surface_horizontal(
 	assert(SDL_ALPHA_TRANSPARENT==0);
 
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	if(static_cast<int>(w) == surf->w) {
 		return surf;
@@ -123,7 +128,7 @@ surface stretch_surface_horizontal(
 
 	if(src == nullptr || dst == nullptr) {
 		std::cerr << "Could not create surface to scale onto\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -154,7 +159,7 @@ surface stretch_surface_vertical(
 	assert(SDL_ALPHA_TRANSPARENT==0);
 
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	if(static_cast<int>(h) == surf->h) {
 		return surf;
@@ -168,7 +173,7 @@ surface stretch_surface_vertical(
 
 	if(src == nullptr || dst == nullptr) {
 		std::cerr << "Could not create surface to scale onto\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -193,7 +198,7 @@ surface stretch_surface_vertical(
 surface scale_surface_xbrz(const surface & surf, size_t z)
 {
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	if (z > 5) {
 		std::cerr << "Cannot use xbrz scaling with zoom factor > 5." << std::endl;
@@ -216,7 +221,7 @@ surface scale_surface_xbrz(const surface & surf, size_t z)
 
 	if(src == nullptr || dst == nullptr) {
 		std::cerr << "Could not create surface to scale onto\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -235,7 +240,7 @@ surface scale_surface_nn (const surface & surf, int w, int h)
 	assert(SDL_ALPHA_TRANSPARENT==0);
 
 	if (surf == nullptr)
-		return nullptr;
+		return surface();
 
 	if(w == surf->w && h == surf->h) {
 		return surf;
@@ -255,7 +260,7 @@ surface scale_surface_nn (const surface & surf, int w, int h)
 
 	if(src == nullptr || dst == nullptr) {
 		std::cerr << "Could not create surface to scale onto\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -275,7 +280,7 @@ surface scale_surface(const surface &surf, int w, int h)
 	assert(SDL_ALPHA_TRANSPARENT==0);
 
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	if(w == surf->w && h == surf->h) {
 		return surf;
@@ -295,7 +300,7 @@ surface scale_surface(const surface &surf, int w, int h)
 
 	if(src == nullptr || dst == nullptr) {
 		std::cerr << "Could not create surface to scale onto\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -407,7 +412,7 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 	assert(SDL_ALPHA_TRANSPARENT==0);
 
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	if(w == surf->w && h == surf->h) {
 		return surf;
@@ -422,7 +427,7 @@ surface scale_surface_legacy(const surface &surf, int w, int h)
 
 	if(src == nullptr || dst == nullptr) {
 		std::cerr << "Could not create surface to scale onto\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -547,7 +552,7 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 	assert(SDL_ALPHA_TRANSPARENT==0);
 
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	if(w == surf->w && h == surf->h) {
 		return surf;
@@ -567,7 +572,7 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 
 	if(src == nullptr || dst == nullptr) {
 		std::cerr << "Could not create surface to scale onto\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -645,7 +650,7 @@ surface tile_surface(const surface& surf, int w, int h, bool centered)
 
 	if (src == nullptr || dest == nullptr) {
 		std::cerr << "failed to make neutral surface\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -681,7 +686,7 @@ surface tile_surface(const surface& surf, int w, int h, bool centered)
 surface adjust_surface_color(const surface &surf, int red, int green, int blue)
 {
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	if((red == 0 && green == 0 && blue == 0)) {
 		surface temp = surf; // TODO: remove temp surface
@@ -692,7 +697,7 @@ surface adjust_surface_color(const surface &surf, int red, int green, int blue)
 
 	if(nsurf == nullptr) {
 		std::cerr << "failed to make neutral surface\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -726,12 +731,12 @@ surface adjust_surface_color(const surface &surf, int red, int green, int blue)
 surface greyscale_image(const surface &surf)
 {
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	surface nsurf(make_neutral_surface(surf));
 	if(nsurf == nullptr) {
 		std::cerr << "failed to make neutral surface\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -771,12 +776,12 @@ surface greyscale_image(const surface &surf)
 surface monochrome_image(const surface &surf, const int threshold)
 {
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	surface nsurf(make_neutral_surface(surf));
 	if(nsurf == nullptr) {
 		std::cerr << "failed to make neutral surface\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -811,12 +816,12 @@ surface monochrome_image(const surface &surf, const int threshold)
 surface sepia_image(const surface &surf)
 {
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	surface nsurf(make_neutral_surface(surf));
 	if(nsurf == nullptr) {
 		std::cerr << "failed to make neutral surface\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -853,12 +858,12 @@ surface sepia_image(const surface &surf)
 surface negative_image(const surface &surf, const int thresholdR, const int thresholdG, const int thresholdB)
 {
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	surface nsurf(make_neutral_surface(surf));
 	if(nsurf == nullptr) {
 		std::cerr << "failed to make neutral surface\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -896,12 +901,12 @@ surface negative_image(const surface &surf, const int thresholdR, const int thre
 surface alpha_to_greyscale(const surface &surf)
 {
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	surface nsurf(make_neutral_surface(surf));
 	if(nsurf == nullptr) {
 		std::cerr << "failed to make neutral surface\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -924,12 +929,12 @@ surface alpha_to_greyscale(const surface &surf)
 surface wipe_alpha(const surface &surf)
 {
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	surface nsurf(make_neutral_surface(surf));
 	if(nsurf == nullptr) {
 		std::cerr << "failed to make neutral surface\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -952,14 +957,14 @@ surface wipe_alpha(const surface &surf)
 surface shadow_image(const surface &surf)
 {
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	// we blur it, and reuse the neutral surface created by the blur function
 	surface nsurf (blur_alpha_surface(surf, 2));
 
 	if(nsurf == nullptr) {
 		std::cerr << "failed to blur the shadow surface\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -988,12 +993,12 @@ surface shadow_image(const surface &surf)
 
 surface swap_channels_image(const surface& surf, channel r, channel g, channel b, channel a) {
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	surface nsurf(make_neutral_surface(surf));
 	if(nsurf == nullptr) {
 		std::cerr << "failed to make neutral surface\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -1024,7 +1029,7 @@ surface swap_channels_image(const surface& surf, channel r, channel g, channel b
 						newRed = alpha;
 						break;
 					default:
-						return nullptr;
+						return surface();
 				}
 
 				switch (g) {
@@ -1041,7 +1046,7 @@ surface swap_channels_image(const surface& surf, channel r, channel g, channel b
 						newGreen = alpha;
 						break;
 					default:
-						return nullptr;
+						return surface();
 				}
 
 				switch (b) {
@@ -1058,7 +1063,7 @@ surface swap_channels_image(const surface& surf, channel r, channel g, channel b
 						newBlue = alpha;
 						break;
 					default:
-						return nullptr;
+						return surface();
 				}
 
 				switch (a) {
@@ -1075,7 +1080,7 @@ surface swap_channels_image(const surface& surf, channel r, channel g, channel b
 						newAlpha = alpha;
 						break;
 					default:
-						return nullptr;
+						return surface();
 				}
 
 				*beg = (newAlpha << 24) | (newRed << 16) | (newGreen << 8) | newBlue;
@@ -1091,7 +1096,7 @@ surface swap_channels_image(const surface& surf, channel r, channel g, channel b
 surface recolor_image(surface surf, const color_range_map& map_rgb)
 {
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	if(map_rgb.empty()) {
 		return surf;
@@ -1100,7 +1105,7 @@ surface recolor_image(surface surf, const color_range_map& map_rgb)
 	surface nsurf(make_neutral_surface(surf));
 	if(nsurf == nullptr) {
 		std::cerr << "failed to make neutral surface" << std::endl;
-		return nullptr;
+		return surface();
 	}
 
 	surface_lock lock(nsurf);
@@ -1130,14 +1135,14 @@ surface recolor_image(surface surf, const color_range_map& map_rgb)
 surface brighten_image(const surface &surf, fixed_t amount)
 {
 	if(surf == nullptr) {
-		return nullptr;
+		return surface();
 	}
 
 	surface nsurf(make_neutral_surface(surf));
 
 	if(nsurf == nullptr) {
 		std::cerr << "could not make neutral surface...\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -1181,14 +1186,14 @@ void adjust_surface_alpha(surface& surf, fixed_t amount)
 surface adjust_surface_alpha_add(const surface &surf, int amount)
 {
 	if(surf== nullptr) {
-		return nullptr;
+		return surface();
 	}
 
 	surface nsurf(make_neutral_surface(surf));
 
 	if(nsurf == nullptr) {
 		std::cerr << "could not make neutral surface...\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -1219,7 +1224,7 @@ surface adjust_surface_alpha_add(const surface &surf, int amount)
 surface mask_surface(const surface &surf, const surface &mask, bool* empty_result, const std::string& filename)
 {
 	if(surf == nullptr) {
-		return nullptr;
+		return surface();
 	}
 	if(mask == nullptr) {
 		return surf;
@@ -1230,7 +1235,7 @@ surface mask_surface(const surface &surf, const surface &mask, bool* empty_resul
 
 	if(nsurf == nullptr || nmask == nullptr) {
 		std::cerr << "could not make neutral surface...\n";
-		return nullptr;
+		return surface();
 	}
 	if (nsurf->w !=  nmask->w) {
 		// we don't support efficiently different width.
@@ -1334,7 +1339,7 @@ bool in_mask_surface(const surface &surf, const surface &mask)
 surface submerge_alpha(const surface &surf, int depth, float alpha_base, float alpha_delta)
 {
 	if(surf== nullptr) {
-		return nullptr;
+		return surface();
 	}
 
 	surface nsurf(make_neutral_surface(surf));
@@ -1396,7 +1401,7 @@ surface submerge_alpha(const surface &surf, int depth, float alpha_base, float a
 surface light_surface(const surface &surf, const surface &lightmap)
 {
 	if(surf == nullptr) {
-		return nullptr;
+		return surface();
 	}
 	if(lightmap == nullptr) {
 		return surf;
@@ -1406,7 +1411,7 @@ surface light_surface(const surface &surf, const surface &lightmap)
 
 	if(nsurf == nullptr) {
 		std::cerr << "could not make neutral surface...\n";
-		return nullptr;
+		return surface();
 	}
 	if (nsurf->w != lightmap->w) {
 		// we don't support efficiently different width.
@@ -1462,14 +1467,14 @@ surface light_surface(const surface &surf, const surface &lightmap)
 surface blur_surface(const surface &surf, int depth)
 {
 	if(surf == nullptr) {
-		return nullptr;
+		return surface();
 	}
 
 	surface res = make_neutral_surface(surf);
 
 	if(res == nullptr) {
 		std::cerr << "could not make neutral surface...\n";
-		return nullptr;
+		return surface();
 	}
 
 	SDL_Rect rect {0, 0, surf->w, surf->h};
@@ -1597,14 +1602,14 @@ void blur_surface(surface& surf, SDL_Rect rect, int depth)
 surface blur_alpha_surface(const surface &surf, int depth)
 {
 	if(surf == nullptr) {
-		return nullptr;
+		return surface();
 	}
 
 	surface res = make_neutral_surface(surf);
 
 	if(res == nullptr) {
 		std::cerr << "could not make neutral surface...\n";
-		return nullptr;
+		return surface();
 	}
 
 	const int max_blur = 256;
@@ -1744,13 +1749,13 @@ surface blur_alpha_surface(const surface &surf, int depth)
 surface cut_surface(const surface &surf, const SDL_Rect& r)
 {
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	surface res = create_compatible_surface(surf, r.w, r.h);
 
 	if(res == nullptr) {
 		std::cerr << "Could not create a new surface in cut_surface()\n";
-		return nullptr;
+		return surface();
 	}
 
 	size_t sbpp = surf->format->BytesPerPixel;
@@ -1805,14 +1810,14 @@ surface blend_surface(
 		, const color_t color)
 {
 	if(surf== nullptr) {
-		return nullptr;
+		return surface();
 	}
 
 	surface nsurf(make_neutral_surface(surf));
 
 	if(nsurf == nullptr) {
 		std::cerr << "could not make neutral surface...\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -1960,14 +1965,14 @@ uint32_t get_pixel(const surface& surf, const const_surface_lock& surf_lock, int
 surface rotate_180_surface(const surface &surf)
 {
 	if ( surf == nullptr )
-		return nullptr;
+		return surface();
 
 	// Work with a "neutral" surface.
 	surface nsurf(make_neutral_surface(surf));
 
 	if ( nsurf == nullptr ) {
 		std::cerr << "could not make neutral surface...\n";
-		return nullptr;
+		return surface();
 	}
 
 	{// Code block to limit the scope of the surface lock.
@@ -2002,7 +2007,7 @@ surface rotate_180_surface(const surface &surf)
 surface rotate_90_surface(const surface &surf, bool clockwise)
 {
 	if ( surf == nullptr )
-		return nullptr;
+		return surface();
 
 	// Work with "neutral" surfaces.
 	surface dst(create_neutral_surface(surf->h, surf->w)); // Flipped dimensions.
@@ -2010,7 +2015,7 @@ surface rotate_90_surface(const surface &surf, bool clockwise)
 
 	if ( src == nullptr  ||  dst == nullptr ) {
 		std::cerr << "could not make neutral surface...\n";
-		return nullptr;
+		return surface();
 	}
 
 	{// Code block to limit the scope of the surface locks.
@@ -2039,14 +2044,14 @@ surface rotate_90_surface(const surface &surf, bool clockwise)
 surface flip_surface(const surface &surf)
 {
 	if(surf == nullptr) {
-		return nullptr;
+		return surface();
 	}
 
 	surface nsurf(make_neutral_surface(surf));
 
 	if(nsurf == nullptr) {
 		std::cerr << "could not make neutral surface...\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -2068,14 +2073,14 @@ surface flip_surface(const surface &surf)
 surface flop_surface(const surface &surf)
 {
 	if(surf == nullptr) {
-		return nullptr;
+		return surface();
 	}
 
 	surface nsurf(make_neutral_surface(surf));
 
 	if(nsurf == nullptr) {
 		std::cerr << "could not make neutral surface...\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -2097,7 +2102,7 @@ surface flop_surface(const surface &surf)
 surface create_compatible_surface(const surface &surf, int width, int height)
 {
 	if(surf == nullptr)
-		return nullptr;
+		return surface();
 
 	if(width == -1)
 		width = surf->w;
@@ -2106,10 +2111,10 @@ surface create_compatible_surface(const surface &surf, int width, int height)
 		height = surf->h;
 
 #if SDL_VERSION_ATLEAST(2, 0, 6)
-	surface s = SDL_CreateRGBSurfaceWithFormat(0, width, height, surf->format->BitsPerPixel, surf->format->format);
+	surface s(SDL_CreateRGBSurfaceWithFormat(0, width, height, surf->format->BitsPerPixel, surf->format->format));
 #else
-	surface s = SDL_CreateRGBSurface(0, width, height, surf->format->BitsPerPixel,
-		surf->format->Rmask, surf->format->Gmask, surf->format->Bmask, surf->format->Amask);
+	surface s(SDL_CreateRGBSurface(0, width, height, surf->format->BitsPerPixel,
+		surf->format->Rmask, surf->format->Gmask, surf->format->Bmask, surf->format->Amask));
 #endif
 
 	if (surf->format->palette) {
@@ -2271,12 +2276,12 @@ void blit_surface(const surface& surf,
 surface get_surface_portion(const surface &src, SDL_Rect &area)
 {
 	if (src == nullptr) {
-		return nullptr;
+		return surface();
 	}
 
 	// Check if there is something in the portion
 	if(area.x >= src->w || area.y >= src->h || area.x + area.w < 0 || area.y + area.h < 0) {
-		return nullptr;
+		return surface();
 	}
 
 	if(area.x + area.w > src->w) {
@@ -2291,7 +2296,7 @@ surface get_surface_portion(const surface &src, SDL_Rect &area)
 
 	if(dst == nullptr) {
 		std::cerr << "Could not create a new surface in get_surface_portion()\n";
-		return nullptr;
+		return surface();
 	}
 
 	sdl_copy_portion(src, &area, dst, nullptr);
