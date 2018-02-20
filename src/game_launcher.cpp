@@ -15,6 +15,7 @@
 #include "game_launcher.hpp"
 #include "game_errors.hpp"
 
+#include "ai/manager.hpp"               // for manager
 #include "preferences/credentials.hpp"
 #include "commandline_options.hpp"      // for commandline_options
 #include "config.hpp"                   // for config, etc
@@ -959,6 +960,7 @@ void game_launcher::launch_game(RELOAD_GAME_DATA reload)
 	try {
 		campaign_controller ccontroller(state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types());
 		LEVEL_RESULT result = ccontroller.play_game();
+		ai::manager::singleton_ = nullptr;
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
 		if(result == LEVEL_RESULT::VICTORY && !state_.classification().is_normal_mp_game()) {

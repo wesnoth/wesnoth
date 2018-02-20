@@ -556,6 +556,7 @@ private:
 	ai_composite& get_active_ai_for_side( side_number side );
 
 
+	friend class game_launcher;
 };
 
 } //end of namespace ai
