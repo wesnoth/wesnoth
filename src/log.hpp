@@ -99,7 +99,7 @@ typedef std::pair<const std::string, int> logd;
 class log_domain {
 	logd *domain_;
 public:
-	log_domain(char const *name, int severity = 1);
+	explicit log_domain(char const *name, int severity = 1);
 	friend class logger;
 };
 
@@ -120,9 +120,22 @@ public:
 	std::ostream &operator()(const log_domain& domain,
 		bool show_names = true, bool do_indent = false) const;
 
+	std::ostream &operator()(const char* domain_name,
+		bool show_names = true, bool do_indent = false) const
+		{
+			lg::log_domain domain(domain_name);
+			return operator()(domain, show_names, do_indent);
+		}
+
 	bool dont_log(const log_domain& domain) const
 	{
 		return severity_ > domain.domain_->second;
+	}
+
+	bool dont_log(const char* domain) const
+	{
+		const log_domain temp_domain(domain);
+		return dont_log(temp_domain);
 	}
 
 	int get_severity() const
@@ -158,6 +171,12 @@ public:
 	scope_logger(const log_domain& domain, const std::string& str) :
 		output_(nullptr)
 	{
+		if (!debug().dont_log(domain)) do_log_entry(domain, str);
+	}
+	scope_logger(const char* domain_name, const std::string& str) :
+		output_(nullptr)
+	{
+		const lg::log_domain domain(domain_name);
 		if (!debug().dont_log(domain)) do_log_entry(domain, str);
 	}
 	~scope_logger()
