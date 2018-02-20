@@ -350,7 +350,6 @@ unit::unit(const unit& o)
 	, is_healthy_(o.is_healthy_)
 	, modification_descriptions_(o.modification_descriptions_)
 	, anim_comp_(new unit_animation_component(*this, *o.anim_comp_))
-	, getsHit_(o.getsHit_)
 	, hidden_(o.hidden_)
 	, hp_bar_scaling_(o.hp_bar_scaling_)
 	, xp_bar_scaling_(o.xp_bar_scaling_)
@@ -430,7 +429,6 @@ unit::unit(const config& cfg, bool use_traits, const vconfig* vcfg)
 	, is_healthy_(false)
 	, modification_descriptions_()
 	, anim_comp_(new unit_animation_component(*this))
-	, getsHit_(0)
 	, hidden_(cfg["hidden"].to_bool(false))
 	, hp_bar_scaling_(cfg["hp_bar_scaling"].blank() ? type_->hp_bar_scaling() : cfg["hp_bar_scaling"])
 	, xp_bar_scaling_(cfg["xp_bar_scaling"].blank() ? type_->xp_bar_scaling() : cfg["xp_bar_scaling"])
@@ -724,7 +722,6 @@ unit::unit(const unit_type& u_type, int side, bool real_unit, unit_race::GENDER 
 	, is_healthy_(false)
 	, modification_descriptions_()
 	, anim_comp_(new unit_animation_component(*this))
-	, getsHit_(0)
 	, hidden_(false)
 	, modifications_()
 	, abilities_()
@@ -833,7 +830,6 @@ void unit::swap(unit & o)
 	swap(is_healthy_, o.is_healthy_);
 	swap(modification_descriptions_, o.modification_descriptions_);
 	swap(anim_comp_, o.anim_comp_);
-	swap(getsHit_, o.getsHit_);
 	swap(hidden_, o.hidden_);
 	swap(modifications_, o.modifications_);
 	swap(invisibility_cache_, o.invisibility_cache_);

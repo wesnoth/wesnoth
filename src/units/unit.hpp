@@ -1665,7 +1665,6 @@ private:
 
 	std::unique_ptr<unit_animation_component> anim_comp_;
 
-	bool getsHit_;
 	mutable bool hidden_;
 	double hp_bar_scaling_, xp_bar_scaling_;
 
