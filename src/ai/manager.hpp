@@ -30,6 +30,7 @@
 #include <stack>                        // for stack
 #include <string>                       // for string
 
+class game_launcher;
 namespace ai { class ai_composite; }  // lines 45-45
 namespace ai { class ai_context; }  // lines 42-42
 namespace ai { class component; }  // lines 43-43
@@ -556,7 +557,7 @@ private:
 	ai_composite& get_active_ai_for_side( side_number side );
 
 
-	friend class game_launcher;
+	friend class ::game_launcher;
 };
 
 } //end of namespace ai
