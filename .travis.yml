@@ -11,33 +11,33 @@ cache:
 
 matrix:
   include:
+    - os: osx
+      compiler: gcc
+      osx_image: xcode9.2
+      env: TOOL=xcodebuild
+
     - compiler: clang
-      env: CXXSTD=11 NLS=true TOOL=scons
+      env: TOOL=scons CXXSTD=11 NLS=true
       
     - compiler: gcc
-      env: CXXSTD=14 NLS=false TOOL=scons
+      env: TOOL=scons CXXSTD=14 NLS=false
       
     - compiler: gcc
-      env: CXXSTD=11 NLS=false TOOL=scons OPT=-O0
+      env: TOOL=scons CXXSTD=11 NLS=false OPT=-O0
       
     - compiler: gcc
-      env: CXXSTD=11 NLS=false TOOL=cmake
+      env: TOOL=cmake CXXSTD=11 NLS=false
       
     - compiler: clang
-      env: CXXSTD=11 NLS=false TOOL=scons OPT=-O0
+      env: TOOL=scons CXXSTD=11 NLS=false OPT=-O0
       
     - compiler: clang
-      env: CXXSTD=11 NLS=false TOOL=cmake
+      env: TOOL=cmake CXXSTD=11 NLS=false
       
     - os: osx
       compiler: clang
-      env: CXXSTD=11 NLS=false TOOL=scons OPT=-O0 BUILDER=scons
+      env: TOOL=scons CXXSTD=11 NLS=false OPT=-O0
       
-    - os: osx
-      compiler: xcodebuild
-      osx_image: xcode9.2
-      env: BUILDER=xcodebuild
-
 before_install:
     - export EXTRA_FLAGS_RELEASE=""
     - export WML_TESTS=true
@@ -55,7 +55,7 @@ before_install:
 
 install:
     - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-          if [ "$BUILDER" = "xcodebuild" ]; then
+          if [ "$TOOL" = "xcodebuild" ]; then
               travis_wait ./projectfiles/Xcode/Fix_Xcode_Dependencies;
           else
               travis_wait ./utils/travis/install_deps.sh;
@@ -68,7 +68,7 @@ install:
 
 script:
     - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-          if [ "$BUILDER" = "xcodebuild" ]; then
+          if [ "$TOOL" = "xcodebuild" ]; then
               cd ./projectfiles/Xcode;
               xcodebuild -project Wesnoth.xcodeproj -target Wesnoth;
           else
