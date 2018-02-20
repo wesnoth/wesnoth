@@ -886,23 +886,38 @@ void window::layout()
 
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
+	point size = get_best_size();
 	const point mouse = get_mouse_position();
+
 	variables_.add("mouse_x", wfl::variant(mouse.x));
 	variables_.add("mouse_y", wfl::variant(mouse.y));
 	variables_.add("window_width", wfl::variant(0));
 	variables_.add("window_height", wfl::variant(0));
+	variables_.add("best_window_width", wfl::variant(size.x));
+	variables_.add("best_window_height", wfl::variant(size.y));
 	variables_.add("size_request_mode", wfl::variant("maximum"));
+
 	get_screen_size_variables(variables_);
 
-	const int maximum_width = automatic_placement_ ? maximum_width_
-			? std::min(maximum_width_, settings::screen_width)
-			: settings::screen_width
-			: w_(variables_, &functions_);
+	int maximum_width = 0;
+	int maximum_height = 0;
 
-	const int maximum_height = automatic_placement_ ? maximum_height_
-			? std::min(maximum_height_, settings::screen_height)
-			: settings::screen_height
-			: h_(variables_, &functions_);
+	if(automatic_placement_) {
+		if(maximum_width_ > 0) {
+			maximum_width = std::min(maximum_width_, settings::screen_width);
+		} else {
+			maximum_width = settings::screen_width;
+		}
+
+		if(maximum_height_ > 0) {
+			maximum_height = std::min(maximum_height_, settings::screen_height);
+		} else {
+			maximum_height = settings::screen_height;
+		}
+	} else {
+		maximum_width  = w_(variables_, &functions_);
+		maximum_height = h_(variables_, &functions_);
+	}
 
 	/***** Handle click dismiss status. *****/
 	button* click_dismiss_button = nullptr;
@@ -987,8 +1002,7 @@ void window::layout()
 	}
 
 	/***** Get the best location for the window *****/
-	point size = get_best_size();
-
+	size = get_best_size();
 	assert(size.x <= maximum_width && size.y <= maximum_height);
 
 	point origin(0, 0);

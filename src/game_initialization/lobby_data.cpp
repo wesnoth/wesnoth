@@ -204,7 +204,7 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 	, vision()
 	, status()
 	, time_limit()
-	, vacant_slots(lexical_cast_default<int>(game["slots"], 0)) // Can't use to_int() here.
+	, vacant_slots()
 	, current_turn(0)
 	, reloaded(game["savegame"].to_bool())
 	, started(false)
@@ -411,19 +411,33 @@ game_info::game_info(const config& game, const config& game_config, const std::v
 		verified = false;
 	}
 
-	std::string turn = game["turn"];
+	// These should always be present in the data the server sends, but may or may not be empty.
+	// I'm just using child_or_empty here to preempt any cases where they might not be included.
+	const config& s = game.child_or_empty("slot_data");
+	const config& t = game.child_or_empty("turn_data");
 
-	if(!turn.empty()) {
+	if(!s.empty()) {
+		started = false;
+
+		vacant_slots = s["vacant"].to_unsigned();
+
+		if(vacant_slots > 0) {
+			status = formatter() << _n("Vacant Slot:", "Vacant Slots:", vacant_slots) << " " << vacant_slots << "/" << s["max"];
+		} else {
+			// TODO: status message for no vacant sides!
+		}
+	}
+
+	if(!t.empty()) {
 		started = true;
 
-		const std::string current_turn_string = turn.substr(0, turn.find_first_of('/'));
-		current_turn = lexical_cast<unsigned int>(current_turn_string);
+		current_turn = t["current"].to_unsigned();
+		const int max_turns = t["max"].to_int();
 
-		status = _("Turn") + " " + turn;
-	} else {
-		started = false;
-		if(vacant_slots > 0) {
-			status = _n("Vacant Slot:", "Vacant Slots:", vacant_slots) + " " + game["slots"];
+		if(max_turns > -1) {
+			status = formatter() << _("Turn") << " " << t["current"] << "/" << max_turns;
+		} else {
+			status = formatter() << _("Turn") << " " << t["current"];
 		}
 	}
 

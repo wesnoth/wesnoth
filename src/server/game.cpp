@@ -193,23 +193,6 @@ bool game::is_player(const socket_ptr& player) const
 	return std::find(players_.begin(), players_.end(), player) != players_.end();
 }
 
-namespace
-{
-std::string describe_turns(int turn, int num_turns)
-{
-	std::ostringstream buf;
-	buf << turn;
-
-	// If the game has a turn limit.
-	if(num_turns > -1) {
-		buf << '/' << num_turns;
-	}
-
-	return buf.str();
-}
-
-} // anon namespace
-
 std::string game::username(const socket_ptr& player) const
 {
 	const auto iter = player_connections_.find(player);
@@ -386,7 +369,6 @@ void game::start_game(const socket_ptr& starter)
 void game::update_game()
 {
 	started_ = false;
-	description_->set_attr("turn", "");
 
 	update_side_data();
 	describe_slots();
@@ -706,16 +688,15 @@ bool game::describe_slots()
 		++i;
 	}
 
-	std::ostringstream buf;
-	buf << available_slots << '/' << num_sides;
-	std::string descr = buf.str();
-
-	if((*description_)["slots"] != descr) {
-		description_->set_attr_dup("slots", descr.c_str());
-		return true;
-	} else {
-		return false;
+	simple_wml::node* slots_cfg = description_->child("slot_data");
+	if(!slots_cfg) {
+		slots_cfg = &description_->add_child("slot_data");
 	}
+
+	slots_cfg->set_attr_int("vacant", available_slots);
+	slots_cfg->set_attr_int("max", num_sides);
+
+	return true;
 }
 
 bool game::player_is_banned(const socket_ptr& sock) const
@@ -1320,7 +1301,14 @@ void game::process_change_turns_wml(simple_wml::document& data, const socket_ptr
 	num_turns_ = num_turns;
 
 	assert(static_cast<int>(this->current_turn()) == current_turn);
-	description_->set_attr_dup("turn", describe_turns(current_turn, num_turns_).c_str());
+
+	simple_wml::node* turns_cfg = description_->child("turn_data");
+	if(!turns_cfg) {
+		turns_cfg = &description_->add_child("turn_data");
+	}
+
+	ctw_node.copy_into(*turns_cfg);
+
 	// Don't send or store this change, all players should have gotten it by wml.
 }
 
@@ -1351,7 +1339,14 @@ bool game::end_turn()
 		return false;
 	}
 
-	description_->set_attr_dup("turn", describe_turns(current_turn(), num_turns_).c_str());
+	simple_wml::node* turns_cfg = description_->child("turn_data");
+	if(!turns_cfg) {
+		turns_cfg = &description_->add_child("turn_data");
+	}
+
+	turns_cfg->set_attr_int("current", current_turn());
+	turns_cfg->set_attr_int("max", num_turns_);
+
 	return true;
 }
 
