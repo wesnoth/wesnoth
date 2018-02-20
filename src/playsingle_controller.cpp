@@ -106,12 +106,6 @@ std::string playsingle_controller::describe_result() const
 	}
 }
 
-playsingle_controller::~playsingle_controller()
-{
-	ai::manager::get_singleton().remove_observer(this);
-	ai::manager::get_singleton().clear_ais();
-}
-
 void playsingle_controller::init_gui()
 {
 	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks()) << "\n";
