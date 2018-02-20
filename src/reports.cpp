@@ -658,7 +658,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 {
 	std::ostringstream str, tooltip;
 
-	at.set_specials_context(displayed_unit_hex, u.side() == rc.screen().playing_side());
+	at.set_specials_context(u, displayed_unit_hex, u.side() == rc.screen().playing_side());
 	int base_damage = at.damage();
 	int specials_damage = at.modified_damage(false);
 	int damage_multiplier = 100;

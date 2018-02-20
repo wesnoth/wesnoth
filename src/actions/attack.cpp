@@ -122,10 +122,10 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	}
 
 	// Get the weapon characteristics as appropriate.
-	weapon->set_specials_context(u_loc, opp_loc, attacking, opp_weapon);
+	weapon->set_specials_context(u, opp, u_loc, opp_loc, attacking, opp_weapon);
 
 	if(opp_weapon) {
-		opp_weapon->set_specials_context(opp_loc, u_loc, !attacking, weapon);
+		opp_weapon->set_specials_context(u, opp, opp_loc, u_loc, !attacking, weapon);
 	}
 
 	slows = weapon->get_special_bool("slow");
@@ -278,10 +278,10 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	}
 
 	// Get the weapon characteristics as appropriate.
-	weapon->set_specials_context(map_location::null_location(), attacking);
+	weapon->set_specials_context(u_type, map_location::null_location(), attacking);
 
 	if(opp_weapon) {
-		opp_weapon->set_specials_context(map_location::null_location(), !attacking);
+		opp_weapon->set_specials_context(u_type, map_location::null_location(), !attacking);
 	}
 
 	slows = weapon->get_special_bool("slow");
