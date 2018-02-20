@@ -287,7 +287,7 @@ static int intf_deprecated_message(lua_State* L) {
 	const DEP_LEVEL level = DEP_LEVEL(luaL_checkinteger(L, 2));
 	const std::string ver_str = lua_isnoneornil(L, 3) ? "" : luaL_checkstring(L, 3);
 	const std::string detail = luaW_checktstring(L, 4);
-	const version_info ver = ver_str.empty() ? game_config::version : ver_str;
+	const version_info ver(ver_str.empty() ? game_config::version : ver_str);
 	const std::string msg = deprecated_message(elem, level, ver, detail);
 	if(level < DEP_LEVEL::INDEFINITE || level >= DEP_LEVEL::REMOVED) {
 		// Invalid deprecation level or level 4 deprecation should raise an interpreter error

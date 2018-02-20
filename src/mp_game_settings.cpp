@@ -148,19 +148,21 @@ mp_game_settings::addon_version_info::addon_version_info(const config & cfg)
 	, name(cfg["name"])
 {
 	if (!cfg["version"].empty()) {
-		version = cfg["version"].str();
+		const version_info ver(cfg["version"].str());
+		version = ver;
 	}
 	if (!cfg["min_version"].empty()) {
-		min_version = cfg["min_version"].str();
+		const version_info min_ver(cfg["min_version"].str());
+		min_version = min_ver;
 	}
 }
 
 void mp_game_settings::addon_version_info::write(config & cfg) const {
 	if (version) {
-		cfg["version"] = *version;
+		cfg["version"] = version->str();
 	}
 	if (min_version) {
-		cfg["min_version"] = *min_version;
+		cfg["min_version"] = min_version->str();
 	}
 
 	cfg["name"]	= name;
