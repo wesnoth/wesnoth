@@ -49,17 +49,7 @@ void playturn_network_adapter::read_from_network()
 	}
 	assert(!data_.back().empty());
 
-	// TODO: remove this after 1.13.9
-	if(back.has_attribute("side_drop"))
-	{
-		config child;
-		child["side_num"] = back["side_drop"];
-		child["controller"] = back["controller"];
-		this->data_.emplace_back(config {"side_drop", child});
-		back.remove_attribute("side_drop");
-		back.remove_attribute("controller");
-	}
-	else if(!back.attribute_range().empty() )
+	if(!back.attribute_range().empty() )
 	{
 		ERR_NW << "found unexpected attribute:" <<back.debug() << std::endl;
 		this->data_.pop_back();
