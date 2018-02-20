@@ -527,7 +527,7 @@ bool game_info::can_join() const
 
 bool game_info::can_observe() const
 {
-	return (have_era && have_all_mods && observers) || preferences::is_authenticated();
+	return observers || preferences::is_authenticated();
 }
 
 const char* game_info::display_status_string() const
