@@ -545,7 +545,7 @@ namespace
 {
 struct remove_ordered
 {
-	remove_ordered(const config::child_map::iterator& iter)
+	explicit remove_ordered(const config::child_map::iterator& iter)
 		: iter_(iter)
 	{
 	}

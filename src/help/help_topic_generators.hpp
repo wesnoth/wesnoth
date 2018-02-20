@@ -30,7 +30,7 @@ class terrain_topic_generator: public topic_generator
 
 
 public:
-	terrain_topic_generator(const terrain_type& type) : type_(type) {}
+	explicit terrain_topic_generator(const terrain_type& type) : type_(type) {}
 
 	virtual std::string operator()() const;
 };

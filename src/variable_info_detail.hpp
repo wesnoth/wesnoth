@@ -128,7 +128,7 @@ struct variable_info_state
 {
 	using child_t = typename maybe_const<config, V>::type;
 
-	variable_info_state(child_t& vars)
+	explicit variable_info_state(child_t& vars)
 		: child_(&vars)
 		, key_()
 		, index_(0)

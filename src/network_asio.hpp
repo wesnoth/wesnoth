@@ -44,7 +44,7 @@ namespace network_asio
 {
 struct error : public game::error
 {
-	error(const boost::system::error_code& error)
+	explicit error(const boost::system::error_code& error)
 		: game::error(error.message())
 	{
 	}

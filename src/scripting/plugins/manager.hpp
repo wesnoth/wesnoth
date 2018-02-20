@@ -33,7 +33,7 @@ class application_lua_kernel;
 
 class plugins_manager {
 public:
-	plugins_manager(application_lua_kernel *);
+	explicit plugins_manager(application_lua_kernel *);
 	~plugins_manager();
 
 	static plugins_manager * get();	//this class is a singleton

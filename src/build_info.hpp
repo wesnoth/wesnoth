@@ -43,7 +43,7 @@ struct optional_feature
 	std::string name;
 	bool enabled;
 
-	optional_feature(const char* n) : name(n), enabled(false) {}
+	explicit optional_feature(const char* n) : name(n), enabled(false) {}
 };
 
 /**

@@ -23,7 +23,7 @@ class terrain_type
 public:
 
 	terrain_type();
-	terrain_type(const config& cfg);
+	explicit terrain_type(const config& cfg);
 	terrain_type(const terrain_type& base, const terrain_type& overlay);
 
 	const std::string& icon_image() const { return icon_image_; }

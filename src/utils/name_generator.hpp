@@ -22,7 +22,7 @@
 
 class name_generator_invalid_exception : public std::exception {
 public:
-	name_generator_invalid_exception(const char* errMessage):errMessage_(errMessage) {}
+	explicit name_generator_invalid_exception(const char* errMessage):errMessage_(errMessage) {}
 	const char* what() const NOEXCEPT { return errMessage_; }
 
 private:
@@ -42,6 +42,6 @@ public:
 class proxy_name_generator : public name_generator {
 	const name_generator& base;
 public:
-	proxy_name_generator(const name_generator& b) : base(b) {}
+	explicit proxy_name_generator(const name_generator& b) : base(b) {}
 	std::string generate() const override { return base.generate(); }
 };

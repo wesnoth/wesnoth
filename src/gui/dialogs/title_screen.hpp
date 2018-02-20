@@ -37,7 +37,7 @@ extern bool show_debug_clock_button;
 class title_screen : public modal_dialog
 {
 public:
-	title_screen(game_launcher& game);
+	explicit title_screen(game_launcher& game);
 
 	~title_screen();
 

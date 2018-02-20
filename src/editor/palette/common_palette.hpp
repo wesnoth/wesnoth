@@ -28,7 +28,7 @@ namespace editor {
  */
 struct item_group
 {
-	item_group(const config& cfg)
+	explicit item_group(const config& cfg)
 		: id(cfg["id"])
 		, name(cfg["name"].t_str())
 		, icon(cfg["icon"])
@@ -46,7 +46,7 @@ class common_palette  : public gui::widget {
 
 public:
 
-	common_palette(CVideo& video) : gui::widget(video, true) {}
+	explicit common_palette(CVideo& video) : gui::widget(video, true) {}
 
 	virtual ~common_palette() {}
 
@@ -91,7 +91,7 @@ public:
 class tristate_palette : public common_palette
 {
 public:
-	tristate_palette(CVideo& video)
+	explicit tristate_palette(CVideo& video)
 		: common_palette(video)
 	{
 	}

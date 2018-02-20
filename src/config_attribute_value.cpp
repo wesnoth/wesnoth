@@ -261,7 +261,7 @@ class attribute_numeric_visitor : public boost::static_visitor<T>
 {
 public:
 	// Constructor stores the default value.
-	attribute_numeric_visitor(T def) : def_(def) {}
+	explicit attribute_numeric_visitor(T def) : def_(def) {}
 
 	T operator()(const boost::blank&) const { return def_; }
 	T operator()(bool)                 const { return def_; }
@@ -312,7 +312,7 @@ class config_attribute_value::string_visitor : public boost::static_visitor<std:
 	const std::string default_;
 
 public:
-	string_visitor(const std::string& fallback) : default_(fallback) {}
+	explicit string_visitor(const std::string& fallback) : default_(fallback) {}
 
 	std::string operator()(const boost::blank &) const { return default_; }
 	std::string operator()(const yes_no & b)     const { return b.str(); }

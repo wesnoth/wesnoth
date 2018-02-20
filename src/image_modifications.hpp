@@ -72,7 +72,7 @@ public:
 		 * @param message_stream  Stream with the error message regarding
 		 *                        the failed operation.
 		 */
-		imod_exception(const std::stringstream& message_stream);
+		explicit imod_exception(const std::stringstream& message_stream);
 
 		/**
 		 * Constructor.
@@ -82,7 +82,7 @@ public:
 		 * @param message         String with the error message regarding
 		 *                        the failed operation.
 		 */
-		imod_exception(const std::string& message);
+		explicit imod_exception(const std::string& message);
 
 		~imod_exception() NOEXCEPT {}
 
@@ -125,7 +125,7 @@ public:
 	 * RC-map based constructor.
 	 * @param recolor_map The palette switch map.
 	 */
-	rc_modification(const color_range_map& recolor_map)
+	explicit rc_modification(const color_range_map& recolor_map)
 		: rc_map_(recolor_map)
 	{}
 	virtual surface operator()(const surface& src) const;
@@ -228,7 +228,7 @@ public:
 class bw_modification : public modification
 {
 public:
-	bw_modification(int threshold): threshold_(threshold) {}
+	explicit bw_modification(int threshold): threshold_(threshold) {}
 	virtual surface operator()(const surface& src) const;
 private:
 	int threshold_;
@@ -278,7 +278,7 @@ public:
 class adjust_alpha_modification : public modification
 {
 public:
-	adjust_alpha_modification(const std::string& formula)
+	explicit adjust_alpha_modification(const std::string& formula)
 		: formula_(formula)
 	{}
 
@@ -294,7 +294,7 @@ private:
 class adjust_channels_modification : public modification
 {
 public:
-	adjust_channels_modification(const std::vector<std::string>& formulas)
+	explicit adjust_channels_modification(const std::vector<std::string>& formulas)
 		: formulas_(formulas)
 	{
 		if(formulas_.empty()) {
@@ -323,7 +323,7 @@ private:
 class crop_modification : public modification
 {
 public:
-	crop_modification(const SDL_Rect& slice)
+	explicit crop_modification(const SDL_Rect& slice)
 		: slice_(slice)
 	{}
 	virtual surface operator()(const surface& src) const;
@@ -410,7 +410,7 @@ private:
 class light_modification : public modification
 {
 public:
-	light_modification(const surface& surf)
+	explicit light_modification(const surface& surf)
 		: surf_(surf)
 	{}
 	virtual surface operator()(const surface& src) const;
@@ -485,7 +485,7 @@ public:
 class xbrz_modification : public modification
 {
 public:
-	xbrz_modification(int z)
+	explicit xbrz_modification(int z)
 		: z_(z)
 	{}
 
@@ -501,7 +501,7 @@ private:
 class o_modification : public modification
 {
 public:
-	o_modification(float opacity)
+	explicit o_modification(float opacity)
 		: opacity_(opacity)
 	{}
 	virtual surface operator()(const surface& src) const;
@@ -561,7 +561,7 @@ private:
 class bl_modification : public modification
 {
 public:
-	bl_modification(int depth)
+	explicit bl_modification(int depth)
 		: depth_(depth)
 	{}
 	virtual surface operator()(const surface& src) const;
@@ -580,7 +580,7 @@ private:
  */
 struct background_modification : modification
 {
-	background_modification(const color_t& c): color_(c) {}
+	explicit background_modification(const color_t& c): color_(c) {}
 	virtual surface operator()(const surface &src) const;
 
 	const color_t& get_color() const

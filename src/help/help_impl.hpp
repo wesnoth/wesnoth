@@ -72,7 +72,7 @@ public:
 class text_topic_generator: public topic_generator {
 	std::string text_;
 public:
-	text_topic_generator(const std::string& t): text_(t) {}
+	explicit text_topic_generator(const std::string& t): text_(t) {}
 	virtual std::string operator()() const { return text_; }
 };
 
@@ -90,7 +90,7 @@ public:
 	{
 	}
 
-	topic_text(const std::string& t):
+	explicit topic_text(const std::string& t):
 		parsed_text_(),
 		generator_(new text_topic_generator(t))
 	{
@@ -174,7 +174,7 @@ struct section {
 class has_id
 {
 public:
-	has_id(const std::string &id) : id_(id) {}
+	explicit has_id(const std::string &id) : id_(id) {}
 	bool operator()(const topic &t) { return t.id == id_; }
 	bool operator()(const section &s) { return s.id == id_; }
 	bool operator()(const section *s) { return s != nullptr && s->id == id_; }
@@ -220,7 +220,7 @@ struct create_section
 /// Thrown when the help system fails to parse something.
 struct parse_error : public game::error
 {
-	parse_error(const std::string& msg) : game::error(msg) {}
+	explicit parse_error(const std::string& msg) : game::error(msg) {}
 };
 
 // Generator stuff below. Maybe move to a separate file? This one is

@@ -96,7 +96,7 @@ public:
 	virtual bool has_joined() { return has_joined_;}
 	virtual bool has_joined_global() { return has_joined_global_;}
 protected:
-	sdl_handler(const bool auto_join=true);
+	explicit sdl_handler(const bool auto_join=true);
 	virtual ~sdl_handler();
 	virtual std::vector<sdl_handler*> handler_members()
 	{

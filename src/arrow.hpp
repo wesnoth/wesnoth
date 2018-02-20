@@ -33,7 +33,7 @@ public:
 	arrow(const arrow&) = delete;
 	arrow& operator=(const arrow&) = delete;
 
-	arrow(bool hidden = false);
+	explicit arrow(bool hidden = false);
 	virtual ~arrow();
 
 	///Sets the arrow's visibility

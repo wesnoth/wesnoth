@@ -35,7 +35,7 @@ class config;
 class wesnothd_connection;
 struct mp_campaign_info
 {
-	mp_campaign_info(wesnothd_connection& wdc)
+	explicit mp_campaign_info(wesnothd_connection& wdc)
 		: connected_players()
 		, is_host()
 		, current_turn(0)

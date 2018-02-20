@@ -497,7 +497,7 @@ namespace implementation
 struct builder_styled_widget : public builder_widget
 {
 public:
-	builder_styled_widget(const config& cfg);
+	explicit builder_styled_widget(const config& cfg);
 
 	using builder_widget::build;
 

@@ -1034,7 +1034,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 public:
 	// convenience typedef
 	typedef map_command_handler<console_handler> chmap;
-	console_handler(menu_handler& menu_handler)
+	explicit console_handler(menu_handler& menu_handler)
 		: chmap()
 		, chat_command_handler(menu_handler, true)
 		, menu_handler_(menu_handler)
@@ -1486,7 +1486,7 @@ void console_handler::do_theme()
 
 struct save_id_matches
 {
-	save_id_matches(const std::string& save_id)
+	explicit save_id_matches(const std::string& save_id)
 		: save_id_(save_id)
 	{
 	}

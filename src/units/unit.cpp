@@ -284,7 +284,7 @@ static unit_race::GENDER generate_gender(const unit_type& u_type, const config& 
 
 struct ptr_vector_pushback
 {
-	ptr_vector_pushback(boost::ptr_vector<config>& vec) : vec_(&vec) {}
+	explicit ptr_vector_pushback(boost::ptr_vector<config>& vec) : vec_(&vec) {}
 
 	void operator()(const config& cfg)
 	{

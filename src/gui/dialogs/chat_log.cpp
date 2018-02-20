@@ -221,7 +221,7 @@ public:
 class chat_log::controller
 {
 public:
-	controller(model& m) : model_(m)
+	explicit controller(model& m) : model_(m)
 	{
 		LOG_CHAT_LOG << "Entering chat_log::controller" << std::endl;
 		LOG_CHAT_LOG << "Exiting chat_log::controller" << std::endl;

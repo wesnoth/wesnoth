@@ -202,7 +202,7 @@ class wesnothd_connection_ptr
 private:
 	friend class wesnothd_connection;
 
-	wesnothd_connection_ptr(std::shared_ptr<wesnothd_connection>&& ptr)
+	explicit wesnothd_connection_ptr(std::shared_ptr<wesnothd_connection>&& ptr)
 		: ptr_(std::move(ptr))
 	{
 	}

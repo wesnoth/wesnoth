@@ -37,7 +37,7 @@ namespace editor
 class editor_action_whole_map : public editor_action
 {
 public:
-	editor_action_whole_map(const editor_map& m)
+	explicit editor_action_whole_map(const editor_map& m)
 		: m_(m)
 	{
 	}
@@ -189,7 +189,7 @@ protected:
 class editor_action_location : public editor_action
 {
 public:
-	editor_action_location(map_location loc)
+	explicit editor_action_location(map_location loc)
 		: loc_(loc)
 	{
 	}
@@ -232,7 +232,7 @@ protected:
 class editor_action_area : public editor_action_extendable
 {
 public:
-	editor_action_area(const std::set<map_location>& area)
+	explicit editor_action_area(const std::set<map_location>& area)
 		: area_(area)
 	{
 	}
@@ -400,7 +400,7 @@ protected:
 class editor_action_apply_mask : public editor_action
 {
 public:
-	editor_action_apply_mask(const gamemap& mask)
+	explicit editor_action_apply_mask(const gamemap& mask)
 		: mask_(mask)
 	{
 	}
@@ -420,7 +420,7 @@ private:
 class editor_action_create_mask : public editor_action
 {
 public:
-	editor_action_create_mask(const editor_map& target)
+	explicit editor_action_create_mask(const editor_map& target)
 		: target_(target)
 	{
 	}
@@ -441,7 +441,7 @@ private:
 class editor_action_shuffle_area : public editor_action_area
 {
 public:
-	editor_action_shuffle_area(const std::set<map_location>& area)
+	explicit editor_action_shuffle_area(const std::set<map_location>& area)
 		: editor_action_area(area)
 	{
 	}

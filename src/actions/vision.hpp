@@ -44,8 +44,8 @@ struct clearer_info {
 	bool slowed;
 	movetype::terrain_costs costs;
 
-	clearer_info(const unit & viewer);
-	clearer_info(const config & cfg);
+	explicit clearer_info(const unit & viewer);
+	explicit clearer_info(const config & cfg);
 
 	void write(config & cfg) const;
 };

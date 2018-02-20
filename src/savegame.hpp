@@ -75,13 +75,13 @@ class load_game_exception
 	: public lua_jailbreak_exception, public std::exception
 {
 public:
-	load_game_exception(const std::string& fname)
+	explicit load_game_exception(const std::string& fname)
 		: lua_jailbreak_exception()
 		, data_(fname)
 	{
 	}
 
-	load_game_exception(load_game_metadata&& data)
+	explicit load_game_exception(load_game_metadata&& data)
 		: lua_jailbreak_exception()
 		, data_(data)
 	{

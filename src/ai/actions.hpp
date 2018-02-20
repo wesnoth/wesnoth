@@ -66,7 +66,7 @@ public:
 	/* describe the action */
 	virtual std::string do_describe() const =0;
 protected:
-	action_result( side_number side );
+	explicit action_result( side_number side );
 
 	/* do check before execution or just check. setting status_ via set_error to != cancels the execution.*/
 	virtual void do_check_before() = 0;

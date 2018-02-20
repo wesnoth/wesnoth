@@ -88,7 +88,7 @@ private:
 
 class remove_wrong_targets {
 public:
-	remove_wrong_targets(const readonly_context &context)
+	explicit remove_wrong_targets(const readonly_context &context)
 		:avoid_(context.get_avoid()), map_(resources::gameboard->map())
 	{
 	}

@@ -36,7 +36,7 @@ public:
 	/**
 	 * @param campaign The campaign the difficulty is being chosen for
 	 */
-	campaign_difficulty(const config& campaign);
+	explicit campaign_difficulty(const config& campaign);
 
 	/**
 	 * Returns the selected difficulty define after displaying.

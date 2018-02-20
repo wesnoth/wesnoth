@@ -23,7 +23,7 @@ namespace actions
 struct shroud_clearing_action
 {
 
-	shroud_clearing_action(const config& cfg)
+	explicit shroud_clearing_action(const config& cfg)
 		: route()
 		, view_info(cfg.child_or_empty("unit"))
 		, original_village_owner(cfg["village_owner"].to_int())

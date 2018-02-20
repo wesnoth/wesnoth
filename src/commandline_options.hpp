@@ -24,7 +24,7 @@
 class bad_commandline_resolution : public boost::program_options::error
 {
 public:
-    bad_commandline_resolution(const std::string& resolution);
+    explicit bad_commandline_resolution(const std::string& resolution);
 };
 
 class bad_commandline_tuple : public boost::program_options::error
@@ -42,7 +42,7 @@ class commandline_options
 friend std::ostream& operator<<(std::ostream &os, const commandline_options& cmdline_opts);
 
 public:
-	commandline_options(const std::vector<std::string>& args);
+	explicit commandline_options(const std::vector<std::string>& args);
 
 	config to_config() const; /* Used by lua scrips. Not all of the options need to be exposed here, just those exposed to lua */
 

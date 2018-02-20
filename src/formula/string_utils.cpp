@@ -37,7 +37,7 @@ template <typename T>
 class string_map_variable_set : public variable_set
 {
 public:
-	string_map_variable_set(const std::map<std::string,T>& map) : map_(map) {}
+	explicit string_map_variable_set(const std::map<std::string,T>& map) : map_(map) {}
 
 	virtual config::attribute_value get_variable_const(const std::string &key) const
 	{

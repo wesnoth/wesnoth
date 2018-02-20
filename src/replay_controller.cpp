@@ -39,7 +39,7 @@ struct replay_play_nostop : public replay_controller::replay_stop_condition
 struct replay_play_moves : public replay_controller::replay_stop_condition
 {
 	int moves_todo_;
-	replay_play_moves(int moves_todo) : moves_todo_(moves_todo) {}
+	explicit replay_play_moves(int moves_todo) : moves_todo_(moves_todo) {}
 	virtual void move_done() { --moves_todo_; }
 	virtual bool should_stop() { return moves_todo_ == 0; }
 };
@@ -48,7 +48,7 @@ struct replay_play_turn : public replay_controller::replay_stop_condition
 {
 	int turn_begin_;
 	int turn_current_;
-	replay_play_turn(int turn_begin) : turn_begin_(turn_begin), turn_current_(turn_begin) {}
+	explicit replay_play_turn(int turn_begin) : turn_begin_(turn_begin), turn_current_(turn_begin) {}
 	virtual void new_side_turn(int , int turn) { turn_current_ = turn; }
 	virtual bool should_stop() { return turn_begin_ != turn_current_; }
 };

@@ -260,7 +260,7 @@ const std::string& base_breakpoint::name() const
 
 class end_breakpoint : public base_breakpoint {
 public:
-	end_breakpoint(formula_debugger &fdb)
+	explicit end_breakpoint(formula_debugger &fdb)
 		: base_breakpoint(fdb,"End", true)
 	{
 	}
@@ -282,7 +282,7 @@ public:
 
 class step_in_breakpoint : public base_breakpoint {
 public:
-	step_in_breakpoint(formula_debugger &fdb)
+	explicit step_in_breakpoint(formula_debugger &fdb)
 		: base_breakpoint(fdb,"Step",true)
 	{
 	}
@@ -305,7 +305,7 @@ public:
 
 class step_out_breakpoint : public base_breakpoint {
 public:
-	step_out_breakpoint(formula_debugger &fdb)
+	explicit step_out_breakpoint(formula_debugger &fdb)
 		: base_breakpoint(fdb,"Step out",true), level_(fdb.get_call_stack().size()-1)
 	{
 	}
@@ -333,7 +333,7 @@ private:
 
 class next_breakpoint : public base_breakpoint {
 public:
-	next_breakpoint(formula_debugger &fdb)
+	explicit next_breakpoint(formula_debugger &fdb)
 		: base_breakpoint(fdb,"Next",true), level_(fdb.get_call_stack().size())
 	{
 	}

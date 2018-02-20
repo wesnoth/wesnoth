@@ -19,5 +19,5 @@
 #include "exceptions.hpp"
 
 struct incorrect_map_format_error : game::error {
-	incorrect_map_format_error(const std::string& message) : error(message) {}
+	explicit incorrect_map_format_error(const std::string& message) : error(message) {}
 };

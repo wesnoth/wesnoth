@@ -184,7 +184,7 @@ public:
 
 	virtual goal_ptr get_new_instance( readonly_context &context, const config &cfg ) = 0;
 
-	goal_factory( const std::string &name )
+	explicit goal_factory( const std::string &name )
 	{
 		if (is_duplicate(name)) {
 			return;
@@ -200,7 +200,7 @@ public:
 template<class GOAL>
 class register_goal_factory : public goal_factory {
 public:
-	register_goal_factory( const std::string &name )
+	explicit register_goal_factory( const std::string &name )
 		: goal_factory( name )
 	{
 	}

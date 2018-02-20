@@ -169,7 +169,7 @@ typedef std::shared_ptr<function_expression> function_expression_ptr;
 class formula_function
 {
 public:
-	formula_function(const std::string name)
+	explicit formula_function(const std::string name)
 		: name_(name)
 	{
 	}
@@ -210,7 +210,7 @@ template<typename T>
 class builtin_formula_function : public formula_function
 {
 public:
-	builtin_formula_function(const std::string& name)
+	explicit builtin_formula_function(const std::string& name)
 		: formula_function(name)
 	{
 	}
@@ -247,7 +247,7 @@ private:
 	functions_map custom_formulas_;
 
 	enum builtins_tag_t { builtins_tag };
-	function_symbol_table(builtins_tag_t)
+	explicit function_symbol_table(builtins_tag_t)
 	{
 	}
 };
@@ -255,7 +255,7 @@ private:
 class action_function_symbol_table : public function_symbol_table
 {
 public:
-	action_function_symbol_table(std::shared_ptr<function_symbol_table> parent = nullptr);
+	explicit action_function_symbol_table(std::shared_ptr<function_symbol_table> parent = nullptr);
 };
 
 class wrapper_formula : public formula_expression
@@ -266,7 +266,7 @@ public:
 	{
 	}
 
-	wrapper_formula(expression_ptr arg)
+	explicit wrapper_formula(expression_ptr arg)
 		: formula_expression(arg ? arg->get_name() : "")
 		, arg_(arg)
 	{

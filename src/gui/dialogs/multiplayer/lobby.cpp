@@ -156,7 +156,7 @@ mp_lobby::mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_con
 
 struct lobby_delay_gamelist_update_guard
 {
-	lobby_delay_gamelist_update_guard(mp_lobby& l) : l(l)
+	explicit lobby_delay_gamelist_update_guard(mp_lobby& l) : l(l)
 	{
 		l.delay_gamelist_update_ = true;
 	}

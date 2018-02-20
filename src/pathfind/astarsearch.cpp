@@ -121,7 +121,7 @@ class comp {
 	const std::vector<node>& nodes_;
 
 public:
-	comp(const std::vector<node>& n) : nodes_(n) { }
+	explicit comp(const std::vector<node>& n) : nodes_(n) { }
 	bool operator()(int a, int b) const {
 		return nodes_[b] < nodes_[a];
 	}
@@ -131,7 +131,7 @@ class indexer {
 	size_t w_;
 
 public:
-	indexer(size_t w) : w_(w) { }
+	explicit indexer(size_t w) : w_(w) { }
 	size_t operator()(const map_location& loc) const {
 		return loc.y * w_ + loc.x;
 	}

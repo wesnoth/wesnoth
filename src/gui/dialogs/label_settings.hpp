@@ -25,7 +25,7 @@ namespace dialogs
 
 class label_settings : public modal_dialog {
 public:
-	label_settings(display_context& dc);
+	explicit label_settings(display_context& dc);
 
 	/**
 	 * The execute function.

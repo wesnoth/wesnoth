@@ -29,7 +29,7 @@ typedef std::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;
 
 struct server_shutdown : public game::error
 {
-	server_shutdown(const std::string& msg) : game::error(msg) {}
+	explicit server_shutdown(const std::string& msg) : game::error(msg) {}
 };
 
 class server_base

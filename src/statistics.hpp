@@ -68,7 +68,7 @@ namespace statistics
 
 	struct scenario_context
 	{
-		scenario_context(const std::string& name);
+		explicit scenario_context(const std::string& name);
 		~scenario_context();
 	};
 

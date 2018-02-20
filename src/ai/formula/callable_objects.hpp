@@ -211,7 +211,7 @@ class position_callable : public formula_callable {
 
 	void get_inputs(formula_input_vector& inputs) const override;
 public:
-	position_callable(/*unit_map* units,*/ int chance) :
+	explicit position_callable(/*unit_map* units,*/ int chance) :
 		//units_(),
 		chance_(chance)
 	{

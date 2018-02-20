@@ -34,7 +34,7 @@ static lg::log_domain log_config("config");
 class secure_buffer : public std::vector<unsigned char>
 {
 public:
-	template<typename... T> secure_buffer(T&&... args)
+	template<typename... T> explicit secure_buffer(T&&... args)
 		: vector<unsigned char>(std::forward<T>(args)...)
 	{}
 	~secure_buffer()

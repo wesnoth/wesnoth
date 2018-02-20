@@ -225,7 +225,7 @@ namespace {
 		const std::vector<findroute_node>& nodes;
 
 		// Constructor:
-		findroute_comp(const std::vector<findroute_node>& n) : nodes(n) { }
+		explicit findroute_comp(const std::vector<findroute_node>& n) : nodes(n) { }
 		// Binary predicate evaluating the order of its arguments:
 		bool operator()(int l, int r) const {
 			return nodes[r] < nodes[l];

@@ -73,7 +73,7 @@ namespace dialogs
 class loading_screen : public modal_dialog
 {
 public:
-	loading_screen(std::function<void()> f);
+	explicit loading_screen(std::function<void()> f);
 
 	~loading_screen();
 

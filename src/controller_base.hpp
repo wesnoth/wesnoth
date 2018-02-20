@@ -63,7 +63,7 @@ class manager;
 class controller_base : public video2::draw_layering
 {
 public:
-	controller_base(const config& game_config);
+	explicit controller_base(const config& game_config);
 	virtual ~controller_base();
 
 	void play_slice(bool is_delay_enabled = true);
@@ -196,7 +196,7 @@ private:
 	class keyup_listener : public events::sdl_handler
 	{
 	public:
-		keyup_listener(controller_base& controller)
+		explicit keyup_listener(controller_base& controller)
 			: events::sdl_handler(false)
 			, controller_(controller)
 		{

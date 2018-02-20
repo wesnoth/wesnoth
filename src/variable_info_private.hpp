@@ -125,7 +125,7 @@ public:
 	// Import typedefs from base class.
 	using param_t = typename get_variable_key_visitor::param_t;
 
-	get_variable_key_visitor(const std::string& key)
+	explicit get_variable_key_visitor(const std::string& key)
 		: key_(key)
 	{
 		if(!config::valid_attribute(key_)) {
@@ -174,7 +174,7 @@ template<typename V>
 class get_variable_index_visitor : public info_visitor<V, void>
 {
 public:
-	get_variable_index_visitor(int n)
+	explicit get_variable_index_visitor(int n)
 		: n_(n)
 	{
 	}
@@ -303,7 +303,7 @@ public:
 	using result_t = typename as_range_visitor_base::result_t;
 	using param_t = typename as_range_visitor_base::param_t;
 
-	as_range_visitor_base(T&&... args)
+	explicit as_range_visitor_base(T&&... args)
 		: handler_(std::forward<T>(args)...)
 	{
 	}
@@ -329,7 +329,7 @@ public:
 	// Import typedefs from base class.
 	using param_t = typename clear_value_visitor::param_t;
 
-	clear_value_visitor(bool only_tables)
+	explicit clear_value_visitor(bool only_tables)
 		: only_tables_(only_tables)
 	{
 	}
@@ -392,7 +392,7 @@ class replace_range_h
 {
 public:
 	typedef config::child_itors result_t;
-	replace_range_h(std::vector<config>& source)
+	explicit replace_range_h(std::vector<config>& source)
 		: datasource_(source)
 	{
 	}
@@ -435,7 +435,7 @@ class insert_range_h : replace_range_h
 {
 public:
 	typedef config::child_itors result_t;
-	insert_range_h(std::vector<config>& source)
+	explicit insert_range_h(std::vector<config>& source)
 		: replace_range_h(source)
 	{
 	}
@@ -451,7 +451,7 @@ class append_range_h : insert_range_h
 {
 public:
 	typedef config::child_itors result_t;
-	append_range_h(std::vector<config>& source)
+	explicit append_range_h(std::vector<config>& source)
 		: insert_range_h(source)
 	{
 	}
@@ -468,7 +468,7 @@ class merge_range_h
 {
 public:
 	typedef void result_t;
-	merge_range_h(std::vector<config>& source)
+	explicit merge_range_h(std::vector<config>& source)
 		: datasource_(source)
 	{
 	}

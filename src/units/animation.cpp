@@ -58,7 +58,7 @@ typedef std::list<animation_branch> animation_branches;
 
 struct animation_cursor
 {
-	animation_cursor(const config& cfg)
+	explicit animation_cursor(const config& cfg)
 		: itors(cfg.all_children_range()), branches(1), parent(nullptr)
 	{
 		branches.back().attributes.merge_attributes(cfg);

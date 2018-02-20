@@ -112,7 +112,7 @@ private:
 // TODO: add messages etc
 struct editor_action_exception : public editor_exception
 {
-	editor_action_exception(const std::string& msg)
+	explicit editor_action_exception(const std::string& msg)
 		: editor_exception(msg)
 	{
 	}

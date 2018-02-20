@@ -296,7 +296,7 @@ namespace {
 	{
 		config::attribute_value &result;
 
-		vconfig_expand_visitor(config::attribute_value &r): result(r) {}
+		explicit vconfig_expand_visitor(config::attribute_value &r): result(r) {}
 		template<typename T> void operator()(const T&) const {}
 		void operator()(const std::string &s) const
 		{

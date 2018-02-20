@@ -95,7 +95,7 @@ static bool operator<(const key_type& lhs, const key_type& rhs)
 /** Value type for the cache. */
 struct value_type
 {
-	value_type(const surface& surf) : surf(surf), age(1)
+	explicit value_type(const surface& surf) : surf(surf), age(1)
 	{
 	}
 

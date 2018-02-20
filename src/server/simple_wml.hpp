@@ -27,7 +27,7 @@
 namespace simple_wml {
 
 struct error : public game::error {
-	error(const char* msg);
+	explicit error(const char* msg);
 };
 
 class string_span

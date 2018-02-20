@@ -26,7 +26,7 @@ class display;
 
 class display_chat_manager {
 public:
-	display_chat_manager(display & disp) : my_disp_(disp) {}
+	explicit display_chat_manager(display & disp) : my_disp_(disp) {}
 
 	void add_observer(const std::string& name) { observers_.insert(name); }
 	void remove_observer(const std::string& name) { observers_.erase(name); }

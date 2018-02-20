@@ -68,7 +68,7 @@ public:
 	* Constructor, which expects four reference RGB colors.
 	* @param v STL vector with the four reference colors in order.
 	*/
-	color_range(const std::vector<color_t>& v)
+	explicit color_range(const std::vector<color_t>& v)
 		: mid_(v.size()     ? v[0] : color_t(128, 128, 128))
 		, max_(v.size() > 1 ? v[1] : color_t(255, 255, 255))
 		, min_(v.size() > 2 ? v[2] : color_t(0  , 0  , 0  ))

@@ -262,7 +262,7 @@ struct future_map_if
 	/** @param cond If true, applies the planned unit map for the duration of the struct's life and reverts to real unit map on destruction.
 			No effect if cond == false.
 	*/
-	future_map_if(bool cond)
+	explicit future_map_if(bool cond)
 		: future_map_(cond ? new future_map() : nullptr)
 	{}
 };

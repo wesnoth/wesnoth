@@ -36,7 +36,7 @@ public:
 	const std::string &nick() const { return nick_; }
 	const std::string &color() const { return color_; }
 	const time_t &time() const { return time_; }
-	chat_msg(const config &cfg);
+	explicit chat_msg(const config &cfg);
 	virtual ~chat_msg();
 private:
 	std::string color_;
@@ -167,7 +167,7 @@ REPLAY_RETURN do_replay_handle(bool one_move = false);
 class replay_network_sender
 {
 public:
-	replay_network_sender(replay& obj);
+	explicit replay_network_sender(replay& obj);
 	~replay_network_sender();
 
 	void sync_non_undoable();

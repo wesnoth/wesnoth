@@ -232,7 +232,7 @@ protected:
 	 *
 	 * It relies on preprocessor_streambuf so it's implemented after that class is declared.
 	 */
-	preprocessor(preprocessor_streambuf& t);
+	explicit preprocessor(preprocessor_streambuf& t);
 
 	preprocessor_streambuf& parent_;
 
@@ -279,7 +279,7 @@ private:
 class preprocessor_streambuf : public std::streambuf
 {
 public:
-	preprocessor_streambuf(preproc_map* def)
+	explicit preprocessor_streambuf(preproc_map* def)
 		: std::streambuf()
 		, out_buffer_("")
 		, buffer_()

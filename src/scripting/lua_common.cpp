@@ -511,7 +511,7 @@ namespace {
 	struct luaW_pushscalar_visitor : boost::static_visitor<>
 	{
 		lua_State *L;
-		luaW_pushscalar_visitor(lua_State *l): L(l) {}
+		explicit luaW_pushscalar_visitor(lua_State *l): L(l) {}
 
 		void operator()(const boost::blank&) const
 		{ lua_pushnil(L); }

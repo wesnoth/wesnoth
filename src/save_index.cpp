@@ -172,7 +172,7 @@ save_index_class save_index_manager;
 class filename_filter
 {
 public:
-	filename_filter(const std::string& filter)
+	explicit filename_filter(const std::string& filter)
 		: filter_(filter)
 	{
 	}

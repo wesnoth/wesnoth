@@ -34,7 +34,7 @@ public:
 	 *                              entered if the dialog returns @ref
 	 *                              retval::OK; undefined otherwise.
 	 */
-	folder_create(std::string& folder_name);
+	explicit folder_create(std::string& folder_name);
 
 	/** The execute function; see @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(folder_create)

@@ -24,7 +24,7 @@ class fake_unit_ptr;
 class fake_unit_manager {
 public:
 	///Construct a fake unit manager from a display which owns it.
-	fake_unit_manager(display & disp) : fake_units_(), my_display_(disp) {}
+	explicit fake_unit_manager(display & disp) : fake_units_(), my_display_(disp) {}
 
 	//Anticipate making place_temporary_unit and remove_temporary_unit private to force exception safety
 	friend class fake_unit_ptr;

@@ -33,7 +33,7 @@ class default_map_generator_job
 {
 public:
 	default_map_generator_job();
-	default_map_generator_job(uint32_t seed);
+	explicit default_map_generator_job(uint32_t seed);
 
 	/** Generate the map. */
 	std::string default_generate_map(generator_data data, std::map<map_location,std::string>* labels, const config& cfg);

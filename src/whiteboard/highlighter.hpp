@@ -38,7 +38,7 @@ class highlighter
 {
 
 public:
-	highlighter(side_actions_ptr side_actions);
+	explicit highlighter(side_actions_ptr side_actions);
 	virtual ~highlighter();
 
 	void set_mouseover_hex(const map_location& hex);
@@ -92,7 +92,7 @@ private:
 
 class highlighter::highlight_main_visitor: public visitor {
 public:
-	highlight_main_visitor(highlighter &h): highlighter_(h) {}
+	explicit highlight_main_visitor(highlighter &h): highlighter_(h) {}
 	void visit(move_ptr);
 	void visit(attack_ptr);
 	void visit(recruit_ptr);
@@ -105,7 +105,7 @@ private:
 
 class highlighter::highlight_secondary_visitor: public visitor {
 public:
-	highlight_secondary_visitor(highlighter &h): highlighter_(h) {}
+	explicit highlight_secondary_visitor(highlighter &h): highlighter_(h) {}
 	void visit(move_ptr);
 	void visit(attack_ptr);
 	void visit(recruit_ptr){}
@@ -117,7 +117,7 @@ private:
 
 class highlighter::unhighlight_visitor: public visitor {
 public:
-	unhighlight_visitor(highlighter &h): highlighter_(h) {}
+	explicit unhighlight_visitor(highlighter &h): highlighter_(h) {}
 	void visit(move_ptr);
 	void visit(attack_ptr);
 	void visit(recruit_ptr){}

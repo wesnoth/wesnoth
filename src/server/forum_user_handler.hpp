@@ -38,7 +38,7 @@
  */
 class fuh : public user_handler {
 	public:
-		fuh(const config& c);
+		explicit fuh(const config& c);
 		~fuh();
 
 		// Throws user_handler::error

@@ -234,7 +234,7 @@ struct hotkey_command
 	hotkey_command() = delete;
 
 	/** Constuct a new command from a temporary static hotkey object. */
-	hotkey_command(const hotkey_command_temp& temp_command);
+	explicit hotkey_command(const hotkey_command_temp& temp_command);
 
 	hotkey_command(HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, bool toggle, hk_scopes scope, HOTKEY_CATEGORY category, const t_string& tooltip);
 

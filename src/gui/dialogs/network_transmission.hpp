@@ -56,7 +56,7 @@ private:
 		connection_data*& connection_;
 		virtual void process(events::pump_info&);
 
-		pump_monitor(connection_data*& connection)
+		explicit pump_monitor(connection_data*& connection)
 			: connection_(connection), window_()
 		{
 		}

@@ -31,7 +31,7 @@ struct error : std::exception
 	std::string message;
 
 	error() : message() {}
-	error(const std::string &msg) : message(msg) {}
+	explicit error(const std::string &msg) : message(msg) {}
 	~error() NOEXCEPT {}
 
 	const char *what() const NOEXCEPT

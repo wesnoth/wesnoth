@@ -27,7 +27,7 @@
 class cave_map_generator : public map_generator
 {
 public:
-	cave_map_generator(const config &game_config);
+	explicit cave_map_generator(const config &game_config);
 
 	std::string name() const { return "cave"; }
 

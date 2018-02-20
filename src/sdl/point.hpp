@@ -34,7 +34,7 @@ struct point
 	{
 	}
 
-	point(const SDL_Point& p)
+	explicit point(const SDL_Point& p)
 		: x(p.x)
 		, y(p.y)
 	{

@@ -173,7 +173,7 @@ namespace implementation
 
 struct builder_label : public builder_styled_widget
 {
-	builder_label(const config& cfg);
+	explicit builder_label(const config& cfg);
 
 	using builder_styled_widget::build;
 

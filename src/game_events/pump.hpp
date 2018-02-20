@@ -74,7 +74,7 @@ class wml_event_pump
 	const std::unique_ptr<pump_impl> impl_;
 
 public:
-	wml_event_pump(manager&);
+	explicit wml_event_pump(manager&);
 	~wml_event_pump();
 
 	/**

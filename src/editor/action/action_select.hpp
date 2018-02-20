@@ -35,7 +35,7 @@ namespace editor
 class editor_action_select : public editor_action_area
 {
 public:
-	editor_action_select(const std::set<map_location>& area)
+	explicit editor_action_select(const std::set<map_location>& area)
 		: editor_action_area(area)
 	{
 	}
@@ -59,7 +59,7 @@ public:
 class editor_action_deselect : public editor_action_area
 {
 public:
-	editor_action_deselect(const std::set<map_location>& area)
+	explicit editor_action_deselect(const std::set<map_location>& area)
 		: editor_action_area(area)
 	{
 	}

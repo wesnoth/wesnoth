@@ -42,7 +42,7 @@ public:
 class synced_checkup : public checkup
 {
 public:
-	synced_checkup(config& buffer);
+	explicit synced_checkup(config& buffer);
 	virtual ~synced_checkup();
 	virtual bool local_checkup(const config& expected_data, config& real_data);
 private:

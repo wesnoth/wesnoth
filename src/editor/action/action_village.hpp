@@ -61,7 +61,7 @@ private:
 class editor_action_village_delete : public editor_action_location
 {
 public:
-	editor_action_village_delete(map_location loc)
+	explicit editor_action_village_delete(map_location loc)
 		: editor_action_location(loc)
 	{
 	}

@@ -157,7 +157,7 @@ int dispatch2(lua_State *L) {
 
 struct map_locker
 {
-	map_locker(game_lua_kernel* kernel) : kernel_(kernel)
+	explicit map_locker(game_lua_kernel* kernel) : kernel_(kernel)
 	{
 		++kernel_->map_locked_;
 	}

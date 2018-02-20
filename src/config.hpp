@@ -293,7 +293,7 @@ public:
 		typedef const attribute &reference;
 		typedef attribute_map::const_iterator Itor;
 		explicit const_attribute_iterator(const Itor &i): i_(i) {}
-		const_attribute_iterator(attribute_iterator& i): i_(i.i_) {}
+		explicit const_attribute_iterator(attribute_iterator& i): i_(i.i_) {}
 
 		const_attribute_iterator &operator++() { ++i_; return *this; }
 		const_attribute_iterator operator++(int) { return const_attribute_iterator(i_++); }
@@ -533,7 +533,7 @@ public:
 	std::string hash() const;
 
 	struct error : public game::error, public boost::exception {
-		error(const std::string& message) : game::error(message) {}
+		explicit error(const std::string& message) : game::error(message) {}
 	};
 
 	struct child_pos
@@ -624,7 +624,7 @@ public:
 		typedef std::vector<child_pos>::const_iterator Itor;
 		typedef const_all_children_iterator this_type;
 		explicit const_all_children_iterator(const Itor &i): i_(i) {}
-		const_all_children_iterator(all_children_iterator& i): i_(i.i_) {}
+		explicit const_all_children_iterator(all_children_iterator& i): i_(i.i_) {}
 
 		const_all_children_iterator &operator++() { ++i_; return *this; }
 		const_all_children_iterator operator++(int) { return const_all_children_iterator(i_++); }

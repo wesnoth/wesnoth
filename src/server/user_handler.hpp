@@ -117,7 +117,7 @@ class user_handler {
 		virtual void set_is_moderator(const std::string& name, const bool& is_moderator) =0;
 
 		struct error : public game::error {
-			error(const std::string& message) : game::error(message) {}
+			explicit error(const std::string& message) : game::error(message) {}
 		};
 
 		/** Initiate the mailer object. */

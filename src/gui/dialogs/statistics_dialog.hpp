@@ -27,7 +27,7 @@ namespace dialogs
 class statistics_dialog : public modal_dialog
 {
 public:
-	statistics_dialog(const team& current_team);
+	explicit statistics_dialog(const team& current_team);
 
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(statistics_dialog)
 

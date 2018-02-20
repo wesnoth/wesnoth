@@ -57,7 +57,7 @@ struct font_id
  */
 struct text_chunk
 {
-	text_chunk(subset_id subset)
+	explicit text_chunk(subset_id subset)
 		: subset(subset)
 		, text()
 	{

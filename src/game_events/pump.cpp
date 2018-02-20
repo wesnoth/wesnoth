@@ -98,7 +98,7 @@ struct pump_impl
 
 	manager* my_manager;
 
-	pump_impl(manager& man)
+	explicit pump_impl(manager& man)
 		: events_queue()
 		, internal_wml_tracking(0)
 		, wml_messages_stream()
@@ -115,7 +115,7 @@ namespace
 class pump_manager
 {
 public:
-	pump_manager(pump_impl&);
+	explicit pump_manager(pump_impl&);
 	~pump_manager();
 
 	/// Allows iteration through the queued events.

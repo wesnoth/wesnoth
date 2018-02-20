@@ -45,7 +45,7 @@ public:
 	class error : public game::game_error
 	{
 	public:
-		error(const std::string& msg)
+		explicit error(const std::string& msg)
 			: game::game_error(msg)
 		{
 		}
@@ -403,7 +403,7 @@ extern unit_type_data unit_types;
 void adjust_profile(std::string& profile);
 
 struct unit_experience_accelerator {
-	unit_experience_accelerator(int modifier);
+	explicit unit_experience_accelerator(int modifier);
 	~unit_experience_accelerator();
 	static int get_acceleration();
 private:

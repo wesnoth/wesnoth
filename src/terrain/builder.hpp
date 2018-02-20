@@ -286,7 +286,7 @@ public:
 		{
 		}
 
-		terrain_constraint(map_location loc)
+		explicit terrain_constraint(map_location loc)
 			: loc(loc)
 			, terrain_types_match()
 			, set_flag()

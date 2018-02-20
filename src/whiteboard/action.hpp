@@ -92,7 +92,7 @@ public:
 
 	struct ctor_err	: public game::error
 	{
-		ctor_err(const std::string& message) : game::error(message){}
+		explicit ctor_err(const std::string& message) : game::error(message){}
 	};
 
 	/**

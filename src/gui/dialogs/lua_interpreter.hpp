@@ -31,7 +31,7 @@ public:
 	class view;
 	class controller;
 
-	lua_interpreter(lua_kernel_base & lk);
+	explicit lua_interpreter(lua_kernel_base & lk);
 
 	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;

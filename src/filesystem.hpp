@@ -45,7 +45,7 @@ rwops_ptr make_write_RWops(const std::string &path);
 /** An exception object used when an IO error occurs */
 struct io_exception : public game::error {
 	io_exception() : game::error("") {}
-	io_exception(const std::string& msg) : game::error(msg) {}
+	explicit io_exception(const std::string& msg) : game::error(msg) {}
 };
 
 struct file_tree_checksum;
@@ -284,7 +284,7 @@ char path_separator();
 struct binary_paths_manager
 {
 	binary_paths_manager();
-	binary_paths_manager(const config& cfg);
+	explicit binary_paths_manager(const config& cfg);
 	~binary_paths_manager();
 
 	void set_paths(const config& cfg);

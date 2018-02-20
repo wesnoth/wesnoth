@@ -28,7 +28,7 @@ class progressive_base
 public:
 	using data_t = std::vector<std::pair<D, int>>;
 
-	progressive_base(const std::string& input)
+	explicit progressive_base(const std::string& input)
 		: data_()
 		, input_(input)
 	{}

@@ -64,7 +64,7 @@ public:
 
 
 	/** constructor */
-	move_unit_spectator(const unit_map &units);
+	explicit move_unit_spectator(const unit_map &units);
 
 
 	/** destructor */

@@ -115,7 +115,7 @@ struct unit_filter_xy : public unit_filter_base
 
 struct unit_filter_adjacent : public unit_filter_base
 {
-	unit_filter_adjacent(const vconfig& cfg)
+	explicit unit_filter_adjacent(const vconfig& cfg)
 		: child_(cfg)
 		, cfg_(cfg)
 	{

@@ -46,7 +46,7 @@ public:
 	 * Initializes validator from file.
 	 * Throws abstract_validator::error if any error.
 	 */
-	schema_validator(const std::string& filename);
+	explicit schema_validator(const std::string& filename);
 
 	void set_create_exceptions(bool value)
 	{

@@ -1617,7 +1617,7 @@ surface blur_alpha_surface(const surface &surf, int depth)
 		uint8_t red;
 		uint8_t green;
 		uint8_t blue;
-		Pixel(uint32_t* p)
+		explicit Pixel(uint32_t* p)
 		  : alpha(((*p) >> 24)&0xFF)
 		  , red(((*p) >> 16)&0xFF)
 		  , green(((*p) >> 8)&0xFF)

@@ -66,7 +66,7 @@ static bool executing_id_removed = false;
 class executor
 {
 public:
-	executor(size_t id)
+	explicit executor(size_t id)
 	{
 		executing_id = id;
 		executing_id_removed = false;

@@ -248,7 +248,7 @@ public:
 	 * Constructs a storyscreen part from a managed WML node.
 	 * @param part_cfg Node object which should correspond to a [part] block's contents.
 	 */
-	part(const vconfig& part_cfg);
+	explicit part(const vconfig& part_cfg);
 
 	/** Whether the story screen title should be displayed or not. */
 	bool show_title() const

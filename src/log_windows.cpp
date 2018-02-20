@@ -193,7 +193,7 @@ public:
 	log_file_manager(const log_file_manager&) = delete;
 	log_file_manager& operator=(const log_file_manager&) = delete;
 
-	log_file_manager(bool native_console = false);
+	explicit log_file_manager(bool native_console = false);
 	~log_file_manager();
 
 	/**

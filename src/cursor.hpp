@@ -41,7 +41,7 @@ void set_focus(bool focus);
 
 struct setter
 {
-	setter(CURSOR_TYPE type);
+	explicit setter(CURSOR_TYPE type);
 	~setter();
 
 private:

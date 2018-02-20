@@ -64,7 +64,7 @@ struct cache_item
 	{
 	}
 
-	cache_item(const T& item)
+	explicit cache_item(const T& item)
 		: item(item)
 		, loaded(true)
 	{

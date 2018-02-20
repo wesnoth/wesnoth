@@ -187,7 +187,7 @@ protected:
 
 class known_aspect {
 public:
-	known_aspect(const std::string &name);
+	explicit known_aspect(const std::string &name);
 
 
 	virtual ~known_aspect();
@@ -480,7 +480,7 @@ public:
 
 	virtual aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id) = 0;
 
-	aspect_factory( const std::string &name )
+	explicit aspect_factory( const std::string &name )
 	{
 		if (is_duplicate(name)) {
 			return;
@@ -496,7 +496,7 @@ public:
 template<class ASPECT>
 class register_aspect_factory : public aspect_factory {
 public:
-	register_aspect_factory( const std::string &name )
+	explicit register_aspect_factory( const std::string &name )
 		: aspect_factory( name )
 	{
 	}
@@ -526,7 +526,7 @@ public:
 
 	virtual aspect_ptr get_new_instance( readonly_context &context, const config &cfg, const std::string &id, std::shared_ptr<lua_ai_context>& l_ctx) = 0;
 
-	lua_aspect_factory( const std::string &name )
+	explicit lua_aspect_factory( const std::string &name )
 	{
 		factory_ptr ptr_to_this(this);
 		get_list().emplace(name,ptr_to_this);
@@ -538,7 +538,7 @@ public:
 template<class ASPECT>
 class register_lua_aspect_factory : public lua_aspect_factory {
 public:
-	register_lua_aspect_factory( const std::string &name )
+	explicit register_lua_aspect_factory( const std::string &name )
 		: lua_aspect_factory( name )
 	{
 	}

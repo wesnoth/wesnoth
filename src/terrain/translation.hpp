@@ -123,7 +123,7 @@ namespace t_translation {
 	// Note: atm most thrown result in a crash, but I like
 	// an uncatched exception better than an assert.
 	struct error : public game::error {
-		error(const std::string& message) : game::error(message) {}
+		explicit error(const std::string& message) : game::error(message) {}
 	};
 
 	// Some types of terrain which must be known, and can't just
