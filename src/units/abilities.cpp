@@ -45,19 +45,19 @@ namespace {
 	class temporary_facing
 	{
 		map_location::DIRECTION save_dir_;
-		unit_map::const_iterator u_;
+		const unit* u_;
 	public:
-		temporary_facing(unit_map::const_iterator u, map_location::DIRECTION new_dir)
-			: save_dir_(u.valid() ? u->facing() : map_location::NDIRECTIONS)
+		temporary_facing(const unit* u, map_location::DIRECTION new_dir)
+			: save_dir_(u ? u->facing() : map_location::NDIRECTIONS)
 			, u_(u)
 		{
-			if (u_.valid()) {
+			if (u_) {
 				u_->set_facing(new_dir);
 			}
 		}
 		~temporary_facing()
 		{
-			if (u_.valid()) {
+			if (u_) {
 				u_->set_facing(save_dir_);
 			}
 		}
@@ -695,16 +695,22 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
 /**
  * Sets the context under which specials will be checked for being active.
  * This version is appropriate if both units in a combat are known.
+ * @param[in]  self          A reference to the unit with this weapon.
+ * @param[in]  other         A reference to the other unit in the combat.
  * @param[in]  unit_loc      The location of the unit with this weapon.
  * @param[in]  other_loc     The location of the other unit in the combat.
  * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
  * @param[in]  other_attack  The attack used by the other unit.
  */
-void attack_type::set_specials_context(const map_location& unit_loc,
+void attack_type::set_specials_context(const unit& self,
+                                       const unit& other,
+                                       const map_location& unit_loc,
                                        const map_location& other_loc,
                                        bool attacking,
                                        const_attack_ptr other_attack) const
 {
+	self_ = &self;
+	other_ = &other;
 	self_loc_ = unit_loc;
 	other_loc_ = other_loc;
 	is_attacker_ = attacking;
@@ -715,11 +721,33 @@ void attack_type::set_specials_context(const map_location& unit_loc,
 /**
  * Sets the context under which specials will be checked for being active.
  * This version is appropriate if there is no specific combat being considered.
+ * @param[in]  self          A reference to the unit with this weapon.
  * @param[in]  loc           The location of the unit with this weapon.
  * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
  */
-void attack_type::set_specials_context(const map_location& loc, bool attacking) const
+void attack_type::set_specials_context(const unit& self, const map_location& loc, bool attacking) const
 {
+	self_ = &self;
+	other_ = nullptr;
+	self_loc_ = loc;
+	other_loc_ = map_location::null_location();
+	is_attacker_ = attacking;
+	other_attack_ = nullptr;
+	is_for_listing_ = false;
+}
+
+/**
+ * Sets the context under which specials will be checked for being active.
+ * This version is appropriate for theoretical units of a particular type.
+ * @param[in]  self_type     A reference to the type of the unit with this weapon.
+ * @param[in]  loc           The location of the unit with this weapon.
+ * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
+ */
+void attack_type::set_specials_context(const unit_type* self_type, const map_location& loc, bool attacking) const
+{
+	UNUSED(self_type);
+	self_ = nullptr;
+	other_ = nullptr;
 	self_loc_ = loc;
 	other_loc_ = map_location::null_location();
 	is_attacker_ = attacking;
@@ -829,8 +857,8 @@ namespace { // Helpers for attack_type::special_active()
 	 * @param[in]  filter     The filter containing the child filter to use.
 	 * @param[in]  child_tag  The tag of the child filter to use.
 	 */
-	static bool special_unit_matches(const unit_map::const_iterator & un_it,
-									 const unit_map::const_iterator & u2,
+	static bool special_unit_matches(const unit* & u,
+		                             const unit* & u2,
 		                             const map_location & loc,
 		                             const_attack_ptr weapon,
 		                             const config & filter,
@@ -851,19 +879,19 @@ namespace { // Helpers for attack_type::special_active()
 			return true;
 
 		// If the primary unit doesn't exist, there's nothing to match
-		if (!un_it.valid()) {
+		if (!u) {
 			return false;
 		}
 
 		unit_filter ufilt{vconfig(filter_child)};
 
 		// If the other unit doesn't exist, try matching without it
-		if (!u2.valid()) {
-			return ufilt.matches(*un_it, loc);
+		if (!u2) {
+			return ufilt.matches(*u, loc);
 		}
 
 		// Check for a unit match.
-		if (!ufilt.matches(*un_it, loc, *u2)) {
+		if (!ufilt.matches(*u, loc, *u2)) {
 			return false;
 		}
 
@@ -921,16 +949,29 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
 
-	unit_map::const_iterator self  = units.find(self_loc_);
-	unit_map::const_iterator other = units.find(other_loc_);
+	const unit* self = self_;
+	const unit* other = other_;
+
+	if(self == nullptr) {
+		unit_map::const_iterator it = units.find(self_loc_);
+		if(it.valid()) {
+			self = it.get_shared_ptr().get();
+		}
+	}
+	if(other == nullptr) {
+		unit_map::const_iterator it = units.find(other_loc_);
+		if(it.valid()) {
+			other = it.get_shared_ptr().get();
+		}
+	}
 
 	// Make sure they're facing each other.
 	temporary_facing self_facing(self, self_loc_.get_relative_dir(other_loc_));
 	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
 
 	// Translate our context into terms of "attacker" and "defender".
-	unit_map::const_iterator & att = is_attacker_ ? self : other;
-	unit_map::const_iterator & def = is_attacker_ ? other : self;
+	const unit* & att = is_attacker_ ? self : other;
+	const unit* & def = is_attacker_ ? other : self;
 	const map_location & att_loc   = is_attacker_ ? self_loc_ : other_loc_;
 	const map_location & def_loc   = is_attacker_ ? other_loc_ : self_loc_;
 	const_attack_ptr att_weapon = is_attacker_ ? shared_from_this() : other_attack_;
