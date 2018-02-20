@@ -35,7 +35,7 @@ public:
 	/**
 	 * Parses a control line string.
 	 */
-	control_line(const std::string& str) : args_(utils::split(str, ' '))
+	explicit control_line(const std::string& str) : args_(utils::split(str, ' '))
 	{
 		if(args_.empty()) {
 			args_.emplace_back();
