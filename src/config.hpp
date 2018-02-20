@@ -172,7 +172,7 @@ public:
 		bool operator==(const child_iterator &i) const { return i_ == i.i_; }
 		bool operator!=(const child_iterator &i) const { return i_ != i.i_; }
 		bool operator==(const const_child_iterator &i) const { return i == *this; }
-		bool operator!=(const const_child_iterator &i) const { return i == *this; }
+		bool operator!=(const const_child_iterator &i) const { return i != *this; }
 
 		friend bool operator<(const this_type& a, const this_type& b) { return a.i_ < b.i_; }
 		friend bool operator<=(const this_type& a, const this_type& b) { return a.i_ <= b.i_; }
@@ -278,7 +278,7 @@ public:
 		bool operator==(const attribute_iterator &i) const { return i_ == i.i_; }
 		bool operator!=(const attribute_iterator &i) const { return i_ != i.i_; }
 		bool operator==(const const_attribute_iterator &i) const { return i == *this; }
-		bool operator!=(const const_attribute_iterator &i) const { return i == *this; }
+		bool operator!=(const const_attribute_iterator &i) const { return i != *this; }
 
 	private:
 		friend struct config::const_attribute_iterator;
