@@ -17,6 +17,8 @@
  * @file
  */
 
+#include "ai/registry.hpp"
+
 #include "config.hpp"             // for config, operator<<
 #include "terrain/filter.hpp"  // for terrain_filter
 #include "ai/composite/engine.hpp"      // for register_engine_factory
@@ -474,5 +476,9 @@ static register_aspect_factory< default_recruitment::recruitment_aspect >
 
 static register_aspect_factory< default_recruitment::recruitment_aspect >
 	recruitment__standard_aspect_factory2("recruitment*");
+
+void registry::init()
+{
+}
 
 } //end of namespace ai

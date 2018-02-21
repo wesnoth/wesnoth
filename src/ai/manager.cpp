@@ -37,6 +37,7 @@
 #include "ai/game_info.hpp"             // for side_number, engine_ptr, etc
 #include "game_config.hpp"              // for debug
 #include "ai/lua/aspect_advancements.hpp"
+#include "ai/registry.hpp"              // for init
 
 #include <algorithm>                    // for min
 #include <cassert>                     // for assert
@@ -315,6 +316,7 @@ manager::manager()
 	, last_interact_(0)
 	, num_interact_(0)
 {
+	registry::init();
 	singleton_ = this;
 }
 
