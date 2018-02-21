@@ -477,7 +477,6 @@ void create_engine::prepare_for_saved_game()
 	// The save might be a start-of-scenario save so make sure we have the scenario data loaded.
 	state_.expand_scenario();
 	state_.mp_settings().saved_game = true;
-	state_.mp_settings().name = vgettext("$login|’s game", {{"login", preferences::login()}});
 }
 
 void create_engine::prepare_for_other()
