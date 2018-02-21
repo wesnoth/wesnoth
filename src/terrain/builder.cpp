@@ -824,7 +824,7 @@ void terrain_builder::parse_mapstring(
 			} else if(terrain.overlay != 0) {
 				anchors.emplace(terrain.overlay, map_location(x, y));
 			} else if(terrain.base == t_translation::TB_STAR) {
-				add_constraints(br.constraints, map_location(x, y), t_translation::STAR, global_images);
+				add_constraints(br.constraints, map_location(x, y), t_translation::ter_match(t_translation::STAR), global_images);
 			} else {
 				ERR_NG << "Invalid terrain (" << t_translation::write_terrain_code(terrain) << ") in builder map"
 					   << std::endl;

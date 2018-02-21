@@ -107,7 +107,7 @@ namespace t_translation {
 	struct ter_match{
 		ter_match();
 		ter_match(const std::string& str, const ter_layer filler = NO_LAYER);
-		ter_match(const terrain_code& tcode);
+		explicit ter_match(const terrain_code& tcode);
 
 		ter_list terrain;
 		ter_list mask;
