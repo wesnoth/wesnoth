@@ -318,6 +318,8 @@ void config::append_children_by_move(config& cfg, const std::string& key)
 	for(config& value : cfg.child_range(key)) {
 		add_child(key, std::move(value));
 	}
+
+	cfg.clear_children_impl(key);
 }
 
 void config::merge_children(const std::string& key)
