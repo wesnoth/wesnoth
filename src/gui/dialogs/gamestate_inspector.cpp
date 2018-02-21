@@ -51,7 +51,7 @@ namespace
 inline std::string config_to_string(const config& cfg)
 {
 	std::ostringstream s;
-	write(s, cfg);
+	write(s, configr_of(cfg));
 	return s.str();
 }
 

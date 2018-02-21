@@ -157,7 +157,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 			config res;
 			cfg["version"] = game_config::version;
 			res.add_child("version", std::move(cfg));
-			sock->send_data(res);
+			sock->send_data(configr_of(res));
 		}
 
 		// Check for gamelist. This *must* be done before the mustlogin check
@@ -204,7 +204,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 				sp["selective_ping"] = true;
 			}
 
-			sock->send_data(response);
+			sock->send_data(configr_of(response));
 			sock->wait_and_receive_data(data);
 
 			gui2::dialogs::loading_screen::progress(loading_stage::login_response);
@@ -297,7 +297,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 					sp["password_reminder"] = password_reminder;
 
 					// Once again send our request...
-					sock->send_data(response);
+					sock->send_data(configr_of(response));
 					sock->wait_and_receive_data(data);
 
 					gui2::dialogs::loading_screen::progress(loading_stage::login_response);
@@ -444,7 +444,7 @@ void enter_wait_mode(mp_workflow_helper_ptr helper, int game_id, bool observe)
 		gui2::dialogs::mp_join_game dlg(helper->state, *helper->lobby_info, *helper->connection, true, observe);
 
 		if(!dlg.fetch_game_config()) {
-			helper->connection->send_data(config("leave_game"));
+			helper->connection->send_data(configr_of(config("leave_game")));
 			return;
 		}
 
@@ -458,7 +458,7 @@ void enter_wait_mode(mp_workflow_helper_ptr helper, int game_id, bool observe)
 		controller.play_game();
 	}
 
-	helper->connection->send_data(config("leave_game"));
+	helper->connection->send_data(configr_of(config("leave_game")));
 }
 
 void enter_staging_mode(mp_workflow_helper_ptr helper)
@@ -490,7 +490,7 @@ void enter_staging_mode(mp_workflow_helper_ptr helper)
 	}
 
 	if(helper->connection) {
-		helper->connection->send_data(config("leave_game"));
+		helper->connection->send_data(configr_of(config("leave_game")));
 	}
 }
 
@@ -514,7 +514,7 @@ void enter_create_mode(mp_workflow_helper_ptr helper)
 	if(dlg_ok) {
 		enter_staging_mode(helper);
 	} else if(helper->connection) {
-		helper->connection->send_data(config("refresh_lobby"));
+		helper->connection->send_data(configr_of(config("refresh_lobby")));
 	}
 }
 
@@ -565,7 +565,7 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 					}
 
 					// Update lobby content
-					helper->connection->send_data(config("refresh_lobby"));
+					helper->connection->send_data(configr_of(config("refresh_lobby")));
 				}
 
 				break;
@@ -582,7 +582,7 @@ bool enter_lobby_mode(mp_workflow_helper_ptr helper, const std::vector<std::stri
 					}
 
 					// Update lobby content
-					helper->connection->send_data(config("refresh_lobby"));
+					helper->connection->send_data(configr_of(config("refresh_lobby")));
 				}
 
 				break;
@@ -645,7 +645,7 @@ void start_client(const config& game_config,	saved_game& state, const std::strin
 
 			installed_addons = ::installed_addons(); // Refresh the installed add-on list for this session.
 
-			connection->send_data(config("refresh_lobby"));
+			connection->send_data(configr_of(config("refresh_lobby")));
 		}
 	} while(re_enter);
 }
@@ -665,7 +665,7 @@ bool goto_mp_wait(saved_game& state, const config& game_config, wesnothd_connect
 	gui2::dialogs::mp_join_game dlg(state, li, *connection, false, observe);
 
 	if(!dlg.fetch_game_config()) {
-		connection->send_data(config("leave_game"));
+		connection->send_data(configr_of(config("leave_game")));
 		return false;
 	}
 

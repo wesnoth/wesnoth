@@ -488,7 +488,7 @@ bool playmp_controller::is_networked_mp() const
 void playmp_controller::send_to_wesnothd(const config& cfg, const std::string&) const
 {
 	if (mp_info_ != nullptr) {
-		mp_info_->connection.send_data(cfg);
+		mp_info_->connection.send_data(configr_of(cfg));
 	}
 }
 bool playmp_controller::receive_from_wesnothd(config& cfg) const

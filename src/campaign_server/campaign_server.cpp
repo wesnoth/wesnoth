@@ -410,7 +410,7 @@ void server::write_config()
 {
 	DBG_CS << "writing configuration and add-ons list to disk...\n";
 	filesystem::atomic_commit out(cfg_file_);
-	write(*out.ostream(), cfg_);
+	write(*out.ostream(), configr_of(cfg_));
 	out.commit();
 	DBG_CS << "... done\n";
 }
@@ -594,7 +594,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	response.add_child("campaigns", std::move(campaign_list));
 
 	std::ostringstream ostr;
-	write(ostr, response);
+	write(ostr, configr_of(response));
 	std::string wml = ostr.str();
 	simple_wml::document doc(wml.c_str(), simple_wml::INIT_STATIC);
 	doc.compress();

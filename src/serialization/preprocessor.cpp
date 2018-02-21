@@ -1778,7 +1778,7 @@ void preprocess_resource(const std::string& res_name,
 			filesystem::create_directory_if_missing_recursive(filesystem::directory_name(preproc_res_name));
 			filesystem::scoped_ostream outStream(filesystem::ostream_file(preproc_res_name));
 
-			write(*outStream, cfg);
+			write(*outStream, configr_of(cfg));
 		}
 
 		// Write the plain cfg file

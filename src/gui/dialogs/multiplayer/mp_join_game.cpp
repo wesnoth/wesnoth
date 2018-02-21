@@ -90,7 +90,7 @@ bool mp_join_game::fetch_game_config()
 {
 	// Ask for the next scenario data, if applicable
 	if(!first_scenario_) {
-		network_connection_.send_data(config("load_next_scenario"));
+		network_connection_.send_data(configr_of(config("load_next_scenario")));
 	}
 
 	bool has_scenario_and_controllers = false;
@@ -227,7 +227,7 @@ bool mp_join_game::fetch_game_config()
 		change["leader"] = flg.current_leader();
 		change["gender"] = flg.current_gender();
 
-		network_connection_.send_data(faction);
+		network_connection_.send_data(configr_of(faction));
 	}
 
 	return true;
@@ -503,9 +503,9 @@ void mp_join_game::post_show(window& window)
 
 		mp_ui_alerts::game_has_begun();
 	} else if(observe_game_) {
-		network_connection_.send_data(config("observer_quit", config { "name", preferences::login() }));
+		network_connection_.send_data(configr_of(config("observer_quit", config { "name", preferences::login() })));
 	} else {
-		network_connection_.send_data(config("leave_game"));
+		network_connection_.send_data(configr_of(config("leave_game")));
 	}
 }
 

@@ -93,7 +93,7 @@ config get_addon_pbl_info(const std::string& addon_name)
 void set_addon_pbl_info(const std::string& addon_name, const config& cfg)
 {
 	filesystem::scoped_ostream stream = filesystem::ostream_file(get_pbl_file_path(addon_name));
-	write(*stream, cfg);
+	write(*stream, configr_of(cfg));
 }
 
 bool have_addon_install_info(const std::string& addon_name)

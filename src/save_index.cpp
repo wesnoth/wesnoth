@@ -101,9 +101,9 @@ void save_index_class::write_save_index()
 
 		if(preferences::save_compression_format() != compression::NONE) {
 			// TODO: maybe allow writing this using bz2 too?
-			write_gz(*stream, data());
+			write_gz(*stream, configr_of(data()));
 		} else {
-			write(*stream, data());
+			write(*stream, configr_of(data()));
 		}
 	} catch(filesystem::io_exception& e) {
 		ERR_SAVE << "error writing to save index file: '" << e.what() << "'" << std::endl;

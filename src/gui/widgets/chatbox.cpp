@@ -444,7 +444,7 @@ void chatbox::close_window_button_callback(std::string room_name, bool& handled,
 void chatbox::send_to_server(const ::config& cfg)
 {
 	if(wesnothd_connection_) {
-		wesnothd_connection_->send_data(cfg);
+		wesnothd_connection_->send_data(configr_of(cfg));
 	}
 }
 

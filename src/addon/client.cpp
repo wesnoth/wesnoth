@@ -286,7 +286,7 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 		"#\n";
 
 	info.write_minimal(wml.add_child("info"));
-	write(info_contents, wml);
+	write(info_contents, configr_of(wml));
 
 	config file;
 	file["name"] = "_info.cfg";
