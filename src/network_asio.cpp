@@ -134,7 +134,17 @@ void connection::cancel()
 {
 	if(socket_.is_open()) {
 		boost::system::error_code ec;
+
+#ifdef _MSC_VER
+// Silence warning about boost::asio::basic_socket<Protocol>::cancel always
+// returning an error on XP, which we don't support anymore.
+#pragma warning(push)
+#pragma warning(disable:4996)
+#endif
 		socket_.cancel(ec);
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 		if(ec) {
 			WRN_NW << "Failed to cancel network operations: " << ec.message() << std::endl;

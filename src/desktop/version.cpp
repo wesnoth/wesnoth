@@ -197,11 +197,21 @@ std::string os_version()
 
 	OSVERSIONINFOEX v { sizeof(OSVERSIONINFOEX) };
 
+#ifdef _MSC_VER
+// GetVersionEx is rather problematic, but it works for our usecase.
+// See https://msdn.microsoft.com/en-us/library/windows/desktop/ms724451(v=vs.85).aspx
+// for more info.
+#pragma warning(push)
+#pragma warning(disable:4996)
+#endif
 	if(!GetVersionEx(reinterpret_cast<OSVERSIONINFO*>(&v))) {
 		ERR_DU << "os_version: GetVersionEx error ("
 			   << GetLastError() << ")\n";
 		return base;
 	}
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
 
 	const DWORD vnum = v.dwMajorVersion * 100 + v.dwMinorVersion;
 	std::string version;
