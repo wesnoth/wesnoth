@@ -329,12 +329,12 @@ void config::merge_children(const std::string& key)
 	}
 
 	config merged_children;
-	for(const config& cfg : child_range(key)) {
-		merged_children.append(cfg);
+	for(config& cfg : child_range(key)) {
+		merged_children.append(std::move(cfg));
 	}
 
 	clear_children_impl(key);
-	add_child(key, merged_children);
+	add_child(key, std::move(merged_children));
 }
 
 void config::merge_children_by_attribute(const std::string& key, const std::string& attribute)
@@ -347,13 +347,13 @@ void config::merge_children_by_attribute(const std::string& key, const std::stri
 
 	typedef std::map<std::string, config> config_map;
 	config_map merged_children_map;
-	for(const config& cfg : child_range(key)) {
-		merged_children_map[cfg[attribute]].append(cfg);
+	for(config& cfg : child_range(key)) {
+		merged_children_map[cfg[attribute]].append(std::move(cfg));
 	}
 
 	clear_children_impl(key);
 	for(const config_map::value_type& i : merged_children_map) {
-		add_child(key, i.second);
+		add_child(key, i.second); // TODO: can we use std::move?
 	}
 }
 
