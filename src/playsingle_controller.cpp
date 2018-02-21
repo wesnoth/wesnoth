@@ -22,7 +22,6 @@
 
 #include "actions/undo.hpp"
 #include "ai/manager.hpp"
-#include "ai/game_info.hpp"
 #include "ai/testing.hpp"
 #include "display_chat_manager.hpp"
 #include "game_end_exceptions.hpp"
@@ -85,8 +84,6 @@ playsingle_controller::playsingle_controller(const config& level,
 	// game may need to start in linger mode
 	linger_ = this->is_regular_game_end();
 
-	ai::game_info ai_info;
-	ai::manager::get_singleton().set_ai_info(ai_info);
 	ai::manager::get_singleton().add_observer(this);
 
 	plugins_context_->set_accessor_string("level_result", std::bind(&playsingle_controller::describe_result, this));

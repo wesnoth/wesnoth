@@ -164,19 +164,6 @@ public:
 	// LIFECYCLE
 	// =======================================================================
 
-	/**
-	 * Sets AI information.
-	 * @param info ai_information to be set.
-	 */
-	void set_ai_info(const game_info& info);
-
-
-	/**
-	 * Clears AI information.
-	 * Should be called in playsingle_controller 's destructor.
-	 */
-	void clear_ai_info();
-
 
 	/**
 	 * Adds observer of game events.
@@ -398,7 +385,7 @@ public:
 	 * @param side side number (1-based).
 	 * @return a reference to active AI info.
 	 */
-	game_info& get_active_ai_info_for_side( side_number side ) const;
+	game_info& get_active_ai_info_for_side( side_number side );
 
 
 	/**
@@ -443,7 +430,7 @@ public:
 	 * Gets global AI-game info
 	 * @return a reference to the AI-game info.
 	 */
-	game_info& get_ai_info() const;
+	game_info& get_ai_info();
 
 
 	// =======================================================================
@@ -485,7 +472,7 @@ private:
 
 	std::deque< command_history_item > history_;
 	long history_item_counter_;
-	std::unique_ptr<game_info> ai_info_;
+	game_info ai_info_;
 
 	events::generic_event map_changed_;
 	events::generic_event recruit_list_changed_;

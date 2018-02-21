@@ -37,7 +37,6 @@
 #include "ai/game_info.hpp"             // for side_number, engine_ptr, etc
 #include "game_config.hpp"              // for debug
 #include "ai/lua/aspect_advancements.hpp"
-#include "ai/registry.hpp"                 // for init
 
 #include <algorithm>                    // for min
 #include <cassert>                     // for assert
@@ -305,7 +304,7 @@ component* holder::get_component(component *root, const std::string &path) {
 manager::manager()
 	: history_()
 	, history_item_counter_(0)
-	, ai_info_(nullptr)
+	, ai_info_()
 	, map_changed_("ai_map_changed")
 	, recruit_list_changed_("ai_recruit_list_changed")
 	, user_interact_("ai_user_interact")
@@ -321,21 +320,6 @@ manager::manager()
 
 
 manager* manager::singleton_ = nullptr;
-
-
-void manager::set_ai_info(const game_info& i)
-{
-	if (ai_info_!=nullptr){
-		clear_ai_info();
-	}
-	ai_info_.reset(new game_info(i));
-	registry::init();
-}
-
-
-void manager::clear_ai_info(){
-	ai_info_.reset(nullptr);
-}
 
 
 void manager::add_observer( events::observer* event_observer){
@@ -691,19 +675,12 @@ void manager::clear_ais()
 
 void manager::modify_active_ai_for_side ( side_number side, const config &cfg )
 {
-	if (ai_info_==nullptr) {
-		//replay ?
-		return;
-	}
 	get_active_ai_holder_for_side(side).modify_ai(cfg);
 }
 
 
 void manager::append_active_ai_for_side(side_number side, const config& cfg)
 {
-	if(!ai_info_) {
-		return;
-	}
 	get_active_ai_holder_for_side(side).append_ai(cfg);
 }
 
@@ -741,15 +718,15 @@ config manager::to_config( side_number side )
 }
 
 
-game_info& manager::get_active_ai_info_for_side( side_number /*side*/ ) const
+game_info& manager::get_active_ai_info_for_side( side_number /*side*/ )
 {
-	return *ai_info_;
+	return ai_info_;
 }
 
 
-game_info& manager::get_ai_info() const
+game_info& manager::get_ai_info()
 {
-	return *ai_info_;
+	return ai_info_;
 }
 
 
