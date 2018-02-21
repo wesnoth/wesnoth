@@ -227,6 +227,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("log-warning", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'warning'. Similar to --log-error.")
 		("log-info", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'info'. Similar to --log-error.")
 		("log-debug", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'debug'. Similar to --log-error.")
+		("log-none", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'none'. Similar to --log-error.")
 		("log-precise", "shows the timestamps in the logfile with more precision.")
 		;
 
@@ -362,6 +363,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		 parse_log_domains_(vm["log-info"].as<std::string>(),lg::info().get_severity());
 	if (vm.count("log-debug"))
 		 parse_log_domains_(vm["log-debug"].as<std::string>(),lg::debug().get_severity());
+	if (vm.count("log-none"))
+		 parse_log_domains_(vm["log-none"].as<std::string>(),-1);
 	if (vm.count("logdomains"))
 		logdomains = vm["logdomains"].as<std::string>();
 	if (vm.count("log-precise"))
