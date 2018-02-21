@@ -612,7 +612,7 @@ public:
 		struct arrow_helper
 		{
 			const any_child data;
-			arrow_helper(const const_all_children_iterator &i): data(*i) {}
+			explicit arrow_helper(const const_all_children_iterator &i): data(*i) {}
 			const any_child *operator->() const { return &data; }
 		};
 
@@ -632,7 +632,7 @@ public:
 		this_type operator--(int) { return this_type(i_--); }
 
 		reference operator*() const;
-		pointer operator->() const { return *this; }
+		pointer operator->() const { return arrow_helper(*this); }
 
 		bool operator==(const const_all_children_iterator &i) const { return i_ == i.i_; }
 		bool operator!=(const const_all_children_iterator &i) const { return i_ != i.i_; }
