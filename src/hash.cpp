@@ -17,6 +17,8 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <string.h>
+#include <assert.h>
 
 #include <openssl/sha.h>
 #include <openssl/md5.h>
@@ -82,9 +84,14 @@ std::string md5::get_salt(const std::string& hash) {
 	return hash.substr(4,8);
 }
 
+bool md5::is_valid_prefix(const std::string& hash)
+{
+	return hash.substr(0,3) == hash_prefix;
+}
+
 bool md5::is_valid_hash(const std::string& hash) {
 	if(hash.size() != 34) return false;
-	if(hash.substr(0,3) != hash_prefix) return false;
+	if(!is_valid_prefix(hash)) return false;
 
 	const int iteration_count = get_iteration_count(hash);
 	if(iteration_count < 7 || iteration_count > 30) return false;
@@ -128,6 +135,67 @@ std::string sha1::hex_digest() const
 std::string sha1::base64_digest() const
 {
 	return encode_hash<DIGEST_SIZE>(hash);
+}
+
+bcrypt::bcrypt(const std::string& input)
+{
+	assert(is_valid_prefix(input));
+
+	iteration_count_delim_pos = input.find('$', 4);
+	if(iteration_count_delim_pos == std::string::npos)
+		throw hash_error("hash string malformed");
+}
+
+bcrypt bcrypt::from_salted_salt(const std::string& input)
+{
+	bcrypt hash { input };
+	std::string bcrypt_salt = input.substr(0, hash.iteration_count_delim_pos + 23);
+	if(bcrypt_salt.size() >= BCRYPT_HASHSIZE)
+		throw hash_error("hash string too large");
+	strcpy(hash.hash.data(), bcrypt_salt.c_str());
+
+	return hash;
+}
+
+bcrypt bcrypt::from_hash_string(const std::string& input)
+{
+	bcrypt hash { input };
+	if(input.size() >= BCRYPT_HASHSIZE)
+		throw hash_error("hash string too large");
+	strcpy(hash.hash.data(), input.c_str());
+
+	return hash;
+}
+
+bcrypt bcrypt::hash_pw(const std::string& password, bcrypt& salt)
+{
+	bcrypt hash;
+	if(bcrypt_hashpw(password.c_str(), salt.hash.data(), hash.hash.data()) != 0)
+		throw hash_error("failed to hash password");
+
+	return hash;
+}
+
+bool bcrypt::is_valid_prefix(const std::string& hash) {
+	return hash.compare(0, 4, "$2y$") == 0;
+}
+
+std::string bcrypt::get_salt() const
+{
+	std::size_t salt_pos = iteration_count_delim_pos + 23;
+	if(salt_pos >= BCRYPT_HASHSIZE)
+		throw hash_error("malformed hash");
+	return std::string(hash.data(), salt_pos);
+}
+
+std::string bcrypt::hex_digest() const
+{
+	return std::string(hash.data());
+}
+
+std::string bcrypt::base64_digest() const
+{
+	return std::string(hash.data());
 }
 
 } // namespace utils

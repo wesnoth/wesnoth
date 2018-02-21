@@ -45,6 +45,7 @@
 
 static lg::log_domain log_mp("mp/main");
 #define DBG_MP LOG_STREAM(debug, log_mp)
+#define ERR_MP LOG_STREAM(err, log_mp)
 
 namespace
 {
@@ -270,9 +271,24 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 								throw wesnothd_error(_("Bad data received from server"));
 							}
 
-							sp["password"] = utils::md5(utils::md5(password, utils::md5::get_salt(salt),
+							if(utils::md5::is_valid_prefix(salt)) {
+								sp["password"] = utils::md5(utils::md5(password, utils::md5::get_salt(salt),
 									utils::md5::get_iteration_count(salt)).base64_digest(), salt.substr(12, 8)).base64_digest();
-
+							} else if(utils::bcrypt::is_valid_prefix(salt)) {
+								try {
+									auto bcrypt_salt = utils::bcrypt::from_salted_salt(salt);
+									auto hash = utils::bcrypt::hash_pw(password, bcrypt_salt);
+									std::string outer_salt = salt.substr(bcrypt_salt.iteration_count_delim_pos + 23, 8);
+									if(outer_salt.size() != 8)
+										throw utils::hash_error("salt too small");
+									sp["password"] = utils::md5(hash.base64_digest(), outer_salt).base64_digest();
+								} catch(utils::hash_error& err) {
+									ERR_MP << "bcrypt hash failed: " << err.what() << std::endl;
+									throw wesnothd_error(_("Bad data received from server"));
+								}
+							} else {
+								throw wesnothd_error(_("Bad data received from server"));
+							}
 						} else {
 							sp["password"] = password;
 						}

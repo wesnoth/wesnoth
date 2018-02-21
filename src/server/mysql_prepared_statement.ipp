@@ -109,7 +109,15 @@ template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt, const std::st
 		mysql_stmt_free_result(stmt);
 	} ;
 
+	mysql_stmt_store_result(stmt);
+
 	int res = mysql_stmt_fetch(stmt);
+	if(res == MYSQL_NO_DATA)
+		throw sql_error("no data returned", sql);
+	if(is_null)
+		throw sql_error("null value returned", sql);
+	if(res != MYSQL_DATA_TRUNCATED)
+		throw sql_error(mysql_stmt_error(stmt), sql);
 	if(len > 0) {
 		buf = new char[len];
 		result_bind[0].buffer = buf;
@@ -120,10 +128,8 @@ template<> std::string fetch_result<std::string>(MYSQL_STMT* stmt, const std::st
 	}
 	if(res == MYSQL_NO_DATA)
 		throw sql_error("no data returned", sql);
-	if(is_null)
-		throw sql_error("null value returned", sql);
 	if(res != 0)
-		throw sql_error(mysql_stmt_error(stmt), sql);
+		throw sql_error("mysql_stmt_fetch_column failed", sql);
 	return result;
 }
 

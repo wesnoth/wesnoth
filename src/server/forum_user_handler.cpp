@@ -74,13 +74,16 @@ bool fuh::login(const std::string& name, const std::string& password, const std:
 		return false;
 	}
 
-	// Check hash prefix, if different than $H$ hash is invalid
-	if(!utils::md5::is_valid_hash(hash)) {
+	std::string valid_hash;
+
+	if(utils::md5::is_valid_hash(hash)) { // md5 hash
+		valid_hash = utils::md5(hash.substr(12,34), seed).base64_digest();
+	} else if(utils::bcrypt::is_valid_prefix(hash)) { // bcrypt hash
+		valid_hash = utils::md5(hash, seed).base64_digest();
+	} else {
 		ERR_UH << "Invalid hash for user '" << name << "'" << std::endl;
 		return false;
 	}
-
-	std::string valid_hash = utils::md5(hash.substr(12,34), seed).base64_digest();
 
 	if(password == valid_hash) return true;
 
@@ -103,9 +106,19 @@ std::string fuh::create_pepper(const std::string& name) {
 		return "";
 	}
 
-	if(!utils::md5::is_valid_hash(hash)) return "";
+	if(utils::md5::is_valid_hash(hash))
+		return hash.substr(0,12);
 
-	return hash.substr(0,12);
+	if(utils::bcrypt::is_valid_prefix(hash)) {
+		try {
+			return utils::bcrypt::from_hash_string(hash).get_salt();
+		} catch(utils::hash_error& err) {
+			ERR_UH << "Error getting salt from hash of user '" << name << "': " << err.what() << std::endl;
+			return "";
+		}
+	}
+
+	return "";
 }
 
 void fuh::user_logged_in(const std::string& name) {
@@ -251,8 +264,9 @@ inline T fuh::prepared_statement(const std::string& sql, Args&&... args)
 {
 	try {
 		return ::prepared_statement<T>(conn, sql, std::forward<Args>(args)...);
-	} catch (sql_error&) {
-		WRN_UH << "caught sql error, trying to reconnect and retry..." << std::endl;
+	} catch (sql_error& e) {
+		WRN_UH << "caught sql error: " << e.message << std::endl;
+		WRN_UH << "trying to reconnect and retry..." << std::endl;
 		//Try to reconnect and execute query again
 		if(!mysql_real_connect(conn, db_host_.c_str(),  db_user_.c_str(), db_password_.c_str(), db_name_.c_str(), 0, nullptr, 0)) {
 			ERR_UH << "Could not connect to database: " << mysql_errno(conn) << ": " << mysql_error(conn) << std::endl;
