@@ -1062,6 +1062,10 @@ void preferences_dialog::on_tab_select(window& window)
 void preferences_dialog::post_show(window& /*window*/)
 {
 	save_hotkeys();
+
+	// Save new prefs to disk. This also happens on app close, but doing
+	// it here too ensures nothing is lost in case of, say, a crash.
+	write_preferences();
 }
 
 } // namespace dialogs
