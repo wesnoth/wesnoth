@@ -306,7 +306,7 @@ void config::append(config&& cfg)
 			values_[v.first] = v.second;
 		}
 	}
-	cfg.clear_attibutes();
+	cfg.clear_attributes();
 }
 
 void config::append_children_by_move(config& cfg, const std::string& key)
@@ -819,7 +819,7 @@ void config::clear_all_children()
 	ordered_children.clear();
 }
 
-void config::clear_attibutes()
+void config::clear_attributes()
 {
 	// No validity check for this function.
 	values_.clear();

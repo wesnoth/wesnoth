@@ -527,7 +527,7 @@ public:
 
 	void clear();
 	void clear_all_children();
-	void clear_attibutes();
+	void clear_attributes();
 	bool empty() const;
 
 	std::string debug() const;
