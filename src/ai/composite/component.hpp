@@ -27,12 +27,6 @@ class config;
 #include <string>
 #include <vector>
 
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
-
 //============================================================================
 namespace ai {
 
@@ -92,7 +86,3 @@ public:
 } //end of namespace ai
 
 std::ostream &operator<<(std::ostream &o, const ai::path_element &e);
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif

@@ -22,14 +22,8 @@
 #include <boost/bimap.hpp>
 #include <boost/bimap/set_of.hpp>
 #include <boost/bimap/multiset_of.hpp>
-#if defined(_MSC_VER)
-#pragma warning(push)
-#pragma warning(disable: 4459)
-#endif
 #include <boost/multi_array.hpp>
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#endif
+
 #include "exceptions.hpp"
 #include "map/location.hpp"
 

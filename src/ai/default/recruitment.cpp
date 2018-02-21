@@ -50,12 +50,6 @@ static lg::log_domain log_ai_recruitment("ai/recruitment");
 #define LOG_AI_RECRUITMENT LOG_STREAM(info, log_ai_recruitment)
 #define ERR_AI_RECRUITMENT LOG_STREAM(err, log_ai_recruitment)
 
-#ifdef _MSC_VER
-#pragma warning(push)
-// silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
-
 namespace ai {
 
 namespace default_recruitment {

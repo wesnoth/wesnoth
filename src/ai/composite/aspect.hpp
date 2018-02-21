@@ -30,12 +30,6 @@
 
 #include <boost/range/adaptor/reversed.hpp>
 
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
-
 namespace ai {
 
 class aspect : public readonly_context_proxy, public events::observer, public component {
@@ -560,7 +554,3 @@ public:
 
 
 } //end of namespace ai
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif

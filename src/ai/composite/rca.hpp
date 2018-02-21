@@ -22,12 +22,6 @@
 #include "ai/composite/component.hpp"
 #include "ai/composite/contexts.hpp"
 
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
-
 //============================================================================
 namespace ai {
 
@@ -196,7 +190,3 @@ public:
 std::ostream &operator<<(std::ostream &s, const ai::candidate_action& ca);
 
 } //end of namespace ai
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif

@@ -23,12 +23,6 @@
 
 #include "units/map.hpp"
 
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
-
 namespace pathfind {
 
 struct plain_route;
@@ -81,7 +75,3 @@ protected:
 } // of namespace testing_ai_default
 
 } // of namespace ai
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif

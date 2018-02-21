@@ -43,12 +43,6 @@ namespace wfl {
 	class variant;
 }
 
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
-
 namespace wfl {
 
 typedef std::pair< unit_map::unit_iterator, int> unit_formula_pair;
@@ -177,7 +171,3 @@ private:
 };
 
 } //end of namespace ai
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif

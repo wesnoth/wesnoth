@@ -22,12 +22,6 @@
 #include "ai/composite/rca.hpp"
 #include "ai/composite/stage.hpp"
 
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
-
 namespace ai {
 
 namespace ai_default_rca {
@@ -58,7 +52,3 @@ private:
 } // of namespace testing_ai_default
 
 } // of namespace ai
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif

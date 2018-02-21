@@ -47,12 +47,6 @@ namespace boost { template <class T> class shared_ptr; }
 namespace pathfind { struct paths; }
 struct battle_context_unit_stats;  // lines 39-39
 
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
-
 namespace ai {
 
 typedef ai_context* ai_context_ptr;
@@ -1679,7 +1673,3 @@ private:
 
 
 } //end of namespace ai
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif

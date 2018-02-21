@@ -34,12 +34,6 @@ static lg::log_domain log_ai_engine_fai("ai/engine/fai");
 #define LOG_AI_ENGINE_FAI LOG_STREAM(info, log_ai_engine_fai)
 #define ERR_AI_ENGINE_FAI LOG_STREAM(err, log_ai_engine_fai)
 
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
-
 class fai_candidate_action_wrapper : public candidate_action {
 public:
 	fai_candidate_action_wrapper( rca_context &context, const config &cfg, wfl::candidate_action_ptr fai_ca, formula_ai &_formula_ai )
@@ -146,9 +140,5 @@ config engine_fai::to_config() const
 	cfg.add_child("formula_ai",formula_ai_->to_config());
 	return cfg;
 }
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
 
 } //end of namespace ai

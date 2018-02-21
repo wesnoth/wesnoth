@@ -18,12 +18,6 @@
 
 #pragma once
 
-#ifdef _MSC_VER
-#pragma warning(push)
-//silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
-
 #include "ai/composite/component.hpp"
 
 #include "ai/default/contexts.hpp"
@@ -220,8 +214,3 @@ public:
 
 
 } //end of namespace ai
-
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif

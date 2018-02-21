@@ -26,12 +26,6 @@
 
 #include <iomanip>
 
-#ifdef _MSC_VER
-#pragma warning(push)
-// silence "inherits via dominance" warnings
-#pragma warning(disable:4250)
-#endif
-
 namespace pathfind {
 
 struct full_cost_map;
@@ -276,7 +270,3 @@ private:
 }  // of namespace default_recruitment
 
 }  // of namespace ai
-
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif

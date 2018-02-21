@@ -21,19 +21,6 @@
 #define STDC99
 #endif
 
-// Disable warning about source encoding not in current code page.
-#pragma warning(disable: 4819)
-
-// Disable warning about deprecated functions.
-#pragma warning(disable: 4996)
-
-// Disable some MSVC warnings which are useless according to mordante
-#pragma warning(disable: 4244)
-#pragma warning(disable: 4345)
-#pragma warning(disable: 4250)
-#pragma warning(disable: 4355)
-#pragma warning(disable: 4351)
-
 #endif //_MSC_VER
 
 #ifdef NDEBUG

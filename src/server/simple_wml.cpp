@@ -19,15 +19,7 @@
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/bzip2.hpp>
 #include <boost/iostreams/filter/counter.hpp>
-#if defined(_MSC_VER)
-#pragma warning(push)
-#pragma warning(disable: 4456)
-#pragma warning(disable: 4458)
-#endif
 #include <boost/iostreams/filter/gzip.hpp>
-#if defined(_MSC_VER)
-#pragma warning(pop)
-#endif
 
 #include "server/simple_wml.hpp"
 

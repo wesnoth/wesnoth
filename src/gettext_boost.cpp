@@ -11,9 +11,6 @@
 
    See the COPYING file for more details.
 */
-#if defined(_MSC_VER)
-#pragma warning(disable: 4714)
-#endif
 
 #include "global.hpp"
 #include "gettext.hpp"
@@ -32,15 +29,10 @@
 #if defined(__GNUC__)
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmissing-field-initializers"
-#elif defined(_MSC_VER)
-#pragma warning(push)
-#pragma warning(disable: 4459)
 #endif
 #include "spirit_po/spirit_po.hpp"
 #if defined(__GNUC__)
 #pragma GCC diagnostic pop
-#elif defined(_MSC_VER)
-#pragma warning(pop)
 #endif
 
 #define DBG_G LOG_STREAM(debug, lg::general())
