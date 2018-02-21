@@ -90,7 +90,7 @@ public:
 	bool attack_close(const map_location& loc) const;
 
 	map_location target;
-	std::vector<std::pair<map_location,map_location> > movements;
+	std::vector<std::pair<map_location,map_location>> movements;
 
 	/** The value of the unit being targeted. */
 	double target_value;

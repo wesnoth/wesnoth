@@ -94,7 +94,7 @@ public:
 	virtual void recalculate() const;
 private:
 	std::shared_ptr<lua_ai_action_handler> handler_;
-	mutable std::shared_ptr<lua_object<aspect_attacks_lua_filter> > obj_;
+	mutable std::shared_ptr<lua_object<aspect_attacks_lua_filter>> obj_;
 	std::string code_;
 	const config params_;
 };

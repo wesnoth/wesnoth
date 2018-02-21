@@ -182,7 +182,7 @@ static std::string strip_cr(std::string str, bool strip)
 }
 
 namespace {
-	void append_default_ignore_patterns(std::pair<std::vector<std::string>, std::vector<std::string> >& patterns)
+	void append_default_ignore_patterns(std::pair<std::vector<std::string>, std::vector<std::string>>& patterns)
 	{
 		std::vector<std::string>& files = patterns.first;
 		std::vector<std::string>& dirs  = patterns.second;
@@ -224,12 +224,12 @@ namespace {
     }
 }
 
-static std::pair<std::vector<std::string>, std::vector<std::string> > read_ignore_patterns(const std::string& addon_name)
+static std::pair<std::vector<std::string>, std::vector<std::string>> read_ignore_patterns(const std::string& addon_name)
 {
 	const std::string parentd = filesystem::get_addons_dir();
 	const std::string ign_file = parentd + "/" + addon_name + "/_server.ign";
 
-	std::pair<std::vector<std::string>, std::vector<std::string> > patterns;
+	std::pair<std::vector<std::string>, std::vector<std::string>> patterns;
 	LOG_CFG << "searching for .ign file for '" << addon_name << "'...\n";
 	if (!filesystem::file_exists(ign_file)) {
 		LOG_CFG << "no .ign file found for '" << addon_name << "'\n"
@@ -261,7 +261,7 @@ static void archive_file(const std::string& path, const std::string& fname, conf
 	cfg["contents"] = encode_binary(strip_cr(filesystem::read_file(path + '/' + fname),is_cfg));
 }
 
-static void archive_dir(const std::string& path, const std::string& dirname, config& cfg, std::pair<std::vector<std::string>, std::vector<std::string> >& ignore_patterns)
+static void archive_dir(const std::string& path, const std::string& dirname, config& cfg, std::pair<std::vector<std::string>, std::vector<std::string>>& ignore_patterns)
 {
 	cfg["name"] = dirname;
 	const std::string dir = path + '/' + dirname;
@@ -299,7 +299,7 @@ void archive_addon(const std::string& addon_name, config& cfg)
 {
 	const std::string parentd = filesystem::get_addons_dir();
 
-	std::pair<std::vector<std::string>, std::vector<std::string> > ignore_patterns;
+	std::pair<std::vector<std::string>, std::vector<std::string>> ignore_patterns;
 	ignore_patterns = read_ignore_patterns(addon_name);
 	archive_dir(parentd, addon_name, cfg.add_child("dir"), ignore_patterns);
 }

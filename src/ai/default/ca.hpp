@@ -134,10 +134,10 @@ private:
 	bool debug_;
 
 	typedef std::map<map_location /* unit location */,
-		std::vector<map_location /* villages we can reach */> > treachmap;
+		std::vector<map_location /* villages we can reach */>> treachmap;
 
 	typedef std::vector<std::pair<map_location /* destination */,
-		map_location /* start */ > > tmoves;
+		map_location /* start */ >> tmoves;
 
 
 	// The list of moves we want to make

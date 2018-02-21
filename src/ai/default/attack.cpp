@@ -96,7 +96,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 	double prob_dead_already = 0.0;
 	assert(!movements.empty());
-	std::vector<std::pair<map_location,map_location> >::const_iterator m;
+	std::vector<std::pair<map_location,map_location>>::const_iterator m;
 
 	std::unique_ptr<battle_context> bc(nullptr);
 	std::unique_ptr<battle_context> old_bc(nullptr);

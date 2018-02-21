@@ -74,7 +74,7 @@ template<typename T>
 class vector_property_handler : public base_property_handler {
 public:
 	typedef std::shared_ptr<T> ptr;
-	typedef std::vector< std::shared_ptr<T> > ptr_vector;
+	typedef std::vector< std::shared_ptr<T>> ptr_vector;
 
 	vector_property_handler(const std::string &property, ptr_vector &values, std::function<void(ptr_vector&, const config&)> &construction_factory)
 		: factory_(construction_factory), property_(property), values_(values){}

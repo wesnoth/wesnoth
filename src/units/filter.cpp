@@ -148,7 +148,7 @@ struct unit_filter_adjacent : public unit_filter_base
 			++match_count;
 		}
 
-		static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-6");
+		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges("1-6");
 		config::attribute_value i_count = cfg_["count"];
 		return in_ranges(match_count, !i_count.blank() ? utils::parse_ranges(i_count) : default_counts);
 	}

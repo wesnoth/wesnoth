@@ -39,7 +39,7 @@ public:
 	std::string default_generate_map(generator_data data, std::map<map_location,std::string>* labels, const config& cfg);
 
 private:
-	typedef std::vector<std::vector<int> > height_map;
+	typedef std::vector<std::vector<int>> height_map;
 	typedef t_translation::ter_map terrain_map;
 
 	bool generate_river_internal(const height_map& heights,

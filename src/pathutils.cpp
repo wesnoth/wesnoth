@@ -82,7 +82,7 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 	// Ranges of rows are stored as pairs of a row number and a number of rows.
 	typedef std::pair<int, size_t> row_range;
 	// This is a map from column numbers to sets of ranges of rows.
-	typedef std::map<int, std::set<row_range> > column_ranges;
+	typedef std::map<int, std::set<row_range>> column_ranges;
 
 
 	/**

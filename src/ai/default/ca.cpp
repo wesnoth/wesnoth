@@ -881,7 +881,7 @@ bool get_villages_phase::dispatch_village_simple(
 
 		// build the reverse map
 		std::map<map_location /*village location*/,
-			std::vector<map_location /* units that can reach it*/> >reversemap;
+			std::vector<map_location /* units that can reach it*/>>reversemap;
 
 		treachmap::const_iterator itor = reachmap.begin();
 		for(;itor != reachmap.end(); ++itor) {
@@ -1131,7 +1131,7 @@ void get_villages_phase::dispatch_complex(
 	//   - dispatch and ready
 	// - is it's result better as the last best
 	//   - store
-	std::vector<std::pair<map_location, map_location> > best_result;
+	std::vector<std::pair<map_location, map_location>> best_result;
 
 	// Bruteforcing all possible permutations can result in a slow game.
 	// So there needs to be a balance between the best possible result and
@@ -1153,7 +1153,7 @@ void get_villages_phase::dispatch_complex(
 		while(std::next_permutation(perm.begin(), perm.end())) {
 
 			// Get result for current permutation.
-			std::vector<std::pair<map_location,map_location> > result;
+			std::vector<std::pair<map_location,map_location>> result;
 			for(size_t u = 0; u < max_options; ++u) {
 				if(matrix[u][perm[u]]) {
 					result.emplace_back(villages[perm[u]], units[u]);
@@ -1191,7 +1191,7 @@ void get_villages_phase::dispatch_complex(
 		}
 		while(std::next_permutation(perm.begin(), perm.end())) {
 			// Get result for current permutation.
-			std::vector<std::pair<map_location,map_location> > result;
+			std::vector<std::pair<map_location,map_location>> result;
 			for(size_t u = 0; u < unit_count; ++u) {
 				if(matrix[u][perm[u]]) {
 					result.emplace_back(villages[perm[u]], units[u]);
@@ -1233,7 +1233,7 @@ void get_villages_phase::dispatch_complex(
 		}
 		while(std::next_permutation(perm.begin(), perm.end())) {
 			// Get result for current permutation.
-			std::vector<std::pair<map_location,map_location> > result;
+			std::vector<std::pair<map_location,map_location>> result;
 			for(size_t v = 0; v < village_count; ++v) {
 				if(matrix[perm[v]][v]) {
 					result.emplace_back(villages[v], units[perm[v]]);

@@ -96,7 +96,7 @@ private:
 	std::shared_ptr<mouse_action> mouse_action_;  // Never null (outside the constructor).
 
 	/** The mouse actions */
-	typedef std::map<hotkey::HOTKEY_COMMAND, std::shared_ptr<mouse_action> > mouse_action_map;
+	typedef std::map<hotkey::HOTKEY_COMMAND, std::shared_ptr<mouse_action>> mouse_action_map;
 	mouse_action_map mouse_actions_;
 
 //Brush members

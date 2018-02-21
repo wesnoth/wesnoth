@@ -672,7 +672,7 @@ private:
 	 * When drawing only the widgets that are dirty are updated. The draw()
 	 * function has more information about the dirty_list_.
 	 */
-	std::vector<std::vector<widget*> > dirty_list_;
+	std::vector<std::vector<widget*>> dirty_list_;
 
 	/**
 	 * In how many consecutive frames the window has changed. This is used to

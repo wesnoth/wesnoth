@@ -282,7 +282,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 				lg::wml_error() << "side " << side << " has two [ai] tags with contradictory ai_algorithm - the first one will take precedence.\n";
 			}
 		}
-		std::deque<std::pair<std::string, config> > facet_configs;
+		std::deque<std::pair<std::string, config>> facet_configs;
 		for (const config::attribute &attr : aiparam.attribute_range()) {
 			if (non_aspect_attributes.count(attr.first)) {
 				continue;

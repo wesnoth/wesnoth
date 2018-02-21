@@ -37,7 +37,7 @@ static lg::log_domain log_mapgen("mapgen");
 #define ERR_NG LOG_STREAM(err, log_mapgen)
 #define LOG_NG LOG_STREAM(info, log_mapgen)
 
-typedef std::vector<std::vector<int> > height_map;
+typedef std::vector<std::vector<int>> height_map;
 typedef t_translation::ter_map terrain_map;
 
 namespace {

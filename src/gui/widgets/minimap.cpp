@@ -147,7 +147,7 @@ static void shrink_cache()
 	DBG_GUI_D << "Shrinking the minimap cache.\n";
 #endif
 
-	std::vector<std::pair<unsigned, tcache::iterator> > items;
+	std::vector<std::pair<unsigned, tcache::iterator>> items;
 	for(tcache::iterator itor = cache.begin(); itor != cache.end(); ++itor) {
 
 		itor->second.age /= 2;
@@ -159,7 +159,7 @@ static void shrink_cache()
 					  items.end(),
 					  compare);
 
-	for(std::vector<std::pair<unsigned, tcache::iterator> >::iterator vitor
+	for(std::vector<std::pair<unsigned, tcache::iterator>>::iterator vitor
 		= items.begin();
 		vitor < items.begin() + cache_max_size / 4;
 		++vitor) {

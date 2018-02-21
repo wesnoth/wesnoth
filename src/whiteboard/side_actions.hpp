@@ -58,13 +58,13 @@ public:
 		action_ptr,
 		boost::multi_index::indexed_by<
 			boost::multi_index::random_access<
-				boost::multi_index::tag< chronological > >,
+				boost::multi_index::tag< chronological >>,
 			boost::multi_index::hashed_non_unique<
 				boost::multi_index::tag< by_unit >,
-				boost::multi_index::const_mem_fun< action, size_t, &action::get_unit_id > >,
+				boost::multi_index::const_mem_fun< action, size_t, &action::get_unit_id >>,
 			boost::multi_index::hashed_non_unique<
 				boost::multi_index::tag< by_hex >,
-				boost::multi_index::const_mem_fun< action, map_location, &action::get_numbering_hex > >
+				boost::multi_index::const_mem_fun< action, map_location, &action::get_numbering_hex >>
 			>
 		> action_set;
 

@@ -825,7 +825,7 @@ std::pair<int, int> parse_range(const std::string& str)
 
 std::vector<std::pair<int, int>> parse_ranges(const std::string& str)
 {
-	std::vector< std::pair< int, int > > to_return;
+	std::vector< std::pair< int, int >> to_return;
 	std::vector<std::string> strs = utils::split(str);
 	std::vector<std::string>::const_iterator i, i_end=strs.end();
 	for(i = strs.begin(); i != i_end; ++i) {

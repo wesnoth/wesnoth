@@ -71,7 +71,7 @@ private:
 	 * * first                    The origin of a row.
 	 * * second                   The height of a row.
 	 */
-	std::vector<std::pair<int, int> > rows_;
+	std::vector<std::pair<int, int>> rows_;
 
 	/** Holds the widths of the columns. */
 	std::vector<int> columns_;

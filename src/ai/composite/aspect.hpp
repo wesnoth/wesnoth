@@ -187,7 +187,7 @@ public:
 protected:
 	mutable std::shared_ptr<T> value_;
 	mutable std::shared_ptr<wfl::variant> value_variant_;
-	mutable std::shared_ptr< lua_object<T> > value_lua_;
+	mutable std::shared_ptr< lua_object<T>> value_lua_;
 };
 
 
@@ -218,14 +218,14 @@ class composite_aspect;
 template<typename T>
 class typesafe_known_aspect : public known_aspect {
 public:
-	typesafe_known_aspect(const std::string &name, std::shared_ptr< typesafe_aspect<T> > &where, aspect_map &aspects)
+	typesafe_known_aspect(const std::string &name, std::shared_ptr< typesafe_aspect<T>> &where, aspect_map &aspects)
 	: known_aspect(name), where_(where), aspects_(aspects)
 	{
 	}
 
 	void set(aspect_ptr a)
 	{
-		std::shared_ptr< typesafe_aspect <T> > c = std::dynamic_pointer_cast< typesafe_aspect<T> >(a);
+		std::shared_ptr< typesafe_aspect <T>> c = std::dynamic_pointer_cast< typesafe_aspect<T>>(a);
 		if (c) {
 			assert (c->get_id()== this->get_name());
 			where_ = c;
@@ -237,7 +237,7 @@ public:
 
 	virtual void add_facet(const config &cfg)
 	{
-		std::shared_ptr< composite_aspect <T> > c = std::dynamic_pointer_cast< composite_aspect<T> >(where_);
+		std::shared_ptr< composite_aspect <T>> c = std::dynamic_pointer_cast< composite_aspect<T>>(where_);
 		if (c) {
 			assert (c->get_id()==this->get_name());
 			c->add_facet(-1, cfg);
@@ -248,7 +248,7 @@ public:
 	}
 
 protected:
-	std::shared_ptr<typesafe_aspect <T> > &where_;
+	std::shared_ptr<typesafe_aspect <T>> &where_;
 	aspect_map &aspects_;
 
 };
@@ -274,7 +274,7 @@ public:
 			std::vector< aspect_ptr > default_aspects;
 			engine::parse_aspect_from_config(*this,_default,parent_id_,std::back_inserter(default_aspects));
 			if (!default_aspects.empty()) {
-				typename aspect_type<T>::typesafe_ptr b = std::dynamic_pointer_cast< typesafe_aspect<T> >(default_aspects.front());
+				typename aspect_type<T>::typesafe_ptr b = std::dynamic_pointer_cast< typesafe_aspect<T>>(default_aspects.front());
 				if (composite_aspect<T>* c = dynamic_cast<composite_aspect<T>*>(b.get())) {
 					c->parent_id_ = parent_id_;
 				}
@@ -295,7 +295,7 @@ public:
 		std::vector<aspect_ptr> facets_base;
 		engine::parse_aspect_from_config(*this,cfg,parent_id_,std::back_inserter(facets_base));
 		for (aspect_ptr a : facets_base) {
-			typename aspect_type<T>::typesafe_ptr b = std::dynamic_pointer_cast< typesafe_aspect<T> > (a);
+			typename aspect_type<T>::typesafe_ptr b = std::dynamic_pointer_cast< typesafe_aspect<T>> (a);
 			if (composite_aspect<T>* c = dynamic_cast<composite_aspect<T>*>(b.get())) {
 				c->parent_id_ = parent_id_;
 			}
@@ -344,7 +344,7 @@ public:
 		engine::parse_aspect_from_config(*this,cfg,parent_id_,std::back_inserter(facets));
 		int j=0;
 		for (aspect_ptr a : facets) {
-			typename aspect_type<T>::typesafe_ptr b = std::dynamic_pointer_cast< typesafe_aspect<T> > (a);
+			typename aspect_type<T>::typesafe_ptr b = std::dynamic_pointer_cast< typesafe_aspect<T>> (a);
 			if (composite_aspect<T>* c = dynamic_cast<composite_aspect<T>*>(b.get())) {
 				c->parent_id_ = parent_id_;
 			}

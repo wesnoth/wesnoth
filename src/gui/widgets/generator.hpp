@@ -242,7 +242,7 @@ public:
 	virtual void create_items(
 			const int index,
 			builder_grid_const_ptr list_builder,
-			const std::vector<std::map<std::string /*widget id*/, string_map> >&
+			const std::vector<std::map<std::string /*widget id*/, string_map>>&
 					data,
 			const std::function<void(widget&)>& callback) = 0;
 

@@ -348,7 +348,7 @@ void replay::speak(const config& cfg)
 	add_chat_message_location(base_->size() - 1);
 }
 
-void replay::add_chat_log_entry(const config &cfg, std::back_insert_iterator<std::vector<chat_msg> > &i) const
+void replay::add_chat_log_entry(const config &cfg, std::back_insert_iterator<std::vector<chat_msg>> &i) const
 {
 	if (!cfg) return;
 
@@ -376,7 +376,7 @@ const std::vector<chat_msg>& replay::build_chat_log() const
 	message_log.clear();
 	std::vector<int>::const_iterator loc_it;
 	int last_location = 0;
-	std::back_insert_iterator<std::vector < chat_msg > > chat_log_appender( back_inserter(message_log));
+	std::back_insert_iterator<std::vector < chat_msg >> chat_log_appender( back_inserter(message_log));
 	for (loc_it = message_locations.begin(); loc_it != message_locations.end(); ++loc_it)
 	{
 		last_location = *loc_it;

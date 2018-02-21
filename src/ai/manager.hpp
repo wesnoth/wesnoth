@@ -481,7 +481,7 @@ public:
 
 private:
 
-	typedef std::map< side_number, std::stack< holder > > AI_map_of_stacks;
+	typedef std::map< side_number, std::stack< holder >> AI_map_of_stacks;
 
 	std::deque< command_history_item > history_;
 	long history_item_counter_;

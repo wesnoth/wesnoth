@@ -536,7 +536,7 @@ std::string unit_topic_generator::operator()() const {
 			attack_ss.str(clear_stringstream);
 			// Show this attack's special, if it has any. Cross
 			// reference it to the section describing the special.
-			std::vector<std::pair<t_string, t_string> > specials = attack.special_tooltips();
+			std::vector<std::pair<t_string, t_string>> specials = attack.special_tooltips();
 			if (!specials.empty()) {
 				std::string lang_special = "";
 				const size_t specials_size = specials.size();

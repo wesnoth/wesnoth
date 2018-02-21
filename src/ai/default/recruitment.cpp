@@ -936,7 +936,7 @@ void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
 	const unit_map& units = resources::gameboard->units();
 
 	// Collect all enemy units (and their hp) we want to take into account in enemy_units.
-	typedef std::vector<std::pair<std::string, int> > unit_hp_vector;
+	typedef std::vector<std::pair<std::string, int>> unit_hp_vector;
 	unit_hp_vector enemy_units;
 	for (const unit& unit : units) {
 		if (!current_team().is_enemy(unit.side()) || unit.incapacitated()) {
@@ -1816,9 +1816,9 @@ recruitment_aspect::recruitment_aspect(readonly_context &context, const config &
 	for (config lim : parsed_cfg.child_range("limit")) {
 		create_limit(limits_, lim);
 	}
-	std::function<void(std::vector<std::shared_ptr<recruit_job> >&, const config&)> factory_jobs =
+	std::function<void(std::vector<std::shared_ptr<recruit_job>>&, const config&)> factory_jobs =
 		std::bind(&recruitment_aspect::create_job,*this,_1,_2);
-	std::function<void(std::vector<std::shared_ptr<recruit_limit> >&, const config&)> factory_limits =
+	std::function<void(std::vector<std::shared_ptr<recruit_limit>>&, const config&)> factory_limits =
 		std::bind(&recruitment_aspect::create_limit,*this,_1,_2);
 	register_vector_property(property_handlers(), "recruit", jobs_, factory_jobs);
 	register_vector_property(property_handlers(), "limit", limits_, factory_limits);
@@ -1836,7 +1836,7 @@ void recruitment_aspect::recalculate() const {
 	this->valid_ = true;
 }
 
-void recruitment_aspect::create_job(std::vector<std::shared_ptr<recruit_job> > &jobs, const config &job) {
+void recruitment_aspect::create_job(std::vector<std::shared_ptr<recruit_job>> &jobs, const config &job) {
 	std::shared_ptr<recruit_job> job_ptr(new recruit_job(
 		utils::split(job["type"]),
 		job["leader_id"], job["id"],
@@ -1848,7 +1848,7 @@ void recruitment_aspect::create_job(std::vector<std::shared_ptr<recruit_job> > &
 	jobs.push_back(job_ptr);
 }
 
-void recruitment_aspect::create_limit(std::vector<std::shared_ptr<recruit_limit> > &limits, const config &lim) {
+void recruitment_aspect::create_limit(std::vector<std::shared_ptr<recruit_limit>> &limits, const config &lim) {
 	std::shared_ptr<recruit_limit> lim_ptr(new recruit_limit(
 		utils::split(lim["type"]),
 		lim["id"],

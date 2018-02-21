@@ -111,7 +111,7 @@ namespace statistics
 	void reset_turn_stats(const std::string & save_id);
 	stats calculate_stats(const std::string & save_id);
 	/// Stats (and name) for each scenario. The pointers are never nullptr.
-	typedef std::vector< std::pair<const std::string *, const stats *> > levels;
+	typedef std::vector< std::pair<const std::string *, const stats *>> levels;
 	/// Returns a list of names and stats for each scenario in the current campaign.
 	levels level_stats(const std::string & save_id);
 } // end namespace statistics

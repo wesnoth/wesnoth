@@ -79,7 +79,7 @@ public:
 
 	using generator_function = std::function<config(reports::context&)>;
 
-	typedef std::map<std::string, std::shared_ptr<reports::generator> > dynamic_report_generators;
+	typedef std::map<std::string, std::shared_ptr<reports::generator>> dynamic_report_generators;
 
 private:
 

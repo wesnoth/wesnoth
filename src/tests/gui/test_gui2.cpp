@@ -184,7 +184,7 @@ namespace {
 	};
 
 	typedef std::pair<unsigned, unsigned> resolution;
-	typedef std::vector<std::pair<unsigned, unsigned> > resolution_list;
+	typedef std::vector<std::pair<unsigned, unsigned>> resolution_list;
 
 	template<class T>
 	void test_resolutions(const resolution_list& resolutions)

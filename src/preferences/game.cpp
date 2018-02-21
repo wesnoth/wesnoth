@@ -40,11 +40,11 @@ bool message_private_on = false;
 
 bool haloes = true;
 
-std::map<std::string, std::set<std::string> > completed_campaigns;
+std::map<std::string, std::set<std::string>> completed_campaigns;
 std::set<std::string> encountered_units_set;
 std::set<t_translation::terrain_code> encountered_terrains_set;
 
-std::map<std::string, std::vector<std::string> > history_map;
+std::map<std::string, std::vector<std::string>> history_map;
 
 acquaintances_map acquaintances;
 
@@ -137,7 +137,7 @@ manager::manager() :
 manager::~manager()
 {
 	config campaigns;
-	typedef const std::pair<std::string, std::set<std::string> > cc_elem;
+	typedef const std::pair<std::string, std::set<std::string>> cc_elem;
 	for (cc_elem &elem : completed_campaigns) {
 		config cmp;
 		cmp["name"] = elem.first;
@@ -158,7 +158,7 @@ manager::~manager()
 			[/line]
 */
 	config history;
-	typedef std::pair<std::string, std::vector<std::string> > hack;
+	typedef std::pair<std::string, std::vector<std::string>> hack;
 	for (const hack& history_id : history_map) {
 
 		config history_id_cfg; // [history_id]
@@ -321,7 +321,7 @@ bool is_campaign_completed(const std::string& campaign_id) {
 }
 
 bool is_campaign_completed(const std::string& campaign_id, const std::string &difficulty_level) {
-	std::map<std::string, std::set<std::string> >::iterator it = completed_campaigns.find(campaign_id);
+	std::map<std::string, std::set<std::string>>::iterator it = completed_campaigns.find(campaign_id);
 	return it == completed_campaigns.end() ? false : it->second.count(difficulty_level) != 0;
 }
 

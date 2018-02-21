@@ -175,7 +175,7 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 		return level_1 > level_2;
 	}
 
-	const std::map<int,std::vector<int> >::const_iterator itor = pos_sort_.find(column);
+	const std::map<int,std::vector<int>>::const_iterator itor = pos_sort_.find(column);
 	if(itor != pos_sort_.end()) {
 		const std::vector<int>& pos = itor->second;
 		if(row1.id >= pos.size()) {

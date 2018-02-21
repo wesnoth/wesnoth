@@ -649,7 +649,7 @@ game_events::pump_result_t actor_sighted(const unit & target, const std::vector<
 		needs_event[i] = needs_event[i] && target.is_visible_to_team(teams[i], *resources::gameboard, false);
 
 	// Cache "jamming".
-	std::vector< std::map<map_location, int> > jamming_cache(teams_size);
+	std::vector< std::map<map_location, int>> jamming_cache(teams_size);
 	for ( size_t i = 0; i != teams_size; ++i )
 		if ( needs_event[i] )
 			create_jamming_map(jamming_cache[i], teams[i]);

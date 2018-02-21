@@ -405,7 +405,7 @@ public:
 
 
 	typedef std::map<std::pair<map_location,const unit_type *>,
-	                 std::pair<battle_context_unit_stats,battle_context_unit_stats> >
+	                 std::pair<battle_context_unit_stats,battle_context_unit_stats>>
 	        unit_stats_cache_t;
 	virtual unit_stats_cache_t & unit_stats_cache() const = 0;
 
@@ -1495,7 +1495,7 @@ public:
 
 private:
 	template<typename T>
-	void add_known_aspect(const std::string &name, std::shared_ptr< typesafe_aspect <T> >& where);
+	void add_known_aspect(const std::string &name, std::shared_ptr< typesafe_aspect <T>>& where);
 
 	const config cfg_;
 
@@ -1536,8 +1536,8 @@ private:
 	mutable moves_map possible_moves_;
 	aspect_type< double >::typesafe_ptr recruitment_diversity_;
 	aspect_type< config >::typesafe_ptr recruitment_instructions_;
-	aspect_type< std::vector<std::string> >::typesafe_ptr recruitment_more_;
-	aspect_type< std::vector<std::string> >::typesafe_ptr recruitment_pattern_;
+	aspect_type< std::vector<std::string>>::typesafe_ptr recruitment_more_;
+	aspect_type< std::vector<std::string>>::typesafe_ptr recruitment_pattern_;
 	aspect_type< int >::typesafe_ptr recruitment_randomness_;
 	aspect_type< config >::typesafe_ptr recruitment_save_gold_;
 	recursion_counter recursion_counter_;

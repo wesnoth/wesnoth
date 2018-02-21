@@ -700,7 +700,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_EDITOR_PALETTE_GROUPS:
 		{
 			//TODO this code waits for the gui2 dialog to get ready
-//			std::vector< std::pair< std::string, std::string > > blah_items;
+//			std::vector< std::pair< std::string, std::string >> blah_items;
 //			toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(blah_items);
 //			int selected = 1; //toolkit_->get_palette_manager()->active_palette().get_selected;
 //			gui2::teditor_select_palette_group::execute(selected, blah_items, gui_->video());

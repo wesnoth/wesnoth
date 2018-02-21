@@ -43,7 +43,7 @@ engine_cpp::~engine_cpp()
 }
 
 
-void engine_cpp::do_parse_aspect_from_config( const config &cfg, const std::string &id, std::back_insert_iterator<std::vector< aspect_ptr > > b )
+void engine_cpp::do_parse_aspect_from_config( const config &cfg, const std::string &id, std::back_insert_iterator<std::vector< aspect_ptr >> b )
 {
 	const std::string aspect_factory_key = id+"*"+cfg["name"];//@note: hack which combines aspect id and name to get the std::string key of the aspect factory
 	aspect_factory::factory_map::iterator f = aspect_factory::get_list().find(aspect_factory_key);
@@ -62,7 +62,7 @@ void engine_cpp::do_parse_aspect_from_config( const config &cfg, const std::stri
 }
 
 
-void engine_cpp::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b ){
+void engine_cpp::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr >> b ){
 	candidate_action_factory::factory_map::iterator f = candidate_action_factory::get_list().find(cfg["name"]);
 	if (f == candidate_action_factory::get_list().end()){
 		ERR_AI_ENGINE_CPP << "side "<<ai_.get_side()<< " : UNKNOWN candidate_action["<<cfg["name"]<<"]"<< std::endl;
@@ -79,7 +79,7 @@ void engine_cpp::do_parse_candidate_action_from_config( rca_context &context, co
 
 }
 
-void engine_cpp::do_parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b )
+void engine_cpp::do_parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr >> b )
 {
 	stage_factory::factory_map::iterator f = stage_factory::get_list().find(cfg["name"]);
 	if (f == stage_factory::get_list().end()){
@@ -97,7 +97,7 @@ void engine_cpp::do_parse_stage_from_config( ai_context &context, const config &
 }
 
 
-void engine_cpp::do_parse_goal_from_config(const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b )
+void engine_cpp::do_parse_goal_from_config(const config &cfg, std::back_insert_iterator<std::vector< goal_ptr >> b )
 {
 	goal_factory::factory_map::iterator f = goal_factory::get_list().find(cfg["name"]);
 	if (f == goal_factory::get_list().end()){
@@ -115,7 +115,7 @@ void engine_cpp::do_parse_goal_from_config(const config &cfg, std::back_insert_i
 }
 
 
-void engine_cpp::do_parse_engine_from_config(const config &cfg, std::back_insert_iterator<std::vector< engine_ptr > > b )
+void engine_cpp::do_parse_engine_from_config(const config &cfg, std::back_insert_iterator<std::vector< engine_ptr >> b )
 {
 	engine_factory::factory_map::iterator f = engine_factory::get_list().find(cfg["name"]);
 	if (f == engine_factory::get_list().end()){

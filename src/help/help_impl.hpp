@@ -400,7 +400,7 @@ inline std::string bold(const std::string &s)
 		return ss.str();
 	}
 
-typedef std::vector<std::vector<std::pair<std::string, unsigned int > > > table_spec;
+typedef std::vector<std::vector<std::pair<std::string, unsigned int >> > table_spec;
 // Create a table using the table specs. Return markup with jumps
 // that create a table. The table spec contains a vector with
 // vectors with pairs. The pairs are the markup string that should
@@ -410,6 +410,6 @@ std::string generate_table(const table_spec &tab, const unsigned int spacing=fon
 // Return the width for the image with filename.
 unsigned image_width(const std::string &filename);
 
-void push_tab_pair(std::vector<std::pair<std::string, unsigned int> > &v, const std::string &s);
+void push_tab_pair(std::vector<std::pair<std::string, unsigned int>> &v, const std::string &s);
 
 } // end namespace help

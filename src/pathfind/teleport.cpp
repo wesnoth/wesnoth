@@ -241,7 +241,7 @@ void teleport_map::get_adjacents(std::set<map_location>& adjacents, map_location
 
 void teleport_map::get_sources(std::set<map_location>& sources) const {
 
-	std::map<std::string, std::set<map_location> >::const_iterator it;
+	std::map<std::string, std::set<map_location>>::const_iterator it;
 	for(it = sources_.begin(); it != sources_.end(); ++it) {
 		sources.insert(it->second.begin(), it->second.end());
 	}
@@ -249,7 +249,7 @@ void teleport_map::get_sources(std::set<map_location>& sources) const {
 
 void teleport_map::get_targets(std::set<map_location>& targets) const {
 
-	std::map<std::string, std::set<map_location> >::const_iterator it;
+	std::map<std::string, std::set<map_location>>::const_iterator it;
 	for(it = targets_.begin(); it != targets_.end(); ++it) {
 		targets.insert(it->second.begin(), it->second.end());
 	}

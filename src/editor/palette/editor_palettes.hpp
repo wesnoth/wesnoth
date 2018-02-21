@@ -166,7 +166,7 @@ private:
 	unsigned int palette_x_;
 
 protected:
-	std::map<std::string, std::vector<std::string> > group_map_;
+	std::map<std::string, std::vector<std::string>> group_map_;
 
 	typedef std::map<std::string, Item> item_map;
 	item_map item_map_;

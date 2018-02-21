@@ -1836,7 +1836,7 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	luaW_tovconfig(L, arg, filter);
 
 	std::vector<const ::unit*> real_units;
-	typedef std::vector<std::tuple<map_location, int, std::string> > unit_type_vector;
+	typedef std::vector<std::tuple<map_location, int, std::string>> unit_type_vector;
 	unit_type_vector fake_units;
 
 
@@ -2826,7 +2826,7 @@ static int intf_synchronize_choices(lua_State *L)
 	if(lua_isfunction(L, nextarg)) {
 		null_func = nextarg++;
 	};
-	sides_for = lua_check<std::vector<int> >(L, nextarg++);
+	sides_for = lua_check<std::vector<int>>(L, nextarg++);
 
 	lua_push(L, mp_sync::get_user_choice_multiple_sides(tagname, lua_synchronize(L, desc, human_func, null_func), std::set<int>(sides_for.begin(), sides_for.end())));
 	return 1;

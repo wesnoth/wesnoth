@@ -420,7 +420,7 @@ void set_language(const std::string& language, const std::vector<std::string>* /
 
 int compare(const std::string& s1, const std::string& s2)
 {
-	return std::use_facet<std::collate<char> >(get_manager().get_locale()).compare(s1.c_str(), s1.c_str() + s1.size(), s2.c_str(), s2.c_str() + s2.size());
+	return std::use_facet<std::collate<char>>(get_manager().get_locale()).compare(s1.c_str(), s1.c_str() + s1.size(), s2.c_str(), s2.c_str() + s2.size());
 }
 
 int icompare(const std::string& s1, const std::string& s2)
@@ -429,7 +429,7 @@ int icompare(const std::string& s1, const std::string& s2)
 	// https://github.com/wesnoth/wesnoth/issues/2094
 	return compare(s1, s2);
 #else
-	return std::use_facet<bl::collator<char> >(get_manager().get_locale()).compare(
+	return std::use_facet<bl::collator<char>>(get_manager().get_locale()).compare(
 			bl::collator_base::secondary, s1, s2);
 #endif
 }

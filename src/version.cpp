@@ -222,10 +222,10 @@ namespace {
 				break;
 			}
 			case LT:
-				result = recursive_order_operation<std::less<unsigned int>, std::equal_to<unsigned int> >(lcc, rcc, 0);
+				result = recursive_order_operation<std::less<unsigned int>, std::equal_to<unsigned int>>(lcc, rcc, 0);
 				break;
 			case GT:
-				result = recursive_order_operation<std::greater<unsigned int>, std::equal_to<unsigned int> >(lcc, rcc, 0);
+				result = recursive_order_operation<std::greater<unsigned int>, std::equal_to<unsigned int>>(lcc, rcc, 0);
 				break;
 			default:
 				assert(false);

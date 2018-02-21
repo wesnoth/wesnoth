@@ -1581,7 +1581,7 @@ void server::handle_player_in_game(socket_ptr socket, std::shared_ptr<simple_wml
 			   << g.name() << "\" (" << g.id() << ")\n" << data.output();
 }
 
-typedef std::map<socket_ptr, std::deque<std::shared_ptr<simple_wml::document> > > SendQueue;
+typedef std::map<socket_ptr, std::deque<std::shared_ptr<simple_wml::document>> > SendQueue;
 SendQueue send_queue;
 void handle_send_to_player(socket_ptr socket);
 

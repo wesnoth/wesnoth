@@ -279,7 +279,7 @@ static void find_routes(
 		const unit * teleporter, const team * current_team,
 		const unit * skirmisher, const team * viewing_team,
 		const std::map<map_location, int> * jamming_map=nullptr,
-		std::vector<std::pair<int, int> > * full_cost_map=nullptr, bool check_vision=false)
+		std::vector<std::pair<int, int>> * full_cost_map=nullptr, bool check_vision=false)
 {
 	const gamemap& map = resources::gameboard->map();
 
@@ -874,7 +874,7 @@ full_cost_map::full_cost_map(const unit& u, bool force_ignore_zoc,
 	 viewing_team_(viewing_team), see_all_(see_all), ignore_units_(ignore_units)
 {
 	const gamemap& map = resources::gameboard->map();
-	cost_map = std::vector<std::pair<int, int> >(map.w() * map.h(), std::make_pair(-1, 0));
+	cost_map = std::vector<std::pair<int, int>>(map.w() * map.h(), std::make_pair(-1, 0));
 	add_unit(u);
 }
 
@@ -889,7 +889,7 @@ full_cost_map::full_cost_map(bool force_ignore_zoc,
 	 viewing_team_(viewing_team), see_all_(see_all), ignore_units_(ignore_units)
 {
 	const gamemap& map = resources::gameboard->map();
-	cost_map = std::vector<std::pair<int, int> >(map.w() * map.h(), std::make_pair(-1, 0));
+	cost_map = std::vector<std::pair<int, int>>(map.w() * map.h(), std::make_pair(-1, 0));
 }
 
 /**

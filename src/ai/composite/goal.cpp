@@ -75,7 +75,7 @@ goal::~goal()
 }
 
 
-void goal::add_targets(std::back_insert_iterator< std::vector< target > > /*target_list*/)
+void goal::add_targets(std::back_insert_iterator< std::vector< target >> /*target_list*/)
 {
 }
 
@@ -135,7 +135,7 @@ void target_unit_goal::on_create()
 	}
 }
 
-void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< target > > target_list)
+void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< target >> target_list)
 {
 	if (!(this)->active()) {
 		return;
@@ -181,7 +181,7 @@ void target_location_goal::on_create()
 	}
 }
 
-void target_location_goal::add_targets(std::back_insert_iterator< std::vector< target > > target_list)
+void target_location_goal::add_targets(std::back_insert_iterator< std::vector< target >> target_list)
 {
 	if (!(this)->active()) {
 		return;
@@ -235,7 +235,7 @@ void protect_goal::on_create()
 }
 
 
-void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > > target_list)
+void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >> target_list)
 {
 	std::string goal_type;
 	if (protect_unit_) {
@@ -323,7 +323,7 @@ void lua_goal::on_create(std::shared_ptr<ai::lua_ai_context> l_ctx)
 	handler_.reset(resources::lua_kernel->create_lua_ai_action_handler(code_.c_str(), *l_ctx));
 }
 
-void lua_goal::add_targets(std::back_insert_iterator< std::vector< target > > target_list)
+void lua_goal::add_targets(std::back_insert_iterator< std::vector< target >> target_list)
 {
 	std::shared_ptr<lua_object<std::vector<target>>> l_obj = std::make_shared<lua_object<std::vector<target>>>();
 	config c(cfg_.child_or_empty("args"));

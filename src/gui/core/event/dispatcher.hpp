@@ -708,7 +708,7 @@ public:
 		{
 		}
 
-		std::map<ui_event, signal_type<T> > queue;
+		std::map<ui_event, signal_type<T>> queue;
 
 		void connect_signal(const ui_event event,
 							const queue_position position,

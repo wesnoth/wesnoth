@@ -240,7 +240,7 @@ class editor_controller : public controller_base,
 		const std::unique_ptr<editor_display> gui_;
 
 		/** Pre-defined time of day lighting settings for the settings dialog */
-		typedef std::map<std::string, std::pair<std::string ,std::vector<time_of_day> > > tods_map;
+		typedef std::map<std::string, std::pair<std::string ,std::vector<time_of_day>> > tods_map;
 		tods_map tods_;
 
 		/* managers */

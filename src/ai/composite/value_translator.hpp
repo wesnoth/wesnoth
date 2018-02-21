@@ -87,7 +87,7 @@ public:
 };
 
 template<>
-class config_value_translator< std::vector<std::string> > {
+class config_value_translator< std::vector<std::string>> {
 public:
 
 	static std::vector<std::string> cfg_to_value(const config &cfg)

@@ -68,9 +68,9 @@ typedef boost::multi_index_container<
 	wnotify,
 	indexed_by<
 		//hashed by ids
-		hashed_unique<tag<by_id>, member<wnotify,const uint32_t,&wnotify::id> >,
+		hashed_unique<tag<by_id>, member<wnotify,const uint32_t,&wnotify::id>>,
 		//hashed by owners
-		hashed_unique<tag<by_owner>, member<wnotify,const std::string,&wnotify::owner> >
+		hashed_unique<tag<by_owner>, member<wnotify,const std::string,&wnotify::owner>>
 	>
 > wnotify_set;
 

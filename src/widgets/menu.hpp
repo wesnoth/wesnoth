@@ -144,7 +144,7 @@ public:
 	private:
 		std::set<int> alpha_sort_, numeric_sort_, id_sort_, xp_sort_, level_sort_;
 		std::map<int,int> redirect_sort_;
-		std::map<int,std::vector<int> > pos_sort_;
+		std::map<int,std::vector<int>> pos_sort_;
 		int xp_col_; //used by level sort
 	};
 

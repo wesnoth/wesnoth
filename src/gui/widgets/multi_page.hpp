@@ -247,7 +247,7 @@ struct builder_multi_page : public builder_styled_widget
 	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<std::map<std::string, t_string> > data;
+	std::vector<std::map<std::string, t_string>> data;
 };
 
 } // namespace implementation

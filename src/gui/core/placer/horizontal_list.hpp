@@ -75,7 +75,7 @@ private:
 	 * * first                    The origin of a column.
 	 * * second                   The width of a column.
 	 */
-	std::vector<std::pair<int, int> > columns_;
+	std::vector<std::pair<int, int>> columns_;
 
 	/** The row to add an item to. */
 	unsigned row_;

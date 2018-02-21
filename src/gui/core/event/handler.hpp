@@ -146,7 +146,7 @@ typedef boost::mpl::set<boost::mpl::int_<DRAW>,
 						boost::mpl::int_<RIGHT_BUTTON_DOWN>,
 						boost::mpl::int_<RIGHT_BUTTON_UP>,
 						boost::mpl::int_<RIGHT_BUTTON_CLICK>,
-						boost::mpl::int_<RIGHT_BUTTON_DOUBLE_CLICK> >
+						boost::mpl::int_<RIGHT_BUTTON_DOUBLE_CLICK>>
 set_event;
 
 /**
@@ -168,7 +168,7 @@ typedef boost::mpl::set<boost::mpl::int_<SDL_VIDEO_RESIZE>,
 						boost::mpl::int_<SDL_WHEEL_UP>,
 						boost::mpl::int_<SDL_WHEEL_DOWN>,
 						boost::mpl::int_<SDL_WHEEL_LEFT>,
-						boost::mpl::int_<SDL_WHEEL_RIGHT> > set_event_mouse;
+						boost::mpl::int_<SDL_WHEEL_RIGHT>> set_event_mouse;
 
 /**
  * Helper for catching use error of dispatcher::connect_signal.
@@ -176,7 +176,7 @@ typedef boost::mpl::set<boost::mpl::int_<SDL_VIDEO_RESIZE>,
  * This version is for callbacks with the keyboard values (these haven't been
  * determined yet).
  */
-typedef boost::mpl::set<boost::mpl::int_<SDL_KEY_DOWN> > set_event_keyboard;
+typedef boost::mpl::set<boost::mpl::int_<SDL_KEY_DOWN>> set_event_keyboard;
 
 /**
  * Helper for catching use error of dispatcher::connect_signal.
@@ -185,7 +185,7 @@ typedef boost::mpl::set<boost::mpl::int_<SDL_KEY_DOWN> > set_event_keyboard;
  */
 typedef boost::mpl::set<boost::mpl::int_<SDL_TOUCH_MOTION>,
 						boost::mpl::int_<SDL_TOUCH_UP>,
-						boost::mpl::int_<SDL_TOUCH_DOWN> >
+						boost::mpl::int_<SDL_TOUCH_DOWN>>
 set_event_touch;
 
 /**
@@ -201,7 +201,7 @@ typedef boost::mpl::set<boost::mpl::int_<NOTIFY_REMOVAL>,
 						boost::mpl::int_<RECEIVE_KEYBOARD_FOCUS>,
 						boost::mpl::int_<LOSE_KEYBOARD_FOCUS>,
 						boost::mpl::int_<NOTIFY_REMOVE_TOOLTIP>,
-						boost::mpl::int_<SDL_ACTIVATE> >
+						boost::mpl::int_<SDL_ACTIVATE>>
 set_event_notification;
 
 /**
@@ -214,7 +214,7 @@ set_event_notification;
  */
 typedef boost::mpl::set<boost::mpl::int_<MESSAGE_SHOW_TOOLTIP>,
 						boost::mpl::int_<MESSAGE_SHOW_HELPTIP>,
-						boost::mpl::int_<REQUEST_PLACEMENT> >
+						boost::mpl::int_<REQUEST_PLACEMENT>>
 set_event_message;
 
 /**
@@ -222,7 +222,7 @@ set_event_message;
  *
  * This version is for callbacks of raw events.
  */
-typedef boost::mpl::set<boost::mpl::int_<SDL_RAW_EVENT> > set_event_raw_event;
+typedef boost::mpl::set<boost::mpl::int_<SDL_RAW_EVENT>> set_event_raw_event;
 
 /**
  * Helper for catching use error of dispatcher::connect_signal.

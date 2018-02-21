@@ -259,9 +259,9 @@ namespace {
 	}
 }
 
-std::vector<std::tuple<std::string, t_string, t_string, t_string> > unit::ability_tooltips(boost::dynamic_bitset<>* active_list) const
+std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability_tooltips(boost::dynamic_bitset<>* active_list) const
 {
-	std::vector<std::tuple<std::string, t_string,t_string,t_string> > res;
+	std::vector<std::tuple<std::string, t_string,t_string,t_string>> res;
 	if ( active_list )
 		active_list->clear();
 
@@ -636,11 +636,11 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
  * @a active_list is not nullptr. Otherwise specials are assumed active.
  * If the appropriate name is empty, the special is skipped.
  */
-std::vector<std::pair<t_string, t_string> > attack_type::special_tooltips(
+std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 	boost::dynamic_bitset<>* active_list) const
 {
 	//log_scope("special_tooltips");
-	std::vector<std::pair<t_string, t_string> > res;
+	std::vector<std::pair<t_string, t_string>> res;
 	if ( active_list )
 		active_list->clear();
 

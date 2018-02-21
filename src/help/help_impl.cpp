@@ -395,7 +395,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 	std::vector<topic> topics;
 
 	std::map<t_string, std::string> special_description;
-	std::map<t_string, std::set<std::string, string_less> > special_units;
+	std::map<t_string, std::set<std::string, string_less>> special_units;
 
 	for (const unit_type_data::unit_type_map::value_type &type_mapping : unit_types.types())
 	{
@@ -407,7 +407,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 
 		for (const attack_type& atk : type.attacks()) {
 
-			std::vector<std::pair<t_string, t_string> > specials = atk.special_tooltips();
+			std::vector<std::pair<t_string, t_string>> specials = atk.special_tooltips();
 			for ( size_t i = 0; i != specials.size(); ++i )
 			{
 				special_description.emplace(specials[i].first, specials[i].second);
@@ -1488,7 +1488,7 @@ unsigned image_width(const std::string &filename)
 	return 0;
 }
 
-void push_tab_pair(std::vector<std::pair<std::string, unsigned int> > &v, const std::string &s)
+void push_tab_pair(std::vector<std::pair<std::string, unsigned int>> &v, const std::string &s)
 {
 	v.emplace_back(s, font::line_width(s, normal_font_size));
 }
@@ -1496,7 +1496,7 @@ void push_tab_pair(std::vector<std::pair<std::string, unsigned int> > &v, const 
 std::string generate_table(const table_spec &tab, const unsigned int spacing)
 {
 	table_spec::const_iterator row_it;
-	std::vector<std::pair<std::string, unsigned> >::const_iterator col_it;
+	std::vector<std::pair<std::string, unsigned>>::const_iterator col_it;
 	unsigned int num_cols = 0;
 	for (row_it = tab.begin(); row_it != tab.end(); ++row_it) {
 		if (row_it->size() > num_cols) {

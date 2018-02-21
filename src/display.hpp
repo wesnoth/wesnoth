@@ -795,7 +795,7 @@ private:
 	surface get_flag(const map_location& loc);
 
 	/** Animated flags for each team */
-	std::vector<animated<image::locator> > flags_;
+	std::vector<animated<image::locator>> flags_;
 
 	// This vector is a class member to avoid repeated memory allocations in get_terrain_images(),
 	// which turned out to be a significant bottleneck while profiling.
@@ -1041,7 +1041,7 @@ private:
 
 	surface map_screenshot_surf_;
 
-	std::vector<std::function<void(display&)> > redraw_observers_;
+	std::vector<std::function<void(display&)>> redraw_observers_;
 
 	/** Debug flag - overlay x,y coords on tiles */
 	bool draw_coordinates_;

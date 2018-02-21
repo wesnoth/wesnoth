@@ -63,7 +63,7 @@ template< int I > BOOST_CONSTEXPR bool operator==( arg<I> const &, arg<I> const 
 
 #if !defined( BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION )
 
-template< int I > struct is_placeholder< arg<I> >
+template< int I > struct is_placeholder< arg<I>>
 {
     enum _vt { value = I };
 };

@@ -38,7 +38,7 @@ public:
 private:
 	void set_logger(const std::basic_string<char> log_domain);
 
-	std::map<std::string, group<std::string> > groups_;
+	std::map<std::string, group<std::string>> groups_;
 	std::vector<std::string> domain_list_, widget_id_;
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */

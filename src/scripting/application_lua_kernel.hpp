@@ -29,7 +29,7 @@ public:
 
 	virtual std::string my_name() { return "Application Lua Kernel"; }
 
-	typedef std::vector<std::function<bool(void)> > request_list;
+	typedef std::vector<std::function<bool(void)>> request_list;
 
 	class thread {
 		lua_State * T_;

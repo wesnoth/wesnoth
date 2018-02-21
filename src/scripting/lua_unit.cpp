@@ -412,7 +412,7 @@ static int impl_unit_set(lua_State *L)
 	}
 
 	if(strcmp(m, "advancements") == 0) {
-		u.set_advancements(lua_check<std::vector<config> >(L, 3));
+		u.set_advancements(lua_check<std::vector<config>>(L, 3));
 		return 0;
 	}
 

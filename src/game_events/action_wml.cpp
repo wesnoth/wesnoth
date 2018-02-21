@@ -406,7 +406,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 	size_t num_units = unit_cfgs.size();
 	std::vector<fake_unit_ptr > units;
 	units.reserve(num_units);
-	std::vector<std::vector<map_location> > paths;
+	std::vector<std::vector<map_location>> paths;
 	paths.reserve(num_units);
 
 	LOG_NG << "Moving " << num_units << " units\n";

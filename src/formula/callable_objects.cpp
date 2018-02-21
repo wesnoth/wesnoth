@@ -446,7 +446,7 @@ variant config_callable::get_value(const std::string& key) const
 
 		return variant(result);
 	} else if(key == "__children") {
-		std::map<std::string, std::vector<variant> > build;
+		std::map<std::string, std::vector<variant>> build;
 		for(const auto& child : cfg_.all_children_range()) {
 			const variant cfg_child(std::make_shared<config_callable>(child.cfg));
 			build[child.key].push_back(cfg_child);

@@ -53,7 +53,7 @@ public:
 	virtual ~goal();
 
 
-	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
+	virtual void add_targets(std::back_insert_iterator< std::vector< target >> target_list);
 
 
 	virtual config to_config() const;
@@ -86,7 +86,7 @@ public:
 	target_unit_goal(readonly_context &context, const config &cfg);
 
 
-	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
+	virtual void add_targets(std::back_insert_iterator< std::vector< target >> target_list);
 
 
 	virtual void on_create();
@@ -105,7 +105,7 @@ public:
 	target_location_goal(readonly_context &context, const config &cfg);
 
 
-	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
+	virtual void add_targets(std::back_insert_iterator< std::vector< target >> target_list);
 
 
 	virtual void on_create();
@@ -125,7 +125,7 @@ public:
 	protect_goal(readonly_context &context, const config &cfg, bool protect_unit);
 
 
-	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
+	virtual void add_targets(std::back_insert_iterator< std::vector< target >> target_list);
 
 
 	virtual void on_create();
@@ -164,7 +164,7 @@ public:
 class lua_goal : public goal {
 public:
 	lua_goal(readonly_context& context, const config& cfg);
-	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
+	virtual void add_targets(std::back_insert_iterator< std::vector< target >> target_list);
 	void on_create(std::shared_ptr<ai::lua_ai_context>);
 
 private:

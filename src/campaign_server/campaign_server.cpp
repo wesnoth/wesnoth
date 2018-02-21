@@ -80,7 +80,7 @@ std::string generate_salt(size_t len)
 	boost::mt19937 mt(time(0));
 	std::string salt = std::string(len, '0');
 	boost::uniform_int<> from_str(0, itoa64.length() - 1);
-	boost::variate_generator< boost::mt19937, boost::uniform_int<> > get_char(mt, from_str);
+	boost::variate_generator< boost::mt19937, boost::uniform_int<>> get_char(mt, from_str);
 
 	for(size_t i = 0; i < len; i++) {
 		salt[i] = itoa64[get_char()];

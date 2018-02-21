@@ -135,7 +135,7 @@ static char_block_map char_blocks;
 typedef std::map<std::string,SDL_Rect> line_size_cache_map;
 
 //map of styles -> sizes -> cache
-static std::map<int,std::map<int,line_size_cache_map> > line_size_cache;
+static std::map<int,std::map<int,line_size_cache_map>> line_size_cache;
 
 typedef std::map<std::pair<std::string, int>, TTF_Font*> open_font_cache;
 open_font_cache open_fonts;
@@ -264,7 +264,7 @@ static surface render_text(const std::string& text, int fontsize, const color_t&
 {
 	// we keep blank lines and spaces (may be wanted for indentation)
 	const std::vector<std::string> lines = utils::split(text, '\n', 0);
-	std::vector<std::vector<surface> > surfaces;
+	std::vector<std::vector<surface>> surfaces;
 	surfaces.reserve(lines.size());
 	size_t width = 0, height = 0;
 
@@ -310,7 +310,7 @@ static surface render_text(const std::string& text, int fontsize, const color_t&
 			return res;
 
 		size_t ypos = 0;
-		for(std::vector< std::vector<surface> >::iterator i = surfaces.begin(),
+		for(std::vector< std::vector<surface>>::iterator i = surfaces.begin(),
 		    i_end = surfaces.end(); i != i_end; ++i) {
 			size_t xpos = 0;
 			height = 0;

@@ -70,7 +70,7 @@ public:
 
 	bool get_special_bool(const std::string& special, bool simple_check=false) const;
 	unit_ability_list get_specials(const std::string& special) const;
-	std::vector<std::pair<t_string, t_string> > special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
+	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials(bool only_active=false, bool is_backstab=false) const;
 	void set_specials_context(const map_location& unit_loc, const map_location& other_loc,
 	                          bool attacking, const_attack_ptr other_attack) const;

@@ -292,7 +292,7 @@ struct full_cost_map
 	// The second int is how many units can reach this hex.
 	// (For some units some hexes or even a whole regions are unreachable)
 	// To calculate a *average cost map* it is recommended to divide first/second.
-	std::vector<std::pair<int, int> > cost_map;
+	std::vector<std::pair<int, int>> cost_map;
 
 private:
 	const bool force_ignore_zoc_;

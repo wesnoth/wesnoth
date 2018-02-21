@@ -128,7 +128,7 @@ static void test_control(T&& control)
 		gui2::iteration::iterator< gui2::iteration::policy::order::top_down<
 				true
 				, true
-				, true> >
+				, true>>
 			iterator(control);
 
 		/***** INITIAL STATE *****/
@@ -148,7 +148,7 @@ static void test_control(T&& control)
 		gui2::iteration::iterator< gui2::iteration::policy::order::top_down<
 				false
 				, true
-				, true> >
+				, true>>
 			iterator(control);
 
 		/***** INITIAL STATE *****/
@@ -157,11 +157,11 @@ static void test_control(T&& control)
 	}
 
 	{
-		gui2::iteration::iterator<gui2::iteration::policy::order::bottom_up<true, true, true> > iterator(control);
+		gui2::iteration::iterator<gui2::iteration::policy::order::bottom_up<true, true, true>> iterator(control);
 		BOOST_CHECK_EQUAL(iterator.at_end(), false);
 	}
 	{
-		gui2::iteration::iterator<gui2::iteration::policy::order::bottom_up<false, false, false> > iterator(control);
+		gui2::iteration::iterator<gui2::iteration::policy::order::bottom_up<false, false, false>> iterator(control);
 		BOOST_CHECK_EQUAL(iterator.at_end(), true);
 	}
 }
@@ -200,7 +200,7 @@ static void test_grid()
 		gui2::iteration::iterator<gui2::iteration::policy::order::top_down<
 				true
 				, true
-				, true> >
+				, true>>
 			iterator(grid);
 
 		while(iterator.next()) {
@@ -216,7 +216,7 @@ static void test_grid()
 		gui2::iteration::iterator<gui2::iteration::policy::order::top_down<
 				true
 				, true
-				, true> >
+				, true>>
 			iterator(grid);
 
 		for( ; !iterator.at_end(); ++iterator) {
@@ -232,7 +232,7 @@ static void test_grid()
 		gui2::iteration::iterator<gui2::iteration::policy::order::bottom_up<
 				true
 				, true
-				, true> >
+				, true>>
 			iterator(grid);
 
 		while(iterator.next()) {
@@ -248,7 +248,7 @@ static void test_grid()
 		gui2::iteration::iterator<gui2::iteration::policy::order::bottom_up<
 				true
 				, true
-				, true> >
+				, true>>
 			iterator(grid);
 
 		for( ; !iterator.at_end(); ++iterator) {

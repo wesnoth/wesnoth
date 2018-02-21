@@ -424,7 +424,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "recruits_of_side")
 	{
 		std::vector<variant> vars;
-		std::vector< std::vector< variant> > tmp;
+		std::vector< std::vector< variant>> tmp;
 
 		unit_types.build_all(unit_type::FULL);
 
@@ -462,7 +462,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "units_of_side")
 	{
 		std::vector<variant> vars;
-		std::vector< std::vector< variant> > tmp;
+		std::vector< std::vector< variant>> tmp;
 		for( size_t i = 0; i<resources::gameboard->teams().size(); ++i)
 		{
 			std::vector<variant> v;

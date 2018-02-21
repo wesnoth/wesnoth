@@ -275,7 +275,7 @@ DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 
 	size_t number_of_teams = units_input.num_elements();
 
-	std::vector< std::vector<int> > scores( number_of_teams );
+	std::vector< std::vector<int>> scores( number_of_teams );
 
 	for( size_t i = 0; i< number_of_teams; ++i)
 		scores[i].resize(w*h);
@@ -302,7 +302,7 @@ DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 	}
 
 	size_t index = 0;
-	for( std::vector< std::vector<int> >::iterator i = scores.begin() ; i != scores.end() ; ++i) {
+	for( std::vector< std::vector<int>>::iterator i = scores.begin() ; i != scores.end() ; ++i) {
 		for( std::vector<int>::iterator j = i->begin() ; j != i->end() ; ++j ) {
 			if(units_input[index].num_elements() != 0) {
 				*j /= units_input[index].num_elements();

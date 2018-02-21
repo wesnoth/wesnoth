@@ -368,7 +368,7 @@ static config unit_abilities(const unit* u)
 	config res;
 
 	boost::dynamic_bitset<> active;
-	const std::vector<std::tuple<std::string, t_string,t_string,t_string> > &abilities = u->ability_tooltips(&active);
+	const std::vector<std::tuple<std::string, t_string,t_string,t_string>> &abilities = u->ability_tooltips(&active);
 	const size_t abilities_size = abilities.size();
 	for ( size_t i = 0; i != abilities_size; ++i )
 	{
@@ -760,7 +760,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 
 	// Show this weapon damage and resistance against all the different units.
 	// We want weak resistances (= good damage) first.
-	std::map<int, std::set<std::string>, std::greater<int> > resistances;
+	std::map<int, std::set<std::string>, std::greater<int>> resistances;
 	std::set<std::string> seen_types;
 	const team &unit_team = rc.dc().get_team(u.side());
 	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
@@ -781,7 +781,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		}
 	}
 
-	typedef std::pair<int, std::set<std::string> > resist_units;
+	typedef std::pair<int, std::set<std::string>> resist_units;
 	for (const resist_units &resist : resistances) {
 		int damage_with_resistance = round_damage(specials_damage, damage_multiplier * resist.first, damage_divisor);
 		tooltip << "<b>" << damage_with_resistance << "</b>  "
@@ -813,7 +813,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 
 	at.set_specials_context_for_listing();
 	boost::dynamic_bitset<> active;
-	const std::vector<std::pair<t_string, t_string> > &specials = at.special_tooltips(&active);
+	const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
 	const size_t specials_size = specials.size();
 	for ( size_t i = 0; i != specials_size; ++i )
 	{
@@ -918,10 +918,10 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 				<< _("Total damage") << "<b>" << total_damage << "</b>\n";
 
 		// Create the hitpoints distribution.
-		std::vector<std::pair<int, double> > hp_prob_vector;
+		std::vector<std::pair<int, double>> hp_prob_vector;
 
 		// First, we sort the probabilities in ascending order.
-		std::vector<std::pair<double, int> > prob_hp_vector;
+		std::vector<std::pair<double, int>> prob_hp_vector;
 		int i;
 
 		combatant* c = show_attacker ? &attacker_combatant : &defender_combatant;

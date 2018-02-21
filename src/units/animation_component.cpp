@@ -198,7 +198,7 @@ void unit_animation_component::apply_new_animation_effect(const config & effect)
 	if(effect["id"].empty()) {
 		unit_animation::add_anims(animations_, effect);
 	} else {
-		static std::map< std::string, std::vector<unit_animation> > animation_cache;
+		static std::map< std::string, std::vector<unit_animation>> animation_cache;
 		std::vector<unit_animation> &built = animation_cache[effect["id"]];
 		if(built.empty()) {
 			unit_animation::add_anims(built, effect);

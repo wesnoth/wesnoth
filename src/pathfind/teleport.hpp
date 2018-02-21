@@ -23,7 +23,7 @@ class vconfig;
 
 namespace pathfind {
 
-typedef std::pair<std::set<map_location>, std::set<map_location> >
+typedef std::pair<std::set<map_location>, std::set<map_location>>
 		teleport_pair;
 
 /*
@@ -136,9 +136,9 @@ public:
 	}
 
 private:
-	std::map<map_location, std::set<std::string> > teleport_map_;
-	std::map<std::string, std::set<map_location> > sources_;
-	std::map<std::string, std::set<map_location> > targets_;
+	std::map<map_location, std::set<std::string>> teleport_map_;
+	std::map<std::string, std::set<map_location>> sources_;
+	std::map<std::string, std::set<map_location>> targets_;
 };
 
 /*

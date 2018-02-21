@@ -1077,7 +1077,7 @@ namespace {
 
 std::set<std::string> binary_paths;
 
-typedef std::map<std::string,std::vector<std::string> > paths_map;
+typedef std::map<std::string,std::vector<std::string>> paths_map;
 paths_map binary_paths_cache;
 
 }

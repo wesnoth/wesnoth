@@ -233,18 +233,18 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	po::options_description multiplayer_opts("Multiplayer options");
 	multiplayer_opts.add_options()
 		("multiplayer,m", "Starts a multiplayer game. There are additional options that can be used as explained below:")
-		("ai-config", po::value<std::vector<std::string> >()->composing(), "selects a configuration file to load for this side. <arg> should have format side:value")
-		("algorithm", po::value<std::vector<std::string> >()->composing(), "selects a non-standard algorithm to be used by the AI controller for this side. <arg> should have format side:value")
-		("controller", po::value<std::vector<std::string> >()->composing(), "selects the controller for this side. <arg> should have format side:value")
+		("ai-config", po::value<std::vector<std::string>>()->composing(), "selects a configuration file to load for this side. <arg> should have format side:value")
+		("algorithm", po::value<std::vector<std::string>>()->composing(), "selects a non-standard algorithm to be used by the AI controller for this side. <arg> should have format side:value")
+		("controller", po::value<std::vector<std::string>>()->composing(), "selects the controller for this side. <arg> should have format side:value")
 		("era", po::value<std::string>(), "selects the era to be played in by its id.")
 		("exit-at-end", "exit Wesnoth at the end of the scenario.")
 		("ignore-map-settings", "do not use map settings.")
 		("label", po::value<std::string>(), "sets the label for AIs.") //TODO is the description precise? this option was undocumented before.
 		("multiplayer-repeat",  po::value<unsigned int>(), "repeats a multiplayer game after it is finished <arg> times.")
 		("nogui", "runs the game without the GUI.")
-		("parm", po::value<std::vector<std::string> >()->composing(), "sets additional parameters for this side. <arg> should have format side:name:value.")
+		("parm", po::value<std::vector<std::string>>()->composing(), "sets additional parameters for this side. <arg> should have format side:name:value.")
 		("scenario", po::value<std::string>(), "selects a multiplayer scenario. The default scenario is \"multiplayer_The_Freelands\".")
-		("side", po::value<std::vector<std::string> >()->composing(), "selects a faction of the current era for this side by id. <arg> should have format side:value.")
+		("side", po::value<std::vector<std::string>>()->composing(), "selects a faction of the current era for this side by id. <arg> should have format side:value.")
 		("turns", po::value<std::string>(), "sets the number of turns. The default is \"50\".")
 		;
 
@@ -291,9 +291,9 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	po::store(po::command_line_parser(args_).options(all_).positional(positional).style(parsing_style).run(),vm);
 
 	if (vm.count("ai-config"))
-		multiplayer_ai_config = parse_to_uint_string_tuples_(vm["ai-config"].as<std::vector<std::string> >());
+		multiplayer_ai_config = parse_to_uint_string_tuples_(vm["ai-config"].as<std::vector<std::string>>());
 	if (vm.count("algorithm"))
-		multiplayer_algorithm = parse_to_uint_string_tuples_(vm["algorithm"].as<std::vector<std::string> >());
+		multiplayer_algorithm = parse_to_uint_string_tuples_(vm["algorithm"].as<std::vector<std::string>>());
 	if (vm.count("bunzip2"))
 		bunzip2 = vm["bunzip2"].as<std::string>();
 	if (vm.count("bzip2"))
@@ -313,7 +313,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	if (vm.count("config-path"))
 		userdata_path = true; //TODO: complain and remove
 	if (vm.count("controller"))
-		multiplayer_controller = parse_to_uint_string_tuples_(vm["controller"].as<std::vector<std::string> >());
+		multiplayer_controller = parse_to_uint_string_tuples_(vm["controller"].as<std::vector<std::string>>());
 	if (vm.count("data-dir"))
 		data_dir = vm["data-dir"].as<std::string>();
 	if (vm.count("data-path"))
@@ -393,7 +393,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	if (vm.count("nogui"))
 		nogui = true;
 	if (vm.count("parm"))
-		multiplayer_parm = parse_to_uint_string_string_tuples_(vm["parm"].as<std::vector<std::string> >());
+		multiplayer_parm = parse_to_uint_string_string_tuples_(vm["parm"].as<std::vector<std::string>>());
 	if (vm.count("path"))
 		path = true;
 	if (vm.count("preprocess"))
@@ -440,7 +440,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 	if (vm.count("report"))
 		report = true;
 	if (vm.count("side"))
-		multiplayer_side = parse_to_uint_string_tuples_(vm["side"].as<std::vector<std::string> >());
+		multiplayer_side = parse_to_uint_string_tuples_(vm["side"].as<std::vector<std::string>>());
 	if (vm.count("test"))
 		test = vm["test"].as<std::string>();
 	if (vm.count("unit"))
@@ -482,7 +482,7 @@ void commandline_options::parse_log_domains_(const std::string &domains_string, 
 	for (const std::string& domain : domains)
 	{
 		if (!log)
-			log = std::vector<std::pair<int, std::string> >();
+			log = std::vector<std::pair<int, std::string>>();
 		log->emplace_back(severity, domain);
 	}
 }
@@ -518,9 +518,9 @@ void commandline_options::parse_resolution_ ( const std::string& resolution_stri
 	resolution = std::make_pair(xres, yres);
 }
 
-std::vector<std::pair<unsigned int,std::string> > commandline_options::parse_to_uint_string_tuples_(const std::vector<std::string> &strings, char separator)
+std::vector<std::pair<unsigned int,std::string>> commandline_options::parse_to_uint_string_tuples_(const std::vector<std::string> &strings, char separator)
 {
-	std::vector<std::pair<unsigned int,std::string> > vec;
+	std::vector<std::pair<unsigned int,std::string>> vec;
 	const std::string& expected_format
 			= std::string() + "UINT" + separator + "STRING";
 
@@ -543,9 +543,9 @@ std::vector<std::pair<unsigned int,std::string> > commandline_options::parse_to_
 	return vec;
 }
 
-std::vector<std::tuple<unsigned int,std::string,std::string> > commandline_options::parse_to_uint_string_string_tuples_(const std::vector<std::string> &strings, char separator)
+std::vector<std::tuple<unsigned int,std::string,std::string>> commandline_options::parse_to_uint_string_string_tuples_(const std::vector<std::string> &strings, char separator)
 {
-	std::vector<std::tuple<unsigned int,std::string,std::string> > vec;
+	std::vector<std::tuple<unsigned int,std::string,std::string>> vec;
 	const std::string& expected_format
 			= std::string() + "UINT" + separator + "STRING" + separator + "STRING";
 

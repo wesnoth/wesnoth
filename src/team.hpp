@@ -92,7 +92,7 @@ private:
 		void set_enabled(bool enabled) { enabled_ = enabled; }
 	private:
 		bool enabled_;
-		std::vector<std::vector<bool> > data_;
+		std::vector<std::vector<bool>> data_;
 	};
 
 	struct team_info

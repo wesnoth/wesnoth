@@ -391,8 +391,8 @@ private:
 	/** True if [hide_help] contains a 'all=yes' at its root. */
 	bool hide_help_all_;
 	// vectors containing the [hide_help] and its sub-tags [not]
-	std::vector< std::set<std::string> > hide_help_type_;
-	std::vector< std::set<std::string> > hide_help_race_;
+	std::vector< std::set<std::string>> hide_help_type_;
+	std::vector< std::set<std::string>> hide_help_race_;
 
 	const config *unit_cfg_;
 	unit_type::BUILD_STATUS build_status_;

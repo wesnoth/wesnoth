@@ -89,7 +89,7 @@ private:
 		std::unique_ptr<std::vector<std::set<map_location>>> adjacent_matches;
 
 		//adjacent_match_cache: optimize handling of [filter_adjacent_location] for match()
-		std::vector< std::pair<terrain_filter, std::map<map_location,bool> > > adjacent_match_cache;
+		std::vector< std::pair<terrain_filter, std::map<map_location,bool>> > adjacent_match_cache;
 
 		std::unique_ptr<unit_filter> ufilter_;
 	};
