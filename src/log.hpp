@@ -99,7 +99,7 @@ typedef std::pair<const std::string, int> logd;
 class log_domain {
 	logd *domain_;
 public:
-	log_domain(char const *name);
+	log_domain(char const *name, int severity = 1);
 	friend class logger;
 };
 
