@@ -122,7 +122,7 @@ public:
 	 * Constructor. Initializes a background_layer object from a
 	 * [background_layer] WML node.
 	 */
-	background_layer(const config& cfg);
+	explicit background_layer(const config& cfg);
 
 	/** Whether the layer should be scaled horizontally. */
 	bool scale_horizontally() const

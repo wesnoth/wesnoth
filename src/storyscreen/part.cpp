@@ -240,7 +240,7 @@ bool part::resolve_wml_helper(const std::string& key, const vconfig& node)
 
 	// [background_layer]
 	if(key == "background_layer") {
-		background_layers_.push_back(node.get_parsed_config());
+		background_layers_.push_back(background_layer(node.get_parsed_config()));
 		found = true;
 	}
 	// [image]
