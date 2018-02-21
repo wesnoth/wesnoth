@@ -16,10 +16,6 @@
 
 #ifdef _WIN32
 
-// MSVC compilation throws deprecation warnings on boost's use of gethostbyaddr and
-// gethostbyname in socket_ops.ipp. This define silences that.
-#define _WINSOCK_DEPRECATED_NO_WARNINGS
-
 #if _WIN32_WINNT < _WIN32_WINNT_VISTA
 #define BOOST_ASIO_DISABLE_IOCP
 #endif
