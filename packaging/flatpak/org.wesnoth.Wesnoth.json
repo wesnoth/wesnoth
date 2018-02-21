@@ -1,0 +1,72 @@
+{
+    "app-id": "org.wesnoth.Wesnoth",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "1.6",
+    "sdk": "org.freedesktop.Sdk",
+    "finish-args": [
+        "--device=dri",
+        "--share=ipc",
+        "--share=network",
+        "--socket=x11",
+        "--socket=pulseaudio"
+    ],
+    "command": "wesnoth",
+    "rename-appdata-file": "wesnoth.appdata.xml",
+    "rename-desktop-file": "wesnoth.desktop",
+    "rename-icon": "wesnoth-icon",
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/aclocal",
+        "/share/man",
+        "*.la", "*.a"
+    ],
+    "modules": [
+        {
+            "name": "boost",
+            "buildsystem": "simple",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.bz2",
+                    "sha256": "5721818253e6a0989583192f96782c4a98eb6204965316df9f5ad75819225ca9"
+                }
+            ],
+            "build-commands": [
+                "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread",
+                "./b2 -j4 install boost.locale.icu=off link=static variant=release address-model=64 --layout=system"
+            ]
+        },
+	{
+            "name": "scons",
+            "buildsystem": "simple",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://download.sourceforge.net/scons/scons-3.0.1.tar.gz",
+                    "sha256": "24475e38d39c19683bc88054524df018fe6949d70fbd4c69e298d39a0269f173"
+                }
+            ],
+            "build-commands": [
+                "python3 setup.py install --prefix=/app"
+            ]
+        },
+        {
+            "name": "wesnoth",
+            "buildsystem": "simple",
+            "cleanup": [
+                "/share/applications/wesnoth_editor.desktop"
+            ],
+            "build-commands": [
+                "scons -j4 prefix=/app ccache=true install wesnoth wesnothd"
+	    ],
+            "sources": [
+                {
+                    "type": "git",
+                    "path": "/home/sergey/vcs-checkouts/wesnoth",
+                    "branch": "master"
+                }
+            ]
+        }
+    ]
+}
