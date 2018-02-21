@@ -42,7 +42,7 @@ public:
 	 * @param cfg Object corresponding to a [image] block's contents from
 	 *            a [part] node.
 	 */
-	floating_image(const config& cfg);
+	explicit floating_image(const config& cfg);
 
 	/**
 	 * Copy constructor.

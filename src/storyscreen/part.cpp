@@ -245,7 +245,7 @@ bool part::resolve_wml_helper(const std::string& key, const vconfig& node)
 	}
 	// [image]
 	else if(key == "image") {
-		floating_images_.push_back(node.get_parsed_config());
+		floating_images_.push_back(floating_image(node.get_parsed_config()));
 		found = true;
 	}
 
