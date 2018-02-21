@@ -54,7 +54,7 @@ public:
 	 * Whether the version number is considered canonical for mainline Wesnoth.
 	 *
 	 * Mainline Wesnoth version numbers have at most three components, so this
-	 * check is equivalent to <tt>components() >= 3</tt>.
+	 * check is equivalent to <tt>components() <= 3</tt>.
 	 */
 	bool is_canonical() const;
 

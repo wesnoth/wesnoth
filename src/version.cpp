@@ -143,44 +143,8 @@ bool version_info::is_canonical() const {
 }
 
 namespace {
-	enum COMP_TYPE {
-		EQUAL,
-		NOT_EQUAL,
-		LT, GT
-	};
-
-	/*
-	           x         >          y
-	x0.x1.x2.x3.[...].xN > y0.y1.y2.y3.[...].yN iff
-
-	x0 > y0 || (x0 == y0 && (x1 > y1 || (x1 == y1 && (x2 > y2 || (x2 >= y2 ||
-
-	*/
-	template<typename _Toperator, typename _Tfallback_operator>
-	bool recursive_order_operation(const std::vector<unsigned int>& l, const std::vector<unsigned int>& r, size_t k)
-	{
-		if(k >= l.size() || k >= r.size()) {
-			return false;
-		}
-
-		const unsigned int& lvalue = l[k];
-		const unsigned int& rvalue = r[k];
-
-		_Toperator o;
-		_Tfallback_operator fallback_o;
-
-		bool ret = o(lvalue, rvalue);
-		if((!ret) && fallback_o(lvalue, rvalue)) {
-			ret = recursive_order_operation<_Toperator, _Tfallback_operator>(l,r,++k);
-		}
-		return ret;
-	}
-
-#ifdef _MSC_VER
-#pragma warning (push)
-#pragma warning (disable: 4706)
-#endif
-	bool version_numbers_comparison_internal(const version_info& l, const version_info& r, COMP_TYPE o)
+	template<template<typename> class Fcn>
+	bool version_comparison_internal(const version_info& l, const version_info& r)
 	{
 		std::vector<unsigned int> lc = l.components();
 		std::vector<unsigned int> rc = r.components();
@@ -193,87 +157,44 @@ namespace {
 		if(lsize < csize) lc.resize(csize, 0);
 		if(rsize < csize) rc.resize(csize, 0);
 
-		bool result = true;
+		using comp_list = std::vector<unsigned int>;
+		using comp_pair = std::tuple<const comp_list&, const std::string&>;
+		Fcn<comp_pair> comp;
 
-		const std::vector<unsigned int>& lcc = lc;
-		const std::vector<unsigned int>& rcc = rc;
-
-		switch(o)
-		{
-			case EQUAL: case NOT_EQUAL: {
-				for(size_t i = 0; i < csize; ++i) {
-					const unsigned int& lvalue = lc[i];
-					const unsigned int& rvalue = rc[i];
-					if(o == NOT_EQUAL) {
-						if((result = (lvalue != rvalue))) {
-#ifdef _MSC_VER
-#pragma warning (pop)
-#endif
-							return true;
-						}
-						continue;
-					} else {
-						result = result && lvalue == rvalue;
-						if(!result) {
-							break;
-						}
-					}
-				}
-				break;
-			}
-			case LT:
-				result = recursive_order_operation<std::less<unsigned int>, std::equal_to<unsigned int>>(lcc, rcc, 0);
-				break;
-			case GT:
-				result = recursive_order_operation<std::greater<unsigned int>, std::equal_to<unsigned int>>(lcc, rcc, 0);
-				break;
-			default:
-				assert(false);
-				break;
-		}
-		return result;
+		const comp_pair& lp = std::tie(lc, l.special_version());
+		const comp_pair& rp = std::tie(rc, r.special_version());
+		return comp(lp, rp);
 	}
-
 } // end unnamed namespace
 
 bool operator==(const version_info& l, const version_info& r)
 {
-	return version_numbers_comparison_internal(l, r, EQUAL) && l.special_version() == r.special_version();
+	return version_comparison_internal<std::equal_to>(l, r);
 }
 
 bool operator!=(const version_info& l, const version_info& r)
 {
-	return version_numbers_comparison_internal(l, r, NOT_EQUAL) || l.special_version() != r.special_version();
+	return version_comparison_internal<std::not_equal_to>(l, r);
 }
 
 bool operator<(const version_info& l, const version_info& r)
 {
-	return version_numbers_comparison_internal(l, r, LT) || (
-		version_numbers_comparison_internal(l, r, EQUAL) && (
-			(l.special_version().empty() && !r.special_version().empty()) ||
-			(l.special_version() < r.special_version())
-		)
-	);
+	return version_comparison_internal<std::less>(l, r);
 }
 
 bool operator>(const version_info& l, const version_info& r)
 {
-	return version_numbers_comparison_internal(l, r, GT) || (
-		version_numbers_comparison_internal(l, r, EQUAL) && (
-			(r.special_version().empty() && !l.special_version().empty()) ||
-			(l.special_version() > r.special_version())
-		)
-	);
+	return version_comparison_internal<std::greater>(l, r);
 }
 
 bool operator<=(const version_info& l, const version_info& r)
 {
-	return l < r || l == r;
+	return version_comparison_internal<std::less_equal>(l, r);
 }
 
 bool operator>=(const version_info& l, const version_info& r)
 {
-	return l > r || l == r;
+	return version_comparison_internal<std::greater_equal>(l, r);
 }
 
 VERSION_COMP_OP parse_version_op(const std::string& op_str)
