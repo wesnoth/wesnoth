@@ -549,7 +549,7 @@ int game_launcher::unit_test()
 	try {
 		campaign_controller ccontroller(state_, game_config_manager::get()->game_config(), game_config_manager::get()->terrain_types(), true);
 		LEVEL_RESULT res = ccontroller.play_replay();
-		if (!(res == LEVEL_RESULT::VICTORY)) {
+		if (!(res == LEVEL_RESULT::VICTORY) || lg::broke_strict()) {
 			std::cerr << "Observed failure on replay" << std::endl;
 			return 4;
 		}
