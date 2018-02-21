@@ -95,7 +95,7 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 
 	// Load the standard hotkeys, then apply any player customizations.
 	hotkey::load_hotkeys(game_config(), true);
-	//preferences::load_hotkeys();
+	preferences::load_hotkeys();
 
 	::init_textdomains(game_config());
 	about::set_about(game_config());
