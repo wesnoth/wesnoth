@@ -22,6 +22,7 @@
 #include "lua_jailbreak_exception.hpp"  // for lua_jailbreak_exception
 #include "random.hpp"
 #include "seed_rng.hpp"
+#include "deprecation.hpp"
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
@@ -275,6 +276,28 @@ static int intf_log(lua_State *L) {
 }
 
 /**
+ * Logs a deprecation message. See deprecation.cpp for details
+ * Arg 1: Element to be deprecated.
+ * Arg 2: Deprecation level.
+ * Arg 3: Version when element may be removed.
+ * Arg 4: Additional detail message.
+ */
+static int intf_deprecated_message(lua_State* L) {
+	const std::string elem = luaL_checkstring(L, 1);
+	const int level = luaL_checkinteger(L, 2);
+	const std::string ver_str = lua_isnoneornil(L, 3) ? "" : luaL_checkstring(L, 3);
+	const std::string detail = luaW_checktstring(L, 4);
+	const version_info ver = ver_str.empty() ? game_config::version : ver_str;
+	const std::string msg = deprecated_message(elem, level, ver, detail);
+	if(level < 1 || level >= 4) {
+		// Invalid deprecation level or level 4 deprecation should raise an interpreter error
+		lua_push(L, msg);
+		return lua_error(L);
+	}
+	return 0;
+}
+
+/**
 * Gets the dimension of an image.
 * - Arg 1: string.
 * - Ret 1: width.
@@ -430,6 +453,7 @@ lua_kernel_base::lua_kernel_base()
 	static luaL_Reg const callbacks[] {
 		{ "compare_versions",         &intf_compare_versions         		},
 		{ "debug",                    &intf_debug                           },
+		{ "deprecated_message",       &intf_deprecated_message              },
 		{ "have_file",                &lua_fileops::intf_have_file          },
 		{ "read_file",                &lua_fileops::intf_read_file          },
 		{ "textdomain",               &lua_common::intf_textdomain   		},

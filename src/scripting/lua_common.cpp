@@ -595,7 +595,7 @@ t_string luaW_checktstring(lua_State *L, int index)
 	return result;
 }
 
-bool luaW_isstring(lua_State* L, int index)
+bool luaW_iststring(lua_State* L, int index)
 {
 	if(lua_isstring(L, index)) {
 		return true;

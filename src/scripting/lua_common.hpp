@@ -82,7 +82,7 @@ t_string luaW_checktstring(lua_State *L, int index);
  * Test if a scalar is either a plain or translatable string.
  * Also returns true if it's a number since that's convertible to string.
  */
-bool luaW_isstring(lua_State* L, int index);
+bool luaW_iststring(lua_State* L, int index);
 
 /**
  * Converts a config object to a Lua table.

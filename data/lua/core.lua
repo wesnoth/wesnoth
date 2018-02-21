@@ -147,44 +147,7 @@ end
 --[========[Deprecation Helpers]========]
 
 -- Need a textdomain for translatable deprecation strings.
--- Note that these strings are all duplicated in src/deprecation.cpp
--- Any changes here should also be reflected there.
 local _ = wesnoth.textdomain "wesnoth"
-
--- Note: When using version (for level 2 or 3 deprecation), specify the first version
--- in which the feature could be removed... NOT the version at which it was deprecated.
-function wesnoth.deprecation_message(elem_name, level, version, detail)
-	local message_params = {elem = elem_name}
-	local logger
-	local message
-	if level == 1 then
-		logger = function(msg) wesnoth.log("info", msg) end
-		message = wesnoth.format(_"$elem has been deprecated indefinitely.", message_params)
-	elseif level == 2 then
-		logger = function(msg) wesnoth.log("warn", msg) end
-		if wesnoth.compare_versions(wesnoth.game_config.version, "<", version) then
-			message_params.version = version
-			message = wesnoth.format(_"$elem has been deprecated and may be removed in version $version.", message_params)
-		else
-			message = wesnoth.format(_"$elem has been deprecated and may be removed at any time.", message_params)
-		end
-	elseif level == 3 then
-		logger = function(msg) wesnoth.log("err", msg) end
-		message_params.version = version
-		message = wesnoth.format(_"$elem has been deprecated and will be removed in the next version ($version).", message_params)
-	elseif level == 4 then
-		logger = error
-		message = wesnoth.format(_"$elem has been deprecated and removed.", message_params)
-	else
-		local err_params = {level = level}
-		error(wesnoth.format(_"Invalid deprecation level $level (should be 1-4)", err_params))
-	end
-	if #detail > 0 then
-		logger(tostring(message .. "\n  " .. detail))
-	else
-		logger(tostring(message))
-	end
-end
 
 -- Marks a function or subtable as deprecated.
 -- Parameters:
@@ -204,6 +167,8 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 	end
 	if type(level) ~= "number" or level < 1 or level > 4 then
 		local err_params = {level = level}
+		-- Note: This message is duplicated in src/deprecation.cpp
+		-- Any changes should be mirrorred there.
 		error(wesnoth.format(_"Invalid deprecation level $level (should be 1-4)", err_params))
 	end
 	local msg_shown = false
@@ -211,7 +176,7 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 		return function(...)
 			if not msg_shown then
 				msg_shown = true
-				wesnoth.deprecation_message(elem_name, level, version, message)
+				wesnoth.deprecated_message(elem_name, level, version, message)
 			end
 			return elem(...)
 		end
@@ -220,14 +185,14 @@ function wesnoth.deprecate_api(elem_name, replacement, level, version, elem, det
 			__index = function(self, key)
 				if not msg_shown then
 					msg_shown = true
-					wesnoth.deprecation_message(elem_name, level, version, message)
+					wesnoth.deprecated_message(elem_name, level, version, message)
 				end
 				return elem[key]
 			end,
 			__newindex = function(self, key, val)
 				if not msg_shown then
 					msg_shown = true
-					wesnoth.deprecation_message(elem_name, level, version, message)
+					wesnoth.deprecated_message(elem_name, level, version, message)
 				end
 				elem[key] = val
 			end,

@@ -20,11 +20,14 @@
 #include "game_config.hpp"
 #include "version.hpp"
 
-static lg::log_domain log_wml("wml");
+// Set the default severity with the second parameter.
+// -1 means the default is to never log on this domain.
+// 0 would mean log errors only.
+// 1 would mean log errors and warnings.
+// and so on and so on.
+static lg::log_domain log_deprecate("deprecation", -1);
 
-// Note that these strings are all duplicated in data/lua/core.lua
-// Any changes here should also be reflected there.
-void deprecated_message(const std::string& elem_name, int level, const version_info& version, const std::string& detail) {
+std::string deprecated_message(const std::string& elem_name, int level, const version_info& version, const std::string& detail) {
 	utils::string_map msg_params = {{"elem", elem_name}};
 	lg::logger* log_ptr = nullptr;
 	std::string message;
@@ -48,16 +51,21 @@ void deprecated_message(const std::string& elem_name, int level, const version_i
 		message = VGETTEXT("$elem has been deprecated and removed.", msg_params);
 	} else {
 		utils::string_map err_params = {{"level", std::to_string(level)}};
-		LOG_STREAM(err, "general") << VGETTEXT("Invalid deprecation level $level (should be 1-4)", err_params);
+		// Note: This message is duplicated in data/lua/core.lua
+		// Any changes should be mirrorred there.
+		std::string msg = VGETTEXT("Invalid deprecation level $level (should be 1-4)", err_params);
+		LOG_STREAM(err, "general") << msg;
+		return msg;
+	}
+	if(!detail.empty()) {
+		message += "\n  ";
+		message += detail;
 	}
 	// TODO: Decide when to dump to wml_error()
-	if(log_ptr && !log_ptr->dont_log(log_wml)) {
+	if(log_ptr && !log_ptr->dont_log(log_deprecate)) {
 		const lg::logger& out_log = *log_ptr;
-		out_log(log_wml) << message << '\n';
+		out_log(log_deprecate) << message << '\n';
 		//lg::wml_error() << message << '\n';
-		if(!detail.empty()) {
-			out_log(log_wml) << detail << '\n';
-			//lg::wml_error() << detail << '\n';
-		}
 	}
+	return message;
 }
