@@ -314,7 +314,7 @@ void preferences_dialog::post_build(window& window)
 		[&](widget& w) { disable_widget_on_toggle<slider>(window, w, "turbo_slider"); }, true);
 
 	const auto accl_load = [this]()->int {
-		return std::distance(accl_speeds_.begin() + 1, std::find(accl_speeds_.begin(), accl_speeds_.end(), turbo_speed()));
+		return std::distance(accl_speeds_.begin(), std::find(accl_speeds_.begin(), accl_speeds_.end(), turbo_speed())) + 1;
 	};
 
 	const auto accl_save = [this](int i) {
