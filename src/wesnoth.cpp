@@ -828,8 +828,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 			return 0;
 		}
 
-		preferences::load_hotkeys();
-
 		const font::floating_label_context label_manager;
 
 		cursor::set(cursor::NORMAL);

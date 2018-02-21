@@ -93,7 +93,10 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
 
+	// Load the standard hotkeys, then apply any player customizations.
 	hotkey::load_hotkeys(game_config(), true);
+	//preferences::load_hotkeys();
+
 	::init_textdomains(game_config());
 	about::set_about(game_config());
 	ai::configuration::init(game_config());
