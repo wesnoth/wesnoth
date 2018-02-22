@@ -15,14 +15,9 @@ before_build:
   - 7z x VC15.ZIP
   - ren external-VC15 external
   - cd wesnoth
-  - mkdir projectfiles\VC15
-  - xcopy /E /I /H /Y projectfiles\VC12 projectfiles\VC15
-  - cd projectfiles\VC15
-  - "\"c:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\devenv.exe\" wesnoth.sln /upgrade"
-  - cd ..\..
   - set PATH=C:\projects\external\dll;%PATH%
 build_script:
-  - msbuild projectfiles\VC15\wesnoth.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+  - msbuild projectfiles\VC12\wesnoth.sln /property:PlatformToolset=v141 /m /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 artifacts:
   - path: wesnoth.exe
