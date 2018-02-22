@@ -923,18 +923,36 @@ void mp_lobby::process_gamelist_diff(const config& data)
 
 void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 {
-	const bool try_join = mode == DO_JOIN || (mode == DO_EITHER && game.can_join());
+	switch(mode) {
+	case DO_JOIN:
+		if(!game.can_join()) {
+			ERR_LB << "Attempted to join a game with no vacant slots" << std::endl;
+			return;
+		}
+
+		break;
+	case DO_OBSERVE:
+		if(!game.can_observe()) {
+			ERR_LB << "Attempted to observe a game with observers disabled" << std::endl;
+			return;
+		}
+
+		break;
+	case DO_EITHER:
+		if(game.can_join()) {
+			mode = DO_JOIN;
+		} else if(game.can_observe()) {
+			mode = DO_OBSERVE;
+		} else {
+			DBG_LB << "Cannot join or observe a game." << std::endl;
+			return;
+		}
+
+		break;
+	}
+
+	const bool try_join = mode == DO_JOIN;
 	const bool try_obsv = mode == DO_OBSERVE;
-
-	if(try_obsv && !game.can_observe()) {
-		ERR_LB << "Attempted to observe a game with observers disabled" << std::endl;
-		return;
-	}
-
-	if(try_join && !game.can_join()) {
-		ERR_LB << "Attempted to join a game with no vacant slots" << std::endl;
-		return;
-	}
 
 	window& window = *get_window();
 
