@@ -119,6 +119,9 @@ void chatbox::switch_to_window(size_t id)
 	chat_log_container_->select_page(active_window_);
 	roomlistbox_->select_row(active_window_);
 
+	// Grab input focus
+	get_window()->keyboard_capture(chat_input_);
+
 	active_window_changed();
 }
 
