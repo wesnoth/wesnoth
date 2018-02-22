@@ -130,6 +130,10 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\bcrypt\bcrypt.c" />
+    <ClCompile Include="..\..\src\bcrypt\crypt_blowfish\crypt_blowfish.c" />
+    <ClCompile Include="..\..\src\bcrypt\crypt_blowfish\crypt_gensalt.c" />
+    <ClCompile Include="..\..\src\bcrypt\crypt_blowfish\wrapper.c" />
     <ClCompile Include="..\..\src\color.cpp" />
     <ClCompile Include="..\..\src\color_range.cpp" />
     <ClCompile Include="..\..\src\config.cpp" />
@@ -164,6 +168,11 @@
     <ClCompile Include="..\..\src\version.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\bcrypt\bcrypt.h" />
+    <ClInclude Include="..\..\src\bcrypt\crypt_blowfish\crypt.h" />
+    <ClInclude Include="..\..\src\bcrypt\crypt_blowfish\crypt_blowfish.h" />
+    <ClInclude Include="..\..\src\bcrypt\crypt_blowfish\crypt_gensalt.h" />
+    <ClInclude Include="..\..\src\bcrypt\crypt_blowfish\ow-crypt.h" />
     <ClInclude Include="..\..\src\color.hpp" />
     <ClInclude Include="..\..\src\color_range.hpp" />
     <ClInclude Include="..\..\src\config.hpp" />

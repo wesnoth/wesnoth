@@ -20,6 +20,12 @@
     <Filter Include="Formula">
       <UniqueIdentifier>{89506bfd-cc4a-4db3-84f4-b90d70040b9c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Bcrypt">
+      <UniqueIdentifier>{d5a81024-f17f-4bdc-8eab-015200624965}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bcrypt\Crypt_blowfish">
+      <UniqueIdentifier>{7f9caf8d-4d10-431e-85a6-4495b10035ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\serialization\binary_or_text.cpp">
@@ -66,6 +72,18 @@
       <Filter>Formula</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\deprecation.cpp" />
+    <ClCompile Include="..\..\src\bcrypt\bcrypt.c">
+      <Filter>Bcrypt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bcrypt\crypt_blowfish\crypt_blowfish.c">
+      <Filter>Bcrypt\Crypt_blowfish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bcrypt\crypt_blowfish\crypt_gensalt.c">
+      <Filter>Bcrypt\Crypt_blowfish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bcrypt\crypt_blowfish\wrapper.c">
+      <Filter>Bcrypt\Crypt_blowfish</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\serialization\binary_or_text.hpp">
@@ -151,5 +169,20 @@
       <Filter>Formula</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\deprecation.hpp" />
+    <ClInclude Include="..\..\src\bcrypt\bcrypt.h">
+      <Filter>Bcrypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bcrypt\crypt_blowfish\crypt.h">
+      <Filter>Bcrypt\Crypt_blowfish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bcrypt\crypt_blowfish\crypt_blowfish.h">
+      <Filter>Bcrypt\Crypt_blowfish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bcrypt\crypt_blowfish\crypt_gensalt.h">
+      <Filter>Bcrypt\Crypt_blowfish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\bcrypt\crypt_blowfish\ow-crypt.h">
+      <Filter>Bcrypt\Crypt_blowfish</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
