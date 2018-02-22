@@ -15,7 +15,11 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#ifndef _WIN32
 #include <unistd.h>
+#else
+#include <io.h>
+#endif
 #include <errno.h>
 
 #include "bcrypt.h"
@@ -39,7 +43,11 @@ static int try_close(int fd)
 static int try_read(int fd, char *out, size_t count)
 {
 	size_t total;
+#ifndef _WIN32
 	ssize_t partial;
+#else
+	int partial;
+#endif
 
 	total = 0;
 	while (total < count)
