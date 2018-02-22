@@ -133,9 +133,12 @@ config& save_index_class::data(const std::string& name)
 
 config& save_index_class::data()
 {
-	if(loaded_ == false) {
+	const std::string si_file = filesystem::get_save_index_file();
+
+	// Don't try to load the file if it doesn't exist.
+	if(loaded_ == false && filesystem::file_exists(si_file)) {
 		try {
-			filesystem::scoped_istream stream = filesystem::istream_file(filesystem::get_save_index_file());
+			filesystem::scoped_istream stream = filesystem::istream_file(si_file);
 			try {
 				read_gz(data_, *stream);
 			} catch(boost::iostreams::gzip_error&) {
