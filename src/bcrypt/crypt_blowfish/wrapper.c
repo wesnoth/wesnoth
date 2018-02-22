@@ -14,7 +14,6 @@
  * See crypt_blowfish.c for more information.
  */
 
-#define _GNU_SOURCE 1
 #include <stdlib.h>
 #include <string.h>
 

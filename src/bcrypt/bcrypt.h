@@ -14,23 +14,18 @@
  * <http://creativecommons.org/publicdomain/zero/1.0/>.
  */
 
+/*
+ * 21FEB2018 - Gregory A Lundberg
+ * 
+ * Deleted all unneeded code. This converts this source file from POSIX-only
+ * to fully portable, strictly compliant ISO Standard C.
+ */
+
 #define BCRYPT_HASHSIZE	(64)
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-/*
- * This function expects a work factor between 4 and 31 and a char array to
- * store the resulting generated salt. The char array should typically have
- * BCRYPT_HASHSIZE bytes at least. If the provided work factor is not in the
- * previous range, it will default to 12.
- *
- * The return value is zero if the salt could be correctly generated and
- * nonzero otherwise.
- *
- */
-int bcrypt_gensalt(int workfactor, char salt[BCRYPT_HASHSIZE]);
 
 /*
  * This function expects a password to be hashed, a salt to hash the password
