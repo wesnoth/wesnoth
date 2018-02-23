@@ -28,6 +28,8 @@
 #include "preferences/lobby.hpp"
 #include "preferences/general.hpp"
 #include "preferences/display.hpp"
+#include "utils/functional.hpp"
+#include "utils/general.hpp"
 #include "video.hpp"
 
 // Sub-dialog includes
@@ -63,13 +65,35 @@
 #include "gui/widgets/window.hpp"
 #include "lexical_cast.hpp"
 
-#include "utils/functional.hpp"
 #include <boost/math/common_factor_rt.hpp>
 
 namespace gui2
 {
 namespace dialogs
 {
+namespace
+{
+// Helper function to get the main grid in each row of the advanced section
+// listbox, which contains the value and setter widgets.
+grid* get_advanced_row_grid(listbox& list, const int selected_row)
+{
+	return dynamic_cast<grid*>(list.get_row_grid(selected_row)->find("pref_main_grid", false));
+}
+
+template<typename W>
+void disable_widget_on_toggle(window& window, widget& w, const std::string& id)
+{
+	find_widget<W>(&window, id, false).set_active(dynamic_cast<selectable_item&>(w).get_value_bool());
+}
+
+// Ensure the specified index is between 0 and one less than the max
+// number of pager layers (since get_layer_count returns one-past-end).
+int index_in_pager_range(const int first, const stacked_widget& pager)
+{
+	return utils::clamp<int>(first, 0, pager.get_layer_count() - 1);
+}
+
+} // end anon namespace
 
 using namespace preferences;
 
@@ -281,19 +305,6 @@ void preferences_dialog::remove_friend_list_entry(listbox& friends_list, text_bo
 	list.remove_row(selected_row);
 
 	update_friends_list_controls(window, list);
-}
-
-// Helper function to get the main grid in each row of the advanced section
-// lisbox, which contains the value and setter widgets.
-static grid* get_advanced_row_grid(listbox& list, const int selected_row)
-{
-	return dynamic_cast<grid*>(list.get_row_grid(selected_row)->find("pref_main_grid", false));
-}
-
-template<typename W>
-static void disable_widget_on_toggle(window& window, widget& w, const std::string& id)
-{
-	find_widget<W>(&window, id, false).set_active(dynamic_cast<selectable_item&>(w).get_value_bool());
 }
 
 /**
@@ -947,13 +958,6 @@ void preferences_dialog::initialize_tabs(window& window, listbox& selector)
 	//
 	connect_signal_notify_modified(selector,
 		std::bind(&preferences_dialog::on_tab_select, this, std::ref(window)));
-}
-
-static int index_in_pager_range(const int& first, const stacked_widget& pager)
-{
-	// Ensure the specified index is between 0 and one less than the max
-	// number of pager layers (since get_layer_count returns one-past-end).
-	return std::min<int>(std::max(0, first), pager.get_layer_count() - 1);
 }
 
 void preferences_dialog::pre_show(window& window)
