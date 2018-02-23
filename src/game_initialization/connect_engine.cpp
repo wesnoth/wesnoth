@@ -741,14 +741,15 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 	}
 
 	if(const config& observer = data.child("observer_quit")) {
-		const t_string& observer_name = observer["name"];
+		const std::string& observer_name = observer["name"];
 
 		if(connected_users().find(observer_name) != connected_users().end()) {
 			connected_users_rw().erase(observer_name);
+			update_side_controller_options();
 
-			// If the observer was assigned a side, we need to update the controllers.
+			// If the observer was assigned a side, we need to send an update to other
+			// players so they no longer see the observer assigned to that side.
 			if(find_user_side_index_by_id(observer_name) != -1) {
-				update_side_controller_options();
 				update_and_send_diff();
 			}
 		}
