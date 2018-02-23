@@ -11,11 +11,6 @@ cache:
 
 matrix:
   include:
-    - os: osx
-      compiler: gcc
-      osx_image: xcode9.2
-      env: TOOL=xcodebuild
-
     - compiler: clang
       env: TOOL=scons CXXSTD=11 NLS=true
       
@@ -37,6 +32,11 @@ matrix:
     - os: osx
       compiler: clang
       env: TOOL=scons CXXSTD=11 NLS=false OPT=-O0
+    
+    - os: osx
+      compiler: clang
+      osx_image: xcode9.2
+      env: TOOL=xcodebuild
       
 before_install:
     - export EXTRA_FLAGS_RELEASE=""
@@ -56,6 +56,7 @@ before_install:
 install:
     - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
           if [ "$TOOL" = "xcodebuild" ]; then
+              brew install ccache;
               travis_wait ./projectfiles/Xcode/Fix_Xcode_Dependencies;
           else
               travis_wait ./utils/travis/install_deps.sh;
@@ -70,7 +71,17 @@ script:
     - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
           if [ "$TOOL" = "xcodebuild" ]; then
               cd ./projectfiles/Xcode;
+              
+              export CC=ccache-clang;
+              export CXX=ccache-clang++;
+              export PATH="/usr/local/opt/ccache/libexec:$PWD:$PATH";
+              
+              export CCACHE_MAXSIZE=2G;
+              export CCACHE_COMPILERCHECK=content;
+              
               xcodebuild -project Wesnoth.xcodeproj -target Wesnoth;
+              
+              ccache -s;
           else
               ln -s build-cache/ build;
               ./utils/travis/check_utf8.sh;
