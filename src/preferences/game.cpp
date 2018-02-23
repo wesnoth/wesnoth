@@ -88,6 +88,10 @@ manager::manager() :
 		preferences::erase("mp_countdown_action_bonus");
 	}
 
+	// We save the password encrypted now. Erase any saved passwords in the prefs file.
+	preferences::erase("password");
+	preferences::erase("password_is_wrapped");
+
 	/*
 	completed_campaigns = "A,B,C"
 	[completed_campaigns]
