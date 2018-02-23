@@ -84,8 +84,6 @@ playsingle_controller::playsingle_controller(const config& level,
 	// game may need to start in linger mode
 	linger_ = this->is_regular_game_end();
 
-	ai::manager::get_singleton().add_observer(this);
-
 	plugins_context_->set_accessor_string("level_result", std::bind(&playsingle_controller::describe_result, this));
 	plugins_context_->set_accessor_int("turn", std::bind(&play_controller::turn, this));
 }

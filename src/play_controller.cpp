@@ -216,6 +216,7 @@ void play_controller::init(const config& level)
 		resources::game_events = gamestate().events_manager_.get();
 		resources::lua_kernel = gamestate().lua_kernel_.get();
 
+		gamestate_->ai_manager_.add_observer(this);
 		gamestate_->init(level, *this);
 		resources::tunnels = gamestate().pathfind_manager_.get();
 
@@ -314,6 +315,7 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	resources::game_events = gamestate().events_manager_.get();
 	resources::lua_kernel = gamestate().lua_kernel_.get();
 
+	gamestate_->ai_manager_.add_observer(this);
 	gamestate_->init(level, *this);
 	gamestate().set_game_display(gui_.get());
 	resources::tunnels = gamestate().pathfind_manager_.get();
