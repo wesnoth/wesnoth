@@ -153,7 +153,7 @@ void game_version::pre_show(window& window)
 	for(const auto & path_ent : path_map_)
 	{
 		const std::string& path_id = path_ent.first;
-		const std::string& path_path = path_ent.second;
+		const std::string& path_path = filesystem::normalize_path(path_ent.second, true);
 
 		text_box_base& path_w
 				= find_widget<text_box_base>(&window, path_wid_stem_ + path_id, false);
