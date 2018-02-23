@@ -85,8 +85,18 @@
 			<Option compilerVar="WINDRES" />
 		</Unit>
 		<Unit filename="../../src/SDL_SavePNG/savepng.c">
+
+		
+		<Unit filename="../../src/bcrypt/bcrypt.c">
+		<Unit filename="../../src/bcrypt/crypt_blowfish/crypt_blowfish.c">
+		<Unit filename="../../src/bcrypt/crypt_blowfish/crypt_gensalt.c">
+		<Unit filename="../../src/bcrypt/crypt_blowfish/wrapper.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="../../src/SDL_SavePNG/savepng.h" />
+		<Unit filename="../../src/bcrypt/bcrypt.h">
+		<Unit filename="../../src/bcrypt/crypt_blowfish/crypt_gensalt.h">
+		<Unit filename="../../src/bcrypt/crypt_blowfish/ow-crypt.h">
 		<Unit filename="../../src/SDL_SavePNG/savepng.h" />
 		<Unit filename="../../src/about.cpp" />
 		<Unit filename="../../src/about.hpp" />
