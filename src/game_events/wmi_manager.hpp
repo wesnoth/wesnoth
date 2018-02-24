@@ -58,7 +58,8 @@ public:
 			const map_location& hex,
 			game_data& gamedata,
 			filter_context& fc,
-			unit_map& units) const;
+			unit_map& units,
+			bool is_key_hold_repeat = false) const;
 
 	/**
 	 * Gets the menu item with the specified ID.

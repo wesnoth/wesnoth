@@ -10,6 +10,9 @@ Version 1.13.11+dev:
    * Fixed units shown with [move_units_fake] disappearing between steps
      (bug #1516).
    * [modify_side] now supports side_name
+   * [set_menu_item] no longer fires repeatedly if the player holds the
+     hotkey (bug #1711). If you were relying on repeated firing, add
+     repeat_on_hold=yes to [default_hotkey].
  * Miscellaneous and bug fixes:
    * Fixed standing animation toggle not taking immediate effect (bug
      #1653).

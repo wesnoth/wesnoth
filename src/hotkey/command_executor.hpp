@@ -135,7 +135,18 @@ public:
 	void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& gui);
 
 	virtual bool can_execute_command(const hotkey_command& command, int index=-1) const = 0;
-	virtual bool execute_command(const hotkey_command& command, int index=-1, bool press=true);
+	void execute_command(const SDL_Event& event, int index = -1);
+	void execute_quit_command()
+	{
+		const hotkey_command& quit_hotkey = hotkey_command::get_command_by_command(hotkey::HOTKEY_QUIT_GAME);
+		do_execute_command(quit_hotkey);
+	}
+
+protected:
+	virtual bool do_execute_command(const hotkey_command& command, int index=-1, bool press=true);
+
+private:
+	bool press_event_sent_ = false;
 };
 class command_executor_default : public command_executor
 {
@@ -160,9 +171,5 @@ void jbutton_event(const SDL_Event& event, command_executor* executor);
 void jhat_event(const SDL_Event& event, command_executor* executor);
 void key_event(const SDL_Event& event, command_executor* executor);
 void mbutton_event(const SDL_Event& event, command_executor* executor);
-
-
-//TODO
-void execute_command(const hotkey_command& command, command_executor* executor, int index=-1, bool press=true);
 
 }

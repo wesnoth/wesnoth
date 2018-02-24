@@ -77,7 +77,7 @@ namespace hotkey {
 
 static void event_execute(const SDL_Event& event, command_executor* executor);
 
-bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/, bool press)
+bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*index*/, bool press)
 {
 	// hotkey release handling
 	if (!press) {
@@ -399,7 +399,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 		this->show_menu(submenu->items(), x, y, submenu->is_context(), gui);
 	} else {
 		const hotkey::hotkey_command& cmd = hotkey::get_hotkey_command(items[res]["id"]);
-		hotkey::execute_command(cmd,this,res);
+		do_execute_command(cmd, res);
 		set_button_state();
 	}
 }
@@ -415,7 +415,7 @@ void command_executor::execute_action(const std::vector<std::string>& items_arg,
 	while(i != items.end()) {
 		const hotkey_command &command = hotkey::get_hotkey_command(*i);
 		if (can_execute_command(command)) {
-			hotkey::execute_command(command, this);
+			do_execute_command(command);
 			set_button_state();
 		}
 		++i;
@@ -524,35 +524,43 @@ void key_event(const SDL_Event& event, command_executor* executor)
 	event_execute(event,executor);
 }
 
-static void event_execute( const SDL_Event& event, command_executor* executor)
+static void event_execute(const SDL_Event& event, command_executor* executor)
 {
 	if (!executor) return;
+	executor->execute_command(event);
+	executor->set_button_state();
+}
 
+void command_executor::execute_command(const SDL_Event& event, int index)
+{
 	LOG_HK << "event 0x" << std::hex << event.type << std::dec << std::endl;
 	if(event.type == SDL_TEXTINPUT) {
 		LOG_HK << "SDL_TEXTINPUT \"" << event.text.text << "\"\n";
 	}
 
+	if(event.type == SDL_KEYUP) {
+		LOG_HK << "key-up received, next key-down or text input will be a press event\n";
+		press_event_sent_ = false;
+	}
+
 	const hotkey_ptr hk = get_hotkey(event);
-	if (!hk->active() || hk->is_disabled()) {
+	if(!hk->active() || hk->is_disabled()) {
 		return;
 	}
 
-	bool press = event.type == SDL_KEYDOWN ||
-			event.type == SDL_JOYBUTTONDOWN ||
-			event.type == SDL_MOUSEBUTTONDOWN ||
-			event.type == SDL_TEXTINPUT;
+	const hotkey_command& command = hotkey::get_hotkey_command(hk->get_command());
+	bool press = (event.type == SDL_KEYDOWN ||
+		event.type == SDL_JOYBUTTONDOWN ||
+		event.type == SDL_MOUSEBUTTONDOWN ||
+		event.type == SDL_TEXTINPUT) &&
+		!press_event_sent_;
+	if(press) {
+		LOG_HK << "sending press event\n";
+		press_event_sent_ = true;
+	}
 
-	execute_command(hotkey::get_hotkey_command(hk->get_command()), executor, -1, press);
-	executor->set_button_state();
-}
-
-void execute_command(const hotkey_command& command, command_executor* executor, int index, bool press)
-{
-	assert(executor != nullptr);
-
-	if (!executor->can_execute_command(command, index)
-			|| executor->execute_command(command, index, press)) {
+	if (!can_execute_command(command, index)
+			|| do_execute_command(command, index, press)) {
 		return;
 	}
 
@@ -564,23 +572,23 @@ void execute_command(const hotkey_command& command, command_executor* executor, 
 
 		case HOTKEY_MINIMAP_DRAW_TERRAIN:
 			preferences::toggle_minimap_draw_terrain();
-			executor->recalculate_minimap();
+			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_CODING_TERRAIN:
 			preferences::toggle_minimap_terrain_coding();
-			executor->recalculate_minimap();
+			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_CODING_UNIT:
 			preferences::toggle_minimap_movement_coding();
-			executor->recalculate_minimap();
+			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_DRAW_UNITS:
 			preferences::toggle_minimap_draw_units();
-			executor->recalculate_minimap();
+			recalculate_minimap();
 			break;
 		case HOTKEY_MINIMAP_DRAW_VILLAGES:
 			preferences::toggle_minimap_draw_villages();
-			executor->recalculate_minimap();
+			recalculate_minimap();
 			break;
 		case HOTKEY_FULLSCREEN:
 			CVideo::get_singleton().toggle_fullscreen();
