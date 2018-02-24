@@ -35,13 +35,16 @@
 #include "utils/functional.hpp"
 
 #include <cassert>
+#include <ios>
 
 static lg::log_domain log_config("config");
+static lg::log_domain log_hotkey("hotkey");
 #define ERR_G  LOG_STREAM(err,   lg::general())
 #define WRN_G  LOG_STREAM(warn,   lg::general())
 #define LOG_G  LOG_STREAM(info,  lg::general())
 #define DBG_G  LOG_STREAM(debug, lg::general())
 #define ERR_CF LOG_STREAM(err,   log_config)
+#define LOG_HK LOG_STREAM(info, log_hotkey)
 
 namespace {
 
@@ -528,6 +531,8 @@ static void event_execute( const SDL_Event& event, command_executor* executor)
 	if (!hk->active() || hk->is_disabled()) {
 		return;
 	}
+
+	LOG_HK << "event 0x" << std::hex << event.type << std::dec << std::endl;
 
 	bool press = event.type == SDL_KEYDOWN ||
 			event.type == SDL_JOYBUTTONDOWN ||
