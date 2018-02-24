@@ -527,12 +527,13 @@ void key_event(const SDL_Event& event, command_executor* executor)
 static void event_execute( const SDL_Event& event, command_executor* executor)
 {
 	if (!executor) return;
+
+	LOG_HK << "event 0x" << std::hex << event.type << std::dec << std::endl;
+
 	const hotkey_ptr hk = get_hotkey(event);
 	if (!hk->active() || hk->is_disabled()) {
 		return;
 	}
-
-	LOG_HK << "event 0x" << std::hex << event.type << std::dec << std::endl;
 
 	bool press = event.type == SDL_KEYDOWN ||
 			event.type == SDL_JOYBUTTONDOWN ||
