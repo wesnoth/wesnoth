@@ -886,7 +886,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 				int new_id = add_map_context_of(std::move(mc));
 				switch_context(new_id);
 			} else {
-				replace_map_context_with(std::move(mc));
+				replace_map_context_with(mc);
 			}
 		}
 
@@ -983,10 +983,10 @@ template<typename... T>
 void context_manager::replace_map_context(const T&... args)
 {
 	context_ptr new_mc(new map_context(args...));
-	replace_map_context_with(std::move(new_mc));
+	replace_map_context_with(new_mc);
 }
 
-void context_manager::replace_map_context_with(context_ptr&& mc)
+void context_manager::replace_map_context_with(context_ptr& mc)
 {
 	map_contexts_[current_context_index_].swap(mc);
 	refresh_on_context_change();

@@ -222,7 +222,7 @@ private:
 	template<typename... T>
 	void replace_map_context(const T&... args);
 
-	void replace_map_context_with(context_ptr&& mc);
+	void replace_map_context_with(context_ptr& mc);
 
 	/**
 	 * Creates a default map context object, used to ensure there is always at least one.
