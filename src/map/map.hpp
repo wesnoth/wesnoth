@@ -221,9 +221,10 @@ private:
 	int read_header(const std::string& data);
 
 	ter_data_cache tdata_;
-	std::vector<map_location> villages_;
 
 protected:
+	std::vector<map_location> villages_;
+
 	/** Sizes of the map area. */
 	int w_;
 	int h_;

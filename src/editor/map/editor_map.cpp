@@ -255,6 +255,13 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 			starting_positions_.left.modify_data(it, [=](t_translation::coordinate & loc) { loc.add(-x_offset, -y_offset); });
 		}
 	}
+
+	// Remove any now off-map villages
+	auto iter = std::remove_if(villages_.begin(), villages_.end(),
+		[this](const map_location& loc) { return on_board(loc); });
+
+	villages_.erase(villages_.begin(), iter);
+
 	sanity_check();
 }
 
