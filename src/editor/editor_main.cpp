@@ -40,6 +40,17 @@ EXIT_STATUS start(const config& game_conf, const std::string& filename /* = "" *
 				editor.context_manager_->load_map_dialog(true);
 			} else {
 				editor.context_manager_->load_map(filename, false);
+
+				// HACK: this fixes an issue where the button overlays would be missing when
+				// the loaded map appears. Since we're gonna drop this ridiculous GUI1 drawing
+				// stuff in 1.15 I'm not going to waste time coming up with a better fix.
+				//
+				// Do note adding a redraw_everything call to context_manager::refresh_all also
+				// fixes the issue, but I'm pretty sure thats just because editor_controller::
+				// display_redraw_callback gets called, which then calls set_button_state.
+				//
+				// -- vultraz, 2018-02-24
+				editor.set_button_state();
 			}
 
 			if (take_screenshot) {
