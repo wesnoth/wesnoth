@@ -70,11 +70,11 @@ install:
 script:
     - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
           if [ "$TOOL" = "xcodebuild" ]; then
-              cd ./projectfiles/Xcode;
-              
+              export PATH="/usr/local/opt/ccache/libexec:$PWD/utils/travis:$PATH";
               export CC=ccache-clang;
               export CXX=ccache-clang++;
-              export PATH="/usr/local/opt/ccache/libexec:$PWD:$PATH";
+              
+              cd ./projectfiles/Xcode;
               
               export CCACHE_MAXSIZE=2G;
               export CCACHE_COMPILERCHECK=content;
@@ -82,6 +82,7 @@ script:
               xcodebuild -project Wesnoth.xcodeproj -target Wesnoth;
               
               ccache -s;
+              ccache -z;
           else
               ln -s build-cache/ build;
               ./utils/travis/check_utf8.sh;

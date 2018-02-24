@@ -57,6 +57,8 @@ else
     
 # print ccache statistics
     ccache -s
+# clear ccache statistics, so only per run info is printed rather than cumulative
+    ccache -z
   else
     scons wesnoth wesnothd campaignd boost_unit_tests build=release ctool=$CC cxxtool=$CXX --debug=time extra_flags_config="-pipe" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict="$STRICT" cxx_std=$CXXSTD nls=false jobs=2 enable_lto=false
   fi
