@@ -52,7 +52,7 @@ playmp_controller::playmp_controller(const config& level,
 
 	//turn_data_.set_host(is_host);
 	turn_data_.host_transfer().attach_handler(this);
-	if (!mp_info || mp_info->current_turn == turn()) {
+	if (!mp_info || mp_info->current_turn <= turn()) {
 		skip_replay_ = false;
 	}
 
