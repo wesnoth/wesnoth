@@ -93,6 +93,23 @@ int index_in_pager_range(const int first, const stacked_widget& pager)
 	return utils::clamp<int>(first, 0, pager.get_layer_count() - 1);
 }
 
+// Helper to make it easier to immediately apply sound toggles immediately.
+template<bool(*fptr)(bool)>
+void sound_toggle_on_change(window& window, const std::string& id_to_toggle, widget& w)
+{
+	(*fptr)(dynamic_cast<selectable_item&>(w).get_value_bool());
+
+	// Toggle the corresponding slider.
+	disable_widget_on_toggle<slider>(window, w, id_to_toggle);
+}
+
+// Helper to make it easier to immediately apply volume (music, etc) setings on change.
+template<void(*fptr)(int)>
+void volume_setter_on_change(widget& w)
+{
+	(*fptr)(dynamic_cast<integer_selector&>(w).get_value());
+}
+
 } // end anon namespace
 
 using namespace preferences;
@@ -307,6 +324,32 @@ void preferences_dialog::remove_friend_list_entry(listbox& friends_list, text_bo
 	update_friends_list_controls(window, list);
 }
 
+template<bool(*toggle_getter)(), bool(*toggle_setter)(bool), int(*vol_getter)(), void(*vol_setter)(int)>
+void preferences_dialog::initialize_sound_option_group(const std::string& id_suffix)
+{
+	const std::string toggle_widget_id = "sound_toggle_" + id_suffix;
+	const std::string volume_widget_id = "sound_volume_" + id_suffix;
+
+	window& window = *get_window();
+
+	// Set up the toggle. We utilize field_bool's callback-on-changed mechanism instead
+	// of manually registering the callback. Since we want the effects to apply immediately,
+	// the callback the setter callback is duplicated in the on-change callback. The field
+	// class could possibly use some reworking to make this less redundant, but for now it
+	// works well enough.
+	register_bool(toggle_widget_id, true, toggle_getter, bind_void(toggle_setter, _1),
+		std::bind(sound_toggle_on_change<toggle_setter>, std::ref(window), volume_widget_id, _1), true);
+
+	// Set up the volume slider. integer_field doesn't have a callback-on-changed mechanism.
+	// To add one would either mean adding it to the base field class or make it a proper
+	// class of is own.
+	register_integer(volume_widget_id, true, vol_getter, vol_setter);
+
+	// Callback to actually immediately apply the volume effect.
+	connect_signal_notify_modified(find_widget<slider>(&window, volume_widget_id, false),
+		std::bind(volume_setter_on_change<vol_setter>, _1));
+}
+
 /**
  * Sets up states and callbacks for each of the widgets
  */
@@ -447,42 +490,24 @@ void preferences_dialog::post_build(window& window)
 			find_widget<button>(&window, "choose_theme", false),
 			bind_void(&show_theme_dialog));
 
-
 	//
 	// SOUND PANEL
 	//
 
 	/* SOUND FX */
-	register_bool("sound_toggle_sfx", true, sound_on, bind_void(set_sound, _1),
-		[&](widget& w) { disable_widget_on_toggle<slider>(window, w, "sound_volume_sfx"); }, true);
-
-	register_integer("sound_volume_sfx", true,
-		sound_volume, set_sound_volume);
+	initialize_sound_option_group<sound_on, set_sound, sound_volume, set_sound_volume>("sfx");
 
 	/* MUSIC */
-	register_bool("sound_toggle_music", true, music_on, bind_void(set_music, _1),
-		[&](widget& w) { disable_widget_on_toggle<slider>(window, w, "sound_volume_music"); }, true);
-
-	register_integer("sound_volume_music", true,
-		music_volume, set_music_volume);
+	initialize_sound_option_group<music_on, set_music, music_volume, set_music_volume>("music");
 
 	register_bool("sound_toggle_stop_music_in_background", true,
 		stop_music_in_background, set_stop_music_in_background);
 
 	/* TURN BELL */
-	register_bool("sound_toggle_bell", true, turn_bell, bind_void(set_turn_bell, _1),
-		[&](widget& w) { disable_widget_on_toggle<slider>(window, w, "sound_volume_bell"); }, true);
-
-	register_integer("sound_volume_bell", true,
-		bell_volume, set_bell_volume);
+	initialize_sound_option_group<turn_bell, set_turn_bell, bell_volume, set_bell_volume>("bell");
 
 	/* UI FX */
-	register_bool("sound_toggle_uisfx", true, UI_sound_on, bind_void(set_UI_sound, _1),
-		[&](widget& w) { disable_widget_on_toggle<slider>(window, w, "sound_volume_uisfx"); }, true);
-
-	register_integer("sound_volume_uisfx", true,
-		UI_volume, set_UI_volume);
-
+	initialize_sound_option_group<UI_sound_on, set_UI_sound, UI_volume, set_UI_volume>("uisfx");
 
 	//
 	// MULTIPLAYER PANEL
