@@ -50,7 +50,7 @@ def usage(file=sys.stdout):
         ' */<locale_name>.po files must exist.'.format(sys.argv[0]))
 
 
-def do_stats():
+def do_stats(po_files):
     env = dict(os.environ)
     env['LC_MESSAGES'] = 'C'
     env.pop('LC_ALL', None)
@@ -110,18 +110,32 @@ def get_wml_cfg(wml_dir, locale):
             candidates.append('{}_{}@{}.cfg'.format(lang, script, region))
         else:
             candidates.append('{}@{}.cfg'.format(lang, region))
+            candidates.append('{}_{}@{}.cfg'.format(lang, lang.upper(), region))
             candidates.append('{}_*@{}.cfg'.format(lang, region))
     else:
         if script:
-            candidates.append('{}_{}@*.cfg'.format(lang, script))
             candidates.append('{}_{}.cfg'.format(lang, script))
+            candidates.append('{}_{}@*.cfg'.format(lang, script))
         else:
-            candidates.append('{}_*@*.cfg'.format(lang, script))
+            candidates.append('{}_{}.cfg'.format(lang, lang.upper()))
             candidates.append('{}_*.cfg'.format(lang))
             candidates.append('{}@*.cfg'.format(lang))
+            candidates.append('{}_*@*.cfg'.format(lang))
 
-    for candy in candidates:
-        files = glob.glob(os.path.join(wml_dir, candy))
+    candidate_files = {
+        file: glob.glob(os.path.join(wml_dir, file))
+        for file in candidates
+    }
+
+    for current in range(len(candidates)):
+        for previous in range(0, current-1):
+            # Remove more specialized candidates from more general one's list
+            for file in candidate_files[candidates[current]]:
+                if file in candidate_files[candidates[previous]]:
+                    candidate_files[candidates[previous]].remove(file)
+
+    for current in range(len(candidates)):
+        files = candidate_files[candidates[current]]
         if files:
             if len(files) > 1:
                 print('Warning: too many candidates for {}: {}'.format(locale, files))
@@ -157,7 +171,7 @@ if __name__ == '__main__':
         usage(file=sys.stderr)
         exit(1)
 
-    percent = do_stats()
+    percent = do_stats(po_files)
     print('{}: {}%'.format(locale_name, percent))
     wml_cfg = get_wml_cfg(wml_dir, locale_name)
 
