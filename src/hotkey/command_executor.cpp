@@ -529,6 +529,9 @@ static void event_execute( const SDL_Event& event, command_executor* executor)
 	if (!executor) return;
 
 	LOG_HK << "event 0x" << std::hex << event.type << std::dec << std::endl;
+	if(event.type == SDL_TEXTINPUT) {
+		LOG_HK << "SDL_TEXTINPUT \"" << event.text.text << "\"\n";
+	}
 
 	const hotkey_ptr hk = get_hotkey(event);
 	if (!hk->active() || hk->is_disabled()) {
