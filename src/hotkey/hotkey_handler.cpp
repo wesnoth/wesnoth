@@ -238,7 +238,7 @@ void play_controller::hotkey_handler::scroll_right(bool on)
 	play_controller_.set_scroll_right(on);
 }
 
-bool play_controller::hotkey_handler::execute_command(const hotkey::hotkey_command& cmd, int index, bool press)
+bool play_controller::hotkey_handler::do_execute_command(const hotkey::hotkey_command& cmd, int index, bool press)
 {
 	hotkey::HOTKEY_COMMAND command = cmd.id;
 	if(index >= 0) {
@@ -253,14 +253,14 @@ bool play_controller::hotkey_handler::execute_command(const hotkey::hotkey_comma
 		}
 	}
 	int prefixlen = wml_menu_hotkey_prefix.length();
-	if(press && command == hotkey::HOTKEY_WML && cmd.command.compare(0, prefixlen, wml_menu_hotkey_prefix) == 0)
+	if(command == hotkey::HOTKEY_WML && cmd.command.compare(0, prefixlen, wml_menu_hotkey_prefix) == 0)
 	{
 		std::string name = cmd.command.substr(prefixlen);
 		const map_location& hex = mouse_handler_.get_last_hex();
 
-		return gamestate().get_wml_menu_items().fire_item(name, hex, gamestate().gamedata_, gamestate(), gamestate().board_.units_);
+		return gamestate().get_wml_menu_items().fire_item(name, hex, gamestate().gamedata_, gamestate(), gamestate().board_.units_, !press);
 	}
-	return command_executor::execute_command(cmd, index, press);
+	return command_executor::do_execute_command(cmd, index, press);
 }
 
 bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_command& cmd, int index) const

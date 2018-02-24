@@ -76,11 +76,13 @@ bool wmi_manager::erase(const std::string& id)
  * play_controller::execute_command() needs something different.
  */
 bool wmi_manager::fire_item(
-		const std::string& id, const map_location& hex, game_data& gamedata, filter_context& fc, unit_map& units) const
+		const std::string& id, const map_location& hex, game_data& gamedata, filter_context& fc, unit_map& units, bool is_key_hold_repeat) const
 {
 	// Does this item exist?
 	item_ptr wmi = get_item(id);
 	if(!wmi) {
+		return false;
+	} else if(is_key_hold_repeat && !wmi->hotkey_repeat()) {
 		return false;
 	}
 

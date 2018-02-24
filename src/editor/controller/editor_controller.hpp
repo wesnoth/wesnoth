@@ -108,7 +108,7 @@ class editor_controller : public controller_base,
 		hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const override;
 
 		/** command_executor override */
-		bool execute_command(const hotkey::hotkey_command& command, int index = -1, bool press=true) override;
+		bool do_execute_command(const hotkey::hotkey_command& command, int index = -1, bool press=true) override;
 
 		/** controller_base override */
 		void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp) override;

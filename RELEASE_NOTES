@@ -26,6 +26,7 @@ CHANGES
 
 [rawarn="Deprecations and breaking changes"]
 [list]
+[*][set_menu_item] no longer fires repeatedly if the player holds the hotkey (bug #1711). If you were relying on repeated firing, add repeat_on_hold=yes to [default_hotkey].
 [/list]
 [/rawarn]
 

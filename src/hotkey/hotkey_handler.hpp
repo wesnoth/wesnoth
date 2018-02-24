@@ -123,7 +123,7 @@ public:
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const override;
 	/** Check if a command can be executed. */
 	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const override;
-	virtual bool execute_command(const hotkey::hotkey_command& command, int index=-1, bool press=true) override;
+	virtual bool do_execute_command(const hotkey::hotkey_command& command, int index=-1, bool press=true) override;
 	void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp) override;
 
 	/**

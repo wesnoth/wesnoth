@@ -51,9 +51,6 @@ void controller_base::handle_event(const SDL_Event& event)
 		return;
 	}
 
-	static const hotkey::hotkey_command& quit_hotkey
-			= hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_QUIT_GAME);
-
 	events::mouse_handler_base& mh_base = get_mouse_handler_base();
 
 	switch(event.type) {
@@ -78,7 +75,7 @@ void controller_base::handle_event(const SDL_Event& event)
 		// in which case the key press events should go only to it.
 		if(have_keyboard_focus()) {
 			if(event.key.keysym.sym == SDLK_ESCAPE) {
-				hotkey::execute_command(quit_hotkey, get_hotkey_command_executor());
+				get_hotkey_command_executor()->execute_quit_command();
 				break;
 			}
 

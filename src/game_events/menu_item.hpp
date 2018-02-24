@@ -75,6 +75,12 @@ public:
 		return use_wml_menu_;
 	}
 
+	/** If true, holding the hotkey will trigger this item repeatedly. */
+	bool hotkey_repeat() const
+	{
+		return default_hotkey_["repeat_on_hold"].to_bool(false);
+	}
+
 	/**
 	 * Returns whether or not *this is applicable given the context.
 	 * Assumes game variables x1, y1, and unit have been set.
