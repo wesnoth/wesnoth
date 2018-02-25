@@ -286,8 +286,9 @@ create_engine::create_engine(saved_game& state)
 		}
 	}
 
-
-	dependency_manager_->try_modifications(state_.mp_settings().active_mods, true);
+	if(state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
+		dependency_manager_->try_modifications(state_.mp_settings().active_mods, true);
+	}
 
 	reset_level_filters();
 }
@@ -536,7 +537,9 @@ void create_engine::set_current_level(const size_t index)
 		generator_.reset(nullptr);
 	}
 
-	dependency_manager_->try_scenario(current_level().id());
+	if(state_.classification().campaign_type == game_classification::CAMPAIGN_TYPE::MULTIPLAYER) {
+		dependency_manager_->try_scenario(current_level().id());
+	}
 }
 
 void create_engine::set_current_era_index(const size_t index, bool force)
@@ -548,6 +551,8 @@ void create_engine::set_current_era_index(const size_t index, bool force)
 
 bool create_engine::toggle_mod(int index, bool force)
 {
+	force |= state_.classification().campaign_type != game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+
 	bool is_active = dependency_manager_->is_modification_active(index);
 	dependency_manager_->try_modification_by_index(index, !is_active, force);
 
