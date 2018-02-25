@@ -256,11 +256,24 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 		}
 	}
 
-	// Remove any now off-map villages
-	auto iter = std::remove_if(villages_.begin(), villages_.end(),
-		[this](const map_location& loc) { return on_board(loc); });
+	villages_.clear();
 
-	villages_.erase(villages_.begin(), iter);
+	//
+	// NOTE: I'm not sure how inefficient it is to check every loc for its village-ness as
+	// opposed to operating on the villages_ vector itself and figuring out how to handle
+	// villages on the map border. Essentially, it's possible to simply remove all members
+	// from villages_ that are no longer on the map after a resize (including those that
+	// land on a border), but that doesn't account for villages that were *on* the border
+	// prior to resizing. Those should be included. As a catch-all fix, I just check every
+	// hex. It's possible that any more complex shenanigans would be even more inefficient.
+	//
+	// -- vultraz, 2018-02-25
+	//
+	for_each_loc([this](const map_location& loc) {
+		if(is_village(loc)) {
+			villages_.push_back(loc);
+		}
+	});
 
 	sanity_check();
 }
