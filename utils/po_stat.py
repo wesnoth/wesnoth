@@ -9,6 +9,7 @@ import re
 
 
 verbose = False
+update_cfg = False
 
 
 class Stats:
@@ -46,8 +47,12 @@ class Stats:
 
 def usage(file=sys.stdout):
     file.write(
-        'Usage: {} <locale_name> <wml config file to add percent field> [--verbose]\n'
-        ' */<locale_name>.po files must exist.'.format(sys.argv[0]))
+        'Usage: {} [--verbose] [--update-cfg] [--help]\n'
+        'Calculates the translated% (non-fuzzy) of Wesnoth\'s po files, prints it to stdout.\n'
+        ' --update-cfg: writes the result into data/languages/*.cfg\n'
+        ' --verbose: prints extra status messages\n'
+        ' --help: prints this text\n'
+        'po/*/<locale_name>.po files must exist.'.format(sys.argv[0]))
 
 
 def do_stats(po_files):
@@ -127,15 +132,15 @@ def get_wml_cfg(wml_dir, locale):
         for file in candidates
     }
 
-    for current in range(len(candidates)):
-        for previous in range(0, current-1):
+    for current_index, current in enumerate(candidates):
+        for previous in range(0, current_index-1):
             # Remove more specialized candidates from more general one's list
-            for file in candidate_files[candidates[current]]:
+            for file in candidate_files[current]:
                 if file in candidate_files[candidates[previous]]:
                     candidate_files[candidates[previous]].remove(file)
 
-    for current in range(len(candidates)):
-        files = candidate_files[candidates[current]]
+    for current in candidates:
+        files = candidate_files[current]
         if files:
             if len(files) > 1:
                 print('Warning: too many candidates for {}: {}'.format(locale, files))
@@ -144,42 +149,50 @@ def get_wml_cfg(wml_dir, locale):
     return None
 
 
-if __name__ == '__main__':
-
-    if len(sys.argv) < 3:
-        usage()
-        exit(0)
-
-    locale_name = sys.argv[1]
+def stat_one_locale(wesnoth_dir, locale_name):
+    wml_dir = os.path.join(wesnoth_dir, 'data/languages')
 
     po_mask = '*/{}.po'.format(locale_name)
-    pos_mask = os.path.join(os.path.dirname(sys.argv[0]), '../po', po_mask)
+    pos_mask = os.path.join(wesnoth_dir, 'po', po_mask)
 
     po_files = glob.glob(pos_mask)
     if not po_files:
-        sys.stderr.write('Cannot find {}'.format(pos_mask))
-        usage(file=sys.stderr)
+        sys.stderr.write('Cannot find {}\n'.format(pos_mask))
         exit(1)
 
-    wml_dir = sys.argv[2]
-
-    if len(sys.argv) >= 4 and sys.argv[3] == '--verbose':
-        verbose = True
-
     if not os.path.isdir(wml_dir):
-        sys.stderr.write('File {} not found '.format(wml_dir))
-        usage(file=sys.stderr)
+        sys.stderr.write('File {} not found\n'.format(wml_dir))
         exit(1)
 
     percent = do_stats(po_files)
-    print('{}: {}%'.format(locale_name, percent))
-    wml_cfg = get_wml_cfg(wml_dir, locale_name)
+    print('{} {}'.format(locale_name, percent))
 
+    if not update_cfg:
+        return
+
+    wml_cfg = get_wml_cfg(wml_dir, locale_name)
     if not wml_cfg:
         exit(1)
 
     try:
         write_percentage_wml(wml_cfg, percent)
-        # print('{} saved!'.format(wml_cfg))
     except IOError as whoopsie:
         sys.stderr.write(whoopsie)
+
+
+if __name__ == '__main__':
+
+    for arg in sys.argv:
+        if arg == '--verbose':
+            verbose = True
+        if arg == '--help':
+            usage()
+        if arg == '--update-cfg':
+            update_cfg = True
+
+    wesnoth_dir = os.path.realpath(os.path.join(os.path.dirname(sys.argv[0]), '..'))
+    with open(os.path.join(wesnoth_dir, 'po/LINGUAS')) as f:
+        da_langs = f.read().split()
+
+    for lang in da_langs:
+        stat_one_locale(wesnoth_dir, lang)
