@@ -1,3 +1,4 @@
+/* $Id$ */
 /*
  * The crypt_blowfish homepage is:
  *
@@ -7,11 +8,11 @@
  * and crypt(3) interfaces added, but optimizations specific to password
  * cracking removed.
  *
- * Written by Solar Designer <solar at openwall.com> in 1998-2014.
+ * Written by Solar Designer <solar at openwall.com> in 1998-2015.
  * No copyright is claimed, and the software is hereby placed in the public
- * domain.  In case this attempt to disclaim copyright and place the software
+ * domain. In case this attempt to disclaim copyright and place the software
  * in the public domain is deemed null and void, then the software is
- * Copyright (c) 1998-2014 Solar Designer and it is hereby released to the
+ * Copyright (c) 1998-2015 Solar Designer and it is hereby released to the
  * general public under the following terms:
  *
  * Redistribution and use in source and binary forms, with or without
@@ -21,7 +22,7 @@
  *
  * It is my intent that you should be able to use this on your system,
  * as part of a software package, or anywhere else to improve security,
- * ensure compatibility, or for any other purpose.  I would appreciate
+ * ensure compatibility, or for any other purpose. I would appreciate
  * it if you give credit where it is due and keep your modifications in
  * the public domain as well, but I don't require that in order to let
  * you place this code and any modifications you make under a license
@@ -29,8 +30,8 @@
  *
  * This implementation is fully compatible with OpenBSD's bcrypt.c for prefix
  * "$2b$", originally by Niels Provos <provos at citi.umich.edu>, and it uses
- * some of his ideas.  The password hashing algorithm was designed by David
- * Mazieres <dm at lcs.mit.edu>.  For information on the level of
+ * some of his ideas. The password hashing algorithm was designed by David
+ * Mazieres <dm at lcs.mit.edu>. For information on the level of
  * compatibility for bcrypt hash prefixes other than "$2b$", please refer to
  * the comments in BF_set_key() below and to the included crypt(3) man page.
  *
@@ -54,8 +55,6 @@
 #include "crypt_blowfish.h"
 
 #ifdef __i386__
-//#define BF_ASM			1
-// ASM source isn't used in wesnoth's build process
 #define BF_ASM				0
 #define BF_SCALE			1
 #elif defined(__x86_64__) || defined(__alpha__) || defined(__hppa__)
@@ -378,6 +377,7 @@ static unsigned char BF_atoi64[0x60] = {
 #define BF_safe_atoi64(dst, src) \
 { \
 	tmp = (unsigned char)(src); \
+	if (tmp == '$') break; /* PHP hack */ \
 	if ((unsigned int)(tmp -= 0x20) >= 0x60) return -1; \
 	tmp = BF_atoi64[tmp]; \
 	if (tmp > 63) return -1; \
@@ -404,6 +404,13 @@ static int BF_decode(BF_word *dst, const char *src, int size)
 		BF_safe_atoi64(c4, *sptr++);
 		*dptr++ = ((c3 & 0x03) << 6) | c4;
 	} while (dptr < end);
+
+	if (end - dptr == size) {
+		return -1;
+	}
+
+	while (dptr < end) /* PHP hack */
+		*dptr++ = 0;
 
 	return 0;
 }
@@ -550,18 +557,18 @@ static void BF_set_key(const char *key, BF_key expanded, BF_key initial,
 	BF_word safety, sign, diff, tmp[2];
 
 /*
- * There was a sign extension bug in older revisions of this function.  While
+ * There was a sign extension bug in older revisions of this function. While
  * we would have liked to simply fix the bug and move on, we have to provide
  * a backwards compatibility feature (essentially the bug) for some systems and
- * a safety measure for some others.  The latter is needed because for certain
+ * a safety measure for some others. The latter is needed because for certain
  * multiple inputs to the buggy algorithm there exist easily found inputs to
- * the correct algorithm that produce the same hash.  Thus, we optionally
+ * the correct algorithm that produce the same hash. Thus, we optionally
  * deviate from the correct algorithm just enough to avoid such collisions.
  * While the bug itself affected the majority of passwords containing
  * characters with the 8th bit set (although only a percentage of those in a
  * collision-producing way), the anti-collision safety measure affects
  * only a subset of passwords containing the '\xff' character (not even all of
- * those passwords, just some of them).  This character is not found in valid
+ * those passwords, just some of them). This character is not found in valid
  * UTF-8 sequences and is rarely used in popular 8-bit character encodings.
  * Thus, the safety measure is unlikely to cause much annoyance, and is a
  * reasonable tradeoff to use when authenticating against existing hashes that
@@ -569,8 +576,8 @@ static void BF_set_key(const char *key, BF_key expanded, BF_key initial,
  *
  * We use an approach that tries to minimize side-channel leaks of password
  * information - that is, we mostly use fixed-cost bitwise operations instead
- * of branches or table lookups.  (One conditional branch based on password
- * length remains.  It is not part of the bug aftermath, though, and is
+ * of branches or table lookups. (One conditional branch based on password
+ * length remains. It is not part of the bug aftermath, though, and is
  * difficult and possibly unreasonable to avoid given the use of C strings by
  * the caller, which results in similar timing leaks anyway.)
  *
@@ -598,9 +605,9 @@ static void BF_set_key(const char *key, BF_key expanded, BF_key initial,
 			tmp[1] |= (BF_word_signed)(signed char)*ptr; /* bug */
 /*
  * Sign extension in the first char has no effect - nothing to overwrite yet,
- * and those extra 24 bits will be fully shifted out of the 32-bit word.  For
+ * and those extra 24 bits will be fully shifted out of the 32-bit word. For
  * chars 2, 3, 4 in each four-char block, we set bit 7 of "sign" if sign
- * extension in tmp[1] occurs.  Once this flag is set, it remains set.
+ * extension in tmp[1] occurs. Once this flag is set, it remains set.
  */
 			if (j)
 				sign |= tmp[1] & 0x80;
@@ -617,12 +624,12 @@ static void BF_set_key(const char *key, BF_key expanded, BF_key initial,
 
 /*
  * At this point, "diff" is zero iff the correct and buggy algorithms produced
- * exactly the same result.  If so and if "sign" is non-zero, which indicates
+ * exactly the same result. If so and if "sign" is non-zero, which indicates
  * that there was a non-benign sign extension, this means that we have a
  * collision between the correctly computed hash for this password and a set of
- * passwords that could be supplied to the buggy algorithm.  Our safety measure
+ * passwords that could be supplied to the buggy algorithm. Our safety measure
  * is meant to protect from such many-buggy to one-correct collisions, by
- * deviating from the correct algorithm in such cases.  Let's check for this.
+ * deviating from the correct algorithm in such cases. Let's check for this.
  */
 	diff |= diff >> 16; /* still zero iff exact match */
 	diff &= 0xffff; /* ditto */
@@ -632,12 +639,12 @@ static void BF_set_key(const char *key, BF_key expanded, BF_key initial,
 
 /*
  * If we have determined that we need to deviate from the correct algorithm,
- * flip bit 16 in initial expanded key.  (The choice of 16 is arbitrary, but
- * let's stick to it now.  It came out of the approach we used above, and it's
+ * flip bit 16 in initial expanded key. (The choice of 16 is arbitrary, but
+ * let's stick to it now. It came out of the approach we used above, and it's
  * not any worse than any other choice we could make.)
  *
  * It is crucial that we don't do the same to the expanded key used in the main
- * Eksblowfish loop.  By doing it to only one of these two, we deviate from a
+ * Eksblowfish loop. By doing it to only one of these two, we deviate from a
  * state that could be directly specified by a password to the buggy algorithm
  * (and to the fully correct one as well, but that's a side-effect).
  */
@@ -780,7 +787,7 @@ static char *BF_crypt(const char *key, const char *setting,
 	return output;
 }
 
-int _crypt_output_magic(const char *setting, char *output, int size)
+static int _crypt_output_magic(const char *setting, char *output, int size)
 {
 	if (size < 3)
 		return -1;
@@ -796,26 +803,26 @@ int _crypt_output_magic(const char *setting, char *output, int size)
 }
 
 /*
- * Please preserve the runtime self-test.  It serves two purposes at once:
+ * Please preserve the runtime self-test. It serves two purposes at once:
  *
  * 1. We really can't afford the risk of producing incompatible hashes e.g.
  * when there's something like gcc bug 26587 again, whereas an application or
  * library integrating this code might not also integrate our external tests or
- * it might not run them after every build.  Even if it does, the miscompile
+ * it might not run them after every build. Even if it does, the miscompile
  * might only occur on the production build, but not on a testing build (such
- * as because of different optimization settings).  It is painful to recover
+ * as because of different optimization settings). It is painful to recover
  * from incorrectly-computed hashes - merely fixing whatever broke is not
- * enough.  Thus, a proactive measure like this self-test is needed.
+ * enough. Thus, a proactive measure like this self-test is needed.
  *
  * 2. We don't want to leave sensitive data from our actual password hash
- * computation on the stack or in registers.  Previous revisions of the code
+ * computation on the stack or in registers. Previous revisions of the code
  * would do explicit cleanups, but simply running the self-test after hash
  * computation is more reliable.
  *
  * The performance cost of this quick self-test is around 0.6% at the "$2a$08"
  * setting.
  */
-char *_crypt_blowfish_rn(const char *key, const char *setting,
+char *php_crypt_blowfish_rn(const char *key, const char *setting,
 	char *output, int size)
 {
 	const char *test_key = "8b \xd0\xc1\xd2\xcf\xcc\xd8";
@@ -838,7 +845,7 @@ char *_crypt_blowfish_rn(const char *key, const char *setting,
 	save_errno = errno;
 
 /*
- * Do a quick self-test.  It is important that we make both calls to BF_crypt()
+ * Do a quick self-test. It is important that we make both calls to BF_crypt()
  * from the same scope such that they likely use the same stack locations,
  * which makes the second call overwrite the first call's sensitive data on the
  * stack and makes it more likely that any alignment related issues would be
@@ -880,6 +887,7 @@ char *_crypt_blowfish_rn(const char *key, const char *setting,
 	return NULL;
 }
 
+#if 0
 char *_crypt_gensalt_blowfish_rn(const char *prefix, unsigned long count,
 	const char *input, int size, char *output, int output_size)
 {
@@ -907,3 +915,4 @@ char *_crypt_gensalt_blowfish_rn(const char *prefix, unsigned long count,
 
 	return output;
 }
+#endif

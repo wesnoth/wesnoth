@@ -20,7 +20,9 @@
 
 #include "global.hpp"
 #include "exceptions.hpp"
-#include "bcrypt/bcrypt.h"
+
+// Not configurable. The size (64) is both hard-, and implicitly-coded in crypt_blowfish
+static const int BCRYPT_HASHSIZE = 64;
 
 namespace utils {
 
