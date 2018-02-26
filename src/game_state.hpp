@@ -55,6 +55,7 @@ public:
 	/// number of files that depend on actions/undo.hpp).
 	const std::unique_ptr<actions::undo_list> undo_stack_;
 	int player_number_;
+	int next_player_number_;
 
 	boost::optional<end_level_data> end_level_data_;
 	bool init_side_done_;

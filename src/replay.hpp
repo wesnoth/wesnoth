@@ -70,7 +70,7 @@ public:
 	void add_label(const terrain_label*);
 	void clear_labels(const std::string&, bool);
 	void add_rename(const std::string& name, const map_location& loc);
-	void end_turn();
+	void end_turn(int next_player_number);
 	void add_unit_checksum(const map_location& loc,config& cfg);
 	void add_log_data(const std::string &key, const std::string &var);
 	void add_log_data(const std::string &category, const std::string &key, const std::string &var);

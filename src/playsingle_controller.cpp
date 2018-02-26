@@ -177,7 +177,6 @@ void playsingle_controller::play_scenario_main_loop()
 				turn_data_.send_data();
 				return;
 			}
-			gamestate_->player_number_ = 1;
 		}
 		catch(const reset_gamestate_exception& ex) {
 			//
@@ -636,7 +635,7 @@ void playsingle_controller::sync_end_turn()
 	if(end_turn_ == END_TURN_REQUIRED && current_team().is_local())
 	{
 		//TODO: we should also send this immediately.
-		resources::recorder->end_turn();
+		resources::recorder->end_turn(gamestate_->next_player_number_);
 		end_turn_ = END_TURN_SYNCED;
 	}
 
