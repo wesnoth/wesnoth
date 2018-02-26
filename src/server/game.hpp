@@ -414,6 +414,7 @@ private:
 	 */
 	bool end_turn(int new_side);
 
+	void update_turn_data();
 	/**
 	 * Function to send a list of users to all clients.
 	 *

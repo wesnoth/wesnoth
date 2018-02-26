@@ -358,11 +358,10 @@ void game::start_game(const socket_ptr& starter)
 		LOG_GAME << "Reload from turn: " << turn << ". Current side is: " << side + 1 << ".\n";
 	}
 	current_turn_ = turn;
-	// -1 becasue we are increasing it below in that end_turn() call.
-	current_side_index_ = side - 1;
+	current_side_index_ = side;
 	num_turns_ = lexical_cast_default<int>((*starting_pos(level_.root()))["turns"], -1);
 
-	end_turn(0);
+	update_turn_data();
 	clear_history();
 
 	// Send [observer] tags for all observers that are already in the game.
@@ -1341,7 +1340,19 @@ bool game::end_turn(int new_side)
 	current_turn_ += res.quot;
 
 	if(description_ == nullptr) {
+		// TODO: why do we need this?
 		return false;
+	}
+	
+	update_turn_data();
+
+	return true;
+}
+
+void game::update_turn_data()
+{
+	if(description_ == nullptr) {
+		return;
 	}
 
 	simple_wml::node* turns_cfg = description_->child("turn_data");
@@ -1351,8 +1362,7 @@ bool game::end_turn(int new_side)
 
 	turns_cfg->set_attr_int("current", current_turn());
 	turns_cfg->set_attr_int("max", num_turns_);
-
-	return true;
+	
 }
 
 ///@todo differentiate between "observers not allowed" and "player already in the game" errors.
