@@ -267,6 +267,7 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		("log-strict", po::value<std::string>(), "sets the strict level of the logger. any messages sent to log domains of this level or more severe will cause the unit test to fail regardless of the victory result.")
 		("noreplaycheck", "don't try to validate replay of unit test.")
 		("mp-test", "load the test mp scenarios.")
+		("validate", "validate the core WML against the schema")
 		;
 
 	po::options_description preprocessor_opts("Preprocessor mode options");
@@ -482,6 +483,8 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		userdata_path = true;
 	if (vm.count("validcache"))
 		validcache = true;
+	if (vm.count("validate"))
+		validate_wml = true;
 	if (vm.count("version"))
 		version = true;
 	if (vm.count("windowed"))

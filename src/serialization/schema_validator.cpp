@@ -18,6 +18,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/preprocessor.hpp"
+#include "serialization/string_utils.hpp"
 #include "wml_exception.hpp"
 
 namespace schema_validation
@@ -111,7 +112,17 @@ static void wrong_value_error(const std::string& file,
 {
 	std::ostringstream ss;
 	ss << "Invalid value '" << value << "' in key '" << key << "=' in tag [" << tag << "]\n" << at(file, line) << "\n";
+	print_output(ss.str(), flag_exception);
+}
 
+static void wrong_type_error(const std::string & file, int line,
+		const std::string & tag,
+		const std::string & key,
+		const std::string & type,
+		bool flag_exception)
+{
+	std::ostringstream ss;
+	ss << "Invalid type '" << type << "' in key '" << key << "=' in tag [" << tag << "]\n" << at(file, line) << "\n";
 	print_output(ss.str(), flag_exception);
 }
 
@@ -160,10 +171,9 @@ bool schema_validator::read_config_file(const std::string& filename)
 				root_ = class_tag(schema);
 			}
 		}
-
 		for(const config& type : g.child_range("type")) {
 			try {
-				types_[type["name"].str()] = boost::regex(type["value"].str());
+				types_[type["name"].str()] = class_type(type);
 			} catch(const std::exception&) {
 				// Need to check all type values in schema-generator
 			}
@@ -262,20 +272,27 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 void schema_validator::validate_key(
 		const config& cfg, const std::string& name, const std::string& value, int start_line, const std::string& file)
 {
-	if(!stack_.empty() && stack_.top() && config_read_) {
+	if(!stack_.empty() && stack_.top() && !stack_.top()->get_name().empty() && config_read_) {
 		// checking existing keys
 		const class_key* key = stack_.top()->find_key(name);
 		if(key) {
-			auto itt = types_.find(key->get_type());
-
-			if(itt != types_.end()) {
-				boost::smatch sub;
-				bool res = boost::regex_match(value, sub, itt->second);
-
-				if(!res) {
+			bool matched = false;
+			for(auto& possible_type : utils::split(key->get_type())) {
+				auto itt = types_.find(possible_type);
+				if(itt == types_.end()) {
+					// TODO: This may not be a good place since it causes log spam when there's an invalid type
+					// Instead it should be checked when the schema is loaded!
 					cache_.top()[&cfg].emplace_back(
-						WRONG_VALUE, file, start_line, 0, stack_.top()->get_name(), name, value);
+						WRONG_TYPE, file, start_line, 0, stack_.top()->get_name(), name, key->get_type());
+					continue;
+				} else if(itt->second.matches(value, types_)) {
+					matched = true;
+					break;
 				}
+			}
+			if(!matched) {
+				cache_.top()[&cfg].emplace_back(
+					WRONG_VALUE, file, start_line, 0, stack_.top()->get_name(), name, value);
 			}
 		} else {
 			cache_.top()[&cfg].emplace_back(EXTRA_KEY, file, start_line, 0, stack_.top()->get_name(), name);
@@ -303,6 +320,9 @@ void schema_validator::print(message_info& el)
 		break;
 	case MISSING_KEY:
 		missing_key_error(el.file, el.line, el.tag, el.key, create_exceptions_);
+	case WRONG_TYPE:
+		wrong_type_error(el.file, el.line, el.tag, el.key, el.value, create_exceptions_);
+		break;
 	}
 }
 } // namespace schema_validation{

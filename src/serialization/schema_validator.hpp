@@ -19,8 +19,6 @@
 #include "serialization/tag.hpp"
 #include "serialization/validator.hpp"
 
-#include <boost/regex.hpp>
-
 #include <iostream>
 #include <queue>
 #include <stack>
@@ -81,7 +79,7 @@ private:
 	/** And counter maps are organize in stack. */
 	typedef std::stack<cnt_map> cnt_stack;
 
-	enum message_type { WRONG_TAG, EXTRA_TAG, MISSING_TAG, EXTRA_KEY, MISSING_KEY, WRONG_VALUE };
+	enum message_type{ WRONG_TAG, EXTRA_TAG, MISSING_TAG, EXTRA_KEY, MISSING_KEY, WRONG_VALUE, WRONG_TYPE };
 	// error_cache
 
 	/**
@@ -147,6 +145,6 @@ private:
 	std::stack<message_map> cache_;
 
 	/** Type validators. */
-	std::map<std::string, boost::regex> types_;
+	std::map<std::string, class_type> types_;
 };
 } // namespace schema_validation{

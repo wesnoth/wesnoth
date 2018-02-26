@@ -207,6 +207,8 @@ public:
 	boost::optional<std::string> userdata_dir;
 	/// True if --validcache was given on the command line. Makes Wesnoth assume the cache is valid.
 	bool validcache;
+	/// True if --validate was given on the command line. Makes Wesnoth validate the core WML.
+	bool validate_wml;
 	/// True if --version was given on the command line. Prints version and exits.
 	bool version;
 	/// True if --report was given on the command line. Prints a bug report-style info dump and exits.
