@@ -52,6 +52,7 @@ namespace image {
 			bool operator<(const value& a) const;
 
 			type type_;
+			bool is_data_uri_;
 			std::string filename_;
 			map_location loc_;
 			std::string modifications_;
@@ -83,6 +84,7 @@ namespace image {
 		bool operator<(const locator &a) const { return index_ < a.index_; }
 
 		const std::string &get_filename() const { return val_.filename_; }
+		bool is_data_uri() const { return val_.is_data_uri_; }
 		const map_location& get_loc() const { return val_.loc_ ; }
 		int get_center_x() const { return val_.center_x_; }
 		int get_center_y() const { return val_.center_y_; }

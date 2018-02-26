@@ -198,6 +198,32 @@ typedef surface (*scaling_function)(const surface&, int, int);
 scaling_function scale_to_zoom_func;
 scaling_function scale_to_hex_func;
 
+const std::string data_uri_prefix = "data:";
+struct parsed_data_URI{
+	explicit parsed_data_URI(utils::string_view data_URI);
+	utils::string_view scheme;
+	utils::string_view mime;
+	utils::string_view base64;
+	utils::string_view data;
+	bool good;
+};
+parsed_data_URI::parsed_data_URI(utils::string_view data_URI)
+{
+	const size_t colon = data_URI.find(':');
+	const utils::string_view after_scheme = data_URI.substr(colon + 1);
+
+	const size_t comma = after_scheme.find(',');
+	const utils::string_view type_info = after_scheme.substr(0, comma);
+
+	const size_t semicolon = type_info.find(';');
+
+	scheme = data_URI.substr(0, colon);
+	base64 = type_info.substr(semicolon + 1);
+	mime = type_info.substr(0, semicolon);
+	data = after_scheme.substr(comma + 1);
+	good = (scheme == "data" && base64 == "base64" && mime.length() > 0 && data.length() > 0);
+}
+
 } // end anon namespace
 
 namespace image
@@ -254,6 +280,18 @@ void locator::parse_arguments()
 	std::string& fn = val_.filename_;
 	if(fn.empty()) {
 		return;
+	}
+
+	if(boost::algorithm::starts_with(fn, data_uri_prefix)) {
+		parsed_data_URI parsed{fn};
+
+		if(!parsed.good) {
+			utils::string_view view{ fn };
+			utils::string_view stripped = view.substr(0, view.find(","));
+			ERR_DP << "Invalid data URI: " << stripped << std::endl;
+		}
+
+		val_.is_data_uri_ = true;
 	}
 
 	size_t markup_field = fn.find('~');
@@ -328,6 +366,7 @@ locator& locator::operator=(const locator& a)
 
 locator::value::value(const locator::value& a)
 	: type_(a.type_)
+	, is_data_uri_(a.is_data_uri_)
 	, filename_(a.filename_)
 	, loc_(a.loc_)
 	, modifications_(a.modifications_)
@@ -338,6 +377,7 @@ locator::value::value(const locator::value& a)
 
 locator::value::value()
 	: type_(NONE)
+	, is_data_uri_(false)
 	, filename_()
 	, loc_()
 	, modifications_()
@@ -348,6 +388,7 @@ locator::value::value()
 
 locator::value::value(const char* filename)
 	: type_(FILE)
+	, is_data_uri_(false)
 	, filename_(filename)
 	, loc_()
 	, modifications_()
@@ -358,6 +399,7 @@ locator::value::value(const char* filename)
 
 locator::value::value(const std::string& filename)
 	: type_(FILE)
+	, is_data_uri_(false)
 	, filename_(filename)
 	, loc_()
 	, modifications_()
@@ -368,6 +410,7 @@ locator::value::value(const std::string& filename)
 
 locator::value::value(const std::string& filename, const std::string& modifications)
 	: type_(SUB_FILE)
+	, is_data_uri_(false)
 	, filename_(filename)
 	, loc_()
 	, modifications_(modifications)
@@ -382,6 +425,7 @@ locator::value::value(const std::string& filename,
 		int center_y,
 		const std::string& modifications)
 	: type_(SUB_FILE)
+	, is_data_uri_(false)
 	, filename_(filename)
 	, loc_(loc)
 	, modifications_(modifications)
@@ -609,6 +653,64 @@ static surface load_image_sub_file(const image::locator& loc)
 	return surf;
 }
 
+static std::string base64_decode(utils::string_view in)
+{
+	std::vector<int> T(256,-1);
+	for(int i=0; i<64; i++) {
+		T["ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"[i]] = i;
+	}
+
+	const int last_char = in.find_last_not_of("=");
+	const int length = last_char * 6 / 8;
+
+	std::string out;
+	out.reserve(length);
+
+	int val = 0, bits = -8;
+	for(unsigned char c: in) {
+		if(T[c] == -1) {
+			break; // Non-base64 character encountered. Should be =
+		}
+		val = (val<<6) + T[c];
+		bits += 6;
+		if(bits >= 0) {
+			out.push_back(static_cast<char>((val >> bits) & 0xFF));
+			bits -= 8;
+			val &= 0xFFFF; // Prevent shifting bits off the left end, which is UB
+		}
+	}
+
+	return out;
+}
+
+static surface load_image_data_uri(const image::locator& loc)
+{
+	surface surf;
+
+	parsed_data_URI parsed{loc.get_filename()};
+
+	if(!parsed.good) {
+		utils::string_view fn = loc.get_filename();
+		utils::string_view stripped = fn.substr(0, fn.find(","));
+		ERR_DP << "Invalid data URI: " << stripped << std::endl;
+	} else if(parsed.mime.substr(0, 5) != "image") {
+		ERR_DP << "Data URI not of image MIME type: " << parsed.mime << std::endl;
+	} else {
+		const std::string image_data = base64_decode(parsed.data);
+		filesystem::rwops_ptr rwops{SDL_RWFromConstMem(image_data.data(), image_data.length()), &SDL_FreeRW};
+
+		if(parsed.mime == "image/png") {
+			surf = IMG_LoadTyped_RW(rwops.release(), true, "PNG");
+		} else if(parsed.mime == "image/jpeg") {
+			surf = IMG_LoadTyped_RW(rwops.release(), true, "JPG");
+		} else {
+			ERR_DP << "Invalid image MIME type: " << parsed.mime << std::endl;
+		}
+	}
+
+	return surf;
+}
+
 // small utility function to store an int from (-256,254) to an signed char
 static signed char col_to_uchar(int i)
 {
@@ -683,14 +785,20 @@ static surface apply_light(surface surf, const light_string& ls)
 
 bool locator::file_exists() const
 {
-	return !filesystem::get_binary_file_location("images", val_.filename_).empty();
+	return val_.is_data_uri_
+		? parsed_data_URI{val_.filename_}.good
+		: !filesystem::get_binary_file_location("images", val_.filename_).empty();
 }
 
 surface load_from_disk(const locator& loc)
 {
 	switch(loc.get_type()) {
 	case locator::FILE:
-		return load_image_file(loc);
+		if(loc.is_data_uri()){
+			return load_image_data_uri(loc);
+		} else {
+			return load_image_file(loc);
+		}
 	case locator::SUB_FILE:
 		return load_image_sub_file(loc);
 	default:
@@ -1143,7 +1251,11 @@ bool exists(const image::locator& i_locator)
 
 	bool& cache = iter->second;
 	if(success) {
-		cache = !filesystem::get_binary_file_location("images", i_locator.get_filename()).empty();
+		if(i_locator.is_data_uri()) {
+			cache = parsed_data_URI{i_locator.get_filename()}.good;
+		} else {
+			cache = !filesystem::get_binary_file_location("images", i_locator.get_filename()).empty();
+		}
 	}
 
 	return cache;
