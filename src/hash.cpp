@@ -23,6 +23,10 @@
 #include <openssl/sha.h>
 #include <openssl/md5.h>
 
+extern "C" {
+#include "crypt_blowfish/crypt_blowfish.h"
+}
+
 static_assert(utils::md5::DIGEST_SIZE == MD5_DIGEST_LENGTH, "Constants mismatch");
 static_assert(utils::sha1::DIGEST_SIZE == SHA_DIGEST_LENGTH, "Constants mismatch");
 
@@ -170,7 +174,7 @@ bcrypt bcrypt::from_hash_string(const std::string& input)
 bcrypt bcrypt::hash_pw(const std::string& password, bcrypt& salt)
 {
 	bcrypt hash;
-	if(bcrypt_hashpw(password.c_str(), salt.hash.data(), hash.hash.data()) != 0)
+	if(!php_crypt_blowfish_rn(password.c_str(), salt.hash.data(), hash.hash.data(), BCRYPT_HASHSIZE))
 		throw hash_error("failed to hash password");
 
 	return hash;
