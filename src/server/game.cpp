@@ -1330,7 +1330,7 @@ bool game::end_turn(int new_side)
 	for(int i = 0; i < nsides_ && side_controllers_[current_side()] == CONTROLLER::EMPTY; ++i) {
 		++current_side_index_;
 	}
-	
+
 	auto res = std::div(current_side_index_, nsides_ > 0 ? nsides_ : 1);
 
 	if(res.quot == 0) {
@@ -1343,7 +1343,7 @@ bool game::end_turn(int new_side)
 		// TODO: why do we need this?
 		return false;
 	}
-	
+
 	update_turn_data();
 
 	return true;
@@ -1362,7 +1362,7 @@ void game::update_turn_data()
 
 	turns_cfg->set_attr_int("current", current_turn());
 	turns_cfg->set_attr_int("max", num_turns_);
-	
+
 }
 
 ///@todo differentiate between "observers not allowed" and "player already in the game" errors.
