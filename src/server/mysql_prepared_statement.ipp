@@ -90,7 +90,7 @@ MYSQL_BIND make_bind(int&& i, my_bool* is_null = 0)
 template<typename... Args> constexpr auto make_binds(Args&&... args)
 	-> std::array<MYSQL_BIND, sizeof...(Args)>
 {
-	return { (make_bind(std::forward<Args>(args)))... };
+	return { { (make_bind(std::forward<Args>(args))) ... } };
 }
 
 template<typename T> T fetch_result(MYSQL_STMT* stmt, const std::string& sql);
