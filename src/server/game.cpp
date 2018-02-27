@@ -1318,7 +1318,6 @@ void game::process_change_turns_wml(simple_wml::document& data, const socket_ptr
 
 bool game::end_turn(int new_side)
 {
-	// It's a new turn every time each side in the game ends their turn.
 	if(new_side > 0) {
 		current_side_index_ = new_side - 1;
 	}
