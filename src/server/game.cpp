@@ -1081,7 +1081,6 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr& user)
 			send_and_record_server_message(username(user) + " has surrendered.");
 		} else if(is_current_player(user) && (*command).child("end_turn")) {
 			simple_wml::node& endturn = *(*command).child("end_turn");
-			// fixme handle next_player_number
 			turn_ended = end_turn(endturn["next_player_number"].to_int());
 		}
 
