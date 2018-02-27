@@ -181,7 +181,10 @@ bcrypt bcrypt::hash_pw(const std::string& password, bcrypt& salt)
 }
 
 bool bcrypt::is_valid_prefix(const std::string& hash) {
-	return hash.compare(0, 4, "$2y$") == 0;
+	return ((hash.compare(0, 4, "$2a$") == 0)
+	     || (hash.compare(0, 4, "$2b$") == 0)
+	     || (hash.compare(0, 4, "$2x$") == 0)
+	     || (hash.compare(0, 4, "$2y$") == 0));
 }
 
 std::string bcrypt::get_salt() const
