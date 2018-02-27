@@ -22,6 +22,9 @@ Version 1.13.11+dev:
    * New game theme music by Mattias Westlund.
    * The unit advancement prompt is no longer shown for droided sides.
    * Fixed custom game titles being lost when reloading MP games.
+   * The copy-to-clipboard function on the Lua console now produces plain text
+     without Pango markup or entities for special characters (<, > and &)
+     (bug #2434).
 
 Version 1.13.11:
  * Add-ons client:

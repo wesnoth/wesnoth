@@ -130,18 +130,22 @@ class lua_interpreter::lua_model {
 private:
 	lua_kernel_base & L_;
 	std::stringstream log_;
+	std::stringstream raw_log_;
 
 public:
 	lua_model (lua_kernel_base & lk)
 		: L_(lk)
 		, log_()
+		, raw_log_()
 	{
 		DBG_LUA << "constructing a lua_interpreter::model\n";
 		//DBG_LUA << "incoming:\n" << lk.get_log().rdbuf() << "\n.\n";
 		log_ << font::escape_text(lk.get_log().str()) << std::flush;
+		raw_log_ << lk.get_log().str() << std::flush;
 		// Lua kernel sends log strings to this function
 		L_.set_external_log([this](const std::string & str) {
 			log_ << font::escape_text(str);
+			raw_log_ << str;
 		});
 		//DBG_LUA << "received:\n" << log_.str() << "\n.\n";
 
@@ -164,6 +168,7 @@ public:
 	void add_dialog_message(const std::string & msg);
 
 	std::string get_log() const { return log_.str(); } ///< Get the log string
+	std::string get_raw_log() const { return raw_log_.str(); } ///< Get the unescaped log
 	std::string get_name() const { return L_.my_name(); } ///< Get a string describing the name of lua kernel
 
 	/// Clear the console log
@@ -171,6 +176,8 @@ public:
 		L_.clear_log();
 		log_.str("");
 		log_.clear();
+		raw_log_.str("");
+		raw_log_.clear();
 	}
 
 	//* Tab completion: Get list of presently defined global variables */
@@ -423,6 +430,7 @@ bool lua_interpreter::lua_model::execute (const std::string & cmd)
 /** Add a dialog message, which will appear in blue. */
 void lua_interpreter::lua_model::add_dialog_message(const std::string & msg) {
 	log_ << "<span color='#8888FF'>" << font::escape_text(msg) << "</span>\n";
+	raw_log_ << msg << '\n';
 }
 
 // View impl
@@ -490,7 +498,7 @@ void lua_interpreter::controller::bind(window& window)
 void lua_interpreter::controller::handle_copy_button_clicked(window & /*window*/)
 {
 	assert(lua_model_);
-	desktop::clipboard::copy_to_clipboard(lua_model_->get_log(), false);
+	desktop::clipboard::copy_to_clipboard(lua_model_->get_raw_log(), false);
 }
 
 /** Clear the text */
