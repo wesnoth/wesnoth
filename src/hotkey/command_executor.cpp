@@ -549,13 +549,15 @@ void command_executor::execute_command(const SDL_Event& event, int index)
 	}
 
 	const hotkey_command& command = hotkey::get_hotkey_command(hk->get_command());
-	bool press = (event.type == SDL_KEYDOWN ||
-		event.type == SDL_JOYBUTTONDOWN ||
-		event.type == SDL_MOUSEBUTTONDOWN ||
-		event.type == SDL_TEXTINPUT) &&
+	bool keypress = (event.type == SDL_KEYDOWN || event.type == SDL_TEXTINPUT) &&
 		!press_event_sent_;
+	bool press = keypress ||
+		(event.type == SDL_JOYBUTTONDOWN || event.type == SDL_MOUSEBUTTONDOWN);
 	if(press) {
-		LOG_HK << "sending press event\n";
+		LOG_HK << "sending press event (keypress = " <<
+			std::boolalpha << keypress << std::noboolalpha << ")\n";
+	}
+	if(keypress) {
 		press_event_sent_ = true;
 	}
 
