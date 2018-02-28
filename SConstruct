@@ -11,7 +11,7 @@ EnsureSConsVersion(0,98,3)
 
 import os, sys, shutil, re, subprocess
 from glob import glob
-from subprocess import Popen, PIPE, call
+from subprocess import Popen, PIPE, call, check_output
 from os import access, F_OK
 
 # Warn user of current set of build options.
@@ -414,13 +414,10 @@ if env["prereqs"]:
             client_env.Append(CPPDEFINES = ["HAVE_HISTORY"])
 
     if env["forum_user_handler"]:
-        flags = env.ParseFlags("!mysql_config --libs --cflags")
-        try: # Some versions of mysql_config add -DNDEBUG but we don't want it
-            flags["CPPDEFINES"].remove("NDEBUG")
-        except ValueError:
-            pass
+        mysql_config = check_output(["mysql_config", "--libs", "--cflags"]).replace("\n", " ").replace("-DNDEBUG", "")
+        mysql_flags = env.ParseFlags(mysql_config)
         env.Append(CPPDEFINES = ["HAVE_MYSQLPP"])
-        env.MergeFlags(flags)
+        env.MergeFlags(mysql_flags)
 
     client_env = conf.Finish()
 
@@ -447,10 +444,8 @@ else:
     client_env = env.Clone()
 
 
-have_msgfmt = env["MSGFMT"]
-if not have_msgfmt:
+if not env["MSGFMT"]:
      env["nls"] = False
-if not have_msgfmt:
      print("NLS tools are not present...")
 if not env['nls']:
      print("NLS catalogue installation is disabled.")

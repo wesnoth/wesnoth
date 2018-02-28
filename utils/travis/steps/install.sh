@@ -1,5 +1,7 @@
 #!/bin/bash
 
+date
+
 export EXTRA_FLAGS_RELEASE=""
 export WML_TESTS=true
 export PLAY_TEST=true
