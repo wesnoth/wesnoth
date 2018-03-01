@@ -15,6 +15,7 @@
 #include "server/user_handler.hpp"
 #include "config.hpp"
 #include "random.hpp"
+#include <openssl/rand.h>
 
 #include <ctime>
 #include <sstream>
@@ -49,3 +50,50 @@ std::string user_handler::create_salt(int length) {
 
 	return  ss.str();
 }
+
+// TODO - This really should be a common function.
+// This is duplicated in two or three other places.
+// Some are virtual member functions.
+namespace {
+	const std::string itoa64 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" ;
+
+	std::string encode_hash(const unsigned char* input, unsigned int len) {
+		std::string encoded_hash;
+
+		unsigned int i = 0;
+		do {
+			unsigned value = input[i++];
+			encoded_hash.append(itoa64.substr(value & 0x3f,1));
+			if(i < len)
+				value |= static_cast<int>(input[i]) << 8;
+			encoded_hash.append(itoa64.substr((value >> 6) & 0x3f,1));
+			if(i++ >= len)
+				break;
+			if(i < len)
+				value |= static_cast<int>(input[i]) << 16;
+			encoded_hash.append(itoa64.substr((value >> 12) & 0x3f,1));
+			if(i++ >= len)
+				break;
+			encoded_hash.append(itoa64.substr((value >> 18) & 0x3f,1));
+		} while (i < len);
+
+		return encoded_hash;
+	}
+
+	class RAND_bytes_exception: public std::exception
+	{
+	};
+}
+
+std::string user_handler::create_secure_salt()
+{
+	// Must be full base64 encodings (3 bytes = 4 chars) else we skew the PRNG results
+	unsigned char buf [((3 * 32) / 4)];
+
+	if(!RAND_bytes(buf, sizeof(buf))) {
+		throw RAND_bytes_exception();
+	}
+
+	return encode_hash(buf, sizeof(buf));
+}
+

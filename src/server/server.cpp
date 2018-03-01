@@ -787,8 +787,14 @@ void server::handle_login(socket_ptr socket, std::shared_ptr<simple_wml::documen
 void server::send_password_request(socket_ptr socket, const std::string& msg,
 								   const std::string& user, const char* error_code, bool force_confirmation)
 {
-	std::string salt = user_handler_->create_salt();
 	std::string pepper = user_handler_->create_pepper(user);
+	// If using crypt_blowfish, use 32 random Base64 characters, cryptographic-strength, 192 bits entropy
+	// else (phppass, MD5, $H$), use 8 random integer digits, not secure, do not use, this is crap, 29.8 bits entropy
+	std::string salt {
+		/* if   */ (pepper[1] == '2')
+		/* then */ ? user_handler_->create_secure_salt()
+		/* else */ : user_handler_->create_salt()
+	};
 	std::string spices = pepper + salt;
 	if(user_handler_->use_phpbb_encryption() && pepper.empty()) {
 		async_send_error(socket, "Even though your nickname is registered on this server you "

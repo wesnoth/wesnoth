@@ -278,9 +278,9 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 								try {
 									auto bcrypt_salt = utils::bcrypt::from_salted_salt(salt);
 									auto hash = utils::bcrypt::hash_pw(password, bcrypt_salt);
-									std::string outer_salt = salt.substr(bcrypt_salt.iteration_count_delim_pos + 23, 8);
-									if(outer_salt.size() != 8)
-										throw utils::hash_error("salt too small");
+									std::string outer_salt = salt.substr(bcrypt_salt.iteration_count_delim_pos + 23);
+									if(outer_salt.size() != 32)
+										throw utils::hash_error("salt wrong size");
 									sp["password"] = utils::md5(hash.base64_digest(), outer_salt).base64_digest();
 								} catch(utils::hash_error& err) {
 									ERR_MP << "bcrypt hash failed: " << err.what() << std::endl;
