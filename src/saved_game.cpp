@@ -611,6 +611,9 @@ void saved_game::cancel_orders()
 void saved_game::unify_controllers()
 {
 	for(config& side : this->starting_pos_.child_range("side")) {
+		
+		side.remove_attribute["is_local"];
+		//TODO: the old code below is probably not needed anymore
 		if(side["controller"] == "network") {
 			side["controller"] = "human";
 		}
