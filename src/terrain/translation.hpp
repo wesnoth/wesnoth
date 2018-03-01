@@ -89,8 +89,8 @@ namespace t_translation {
 		ter_map & operator= (ter_map &&) = default;
 #endif
 
-		terrain_code& get(int x, int y) { return data[x * h + y]; }
-		const terrain_code& get(int x, int y) const { return data[x * h + y]; }
+		terrain_code& get(int x, int y) { size_t index = x * h + y; assert(index < data.size()); return data[index]; }
+		const terrain_code& get(int x, int y) const { size_t index = x * h + y; assert(index < data.size()); return data[index]; }
 
 		std::vector<terrain_code> data;
 		int w;
