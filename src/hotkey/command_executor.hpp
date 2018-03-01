@@ -142,6 +142,11 @@ public:
 		do_execute_command(quit_hotkey);
 	}
 
+	void handle_keyup()
+	{
+		press_event_sent_ = false;
+	}
+
 protected:
 	virtual bool do_execute_command(const hotkey_command& command, int index=-1, bool press=true);
 
@@ -170,6 +175,7 @@ public:
 void jbutton_event(const SDL_Event& event, command_executor* executor);
 void jhat_event(const SDL_Event& event, command_executor* executor);
 void key_event(const SDL_Event& event, command_executor* executor);
+void keyup_event(const SDL_Event& event, command_executor* executor);
 void mbutton_event(const SDL_Event& event, command_executor* executor);
 
 }

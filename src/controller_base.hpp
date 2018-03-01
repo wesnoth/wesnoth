@@ -188,4 +188,27 @@ protected:
 	bool scroll_right_;
 
 	joystick_manager joystick_manager_;
+
+private:
+	/* A separate class for listening key-up events.
+	It's needed because otherwise such events might be consumed by a different event context
+	and the input system would believe that the player is still holding a key (bug #2573) */
+	class keyup_listener : public events::sdl_handler
+	{
+	public:
+		keyup_listener(controller_base& controller)
+			: events::sdl_handler(false)
+			, controller_(controller)
+		{
+			join_global();
+		}
+
+		void handle_event(const SDL_Event& event) override;
+		void handle_window_event(const SDL_Event&) override {}
+
+	private:
+		controller_base& controller_;
+	};
+
+	keyup_listener key_release_listener_;
 };

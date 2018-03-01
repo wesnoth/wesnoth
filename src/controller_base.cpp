@@ -38,6 +38,7 @@ controller_base::controller_base(const config& game_config)
 	, scroll_left_(false)
 	, scroll_right_(false)
 	, joystick_manager_()
+	, key_release_listener_(*this)
 {
 }
 
@@ -138,6 +139,13 @@ void controller_base::handle_event(const SDL_Event& event)
 
 	default:
 		break;
+	}
+}
+
+void controller_base::keyup_listener::handle_event(const SDL_Event& event)
+{
+	if(event.type == SDL_KEYUP) {
+		hotkey::keyup_event(event, controller_.get_hotkey_command_executor());
 	}
 }
 

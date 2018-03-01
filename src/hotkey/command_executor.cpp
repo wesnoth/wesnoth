@@ -524,6 +524,12 @@ void key_event(const SDL_Event& event, command_executor* executor)
 	event_execute(event,executor);
 }
 
+void keyup_event(const SDL_Event& event, command_executor* executor)
+{
+	if(!executor) return;
+	executor->handle_keyup();
+}
+
 static void event_execute(const SDL_Event& event, command_executor* executor)
 {
 	if (!executor) return;
@@ -536,11 +542,6 @@ void command_executor::execute_command(const SDL_Event& event, int index)
 	LOG_HK << "event 0x" << std::hex << event.type << std::dec << std::endl;
 	if(event.type == SDL_TEXTINPUT) {
 		LOG_HK << "SDL_TEXTINPUT \"" << event.text.text << "\"\n";
-	}
-
-	if(event.type == SDL_KEYUP) {
-		LOG_HK << "key-up received, next key-down or text input will be a press event\n";
-		press_event_sent_ = false;
 	}
 
 	const hotkey_ptr hk = get_hotkey(event);
