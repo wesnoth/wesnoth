@@ -65,8 +65,8 @@ const t_translation::ter_list& terrain_type_data::underlying_mvt_terrain(const t
 	auto i = find_or_merge(terrain);
 
 	if(i == tcodeToTerrain_.end()) {
-		// TODO: At least in some cases(for exampel when this is called form lua) it
-		// seems to make more sense to throw an excaption here, samge goes for get_terrain_info
+		// TODO: At least in some cases (for example when this is called from lua) it
+		// seems to make more sense to throw an exception here, same goes for get_terrain_info
 		// and underlying_def_terrain
 		static t_translation::ter_list result(1);
 		result[0] = terrain;
@@ -172,7 +172,7 @@ terrain_type_data::tcodeToTerrain_t::const_iterator terrain_type_data::find_or_m
 	}
 }
 
-bool terrain_type_data::try_merge_terrains(const t_translation::terrain_code & terrain)
+bool terrain_type_data::try_merge_terrains(const t_translation::terrain_code& terrain)
 {
 	return find_or_merge(terrain) != tcodeToTerrain_.end();
 }
