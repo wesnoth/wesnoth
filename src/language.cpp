@@ -39,6 +39,10 @@ extern "C" int _putenv(const char*);
 #define WRN_G LOG_STREAM(warn, lg::general())
 #define ERR_G LOG_STREAM(err, lg::general())
 
+#ifndef MIN_TRANSLATION_PERCENT
+#define MIN_TRANSLATION_PERCENT 80
+#endif
+
 namespace {
 	language_def current_language;
 	std::vector<config> languages_;
@@ -99,13 +103,13 @@ bool load_language_list()
 	}
 
 	known_languages.clear();
-	known_languages.emplace_back("", t_string(N_("System default language"), "wesnoth"), "ltr", "", "A");
+	known_languages.emplace_back("", t_string(N_("System default language"), "wesnoth"), "ltr", "", "A", "100");
 
 	for (const config &lang : cfg.child_range("locale"))
 	{
 		known_languages.emplace_back(
 			lang["locale"], lang["name"], lang["dir"],
-			lang["alternates"], lang["sort_name"]);
+			lang["alternates"], lang["sort_name"], lang["percent"]);
 	}
 
 	return true;
@@ -116,7 +120,10 @@ language_list get_languages()
 	// We sort every time, the local might have changed which can modify the
 	// sort order.
 	std::sort(known_languages.begin(), known_languages.end());
-	return known_languages;
+	language_list result;
+	std::copy_if(known_languages.begin(), known_languages.end(), std::back_inserter(result),
+						[](language_def lang) { return lang.percent >= MIN_TRANSLATION_PERCENT; });
+	return result;
 }
 
 static void wesnoth_setlocale(int category, const std::string& slocale,
