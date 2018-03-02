@@ -10,6 +10,7 @@ import re
 
 verbose = False
 update_cfg = False
+textdomains = []
 
 
 class Stats:
@@ -51,6 +52,7 @@ def usage(file=sys.stdout):
         'Calculates the translated% (non-fuzzy) of Wesnoth\'s po files, prints it to stdout.\n'
         ' --update-cfg: writes the result into data/languages/*.cfg\n'
         ' --verbose: prints extra status messages\n'
+        ' --textdomains <comma-separated list>: use only these textdomains.\n'
         ' --help: prints this text\n'
         'po/*/<locale_name>.po files must exist.'.format(sys.argv[0]))
 
@@ -149,16 +151,31 @@ def get_wml_cfg(wml_dir, locale):
     return None
 
 
+def get_pos(wesnoth_dir, locale_name):
+    po_files = []
+    if not textdomains:
+        po_mask = '*/{}.po'.format(locale_name)
+        pos_mask = os.path.join(wesnoth_dir, 'po', po_mask)
+
+        po_files = glob.glob(pos_mask)
+        if not po_files:
+            sys.stderr.write('Error: Cannot find {}\n'.format(pos_mask))
+            exit(1)
+    else:
+        for d in textdomains:
+            po_file = os.path.join(wesnoth_dir, 'po', d, locale_name + '.po')
+            if os.path.isfile(po_file):
+                po_files.append(po_file)
+            else:
+                sys.stderr.write('Warning: cannot find {}\n'.format(po_file))
+
+    return po_files
+
+
 def stat_one_locale(wesnoth_dir, locale_name):
     wml_dir = os.path.join(wesnoth_dir, 'data/languages')
 
-    po_mask = '*/{}.po'.format(locale_name)
-    pos_mask = os.path.join(wesnoth_dir, 'po', po_mask)
-
-    po_files = glob.glob(pos_mask)
-    if not po_files:
-        sys.stderr.write('Cannot find {}\n'.format(pos_mask))
-        exit(1)
+    po_files = get_pos(wesnoth_dir, locale_name)
 
     if not os.path.isdir(wml_dir):
         sys.stderr.write('File {} not found\n'.format(wml_dir))
@@ -185,10 +202,15 @@ if __name__ == '__main__':
     for arg in sys.argv:
         if arg == '--verbose':
             verbose = True
-        if arg == '--help':
+        elif arg == '--help':
             usage()
-        if arg == '--update-cfg':
+        elif arg == '--update-cfg':
             update_cfg = True
+        elif arg.startswith('--textdomains='):
+            arg = arg[14:]
+            # Is supposed to be:
+            # wesnoth,wesnoth-editor,wesnoth-help,wesnoth-lib,wesnoth-multiplayer,wesnoth-tutorial,wesnoth-units
+            textdomains = re.split(r'[;, ]', arg)
 
     wesnoth_dir = os.path.realpath(os.path.join(os.path.dirname(sys.argv[0]), '..'))
     with open(os.path.join(wesnoth_dir, 'po/LINGUAS')) as f:
