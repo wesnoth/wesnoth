@@ -152,7 +152,7 @@ std::string terrain_type_data::get_underlying_terrain_string(const t_translation
 	return str;
 }
 
-tcodeToTerrain_t::const_iterator terrain_type_data::find_or_merge(t_translation::terrain_code terrain) const
+terrain_type_data::tcodeToTerrain_t::const_iterator terrain_type_data::find_or_merge(t_translation::terrain_code terrain) const
 {
 	auto i = tcodeToTerrain_.find(terrain);
 	if (i != tcodeToTerrain_.end()) {
