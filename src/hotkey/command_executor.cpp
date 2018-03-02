@@ -524,7 +524,7 @@ void key_event(const SDL_Event& event, command_executor* executor)
 	event_execute(event,executor);
 }
 
-void keyup_event(const SDL_Event& event, command_executor* executor)
+void keyup_event(const SDL_Event&, command_executor* executor)
 {
 	if(!executor) return;
 	executor->handle_keyup();
