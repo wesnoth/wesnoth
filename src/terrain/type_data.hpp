@@ -21,7 +21,8 @@
 class terrain_type_data {
 private:
 	mutable t_translation::ter_list terrainList_;
-	mutable std::map<t_translation::terrain_code, terrain_type> tcodeToTerrain_;
+	using tcodeToTerrain_t = std::map<t_translation::terrain_code, terrain_type>;
+	mutable tcodeToTerrain_t tcodeToTerrain_;
 
 	mutable bool initialized_;
 	const config & game_config_;
@@ -84,6 +85,8 @@ public:
 	 */
 	bool try_merge_terrains(const t_translation::terrain_code & terrain);
 
+private:
+	tcodeToTerrain_t::const_iterator find_or_merge(t_translation::terrain_code) const;
 };
 
 typedef std::shared_ptr<terrain_type_data> ter_data_cache;
