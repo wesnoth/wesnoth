@@ -34,8 +34,8 @@
             ],
             "build-commands": [
                 "./bootstrap.sh --prefix=/app --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread",
-                "./b2 -j4 install boost.locale.icu=off link=static variant=release address-model=64 --layout=system"
-            ]
+                "./b2 -j4 install link=static variant=release address-model=64 --layout=system"
+]
         },
 	{
             "name": "scons",
@@ -58,7 +58,7 @@
                 "/share/applications/wesnoth_editor.desktop"
             ],
             "build-commands": [
-                "scons -j4 prefix=/app ccache=true install wesnoth wesnothd"
+                "scons -j4 prefix=/app extra_flags_release='-licudata -licui18n -licuuc -lboost_thread' ccache=true install wesnoth wesnothd"
 	    ],
             "sources": [
                 {
