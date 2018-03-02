@@ -53,6 +53,7 @@ set(FIFO_DIR "/var/run/wesnothd" CACHE STRING "Directory for the wesnothd fifo s
 option(ENABLE_GAME "Enable compilation of the game" ON)
 option(ENABLE_CAMPAIGN_SERVER "Enable compilation of campaign(add-ons) server")
 option(ENABLE_SERVER "Enable compilation of MP server" ON)
+option(ENABLE_MYSQL "Enable building MP/add-ons servers with mysql support" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
