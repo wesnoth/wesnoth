@@ -7,13 +7,19 @@ function(GetSources source_list store_in_var)
 	set(${store_in_var} ${sources} PARENT_SCOPE)
 endfunction()
 
+if(ENABLE_MYSQL)
+	execute_process(COMMAND mysql_config --cflags OUTPUT_VARIABLE MYSQL_CFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE)
+	string(REGEX REPLACE "-I" "" MYSQL_CFLAGS "${MYSQL_CFLAGS}")
+	string(REGEX REPLACE "-DNDEBUG" "" MYSQL_CFLAGS "${MYSQL_CFLAGS}")
+	execute_process(COMMAND mysql_config --libs OUTPUT_VARIABLE MYSQL_LIBS OUTPUT_STRIP_TRAILING_WHITESPACE)
+endif(ENABLE_MYSQL)
+
 ## some includes ##
 include_directories(SYSTEM ${FONTCONFIG_INCLUDE_DIRS} )
 include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS} )
 include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR} )
 include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS} )
 include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR} )
-
 
 include_directories(SYSTEM ${SDL2_INCLUDE_DIR} )
 set(sdl-lib ${SDL2_LIBRARY})
@@ -317,9 +323,19 @@ if(ENABLE_SERVER)
 	GetSources("wesnothd" wesnothd_SRC)
 
 	add_executable(wesnothd WIN32 ${wesnothd_SRC})
-
-	target_link_libraries(wesnothd wesnoth-core ${server-external-libs} ${Boost_RANDOM_LIBRARY})
 	
+	if(ENABLE_MYSQL)
+		target_include_directories(wesnothd SYSTEM PRIVATE ${MYSQL_CFLAGS})
+		target_compile_definitions(wesnothd PRIVATE HAVE_MYSQLPP)
+	endif(ENABLE_MYSQL)
+
+	target_link_libraries(wesnothd
+			wesnoth-core
+			${server-external-libs}
+			${Boost_RANDOM_LIBRARY}
+			${CRYPTO_LIBRARY}
+			${MYSQL_LIBS}
+		)
 	set_target_properties(wesnothd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnothd${BINARY_SUFFIX})
 
 	install(TARGETS wesnothd DESTINATION ${CMAKE_INSTALL_BINDIR})
@@ -334,11 +350,17 @@ if(ENABLE_CAMPAIGN_SERVER)
 
 	add_executable(campaignd ${campaignd_SRC})
 	
+	if(ENABLE_MYSQL)
+		target_include_directories(campaignd SYSTEM PRIVATE ${MYSQL_CFLAGS})
+		target_compile_definitions(campaignd PRIVATE HAVE_MYSQLPP)
+	endif(ENABLE_MYSQL)
+	
 	target_link_libraries(campaignd
 			wesnoth-core
 			${server-external-libs}
 			${CRYPTO_LIBRARY}
 			${Boost_RANDOM_LIBRARY}
+			${MYSQL_LIBS}
 		)
 	set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd${BINARY_SUFFIX})
 
