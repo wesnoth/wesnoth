@@ -65,6 +65,9 @@ const t_translation::ter_list& terrain_type_data::underlying_mvt_terrain(const t
 	auto i = find_or_merge(terrain);
 
 	if(i == tcodeToTerrain_.end()) {
+		// TODO: At least in some cases(for exampel when this is called form lua) it
+		// seems to make more sense to throw an excaption here, samge goes for get_terrain_info
+		// and underlying_def_terrain
 		static t_translation::ter_list result(1);
 		result[0] = terrain;
 		return result;
