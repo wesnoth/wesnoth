@@ -39,7 +39,7 @@ struct sql_error : public game::error
 // MYSQL_BIND structure returned. It's caller's responsibility
 // to ensure that argument's lifetime doesn't end before mysql
 // is done with those MYSQL_BINDs
-MYSQL_BIND make_bind(const std::string& str, my_bool* is_null = 0)
+static MYSQL_BIND make_bind(const std::string& str, my_bool* is_null = 0)
 {
 	MYSQL_BIND result;
 	memset(&result, 0, sizeof (MYSQL_BIND));
@@ -52,7 +52,7 @@ MYSQL_BIND make_bind(const std::string& str, my_bool* is_null = 0)
 	return result;
 }
 
-MYSQL_BIND make_bind(char* str, std::size_t* len, my_bool* is_null = 0)
+static MYSQL_BIND make_bind(char* str, std::size_t* len, my_bool* is_null = 0)
 {
 	MYSQL_BIND result;
 	memset(&result, 0, sizeof (MYSQL_BIND));
@@ -65,18 +65,7 @@ MYSQL_BIND make_bind(char* str, std::size_t* len, my_bool* is_null = 0)
 	return result;
 }
 
-MYSQL_BIND make_bind(int& i, my_bool* is_null = 0)
-{
-	MYSQL_BIND result;
-	memset(&result, 0, sizeof (MYSQL_BIND));
-	result.buffer_type = MYSQL_TYPE_LONG;
-	result.buffer = static_cast<void*>(&i);
-	result.is_unsigned = 0;
-	result.is_null = is_null;
-	return result;
-}
-
-MYSQL_BIND make_bind(int&& i, my_bool* is_null = 0)
+static MYSQL_BIND make_bind(int& i, my_bool* is_null = 0)
 {
 	MYSQL_BIND result;
 	memset(&result, 0, sizeof (MYSQL_BIND));
