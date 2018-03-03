@@ -30,7 +30,7 @@
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "version.hpp"
-#include "formula/string_utils.hpp"
+#include "serialization/string_utils.hpp"
 #include "addon/client.hpp"
 
 #include <boost/algorithm/string.hpp>

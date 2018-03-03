@@ -16,7 +16,7 @@
 
 #include <algorithm>
 
-#include "formula/string_utils.hpp"
+#include "serialization/string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "utils/general.hpp"

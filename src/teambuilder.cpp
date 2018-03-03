@@ -24,7 +24,7 @@
 #include "resources.hpp"
 #include "gettext.hpp"
 #include "game_errors.hpp"
-#include "formula/string_utils.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <deque>
 #include <vector>

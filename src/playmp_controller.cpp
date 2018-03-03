@@ -29,7 +29,7 @@
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
-#include "formula/string_utils.hpp"
+#include "serialization/string_utils.hpp"
 #include "whiteboard/manager.hpp"
 #include "countdown_clock.hpp"
 #include "synced_context.hpp"

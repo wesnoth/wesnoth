@@ -21,7 +21,7 @@
 #include "editor/palette/terrain_palettes.hpp"
 
 #include "gettext.hpp"
-#include "formula/string_utils.hpp"
+#include "serialization/string_utils.hpp"
 
 namespace {
 	static t_translation::terrain_code fg_terrain;

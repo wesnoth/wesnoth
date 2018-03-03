@@ -18,7 +18,7 @@
  */
 
 #include "generators/default_map_generator_job.hpp"
-#include "formula/string_utils.hpp"
+#include "serialization/string_utils.hpp"
 #include "game_config_manager.hpp"
 #include "gettext.hpp"
 #include "language.hpp"

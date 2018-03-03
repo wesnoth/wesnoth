@@ -20,7 +20,7 @@
 
 #include "log.hpp"
 #include "mp_game_settings.hpp"
-#include "formula/string_utils.hpp"
+#include "serialization/string_utils.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

@@ -15,7 +15,6 @@
 #include "game_initialization/create_engine.hpp"
 
 #include "filesystem.hpp"
-#include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
 #include "preferences/credentials.hpp"
 #include "preferences/game.hpp"
@@ -32,6 +31,7 @@
 
 #include "serialization/preprocessor.hpp"
 #include "serialization/parser.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <sstream>
 #include <cctype>

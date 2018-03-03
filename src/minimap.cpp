@@ -18,7 +18,6 @@
 
 #include "color.hpp"
 #include "display.hpp"
-#include "formula/string_utils.hpp"
 #include "game_board.hpp"
 #include "gettext.hpp"
 #include "image.hpp"

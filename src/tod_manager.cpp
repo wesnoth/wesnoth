@@ -15,7 +15,7 @@
 #include "tod_manager.hpp"
 
 #include "display_context.hpp"
-#include "formula/string_utils.hpp"
+#include "serialization/string_utils.hpp"
 #include "game_data.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
