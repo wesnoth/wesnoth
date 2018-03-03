@@ -14,23 +14,21 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "config.hpp"
-#include "preferences/game.hpp"
-#include "formula/string_utils.hpp"
-
 #include "gui/dialogs/campaign_difficulty.hpp"
 
+#include "config.hpp"
+#include "formatter.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/old_markup.hpp"
+#include "preferences/game.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"
 #else
 #include "gui/widgets/listbox.hpp"
 #endif
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
-
 #include "log.hpp"
+#include "serialization/string_utils.hpp"
 
 static lg::log_domain log_wml("wml");
 #define WRN_WML LOG_STREAM(warn, log_wml)
@@ -92,8 +90,7 @@ config generate_difficulty_config(const config& source)
 			difficulty_opts = difficulty_list;
 		}
 
-		for(std::size_t i = 0; i < difficulty_opts.size(); i++)
-		{
+		for(std::size_t i = 0; i < difficulty_opts.size(); ++i) {
 			config temp;
 			gui2::legacy_menu_item parsed(difficulty_opts[i]);
 
@@ -112,13 +109,11 @@ config generate_difficulty_config(const config& source)
 }
 
 campaign_difficulty::campaign_difficulty(const config& campaign)
-	: difficulties_()
+	: difficulties_(generate_difficulty_config(campaign))
 	, campaign_id_(campaign["id"])
-	, selected_difficulty_()
+	, selected_difficulty_("CANCEL")
 {
 	set_restore(true);
-
-	difficulties_ = generate_difficulty_config(campaign);
 }
 
 void campaign_difficulty::pre_show(window& window)
@@ -126,30 +121,33 @@ void campaign_difficulty::pre_show(window& window)
 	listbox& list = find_widget<listbox>(&window, "listbox", false);
 	window.keyboard_capture(&list);
 
-	std::map<std::string, string_map> data;
+	for(const config& d : difficulties_.child_range("difficulty")) {
+		std::map<std::string, string_map> data;
+		string_map item;
 
-	for (const config &d : difficulties_.child_range("difficulty"))
-	{
-		data["icon"]["label"] = d["image"];
-		data["label"]["label"] = d["label"];
-		data["label"]["use_markup"] = "true";
-		data["description"]["label"] = d["old_markup"].to_bool() || d["description"].empty() ? d["description"]
-			: std::string("(") + d["description"] + std::string(")");
-		data["description"]["use_markup"] = "true";
+		item["label"] = d["image"];
+		data.emplace("icon", item);
 
-		list.add_row(data);
+		item["use_markup"] = "true";
 
-		const int this_row = list.get_item_count() - 1;
+		item["label"] = d["label"];
+		data.emplace("label", item);
+
+		const std::string descrip_text = d["old_markup"].to_bool() || d["description"].empty()
+			? d["description"]
+			: (formatter() << "(" << d["description"].str() << ")").str();
+
+		item["label"] = descrip_text;
+		data.emplace("description", item);
+
+		grid& grid = list.add_row(data);
 
 		if(d["default"].to_bool(false)) {
-			list.select_row(this_row);
+			list.select_row(list.get_item_count() - 1);
 		}
 
-		grid* grid = list.get_row_grid(this_row);
-		assert(grid);
-
-		widget *widget = grid->find("victory", false);
-		if (widget && !preferences::is_campaign_completed(campaign_id_, d["define"])) {
+		widget* widget = grid.find("victory", false);
+		if(widget && !preferences::is_campaign_completed(campaign_id_, d["define"])) {
 			widget->set_visible(widget::visibility::hidden);
 		}
 	}
@@ -157,13 +155,10 @@ void campaign_difficulty::pre_show(window& window)
 
 void campaign_difficulty::post_show(window& window)
 {
-	if(get_retval() != window::OK) {
-		selected_difficulty_ = "CANCEL";
-		return;
+	if(get_retval() == window::OK) {
+		listbox& list = find_widget<listbox>(&window, "listbox", false);
+		selected_difficulty_ = difficulties_.child("difficulty", list.get_selected_row())["define"].str();
 	}
-
-	listbox& list = find_widget<listbox>(&window, "listbox", false);
-	selected_difficulty_ = difficulties_.child("difficulty", list.get_selected_row())["define"].str();
 }
 } // namespace dialogs
 } // namespace gui2
