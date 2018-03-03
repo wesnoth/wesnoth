@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "POT-Creation-Date: 2018-02-12 20:02+0300\n"
-"PO-Revision-Date: 2017-11-21 10:18+0100\n"
+"PO-Revision-Date: 2018-02-26 12:14+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -31,7 +31,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2018"
-msgstr ""
+msgstr "2018"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -189,12 +189,12 @@ msgstr ""
 #: doc/man/wesnoth.6:69
 #, no-wrap
 msgid "B<--core>I<\\ id_core>"
-msgstr "B<--core>I<\\ id_principal>"
+msgstr "B<--core>I<\\ id_modulo>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:72
 msgid "overrides the loaded core with the one whose id is specified."
-msgstr "reemplaza el principal cargado con aquel cuya id se especifica."
+msgstr "reemplaza el módulo cargado con aquel cuya id se especifica."
 
 #. type: TP
 #: doc/man/wesnoth.6:72
@@ -381,7 +381,7 @@ msgstr "B<--log-precise>"
 #: doc/man/wesnoth.6:141
 msgid "shows the timestamps in the logfile with more precision."
 msgstr ""
-"muestra los marcadores de tiempo del fichero de registro con mayor precisión"
+"muestra los marcadores de tiempo del archivo de registro con mayor precisión"
 
 #. type: TP
 #: doc/man/wesnoth.6:141
@@ -503,10 +503,6 @@ msgstr "B<--nogui>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:186
-#, fuzzy
-#| msgid ""
-#| "runs the game without the GUI. Only availaible in combination with B<--"
-#| "multiplayer> or B<--screenshot> or B<--plugin>."
 msgid ""
 "runs the game without the GUI. Only available in combination with B<--"
 "multiplayer> or B<--screenshot> or B<--plugin>."
@@ -586,16 +582,6 @@ msgstr "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
 # El preprocesador que lo preprocese, buen preprocesador será.
 #. type: Plain text
 #: doc/man/wesnoth.6:214
-#, fuzzy
-#| msgid ""
-#| "preprocesses a specified file/folder. For each file(s) a plain .cfg file "
-#| "and a processed .cfg file will be written in specified target directory. "
-#| "If a folder is specified, it will be preprocessed recursively based on "
-#| "the known preprocessor rules. The common macroses from the \"data/core/"
-#| "macros\" directory will be preprocessed before the specified resources.  "
-#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> For details "
-#| "regarding the preprocessor visit: https://wiki.wesnoth.org/"
-#| "PreprocessorRef#Command-line_preprocessor"
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -606,9 +592,9 @@ msgid ""
 "preprocessor visit: https://wiki.wesnoth.org/PreprocessorRef#Command-"
 "line_preprocessor"
 msgstr ""
-"preprocesa un fichero o carpeta especificados. Por cada fichero, se "
-"generarán en el directorio especificado un fichero .cfg de texto plano y "
-"otro fichero .cfg procesado. Si se especifica una carpeta, se preprocesará "
+"preprocesa un archivo o carpeta especificados. Por cada archivo, se "
+"generarán en el directorio especificado un archivo .cfg de texto plano y "
+"otro archivo .cfg procesado. Si se especifica una carpeta, se preprocesará "
 "recursivamente basándose en las reglas conocidas del preprocesador. Las "
 "macros comunes del directorio «data/core/macros» serán preprocesadas antes "
 "que los recursos especificados. Ejemplo:  B<-p ~/wesnoth/data/campaigns/"
@@ -687,21 +673,15 @@ msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:246
-#, fuzzy
-#| msgid ""
-#| "takes a valid wesnoth 'image path string' with image path functions, and "
-#| "outputs to a .png file. Outputs to a windows .bmp file if the filename "
-#| "ends with .bmp or if libpng is not availaible. Image path functions are "
-#| "documented at https://wiki.wesnoth.org/ImagePathFunctionWML."
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
 "outputs to a .png file. Outputs to a windows .bmp file if the filename ends "
 "with .bmp or if libpng is not available. Image path functions are documented "
 "at https://wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
-"toma una 'cadena de dirección de imágenes' válida de wesnoth  con funciones "
-"de direccionado de imágenes, y genera un fichero .png. Genera un fichero ."
-"bmp de windows si el nombre de fichero termina con .bmp o si libpng no está "
+"toma una 'cadena de dirección de imágen' válida de wesnoth  con funciones de "
+"direccionado de imágen, y genera un archivo .png. Genera un archivo .bmp de "
+"windows si el nombre de archivo termina con .bmp o si libpng no está "
 "disponible. Las funciones de direccionado de imágenes están documentadas en "
 "https://wiki.wesnoth.org/ImagePathFunctionWML."
 
@@ -998,7 +978,7 @@ msgid ""
 msgstr ""
 "selecciona un algoritmo no estándar para ser usado por el controlador de la "
 "IA para este bando. El algoritmo se define por una etiqueta B<[ai]>, que "
-"puede ser tanto principal en \"data/ai/ais\" o en \"data/ai/dev\" o un "
+"puede ser tanto un módulo en \"data/ai/ais\" o en \"data/ai/dev\" o un "
 "algoritmo definido por un complemento. Entre los valores disponibles se "
 "incluyen: B<idle_ai> y B<experimental_ai>."
 
@@ -1172,7 +1152,7 @@ msgstr ""
 "Al ejecutar testeos de unidades (con B<\\ -u>), el estado de salida es "
 "diferente. Un estado de salida de 0 indica que se ha pasado el test y 1 "
 "indica que el test ha fallado. Un estado de salida de 3 indica que se ha "
-"pasado el test pero ha producido un fichero de repetición no válido. Un "
+"pasado el test pero ha producido un archivo de repetición no válido. Un "
 "estado de salida de 4 indica que se ha pasado el test pero la repetición "
 "genera errores. Estos dos últimos solo son devueltos si no se le pasa B<--"
 "noreplaycheck>. Un estado de salida de 2 indica que ha expirado el tiempo "

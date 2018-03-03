@@ -19,12 +19,12 @@
 # Pepe <donpepe1963@gmail.com>, 2014.
 msgid ""
 msgstr ""
-"Project-Id-Version: es\n"
+"Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 20:02+0300\n"
-"PO-Revision-Date: 2017-11-20 11:07+0100\n"
+"PO-Revision-Date: 2018-02-26 12:30+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
-"Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
+"Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,7 +70,7 @@ msgstr "No"
 #. [option]: id=none
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Large plain text files"
-msgstr "Grandes ficheros de texto sin formato"
+msgstr "Grandes archivos de texto sin formato"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
@@ -100,7 +100,7 @@ msgstr "Mostrar combate"
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:61
 msgid "Ping timeout"
-msgstr "El tiempo de respuesta del ping ha expirado"
+msgstr "Tiempo de expiración de ping"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:62
@@ -207,7 +207,7 @@ msgstr "Personalización del color de los orbes"
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:167
 msgid "Logging"
-msgstr "Iniciando sesión"
+msgstr "Registro de eventos"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:173
@@ -3241,10 +3241,8 @@ msgid "Bonus objective:"
 msgstr "Objetivo de bonificación:"
 
 #: data/core/macros/objective-utils.cfg:30
-#, fuzzy
-#| msgid "Bonus objective:"
 msgid "Optional objective:"
-msgstr "Objetivo de bonificación:"
+msgstr "Objetivo opcional:"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:52
@@ -3630,7 +3628,7 @@ msgstr "Oscuro"
 #. [deprecated_message]
 #: data/core/units/dunefolk/deprecated.cfg:13
 msgid "This unit has been renamed to: {NEW_NAME}"
-msgstr ""
+msgstr "Se ha renombrado a esta unidad como: {NEW_NAME}"
 
 #. [core]: id=default
 #: data/cores.cfg:5
@@ -4064,10 +4062,8 @@ msgstr "Predeterminados"
 
 #. [label]
 #: data/gui/macros/player_list_panel.cfg:28
-#, fuzzy
-#| msgid "Computer Player"
 msgid "Connected Players"
-msgstr "Inteligencia artificial (computadora)"
+msgstr "Jugadores conectados"
 
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
@@ -4113,7 +4109,7 @@ msgstr "$elem ha sido excluido indefinidamente."
 #. [lua]: wesnoth.deprecation_message
 #: data/lua/core.lua:167 src/deprecation.cpp:38
 msgid "$elem has been deprecated and may be removed in version $version."
-msgstr "$elem ha sido excluido y debería eliminarse en la versión $version."
+msgstr "$elem ha sido excluido y podría ser eliminado en la versión $version."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecation_message
@@ -4124,11 +4120,10 @@ msgstr "$elem ha sido excluido y podría ser borrado en cualquier momento."
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecation_message
 #: data/lua/core.lua:174 src/deprecation.cpp:45
-#, fuzzy
-#| msgid "$elem has been deprecated and will be removed in the next version."
 msgid ""
 "$elem has been deprecated and will be removed in the next version ($version)."
-msgstr "$elem ha sido excluido y será borrado en la próxima versión."
+msgstr ""
+"$elem ha sido excluido y será borrado en la próxima versión ($version)."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecation_message
@@ -4140,10 +4135,8 @@ msgstr "$elem ha sido excluido y eliminado."
 #. [lua]: wesnoth.deprecation_message
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:180 data/lua/core.lua:207 src/deprecation.cpp:51
-#, fuzzy
-#| msgid "Invalid deprecation level (should be 1-4)"
 msgid "Invalid deprecation level $level (should be 1-4)"
-msgstr "Nivel de exclusión no válido (debería ser 1-4)"
+msgstr "Nivel de exclusión $level no válido (debería ser 1-4)"
 
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core.lua:202
@@ -4972,13 +4965,16 @@ msgid ""
 "villages unoccupied, but keep in mind that an enemy unit becomes much harder "
 "to dislodge from a village! Plan your movements accordingly."
 msgstr ""
+"Para cualquier jugador, controlar las aldeas es a menudo la clave para ganar "
+"en un escenario. Usted podría hacer uso de este conocimiento para atraer a "
+"sus oponentes a una trampa dejando algunas aldeas sin ocupar, ¡pero tenga en "
+"cuenta que es más difícil desalojar a una unidad enemiga de una aldea! "
+"Planee sus movimientos en consecuencia."
 
 #. [tip]
 #: data/tips.cfg:153
-#, fuzzy
-#| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Kai Laudiss, 623YW</i>"
-msgstr "<i>― Rey Konrad, 536 AñW</i>"
+msgstr "<i>― Kai Laudiss, 623 AñW</i>"
 
 #. [tip]
 #: data/tips.cfg:156
@@ -5292,13 +5288,14 @@ msgid ""
 "You must accept some losses in battle. It is not uncommon for beginners to "
 "lose sight of victory as they attempt to keep every unit alive."
 msgstr ""
+"Ha de aceptar sufrir algunas bajas en la batalla. Resulta frecuente para un "
+"novato alejarse de la victoria mientras intenta mantener con vida a todas "
+"las unidades."
 
 #. [tip]
 #: data/tips.cfg:257
-#, fuzzy
-#| msgid "<i>― Queen Li’sar, 528YW</i>"
 msgid "<i>― Queen Asheviere, 503YW</i>"
-msgstr "<i>― Reina Li’sar, 528AñW</i>"
+msgstr "<i>― Reina Asheviere, 503 AñW</i>"
 
 # No encontré referencia alguna a unidades FERAL en el idioma español en Wesnoth, así que escogí la palabra que mejor describiera su significada en el idioma inglés, FIERAS
 #
@@ -5422,28 +5419,20 @@ msgid "Requesting distribution terms..."
 msgstr "Pidiendo términos para la distribución..."
 
 #: src/addon/client.cpp:127
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 msgstr ""
-"El complemento <i>$addon_title</i> tiene un nombre de fichero o directorio "
-"no válido y no se ha podido instalar."
+"El complemento <i>$addon_title</i> tiene un identificador '$addon_id' que no "
+"es válido y no puede ser publicado."
 
 #: src/addon/client.cpp:153
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
 msgstr ""
-"El complemento <i>$addon_title</i> tiene un nombre de fichero o directorio "
-"no válido y no se ha podido instalar."
+"El complemento <i>$addon_title</i> tiene un archivo o directorio que "
+"contiene caracteres inválidos y no puede ser publicado."
 
 #: src/addon/client.cpp:161
 msgid ""
@@ -5454,19 +5443,24 @@ msgid ""
 "\n"
 "&quot; * / : &lt; &gt; ? \\ | ~"
 msgstr ""
+"El complemento <i>$addon_title</i> tiene un nombre de archivo o directorio "
+"no válido y no puede ser publicado. Los nombres de archivo o directorio no "
+"deberían contener '..' o terminar en '.' o tener una longitud mayor de 255 "
+"caracteres. Tampoco deberían contener espacios en blanco, caracteres de "
+"control, o cualquiera de los siguientes caracteres:\n"
+"\n"
+"&quot; * / : &lt; &gt; ? \\ | ~"
 
 #: src/addon/client.cpp:172
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
 "the same string."
 msgstr ""
-"El complemento <i>$addon_title</i> tiene un nombre de fichero o directorio "
-"no válido y no se ha podido instalar."
+"El complemento <i>$addon_title</i> contiene un nombre de archivo o "
+"directorio con letras mayúsculas conflictivas. Los nombres de archivo o "
+"directorio no pueden ser versiones diferentes de la misma cadena de texto "
+"con letras mayúsculas para diferenciarlas."
 
 #: src/addon/client.cpp:184
 msgid "Sending add-on <i>$addon_title</i>..."
@@ -5485,20 +5479,16 @@ msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr ""
-"El complemento <i>$addon_title</i> tiene un nombre de fichero o directorio "
+"El complemento <i>$addon_title</i> tiene un nombre de archivo o directorio "
 "no válido y no se ha podido instalar."
 
 #: src/addon/client.cpp:264
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
 msgstr ""
-"El complemento <i>$addon_title</i> tiene un nombre de fichero o directorio "
-"no válido y no se ha podido instalar."
+"El complemento <i>$addon_title</i> tiene un nombre de archivo o directorio "
+"con letras mayúsculas conflictivas. Esto puede ocasionar algunos problemas."
 
 #: src/addon/client.cpp:321
 msgid "The server responded with an error:"
@@ -5599,14 +5589,12 @@ msgid "addon_type^MP campaign"
 msgstr "Campaña multijugador"
 
 #: src/addon/info.cpp:171
-#, fuzzy
-#| msgid "addon_type^MP modification"
 msgid "addon_type^Modification"
-msgstr "Modificación multijugador"
+msgstr "Modificación"
 
 #: src/addon/info.cpp:173
 msgid "addon_type^Core"
-msgstr "Principal"
+msgstr "Módulo"
 
 #: src/addon/info.cpp:175
 msgid "addon_type^Resources"
@@ -5647,7 +5635,7 @@ msgid ""
 "File: $path\n"
 "Error message: $msg"
 msgstr ""
-"Un fichero local con información sobre la publicación del complemento no se "
+"Un archivo local con información sobre la publicación del complemento no se "
 "pudo leer.\n"
 "\n"
 "Fichero: $path\n"
@@ -6016,21 +6004,21 @@ msgstr "Rango de color inválido: "
 #: src/game_config_manager.cpp:195 src/game_config_manager.cpp:204
 #: src/game_config_manager.cpp:216
 msgid "Error validating data core."
-msgstr "Error validando datos del núcleo."
+msgstr "Error validando datos del módulo."
 
 #: src/game_config_manager.cpp:196
 msgid "Found a core without id attribute."
-msgstr "Se ha encontrado un núcleo sin atributo id."
+msgstr "Se ha encontrado un módulo sin atributo id."
 
 #: src/game_config_manager.cpp:197 src/game_config_manager.cpp:207
 #: src/game_config_manager.cpp:220
 msgid "Skipping the core."
-msgstr "Saltándose el núcleo."
+msgstr "Saltándose el módulo."
 
 #: src/game_config_manager.cpp:205 src/game_config_manager.cpp:217
 #: src/game_config_manager.cpp:240
 msgid "Core ID: "
-msgstr "ID del núcleo: "
+msgstr "ID del módulo: "
 
 #: src/game_config_manager.cpp:206
 msgid "The ID is already in use."
@@ -6038,7 +6026,7 @@ msgstr "El ID ya está siendo usado."
 
 #: src/game_config_manager.cpp:218
 msgid "Core Path: "
-msgstr "Ubicación del núcleo: "
+msgstr "Ubicación del módulo: "
 
 #: src/game_config_manager.cpp:219
 msgid "File not found."
@@ -6046,19 +6034,19 @@ msgstr "Archivo no encontrado."
 
 #: src/game_config_manager.cpp:239 src/game_config_manager.cpp:251
 msgid "Error loading core data."
-msgstr "Error cargando datos del núcleo."
+msgstr "Error cargando datos del módulo."
 
 #: src/game_config_manager.cpp:241
 msgid "Error loading the core with named id."
-msgstr "Error cargando el núcleo con nombre de id."
+msgstr "Error cargando el módulo con nombre de id."
 
 #: src/game_config_manager.cpp:242
 msgid "Falling back to the default core."
-msgstr "Volviendo al núcleo principal."
+msgstr "Volviendo al módulo principal."
 
 #: src/game_config_manager.cpp:252
 msgid "Can't locate the default core."
-msgstr "No se encuentra el núcleo principal."
+msgstr "No se encuentra el módulo principal."
 
 #: src/game_config_manager.cpp:253
 msgid "The game will now exit."
@@ -6078,14 +6066,14 @@ msgid ""
 "default core files."
 msgstr ""
 "Error cargando archivos personalizados de configuración del juego. El juego "
-"volverá a los archivos principales predeterminados."
+"volverá a los archivos de módulo predeterminados."
 
 #: src/game_config_manager.cpp:329
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr ""
-"Error cargando archivos de configuración predeterminados. El juego va a "
-"finalizar."
+"Error cargando archivos de configuración del núcleo predeterminados. El "
+"juego va a finalizar."
 
 #: src/game_config_manager.cpp:456
 msgid "The following add-on had errors and could not be loaded:"
@@ -6172,10 +6160,8 @@ msgid "not available."
 msgstr "no disponible."
 
 #: src/game_initialization/create_engine.cpp:149
-#, fuzzy
-#| msgid "Custom"
 msgid "Custom map."
-msgstr "Personalizar"
+msgstr "Mapa personalizado."
 
 #: src/game_initialization/depcheck.cpp:491
 msgid "Failed to resolve dependencies"
@@ -6226,21 +6212,17 @@ msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "No se ha podido obtener el género para el líder no válido $leader"
 
 #: src/game_initialization/lobby_data.cpp:236
-#, fuzzy
-#| msgid "Missing addon: $id"
 msgid "Missing addon: $name"
-msgstr "Complementos ausente: $id"
+msgstr "Complemento ausente: $name"
 
 #: src/game_initialization/lobby_data.cpp:238
 msgid "Missing addon: $id"
-msgstr "Complementos ausente: $id"
+msgstr "Complemento ausente: $id"
 
 # Desconozco el contexto. Podría ser perdida.
 #: src/game_initialization/lobby_data.cpp:275
-#, fuzzy
-#| msgid " (missing)"
 msgid "$era_name (missing)"
-msgstr " (perdido)"
+msgstr "$era_name (ausente)"
 
 #: src/game_initialization/lobby_data.cpp:282
 msgid "Unknown era"
@@ -6249,12 +6231,12 @@ msgstr "Era desconocida"
 # Desconozco el contexto. Podría ser perdida.
 #: src/game_initialization/lobby_data.cpp:299
 msgid "(missing)"
-msgstr "(perdido)"
+msgstr "(ausente)"
 
 #: src/game_initialization/lobby_data.cpp:345
 #: src/game_initialization/lobby_data.cpp:375
 msgid "S"
-msgstr ""
+msgstr "S"
 
 #: src/game_initialization/lobby_data.cpp:364
 msgid "Remote scenario"
@@ -6263,7 +6245,7 @@ msgstr "Escenario remoto"
 #: src/game_initialization/lobby_data.cpp:383
 #: src/game_initialization/lobby_data.cpp:406
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #: src/game_initialization/lobby_data.cpp:411
 msgid "Unknown scenario"
@@ -6355,17 +6337,13 @@ msgid "The nickname ‘$nick’ is already taken."
 msgstr "El nombre de usuario «$nick|» ya está en uso."
 
 #: src/game_initialization/multiplayer.cpp:311
-#, fuzzy
-#| msgid ""
-#| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
-#| "characters, underscores and hyphens are allowed."
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
 msgstr ""
 "El nombre de usuario «$nick|» contiene caracteres no válidos. Sólo se "
-"permiten caracteres alfanuméricos, barras de subrayado (« _ ») y guiones (« "
-"- »)."
+"permiten caracteres alfanuméricos (como mínimo uno de ellos), barras de "
+"subrayado y guiones."
 
 #: src/game_initialization/multiplayer.cpp:315
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
@@ -6589,13 +6567,6 @@ msgstr ""
 "'fixed_height'."
 
 #: src/gui/dialogs/addon/install_dependencies.cpp:38
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency, which is not currently "
-#| "installed. Do you wish to install it before continuing?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies, which are not "
-#| "currently installed. Do you wish to install them before continuing?"
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -6603,12 +6574,13 @@ msgid_plural ""
 "The selected add-on has the following dependencies, which are outdated or "
 "not currently installed. Do you wish to install them before continuing?"
 msgstr[0] ""
-"El complemento seleccionado requiere del siguiente archivo de dependencia, "
-"el cual no está instalado. ¿Desea instalarlo antes de continuar?"
-msgstr[1] ""
-"El complemento seleccionado requiere de los siguientes archivos de "
-"dependencia, los cuales no están instalados. ¿Desea instalarlos antes de "
+"El complemento seleccionado tiene la siguiente dependencia de un archivo, el "
+"cual está caducado o no ha sido instalado. ¿Desea instalarlo antes de "
 "continuar?"
+msgstr[1] ""
+"El complemento seleccionado tiene las siguientes dependencias de archivos, "
+"los cuales han caducado o no han sido instalados. ¿Desea instalarlos antes "
+"de continuar?"
 
 #: src/gui/dialogs/game_load.hpp:41
 msgid "No Saved Games"
@@ -6908,14 +6880,12 @@ msgstr ""
 "los permisos para los archivos."
 
 #: src/hotkey/command_executor.cpp:366
-#, fuzzy
-#| msgid "Do you really want to start the server?"
 msgid "Do you really want to surrender the game?"
-msgstr "¿Realmente quiere iniciar el servidor?"
+msgstr "¿Realmente quiere rendirse?"
 
 #: src/hotkey/command_executor.cpp:366
 msgid "Surrender"
-msgstr ""
+msgstr "Rendición"
 
 #: src/hotkey/command_executor.cpp:580
 msgid "Screenshot"
@@ -7136,12 +7106,8 @@ msgid "Clear Labels"
 msgstr "Eliminar etiquetas"
 
 #: src/menu_events.cpp:804
-#, fuzzy
-#| msgid "Are you sure you want to remove the following installed add-on?"
-#| msgid_plural ""
-#| "Are you sure you want to remove the following installed add-ons?"
 msgid "Are you sure you want to clear map labels?"
-msgstr "¿Está seguro de que desea eliminar el siguiente complemento instalado?"
+msgstr "¿Está seguro de que desea eliminar las etiquetas del mapa?"
 
 #: src/menu_events.cpp:999
 msgid "Search"
@@ -8052,7 +8018,7 @@ msgstr "¿Sobrescribir?"
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr ""
-"Los nombres de los ficheros a guardar no deberían terminar en '.gz' o '."
+"Los nombres de los archivos a guardar no deberían terminar en '.gz' o '."
 "bz2'. Por favor, cambie la extensión."
 
 #: src/savegame.cpp:468
@@ -8087,7 +8053,7 @@ msgstr "Guardar partida"
 
 #: src/savegame.cpp:637
 msgid "Game state is corrupted"
-msgstr ""
+msgstr "La partida se encuentra en un estado corrupto"
 
 #: src/serialization/parser.cpp:153
 msgid "Unexpected characters at line start"
@@ -8407,22 +8373,22 @@ msgstr "$effect_description por nivel"
 #. TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:59
 msgid "$year BW"
-msgstr ""
+msgstr "$year AW"
 
 #. TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:62
 msgid "$year YW"
-msgstr ""
+msgstr "$year AñW"
 
 #. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:65
 msgid "$year BF"
-msgstr ""
+msgstr "$year AC"
 
 #. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesonth
 #: src/utils/irdya_datetime.cpp:68
 msgid "$year AF"
-msgstr ""
+msgstr "$year AñC"
 
 #: src/whiteboard/manager.cpp:1094
 msgid "SHOW ALL allies’ plans"

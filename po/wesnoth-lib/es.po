@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 20:01+0300\n"
-"PO-Revision-Date: 2017-11-20 11:44+0100\n"
+"PO-Revision-Date: 2018-02-26 12:38+0100\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -368,7 +368,7 @@ msgstr "Hoguera"
 #. [terrain_type]: id=wallfire
 #: data/core/terrain.cfg:437
 msgid "Sconce"
-msgstr ""
+msgstr "Candelero"
 
 #. [terrain_type]: id=brazier
 #: data/core/terrain.cfg:446
@@ -603,26 +603,22 @@ msgstr "Suelo básico de piedra"
 #: data/core/terrain.cfg:831 data/core/terrain.cfg:841
 #: data/core/terrain.cfg:851
 msgid "Rug"
-msgstr ""
+msgstr "Alfombra"
 
 #. [terrain_type]: id=rug_floor
 #: data/core/terrain.cfg:834
 msgid "Royal Rug"
-msgstr ""
+msgstr "Alfombra Real"
 
 #. [terrain_type]: id=rug2_floor
 #: data/core/terrain.cfg:844
-#, fuzzy
-#| msgid "Normal Replays"
 msgid "Normal Rug"
-msgstr "Repeticiónes normales"
+msgstr "Alfombra normal"
 
 #. [terrain_type]: id=rug3_floor
 #: data/core/terrain.cfg:854
-#, fuzzy
-#| msgid "Cave"
 msgid "Cave Rug"
-msgstr "Cueva"
+msgstr "Alfombra rupestre"
 
 #. [terrain_type]: id=wood_floor
 #: data/core/terrain.cfg:861
@@ -696,19 +692,6 @@ msgstr "Cueva accidentada"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:967
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#| "water and wind, carrying erosive particles that carve the rock. It "
-#| "resembles a scraggy underground cavern which reduces efficiency of most "
-#| "units, but shoulders defense. Dwarves and trolls, who are main settlers "
-#| "of caves, have a relatively easy time navigating this terrain. Dwarves, "
-#| "who by dint of their small size have the full advantage of navigation in "
-#| "such topography. Occasionally caves are "
-#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>\n"
-#| "\n"
-#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#| "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -726,16 +709,16 @@ msgstr ""
 "El terreno <italic>text='cavernoso accidentado'</italic> se ha formado por "
 "la acción del agua y el viento, que transportan partículas erosivas que "
 "tallan la roca. Se asemeja a una estrecha caverna subterránea que reduce la "
-"eficiencia de la mayoría de las unidades, pero apoya su defensa. Los enanos "
-"y los troles, que son los principales moradores de cuevas, pueden atravesar "
-"este terreno con relativa facilidad. Los enanos, debido a su pequeño tamaño, "
-"tienen todas las ventajas al moverse por semejante terreno. En raras "
-"ocasiones, el terreno de las cuevas es de "
-"<ref>dst='terrain_illuminated_cave' text='cueva iluminada'</ref>\n"
+"movilidad de la mayoría de las unidades, pero apoya su defensa. Solo los "
+"moradores de las cuevas, como los enanos y los troles, pueden atravesar este "
+"terreno con relativa facilidad.\n"
 "\n"
 "La mayoría de las unidades tienen un 50% de defensa en el terreno «cavernoso "
-"accidentado», donde la caballería está limitada a un 40%. Los enanos "
-"disfrutan de un 60% de defensa en este terreno."
+"accidentado», donde la caballería está limitada a un 40%. Los enanos, debido "
+"a su pequeño tamaño, disfrutan de un 60% de defensa en este terreno.\n"
+"\n"
+"En ocasiones las cuevas están <ref>dst='terrain_illuminated_cave' "
+"text='iluminadas'</ref>."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -1261,14 +1244,12 @@ msgstr "Castillo humano nevado"
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:2007
 msgid "Elven Castle"
-msgstr "Torreón de castillo élfico"
+msgstr "Castillo élfico"
 
 #. [terrain_type]: id=elven_castle_ruin
 #: data/core/terrain.cfg:2019
-#, fuzzy
-#| msgid "Elven Castle"
 msgid "Elven Castle Ruin"
-msgstr "Torreón de castillo élfico"
+msgstr "Ruina de castillo élfico"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:2031
@@ -1311,10 +1292,8 @@ msgstr "Castillo del desierto en ruinas"
 
 #. [terrain_type]: id=troll_encampment
 #: data/core/terrain.cfg:2105
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Troll Encampment"
-msgstr "Torreón alto en campamento"
+msgstr "Campamento trol"
 
 #. [terrain_type]: id=aquatic_camp
 #: data/core/terrain.cfg:2117
@@ -1397,10 +1376,8 @@ msgstr "Torreón de castillo élfico"
 
 #. [terrain_type]: id=elven_keep_ruin
 #: data/core/terrain.cfg:2262
-#, fuzzy
-#| msgid "Elven Castle Keep"
 msgid "Elven Keep Ruin"
-msgstr "Torreón de castillo élfico"
+msgstr "Ruina de torreón élfico"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2275
@@ -1448,10 +1425,8 @@ msgstr "Torreón de campamento acuático"
 
 #. [terrain_type]: id=troll_campkeep
 #: data/core/terrain.cfg:2366
-#, fuzzy
-#| msgid "Tall Encampment Keep"
 msgid "Troll Encampment Keep"
-msgstr "Torreón alto en campamento"
+msgstr "Torreón de campamento trol"
 
 #. [terrain_type]: id=merman_castlekeep
 #: data/core/terrain.cfg:2379
@@ -1606,10 +1581,8 @@ msgstr "Oscuridad"
 
 #. [terrain_type]: id=fake_shroud_overlay
 #: data/core/terrain.cfg:2752
-#, fuzzy
-#| msgid "Shroud"
 msgid "Fake Shroud"
-msgstr "Oscuridad"
+msgstr "Falsa oscuridad"
 
 #. [terrain_type]: id=fog
 #. [toggle_button]: id=sort_6
@@ -2241,7 +2214,7 @@ msgstr "Tipo:"
 #. [label]
 #: data/gui/window/addon_manager.cfg:344
 msgid "date^Uploaded:"
-msgstr "date^Subido:"
+msgstr "Subido:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:377
@@ -2251,7 +2224,7 @@ msgstr "Estado:"
 #. [label]
 #: data/gui/window/addon_manager.cfg:407
 msgid "date^Updated:"
-msgstr "date^Actualizado:"
+msgstr "Actualizado:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:437
@@ -2317,8 +2290,6 @@ msgstr "Visite esta dirección URL con un navegador de internet"
 
 #. [text_box]: id=filter
 #: data/gui/window/addon_manager.cfg:694
-#, fuzzy
-#| msgid "Filters on addon descripton, version, type or author."
 msgid "Filters on addon description, version, type or author."
 msgstr "Filtros en la descripción, versión, tipo o autor del complemento."
 
@@ -2329,17 +2300,13 @@ msgstr "Estado:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:759
-#, fuzzy
-#| msgid "Leader:"
 msgid "Order:"
-msgstr "Líder:"
+msgstr "Orden:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:845 data/gui/window/addon_manager.cfg:1020
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-ons Manager"
-msgstr "Complementos"
+msgstr "Gestor de complementos"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
@@ -2379,11 +2346,11 @@ msgstr "Vecino más cercano balanceado (más rápido)"
 
 #: data/gui/window/advanced_graphics_options.cfg:43
 msgid "xBRZ + linear"
-msgstr "xBRZ + linear"
+msgstr "xBRZ + lineal"
 
 #: data/gui/window/advanced_graphics_options.cfg:43
 msgid "xBRZ followed by Bilinear interpolation"
-msgstr "xBRZ seguido por interpolación bilinear"
+msgstr "xBRZ seguido por interpolación bilineal"
 
 #: data/gui/window/advanced_graphics_options.cfg:44
 msgid "xBRZ + NN"
@@ -2395,16 +2362,16 @@ msgstr "xBRZ seguido por el vecino más cercano (recomendado)"
 
 #: data/gui/window/advanced_graphics_options.cfg:45
 msgid "Bilinear interpolation scaling"
-msgstr "Interpolación bilinear balanceada"
+msgstr "Interpolación bilineal balanceada"
 
 #: data/gui/window/advanced_graphics_options.cfg:45
 msgid "Linear"
-msgstr "Linear"
+msgstr "Lineal"
 
 #. [label]
 #: data/gui/window/advanced_graphics_options.cfg:91
 msgid "Advanced Graphics Options"
-msgstr "Opciones Avanzadas de gráficos"
+msgstr "Opciones Avanzadas de Gráficos"
 
 #. [label]
 #: data/gui/window/advanced_graphics_options.cfg:107
@@ -2622,7 +2589,7 @@ msgstr "Copiar este registro al porta-papeles"
 #. [label]
 #: data/gui/window/core_dialog.cfg:44
 msgid "Load Core"
-msgstr "Cargar principal"
+msgstr "Cargar módulo"
 
 #. [button]: id=copy_
 #. [button]: id=copy
@@ -3456,7 +3423,7 @@ msgstr "Versión de compilación"
 #. [label]
 #: data/gui/window/game_version.cfg:215
 msgid "library^Runtime version"
-msgstr "Versión ejecutable"
+msgstr "Versión en ejecución"
 
 #. [label]
 #: data/gui/window/game_version.cfg:293
@@ -3783,7 +3750,7 @@ msgstr "Expulsar + vetar"
 #. [label]
 #: data/gui/window/logging.cfg:86
 msgid "Logging Options"
-msgstr "Opciones de acceso"
+msgstr "Opciones de registro"
 
 #. [button]: id=clear
 #: data/gui/window/lua_interpreter.cfg:117
@@ -4755,7 +4722,7 @@ msgstr "Establecer la frecuencia de las animaciones de las unidades inactivas"
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:229
 msgid "Font Scaling:"
-msgstr "Escalado de las fuentes:"
+msgstr "Escala de texto:"
 
 #. [slider]: id=scaling_slider
 #: data/gui/window/preferences/03_display.cfg:244
@@ -4976,7 +4943,7 @@ msgstr "Abrir"
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:50
 msgid "Open this file with an external application"
-msgstr "Abrir este fichero con una aplicación externa"
+msgstr "Abrir este archivo con una aplicación externa"
 
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:94
@@ -5075,22 +5042,18 @@ msgstr "Omitir"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/window/surrender_quit.cfg:40 src/hotkey/hotkey_command.cpp:105
-#, fuzzy
-#| msgid "Create Game"
 msgid "Surrender Game"
-msgstr "Crear partida"
+msgstr "Abandonar partida"
 
 #. [label]: id=lblMessage
 #: data/gui/window/surrender_quit.cfg:60
-#, fuzzy
-#| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender and quit the game?"
-msgstr "¿Está seguro de que quiere eliminar esta partida?"
+msgstr "¿Está seguro de que quiere rendirse y cerrar la partida?"
 
 #. [button]: id=quit_and_surrender
 #: data/gui/window/surrender_quit.cfg:85
 msgid "Surrender & Quit"
-msgstr ""
+msgstr "Rendirse y salir"
 
 #. [label]: id=lblTitle
 #: data/gui/window/synced_choice_wait.cfg:40
@@ -5226,12 +5189,12 @@ msgstr "Descargar campañas, eras o paquetes de mapas hechos por usuarios"
 #. [grid]
 #: data/gui/window/title_screen.cfg:256
 msgid "Cores"
-msgstr "Principales"
+msgstr "Módulos"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:256
 msgid "Select the game core data"
-msgstr "Seleccionar los datos principales del juego"
+msgstr "Seleccionar los módulos de datos del juego"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:257
@@ -5400,7 +5363,7 @@ msgstr "Detalles:"
 
 #: src/build_info.cpp:277
 msgid "feature^Experimental OpenMP support"
-msgstr "Soporte a multijugador abierto experimental"
+msgstr "Soporte OpenMP experimental"
 
 #: src/build_info.cpp:282
 msgid "feature^PNG screenshots"
@@ -5416,19 +5379,19 @@ msgstr "Renderizado bidireccional tradicional"
 
 #: src/build_info.cpp:299
 msgid "feature^D-Bus notifications back end"
-msgstr "Puerta trasera a notificaciones D-Bus"
+msgstr "Sistema de notificaciones D-Bus"
 
 #: src/build_info.cpp:308
 msgid "feature^Win32 notifications back end"
-msgstr "Puerta trasera a notificaciones Win32"
+msgstr "Sistema a notificaciones Win32"
 
 #: src/build_info.cpp:314
 msgid "feature^Cocoa notifications back end"
-msgstr "Puerta trasera a notificaciones Cocoa"
+msgstr "Sistema a notificaciones Cocoa"
 
 #: src/build_info.cpp:319
 msgid "feature^Growl notifications back end"
-msgstr "Puerta trasera a notificaciones Growl"
+msgstr "Sistema a notificaciones Growl"
 
 #: src/desktop/paths.cpp:96
 msgid "filesystem_path_system^Volumes"
@@ -5622,14 +5585,12 @@ msgid "addons_of_type^MP factions"
 msgstr "Facciones multijugador"
 
 #: src/gui/dialogs/addon/manager.cpp:206
-#, fuzzy
-#| msgid "addons_of_type^MP modifications"
 msgid "addons_of_type^Modifications"
-msgstr "Modificaciones multijugador"
+msgstr "Modificaciones"
 
 #: src/gui/dialogs/addon/manager.cpp:207
 msgid "addons_of_type^Cores"
-msgstr "Principales"
+msgstr "Módulos"
 
 #: src/gui/dialogs/addon/manager.cpp:208
 msgid "addons_of_type^Resources"
@@ -5645,33 +5606,31 @@ msgstr "Desconocido"
 
 #: src/gui/dialogs/addon/manager.cpp:215
 msgid "addons_order^Name ($order)"
-msgstr ""
+msgstr "Nombre ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:218
 msgid "addons_order^Author ($order)"
-msgstr ""
+msgstr "Autor ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:221
 msgid "addons_order^Size ($order)"
-msgstr ""
+msgstr "Tamaño ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:224
 msgid "addons_order^Downloads ($order)"
-msgstr ""
+msgstr "Descargas ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:227
-#, fuzzy
-#| msgid "addons_of_type^Cores"
 msgid "addons_order^Type ($order)"
-msgstr "Principales"
+msgstr "Tipo ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:230
 msgid "addons_order^Last updated ($order)"
-msgstr ""
+msgstr "Última actualización ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:233
 msgid "addons_order^First uploaded ($order)"
-msgstr ""
+msgstr "Primera publicación ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -5736,12 +5695,12 @@ msgstr "Desconocido"
 #. TRANSLATORS: ascending
 #: src/gui/dialogs/addon/manager.cpp:362
 msgid "asc"
-msgstr ""
+msgstr "asc"
 
 #. TRANSLATORS: descending
 #: src/gui/dialogs/addon/manager.cpp:366
 msgid "desc"
-msgstr ""
+msgstr "desc"
 
 #: src/gui/dialogs/addon/manager.cpp:382 src/gui/dialogs/chat_log.cpp:421
 #: src/gui/dialogs/game_cache_options.cpp:105
@@ -6022,10 +5981,8 @@ msgid "Version: "
 msgstr "Versión: "
 
 #: src/gui/dialogs/game_stats.cpp:79
-#, fuzzy
-#| msgid "controller^Idle"
 msgid "controller^AI"
-msgstr "Inactivo"
+msgstr "IA"
 
 #: src/gui/dialogs/game_stats.cpp:79
 msgid "controller^Idle"
@@ -6092,7 +6049,7 @@ msgstr "Cargando configuración de la partida"
 
 #: src/gui/dialogs/loading_screen.cpp:57
 msgid "Loading data files"
-msgstr "Cargando ficheros de datos"
+msgstr "Cargando archivos de datos"
 
 #: src/gui/dialogs/loading_screen.cpp:58
 msgid "Loading level"
@@ -6152,7 +6109,7 @@ msgstr "Obteniendo datos de la partida"
 
 #: src/gui/dialogs/loading_screen.cpp:72
 msgid "Downloading lobby data"
-msgstr ""
+msgstr "Descargando datos de la sala"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:105
 msgid "Selected Game"
@@ -6211,52 +6168,40 @@ msgid "Era:"
 msgstr "Era:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:474
-#, fuzzy
-#| msgid "Settings"
 msgid "Settings:"
-msgstr "Ajustes"
+msgstr "Ajustes:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:478
-#, fuzzy
-#| msgid "Registered Users Only"
 msgid "Registered users only:"
-msgstr "Solo usuarios registrasdos"
+msgstr "Solo usuarios registrados:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:479
-#, fuzzy
-#| msgid "Reloaded game"
 msgid "Reloaded:"
-msgstr "Partida cargada"
+msgstr "Recargada:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:480
-#, fuzzy
-#| msgid "Share Vision:"
 msgid "Shared vision:"
-msgstr "Compartir vista:"
+msgstr "Vista compartida:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:481
-#, fuzzy
-#| msgid "Shuffle Sides"
 msgid "Shuffle sides:"
-msgstr "Bandos mezclados"
+msgstr "Bandos mezclados:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:482
-#, fuzzy
-#| msgid "Time limit"
 msgid "Time limit:"
-msgstr "Límite de tiempo"
+msgstr "Límite de tiempo:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:483
-#, fuzzy
-#| msgid "Use map settings"
 msgid "Use map settings:"
-msgstr "Usar ajustes del mapa"
+msgstr "Usar ajustes del mapa:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:491
 msgid ""
 "One or more items need to be installed\n"
 "in order to join this game."
 msgstr ""
+"Uno o más elementos han de ser instalados\n"
+"para poder unirse a esta partida."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:516
 msgid "Observers allowed"
@@ -6292,28 +6237,20 @@ msgid "Scenarios"
 msgstr "Escenarios"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:110
-#, fuzzy
-#| msgid "Multiplayer Options"
 msgid "Multiplayer Campaigns"
-msgstr "Opciones multijugador"
+msgstr "Campañas multijugador"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:111
-#, fuzzy
-#| msgid "Start a new single player campaign"
 msgid "Singleplayer Campaigns"
-msgstr "Empezar una nueva campaña de un sólo jugador"
+msgstr "Campañas individuales"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:112
-#, fuzzy
-#| msgid "Custom Options"
 msgid "Custom Maps"
-msgstr "Opciones personalizadas"
+msgstr "Mapas personalizados"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:113
-#, fuzzy
-#| msgid "User Scenarios"
 msgid "Custom Scenarios"
-msgstr "Escenarios de usuario"
+msgstr "Escenarios personalizados"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:114
 msgid "Random Maps"
@@ -6350,7 +6287,7 @@ msgstr "No hay eras disponibles para esta partida."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:825
 msgid "The selected game has no sides!"
-msgstr ""
+msgstr "¡No quedan bandos para la partida seleccionada!"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:891
 msgid "Choose Starting Scenario"
@@ -6656,7 +6593,7 @@ msgstr[1] "$excess otros"
 #: src/gui/widgets/multimenu_button.cpp:182
 #: src/gui/widgets/multimenu_button.cpp:239
 msgid "multimenu^None Selected"
-msgstr "No seleccionar ninguno"
+msgstr "Sin selección"
 
 #: src/gui/widgets/pane.cpp:429
 msgid "Need at least 1 parallel item."
@@ -7541,7 +7478,7 @@ msgstr "Administrar complementos"
 
 #: src/hotkey/hotkey_command.cpp:273
 msgid "Manage Cores"
-msgstr "Administrar principales"
+msgstr "Administrar módulos"
 
 #: src/hotkey/hotkey_command.cpp:274
 msgid "Start Editor"
@@ -7592,7 +7529,7 @@ msgid ""
 "normally be found in the same folder as the game executable."
 msgstr ""
 "La aplicación de servidor <b>$filename</b> proporciona funcionalidades de "
-"servidor multijugador y es necesario para alojar partidas en red de área "
+"servidor multijugador y es necesaria para alojar partidas en red de área "
 "local. Se encuentra normalmente en la misma carpeta que el ejecutable del "
 "juego."
 
