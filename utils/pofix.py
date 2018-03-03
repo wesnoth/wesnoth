@@ -10,6 +10,9 @@
 # own .po files to be sure, as a second application will harmlessly do
 # nothing.
 #
+# This script will not alter the cfg files but only the po files. So fixes
+# have to be manually applied to the source files of the strings!
+#
 # To use this script, give it one or more paths to .po files as
 # command-line arguments.  Each file will be tweaked as needed.
 # It should work on Windows and MacOS X as well as Linux, provided
