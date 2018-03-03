@@ -47,19 +47,6 @@ end_credits::end_credits(const std::string& campaign)
 {
 }
 
-static void parse_about_tag(const config& cfg, std::stringstream& ss)
-{
-	if(!cfg.has_child("entry")) {
-		return;
-	}
-
-	ss << "\n" << "<span size='x-large'>" << cfg["title"] << "</span>" << "\n";
-
-	for(const auto& entry : cfg.child_range("entry")) {
-		ss << entry["name"] << "\n";
-	}
-}
-
 void end_credits::pre_show(window& window)
 {
 	window.set_callback_next_draw([this]()
@@ -75,28 +62,19 @@ void end_credits::pre_show(window& window)
 	std::stringstream ss;
 	std::stringstream focus_ss;
 
-	const config& credits_config = about::get_about_config();
-
-	for(const auto& group : credits_config.child_range("credits_group")) {
-		std::stringstream& group_stream = (group["id"] == focus_on_) ? focus_ss : ss;
-
+	for(const about::credits_group& group : about::get_credits_data()) {
+		std::stringstream& group_stream = (group.id == focus_on_) ? focus_ss : ss;
 		group_stream << "\n";
-		if(group.has_attribute("title")) {
-			group_stream << "<span size='xx-large'>" << group["title"] << "</span>" << "\n";
+
+		if(!group.header.empty()) {
+			group_stream << "<span size='xx-large'>" << group.header << "</span>" << "\n";
 		}
 
-		if(group["sort"].to_bool(false)) {
-			auto sections = group.child_range("about");
-			std::vector<config> sorted(sections.begin(), sections.end());
-			std::sort(sorted.begin(), sorted.end(), [](const config& entry1, const config& entry2) {
-				return translation::compare(entry1["title"].str(), entry2["title"].str()) < 0;
-			});
-			for(const auto& about : sorted) {
-				parse_about_tag(about, group_stream);
-			}
-		} else {
-			for(const auto& about : group.child_range("about")) {
-				parse_about_tag(about, group_stream);
+		for(const about::credits_group::about_group& about : group.sections) {
+			group_stream << "\n" << "<span size='x-large'>" << about.title << "</span>" << "\n";
+
+			for(const std::string& entry : about.names) {
+				group_stream << entry << "\n";
 			}
 		}
 	}

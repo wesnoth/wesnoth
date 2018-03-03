@@ -14,18 +14,48 @@
 
 #pragma once
 
-class config;
+#include "tstring.hpp"
 
 #include <vector>
 #include <string>
 
+class config;
+
 namespace about
 {
+struct credits_group
+{
+	struct about_group
+	{
+		explicit about_group(const config& cfg);
+
+		/** Contributor names. */
+		std::vector<std::string> names;
+
+		/** The section title. */
+		t_string title;
+
+        bool operator<(const about_group& o);
+	};
+
+	credits_group(const config& cfg, bool is_campaign_credits);
+
+	/** The group's sub-groups. Corresponds to each [about] tag .*/
+	std::vector<about_group> sections;
+
+	/** Optional group ID. Currently only used for identifying campaigns. */
+	std::string id;
+
+	/** Optional group tite. Currently only used for identifying campaigns. */
+	t_string header;
+};
+
+using credits_data = std::vector<credits_group>;
 
 /**
  * General getter methods for the credits config and image lists by campaign id
  */
-const config& get_about_config();
+const credits_data& get_credits_data();
 
 std::vector<std::string> get_background_images(const std::string& campaign);
 
