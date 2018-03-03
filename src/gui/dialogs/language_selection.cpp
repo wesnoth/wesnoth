@@ -75,7 +75,7 @@ void language_selection::pre_show(window& window)
 
 		list.add_row(data);
 		if(lang == current_language) {
-			list.select_row(list.get_item_count() - 1);
+			list.select_last_row();
 		}
 	}
 }

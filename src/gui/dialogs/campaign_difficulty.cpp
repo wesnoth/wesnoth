@@ -143,7 +143,7 @@ void campaign_difficulty::pre_show(window& window)
 		grid& grid = list.add_row(data);
 
 		if(d["default"].to_bool(false)) {
-			list.select_row(list.get_item_count() - 1);
+			list.select_last_row();
 		}
 
 		widget* widget = grid.find("victory", false);

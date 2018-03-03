@@ -123,7 +123,7 @@ void editor_generate_map::pre_show(window& window)
 		list.add_row(lrow);
 
 		if(gen.get() == last_map_generator_) {
-			list.select_row(list.get_item_count() - 1);
+			list.select_last_row();
 		}
 	}
 

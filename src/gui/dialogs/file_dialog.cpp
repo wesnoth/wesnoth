@@ -540,7 +540,6 @@ void file_dialog::push_fileview_row(listbox& filelist, const std::string& name, 
 	data["file"]["label"] = label;
 
 	grid& last_grid = filelist.add_row(data);
-	const unsigned last_pos = filelist.get_item_count() - 1;
 
 	//
 	// Crummy hack around the lack of an option to hook into row double click
@@ -551,7 +550,7 @@ void file_dialog::push_fileview_row(listbox& filelist, const std::string& name, 
 			.set_retval(FILE_DIALOG_ITEM_RETVAL);
 
 	if(check_selection && name == current_entry_) {
-		filelist.select_row(last_pos, true);
+		filelist.select_last_row(true);
 	}
 }
 

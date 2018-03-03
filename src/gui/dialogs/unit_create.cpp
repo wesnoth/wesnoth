@@ -142,7 +142,7 @@ void unit_create::pre_show(window& window)
 
 		// Select the previous choice, if any.
 		if(choice_.empty() != true && choice_ == i.first) {
-			list.select_row(list.get_item_count() - 1);
+			list.select_last_row();
 		}
 	}
 

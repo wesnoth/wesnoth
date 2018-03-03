@@ -187,6 +187,16 @@ public:
 	bool select_row(const unsigned row, const bool select = true);
 
 	/**
+	 * Does exactly as advertised: selects the list's last row.
+	 * 
+	 * @param select              Select or deselect the row.
+	 */
+	bool select_last_row(const bool select = true)
+	{
+		return select_row(get_item_count() - 1, select);
+	}
+
+	/**
 	 * Selects a row at the given position, regardless of sorting order.
 	 *
 	 * When using @ref select_row the relevant row is located by index regardless
