@@ -54,11 +54,15 @@ else
     echo "compiler_check = content" >> $HOME/.ccache/ccache.conf
     
     cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS=false -DEXTRA_FLAGS_CONFIG="-pipe" -DEXTRA_FLAGS_RELEASE="$EXTRA_FLAGS_RELEASE" -DENABLE_STRICT_COMPILATION="$STRICT" -DENABLE_LTO=false -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache && make VERBOSE=1 -j2
+    BUILD_RET=$?
+    
+    ccache -s
+    ccache -z
   else
     scons wesnoth wesnothd campaignd boost_unit_tests build=release ctool=$CC cxxtool=$CXX --debug=time extra_flags_config="-pipe" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict="$STRICT" cxx_std=$CXXSTD nls=false jobs=2 enable_lto=false
+    BUILD_RET=$?
   fi
   
-  BUILD_RET=$?
   if [ $BUILD_RET != 0 ]; then
     exit $BUILD_RET
   fi

@@ -42,7 +42,7 @@ install:
     - . ./utils/travis/steps/install.sh
 
 script:
-    - . ./utils/travis/steps/script.sh
+    - ./utils/travis/steps/script.sh
 
 notifications:
     email: false
