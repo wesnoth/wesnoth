@@ -399,6 +399,45 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 	return true;
 }
 
+map_location map_location::get_direction(map_location::DIRECTION dir, unsigned int n) const
+{
+	if (dir == map_location::NDIRECTIONS) {
+		return map_location::null_location();
+	}
+
+	if (dir == NORTH) {
+		return map_location(x,y-n);
+	}
+
+	if (dir == SOUTH) {
+		return map_location(x,y+n);
+	}
+
+	int x_factor = (static_cast<unsigned int> (dir) <= 2u) ? 1 : -1; //whether we go east + or west -
+
+	unsigned int tmp_y = dir - 2; //South East => 0, South => 1, South West => 2, North West => 3, North => INT_MAX, North East => INT_MAX - 1
+	int y_factor = (tmp_y <= 2u) ? 1 : -1; //whether we go south + or north -
+
+	if (tmp_y <= 2u) {
+		return map_location(x + x_factor * n, y + y_factor * ((n + ((x & 1) == 1)) / 2));
+	} else {
+		return map_location(x + x_factor * n, y + y_factor * ((n + ((x & 1) == 0)) / 2));
+	}
+
+/*
+	switch(dir) {
+		case NORTH:      return map_location(x, y - n);
+		case SOUTH:      return map_location(x, y + n);
+		case SOUTH_EAST: return map_location(x + n, y + (n+is_odd(x))/2 );
+		case SOUTH_WEST: return map_location(x - n, y + (n+is_odd(x))/2 );
+		case NORTH_EAST: return map_location(x + n, y - (n+is_even(x))/2 );
+		case NORTH_WEST: return map_location(x - n, y - (n+is_even(x))/2 );
+		default:
+			assert(false);
+			return map_location::null_location();
+	}*/
+}
+
 void write_location_range(const std::set<map_location>& locs, config& cfg)
 {
 	if(locs.empty()){
@@ -473,4 +512,107 @@ void write_locations(const std::vector<map_location>& locs, config& cfg)
 
 	cfg["x"] = x.str();
 	cfg["y"] = y.str();
+}
+
+void get_adjacent_tiles(const map_location& a, map_location* res)
+{
+	res->x = a.x;
+	res->y = a.y-1;
+	++res;
+	res->x = a.x+1;
+	res->y = a.y - (((a.x & 1)==0) ? 1:0);
+	++res;
+	res->x = a.x+1;
+	res->y = a.y + (((a.x & 1)==1) ? 1:0);
+	++res;
+	res->x = a.x;
+	res->y = a.y+1;
+	++res;
+	res->x = a.x-1;
+	res->y = a.y + (((a.x & 1)==1) ? 1:0);
+	++res;
+	res->x = a.x-1;
+	res->y = a.y - (((a.x & 1)==0) ? 1:0);
+/* Changed this when I inlined it to eliminate util.hpp dependency.
+	res->x = a.x;
+	res->y = a.y-1;
+	++res;
+	res->x = a.x+1;
+	res->y = a.y - (is_even(a.x) ? 1:0);
+	++res;
+	res->x = a.x+1;
+	res->y = a.y + (is_odd(a.x) ? 1:0);
+	++res;
+	res->x = a.x;
+	res->y = a.y+1;
+	++res;
+	res->x = a.x-1;
+	res->y = a.y + (is_odd(a.x) ? 1:0);
+	++res;
+	res->x = a.x-1;
+	res->y = a.y - (is_even(a.x) ? 1:0);
+*/
+}
+
+bool tiles_adjacent(const map_location& a, const map_location& b)
+{
+	// Two tiles are adjacent:
+	// if y is different by 1, and x by 0,
+	// or if x is different by 1 and y by 0,
+	// or if x and y are each different by 1,
+	// and the x value of the hex with the greater y value is even.
+
+	switch (a.y - b.y) {
+		case 1 :
+			switch (a.x - b.x) {
+				case 1:
+				case -1:
+					return (a.x & 1) == 0;
+				case 0:
+					return true;
+				default:
+					return false;
+			}
+		case -1 :
+			switch (a.x - b.x) {
+				case 1:
+				case -1:
+					return (b.x & 1) == 0;
+				case 0:
+					return true;
+				default:
+					return false;
+			}
+		case 0 :
+			return ((a.x - b.x) == 1) || ((a.x - b.x) == - 1);
+		default:
+			return false;
+	}
+
+	/*
+	const int xdiff = std::abs(a.x - b.x);
+	const int ydiff = std::abs(a.y - b.y);
+	return (ydiff == 1 && a.x == b.x) || (xdiff == 1 && a.y == b.y) ||
+	       (xdiff == 1 && ydiff == 1 && (a.y > b.y ? is_even(a.x) : is_even(b.x)));
+	*/
+}
+
+size_t distance_between(const map_location& a, const map_location& b)
+{
+	const size_t hdistance = std::abs(a.x - b.x);
+
+	const size_t vpenalty = ( (((a.x & 1)==0) && ((b.x & 1)==1) && (a.y < b.y))
+		|| (((b.x & 1)==0) && ((a.x & 1)==1) && (b.y < a.y)) ) ? 1 : 0;
+
+/* Don't want to include util.hpp in this header
+	const size_t vpenalty = ( (is_even(a.x) && is_odd(b.x) && (a.y < b.y))
+		|| (is_even(b.x) && is_odd(a.x) && (b.y < a.y)) ) ? 1 : 0;
+*/
+	// For any non-negative integer i, i - i/2 - i%2 == i/2
+	// previously returned (hdistance + vdistance - vsavings)
+	// = hdistance + vdistance - minimum(vdistance,hdistance/2+hdistance%2)
+	// = maximum(hdistance, vdistance+hdistance-hdistance/2-hdistance%2)
+	// = maximum(hdistance,std::abs(a.y-b.y)+vpenalty+hdistance/2)
+
+	return std::max<int>(hdistance, std::abs(a.y - b.y) + vpenalty + hdistance/2);
 }
