@@ -78,12 +78,6 @@ void playmp_controller::stop_network(){
 	LOG_NG << "network processing stopped";
 }
 
-void playmp_controller::play_side_impl()
-{
-	// Proceed with the parent function.
-	return playsingle_controller::play_side_impl();
-}
-
 void playmp_controller::on_not_observer() {
 	remove_blindfold();
 }
