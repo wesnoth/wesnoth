@@ -16,6 +16,7 @@
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/auxiliary/old_markup.hpp"
 #include "gui/core/log.hpp"
 #include "gui/dialogs/helper.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -34,6 +35,9 @@
 #include "units/types.hpp"
 
 #include "utils/functional.hpp"
+
+static lg::log_domain log_wml("wml");
+#define WRN_WML LOG_STREAM(warn, log_wml)
 
 namespace gui2
 {
@@ -91,14 +95,32 @@ void faction_select::pre_show(window& window)
 		std::map<std::string, string_map> data;
 		string_map item;
 
-		// flag_rgb here is unrelated to any handling in the unit class
-		const std::string flag_rgb = !side["flag_rgb"].empty() ? side["flag_rgb"].str() : "magenta";
+		const std::string name = side["name"].str();
 
-		item["label"] = (formatter() << side["image"] << "~RC(" << flag_rgb << ">" << tc_color_ << ")").str();
-		data.emplace("faction_image", item);
+		// Handle legacy DescriptionWML format. The first character is '&'.
+		if(name[0] == '&') {
+			// TODO: @celticminstrel how should this use the new deprecated_message stuff?
+			WRN_WML
+				<< "Legacy DescriptionWML formatting for [multiplayer_side] name= is deprectaed. "
+				<< "Use separate name= and image= keys\n";
 
-		item["label"] = side["name"];
-		data.emplace("faction_name", item);
+			gui2::legacy_menu_item parsed(name);
+
+			item["label"] = parsed.icon();
+			data.emplace("faction_image", item);
+
+			item["label"] = parsed.label();
+			data.emplace("faction_name", item);
+		} else {
+			// flag_rgb here is unrelated to any handling in the unit class
+			const std::string flag_rgb = !side["flag_rgb"].empty() ? side["flag_rgb"].str() : "magenta";
+
+			item["label"] = (formatter() << side["image"] << "~RC(" << flag_rgb << ">" << tc_color_ << ")").str();
+			data.emplace("faction_image", item);
+
+			item["label"] = name;
+			data.emplace("faction_name", item);
+		}
 
 		list.add_row(data);
 	}
