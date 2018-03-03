@@ -80,7 +80,6 @@ void playmp_controller::stop_network(){
 
 void playmp_controller::play_side_impl()
 {
-	mp_ui_alerts::turn_changed(current_team().current_player());
 	// Proceed with the parent function.
 	return playsingle_controller::play_side_impl();
 }
@@ -121,6 +120,8 @@ void playmp_controller::play_human_turn()
 	assert(!linger_);
 	assert(gamestate_->init_side_done());
 	assert(gamestate().gamedata_.phase() == game_data::PLAY);
+
+	mp_ui_alerts::turn_changed(current_team().current_player());
 
 	LOG_NG << "events::commands_disabled=" << events::commands_disabled <<"\n";
 
