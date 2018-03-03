@@ -147,6 +147,10 @@ game_stringfixes = {
 ("consequently, those orcs thirsting for battle got more then", "consequently, those orcs thirsting for battle got more than"),
 ),
 
+"wesnoth-tb" : (
+("try to force him off of his keep", "try to force him off his keep"),
+),
+
 "wesnoth-tutorial" : (
 # conversion added in 1.11.0-dev
 ("$unit.type", "$unit.language_name"),
@@ -160,6 +164,7 @@ game_stringfixes = {
 ("Mudafis excel", "Mudafi excel"),
 ("uses to this advantage", "uses this to their advantage"),
 ("and are valuable enough that auxilliaries who specialize", "and are valuable enough that auxiliaries who specialize"),
+("Their remedies cannot only heal wounds", "Their remedies can not only heal wounds"),
 ),
 
 "wesnoth-utbs" : (
