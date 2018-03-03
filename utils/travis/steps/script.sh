@@ -12,9 +12,6 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
         export CCACHE_COMPILERCHECK=content
 
         xcodebuild -project Wesnoth.xcodeproj -target Wesnoth
-
-        ccache -s
-        ccache -z
     else
         ln -s build-cache/ build
         ./utils/travis/check_utf8.sh
