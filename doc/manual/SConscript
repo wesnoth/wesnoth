@@ -17,7 +17,7 @@ if "manual" in COMMAND_LINE_TARGETS or "update-po4a" in COMMAND_LINE_TARGETS or 
             --stringparam admon.textlabel 1 \
             --stringparam admon.graphics 0 \
             --stringparam html.stylesheet ./styles/manual.css \
-            /usr/share/asciidoc/docbook-xsl/xhtml.xsl \
+            /usr/share/xml/docbook/stylesheet/docbook-xsl/xhtml/docbook.xsl \
             %s > %s' % (SOURCE, TARGET) \
             or '@echo Skipped non-existant %s' % SOURCE} \
             """)
