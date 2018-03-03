@@ -312,8 +312,6 @@ std::string generate_topic_text(const std::string &generator, const config *help
 	std::string empty_string = "";
 	if (generator.empty()) {
 		return empty_string;
-	} else if (generator == "about") {
-		return generate_about_text();
 	} else {
 		std::vector<std::string> parts = utils::split(generator, ':');
 		if (parts.size() > 1 && parts[0] == "contents") {
@@ -1012,18 +1010,6 @@ UNIT_DESCRIPTION_TYPE description_type(const unit_type &type)
 		return FULL_DESCRIPTION;
 	}
 	return NO_DESCRIPTION;
-}
-
-std::string generate_about_text()
-{
-	/*std::vector<std::string> about_lines = about::get_text();
-	std::vector<std::string> res_lines;
-	std::transform(about_lines.begin(), about_lines.end(), std::back_inserter(res_lines),
-				   about_text_formatter());
-	res_lines.erase(std::remove(res_lines.begin(), res_lines.end(), ""), res_lines.end());
-	std::string text = utils::join(res_lines, "\n");
-	return text;*/
-	return "";
 }
 
 std::string generate_contents_links(const std::string& section_name, config const *help_cfg)

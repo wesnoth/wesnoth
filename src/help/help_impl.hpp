@@ -231,7 +231,6 @@ void generate_sections(const config *help_cfg, const std::string &generator, sec
 std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
 std::string generate_topic_text(const std::string &generator, const config *help_cfg,
 const section &sec, const std::vector<topic>& generated_topics);
-std::string generate_about_text();
 std::string generate_contents_links(const std::string& section_name, config const *help_cfg);
 std::string generate_contents_links(const section &sec, const std::vector<topic>& topics);
 
@@ -353,23 +352,6 @@ bool is_visible_id(const std::string &id);
 /// sections. Some IDs are special, such as toplevel and may not be
 /// be defined in the config.
 bool is_valid_id(const std::string &id);
-
-/// Class to be used as a function object when generating the about
-/// text. Translate the about dialog formatting to format suitable
-/// for the help dialog.
-class about_text_formatter {
-public:
-	std::string operator()(const std::string &s) {
-		if (s.empty()) return s;
-		// Format + as headers, and the rest as normal text.
-		if (s[0] == '+')
-			return " \n<header>text='" + help::escape(s.substr(1)) + "'</header>";
-		if (s[0] == '-')
-			return s.substr(1);
-		return s;
-	}
-};
-
 
 	// Helpers for making generation of topics easier.
 
