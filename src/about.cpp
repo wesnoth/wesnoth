@@ -84,7 +84,7 @@ credits_group::about_group::about_group(const config& cfg)
 	}
 }
 
-bool credits_group::about_group::operator<(const about_group& o)
+bool credits_group::about_group::operator<(const about_group& o) const
 {
 	return translation::compare(title.str(), o.title.str()) < 0;
 }

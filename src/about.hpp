@@ -35,7 +35,7 @@ struct credits_group
 		/** The section title. */
 		t_string title;
 
-		bool operator<(const about_group& o);
+		bool operator<(const about_group& o) const;
 	};
 
 	credits_group(const config& cfg, bool is_campaign_credits);
