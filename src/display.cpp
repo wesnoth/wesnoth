@@ -2616,16 +2616,9 @@ void display::draw_hex(const map_location& loc) {
 		std::pair<Itor,Itor> overlays = overlays_->equal_range(loc);
 		const bool have_overlays = overlays.first != overlays.second;
 
-		image::light_string lt;
-
 		if(have_overlays) {
-			tod_color tod_col = tod.color;
-
-			if(tod_col != get_time_of_day().color) {
-				tod_col = tod_col + color_adjust_;
-			}
-
-			lt = image::get_light_string(0, tod_col.r, tod_col.g, tod_col.b);
+			tod_color tod_col = tod.color + color_adjust_;
+			image::light_string lt = image::get_light_string(-1, tod_col.r, tod_col.g, tod_col.b);
 
 			for( ; overlays.first != overlays.second; ++overlays.first) {
 				if ((overlays.first->second.team_name.empty() ||
