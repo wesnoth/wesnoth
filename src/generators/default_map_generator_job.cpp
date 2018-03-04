@@ -720,7 +720,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 	if(misc_labels != nullptr) {
 		name_generator_factory base_generator_factory{ naming, {"male", "base", "bridge", "road", "river", "forest", "lake", "mountain", "swamp"} };
 
-		naming.get_old_attribute("base_names", "male_names", "[naming]male_names= is deprecated, use base_names= instead");
+		naming.get_old_attribute("base_names", "male_names", "naming");
 		//Due to the attribute detection feature of the factory we also support male_name_generator= but keep it undocumented.
 
 		base_name_generator = base_generator_factory.get_name_generator( (naming.has_attribute("base_names") || naming.has_attribute("base_name_generator")) ? "base" : "male" );
@@ -1282,7 +1282,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				name_generator_factory village_name_generator_factory{ village_naming,
 					{"base", "male", "village", "lake", "river", "bridge", "grassland", "forest", "hill", "mountain", "mountain_anon", "road", "swamp"} };
 
-				village_naming.get_old_attribute("base_names", "male_names", "[village_naming]male_names= is deprecated, use base_names= instead");
+				village_naming.get_old_attribute("base_names", "male_names", "village_naming");
 				//Due to the attribute detection feature of the factory we also support male_name_generator= but keep it undocumented.
 
 				base_name_generator = village_name_generator_factory.get_name_generator(

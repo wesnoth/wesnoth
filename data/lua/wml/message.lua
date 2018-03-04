@@ -296,10 +296,7 @@ function wesnoth.wml_actions.message(cfg)
 		if wesnoth.eval_conditional(condition) then
 			if option.message and not option.image and not option.label then
 				local message = tostring(option.message)
-				if message:find("&") or message:find("=") or message:find("*") == 1 then
-					-- Perhaps someday this should be promoted from "debug" to "warning", but for now, we're keeping it quiet.
-					log('[option]message="&image=col1=col2" is deprecated, use new DescriptionWML instead (default, image, label, description)', "debug")
-				end
+				wesnoth.deprecated_message("[option]message=", 2, "1.15.0", "Use label= instead.");
 				-- Legacy format
 				table.insert(options, option.message)
 			else
@@ -311,6 +308,7 @@ function wesnoth.wml_actions.message(cfg)
 					value = option.value
 				}
 				if option.message then
+					wesnoth.deprecated_message("[option]message=", 2, "1.15.0", "Use label= instead.");
 					if not option.label then
 						-- Support either message or description
 						opt.label = option.message

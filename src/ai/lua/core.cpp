@@ -42,6 +42,7 @@
 #include "ai/lua/engine_lua.hpp"
 #include "ai/composite/contexts.hpp"
 #include "ai/default/aspect_attacks.hpp"
+#include "deprecation.hpp"
 
 #include "lua/lualib.h"
 #include "lua/lauxlib.h"
@@ -385,7 +386,11 @@ static int cfun_ai_get_targets(lua_State *L)
 	return 1;
 }
 
-#define DEPRECATED_ASPECT_MESSAGE(name) WRN_LUA << "ai.get_" name "() is deprecated, use ai.aspects." name " instead\n"
+// Note: If adding new uses of this macro, it will be necessary to either remove the old ones
+// (and the things so deprecated) OR add a version parameter to the macro.
+// Also note that the name MUST be a string literal.
+#define DEPRECATED_ASPECT_MESSAGE(name) \
+	deprecated_message("ai.get_" name, 2, {1, 15, 0}, "Use ai.aspects." name " instead")
 
 // Aspect section
 static int cfun_ai_get_aggression(lua_State *L)
@@ -406,7 +411,8 @@ static int cfun_ai_get_attack_depth(lua_State *L)
 
 static int cfun_ai_get_attacks(lua_State *L)
 {
-	// Unlike the other aspect fetchers, this one is not deprecated, because ai.aspects.attacks returns the viable units but this returns a full attack analysis
+	// Unlike the other aspect fetchers, this one is not deprecated!
+	// This is because ai.aspects.attacks returns the viable units but this returns a full attack analysis
 	const ai::attacks_vector& attacks = get_readonly_context(L).get_attacks();
 	lua_createtable(L, attacks.size(), 0);
 	int table_index = lua_gettop(L);

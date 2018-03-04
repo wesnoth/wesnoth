@@ -25,6 +25,7 @@
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
+#include "deprecation.hpp"
 
 namespace gui2
 {
@@ -259,7 +260,7 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 
 			} else if(opt.key == "choice" || opt.key == "combo") {
 				if(opt.key == "combo") {
-					lg::wml_error() << "[options][combo] is deprecated; use [choice] instead\n";
+					deprecated_message("combo", 3, {1, 15, 0}, "Use [choice] instead.");
 				}
 
 				if(!option_cfg.has_child("item")) {

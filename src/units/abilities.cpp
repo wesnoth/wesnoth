@@ -34,6 +34,7 @@
 #include "formula/formula.hpp"
 #include "formula/function_gamestate.hpp"
 #include "serialization/string_view.hpp"
+#include "deprecation.hpp"
 
 #include <boost/dynamic_bitset.hpp>
 #include <boost/algorithm/string/predicate.hpp>
@@ -1054,7 +1055,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		const std::string& effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
 
 		if (!cfg["backstab"].blank()) {
-			lg::wml_error() << "The backstab= key in weapon specials is deprecated; use [filter_adjacent] instead\n";
+			deprecated_message("backstab= in weapon specials", 2, {1, 15, 0}, "Use [filter_adjacent] instead.");
 		}
 
 		if (!backstab && cfg["backstab"].to_bool())
