@@ -9,8 +9,12 @@ LOOP_TIME=6
 ./wesnothd --port 12345 --log-debug=server --log-warning=config &
 serverpid=$!
 
+sleep 5
+
 ./wesnoth --plugin=host.lua --server=localhost:12345 --username=host --mp-test --noaddons --nogui &
 hostpid=$!
+
+sleep 5
 
 ./wesnoth --plugin=join.lua --server=localhost:12345 --username=join --mp-test --noaddons --nogui &
 joinpid=$!
