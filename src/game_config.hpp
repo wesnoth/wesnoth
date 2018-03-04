@@ -55,8 +55,11 @@ namespace game_config
 	/** Default percentage gold carried over to the next scenario. */
 	extern const int gold_carryover_percentage;
 
-	extern bool debug, debug_lua, editor, ignore_replay_errors, mp_debug,
+	extern bool debug_lua, editor, ignore_replay_errors, mp_debug,
 		exit_at_end, no_delay, disable_autosave, no_addons;
+
+	extern const bool& debug;
+	void set_debug(bool new_debug);
 
 	extern int cache_compression_level;
 

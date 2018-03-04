@@ -42,6 +42,7 @@
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, etc
 #include <SDL.h>                  // for SDL_Surface
+#include <boost/logic/tribool.hpp>
 
 class config;
 class unit_type;
@@ -320,7 +321,7 @@ extern help::section hidden_sections;
 
 extern int last_num_encountered_units;
 extern int last_num_encountered_terrains;
-extern bool last_debug_state;
+extern boost::tribool last_debug_state;
 
 extern std::vector<std::string> empty_string_vector;
 extern const int max_section_level;

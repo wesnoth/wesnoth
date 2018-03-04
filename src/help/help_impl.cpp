@@ -70,7 +70,7 @@ help::section hidden_sections;
 
 int last_num_encountered_units = -1;
 int last_num_encountered_terrains = -1;
-bool last_debug_state = game_config::debug;
+boost::tribool last_debug_state = boost::indeterminate;
 
 config dummy_cfg;
 std::vector<std::string> empty_string_vector;

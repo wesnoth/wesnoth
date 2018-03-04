@@ -113,7 +113,7 @@ std::vector<server_info> server_list;
 // Gamestate flags
 //
 bool
-	debug                = false,
+	debug_impl           = false,
 	debug_lua            = false,
 	editor               = false,
 	ignore_replay_errors = false,
@@ -122,6 +122,25 @@ bool
 	no_delay             = false,
 	disable_autosave     = false,
 	no_addons            = false;
+
+const bool& debug = debug_impl;
+
+void set_debug(bool new_debug) {
+	if(debug_impl && !new_debug) {
+		// Turning debug mode off; decrease deprecation severity
+		int severity;
+		if(lg::get_log_domain_severity("deprecation", severity)) {
+			lg::set_log_domain_severity("deprecation", severity - 2);
+		}
+	} else if(!debug_impl && new_debug) {
+		// Turning debug mode on; increase deprecation severity
+		int severity;
+		if(lg::get_log_domain_severity("deprecation", severity)) {
+			lg::set_log_domain_severity("deprecation", severity + 2);
+		}
+	}
+	debug_impl = new_debug;
+}
 
 //
 // Orb display flahs

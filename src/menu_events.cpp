@@ -1713,7 +1713,7 @@ void console_handler::do_debug()
 {
 	if(!menu_handler_.pc_.is_networked_mp() || game_config::mp_debug) {
 		print(get_cmd(), _("Debug mode activated!"));
-		game_config::debug = true;
+		game_config::set_debug(true);
 	} else {
 		command_failed(_("Debug mode not available in network games"));
 	}
@@ -1723,7 +1723,7 @@ void console_handler::do_nodebug()
 {
 	if(game_config::debug) {
 		print(get_cmd(), _("Debug mode deactivated!"));
-		game_config::debug = false;
+		game_config::set_debug(false);
 	}
 }
 

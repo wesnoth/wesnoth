@@ -168,7 +168,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	if (cmdline_opts_.clock)
 		gui2::dialogs::show_debug_clock_button = true;
 	if (cmdline_opts_.debug) {
-		game_config::debug = true;
+		game_config::set_debug(true);
 		game_config::mp_debug = true;
 	}
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
