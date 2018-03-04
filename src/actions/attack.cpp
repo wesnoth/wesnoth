@@ -126,7 +126,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	boost::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
-		opp_ctx.emplace(opp_weapon->specials_context(u, opp, opp_loc, u_loc, !attacking, weapon));
+		opp_ctx.emplace(opp_weapon->specials_context(opp, u, opp_loc, u_loc, !attacking, weapon));
 	}
 
 	slows = weapon->get_special_bool("slow");
@@ -283,7 +283,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	boost::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
-		opp_ctx.emplace(opp_weapon->specials_context(*u_type, map_location::null_location(), !attacking));
+		opp_ctx.emplace(opp_weapon->specials_context(*opp_type, map_location::null_location(), !attacking));
 	}
 
 	slows = weapon->get_special_bool("slow");
