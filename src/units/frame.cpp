@@ -90,13 +90,12 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 		primary_frame_ = cfg[frame_string + "primary"].to_bool();
 	}
 
-	std::vector<std::string> color = utils::split(cfg[frame_string + "text_color"]);
-	if(color.size() == 3) {
-		try {
-			text_color_ = color_t(std::stoi(color[0]), std::stoi(color[1]), std::stoi(color[2]));
-		} catch(std::invalid_argument&) {
-			ERR_NG << "Invalid RGB color value in unit animation: " << color[0] << ", " << color[1] << ", " << color[2] << "\n";
-		}
+	try {
+		text_color_ = color_t::from_rgb_string(cfg[frame_string + "text_color"]);
+	} catch(const std::invalid_argument& e) {
+		// Might be thrown either due to an incorrect number of elements or std::stoul failure.
+		ERR_NG << "Invalid RBG text color in unit animation: " << cfg[frame_string + "text_color"].str()
+		       << "\n" << e.what() << "\n;";
 	}
 
 	if(const config::attribute_value* v = cfg.get(frame_string + "duration")) {
@@ -113,13 +112,12 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 
 	duration_ = std::max(duration_, 1);
 
-	color = utils::split(cfg[frame_string + "blend_color"]);
-	if(color.size() == 3) {
-		try {
-			blend_with_ = color_t(std::stoi(color[0]), std::stoi(color[1]), std::stoi(color[2]));
-		} catch(std::invalid_argument&) {
-			ERR_NG << "Invalid RGB color value in unit animation: " << color[0] << ", " << color[1] << ", " << color[2] << "\n";
-		}
+	try {
+		blend_with_ = color_t::from_rgb_string(cfg[frame_string + "blend_color"]);
+	} catch(const std::invalid_argument& e) {
+		// Might be thrown either due to an incorrect number of elements or std::stoul failure.
+		ERR_NG << "Invalid RBG blend color in unit animation: " << cfg[frame_string + "blend_color"].str()
+		       << "\n" << e.what() << "\n;";
 	}
 }
 
