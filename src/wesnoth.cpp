@@ -866,19 +866,19 @@ static int do_gameloop(const std::vector<std::string>& args)
 			LOG_GENERAL << "quitting game...\n";
 			return 0;
 		case gui2::dialogs::title_screen::MP_CONNECT:
-			game_config::debug = game_config::mp_debug;
+			game_config::set_debug(game_config::mp_debug);
 			if(!game->play_multiplayer(game_launcher::MP_CONNECT)) {
 				continue;
 			}
 			break;
 		case gui2::dialogs::title_screen::MP_HOST:
-			game_config::debug = game_config::mp_debug;
+			game_config::set_debug(game_config::mp_debug);
 			if(!game->play_multiplayer(game_launcher::MP_HOST)) {
 				continue;
 			}
 			break;
 		case gui2::dialogs::title_screen::MP_LOCAL:
-			game_config::debug = game_config::mp_debug;
+			game_config::set_debug(game_config::mp_debug);
 			if(!game->play_multiplayer(game_launcher::MP_LOCAL)) {
 				continue;
 			}
