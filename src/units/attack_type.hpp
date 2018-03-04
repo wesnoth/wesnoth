@@ -73,12 +73,6 @@ public:
 	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials(bool only_active=false, bool is_backstab=false) const;
-	void set_specials_context(const unit& self, const unit& other,
-	                          const map_location& unit_loc, const map_location& other_loc,
-	                          bool attacking, const_attack_ptr other_attack) const;
-	void set_specials_context(const unit& self, const map_location& loc, bool attacking = true) const;
-	void set_specials_context(const unit_type* self_type, const map_location& loc, bool attacking = true) const;
-	void set_specials_context_for_listing() const;
 
 	/// Calculates the number of attacks this weapon has, considering specials.
 	void modified_attacks(bool is_backstab, unsigned & min_attacks,
@@ -106,14 +100,48 @@ private:
 	bool special_active(const config& special, AFFECTS whom,
 	                    bool include_backstab=true) const;
 
-	// Used via set_specials_context() to control which specials are
+	// Used via specials_context() to control which specials are
 	// considered active.
+	struct specials_context_t {
+		const attack_type& parent;
+		/// Initialize weapon specials context for listing
+		specials_context_t(const attack_type& weapon);
+		/// Initialize weapon specials context for a unit type
+		specials_context_t(const attack_type& weapon, const unit_type& self_type, const map_location& loc, bool attacking = true);
+		/// Initialize weapon specials context for a single unit
+		specials_context_t(const attack_type& weapon, const_attack_ptr other_weapon,
+			const unit& self, const unit& other,
+			const map_location& self_loc, const map_location& other_loc,
+			bool attacking);
+		/// Initialize weapon specials context for a pair of units
+		specials_context_t(const attack_type& weapon, const unit& self, const map_location& loc, bool attacking);
+		~specials_context_t();
+	};
+	friend struct specials_context_t;
 	mutable map_location self_loc_, other_loc_;
 	mutable const unit* self_;
 	mutable const unit* other_;
 	mutable bool is_attacker_;
 	mutable const_attack_ptr other_attack_;
 	mutable bool is_for_listing_ = false;
+public:
+	// Set up a specials context.
+	// Usage: auto ctx = weapon.specials_context(...);
+	specials_context_t specials_context(const unit& self, const unit& other,
+		const map_location& unit_loc, const map_location& other_loc,
+		bool attacking, const_attack_ptr other_attack) const {
+		return specials_context_t(*this, other_attack, self, other, unit_loc, other_loc, attacking);
+	}
+	specials_context_t specials_context(const unit& self, const map_location& loc, bool attacking = true) const {
+		return specials_context_t(*this, self, loc, attacking);
+	}
+	specials_context_t specials_context(const unit_type& self_type, const map_location& loc, bool attacking = true) const {
+		return specials_context_t(*this, self_type, loc, attacking);
+	}
+	specials_context_t specials_context_for_listing() const {
+		return specials_context_t(*this);
+	}
+private:
 
 	t_string description_;
 	std::string id_;

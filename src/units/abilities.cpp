@@ -702,20 +702,22 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
  * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
  * @param[in]  other_attack  The attack used by the other unit.
  */
-void attack_type::set_specials_context(const unit& self,
+attack_type::specials_context_t::specials_context_t(const attack_type& weapon,
+                                       const_attack_ptr other_attack,
+									   const unit& self,
                                        const unit& other,
                                        const map_location& unit_loc,
                                        const map_location& other_loc,
-                                       bool attacking,
-                                       const_attack_ptr other_attack) const
+                                       bool attacking)
+	: parent(weapon)
 {
-	self_ = &self;
-	other_ = &other;
-	self_loc_ = unit_loc;
-	other_loc_ = other_loc;
-	is_attacker_ = attacking;
-	other_attack_ = other_attack;
-	is_for_listing_ = false;
+	weapon.self_ = &self;
+	weapon.other_ = &other;
+	weapon.self_loc_ = unit_loc;
+	weapon.other_loc_ = other_loc;
+	weapon.is_attacker_ = attacking;
+	weapon.other_attack_ = other_attack;
+	weapon.is_for_listing_ = false;
 }
 
 /**
@@ -725,15 +727,16 @@ void attack_type::set_specials_context(const unit& self,
  * @param[in]  loc           The location of the unit with this weapon.
  * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
  */
-void attack_type::set_specials_context(const unit& self, const map_location& loc, bool attacking) const
+attack_type::specials_context_t::specials_context_t(const attack_type& weapon, const unit& self, const map_location& loc, bool attacking)
+	: parent(weapon)
 {
-	self_ = &self;
-	other_ = nullptr;
-	self_loc_ = loc;
-	other_loc_ = map_location::null_location();
-	is_attacker_ = attacking;
-	other_attack_ = nullptr;
-	is_for_listing_ = false;
+	weapon.self_ = &self;
+	weapon.other_ = nullptr;
+	weapon.self_loc_ = loc;
+	weapon.other_loc_ = map_location::null_location();
+	weapon.is_attacker_ = attacking;
+	weapon.other_attack_ = nullptr;
+	weapon.is_for_listing_ = false;
 }
 
 /**
@@ -743,23 +746,35 @@ void attack_type::set_specials_context(const unit& self, const map_location& loc
  * @param[in]  loc           The location of the unit with this weapon.
  * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
  */
-void attack_type::set_specials_context(const unit_type* self_type, const map_location& loc, bool attacking) const
+attack_type::specials_context_t::specials_context_t(const attack_type& weapon, const unit_type& self_type, const map_location& loc, bool attacking)
+	: parent(weapon)
 {
 	UNUSED(self_type);
-	self_ = nullptr;
-	other_ = nullptr;
-	self_loc_ = loc;
-	other_loc_ = map_location::null_location();
-	is_attacker_ = attacking;
-	other_attack_ = nullptr;
-	is_for_listing_ = false;
+	weapon.self_ = nullptr;
+	weapon.other_ = nullptr;
+	weapon.self_loc_ = loc;
+	weapon.other_loc_ = map_location::null_location();
+	weapon.is_attacker_ = attacking;
+	weapon.other_attack_ = nullptr;
+	weapon.is_for_listing_ = false;
 }
 
-void attack_type::set_specials_context_for_listing() const
+attack_type::specials_context_t::specials_context_t(const attack_type& weapon)
+	: parent(weapon)
 {
-	is_for_listing_ = true;
+	weapon.is_for_listing_ = true;
 }
 
+attack_type::specials_context_t::~specials_context_t()
+{
+	parent.self_ = nullptr;
+	parent.other_ = nullptr;
+	parent.self_loc_ = map_location::null_location();
+	parent.other_loc_ = map_location::null_location();
+	parent.is_attacker_ = false;
+	parent.other_attack_ = nullptr;
+	parent.is_for_listing_ = false;
+}
 
 /**
  * Calculates the number of attacks this weapon has, considering specials.
