@@ -44,6 +44,7 @@ struct addon_info
 
 	ADDON_TYPE type;
 
+	std::vector<std::string> tags;
 	std::vector<std::string> locales;
 
 	std::string core;
@@ -68,7 +69,7 @@ struct addon_info
 	addon_info()
 		: id(), title(), description(), icon()
 		, version(), author(), size(), downloads()
-		, uploads(), type(), locales()
+		, uploads(), type(), tags(), locales()
 		, core()
 		, depends()
 		, feedback_url()
@@ -81,7 +82,7 @@ struct addon_info
 	explicit addon_info(const config& cfg)
 		: id(), title(), description(), icon()
 		, version(), author(), size(), downloads()
-		, uploads(), type(), locales()
+		, uploads(), type(), tags(), locales()
 		, core()
 		, depends()
 		, feedback_url()
@@ -105,6 +106,7 @@ struct addon_info
 			this->downloads = o.downloads;
 			this->uploads = o.uploads;
 			this->type = o.type;
+			this->tags = o.tags;
 			this->locales = o.locales;
 			this->core = o.core;
 			this->depends = o.depends;

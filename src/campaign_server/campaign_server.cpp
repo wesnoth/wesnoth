@@ -796,6 +796,7 @@ void server::handle_upload(const server::request& req)
 		(*campaign)["dependencies"] = upload["dependencies"];
 		(*campaign)["upload_ip"] = req.addr;
 		(*campaign)["type"] = upload["type"];
+		(*campaign)["tags"] = upload["tags"];
 		(*campaign)["email"] = upload["email"];
 
 		if(!existing_upload) {
@@ -826,6 +827,7 @@ void server::handle_upload(const server::request& req)
 		data["original_timestamp"] = (*campaign)["original_timestamp"];
 		data["icon"] = (*campaign)["icon"];
 		data["type"] = (*campaign)["type"];
+		data["tags"] = (*campaign)["tags"];
 		(*campaign).clear_children("translation");
 		find_translations(data, *campaign);
 

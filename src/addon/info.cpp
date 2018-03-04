@@ -79,6 +79,7 @@ void addon_info::read(const config& cfg)
 
 	this->core = cfg["core"].str();
 	this->depends = utils::split(cfg["dependencies"].str());
+	this->tags = utils::split(cfg["tags"].str());
 	this->feedback_url = cfg["feedback_url"].str();
 
 	this->updated = cfg["timestamp"].to_time_t();
@@ -106,6 +107,7 @@ void addon_info::write(config& cfg) const
 
 	cfg["core"] = this->core;
 	cfg["dependencies"] = utils::join(this->depends);
+	cfg["tags"] = utils::join(this->tags);
 	cfg["feedback_url"] = this->feedback_url;
 
 	cfg["timestamp"] = this->updated;
