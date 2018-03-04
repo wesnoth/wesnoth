@@ -433,8 +433,13 @@ void playmp_controller::pull_remote_choice()
 	// Also undo_stack()clear() must be called synced so we cannot do that here.
 	assert(!current_team().is_local() || !undo_stack().can_undo());
 	turn_info::PROCESS_DATA_RESULT res = turn_data_.sync_network();
-	assert(res != turn_info::PROCESS_END_LINGER);
 	assert(res != turn_info::PROCESS_END_TURN);
+
+	if(res == turn_info::PROCESS_END_LINGER) {
+		// Probably some bad OOS, but there is currently no way to recover from this.
+		throw ingame_wesnothd_error("");
+	}
+
 	if(res == turn_info::PROCESS_RESTART_TURN)
 	{
 		player_type_changed_ = true;
