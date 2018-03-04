@@ -19,6 +19,7 @@
 #include "tstring.hpp"
 #include "game_config.hpp"
 #include "version.hpp"
+#include "preferences/general.hpp"
 
 // Set the default severity with the second parameter.
 // -1 means the default is to never log on this domain.
@@ -61,11 +62,12 @@ std::string deprecated_message(const std::string& elem_name, int level, const ve
 		message += "\n  ";
 		message += detail;
 	}
-	// TODO: Decide when to dump to wml_error()
 	if(log_ptr && !log_ptr->dont_log(log_deprecate)) {
 		const lg::logger& out_log = *log_ptr;
 		out_log(log_deprecate) << message << '\n';
-		//lg::wml_error() << message << '\n';
+		if(preferences::get("show_deprecation", false)) {
+			lg::wml_error() << message << '\n';
+		}
 	}
 	return message;
 }
