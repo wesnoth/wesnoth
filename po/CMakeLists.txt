@@ -165,6 +165,18 @@ if(ENABLE_POT_UPDATE_TARGET)
 
 	endforeach(DOMAIN ${NORMAL_DOMAINS})
 
+	add_custom_command(
+			# Same idea with a dummy file as in pot-update: we never make it, and run the command each time.
+			OUTPUT ${PROJECT_SOURCE_DIR}/po/po_stat.dummy
+			COMMAND python utils/po_stat.py
+			--update-cfg
+			--textdomains=wesnoth,wesnoth-editor,wesnoth-help,wesnoth-lib,wesnoth-multiplayer,wesnoth-tutorial,wesnoth-units
+			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+			COMMENT "pot-update Updated data/languages/*.cfg files."
+	)
+
+	SET(pot-update-SRC ${pot-update-SRC} ${PROJECT_SOURCE_DIR}/po/po_stat.dummy)
+
 	# The target to call
 	add_custom_target(pot-update
 		COMMENT "pot-update: Done."
