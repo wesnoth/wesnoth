@@ -15,7 +15,6 @@
 
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 
-#include "events.hpp"
 #include "font/text_formatting.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
@@ -189,8 +188,6 @@ bool mp_join_game::fetch_game_config()
 
 	// If the client is allowed to choose their team, do that here instead of having it set by the server
 	if((*side_choice)["allow_changes"].to_bool(true)) {
-		events::event_context context;
-
 		const config& era = level_.child("era");
 		// TODO: Check whether we have the era. If we don't, inform the player
 		if(!era) {
