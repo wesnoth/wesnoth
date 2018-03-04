@@ -657,8 +657,10 @@ static inline const color_t attack_info_percent_color(int resistance)
 static int attack_info(reports::context & rc, const attack_type &at, config &res, const unit &u, const map_location &displayed_unit_hex)
 {
 	std::ostringstream str, tooltip;
+	int damage = 0;
 
-	at.set_specials_context(u, displayed_unit_hex, u.side() == rc.screen().playing_side());
+	{
+	auto ctx = at.specials_context(u, displayed_unit_hex, u.side() == rc.screen().playing_side());
 	int base_damage = at.damage();
 	int specials_damage = at.modified_damage(false);
 	int damage_multiplier = 100;
@@ -671,7 +673,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	bool slowed = u.get_state(unit::STATE_SLOWED);
 	int damage_divisor = slowed ? 20000 : 10000;
 	// Assume no specific resistance (i.e. multiply by 100).
-	int damage = round_damage(specials_damage, damage_multiplier * 100, damage_divisor);
+	damage = round_damage(specials_damage, damage_multiplier * 100, damage_divisor);
 
 	// Hit points are used to calculate swarm, so they need to be bounded.
 	unsigned max_hp = u.max_hitpoints();
@@ -810,8 +812,10 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 			}
 		add_text(res, flush(str), flush(tooltip));
 	}
+	}
 
-	at.set_specials_context_for_listing();
+	{
+	auto ctx = at.specials_context_for_listing();
 	boost::dynamic_bitset<> active;
 	const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
 	const size_t specials_size = specials.size();
@@ -831,6 +835,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		tooltip << '\n' << description;
 
 		add_text(res, flush(str), flush(tooltip), help_page);
+	}
 	}
 	return damage;
 }
