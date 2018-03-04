@@ -55,7 +55,7 @@ namespace
 	}
 }
 
-config_attribute_value config_variable_set::get_variable_const(const std::string &id) const {
+config::attribute_value config_variable_set::get_variable_const(const std::string &id) const {
 	try {
 		variable_access_const variable(id, cfg_);
 		return variable.as_scalar();
