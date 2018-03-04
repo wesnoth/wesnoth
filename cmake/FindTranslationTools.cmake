@@ -110,7 +110,7 @@ endif(NOT XSLTPROC_EXECUTABLE)
 
 find_path(ASCIIDOC_DOCBOOK_XSL_PATH
 	xhtml.xsl
-	HINTS /usr/share/asciidoc/docbook-xsl /etc/asciidoc/docbook-xsl
+	HINTS /usr/share/asciidoc/docbook-xsl /etc/asciidoc/docbook-xsl /opt/local/etc/asciidoc/docbook-xsl
 	NO_DEFAULT_PATH
 )
 if(NOT ASCIIDOC_DOCBOOK_XSL_PATH)
