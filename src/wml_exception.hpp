@@ -141,12 +141,15 @@ std::string missing_mandatory_wml_key(
 		, const std::string& key
 		, const std::string& primary_key = ""
 		, const std::string& primary_value = "");
+
+// TODO: In 1.15 we could rework these two to provide standard detail messages
+// for the deprecated_message() function.
+
 /**
  * Returns a standard warning message for using a deprecated wml key.
  *
  * @param key                     The deprecated key.
- * @param removal_version         The version in which the key will be
- *                                removed key.
+ * @param removal_version         The version in which the key will be removed.
  *
  * @returns                       The warning message.
  */
@@ -159,8 +162,7 @@ std::string deprecate_wml_key_warning(
  *
  * @param deprecated_key          The deprecated key.
  * @param key                     The new key to be used.
- * @param removal_version         The version in which the key will be
- *                                removed key.
+ * @param removal_version         The version in which the key will be removed.
  *
  * @returns                       The warning message.
  */

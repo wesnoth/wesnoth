@@ -13,12 +13,14 @@
 */
 
 #include "gui/auxiliary/old_markup.hpp"
+#include "deprecation.hpp"
+#include "version.hpp"
 
 namespace gui2
 {
 
-legacy_menu_item::legacy_menu_item(const std::string& str)
-	: icon_(), label_(str), desc_(), default_(false)
+legacy_menu_item::legacy_menu_item(const std::string& str, const std::string deprecation_msg)
+	: icon_(), label_(str), desc_(), default_(false), contained_markup_(false)
 {
 	if(label_.empty()) {
 		return;
@@ -28,14 +30,17 @@ legacy_menu_item::legacy_menu_item(const std::string& str)
 	if(label_[0] == '*') {
 		default_ = true;
 		label_.erase(0, 1);
+		contained_markup_ = true;
 	}
 
 	// Handle the special case with an image.
+	// 99.9% of uses put the image in the first column, so we ignore the slim possibility of it going in a different column
 	std::string::size_type pos = label_.find('=');
 	if(pos != std::string::npos && (label_[0] == '&' || pos == 0)) {
 		if(pos)
 			icon_ = label_.substr(1, pos - 1);
 		label_.erase(0, pos + 1);
+		contained_markup_ = true;
 	}
 
 	// Search for an '=' symbol that is not inside markup.
@@ -59,6 +64,11 @@ legacy_menu_item::legacy_menu_item(const std::string& str)
 	if(pos != std::string::npos) {
 		desc_ = label_.substr(pos + 1);
 		label_.erase(pos);
+		contained_markup_ = true;
+	}
+
+	if(contained_markup_) {
+		deprecated_message("Legacy DescriptionWML markup (&img=col1=col2)", 3, {1, 15, 0}, deprecation_msg);
 	}
 }
 }

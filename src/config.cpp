@@ -24,6 +24,8 @@
 #include "log.hpp"
 #include "utils/const_clone.hpp"
 #include "utils/functional.hpp"
+#include "deprecation.hpp"
+#include "version.hpp"
 
 #include <algorithm>
 #include <cstdlib>
@@ -709,7 +711,7 @@ config::attribute_value& config::operator[](config_key_type key)
 }
 
 const config::attribute_value& config::get_old_attribute(
-		config_key_type key, const std::string& old_key, const std::string& msg) const
+		config_key_type key, const std::string& old_key, const std::string& in_tag) const
 {
 	check_valid();
 
@@ -720,7 +722,10 @@ const config::attribute_value& config::get_old_attribute(
 
 	i = values_.find(old_key);
 	if(i != values_.end()) {
-		if(!msg.empty()) {
+		if(!in_tag.empty()) {
+			const std::string what = "[" + in_tag + "]" + old_key + "=";
+			const std::string msg = "Use " + key + "= instead.";
+			deprecated_message(what, 1, "", msg);
 			lg::wml_error() << msg;
 		}
 

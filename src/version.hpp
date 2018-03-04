@@ -45,6 +45,7 @@ class version_info
 public:
 	version_info();                    /**< Default constructor. */
 	version_info(const std::string&);  /**< String constructor. */
+	version_info(const char* str) : version_info(std::string(str)) {}
 
 	/** Simple list constructor. */
 	version_info(unsigned int major, unsigned int minor, unsigned int revision_level,

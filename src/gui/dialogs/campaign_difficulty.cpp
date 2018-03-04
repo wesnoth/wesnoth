@@ -29,6 +29,7 @@
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "deprecation.hpp"
 
 static lg::log_domain log_wml("wml");
 #define WRN_WML LOG_STREAM(warn, log_wml)
@@ -80,8 +81,11 @@ config generate_difficulty_config(const config& source)
 	result.append_children(source, "difficulty");
 
 	// Convert legacy format to new-style config if latter not present
-	if(result.empty()) {
-		WRN_WML << "[campaign] difficulties,difficulty_descriptions= is deprecated. Use [difficulty] instead" << std::endl;
+	if(result.empty() && source.has_attribute("difficulties")) {
+		deprecated_message("[campaign]difficulties", 3, {1, 15, 0}, "Use [difficulty] instead.");
+		if(source.has_attribute("difficulty_descriptions")) {
+			deprecated_message("[campaign]difficulty_descriptions", 3, {1, 15, 0}, "Use [difficulty] instead.");
+		}
 
 		std::vector<std::string> difficulty_list = utils::split(source["difficulties"]);
 		std::vector<std::string> difficulty_opts = utils::split(source["difficulty_descriptions"], ';');
@@ -92,7 +96,7 @@ config generate_difficulty_config(const config& source)
 
 		for(std::size_t i = 0; i < difficulty_opts.size(); ++i) {
 			config temp;
-			gui2::legacy_menu_item parsed(difficulty_opts[i]);
+			gui2::legacy_menu_item parsed(difficulty_opts[i], "Use [difficulty] instead.");
 
 			temp["define"] = difficulty_list[i];
 			temp["image"] = parsed.icon();

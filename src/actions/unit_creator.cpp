@@ -37,6 +37,7 @@
 #include "units/unit.hpp" // for unit
 #include "units/udisplay.hpp" // for unit_display
 #include "variable.hpp" // for vconfig
+#include "deprecation.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -129,7 +130,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 				loc = start_pos_;
 			}
 			if(place == "leader_passable") {
-				WARN_NG << "placement=leader_passable is deprecated; please use placement=leader and passable=yes instead\n";
+				deprecated_message("placement=leader_passable", 2, {1, 15, 0}, "Please use placement=leader and passable=yes instead");
 				pass = true;
 			}
 		}
@@ -143,10 +144,10 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 				loc = map_location(cfg, resources::gamedata);
 			}
 			if(place == "map_passable") {
-				WARN_NG << "placement=map_passable is deprecated; please use placement=map and passable=yes instead\n";
+				deprecated_message("placement=map_passable", 2, {1, 15, 0}, "Please use placement=map and passable=yes instead");
 				pass = true;
 			} else if(place == "map_overwrite") {
-				WARN_NG << "placement=map_overwrite is deprecated; please use placement=map and overwrite=yes instead\n";
+				deprecated_message("placement=map_overwrite", 2, {1, 15, 0}, "Please use placement=map and overwrite=yes instead");
 				vacant = false;
 			}
 		}

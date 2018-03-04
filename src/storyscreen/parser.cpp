@@ -20,6 +20,8 @@
 #include "log.hpp"
 #include "resources.hpp"
 #include "variable.hpp"
+#include "deprecation.hpp"
+#include "version.hpp"
 
 namespace storyscreen
 {
@@ -103,7 +105,7 @@ void story_parser::resolve_wml(const vconfig& cfg)
 		// [deprecated_message]
 		else if(key == "deprecated_message") {
 			// Won't appear until the scenario start event finishes.
-			lg::wml_error() << node["message"] << '\n';
+			deprecated_message(node["what"], node["level"], node["version"].str(), node["message"]);
 		}
 		// [wml_message]
 		else if(key == "wml_message") {

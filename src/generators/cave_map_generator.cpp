@@ -95,8 +95,10 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 {
 	res_.add_child("event", config {
 		"name", "start",
-		"message", config {
-			"message", "scenario_generation=cave is deprecated and will be removed soon.",
+		"deprecated_message", config {
+			"what", "scenario_generation=cave",
+			"level", 1,
+			"message", "Use the Lua cave generator instead, with scenario_generation=lua and create_scenario= (see wiki for details).",
 		},
 	});
 	uint32_t seed = randomseed.get_ptr() ? *randomseed.get_ptr() : seed_rng::next_seed();

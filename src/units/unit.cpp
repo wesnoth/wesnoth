@@ -20,6 +20,7 @@
 #include "units/unit.hpp"
 
 #include "color.hpp"
+#include "deprecation.hpp"
 #include "display_context.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp" // for vgettext
@@ -48,6 +49,7 @@
 #include "units/id.hpp"
 #include "units/map.hpp"	   // for unit_map, etc
 #include "variable.hpp"		   // for vconfig, etc
+#include "version.hpp"
 
 #include "utils/functional.hpp"
 #include <boost/dynamic_bitset.hpp>
@@ -2342,7 +2344,7 @@ void unit::apply_modifications()
 
 	for(const auto& mod : ModificationTypes) {
 		if(mod == "advance" && modifications_.has_child(mod)) {
-			lg::wml_error() << "[modifications][advance] is deprecated, use [advancement] instead" << std::endl;
+			deprecated_message("[advance]", 2, {1, 15, 0}, "Use [advancement] instead.");
 		}
 
 		for(const config& m : modifications_.child_range(mod)) {

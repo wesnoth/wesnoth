@@ -455,7 +455,7 @@ public:
 	 * Get the value of key and if missing try old_key
 	 * and log msg as a WML error (if not empty)
 	*/
-	const attribute_value &get_old_attribute(config_key_type key, const std::string &old_key, const std::string& msg = "") const;
+	const attribute_value &get_old_attribute(config_key_type key, const std::string &old_key, const std::string& in_tag = "") const;
 	/**
 	 * Returns a reference to the first child with the given @a key.
 	 * Creates the child if it does not yet exist.

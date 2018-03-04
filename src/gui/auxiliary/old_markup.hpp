@@ -39,7 +39,7 @@ class legacy_menu_item
 	 * with special meanings for certain characters.
 	 */
 public:
-	explicit legacy_menu_item(const std::string& str = std::string());
+	explicit legacy_menu_item(const std::string& str = "", const std::string deprecation_msg = "");
 
 	const std::string& icon() const
 	{
@@ -59,6 +59,11 @@ public:
 	bool is_default() const
 	{
 		return default_;
+	}
+
+	bool contained_markup() const
+	{
+		return contained_markup_;
 	}
 
 	legacy_menu_item& operator=(const legacy_menu_item& rhs)
@@ -88,5 +93,10 @@ private:
 	 * It's unspecified what happens if multiple items in a menu are selected.
 	 */
 	bool default_;
+
+	/**
+	 * Was any old markup actually parsed?
+	 */
+	bool contained_markup_;
 };
 }

@@ -107,6 +107,7 @@
 #include "variable_info.hpp"
 #include "whiteboard/manager.hpp"       // for whiteboard
 #include "wml_exception.hpp"
+#include "deprecation.hpp"
 
 #include "utils/functional.hpp"               // for bind_t, bind
 #include <boost/range/algorithm/copy.hpp>    // boost::copy
@@ -849,7 +850,7 @@ int game_lua_kernel::intf_set_end_campaign_text(lua_State *L)
 
 int game_lua_kernel::intf_set_next_scenario(lua_State *L)
 {
-	WRN_LUA << "wesnoth.set_next_scenario() is deprecated" << std::endl;
+	deprecated_message("wesnoth.set_next_scenario", 1, "");
 	gamedata().set_next_scenario(luaL_checkstring(L, 1));
 	return 0;
 }
@@ -2090,7 +2091,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 			if (!map().on_board(loc))
 				return luaL_argerror(L, 1, "invalid location");
 		} else if (unit_arg != 1) {
-			WRN_LUA << "wesnoth.put_unit(x, y, unit) is deprecated. Use wesnoth.put_unit(unit, x, y) instead\n";
+			deprecated_message("wesnoth.put_unit(x, y, unit)", 3, {1, 15, 0}, "Use wesnoth.put_unit(unit, x, y) or unit:to_map(x, y) instead.");
 		}
 		put_unit_helper(loc);
 		u.put_map(loc);
@@ -2104,14 +2105,14 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 			if (!map().on_board(loc))
 				return luaL_argerror(L, 2, "invalid location");
 		} else if (unit_arg != 1) {
-			WRN_LUA << "wesnoth.put_unit(x, y, unit) is deprecated. Use wesnoth.put_unit(unit, x, y) instead\n";
+			deprecated_message("wesnoth.put_unit(x, y, unit)", 3, {1, 15, 0}, "Use wesnoth.put_unit(unit, x, y) or unit:to_map(x, y) instead.");
 		}
 		unit_ptr u(new unit(cfg, true, vcfg));
 		put_unit_helper(loc);
 		u->set_location(loc);
 		units().insert(u);
 	} else {
-		WRN_LUA << "wesnoth.put_unit(x, y) is deprecated. Use wesnoth.erase_unit(x, y) instead\n";
+		deprecated_message("wesnoth.put_unit(x, y)", 3, {1, 15, 0}, "Use wesnoth.erase_unit(x, y) or unit:erase() instead.");
 		put_unit_helper(loc);
 		return 0; // Don't fire event when unit is only erase
 	}
@@ -2153,15 +2154,8 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 		if (!map().on_board(loc)) {
 			return luaL_argerror(L, 1, "invalid location");
 		}
-	} else if (!lua_isnoneornil(L, 1)) {
-		config cfg = luaW_checkconfig(L, 1);
-		loc.set_wml_x(cfg["x"]);
-		loc.set_wml_y(cfg["y"]);
-		if (!map().on_board(loc)) {
-			return luaL_argerror(L, 1, "invalid location");
-		}
 	} else {
-		return luaL_argerror(L, 1, "expected unit or integer");
+		return luaL_argerror(L, 1, "expected unit or location");
 	}
 
 	units().erase(loc);
@@ -2562,7 +2556,7 @@ int game_lua_kernel::intf_simulate_combat(lua_State *L)
  */
 static int intf_set_music(lua_State *L)
 {
-	lg::wml_error() << "set_music is deprecated; please use the wesnoth.playlist table instead!\n";
+	deprecated_message("wesnoth.set_music", 1, "", "Use the wesnoth.playlist table instead!");
 	if (lua_isnoneornil(L, 1)) {
 		sound::commit_music_changes();
 		return 0;
@@ -2635,7 +2629,7 @@ int game_lua_kernel::intf_scroll_to_tile(lua_State *L)
 int game_lua_kernel::intf_select_hex(lua_State *L)
 {
 	events::command_disabler command_disabler;
-	ERR_LUA << "wesnoth.select_hex is deprecated, use wesnoth.select_unit and/or wesnoth.highlight_hex" << std::endl;
+	deprecated_message("wesnoth.select_hex", 2, {1, 15, 0}, "Use wesnoth.select_unit and/or wesnoth.highlight_hex instead.");
 
 	// Need this because check_location may change the stack
 	// By doing this now, we ensure that it won't do so when
@@ -3130,7 +3124,7 @@ static int intf_add_modification(lua_State *L)
 	std::string sm = m;
 	if (sm == "advance") { // Maintain backwards compatibility
 		sm = "advancement";
-		lg::wml_error() << "(Lua) Modifications of type \"advance\" are deprecated, use \"advancement\" instead\n";
+		deprecated_message("\"advance\" modification type", 2, {1, 15, 0}, "Use \"advancement\" instead.");
 	}
 	if (sm != "advancement" && sm != "object" && sm != "trait") {
 		return luaL_argerror(L, 2, "unknown modification type");
@@ -3386,7 +3380,7 @@ static int intf_modify_ai_old(lua_State *L)
 	config cfg;
 	luaW_toconfig(L, 1, cfg);
 	int side = cfg["side"];
-	WRN_LUA << "wesnoth.modify_ai is deprecated\n";
+	deprecated_message("wesnoth.modify_ai", 2, {1, 15, 0}, "Use wesnoth.add_ai_component, wesnoth.delete_ai_component, or wesnoth.change_ai_component.");
 	ai::manager::get_singleton().modify_active_ai_for_side(side, cfg);
 	return 0;
 }
