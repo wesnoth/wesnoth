@@ -767,6 +767,7 @@ attack_type::specials_context_t::specials_context_t(const attack_type& weapon)
 
 attack_type::specials_context_t::~specials_context_t()
 {
+	if(was_moved) return;
 	parent.self_ = nullptr;
 	parent.other_ = nullptr;
 	parent.self_loc_ = map_location::null_location();
@@ -774,6 +775,12 @@ attack_type::specials_context_t::~specials_context_t()
 	parent.is_attacker_ = false;
 	parent.other_attack_ = nullptr;
 	parent.is_for_listing_ = false;
+}
+
+attack_type::specials_context_t::specials_context_t(attack_type::specials_context_t&& other)
+	: parent(other.parent)
+{
+	other.was_moved = true;
 }
 
 /**
