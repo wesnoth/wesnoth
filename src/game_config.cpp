@@ -42,13 +42,6 @@ const std::string version = VERSION;
 const version_info wesnoth_version(VERSION);
 const version_info min_savegame_version(MIN_SAVEGAME_VERSION);
 const version_info test_version("test");
-// Not sure if there's any actual good use for this, which is why I haven't added it to the header...
-// In particular, it shouldn't be used for deprecation messages, because that would defeat the point.
-const version_info next_dev_version(
-	wesnoth_version.major_version(),
-	wesnoth_version.minor_version() + is_even(wesnoth_version.minor_version()) ? 1 : 0,
-	is_odd(wesnoth_version.minor_version()) ? wesnoth_version.revision_level() + 1 : 0
-);
 
 #ifdef REVISION
 const std::string revision = VERSION " (" REVISION ")";
