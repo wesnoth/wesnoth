@@ -1558,6 +1558,7 @@
     <ClCompile Include="..\..\src\gui\dialogs\surrender_quit.cpp">
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\deprecation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -3025,6 +3026,7 @@
     <ClInclude Include="..\..\src\gui\dialogs\surrender_quit.hpp">
       <Filter>Gui\Dialogs</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\deprecation.hpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\tests\test_sdl_utils.hpp">

@@ -744,6 +744,7 @@
     <ClCompile Include="..\..\src\controller_base.cpp" />
     <ClCompile Include="..\..\src\countdown_clock.cpp" />
     <ClCompile Include="..\..\src\cursor.cpp" />
+    <ClCompile Include="..\..\src\deprecation.cpp" />
     <ClCompile Include="..\..\src\desktop\clipboard.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Desktop\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Desktop\</ObjectFileName>
@@ -3581,6 +3582,7 @@
     <ClInclude Include="..\..\src\controller_base.hpp" />
     <ClInclude Include="..\..\src\countdown_clock.hpp" />
     <ClInclude Include="..\..\src\cursor.hpp" />
+    <ClInclude Include="..\..\src\deprecation.hpp" />
     <ClInclude Include="..\..\src\desktop\clipboard.hpp" />
     <ClInclude Include="..\..\src\desktop\notifications.hpp" />
     <ClInclude Include="..\..\src\desktop\open.hpp" />
