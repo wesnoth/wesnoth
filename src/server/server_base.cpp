@@ -212,5 +212,4 @@ void async_send_message(socket_ptr socket, const std::string& msg)
 #include "version.hpp"
 #include "deprecation.hpp"
 
-std::string deprecated_message(const std::string&, DEP_LEVEL, const version_info&, const std::string&);
 std::string deprecated_message(const std::string&, DEP_LEVEL, const version_info&, const std::string&) {return "";}
