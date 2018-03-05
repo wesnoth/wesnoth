@@ -61,7 +61,7 @@ struct preproc_define
 			int line,
 			const std::string& loc,
 			const std::string& dep_msg,
-			DEP_LEVEL dep_lvl, const version_info& dep_ver)
+			boost::optional<DEP_LEVEL> dep_lvl, const version_info& dep_ver)
 		: value(val)
 		, arguments(args)
 		, optional_arguments(optargs)
@@ -88,7 +88,7 @@ struct preproc_define
 
 	std::string deprecation_message;
 
-	boost::optional<DEP_LEVEL> deprecation_level;
+	boost::optional<DEP_LEVEL> deprecation_level = boost::none;
 
 	version_info deprecation_version;
 

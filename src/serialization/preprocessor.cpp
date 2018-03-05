@@ -18,6 +18,8 @@
  * WML preprocessor.
  */
 
+#include "serialization/preprocessor.hpp"
+
 #include "buffered_istream.hpp"
 #include "config.hpp"
 #include "filesystem.hpp"
@@ -1154,7 +1156,7 @@ bool preprocessor_data::get_chunk()
 			std::string symbol = items.front();
 			items.erase(items.begin());
 			int found_arg = 0, found_enddef = 0, found_deprecate = 0;
-			boost::optional<DEP_LEVEL> deprecation_level;
+			boost::optional<DEP_LEVEL> deprecation_level = boost::none;
 			std::string buffer, deprecation_detail;
 			version_info deprecation_version = game_config::wesnoth_version;
 			for(;;) {
@@ -1278,7 +1280,7 @@ bool preprocessor_data::get_chunk()
 				buffer.erase(buffer.end() - 7, buffer.end());
 				(*parent_.defines_)[symbol]
 						= preproc_define(buffer, items, optargs, parent_.textdomain_, linenum, parent_.location_,
-						deprecation_detail, *deprecation_level, deprecation_version);
+						deprecation_detail, deprecation_level, deprecation_version);
 
 				LOG_PREPROC << "defining macro " << symbol << " (location " << get_location(parent_.location_) << ")\n";
 			}
