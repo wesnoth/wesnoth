@@ -1055,7 +1055,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		const std::string& effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
 
 		if (!cfg["backstab"].blank()) {
-			deprecated_message("backstab= in weapon specials", 2, {1, 15, 0}, "Use [filter_adjacent] instead.");
+			deprecated_message("backstab= in weapon specials", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use [filter_adjacent] instead.");
 		}
 
 		if (!backstab && cfg["backstab"].to_bool())

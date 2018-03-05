@@ -21,9 +21,11 @@
 #include <iosfwd>
 #include <map>
 #include <vector>
+#include <boost/optional.hpp>
 
 #include "exceptions.hpp"
 #include "version.hpp"
+#include "deprecation.hpp"
 
 class config_writer;
 class config;
@@ -59,7 +61,7 @@ struct preproc_define
 			int line,
 			const std::string& loc,
 			const std::string& dep_msg,
-			int dep_lvl, const version_info& dep_ver)
+			DEP_LEVEL dep_lvl, const version_info& dep_ver)
 		: value(val)
 		, arguments(args)
 		, optional_arguments(optargs)
@@ -86,12 +88,12 @@ struct preproc_define
 
 	std::string deprecation_message;
 
-	int deprecation_level = -1;
+	boost::optional<DEP_LEVEL> deprecation_level;
 
 	version_info deprecation_version;
 
 	bool is_deprecated() const {
-		return deprecation_level > 0;
+		return deprecation_level != boost::none;
 	}
 
 	void write(config_writer&, const std::string&) const;

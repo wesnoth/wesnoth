@@ -105,7 +105,8 @@ void story_parser::resolve_wml(const vconfig& cfg)
 		// [deprecated_message]
 		else if(key == "deprecated_message") {
 			// Won't appear until the scenario start event finishes.
-			deprecated_message(node["what"], node["level"], node["version"].str(), node["message"]);
+			DEP_LEVEL level = DEP_LEVEL(node["level"].to_int(2));
+			deprecated_message(node["what"], level, node["version"].str(), node["message"]);
 		}
 		// [wml_message]
 		else if(key == "wml_message") {

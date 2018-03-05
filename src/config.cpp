@@ -725,7 +725,7 @@ const config::attribute_value& config::get_old_attribute(
 		if(!in_tag.empty()) {
 			const std::string what = "[" + in_tag + "]" + old_key + "=";
 			const std::string msg = "Use " + key + "= instead.";
-			deprecated_message(what, 1, "", msg);
+			deprecated_message(what, DEP_LEVEL::INDEFINITE, "", msg);
 			lg::wml_error() << msg;
 		}
 

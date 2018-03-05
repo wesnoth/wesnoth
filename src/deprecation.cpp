@@ -28,14 +28,16 @@
 // and so on and so on.
 static lg::log_domain log_deprecate("deprecation", -1);
 
-std::string deprecated_message(const std::string& elem_name, int level, const version_info& version, const std::string& detail) {
+std::string deprecated_message(const std::string& elem_name, DEP_LEVEL level, const version_info& version, const std::string& detail) {
 	utils::string_map msg_params = {{"elem", elem_name}};
 	lg::logger* log_ptr = nullptr;
 	std::string message;
-	if(level == 1) {
+	switch(level) {
+	case DEP_LEVEL::INDEFINITE:
 		log_ptr = &lg::info();
 		message = VGETTEXT("$elem has been deprecated indefinitely.", msg_params);
-	} else if(level == 2) {
+		break;
+	case DEP_LEVEL::PREEMPTIVE:
 		log_ptr = &lg::warn();
 		if(game_config::wesnoth_version < version) {
 			msg_params["version"] = version.str();
@@ -43,15 +45,18 @@ std::string deprecated_message(const std::string& elem_name, int level, const ve
 		} else {
 			message = VGETTEXT("$elem has been deprecated and may be removed at any time.", msg_params);
 		}
-	} else if(level == 3) {
+		break;
+	case DEP_LEVEL::FOR_REMOVAL:
 		log_ptr = &lg::err();
 		msg_params["version"] = version.str();
 		message = VGETTEXT("$elem has been deprecated and will be removed in the next version ($version).", msg_params);
-	} else if(level == 4) {
+		break;
+	case DEP_LEVEL::REMOVED:
 		log_ptr = &lg::err();
 		message = VGETTEXT("$elem has been deprecated and removed.", msg_params);
-	} else {
-		utils::string_map err_params = {{"level", std::to_string(level)}};
+		break;
+	default: // Not impossible, in case level was given an invalid value from a cast.
+		utils::string_map err_params = {{"level", std::to_string(int(level))}};
 		// Note: This message is duplicated in data/lua/core.lua
 		// Any changes should be mirrorred there.
 		std::string msg = VGETTEXT("Invalid deprecation level $level (should be 1-4)", err_params);

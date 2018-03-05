@@ -390,7 +390,7 @@ static int cfun_ai_get_targets(lua_State *L)
 // (and the things so deprecated) OR add a version parameter to the macro.
 // Also note that the name MUST be a string literal.
 #define DEPRECATED_ASPECT_MESSAGE(name) \
-	deprecated_message("ai.get_" name, 2, {1, 15, 0}, "Use ai.aspects." name " instead")
+	deprecated_message("ai.get_" name, DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use ai.aspects." name " instead")
 
 // Aspect section
 static int cfun_ai_get_aggression(lua_State *L)

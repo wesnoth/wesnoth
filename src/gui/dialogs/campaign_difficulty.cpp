@@ -82,9 +82,9 @@ config generate_difficulty_config(const config& source)
 
 	// Convert legacy format to new-style config if latter not present
 	if(result.empty() && source.has_attribute("difficulties")) {
-		deprecated_message("[campaign]difficulties", 3, {1, 15, 0}, "Use [difficulty] instead.");
+		deprecated_message("[campaign]difficulties", DEP_LEVEL::FOR_REMOVAL, {1, 15, 0}, "Use [difficulty] instead.");
 		if(source.has_attribute("difficulty_descriptions")) {
-			deprecated_message("[campaign]difficulty_descriptions", 3, {1, 15, 0}, "Use [difficulty] instead.");
+			deprecated_message("[campaign]difficulty_descriptions", DEP_LEVEL::FOR_REMOVAL, {1, 15, 0}, "Use [difficulty] instead.");
 		}
 
 		std::vector<std::string> difficulty_list = utils::split(source["difficulties"]);
