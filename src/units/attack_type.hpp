@@ -102,10 +102,19 @@ private:
 
 	// Used via specials_context() to control which specials are
 	// considered active.
-	struct specials_context_t {
+	friend class specials_context_t;
+	mutable map_location self_loc_, other_loc_;
+	mutable const unit* self_;
+	mutable const unit* other_;
+	mutable bool is_attacker_;
+	mutable const_attack_ptr other_attack_;
+	mutable bool is_for_listing_ = false;
+public:
+	class specials_context_t {
+		friend class attack_type;
 		const attack_type& parent;
 		/// Initialize weapon specials context for listing
-		specials_context_t(const attack_type& weapon);
+		explicit specials_context_t(const attack_type& weapon);
 		/// Initialize weapon specials context for a unit type
 		specials_context_t(const attack_type& weapon, const unit_type& self_type, const map_location& loc, bool attacking = true);
 		/// Initialize weapon specials context for a single unit
@@ -115,16 +124,13 @@ private:
 			bool attacking);
 		/// Initialize weapon specials context for a pair of units
 		specials_context_t(const attack_type& weapon, const unit& self, const map_location& loc, bool attacking);
+		specials_context_t(const specials_context_t&) = delete;
+		bool was_moved = false;
+	public:
+		// Destructor at least needs to be public for all this to work.
 		~specials_context_t();
+		specials_context_t(specials_context_t&&);
 	};
-	friend struct specials_context_t;
-	mutable map_location self_loc_, other_loc_;
-	mutable const unit* self_;
-	mutable const unit* other_;
-	mutable bool is_attacker_;
-	mutable const_attack_ptr other_attack_;
-	mutable bool is_for_listing_ = false;
-public:
 	// Set up a specials context.
 	// Usage: auto ctx = weapon.specials_context(...);
 	specials_context_t specials_context(const unit& self, const unit& other,
