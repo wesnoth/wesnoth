@@ -893,11 +893,7 @@ function wml_actions.deprecated_message(cfg)
 		local _ = wesnoth.textdomain "wesnoth"
 		helper.wml_error(_"Invalid deprecation level (should be 1-4)")
 	end
-	wesnoth.deprecated_message(cfg.what, cfg.level, cfg.version, cfg.message or '')
-	if not wesnoth.game_config.debug then return end
-	if cfg.level > 1 then
-		wesnoth.log('wml', cfg.message)
-	end
+	wesnoth.deprecation_message(cfg.what, cfg.level, cfg.version, cfg.message or '')
 end
 
 function wml_actions.wml_message(cfg)
