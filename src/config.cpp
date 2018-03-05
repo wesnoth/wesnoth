@@ -20,6 +20,7 @@
 
 #include "config.hpp"
 
+#include "formatter.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "utils/const_clone.hpp"
@@ -723,8 +724,8 @@ const config::attribute_value& config::get_old_attribute(
 	i = values_.find(old_key);
 	if(i != values_.end()) {
 		if(!in_tag.empty()) {
-			const std::string what = "[" + in_tag + "]" + old_key + "=";
-			const std::string msg = "Use " + key + "= instead.";
+			const std::string what = formatter() << "[" << in_tag << "]" << old_key << "=";
+			const std::string msg  = formatter() << "Use " << key << "= instead.";
 			deprecated_message(what, DEP_LEVEL::INDEFINITE, "", msg);
 			lg::wml_error() << msg;
 		}
