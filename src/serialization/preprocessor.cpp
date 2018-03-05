@@ -1154,7 +1154,7 @@ bool preprocessor_data::get_chunk()
 			std::string symbol = items.front();
 			items.erase(items.begin());
 			int found_arg = 0, found_enddef = 0, found_deprecate = 0;
-			int deprecation_level = -1;
+			boost::optional<DEP_LEVEL> deprecation_level;
 			std::string buffer, deprecation_detail;
 			version_info deprecation_version = game_config::wesnoth_version;
 			for(;;) {
@@ -1217,12 +1217,18 @@ bool preprocessor_data::get_chunk()
 							buffer.erase(buffer.end() - 11, buffer.end());
 							skip_spaces();
 							try {
-								deprecation_level = std::max(deprecation_level, std::stoi(read_word()));
+								DEP_LEVEL level = DEP_LEVEL(std::stoi(read_word()));
+								if(deprecation_level) {
+									deprecation_level = std::max(*deprecation_level, level);
+								} else {
+									deprecation_level = level;
+								}
 							} catch(std::invalid_argument&) {
-								deprecation_level = 0;
+								// Meh, fall back to default of PREEMPTIVE...
+								deprecation_level = DEP_LEVEL::PREEMPTIVE;
 							}
 							deprecation_version = game_config::wesnoth_version;
-							if(deprecation_level == 2 || deprecation_level == 3) {
+							if(deprecation_level == DEP_LEVEL::PREEMPTIVE || deprecation_level == DEP_LEVEL::FOR_REMOVAL) {
 								skip_spaces();
 								deprecation_version = std::max(deprecation_version, version_info(read_word()));
 							}
@@ -1272,7 +1278,7 @@ bool preprocessor_data::get_chunk()
 				buffer.erase(buffer.end() - 7, buffer.end());
 				(*parent_.defines_)[symbol]
 						= preproc_define(buffer, items, optargs, parent_.textdomain_, linenum, parent_.location_,
-						deprecation_detail, deprecation_level, deprecation_version);
+						deprecation_detail, *deprecation_level, deprecation_version);
 
 				LOG_PREPROC << "defining macro " << symbol << " (location " << get_location(parent_.location_) << ")\n";
 			}
@@ -1397,12 +1403,14 @@ bool preprocessor_data::get_chunk()
 		} else if(command == "deprecated") {
 			// The current file is deprecated, so print a message
 			skip_spaces();
-			int level = 0;
+			DEP_LEVEL level = DEP_LEVEL::PREEMPTIVE;
 			try {
-				level = std::stoi(read_word());
-			} catch(std::invalid_argument&) {}
+				level = DEP_LEVEL(std::stoi(read_word()));
+			} catch(std::invalid_argument&) {
+				// Meh, just fall back to the default of PREEMPTIVE...
+			}
 			version_info version = game_config::wesnoth_version;
-			if(level == 2 || level == 3) {
+			if(level == DEP_LEVEL::PREEMPTIVE || level == DEP_LEVEL::FOR_REMOVAL) {
 				skip_spaces();
 				version = version_info(read_word());
 			}
@@ -1488,7 +1496,7 @@ bool preprocessor_data::get_chunk()
 				const std::string& dir = filesystem::directory_name(val.location.substr(0, val.location.find(' ')));
 
 				if(val.is_deprecated()) {
-					deprecated_message(symbol, val.deprecation_level, val.deprecation_version, val.deprecation_message);
+					deprecated_message(symbol, *val.deprecation_level, val.deprecation_version, val.deprecation_message);
 				}
 
 				for(size_t i = 0; i < nb_arg; ++i) {

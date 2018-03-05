@@ -2344,7 +2344,7 @@ void unit::apply_modifications()
 
 	for(const auto& mod : ModificationTypes) {
 		if(mod == "advance" && modifications_.has_child(mod)) {
-			deprecated_message("[advance]", 2, {1, 15, 0}, "Use [advancement] instead.");
+			deprecated_message("[advance]", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use [advancement] instead.");
 		}
 
 		for(const config& m : modifications_.child_range(mod)) {

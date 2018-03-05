@@ -130,7 +130,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 				loc = start_pos_;
 			}
 			if(place == "leader_passable") {
-				deprecated_message("placement=leader_passable", 2, {1, 15, 0}, "Please use placement=leader and passable=yes instead");
+				deprecated_message("placement=leader_passable", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Please use placement=leader and passable=yes instead");
 				pass = true;
 			}
 		}
@@ -144,10 +144,10 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 				loc = map_location(cfg, resources::gamedata);
 			}
 			if(place == "map_passable") {
-				deprecated_message("placement=map_passable", 2, {1, 15, 0}, "Please use placement=map and passable=yes instead");
+				deprecated_message("placement=map_passable", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Please use placement=map and passable=yes instead");
 				pass = true;
 			} else if(place == "map_overwrite") {
-				deprecated_message("placement=map_overwrite", 2, {1, 15, 0}, "Please use placement=map and overwrite=yes instead");
+				deprecated_message("placement=map_overwrite", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Please use placement=map and overwrite=yes instead");
 				vacant = false;
 			}
 		}

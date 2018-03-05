@@ -68,7 +68,7 @@ legacy_menu_item::legacy_menu_item(const std::string& str, const std::string dep
 	}
 
 	if(contained_markup_) {
-		deprecated_message("Legacy DescriptionWML markup (&img=col1=col2)", 3, {1, 15, 0}, deprecation_msg);
+		deprecated_message("Legacy DescriptionWML markup (&img=col1=col2)", DEP_LEVEL::FOR_REMOVAL, {1, 15, 0}, deprecation_msg);
 	}
 }
 }

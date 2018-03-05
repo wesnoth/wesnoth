@@ -82,7 +82,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config& cfg)
 	, is_synced_(cfg["synced"].to_bool(true))
 {
 	if(cfg.has_attribute("needs_select")) {
-		deprecated_message("needs_select", 1, {1, 15, 0});
+		deprecated_message("needs_select", DEP_LEVEL::INDEFINITE, {1, 15, 0});
 	}
 	gui2::legacy_menu_item parsed(cfg["description"].str(), "Multiple columns in [set_menu_item] are no longer supported; the image is specified by image=.");
 	if(parsed.contained_markup()) {
@@ -287,7 +287,7 @@ void wml_menu_item::update(const vconfig& vcfg)
 	}
 
 	if(vcfg.has_attribute("needs_select")) {
-		deprecated_message("needs_select", 1, {1, 15, 0});
+		deprecated_message("needs_select", DEP_LEVEL::INDEFINITE, {1, 15, 0});
 		needs_select_ = vcfg["needs_select"].to_bool();
 	}
 
