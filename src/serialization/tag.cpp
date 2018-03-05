@@ -117,7 +117,7 @@ void class_tag::add_link(const std::string& link)
 
 const class_key* class_tag::find_key(const std::string& name) const
 {
-	key_map::const_iterator it_keys = keys_.find(name);
+	const auto it_keys = keys_.find(name);
 	if(it_keys != keys_.end()) {
 		return &(it_keys->second);
 	}
@@ -127,7 +127,7 @@ const class_key* class_tag::find_key(const std::string& name) const
 
 const std::string* class_tag::find_link(const std::string& name) const
 {
-	link_map::const_iterator it_links = links_.find(name);
+	const auto it_links = links_.find(name);
 	if(it_links != links_.end()) {
 		return &(it_links->second);
 	}
@@ -152,7 +152,7 @@ const class_tag* class_tag::find_tag(const std::string& fullpath, const class_ta
 		name = fullpath;
 	}
 
-	tag_map::const_iterator it_tags = tags_.find(name);
+	const auto it_tags = tags_.find(name);
 	if(it_tags != tags_.end()) {
 		if(next_path.empty()) {
 			return &(it_tags->second);
@@ -161,7 +161,7 @@ const class_tag* class_tag::find_tag(const std::string& fullpath, const class_ta
 		}
 	}
 
-	link_map::const_iterator it_links = links_.find(name);
+	const auto it_links = links_.find(name);
 	if(it_links != links_.end()) {
 		return root.find_tag(it_links->second + "/" + next_path, root);
 	}
@@ -171,15 +171,15 @@ const class_tag* class_tag::find_tag(const std::string& fullpath, const class_ta
 
 void class_tag::expand_all(class_tag& root)
 {
-	for(tag_map::iterator i = tags_.begin(); i != tags_.end(); ++i) {
-		i->second.expand(root);
-		i->second.expand_all(root);
+	for(auto& tag : tags_) {
+		tag.second.expand(root);
+		tag.second.expand_all(root);
 	}
 }
 
 void class_tag::remove_keys_by_type(const std::string& type)
 {
-	key_iterator i = keys_.begin();
+	auto i = keys_.begin();
 	while(i != keys_.end()) {
 		if(i->second.get_type() == type) {
 			keys_.erase(i++);
@@ -188,8 +188,8 @@ void class_tag::remove_keys_by_type(const std::string& type)
 		}
 	}
 
-	for(tag_iterator t = tags_.begin(); t != tags_.end(); ++t) {
-		t->second.remove_keys_by_type(type);
+	for(auto& tag : tags_) {
+		tag.second.remove_keys_by_type(type);
 	}
 }
 
@@ -234,21 +234,21 @@ void class_tag::printl(std::ostream& os, int level, int step)
 		os << s << "    super=\"" << super_ << "\"\n";
 	}
 
-	for(tag_map::iterator i = tags_.begin(); i != tags_.end(); ++i) {
-		i->second.printl(os, level + step, step);
+	for(auto& tag : tags_) {
+		tag.second.printl(os, level + step, step);
 	}
 
-	for(link_map::iterator i = links_.begin(); i != links_.end(); ++i) {
+	for(auto& link : links_) {
 		os << s << ""
 		   << "[link]\n"
 		   << s << ""
-		   << "    name=\"" << i->second << "\"\n"
+		   << "    name=\"" << link.second << "\"\n"
 		   << s << ""
 		   << "[/link]\n";
 	}
 
-	for(key_map::iterator i = keys_.begin(); i != keys_.end(); ++i) {
-		i->second.print(os, level + step);
+	for(auto& key : keys_) {
+		key.second.print(os, level + step);
 	}
 
 	os << s << "[/tag]\n";
@@ -271,7 +271,7 @@ class_tag* class_tag::find_tag(const std::string& fullpath, class_tag& root)
 		name = fullpath;
 	}
 
-	tag_map::iterator it_tags = tags_.find(name);
+	auto it_tags = tags_.find(name);
 	if(it_tags != tags_.end()) {
 		if(next_path.empty()) {
 			return &(it_tags->second);
@@ -280,7 +280,7 @@ class_tag* class_tag::find_tag(const std::string& fullpath, class_tag& root)
 		}
 	}
 
-	link_map::iterator it_links = links_.find(name);
+	auto it_links = links_.find(name);
 	if(it_links != links_.end()) {
 		return root.find_tag(it_links->second + "/" + next_path, root);
 	}
@@ -308,7 +308,7 @@ class_tag& class_tag::operator=(const class_tag& t)
 void class_tag::add_tag(const std::string& path, const class_tag& tag, class_tag& root)
 {
 	if(path.empty() || path == "/") {
-		tag_map::iterator it = tags_.find(tag.name_);
+		auto it = tags_.find(tag.name_);
 
 		if(it == tags_.end()) {
 			tags_.emplace(tag.name_, tag);
@@ -328,12 +328,12 @@ void class_tag::add_tag(const std::string& path, const class_tag& tag, class_tag
 	std::string name = path.substr(0, pos);
 	std::string next_path = path.substr(pos + 1, path.length());
 
-	link_map::const_iterator it_links = links_.find(name);
+	auto it_links = links_.find(name);
 	if(it_links != links_.end()) {
 		root.add_tag(it_links->second + "/" + next_path, tag, root);
 	}
 
-	tag_map::iterator it_tags = tags_.find(name);
+	auto it_tags = tags_.find(name);
 	if(it_tags == tags_.end()) {
 		class_tag subtag;
 		subtag.set_name(name);
@@ -350,9 +350,9 @@ void class_tag::append_super(const class_tag& tag, const std::string& path)
 	add_keys(tag.keys_);
 	add_links(tag.links_);
 
-	for(tag_map::const_iterator i = tag.tags_.begin(); i != tag.tags_.end(); ++i) {
-		links_.erase(i->first);
-		add_link(path + "/" + i->first);
+	for(const auto& t : tag.tags_) {
+		links_.erase(t.first);
+		add_link(path + "/" + t.first);
 	}
 }
 

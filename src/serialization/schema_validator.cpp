@@ -216,17 +216,16 @@ void schema_validator::close_tag()
 void schema_validator::validate(const config& cfg, const std::string& name, int start_line, const std::string& file)
 {
 	// close previous errors and print them to output.
-	message_map::iterator cache_it = cache_.top().begin();
-	for(; cache_it != cache_.top().end(); ++cache_it) {
-		for(message_list::iterator i = cache_it->second.begin(); i != cache_it->second.end(); ++i) {
-			print(*i);
+	for(auto& m : cache_.top()) {
+		for(auto& list : m.second) {
+			print(list);
 		}
 	}
 
 	cache_.pop();
 
 	// clear cache
-	cache_it = cache_.top().find(&cfg);
+	auto cache_it = cache_.top().find(&cfg);
 	if(cache_it != cache_.top().end()) {
 		cache_it->second.clear();
 	}
@@ -234,29 +233,26 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 	// Please note that validating unknown tag keys the result will be false
 	// Checking all elements counters.
 	if(!stack_.empty() && stack_.top() && config_read_) {
-		class_tag::all_const_tag_iterators p = stack_.top()->tags();
+		for(const auto& tag : stack_.top()->tags()) {
+			int cnt = counter_.top()[tag.first].cnt;
 
-		for(class_tag::const_tag_iterator tag = p.first; tag != p.second; ++tag) {
-			int cnt = counter_.top()[tag->first].cnt;
-
-			if(tag->second.get_min() > cnt) {
+			if(tag.second.get_min() > cnt) {
 				cache_.top()[&cfg].emplace_back(
-					MISSING_TAG, file, start_line, tag->second.get_min(), tag->first, "", name);
+					MISSING_TAG, file, start_line, tag.second.get_min(), tag.first, "", name);
 				continue;
 			}
 
-			if(tag->second.get_max() < cnt) {
+			if(tag.second.get_max() < cnt) {
 				cache_.top()[&cfg].emplace_back(
-					EXTRA_TAG, file, start_line, tag->second.get_max(), tag->first, "", name);
+					EXTRA_TAG, file, start_line, tag.second.get_max(), tag.first, "", name);
 			}
 		}
 
 		// Checking if all mandatory keys are present
-		class_tag::all_const_key_iterators k = stack_.top()->keys();
-		for(class_tag::const_key_iterator key = k.first; key != k.second; ++key) {
-			if(key->second.is_mandatory()) {
-				if(cfg.get(key->first) == nullptr) {
-					cache_.top()[&cfg].emplace_back(MISSING_KEY, file, start_line, 0, name, key->first);
+		for(const auto& key : stack_.top()->keys()) {
+			if(key.second.is_mandatory()) {
+				if(cfg.get(key.first) == nullptr) {
+					cache_.top()[&cfg].emplace_back(MISSING_KEY, file, start_line, 0, name, key.first);
 				}
 			}
 		}
@@ -270,7 +266,7 @@ void schema_validator::validate_key(
 		// checking existing keys
 		const class_key* key = stack_.top()->find_key(name);
 		if(key) {
-			std::map<std::string, boost::regex>::iterator itt = types_.find(key->get_type());
+			auto itt = types_.find(key->get_type());
 
 			if(itt != types_.end()) {
 				boost::smatch sub;

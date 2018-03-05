@@ -140,32 +140,9 @@ private:
 class class_tag
 {
 public:
-	typedef std::map<std::string, class_tag> tag_map;
-	typedef std::pair<std::string, class_tag> tag_map_value;
-
-	typedef std::map<std::string, class_key> key_map;
-	typedef std::pair<std::string, class_key> key_map_value;
-
-	typedef std::map<std::string, std::string> link_map;
-	typedef std::pair<std::string, std::string> link_map_value;
-
-	typedef key_map::iterator key_iterator;
-	typedef std::pair<key_iterator, key_iterator> all_key_iterators;
-
-	typedef key_map::const_iterator const_key_iterator;
-	typedef std::pair<const_key_iterator, const_key_iterator> all_const_key_iterators;
-
-	typedef tag_map::iterator tag_iterator;
-	typedef std::pair<tag_iterator, tag_iterator> all_tag_iterators;
-
-	typedef tag_map::const_iterator const_tag_iterator;
-	typedef std::pair<const_tag_iterator, const_tag_iterator> all_const_tag_iterators;
-
-	typedef link_map::iterator link_iterator;
-	typedef std::pair<link_iterator, link_iterator> all_link_iterators;
-
-	typedef link_map::const_iterator const_link_iterator;
-	typedef std::pair<const_link_iterator, const_link_iterator> all_const_link_iterators;
+	using tag_map  = std::map<std::string, class_tag>;
+	using key_map  = std::map<std::string, class_key>;
+	using link_map = std::map<std::string, std::string>;
 
 	class_tag()
 		: name_("")
@@ -317,19 +294,19 @@ public:
 	/** Calls the expansion on each child. */
 	void expand_all(class_tag& root);
 
-	all_const_tag_iterators tags() const
+	const tag_map& tags() const
 	{
-		return all_const_tag_iterators(tags_.begin(), tags_.end());
+		return tags_;
 	}
 
-	all_const_key_iterators keys() const
+	const key_map& keys() const
 	{
-		return all_const_key_iterators(keys_.begin(), keys_.end());
+		return keys_;
 	}
 
-	all_const_link_iterators links() const
+	const link_map& links() const
 	{
-		return all_const_link_iterators(links_.begin(), links_.end());
+		return links_;
 	}
 
 	void remove_key_by_name(const std::string& name)
