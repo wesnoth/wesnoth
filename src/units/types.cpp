@@ -263,9 +263,8 @@ void unit_type::build_help_index(
 	// if num_traits is not defined, we use the num_traits from race
 	num_traits_ = cfg_["num_traits"].to_int(race_->num_traits());
 
-	const std::vector<std::string> genders = utils::split(cfg_["gender"]);
-	for(std::vector<std::string>::const_iterator g = genders.begin(); g != genders.end(); ++g) {
-		genders_.push_back(string_gender(*g));
+	for(const std::string& g : utils::split(cfg_["gender"])) {
+		genders_.push_back(string_gender(g));
 	}
 
 	// For simplicity in other parts of the code, we must have at least one gender.
@@ -645,9 +644,9 @@ void unit_type::add_advancement(const unit_type& to_unit, int xp)
 		// Since these are still a rare and special-purpose feature,
 		// we assume that the unit designer knows what they're doing,
 		// and don't block advancements that would remove a variation.
-		for(variations_map::iterator v = variations_.begin(); v != variations_.end(); ++v) {
+		for(auto& v : variations_) {
 			LOG_CONFIG << "variation advancement: ";
-			v->second.add_advancement(to_unit, xp);
+			v.second.add_advancement(to_unit, xp);
 		}
 	}
 }
@@ -1328,8 +1327,8 @@ void unit_type_data::build_all(unit_type::BUILD_STATUS status)
 
 	assert(unit_cfg_ != nullptr);
 
-	for(unit_type_map::iterator u = types_.begin(), u_end = types_.end(); u != u_end; ++u) {
-		build_unit_type(u->second, status);
+	for(const auto& type : types_) {
+		build_unit_type(type.second, status);
 
 		gui2::dialogs::loading_screen::progress();
 	}
@@ -1338,8 +1337,8 @@ void unit_type_data::build_all(unit_type::BUILD_STATUS status)
 	// (Currently, this could be simply a test for build_status_ == NOT_BUILT,
 	// but to guard against future changes, use a more thorough test.)
 	if(build_status_ < unit_type::CREATED && unit_type::CREATED <= status) {
-		for(unit_type_map::iterator u = types_.begin(), u_end = types_.end(); u != u_end; ++u) {
-			add_advancement(u->second);
+		for(auto& type : types_) {
+			add_advancement(type.second);
 		}
 	}
 

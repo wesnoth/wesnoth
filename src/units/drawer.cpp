@@ -308,8 +308,8 @@ void unit_drawer::redraw_unit (const unit & u) const
 			}
 		}
 
-		for(std::vector<std::string>::const_iterator ov = u.overlays().begin(); ov != u.overlays().end(); ++ov) {
-			const surface ov_img(image::get_image(*ov, image::SCALED_TO_ZOOM));
+		for(const std::string& ov : u.overlays()) {
+			const surface ov_img(image::get_image(ov, image::SCALED_TO_ZOOM));
 			if(ov_img != nullptr) {
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
 					loc, xsrc+xoff, ysrc+yoff+adjusted_params.y, ov_img);

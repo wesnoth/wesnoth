@@ -31,14 +31,14 @@ const unit_animation* unit_animation_component::choose_animation(const display& 
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
 	int max_val = unit_animation::MATCH_FAIL;
-	for(std::vector<unit_animation>::const_iterator i = animations_.begin(); i != animations_.end(); ++i) {
-		int matching = i->matches(disp,loc,second_loc,&u_,event,value,hit,attack,second_attack,swing_num);
+	for(const unit_animation& anim : animations_) {
+		int matching = anim.matches(disp,loc,second_loc,&u_,event,value,hit,attack,second_attack,swing_num);
 		if(matching > unit_animation::MATCH_FAIL && matching == max_val) {
-			options.push_back(&*i);
+			options.push_back(&anim);
 		} else if(matching > max_val) {
 			max_val = matching;
 			options.clear();
-			options.push_back(&*i);
+			options.push_back(&anim);
 		}
 	}
 

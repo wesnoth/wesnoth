@@ -587,8 +587,8 @@ bool attack_type::get_special_bool(const std::string& special, bool simple_check
 		// If we make it to here, then either list.empty() or !simple_check.
 		// So if the list is not empty, then this is not a simple check and
 		// we need to check each special in the list to see if any are active.
-		for (std::vector<const config*>::iterator i = list.begin(), i_end = list.end(); i != i_end; ++i) {
-			if ( special_active(**i, AFFECT_SELF) ) {
+		for(const config* entry : list) {
+			if ( special_active(*entry, AFFECT_SELF) ) {
 				return true;
 			}
 		}
@@ -600,8 +600,8 @@ bool attack_type::get_special_bool(const std::string& special, bool simple_check
 
 	std::vector<const config*> list;
 	get_special_children(list, other_attack_->specials_, special);
-	for (std::vector<const config*>::iterator i = list.begin(), i_end = list.end(); i != i_end; ++i) {
-		if ( other_attack_->special_active(**i, AFFECT_OTHER) ) {
+	for(const config* entry : list) {
+		if ( other_attack_->special_active(*entry, AFFECT_OTHER) ) {
 			return true;
 		}
 	}
@@ -1208,19 +1208,21 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 	 */
 	double multiplier = 1.0;
 	double divisor = 1.0;
-	std::map<std::string,individual_effect>::const_iterator e, e_end;
-	for (e = values_mul.begin(), e_end = values_mul.end(); e != e_end; ++e) {
-		multiplier *= e->second.value/100.0;
-		effect_list_.push_back(e->second);
+
+	for(const auto& val : values_mul) {
+		multiplier *= val.second.value/100.0;
+		effect_list_.push_back(val.second);
 	}
-	for (e = values_div.begin(), e_end = values_div.end(); e != e_end; ++e) {
-		divisor *= e->second.value/100.0;
-		effect_list_.push_back(e->second);
+
+	for(const auto& val : values_div) {
+		divisor *= val.second.value/100.0;
+		effect_list_.push_back(val.second);
 	}
+
 	int addition = 0;
-	for (e = values_add.begin(), e_end = values_add.end(); e != e_end; ++e) {
-		addition += e->second.value;
-		effect_list_.push_back(e->second);
+	for(const auto& val : values_add) {
+		addition += val.second.value;
+		effect_list_.push_back(val.second);
 	}
 
 	composite_value_ = int((value_set + addition) * multiplier / divisor);
