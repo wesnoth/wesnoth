@@ -927,11 +927,24 @@ void attack::fire_event(const std::string& n)
 	config& a_weapon_cfg = ev_data.add_child("first");
 	config& d_weapon_cfg = ev_data.add_child("second");
 
+	// Need these to ensure weapon filters work correctly
+	boost::optional<attack_type::specials_context_t> a_ctx, d_ctx;
+
 	if(a_stats_->weapon != nullptr && a_.valid()) {
+		if(d_stats_->weapon != nullptr && d_.valid()) {
+			a_ctx.emplace(a_stats_->weapon->specials_context(a_.get_unit(), d_.get_unit(), a_.loc_, d_.loc_, true, d_stats_->weapon));
+		} else {
+			a_ctx.emplace(a_stats_->weapon->specials_context(a_.get_unit(), a_.loc_, true));
+		}
 		a_stats_->weapon->write(a_weapon_cfg);
 	}
 
 	if(d_stats_->weapon != nullptr && d_.valid()) {
+		if(a_stats_->weapon != nullptr && a_.valid()) {
+			d_ctx.emplace(d_stats_->weapon->specials_context(d_.get_unit(), a_.get_unit(), d_.loc_, a_.loc_, false, a_stats_->weapon));
+		} else {
+			d_ctx.emplace(d_stats_->weapon->specials_context(d_.get_unit(), d_.loc_, false));
+		}
 		d_stats_->weapon->write(d_weapon_cfg);
 	}
 
