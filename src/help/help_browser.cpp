@@ -148,9 +148,18 @@ void help_browser::handle_event(const SDL_Event &event)
 			if (!ref.empty()) {
 				const topic *t = find_topic(toplevel_, ref);
 				if (t == nullptr) {
+					//
+					// HACK: there are difficult-to-solve issues with a GUI2 popup over the
+					// GUI1 help browser (see issue #2587). Simply disabling it for now.
+					// Should be reenabled once the help browser switches to GUI2.
+					//
+					// -- vultraz, 2018-03-05
+					//
+#if 0
 					std::stringstream msg;
 					msg << _("Reference to unknown topic: ") << "'" << ref << "'.";
 					gui2::show_transient_message("", msg.str());
+#endif
 					update_cursor();
 				}
 				else {
