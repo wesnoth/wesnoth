@@ -15,6 +15,14 @@ function wesnoth.wml_actions.set_variable(cfg)
 		wesnoth.set_variable(name, wesnoth.get_variable(cfg.to_variable))
 	end
 
+	if cfg.suffix then
+		wesnoth.set_variable(name, (wesnoth.get_variable(name) or '') .. (cfg.suffix or ''))
+	end
+
+	if cfg.prefix then
+		wesnoth.set_variable(name, (cfg.prefix or '') .. (wesnoth.get_variable(name) or ''))
+	end
+
 	if cfg.add then
 		wesnoth.set_variable(name, (tonumber(wesnoth.get_variable(name)) or 0) + (tonumber(cfg.add) or 0))
 	end
