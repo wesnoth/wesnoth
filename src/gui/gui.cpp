@@ -48,7 +48,7 @@ void init()
 	//
 	config cfg;
 	try {
-		schema_validation::schema_validator validator(filesystem::get_wml_location("gui/schema.cfg"));
+		schema_validation::schema_validator validator(filesystem::get_wml_location("schema/gui.cfg"));
 
 		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
 		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location("gui/_main.cfg"), &preproc);
@@ -58,7 +58,7 @@ void init()
 		ERR_GUI_P << e.what() << '\n';
 		ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'." << std::endl;
 	} catch(const abstract_validator::error& e) {
-		ERR_GUI_P << "Setting: could not read file 'data/gui/schema.cfg'." << std::endl;
+		ERR_GUI_P << "Setting: could not read file 'data/schema/gui.cfg'." << std::endl;
 		ERR_GUI_P << e.message;
 	}
 
