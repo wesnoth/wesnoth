@@ -32,7 +32,6 @@ static lg::log_domain log_display("display");
 
 namespace gui {
 
-const int font_size = font::SIZE_SMALL;
 const int checkbox_horizontal_padding = font::SIZE_SMALL / 2;
 
 tristate_button::tristate_button(CVideo& video,
@@ -223,14 +222,6 @@ void tristate_button::draw_contents() {
 
 	const int image_w = image->w;
 	const SDL_Rect& loc = location();
-	SDL_Rect clipArea = loc;
-	const int texty = loc.y + loc.h / 2 - textRect_.h / 2 + offset;
-	int textx;
-
-	clipArea.w += image_w + checkbox_horizontal_padding;
-	textx = loc.x + image_w + checkbox_horizontal_padding / 2;
-
-	color_t button_color = font::BUTTON_COLOR;
 
 	surface scalled_item;
 	scalled_item.assign(scale_surface(itemImage_,
@@ -252,11 +243,6 @@ void tristate_button::draw_contents() {
 
 	image = nbase;
 	video().blit_surface(loc.x, loc.y, image);
-
-	clipArea.x += offset;
-	clipArea.y += offset;
-	clipArea.w -= 2 * offset;
-	clipArea.h -= 2 * offset;
 }
 
 //TODO move to widget

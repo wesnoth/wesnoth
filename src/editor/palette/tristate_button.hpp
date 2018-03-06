@@ -50,8 +50,6 @@ public:
 	bool pressed();
 	PRESSED_STATE pressed_state() const;
 
-	void set_label(const std::string& val);
-
 	bool hit(int x, int y) const;
 	virtual void enable(bool new_val=true) override;
 	void release();
@@ -82,8 +80,6 @@ protected:
 private:
 
 	void calculate_size();
-
-	std::string label_;
 
 	surface baseImage_, touchedBaseImage_, activeBaseImage_,
 		itemImage_,
