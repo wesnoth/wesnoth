@@ -166,7 +166,6 @@ void tristate_button::draw_contents() {
 	surface overlay(nullptr);
 	surface base = baseImage_;
 
-	int offset = 0;
 	switch (state_) {
 
 	case UNINIT:
@@ -220,7 +219,6 @@ void tristate_button::draw_contents() {
 
 	image = base;
 
-	const int image_w = image->w;
 	const SDL_Rect& loc = location();
 
 	surface scalled_item;
