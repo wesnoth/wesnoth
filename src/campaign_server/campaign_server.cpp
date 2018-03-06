@@ -316,6 +316,37 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				LOG_CS << "New passphrase set for '" << addon_id << "'\n";
 			}
 		}
+	} else if(ctl == "setattr") {
+		if(ctl.args_count() != 3) {
+			ERR_CS << "Incorrect number of arguments for 'setattr'\n";
+		} else {
+			const std::string& addon_id = ctl[1];
+			const std::string& key = ctl[2];
+			const std::string& value = ctl[3];
+
+			config& campaign = get_campaign(addon_id);
+
+			if(!campaign) {
+				ERR_CS << "Add-on '" << addon_id << "' not found, cannot set attribute\n";
+			} else if(key == "name") {
+				ERR_CS << "setattr cannot be used to rename add-ons\n";
+			} else if(key == "passphrase" || key == "passhash"|| key == "passsalt") {
+				ERR_CS << "setattr cannot be used to set auth data -- use setpass instead\n";
+			} else if(!campaign.has_attribute(key)) {
+				// NOTE: This is a very naive approach for validating setattr's
+				//       input, but it should generally work since add-on
+				//       uploads explicitly set all recognized attributes to
+				//       the values provided by the .pbl data or the empty
+				//       string if absent, and this is normally preserved by
+				//       the config serialization.
+				ERR_CS << "Attribute '" << value << "' is not a recognized add-on attribute\n";
+			} else {
+				campaign[key] = value;
+				write_config();
+				LOG_CS << "Set attribute on add-on '" << addon_id << "':\n"
+				       << key << "=\"" << value << "\"\n";
+			}
+		}
 	} else {
 		ERR_CS << "Unrecognized admin command: " << ctl.full() << '\n';
 	}
