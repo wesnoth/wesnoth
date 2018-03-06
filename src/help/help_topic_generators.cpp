@@ -283,7 +283,7 @@ std::string unit_topic_generator::operator()() const {
 		ss << "<img>src='" << female_portrait << "~FL(horiz)~SCALE_INTO(" << sz << ',' << sz << ")' box='no' align='right' float='yes'</img> ";
 	}
 
-	ss << "\n";
+	ss << "\n\n\n";
 
 	// Print cross-references to units that this unit advances from/to.
 	// Cross reference to the topics containing information about those units.
