@@ -108,11 +108,9 @@ void manager::add_events(const config::const_child_itors& cfgs, const std::strin
 void manager::write_events(config& cfg) const
 {
 	for(const handler_ptr& eh : event_handlers_->get_active()) {
-		if(!eh || eh->is_menu_item()) {
-			continue;
+		if(eh && !eh->is_menu_item() && !eh->disabled()) {
+			cfg.add_child("event", eh->get_config());;
 		}
-
-		cfg.add_child("event", eh->get_config());
 	}
 
 	cfg["unit_wml_ids"] = utils::join(unit_wml_ids_);
