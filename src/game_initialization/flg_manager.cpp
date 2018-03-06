@@ -275,7 +275,7 @@ void flg_manager::update_available_leaders()
 {
 	available_leaders_.clear();
 
-	if(!default_leader_type_.empty() || !side_["no_leader"].to_bool() || !leader_lock_) {
+	if(!default_leader_type_.empty() || !(side_["no_leader"].to_bool() || leader_lock_)) {
 
 		int random_pos = 0;
 		// Add a default leader if there is one.
