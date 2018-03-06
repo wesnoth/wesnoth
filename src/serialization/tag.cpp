@@ -77,6 +77,8 @@ class_type::class_type(const config& cfg)
 		}
 	} else if(cfg.has_attribute("value")) {
 		patterns_.emplace_back(cfg["value"].str());
+	} else if(cfg.has_attribute("link")) {
+		links_.emplace_back(cfg["link"].str());
 	}
 }
 
