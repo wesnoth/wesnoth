@@ -106,12 +106,14 @@ void scenario::set_sides()
 		// starting positions, then generate the additional sides
 		const int map_positions = map_->num_valid_starting_positions();
 
-		for(int pos = data_.child_count("side"); pos < map_positions; ++pos) {
-			config& side = data_.add_child("side");
-			side["side"] = pos + 1;
-			side["team_name"] = "Team " + std::to_string(pos + 1);
-			side["canrecruit"] = true;
-			side["controller"] = "human";
+		if(data_.child_count("side") == 0) {
+			for(int pos = 0; pos < map_positions; ++pos) {
+				config& side = data_.add_child("side");
+				side["side"] = pos + 1;
+				side["team_name"] = "Team " + std::to_string(pos + 1);
+				side["canrecruit"] = true;
+				side["controller"] = "human";
+			}
 		}
 
 		num_players_ = 0;
