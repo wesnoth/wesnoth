@@ -3450,13 +3450,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\widgets\label.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)Widgets\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\widgets\menu.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Widgets\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)Widgets\</ObjectFileName>
@@ -4094,7 +4087,6 @@
     <ClInclude Include="..\..\src\whiteboard\utility.hpp" />
     <ClInclude Include="..\..\src\whiteboard\visitor.hpp" />
     <ClInclude Include="..\..\src\widgets\button.hpp" />
-    <ClInclude Include="..\..\src\widgets\label.hpp" />
     <ClInclude Include="..\..\src\widgets\menu.hpp" />
     <ClInclude Include="..\..\src\widgets\scrollarea.hpp" />
     <ClInclude Include="..\..\src\widgets\scrollbar.hpp" />
