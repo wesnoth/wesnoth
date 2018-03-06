@@ -18,6 +18,7 @@
 #include "serialization/parser.hpp"
 #include "utils/functional.hpp"
 
+#include <algorithm>
 #include <cstdint>
 #include <deque>
 
@@ -26,6 +27,29 @@ static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
 #define WRN_NW LOG_STREAM(warn, log_network)
 #define ERR_NW LOG_STREAM(err, log_network)
+
+namespace
+{
+std::deque<boost::asio::const_buffer> split_buffers(boost::asio::streambuf::const_buffers_type source_buffers)
+{
+	const unsigned int chunk_size = 4096;
+
+	std::deque<boost::asio::const_buffer> buffers;
+	for(boost::asio::const_buffer b : source_buffers) {
+		unsigned int remaining_size = boost::asio::buffer_size(b);
+		const uint8_t* data = boost::asio::buffer_cast<const uint8_t*>(b);
+
+		while(remaining_size > 0u) {
+			unsigned int size = std::min(remaining_size, chunk_size);
+			buffers.emplace_back(data, size);
+			data += size;
+			remaining_size -= size;
+		}
+	}
+
+	return buffers;
+}
+}
 
 namespace network_asio
 {
@@ -119,7 +143,7 @@ void connection::transfer(const config& request, config& response)
 	payload_size_ = htonl(bytes_to_write_ - 4);
 
 	boost::asio::streambuf::const_buffers_type gzipped_data = write_buf_->data();
-	std::deque<boost::asio::const_buffer> bufs(gzipped_data.begin(), gzipped_data.end());
+	auto bufs = split_buffers(gzipped_data);
 
 	bufs.push_front(boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4));
 
