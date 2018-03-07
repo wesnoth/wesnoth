@@ -646,13 +646,13 @@ void server::handle_login(socket_ptr socket, std::shared_ptr<simple_wml::documen
 
 		// Current login procedure  for registered nicks is:
 		// - Client asks to log in with a particular nick
-		// - Server sends client random salt plus some info
+		// - Server sends client random nonce plus some info
 		// 	generated from the original hash that is required to
 		// 	regenerate the hash
 		// - Client generates hash for the user provided password
-		// 	and mixes it with the received random salt
-		// - Server received salted hash, salts the valid hash with
-		// 	the same salt it sent to the client and compares the results
+		// 	and mixes it with the received random nonce
+		// - Server received password hash hashed with the nonce,
+		// applies the nonce to the valid hash and compares the results
 
 		bool registered = false;
 		if(user_handler_) {
@@ -787,16 +787,16 @@ void server::handle_login(socket_ptr socket, std::shared_ptr<simple_wml::documen
 void server::send_password_request(socket_ptr socket, const std::string& msg,
 								   const std::string& user, const char* error_code, bool force_confirmation)
 {
-	std::string pepper = user_handler_->create_pepper(user);
+	std::string salt = user_handler_->extract_salt(user);
 	// If using crypt_blowfish, use 32 random Base64 characters, cryptographic-strength, 192 bits entropy
 	// else (phppass, MD5, $H$), use 8 random integer digits, not secure, do not use, this is crap, 29.8 bits entropy
-	std::string salt {
-		/* if   */ (pepper[1] == '2')
-		/* then */ ? user_handler_->create_secure_salt()
-		/* else */ : user_handler_->create_salt()
+	std::string nonce {
+		/* if   */ (salt[1] == '2')
+		/* then */ ? user_handler_->create_secure_nonce()
+		/* else */ : user_handler_->create_unsecure_nonce()
 	};
-	std::string spices = pepper + salt;
-	if(user_handler_->use_phpbb_encryption() && pepper.empty()) {
+	std::string password_challenge = salt + nonce;
+	if(user_handler_->use_phpbb_encryption() && salt.empty()) {
 		async_send_error(socket, "Even though your nickname is registered on this server you "
 								 "cannot log in due to an error in the hashing algorithm. "
 								 "Logging into your forum account on https://forums.wesnoth.org "
@@ -805,14 +805,14 @@ void server::send_password_request(socket_ptr socket, const std::string& msg,
 		return;
 	}
 
-	seeds_[reinterpret_cast<long int>(socket.get())] = salt;
+	seeds_[reinterpret_cast<long int>(socket.get())] = nonce;
 
 	simple_wml::document doc;
 	simple_wml::node& e = doc.root().add_child("error");
 	e.set_attr_dup("message", msg.c_str());
 	e.set_attr("password_request", "yes");
 	e.set_attr("phpbb_encryption", user_handler_->use_phpbb_encryption() ? "yes" : "no");
-	e.set_attr_dup("salt", spices.c_str());
+	e.set_attr_dup("salt", password_challenge.c_str());
 	e.set_attr("force_confirmation", force_confirmation ? "yes" : "no");
 	if(*error_code != '\0') {
 		e.set_attr("error_code", error_code);

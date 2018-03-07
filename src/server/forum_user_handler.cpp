@@ -90,7 +90,7 @@ bool fuh::login(const std::string& name, const std::string& password, const std:
 	return false;
 }
 
-std::string fuh::create_pepper(const std::string& name) {
+std::string fuh::extract_salt(const std::string& name) {
 
 	// Some double security, this should never be needed
 	if(!(user_exists(name))) {
