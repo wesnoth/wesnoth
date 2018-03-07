@@ -8,18 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1EF6CE8214D9846D00ECBE58 /* mp_host_game_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */; };
-		460779B0203EFF49007C8186 /* crypt_gensalt.c in Sources */ = {isa = PBXBuildFile; fileRef = 460779A1203EFF49007C8186 /* crypt_gensalt.c */; };
-		460779B1203EFF49007C8186 /* crypt_gensalt.c in Sources */ = {isa = PBXBuildFile; fileRef = 460779A1203EFF49007C8186 /* crypt_gensalt.c */; };
-		460779B3203EFF49007C8186 /* wrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 460779A4203EFF49007C8186 /* wrapper.c */; };
-		460779B4203EFF49007C8186 /* wrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 460779A4203EFF49007C8186 /* wrapper.c */; };
-		460779B6203EFF49007C8186 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 460779A8203EFF49007C8186 /* crypt_blowfish.c */; };
-		460779B7203EFF49007C8186 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 460779A8203EFF49007C8186 /* crypt_blowfish.c */; };
-		460779B9203EFF49007C8186 /* bcrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 460779AB203EFF49007C8186 /* bcrypt.c */; };
-		460779BA203EFF49007C8186 /* bcrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 460779AB203EFF49007C8186 /* bcrypt.c */; };
-		460779BD203EFFAE007C8186 /* bcrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 460779AB203EFF49007C8186 /* bcrypt.c */; };
-		460779BE203EFFBA007C8186 /* crypt_gensalt.c in Sources */ = {isa = PBXBuildFile; fileRef = 460779A1203EFF49007C8186 /* crypt_gensalt.c */; };
-		460779BF203EFFBA007C8186 /* wrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 460779A4203EFF49007C8186 /* wrapper.c */; };
-		460779C0203EFFBA007C8186 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 460779A8203EFF49007C8186 /* crypt_blowfish.c */; };
 		463896712034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
 		463896722034180900075E54 /* deprecation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 463896702034180900075E54 /* deprecation.cpp */; };
 		4649B87A202886F000827CFB /* test_irdya_date.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4649B879202886F000827CFB /* test_irdya_date.cpp */; };
@@ -112,6 +100,9 @@
 		469EC8EC20287C4A008A0CAD /* surrender_quit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469EC8EA20287C49008A0CAD /* surrender_quit.cpp */; };
 		46B2A7C12028DDA2006C2323 /* libpng16.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C243118EF07B4001FA499 /* libpng16.16.dylib */; };
 		46BED4DA2050711600842FA5 /* scenario-story.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 46BED4D92050710800842FA5 /* scenario-story.cfg */; };
+		46BED4D3205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
+		46BED4D4205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
+		46BED4D52050611600842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		4944F40D1354FB760027E614 /* drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40C1354FB760027E614 /* drawing.cpp */; };
 		4944F4121354FB970027E614 /* debug_clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40E1354FB970027E614 /* debug_clock.cpp */; };
 		4944F4131354FB970027E614 /* mp_login.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40F1354FB970027E614 /* mp_login.cpp */; };
@@ -1437,15 +1428,6 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_host_game_prompt.cpp; sourceTree = "<group>"; };
 		1EF6CE8114D9846D00ECBE58 /* mp_host_game_prompt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_host_game_prompt.hpp; sourceTree = "<group>"; };
-		460779A1203EFF49007C8186 /* crypt_gensalt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt_gensalt.c; sourceTree = "<group>"; };
-		460779A2203EFF49007C8186 /* crypt_blowfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt_blowfish.h; sourceTree = "<group>"; };
-		460779A4203EFF49007C8186 /* wrapper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wrapper.c; sourceTree = "<group>"; };
-		460779A5203EFF49007C8186 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
-		460779A6203EFF49007C8186 /* crypt_gensalt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt_gensalt.h; sourceTree = "<group>"; };
-		460779A8203EFF49007C8186 /* crypt_blowfish.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt_blowfish.c; sourceTree = "<group>"; };
-		460779AA203EFF49007C8186 /* ow-crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ow-crypt.h"; sourceTree = "<group>"; };
-		460779AB203EFF49007C8186 /* bcrypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bcrypt.c; sourceTree = "<group>"; };
-		460779AE203EFF49007C8186 /* bcrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bcrypt.h; sourceTree = "<group>"; };
 		4638966F2034180800075E54 /* deprecation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = deprecation.hpp; sourceTree = "<group>"; };
 		463896702034180900075E54 /* deprecation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = deprecation.cpp; sourceTree = "<group>"; };
 		4649B879202886F000827CFB /* test_irdya_date.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_irdya_date.cpp; sourceTree = "<group>"; };
@@ -1454,6 +1436,8 @@
 		469EC8EA20287C49008A0CAD /* surrender_quit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surrender_quit.cpp; sourceTree = "<group>"; };
 		469EC8EB20287C49008A0CAD /* surrender_quit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = surrender_quit.hpp; sourceTree = "<group>"; };
 		46BED4D92050710800842FA5 /* scenario-story.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "scenario-story.cfg"; sourceTree = "<group>"; };
+		46BED4D0205060EA00842FA5 /* crypt_blowfish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt_blowfish.h; sourceTree = "<group>"; };
+		46BED4D1205060EA00842FA5 /* crypt_blowfish.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt_blowfish.c; sourceTree = "<group>"; };
 		46DF5BCB1F46173700BE6D24 /* irdya_datetime.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = irdya_datetime.hpp; sourceTree = "<group>"; };
 		46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = irdya_datetime.cpp; sourceTree = "<group>"; };
 		4944F40C1354FB760027E614 /* drawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drawing.cpp; sourceTree = "<group>"; };
@@ -2950,7 +2934,6 @@
 				B52EE8A2121359A600CFBDAB /* arrow.hpp */,
 				B5599AD00EC62181008DD061 /* attack_prediction.cpp */,
 				B5599ACB0EC62181008DD061 /* attack_prediction.hpp */,
-				4607799E203EFF49007C8186 /* bcrypt */,
 				B5599AC80EC62181008DD061 /* boilerplate-header.cpp */,
 				91B621801B766ED500B00E0F /* buffered_istream.hpp */,
 				91B621A11B76A3CC00B00E0F /* build_info.cpp */,
@@ -2978,6 +2961,7 @@
 				B5599A9F0EC62181008DD061 /* controller_base.hpp */,
 				EC45DEDC1AD1CEA300BD760C /* countdown_clock.cpp */,
 				91B621A51B76A77400B00E0F /* countdown_clock.hpp */,
+				46BED4CE205060EA00842FA5 /* crypt_blowfish */,
 				B5599A9D0EC62181008DD061 /* cursor.cpp */,
 				B5599A9C0EC62181008DD061 /* cursor.hpp */,
 				463896702034180900075E54 /* deprecation.cpp */,
@@ -3265,26 +3249,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4607799E203EFF49007C8186 /* bcrypt */ = {
+		46BED4CE205060EA00842FA5 /* crypt_blowfish */ = {
 			isa = PBXGroup;
 			children = (
-				460779A0203EFF49007C8186 /* crypt_blowfish */,
-				460779AB203EFF49007C8186 /* bcrypt.c */,
-				460779AE203EFF49007C8186 /* bcrypt.h */,
-			);
-			path = bcrypt;
-			sourceTree = "<group>";
-		};
-		460779A0203EFF49007C8186 /* crypt_blowfish */ = {
-			isa = PBXGroup;
-			children = (
-				460779A1203EFF49007C8186 /* crypt_gensalt.c */,
-				460779A2203EFF49007C8186 /* crypt_blowfish.h */,
-				460779A4203EFF49007C8186 /* wrapper.c */,
-				460779A5203EFF49007C8186 /* crypt.h */,
-				460779A6203EFF49007C8186 /* crypt_gensalt.h */,
-				460779A8203EFF49007C8186 /* crypt_blowfish.c */,
-				460779AA203EFF49007C8186 /* ow-crypt.h */,
+				46BED4D0205060EA00842FA5 /* crypt_blowfish.h */,
+				46BED4D1205060EA00842FA5 /* crypt_blowfish.c */,
 			);
 			path = crypt_blowfish;
 			sourceTree = "<group>";
@@ -4955,9 +4924,9 @@
 				B55BE03211234AAB00154E6C /* astarsearch.cpp in Sources */,
 				B5599B910EC62181008DD061 /* attack_prediction.cpp in Sources */,
 				B54AC6DF0FEA9EB5006F6FBD /* attack.cpp in Sources */,
+				46BED4D3205060EA00842FA5 /* crypt_blowfish.c in Sources */,
 				ECD26C8D1FE5730700E663E1 /* gui_definition.cpp in Sources */,
 				B52EE91612135AC300CFBDAB /* attack.cpp in Sources */,
-				460779B0203EFF49007C8186 /* crypt_gensalt.c in Sources */,
 				620A386E15E9364E00A4F513 /* attack.cpp in Sources */,
 				EC67F7FD1DB314580038337E /* text.cpp in Sources */,
 				B5599B040EC62181008DD061 /* binary_or_text.cpp in Sources */,
@@ -5350,7 +5319,6 @@
 				B52EE88C1213589100CFBDAB /* unit_attack.cpp in Sources */,
 				B59F9733103716E400A57C1A /* unit_create.cpp in Sources */,
 				B5599AED0EC62181008DD061 /* udisplay.cpp in Sources */,
-				460779B9203EFF49007C8186 /* bcrypt.c in Sources */,
 				EC387E70195AFB5C00FC0342 /* drawer.cpp in Sources */,
 				EC2864301967989000168DFF /* filter.cpp in Sources */,
 				EC08023C194D0A80009E0050 /* formula_manager.cpp in Sources */,
@@ -5400,7 +5368,6 @@
 				EC5401891EBE0C4500AE66EE /* lobby.cpp in Sources */,
 				9130A4601C73BB6100852782 /* select_orb_colors.cpp in Sources */,
 				ECE272451FA03AAF004F0908 /* lobby.cpp in Sources */,
-				460779B6203EFF49007C8186 /* crypt_blowfish.c in Sources */,
 				91DCA6891C9066CC0030F8D0 /* unit_preview_pane.cpp in Sources */,
 				91DCA68D1C9066EC0030F8D0 /* unit_recruit.cpp in Sources */,
 				9122417C1CAAB7B7008B347F /* loading_screen.cpp in Sources */,
@@ -5417,7 +5384,6 @@
 				EC5401881EBE0C4500AE66EE /* general.cpp in Sources */,
 				913D26771D3C9697002FF3AB /* name_generator_factory.cpp in Sources */,
 				918438611D503E4000C42277 /* unit_recall.cpp in Sources */,
-				460779B3203EFF49007C8186 /* wrapper.c in Sources */,
 				9176FECE1D59745F006EF694 /* unit_list.cpp in Sources */,
 				9193FC751D5A62FA004F6C07 /* unit_advance.cpp in Sources */,
 				9193FC791D5AC2D8004F6C07 /* game_stats.cpp in Sources */,
@@ -5785,6 +5751,7 @@
 				91A214F31CAD669D00927AEA /* lua_map_generator.cpp in Sources */,
 				91A214F41CAD669D00927AEA /* map_create.cpp in Sources */,
 				91A214F51CAD669D00927AEA /* map_generator.cpp in Sources */,
+				46BED4D4205060EA00842FA5 /* crypt_blowfish.c in Sources */,
 				91A214F61CAD669D00927AEA /* generic_event.cpp in Sources */,
 				91A214F71CAD66B900927AEA /* command_executor.cpp in Sources */,
 				91A214F81CAD66B900927AEA /* hotkey_command.cpp in Sources */,
@@ -5806,7 +5773,6 @@
 				463896722034180900075E54 /* deprecation.cpp in Sources */,
 				91A215081CAD673700927AEA /* reports.cpp in Sources */,
 				91A215091CAD675900927AEA /* show_dialog.cpp in Sources */,
-				460779B1203EFF49007C8186 /* crypt_gensalt.c in Sources */,
 				91A2150A1CAD675900927AEA /* sound.cpp in Sources */,
 				91A2150B1CAD675900927AEA /* sound_music_track.cpp in Sources */,
 				91A2150C1CAD675900927AEA /* soundsource.cpp in Sources */,
@@ -5818,7 +5784,6 @@
 				91A215121CAD677400927AEA /* time_of_day.cpp in Sources */,
 				4649B8C62028911C00827CFB /* mp_join_game.cpp in Sources */,
 				91A215131CAD677400927AEA /* tooltips.cpp in Sources */,
-				460779B4203EFF49007C8186 /* wrapper.c in Sources */,
 				91A215141CAD677400927AEA /* make_enum.cpp in Sources */,
 				91A215151CAD687A00927AEA /* video.cpp in Sources */,
 				4649B8A8202890F600827CFB /* file_dialog.cpp in Sources */,
@@ -5913,7 +5878,6 @@
 				91A215A91CAD924000927AEA /* preprocessor.cpp in Sources */,
 				91A215AA1CAD924000927AEA /* schema_validator.cpp in Sources */,
 				91A215AB1CAD924000927AEA /* string_utils.cpp in Sources */,
-				460779BA203EFF49007C8186 /* bcrypt.c in Sources */,
 				91A215AC1CAD924000927AEA /* tokenizer.cpp in Sources */,
 				91A215AD1CAD924000927AEA /* unicode.cpp in Sources */,
 				91A215AE1CAD924000927AEA /* validator.cpp in Sources */,
@@ -5983,7 +5947,6 @@
 				91A216281CAD9D4300927AEA /* text_box_base.cpp in Sources */,
 				4649B88820288E5200827CFB /* multimenu_button.cpp in Sources */,
 				91A2162A1CAD9D4300927AEA /* text_box.cpp in Sources */,
-				460779B7203EFF49007C8186 /* crypt_blowfish.c in Sources */,
 				91A2162C1CAD9D4300927AEA /* toggle_button.cpp in Sources */,
 				91A2162E1CAD9D4300927AEA /* toggle_panel.cpp in Sources */,
 				91A216301CAD9D4300927AEA /* tree_view.cpp in Sources */,
@@ -6068,7 +6031,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC0341E21ECF4712000F2E2B /* config_attribute_value.cpp in Sources */,
-				460779BD203EFFAE007C8186 /* bcrypt.c in Sources */,
 				B5BB6B8B0F893E7500444FBF /* ban.cpp in Sources */,
 				B5BB6C8D0F89447200444FBF /* binary_or_text.cpp in Sources */,
 				B5BB6C820F89437400444FBF /* color_range.cpp in Sources */,
@@ -6082,14 +6044,12 @@
 				B5BB6C6F0F8941CD00444FBF /* game_config.cpp in Sources */,
 				B5BB6B7D0F893E7500444FBF /* game.cpp in Sources */,
 				EC4DF45619FEA7A8000EC086 /* gettext_boost.cpp in Sources */,
-				460779BF203EFFBA007C8186 /* wrapper.c in Sources */,
 				B5BB6C800F89435300444FBF /* log.cpp in Sources */,
 				B5BB6B880F893E7500444FBF /* metrics.cpp in Sources */,
-				460779BE203EFFBA007C8186 /* crypt_gensalt.c in Sources */,
+				46BED4D52050611600842FA5 /* crypt_blowfish.c in Sources */,
 				EC64D7661A085F120092EF75 /* mt_rng.cpp in Sources */,
 				B5BB6C8F0F89448000444FBF /* parser.cpp in Sources */,
 				B54AC6800FEA9C4A006F6FBD /* player_network.cpp in Sources */,
-				460779C0203EFFBA007C8186 /* crypt_blowfish.c in Sources */,
 				B5BB6B870F893E7500444FBF /* player.cpp in Sources */,
 				B5BB6C900F89448100444FBF /* preprocessor.cpp in Sources */,
 				B5BB6B850F893E7500444FBF /* sample_user_handler.cpp in Sources */,
