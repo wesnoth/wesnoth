@@ -36,8 +36,8 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	, side_(side)
 	, saved_game_(saved_game)
 	, has_no_recruits_(get_original_recruits(side_).empty() && side_["previous_recruits"].empty())
-	, faction_lock_(side_["faction_lock"].to_bool(lock_settings) && (use_map_settings || lock_settings))
-	, leader_lock_(side_["leader_lock"].to_bool(lock_settings) && (use_map_settings || lock_settings))
+	, faction_lock_(side_["faction_lock"].to_bool(lock_settings))
+	, leader_lock_(side_["leader_lock"].to_bool(lock_settings))
 	, available_factions_()
 	, available_leaders_()
 	, available_genders_()
@@ -80,6 +80,9 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 			default_leader_cfg_ = nullptr;
 		}
 	}
+		
+	leader_lock_ = leader_lock_ && (use_map_settings || lock_settings || default_leader_type_.empty());
+	faction_lock_ = faction_lock_ && (use_map_settings || lock_settings);
 
 	update_available_factions();
 
@@ -275,7 +278,7 @@ void flg_manager::update_available_leaders()
 {
 	available_leaders_.clear();
 
-	if(!default_leader_type_.empty() || !side_["no_leader"].to_bool() || !leader_lock_) {
+	if(!default_leader_type_.empty() || !(side_["no_leader"].to_bool() || leader_lock_)) {
 
 		int random_pos = 0;
 		// Add a default leader if there is one.

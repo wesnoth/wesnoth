@@ -29,7 +29,7 @@ class flg_manager
 {
 public:
 	flg_manager(const std::vector<const config*>& era_factions,
-		const config& side, const bool faction_lock, const bool leader_lock, const bool saved_game);
+		const config& side, bool lock_settings, bool use_map_settings, bool saved_game);
 
 	void set_current_faction(const unsigned index);
 	void set_current_faction(const std::string& id);
@@ -109,8 +109,8 @@ private:
 	const bool saved_game_;
 	const bool has_no_recruits_;
 
-	const bool faction_lock_;
-	const bool leader_lock_;
+	bool faction_lock_;
+	bool leader_lock_;
 
 	// All factions which could be played by a side (including Random).
 	std::vector<const config*> available_factions_;
