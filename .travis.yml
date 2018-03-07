@@ -7,7 +7,7 @@ services:
 cache:
   ccache: true
   directories:
-    - build-cache
+    - $HOME/build-cache
 
 matrix:
   include:
