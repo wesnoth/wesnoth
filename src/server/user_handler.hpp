@@ -124,15 +124,15 @@ class user_handler {
 		void init_mailer(const config &c);
 
 		/** Create a random string of digits for password encryption. */
-		std::string create_salt(int length = 8);
-		std::string create_secure_salt();
+		std::string create_unsecure_nonce(int length = 8);
+		std::string create_secure_nonce();
 
 		/**
 		 * Create custom salt.
 		 *
 		 * If not needed let it return and empty string or whatever you feel like.
 		 */
-		virtual std::string create_pepper(const std::string& username) =0;
+		virtual std::string extract_salt(const std::string& username) =0;
 
 		/**
 		 * Does this user_handler want passwords passed encrypted using phpbb's algorithm?

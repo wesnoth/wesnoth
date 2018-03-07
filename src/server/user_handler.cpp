@@ -39,7 +39,7 @@ bool user_handler::send_mail(const std::string& to_user,
 void user_handler::init_mailer(const config &) {
 }
 
-std::string user_handler::create_salt(int length) {
+std::string user_handler::create_unsecure_nonce(int length) {
 	srand(static_cast<unsigned>(time(nullptr)));
 
 	std::stringstream ss;
@@ -85,7 +85,7 @@ namespace {
 	};
 }
 
-std::string user_handler::create_secure_salt()
+std::string user_handler::create_secure_nonce()
 {
 	// Must be full base64 encodings (3 bytes = 4 chars) else we skew the PRNG results
 	unsigned char buf [((3 * 32) / 4)];

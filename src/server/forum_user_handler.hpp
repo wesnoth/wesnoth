@@ -57,7 +57,7 @@ class fuh : public user_handler {
 		 *
 		 * Return an empty string if an error occurs
 		 */
-		std::string create_pepper(const std::string& name);
+		std::string extract_salt(const std::string& name);
 
 		void user_logged_in(const std::string& name);
 
