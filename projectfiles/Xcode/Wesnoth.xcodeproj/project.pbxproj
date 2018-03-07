@@ -366,7 +366,6 @@
 		91A215141CAD677400927AEA /* make_enum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC53B04D1B23BB0E002F758F /* make_enum.cpp */; };
 		91A215151CAD687A00927AEA /* video.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999650EC62181008DD061 /* video.cpp */; };
 		91A215161CAD689800927AEA /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999450EC62181008DD061 /* button.cpp */; };
-		91A215181CAD689800927AEA /* label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559994F0EC62181008DD061 /* label.cpp */; };
 		91A215191CAD689800927AEA /* menu_style.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999530EC62181008DD061 /* menu_style.cpp */; };
 		91A2151C1CAD689800927AEA /* scrollarea.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999560EC62181008DD061 /* scrollarea.cpp */; };
 		91A2151D1CAD689800927AEA /* scrollbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999580EC62181008DD061 /* scrollbar.cpp */; };
@@ -879,7 +878,6 @@
 		B55999270EC61F59008DD061 /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55999240EC61F59008DD061 /* SDL2_mixer.framework */; };
 		B5599AD30EC62181008DD061 /* wml_exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999430EC62181008DD061 /* wml_exception.cpp */; };
 		B5599AD40EC62181008DD061 /* button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999450EC62181008DD061 /* button.cpp */; };
-		B5599AD90EC62181008DD061 /* label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559994F0EC62181008DD061 /* label.cpp */; };
 		B5599ADA0EC62181008DD061 /* menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999510EC62181008DD061 /* menu.cpp */; };
 		B5599ADB0EC62181008DD061 /* menu_style.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999530EC62181008DD061 /* menu_style.cpp */; };
 		B5599ADD0EC62181008DD061 /* scrollarea.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999560EC62181008DD061 /* scrollarea.cpp */; };
@@ -1985,8 +1983,6 @@
 		B55999430EC62181008DD061 /* wml_exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wml_exception.cpp; sourceTree = "<group>"; };
 		B55999450EC62181008DD061 /* button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = button.cpp; sourceTree = "<group>"; };
 		B55999460EC62181008DD061 /* button.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = button.hpp; sourceTree = "<group>"; };
-		B559994F0EC62181008DD061 /* label.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = label.cpp; sourceTree = "<group>"; };
-		B55999500EC62181008DD061 /* label.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = label.hpp; sourceTree = "<group>"; };
 		B55999510EC62181008DD061 /* menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = menu.cpp; sourceTree = "<group>"; };
 		B55999520EC62181008DD061 /* menu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = menu.hpp; sourceTree = "<group>"; };
 		B55999530EC62181008DD061 /* menu_style.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = menu_style.cpp; sourceTree = "<group>"; };
@@ -4520,8 +4516,6 @@
 				B5A9BCFB0ECA805A002BE442 /* image.cpp */,
 				B5A9BCFC0ECA805A002BE442 /* image.hpp */,
 				B5795A600F05858100EB190E /* integer_selector.hpp */,
-				B5A9BCFD0ECA805A002BE442 /* label.cpp */,
-				B5A9BCFE0ECA805A002BE442 /* label.hpp */,
 				B52EE8991213590500CFBDAB /* list.cpp */,
 				B52EE89A1213590500CFBDAB /* list.hpp */,
 				B5A9BCFF0ECA805A002BE442 /* listbox.cpp */,
@@ -5132,7 +5126,6 @@
 				ECB107D81E84B52600379898 /* story_viewer.cpp in Sources */,
 				B5599B340EC62181008DD061 /* key.cpp in Sources */,
 				91B6217C1B74E6D200B00E0F /* label_settings.cpp in Sources */,
-				B5599AD90EC62181008DD061 /* label.cpp in Sources */,
 				B5A9BD640ECA805A002BE442 /* label.cpp in Sources */,
 				B5A9BD380ECA805A002BE442 /* language_selection.cpp in Sources */,
 				B5599B330EC62181008DD061 /* language.cpp in Sources */,
@@ -5826,7 +5819,6 @@
 				91A215151CAD687A00927AEA /* video.cpp in Sources */,
 				4649B8A8202890F600827CFB /* file_dialog.cpp in Sources */,
 				91A215161CAD689800927AEA /* button.cpp in Sources */,
-				91A215181CAD689800927AEA /* label.cpp in Sources */,
 				91A215191CAD689800927AEA /* menu_style.cpp in Sources */,
 				91A2151C1CAD689800927AEA /* scrollarea.cpp in Sources */,
 				91A2151D1CAD689800927AEA /* scrollbar.cpp in Sources */,
