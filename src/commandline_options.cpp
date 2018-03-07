@@ -178,7 +178,11 @@ commandline_options::commandline_options (const std::vector<std::string>& args) 
 		 " Implies --wconsole."
 #endif // _WIN32
 		 )
-		("report,R", "initializes game directories, prints build information suitable for use in bug reports, and exits.")
+		("report,R", "initializes game directories, prints build information suitable for use in bug reports, and exits."
+#ifdef _WIN32
+		 " Implies --wconsole."
+#endif // _WIN32
+		 )
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
 		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work."
 #ifdef _WIN32

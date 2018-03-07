@@ -1035,6 +1035,8 @@ int main(int argc, char** argv)
 		   args[k] == "--logdomains" ||
 		   args[k] == "--path" ||
 		   args[k] == "--render-image" ||
+		   args[k] == "--report" ||
+		   args[k] == "-R" ||
 		   args[k] == "--screenshot" ||
 		   args[k] == "--data-path" ||
 		   args[k] == "--userdata-path" ||
