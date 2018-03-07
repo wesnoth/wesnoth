@@ -2427,8 +2427,8 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 		 * the combatant happened to be slowed.
 		 * We need to recalculate it based on the HP distribution.
 		 */
-		slowed = std::accumulate(summary[1].begin(), summary[1].end(), 0.0);
-		opponent.slowed = std::accumulate(opponent.summary[1].begin(), opponent.summary[1].end(), 0.0);
+		slowed = std::min(std::accumulate(summary[1].begin(), summary[1].end(), 0.0), 1.0);
+		opponent.slowed = std::min(std::accumulate(opponent.summary[1].begin(), opponent.summary[1].end(), 0.0), 1.0);
 	}
 
 	if(u_.experience + opponent.u_.level >= u_.max_experience) {
