@@ -16,6 +16,7 @@ WML_TEST_TIME="$8"
 PLAY_TEST="$9"
 MP_TEST="${10}"
 BOOST_TEST="${11}"
+LTO="${12}"
 
 # only enable strict builds when no optimizations are done
 if [ "$EXTRA_FLAGS_RELEASE" == "-O0" ]; then
@@ -36,6 +37,7 @@ echo "WML_TEST_TIME: $WML_TEST_TIME"
 echo "PLAY_TEST: $PLAY_TEST"
 echo "MP_TEST: $MP_TEST"
 echo "BOOST_TEST: $BOOST_TEST"
+echo "LTO: $LTO"
 
 $CXX --version
 
@@ -51,7 +53,7 @@ else
         echo "compiler_check = content" >> $HOME/.ccache/ccache.conf
         
         cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS=false \
-              -DEXTRA_FLAGS_CONFIG="-pipe" -DEXTRA_FLAGS_RELEASE="$EXTRA_FLAGS_RELEASE" -DENABLE_STRICT_COMPILATION="$STRICT" -DENABLE_LTO=false \
+              -DEXTRA_FLAGS_CONFIG="-pipe" -DEXTRA_FLAGS_RELEASE="$EXTRA_FLAGS_RELEASE" -DENABLE_STRICT_COMPILATION="$STRICT" -DENABLE_LTO="$LTO" -DLTO_JOBS=2 \
               -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache && \
               make VERBOSE=1 -j2
         BUILD_RET=$?
@@ -62,7 +64,7 @@ else
         scons wesnoth wesnothd campaignd boost_unit_tests build=release \
               ctool=$CC cxxtool=$CXX cxx_std=$CXXSTD \
               extra_flags_config="-pipe" extra_flags_release="$EXTRA_FLAGS_RELEASE" strict="$STRICT" \
-              nls=false enable_lto=false jobs=2 --debug=time
+              nls=false enable_lto="$LTO" jobs=2 --debug=time
         BUILD_RET=$?
     fi
     
