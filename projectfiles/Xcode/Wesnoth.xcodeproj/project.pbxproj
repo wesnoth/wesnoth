@@ -111,6 +111,7 @@
 		468C1B971F09245F002DF652 /* function_gamestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468C1B951F09245E002DF652 /* function_gamestate.cpp */; };
 		469EC8EC20287C4A008A0CAD /* surrender_quit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469EC8EA20287C49008A0CAD /* surrender_quit.cpp */; };
 		46B2A7C12028DDA2006C2323 /* libpng16.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C243118EF07B4001FA499 /* libpng16.16.dylib */; };
+		46BED4DA2050711600842FA5 /* scenario-story.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 46BED4D92050710800842FA5 /* scenario-story.cfg */; };
 		4944F40D1354FB760027E614 /* drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40C1354FB760027E614 /* drawing.cpp */; };
 		4944F4121354FB970027E614 /* debug_clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40E1354FB970027E614 /* debug_clock.cpp */; };
 		4944F4131354FB970027E614 /* mp_login.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40F1354FB970027E614 /* mp_login.cpp */; };
@@ -1364,6 +1365,7 @@
 				91273E9E1C7BF1D8005E7F81 /* multiplayer in Copy Data Files */,
 				91273EA11C7BF1D8005E7F81 /* scenario-leaders.cfg in Copy Data Files */,
 				91273EA21C7BF1D8005E7F81 /* scenario-movethrough.cfg in Copy Data Files */,
+				46BED4DA2050711600842FA5 /* scenario-story.cfg in Copy Data Files */,
 				91273EA41C7BF1D8005E7F81 /* scenario-test.cfg in Copy Data Files */,
 				91273EA51C7BF1D8005E7F81 /* schema-gui.cfg in Copy Data Files */,
 				91273EA61C7BF1D8005E7F81 /* schema.cfg in Copy Data Files */,
@@ -1451,6 +1453,7 @@
 		468C1B961F09245E002DF652 /* function_gamestate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = function_gamestate.hpp; sourceTree = "<group>"; };
 		469EC8EA20287C49008A0CAD /* surrender_quit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surrender_quit.cpp; sourceTree = "<group>"; };
 		469EC8EB20287C49008A0CAD /* surrender_quit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = surrender_quit.hpp; sourceTree = "<group>"; };
+		46BED4D92050710800842FA5 /* scenario-story.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "scenario-story.cfg"; sourceTree = "<group>"; };
 		46DF5BCB1F46173700BE6D24 /* irdya_datetime.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = irdya_datetime.hpp; sourceTree = "<group>"; };
 		46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = irdya_datetime.cpp; sourceTree = "<group>"; };
 		4944F40C1354FB760027E614 /* drawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drawing.cpp; sourceTree = "<group>"; };
@@ -3522,6 +3525,7 @@
 				91273E811C7BF1C2005E7F81 /* multiplayer */,
 				91273E841C7BF1C3005E7F81 /* scenario-leaders.cfg */,
 				91273E851C7BF1C3005E7F81 /* scenario-movethrough.cfg */,
+				46BED4D92050710800842FA5 /* scenario-story.cfg */,
 				91273E871C7BF1C3005E7F81 /* scenario-test.cfg */,
 				91273E881C7BF1C4005E7F81 /* schema-gui.cfg */,
 				91273E891C7BF1C4005E7F81 /* schema.cfg */,
