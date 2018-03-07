@@ -54,6 +54,7 @@ pango_text::pango_text()
 	, font_size_(14)
 	, font_style_(STYLE_NORMAL)
 	, foreground_color_() // solid white
+	, add_outline_(false)
 	, maximum_width_(-1)
 	, characters_per_line_(0)
 	, maximum_height_(-1)
@@ -462,6 +463,16 @@ pango_text& pango_text::set_link_color(const color_t& color)
 	return *this;
 }
 
+pango_text& pango_text::set_add_outline(bool do_add)
+{
+	if(do_add != add_outline_) {
+		add_outline_ = do_add;
+		//calculation_dirty_ = true;
+		surface_dirty_ = true;
+	}
+
+	return *this;
+}
 
 void pango_text::recalculate(const bool force) const
 {
@@ -632,7 +643,30 @@ void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const s
 		}
 	}
 
-	/* set color (used for foreground). */
+	//
+	// TODO: the outline may be slightly cut off around certain text if it renders too
+	// close to the surface's edge. That causes the outline to extend just slightly
+	// outside the surface's borders. I'm not sure how best to deal with this. Obviously,
+	// we want to increase the surface size, but we also don't want to invalidate all
+	// the placement and size calculations. Thankfully, it's not very noticeable.
+	//
+	// -- vultraz, 2018-03-07
+	//
+	if(add_outline_) {
+		// Add a path to the cairo context tracing the current text.
+		pango_cairo_layout_path(cr.get(), &layout);
+
+		// Set color for background outline (black).
+		cairo_set_source_rgba(cr.get(), 0.0, 0.0, 0.0, 1.0);
+
+		cairo_set_line_join(cr.get(), CAIRO_LINE_JOIN_ROUND);
+		cairo_set_line_width(cr.get(), 3.0); // Adjust as necessary
+
+		// Stroke path to draw outline.
+		cairo_stroke(cr.get());
+	}
+
+	// Set main text color.
 	cairo_set_source_rgba(cr.get(),
 		foreground_color_.r / 255.0,
 		foreground_color_.g / 255.0,
