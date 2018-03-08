@@ -556,6 +556,8 @@ public:
 	 */
 	void invalidate_animations();
 
+	void reset_standing_animations();
+
 	/**
 	 * mouseover_hex_overlay_ require a prerendered surface
 	 * and is drawn underneath the mouse's location

@@ -75,13 +75,20 @@ static lg::log_domain log_display("display");
 #define MinZoom          (zoom_levels.front())
 #define MaxZoom          (zoom_levels.back())
 
-namespace {
-	bool benchmark = false;
+namespace
+{
+bool benchmark = false;
+bool debug_foreground = false;
 
-	bool debug_foreground = false;
+int prevLabel = 0;
 
-	int prevLabel = 0;
+// frametime is in milliseconds
+static unsigned calculate_fps(unsigned frametime)
+{
+	return frametime != 0u ? 1000u / frametime : 999u;
 }
+
+} // end anon namespace
 
 unsigned int display::zoom_ = DefaultZoom;
 unsigned int display::last_zoom_ = SmallZoom;
@@ -139,7 +146,7 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	, halo_man_(new halo::manager())
 	, wb_(wb)
 	, exclusive_unit_draw_requests_()
-	, screen_(CVideo::get_singleton())
+	, video_(CVideo::get_singleton())
 	, currentTeam_(0)
 	, dont_show_all_(false)
 	, xpos_(0)
@@ -196,7 +203,6 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	, draw_num_of_bitmaps_(false)
 	, arrows_map_()
 	, color_adjust_()
-, 
 {
 	//The following assertion fails when starting a campaign
 	assert(singleton_ == nullptr);
@@ -208,9 +214,9 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 
 	read(level.child_or_empty("display"));
 
-	if(screen_.non_interactive()
-		&& (screen_.getSurface() != nullptr
-		&& screen_.faked())) {
+	if(video_.non_interactive()
+		&& (video_.getSurface() != nullptr
+		&& video_.faked())) {
 		video_.lock_updates(true);
 	}
 
@@ -418,7 +424,7 @@ void display::fill_images_list(const std::string& prefix, std::vector<std::strin
 		images.emplace_back();
 }
 
-const std::string& display::get_variant(const std::vector<std::string>& variants, const map_location &loc)
+const std::string& display::get_variant(const std::vector<std::string>& variants, const map_location &loc) const
 {
 	//TODO use better noise function
 	return variants[std::abs(loc.x + loc.y) % variants.size()];
