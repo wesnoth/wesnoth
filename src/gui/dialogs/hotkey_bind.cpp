@@ -31,7 +31,6 @@ hotkey_bind::hotkey_bind(const std::string& hotkey_id)
 	: hotkey_id_(hotkey_id)
 	, new_binding_()
 {
-	set_restore(true);
 }
 
 void hotkey_bind::pre_show(window& window)

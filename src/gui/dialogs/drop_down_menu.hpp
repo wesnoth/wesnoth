@@ -39,7 +39,6 @@ public:
 		, keep_open_(keep_open)
 		, callback_toggle_state_change_(callback_toggle_state_change)
 	{
-		set_restore(true);
 	}
 
 	int selected_item() const
