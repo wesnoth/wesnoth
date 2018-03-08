@@ -688,8 +688,15 @@ void preferences_dialog::post_build(window& window)
 					option_ids.push_back(choice["id"]);
 				}
 
-				const unsigned selected = std::distance(option_ids.begin(), std::find(option_ids.begin(), option_ids.end(),
-					get(pref_name, option["default"].str())));
+				// Attempt to find an initial selection
+				int selected = std::distance(option_ids.begin(), std::find(option_ids.begin(), option_ids.end(),
+					get(pref_name, option["default"].str())
+				));
+
+				// If the saved option value was invalid, reset selection to 0.
+				if(selected < 0 || selected >= static_cast<int>(option_ids.size())) {
+					selected = 0;
+				}
 
 				menu_button* setter_widget = build_single_widget_instance<menu_button>("menu_button");
 				setter_widget->set_id("setter");
