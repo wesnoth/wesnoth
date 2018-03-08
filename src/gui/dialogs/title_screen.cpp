@@ -138,8 +138,6 @@ title_screen::title_screen(game_launcher& game)
 	: debug_clock_()
 	, game_(game)
 {
-	set_restore(false);
-
 	// Need to set this in the constructor, pre_show() / post_build() is too late
 	set_allow_plugin_skip(false);
 }

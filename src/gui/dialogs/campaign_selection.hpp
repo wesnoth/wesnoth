@@ -38,7 +38,6 @@ public:
 		, current_sorting_(RANK)
 		, currently_sorted_asc_(true)
 	{
-		set_restore(true);
 	}
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/

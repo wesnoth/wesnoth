@@ -121,7 +121,6 @@ file_dialog::file_dialog()
 	, current_bookmark_()
 	, user_bookmarks_begin_()
 {
-	set_restore(true);
 }
 
 std::string file_dialog::path() const

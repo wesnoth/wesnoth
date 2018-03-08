@@ -51,7 +51,6 @@ statistics_dialog::statistics_dialog(const team& current_team)
 	, scenario_index_(scenarios_.size() - 1)
 	, main_stat_table_()
 {
-	set_restore(true);
 }
 
 void statistics_dialog::pre_show(window& window)

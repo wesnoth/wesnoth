@@ -63,8 +63,6 @@ void wml_message_base::set_option_list(const std::vector<wml_message_option>& op
  */
 void wml_message_base::pre_show(window& window)
 {
-	set_restore(true);
-
 	window.get_canvas(1).set_variable("portrait_image", wfl::variant(portrait_));
 	window.get_canvas(1).set_variable("portrait_mirror", wfl::variant(mirror_));
 

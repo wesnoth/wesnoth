@@ -247,7 +247,7 @@ void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& t
 {
 	std::string username = textbox.text();
 	if(username.empty()) {
-		gui2::show_transient_message("", _("No username specified"), "", false, false, true);
+		gui2::show_transient_message("", _("No username specified"), "", false, false);
 		return;
 	}
 
@@ -265,7 +265,7 @@ void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& t
 	std::tie(entry, added_new) = add_acquaintance(username, (is_friend ? "friend": "ignore"), reason);
 
 	if(!entry) {
-		gui2::show_transient_message(_("Error"), _("Invalid username"), "", false, false, true);
+		gui2::show_transient_message(_("Error"), _("Invalid username"), "", false, false);
 		return;
 	}
 
@@ -307,7 +307,7 @@ void preferences_dialog::remove_friend_list_entry(listbox& friends_list, text_bo
 	const std::string to_remove = !textbox.text().empty() ? textbox.text() : who->second.get_nick();
 
 	if(to_remove.empty()) {
-		gui2::show_transient_message("", _("No username specified"), "", false, false, true);
+		gui2::show_transient_message("", _("No username specified"), "", false, false);
 		return;
 	}
 
@@ -889,7 +889,7 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 void preferences_dialog::default_hotkey_callback(window& window)
 {
 	gui2::show_transient_message(_("Hotkeys Reset"), _("All hotkeys have been reset to their default values."),
-			std::string(), false, false, true);
+			std::string(), false, false);
 
 	clear_hotkeys();
 

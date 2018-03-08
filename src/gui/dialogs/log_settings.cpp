@@ -54,8 +54,6 @@ log_settings::log_settings()
 
 void log_settings::pre_show(window& window)
 {
-	set_restore(true); //why is this done manually?
-
 	listbox& logger_box = find_widget<listbox>(&window, "logger_listbox", false);
 
 	for(unsigned int i = 0; i < domain_list_.size(); i++){

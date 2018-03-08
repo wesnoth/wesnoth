@@ -86,7 +86,6 @@ unit_create::unit_create()
 	, choice_(last_chosen_type_id)
 	, last_words_()
 {
-	set_restore(true);
 }
 
 void unit_create::pre_show(window& window)

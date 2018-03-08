@@ -29,7 +29,6 @@ sp_options_configure::sp_options_configure(ng::create_engine& create_engine, ng:
 	, config_engine_(config_engine)
 	, options_manager_()
 {
-	set_restore(true);
 }
 
 void sp_options_configure::pre_show(window& window)

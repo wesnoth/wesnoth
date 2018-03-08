@@ -88,8 +88,6 @@ REGISTER_DIALOG(mp_server_list)
 
 void mp_server_list::pre_show(window& window)
 {
-	set_restore(true);
-
 	listbox& list = find_widget<listbox>(&window, "server_list", false);
 
 	window.keyboard_capture(&list);
@@ -170,7 +168,6 @@ mp_connect::mp_connect()
 							   preferences::set_network_host,
 							   true))
 {
-	set_restore(true);
 }
 
 void mp_connect::pre_show(window& win)

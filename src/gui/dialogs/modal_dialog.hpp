@@ -189,11 +189,6 @@ public:
 		always_save_fields_ = always_save_fields;
 	}
 
-	void set_restore(const bool restore)
-	{
-		restore_ = restore;
-	}
-
 	void set_allow_plugin_skip(const bool allow_plugin_skip)
 	{
 		allow_plugin_skip_ = allow_plugin_skip;
@@ -355,15 +350,6 @@ private:
 	 * Contains the widget that should get the focus when the window is shown.
 	 */
 	std::string focus_;
-
-	/**
-	 * Restore the screen after showing?
-	 *
-	 * Most windows should restore the display after showing so this value
-	 * defaults to true. Toplevel windows (like the titlescreen don't want this
-	 * behavior so they can change it in pre_show().
-	 */
-	bool restore_;
 
 	/**
 	 * Allow plugins to skip through the dialog?

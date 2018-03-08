@@ -69,7 +69,6 @@ network_transmission::network_transmission(
 	, subtitle_(subtitle)
 {
 	register_label("title", true, title, false);
-	set_restore(true);
 }
 
 void network_transmission::pre_show(window& window)

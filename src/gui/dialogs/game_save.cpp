@@ -50,8 +50,6 @@ REGISTER_DIALOG(game_save)
 
 game_save::game_save(std::string& filename, const std::string& title)
 {
-	set_restore(true);
-
 	register_text("txtFilename", false, filename, true);
 	register_label("lblTitle", true, title);
 }
@@ -62,8 +60,6 @@ game_save_message::game_save_message(std::string& filename,
 									   const std::string& title,
 									   const std::string& message)
 {
-	set_restore(true);
-
 	register_label("lblTitle", true, title);
 	register_text("txtFilename", false, filename, true);
 	register_label("lblMessage", true, message);
