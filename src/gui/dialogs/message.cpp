@@ -66,8 +66,6 @@ struct message_implementation
 
 void message::pre_show(window& window)
 {
-	set_restore(true);
-
 	// ***** Validate the required buttons ***** ***** ***** *****
 	message_implementation::init_button(window, buttons_[left_1], "left_side");
 	message_implementation::init_button(window, buttons_[cancel], "cancel");

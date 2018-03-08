@@ -217,7 +217,7 @@ bool uninstall_local_addons()
 
 		gui2::show_transient_message(
 			dlg_title,
-			dlg_msg + list_lead + utils::bullet_list(succeeded_names), "", false, false, true);
+			dlg_msg + list_lead + utils::bullet_list(succeeded_names), "", false, false);
 
 		return true;
 	}

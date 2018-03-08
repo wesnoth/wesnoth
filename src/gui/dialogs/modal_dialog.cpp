@@ -32,7 +32,6 @@ modal_dialog::modal_dialog()
 	, always_save_fields_(false)
 	, fields_()
 	, focus_()
-	, restore_(false)
 	, allow_plugin_skip_(true)
 	, show_even_without_video_(false)
 {
