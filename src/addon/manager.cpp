@@ -206,6 +206,7 @@ namespace {
 			"*.js",
 			"*.vbs",
 			"*.o",
+			"*.ini",
 			/* Remove junk created by certain file manager ;) */
 			"Thumbs.db",
 			/* Eclipse plugin */
