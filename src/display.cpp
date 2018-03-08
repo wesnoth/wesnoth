@@ -1449,45 +1449,6 @@ bool display::scroll(int xmove, int ymove, bool force)
 
 	labels().recalculate_shroud();
 
-
-	if(!screen_.update_locked()) {
-		surface& screen(screen_.getSurface());
-
-
-		SDL_Rect srcrect = dstrect;
-		srcrect.x -= diff_x;
-		srcrect.y -= diff_y;
-
-		// This is a workaround for a SDL2 bug when blitting on overlapping surfaces. The bug
-		// only strikes during scrolling, but will then duplicate textures across the entire map.
-		//surface screen_copy = make_neutral_surface(screen);
-
-		//SDL_SetSurfaceBlendMode(screen_copy, SDL_BLENDMODE_NONE);
-		//SDL_BlitSurface(screen_copy, &srcrect, screen, &dstrect);
-	}
-
-	if(diff_y != 0) {
-		SDL_Rect r = map_area();
-
-		if(diff_y < 0) {
-			r.y = r.y + r.h + diff_y;
-		}
-
-		r.h = std::abs(diff_y);
-		invalidate_locations_in_rect(r);
-	}
-
-	if(diff_x != 0) {
-		SDL_Rect r = map_area();
-
-		if(diff_x < 0) {
-			r.x = r.x + r.w + diff_x;
-		}
-
-		r.w = std::abs(diff_x);
-		invalidate_locations_in_rect(r);
-	}
-
 	scroll_event_.notify_observers();
 
 	redrawMinimap_ = true;
