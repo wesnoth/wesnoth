@@ -54,7 +54,7 @@ def commandline(args):
     parser.add_argument(
         '--version',
         action='version',
-        version='wmlxgettext 2018.03.09.py3'
+        version='wmlxgettext 2018.03.10.py3'
     )
     parser.add_argument(
         '-o',
@@ -90,7 +90,7 @@ def commandline(args):
         default='wesnoth',
         dest='initdom',
         help=('Initial domain value on WML/lua file when no textdomain '
-              'setted in that WML/lua file.\nBy default it is equal to '
+              'set in that WML/lua file.\nBy default it is equal to '
               '"wesnoth" and usually you don\'t need to change this value.')
     )
     parser.add_argument(
@@ -122,15 +122,15 @@ def commandline(args):
         default=False,
         dest='fuzzy',
         help=("If you specify this flag, all sentences contained on the POT "
-              "file created by wmlxgettext will be setted as fuzzy.\n"
-              "By default sentences are NOT setted as fuzzy.")
+              "file created by wmlxgettext will be set as fuzzy.\n"
+              "By default sentences are NOT set as fuzzy.")
     )
     parser.add_argument(
         '--recursive',
         action='store_true',
         default=False,
         help=("If this option is used, wmlxgettext will scan recursively the "
-              "directory setted on the '--directory' parameter and checks "
+              "directory set on the '--directory' parameter and checks "
               "itself every WML/lua file. "
               "If this option is used, EXPLICIT LIST of files will be "
               "ignored.") 
@@ -144,7 +144,7 @@ def commandline(args):
     '''
     Developer Options - not suitable for standard usage:
     --DMode is a reserved flag used to verify how wmlxgettext is internally
-            working. When this flag is used (setted to ON), an extra
+            working. When this flag is used (set to ON), an extra
             file (debug.txt) will be created. debug.txt will contain
             useful informations to check if wmlxgettext is working as expected
             (but make sense only for wmlxgettext developers/contributors)
