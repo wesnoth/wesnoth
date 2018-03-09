@@ -685,9 +685,18 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	unsigned num_attacks = swarm_blows(min_attacks, max_attacks, cur_hp, max_hp);
 
 	color_t dmg_color = font::weapon_color;
-	if ( damage > specials_damage )
+	int damage_color;
+	bool color_option = at.get_special_bool_color("damage");
+	if (color_option){
+damage_color=base_damage;
+	} else
+	{
+	damage_color=specials_damage;
+	}
+
+	if ( damage > damage_color )
 		dmg_color = font::good_dmg_color;
-	else if ( damage < specials_damage )
+	else if ( damage < damage_color )
 		dmg_color = font::bad_dmg_color;
 
 	str << span_color(dmg_color) << "  " << damage << naps << span_color(font::weapon_color)

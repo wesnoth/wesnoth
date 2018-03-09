@@ -608,6 +608,37 @@ bool attack_type::get_special_bool(const std::string& special, bool simple_check
 	return false;
 }
 
+bool attack_type::get_special_bool_color(const std::string& special, bool simple_check) const
+{
+	{
+		std::vector<const config*> list;
+		if ( get_special_children(list, specials_, special, simple_check) ) {
+			return true;
+		}
+		// If we make it to here, then either list.empty() or !simple_check.
+		// So if the list is not empty, then this is not a simple check and
+		// we need to check each special in the list to see if any are active.
+		for (std::vector<const config*>::iterator i = list.begin(), i_end = list.end(); i != i_end; ++i) {
+			if ( special_active_colored(**i, AFFECT_SELF) ) {
+				return true;
+			}
+		}
+	}
+	// Skip checking the opponent's attack?
+	if ( simple_check || !other_attack_ ) {
+		return false;
+	}
+
+	std::vector<const config*> list;
+	get_special_children(list, other_attack_->specials_, special);
+	for (std::vector<const config*>::iterator i = list.begin(), i_end = list.end(); i != i_end; ++i) {
+		if ( other_attack_->special_active_colored(**i, AFFECT_OTHER) ) {
+			return true;
+		}
+	}
+	return false;
+}
+
 /**
  * Returns the currently active specials as an ability list, given the current
  * context (see set_specials_context).
@@ -1066,6 +1097,17 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	}
 
 	return true;
+}
+
+bool attack_type::special_active_colored(const config& special,AFFECTS whom) const
+{
+	//log_scope("special_active");
+
+	// Backstab check
+		if ( special["major_report"].to_bool()&& special_active(special,whom) )
+			return true;
+
+	return false;
 }
 
 
