@@ -90,7 +90,7 @@ local function plugin()
   events, context, info = coroutine.yield()
 
     context.chat({message = "going to join"})
-	
+
   context.join({})
 
   events, context, info = coroutine.yield()

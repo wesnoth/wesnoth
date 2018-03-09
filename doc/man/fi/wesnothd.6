@@ -39,37 +39,37 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH VALITSIMET
 .
-.TP 
+.TP
 \fB\-c\ \fP\fIpolku\fP\fB,\ \-\-config\fP\fI\ polku\fP
 Kertoo wesnothdille käytettävän asetustiedoston sijainnin. Osiossa
 \fBPALVELIMEN ASETUKSET\fP alla kerrotaan sen syntaksi. Palvelinprosessin saa
 lukemaan asetustiedoston uudestaan lähettämällä sille SIGHUPin.
-.TP 
+.TP
 \fB\-d, \-\-daemon\fP
 Käynnistää wesnothdin taustaprosessina.
-.TP 
+.TP
 \fB\-h, \-\-help\fP
 Kertoo, mitä komentorivivalitsimet tekevät.
-.TP 
+.TP
 \fB\-\-log\-\fP\fItaso\fP\fB=\fP\fIaihealue1\fP\fB,\fP\fIaihealue2\fP\fB,\fP\fI...\fP
 Asettaa vakavuusasteen lokin aihealueille. Sana \fBall\fP vastaa kaikkia
 aihealueita. Käytettävissä olevat tasot: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Oletuksena käytetään \fBsever\fP\-aihealueella tasoa \fBinfo\fP ja
 muualla tasoa \fBerror\fP.
-.TP 
+.TP
 \fB\-p\ \fP\fIportti\fP\fB,\ \-\-port\fP\fI\ portti\fP
 Sitoo palvelimen annettuun porttiin. Oletuksena käytetään porttia \fB15000\fP.
-.TP 
+.TP
 \fB\-t\ \fP\fIluku\fP\fB,\ \-\-threads\fP\fI\ luku\fP
 Asettaa verkkoyhteyksiä odottavien työläissäikeiden enimmäismäärän (oletus:
 \fB5\fP,\ maksimi:\ \fB30\fP).
-.TP 
+.TP
 \fB\-T\ \fP\fIluku\fP\fB,\ \-\-max\-threads\fP\fI\ luku\fP
 Asettaa luotavien työläissäikeiden enimmäismäärän. Arvo \fB0\fP poistaa
 rajoituksen. (Oletus on \fB0\fP.)
-.TP 
+.TP
 \fB\-V, \-\-version\fP
 Näyttää versionumeron ja lopettaa.
-.TP 
+.TP
 \fB\-v, \-\-verbose\fP
 Laittaa vianjäljityslokin kirjoittamisen päälle.
 .
@@ -88,82 +88,82 @@ Laittaa vianjäljityslokin kirjoittamisen päälle.
 .
 .SS "Globaalit avaimet:"
 .
-.TP 
+.TP
 \fBallow_remote_shutdown\fP
 Jos asetettu arvoon \fBno\fP (oletus), ”shut_down”\- ja ”restart”\-pyynnöteivät
 vaikuta, elleivät ne tulo FIFO:sta. Aseta arvoon \fByes\fP salliaksesi
 etäsammutuksen ylläpitäjän käskyllä.
-.TP 
+.TP
 \fBban_save_file\fP
 Täydellinen tai suhteellinen polku (gzip\-pakattuun) tiedostoon, jota
 palvelin voi lukea ja kirjoittaa. Estot tallennetaan tähän tiedostoon ja
 luetaan siitä palvelimen käynnistyessä.
-.TP 
+.TP
 \fBcompress_stored_rooms\fP
 Määrittää, pitäisikö huonetiedostot lukea ja kirjoittaa pakatussa
 muodossa. Oletuksena kyllä(\fByes\fP).
-.TP 
+.TP
 \fBconnections_allowed\fP
 Sallittujen yhteyksien määrä samasta IP:stä. Arvo \fB0\fP poistaa
 rajoituksen. (Oletus on \fB5\fP.)
-.TP 
+.TP
 \fBdisallow_names\fP
 Nimet tai nimimerkit, joita palvelin ei hyväksy. Jokerimerkeistä toimivat
 \fB*\fP ja \fB?\fP. Lisätietoja: \fBglob\fP(7). Oletusarvot (käytössä, kun muita ei
 ole annettu) ovat:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
-.TP 
+.TP
 \fBfifo_path\fP
 The path to the fifo you can echo server commands into (same as /query
 \&... from wesnoth).  If not specified defaults to the compile\-time path
 (default: \fB/var/run/wesnothd/socket\fP).
-.TP 
+.TP
 \fBmax_messages\fP
 Sallittu määrä viestejä ajanjaksossa, joka on määritelty asetuksella
 \fBmessages_time_period\fP. (Oletus on \fB4\fP.)
-.TP 
+.TP
 \fBmessages_time_period\fP
 Ajanjakso (sekunneissa), jota käytetään viestitulvinnan
 havaitsemisessa. (Oletus on \fB10\fP.)
-.TP 
+.TP
 \fBmotd\fP
 Päivän viesti.
-.TP 
+.TP
 \fBnew_room_policy\fP
 Määrittää, ketkä voivat tehdä uusia huoneita palvelimella. Mahdollisia
 arvoja on \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP ja \fBnobody\fP (kaikki,
 rekisteröityneet, ylläpitäjä tai ei kukaan. Tässä
 järjestyksessä). Oletusarvona on \fBeveryone\fP
-.TP 
+.TP
 \fBpasswd\fP
 Salasana, jolla saa ylläpitäjän oikeudet (via \fB/query admin \fP\fIpassword\fP).
-.TP 
+.TP
 \fBreplay_save_path\fP
 Hakemisto, johon palvelin tallentaa pelien uusinnat. (Muista vinoviiva
 lopussa!) Oletus on \*(rq, joka tarkoittaa hakemistoa, jossa wesnothd
 käynnistettiin.
-.TP 
+.TP
 \fBrestart_command\fP
 Komento, jota palvelin käyttää käynnistääkseen uuden palvelinprosessin
 \fBrestart\fP\-komennosta (Annettavissa vain FIFOn kautta. Katso
 \fBallow_remote_shutdown\fP\-asetus).
-.TP 
+.TP
 \fBroom_save_file\fP
 Polku, jossa huonetiedot tulisi olla tallennettuna. Tämä tiedosto luetaan
 palvelimen käynnistyessä ja kirjoitetaan myöhemmin. Jos tyhjä tai
 asettamatta, huoneita ei ladata eikä tallenneta.
-.TP 
+.TP
 \fBsave_replays\fP
 Valitsee, tallentaako palvelin automaattisesti pelien uusinnat. (Oletus:
 \fBfalse\fP)
-.TP 
+.TP
 \fBversions_accepted\fP
 Pilkuilla eroteltu lista palvelimen hyväksymistä versioista. Jokerimerkeistä
 toimivat \fB*\fP ja \fB?\fP (Oletus on palvelimen versiota vastaava wesnothin
 versio).
 .br
 Esimerkki: \fBversions_accepted="*"\fP hyväksyy minkä tahansa version.
-.TP  
+.TP
 \fBuser_handler\fP
 Käyttäjäkäsittelijän nimi. Tällä hetkellä käytettävissä olevat käsittelijät
 ovat \fBforum\fP (jolla wesnothd yhdistetään wesnoth.orgin phpbb\-foorumin
@@ -178,13 +178,13 @@ ks. alla.
 \fB[redirect]\fP Tällä tagilla määritellään palvelin, jolle uudelleenohjataan
 tietyt asiakasversiot.
 .RS
-.TP 
+.TP
 \fBhost\fP
 Osoite palvelimelle, johon ohjataan.
-.TP 
+.TP
 \fBport\fP
 Portti, johon yhdistetään.
-.TP 
+.TP
 \fBversion\fP
 Pilkuilla eroteltu lista versioista, jotka uudelleenohjataan. Jokerimerkit
 toimivat samoin kuin asetuksessa \fBversions_accepted\fP.
@@ -193,10 +193,10 @@ toimivat samoin kuin asetuksessa \fBversions_accepted\fP.
 \fB[ban_time]\fP Tällä tagilla määritellään helppokäyttöisiä avainsanoja
 väliaikaisten estojen pituuksille.
 .RS
-.TP 
+.TP
 \fBname\fP
 Estoajasta käytettävä nimi.
-.TP 
+.TP
 \fBtime\fP
 Ajan pituuden määritelmä. Muoto on: %d[%s[%d%s[...]]] jossa %s on s
 (sekunteja), m (minuutteja), h (tunteja), D (päiviä), M (kuukausia) tai Y
@@ -215,31 +215,31 @@ riippuvat siitä, mikä käsittelijä on valittu avaimella \fBuser_handler\fP. J
 asetuksissa ei ole \fB[user_handler]\fP\-osiota, palvelin käynnistyy ilman
 nimimerkkien rekisteröintipalvelua.
 .RS
-.TP  
+.TP
 \fBdb_host\fP
 (user_handler=forum) Tietokantapalvelimen konenimi.
-.TP  
+.TP
 \fBdb_name\fP
 (user_handler=forum) Tietokannan nimi.
-.TP  
+.TP
 \fBdb_user\fP
 (user_handler=forum) Käyttäjänimi, jolla kirjaudutaan tietokantaan.
-.TP  
+.TP
 \fBdb_password\fP
 (user_handler=forum) Kyseisen käyttäjän salasana.
-.TP  
+.TP
 \fBdb_users_table\fP
 (user_handler=forum) Taulun nimi, johon phpbb\-foorumisi tallentaa
 käyttäjädatansa. Todennäköisimmin tämä on <tauluetuliite>_users
 (esim. phpbb3_users).
-.TP  
+.TP
 \fBdb_extra_table\fP
 (user_handler=sample) Sen taulun nimi, johon wesnothd tallentaa oman datansa
 käyttäjistä. Tämä taulu pitää luoda manuaalisesti, esim.: \fBCREATE TABLE
 <taulunnimi>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
 UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 0);\fP
-.TP  
+.TP
 \fBuser_expiration\fP
 (user_handler=sample) Aika, jonka kuluttua rekisteröity nimimerkki vanhenee
 (päivissä).
@@ -249,19 +249,19 @@ UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 käyttäjäkäsittelijä voi lähettää postia. Tällä hetkellä vain
 esimerkkikäsittelijän käytössä.
 .RS
-.TP  
+.TP
 \fBserver\fP
 Postipalvelimesi konenimi.
-.TP  
+.TP
 \fBusername\fP
 Käyttäjänimi, jolla kirjaudutaan postipalvelimelle.
-.TP  
+.TP
 \fBpassword\fP
 Kyseisen käyttäjän salasana.
-.TP  
+.TP
 \fBfrom_address\fP
 Postisi vastausosoite.
-.TP  
+.TP
 \fBmail_port\fP
 Portti, jota postipalvelimesi käyttää. Oletus on 25.
 .

@@ -35,7 +35,7 @@
 # Copyright 2005-2009 Kitware, Inc.
 # Copyright 2012 Benjamin Eikel
 # Copyright 2015 Andreas Löf
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
 # are met:

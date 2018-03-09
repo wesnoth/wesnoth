@@ -13,7 +13,7 @@
 #   * unbalanced tags
 #   * strings that need a translation mark and should not have them
 #   * strings that have a translation mark and should not
-#   * translatable strings containing macro references 
+#   * translatable strings containing macro references
 #   * filter references by description= not matched by an actual unit
 #   * abilities or traits without matching special notes, or vice-versa
 #   * consistency between recruit= and recruitment_pattern= instances
@@ -415,7 +415,7 @@ def maptransform1(filename, baseline, inmap, y):
     # We notice whether the maps are oldstyle (single-letter codes)
     # or newstyle (multiletter comma-seeparated fields) and retain that
     # information to help with ambiguous cases later on.  We're also relying
-    # on terrain coding to be consistent within a single subdirectory. 
+    # on terrain coding to be consistent within a single subdirectory.
     if len(inmap[y][0]) > 1:
         lock_terrain_coding = "newstyle"
     else:
@@ -605,7 +605,7 @@ def parse_attribute(str_):
 # This needs to match the list of usage types in ai_python.cpp
 usage_types = ("scout", "fighter", "mixed fighter", "archer", "healer")
 
-# These are accumulated by sanity_check() and examined by sanity_postcheck() 
+# These are accumulated by sanity_check() and examined by sanity_postcheck()
 usage = {}
 sides = []
 movetypes = []
@@ -841,7 +841,7 @@ def sanity_check(filename, lines):
             # Check correctness of translation marks and descriptions
             if key.startswith("#"): # FIXME: parse_attribute is confused.
                 pass
-            elif key == 'letter': # May be led with _s for void 
+            elif key == 'letter': # May be led with _s for void
                 pass
             elif key == 'name': # FIXME: check this someday
                 pass
@@ -879,7 +879,7 @@ def sanity_check(filename, lines):
     # Interpret magic comments for setting the sage pattern of units.
     # This copes with some wacky UtBS units that are defined with
     # variant-spawning macros.  The prototype comment looks like this:
-    #wmllint: usage of "Desert Fighter" is fighter 
+    #wmllint: usage of "Desert Fighter" is fighter
     for i, line in enumerate(lines):
         m = re.match('# *wmllint: usage of "([^"]*)" is +(.*)', line)
         if m:
@@ -1310,7 +1310,7 @@ def hack_syntax(filename, lines):
 {2}{1}{3}[attack_filter]
 {1}{3}{3}name={4}
 {1}{3}[/attack_filter]
-""".format(outer, ws, line.replace("animation", "attack_anim"), baseindent, attackname) 
+""".format(outer, ws, line.replace("animation", "attack_anim"), baseindent, attackname)
             modcount += 1
         elif converting and "[/animation]" in line:
             lines[i] = line.replace("animation", "attack_anim")
@@ -1721,7 +1721,7 @@ def translator(filename, mapxforms, textxform, versions):
             lineno += 1
         # Check for one certain error condition
         if "{" in line and "}" in line:
-            refname = line[line.find("{"):line.rfind("}")]            
+            refname = line[line.find("{"):line.rfind("}")]
             # Ignore all-caps macro arguments.
             if refname == refname.upper():
                 refname = None
@@ -1832,7 +1832,7 @@ def translator(filename, mapxforms, textxform, versions):
                 for i in range(len(outmap)):
                     outmap[i] = [outmap[i][0]] + outmap[i] + [outmap[i][-1]]
                 # Strip villages out of the edges
-                outermap(lambda n: re.sub(r"\^V[a-z]+", "", n), outmap) 
+                outermap(lambda n: re.sub(r"\^V[a-z]+", "", n), outmap)
                 # Strip keeps out of the edges
                 outermap(lambda n: re.sub(r"K([a-z]+)", r"C\1", n), outmap)
                 # Strip the starting positions out of the edges
@@ -1860,7 +1860,7 @@ def translator(filename, mapxforms, textxform, versions):
             if refre:
                 mapfile = refre.group(1)
                 if not mapfile.endswith(".map") and is_map(mapfile):
-                    newline = newline.replace(mapfile, mapfile + ".map") 
+                    newline = newline.replace(mapfile, mapfile + ".map")
             newdata.append(newline + terminator)
             if newline != line:
                 modified = True
@@ -2136,7 +2136,7 @@ if __name__ == '__main__':
             # corpus, terrain=Mm (capital letter followed by small) could be
             # interpreted either way.
             #
-            # There are some unambiguous tests: 
+            # There are some unambiguous tests:
             oldstyle = (len(value) == 1 or len(value) > 6) and not ',' in value
             newstyle = len(value) > 1 \
                        and value[0].isupper() and value[1].islower() \
@@ -2159,7 +2159,7 @@ if __name__ == '__main__':
                         if not inmacro:
                             if c == '{':
                                 inmacro = True
-                                newterrains += c                            
+                                newterrains += c
                             elif c == ',':
                                 pass
                             elif c.isspace():

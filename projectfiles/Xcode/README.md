@@ -16,7 +16,7 @@ Currently there are two types of builds:
  * Xcode 4.6.3 or higher...
  * Mac OS X 10.7.5 or higher...
  * `scons` and `gettext` (if you want to compile translations)
- * The Headers and lib folders, which can be found in the newest zip here:  
+ * The Headers and lib folders, which can be found in the newest zip here:
    https://sourceforge.net/downloads/wesnoth/unofficial/Mac%20Compile%20Stuff/
 
 ## Targets

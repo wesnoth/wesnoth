@@ -112,7 +112,7 @@ class AttributeNode:
             s += v.wml().replace(b"\"", b"\"\"")
         s += b"\""
         return s
-    
+
     def debug(self):
         return self.name.decode("utf8") + "=" + " .. ".join(
             [v.debug() for v in self.value])
@@ -357,7 +357,7 @@ class Parser:
         else:
             output = tempfile.mkdtemp(prefix="wmlparser_")
             tempdirs_to_clean.append(output)
-            
+
         self.temp_dir = output
         commandline = [self.wesnoth_exe]
         if self.data_dir:
@@ -645,7 +645,7 @@ def xmlify(tree, verbose=False, depth=0):
         for tag in n.get_all(tag = ""):
             et.append(node_to_et(tag))
         return et
-    
+
     ET.ElementTree(node_to_et(tree.get_all()[0])).write(
         sys.stdout, encoding = "unicode")
 

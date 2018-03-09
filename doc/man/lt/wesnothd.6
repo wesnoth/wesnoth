@@ -39,39 +39,39 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH PARAMETRAI
 .
-.TP 
+.TP
 \fB\-c\ \fP\fIkelias\fP\fB,\ \-\-config\fP\fI\ kelias\fP
 tells wesnothd where to find the config file to use. See the section
 \fBSERVER CONFIG\fP below for the syntax. You can reload the config with
 sending SIGHUP to the server process.
-.TP 
+.TP
 \fB\-d, \-\-daemon\fP
 paleidžia wesnothd kaip demoną.
-.TP 
+.TP
 \fB\-h, \-\-help\fP
 pasako Jums, ką daro komandinės eilutės parametrai.
-.TP 
+.TP
 \fB\-\-log\-\fP\fIlygis\fP\fB=\fP\fIdomenas1\fP\fB,\fP\fIdomenas2\fP\fB,\fP\fI...\fP
 sets the severity level of the log domains.  \fBall\fP can be used to match any
 log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.
 By default the \fBerror\fP level is used and the \fBinfo\fP level for the
 \fBserver\fP domain.
-.TP 
+.TP
 \fB\-p\ \fP\fIprievadas\fP\fB,\ \-\-port\fP\fI\ prievadas\fP
 susieja serverį su nurodytu prievadu. Jeigu prievadas nenurodytas, tai bus
 naudojamas \fB15000\fP prievadas.
-.TP 
+.TP
 \fB\-t\ \fP\fIskaičius\fP\fB,\ \-\-threads\fP\fI\ skaičius\fP
 nustato didžiausią laukiančių darbinių tinklo Į/I gijų skaičių į n
 (numatyta: \fB5\fP),\ daugiausiai:\ \fB30\fP).
-.TP 
+.TP
 \fB\-T\ \fP\fIskaičius\fP\fB,\ \-\-max\-threads\fP\fI\ skaičius\fP
 nustato maksimalų darbinių gijų, kurios bus sukurtos, skaičių. Jei nustatyta
 \fB0\fP, tai nebus jokių apribojimų (numatyta: \fB0\fP).
-.TP 
+.TP
 \fB\-V, \-\-version\fP
 parodo versijos numerį ir išsijungia.
-.TP 
+.TP
 \fB\-v, \-\-verbose\fP
 įjungia derinimo režimo išvestį.
 .
@@ -90,81 +90,81 @@ parodo versijos numerį ir išsijungia.
 .
 .SS "Globalūs raktai:"
 .
-.TP 
+.TP
 \fBallow_remote_shutdown\fP
 If set to \fBno\fP (default), shut_down and restart requests are ignored unless
 they come from the fifo.  Set it to \fByes\fP to allow remote shutdown via a
 /query by an administrator.
-.TP 
+.TP
 \fBban_save_file\fP
 Full or relative path to a (gzip compressed) file that the server can read
 and write.  Bans will be saved to this file and read again on server start.
-.TP 
+.TP
 \fBcompress_stored_rooms\fP
 Determines whether the rooms file should be read and written to in
 compressed form. Defaults to \fByes\fP.
-.TP 
+.TP
 \fBconnections_allowed\fP
 Leidžiamų prisijungimų skaičius iš to paties IP. \fB0\fP reiškia
 begalybė. (numatyta: \fB5\fP)
-.TP 
+.TP
 \fBdisallow_names\fP
 Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
 patterns are supported. See \fBglob\fP(7)  for more details.  Default values
 (used if nothing is specified) are:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
-.TP 
+.TP
 \fBfifo_path\fP
 The path to the fifo you can echo server commands into (same as /query
 \&... from wesnoth).  If not specified defaults to the compile\-time path
 (default: \fB/var/run/wesnothd/socket\fP).
-.TP 
+.TP
 \fBmax_messages\fP
 Leidžiamų pranešimų skaičius esančių \fBmessages_time_period\fP. (numatyta:
 \fB4\fP)
-.TP 
+.TP
 \fBmessages_time_period\fP
 Laiko trukmė (sekundėmis), kurioje aptinkamas užliejimas
 žinutėmis. (numatyta: \fB10\fP sekundžių)
-.TP 
+.TP
 \fBmotd\fP
 Dienos pranešimas.
-.TP 
+.TP
 \fBnew_room_policy\fP
 Determines who can create new rooms on the server. Available values are
 \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, and give the permission
 respectively to everyone, registered users, admin users or disables new room
 creation. Default value is \fBeveryone\fP.
-.TP 
+.TP
 \fBpasswd\fP
 Slaptažodis, naudojamas gauti administratoriaus teises (per \fB/query admin
 \fP\fIslaptažodis\fP).
-.TP 
+.TP
 \fBreplay_save_path\fP
 Aplankas, kuriame serveris saugos žaidimų pakartojimus (gale nepamirškite
 /!). Numatyta „“, kas reiškia tą patį aplanką, kur buvo paleistas serveris.
-.TP 
+.TP
 \fBrestart_command\fP
 Komandos, kurias serveris naudoja paleisti naują serverio procesą su
 \fBrestart\fP komanda. (Gali būti iškviesta per fifo. Žiūrėkite
 \fBallow_remote_shutdown\fP nustatymą.)
-.TP 
+.TP
 \fBroom_save_file\fP
 Path to a file where the room info should be stored. This file is read on
 server startup and written to later. If empty or not set, rooms are not
 loaded and not saved.
-.TP 
+.TP
 \fBsave_replays\fP
 Nurodo ar serveris automatiškai saugos žaidimų pakartojimus. (numatyta:
 \fBfalse\fP)
-.TP 
+.TP
 \fBversions_accepted\fP
 Kableliais atskirtų versijų, kurias pripažįsta serveris, sąrašas. Leidžia
 naudoti \fB*\fP ir \fB?\fP kaip pakaitos šablonus.  (numatytoji reikšmė: tokia
 pati versija, kaip ir serverio)
 .br
 Pavyzdys: \fBversions_accepted="*"\fP priima bet kokią versiją.
-.TP  
+.TP
 \fBuser_handler\fP
 The name of the user handler to use. Currently available user handlers are
 \fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
@@ -178,13 +178,13 @@ add a \fB[user_handler]\fP section, see below.
 \fB[redirect]\fP Elementas, nurodantis serveriui kur peradresuoti tam tikras
 klientų versijas.
 .RS
-.TP 
+.TP
 \fBhost\fP
 Serverio, į kurį peradresuoti, adresas.
-.TP 
+.TP
 \fBport\fP
 Prievadas, prie kurio jungtis.
-.TP 
+.TP
 \fBversion\fP
 Kableliais atskirtų versijų, kurias reikia peradresuoti, sąrašas. Pakaitos
 šablonų atžvilgiu, elgiasi taip pat, kaip ir \fBversions_accepted\fP.
@@ -193,10 +193,10 @@ Kableliais atskirtų versijų, kurias reikia peradresuoti, sąrašas. Pakaitos
 \fB[ban_time]\fP A tag to define convenient keywords for temporary ban time
 lengths.
 .RS
-.TP 
+.TP
 \fBname\fP
 The name used to reference the ban time.
-.TP 
+.TP
 \fBtime\fP
 The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
 (seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
@@ -215,32 +215,32 @@ on which user handler is set with the \fBuser_handler\fP key. If no
 \fB[user_handler]\fP section is present in the configuration the server will
 run without any nick registration service.
 .RS
-.TP  
+.TP
 \fBdb_host\fP
 (skirtas user_handler=forum) Duomenų bazės serverio vardas
-.TP  
+.TP
 \fBdb_name\fP
 (skirtas user_handler=forum) Duomenų bazės pavadinimas
-.TP  
+.TP
 \fBdb_user\fP
 (skirtas user_handler=forum) Naudotojo vardas, kuriuo jungtis prie duomenų
 bazės
-.TP  
+.TP
 \fBdb_password\fP
 (skirtas user_handler=forum) Šio naudotojo slaptažodis
-.TP  
+.TP
 \fBdb_users_table\fP
 (skirtas user_handler=forum) Lentelės pavadinimas, kurioje jūsų phpbb
 forumas saugo savo naudotojų duomenis. Labiausiai tikėtina, kad tai bus
 <lentelės\-priešdėlis>_users (pavyzdžiui, phpbb3_users).
-.TP  
+.TP
 \fBdb_extra_table\fP
 (skirtas user_handler=forum) Lentelės pavadinimas, kurioje wesnothd saugos
 savo duomenis apie naudotojus. Lentelę turėsite sukurti patys. Pavyzdžiui,
 šitaip: \fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY
 KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator
 TINYINT(4) NOT NULL DEFAULT 0);\fP
-.TP  
+.TP
 \fBuser_expiration\fP
 (skirtas user_handler=sample) Laikas, per kurį pasensta naudotojo
 registracija (dienomis).
@@ -249,19 +249,19 @@ registracija (dienomis).
 \fB[mail]\fP Configures an SMTP server through which the user handler can send
 mail. Currently only used by the sample user handler.
 .RS
-.TP  
+.TP
 \fBserver\fP
 Pašto serverio vardas
-.TP  
+.TP
 \fBusername\fP
 Naudotojo vardas, kuriuo bus jungiamasi prie pašto serverio.
-.TP  
+.TP
 \fBpassword\fP
 Naudotojo slaptažodis.
-.TP  
+.TP
 \fBfrom_address\fP
 Jūsų pašto atbulinio atsakymo adresas.
-.TP  
+.TP
 \fBmail_port\fP
 Prievadas, kuriame veikia jūsų pašto serveris. Numatytas yra 25.
 .

@@ -102,11 +102,11 @@ function callbacks.generate_map(params)
 			local loc = locs_list[index]
 			table.remove(locs_list, index)
 			local x, y = table.unpack(loc)
-		
+
 			if item.id then
 				map:add_location(x, y, item.id)
 			end
-		
+
 			if item.place_castle then
 				map:set_tile(x, y, params.terrain_keep)
 				for x2, y2 in MG.adjacent_tiles(x, y) do

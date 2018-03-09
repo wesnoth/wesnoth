@@ -42,38 +42,38 @@ socket.
 .
 .SH OPZIONI
 .
-.TP 
+.TP
 \fB\-c\ \fP\fIpercorso\fP\fB,\ \-\-config\fP\fI\ percorso\fP
 indica a wesnothd dove trovare il file di configurazione da usare. Vedi la
 sezione \fBSERVER CONFIG\fP più avanti per la sintassi. Puoi ricaricare la
 configurazione inviando un segnale SIGHUP al processo del server.
-.TP 
+.TP
 \fB\-d, \-\-daemon\fP
 carica wesnothd come demone.
-.TP 
+.TP
 \fB\-h, \-\-help\fP
 spiega che cosa fanno le opzioni da linea di comando.
-.TP 
+.TP
 \fB\-\-log\-\fP\fIlivello\fP\fB=\fP\fIdominio1\fP\fB,\fP\fIdominio2\fP\fB,\fP\fI...\fP
 imposta il livello di severità dei domini di debug. Puoi usare \fBall\fP per
 qualsiasi dominio di debug. Livelli disponibili: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Normalmente è usato il livello \fBerror\fP ed il livello
 \fBinfo\fP è usato per il dominio del \fBserver\fP.
-.TP 
+.TP
 \fB\-p\ \fP\fIporta\fP\fB,\ \-\-port\fP\fI\ porta\fP
 lega il server ad una porta specifica. Se non viene specificata una porta,
 sarà usata la porta \fB15000\fP.
-.TP 
+.TP
 \fB\-t\ \fP\fInumero\fP\fB,\ \-\-threads\fP\fI\ numero\fP
 imposta il numero massimo di thread da usare per l’I/O (valore predefinito:
 \fB5\fP,\ massimo:\ \fB30\fP).
-.TP 
+.TP
 \fB\-T\ \fP\fInumero\fP\fB,\ \-\-max\-threads\fP\fI\ numero\fP
 imposta il numero massimo di thread da creare. Se vale \fB0\fP non c’è limite
 (valore predefinito: \fB0\fP).
-.TP 
+.TP
 \fB\-V, \-\-version\fP
 visualizza il numero di versione ed esce.
-.TP 
+.TP
 \fB\-v, \-\-verbose\fP
 rende più prolisso il log.
 .
@@ -92,13 +92,13 @@ rende più prolisso il log.
 .
 .SS "Caratteri globali:"
 .
-.TP 
+.TP
 \fBallow_remote_shutdown\fP
 Se impostato su \fBno\fP (default), le richieste di spegnimento e ripartenza
 vengono ignorate a meno che non provengano dal socket. Impostalo a \fByes\fP
 per poter spengere remotamente il server con una /query di un
 amministratore.
-.TP 
+.TP
 \fBban_save_file\fP
 Percorso completo o relativo ad un file (compresso con gzip) che il server
 possa scrivere e leggere. L’elenco degli utenti messi al bando sarà
@@ -106,75 +106,75 @@ conservato in questo file e letto a tutti gli avvii del server.Percorso
 completo o relativo ad un file (compresso con gzip) che il server possa
 scrivere e leggere. L'elenco degli utenti messi al bando sarà conservato in
 questo file e letto a tutti gli avvii del server.
-.TP 
+.TP
 \fBcompress_stored_rooms\fP
 Determina se i file delle stanze debbano essere letti e scritti in forma
 compressa. Normalmente vale \fByes\fP.
-.TP 
+.TP
 \fBconnections_allowed\fP
 Il numero di connessioni permesse dallo stesso IP. \fB0\fP indica infinite
 connessioni (valore predefinito: \fB5\fP).
-.TP 
+.TP
 \fBdisallow_names\fP
 I nomi o nick che non sono accettati dal server. Si possono usare i
 caratteri jolly \fB*\fP e \fB?\fP. Vedi \fBglob\fP(7) per maggiori dettagli. I valori
 predefiniti (usati in mancanza di specifiche diverse) sono:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
-.TP 
+.TP
 \fBfifo_path\fP
 Il path della fifo alla quale inviare i comandi del server (come in /query
 \&... per wesnoth). Se non diversamente specificato invia allo standard
 utilizzato come path al momento della compilazione del sorgente (default:
 \fB/var/run/wesnothd/socket\fP).
-.TP 
+.TP
 \fBmax_messages\fP
 Il numero di messaggi permessi in un periodo di \fBmessages_time_period\fP
 (valore predefinito: \fB4\fP).
-.TP 
+.TP
 \fBmessages_time_period\fP
 Il periodo di tempo (in secondi) entro il quale rilevare un’inondazione di
 messaggi (valore predefinito: \fB10\fP secondi).
-.TP 
+.TP
 \fBmotd\fP
 Il messaggio del giorno.
-.TP 
+.TP
 \fBnew_room_policy\fP
 Stabilisce chi possa creare nuove stanze sul server. Valori possibili sono
 \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP e \fBnobody\fP per concedere i permessi
 rispettivamente a tutti, ad utenti registrati, ad utenti amministratori o
 per disabilitare la creazione di nuove stanze. Il valore di default è
 \fBeveryone\fP.
-.TP 
+.TP
 \fBpasswd\fP
 La password da usare per ottenere i privilegi di amministratore (con
 \fB/query admin \fP\fIpassword\fP).
-.TP 
+.TP
 \fBpercorso_salvataggio_replay\fP
 La directory in cui il server conserva i replay delle partite (Non
 dimenticare la barra «/» alla fine!). In assenza di modifiche, vale «», che
 significa la directory da cui è stato eseguito wesnothd.
-.TP 
+.TP
 \fBrestart_command\fP
 Il comando che il server utilizza per lanciare un muovo processo server
 tramite il comando \fBrestart\fP. Può essere inviato soltanto tramite la
 fifo. Per dettagli, vedi i setaggi di \fBallow_remote_shutdown\fP.
-.TP 
+.TP
 \fBroom_save_file\fP
 Percorso del file in cui memorizzare le informazioni sulle stanze. Questo
 file è letto all’avvio del server e vi viene scritto in seguito. Se è vuoto
 o non impostato, le stanze non saranno caricate o salvate.
-.TP 
+.TP
 \fBsalva_replays\fP
 Definisce se il server salverà automaticamente i replay delle
 partite. (normalmente: \fBfalse\fP)
-.TP 
+.TP
 \fBversions_accepted\fP
 Un elenco separato da virgole delle stringhe di versione che il server deve
 accettare. I caratteri jolly \fB*\fP e \fB?\fP sono ammessi (il valore predefinito
 è lo stesso della versione di wesnoth corrispondente).
 .br
 Esempio: \fBversions_accepted="*"\fP accetta tutte le stringhe di versione.
-.TP  
+.TP
 \fBuser_handler\fP
 Il nome dello user handler da utilizzare. Attualmente gli user handler
 disponibili sono \fBforum\fP (per connettere wesnothd ad un forum con database
@@ -189,13 +189,13 @@ valore di default è \fBforum\fP. Va anche aggiunto una sezione
 \fB[redirect]\fP Un tag per specificare un server a cui redirigere certe
 versioni di client.
 .RS
-.TP 
+.TP
 \fBhost\fP
 Indirizzo del server a cui reindirizzare i collegamenti
-.TP 
+.TP
 \fBport\fP
 Porta su cui connettersi
-.TP 
+.TP
 \fBversion\fP
 Una lista separata da virgole delle versioni da redirigere. Si comporta come
 \fBversions_accepted\fP per quello che riguarda lo schema dei caratteri jolly.
@@ -204,10 +204,10 @@ Una lista separata da virgole delle versioni da redirigere. Si comporta come
 \fB[ban_time]\fP Un’etichetta per definire parole chiave comode per periodi di
 messa al bando temporanei.
 .RS
-.TP 
+.TP
 \fBnome\fP
 Il nome usato per fare riferimento al periodo di messa al bando.
-.TP 
+.TP
 \fBperiodo\fP
 Definizione del formato per la rappresentazione del periodo. Il formato è
 %d[%s[%d%s[...]]] dove %s sono s (secondi), m (minuti), h (ore), D (giorni),
@@ -228,31 +228,31 @@ disponibili a seconda dello user handler selezionato con la chiave
 configurazione il server verrà lanciato sena un servizio di registrazione
 del nick.
 .RS
-.TP  
+.TP
 \fBdb_host\fP
 (per user_handler=forum) L’hostname del server del database
-.TP  
+.TP
 \fBdb_name\fP
 (per ser_handleu=forum) Il nome del database
-.TP  
+.TP
 \fBdb_user\fP
 (per user_handler=forum) Il nome dell’utente con cui connettersi al database
-.TP  
+.TP
 \fBdb_password\fP
 (per user_handler=forum) La password di questo utente
-.TP  
+.TP
 \fBdb_users_table\fP
 (per user_handler=forum) Il nome della tabella nella quale il vostro forum
 phpbb salva i dati degli utenti. Di solito questo valore è
 <table\-prefix>_users (i.e. phpbb3_users).
-.TP  
+.TP
 \fBdb_extra_table\fP
 ( per user_handler=forum) Il nome della tabella nella quale il demone
 wesnothd salverà i suoi dati degli utenti. Questa tabella deve essere creata
 manualmente, i.e: \fBCREATE TABLE <table\-name>(username VARCHAR(255)
 PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0,
 user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);\fP
-.TP  
+.TP
 \fBuser_expiration\fP
 (per user_handler=sample) Il tempo dopo cui un nome registrato scade (in
 giorni).
@@ -261,19 +261,19 @@ giorni).
 \fB[mail]\fP Configura un server SMTP attraverso il quale l’utente può inviare
 e\-mail. Attualmente utilizzato soltanto dallo user_handler sample.
 .RS
-.TP  
+.TP
 \fBserver\fP
 L’hostname del sever della posta
-.TP  
+.TP
 \fBusername\fP
 Il nome utente per connettersi al server della posta.
-.TP  
+.TP
 \fBpassword\fP
 La password di questo utente.
-.TP  
+.TP
 \fBfrom_address\fP
 L’indirizzo reply\-to della tua posta.
-.TP  
+.TP
 \fBmail_port\fP
 La porta su cui il tuo server di posta è in ascolto. Omettendo un valore,
 viene usata la 25.

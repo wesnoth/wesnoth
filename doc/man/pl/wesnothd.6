@@ -39,40 +39,40 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH OPCJE
 .
-.TP 
+.TP
 \fB\-c\ \fP\fIścieżka\fP\fB,\ \-\-config\fP\fI\ ścieżka\fP
 informuje demona wesnothd o lokalizacji pliku konfiguracyjnego. Zobacz
 rozdział \fBKONFIGURACJA SERWERA\fP poniżej, aby uzyskać informacje o
 składni. Konfigurację można przeładować wysyłając procesowi serwera proces
 SIGHUP.
-.TP 
+.TP
 \fB\-d, \-\-daemon\fP
 uruchamia wesnothd w trybie demona.
-.TP 
+.TP
 \fB\-h, \-\-help\fP
 wyświetla informacje o opcjach wiersza poleceń.
-.TP 
+.TP
 \fB\-\-log\-\fP\fIpoziom\fP\fB=\fP\fIdomena1\fP\fB,\fP\fIdomena2\fP\fB,\fP\fI...\fP
 określa poziom istotności domen debugowania. \fBall\fP oznacza dopasowanie
 wszystkich domen debugowania. Dostępne poziomy: \fBerror\fP (błędy),\ \fBwarning\fP (ostrzeżenia),\ \fBinfo\fP (informacje),\ \fBdebug\fP
 (debugowanie). Poziom domyślny to \fBerror\fP lub \fBinfo\fP (w przypadku domeny
 \fBserver\fP).
-.TP 
+.TP
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
 przypisuje serwer do określonego portu. Jeśli nie podano żadnego portu,
 używany będzie port \fB15000\fP.
-.TP 
+.TP
 \fB\-t\ \fP\fIliczba\fP\fB,\ \-\-threads\fP\fI\ liczba\fP
 ustawia maksymalną liczbę oczekujących wątków roboczych dla wejścia/wyjścia
 sieci na wartość n (domyślnie: \fB5\fP,\ maksymalnie:\ \fB30\fP).
-.TP 
+.TP
 \fB\-T\ \fP\fIliczba\fP\fB,\ \-\-max\-threads\fP\fI\ liczba\fP
 ustawia maksymalną ilość wątków roboczych, które zostaną utworzone. Wartość
 \fB0\fP (domyślna) oznacza brak limitu.
-.TP 
+.TP
 \fB\-V, \-\-version\fP
 wyświetla numer wersji i kończy działanie programu.
-.TP 
+.TP
 \fB\-v, \-\-verbose\fP
 włącza zapis dzienników debugowania.
 .
@@ -91,78 +91,78 @@ włącza zapis dzienników debugowania.
 .
 .SS "Klawisze globalne:"
 .
-.TP 
+.TP
 \fBallow_remote_shutdown\fP
 Wartość \fBno\fP (nie \- wartość domyślna) oznacza, że żądania shut_down i
 restart będą ignorowane, jeśli nie zostaną przesłane poprzez
 kolejkę. Ustawienie wartości \fByes\fP (tak) umożliwi administratorowi zdalne
 wyłączanie poprzez polecenie /query.
-.TP 
+.TP
 \fBban_save_file\fP
 Pełna lub względna ścieżka do pliku (archiwum gzip), do którego serwer ma
 dostęp do odczytu i zapisu. Blokady będą zapisywane w tym pliku i wczytywane
 ponownie podczas uruchamiania serwera.
-.TP 
+.TP
 \fBcompress_stored_rooms\fP
 Określa, czy odczyty i zapisy pliku pokoi powinny być dokonywane w postaci
 skompresowanej. Wartość domyślna: \fByes\fP (tak).
-.TP 
+.TP
 \fBconnections_allowed\fP
 Dozwolona liczba połączeń z tego samego adresu IP. \fB0\fP oznacza brak
 ograniczeń. (domyślnie: \fB5\fP)
-.TP 
+.TP
 \fBdisallow_names\fP
 Nazwy/pseudonimy, które nie są akceptowane przez serwer. Obsługiwane są
 symbole \fB*\fP i \fB?\fP z wzorców wieloznacznych. Zobacz stronę \fBglob\fP(7), aby
 uzyskać szczegółowe informacje. Wartości domyślne (używane, gdy żadne inne
 wartości nie zostaną
 podane):\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
-.TP 
+.TP
 \fBfifo_path\fP
 The path to the fifo you can echo server commands into (same as /query
 \&... from wesnoth).  If not specified defaults to the compile\-time path
 (default: \fB/var/run/wesnothd/socket\fP).
-.TP 
+.TP
 \fBmax_messages\fP
 Liczba wiadomości dopuszczanych w przedziale czasowym
 \fBmessages_time_period\fP (domyślnie: \fB4\fP).
-.TP 
+.TP
 \fBmessages_time_period\fP
 Przedział czasowy (w sekundach), na przestrzeni którego wykrywane jest
 zalewanie komunikatami (domyślnie: \fB10\fP sekund).
-.TP 
+.TP
 \fBmotd\fP
 Wiadomość dnia.
-.TP 
+.TP
 \fBnew_room_policy\fP
 Określa, kto ma uprawnienia do tworzenia nowych pokoi na serwerze. Możliwe
 wartości: \fBeveryone\fP (wszyscy użytkownicy), \fBregistered\fP (tylko
 zarejestrowani użytkownicy), \fBadmin\fP (tylko administratorzy) i \fBnobody\fP
 (nikt). Wartość domyślna: \fBeveryone\fP.
-.TP 
+.TP
 \fBpasswd\fP
 Hasło używane do uzyskania uprawnień administratora (poprzez \fB/query admin
 \fP\fIhasło\fP).
-.TP 
+.TP
 \fBreplay_save_path\fP
 Katalog na serwerze, w którym są zapisywane powtórki gier, koniecznie z
 ukośnikiem (/) na końcu. Domyślnie jest to katalog, w którym uruchomiono
 wesnothd.
-.TP 
+.TP
 \fBrestart_command\fP
 Polecenie używane przez serwer do uruchomienia nowego procesu serwera
 poleceniem \fBrestart\fP. (Może zostać wydane wyłącznie poprzez kolejkę \- patrz
 ustawienie \fBallow_remote_shutdown\fP).
-.TP 
+.TP
 \fBroom_save_file\fP
 Ścieżka do pliku, w którym należy zapisać dane pokoju. Plik jest odczytywany
 przy uruchamianiu serwera i zapisywany podczas jego pracy. Jeśli parametr
 jest pusty lub zostanie pominięty, pokoje nie będą ładowane ani zapisywane.
-.TP 
+.TP
 \fBsave_replays\fP
 Określa, czy serwer będzie automatycznie zapisywać powtórki gier. Domyślnie
 wyłączone (wartość \fBfalse\fP).
-.TP 
+.TP
 \fBversions_accepted\fP
 Oddzielana przecinkami lista łańcuchów wersji akceptowanych przez
 serwer. Obsługiwane są symbole \fB*\fP i \fB?\fP ze wzorców
@@ -170,7 +170,7 @@ wieloznacznych. (Domyślnie: odpowiednia wersja wesnoth).
 .br
 Przykład: \fBversions_accepted="*"\fP odpowiada akceptowaniu dowolnego numeru
 wersji.
-.TP  
+.TP
 \fBuser_handler\fP
 Nazwa obiektu obsługi użytkowników, który ma być używany. Obecnie dostępne
 obiekty to \fBforum\fP (aby podłączyć wesnothd do bazy danych forum phpbb) i
@@ -185,13 +185,13 @@ sekcję \fB[user_handler]\fP (patrz poniżej).
 \fB[redirect]\fP Etykieta określająca serwer, na który przekierowywane są
 okreslone wersje klientów.
 .RS
-.TP 
+.TP
 \fBhost\fP
 Adres serwera, na który ma nastąpić przekierownie.
-.TP 
+.TP
 \fBport\fP
 Numer portu, z którym ma nastąpić połączenie.
-.TP 
+.TP
 \fBversion\fP
 Oddzielana przecinkami lista wersji, które mają zostać przekierowane. Działa
 tak, jak \fBversions_accepted\fP w przypadku wzorców wieloznacznych.
@@ -200,10 +200,10 @@ tak, jak \fBversions_accepted\fP w przypadku wzorców wieloznacznych.
 \fB[ban_time]\fP Znacznik do definiowania wygodnych słów kluczowych,
 określających przedziały czasu tymczasowych blokad.
 .RS
-.TP 
+.TP
 \fBname\fP
 Nazwa używana do określenia danego czasu blokady.
-.TP 
+.TP
 \fBtime\fP
 Definicja przedziału czasowego. Format: %d[%s[%d%s[...]]], gdzie %s ma
 wartość s (sekundy), m (minuty), h (godziny), D (dni), M (miesiące) lub Y
@@ -222,32 +222,32 @@ parametry zależą od obiektu ustawionego za pomocą parametru
 \fBuser_handler\fP. W przypadku braku sekcji \fB[user_handler]\fP w konfiguracji
 serwer zostanie uruchomiony bez żadnej usługi rejestrowania pseudonimów.
 .RS
-.TP  
+.TP
 \fBdb_host\fP
 (dotyczy user_handler=forum) Nazwa hosta serwera bazy danych
-.TP  
+.TP
 \fBdb_name\fP
 (dotyczy user_handler=forum) Nazwa bazy danych
-.TP  
+.TP
 \fBdb_user\fP
 (dotyczy user_handler=forum) Nazwa użytkownika, która umożliwia zalogowanie
 się do bazy danych
-.TP  
+.TP
 \fBdb_password\fP
 (dotyczy user_handler=forum) Hasło tego użytkownika
-.TP  
+.TP
 \fBdb_users_table\fP
 (dotyczy user_handler=forum) Nazwa tabeli, w której używane forum phpbb
 zapisuje dane użytkowników. Najczęściej będzie to
 <przedrostek\-nazwy\-tabeli>_users (np. phpbb3_users).
-.TP  
+.TP
 \fBdb_extra_table\fP
 (dotyczy user_handler=forum) Nazwa tabeli, w której wesnothd będzie
 zapisywać własne dane o użytkownikach. Tabelę trzeba utworzyć ręcznie,
 np. poleceniem: \fBCREATE TABLE <nazwa\-tabeli>(username VARCHAR(255)
 PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0,
 user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);\fP
-.TP  
+.TP
 \fBuser_expiration\fP
 (dotyczy user_handler=sample) Czas ważności zarejestrowanego pseudonimu (w
 dniach).
@@ -257,19 +257,19 @@ dniach).
 użytkowników może wysyłać pocztę elektroniczną. Obecnie używane tylko przez
 obiekt 'sample'.
 .RS
-.TP  
+.TP
 \fBserver\fP
 Nazwa hosta serwera poczty.
-.TP  
+.TP
 \fBusername\fP
 Nazwa użytkownika używana do zalogowania się na serwer poczty.
-.TP  
+.TP
 \fBpassword\fP
 Hasło tego użytkownika.
-.TP  
+.TP
 \fBfrom_address\fP
 Adres do odpowiedzi w wysyłanej poczcie.
-.TP  
+.TP
 \fBmail_port\fP
 Port, na którym jest uruchomiony serwer poczty. Domyślnie: 25.
 .

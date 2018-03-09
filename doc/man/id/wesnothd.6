@@ -39,38 +39,38 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH PILIHAN
 .
-.TP 
+.TP
 \fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ path\fP
 memberitahu wesnothd dimana untuk mencari file config untuk digunakan. Lihat
 bagian \fBSERVER CONFIG\fP di bawah ini untuk sintaks. Anda dapat kembali
 memuat config dengan mengirimkan SIGHUP untuk proses server.
-.TP 
+.TP
 \fB\-d, \-\-daemon\fP
 jalanakan wesnothd sebagai daemon.
-.TP 
+.TP
 \fB\-h, \-\-help\fP
 memberitahukan kepadamu apa yang pilihan garis perintah lakukan.
-.TP 
+.TP
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 menentukan tingkat keparahan dari domain log. \fBall\fP dapat digunakan untuk
 menyesuaikan dengan semua domain log. Tersedia tingkatan: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Secara default tingkat \fBerror\fP digunakan
 dan tingkat \fBinfo\fP untuk domain \fBserver\fP.
-.TP 
+.TP
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
 mengikat server ke port tertentu. Jika port tidak ditentukan, port \fB15000\fP
 akan digunakan.
-.TP 
+.TP
 \fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ number\fP
 menetapkan jumlah maksimum menunggu urutan pekerja untuk jaringan I/O untuk
 n (default: \fB5\fP,\ max: \ \fB30\fP).
-.TP 
+.TP
 \fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ number\fP
 menetapkan jumlah maksimum dari urutan pekerja yang akan dibuat. Jika diatur
 ke \fB0\fP tidak akan ada batas (default: \fB0\fP).
-.TP 
+.TP
 \fB\-V, \-\-version\fP
 menunjukkan nomor versi dan keluar.
-.TP 
+.TP
 \fB\-v, \-\-verbose\fP
 putaran debug membukukan terpasang.
 .
@@ -89,83 +89,83 @@ putaran debug membukukan terpasang.
 .
 .SS "Kunci\-kunci global:"
 .
-.TP 
+.TP
 \fBallow_remote_shutdown\fP
 Jika diatur ke \fBno\fP (default), shut_down dan restart permintaan diabaikan
 kecuali jika mereka datang dari fifo tersebut. Set ke \fByes\fP untuk
 membolehkan remote shutdown melalui permintaan /oleh administrator.
-.TP 
+.TP
 \fBban_save_file\fP
 Penuh atau path relatif ke (gzip terkompresi) file yang server dapat membaca
 dan menulis. Larangan akan disimpan ke file ini dan membaca lagi pada
 permulaan server.
-.TP 
+.TP
 \fBcompress_stored_rooms\fP
 Menentukan apakah kamar file harus dibaca dan ditulis ke dalam bentuk
 terkompresi. Default untuk \fByes\fP.
-.TP 
+.TP
 \fBconnections_allowed\fP
 Jumlah koneksi diizinkan dari IP yang sama. \fB0\fP berarti tak
 terbatas. (Default: \fB5\fP)
-.TP 
+.TP
 \fBdisallow_names\fP
 Nama / nick yang tidak diterima oleh server. \fB*\fP dan \fB?\fP Dari pola
 wildcard yang didukung. Lihat \fBglob\fP(7) untuk lebih jelasnya. nilai default
 (digunakan jika tidak ada yang khusus) adalah:
 \fB*admin*,*admln*,*server*,ai,ai?,komputer, manusia, jaringan,pemain\fP.
-.TP 
+.TP
 \fBfifo_path\fP
 The path to the fifo you can echo server commands into (same as /query
 \&... from wesnoth).  If not specified defaults to the compile\-time path
 (default: \fB/var/run/wesnothd/socket\fP).
-.TP 
+.TP
 \fBmax_messages\fP
 Jumlah pesan yang diperbolehkan dalam \fBmessages_time_period\fP. (default:
 \fB4\fP)
-.TP 
+.TP
 \fBmessages_time_period\fP
 Jangka waktu (dalam detik) banjir pesan terdeteksi masuk (default: \fB10\fP
 detik)
-.TP 
+.TP
 \fBmotd\fP
 Pesan hari ini.
-.TP 
+.TP
 \fBnew_room_policy\fP
 Menentukan siapa yang dapat membuat kamar baru pada server. nilai\-nilai yang
 tersedia adalah \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, dan
 masing\-masing memberikan izin kepada semua orang, pengguna terdaftar, admin
 pengguna atau menonaktifkan penciptaan kamar baru. Default adalah nilai
 \fBeveryone\fP.
-.TP 
+.TP
 \fBpasswd\fP
 sandi yang digunakan untuk mendapatkan hak istimewa admin (via \fB/query
 admin \fP\fIpassword\fP).
-.TP 
+.TP
 \fBreplay_save_path\fP
 Direktori tempat menyimpan server game replays. (Jangan lupa trailing /!)
 Default ke `' yang berarti direktori wesnothd mulai masuk
-.TP 
+.TP
 \fBrestart_command\fP
 Perintah yang menggunakan server untuk memulai proses server baru melalui
 perintah \fBrestart\fP. (Bisa hanya akan dikeluarkan melalui fifo. Lihat
 pengaturan \fBallow_remote_shutdown\fP setting.)
-.TP 
+.TP
 \fBroom_save_file\fP
 Path ke file mana info kamar harus disimpan. File ini dibaca pada startup
 server dan ditulis untuk nanti. Jika kosong atau tidak disetel, kamar tidak
 dimuat dan tidak disimpan.
-.TP 
+.TP
 \fBsave_replays\fP
 Mendefinisikan apakah server secara otomatis akan menyimpan replay
 permainan. (default: \fBfalse\fP)
-.TP 
+.TP
 \fBversions_accepted\fP
 Sebuah koma daftar terpisah versi string untuk diterima oleh server. \fB*\fP
 dan \fB?\fP Dari pola wildcard yang didukung. (Default ke versi yang sesuai
 Wesnoth)
 .br
 Contoh: \fBversions_accepted="*"\fP terima versi string manapun.
-.TP  
+.TP
 \fBuser_handler\fP
 Nama pengguna untuk menggunakan pengendali. Saat ini penangan pengguna yang
 tersedia adalah \fBforum\fP  (untuk menghubungkan wesnothd ke database phpbb
@@ -180,13 +180,13 @@ di bawah.
 \fB[redirect]\fP Suatu label untuk menetapkan suatu server untuk mengalihkan
 jurusan versi klien tertentu ke.
 .RS
-.TP 
+.TP
 \fBhost\fP
 Menunjukkan server mengalihkan jurusan ke.
-.TP 
+.TP
 \fBport\fP
 pintu untuk menghubungkan ke
-.TP 
+.TP
 \fBversion\fP
 Suatu tanda koma memisahkan daftar versi untuk mengalihkan jurusan. Sama
 seperti \fBversions_accepted\fP dalam hubungan dengan pola wildcard.
@@ -195,10 +195,10 @@ seperti \fBversions_accepted\fP dalam hubungan dengan pola wildcard.
 \fB[ban_time]\fP Sebuah tag untuk menentukan kata kunci yang mudah digunakan
 untuk jangka waktu larangan sementara.
 .RS
-.TP 
+.TP
 \fBname\fP
 Nama yang digunakan untuk referensi waktu larangan.
-.TP 
+.TP
 \fBtime\fP
 Definisi waktu panjang. Formatnya adalah: %d[%s[%d%s[...]]] dimana %s adalah
 s (detik), m (menit), h (jam), D (hari), M (bulan) atau Y (tahun) dan %d
@@ -217,32 +217,32 @@ bervariasi tergantung pada penangan pengguna diatur dengan tombol
 \fBuser_handler\fP. Jika tidak ada \fB[user_handler]\fP bagian hadir di
 konfigurasi server akan berjalan tanpa ada layanan pendaftaran nick.
 .RS
-.TP  
+.TP
 \fBdb_host\fP
 (for user_handler=forum) hostname dari server basisdata
-.TP  
+.TP
 \fBdb_name\fP
 (for user_handler=forum) nama dari basisdata
-.TP  
+.TP
 \fBdb_user\fP
 (for user_handler=forum) Nama pemain yang mana  telah membukukan ke dalam
 basisdata
-.TP  
+.TP
 \fBdb_password\fP
 (for user_handler=forum) Ini adalah kata sandi pengguna
-.TP  
+.TP
 \fBdb_users_table\fP
 (for user_handler=forum) Nama pada tabel di mana phpbb forum mu menyimpan
 data pemakai nya. hampir bisa dipastikan Ini nantinya
 <table\-prefix>_users (e.g. phpbb3_users).
-.TP  
+.TP
 \fBdb_extra_table\fP
 (for user_handler=forum) Nama pada tabel di mana wesnothd akan menyimpankan
 data\-data para pemakai. Kamu akan harus membuat tabelnya sendiri, e.g.:
 \fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
 user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
 NOT NULL DEFAULT 0);\fP
-.TP  
+.TP
 \fBuser_expiration\fP
 (for user_handler=sample) Waktu setelah mana nick terdaftar berakhir (dalam
 hitungan hari).
@@ -251,19 +251,19 @@ hitungan hari).
 \fB[mail]\fP Mengkonfigurasi server SMTP melalui mana pengendali user dapat
 mengirim surat. Saat ini hanya digunakan oleh pengguna penangan sampel.
 .RS
-.TP  
+.TP
 \fBserver\fP
 Nama Host pos server
-.TP  
+.TP
 \fBusername\fP
 Nama Pemain di bawah ini adalah yang telah mencatatkan ke dalam server pos.
-.TP  
+.TP
 \fBpassword\fP
 Ini adalah kata sandi pengguna
-.TP  
+.TP
 \fBfrom_address\fP
 Pesan balasan\-dikirimkan ke alamat emailmu
-.TP  
+.TP
 \fBmail_port\fP
 Sambungan dimana server pos berada sedang berjalan. Defaultnya 25.
 .

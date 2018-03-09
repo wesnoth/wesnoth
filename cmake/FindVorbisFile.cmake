@@ -5,7 +5,7 @@
 # correspond to the ./configure --prefix=$VORBISDIR
 # used in building Vorbis.
 
-# Copied from 
+# Copied from
 # http://code.google.com/p/osgaudio/source/browse/trunk/CMakeModules/FindVorbisFile.cmake
 
 SET(VORBISFILE_SEARCH_PATHS
@@ -43,7 +43,7 @@ FIND_PATH(VORBISFILE_INCLUDE_DIR
 	PATHS ${VORBISFILE_SEARCH_PATHS}
 )
 
-FIND_LIBRARY(VORBISFILE_LIBRARY 
+FIND_LIBRARY(VORBISFILE_LIBRARY
 	NAMES vorbisfile libvorbisfile
 	HINTS
 	$ENV{VORBISFILEDIR}
@@ -55,7 +55,7 @@ FIND_LIBRARY(VORBISFILE_LIBRARY
 )
 
 # First search for d-suffixed libs
-FIND_LIBRARY(VORBISFILE_LIBRARY_DEBUG 
+FIND_LIBRARY(VORBISFILE_LIBRARY_DEBUG
 	NAMES vorbisfiled vorbisfile_d libvorbisfiled libvorbisfile_d
 	HINTS
 	$ENV{VORBISFILEDIR}
@@ -68,7 +68,7 @@ FIND_LIBRARY(VORBISFILE_LIBRARY_DEBUG
 
 IF(NOT VORBISFILE_LIBRARY_DEBUG)
 	# Then search for non suffixed libs if necessary, but only in debug dirs
-	FIND_LIBRARY(VORBISFILE_LIBRARY_DEBUG 
+	FIND_LIBRARY(VORBISFILE_LIBRARY_DEBUG
 		NAMES vorbisfile libvorbisfile
 		HINTS
 		$ENV{VORBISFILEDIR}

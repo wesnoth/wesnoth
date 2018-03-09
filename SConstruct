@@ -98,7 +98,7 @@ opts.AddVariables(
     PathVariable('boostdir', 'Directory of boost installation.', "", OptionalPath),
     PathVariable('boostlibdir', 'Directory where boost libraries are installed.', "", OptionalPath),
     ('boost_suffix', 'Suffix of boost libraries.'),
-    PathVariable('gettextdir', 'Root directory of Gettext\'s installation.', "", OptionalPath), 
+    PathVariable('gettextdir', 'Root directory of Gettext\'s installation.', "", OptionalPath),
     PathVariable('gtkdir', 'Directory where GTK SDK is installed.', "", OptionalPath),
     PathVariable('luadir', 'Directory where Lua binary package is unpacked.', "", OptionalPath),
     ('host', 'Cross-compile host.', ''),
@@ -174,7 +174,7 @@ if env['jobs'] > 1:
 else:
     env['jobs'] = 1
 
-if env['distcc']: 
+if env['distcc']:
     env.Tool('distcc')
 
 if env['ccache']: env.Tool('ccache')
@@ -466,17 +466,17 @@ for env in [test_env, client_env, env]:
     if "clang" in env["CXX"]:
 # Silence warnings about unused -I options and unknown warning switches.
         env.AppendUnique(CCFLAGS = Split("-Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized"))
-        
+
         if env['pedantic']:
             env.AppendUnique(CXXFLAGS = Split("-Wdocumentation -Wno-documentation-deprecated-sync"))
 
     if "gcc" in env["TOOLS"]:
         if env['openmp']:
             env.AppendUnique(CXXFLAGS = ["-fopenmp"], LIBS = ["gomp"])
-        
+
         env.AppendUnique(CCFLAGS = Split("-Wno-unused-local-typedefs -Wno-maybe-uninitialized"))
         env.AppendUnique(CXXFLAGS = Split("-Wold-style-cast"))
-        
+
         if env['strict']:
             env.AppendUnique(CCFLAGS = Split("-Werror"))
         if env['pedantic']:
@@ -484,43 +484,43 @@ for env in [test_env, client_env, env]:
             env.AppendUnique(CXXFLAGS = Split("-Wctor-dtor-privacy -Wuseless-cast -Wnoexcept"))
         if env['sanitize']:
             env.AppendUnique(CCFLAGS = ["-fsanitize=" + env["sanitize"]], LINKFLAGS = ["-fsanitize=" + env["sanitize"]])
-        
+
 # #
 # Start determining options for debug build
 # #
-        
+
         debug_flags = "-O0 -DDEBUG -ggdb3"
-        
+
         if env["glibcxx_debug"] == True:
             glibcxx_debug_flags = "_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC"
         else:
             glibcxx_debug_flags = ""
-        
+
 # #
 # End determining options for debug build
 # Start setting options for release build
 # #
-        
+
 # default compiler flags
         rel_comp_flags = "-O3"
         rel_link_flags = ""
-        
+
 # use the arch if provided, or if on Windows and no arch was passed in then default to pentiumpro
 # without setting to pentiumpro, compiling on Windows with 64-bit tdm-gcc and -O3 currently fails
         if env["arch"]:
             env["arch"] = " -march=" + env["arch"]
-        
+
         if env["PLATFORM"] == "win32" and not env["arch"]:
             env["arch"] = " -march=pentiumpro"
-        
+
         rel_comp_flags = rel_comp_flags + env["arch"]
-        
+
 # PGO and LTO setup
         if "gcc" in env["CC"]:
             if env["pgo_data"] == "generate":
                 rel_comp_flags = rel_comp_flags + " -fprofile-generate=pgo_data/"
                 rel_link_flags = "-fprofile-generate=pgo_data/"
-            
+
             if env["pgo_data"] == "use":
                 rel_comp_flags = rel_comp_flags + " -fprofile-correction -fprofile-use=pgo_data/"
                 rel_link_flags = "-fprofile-correction -fprofile-use=pgo_data/"
@@ -532,7 +532,7 @@ for env in [test_env, client_env, env]:
             if env["pgo_data"] == "generate":
                 rel_comp_flags = rel_comp_flags + " -fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"
                 rel_link_flags = "-fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"
-            
+
             if env["pgo_data"] == "use":
                 rel_comp_flags = rel_comp_flags + " -fprofile-instr-use=pgo_data/wesnoth.profdata"
                 rel_link_flags = "-fprofile-instr-use=pgo_data/wesnoth.profdata"
@@ -545,23 +545,23 @@ for env in [test_env, client_env, env]:
 # End setting options for release build
 # Start setting options for profile build
 # #
-        
+
         if env["profiler"] == "gprof":
             prof_comp_flags = "-pg"
             prof_link_flags = "-pg"
-        
+
         if env["profiler"] == "gcov":
             prof_comp_flags = "-fprofile-arcs -ftest-coverage"
             prof_link_flags = "-fprofile-arcs"
-        
+
         if env["profiler"] == "gperftools":
             prof_comp_flags = ""
             prof_link_flags = "-Wl,--no-as-needed,-lprofiler"
-        
+
         if env["profiler"] == "perf":
             prof_comp_flags = "-ggdb -Og"
             prof_link_flags = ""
-        
+
 # #
 # End setting options for profile build
 # #
@@ -657,7 +657,7 @@ if os.path.isabs(env["localedirname"]):
     env["localedir"] = env["localedirname"]
 else:
     env["localedir"] = "$datadir/$localedirname"
-        
+
 pythontools = Split("wmlscope wmllint wmlindent wesnoth_addon_manager")
 pythonmodules = Split("wmltools.py wmlparser.py wmldata.py wmliterator.py campaignserver_client.py __init__.py")
 

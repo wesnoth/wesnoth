@@ -23,7 +23,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 				-o manual.en.xml
 				manual.txt
 		COMMAND ${DOS2UNIX_EXECUTABLE} manual.en.xml
-		COMMAND ${XSLTPROC_EXECUTABLE} ${XSLTPROC_OPTIONS} 
+		COMMAND ${XSLTPROC_EXECUTABLE} ${XSLTPROC_OPTIONS}
 				-o manual.en.html
 				${ASCIIDOC_DOCBOOK_XSL_PATH}/xhtml.xsl
 				manual.en.xml
@@ -72,14 +72,14 @@ if(ENABLE_POT_UPDATE_TARGET)
 		# Only create a .html if there is an .xml file. Since it's not
 		# possible to only execute cmake code if the file exists directly,
 		# build the command here. Then send it to a small script that only
-		# executes if the .html file exists. 
+		# executes if the .html file exists.
 		set(CMD "${XSLTPROC_EXECUTABLE} ${XSLTPROC_OPTIONS}")
 		set(CMD "${CMD} -o manual.${LINGUA}.html")
 		set(CMD "${CMD} ${ASCIIDOC_DOCBOOK_XSL_PATH}/xhtml.xsl")
 		set(CMD "${CMD} manual.${LINGUA}.xml")
 		add_custom_command(
 			OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/manual.${LINGUA}.html
-			COMMAND ${CMAKE_COMMAND} -E remove manual.${LINGUA}.html 
+			COMMAND ${CMAKE_COMMAND} -E remove manual.${LINGUA}.html
 			COMMAND ${CMAKE_COMMAND}
 				-DSOURCE="manual.${LINGUA}.xml"
 				-DCMD="${CMD}"
@@ -99,7 +99,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 	add_custom_target(update-po4a-manual
 		COMMAND ${CMAKE_COMMAND} -E remove manual.en.xml
 		DEPENDS
-			${UPDATE-PO4A-MANUAL_DEPENDENCIES}		
+			${UPDATE-PO4A-MANUAL_DEPENDENCIES}
 		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 	)
 

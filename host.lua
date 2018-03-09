@@ -58,7 +58,7 @@ local function plugin()
 	log(" error: Could not find scenario with id=test1")
   end
   context.select_level({index = s.index})
-  
+
   log("configuring a game")
   context.set_name({name = "Test"})
   context.update_settings({registered_users = false})

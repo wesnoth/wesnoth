@@ -72,7 +72,7 @@
 # Copyright 2003-2009 Kitware, Inc.
 # Copyright 2012 Benjamin Eikel
 # Copyright 2015 Andreas Löf
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
 # are met:
@@ -107,7 +107,7 @@
 find_path(SDL2_INCLUDE_DIR SDL.h
   HINTS
     ENV SDL2DIR
-  PATH_SUFFIXES SDL2 
+  PATH_SUFFIXES SDL2
                 # path suffixes to search inside ENV{SDLDIR}
                 include/SDL2 include
 )

@@ -39,40 +39,40 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH OPÇÕES
 .
-.TP 
+.TP
 \fB\-c\ \fP\fIcaminho\fP\fB,\ \-\-config\fP\fI\ caminho\fP
 diz a wesnothd onde achar o arquivo de configuração a ser usado. Veja a
 seção \fBCONFIGURAÇÃO DO SERVIDOR\fP abaixo para a sintaxe. Você pode
 recarregar a configuração enviando SIGHUP para o processo do servidor.
-.TP 
+.TP
 \fB\-d, \-\-daemon\fP
 executa wesnothd como um daemon.
-.TP 
+.TP
 \fB\-h, \-\-help\fP
 explica o que as opções de linha de comando fazem.
-.TP 
+.TP
 \fB\-\-log\-\fP\fInível\fP\fB=\fP\fIdomínio1\fP\fB,\fP\fIdomínio2\fP\fB,\fP\fI...\fP
 Ajusta o nível de severidade dos dompinios de log.  \fBall\fP (todos) pode ser
 usado para casar com qualquer domínio de log. Níveis disponíveis: \fBerror\fP
 (erro),\ \fBwarning\fP (aviso),\ \fBinfo\fP (informação),\ \fBdebug\fP (depuração).
 Por padrão, o nível \fBerror\fP é usado e o nível \fBinfo\fP para o domínio do
 \fBservidor\fP.
-.TP 
+.TP
 \fB\-p\ \fP\fIporta\fP\fB,\ \-\-port\fP\fI\ porta\fP
 conecta o servidor à porta escolhida. Se nenhuma porta for escolhida, a
 porta \fB15000\fP será usada.
-.TP 
+.TP
 \fB\-t\ \fP\fInúmero\fP\fB,\ \-\-threads\fP\fI\ número\fP
 muda para n a quantidade máxima de threads de trabalho em espera para E/S de
 rede (padrão: \fB5\fP,\ max:\ \fB30\fP).
-.TP 
+.TP
 \fB\-T\ \fP\fInúmero\fP\fB,\ \-\-max\-threads\fP\fI\ número\fP
 configura o número máximo de threads de trabalho que serão criadas. Se
 ajustado para \fB0\fP, não haverá limites (padrão: \fB0\fP).
-.TP 
+.TP
 \fB\-V, \-\-version\fP
 mostra o número da versão e termina.
-.TP 
+.TP
 \fB\-v, \-\-verbose\fP
 liga o log de depuração.
 .
@@ -91,82 +91,82 @@ liga o log de depuração.
 .
 .SS "Chaves globais:"
 .
-.TP 
+.TP
 \fBallow_remote_shutdown\fP
 se ajustado para \fBno\fP (o padrão), pedidos de desligar e reiniciar serão
 ignorados, a menos que venham do fifo.  Coloque como \fByes\fP para permitir
 desligamento remoto via um /query de um administrador.
-.TP 
+.TP
 \fBban_save_file\fP
 caminho completo ou relativo para um arquivo (comprimido com gzip) que o
 servior possa ler e escrever.  Bans serão gravados para o arquivo e lidos de
 novo ao ligar o servidor.
-.TP 
+.TP
 \fBcompress_stored_rooms\fP
 Determina quando o arquivo 'rooms' pode ser lido e escrito em forma
 compacta. O padrão é \fByes\fP.
-.TP 
+.TP
 \fBconnections_allowed\fP
 O número de conexões permitidas do mesmo IP. \fB0\fP para infinito. (padrão:
 \fB5\fP)
-.TP 
+.TP
 \fBdisallow_names\fP
 Nomes/apelidos que não são aceitos pelo servidor. \fB*\fP e \fB?\fP podem ser
 usados como coringas. Veja \fBglob\fP(7) para mais detalhes. Os valores padrão
 (usados se nada for especificado) são:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
-.TP 
+.TP
 \fBfifo_path\fP
 The path to the fifo you can echo server commands into (same as /query
 \&... from wesnoth).  If not specified defaults to the compile\-time path
 (default: \fB/var/run/wesnothd/socket\fP).
-.TP 
+.TP
 \fBmax_messages\fP
 O número de mensagens permitidas no período de
 \fBmessages_time_period\fP. (padrão: \fB4\fP)
-.TP 
+.TP
 \fBmessages_time_period\fP
 O período de tempo (em segundos) de flood (inundação) de mensagens é
 detectado em (padrão: \fB10\fP segundos)
-.TP 
+.TP
 \fBmotd\fP
 A mensagem do dia.
-.TP 
+.TP
 \fBnew_room_policy\fP
 Determina quem pode criar novas 'rooms' n o servidor. Available values are
 \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, and give the permission
 respectively to everyone, registered users, admin users or disables new room
 creation. Default value is \fBeveryone\fP.
-.TP 
+.TP
 \fBpasswd\fP
 A senha usada para ganhar privilégios admnistrativos. (via \fB/query
 admin\fP\fIsenha\fP).
-.TP 
+.TP
 \fBreplay_save_path\fP
 O diretório onde o servidor armazena replays de jogos. (não esqueça a /
 final!) O padrão é `' que é a pasta onde o wesnothd começou.
-.TP 
+.TP
 \fBrestart_command\fP
 O comando que o servidor usa para começar um novo processo de servidor via o
 comando \fBrestart\fP. (Só pode ser dado no fifo. Veja a configuração
 \fBallow_remote_shutdown\fP.)
-.TP 
+.TP
 \fBroom_save_file\fP
 Caminho para um arquivo onde as informações de 'room' devem ser
 guardadas. Este arquivo é lido quando o servidor começa e escrito depois. Se
 em branco ou não definidas, 'rooms' não são carregadas nem salvas.
-.TP 
+.TP
 \fBsave_replays\fP
 Define se o servidor vai gravar automaticamente os replays dos
 jogos. (padrão: \fBfalse\fP)
-.TP 
+.TP
 \fBversions_accepted\fP
 Uma lista, separada por vírgulas de strings de versão que serão aceitas pelo
 servidor. \fB*\fPe \fB?\fP podem ser usados para formar coringas. (padrão é a
 versão desta instalação do wesnoth)
 .br
 Exemplo: \fBversions_accepted="*"\fP aceita qualquer string de versão.
-.TP  
+.TP
 \fBuser_handler\fP
 The name of the user handler to use. Currently available user handlers are
 \fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
@@ -180,13 +180,13 @@ add a \fB[user_handler]\fP section, see below.
 \fB[redirect]\fP Uma tag para especificar um servidor ao qual redirecionar
 certas versões de clientes.
 .RS
-.TP 
+.TP
 \fBhost\fP
 O endereço do servidor para o qual redirecionar.
-.TP 
+.TP
 \fBport\fP
 A porta para a qual se conectar.
-.TP 
+.TP
 \fBversion\fP
 Uma lista separada por vírgulas de versões para redirecionar. Se comporta do
 mesmo modo que \fBversions_accepted\fP em relação a coringas.
@@ -195,10 +195,10 @@ mesmo modo que \fBversions_accepted\fP em relação a coringas.
 \fB[ban_time]\fP Uma etiqueta para definir palavras\-chave convenientes para
 intervalos de tempo de banimento temporários.
 .RS
-.TP 
+.TP
 \fBnome\fP
 The name used to reference the ban time.
-.TP 
+.TP
 \fBtime\fP
 The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
 (seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
@@ -217,32 +217,32 @@ on which user handler is set with the \fBuser_handler\fP key. If no
 \fB[user_handler]\fP section is present in the configuration the server will
 run without any nick registration service.
 .RS
-.TP  
+.TP
 \fBdb_host\fP
 (para user_handler=forum) o nome da máquina do servidor de banco de dados
-.TP  
+.TP
 \fBdb_name\fP
 (para user_handler=forum) o nome do banco de dados
-.TP  
+.TP
 \fBdb_user\fP
 (para user_handler=forum) O nome do usuário com o qual se registrar no banco
 de dados
-.TP  
+.TP
 \fBdb_password\fP
 (para user_handler=forum) a senha deste usuário
-.TP  
+.TP
 \fBdb_users_table\fP
 (for user_handler=forum) The name of the table in which your phpbb forums
 saves its user data. Most likely this will be <table\-prefix>_users
 (e.g. phpbb3_users).
-.TP  
+.TP
 \fBdb_extra_table\fP
 (for user_handler=forum) The name of the table in which wesnothd will save
 its own data about users. You will have to create this table manually, e.g.:
 \fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
 user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
 NOT NULL DEFAULT 0);\fP
-.TP  
+.TP
 \fBuser_expiration\fP
 (para user_handler=sample) O tempo após o qual um apelido registrado expira
 (em dias).
@@ -252,19 +252,19 @@ NOT NULL DEFAULT 0);\fP
 usuários pode mandar e\-mails. Atualmente usado apenas pelo controlador de
 usuário de exemplo.
 .RS
-.TP  
+.TP
 \fBserver\fP
 O nome da máquina do servidor de correio
-.TP  
+.TP
 \fBusername\fP
 O nome de usuário com o qual se registrar no servidor de correio.
-.TP  
+.TP
 \fBpassword\fP
 A senha deste usuário.
-.TP  
+.TP
 \fBfrom_address\fP
 O endereço reply\-to (remetente) de seu e\-mail
-.TP  
+.TP
 \fBmail_port\fP
 A porta na qual seu servidor de correio está rodando. O padrão é 25.
 .

@@ -13,31 +13,31 @@ matrix:
   include:
     - compiler: clang
       env: TOOL=scons CXXSTD=11 NLS=true
-      
+
     - compiler: gcc
       env: TOOL=scons CXXSTD=14 NLS=false
-      
+
     - compiler: gcc
       env: TOOL=scons CXXSTD=11 NLS=false OPT=-O0
-      
+
     - compiler: gcc
       env: TOOL=cmake CXXSTD=11 NLS=false
-      
+
     - compiler: clang
       env: TOOL=scons CXXSTD=11 NLS=false OPT=-O0
-      
+
     - compiler: clang
       env: TOOL=cmake CXXSTD=11 NLS=false
-      
+
     - os: osx
       compiler: clang
       env: TOOL=scons CXXSTD=11 NLS=false OPT=-O0
-    
+
     - os: osx
       compiler: clang
       osx_image: xcode9.2
       env: TOOL=xcodebuild
-      
+
 install:
     - . ./utils/travis/steps/install.sh
 

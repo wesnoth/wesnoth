@@ -39,9 +39,9 @@ res.turns_over_advantage = function()
 		end
 		return f, nil, 0
 	end
-	
+
 	local income_factor = 5
-	
+
 	local side_num = -1
 	local total_score = -1
 	local side_comparison = ""

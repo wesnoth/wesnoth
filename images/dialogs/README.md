@@ -10,7 +10,7 @@ same, but opaque.  They could be called 'translucent100', but aren't
 for reasons that are basically historical.
 
 Note that the translucent and opaque styles differ only in the background
-images, sharing borders.  This uses a little more space but simplifies 
+images, sharing borders.  This uses a little more space but simplifies
 the code.
 
 The directory also contains some background images of different opacity

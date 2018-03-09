@@ -33,7 +33,7 @@ the files after which I dive more into the implementation of each file.
 	a certain definition of a progress bar.
 
 \begin{description}
-\item[hpp] \Liref{widget_definition.hpp} contains the sample code. 
+\item[hpp] \Liref{widget_definition.hpp} contains the sample code.
 	\begin{description}
 	\item[\Lref{widget_definition.hpp:control}] Normally a
 		widget definition inherits from tcontrol\_definition which defines the
@@ -49,7 +49,7 @@ the files after which I dive more into the implementation of each file.
 		minimum sizes for parts of their control.
 	\end{description}
 
-\item[cpp] \Liref{widget_definition.cpp} contains the sample code. 
+\item[cpp] \Liref{widget_definition.cpp} contains the sample code.
 	\begin{description}
 	\item[\Lref{widget_definition.cpp:textdomain}] Every file in the library
 		is inside the ``wesnoth-lib'' text domain.
@@ -81,7 +81,7 @@ the files after which I dive more into the implementation of each file.
 
 	\item[\Lref{progress_bar.cfg:class}]
 		Beginning of the progress bar. This part is much better documented in
-		the wiki\footnote{\url{http://wiki.wesnoth.org/GUIWidgetDefinitionWML}}. 
+		the wiki\footnote{\url{http://wiki.wesnoth.org/GUIWidgetDefinitionWML}}.
 		Since this part is aimed at WML authors, duplicating that effort here
 		makes no sense so just visit the wiki.
 
@@ -94,7 +94,7 @@ the files after which I dive more into the implementation of each file.
 	dynamic content this file is also rather short.
 
 \begin{description}
-\item[hpp] \Liref{window_builder.hpp} contains the sample code. 
+\item[hpp] \Liref{window_builder.hpp} contains the sample code.
 	\begin{description}
 	\item[\Lref{window_builder.hpp:control}] Normally a
 		window builder inherits from tbuilder\_control which defines the
@@ -106,7 +106,7 @@ the files after which I dive more into the implementation of each file.
 		settings, e.g. the spacer defines its fixed size if needed.
 	\end{description}
 
-\item[cpp] \Liref{window_builder.cpp} contains the sample code. 
+\item[cpp] \Liref{window_builder.cpp} contains the sample code.
 	\begin{description}
 	\item[\Lref{window_builder.cpp:textdomain}] Every file in the library
 		is inside the ``wesnoth-lib'' text domain.
@@ -140,7 +140,7 @@ the files after which I dive more into the implementation of each file.
 	invalidated in several functions.}.
 
 \begin{description}
-\item[hpp] \Liref{progress_bar.hpp} contains the sample code. 
+\item[hpp] \Liref{progress_bar.hpp} contains the sample code.
 	\begin{description}
 	\item[\Lref{progress_bar.hpp:class}]
 		Most simple widgets derive from tcontrol, which is the base class of the
@@ -152,7 +152,7 @@ the files after which I dive more into the implementation of each file.
 		is the number of canvases used. Other then that, it does the
 		initialization of its members. Some constructors do a bit more
 		processing, but where a lot needs to be done it's often deferred to a
-		finalize() function.	
+		finalize() function.
 
 	\item[\Lref{progress_bar.hpp:inherited}]
 		This section implements or overrides member functions of the base class.
@@ -198,7 +198,7 @@ the files after which I dive more into the implementation of each file.
 
 	\end{description}
 
-\item[cpp] \Liref{progress_bar.cpp} contains the sample code. 
+\item[cpp] \Liref{progress_bar.cpp} contains the sample code.
 	\begin{description}
 	\item[\Lref{progress_bar.cpp:textdomain}] Every file in the library
 		is inside the ``wesnoth-lib'' text domain.
@@ -212,7 +212,7 @@ the files after which I dive more into the implementation of each file.
 	\item[\Lref{progress_bar.cpp:register}]
 		Registers a widget, this part is really volatile and still has some
 		hoops and rings to jump through. Normally, it works. If not, too bad -
-		try to look through the other widgets to see how to fix it. 
+		try to look through the other widgets to see how to fix it.
 
 		\textbf{Caveat emptor} Just when all compiles fine and you suddenly get a runtime
 		error about your new nice class, the builder claims your widget doesn't
@@ -240,7 +240,7 @@ new .cpp files listed, these are:
 \end{itemize}
 
 The next step has become optional now, when most of build systems can glob the files
-needed for translation, but I still add them manually as well. The file is 
+needed for translation, but I still add them manually as well. The file is
 po/wesnoth-lib/POTFILES.IN. It holds the files for the wesnoth-lib text
 domain.
 
@@ -275,7 +275,7 @@ the files after which I dive more into the implementation of the file.
 	to decide which widget s/he picks.
 
 \begin{description}
-\item[hpp] \Liref{unit_attack.hpp} contains the sample code. 
+\item[hpp] \Liref{unit_attack.hpp} contains the sample code.
 	\begin{description}
 	\item[\Lref{unit_attack.hpp:class}]
 		Defines the class itself, which normally inherits from tdialog.

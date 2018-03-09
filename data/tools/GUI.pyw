@@ -1365,7 +1365,7 @@ Error code: {1}""".format(queue_item[0],queue_item[1]))
                 self.text.insert(END,queue_item)
                 self.text.configure(state=DISABLED)
         self.after(100,self.update_text)
-        
+
     def on_save(self):
         fn=asksaveasfilename(defaultextension=".txt",filetypes=[("Text file","*.txt")],initialdir=".")
         if fn:

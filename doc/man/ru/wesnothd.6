@@ -39,38 +39,38 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH ПАРАМЕТРЫ
 .
-.TP 
+.TP
 \fB\-c\ \fP\fIпуть\fP\fB,\ \-\-config\fP\fI\ путь\fP
 указавает конфигурационный файл wesnothd. См. раздел \fBКОНФИГУРАЦИЯ СЕРВЕРА\fP
 ниже для описания синтаксиса. Вы можете перезагрузить файл настроек отправив
 сигнал SIGHUP процессу сервера.
-.TP 
+.TP
 \fB\-d, \-\-daemon\fP
 запустить wesnothd в качестве демона.
-.TP 
+.TP
 \fB\-h, \-\-help\fP
 сообщает, что делают параметры командной строки.
-.TP 
+.TP
 \fB\-\-log\-\fP\fIуровень\fP\fB=\fP\fIдомен1\fP\fB,\fP\fIдомен2\fP\fB,\fP\fI...\fP
 задает уровень для отладочных доменов.  \fBall\fP может соответствовать любому
 отладочному домену. Доступны уровни: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  По умолчанию используется уровень \fBerror\fP, а для домена
 \fBserver\fP — уровень \fBinfo\fP.
-.TP 
+.TP
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ порт\fP
 привязывает сервер к указанному порту. Если порт не указан, используется
 порт \fB15000\fP.
-.TP 
+.TP
 \fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ число\fP
 установить максимальное число рабочих потоков для сетевого ввода\-вывода в n
 (по умолчанию \fB5\fP, максимум  \fB30\fP).
-.TP 
+.TP
 \fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ число\fP
 установить максимальное число создаваемых рабочих потоков, если \fB0\fP, то
 ограничений нет (по умолчанию \fB0\fP).
-.TP 
+.TP
 \fB\-V, \-\-version\fP
 вывести номер версии и выйти.
-.TP 
+.TP
 \fB\-v, \-\-verbose\fP
 включить отладочный лог.
 .
@@ -89,7 +89,7 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SS "Глобальные ключи:"
 .
-.TP 
+.TP
 \fBallow_remote_shutdown\fP
 Если установлено в \fBno\fP (по умолчанию), shut_down и restart запросы будут
 проигнорированы, только если они не пришли из fifo. Установите в \fByes\fP
@@ -97,41 +97,41 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 установлено в \fBno\fP (по умолчанию), shut_down и restart запросы будут
 проигнорированы, только если они не пришли из fifo. Установите в \fByes\fP
 чтобы разрешить удалённое выключение через /query администратором.
-.TP 
+.TP
 \fBban_save_file\fP
 Полный или относительный путь к файлу (сжатому в gzip), который сервер может
 читать и записывать. Баны будут сохраняться здесь и загружаться при загрузке
 сервера.
-.TP 
+.TP
 \fBcompress_stored_rooms\fP
 Определяет, нужно ли читать и писать файлы комнат в сжатой форме. Значение
 по умолчанию — \fByes\fP.
-.TP 
+.TP
 \fBconnections_allowed\fP
 Число разрешенных подключений от одного IP\-адреса. \fB0\fP значит \-
 неограниченно. (по умолчанию: \fB5\fP)
-.TP 
+.TP
 \fBdisallow_names\fP
 Имена/ники, не принимаемые сервером. Поддерживаются групповые шаблоны \fB*\fP и
 \fB?\fP. Подробности см. \fBglob\fP(7). Значения по умолчанию (используются, если
 ничего не указано):
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
-.TP 
+.TP
 \fBfifo_path\fP
 The path to the fifo you can echo server commands into (same as /query
 \&... from wesnoth).  If not specified defaults to the compile\-time path
 (default: \fB/var/run/wesnothd/socket\fP).
-.TP 
+.TP
 \fBmax_messages\fP
 Число разрешенных сообщений в \fBmessages_time_period\fP. (по умолчанию: \fB4\fP)
-.TP 
+.TP
 \fBmessages_time_period\fP
 Временной отрезок (в секундах), в течение которого определяются сообщения
 флудеров. (по умолчанию: \fB10\fP секунд)
-.TP 
+.TP
 \fBmotd\fP
 Сообщение дня.
-.TP 
+.TP
 \fBnew_room_policy\fP
 Определяет, кто может создавать новые комнаты на сервере. Доступные значения
 \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP и \fBnobody\fP, они дают дают разрешение
@@ -142,37 +142,37 @@ The path to the fifo you can echo server commands into (same as /query
 \fBnobody\fP, они дают дают разрешение соответственно всем, зарегистрированным
 пользователям, администраторам или запрещает создание новых
 комнат. Стандартное значение \fBeveryone\fP.
-.TP 
+.TP
 \fBpasswd\fP
 Пароль доступа администра. (через \fB/query admin \fP\fIпароль\fP) По умолчанию
 используется "admin ".
-.TP 
+.TP
 \fBreplay_save_path\fP
 Директория, где сервер хранит повторы игр. (не забудьте завершающую косую
 черту /!) По умолчанию `'что означает директорию, где wesnothd был
 запущен.Директория, где сервер хранит повторы игр. (не забудьте завершающую
 косую черту /!) По умолчанию `'что означает директорию, где wesnothd был
 запущен.
-.TP 
+.TP
 \fBrestart_command\fP
 Команда, с помощью которой сервер запускает новый серверный процесс через
 команду \fBrestart\fP.  (Может быть подана только через fifo.  См. также
 \fBallow_remote_shutdown\fP.)
-.TP 
+.TP
 \fBroom_save_file\fP
 Путь к файлу, в котором нужно сохранить информацию о комнате.  При запуске
 сервер читает этот файл, а позднее в него пишет.  Если файл пуст или не
 задан, комнаты не загружаются и не сохраняются.
-.TP 
+.TP
 \fBsave_replays\fP
 Определяет будет ли сервер сохранять повторы игр (по умолчанию: \fBfalse\fP)
-.TP 
+.TP
 \fBversions_accepted\fP
 Список версий принимаемых сервером, разделенные запятыми. Поддерживаются
 \fB*\fP и \fB?\fP в качестве группового символа.
 .br
 Пример: \fBversions_accepted="*"\fP принимает строку с любой версией.
-.TP  
+.TP
 \fBuser_handler\fP
 Имя используемого блока работы с пользователями.  Сейчас доступны блоки
 \fBforum\fP (чтобы связать wesnothd с базой данных форума phpbb) и \fBsample\fP
@@ -186,13 +186,13 @@ The path to the fifo you can echo server commands into (same as /query
 \fB[redirect]\fP тэг, указывающий перенаправление на сервер для определенной
 версии клиента.
 .RS
-.TP 
+.TP
 \fBhost\fP
 Адрес сервера для перенаправления.
-.TP 
+.TP
 \fBport\fP
 Порт подключения.
-.TP 
+.TP
 \fBversion\fP
 Список версий, разделенных запятыми, для перенаправления. При использовании
 заполнителей поведение аналогично \fBversions_accepted\fP.
@@ -201,10 +201,10 @@ The path to the fifo you can echo server commands into (same as /query
 \fB[ban_time]\fP Тэг, который задает удобные ключевые слова для сроков
 временного бана.
 .RS
-.TP 
+.TP
 \fBname\fP
 Имя, которое используется для указания на время бана.
-.TP 
+.TP
 \fBtime\fP
 Определение длительности времени. Формат: %d[%s[%d%s[...]]] где %s
 (секунды), m (минуты), h (часы), D (дни), M (месяцы) or Y (годы) и %d это
@@ -227,27 +227,27 @@ The path to the fifo you can echo server commands into (same as /query
 секции \fB[user_handler]\fP в конфигурационном файле нет, сервер будет запущен
 без службы регистрации ников.
 .RS
-.TP  
+.TP
 \fBdb_host\fP
 (for user_handler=forum) имя хоста сервера базы данных
-.TP  
+.TP
 \fBdb_name\fP
 (for user_handler=forum) Имя базы данных.
-.TP  
+.TP
 \fBdb_user\fP
 (for user_handler=forum) Имя пользователя с которым войти в базу данных(for
 user_handler=forum) Имя пользователя с которым войти в базу данных
-.TP  
+.TP
 \fBdb_password\fP
 (for user_handler=forum) Пароль этого пользователя
-.TP  
+.TP
 \fBdb_users_table\fP
 (for user_handler=forum) Название таблицы где ваш phpbb форум хранит данные
 о пользователях. Скорее всего это <префикс\-таблицы>_users
 (т.е. phpbb3_users).(for user_handler=forum) Название таблицы где ваш phpbb
 форум хранит данные о пользователях. Скорее всего это
 <префикс\-таблицы>_users (т.е. phpbb3_users).
-.TP  
+.TP
 \fBdb_extra_table\fP
 (for user_handler=forum) Имя таблицы в которой wesnothd будет сохранять
 собственную информацию о пользователях. Вы должны создать эту таблицу
@@ -259,7 +259,7 @@ user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);\fP(for user_handler=forum)
 TABLE <имя\-таблицы>(username VARCHAR(255) PRIMARY KEY,
 user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
 NOT NULL DEFAULT 0);\fP
-.TP  
+.TP
 \fBuser_expiration\fP
 (for user_handler=sample) Время, после которого зарегистрированный ник
 истекает (в днях).(for user_handler=sample) Время, после которого
@@ -270,19 +270,19 @@ NOT NULL DEFAULT 0);\fP
 пользователями может отправлять письма.  Пока что используется только
 блоком\-заглушкой.
 .RS
-.TP  
+.TP
 \fBserver\fP
 Имя хоста почтового сервера
-.TP  
+.TP
 \fBusername\fP
 Логин для подключения к почтовому серверу
-.TP  
+.TP
 \fBpassword\fP
 Пароль пользвателя.
-.TP  
+.TP
 \fBfrom_address\fP
 Адрес для ответа (reply\-to) вашего письма
-.TP  
+.TP
 \fBmail_port\fP
 Порт, на котором запущен ваш почтовый сервер. По\-умолчанию 25.
 .

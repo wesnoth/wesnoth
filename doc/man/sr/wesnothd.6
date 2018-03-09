@@ -39,38 +39,38 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH ОПЦИЈЕ
 .
-.TP 
+.TP
 \fB\-c\ \fP\fIпутања\fP\fB,\ \-\-config\fP\fI\ путања\fP
 казује домару где се налази поставна датотека. За синтаксу погледајте одељак
 \fBПОСТАВА СЕРВЕРА\fP испод. Поставу можете поново учитати слањем СИГХУП
 серверском процесу.
-.TP 
+.TP
 \fB\-d, \-\-daemon\fP
 покреће wesnothd као домар.
-.TP 
+.TP
 \fB\-h, \-\-help\fP
 говори вам шта чине опције командне линије.
-.TP 
+.TP
 \fB\-\-log\-\fP\fIниво\fP\fB=\fP\fIдомен1\fP\fB,\fP\fIдомен2\fP\fB,\fP\fI...\fP
 поставља ниво озбиљности домена бележења. \fBall\fP се може употребити за
 поклапање свих домена, а доступни су: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Подразумеванo се користи \fBerror\fP, осим за домен \fBserver\fP где
 \fBinfo\fP.
-.TP 
+.TP
 \fB\-p\ \fP\fIпорт\fP\fB,\ \-\-port\fP\fI\ порт\fP
 везује сервер за наведени порт. Ако се порт не наведе, подразумевано се
 користи \fB15000\fP.
-.TP 
+.TP
 \fB\-t\ \fP\fIброј\fP\fB,\ \-\-threads\fP\fI\ број\fP
 поставља највећи број радних нити на чекању за мрежни У/И (подразумевано:
 \fB5\fP,\ највише:\ \fB30\fP).
-.TP 
+.TP
 \fB\-T\ \fP\fIброј\fP\fB,\ \-\-max\-threads\fP\fI\ број\fP
 поставља највећи број радних нити које могу бити створене; ако се зада \fB0\fP,
 нема ограничења (подразумевано: \fB0\fP).
-.TP 
+.TP
 \fB\-V, \-\-version\fP
 приказује број верзије и излази.
-.TP 
+.TP
 \fB\-v, \-\-verbose\fP
 укључује исправљачко бележење.
 .
@@ -89,83 +89,83 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SS "Глобални кључеви:"
 .
-.TP 
+.TP
 \fBallow_remote_shutdown\fP
 ако се зада \fBno\fP (подразумевано), захтеви за гашење и поновно покретање се
 игноришу осим ако стижу из фифоа. Задајте \fByes\fP да дозволите удаљено гашење
 на /query администратора.
-.TP 
+.TP
 \fBban_save_file\fP
 Пуна или релативна путања до (гзиповане) датотеке коју сервер може да чита и
 пише. Забране ће бити записиване у њу, и читане по наредном покретању
 сервера.
-.TP 
+.TP
 \fBcompress_stored_rooms\fP
 одређује да ли датотеку соба треба читати и писати у компресованом
 облику. Подразумевано \fByes\fP.
-.TP 
+.TP
 \fBconnections_allowed\fP
 број дозвољених веза са исте ИП адресе, \fB0\fP значи безброј (подразумевно:
 \fB5\fP)
-.TP 
+.TP
 \fBdisallow_names\fP
 имена/надимци које сервер не прихвата. Прихватају се \fB*\fP и \fB?\fP као џокери
 (погледајте \fBglob\fP(7) за више детаља). Подразумеване вредности, које се
 користе ако се ништа не зада, су:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
-.TP 
+.TP
 \fBfifo_path\fP
 The path to the fifo you can echo server commands into (same as /query
 \&... from wesnoth).  If not specified defaults to the compile\-time path
 (default: \fB/var/run/wesnothd/socket\fP).
-.TP 
+.TP
 \fBmax_messages\fP
 број дозвољених порука за време \fBmessages_time_period\fP (подразумевано:
 \fB4\fP)
-.TP 
+.TP
 \fBmessages_time_period\fP
 временски период у секундама који се разматра за откривање поплаве порука
 (подразумевано: \fB10\fP секунди)
-.TP 
+.TP
 \fBmotd\fP
 порука дана
-.TP 
+.TP
 \fBnew_room_policy\fP
 одређује ко може да ствара нове собе на серверу. Могуће вредности су
 \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP и \fBnobody\fP, дајући дозволу, редом,
 свима, регистрованим корисницима, администраторима и никоме. Подразумевана
 вредност је \fBeveryone\fP.
-.TP 
+.TP
 \fBpasswd\fP
 лозинка за стицање администраторских овлашћења (путем \fB/query admin
 \fP\fIлозинка\fP).
-.TP 
+.TP
 \fBreplay_save_path\fP
 Директоријум где сервер смешта снимке партија (не заборавите пратеће
 /!). Подразумевано је \*(rq (празно), што значи директоријум у којем је
 wesnothd покренут.
-.TP 
+.TP
 \fBrestart_command\fP
 Наредба којом сервер покреће нови серверски процес при наредби
 \fBrestart\fP. (Може се издати само преко фифоа. Види поставку
 \fBallow_remote_shutdown\fP.)
-.TP 
+.TP
 \fBroom_save_file\fP
 путања до датотеке где се складиште подаци собе. Ову датотеку чита сервер
 при покретању, и касније уписује. Ако је празно или није задато, собе се не
 учитавају нити уписују.
-.TP 
+.TP
 \fBsave_replays\fP
 Одређује да ли сервер аутоматски уписује снимке партија (подразумевно:
 \fBfalse\fP).
-.TP 
+.TP
 \fBversions_accepted\fP
 Запетама раздвојен списак ниски верзија које сервер прихвата. Прихватају се
 \fB*\fP и \fB?\fP као џокери (подразумевана је верзија клијента која одговара
 верзији сервера)
 .br
 Пример: \fBversions_accepted="*"\fP прихвата било коју ниску верзије.
-.TP  
+.TP
 \fBuser_handler\fP
 Име руковаоца корисницима. Тренутно доступни су \fBforum\fP (сервер се повезује
 са пхпББ базом података форума) и \fBsample\fP (примерна изведба сучеља
@@ -179,13 +179,13 @@ wesnothd покренут.
 \fB[redirect]\fP ознака за навођење сервера на који се преусмеравају неке
 верзије клијента
 .RS
-.TP 
+.TP
 \fBhost\fP
 адреса сервера на који се преусмерава
-.TP 
+.TP
 \fBport\fP
 порт на који се повезује
-.TP 
+.TP
 \fBversion\fP
 запетама раздвојен списак верзија које се преусмеравају. Понаша се исто као
 и \fBversions_accepted\fP у погледу џокера
@@ -194,10 +194,10 @@ wesnothd покренут.
 \fB[ban_time]\fP ознака за одређивање згодних кључних речи за привремене
 забране.
 .RS
-.TP 
+.TP
 \fBname\fP
 Име које упућује на трајање забране.
-.TP 
+.TP
 \fBtime\fP
 Трајање. Формат је %d[%s[%d%s[...]]] где s из %s означава секунде, m минуте,
 h сате, D дане, M месеце, Y године, а d је број. Ако није дат модификатор,
@@ -215,32 +215,32 @@ h сате, D дане, M месеце, Y године, а d је број. Ак
 нема одељка \fB[user_handler]\fP, сервер неће пружати услугу регистровања
 надимака.
 .RS
-.TP  
+.TP
 \fBdb_host\fP
 (за user_handler=forum) име домаћина сервера базе података
-.TP  
+.TP
 \fBdb_name\fP
 (за user_handler=forum) име базе података
-.TP  
+.TP
 \fBdb_user\fP
 (за user_handler=forum) име корисника под којим се пријављује у базу
 података
-.TP  
+.TP
 \fBdb_password\fP
 (за user_handler=forum) лозинка задатог корисника
-.TP  
+.TP
 \fBdb_users_table\fP
 (за user_handler=forum) име табеле у којој пхпББ форуми уписују податке о
 корисницима. Највероватније ће то бити <prefiks\-tabele>_users
 (нпр. phpbb3_users).
-.TP  
+.TP
 \fBdb_extra_table\fP
 (за user_handler=forum) име табеле у коју wesnothd уписује своје податке о
 корисницима. Ову табелу мораћете ручно да направите, нпр.: \fBCREATE TABLE
 <ime\-tabele>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
 UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 0);\fP
-.TP  
+.TP
 \fBuser_expiration\fP
 (за user_handler=sample) време по којем регистровани надимак истиче (у
 данима).
@@ -249,19 +249,19 @@ UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 \fB[mail]\fP подешава СМТП сервер кроз који руковалац корисницима шаље
 пошту. Тренутно само за примерни руковалац.
 .RS
-.TP  
+.TP
 \fBserver\fP
 Име домаћина удаљеног сервера
-.TP  
+.TP
 \fBusername\fP
 Корисничко име за пријављивање на поштански сервер.
-.TP  
+.TP
 \fBpassword\fP
 Корисникова лозинка.
-.TP  
+.TP
 \fBfrom_address\fP
 Адреса за одговоре на вашу пошту.
-.TP  
+.TP
 \fBmail_port\fP
 Порт на којем слуша поштански сервер. Подразумевано 25.
 .

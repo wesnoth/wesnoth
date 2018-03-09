@@ -39,36 +39,36 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH VALIKUD
 .
-.TP 
+.TP
 \fB\-c\ \fP\fIkataloog\fP\fB,\ \-\-config\fP\fI\ kataloog\fP
 ütleb wesnothd\-le häälestusfailide asukoha. Vt süntaksi  \fBSERVER CONFIG\fP
 alt. Häälestust saab uuesti laadida, saates serveriprotsessile käsu SIGHUP.
-.TP 
+.TP
 \fB\-d, \-\-daemon\fP
 käitab wesnothd taustarežiimis (daemon)
-.TP 
+.TP
 \fB\-h, \-\-help\fP
 ütleb, mida käsureavalikud teevad.
-.TP 
+.TP
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 määrab logimise taseme.  \fBall\fP valib kõik tasemed.  Tasemeteks on:
 \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  Vaikimisi on kasutusel \fBerror\fP
 ning \fBserver\fPi jaoks \fBinfo\fP.
-.TP 
+.TP
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
 seob serveri konkreetse pordiga. Kui muud pole määratud, on kasutusel
 \fB15000\fP.
-.TP 
+.TP
 \fB\-t\ \fP\fIarv\fP\fB,\ \-\-threads\fP\fI\ arv\fP
 määrab võrgu S/V lõimede maksimumarvu (vaikimisi: \fB5\fP,\ maksimum:\ \fB30\fP).
-.TP 
+.TP
 \fB\-T\ \fP\fIarv\fP\fB,\ \-\-max\-threads\fP\fI\ arv\fP
 määrab maksimaalse lõimede arvu.  Kui \fB0\fP, siis piirang puudub (vaikimisi:
 \fB0\fP).
-.TP 
+.TP
 \fB\-V, \-\-version\fP
 näitab versiooninumbrit ja väljub programmist.
-.TP 
+.TP
 \fB\-v, \-\-verbose\fP
 lülitab silumislogi sisse.
 .
@@ -87,79 +87,79 @@ lülitab silumislogi sisse.
 .
 .SS "Globaalsed võtmed:"
 .
-.TP 
+.TP
 \fBallow_remote_shutdown\fP
 Negatiivse väärtuse (vaikimisi) korral ignoreeritakse kõiki sulgemis\- ja
 taaskäivituskäske peale FIFO omade.  Positiivse (jah) väärtuse korral lubab
 administraatoril mängu eemalt sulgeda.
-.TP 
+.TP
 \fBban_save_file\fP
 Absoluutne või suhteline kataloogitee (gzip\-pakitud) failini, mida server
 saab lugeda ja kirjutada. Keelud salvestatakse sellesse faili ja loetakse
 serveri käivitamisel sisse.
-.TP 
+.TP
 \fBcompress_stored_rooms\fP
 Määrab, kas ruumidefaili saab lugeda ja kirjutada pakitud kujul. Vaikimisi
 on 'jah'.
-.TP 
+.TP
 \fBconnections_allowed\fP
 Lubatud ühenduste arv samalt IP\-aadressilt. \fB0\fP tähendab lõputut
 hulka. (vaikimisi: \fB5\fP)
-.TP 
+.TP
 \fBdisallow_names\fP
 Nimed ja hüüdnimed, mida server ei tunnista. Metamärgid `*' ja `?' on
 toetatud. Lisainfoks vt. \fBglob\fP(7) .  Vaikimisi väärtused (kui muud ei
 määrata) on:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
-.TP 
+.TP
 \fBfifo_path\fP
 The path to the fifo you can echo server commands into (same as /query
 \&... from wesnoth).  If not specified defaults to the compile\-time path
 (default: \fB/var/run/wesnothd/socket\fP).
-.TP 
+.TP
 \fBmax_messages\fP
 Lubatud sõnumite arv perioodil \fBmessages_time_period\fP. (vaikimisi: \fB4\fP)
-.TP 
+.TP
 \fBmessages_time_period\fP
 Ajavahemik (sekundites), mille jooksul kontrollitakse sõnumitega
 üleujutamist (vaikimisi: \fB10\fP sekundit).
-.TP 
+.TP
 \fBmotd\fP
 Päevasõna.
-.TP 
+.TP
 \fBnew_room_policy\fP
 Määrab, kes saab serveris uusi ruume luua. Võimalikud väärtused on
 \&'everyone' (igaüks), 'registered' (registreeritud kasutajad), 'admin'
 (haldur) ja 'nobody' (mitte keegi). Vaikimisi väärtuseks on 'everyone'.
-.TP 
+.TP
 \fBpasswd\fP
 Administraatori salasõna (vt \fB/query admin\fP\fIparool\fP).
-.TP 
+.TP
 \fBreplay_save_path\fP
 Mängusalvestuste kataloog. (Ära unusta alguse kaldkriipsu!) Vaikmisi on `'
 ehk wesnothd käivituskataloog.
-.TP 
+.TP
 \fBrestart_command\fP
 Käsk, mida server kasutab uue serveriprotsessi käivitamiseks läbi
 `restart'\-käsu. (Kasutatav vaid käsujärjekorra kaudu. Vt
 \fBallow_remote_shutdown\fP \-sätet.)
-.TP 
+.TP
 \fBroom_save_file\fP
 Kataloogitee ruumiandmete failini. Seda faili loetakse serveri käivitumisel
 ja hiljem ka kirjutatakse sinna. Kui see on tühi või määramata, siis ruume
 ei laeta ega salvestata.
-.TP 
+.TP
 \fBsave_replays\fP
 Määrab, kas server salvestab mängu käigu automaatselt. (vaikimisi:
 \fBfalse\fP).
-.TP 
+.TP
 \fBversions_accepted\fP
 Komadega eraldatud tunnusstringide loetelu, mida server
 tunnistab. Metamärgid `*' and `?' on toetatud.  (vaikimisi on vastav
 Wesnothi versioon)
 .br
 N: \fBversions_accepted="*"\fP tunnistab kõiki versioone.
-.TP  
+.TP
 \fBuser_handler\fP
 Kasutajahalduri nimi. Hetkel on saadaval 'forum' (wesnothd ühendamiseks
 phpbb foorumi andmebaasiga) ja 'sample' (näitrealisatsioon kasutajate
@@ -172,13 +172,13 @@ on 'forum'. Pead ka lisama \fB[user_handler]\fP\-sektsiooni.
 \fB[redirect]\fP Määrab serveri, kuhu kindlad klienttarkvara versioonid
 suunatakse.
 .RS
-.TP 
+.TP
 \fBhost\fP
 Ümbersuunatava serveri aadress.
-.TP 
+.TP
 \fBport\fP
 Port, kuhu ühendutakse.
-.TP 
+.TP
 \fBversion\fP
 Komadega eraldatud nimekiri ümbersuunatavatest versioonidest. Metamärkide
 osas käitub nagu \fBversions_accepted\fP.
@@ -186,10 +186,10 @@ osas käitub nagu \fBversions_accepted\fP.
 .P
 \fB[ban_time]\fP Võtmesõnade määramiseks ajutiste keeldude nimekirja jaoks.
 .RS
-.TP 
+.TP
 \fBname\fP
 Nimi keeluajale viitamiseks.
-.TP 
+.TP
 \fBtime\fP
 Ajapikkuse defineerimine. Vorming:: %d[%s[%d%s[...]]] , kus %s on s
 (sekundid), m (minutid), h (tunnid), D (päevad), M (kuud) või Y (aastad) ja
@@ -206,31 +206,31 @@ haldurist, mis määratakse \fBuser_handler\fP võtmega. Kui [user_handler]
 \-sektsioon on häälestusfailis olemas, toimib server ilma kasutajate
 registreerimiseta.
 .RS
-.TP  
+.TP
 \fBdb_host\fP
 (user_handler=forum korral) Andmebaasiserveri masina nimi
-.TP  
+.TP
 \fBdb_name\fP
 (handler=forum jaoks) Andmebaasi nimi
-.TP  
+.TP
 \fBdb_user\fP
 (user_handler=forum jaoks) Kasutajanimi, millega baasi sisse logida
-.TP  
+.TP
 \fBdb_password\fP
 (user_handler=forum jaoks) Kasutaja salasõna
-.TP  
+.TP
 \fBdb_users_table\fP
 (user_handler=forum jaoks) Tabeli nimi, kuhu salvestatakse phpbb foorumi
 kasutajainfo. Tõenäoliselt on see <table\-prefix>_users
 (e.g. phpbb3_users).
-.TP  
+.TP
 \fBdb_extra_table\fP
 (user_handler=forum jaoks) Tabeli nimi, kuhu wesnothd salvestab
 kasutajainfo. See tuleb luua käsitsi. N: CREATE TABLE
 <tabel>(kasutaja VARCHAR(255) PRIMARY KEY, user_lastvisit INT
 UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 0);
-.TP  
+.TP
 \fBuser_expiration\fP
  (user_handler=sample jaoks). Aeg päevades, mille möödumisel konto aegub.
 .RE
@@ -238,19 +238,19 @@ UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 \fB[mail]\fP Häälestab SMTP\-serveri, mille kaudu kasutajahaldur saab saata
 e\-kirju. Praegu saadaval vaid 'sample'\-kasutajahaldurile..
 .RS
-.TP  
+.TP
 \fBserver\fP
 Postiserveri nimi
-.TP  
+.TP
 \fBusername\fP
 Postiserveri kasutajanimi
-.TP  
+.TP
 \fBpassword\fP
 Kasutaja parool.
-.TP  
+.TP
 \fBfrom_address\fP
 Sinu sõnumi vastuseaadress.
-.TP  
+.TP
 \fBmail_port\fP
 Port, kus e\-postiserver jookseb. Vaikimisi on see 25.
 .

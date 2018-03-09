@@ -17,4 +17,3 @@ RUN apt install -y -qq libpng12-0 libpng12-dev libreadline6-dev libvorbis-dev li
 RUN apt install -y -qq openssl gdb xvfb bzip2 git scons cmake make ccache gcc g++ clang
 
 WORKDIR /home/wesnoth-travis
-

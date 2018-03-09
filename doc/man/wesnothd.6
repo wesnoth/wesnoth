@@ -17,13 +17,13 @@
 .
 .SH NAME
 .
-wesnothd \- Battle for 
-.B Wesnoth 
+wesnothd \- Battle for
+.B Wesnoth
 multiplayer network daemon
 .
 .SH SYNOPSIS
 .
-.B wesnothd 
+.B wesnothd
 .RB [\| \-dv \|]
 .RB [\| \-c
 .IR path \|]
@@ -46,8 +46,8 @@ on what commands the server accepts via the wesnoth client (/query ...) or the f
 .
 .TP
 .BI -c\  path ,\ --config \ path
-tells wesnothd where to find the config file to use. See the section 
-.B SERVER CONFIG 
+tells wesnothd where to find the config file to use. See the section
+.B SERVER CONFIG
 below for the syntax. You can reload the config with sending SIGHUP to the server process.
 .TP
 .B -d, --daemon
@@ -59,7 +59,7 @@ tells you what the command line options do.
 .BI --log- level = domain1 , domain2 , ...
 sets the severity level of the log domains.
 .B all
-can be used to match                                                                                                          
+can be used to match
 any log domain. Available levels:
 .BR error ,\  warning ,\  info ,\  debug .
 By default the
@@ -76,7 +76,7 @@ binds the server to the specified port. If no port is specified, port
 will be used.
 .TP
 .BI -t\  number ,\ --threads \ number
-sets the maximum number of waiting worker threads for network I/O to n (default: 
+sets the maximum number of waiting worker threads for network I/O to n (default:
 .BR 5 ,\ max:\  30 ).
 .TP
 .BI -T\  number ,\ --max-threads \ number
@@ -123,10 +123,10 @@ Determines whether the rooms file should be read and written to in compressed fo
 The number of allowed connections from the same IP. \fB0\fR means infinite. (default: \fB5\fR)
 .TP
 .B disallow_names
-Names/nicks that are not accepted by the server. \fB*\fR and \fB?\fR from wildcard patterns are supported. See 
-.BR glob (7) 
+Names/nicks that are not accepted by the server. \fB*\fR and \fB?\fR from wildcard patterns are supported. See
+.BR glob (7)
 for more details.
-Default values (used if nothing is specified) are: 
+Default values (used if nothing is specified) are:
 .BR *admin*,*admln*,*server*,ai,ai?,computer,human,network,player .
 .TP
 .B fifo_path
@@ -165,7 +165,7 @@ A comma separated list of version strings to be accepted by the server. \fB*\fR 
 (defaults to the corresponding wesnoth version)
 .br
 Example: \fBversions_accepted="*"\fR accepts any version string.
-.TP 
+.TP
 .B user_handler
 The name of the user handler to use. Currently available user handlers are \fBforum\fR (to connect wesnothd to a phpbb forum database) and \fBsample\fR (a sample implementation of the user handler interface, if you use this on anything real you are insane). The default value is \fBforum\fR. You must also add a
 .B [user_handler]
@@ -208,7 +208,7 @@ results in a ban time of 1 day, 12 hours and 30 minutes.
 .P
 .B [proxy]
 A tag to tell the server to act as a proxy and forward the connected client's requests to the specified server.
-Accepts the same keys as 
+Accepts the same keys as
 .BR [redirect] .
 .RE
 .P
@@ -219,26 +219,26 @@ key. If no
 .B [user_handler]
 section is present in the configuration the server will run without any nick registration service.
 .RS
-.TP 
+.TP
 .B db_host
 (for user_handler=forum) The hostname of the database server
-.TP 
+.TP
 .B db_name
 (for user_handler=forum) The name of the database
-.TP 
+.TP
 .B db_user
 (for user_handler=forum) The name of the user under which to log into the database
-.TP 
+.TP
 .B db_password
 (for user_handler=forum) This user's password
-.TP 
+.TP
 .B db_users_table
 (for user_handler=forum) The name of the table in which your phpbb forums saves its user data. Most likely this will be <table-prefix>_users (e.g. phpbb3_users).
-.TP 
+.TP
 .B db_extra_table
 (for user_handler=forum) The name of the table in which wesnothd will save its own data about users. You will have to create this table manually, e.g.:
 .B CREATE TABLE <table-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);
-.TP 
+.TP
 .B user_expiration
 (for user_handler=sample) The time after which a registered nick expires (in days).
 .RE
@@ -246,19 +246,19 @@ section is present in the configuration the server will run without any nick reg
 .B [mail]
 Configures an SMTP server through which the user handler can send mail. Currently only used by the sample user handler.
 .RS
-.TP 
+.TP
 .B server
 The hostname of the mail server
-.TP 
+.TP
 .B username
 The user name under which to log into the mail server.
-.TP 
+.TP
 .B password
 This user's password.
-.TP 
+.TP
 .B from_address
 The reply-to address of you mail.
-.TP 
+.TP
 .B mail_port
 The port on which your mail server is running. Default is 25.
 .

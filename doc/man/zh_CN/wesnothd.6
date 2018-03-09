@@ -39,31 +39,31 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH 选项
 .
-.TP 
+.TP
 \fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ path\fP
 指定wesnothd查找配置文件的目录。欲获知命令语法，请查看下面的\fB服务器配置\fP小节。通过发送SIGHUP信号给服务器可以重新装载配置文件。
-.TP 
+.TP
 \fB\-d, \-\-daemon\fP
 以守护进程方式运行wesnothd。
-.TP 
+.TP
 \fB\-h, \-\-help\fP
 显示命令行选项的作用。
-.TP 
+.TP
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 设置日志域的严重度级别。\fBall\fP可以用来匹配任意日志域。可选的级别有：\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP。默认的级别是\fBerror\fP，对\fBserver\fP域而言，默认级别是\fBinfo\fP。
-.TP 
+.TP
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
 绑定服务器到指定的端口。如果不指定，则将使用\fB15000\fP端口。
-.TP 
+.TP
 \fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ number\fP
 设置网络I/O中等待状态的工作线程的最大数量为n（默认值：\fB5\fP，\ 最大值：\ \fB30\fP）。
-.TP 
+.TP
 \fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ number\fP
 设置允许创建的最大工作线程数。如果设置为\fB0\fP则不限制线程数（默认值：\fB0\fP）
-.TP 
+.TP
 \fB\-V, \-\-version\fP
 显示版本号并退出。
-.TP 
+.TP
 \fB\-v, \-\-verbose\fP
 开启调试日志记录。
 .
@@ -82,62 +82,62 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SS 全局主键：
 .
-.TP 
+.TP
 \fBallow_remote_shutdown\fP
 如果设置为 \fBno\fP （默认值），shut_down（关闭）和restart（重启）请求将被忽略，除非这些请求来自于fifo。如果设为 \fByes\fP
 则允许管理员通过 /query 远程关闭。
-.TP 
+.TP
 \fBban_save_file\fP
 一个服务器可读可写的（经gzip压缩的）文件的完整路径或相对路径。封禁信息会自动保存在这个文件里，并在服务器启动时读取。
-.TP 
+.TP
 \fBcompress_stored_rooms\fP
 指定房间文件是否应该以压缩形式读写。默认值为\fByes\fP。
-.TP 
+.TP
 \fBconnections_allowed\fP
 同一IP允许的连接数。\fB0\fP 表示无限制。（默认值：\fB5\fP）
-.TP 
+.TP
 \fBdisallow_names\fP
 服务器不允许使用的用户名/昵称。可以使用\fB*\fP和\fB?\fP通配符。更多详细信息请查看\fBglob\fP(7)。默认值（如果用户没有指定则自动使用）是：\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP。
-.TP 
+.TP
 \fBfifo_path\fP
 The path to the fifo you can echo server commands into (same as /query
 \&... from wesnoth).  If not specified defaults to the compile\-time path
 (default: \fB/var/run/wesnothd/socket\fP).
-.TP 
+.TP
 \fBmax_messages\fP
 \fBmessages_time_period\fP内允许的消息数。（默认值：\fB4\fP）
-.TP 
+.TP
 \fBmessages_time_period\fP
 消息泛滥检测的时间间隔（秒）。（默认值：\fB10\fP秒）
-.TP 
+.TP
 \fBmotd\fP
 每日一言
-.TP 
+.TP
 \fBnew_room_policy\fP
 指定谁能在服务器上创建新房间。可选值为
 \fBeveryone\fP，\fBregistered\fP，\fBadmin\fP和\fBnobody\fP，分别代表所有人，注册用户，管理员或者禁止创建新房间。默认值为
 \fBeveryone\fP。
-.TP 
+.TP
 \fBpasswd\fP
 用来获取管理员权限的密码（通过 \fB/query admin \fP\fIpassword\fP来取得权限）。
-.TP 
+.TP
 \fBreplay_save_path\fP
 服务器用于存放游戏录像的目录。（不要忘了以/结尾！）默认为`'（空），意指wesnothd启动时的当前目录。
-.TP 
+.TP
 \fBrestart_command\fP
 这是服务器通过\fBrestart\fP命令开启新服务器进程时使用的命令。（只能通过fifo来调用。参见\fBallow_remote_shutdown\fP设置。）
-.TP 
+.TP
 \fBroom_save_file\fP
 指定存放房间信息的文件的路径。这个文件在服务器启动时读取，之后会写入。如果设为空或者不设置，则房间不会被读取或保存。
-.TP 
+.TP
 \fBsave_replays\fP
 设置服务器是否自动保存游戏录像。（默认值：\fBfalse\fP）
-.TP 
+.TP
 \fBversions_accepted\fP
 服务器接受的客户端版本号列表，是以逗号分隔的字符串。支持\fB*\fP和\fB?\fP通配符。（默认为与服务器版本一致的wesnoth版本）
 .br
 例如: \fBversions_accepted="*"\fP 允许所有版本连接。
-.TP  
+.TP
 \fBuser_handler\fP
 希望使用的用户信息处理器的名称。目前可选的有\fBforum\fP（将wesnothd与phpbb论坛的数据库连接起来）和\fBsample\fP（一个用户信息处理接口的样例实现，如果您真的在实际中使用它，那您一定是疯了）。默认值是\fBforum\fP，同时您必须添加一个\fB[user_handler]\fP小节，请看下面。
 .
@@ -146,23 +146,23 @@ The path to the fifo you can echo server commands into (same as /query
 .P
 \fB[redirect]\fP 这个标签用于设定一个服务器，以将某些版本的客户端重定向到该服务器上。
 .RS
-.TP 
+.TP
 \fBhost\fP
 重定向到的服务器的地址。
-.TP 
+.TP
 \fBport\fP
 应连接的端口。
-.TP 
+.TP
 \fBversion\fP
 用逗号分隔的需要重定向的版本号列表。可以使用通配符，在这方面和 \fBversions_accepted\fP 一样。
 .RE
 .P
 \fB[ban_time]\fP 这个标签用于定义一些方便的关键字，以对应一些常用的临时封禁时间长度。
 .RS
-.TP 
+.TP
 \fBname\fP
 用于引用封禁时间的名字。
-.TP 
+.TP
 \fBtime\fP
 时间长度定义。 格式为：%d[%s[%d%s[...]]]
 其中%s是s（秒），m（分钟），h（小时），D（天），M（月），Y（年），%d是一个数字。如果不指定时间单位，默认为分钟（m）。例如：\fBtime=\"1D12h30m\"\fP
@@ -176,48 +176,48 @@ The path to the fifo you can echo server commands into (same as /query
 \fB[user_handler]\fP
 配置用户数据处理器。可设置的主键取决于通过\fBuser_handler\fP设置的用户数据处理器是哪一个。如果配置文件中没有\fB[user_handler]\fP小节，则服务器在运行中将不提供任何昵称注册服务。
 .RS
-.TP  
+.TP
 \fBdb_host\fP
 （如果user_handler=forum）数据库服务器的主机名
-.TP  
+.TP
 \fBdb_name\fP
 （如果user_handler=forum）数据库名
-.TP  
+.TP
 \fBdb_user\fP
 （如果user_handler=forum）数据库登录用户名
-.TP  
+.TP
 \fBdb_password\fP
 （如果user_handler=forum）这个用户的密码
-.TP  
+.TP
 \fBdb_users_table\fP
 （如果user_handler=forum）phpbb
 论坛中存放用户数据的表名。很可能是<table\-prefix>_users（例如phpbb3_users）。
-.TP  
+.TP
 \fBdb_extra_table\fP
 （如果user_handler=forum）wesnothd存放自用的用户数据的表名。您必须自己手动创建这个表，例如：\fBCREATE TABLE
 <table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
 UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 0);\fP
-.TP  
+.TP
 \fBuser_expiration\fP
 （如果user_handler=sample）注册昵称的失效时间（天数）。
 .RE
 .P
 \fB[mail]\fP 设置一个SMTP服务器，通过它用户信息处理器可以发送邮件。目前只在样例处理器中使用。
 .RS
-.TP  
+.TP
 \fBserver\fP
 邮件服务器的主机名。
-.TP  
+.TP
 \fBusername\fP
 登录到邮件服务器的用户名。
-.TP  
+.TP
 \fBpassword\fP
 这个用户的密码。
-.TP  
+.TP
 \fBfrom_address\fP
 您的邮箱的“回复到”邮件地址。
-.TP  
+.TP
 \fBmail_port\fP
 邮件服务器的端口。默认值为25。
 .

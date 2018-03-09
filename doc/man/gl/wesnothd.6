@@ -40,40 +40,40 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH OPCIÓNS
 .
-.TP 
+.TP
 \fB\-c\ \fP\fIruta\fP\fB,\ \-\-config\fP\fI\ ruta\fP
 Indícalle a wesnothd onde atopar o ficheiro de configuración a usar. Véxase
 a sintaxe máis adiante na sección de \fBCONFIGURACIÓN DO SERVIDOR\fP. Pódese
 recargar a configuración enviando SIGHUP ao proceso do servidor.
-.TP 
+.TP
 \fB\-d, \-\-daemon\fP
 Executa wesnothd coma un servizo.
-.TP 
+.TP
 \fB\-h, \-\-help\fP
 Indica as funcións das opcións de liña de ordes.
-.TP 
+.TP
 \fB\-\-log\-\fP\fInivel\fP\fB=\fP\fIdominio_1\fP\fB,\fP\fIdominio_2\fP\fB,\fP\fI…\fP
 Establece o nivel de severidade dos dominios do rexistro.  Pódese usar
 \fBall\fP para referirse a calquera dominio do rexistro. Os niveis dispoñíbeis
 son os seguintes: \fBerror\fP (erro),\ \fBwarning\fP (aviso),\ \fBinfo\fP
 (información) e \ \fBdebug\fP (depuración). \fBerror\fP é o nivel predeterminado,
 \fBinfo\fP para o dominio do servidor.
-.TP 
+.TP
 \fB\-p\ \fP\fIporto\fP\fB,\ \-\-port\fP\fI\ porto\fP
 Asocia o servidor ao porto especificado. O porto predeterminado é o
 \fB15000\fP.
-.TP 
+.TP
 \fB\-t\ \fP\fInúmero\fP\fB,\ \-\-threads\fP\fI\ número\fP
 Define o número máximo de fíos efectivos en espera para a entrada e saída de
 rede a n (\fB5\fP de maneira predeterminada,\ máximo \ \fB30\fP).
-.TP 
+.TP
 \fB\-T\ \fP\fInúmero\fP\fB,\ \-\-max\-threads\fP\fI\ número\fP
 Define o número máximo de fíos efectivos que se van crear. Se se define a
 \fB0\fP non terá límite (\fB0\fP é o valor predeterminado).
-.TP 
+.TP
 \fB\-V, \-\-version\fP
 Devolve o número da versión.
-.TP 
+.TP
 \fB\-v, \-\-verbose\fP
 Activa o rexistro da depuración.
 .
@@ -92,85 +92,85 @@ Activa o rexistro da depuración.
 .
 .SS "Claves globais:"
 .
-.TP 
+.TP
 \fBallow_remote_shutdown\fP
 Se se lle dá o valor \fBno\fP («non», valor predeterminado), as solicitudes de
 apagado e reinicio ignoraranse salvo que procedan do fifo.  Co valor \fByes\fP
 («si») permitirase o apagado remoto por medio dunha «/query» realizada por
 un administrador.
-.TP 
+.TP
 \fBban_save_file\fP
 Ruta completa ou relativa a un ficheiro —comprimido con gzip— que o servidor
 poida ler e escribir. As vedas hanse gardar neste ficheiro e leranse de novo
 cando se inicie o servidor.
-.TP 
+.TP
 \fBcompress_stored_rooms\fP
 Determina se se debe ler e escribir o ficheiro de salas de forma
 comprimida. O valor predeterminado é \fByes\fP («si»).
-.TP 
+.TP
 \fBconnections_allowed\fP
 O número de conexións permitidas desde un mesmo enderezo IP. \fB0\fP equivale a
 infinitas. O valor predeterminado é \fB5\fP.
-.TP 
+.TP
 \fBdisallow_names\fP
 Os nomes e alcumes que o servidor non acepta. Pódense empregar \fB*\fP e \fB?\fP
 como comodíns para patróns. Véxase \fBglob\fP(7)  para máis información. Os
 valores predeterminados son:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
-.TP 
+.TP
 \fBfifo_path\fP
 The path to the fifo you can echo server commands into (same as /query
 \&... from wesnoth).  If not specified defaults to the compile\-time path
 (default: \fB/var/run/wesnothd/socket\fP).
-.TP 
+.TP
 \fBmax_messages\fP
 O número máximo de mensaxes permitidas en \fBmessages_time_period\fP (\fB4\fP de
 maneira predeterminada).
-.TP 
+.TP
 \fBmessages_time_period\fP
 O período de tempo (en segundos) que se usa para detectar os envíos masivos
 de mensaxes (\fB10\fP segundos de maneira predeterminada).
-.TP 
+.TP
 \fBmotd\fP
 A mensaxe do día.
-.TP 
+.TP
 \fBnew_room_policy\fP
 Determina quen pode crear novas salas no servidor. Os valores dispoñíbeis
 son \fBeveryone\fP («todos»), \fBregistered\fP (só os usuarios «rexistrados»),
 \fBadmin\fP (só os «administradores») e \fBnobody\fP («ninguén»). Salvo que se
 indique o contrario, poden todos.
-.TP 
+.TP
 \fBpasswd\fP
 O contrasinal que se utiliza para obter privilexios de administrador —por
 medio de \fB/query admin \fP\fIcontrasinal\fP—.
-.TP 
+.TP
 \fBreplay_save_path\fP
 O directorio no que o servidor garda as repeticións das partidas (non
 esquezas a barra inclinada ao final, «/»). O seu valor predeterminado é
 «`'», o directorio no que se iniciou o wesnothd.
-.TP 
+.TP
 \fBrestart_command\fP
 A orde que utiliza o servidor para iniciar outro proceso de servidor por
 medio da orde \fBrestart\fP («reiniciar»). Só se pode establecer mediante o
 fifo. Véxase a opción \fBallow_remote_shutdown\fP.
-.TP 
+.TP
 \fBroom_save_file\fP
 Ruta a un ficheiro onde gardar a información das salas. Lerase durante a
 inicialización do servidor e escribirase nel máis tarde. Se o ficheiro está
 baleiro ou non se forneceu unha ruta ao mesmo, nin se cargará nin se gardará
 ningunha sala.
-.TP 
+.TP
 \fBsave_replays\fP
 Determina se o servidor gardará as repeticións das partidas
 automaticamente. O seu valor predeterminado é \fBfalse\fP («non»).
-.TP 
+.TP
 \fBversions_accepted\fP
 Unha lista separada por comas de cadeas de versión que o servidor
 aceptará. Pódense empregar os comodíns de patróns \fB*\fP e \fB?\fP. O seu valor
 predeterminado será a versión do xogo correspondente.
 .br
 Por exemplo: \fBversions_accepted="*"\fP aceptará calquera versión.
-.TP  
+.TP
 \fBuser_handler\fP
 O nome do xestor de usuarios a empregar. Os xestores de usuarios dispoñíbeis
 actualmente son \fBforum\fP —para conectar wesnothd á base de datos dun foro
@@ -185,13 +185,13 @@ predeterminado é \fBforum\fP. Tamén hai que engadir unha sección
 \fB[redirect]\fP é unha etiqueta para especificar un servidor ao que dirixir
 certas versións do cliente.
 .RS
-.TP 
+.TP
 \fBhost\fP
 O enderezo do servidor ao que dirixir os clientes.
-.TP 
+.TP
 \fBport\fP
 O porto da conexión.
-.TP 
+.TP
 \fBversion\fP
 Unha lista separada por comas de versións a dirixir. Compórtase do mesmo
 xeito que \fBversions_accepted\fP no referente aos comodíns de patróns.
@@ -200,10 +200,10 @@ xeito que \fBversions_accepted\fP no referente aos comodíns de patróns.
 \fB[ban_time]\fP é unha etiqueta para definir palabras clave axeitadas para
 duracións de vedas temporais.
 .RS
-.TP 
+.TP
 \fBname\fP
 O nome a usar para referirse á veda.
-.TP 
+.TP
 \fBtime\fP
 A duración. O formato é «%d[%s[%d%s[…]]]», onde %s será «s» (segundos), «m»
 (minutos), «h» (horas), «D» (días), «M» (meses) ou «Y» (anos), e %d será un
@@ -223,32 +223,32 @@ mediante a palabra clave \fBuser_handler\fP. Se non hai ningunha sección
 \fB[user_handler]\fP na configuración, o servidor executarase sen ningún
 servizo de rexistro de alcumes.
 .RS
-.TP  
+.TP
 \fBdb_host\fP
 O nome do servidor da base de datos (para «user_handler=forum»).
-.TP  
+.TP
 \fBdb_name\fP
 O nome da base de datos (para «user_handler=forum»).
-.TP  
+.TP
 \fBdb_user\fP
 O nome do usuario co que iniciar sesión na base de datos (para
 «user_handler=forum»).
-.TP  
+.TP
 \fBdb_password\fP
 O contrasinal de dito usuario (para «user_handler=forum»).
-.TP  
+.TP
 \fBdb_users_table\fP
 O nome da táboa na que o foro phpbb almacena os datos do usuario (para
 «user_handler=forum»). O máis probábel é que dita táboa sexa
 <prefixo\-da\-táboa>_users (por exemplo, «phpbb3_users»).
-.TP  
+.TP
 \fBdb_extra_table\fP
 O nome da táboa na que wesnothd gardará os seus propios datos dos usuarios
 (para «user_handler=forum»). Terás que crear a táboa manualmente, por
 exemplo mediante: \fBCREATE TABLE <nome\-da\-táboa>(username
 VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0,
 user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);\fP
-.TP  
+.TP
 \fBuser_expiration\fP
 O tempo en días tras o cal caducan os alcumes rexistrados (para
 «user_handler=sample»).
@@ -258,19 +258,19 @@ O tempo en días tras o cal caducan os alcumes rexistrados (para
 pode enviar correos electrónicos. Actualmente só o utiliza o xestor de
 usuarios de exemplo.
 .RS
-.TP  
+.TP
 \fBserver\fP
 O nome do servidor de correo.
-.TP  
+.TP
 \fBusername\fP
 O nome de usuario co que iniciar sesión no servidor de correo electrónico.
-.TP  
+.TP
 \fBpassword\fP
 O contrasinal dese usuario.
-.TP  
+.TP
 \fBfrom_address\fP
 O enderezo do remitente da mensaxe.
-.TP  
+.TP
 \fBmail_port\fP
 O porto no que se executa o servidor de correo electrónico. O seu valor
 predeterminado é «25».

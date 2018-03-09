@@ -34,4 +34,3 @@ function wml_actions.spawn_units(cfg)
 		end
 	end
 end
-

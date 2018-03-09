@@ -39,37 +39,37 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH MOŽNOSTI
 .
-.TP 
+.TP
 \fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ cesta\fP
 povie wesnothd, kde má hľadať konfiguračný súbor. Syntax, viď sekciu
 \fBKONFIGURÁCIA SERVERA\fP nižšie. Konfiguráciu môžete znovunačítať poslaním
 SIGHUP serverovému procesu.
-.TP 
+.TP
 \fB\-d, \-\-daemon\fP
 spustí wesnothd ako démona.
-.TP 
+.TP
 \fB\-h, \-\-help\fP
 povie, čo robia jednotlivé možnosti príkazového riadku.
-.TP 
+.TP
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdoména1\fP\fB,\fP\fIdoména2\fP\fB,\fP\fI...\fP
 nastaví úroveň závažnosti zapisovacích domén. \fBall\fP znamená všetky
 zapisovacie domény. Možné úrovne: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Štandardne sa používa úroveň \fBerror\fP a \fBinfo\fP pre doménu
 \fBserver\fP.
-.TP 
+.TP
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
 zavesí server na daný port. Ak nie je daný port, použije sa port \fB15000\fP.
-.TP 
+.TP
 \fB\-t\ \fP\fIčíslo\fP\fB,\ \-\-threads\fP\fI\ číslo\fP
 nastaví maximálny počet čakajúcich pracovných vlákien pre sieťové I/O
 (štandardne: \fB5\fP,\ maximum:\ \fB30\fP).
-.TP 
+.TP
 \fB\-T\ \fP\fIčíslo\fP\fB,\ \-\-max\-threads\fP\fI\ číslo\fP
 nastaví maximálny počet vytvorených pracovných vlákien. Hodnota \fB0\fP znamená
 bez obmedzenia (štandardne: \fB0\fP).
-.TP 
+.TP
 \fB\-V, \-\-version\fP
 vypíše číslo verzie a skončí.
-.TP 
+.TP
 \fB\-v, \-\-verbose\fP
 zapne zaznamenávanie ladiacich informácií.
 .
@@ -88,81 +88,81 @@ zapne zaznamenávanie ladiacich informácií.
 .
 .SS "Globálne kľúče:"
 .
-.TP 
+.TP
 \fBallow_remote_shutdown\fP
 Ak je nastavené na \fBno\fP (predvolené), príkazy na vypnutie alebo
 reštartovanie servera budú ignorované ak neprichádzajú zo soketu
 (fifo). Nastavenie na \fByes\fP povolí vypnutie servera po sieti cez /query od
 administrátora.
-.TP 
+.TP
 \fBban_save_file\fP
 Plná alebo relatívna cesta k súboru (komprimovanému gzipom), ktorý môže
 server čítať a zapisovať. Zákazy budú ukladané do tohto súboru a načítané
 pri štarte.
-.TP 
+.TP
 \fBcompress_stored_rooms\fP
 Určuje či sa má súbor s miestnosťami ukladať v komprimovanej
 forme. Predvolené je \fByes\fP.
-.TP 
+.TP
 \fBconnections_allowed\fP
 Počet povolených spojení z rovnakej IP adresy. \fB0\fP znamená
 nekonečno. (štandardne: \fB5\fP)
-.TP 
+.TP
 \fBdisallow_names\fP
 Mená/prezývky, ktoré server neprijíma. Podporujú sa zástupné znaky \fB*\fP and
 \fB?\fP. Pre ďalšie podrobnosti pozri \fBglob\fP(7). Štandardné hodnoty (ak sa nič
 nezadá) sú:\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
-.TP 
+.TP
 \fBfifo_path\fP
 The path to the fifo you can echo server commands into (same as /query
 \&... from wesnoth).  If not specified defaults to the compile\-time path
 (default: \fB/var/run/wesnothd/socket\fP).
-.TP 
+.TP
 \fBmax_messages\fP
 Počet povolených správ počas \fBmessages_time_period\fP. (štandardne: \fB4\fP)
-.TP 
+.TP
 \fBmessages_time_period\fP
 Časové obdobie (v sekundách), v ktorom sa meria zasypávanie
 správami. (štandardne: \fB10\fP sekúnd)
-.TP 
+.TP
 \fBmotd\fP
 Správa dňa.
-.TP 
+.TP
 \fBnew_room_policy\fP
 Určuje kto môže zakladať nové miestnosti na serveri. Povolené hodnoty sú
 \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP a \fBnobody\fP, ktoré dávajú oprávnenia
 každému, registrovaným používateľom, administrátorom, a nikomu. Predvolená
 hodnota je \fBeveryone\fP.
-.TP 
+.TP
 \fBpasswd\fP
 Heslo používané na získanie administrátorských práv (pomocou \fB/query admin
 \fP\fIheslo\fP) .
-.TP 
+.TP
 \fBreplay_save_path\fP
 Adresár kam server ukladá záznamy hier. (Nezabudnite na posledné /!)
 Predvolené je `', čo znamená adresár, v ktorom bol wesnothd spustený.
-.TP 
+.TP
 \fBrestart_command\fP
 Príkaz, ktorý server použije na spustenie nového serverovského procesu po
 príkaze \fBrestart\fP. (Môže byť použité iba cez soket (fifo). Pozri tiež
 nastavenie \fBallow_remote_shutdown\fP.)
-.TP 
+.TP
 \fBroom_save_file\fP
 Cesta k súboru kam majú byť uložené informácie o miestnostiach. Tento súbor
 sa načíta pri spustení serveru a neskôr zapisuje. Ak nie je zadaný,
 miestnosti sa neukladajú ani nenačítavajú.
-.TP 
+.TP
 \fBsave_replays\fP
 Určuje či bude server automaticky ukladať záznamy hier. (predvolené:
 \fBfalse\fP)
-.TP 
+.TP
 \fBversions_accepted\fP
 Čiarkami oddelený zoznam verzií, ktoré má server prijímať. Podporujú sa
 zástupné znaky \fB*\fP and \fB?\fP. (štandardne je to zodpovedajúca verzia
 wesnothu)
 .br
 Napríklad: \fBversions_accepted="*"\fP prijme hocijakú verziu.
-.TP  
+.TP
 \fBuser_handler\fP
 Názov obslužného programu pre správu používateľov. V súčasnosti dostupné
 programy sú \fBforum\fP (na spojenie wesnothd s databázou pre fórum v phpbb) a
@@ -177,13 +177,13 @@ pokynov.
 \fB[redirect]\fP Značka určujúca server, na ktorý sa presmerujú niektoré vezie
 klientov.
 .RS
-.TP 
+.TP
 \fBhost\fP
 Adresa servera, kam sa presmerujú.
-.TP 
+.TP
 \fBport\fP
 Port, na ktorý sa majú pripojiť.
-.TP 
+.TP
 \fBversion\fP
 Čiarkami oddelený zoznam verzií, ktoré sa majú presmerovať. Podporuje
 zástupné znaky rovnako ako \fBversions_accepted\fP.
@@ -192,10 +192,10 @@ zástupné znaky rovnako ako \fBversions_accepted\fP.
 \fB[ban_time]\fP Značka na pohodlné definovanie kľúčových slov pre dĺžku
 dočasných zákazov.
 .RS
-.TP 
+.TP
 \fBname\fP
 Názov použitý na pomenovanie času zákazu.
-.TP 
+.TP
 \fBtime\fP
 Definícia dĺžky trvania.  Formát je: %d[%s[%d%s[...]]] kde %s sú s
 (sekundy), m (minúty), h (hodiny), D (dni), M (mesiace) alebo Y (roky) a %d
@@ -213,32 +213,32 @@ kľúče závisia od zvoleného programu v kľúči \fBuser_handler\fP. Ak nie j
 sekcia \fB[user_handler]\fP vôbec uvedená, server bude fungovať bez služby
 registrácie prezývok.
 .RS
-.TP  
+.TP
 \fBdb_host\fP
 (pre user_handler=forum) Názov počítača s databázovým serverom
-.TP  
+.TP
 \fBdb_name\fP
 (pre user_handler=forum) Názov databázy
-.TP  
+.TP
 \fBdb_user\fP
 (pre user_handler=forum) Meno používateľa, s ktorým sa prihlásuje do
 databázy
-.TP  
+.TP
 \fBdb_password\fP
 (pre user_handler=forum) Heslo tohto používateľa do databázy
-.TP  
+.TP
 \fBdb_users_table\fP
 (pre user_handler=forum) Názov tabuľky, v ktorej fórum phpbb ukladá údaje o
 používateľoch. Najpravdepodobnejšie to bude
 <predpona_tabuliek>_users (napr. phpbb3_users).
-.TP  
+.TP
 \fBdb_extra_table\fP
 (pre user_handler=forum) Názov tabuľky, v ktorej bude wesnothd ukladať svoje
 údaje o používateľoch. Túto tabuľku je potrebné vopred založiť ručne, napr.:
 \fBCREATE TABLE <nazov\-tabulky>(username VARCHAR(255) PRIMARY KEY,
 user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
 NOT NULL DEFAULT 0);\fP
-.TP  
+.TP
 \fBuser_expiration\fP
 (pre user_handler=sample) Čas, za ktorý vyprší registrovaná
 prezývka/používateľské meno (v dňoch).
@@ -247,19 +247,19 @@ prezývka/používateľské meno (v dňoch).
 \fB[mail]\fP Nastaví SMTP server, cez ktorý bude program na správu používateľov
 posielať poštu. V súčasnosti ho používa len ukážkový program (sample).
 .RS
-.TP  
+.TP
 \fBserver\fP
 Názov počítača s poštovým serverom
-.TP  
+.TP
 \fBusername\fP
 Používateľské meno na prihlásenie do poštového servera.
-.TP  
+.TP
 \fBpassword\fP
 Heslo tohto používateľa.
-.TP  
+.TP
 \fBfrom_address\fP
 Adresa na odpovede (reply\-to) v odosielaných správach.
-.TP  
+.TP
 \fBmail_port\fP
 Port na ktorom beží poštový server. Štandardne 25.
 .

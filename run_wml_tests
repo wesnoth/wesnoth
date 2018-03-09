@@ -45,7 +45,7 @@ get_code_string()
   0)
     CodeString="PASS"
     ;;
-  1) 
+  1)
     CodeString="FAIL"
     ;;
   2)
@@ -78,7 +78,7 @@ get_code_string()
 check_errs()
 {
   # Argument 1 is the name of the test.
-  # Argument 2 is the wesnoth error code for the test. 
+  # Argument 2 is the wesnoth error code for the test.
   # Argument 3 is the expected error code.
   if [ "${2}" -eq 124 -a "${3}" -eq 2 ]; then
     if [ "$Verbose" -ge 2 ]; then
@@ -95,7 +95,7 @@ check_errs()
     fi
     return 0
   elif [ "${2}" -ne "${3}" ]; then
-    echo "${1}" ":" 
+    echo "${1}" ":"
     get_code_string ${2}
     printf '%-55s %3d - %s\n' "  Observed result :" "${2}" "$CodeString"
     get_code_string ${3}
@@ -142,7 +142,7 @@ run_test()
   else
     binary+="wesnoth "
   fi
-  
+
   # Use validcache on tests that aren't the first test.
   if [ "$FirstTest" -eq 1 ]; then
     ((timer *= 2))
@@ -154,7 +154,7 @@ run_test()
   if [ $timer -gt 0 ]; then
     # Some versions might not support the --kill-after option
     timeout --kill-after=5 1 true
-    # Exit code of timeout is 125 if the command itself fails, like if we passed a bad argument  
+    # Exit code of timeout is 125 if the command itself fails, like if we passed a bad argument
     if [ $? -ne 125 ]; then
       timer1=$((timer+1))
       preopts+="timeout --kill-after=$timer1 $timer "
@@ -226,13 +226,13 @@ do
       usage
       exit 0;
       ;;
-    v ) 
-      if [ "$Verbose" -lt 1 ]; then 
+    v )
+      if [ "$Verbose" -lt 1 ]; then
         Verbose=1
       fi
       ;;
     w )
-      if [ "$Verbose" -lt 2 ]; then 
+      if [ "$Verbose" -lt 2 ]; then
         Verbose=2
       fi
       ;;
@@ -291,7 +291,7 @@ fi
 
 if [ "$Verbose" -ge 2 ]; then
   if [ "${#extra_opts}" -ge 0 ]; then
-    echo "Found additional arguments to wesnoth: " "$extra_opts" 
+    echo "Found additional arguments to wesnoth: " "$extra_opts"
   fi
   if [ "$UnixTimeout" -eq 1 ]; then
     echo "Wesnoth built-in timeout was disabled. This script was updated, and -u is now unnecessary and has no effect."

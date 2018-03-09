@@ -244,7 +244,7 @@ class Parser:
         else:
             output = tempfile.mkdtemp(prefix="wmlparser_")
             tempdirs_to_clean.append(output)
-            
+
         self.temp_dir = output
         commandline = [self.wesnoth_exe]
         if self.data_dir:

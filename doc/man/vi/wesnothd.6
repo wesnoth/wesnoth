@@ -39,37 +39,37 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH "TÙY CHỌN"
 .
-.TP 
+.TP
 \fB\-c\ \fP\fIđường _dẫn\fP\fB,\ \-\-config\fP\fI\ đường_dẫn\fP
 xác định cho wesnothd nơi để tìm tập tin cấu hình cần sử dụng. Xem phần
 \fBCẤU HÌNH MÁY CHỦ\fP bên dưới để biết cú pháp. Bạn có thể tải lại cấu hình
 bằng cách gửi SIGHUP đến tiến trình máy chủ.
-.TP 
+.TP
 \fB\-d, \-\-daemon\fP
 chạy wesnothd như một tiến trình nền.
-.TP 
+.TP
 \fB\-h, \-\-help\fP
 nói cho bạn biết tùy chọn dòng lệnh làm gì.
-.TP 
+.TP
 \fB\-\-log\-\fP\fImức_độ\fP\fB=\fP\fImiền_1\fP\fB,\fP\fImiền_2\fP\fB,\fP\fI...\fP
 đặt mức độ nghiêm trọng của các miền ghi lưu. \fBall\fP có thể được sử dụng để
 khớp với bất kỳ miền ghi lưu nào. Các mức độ có sẵn: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Theo mặc định mức độ \fBerror\fP được sử dụng và mức độ
 \fBinfo\fP cho miền \fBserver\fP.
-.TP 
+.TP
 \fB\-p\ \fP\fIcổng\fP\fB,\ \-\-port\fP\fI\ cổng\fP
 kết máy chủ với cổng được chỉ định. Nếu không có cổng nào được chỉ định,
 cổng \fB15000\fP sẽ được sử dụng.
-.TP 
+.TP
 \fB\-t\ \fP\fIsố\fP\fB,\ \-\-threads\fP\fI\ số\fP
 thiết lập số tuyến chờ đợi cho hoạt động vào/ra mạng là n (mặc định: \fB5\fP,\ tối đa:\ \fB30\fP).
-.TP 
+.TP
 \fB\-T\ \fP\fIsố\fP\fB,\ \-\-max\-threads\fP\fI\ số\fP
 thiết lập số tuyến làm việc tối đa sẽ được tạo ra. Nếu đặt là  \fB0\fP thì sẽ
 không có giới hạn (mặc định: \fB0\fP).
-.TP 
+.TP
 \fB\-V, \-\-version\fP
 hiện số phiên bản và thoát.
-.TP 
+.TP
 \fB\-v, \-\-verbose\fP
 bật chế độ ghi lưu gỡ lỗi.
 .
@@ -88,81 +88,81 @@ bật chế độ ghi lưu gỡ lỗi.
 .
 .SS "Các phím toàn cục:"
 .
-.TP 
+.TP
 \fBallow_remote_shutdown\fP
 Nếu đặt là \fBno\fP (mặc định), các yêu cầu tắt và khởi động lại sẽ bị bỏ qua
 trừ khi chúng đến từ fifo. Đặt là \fByes\fP để cho phép tắt từ xa thông qua một
 /query bởi một người quản trị.
-.TP 
+.TP
 \fBban_save_file\fP
 Đường dẫn đầy đủ hoặc tương đối đến một tập tin (định dạng nén gzip) mà máy
 chủ có thể đọc và ghi. Các lệnh cấm sẽ được lưu vào tập tin này và được đọc
 lại khi khởi động máy chủ.
-.TP 
+.TP
 \fBcompress_stored_rooms\fP
 Xác định xem tập tin các phòng có được đọc và ghi ở dạng nén hay không. Mặc
 định là \fByes\fP.
-.TP 
+.TP
 \fBconnections_allowed\fP
 Số kết nối được phép từ cùng một địa chỉ IP.  \fB0\fP nghĩa là vô hạn. (mặc
 định: \fB5\fP)
-.TP 
+.TP
 \fBdisallow_names\fP
 Tên/biệt danh không được máy chủ chấp nhận. \fB*\fP và \fB?\fP từ các mẫu ký tự
 đại diện được hỗ trợ. Xem \fBglob\fP(7) để biết thêm chi tiết. Giá trị mặc định
 (được sử dụng nếu không có gì được chỉ định) là:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
-.TP 
+.TP
 \fBfifo_path\fP
 The path to the fifo you can echo server commands into (same as /query
 \&... from wesnoth).  If not specified defaults to the compile\-time path
 (default: \fB/var/run/wesnothd/socket\fP).
-.TP 
+.TP
 \fBmax_messages\fP
 Số tin nhắn được phép trong \fBmessages_time_period\fP. (mặc định: \fB4\fP)
-.TP 
+.TP
 \fBmessages_time_period\fP
 Khoảng thời gian (tính bằng giây) phát hiện tràn ngập tin nhắn. (mặc định:
 \fB10\fP giây)
-.TP 
+.TP
 \fBmotd\fP
 Tin nhắn trong ngày.
-.TP 
+.TP
 \fBnew_room_policy\fP
 Xác định ai có thể tạo phòng mới trên máy chủ. Giá trị có sẵn là
 \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP và \fBnobody\fP, và cấp quyền tương ứng
 với tất cả mọi người, những người dùng đã đăng ký, những người quản trị hay
 tắt không cho tạo phòng mới. Giá trị mặc định là \fBeveryone\fP.
-.TP 
+.TP
 \fBpasswd\fP
 Mật khẩu được sử dụng để có quyền quản trị (thông qua \fB/query admin
 \fP\fIpassword\fP).
-.TP 
+.TP
 \fBreplay_save_path\fP
 Thư mục nơi máy chủ lưu trữ các bản phát lại trò chơi. (Đừng quên dấu /!)
 Mặc định là `' nghĩa là thư mục nơi wesnothd được khởi chạy.
-.TP 
+.TP
 \fBrestart_command\fP
 Lệnh mà máy chủ sử dụng để khởi chạy một tiến trình máy chủ mới thông qua
 lệnh \fBrestart\fP. (Chỉ có thể được đưa ra thông qua fifo. Xem thiết lập
 \fBallow_remote_shutdown\fP).
-.TP 
+.TP
 \fBroom_save_file\fP
 Đường dẫn đến tập tin nơi thông tin về các phòng được lưu trữ. Tập tin này
 được đọc trên máy chủ lúc khởi động và được ghi vào sau đó. Nếu rỗng hay
 không được đặt, các phòng không được tải hay lưu.
-.TP 
+.TP
 \fBsave_replays\fP
 Xác định xem máy chủ có tự động lưu bản phát lại của các trò chơi
 không. (mặc định: \fBfalse\fP)
-.TP 
+.TP
 \fBversions_accepted\fP
 Một danh sách phân cách bằng dấu phẩy các chuỗi phiên bản được máy chủ chấp
 nhận. \fB*\fP và \fB?\fP từ các mẫu ký tự đại diện được hỗ trợ. (mặc định là phiên
 bản wesnoth tương ứng)
 .br
 Ví dụ: \fBversions_accepted="*"\fP chấp nhận bất kỳ chuỗi phiên bản nào.
-.TP  
+.TP
 \fBuser_handler\fP
 Tên của bộ xử lý người dùng để sử dụng. Các bộ xử lý người dùng hiện có là
 \fBforum\fP (kết nối wesnothd đến một cơ sở dữ liệu diễn đàn phpbb) và
@@ -177,13 +177,13 @@ dưới.
 \fB[redirect]\fP Một thẻ để chỉ định một máy chủ để chuyển hướng một số phiên
 bản máy khách đến.
 .RS
-.TP 
+.TP
 \fBhost\fP
 Địa chỉ của máy chủ để chuyển hướng đến.
-.TP 
+.TP
 \fBport\fP
 Cổng để kết nối đến.
-.TP 
+.TP
 \fBversion\fP
 Một danh sách phân cách bằng dấu phẩy các phiên bản để chuyển hướng. Hoạt
 động tương tự như \fBversions_accepted\fP với các mẫu ký tự đại diện.
@@ -192,10 +192,10 @@ Một danh sách phân cách bằng dấu phẩy các phiên bản để chuyể
 \fB[ban_time]\fP Một thẻ để định nghĩa các từ khóa thuận tiện cho khoảng thời
 gian cấm tạm thời.
 .RS
-.TP 
+.TP
 \fBname\fP
 Tên sử dụng để tham khảo thời gian cấm.
-.TP 
+.TP
 \fBtime\fP
 Định khoảng thời gian. Định dạng là: %d[%s[%d%s[...]]] trong đó %s là s
 (giây), m (phút), h (giờ), D (ngày), M (tháng) hoặc Y (năm) và %d là một
@@ -213,32 +213,32 @@ vào bộ xử lý người dùng nào được đặt bằng khóa \fBuser_hand
 phần \fB[user_handler]\fP trong cấu hình thì máy chủ sẽ chạy mà không có dịch
 vụ đăng ký biệt danh.
 .RS
-.TP  
+.TP
 \fBdb_host\fP
 (for user_handler=forum) Tên máy của máy chủ cơ sở dữ liệu
-.TP  
+.TP
 \fBdb_name\fP
 (for user_handler=forum) Tên của cơ sở dữ liệu
-.TP  
+.TP
 \fBdb_user\fP
 (for user_handler=forum) Tên mà người dùng sử dụng để đăng nhập vào cơ sở dữ
 liệu
-.TP  
+.TP
 \fBdb_password\fP
 (for user_handler=forum) Mật khẩu của người dùng này
-.TP  
+.TP
 \fBdb_users_table\fP
 (for user_handler=forum) Tên của bảng để các diễn đàn phpbb của bạn lưu dữ
 liệu người dùng vào đó. Nhiều khả năng đây sẽ là
 <table\-prefix>_users (ví dụ phpbb3_users).
-.TP  
+.TP
 \fBdb_extra_table\fP
 (for user_handler=forum) Tên của bảng để wesnothd lưu dữ liệu về người dùng
 vào đó. Bạn sẽ phải tạo bảng này một cách thủ công, ví dụ: \fBCREATE TABLE
 <table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
 UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 0);\fP
-.TP  
+.TP
 \fBuser_expiration\fP
 (for user_handler=sample) Thời gian sau đó biệt danh đã đăng ký sẽ hết hạn
 (theo ngày).
@@ -247,19 +247,19 @@ UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 \fB[mail]\fP Cấu hình một máy chủ SMTP qua đó bộ xử lý người dùng có thể gửi
 thư. Hiện tại chỉ được sử dụng bởi bộ xử lý người dùng mẫu.
 .RS
-.TP  
+.TP
 \fBserver\fP
 Tên máy của máy chủ thư
-.TP  
+.TP
 \fBusername\fP
 Tên người dùng để đăng nhập vào máy chủ thư.
-.TP  
+.TP
 \fBpassword\fP
 Mật khẩu của người dùng này.
-.TP  
+.TP
 \fBfrom_address\fP
 Địa chỉ trả lời đến thư của bạn.
-.TP  
+.TP
 \fBmail_port\fP
 Cổng trên đó máy chủ thư của bạn đang chạy. Mặc định là 25.
 .

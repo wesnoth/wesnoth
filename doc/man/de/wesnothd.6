@@ -39,39 +39,39 @@ server accepts via the wesnoth client (/query ...) or the fifo.
 .
 .SH KOMMANDOZEILENOPTIONEN
 .
-.TP 
+.TP
 \fB\-c\ \fP\fIPfad\fP\fB,\ \-\-config\fP\fI\ Pfad\fP
 sagt wesnothd wo er die zu benutzende Konfigurationsdatei findet. Siehe im
 Abschnitt \fBSERVER KONFIGURATION\fP unterhalb für den genauen Syntax. Sie
 können die Konfigurationsdatei durch senden eines SIGHUP an den
 Serverprozess neuladen.
-.TP 
+.TP
 \fB\-d, \-\-daemon\fP
 startet wesnothd als Dämon.
-.TP 
+.TP
 \fB\-h, \-\-help\fP
 Gibt die möglichen Kommandozeilenoptionen aus.
-.TP 
+.TP
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIDomäne1\fP\fB,\fP\fIDomäne2\fP\fB,\fP\fI...\fP
 Setzt die Stufe der Debugausgabe. Verwenden Sie \fBall\fP, um sämtliche Domänen
 zu verwenden. Verfügbare Stufen: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Standardmäßig werden die Stufe \fBerror\fP für die Domäne des Spieles
 und die Stufe \fBinfo\fP für die Domäne des Servers verwendet.
-.TP 
+.TP
 \fB\-p\ \fP\fIPort\fP\fB,\ \-\-port\fP\fI\ Port\fP
 bindet den Server an den angegebenen Port. Wenn kein Port angegeben ist,
 wird Port \fB15000\fP genommen.
-.TP 
+.TP
 \fB\-t\ \fP\fINummer\fP\fB,\ \-\-threads\fP\fI\ Nummer\fP
 Legt die maximale Anzahl an Arbeiterprozessen für Netzwerk I/O
 fest. (Standard: \fB5\fP,\ Maximum:\ \fB30\fP)
-.TP 
+.TP
 \fB\-t,\ \-\-max\-threads\fP\fI\ Wert\fP
 Legt die maximal zu erzeugende Anzahl an Arbeiterprozessen fest. Bei einem
 Wert von \fB0\fP gibt es keine Beschränkung. (Standard: \fB0\fP)
-.TP 
+.TP
 \fB\-V, \-\-version\fP
 Zeigt die Versionsnummer an und beendet das Programm.
-.TP 
+.TP
 \fB\-v, \-\-verbose\fP
 aktiviert mehr Details in der Logausgabe.
 .
@@ -90,86 +90,86 @@ aktiviert mehr Details in der Logausgabe.
 .
 .SS "Globale Schlüssel:"
 .
-.TP 
+.TP
 \fBallow_remote_shutdown\fP
 Wenn es auf \fBno\fP (Voreinstellung) gestellt ist, werden Anfragen zum
 Herunterfahren und Neustart ignoriert, falls sie nicht über die FIFO\-Datei
 kommen. Ein Einstellen auf \fByes\fP erlaubt es einem Administrator durch ein
 /query ein entferntes Herunterfahren.
-.TP 
+.TP
 \fBban_save_file\fP
 Kompletter oder relativer Pfad zu einer (gzip\-komprimierten) Datei, die der
 Server lesen und schreiben kann. Bans werden in diese Datei gespeichert und
 beim Start vom Server eingelesen.
-.TP 
+.TP
 \fBcompress_stored_rooms\fP
 Legt fest, ob die Datei für die Räume in komprimierter Form gelesen und
 geschrieben werden soll. Die Voreinstellung ist \fByes\fP.
-.TP 
+.TP
 \fBconnections_allowed\fP
 Die Anzahl zulässiger Verbindungen von der gleichen IP Adresse. \fB0\fP heißt
 unendlich. (Standard: \fB5\fP)
-.TP 
+.TP
 \fBdisallow_names\fP
 Namen/Spitznamen die der Server nicht akzeptiert. \fB*\fP und \fB?\fP sind als
 Platzhalter unterstützt. Siehe \fBglob\fP(7) für mehr Details. Standardwerte
 (wenn sonst nichts angegeben wurde) sind:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
-.TP 
+.TP
 \fBfifo_path\fP
 The path to the fifo you can echo server commands into (same as /query
 \&... from wesnoth).  If not specified defaults to the compile\-time path
 (default: \fB/var/run/wesnothd/socket\fP).
-.TP 
+.TP
 \fBmax_messages\fP
 Die Anzahl der erlaubten Nachrichten in \fBmessages_time_period\fP. (Standard:
 \fB4\fP)
-.TP 
+.TP
 \fBmessages_time_period\fP
 Der Zeitraum (in Sekunden) in dem "message flooding" erkannt
 wird. (Standard: \fB10\fP)
-.TP 
+.TP
 \fBmotd\fP
 Die "Nachricht des Tages".
-.TP 
+.TP
 \fBnew_room_policy\fP
 Legt fest, wer neue Räume auf dem Server erstellen kann. Verwendbare Werte
 sind \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP und \fBnobody\fP und erteilen die
 Berechtigung entsprechend an jeden, registrierte Benutzer, Administratoren
 beziehungsweise deaktiviert die Erstellung neuer Räume. Der voreingestellte
 Wert ist \fBeveryone\fP (jeder).
-.TP 
+.TP
 \fBpasswd\fP
 Das Passwort, um auf dem Server Administratorrechte zu erhalten (über
 \fB/query admin \fP\fIPasswort\fP).
-.TP 
+.TP
 \fBreplay_save_path\fP
 Legt den Ordner fest, in dem der Server Wiederholungen
 abspeichert. (Vergesst das abschließende /! nicht) Standardmäßig wird »«
 verwendet, was für den Ordner steht, in dem wesnothd gestartet wurde.
-.TP 
+.TP
 \fBrestart_command\fP
 Der Befehl, den der Server verwendet, um einen neuen Server\-Prozess über den
 \fBrestart\fP\-Befehl zu starten. (Kann nur über die FIFO angefordert
 werden. Siehe die \fBallow_remote_shutdown\fP\-Einstellung.)
-.TP 
+.TP
 \fBroom_save_file\fP
 Pfad zu einer Datei, in die die Rauminformationen gespeichert werden
 sollen. Die Datei wird beim Starten des Servers gelesen und später
 beschrieben. Falls der Wert leer oder nicht gesetzt ist, werden Räume weder
 geladen noch gespeichert.
-.TP 
+.TP
 \fBsave_replays\fP
 Legt fest, ob vom Server automatisch Wiederholungen gespeichert werden
 sollen. (Standard: \fBfalse\fP)
-.TP 
+.TP
 \fBversions_accepted\fP
 Eine durch Komma getrennte Liste der Programmversionen, die der Server
 zulässt. \fB*\fP und \fB?\fP sind erlaubt. (Standard: Die aktuell installierte
 Wesnoth\-Version)
 .br
 Beispiel: \fBversions_accepted="*"\fP akzeptiert alle Versionen.
-.TP  
+.TP
 \fBuser_handler\fP
 Der Name der zu verwendenden Nutzerverwaltung. Momentan sind als
 Nutzerverwaltungen \fBforum\fP (um via wesnothd eine Verbindung zu einer phpbb
@@ -185,13 +185,13 @@ Aufbau von diesem ist weiter unten beschrieben.
 \fB[redirect]\fP Ein Element, um bestimmte Programmversionen anzugeben, die auf
 einen anderen Server umgeleitet werden sollen.
 .RS
-.TP 
+.TP
 \fBhost\fP
 Die Adresse des Rechners, zu dem umgeleitet wird.
-.TP 
+.TP
 \fBport\fP
 Der dabei zu verwendende Port.
-.TP 
+.TP
 \fBversion\fP
 Eine durch Komma getrennte Liste der Versionen, die umgeleitet werden
 sollen. Verhält sich in Bezug auf Wildcards genauso wie
@@ -201,10 +201,10 @@ sollen. Verhält sich in Bezug auf Wildcards genauso wie
 \fB[ban_time]\fP Eine Markierung, um A tag to define convenient keywords for
 temporary ban time lengths.
 .RS
-.TP 
+.TP
 \fBname\fP
 Der Name, um die Ban\-Zeit zu referenzieren.
-.TP 
+.TP
 \fBtime\fP
 Die Zeitlängen\-Definition. Das Format lautet: %d[%s[%d%s[...]]] wobei %s für
 s (Sekunden), m (Minuten), h (Stunden), D (Tage), M (Monate) oder Y (Jahre)
@@ -224,25 +224,25 @@ Schlüssel hängen davon ab, welche Nutzerverwaltung beim \fBuser_handler\fP
 Schlüssel festgelegt wurde. Ist kein \fB[user_handler]\fP\-Bereich vorhanden, so
 ist es nicht möglich registrierte Nutzernamen auf dem Server zu verwenden.
 .RS
-.TP  
+.TP
 \fBdb_host\fP
 (für user_handler=forum) Der Hostname des Datenbank\-Servers
-.TP  
+.TP
 \fBdb_name\fP
 (für user_handler=forum) Der Name der zu nutzenden Datenbank
-.TP  
+.TP
 \fBdb_user\fP
 (für user_handler=forum) Der Benutzername, der zur Anmeldung an der
 Datenbank verwendet werden soll
-.TP  
+.TP
 \fBdb_password\fP
 (für user_handler=forum) Das zugehörige Passwort für den Nutzer
-.TP  
+.TP
 \fBdb_users_table\fP
 (für user_handler=forum) Der Name der Tabelle, in der das phpbb Forum die
 Nutzerdaten ablegt. Dies ist höchstwahrscheinlich
 <table\-prefix>_users (z.B. phpbb3_users).
-.TP  
+.TP
 \fBdb_extra_table\fP
 (für user_handler=forum) Der Name der Tabelle, in der wesnothd spezifische
 Nutzerdaten abgelegt werden sollen. Diese Tabelle muss manuell angelegt
@@ -250,7 +250,7 @@ werden. Dies erfolgt z.B. mit einem Befehl wie diesem: \fBCREATE TABLE
 <table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
 UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 0);\fP
-.TP  
+.TP
 \fBuser_expiration\fP
 (für user_handler=sample) Zeit (in Tagen) nach der ein registrierter
 Benutzername verfällt.
@@ -260,19 +260,19 @@ Benutzername verfällt.
 Benachrichtigungen verschicken kann. Dies wird momentan nur von der
 Nutzerverwaltung »sample« verwendet.
 .RS
-.TP  
+.TP
 \fBserver\fP
 Der Hostname des Mail\-Servers.
-.TP  
+.TP
 \fBusername\fP
 Der Nutzername mit welchem man sich beim Mail\-Server anmeldet.
-.TP  
+.TP
 \fBpassword\fP
 Das Passwort dieses Nutzers.
-.TP  
+.TP
 \fBfrom_address\fP
 Die Antwortadresse für ausgehende Mails.
-.TP  
+.TP
 \fBmail_port\fP
 Der Port, auf welchem der Mailserver arbeitet. Standardmäßig wird Port 25
 verwendet.
