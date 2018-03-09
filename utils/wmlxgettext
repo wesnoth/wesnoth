@@ -46,7 +46,7 @@ def commandline(args):
         description='Generate .po from WML/lua file list.',
         usage='''wmlxgettext --domain=DOMAIN -o OUTPUT_FILE
                    [--directory=START_PATH]
-                   [--recursive] [--initialdomain=INITIALDOMAIN]
+                   [--recursive] [--initialdomain=INITIAL_DOMAIN]
                    [--package-version=PACKAGE_VERSION]
                    [--no-text-colors] [--fuzzy] [--warnall]
                    FILE1 FILE2 ... FILEN'''
@@ -54,7 +54,7 @@ def commandline(args):
     parser.add_argument(
         '--version',
         action='version',
-        version='wmlxgettext 2017.06.25.py3'
+        version='wmlxgettext 2018.03.09.py3'
     )
     parser.add_argument(
         '-o',
@@ -64,8 +64,8 @@ def commandline(args):
         help= ('Destination file. In some special situations you might want '
                'to write the output to STDOUT instead of writing '
                'an actual file (using "-o -"). On a standard usage, however, '
-               'you should avoid to write the output to STDOUT (or you can'
-               'face some issues related to text encoding '
+               'you should avoid to write the output to STDOUT (or you can '
+               'face some issues related to text encoding). '
                '[**REQUIRED ARGUMENT**]')
     )
     parser.add_argument(
@@ -74,7 +74,7 @@ def commandline(args):
         required=True,
         dest='domain',
         help= ('The textdomain (on WML/lua file) wich contains the '
-               'strings that will be actually translated '
+               'strings that will be actually translated. '
                '[**REQUIRED ARGUMENT**]')
     )
     parser.add_argument(
@@ -82,8 +82,8 @@ def commandline(args):
         default='.',
         dest='start_path',
         help=('Complete path of your "start directory". '
-              'The path to every source file should start from this '
-              'directory.')
+              '(Default: current directory). The (relative) path to '
+              'every WML/lua file should start from this directory.')
     )
     parser.add_argument(
         '--initialdomain', 
@@ -91,7 +91,7 @@ def commandline(args):
         dest='initdom',
         help=('Initial domain value on WML/lua file when no textdomain '
               'setted in that WML/lua file.\nBy default it is equal to '
-              '"wesnoth" and usually you don\'t need to change this value')
+              '"wesnoth" and usually you don\'t need to change this value.')
     )
     parser.add_argument(
         '--package-version',
@@ -99,8 +99,7 @@ def commandline(args):
         dest='package_version',
         help=('Version number of your wesnoth add-on. You don\'t actually '
               'require to set this option since you can directly edit the '
-              'po file produced by wmlxgettext. However this option could '
-              'help you to save a bit of time')
+              'po file produced by wmlxgettext.')
     )
     parser.add_argument(
         '--no-text-colors',
@@ -115,7 +114,7 @@ def commandline(args):
         action='store_true',
         default=False,
         dest='warnall',
-        help="Show all warnings. By default some warnings are hided"
+        help="Show all warnings. By default some warnings are hidden."
     )
     parser.add_argument(
         '--fuzzy',
@@ -124,31 +123,40 @@ def commandline(args):
         dest='fuzzy',
         help=("If you specify this flag, all sentences contained on the POT "
               "file created by wmlxgettext will be setted as fuzzy.\n"
-              "By default sentences are NOT setted as fuzzy")
+              "By default sentences are NOT setted as fuzzy.")
     )
     parser.add_argument(
         '--recursive',
         action='store_true',
         default=False,
-        help=("If this option is used, wmlxgettext will scan recursively the"
-              " directory setted on the '--directory' parameter. "
+        help=("If this option is used, wmlxgettext will scan recursively the "
+              "directory setted on the '--directory' parameter and checks "
+              "itself every WML/lua file. "
               "If this option is used, EXPLICIT LIST of files will be "
               "ignored.") 
     )
+    parser.add_argument(
+        'filelist',
+        help='List of WML/lua files of your UMC (source files).',
+        nargs='*'
+    )
+    
+    '''
+    Developer Options - not suitable for standard usage:
+    --DMode is a reserved flag used to verify how wmlxgettext is internally
+            working. When this flag is used (setted to ON), an extra
+            file (debug.txt) will be created. debug.txt will contain
+            useful informations to check if wmlxgettext is working as expected
+            (but make sense only for wmlxgettext developers/contributors)
+    '''
     parser.add_argument(
         '--DMode',
         action='store_true',
         dest='debugmode',
         default=False,
-        help=("DON'T USE THIS OPTION. It is reserved to test how wmlxgettext "
-              "internally works. If this option is enabled, an extra "
-              "file (debug.txt) will be created. ")
+        help=argparse.SUPPRESS
     )
-    parser.add_argument(
-        'filelist',
-        help='List of WML/lua files of your UMC (source files)',
-        nargs='*'
-    )
+
     return parser.parse_args(args)
 
 
