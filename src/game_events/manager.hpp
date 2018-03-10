@@ -17,7 +17,6 @@
 #include "game_events/fwd.hpp"
 #include "game_events/wmi_manager.hpp"
 #include "config.hpp"
-#include "global.hpp"
 
 #include <functional>
 #include <set>
@@ -72,7 +71,7 @@ public:
 	void write_events(config& cfg) const;
 
 	using event_func_t = std::function<void(game_events::manager&, handler_ptr&)>;
-	void execute_on_events(const std::string& event_id, event_func_t func) NOEXCEPT;
+	void execute_on_events(const std::string& event_id, event_func_t func);
 
 	game_events::wml_event_pump& pump();
 

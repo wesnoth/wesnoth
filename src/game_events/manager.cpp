@@ -117,7 +117,7 @@ void manager::write_events(config& cfg) const
 	wml_menu_items_.to_config(cfg);
 }
 
-void manager::execute_on_events(const std::string& event_id, manager::event_func_t func) NOEXCEPT
+void manager::execute_on_events(const std::string& event_id, manager::event_func_t func)
 {
 	const std::string standardized_event_id = event_handlers::standardize_name(event_id);
 	const game_data* gd = resources::gamedata;
