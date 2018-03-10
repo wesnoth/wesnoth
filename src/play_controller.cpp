@@ -820,6 +820,10 @@ replay& play_controller::get_replay() {
 void play_controller::save_game()
 {
 	if(save_blocker::try_block()) {
+		// Saving while an event is running isn't supported
+		// because it may lead to expired event handlers being saved.
+		assert(!gamestate().events_manager_->is_event_running());
+
 		save_blocker::save_unblocker unblocker;
 		scoped_savegame_snapshot snapshot(*this);
 		savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());

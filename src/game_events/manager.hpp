@@ -73,6 +73,8 @@ public:
 	using event_func_t = std::function<void(game_events::manager&, handler_ptr&)>;
 	void execute_on_events(const std::string& event_id, event_func_t func);
 
+	bool is_event_running() const;
+
 	game_events::wml_event_pump& pump();
 
 	game_events::wmi_manager& wml_menu_items()
