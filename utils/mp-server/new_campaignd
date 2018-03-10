@@ -1,0 +1,62 @@
+#!/bin/sh
+
+die() { echo >&2 "$@"; exit 1; }
+
+( [ $# -ge 1 ] && [ $# -le 3 ] ) || die "Syntax: $0 [-n] <campaignd version> <port number>"
+
+set -o errexit
+set -o nounset
+
+run=""
+
+[ "$1" = "-n" ] && { run=echo; shift; }
+VERSION="$1"
+PORT="$2"
+
+prefix="$HOME/campaignd"
+
+if [ ! -d "$prefix" ]; then
+	die "FATAL: campaignd prefix \`$prefix\` missing!"
+fi
+
+instance="$prefix/$VERSION"
+control_fifo="$instance/socket"
+server_cfg="$instance/server.cfg"
+
+if [ "$run" = "echo" ]; then
+	server_cfg=/dev/null
+else
+	set -x
+fi
+
+$run mkdir "$instance"
+$run mkdir "$instance/data"
+$run mkdir "$instance/logs"
+$run mknod "$control_fifo" p
+
+$run ln -sf "../COPYING.txt" "$instance/COPYING.txt"
+$run ln -sf "$instance/current.log" "$HOME/$VERSION.log"
+
+# Create the initial configuration for a server in read-only mode.
+$run cat > "$server_cfg" <<EOF
+compress_level=9
+control_socket="$control_fifo"
+port=$PORT
+stats_exempt_ips="192.168.*,127.0.0.1"
+read_only=yes
+[server_info]
+	feedback_url_format="https://r.wesnoth.org/t\$topic_id"
+[/server_info]
+[campaigns]
+[/campaigns]
+EOF
+
+set +x
+
+if [ "$run" != "echo" ]; then
+	echo '************************************************************************'
+	echo "Instance created. To disable read-only mode for officially opening it "
+	echo "up to users, run \`send_campaignd_command $VERSION readonly no\` after "
+	echo "starting it for the first time."
+	echo '************************************************************************'
+fi
