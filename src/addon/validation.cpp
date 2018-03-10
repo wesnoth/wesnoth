@@ -21,7 +21,7 @@
 #include <boost/algorithm/string.hpp>
 #include <set>
 
-const unsigned short default_campaignd_port = 15008;
+const unsigned short default_campaignd_port = 15014;
 
 namespace {
 	const std::string addon_type_strings[] {
