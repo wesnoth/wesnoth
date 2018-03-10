@@ -362,7 +362,7 @@ void map_context::load_scenario(const config& game_config)
 			map_location loc(a_unit, nullptr);
 			a_unit["side"] = i;
 
-			units_.add(loc, unit(a_unit, true));
+			units_.add(loc, *unit::create(a_unit, true));
 		}
 
 		++i;

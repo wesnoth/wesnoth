@@ -80,7 +80,7 @@ unit_map::umap_retval_pair_t unit_map::add(const map_location& l, const unit& u)
 	self_check();
 
 	 // TODO: should this take a shared pointer to a unit rather than make a copy?
-	unit_ptr p = unit_ptr(new unit(u));
+	unit_ptr p = unit::create(u);
 	p->set_location(l);
 
 	unit_map::umap_retval_pair_t res(insert(p));

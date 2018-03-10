@@ -441,7 +441,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 
 		// Attempt to create a new unit. If there are error (such an invalid type key), exit.
 		try{
-			unit_ptr new_u(new unit(cfg, true));
+			unit_ptr new_u = unit::create(cfg, true);
 			new_u->set_location(loc);
 			// Don't remove the unit until after we've verified there are no errors in creating the new one,
 			// or else the unit would simply be removed from the map with no replacement.
@@ -481,7 +481,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child,  use_undo, /*show*/, e
 			? resources::controller->current_side() : 1;
 
 	// Create the unit.
-	unit_ptr created(new unit(*u_type, side_num, true, gender));
+	unit_ptr created = unit::create(*u_type, side_num, true, gender);
 	created->new_turn();
 
 	unit_map::unit_iterator unit_it;

@@ -39,7 +39,7 @@ class editor_action_unit : public editor_action_location
 public:
 	editor_action_unit(map_location loc, const unit& u)
 		: editor_action_location(loc)
-		, u_(u)
+		, u_(unit::create(u))
 	{
 	}
 
@@ -54,7 +54,7 @@ public:
 	const std::string& get_name() const;
 
 protected:
-	unit u_;
+	unit_ptr u_;
 };
 
 /**

@@ -108,7 +108,7 @@ public:
 
 	/** The path to the leader crown overlay. */
 	static const std::string& leader_crown();
-
+private:
 	/** Initializes a unit from a config */
 	unit(const config& cfg, bool use_traits = false, const vconfig* vcfg = nullptr);
 
@@ -122,6 +122,22 @@ public:
 	// Copy constructor
 	unit(const unit& u);
 
+public:
+	static unit_ptr create(const config& cfg, bool use_traits = false, const vconfig* vcfg = nullptr)
+	{
+		return unit_ptr(new unit(cfg, use_traits, vcfg));
+	}
+
+	static unit_ptr create(const unit_type& t, int side, bool real_unit, unit_race::GENDER gender = unit_race::NUM_GENDERS)
+	{
+		return unit_ptr(new unit(t, side, real_unit, gender));
+	}
+	// maybe rename this to copy?
+	static unit_ptr create(const unit& u)
+	{
+		return unit_ptr(new unit(u));
+	}
+	
 	virtual ~unit();
 
 	void swap(unit&);

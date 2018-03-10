@@ -708,7 +708,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
                   const map_location & from, bool show, bool use_undo)
 {
-	const unit_ptr new_unit = unit_ptr( new unit(u_type, side_num, true));
+	const unit_ptr new_unit = unit::create(u_type, side_num, true);
 
 
 	// Place the recruit.

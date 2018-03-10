@@ -35,8 +35,8 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 
 	unit_types.build_unit_type(orc_type, unit_type::FULL);
 
-	unit_ptr orc1(new unit(orc_type, 1, false));
-	unit_ptr orc2(new unit(orc_type, 1, false));
+	unit_ptr orc1 = unit::create(orc_type, 1, false);
+	unit_ptr orc2 = unit::create(orc_type, 1, false);
 
 	orc1->set_name("Larry");
 	orc2->set_name("Moe");
