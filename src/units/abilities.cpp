@@ -874,7 +874,8 @@ namespace { // Helpers for attack_type::special_active()
 	/**
 	 * Determines if a unit/weapon combination matches the specified child
 	 * (normally a [filter_*] child) of the provided filter.
-	 * @param[in]  un_it      The unit to filter.
+	 * @param[in]  u          A unit to filter.
+	 * @param[in]  u2         Another unit to filter.
 	 * @param[in]  loc        The presumed location of @a un_it.
 	 * @param[in]  weapon     The attack_type to filter.
 	 * @param[in]  filter     The filter containing the child filter to use.
