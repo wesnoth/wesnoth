@@ -970,7 +970,8 @@ void attack::fire_event(const std::string& n)
 
 	const int defender_side = d_.get_unit().side();
 
-	resources::game_events->pump().fire(n,
+	bool wml_aborted;
+	std::tie(std::ignore, wml_aborted) = resources::game_events->pump().fire(n,
 		game_events::entity_location(a_.loc_, a_.id_),
 		game_events::entity_location(d_.loc_, d_.id_), ev_data);
 
@@ -978,7 +979,7 @@ void attack::fire_event(const std::string& n)
 	// defender, so we have to make sure they still exist.
 	refresh_bc();
 
-	if(!a_.valid() || !d_.valid()
+	if(wml_aborted || !a_.valid() || !d_.valid()
 		|| !resources::gameboard->get_team(a_.get_unit().side()).is_enemy(d_.get_unit().side())
 	) {
 		actions::recalculate_fog(defender_side);
