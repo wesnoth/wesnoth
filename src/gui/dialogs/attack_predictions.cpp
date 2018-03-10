@@ -127,7 +127,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 
 	// Set specials context (for safety, it should not have changed normally).
 	const_attack_ptr weapon = attacker.stats_.weapon;
-	auto ctx = weapon->specials_context(attacker.unit_, defender.unit_, attacker.unit_.get_location(), defender.unit_.get_location(), attacker.stats_.is_attacker, defender.stats_.weapon);
+	auto ctx = weapon->specials_context(&attacker.unit_, &defender.unit_, attacker.unit_.get_location(), defender.unit_.get_location(), attacker.stats_.is_attacker, defender.stats_.weapon);
 
 	// Get damage modifiers.
 	unit_ability_list dmg_specials = weapon->get_specials("damage");

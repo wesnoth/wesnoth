@@ -122,11 +122,11 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	}
 
 	// Get the weapon characteristics as appropriate.
-	auto ctx = weapon->specials_context(u, opp, u_loc, opp_loc, attacking, opp_weapon);
+	auto ctx = weapon->specials_context(&u, &opp, u_loc, opp_loc, attacking, opp_weapon);
 	boost::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
-		opp_ctx.emplace(opp_weapon->specials_context(opp, u, opp_loc, u_loc, !attacking, weapon));
+		opp_ctx.emplace(opp_weapon->specials_context(&opp, &u, opp_loc, u_loc, !attacking, weapon));
 	}
 
 	slows = weapon->get_special_bool("slow");
@@ -932,18 +932,18 @@ void attack::fire_event(const std::string& n)
 
 	if(a_stats_->weapon != nullptr && a_.valid()) {
 		if(d_stats_->weapon != nullptr && d_.valid()) {
-			a_ctx.emplace(a_stats_->weapon->specials_context(a_.get_unit(), d_.get_unit(), a_.loc_, d_.loc_, true, d_stats_->weapon));
+			a_ctx.emplace(a_stats_->weapon->specials_context(nullptr, nullptr, a_.loc_, d_.loc_, true, d_stats_->weapon));
 		} else {
-			a_ctx.emplace(a_stats_->weapon->specials_context(a_.get_unit(), a_.loc_, true));
+			a_ctx.emplace(a_stats_->weapon->specials_context(nullptr, a_.loc_, true));
 		}
 		a_stats_->weapon->write(a_weapon_cfg);
 	}
 
 	if(d_stats_->weapon != nullptr && d_.valid()) {
 		if(a_stats_->weapon != nullptr && a_.valid()) {
-			d_ctx.emplace(d_stats_->weapon->specials_context(d_.get_unit(), a_.get_unit(), d_.loc_, a_.loc_, false, a_stats_->weapon));
+			d_ctx.emplace(d_stats_->weapon->specials_context(nullptr, nullptr, d_.loc_, a_.loc_, false, a_stats_->weapon));
 		} else {
-			d_ctx.emplace(d_stats_->weapon->specials_context(d_.get_unit(), d_.loc_, false));
+			d_ctx.emplace(d_stats_->weapon->specials_context(nullptr, d_.loc_, false));
 		}
 		d_stats_->weapon->write(d_weapon_cfg);
 	}
