@@ -1318,7 +1318,7 @@ void attack::unit_killed(unit_info& attacker,
 		if(const unit_type* reanimator = unit_types.find(attacker_stats->plague_type)) {
 			LOG_NG << "found unit type:" << reanimator->id() << '\n';
 
-			unit_ptr newunit(new unit(*reanimator, attacker.get_unit().side(), true, unit_race::MALE));
+			unit_ptr newunit = unit::create(*reanimator, attacker.get_unit().side(), true, unit_race::MALE);
 			newunit->set_attacks(0);
 			newunit->set_movement(0, true);
 			newunit->set_facing(map_location::get_opposite_dir(attacker.get_unit().facing()));

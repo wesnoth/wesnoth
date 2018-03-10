@@ -206,7 +206,7 @@ void unit_mover::replace_temporary(unit_ptr u)
 	was_hidden_ = u->get_hidden();
 
 	// Make our temporary unit mostly match u...
-	temp_unit_ptr_ = fake_unit_ptr(unit_ptr(new unit(*u)), resources::fake_units);
+	temp_unit_ptr_ = fake_unit_ptr(unit::create(*u), resources::fake_units);
 
 	// ... but keep the temporary unhidden and hide the original.
 	temp_unit_ptr_->set_hidden(false);

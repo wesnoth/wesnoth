@@ -118,7 +118,7 @@ namespace { // Support functions
 		unit_race::GENDER gender = string_gender(cfg["gender"]);
 		const unit_type *ut = unit_types.find(type);
 		if (!ut) return fake_unit_ptr();
-		fake_unit_ptr fake = fake_unit_ptr(unit_ptr(new unit(*ut, side_num, false, gender)));
+		fake_unit_ptr fake = fake_unit_ptr(unit::create(*ut, side_num, false, gender));
 
 		if(!variation.empty()) {
 			config mod;
@@ -920,12 +920,12 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 	if (!to_variable.blank())
 	{
 		parsed_cfg.remove_attribute("to_variable");
-		unit new_unit(parsed_cfg, true, &cfg);
+		unit_ptr new_unit = unit::create(parsed_cfg, true, &cfg);
 		try
 		{
 			config &var = resources::gamedata->get_variable_cfg(to_variable);
 			var.clear();
-			new_unit.write(var);
+			new_unit->write(var);
 			if (const config::attribute_value *v = parsed_cfg.get("x")) var["x"] = *v;
 			if (const config::attribute_value *v = parsed_cfg.get("y")) var["y"] = *v;
 		}

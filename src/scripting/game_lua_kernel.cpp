@@ -2107,7 +2107,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		} else if (unit_arg != 1) {
 			deprecated_message("wesnoth.put_unit(x, y, unit)", DEP_LEVEL::FOR_REMOVAL, {1, 15, 0}, "Use wesnoth.put_unit(unit, x, y) or unit:to_map(x, y) instead.");
 		}
-		unit_ptr u(new unit(cfg, true, vcfg));
+		unit_ptr u = unit::create(cfg, true, vcfg);
 		put_unit_helper(loc);
 		u->set_location(loc);
 		units().insert(u);
@@ -2187,7 +2187,7 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 	} else {
 		const vconfig* vcfg = nullptr;
 		config cfg = luaW_checkconfig(L, 1, vcfg);
-		u = unit_ptr(new unit(cfg, true, vcfg));
+		u = unit::create(cfg, true, vcfg);
 	}
 
 	if (!side) {
@@ -2228,7 +2228,7 @@ int game_lua_kernel::intf_extract_unit(lua_State *L)
 		u->anim_comp().clear_haloes();
 	} else if (int side = lu->on_recall_list()) {
 		team &t = board().get_team(side);
-		unit_ptr v = unit_ptr(new unit(*u));
+		unit_ptr v = unit::create(*u);
 		t.recall_list().erase_if_matches_id(u->id());
 		u = v;
 	} else {
@@ -2257,7 +2257,7 @@ int game_lua_kernel::intf_find_vacant_tile(lua_State *L)
 		} else {
 			const vconfig* vcfg = nullptr;
 			config cfg = luaW_checkconfig(L, 2, vcfg);
-			u.reset(new unit(cfg, false, vcfg));
+			u = unit::create(cfg, false, vcfg);
 		}
 	}
 
@@ -2300,7 +2300,7 @@ static int intf_create_unit(lua_State *L)
 {
 	const vconfig* vcfg = nullptr;
 	config cfg = luaW_checkconfig(L, 1, vcfg);
-	unit_ptr u = unit_ptr(new unit(cfg, true, vcfg));
+	unit_ptr u  = unit::create(cfg, true, vcfg);
 	luaW_pushunit(L, u);
 	return 1;
 }
@@ -2313,7 +2313,7 @@ static int intf_create_unit(lua_State *L)
 static int intf_copy_unit(lua_State *L)
 {
 	unit& u = luaW_checkunit(L, 1);
-	luaW_pushunit(L, unit_ptr(new unit(u)));
+	luaW_pushunit(L, unit::create(u));
 	return 1;
 }
 

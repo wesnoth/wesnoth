@@ -108,20 +108,42 @@ public:
 
 	/** The path to the leader crown overlay. */
 	static const std::string& leader_crown();
+private:
+	void init(const config& cfg, bool use_traits = false, const vconfig* vcfg = nullptr);
 
+	void init(const unit_type& t, int side, bool real_unit, unit_race::GENDER gender = unit_race::NUM_GENDERS);
+
+	// Copy constructor
+	unit(const unit& u);
+	
+	unit();
+
+public:
 	/** Initializes a unit from a config */
-	unit(const config& cfg, bool use_traits = false, const vconfig* vcfg = nullptr);
+	static unit_ptr create(const config& cfg, bool use_traits = false, const vconfig* vcfg = nullptr)
+	{
+		unit_ptr res(new unit());
+		res->init(cfg, use_traits, vcfg);
+		return res;
+	}
 
 	/**
 	 * Initializes a unit from a unit type.
 	 *
 	 * Only real_unit-s should have random traits, name and gender (to prevent OOS caused by RNG calls)
 	 */
-	unit(const unit_type& t, int side, bool real_unit, unit_race::GENDER gender = unit_race::NUM_GENDERS);
-
-	// Copy constructor
-	unit(const unit& u);
-
+	static unit_ptr create(const unit_type& t, int side, bool real_unit, unit_race::GENDER gender = unit_race::NUM_GENDERS)
+	{
+		unit_ptr res(new unit());
+		res->init(t, side, real_unit, gender);
+		return res;
+	}
+	// maybe rename this to copy?
+	static unit_ptr create(const unit& u)
+	{
+		return unit_ptr(new unit(u));
+	}
+	
 	virtual ~unit();
 
 	void swap(unit&);

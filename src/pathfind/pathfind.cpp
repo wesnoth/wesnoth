@@ -935,9 +935,9 @@ void full_cost_map::add_unit(const map_location& origin, const unit_type* const 
 	if (!ut) {
 		return;
 	}
-	unit u(*ut, side, false);
-	u.set_location(origin);
-	add_unit(u);
+	unit_ptr u = unit::create(*ut, side, false);
+	u->set_location(origin);
+	add_unit(*u);
 }
 
 /**

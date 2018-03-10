@@ -375,32 +375,32 @@ unit::unit(const unit& o)
 	}
 }
 
-unit::unit(const config& cfg, bool use_traits, const vconfig* vcfg)
+unit::unit()
 	: ref_count_(0)
-	, loc_(cfg["x"], cfg["y"], wml_loc())
+	, loc_()
 	, advances_to_()
-	, type_(&get_unit_type(cfg["parent_type"].blank() ? cfg["type"] : cfg["parent_type"]))
+	, type_(nullptr)
 	, type_name_()
 	, race_(&unit_race::null_race)
-	, id_(cfg["id"])
-	, name_(cfg["name"].t_str())
+	, id_()
+	, name_()
 	, underlying_id_(0)
 	, undead_variation_()
-	, variation_(cfg["variation"].empty() ? type_->default_variation() : cfg["variation"])
+	, variation_()
 	, hit_points_(1)
-	, max_hit_points_(0)
+	, max_hit_points_(1)
 	, experience_(0)
-	, max_experience_(0)
+	, max_experience_(1)
 	, level_(0)
 	, recall_cost_(-1)
-	, canrecruit_(cfg["canrecruit"].to_bool())
+	, canrecruit_(false)
 	, recruit_list_()
 	, alignment_()
 	, flag_rgb_()
 	, image_mods_()
 	, unrenamable_(false)
 	, side_(0)
-	, gender_(generate_gender(*type_, cfg))
+	, gender_(unit_race::NUM_GENDERS)
 	, formula_man_(new unit_formula_manager())
 	, movement_(0)
 	, max_movement_(0)
@@ -419,7 +419,7 @@ unit::unit(const config& cfg, bool use_traits, const vconfig* vcfg)
 	, filter_recall_()
 	, emit_zoc_(0)
 	, overlays_()
-	, role_(cfg["role"])
+	, role_()
 	, attacks_()
 	, facing_(map_location::NDIRECTIONS)
 	, trait_names_()
@@ -431,9 +431,9 @@ unit::unit(const config& cfg, bool use_traits, const vconfig* vcfg)
 	, is_healthy_(false)
 	, modification_descriptions_()
 	, anim_comp_(new unit_animation_component(*this))
-	, hidden_(cfg["hidden"].to_bool(false))
-	, hp_bar_scaling_(cfg["hp_bar_scaling"].blank() ? type_->hp_bar_scaling() : cfg["hp_bar_scaling"])
-	, xp_bar_scaling_(cfg["xp_bar_scaling"].blank() ? type_->xp_bar_scaling() : cfg["xp_bar_scaling"])
+	, hidden_(false)
+	, hp_bar_scaling_(0)
+	, xp_bar_scaling_(0)
 	, modifications_()
 	, abilities_()
 	, advancements_()
@@ -443,10 +443,32 @@ unit::unit(const config& cfg, bool use_traits, const vconfig* vcfg)
 	, ellipse_()
 	, random_traits_(true)
 	, generate_name_(true)
-	, upkeep_()
+	, upkeep_(upkeep_full())
 	, invisibility_cache_()
 {
-	side_ = cfg["side"];
+	
+}
+
+void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
+{
+	loc_ = map_location(cfg["x"], cfg["y"], wml_loc());
+	type_ = &get_unit_type(cfg["parent_type"].blank() ? cfg["type"].str() : cfg["parent_type"].str());
+	race_ = &unit_race::null_race;
+	id_ = cfg["id"].str();
+	name_ = cfg["name"].t_str();
+	variation_ = cfg["variation"].empty() ? type_->default_variation() : cfg["variation"].str();
+	canrecruit_ = cfg["canrecruit"].to_bool();
+	gender_ = generate_gender(*type_, cfg);
+	role_ = cfg["role"].str();
+	//, facing_(map_location::NDIRECTIONS)
+	//, anim_comp_(new unit_animation_component(*this))
+	hidden_ = cfg["hidden"].to_bool(false);
+	hp_bar_scaling_ = cfg["hp_bar_scaling"].blank() ? type_->hp_bar_scaling() : cfg["hp_bar_scaling"];
+	xp_bar_scaling_ = cfg["xp_bar_scaling"].blank() ? type_->xp_bar_scaling() : cfg["xp_bar_scaling"];
+	random_traits_ = true;
+	generate_name_ = true;
+	side_ = cfg["side"].to_int();
+
 	if(side_ <= 0) {
 		side_ = 1;
 	}
@@ -669,74 +691,14 @@ void unit::clear_status_caches()
 	units_with_cache.clear();
 }
 
-unit::unit(const unit_type& u_type, int side, bool real_unit, unit_race::GENDER gender)
-	: ref_count_(0)
-	, loc_()
-	, advances_to_()
-	, type_(&u_type)
-	, type_name_()
-	, race_(&unit_race::null_race)
-	, id_()
-	, name_()
-	, undead_variation_()
-	, variation_(type_->default_variation())
-	, hit_points_(0)
-	, max_hit_points_(0)
-	, experience_(0)
-	, max_experience_(0)
-	, level_(0)
-	, recall_cost_(-1)
-	, canrecruit_(false)
-	, recruit_list_()
-	, alignment_()
-	, flag_rgb_()
-	, image_mods_()
-	, unrenamable_(false)
-	, side_(side)
-	, gender_(gender != unit_race::NUM_GENDERS ? gender : generate_gender(u_type, real_unit))
-	, formula_man_(new unit_formula_manager())
-	, movement_(0)
-	, max_movement_(0)
-	, vision_(-1)
-	, jamming_(0)
-	, movement_type_()
-	, hold_position_(false)
-	, end_turn_(false)
-	, resting_(false)
-	, attacks_left_(0)
-	, max_attacks_(0)
-	, states_()
-	, known_boolean_states_()
-	, variables_()
-	, events_()
-	, filter_recall_()
-	, emit_zoc_(0)
-	, overlays_()
-	, role_()
-	, attacks_()
-	, facing_(static_cast<map_location::DIRECTION>(randomness::rng::default_instance().get_random_int(0, map_location::NDIRECTIONS-1)))
-	, trait_names_()
-	, trait_descriptions_()
-	, unit_value_()
-	, goto_()
-	, interrupted_move_()
-	, is_fearless_(false)
-	, is_healthy_(false)
-	, modification_descriptions_()
-	, anim_comp_(new unit_animation_component(*this))
-	, hidden_(false)
-	, modifications_()
-	, abilities_()
-	, advancements_()
-	, description_()
-	, usage_()
-	, halo_()
-	, ellipse_()
-	, random_traits_(true)
-	, generate_name_(true)
-	, upkeep_()
-	, invisibility_cache_()
-{
+void unit::init(const unit_type& u_type, int side, bool real_unit, unit_race::GENDER gender)
+{	
+	type_ = &u_type;
+	race_ = &unit_race::null_race;
+	variation_ = type_->default_variation();
+	side_ = side;
+	gender_ = gender != unit_race::NUM_GENDERS ? gender : generate_gender(u_type, real_unit);
+	facing_ = static_cast<map_location::DIRECTION>(randomness::rng::default_instance().get_random_int(0, map_location::NDIRECTIONS-1));
 	upkeep_ = upkeep_full();
 
 	// Apply the unit type's data to this unit.

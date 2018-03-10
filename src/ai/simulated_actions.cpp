@@ -144,8 +144,8 @@ bool simulated_recall(int side, const std::string& unit_id, const map_location& 
 bool simulated_recruit(int side, const unit_type* u, const map_location& recruit_location){
 	LOG_AI_SIM_ACTIONS << "Simulated recruit" << std::endl;
 
-	const unit recruit_unit(*u, side, false);	// Random traits, name and gender are not needed. This will cause "duplicate id conflicts" inside unit_map::insert(), but engine will manage this issue correctly.
-	helper_place_unit(recruit_unit, recruit_location);
+	unit_ptr recruit_unit = unit::create(*u, side, false);	// Random traits, name and gender are not needed. This will cause "duplicate id conflicts" inside unit_map::insert(), but engine will manage this issue correctly.
+	helper_place_unit(*recruit_unit, recruit_location);
 
 	resources::gameboard->get_team(side).spend_gold(u->cost());
 
@@ -215,7 +215,7 @@ void helper_check_village(const map_location& loc, int side){
 }
 
 void helper_place_unit(const unit& u, const map_location& loc){
-	unit_ptr new_unit(new unit(u));
+	unit_ptr new_unit = unit::create(u);
 	new_unit->set_movement(0, true);
 	new_unit->set_attacks(0);
 	new_unit->heal_fully();
@@ -248,7 +248,7 @@ void helper_advance_unit(const map_location& loc){
 	int options_num = unit_helper::number_of_possible_advances(*advance_unit);
 
 	size_t advance_choice = randomness::generator->get_random_int(0, options_num-1);
-	unit_ptr advanced_unit(new unit(*advance_unit));
+	unit_ptr advanced_unit = unit::create(*advance_unit);
 
 	if(advance_choice < options.size()){
 		std::string advance_unit_typename = options[advance_choice];
