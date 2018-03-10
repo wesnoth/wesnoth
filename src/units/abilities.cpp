@@ -705,15 +705,15 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
  */
 attack_type::specials_context_t::specials_context_t(const attack_type& weapon,
                                        const_attack_ptr other_attack,
-									   const unit& self,
-                                       const unit& other,
+									   const unit* self,
+                                       const unit* other,
                                        const map_location& unit_loc,
                                        const map_location& other_loc,
                                        bool attacking)
 	: parent(weapon.shared_from_this())
 {
-	weapon.self_ = &self;
-	weapon.other_ = &other;
+	weapon.self_ = self;
+	weapon.other_ = other;
 	weapon.self_loc_ = unit_loc;
 	weapon.other_loc_ = other_loc;
 	weapon.is_attacker_ = attacking;
