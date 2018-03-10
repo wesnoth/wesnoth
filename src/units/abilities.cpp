@@ -710,7 +710,7 @@ attack_type::specials_context_t::specials_context_t(const attack_type& weapon,
                                        const map_location& unit_loc,
                                        const map_location& other_loc,
                                        bool attacking)
-	: parent(weapon)
+	: parent(weapon.shared_from_this())
 {
 	weapon.self_ = &self;
 	weapon.other_ = &other;
@@ -729,7 +729,7 @@ attack_type::specials_context_t::specials_context_t(const attack_type& weapon,
  * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
  */
 attack_type::specials_context_t::specials_context_t(const attack_type& weapon, const unit& self, const map_location& loc, bool attacking)
-	: parent(weapon)
+	: parent(weapon.shared_from_this())
 {
 	weapon.self_ = &self;
 	weapon.other_ = nullptr;
@@ -748,7 +748,7 @@ attack_type::specials_context_t::specials_context_t(const attack_type& weapon, c
  * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
  */
 attack_type::specials_context_t::specials_context_t(const attack_type& weapon, const unit_type& self_type, const map_location& loc, bool attacking)
-	: parent(weapon)
+	: parent(weapon.shared_from_this())
 {
 	UNUSED(self_type);
 	weapon.self_ = nullptr;
@@ -761,7 +761,7 @@ attack_type::specials_context_t::specials_context_t(const attack_type& weapon, c
 }
 
 attack_type::specials_context_t::specials_context_t(const attack_type& weapon)
-	: parent(weapon)
+	: parent(weapon.shared_from_this())
 {
 	weapon.is_for_listing_ = true;
 }
@@ -769,13 +769,13 @@ attack_type::specials_context_t::specials_context_t(const attack_type& weapon)
 attack_type::specials_context_t::~specials_context_t()
 {
 	if(was_moved) return;
-	parent.self_ = nullptr;
-	parent.other_ = nullptr;
-	parent.self_loc_ = map_location::null_location();
-	parent.other_loc_ = map_location::null_location();
-	parent.is_attacker_ = false;
-	parent.other_attack_ = nullptr;
-	parent.is_for_listing_ = false;
+	parent->self_ = nullptr;
+	parent->other_ = nullptr;
+	parent->self_loc_ = map_location::null_location();
+	parent->other_loc_ = map_location::null_location();
+	parent->is_attacker_ = false;
+	parent->other_attack_ = nullptr;
+	parent->is_for_listing_ = false;
 }
 
 attack_type::specials_context_t::specials_context_t(attack_type::specials_context_t&& other)

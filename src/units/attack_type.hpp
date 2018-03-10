@@ -111,8 +111,8 @@ private:
 	mutable bool is_for_listing_ = false;
 public:
 	class specials_context_t {
+		std::shared_ptr<const attack_type> parent;
 		friend class attack_type;
-		const attack_type& parent;
 		/// Initialize weapon specials context for listing
 		explicit specials_context_t(const attack_type& weapon);
 		/// Initialize weapon specials context for a unit type
