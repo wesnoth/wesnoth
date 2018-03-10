@@ -26,6 +26,7 @@
 #include <boost/system/windows_error.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
+#include <boost/algorithm/string.hpp>
 #include <set>
 
 using boost::uintmax_t;
@@ -1354,6 +1355,17 @@ std::string get_program_invocation(const std::string &program_name)
 #endif
 	);
 	return (path(game_config::wesnoth_program_dir) / real_program_name).string();
+}
+
+std::string sanitize_path(const std::string& path) {
+#ifdef _WIN32
+	const std::string user_name = getenv("USERNAME");
+#else
+	const std::string user_name = getenv("USER");
+#endif
+	std::string canonicalized = filesystem::normalize_path(path, true, false);
+	boost::replace_all(canonicalized, user_name, "USER");
+	return canonicalized;
 }
 
 }

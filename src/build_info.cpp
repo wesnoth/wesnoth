@@ -464,12 +464,12 @@ std::string full_build_report()
 	  << "Game paths\n"
 	  << "==========\n"
 	  << '\n'
-	  << "Data dir:        " << game_config::path << '\n'
-	  << "User config dir: " << filesystem::get_user_config_dir() << '\n'
-	  << "User data dir:   " << filesystem::get_user_data_dir() << '\n'
-	  << "Saves dir:       " << filesystem::get_saves_dir() << '\n'
-	  << "Add-ons dir:     " << filesystem::get_addons_dir() << '\n'
-	  << "Cache dir:       " << filesystem::get_cache_dir() << '\n'
+	  << "Data dir:        " << filesystem::sanitize_path(game_config::path) << '\n'
+	  << "User config dir: " << filesystem::sanitize_path(filesystem::get_user_config_dir()) << '\n'
+	  << "User data dir:   " << filesystem::sanitize_path(filesystem::get_user_data_dir()) << '\n'
+	  << "Saves dir:       " << filesystem::sanitize_path(filesystem::get_saves_dir()) << '\n'
+	  << "Add-ons dir:     " << filesystem::sanitize_path(filesystem::get_addons_dir()) << '\n'
+	  << "Cache dir:       " << filesystem::sanitize_path(filesystem::get_cache_dir()) << '\n'
 	  << '\n'
 	  << "Libraries\n"
 	  << "=========\n"

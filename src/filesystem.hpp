@@ -229,6 +229,11 @@ std::string normalize_path(const std::string& path,
 						   bool resolve_dot_entries = false);
 
 /**
+ * Sanitizes a path to remove references to the user's name.
+ */
+std::string sanitize_path(const std::string& path);
+
+/**
  * Returns whether the path is the root of the file hierarchy.
  *
  * @note This function is unreliable for paths that do not exist -- it will

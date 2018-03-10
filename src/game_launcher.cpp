@@ -264,10 +264,10 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 		load_data_->show_replay = true;
 
 	std::cerr
-		<< "\nData directory:               " << game_config::path
-		<< "\nUser configuration directory: " << filesystem::get_user_config_dir()
-		<< "\nUser data directory:          " << filesystem::get_user_data_dir()
-		<< "\nCache directory:              " << filesystem::get_cache_dir()
+		<< "\nData directory:               " << filesystem::sanitize_path(game_config::path)
+		<< "\nUser configuration directory: " << filesystem::sanitize_path(filesystem::get_user_config_dir())
+		<< "\nUser data directory:          " << filesystem::sanitize_path(filesystem::get_user_data_dir())
+		<< "\nCache directory:              " << filesystem::sanitize_path(filesystem::get_cache_dir())
 		<< '\n';
 	std::cerr << '\n';
 

@@ -1140,7 +1140,7 @@ int main(int argc, char** argv)
 			}
 
 			if(!auto_dir.empty()) {
-				std::cerr << "Automatically found a possible data directory at " << auto_dir << '\n';
+				std::cerr << "Automatically found a possible data directory at " << filesystem::sanitize_path(auto_dir) << '\n';
 				game_config::path = auto_dir;
 			}
 		}
