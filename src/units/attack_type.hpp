@@ -123,7 +123,7 @@ public:
 			const map_location& self_loc, const map_location& other_loc,
 			bool attacking);
 		/// Initialize weapon specials context for a pair of units
-		specials_context_t(const attack_type& weapon, const unit& self, const map_location& loc, bool attacking);
+		specials_context_t(const attack_type& weapon, const unit* self, const map_location& loc, bool attacking);
 		specials_context_t(const specials_context_t&) = delete;
 		bool was_moved = false;
 	public:
@@ -138,7 +138,7 @@ public:
 		bool attacking, const_attack_ptr other_attack) const {
 		return specials_context_t(*this, other_attack, self, other, unit_loc, other_loc, attacking);
 	}
-	specials_context_t specials_context(const unit& self, const map_location& loc, bool attacking = true) const {
+	specials_context_t specials_context(const unit* self, const map_location& loc, bool attacking = true) const {
 		return specials_context_t(*this, self, loc, attacking);
 	}
 	specials_context_t specials_context(const unit_type& self_type, const map_location& loc, bool attacking = true) const {
