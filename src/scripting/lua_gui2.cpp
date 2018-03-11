@@ -422,22 +422,22 @@ int show_menu(lua_State* L) {
  */
 int show_message_box(lua_State* L) {
 	const std::string title = luaL_checkstring(L, 1), message = luaL_checkstring(L, 2);
-	std::string button = luaL_optstring(L, 3, "ok");
-	std::transform(button.begin(), button.end(), button.begin(), [](char c) { return std::tolower(c); });
+	std::string button = luaL_optstring(L, 3, "ok"), btn_style;
+	std::transform(button.begin(), button.end(), std::inserter(btn_style, btn_style.begin()), [](char c) { return std::tolower(c); });
 	bool markup = lua_isnoneornil(L, 3) ? luaW_toboolean(L, 3) : luaW_toboolean(L, 4);
 	using button_style = gui2::dialogs::message::button_style;
 	boost::optional<button_style> style;
-	if(button.empty()) {
+	if(btn_style.empty()) {
 		style = button_style::auto_close;
-	} else if(button == "ok") {
+	} else if(btn_style == "ok") {
 		style = button_style::ok_button;
-	} else if(button == "close") {
+	} else if(btn_style == "close") {
 		style = button_style::close_button;
-	} else if(button == "ok_cancel") {
+	} else if(btn_style == "ok_cancel") {
 		style = button_style::ok_cancel_buttons;
-	} else if(button == "cancel") {
+	} else if(btn_style == "cancel") {
 		style = button_style::cancel_button;
-	} else if(button == "yes_no") {
+	} else if(btn_style == "yes_no") {
 		style = button_style::yes_no_buttons;
 	}
 	if(style) {
