@@ -39,22 +39,15 @@ end
 --! @param vars key/value pairs that need changing.
 --! @note Usable only during WML actions.
 function helper.modify_unit(filter, vars)
-	wml_actions.store_unit({
-		[1] = { "filter", filter },
-		variable = "LUA_modify_unit",
-		kill = true
-	})
-	for i = 0, wml.variables["LUA_modify_unit.length"] - 1 do
-		local u = string.format("LUA_modify_unit[%d]", i)
+	local units = wesnoth.get_units(filter)
+	for u in pairs(units) do
 		for k, v in pairs(vars) do
-			wml.variables[u .. '.' .. k] = v
+			-- Minor TODO: What if you want to change values of subtags?
+			-- Previously would've been possible with eg {['variables.some_var'] = 'some_value'}
+			-- With this implementation, it's not possible.
+			u[k] = v
 		end
-		wml_actions.unstore_unit({
-			variable = u,
-			find_vacant = false
-		})
 	end
-	wml.variables["LUA_modify_unit"] = nil
 end
 
 --! Fakes the move of a unit satisfying the given @a filter to position @a x, @a y.
