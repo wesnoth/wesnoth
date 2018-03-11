@@ -18,6 +18,7 @@
 #include "game_display.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "serialization/string_utils.hpp"

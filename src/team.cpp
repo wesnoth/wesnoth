@@ -21,9 +21,9 @@
 
 #include "ai/manager.hpp"
 #include "color.hpp"
-#include "font/text_formatting.hpp"
 #include "game_data.hpp"
 #include "game_events/pump.hpp"
+#include "lexical_cast.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
 #include "preferences/game.hpp"

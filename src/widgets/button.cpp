@@ -18,7 +18,6 @@
 
 #include "filesystem.hpp"
 #include "font/sdl_ttf.hpp"
-#include "font/text.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
 #include "image.hpp"

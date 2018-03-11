@@ -50,7 +50,6 @@ namespace wb {
 
 #include "animated.hpp"
 #include "display_context.hpp"
-#include "font/sdl_ttf.hpp"
 #include "font/standard_colors.hpp"
 #include "image.hpp" //only needed for enums (!)
 #include "key.hpp"

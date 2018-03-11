@@ -15,6 +15,7 @@
 
 #include "editor/controller/editor_controller.hpp"
 #include "editor/editor_display.hpp"
+#include "lexical_cast.hpp"
 #include "reports.hpp"
 #include "team.hpp"
 #include "terrain/builder.hpp"

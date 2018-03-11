@@ -21,7 +21,7 @@
 #include "cursor.hpp"
 #include "display.hpp"
 #include "fake_unit_manager.hpp"
-#include "font/standard_colors.hpp"
+#include "font/sdl_ttf.hpp"
 #include "font/text.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"

@@ -15,11 +15,9 @@
 #include "tooltips.hpp"
 
 #include "floating_label.hpp"
-#include "font/sdl_ttf.hpp"
 #include "font/standard_colors.hpp"
 #include "game_display.hpp"
 #include "help/help.hpp"
-#include "font/marked-up_text.hpp"
 #include "video.hpp"
 
 #include <SDL_rect.h> // Travis doesn't like this, although it works on my machine -> '#include <SDL_sound.h>

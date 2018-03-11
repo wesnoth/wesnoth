@@ -17,8 +17,9 @@
 
 #include "widgets/menu.hpp"
 
-#include "font/sdl_ttf.hpp"
+#include "font/constants.hpp"
 #include "image.hpp"
+#include "lexical_cast.hpp"
 #include "sdl/utils.hpp"
 #include "video.hpp"
 

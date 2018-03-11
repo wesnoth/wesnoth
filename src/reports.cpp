@@ -21,7 +21,6 @@
 #include "gettext.hpp"
 #include "language.hpp"
 #include "map/map.hpp"
-#include "font/marked-up_text.hpp"
 #include "mouse_events.hpp"
 #include "reports.hpp"
 #include "color.hpp"

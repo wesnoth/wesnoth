@@ -27,6 +27,7 @@
 #include "game_display.hpp"
 #include "preferences/game.hpp"
 #include "game_data.hpp"
+#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "map/label.hpp"
 #include "map/location.hpp"
