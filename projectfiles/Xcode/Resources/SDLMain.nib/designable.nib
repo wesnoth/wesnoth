@@ -826,25 +826,25 @@ Cgo
    * Fix unit move continuation if enemy discovered (#21372)
    * Support for total conversions, so called "cores".
    * Partial moves now able to be continued properly in whiteboard (#22231)
-   * Fix bug wherein "lobby sounds" advanced preference didn't do anything for 
+   * Fix bug wherein "lobby sounds" advanced preference didn't do anything for
      the default lobby.
    * Fix bug wherein dbus notifications did not have a wesnoth icon
-   * Fix bug wherein chat history synopses weren't working right in the dbus 
+   * Fix bug wherein chat history synopses weren't working right in the dbus
      notifications
    * Default to classic minimap unit/village color coding (colored by side).
    * Default to classic minimap terrain representation (satellite view).
    * Added trait list with links to the help page for units
-   * In the help page for a units, if a unit has "terrain defense caps" (like 
-     cavalry on forests), a "Defense Capped" column is added to the terrain 
+   * In the help page for a units, if a unit has "terrain defense caps" (like
+     cavalry on forests), a "Defense Capped" column is added to the terrain
      modifiers table, showing which terrains have a cap in place. A link to an
      explanation of this behavior elsewhere in the help is given.
-   * When using the terrain description feature with a mixed terrain type, the 
+   * When using the terrain description feature with a mixed terrain type, the
      game will autogenerate a formatted explanation of its best/worst
      movement/defense properties.
    * Autogenerate help pages for all eras and factions.
-   * Help pages for a faction autogenerates a list of races and alignments that 
+   * Help pages for a faction autogenerates a list of races and alignments that
      appear in that faction.
-   * Make nice help descriptions for the default factions (using content from 
+   * Make nice help descriptions for the default factions (using content from
      the wiki).
    * Fix bug wherein hotkeys for changing tips in titlescreen aren't working.
 
@@ -2515,7 +2515,7 @@ Cgo
    * Added a note to all final scenarios, stating which one is the last
      scenario.
    * A Tale of Two Brothers:
-     * Fix bug #19949: Turns left counter initially incorrect when objectives 
+     * Fix bug #19949: Turns left counter initially incorrect when objectives
        change and turn limit is extended.
      * The Chase: fixed some missing messages if no unit with role=speaker is
        present.
@@ -2758,7 +2758,7 @@ Cgo
      Khalifate) is used now.
    * Fixed bug #19083: allow attack to happen normally without causing OOS if
      turn time runs out in attack selection dialog.
-     
+
  * Whiteboard:
    * Fixed bug #18635: Percentage not displayed for units selected at their
      future position.
@@ -3702,11 +3702,11 @@ Cgo
  * Graphics:
     * Terrains:
       * Modified Deep Water tiles for greater contrast with Shallow
-      * New Dead Great Tree 
+      * New Dead Great Tree
     * Portraits:
       * Drake Warden
  * Language and i18n:
-   * Updated translations: Afrikaans, British English, Chinese (Traditional), 
+   * Updated translations: Afrikaans, British English, Chinese (Traditional),
      Galician, German, Greek, Indonesian, Irish, Japanese, Korean, Latin,
      Lithuanian, Old English, Portuguese (Brazil), Serbian, Spanish, Swedish,
      Vietnamese.

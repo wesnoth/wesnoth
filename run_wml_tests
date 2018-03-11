@@ -21,7 +21,7 @@ usage()
   echo -e "\t-g\tIf we encounter a crash, generate a backtrace using gdb. Must have gdb installed for this option."
   echo -e "\t-p arg\tPath to wesnoth binary. By default assume it is with this script."
   if [ $(uname) = "Darwin" ]; then
-  	echo -e "\t  \tThe special value xcode searches in XCode's DerivedProducts directory."
+    echo -e "\t  \tThe special value xcode searches in XCode's DerivedProducts directory."
   fi
   echo -e "\t-l arg\tLoads list of tests from the given file."
   echo -e "\t  \tBy default, the file is wml_test_schedule."

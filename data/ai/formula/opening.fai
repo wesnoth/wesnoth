@@ -98,7 +98,7 @@ def get_best_move(ai*, candidate_moves)
 		0),
         build_attacks(best_attack),
 	[best_move])
-    	where best_attack = choose(attacks, rate_attack(ai, self)),
+		where best_attack = choose(attacks, rate_attack(ai, self)),
 	best_move = choose(candidate_moves, rate_move(ai, src, dst));
 
 def move_leader_to_keep(ai*)

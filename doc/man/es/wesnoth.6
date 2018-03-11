@@ -45,136 +45,136 @@ compártalas con otros.
 .
 .SH OPCIONES
 .
-.TP 
+.TP
 \fB\-\-bunzip\fP\fI\ archivo_de_entrada.bz2\fP
 descomprime un archivo que debería estar en formato bzip2 y lo almacena sin
 el sufijo .bz2. El \fIarchivo_de_entrada.bz2\fP será eliminado.
-.TP 
+.TP
 \fB\-\-bzip\fP\fI\ archivo_de_entrada\fP
 comprime un archivo en formato bzip2, lo guarda como
 \fIarchivo_de_entrada\fP.bz2 y elimina \fIarchivo_de_entrada\fP.
-.TP 
+.TP
 \fB\-c[\fP\fIid_de_campaña\fP\fB],\ \-\-campaign[\fP\fI=id_de_campaña\fP\fB]\fP
 va directamente a la campaña con el id \fIid_de_campaña\fP. Si no se especifica
 id aparecerá un menú de selección.
-.TP 
+.TP
 \fB\-\-campaign\-difficulty[\fP\fI=difficulty\fP\fB]\fP
 El nivel de dificultad de la campaña especificada (de 1 al máximo). Si no
 especifica ninguno, aparecerá el diálogo de selección de nivel de
 dificultad.
-.TP 
+.TP
 \fB\-\-campaign\-scenario\fP\fI\ id_de_escenario\fP
 El identificador del escenario de la campaña especificada. El valor por
 defecto es el escenario inicial.
-.TP 
+.TP
 \fB\-\-core\fP\fI\ id_principal\fP
 reemplaza el principal cargado con aquel cuya id se especifica.
-.TP 
+.TP
 \fB\-\-data\-dir\fP\fI\ directorio\fP
 reemplaza el directorio de datos con el directorio especificado
-.TP 
+.TP
 \fB\-\-data\-path\fP
 imprime la ruta del directorio de datos y sale.
-.TP 
+.TP
 \fB\-d, \-\-debug\fP
 activa opciones adicionales en el modo de comandos del juego (vea la página
 wiki en https://www.wesnoth.org/wiki/CommandMode para más información sobre
 el modo de comandos).
-.TP 
+.TP
 \fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
 inicia directamente con el editor de mapas del juego. Si \fIarchivo\fP es
 especificado, equivale a \fB\-l \-\-load\fP
-.TP 
+.TP
 \fB\-\-fps\fP
 muestra el número de fotogramas por segundo a los que se está ejecutando el
 juego actualmente, en una esquina de la pantalla.
-.TP 
+.TP
 \fB\-f, \-\-fullscreen\fP
 ejecuta el juego en modo de pantalla completa.
-.TP 
+.TP
 \fB\-\-gunzip\fP\fI\ archivo_de_entrada.gz\fP
 descomprime un archivo que debería estar en formato gzip y lo almacena sin
 el sufijo .gz. El \fIarchivo_de_entrada.gz\fP será eliminado.
-.TP 
+.TP
 \fB\-\-gzip\fP\fI\ archivo_de_entrada\fP
 comprime un archivo en formato gzip, lo guarda como \fIarchivo_de_entrada\fP.gz
 y elimina \fIarchivo_de_entrada\fP.
-.TP 
+.TP
 \fB\-h, \-\-help\fP
 muestra un resumen de las opciones de línea de comandos en la salida
 estándar, y regresa.
-.TP 
+.TP
 \fB\-l,\ \-\-load\fP\fI\ archivo\fP
 carga la partida guardada en \fIarchivo\fP desde el directorio estándar de
 partidas guardadas. Combinada con la opción \fB\-e\fP o \fB\-\-editor\fP, inicia el
 editor con el mapa en \fIarchivo\fP abierto. Si se trata de un directorio, el
 editor mostrará un diálogo de selección de archivos apuntando a éste.
-.TP 
+.TP
 \fB\-L,\ \-\-language\fP\fI\ lang\fP
 usa el idioma \fIlang\fP en esta sesión.  Ejemplo: \fB\-\-language ang_GB@latin\fP
-.TP 
+.TP
 \fB\-\-log\-\fP\fInivel\fP\fB=\fP\fIdominio1\fP\fB,\fP\fIdominio2\fP\fB,\fP\fI...\fP
 establece el nivel de gravedad de los dominios de registro. \fBall\fP puede
 utilizarse para seleccionar todos los dominios. Los niveles disponibles son:
 \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Por defecto se utiliza el nivel
 \fBerror\fP.
-.TP 
+.TP
 \fB\-\-log\-precise\fP
 muestra los marcadores de tiempo del fichero de registro con mayor precisión
-.TP 
+.TP
 \fB\-\-log\-strict\fP
 establece el nivel de precisión del registro. Cualquier mensaje enviado a
 los dominios de registro con este nivel o mayor causará un fallo en el
 análisis de la unidad a pesar de un resultado victorioso. Solo es relevante
 cuando se usa con \fB\-u\fP.
-.TP 
+.TP
 \fB\-\-logdomains[\fP\fI=filtro\fP\fB]\fP
 muestra una lista de dominios de registro definidos (únicamente aquéllos
 conteniendo \fIfiltro\fP si es indicado) y regresa
-.TP 
+.TP
 \fB\-\-max\-fps\fP\fI\ fps\fP
 el número de fotogramas por segundo que el juego puede mostrar, el valor
 debería estar entre \fI1\fP y \fI1000\fP, por omisión es índice de refresco del
 monitor.
-.TP 
+.TP
 \fB\-m, \-\-multiplayer\fP
 inicia una partida multijugador. Existen opciones adicionales que pueden
 usarse junto con \fB\-\-multiplayer\fP como se explica más abajo.
-.TP 
+.TP
 \fB\-\-mp\-test\fP
 carga los escenarios de prueba multijugador.
-.TP 
+.TP
 \fB\-\-no\-delay\fP
 ejecuta el juego sin pausas para hacer una prueba de rendimiento
 gráfico. Esto se activa automáticamente con \fB\-\-nogui\fP.
-.TP 
+.TP
 \fB\-\-noaddons\fP
 deshabilita la carga de complementos de usuario.
-.TP 
+.TP
 \fB\-\-nocache\fP
 deshabilita el cache de datos de juego.
-.TP 
+.TP
 \fB\-\-nogui\fP
 runs the game without the GUI. Only available in combination with
 \fB\-\-multiplayer\fP or \fB\-\-screenshot\fP or \fB\-\-plugin\fP.
-.TP 
+.TP
 \fB\-\-nomusic\fP
 ejecuta el juego sin música.
-.TP 
+.TP
 \fB\-\-noreplaycheck\fP
 no intenta validar la repetición del testeo de la unidad. Solo es relevante
 cuando se usa con \fB\-u\fP.
-.TP 
+.TP
 \fB\-\-nosound\fP
 ejecuta el juego sin sonidos ni música.
-.TP 
+.TP
 \fB\-\-password\fP\fI\ password\fP
 utiliza \fIpassword\fP cuando se conecta a un servidor, ignorando otras
 preferencias. Método inseguro.
-.TP 
+.TP
 \fB\-\-path\fP
 muestra el nombre del directorio de datos de juego y finaliza.
-.TP 
+.TP
 \fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
 preprocesses a specified file/folder. For each file(s) a plain .cfg file and
 a processed .cfg file will be written in specified target directory. If a
@@ -184,16 +184,16 @@ will be preprocessed before the specified resources.  Example: \fB\-p
 ~/wesnoth/data/campaigns/tutorial ~/result.\fP For details regarding the
 preprocessor visit:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor
-.TP 
+.TP
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
 lista separada por comas de definiciones que van a ser usadas por el comando
 \fB\-\-preprocess\fP. Si \fBSKIP_CORE\fP está en la lista, el directorio «data/core»
 no se preprocesará.
-.TP 
+.TP
 \fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
 sólo utilizado por el comando \fB\-\-preprocess\fP. Especifica un archivo que
 contiene \fB[preproc_define]\fPs para ser incluido antes de la operación.
-.TP 
+.TP
 \fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
 sólo utilizado con el comando \fB\-\-preprocess\fP. Escribirá todas las macros
 preprocesadas en el archivo especificado. Si omite el nombre de archivo, se
@@ -201,50 +201,50 @@ utilizará el archivo «_MACROS_.cfg» en el directorio de destino del comando
 preprocess. El archivo de salida puede ser enviado a
 \fB\-\-preprocess\-input\-macros\fP. Esta opción debe preceder al comando
 \fB\-\-preprocess\fP.
-.TP 
+.TP
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 establece la resolución de la pantalla. Por ejemplo: \fB\-r 800x600\fP
-.TP 
+.TP
 \fB\-\-render\-image\fP\fI\ image\fP\fB\ \fP\fIoutput\fP
 takes a valid wesnoth 'image path string' with image path functions, and
 outputs to a .png file. Outputs to a windows .bmp file if the filename ends
 with .bmp or if libpng is not available. Image path functions are documented
 at https://wiki.wesnoth.org/ImagePathFunctionWML.
-.TP 
+.TP
 \fB\-R,\ \-\-report\fP
 inicializa los directorios del juego, imprime la información necesaria para
 su uso en informes de error, y sale.
-.TP 
+.TP
 \fB\-\-rng\-seed\fP\fI\ seed\fP
 inicializa el generador de números aleatorios con el número <arg>.
 Ejemplo: \fB\-\-rng\-seed 0\fP
-.TP 
+.TP
 \fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
 guarda una captura de pantalla de \fImap\fP en \fIoutput\fP sin inicializar una
 pantalla.
-.TP 
+.TP
 \fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
 se conecta a la máquina especificada si la hay, de otro modo se conecta al
 primer servidor seleccionado en las preferencias. Ejemplo: \fB\-\-server
 server.wesnoth.org\fP
-.TP 
+.TP
 \fB\-\-showgui\fP
 ejecuta el juego con la GUI (interfaz gráfica de usuario), ignorando
 cualquier \fB\-\-nogui.\fP implícito.
-.TP 
+.TP
 \fB\-\-strict\-validation\fP
 trata los errores de validación como fatales.
-.TP 
+.TP
 \fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
 ejecuta el juego en un pequeño escenario de prueba. El escenario debería de
 ser alguno definido con una etiqueta WML \fB[test]\fP. Por omisión es
 \fBtest\fP. Una demostración de la característica \fB[micro_ai]\fP puede ser
 iniciada con \fBmicro_ai_test\fP. Implica \fB\-\-nogui.\fP
-.TP 
+.TP
 \fB\-u,\ \-\-unit\fP\fI\ scenario\-id\fP
 ejecuta el escenario de prueba especificado para testar una unidad. Implica
 \fB\-\-nogui.\fP
-.TP 
+.TP
 \fB\-\-userconfig\-dir\fP\fI\ nombre\fP
 establece el directorio de configuración del usuario como \fInombre\fP en $HOME
 o "Mis documentos\eMis juegos" en Windows. También es posible especificar
@@ -254,10 +254,10 @@ directorio relativo al directorio donde corre el proceso usando una ruta que
 comience por ".\e" or "..\e". Con X11 está predeterminado como
 $XDG_CONFIG_HOME o $HOME/.config/wesnoth, en otros sistemas para la ruta de
 los datos de usuario.
-.TP 
+.TP
 \fB\-\-userconfig\-path\fP
 muestra la ruta del directorio de la configuración del usuario y regresa.
-.TP 
+.TP
 \fB\-\-userdata\-dir\fP\fI\ nombre\fP
 establece el directorio de datos del usuario como \fInombre\fP en $HOME o "Mis
 documentos\eMis juegos" en Windows. También es posible especificar una ruta
@@ -265,23 +265,23 @@ absoluta para los datos del usuario fuera de $HOME o "Mis documentos\eMis
 juegos". En Windows también es posible especificar un directorio relativo al
 directorio donde corre el proceso usando una ruta que comience por ".\e" or
 "..\e".
-.TP 
+.TP
 \fB\-\-username\fP\fI\ username\fP
 utiliza \fIusername\fP cuando se conecta a un servidor, ignorando otras
 preferencias.
-.TP 
+.TP
 \fB\-\-userdata\-path\fP
 muestra la ruta del directorio de datos del usuario y regresa.
-.TP 
+.TP
 \fB\-\-validcache\fP
 asume que el caché es válido (peligroso).
-.TP 
+.TP
 \fB\-v, \-\-version\fP
 muestra el número de versión y finaliza.
-.TP 
+.TP
 \fB\-w, \-\-windowed\fP
 ejecuta el juego en una ventana.
-.TP 
+.TP
 \fB\-\-with\-replay\fP
 muestra la repetición de la partida cargada con la opción \fB\-\-load\fP.
 .
@@ -291,55 +291,55 @@ Las opciones multijugador específicas de bando están marcadas con
 \fInúmero\fP.  \fInúmero\fP ha de reemplazarse por un número de
 bando. Habitualmente es 1 o 2, pero depende del número de jugadores posibles
 en el escenario elegido.
-.TP 
+.TP
 \fB\-\-ai_config\fP\fI\ number\fP\fB:\fP\fIvalue\fP
 selecciona un archivo de configuración a cargar por el controlador de
 inteligencia artificial para este bando.
-.TP 
+.TP
 \fB\-\-algorithm\fP\fI\ number\fP\fB:\fP\fIvalue\fP
 selecciona un algoritmo no estándar para ser usado por el controlador de la
 IA para este bando. El algoritmo se define por una etiqueta \fB[ai]\fP, que
 puede ser tanto principal en "data/ai/ais" o en "data/ai/dev" o un algoritmo
 definido por un complemento. Entre los valores disponibles se incluyen:
 \fBidle_ai\fP y \fBexperimental_ai\fP.
-.TP 
+.TP
 \fB\-\-controller\fP\fI\ number\fP\fB:\fP\fIvalue\fP
 selecciona el controlador para este bando. Los valores disponibles son:
 \fBhuman\fP y \fBai\fP.
-.TP 
+.TP
 \fB\-\-era\fP\fI\ value\fP
 use esta opción para jugar en la era seleccionada en lugar de la era por
 omisión (\fBDefault\fP). La era se selecciona usando un identificador (id). Las
 eras incluidas están descritas en el archivo \fBdata/multiplayer/eras.cfg\fP.
-.TP 
+.TP
 \fB\-\-exit\-at\-end\fP
 finaliza una vez se ha completado el escenario, sin mostrar un diálogo de
 victoria o derrota que requiera que el usuario pulse en Aceptar. Esto se usa
 también para pruebas de rendimiento automatizadas.
-.TP 
+.TP
 \fB\-\-ignore\-map\-settings\fP
 no se utilizan las configuraciones del mapa sino los valores
 predeterminados.
-.TP 
+.TP
 \fB\-\-multiplayer\-repeat\fP\fI\ value\fP
 repite una partida multijugador \fIvalue\fP veces. Es mejor usarlo con
 \fB\-\-nogui\fP para evaluaciones automatizadas.
-.TP 
+.TP
 \fB\-\-parm\fP\fI\ number\fP\fB:\fP\fIname\fP\fB:\fP\fIvalue\fP
 establece parámetros adicionales para este bando. Este parámetro depende de
 las opciones empleadas con \fB\-\-controller\fP y \fB\-\-algorithm.\fP Sólo debería
 ser útil a la gente que está diseñando su propia inteligencia
 artificial. (no está documentado por completo todavía)
-.TP 
+.TP
 \fB\-\-scenario\fP\fI\ value\fP
 selecciona un escenario multijugador por su identificador. El id de
 escenario por defecto es \fBmultiplayer_The_Freelands\fP.
-.TP 
+.TP
 \fB\-\-side\fP\fI\ number\fP\fB:\fP\fIvalue\fP
 selecciona una facción de la era actual para este bando. La facción se
 selecciona usando un identificador (id). Las facciones se describen en el
 archivo data/multiplayer.cfg.
-.TP 
+.TP
 \fB\-\-turns\fP\fI\ value\fP
 establece el número de turnos para el escenario elegido. Por defecto no hay
 límite de turnos.

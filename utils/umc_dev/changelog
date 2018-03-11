@@ -13,17 +13,17 @@ Eclipse plugin changelog
 	* The path for the Wesnoth binary is now automatically set correctly when using Mac OS X.
 
 2.0.0
-	* The standalone version now has all the proper save/new/undo/redo 
+	* The standalone version now has all the proper save/new/undo/redo
     buttons in the menus.
-	* Added support for multiple wesnoth installations. This 
-	allows the user to have UMC for different wesnoth version at the 
+	* Added support for multiple wesnoth installations. This
+	allows the user to have UMC for different wesnoth version at the
 	same time in the workspace.
 	* Added a new property page for Wesnoth projects, that allows
 	one to select what wesnoth install that project use.
 	* Added the "Wesnoth Addons" view, which allows users to browse
 	through the existing addons on any wesnoth addon server and
 	download them ( and optionally create them as projects in the workspace).
-	* Each wesnoth projects now has attached a folder that points to the 
+	* Each wesnoth projects now has attached a folder that points to the
 	wesnoth ``data/core" directory.
 	* The required Xtext version has been raised to 2.0.0
     * The required Eclipse version has been raised to 3.7 ( Indigo )
@@ -40,7 +40,7 @@ Eclipse plugin changelog
 	* Fixed bug #18080
 	* Fixed bug #18076
 	* Fixed bug #18025
-	
+
 1.0.2
 	* Fixed bug #17875 - Wesnoth projects is blank unless right-clicked
 	* Fixed bug #17882 - UTF-8 files with BOM not supported
@@ -56,7 +56,7 @@ Eclipse plugin changelog
 	* Added tooltip to each preference in preferences page.
 	* Added marker support when checking with wmllint and wmlscope. The markers will appear
 	in each file, at the reported line and in the Problems Pane (usually the one under the editor)
-	* The user is asked at the workspace setup phase whether to create or not projects for 
+	* The user is asked at the workspace setup phase whether to create or not projects for
 	mainline projects
 	* Fixed a problem when an empty project won't open after creating it.
 	* Fixed bug #16602.

@@ -57,4 +57,3 @@ private:
 } // namespace gui2
 
 #endif
-

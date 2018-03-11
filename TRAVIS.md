@@ -10,6 +10,6 @@ To push a new base image to Docker Hub
 
   docker login
   Username: wesnoth
-  
+
   docker tag <Image ID from `docker images`> wesnoth/wesnoth:16.04
   docker push wesnoth/wesnoth:16.04

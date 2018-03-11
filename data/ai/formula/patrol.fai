@@ -9,16 +9,16 @@ def closest_unit(ai*, me)
 def step_move(me)
 	if( unit_at( desired_path[0] ),
 		if( desired_path.size > 1,
-        		move_partial(
-        			me.loc,
+				move_partial(
+					me.loc,
 				desired_path[1]
-        		),
+				),
 			end
 		),
-        	move_partial(
-        		me.loc,
+			move_partial(
+				me.loc,
 			desired_path[0]
-        	)
+		)
 	)
 
 where desired_path = shortest_path( me.loc, me.vars.next_step );

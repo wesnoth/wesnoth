@@ -115,7 +115,7 @@ private:
 
 	// Copy constructor
 	unit(const unit& u);
-	
+
 	unit();
 
 public:
@@ -143,7 +143,7 @@ public:
 	{
 		return unit_ptr(new unit(*this));
 	}
-	
+
 	virtual ~unit();
 
 	void swap(unit&);

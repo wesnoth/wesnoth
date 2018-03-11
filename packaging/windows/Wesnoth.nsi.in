@@ -41,8 +41,8 @@
 ;Language Selection Dialog Settings
 
   ;Remember the installer language
-  !define MUI_LANGDLL_REGISTRY_ROOT "SHCTX" 
-  !define MUI_LANGDLL_REGISTRY_KEY "Software\Battle for Wesnoth\%version" 
+  !define MUI_LANGDLL_REGISTRY_ROOT "SHCTX"
+  !define MUI_LANGDLL_REGISTRY_KEY "Software\Battle for Wesnoth\%version"
   !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 
 ;--------------------------------
@@ -54,8 +54,8 @@
   !insertmacro MUI_PAGE_DIRECTORY
 
   ;Start Menu Folder Page Configuration
-  !define MUI_STARTMENUPAGE_REGISTRY_ROOT "SHCTX" 
-  !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\Battle for Wesnoth\%version" 
+  !define MUI_STARTMENUPAGE_REGISTRY_ROOT "SHCTX"
+  !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\Battle for Wesnoth\%version"
   !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
   !define MUI_STARTMENUPAGE_DEFAULTFOLDER "Battle for Wesnoth %version"
 
@@ -116,7 +116,7 @@ Section "Battle for Wesnoth" BfWSection
   WriteUninstaller "$INSTDIR\Uninstall.exe"
 
   ;Add uninstall information
-  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "DisplayName" "Battle for Wesnoth %version" 
+  WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "DisplayName" "Battle for Wesnoth %version"
   WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "DisplayIcon" "$\"$INSTDIR\wesnoth.exe$\""
   WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
   WriteRegStr SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Battle for Wesnoth %version" "QuietUninstallString" "$\"$INSTDIR\Uninstall.exe$\" /S"

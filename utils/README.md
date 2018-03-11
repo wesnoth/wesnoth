@@ -4,4 +4,3 @@ Wesnoth servers.
 
 Tools that work on data (WML, maps, images, sounds) no longer belong here.
 Go to data/tools for those.
-

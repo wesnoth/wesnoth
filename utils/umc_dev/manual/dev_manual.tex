@@ -151,7 +151,7 @@ This tests involve starting the plugin, and launching the tests after it started
 	\item For the \textbf{Test Class}, enter: ``org.wesnoth.tests.WMLPDETestsSuite" ( or ``Search..." for it. Just enter ``WMLTestsSuite" in the newly opened window, and select the item )
 	\item For the \textbf{Test method}, let it as it is by default: ``(all methods)"
 	\item In the ``Test runner" Combo Box select ``Junit 4"
-	\item Go to the ``Arguments" tab, and in the ``VM Arguments" text box, add the following arguments, separated by space: 
+	\item Go to the ``Arguments" tab, and in the ``VM Arguments" text box, add the following arguments, separated by space:
 	\begin{enumerate}
 		\item $-DisTesting=true$
 		\item $-DwesnothWorkingDir=<path>$ ( Replace the $<path>$ token with the current path to the wesnoth working directory ( it contains the data directory ) )
@@ -161,13 +161,13 @@ This tests involve starting the plugin, and launching the tests after it started
 		\item $-DpythonPath=<path>$ ( Replace the $<path>$ token with the current path to the python binary ( for *nix systems, 'pyhon' will suffice ) )
 	\end{enumerate}
 	\item Press ``Apply" and ``Run"
-\end{enumerate}	
+\end{enumerate}
 
 
 \textit{Note:} You can always launch last run configuration with F11 - Debug / CTRL+F11 - Run. Alternatively, you can launch them by clicking near the green bug/run icon, on the little down arrow, and selecting the run configuration.
 
 \section{Building the plugin}
-The plugin can be built as a zip archive (usually) for different operating systems. The built application can be launched without any Eclipse prerequisites. This plugin's version is called \textbf{Standalone}. 
+The plugin can be built as a zip archive (usually) for different operating systems. The built application can be launched without any Eclipse prerequisites. This plugin's version is called \textbf{Standalone}.
 
 You now have 2 choices: Build the plugin from within Eclipse - this way you can build, say, just for your current OS/architecture - or you can use the already existing build script - that builds the plugin for all currently supported architectures.
 

@@ -23,7 +23,7 @@ class Campaign:
         self.description = self.parser.get_text_val("description")
         self.levels = len(self.parser.get_all(tag="difficulty"))
         self.credits_link = "http://wiki.wesnoth.org/Credits#" + self.id
-        self.units_link = "http://units.wesnoth.org/trunk/mainline/en_US/%s.html" % self.id 
+        self.units_link = "http://units.wesnoth.org/trunk/mainline/en_US/%s.html" % self.id
 
 def wiki_output(campaign):
     """

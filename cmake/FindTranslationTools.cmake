@@ -15,7 +15,7 @@ if(NOT GETTEXT_XGETTEXT_EXECUTABLE)
 endif(NOT GETTEXT_XGETTEXT_EXECUTABLE)
 set(GETTEXT_XGETTEXT_OPTIONS
 	--force-po
-	--add-comments=TRANSLATORS 
+	--add-comments=TRANSLATORS
 	--copyright-holder=\"Wesnoth development team\"
 	--msgid-bugs-address=\"http://bugs.wesnoth.org/\"
 	--from-code=UTF-8
@@ -123,4 +123,3 @@ if(NOT TRANSLATION_TOOLS_FOUND)
 		message(FATAL_ERROR "Not all translation tools are found")
 	endif(TranslationTools_FIND_REQUIRED)
 endif(NOT TRANSLATION_TOOLS_FOUND)
-

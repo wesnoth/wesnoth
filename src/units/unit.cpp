@@ -446,7 +446,7 @@ unit::unit()
 	, upkeep_(upkeep_full())
 	, invisibility_cache_()
 {
-	
+
 }
 
 void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
@@ -692,7 +692,7 @@ void unit::clear_status_caches()
 }
 
 void unit::init(const unit_type& u_type, int side, bool real_unit, unit_race::GENDER gender)
-{	
+{
 	type_ = &u_type;
 	race_ = &unit_race::null_race;
 	variation_ = type_->default_variation();

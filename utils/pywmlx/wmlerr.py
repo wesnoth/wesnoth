@@ -158,4 +158,3 @@ def wmlerr(finfo, message, errtype=WmlError):
 
 def wmlwarn(finfo, message):
     warnings.warn(finfo + ": " + message, WmlWarning)
-

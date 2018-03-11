@@ -4,7 +4,7 @@
 # It needs to point to the top-level data directory.
 DATA = ../../data
 #
-# The MAINLINE definition should expand to all directories considered  
+# The MAINLINE definition should expand to all directories considered
 # to be part of the mainline distribution.
 MAINLINE = $(DATA)/core $(DATA)/multiplayer $(DATA)/themes $(DATA)/campaigns/*
 #
@@ -46,8 +46,8 @@ validate-gui:
 # References to terrain graphics go through so many layers of nasty
 # opaque macros that trying to reference-check them is hopeless.
 # So suppress reporting them unused even if they seem to have
-# no references.  
-FORCE_USED = --force-used "terrain/" 
+# no references.
+FORCE_USED = --force-used "terrain/"
 images-unused:
 	@echo "# Report on unused images"
 	@./wmlscope --crossreference --from images --refcount 0 $(FORCE_USED) $(MAINLINE) $(UMC)
@@ -84,7 +84,7 @@ reindent:
 
 # Extract a table of editor keybindings from the editor theme definition
 editor_bindings:
-	@./extractbindings <../themes/editor.cfg 
+	@./extractbindings <../themes/editor.cfg
 
 # Look at the difficulty-rank order of the campaigns
 rank:
@@ -107,4 +107,3 @@ revert:
 clean:
 	./wmllint --clean $(MAINLINE) $(UMC)
 	rm -f macro-reference.html
-

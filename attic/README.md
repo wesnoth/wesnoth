@@ -5,7 +5,7 @@ Some notes on specific images and image groups follow:
 scepter_of_fire.png:
    Old story image of the Scepter, quite large.
 
-units/thain.png,units/thain2.png: 
+units/thain.png,units/thain2.png:
    Originally from SoF.  1.3-sized.
 
 desert-elvish-druid-statue.png, desert-elvish-shyde-statue:
@@ -22,4 +22,3 @@ clasher-attack-mace.png
 
 units/fire-dragon-flying-*.png
    Jetryl plans to finish these.  See FR #11041.
-

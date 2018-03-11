@@ -74,4 +74,3 @@ for i in $filelist; do
     fi
 done
 echo "RGBA: $rgba RGB: $rgb Gray+A: $graya Gray: $gray Index+A: $indexa Index: $index Other: $other"
-

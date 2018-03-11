@@ -19,7 +19,7 @@ if(calc_exp(target.level) > (me.max_experience - me.experience),
 		if(battle_outcome[0].hitpoints_left[0] > 0,
 			if(max(battle_outcome[1].probability) = battle_outcome[1].probability[0],
 				battle_outcome[1].probability[0] / 100,
-    			-5),
+				-5),
 			-5),
 		-5),
 	-5)

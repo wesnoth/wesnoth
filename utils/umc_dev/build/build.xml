@@ -3,10 +3,10 @@
     <target name="main">
     	<available property="haveBaseLocation" file="${baseLocation}"/>
         <fail unless="haveBaseLocation" message="Please set the base location for the eclipse installation." />
-    	
+
     	<available property="haveBuildDirectory" file="${buildDirectory}"/>
         <fail unless="haveBuildDirectory" message="Please set the build location." />
-    	
+
         <!-- Check that we have a deltapack -->
         <available property="haveDeltaPack" file="${deltapack}"/>
         <fail unless="haveDeltaPack" message="The deltapack is required to build this product.  Please set the &quot;deltapack&quot; property." />

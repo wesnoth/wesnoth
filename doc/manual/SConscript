@@ -6,11 +6,11 @@ Import("env")
 #
 if "manual" in COMMAND_LINE_TARGETS or "update-po4a" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
     env.Command("manual.en.xml", "manual.txt",
-    	"asciidoc -b docbook -d book -n -a toc -o $TARGET $SOURCE && dos2unix $TARGET")
+        "asciidoc -b docbook -d book -n -a toc -o $TARGET $SOURCE && dos2unix $TARGET")
     manuals = Glob("*.xml")
     for manual in manuals:
         html = env.Command(manual.name.replace(".xml", ".html"), manual,
-    	    """${SOURCES[0].exists() and \
+            """${SOURCES[0].exists() and \
             'xsltproc --nonet \
             --stringparam callout.graphics 0 \
             --stringparam navig.graphics 0 \

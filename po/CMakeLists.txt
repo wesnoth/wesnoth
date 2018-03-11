@@ -280,4 +280,3 @@ if(ENABLE_NLS)
 	)
 
 endif(ENABLE_NLS)
-

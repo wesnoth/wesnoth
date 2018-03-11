@@ -55,7 +55,7 @@ framework_install() {
                         else
                                 echo "==> Found old $PACKAGE.framework in temp"
                                 rm -rf $PACKAGE.framework
-                        fi  
+                        fi
                 fi
         fi
         if [ "$path" == "none" ]; then

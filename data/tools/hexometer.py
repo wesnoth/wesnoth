@@ -132,5 +132,5 @@ for fn in images:
 
     if px != 0:
         print("{:d}\t: {}".format(px, fn))
-    
+
 sys.exit(0)

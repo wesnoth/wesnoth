@@ -100,9 +100,9 @@ subprocess.call( [
 # Some cleanup
 print("Cleaning up...")
 # Some cleanup
-to_cleanup = [ 
-	"../org.wesnoth.feature/build.xml",  
-    "../org.wesnoth.dependencies.feature/build.xml",  
+to_cleanup = [
+	"../org.wesnoth.feature/build.xml",
+    "../org.wesnoth.dependencies.feature/build.xml",
 	"../org.wesnoth/build.xml",
 	"../org.wesnoth.ui/build.xml",
 	"../org.wesnoth/javaCompiler...args",
@@ -117,7 +117,7 @@ except: pass
 
 try: shutil.rmtree( "../org.wesnoth.dependencies.feature/feature.temp.folder" )
 except: pass
-    
+
 # Local variables:
 # mode: python
 # end:

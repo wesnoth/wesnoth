@@ -69,10 +69,10 @@ for afile in $potfiles
 do
 	for bfile in $potfiles
 	do
-	  	# The newer-than test is a klugy way to select
-	  	# only one of each two file pairs that are the
-	  	# same symmetrical set.  This will give duplicate
-	  	# messages if the files were created in the same second.
+		# The newer-than test is a klugy way to select
+		# only one of each two file pairs that are the
+		# same symmetrical set.  This will give duplicate
+		# messages if the files were created in the same second.
 		if [ $afile != $bfile -a $afile -nt $bfile ]
 		then
 			sort -u $afile >/tmp/sschk$$_afile
