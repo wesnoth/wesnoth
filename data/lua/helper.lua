@@ -96,23 +96,7 @@ end
 --!     { "Choice 1", "Choice 2" })
 --! @endcode
 function helper.get_user_choice(attr, options)
-	local result = 0
-	function wesnoth.__user_choice_helper(i)
-		result = i
-	end
-	local msg = {}
-	for k,v in pairs(attr) do
-		msg[k] = attr[k]
-	end
-	for k,v in ipairs(options) do
-		table.insert(msg, wml.tag.option, { message = v,
-			wml.tag.command, { wml.tag.lua, {
-				code = string.format("wesnoth.__user_choice_helper(%d)", k)
-			}}})
-	end
-	wml_actions.message(msg)
-	wesnoth.__user_choice_helper = nil
-	return result
+	return gui.get_user_choice(attr, options)
 end
 
 --! Returns an iterator over adjacent locations that can be used in a for-in loop.
