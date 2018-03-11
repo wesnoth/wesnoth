@@ -726,7 +726,7 @@ void manager::create_temp_move()
 				if(!fake_unit || fake_unit.get_unit_ptr()->id() != temp_moved_unit->id())
 				{
 					// Create temp ghost unit
-					fake_unit = fake_unit_ptr(unit::create(*temp_moved_unit), resources::fake_units);
+					fake_unit = fake_unit_ptr(temp_moved_unit->clone(), resources::fake_units);
 					fake_unit->anim_comp().set_ghosted(true);
 				}
 

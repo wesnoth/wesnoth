@@ -58,7 +58,7 @@ recruit::recruit(size_t team_index, bool hidden, const std::string& unit_name, c
 		unit_name_(unit_name),
 		recruit_hex_(recruit_hex),
 		temp_unit_(create_corresponding_unit()), //auto-ptr ownership transfer
-		fake_unit_(unit::create(*temp_unit_)), //temp_unit_ *copied* into new fake unit
+		fake_unit_(temp_unit_->clone()), //temp_unit_ *copied* into new fake unit
 		cost_(0)
 {
 	this->init();
@@ -78,7 +78,7 @@ recruit::recruit(const config& cfg, bool hidden)
 
 	// Construct temp_unit_ and fake_unit_
 	temp_unit_ = create_corresponding_unit(); //auto-ptr ownership transfer
-	fake_unit_.reset(unit::create(*temp_unit_)); //temp_unit_ copied into new fake_unit
+	fake_unit_.reset(temp_unit_->clone()); //temp_unit_ copied into new fake_unit
 
 	this->init();
 }

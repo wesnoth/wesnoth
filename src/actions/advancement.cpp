@@ -284,7 +284,7 @@ unit_ptr get_advanced_unit(const unit &u, const std::string& advance_to)
 		throw game::game_error("Could not find the unit being advanced"
 			" to: " + advance_to);
 	}
-	unit_ptr new_unit = unit::create(u);
+	unit_ptr new_unit = u.clone();
 	new_unit->set_experience(new_unit->experience_overflow());
 	new_unit->advance_to(*new_type);
 	new_unit->heal_fully();
@@ -302,7 +302,7 @@ unit_ptr get_advanced_unit(const unit &u, const std::string& advance_to)
  */
 unit_ptr get_amla_unit(const unit &u, const config &mod_option)
 {
-	unit_ptr amla_unit = unit::create(u);
+	unit_ptr amla_unit = u.clone();
 	amla_unit->set_experience(amla_unit->experience_overflow());
 	amla_unit->add_modification("advancement", mod_option);
 	return amla_unit;

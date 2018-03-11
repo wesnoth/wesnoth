@@ -2407,7 +2407,7 @@ void unit::set_underlying_id(n_unit::id_manager& id_manager)
 	}
 }
 
-unit& unit::clone(bool is_temporary)
+unit& unit::mark_clone(bool is_temporary)
 {
 	n_unit::id_manager& ids = resources::gameboard ? resources::gameboard->unit_id_manager() : n_unit::id_manager::global_instance();
 	if(is_temporary) {

@@ -59,9 +59,9 @@ std::ostream& recall::print(std::ostream &s) const
 
 recall::recall(size_t team_index, bool hidden, const unit& u, const map_location& recall_hex):
 		action(team_index,hidden),
-		temp_unit_(unit::create(u)),
+		temp_unit_(u.clone()),
 		recall_hex_(recall_hex),
-		fake_unit_(unit::create(u))
+		fake_unit_(u.clone())
 {
 	this->init();
 }
@@ -78,7 +78,7 @@ recall::recall(const config& cfg, bool hidden)
 	{
 		if(recall_unit->underlying_id()==underlying_id)
 		{
-			temp_unit_ = unit::create(*recall_unit); //TODO: is it necessary to make a copy?
+			temp_unit_ = recall_unit->clone(); //TODO: is it necessary to make a copy?
 			break;
 		}
 	}
@@ -86,7 +86,7 @@ recall::recall(const config& cfg, bool hidden)
 		throw action::ctor_err("recall: Invalid underlying_id");
 	}
 
-	fake_unit_.reset(unit::create(*temp_unit_)); //makes copy of temp_unit_
+	fake_unit_.reset(temp_unit_->clone()); //makes copy of temp_unit_
 
 	this->init();
 }

@@ -25,5 +25,5 @@ unit_ptr make_unit_ptr(const unit_type& t, int side, bool real_unit, unit_race::
 }
 unit_ptr make_unit_ptr(const unit& u)
 {
-	return unit::create(u);
+	return u.clone();
 }

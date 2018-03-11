@@ -364,14 +364,14 @@ void game_board::write_config(config & cfg) const
 temporary_unit_placer::temporary_unit_placer(unit_map& m, const map_location& loc, unit& u)
 	: m_(m), loc_(loc), temp_(m_.extract(loc))
 {
-	u.clone();
+	u.mark_clone(true);
 	m_.add(loc, u);
 }
 
 temporary_unit_placer::temporary_unit_placer(game_board& b, const map_location& loc, unit& u)
 	: m_(b.units_), loc_(loc), temp_(m_.extract(loc))
 {
-	u.clone();
+	u.mark_clone(true);
 	m_.add(loc, u);
 }
 

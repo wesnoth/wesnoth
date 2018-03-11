@@ -80,7 +80,7 @@ unit_map::umap_retval_pair_t unit_map::add(const map_location& l, const unit& u)
 	self_check();
 
 	 // TODO: should this take a shared pointer to a unit rather than make a copy?
-	unit_ptr p = unit::create(u);
+	unit_ptr p = u.clone();
 	p->set_location(l);
 
 	unit_map::umap_retval_pair_t res(insert(p));
@@ -172,7 +172,7 @@ unit_map::umap_retval_pair_t unit_map::insert(unit_ptr p)
 				   << " ("  << q->get_location()
 				   << ").\n";
 
-			p->clone(false);
+			p->mark_clone(false);
 			ERR_NG << "The new unit was assigned underlying_id=" << p->underlying_id()
 				   << " to prevent duplicate id conflicts.\n";
 
@@ -189,7 +189,7 @@ unit_map::umap_retval_pair_t unit_map::insert(unit_ptr p)
 						"\nThank you for your help in fixing this bug.\n";
 				}
 
-				p->clone(false);
+				p->mark_clone(false);
 				uinsert = umap_.emplace(p->underlying_id(), upod);
 			}
 

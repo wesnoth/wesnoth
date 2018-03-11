@@ -39,7 +39,7 @@ class editor_action_unit : public editor_action_location
 public:
 	editor_action_unit(map_location loc, const unit& u)
 		: editor_action_location(loc)
-		, u_(unit::create(u))
+		, u_(u.clone())
 	{
 	}
 

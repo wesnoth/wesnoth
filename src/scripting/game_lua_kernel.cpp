@@ -2228,7 +2228,7 @@ int game_lua_kernel::intf_extract_unit(lua_State *L)
 		u->anim_comp().clear_haloes();
 	} else if (int side = lu->on_recall_list()) {
 		team &t = board().get_team(side);
-		unit_ptr v = unit::create(*u);
+		unit_ptr v = u->clone();
 		t.recall_list().erase_if_matches_id(u->id());
 		u = v;
 	} else {
@@ -2313,7 +2313,7 @@ static int intf_create_unit(lua_State *L)
 static int intf_copy_unit(lua_State *L)
 {
 	unit& u = luaW_checkunit(L, 1);
-	luaW_pushunit(L, unit::create(u));
+	luaW_pushunit(L, u.clone());
 	return 1;
 }
 

@@ -215,7 +215,7 @@ void helper_check_village(const map_location& loc, int side){
 }
 
 void helper_place_unit(const unit& u, const map_location& loc){
-	unit_ptr new_unit = unit::create(u);
+	unit_ptr new_unit = u.clone();
 	new_unit->set_movement(0, true);
 	new_unit->set_attacks(0);
 	new_unit->heal_fully();
@@ -248,7 +248,7 @@ void helper_advance_unit(const map_location& loc){
 	int options_num = unit_helper::number_of_possible_advances(*advance_unit);
 
 	size_t advance_choice = randomness::generator->get_random_int(0, options_num-1);
-	unit_ptr advanced_unit = unit::create(*advance_unit);
+	unit_ptr advanced_unit = (*advance_unit).clone();
 
 	if(advance_choice < options.size()){
 		std::string advance_unit_typename = options[advance_choice];

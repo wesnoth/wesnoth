@@ -138,10 +138,10 @@ public:
 		res->init(t, side, real_unit, gender);
 		return res;
 	}
-	// maybe rename this to copy?
-	static unit_ptr create(const unit& u)
+
+	unit_ptr clone() const
 	{
-		return unit_ptr(new unit(u));
+		return unit_ptr(new unit(*this));
 	}
 	
 	virtual ~unit();
@@ -1572,7 +1572,7 @@ public:
 	 *
 	 * @returns                   self (for convenience)
 	 */
-	unit& clone(bool is_temporary = true);
+	unit& mark_clone(bool is_temporary);
 
 	/** @} */
 
