@@ -46,9 +46,9 @@ namespace {
 	class temporary_facing
 	{
 		map_location::DIRECTION save_dir_;
-		const unit* u_;
+		unit_const_ptr u_;
 	public:
-		temporary_facing(const unit* u, map_location::DIRECTION new_dir)
+		temporary_facing(unit_const_ptr u, map_location::DIRECTION new_dir)
 			: save_dir_(u ? u->facing() : map_location::NDIRECTIONS)
 			, u_(u)
 		{
@@ -705,8 +705,8 @@ std::string attack_type::weapon_specials(bool only_active, bool is_backstab) con
  */
 attack_type::specials_context_t::specials_context_t(const attack_type& weapon,
                                        const_attack_ptr other_attack,
-									   const unit* self,
-                                       const unit* other,
+									   unit_const_ptr self,
+                                       unit_const_ptr other,
                                        const map_location& unit_loc,
                                        const map_location& other_loc,
                                        bool attacking)
@@ -728,7 +728,7 @@ attack_type::specials_context_t::specials_context_t(const attack_type& weapon,
  * @param[in]  loc           The location of the unit with this weapon.
  * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
  */
-attack_type::specials_context_t::specials_context_t(const attack_type& weapon, const unit* self, const map_location& loc, bool attacking)
+attack_type::specials_context_t::specials_context_t(const attack_type& weapon, unit_const_ptr self, const map_location& loc, bool attacking)
 	: parent(weapon.shared_from_this())
 {
 	weapon.self_ = self;
@@ -881,8 +881,8 @@ namespace { // Helpers for attack_type::special_active()
 	 * @param[in]  filter     The filter containing the child filter to use.
 	 * @param[in]  child_tag  The tag of the child filter to use.
 	 */
-	static bool special_unit_matches(const unit* & u,
-		                             const unit* & u2,
+	static bool special_unit_matches(unit_const_ptr & u,
+		                             unit_const_ptr & u2,
 		                             const map_location & loc,
 		                             const_attack_ptr weapon,
 		                             const config & filter,
@@ -973,8 +973,8 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	assert(display::get_singleton());
 	const unit_map& units = display::get_singleton()->get_units();
 
-	const unit* self = self_;
-	const unit* other = other_;
+	unit_const_ptr self = self_;
+	unit_const_ptr other = other_;
 
 	if(self == nullptr) {
 		unit_map::const_iterator it = units.find(self_loc_);
@@ -994,8 +994,8 @@ bool attack_type::special_active(const config& special, AFFECTS whom,
 	temporary_facing other_facing(other, other_loc_.get_relative_dir(self_loc_));
 
 	// Translate our context into terms of "attacker" and "defender".
-	const unit* & att = is_attacker_ ? self : other;
-	const unit* & def = is_attacker_ ? other : self;
+	unit_const_ptr & att = is_attacker_ ? self : other;
+	unit_const_ptr & def = is_attacker_ ? other : self;
 	const map_location & att_loc   = is_attacker_ ? self_loc_ : other_loc_;
 	const map_location & def_loc   = is_attacker_ ? other_loc_ : self_loc_;
 	const_attack_ptr att_weapon = is_attacker_ ? shared_from_this() : other_attack_;

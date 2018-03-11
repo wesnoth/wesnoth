@@ -660,7 +660,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	int damage = 0;
 
 	{
-	auto ctx = at.specials_context(&u, displayed_unit_hex, u.side() == rc.screen().playing_side());
+	auto ctx = at.specials_context(unit_const_ptr(&u), displayed_unit_hex, u.side() == rc.screen().playing_side());
 	int base_damage = at.damage();
 	int specials_damage = at.modified_damage(false);
 	int damage_multiplier = 100;

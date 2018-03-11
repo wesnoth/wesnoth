@@ -104,8 +104,8 @@ private:
 	// considered active.
 	friend class specials_context_t;
 	mutable map_location self_loc_, other_loc_;
-	mutable const unit* self_;
-	mutable const unit* other_;
+	mutable unit_const_ptr self_;
+	mutable unit_const_ptr other_;
 	mutable bool is_attacker_;
 	mutable const_attack_ptr other_attack_;
 	mutable bool is_for_listing_ = false;
@@ -119,11 +119,11 @@ public:
 		specials_context_t(const attack_type& weapon, const unit_type& self_type, const map_location& loc, bool attacking = true);
 		/// Initialize weapon specials context for a single unit
 		specials_context_t(const attack_type& weapon, const_attack_ptr other_weapon,
-			const unit* self, const unit* other,
+			unit_const_ptr self, unit_const_ptr other,
 			const map_location& self_loc, const map_location& other_loc,
 			bool attacking);
 		/// Initialize weapon specials context for a pair of units
-		specials_context_t(const attack_type& weapon, const unit* self, const map_location& loc, bool attacking);
+		specials_context_t(const attack_type& weapon, unit_const_ptr self, const map_location& loc, bool attacking);
 		specials_context_t(const specials_context_t&) = delete;
 		bool was_moved = false;
 	public:
@@ -133,12 +133,12 @@ public:
 	};
 	// Set up a specials context.
 	// Usage: auto ctx = weapon.specials_context(...);
-	specials_context_t specials_context(const unit* self, const unit* other,
+	specials_context_t specials_context(unit_const_ptr self, unit_const_ptr other,
 		const map_location& unit_loc, const map_location& other_loc,
 		bool attacking, const_attack_ptr other_attack) const {
 		return specials_context_t(*this, other_attack, self, other, unit_loc, other_loc, attacking);
 	}
-	specials_context_t specials_context(const unit* self, const map_location& loc, bool attacking = true) const {
+	specials_context_t specials_context(unit_const_ptr self, const map_location& loc, bool attacking = true) const {
 		return specials_context_t(*this, self, loc, attacking);
 	}
 	specials_context_t specials_context(const unit_type& self_type, const map_location& loc, bool attacking = true) const {
