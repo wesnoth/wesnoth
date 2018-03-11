@@ -489,6 +489,50 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	end
 end
 
+--[========[GUI2 Dialog Manipulations]========]
+
+gui = {}
+
+gui.show_menu = wesnoth.show_menu
+gui.show_narration = wesnoth.show_message_dialog
+gui.show_popup = wesnoth.show_popup_dialog
+gui.show_story = wesnoth.show_story
+gui.show_prompt = wesnoth.show_message_box
+gui.alert = wesnoth.alert
+gui.confirm = wesnoth.confirm
+gui.show_lua_console = wesnoth.show_lua_console
+if wesnoth.kernel_type() == "Game Lua Kernel" then
+	gui.show_inspector = wesnoth.gamestate_inspector
+end
+gui.add_widget_definition = wesnoth.add_widget_definition
+
+--! Displays a WML message box with attributes from table @attr and options
+--! from table @options.
+--! @return the index of the selected option.
+--! @code
+--! local result = helper.get_user_choice({ speaker = "narrator" },
+--!     { "Choice 1", "Choice 2" })
+--! @endcode
+function gui.get_user_choice(attr, options)
+	local result = 0
+	function gui.__user_choice_helper(i)
+		result = i
+	end
+	local msg = {}
+	for k,v in pairs(attr) do
+		msg[k] = attr[k]
+	end
+	for k,v in ipairs(options) do
+		table.insert(msg, wml.tag.option, { message = v,
+			wml.tag.command, { wml.tag.lua, {
+				code = string.format("gui.__user_choice_helper(%d)", k)
+			}}})
+	end
+	wml_actions.message(msg)
+	gui.__user_choice_helper = nil
+	return result
+end
+
 -- Some C++ functions are deprecated; apply the messages here.
 -- Note: It must happen AFTER the C++ functions are reassigned above to their new location.
 -- These deprecated functions will probably never be removed.
