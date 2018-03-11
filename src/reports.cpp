@@ -660,182 +660,182 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	int damage = 0;
 
 	{
-	auto ctx = at.specials_context(unit_const_ptr(&u), displayed_unit_hex, u.side() == rc.screen().playing_side());
-	int base_damage = at.damage();
-	int specials_damage = at.modified_damage(false);
-	int damage_multiplier = 100;
-	int tod_bonus = combat_modifier(rc.units(), rc.map(), displayed_unit_hex, u.alignment(), u.is_fearless());
-	damage_multiplier += tod_bonus;
-	int leader_bonus = under_leadership(rc.units(), displayed_unit_hex).first;
-	if (leader_bonus != 0)
-		damage_multiplier += leader_bonus;
+		auto ctx = at.specials_context(unit_const_ptr(&u), displayed_unit_hex, u.side() == rc.screen().playing_side());
+		int base_damage = at.damage();
+		int specials_damage = at.modified_damage(false);
+		int damage_multiplier = 100;
+		int tod_bonus = combat_modifier(rc.units(), rc.map(), displayed_unit_hex, u.alignment(), u.is_fearless());
+		damage_multiplier += tod_bonus;
+		int leader_bonus = under_leadership(rc.units(), displayed_unit_hex).first;
+		if (leader_bonus != 0)
+			damage_multiplier += leader_bonus;
 
-	bool slowed = u.get_state(unit::STATE_SLOWED);
-	int damage_divisor = slowed ? 20000 : 10000;
-	// Assume no specific resistance (i.e. multiply by 100).
-	damage = round_damage(specials_damage, damage_multiplier * 100, damage_divisor);
+		bool slowed = u.get_state(unit::STATE_SLOWED);
+		int damage_divisor = slowed ? 20000 : 10000;
+		// Assume no specific resistance (i.e. multiply by 100).
+		damage = round_damage(specials_damage, damage_multiplier * 100, damage_divisor);
 
-	// Hit points are used to calculate swarm, so they need to be bounded.
-	unsigned max_hp = u.max_hitpoints();
-	unsigned cur_hp = std::min<unsigned>(std::max(0, u.hitpoints()), max_hp);
+		// Hit points are used to calculate swarm, so they need to be bounded.
+		unsigned max_hp = u.max_hitpoints();
+		unsigned cur_hp = std::min<unsigned>(std::max(0, u.hitpoints()), max_hp);
 
-	unsigned base_attacks = at.num_attacks();
-	unsigned min_attacks, max_attacks;
-	at.modified_attacks(false, min_attacks, max_attacks);
-	unsigned num_attacks = swarm_blows(min_attacks, max_attacks, cur_hp, max_hp);
+		unsigned base_attacks = at.num_attacks();
+		unsigned min_attacks, max_attacks;
+		at.modified_attacks(false, min_attacks, max_attacks);
+		unsigned num_attacks = swarm_blows(min_attacks, max_attacks, cur_hp, max_hp);
 
-	color_t dmg_color = font::weapon_color;
-	if ( damage > specials_damage )
-		dmg_color = font::good_dmg_color;
-	else if ( damage < specials_damage )
-		dmg_color = font::bad_dmg_color;
+		color_t dmg_color = font::weapon_color;
+		if ( damage > specials_damage )
+			dmg_color = font::good_dmg_color;
+		else if ( damage < specials_damage )
+			dmg_color = font::bad_dmg_color;
 
-	str << span_color(dmg_color) << "  " << damage << naps << span_color(font::weapon_color)
-		<< font::weapon_numbers_sep << num_attacks << ' ' << at.name()
-		<< "</span>\n";
-	tooltip << _("Weapon: ") << "<b>" << at.name() << "</b>\n"
-		<< _("Damage: ") << "<b>" << damage << "</b>\n";
+		str << span_color(dmg_color) << "  " << damage << naps << span_color(font::weapon_color)
+			<< font::weapon_numbers_sep << num_attacks << ' ' << at.name()
+			<< "</span>\n";
+		tooltip << _("Weapon: ") << "<b>" << at.name() << "</b>\n"
+			<< _("Damage: ") << "<b>" << damage << "</b>\n";
 
-	if ( tod_bonus || leader_bonus || slowed || specials_damage != base_damage )
-	{
-		tooltip << '\t' << _("Base damage: ") << base_damage << '\n';
-		if ( specials_damage != base_damage ) {
-			tooltip << '\t' << _("With specials: ") << specials_damage << '\n';
-		}
-		if (tod_bonus) {
-			tooltip << '\t' << _("Time of day: ")
-				<< utils::signed_percent(tod_bonus) << '\n';
-		}
-		if (leader_bonus) {
-			tooltip << '\t' << _("Leadership: ")
-				<< utils::signed_percent(leader_bonus) << '\n';
-		}
-		if (slowed) {
-			tooltip << '\t' << _("Slowed: ") << "/ 2" << '\n';
-		}
-	}
-
-	tooltip << _("Attacks: ") << "<b>" << num_attacks << "</b>\n";
-	if ( max_attacks != min_attacks  &&  cur_hp != max_hp ) {
-		if ( max_attacks < min_attacks ) {
-			// "Reverse swarm"
-			tooltip << '\t' << _("Max swarm bonus: ") << (min_attacks-max_attacks) << '\n';
-			tooltip << '\t' << _("Swarm: ") << "* "<< (100 - cur_hp*100/max_hp) << "%\n";
-			tooltip << '\t' << _("Base attacks: ") << '+' << base_attacks << '\n';
-			// The specials line will not necessarily match up with how the
-			// specials are calculated, but for an unusual case, simple brevity
-			// trumps complexities.
-			if ( max_attacks != base_attacks ) {
-				int attack_diff = int(max_attacks) - int(base_attacks);
-				tooltip << '\t' << _("Specials: ") << utils::signed_value(attack_diff) << '\n';
+		if ( tod_bonus || leader_bonus || slowed || specials_damage != base_damage )
+		{
+			tooltip << '\t' << _("Base damage: ") << base_damage << '\n';
+			if ( specials_damage != base_damage ) {
+				tooltip << '\t' << _("With specials: ") << specials_damage << '\n';
+			}
+			if (tod_bonus) {
+				tooltip << '\t' << _("Time of day: ")
+					<< utils::signed_percent(tod_bonus) << '\n';
+			}
+			if (leader_bonus) {
+				tooltip << '\t' << _("Leadership: ")
+					<< utils::signed_percent(leader_bonus) << '\n';
+			}
+			if (slowed) {
+				tooltip << '\t' << _("Slowed: ") << "/ 2" << '\n';
 			}
 		}
-		else {
-			// Regular swarm
+
+		tooltip << _("Attacks: ") << "<b>" << num_attacks << "</b>\n";
+		if ( max_attacks != min_attacks  &&  cur_hp != max_hp ) {
+			if ( max_attacks < min_attacks ) {
+				// "Reverse swarm"
+				tooltip << '\t' << _("Max swarm bonus: ") << (min_attacks-max_attacks) << '\n';
+				tooltip << '\t' << _("Swarm: ") << "* "<< (100 - cur_hp*100/max_hp) << "%\n";
+				tooltip << '\t' << _("Base attacks: ") << '+' << base_attacks << '\n';
+				// The specials line will not necessarily match up with how the
+				// specials are calculated, but for an unusual case, simple brevity
+				// trumps complexities.
+				if ( max_attacks != base_attacks ) {
+					int attack_diff = int(max_attacks) - int(base_attacks);
+					tooltip << '\t' << _("Specials: ") << utils::signed_value(attack_diff) << '\n';
+				}
+			}
+			else {
+				// Regular swarm
+				tooltip << '\t' << _("Base attacks: ") << base_attacks << '\n';
+				if ( max_attacks != base_attacks ) {
+					tooltip << '\t' << _("With specials: ") << max_attacks << '\n';
+				}
+				if ( min_attacks != 0 ) {
+					tooltip << '\t' << _("Subject to swarm: ") << (max_attacks-min_attacks) << '\n';
+				}
+				tooltip << '\t' << _("Swarm: ") << "* "<< (cur_hp*100/max_hp) << "%\n";
+			}
+		}
+		else if ( num_attacks != base_attacks ) {
 			tooltip << '\t' << _("Base attacks: ") << base_attacks << '\n';
-			if ( max_attacks != base_attacks ) {
-				tooltip << '\t' << _("With specials: ") << max_attacks << '\n';
-			}
-			if ( min_attacks != 0 ) {
-				tooltip << '\t' << _("Subject to swarm: ") << (max_attacks-min_attacks) << '\n';
-			}
-			tooltip << '\t' << _("Swarm: ") << "* "<< (cur_hp*100/max_hp) << "%\n";
+			tooltip << '\t' << _("With specials: ") << num_attacks << '\n';
 		}
-	}
-	else if ( num_attacks != base_attacks ) {
-		tooltip << '\t' << _("Base attacks: ") << base_attacks << '\n';
-		tooltip << '\t' << _("With specials: ") << num_attacks << '\n';
-	}
 
-	add_text(res, flush(str), flush(tooltip));
-
-	std::string range = string_table["range_" + at.range()];
-	std::string lang_type = string_table["type_" + at.type()];
-
-	str << span_color(font::weapon_details_color) << "  " << "  "
-		<< range << font::weapon_details_sep
-		<< lang_type << "</span>\n";
-
-	tooltip << _("Weapon range: ") << "<b>" << range << "</b>\n"
-		<< _("Damage type: ")  << "<b>" << lang_type << "</b>\n"
-		<< _("Damage versus: ") << '\n';
-
-	// Show this weapon damage and resistance against all the different units.
-	// We want weak resistances (= good damage) first.
-	std::map<int, std::set<std::string>, std::greater<int>> resistances;
-	std::set<std::string> seen_types;
-	const team &unit_team = rc.dc().get_team(u.side());
-	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
-	for (const unit &enemy : rc.units())
-	{
-		if (enemy.incapacitated()) //we can't attack statues so don't display them in this tooltip
-			continue;
-		if (!unit_team.is_enemy(enemy.side()))
-			continue;
-		const map_location &loc = enemy.get_location();
-		if (viewing_team.fogged(loc) ||
-		    (viewing_team.is_enemy(enemy.side()) && enemy.invisible(loc, rc.dc())))
-			continue;
-		bool new_type = seen_types.insert(enemy.type_id()).second;
-		if (new_type) {
-			int resistance = enemy.resistance_against(at, false, loc);
-			resistances[resistance].insert(enemy.type_name());
-		}
-	}
-
-	typedef std::pair<int, std::set<std::string>> resist_units;
-	for (const resist_units &resist : resistances) {
-		int damage_with_resistance = round_damage(specials_damage, damage_multiplier * resist.first, damage_divisor);
-		tooltip << "<b>" << damage_with_resistance << "</b>  "
-			<< "<span color='" << attack_info_percent_color(resist.first-100).to_hex_string() << "'>"
-			<< "<i>(" << utils::signed_percent(resist.first-100) << ")</i>"
-			<< naps
-			<< " :  \t" // spaces to align the tab to a multiple of 8
-			<< utils::join(resist.second, " " + font::unicode_bullet + " ") << '\n';
-	}
-	add_text(res, flush(str), flush(tooltip));
-
-	const std::string &accuracy_parry = at.accuracy_parry_description();
-	if (!accuracy_parry.empty())
-	{
-		str << span_color(font::weapon_details_color)
-			<< "  " << accuracy_parry << "</span>\n";
-		int accuracy = at.accuracy();
-		if (accuracy) {
-			tooltip << _("Accuracy:") << "<b>"
-				<< utils::signed_percent(accuracy) << "</b>\n";
-		}
-		int parry = at.parry();
-		if (parry) {
-			tooltip << _("Parry:") << "<b>"
-				<< utils::signed_percent(parry) << "</b>\n";
-			}
 		add_text(res, flush(str), flush(tooltip));
-	}
+
+		std::string range = string_table["range_" + at.range()];
+		std::string lang_type = string_table["type_" + at.type()];
+
+		str << span_color(font::weapon_details_color) << "  " << "  "
+			<< range << font::weapon_details_sep
+			<< lang_type << "</span>\n";
+
+		tooltip << _("Weapon range: ") << "<b>" << range << "</b>\n"
+			<< _("Damage type: ")  << "<b>" << lang_type << "</b>\n"
+			<< _("Damage versus: ") << '\n';
+
+		// Show this weapon damage and resistance against all the different units.
+		// We want weak resistances (= good damage) first.
+		std::map<int, std::set<std::string>, std::greater<int>> resistances;
+		std::set<std::string> seen_types;
+		const team &unit_team = rc.dc().get_team(u.side());
+		const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+		for (const unit &enemy : rc.units())
+		{
+			if (enemy.incapacitated()) //we can't attack statues so don't display them in this tooltip
+				continue;
+			if (!unit_team.is_enemy(enemy.side()))
+				continue;
+			const map_location &loc = enemy.get_location();
+			if (viewing_team.fogged(loc) ||
+				(viewing_team.is_enemy(enemy.side()) && enemy.invisible(loc, rc.dc())))
+				continue;
+			bool new_type = seen_types.insert(enemy.type_id()).second;
+			if (new_type) {
+				int resistance = enemy.resistance_against(at, false, loc);
+				resistances[resistance].insert(enemy.type_name());
+			}
+		}
+
+		typedef std::pair<int, std::set<std::string>> resist_units;
+		for (const resist_units &resist : resistances) {
+			int damage_with_resistance = round_damage(specials_damage, damage_multiplier * resist.first, damage_divisor);
+			tooltip << "<b>" << damage_with_resistance << "</b>  "
+				<< "<span color='" << attack_info_percent_color(resist.first-100).to_hex_string() << "'>"
+				<< "<i>(" << utils::signed_percent(resist.first-100) << ")</i>"
+				<< naps
+				<< " :  \t" // spaces to align the tab to a multiple of 8
+				<< utils::join(resist.second, " " + font::unicode_bullet + " ") << '\n';
+		}
+		add_text(res, flush(str), flush(tooltip));
+
+		const std::string &accuracy_parry = at.accuracy_parry_description();
+		if (!accuracy_parry.empty())
+		{
+			str << span_color(font::weapon_details_color)
+				<< "  " << accuracy_parry << "</span>\n";
+			int accuracy = at.accuracy();
+			if (accuracy) {
+				tooltip << _("Accuracy:") << "<b>"
+					<< utils::signed_percent(accuracy) << "</b>\n";
+			}
+			int parry = at.parry();
+			if (parry) {
+				tooltip << _("Parry:") << "<b>"
+					<< utils::signed_percent(parry) << "</b>\n";
+				}
+			add_text(res, flush(str), flush(tooltip));
+		}
 	}
 
 	{
-	auto ctx = at.specials_context_for_listing();
-	boost::dynamic_bitset<> active;
-	const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
-	const size_t specials_size = specials.size();
-	for ( size_t i = 0; i != specials_size; ++i )
-	{
-		// Aliases for readability:
-		const t_string &name = specials[i].first;
-		const t_string &description = specials[i].second;
-		const color_t &details_color = active[i] ? font::weapon_details_color :
-		                                             font::inactive_details_color;
+		auto ctx = at.specials_context_for_listing();
+		boost::dynamic_bitset<> active;
+		const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
+		const size_t specials_size = specials.size();
+		for ( size_t i = 0; i != specials_size; ++i )
+		{
+			// Aliases for readability:
+			const t_string &name = specials[i].first;
+			const t_string &description = specials[i].second;
+			const color_t &details_color = active[i] ? font::weapon_details_color :
+														 font::inactive_details_color;
 
-		str << span_color(details_color) << "  " << "  " << name << naps << '\n';
-		std::string help_page = "weaponspecial_" + name.base_str();
-		tooltip << _("Weapon special: ") << "<b>" << name << "</b>";
-		if ( !active[i] )
-			tooltip << "<i>" << _(" (inactive)") << "</i>";
-		tooltip << '\n' << description;
+			str << span_color(details_color) << "  " << "  " << name << naps << '\n';
+			std::string help_page = "weaponspecial_" + name.base_str();
+			tooltip << _("Weapon special: ") << "<b>" << name << "</b>";
+			if ( !active[i] )
+				tooltip << "<i>" << _(" (inactive)") << "</i>";
+			tooltip << '\n' << description;
 
-		add_text(res, flush(str), flush(tooltip), help_page);
-	}
+			add_text(res, flush(str), flush(tooltip), help_page);
+		}
 	}
 	return damage;
 }
