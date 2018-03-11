@@ -39,15 +39,7 @@ end
 --! @param vars key/value pairs that need changing.
 --! @note Usable only during WML actions.
 function helper.modify_unit(filter, vars)
-	local units = wesnoth.get_units(filter)
-	for u in pairs(units) do
-		for k, v in pairs(vars) do
-			-- Minor TODO: What if you want to change values of subtags?
-			-- Previously would've been possible with eg {['variables.some_var'] = 'some_value'}
-			-- With this implementation, it's not possible.
-			u[k] = v
-		end
-	end
+	wesnoth.units.modify(filter, vars)
 end
 
 -- Metatable that redirects access to wml.variables_proxy
