@@ -111,6 +111,13 @@
 		468C1B971F09245F002DF652 /* function_gamestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468C1B951F09245E002DF652 /* function_gamestate.cpp */; };
 		469EC8EC20287C4A008A0CAD /* surrender_quit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469EC8EA20287C49008A0CAD /* surrender_quit.cpp */; };
 		46B2A7C12028DDA2006C2323 /* libpng16.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C243118EF07B4001FA499 /* libpng16.16.dylib */; };
+		46CB5FEA2055944C008A0DB6 /* command_console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46CB5FE82055944B008A0DB6 /* command_console.cpp */; };
+		46CB5FEB2055944C008A0DB6 /* command_console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46CB5FE82055944B008A0DB6 /* command_console.cpp */; };
+		46CB5FEE2055947B008A0DB6 /* game_ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46CB5FED2055947A008A0DB6 /* game_ui.cpp */; };
+		46CB5FEF2055947B008A0DB6 /* game_ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46CB5FED2055947A008A0DB6 /* game_ui.cpp */; };
+		46CB5FF420559566008A0DB6 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46CB5FF120559565008A0DB6 /* texture.cpp */; };
+		46CB5FF520559566008A0DB6 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46CB5FF120559565008A0DB6 /* texture.cpp */; };
+		46BED4DA2050711600842FA5 /* scenario-story.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 46BED4D92050710800842FA5 /* scenario-story.cfg */; };
 		4944F40D1354FB760027E614 /* drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40C1354FB760027E614 /* drawing.cpp */; };
 		4944F4121354FB970027E614 /* debug_clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40E1354FB970027E614 /* debug_clock.cpp */; };
 		4944F4131354FB970027E614 /* mp_login.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40F1354FB970027E614 /* mp_login.cpp */; };
@@ -1364,6 +1371,7 @@
 				91273E9E1C7BF1D8005E7F81 /* multiplayer in Copy Data Files */,
 				91273EA11C7BF1D8005E7F81 /* scenario-leaders.cfg in Copy Data Files */,
 				91273EA21C7BF1D8005E7F81 /* scenario-movethrough.cfg in Copy Data Files */,
+				46BED4DA2050711600842FA5 /* scenario-story.cfg in Copy Data Files */,
 				91273EA41C7BF1D8005E7F81 /* scenario-test.cfg in Copy Data Files */,
 				91273EA51C7BF1D8005E7F81 /* schema-gui.cfg in Copy Data Files */,
 				91273EA61C7BF1D8005E7F81 /* schema.cfg in Copy Data Files */,
@@ -1451,6 +1459,15 @@
 		468C1B961F09245E002DF652 /* function_gamestate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = function_gamestate.hpp; sourceTree = "<group>"; };
 		469EC8EA20287C49008A0CAD /* surrender_quit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = surrender_quit.cpp; sourceTree = "<group>"; };
 		469EC8EB20287C49008A0CAD /* surrender_quit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = surrender_quit.hpp; sourceTree = "<group>"; };
+		46CB5FE82055944B008A0DB6 /* command_console.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = command_console.cpp; sourceTree = "<group>"; };
+		46CB5FE92055944C008A0DB6 /* command_console.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = command_console.hpp; sourceTree = "<group>"; };
+		46CB5FEC2055947A008A0DB6 /* game_ui.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_ui.hpp; sourceTree = "<group>"; };
+		46CB5FED2055947A008A0DB6 /* game_ui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_ui.cpp; sourceTree = "<group>"; };
+		46CB5FF02055952D008A0DB6 /* render_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = render_utils.hpp; sourceTree = "<group>"; };
+		46CB5FF120559565008A0DB6 /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
+		46CB5FF220559565008A0DB6 /* userevent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = userevent.hpp; sourceTree = "<group>"; };
+		46BED4D92050710800842FA5 /* scenario-story.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "scenario-story.cfg"; sourceTree = "<group>"; };
+		46CB5FF320559566008A0DB6 /* texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = texture.hpp; sourceTree = "<group>"; };
 		46DF5BCB1F46173700BE6D24 /* irdya_datetime.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = irdya_datetime.hpp; sourceTree = "<group>"; };
 		46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = irdya_datetime.cpp; sourceTree = "<group>"; };
 		4944F40C1354FB760027E614 /* drawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drawing.cpp; sourceTree = "<group>"; };
@@ -3522,6 +3539,7 @@
 				91273E811C7BF1C2005E7F81 /* multiplayer */,
 				91273E841C7BF1C3005E7F81 /* scenario-leaders.cfg */,
 				91273E851C7BF1C3005E7F81 /* scenario-movethrough.cfg */,
+				46BED4D92050710800842FA5 /* scenario-story.cfg */,
 				91273E871C7BF1C3005E7F81 /* scenario-test.cfg */,
 				91273E881C7BF1C4005E7F81 /* schema-gui.cfg */,
 				91273E891C7BF1C4005E7F81 /* schema.cfg */,
@@ -3624,9 +3642,13 @@
 				ECB6A6311FB8AAC400877C20 /* point.hpp */,
 				ECFB9FAB193BFB6E00146ED0 /* rect.cpp */,
 				91B621F11B76BBC500B00E0F /* rect.hpp */,
+				46CB5FF02055952D008A0DB6 /* render_utils.hpp */,
 				EC2F60211A04983B0018C9D6 /* savepng.c */,
 				EC2F60231A04985A0018C9D6 /* savepng.h */,
 				EC669C251DFC95AF00172EED /* surface.cpp */,
+				46CB5FF120559565008A0DB6 /* texture.cpp */,
+				46CB5FF320559566008A0DB6 /* texture.hpp */,
+				46CB5FF220559565008A0DB6 /* userevent.hpp */,
 				EC28C58D19423426003B0F5E /* utils.cpp */,
 				EC28C58E19423426003B0F5E /* utils.hpp */,
 				911F2DAB1BA086A400E3102E /* window.cpp */,
@@ -4374,6 +4396,8 @@
 				B5F4D7160F5B3B25005E204A /* campaign_selection.hpp */,
 				F4D5DF37149CE9B500294046 /* chat_log.cpp */,
 				F4D5DF38149CE9B500294046 /* chat_log.hpp */,
+				46CB5FE82055944B008A0DB6 /* command_console.cpp */,
+				46CB5FE92055944C008A0DB6 /* command_console.hpp */,
 				ECBBD73E1928F41500E434C6 /* core_selection.cpp */,
 				ECBBD73F1928F41500E434C6 /* core_selection.hpp */,
 				4944F40E1354FB970027E614 /* debug_clock.cpp */,
@@ -4407,6 +4431,8 @@
 				B597EC610FC08E5D00CE81F5 /* game_save.hpp */,
 				9193FC771D5AC2D8004F6C07 /* game_stats.cpp */,
 				9193FC781D5AC2D8004F6C07 /* game_stats.hpp */,
+				46CB5FED2055947A008A0DB6 /* game_ui.cpp */,
+				46CB5FEC2055947A008A0DB6 /* game_ui.hpp */,
 				ECABDA341B6A9461001407C1 /* game_version.cpp */,
 				9184385C1D4C786F00C42277 /* game_version.hpp */,
 				B5B4692A1071189700327599 /* gamestate_inspector.cpp */,
@@ -4953,6 +4979,7 @@
 				B54AC6DF0FEA9EB5006F6FBD /* attack.cpp in Sources */,
 				ECD26C8D1FE5730700E663E1 /* gui_definition.cpp in Sources */,
 				B52EE91612135AC300CFBDAB /* attack.cpp in Sources */,
+				46CB5FEA2055944C008A0DB6 /* command_console.cpp in Sources */,
 				460779B0203EFF49007C8186 /* crypt_gensalt.c in Sources */,
 				620A386E15E9364E00A4F513 /* attack.cpp in Sources */,
 				EC67F7FD1DB314580038337E /* text.cpp in Sources */,
@@ -4988,6 +5015,7 @@
 				B5599B7B0EC62181008DD061 /* config_cache.cpp in Sources */,
 				B5599B7D0EC62181008DD061 /* config.cpp in Sources */,
 				EC0680291EA920A300EEE03B /* random_deterministic.cpp in Sources */,
+				46CB5FEE2055947B008A0DB6 /* game_ui.cpp in Sources */,
 				B54AC69D0FEA9E8F006F6FBD /* configuration.cpp in Sources */,
 				EC2F600D1A048E220018C9D6 /* configure_engine.cpp in Sources */,
 				EC67F7F11DB3144A0038337E /* font_config.cpp in Sources */,
@@ -5128,6 +5156,7 @@
 				91B6217C1B74E6D200B00E0F /* label_settings.cpp in Sources */,
 				B5A9BD640ECA805A002BE442 /* label.cpp in Sources */,
 				B5A9BD380ECA805A002BE442 /* language_selection.cpp in Sources */,
+				46CB5FF420559566008A0DB6 /* texture.cpp in Sources */,
 				B5599B330EC62181008DD061 /* language.cpp in Sources */,
 				EC67F7F01DB3144A0038337E /* constants.cpp in Sources */,
 				B52EE89D1213590500CFBDAB /* list.cpp in Sources */,
@@ -5594,6 +5623,7 @@
 				91E356801CACC71A00774252 /* save_blocker.cpp in Sources */,
 				91E356811CACC71A00774252 /* save_index.cpp in Sources */,
 				91E356821CACC71A00774252 /* saved_game.cpp in Sources */,
+				46CB5FF520559566008A0DB6 /* texture.cpp in Sources */,
 				91E356831CACC71A00774252 /* savegame.cpp in Sources */,
 				91E356841CACC77E00774252 /* settings.cpp in Sources */,
 				91E356851CACC77E00774252 /* side_filter.cpp in Sources */,
@@ -5854,12 +5884,14 @@
 				4649B8CD2028911C00827CFB /* player_list_helper.cpp in Sources */,
 				91A215721CAD6E7500927AEA /* mapgen_lua_kernel.cpp in Sources */,
 				91A215731CAD704C00927AEA /* pathfind.cpp in Sources */,
+				46CB5FEB2055944C008A0DB6 /* command_console.cpp in Sources */,
 				91A215741CAD704C00927AEA /* teleport.cpp in Sources */,
 				91A215751CAD761100927AEA /* help.cpp in Sources */,
 				91A215761CAD761100927AEA /* help_browser.cpp in Sources */,
 				91A215781CAD761100927AEA /* help_impl.cpp in Sources */,
 				91A215791CAD761100927AEA /* help_menu.cpp in Sources */,
 				91A2157A1CAD761100927AEA /* help_text_area.cpp in Sources */,
+				46CB5FEF2055947B008A0DB6 /* game_ui.cpp in Sources */,
 				91A2157B1CAD761100927AEA /* help_topic_generators.cpp in Sources */,
 				91A2157C1CAD761100927AEA /* hotkey_handler.cpp in Sources */,
 				91A2157D1CAD761100927AEA /* hotkey_handler_mp.cpp in Sources */,
@@ -6343,7 +6375,7 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -6409,7 +6441,7 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
 				GCC_DYNAMIC_NO_PIC = YES;
