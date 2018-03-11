@@ -173,7 +173,7 @@ bool schema_validator::read_config_file(const std::string& filename)
 		}
 		for(const config& type : g.child_range("type")) {
 			try {
-				types_[type["name"].str()] = class_type(type);
+				types_[type["name"].str()] = class_type::from_config(type);
 			} catch(const std::exception&) {
 				// Need to check all type values in schema-generator
 			}
@@ -285,7 +285,7 @@ void schema_validator::validate_key(
 					cache_.top()[&cfg].emplace_back(
 						WRONG_TYPE, file, start_line, 0, stack_.top()->get_name(), name, key->get_type());
 					continue;
-				} else if(itt->second.matches(value, types_)) {
+				} else if(itt->second->matches(value, types_)) {
 					matched = true;
 					break;
 				}

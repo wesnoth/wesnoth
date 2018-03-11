@@ -145,6 +145,6 @@ private:
 	std::stack<message_map> cache_;
 
 	/** Type validators. */
-	std::map<std::string, class_type> types_;
+	class_type::map types_;
 };
 } // namespace schema_validation{

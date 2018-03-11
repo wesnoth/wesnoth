@@ -19,6 +19,7 @@
 
 #include "serialization/tag.hpp"
 #include "serialization/string_utils.hpp"
+#include "boost/optional.hpp"
 
 #include "config.hpp"
 
@@ -39,91 +40,86 @@ class_tag any_tag("", 0, -1, "", true);
  * @end{tag}{name="key"}
  * @end{parent}{name="wml_schema/tag/"}
  */
-class_type::class_type(const config& cfg)
-	: name_(cfg["name"].str())
+std::shared_ptr<class_type> class_type::from_config(const config& cfg)
 {
+	boost::optional<config::const_child_itors> composite_range;
+	std::shared_ptr<class_type> type;
 	if(cfg.has_child("union")) {
-		join = UNION;
-		for(const config& elem : cfg.child("union").child_range("type")) {
-			if(elem.has_attribute("value")) {
-				patterns_.emplace_back("^(?:" + elem["value"].str() + ")$");
-			} else if(elem.has_attribute("link")) {
-				links_.emplace_back(elem["link"].str());
-			}
-		}
+		type = std::make_shared<class_type_union>(cfg["name"]);
+		composite_range.emplace(cfg.child("union").child_range("type"));
 	} else if(cfg.has_child("intersection")) {
-		join = INTERSECTION;
-		for(const config& elem : cfg.child("intersection").child_range("type")) {
-			if(elem.has_attribute("value")) {
-				patterns_.emplace_back("^(?:" + elem["value"].str() + ")$");
-			} else if(elem.has_attribute("link")) {
-				links_.emplace_back(elem["link"].str());
-			}
-		}
+		type = std::make_shared<class_type_intersection>(cfg["name"]);
+		composite_range.emplace(cfg.child("intersection").child_range("type"));
 	} else if(cfg.has_child("list")) {
 		const config& list_cfg = cfg.child("list");
-		join = UNION;
-		is_list_ = true;
-		list_min_ = list_cfg["min"].to_int();
-		list_max_ = list_cfg["max"].str() == "infinite" ? -1 : list_cfg["max"].to_int(-1);
-		if(list_max_ < 0) list_max_ = INT_MAX;
-		split_ = list_cfg["split"].str(",");
-		for(const config& elem : cfg.child("list").child_range("element")) {
-			if(elem.has_attribute("value")) {
-				patterns_.emplace_back("^(?:" + elem["value"].str() + ")$");
-			} else if(elem.has_attribute("link")) {
-				links_.emplace_back(elem["link"].str());
-			}
-		}
+		int list_min = list_cfg["min"].to_int();
+		int list_max = list_cfg["max"].str() == "infinite" ? -1 : list_cfg["max"].to_int(-1);
+		if(list_max < 0) list_max = INT_MAX;
+		type = std::make_shared<class_type_list>(cfg["name"], list_cfg["split"].str(","), list_min, list_max);
+		composite_range.emplace(list_cfg.child_range("element"));
 	} else if(cfg.has_attribute("value")) {
-		patterns_.emplace_back(cfg["value"].str());
+		type = std::make_shared<class_type_simple>(cfg["name"], cfg["value"]);
 	} else if(cfg.has_attribute("link")) {
-		links_.emplace_back(cfg["link"].str());
+		type = std::make_shared<class_type_alias>(cfg["name"], cfg["link"]);
 	}
+	if(composite_range) {
+		auto composite_type = std::dynamic_pointer_cast<class_type_composite>(type);
+		for(const config& elem : *composite_range) {
+			composite_type->add_type(class_type::from_config(elem));
+		}
+	}
+	return type;
 }
 
-bool class_type::matches(const std::string& value, const std::map<std::string, class_type>& type_map) const {
-	if(is_list_ && !in_list_match_) {
-		if(this->name_ == "range") {
-			in_list_match_ = true;
-		}
-		in_list_match_ = true;
-		boost::sregex_token_iterator it(value.begin(), value.end(), split_, -1);
-		int n = !value.empty();
-		bool result = std::any_of(it, boost::sregex_token_iterator(), [this, &type_map, &n](const boost::ssub_match& match){
-			if(!match.matched) return false;
-			n++;
-			return this->matches(std::string(match.first, match.second), type_map);
-		});
-		in_list_match_ = false;
-		return result && n >= list_min_ && n <= list_max_;
-	}
-	for(const auto& pat : patterns_) {
-		boost::smatch sub;
-		bool res = boost::regex_match(value, sub, pat);
-		switch(join) {
-			case UNION: if(res) return true; else break;
-			case INTERSECTION: if(!res) return false; else break;
-		}
-	}
-	for(const auto& link : links_) {
-		auto it = type_map.find(link);
+bool class_type_simple::matches(const std::string& value, const map&) const
+{
+	boost::smatch sub;
+	return boost::regex_match(value, sub, pattern_);
+}
+
+bool class_type_alias::matches(const std::string& value, const map& type_map) const
+{
+	if(!cached_) {
+		auto it = type_map.find(link_);
 		if(it == type_map.end()) {
 			// TODO: Error message about the invalid type?
-			continue;
+			return false;
 		}
-		bool res = it->second.matches(value, type_map);
-		switch(join) {
-			case UNION: if(res) return true; else break;
-			case INTERSECTION: if(!res) return false; else break;
+		cached_ = it->second;
+	}
+	return cached_->matches(value, type_map);
+}
+
+bool class_type_union::matches(const std::string& value, const map& type_map) const
+{
+	for(const auto& type : subtypes_) {
+		if(type->matches(value, type_map)) {
+			return true;
 		}
 	}
-	switch(join) {
-		case UNION: return false;
-		case INTERSECTION: return true;
-	}
-	assert(false && "class_type::matches reached end of function because join value was corrupted");
 	return false;
+}
+
+bool class_type_intersection::matches(const std::string& value, const map& type_map) const
+{
+	for(const auto& type : subtypes_) {
+		if(!type->matches(value, type_map)) {
+			return false;
+		}
+	}
+	return true;
+}
+
+bool class_type_list::matches(const std::string& value, const map& type_map) const
+{
+	boost::sregex_token_iterator it(value.begin(), value.end(), split_, -1), end;
+	int n = !value.empty();
+	bool result = std::all_of(it, end, [this, &type_map, &n](const boost::ssub_match& match){
+		if(!match.matched) return true;
+		n++;
+		return this->class_type_union::matches(std::string(match.first, match.second), type_map);
+	});
+	return result && n >= min_ && n <= max_;
 }
 
 class_key::class_key(const config& cfg)

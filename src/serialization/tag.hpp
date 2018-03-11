@@ -35,24 +35,65 @@ namespace schema_validation
 {
 
 class class_type {
+protected:
 	std::string name_;
-	std::vector<boost::regex> patterns_;
-	std::vector<std::string> links_;
-	boost::regex split_;
-	bool is_list_ = false;
-	int list_min_ = 0, list_max_ = -1;
-	mutable bool in_list_match_ = false;
 public:
-	class_type() : name_("") {}
-	class_type(const std::string& name, const std::string& pattern) : name_(name), patterns_(1, boost::regex(pattern))
+	class_type() = delete;
+	explicit class_type(const std::string& name) : name_(name) {}
+	using map = std::map<std::string, std::shared_ptr<class_type>>;
+	virtual bool matches(const std::string& value, const map& type_map) const = 0;
+	static std::shared_ptr<class_type> from_config(const config& cfg);
+};
+
+class class_type_simple : public class_type {
+	boost::regex pattern_;
+public:
+	class_type_simple(const std::string& name, const std::string& pattern) : class_type(name), pattern_(pattern) {}
+	bool matches(const std::string& value, const map& type_map) const override;
+};
+
+class class_type_alias : public class_type {
+	mutable std::shared_ptr<class_type> cached_;
+	std::string link_;
+public:
+	class_type_alias(const std::string& name, const std::string& link) : class_type(name), link_(link) {}
+	bool matches(const std::string& value, const map& type_map) const override;
+};
+
+class class_type_composite : public class_type {
+protected:
+	std::vector<std::shared_ptr<class_type>> subtypes_;
+public:
+	explicit class_type_composite(const std::string& name) : class_type(name) {}
+	void add_type(std::shared_ptr<class_type> type)
+	{
+		subtypes_.push_back(type);
+	}
+};
+
+class class_type_union : public class_type_composite {
+public:
+	explicit class_type_union(const std::string& name) : class_type_composite(name) {}
+	bool matches(const std::string& value, const map& type_map) const override;
+};
+
+class class_type_intersection : public class_type_composite {
+public:
+	explicit class_type_intersection(const std::string& name) : class_type_composite(name) {}
+	bool matches(const std::string& value, const map& type_map) const override;
+};
+
+class class_type_list : public class_type_union {
+	boost::regex split_;
+	int min_ = 0, max_ = -1;
+public:
+	class_type_list(const std::string& name, const std::string& pattern, int min, int max)
+		: class_type_union(name)
+		, split_(pattern)
+		, min_(min)
+		, max_(max)
 	{}
-	explicit class_type(const config&);
-
-	bool matches(const std::string& value, const std::map<std::string, class_type>& type_map) const;
-
-	enum CLASS {UNION, INTERSECTION};
-private:
-	CLASS join = UNION;
+	bool matches(const std::string& value, const map& type_map) const override;
 };
 
 /**
