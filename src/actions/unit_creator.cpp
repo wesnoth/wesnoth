@@ -182,7 +182,7 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 
 	if ( !recall_list_element ) {
 		//make the new unit
-		unit_ptr new_unit(new unit(temp_cfg, true, vcfg));
+		unit_ptr new_unit = unit::create(temp_cfg, true, vcfg);
 		map_location loc = find_location(temp_cfg, new_unit.get());
 		if ( loc.valid() ) {
 			//add the new unit to map

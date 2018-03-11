@@ -15,12 +15,15 @@
 #include "units/make.hpp"
 #include "units/unit.hpp"
 
-unit_ptr make_unit_ptr(const config& cfg, bool use_traits, const vconfig* vcfg){
-    return { new unit(cfg, use_traits, vcfg) };
+unit_ptr make_unit_ptr(const config& cfg, bool use_traits, const vconfig* vcfg)
+{
+	return unit::create(cfg, use_traits, vcfg);
 }
-unit_ptr make_unit_ptr(const unit_type& t, int side, bool real_unit, unit_race::GENDER gender){
-    return { new unit(t, side, real_unit, gender) };
+unit_ptr make_unit_ptr(const unit_type& t, int side, bool real_unit, unit_race::GENDER gender)
+{
+	return unit::create(t, side, real_unit, gender);
 }
-unit_ptr make_unit_ptr(const unit& u){
-    return { new unit(u) };
+unit_ptr make_unit_ptr(const unit& u)
+{
+	return unit::create(u);
 }

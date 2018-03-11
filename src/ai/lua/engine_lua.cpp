@@ -180,7 +180,7 @@ public:
 		, bound_unit_()
 	{
 		map_location loc(cfg["unit_x"], cfg["unit_y"], wml_loc()); // lua and c++ coords differ by one
-		bound_unit_.reset(new unit(*resources::gameboard->units().find(loc)));
+		bound_unit_ = unit::create(*resources::gameboard->units().find(loc));
 	}
 
 	virtual double evaluate()

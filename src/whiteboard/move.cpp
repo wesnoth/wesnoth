@@ -132,7 +132,7 @@ move::move(const config& cfg, bool hidden)
 	arrow_->set_path(route_->steps);
 
 	// Construct fake_unit_
-	fake_unit_ = fake_unit_ptr( unit_ptr(new unit(*get_unit())) , resources::fake_units );
+	fake_unit_ = fake_unit_ptr(unit::create(*get_unit()) , resources::fake_units );
 	if(hidden)
 		fake_unit_->set_hidden(true);
 	fake_unit_->anim_comp().set_ghosted(true);

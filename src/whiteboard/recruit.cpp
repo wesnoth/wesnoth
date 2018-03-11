@@ -58,7 +58,7 @@ recruit::recruit(size_t team_index, bool hidden, const std::string& unit_name, c
 		unit_name_(unit_name),
 		recruit_hex_(recruit_hex),
 		temp_unit_(create_corresponding_unit()), //auto-ptr ownership transfer
-		fake_unit_(unit_ptr(new unit(*temp_unit_))), //temp_unit_ *copied* into new fake unit
+		fake_unit_(unit::create(*temp_unit_)), //temp_unit_ *copied* into new fake unit
 		cost_(0)
 {
 	this->init();
@@ -78,7 +78,7 @@ recruit::recruit(const config& cfg, bool hidden)
 
 	// Construct temp_unit_ and fake_unit_
 	temp_unit_ = create_corresponding_unit(); //auto-ptr ownership transfer
-	fake_unit_.reset(unit_ptr (new unit(*temp_unit_))), //temp_unit_ copied into new fake_unit
+	fake_unit_.reset(unit::create(*temp_unit_)); //temp_unit_ copied into new fake_unit
 
 	this->init();
 }
@@ -173,7 +173,7 @@ unit_ptr recruit::create_corresponding_unit()
 	int side_num = team_index() + 1;
 	//real_unit = false needed to avoid generating random traits and causing OOS
 	bool real_unit = false;
-	unit_ptr result(new unit(*type, side_num, real_unit));
+	unit_ptr result = unit::create(*type, side_num, real_unit);
 	result->set_movement(0, true);
 	result->set_attacks(0);
 	return result; //ownership gets transferred to returned unique_ptr copy
