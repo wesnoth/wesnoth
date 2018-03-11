@@ -60,43 +60,30 @@ end
 --! Fakes the move of a unit satisfying the given @a filter to position @a x, @a y.
 --! @note Usable only during WML actions.
 function helper.move_unit_fake(filter, to_x, to_y)
-	wml_actions.store_unit({
-		[1] = { "filter", filter },
-		variable = "LUA_move_unit",
-		kill = false
-	})
-	local from_x = wml.variables["LUA_move_unit.x"]
-	local from_y = wml.variables["LUA_move_unit.y"]
+	local moving_unit = wesnoth.get_units(filter)[1]
+	local from_x, from_y = moving_unit.x, moving_unit.y
 
-	wml_actions.scroll_to({ x=from_x, y=from_y })
+	wesnoth.intf.scroll_to_hex(from_x, from_y)
+	to_x, to_y = wesnoth.find_vacant_tile(x, y, moving_unit)
 
 	if to_x < from_x then
-		wml.variables["LUA_move_unit.facing"] = "sw"
+		moving_unit.facing = "sw"
 	elseif to_x > from_x then
-		wml.variables["LUA_move_unit.facing"] = "se"
+		moving_unit.facing = "se"
 	end
-	wml.variables["LUA_move_unit.x"] = to_x
-	wml.variables["LUA_move_unit.y"] = to_y
+	moving_unit:extract()
 
-	wml_actions.kill({
-		x = from_x,
-		y = from_y,
-		animate = false,
-		fire_event = false
-	})
-
-	wml_actions.move_unit_fake({
-		type      = "$LUA_move_unit.type",
-		gender    = "$LUA_move_unit.gender",
-		variation = "$LUA_move_unit.variation",
-		side      = "$LUA_move_unit.side",
+	wml_actions.move_unit_fake{
+		type      = moving_unit.type,
+		gender    = moving_unit.gender,
+		variation = moving.variation,
+		side      = moving_unit.side,
 		x         = from_x .. ',' .. to_x,
 		y         = from_y .. ',' .. to_y
-	})
+	}
 
-	wml_actions.unstore_unit({ variable="LUA_move_unit", find_vacant=true })
-	wml_actions.redraw({})
-	wml.variables["LUA_move_unit"] = nil
+	moving_unit:to_map(to_x, to_y)
+	wml_actions.redraw{}
 end
 
 -- Metatable that redirects access to wml.variables_proxy
