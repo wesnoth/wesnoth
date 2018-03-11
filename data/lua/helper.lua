@@ -35,13 +35,6 @@ function helper.all_teams()
 	return f, { i = 1 }
 end
 
---! Modifies all the units satisfying the given @a filter.
---! @param vars key/value pairs that need changing.
---! @note Usable only during WML actions.
-function helper.modify_unit(filter, vars)
-	wesnoth.units.modify(filter, vars)
-end
-
 -- Metatable that redirects access to wml.variables_proxy
 local proxy_var_mt = {
 	__metatable = "WML variables",
@@ -250,5 +243,6 @@ helper.set_wml_var_metatable = wesnoth.deprecate_api('helper.set_wml_var_metatab
 helper.set_wml_tag_metatable = wesnoth.deprecate_api('helper.set_wml_tag_metatable', 'wml.tag', 2, nil, helper.set_wml_tag_metatable)
 helper.move_unit_fake = wesnoth.deprecate_api('helper.move_unit_fake', 'wesnoth.interface.move_unit_fake', 1, nil, wesnoth.interface.move_unit_fake)
 helper.get_user_choice = wesnoth.deprecate_api('helper.get_user_choice', 'gui.get_user_choice', 1, nil, gui.get_user_choice)
+helper.modify_unit = wesnoth.deprecate_api('helper.modify_unit', 'wesnoth.units.modify', 1, nil, wesnoth.units.modify)
 
 return helper
