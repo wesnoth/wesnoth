@@ -46,7 +46,6 @@
 #include <boost/variant/variant.hpp>
 #include <boost/range/iterator_range.hpp>
 
-#include "exceptions.hpp"
 #include "tstring.hpp"
 
 #ifdef HAVE_CXX14

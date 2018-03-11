@@ -29,7 +29,6 @@
 #include "team.hpp"
 #include "terrain/type_data.hpp"
 #include "units/unit.hpp"
-#include "wml_exception.hpp"
 
 #include <boost/regex.hpp>
 

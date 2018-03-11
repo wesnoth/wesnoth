@@ -30,7 +30,6 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "image.hpp"
 
 #include "utils/functional.hpp"
 

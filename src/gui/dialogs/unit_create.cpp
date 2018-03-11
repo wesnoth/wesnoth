@@ -37,7 +37,6 @@
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "play_controller.hpp"
-#include "team.hpp"
 #include "units/types.hpp"
 
 #include "utils/functional.hpp"

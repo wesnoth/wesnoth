@@ -35,7 +35,6 @@
 #endif // endif _WIN32
 
 #include "configr_assign.hpp"
-#include "exceptions.hpp"
 #include "wesnothd_connection_error.hpp"
 
 #include <boost/asio.hpp>

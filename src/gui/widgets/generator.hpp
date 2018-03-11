@@ -15,7 +15,6 @@
 #pragma once
 
 #include "widget.hpp"
-#include "tstring.hpp"
 
 #include <boost/dynamic_bitset.hpp>
 

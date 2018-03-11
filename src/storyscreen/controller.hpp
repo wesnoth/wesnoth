@@ -19,11 +19,11 @@
 
 #pragma once
 
-#include "events.hpp"
 #include "storyscreen/parser.hpp"
 
 #include <memory>
 #include <string>
+#include <vector>
 
 namespace storyscreen
 {

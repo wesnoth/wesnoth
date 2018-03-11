@@ -49,7 +49,6 @@
 #include "serialization/validator.hpp" // for strict_validation_enabled
 #include "sound.hpp"                   // for commit_music_changes, etc
 #include "statistics.hpp"              // for fresh_stats
-#include "tstring.hpp"                 // for operator==, t_string
 #include "utils/functional.hpp"
 #include "version.hpp"        // for version_info
 #include "video.hpp"          // for CVideo

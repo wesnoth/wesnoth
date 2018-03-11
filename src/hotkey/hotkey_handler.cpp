@@ -16,7 +16,6 @@
 
 #include "actions/create.hpp"
 #include "font/standard_colors.hpp"
-#include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_display.hpp"
 #include "game_errors.hpp"

@@ -15,7 +15,6 @@
 #include "mt_rng.hpp"
 #include "seed_rng.hpp"
 #include "config.hpp"
-#include "formatter.hpp"
 #include "log.hpp"
 #include <sstream>
 #include <iomanip>

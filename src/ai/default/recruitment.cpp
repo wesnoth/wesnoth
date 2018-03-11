@@ -42,7 +42,6 @@
 #include "units/types.hpp"
 #include "units/unit.hpp"
 #include "variable.hpp"
-#include "wml_exception.hpp"
 
 #include <cmath>
 

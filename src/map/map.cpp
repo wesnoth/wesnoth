@@ -27,7 +27,6 @@
 #include "serialization/string_utils.hpp"
 #include "terrain/terrain.hpp"
 #include "terrain/type_data.hpp"
-#include "wml_exception.hpp"
 
 #include <algorithm>
 #include <sstream>

@@ -21,7 +21,6 @@
 #include "mp_ui_alerts.hpp"
 #include "preferences/game.hpp"
 #include "wesnothd_connection.hpp"
-#include "wml_exception.hpp"
 
 #include <iterator>
 

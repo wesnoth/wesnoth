@@ -16,7 +16,6 @@
 #include "log.hpp"
 #include "gettext.hpp"
 #include "formula/string_utils.hpp"
-#include "tstring.hpp"
 #include "game_config.hpp"
 #include "version.hpp"
 #include "preferences/general.hpp"

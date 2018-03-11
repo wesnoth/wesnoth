@@ -20,8 +20,6 @@
 #include "preferences/game.hpp"
 #include "generators/map_create.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
-#include "hash.hpp"
-#include "image.hpp"
 #include "log.hpp"
 #include "map/exception.hpp"
 #include "map/map.hpp"

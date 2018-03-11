@@ -50,7 +50,6 @@
 #include "resources.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "side_filter.hpp"
-#include "sound.hpp"
 #include "soundsource.hpp"
 #include "synced_context.hpp"
 #include "synced_user_choice.hpp"

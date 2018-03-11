@@ -13,7 +13,6 @@
 
 #include "chat_events.hpp"
 
-#include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"

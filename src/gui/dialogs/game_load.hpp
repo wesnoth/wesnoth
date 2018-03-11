@@ -18,7 +18,6 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "savegame.hpp"
 #include "save_index.hpp"
-#include "tstring.hpp"
 #include "gettext.hpp"
 
 #include <SDL_keycode.h>

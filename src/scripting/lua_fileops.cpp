@@ -14,7 +14,6 @@
 
 #include "scripting/lua_fileops.hpp"
 
-#include "exceptions.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp" //for game_config::debug_lua
 #include "game_errors.hpp"

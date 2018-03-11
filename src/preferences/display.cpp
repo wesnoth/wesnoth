@@ -23,7 +23,6 @@
 
 #include "display.hpp"
 #include "filesystem.hpp"
-#include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"

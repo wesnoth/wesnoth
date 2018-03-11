@@ -36,7 +36,6 @@
 #include "help/help.hpp"
 #include "language.hpp"
 #include "color.hpp"
-#include "team.hpp"
 #include "units/unit.hpp"
 
 #include "utils/functional.hpp"

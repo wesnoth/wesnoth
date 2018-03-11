@@ -24,7 +24,6 @@
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
-#include "wml_exception.hpp"
 
 #include <vector>
 #include <deque>

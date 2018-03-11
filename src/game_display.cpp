@@ -38,7 +38,6 @@
 #include "resources.hpp"
 #include "tod_manager.hpp"
 #include "color.hpp"
-#include "sound.hpp"
 #include "synced_context.hpp"
 #include "terrain/type_data.hpp"
 #include "units/unit.hpp"

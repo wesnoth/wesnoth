@@ -24,7 +24,6 @@
 #include "random.hpp"
 #include "units/unit.hpp"
 #include "units/abilities.hpp"
-#include "wml_exception.hpp"
 #include "resources.hpp"
 
 #include <algorithm>

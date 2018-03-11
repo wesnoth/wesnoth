@@ -16,7 +16,6 @@
 
 #include "hotkey_command.hpp"
 #include "game_end_exceptions.hpp"
-#include "events.hpp"
 
 class display;
 class CVideo;

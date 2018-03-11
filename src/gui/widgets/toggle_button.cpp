@@ -22,7 +22,6 @@
 #include "gui/core/log.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "sound.hpp"
-#include "wml_exception.hpp"
 
 #include "utils/functional.hpp"
 

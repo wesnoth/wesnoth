@@ -28,7 +28,6 @@
 #include "game_initialization/playcampaign.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
-#include "sound.hpp"
 #include "serialization/string_utils.hpp"
 #include "whiteboard/manager.hpp"
 #include "countdown_clock.hpp"

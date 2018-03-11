@@ -39,7 +39,6 @@
 #include "synced_context.hpp"
 #include "team.hpp" // for team
 #include "tod_manager.hpp"
-#include "tstring.hpp" // for t_string
 #include "units/animation_component.hpp"
 #include "units/ptr.hpp"           // for unit_const_ptr
 #include "units/unit.hpp"          // for unit

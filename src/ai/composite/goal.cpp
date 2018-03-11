@@ -33,7 +33,6 @@
 #include "units/unit.hpp"
 #include "units/map.hpp"
 #include "units/filter.hpp"
-#include "wml_exception.hpp"
 
 #include <set>
 #include <sstream>

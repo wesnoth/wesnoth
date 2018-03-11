@@ -28,7 +28,6 @@
 #include "sdl/surface.hpp"
 #include "team.hpp"
 #include "terrain/type_data.hpp"
-#include "wml_exception.hpp"
 
 static lg::log_domain log_display("display");
 #define DBG_DP LOG_STREAM(debug, log_display)

@@ -36,7 +36,6 @@
 #include "server/player.hpp"
 #include "server/simple_wml.hpp"
 #include "server/ban.hpp"
-#include "exceptions.hpp"
 
 #include "server/user_handler.hpp"
 #include "server/sample_user_handler.hpp"

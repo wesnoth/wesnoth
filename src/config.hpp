@@ -48,7 +48,6 @@
 
 #include "config_attribute_value.hpp"
 #include "exceptions.hpp"
-#include "tstring.hpp"
 
 #ifdef HAVE_CXX14
 #	ifdef __clang__ // Check this first, because clang also defines __GNUC__

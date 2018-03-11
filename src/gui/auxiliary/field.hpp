@@ -28,7 +28,6 @@
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
-#include "wml_exception.hpp"
 
 namespace gui2
 {

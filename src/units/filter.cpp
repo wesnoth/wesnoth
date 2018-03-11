@@ -29,7 +29,6 @@
 #include "units/formula_manager.hpp"
 #include "units/types.hpp"
 #include "variable.hpp" // needed for vconfig, scoped unit
-#include "wml_exception.hpp" // needed for FAIL
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/function_gamestate.hpp"
