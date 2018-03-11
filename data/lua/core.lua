@@ -487,6 +487,42 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		moving_unit:to_map(to_x, to_y)
 		wml_actions.redraw{}
 	end
+
+	--[========[Units module]========]
+	-- TODO: Eventually this could actually be the units metatable, allowing people to add new methods to it.
+	wesnoth.units = {}
+	wesnoth.units.matches = wesnoth.match_unit
+	wesnoth.units.to_recall = wesnoth.put_recall_unit
+	wesnoth.units.to_map = wesnoth.put_unit
+	wesnoth.units.erase = wesnoth.erase_unit
+	wesnoth.units.clone = wesnoth.copy_unit
+	wesnoth.units.extract = wesnoth.extract_unit
+	wesnoth.units.advance = wesnoth.advance_unit
+	wesnoth.units.add_modification = wesnoth.add_modification
+	wesnoth.units.remove_modifications = wesnoth.remove_modifications
+	wesnoth.units.resistance = wesnoth.unit_resistance
+	wesnoth.units.defense = wesnoth.unit_defense
+	wesnoth.units.movement = wesnoth.unit_movement_cost
+	wesnoth.units.vision = wesnoth.unit_vision_cost
+	wesnoth.units.jamming = wesnoth.unit_jamming_cost
+	wesnoth.units.ability = wesnoth.unit_ability
+	wesnoth.units.transform = wesnoth.transform_unit
+	wesnoth.units.select = wesnoth.select_unit
+
+	--! Modifies all the units satisfying the given @a filter.
+	--! @param vars key/value pairs that need changing.
+	--! @note Usable only during WML actions.
+	function wesnoth.units.modify(filter, vars)
+		local units = wesnoth.get_units(filter)
+		for u in pairs(units) do
+			for k, v in pairs(vars) do
+				-- Minor TODO: What if you want to change values of subtags?
+				-- Previously would've been possible with eg {['variables.some_var'] = 'some_value'}
+				-- With this implementation, it's not possible.
+				u[k] = v
+			end
+		end
+	end
 end
 
 --[========[GUI2 Dialog Manipulations]========]
