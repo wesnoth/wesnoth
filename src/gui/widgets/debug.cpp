@@ -221,7 +221,7 @@ void debug_layout_graph::widget_generate_info(std::ostream& out,
 	}
 	out << "];\n";
 
-	const grid* grid = dynamic_cast<const grid*>(widget);
+	const grid* grid = dynamic_cast<const class grid*>(widget);
 	if(!grid) {
 		const container_base* container = dynamic_cast<const container_base*>(widget);
 
@@ -233,16 +233,16 @@ void debug_layout_graph::widget_generate_info(std::ostream& out,
 		}
 
 		const scrollbar_container* scrollbar_container
-				= dynamic_cast<const scrollbar_container*>(widget);
+				= dynamic_cast<const class scrollbar_container*>(widget);
 
 		if(scrollbar_container) {
 			widget_generate_info(
-					out, scrollbar_container->content_grid_, id + "_C", true);
+            out, scrollbar_container->content_grid_.get(), id + "_C", true);
 			out << "\t" << id << " -> " << id << "_C"
 				<< " [label=\"(content)\"];\n";
 		}
 
-		const listbox* listbox = dynamic_cast<const listbox*>(widget);
+		const listbox* listbox = dynamic_cast<const class listbox*>(widget);
 		if(listbox) {
 			assert(listbox->generator_);
 		}
@@ -285,7 +285,7 @@ void debug_layout_graph::widget_generate_basic_info(std::ostream& out,
 {
 	std::string header_background
 			= level_ & (SIZE_INFO | STATE_INFO) ? " bgcolor=\"gray\"" : "";
-	const styled_widget* styled_widget = dynamic_cast<const styled_widget*>(widget);
+	const styled_widget* control = dynamic_cast<const class styled_widget*>(widget);
 
 	out << "<tr><td" << header_background << ">" << '\n'
 		<< "type=" << get_type(widget) << '\n' << "</td></tr>" << '\n'
@@ -296,7 +296,7 @@ void debug_layout_graph::widget_generate_basic_info(std::ostream& out,
 		<< "parent=" << widget->parent_ << '\n' << "</td></tr>" << '\n';
 	if(control) {
 		out << "<tr><td" << header_background << ">" << '\n'
-			<< "label=" << format_label(control->label()) << '\n' << "<tr><td"
+			<< "label=" << format_label(control->get_label()) << '\n' << "<tr><td"
 			<< header_background << ">" << '\n'
 			<< "definition=" << control->definition_ << '\n' << "</td></tr>"
 			<< '\n' << "</td></tr>\n";
@@ -307,7 +307,7 @@ void debug_layout_graph::widget_generate_state_info(std::ostream& out,
 													 const widget* widget)
 		const
 {
-	const styled_widget* control = dynamic_cast<const control*>(widget);
+	const styled_widget* control = dynamic_cast<const styled_widget*>(widget);
 	if(!control) {
 		return;
 	}
@@ -321,9 +321,9 @@ void debug_layout_graph::widget_generate_state_info(std::ostream& out,
 		<< "<tr><td>\n"
 		<< "active=" << control->get_active() << '\n' << "</td></tr>\n"
 		<< "<tr><td>\n"
-		<< "visible=" << control->get_visible() << '\n' << "</td></tr>\n"
+        << "visible=" << static_cast<int>(control->get_visible()) << '\n' << "</td></tr>\n"
 		<< "<tr><td>\n"
-		<< "drawing action=" << control->get_drawing_action() << '\n'
+		<< "drawing action=" << static_cast<int>(control->get_drawing_action()) << '\n'
 		<< "</td></tr>\n"
 		<< "<tr><td>\n"
 		<< "clip rect=" << control->clipping_rectangle_ << '\n'
@@ -337,7 +337,7 @@ void debug_layout_graph::widget_generate_state_info(std::ostream& out,
 		<< '\n' << "</td></tr>\n";
 
 	const scrollbar_container* scrollbar_container
-			= dynamic_cast<const scrollbar_container*>(widget);
+			= dynamic_cast<const class scrollbar_container*>(widget);
 
 	if(scrollbar_container) {
 		out << "<tr><td>\n"
@@ -367,7 +367,7 @@ void debug_layout_graph::widget_generate_size_info(std::ostream& out,
 		<< "layout_size_=" << widget->layout_size_ << '\n' << "</td></tr>\n";
 
 
-	const styled_widget* control = dynamic_cast<const control*>(widget);
+	const styled_widget* control = dynamic_cast<const styled_widget*>(widget);
 
 	if(control) {
 		out << "<tr><td>\n"
@@ -406,7 +406,7 @@ void debug_layout_graph::grid_generate_info(std::ostream& out,
 	for(unsigned row = 0; row < grid->get_rows(); ++row) {
 		for(unsigned col = 0; col < grid->get_cols(); ++col) {
 
-			const widget* widget = grid->child(row, col).widget();
+            const widget* widget = grid->get_widget(row, col);
 			assert(widget);
 
 			widget_generate_info(
@@ -420,7 +420,7 @@ void debug_layout_graph::grid_generate_info(std::ostream& out,
 		for(unsigned col = 0; col < grid->get_cols(); ++col) {
 
 			child_generate_info(out,
-								grid->child(row, col),
+								grid->get_child(row, col),
 								get_child_id(parent_id, row, col));
 		}
 	}
@@ -533,11 +533,11 @@ void debug_layout_graph::child_generate_info(std::ostream& out,
 
 std::string debug_layout_graph::get_type(const widget* widget) const
 {
-	const styled_widget* control = dynamic_cast<const control*>(widget);
+	const styled_widget* control = dynamic_cast<const styled_widget*>(widget);
 	if(control) {
 		return control->get_control_type();
 	} else {
-		const grid* grid = dynamic_cast<const grid*>(widget);
+		const grid* grid = dynamic_cast<const class grid*>(widget);
 		const generator_base* generator = dynamic_cast<const generator_base*>(widget);
 
 		if(grid) {

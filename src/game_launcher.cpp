@@ -173,9 +173,9 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts, const char
 	}
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	if (cmdline_opts_.debug_dot_domain)
-		gui2::tdebug_layout_graph::set_domain (*cmdline_opts_.debug_dot_domain);
+		gui2::debug_layout_graph::set_domain (*cmdline_opts_.debug_dot_domain);
 	if (cmdline_opts_.debug_dot_level)
-		gui2::tdebug_layout_graph::set_level (*cmdline_opts_.debug_dot_level);
+		gui2::debug_layout_graph::set_level (*cmdline_opts_.debug_dot_level);
 #endif
 	if (cmdline_opts_.editor)
 	{
