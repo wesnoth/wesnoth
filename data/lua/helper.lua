@@ -141,10 +141,10 @@ function helper.get_user_choice(attr, options)
 		msg[k] = attr[k]
 	end
 	for k,v in ipairs(options) do
-		table.insert(msg, { "option", { message = v,
-			{ "command", { { "lua", {
+		table.insert(msg, wml.tag.option, { message = v,
+			wml.tag.command, { wml.tag.lua, {
 				code = string.format("wesnoth.__user_choice_helper(%d)", k)
-			}}}}}})
+			}}})
 	end
 	wml_actions.message(msg)
 	wesnoth.__user_choice_helper = nil
