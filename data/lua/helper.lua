@@ -53,30 +53,7 @@ end
 --! Fakes the move of a unit satisfying the given @a filter to position @a x, @a y.
 --! @note Usable only during WML actions.
 function helper.move_unit_fake(filter, to_x, to_y)
-	local moving_unit = wesnoth.get_units(filter)[1]
-	local from_x, from_y = moving_unit.x, moving_unit.y
-
-	wesnoth.intf.scroll_to_hex(from_x, from_y)
-	to_x, to_y = wesnoth.find_vacant_tile(x, y, moving_unit)
-
-	if to_x < from_x then
-		moving_unit.facing = "sw"
-	elseif to_x > from_x then
-		moving_unit.facing = "se"
-	end
-	moving_unit:extract()
-
-	wml_actions.move_unit_fake{
-		type      = moving_unit.type,
-		gender    = moving_unit.gender,
-		variation = moving.variation,
-		side      = moving_unit.side,
-		x         = from_x .. ',' .. to_x,
-		y         = from_y .. ',' .. to_y
-	}
-
-	moving_unit:to_map(to_x, to_y)
-	wml_actions.redraw{}
+	wesnoth.interface.move_unit_fake(filter, to_x, to_y)
 end
 
 -- Metatable that redirects access to wml.variables_proxy

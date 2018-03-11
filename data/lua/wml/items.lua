@@ -113,4 +113,8 @@ function methods.place_halo(x, y, name)
 	add_overlay(x, y, { x = x, y = y, halo = name })
 end
 
+wesnoth.intf.remove_item = methods.remove
+wesnoth.intf.add_item_image = methods.place_image
+wesnoth.intf.add_item_halo = methods.place_halo
+
 return methods
