@@ -1,14 +1,14 @@
 /*
  Copyright (C) 2014 - 2016 by Google Inc.
  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
- 
+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
  (at your option) any later version.
  This program is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY.
- 
+
  See the COPYING file for more details.
 */
 
@@ -79,7 +79,7 @@ void send_notification(const std::string& owner, const std::string& message, con
 }
 #endif //end else HAVE_NS_USER_NOTIFICATION
 #pragma clang diagnostic pop
-  
+
 #ifdef HAVE_NS_USER_NOTIFICATION
 void send_cocoa_notification(const std::string& owner, const std::string& message) {
     NSString *title = [NSString stringWithCString:owner.c_str() encoding:NSUTF8StringEncoding];
@@ -88,7 +88,7 @@ void send_cocoa_notification(const std::string& owner, const std::string& messag
     notification.title = title;
     notification.informativeText = description;
     notification.deliveryDate = [NSDate date];
-    
+
     [[NSUserNotificationCenter defaultUserNotificationCenter] scheduleNotification:notification];
 }
 #endif //end HAVE_NS_USER_NOTIFICATION
@@ -100,7 +100,7 @@ void send_growl_notification(const std::string& owner, const std::string& messag
         delegate = [[WesnothGrowlDelegate alloc] init];
         [GrowlApplicationBridge setGrowlDelegate:delegate];
     }
-    
+
     NSString *notificationName = @"";
     switch (note_type) {
         case desktop::notifications::CHAT:

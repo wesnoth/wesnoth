@@ -194,4 +194,3 @@ private:
 	unit_filter_impl::unit_filter_compound impl_;
 	int max_matches_;
 };
-

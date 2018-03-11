@@ -848,4 +848,3 @@ public:
 	virtual ~variable_set() {}
 	virtual config::attribute_value get_variable_const(const std::string &id) const = 0;
 };
-

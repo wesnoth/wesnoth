@@ -142,7 +142,7 @@ std::string os_version()
 			} else {
 				return "Apple macOS " + ver;
 			}
- 		}
+		}
 	}
 
 #else
@@ -295,4 +295,3 @@ std::string os_version()
 }
 
 } // end namespace desktop
-

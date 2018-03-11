@@ -796,4 +796,3 @@ void movetype::write(config & cfg) const
 	if ( flying_ )
 		cfg["flying"] = true;
 }
-

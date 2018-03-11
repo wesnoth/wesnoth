@@ -78,4 +78,3 @@ bool playmp_controller::hotkey_handler::can_execute_command(const hotkey::hotkey
 	}
 	return res;
 }
-

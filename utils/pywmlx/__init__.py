@@ -11,4 +11,3 @@ from pywmlx.postring import WmlNode
 import pywmlx.autof
 
 import pywmlx.state as statemachine
-

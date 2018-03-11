@@ -367,4 +367,3 @@ void cave_map_generator::cave_map_generator_job::place_castle(int starting_posit
 		set_terrain(adj[n], params.castle_);
 	}
 }
-

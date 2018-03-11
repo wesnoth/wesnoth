@@ -12,12 +12,12 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
         export CCACHE_COMPILERCHECK=content
 
         xcodebuild -project Wesnoth.xcodeproj -target Wesnoth
-        
+
         BUILD_RET=$?
-        
+
         ccache -s
         ccache -z
-        
+
         exit $BUILD_RET
     else
         ln -s $HOME/build-cache/ build

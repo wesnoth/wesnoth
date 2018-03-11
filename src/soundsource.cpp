@@ -231,4 +231,3 @@ sourcespec::sourcespec(const config& cfg) :
 }
 
 } // namespace soundsource
-

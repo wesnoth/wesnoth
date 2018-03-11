@@ -110,4 +110,3 @@ void ds(lua_State *L, const bool verbose_table) {
 }
 
 #endif
-

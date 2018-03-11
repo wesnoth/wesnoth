@@ -31,4 +31,3 @@ def generate(env):
                   'CCACHE_EXTENSION']:
             if i in os.environ and i not in env:
                 env['ENV'][i] = os.environ[i]
-

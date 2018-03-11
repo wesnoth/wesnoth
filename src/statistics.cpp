@@ -677,4 +677,3 @@ int sum_cost_str_int_map(const stats::str_int_map &m)
 }
 
 } // end namespace statistics
-

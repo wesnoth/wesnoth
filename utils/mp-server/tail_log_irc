@@ -36,9 +36,9 @@ done
 VERSION=$1
 
 # on the alternates use the trunk server as the dev server and always show logged on/off messages
-case $(hostname) in gonzo.dicp.de|basilic) 
+case $(hostname) in gonzo.dicp.de|basilic)
 	LOGGED=_logged
-	[ $VERSION = dev ] && VERSION=trunk ;; 
+	[ $VERSION = dev ] && VERSION=trunk ;;
 esac
 
 PARAMS="-n 0 -F"

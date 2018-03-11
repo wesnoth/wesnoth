@@ -79,4 +79,3 @@ void time_of_day::parse_times(const config& cfg, std::vector<time_of_day>& times
 		times.push_back(time_of_day());
 	}
 }
-

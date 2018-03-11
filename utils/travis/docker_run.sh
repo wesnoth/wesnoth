@@ -51,13 +51,13 @@ else
     if [ "$TOOL" == "cmake" ]; then
         echo "max_size = 200M" > $HOME/.ccache/ccache.conf
         echo "compiler_check = content" >> $HOME/.ccache/ccache.conf
-        
+
         cmake -DCMAKE_BUILD_TYPE=Release -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_NLS=false \
               -DEXTRA_FLAGS_CONFIG="-pipe" -DEXTRA_FLAGS_RELEASE="$EXTRA_FLAGS_RELEASE" -DENABLE_STRICT_COMPILATION="$STRICT" -DENABLE_LTO="$LTO" -DLTO_JOBS=2 \
               -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache && \
               make VERBOSE=1 -j2
         BUILD_RET=$?
-        
+
         ccache -s
         ccache -z
     else
@@ -67,66 +67,66 @@ else
               nls=false enable_lto="$LTO" jobs=2 --debug=time
         BUILD_RET=$?
     fi
-    
+
     if [ $BUILD_RET != 0 ]; then
         exit $BUILD_RET
     fi
-    
+
 # needed since docker returns the exit code of the final comman executed, so a failure needs to be returned if any unit tests fail
     EXIT_VAL=0
-    
+
     if [ "$WML_TESTS" == "true" ]; then
         echo "Executing run_wml_tests"
-        
+
         ./run_wml_tests -g -v -c -t "$WML_TEST_TIME"
         RET=$?
-        
+
         if [ $RET != 0 ]; then
             echo "WML tests failed!"
             EXIT_VAL=$RET
         fi
     fi
-    
+
     if [ "$PLAY_TEST" == "true" ]; then
         echo "Executing play_test_executor.sh"
-        
+
         ./utils/travis/play_test_executor.sh
         RET=$?
-        
+
         if [ $RET != 0 ]; then
             echo "Play tests failed!"
             EXIT_VAL=$RET
         fi
     fi
-    
+
     if [ "$MP_TEST" == "true" ]; then
         echo "Executing mp_test_executor.sh"
-        
+
         ./utils/travis/mp_test_executor.sh
         RET=$?
-        
+
         if [ $RET != 0 ]; then
             echo "MP tests failed!"
             EXIT_VAL=$RET
         fi
     fi
-    
+
     if [ "$BOOST_TEST" == "true" ]; then
         echo "Executing boost unit tests"
-        
+
         ./utils/travis/test_executor.sh
         RET=$?
-        
+
         if [ $RET != 0 ]; then
             echo "Boost tests failed!"
             EXIT_VAL=$RET
         fi
     fi
-    
+
     if [ -f "errors.log" ]; then
         echo -e "\n*** \n*\n* Errors reported in wml unit tests, here is errors.log...\n*\n*** \n"
         cat errors.log
     fi
-    
+
     exit $EXIT_VAL
 fi

@@ -1230,4 +1230,3 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 }
 
 } // end namespace unit_abilities
-

@@ -1273,7 +1273,7 @@ public:
 		bool assume_full_movement=false,
 		const terrain_filter* remove_destinations=nullptr) const override;
 
- 	/**
+	/**
 	 * A more fundamental version of calculate_possible_moves which allows the
 	 * use of a speculative unit map.
 	 * NOTE: Support for a speculative map is broken (not used when pathfinding)

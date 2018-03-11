@@ -488,4 +488,3 @@ struct lexical_caster<
 } // namespace implementation
 
 #endif
-

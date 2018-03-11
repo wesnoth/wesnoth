@@ -3,8 +3,8 @@
 # sanity_check -- general sanity checker for the source and translations
 #
 
-# This had better take us to the top-level source directory.  
-# Otherwise, confusion will ensue. 
+# This had better take us to the top-level source directory.
+# Otherwise, confusion will ensue.
 
 #Detect location of this script use it to cd to top-level
 FULL_PATH=`dirname $(readlink -f $0)`
@@ -31,11 +31,11 @@ sort -u $potfiles >/tmp/sschk$$_potmembers
 missing=`comm -23 /tmp/sschk$$_sources /tmp/sschk$$_potmembers | tr '\012' ' '`
 if [ "$missing" ]
 then
-    echo "  Missing from the POTFILE.in files: $missing"
-    problems=missing
+	echo "  Missing from the POTFILE.in files: $missing"
+	problems=missing
 else
-    echo "  All .cpp files have POTFILE.in entries." 
-fi 
+	echo "  All .cpp files have POTFILE.in entries."
+fi
 
 # Find invalid potfile entries
 for file in $potfiles
@@ -44,10 +44,10 @@ do
 	invalid=`comm -23 /tmp/sschk$$_uniq /tmp/sschk$$_sources | tr '\012' ' '`
 	if [ "$invalid" ]
 	then
-	    echo "  Invalid $file entries: $invalid"
-	    problems=invalid
+		echo "  Invalid $file entries: $invalid"
+		problems=invalid
 	else
-	    echo "  All $file entries are valid." 
+		echo "  All $file entries are valid."
 	fi
 done
 

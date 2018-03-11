@@ -475,4 +475,3 @@ temporary_unit_mover::~temporary_unit_mover()
 	}
 	} catch (...) {}
 }
-

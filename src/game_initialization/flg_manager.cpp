@@ -80,7 +80,7 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 			default_leader_cfg_ = nullptr;
 		}
 	}
-		
+
 	leader_lock_ = leader_lock_ && (use_map_settings || lock_settings || default_leader_type_.empty());
 	faction_lock_ = faction_lock_ && (use_map_settings || lock_settings);
 

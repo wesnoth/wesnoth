@@ -1428,7 +1428,7 @@ surface light_surface(const surface &surf, const surface &lightmap)
 
 		while(beg != end && lbeg != lend) {
 			uint8_t alpha = (*beg) >> 24;
- 			if(alpha) {
+			if(alpha) {
 				uint8_t lr, lg, lb;
 
 				lr = (*lbeg) >> 16;

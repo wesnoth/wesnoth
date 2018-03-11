@@ -104,4 +104,3 @@ bool config_writer::good() const
 {
 	return out_.good();
 }
-

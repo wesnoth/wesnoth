@@ -244,4 +244,3 @@ void send_notification(const std::string & owner, const std::string & message, b
 }
 
 } // end namespace dbus
-

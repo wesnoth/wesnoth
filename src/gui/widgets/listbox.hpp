@@ -188,7 +188,7 @@ public:
 
 	/**
 	 * Does exactly as advertised: selects the list's last row.
-	 * 
+	 *
 	 * @param select              Select or deselect the row.
 	 */
 	bool select_last_row(const bool select = true)

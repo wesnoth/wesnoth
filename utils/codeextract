@@ -8,4 +8,3 @@ next if $. < 7; # skip first 6 lines
 s/ .*//;        # get rid of stuff other than codepoint
 s/^U\+//;       # set up number
 print hex $_, "\n";
-

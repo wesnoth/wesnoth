@@ -95,4 +95,3 @@ private:
 	std::function<void()> on_end_replay_;
 	bool return_to_play_side_;
 };
-

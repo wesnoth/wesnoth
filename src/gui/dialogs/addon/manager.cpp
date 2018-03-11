@@ -656,8 +656,8 @@ void addon_manager::execute_action_on_selected_addon(window& window)
 void addon_manager::install_addon(const addon_info& addon, window& window)
 {
 	addons_client::install_result result = client_.install_addon_with_checks(addons_, addon);
-
- 	// Take note if any wml_changes occurred
+	
+	// Take note if any wml_changes occurred
 	need_wml_cache_refresh_ |= result.wml_changed;
 
 	if(result.outcome != addons_client::install_outcome::abort) {

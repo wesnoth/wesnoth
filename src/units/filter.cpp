@@ -730,6 +730,3 @@ void unit_filter_compound::fill(vconfig cfg)
 
 		}
 	}
-
-
-

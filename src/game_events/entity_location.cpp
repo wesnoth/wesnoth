@@ -120,4 +120,3 @@ unit_const_ptr entity_location::get_unit() const
 }
 
 } // end namespace game_events
-

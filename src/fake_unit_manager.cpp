@@ -59,4 +59,3 @@ int fake_unit_manager::remove_temporary_unit(internal_ptr_type u)
 	}
 	return removed;
 }
-

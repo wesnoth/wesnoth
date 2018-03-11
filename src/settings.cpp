@@ -53,4 +53,3 @@ int get_xp_modifier(const std::string& value)
 }
 
 } // end namespace settings
-

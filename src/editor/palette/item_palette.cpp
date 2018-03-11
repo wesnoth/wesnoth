@@ -93,6 +93,4 @@ const std::string& item_palette::get_id(const overlay& item)
 	return item.id;
 }
 
-
 }
-

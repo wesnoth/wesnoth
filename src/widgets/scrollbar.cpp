@@ -394,4 +394,3 @@ void scrollbar::handle_event(const SDL_Event& event)
 }
 
 } // end namespace gui
-

@@ -61,4 +61,3 @@ bool available()
 } // end namespace clipboard
 
 } // end namespace desktop
-

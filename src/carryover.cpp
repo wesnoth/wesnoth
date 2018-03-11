@@ -274,4 +274,3 @@ void carryover_info::merge_old_carryover(const carryover_info& old_carryover)
 		}
 	}
 }
-

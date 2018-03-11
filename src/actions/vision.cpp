@@ -784,6 +784,4 @@ bool clear_shroud(int side, bool reset_fog, bool fire_events)
 	return result;
 }
 
-
 }//namespace actions
-

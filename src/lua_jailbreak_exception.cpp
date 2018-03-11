@@ -59,4 +59,3 @@ void lua_jailbreak_exception::clear() NOEXCEPT
 	delete jailbreak_exception;
 	jailbreak_exception = nullptr;
 }
-

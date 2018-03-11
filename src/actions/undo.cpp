@@ -493,6 +493,4 @@ bool undo_list::apply_shroud_changes() const
 	return true;
 }
 
-
 }//namespace actions
-

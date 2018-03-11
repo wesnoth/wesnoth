@@ -1,57 +1,57 @@
 #!/bin/sh
 #
-# change-textdomain -- hack the text domain of a specified campaign 
+# change-textdomain -- hack the text domain of a specified campaign
 #
 # Code by Eric S. Raymond, May 2007.
 #
 # Ivanovic's original specification from FR #9039.
-# 
+#
 #  would be nice to have a tool maybe named utils/textdomain2textdomain
 #  that is able to change the textdomain of a given campaign. The params
 #  that the script should support are these: campaignname,
 #  oldtextdomain, newtextdomain
-# 
+#
 #     * asumptions: campaign lies in data/campaigns, current textdomain
 #       is wesnoth-oldtextdomain, the translation files are existing
 #       (and maybe already uploaded) in the folder
 #       /po/wesnoth-oldtextdomain/.
-# 
+#
 # Here is what is to be done for the campaign named 'foo' to move from
 # the textdomain wesnoth-oldtextdomain to wesnoth-newtextdomain:
-# 
+#
 # 1) search in all files in data/campaigns/foo* (yes, the .cfg file, too)
 # for this string:
-# 
+#
 # #textdomain wesnoth-oldtextdomain
-# 
+#
 # 2) replace (be aware, there might be " " around the part after name=)
-# 
+#
 # [textdomain]
 # name=wesnoth-oldtextdomain
 # [/textdomain]
-# 
+#
 # with
-# 
+#
 # [textdomain]
 # name=wesnoth-newtextdomain
 # [/textdomain]
-# 
+#
 # 3) move the folder po/wesnoth-oldtextdomain to
 #    po/wesnoth-newtextdomain (git mv if the file is already under
 #    version control, normal mv if it is not)
-# 
+#
 # 4) move the file (folders are already changed)
 #    po/wesnoth-newtextdomain/wesnoth-oldtextdomain.pot to
 #    po/wesnoth-newtextdomain/wensoth-newtextdomain.pot (via git mv if
 #    files are under version control already, --force will be needed,
 #    since it is a 2nd move)
-# 
+#
 # 5) replace wesnoth-oldtextdomain by wesnoth-newtextdomain in
 #    po/wesnoth-newtextdomain/Makevars
-# 
+#
 # 6) replace wesnoth-oldtextdomain by wesnoth-newtextdomain in po/Makefile.am
-# 
-# 7) replace wesnoth-oldtextdomain by wesnoth-newtextdomain in configure.ac 
+#
+# 7) replace wesnoth-oldtextdomain by wesnoth-newtextdomain in configure.ac
 #
 # Later, I added the -t option to insert a default textdomain in files that
 # don't have it.
@@ -70,7 +70,7 @@ Options:
     -t                           Insert "#textdomain wesnoth" in all cfg files
                                  without textdomain, no other params required.
 Requires as first argument a campaign name.
-Requires as second and third arguments old and new text domain names. 
+Requires as second and third arguments old and new text domain names.
 
 Call from the top-level directory of mainline.
 EOF
@@ -130,7 +130,7 @@ repomove()
 }
 
 add_textdomain()
-# Add '#textdomain wesnoth' to files that don't have it. 
+# Add '#textdomain wesnoth' to files that don't have it.
 {
     for file in `find data -name "*.cfg" -print | grep -v 'data/languages\|lan_server.cfg'`
     do

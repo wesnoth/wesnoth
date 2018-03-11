@@ -601,4 +601,3 @@ void game_config_manager::load_game_config_for_create(bool is_mp, bool is_test)
 		throw;
 	}
 }
-

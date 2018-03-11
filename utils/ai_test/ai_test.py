@@ -66,7 +66,7 @@ def construct_command_line(cfg, test, switched_side):
 		gui = '--nogui'
 
 	statics = '--log-info=ai/testing,mp/connect/engine --multiplayer'
-	return (wesnoth + ' ' + options + ' ' + map_param + ' ' + ai_param1 + ' ' + ai_param2 + 
+	return (wesnoth + ' ' + options + ' ' + map_param + ' ' + ai_param1 + ' ' + ai_param2 +
 		' ' + faction_param1 + ' ' + faction_param2 + ' ' + gui + ' ' + repeats_param + ' ' + statics)
 
 def do_filter(str, substring):
@@ -218,7 +218,7 @@ def save_result_logfile(cfg, test, game_result, log_file):
 
 def save_result_database(cfg, test, game_result, sqlite_file):
 	print 'Saving to DB....'
-	query = ('INSERT INTO games("test_id","faction1","faction2","switched_side","is_success","end_turn","winner")' + 
+	query = ('INSERT INTO games("test_id","faction1","faction2","switched_side","is_success","end_turn","winner")' +
 			'VALUES (?,?,?,?,?,?,?)')
 
 	conn = sqlite3.connect(sqlite_file)

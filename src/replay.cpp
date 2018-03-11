@@ -301,7 +301,7 @@ void replay::end_turn(int next_player_number)
 {
 	config& cmd = add_command();
 	config& end_turn = cmd.add_child("end_turn");
-	
+
 	end_turn["next_player_number"] = next_player_number;
 }
 

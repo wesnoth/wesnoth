@@ -168,4 +168,3 @@ window::operator SDL_Renderer*()
 }
 
 } // namespace sdl
-

@@ -33,7 +33,7 @@ static lg::log_domain log_ai("ai/stage/side_formulas");
 namespace ai {
 
 stage_side_formulas::stage_side_formulas(ai_context &context, const config &cfg, formula_ai &fai)
-       	: stage(context,cfg), cfg_(cfg), fai_(fai), move_formula_()
+		: stage(context,cfg), cfg_(cfg), fai_(fai), move_formula_()
 {
 
 }

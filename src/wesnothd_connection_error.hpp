@@ -49,4 +49,3 @@ struct wesnothd_connection_error : public wesnothd_error ,public lua_jailbreak_e
 	wesnothd_connection_error(const boost::system::error_code& error) : wesnothd_error(error.message()) {}
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(wesnothd_connection_error)
 };
-

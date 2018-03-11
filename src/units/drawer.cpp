@@ -451,4 +451,3 @@ const SDL_Rect& unit_drawer::calculate_energy_bar(surface surf) const
 	energy_bar_rects.emplace(surf, res);
 	return calculate_energy_bar(surf);
 }
-

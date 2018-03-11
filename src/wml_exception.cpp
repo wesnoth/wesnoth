@@ -162,4 +162,3 @@ const config::attribute_value& get_renamed_config_attribute(
 	static const config::attribute_value empty_attribute;
 	return empty_attribute;
 }
-

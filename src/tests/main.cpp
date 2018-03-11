@@ -124,4 +124,3 @@ BOOST_GLOBAL_FIXTURE(wesnoth_global_fixture);
  */
 
 /* vim: set ts=4 sw=4: */
-

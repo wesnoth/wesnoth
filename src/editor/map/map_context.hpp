@@ -194,8 +194,8 @@ public:
 
 	/**
 	 *
- 	 * @return the index of the currently active area.
- 	 */
+	 * @return the index of the currently active area.
+	 */
 	int get_active_area() const {
 		return active_area_;
 	}

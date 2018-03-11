@@ -496,7 +496,7 @@ void display::reload_map()
 void display::change_display_context(const display_context * dc)
 {
 	dc_ = dc;
- 	builder_->change_map(&dc_->map()); //TODO: Should display_context own and initialize the builder object?
+	builder_->change_map(&dc_->map()); //TODO: Should display_context own and initialize the builder object?
 }
 
 void display::reset_halo_manager()
@@ -1442,24 +1442,13 @@ static void draw_panel(CVideo &video, const theme::panel& panel, std::vector<std
 	}
 }
 
-static void draw_label(CVideo& video, surface target, const theme::label& label)
+static void draw_label(CVideo& video, font::pango_text& text_renderer, surface target, const theme::label& label)
 {
 	//log_scope("draw label");
 
-	const color_t& RGB = label.font_rgb();
-
-	std::string c_start="<";
-	std::string c_sep=",";
-	std::string c_end=">";
-	std::stringstream color;
-	color<< c_start << RGB.r << c_sep << RGB.g << c_sep << RGB.b << c_end;
-	std::string text = label.text();
-
-	if(label.font_rgb_set()) {
-		color<<text;
-		text = color.str();
-	}
+	const std::string& text = label.text();
 	const std::string& icon = label.icon();
+
 	SDL_Rect& loc = label.location(video.screen_area());
 
 	if(icon.empty() == false) {
@@ -1476,7 +1465,14 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 			tooltips::add_tooltip(loc,text);
 		}
 	} else if(text.empty() == false) {
-		font::draw_text(&video,loc,label.font_size(),font::NORMAL_COLOR,text,loc.x,loc.y);
+		text_renderer.set_font_size(label.font_size());
+		text_renderer.set_text(text, false);
+
+		if(label.font_rgb_set()) {
+			text_renderer.set_foreground_color(label.font_rgb());
+		}
+
+		sdl_blit(text_renderer.render(), nullptr, target, &loc);
 	}
 
 }
@@ -1495,8 +1491,10 @@ void display::draw_all_panels()
 		draw_panel(video(), panel, menu_buttons_);
 	}
 
+	font::pango_text text_renderer;
+
 	for(const auto& label : theme_.labels()) {
-		draw_label(video(), screen, label);
+		draw_label(video(), text_renderer, screen, label);
 	}
 
 	render_buttons();
@@ -1537,19 +1535,17 @@ void display::draw_text_in_hex(const map_location& loc,
 
 	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor());
 
-	surface text_surf = font::get_rendered_text(text, font_sz, color);
-	surface back_surf = font::get_rendered_text(text, font_sz, font::BLACK_COLOR);
-	const int x = get_location_x(loc) - text_surf->w/2
-	              + static_cast<int>(x_in_hex* hex_size());
-	const int y = get_location_y(loc) - text_surf->h/2
-	              + static_cast<int>(y_in_hex* hex_size());
-	for (int dy=-1; dy <= 1; ++dy) {
-		for (int dx=-1; dx <= 1; ++dx) {
-			if (dx!=0 || dy!=0) {
-				drawing_buffer_add(layer, loc, x + dx, y + dy, back_surf);
-			}
-		}
-	}
+	font::pango_text text_renderer;
+	text_renderer.set_font_size(font_sz);
+	text_renderer.set_text(text, false);
+	text_renderer.set_add_outline(true);
+	text_renderer.set_foreground_color(color);
+
+	surface text_surf = make_neutral_surface(text_renderer.render());
+
+	const int x = get_location_x(loc) - text_surf->w / 2 + static_cast<int>(x_in_hex * hex_size());
+	const int y = get_location_y(loc) - text_surf->h / 2 + static_cast<int>(y_in_hex * hex_size());
+
 	drawing_buffer_add(layer, loc, x, y, text_surf);
 }
 
@@ -1898,7 +1894,7 @@ void display::draw_minimap_units()
 
 		double u_x = u.get_location().x * xscaling;
 		double u_y = (u.get_location().y + (is_odd(u.get_location().x) ? 1 : -1)/4.0) * yscaling;
- 		// use 4/3 to compensate the horizontal hexes imbrication
+		// use 4/3 to compensate the horizontal hexes imbrication
 		double u_w = 4.0 / 3.0 * xscaling;
 		double u_h = yscaling;
 
@@ -2684,10 +2680,16 @@ void display::draw_hex(const map_location& loc) {
 	}
 
 	if (on_map) {
+		font::pango_text text_renderer;
+		text_renderer.set_font_size(font::SIZE_SMALL);
+
 		if (draw_coordinates_) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
-			surface text = font::get_rendered_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
+
+			text_renderer.set_text(lexical_cast<std::string>(loc), false);
+			surface text = make_neutral_surface(text_renderer.render());
+
 			surface bg = create_neutral_surface(text->w, text->h);
 			SDL_Rect bg_rect {0, 0, text->w, text->h};
 			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
@@ -2705,7 +2707,10 @@ void display::draw_hex(const map_location& loc) {
 		if (draw_terrain_codes_ && (game_config::debug || !shrouded(loc))) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
-			surface text = font::get_rendered_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
+
+			text_renderer.set_text(lexical_cast<std::string>(get_map().get_terrain(loc)), false);
+			surface text = make_neutral_surface(text_renderer.render());
+
 			surface bg = create_neutral_surface(text->w, text->h);
 			SDL_Rect bg_rect {0, 0, text->w, text->h};
 			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
@@ -2722,7 +2727,10 @@ void display::draw_hex(const map_location& loc) {
 		if (draw_num_of_bitmaps_) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
-			surface text = font::get_rendered_text(lexical_cast<std::string>(num_images_bg + num_images_fg), font::SIZE_SMALL, font::NORMAL_COLOR);
+
+			text_renderer.set_text(lexical_cast<std::string>(num_images_bg + num_images_fg), false);
+			surface text = make_neutral_surface(text_renderer.render());
+
 			surface bg = create_neutral_surface(text->w, text->h);
 			SDL_Rect bg_rect {0, 0, text->w, text->h};
 			sdl::fill_surface_rect(bg, &bg_rect, 0xaa000000);
@@ -3289,4 +3297,3 @@ void display::handle_event(const SDL_Event& event) {
 }
 
 display *display::singleton_ = nullptr;
-

@@ -847,4 +847,3 @@ void convert_old_saves(config& cfg)
 }
 
 }
-

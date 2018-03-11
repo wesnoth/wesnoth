@@ -272,7 +272,7 @@ public:
 	 * @param event 				The event to fire.
 	 * @param target 				The widget that should receive the event.
 	 *                              Normally this is the window holding the
- 	 *                              widget.
+	 *                              widget.
 	 * @param sdlevent 				The raw SDL event
 	 */
 	bool fire(const ui_event event,
@@ -284,7 +284,7 @@ public:
 	 * @param event 				The event to fire.
 	 * @param target 				The widget that should receive the event.
 	 *                              Normally this is the window holding the
- 	 *                              widget.
+	 *                              widget.
 	 * @param text                  The text involved in the event
 	 * @param start                 The start point for IME editing
 	 * @param len                   The selection length for IME editing

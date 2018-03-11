@@ -33,7 +33,7 @@ name_generator_factory::name_generator_factory(const config& config, std::vector
 }
 
 void name_generator_factory::add_name_generator_from_config(const config& config, const std::string id, const std::string prefix) {
- 	std::string cfg_name 	= prefix + "name_generator";
+	std::string cfg_name 	= prefix + "name_generator";
 	std::string markov_name = prefix + "names";
 
 	if(config.has_attribute(cfg_name)) {

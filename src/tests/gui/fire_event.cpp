@@ -147,4 +147,3 @@ BOOST_AUTO_TEST_CASE(test_fire_event)
 	grid.fire(gui2::event::RIGHT_BUTTON_DOWN, *child);
 	validate_right_button_down(sstr);
 }
-

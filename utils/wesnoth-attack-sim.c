@@ -293,7 +293,7 @@ static void compare_results(const double res[], const struct unit *u,
 		     battle, (int)strlen(cmp), line, cmp);
 
 	if (fscanf(f, " %lf", &val) != 1)
-		barf("Malformed untouched: %s battle %u", 
+		barf("Malformed untouched: %s battle %u",
 		     label, battle);
 
 	/* We *must* have result for defender and attacker 1. */
@@ -305,7 +305,7 @@ static void compare_results(const double res[], const struct unit *u,
 
 	for (i = 0; i < u->max_hp+1; i++) {
 		if (fscanf(f, " %lf", &val) != 1)
-			barf("Malformed hp line: %s hp %u battle %u", 
+			barf("Malformed hp line: %s hp %u battle %u",
 			     label, i, battle);
 #if 0
 		if (abs(val - res[i]*100) > 5.0)

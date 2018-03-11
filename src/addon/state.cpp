@@ -69,4 +69,3 @@ addon_tracking_info get_addon_tracking_info(const addon_info& addon)
 
 	return t;
 }
-

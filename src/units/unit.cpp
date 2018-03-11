@@ -960,7 +960,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 		advancements_.push_back(new config(advancement));
 	}
 
- 	// If unit has specific profile, remember it and keep it after advancing
+	// If unit has specific profile, remember it and keep it after advancing
 	if(small_profile_.empty() || small_profile_ == old_type.small_profile()) {
 		small_profile_ = new_type.small_profile();
 	}

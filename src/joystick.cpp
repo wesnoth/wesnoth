@@ -420,4 +420,3 @@ const map_location joystick_manager::get_next_hex(int x_axis, int y_axis, map_lo
 
 	return new_loc;
 }
-

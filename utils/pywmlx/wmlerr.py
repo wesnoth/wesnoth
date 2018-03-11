@@ -118,7 +118,7 @@ def print_wmlerr(finfo, message, iserr):
     # 2) On posix we write "error" in red and "warning" in blue
     #    by using ansi escape codes (except if --no-text-colors is used)
     elif os.name == "posix" and enabled_text_col:
-        msg = (ansi_color + errtype + ' \033[0m\033[93m' + finfo + 
+        msg = (ansi_color + errtype + ' \033[0m\033[93m' + finfo +
                ':\033[0m ' + message)
         print(msg, file=sys.stderr)
     # 3) On non-posix and non-windows system we don't use colors

@@ -1223,7 +1223,7 @@ void play_controller::play_turn()
 
 	// Time has run out
 	check_time_over();
-	
+
 	if (!is_regular_game_end()) {
 		gamestate_->player_number_ = modulo(next_player_number, gamestate().board_.teams().size(), 1);
 	}

@@ -40,22 +40,22 @@ broken_file_list="broken_file_list.tmp"
 stat_args="-c %s"
 
 if [ -e "/proc/cpuinfo" ] && [ `grep processor /proc/cpuinfo | wc -l` -gt 1 ]; then
-        max_number_threads=`grep processor /proc/cpuinfo | wc -l`
+		max_number_threads=`grep processor /proc/cpuinfo | wc -l`
 fi
 
 if [ `man stat | grep 'BSD' | wc -l` -gt 0 ]; then
-    stat_args="-f %z"
+	stat_args="-f %z"
 fi
 
 ####### PROCEDURES #######
 
 report_absent_tool()
 {
-    echo "$1 is not present in PATH. $(basename ${0}) requires it in order to work properly."
-    if [ -n "$2" ]; then
-    	echo "You can obtain $1 at <${2}>."
-    fi
-    exit -1
+	echo "$1 is not present in PATH. $(basename ${0}) requires it in order to work properly."
+	if [ -n "$2" ]; then
+		echo "You can obtain $1 at <${2}>."
+	fi
+	exit -1
 }
 
 user_int()
@@ -174,11 +174,11 @@ Switches:
   --help / -h   Displays this help text.
 
   --nice / -n   Sets the process nice <value> under which the optimization
-                shall be done. If not specified, 19 (the lowest priority) is
-                assumed by default.
+				shall be done. If not specified, 19 (the lowest priority) is
+				assumed by default.
 
   --threads     Run script with <value> worker threads. If not specified, the
-                amount of CPUs detected will be used.
+				amount of CPUs detected will be used.
 
 This tool requires OptiPNG (http://optipng.sourceforge.net/),
 Advdef (http://advancemame.sourceforge.net/comp-readme.html) and ImageMagick's

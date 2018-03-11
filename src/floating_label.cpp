@@ -327,4 +327,3 @@ void undraw_floating_labels(surface screen)
 	}
 }
 }
-

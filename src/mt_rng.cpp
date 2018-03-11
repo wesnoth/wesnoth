@@ -107,4 +107,3 @@ std::string mt_rng::get_random_seed_str() const {
 }
 
 } // ends randomness namespace
-

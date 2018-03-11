@@ -364,4 +364,3 @@ void calculate_healing(int side, bool update_display)
 
 	DBG_NG << "end of healing calculations\n";
 }
-

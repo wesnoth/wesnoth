@@ -252,4 +252,3 @@ std::string persist_context::get_node() const
 {
 	return namespace_.namespace_;
 }
-

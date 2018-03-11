@@ -304,5 +304,3 @@ std::string unencode_binary(const std::string& str)
 	res.resize(n);
 	return res;
 }
-
-

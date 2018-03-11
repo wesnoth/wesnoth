@@ -1561,7 +1561,7 @@ int game_lua_kernel::intf_end_level(lua_State *L)
 
 int game_lua_kernel::intf_end_turn(lua_State* L)
 {
-	//note that next_player_number = 1, next_player_number = nteams+1 both set the next team to be the first team 
+	//note that next_player_number = 1, next_player_number = nteams+1 both set the next team to be the first team
 	//but the later will make the turn counter change aswell fire turn end events accoringly etc.
 	if (!lua_isnoneornil(L, 1)) {
 		int npn = luaL_checknumber(L, 1);

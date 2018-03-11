@@ -16,9 +16,9 @@ def GetSources(filename):
             sources.append(line.strip())
     return sources
 
-# 
+#
 # setup the FIFODIR, WESNOTH_PATH
-# 
+#
 
 for environ in [test_env, client_env, env]:
 # controls displaying git revision next to the version on the title screen
@@ -137,7 +137,7 @@ def WesnothProgram(env, target, source, can_build, **kw):
     if env["enable_lto"] == True:
         env["AR"] = 'gcc-ar'
         env["RANLIB"] = 'gcc-ranlib'
-    
+
     if can_build:
         if env["use_srcdir"] == True:
             bin = env.Program(target + build_suffix, source, **kw)

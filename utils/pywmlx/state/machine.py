@@ -41,7 +41,7 @@ _domain = None
 #   False (when the file is a .lua file)
 _waitwml = True
 # this boolean value is very useful to avoid a possible bug
-# verified in a special case 
+# verified in a special case
 # (see WmlGoluaState on wml_states.py for more details)
 _on_luatag = False
 
@@ -51,9 +51,9 @@ _on_luatag = False
 _pending_addedinfo = None
 # pending override wmlinfo for translators (# po-override: overrideinfo)
 _pending_overrideinfo = None
-# type of pending wmlinfo: 
+# type of pending wmlinfo:
 # it can be None or it can have an actual value.
-# Possible actual values are: 'speaker', 'id', 'role', 'description', 
+# Possible actual values are: 'speaker', 'id', 'role', 'description',
 #                             'condition', 'type', or 'race'
 _pending_winfotype = None
 
@@ -130,7 +130,7 @@ class PendingPlural:
         self.pluraltype = 0
         self.numequals = 0
         self.ismultiline = False
-    
+
     def addline(self, value, isfirstline=False):
         if self.pluraltype != 3:
             value = re.sub('\\\s*$', '', value)
@@ -140,7 +140,7 @@ class PendingPlural:
             self.string = value
         else:
             self.string = self.string + '\n' + value
-    
+
     def convert(self):
         if self.pluraltype == 2:
             self.string = re.sub(r"\\\'", r"'", self.string)
@@ -148,9 +148,9 @@ class PendingPlural:
             self.string = re.sub(r'(?<!\\)"', r'\"', self.string)
         if self.pluraltype == 3:
             self.string = self.string.replace('"', r'\"')
-        if self.ismultiline:    
+        if self.ismultiline:
             lf = r'\\n"' + '\n"'
-            self.string = re.sub(r'(\n\r|\r\n|[\n\r])', 
+            self.string = re.sub(r'(\n\r|\r\n|[\n\r])',
                                 lf, self.string)
             self.string = '""\n"' + self.string + '"'
         if not self.ismultiline:
@@ -160,7 +160,7 @@ class PendingPlural:
 
 
 class PendingLuaString:
-    def __init__(self, lineno, luatype, luastring, ismultiline, 
+    def __init__(self, lineno, luatype, luastring, ismultiline,
                  istranslatable, numequals=0, plural=None):
         self.lineno = lineno
         self.luatype = luatype
@@ -171,7 +171,7 @@ class PendingLuaString:
         if luatype != 'lua_plural':
             self.addline(luastring, True)
         self.plural = plural
-    
+
     def addline(self, value, isfirstline=False):
         if self.luatype != 'luastr3':
             value = re.sub('\\\s*$', '', value)
@@ -181,15 +181,15 @@ class PendingLuaString:
             self.luastring = value
         else:
             self.luastring = self.luastring + '\n' + value
-    
-    # this function is used by store, when translating lua pending plural into 
+
+    # this function is used by store, when translating lua pending plural into
     # PoCommentedString.plural
     def storePlural(self):
         if self.plural is None:
             return None
         else:
             return self.plural.convert()
-    
+
     def store(self):
         global _pending_addedinfo
         global _pending_overrideinfo
@@ -201,7 +201,7 @@ class PendingLuaString:
             errcode = checksentence(self.luastring, finfo, islua=True)
             if errcode != 1:
                 # when errcode is equal to 1, the translatable string is empty
-                # so, using "if errcode != 1" 
+                # so, using "if errcode != 1"
                 # we will add the translatable string ONLY if it is NOT empty
                 if self.luatype == 'luastr2':
                     self.luastring = re.sub(r"\\\'", r"'", self.luastring)
@@ -213,7 +213,7 @@ class PendingLuaString:
                 loc_addedinfos = None
                 if _pending_overrideinfo is not None:
                     loc_wmlinfos.append(_pending_overrideinfo)
-                if (_pending_luafuncname is not None and 
+                if (_pending_luafuncname is not None and
                         _pending_overrideinfo is None):
                     winf = '[lua]: ' + _pending_luafuncname
                     loc_wmlinfos.append(winf)
@@ -224,7 +224,7 @@ class PendingLuaString:
                 loc_posentence = _dictionary.get(self.luastring)
                 if loc_posentence is None:
                     _dictionary[self.luastring] = PoCommentedString(
-                                self.luastring, 
+                                self.luastring,
                                 orderid=(fileno, self.lineno, _linenosub),
                                 ismultiline=self.ismultiline,
                                 wmlinfos=loc_wmlinfos, finfos=[finfo],
@@ -233,7 +233,7 @@ class PendingLuaString:
                 else:
                     loc_posentence.update_with_commented_string(
                            PoCommentedString(
-                                self.luastring, 
+                                self.luastring,
                                 orderid=(fileno, self.lineno, _linenosub),
                                 ismultiline=self.ismultiline,
                                 wmlinfos=loc_wmlinfos, finfos=[finfo],
@@ -253,12 +253,12 @@ class PendingWmlString:
         self.wmlstring = wmlstring.replace('\\', r'\\')
         self.ismultiline = ismultiline
         self.istranslatable = istranslatable
-    
+
     def addline(self, value):
         self.wmlstring = self.wmlstring + '\n' + value.replace('\\', r'\\')
-    
+
     def store(self):
-        global _pending_addedinfo 
+        global _pending_addedinfo
         global _pending_overrideinfo
         global _linenosub
         global _pending_winfotype
@@ -272,15 +272,15 @@ class PendingWmlString:
             errcode = checksentence(self.wmlstring, finfo, islua=False)
             if errcode != 1:
                 # when errcode is equal to 1, the translatable string is empty
-                # so, using "if errcode != 1" 
+                # so, using "if errcode != 1"
                 # we will add the translatable string ONLY if it is NOT empty
                 _linenosub += 1
                 self.wmlstring = re.sub('""', r'\"', self.wmlstring)
-                pywmlx.nodemanip.addNodeSentence(self.wmlstring, 
-                                             ismultiline=self.ismultiline, 
-                                             lineno=self.lineno, 
+                pywmlx.nodemanip.addNodeSentence(self.wmlstring,
+                                             ismultiline=self.ismultiline,
+                                             lineno=self.lineno,
                                              lineno_sub=_linenosub,
-                                             override=_pending_overrideinfo, 
+                                             override=_pending_overrideinfo,
                                              addition=_pending_addedinfo)
         _pending_overrideinfo = None
         _pending_addedinfo = None
@@ -351,7 +351,7 @@ def run(*, filebuf, fileref, fileno, startstate, waitwml=True):
                     print('---------------------------------------------------',
                           file=_fdebug)
                     print('LINE', lno, '|', xline, file=_fdebug)
-                # action number is used to know what function we should run    
+                # action number is used to know what function we should run
                 action = 0
                 v = None
                 m = None
@@ -369,7 +369,7 @@ def run(*, filebuf, fileref, fileno, startstate, waitwml=True):
                         if _debugmode:
                             print('RUN state  \\', cs_debug, file=_fdebug)
                     else:
-                        # action = 2 --> change to the state pointed by 
+                        # action = 2 --> change to the state pointed by
                         #                state.iffail
                         action = 2
                         if _debugmode:
@@ -388,8 +388,8 @@ def run(*, filebuf, fileref, fileno, startstate, waitwml=True):
     except UnicodeDecodeError as e:
         errpos = int(e.start)  # error position on file object with UTF-8 error
         errbval = hex(e.object[errpos]) # value of byte wich causes UTF-8 error
-        # well... when exception occurred, the _current_lineno value 
-        # was not updated at all due to the failure of the try block. 
+        # well... when exception occurred, the _current_lineno value
+        # was not updated at all due to the failure of the try block.
         # (it is = 0)
         # this means we need to make a workaround to obtain in what line of the
         # file the problem happened.
@@ -406,17 +406,16 @@ def run(*, filebuf, fileref, fileno, startstate, waitwml=True):
         errlineno = len(splituntil)
         # finally we can know the actual file info
         finfo = pywmlx.nodemanip.fileref + ":" + str(errlineno)
-        errmsg = ( 
+        errmsg = (
             "UTF-8 Format error.\nCan't decode byte " + str(errbval) + ' (' +
             e.reason + ').\n' +
-            'Probably your file is not encoded with UTF-8 encoding: you ' + 
+            'Probably your file is not encoded with UTF-8 encoding: you ' +
             'should open the file with an advanced text editor, and re-save ' +
             'it with UTF-8 encoding.\n' +
             'To avoid this problem in the future, you might want to set ' +
             'the default encoding of your editor to UTF-8.\n\n' +
-            'Text preceding the invalid byte (source file, line ' + 
-            str(errlineno) + '):\n' + splituntil[-1] + '\n'   
+            'Text preceding the invalid byte (source file, line ' +
+            str(errlineno) + '):\n' + splituntil[-1] + '\n'
         )
         wmlerr(finfo, errmsg)
     pywmlx.nodemanip.closefile(_dictionary, _current_lineno)
-

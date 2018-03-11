@@ -1107,7 +1107,7 @@ static int operator_precedence(const tk::token& t)
 
 static void parse_function_args(const tk::token* &i1, const tk::token* i2, std::vector<std::string>* res)
 {
- 	const tk::token* begin = i1, *end = i2;	// These are used for error reporting
+	const tk::token* begin = i1, *end = i2;	// These are used for error reporting
 
 	if(i1->type == tk::TOKEN_LPARENS) {
 		++i1;

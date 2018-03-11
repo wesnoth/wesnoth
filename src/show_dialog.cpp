@@ -365,4 +365,3 @@ void dialog_frame::draw()
 }
 
 }
-

@@ -206,6 +206,3 @@ void display_chat_manager::prune_chat_messages(bool remove_all)
 		font::move_floating_label(cm.handle, 0, - movement);
 	}
 }
-
-
-

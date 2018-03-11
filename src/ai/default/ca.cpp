@@ -888,7 +888,7 @@ bool get_villages_phase::dispatch_village_simple(
 
 			for(std::vector<map_location>::const_iterator
 					v_itor = itor->second.begin();
-			 		v_itor != itor->second.end(); ++v_itor) {
+					v_itor != itor->second.end(); ++v_itor) {
 
 				reversemap[*v_itor].push_back(itor->first);
 

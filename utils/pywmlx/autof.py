@@ -17,7 +17,7 @@ def autoscan(pathdir):
                     value = re.sub(r'^\/', '', value)
                 else:
                     value = re.sub(r'^(?:[A-Za-z]\:)?\\', '', value)
-                if filelist is None: 
+                if filelist is None:
                     filelist = [ value ]
                 else:
                     filelist.append(value)
@@ -27,4 +27,3 @@ def autoscan(pathdir):
     # end for scandir
     return (parentdir, filelist)
 # end autoscan
-

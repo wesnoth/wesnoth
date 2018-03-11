@@ -401,7 +401,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		// Only show the weapon special if we find it on a unit that
 		// detailed description should be shown about.
 		if (description_type(type) != FULL_DESCRIPTION)
-		 	continue;
+			continue;
 
 		for (const attack_type& atk : type.attacks()) {
 

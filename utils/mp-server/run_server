@@ -55,7 +55,7 @@ ulimit -c unlimited
 #trap "$HOME/bin/send_server_message $SERVER; sleep 2; echo -n 'terminated: '; date; exit 0" INT
 trap "echo -n 'terminated: '; date; exit 0" INT
 
-while [ true ] 
+while [ true ]
 do
 	cd "$SERVERBASE"/build || exit 1
 	[ -x bin/wesnothd-$SERVER ] || die "Executable 'bin/wesnothd-$SERVER' not found."

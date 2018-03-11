@@ -14,7 +14,7 @@ if [[ "$#" -ne 1 ]]; then
     echo "option passed in) as first and only arg. This file must be located at the root"
     echo "of the wesnoth repository directory, and the argument should just be its name"
     echo "and extension."
-    echo 
+    echo
     echo "Expects the current working directory to be the root directory of the repo."
     echo
     echo "Example Usage:"

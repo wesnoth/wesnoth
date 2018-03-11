@@ -25,4 +25,3 @@ namespace make_enum_detail
 		}
 	}
 }
-

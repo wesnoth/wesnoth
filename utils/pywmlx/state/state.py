@@ -3,4 +3,3 @@ class State:
         self.regex = regex
         self.run = run
         self.iffail = iffail
-

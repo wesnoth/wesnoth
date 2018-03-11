@@ -23,7 +23,7 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None, header_file = Non
     backup = backup_env(context.env, ["CPPPATH", "LIBPATH", "LIBS"])
 
     sdldir = context.env.get("sdldir", "")
-    if sdl_lib == "SDL": 
+    if sdl_lib == "SDL":
         if require_version:
             context.Message("Checking for Simple DirectMedia Layer library version >= %d.%d.%d... " % (major_version, minor_version, patchlevel))
         else:
@@ -68,7 +68,7 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None, header_file = Non
             context.Message("Checking for %s library... " % sdl_lib)
         context.env.AppendUnique(LIBS = [sdl_lib])
     test_program = """
-        #include <%s.h> 
+        #include <%s.h>
         \n""" % sdl_header
     if require_version:
         test_program += "#if SDL_VERSIONNUM(%s, %s, %s) < SDL_VERSIONNUM(%d, %d, %d)\n#error Library is too old!\n#endif\n" % \

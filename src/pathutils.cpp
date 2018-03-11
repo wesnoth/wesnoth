@@ -271,4 +271,3 @@ void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
 
 	result.insert(not_visited.begin(), not_visited.end());
 }
-

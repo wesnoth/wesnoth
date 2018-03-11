@@ -74,7 +74,7 @@ void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstre
 
 	std::stringstream filename;
 	filename << u.image() << "~RC(" << u.flag_rgb() << '>'
-	    	 << team::get_side_color_id(gui_.viewing_side()) << ')';
+			 << team::get_side_color_id(gui_.viewing_side()) << ')';
 
 	image = image::get_image(filename.str());
 	if(image == nullptr) {
@@ -98,7 +98,7 @@ unit_palette::unit_palette(editor_display &gui, const config& cfg,
                            editor_toolkit &toolkit)
 //TODO avoid magic numbers
 	:	editor_palette<unit_type>(gui, cfg, 36, 4, toolkit),
-	 	selected_bg_items_()
+		selected_bg_items_()
 {
 }
 
@@ -124,4 +124,3 @@ void unit_palette::select_bg_item(const std::string& item_id) {
 }
 
 }
-

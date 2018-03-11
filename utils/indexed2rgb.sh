@@ -91,4 +91,3 @@ elif [ "$run_optipng" = "yes" ];then
 else
     echo "Now would be a good time to run optipng"
 fi
-

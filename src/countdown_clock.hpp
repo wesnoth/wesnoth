@@ -36,4 +36,3 @@ private:
 	int last_timestamp_;
 	bool playing_sound_;
 };
-

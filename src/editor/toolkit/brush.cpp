@@ -65,7 +65,7 @@ brush::brush()
 
 brush::brush(const config& cfg)
 	: relative_tiles_()
- 	, name_(cfg["name"])
+	, name_(cfg["name"])
 	, id_(cfg["id"])
 {
 	int radius = cfg["radius"];

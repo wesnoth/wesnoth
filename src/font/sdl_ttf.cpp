@@ -282,7 +282,7 @@ static surface render_text(const std::string& text, int fontsize, const color_t&
 			// except for the last line if we have several
 			txt_surf.set_text(" ");
 		} else if (after_markup == ln->begin()) {
-		 	// simple case, no markup to skip
+			// simple case, no markup to skip
 			txt_surf.set_text(*ln);
 		} else  {
 			const std::string line(after_markup,ln->end());

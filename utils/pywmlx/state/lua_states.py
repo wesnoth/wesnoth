@@ -10,7 +10,7 @@ class LuaIdleState:
     def __init__(self):
         self.regex = None
         self.iffail = None
-    
+
     def run(self, xline, lineno, match):
         _nextstate = 'lua_checkdom'
         if pywmlx.state.machine._pending_luastring is not None:
@@ -30,7 +30,7 @@ class LuaCheckdomState:
                r'''(?:\(\s*)?(["'])(.*?)\2''')
         self.regex = re.compile(rx, re.I)
         self.iffail = 'lua_checkpo'
-    
+
     def run(self, xline, lineno, match):
         pywmlx.state.machine._currentdomain = match.group(3)
         xline = None
@@ -43,10 +43,10 @@ class LuaCheckdomState:
 
 class LuaCheckpoState:
     def __init__(self):
-        self.regex = re.compile(r'\s*--\s*(?:#)?\s*(po-override|po):\s+(.+)', 
+        self.regex = re.compile(r'\s*--\s*(?:#)?\s*(po-override|po):\s+(.+)',
                                 re.I)
         self.iffail = 'lua_comment'
-    
+
     def run(self, xline, lineno, match):
         # on -- #po: addedinfo
         if match.group(1) == "po":
@@ -68,7 +68,7 @@ class LuaCommentState:
     def __init__(self):
         self.regex = re.compile(r'\s*--.+')
         self.iffail = 'lua_str00'
-    
+
     def run(self, xline, lineno, match):
         xline = None
         return (xline, 'lua_idle')
@@ -79,12 +79,12 @@ class LuaStr00:
     def __init__(self):
         self.regex = re.compile(r'((?:_)|(?:.*?\s+_))\s*\(')
         self.iffail = 'lua_str01'
-    
+
     def run(self, xline, lineno, match):
         xline = xline [ match.end(): ]
         pywmlx.state.machine._pending_luastring = None
         pywmlx.state.machine._pending_luastring = (
-            pywmlx.state.machine.PendingLuaString( 
+            pywmlx.state.machine.PendingLuaString(
                 lineno, 'lua_plural', '', False,
                 True, 0, pywmlx.state.machine.PendingPlural()
             )
@@ -98,7 +98,7 @@ class LuaStr01:
         rx = r'''(?:[^["']*?)(_?)\s*"((?:\\"|[^"])*)("?)'''
         self.regex = re.compile(rx)
         self.iffail = 'lua_str02'
-    
+
     def run(self, xline, lineno, match):
         _nextstate = 'lua_idle'
         loc_translatable = True
@@ -110,13 +110,13 @@ class LuaStr01:
             loc_multiline = True
             _nextstate = 'lua_str10'
         else:
-            xline = xline [ match.end(): ]    
+            xline = xline [ match.end(): ]
         pywmlx.state.machine._pending_luastring = (
-            pywmlx.state.machine.PendingLuaString( 
-                lineno, 'luastr1', match.group(2), loc_multiline, 
-                loc_translatable 
+            pywmlx.state.machine.PendingLuaString(
+                lineno, 'luastr1', match.group(2), loc_multiline,
+                loc_translatable
             )
-        ) 
+        )
         return (xline, _nextstate)
 
 
@@ -126,7 +126,7 @@ class LuaStr02:
         rx = r'''(?:[^["']*?)(_?)\s*'((?:\\'|[^'])*)('?)'''
         self.regex = re.compile(rx)
         self.iffail = 'lua_str03' # 'lua_gowml' #'lua_str03'
-    
+
     def run(self, xline, lineno, match):
         _nextstate = 'lua_idle'
         loc_translatable = True
@@ -140,7 +140,7 @@ class LuaStr02:
         else:
             xline = xline [ match.end(): ]
         pywmlx.state.machine._pending_luastring = (
-            pywmlx.state.machine.PendingLuaString( 
+            pywmlx.state.machine.PendingLuaString(
                 lineno, 'luastr2', match.group(2), loc_multiline,
                 loc_translatable
             )
@@ -154,7 +154,7 @@ class LuaStr03:
         rx = r'''(?:[^["']*?)(_?)\s*\[(=*)\[(.*?)]\2]'''
         self.regex = re.compile(rx)
         self.iffail = 'lua_str03o'
-    
+
     def run(self, xline, lineno, match):
         xline = xline [ match.end(): ]
         loc_translatable = True
@@ -162,7 +162,7 @@ class LuaStr03:
             loc_translatable = False
         loc_multiline = False
         pywmlx.state.machine._pending_luastring = (
-            pywmlx.state.machine.PendingLuaString( 
+            pywmlx.state.machine.PendingLuaString(
                 lineno, 'luastr3', match.group(3), loc_multiline,
                 loc_translatable
             )
@@ -176,7 +176,7 @@ class LuaStr03o:
         rx = r'''(?:[^["']*?)(_?)\s*\[(=*)\[(.*)'''
         self.regex = re.compile(rx)
         self.iffail = 'lua_gowml'
-    
+
     def run(self, xline, lineno, match):
         xline = None
         loc_translatable = True
@@ -184,7 +184,7 @@ class LuaStr03o:
             loc_translatable = False
         loc_multiline = True
         pywmlx.state.machine._pending_luastring = (
-            pywmlx.state.machine.PendingLuaString( 
+            pywmlx.state.machine.PendingLuaString(
                 lineno, 'luastr3', match.group(3), loc_multiline,
                 loc_translatable, len(match.group(2))
             )
@@ -199,7 +199,7 @@ class LuaStr10:
     def __init__(self):
         self.regex = re.compile(r'((?:\\"|[^"])*)("?)')
         self.iffail = 'lua_str10'
-        
+
     def run(self, xline, lineno, match):
         _nextstate = None
         pywmlx.state.machine._pending_luastring.addline( match.group(1) )
@@ -219,7 +219,7 @@ class LuaStr20:
     def __init__(self):
         self.regex = re.compile(r"((?:\\'|[^'])*)('?)")
         self.iffail = 'lua_str20'
-        
+
     def run(self, xline, lineno, match):
         _nextstate = None
         pywmlx.state.machine._pending_luastring.addline( match.group(1) )
@@ -237,15 +237,15 @@ class LuaStr30:
     def __init__(self):
         self.regex = None
         self.iffail = None
-    
+
     def run(self, xline, lineno, match):
-        rx = ( r'(.*?)]={' +  
+        rx = ( r'(.*?)]={' +
               str(pywmlx.state.machine._pending_luastring.numequals) +
               '}]' )
         realmatch = re.match(rx, xline)
         _nextstate = 'lua_str30'
         if realmatch:
-            pywmlx.state.machine._pending_luastring.addline( 
+            pywmlx.state.machine._pending_luastring.addline(
                 realmatch.group(1) )
             xline = xline [ realmatch.end(): ]
             _nextstate = 'lua_idle'
@@ -260,7 +260,7 @@ class LuaStr30:
 # 2.  LUA PLURAL
 #-----------------------------------------------------------------------------
 # Lua plural will manage _ ("sentence", "plural_form", number) syntax
-#     when _ ( was found on LuaStr00 (fake lua string) 
+#     when _ ( was found on LuaStr00 (fake lua string)
 #     this case will treat also _ ("translatable_string") without plural form.
 #------------------------------------------------------------------------------
 
@@ -280,7 +280,7 @@ class LuaPlIdle1:
     def __init__(self):
         self.regex = None
         self.iffail = None
-        
+
     def run(self, xline, lineno, match):
         status = pywmlx.state.machine._pending_luastring.plural.status
         realmatch = re.match(r'\s*(\S)', xline)
@@ -300,7 +300,7 @@ class LuaPlIdle1:
                     wmlerr(finfo, errmsg)
                 else:
                     # if parenthesis is closed rightly after first argument
-                    # this is not a plural form. So we set 
+                    # this is not a plural form. So we set
                     # PendingLuaString.plural to None
                     if status == 'wait_plural':
                         pywmlx.state.machine._pending_luastring.plural = None
@@ -316,7 +316,7 @@ class LuaPlIdle1:
             xline = xline [ realmatch.end(): ]
             xline = realmatch.group(1) + xline
             return (xline, _nextstate)
-                
+
         else:
             # You can find a new line rigthly after _ (. In this case, we will
             # continue to search a string into the next line
@@ -330,7 +330,7 @@ class LuaPlIdle2:
     def __init__(self):
         self.regex = None
         self.iffail = None
-    
+
     def run(self, xline, lineno, match):
         realmatch = re.match(r'\s*,', xline)
         if realmatch:
@@ -348,7 +348,7 @@ class LuaPlIdle3:
     def __init__(self):
         self.regex = None
         self.iffail = None
-        
+
     def run(self, xline, lineno, match):
         realmatch = re.match(r'.*?\)', xline)
         if realmatch:
@@ -375,12 +375,12 @@ class LuaPl01:
         #           setting 'iffail' to a non-existing 'lua_bug' state will
         #           allow us to raise an error
         self.iffail = 'lua_bug'
-    
+
     def run(self, xline, lineno, match):
         status = pywmlx.state.machine._pending_luastring.plural.status
         if status == 'wait_string':
             _nextstate = 'lua_plidle2'
-            # we must fix values for luatype (wich is used later by 
+            # we must fix values for luatype (wich is used later by
             #                                 PendingLuaString.store() )
             # and ismultiline
             pywmlx.state.machine._pending_luastring.luatype = 'luastr1'
@@ -426,12 +426,12 @@ class LuaPl02:
         #           setting 'iffail' to a non-existing 'lua_bug' state will
         #           allow us to raise an error
         self.iffail = 'lua_bug'
-    
+
     def run(self, xline, lineno, match):
         status = pywmlx.state.machine._pending_luastring.plural.status
         if status == 'wait_string':
             _nextstate = 'lua_plidle2'
-            # we must fix values for luatype (wich is used later by 
+            # we must fix values for luatype (wich is used later by
             #                                 PendingLuaString.store() )
             # and ismultiline
             pywmlx.state.machine._pending_luastring.luatype = 'luastr2'
@@ -474,14 +474,14 @@ class LuaPl03:
         rx = r'\[(=*)\[(.*?)]\1]'
         self.regex = re.compile(rx)
         self.iffail = 'lua_pl03o'
-    
+
     def run(self, xline, lineno, match):
         status = pywmlx.state.machine._pending_luastring.plural.status
         xline = xline [ match.end(): ]
         _nextstate = 'lua_plidle2'
         if status == 'wait_string':
             _nextstate = 'lua_plidle2'
-            # we must fix values for luatype (wich is used later by 
+            # we must fix values for luatype (wich is used later by
             #                                 PendingLuaString.store() )
             pywmlx.state.machine._pending_luastring.luatype = 'luastr3'
             # storing string into PendingLuaString
@@ -511,7 +511,7 @@ class LuaPl03o:
         rx = r'\[(=*)\[(.*)'
         self.regex = re.compile(rx)
         self.iffail = 'lua_bug'
-    
+
     def run(self, xline, lineno, match):
         status = pywmlx.state.machine._pending_luastring.plural.status
         xline = None
@@ -543,15 +543,15 @@ class LuaPl10:
     def __init__(self):
         self.regex = re.compile(r'((?:\\"|[^"])*)("?)')
         self.iffail = 'lua_pl10'
-        
+
     def run(self, xline, lineno, match):
         status = pywmlx.state.machine._pending_luastring.plural.status
         _nextstate = 'lua_pl10'
         if status == 'wait_string':
             pywmlx.state.machine._pending_luastring.addline( match.group(1) )
         else:
-            pywmlx.state.machine_pending_luastring.plural.addline( 
-                match.group(1) 
+            pywmlx.state.machine_pending_luastring.plural.addline(
+                match.group(1)
             )
         if match.group(2) == '"':
             xline = xline [ match.end(): ]
@@ -577,15 +577,15 @@ class LuaPl20:
     def __init__(self):
         self.regex = re.compile(r"((?:\\'|[^'])*)('?)")
         self.iffail = 'lua_pl20'
-        
+
     def run(self, xline, lineno, match):
         status = pywmlx.state.machine._pending_luastring.plural.status
         _nextstate = 'lua_pl20'
         if status == 'wait_string':
             pywmlx.state.machine._pending_luastring.addline( match.group(1) )
         else:
-            pywmlx.state.machine_pending_luastring.plural.addline( 
-                match.group(1) 
+            pywmlx.state.machine_pending_luastring.plural.addline(
+                match.group(1)
             )
         if match.group(2) == '"':
             xline = xline [ match.end(): ]
@@ -609,7 +609,7 @@ class LuaPl30:
     def __init__(self):
         self.regex = None
         self.iffail = None
-    
+
     def run(self, xline, lineno, match):
         status = pywmlx.state.machine._pending_luastring.plural.status
         numequals = 0
@@ -623,16 +623,16 @@ class LuaPl30:
         if realmatch:
             xline = xline [ realmatch.end(): ]
             if status == 'wait_string':
-                pywmlx.state.machine._pending_luastring.addline( 
-                    realmatch.group(1) 
+                pywmlx.state.machine._pending_luastring.addline(
+                    realmatch.group(1)
                 )
                 pywmlx.state.machine._pending_luastring.plural.status = (
                     'wait_plural'
                 )
                 _nextstate = 'lua_plidle2'
             else:
-                pywmlx.state.machine._pending_luastring.plural.addline( 
-                    realmatch.group(1) 
+                pywmlx.state.machine._pending_luastring.plural.addline(
+                    realmatch.group(1)
                 )
                 pywmlx.state.machine._pending_luastring.plural.status = (
                     'wait_close'
@@ -662,7 +662,7 @@ class LuaGowmlState:
     def __init__(self):
         self.regex = re.compile(r'.*?>>\s*')
         self.iffail = 'lua_final'
-    
+
     def run(self, xline, lineno, match):
         _nextstate = 'lua_idle'
         if pywmlx.state.machine._waitwml:
@@ -678,7 +678,7 @@ class LuaFinalState:
     def __init__(self):
         self.regex = None
         self.iffail = None
-    
+
     def run(self, xline, lineno, match):
         rx_str = ( r'function\s+([a-zA-Z0-9_.]+)|' +
                    r'([a-zA-Z0-9_.]+)\s*=\s*function' # +
@@ -726,7 +726,5 @@ def setup_luastates():
                                    ('lua_gowml', LuaGowmlState),
                                    ('lua_final', LuaFinalState)]:
         st = stateclass()
-        pywmlx.state.machine.addstate(statename, 
+        pywmlx.state.machine.addstate(statename,
             State(st.regex, st.run, st.iffail) )
-
-

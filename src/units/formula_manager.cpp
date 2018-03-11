@@ -79,4 +79,3 @@ void unit_formula_manager::write(config & cfg)
 		}
 	}
 }
-

@@ -420,4 +420,3 @@ LEVEL_RESULT campaign_controller::play_game()
 	}
 	return LEVEL_RESULT::VICTORY;
 }
-

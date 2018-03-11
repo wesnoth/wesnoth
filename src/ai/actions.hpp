@@ -459,4 +459,3 @@ std::ostream &operator<<(std::ostream &s, const ai::recall_result& r);
 std::ostream &operator<<(std::ostream &s, const ai::recruit_result& r);
 std::ostream &operator<<(std::ostream &s, const ai::stopunit_result& r);
 std::ostream &operator<<(std::ostream &s, const ai::synced_command_result& r);
-

@@ -220,4 +220,3 @@ bool matches_special_filter(const config &cfg, const vconfig& filter)
 }
 
 } // end namespace game_events
-

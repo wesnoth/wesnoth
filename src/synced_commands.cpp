@@ -685,4 +685,3 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_shroud, /*child*/, use_undo, /*show*/, /*e
 
 	return true;
 }
-

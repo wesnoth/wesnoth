@@ -131,4 +131,3 @@ int fake_unit_ptr::remove_from_fake_unit_manager(){
 	}
 	return ret;
 }
-

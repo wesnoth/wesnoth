@@ -112,4 +112,3 @@ public:
 	void process(events::pump_info&);
 	events::generic_event changed_event_;
 };
-

@@ -40,7 +40,7 @@ static const config &empty_traits() {
 }
 
 static const config &empty_topics() {
-  		static config cfg;
+		static config cfg;
 		return cfg;
 }
 

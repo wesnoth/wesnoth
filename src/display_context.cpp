@@ -171,4 +171,3 @@ team_data display_context::calculate_team_data(const team& tm) const
 	res.teamname = tm.user_team_name();
 	return res;
 }
-

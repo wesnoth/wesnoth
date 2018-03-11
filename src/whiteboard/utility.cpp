@@ -213,4 +213,3 @@ std::deque<action_ptr> find_actions_of(const unit& target)
 }
 
 } //end namespace wb
-

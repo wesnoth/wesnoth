@@ -44,7 +44,7 @@ public:
 	 * all values to work with).
 	 * @param[in]  id          The id of the menu item.
 	 * @param[in]  definition  The WML defining this menu item.
- 	*/
+	 */
 	wml_menu_item(const std::string& id, const vconfig& definition);
 
 	/**
@@ -64,9 +64,9 @@ public:
 	}
 
 	/**
- 	 * The image associated with this menu item.
- 	 * The returned string will not be empty; a default will be supplied if needed.
- 	 */
+	 * The image associated with this menu item.
+	 * The returned string will not be empty; a default will be supplied if needed.
+	 */
 	const std::string& image() const;
 
 	/** If true, allow using the menu to trigger this item. */

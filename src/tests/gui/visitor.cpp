@@ -161,5 +161,3 @@ BOOST_AUTO_TEST_CASE(test_gui2_visitor)
 	test_control();
 	test_grid();
 }
-
-

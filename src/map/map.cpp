@@ -462,4 +462,3 @@ void gamemap::add_fog_border()
 	++h_;
 	tiles_ = tiles_new;
 }
-

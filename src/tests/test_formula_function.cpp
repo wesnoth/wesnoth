@@ -199,4 +199,3 @@ BOOST_AUTO_TEST_CASE(test_formula_function_trig)
 }
 
 BOOST_AUTO_TEST_SUITE_END()
-

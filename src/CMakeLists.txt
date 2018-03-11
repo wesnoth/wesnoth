@@ -323,7 +323,7 @@ if(ENABLE_SERVER)
 	GetSources("wesnothd" wesnothd_SRC)
 
 	add_executable(wesnothd WIN32 ${wesnothd_SRC})
-	
+
 	if(ENABLE_MYSQL)
 		target_include_directories(wesnothd SYSTEM PRIVATE ${MYSQL_CFLAGS})
 		target_compile_definitions(wesnothd PRIVATE HAVE_MYSQLPP)
@@ -349,12 +349,12 @@ if(ENABLE_CAMPAIGN_SERVER)
 	GetSources("campaignd" campaignd_SRC)
 
 	add_executable(campaignd ${campaignd_SRC})
-	
+
 	if(ENABLE_MYSQL)
 		target_include_directories(campaignd SYSTEM PRIVATE ${MYSQL_CFLAGS})
 		target_compile_definitions(campaignd PRIVATE HAVE_MYSQLPP)
 	endif(ENABLE_MYSQL)
-	
+
 	target_link_libraries(campaignd
 			wesnoth-core
 			${server-external-libs}
@@ -373,7 +373,7 @@ endif(ENABLE_CAMPAIGN_SERVER)
 if(ENABLE_TESTS)
 
 	add_definitions(-DBOOST_TEST_DYN_LINK)
-	
+
 	GetSources("boost_unit_tests" test_SRC)
 
 	set_source_files_properties(
@@ -384,7 +384,7 @@ if(ENABLE_TESTS)
 	)
 
 	add_executable(boost_unit_tests ${test_SRC})
-	
+
 	target_link_libraries(boost_unit_tests
 		wesnoth-client
 		lua
@@ -401,4 +401,3 @@ if(ENABLE_TESTS)
 	)
 
 endif(ENABLE_TESTS)
-
