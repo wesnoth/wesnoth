@@ -34,6 +34,10 @@ class config;
 namespace schema_validation
 {
 
+/**
+ * Stores information about a schema type.
+ * This is an abstract base class for several variants of schema type.
+ */
 class class_type {
 protected:
 	std::string name_;
@@ -45,6 +49,10 @@ public:
 	static std::shared_ptr<class_type> from_config(const config& cfg);
 };
 
+/**
+ * Stores information about a schema type.
+ * This type represents a simple pattern match.
+ */
 class class_type_simple : public class_type {
 	boost::regex pattern_;
 public:
@@ -52,6 +60,10 @@ public:
 	bool matches(const std::string& value, const map& type_map) const override;
 };
 
+/**
+ * Stores information about a schema type.
+ * This type represents a name alias for another type.
+ */
 class class_type_alias : public class_type {
 	mutable std::shared_ptr<class_type> cached_;
 	std::string link_;
@@ -60,6 +72,10 @@ public:
 	bool matches(const std::string& value, const map& type_map) const override;
 };
 
+/**
+ * Stores information about a schema type.
+ * This is an abstract base class for composite types.
+ */
 class class_type_composite : public class_type {
 protected:
 	std::vector<std::shared_ptr<class_type>> subtypes_;
@@ -71,18 +87,30 @@ public:
 	}
 };
 
+/**
+ * Stores information about a schema type.
+ * Represents a union type, which matches if any of its subtypes match.
+ */
 class class_type_union : public class_type_composite {
 public:
 	explicit class_type_union(const std::string& name) : class_type_composite(name) {}
 	bool matches(const std::string& value, const map& type_map) const override;
 };
 
+/**
+ * Stores information about a schema type.
+ * Represents an intersection type, which matches if all of its subtypes match.
+ */
 class class_type_intersection : public class_type_composite {
 public:
 	explicit class_type_intersection(const std::string& name) : class_type_composite(name) {}
 	bool matches(const std::string& value, const map& type_map) const override;
 };
 
+/**
+ * Stores information about a schema type.
+ * Represents a list type, where each list element is itself a union.
+ */
 class class_type_list : public class_type_union {
 	boost::regex split_;
 	int min_ = 0, max_ = -1;
