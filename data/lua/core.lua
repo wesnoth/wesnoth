@@ -438,6 +438,54 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			end
 		end
 		return data_to_save
+
+	--[========[Game Interface Control]========]
+
+	wesnoth.interface = {
+		delay = wesnoth.delay,
+		float_label = wesnoth.float_label,
+		select_unit = wesnoth.select_unit,
+		highlight_hex = wesnoth.highlight_hex,
+		deselect_hex = wesnoth.deselect_hex,
+		get_selected_hex = wesnoth.get_selected_tile,
+		scroll_to_hex = wesnoth.scroll_to_tile,
+		lock = wesnoth.lock_view,
+		is_locked = wesnoth.view_locked,
+		is_skipping_messages = wesnoth.is_skipping_messages,
+		skip_messages = wesnoth.skip_messages,
+		add_hex_overlay = wesnoth.add_tile_overlay,
+		remove_hex_overlay = wesnoth.remove_tile_overlay,
+		game_display = wesnoth.theme_items,
+		get_displayed_unit = wesnoth.get_displayed_unit,
+	}
+
+	--! Fakes the move of a unit satisfying the given @a filter to position @a x, @a y.
+	--! @note Usable only during WML actions.
+	function wesnoth.interface.move_unit_fake(filter, to_x, to_y)
+		local moving_unit = wesnoth.get_units(filter)[1]
+		local from_x, from_y = moving_unit.x, moving_unit.y
+
+		wesnoth.interface.scroll_to_hex(from_x, from_y)
+		to_x, to_y = wesnoth.find_vacant_tile(x, y, moving_unit)
+
+		if to_x < from_x then
+			moving_unit.facing = "sw"
+		elseif to_x > from_x then
+			moving_unit.facing = "se"
+		end
+		moving_unit:extract()
+
+		wml_actions.move_unit_fake{
+			type      = moving_unit.type,
+			gender    = moving_unit.gender,
+			variation = moving.variation,
+			side      = moving_unit.side,
+			x         = from_x .. ',' .. to_x,
+			y         = from_y .. ',' .. to_y
+		}
+
+		moving_unit:to_map(to_x, to_y)
+		wml_actions.redraw{}
 	end
 end
 
