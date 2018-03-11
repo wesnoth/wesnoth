@@ -358,10 +358,9 @@ void map_context::load_scenario(const config& game_config)
 		teams_.back().build(side, map_);
 
 		for(config& a_unit : side.child_range("unit")) {
-			map_location loc(a_unit, nullptr);
 			a_unit["side"] = i;
 
-			units_.add(loc, *unit::create(a_unit, true));
+			units_.insert(unit::create(a_unit, true));
 		}
 
 		++i;
