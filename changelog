@@ -35,7 +35,8 @@ Version 1.13.11+dev:
      repeat_on_hold=yes to [default_hotkey].
    * [set_variable] now supports prefix and suffix operations for
      string concatenation.
-   * [effect]apply_to=attack now supports set_range
+   * [effect] apply_to=attack now supports set_range
+   * [cancel_action] now works in attack-related events.
  * Miscellaneous and bug fixes:
    * Fixed standing animation toggle not taking immediate effect (bug
      #1653).
@@ -50,6 +51,8 @@ Version 1.13.11+dev:
      (bug #2434).
    * 'Turn Changed' desktop notifications in MP will now only display when
      human-controlled sides take control.
+   * Fixed regression in 1.13.11 where completed events could fire again when
+     reloading a save.
  * Music and sound effects:
    * Updated a few UI sounds.
 
