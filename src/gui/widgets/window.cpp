@@ -277,7 +277,7 @@ window::window(const builder_window::window_resolution* definition)
 	, video_(CVideo::get_singleton())
 	, status_(NEW)
 	, show_mode_(none)
-	, retval_(NONE)
+	, retval_(retval::NONE)
 	, owner_(nullptr)
 	, need_layout_(true)
 	, variables_()
@@ -434,16 +434,16 @@ window* window::window_instance(const unsigned handle)
  * * cancel cancels the dialog.
  *
  */
-window::retval window::get_retval_by_id(const std::string& id)
+retval window::get_retval_by_id(const std::string& id)
 {
 	// Note it might change to a map later depending on the number
 	// of items.
 	if(id == "ok") {
-		return OK;
+		return retval::OK;
 	} else if(id == "cancel" || id == "quit") {
-		return CANCEL;
+		return retval::CANCEL;
 	} else {
-		return NONE;
+		return retval::NONE;
 	}
 }
 
@@ -969,7 +969,7 @@ void window::layout()
 
 		connect_signal_mouse_left_click(
 				*click_dismiss_button,
-				std::bind(&window::set_retval, this, OK, true));
+				std::bind(&window::set_retval, this, retval::OK, true));
 
 		layout_initialize(true);
 		generate_dot_file("layout_initialize", LAYOUT);
@@ -1122,7 +1122,7 @@ bool window::click_dismiss(const int mouse_button_mask)
 {
 	if(does_click_dismiss()) {
 		if((mouse_button_state_ & mouse_button_mask) == 0) {
-			set_retval(OK);
+			set_retval(retval::OK);
 		} else {
 			mouse_button_state_ &= ~mouse_button_mask;
 		}
@@ -1361,10 +1361,10 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 		}
 	}
 	if(!enter_disabled_ && (key == SDLK_KP_ENTER || key == SDLK_RETURN)) {
-		set_retval(OK);
+		set_retval(retval::OK);
 		handled = true;
 	} else if(key == SDLK_ESCAPE && !escape_disabled_) {
-		set_retval(CANCEL);
+		set_retval(retval::CANCEL);
 		handled = true;
 	} else if(key == SDLK_SPACE) {
 		handled = click_dismiss(0);
@@ -1440,7 +1440,7 @@ void window::signal_handler_request_placement(const event::ui_event event,
 
 void window::signal_handler_close_window()
 {
-	set_retval(AUTO_CLOSE);
+	set_retval(retval::AUTO_CLOSE);
 }
 
 // }---------- DEFINITION ---------{

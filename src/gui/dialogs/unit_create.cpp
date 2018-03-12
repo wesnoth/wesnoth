@@ -164,7 +164,7 @@ void unit_create::post_show(window& window)
 
 	choice_ = "";
 
-	if(get_retval() != window::OK) {
+	if(get_retval() != retval::OK) {
 		return;
 	}
 

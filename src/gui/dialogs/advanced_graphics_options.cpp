@@ -94,7 +94,7 @@ void advanced_graphics_options::update_scale_case(const std::string& case_id)
 
 void advanced_graphics_options::post_show(window& /*window*/)
 {
-	if(get_retval() == window::OK) {
+	if(get_retval() == retval::OK) {
 		for(const std::string& i : scale_cases) {
 			update_scale_case(i);
 		}

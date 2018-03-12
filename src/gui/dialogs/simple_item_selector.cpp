@@ -120,7 +120,7 @@ void simple_item_selector::pre_show(window& window)
 
 void simple_item_selector::post_show(window& window)
 {
-	if(get_retval() == window::OK || single_button_) {
+	if(get_retval() == retval::OK || single_button_) {
 		index_ = find_widget<listbox>(&window, "listbox", false).get_selected_row();
 	}
 }

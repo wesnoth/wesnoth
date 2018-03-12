@@ -281,7 +281,7 @@ void unit_recall::dismiss_unit(window& window)
 	if(!message.str().empty()) {
 		const int res = gui2::show_message(_("Dismiss Unit"), message.str(), message::yes_no_buttons);
 
-		if(res != gui2::window::OK) {
+		if(res != gui2::retval::OK) {
 			return;
 		}
 	}
@@ -309,7 +309,7 @@ void unit_recall::dismiss_unit(window& window)
 
 	// Close the dialog if all units are dismissed
 	if(list.get_item_count() == 0) {
-		window.set_retval(window::CANCEL);
+		window.set_retval(retval::CANCEL);
 	}
 }
 
@@ -336,7 +336,7 @@ void unit_recall::post_show(window& window)
 	listbox& list = find_widget<listbox>(&window, "recall_list", false);
 	sort_last = list.get_active_sorting_option();
 
-	if(get_retval() == window::OK) {
+	if(get_retval() == retval::OK) {
 		selected_index_ = list.get_selected_row();
 	}
 }

@@ -40,7 +40,7 @@ void network_transmission::pump_monitor::process(events::pump_info&)
 		return;
 	connection_->poll();
 	if(connection_->finished()) {
-		window_.get().set_retval(window::OK);
+		window_.get().set_retval(retval::OK);
 	} else {
 		size_t completed, total;
 			completed = connection_->current();
@@ -89,7 +89,7 @@ void network_transmission::post_show(window& /*window*/)
 {
 	pump_monitor_.window_.reset();
 
-	if(get_retval() == window::retval::CANCEL) {
+	if(get_retval() == retval::CANCEL) {
 		connection_->cancel();
 	}
 }

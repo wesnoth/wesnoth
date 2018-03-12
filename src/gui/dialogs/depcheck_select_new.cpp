@@ -106,7 +106,7 @@ void depcheck_select_new::pre_show(window& window)
 
 void depcheck_select_new::post_show(window& window)
 {
-	if(get_retval() == window::OK) {
+	if(get_retval() == retval::OK) {
 		listbox& items = find_widget<listbox>(&window, "itemlist", false);
 		result_ = items.get_selected_row();
 	}

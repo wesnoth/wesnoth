@@ -226,7 +226,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 				warning_msg += "\n\n";
 				warning_msg += _("Do you want to continue?");
 
-				if(gui2::show_message(_("Warning"), warning_msg, gui2::dialogs::message::yes_no_buttons) != gui2::window::OK) {
+				if(gui2::show_message(_("Warning"), warning_msg, gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK) {
 					return std::make_pair(wesnothd_connection_ptr(), config());
 				}
 			}
@@ -240,7 +240,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 				std::string password = preferences::password(host, login);
 
 				bool fall_through = (*error)["force_confirmation"].to_bool() ?
-					(gui2::show_message(_("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::window::CANCEL) :
+					(gui2::show_message(_("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::retval::CANCEL) :
 					false;
 
 				const bool is_pw_request = !((*error)["password_request"].empty()) && !(password.empty());
@@ -359,7 +359,7 @@ std::pair<wesnothd_connection_ptr, config> open_connection(std::string host)
 
 				switch(dlg.get_retval()) {
 					//Log in with password
-					case gui2::window::OK:
+					case gui2::retval::OK:
 						break;
 					//Request a password reminder
 					case 1:
@@ -449,7 +449,7 @@ void enter_wait_mode(mp_workflow_helper_ptr helper, int game_id, bool observe)
 		}
 
 		dlg.show();
-		dlg_ok = dlg.get_retval() == gui2::window::OK;
+		dlg_ok = dlg.get_retval() == gui2::retval::OK;
 	}
 
 	if(dlg_ok) {
@@ -480,7 +480,7 @@ void enter_staging_mode(mp_workflow_helper_ptr helper)
 
 		gui2::dialogs::mp_staging dlg(*connect_engine, *helper->lobby_info, helper->connection);
 		dlg.show();
-		dlg_ok = dlg.get_retval() == gui2::window::OK;
+		dlg_ok = dlg.get_retval() == gui2::retval::OK;
 	} // end connect_engine_ptr, dlg scope
 
 	if(dlg_ok) {
@@ -508,7 +508,7 @@ void enter_create_mode(mp_workflow_helper_ptr helper)
 
 		// The Create Game dialog also has a LOAD_GAME retval besides OK.
 		// Do a did-not-cancel check here to catch that
-		dlg_ok = dlg.get_retval() != gui2::window::CANCEL;
+		dlg_ok = dlg.get_retval() != gui2::retval::CANCEL;
 	}
 
 	if(dlg_ok) {

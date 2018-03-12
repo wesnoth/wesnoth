@@ -32,7 +32,7 @@ public:
 	 * @param [in, out] text      The parameter's usage is:
 	 *                            - Input: The initial value of the text field.
 	 *                            - Output: The new unit name the user entered
-	 *                              if the dialog returns @ref window::OK,
+	 *                              if the dialog returns @ref retval::OK,
 	 *                              undefined otherwise.
 	 */
 	edit_text(const std::string& title,

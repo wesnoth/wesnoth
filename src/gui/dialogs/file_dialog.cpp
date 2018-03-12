@@ -271,7 +271,7 @@ bool file_dialog::on_exit(window& window)
 		// Attempting to exit by double clicking items -- only proceeds if the item
 		// was a file.
 		if(process_fileview_submit(window)) {
-			window.set_retval(window::OK, false);
+			window.set_retval(retval::OK, false);
 			return true;
 		} else {
 			return false;
@@ -279,7 +279,7 @@ bool file_dialog::on_exit(window& window)
 	}
 
 
-	if(window.get_retval() == window::OK) {
+	if(window.get_retval() == retval::OK) {
 		// Attempting to exit by pressing Enter/clicking OK -- only proceeds if the
 		// textbox was not altered by the user to point to a different directory.
 		return process_textbox_submit(window);
@@ -305,7 +305,7 @@ bool file_dialog::confirm_overwrite(window& /*window*/, file_dialog::SELECTION_T
 
 	const std::string& message
 			= _("The file already exists. Do you wish to overwrite it?");
-	return gui2::show_message(_("Confirm"), message, message::yes_no_buttons) != gui2::window::CANCEL;
+	return gui2::show_message(_("Confirm"), message, message::yes_no_buttons) != gui2::retval::CANCEL;
 }
 
 bool file_dialog::process_submit_common(window& window, const std::string& name)
@@ -731,7 +731,7 @@ void file_dialog::on_file_delete_cmd(window& window)
 			: _("The following file will be permanently deleted:"))
 			+ "\n\n" + selection + "\n\n" + _("Do you wish to continue?");
 
-	if(gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::window::CANCEL) {
+	if(gui2::show_message(_("Confirm"), message, message::yes_no_buttons) == gui2::retval::CANCEL) {
 		return;
 	}
 

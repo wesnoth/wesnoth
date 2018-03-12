@@ -58,7 +58,7 @@ struct message_implementation
 			button_status.ptr->set_label(button_status.caption);
 		}
 
-		if(button_status.retval != window::NONE) {
+		if(button_status.retval != retval::NONE) {
 			button_status.ptr->set_retval(button_status.retval);
 		}
 	}
@@ -141,7 +141,7 @@ message::button_status::button_status()
 	: ptr(nullptr)
 	, caption()
 	, visible(widget::visibility::invisible)
-	, retval(window::NONE)
+	, retval(retval::NONE)
 {
 }
 

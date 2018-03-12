@@ -18,7 +18,7 @@
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 #include "gui/dialogs/sp_options_configure.hpp"
-#include "gui/widgets/window.hpp"
+#include "gui/widgets/retval.hpp"
 #include "wml_exception.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -56,7 +56,7 @@ bool enter_create_mode(saved_game& state, jump_to_campaign_info jump_to_campaign
 				return false;
 			}
 
-			if(dlg.get_retval() != gui2::window::OK) {
+			if(dlg.get_retval() != gui2::retval::OK) {
 				return false;
 			}
 

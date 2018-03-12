@@ -45,18 +45,18 @@ public:
 	 * @param [in, out] width     The parameter's usage is:
 	 *                            - Input: The initial width of the map.
 	 *                            - Output: The selected width of the map if
-	 *                              the dialog returns @ref window::OK
+	 *                              the dialog returns @ref retval::OK
 	 *                              undefined otherwise.
 	 *
 	 * @param [in, out] height    The parameter's usage is:
 	 *                            - Input: The initial height of the map.
 	 *                            - Output: The selected height of the map if
-	 *                              the dialog returns @ref window::OK
+	 *                              the dialog returns @ref retval::OK
 	 *                              undefined otherwise.
 	 *
 	 * @param [out] expand_direction
 	 *                            The selected expand direction if the dialog
-	 *                            returns  @ref window::OK undefined
+	 *                            returns  @ref retval::OK undefined
 	 *                            otherwise.
 	 *
 	 * @param [in, out] copy_edge_terrain
@@ -65,7 +65,7 @@ public:
 	 *                              toggle.
 	 *                            - Output: The final value of the copy edge
 	 *                              toggle if the dialog returns @ref
-	 *                              window::OK undefined otherwise.
+	 *                              retval::OK undefined otherwise.
 	 */
 	editor_resize_map(int& width,
 					   int& height,

@@ -27,7 +27,7 @@
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/window.hpp"
+#include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "wml_exception.hpp"
 
@@ -174,7 +174,7 @@ bool uninstall_local_addons()
 				_("Confirm")
 				, confirm_message
 				, gui2::dialogs::message::yes_no_buttons);
-	} while (res != gui2::window::OK);
+	} while (res != gui2::retval::OK);
 
 	std::set<std::string> failed_names, skipped_names, succeeded_names;
 
@@ -240,7 +240,7 @@ bool manage_addons()
 	addon_dlg.show();
 	int res = addon_dlg.get_retval();
 
-	if(res == gui2::window::OK) {
+	if(res == gui2::retval::OK) {
 		res = addon_download;
 	}
 

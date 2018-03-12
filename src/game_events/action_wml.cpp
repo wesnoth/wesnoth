@@ -34,7 +34,7 @@
 #include "preferences/game.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/window.hpp"
+#include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
 #include "map/exception.hpp"

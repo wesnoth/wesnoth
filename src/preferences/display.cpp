@@ -21,6 +21,7 @@
 
 #include "preferences/display.hpp"
 
+#include "cursor.hpp"
 #include "display.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
@@ -31,7 +32,7 @@
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/window.hpp"
+#include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "play_controller.hpp"
 #include "game_data.hpp"

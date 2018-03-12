@@ -82,7 +82,7 @@ void addon_connect::pre_show(window& window)
 
 void addon_connect::post_show(window& window)
 {
-	if(get_retval() == window::OK) {
+	if(get_retval() == retval::OK) {
 		text_box& host_widget
 				= find_widget<text_box>(&window, "host_name", false);
 

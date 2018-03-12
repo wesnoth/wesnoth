@@ -159,7 +159,7 @@ void campaign_difficulty::pre_show(window& window)
 
 void campaign_difficulty::post_show(window& window)
 {
-	if(get_retval() == window::OK) {
+	if(get_retval() == retval::OK) {
 		listbox& list = find_widget<listbox>(&window, "listbox", false);
 		selected_difficulty_ = difficulties_.child("difficulty", list.get_selected_row())["define"].str();
 	}

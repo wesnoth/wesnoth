@@ -385,7 +385,7 @@ void game_load::delete_button_callback(window& window)
 
 		// Close the dialog if there are no more saves
 		if(list.get_item_count() == 0) {
-			window.set_retval(window::CANCEL);
+			window.set_retval(retval::CANCEL);
 		}
 
 		display_savegame(window);

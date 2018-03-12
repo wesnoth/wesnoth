@@ -82,7 +82,7 @@ void language_selection::pre_show(window& window)
 
 void language_selection::post_show(window& window)
 {
-	if(get_retval() == window::OK) {
+	if(get_retval() == retval::OK) {
 		const int res = find_widget<listbox>(&window, "language_list", false)
 								.get_selected_row();
 

@@ -90,7 +90,7 @@ void addon_uninstall_list::post_show(window& window)
 
 	assert(rows == this->ids_.size() && rows == this->titles_map_.size());
 
-	if(!rows || get_retval() != window::OK) {
+	if(!rows || get_retval() != retval::OK) {
 		return;
 	}
 

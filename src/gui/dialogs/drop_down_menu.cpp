@@ -74,9 +74,9 @@ namespace
 
 		SDL_Rect rect = window.get_rectangle();
 		if(!sdl::point_in_rect(coordinate, rect)) {
-			window.set_retval(window::CANCEL);
+			window.set_retval(retval::CANCEL);
 		} else if(!keep_open) {
-			window.set_retval(window::OK);
+			window.set_retval(retval::OK);
 		}
 	}
 
@@ -96,7 +96,7 @@ namespace
 
 	void resize_callback(window& window)
 	{
-		window.set_retval(window::CANCEL);
+		window.set_retval(retval::CANCEL);
 		window.close();
 	}
 }

@@ -358,8 +358,8 @@ void mp_create_game::pre_show(window& win)
 	//
 	plugins_context_.reset(new plugins_context("Multiplayer Create"));
 
-	plugins_context_->set_callback("create", [&win](const config&) { win.set_retval(window::OK); }, false);
-	plugins_context_->set_callback("quit",   [&win](const config&) { win.set_retval(window::CANCEL); }, false);
+	plugins_context_->set_callback("create", [&win](const config&) { win.set_retval(retval::OK); }, false);
+	plugins_context_->set_callback("quit",   [&win](const config&) { win.set_retval(retval::CANCEL); }, false);
 	plugins_context_->set_callback("load",   [this, &win](const config&) { load_game_callback(win); }, false);
 
 #define UPDATE_ATTRIBUTE(field, convert) \
@@ -845,7 +845,7 @@ void mp_create_game::post_show(window& window)
 		return;
 	}
 
-	if(get_retval() == window::OK) {
+	if(get_retval() == retval::OK) {
 		prefs::set_modifications(create_engine_.active_mods());
 		prefs::set_level_type(create_engine_.current_level_type().v);
 		prefs::set_level(create_engine_.current_level().id());

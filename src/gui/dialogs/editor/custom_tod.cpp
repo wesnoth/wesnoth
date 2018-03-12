@@ -345,7 +345,7 @@ void custom_tod::post_show(window& window)
 {
 	update_tod_display(window);
 
-	if(get_retval() == window::OK) {
+	if(get_retval() == retval::OK) {
 		// TODO: save ToD
 	}
 }

@@ -65,7 +65,7 @@ bool modal_dialog::show(const unsigned auto_close_time)
 		if (pm && pm->any_running())
 		{
 			plugins_context pc("Dialog");
-			pc.set_callback("skip_dialog", [this](config) { retval_ = window::OK; }, false);
+			pc.set_callback("skip_dialog", [this](config) { retval_ = retval::OK; }, false);
 			pc.set_callback("quit", [](config) {}, false);
 			pc.play_slice();
 		}
@@ -103,7 +103,7 @@ bool modal_dialog::show(const unsigned auto_close_time)
 	 */
 	SDL_FlushEvent(DOUBLE_CLICK_EVENT);
 
-	finalize_fields(*window_, (retval_ == window::OK || always_save_fields_));
+	finalize_fields(*window_, (retval_ == retval::OK || always_save_fields_));
 
 	post_show(*window_);
 
@@ -113,7 +113,7 @@ bool modal_dialog::show(const unsigned auto_close_time)
 	// Reset window object.
 	window_.reset(nullptr);
 
-	return retval_ == window::OK;
+	return retval_ == retval::OK;
 }
 
 field_bool* modal_dialog::register_bool(

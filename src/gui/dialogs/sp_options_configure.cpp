@@ -40,7 +40,7 @@ void sp_options_configure::pre_show(window& window)
 
 void sp_options_configure::post_show(window& window)
 {
-	if(window.get_retval() == window::OK) {
+	if(window.get_retval() == retval::OK) {
 		config_engine_.set_options(options_manager_->get_options_config());
 	}
 }

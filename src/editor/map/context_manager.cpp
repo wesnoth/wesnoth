@@ -37,7 +37,7 @@
 #include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/window.hpp"
+#include "gui/widgets/retval.hpp"
 
 #include "gui/dialogs/editor/edit_scenario.hpp"
 #include "gui/dialogs/editor/edit_side.hpp"
@@ -689,7 +689,7 @@ void context_manager::generate_map_dialog()
 	dialog.select_map_generator(last_map_generator_);
 	dialog.show();
 
-	if(dialog.get_retval() == gui2::window::OK) {
+	if(dialog.get_retval() == gui2::retval::OK) {
 		std::string map_string;
 		map_generator* const map_generator = dialog.get_selected_map_generator();
 		try {
@@ -717,7 +717,7 @@ bool context_manager::confirm_discard()
 	if(get_map_context().modified()) {
 		const int res = gui2::show_message(_("Unsaved Changes"),
 			_("Do you want to discard all changes made to the map since the last save?"), gui2::dialogs::message::yes_no_buttons);
-		return gui2::window::CANCEL != res;
+		return gui2::retval::CANCEL != res;
 	}
 
 	return true;

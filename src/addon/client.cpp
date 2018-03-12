@@ -23,7 +23,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/widgets/window.hpp"
+#include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "random.hpp"
 #include "serialization/parser.hpp"
@@ -377,7 +377,7 @@ addons_client::install_result addons_client::do_resolve_addon_dependencies(const
 			broken_deps_report += "\n    " + font::unicode_bullet + " " + make_addon_title(broken_dep_id);
 		}
 
-		if(gui2::show_message(_("Broken Dependencies"), broken_deps_report, gui2::dialogs::message::yes_no_buttons) != gui2::window::OK) {
+		if(gui2::show_message(_("Broken Dependencies"), broken_deps_report, gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK) {
 			result.outcome = install_outcome::abort;
 			return result; // canceled by user
 		}
@@ -423,7 +423,7 @@ addons_client::install_result addons_client::do_resolve_addon_dependencies(const
 			"The following dependencies could not be installed. Do you still wish to continue?",
 			failed_titles.size()) + std::string("\n\n") + utils::bullet_list(failed_titles);
 
-		result.outcome = gui2::show_message(_("Dependencies Installation Failed"), failed_deps_report, gui2::dialogs::message::yes_no_buttons) == gui2::window::OK ? install_outcome::success : install_outcome::abort; // If the user cancels, return abort. Otherwise, return success, since the user chose to ignore the failure.
+		result.outcome = gui2::show_message(_("Dependencies Installation Failed"), failed_deps_report, gui2::dialogs::message::yes_no_buttons) == gui2::retval::OK ? install_outcome::success : install_outcome::abort; // If the user cancels, return abort. Otherwise, return success, since the user chose to ignore the failure.
 		return result;
 	}
 
@@ -460,7 +460,7 @@ bool addons_client::do_check_before_overwriting_addon(const addon_info& addon)
 	text += utils::bullet_list(extra_items) + "\n\n";
 	text += _("Do you really wish to continue?");
 
-	return gui2::show_message(_("Confirm"), text, gui2::dialogs::message::yes_no_buttons) == gui2::window::OK;
+	return gui2::show_message(_("Confirm"), text, gui2::dialogs::message::yes_no_buttons) == gui2::retval::OK;
 }
 
 addons_client::install_result addons_client::install_addon_with_checks(const addons_list& addons, const addon_info& addon)

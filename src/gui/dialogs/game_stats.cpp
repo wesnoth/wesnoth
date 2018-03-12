@@ -259,7 +259,7 @@ void game_stats::on_tab_select(window& window)
 
 void game_stats::post_show(window& window)
 {
-	if(get_retval() == window::OK) {
+	if(get_retval() == retval::OK) {
 		const int selected_tab = find_widget<listbox>(&window, "tab_bar", false).get_selected_row();
 
 		const std::string list_id = selected_tab == 0 ? "game_stats_list" : "scenario_settings_list";

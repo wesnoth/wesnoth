@@ -216,7 +216,7 @@ bool mp_join_game::fetch_game_config()
 		gui2::dialogs::faction_select dlg(flg, color, side_num);
 		dlg.show();
 
-		if(dlg.get_retval() != gui2::window::OK) {
+		if(dlg.get_retval() != gui2::retval::OK) {
 			return true;
 		}
 
@@ -301,8 +301,8 @@ void mp_join_game::pre_show(window& window)
 	//
 	plugins_context_.reset(new plugins_context("Multiplayer Join"));
 
-	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(window::OK); }, false);
-	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(window::CANCEL); }, false);
+	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(retval::OK); }, false);
+	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(retval::CANCEL); }, false);
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 }
 
@@ -424,7 +424,7 @@ void mp_join_game::network_handler(window& window)
 {
 	// If the game has already started, close the dialog immediately.
 	if(level_["started"].to_bool()) {
-		window.set_retval(window::OK);
+		window.set_retval(retval::OK);
 		return;
 	}
 
@@ -441,12 +441,12 @@ void mp_join_game::network_handler(window& window)
 	}
 
 	if(data["failed"].to_bool()) {
-		window.set_retval(window::CANCEL);
+		window.set_retval(retval::CANCEL);
 	} else if(data.child("start_game")) {
 		level_["started"] = true;
-		window.set_retval(window::OK);
+		window.set_retval(retval::OK);
 	} else if(data.child("leave_game")) {
-		window.set_retval(window::CANCEL);
+		window.set_retval(retval::CANCEL);
 	}
 
 	if(data.child("stop_updates")) {
@@ -494,7 +494,7 @@ void mp_join_game::post_show(window& window)
 		update_timer_ = 0;
 	}
 
-	if(window.get_retval() == window::OK) {
+	if(window.get_retval() == retval::OK) {
 		if(const config& stats = level_.child("statistics")) {
 			statistics::fresh_stats();
 			statistics::read_stats(stats);

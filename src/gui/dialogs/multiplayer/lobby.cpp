@@ -260,7 +260,7 @@ bool handle_addon_requirements_gui(const std::vector<mp::game_info::required_add
 
 		assert(needs_download.size() > 0);
 
-		if(gui2::show_message(e_title, err_msg, message::yes_no_buttons, true) == gui2::window::OK) {
+		if(gui2::show_message(e_title, err_msg, message::yes_no_buttons, true) == gui2::retval::OK) {
 			// Begin download session
 			return ad_hoc_addon_fetch_session(needs_download);
 		}
@@ -711,7 +711,7 @@ void mp_lobby::update_selected_game()
 
 bool mp_lobby::exit_hook(window& window)
 {
-	if(window.get_retval() == window::CANCEL) {
+	if(window.get_retval() == retval::CANCEL) {
 		return quit();
 	}
 
@@ -835,7 +835,7 @@ void mp_lobby::pre_show(window& window)
 	}, true);
 
 	plugins_context_->set_callback("create", [&window](const config&) { window.set_retval(CREATE); }, true);
-	plugins_context_->set_callback("quit", [&window](const config&) { window.set_retval(window::CANCEL); }, false);
+	plugins_context_->set_callback("quit", [&window](const config&) { window.set_retval(retval::CANCEL); }, false);
 
 	plugins_context_->set_callback("chat", [this](const config& cfg) { chatbox_->send_chat_message(cfg["message"], false); }, true);
 	plugins_context_->set_callback("select_game", [this](const config& cfg) {

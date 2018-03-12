@@ -124,8 +124,8 @@ void mp_staging::pre_show(window& window)
 	//
 	plugins_context_.reset(new plugins_context("Multiplayer Staging"));
 
-	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(window::OK); }, false);
-	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(window::CANCEL); }, false);
+	plugins_context_->set_callback("launch", [&window](const config&) { window.set_retval(retval::OK); }, false);
+	plugins_context_->set_callback("quit",   [&window](const config&) { window.set_retval(retval::CANCEL); }, false);
 	plugins_context_->set_callback("chat",   [&chat](const config& cfg) { chat.send_chat_message(cfg["message"], false); }, true);
 }
 
@@ -397,7 +397,7 @@ void mp_staging::select_leader_callback(ng::side_engine_ptr side, grid& row_grid
 	gui2::dialogs::faction_select dlg(side->flg(), side->color_id(), side->index() + 1);
 	dlg.show();
 
-	if(dlg.get_retval() == window::OK) {
+	if(dlg.get_retval() == retval::OK) {
 		update_leader_display(side, row_grid);
 
 		set_state_changed();
@@ -491,7 +491,7 @@ void mp_staging::network_handler(window& window)
 	std::tie(quit_signal_received, std::ignore) = connect_engine_.process_network_data(data);
 
 	if(quit_signal_received) {
-		window.set_retval(window::CANCEL);
+		window.set_retval(retval::CANCEL);
 	}
 
 	// Update side leader displays
@@ -536,7 +536,7 @@ void mp_staging::post_show(window& window)
 		update_timer_ = 0;
 	}
 
-	if(window.get_retval() == window::OK) {
+	if(window.get_retval() == retval::OK) {
 		connect_engine_.start_game();
 	} else {
 		connect_engine_.leave_game();

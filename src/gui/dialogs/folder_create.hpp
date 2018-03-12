@@ -32,7 +32,7 @@ public:
 	 *                            - Input: A suggested folder name.
 	 *                            - Output: The folder name the user actually
 	 *                              entered if the dialog returns @ref
-	 *                              window::OK; undefined otherwise.
+	 *                              retval::OK; undefined otherwise.
 	 */
 	folder_create(std::string& folder_name);
 

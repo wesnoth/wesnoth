@@ -192,7 +192,7 @@ void mp_change_control::highlight_side_nick(window& window)
 
 void mp_change_control::post_show(window& window)
 {
-	if(window.get_retval() == window::OK) {
+	if(window.get_retval() == retval::OK) {
 		DBG_GUI << "Main: changing control of side "
 		        << sides_[selected_side_] << " to nick "
 		        << nicks_[selected_nick_] << std::endl;

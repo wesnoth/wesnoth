@@ -90,7 +90,7 @@ void theme_list::pre_show(window& window)
 
 void theme_list::post_show(window& window)
 {
-	if(get_retval() != window::OK) {
+	if(get_retval() != retval::OK) {
 		return;
 	}
 

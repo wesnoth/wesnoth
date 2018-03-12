@@ -27,6 +27,7 @@
 #include "gui/core/event/handler.hpp"
 #include "gui/core/window_builder.hpp"
 #include "gui/widgets/panel.hpp"
+#include "gui/widgets/retval.hpp"
 
 #include <functional>
 #include <map>
@@ -80,35 +81,6 @@ public:
 	 * @returns                   The window or nullptr.
 	 */
 	static window* window_instance(const unsigned handle);
-
-	/**
-	 * Default return values.
-	 *
-	 * These values are named return values and most are assigned to a widget
-	 * automatically when using a certain id for that widget. The automatic
-	 * return values are always a negative number.
-	 *
-	 * Note this might be moved somewhere else since it will force people to
-	 * include the button, while it should be and implementation detail for most
-	 * callers.
-	 */
-	enum retval {
-		NONE = 0, /**<
-				   * Dialog is closed with no return
-				   * value, should be rare but eg a
-				   * message popup can do it.
-				   */
-		OK = -1,	 /**< Dialog is closed with ok button. */
-		CANCEL = -2, /**<
-					  * Dialog is closed with the cancel
-					  * button.
-					  */
-		AUTO_CLOSE = -3 /**<
-						 * The dialog is closed automatically
-						 * since it's timeout has been
-						 * triggered.
-						 */
-	};
 
 	/** Gets the retval for the default buttons. */
 	static retval get_retval_by_id(const std::string& id);

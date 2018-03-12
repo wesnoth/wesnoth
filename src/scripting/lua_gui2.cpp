@@ -443,7 +443,7 @@ int show_message_box(lua_State* L) {
 	if(style) {
 		int result = gui2::show_message(title, message, *style, markup, markup);
 		if(style == button_style::ok_cancel_buttons || style == button_style::yes_no_buttons) {
-			lua_pushboolean(L, result == gui2::window::OK);
+			lua_pushboolean(L, result == gui2::retval::OK);
 			return 1;
 		}
 	} else {

@@ -129,7 +129,7 @@ void unit_recruit::show_help()
 
 void unit_recruit::post_show(window& window)
 {
-	if(get_retval() == window::OK) {
+	if(get_retval() == retval::OK) {
 		selected_index_ = find_widget<listbox>(&window, "recruit_list", false)
 			.get_selected_row();
 	}

@@ -485,7 +485,7 @@ void title_screen::button_callback_multiplayer(window& window)
 		gui2::dialogs::mp_method_selection dlg;
 		dlg.show();
 
-		if(dlg.get_retval() != gui2::window::OK) {
+		if(dlg.get_retval() != gui2::retval::OK) {
 			return;
 		}
 

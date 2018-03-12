@@ -184,7 +184,7 @@ void unit_attack::pre_show(window& window)
 
 void unit_attack::post_show(window& window)
 {
-	if(get_retval() == window::OK) {
+	if(get_retval() == retval::OK) {
 		selected_weapon_ = find_widget<listbox>(&window, "weapon_list", false).get_selected_row();
 	}
 }

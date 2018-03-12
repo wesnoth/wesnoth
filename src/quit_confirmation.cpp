@@ -20,7 +20,7 @@
 #include "playmp_controller.hpp"
 #include "gui/dialogs/surrender_quit.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/widgets/window.hpp"
+#include "gui/widgets/retval.hpp"
 
 #include <boost/range/adaptor/reversed.hpp>
 
@@ -57,7 +57,7 @@ void quit_confirmation::quit_to_desktop()
 bool quit_confirmation::show_prompt(const std::string& message)
 {
 	return gui2::show_message(_("Quit"), message,
-		gui2::dialogs::message::yes_no_buttons) != gui2::window::CANCEL;
+		gui2::dialogs::message::yes_no_buttons) != gui2::retval::CANCEL;
 }
 
 bool quit_confirmation::default_prompt()

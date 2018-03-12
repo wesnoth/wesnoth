@@ -727,7 +727,7 @@ void addon_manager::publish_addon(const addon_info& addon, window& window)
 			_("The remote version of this add-on is greater or equal to the version being uploaded. Do you really wish to continue?"),
 			gui2::dialogs::message::yes_no_buttons);
 
-		if(res != gui2::window::OK) {
+		if(res != gui2::retval::OK) {
 			return;
 		}
 	}
@@ -737,7 +737,7 @@ void addon_manager::publish_addon(const addon_info& addon, window& window)
 	} else if(!client_.request_distribution_terms(server_msg)) {
 		gui2::show_error_message(
 			_("The server responded with an error:") + "\n" + client_.get_last_server_error());
-	} else if(gui2::show_message(_("Terms"), server_msg, gui2::dialogs::message::ok_cancel_buttons, true) == gui2::window::OK) {
+	} else if(gui2::show_message(_("Terms"), server_msg, gui2::dialogs::message::ok_cancel_buttons, true) == gui2::retval::OK) {
 		if(!client_.upload_addon(addon_id, server_msg, cfg)) {
 			const std::string& msg = _("The server responded with an error:") +
 			                         "\n\n" + client_.get_last_server_error();
@@ -772,7 +772,7 @@ void addon_manager::delete_addon(const addon_info& addon, window& window)
 
 	const int res = gui2::show_message(_("Confirm"), text, gui2::dialogs::message::yes_no_buttons);
 
-	if(res != gui2::window::OK) {
+	if(res != gui2::retval::OK) {
 		return;
 	}
 
@@ -800,7 +800,7 @@ void addon_manager::execute_default_action(const addon_info& addon, window& wind
 				int res = gui2::show_message(_("Uninstall add-on"),
 					vgettext("Do you want to uninstall '$addon|'?", symbols),
 					gui2::dialogs::message::ok_cancel_buttons);
-				if(res == gui2::window::OK) {
+				if(res == gui2::retval::OK) {
 					uninstall_addon(addon, window);
 				}
 			}

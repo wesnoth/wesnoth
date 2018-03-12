@@ -31,7 +31,7 @@ public:
 	 * @param [in, out]host_name  The parameter's usage is:
 	 *                            - Input: The initial value for the host_name.
 	 *                            - Output :The final value of the host_name if
-	 *                              the dialog returns @ref window::OK or 3
+	 *                              the dialog returns @ref retval::OK or 3
 	 *                              undefined otherwise.
 	 * @param allow_remove        Sets @ref allow_remove_.
 	 */

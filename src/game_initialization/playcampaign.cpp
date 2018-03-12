@@ -28,7 +28,7 @@
 #include "generators/map_generator.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/window.hpp"
+#include "gui/widgets/retval.hpp"
 #include "persist_manager.hpp"
 #include "playmp_controller.hpp"
 #include "log.hpp"
@@ -343,7 +343,7 @@ LEVEL_RESULT campaign_controller::play_game()
 				_("This scenario has ended. Do you want to continue the campaign?"),
 				gui2::dialogs::message::yes_no_buttons);
 
-			if(dlg_res == gui2::window::CANCEL) {
+			if(dlg_res == gui2::retval::CANCEL) {
 				return res;
 			}
 		}

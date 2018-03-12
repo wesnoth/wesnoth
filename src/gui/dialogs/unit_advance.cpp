@@ -118,7 +118,7 @@ void unit_advance::show_help()
 
 void unit_advance::post_show(window& window)
 {
-	if(get_retval() == window::OK) {
+	if(get_retval() == retval::OK) {
 		selected_index_ = find_widget<listbox>(&window, "advance_choice", false)
 			.get_selected_row();
 	}

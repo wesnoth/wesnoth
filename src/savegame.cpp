@@ -19,6 +19,7 @@
 
 #include "save_index.hpp"
 #include "carryover.hpp"
+#include "cursor.hpp"
 #include "format_time_summary.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
@@ -32,7 +33,7 @@
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
+#include "gui/widgets/retval.hpp"
 #include "log.hpp"
 #include "persist_manager.hpp"
 #include "resources.hpp"
@@ -99,7 +100,7 @@ bool loadgame::show_difficulty_dialog()
 		difficulty_dlg.show();
 
 		// Return if canceled, since otherwise load_data_.difficulty will be set to 'CANCEL'
-		if (difficulty_dlg.get_retval() != gui2::window::OK) {
+		if (difficulty_dlg.get_retval() != gui2::retval::OK) {
 			return false;
 		}
 
@@ -251,7 +252,7 @@ bool loadgame::check_version_compatibility(const version_info & save_version)
 		symbols["version_number"] = save_version.str();
 		const int res = gui2::show_message(_("Load Game"), utils::interpolate_variables_into_string(message, &symbols),
 			gui2::dialogs::message::yes_no_buttons);
-		return res == gui2::window::OK;
+		return res == gui2::retval::OK;
 	}
 
 	return true;
@@ -359,7 +360,7 @@ bool savegame::save_game_interactive(const std::string& message, DIALOG_TYPE dia
 		throw_quit_game_exception(); //Quit game
 	}
 
-	if (res == gui2::window::OK && check_overwrite()) {
+	if (res == gui2::retval::OK && check_overwrite()) {
 		return save_game();
 	}
 
@@ -382,7 +383,7 @@ int savegame::show_save_dialog(const std::string& message, DIALOG_TYPE dialog_ty
 	}
 
 	if (!check_filename(filename_)) {
-		res = gui2::window::CANCEL;
+		res = gui2::retval::CANCEL;
 	}
 
 	return res;
@@ -397,7 +398,7 @@ bool savegame::check_overwrite()
 	std::ostringstream message;
 	message << _("Save already exists. Do you want to overwrite it?") << "\n" << _("Name: ") << filename_;
 	const int res = gui2::show_message(_("Overwrite?"), message.str(), gui2::dialogs::message::yes_no_buttons);
-	return res == gui2::window::OK;
+	return res == gui2::retval::OK;
 
 }
 
@@ -613,7 +614,7 @@ int oos_savegame::show_save_dialog(const std::string& message, DIALOG_TYPE /*dia
 	}
 
 	if (!check_filename(filename_)) {
-		res = gui2::window::CANCEL;
+		res = gui2::retval::CANCEL;
 	}
 
 	return res;

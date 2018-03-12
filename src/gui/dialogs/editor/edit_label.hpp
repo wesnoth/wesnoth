@@ -31,7 +31,7 @@ public:
 	 * @param[in, out] text       The parameter's usage is:
 	 *                            - Input: The initial value of the label.
 	 *                            - Output: The label text the user entered if
-	 *                              the dialog returns @ref window::OK
+	 *                              the dialog returns @ref retval::OK
 	 *                              undefined otherwise.
 	 */
 	editor_edit_label(std::string& text,

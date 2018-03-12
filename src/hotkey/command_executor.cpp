@@ -20,7 +20,7 @@
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/drop_down_menu.hpp"
-#include "gui/widgets/window.hpp"
+#include "gui/widgets/retval.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -366,7 +366,7 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 }
 
 void command_executor::surrender_game() {
-	if(gui2::show_message(_("Surrender"), _("Do you really want to surrender the game?"), gui2::dialogs::message::yes_no_buttons) != gui2::window::CANCEL) {
+	if(gui2::show_message(_("Surrender"), _("Do you really want to surrender the game?"), gui2::dialogs::message::yes_no_buttons) != gui2::retval::CANCEL) {
 		playmp_controller* pmc = dynamic_cast<playmp_controller*>(resources::controller);
 		if(pmc && !pmc->is_linger_mode() && !pmc->is_observer()) {
 			pmc->surrender(display::get_singleton()->viewing_team());
@@ -386,7 +386,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 		SDL_Rect pos {xloc, yloc, 1, 1};
 		gui2::dialogs::drop_down_menu mmenu(pos, items, -1, true, false); // TODO: last value should be variable
 		mmenu.show();
-		if(mmenu.get_retval() == gui2::window::OK) {
+		if(mmenu.get_retval() == gui2::retval::OK) {
 			res = mmenu.selected_item();
 		}
 	} // This will kill the dialog.

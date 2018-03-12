@@ -117,7 +117,7 @@ void mp_login::pre_show(window& win)
 }
 
 void mp_login::post_show(window& win) {
-	if(get_retval() == window::OK) {
+	if(get_retval() == retval::OK) {
 		save_password(win);
 	}
 }

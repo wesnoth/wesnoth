@@ -166,7 +166,7 @@ public:
 	 *                            there's no guarantee about how fast it closes
 	 *                            after the minimum.
 	 *
-	 * @returns                   Whether the final retval_ == window::OK
+	 * @returns                   Whether the final retval_ == retval::OK
 	 */
 	bool show(const unsigned auto_close_time = 0);
 
@@ -335,7 +335,7 @@ private:
 	/**
 	 * Always save the fields upon closing.
 	 *
-	 * Normally fields are only saved when the window::OK button is pressed.
+	 * Normally fields are only saved when the retval::OK button is pressed.
 	 * With this flag set is always saves. Be careful with the flag since it
 	 * also updates upon canceling, which can be a problem when the field sets
 	 * a preference.

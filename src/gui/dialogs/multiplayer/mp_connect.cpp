@@ -115,7 +115,7 @@ void mp_server_list::pre_show(window& window)
 
 void mp_server_list::post_show(window& window)
 {
-	if(get_retval() == window::OK) {
+	if(get_retval() == retval::OK) {
 
 		const listbox& list
 				= find_widget<const listbox>(&window, "server_list", false);
@@ -158,7 +158,7 @@ show_server_list(window& window, field_text* host_name)
 	mp_server_list dlg;
 	dlg.show();
 
-	if(dlg.get_retval() == window::OK) {
+	if(dlg.get_retval() == retval::OK) {
 		host_name->set_widget_value(window, dlg.host_name());
 	}
 }

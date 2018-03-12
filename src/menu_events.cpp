@@ -58,7 +58,7 @@
 #include "gui/dialogs/unit_recall.hpp"
 #include "gui/dialogs/unit_recruit.hpp"
 #include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
+#include "gui/widgets/retval.hpp"
 #include "help/help.hpp"
 #include "log.hpp"
 #include "map/label.hpp"
@@ -280,7 +280,7 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 
 	dlg.show();
 
-	if(dlg.get_retval() == gui2::window::OK) {
+	if(dlg.get_retval() == gui2::retval::OK) {
 		do_recruit(sample_units[dlg.get_selected_index()]->id(), side_num, last_hex);
 	}
 }
@@ -377,7 +377,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 
 	dlg.show();
 
-	if(dlg.get_retval() != gui2::window::OK) {
+	if(dlg.get_retval() != gui2::retval::OK) {
 		return;
 	}
 
@@ -551,7 +551,7 @@ bool menu_handler::end_turn(int side_num)
 		const int res = gui2::show_message("",
 				_("You have not started your turn yet. Do you really want to end your turn?"),
 				gui2::dialogs::message::yes_no_buttons);
-		if(res == gui2::window::CANCEL) {
+		if(res == gui2::retval::CANCEL) {
 			return false;
 		}
 	}
@@ -560,7 +560,7 @@ bool menu_handler::end_turn(int side_num)
 		const int res = gui2::show_message("",
 				_("Some units have movement left. Do you really want to end your turn?"),
 				gui2::dialogs::message::yes_no_buttons);
-		if(res == gui2::window::CANCEL) {
+		if(res == gui2::retval::CANCEL) {
 			return false;
 		}
 	}
@@ -569,7 +569,7 @@ bool menu_handler::end_turn(int side_num)
 		const int res = gui2::show_message("",
 				_("Some units have not moved. Do you really want to end your turn?"),
 				gui2::dialogs::message::yes_no_buttons);
-		if(res == gui2::window::CANCEL) {
+		if(res == gui2::retval::CANCEL) {
 			return false;
 		}
 	}
@@ -803,7 +803,7 @@ void menu_handler::clear_labels()
 			gui2::dialogs::message::yes_no_buttons
 		);
 
-		if(res == gui2::window::OK) {
+		if(res == gui2::retval::OK) {
 			gui_->labels().clear(gui_->current_team_name(), false);
 			resources::recorder->clear_labels(gui_->current_team_name(), false);
 		}
@@ -1745,7 +1745,7 @@ void console_handler::do_unsafe_lua()
 		"malicious add-ons or other programs you may have installed.\n\n"
 		"Do not continue unless you really know what you are doing."), gui2::dialogs::message::ok_cancel_buttons);
 
-	if(retval == gui2::window::OK) {
+	if(retval == gui2::retval::OK) {
 		print(get_cmd(), _("Unsafe mode enabled!"));
 		menu_handler_.gamestate().lua_kernel_->load_package();
 	}
@@ -1870,7 +1870,7 @@ void console_handler::do_undiscover()
 {
 	const int res = gui2::show_message("Undiscover",
 			_("Do you wish to clear all of your discovered units from help?"), gui2::dialogs::message::yes_no_buttons);
-	if(res != gui2::window::CANCEL) {
+	if(res != gui2::retval::CANCEL) {
 		preferences::encountered_units().clear();
 	}
 }

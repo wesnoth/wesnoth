@@ -72,7 +72,7 @@ void mp_method_selection::pre_show(window& window)
 
 void mp_method_selection::post_show(window& window)
 {
-	if(get_retval() == window::OK) {
+	if(get_retval() == retval::OK) {
 		text_box& user_widget
 				= find_widget<text_box>(&window, "user_name", false);
 		listbox& list = find_widget<listbox>(&window, "method_list", false);

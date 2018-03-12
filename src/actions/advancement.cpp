@@ -25,7 +25,7 @@
 #include "preferences/game.hpp"
 #include "game_data.hpp" //resources::gamedata->phase()
 #include "gui/dialogs/unit_advance.hpp"
-#include "gui/widgets/window.hpp" //gui2::window::OK
+#include "gui/widgets/retval.hpp" //gui2::retval::OK
 #include "log.hpp"
 #include "play_controller.hpp" //resources::controller
 #include "random.hpp"
@@ -79,7 +79,7 @@ namespace
 
 			dlg.show();
 
-			if (dlg.get_retval() == gui2::window::OK) {
+			if (dlg.get_retval() == gui2::retval::OK) {
 				return dlg.get_selected_index();
 			}
 

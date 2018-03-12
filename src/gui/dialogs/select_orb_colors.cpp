@@ -61,7 +61,7 @@ void select_orb_colors::pre_show(window& window)
 
 void select_orb_colors::post_show(window&)
 {
-	if(get_retval() == window::OK) {
+	if(get_retval() == retval::OK) {
 		preferences::set_show_unmoved_orb(show_unmoved_);
 		preferences::set_show_partial_orb(show_partial_);
 		preferences::set_show_moved_orb(show_moved_);

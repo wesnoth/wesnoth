@@ -879,7 +879,7 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 		});
 
 		const int res = gui2::show_message(_("Reassign Hotkey"), text, gui2::dialogs::message::yes_no_buttons, true);
-		if(res != gui2::window::OK) {
+		if(res != gui2::retval::OK) {
 			return;
 		}
 	}

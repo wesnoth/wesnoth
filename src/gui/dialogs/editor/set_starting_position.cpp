@@ -115,7 +115,7 @@ void editor_set_starting_position::pre_show(window& window)
 
 void editor_set_starting_position::post_show(window& window)
 {
-	if(get_retval() != window::OK) {
+	if(get_retval() != retval::OK) {
 		return;
 	}
 

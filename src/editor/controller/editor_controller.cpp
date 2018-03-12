@@ -33,12 +33,13 @@
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/unit_list.hpp"
-#include "gui/widgets/window.hpp"
+#include "gui/widgets/retval.hpp"
 #include "wml_exception.hpp"
 
 #include "resources.hpp"
 #include "reports.hpp"
 
+#include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp"

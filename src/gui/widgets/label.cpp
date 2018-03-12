@@ -170,7 +170,7 @@ void label::signal_handler_left_button_click(const event::ui_event /* event */, 
 	DBG_GUI_E << "Clicked Link:\"" << link << "\"\n";
 
 	const int res = show_message(_("Confirm"), _("Do you want to open this link?") + std::string("\n\n") + link, dialogs::message::yes_no_buttons);
-	if(res == gui2::window::OK) {
+	if(res == gui2::retval::OK) {
 		desktop::open_object(link);
 	}
 
