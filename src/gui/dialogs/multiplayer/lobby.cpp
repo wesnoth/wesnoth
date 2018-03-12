@@ -176,10 +176,6 @@ mp_lobby::~mp_lobby()
 
 void mp_lobby::post_build(window& win)
 {
-	/** @todo Should become a global hotkey after 1.8, then remove it here. */
-	win.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
-		std::bind(&CVideo::toggle_fullscreen, std::ref(win.video())));
-
 	/*** Local hotkeys. ***/
 	win.register_hotkey(hotkey::HOTKEY_PREFERENCES,
 		std::bind(&mp_lobby::show_preferences_button_callback, this, std::ref(win)));

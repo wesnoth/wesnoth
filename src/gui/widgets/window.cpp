@@ -383,6 +383,10 @@ window::window(const builder_window::window_resolution* definition)
 	connect_signal<event::CLOSE_WINDOW>(std::bind(&window::signal_handler_close_window, this));
 
 	register_hotkey(hotkey::GLOBAL__HELPTIP, std::bind(gui2::helptip));
+
+	/** @todo: should eventally become part of global hotkey handling. */
+	register_hotkey(hotkey::HOTKEY_FULLSCREEN,
+		std::bind(&CVideo::toggle_fullscreen, std::ref(video_)));
 }
 
 window::~window()

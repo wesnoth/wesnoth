@@ -49,7 +49,6 @@
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
 #include "hotkey/hotkey_command.hpp"
-#include "video.hpp"
 #include "utils/functional.hpp"
 
 #include <algorithm>
@@ -214,9 +213,6 @@ void title_screen::pre_show(window& win)
 
 	win.register_hotkey(hotkey::TITLE_SCREEN__TEST,
 		std::bind(&title_screen::hotkey_callback_select_tests, this, std::ref(win)));
-
-	win.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
-		std::bind(&CVideo::toggle_fullscreen, std::ref(win.video())));
 
 	// A wrapper is needed here since the relevant display function is overloaded, and
 	// since the wrapper's signature doesn't exactly match what register_hotkey expects.
