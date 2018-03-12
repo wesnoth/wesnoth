@@ -141,7 +141,7 @@ message::button_status::button_status()
 	: ptr(nullptr)
 	, caption()
 	, visible(widget::visibility::invisible)
-	, retval(retval::NONE)
+	, retval(gui2::retval::NONE) // Needs explicit namespace qualifier to avoid name clashes.
 {
 }
 
