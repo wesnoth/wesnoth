@@ -1,13 +1,13 @@
-Version 1.13.11+dev:
- * Add-ons client:
+## Version 1.13.11+dev
+ ### Add-ons client
    * Addon upload progress bar now works also on Windows (bug #1439).
    * Fixed inability to cancel addon upload (bug #2591).
- * Add-ons server:
+ ### Add-ons server
    * Added support for adding free-form comma-separated tags to add-ons in
      their publishing info (bug #2565).
    * Added support for overriding existing add-on attributes using the control
      FIFO.
- * Campaigns:
+ ### Campaigns
    * Northern Rebirth:
      * Fixed S06a Rakshas displaying incorrect portrait (issue #2569)
      * Fixed S12a invalid side error (issue #2569)
@@ -16,17 +16,17 @@ Version 1.13.11+dev:
      * Appearance improvements for S04a 06a, 07a, 09a, 10a, 11a, 12a, 13a
      * Fix gold storing in S07a for S13a if retrieved
      * S04a, 05a, & S13a Make enemy units loyal so gold & events work properly
- * Language and i18n:
+ ### Language and i18n
    * Updated translations: British English, Spanish
- * Lua API:
+ ### Lua API
    * Add side_name to unit proxy
- * User Interface:
+ ### User Interface
    * Improved outro screen.
    * Fixed a few cases of data not displaying in the MP Join Game screen.
    * Fixed required addon names not displaying properly when joining an
      MP game.
    * The Toggle Fullscreen hotkey now works everywhere.
- * WML engine:
+ ### WML engine
    * Fixed units shown with [move_units_fake] disappearing between steps
      (bug #1516).
    * [modify_side] now supports side_name
@@ -37,7 +37,7 @@ Version 1.13.11+dev:
      string concatenation.
    * [effect] apply_to=attack now supports set_range
    * [cancel_action] now works in attack-related events.
- * Miscellaneous and bug fixes:
+ ### Miscellaneous and bug fixes
    * Fixed standing animation toggle not taking immediate effect (bug
      #1653).
    * Fixed error when de-assigning village with [capture_village].
@@ -53,20 +53,20 @@ Version 1.13.11+dev:
      human-controlled sides take control.
    * Fixed regression in 1.13.11 where completed events could fire again when
      reloading a save.
- * Music and sound effects:
+ ### Music and sound effects
    * Updated a few UI sounds.
 
-Version 1.13.11:
- * Add-ons client:
+## Version 1.13.11
+ ### Add-ons client
    * Added an order dropdown that allows you to sort add-ons by the time of
      latest update or original upload (issue #1747)
    * Players will now be prompted to update outdated dependencies alongside
      downloading missing ones when installing an add-on.
- * Add-ons server:
+ ### Add-ons server
    * Empty passphrases from malfunctioning clients that do not provide or
      generate a passphrase otherwise are now rejected instead of treated as
      valid.
- * Campaigns:
+ ### Campaigns
    * The Cutscene_Minimal theme is now used in all dialog-only scenarios that
      have `linger=no` in [end_level].
    * An Orcish Incursion:
@@ -83,7 +83,7 @@ Version 1.13.11:
      * S08/S09 A Small Favor 2/3 - Fixed bug preventing door operation/usage.
      * Fixed and improved appearance and handling of the wose.
      * Other minor fixes and improvements.
- * Packaging
+ ### Packaging
    * Renamed the target and binary for the Boost unit tests from `test` to
      `boost_unit_tests`. This quells warnings from CMake about reserved target
      names, and reduces confusion about which `test` is intended: the wesnoth
@@ -97,10 +97,10 @@ Version 1.13.11:
      of vintage CMake versions.
    * higher resolutions of the application icon have been added and are now
      stored in the hicolor icon theme's directory
- * Language and i18n:
+ ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Czech,
      Italian, Spanish
- * Lua API:
+ ### Lua API
    * New wesnoth.unit_types[] getters:
      * `advances_to`
      * `advances_from`
@@ -114,18 +114,18 @@ Version 1.13.11:
    * Added `side.chose_random` getter.
    * Lua GUI2 API: added support for slider callbacks via
      `wesnoth.set_dialog_callback`.
- * Multiplayer:
+ ### Multiplayer
    * Dark Forecast: Fixed broken faction and leader selection.
    * Rename the Khalifate to Dunefolk. This includes renaming all the faction's
      units.
- * Performance:
+ ### Performance
    * GUI2 windows no longer redraw everything 50 times per second. This reduces
      CPU usage in fullscreen windows such as MP lobby by about 85 %.
    * Miscellaneous low-level optimizations in game rendering code, improving
      performance ingame by up to 50 %.
- * Units:
+ ### Units
    * Changed resistances and hitpoints for Tentacle of the Deep.
- * User Interface:
+ ### User Interface
    * Removed broken Unit Box and Widescreen themes.
    * Fixed a bug that partially prevented movement feedback announce messages
      to be displayed (UI regression bug #2130, affecting 1.13.8 and 1.13.10).
@@ -141,9 +141,9 @@ Version 1.13.11:
    * If [main_map_border] background_image= is empty, the game map background
      will be plain black.
    * New really nice HD main menu/storyscreen background.
- * WFL Engine:
+ ### WFL Engine
    * A new string `insert()` function has been added, similar to `replace()`.
- * WML Engine:
+ ### WML Engine
    * Added a `major_amla` option in AMLAs to keep the XP bar teal-white rather
      than purple for AMLAs that behave similar to regular advancements.
      (for example, Quenoth Youth in UtBS or similar unit lines)
@@ -164,7 +164,7 @@ Version 1.13.11:
    * Units hidden with [hide_unit] will remain hidden after reloading saves.
    * Fixed regression where most SUF keys would match all units if given "" as
      a value.
- * Miscellaneous and bug fixes:
+ ### Miscellaneous and bug fixes
    * Suggested save file names now use spaces instead of underscores.
    * Fixed crash after canceling add-on download (bug #2203)
    * Fixed ingame help showing units you haven't encountered (bug #2135)
@@ -176,18 +176,18 @@ Version 1.13.11:
      (bug #2303)
    * Fixed image cache being shared between campaigns.
 
-Version 1.13.10:
- * Add-ons client:
+## Version 1.13.10
+ ### Add-ons client
    * A list of illegal filenames is displayed if any are found by the server
      when uploading.
- * Add-ons server:
+ ### Add-ons server
    * A list of illegal filenames is sent to the client if any are found during
      the upload validation process. Only clients supporting this new
      functionality can display the list.
    * Fix an issue where the implementation of the hashing function used for
      add-on passphrases was changed since 1.13.8, breaking existing hashes
      (bug #2068).
- * Campaigns:
+ ### Campaigns
    * Delfador's Memoirs:
      * Clarified and fixed objectives in many places.
      * Improved appearance and flow of dialog in several places.
@@ -198,15 +198,15 @@ Version 1.13.10:
      * S09, Houses of the Dead, has been rebalanced.
      * S18, The Portal of Doom, has been rebalanced.
      * Iliah-Malal is now an Ancient Lich in S18 & 19.
- * Language and i18n:
+ ### Language and i18n
    * Updated translations: British English
- * Lua API:
+ ### Lua API
    * Upgrade to Lua 5.3.4.
- * Multiplayer:
+ ### Multiplayer
    * Fixed a bug where the client would return to titlescreen on receiving a
      redirect message from the server, which made connecting to the official
      server via the "connect to official server" button impossible.
- * Miscellaneous and Bug Fixes:
+ ### Miscellaneous and Bug Fixes
    * Updated our included Spirit Po version from 1.0.1 to 1.1.2.
    * Fix idle AI being replaced by default AI under certain circumstances on
      loading of mid-scenario saves (bug #1955)
@@ -215,11 +215,11 @@ Version 1.13.10:
    * Fix poisoner FAI to prevent flood of error messages in Legend of Wesmere
      (bug #1999)
 
-Version 1.13.9:
- * Add-ons client:
+## Version 1.13.9
+ ### Add-ons client
    * Fix HTML injection exploit in the wesnoth_addon_manager web index
      generation functionality.
- * Campaigns:
+ ### Campaigns
    * Reordered beginner campaigns to be friendlier to new players.
    * Delfador's Memoirs:
      * Replaced incorrect 'Defeat all enemies' objectives with more specific
@@ -245,16 +245,16 @@ Version 1.13.9:
        * Formation ability now has looser adjacency requirements.
        * Quenoth Scouts have a non-slowing sling at lvl 1 instead of bolas.
        * Adjusted stats of some units.
- * Graphics:
+ ### Graphics
    * Added portrait for Giant Rat.
    * Fixed transparency artifacts in scaled portraits and other message images
      (issue #1570).
    * Fixed issue with jumpy animations on faster speeds (issue #1565).
    * Added some new item and scenery images
- * Language and i18n:
+ ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Italian,
      Polish, Scottish Gaelic, Slovak, Spanish
- * Lua API:
+ ### Lua API
    * Add wesnoth.format function to substitute variables into a string.
    * Add wesnoth.format_conjunct_list and wesnoth.format_disjunct_list.
    * New global "wml" table groups together all the functions for working
@@ -271,29 +271,29 @@ Version 1.13.9:
      event in some situations
    * wesnoth.debug() can now be called from map generators or plugins. It is
      also deprecated, however; you should use wml.tostring() instead.
- * Multiplayer:
+ ### Multiplayer
    * When set to remember your password, Wesnoth now encrypts it. It is still
      possible to obtain the password from preferences, but it's no longer as
      trivial as before.
    * Fixed crash when loading a replay stored on the server (Bug #1762)
    * Fixed delay or clients getting stuck when starting a mp game (Bug #1674)
    * Fix bug where leader can become unable to be killed (issue #1666)
- * Performance:
+ ### Performance
    * Rewrote the FPS cap implementation. This greatly improves
      smoothness ingame.
    * Each invalidated hex is now only redrawn once, not twice. This almost
      halves CPU usage ingame.
    * Implemented GUI canvas caching. It speeds up multiple areas, but especially
      the story screen.
- * Terrains:
+ ### Terrains
      * Added ruined version of encampment terrain.
      * New stone floor terrain.
      * Gates now have new terrain codes to grant more control for map makers.
        The old codes are now deprecated (issue #1839)
- * Units:
+ ### Units
    * Added new lvl 0 Giant Scorpling, leveling into the Giant Scorpion.
    * Tweak some costs for lvl 3 units.
- * User Interface:
+ ### User Interface
    * Fixed loyal and aged traits missing from help (issue #1935).
    * Unit recall dialog now sorts the units by both level and required XP for
      their next level-up (issue #1738).
@@ -318,7 +318,7 @@ Version 1.13.9:
      Ctrl+A now selects all text in the field.
    * Fix addon manager closing when canceling an operation
    * Addons can now be filtered to show only publishable addons
- * WFL Engine
+ ### WFL Engine
    * Add owner key to terrain space callable, for villages
    * Location formulas in [tunnel] now have a teleport_unit variable
    * Fix a crash when attempting to call a non-existent function
@@ -333,7 +333,7 @@ Version 1.13.9:
    * New enemy_of function checks if its second argument is
      an enemy of the first
      Arguments can be side or unit objects, or integer side indices (1..n)
- * WML Engine
+ ### WML Engine
    * If ai_algorithm is used in [modify_side][ai], it now replaces the whole AI
      with the contents of [modify_side][ai], instead of appending these
      parameters.
@@ -368,7 +368,7 @@ Version 1.13.9:
    * new attributes mp_village_gold, mp_village_support, mp_shroud, mp_fog in
      [multiplayer] that are used as default values for the corresponding
      attributes in [side]
- * Miscellaneous and Bug Fixes:
+ ### Miscellaneous and Bug Fixes
    * Add --report/-R command line switch for printing the same report from the
      Game Version dialog's clipboard function to stdout.
    * Fixed programmatically killed unit flashing after its death animation
@@ -384,15 +384,15 @@ Version 1.13.9:
    * Fixed preferences not being saved if they weren't in the currently
      selected tab when the settings dialog was closed.
 
-Version 1.13.8:
-  * Campaigns:
+## Version 1.13.8
+  ### Campaigns
    * Son of the Black-Eye:
      * Balancing changes for 'Silent Forest'.
    * Under the Burning Suns:
      * New sprites for Quenoth Youth (Kaleh and Nym) and Human Commander.
      * Applied a color shift to the human units in S8 and S9 to give them a more
        unique look.
- * Editor:
+ ### Editor
    * Fixed a crash when placing units.
    * Restored the ability to preview different ToDs. Note this still does not
      work when invoked form the Custom ToD window.
@@ -401,19 +401,19 @@ Version 1.13.8:
    * The Windows menu will now display maps starting from 1 rather than 0.
      This is likewise reflected in the default map filename.
    * Scenario names are now displayed in more places if available.
- * Formula Engine:
+ ### Formula Engine
    * Fixed garbage data showing up in stack traces in the event of an error.
    * Object types can now be used in contexts where previously only a list or
      map was accepted - for example in the filter() function. They will be
      treated as a map in such cases.
- * Graphics:
+ ### Graphics
    * Fixed items not receiving ToD lighting.
    * Portraits for many Walking Corpse and Soulless race variants.
    * New animations: Dwarvish Fighter idle.
- * Language and i18n:
+ ### Language and i18n
    * Updated translations: British English, Chinese (Simplified), Lithuanian,
      Slovak, Spanish
- * Lua Engine:
+ ### Lua Engine
    * Add wesnoth.log_replay which exposes a little-used functionality of
      injecting arbitrary logging data into a saved game.
    * Small change to animator API - facing parameter replaced with target and
@@ -497,12 +497,12 @@ Version 1.13.8:
    * wesnoth.set_next_scenario() was replaced with
      wesnoth.game_config.next_scenario setter/getter
    * wesnoth.set_dialog_value can now (un-) fold GUI2 tree view nodes
- * Multiplayer:
+ ### Multiplayer
    * Fixed statistics being lost when reloading an MP game.
- * Performance:
+ ### Performance
    * Greatly speeded up switching between add-ons in the add-on manager
      (bug #25523)
- * User Interface:
+ ### User Interface
    * Updated Attack Predictions dialog to GUI2.
    * Updated Story screen to GUI2.
    * Double-clicking an add-on now installs, updates, uninstalls or publishes
@@ -526,7 +526,7 @@ Version 1.13.8:
      side.
    * Textboxes now have a blinking cursor when focused.
    * multi pages can now contain different types of pages
- * WML Engine:
+ ### WML Engine
    * Add base_income key to [store_side]
    * Fix issues with alpha animations on hidden units (#14503)
    * Extensions to GUI2 Canvas ([drawing] tag in dialogs):
@@ -560,18 +560,18 @@ Version 1.13.8:
    * [objectives] now supports delayed_variable_substitution=yes and also
      delayed substitution with $|variable syntax.
    * Items in [options] now support container variables again.
- * Miscellaneous and bug fixes:
+ ### Miscellaneous and bug fixes
    * Fixed base animation showing on walking corpse & soulless bats
      (bug #25673)
 
-Version 1.13.7:
- * AI:
+## Version 1.13.7
+ ### AI
    * Fix a performance regression in complex combat situations such as the
      "Oath of Allegiance" UMC campaign.
    * Fix some Micro AIs and AI helper functions not working correctly for AI
      sides under shroud
    * New function ai_helper.find_path_with_shroud()
- * Campaigns:
+ ### Campaigns
    * Eastern Invasion:
      * In 'Weldyn Besieged', redesigned the way in which revealing the
        identities of the liches works.
@@ -596,7 +596,7 @@ Version 1.13.7:
          * Moon Singer branch removed.
          * Added winged lvl4 advancement for Quenoth Druid.
          * Support ability now only lowers adjacent upkeep costs by 1.
- * Graphics:
+ ### Graphics
    * New or improved sprites: Royal Warrior, Walking Corpse line wolf variation.
    * Improved terrain graphics: lava, volcano, lightbeam.
    * Improved the fake map border terrain so that it now connects with the real
@@ -606,10 +606,10 @@ Version 1.13.7:
    * Fixed glitches between various mountain tiles (introduced in 1.13.3).
    * Fixed units getting submerged on some bridge types when placed over water.
    * Updated Mermaid Initiate portrait.
- * Language and i18n:
+ ### Language and i18n
    * Updated translations: British English, Czech, German, Portuguese (Brazil),
      Scottish Gaelic
- * Lua API:
+ ### Lua API
    * New wesnoth.set_side_id function can change flag, color, or both; it automatically
      updates cached flag info for you (but you may still need to redraw to see it).
    * The wesnoth.place_shroud and wesnoth.clear_shroud functions can alter shroud data
@@ -639,12 +639,12 @@ Version 1.13.7:
    * wesnoth.deselect_hex no longer deselects units; it only unhighlights the hex.
    * wesnoth.select_unit with no argument (or nil argument) now deselects any unit.
    * Fix lua side:matches always iterating over all units on the map.
- * Multiplayer:
+ ### Multiplayer
    * New maps: 2p Clearing Gushes, 2p Hellhole, 2p Ruined Passage,
      2p Ruphus Isle, 2p Swamp of Dread, 2p The Walls of Pyrennis,
      2p Tombs of Kesorak, 4p Bath of Glory, 4p Geothermal.
    * Updated maps: Fallenstar Lake.
- * Units:
+ ### Units
    * Several changes to names of attacks:
      * Shock Trooper, Iron Mauler, Mage of Light: maces and morning stars
        changed to flails.
@@ -659,7 +659,7 @@ Version 1.13.7:
        Ranger, Sharpshooter.
      * Mage of Light, Fugitive, Huntsman, Ranger.
      * Batal, Hadaf, Mighwar, Mufariq, Rasikh, Shuja, Tineen.
- * User Interface:
+ ### User Interface
    * List boxes now keep the selected item visible when you change the sorting
      option.
    * The Addon Manager has a brand new interface.
@@ -673,9 +673,9 @@ Version 1.13.7:
    * Converted Hotkey Bind popup to GUI2.
    * Fixed TC color in Faction Select sometimes not matching the side's selection.
    * Ensured sides are always ordered by index in MP Staging.
- * Wesnoth Formula Engine:
+ ### Wesnoth Formula Engine
    * New str_upper and str_lower functions for case transformations
- * WML Engine:
+ ### WML Engine
    * Update [store_side] to store everything in corresponding wesnoth.sides[*].__cfg
      and additional keys: num_units, num_villages, total_upkeep, expenses, net_income
    * Removed LOW_MEM option when building.
@@ -694,7 +694,7 @@ Version 1.13.7:
      macros.
    * [tunnel] now accepts delayed_variable_substitution=yes/no.
    * [on_redo] is now deprecated and does nothing if used
- * Miscellaneous and bug fixes:
+ ### Miscellaneous and bug fixes
    * Fixed severe lag/freeze on slow PCs (bug #25356)
    * Updated wmlscope to handle the square braces syntax in file paths
    * Fixed an issue preventing quick replay when joining multiplayer matches
@@ -706,8 +706,8 @@ Version 1.13.7:
    * Do not load the Markov name generator if a CFG generator could be loaded.
    * Exit "quick replay" mode in MP games once the game is caught up.
 
-Version 1.13.6:
- * AI:
+## Version 1.13.6
+ ### AI
    * Added new high_xp_attack candidate action to default AI. This CA performs
      attacks on enemy units so close to leveling that the default AI's combat CA
      would not attack them.
@@ -729,7 +729,7 @@ Version 1.13.6:
        with other functions
      * Some internal changes to fix rarely occurring bugs and to improve
        robustness and speed
- * Campaigns:
+ ### Campaigns
    * Eastern Invasion:
      * Fixed broken village encounters.
      * Tweaked the balance of Scenario 2.
@@ -744,7 +744,7 @@ Version 1.13.6:
    * Under the Burning Suns:
      * Redesign of all desert elf units (currently optional, selectable through
        the difficulty menu).
- * Graphics:
+ ### Graphics
    * Improved or new terrain graphics:
      * New wooden floor variation and transitions.
      * New aquatic encampment.
@@ -755,9 +755,9 @@ Version 1.13.6:
      keeps to be placed adjacent to walls without glitches in most cases.
    * New sprite for Tentacle of the Deep.
    * Tweaked colors for all time schedules.
- * Language and i18n:
+ ### Language and i18n
    * Updated translations: Finnish, Polish, Russian
- * Lua API:
+ ### Lua API
    * Upgrade to Lua 5.3.3+
      Consult http://www.lua.org/ for a full change list and updated documenation.
      * bit32 functions removed
@@ -807,24 +807,24 @@ Version 1.13.6:
      In this case, they return an iterator suitable for use in a for loop.
    * New wesnoth.wml_matches_filter function takes a WML table and a WML filter and tests
      if the table matches the filter. The filter syntax is as with [filter_wml].
- * Music and sound effects:
+ ### Music and sound effects
    * Added a preference to pause the music when the game loses focus.
    * Now the music fades out between scenarios.
- * Networking
+ ### Networking
    * Ported campaignd to use boost.asio instead of SDL_net.
    * Removed unit tests for old networking stack. This was the last part that
      depended on SDL_net
- * Performance:
+ ### Performance
    * When a heuristic determines that it's probably faster, the game predicts
      battle
      outcome by simulating a few thousand fights instead of calculating exact
      probabilities. This method is inexact, but in very complex battles
      (extremely high HP, drain, slow, berserk, etc.) it's significantly faster than the
      default damage calculation method.
- * Units:
+ ### Units
    * Changed the sound for the melee attack of the
      Loyalist Bowman, Orcish Crossbowman and Orcish Slurbow.
- * User Interface:
+ ### User Interface
    * Trait descriptions in the help are now generated. (This makes user-defined
      traits show up in the help as well.)
    * Fix game map sometimes showing and buttons sometimes not rendered properly
@@ -857,7 +857,7 @@ Version 1.13.6:
    * Tab completion in the Lua console is improved. It can now handle paths
      containing square brackets (though it won't complete them) and will not
      offer keys that are not valid identifiers.
- * WML Engine:
+ ### WML Engine
    * Added ignore_special_locations=yes|no, default no, to [terrain_mask] to
      ignore the special locations given in the mask, leaving all those on the
      underlying map unchanged.
@@ -930,7 +930,7 @@ Version 1.13.6:
      using "skip" in the rotations= list.
    * WML macros can now include optional arguments with default values that the
      caller can override.
- * Miscellaneous and bug fixes:
+ ### Miscellaneous and bug fixes
    * A new way to make units invulnerable for debugging: select the unit and type
      ";unit invulnerable=yes". This method operates by decreasing the opponent's hit
      chance to zero: as a result, it doesn't slow down damage prediction unlike the
@@ -954,8 +954,8 @@ Version 1.13.6:
    * [filter_vision]: fix bug of filter not matching own/allied hidden units
    * Prevent crash on quitting scenario with planned recruits present (bugs #24022/25193)
 
-Version 1.13.5:
- * Campaigns:
+## Version 1.13.5
+ ### Campaigns
    * An Orcish Incursion:
      * Linaera can recruit Mage, and cannot recruit Elves
    * Heir to the Throne:
@@ -969,22 +969,22 @@ Version 1.13.5:
      * S2: Highlight (outline) talked-about locations
    * Legend of Wesmere
      * S3: fix bug which silently disabled Urudin retreat AI
- * Graphics:
+ ### Graphics
    * Updated generic portrait of Mermaid Initiate.
    * Added generic portrait for Giant Spider.
- * Language and i18n:
+ ### Language and i18n
    * Updated translations: British English, Galician, German, Italian, Japanese,
      Polish, Portuguese, RACV, Russian, Scottish Gaelic, Spanish
- * Networking:
+ ### Networking
    * Reworked the multiplayer server to use asio functions for networking
      operations instead of SDL_net, thus it no longer depends on SDL_net and SDL.
    * The client now uses boost::asio for communication with wesnothd too.
- * Removed support for SDL 1.2. SDL 2 is now the only supported version.
- * Terrains:
+ ### Removed support for SDL 1.2. SDL 2 is now the only supported version.
+ ### Terrains
    * Changed terrain code of Desert Mountains from Mdy to Mdd.
- * Editor:
+ ### Editor
    * Allow to set special locations in the editor which can then be read by wml.
- * User Interface:
+ ### User Interface
    * Fix flickering caused by tooltips, closing windows and tabbing into the game (bug #24532)
    * Various design improvements to GUI2 widgets
    * New simpler GUI2 loading screen
@@ -1008,7 +1008,7 @@ Version 1.13.5:
    * Fix bug #24762: Editor actions are out of sync after resizing.
    * Increased the font size for text in buttons.
    * Changed unit help topics to use smaller images on smaller monitors.
- * WML engine:
+ ### WML engine
    * Add color= attribute to [message].
    * Add [else], search_recall_list=, auto_recall= to [role]
    * Fix some issues with [foreach]
@@ -1134,7 +1134,7 @@ Version 1.13.5:
    * wesnoth now does a stricter check for unit type ids.
    * In multiplayer,  victory events now fire at the end of the scenario if at least one
      human player has won, this fixes OOS in mp campaigns.
- * Lua API:
+ ### Lua API
    * wesnoth.match_unit can now take a location (rather than a unit) as
      the optional third parameter. This will cause the filter to consider
      the unit to be on that location instead of its actual location.
@@ -1223,11 +1223,11 @@ Version 1.13.5:
    * added lua_function= attribute in location filters
    * Added on_event.lua which is an eaiser to use wrapper for
      wesnoth.game_events.on_event
- * Multiplayer:
+ ### Multiplayer
    * Hornshark Island: simplified multiplayer faction determination
    * Added "Registered users only" checkbox to multiplayer configuration dialog which
      when checked, only allows registered users to join the game
- * Wesnoth formula engine:
+ ### Wesnoth formula engine
    * Formulas in unit filters can now access nearly all unit attributes
      The following attributes were renamed (old names still work, for now):
      leader -> canrecruit
@@ -1322,7 +1322,7 @@ Version 1.13.5:
        still work, but any future code should use wfl/wflend instead.
        Use of the .fai file extension is still fine for FormulaAI code;
        for other formula code in a separate file, .wfl is recommended instead.
- * Miscellaneous and bug fixes:
+ ### Miscellaneous and bug fixes
    * Resolve translated logo images not being used (bug #24357)
    * Ported the "hexometer" tool from Bash to Python 3
    * Recognize hotkey release events
@@ -1339,23 +1339,22 @@ Version 1.13.5:
      campaign2wiki, terrain2wiki
    * Wesnoth now ignores unknown arguments that XCode may pass when testing.
 
-Version 1.13.4:
- * Language and i18n:
+## Version 1.13.4
+ ### Language and i18n
    * Updated translations: British English, Russian
- * Graphics:
+ ### Graphics
    * Improved or new terrain graphics: Mine Walls (replaces Hewn Cave Walls).
- * User interface:
+ ### User interface
    * Fix vertical alignment of individual attacks listed in the Attack Unit
      dialog.
    * Removed extra padding below unit stats in the Attack Unit dialog.
- * Miscellaneous and bug fixes:
+ ### Miscellaneous and bug fixes
    * Fix non-deterministic crashes in the Attack Unit dialog resulting from
      invalid memory references (regression introduced in 1.13.3).
    * Fix uninitialized variable in event handling code (bug #24498).
 
-Version 1.13.3:
- * Greatly improved SDL 2 support. SDL 2 is now used by default build when
-   building. This fixes the following bugs, among others:
+## Version 1.13.3
+ ### Greatly improved SDL 2 support. SDL 2 is now used by default build when building. This fixes the following bugs, among others:
    * Bug #18112: Color cursors cause slow mouse movement at menus
    * Bug #19666: When I resize windows during dialog I lose the menu buttons
    * Bug #20332: Cursor not mapping correctly on Retina display when in Windowed mode
@@ -1373,7 +1372,7 @@ Version 1.13.3:
    * Bug #24261: Area under Objectives not redrawn on resize
    * Bug #24294: Doubled-up GUI1 dialogs don't redraw the secondary in SDL2
    * Bug #24477: Segfault when launching Credits
- * Campaigns:
+ ### Campaigns
    * Liberty:
      * Added some animations for the Rogue Mage line.
      * Fixed Relana appearing as male.
@@ -1385,19 +1384,19 @@ Version 1.13.3:
    * Under the Burning Suns:
      * Updated sprites for Naga Hunter, Naga Guardian line, Crab Man.
      * Crab Man changed to Monster Crab.
- * Graphics:
+ ### Graphics
    * Improved or new terrain graphics: Stones with Sand Drifts, Igloo Village,
      Adobe Village.
    * Added option for toggling off water animations to Preferences -> Display.
- * Language and i18n:
+ ### Language and i18n
    * New translation: Asturian
    * Updated translations: British English, Galician, Russian, Swedish
- * Sound effects:
+ ### Sound effects
    * Fixed various subtle timing problems with attack sounds.
- * Terrains:
+ ### Terrains
    * New terrain: Desert Mountains (Mdy), Impassable Desert Mountains (Mdy^Xm),
      Ruined Adobe Village (^Vdr).
- * User Interface:
+ ### User Interface
    * GUI1 comboboxes now use the thinner menu frame style.
    * Implemented a new GUI2 Attack dialog
    * Added gui2 comboboxes.
@@ -1406,7 +1405,7 @@ Version 1.13.3:
    * Implemented a new font scaling option on the Display panel.
    * Selecting an entry in the friend/ignore list panel now copies it to the
      input field; this makes it easier to edit friend/ignore notes.
- * WML engine:
+ ### WML engine
    * Added new event "unit placed", which triggers when (and regardless of how)
      a unit appears on the map.
    * Added support for color= in [unstore_unit] and [print]
@@ -1423,12 +1422,12 @@ Version 1.13.3:
    * Fixed [put_to_recall_list] not working correctly (bug #24390)
    * Wesnoth now does a stricter check in variablenames and doesn't allow
      empty indexes like "a[].b" anymore.
- * Lua API:
+ ### Lua API
    * Added wesnoth.read_file
    * wesnoth.dofile/require now allow .. in relative paths.
    * unit.level and unit.upkeep can now be changed via lua unit proxies.
    * wesnoth.find_path is now available in lua map generators and allows border=yes/no parameter.
- * Miscellaneous and bug fixes:
+ ### Miscellaneous and bug fixes
    * Fix the new log code on Windows to actually use Unicode-aware functions
      in a couple of places so Wesnoth does not quit on startup when trying to
      relocate the log file to a path with Unicode characters (bug #22897,
@@ -1450,11 +1449,11 @@ Version 1.13.3:
      during iteration
    * Fix variables in [message][command] (bug #24288)
 
-Version 1.13.2:
- * Add-ons client:
+## Version 1.13.2
+ ### Add-ons client
    * Warn user if attempting to upload an addon with a version lesser than or
      equal to a published version.
- * Campaigns:
+ ### Campaigns
    * Delfador's Memoirs:
      * Added defeat condition for death of the last undead veteran in
        'Showdown in the Northern Swamp' (bug #23668)
@@ -1467,24 +1466,24 @@ Version 1.13.2:
    * Under the Burning Suns:
      * Gave Garak a new ability called Teaching (at the start of every turn,
        his experience points are transferred to adjacent units on the same side)
- * Editor:
+ ### Editor
    * Add Recent Files menu with a list of recently saved or loaded maps or
      scenarios, up to a custom limit (by default 10) that can be set in
      Advanced Preferences.
    * Fixed Player Start labels not being updated with repeat map generations
      (bug #20036)
- * Graphics:
+ ### Graphics
    * New animated water.
    * New standing animation for the Dwarvish Runesmith
    * New generic portraits for the Troll and Troll Whelp
    * New game logo
- * Language and i18n:
+ ### Language and i18n
    * Updated translations: British English, French, Galician, Hungarian,
      Italian, Japanese, Latvian, Polish, RACV, Scottish Gaelic, Slovak, Spanish
    * Fixed crashes during start-up on Windows resulting from add-ons containing
      erroneous textdomain declarations (bug #23839).
    * Spelling and grammar review across all official campaigns.
- * Lua API:
+ ### Lua API
    * It is now possible to implement custom [effect]s with wesnoth.effects
    * Changed interface for the wesnoth.synchronize_choice function
    * Added support for unit.level field (read only)
@@ -1528,10 +1527,10 @@ Version 1.13.2:
    * Added wesnoth.get/set_side_variable to store variables in a [side]-
    * Added read/write fields carryover_bonus/carryover_add/carryover_percentage
      in lua sides.
- * Music and sound effects:
+ ### Music and sound effects
    * Updated music track "Frantic", new one by Stephen Rozanc.
    * New sounds: dwarf hit and die, ink, mud fist and glob.
- * Terrains:
+ ### Terrains
    * Removed unit elevation from N-S hanging bridges
    * Added unit elevation to NW-SE and SW-NE stone chasm bridges
    * Added unit elevation to NW-SE and SW-NE plank bridges
@@ -1541,7 +1540,7 @@ Version 1.13.2:
    * Fixed spurious "could not open image 'terrain/.png'" error messages caused
      by terrains without a minimap image (symbol_image) such as those from the
      Special category in the editor (Impassable Overlay, etc.).
- * User interface:
+ ### User interface
    * It is now possible to switch from replay directly into normal play
      (bug #23833).
    * The game now shows a notification on remote clients if a sides takes very
@@ -1559,7 +1558,7 @@ Version 1.13.2:
        n-state buttons/toggle panels
    * Added a version dialog button to the title screen, replacing the Paths
      option previously found in Preferences -> General.
- * WML engine:
+ ### WML engine
    * controller= in side filters can now be used in mp games for unsynced code
    * Added [effect] apply_to=max_expereince set=<value>
    * Added enable_if= to mod and era events
@@ -1648,9 +1647,9 @@ Version 1.13.2:
      [modification] but hidden from the user.
    * Removed name= attribute in [side].
    * Add support for [endlevel] bonus=<number>
- * Editor:
+ ### Editor
    * Added Category field and color sliders to the Edit Label panel.
- * Miscellaneous and bug fixes:
+ ### Miscellaneous and bug fixes
    * Fix $this_unit auto-stored variable not working correctly in most SUFs
    * Made Documents\My Games\WesnothX.Y the default user config+data dir on
      Windows to replace the broken <current working dir>\userdata default that
@@ -1701,34 +1700,34 @@ Version 1.13.2:
    * Fixed load game hot-key not working in the main menu (bug #23215)
    * Added user's leave notification for ingame players
 
-Version 1.13.1:
- * Security fixes:
+## Version 1.13.1
+ ### Security fixes
    * Disallowed inclusion of .pbl files from WML, independent of extension
      case (CVE-2015-5069, CVE-2015-5070, bug #23504).
- * AI:
+ ### AI
    * Fast Micro AI: exclude hidden enemies from attack evaluation by default;
      add optional key attack_hidden_enemies to override this
    * Lua AI helper functions: fix bug crashing the AI when number= is not set in
      a unit attack definition
    * Micro AIs: add a warning and avoid crash when a non-existing side is used
      in the [micro_ai] tag
- * Campaigns:
+ ### Campaigns
    * Dead Water:
      * The Stun effect now expires at the stunned unit's side turn end
    * Under the Burning Suns:
      * The Stun effect now expires at the stunned unit's side turn end
- * Editor:
+ ### Editor
    * Redesigned Generate Map dialog to use a real listbox and remember the
      last choice during the same editor session.
    * Fixed stack corruption bug in the Side Setup dialog.
- * Graphics:
+ ### Graphics
    * New generic portraits for the Walking Corpse and Soulless
- * Language and i18n:
+ ### Language and i18n
    * Updated translations: Galician, Scottish Gaelic, Russian
- * Lua API:
+ ### Lua API
    * New function wesnoth.get_viewing_side
    * New function wesnoth.remove_dialog_item
- * Multiplayer:
+ ### Multiplayer
    * A New Land:
      * Removed the ability to select individual factions when using map
        settings as this breaks player recruit lists (bug #23593).
@@ -1745,9 +1744,9 @@ Version 1.13.1:
    * MP campaigns now behave more like single-player campaigns.
    * Various fixes in the MP game setup screens (bugs #23641, #23509, #23496,
      #23462).
- * Units:
+ ### Units
    * Fixed the Shuja not having the default AMLA.
- * User interface:
+ ### User interface
    * Fixed minimap buttons appearing without contents or in the wrong state
      during WML start events until they are interacted with or control is given
      to the player for the first time or some other unspecified thing happens.
@@ -1768,7 +1767,7 @@ Version 1.13.1:
      the single-player Campaigns menu.
    * The game now automatically detects whether to show the game setup screen
      in single-player mode.
- * WML engine:
+ ### WML engine
    * Added support for [object] duration=turn end
    * New or updated image path functions:
       * ~BW(): converts an image to black and white
@@ -1779,7 +1778,7 @@ Version 1.13.1:
    * Added synced=yes/no (default yes) to [set_menu_item]
    * [options] is now recognized inside [campaign]
    * type=sp/mp/hybrid now must be specified for [modification]s
- * Miscellaneous and bug fixes:
+ ### Miscellaneous and bug fixes
    * Removed abandoned libana network API implementation.
    * Fixed bug #23201, toggle icons display error in replay.
    * Added --wconsole switch to allocate a console on startup (Windows-only).
@@ -1806,17 +1805,17 @@ Version 1.13.1:
    * It is now possible to use WML to disable/enable quick 4 MP leaders in the
      Default era and the time over advantage dialog by setting a WML variable.
 
-Version 1.13.0:
- * Security fixes:
+## Version 1.13.0
+ ### Security fixes
    * Fixed arbitrary file read from WML/Lua API (CVE-2015-0844, bug #23440).
- * Add-ons client:
+ ### Add-ons client
    * The Update All button is now displayed on all Add-on Manager views instead
      of just the Upgradable filter view, and enabled only when there is at
      least one add-on that may be upgraded.
- * Add-ons server:
+ ### Add-ons server
    * Add-on metadata pattern blacklisting implemented.
    * Major internal refactoring done.
- * AI:
+ ### AI
    * New Micro AI: Fast AI
    * Big Animals Micro AI: bug fix for units not attacking when [avoid_unit] is
      not set
@@ -1852,7 +1851,7 @@ Version 1.13.0:
    * Several fixes of translatable strings in Micro AIs
    * Micro AIs: only display on-screen error messages when in debug mode
    * Add conditional inclusion of AI macros to AI cfgs in data/ai
- * Campaigns:
+ ### Campaigns
    * Changed all occurrences of {FLAG_VARIANT ragged} to {FLAG_VARIANT6 ragged}
    * Singleplayer campaign creation now utilizes the create, configure,
      and connect engines from the multiplayer codepath.
@@ -1927,9 +1926,9 @@ Version 1.13.0:
      * Fixed bug #22799: No allies killed by enemy reinforcements.
      * Fixed bug #22790: Various problems with dehydration.
      * Hide unit variations that should not be listed in the help browser.
- * C++ Engine:
+ ### C++ Engine
    * Purge "human_ai" controller type. This is a fixup of bugfix #18829 below.
- * Editor:
+ ### Editor
    * Added an entry for the terrain description help to the context menu.
    * Default hotkey bindings for brushes (1-5)
    * Disabled the swap palette button when the unit palette is active.
@@ -1938,7 +1937,7 @@ Version 1.13.0:
    * Fixed error messages about missing UI elements.
    * Fixed falcon race missing an icon due to having incorrectly-named image
      files.
- * Graphics:
+ ### Graphics
    * New Ancient Lich baseframe and animations
    * New standing animation (NE and SE) for the Revenant
    * New standing animation for the Dwarvish Stalwart
@@ -1958,7 +1957,7 @@ Version 1.13.0:
    * New beach waves terrain animation.
    * New images for the dummy, barrel, and green cloak items
    * Updated Snowy Orcish Castle and Keep terrain images
- * Help browser:
+ ### Help browser
    * Several sections have been rewritten or had their layout improved
    * Added trait list with links to the help page for unit types
    * Added Defense Cap column to the Terrain Modifiers table in unit help pages
@@ -1980,13 +1979,13 @@ Version 1.13.0:
    * Autogenerated Time of Day Schedule section
    * Unit types that do not include any visible (hide_help=no) variations no
      longer generate topic sections.
- * Language and i18n:
+ ### Language and i18n
    * Updated translations: Chinese (Simplified), Chinese (Traditional), Czech,
      French, Galician, German, Greek, Hungarian, Italian, Lithuanian, Polish,
      Portuguese, Russian, Scottish Gaelic, Slovak, Spanish, Vietnamese
    * Fixed cmake pot-update target on Debian and other systems that do not use
      bash as the default /bin/sh.
- * Lua API:
+ ### Lua API
    * Upgraded Lua to version 5.2.3.
    * Fix bug #21761: wesnoth.synchronize_choice will now give a warning when
      the table returned by the user-specified function is not completely valid,
@@ -2005,7 +2004,7 @@ Version 1.13.0:
    * Added support for treeview wigets in lua gui2 dialogs.
    * Added support to define wml conditional tags in lua. See the
      wesnoth.wml_condtionals table as described on the wiki.
- * Multiplayer:
+ ### Multiplayer
    * Fixed the Set Password option during game creation not having an effect
      due to a misplaced WML attribute in the client's command for the server
      (bug #23015).
@@ -2018,11 +2017,11 @@ Version 1.13.0:
      automatically by clicking on these games in the mp lobby.
    * Ported the password prompt displayed when joining a password-protected MP
      game to GUI2 (bug #23455).
- * Music:
+ ### Music
    * Change main menu track to Journey's End.
- * Replays:
+ ### Replays
    * Added a button that allows playing a single move in replay mode.
- * Units:
+ ### Units
    * Increased the experience requirement for the Rami from 32 to 39
    * Increased the experience requirement for the Saree from 56 to 64
    * Changed sound timings for Khalifate melee attacks
@@ -2033,7 +2032,7 @@ Version 1.13.0:
      variations (bug #22902).
    * Hid alternate Great Wolf variation from help as it is identical to the
      default variation stats-wise.
- * User interface:
+ ### User interface
    * Added a context menu option for command mode.
    * Added a Classic theme which restores the 1.10 UI.
    * Made orb and minimap colors configurable in Preferences.
@@ -2089,7 +2088,7 @@ Version 1.13.0:
    * Wesnoth now ships with Bold and Oblique forms of its default font, Deja Vu
      Sans, and these are used in many menus and in the in-game help for styling
      text where previously we used SDL_TTF. Fixes bug #22376.
- * WML engine:
+ ### WML engine
    * New image path functions:
       * ~XBRZ(): Takes one argument, the scaling factor (1-5). Uses the xBRZ
         scaling algorithm added in this release.
@@ -2140,7 +2139,7 @@ Version 1.13.0:
      feature always to skip this side, even if it is human playable.
    * Add "require_scenario" key in [scenario], [multiplayer], which causes a
      multiplayer game to require that all participants have the add-on installed.
- * Miscellaneous and bug fixes:
+ ### Miscellaneous and bug fixes
    * replace 'fight_on_without_leader'=yes/no with defeat_condition=no_leader/
      no_units/always/never which allows the wml developer to decide when a side
      is considered defeated
