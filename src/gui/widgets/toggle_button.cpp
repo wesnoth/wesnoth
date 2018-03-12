@@ -135,7 +135,7 @@ void toggle_button::set_retval(const int retval)
 	}
 
 	retval_ = retval;
-	set_wants_mouse_left_double_click(retval_ != retval::NONE);
+	set_wants_mouse_left_double_click(retval_ != gui2::retval::NONE);
 }
 
 void toggle_button::set_state(const state_t state)
