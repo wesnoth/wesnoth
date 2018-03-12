@@ -90,6 +90,8 @@ game_stringfixes = {
 ("However the few implements", "However, the few implements"),
 ("humans can learn to wield it and able to learn", "humans can learn to wield it and are able to learn"),
 ("toggle bewteen human and AI.", "toggle between human and AI."),
+#fix added in 1.13.11+dev
+("This unit can lead our own units", "This unit can lead your own units"),
 ),
 
 "wesnoth-lib" : (
@@ -114,6 +116,8 @@ game_stringfixes = {
 ("I High Provost", "I, High Provost"),
 ("both a great combatant and leader", "both a great combatant and a leader"),
 ("You must lead your men to the city and help defend it. Or recapture it if it falls before you arrive.", "You must lead your men to the city. Help defend it, or recapture it if it falls before you arrive!")
+# fix added in 1.13.11+dev
+("with the greatest generals, and battle tactics", "with the greatest generals and battle tactics"),
 ),
 
 "wesnoth-low" : (
@@ -165,6 +169,8 @@ game_stringfixes = {
 ("uses to this advantage", "uses this to their advantage"),
 ("and are valuable enough that auxilliaries who specialize", "and are valuable enough that auxiliaries who specialize"),
 ("Their remedies cannot only heal wounds", "Their remedies can not only heal wounds"),
+# fix added in 1.13.11+dev
+("the singleminded tenacity of an oak.", "the single-minded tenacity of an oak."),
 ),
 
 "wesnoth-utbs" : (
