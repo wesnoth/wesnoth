@@ -29,7 +29,6 @@ namespace gui2
 {
 
 struct builder_widget;
-namespace dialogs { class modal_dialog; }
 class window;
 class grid;
 
@@ -190,22 +189,6 @@ public:
 	 * @retval nullptr          No parent grid found.
 	 */
 	grid* get_parent_grid();
-
-	/**
-	 * Returns the top-level dialog.
-	 *
-	 * A window is most of the time created by a dialog, this function returns
-	 * that dialog.
-	 *
-	 * @deprecated The function was used to install callbacks to member
-	 * functions of the dialog. Once all widgets are converted to signals this
-	 * function will be removed.
-	 *
-	 * @returns                   The top-level dialog.
-	 * @retval nullptr            No top-level window or the top-level window is
-	 *                            not owned by a dialog.
-	 */
-	dialogs::modal_dialog* dialog();
 
 	/*** *** *** *** *** *** Setters and getters. *** *** *** *** *** ***/
 

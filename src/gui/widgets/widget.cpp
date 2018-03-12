@@ -149,12 +149,6 @@ grid* widget::get_parent_grid()
 	return result ? dynamic_cast<grid*>(result) : nullptr;
 }
 
-dialogs::modal_dialog* widget::dialog()
-{
-	window* window = get_window();
-	return window ? window->dialog() : nullptr;
-}
-
 void widget::set_parent(widget* parent)
 {
 	parent_ = parent;
