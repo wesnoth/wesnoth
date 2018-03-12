@@ -136,7 +136,7 @@ private:
 	void show_description(window& window, const std::string& new_description);
 
 	void update_details(window& window);
-	void update_map_settings(window& window);
+	void update_map_settings();
 
 	/**
 	 * Dialog exit hook to bring up the difficulty dialog when starting a campaign.

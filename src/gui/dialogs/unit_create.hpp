@@ -76,7 +76,7 @@ private:
 	/** Callbacks */
 	void list_item_clicked(window& window);
 	void filter_text_changed(text_box_base* textbox, const std::string& text);
-	void gender_toggle_callback(window& window);
+	void gender_toggle_callback();
 
 	void update_displayed_type() const;
 

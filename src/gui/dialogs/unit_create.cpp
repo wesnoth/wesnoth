@@ -101,7 +101,7 @@ void unit_create::pre_show(window& window)
 	gender_toggle.set_member_states(last_gender);
 
 	gender_toggle.set_callback_on_value_change(
-			dialog_callback<unit_create, &unit_create::gender_toggle_callback>);
+		std::bind(&unit_create::gender_toggle_callback, this));
 
 	listbox& list = find_widget<listbox>(&window, "unit_type_list", false);
 
@@ -255,7 +255,7 @@ void unit_create::filter_text_changed(text_box_base* textbox, const std::string&
 	list.set_row_shown(show_items);
 }
 
-void unit_create::gender_toggle_callback(window&)
+void unit_create::gender_toggle_callback()
 {
 	gender_ = gender_toggle.get_active_member_value();
 

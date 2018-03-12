@@ -82,12 +82,12 @@ mp_create_game::mp_create_game(const config& cfg, saved_game& state, bool local_
 	, selected_game_index_(-1)
 	, selected_rfm_index_(-1)
 	, use_map_settings_(register_bool( "use_map_settings", true, prefs::use_map_settings, prefs::set_use_map_settings,
-		dialog_callback<mp_create_game, &mp_create_game::update_map_settings>))
+		std::bind(&mp_create_game::update_map_settings, this)))
 	, fog_(register_bool("fog", true, prefs::fog, prefs::set_fog))
 	, shroud_(register_bool("shroud", true, prefs::shroud, prefs::set_shroud))
 	, start_time_(register_bool("random_start_time", true, prefs::random_start_time, prefs::set_random_start_time))
 	, time_limit_(register_bool("time_limit", true, prefs::countdown, prefs::set_countdown,
-		dialog_callback<mp_create_game, &mp_create_game::update_map_settings>))
+		std::bind(&mp_create_game::update_map_settings, this)))
 	, shuffle_sides_(register_bool("shuffle_sides", true, prefs::shuffle_sides, prefs::set_shuffle_sides))
 	, observers_(register_bool("observers", true, prefs::allow_observers, prefs::set_allow_observers))
 	, registered_users_(register_bool("registered_users", true, prefs::registered_users_only, prefs::set_registered_users_only))
@@ -541,7 +541,7 @@ void mp_create_game::on_game_select(window& window)
 	options_manager_->update_game_options();
 
 	// Game settings
-	update_map_settings(window);
+	update_map_settings();
 }
 
 void mp_create_game::on_tab_select(window& window)
@@ -739,8 +739,10 @@ void mp_create_game::update_details(window& win)
 	}
 }
 
-void mp_create_game::update_map_settings(window& window)
+void mp_create_game::update_map_settings()
 {
+	window& window = *get_window();
+
 	if(config_engine_->force_lock_settings()) {
 		use_map_settings_->widget_set_enabled(window, false, false);
 		use_map_settings_->set_widget_value(window, true);

@@ -68,7 +68,7 @@ void faction_select::pre_show(window& window)
 	gender_toggle_.set_member_states("random");
 
 	gender_toggle_.set_callback_on_value_change(
-			dialog_callback<faction_select, &faction_select::on_gender_select>);
+		std::bind(&faction_select::on_gender_select, this, std::ref(window)));
 
 	//
 	// Set up leader menu button
