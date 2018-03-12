@@ -168,21 +168,6 @@ void toggle_panel::set_value(unsigned selected, bool fire_event)
 	state_num_ = selected;
 	set_is_dirty(true);
 
-	/*
-	 * Disabled since this causes problems all over the place.
-	 * This was added in acea15c312f178b2b6fe4556ca6b190b00866557 but clashes with the
-	 * generator design used by the listbox and broke All The Things. The issue is that
-	 * the generator calls set_value on a toggle panel in selection::select. That can
-	 * lead to infinite NOTIFY_MODIFED recursion. However, even when the recursion was
-	 * mitigated, there were still unforeseen consequences and crashes in various dialogs.
-	 *
-	 * This is where NOTIFY_MODIFED should be dispensed, instead of the click handler.
-	 * A bunch of refactoring in the generator will be needed before this can be enabled,
-	 * though.
-	 *
-	 * -- vultraz, 2017-09-11
-	 */
-
 	// Check for get_window() is here to prevent the callback from
 	// being called when the initial value is set.
 	if(get_window() && fire_event) {
