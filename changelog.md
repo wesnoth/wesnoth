@@ -16,6 +16,8 @@
      * Appearance improvements for S04a 06a, 07a, 09a, 10a, 11a, 12a, 13a
      * Fix gold storing in S07a for S13a if retrieved
      * S04a, 05a, & S13a Make enemy units loyal so gold & events work properly
+ ### Graphics
+   * Updated default Time of Day schedule images.
  ### Language and i18n
    * Updated translations: British English, Spanish
  ### Lua API
