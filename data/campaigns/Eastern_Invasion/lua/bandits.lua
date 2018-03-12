@@ -4,7 +4,7 @@
 local helper = wesnoth.require "helper"
 local wml_actions = wesnoth.wml_actions
 local _ = wesnoth.textdomain "wesnoth-ei"
-local T = helper.set_wml_tag_metatable {}
+local T = wml.tag
 
 function wml_actions.spread_bandit_villages(cfg)
 	local x = cfg.x or helper.wml_error("[spread_bandit_villages] missing required x= attribute.")

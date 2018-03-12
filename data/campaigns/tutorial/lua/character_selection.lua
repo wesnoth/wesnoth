@@ -4,7 +4,7 @@
 -- for the tutorial
 
 local helper = wesnoth.require "helper"
-local T = helper.set_wml_tag_metatable {}
+local T = wml.tag
 local wml_actions = wesnoth.wml_actions
 local _ = wesnoth.textdomain "wesnoth-tutorial"
 

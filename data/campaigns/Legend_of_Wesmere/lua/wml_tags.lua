@@ -6,8 +6,8 @@ local replace_map = wesnoth.wml_actions.replace_map
 
 local helper = wesnoth.require "helper"
 local wml_actions = wesnoth.wml_actions
-local T = helper.set_wml_tag_metatable {}
-local V = helper.set_wml_var_metatable {}
+local T = wml.tag
+local V = wml.variables
 
 function wesnoth.wml_actions.shift_labels(cfg)
 	for k, v in ipairs(labels) do

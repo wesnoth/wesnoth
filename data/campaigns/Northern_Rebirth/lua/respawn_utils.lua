@@ -1,5 +1,5 @@
 local helper = wesnoth.require "helper"
-local T = helper.set_wml_tag_metatable {}
+local T = wml.tag
 
 function wesnoth.wml_actions.find_respawn_point(cfg)
 	local respawn_near = cfg.respawn_near or helper.wml_error "[find_respawn_point] missing required respawn_near= key"

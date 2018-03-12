@@ -3,7 +3,7 @@
 local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
 local wml_actions = wesnoth.wml_actions
-local T = helper.set_wml_tag_metatable {}
+local T = wml.tag
 
 function wml_actions.spawn_units(cfg)
 	local x = cfg.x or helper.wml_error("[spawn_units] missing required x= attribute.")
