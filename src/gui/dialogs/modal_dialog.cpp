@@ -28,7 +28,7 @@ namespace dialogs
 {
 modal_dialog::modal_dialog()
 	: window_(nullptr)
-	, retval_(0)
+	, retval_(retval::NONE)
 	, always_save_fields_(false)
 	, fields_()
 	, focus_()

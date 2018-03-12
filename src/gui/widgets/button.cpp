@@ -44,7 +44,7 @@ button::button(const implementation::builder_button& builder)
 	: styled_widget(builder, get_control_type())
 	, clickable_item()
 	, state_(ENABLED)
-	, retval_(0)
+	, retval_(retval::NONE)
 {
 	connect_signal<event::MOUSE_ENTER>(
 			std::bind(&button::signal_handler_mouse_enter, this, _2, _3));

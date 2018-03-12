@@ -39,7 +39,7 @@ toggle_button::toggle_button(const implementation::builder_toggle_button& builde
 	: styled_widget(builder, get_control_type())
 	, state_(ENABLED)
 	, state_num_(0)
-	, retval_(0)
+	, retval_(retval::NONE)
 	, icon_name_()
 {
 	connect_signal<event::MOUSE_ENTER>(std::bind(
