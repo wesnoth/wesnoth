@@ -20,7 +20,6 @@
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/multiplayer/player_info.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
-#include "gui/dialogs/helper.hpp"
 
 #include "gui/core/log.hpp"
 #include "gui/core/timer.hpp"

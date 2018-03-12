@@ -18,7 +18,6 @@
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/iterator/walker.hpp"
-#include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"

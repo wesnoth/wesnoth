@@ -14,7 +14,6 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/unit_recruit.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"

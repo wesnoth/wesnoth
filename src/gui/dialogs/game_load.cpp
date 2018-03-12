@@ -25,7 +25,6 @@
 #include "gui/auxiliary/field.hpp"
 #include "gui/core/log.hpp"
 #include "gui/dialogs/game_delete.hpp"
-#include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"

@@ -17,7 +17,6 @@
 #include "gui/dialogs/chat_log.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"

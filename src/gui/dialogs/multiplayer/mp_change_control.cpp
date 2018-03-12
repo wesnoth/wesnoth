@@ -24,7 +24,6 @@
 #include "game_display.hpp"
 #include "preferences/credentials.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/dialogs/helper.hpp"
 #include "gui/widgets/label.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 #include "gui/widgets/list.hpp"

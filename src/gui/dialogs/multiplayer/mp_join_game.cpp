@@ -24,7 +24,6 @@
 #include "preferences/credentials.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 #include "gui/dialogs/transient_message.hpp"

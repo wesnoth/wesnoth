@@ -17,7 +17,6 @@
 #include "gui/dialogs/formula_debugger.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/scroll_label.hpp"
 #include "gui/widgets/settings.hpp"

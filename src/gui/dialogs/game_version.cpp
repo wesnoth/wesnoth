@@ -24,7 +24,6 @@
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/dialogs/helper.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX

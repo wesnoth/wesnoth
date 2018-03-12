@@ -20,7 +20,6 @@
 #include "game_initialization/lobby_data.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
-#include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"

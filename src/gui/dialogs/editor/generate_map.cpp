@@ -16,7 +16,6 @@
 #include "gui/dialogs/editor/generate_map.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/dialogs/helper.hpp"
 
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
@@ -27,6 +26,7 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "gui/widgets/window.hpp"
 #include "generators/map_generator.hpp"
 #include "lexical_cast.hpp"
 

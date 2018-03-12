@@ -20,7 +20,6 @@
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/chatbox.hpp"

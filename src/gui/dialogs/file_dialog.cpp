@@ -22,7 +22,6 @@
 #include "formula/string_utils.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/folder_create.hpp"
-#include "gui/dialogs/helper.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
