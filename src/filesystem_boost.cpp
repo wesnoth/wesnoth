@@ -1357,14 +1357,19 @@ std::string get_program_invocation(const std::string &program_name)
 	return (path(game_config::wesnoth_program_dir) / real_program_name).string();
 }
 
-std::string sanitize_path(const std::string& path) {
+std::string sanitize_path(const std::string& path)
+{
 #ifdef _WIN32
-	const std::string user_name = getenv("USERNAME");
+	const char* user_name = getenv("USERNAME");
 #else
-	const std::string user_name = getenv("USER");
+	const char* user_name = getenv("USER");
 #endif
+
 	std::string canonicalized = filesystem::normalize_path(path, true, false);
-	boost::replace_all(canonicalized, user_name, "USER");
+	if(user_name != nullptr) {
+		boost::replace_all(canonicalized, user_name, "USER");
+	}
+
 	return canonicalized;
 }
 
