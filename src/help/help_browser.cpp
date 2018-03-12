@@ -168,6 +168,27 @@ void help_browser::handle_event(const SDL_Event &event)
 				}
 			}
 		}
+		else {
+			// ERR_NG <<"MB:" << (int) mouse_event.button << "\n"; 			
+			bool mouse_back = false;
+			bool mouse_forward = false;
+			if (!back_button_.hidden() && mouse_event.button == SDL_BUTTON_X1) {
+				mouse_back = true;
+			}
+			if (!forward_button_.hidden() && mouse_event.button == SDL_BUTTON_X2) {
+				mouse_forward = true;
+			}
+			if (mouse_back) {
+				move_in_history(back_topics_, forward_topics_);
+			}
+			if (mouse_forward) {
+				move_in_history(forward_topics_, back_topics_);
+			}
+			if (mouse_back || mouse_forward) {
+				back_button_.hide(back_topics_.empty());
+				forward_button_.hide(forward_topics_.empty());
+			}
+		}
 	}
 	else if (event.type == SDL_MOUSEMOTION) {
 		update_cursor();
