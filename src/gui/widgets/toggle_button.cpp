@@ -135,7 +135,7 @@ void toggle_button::set_retval(const int retval)
 	}
 
 	retval_ = retval;
-	set_wants_mouse_left_double_click(retval_ != 0);
+	set_wants_mouse_left_double_click(retval_ != retval::NONE);
 }
 
 void toggle_button::set_state(const state_t state)
@@ -179,7 +179,7 @@ void toggle_button::signal_handler_left_button_double_click(
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	if(retval_ == 0) {
+	if(retval_ == retval::NONE) {
 		return;
 	}
 

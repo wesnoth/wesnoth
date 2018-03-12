@@ -145,7 +145,7 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 
 		set_selected(selected, true);
 
-		if(retval_ != 0) {
+		if(retval_ != retval::NONE) {
 			if(window* window = get_window()) {
 				window->set_retval(retval_);
 				return;
