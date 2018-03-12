@@ -325,10 +325,11 @@ protected:
 		return register_label(id, mandatory, filename);
 	}
 
-private:
+protected:
 	/** The window object build for this dialog. */
 	std::unique_ptr<window> window_;
 
+private:
 	/** Returns the window exit status, 0 means not shown. */
 	int retval_;
 

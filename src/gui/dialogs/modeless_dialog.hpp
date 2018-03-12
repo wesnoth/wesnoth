@@ -84,10 +84,11 @@ public:
 		return window_.get();
 	}
 
-private:
+protected:
 	/** The window, used in show. */
 	std::unique_ptr<window> window_;
 
+private:
 	/** The id of the window to build. */
 	virtual const std::string& window_id() const = 0;
 
