@@ -653,16 +653,6 @@ void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const s
 		}
 	}
 
-	// For some reason, some people are getting crashes in the following pango_cairo_layout_path call.
-	// This appears to fix it, but I'm not entirely sure why. The Pango doc indicate this is supposed
-	// to be for a PangoLayout created with pango_cairo_create_layout, but we create ours with pango_layout_new.
-	//
-	// - vultraz, 7/22/2017
-	pango_cairo_update_layout(cr.get(), &layout);
-
-	// Add a path to the cairo context tracing the current text.
-	pango_cairo_layout_path(cr.get(), &layout);
-
 	//
 	// TODO: the outline may be slightly cut off around certain text if it renders too
 	// close to the surface's edge. That causes the outline to extend just slightly
@@ -673,6 +663,15 @@ void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const s
 	// -- vultraz, 2018-03-07
 	//
 	if(add_outline_) {
+		// For some reason, some people are getting crashes in the following pango_cairo_layout_path call.
+		// This appears to fix it, but I'm not entirely sure why. The Pango doc indicate this is supposed
+		// to be for a PangoLayout created with pango_cairo_create_layout, but we create ours with pango_layout_new.
+		//
+		// - vultraz, 7/22/2017
+		pango_cairo_update_layout(cr.get(), &layout);
+
+		// Add a path to the cairo context tracing the current text.
+		pango_cairo_layout_path(cr.get(), &layout);
 
 		// Set color for background outline (black).
 		cairo_set_source_rgba(cr.get(), 0.0, 0.0, 0.0, 1.0);
@@ -681,7 +680,7 @@ void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const s
 		cairo_set_line_width(cr.get(), 3.0); // Adjust as necessary
 
 		// Stroke path to draw outline. Don't delete the path.
-		cairo_stroke_preserve(cr.get());
+		cairo_stroke(cr.get());
 	}
 
 	// Set main text color.
@@ -691,12 +690,6 @@ void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const s
 		foreground_color_.b / 255.0,
 		foreground_color_.a / 255.0
 	);
-
-	// Fill text path. This is a hack to work around bug #1744 (bad alpha blending when rendering the
-	// output surface). Instead of calling pango_cairo_show_layout twice, we fill the layout path here
-	// It greatly improves the look of text, but it shouldn't really be necessary and probably messes
-	// with certain OS settings like disabling AA.
-	cairo_fill(cr.get());
 
 	// Necessary for pango markup to be properly rendered.
 	pango_cairo_show_layout(cr.get(), &layout);
