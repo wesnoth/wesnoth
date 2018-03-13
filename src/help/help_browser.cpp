@@ -169,15 +169,9 @@ void help_browser::handle_event(const SDL_Event &event)
 			}
 		}
 		else {
-			// ERR_NG <<"MB:" << (int) mouse_event.button << "\n"; 			
-			bool mouse_back = false;
-			bool mouse_forward = false;
-			if (!back_button_.hidden() && mouse_event.button == SDL_BUTTON_X1) {
-				mouse_back = true;
-			}
-			if (!forward_button_.hidden() && mouse_event.button == SDL_BUTTON_X2) {
-				mouse_forward = true;
-			}
+			const bool mouse_back = !back_button_.hidden() && mouse_event.button == SDL_BUTTON_X1;
+			const bool mouse_forward = !forward_button_.hidden() && mouse_event.button == SDL_BUTTON_X2;
+
 			if (mouse_back) {
 				move_in_history(back_topics_, forward_topics_);
 			}
