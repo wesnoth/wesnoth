@@ -181,4 +181,44 @@ def CheckBoostIostreamsBZip2(context):
     context.Result("no")
     return False
 
-config_checks = { "CheckBoost" : CheckBoost, "CheckBoostIostreamsGZip" : CheckBoostIostreamsGZip, "CheckBoostIostreamsBZip2" : CheckBoostIostreamsBZip2 }
+def CheckBoostLocaleBackends(context, backends):
+    env = context.env
+    backup = env.Clone().Dictionary()
+
+    context.Message("Checking for available Boost Locale backends... ")
+    test_program = """
+        #include <boost/locale/localization_backend.hpp>
+        #include <iostream>
+        #include <assert.h>
+
+        int main()
+        {
+            auto manager { boost::locale::localization_backend_manager::global() };
+            auto backends { manager.get_all_backends() };
+            assert(backends.size() >= 1);
+            for(auto backend : backends) {
+                std::cout << backend << std::endl;
+            }
+        }
+        \n"""
+
+    if(env["PLATFORM"] != "win32"):
+        env.Append(LIBS = ["icudata", "icui18n", "icuuc"])
+
+    res, output = context.TryRun(test_program, ".cpp")
+    result = False
+    found_backends = "no"
+    if res:
+        supported_backends = output.splitlines()
+        result = bool(set(backends).intersection(supported_backends))
+        found_backends = ",".join(supported_backends)
+
+    context.Result(found_backends)
+    if result:
+        return True
+    else:
+        env.Replace(**backup)
+
+    return False
+
+config_checks = { "CheckBoost" : CheckBoost, "CheckBoostIostreamsGZip" : CheckBoostIostreamsGZip, "CheckBoostIostreamsBZip2" : CheckBoostIostreamsBZip2, "CheckBoostLocaleBackends" : CheckBoostLocaleBackends }

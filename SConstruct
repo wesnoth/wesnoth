@@ -374,6 +374,9 @@ if env["prereqs"]:
         conf.CheckBoost("locale") \
             and Info("Base prerequisites are met")) \
             or Warning("Base prerequisites are not met")
+    if(have_server_prereqs and not env["host"]):
+        conf.CheckBoostLocaleBackends(["icu", "winapi"]) \
+            or Warning("Only icu and winapi backends of Boost Locale are supported. Bugs/crashes are very likely with other backends")
 
     env = conf.Finish()
 
