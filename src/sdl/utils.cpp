@@ -52,7 +52,7 @@ static SDL_PixelFormat& get_neutral_pixel_format()
 	if(first_time) {
 		first_time = false;
 
-#if SDL_VERSION_ATLEAST(2, 0, 6)
+#if SDL_VERSION_ATLEAST(2, 0, 5)
 		surface surf(
 			SDL_CreateRGBSurfaceWithFormat(0, 1, 1, 32, SDL_PIXELFORMAT_ARGB8888));
 #else
@@ -88,7 +88,7 @@ surface create_neutral_surface(int w, int h)
 
 	SDL_PixelFormat format = get_neutral_pixel_format();
 
-#if SDL_VERSION_ATLEAST(2, 0, 6)
+#if SDL_VERSION_ATLEAST(2, 0, 5)
 	surface result = SDL_CreateRGBSurfaceWithFormat(0, w, h, format.BitsPerPixel, format.format);
 #else
 	surface result = SDL_CreateRGBSurface(0, w, h,
@@ -2105,7 +2105,7 @@ surface create_compatible_surface(const surface &surf, int width, int height)
 	if(height == -1)
 		height = surf->h;
 
-#if SDL_VERSION_ATLEAST(2, 0, 6)
+#if SDL_VERSION_ATLEAST(2, 0, 5)
 	surface s = SDL_CreateRGBSurfaceWithFormat(0, width, height, surf->format->BitsPerPixel, surf->format->format);
 #else
 	surface s = SDL_CreateRGBSurface(0, width, height, surf->format->BitsPerPixel,
