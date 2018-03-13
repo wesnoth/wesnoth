@@ -319,7 +319,6 @@ private:
 	// Values to support input method editors
 	bool ime_in_progress_;
 	int ime_start_point_;
-	int ime_cursor_;
 	int ime_length_;
 
 	size_t cursor_timer_;
@@ -488,7 +487,7 @@ protected:
 									const utf8::string& unicode);
 	virtual void handle_editing(bool& handled,
 								const utf8::string& unicode,
-								int32_t start, int32_t len);
+								int32_t start);
 
 private:
 	/**

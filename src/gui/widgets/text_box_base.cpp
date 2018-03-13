@@ -39,7 +39,6 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	, selection_length_(0)
 	, ime_in_progress_(false)
 	, ime_start_point_(0)
-	, ime_cursor_(0)
 	, ime_length_(0)
 	, cursor_timer_(0)
 	, cursor_alpha_(0)
@@ -56,7 +55,7 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
 			&text_box_base::signal_handler_sdl_key_down, this, _2, _3, _5, _6));
 	connect_signal<event::SDL_TEXT_INPUT>(std::bind(&text_box_base::handle_commit, this, _3, _5));
-	connect_signal<event::SDL_TEXT_EDITING>(std::bind(&text_box_base::handle_editing, this, _3, _5, _6, _7));
+	connect_signal<event::SDL_TEXT_EDITING>(std::bind(&text_box_base::handle_editing, this, _3, _5, _6));
 
 	connect_signal<event::RECEIVE_KEYBOARD_FOCUS>(std::bind(
 			&text_box_base::signal_handler_receive_keyboard_focus, this, _2));
@@ -407,12 +406,12 @@ void text_box_base::handle_commit(bool& handled, const utf8::string& unicode)
 	if(unicode.size() > 1 || unicode[0] != 0) {
 		handled = true;
 		if(ime_in_progress_) {
-			selection_start_ = ime_start_point_;
-			selection_length_ = ime_length_;
+			set_selection(ime_start_point_ + ime_length_, 0);
 			ime_in_progress_ = false;
 			ime_length_ = 0;
+		} else {
+			insert_char(unicode);
 		}
-		insert_char(unicode);
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 
 		if(text_changed_callback_) {
@@ -421,7 +420,7 @@ void text_box_base::handle_commit(bool& handled, const utf8::string& unicode)
 	}
 }
 
-void text_box_base::handle_editing(bool& handled, const utf8::string& unicode, int32_t start, int32_t len)
+void text_box_base::handle_editing(bool& handled, const utf8::string& unicode, int32_t start)
 {
 	if(unicode.size() > 1 || unicode[0] != 0) {
 		handled = true;
@@ -441,16 +440,25 @@ void text_box_base::handle_editing(bool& handled, const utf8::string& unicode, i
 			}
 			SDL_SetTextInputRect(&rect);
 		}
-		ime_cursor_ = start;
-		ime_length_ = new_len;
-		std::string new_text(text_cached_);
-		utf8::insert(new_text, ime_start_point_, unicode);
+		
+		std::string new_text;
+		// In SDL_TextEditingEvent, size of editing_text is limited
+		// If length of composition text is more than the limit, it is separated to multiple SDL_TextEditingEvent
+		// start is start position of the separated event in entire composition text
+		if(start == 0) {
+			ime_length_ = new_len;
+			new_text = text_cached_;
+		} else {
+			ime_length_ += new_len;
+			new_text = text_.text();
+		}
+		utf8::insert(new_text, ime_start_point_ + start, unicode);
 		text_.set_text(new_text, false);
 
 		// Update status
-		set_cursor(ime_start_point_ + ime_cursor_, false);
-		if(len > 0) {
-			set_cursor(ime_start_point_ + ime_cursor_ + len, true);
+		set_cursor(ime_start_point_, false);
+		if(ime_length_ > 0) {
+			set_cursor(ime_start_point_ + ime_length_, true);
 		}
 		update_canvas();
 		set_is_dirty(true);
