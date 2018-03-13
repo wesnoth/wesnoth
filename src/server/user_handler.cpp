@@ -17,6 +17,7 @@
 #include "random.hpp"
 #include <openssl/rand.h>
 
+#include <array>
 #include <ctime>
 #include <sstream>
 
@@ -57,7 +58,8 @@ std::string user_handler::create_unsecure_nonce(int length) {
 namespace {
 	const std::string itoa64 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" ;
 
-	std::string encode_hash(const unsigned char* input, unsigned int len) {
+	template<size_t len>
+	std::string encode_hash(const std::array<unsigned char, len>& input) {
 		std::string encoded_hash;
 
 		unsigned int i = 0;
@@ -88,12 +90,12 @@ namespace {
 std::string user_handler::create_secure_nonce()
 {
 	// Must be full base64 encodings (3 bytes = 4 chars) else we skew the PRNG results
-	unsigned char buf [((3 * 32) / 4)];
+	std::array<unsigned char, (3 * 32) / 4> buf;
 
-	if(!RAND_bytes(buf, sizeof(buf))) {
+	if(!RAND_bytes(buf.data(), buf.size())) {
 		throw RAND_bytes_exception();
 	}
 
-	return encode_hash(buf, sizeof(buf));
+	return encode_hash(buf);
 }
 
