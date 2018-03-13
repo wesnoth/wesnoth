@@ -791,9 +791,7 @@ void server::send_password_request(socket_ptr socket, const std::string& msg,
 	// If using crypt_blowfish, use 32 random Base64 characters, cryptographic-strength, 192 bits entropy
 	// else (phppass, MD5, $H$), use 8 random integer digits, not secure, do not use, this is crap, 29.8 bits entropy
 	std::string nonce {
-		/* if   */ (salt[1] == '2')
-		/* then */ ? user_handler_->create_secure_nonce()
-		/* else */ : user_handler_->create_unsecure_nonce()
+		(salt[1] == '2') ? user_handler_->create_secure_nonce() : user_handler_->create_unsecure_nonce()
 	};
 	std::string password_challenge = salt + nonce;
 	if(user_handler_->use_phpbb_encryption() && salt.empty()) {
