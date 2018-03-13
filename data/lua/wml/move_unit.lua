@@ -8,7 +8,7 @@ function wesnoth.wml_actions.move_unit(cfg)
 	local muf_force_scroll = cfg.force_scroll
 	local check_passability = cfg.check_passability
 	if check_passability == nil then check_passability = true end
-	cfg = helper.literal(cfg)
+	cfg = wml.literal(cfg)
 	cfg.to_x, cfg.to_y, cfg.fire_event = nil, nil, nil
 	local units = wesnoth.get_units(cfg)
 

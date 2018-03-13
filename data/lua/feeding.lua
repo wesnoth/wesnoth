@@ -1,7 +1,6 @@
 
-local helper = wesnoth.require("helper")
 local _ = wesnoth.textdomain 'wesnoth-help'
-local T = helper.set_wml_tag_metatable {}
+local T = wml.tag
 local on_event = wesnoth.require("on_event")
 
 -- The feeding event code
@@ -22,9 +21,9 @@ on_event("die", function()
 		return
 	end
 	local u_killer_cfg = u_killer.__cfg
-	for i,v in ipairs(helper.get_child(u_killer_cfg, "modifications"))do
+	for i,v in ipairs(wml.get_child(u_killer_cfg, "modifications"))do
 		if v[1] == "object" and v[2].feeding == true then
-			local effect = helper.get_child(v[2], "effect")
+			local effect = wml.get_child(v[2], "effect")
 			effect.increase_total = effect.increase_total + 1
 			u_killer_cfg.max_hitpoints = u_killer_cfg.max_hitpoints + 1
 			u_killer_cfg.hitpoints = u_killer_cfg.hitpoints + 1

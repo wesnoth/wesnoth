@@ -1,10 +1,10 @@
 local helper = wesnoth.require "helper"
-local T = helper.set_wml_tag_metatable{}
+local T = wml.tag
 
 local function add_animation(anim, cfg)
-	cfg = helper.shallow_parsed(cfg)
+	cfg = wml.shallow_parsed(cfg)
 	local flag = cfg.flag or helper.wml_error("[animate_unit] is missing flag")
-	local filter = helper.get_child(cfg, "filter")
+	local filter = wml.get_child(cfg, "filter")
 	local unit
 	if filter then
 		unit = wesnoth.get_units{
@@ -19,8 +19,8 @@ local function add_animation(anim, cfg)
 	end
 
 	if unit and not wesnoth.is_fogged(wesnoth.current.side, unit.x, unit.y) then
-		local primary = helper.get_child(cfg, "primary_attack")
-		local secondary = helper.get_child(cfg, "secondary_attack")
+		local primary = wml.get_child(cfg, "primary_attack")
+		local secondary = wml.get_child(cfg, "secondary_attack")
 		-- We don't have access to the secondary unit at this point.
 		-- Thus, for the secondary attack, we just create a dummy attack
 		-- which exactly matches the filter.
@@ -71,7 +71,7 @@ local function add_animation(anim, cfg)
 		-- (should make the game not scroll if view locked or prefs disables it)
 		wesnoth.scroll_to_tile(unit.x, unit.y, true, false, true, false)
 
-		local facing = helper.get_child(cfg, "facing")
+		local facing = wml.get_child(cfg, "facing")
 		if facing then
 			local facing_loc = wesnoth.get_locations(facing)[1]
 			if facing_loc then
@@ -101,7 +101,7 @@ local function add_animation(anim, cfg)
 		})
 	end
 
-	for c in helper.child_range(cfg, "animate") do
+	for c in wml.child_range(cfg, "animate") do
 		add_animation(anim, c)
 	end
 end

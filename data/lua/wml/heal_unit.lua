@@ -1,8 +1,7 @@
-local helper = wesnoth.require "helper"
-local T = helper.set_wml_tag_metatable {}
+local T = wml.tag
 
 function wesnoth.wml_actions.heal_unit(cfg)
-	local healers = helper.get_child(cfg, "filter_second")
+	local healers = wml.get_child(cfg, "filter_second")
 	if healers then
 		healers = wesnoth.get_units{
 			ability_type = "heals",
@@ -12,7 +11,7 @@ function wesnoth.wml_actions.heal_unit(cfg)
 		healers = {}
 	end
 
-	local who = helper.get_child(cfg, "filter")
+	local who = wml.get_child(cfg, "filter")
 	if who then
 		who = wesnoth.get_units(who)
 	else

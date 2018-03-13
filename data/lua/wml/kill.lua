@@ -5,7 +5,7 @@ local kill_recursion_preventer = location_set.create()
 
 function wesnoth.wml_actions.kill(cfg)
 	local number_killed = 0
-	local secondary_unit = helper.get_child(cfg, "secondary_unit")
+	local secondary_unit = wml.get_child(cfg, "secondary_unit")
 	local killer_loc = {0, 0}
 	if secondary_unit then
 		secondary_unit = wesnoth.get_units(secondary_unit)[1]
@@ -44,8 +44,8 @@ function wesnoth.wml_actions.kill(cfg)
 		if cfg.animate and unit.valid == "map" then
 			wesnoth.scroll_to_tile(death_loc)
 			local anim = wesnoth.create_animator()
-			local primary = helper.get_child(cfg, "primary_attack")
-			local secondary = helper.get_child(cfg, "secondary_attack")
+			local primary = wml.get_child(cfg, "primary_attack")
+			local secondary = wml.get_child(cfg, "secondary_attack")
 			-- Yes, we get the primary attack from the secondary unit and vice versa
 			-- The primary attack in a death animation is the weapon that caused the death
 			-- In other words, the attacker's weapon. The attacker is the secondary unit.

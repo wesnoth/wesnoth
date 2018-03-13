@@ -73,7 +73,7 @@ end
 
 function wml_actions.item(cfg)
 	local locs = wesnoth.get_locations(cfg)
-	cfg = helper.parsed(cfg)
+	cfg = wml.parsed(cfg)
 	if not cfg.name then
 		cfg.name = "item_" .. tostring(next_item_name)
 		next_item_name = next_item_name + 1

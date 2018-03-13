@@ -53,7 +53,7 @@ end
 function utils.get_sides(cfg, key_name, filter_name)
 	key_name = key_name or "side"
 	filter_name = filter_name or "filter_side"
-	local filter = helper.get_child(cfg, filter_name)
+	local filter = wml.get_child(cfg, filter_name)
 	if filter then
 		if cfg[key_name] then
 			wesnoth.log('warn', "ignoring duplicate side filter information (inline side=)")
@@ -67,7 +67,7 @@ end
 function utils.optional_side_filter(cfg, key_name, filter_name)
 	key_name = key_name or "side"
 	filter_name = filter_name or "filter_side"
-	if cfg[key_name] == nil and helper.get_child(cfg, filter_name) == nil then
+	if cfg[key_name] == nil and wml.get_child(cfg, filter_name) == nil then
 		return true
 	end
 	local sides = utils.get_sides(cfg, key_name, filter_name)
@@ -108,7 +108,7 @@ function utils.handle_event_commands(cfg, scope_type)
 	-- the execution, hence the manual handling of [insert_tag].
 	scope_type = scope_type or "plain"
 	scope_stack:push(scope_type)
-	local cmds = helper.shallow_literal(cfg)
+	local cmds = wml.shallow_literal(cfg)
 	for i = 1,#cmds do
 		local v = cmds[i]
 		local cmd = v[1]
@@ -192,7 +192,7 @@ end
 
 --note: when using these, make sure that nothing can throw over the call to end_var_scope
 function utils.start_var_scope(name)
-	local var = helper.get_variable_array(name) --containers and arrays
+	local var = wml.variable.get_array(name) --containers and arrays
 	if #var == 0 then var = wesnoth.get_variable(name) end --scalars (and nil/empty)
 	wesnoth.set_variable(name)
 	return var
@@ -201,7 +201,7 @@ end
 function utils.end_var_scope(name, var)
 	wesnoth.set_variable(name)
 	if type(var) == "table" then
-		helper.set_variable_array(name, var)
+		wml.variable.set_array(name, var)
 	else
 		wesnoth.set_variable(name, var)
 	end

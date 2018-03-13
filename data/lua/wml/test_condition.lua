@@ -1,5 +1,3 @@
-local helper = wesnoth.require "helper"
-
 -- This function returns true if it managed to explain the failure
 local function explain(current_cfg, expect, logger)
 	for i,t in ipairs(current_cfg) do
@@ -27,7 +25,7 @@ local function explain(current_cfg, expect, logger)
 			for k,v in pairs(this_cfg) do
 				if type(k) ~= "number" then
 					local format = "%s\n\t\t%s=%s"
-					local literal = tostring(helper.literal(this_cfg)[k])
+					local literal = tostring(wml.literal(this_cfg)[k])
 					if literal ~= v then
 						format = format .. "=%s"
 					end

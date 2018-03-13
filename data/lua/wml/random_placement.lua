@@ -2,10 +2,10 @@ local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
 
 wesnoth.wml_actions.random_placement = function(cfg)
-	local parsed = helper.shallow_parsed(cfg)
+	local parsed = wml.shallow_parsed(cfg)
 	-- TODO: In most cases this tag is used to place units, so maybe make include_borders=no the default for [filter_location]?
-	local filter = helper.get_child(parsed, "filter_location") or {}
-	local command = helper.get_child(parsed, "command") or helper.wml_error("[random_placement] missing required [command] subtag")
+	local filter = wml.get_child(parsed, "filter_location") or {}
+	local command = wml.get_child(parsed, "command") or helper.wml_error("[random_placement] missing required [command] subtag")
 	local distance = cfg.min_distance or 0
 	local num_items = cfg.num_items or helper.wml_error("[random_placement] missing required 'num_items' attribute")
 	local variable = cfg.variable or helper.wml_error("[random_placement] missing required 'variable' attribute")

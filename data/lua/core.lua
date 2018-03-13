@@ -335,7 +335,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	end
 
 	--! Creates proxies for all the WML container variables with name @a var.
-	--! This is similar to helper.get_variable_array, except that the elements
+	--! This is similar to wml.variable.get_array, except that the elements
 	--! can be used for writing too.
 	--! @returns a table containing all the variable proxies (starting at index 1).
 	function wml.variable.get_proxy_array(var)

@@ -5,7 +5,7 @@ function wesnoth.wml_actions.role(cfg)
 	-- role= and type= are handled differently than in other tags,
 	-- so we need to remove them from the filter
 	local role = cfg.role
-	local filter = helper.shallow_literal(cfg)
+	local filter = wml.shallow_literal(cfg)
 
 	if role == nil then
 		helper.wml_error("missing role= in [role]")
@@ -35,12 +35,12 @@ function wesnoth.wml_actions.role(cfg)
 	-- the SUF will be id= which we will add in a moment
 	-- keep this in sync with the C++ recall function!!!
 	local recall = nil
-	local child = helper.get_child(cfg, "auto_recall")
+	local child = wml.get_child(cfg, "auto_recall")
 	if child ~= nil then
-		if helper.get_nth_child(cfg, "auto_recall", 2) ~= nil then
+		if wml.get_nth_child(cfg, "auto_recall", 2) ~= nil then
 			wesnoth.log("debug", "More than one [auto_recall] found within [role]", true)
 		end
-		local original = helper.shallow_literal(child)
+		local original = wml.shallow_literal(child)
 		recall = {}
 		recall.x = original.x
 		recall.y = original.y
@@ -104,7 +104,7 @@ function wesnoth.wml_actions.role(cfg)
 	end
 
 	-- no matching unit found, try the [else] tags
-	for else_child in helper.child_range(cfg, "else") do
+	for else_child in wml.child_range(cfg, "else") do
 		local action = utils.handle_event_commands(else_child, "conditional")
 		if action ~= "none" then return end
 	end

@@ -3,7 +3,7 @@ local utils = wesnoth.require "wml-utils"
 local already_ended = false
 
 function wesnoth.wml_actions.endlevel(cfg)
-	local parsed = helper.parsed(cfg)
+	local parsed = wml.parsed(cfg)
 	if already_ended then
 		wesnoth.message("Repeated [endlevel] execution, ignoring")
 		return
@@ -27,7 +27,7 @@ function wesnoth.wml_actions.endlevel(cfg)
 	end
 
 	local side_results = {}
-	for result in helper.child_range(parsed, "result") do
+	for result in wml.child_range(parsed, "result") do
 		local side = result.side or helper.wml_error("[result] in [endlevel] missing required side= key")
 		side_results[side] = result
 	end

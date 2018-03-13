@@ -11,21 +11,21 @@ end
 -- the table, using the [] operator, rather than by using the point syntax
 
 wml_actions["if"] = function(cfg)
-	if not (helper.get_child(cfg, 'then') or helper.get_child(cfg, 'elseif') or helper.get_child(cfg, 'else')) then
+	if not (wml.get_child(cfg, 'then') or wml.get_child(cfg, 'elseif') or wml.get_child(cfg, 'else')) then
 		helper.wml_error("[if] didn't find any [then], [elseif], or [else] children.")
 	end
 
 	if wesnoth.eval_conditional(cfg) then -- evaluate [if] tag
-		for then_child in helper.child_range(cfg, "then") do
+		for then_child in wml.child_range(cfg, "then") do
 			local action = utils.handle_event_commands(then_child, "conditional")
 			if action ~= "none" then break end
 		end
 		return -- stop after executing [then] tags
 	end
 
-	for elseif_child in helper.child_range(cfg, "elseif") do
+	for elseif_child in wml.child_range(cfg, "elseif") do
 		if wesnoth.eval_conditional(elseif_child) then -- we'll evaluate the [elseif] tags one by one
-			for then_tag in helper.child_range(elseif_child, "then") do
+			for then_tag in wml.child_range(elseif_child, "then") do
 				local action = utils.handle_event_commands(then_tag, "conditional")
 				if action ~= "none" then break end
 			end
@@ -34,21 +34,21 @@ wml_actions["if"] = function(cfg)
 	end
 
 	-- no matched condition, try the [else] tags
-	for else_child in helper.child_range(cfg, "else") do
+	for else_child in wml.child_range(cfg, "else") do
 		local action = utils.handle_event_commands(else_child, "conditional")
 		if action ~= "none" then break end
 	end
 end
 
 wml_actions["while"] = function( cfg )
-	if helper.child_count(cfg, "do") == 0 then
+	if wml.child_count(cfg, "do") == 0 then
 		helper.wml_error "[while] does not contain any [do] tags"
 	end
 
 	-- execute [do] up to 65536 times
 	for i = 1, 65536 do
 		if wesnoth.eval_conditional( cfg ) then
-			for do_child in helper.child_range( cfg, "do" ) do
+			for do_child in wml.child_range( cfg, "do" ) do
 				local action = utils.handle_event_commands(do_child, "loop")
 				if action == "break" then
 					utils.set_exiting("none")
@@ -77,7 +77,7 @@ function wml_actions.continue(cfg)
 end
 
 wesnoth.wml_actions["for"] = function(cfg)
-	if helper.child_count(cfg, "do") == 0 then
+	if wml.child_count(cfg, "do") == 0 then
 		helper.wml_error "[for] does not contain any [do] tags"
 	end
 
@@ -96,7 +96,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 	else
 		-- Get a literal config to fetch end and step;
 		-- this done is to delay expansion of variables
-		local cfg_lit = helper.literal(cfg)
+		local cfg_lit = wml.literal(cfg)
 		first = cfg.start or 0
 		loop_lim.last = cfg_lit["end"] or first
 		loop_lim.step = cfg_lit.step or 1
@@ -132,7 +132,7 @@ wesnoth.wml_actions["for"] = function(cfg)
 		end
 	end
 	while loop_condition() do
-		for do_child in helper.child_range( cfg, "do" ) do
+		for do_child in wml.child_range( cfg, "do" ) do
 			local action = utils.handle_event_commands(do_child, "loop")
 			if action == "break" then
 				utils.set_exiting("none")
@@ -151,13 +151,13 @@ wesnoth.wml_actions["for"] = function(cfg)
 end
 
 wml_actions["repeat"] = function(cfg)
-	if helper.child_count(cfg, "do") == 0 then
+	if wml.child_count(cfg, "do") == 0 then
 		helper.wml_error "[repeat] does not contain any [do] tags"
 	end
 
 	local times = cfg.times or 1
 	for i = 1, times do
-		for do_child in helper.child_range( cfg, "do" ) do
+		for do_child in wml.child_range( cfg, "do" ) do
 			local action = utils.handle_event_commands(do_child, "loop")
 			if action == "break" then
 				utils.set_exiting("none")
@@ -173,12 +173,12 @@ wml_actions["repeat"] = function(cfg)
 end
 
 function wml_actions.foreach(cfg)
-	if helper.child_count(cfg, "do") == 0 then
+	if wml.child_count(cfg, "do") == 0 then
 		helper.wml_error "[foreach] does not contain any [do] tags"
 	end
 
 	local array_name = cfg.array or helper.wml_error "[foreach] missing required array= attribute"
-	local array = helper.get_variable_array(array_name)
+	local array = wml.variable.get_array(array_name)
 	if #array == 0 then return end -- empty and scalars unwanted
 	local item_name = cfg.variable or "this_item"
 	local this_item = utils.start_var_scope(item_name) -- if this_item is already set
@@ -196,7 +196,7 @@ function wml_actions.foreach(cfg)
 		-- set index variable
 		wesnoth.set_variable(i_name, index-1) -- here -1, because of WML array
 		-- perform actions
-		for do_child in helper.child_range(cfg, "do") do
+		for do_child in wml.child_range(cfg, "do") do
 			local action = utils.handle_event_commands(do_child, "loop")
 			if action == "break" then
 				utils.set_exiting("none")
@@ -232,7 +232,7 @@ function wml_actions.foreach(cfg)
 		Note that altering the array via indexing (with the index_var)
 		is not supported; any such changes will be reverted by this line.
 	]]
-	helper.set_variable_array(array_name, array)
+	wml.variable.set_array(array_name, array)
 end
 
 function wml_actions.switch(cfg)
@@ -240,7 +240,7 @@ function wml_actions.switch(cfg)
 	local found = false
 
 	-- Execute all the [case]s where the value matches.
-	for v in helper.child_range(cfg, "case") do
+	for v in wml.child_range(cfg, "case") do
 		for w in utils.split(v.value) do
 			if w == tostring(var_value) then
 				local action = utils.handle_event_commands(v, "switch")
@@ -254,7 +254,7 @@ function wml_actions.switch(cfg)
 
 	-- Otherwise execute [else] statements.
 	if not found then
-		for v in helper.child_range(cfg, "else") do
+		for v in wml.child_range(cfg, "else") do
 			local action = utils.handle_event_commands(v, "switch")
 			if action ~= "none" then break end
 		end

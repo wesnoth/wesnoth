@@ -1,6 +1,5 @@
-local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
-local T = helper.set_wml_tag_metatable {}
+local T = wml.tag
 
 local side_changes_needing_redraw = {
 	'shroud', 'fog', 'reset_map', 'reset_view', 'shroud_data',
@@ -96,7 +95,7 @@ function wesnoth.wml_actions.modify_side(cfg)
 			wesnoth.switch_ai(side.side, cfg.switch_ai)
 		end
 		local ai, replace_ai = {}, false
-		for next_ai in helper.child_range(cfg, "ai") do
+		for next_ai in wml.child_range(cfg, "ai") do
 			table.insert(ai, T.ai(next_ai))
 			if next_ai.ai_algorithm then
 				replace_ai = true

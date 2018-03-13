@@ -8,7 +8,7 @@ function wml_actions.modify_unit(cfg)
 	local replace_mode = cfg.mode == "replace"
 
 	local function handle_attributes(cfg, unit_path, toplevel)
-		for current_key, current_value in pairs(helper.shallow_parsed(cfg)) do
+		for current_key, current_value in pairs(wml.shallow_parsed(cfg)) do
 			if type(current_value) ~= "table" and (not toplevel or (current_key ~= "type" and current_key ~= "mode")) then
 				wesnoth.set_variable(string.format("%s.%s", unit_path, current_key), current_value)
 			end
@@ -17,7 +17,7 @@ function wml_actions.modify_unit(cfg)
 
 	local function handle_child(cfg, unit_path)
 		local children_handled = {}
-		local cfg = helper.shallow_parsed(cfg)
+		local cfg = wml.shallow_parsed(cfg)
 		handle_attributes(cfg, unit_path)
 
 		for current_index, current_table in ipairs(cfg) do
@@ -29,7 +29,7 @@ function wml_actions.modify_unit(cfg)
 		end
 	end
 
-	local filter = helper.get_child(cfg, "filter") or helper.wml_error "[modify_unit] missing required [filter] tag"
+	local filter = wml.get_child(cfg, "filter") or helper.wml_error "[modify_unit] missing required [filter] tag"
 	local function handle_unit(unit_num)
 		local children_handled = {}
 		local unit_path = string.format("%s[%u]", unit_variable, unit_num)
@@ -37,16 +37,16 @@ function wml_actions.modify_unit(cfg)
 		wesnoth.set_variable("this_unit", this_unit)
 		handle_attributes(cfg, unit_path, true)
 
-		for current_index, current_table in ipairs(helper.shallow_parsed(cfg)) do
+		for current_index, current_table in ipairs(wml.shallow_parsed(cfg)) do
 			local current_tag = current_table[1]
 			if current_tag == "filter" then
 				-- nothing
 			elseif current_tag == "object" or current_tag == "trait" or current_tag == "advancement" then
 				local mod = current_table[2]
 				if mod.delayed_variable_substitution then
-					mod = helper.literal(mod)
+					mod = wml.literal(mod)
 				else
-					mod = helper.parsed(mod)
+					mod = wml.parsed(mod)
 				end
 				local unit = wesnoth.get_variable(unit_path)
 				unit = wesnoth.create_unit(unit)

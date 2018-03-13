@@ -1,7 +1,6 @@
 
-local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
-local T = helper.set_wml_tag_metatable {}
+local T = wml.tag
 local wml_actions = wesnoth.wml_actions
 
 local used_items = {}
@@ -17,7 +16,7 @@ function wml_actions.object(cfg)
 
 	local unit, command_type, text
 
-	local filter = helper.get_child(cfg, "filter")
+	local filter = wml.get_child(cfg, "filter")
 	if filter then
 		unit = wesnoth.get_units(filter)[1]
 	else
@@ -46,9 +45,9 @@ function wml_actions.object(cfg)
 		local dvs = cfg.delayed_variable_substitution
 		local add = cfg.no_write ~= true
 		if dvs then
-			wesnoth.add_modification(unit, "object", helper.literal(cfg), add)
+			wesnoth.add_modification(unit, "object", wml.literal(cfg), add)
 		else
-			wesnoth.add_modification(unit, "object", helper.parsed(cfg), add)
+			wesnoth.add_modification(unit, "object", wml.parsed(cfg), add)
 		end
 
 		if not silent then
@@ -66,7 +65,7 @@ function wml_actions.object(cfg)
 		wesnoth.show_popup_dialog(name, text, cfg.image)
 	end
 
-	for cmd in helper.child_range(cfg, command_type) do
+	for cmd in wml.child_range(cfg, command_type) do
 		local action = utils.handle_event_commands(cmd, "conditional")
 		if action ~= "none" then break end
 	end

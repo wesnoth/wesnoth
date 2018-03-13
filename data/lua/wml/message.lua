@@ -273,7 +273,7 @@ local function message_user_choice(cfg, speaker, options, text_input, sound, voi
 end
 
 function wesnoth.wml_actions.message(cfg)
-	local show_if = helper.get_child(cfg, "show_if") or {}
+	local show_if = wml.get_child(cfg, "show_if") or {}
 	if not wesnoth.eval_conditional(show_if) then
 		log("[message] skipped because [show_if] did not pass", "debug")
 		return
@@ -281,7 +281,7 @@ function wesnoth.wml_actions.message(cfg)
 
 	-- Only the first text_input tag is considered
 	local text_input
-	for text_input_cfg in helper.child_range(cfg, "text_input") do
+	for text_input_cfg in wml.child_range(cfg, "text_input") do
 		if text_input ~= nil then
 			log("Too many [text_input] tags, only first one accepted", "warning")
 			break
@@ -290,8 +290,8 @@ function wesnoth.wml_actions.message(cfg)
 	end
 
 	local options, option_events = {}, {}
-	for option in helper.child_range(cfg, "option") do
-		local condition = helper.get_child(option, "show_if") or {}
+	for option in wml.child_range(cfg, "option") do
+		local condition = wml.get_child(option, "show_if") or {}
 
 		if wesnoth.eval_conditional(condition) then
 			if option.message and not option.image and not option.label then
@@ -320,7 +320,7 @@ function wesnoth.wml_actions.message(cfg)
 			end
 			table.insert(option_events, {})
 
-			for cmd in helper.child_range(option, "command") do
+			for cmd in wml.child_range(option, "command") do
 				table.insert(option_events[#option_events], cmd)
 			end
 		end

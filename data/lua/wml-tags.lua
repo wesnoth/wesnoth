@@ -2,7 +2,7 @@ local helper = wesnoth.require "helper"
 local location_set = wesnoth.require "location_set"
 local utils = wesnoth.require "wml-utils"
 local wml_actions = wesnoth.wml_actions
-local T = helper.set_wml_tag_metatable {}
+local T = wml.tag
 
 function wesnoth.game_events.on_load(cfg)
 	if #cfg == 0 then return end
@@ -53,7 +53,7 @@ function wml_actions.sync_variable(cfg)
 			return res
 		end
 	)
-	for variable in helper.child_range(result, "variable") do
+	for variable in wml.child_range(result, "variable") do
 		local name = variable.name
 
 		if variable.type == "indexed" then
@@ -146,18 +146,18 @@ function wml_actions.store_unit_type(cfg)
 end
 
 function wml_actions.fire_event(cfg)
-	local u1 = helper.get_child(cfg, "primary_unit")
+	local u1 = wml.get_child(cfg, "primary_unit")
 	u1 = u1 and wesnoth.get_units(u1)[1]
 	local x1, y1 = 0, 0
 	if u1 then x1, y1 = u1.x, u1.y end
 
-	local u2 = helper.get_child(cfg, "secondary_unit")
+	local u2 = wml.get_child(cfg, "secondary_unit")
 	u2 = u2 and wesnoth.get_units(u2)[1]
 	local x2, y2 = 0, 0
 	if u2 then x2, y2 = u2.x, u2.y end
 
-	local w1 = helper.get_child(cfg, "primary_attack")
-	local w2 = helper.get_child(cfg, "secondary_attack")
+	local w1 = wml.get_child(cfg, "primary_attack")
+	local w2 = wml.get_child(cfg, "secondary_attack")
 	if w2 then w1 = w1 or {} end
 
 	if cfg.id and cfg.id ~= "" then wesnoth.fire_event_by_id(cfg.id, x1, y1, x2, y2, w1, w2)
@@ -277,10 +277,10 @@ function wml_actions.unit_worth(cfg)
 end
 
 function wml_actions.lua(cfg)
-	cfg = helper.shallow_literal(cfg)
+	cfg = wml.shallow_literal(cfg)
 	local bytecode, message = load(cfg.code or "")
 	if not bytecode then error("~lua:" .. message, 0) end
-	bytecode(helper.get_child(cfg, "args"))
+	bytecode(wml.get_child(cfg, "args"))
 end
 
 function wml_actions.music(cfg)
@@ -388,7 +388,7 @@ function wml_actions.store_turns(cfg)
 end
 
 function wml_actions.store_unit(cfg)
-	local filter = helper.get_child(cfg, "filter") or
+	local filter = wml.get_child(cfg, "filter") or
 		helper.wml_error "[store_unit] missing required [filter] tag"
 	local kill_units = cfg.kill
 
@@ -436,9 +436,9 @@ function wml_actions.store_locations(cfg)
 end
 
 function wml_actions.store_reachable_locations(cfg)
-	local unit_filter = helper.get_child(cfg, "filter") or
+	local unit_filter = wml.get_child(cfg, "filter") or
 		helper.wml_error "[store_reachable_locations] missing required [filter] tag"
-	local location_filter = helper.get_child(cfg, "filter_location")
+	local location_filter = wml.get_child(cfg, "filter_location")
 	local range = cfg.range or "movement"
 	local moves = cfg.moves or "current"
 	local variable = cfg.variable or helper.wml_error "[store_reachable_locations] missing required variable= key"
@@ -497,7 +497,7 @@ end
 
 function wml_actions.capture_village(cfg)
 	local side = cfg.side
-	local filter_side = helper.get_child(cfg, "filter_side")
+	local filter_side = wml.get_child(cfg, "filter_side")
 	local fire_event = cfg.fire_event
 	if side then side = tonumber(side) or helper.wml_error("invalid side in [capture_village]") end
 	if filter_side then
@@ -514,7 +514,7 @@ end
 
 function wml_actions.terrain(cfg)
 	local terrain = cfg.terrain or helper.wml_error("[terrain] missing required terrain= attribute")
-	cfg = helper.shallow_parsed(cfg)
+	cfg = wml.shallow_parsed(cfg)
 	cfg.terrain = nil
 	for i, loc in ipairs(wesnoth.get_locations(cfg)) do
 		wesnoth.set_terrain(loc[1], loc[2], terrain, cfg.layer, cfg.replace_if_failed)
@@ -574,7 +574,7 @@ function wml_actions.transform_unit(cfg)
 			local hitpoints = unit.hitpoints
 			local experience = unit.experience
 			local recall_cost = unit.recall_cost
-			local status = helper.get_child( unit.__cfg, "status" )
+			local status = wml.get_child( unit.__cfg, "status" )
 
 			unit.experience = unit.max_experience
 			wesnoth.advance_unit(unit, false, false)
@@ -609,7 +609,7 @@ function wml_actions.store_side(cfg)
 end
 
 function wml_actions.add_ai_behavior(cfg)
-	local unit = wesnoth.get_units(helper.get_child(cfg, "filter"))[1] or
+	local unit = wesnoth.get_units(wml.get_child(cfg, "filter"))[1] or
 		helper.wml_error("[add_ai_behavior]: no unit specified")
 
 	local side = cfg.side or
@@ -790,7 +790,7 @@ function wml_actions.inspect(cfg)
 end
 
 function wml_actions.label( cfg )
-	local new_cfg = helper.parsed( cfg )
+	local new_cfg = wml.parsed( cfg )
 	for index, location in ipairs( wesnoth.get_locations( cfg ) ) do
 		new_cfg.x, new_cfg.y = location[1], location[2]
 		wesnoth.label( new_cfg )
@@ -871,7 +871,7 @@ end
 
 wml_actions.teleport = function(cfg)
 	local context = wesnoth.current.event_context
-	local filter = helper.get_child(cfg, "filter") or { x = context.x1, y = context.y1 }
+	local filter = wml.get_child(cfg, "filter") or { x = context.x1, y = context.y1 }
 	local unit = wesnoth.get_units(filter)[1]
 	if not unit then
 		-- No error if no unit matches.
@@ -902,7 +902,7 @@ end
 
 local function parse_fog_cfg(cfg)
 	-- Side filter
-	local ssf = helper.get_child(cfg, "filter_side")
+	local ssf = wml.get_child(cfg, "filter_side")
 	local sides = wesnoth.get_sides(ssf or {})
 	-- Location filter
 	local locs = wesnoth.get_locations(cfg)

@@ -9,11 +9,11 @@ function wesnoth.wml_actions.modify_ai(cfg)
 		final = start and (string.find(cfg.path, '[', start, true) - 1) or -1
 		start = start or string.find(cfg.path, "[^.]*$") or 1
 		local comp_type = string.sub(cfg.path, start, final)
-		component = helper.get_child(cfg, comp_type)
+		component = wml.get_child(cfg, comp_type)
 		if component == nil then
 			helper.wml_error("Missing component definition in [modify_ai]")
 		end
-		component = helper.parsed(component)
+		component = wml.parsed(component)
 	end
 	for i = 1, #sides do
 		if cfg.action == "add" then

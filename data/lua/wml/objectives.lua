@@ -1,4 +1,3 @@
-local helper = wesnoth.require "helper"
 local wml_actions = wesnoth.wml_actions
 local game_events = wesnoth.game_events
 
@@ -54,8 +53,8 @@ local function generate_objectives(cfg)
 
 	local bullet = cfg.bullet or "&#8226; "
 
-	for obj in helper.child_range(cfg, "objective") do
-		local show_if = helper.get_child(obj, "show_if")
+	for obj in wml.child_range(cfg, "objective") do
+		local show_if = wml.get_child(obj, "show_if")
 		if not show_if or wesnoth.eval_conditional(show_if) then
 			local objective_bullet = obj.bullet or bullet
 			local condition = obj.condition
@@ -106,8 +105,8 @@ local function generate_objectives(cfg)
 		end
 	end
 
-	for obj in helper.child_range(cfg, "gold_carryover") do
-		local show_if = helper.get_child(obj, "show_if")
+	for obj in wml.child_range(cfg, "gold_carryover") do
+		local show_if = wml.get_child(obj, "show_if")
 		if not show_if or wesnoth.eval_conditional(show_if) then
 			local gold_carryover_bullet = obj.bullet or bullet
 			local r = obj.red or 255
@@ -140,8 +139,8 @@ local function generate_objectives(cfg)
 		end
 	end
 
-	for note in helper.child_range(cfg, "note") do
-		local show_if = helper.get_child(note, "show_if")
+	for note in wml.child_range(cfg, "note") do
+		local show_if = wml.get_child(note, "show_if")
 		if not show_if or wesnoth.eval_conditional(show_if) then
 			local note_bullet = note.bullet or bullet
 			local r = note.red or 255
@@ -191,7 +190,7 @@ end
 
 function wml_actions.objectives(cfg)
 	if cfg.delayed_variable_substitution ~= true then
-		cfg = helper.parsed(cfg)
+		cfg = wml.parsed(cfg)
 	end
 
 	local sides_cfg = wesnoth.get_sides(cfg)
@@ -199,7 +198,7 @@ function wml_actions.objectives(cfg)
 
 	local objectives = generate_objectives(cfg)
 	local function set_objectives(sides, save)
-		local cfg2 = helper.literal(cfg)
+		local cfg2 = wml.literal(cfg)
 		remove_ssf_info_from(cfg2)
 		for i, team in ipairs(sides) do
 			if save then scenario_objectives[team.side] = cfg2 end
@@ -208,7 +207,7 @@ function wml_actions.objectives(cfg)
 		end
 	end
 	if #sides_cfg == #wesnoth.sides or #sides_cfg == 0 then
-		scenario_objectives[0] = helper.literal(cfg)
+		scenario_objectives[0] = wml.literal(cfg)
 		remove_ssf_info_from(scenario_objectives[0])
 		set_objectives(wesnoth.sides)
 	else

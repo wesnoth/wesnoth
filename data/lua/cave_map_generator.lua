@@ -39,7 +39,7 @@ function callbacks.generate_map(params)
 	local chambers_by_id = {}
 	local passages = {}
 
-	for chamber in helper.child_range(params, "chamber") do
+	for chamber in wml.child_range(params, "chamber") do
 		local chance = tonumber(chamber.chance) or 100
 		local x = chamber.x
 		local y = chamber.y
@@ -62,7 +62,7 @@ function callbacks.generate_map(params)
 		local locs_set = LS.create()
 		build_chamber(x, y, locs_set, chamber.size or 3, chamber.jagged or 0)
 		local items = {}
-		for item in helper.child_range(chamber, "item_location") do
+		for item in wml.child_range(chamber, "item_location") do
 			table.insert(items, item)
 		end
 		table.insert(chambers, {
@@ -74,7 +74,7 @@ function callbacks.generate_map(params)
 			items = items,
 		})
 		chambers_by_id[id] = chambers[#chambers]
-		for passage in helper.child_range(chamber, "passage") do
+		for passage in wml.child_range(chamber, "passage") do
 			local dst = chambers_by_id[passage.destination]
 			if dst ~= nil then
 				table.insert(passages, {
@@ -165,10 +165,10 @@ end
 
 function callbacks.generate_scenario(params)
 	-- This is more or less backwards compatible with the cave generator syntax
-	local scenario = helper.get_child(params, "scenario")
+	local scenario = wml.get_child(params, "scenario")
 	scenario.map_data = callbacks.generate_map(params)
-	for chamber in helper.child_range(params, "chamber") do
-		local chamber_items = helper.get_child(chamber, "items")
+	for chamber in wml.child_range(params, "chamber") do
+		local chamber_items = wml.get_child(chamber, "items")
 		if chamber.chance == 100 and chamber_items then
 			-- TODO: Should we support [event]same_location_as_previous=yes?
 			for i,tag in ipairs(chamber_items) do

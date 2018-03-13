@@ -8,7 +8,7 @@ function wesnoth.wml_actions.set_variable(cfg)
 	end
 
 	if cfg.literal ~= nil then
-		wesnoth.set_variable(name, helper.shallow_literal(cfg).literal)
+		wesnoth.set_variable(name, wml.shallow_literal(cfg).literal)
 	end
 
 	if cfg.to_variable then
@@ -111,7 +111,7 @@ function wesnoth.wml_actions.set_variable(cfg)
 		wesnoth.set_variable(name, fcn(wesnoth.get_variable(name)))
 	end
 
-	local join_child = helper.get_child(cfg, "join")
+	local join_child = wml.get_child(cfg, "join")
 	if join_child then
 		local array_name = join_child.variable or helper.wml_error "missing variable= attribute in [join]"
 		local separator = join_child.separator
@@ -120,7 +120,7 @@ function wesnoth.wml_actions.set_variable(cfg)
 
 		local string_to_join = ''
 
-		for i, element in ipairs(helper.get_variable_array(array_name)) do
+		for i, element in ipairs(wml.variable.get_array(array_name)) do
 			if element[key_name] ~= nil or (not remove_empty) then
 				if #string_to_join > 0 then
 					string_to_join = string_to_join .. separator

@@ -2,10 +2,10 @@ local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
 
 function wesnoth.wml_actions.find_path(cfg)
-	local filter_unit = helper.get_child(cfg, "traveler") or helper.wml_error("[find_path] missing required [traveler] tag")
+	local filter_unit = wml.get_child(cfg, "traveler") or helper.wml_error("[find_path] missing required [traveler] tag")
 	-- only the first unit matching
 	local unit = wesnoth.get_units(filter_unit)[1] or helper.wml_error("[find_path]'s filter didn't match any unit")
-	local filter_location = helper.get_child(cfg, "destination") or helper.wml_error( "[find_path] missing required [destination] tag" )
+	local filter_location = wml.get_child(cfg, "destination") or helper.wml_error( "[find_path] missing required [destination] tag" )
 	-- support for $this_unit
 	local this_unit = utils.start_var_scope("this_unit")
 
