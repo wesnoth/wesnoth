@@ -55,6 +55,7 @@
      human-controlled sides take control.
    * Fixed regression in 1.13.11 where completed events could fire again when
      reloading a save.
+   * Fixed PNG images with an embedded palette displaying incorrectly.
  ### Music and sound effects
    * Updated a few UI sounds.
 

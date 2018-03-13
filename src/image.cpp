@@ -548,6 +548,17 @@ static std::string get_localized_path(const std::string& file, const std::string
 	return "";
 }
 
+// Ensure PNG images with an indexed palette are converted to 32-bit RGBA.
+// The format used is really ARGB8888, but same difference.
+// TODO: should this be moved to sdl/utils.*pp?
+static void discard_indexed_palette(surface& surf)
+{
+	if(!surf.null() && SDL_ISPIXELFORMAT_INDEXED(surf->format->format) == SDL_TRUE) {
+		surf = make_neutral_surface(surf);
+		assert(SDL_ISPIXELFORMAT_INDEXED(surf->format->format) == SDL_FALSE);
+	}
+}
+
 // Load overlay image and compose it with the original surface.
 static void add_localized_overlay(const std::string& ovr_file, surface& orig_surf)
 {
@@ -556,6 +567,8 @@ static void add_localized_overlay(const std::string& ovr_file, surface& orig_sur
 	if(ovr_surf.null()) {
 		return;
 	}
+
+	discard_indexed_palette(ovr_surf);
 
 	SDL_Rect area {0, 0, ovr_surf->w, ovr_surf->h};
 
@@ -575,8 +588,12 @@ static surface load_image_file(const image::locator& loc)
 			if(!loc_location.empty()) {
 				location = loc_location;
 			}
+
 			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(location);
 			res = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
+
+			discard_indexed_palette(res);
+
 			// If there was no standalone localized image, check if there is an overlay.
 			if(!res.null() && loc_location.empty()) {
 				const std::string ovr_location = get_localized_path(location, "--overlay");
