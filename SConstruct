@@ -366,12 +366,12 @@ if env["prereqs"]:
         conf.CheckBoost("iostreams", require_version = boost_version) & \
         conf.CheckBoostIostreamsGZip() & \
         conf.CheckBoostIostreamsBZip2() & \
-        CheckAsio(conf) & \
         conf.CheckBoost("random", require_version = boost_version) & \
         conf.CheckBoost("smart_ptr", header_only = True) & \
-        conf.CheckBoost("system") & \
-        conf.CheckBoost("filesystem", require_version = boost_version) & \
-        conf.CheckBoost("locale") \
+        conf.CheckBoost("locale") & \
+        CheckAsio(conf) & \
+        conf.CheckBoost("thread", require_version = boost_version) & \
+        conf.CheckBoost("filesystem") \
             and Info("Base prerequisites are met")) \
             or Warning("Base prerequisites are not met")
     if(have_server_prereqs and not env["host"]):
@@ -391,7 +391,6 @@ if env["prereqs"]:
         conf.CheckPango("cairo", require_version = "1.22.0") & \
         conf.CheckPKG("fontconfig") & \
         conf.CheckBoost("program_options", require_version = boost_version) & \
-        conf.CheckBoost("thread") & \
         conf.CheckBoost("regex") \
             or Warning("Client prerequisites are not met. wesnoth cannot be built")
 
