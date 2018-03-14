@@ -61,8 +61,10 @@ void make_screenshot(const std::string& name, const TFunc& func)
 	std::string filename = filesystem::get_screenshot_dir() + "/" + name + "_";
 
 	// TODO: there should be a way to configure which of these is used by default.
-#if defined(SDL_IMAGE_VERSION_ATLEAST) && SDL_IMAGE_VERSION_ATLEAST(2, 0, 2)
+#ifdef SDL_IMAGE_VERSION_ATLEAST
+#if SDL_IMAGE_VERSION_ATLEAST(2, 0, 2)
 	const std::string ext = ".jpg";
+#endif
 #else
 	const std::string ext = ".png";
 #endif
