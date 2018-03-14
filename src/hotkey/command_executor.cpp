@@ -34,6 +34,8 @@
 
 #include "utils/functional.hpp"
 
+#include <SDL_image.h>
+
 #include <cassert>
 #include <ios>
 
@@ -57,7 +59,13 @@ template<typename TFunc>
 void make_screenshot(const std::string& name, const TFunc& func)
 {
 	std::string filename = filesystem::get_screenshot_dir() + "/" + name + "_";
+
+	// TODO: there should be a way to configure which of these is used by default.
+#if SDL_IMAGE_VERSION_ATLEAST(2, 0, 2)
+	const std::string ext = ".jpg";
+#else
 	const std::string ext = ".png";
+#endif
 
 	filename = filesystem::get_next_filename(filename, ext);
 	const bool res = func(filename);

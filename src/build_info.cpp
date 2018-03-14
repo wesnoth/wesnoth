@@ -265,6 +265,11 @@ version_table_manager::version_table_manager()
 	features.back().enabled = true;
 #endif
 
+	features.emplace_back(N_("feature^JPG screenshots"));
+#if SDL_IMAGE_VERSION_ATLEAST(2, 0, 2)
+	features.back().enabled = true;
+#endif
+
 	features.emplace_back(N_("feature^Lua console completion"));
 #ifdef HAVE_HISTORY
 	features.back().enabled = true;
