@@ -663,7 +663,19 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		int base_damage = at.damage();
 		int specials_damage = at.modified_damage(false);
 		int damage_multiplier = 100;
-		int tod_bonus = combat_modifier(rc.units(), rc.map(), displayed_unit_hex, u.alignment(), u.is_fearless());
+		int tod_bonus;
+		bool alignment = at.get_special_bool("alignment");
+		unit_ability_list alignment_specials = at.get_specials("alignment");
+		std::string alignment_id;
+		if(alignment) {
+			alignment_id=(*alignment_specials.front().first)["alignment"].str();
+			if(alignment_id.empty()) {
+				alignment_id = (*alignment_specials.front().first)["id"].str();
+			}
+		 tod_bonus += attack_combat_modifier(rc.units(), rc.map(), displayed_unit_hex, alignment_id, u.alignment(), u.is_fearless());
+            } else {
+	    tod_bonus = combat_modifier(rc.units(), rc.map(), displayed_unit_hex, u.alignment(), u.is_fearless());
+	}
 		damage_multiplier += tod_bonus;
 		int leader_bonus = under_leadership(rc.units(), displayed_unit_hex).first;
 		if (leader_bonus != 0)
