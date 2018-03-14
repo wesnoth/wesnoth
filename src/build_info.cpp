@@ -36,10 +36,6 @@
 
 #include <pango/pangocairo.h>
 
-#ifdef HAVE_LIBPNG
-#include <png.h>
-#endif
-
 #ifdef __APPLE__
 // apple_notification.mm uses Foundation.h, which is an Objective-C header;
 // but CoreFoundation.h is a C header which also defines these.
@@ -261,26 +257,11 @@ version_table_manager::version_table_manager()
 	names[LIB_PANGO] = "Pango";
 
 	//
-	// libpng
-	//
-
-#ifdef HAVE_LIBPNG
-	compiled[LIB_PNG] = PNG_LIBPNG_VER_STRING;
-	linked[LIB_PNG] = png_get_libpng_ver(nullptr);
-	names[LIB_PNG] = "libpng";
-#endif
-
-	//
 	// Features table.
 	//
 
 	features.emplace_back(N_("feature^Experimental OpenMP support"));
 #ifdef _OPENMP
-	features.back().enabled = true;
-#endif
-
-	features.emplace_back(N_("feature^PNG screenshots"));
-#ifdef HAVE_LIBPNG
 	features.back().enabled = true;
 #endif
 

@@ -74,9 +74,6 @@ libwesnoth_game = client_env.Library("wesnoth-game", libwesnoth_game_sources)
 #---libwesnoth_sdl---
 libwesnoth_sdl_sources = GetSources("libwesnoth_sdl")
 
-if env["png"]:
-    libwesnoth_sdl_sources.append("SDL_SavePNG/savepng.c")
-
 libwesnoth_sdl = client_env.Library("wesnoth-sdl", libwesnoth_sdl_sources)
 
 #---libwesnoth_widgets---

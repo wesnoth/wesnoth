@@ -57,11 +57,8 @@ template<typename TFunc>
 void make_screenshot(const std::string& name, const TFunc& func)
 {
 	std::string filename = filesystem::get_screenshot_dir() + "/" + name + "_";
-#ifdef HAVE_LIBPNG
 	const std::string ext = ".png";
-#else
-	const std::string ext = ".bmp";
-#endif
+
 	filename = filesystem::get_next_filename(filename, ext);
 	const bool res = func(filename);
 	if (res) {

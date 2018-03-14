@@ -219,15 +219,6 @@ set_target_properties(lua
 
 GetSources("libwesnoth_sdl" wesnoth-sdl_SRC)
 
-# If requested, compile and link this file also to be able to save png files
-if(ENABLE_LIBPNG AND PNG_FOUND)
-	set(wesnoth-sdl_SRC
-		${wesnoth-sdl_SRC}
-		SDL_SavePNG/savepng.c
-	)
-endif(ENABLE_LIBPNG AND PNG_FOUND)
-
-
 add_library(wesnoth-sdl
 	${LIBRARY_TYPE}
 	EXCLUDE_FROM_ALL
