@@ -969,6 +969,9 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	max_attacks_ = new_type.max_attacks();
 
 	flag_rgb_ = new_type.flag_rgb();
+	
+	upkeep_ = upkeep_full();
+	parse_upkeep(new_type.get_cfg()["upkeep"]);
 
 	anim_comp_->reset_after_advance(&new_type);
 
