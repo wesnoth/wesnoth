@@ -58,13 +58,16 @@ set(common-external-libs
 	${Boost_IOSTREAMS_LIBRARY}
 	${Boost_REGEX_LIBRARY}
 	${Boost_PROGRAM_OPTIONS_LIBRARY}
-)
-
-set(common-external-libs
-	${common-external-libs}
 	${Boost_FILESYSTEM_LIBRARY}
 	${Boost_LOCALE_LIBRARY}
 )
+
+if(NOT CMAKE_CROSSCOMPILING AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
+	set(common-external-libs
+		${common-external-libs}
+		"-licudata -licui18n -licuuc"
+	)
+endif(NOT CMAKE_CROSSCOMPILING AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
 
 set(game-external-libs
 	${common-external-libs}
