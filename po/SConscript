@@ -91,7 +91,7 @@ if "pot-update" in COMMAND_LINE_TARGETS:
             env.Command(new_pot, source_pot, ["msgcat --sort-by-file $SOURCES -o $TARGET", Delete(source_pot)])
         env.Command(pot, new_pot, Action(update_pot))
 
-    env.Alias("pot-update", "../translations")
+    env.Alias("pot-update", "../translations", "python utils/po_stat.py --update-cfg --textdomains=wesnoth,wesnoth-editor,wesnoth-help,wesnoth-lib,wesnoth-multiplayer,wesnoth-tutorial,wesnoth-units")
 
 if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS or "update-po4a" in COMMAND_LINE_TARGETS:
     for domain in textdomains:
