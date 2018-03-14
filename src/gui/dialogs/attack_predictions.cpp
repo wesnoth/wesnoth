@@ -207,9 +207,19 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 	// Time of day modifier.
 	const unit& u = attacker.unit_;
 
-	const int tod_modifier = combat_modifier(resources::gameboard->units(), resources::gameboard->map(),
-		u.get_location(), u.alignment(), u.is_fearless());
-
+	bool alignment = weapon->get_special_bool("alignment");
+    unit_ability_list alignment_specials = weapon->get_specials("alignment");
+    std::string alignment_id;
+    int tod_modifier;
+    if(alignment) {
+                alignment_id=(*alignment_specials.front().first)["alignment"].str();
+        if(alignment_id.empty()) {
+                alignment_id = (*alignment_specials.front().first)["id"].str();
+        }
+		tod_modifier += attack_combat_modifier(resources::gameboard->units(), resources::gameboard->map(), u.get_location(), alignment_id, u.alignment(), u.is_fearless());
+            } else {
+	    tod_modifier += combat_modifier(resources::gameboard->units(), resources::gameboard->map(), u.get_location(), u.alignment(), u.is_fearless());
+    }
 	if(tod_modifier != 0) {
 		set_label_helper("tod_modifier", utils::signed_percent(tod_modifier));
 	} else {
