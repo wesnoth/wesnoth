@@ -175,14 +175,12 @@ void scrollbar_base::update_canvas()
 		tmp.set_variable("positioner_offset", wfl::variant(positioner_offset_));
 		tmp.set_variable("positioner_length", wfl::variant(positioner_length_));
 	}
-	set_is_dirty(true);
 }
 
 void scrollbar_base::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_is_dirty(true);
 	}
 }
 

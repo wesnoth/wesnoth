@@ -117,7 +117,6 @@ campaign_difficulty::campaign_difficulty(const config& campaign)
 	, campaign_id_(campaign["id"])
 	, selected_difficulty_("CANCEL")
 {
-	set_restore(true);
 }
 
 void campaign_difficulty::pre_show(window& window)

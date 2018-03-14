@@ -63,8 +63,7 @@ public:
 		 *   tested later).
 		 * * The widget (if active) handles events (and sends events to
 		 *   its children).
-		 * * The widget is drawn (and sends the call to
-		 *   @ref populate_dirty_list to children).
+		 * * The widget is drawn.
 		 */
 		visible,
 
@@ -74,9 +73,6 @@ public:
 		 * * @ref find_at 'sees' the widget if active is @c false.
 		 * * The widget doesn't handle events (and doesn't send events to
 		 *   its children).
-		 * * The widget doesn't add itself @ref window::dirty_list_ when
-		 *   @ref populate_dirty_list is called (nor does it send the
-		 *   request to its children).
 		 */
 		hidden,
 
@@ -86,9 +82,6 @@ public:
 		 * * @ref find_at never 'sees' the widget.
 		 * * The widget doesn't handle events (and doesn't send events to
 		 *   its children).
-		 * * The widget doesn't add itself @ref window::dirty_list_ when
-		 *   @ref populate_dirty_list is called (nor does it send the
-		 *   request to its children).
 		 */
 		invisible
 	};
@@ -520,8 +513,7 @@ public:
 	 *
 	 * @returns                   The drawing rectangle.
 	 */
-	SDL_Rect calculate_blitting_rectangle(const int x_offset,
-										  const int y_offset);
+	SDL_Rect calculate_blitting_rectangle(const int x_offset, const int y_offset) const;
 
 	/**
 	 * Calculates the clipping rectangle of the widget.
@@ -535,8 +527,7 @@ public:
 	 *
 	 * @returns                   The clipping rectangle.
 	 */
-	SDL_Rect calculate_clipping_rectangle(const int x_offset,
-										  const int y_offset);
+	SDL_Rect calculate_clipping_rectangle(const int x_offset, const int y_offset) const;
 
 	/**
 	 * Draws the background of a widget.
@@ -544,13 +535,12 @@ public:
 	 * Derived should override @ref impl_draw_background instead of changing
 	 * this function.
 	 *
-	 * @param frame_buffer        The surface to draw upon.
 	 * @param x_offset            The offset in the x-direction in the
 	 *                            @p frame_buffer to draw.
 	 * @param y_offset            The offset in the y-direction in the
 	 *                            @p frame_buffer to draw.
 	 */
-	void draw_background(surface& frame_buffer, int x_offset, int y_offset);
+	void draw_background(int x_offset, int y_offset);
 
 	/**
 	 * Draws the children of a widget.
@@ -560,13 +550,12 @@ public:
 	 * Derived should override @ref impl_draw_children instead of changing
 	 * this function.
 	 *
-	 * @param frame_buffer        The surface to draw upon.
 	 * @param x_offset            The offset in the x-direction in the
 	 *                            @p frame_buffer to draw.
 	 * @param y_offset            The offset in the y-direction in the
 	 *                            @p frame_buffer to draw.
 	 */
-	void draw_children(surface& frame_buffer, int x_offset, int y_offset);
+	void draw_children(int x_offset, int y_offset);
 
 	/**
 	 * Draws the foreground of the widget.
@@ -577,78 +566,32 @@ public:
 	 * Derived should override @ref impl_draw_foreground instead of changing
 	 * this function.
 	 *
-	 * @param frame_buffer        The surface to draw upon.
 	 * @param x_offset            The offset in the x-direction in the
 	 *                            @p frame_buffer to draw.
 	 * @param y_offset            The offset in the y-direction in the
 	 *                            @p frame_buffer to draw.
 	 */
-	void draw_foreground(surface& frame_buffer, int x_offset, int y_offset);
+	void draw_foreground(int x_offset, int y_offset);
 
 private:
 	/** See @ref draw_background. */
-	virtual void impl_draw_background(surface& /*frame_buffer*/)
+	virtual void impl_draw_background()
 	{
 	}
-	virtual void impl_draw_background(surface& /*frame_buffer*/
-									  ,
-									  int /*x_offset*/
-									  ,
-									  int /*y_offset*/)
+
+	virtual void impl_draw_background(int /*x_offset*/, int /*y_offset*/)
 	{
 	}
 
 	/** See @ref draw_children. */
-	virtual void impl_draw_children(surface& /*frame_buffer*/
-									,
-									int /*x_offset*/
-									,
-									int /*y_offset*/)
+	virtual void impl_draw_children(int /*x_offset*/, int /*y_offset*/)
 	{
 	}
 
 	/** See @ref draw_foreground. */
-	virtual void impl_draw_foreground(surface& /*frame_buffer*/
-									  ,
-									  int /*x_offset*/
-									  ,
-									  int /*y_offset*/)
+	virtual void impl_draw_foreground(int /*x_offset*/, int /*y_offset*/)
 	{
 	}
-
-public:
-	/**
-	 * Adds a widget to the dirty list if it is dirty.
-	 *
-	 * See @ref window::dirty_list_ for more information regarding the dirty
-	 * list.
-	 *
-	 * If the widget is not dirty and has children it should add itself to the
-	 * call_stack and call child_populate_dirty_list with the new call_stack.
-	 *
-	 * @param caller              The parent window, if dirty it should
-	 *                            register itself to this window.
-	 * @param call_stack          The call-stack of widgets traversed to reach
-	 *                            this function.
-	 */
-	void populate_dirty_list(window& caller,
-							 std::vector<widget*>& call_stack);
-
-private:
-	/**
-	 * Tries to add all children of a container to the dirty list.
-	 *
-	 * @note The function is private since everybody should call
-	 * @ref populate_dirty_list instead.
-	 *
-	 * @param caller              The parent window, if dirty it should
-	 *                            register itself to this window.
-	 * @param call_stack          The call-stack of widgets traversed to reach
-	 *                            this function.
-	 */
-	virtual void
-	child_populate_dirty_list(window& caller,
-							  const std::vector<widget*>& call_stack);
 
 public:
 	/**
@@ -673,9 +616,6 @@ public:
 
 	/*** *** *** *** *** *** Setters and getters. *** *** *** *** *** ***/
 
-	void set_is_dirty(const bool is_dirty);
-	bool get_is_dirty() const;
-
 	void set_visible(const visibility visible);
 	visibility get_visible() const;
 
@@ -688,17 +628,6 @@ public:
 	/*** *** *** *** *** *** *** *** Members. *** *** *** *** *** *** *** ***/
 
 private:
-	/**
-	 * Is the widget dirty?
-	 *
-	 * When a widget is dirty it needs to be redrawn at the next drawing cycle.
-	 *
-	 * The top-level window will use @ref populate_dirty_list and
-	 * @ref child_populate_dirty_list to find al dirty widgets, so the widget
-	 * doesn't need to inform its parent regarding it being marked dirty.
-	 */
-	bool is_dirty_;
-
 	/** Field for the status of the visibility. */
 	visibility visible_;
 

@@ -66,7 +66,7 @@ struct frame_parameters
 	boost::tribool auto_hflip;
 	boost::tribool primary_frame;
 
-	int drawing_layer;
+	int layer;
 };
 
 /**
@@ -97,7 +97,7 @@ public:
 	frame_builder& auto_vflip(const bool auto_vflip);
 	frame_builder& auto_hflip(const bool auto_hflip);
 	frame_builder& primary_frame(const bool primary_frame);
-	frame_builder& drawing_layer(const std::string& drawing_layer);
+	frame_builder& layer(const std::string& layer);
 
 private:
 	friend class frame_parsed_parameters;
@@ -130,7 +130,7 @@ private:
 	boost::tribool auto_hflip_;
 	boost::tribool primary_frame_;
 
-	std::string drawing_layer_;
+	std::string layer_;
 };
 
 /**
@@ -192,7 +192,7 @@ private:
 	boost::tribool auto_hflip_;
 	boost::tribool primary_frame_;
 
-	progressive_int drawing_layer_;
+	progressive_int layer_;
 };
 
 /** Describes a unit's animation sequence. */

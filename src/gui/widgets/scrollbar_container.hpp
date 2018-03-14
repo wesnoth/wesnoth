@@ -506,10 +506,7 @@ private:
 	virtual void layout_children() override;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset) override;
-
-	/** See @ref widget::child_populate_dirty_list. */
-	virtual void child_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack) override;
+	virtual void impl_draw_children(int x_offset, int y_offset) override;
 
 	/**
 	 * Sets the size of the content grid.

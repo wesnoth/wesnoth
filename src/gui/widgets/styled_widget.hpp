@@ -412,14 +412,10 @@ public:
 
 protected:
 	/** See @ref widget::impl_draw_background. */
-	virtual void impl_draw_background(surface& frame_buffer,
-									  int x_offset,
-									  int y_offset) override;
+	virtual void impl_draw_background(int x_offset, int y_offset) override;
 
 	/** See @ref widget::impl_draw_foreground. */
-	virtual void impl_draw_foreground(surface& frame_buffer,
-									  int x_offset,
-									  int y_offset) override;
+	virtual void impl_draw_foreground(int x_offset, int y_offset) override;
 
 	/** Exposes font::pango_text::get_token, for the text label of this styled_widget */
 	std::string get_label_token(const point & position, const char * delimiters = " \n\r\t") const;
@@ -449,10 +445,11 @@ private:
 	}
 
 	/**
-	 * Contains a helper cache for the rendering.
+	 * Text renderer object used for size calculations.
 	 *
-	 * Creating a pango_text object is quite expensive and is done on various
-	 * occasions so it's cached here.
+	 * Note this is *not* used to actually render any text, only to get the dimensions of the text for
+	 * layout purposes. The actual text rendering happens in the canvas. This is kept as a class member
+	 * since creating a pango_text object is quite expensive.
 	 *
 	 * @todo Maybe if still too slow we might also copy this cache to the
 	 * canvas so it can reuse our results, but for now it seems fast enough.

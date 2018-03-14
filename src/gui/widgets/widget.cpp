@@ -21,6 +21,7 @@
 #include "gui/core/log.hpp"
 #include "gui/core/window_builder/helper.hpp"
 #include "sdl/rect.hpp"
+#include "video.hpp"
 
 namespace gui2
 {
@@ -39,7 +40,6 @@ widget::widget()
 	, last_best_size_()
 #endif
 	, linked_group_()
-	, is_dirty_(true)
 	, visible_(visibility::visible)
 	, redraw_action_(redraw_action::full)
 	, clipping_rectangle_()
@@ -61,7 +61,6 @@ widget::widget(const builder_widget& builder)
 	, last_best_size_()
 #endif
 	, linked_group_(builder.linked_group)
-	, is_dirty_(true)
 	, visible_(visibility::visible)
 	, redraw_action_(redraw_action::full)
 	, clipping_rectangle_()
@@ -228,8 +227,6 @@ void widget::set_size(const point& size)
 
 	width_ = size.x;
 	height_ = size.y;
-
-	set_is_dirty(true);
 }
 
 void widget::place(const point& origin, const point& size)
@@ -253,8 +250,6 @@ void widget::place(const point& origin, const point& size)
 			<< " screen origin " << x_ << ',' << y_
 			<< ".\n";
 #endif
-
-	set_is_dirty(true);
 }
 
 void widget::move(const int x_offset, const int y_offset)
@@ -346,8 +341,7 @@ void widget::set_linked_group(const std::string& linked_group)
 
 /***** ***** ***** ***** Drawing functions. ***** ***** ***** *****/
 
-SDL_Rect widget::calculate_blitting_rectangle(const int x_offset,
-											   const int y_offset)
+SDL_Rect widget::calculate_blitting_rectangle(const int x_offset, const int y_offset) const
 {
 	SDL_Rect result = get_rectangle();
 	result.x += x_offset;
@@ -355,8 +349,7 @@ SDL_Rect widget::calculate_blitting_rectangle(const int x_offset,
 	return result;
 }
 
-SDL_Rect widget::calculate_clipping_rectangle(const int x_offset,
-											   const int y_offset)
+SDL_Rect widget::calculate_clipping_rectangle(const int x_offset, const int y_offset) const
 {
 	SDL_Rect result = clipping_rectangle_;
 	result.x += x_offset;
@@ -364,81 +357,81 @@ SDL_Rect widget::calculate_clipping_rectangle(const int x_offset,
 	return result;
 }
 
-void widget::draw_background(surface& frame_buffer, int x_offset, int y_offset)
+namespace
+{
+/**
+ * Small RAII helper class to set the renderer viewport and clip rect for the drawing routines.
+ */
+class viewport_and_clip_rect_setter
+{
+public:
+	viewport_and_clip_rect_setter(const widget& widget, int x_offset, int y_offset)
+		: renderer_(CVideo::get_singleton().get_renderer())
+	{
+		// Set viewport.
+		const SDL_Rect dst_rect = widget.calculate_blitting_rectangle(x_offset, y_offset);
+		SDL_RenderSetViewport(renderer_, &dst_rect);
+
+		// Set clip rect, if appropriate.
+		if(widget.get_drawing_action() != widget::redraw_action::partly) {
+			return;
+		}
+
+		SDL_Rect clip_rect = widget.calculate_clipping_rectangle(x_offset, y_offset);
+
+		// Adjust clip rect origin to match the viewport origin. Currently, the both rects are mapped to
+		// absolute screen coordinates. However, setting the viewport essentially moves the screen origin,
+		// meaning if both the viewport rect and clip rect have x = 100, then clipping will actually
+		// happen at x = 200.
+		clip_rect.x -= dst_rect.x;
+		clip_rect.y -= dst_rect.y;
+
+		SDL_RenderSetClipRect(renderer_, &clip_rect);
+	}
+
+	~viewport_and_clip_rect_setter()
+	{
+		SDL_RenderSetClipRect(renderer_, nullptr);
+		SDL_RenderSetViewport(renderer_, nullptr);
+	}
+
+private:
+	SDL_Renderer* renderer_;
+};
+
+} // anon namespace
+
+/**
+ * @todo remove the offset arguments from these functions.
+ * Currently they're only needed by the minimap.
+ */
+
+void widget::draw_background(int x_offset, int y_offset)
 {
 	assert(visible_ == visibility::visible);
 
-	if(redraw_action_ == redraw_action::partly) {
-		const SDL_Rect clipping_rectangle
-				= calculate_clipping_rectangle(x_offset, y_offset);
+	viewport_and_clip_rect_setter setter(*this, x_offset, y_offset);
 
-		clip_rect_setter clip(frame_buffer, &clipping_rectangle);
-		draw_debug_border(x_offset, y_offset);
-		impl_draw_background(frame_buffer, x_offset, y_offset);
-	} else {
-		draw_debug_border(x_offset, y_offset);
-		impl_draw_background(frame_buffer, x_offset, y_offset);
-	}
+	draw_debug_border(x_offset, y_offset);
+	impl_draw_background(x_offset, y_offset);
 }
 
-void widget::draw_children(surface& frame_buffer, int x_offset, int y_offset)
+void widget::draw_children(int x_offset, int y_offset)
 {
 	assert(visible_ == visibility::visible);
 
-	if(redraw_action_ == redraw_action::partly) {
-		const SDL_Rect clipping_rectangle
-				= calculate_clipping_rectangle(x_offset, y_offset);
+	viewport_and_clip_rect_setter setter(*this, x_offset, y_offset);
 
-		clip_rect_setter clip(frame_buffer, &clipping_rectangle);
-		impl_draw_children(frame_buffer, x_offset, y_offset);
-	} else {
-		impl_draw_children(frame_buffer, x_offset, y_offset);
-	}
+	impl_draw_children(x_offset, y_offset);
 }
 
-void widget::draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
+void widget::draw_foreground(int x_offset, int y_offset)
 {
 	assert(visible_ == visibility::visible);
 
-	if(redraw_action_ == redraw_action::partly) {
-		const SDL_Rect clipping_rectangle
-				= calculate_clipping_rectangle(x_offset, y_offset);
+	viewport_and_clip_rect_setter setter(*this, x_offset, y_offset);
 
-		clip_rect_setter clip(frame_buffer, &clipping_rectangle);
-		impl_draw_foreground(frame_buffer, x_offset, y_offset);
-	} else {
-		impl_draw_foreground(frame_buffer, x_offset, y_offset);
-	}
-}
-
-void widget::populate_dirty_list(window& caller,
-								  std::vector<widget*>& call_stack)
-{
-	assert(call_stack.empty() || call_stack.back() != this);
-
-	if(visible_ != visibility::visible) {
-		return;
-	}
-
-	if(get_drawing_action() == redraw_action::none) {
-		return;
-	}
-
-	call_stack.push_back(this);
-	if(is_dirty_) {
-		caller.add_to_dirty_list(call_stack);
-	} else {
-		// virtual function which only does something for container items.
-		child_populate_dirty_list(caller, call_stack);
-	}
-}
-
-void
-widget::child_populate_dirty_list(window& /*caller*/
-								   ,
-								   const std::vector<widget*>& /*call_stack*/)
-{
-	/* DO NOTHING */
+	impl_draw_foreground(x_offset, y_offset);
 }
 
 SDL_Rect widget::get_dirty_rectangle() const
@@ -458,16 +451,6 @@ void widget::set_visible_rectangle(const SDL_Rect& rectangle)
 	} else {
 		redraw_action_ = redraw_action::partly;
 	}
-}
-
-void widget::set_is_dirty(const bool is_dirty)
-{
-	is_dirty_ = is_dirty;
-}
-
-bool widget::get_is_dirty() const
-{
-	return is_dirty_;
 }
 
 void widget::set_visible(const visibility visible)
@@ -492,8 +475,6 @@ void widget::set_visible(const visibility visible)
 				window->invalidate_layout();
 			}
 		}
-	} else {
-		set_is_dirty(true);
 	}
 }
 

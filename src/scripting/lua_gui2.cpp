@@ -252,7 +252,7 @@ int show_dialog(lua_State* L)
 		lua_call(L, 0, 0);
 	}
 
-	int v = scoped_dialog::current->window->show(true, 0);
+	int v = scoped_dialog::current->window->show(0);
 
 	if (!lua_isnoneornil(L, 3)) {
 		lua_pushvalue(L, 3);
@@ -844,7 +844,6 @@ int intf_set_dialog_canvas(lua_State* L)
 
 	config cfg = luaW_checkconfig(L, 2);
 	cv[i - 1].set_cfg(cfg);
-	c->set_is_dirty(true);
 	return 0;
 }
 

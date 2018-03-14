@@ -26,10 +26,16 @@ class game_board;
 #include "pathfind/pathfind.hpp"
 
 #include <deque>
+#include <memory>
 
 // This needs to be separate from display.h because of the static
 // singleton member, which will otherwise trigger link failure
 // when building the editor.
+
+namespace font
+{
+	struct floating_label_scope_helper;
+}
 
 class game_display : public display
 {
@@ -112,8 +118,8 @@ public:
 	/** Function to float a label above a tile */
 	void float_label(const map_location& loc, const std::string& text, const color_t& color);
 
-	/** Draws the movement info (turns available) for a given location. */
-	void draw_movement_info(const map_location& loc);
+	/** Draws the movement info (turns available). */
+	void draw_movement_info();
 
 	/** Function to invalidate that unit status displayed on the sidebar. */
 	void invalidate_unit() { invalidateGameStatus_ = true; }
@@ -136,13 +142,11 @@ protected:
 	 */
 	virtual void post_draw() override;
 
-	virtual void draw_invalidated() override;
+	virtual void draw_hex_cursor(const map_location& loc) override;
 
-	virtual void post_commit() override;
-
-	virtual void draw_hex(const map_location& loc) override;
-
+	virtual void draw_hex_overlays() override;
 public:
+
 	/** Set the attack direction indicator. */
 	void set_attack_indicator(const map_location& src, const map_location& dst);
 	void clear_attack_indicator();
@@ -206,15 +210,17 @@ private:
 
 	virtual void draw_sidebar() override;
 
+	void draw_footstep_images() const;
+
 	overlay_map overlay_map_;
 
 	// Locations of the attack direction indicator's parts
 	map_location attack_indicator_src_;
 	map_location attack_indicator_dst_;
 
-	pathfind::marked_route route_;
+	std::vector<font::floating_label_scope_helper> hex_def_fl_labels_;
 
-	void invalidate_route();
+	pathfind::marked_route route_;
 
 	map_location displayedUnitHex_;
 

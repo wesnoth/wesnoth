@@ -268,9 +268,7 @@ unit_animation::unit_animation(int start_time,
 	, unit_anim_(start_time,builder)
 	, src_()
 	, dst_()
-	, invalidated_(false)
 	, play_offscreen_(true)
-	, overlaped_hex_()
 {
 	add_frame(frame.duration(),frame,!frame.does_not_change());
 }
@@ -292,9 +290,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	, unit_anim_(cfg,frame_string)
 	, src_()
 	, dst_()
-	, invalidated_(false)
 	, play_offscreen_(true)
-	, overlaped_hex_()
 {
 	//if(!cfg["debug"].empty()) printf("DEBUG WML: FINAL\n%s\n\n",cfg.debug().c_str());
 
@@ -544,7 +540,7 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 		animations.push_back(base);
 		animations.back().event_ = { "movement" };
 		animations.back().unit_anim_.override(0, 200,
-			particle::NO_CYCLE, "", "", {0,0,0}, "0~1:200", std::to_string(display::LAYER_UNIT_MOVE_DEFAULT - display::LAYER_UNIT_FIRST));
+			particle::NO_CYCLE, "", "", {0,0,0}, "0~1:200", std::to_string(drawing_queue::LAYER_UNIT_MOVE_DEFAULT - drawing_queue::LAYER_UNIT_FIRST));
 
 		animations.push_back(base);
 		animations.back().event_ = { "defend" };
@@ -558,7 +554,7 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 		animations.push_back(base);
 		animations.back().event_ = { "attack" };
-		animations.back().unit_anim_.override(-150, 300, particle::NO_CYCLE, "", "", {0,0,0}, "0~0.6:150,0.6~0:150", std::to_string(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
+		animations.back().unit_anim_.override(-150, 300, particle::NO_CYCLE, "", "", {0,0,0}, "0~0.6:150,0.6~0:150", std::to_string(drawing_queue::LAYER_UNIT_MOVE_DEFAULT-drawing_queue::LAYER_UNIT_FIRST));
 		animations.back().primary_attack_filter_.push_back(config());
 		animations.back().primary_attack_filter_.back()["range"] = "melee";
 
@@ -607,7 +603,7 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 static void add_simple_anim(std::vector<unit_animation>& animations,
 	const config& cfg, char const* tag_name, char const* apply_to,
-	display::drawing_layer layer = display::LAYER_UNIT_DEFAULT,
+	drawing_queue::layer layer = drawing_queue::LAYER_UNIT_DEFAULT,
 	bool offscreen = true)
 {
 	for(const animation_branch& ab : prepare_animation(cfg, tag_name)) {
@@ -620,7 +616,7 @@ static void add_simple_anim(std::vector<unit_animation>& animations,
 		}
 
 		config::attribute_value& v = anim["layer"];
-		if(v.empty()) v = layer - display::LAYER_UNIT_FIRST;
+		if(v.empty()) v = layer - drawing_queue::LAYER_UNIT_FIRST;
 
 		animations.push_back(unit_animation(anim));
 	}
@@ -632,15 +628,15 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.push_back(unit_animation(ab.merge()));
 	}
 
-	const int default_layer = display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST;
-	const int move_layer    = display::LAYER_UNIT_MOVE_DEFAULT - display::LAYER_UNIT_FIRST;
-	const int missile_layer = display::LAYER_UNIT_MISSILE_DEFAULT - display::LAYER_UNIT_FIRST;
+	const int default_layer = drawing_queue::LAYER_UNIT_DEFAULT - drawing_queue::LAYER_UNIT_FIRST;
+	const int move_layer    = drawing_queue::LAYER_UNIT_MOVE_DEFAULT - drawing_queue::LAYER_UNIT_FIRST;
+	const int missile_layer = drawing_queue::LAYER_UNIT_MISSILE_DEFAULT - drawing_queue::LAYER_UNIT_FIRST;
 
 	add_simple_anim(animations, cfg, "resistance_anim", "resistance");
 	add_simple_anim(animations, cfg, "leading_anim", "leading");
 	add_simple_anim(animations, cfg, "recruit_anim", "recruited");
 	add_simple_anim(animations, cfg, "recruiting_anim", "recruiting");
-	add_simple_anim(animations, cfg, "idle_anim", "idling", display::LAYER_UNIT_DEFAULT, false);
+	add_simple_anim(animations, cfg, "idle_anim", "idling", drawing_queue::LAYER_UNIT_DEFAULT, false);
 	add_simple_anim(animations, cfg, "levelin_anim", "levelin");
 	add_simple_anim(animations, cfg, "levelout_anim", "levelout");
 
@@ -736,7 +732,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound(game_config::sounds::status::poisoned),true);
 	}
 
-	add_simple_anim(animations, cfg, "pre_movement_anim", "pre_movement", display::LAYER_UNIT_MOVE_DEFAULT);
+	add_simple_anim(animations, cfg, "pre_movement_anim", "pre_movement", drawing_queue::LAYER_UNIT_MOVE_DEFAULT);
 
 	for(const animation_branch& ab : prepare_animation(cfg, "movement_anim")) {
 		config anim = ab.merge();
@@ -753,7 +749,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.push_back(unit_animation(anim));
 	}
 
-	add_simple_anim(animations, cfg, "post_movement_anim", "post_movement", display::LAYER_UNIT_MOVE_DEFAULT);
+	add_simple_anim(animations, cfg, "post_movement_anim", "post_movement", drawing_queue::LAYER_UNIT_MOVE_DEFAULT);
 
 	for(const animation_branch& ab : prepare_animation(cfg, "defend")) {
 		config anim = ab.merge();
@@ -799,8 +795,8 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		}
 	}
 
-	add_simple_anim(animations, cfg, "draw_weapon_anim", "draw_weapon", display::LAYER_UNIT_MOVE_DEFAULT);
-	add_simple_anim(animations, cfg, "sheath_weapon_anim", "sheath_weapon", display::LAYER_UNIT_MOVE_DEFAULT);
+	add_simple_anim(animations, cfg, "draw_weapon_anim", "draw_weapon", drawing_queue::LAYER_UNIT_MOVE_DEFAULT);
+	add_simple_anim(animations, cfg, "sheath_weapon_anim", "sheath_weapon", drawing_queue::LAYER_UNIT_MOVE_DEFAULT);
 
 	for(const animation_branch& ab : prepare_animation(cfg, "attack_anim")) {
 		config anim = ab.merge();
@@ -1082,9 +1078,6 @@ void unit_animation::restart_animation()
 
 void unit_animation::redraw(frame_parameters& value, halo::manager& halo_man)
 {
-	invalidated_ = false;
-	overlaped_hex_.clear();
-
 	value.primary_frame = true;
 	unit_anim_.redraw(value,src_,dst_, halo_man);
 
@@ -1100,50 +1093,6 @@ void unit_animation::clear_haloes()
 
 	for(auto& anim : sub_anims_) {
 		anim.second.clear_halo();
-	}
-}
-
-bool unit_animation::invalidate(frame_parameters& value)
-{
-	if(invalidated_) return false;
-
-	display* disp = display::get_singleton();
-	const bool complete_redraw = disp->tile_nearly_on_screen(src_) || disp->tile_nearly_on_screen(dst_);
-
-	if(overlaped_hex_.empty()) {
-		if(complete_redraw) {
-			value.primary_frame = true;
-			overlaped_hex_ = unit_anim_.get_overlaped_hex(value, src_, dst_);
-			value.primary_frame = false;
-
-			for(auto& anim : sub_anims_) {
-				std::set<map_location> tmp = anim.second.get_overlaped_hex(value, src_, dst_);
-				overlaped_hex_.insert(tmp.begin(), tmp.end());
-			}
-		} else {
-			// Offscreen animations only invalidate their own hex, no propagation,
-			// but we still need this to play sounds
-			overlaped_hex_.insert(src_);
-		}
-	}
-
-	if(complete_redraw) {
-		if( need_update()) {
-			disp->invalidate(overlaped_hex_);
-			invalidated_ = true;
-			return true;
-		} else {
-			invalidated_ = disp->propagate_invalidation(overlaped_hex_);
-			return invalidated_;
-		}
-	} else {
-		if(need_minimal_update()) {
-			disp->invalidate(overlaped_hex_);
-			invalidated_ = true;
-			return true;
-		} else {
-			return false;
-		}
 	}
 }
 

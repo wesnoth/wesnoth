@@ -16,6 +16,7 @@
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "log.hpp"
+#include "ogl/utils.hpp"
 #include "quit_confirmation.hpp"
 #include "video.hpp"
 #include "sdl/userevent.hpp"
@@ -160,6 +161,10 @@ void context::set_focus(const sdl_handler* ptr)
 
 void context::add_staging_handlers()
 {
+	if(staging_handlers.empty()) {
+		return;
+	}
+
 	std::copy(staging_handlers.begin(), staging_handlers.end(), std::back_inserter(handlers));
 	staging_handlers.clear();
 }
@@ -384,10 +389,6 @@ bool last_resize_event_used = true;
 
 static bool remove_on_resize(const SDL_Event& a)
 {
-	if(a.type == DRAW_EVENT || a.type == DRAW_ALL_EVENT) {
-		return true;
-	}
-
 	if(a.type == SHOW_HELPTIP_EVENT) {
 		return true;
 	}
@@ -401,6 +402,16 @@ static bool remove_on_resize(const SDL_Event& a)
 	}
 
 	return false;
+}
+
+void initialise()
+{
+	// Add things as necessary.
+}
+
+void finalize()
+{
+	// Add things as necessary.
 }
 
 // TODO: I'm uncertain if this is always safe to call at static init; maybe set in main() instead?
@@ -477,16 +488,6 @@ void pump()
 		last_resize_event_used = true;
 	}
 
-	// Move all draw events to the end of the queue
-	auto first_draw_event = std::stable_partition(events.begin(), events.end(),
-		[](const SDL_Event& e) { return e.type != DRAW_EVENT; }
-	);
-
-	if(first_draw_event != events.end()) {
-		// Remove all draw events except one
-		events.erase(first_draw_event + 1, events.end());
-	}
-
 	ev_end = events.end();
 
 	for(ev_it = events.begin(); ev_it != ev_end; ++ev_it) {
@@ -560,20 +561,6 @@ void pump()
 			break;
 		}
 
-		case DRAW_ALL_EVENT: {
-			flip_locker flip_lock(CVideo::get_singleton());
-
-			/* Iterate backwards as the most recent things will be at the top */
-			// FIXME? ^ that isn't happening here.
-			for(auto& context : event_contexts) {
-				for(auto handler : context.handlers) {
-					handler->handle_event(event);
-				}
-			}
-
-			continue; // do not do further handling here
-		}
-
 #ifndef __APPLE__
 		case SDL_KEYDOWN: {
 			if(event.key.keysym.sym == SDLK_F4 &&
@@ -617,6 +604,21 @@ void pump()
 			}
 		}
 	}
+
+	//
+	// Draw things. This is the code that actually makes anything appear on the screen.
+	//
+	CVideo& video = CVideo::get_singleton();
+
+#ifdef USE_GL_RENDERING
+	gl::clear_screen();
+#else
+	video.clear_screen();
+#endif
+
+	raise_draw_event();
+
+	video.render_screen();
 
 	// Inform the pump monitors that an events::pump() has occurred
 	for(auto monitor : pump_monitors) {
@@ -731,13 +733,15 @@ void discard_input()
 
 void peek_for_resize()
 {
+#if 0
 	SDL_Event events[100];
 	int num = SDL_PeepEvents(events, 100, SDL_PEEKEVENT, SDL_WINDOWEVENT, SDL_WINDOWEVENT);
 	for(int i = 0; i < num; ++i) {
 		if(events[i].type == SDL_WINDOWEVENT && events[i].window.event == SDL_WINDOWEVENT_RESIZED) {
-			CVideo::get_singleton().update_framebuffer();
+			// Add something here if needed.
 		}
 	}
+#endif
 }
 
 void call_in_main_thread(const std::function<void(void)>& f)

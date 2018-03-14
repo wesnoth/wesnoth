@@ -77,8 +77,6 @@ public:
 
 	/// Checks that the path is not of length 0 or 1
 	static bool valid_path(const arrow_path_t& path);
-	/// Invalidates every hex along the given path
-	static void invalidate_arrow_path(const arrow_path_t& path);
 
 	virtual void notify_arrow_changed();
 
@@ -90,7 +88,7 @@ protected:
 	 */
 	virtual void update_symbols();
 
-	display::drawing_layer layer_;
+	drawing_queue::layer layer_;
 
 	std::string color_;
 	/// represents the subdirectory that holds images for this arrow style

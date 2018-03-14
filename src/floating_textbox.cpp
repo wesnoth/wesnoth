@@ -36,7 +36,7 @@ namespace gui{
 		label_(0)
 	{}
 
-	void floating_textbox::close(game_display& gui)
+	void floating_textbox::close(game_display& /*gui*/)
 	{
 		if(!active()) {
 			return;
@@ -50,7 +50,6 @@ namespace gui{
 		check_.reset(nullptr);
 		font::remove_floating_label(label_);
 		mode_ = TEXTBOX_NONE;
-		gui.invalidate_all();
 	}
 
 	void floating_textbox::update_location(game_display& gui)

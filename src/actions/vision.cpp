@@ -270,17 +270,6 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
 		}
 	}
 
-	// Possible screen invalidation.
-	if ( was_fogged ) {
-		display::get_singleton()->invalidate(loc);
-		// Need to also invalidate adjacent hexes to get rid of the
-		// "fog edge" graphics.
-		adjacent_loc_array_t adjacent;
-		get_adjacent_tiles(loc, adjacent.data());
-		for (unsigned i = 0; i < adjacent.size(); ++i )
-			display::get_singleton()->invalidate(adjacent[i]);
-	}
-
 	// Check for units?
 	if ( result  &&  check_units  &&  loc != event_non_loc ) {
 		// Uncovered a unit?
@@ -333,11 +322,11 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
                                 const map_location & real_loc,
                                 const std::set<map_location>* known_units,
                                 size_t * enemy_count, size_t * friend_count,
-                                move_unit_spectator * spectator, bool instant)
+                                move_unit_spectator * spectator, bool /*instant*/)
 {
 	// Give animations a chance to progress; see bug #20324.
-	if ( !instant  && display::get_singleton() )
-		display::get_singleton()->draw(true);
+	// TODO: ^ is this something we need to worry about now that external draw calls are removed?
+	// vultraz, 7/5/2017
 
 	bool cleared_something = false;
 	// Dummy variables to make some logic simpler.
@@ -351,15 +340,15 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 	if ( view_team_ != &view_team ) {
 		calculate_jamming(&view_team);
 		// Give animations a chance to progress; see bug #20324.
-		if ( !instant  && display::get_singleton() )
-			display::get_singleton()->draw(true);
+		// TODO: ^ is this something we need to worry about now that external draw calls are removed?
+		// vultraz, 7/5/2017
 	}
 
 	// Determine the hexes to clear.
 	pathfind::vision_path sight(costs, slowed, sight_range, view_loc, jamming_);
 	// Give animations a chance to progress; see bug #20324.
-	if ( !instant  && display::get_singleton() )
-		display::get_singleton()->draw(true);
+	// TODO: ^ is this something we need to worry about now that external draw calls are removed?
+	// vultraz, 7/5/2017
 
 	// Clear the fog.
 	for (const pathfind::paths::step &dest : sight.destinations) {
@@ -719,9 +708,6 @@ void recalculate_fog(int side)
 	}
 
 	tm.refog();
-	// Invalidate the screen before clearing the shroud.
-	// This speeds up the invalidations within clear_shroud_unit().
-	display::get_singleton()->invalidate_all();
 
 	shroud_clearer clearer;
 	for (const unit &u : resources::gameboard->units())

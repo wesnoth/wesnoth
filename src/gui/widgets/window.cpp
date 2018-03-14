@@ -113,33 +113,13 @@ namespace
 const unsigned SHOW = debug_layout_graph::SHOW;
 const unsigned LAYOUT = debug_layout_graph::LAYOUT;
 #else
-// values are irrelavant when DEBUG_WINDOW_LAYOUT_GRAPHS is not defined.
+// values are irrelevant when DEBUG_WINDOW_LAYOUT_GRAPHS is not defined.
 const unsigned SHOW = 0;
 const unsigned LAYOUT = 0;
 #endif
 
 /**
- * Pushes a single draw event to the queue. To be used before calling
- * events::pump when drawing windows.
- *
- * @todo: in the future we should simply call draw functions directly
- * from events::pump and do away with the custom drawing events, but
- * that's a 1.15 target. For now, this will have to do.
- */
-static void push_draw_event()
-{
-	//	DBG_GUI_E << "Pushing draw event in queue.\n";
 
-	SDL_Event event;
-	sdl::UserEvent data(DRAW_EVENT);
-
-	event.type = DRAW_EVENT;
-	event.user = data;
-
-	SDL_PushEvent(&event);
-}
-
-/**
  * SDL_AddTimer() callback for delay_event.
  *
  * @param event                   The event to push in the event queue.
@@ -283,9 +263,6 @@ window::window(const builder_window::window_resolution* definition)
 	, variables_()
 	, invalidate_layout_blocked_(false)
 	, suspend_drawing_(true)
-	, restore_(true)
-	, is_toplevel_(!is_in_dialog())
-	, restorer_()
 	, automatic_placement_(definition->automatic_placement)
 	, horizontal_placement_(definition->horizontal_placement)
 	, vertical_placement_(definition->vertical_placement)
@@ -304,7 +281,6 @@ window::window(const builder_window::window_resolution* definition)
 	, escape_disabled_(false)
 	, linked_size_()
 	, mouse_button_state_(0) /**< Needs to be initialized in @ref show. */
-	, dirty_list_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_layout_(new debug_layout_graph(this))
 #endif
@@ -493,12 +469,10 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 	invalidate_layout();
 	suspend_drawing_ = false;
 
-	push_draw_event();
-
 	events::pump();
 }
 
-int window::show(const bool restore, const unsigned auto_close_timeout)
+int window::show(const unsigned auto_close_timeout)
 {
 	/*
 	 * Removes the old tip if one shown. The show_tip doesn't remove
@@ -507,7 +481,6 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 	dialogs::tip::remove();
 
 	show_mode_ = modal;
-	restore_ = restore;
 
 	log_scope2(log_gui_draw, LOG_SCOPE_HEADER);
 
@@ -543,8 +516,6 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 		// Start our loop drawing will happen here as well.
 		bool mouse_button_state_initialized = false;
 		for(status_ = SHOWING; status_ != CLOSED;) {
-			push_draw_event();
-
 			// process installed callback if valid, to allow e.g. network
 			// polling
 			events::pump();
@@ -583,22 +554,22 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 		suspend_drawing_ = true;
 
 		// restore area
-		if(restore_) {
-			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-			font::undraw_floating_labels(video_.getSurface());
-		}
+	//	if(restore_) {
+	//		SDL_Rect rect = get_rectangle();
+	//		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
+	//		font::undraw_floating_labels(video_.getSurface());
+	//	}
 		throw;
 	}
 
 	suspend_drawing_ = true;
 
 	// restore area
-	if(restore_) {
-		SDL_Rect rect = get_rectangle();
-		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-		font::undraw_floating_labels(video_.getSurface());
-	}
+	//if(restore_) {
+	//	SDL_Rect rect = get_rectangle();
+	//	sdl_blit(restorer_, 0, video_.getSurface(), &rect);
+	//	font::undraw_floating_labels(video_.getSurface());
+	//}
 
 	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())) {
 		tb->interrupt_composition();
@@ -615,178 +586,28 @@ void window::draw()
 		return;
 	}
 
-	surface& frame_buffer = video_.getSurface();
-
-	/***** ***** Layout and get dirty list ***** *****/
+	/***** ***** Layout ***** *****/
 	if(need_layout_) {
-		// Restore old surface. In the future this phase will not be needed
-		// since all will be redrawn when needed with dirty rects. Since that
-		// doesn't work yet we need to undraw the window.
-		if(restore_ && restorer_) {
-			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, frame_buffer, &rect);
-		}
-
 		layout();
-
-		// Get new surface for restoring
-		SDL_Rect rect = get_rectangle();
-
-		// We want the labels underneath the window so draw them and use them
-		// as restore point.
-		if(is_toplevel_) {
-			font::draw_floating_labels(frame_buffer);
-		}
-
-		if(restore_) {
-			restorer_ = get_surface_portion(frame_buffer, rect);
-		}
-
-		// Need full redraw so only set ourselves dirty.
-		dirty_list_.emplace_back(1, this);
+		need_layout_ = false;
 	} else {
-
-		// Let widgets update themselves, which might dirty some things.
+		// Let widgets update themselves.
 		layout_children();
-
-		// Now find the widgets that are dirty.
-		std::vector<widget*> call_stack;
-		if(!new_widgets) {
-			populate_dirty_list(*this, call_stack);
-		} else {
-			/* Force to update and redraw the entire screen */
-			dirty_list_.clear();
-			dirty_list_.emplace_back(1, this);
-		}
 	}
 
-	if (dirty_list_.empty()) {
-		consecutive_changed_frames_ = 0u;
-		return;
-	}
+	// Draw background.
+	this->draw_background(0, 0);
 
-	++consecutive_changed_frames_;
-	if(consecutive_changed_frames_ >= 100u && id_ == "title_screen") {
-		/* The title screen has changed in 100 consecutive frames, i.e. every
-		frame for two seconds. It looks like the screen is constantly changing
-		or at least marking widgets as dirty.
+	// Draw children.
+	this->draw_children(0, 0);
 
-		That's a severe problem. Every time the title screen changes, all
-		other GUI windows need to be fully redrawn, with huge CPU usage cost.
-		For that reason, this situation is a hard error. */
-		throw std::logic_error("The title screen is constantly changing, "
-			"which has a huge CPU usage cost. See the code comment.");
-	}
+	// Draw foreground.
+	this->draw_foreground(0, 0);
 
-	for(auto & item : dirty_list_)
-	{
-
-		assert(!item.empty());
-
-		const SDL_Rect dirty_rect
-				= new_widgets ? video().screen_area()
-							  : item.back()->get_dirty_rectangle();
-
-// For testing we disable the clipping rect and force the entire screen to
-// update. This way an item rendered at the wrong place is directly visible.
-#if 0
-		dirty_list_.clear();
-		dirty_list_.emplace_back(1, this);
-#else
-		clip_rect_setter clip(frame_buffer, &dirty_rect);
-#endif
-
-		/*
-		 * The actual update routine does the following:
-		 * - Restore the background.
-		 *
-		 * - draw [begin, end) the back ground of all widgets.
-		 *
-		 * - draw the children of the last item in the list, if this item is
-		 *   a container it's children get a full redraw. If it's not a
-		 *   container nothing happens.
-		 *
-		 * - draw [rbegin, rend) the fore ground of all widgets. For items
-		 *   which have two layers eg window or panel it draws the foreground
-		 *   layer. For other widgets it's a nop.
-		 *
-		 * Before drawing there needs to be determined whether a dirty widget
-		 * really needs to be redrawn. If the widget doesn't need to be
-		 * redrawing either being not visibility::visible or has status
-		 * widget::redraw_action::none. If it's not drawn it's still set not
-		 * dirty to avoid it keep getting on the dirty list.
-		 */
-
-		for(std::vector<widget*>::iterator itor = item.begin();
-			itor != item.end();
-			++itor) {
-
-			if((**itor).get_visible() != widget::visibility::visible
-			   || (**itor).get_drawing_action()
-				  == widget::redraw_action::none) {
-
-				for(std::vector<widget*>::iterator citor = itor;
-					citor != item.end();
-					++citor) {
-
-					(**citor).set_is_dirty(false);
-				}
-
-				item.erase(itor, item.end());
-				break;
-			}
-		}
-
-		// Restore.
-		if(restore_) {
-			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, frame_buffer, &rect);
-		}
-
-		// Background.
-		for(std::vector<widget*>::iterator itor = item.begin();
-			itor != item.end();
-			++itor) {
-
-			(**itor).draw_background(frame_buffer, 0, 0);
-		}
-
-		// Children.
-		if(!item.empty()) {
-			item.back()->draw_children(frame_buffer, 0, 0);
-		}
-
-		// Foreground.
-		for(std::vector<widget*>::reverse_iterator ritor = item.rbegin();
-			ritor != item.rend();
-			++ritor) {
-
-			(**ritor).draw_foreground(frame_buffer, 0, 0);
-			(**ritor).set_is_dirty(false);
-		}
-	}
-
-	dirty_list_.clear();
-
-	redraw_windows_on_top();
-
-	std::vector<widget*> call_stack;
-	populate_dirty_list(*this, call_stack);
-	assert(dirty_list_.empty());
 
 	if(callback_next_draw_ != nullptr) {
 		callback_next_draw_();
 		callback_next_draw_ = nullptr;
-	}
-}
-
-void window::undraw()
-{
-	if(restore_ && restorer_) {
-		SDL_Rect rect = get_rectangle();
-		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-		// Since the old area might be bigger as the new one, invalidate
-		// it.
 	}
 }
 
@@ -1174,17 +995,6 @@ void window_swap_grid(grid* g,
 }
 
 } // namespace
-
-void window::redraw_windows_on_top() const
-{
-	std::vector<dispatcher*>& dispatchers = event::get_all_dispatchers();
-	auto me = std::find(dispatchers.begin(), dispatchers.end(), this);
-
-	for(auto it = std::next(me); it != dispatchers.end(); ++it) {
-		// Note that setting an entire window dirty like this is expensive.
-		dynamic_cast<widget&>(**it).set_is_dirty(true);
-	}
-}
 
 void window::finalize(const std::shared_ptr<builder_grid>& content_grid)
 {

@@ -86,8 +86,9 @@ editor_controller::editor_controller(const config &game_config)
 	get_current_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 
+	join();
+
 	gui().create_buttons();
-	gui().redraw_everything();
 }
 
 void editor_controller::init_gui()
@@ -965,17 +966,14 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 		case HOTKEY_EDITOR_DRAW_COORDINATES:
 			gui().set_draw_coordinates(!gui().get_draw_coordinates());
 			preferences::editor::set_draw_hex_coordinates(gui().get_draw_coordinates());
-			gui().invalidate_all();
 			return true;
 		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
 			gui().set_draw_terrain_codes(!gui().get_draw_terrain_codes());
 			preferences::editor::set_draw_terrain_codes(gui().get_draw_terrain_codes());
-			gui().invalidate_all();
 			return true;
 		case HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS:
 			gui().set_draw_num_of_bitmaps(!gui().get_draw_num_of_bitmaps());
 			preferences::editor::set_draw_num_of_bitmaps(gui().get_draw_num_of_bitmaps());
-			gui().invalidate_all();
 			return true;
 		case HOTKEY_EDITOR_REMOVE_LOCATION: {
 			location_palette* lp = dynamic_cast<location_palette*>(&toolkit_->get_palette_manager()->active_palette());
@@ -1100,14 +1098,11 @@ void editor_controller::preferences()
 {
 	gui_->video().clear_all_help_strings();
 	gui2::dialogs::preferences_dialog::display(game_config_);
-
-	gui_->redraw_everything();
 }
 
 void editor_controller::toggle_grid()
 {
 	preferences::set_grid(!preferences::grid());
-	gui_->invalidate_all();
 }
 
 void editor_controller::unit_description()

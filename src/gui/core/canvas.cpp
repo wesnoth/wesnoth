@@ -31,6 +31,7 @@
 #include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/render_utils.hpp"
 #include "video.hpp"
 #include "wml_exception.hpp"
 
@@ -84,11 +85,6 @@ namespace
 
 /***** ***** ***** ***** ***** DRAWING PRIMITIVES ***** ***** ***** ***** *****/
 
-static void set_renderer_color(SDL_Renderer* renderer, color_t color)
-{
-	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-}
-
 /**
  * Draws a line on a surface.
  *
@@ -105,7 +101,8 @@ static void set_renderer_color(SDL_Renderer* renderer, color_t color)
  * @param x2              The end x coordinate of the line to draw.
  * @param y2              The end y coordinate of the line to draw.
  */
-static void draw_line(surface& canvas,
+static void draw_line(const int canvas_w,
+					  const int canvas_h,
 					  SDL_Renderer* renderer,
 					  color_t color,
 					  unsigned x1,
@@ -113,18 +110,16 @@ static void draw_line(surface& canvas,
 					  const unsigned x2,
 					  unsigned y2)
 {
-	unsigned w = canvas->w;
-
 	DBG_GUI_D << "Shape: draw line from " << x1 << ',' << y1 << " to " << x2
-			  << ',' << y2 << " canvas width " << w << " canvas height "
-			  << canvas->h << ".\n";
+			  << ',' << y2 << " canvas width " << canvas_w << " canvas height "
+			  << canvas_h << ".\n";
 
-	assert(static_cast<int>(x1) < canvas->w);
-	assert(static_cast<int>(x2) < canvas->w);
-	assert(static_cast<int>(y1) < canvas->h);
-	assert(static_cast<int>(y2) < canvas->h);
+	assert(static_cast<int>(x1) < canvas_w);
+	assert(static_cast<int>(x2) < canvas_w);
+	assert(static_cast<int>(y1) < canvas_h);
+	assert(static_cast<int>(y2) < canvas_h);
 
-	set_renderer_color(renderer, color);
+	set_draw_color(renderer, color);
 
 	if(x1 == x2 && y1 == y2) {
 		// Handle single-pixel lines properly
@@ -149,25 +144,26 @@ static void draw_line(surface& canvas,
  * @tparam octants        A bitfield indicating which octants to draw, starting at twelve o'clock and moving clockwise.
  */
 template<unsigned int octants = 0xff>
-static void draw_circle(surface& canvas,
+static void draw_circle(const int canvas_w,
+						const int canvas_h,
 						SDL_Renderer* renderer,
 						color_t color,
 						const int x_center,
 						const int y_center,
 						const int radius)
 {
-	unsigned w = canvas->w;
+	unsigned w = canvas_w;
 
 	DBG_GUI_D << "Shape: draw circle at " << x_center << ',' << y_center
 			  << " with radius " << radius << " canvas width " << w
-			  << " canvas height " << canvas->h << ".\n";
+			  << " canvas height " << canvas_h << ".\n";
 
-	if(octants & 0x0f) assert((x_center + radius) < canvas->w);
+	if(octants & 0x0f) assert((x_center + radius) < canvas_w);
 	if(octants & 0xf0) assert((x_center - radius) >= 0);
-	if(octants & 0x3c) assert((y_center + radius) < canvas->h);
+	if(octants & 0x3c) assert((y_center + radius) < canvas_h);
 	if(octants & 0xc3) assert((y_center - radius) >= 0);
 
-	set_renderer_color(renderer, color);
+	set_draw_color(renderer, color);
 
 	// Algorithm based on
 	// http://de.wikipedia.org/wiki/Rasterung_von_Kreisen#Methode_von_Horn
@@ -215,25 +211,26 @@ static void draw_circle(surface& canvas,
  * @tparam octants        A bitfield indicating which octants to draw, starting at twelve o'clock and moving clockwise.
  */
 template<unsigned int octants = 0xff>
-static void fill_circle(surface& canvas,
+static void fill_circle(const int canvas_w,
+						const int canvas_h,
 						SDL_Renderer* renderer,
 						color_t color,
 						const int x_center,
 						const int y_center,
 						const int radius)
 {
-	unsigned w = canvas->w;
+	unsigned w = canvas_w;
 
 	DBG_GUI_D << "Shape: draw filled circle at " << x_center << ',' << y_center
 			  << " with radius " << radius << " canvas width " << w
-			  << " canvas height " << canvas->h << ".\n";
+			  << " canvas height " << canvas_h << ".\n";
 
-	if(octants & 0x0f) assert((x_center + radius) < canvas->w);
+	if(octants & 0x0f) assert((x_center + radius) < canvas_w);
 	if(octants & 0xf0) assert((x_center - radius) >= 0);
-	if(octants & 0x3c) assert((y_center + radius) < canvas->h);
+	if(octants & 0x3c) assert((y_center + radius) < canvas_h);
 	if(octants & 0xc3) assert((y_center - radius) >= 0);
 
-	set_renderer_color(renderer, color);
+	set_draw_color(renderer, color);
 
 	int d = -static_cast<int>(radius);
 	int x = radius;
@@ -586,9 +583,11 @@ line_shape::line_shape(const config& cfg)
 	}
 }
 
-void line_shape::draw(surface& canvas,
-				 SDL_Renderer* renderer,
-				 wfl::map_formula_callable& variables)
+void line_shape::draw(
+		const int canvas_w,
+		const int canvas_h,
+		SDL_Renderer* renderer,
+		wfl::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a bit silly
@@ -602,21 +601,18 @@ void line_shape::draw(surface& canvas,
 	const unsigned y2 = y2_(variables);
 
 	DBG_GUI_D << "Line: draw from " << x1 << ',' << y1 << " to " << x2 << ','
-			  << y2 << " canvas size " << canvas->w << ',' << canvas->h
+			  << y2 << " canvas size " << canvas_w << ',' << canvas_h
 			  << ".\n";
 
-	VALIDATE(static_cast<int>(x1) < canvas->w
-			 && static_cast<int>(x2) < canvas->w
-			 && static_cast<int>(y1) < canvas->h
-			 && static_cast<int>(y2) < canvas->h,
+	VALIDATE(static_cast<int>(x1) < canvas_w
+			 && static_cast<int>(x2) < canvas_w
+			 && static_cast<int>(y1) < canvas_h
+			 && static_cast<int>(y2) < canvas_h,
 			 _("Line doesn't fit on canvas."));
 
 	// @todo FIXME respect the thickness.
 
-	// lock the surface
-	surface_lock locker(canvas);
-
-	draw_line(canvas, renderer, color_(variables), x1, y1, x2, y2);
+	draw_line(canvas_w, canvas_h, renderer, color_(variables), x1, y1, x2, y2);
 }
 
 /***** ***** ***** ***** ***** Rectangle ***** ***** ***** ***** *****/
@@ -675,9 +671,11 @@ rectangle_shape::rectangle_shape(const config& cfg)
 	}
 }
 
-void rectangle_shape::draw(surface& canvas,
-					  SDL_Renderer* renderer,
-					  wfl::map_formula_callable& variables)
+void rectangle_shape::draw(
+		const int canvas_w,
+		const int canvas_h,
+		SDL_Renderer* renderer,
+		wfl::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a  bit
@@ -690,21 +688,19 @@ void rectangle_shape::draw(surface& canvas,
 	const int h = h_(variables);
 
 	DBG_GUI_D << "Rectangle: draw from " << x << ',' << y << " width " << w
-			  << " height " << h << " canvas size " << canvas->w << ','
-			  << canvas->h << ".\n";
+			  << " height " << h << " canvas size " << canvas_w << ','
+			  << canvas_h << ".\n";
 
-	VALIDATE(x     <  canvas->w
-	      && x + w <= canvas->w
-	      && y     <  canvas->h
-	      && y + h <= canvas->h, _("Rectangle doesn't fit on canvas."));
-
-	surface_lock locker(canvas);
+	VALIDATE(x     <  canvas_w
+	      && x + w <= canvas_w
+	      && y     <  canvas_h
+	      && y + h <= canvas_h, _("Rectangle doesn't fit on canvas."));
 
 	const color_t fill_color = fill_color_(variables);
 
 	// Fill the background, if applicable
 	if(!fill_color.null() && w && h) {
-		set_renderer_color(renderer, fill_color);
+		set_draw_color(renderer, fill_color);
 
 		SDL_Rect area {
 			x +  border_thickness_,
@@ -725,7 +721,7 @@ void rectangle_shape::draw(surface& canvas,
 			h - (i * 2)
 		};
 
-		set_renderer_color(renderer, border_color_(variables));
+		set_draw_color(renderer, border_color_(variables));
 
 		SDL_RenderDrawRect(renderer, &dimensions);
 	}
@@ -789,9 +785,11 @@ round_rectangle_shape::round_rectangle_shape(const config& cfg)
 	}
 }
 
-void round_rectangle_shape::draw(surface& canvas,
-	SDL_Renderer* renderer,
-	wfl::map_formula_callable& variables)
+void round_rectangle_shape::draw(
+		const int canvas_w,
+		const int canvas_h,
+		SDL_Renderer* renderer,
+		wfl::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a  bit
@@ -805,21 +803,19 @@ void round_rectangle_shape::draw(surface& canvas,
 	const int r = r_(variables);
 
 	DBG_GUI_D << "Rounded Rectangle: draw from " << x << ',' << y << " width " << w
-		<< " height " << h << " canvas size " << canvas->w << ','
-		<< canvas->h << ".\n";
+		<< " height " << h << " canvas size " << canvas_w << ','
+		<< canvas_h << ".\n";
 
-	VALIDATE(x     <  canvas->w
-		&& x + w <= canvas->w
-		&& y     <  canvas->h
-		&& y + h <= canvas->h, _("Rounded Rectangle doesn't fit on canvas."));
-
-	surface_lock locker(canvas);
+	VALIDATE(x   <  canvas_w
+		&& x + w <= canvas_w
+		&& y     <  canvas_h
+		&& y + h <= canvas_h, _("Rounded Rectangle doesn't fit on canvas."));
 
 	const color_t fill_color = fill_color_(variables);
 
 	// Fill the background, if applicable
 	if(!fill_color.null() && w && h) {
-		set_renderer_color(renderer, fill_color);
+		set_draw_color(renderer, fill_color);
 		static const int count = 3;
 		SDL_Rect area[count] {
 			{x + r,                 y + border_thickness_, w - r                 * 2, r - border_thickness_ + 1},
@@ -829,17 +825,17 @@ void round_rectangle_shape::draw(surface& canvas,
 
 		SDL_RenderFillRects(renderer, area, count);
 
-		fill_circle<0xc0>(canvas, renderer, fill_color, x + r,     y + r,     r);
-		fill_circle<0x03>(canvas, renderer, fill_color, x + w - r, y + r,     r);
-		fill_circle<0x30>(canvas, renderer, fill_color, x + r,     y + h - r, r);
-		fill_circle<0x0c>(canvas, renderer, fill_color, x + w - r, y + h - r, r);
+		fill_circle<0xc0>(canvas_w, canvas_h, renderer, fill_color, x + r,     y + r,     r);
+		fill_circle<0x03>(canvas_w, canvas_h, renderer, fill_color, x + w - r, y + r,     r);
+		fill_circle<0x30>(canvas_w, canvas_h, renderer, fill_color, x + r,     y + h - r, r);
+		fill_circle<0x0c>(canvas_w, canvas_h, renderer, fill_color, x + w - r, y + h - r, r);
 	}
 
 	const color_t border_color = border_color_(variables);
 
 	// Draw the border
 	for(int i = 0; i < border_thickness_; ++i) {
-		set_renderer_color(renderer, border_color);
+		set_draw_color(renderer, border_color);
 
 		SDL_RenderDrawLine(renderer, x + r, y + i,     x + w - r, y + i);
 		SDL_RenderDrawLine(renderer, x + r, y + h - i, x + w - r, y + h - i);
@@ -847,10 +843,10 @@ void round_rectangle_shape::draw(surface& canvas,
 		SDL_RenderDrawLine(renderer, x + i,     y + r, x + i,     y + h - r);
 		SDL_RenderDrawLine(renderer, x + w - i, y + r, x + w - i, y + h - r);
 
-		draw_circle<0xc0>(canvas, renderer, border_color, x + r,     y + r,     r - i);
-		draw_circle<0x03>(canvas, renderer, border_color, x + w - r, y + r,     r - i);
-		draw_circle<0x30>(canvas, renderer, border_color, x + r,     y + h - r, r - i);
-		draw_circle<0x0c>(canvas, renderer, border_color, x + w - r, y + h - r, r - i);
+		draw_circle<0xc0>(canvas_w, canvas_h, renderer, border_color, x + r,     y + r,     r - i);
+		draw_circle<0x03>(canvas_w, canvas_h, renderer, border_color, x + w - r, y + r,     r - i);
+		draw_circle<0x30>(canvas_w, canvas_h, renderer, border_color, x + r,     y + h - r, r - i);
+		draw_circle<0x0c>(canvas_w, canvas_h, renderer, border_color, x + w - r, y + h - r, r - i);
 	}
 }
 
@@ -901,9 +897,11 @@ circle_shape::circle_shape(const config& cfg)
 	}
 }
 
-void circle_shape::draw(surface& canvas,
-				   SDL_Renderer* renderer,
-				   wfl::map_formula_callable& variables)
+void circle_shape::draw(
+		const int canvas_w,
+		const int canvas_h,
+		SDL_Renderer* renderer,
+		wfl::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a bit
@@ -916,7 +914,7 @@ void circle_shape::draw(surface& canvas,
 	const unsigned radius = radius_(variables);
 
 	DBG_GUI_D << "Circle: drawn at " << x << ',' << y << " radius " << radius
-			  << " canvas size " << canvas->w << ',' << canvas->h << ".\n";
+			  << " canvas size " << canvas_w << ',' << canvas_h << ".\n";
 
 	VALIDATE_WITH_DEV_MESSAGE(
 			static_cast<int>(x - radius) >= 0,
@@ -929,28 +927,25 @@ void circle_shape::draw(surface& canvas,
 			formatter() << "y = " << y << ", radius = " << radius);
 
 	VALIDATE_WITH_DEV_MESSAGE(
-			static_cast<int>(x + radius) < canvas->w,
+			static_cast<int>(x + radius) < canvas_w,
 			_("Circle doesn't fit on canvas."),
 			formatter() << "x = " << x << ", radius = " << radius
-						 << "', canvas width = " << canvas->w << ".");
+						 << "', canvas width = " << canvas_w << ".");
 
 	VALIDATE_WITH_DEV_MESSAGE(
-			static_cast<int>(y + radius) < canvas->h,
+			static_cast<int>(y + radius) < canvas_h,
 			_("Circle doesn't fit on canvas."),
 			formatter() << "y = " << y << ", radius = " << radius
-						 << "', canvas height = " << canvas->h << ".");
-
-	// lock the surface
-	surface_lock locker(canvas);
+						 << "', canvas height = " << canvas_h << ".");
 
 	const color_t fill_color = fill_color_(variables);
 	if(!fill_color.null() && radius) {
-		fill_circle(canvas, renderer, fill_color, x, y, radius);
+		fill_circle(canvas_w, canvas_h, renderer, fill_color, x, y, radius);
 	}
 
 	const color_t border_color = border_color_(variables);
 	for(unsigned int i = 0; i < border_thickness_; i++) {
-		draw_circle(canvas, renderer, border_color, x, y, radius - i);
+		draw_circle(canvas_w, canvas_h, renderer, border_color, x, y, radius - i);
 	}
 }
 
@@ -1019,7 +1014,6 @@ image_shape::image_shape(const config& cfg, wfl::action_function_symbol_table& f
 	, y_(cfg["y"])
 	, w_(cfg["w"])
 	, h_(cfg["h"])
-	, src_clip_()
 	, image_()
 	, image_name_(cfg["name"])
 	, resize_mode_(get_resize_mode(cfg["resize_mode"]))
@@ -1041,9 +1035,11 @@ void image_shape::dimension_validation(unsigned value, const std::string& name, 
 	);
 }
 
-void image_shape::draw(surface& canvas,
-				  SDL_Renderer* /*renderer*/,
-				  wfl::map_formula_callable& variables)
+void image_shape::draw(
+		const int /*canvas_w*/,
+		const int /*canvas_h*/,
+		SDL_Renderer* /*renderer*/,
+		wfl::map_formula_callable& variables)
 {
 	DBG_GUI_D << "Image: draw.\n";
 
@@ -1059,24 +1055,22 @@ void image_shape::draw(surface& canvas,
 		return;
 	}
 
-	/*
-	 * The locator might return a different surface for every call so we can't
-	 * cache the output, also not if no formula is used.
-	 */
-	surface tmp(image::get_image(image::locator(name)));
+	// NOTE: if we need a key to specify NN scaling it can be added later.
+	image_ = image::get_texture(name, image::LINEAR);
 
-	if(!tmp) {
+	if(!image_) {
 		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn." << std::endl;
 		return;
 	}
 
-	image_.assign(make_neutral_surface(tmp));
-	assert(image_);
-	src_clip_ = {0, 0, image_->w, image_->h};
+	//
+	// Calculate dimensions and set WFL variables.
+	//
+	const texture::info info = image_.get_info();
 
 	wfl::map_formula_callable local_variables(variables);
-	local_variables.add("image_original_width", wfl::variant(image_->w));
-	local_variables.add("image_original_height", wfl::variant(image_->h));
+	local_variables.add("image_original_width", wfl::variant(info.w));
+	local_variables.add("image_original_height", wfl::variant(info.h));
 
 	unsigned w = w_(local_variables);
 	dimension_validation(w, name, "w");
@@ -1084,8 +1078,8 @@ void image_shape::draw(surface& canvas,
 	unsigned h = h_(local_variables);
 	dimension_validation(h, name, "h");
 
-	local_variables.add("image_width", wfl::variant(w ? w : image_->w));
-	local_variables.add("image_height", wfl::variant(h ? h : image_->h));
+	local_variables.add("image_width", wfl::variant(w ? w : info.w));
+	local_variables.add("image_height", wfl::variant(h ? h : info.h));
 
 	const unsigned clip_x = x_(local_variables);
 	dimension_validation(clip_x, name, "x");
@@ -1099,69 +1093,64 @@ void image_shape::draw(surface& canvas,
 	// Execute the provided actions for this context.
 	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
 
-	// Copy the data to local variables to avoid overwriting the originals.
-	SDL_Rect src_clip = src_clip_;
+	//
+	// Copy image texture to canvas texture (which should be the current rendering target)/
+	//
+	CVideo& video = CVideo::get_singleton();
+
+	// Flip on the vertical axis - ie, a horizontal flip.
+	const bool mirror = vertical_mirror_(local_variables);
+
 	SDL_Rect dst_clip = sdl::create_rect(clip_x, clip_y, 0, 0);
-	surface surf;
 
-	// Test whether we need to scale and do the scaling if needed.
-	if ((w == 0) && (h == 0)) {
-		surf = image_;
-	}
-	else { // assert((w != 0) || (h != 0))
-		if(w == 0 && resize_mode_ == stretch) {
-			DBG_GUI_D << "Image: vertical stretch from " << image_->w << ','
-					  << image_->h << " to a height of " << h << ".\n";
+	const unsigned int dst_w = w ? w : info.w;
+	const unsigned int dst_h = h ? h : info.h;
 
-			surf = stretch_surface_vertical(image_, h);
-			w = image_->w;
-		}
-		else if(h == 0 && resize_mode_ == stretch) {
-			DBG_GUI_D << "Image: horizontal stretch from " << image_->w
-					  << ',' << image_->h << " to a width of " << w
-					  << ".\n";
+	dst_clip.w = dst_w;
+	dst_clip.h = dst_h;
 
-			surf = stretch_surface_horizontal(image_, w);
-			h = image_->h;
-		}
-		else {
-			if(w == 0) {
-				w = image_->w;
-			}
-			if(h == 0) {
-				h = image_->h;
-			}
-			if(resize_mode_ == tile) {
-				DBG_GUI_D << "Image: tiling from " << image_->w << ','
-						  << image_->h << " to " << w << ',' << h << ".\n";
+	// TODO: remove stretch mode
+	switch(resize_mode_) {
+	case scale:
+	case stretch: {
+		DBG_GUI_D << "Image: scaling from " << info.w << ',' << info.h << " to " << w << ',' << h << std::endl;
 
-				surf = tile_surface(image_, w, h, false);
-			} else if(resize_mode_ == tile_center) {
-				DBG_GUI_D << "Image: tiling centrally from " << image_->w << ','
-						  << image_->h << " to " << w << ',' << h << ".\n";
+		//
+		// Textures are automatically sized to the dst rect.
+		//
 
-				surf = tile_surface(image_, w, h, true);
-			} else {
-				if(resize_mode_ == stretch) {
-					ERR_GUI_D << "Image: failed to stretch image, "
-								 "fall back to scaling.\n";
-				}
-
-				DBG_GUI_D << "Image: scaling from " << image_->w << ','
-						  << image_->h << " to " << w << ',' << h << ".\n";
-
-				surf = scale_surface_legacy(image_, w, h);
-			}
-		}
-		src_clip.w = w;
-		src_clip.h = h;
+		video.render_copy(image_, nullptr, &dst_clip, mirror, false);
+		break;
 	}
 
-	if(vertical_mirror_(local_variables)) {
-		surf = flip_surface(surf);
+	// TODO: move this to a more general place.
+	case tile: {
+		DBG_GUI_D << "Image: tiling from " << info.w << ',' << info.h << " to " << w << ',' << h << std::endl;
+
+		render_clip_rect_setter tile_clip_setter(&dst_clip);
+
+		const unsigned int w_count = static_cast<int>(std::ceil(static_cast<double>(dst_w) / static_cast<double>(info.w)));
+		const unsigned int h_count = static_cast<int>(std::ceil(static_cast<double>(dst_h) / static_cast<double>(info.h)));
+
+		for(unsigned int xi = 0, current_x = dst_clip.x; xi < w_count; ++xi, current_x += info.w) {
+			for(unsigned int iy = 0, current_y = dst_clip.y; iy < h_count; ++iy, current_y += info.h) {
+				SDL_Rect area = sdl::create_rect(current_x, current_y, info.w, info.h);
+				video.render_copy(image_, nullptr, &area, mirror, false);
+			}
+		}
+
+		break;
 	}
 
-	blit_surface(surf, &src_clip, canvas, &dst_clip);
+	case tile_center: {
+		DBG_GUI_D << "Image: tiling centrally from " << info.w << ',' << info.h << " to " << w << ',' << h << std::endl;
+		break;
+	}
+
+	default:
+		// TODO: text description
+		ERR_GUI_D << "Unknown resize mode option: " << resize_mode_ << std::endl;
+	}
 }
 
 image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_mode)
@@ -1262,9 +1251,11 @@ text_shape::text_shape(const config& cfg)
 	}
 }
 
-void text_shape::draw(surface& canvas,
-				 SDL_Renderer* /*renderer*/,
-				 wfl::map_formula_callable& variables)
+void text_shape::draw(
+		const int canvas_w,
+		const int canvas_h,
+		SDL_Renderer* /*renderer*/,
+		wfl::map_formula_callable& variables)
 {
 	assert(variables.has_key("text"));
 
@@ -1278,7 +1269,16 @@ void text_shape::draw(surface& canvas,
 		return;
 	}
 
-	static font::pango_text text_renderer;
+	// Note about color handling. It's possible to render the text with alpha set directly
+	// but it results in unnecessary extra renders and cache storage. Instead, we save the
+	// provided alpha value and override the one passed to the rext renderer. Then, if the
+	// alpha isn't opaque, we set a texture alpha mod once the text is rendered.
+	color_t fg_color = color_(variables);
+
+	const uint8_t saved_alpha = fg_color.a;
+	fg_color.a = ALPHA_OPAQUE;
+
+	font::pango_text& text_renderer = font::get_text_renderer();
 
 	text_renderer
 		.set_link_aware(link_aware_(variables))
@@ -1289,7 +1289,7 @@ void text_shape::draw(surface& canvas,
 		.set_font_size(font_size_)
 		.set_font_style(font_style_)
 		.set_alignment(text_alignment_(variables))
-		.set_foreground_color(color_(variables))
+		.set_foreground_color(fg_color)
 		.set_maximum_width(maximum_width_(variables))
 		.set_maximum_height(maximum_height_(variables), true)
 		.set_ellipse_mode(variables.has_key("text_wrap_mode")
@@ -1297,22 +1297,30 @@ void text_shape::draw(surface& canvas,
 				: PANGO_ELLIPSIZE_END)
 		.set_characters_per_line(characters_per_line_);
 
-	surface& surf = text_renderer.render();
-	if(surf->w == 0) {
+	// Get the resulting texture.
+	texture& txt = text_renderer.render_and_get_texture();
+
+	// Set texture alpha.
+	set_texture_alpha(txt, saved_alpha);
+
+	// TODO: should use pango_text::get_size but the dimensions are inaccurate. Investigate.
+	texture::info info = txt.get_info();
+
+	if(info.w == 0) {
 		DBG_GUI_D << "Text: Rendering '" << text
 				  << "' resulted in an empty canvas, leave.\n";
 		return;
 	}
 
 	wfl::map_formula_callable local_variables(variables);
-	local_variables.add("text_width", wfl::variant(surf->w));
-	local_variables.add("text_height", wfl::variant(surf->h));
+	local_variables.add("text_width", wfl::variant(info.w));
+	local_variables.add("text_height", wfl::variant(info.h));
 	/*
 		std::cerr << "Text: drawing text '" << text
 			<< " maximum width " << maximum_width_(variables)
 			<< " maximum height " << maximum_height_(variables)
-			<< " text width " << surf->w
-			<< " text height " << surf->h;
+			<< " text width " << info.w
+			<< " text height " << info.h;
 	*/
 	///@todo formulas are now recalculated every draw cycle which is a
 	// bit silly unless there has been a resize. So to optimize we should
@@ -1325,51 +1333,58 @@ void text_shape::draw(surface& canvas,
 
 	DBG_GUI_D << "Text: drawing text '" << text << "' drawn from " << x << ','
 			  << y << " width " << w << " height " << h << " canvas size "
-			  << canvas->w << ',' << canvas->h << ".\n";
+			  << canvas_w << ',' << canvas_h << ".\n";
 
-	VALIDATE(static_cast<int>(x) < canvas->w && static_cast<int>(y) < canvas->h,
+	VALIDATE(static_cast<int>(x) < canvas_w && static_cast<int>(y) < canvas_h,
 			 _("Text doesn't start on canvas."));
 
 	// A text might be to long and will be clipped.
-	if(surf->w > static_cast<int>(w)) {
+	if(info.w > static_cast<int>(w)) {
 		WRN_GUI_D << "Text: text is too wide for the "
 					 "canvas and will be clipped.\n";
 	}
 
-	if(surf->h > static_cast<int>(h)) {
+	if(info.h > static_cast<int>(h)) {
 		WRN_GUI_D << "Text: text is too high for the "
 					 "canvas and will be clipped.\n";
 	}
 
-	SDL_Rect dst = sdl::create_rect(x, y, canvas->w, canvas->h);
-	blit_surface(surf, nullptr, canvas, &dst);
+	SDL_Rect dst = sdl::create_rect(x, y, info.w, info.h);
+
+	CVideo::get_singleton().render_copy(txt, nullptr, &dst);
 }
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
 
 canvas::canvas()
 	: shapes_()
+	, draw_func_(nullptr)
 	, blur_depth_(0)
 	, w_(0)
 	, h_(0)
-	, canvas_()
-	, renderer_(nullptr)
+	, texture_(nullptr)
+	, renderer_(CVideo::get_singleton().get_renderer())
 	, variables_()
 	, functions_()
 	, is_dirty_(true)
+	, size_changed_(true)
+	, cache_invalidated_(false)
 {
 }
 
 canvas::canvas(canvas&& c)
 	: shapes_(std::move(c.shapes_))
+	, draw_func_(c.draw_func_)
 	, blur_depth_(c.blur_depth_)
 	, w_(c.w_)
 	, h_(c.h_)
-	, canvas_(std::move(c.canvas_))
+	, texture_(std::move(c.texture_))
 	, renderer_(c.renderer_)
 	, variables_(c.variables_)
 	, functions_(c.functions_)
 	, is_dirty_(c.is_dirty_)
+	, size_changed_(c.size_changed_)
+	, cache_invalidated_(c.cache_invalidated_)
 {
 	// Needed to ensure the other object doesn't destroy our software renderer prematurely.
 	c.renderer_ = nullptr;
@@ -1377,13 +1392,13 @@ canvas::canvas(canvas&& c)
 
 canvas::~canvas()
 {
-	SDL_DestroyRenderer(renderer_);
+	SDL_SetRenderTarget(renderer_, nullptr);
 }
 
 void canvas::draw(const bool force)
 {
 	log_scope2(log_gui_draw, "Canvas: drawing.");
-	if(!is_dirty_ && !force) {
+	if(!is_dirty_ && !force && !texture_.null()) {
 		DBG_GUI_D << "Canvas: nothing to draw.\n";
 		return;
 	}
@@ -1394,39 +1409,100 @@ void canvas::draw(const bool force)
 		variables_.add("height", wfl::variant(h_));
 	}
 
-	if(!canvas_.null()) {
-		DBG_GUI_D << "Canvas: use cached canvas.\n";
-	} else {
-		// create surface
-		DBG_GUI_D << "Canvas: create new empty canvas.\n";
-		canvas_.assign(create_neutral_surface(w_, h_));
+	// Do we have a custom drawing function?
+	const bool have_custom_draw = draw_func_ != nullptr;
+
+	// If cached texture is null or size has changed, throw it out and create a new one.
+	const bool do_texture_reset = !texture_ || size_changed_;
+
+	// Reset texture, if applicable.
+	if(do_texture_reset) {
+		DBG_GUI_D << "Canvas: resetting canvas.\n";
+
+		texture_.reset(w_, h_, SDL_TEXTUREACCESS_TARGET);
+
+		size_changed_ = false;
 	}
 
-	SDL_DestroyRenderer(renderer_);
+	// Something went wrong! Bail! The texture ctor will print the error if applicable.
+	if(!texture_) {
+		return;
+	}
 
-	renderer_ = SDL_CreateSoftwareRenderer(canvas_);
-	SDL_SetRenderDrawBlendMode(renderer_, SDL_BLENDMODE_BLEND);
+	// Set the render target. *Must* be called after the above block in case the texture's
+	// been recreated or else the game will crash upon trying to write to a null texture.
+	render_target_setter target_setter(texture_);
 
-	// draw items
+	// Clear the texture, if applicable. *Must* be called after setting the render target
+	// since SDL_RenderClear operates on the current target - in this case the canvas texture.
+	// Calling it prior would clear the screen.
+	//
+	// There are three cases in which this should happen:
+	//
+	// - The texture was reset:
+	//   This prevents weird graphics bleed-through with certain driver configurations.
+	//
+	// - The cache was invalidated:
+	//   This means we're drawing all the canvas shapes, so we want a clean texture. Since
+	//   drawn shapes are removed from drawing queue once they've been rendered, only clearing
+	//   the texture if this is true allows subsequently added shapes to be drawn on top of
+	//   the already-rendered ones.
+	//
+	// - A custom drawing function was set:
+	//   Custom drawing functions don't use shapes, so we always want a clean texture prior
+	//   to calling those.
+	if(do_texture_reset || cache_invalidated_ || have_custom_draw) {
+		set_draw_color(renderer_, 0, 0, 0, 0);
+
+		SDL_RenderClear(renderer_); // TODO: move to its own wrapper.
+	}
+
+	// If we have a custom drawing function, call it now and exit.
+	if(have_custom_draw) {
+		draw_func_(texture_);
+
+		set_is_dirty(false);
+		return;
+	}
+
+	// If the cache was invalidated, restore all the available shapes from the drawn drawn cache.
+	if(cache_invalidated_) {
+		if(shapes_.empty()) {
+			shapes_.swap(drawn_shapes_);
+		} else {
+			std::copy(drawn_shapes_.begin(), drawn_shapes_.end(), std::inserter(shapes_, shapes_.begin()));
+			drawn_shapes_.clear();
+		}
+	}
+
+	// Draw shapes.
 	for(auto& shape : shapes_) {
 		lg::scope_logger inner_scope_logging_object__(log_gui_draw, "Canvas: draw shape.");
 
-		shape->draw(canvas_, renderer_, variables_);
+		shape->draw(w_, h_, renderer_, variables_);
 	}
 
 	// The shapes have been drawn and the draw result has been cached. Clear the list.
 	std::copy(shapes_.begin(), shapes_.end(), std::back_inserter(drawn_shapes_));
 	shapes_.clear();
 
-	SDL_RenderPresent(renderer_);
-
-	is_dirty_ = false;
+	set_is_dirty(false);
 }
 
-void canvas::blit(surface& surf, SDL_Rect rect)
+void canvas::render()
 {
+	/**
+	 * @note Both the clip rect and viewport should be set before this function is called.
+	 * The clip rect ensures the canvas texture is cropped appropriately, and the viewport sets the
+	 * origin for all the drawing operations, as well as specifying the area of the screen to which
+	 * this canvas applies.
+	 */
+
+	// Update the canvas texture, if necessary.
 	draw();
 
+	// TODO: reenable. Need a shader.
+#if 0
 	if(blur_depth_) {
 		/*
 		 * If the surf is the video surface the blurring seems to stack, this
@@ -1443,8 +1519,10 @@ void canvas::blit(surface& surf, SDL_Rect rect)
 			sdl_blit(s, nullptr, surf, &r);
 		}
 	}
+#endif
 
-	sdl_blit(canvas_, nullptr, surf, &rect);
+	// Copy the entire texture to the full viewport.
+	CVideo::get_singleton().render_copy(texture_);
 }
 
 void canvas::parse_cfg(const config& cfg)
@@ -1504,15 +1582,13 @@ void canvas::clear_shapes(const bool force)
 	drawn_shapes_.erase(iter, drawn_shapes_.end());
 }
 
-void canvas::invalidate_cache()
+void canvas::update_size(unsigned int& value, unsigned int new_value)
 {
-	canvas_.assign(nullptr);
+	if(value != new_value) {
+		value = new_value;
 
-	if(shapes_.empty()) {
-		shapes_.swap(drawn_shapes_);
-	} else {
-		std::copy(drawn_shapes_.begin(), drawn_shapes_.end(), std::inserter(shapes_, shapes_.begin()));
-		drawn_shapes_.clear();
+		size_changed_ = true;
+		set_is_dirty(true);
 	}
 }
 

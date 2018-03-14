@@ -60,7 +60,6 @@ attack::attack(size_t team_index, bool hidden, unit& u, const map_location& targ
 	attack_movement_cost_(get_unit()->attacks()[weapon_choice_].movement_used()),
 	temp_movement_subtracted_(0)
 {
-	this->init();
 }
 
 attack::attack(const config& cfg, bool hidden)
@@ -80,34 +79,15 @@ attack::attack(const config& cfg, bool hidden)
 
 	// Construct attack_movement_cost_
 	attack_movement_cost_ = get_unit()->attacks()[weapon_choice_].movement_used();
-
-	this->init();
-}
-
-void attack::init()
-{
-	display::get_singleton()->invalidate(target_hex_);
 }
 
 attack::~attack()
 {
-	invalidate();
 }
 
 void attack::accept(visitor& v)
 {
 	v.visit(shared_from_this());
-}
-
-/* private */
-void attack::invalidate()
-{
-	if(display::get_singleton())
-	{
-		//invalidate dest and target hex so attack indicator is properly cleared
-		display::get_singleton()->invalidate(get_dest_hex());
-		display::get_singleton()->invalidate(target_hex_);
-	}
 }
 
 void attack::execute(bool& success, bool& complete)
@@ -192,7 +172,7 @@ void attack::draw_hex(const map_location& hex)
 	{
 		//@todo: replace this by either the use of transparency + LAYER_ATTACK_INDICATOR,
 		//or a dedicated layer
-		const display::drawing_layer layer = display::LAYER_FOOTSTEPS;
+		const drawing_queue::layer layer = drawing_queue::LAYER_FOOTSTEPS;
 
 		//calculate direction (valid for both hexes)
 		std::string direction_text = map_location::write_direction(
@@ -203,16 +183,16 @@ void attack::draw_hex(const map_location& hex)
 			int xpos = display::get_singleton()->get_location_x(get_dest_hex());
 			int ypos = display::get_singleton()->get_location_y(get_dest_hex());
 
-			display::get_singleton()->drawing_buffer_add(layer, get_dest_hex(), xpos, ypos,
-					image::get_image("whiteboard/attack-indicator-src-" + direction_text + ".png", image::SCALED_TO_HEX));
+			display::get_singleton()->drawing_queue_add(layer, get_dest_hex(), xpos, ypos,
+					image::get_image("whiteboard/attack-indicator-src-" + direction_text + ".png"));
 		}
 		else if (hex == target_hex_) //add symbol to defender hex
 		{
-			int xpos = display::get_singleton()->get_location_x(target_hex_);
-			int ypos = display::get_singleton()->get_location_y(target_hex_);
+			//int xpos = display::get_singleton()->get_location_x(target_hex_);
+			//int ypos = display::get_singleton()->get_location_y(target_hex_);
 
-			display::get_singleton()->drawing_buffer_add(layer, target_hex_, xpos, ypos,
-					image::get_image("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::SCALED_TO_HEX));
+			//display::get_singleton()->drawing_queue_add(layer, target_hex_, xpos, ypos,
+			//		image::get_texture("whiteboard/attack-indicator-dst-" + direction_text + ".png"));
 		}
 	}
 }
@@ -220,7 +200,6 @@ void attack::draw_hex(const map_location& hex)
 void attack::redraw()
 {
 	move::redraw();
-	display::get_singleton()->invalidate(target_hex_);
 }
 
 action::error attack::check_validity() const

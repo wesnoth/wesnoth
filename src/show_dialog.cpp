@@ -144,8 +144,8 @@ void dialog_frame::handle_window_event(const SDL_Event& event) {
 	}
 }
 
-void dialog_frame::handle_event(const SDL_Event& event) {
-
+void dialog_frame::handle_event(const SDL_Event& /*event*/) {
+#if 0
 	if (event.type == DRAW_ALL_EVENT) {
 		set_dirty();
 
@@ -155,10 +155,7 @@ void dialog_frame::handle_event(const SDL_Event& event) {
 			}
 		}
 	}
-
-	if (event.type == DRAW_EVENT || event.type == DRAW_ALL_EVENT) {
-		draw();
-	}
+#endif
 }
 
 int dialog_frame::bottom_padding() const {
@@ -324,7 +321,7 @@ void dialog_frame::draw_background()
 
 SDL_Rect dialog_frame::draw_title(CVideo* video)
 {
-	SDL_Rect rect = CVideo::get_singleton().screen_area();
+	SDL_Rect rect = video->screen_area();
 	return font::draw_text(video, rect, font::SIZE_TITLE, font::TITLE_COLOR,
 	                       title_, dim_.title.x, dim_.title.y, false, TTF_STYLE_NORMAL);
 }

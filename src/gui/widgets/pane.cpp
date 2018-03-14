@@ -186,25 +186,15 @@ void pane::layout_initialize(const bool full_initialization)
 }
 
 void
-pane::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+pane::impl_draw_children(int x_offset, int y_offset)
 {
 	DBG_GUI_D << LOG_HEADER << '\n';
 
 	for(auto & item : items_)
 	{
 		if(item.item_grid->get_visible() != widget::visibility::invisible) {
-			item.item_grid->draw_children(frame_buffer, x_offset, y_offset);
+			item.item_grid->draw_children(x_offset, y_offset);
 		}
-	}
-}
-
-void pane::child_populate_dirty_list(window& caller,
-									  const std::vector<widget*>& call_stack)
-{
-	for(auto & item : items_)
-	{
-		std::vector<widget*> child_call_stack = call_stack;
-		item.item_grid->populate_dirty_list(caller, child_call_stack);
 	}
 }
 

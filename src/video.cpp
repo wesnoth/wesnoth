@@ -19,8 +19,11 @@
 #include "font/sdl_ttf.hpp"
 #include "image.hpp"
 #include "log.hpp"
+#include "ogl/utils.hpp"
 #include "preferences/general.hpp"
 #include "sdl/point.hpp"
+#include "sdl/render_utils.hpp"
+#include "sdl/texture.hpp"
 #include "sdl/userevent.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/window.hpp"
@@ -55,35 +58,16 @@ draw_layering::draw_layering(const bool auto_join)
 draw_layering::~draw_layering()
 {
 	draw_layers.remove(this);
-
-	video2::trigger_full_redraw();
 }
 
-void trigger_full_redraw()
-{
-	SDL_Event event;
-	event.type = SDL_WINDOWEVENT;
-	event.window.event = SDL_WINDOWEVENT_RESIZED;
-	event.window.data1 = (*frameBuffer).h;
-	event.window.data2 = (*frameBuffer).w;
-
-	for(const auto& layer : draw_layers) {
-		layer->handle_window_event(event);
-	}
-
-	SDL_Event drawEvent;
-	sdl::UserEvent data(DRAW_ALL_EVENT);
-
-	drawEvent.type = DRAW_ALL_EVENT;
-	drawEvent.user = data;
-	SDL_FlushEvent(DRAW_ALL_EVENT);
-	SDL_PushEvent(&drawEvent);
-}
 
 } // video2
 
 CVideo::CVideo(FAKE_TYPES type)
 	: window()
+#ifdef USE_GL_RENDERING
+	, gl_context()
+#endif
 	, fake_screen_(false)
 	, help_string_(0)
 	, updated_locked_(0)
@@ -145,16 +129,6 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
 		case SDL_WINDOWEVENT_RESTORED:
 		case SDL_WINDOWEVENT_SHOWN:
 		case SDL_WINDOWEVENT_EXPOSED:
-			// if(display::get_singleton())
-			// display::get_singleton()->redraw_everything();
-			SDL_Event drawEvent;
-			sdl::UserEvent data(DRAW_ALL_EVENT);
-
-			drawEvent.type = DRAW_ALL_EVENT;
-			drawEvent.user = data;
-
-			SDL_FlushEvent(DRAW_ALL_EVENT);
-			SDL_PushEvent(&drawEvent);
 			break;
 		}
 	}
@@ -162,60 +136,26 @@ void CVideo::video_event_handler::handle_window_event(const SDL_Event& event)
 
 void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rect* clip_rect)
 {
-	surface& target(getSurface());
-	SDL_Rect dst{x, y, 0, 0};
+	texture txt(surf);
 
-	const clip_rect_setter clip_setter(target, clip_rect, clip_rect != nullptr);
-	sdl_blit(surf, srcrect, target, &dst);
+	render_clip_rect_setter crs(clip_rect);
+
+	SDL_Rect dst {x, y, surf->w, surf->h};
+	render_copy(txt, srcrect, &dst);
 }
 
 void CVideo::make_fake()
 {
 	fake_screen_ = true;
-	refresh_rate_ = 1;
-
-#if SDL_VERSION_ATLEAST(2, 0, 5)
-	frameBuffer = SDL_CreateRGBSurfaceWithFormat(0, 16, 16, 24, SDL_PIXELFORMAT_BGR888);
-#else
-	frameBuffer = SDL_CreateRGBSurface(0, 16, 16, 24, 0xFF0000, 0xFF00, 0xFF, 0);
-#endif
 
 	image::set_pixel_format(frameBuffer->format);
 }
 
-void CVideo::make_test_fake(const unsigned width, const unsigned height)
+void CVideo::make_test_fake()
 {
-#if SDL_VERSION_ATLEAST(2, 0, 5)
-	frameBuffer = SDL_CreateRGBSurfaceWithFormat(0, width, height, 32, SDL_PIXELFORMAT_BGR888);
-#else
-	frameBuffer = SDL_CreateRGBSurface(0, width, height, 32, 0xFF0000, 0xFF00, 0xFF, 0);
-#endif
-
-	image::set_pixel_format(frameBuffer->format);
-
 	fake_interactive = true;
-	refresh_rate_ = 1;
 }
 
-void CVideo::update_framebuffer()
-{
-	if(!window) {
-		return;
-	}
-
-	surface fb = SDL_GetWindowSurface(*window);
-	if(!frameBuffer) {
-		frameBuffer = fb;
-	} else {
-		if(sdl_get_version() >= version_info(2, 0, 6)) {
-			// Because SDL has already freed the old framebuffer,
-			// ensure that we won't attempt to free it.
-			frameBuffer.clear_without_free();
-		}
-
-		frameBuffer.assign(fb);
-	}
-}
 
 void CVideo::init_window()
 {
@@ -232,6 +172,9 @@ void CVideo::init_window()
 
 	// Add any more default flags here
 	window_flags |= SDL_WINDOW_RESIZABLE;
+#ifdef USE_GL_RENDERING
+	video_flags |= SDL_WINDOW_OPENGL;
+#endif
 
 	if(preferences::fullscreen()) {
 		window_flags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
@@ -240,22 +183,21 @@ void CVideo::init_window()
 	}
 
 	// Initialize window
-	window.reset(new sdl::window("", x, y, w, h, window_flags, SDL_RENDERER_SOFTWARE));
+	window.reset(new sdl::window("", x, y, w, h, window_flags, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE));
 
 	std::cerr << "Setting mode to " << w << "x" << h << std::endl;
 
 	window->set_minimum_size(preferences::min_window_width, preferences::min_window_height);
 
-	SDL_DisplayMode currentDisplayMode;
-	SDL_GetCurrentDisplayMode(window->get_display_index(), &currentDisplayMode);
-	refresh_rate_ = currentDisplayMode.refresh_rate != 0 ? currentDisplayMode.refresh_rate : 60;
+#ifdef USE_GL_RENDERING
+	// Initialize an OpenGL context for the window.
+	gl_context.reset(new gl::context(window.get()));
+
+	gl::clear_screen();
+	render_screen();
+#endif
 
 	event_handler_.join_global();
-
-	update_framebuffer();
-	if(frameBuffer) {
-		image::set_pixel_format(frameBuffer->format);
-	}
 }
 
 void CVideo::set_window_mode(const MODE_EVENT mode, const point& size)
@@ -285,11 +227,6 @@ void CVideo::set_window_mode(const MODE_EVENT mode, const point& size)
 		window->set_size(size.x, size.y);
 		window->center();
 		break;
-	}
-
-	update_framebuffer();
-	if(frameBuffer) {
-		image::set_pixel_format(frameBuffer->format);
 	}
 }
 
@@ -331,7 +268,7 @@ void CVideo::delay(unsigned int milliseconds)
 	}
 }
 
-void CVideo::flip()
+void CVideo::render_screen()
 {
 	if(fake_screen_ || flip_locked_ > 0) {
 		return;
@@ -340,6 +277,39 @@ void CVideo::flip()
 	if(window) {
 		window->render();
 	}
+}
+
+void CVideo::render_copy(
+		const texture& txt, SDL_Rect* src_rect, SDL_Rect* dst_rect, const bool flip_h, const bool flip_v)
+{
+	if(!window || txt.null()) {
+		return;
+	}
+
+	// If no additional data was provided, render immediately.
+	if(!flip_h && !flip_v) {
+		SDL_RenderCopy(*window, txt, src_rect, dst_rect);
+		return;
+	}
+
+	// Calculate flipping mode.
+	int fmode = SDL_FLIP_NONE;
+
+	if(flip_h && flip_v) {
+		fmode = SDL_FLIP_HORIZONTAL | SDL_FLIP_VERTICAL;
+	} else if(flip_h) {
+		fmode = SDL_FLIP_HORIZONTAL;
+	} else if(flip_v) {
+		fmode = SDL_FLIP_VERTICAL;
+	}
+
+	SDL_RendererFlip flip_mode = static_cast<SDL_RendererFlip>(fmode);
+
+	// TODO: add handling of rotations.
+	static const double rotate_angle = 0;
+	static const SDL_Point* center = nullptr;
+
+	SDL_RenderCopyEx(*window, txt, src_rect, dst_rect, rotate_angle, center, flip_mode);
 }
 
 void CVideo::lock_updates(bool value)
@@ -380,6 +350,15 @@ void CVideo::clear_screen()
 sdl::window* CVideo::get_window()
 {
 	return window.get();
+}
+
+SDL_Renderer* CVideo::get_renderer()
+{
+	if(!window) {
+		return nullptr;
+	}
+
+	return *window;
 }
 
 bool CVideo::window_has_flags(uint32_t flags) const
@@ -466,6 +445,7 @@ std::vector<point> CVideo::get_available_resolutions(const bool include_current)
 	return result;
 }
 
+// TODO: REMOVE ASAP
 surface& CVideo::getSurface()
 {
 	return frameBuffer;
@@ -540,10 +520,6 @@ void CVideo::set_fullscreen(bool ison)
 		}
 
 		set_window_mode(mode, res);
-
-		if(display* d = display::get_singleton()) {
-			d->redraw_everything();
-		}
 	}
 
 	// Change the config value.
@@ -567,10 +543,6 @@ bool CVideo::set_resolution(const point& resolution)
 	}
 
 	set_window_mode(TO_RES, resolution);
-
-	if(display* d = display::get_singleton()) {
-		d->redraw_everything();
-	}
 
 	// Change the saved values in preferences.
 	preferences::_set_resolution(resolution);

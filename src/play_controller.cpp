@@ -52,6 +52,7 @@
 #include "save_blocker.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "scripting/plugins/context.hpp"
+#include "show_dialog.hpp" //gui::in_dialog
 #include "sound.hpp"
 #include "soundsource.hpp"
 #include "statistics.hpp"
@@ -173,6 +174,8 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	resources::classification = &saved_game_.classification();
 
 	persist_.start_transaction();
+
+	join();
 
 	game_config::add_color_info(level);
 	hotkey::deactivate_all_scopes();
@@ -498,10 +501,6 @@ void play_controller::init_side_end()
 	if (current_side() == 1 || !init_side_done_now_)
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 
-	if (!is_skipping_replay()){
-		gui_->invalidate_all();
-	}
-
 	if (!is_skipping_replay() && current_team().get_scroll_to_leader() && !map_start_.valid()){
 		gui_->scroll_to_leader(current_side(), game_display::ONSCREEN,false);
 	}
@@ -582,39 +581,8 @@ bool play_controller::enemies_visible() const
 	return false;
 }
 
-void play_controller::enter_textbox()
-{
-	if(menu_handler_.get_textbox().active() == false) {
-		return;
-	}
-
-	const std::string str = menu_handler_.get_textbox().box()->text();
-	const unsigned int team_num = current_side();
-	events::mouse_handler& mousehandler = mouse_handler_;
-
-	switch(menu_handler_.get_textbox().mode()) {
-	case gui::TEXTBOX_SEARCH:
-		menu_handler_.do_search(str);
-		menu_handler_.get_textbox().close(*gui_);
-		break;
-	case gui::TEXTBOX_MESSAGE:
-		menu_handler_.do_speak();
-		menu_handler_.get_textbox().close(*gui_);  //need to close that one after executing do_speak() !
-		break;
-	case gui::TEXTBOX_COMMAND:
-		menu_handler_.get_textbox().close(*gui_);
-		menu_handler_.do_command(str);
-		break;
-	case gui::TEXTBOX_AI:
-		menu_handler_.get_textbox().close(*gui_);
-		menu_handler_.do_ai_formula(str, team_num, mousehandler);
-		break;
-	default:
-		menu_handler_.get_textbox().close(*gui_);
-		ERR_DP << "unknown textbox mode" << std::endl;
-	}
-}
-
+// TODO: implement in GUI2 command console dialog
+#if 0
 void play_controller::tab()
 {
 	gui::TEXTBOX_MODE mode = menu_handler_.get_textbox().mode();
@@ -674,6 +642,7 @@ void play_controller::tab()
 
 	menu_handler_.get_textbox().tab(dictionary);
 }
+#endif
 
 team& play_controller::current_team()
 {
@@ -751,22 +720,6 @@ game_classification& play_controller::get_classification()
 game_display& play_controller::get_display()
 {
 	return *gui_;
-}
-
-bool play_controller::have_keyboard_focus()
-{
-	return !menu_handler_.get_textbox().active();
-}
-
-void play_controller::process_focus_keydown_event(const SDL_Event& event)
-{
-	if(event.key.keysym.sym == SDLK_ESCAPE) {
-		menu_handler_.get_textbox().close(*gui_);
-	} else if(event.key.keysym.sym == SDLK_TAB) {
-		tab();
-	} else if(event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER) {
-		enter_textbox();
-	}
 }
 
 void play_controller::process_keydown_event(const SDL_Event& event)
@@ -931,10 +884,6 @@ void play_controller::check_victory()
 
 	gamestate().board_.check_victory(continue_level, found_player, found_network_player, invalidate_all, not_defeated, remove_from_carryover_on_defeat_);
 
-	if (invalidate_all) {
-		gui_->invalidate_all();
-	}
-
 	if (continue_level) {
 		return ;
 	}
@@ -994,7 +943,6 @@ void play_controller::update_gui_to_player(const int team_index, const bool obse
 {
 	gui_->set_team(team_index, observe);
 	gui_->recalculate_minimap();
-	gui_->invalidate_all();
 }
 
 void play_controller::do_autosave()
@@ -1133,8 +1081,6 @@ std::set<std::string> play_controller::all_players() const
 
 void play_controller::play_side()
 {
-	//check for team-specific items in the scenario
-	gui_->parse_team_overlays();
 	do {
 		update_viewing_player();
 		{

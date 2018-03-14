@@ -249,14 +249,6 @@ private:
 	void fold_internal();
 	void unfold_internal();
 
-	/**
-	 * "Inherited" from widget.
-	 *
-	 * This version needs to call its children, which are it's child nodes.
-	 */
-	void impl_populate_dirty_list(window& caller,
-								  const std::vector<widget*>& call_stack);
-
 	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
 
@@ -283,9 +275,7 @@ private:
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer,
-									int x_offset,
-									int y_offset) override;
+	virtual void impl_draw_children(int x_offset, int y_offset) override;
 
 	// FIXME rename to icon
 	void signal_handler_left_button_click(const event::ui_event event);

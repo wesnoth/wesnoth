@@ -194,27 +194,17 @@ void container_base::set_visible_rectangle(const SDL_Rect& rectangle)
 	grid_.set_visible_rectangle(rectangle);
 }
 
-void container_base::impl_draw_children(surface& frame_buffer,
-									 int x_offset,
-									 int y_offset)
+void container_base::impl_draw_children(int x_offset, int y_offset)
 {
 	assert(get_visible() == widget::visibility::visible
 		   && grid_.get_visible() == widget::visibility::visible);
 
-	grid_.draw_children(frame_buffer, x_offset, y_offset);
+	grid_.draw_children(x_offset, y_offset);
 }
 
 void container_base::layout_children()
 {
 	grid_.layout_children();
-}
-
-void
-container_base::child_populate_dirty_list(window& caller,
-									   const std::vector<widget*>& call_stack)
-{
-	std::vector<widget*> child_call_stack = call_stack;
-	grid_.populate_dirty_list(caller, child_call_stack);
 }
 
 widget* container_base::find_at(const point& coordinate,
@@ -251,8 +241,6 @@ void container_base::set_active(const bool active)
 	if(active == get_active()) {
 		return;
 	}
-
-	set_is_dirty(true);
 
 	set_self_active(active);
 }

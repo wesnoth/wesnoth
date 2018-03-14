@@ -112,21 +112,14 @@ void matrix::layout_initialize(const bool full_initialization)
 }
 
 void
-matrix::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+matrix::impl_draw_children(int x_offset, int y_offset)
 {
-	content_.draw_children(frame_buffer, x_offset, y_offset);
+	content_.draw_children(x_offset, y_offset);
 }
 
 void matrix::layout_children()
 {
 	content_.layout_children();
-}
-
-void matrix::child_populate_dirty_list(window& caller,
-										const std::vector<widget*>& call_stack)
-{
-	std::vector<widget*> child_call_stack = call_stack;
-	content_.populate_dirty_list(caller, child_call_stack);
 }
 
 void matrix::request_reduce_width(const unsigned /*maximum_width*/)

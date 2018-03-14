@@ -23,7 +23,7 @@
 #include "config.hpp"
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
-#include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
 
 namespace wfl { class variant; }
 
@@ -61,14 +61,15 @@ public:
 		/**
 		 * Draws the canvas.
 		 *
-		 * @param canvas          The resulting image will be blitted upon this
-		 *                        canvas.
 		 * @param variables       The canvas can have formulas in it's
 		 *                        definition, this parameter contains the values
 		 *                        for these formulas.
 		 */
-		virtual void draw(surface& canvas, SDL_Renderer* renderer,
-		                  wfl::map_formula_callable& variables) = 0;
+		virtual void draw(
+				const int canvas_w,
+				const int canvas_h,
+				SDL_Renderer* renderer,
+				wfl::map_formula_callable& variables) = 0;
 
 		bool immutable() const
 		{
@@ -92,6 +93,8 @@ public:
 
 	~canvas();
 
+	using draw_func_t = std::function<void(texture&)>;
+
 	/**
 	 * Draws the canvas.
 	 *
@@ -101,15 +104,17 @@ public:
 	void draw(const bool force = false);
 
 	/**
-	 * Blits the canvas unto another surface.
+	 * Copies the canvas texture to the screen renderer.
 	 *
-	 * It makes sure the image on the canvas is up to date. Also executes the
-	 * pre-blitting functions.
-	 *
-	 * @param surf                The surface to blit upon.
-	 * @param rect                The place to blit to.
+	 * This will re-render the canvas texture if necessary (ie, if marked dirty).
+	 * It also executes the pre-commit functions such as blurring (@todo: reenable).
 	 */
-	void blit(surface& surf, SDL_Rect rect);
+	void render();
+
+	void set_draw_function(draw_func_t func)
+	{
+		draw_func_ = func;
+	}
 
 	/**
 	 * Sets the config.
@@ -141,8 +146,7 @@ public:
 
 	void set_width(const unsigned width)
 	{
-		w_ = width;
-		set_is_dirty(true);
+		update_size(w_, width);
 		invalidate_cache();
 	}
 
@@ -153,19 +157,13 @@ public:
 
 	void set_height(const unsigned height)
 	{
-		h_ = height;
-		set_is_dirty(true);
+		update_size(h_, height);
 		invalidate_cache();
 	}
 
 	unsigned get_height() const
 	{
 		return h_;
-	}
-
-	surface& surf()
-	{
-		return canvas_;
 	}
 
 	void set_variable(const std::string& key, const wfl::variant& value)
@@ -188,6 +186,9 @@ private:
 	 * the cache needs to be invalidated. */
 	std::vector<shape_ptr> drawn_shapes_;
 
+	/** Optional custom drawing function. */
+	draw_func_t draw_func_;
+
 	/**
 	 * The depth of the blur to use in the pre committing.
 	 *
@@ -204,9 +205,10 @@ private:
 	/** Height of the canvas. */
 	unsigned h_;
 
-	/** The surface we draw all items on. */
-	surface canvas_;
+	/** The texture onto which items are drawn. */
+	texture texture_;
 
+	/** A pointer to the window renderer. */
 	SDL_Renderer* renderer_;
 
 	/** The variables of the canvas. */
@@ -217,6 +219,12 @@ private:
 
 	/** The dirty state of the canvas. */
 	bool is_dirty_;
+
+	/** Whether canvas dimensions changed. */
+	bool size_changed_;
+
+	/** Whether to completely clear the canvas texture of any previously drawn content. */
+	bool cache_invalidated_;
 
 	/**
 	 * Parses a config object.
@@ -231,7 +239,14 @@ private:
 	void parse_cfg(const config& cfg);
 
 	void clear_shapes(const bool force);
-	void invalidate_cache();
+
+	void invalidate_cache()
+	{
+		cache_invalidated_ = true;
+	}
+
+	/** Small helper to handle size variable update logic. */
+	void update_size(unsigned int& value, unsigned int new_value);
 };
 
 } // namespace gui2

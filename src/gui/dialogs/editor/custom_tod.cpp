@@ -270,18 +270,13 @@ void custom_tod::color_slider_callback(window& window)
 	current_tod.color.g = color_field_g_->get_widget_value(window);
 	current_tod.color.b = color_field_b_->get_widget_value(window);
 
-	update_tod_display(window);
+	update_tod_display();
 }
 
-void custom_tod::update_tod_display(window& window)
+void custom_tod::update_tod_display()
 {
 	display* disp = display::get_singleton();
 	assert(disp && "Display pointer is null!");
-
-	// Prevent a floating slice of window appearing alone over the
-	// theme UI sidebar after redrawing tiles and before we have a
-	// chance to redraw the rest of this window.
-	window.undraw();
 
 	// NOTE: We only really want to re-render the gamemap tiles here.
 	// Redrawing everything is a significantly more expensive task.
@@ -293,15 +288,6 @@ void custom_tod::update_tod_display(window& window)
 	// redraw_everything() instead.
 
 	disp->update_tod(&get_selected_tod());
-
-	// invalidate all tiles so they are redrawn with the new ToD tint next
-	disp->invalidate_all();
-
-	// redraw tiles
-	disp->draw(false);
-
-	// NOTE: revert to invalidate_layout if necessary to display the ToD mask image.
-	window.set_is_dirty(true);
 }
 
 void custom_tod::update_lawful_bonus(window& window)
@@ -332,7 +318,7 @@ void custom_tod::update_selected_tod_info(window& window)
 	const std::string new_index_str = formatter() << (current_tod_ + 1) << "/" << times_.size();
 	find_widget<label>(&window, "tod_number", false).set_label(new_index_str);
 
-	update_tod_display(window);
+	update_tod_display();
 }
 
 void custom_tod::copy_to_clipboard_callback(tod_attribute_getter getter)
@@ -340,9 +326,9 @@ void custom_tod::copy_to_clipboard_callback(tod_attribute_getter getter)
 	desktop::clipboard::copy_to_clipboard(getter(get_selected_tod()).second, false);
 }
 
-void custom_tod::post_show(window& window)
+void custom_tod::post_show(window& /*window*/)
 {
-	update_tod_display(window);
+	update_tod_display();
 
 	if(get_retval() == retval::OK) {
 		// TODO: save ToD

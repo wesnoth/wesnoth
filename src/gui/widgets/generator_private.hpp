@@ -826,7 +826,7 @@ public:
 	}
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset) override
+	virtual void impl_draw_children(int x_offset, int y_offset) override
 	{
 		assert(this->get_visible() == widget::visibility::visible);
 
@@ -836,17 +836,8 @@ public:
 			child* item = items_[index].get();
 
 			if(item->child_grid.get_visible() == widget::visibility::visible && item->shown) {
-				item->child_grid.draw_children(frame_buffer, x_offset, y_offset);
+				item->child_grid.draw_children(x_offset, y_offset);
 			}
-		}
-	}
-
-	/** See @ref widget::child_populate_dirty_list. */
-	virtual void child_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack) override
-	{
-		for(auto& item : items_) {
-			std::vector<widget*> child_call_stack = call_stack;
-			item->child_grid.populate_dirty_list(caller, child_call_stack);
 		}
 	}
 
@@ -983,7 +974,6 @@ private:
 	{
 		order_func_ = order;
 		order_dirty_ = true;
-		this->set_is_dirty(true);
 	}
 
 	struct calculate_order_helper

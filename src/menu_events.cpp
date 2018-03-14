@@ -40,6 +40,7 @@
 #include "game_state.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/chat_log.hpp"
+#include "gui/dialogs/command_console.hpp"
 #include "gui/dialogs/edit_label.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/file_dialog.hpp"
@@ -92,7 +93,6 @@ menu_handler::menu_handler(game_display* gui, play_controller& pc, const config&
 	: gui_(gui)
 	, pc_(pc)
 	, game_config_(game_config)
-	, textbox_info_()
 	, last_search_()
 	, last_search_hit_()
 {
@@ -130,11 +130,6 @@ std::vector<team>& menu_handler::teams() const
 const gamemap& menu_handler::map() const
 {
 	return gamestate().board_.map();
-}
-
-gui::floating_textbox& menu_handler::get_textbox()
-{
-	return textbox_info_;
 }
 
 void menu_handler::objectives()
@@ -199,8 +194,6 @@ void menu_handler::save_map()
 void menu_handler::preferences()
 {
 	gui2::dialogs::preferences_dialog::display(game_config_);
-	// Needed after changing fullscreen/windowed mode or display resolution
-	gui_->redraw_everything();
 }
 
 void menu_handler::show_chat_log()
@@ -220,11 +213,25 @@ void menu_handler::show_help()
 
 void menu_handler::speak()
 {
+#if 0
+	// TODO
+	const std::string check_prompt = has_friends()
+		? board().is_observer()
+			? _("Send to observers only")
+			: _("Send to allies only")
+		: "";
+#endif
+
+	gui2::dialogs::command_console::display(_("Message:"),
+		std::bind(&menu_handler::do_speak, this, _1));
+
+#if 0
 	textbox_info_.show(gui::TEXTBOX_MESSAGE, _("Message:"), has_friends()
 		? board().is_observer()
 			? _("Send to observers only")
 			: _("Send to allies only")
 		: "", preferences::message_private(), *gui_);
+#endif
 }
 
 void menu_handler::whisper()
@@ -952,13 +959,11 @@ void menu_handler::execute_gotos(mouse_handler& mousehandler, int side)
 void menu_handler::toggle_ellipses()
 {
 	preferences::set_ellipses(!preferences::ellipses());
-	gui_->invalidate_all();
 }
 
 void menu_handler::toggle_grid()
 {
 	preferences::set_grid(!preferences::grid());
-	gui_->invalidate_all();
 }
 
 void menu_handler::unit_hold_position(mouse_handler& mousehandler, int side_num)
@@ -966,7 +971,6 @@ void menu_handler::unit_hold_position(mouse_handler& mousehandler, int side_num)
 	const unit_map::iterator un = units().find(mousehandler.get_selected_hex());
 	if(un != units().end() && un->side() == side_num && un->movement_left() >= 0) {
 		un->toggle_hold_position();
-		gui_->invalidate(mousehandler.get_selected_hex());
 
 		mousehandler.set_current_paths(pathfind::paths());
 
@@ -981,7 +985,6 @@ void menu_handler::end_unit_turn(mouse_handler& mousehandler, int side_num)
 	const unit_map::iterator un = units().find(mousehandler.get_selected_hex());
 	if(un != units().end() && un->side() == side_num && un->movement_left() >= 0) {
 		un->toggle_user_end_turn();
-		gui_->invalidate(mousehandler.get_selected_hex());
 
 		mousehandler.set_current_paths(pathfind::paths());
 
@@ -999,15 +1002,17 @@ void menu_handler::search()
 		msg << " [" << last_search_ << "]";
 	}
 	msg << ':';
-	textbox_info_.show(gui::TEXTBOX_SEARCH, msg.str(), "", false, *gui_);
+
+	gui2::dialogs::command_console::display("", std::bind(&menu_handler::do_search, this, _1));
 }
 
-void menu_handler::do_speak()
+void menu_handler::do_speak(const std::string& message)
 {
 	// None of the two parameters really needs to be passed since the information belong to members of the class.
 	// But since it makes the called method more generic, it is done anyway.
-	chat_handler::do_speak(
-			textbox_info_.box()->text(), textbox_info_.check() != nullptr ? textbox_info_.check()->checked() : false);
+
+	// TODO: handle checkbox
+	chat_handler::do_speak(message, false);
 }
 
 void menu_handler::add_chat_message(const time_t& time,
@@ -1399,7 +1404,6 @@ void console_handler::do_refresh()
 	image::flush_cache();
 
 	menu_handler_.gui_->create_buttons();
-	menu_handler_.gui_->redraw_everything();
 }
 
 void console_handler::do_droid()
@@ -1438,7 +1442,6 @@ void console_handler::do_droid()
 		symbols["side"] = side_s;
 		command_failed(vgettext("Can't droid a local ai side: '$side'.", symbols));
 	}
-	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
 }
 
 void console_handler::do_idle()
@@ -1476,7 +1479,6 @@ void console_handler::do_idle()
 			}
 		}
 	}
-	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
 }
 
 void console_handler::do_theme()
@@ -1537,7 +1539,6 @@ void console_handler::do_control()
 	}
 
 	menu_handler_.request_control_change(side_num, player);
-	menu_handler_.textbox_info_.close(*(menu_handler_.gui_));
 }
 
 void console_handler::do_controller()
@@ -1917,18 +1918,15 @@ void console_handler::do_event()
 void console_handler::do_toggle_draw_coordinates()
 {
 	menu_handler_.gui_->set_draw_coordinates(!menu_handler_.gui_->get_draw_coordinates());
-	menu_handler_.gui_->invalidate_all();
 }
 void console_handler::do_toggle_draw_terrain_codes()
 {
 	menu_handler_.gui_->set_draw_terrain_codes(!menu_handler_.gui_->get_draw_terrain_codes());
-	menu_handler_.gui_->invalidate_all();
 }
 
 void console_handler::do_toggle_draw_num_of_bitmaps()
 {
 	menu_handler_.gui_->set_draw_num_of_bitmaps(!menu_handler_.gui_->get_draw_num_of_bitmaps());
-	menu_handler_.gui_->invalidate_all();
 }
 
 void console_handler::do_toggle_whiteboard()
@@ -1951,7 +1949,7 @@ void console_handler::do_whiteboard_options()
 	}
 }
 
-void menu_handler::do_ai_formula(const std::string& str, int side_num, mouse_handler& /*mousehandler*/)
+void menu_handler::do_ai_formula(const std::string& str, int side_num)
 {
 	try {
 		add_chat_message(time(nullptr), "wfl", 0, ai::manager::get_singleton().evaluate_command(side_num, str));
@@ -1963,7 +1961,8 @@ void menu_handler::do_ai_formula(const std::string& str, int side_num, mouse_han
 
 void menu_handler::user_command()
 {
-	textbox_info_.show(gui::TEXTBOX_COMMAND, translation::sgettext("prompt^Command:"), "", false, *gui_);
+	gui2::dialogs::command_console::display(translation::sgettext("prompt^Command:"),
+		std::bind(&menu_handler::do_command, this, _1));
 }
 
 void menu_handler::request_control_change(int side_num, const std::string& player)
@@ -1989,7 +1988,8 @@ void menu_handler::custom_command()
 void menu_handler::ai_formula()
 {
 	if(!pc_.is_networked_mp()) {
-		textbox_info_.show(gui::TEXTBOX_AI, translation::sgettext("prompt^Command:"), "", false, *gui_);
+		gui2::dialogs::command_console::display(translation::sgettext("prompt^Command:"),
+			std::bind(&menu_handler::do_ai_formula, this, _1, pc_.current_side()));
 	}
 }
 

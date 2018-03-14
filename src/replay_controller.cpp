@@ -76,7 +76,6 @@ replay_controller::replay_controller(play_controller& controller, bool control_v
 	}
 	controller_.get_display().get_theme().theme_reset_event().attach_handler(this);
 	controller_.get_display().create_buttons();
-	controller_.get_display().redraw_everything();
 }
 replay_controller::~replay_controller()
 {
@@ -85,7 +84,6 @@ replay_controller::~replay_controller()
 	}
 	controller_.get_display().get_theme().theme_reset_event().detach_handler(this);
 	controller_.get_display().create_buttons();
-	controller_.get_display().redraw_everything();
 	controller_.get_display().create_buttons();
 }
 void replay_controller::add_replay_theme()
@@ -96,9 +94,6 @@ void replay_controller::add_replay_theme()
 		if (const config &replay_theme_cfg = res.child("replay")) {
 			controller_.get_display().get_theme().modify(replay_theme_cfg);
 		}
-		//Make sure we get notified if the theme is redrawn completely. That way we have
-		//a chance to restore the replay controls of the theme as well.
-		controller_.get_display().invalidate_theme();
 	}
 }
 
@@ -112,9 +107,6 @@ void replay_controller::rebuild_replay_theme()
 			controller_.get_display().get_theme().modify(replay_theme_cfg);
 		}
 		controller_.get_display().get_theme().modify_label("time-icon", _ ("current local time"));
-		//Make sure we get notified if the theme is redrawn completely. That way we have
-		//a chance to restore the replay controls of the theme as well.
-		controller_.get_display().invalidate_theme();
 	}
 }
 
@@ -265,7 +257,6 @@ void replay_controller::update_gui()
 {
 	controller_.get_display().recalculate_minimap();
 	controller_.get_display().redraw_minimap();
-	controller_.get_display().invalidate_all();
 }
 
 void replay_controller::handle_generic_event(const std::string& name)
@@ -371,7 +362,6 @@ void replay_controller::replay_show_team1()
 void replay_controller::update_teams()
 {
 	update_viewing_player();
-	controller_.get_display().invalidate_all();
 	update_gui();
 }
 

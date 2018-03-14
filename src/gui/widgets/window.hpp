@@ -105,7 +105,7 @@ public:
 	 * @returns                   The close code of the window, predefined
 	 *                            values are listed in retval.
 	 */
-	int show(const bool restore = true, const unsigned auto_close_timeout = 0);
+	int show(const unsigned auto_close_timeout = 0);
 
 	/**
 	 * Shows the window as a tooltip.
@@ -146,22 +146,6 @@ public:
 	 * that event calls this routine. Don't call it manually.
 	 */
 	void draw();
-
-	/**
-	 * Undraws the window.
-	 */
-	void undraw();
-
-	/**
-	 * Adds an item to the dirty_list_.
-	 *
-	 * @param call_stack          The list of widgets traversed to get to the
-	 *                            dirty widget.
-	 */
-	void add_to_dirty_list(const std::vector<widget*>& call_stack)
-	{
-		dirty_list_.push_back(call_stack);
-	}
 
 	/** The status of the window. */
 	enum status {
@@ -391,8 +375,8 @@ public:
 	void set_variable(const std::string& key, const wfl::variant& value)
 	{
 		variables_.add(key, value);
-		set_is_dirty(true);
 	}
+
 	point get_linked_size(const std::string& linked_group_id) const
 	{
 		std::map<std::string, linked_size>::const_iterator it = linked_size_.find(linked_group_id);
@@ -475,14 +459,8 @@ private:
 	/** Avoid drawing the window.  */
 	bool suspend_drawing_;
 
-	/** Whether the window should undraw the window using restorer_ */
-	bool restore_;
-
 	/** Whether the window has other windows behind it */
 	bool is_toplevel_;
-
-	/** When the window closes this surface is used to undraw the window. */
-	surface restorer_;
 
 	/** Do we wish to place the widget automatically? */
 	const bool automatic_placement_;
@@ -639,22 +617,11 @@ private:
 	virtual const std::string& get_control_type() const override;
 
 	/**
-	 * The list with dirty items in the window.
-	 *
-	 * When drawing only the widgets that are dirty are updated. The draw()
-	 * function has more information about the dirty_list_.
-	 */
-	std::vector<std::vector<widget*>> dirty_list_;
-
-	/**
 	 * In how many consecutive frames the window has changed. This is used to
 	 * detect the situation where the title screen changes in every frame,
 	 * forcing all other windows to redraw everything all the time.
 	 */
 	unsigned int consecutive_changed_frames_ = 0u;
-
-	/** Schedules windows on top of us (if any) to redraw. */
-	void redraw_windows_on_top() const;
 
 	/**
 	 * Finishes the initialization of the grid.

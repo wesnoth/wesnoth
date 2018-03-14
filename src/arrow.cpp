@@ -29,7 +29,7 @@ static lg::log_domain log_arrows("arrows");
 #define DBG_ARR LOG_STREAM(debug, log_arrows)
 
 arrow::arrow(bool hidden)
-	: layer_(display::LAYER_ARROWS)
+	: layer_(drawing_queue::LAYER_ARROWS)
 	, color_("red")
 	, style_(STYLE_STANDARD)
 	, path_()
@@ -53,7 +53,6 @@ void arrow::hide()
 	hidden_ = true;
 
 	if(display* disp = display::get_singleton()) {
-		invalidate_arrow_path(path_);
 		disp->remove_arrow(*this);
 	}
 }
@@ -78,7 +77,6 @@ void arrow::set_path(const arrow_path_t& path)
 		update_symbols();
 		if(!hidden_)
 		{
-			invalidate_arrow_path(previous_path_);
 			notify_arrow_changed();
 		}
 	}
@@ -86,8 +84,6 @@ void arrow::set_path(const arrow_path_t& path)
 
 void arrow::reset()
 {
-	invalidate_arrow_path(previous_path_);
-	invalidate_arrow_path(path_);
 	previous_path_.clear();
 	path_.clear();
 	symbols_map_.clear();
@@ -138,8 +134,11 @@ void arrow::draw_hex(const map_location& hex)
 	if(path_contains(hex))
 	{
 		display* disp = display::get_singleton();
-		disp->render_image(disp->get_location_x(hex), disp->get_location_y(hex), layer_,
-					hex, image::get_image(symbols_map_[hex], image::SCALED_TO_ZOOM));
+		disp->render_scaled_to_zoom(
+			image::get_texture(symbols_map_[hex] /*, image::SCALED_TO_ZOOM*/),
+			disp->get_location_x(hex),
+			disp->get_location_y(hex)
+		);
 	}
 }
 
@@ -160,7 +159,6 @@ void arrow::update_symbols()
 	}
 
 	symbols_map_.clear();
-	invalidate_arrow_path(path_);
 
 	const std::string mods = "~RC(FF00FF>"+ color_ + ")"; //magenta to current color
 
@@ -278,15 +276,6 @@ void arrow::update_symbols()
 			image = image::locator(game_config::images::missing);
 		}
 		symbols_map_[*hex] = image;
-	}
-}
-
-void arrow::invalidate_arrow_path(const arrow_path_t& path)
-{
-	if(display* disp = display::get_singleton()) {
-		for(const map_location& loc : path) {
-			disp->invalidate(loc);
-		}
 	}
 }
 

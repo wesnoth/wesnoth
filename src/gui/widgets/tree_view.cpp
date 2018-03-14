@@ -98,17 +98,6 @@ void tree_view::clear()
 	resize_content(0, -content_grid()->get_size().y);
 }
 
-void
-tree_view::child_populate_dirty_list(window& caller,
-									  const std::vector<widget*>& call_stack)
-{
-	// Inherited.
-	scrollbar_container::child_populate_dirty_list(caller, call_stack);
-
-	assert(root_node_);
-	root_node_->impl_populate_dirty_list(caller, call_stack);
-}
-
 void tree_view::set_self_active(const bool /*active*/)
 {
 	/* DO NOTHING */
@@ -145,10 +134,7 @@ void tree_view::resize_content(const int width_modification,
 
 		// Set status.
 		need_layout_ = true;
-		// If the content grows assume it "overwrites" the old content.
-		if(width_modification < 0 || height_modification < 0) {
-			set_is_dirty(true);
-		}
+
 		horizontal_scrollbar_moved();
 		DBG_GUI_L << LOG_HEADER << " succeeded.\n";
 	} else {

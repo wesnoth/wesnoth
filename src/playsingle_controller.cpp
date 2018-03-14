@@ -28,12 +28,14 @@
 #include "game_events/pump.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/game_ui.hpp"
 #include "gui/dialogs/story_viewer.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "hotkey/hotkey_handler_sp.hpp"
 #include "log.hpp"
 #include "map/label.hpp"
 #include "map/map.hpp"
+#include "ogl/utils.hpp"
 #include "playturn.hpp"
 #include "random_deterministic.hpp"
 #include "replay_helper.hpp"
@@ -69,7 +71,6 @@ playsingle_controller::playsingle_controller(const config& level,
 	const config& game_config, const ter_data_cache & tdata, bool skip_replay)
 	: play_controller(level, state_of_game, game_config, tdata, skip_replay)
 	, cursor_setter_(cursor::NORMAL)
-	, textbox_info_()
 	, replay_sender_(*resources::recorder)
 	, network_reader_([this](config& cfg) {return receive_from_wesnothd(cfg);})
 	, turn_data_(replay_sender_, network_reader_)
@@ -239,6 +240,10 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 			gui2::dialogs::story_viewer::display(get_scenario_name(), cfg);
 		}
 	}
+
+	// FIXME
+	//gui2::dialogs::game_ui::display(gui_->video());
+
 	gui_->labels().read(level);
 
 	// Read sound sources
@@ -268,7 +273,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 		const bool is_victory = get_end_level_data_const().is_victory;
 
 		if(gamestate().gamedata_.phase() <= game_data::PRESTART) {
+#ifdef USE_GL_RENDERING
+			gl::clear_screen();
+#else
 			gui_->video().clear_screen();
+#endif
 		}
 
 		ai_testing::log_game_end();
@@ -423,7 +432,6 @@ void playsingle_controller::before_human_turn()
 void playsingle_controller::show_turn_dialog(){
 	if(preferences::turn_dialog() && !is_regular_game_end() ) {
 		blindfold b(*gui_, true); //apply a blindfold for the duration of this dialog
-		gui_->redraw_everything();
 		gui_->recalculate_minimap();
 		std::string message = _("It is now $name|’s turn");
 		utils::string_map symbols;
@@ -474,8 +482,6 @@ void playsingle_controller::linger()
 
 	// change the end-turn button text to its alternate label
 	gui_->get_theme().refresh_title2("button-endturn", "title2");
-	gui_->invalidate_theme();
-	gui_->redraw_everything();
 
 	// End all unit moves
 	gamestate().board_.set_all_units_user_end_turn();
@@ -495,8 +501,6 @@ void playsingle_controller::linger()
 
 	// revert the end-turn button text to its normal label
 	gui_->get_theme().refresh_title2("button-endturn", "title");
-	gui_->invalidate_theme();
-	gui_->redraw_everything();
 	gui_->set_game_mode(game_display::RUNNING);
 
 	LOG_NG << "ending end-of-scenario linger\n";
@@ -562,7 +566,6 @@ void playsingle_controller::play_ai_turn()
 	gui_->recalculate_minimap();
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
-	gui_->invalidate_all();
 }
 
 

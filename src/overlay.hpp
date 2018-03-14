@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "config.hpp"
 #include "halo.hpp"
 
 struct overlay

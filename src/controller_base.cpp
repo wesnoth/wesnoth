@@ -17,6 +17,7 @@
 
 #include "display.hpp"
 #include "events.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "log.hpp"
@@ -26,11 +27,13 @@
 #include "scripting/plugins/context.hpp"
 #include "show_dialog.hpp" //gui::in_dialog
 #include "soundsource.hpp"
+
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
 controller_base::controller_base(const config& game_config)
-	: game_config_(game_config)
+	: draw_layering(false)
+	, game_config_(game_config)
 	, key_()
 	, scrolling_(false)
 	, scroll_up_(false)
@@ -48,7 +51,17 @@ controller_base::~controller_base()
 
 void controller_base::handle_event(const SDL_Event& event)
 {
-	if(gui::in_dialog()) {
+	/* TODO: since GUI2 and the main game are now part of the same event context, there is some conflict
+	 * between the GUI2 and event handlers such as these. By design, the GUI2 sdl handler is always on top
+	 * of the handler queue, so its events are handled last. This means events here have a chance to fire
+	 * first. have_keyboard_focus currently returns false if a dialog open, but this is just as stopgap
+	 * measure. We need to figure out a better way to filter out events.
+	 */
+	//if(gui::in_dialog()) {
+	//	return;
+	//}
+
+	if(gui2::dialogs::loading_screen::displaying()) {
 		return;
 	}
 
@@ -56,6 +69,7 @@ void controller_base::handle_event(const SDL_Event& event)
 
 	switch(event.type) {
 	case SDL_TEXTINPUT:
+		// TODO: remove, not necessary anymore
 		if(have_keyboard_focus()) {
 			hotkey::key_event(event, get_hotkey_command_executor());
 		}
@@ -83,8 +97,6 @@ void controller_base::handle_event(const SDL_Event& event)
 			process_keydown_event(event);
 			hotkey::key_event(event, get_hotkey_command_executor());
 			process_keyup_event(event);
-		} else {
-			process_focus_keydown_event(event);
 		}
 		break;
 
@@ -151,7 +163,7 @@ void controller_base::keyup_listener::handle_event(const SDL_Event& event)
 
 bool controller_base::have_keyboard_focus()
 {
-	return true;
+	return !gui::in_dialog();
 }
 
 bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags, double x_axis, double y_axis)
@@ -245,7 +257,6 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	events::pump();
 	events::raise_process_event();
-	events::raise_draw_event();
 
 	// Update sound sources before scrolling
 	if(soundsource::manager* l = get_soundsource_man()) {
@@ -314,7 +325,8 @@ void controller_base::play_slice(bool is_delay_enabled)
 		scrolling_ = true;
 	}
 
-	// be nice when window is not visible	// NOTE should be handled by display instead, to only disable drawing
+	// be nice when window is not visible
+	// NOTE should be handled by display instead, to only disable drawing
 	if(is_delay_enabled && !CVideo::get_singleton().window_has_flags(SDL_WINDOW_SHOWN)) {
 		CVideo::delay(200);
 	}

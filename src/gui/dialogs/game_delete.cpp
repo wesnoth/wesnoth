@@ -62,8 +62,6 @@ static void set_dont_ask_again(const bool ask_again)
 
 game_delete::game_delete()
 {
-	set_restore(true);
-
 	register_bool(
 			"dont_ask_again", true, &get_dont_ask_again, &set_dont_ask_again);
 }

@@ -469,8 +469,7 @@ static void draw_numbers(const map_location& hex, side_actions::numbers_t number
 		color_t color = team::get_side_color(static_cast<int>(team_numbers[i]+1));
 		const double x_in_hex = x_origin + x_offset;
 		const double y_in_hex = y_origin + y_offset;
-		display::get_singleton()->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
-				number_text, font_size, color, x_in_hex, y_in_hex);
+		display::get_singleton()->draw_text_in_hex(hex, number_text, font_size, color, 0, x_in_hex, y_in_hex);
 		x_offset += x_offset_base;
 		y_offset += y_offset_base;
 	}
@@ -731,7 +730,6 @@ void manager::create_temp_move()
 				}
 
 				unit_display::move_unit(path, fake_unit.get_unit_ptr(), false); //get facing right
-				fake_unit->anim_comp().invalidate(*game_display::get_singleton());
 				fake_unit->set_location(*curr_itor);
 				fake_unit->anim_comp().set_ghosted(true);
 			}
@@ -741,9 +739,7 @@ void manager::create_temp_move()
 			prev_itor = curr_itor;
 		}
 	}
-	//in case path shortens on next step and one ghosted unit has to be removed
-	int ind = fake_units_.size() - 1;
-	fake_units_[ind]->anim_comp().invalidate(*game_display::get_singleton());
+
 	//toss out old arrows and fake units
 	move_arrows_.resize(turn+1);
 	fake_units_.resize(turn+1);
@@ -752,11 +748,6 @@ void manager::create_temp_move()
 void manager::erase_temp_move()
 {
 	move_arrows_.clear();
-	for(const fake_unit_ptr& tmp : fake_units_) {
-		if(tmp) {
-			tmp->anim_comp().invalidate(*game_display::get_singleton());
-		}
-	}
 	fake_units_.clear();
 	route_.reset();
 	temp_move_unit_underlying_id_ = 0;
@@ -847,8 +838,6 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 
 		print_help_once();
 
-		display::get_singleton()->invalidate(defender_loc);
-		display::get_singleton()->invalidate(attacker_loc);
 		erase_temp_move();
 		LOG_WB << *viewer_actions() << "\n";
 	}

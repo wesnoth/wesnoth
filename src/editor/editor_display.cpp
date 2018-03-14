@@ -16,6 +16,7 @@
 #include "editor/controller/editor_controller.hpp"
 #include "editor/editor_display.hpp"
 #include "lexical_cast.hpp"
+#include "ogl/utils.hpp"
 #include "reports.hpp"
 #include "team.hpp"
 #include "terrain/builder.hpp"
@@ -32,32 +33,31 @@ editor_display::editor_display(editor_controller& controller, reports& reports_o
 	, brush_locations_()
 	, controller_(controller)
 {
+#ifdef USE_GL_RENDERING
+	gl::clear_screen();
+#else
 	video().clear_screen();
+#endif
 }
 
 void editor_display::add_brush_loc(const map_location& hex)
 {
 	brush_locations_.insert(hex);
-	invalidate(hex);
 }
 
 void editor_display::set_brush_locs(const std::set<map_location>& hexes)
 {
-	invalidate(brush_locations_);
 	brush_locations_ = hexes;
-	invalidate(brush_locations_);
 }
 
 void editor_display::clear_brush_locs()
 {
-	invalidate(brush_locations_);
 	brush_locations_.clear();
 }
 
 void editor_display::remove_brush_loc(const map_location& hex)
 {
 	brush_locations_.erase(hex);
-	invalidate(hex);
 }
 
 void editor_display::rebuild_terrain(const map_location &loc) {
@@ -76,22 +76,25 @@ image::TYPE editor_display::get_image_type(const map_location& loc)
 	return image::TOD_COLORED;
 }
 
-void editor_display::draw_hex(const map_location& loc)
+void editor_display::draw_hex_cursor(const map_location& loc)
 {
-	int xpos = get_location_x(loc);
-	int ypos = get_location_y(loc);
-	display::draw_hex(loc);
-	if (map().on_board_with_border(loc)) {
-		if (map().in_selection(loc)) {
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
-				image::get_image("editor/selection-overlay.png", image::TOD_COLORED));
-		}
+	if(!map().on_board_with_border(loc)) {
+		return;
+	}
 
-		if (brush_locations_.find(loc) != brush_locations_.end()) {
-			static const image::locator brush(game_config::images::editor_brush);
-			drawing_buffer_add(LAYER_SELECTED_HEX, loc, xpos, ypos,
-					image::get_image(brush, image::SCALED_TO_HEX));
-		}
+	static texture brush(image::get_texture(game_config::images::editor_brush));
+
+	for(const map_location& b_loc : brush_locations_) {
+		render_scaled_to_zoom(brush, b_loc); // LAYER_SELECTED_HEX
+	}
+}
+
+void editor_display::draw_hex_overlays()
+{
+	static texture selection_overlay(image::get_texture("editor/selection-overlay.png"));
+
+	for(const map_location& s_loc : map().selection()) {
+		render_scaled_to_zoom(selection_overlay, s_loc); // LAYER_FOG_SHROUD
 	}
 }
 

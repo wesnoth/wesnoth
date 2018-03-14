@@ -17,10 +17,14 @@
 #include "events.hpp"
 #include "exceptions.hpp"
 #include "lua_jailbreak_exception.hpp"
+#include "ogl/context.hpp"
+
+#include <SDL_render.h>
 
 #include <memory>
 
 class surface;
+class texture;
 struct point;
 
 namespace sdl
@@ -51,11 +55,8 @@ public:
 
 	/**
 	 * Creates a fake frame buffer for the unit tests.
-	 *
-	 * @param width               The width of the buffer.
-	 * @param height              The height of the buffer.
 	 */
-	void make_test_fake(const unsigned width = 1024, const unsigned height = 768);
+	void make_test_fake();
 
 	bool faked() const
 	{
@@ -71,6 +72,9 @@ public:
 
 	/** Returns a pointer to the underlying SDL window. */
 	sdl::window* get_window();
+
+	/** Returns a pointer to the underlying window's renderer. */
+	SDL_Renderer* get_renderer();
 
 private:
 	enum MODE_EVENT { TO_RES, TO_FULLSCREEN, TO_WINDOWED, TO_MAXIMIZED_WINDOW };
@@ -165,13 +169,13 @@ public:
 	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect = nullptr, SDL_Rect* clip_rect = nullptr);
 
 	/** Renders the screen. Should normally not be called directly! */
-	void flip();
+	void render_screen();
 
-	/**
-	 * Updates and ensures the framebuffer surface is valid.
-	 * This needs to be invoked immediately after a resize event or the game will crash.
-	 */
-	void update_framebuffer();
+	void render_copy(const texture& txt,
+		SDL_Rect* src_rect = nullptr,
+		SDL_Rect* dst_rect = nullptr,
+		const bool flip_h = false,
+		const bool flip_v = false);
 
 	/** Clear the screen contents */
 	void clear_screen();
@@ -242,6 +246,11 @@ private:
 
 	/** The SDL window object. */
 	std::unique_ptr<sdl::window> window;
+
+#ifdef USE_GL_RENDERING
+	/** The OpenGL context attached to the SDL window. */
+	std::unique_ptr<gl::context> gl_context;
+#endif
 
 	/** Initializes the SDL video subsystem. */
 	void initSDL();
@@ -332,5 +341,4 @@ protected:
 	virtual ~draw_layering();
 };
 
-void trigger_full_redraw();
 }

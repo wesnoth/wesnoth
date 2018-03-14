@@ -32,7 +32,6 @@ modal_dialog::modal_dialog()
 	, always_save_fields_(false)
 	, fields_()
 	, focus_()
-	, restore_(false)
 	, allow_plugin_skip_(true)
 	, show_even_without_video_(false)
 {
@@ -86,7 +85,7 @@ bool modal_dialog::show(const unsigned auto_close_time)
 
 	{ // Scope the window stack
 		window_stack_handler push_window_stack(window_);
-		retval_ = window_->show(restore_, auto_close_time);
+		retval_ = window_->show(auto_close_time);
 	}
 
 	/*

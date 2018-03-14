@@ -52,8 +52,6 @@ public:
 
 	/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
 	virtual void draw_hex(const map_location& hex);
-	/** Redrawing function, called each time the action situation might have changed. */
-	virtual void redraw();
 
 	/**
 	 * Indicates whether this hex is the preferred hex to draw the numbering for this action.

@@ -63,7 +63,6 @@ suppose_dead::suppose_dead(size_t team_index, bool hidden, unit& curr_unit, cons
 	, unit_id_(curr_unit.id())
 	, loc_(loc)
 {
-	this->init();
 }
 
 suppose_dead::suppose_dead(const config& cfg, bool hidden)
@@ -79,20 +78,10 @@ suppose_dead::suppose_dead(const config& cfg, bool hidden)
 
 	unit_underlying_id_ = unit_itor->underlying_id();
 	unit_id_ = unit_itor->id();
-
-	this->init();
-}
-
-void suppose_dead::init()
-{
-	display::get_singleton()->invalidate(loc_);
 }
 
 suppose_dead::~suppose_dead()
 {
-	//invalidate hex so that skull indicator is properly cleared
-	if(display::get_singleton())
-		display::get_singleton()->invalidate(loc_);
 }
 
 unit_ptr suppose_dead::get_unit() const
@@ -138,18 +127,17 @@ void suppose_dead::draw_hex(const map_location& hex)
 	if(hex == loc_) //add symbol to hex
 	{
 		//@todo: Possibly use a different layer
-		const display::drawing_layer layer = display::LAYER_ARROWS;
+		//const drawing_queue::layer layer = drawing_queue::LAYER_ARROWS;
 
-		int xpos = display::get_singleton()->get_location_x(loc_);
-		int ypos = display::get_singleton()->get_location_y(loc_);
-		display::get_singleton()->drawing_buffer_add(layer, loc_, xpos, ypos,
-				image::get_image("whiteboard/suppose_dead.png", image::SCALED_TO_HEX));
+		//int xpos = display::get_singleton()->get_location_x(loc_);
+		//int ypos = display::get_singleton()->get_location_y(loc_);
+		//display::get_singleton()->drawing_queue_add(layer, loc_, xpos, ypos,
+		//		image::get_texture("whiteboard/suppose_dead.png"));
 	}
 }
 
 void suppose_dead::redraw()
 {
-	display::get_singleton()->invalidate(loc_);
 }
 
 action::error suppose_dead::check_validity() const

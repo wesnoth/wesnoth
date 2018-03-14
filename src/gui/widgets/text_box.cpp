@@ -264,7 +264,6 @@ void text_box::handle_mouse_selection(point mouse, const bool start_selection)
 
 	set_cursor(offset, !start_selection);
 	update_canvas();
-	set_is_dirty(true);
 	dragging_ |= start_selection;
 }
 

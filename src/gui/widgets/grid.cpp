@@ -624,21 +624,6 @@ void grid::layout_children()
 	}
 }
 
-void grid::child_populate_dirty_list(window& caller,
-									  const std::vector<widget*>& call_stack)
-{
-	assert(!call_stack.empty() && call_stack.back() == this);
-
-	for(auto & child : children_)
-	{
-
-		assert(child.get_widget());
-
-		std::vector<widget*> child_call_stack = call_stack;
-		child.get_widget()->populate_dirty_list(caller, child_call_stack);
-	}
-}
-
 widget* grid::find_at(const point& coordinate, const bool must_be_active)
 {
 	return grid_implementation::find_at<widget>(
@@ -990,7 +975,7 @@ void grid::layout(const point& origin)
 	}
 }
 
-void grid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+void grid::impl_draw_children(int x_offset, int y_offset)
 {
 	/*
 	 * The call to SDL_PumpEvents seems a bit like black magic.
@@ -1003,7 +988,6 @@ void grid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 	 */
 
 	assert(get_visible() == widget::visibility::visible);
-	set_is_dirty(false);
 
 	for(auto & child : children_)
 	{
@@ -1019,10 +1003,9 @@ void grid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 			continue;
 		}
 
-		widget->draw_background(frame_buffer, x_offset, y_offset);
-		widget->draw_children(frame_buffer, x_offset, y_offset);
-		widget->draw_foreground(frame_buffer, x_offset, y_offset);
-		widget->set_is_dirty(false);
+		widget->draw_background(x_offset, y_offset);
+		widget->draw_children(x_offset, y_offset);
+		widget->draw_foreground(x_offset, y_offset);
 	}
 }
 

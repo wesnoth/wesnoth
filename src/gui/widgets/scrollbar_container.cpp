@@ -785,14 +785,14 @@ void scrollbar_container::set_horizontal_scrollbar_mode(const scrollbar_mode scr
 	}
 }
 
-void scrollbar_container::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+void scrollbar_container::impl_draw_children(int x_offset, int y_offset)
 {
 	assert(get_visible() == widget::visibility::visible && content_grid_->get_visible() == widget::visibility::visible);
 
 	// Inherited.
-	container_base::impl_draw_children(frame_buffer, x_offset, y_offset);
+	container_base::impl_draw_children(x_offset, y_offset);
 
-	content_grid_->draw_children(frame_buffer, x_offset, y_offset);
+	content_grid_->draw_children( x_offset, y_offset);
 }
 
 void scrollbar_container::layout_children()
@@ -802,16 +802,6 @@ void scrollbar_container::layout_children()
 
 	assert(content_grid_);
 	content_grid_->layout_children();
-}
-
-void scrollbar_container::child_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack)
-{
-	// Inherited.
-	container_base::child_populate_dirty_list(caller, call_stack);
-
-	assert(content_grid_);
-	std::vector<widget*> child_call_stack(call_stack);
-	content_grid_->populate_dirty_list(caller, child_call_stack);
 }
 
 void scrollbar_container::set_content_size(const point& origin, const point& size)
@@ -1066,7 +1056,6 @@ void scrollbar_container::scrollbar_moved()
 
 	content_grid_->set_origin(content_origin);
 	content_grid_->set_visible_rectangle(content_visible_area_);
-	content_grid_->set_is_dirty(true);
 
 	// Update scrollbar.
 	set_scrollbar_button_status();

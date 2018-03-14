@@ -12,12 +12,12 @@
    See the COPYING file for more details.
 */
 
-#include "sdl/surface.hpp"
 #include "sdl/window.hpp"
 
+#include "ogl/utils.hpp"
 #include "sdl/exception.hpp"
-
-#include <SDL_render.h>
+#include "sdl/render_utils.hpp"
+#include "sdl/surface.hpp"
 
 namespace sdl
 {
@@ -30,25 +30,29 @@ window::window(const std::string& title,
 				 const uint32_t window_flags,
 				 const uint32_t render_flags)
 	: window_(SDL_CreateWindow(title.c_str(), x, y, w, h, window_flags))
-	, pixel_format_(SDL_PIXELFORMAT_UNKNOWN)
+	, info_()
 {
 	if(!window_) {
 		throw exception("Failed to create a SDL_Window object.", true);
 	}
 
+#ifndef USE_GL_RENDERING
 	if(!SDL_CreateRenderer(window_, -1, render_flags)) {
 		throw exception("Failed to create a SDL_Renderer object.", true);
 	}
 
-	SDL_RendererInfo info;
-	if(SDL_GetRendererInfo(*this, &info) != 0) {
+	if(SDL_GetRendererInfo(*this, &info_) != 0) {
 		throw exception("Failed to retrieve the information of the renderer.",
 						 true);
 	}
 
-	if(info.num_texture_formats == 0) {
+	if(info_.num_texture_formats == 0) {
 		throw exception("The renderer has no texture information available.\n",
 						 false);
+	}
+
+	if(!(info_.flags & SDL_RENDERER_TARGETTEXTURE)) {
+		throw exception("Render-to-texture not supported or enabled!", false);
 	}
 
 	// Set default blend mode to blend.
@@ -58,11 +62,10 @@ window::window(const std::string& title,
 	// Minimizing was reported as bug #1606 with blocker priority.
 	SDL_SetHint(SDL_HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS, "0");
 
-	pixel_format_ = info.texture_formats[0];
-
 	fill(0,0,0);
 
 	render();
+#endif
 }
 
 window::~window()
@@ -120,7 +123,7 @@ void window::full_screen()
 
 void window::fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
-	SDL_SetRenderDrawColor(*this, r, g, b, a);
+	set_draw_color(*this, r, g, b, a);
 	if(SDL_RenderClear(*this) != 0) {
 		throw exception("Failed to clear the SDL_Renderer object.",
 						 true);
@@ -129,7 +132,11 @@ void window::fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 
 void window::render()
 {
+#ifdef USE_GL_RENDERING
+	SDL_GL_SwapWindow(*this);
+#else
 	SDL_RenderPresent(*this);
+#endif
 }
 
 void window::set_title(const std::string& title)
