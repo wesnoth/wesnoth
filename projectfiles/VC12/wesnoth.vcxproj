@@ -2804,13 +2804,6 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)SDL\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\SDL_SavePNG\savepng.c">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='ReleaseDEBUG|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Debug|Win32'">$(IntDir)SDL\</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Test_Release|Win32'">$(IntDir)SDL\</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\seed_rng.cpp" />
     <ClCompile Include="..\..\src\serialization\tag.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)Serialization\</ObjectFileName>
@@ -3974,7 +3967,6 @@
     <ClInclude Include="..\..\src\sdl\userevent.hpp" />
     <ClInclude Include="..\..\src\sdl\utils.hpp" />
     <ClInclude Include="..\..\src\sdl\window.hpp" />
-    <ClInclude Include="..\..\src\SDL_SavePNG\savepng.h" />
     <ClInclude Include="..\..\src\seed_rng.hpp" />
     <ClInclude Include="..\..\src\settings.hpp" />
     <ClInclude Include="..\..\src\show_dialog.hpp" />

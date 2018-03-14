@@ -33,10 +33,6 @@
 #include "sdl/rect.hpp"
 #include "utils/general.hpp"
 
-#ifdef HAVE_LIBPNG
-#include "SDL_SavePNG/savepng.h"
-#endif
-
 #include <SDL_image.h>
 
 #include "utils/functional.hpp"
@@ -1335,15 +1331,12 @@ bool save_image(const surface& surf, const std::string& filename)
 		return false;
 	}
 
-#ifdef HAVE_LIBPNG
 	if(!filesystem::ends_with(filename, ".bmp")) {
 		LOG_DP << "Writing a png image to " << filename << std::endl;
 
-		surface tmp = SDL_PNGFormatAlpha(surf.get());
-		const int err = SDL_SavePNG_RW(tmp, filesystem::make_write_RWops(filename).release(), 1); //1 means SDL takes ownership of the RWops
+		const int err = IMG_SavePNG_RW(surf, filesystem::make_write_RWops(filename).release(), true); // SDL takes ownership of the RWops
 		return err == 0;
 	}
-#endif
 
 	LOG_DP << "Writing a bmp image to " << filename << std::endl;
 	return SDL_SaveBMP(surf, filename.c_str()) == 0;

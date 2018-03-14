@@ -42,9 +42,6 @@ order to build Wesnoth:
 The following libraries are optional dependencies that enable additional
 features:
 
- * libpng:
-   PNG screenshots, otherwise only BMP is supported.
-
  * D-Bus (libdbus-1):
    Desktop notifications on Linux, *BSD, etc.
 
