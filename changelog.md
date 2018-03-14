@@ -21,6 +21,8 @@
    * New Heavy Infantryman attack animation by Zoomo.
  ### Language and i18n
    * Updated translations: British English, Spanish
+   * Translations with less than 80% completion are now hidden from the
+     language selection menu by default.
  ### Lua API
    * Add side_name to unit proxy
  ### User Interface
@@ -40,6 +42,8 @@
      string concatenation.
    * [effect] apply_to=attack now supports set_range
    * [cancel_action] now works in attack-related events.
+   * [unit_type] upkeep= now works again. It was inadvertently broken during
+     the 1.13 development cycle.
  ### Miscellaneous and bug fixes
    * Fixed standing animation toggle not taking immediate effect (bug
      #1653).
