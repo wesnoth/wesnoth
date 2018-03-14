@@ -34,8 +34,6 @@ class  config;
 	if we are in a non mp game, and the side is controlled by a human then a dialog is shown too.
 	if the side is controlled by an ai, and if ai_advancement is passed, then ai_advancement will be used.
 	otherwise a random decision will be taken.
-
-	this method is currently not used by unstore_unit, if we want to do that we'd need to allow more arguments (animate, fire_events).
 */
 struct advance_unit_params
 {
