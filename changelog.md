@@ -18,6 +18,7 @@
      * S04a, 05a, & S13a Make enemy units loyal so gold & events work properly
  ### Graphics
    * Updated default Time of Day schedule images.
+   * New Heavy Infantryman attack animation by Zoomo.
  ### Language and i18n
    * Updated translations: British English, Spanish
  ### Lua API
