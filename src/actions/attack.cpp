@@ -83,6 +83,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	, backstab_pos(false)
 	, swarm(false)
 	, firststrike(false)
+	, alignment(false)
 	, disable(false)
 	, experience(u.experience())
 	, max_experience(u.max_experience())
@@ -99,6 +100,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	, swarm_min(0)
 	, swarm_max(0)
 	, plague_type()
+	, alignment_id()
 {
 	// Get the current state of the unit.
 	if(attack_num >= 0) {
@@ -179,9 +181,17 @@ battle_context_unit_stats::battle_context_unit_stats(const unit& u,
 	int damage_multiplier = 100;
 
 	// Time of day bonus.
-	damage_multiplier += combat_modifier(
-			resources::gameboard->units(), resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
-
+	alignment = weapon->get_special_bool("alignment");
+	unit_ability_list alignment_specials = weapon->get_specials("alignment");
+		if(alignment) {
+                alignment_id=(*alignment_specials.front().first)["alignment"].str();
+        if(alignment_id.empty()) {
+                alignment_id = (*alignment_specials.front().first)["id"].str();
+        }
+		damage_multiplier += attack_combat_modifier(
+			resources::gameboard->units(), resources::gameboard->map(), u_loc, alignment_id, u.alignment(), u.is_fearless());
+            } else {
+	    damage_multiplier += combat_modifier(resources::gameboard->units(), resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
 	// Leadership bonus.
 	int leader_bonus = under_leadership(units, u_loc).first;
 	if(leader_bonus != 0) {
@@ -241,6 +251,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	, backstab_pos(false)
 	, swarm(false)
 	, firststrike(false)
+	,alignment(false)
 	, disable(false)
 	, experience(0)
 	, max_experience(0)
@@ -257,6 +268,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	, swarm_min(0)
 	, swarm_max(0)
 	, plague_type()
+	,alignment_id()
 {
 	if(!u_type || !opp_type) {
 		return;
@@ -316,8 +328,21 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 
 	int base_damage = weapon->modified_damage(backstab_pos);
 	int damage_multiplier = 100;
-	damage_multiplier
-			+= generic_combat_modifier(lawful_bonus, u_type->alignment(), u_type->musthave_status("fearless"));
+	alignment = weapon->get_special_bool("alignment");
+
+	unit_ability_list alignment_specials = weapon->get_specials("alignment");
+		if(alignment) {
+                alignment_id=(*alignment_specials.front().first)["alignment"].str();
+                if(alignment_id.empty()) {
+                        alignment_id = (*alignment_specials.front().first)["id"].str();
+                }
+		damage_multiplier += special_combat_modifier(
+			lawful_bonus, alignment_id, u_type->alignment(), u_type->musthave_status("fearless"));
+            } else {
+	    damage_multiplier += generic_combat_modifier(lawful_bonus, u_type->alignment(), u_type->musthave_status("fearless"));
+	}
+
+
 	damage_multiplier *= opp_type->resistance_against(weapon->type(), !attacking);
 
 	damage = round_damage(base_damage, damage_multiplier, 10000);
@@ -1638,6 +1663,37 @@ int generic_combat_modifier(int lawful_bonus, unit_type::ALIGNMENT alignment, bo
 
 	return bonus;
 }
+		int attack_combat_modifier(const unit_map& units,
+		const gamemap& map,
+		const map_location& loc,
+		std::string att_alignment,
+		unit_type::ALIGNMENT alignment,
+		bool is_fearless)
+{
+	const tod_manager& tod_m = *resources::tod_manager;
+	int lawful_bonus = tod_m.get_illuminated_time_of_day(units, map, loc).lawful_bonus;
+	return special_combat_modifier(lawful_bonus, att_alignment, alignment, is_fearless);
+}
+
+int special_combat_modifier(int lawful_bonus, std::string att_alignment,unit_type::ALIGNMENT alignment, bool is_fearless)
+{
+	int bonus;
+if (att_alignment=="lawful")
+    bonus = lawful_bonus;
+else if (att_alignment=="neutral")
+    bonus = 0;
+else if (att_alignment=="chaotic")
+    bonus = -lawful_bonus;
+    else if (att_alignment=="liminal")
+    bonus = -std::abs(lawful_bonus);
+    else
+ bonus=generic_combat_modifier(lawful_bonus, alignment, is_fearless);
+
+	if(is_fearless) {
+		bonus = std::max<int>(bonus, 0);
+	}
+
+
 
 bool backstab_check(const map_location& attacker_loc,
 		const map_location& defender_loc,
