@@ -1331,7 +1331,7 @@ bool save_image(const surface& surf, const std::string& filename)
 		return false;
 	}
 
-#if SDL_IMAGE_VERSION_ATLEAST(2, 0, 2)
+#if defined(SDL_IMAGE_VERSION_ATLEAST) && SDL_IMAGE_VERSION_ATLEAST(2, 0, 2)
 	if(filesystem::ends_with(filename, ".jpg")) {
 		LOG_DP << "Writing a JPG image to " << filename << std::endl;
 
