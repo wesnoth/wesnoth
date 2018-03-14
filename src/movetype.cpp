@@ -98,7 +98,7 @@ public:
 
 	// The copy constructor does not bother copying the cache since
 	// typically the cache will be cleared shortly after the copy.
-	data(const data & that) :
+	explicit data(const data & that) :
 		cfg_(that.cfg_), cache_(), params_(that.params_)
 	{}
 

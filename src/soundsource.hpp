@@ -56,7 +56,7 @@ public:
 	// chance is a chance ;-) (in %) that the sound source will emit
 	// sound every second after the delay has passed or once the source
 	// becomes visible
-	positional_source(const sourcespec &spec);
+	explicit positional_source(const sourcespec &spec);
 	~positional_source();
 
 	bool is_global() const;
@@ -84,7 +84,7 @@ class manager : public events::observer
 	const display &disp_;
 
 public:
-	manager(const display &disp);
+	explicit manager(const display &disp);
 	~manager();
 
 	// event interface
@@ -143,7 +143,7 @@ public:
 	{}
 
 	/** WML constructor. */
-	sourcespec(const config& cfg);
+	explicit sourcespec(const config& cfg);
 
 	/**
 	 * Serializes information into cfg as a new (appended)

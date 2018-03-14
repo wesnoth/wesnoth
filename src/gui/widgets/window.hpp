@@ -198,7 +198,7 @@ public:
 	class invalidate_layout_blocker
 	{
 	public:
-		invalidate_layout_blocker(window& window);
+		explicit invalidate_layout_blocker(window& window);
 		~invalidate_layout_blocker();
 
 	private:

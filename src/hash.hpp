@@ -28,7 +28,7 @@ namespace utils {
 
 struct hash_error : public game::error
 {
-	hash_error(const std::string& message) : game::error(message) {}
+	explicit hash_error(const std::string& message) : game::error(message) {}
 };
 
 class hash_base

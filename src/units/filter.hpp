@@ -75,7 +75,7 @@ namespace unit_filter_impl
 
 	struct unit_filter_compound : public unit_filter_base
 	{
-		unit_filter_compound(vconfig cfg);
+		explicit unit_filter_compound(vconfig cfg);
 
 		template<typename C, typename F>
 		void create_attribute(const config::attribute_value c, C conv, F func);

@@ -28,7 +28,7 @@ private:
 	const config & game_config_;
 
 public:
-	terrain_type_data(const config & game_config);
+	explicit terrain_type_data(const config & game_config);
 
 	const t_translation::ter_list & list() const;
 	const std::map<t_translation::terrain_code, terrain_type> & map() const;

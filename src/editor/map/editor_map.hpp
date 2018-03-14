@@ -50,7 +50,7 @@ struct editor_map_load_exception : public editor_exception
 
 struct editor_map_save_exception : public editor_exception
 {
-	editor_map_save_exception(const std::string& msg)
+	explicit editor_map_save_exception(const std::string& msg)
 	: editor_exception(msg)
 	{
 	}

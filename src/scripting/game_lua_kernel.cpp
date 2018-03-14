@@ -157,7 +157,7 @@ int dispatch2(lua_State *L) {
 
 struct map_locker
 {
-	map_locker(game_lua_kernel* kernel) : kernel_(kernel)
+	explicit map_locker(game_lua_kernel* kernel) : kernel_(kernel)
 	{
 		++kernel_->map_locked_;
 	}
@@ -849,7 +849,7 @@ int game_lua_kernel::intf_set_end_campaign_text(lua_State *L)
 
 int game_lua_kernel::intf_set_next_scenario(lua_State *L)
 {
-	deprecated_message("wesnoth.set_next_scenario", DEP_LEVEL::INDEFINITE, "");
+	deprecated_message("wesnoth.set_next_scenario", DEP_LEVEL::INDEFINITE, version_info());
 	gamedata().set_next_scenario(luaL_checkstring(L, 1));
 	return 0;
 }
@@ -2555,7 +2555,7 @@ int game_lua_kernel::intf_simulate_combat(lua_State *L)
  */
 static int intf_set_music(lua_State *L)
 {
-	deprecated_message("wesnoth.set_music", DEP_LEVEL::INDEFINITE, "", "Use the wesnoth.playlist table instead!");
+	deprecated_message("wesnoth.set_music", DEP_LEVEL::INDEFINITE, version_info(), "Use the wesnoth.playlist table instead!");
 	if (lua_isnoneornil(L, 1)) {
 		sound::commit_music_changes();
 		return 0;

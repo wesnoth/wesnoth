@@ -36,7 +36,7 @@ public:
 	typedef std::function<config(config)> accessor_function;
 	struct aReg { char const * name; accessor_function func; };
 
-	plugins_context( const std::string & name );
+	explicit plugins_context( const std::string & name );
 	plugins_context( const std::string & name, const std::vector<Reg>& callbacks, const std::vector<aReg>& accessors);
 	template<int N, int M>
 	plugins_context( const std::string & name, const Reg (& callbacks)[N], const aReg (& accessors)[M])

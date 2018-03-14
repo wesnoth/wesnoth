@@ -156,7 +156,7 @@ mp_lobby::mp_lobby(const config& game_config, mp::lobby_info& info, wesnothd_con
 
 struct lobby_delay_gamelist_update_guard
 {
-	lobby_delay_gamelist_update_guard(mp_lobby& l) : l(l)
+	explicit lobby_delay_gamelist_update_guard(mp_lobby& l) : l(l)
 	{
 		l.delay_gamelist_update_ = true;
 	}
@@ -984,7 +984,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 		join_data["password"] = password;
 	}
 
-	network_connection_.send_data(response);
+	network_connection_.send_data(configr_of(response));
 	joined_game_id_ = game.id;
 
 	// We're all good. Close lobby and proceed to game!
@@ -1021,7 +1021,7 @@ void mp_lobby::enter_selected_game(JOIN_MODE mode)
 
 void mp_lobby::refresh_lobby()
 {
-	network_connection_.send_data(config("refresh_lobby"));
+	network_connection_.send_data(configr_of(config("refresh_lobby")));
 }
 
 void mp_lobby::show_preferences_button_callback(window& window)

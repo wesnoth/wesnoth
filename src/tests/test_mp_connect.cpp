@@ -30,7 +30,7 @@
 
 class test_connect_engine : public ng::connect_engine {
 public:
-	test_connect_engine(saved_game& gamestate) :
+	explicit test_connect_engine(saved_game& gamestate) :
 		ng::connect_engine(gamestate, true, nullptr)
 		{}
 };

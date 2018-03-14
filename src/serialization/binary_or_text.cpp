@@ -80,13 +80,13 @@ config_writer::~config_writer()
 
 void config_writer::write(const config &cfg)
 {
-	::write(out_, cfg, level_);
+	::write(out_, configr_of(cfg), level_);
 }
 
 void config_writer::write_child(const std::string &key, const config &cfg)
 {
 	open_child(key);
-	::write(out_, cfg, level_);
+	::write(out_, configr_of(cfg), level_);
 	close_child(key);
 }
 

@@ -132,7 +132,7 @@ public:
 	virtual engine_ptr get_new_instance( readonly_context &ai, const config &cfg ) = 0;
 	virtual engine_ptr get_new_instance( readonly_context &ai, const std::string& name ) = 0;
 
-	engine_factory( const std::string &name )
+	explicit engine_factory( const std::string &name )
 	{
 		if (is_duplicate(name)) {
 			return;
@@ -148,7 +148,7 @@ public:
 template<class ENGINE>
 class register_engine_factory : public engine_factory {
 public:
-	register_engine_factory( const std::string &name )
+	explicit register_engine_factory( const std::string &name )
 		: engine_factory( name )
 	{
 	}

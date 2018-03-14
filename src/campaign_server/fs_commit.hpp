@@ -56,7 +56,7 @@ public:
 	 *
 	 * @throws filesystem::io_exception if the operation fails in some way.
 	 */
-	atomic_commit(const std::string& filename);
+	explicit atomic_commit(const std::string& filename);
 
 	atomic_commit(const atomic_commit&) = delete;
 	atomic_commit& operator=(const atomic_commit&) = delete;

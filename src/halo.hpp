@@ -39,7 +39,7 @@ const int NO_HALO = 0;
 class manager
 {
 public:
-	manager(display& screen);
+	explicit manager(display& screen);
 
 	/**
 	 * Add a haloing effect using 'image centered on (x,y).

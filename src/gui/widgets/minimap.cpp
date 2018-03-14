@@ -95,7 +95,7 @@ static bool operator<(const key_type& lhs, const key_type& rhs)
 /** Value type for the cache. */
 struct value_type
 {
-	value_type(const surface& surf) : surf(surf), age(1)
+	explicit value_type(const surface& surf) : surf(surf), age(1)
 	{
 	}
 
@@ -180,7 +180,7 @@ bool minimap::disable_click_dismiss() const
 const surface minimap::get_image(const int w, const int h) const
 {
 	if(!terrain_) {
-		return nullptr;
+		return surface();
 	}
 
 	if(terrain_ != terrain) {
@@ -225,7 +225,7 @@ const surface minimap::get_image(const int w, const int h) const
 		std::cerr << 'X';
 #endif
 	}
-	return nullptr;
+	return surface();
 }
 
 void minimap::impl_draw_background(surface& frame_buffer,

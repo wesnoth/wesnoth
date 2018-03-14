@@ -58,7 +58,7 @@ typedef std::list<animation_branch> animation_branches;
 
 struct animation_cursor
 {
-	animation_cursor(const config& cfg)
+	explicit animation_cursor(const config& cfg)
 		: itors(cfg.all_children_range()), branches(1), parent(nullptr)
 	{
 		branches.back().attributes.merge_attributes(cfg);
@@ -496,13 +496,13 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 	const std::string default_image = cfg["image"];
 
 	if(animation_base.empty()) {
-		animation_base.push_back(unit_animation(0, frame_builder().image(default_image).duration(1), "", unit_animation::DEFAULT_ANIM));
+		animation_base.push_back(unit_animation(0, unit_frame(frame_builder().image(default_image).duration(1)), "", unit_animation::DEFAULT_ANIM));
 	}
 
-	animations.push_back(unit_animation(0, frame_builder().image(default_image).duration(1), "_disabled_", 0));
+	animations.push_back(unit_animation(0, unit_frame(frame_builder().image(default_image).duration(1)), "_disabled_", 0));
 	animations.push_back(unit_animation(0,
-		frame_builder().image(default_image).duration(300).blend("0.0~0.3:100,0.3~0.0:200", {255,255,255}),
-		"_disabled_selected_", 0));
+			unit_frame(frame_builder().image(default_image).duration(300).blend("0.0~0.3:100,0.3~0.0:200", {255,255,255})),
+			"_disabled_selected_", 0));
 
 	for(const auto& base : animation_base) {
 		animations.push_back(base);
@@ -572,7 +572,7 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 		animations.back().event_ = { "death" };
 		animations.back().unit_anim_.override(0, 600, particle::NO_CYCLE, "1~0:600");
 		animations.back().sub_anims_["_death_sound"] = particle();
-		animations.back().sub_anims_["_death_sound"].add_frame(1, frame_builder().sound(cfg["die_sound"]), true);
+		animations.back().sub_anims_["_death_sound"].add_frame(1, unit_frame(frame_builder().sound(cfg["die_sound"])), true);
 
 		animations.push_back(base);
 		animations.back().event_ = { "victory" };
@@ -595,13 +595,13 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 		const std::string healed_sound = get_heal_sound(cfg);
 
-		animations.back().sub_anims_["_healed_sound"].add_frame(1, frame_builder().sound(healed_sound), true);
+		animations.back().sub_anims_["_healed_sound"].add_frame(1, unit_frame(frame_builder().sound(healed_sound)), true);
 
 		animations.push_back(base);
 		animations.back().event_ = { "poisoned" };
 		animations.back().unit_anim_.override(0, 300, particle::NO_CYCLE, "", "0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30", {0,255,0});
 		animations.back().sub_anims_["_poison_sound"] = particle();
-		animations.back().sub_anims_["_poison_sound"].add_frame(1, frame_builder().sound(game_config::sounds::status::poisoned), true);
+		animations.back().sub_anims_["_poison_sound"].add_frame(1, unit_frame(frame_builder().sound(game_config::sounds::status::poisoned)), true);
 	}
 }
 
@@ -719,7 +719,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.back().sub_anims_["_healed_sound"] = particle();
 
 		const std::string healed_sound = get_heal_sound(cfg);
-		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound(healed_sound),true);
+		animations.back().sub_anims_["_healed_sound"].add_frame(1,unit_frame(frame_builder().sound(healed_sound)),true);
 	}
 
 	for(const animation_branch &ab : prepare_animation(cfg, "poison_anim")) {
@@ -733,7 +733,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 		animations.push_back(unit_animation(anim));
 		animations.back().sub_anims_["_poison_sound"] = particle();
-		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound(game_config::sounds::status::poisoned),true);
+		animations.back().sub_anims_["_poison_sound"].add_frame(1,unit_frame(frame_builder().sound(game_config::sounds::status::poisoned)),true);
 	}
 
 	add_simple_anim(animations, cfg, "pre_movement_anim", "pre_movement", display::LAYER_UNIT_MOVE_DEFAULT);
@@ -777,10 +777,10 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			animations.back().base_score_--;
 
 			image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
-			animations.back().add_frame(225, frame_builder()
+			animations.back().add_frame(225, unit_frame(frame_builder()
 				.image(image_loc.get_filename()+image_loc.get_modifications())
 				.duration(225)
-				.blend("0.0,0.5:75,0.0:75,0.5:75,0.0", {255,0,0}));
+				.blend("0.0,0.5:75,0.0:75,0.5:75,0.0", {255,0,0})));
 		} else {
 			for(const std::string& hit_type : utils::split(anim["hits"])) {
 				config tmp = anim;
@@ -790,10 +790,10 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 				image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
 				if(hit_type == "yes" || hit_type == "hit" || hit_type=="kill") {
-					animations.back().add_frame(225, frame_builder()
+					animations.back().add_frame(225, unit_frame(frame_builder()
 						.image(image_loc.get_filename() + image_loc.get_modifications())
 						.duration(225)
-						.blend("0.0,0.5:75,0.0:75,0.5:75,0.0", {255,0,0}));
+						.blend("0.0,0.5:75,0.0:75,0.5:75,0.0", {255,0,0})));
 				}
 			}
 		}
@@ -845,14 +845,14 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.push_back(unit_animation(anim));
 		image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
 
-		animations.back().add_frame(600, frame_builder()
+		animations.back().add_frame(600, unit_frame(frame_builder()
 			.image(image_loc.get_filename()+image_loc.get_modifications())
 			.duration(600)
-			.highlight("1~0:600"));
+			.highlight("1~0:600")));
 
 		if(!cfg["die_sound"].empty()) {
 			animations.back().sub_anims_["_death_sound"] = particle();
-			animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder().sound(cfg["die_sound"]),true);
+			animations.back().sub_anims_["_death_sound"].add_frame(1,unit_frame(frame_builder().sound(cfg["die_sound"])),true);
 		}
 	}
 
@@ -1045,8 +1045,8 @@ void unit_animation::start_animation(int start_time
 
 	if(!text.empty()) {
 		particle crude_build;
-		crude_build.add_frame(1, frame_builder());
-		crude_build.add_frame(1, frame_builder().text(text, text_color), true);
+		crude_build.add_frame(1, unit_frame());
+		crude_build.add_frame(1, unit_frame(frame_builder().text(text, text_color)), true);
 		sub_anims_["_add_text"] = crude_build;
 	}
 

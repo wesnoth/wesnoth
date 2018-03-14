@@ -30,7 +30,7 @@ namespace ai{
 template<typename T>
 class path_element_matches{
 public:
-	path_element_matches(const path_element &element)
+	explicit path_element_matches(const path_element &element)
 		: count_(0), element_(element)
 	{
 	}

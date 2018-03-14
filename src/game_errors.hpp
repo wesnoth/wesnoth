@@ -21,7 +21,7 @@
 namespace game {
 
 struct mp_server_error : public error {
-	mp_server_error(const std::string& msg) : error("MP server error: " + msg) {}
+	explicit mp_server_error(const std::string& msg) : error("MP server error: " + msg) {}
 };
 
 /**
@@ -29,7 +29,7 @@ struct mp_server_error : public error {
  */
 struct load_game_failed : public error {
 	load_game_failed() {}
-	load_game_failed(const std::string& msg) : error("load_game_failed: " + msg) {}
+	explicit load_game_failed(const std::string& msg) : error("load_game_failed: " + msg) {}
 };
 
 /**
@@ -37,21 +37,21 @@ struct load_game_failed : public error {
  */
 struct save_game_failed : public error {
 	save_game_failed() {}
-	save_game_failed(const std::string& msg) : error("save_game_failed: " + msg) {}
+	explicit save_game_failed(const std::string& msg) : error("save_game_failed: " + msg) {}
 };
 
 /**
  * Error used for any general game error, e.g. data files are corrupt.
  */
 struct game_error : public error {
-	game_error(const std::string& msg) : error("game_error: " + msg) {}
+	explicit game_error(const std::string& msg) : error("game_error: " + msg) {}
 };
 
 /**
  * Error used to report an error in a lua script or in the lua interpreter.
  */
 struct lua_error : public error {
-	lua_error(const std::string& msg) : error("lua_error: " + msg) {}
+	explicit lua_error(const std::string& msg) : error("lua_error: " + msg) {}
 	lua_error(const std::string& msg, const std::string& context) : error(context + ":\n  " + msg) {}
 };
 

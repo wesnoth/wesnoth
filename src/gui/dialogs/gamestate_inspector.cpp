@@ -51,7 +51,7 @@ namespace
 inline std::string config_to_string(const config& cfg)
 {
 	std::ostringstream s;
-	write(s, cfg);
+	write(s, configr_of(cfg));
 	return s.str();
 }
 
@@ -181,7 +181,7 @@ private:
 class gamestate_inspector::view
 {
 public:
-	view(window& window)
+	explicit view(window& window)
 		: stuff_list_(find_widget<tree_view>(&window, "stuff_list", false, true))
 		, inspect_(find_widget<styled_widget>(&window, "inspect", false, true))
 		, pages_(find_widget<styled_widget>(&window, "page_count", false, true))
@@ -238,7 +238,7 @@ private:
 class single_mode_controller
 {
 public:
-	single_mode_controller(gamestate_inspector::controller& c) : c(c)
+	explicit single_mode_controller(gamestate_inspector::controller& c) : c(c)
 	{
 	}
 
@@ -258,7 +258,7 @@ protected:
 class variable_mode_controller : public single_mode_controller
 {
 public:
-	variable_mode_controller(gamestate_inspector::controller& c)
+	explicit variable_mode_controller(gamestate_inspector::controller& c)
 		: single_mode_controller(c)
 	{
 	}
@@ -271,7 +271,7 @@ public:
 class event_mode_controller : public single_mode_controller
 {
 public:
-	event_mode_controller(gamestate_inspector::controller& c);
+	explicit event_mode_controller(gamestate_inspector::controller& c);
 	void show_list(tree_view_node& node, bool is_wmi);
 	void show_event(tree_view_node& node, bool is_wmi);
 
@@ -282,7 +282,7 @@ private:
 class unit_mode_controller : public single_mode_controller
 {
 public:
-	unit_mode_controller(gamestate_inspector::controller& c)
+	explicit unit_mode_controller(gamestate_inspector::controller& c)
 		: single_mode_controller(c)
 	{
 	}
@@ -294,7 +294,7 @@ public:
 class team_mode_controller : public single_mode_controller
 {
 public:
-	team_mode_controller(gamestate_inspector::controller& c)
+	explicit team_mode_controller(gamestate_inspector::controller& c)
 		: single_mode_controller(c)
 	{
 	}

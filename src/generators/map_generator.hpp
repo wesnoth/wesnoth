@@ -26,7 +26,7 @@ class config;
 
 struct mapgen_exception : public game::error
 {
-	mapgen_exception(const std::string& msg)
+	explicit mapgen_exception(const std::string& msg)
 	: game::error(msg)
 	{}
 };

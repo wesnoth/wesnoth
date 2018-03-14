@@ -32,7 +32,7 @@ namespace ucs4
 		typedef ucs4::char_t* pointer;
 		typedef ucs4::char_t& reference;
 
-		iterator_base(const string_type& str)
+		explicit iterator_base(const string_type& str)
 			: current_char(0)
 			, string_end(str.end())
 			, current_substr(std::make_pair(str.begin(), str.begin()))

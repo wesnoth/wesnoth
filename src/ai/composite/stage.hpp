@@ -108,7 +108,7 @@ public:
 
 	virtual stage_ptr get_new_instance( ai_context &context, const config &cfg ) = 0;
 
-	stage_factory( const std::string &name )
+	explicit stage_factory( const std::string &name )
 	{
 		if (is_duplicate(name)) {
 			return;
@@ -124,7 +124,7 @@ public:
 template<class STAGE>
 class register_stage_factory : public stage_factory {
 public:
-	register_stage_factory( const std::string &name )
+	explicit register_stage_factory( const std::string &name )
 		: stage_factory( name )
 	{
 	}

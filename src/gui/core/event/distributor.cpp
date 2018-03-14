@@ -85,7 +85,7 @@ static uint32_t popup_callback(uint32_t /*interval*/, void* /*param*/)
 class resource_locker
 {
 public:
-	resource_locker(bool& locked) : locked_(locked)
+	explicit resource_locker(bool& locked) : locked_(locked)
 	{
 		assert(!locked_);
 		locked_ = true;

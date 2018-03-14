@@ -269,7 +269,7 @@ public:
 protected:
 	struct scoped_savegame_snapshot
 	{
-		scoped_savegame_snapshot(const play_controller& controller);
+		explicit scoped_savegame_snapshot(const play_controller& controller);
 		~scoped_savegame_snapshot();
 		const play_controller& controller_;
 	};

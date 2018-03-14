@@ -147,8 +147,12 @@ bool loadgame::load_game_ingame()
 		return false;
 	}
 
-	if (!loadgame::check_version_compatibility(summary["version"].str())) {
-		return false;
+	{
+		const version_info summary_version (summary["version"].str());
+
+		if (!loadgame::check_version_compatibility(summary_version)) {
+			return false;
+		}
 	}
 
 	throw load_game_exception(std::move(load_data_));
@@ -212,7 +216,8 @@ bool loadgame::load_game()
 
 bool loadgame::check_version_compatibility()
 {
-	return loadgame::check_version_compatibility(gamestate_.classification().version);
+	const version_info game_version(gamestate_.classification().version);
+	return loadgame::check_version_compatibility(game_version);
 }
 
 bool loadgame::check_version_compatibility(const version_info & save_version)

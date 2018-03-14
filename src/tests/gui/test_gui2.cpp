@@ -828,7 +828,7 @@ struct dialog_tester<hotkey_bind>
 
 struct wesnothd_connection_init
 {
-	wesnothd_connection_init(wesnothd_connection& conn)
+	explicit wesnothd_connection_init(wesnothd_connection& conn)
 	{
 		//Swallow the 'cannot connect' execption so that the connection object doesn't throw while we test the dialog.
 		try

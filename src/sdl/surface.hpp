@@ -25,7 +25,7 @@ public:
 	surface() : surface_(nullptr)
 	{}
 
-	surface(SDL_Surface* surf) : surface_(surf)
+	explicit surface(SDL_Surface* surf) : surface_(surf)
 	{}
 
 	surface(const surface& s) : surface_(s.get())
@@ -131,7 +131,7 @@ private:
 	using pixel_t = utils::const_clone_t<uint32_t, T>;
 
 public:
-	surface_locker(T& surf) : surface_(surf), locked_(false)
+	explicit surface_locker(T& surf) : surface_(surf), locked_(false)
 	{
 		if(SDL_MUSTLOCK(surface_)) {
 			locked_ = SDL_LockSurface(surface_) == 0;

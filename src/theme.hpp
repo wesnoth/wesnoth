@@ -41,7 +41,7 @@ class theme
 	{
 	public:
 		object();
-		object(const config& cfg);
+		explicit object(const config& cfg);
 		virtual ~object() { }
 
 		SDL_Rect& location(const SDL_Rect& screen) const;
@@ -79,7 +79,7 @@ class theme
 	{
 
 		border_t();
-		border_t(const config& cfg);
+		explicit border_t(const config& cfg);
 
 		double size;
 

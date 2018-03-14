@@ -31,7 +31,7 @@ public:
 	 *                 ensure the file exists, otherwise it will be displayed
 	 *                 with size 0.
 	 */
-	screenshot_notification(const std::string& path);
+	explicit screenshot_notification(const std::string& path);
 
 	/**
 	 * The display function.

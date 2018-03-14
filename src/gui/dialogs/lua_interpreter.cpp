@@ -132,7 +132,7 @@ private:
 	std::stringstream raw_log_;
 
 public:
-	lua_model (lua_kernel_base & lk)
+	explicit lua_model (lua_kernel_base & lk)
 		: L_(lk)
 		, log_()
 		, raw_log_()
@@ -384,7 +384,7 @@ private:
 	void tab();
 	void search(int direction);
 public:
-	controller(lua_kernel_base & lk)
+	explicit controller(lua_kernel_base & lk)
 		: copy_button(nullptr)
 		, clear_button(nullptr)
 		, text_entry(nullptr)

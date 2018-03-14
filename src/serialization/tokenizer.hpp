@@ -55,7 +55,7 @@ struct token
 class tokenizer
 {
 public:
-	tokenizer(std::istream& in);
+	explicit tokenizer(std::istream& in);
 	~tokenizer();
 
 	const token &next_token();

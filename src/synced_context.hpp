@@ -194,7 +194,7 @@ public:
 	/*
 		use this constructor if you have multiple synced_context but only one replay entry.
 	*/
-	set_scontext_synced(int num);
+	explicit set_scontext_synced(int num);
 	~set_scontext_synced();
 	int get_random_calls();
 	void do_final_checkup(bool dont_throw = false);

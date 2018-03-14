@@ -55,7 +55,7 @@ typedef ai_context* ai_context_ptr;
 // recursion counter
 class recursion_counter {
 public:
-	recursion_counter(int counter)
+	explicit recursion_counter(int counter)
 		: counter_(++counter)
 	{
 		if (counter > MAX_COUNTER_VALUE ) {

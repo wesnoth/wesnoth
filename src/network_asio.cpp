@@ -136,7 +136,7 @@ void connection::transfer(const config& request, config& response)
 	write_buf_.reset(new boost::asio::streambuf);
 	read_buf_.reset(new boost::asio::streambuf);
 	std::ostream os(write_buf_.get());
-	write_gz(os, request);
+	write_gz(os, configr_of(request));
 
 	bytes_to_write_ = write_buf_->size() + 4;
 	bytes_written_ = 0;

@@ -40,7 +40,7 @@ class mapbuilder
 {
 
 public:
-	mapbuilder(unit_map& unit_map);
+	explicit mapbuilder(unit_map& unit_map);
 	virtual ~mapbuilder();
 
 	/**

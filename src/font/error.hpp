@@ -20,7 +20,7 @@
 namespace font {
 
 struct error : public game::error {
-	error(const std::string& str = "Font initialization failed") : game::error(str) {}
+	explicit error(const std::string& str = "Font initialization failed") : game::error(str) {}
 };
 
 } // end namespace font

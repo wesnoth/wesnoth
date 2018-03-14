@@ -111,7 +111,7 @@ protected:
 		, in_transaction_(false)
 	{}
 
-	persist_context(const std::string &name_space)
+	explicit persist_context(const std::string &name_space)
 		: cfg_()
 		, namespace_(name_space,true)
 		, valid_(namespace_.valid())
@@ -167,7 +167,7 @@ private:
 	bool save_context();
 
 public:
-	persist_file_context(const std::string &name_space);
+	explicit persist_file_context(const std::string &name_space);
 	bool clear_var(const std::string &, bool immediate = false);
 	config get_var(const std::string &) const;
 	bool set_var(const std::string &, const config &, bool immediate = false);

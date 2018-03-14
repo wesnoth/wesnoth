@@ -720,7 +720,7 @@ void addon_manager::publish_addon(const addon_info& addon, window& window)
 	const std::string addon_id = addon.id;
 	config cfg = get_addon_pbl_info(addon_id);
 
-	const version_info& version_to_publish = cfg["version"].str();
+	const version_info version_to_publish(cfg["version"].str());
 
 	if(version_to_publish <= tracking_info_[addon_id].remote_version) {
 		const int res = gui2::show_message(_("Warning"),

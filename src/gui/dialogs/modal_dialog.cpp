@@ -44,7 +44,7 @@ modal_dialog::~modal_dialog()
 
 namespace {
 	struct window_stack_handler {
-		window_stack_handler(std::unique_ptr<window>& win) : local_window(win) {
+		explicit window_stack_handler(std::unique_ptr<window>& win) : local_window(win) {
 			open_window_stack.push_back(local_window.get());
 		}
 		~window_stack_handler() {

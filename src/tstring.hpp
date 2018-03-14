@@ -61,10 +61,10 @@ public:
 
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string_base(const t_string_base&);
-	t_string_base(const std::string& string);
+	explicit t_string_base(const std::string& string);
 	t_string_base(const std::string& string, const std::string& textdomain);
 	t_string_base(const std::string& sing, const std::string& pl, int count, const std::string& textdomain);
-	t_string_base(const char* string);
+	explicit t_string_base(const char* string);
 
 	static t_string_base from_serialized(const std::string& string);
 	std::string to_serialized() const;

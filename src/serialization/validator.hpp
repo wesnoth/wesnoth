@@ -89,6 +89,6 @@ public:
 	 * Supposed to be thrown from the constructor
 	 */
 	struct error : public game::error {
-		error(const std::string& message) : game::error(message) {}
+		explicit error(const std::string& message) : game::error(message) {}
 	};
 };

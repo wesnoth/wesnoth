@@ -36,7 +36,7 @@ public:
 	 * Constructs the object from a saved file.
 	 * @param cfg	the contents of a [tunnel] tag
 	 */
-	teleport_group(const config& cfg);
+	explicit teleport_group(const config& cfg);
 
 	/*
 	 * Constructs the object from a config file.
@@ -155,7 +155,7 @@ const teleport_map get_teleport_locations(const unit &u, const team &viewing_tea
 class manager
 {
 public:
-	manager(const config &cfg);
+	explicit manager(const config &cfg);
 
 	/*
 	 * @param group		teleport_group to be added

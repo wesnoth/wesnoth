@@ -119,7 +119,7 @@ editor_action* mouse_action::key_event(
 
 void mouse_action::set_mouse_overlay(editor_display& disp)
 {
-	disp.set_mouseover_hex_overlay(nullptr);
+	disp.set_mouseover_hex_overlay(surface());
 }
 
 bool mouse_action::has_alt_modifier() const
@@ -149,7 +149,7 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_trans
 
 	if (image_fg == nullptr || image_bg == nullptr) {
 		ERR_ED << "Missing terrain icon" << std::endl;
-		disp.set_mouseover_hex_overlay(nullptr);
+		disp.set_mouseover_hex_overlay(surface());
 		return;
 	}
 

@@ -75,7 +75,7 @@ void delete_game(const std::string& name);
 class create_save_info
 {
 public:
-	create_save_info(const std::string* d = nullptr);
+	explicit create_save_info(const std::string* d = nullptr);
 	save_info operator()(const std::string& filename) const;
 	const std::string dir;
 };

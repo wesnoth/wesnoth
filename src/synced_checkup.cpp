@@ -84,7 +84,7 @@ namespace
 {
 	struct checkup_choice : public mp_sync::user_choice
 	{
-		checkup_choice(const config& cfg) : cfg_(cfg)
+		explicit checkup_choice(const config& cfg) : cfg_(cfg)
 		{
 		}
 		virtual ~checkup_choice()

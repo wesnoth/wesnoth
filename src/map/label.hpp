@@ -35,7 +35,7 @@ public:
 	typedef std::map<std::string, label_map> team_label_map;
 
 	map_labels(const map_labels&);
-	map_labels(const team*);
+	explicit map_labels(const team*);
 
 	~map_labels();
 

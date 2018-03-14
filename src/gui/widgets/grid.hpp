@@ -453,7 +453,7 @@ public:
 	{
 
 	public:
-		iterator(std::vector<child>::iterator itor) : itor_(itor)
+		explicit iterator(std::vector<child>::iterator itor) : itor_(itor)
 		{
 		}
 

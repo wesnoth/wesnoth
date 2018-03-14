@@ -26,7 +26,7 @@ class unit_map;
 class config_variable_set : public variable_set {
 	const config& cfg_;
 public:
-	config_variable_set(const config& cfg) : cfg_(cfg) {}
+	explicit config_variable_set(const config& cfg) : cfg_(cfg) {}
 	virtual config::attribute_value get_variable_const(const std::string &id) const;
 };
 
@@ -179,7 +179,7 @@ public:
 	};
 
 	struct recursion_error : public config::error {
-		recursion_error(const std::string& msg) : error(msg) {}
+		explicit recursion_error(const std::string& msg) : error(msg) {}
 	};
 
 	/** In-order iteration over all children. */
@@ -204,14 +204,14 @@ private:
 struct vconfig::attribute_iterator::pointer_proxy
 {
 	value_type p;
-	pointer_proxy(value_type p) : p(p) {}
+	explicit pointer_proxy(value_type p) : p(p) {}
 	value_type *operator->() const { return &p; }
 };
 
 struct vconfig::all_children_iterator::pointer_proxy
 {
 	value_type p;
-	pointer_proxy(value_type p) : p(p) {}
+	explicit pointer_proxy(value_type p) : p(p) {}
 	value_type *operator->() const { return &p; }
 };
 
@@ -219,7 +219,7 @@ struct vconfig::all_children_iterator::pointer_proxy
 class scoped_wml_variable
 {
 public:
-	scoped_wml_variable(const std::string& var_name);
+	explicit scoped_wml_variable(const std::string& var_name);
 	virtual ~scoped_wml_variable();
 	const std::string& name() const { return var_name_; }
 	virtual void activate() = 0;

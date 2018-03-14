@@ -40,7 +40,7 @@ template<typename T, typename T_void_value = void_value<T>>
 class animated
 {
 public:
-	animated(int start_time = 0);
+	explicit animated(int start_time = 0);
 	virtual ~animated() {}
 
 	typedef std::pair<int, T> frame_description;

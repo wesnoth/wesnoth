@@ -64,7 +64,7 @@ struct cache_item
 	{
 	}
 
-	cache_item(const T& item)
+	explicit cache_item(const T& item)
 		: item(item)
 		, loaded(true)
 	{
@@ -563,7 +563,7 @@ static void discard_indexed_palette(surface& surf)
 static void add_localized_overlay(const std::string& ovr_file, surface& orig_surf)
 {
 	filesystem::rwops_ptr rwops = filesystem::make_read_RWops(ovr_file);
-	surface ovr_surf = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
+	surface ovr_surf(IMG_Load_RW(rwops.release(), true)); // SDL takes ownership of rwops
 	if(ovr_surf.null()) {
 		return;
 	}
@@ -590,7 +590,7 @@ static surface load_image_file(const image::locator& loc)
 			}
 
 			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(location);
-			res = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
+			res = surface(IMG_Load_RW(rwops.release(), true)); // SDL takes ownership of rwops
 
 			discard_indexed_palette(res);
 
@@ -617,7 +617,7 @@ static surface load_image_sub_file(const image::locator& loc)
 {
 	surface surf = get_image(loc.get_filename(), UNSCALED);
 	if(surf == nullptr) {
-		return nullptr;
+		return surface();
 	}
 
 	modification_queue mods = modification::decode(loc.get_modifications());
@@ -661,7 +661,7 @@ static surface load_image_sub_file(const image::locator& loc)
 			// Safe because those images are only used by terrain rendering
 			// and it filters them out.
 			// A safer and more general way would be to keep only one copy of it
-			surf = nullptr;
+			surf = surface();
 		}
 
 		loc.add_to_cache(is_empty_hex_, is_empty);
@@ -717,9 +717,9 @@ static surface load_image_data_uri(const image::locator& loc)
 		filesystem::rwops_ptr rwops{SDL_RWFromConstMem(image_data.data(), image_data.length()), &SDL_FreeRW};
 
 		if(parsed.mime == "image/png") {
-			surf = IMG_LoadTyped_RW(rwops.release(), true, "PNG");
+			surf = surface(IMG_LoadTyped_RW(rwops.release(), true, "PNG"));
 		} else if(parsed.mime == "image/jpeg") {
-			surf = IMG_LoadTyped_RW(rwops.release(), true, "JPG");
+			surf = surface(IMG_LoadTyped_RW(rwops.release(), true, "JPG"));
 		} else {
 			ERR_DP << "Invalid image MIME type: " << parsed.mime << std::endl;
 		}
@@ -757,7 +757,7 @@ static surface apply_light(surface surf, const light_string& ls)
 	}
 
 	// check if the lightmap is already cached or need to be generated
-	surface lightmap = nullptr;
+	surface lightmap;
 	auto i = lightmaps_.find(ls);
 	if(i != lightmaps_.end()) {
 		lightmap = i->second;
@@ -1339,7 +1339,7 @@ bool save_image(const surface& surf, const std::string& filename)
 	if(!filesystem::ends_with(filename, ".bmp")) {
 		LOG_DP << "Writing a png image to " << filename << std::endl;
 
-		surface tmp = SDL_PNGFormatAlpha(surf.get());
+		surface tmp(SDL_PNGFormatAlpha(surf.get()));
 		const int err = SDL_SavePNG_RW(tmp, filesystem::make_write_RWops(filename).release(), 1); //1 means SDL takes ownership of the RWops
 		return err == 0;
 	}

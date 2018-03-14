@@ -183,7 +183,7 @@ int intf_read_file(lua_State *L)
 class lua_filestream
 {
 public:
-	lua_filestream(const std::string& fname)
+	explicit lua_filestream(const std::string& fname)
 		: buff_()
 		, pistream_(filesystem::istream_file(fname))
 	{

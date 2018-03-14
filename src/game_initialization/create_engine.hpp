@@ -58,7 +58,7 @@ static bool contains_ignore_case(const std::string& str1, const std::string& str
 class level
 {
 public:
-	level(const config& data);
+	explicit level(const config& data);
 	virtual ~level() = default;
 
 	MAKE_ENUM(TYPE,
@@ -126,7 +126,7 @@ private:
 class scenario : public level
 {
 public:
-	scenario(const config& data);
+	explicit scenario(const config& data);
 
 	bool can_launch_game() const;
 
@@ -188,7 +188,7 @@ private:
 class random_map : public scenario
 {
 public:
-	random_map(const config& data);
+	explicit random_map(const config& data);
 
 	const config& generator_data() const
 	{
@@ -220,7 +220,7 @@ private:
 class campaign : public level
 {
 public:
-	campaign(const config& data);
+	explicit campaign(const config& data);
 
 	bool can_launch_game() const;
 

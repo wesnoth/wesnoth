@@ -24,7 +24,7 @@ class CVideo;
 namespace help {
 
 struct help_manager {
-	help_manager(const config *game_config);
+	explicit help_manager(const config *game_config);
 	~help_manager();
 };
 

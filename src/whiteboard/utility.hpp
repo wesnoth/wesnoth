@@ -67,7 +67,7 @@ unit* future_visible_unit(int on_side, map_location hex, int viewer_side = wb::v
 int path_cost(const std::vector<map_location>& path, const unit& u);
 
 struct temporary_unit_hider {
-	temporary_unit_hider(unit& u);
+	explicit temporary_unit_hider(unit& u);
 	~temporary_unit_hider();
 	unit* const unit_;
 };

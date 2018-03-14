@@ -18,7 +18,7 @@
 #include "generators/map_generator.hpp"
 
 struct generator_data {
-	generator_data(const config& cfg);
+	explicit generator_data(const config& cfg);
 
 	int width;
 	int height;
@@ -39,7 +39,7 @@ struct generator_data {
 class default_map_generator : public map_generator
 {
 public:
-	default_map_generator(const config &game_config);
+	explicit default_map_generator(const config &game_config);
 
 	bool allow_user_config() const override;
 	void user_config() override;

@@ -45,7 +45,7 @@ std::map<int, tooltip>::const_iterator current_tooltip = tips.end();
 int tooltip_handle = 0;
 int tooltip_id = 0;
 
-surface current_background = nullptr;
+surface current_background;
 
 }
 

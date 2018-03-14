@@ -19,7 +19,7 @@ class team;
 class countdown_clock : public events::pump_monitor
 {
 public:
-	countdown_clock(team& team);
+	explicit countdown_clock(team& team);
 	~countdown_clock();
 	/// @returns ticks passed since last update
 	/// @param new_timestamp latest result of SDL_GetTicks()

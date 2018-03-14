@@ -545,7 +545,7 @@ namespace
 {
 struct remove_ordered
 {
-	remove_ordered(const config::child_map::iterator& iter)
+	explicit remove_ordered(const config::child_map::iterator& iter)
 		: iter_(iter)
 	{
 	}
@@ -726,7 +726,7 @@ const config::attribute_value& config::get_old_attribute(
 		if(!in_tag.empty()) {
 			const std::string what = formatter() << "[" << in_tag << "]" << old_key << "=";
 			const std::string msg  = formatter() << "Use " << key << "= instead.";
-			deprecated_message(what, DEP_LEVEL::INDEFINITE, "", msg);
+			deprecated_message(what, DEP_LEVEL::INDEFINITE, version_info(), msg);
 			lg::wml_error() << msg;
 		}
 

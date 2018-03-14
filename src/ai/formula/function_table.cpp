@@ -55,7 +55,7 @@ namespace {
  */
 class unit_adapter {
 	public:
-		unit_adapter(const variant& arg) : unit_type_(), unit_() {
+		explicit unit_adapter(const variant& arg) : unit_type_(), unit_() {
 			auto unit = arg.try_convert<unit_callable>();
 
 			if (unit) {
@@ -173,7 +173,7 @@ namespace {
 
 	struct comp {
 		const std::vector<node>& nodes;
-		comp(const std::vector<node>& n) : nodes(n) { }
+		explicit comp(const std::vector<node>& n) : nodes(n) { }
 		bool operator()(int l, int r) const {
 			return nodes[r] < nodes[l];
 		}

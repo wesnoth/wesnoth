@@ -26,7 +26,7 @@
 struct mp_game_settings
 {
 	mp_game_settings();
-	mp_game_settings(const config& cfg);
+	explicit mp_game_settings(const config& cfg);
 
 	config to_config() const;
 

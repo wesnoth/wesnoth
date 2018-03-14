@@ -34,7 +34,7 @@ public:
 		STATE_ANIM};      /** normal anims */
 
 	/** Default construct a unit animation component corresponding to a unit. */
-	unit_animation_component(unit & my_unit) :
+	explicit unit_animation_component(unit & my_unit) :
 		u_(my_unit),
 		anim_(nullptr),
 		animations_(),

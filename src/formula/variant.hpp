@@ -38,7 +38,7 @@ public:
 	explicit variant(const std::map<variant, variant>& map);
 
 	template<typename T>
-	variant(std::shared_ptr<T> callable)
+	explicit variant(std::shared_ptr<T> callable)
 		: value_(std::make_shared<variant_callable>(callable))
 	{
 		assert(value_.get());

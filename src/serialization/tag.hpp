@@ -53,7 +53,7 @@ public:
 	{
 	}
 
-	class_key(const config&);
+	explicit class_key(const config&);
 
 	const std::string& get_name() const
 	{
@@ -166,7 +166,7 @@ public:
 	{
 	}
 
-	class_tag(const config&);
+	explicit class_tag(const config&);
 
 	~class_tag()
 	{

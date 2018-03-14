@@ -163,7 +163,7 @@ void carryover_info::remove_side(const std::string& id) {
 
 struct save_id_equals
 {
-	save_id_equals(const std::string& val) : value (val) {}
+	explicit save_id_equals(const std::string& val) : value (val) {}
 	bool operator () (carryover& v2) const
 	{
 		return value == v2.get_save_id();

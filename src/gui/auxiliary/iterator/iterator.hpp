@@ -46,7 +46,7 @@ public:
 	 *
 	 * @param root                The widget where to start the iteration.
 	 */
-	iterator(widget& root) : order(root)
+	explicit iterator(widget& root) : order(root)
 	{
 	}
 

@@ -42,7 +42,7 @@ public:
 	 * @param cfg Object corresponding to a [image] block's contents from
 	 *            a [part] node.
 	 */
-	floating_image(const config& cfg);
+	explicit floating_image(const config& cfg);
 
 	/**
 	 * Copy constructor.
@@ -122,7 +122,7 @@ public:
 	 * Constructor. Initializes a background_layer object from a
 	 * [background_layer] WML node.
 	 */
-	background_layer(const config& cfg);
+	explicit background_layer(const config& cfg);
 
 	/** Whether the layer should be scaled horizontally. */
 	bool scale_horizontally() const
@@ -248,7 +248,7 @@ public:
 	 * Constructs a storyscreen part from a managed WML node.
 	 * @param part_cfg Node object which should correspond to a [part] block's contents.
 	 */
-	part(const vconfig& part_cfg);
+	explicit part(const vconfig& part_cfg);
 
 	/** Whether the story screen title should be displayed or not. */
 	bool show_title() const

@@ -506,7 +506,7 @@ std::vector<surface> footsteps_images(const map_location& loc, const pathfind::m
 	}
 	const std::string foot_speed_prefix = game_config::foot_speed_prefix[image_number-1];
 
-	surface teleport = nullptr;
+	surface teleport;
 
 	// We draw 2 half-hex (with possibly different directions),
 	// but skip the first for the first step.

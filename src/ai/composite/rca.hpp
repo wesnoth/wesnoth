@@ -159,7 +159,7 @@ public:
 
 	virtual candidate_action_ptr get_new_instance( rca_context &context, const config &cfg ) = 0;
 
-	candidate_action_factory( const std::string &name )
+	explicit candidate_action_factory( const std::string &name )
 	{
 		if (is_duplicate(name)) {
 			return;
@@ -175,7 +175,7 @@ public:
 template<class CANDIDATE_ACTION>
 class register_candidate_action_factory : public candidate_action_factory {
 public:
-	register_candidate_action_factory( const std::string &name )
+	explicit register_candidate_action_factory( const std::string &name )
 		: candidate_action_factory( name )
 	{
 	}

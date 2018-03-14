@@ -39,7 +39,7 @@ namespace editor {
 
 struct editor_exception : public game::error
 {
-	editor_exception(const std::string& msg)
+	explicit editor_exception(const std::string& msg)
 	: game::error(msg)
 	{
 	}
@@ -47,7 +47,7 @@ struct editor_exception : public game::error
 
 struct editor_logic_exception : public editor_exception
 {
-	editor_logic_exception(const std::string& msg)
+	explicit editor_logic_exception(const std::string& msg)
 	: editor_exception(msg)
 	{
 	}

@@ -62,7 +62,7 @@ teleport_group::teleport_group(const vconfig& cfg, bool reversed) : cfg_(cfg.get
 
 class ignore_units_display_context : public display_context {
 public:
-	ignore_units_display_context(const display_context & dc)
+	explicit ignore_units_display_context(const display_context & dc)
 		: um_()
 		, gm_(&dc.map())
 		, tm_(&dc.teams())
@@ -85,7 +85,7 @@ private:
 
 class ignore_units_filter_context : public filter_context {
 public:
-	ignore_units_filter_context(const filter_context & fc)
+	explicit ignore_units_filter_context(const filter_context & fc)
 		: dc_(fc.get_disp_context())
 		, tod_(&fc.get_tod_man())
 		, gd_(fc.get_game_data())

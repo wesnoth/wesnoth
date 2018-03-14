@@ -27,7 +27,7 @@ namespace randomness
 	class synced_rng : public randomness::rng
 	{
 	public:
-		synced_rng(std::function<std::string()> seed_generator);
+		explicit synced_rng(std::function<std::string()> seed_generator);
 		virtual ~synced_rng();
 
 	protected:

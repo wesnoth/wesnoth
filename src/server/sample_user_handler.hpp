@@ -27,7 +27,7 @@
  */
 class suh : public user_handler {
 	public:
-		suh(config c);
+		explicit suh(config c);
 
 		void add_user(const std::string& name, const std::string& mail, const std::string& password);
 		void remove_user(const std::string& name);

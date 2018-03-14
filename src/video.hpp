@@ -36,7 +36,7 @@ public:
 
 	enum FAKE_TYPES { NO_FAKE, FAKE, FAKE_TEST };
 
-	CVideo(FAKE_TYPES type = NO_FAKE);
+	explicit CVideo(FAKE_TYPES type = NO_FAKE);
 
 	~CVideo();
 
@@ -308,7 +308,7 @@ private:
 class flip_locker
 {
 public:
-	flip_locker(CVideo& video)
+	explicit flip_locker(CVideo& video)
 		: video_(video)
 	{
 		video_.lock_flips(true);
@@ -328,7 +328,7 @@ namespace video2
 class draw_layering : public events::sdl_handler
 {
 protected:
-	draw_layering(const bool auto_join = true);
+	explicit draw_layering(const bool auto_join = true);
 	virtual ~draw_layering();
 };
 

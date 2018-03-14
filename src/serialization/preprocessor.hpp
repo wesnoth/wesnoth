@@ -120,7 +120,7 @@ struct preproc_config
 {
 	struct error : public game::error
 	{
-		error(const std::string& message)
+		explicit error(const std::string& message)
 			: game::error(message)
 		{
 		}

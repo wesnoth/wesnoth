@@ -541,7 +541,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 namespace {
 	struct map_choice : public mp_sync::user_choice
 	{
-		map_choice(const std::string& filename) : filename_(filename) {}
+		explicit map_choice(const std::string& filename) : filename_(filename) {}
 		std::string filename_;
 		virtual config query_user(int /*side*/) const
 		{

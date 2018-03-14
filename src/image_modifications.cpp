@@ -273,7 +273,7 @@ private:
 surface adjust_alpha_modification::operator()(const surface & src) const
 {
 	if(src == nullptr) {
-		return nullptr;
+		return surface();
 	}
 
 	wfl::formula new_alpha(formula_);
@@ -282,7 +282,7 @@ surface adjust_alpha_modification::operator()(const surface & src) const
 
 	if(nsurf == nullptr) {
 		std::cerr << "could not make neutral surface...\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -317,7 +317,7 @@ surface adjust_alpha_modification::operator()(const surface & src) const
 surface adjust_channels_modification::operator()(const surface & src) const
 {
 	if(src == nullptr) {
-		return nullptr;
+		return surface();
 	}
 
 	wfl::formula new_red(formulas_[0]);
@@ -329,7 +329,7 @@ surface adjust_channels_modification::operator()(const surface & src) const
 
 	if(nsurf == nullptr) {
 		std::cerr << "could not make neutral surface...\n";
-		return nullptr;
+		return surface();
 	}
 
 	{
@@ -445,7 +445,7 @@ surface mask_modification::operator()(const surface& src) const
 }
 
 surface light_modification::operator()(const surface& src) const {
-	if(src == nullptr) { return nullptr; }
+	if(src == nullptr) { return surface(); }
 
 	// light_surface wants a neutral surface having same dimensions
 	surface nsurf;
@@ -538,7 +538,7 @@ surface o_modification::operator()(const surface& src) const
 
 	if(nsurf == nullptr) {
 		std::cerr << "could not make neutral surface...\n";
-		return nullptr;
+		return surface();
 	}
 
 	uint16_t amount = ftofxp(opacity_);

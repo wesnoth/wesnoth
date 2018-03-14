@@ -39,12 +39,12 @@ public:
 	/** Initialisation
 	 * @param source the definition of the context-free grammar to use
 	 */
-	context_free_grammar_generator(const std::string& source);
+	explicit context_free_grammar_generator(const std::string& source);
 
 	/** Initialisation
 	 * @param source A map of nonterminals to lists of possibilities
 	 */
-	context_free_grammar_generator(const std::map<std::string, std::vector<std::string>>& source);
+	explicit context_free_grammar_generator(const std::map<std::string, std::vector<std::string>>& source);
 
 	/** Generates a possible word in the grammar set before
 	 * @return the word

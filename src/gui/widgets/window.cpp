@@ -92,7 +92,7 @@ namespace implementation
 class builder_window : public builder_styled_widget
 {
 public:
-	builder_window(const config& cfg) : builder_styled_widget(cfg)
+	explicit builder_window(const config& cfg) : builder_styled_widget(cfg)
 	{
 	}
 

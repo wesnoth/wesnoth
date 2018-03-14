@@ -20,7 +20,7 @@
 ///An error occurred during when trying to coommunicate with the wesnothd server.
 struct wesnothd_error : public game::error
 {
-	wesnothd_error(const std::string& error) : game::error(error) {}
+	explicit wesnothd_error(const std::string& error) : game::error(error) {}
 };
 
 /**
@@ -29,7 +29,7 @@ struct wesnothd_error : public game::error
  */
 struct wesnothd_rejected_client_error : public game::error
 {
-    wesnothd_rejected_client_error (const std::string& msg) : game::error (msg) {}
+    explicit wesnothd_rejected_client_error (const std::string& msg) : game::error (msg) {}
 };
 
 ///We received invalid data from wesnothd during a game
@@ -37,7 +37,7 @@ struct wesnothd_rejected_client_error : public game::error
 ///TODO: find a short name
 struct ingame_wesnothd_error : public wesnothd_error ,public lua_jailbreak_exception
 {
-	ingame_wesnothd_error(const std::string& error) : wesnothd_error(error) {}
+	explicit ingame_wesnothd_error(const std::string& error) : wesnothd_error(error) {}
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(ingame_wesnothd_error)
 };
 
@@ -46,6 +46,6 @@ struct ingame_wesnothd_error : public wesnothd_error ,public lua_jailbreak_excep
 ///TODO: find a short name
 struct wesnothd_connection_error : public wesnothd_error ,public lua_jailbreak_exception
 {
-	wesnothd_connection_error(const boost::system::error_code& error) : wesnothd_error(error.message()) {}
+	explicit wesnothd_connection_error(const boost::system::error_code& error) : wesnothd_error(error.message()) {}
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(wesnothd_connection_error)
 };

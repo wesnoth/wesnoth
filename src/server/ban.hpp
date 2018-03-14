@@ -69,7 +69,7 @@ namespace wesnothd {
 
 	public:
 		banned(const std::string& ip, const time_t end_time, const std::string& reason, const std::string& who_banned=who_banned_default_, const std::string& group="", const std::string& nick="");
-		banned(const config&);
+		explicit banned(const config&);
 
 		void read(const config&);
 		void write(config&) const;
@@ -114,7 +114,7 @@ namespace wesnothd {
 		bool operator>(const banned& b) const;
 
 		struct error : public ::game::error {
-			error(const std::string& message) : ::game::error(message) {}
+			explicit error(const std::string& message) : ::game::error(message) {}
 		};
 	};
 

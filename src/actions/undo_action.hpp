@@ -63,7 +63,7 @@ namespace actions {
 		/// It is assumed that undo actions are constructed after the action is performed
 		/// so that the unit id diff does not change after this constructor.
 		undo_action();
-		undo_action(const config& cfg);
+		explicit undo_action(const config& cfg);
 		// Virtual destructor to support derived classes.
 		virtual ~undo_action() {}
 

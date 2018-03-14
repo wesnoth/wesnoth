@@ -25,7 +25,7 @@ class playturn_network_adapter
 public:
 	typedef std::function<bool(config&)> source_type;
 
-	playturn_network_adapter(source_type source);
+	explicit playturn_network_adapter(source_type source);
 	~playturn_network_adapter();
 
 	//returns true on success.

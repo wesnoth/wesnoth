@@ -351,7 +351,7 @@ bool connect_engine::can_start_game() const
 void connect_engine::send_to_server(const config& cfg) const
 {
 	if(campaign_info_) {
-		campaign_info_->connection.send_data(cfg);
+		campaign_info_->connection.send_data(configr_of(cfg));
 	}
 }
 

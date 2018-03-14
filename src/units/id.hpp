@@ -45,7 +45,7 @@ namespace n_unit {
 		size_t fake_id_;
 		static id_manager manager_;
 	public:
-		id_manager(size_t next_id) : next_id_(next_id) , fake_id_(0) {}
+		explicit id_manager(size_t next_id) : next_id_(next_id) , fake_id_(0) {}
 		/** returns id for unit that is created */
 		unit_id next_id();
 

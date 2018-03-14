@@ -51,7 +51,7 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 		const unit_map::const_unit_iterator unit_it = units.find(hex);
 		if (unit_it != units.end()) {
 
-			disp.set_mouseover_hex_overlay(nullptr);
+			disp.set_mouseover_hex_overlay(surface());
 
 			SDL_Rect rect;
 			rect.x = disp.get_location_x(hex);

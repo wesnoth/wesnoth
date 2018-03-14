@@ -28,7 +28,7 @@ public:
 		std::memset(&event_, 0, sizeof(event_));
 	}
 
-	UserEvent(int type) : UserEvent()
+	explicit UserEvent(int type) : UserEvent()
 	{
 		event_.type = type;
 	}

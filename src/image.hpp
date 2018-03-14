@@ -43,8 +43,8 @@ namespace image {
 		struct value {
 			value();
 			value(const value &a);
-			value(const char *filename);
-			value(const std::string& filename);
+			explicit value(const char *filename);
+			explicit value(const std::string& filename);
 			value(const std::string& filename, const std::string& modifications);
 			value(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications);
 
