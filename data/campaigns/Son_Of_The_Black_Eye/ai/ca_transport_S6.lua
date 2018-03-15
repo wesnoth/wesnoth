@@ -1,6 +1,7 @@
 local H = wesnoth.require "helper"
 local LS = wesnoth.require "location_set"
 local M = wesnoth.map
+local T = H.set_wml_tag_metatable {}
 
 local ca_transport = {}
 
@@ -110,29 +111,12 @@ function ca_transport:execution()
         -- Also unload units
         table.sort(best_adj_tiles, function(a, b) return a[3] > b[3] end)
 
-        local command = "local unit = wesnoth.get_unit(x1, y1) "
-            .. "unit.variables.landed = 'yes' "
-            .. "unit.variables.destination_x = 1 "
-            .. "unit.variables.destination_y = 30"
-        ai.synced_command(command, best_unit.x, best_unit.y)
+		local command_data = { x = best_unit.x, y = best_unit.y }
+		for i = 1, math.min(#best_adj_tiles, 3) do
+			table.insert(command_data, T.dst { x = best_adj_tiles[i][1], y = best_adj_tiles[i][2]} )
+		end
 
-        -- Unload 1 level 2 unit
-        local l2_type = H.rand('Swordsman,Javelineer,Pikeman')
-        local command = "wesnoth.put_unit({ side = " .. wesnoth.current.side
-            .. ", type = '" .. l2_type
-            .. "', moves = 2 }, "
-            .. best_adj_tiles[1][1] .. "," .. best_adj_tiles[1][2] .. ")"
-        ai.synced_command(command, best_unit.x, best_unit.y)
-
-        -- Unload up to 2 level 1 units
-        for i = 2, math.min(#best_adj_tiles, 3) do
-            local l1_type = H.rand('Fencer,Mage,Cavalryman,Bowman,Spearman')
-            local command = "wesnoth.put_unit({ side = " .. wesnoth.current.side
-                .. ", type = '" .. l1_type
-                .. "', moves = 2 }, "
-                .. best_adj_tiles[i][1] .. "," .. best_adj_tiles[i][2] .. ")"
-            ai.synced_command(command, best_unit.x, best_unit.y)
-        end
+		wesnoth.invoke_synced_command("ship_unload", command_data)
 
         return
     end

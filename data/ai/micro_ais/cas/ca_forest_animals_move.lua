@@ -3,6 +3,7 @@ local W = H.set_wml_action_metatable {}
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "location_set"
 local M = wesnoth.map
+local T = H.set_wml_tag_metatable {}
 
 local function get_forest_animals(cfg)
     -- We want the deer/rabbits to move first, tuskers afterward
@@ -157,8 +158,7 @@ function ca_forest_animals_move:execution(cfg)
 
         -- If this is a rabbit ending on a hole -> disappears
         if (unit.type == rabbit_type) and hole_map:get(farthest_hex[1], farthest_hex[2]) then
-            local command =  "wesnoth.erase_unit(x1, y1)"
-            ai.synced_command(command, farthest_hex[1], farthest_hex[2])
+			wesnoth.invoke_synced_command("rabbit_despawn", { x = farthest_hex[1], y = farthest_hex[2]})
         end
     end
 

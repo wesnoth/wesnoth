@@ -1,6 +1,7 @@
 local H = wesnoth.require "helper"
 local W = H.set_wml_action_metatable {}
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local T = H.set_wml_tag_metatable {}
 
 local ca_forest_animals_new_rabbit = {}
 
@@ -58,12 +59,7 @@ function ca_forest_animals_new_rabbit:execution(cfg)
             x, y = wesnoth.find_vacant_tile(holes[i].x, holes[i].y)
         end
 
-        local command =  "wesnoth.put_unit({ side = "
-            .. wesnoth.current.side
-            .. ", type = '"
-            ..  cfg.rabbit_type
-            .. "' }, x1, y1)"
-        ai.synced_command(command, x, y)
+		wesnoth.invoke_synced_command("rabbit_spawn", { rabbit_type = cfg.rabbit_type, x = x, y = y})
     end
 
     if wesnoth.sides[wesnoth.current.side].shroud then
