@@ -16,6 +16,7 @@
 
 #include <vector>
 #include <string>
+#include "serialization/base64.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include <boost/test/auto_unit_test.hpp>
@@ -132,6 +133,52 @@ BOOST_AUTO_TEST_CASE( test_wildcard_string_match )
 	BOOST_CHECK(utils::wildcard_string_match("", "***?**"));
 	BOOST_CHECK(!utils::wildcard_string_match("", "?"));
 	BOOST_CHECK(!utils::wildcard_string_match("", "???"));
+}
+
+BOOST_AUTO_TEST_CASE( test_base64_encodings )
+{
+	const std::vector<uint8_t> empty;
+	const std::string empty_b64;
+	const std::string empty_c64;
+	const std::vector<uint8_t> foo = {'f', 'o', 'o'};
+	const std::string foo_b64 = "Zm9v";
+	const std::string foo_c64 = "axqP";
+	const std::vector<uint8_t> foob = {'f', 'o', 'o', 'b'};
+	const std::string foob_b64 = "Zm9vYg==";
+	const std::string foob_c64 = "axqPW/";
+
+	std::vector<uint8_t> many_bytes;
+
+	many_bytes.resize(1024);
+	for(int i = 0; i < 1024; ++i) {
+		many_bytes[i] = i % 256;
+	}
+
+	BOOST_CHECK(base64::encode({empty.data(), empty.size()}).empty());
+	BOOST_CHECK_EQUAL(base64::encode({foo.data(), foo.size()}), foo_b64);
+	BOOST_CHECK_EQUAL(base64::encode({foob.data(), foob.size()}), foob_b64);
+
+	BOOST_CHECK(base64::decode(empty_b64).empty());
+	// Not using CHECK_EQUAL because vector<uint8_t> is not printable
+	BOOST_CHECK(base64::decode(foo_b64) == foo);
+	BOOST_CHECK(base64::decode(foob_b64) == foob);
+
+	BOOST_CHECK(crypt64::encode({empty.data(), empty.size()}).empty());
+	BOOST_CHECK_EQUAL(crypt64::encode({foo.data(), foo.size()}), foo_c64);
+	BOOST_CHECK_EQUAL(crypt64::encode({foob.data(), foob.size()}), foob_c64);
+
+	BOOST_CHECK(crypt64::decode(empty_c64).empty());
+	// Not using CHECK_EQUAL because vector<uint8_t> is not printable
+	BOOST_CHECK(crypt64::decode(foo_c64) == foo);
+	BOOST_CHECK(crypt64::decode(foob_c64) == foob);
+
+	BOOST_CHECK_EQUAL(crypt64::decode('.'), 0);
+	BOOST_CHECK_EQUAL(crypt64::decode('z'), 63);
+	BOOST_CHECK_EQUAL(crypt64::encode(0), '.');
+	BOOST_CHECK_EQUAL(crypt64::encode(63), 'z');
+
+	BOOST_CHECK(base64::decode(base64::encode({many_bytes.data(), many_bytes.size()})) == many_bytes);
+	BOOST_CHECK(crypt64::decode(crypt64::encode({many_bytes.data(), many_bytes.size()})) == many_bytes);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
