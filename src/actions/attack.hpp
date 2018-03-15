@@ -62,6 +62,7 @@ struct battle_context_unit_stats
                                */
 	bool swarm;              /**< Attack has swarm special. */
 	bool firststrike;        /**< Attack has firststrike special. */
+	bool alignment;        /**< Attack has alignment special. */
 	bool disable;            /**< Attack has disable special. */
 	unsigned int experience, max_experience;
 	unsigned int level;
@@ -79,7 +80,7 @@ struct battle_context_unit_stats
 	unsigned int swarm_max;     /**< Maximum number of blows with swarm (equal to num_blows if swarm isn't used). */
 
 	std::string plague_type; /**< The plague type used by the attack, if any. */
-
+    std::string alignment_id;
 	battle_context_unit_stats(const unit& u,
 			const map_location& u_loc,
 			int u_attack_num,
@@ -278,11 +279,19 @@ int combat_modifier(const unit_map& units,
 		unit_type::ALIGNMENT alignment,
 		bool is_fearless);
 
+		int attack_combat_modifier(const unit_map& units,
+		const gamemap& map,
+		const map_location& loc,
+		std::string att_alignment,
+		unit_type::ALIGNMENT alignment,
+		bool is_fearless);
+
 /**
  * Returns the amount that a unit's damage should be multiplied by
  * due to a given lawful_bonus.
  */
 int generic_combat_modifier(int lawful_bonus, unit_type::ALIGNMENT alignment, bool is_fearless);
+int special_combat_modifier(int lawful_bonus, std::string att_alignment,unit_type::ALIGNMENT alignment, bool is_fearless);
 /**
  * Function to check if an attack will satisfy the requirements for backstab.
  * Input:
