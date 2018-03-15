@@ -584,7 +584,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	}
 }
 
-bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, int index, bool press)
+bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, int index, bool press, bool release)
 {
 	hotkey::HOTKEY_COMMAND command = cmd.id;
 	SCOPE_ED;
@@ -592,7 +592,7 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 
 	// nothing here handles release; fall through to base implementation
 	if (!press) {
-		return hotkey::command_executor::do_execute_command(cmd, index, press);
+		return hotkey::command_executor::do_execute_command(cmd, index, press, release);
 	}
 
 	switch (command) {
@@ -988,7 +988,7 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 			return true;
 		}
 		default:
-			return hotkey::command_executor::do_execute_command(cmd, index, press);
+			return hotkey::command_executor::do_execute_command(cmd, index, press, release);
 	}
 }
 

@@ -147,7 +147,7 @@ public:
 	}
 
 protected:
-	virtual bool do_execute_command(const hotkey_command& command, int index=-1, bool press=true);
+	virtual bool do_execute_command(const hotkey_command& command, int index=-1, bool press=true, bool release=false);
 
 private:
 	bool press_event_sent_ = false;

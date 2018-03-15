@@ -84,10 +84,10 @@ namespace hotkey {
 
 static void event_execute(const SDL_Event& event, command_executor* executor);
 
-bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*index*/, bool press)
+bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*index*/, bool press, bool release)
 {
 	// hotkey release handling
-	if (!press) {
+	if (release) {
 		switch(cmd.id) {
 			// release a scroll key, un-apply scrolling in the given direction
 			case HOTKEY_SCROLL_UP:
@@ -109,20 +109,28 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 		return true;
 	}
 
-	// hotkey press handling
+	// handling of hotkeys which activate even on hold events
 	switch(cmd.id) {
 		case HOTKEY_SCROLL_UP:
 			scroll_up(true);
-			break;
+			return true;
 		case HOTKEY_SCROLL_DOWN:
 			scroll_down(true);
-			break;
+			return true;
 		case HOTKEY_SCROLL_LEFT:
 			scroll_left(true);
-			break;
+			return true;
 		case HOTKEY_SCROLL_RIGHT:
 			scroll_right(true);
-			break;
+			return true;
+	}
+
+	if(!press) {
+		return false; // nothing else handles hotkey hold events
+	}
+
+	// hotkey press handling
+	switch(cmd.id) {
 		case HOTKEY_CYCLE_UNITS:
 			cycle_units();
 			break;
@@ -561,6 +569,7 @@ void command_executor::execute_command(const SDL_Event& event, int index)
 		!press_event_sent_;
 	bool press = keypress ||
 		(event.type == SDL_JOYBUTTONDOWN || event.type == SDL_MOUSEBUTTONDOWN);
+	bool release = event.type == SDL_KEYUP;
 	if(press) {
 		LOG_HK << "sending press event (keypress = " <<
 			std::boolalpha << keypress << std::noboolalpha << ")\n";
@@ -570,7 +579,7 @@ void command_executor::execute_command(const SDL_Event& event, int index)
 	}
 
 	if (!can_execute_command(command, index)
-			|| do_execute_command(command, index, press)) {
+			|| do_execute_command(command, index, press, release)) {
 		return;
 	}
 

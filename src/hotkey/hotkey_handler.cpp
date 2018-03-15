@@ -237,7 +237,7 @@ void play_controller::hotkey_handler::scroll_right(bool on)
 	play_controller_.set_scroll_right(on);
 }
 
-bool play_controller::hotkey_handler::do_execute_command(const hotkey::hotkey_command& cmd, int index, bool press)
+bool play_controller::hotkey_handler::do_execute_command(const hotkey::hotkey_command& cmd, int index, bool press, bool release)
 {
 	hotkey::HOTKEY_COMMAND command = cmd.id;
 	if(index >= 0) {
@@ -259,7 +259,7 @@ bool play_controller::hotkey_handler::do_execute_command(const hotkey::hotkey_co
 
 		return gamestate().get_wml_menu_items().fire_item(name, hex, gamestate().gamedata_, gamestate(), gamestate().board_.units_, !press);
 	}
-	return command_executor::do_execute_command(cmd, index, press);
+	return command_executor::do_execute_command(cmd, index, press, release);
 }
 
 bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
