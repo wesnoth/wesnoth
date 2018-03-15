@@ -1196,6 +1196,18 @@ bool config::matches(const config& filter) const
 			}
 
 			continue;
+		} else if(i.key == "and") {
+			if(!matches(i.cfg)) {
+				return false;
+			}
+
+			continue;
+		} else if(i.key == "or") {
+			if(matches(i.cfg)) {
+				return true;
+			}
+
+			continue;
 		}
 
 		bool found = false;

@@ -45,6 +45,7 @@
    * [cancel_action] now works in attack-related events.
    * [unit_type] upkeep= now works again. It was inadvertently broken during
      the 1.13 development cycle.
+   * [filter_wml] now accepts [and] and [or] in addition to [not].
  ### Miscellaneous and bug fixes
    * Fixed standing animation toggle not taking immediate effect (bug
      #1653).
