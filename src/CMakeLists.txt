@@ -62,12 +62,12 @@ set(common-external-libs
 	${Boost_LOCALE_LIBRARY}
 )
 
-if(NOT CMAKE_CROSSCOMPILING AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
 	set(common-external-libs
 		${common-external-libs}
 		"-licudata -licui18n -licuuc"
 	)
-endif(NOT CMAKE_CROSSCOMPILING AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
+endif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
 
 set(game-external-libs
 	${common-external-libs}
