@@ -123,6 +123,8 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 		case HOTKEY_SCROLL_RIGHT:
 			scroll_right(true);
 			return true;
+		default:
+			break;
 	}
 
 	if(!press) {
