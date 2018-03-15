@@ -68,6 +68,6 @@ std::string user_handler::create_secure_nonce()
 		throw RAND_bytes_exception();
 	}
 
-	return crypt64::encode({buf.data(), buf.size()});
+	return base64::encode({buf.data(), buf.size()});
 }
 
