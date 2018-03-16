@@ -7,7 +7,7 @@ local replace_map = wesnoth.wml_actions.replace_map
 local helper = wesnoth.require "helper"
 local wml_actions = wesnoth.wml_actions
 local T = wml.tag
-local V = wml.variables
+local vars = wml.variables
 
 function wesnoth.wml_actions.shift_labels(cfg)
 	for k, v in ipairs(labels) do
@@ -71,15 +71,15 @@ function wesnoth.wml_actions.persistent_carryover_store(cfg)
 			variable = "side_store.unit"
 		}
 		--TODO: apply carryover multipler and carryover bonus.
-		V["side_store.gold"] = side.gold
-		for i = 1, V["side_store.unit.length"] do
-			V[string.format("side_store.unit[%d].x", i - 1)] = nil
-			V[string.format("side_store.unit[%d].y", i - 1)] = nil
-			V[string.format("side_store.unit[%d].hitpoints", i - 1)] = nil
-			V[string.format("side_store.unit[%d].moves", i - 1)] = nil
-			V[string.format("side_store.unit[%d].side", i - 1)] = nil
-			V[string.format("side_store.unit[%d].goto_x", i - 1)] = nil
-			V[string.format("side_store.unit[%d].goto_y", i - 1)] = nil
+		vars["side_store.gold"] = side.gold
+		for i = 1, vars["side_store.unit.length"] do
+			vars[string.format("side_store.unit[%d].x", i - 1)] = nil
+			vars[string.format("side_store.unit[%d].y", i - 1)] = nil
+			vars[string.format("side_store.unit[%d].hitpoints", i - 1)] = nil
+			vars[string.format("side_store.unit[%d].moves", i - 1)] = nil
+			vars[string.format("side_store.unit[%d].side", i - 1)] = nil
+			vars[string.format("side_store.unit[%d].goto_x", i - 1)] = nil
+			vars[string.format("side_store.unit[%d].goto_y", i - 1)] = nil
 		end
 		wml_actions.set_global_variable {
 			namespace = cfg.scenario_id,
@@ -88,7 +88,7 @@ function wesnoth.wml_actions.persistent_carryover_store(cfg)
 			immediate = true,
 			side = "global",
 		}
-		V["side_store"] = nil
+		vars["side_store"] = nil
 		::continue::
 	end
 end
@@ -109,17 +109,17 @@ function wesnoth.wml_actions.persistent_carryover_unstore(cfg)
 					immediate = true,
 				}
 			end
-			if V["side_store.gold"] then
+			if vars["side_store.gold"] then
 				break
 			end
 		end
-		for i = 1, V["side_store.unit.length"] do
-			V[string.format("side_store.unit[%d].side", i - 1)] = num
-			local u = wesnoth.get_unit(V[string.format("side_store.unit[%d].id", i - 1)])
+		for i = 1, vars["side_store.unit.length"] do
+			vars[string.format("side_store.unit[%d].side", i - 1)] = num
+			local u = wesnoth.get_unit(vars[string.format("side_store.unit[%d].id", i - 1)])
 
 			if u then
-				V[string.format("side_store.unit[%d].x", i - 1)] = u.x
-				V[string.format("side_store.unit[%d].y", i - 1)] = u.y
+				vars[string.format("side_store.unit[%d].x", i - 1)] = u.x
+				vars[string.format("side_store.unit[%d].y", i - 1)] = u.y
 				u:extract()
 			end
 			wml_actions.unstore_unit {
@@ -130,9 +130,9 @@ function wesnoth.wml_actions.persistent_carryover_unstore(cfg)
 				animate = false,
 			}
 		end
-		if V["side_store.gold"] then
-			side.gold = side.gold + V["side_store.gold"]
+		if vars["side_store.gold"] then
+			side.gold = side.gold + vars["side_store.gold"]
 		end
-		V["side_store"] = nil
+		vars["side_store"] = nil
 	end
 end

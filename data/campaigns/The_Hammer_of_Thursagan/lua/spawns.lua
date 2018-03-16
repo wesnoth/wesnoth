@@ -28,7 +28,7 @@ function wml_actions.spawn_units(cfg)
 	end
 
 	if done > 0 then
-		for then_child in helper.child_range(cfg, "then") do
+		for then_child in wml.child_range(cfg, "then") do
 			local action = utils.handle_event_commands(then_child, "conditional")
 			if action ~= "none" then return end
 		end
