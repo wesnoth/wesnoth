@@ -28,6 +28,7 @@ that class. */
 
 namespace utils {
 using string_view = boost::string_view;
+typedef boost::basic_string_view<uint8_t, std::char_traits<uint8_t>> byte_string_view;
 }
 
 #else
@@ -605,6 +606,7 @@ const basic_string_view<charT, traits>& str) {
 }
 
 typedef basic_string_view<char, std::char_traits<char>>        string_view;
+typedef basic_string_view<uint8_t, std::char_traits<uint8_t>>  byte_string_view;
 typedef basic_string_view<wchar_t, std::char_traits<wchar_t>>    wstring_view;
 
 #ifndef BOOST_NO_CXX11_CHAR16_T

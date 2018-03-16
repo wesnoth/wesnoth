@@ -14,6 +14,8 @@
 
 #include "hash.hpp"
 
+#include "serialization/base64.hpp"
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -32,31 +34,12 @@ static_assert(utils::sha1::DIGEST_SIZE == SHA_DIGEST_LENGTH, "Constants mismatch
 
 namespace {
 
-const std::string itoa64 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" ;
 const std::string hash_prefix = "$H$";
 
 template<size_t len>
-std::string encode_hash(const std::array<uint8_t, len>& input) {
-	std::string encoded_hash;
-
-	unsigned int i = 0;
-	do {
-		unsigned value = input[i++];
-		encoded_hash.append(itoa64.substr(value & 0x3f,1));
-		if(i < len)
-			value |= static_cast<int>(input[i]) << 8;
-		encoded_hash.append(itoa64.substr((value >> 6) & 0x3f,1));
-		if(i++ >= len)
-			break;
-		if(i < len)
-			value |= static_cast<int>(input[i]) << 16;
-		encoded_hash.append(itoa64.substr((value >> 12) & 0x3f,1));
-		if(i++ >= len)
-			break;
-		encoded_hash.append(itoa64.substr((value >> 18) & 0x3f,1));
-	} while (i < len);
-
-	return encoded_hash;
+std::string encode_hash(const std::array<uint8_t, len>& bytes) {
+	utils::byte_string_view view{bytes.data(), len};
+	return crypt64::encode(view);
 }
 
 template<size_t len>
@@ -81,7 +64,7 @@ md5::md5(const std::string& input) {
 }
 
 int md5::get_iteration_count(const std::string& hash) {
-	return itoa64.find_first_of(hash[3]);
+	return crypt64::decode(hash[3]);
 }
 
 std::string md5::get_salt(const std::string& hash) {

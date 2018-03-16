@@ -29,6 +29,7 @@
 #include "image_modifications.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
+#include "serialization/base64.hpp"
 #include "serialization/string_utils.hpp"
 #include "sdl/rect.hpp"
 #include "utils/general.hpp"
@@ -666,36 +667,6 @@ static surface load_image_sub_file(const image::locator& loc)
 	return surf;
 }
 
-static std::string base64_decode(utils::string_view in)
-{
-	std::vector<int> T(256,-1);
-	for(int i=0; i<64; i++) {
-		T["ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"[i]] = i;
-	}
-
-	const int last_char = in.find_last_not_of("=");
-	const int length = last_char * 6 / 8;
-
-	std::string out;
-	out.reserve(length);
-
-	int val = 0, bits = -8;
-	for(unsigned char c: in) {
-		if(T[c] == -1) {
-			break; // Non-base64 character encountered. Should be =
-		}
-		val = (val<<6) + T[c];
-		bits += 6;
-		if(bits >= 0) {
-			out.push_back(static_cast<char>((val >> bits) & 0xFF));
-			bits -= 8;
-			val &= 0xFFFF; // Prevent shifting bits off the left end, which is UB
-		}
-	}
-
-	return out;
-}
-
 static surface load_image_data_uri(const image::locator& loc)
 {
 	surface surf;
@@ -709,8 +680,8 @@ static surface load_image_data_uri(const image::locator& loc)
 	} else if(parsed.mime.substr(0, 5) != "image") {
 		ERR_DP << "Data URI not of image MIME type: " << parsed.mime << std::endl;
 	} else {
-		const std::string image_data = base64_decode(parsed.data);
-		filesystem::rwops_ptr rwops{SDL_RWFromConstMem(image_data.data(), image_data.length()), &SDL_FreeRW};
+		const std::vector<uint8_t> image_data = base64::decode(parsed.data);
+		filesystem::rwops_ptr rwops{SDL_RWFromConstMem(image_data.data(), image_data.size()), &SDL_FreeRW};
 
 		if(parsed.mime == "image/png") {
 			surf = IMG_LoadTyped_RW(rwops.release(), true, "PNG");
