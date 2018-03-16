@@ -49,6 +49,7 @@ public:
 	 * @param file        Name of file
 	 */
 	virtual void open_tag(const std::string & name,
+						  const config& parent,
 						  int start_line,
 						  const std::string &file,
 						  bool addittion = false) = 0;

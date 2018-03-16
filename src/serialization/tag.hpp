@@ -26,10 +26,12 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <queue>
 
 #include <boost/regex.hpp>
-
-class config;
+#include <boost/iterator/iterator_facade.hpp>
+#include <boost/range/iterator.hpp>
+#include "config.hpp"
 
 namespace schema_validation
 {
@@ -237,6 +239,8 @@ private:
 	bool fuzzy_;
 };
 
+class class_condition;
+
 /**
  * Stores information about tag.
  * Each tags is an element of great tag tree. This tree is close to filesystem:
@@ -251,6 +255,62 @@ public:
 	using tag_map  = std::map<std::string, class_tag>;
 	using key_map  = std::map<std::string, class_key>;
 	using link_map = std::map<std::string, std::string>;
+	using condition_list = std::vector<class_condition>;
+private:
+	void push_new_tag_conditions(std::queue<const class_tag*> q, const class_tag& tag);
+	template<typename T, typename Map = std::map<std::string, T>>
+	class iterator : public boost::iterator_facade<iterator<T>, const typename Map::value_type, std::forward_iterator_tag>
+	{
+		std::queue<const class_tag*> condition_queue;
+		typename Map::const_iterator current;
+		const config& match;
+	public:
+		// Construct a begin iterator
+		iterator(const class_tag& base_tag, const config& match) : match(match)
+		{
+			init(base_tag);
+			push_new_tag_conditions(base_tag);
+		}
+		// Construct an end iterator
+		// That weird expression is to get a reference to an "invalid" config.
+		iterator() : match(config().child("a")) {}
+	private:
+		friend class boost::iterator_core_access;
+		void init(const class_tag& base_tag);
+		void increment();
+		void push_new_tag_conditions(const class_tag& tag)
+		{
+			for(const auto& condition : tag.conditions_) {
+				if(condition.matches(match)) {
+					condition_queue.push(&condition);
+				}
+			}
+		}
+		bool equal(const iterator<T, Map>& other) const
+		{
+			if(condition_queue.empty() && other.condition_queue.empty()) {
+				return true;
+			}
+			if(condition_queue.empty() || other.condition_queue.empty()) {
+				return false;
+			}
+			if(condition_queue.front() != other.condition_queue.front()) {
+				return false;
+			}
+			if(current != other.current) {
+				return false;
+			}
+			return true;
+		}
+		typename iterator<T,Map>::reference dereference() const
+		{
+			return *current;
+		}
+	};
+	template<typename T, typename Map> friend class iterator;
+	using tag_iterator = iterator<class_tag>;
+	using key_iterator = iterator<class_key>;
+public:
 
 	class_tag()
 		: name_("")
@@ -386,6 +446,10 @@ public:
 
 	void add_link(const std::string& link);
 
+	void add_switch(const config& switch_cfg);
+
+	void add_filter(const config& cond_cfg);
+
 	/**
 	 * Tags are usually organized in tree.
 	 * This function helps to add a tag to his exact place in tree
@@ -408,7 +472,7 @@ public:
 	}
 
 	/** Returns pointer to child key. */
-	const class_key* find_key(const std::string& name) const;
+	const class_key* find_key(const std::string& name, const config& match) const;
 
 	/** Returns pointer to child link. */
 	const std::string* find_link(const std::string& name) const;
@@ -417,24 +481,29 @@ public:
 	 * Returns pointer to tag using full path to it.
 	 * Also work with links
 	 */
-	const class_tag* find_tag(const std::string& fullpath, const class_tag& root) const;
+	const class_tag* find_tag(const std::string& fullpath, const class_tag& root, const config& match) const;
 
 	/** Calls the expansion on each child. */
 	void expand_all(class_tag& root);
 
-	const tag_map& tags() const
+	boost::iterator_range<tag_iterator> tags(const config& cfg_match) const
 	{
-		return tags_;
+		return {tag_iterator(*this, cfg_match), tag_iterator()};
 	}
 
-	const key_map& keys() const
+	boost::iterator_range<key_iterator> keys(const config& cfg_match) const
 	{
-		return keys_;
+		return {key_iterator(*this, cfg_match), key_iterator()};
 	}
 
 	const link_map& links() const
 	{
 		return links_;
+	}
+
+	const condition_list& conditions() const
+	{
+		return conditions_;
 	}
 
 	void remove_key_by_name(const std::string& name)
@@ -473,6 +542,9 @@ private:
 	/** links to possible children. */
 	link_map links_;
 
+	/** conditional partial matches */
+	condition_list conditions_;
+
 	/** whether this is a "fuzzy" tag. */
 	bool fuzzy_;
 
@@ -488,9 +560,9 @@ private:
 	 */
 	void printl(std::ostream& os, int level, int step = 4);
 
-	class_tag* find_tag(const std::string & fullpath, class_tag & root)
+	class_tag* find_tag(const std::string & fullpath, class_tag & root, const config& match)
 	{
-		return const_cast<class_tag*>(const_cast<const class_tag*>(this)->find_tag(fullpath, root));
+		return const_cast<class_tag*>(const_cast<const class_tag*>(this)->find_tag(fullpath, root, match));
 	}
 
 	void add_tags(const tag_map& list)
@@ -508,10 +580,29 @@ private:
 		links_.insert(list.begin(), list.end());
 	}
 
+	void add_conditions(const condition_list& list)
+	{
+		conditions_.insert(conditions_.end(), list.begin(), list.end());
+	}
+
 	/** Copies tags, keys and links of tag to this. */
 	void append_super(const class_tag& tag, const std::string& super);
 
 	/** Expands all "super" copying their data to this. */
 	void expand(class_tag& root);
+};
+
+extern template class class_tag::iterator<class_tag>;
+extern template class class_tag::iterator<class_key>;
+
+/**
+ * Stores information about a conditional portion of a tag.
+ * Format is the same as class_tag.
+ */
+class class_condition : public class_tag {
+	config filter_;
+public:
+	class_condition(const config& info, const config& filter) : class_tag(info), filter_(filter) {}
+	bool matches(const config& cfg) const;
 };
 }

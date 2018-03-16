@@ -20,6 +20,7 @@
 #include "serialization/tag.hpp"
 #include "serialization/string_utils.hpp"
 #include "boost/optional.hpp"
+#include "formatter.hpp"
 
 #include "config.hpp"
 
@@ -153,6 +154,8 @@ void class_key::print(std::ostream& os, int level) const
 		os << s << "    default=" << default_ << "\n";
 	}
 
+	// TODO: Other attributes
+
 	os << s << "[/key]\n";
 }
 
@@ -189,6 +192,14 @@ class_tag::class_tag(const config& cfg)
 		std::string link_name = link["name"].str();
 		add_link(link_name);
 	}
+
+	for(const config& sw : cfg.child_range("switch")) {
+		add_switch(sw);
+	}
+
+	for(const config& filter : cfg.child_range("if")) {
+		add_filter(filter);
+	}
 }
 
 void class_tag::print(std::ostream& os)
@@ -204,12 +215,23 @@ void class_tag::add_link(const std::string& link)
 	links_.emplace(name_link, link);
 }
 
-const class_key* class_tag::find_key(const std::string& name) const
+const class_key* class_tag::find_key(const std::string& name, const config& match) const
 {
+	// Check the conditions first, so that conditional definitions
+	// override base definitions in the event of duplicates.
+	for(auto& cond : conditions_) {
+		if(cond.matches(match)) {
+			if(auto key = cond.find_key(name, match)) {
+				return key;
+			}
+		}
+	}
+
 	const auto it_keys = keys_.find(name);
 	if(it_keys != keys_.end()) {
 		return &(it_keys->second);
 	}
+
 	key_map::const_iterator it_fuzzy = std::find_if(keys_.begin(), keys_.end(), [&name](const key_map::value_type& key){
 		if(!key.second.is_fuzzy()) {
 			return false;
@@ -232,7 +254,7 @@ const std::string* class_tag::find_link(const std::string& name) const
 	return nullptr;
 }
 
-const class_tag* class_tag::find_tag(const std::string& fullpath, const class_tag& root) const
+const class_tag* class_tag::find_tag(const std::string& fullpath, const class_tag& root, const config& match) const
 {
 	if(fullpath.empty()) {
 		return nullptr;
@@ -249,18 +271,28 @@ const class_tag* class_tag::find_tag(const std::string& fullpath, const class_ta
 		name = fullpath;
 	}
 
+	// Check the conditions first, so that conditional definitions
+	// override base definitions in the event of duplicates.
+	for(auto& cond : conditions_) {
+		if(cond.matches(match)) {
+			if(auto tag = cond.find_tag(fullpath, root, match)) {
+				return tag;
+			}
+		}
+	}
+
 	const auto it_tags = tags_.find(name);
 	if(it_tags != tags_.end()) {
 		if(next_path.empty()) {
 			return &(it_tags->second);
 		} else {
-			return it_tags->second.find_tag(next_path, root);
+			return it_tags->second.find_tag(next_path, root, match);
 		}
 	}
 
 	const auto it_links = links_.find(name);
 	if(it_links != links_.end()) {
-		return root.find_tag(it_links->second + "/" + next_path, root);
+		return root.find_tag(it_links->second + "/" + next_path, root, match);
 	}
 
 	const auto it_fuzzy = std::find_if(tags_.begin(), tags_.end(), [&name](const tag_map::value_type& tag){
@@ -273,7 +305,7 @@ const class_tag* class_tag::find_tag(const std::string& fullpath, const class_ta
 		if(next_path.empty()) {
 			return &(it_fuzzy->second);
 		} else {
-			return it_tags->second.find_tag(next_path, root);
+			return it_tags->second.find_tag(next_path, root, match);
 		}
 	}
 
@@ -289,6 +321,10 @@ void class_tag::expand_all(class_tag& root)
 	for(auto& tag : tags_) {
 		tag.second.expand(root);
 		tag.second.expand_all(root);
+	}
+	for(auto& cond : conditions_) {
+		cond.expand(root);
+		cond.expand_all(root);
 	}
 }
 
@@ -366,6 +402,8 @@ void class_tag::printl(std::ostream& os, int level, int step)
 		key.second.print(os, level + step);
 	}
 
+	// TODO: Other attributes
+
 	os << s << "[/tag]\n";
 }
 
@@ -382,6 +420,7 @@ void class_tag::add_tag(const std::string& path, const class_tag& tag, class_tag
 			it->second.add_tags(tag.tags_);
 			it->second.add_keys(tag.keys_);
 			it->second.add_links(tag.links_);
+			// TODO: Other attributes
 		}
 
 		links_.erase(tag.get_name());
@@ -411,8 +450,10 @@ void class_tag::add_tag(const std::string& path, const class_tag& tag, class_tag
 
 void class_tag::append_super(const class_tag& tag, const std::string& path)
 {
+	// TODO: Ensure derived tag definitions override base tag definitions in the event of duplicates
 	add_keys(tag.keys_);
 	add_links(tag.links_);
+	add_conditions(tag.conditions_);
 	
 	for(const auto& t : tag.tags_) {
 		links_.erase(t.first);
@@ -432,17 +473,112 @@ void class_tag::append_super(const class_tag& tag, const std::string& path)
 void class_tag::expand(class_tag& root)
 {
 	if(!super_.empty()) {
-		class_tag* super_tag = root.find_tag(super_, root);
+		class_tag* super_tag = root.find_tag(super_, root, config());
 		if(super_tag) {
 			if(super_tag != this) {
 				super_tag->expand(root);
 				append_super(*super_tag, super_);
 				super_.clear();
 			} else {
+				// TODO: Detect super cycles too!
 				std::cerr << "the same" << super_tag->name_ << "\n";
 			}
 		}
 		// TODO: Warn if the super doesn't exist
+	}
+}
+
+void class_tag::add_switch(const config& switch_cfg)
+{
+	config default_cfg;
+	const std::string key = switch_cfg["key"];
+	for(const auto& case_cfg : switch_cfg.child_range("case")) {
+		const std::vector<std::string> values = utils::split(case_cfg["value"]);
+		config filter;
+		for(const auto& value : values) {
+			filter.add_child("or")[key] = value;
+			default_cfg.add_child("not")[key] = value;
+		}
+		conditions_.emplace_back(case_cfg, filter);
+		const std::string name = formatter() << get_name() << '[' << key << '=' << case_cfg["value"] << ']';
+		conditions_.back().set_name(name);
+	}
+	if(switch_cfg.has_child("default")) {
+		conditions_.emplace_back(switch_cfg.child("default"), default_cfg);
+		const std::string name = formatter() << get_name() << "[default]";
+		conditions_.back().set_name(name);
+	}
+}
+
+void class_tag::add_filter(const config& cond_cfg)
+{
+	config filter = cond_cfg;
+	filter.clear_children("then", "else");
+	if(cond_cfg.has_child("then")) {
+		conditions_.emplace_back(cond_cfg.child("then"), filter);
+		const std::string name = formatter() << get_name() << "[then]";
+		conditions_.back().set_name(name);
+	}
+	if(cond_cfg.has_child("else")) {
+		conditions_.emplace_back(cond_cfg.child("else"), config{"not", filter});
+		const std::string name = formatter() << get_name() << "[else]";
+		conditions_.back().set_name(name);
+	}
+}
+
+bool class_condition::matches(const config& cfg) const
+{
+	if(cfg.empty()) {
+		// Conditions are not allowed to match an empty config.
+		// If they were, the conditions might be considered when expanding super-tags.
+		// That would result in a condition tag being used for the expansion, rather than
+		// the base tag, which would be bad.
+		return false;
+	}
+	return cfg.matches(filter_);
+}
+
+void class_tag::tag_iterator::init(const class_tag& base_tag)
+{
+	current = base_tag.tags_.begin();
+	if(current != base_tag.tags_.end()) {
+		condition_queue.push(&base_tag);
+	}
+}
+
+void class_tag::tag_iterator::increment()
+{
+	++current;
+	while(current== condition_queue.front()->tags_.end()) {
+		condition_queue.pop();
+		if(condition_queue.empty()) {
+			return;
+		}
+		const class_tag& new_base = *condition_queue.front();
+		current= new_base.tags_.begin();
+		push_new_tag_conditions(new_base);
+	}
+}
+
+void class_tag::key_iterator::init(const class_tag& base_tag)
+{
+	current = base_tag.keys_.begin();
+	if(current != base_tag.keys_.end()) {
+		condition_queue.push(&base_tag);
+	}
+}
+
+void class_tag::key_iterator::increment()
+{
+	++current;
+	while(current == condition_queue.front()->keys_.end()) {
+		condition_queue.pop();
+		if(condition_queue.empty()) {
+			return;
+		}
+		const class_tag& new_base = *condition_queue.front();
+		current = new_base.keys_.begin();
+		push_new_tag_conditions(new_base);
 	}
 }
 

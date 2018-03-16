@@ -189,13 +189,13 @@ bool schema_validator::read_config_file(const std::string& filename)
  * assume they all are on their place due to parser algorithm
  * and validation logic
  */
-void schema_validator::open_tag(const std::string& name, int start_line, const std::string& file, bool addittion)
+void schema_validator::open_tag(const std::string& name, const config& parent, int start_line, const std::string& file, bool addittion)
 {
 	if(!stack_.empty()) {
 		const class_tag* tag = nullptr;
 
 		if(stack_.top()) {
-			tag = stack_.top()->find_tag(name, root_);
+			tag = stack_.top()->find_tag(name, root_, parent);
 
 			if(!tag) {
 				wrong_tag_error(file, start_line, name, stack_.top()->get_name(), create_exceptions_);
@@ -243,7 +243,7 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 	// Please note that validating unknown tag keys the result will be false
 	// Checking all elements counters.
 	if(!stack_.empty() && stack_.top() && config_read_) {
-		for(const auto& tag : stack_.top()->tags()) {
+		for(const auto& tag : stack_.top()->tags(cfg)) {
 			int cnt = counter_.top()[tag.first].cnt;
 
 			if(tag.second.get_min() > cnt) {
@@ -259,7 +259,7 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 		}
 
 		// Checking if all mandatory keys are present
-		for(const auto& key : stack_.top()->keys()) {
+		for(const auto& key : stack_.top()->keys(cfg)) {
 			if(key.second.is_mandatory()) {
 				if(cfg.get(key.first) == nullptr) {
 					cache_.top()[&cfg].emplace_back(MISSING_KEY, file, start_line, 0, name, key.first);
@@ -274,7 +274,7 @@ void schema_validator::validate_key(
 {
 	if(!stack_.empty() && stack_.top() && !stack_.top()->get_name().empty() && config_read_) {
 		// checking existing keys
-		const class_key* key = stack_.top()->find_key(name);
+		const class_key* key = stack_.top()->find_key(name, cfg);
 		if(key) {
 			bool matched = false;
 			for(auto& possible_type : utils::split(key->get_type())) {

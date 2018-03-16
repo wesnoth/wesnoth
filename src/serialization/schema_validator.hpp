@@ -52,7 +52,7 @@ public:
 	}
 
 	virtual void open_tag(
-			const std::string& name, int start_line = 0, const std::string& file = "", bool addittion = false);
+			const std::string& name, const config& parent, int start_line = 0, const std::string& file = "", bool addittion = false);
 	virtual void close_tag();
 	virtual void validate(const config& cfg, const std::string& name, int start_line, const std::string& file);
 	virtual void validate_key(const config& cfg,
