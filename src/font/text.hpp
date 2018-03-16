@@ -161,7 +161,7 @@ public:
 	 * Get maximum length.
 	 * 
 	 * @returns                   The maximum length of the text. The length of text
-	 *                            should not over this value.
+	 *                            should not exceed this value.
 	 */
 	size_t get_maximum_length() const;
 
