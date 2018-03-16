@@ -541,15 +541,11 @@ bool class_condition::matches(const config& cfg) const
 void class_tag::tag_iterator::init(const class_tag& base_tag)
 {
 	current = base_tag.tags_.begin();
-	if(current != base_tag.tags_.end()) {
-		condition_queue.push(&base_tag);
-	}
+	condition_queue.push(&base_tag);
 }
 
-void class_tag::tag_iterator::increment()
-{
-	++current;
-	while(current== condition_queue.front()->tags_.end()) {
+void class_tag::tag_iterator::ensure_valid_or_end() {
+	while(current == condition_queue.front()->tags_.end()) {
 		condition_queue.pop();
 		if(condition_queue.empty()) {
 			return;
@@ -563,14 +559,10 @@ void class_tag::tag_iterator::increment()
 void class_tag::key_iterator::init(const class_tag& base_tag)
 {
 	current = base_tag.keys_.begin();
-	if(current != base_tag.keys_.end()) {
-		condition_queue.push(&base_tag);
-	}
+	condition_queue.push(&base_tag);
 }
 
-void class_tag::key_iterator::increment()
-{
-	++current;
+void class_tag::key_iterator::ensure_valid_or_end() {
 	while(current == condition_queue.front()->keys_.end()) {
 		condition_queue.pop();
 		if(condition_queue.empty()) {

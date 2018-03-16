@@ -270,6 +270,7 @@ private:
 		{
 			init(base_tag);
 			push_new_tag_conditions(base_tag);
+			ensure_valid_or_end();
 		}
 		// Construct an end iterator
 		// That weird expression is to get a reference to an "invalid" config.
@@ -277,7 +278,12 @@ private:
 	private:
 		friend class boost::iterator_core_access;
 		void init(const class_tag& base_tag);
-		void increment();
+		void ensure_valid_or_end();
+		void increment()
+		{
+			++current;
+			ensure_valid_or_end();
+		}
 		void push_new_tag_conditions(const class_tag& tag)
 		{
 			for(const auto& condition : tag.conditions_) {
