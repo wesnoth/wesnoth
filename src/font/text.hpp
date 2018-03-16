@@ -158,6 +158,14 @@ public:
 		const unsigned column, const unsigned line = 0) const;
 
 	/**
+	 * Get maximum length.
+	 * 
+	 * @returns                   The maximum length of the text. The length of text
+	 *                            should not over this value.
+	 */
+	size_t get_maximum_length() const;
+
+	/**
 	 * Gets the largest collection of characters, including the token at position,
 	 * and not including any characters from the delimiters set.
 	 *

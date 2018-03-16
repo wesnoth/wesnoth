@@ -195,6 +195,11 @@ point pango_text::get_cursor_position(
 	return point(PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y));
 }
 
+size_t pango_text::get_maximum_length() const
+{
+	return maximum_length_;
+}
+
 std::string pango_text::get_token(const point & position, const char * delim) const
 {
 	this->recalculate();
