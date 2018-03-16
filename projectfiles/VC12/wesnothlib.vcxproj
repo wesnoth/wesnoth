@@ -130,11 +130,11 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\crypt_blowfish\crypt_blowfish.c" />
     <ClCompile Include="..\..\src\color.cpp" />
     <ClCompile Include="..\..\src\color_range.cpp" />
     <ClCompile Include="..\..\src\config.cpp" />
     <ClCompile Include="..\..\src\config_attribute_value.cpp" />
+    <ClCompile Include="..\..\src\crypt_blowfish\crypt_blowfish.c" />
     <ClCompile Include="..\..\src\filesystem_boost.cpp" />
     <ClCompile Include="..\..\src\filesystem_common.cpp" />
     <ClCompile Include="..\..\src\font\constants.cpp" />
@@ -148,6 +148,7 @@
     <ClCompile Include="..\..\src\log.cpp" />
     <ClCompile Include="..\..\src\log_windows.cpp" />
     <ClCompile Include="..\..\src\random.cpp" />
+    <ClCompile Include="..\..\src\serialization\base64.cpp" />
     <ClCompile Include="..\..\src\serialization\binary_or_text.cpp">
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4706;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
@@ -164,12 +165,11 @@
     <ClCompile Include="..\..\src\version.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\crypt_blowfish\crypt_blowfish.h" />
     <ClInclude Include="..\..\src\color.hpp" />
     <ClInclude Include="..\..\src\color_range.hpp" />
     <ClInclude Include="..\..\src\config.hpp" />
     <ClInclude Include="..\..\src\config_attribute_value.hpp" />
-    <ClInclude Include="..\..\src\deprecation.hpp" />
+    <ClInclude Include="..\..\src\crypt_blowfish\crypt_blowfish.h" />
     <ClInclude Include="..\..\src\filesystem.hpp" />
     <ClInclude Include="..\..\src\font\constants.hpp" />
     <ClInclude Include="..\..\src\formula\string_utils.hpp" />
@@ -181,6 +181,7 @@
     <ClInclude Include="..\..\src\log.hpp" />
     <ClInclude Include="..\..\src\log_windows.hpp" />
     <ClInclude Include="..\..\src\random.hpp" />
+    <ClInclude Include="..\..\src\serialization\base64.hpp" />
     <ClInclude Include="..\..\src\serialization\binary_or_text.hpp" />
     <ClInclude Include="..\..\src\serialization\parser.hpp" />
     <ClInclude Include="..\..\src\serialization\preprocessor.hpp" />
