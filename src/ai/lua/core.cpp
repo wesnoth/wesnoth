@@ -271,25 +271,10 @@ static int cfun_ai_check_stopunit(lua_State *L)
 	return ai_stopunit_select(L, false, true, true);
 }
 
-static int ai_synced_command(lua_State *L, bool exec)
+static int ai_synced_command(lua_State* /*L*/, bool /*exec*/)
 {
-#if 1
-	(void)L;
-	(void)exec;
-	ERR_LUA << "synced_command was removed, use wesnoth.wml_actions.do_command with [custom_command] instead\n";
+	ERR_LUA << "synced_command was removed. Use wesnoth.wml_actions.do_command with [custom_command] instead\n";
 	return 0;
-#else
-	const char *lua_code = luaL_checkstring(L, 1);
-	int side = get_readonly_context(L).get_side();
-	map_location location;
-	if (!lua_isnoneornil(L, 2)) {
-		location.set_wml_x(lua_tonumber(L, 2));
-		location.set_wml_y(lua_tonumber(L, 3));
-	}
-
-	ai::synced_command_result_ptr synced_command_result = ai::actions::execute_synced_command_action(side,exec,std::string(lua_code),location);
-	return transform_ai_action(L,synced_command_result);
-#endif
 }
 
 static int cfun_ai_execute_synced_command(lua_State *L)
