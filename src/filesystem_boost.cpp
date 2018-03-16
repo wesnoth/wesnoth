@@ -28,8 +28,6 @@
 #include <boost/algorithm/string.hpp>
 #include <set>
 
-using boost::uintmax_t;
-
 #ifdef _WIN32
 #include "log_windows.hpp"
 
