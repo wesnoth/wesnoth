@@ -1336,7 +1336,7 @@ bool save_image(const surface& surf, const std::string& filename)
 	if(filesystem::ends_with(filename, ".jpg")) {
 		LOG_DP << "Writing a JPG image to " << filename << std::endl;
 
-		const int err = IMG_SaveJPG_RW(surf, filesystem::make_write_RWops(filename).release(), true, 50); // SDL takes ownership of the RWops
+		const int err = IMG_SaveJPG_RW(surf, filesystem::make_write_RWops(filename).release(), true, 75); // SDL takes ownership of the RWops
 		return err == 0;
 	}
 #endif
