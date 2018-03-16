@@ -344,11 +344,10 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  use_undo, /*show*/, /*error_
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(lua_ai, child,  /*use_undo*/, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(custom_command, child,  /*use_undo*/, /*show*/, /*error_handler*/)
 {
-	const std::string &lua_code = child["code"];
 	assert(resources::lua_kernel);
-	resources::lua_kernel->run(lua_code.c_str());
+	resources::lua_kernel->custom_command(child);
 	return true;
 }
 

@@ -968,7 +968,7 @@ void synced_command_result::do_execute()
 	}
 	s << lua_code_;
 
-	synced_context::run_in_synced_context_if_not_already("lua_ai", replay_helper::get_lua_ai(s.str()));
+	//synced_context::run_in_synced_context_if_not_already("lua_ai", replay_helper::get_lua_ai(s.str()));
 
 	try {
 		set_gamestate_changed();

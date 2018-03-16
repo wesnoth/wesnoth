@@ -281,7 +281,7 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 		return;
 	}
 
-	static const std::set<std::string> allowed_tags {"attack", "move", "recruit", "recall", "disband", "fire_event", "lua_ai"};
+	static const std::set<std::string> allowed_tags {"attack", "move", "recruit", "recall", "disband", "fire_event", "custom_command"};
 
 	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
 	const bool is_unsynced_too_early = resources::gamedata->phase() != game_data::PLAY;
@@ -296,7 +296,7 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 		ERR_NG << "[do_command] cannot be used in linger mode" << std::endl;
 		return;
 	}
-	if(is_unsynced && resources::controller->gamestate().init_side_done())
+	if(is_unsynced && !resources::controller->gamestate().init_side_done())
 	{
 		ERR_NG << "[do_command] cannot be used before the turn has started" << std::endl;
 		return;

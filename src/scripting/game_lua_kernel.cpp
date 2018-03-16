@@ -4395,6 +4395,17 @@ bool game_lua_kernel::run_event(const game_events::queued_event& ev)
 	return true;
 }
 
+void game_lua_kernel::custom_command(const config& cfg)
+{
+	lua_State *L = mState;
+
+	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_synced_command")) {
+		return;
+	}
+	luaW_pushconfig(L, cfg);
+	luaW_pcall(L, 1, 0, false);
+}
+
 /**
  * Applies its upvalue as an effect
  * Arg 1: The unit to apply to
