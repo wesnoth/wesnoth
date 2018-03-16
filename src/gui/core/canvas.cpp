@@ -1349,6 +1349,7 @@ void text_shape::draw(surface& canvas,
 
 canvas::canvas()
 	: shapes_()
+	, drawn_shapes_()
 	, blur_depth_(0)
 	, w_(0)
 	, h_(0)
@@ -1362,6 +1363,7 @@ canvas::canvas()
 
 canvas::canvas(canvas&& c)
 	: shapes_(std::move(c.shapes_))
+	, drawn_shapes_(std::move(c.drawn_shapes_))
 	, blur_depth_(c.blur_depth_)
 	, w_(c.w_)
 	, h_(c.h_)
