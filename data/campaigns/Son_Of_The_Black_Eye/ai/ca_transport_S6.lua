@@ -1,7 +1,7 @@
 local H = wesnoth.require "helper"
 local LS = wesnoth.require "location_set"
 local M = wesnoth.map
-local T = H.set_wml_tag_metatable {}
+local T = wml.tag
 
 local ca_transport = {}
 

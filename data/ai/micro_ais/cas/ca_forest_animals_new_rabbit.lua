@@ -1,7 +1,7 @@
 local H = wesnoth.require "helper"
 local W = H.set_wml_action_metatable {}
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local T = H.set_wml_tag_metatable {}
+local T = wml.tag
 
 local ca_forest_animals_new_rabbit = {}
 

@@ -1,11 +1,10 @@
-local helper = wesnoth.require "helper"
-local T = helper.set_wml_tag_metatable {}
+local T = wml.tag
 
 wesnoth.custom_synced_commands = {}
 
 function wesnoth.game_events.on_synced_command(cfg)
 	local handler = wesnoth.custom_synced_commands[cfg.name]
-	local data = helper.get_child(cfg, "data")
+	local data = wml.get_child(cfg, "data")
 	if handler then
 		handler(data)
 	end
