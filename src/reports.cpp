@@ -1106,7 +1106,7 @@ static config time_of_day_at(reports::context & rc, const map_location& mouseove
 	}
 
 	int b = tod.lawful_bonus;
-
+	int l = generic_combat_modifier(b, unit_type::ALIGNMENT::LIMINAL, false, rc.tod().get_max_liminal_bonus());
 	std::string  lawful_color("white");
 	std::string chaotic_color("white");
 	std::string liminal_color("white");
@@ -1114,7 +1114,9 @@ static config time_of_day_at(reports::context & rc, const map_location& mouseove
 	if (b != 0) {
 		lawful_color  = (b > 0) ? "green" : "red";
 		chaotic_color = (b < 0) ? "green" : "red";
-		liminal_color = "red";
+	}
+	if (l != 0) {
+		liminal_color = (l > 0) ? "green" : "red";
 	}
 	tooltip << tod.name << '\n'
 		<< _("Lawful units: ") << "<span foreground=\"" << lawful_color  << "\">"
@@ -1123,7 +1125,7 @@ static config time_of_day_at(reports::context & rc, const map_location& mouseove
 		<< _("Chaotic units: ") << "<span foreground=\"" << chaotic_color << "\">"
 		<< utils::signed_percent(-b) << "</span>\n"
 		<< _("Liminal units: ") << "<span foreground=\"" << liminal_color << "\">"
-		<< utils::signed_percent(-(std::abs(b))) << "</span>\n";
+		<< utils::signed_percent(l) << "</span>\n";
 
 	std::string tod_image = tod.image;
 	if(tod.bonus_modified > 0) {
@@ -1158,6 +1160,7 @@ static config unit_box_at(reports::context & rc, const map_location& mouseover_h
 	}
 
 	int bonus = local_tod.lawful_bonus;
+	int l = generic_combat_modifier(bonus, unit_type::ALIGNMENT::LIMINAL, false, rc.tod().get_max_liminal_bonus());
 
 	std::string  lawful_color("white");
 	std::string chaotic_color("white");
@@ -1166,7 +1169,9 @@ static config unit_box_at(reports::context & rc, const map_location& mouseover_h
 	if (bonus != 0) {
 		lawful_color  = (bonus > 0) ? "green" : "red";
 		chaotic_color = (bonus < 0) ? "green" : "red";
-		liminal_color = "red";
+	}
+	if (l != 0) {
+		liminal_color = (l > 0) ? "green" : "red";
 	}
 	tooltip << local_tod.name << '\n'
 		<< _("Lawful units: ") << "<span foreground=\"" << lawful_color  << "\">"
@@ -1175,7 +1180,7 @@ static config unit_box_at(reports::context & rc, const map_location& mouseover_h
 		<< _("Chaotic units: ") << "<span foreground=\"" << chaotic_color << "\">"
 		<< utils::signed_percent(-bonus) << "</span>\n"
 		<< _("Liminal units: ") << "<span foreground=\"" << liminal_color << "\">"
-		<< utils::signed_percent(-(std::abs(bonus))) << "</span>\n";
+		<< utils::signed_percent(l) << "</span>\n";
 
 	std::string local_tod_image  = "themes/classic/" + local_tod.image;
 	std::string global_tod_image = "themes/classic/" + global_tod.image;

@@ -282,7 +282,7 @@ int combat_modifier(const unit_map& units,
  * Returns the amount that a unit's damage should be multiplied by
  * due to a given lawful_bonus.
  */
-int generic_combat_modifier(int lawful_bonus, unit_type::ALIGNMENT alignment, bool is_fearless);
+int generic_combat_modifier(int lawful_bonus, unit_type::ALIGNMENT alignment, bool is_fearless, int max_liminal_bonus);
 /**
  * Function to check if an attack will satisfy the requirements for backstab.
  * Input:

@@ -29,6 +29,7 @@
 #include <algorithm>
 #include <iterator>
 #include "utils/functional.hpp"
+#include "actions/attack.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -37,10 +38,12 @@ tod_manager::tod_manager(const config& scenario_cfg):
 	currentTime_(0),
 	times_(),
 	areas_(),
+	liminal_bonus_(25),
 	turn_(scenario_cfg["turn_at"].to_int(1)),
 	num_turns_(scenario_cfg["turns"].to_int(-1)),
 	has_turn_event_fired_(!scenario_cfg["it_is_a_new_turn"].to_bool(true)),
-	has_tod_bonus_changed_ (false)
+	has_tod_bonus_changed_ (false),
+	has_cfg_liminal_bonus_ (false)
 {
 	// ? : operator doesn't work in this case.
 	if (scenario_cfg["current_time"].to_int(-17403) == -17403)
@@ -49,6 +52,13 @@ tod_manager::tod_manager(const config& scenario_cfg):
 		random_tod_ = false;
 
 	time_of_day::parse_times(scenario_cfg,times_);
+	int maybe_liminal_bonus = scenario_cfg["liminal_bonus"].to_int(-1);
+	if (maybe_liminal_bonus < 0) 
+		liminal_bonus_ = calculate_best_liminal_bonus(times_);
+	else {
+		liminal_bonus_ = maybe_liminal_bonus;
+		has_cfg_liminal_bonus_ = true;
+	}
 	//We need to call parse_times before calculate_current_time because otherwise the first parameter will always be 0.
 	currentTime_ = calculate_current_time(times_.size(), turn_, scenario_cfg["current_time"].to_int(0), true);
 
@@ -63,12 +73,14 @@ tod_manager& tod_manager::operator=(const tod_manager& manager)
 	currentTime_ = manager.currentTime_;
 	times_ = manager.times_;
 	areas_ = manager.areas_;
+	liminal_bonus_ = manager.liminal_bonus_;
 
 	turn_ = manager.turn_;
 	num_turns_ = manager.num_turns_;
 
 	has_turn_event_fired_ = manager.has_turn_event_fired_;
 	has_tod_bonus_changed_= manager.has_tod_bonus_changed_;
+	has_cfg_liminal_bonus_ = manager.has_cfg_liminal_bonus_;
 
 	random_tod_ = manager.random_tod_;
 
@@ -124,6 +136,8 @@ config tod_manager::to_config() const
 	cfg["current_time"] = currentTime_;
 	cfg["random_start_time"] = random_tod_;
 	cfg["it_is_a_new_turn"] = !has_turn_event_fired_;
+	if (has_cfg_liminal_bonus_)
+		cfg["liminal_bonus"] = liminal_bonus_;
 
 	for(const time_of_day& tod : times_) {
 		// Don't write the stub default ToD if it happens to be present.
@@ -535,4 +549,30 @@ bool tod_manager::next_turn(game_data* vars)
 bool tod_manager::is_time_left() const
 {
 	return num_turns_ == -1 || turn_ <= num_turns_;
+}
+
+int tod_manager::calculate_best_liminal_bonus(const std::vector<time_of_day>& schedule) const
+{
+	int fearless_chaotic = 0;
+	int fearless_lawful = 0;
+	std::set<int> bonuses;
+	for (const auto& tod : schedule) {
+		fearless_chaotic += generic_combat_modifier(tod.lawful_bonus, unit_type::ALIGNMENT::CHAOTIC, true, 0);
+		fearless_lawful += generic_combat_modifier(tod.lawful_bonus, unit_type::ALIGNMENT::LAWFUL, true, 0);
+		bonuses.insert(std::abs(tod.lawful_bonus));
+	}
+	int target = std::max(fearless_chaotic, fearless_lawful);
+	int delta = target;
+	int result = 0;
+	for (int bonus : bonuses) {
+		int liminal_effect = 0;
+		for (const auto& tod : schedule) {
+			liminal_effect += generic_combat_modifier(tod.lawful_bonus, unit_type::ALIGNMENT::LIMINAL, false, bonus);
+		}
+		if (std::abs(target - liminal_effect) < delta) {
+			result = bonus;
+			delta = std::abs(target - liminal_effect);
+		}
+	}
+	return result;
 }

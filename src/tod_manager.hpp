@@ -178,6 +178,8 @@ class tod_manager
 		{ has_turn_event_fired_ = true; }
 		bool has_tod_bonus_changed() const
 		{ return has_tod_bonus_changed_; }
+		int get_max_liminal_bonus() const
+		{ return liminal_bonus_; }
 	private:
 
 		/**
@@ -198,6 +200,10 @@ class tod_manager
 			const int for_turn_number,
 			const int current_time,
 			const bool only_to_allowed_range = false) const;
+		/**
+		 * Computes the maximum absolute value of lawful_bonus in the schedule.
+		 */
+		int calculate_best_liminal_bonus(const std::vector<time_of_day>& schedule) const;
 
 		/**
 		 * For a change of the current turn number, sets the current times of the main time
@@ -230,6 +236,9 @@ class tod_manager
 		std::vector<time_of_day> times_;
 		std::vector<area_time_of_day> areas_;
 
+		//max liminal bonus
+		int liminal_bonus_;
+
 		// current turn
 		int turn_;
 		//turn limit
@@ -237,6 +246,7 @@ class tod_manager
 		//Whether the "turn X" and the "new turn" events were already fired this turn.
 		bool has_turn_event_fired_;
 		bool has_tod_bonus_changed_;
+		bool has_cfg_liminal_bonus_;
 		//
 		config::attribute_value random_tod_;
 };
