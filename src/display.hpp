@@ -55,6 +55,7 @@ namespace wb {
 #include "key.hpp"
 #include "time_of_day.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/surface.hpp"
 #include "theme.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
@@ -359,8 +360,8 @@ public:
 	/** Setter for the terrain code debug overlay on tiles */
 	void set_draw_num_of_bitmaps(bool value) { draw_num_of_bitmaps_ = value; }
 
-	/** Save a (map-)screenshot and return whether the operation succeeded. */
-	bool screenshot(const std::string& filename, bool map_screenshot = false);
+	/** Capture a (map-)screenshot into a surface. */
+	surface screenshot(bool map_screenshot = false);
 
 	/** Invalidates entire screen, including all tiles and sidebar. Calls redraw observers. */
 	void redraw_everything();

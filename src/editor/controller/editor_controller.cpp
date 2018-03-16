@@ -45,6 +45,7 @@
 #include "game_board.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
+#include "image.hpp"
 #include "preferences/display.hpp"
 #include "sound.hpp"
 #include "units/unit.hpp"
@@ -187,7 +188,8 @@ void editor_controller::status_table() {
 void editor_controller::do_screenshot(const std::string& screenshot_filename /* = "map_screenshot.bmp" */)
 {
 	try {
-		if (!gui().screenshot(screenshot_filename,true)) {
+		surface screenshot = gui().screenshot(true);
+		if(screenshot.null() || !image::save_image(screenshot, screenshot_filename)) {
 			ERR_ED << "Screenshot creation failed!\n";
 		}
 	} catch (wml_exception& e) {

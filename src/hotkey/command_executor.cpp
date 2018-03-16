@@ -28,6 +28,7 @@
 #include "game_end_exceptions.hpp"
 #include "display.hpp"
 #include "quit_confirmation.hpp"
+#include "sdl/surface.hpp"
 #include "show_dialog.hpp"
 #include "../resources.hpp"
 #include "../playmp_controller.hpp"
@@ -50,33 +51,13 @@ static lg::log_domain log_hotkey("hotkey");
 
 namespace {
 
-bool screenshot(const std::string& filename)
+void make_screenshot(const std::string& name, bool map_screenshot)
 {
-	return image::save_image(CVideo::get_singleton().getSurface(), filename);
-}
-
-template<typename TFunc>
-void make_screenshot(const std::string& name, const TFunc& func)
-{
-	std::string filename = filesystem::get_screenshot_dir() + "/" + name + "_";
-
-	// TODO: there should be a way to configure which of these is used by default.
-#ifdef SDL_IMAGE_VERSION_ATLEAST
-#if SDL_IMAGE_VERSION_ATLEAST(2, 0, 2)
-	const std::string ext = ".jpg";
-#endif
-#else
-	const std::string ext = ".png";
-#endif
-
-	filename = filesystem::get_next_filename(filename, ext);
-	const bool res = func(filename);
-	if (res) {
-		gui2::dialogs::screenshot_notification::display(filename);
-	} else {
-		gui2::show_error_message(
-			_("Screenshot creation failed.\n\n"
-			"Make sure there is enough space on the drive holding Wesnoth’s player resource files and that file permissions are set up correctly."));
+	surface screenshot = display::get_singleton()->screenshot(map_screenshot);
+	if(!screenshot.null()) {
+		std::string filename = filesystem::get_screenshot_dir() + "/" + name + "_";
+		filename = filesystem::get_next_filename(filename, ".png");
+		gui2::dialogs::screenshot_notification::display(filename, screenshot);
 	}
 }
 }
@@ -615,7 +596,7 @@ void command_executor::execute_command(const SDL_Event& event, int index)
 			CVideo::get_singleton().toggle_fullscreen();
 			break;
 		case HOTKEY_SCREENSHOT:
-			make_screenshot(_("Screenshot"), &::screenshot);
+			make_screenshot(_("Screenshot"), false);
 			break;
 		case HOTKEY_ANIMATE_MAP:
 			preferences::set_animate_map(!preferences::animate_map());
@@ -758,8 +739,6 @@ void command_executor_default::zoom_default()
 
 void command_executor_default::map_screenshot()
 {
-	make_screenshot(_("Map-Screenshot"), [this](const std::string& filename) {
-		return get_display().screenshot(filename, true);
-	});
+	make_screenshot(_("Map-Screenshot"), true);
 }
 }

@@ -768,26 +768,15 @@ map_location display::minimap_location_on(int x, int y)
 	return loc;
 }
 
-bool display::screenshot(const std::string& filename, bool map_screenshot)
+surface display::screenshot(bool map_screenshot)
 {
-	bool res = false;
-
 	if (!map_screenshot) {
-		surface& screenshot_surf = screen_.getSurface();
-
-		res = image::save_image(screenshot_surf, filename);
-#if 0
-		// FIXME: the SDL_SavePNG path results in oblique errors that don't
-		//        make sense to anyone who's not familiarized with it, so
-		//        we can't use this.
-		if (!res) {
-			ERR_DP << "Screenshot failed: " << SDL_GetError() << '\n';
-		}
-#endif
+		// Use make_neutral_surface() to copy surface content
+		return make_neutral_surface(screen_.getSurface());
 	} else {
 		if (get_map().empty()) {
 			ERR_DP << "No map loaded, cannot create a map screenshot.\n";
-			return false;
+			return nullptr;
 		}
 
 		SDL_Rect area = max_map_area();
@@ -796,7 +785,7 @@ bool display::screenshot(const std::string& filename, bool map_screenshot)
 		if (map_screenshot_surf_ == nullptr) {
 			// Memory problem ?
 			ERR_DP << "Could not create screenshot surface, try zooming out.\n";
-			return false;
+			return nullptr;
 		}
 
 		// back up the current map view position and move to top-left
@@ -806,39 +795,20 @@ bool display::screenshot(const std::string& filename, bool map_screenshot)
 		ypos_ = 0;
 
 		// we reroute render output to the screenshot surface and invalidate all
-		map_screenshot_= true ;
+		map_screenshot_= true;
 		invalidateAll_ = true;
 		DBG_DP << "draw() with map_screenshot\n";
 		draw(true,true);
-
-		// finally save the image on disk
-		res = image::save_image(map_screenshot_surf_,filename);
-
-#if 0
-		// FIXME: the SDL_SavePNG path results in oblique errors that don't
-		//        make sense to anyone who's not familiarized with it, so
-		//        we can't use this.
-		if (!res) {
-			// Need to do this ASAP or spurious messages result due to
-			// redraw_everything calling SDL too (e.g. "SDL_UpperBlit: passed
-			// a nullptr surface")
-			ERR_DP << "Map screenshot failed: " << SDL_GetError() << '\n';
-		}
-#endif
-
-		//NOTE: need to be sure that we free this huge surface (is it enough?)
-		map_screenshot_surf_ = nullptr;
 
 		// restore normal rendering
 		map_screenshot_= false;
 		xpos_ = old_xpos;
 		ypos_ = old_ypos;
-		// some drawing functions are confused by the temporary change
-		// of the map_area and thus affect the UI outside of the map
-		redraw_everything();
-	}
 
-	return res;
+		// Clear map_screenshot_surf_ and return a new surface that contains the same data
+		surface surf(std::move(map_screenshot_surf_));
+		return surf;
+	}
 }
 
 std::shared_ptr<gui::button> display::find_action_button(const std::string& id)

@@ -15,6 +15,7 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
+#include "sdl/surface.hpp"
 
 namespace gui2
 {
@@ -27,11 +28,10 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param path     Path to the screenshot file created. The caller should
-	 *                 ensure the file exists, otherwise it will be displayed
-	 *                 with size 0.
+	 * @param path       Path to the screenshot file to create.
+	 * @param screenshot Screenshot to save.
 	 */
-	screenshot_notification(const std::string& path);
+	screenshot_notification(const std::string& path, surface screenshot);
 
 	/**
 	 * The display function.
@@ -43,6 +43,10 @@ public:
 private:
 	const std::string path_;
 	const std::string screenshots_dir_path_;
+	surface screenshot_;
+
+	void save_screenshot();
+	void keypress_callback(bool& handled, const SDL_Keycode key);
 
 	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;

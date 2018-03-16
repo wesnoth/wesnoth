@@ -18,16 +18,23 @@
 
 #include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
+#include "display.hpp"
 #include "filesystem.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/core/event/dispatcher.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
+#include "image.hpp"
 
 #include "utils/functional.hpp"
 
 #include "gettext.hpp"
+
+#include <boost/filesystem.hpp>
 
 namespace gui2
 {
@@ -65,46 +72,89 @@ namespace dialogs
 
 REGISTER_DIALOG(screenshot_notification)
 
-screenshot_notification::screenshot_notification(const std::string& path)
-	: path_(path), screenshots_dir_path_(filesystem::get_screenshot_dir())
+screenshot_notification::screenshot_notification(const std::string& path, surface screenshot)
+	: path_(path)
+	, screenshots_dir_path_(filesystem::get_screenshot_dir())
+	, screenshot_(screenshot)
 {
-	const int filesize = filesystem::file_size(path);
 
-	const std::string sizetext
-			= filesize >= 0
-			? utils::si_string(filesize, true, _("unit_byte^B"))
-			: _("file_size^Unknown");
-
-	register_label("filesize",
-				   false,
-				   sizetext,
-				   false);
 }
 
 void screenshot_notification::pre_show(window& window)
 {
+	window.set_enter_disabled(true);
+
 	text_box& path_box = find_widget<text_box>(&window, "path", false);
 	path_box.set_value(filesystem::base_name(path_));
-	path_box.set_active(false);
+	window.keyboard_capture(&path_box);
+	connect_signal_pre_key_press(path_box, std::bind(&screenshot_notification::keypress_callback, this,
+		std::placeholders::_3, std::placeholders::_5));
 
 	button& copy_b = find_widget<button>(&window, "copy", false);
 	connect_signal_mouse_left_click(
-			copy_b, std::bind(&desktop::clipboard::copy_to_clipboard, std::ref(path_), false));
+		copy_b, std::bind(&desktop::clipboard::copy_to_clipboard, std::ref(path_), false));
+	copy_b.set_active(false);
 
 	if (!desktop::clipboard::available()) {
-		copy_b.set_active(false);
 		copy_b.set_tooltip(_("Clipboard support not found, contact your packager"));
 	}
 
 	button& open_b = find_widget<button>(&window, "open", false);
 	connect_signal_mouse_left_click(
-			open_b, bind_void(&desktop::open_object, std::ref(path_)));
+		open_b, bind_void(&desktop::open_object, std::ref(path_)));
+	open_b.set_active(false);
 
 	button& bdir_b = find_widget<button>(&window, "browse_dir", false);
 	connect_signal_mouse_left_click(
-			bdir_b,
-			bind_void(&desktop::open_object,
-						std::ref(screenshots_dir_path_)));
+		bdir_b,
+		bind_void(&desktop::open_object,
+			std::ref(screenshots_dir_path_)));
+
+	button& save_b = find_widget<button>(&window, "save", false);
+	connect_signal_mouse_left_click(save_b, std::bind(&screenshot_notification::save_screenshot, this));
+
+	if(screenshot_.null()) {
+		window.close();
+	}
 }
+
+void screenshot_notification::save_screenshot()
+{
+	window& window = *get_window();
+	text_box& path_box = find_widget<text_box>(&window, "path", false);
+	std::string filename = path_box.get_value();
+	boost::filesystem::path path(screenshots_dir_path_);
+	path /= filename;
+
+	const bool res = image::save_image(screenshot_, path.string());
+	if(!res) {
+		gui2::show_error_message(
+			translation::dsgettext("wesnoth", "Screenshot creation failed.\n\n"
+				"Make sure there is enough space on the drive holding Wesnoth’s player resource files and that file permissions are set up correctly."));
+	} else {
+		path_box.set_active(false);
+		find_widget<button>(&window, "open", false).set_active(true);
+		find_widget<button>(&window, "save", false).set_active(false);
+
+		if(desktop::clipboard::available()) {
+			find_widget<button>(&window, "copy", false).set_active(true);
+		}
+
+		const int filesize = filesystem::file_size(path.string());
+		const std::string sizetext = utils::si_string(filesize, true, _("unit_byte^B"));
+		find_widget<label>(&window, "filesize", false).set_label(sizetext);
+
+		window.invalidate_layout();
+	}
+}
+
+void screenshot_notification::keypress_callback(bool& handled, SDL_Keycode key)
+{
+	if(key == SDLK_RETURN || key == SDLK_KP_ENTER) {
+		save_screenshot();
+		handled = true;
+	}
+}
+
 } // namespace dialogs
 } // namespace gui2
