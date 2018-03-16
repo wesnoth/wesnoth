@@ -52,11 +52,9 @@ tod_manager::tod_manager(const config& scenario_cfg):
 		random_tod_ = false;
 
 	time_of_day::parse_times(scenario_cfg,times_);
-	int maybe_liminal_bonus = scenario_cfg["liminal_bonus"].to_int(-1);
-	if (maybe_liminal_bonus < 0) 
-		liminal_bonus_ = calculate_best_liminal_bonus(times_);
-	else {
-		liminal_bonus_ = maybe_liminal_bonus;
+	liminal_bonus_ = calculate_best_liminal_bonus(times_);
+	if (scenario_cfg.has_attribute("liminal_bonus")) {
+		liminal_bonus_ = scenario_cfg["liminal_bonus"].to_int(liminal_bonus_);
 		has_cfg_liminal_bonus_ = true;
 	}
 	//We need to call parse_times before calculate_current_time because otherwise the first parameter will always be 0.
