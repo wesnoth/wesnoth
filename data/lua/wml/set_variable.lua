@@ -120,7 +120,7 @@ function wesnoth.wml_actions.set_variable(cfg)
 
 		local string_to_join = ''
 
-		for i, element in ipairs(wml.variable.get_array(array_name)) do
+		for i, element in ipairs(wml.array_access.get(array_name)) do
 			if element[key_name] ~= nil or (not remove_empty) then
 				if #string_to_join > 0 then
 					string_to_join = string_to_join .. separator

@@ -213,11 +213,25 @@ end
 if wesnoth.kernel_type() == "Game Lua Kernel" then
 	--[========[Basic variable access]========]
 
-	wml.variable = {}
-	wml.variable.get = wesnoth.get_variable
-	wml.variable.set = wesnoth.set_variable
-	wml.variable.get_all = wesnoth.get_all_vars
+	-- Get all variables via wml.all_variables (read-only)
+	setmetatable(wml, {
+		__metatable = "WML module",
+		__index = function(self, key)
+			if key == 'all_variables' then
+				return wesnoth.get_all_variables()
+			end
+			return rawget(self, key)
+		end,
+		__newindex = function(self, key, value)
+			if key == 'all_variables' then
+				error("all_variables is read-only")
+				-- TODO Implement writing?
+			end
+			rawset(self, key, value)
+		end
+	})
 
+	-- Get and set variables via wml.variables[variable_path]
 	wml.variables = setmetatable({}, {
 		__metatable = "WML variables",
 		__index = function(_, key)
@@ -283,7 +297,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		end
 	}
 
-	wml.variable.proxy = setmetatable({}, root_variable_mt)
+	wml.variables_proxy = setmetatable({}, root_variable_mt)
 
 	--[========[Variable Array Access]========]
 
@@ -314,9 +328,11 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		error(string.format("Invalid context for %s: expected nil, side, or unit", err_hint), 3)
 	end
 
+	wml.array_access = {}
+
 	--! Fetches all the WML container variables with name @a var.
 	--! @returns a table containing all the variables (starting at index 1).
-	function wml.variable.get_array(var, context)
+	function wml.array_access.get(var, context)
 		context = resolve_variable_context(context, "get_variable_array")
 		local result = {}
 		for i = 1, context.get(var .. ".length") do
@@ -326,7 +342,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	end
 
 	--! Puts all the elements of table @a t inside a WML container with name @a var.
-	function wml.variable.set_array(var, t, context)
+	function wml.array_access.set(var, t, context)
 		context = resolve_variable_context(context, "set_variable_array")
 		context.set(var)
 		for i, v in ipairs(t) do
@@ -335,25 +351,36 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	end
 
 	--! Creates proxies for all the WML container variables with name @a var.
-	--! This is similar to wml.variable.get_array, except that the elements
+	--! This is similar to wml.array_access.get, except that the elements
 	--! can be used for writing too.
 	--! @returns a table containing all the variable proxies (starting at index 1).
-	function wml.variable.get_proxy_array(var)
+	function wml.array_access.get_proxy(var)
 		local result = {}
 		for i = 1, wesnoth.get_variable(var .. ".length") do
 			result[i] = get_variable_proxy(string.format("%s[%d]", var, i - 1))
 		end
 		return result
 	end
+	
+	-- More convenient when accessing global variables
+	wml.array_variables = setmetatable({}, {
+		__metatable = "WML variables",
+		__index = function(_, key)
+			return wml.array_access.get(key)
+		end,
+		__newindex = function(_, key, value)
+			wml.array_access.set(key, value)
+		end
+	})
 end
 
 -- Some C++ functions are deprecated; apply the messages here.
 -- Note: It must happen AFTER the C++ functions are reassigned above to their new location.
 -- These deprecated functions will probably never be removed.
 if wesnoth.kernel_type() == "Game Lua Kernel" then
-	wesnoth.get_variable = wesnoth.deprecate_api('wesnoth.get_variable', 'wml.variable.get', 1, nil, wesnoth.get_variable)
-	wesnoth.set_variable = wesnoth.deprecate_api('wesnoth.set_variable', 'wml.variable.set', 1, nil, wesnoth.set_variable)
-	wesnoth.get_all_vars = wesnoth.deprecate_api('wesnoth.get_all_vars', 'wml.variable.get_all', 1, nil, wesnoth.get_all_vars)
+	wesnoth.get_variable = wesnoth.deprecate_api('wesnoth.get_variable', 'wml.variables', 1, nil, wesnoth.get_variable)
+	wesnoth.set_variable = wesnoth.deprecate_api('wesnoth.set_variable', 'wml.variables', 1, nil, wesnoth.set_variable)
+	wesnoth.get_all_vars = wesnoth.deprecate_api('wesnoth.get_all_vars', 'wml.all_variables', 1, nil, wesnoth.get_all_vars)
 end
 wesnoth.tovconfig = wesnoth.deprecate_api('wesnoth.tovconfig', 'wml.tovconfig', 1, nil, wesnoth.tovconfig)
 wesnoth.debug = wesnoth.deprecate_api('wesnoth.debug', 'wml.tostring', 1, nil, wesnoth.debug)

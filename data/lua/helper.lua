@@ -99,11 +99,11 @@ function helper.move_unit_fake(filter, to_x, to_y)
 	wesnoth.set_variable("LUA_move_unit")
 end
 
--- Metatable that redirects access to wml.variable.proxy
+-- Metatable that redirects access to wml.variables_proxy
 local proxy_var_mt = {
 	__metatable = "WML variables",
-	__index    = function(t, k) return wml.variable.proxy[k] end,
-	__newindex = function(t, k, v) wml.variable.proxy[k] = v end,
+	__index    = function(t, k) return wml.variables_proxy[k] end,
+	__newindex = function(t, k, v) wml.variables_proxy[k] = v end,
 }
 
 function helper.set_wml_var_metatable(t)
@@ -323,9 +323,9 @@ helper.child_count = wml.child_count
 helper.child_range = wml.child_range
 helper.child_array = wml.child_array
 if wesnoth.kernel_type() == "Game Lua Kernel" then
-	helper.get_variable_array = wml.variable.get_array
-	helper.set_variable_array = wml.variable.set_array
-	helper.get_variable_proxy_array = wml.variable.get_proxy_array
+	helper.get_variable_array = wml.array_access.get
+	helper.set_variable_array = wml.array_access.set
+	helper.get_variable_proxy_array = wml.array_access.get_proxy
 end
 helper.literal = wml.literal
 helper.parsed = wml.parsed

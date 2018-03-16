@@ -35,7 +35,7 @@ end
 
 local function bandits_found(x,y)
 	local bandit_types = vars.bandit_types
-	local bandit_villages = wml.variable.get_array("bandit_villages")
+	local bandit_villages = wml.array_access.get("bandit_villages")
 	local boss_found = vars.boss_found
 	local visited = vars.villages_visited
 	local rand1 = helper.rand("3,4")
@@ -69,7 +69,7 @@ local function bandits_found(x,y)
 end
 
 function wml_actions.bandit_village_capture(cfg)
-	local bandit_villages = wml.variable.get_proxy_array("bandit_villages")
+	local bandit_villages = wml.array_access.get_proxy("bandit_villages")
 	local x = cfg.x or helper.wml_error("[bandit_village_capture] missing required x= attribute.")
 	local y = cfg.y or helper.wml_error("[bandit_village_capture] missing required y= attribute.")
 

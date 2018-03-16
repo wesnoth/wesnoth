@@ -192,7 +192,7 @@ end
 
 --note: when using these, make sure that nothing can throw over the call to end_var_scope
 function utils.start_var_scope(name)
-	local var = wml.variable.get_array(name) --containers and arrays
+	local var = wml.array_access.get(name) --containers and arrays
 	if #var == 0 then var = wesnoth.get_variable(name) end --scalars (and nil/empty)
 	wesnoth.set_variable(name)
 	return var
@@ -201,7 +201,7 @@ end
 function utils.end_var_scope(name, var)
 	wesnoth.set_variable(name)
 	if type(var) == "table" then
-		wml.variable.set_array(name, var)
+		wml.array_access.set(name, var)
 	else
 		wesnoth.set_variable(name, var)
 	end

@@ -178,7 +178,7 @@ function wml_actions.foreach(cfg)
 	end
 
 	local array_name = cfg.array or helper.wml_error "[foreach] missing required array= attribute"
-	local array = wml.variable.get_array(array_name)
+	local array = wml.array_access.get(array_name)
 	if #array == 0 then return end -- empty and scalars unwanted
 	local item_name = cfg.variable or "this_item"
 	local this_item = utils.start_var_scope(item_name) -- if this_item is already set
@@ -232,7 +232,7 @@ function wml_actions.foreach(cfg)
 		Note that altering the array via indexing (with the index_var)
 		is not supported; any such changes will be reverted by this line.
 	]]
-	wml.variable.set_array(array_name, array)
+	wml.array_access.set(array_name, array)
 end
 
 function wml_actions.switch(cfg)
