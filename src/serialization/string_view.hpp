@@ -20,6 +20,7 @@ that class. */
 #pragma once
 
 #include <boost/version.hpp>
+#include <cstdint>
 
 #if BOOST_VERSION > 106100
 
