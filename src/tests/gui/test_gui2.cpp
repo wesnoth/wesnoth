@@ -984,7 +984,7 @@ struct dialog_tester<screenshot_notification>
 {
 	screenshot_notification* create()
 	{
-		return new screenshot_notification("path");
+		return new screenshot_notification("path", nullptr);
 	}
 };
 

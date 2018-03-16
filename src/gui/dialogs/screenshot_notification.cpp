@@ -130,7 +130,7 @@ void screenshot_notification::save_screenshot()
 	if(!res) {
 		gui2::show_error_message(
 			translation::dsgettext("wesnoth", "Screenshot creation failed.\n\n"
-				"Make sure there is enough space on the drive holding Wesnoth’s player resource files and that file permissions are set up correctly."));
+				"Make sure there is enough space on the drive holding Wesnothâ€™s player resource files and that file permissions are set up correctly."));
 	} else {
 		path_box.set_active(false);
 		find_widget<button>(&window, "open", false).set_active(true);
