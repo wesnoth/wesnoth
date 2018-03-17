@@ -90,6 +90,8 @@ void screenshot_notification::pre_show(window& window)
 	connect_signal_pre_key_press(path_box, std::bind(&screenshot_notification::keypress_callback, this,
 		std::placeholders::_3, std::placeholders::_5));
 
+	find_widget<label>(&window, "filesize", false).set_label(font::unicode_em_dash);
+
 	button& copy_b = find_widget<button>(&window, "copy", false);
 	connect_signal_mouse_left_click(
 		copy_b, std::bind(&desktop::clipboard::copy_to_clipboard, std::ref(path_), false));
@@ -139,8 +141,6 @@ void screenshot_notification::save_screenshot()
 		const int filesize = filesystem::file_size(path.string());
 		const std::string sizetext = utils::si_string(filesize, true, _("unit_byte^B"));
 		find_widget<label>(&window, "filesize", false).set_label(sizetext);
-
-		window.invalidate_layout();
 	}
 }
 
