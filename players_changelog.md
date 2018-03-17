@@ -17,6 +17,18 @@ changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
      * S04a, 05a, & S13a Make enemy units loyal so gold & events work properly
  ### Language and i18n
    * Updated translations: British English, Spanish.
+ ### Unit changes and balancing
+   * Decreased cold resistance of Dune Burner line from 0% to -20%
+   * Decreased cold resistance of Dune Soldier line from 0% to -10%
+   * Add possibilty for 'fearless' trait in Dune Soldier line
+   * Increased pierce resistance of Dune Rover line from 0% to 10%
+   * Increased impact resistance of Dune Piercer from 0% to 10%
+   * Decreased Dune Piercer's XP to next level from 48 to 42
+   * Increased Dune Riders's XP to next level from 39 to 42
+   * Change mountain stats of Dune Marauder from impassable to 4 MP, 60% def
+   * Decreased blade resistance of Dune Marauder from 30% to 20%
+   * Increased cold resistance of Dune Marauder from -20% to 0%
+   * Decreased hills defense of Dune Raider from 60% to 50%
 
 
 ## Version 1.13.11

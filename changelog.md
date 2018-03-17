@@ -38,8 +38,6 @@
      It has new remove_child and remove_children functions.
    * New wesnoth.persistent_tags table for more convenient custom
      save data (intended to replace game_events.on_load/save)
- ### Multiplayer
-   * Balance tweaks to the Dunefolk faction and fix RIPLIB violation
  ### User Interface
    * Improved outro screen.
    * Fixed a few cases of data not displaying in the MP Join Game screen.
@@ -63,6 +61,18 @@
    * Added bar_offset_x/y in [unit_type].
    * the mp setup code no longer generates [side]s if the scenario has at
      least one side defined.
+ ### Unit changes and balancing
+   * Decreased cold resistance of Dune Burner line from 0% to -20%
+   * Decreased cold resistance of Dune Soldier line from 0% to -10%
+   * Add possibilty for 'fearless' trait in Dune Soldier line
+   * Increased pierce resistance of Dune Rover line from 0% to 10%
+   * Increased impact resistance of Dune Piercer from 0% to 10%
+   * Decreased Dune Piercer's XP to next level from 48 to 42
+   * Increased Dune Riders's XP to next level from 39 to 42
+   * Change mountain stats of Dune Marauder from impassable to 4 MP, 60% def
+   * Decreased blade resistance of Dune Marauder from 30% to 20%
+   * Increased cold resistance of Dune Marauder from -20% to 0%
+   * Decreased hills defense of Dune Raider from 60% to 50%
  ### Miscellaneous and bug fixes
    * Fixed standing animation toggle not taking immediate effect (bug
      #1653).
