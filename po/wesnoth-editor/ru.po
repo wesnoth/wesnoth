@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-12 20:01+0300\n"
+"POT-Creation-Date: 2018-03-17 21:29+0300\n"
 "PO-Revision-Date: 2014-11-11 12:20+0300\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -289,15 +289,15 @@ msgstr "Цена:"
 msgid "Recruit: "
 msgstr "Найм:"
 
-#: src/editor/controller/editor_controller.cpp:175
+#: src/editor/controller/editor_controller.cpp:177
 msgid "Fatal error"
 msgstr "Критическая ошибка"
 
-#: src/editor/controller/editor_controller.cpp:204
+#: src/editor/controller/editor_controller.cpp:207
 msgid "Do you really want to quit?"
 msgstr "Действительно хотите выйти?"
 
-#: src/editor/controller/editor_controller.cpp:206
+#: src/editor/controller/editor_controller.cpp:209
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -309,7 +309,7 @@ msgstr ""
 "Действительно хотите выйти? Вы потеряете все изменения, которые внесли с "
 "последнего сохранения."
 
-#: src/editor/controller/editor_controller.cpp:208
+#: src/editor/controller/editor_controller.cpp:211
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -317,23 +317,23 @@ msgstr ""
 "Действительно хотите выйти? У вас есть несохранённые карты, все изменения в "
 "них будут утрачены:"
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:220
 msgid "No editor time-of-day found."
 msgstr "Редактор времени суток не найден."
 
-#: src/editor/controller/editor_controller.cpp:1139
+#: src/editor/controller/editor_controller.cpp:1142
 msgid "Change Unit ID"
 msgstr "Сменить ИД бойца"
 
-#: src/editor/controller/editor_controller.cpp:1140
+#: src/editor/controller/editor_controller.cpp:1143
 msgid "ID:"
 msgstr "ИД:"
 
-#: src/editor/controller/editor_controller.cpp:1156
+#: src/editor/controller/editor_controller.cpp:1159
 msgid "Rename Unit"
 msgstr "Переименовать бойца"
 
-#: src/editor/controller/editor_controller.cpp:1157
+#: src/editor/controller/editor_controller.cpp:1160
 msgid "Name:"
 msgstr "Имя:"
 
@@ -341,13 +341,13 @@ msgstr "Имя:"
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:259 src/editor/map/map_context.cpp:833
+#: src/editor/map/context_manager.cpp:259 src/editor/map/map_context.cpp:831
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Новая карта)"
 
-#: src/editor/map/context_manager.cpp:272 src/editor/map/map_context.cpp:833
+#: src/editor/map/context_manager.cpp:272 src/editor/map/map_context.cpp:831
 #, fuzzy
 #| msgid "(New Scenario)"
 msgid "New Scenario"
@@ -463,26 +463,26 @@ msgstr ""
 "Загрузил файл карты по ссылке:\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:149
+#: src/editor/map/editor_map.cpp:148
 #: src/editor/palette/location_palette.cpp:111
 #, fuzzy
 #| msgid "Player $player_number"
 msgid "Player $side_num"
 msgstr "Игрок $player_number"
 
-#: src/editor/map/editor_map.cpp:264
+#: src/editor/map/editor_map.cpp:283
 msgid "The size of the target map is different from the current map"
 msgstr "Размер целевой карты отличается от размера текущей"
 
-#: src/editor/map/map_context.cpp:146
+#: src/editor/map/map_context.cpp:145
 msgid "File not found"
 msgstr "Файл не найден"
 
-#: src/editor/map/map_context.cpp:153
+#: src/editor/map/map_context.cpp:152
 msgid "Empty file"
 msgstr "Файл пуст"
 
-#: src/editor/map/map_context.cpp:209
+#: src/editor/map/map_context.cpp:208
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -490,15 +490,15 @@ msgstr ""
 "Файл карты похож на сценарий, но значение map_data не указывает на "
 "существующий файл"
 
-#: src/editor/map/map_context.cpp:602
+#: src/editor/map/map_context.cpp:600
 msgid "Could not save the scenario: $msg"
 msgstr "Невозможно сохранить сценарий: $msg"
 
-#: src/editor/map/map_context.cpp:634
+#: src/editor/map/map_context.cpp:632
 msgid "Could not save into scenario"
 msgstr "Невозможно сохранить сценарий"
 
-#: src/editor/map/map_context.cpp:644
+#: src/editor/map/map_context.cpp:642
 msgid "Could not save the map: $msg"
 msgstr "Невозможно сохранить карту: $msg"
 
@@ -538,15 +538,15 @@ msgstr "ПП: "
 msgid "BG: "
 msgstr "ФОН: "
 
-#: src/gui/dialogs/editor/custom_tod.cpp:139
+#: src/gui/dialogs/editor/custom_tod.cpp:137
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:203
+#: src/gui/dialogs/editor/custom_tod.cpp:201
 msgid "Choose File"
 msgstr "Выберите файл"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:204
+#: src/gui/dialogs/editor/custom_tod.cpp:202
 msgid "Select"
 msgstr ""
 

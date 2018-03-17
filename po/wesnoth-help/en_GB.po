@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-12 20:01+0300\n"
+"POT-Creation-Date: 2018-03-17 21:30+0300\n"
 "PO-Revision-Date: 2018-02-15 13:33+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -342,8 +342,13 @@ msgstr ""
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:144
+#, fuzzy
+#| msgid ""
+#| " option at the title screen. \n"
+#| "\n"
+#| "<header>text='What you get'</header>"
 msgid ""
-" option at the title screen. \n"
+" option at the title screen.\n"
 "\n"
 "<header>text='What you get'</header>"
 msgstr ""
@@ -942,6 +947,24 @@ msgstr "Elensefar"
 # is vs can be
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:101
+#, fuzzy
+#| msgid ""
+#| "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
+#| "text='Wesnoth'</ref>, at times an independent country, and at times in a "
+#| "treaty federation with Wesnoth. Its borders are the Great River to the "
+#| "north, a loosely defined line with Wesnoth to the east, the Bay of Pearls "
+#| "to the south, and the <ref>dst='great_ocean' text='ocean'</ref> to the "
+#| "west. More information is found in the historical narrative of Wesnoth.\n"
+#| "\n"
+#| "<header>text='Notable cities:'</header>\n"
+#| "    • Elensefar: The capital, located on an island in the "
+#| "<ref>dst='great_river' text='Great River'</ref> delta.\n"
+#| "    • Carcyn: City on the Wesnoth–Elensefar border, disputed with "
+#| "Wesnoth.\n"
+#| "  \n"
+#| "<header>text='Notable land features:'</header>\n"
+#| "    • <ref>dst='great_river' text='Great River'</ref>: It is very wide at "
+#| "this point, and only ships can cross it."
 msgid ""
 "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
 "text='Wesnoth'</ref>, at times an independent country, and at times in a "
@@ -954,7 +977,7 @@ msgid ""
 "    • Elensefar: The capital, located on an island in the "
 "<ref>dst='great_river' text='Great River'</ref> delta.\n"
 "    • Carcyn: City on the Wesnoth–Elensefar border, disputed with Wesnoth.\n"
-"  \n"
+"\n"
 "<header>text='Notable land features:'</header>\n"
 "    • <ref>dst='great_river' text='Great River'</ref>: It is very wide at "
 "this point, and only ships can cross it."
@@ -1212,7 +1235,7 @@ msgstr "Gameplay"
 
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:397
+#: data/core/help.cfg:29 data/core/help.cfg:391
 msgid "Traits"
 msgstr "Traits"
 
@@ -1242,19 +1265,19 @@ msgstr "Eras"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:71 data/core/help.cfg:412
+#: data/core/help.cfg:71 data/core/help.cfg:406
 msgid "Terrains"
 msgstr "Terrains"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:79 data/core/help.cfg:465
+#: data/core/help.cfg:79 data/core/help.cfg:459
 msgid "Add-ons"
 msgstr "Add-ons"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:85 data/core/help.cfg:532
+#: data/core/help.cfg:85 data/core/help.cfg:526
 msgid "Commands"
 msgstr "Commands"
 
@@ -2539,18 +2562,13 @@ msgstr ""
 "ref>, but you now know everything you need to know to play the "
 "<italic>text='Heir to the Throne'</italic> campaign. Have fun, and good luck!"
 
-#. [topic]: id=about
-#: data/core/help.cfg:384
-msgid "ingame_help_item^Contributors"
-msgstr "Contributors"
-
 #. [topic]: id=license
-#: data/core/help.cfg:390
+#: data/core/help.cfg:384
 msgid "License"
 msgstr "Licence"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:399
+#: data/core/help.cfg:393
 msgid ""
 "\n"
 "\n"
@@ -2567,7 +2585,7 @@ msgstr ""
 "any traits. "
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:399
+#: data/core/help.cfg:393
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -2580,7 +2598,7 @@ msgstr ""
 "italic>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:401
+#: data/core/help.cfg:395
 msgid ""
 "\n"
 "\n"
@@ -2597,7 +2615,7 @@ msgstr ""
 "text='resilient'</ref>, and <ref>dst='traits_strong' text='strong'</ref>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:403
+#: data/core/help.cfg:397
 msgid ""
 "\n"
 "\n"
@@ -2620,7 +2638,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:413
+#: data/core/help.cfg:407
 msgid ""
 "\n"
 "\n"
@@ -2633,44 +2651,44 @@ msgstr ""
 "<italic>text='mixed'</italic>."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:413
+#: data/core/help.cfg:407
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
 msgstr ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
+
+#. [topic]: id=..terrains_section
+#: data/core/help.cfg:409
+msgid ""
+"\n"
+"\n"
+"<header>text='Basic Terrain Types'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Basic Terrain Types'</header>"
+
+#. [topic]: id=..terrains_section
+#: data/core/help.cfg:411
+msgid ""
+"\n"
+"\n"
+"Basic terrain types include Flat, Hills, Mountains, Sands, Water and Swamps. "
+"There are many more besides these — a list of the terrain types you have "
+"discovered can be found at the end of this page.\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Basic terrain types include Flat, Hills, Mountains, Sands, Water and Swamps. "
+"There are many more besides these — a list of the terrain types you have "
+"discovered can be found at the end of this page.\n"
+"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:415
-msgid ""
-"\n"
-"\n"
-"<header>text='Basic Terrain Types'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Basic Terrain Types'</header>"
-
-#. [topic]: id=..terrains_section
-#: data/core/help.cfg:417
-msgid ""
-"\n"
-"\n"
-"Basic terrain types include Flat, Hills, Mountains, Sands, Water and Swamps. "
-"There are many more besides these — a list of the terrain types you have "
-"discovered can be found at the end of this page.\n"
-"\n"
-msgstr ""
-"\n"
-"\n"
-"Basic terrain types include Flat, Hills, Mountains, Sands, Water and Swamps. "
-"There are many more besides these — a list of the terrain types you have "
-"discovered can be found at the end of this page.\n"
-"\n"
-
-#. [topic]: id=..terrains_section
-#: data/core/help.cfg:421
 msgid ""
 "\n"
 "\n"
@@ -2685,7 +2703,7 @@ msgstr ""
 "terrain types may have unique properties like illumination effects as well."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:423
+#: data/core/help.cfg:417
 msgid ""
 "\n"
 "\n"
@@ -2696,7 +2714,7 @@ msgstr ""
 "<header>text='Mixed Terrain Types'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:425
+#: data/core/help.cfg:419
 msgid ""
 "\n"
 "\n"
@@ -2719,7 +2737,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:429
+#: data/core/help.cfg:423
 msgid ""
 "\n"
 "\n"
@@ -2744,7 +2762,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:433
+#: data/core/help.cfg:427
 msgid ""
 "\n"
 "\n"
@@ -2761,7 +2779,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:437
+#: data/core/help.cfg:431
 msgid ""
 "\n"
 "\n"
@@ -2778,7 +2796,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:441
+#: data/core/help.cfg:435
 msgid ""
 "\n"
 "\n"
@@ -2793,7 +2811,7 @@ msgstr ""
 "the upper right (under the default theme)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:443
+#: data/core/help.cfg:437
 msgid ""
 "\n"
 "\n"
@@ -2810,7 +2828,7 @@ msgstr ""
 "the context menu."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:445
+#: data/core/help.cfg:439
 msgid ""
 "\n"
 "\n"
@@ -2821,7 +2839,7 @@ msgstr ""
 "<header>text='Defence Caps'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:447
+#: data/core/help.cfg:441
 msgid ""
 "\n"
 "\n"
@@ -2836,7 +2854,7 @@ msgstr ""
 "— their defence cannot exceed the cap."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:449
+#: data/core/help.cfg:443
 msgid ""
 "\n"
 "\n"
@@ -2853,7 +2871,7 @@ msgstr ""
 "the mixed rating cannot exceed the cap."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:451
+#: data/core/help.cfg:445
 msgid ""
 "\n"
 "\n"
@@ -2866,7 +2884,7 @@ msgstr ""
 "defence rating on that terrain (it cannot be larger)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:453
+#: data/core/help.cfg:447
 msgid ""
 "\n"
 "\n"
@@ -2879,7 +2897,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:466
+#: data/core/help.cfg:460
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -2892,12 +2910,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:476
+#: data/core/help.cfg:470
 msgid "Using Add-ons"
 msgstr "Using Add-ons"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:477
+#: data/core/help.cfg:471
 msgid ""
 "\n"
 "\n"
@@ -2908,70 +2926,70 @@ msgstr ""
 "<header>text='Campaigns and Scenarios'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:477
+#: data/core/help.cfg:471
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:473
+msgid ""
+"\n"
+"\n"
+"Single-player campaigns are collections of scenarios that fit together to "
+"tell a story. Both stand-alone scenarios—if intended to be played as such—"
+"and regular campaigns are available from the <italic>text='Campaigns'</"
+"italic> menu at the title screen."
+msgstr ""
+"\n"
+"\n"
+"Single-player campaigns are collections of scenarios that fit together to "
+"tell a story. Both stand-alone scenarios—if intended to be played as such—"
+"and regular campaigns are available from the <italic>text='Campaigns'</"
+"italic> menu at the title screen."
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:475
+msgid ""
+"\n"
+"\n"
+"<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
+msgstr ""
+"\n"
+"\n"
+"<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:477
+msgid ""
+"\n"
+"\n"
+"<italic>text='Multiplayer'</italic> games can be played in fully customized, "
+"scripted scenarios or even specially designed campaigns. There are also "
+"packs providing sets of individual multiplayer scenarios."
+msgstr ""
+"\n"
+"\n"
+"<italic>text='Multiplayer'</italic> games can be played in fully customized, "
+"scripted scenarios or even specially designed campaigns. There are also "
+"packs providing sets of individual multiplayer scenarios."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:479
 msgid ""
 "\n"
 "\n"
-"Single-player campaigns are collections of scenarios that fit together to "
-"tell a story. Both stand-alone scenarios—if intended to be played as such—"
-"and regular campaigns are available from the <italic>text='Campaigns'</"
-"italic> menu at the title screen."
+"<header>text='Multiplayer Eras and Factions'</header>"
 msgstr ""
 "\n"
 "\n"
-"Single-player campaigns are collections of scenarios that fit together to "
-"tell a story. Both stand-alone scenarios—if intended to be played as such—"
-"and regular campaigns are available from the <italic>text='Campaigns'</"
-"italic> menu at the title screen."
+"<header>text='Multiplayer Eras and Factions'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:481
-msgid ""
-"\n"
-"\n"
-"<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Multiplayer Campaigns, Scenarios, and Map Packs'</header>"
-
-#. [topic]: id=using_addons
-#: data/core/help.cfg:483
-msgid ""
-"\n"
-"\n"
-"<italic>text='Multiplayer'</italic> games can be played in fully customized, "
-"scripted scenarios or even specially designed campaigns. There are also "
-"packs providing sets of individual multiplayer scenarios."
-msgstr ""
-"\n"
-"\n"
-"<italic>text='Multiplayer'</italic> games can be played in fully customized, "
-"scripted scenarios or even specially designed campaigns. There are also "
-"packs providing sets of individual multiplayer scenarios."
-
-#. [topic]: id=using_addons
-#: data/core/help.cfg:485
-msgid ""
-"\n"
-"\n"
-"<header>text='Multiplayer Eras and Factions'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Multiplayer Eras and Factions'</header>"
-
-#. [topic]: id=using_addons
-#: data/core/help.cfg:487
 msgid ""
 "\n"
 "\n"
@@ -2996,7 +3014,7 @@ msgstr ""
 "that era when setting up their sides and teams."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:491
+#: data/core/help.cfg:485
 msgid ""
 "\n"
 "\n"
@@ -3009,7 +3027,7 @@ msgstr ""
 "eras_section'</ref> of the help."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:493
+#: data/core/help.cfg:487
 msgid ""
 "\n"
 "\n"
@@ -3020,7 +3038,7 @@ msgstr ""
 "<header>text='Multiplayer Modifications'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:495
+#: data/core/help.cfg:489
 msgid ""
 "\n"
 "\n"
@@ -3037,7 +3055,7 @@ msgstr ""
 "creating a new game."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:497
+#: data/core/help.cfg:491
 msgid ""
 "\n"
 "\n"
@@ -3048,7 +3066,7 @@ msgstr ""
 "<header>text='Creator Resources'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:499
+#: data/core/help.cfg:493
 msgid ""
 "\n"
 "\n"
@@ -3067,12 +3085,12 @@ msgstr ""
 "installation during download."
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:508
+#: data/core/help.cfg:502
 msgid "Installing Add-ons"
 msgstr "Installing Add-ons"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:509
+#: data/core/help.cfg:503
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3119,12 +3137,12 @@ msgstr ""
 "available languages."
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:522
+#: data/core/help.cfg:516
 msgid "Removing Add-ons"
 msgstr "Removing Add-ons"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:523
+#: data/core/help.cfg:517
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3147,14 +3165,14 @@ msgstr ""
 "your platform."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:538
+#: data/core/help.cfg:532
 msgid "General Commands"
 msgstr "General Commands"
 
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:540 data/core/help.cfg:583 data/core/help.cfg:621
+#: data/core/help.cfg:534 data/core/help.cfg:577 data/core/help.cfg:615
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3167,7 +3185,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:542
+#: data/core/help.cfg:536
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -3177,7 +3195,7 @@ msgstr ""
 "Clear chat messages.\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:545
+#: data/core/help.cfg:539
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -3193,7 +3211,7 @@ msgstr ""
 
 # TODO: "bewteen" -> "between" in the original
 #. [topic]: id=general_commands
-#: data/core/help.cfg:549
+#: data/core/help.cfg:543
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -3209,98 +3227,98 @@ msgstr ""
 "is supplied, toggle between human and AI. If it is ‘on’, set an AI "
 "controller. If it is ‘off’ set a human controller. Defaults to the currently "
 "active side if no parameter is supplied.\n"
+"\n"
+
+#. [topic]: id=general_commands
+#: data/core/help.cfg:546
+msgid ""
+"\n"
+"Display the controller status of a side.\n"
+"\n"
+msgstr ""
+"\n"
+"Display the controller status of a side.\n"
+"\n"
+
+#. [topic]: id=general_commands
+#: data/core/help.cfg:549
+msgid ""
+"\n"
+"Toggle the display of the current frames per second.\n"
+"\n"
+msgstr ""
+"\n"
+"Toggle the display of the current frames per second.\n"
 "\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:552
 msgid ""
 "\n"
-"Display the controller status of a side.\n"
+"Switch a log domain to a different log level.\n"
 "\n"
 msgstr ""
 "\n"
-"Display the controller status of a side.\n"
+"Switch a log domain to a different log level.\n"
 "\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:555
 msgid ""
 "\n"
-"Toggle the display of the current frames per second.\n"
+"Redraws the screen and reloads any image files that have been changed.\n"
 "\n"
 msgstr ""
 "\n"
-"Toggle the display of the current frames per second.\n"
+"Redraws the screen and reloads any image files that have been changed.\n"
 "\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:558
 msgid ""
 "\n"
-"Switch a log domain to a different log level.\n"
+"Bring up theme selection menu.\n"
 "\n"
 msgstr ""
 "\n"
-"Switch a log domain to a different log level.\n"
-"\n"
+"Bring up theme selection menu.\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:561
 msgid ""
 "\n"
-"Redraws the screen and reloads any image files that have been changed.\n"
+"Quit the scenario (without prompting).\n"
 "\n"
 msgstr ""
 "\n"
-"Redraws the screen and reloads any image files that have been changed.\n"
-"\n"
+"Quit the scenario (without prompting).\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:564
 msgid ""
 "\n"
-"Bring up theme selection menu.\n"
+"Save the game (without prompting).\n"
 "\n"
 msgstr ""
 "\n"
-"Bring up theme selection menu.\n"
+"Save the game (without prompting).\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:567
 msgid ""
 "\n"
-"Quit the scenario (without prompting).\n"
-"\n"
-msgstr ""
-"\n"
-"Quit the scenario (without prompting).\n"
-
-#. [topic]: id=general_commands
-#: data/core/help.cfg:570
-msgid ""
-"\n"
-"Save the game (without prompting).\n"
-"\n"
-msgstr ""
-"\n"
-"Save the game (without prompting).\n"
-
-#. [topic]: id=general_commands
-#: data/core/help.cfg:573
-msgid ""
-"\n"
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:582
+#: data/core/help.cfg:576
 msgid "Multiplayer Commands"
 msgstr "Multiplayer Commands"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:585
+#: data/core/help.cfg:579
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3316,7 +3334,7 @@ msgstr ""
 
 # 2 full stops
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:588
+#: data/core/help.cfg:582
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3334,104 +3352,104 @@ msgstr ""
 "bold> dialog (Press the <bold>text='More'</bold> button in the "
 "<bold>text='Status Table'</bold> (alt+s by default) to get there.). The host "
 "can change control of any side.\n"
+"\n"
+
+#. [topic]: id=mp_commands
+#: data/core/help.cfg:585
+msgid ""
+"\n"
+"Launch a dialog to assist the host in changing the human controllers of "
+"sides.\n"
+"\n"
+msgstr ""
+"\n"
+"Launch a dialog to assist the host in changing the human controllers of "
+"sides.\n"
+"\n"
+
+#. [topic]: id=mp_commands
+#: data/core/help.cfg:588
+msgid ""
+"\n"
+"Toggle the idle state for a side. The host may make a side idle after a "
+"network disconnection.\n"
+"\n"
+msgstr ""
+"\n"
+"Toggle the idle state for a side. The host may make a side idle after a "
+"network disconnection.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:591
 msgid ""
 "\n"
-"Launch a dialog to assist the host in changing the human controllers of "
-"sides.\n"
+"Kick a user in multiplayer. They will be able to rejoin the game. If you "
+"just want to change control of their side(s) use the :control command "
+"instead.\n"
 "\n"
 msgstr ""
 "\n"
-"Launch a dialog to assist the host in changing the human controllers of "
-"sides.\n"
+"Kick a user in multiplayer. They will be able to rejoin the game. If you "
+"just want to change control of their side(s) use the :control command "
+"instead.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:594
 msgid ""
 "\n"
-"Toggle the idle state for a side. The host may make a side idle after a "
-"network disconnection.\n"
+"Send a private message to a user. When in a game, it is not possible to send "
+"private messages to players who are currently controlling a side in the same "
+"game.\n"
 "\n"
 msgstr ""
 "\n"
-"Toggle the idle state for a side. The host may make a side idle after a "
-"network disconnection.\n"
+"Send a private message to a user. When in a game, it is not possible to send "
+"private messages to players who are currently controlling a side in the same "
+"game.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:597
 msgid ""
 "\n"
-"Kick a user in multiplayer. They will be able to rejoin the game. If you "
-"just want to change control of their side(s) use the :control command "
-"instead.\n"
+"Mute a specific observer. If no username is supplied the muted usernames are "
+"displayed.\n"
 "\n"
 msgstr ""
 "\n"
-"Kick a user in multiplayer. They will be able to rejoin the game. If you "
-"just want to change control of their side(s) use the :control command "
-"instead.\n"
-"\n"
+"Mute a specific observer. If no username is supplied the muted usernames are "
+"displayed.\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:600
 msgid ""
 "\n"
-"Send a private message to a user. When in a game, it is not possible to send "
-"private messages to players who are currently controlling a side in the same "
-"game.\n"
+"Toggle muting/silencing of all observers on/off.\n"
 "\n"
 msgstr ""
 "\n"
-"Send a private message to a user. When in a game, it is not possible to send "
-"private messages to players who are currently controlling a side in the same "
-"game.\n"
+"Toggle muting/silencing of all observers on/off.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:603
 msgid ""
 "\n"
-"Mute a specific observer. If no username is supplied the muted usernames are "
-"displayed.\n"
+"Unban a user in a multiplayer game by the IP address used by that username. "
+"Can be used on users not in the game but on the server.\n"
 "\n"
 msgstr ""
 "\n"
-"Mute a specific observer. If no username is supplied the muted usernames are "
-"displayed.\n"
+"Unban a user in a multiplayer game by the IP address used by that username. "
+"Can be used on users not in the game but on the server.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:606
 msgid ""
 "\n"
-"Toggle muting/silencing of all observers on/off.\n"
-"\n"
-msgstr ""
-"\n"
-"Toggle muting/silencing of all observers on/off.\n"
-"\n"
-
-#. [topic]: id=mp_commands
-#: data/core/help.cfg:609
-msgid ""
-"\n"
-"Unban a user in a multiplayer game by the IP address used by that username. "
-"Can be used on users not in the game but on the server.\n"
-"\n"
-msgstr ""
-"\n"
-"Unban a user in a multiplayer game by the IP address used by that username. "
-"Can be used on users not in the game but on the server.\n"
-"\n"
-
-#. [topic]: id=mp_commands
-#: data/core/help.cfg:612
-msgid ""
-"\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
 "observers is cleared."
 msgstr ""
@@ -3440,80 +3458,80 @@ msgstr ""
 "observers is cleared."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:620
+#: data/core/help.cfg:614
 msgid "Debug Mode Commands"
 msgstr "Debug Mode Commands"
+
+#. [topic]: id=debug_commands
+#: data/core/help.cfg:617
+msgid ""
+"\n"
+"Brings up a menu for choosing a scenario to immediately advance to in a "
+"campaign.\n"
+"\n"
+msgstr ""
+"\n"
+"Brings up a menu for choosing a scenario to immediately advance to in a "
+"campaign.\n"
+"\n"
+
+#. [topic]: id=debug_commands
+#: data/core/help.cfg:620
+msgid ""
+"\n"
+"Create a unit of the specified type on the selected hex.\n"
+"\n"
+msgstr ""
+"\n"
+"Create a unit of the specified type on the selected hex.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:623
 msgid ""
 "\n"
-"Brings up a menu for choosing a scenario to immediately advance to in a "
-"campaign.\n"
+"Toggle fog/shroud for the current side.\n"
 "\n"
 msgstr ""
 "\n"
-"Brings up a menu for choosing a scenario to immediately advance to in a "
-"campaign.\n"
+"Toggle fog/shroud for the current side.\n"
 "\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:626
 msgid ""
 "\n"
-"Create a unit of the specified type on the selected hex.\n"
+"Adds the specified amount to the current side’s gold.\n"
 "\n"
 msgstr ""
 "\n"
-"Create a unit of the specified type on the selected hex.\n"
+"Adds the specified amount to the current side’s gold.\n"
 "\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:629
 msgid ""
 "\n"
-"Toggle fog/shroud for the current side.\n"
+"Immediately advances to the next scenario in a campaign.\n"
 "\n"
 msgstr ""
 "\n"
-"Toggle fog/shroud for the current side.\n"
+"Immediately advances to the next scenario in a campaign.\n"
 "\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:632
 msgid ""
 "\n"
-"Adds the specified amount to the current side’s gold.\n"
+"Manually set a gamestate variable to value.\n"
 "\n"
 msgstr ""
 "\n"
-"Adds the specified amount to the current side’s gold.\n"
+"Manually set a gamestate variable to value.\n"
 "\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:635
-msgid ""
-"\n"
-"Immediately advances to the next scenario in a campaign.\n"
-"\n"
-msgstr ""
-"\n"
-"Immediately advances to the next scenario in a campaign.\n"
-"\n"
-
-#. [topic]: id=debug_commands
-#: data/core/help.cfg:638
-msgid ""
-"\n"
-"Manually set a gamestate variable to value.\n"
-"\n"
-msgstr ""
-"\n"
-"Manually set a gamestate variable to value.\n"
-"\n"
-
-#. [topic]: id=debug_commands
-#: data/core/help.cfg:641
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3524,31 +3542,31 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
+#: data/core/help.cfg:638
+msgid ""
+"\n"
+"Manually fire the specified event.\n"
+"\n"
+msgstr ""
+"\n"
+"Manually fire the specified event.\n"
+"\n"
+
+#. [topic]: id=debug_commands
+#: data/core/help.cfg:641
+msgid ""
+"\n"
+"Modifies the specified property of the selected unit. Example: :unit "
+"hitpoints=100\n"
+"\n"
+msgstr ""
+"\n"
+"Modifies the specified property of the selected unit. Example: :unit "
+"hitpoints=100\n"
+"\n"
+
+#. [topic]: id=debug_commands
 #: data/core/help.cfg:644
-msgid ""
-"\n"
-"Manually fire the specified event.\n"
-"\n"
-msgstr ""
-"\n"
-"Manually fire the specified event.\n"
-"\n"
-
-#. [topic]: id=debug_commands
-#: data/core/help.cfg:647
-msgid ""
-"\n"
-"Modifies the specified property of the selected unit. Example: :unit "
-"hitpoints=100\n"
-"\n"
-msgstr ""
-"\n"
-"Modifies the specified property of the selected unit. Example: :unit "
-"hitpoints=100\n"
-"\n"
-
-#. [topic]: id=debug_commands
-#: data/core/help.cfg:650
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -3662,8 +3680,17 @@ msgstr "leadership"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:108
+#, fuzzy
+#| msgid ""
+#| "This unit can lead our own units that are next to it, making them fight "
+#| "better.\n"
+#| "\n"
+#| "Adjacent own units of lower level will do more damage in battle. When a "
+#| "unit adjacent to, of a lower level than, and on the same side as a unit "
+#| "with Leadership engages in combat, its attacks do 25% more damage times "
+#| "the difference in their levels."
 msgid ""
-"This unit can lead our own units that are next to it, making them fight "
+"This unit can lead your own units that are next to it, making them fight "
 "better.\n"
 "\n"
 "Adjacent own units of lower level will do more damage in battle. When a unit "
@@ -6200,7 +6227,7 @@ msgstr ""
 "only to march to the defence of the natural world and the forests it calls "
 "home."
 
-#: data/lua/feeding.lua:32 data/lua/feeding.lua:45
+#: data/lua/feeding.lua:31 data/lua/feeding.lua:44
 msgid "+1 max HP"
 msgstr "+1 max HP"
 
@@ -6215,6 +6242,9 @@ msgstr "The Battle for Wesnoth Help"
 #: src/help/help.cpp:239
 msgid "Parse error when parsing help text: "
 msgstr "Parse error when parsing help text: "
+
+#~ msgid "ingame_help_item^Contributors"
+#~ msgstr "Contributors"
 
 #~ msgid "race^Khalifate Human"
 #~ msgstr "Khalifate Human"

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-12 20:01+0300\n"
+"POT-Creation-Date: 2018-03-17 21:30+0300\n"
 "PO-Revision-Date: 2016-10-16 04:41+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: \n"
@@ -1619,8 +1619,8 @@ msgid "Fake Map Border"
 msgstr ""
 
 #. [terrain_type]: id=shroud
-#. [toggle_button]: id=shroud
 #. [toggle_button]: id=sort_7
+#. [toggle_button]: id=shroud
 #: data/core/terrain.cfg:2741 data/gui/window/editor_edit_side.cfg:180
 #: data/gui/window/game_stats.cfg:384 data/gui/window/mp_create_game.cfg:388
 msgid "Shroud"
@@ -2037,10 +2037,10 @@ msgid " (Press '$hotkey' for more information)"
 msgstr ""
 
 #. [toggle_button]: id=sort_0
-#. [label]: id=name
 #. [label]
 #. [toggle_button]: id=sort_1
 #. [toggle_button]: id=sort_name
+#. [label]: id=name
 #: data/gui/widget/addon_list.cfg:78 data/gui/window/campaign_dialog.cfg:226
 #: data/gui/window/game_load.cfg:157 data/gui/window/mp_server_list.cfg:107
 #: data/gui/window/terrain_layers.cfg:45 data/gui/window/unit_list.cfg:93
@@ -2102,27 +2102,22 @@ msgstr ""
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:247
-#: src/gui/dialogs/addon/manager.cpp:783
+#: src/gui/dialogs/addon/manager.cpp:800
 #, fuzzy
 #| msgid "Searching for installed add-ons"
 msgid "Uninstall add-on"
 msgstr "Поиск установленных дополнений"
 
-#. [label]: id=room
-#: data/gui/widget/chatbox.cfg:23
-msgid "Rooms"
-msgstr "Комнаты"
-
 #. [image]: id=pending_messages
-#: data/gui/widget/chatbox.cfg:54
+#: data/gui/widget/chatbox.cfg:40
 msgid "Messages waiting"
 msgstr "Ожидающие сообщения"
 
-#. [button]: id=click_dismiss
 #. [button]: id=close_window
+#. [button]: id=click_dismiss
 #. [button]: id=cancel
 #. [button]: id=ok
-#: data/gui/widget/chatbox.cfg:65 data/gui/widget/window_default.cfg:106
+#: data/gui/widget/chatbox.cfg:51 data/gui/widget/window_default.cfg:106
 #: data/gui/window/attack_predictions.cfg:304 data/gui/window/chat_log.cfg:199
 #: data/gui/window/end_credits.cfg:146
 #: data/gui/window/game_cache_options.cfg:247
@@ -2238,7 +2233,7 @@ msgstr "Версия:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:160
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:587
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:586
 msgid "No description available."
 msgstr "Нет описания."
 
@@ -2276,7 +2271,6 @@ msgstr "Последнее обновление:"
 #. [label]
 #: data/gui/window/addon_manager.cfg:437
 #: data/gui/window/game_cache_options.cfg:160
-#: data/gui/window/screenshot_notification.cfg:139
 msgid "Size:"
 msgstr "Размер:"
 
@@ -2363,7 +2357,8 @@ msgstr "Аддоны"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:945 src/gui/dialogs/addon/manager.cpp:450
+#: data/gui/window/addon_manager.cfg:945 src/gui/dialogs/addon/manager.cpp:452
+#: src/gui/dialogs/addon/manager.cpp:639
 #, fuzzy
 #| msgid "Details:"
 msgid "Addon Details"
@@ -2475,7 +2470,6 @@ msgstr "Масштабирование до ячейки"
 #: data/gui/window/mp_faction_select.cfg:379
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
 #: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:284
-#: data/gui/window/screenshot_notification.cfg:200
 #: data/gui/window/select_orb_colors.cfg:113
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
@@ -2709,7 +2703,6 @@ msgstr "Пользовательское расписание времен су�
 #: data/gui/window/folder_create.cfg:72 data/gui/window/game_save.cfg:72
 #: data/gui/window/game_save_message.cfg:92
 #: data/gui/window/game_save_oos.cfg:90
-#: data/gui/window/screenshot_notification.cfg:118
 msgid "Name:"
 msgstr "Имя:"
 
@@ -2772,8 +2765,8 @@ msgstr "Удалить время суток"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:756 src/gui/dialogs/file_dialog.cpp:308
-#: src/gui/dialogs/file_dialog.cpp:735 src/gui/widgets/label.cpp:172
+#: src/gui/dialogs/addon/manager.cpp:773 src/gui/dialogs/file_dialog.cpp:307
+#: src/gui/dialogs/file_dialog.cpp:733 src/gui/widgets/label.cpp:172
 msgid "Confirm"
 msgstr "Подтвердить"
 
@@ -2877,7 +2870,7 @@ msgstr "Описание:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:475
+#: src/gui/dialogs/multiplayer/lobby.cpp:470
 msgid "Experience modifier:"
 msgstr "Модификатор опыта:"
 
@@ -2934,7 +2927,7 @@ msgstr "Спрятать в панели состояния"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:249 data/gui/window/mp_staging.cfg:330
-#: src/gui/dialogs/multiplayer/lobby.cpp:476
+#: src/gui/dialogs/multiplayer/lobby.cpp:471
 msgid "Gold:"
 msgstr "Золото:"
 
@@ -2960,7 +2953,7 @@ msgstr "Управление:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:79
+#: data/gui/window/editor_edit_side.cfg:373 src/gui/dialogs/game_stats.cpp:78
 msgid "controller^Human"
 msgstr "controller^Человек"
 
@@ -3118,14 +3111,14 @@ msgstr ""
 msgid "Removes the current bookmark"
 msgstr ""
 
-#. [button]: id=delete_file
 #. [button]: id=delete
+#. [button]: id=delete_file
 #: data/gui/window/file_dialog.cfg:342 data/gui/window/game_load.cfg:479
 msgid "Delete"
 msgstr "Удалить"
 
-#. [button]: id=new_dir
 #. [label]: id=title
+#. [button]: id=new_dir
 #: data/gui/window/file_dialog.cfg:355 data/gui/window/folder_create.cfg:43
 msgid "New Folder"
 msgstr "Новый каталог"
@@ -3362,7 +3355,7 @@ msgstr "Команда №1"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:402
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:399
 #, fuzzy
 #| msgid "Gold:"
 msgid "Gold"
@@ -3393,7 +3386,7 @@ msgstr ""
 #. [label]: id=side_income
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:261
 #: data/gui/window/mp_join_game.cfg:274
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:408
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:405
 #, fuzzy
 #| msgid "Income:"
 msgid "Income"
@@ -3661,8 +3654,8 @@ msgstr "Нажмите желаемую горячую клавишу (Esc от�
 msgid "Show or Hide Labels"
 msgstr "Показать или скрыть метки"
 
-#. [label]
 #. [grid]
+#. [label]
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:258
 msgid "Language"
@@ -3802,7 +3795,7 @@ msgid "Do not show the map until given control of a side"
 msgstr ""
 
 #. [label]
-#: data/gui/window/lobby_main.cfg:613 data/gui/window/lobby_main.cfg:831
+#: data/gui/window/lobby_main.cfg:613 data/gui/window/lobby_main.cfg:833
 msgid "Multiplayer Lobby"
 msgstr "Холл мультиплеера"
 
@@ -4067,7 +4060,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=mods_header
 #: data/gui/window/mp_create_game.cfg:203
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Modifications:"
 msgstr "Модификации:"
 
@@ -4234,7 +4227,7 @@ msgstr ""
 #. [widget]: id=label
 #: data/gui/window/mp_create_game.cfg:533 data/gui/window/preferences.cfg:291
 #: data/gui/window/preferences/05_multiplayer.cfg:402
-#: src/gui/dialogs/preferences_dialog.cpp:99
+#: src/gui/dialogs/preferences_dialog.cpp:139
 #, fuzzy
 #| msgid "Generate"
 msgid "General"
@@ -4331,7 +4324,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:177
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:477
+#: src/gui/dialogs/multiplayer/lobby.cpp:472
 #, fuzzy
 #| msgid "Map size: "
 msgid "Map size:"
@@ -4353,7 +4346,7 @@ msgstr "Пол:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
 #: data/gui/window/mp_faction_select.cfg:167
-#: src/gui/dialogs/multiplayer/faction_select.cpp:134
+#: src/gui/dialogs/multiplayer/faction_select.cpp:151
 msgid "Random"
 msgstr ""
 
@@ -4429,7 +4422,7 @@ msgstr ""
 
 #. [label]: id=title
 #: data/gui/window/mp_join_game.cfg:410 data/gui/window/mp_staging.cfg:552
-#: data/gui/window/mp_staging.cfg:735
+#: data/gui/window/mp_staging.cfg:737
 #, fuzzy
 #| msgid "In Lobby"
 msgid "Game Lobby"
@@ -4438,8 +4431,8 @@ msgstr "Лобби"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:479 data/gui/window/mp_staging.cfg:614
-#: data/gui/window/mp_staging.cfg:804
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:464
+#: data/gui/window/mp_staging.cfg:806
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:463
 #, fuzzy
 #| msgid "Waiting for remote input"
 msgid "Waiting for players to join..."
@@ -4489,7 +4482,7 @@ msgstr "Напомнить пароль"
 #. [label]
 #: data/gui/window/mp_method_selection.cfg:44
 #: data/gui/window/preferences.cfg:364 data/gui/window/title_screen.cfg:253
-#: src/gui/dialogs/game_load.cpp:333
+#: src/gui/dialogs/game_load.cpp:332
 msgid "Multiplayer"
 msgstr "Мультиплеер"
 
@@ -4557,7 +4550,7 @@ msgstr "Адрес"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/mp_server_list.cfg:217 src/preferences/display.cpp:158
+#: data/gui/window/mp_server_list.cfg:217 src/preferences/display.cpp:172
 msgid "Select"
 msgstr "Выбрать"
 
@@ -4654,77 +4647,77 @@ msgid "Speed:"
 msgstr "Скорость:"
 
 #. [column]
-#: data/gui/window/preferences/01_general.cfg:87
+#: data/gui/window/preferences/01_general.cfg:88
 msgid "Units move and fight speed"
 msgstr "Скорость движения и битвы"
 
 #. [toggle_button]: id=disable_auto_moves
-#: data/gui/window/preferences/01_general.cfg:103
+#: data/gui/window/preferences/01_general.cfg:104
 msgid "Disable automatic moves"
 msgstr "Отключить автоматические передвижения"
 
 #. [toggle_button]: id=disable_auto_moves
-#: data/gui/window/preferences/01_general.cfg:104
+#: data/gui/window/preferences/01_general.cfg:105
 msgid "Do not allow automatic movements at the beginning of a turn"
 msgstr "Не позволять автоматическим передвижениям произойти в начале хода"
 
 #. [toggle_button]: id=show_turn_dialog
-#: data/gui/window/preferences/01_general.cfg:117
+#: data/gui/window/preferences/01_general.cfg:118
 msgid "Turn dialog"
 msgstr "Окно начала хода"
 
 #. [toggle_button]: id=show_turn_dialog
-#: data/gui/window/preferences/01_general.cfg:118
+#: data/gui/window/preferences/01_general.cfg:119
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Показывать диалог в начале вашего хода"
 
 #. [toggle_button]: id=whiteboard_on_start
-#: data/gui/window/preferences/01_general.cfg:131
+#: data/gui/window/preferences/01_general.cfg:132
 msgid "Enable planning mode on start"
 msgstr "Включить режим планирования в начале игры"
 
 #. [toggle_button]: id=whiteboard_on_start
-#: data/gui/window/preferences/01_general.cfg:132
+#: data/gui/window/preferences/01_general.cfg:133
 msgid "Activates Planning Mode on game start"
 msgstr "Активирует режим планирования при старте игры"
 
 #. [toggle_button]: id=whiteboard_hide_allies
-#: data/gui/window/preferences/01_general.cfg:145
+#: data/gui/window/preferences/01_general.cfg:146
 msgid "Hide allies’ plans by default"
 msgstr "По умолчанию не показывать планы союзников"
 
 #. [toggle_button]: id=whiteboard_hide_allies
-#: data/gui/window/preferences/01_general.cfg:146
+#: data/gui/window/preferences/01_general.cfg:147
 msgid "Hide allies’ Planning Mode plans in multiplayer games"
 msgstr "Не показывать планы союзников в мультиплеере"
 
 #. [toggle_button]: id=interrupt_move_when_ally_sighted
-#: data/gui/window/preferences/01_general.cfg:159
+#: data/gui/window/preferences/01_general.cfg:160
 msgid "Interrupt move when an ally is sighted"
 msgstr "Прерывать движение, если замечен союзник"
 
 #. [toggle_button]: id=interrupt_move_when_ally_sighted
-#: data/gui/window/preferences/01_general.cfg:160
+#: data/gui/window/preferences/01_general.cfg:161
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr "Прервать движение вашего бойца при встрече с дружественным бойцом"
 
 #. [toggle_button]: id=save_replays
-#: data/gui/window/preferences/01_general.cfg:175
+#: data/gui/window/preferences/01_general.cfg:176
 msgid "Save replays at the end of scenarios"
 msgstr "Сохранять повторы в конце сценариев"
 
 #. [toggle_button]: id=save_replays
-#: data/gui/window/preferences/01_general.cfg:176
+#: data/gui/window/preferences/01_general.cfg:177
 msgid "Save replays of games on victory in all modes and defeat in multiplayer"
 msgstr "Сохраняет повторы побед во всех режимах и поражения в мультиплеере"
 
 #. [toggle_button]: id=delete_saves
-#: data/gui/window/preferences/01_general.cfg:189
+#: data/gui/window/preferences/01_general.cfg:190
 msgid "Delete auto-saves at the end of scenarios"
 msgstr "Удалять автосохранения в конце сценариев"
 
 #. [toggle_button]: id=delete_saves
-#: data/gui/window/preferences/01_general.cfg:190
+#: data/gui/window/preferences/01_general.cfg:191
 msgid ""
 "Delete previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr ""
@@ -4732,22 +4725,22 @@ msgstr ""
 "поражения (мультиплеер)"
 
 #. [column]
-#: data/gui/window/preferences/01_general.cfg:200
+#: data/gui/window/preferences/01_general.cfg:201
 msgid "Maximum auto-saves:"
 msgstr "Макс. число автосохранений:"
 
 #. [column]
-#: data/gui/window/preferences/01_general.cfg:204
+#: data/gui/window/preferences/01_general.cfg:205
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "Установить максимальное количество автосохранений"
 
 #. [button]: id=cachemg
-#: data/gui/window/preferences/01_general.cfg:220
+#: data/gui/window/preferences/01_general.cfg:221
 msgid "Cache"
 msgstr "Кэш:"
 
 #. [button]: id=cachemg
-#: data/gui/window/preferences/01_general.cfg:221
+#: data/gui/window/preferences/01_general.cfg:222
 msgid "Manage the game WML cache"
 msgstr "Управлять WML-кэшем игры"
 
@@ -5135,21 +5128,6 @@ msgstr "Открыть"
 msgid "Open this file with an external application"
 msgstr "Открыть этот файл внешним приложением"
 
-#. [label]: id=title
-#: data/gui/window/screenshot_notification.cfg:94
-msgid "Screenshot Saved"
-msgstr "Скриншот сохранен"
-
-#. [button]: id=browse_dir
-#: data/gui/window/screenshot_notification.cfg:184
-msgid "Screenshots..."
-msgstr "Скриншоты..."
-
-#. [button]: id=browse_dir
-#: data/gui/window/screenshot_notification.cfg:186
-msgid "Browse the screenshots folder using a file manager"
-msgstr "Открыть каталог скриншотов в файловом менеджере"
-
 #. [label]
 #: data/gui/window/select_orb_colors.cfg:80
 msgid "Choose Orb/Minimap Colors"
@@ -5359,7 +5337,7 @@ msgstr "Начать обучающий сценарий, чтобы ознак�
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:336
+#: data/gui/window/title_screen.cfg:251 src/gui/dialogs/game_load.cpp:335
 msgid "Tutorial"
 msgstr "Обучение"
 
@@ -5479,11 +5457,6 @@ msgstr "Атаковать"
 msgid "Attack Enemy"
 msgstr "Атаковать врага"
 
-#. [label]
-#: data/gui/window/unit_attack.cfg:331
-msgid "Choose weapon:"
-msgstr "Выберите оружие:"
-
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/unit_create.cfg:47 src/hotkey/hotkey_command.cpp:96
@@ -5530,8 +5503,8 @@ msgstr "ОП: "
 #. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:177 data/gui/window/unit_recall.cfg:89
-#: src/gui/widgets/unit_preview_pane.cpp:356
-#: src/gui/widgets/unit_preview_pane.cpp:497
+#: src/gui/widgets/unit_preview_pane.cpp:344
+#: src/gui/widgets/unit_preview_pane.cpp:487
 msgid "Traits"
 msgstr "Особенности"
 
@@ -5573,47 +5546,49 @@ msgstr "Вербовать"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:210
-#: src/gui/dialogs/preferences_dialog.cpp:227
+#: src/gui/dialogs/preferences_dialog.cpp:267
 #: src/gui/dialogs/transient_message.cpp:78
 msgid "Error"
 msgstr "Ошибка"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:233
-#: src/gui/dialogs/multiplayer/lobby.cpp:249 src/gui/dialogs/wml_error.cpp:197
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:228
+#: src/gui/dialogs/multiplayer/lobby.cpp:244 src/gui/dialogs/wml_error.cpp:197
 msgid "Details:"
 msgstr "Детали:"
 
-#: src/build_info.cpp:277
+#: src/build_info.cpp:263
 msgid "feature^Experimental OpenMP support"
 msgstr "feature^Экспериментальная поддержка открытого мультиплеера"
 
-#: src/build_info.cpp:282
-msgid "feature^PNG screenshots"
+#: src/build_info.cpp:268
+#, fuzzy
+#| msgid "feature^PNG screenshots"
+msgid "feature^JPG screenshots"
 msgstr "feature^Скриншоты в PNG"
 
-#: src/build_info.cpp:287
+#: src/build_info.cpp:275
 msgid "feature^Lua console completion"
 msgstr "feature^Lua консоль завершена"
 
-#: src/build_info.cpp:292
+#: src/build_info.cpp:280
 msgid "feature^Legacy bidirectional rendering"
 msgstr "feature^Устаревший двунаправленный рендеринг"
 
-#: src/build_info.cpp:299
+#: src/build_info.cpp:287
 msgid "feature^D-Bus notifications back end"
 msgstr "feature^D-Bus уведомления сервера"
 
-#: src/build_info.cpp:308
+#: src/build_info.cpp:296
 msgid "feature^Win32 notifications back end"
 msgstr "feature^Win32 уведомления сервера"
 
-#: src/build_info.cpp:314
+#: src/build_info.cpp:302
 msgid "feature^Cocoa notifications back end"
 msgstr "feature^Cocoa уведомления сервера"
 
-#: src/build_info.cpp:319
+#: src/build_info.cpp:307
 msgid "feature^Growl notifications back end"
 msgstr "feature^Growl уведомления сервера"
 
@@ -5645,7 +5620,7 @@ msgstr ""
 msgid "filesystem_path_system^Root"
 msgstr ""
 
-#: src/desktop/version.cpp:282
+#: src/desktop/version.cpp:292
 msgid "operating_system^<unknown>"
 msgstr "operating_system^<неизвестна>"
 
@@ -5653,7 +5628,7 @@ msgstr "operating_system^<неизвестна>"
 msgid "The maximum text width is less than 1."
 msgstr "Максимальная ширина текста меньше 1."
 
-#: src/font/text.cpp:760
+#: src/font/text.cpp:761
 msgid "The text contains invalid markup: "
 msgstr "Текст содержит недопустимую разметку: "
 
@@ -5741,12 +5716,12 @@ msgid "Linked '$id' group has multiple definitions."
 msgstr "Связанная группа '$id' определена более одного раза."
 
 #: src/gui/core/window_builder.cpp:314 src/gui/widgets/addon_list.cpp:429
-#: src/gui/widgets/chatbox.cpp:759 src/gui/widgets/listbox.cpp:804
+#: src/gui/widgets/chatbox.cpp:762 src/gui/widgets/listbox.cpp:819
 #: src/gui/widgets/multi_page.cpp:196 src/gui/widgets/panel.cpp:194
 #: src/gui/widgets/scroll_label.cpp:220 src/gui/widgets/scrollbar_panel.cpp:98
 #: src/gui/widgets/size_lock.cpp:119 src/gui/widgets/stacked_widget.cpp:241
-#: src/gui/widgets/toggle_panel.cpp:417 src/gui/widgets/tree_view.cpp:311
-#: src/gui/widgets/unit_preview_pane.cpp:583
+#: src/gui/widgets/toggle_panel.cpp:402 src/gui/widgets/tree_view.cpp:311
+#: src/gui/widgets/unit_preview_pane.cpp:573
 msgid "No grid defined."
 msgstr "Сетка не определена."
 
@@ -5758,267 +5733,267 @@ msgstr "У строки должен быть столбец."
 msgid "Number of columns differ."
 msgstr "Количество столбцов различается."
 
-#: src/gui/dialogs/addon/manager.cpp:190
+#: src/gui/dialogs/addon/manager.cpp:189
 msgid "addons_view^All Add-ons"
 msgstr "Все аддоны"
 
-#: src/gui/dialogs/addon/manager.cpp:191
+#: src/gui/dialogs/addon/manager.cpp:190
 msgid "addons_view^Installed"
 msgstr "Установлен"
 
-#: src/gui/dialogs/addon/manager.cpp:192
+#: src/gui/dialogs/addon/manager.cpp:191
 msgid "addons_view^Upgradable"
 msgstr "Доступно обновление"
 
-#: src/gui/dialogs/addon/manager.cpp:193
+#: src/gui/dialogs/addon/manager.cpp:192
 #, fuzzy
 #| msgid "addons_view^Installed"
 msgid "addons_view^Publishable"
 msgstr "Установлен"
 
-#: src/gui/dialogs/addon/manager.cpp:194
+#: src/gui/dialogs/addon/manager.cpp:193
 msgid "addons_view^Not Installed"
 msgstr "Не установлен"
 
-#: src/gui/dialogs/addon/manager.cpp:198
+#: src/gui/dialogs/addon/manager.cpp:197
 msgid "addons_of_type^Campaigns"
 msgstr "Кампании"
 
-#: src/gui/dialogs/addon/manager.cpp:199
+#: src/gui/dialogs/addon/manager.cpp:198
 msgid "addons_of_type^Scenarios"
 msgstr "Сценарии"
 
-#: src/gui/dialogs/addon/manager.cpp:200
+#: src/gui/dialogs/addon/manager.cpp:199
 msgid "addons_of_type^SP/MP campaigns"
 msgstr "Кампании для одного игрока или МП"
 
-#: src/gui/dialogs/addon/manager.cpp:201
+#: src/gui/dialogs/addon/manager.cpp:200
 msgid "addons_of_type^MP campaigns"
 msgstr "Кампании для МП"
 
-#: src/gui/dialogs/addon/manager.cpp:202
+#: src/gui/dialogs/addon/manager.cpp:201
 msgid "addons_of_type^MP scenarios"
 msgstr "Сценарии для МП"
 
-#: src/gui/dialogs/addon/manager.cpp:203
+#: src/gui/dialogs/addon/manager.cpp:202
 msgid "addons_of_type^MP map-packs"
 msgstr "Наборы карт для МП"
 
-#: src/gui/dialogs/addon/manager.cpp:204
+#: src/gui/dialogs/addon/manager.cpp:203
 msgid "addons_of_type^MP eras"
 msgstr "Эры для МП"
 
-#: src/gui/dialogs/addon/manager.cpp:205
+#: src/gui/dialogs/addon/manager.cpp:204
 msgid "addons_of_type^MP factions"
 msgstr "Фракции для МП"
 
-#: src/gui/dialogs/addon/manager.cpp:206
+#: src/gui/dialogs/addon/manager.cpp:205
 #, fuzzy
 #| msgid "addons_of_type^MP modifications"
 msgid "addons_of_type^Modifications"
 msgstr "Модификации для МП"
 
-#: src/gui/dialogs/addon/manager.cpp:207
+#: src/gui/dialogs/addon/manager.cpp:206
 msgid "addons_of_type^Cores"
 msgstr "Базовые ресурсы"
 
-#: src/gui/dialogs/addon/manager.cpp:208
+#: src/gui/dialogs/addon/manager.cpp:207
 msgid "addons_of_type^Resources"
 msgstr "Ресурсы"
 
-#: src/gui/dialogs/addon/manager.cpp:210
+#: src/gui/dialogs/addon/manager.cpp:209
 msgid "addons_of_type^Other"
 msgstr "Другой"
 
-#: src/gui/dialogs/addon/manager.cpp:211
+#: src/gui/dialogs/addon/manager.cpp:210
 msgid "addons_of_type^Unknown"
 msgstr "Неизвестно"
 
-#: src/gui/dialogs/addon/manager.cpp:215
+#: src/gui/dialogs/addon/manager.cpp:214
 msgid "addons_order^Name ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:218
+#: src/gui/dialogs/addon/manager.cpp:217
 msgid "addons_order^Author ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:221
+#: src/gui/dialogs/addon/manager.cpp:220
 msgid "addons_order^Size ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:224
+#: src/gui/dialogs/addon/manager.cpp:223
 msgid "addons_order^Downloads ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:227
+#: src/gui/dialogs/addon/manager.cpp:226
 #, fuzzy
 #| msgid "addons_of_type^Cores"
 msgid "addons_order^Type ($order)"
 msgstr "Базовые ресурсы"
 
-#: src/gui/dialogs/addon/manager.cpp:230
+#: src/gui/dialogs/addon/manager.cpp:229
 msgid "addons_order^Last updated ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:233
+#: src/gui/dialogs/addon/manager.cpp:232
 msgid "addons_order^First uploaded ($order)"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:261 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "Не установлен"
 
-#: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:103
+#: src/gui/dialogs/addon/manager.cpp:262 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "Опубликован, не установлен"
 
-#: src/gui/dialogs/addon/manager.cpp:267 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:266 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "Установлен"
 
-#: src/gui/dialogs/addon/manager.cpp:268 src/gui/widgets/addon_list.cpp:111
+#: src/gui/dialogs/addon/manager.cpp:267 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "Опубликован"
 
-#: src/gui/dialogs/addon/manager.cpp:272
+#: src/gui/dialogs/addon/manager.cpp:271
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Установлен, локальная версия не отслеживается"
 
-#: src/gui/dialogs/addon/manager.cpp:275
+#: src/gui/dialogs/addon/manager.cpp:274
 msgid "addon_state^Published, not tracking local version"
 msgstr "Опубликован, локальная версия не отслеживается"
 
-#: src/gui/dialogs/addon/manager.cpp:279
+#: src/gui/dialogs/addon/manager.cpp:278
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Установлен ($local_version|), доступно обновление"
 
-#: src/gui/dialogs/addon/manager.cpp:280
+#: src/gui/dialogs/addon/manager.cpp:279
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Опубликован (установлена версия $local_version|), доступно обновление"
 
-#: src/gui/dialogs/addon/manager.cpp:286
+#: src/gui/dialogs/addon/manager.cpp:285
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Установлен ($local_version|), на сервере устарел"
 
-#: src/gui/dialogs/addon/manager.cpp:287
+#: src/gui/dialogs/addon/manager.cpp:286
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Опубликован (установлена версия $local_version|), на сервере устарел"
 
-#: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:292 src/gui/widgets/addon_list.cpp:114
 #, fuzzy
 #| msgid "addon_state^Installed, outdated on server"
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Установлен, на сервере устарел"
 
-#: src/gui/dialogs/addon/manager.cpp:294 src/gui/widgets/addon_list.cpp:114
+#: src/gui/dialogs/addon/manager.cpp:293 src/gui/widgets/addon_list.cpp:114
 #, fuzzy
 #| msgid "addon_state^Published"
 msgid "addon_state^Ready to publish"
 msgstr "Опубликован"
 
-#: src/gui/dialogs/addon/manager.cpp:298 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:297 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "Установлен, сломан"
 
-#: src/gui/dialogs/addon/manager.cpp:299 src/gui/widgets/addon_list.cpp:126
+#: src/gui/dialogs/addon/manager.cpp:298 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "Опубликован, сломан"
 
-#: src/gui/dialogs/addon/manager.cpp:302 src/gui/widgets/addon_list.cpp:130
+#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "Неизвестно"
 
 #. TRANSLATORS: ascending
-#: src/gui/dialogs/addon/manager.cpp:362
+#: src/gui/dialogs/addon/manager.cpp:361
 msgid "asc"
 msgstr ""
 
 #. TRANSLATORS: descending
-#: src/gui/dialogs/addon/manager.cpp:366
+#: src/gui/dialogs/addon/manager.cpp:365
 msgid "desc"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:382 src/gui/dialogs/chat_log.cpp:421
+#: src/gui/dialogs/addon/manager.cpp:381 src/gui/dialogs/chat_log.cpp:420
 #: src/gui/dialogs/game_cache_options.cpp:105
-#: src/gui/dialogs/game_version.cpp:187
-#: src/gui/dialogs/gamestate_inspector.cpp:429
-#: src/gui/dialogs/lua_interpreter.cpp:483
-#: src/gui/dialogs/screenshot_notification.cpp:96
+#: src/gui/dialogs/game_version.cpp:186
+#: src/gui/dialogs/gamestate_inspector.cpp:428
+#: src/gui/dialogs/lua_interpreter.cpp:490
+#: src/gui/dialogs/screenshot_notification.cpp:99
 #: src/gui/dialogs/wml_error.cpp:229
 msgid "Clipboard support not found, contact your packager"
 msgstr "Поддержка буфера обмена не найдена, обратитесь к сборщику вашей версии"
 
-#: src/gui/dialogs/addon/manager.cpp:447
+#: src/gui/dialogs/addon/manager.cpp:449
 msgid "addons^Back to List"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:459
+#: src/gui/dialogs/addon/manager.cpp:461
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:495
+#: src/gui/dialogs/addon/manager.cpp:497
 #, fuzzy
 #| msgid "No description available."
 msgid "No Add-ons Available"
 msgstr "Нет описания."
 
-#: src/gui/dialogs/addon/manager.cpp:495
+#: src/gui/dialogs/addon/manager.cpp:497
 msgid "There are no add-ons available for download from this server."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:655
+#: src/gui/dialogs/addon/manager.cpp:672
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:663
+#: src/gui/dialogs/addon/manager.cpp:680
 msgid "The following add-on could not be deleted properly:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:709
+#: src/gui/dialogs/addon/manager.cpp:726
 msgid "Warning"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:710
+#: src/gui/dialogs/addon/manager.cpp:727
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:719
+#: src/gui/dialogs/addon/manager.cpp:736
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:722 src/gui/dialogs/addon/manager.cpp:725
-#: src/gui/dialogs/addon/manager.cpp:764
+#: src/gui/dialogs/addon/manager.cpp:739 src/gui/dialogs/addon/manager.cpp:742
+#: src/gui/dialogs/addon/manager.cpp:781
 msgid "The server responded with an error:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:723
+#: src/gui/dialogs/addon/manager.cpp:740
 msgid "Terms"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:740 src/gui/dialogs/addon/manager.cpp:767
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:442
+#: src/gui/dialogs/addon/manager.cpp:757 src/gui/dialogs/addon/manager.cpp:784
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:439
 msgid "Response"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:752
+#: src/gui/dialogs/addon/manager.cpp:769
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:784
+#: src/gui/dialogs/addon/manager.cpp:801
 #, fuzzy
 #| msgid "Do you want to open this link?"
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Вы действительно хотите открыть эту ссылку?"
 
-#: src/gui/dialogs/addon/manager.cpp:868 src/gui/dialogs/addon/manager.cpp:882
-#: src/gui/dialogs/campaign_selection.cpp:275
-#: src/gui/dialogs/multiplayer/lobby.cpp:464
+#: src/gui/dialogs/addon/manager.cpp:885 src/gui/dialogs/addon/manager.cpp:899
+#: src/gui/dialogs/campaign_selection.cpp:274
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 #, fuzzy
 #| msgid "url^None"
 msgid "None"
@@ -6090,55 +6065,55 @@ msgstr "Внутренний"
 msgid "Island"
 msgstr "Остров"
 
-#: src/gui/dialogs/file_dialog.cpp:110
+#: src/gui/dialogs/file_dialog.cpp:109
 msgid "Find File"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:186
+#: src/gui/dialogs/file_dialog.cpp:185
 msgid "Open"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:186
+#: src/gui/dialogs/file_dialog.cpp:185
 #, fuzzy
 #| msgid "Save Map"
 msgid "Save"
 msgstr "Сохранить карту"
 
-#: src/gui/dialogs/file_dialog.cpp:307
+#: src/gui/dialogs/file_dialog.cpp:306
 #, fuzzy
 #| msgid "Save already exists. Do you want to overwrite it?"
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "Сохранение уже существует, переписать его?"
 
-#: src/gui/dialogs/file_dialog.cpp:331
+#: src/gui/dialogs/file_dialog.cpp:330
 msgid "The file or folder $path cannot be created."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:337
+#: src/gui/dialogs/file_dialog.cpp:336
 msgid "The file or folder $path does not exist."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:713
+#: src/gui/dialogs/file_dialog.cpp:711
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:731
+#: src/gui/dialogs/file_dialog.cpp:729
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:732
+#: src/gui/dialogs/file_dialog.cpp:730
 msgid "The following file will be permanently deleted:"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:733
+#: src/gui/dialogs/file_dialog.cpp:731
 #, fuzzy
 #| msgid "Do you want to open this link?"
 msgid "Do you wish to continue?"
 msgstr "Вы действительно хотите открыть эту ссылку?"
 
-#: src/gui/dialogs/file_dialog.cpp:745
+#: src/gui/dialogs/file_dialog.cpp:743
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -6153,9 +6128,9 @@ msgid "dir_size^Unknown"
 msgstr "dir_size^Неизвестно"
 
 #: src/gui/dialogs/game_cache_options.cpp:139
+#: src/gui/dialogs/network_transmission.cpp:53
 #: src/gui/dialogs/network_transmission.cpp:54
-#: src/gui/dialogs/network_transmission.cpp:55
-#: src/gui/dialogs/screenshot_notification.cpp:75
+#: src/gui/dialogs/screenshot_notification.cpp:140
 msgid "unit_byte^B"
 msgstr "unit_byte^B"
 
@@ -6183,75 +6158,75 @@ msgstr "Данные кэша были удалены."
 msgid "The game data cache could not be purged."
 msgstr "Данные кэша не могут быть полностью удалены."
 
-#: src/gui/dialogs/game_load.cpp:297
+#: src/gui/dialogs/game_load.cpp:296
 #, fuzzy
 #| msgid "#(Invalid)"
 msgid "(Invalid)"
 msgstr "#(Невалидный)"
 
-#: src/gui/dialogs/game_load.cpp:324
+#: src/gui/dialogs/game_load.cpp:323
 msgid "Campaign: $campaign_name"
 msgstr "Кампания: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:339
+#: src/gui/dialogs/game_load.cpp:338
 msgid "Test scenario"
 msgstr "Тестовый сценарий"
 
-#: src/gui/dialogs/game_load.cpp:349
+#: src/gui/dialogs/game_load.cpp:348
 msgid "Replay"
 msgstr "Повтор"
 
-#: src/gui/dialogs/game_load.cpp:351
+#: src/gui/dialogs/game_load.cpp:350
 msgid "Turn"
 msgstr "Ход"
 
-#: src/gui/dialogs/game_load.cpp:353
+#: src/gui/dialogs/game_load.cpp:352
 msgid "Scenario start"
 msgstr "Начало сценария"
 
-#: src/gui/dialogs/game_load.cpp:356
+#: src/gui/dialogs/game_load.cpp:355
 msgid "Difficulty: "
 msgstr "Сложность: "
 
-#: src/gui/dialogs/game_load.cpp:360
+#: src/gui/dialogs/game_load.cpp:359
 msgid "Version: "
 msgstr "Версия: "
 
-#: src/gui/dialogs/game_stats.cpp:79
+#: src/gui/dialogs/game_stats.cpp:78
 #, fuzzy
 #| msgid "controller^None"
 msgid "controller^AI"
 msgstr "controller^Никто"
 
-#: src/gui/dialogs/game_stats.cpp:79
+#: src/gui/dialogs/game_stats.cpp:78
 #, fuzzy
 #| msgid "controller^None"
 msgid "controller^Idle"
 msgstr "controller^Никто"
 
-#: src/gui/dialogs/game_stats.cpp:115 src/gui/dialogs/label_settings.cpp:71
+#: src/gui/dialogs/game_stats.cpp:114 src/gui/dialogs/label_settings.cpp:71
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#: src/gui/dialogs/game_stats.cpp:201 src/gui/dialogs/game_stats.cpp:204
-#: src/gui/dialogs/multiplayer/lobby.cpp:472
+#: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
+#: src/gui/dialogs/multiplayer/lobby.cpp:467
 msgid "no"
 msgstr "нет"
 
-#: src/gui/dialogs/game_stats.cpp:201 src/gui/dialogs/game_stats.cpp:204
-#: src/gui/dialogs/multiplayer/lobby.cpp:472
+#: src/gui/dialogs/game_stats.cpp:200 src/gui/dialogs/game_stats.cpp:203
+#: src/gui/dialogs/multiplayer/lobby.cpp:467
 msgid "yes"
 msgstr "да"
 
-#: src/gui/dialogs/game_version.cpp:138
+#: src/gui/dialogs/game_version.cpp:137
 msgid "Version $version"
 msgstr "Версия"
 
-#: src/gui/dialogs/game_version.cpp:142
+#: src/gui/dialogs/game_version.cpp:141
 msgid "Running on $os"
 msgstr "Работает на $os"
 
-#: src/gui/dialogs/game_version.cpp:227
+#: src/gui/dialogs/game_version.cpp:226
 msgid "version^N/A"
 msgstr "version^Недоступно"
 
@@ -6363,117 +6338,117 @@ msgstr "Начинаю игру"
 msgid "Downloading lobby data"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:105
+#: src/gui/dialogs/multiplayer/lobby.cpp:104
 #, fuzzy
 #| msgid "Selected game"
 msgid "Selected Game"
 msgstr "Выбранная игра"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:106
+#: src/gui/dialogs/multiplayer/lobby.cpp:105
 #, fuzzy
 #| msgid "Other games"
 msgid "Other Games"
 msgstr "Другие игры"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:108
+#: src/gui/dialogs/multiplayer/lobby.cpp:107
 #, fuzzy
 #| msgid "Current room"
 msgid "Current Room"
 msgstr "Текущая комната"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:110
+#: src/gui/dialogs/multiplayer/lobby.cpp:109
 msgid "Lobby"
 msgstr "Холл"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:126
+#: src/gui/dialogs/multiplayer/lobby.cpp:125
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you really want to log out?"
 msgstr "Вы действительно хотите удалить сохранение?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:229
+#: src/gui/dialogs/multiplayer/lobby.cpp:224
 msgid "Incompatible User-made Content."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:230
+#: src/gui/dialogs/multiplayer/lobby.cpp:225
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
 "add-ons be updated."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:245
+#: src/gui/dialogs/multiplayer/lobby.cpp:240
 msgid "Missing User-made Content."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:246
+#: src/gui/dialogs/multiplayer/lobby.cpp:241
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
 "Do you want to try to install them?"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:412
+#: src/gui/dialogs/multiplayer/lobby.cpp:407
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Игры: показано $num_shown из $num_total"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "Era:"
 msgstr "Эра:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:474
+#: src/gui/dialogs/multiplayer/lobby.cpp:469
 #, fuzzy
 #| msgid "Settings"
 msgid "Settings:"
 msgstr "Настройки"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:478
+#: src/gui/dialogs/multiplayer/lobby.cpp:473
 msgid "Registered users only:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:479
+#: src/gui/dialogs/multiplayer/lobby.cpp:474
 #, fuzzy
 #| msgid "Reloaded game"
 msgid "Reloaded:"
 msgstr "Игра перезагружена"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:480
+#: src/gui/dialogs/multiplayer/lobby.cpp:475
 #, fuzzy
 #| msgid "Share Vision:"
 msgid "Shared vision:"
 msgstr "Совместный просмотр"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:481
+#: src/gui/dialogs/multiplayer/lobby.cpp:476
 msgid "Shuffle sides:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:482
+#: src/gui/dialogs/multiplayer/lobby.cpp:477
 #, fuzzy
 #| msgid "Time limit"
 msgid "Time limit:"
 msgstr "Лимит времени"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:483
+#: src/gui/dialogs/multiplayer/lobby.cpp:478
 #, fuzzy
 #| msgid "Use map settings"
 msgid "Use map settings:"
 msgstr "Задано картой"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:491
+#: src/gui/dialogs/multiplayer/lobby.cpp:486
 msgid ""
 "One or more items need to be installed\n"
 "in order to join this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:516
+#: src/gui/dialogs/multiplayer/lobby.cpp:511
 msgid "Observers allowed"
 msgstr "Наблюдение разрешено"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:519
+#: src/gui/dialogs/multiplayer/lobby.cpp:514
 msgid "Observers not allowed"
 msgstr "Наблюдение запрещено"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:944
+#: src/gui/dialogs/multiplayer/lobby.cpp:957
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
@@ -6487,129 +6462,129 @@ msgstr ""
 "Эта сборка Веснота не поддерживает уведомления на рабочем столе, свяжитесь с "
 "вашим менеджером сборки."
 
-#: src/gui/dialogs/multiplayer/mp_change_control.cpp:109
+#: src/gui/dialogs/multiplayer/mp_change_control.cpp:108
 msgid "Side $side"
 msgstr "Сторона $side"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:109
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:108
 #, fuzzy
 #| msgid "Scenario start"
 msgid "Scenarios"
 msgstr "Начало сценария"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:110
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:109
 #, fuzzy
 #| msgid "Multiplayer Options"
 msgid "Multiplayer Campaigns"
 msgstr "Параметры многопользовательской игры"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:111
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:110
 #, fuzzy
 #| msgid "Start a new single player campaign"
 msgid "Singleplayer Campaigns"
 msgstr "Начать новую однопользовательскую кампанию"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:112
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:111
 #, fuzzy
 #| msgid "Options"
 msgid "Custom Maps"
 msgstr "Настройка"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:113
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:112
 #, fuzzy
 #| msgid "New Scenario"
 msgid "Custom Scenarios"
 msgstr "Новый сценарий"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:114
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:113
 #, fuzzy
 #| msgid "Generate Random Map"
 msgid "Random Maps"
 msgstr "Создать случайную карту"
 
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:187
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:188
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:189
 msgid "No games found."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:254
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:253
 msgid "No eras found."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:255
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:254
 msgid "No eras found"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:277
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:276
 msgid "Independent: Random factions assigned independently"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:278
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:277
 msgid "No Mirror: No two players will get the same faction"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:279
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:278
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:533
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:532
 #, fuzzy
 #| msgid "Available in game"
 msgid "No eras available for this game."
 msgstr "Доступно в игре"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:825
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:826
 msgid "The selected game has no sides!"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:891
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:892
 msgid "Choose Starting Scenario"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:891
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:892
 msgid "Select at which point to begin this campaign."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:196
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:193
 #, fuzzy
 #| msgid "Map Information"
 msgid "No era information found."
 msgstr "Информация о карте"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:251
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:248
 #, fuzzy
 #| msgid "Choose Player"
 msgid "Computer Player"
 msgstr "Выберите игрока"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:253
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:250
 #, fuzzy
 #| msgid "Empty list"
 msgid "Empty slot"
 msgstr "Список пуст"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:255
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:252
 msgid "Reserved for $playername"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:257
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:254
 #, fuzzy
 #| msgid "Vacant slots"
 msgid "Vacant slot"
 msgstr "Свободных мест"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:261
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:258
 msgid "empty"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:335
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:155
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:332
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:154
 #, fuzzy
 #| msgid "Team 1"
 msgid "Team:"
 msgstr "Команда №1"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:465
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:464
 msgid "Waiting for players to choose factions..."
 msgstr ""
 
@@ -6617,100 +6592,100 @@ msgstr ""
 msgid "The End"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:100
+#: src/gui/dialogs/preferences_dialog.cpp:140
 #, fuzzy
 #| msgid "Save Game"
 msgid "Saved Games"
 msgstr "Сохранить игру"
 
-#: src/gui/dialogs/preferences_dialog.cpp:101
+#: src/gui/dialogs/preferences_dialog.cpp:141
 #, fuzzy
 #| msgid "Custom Command"
 msgid "Map Commands"
 msgstr "Пользовательская команда"
 
-#: src/gui/dialogs/preferences_dialog.cpp:102
+#: src/gui/dialogs/preferences_dialog.cpp:142
 #, fuzzy
 #| msgid "Custom Command"
 msgid "Unit Commands"
 msgstr "Пользовательская команда"
 
-#: src/gui/dialogs/preferences_dialog.cpp:103
+#: src/gui/dialogs/preferences_dialog.cpp:143
 #, fuzzy
 #| msgid "Players: "
 msgid "Player Chat"
 msgstr "Игроки: "
 
-#: src/gui/dialogs/preferences_dialog.cpp:104
+#: src/gui/dialogs/preferences_dialog.cpp:144
 #, fuzzy
 #| msgid "Change Control"
 msgid "Replay Control"
 msgstr "Сменить управление"
 
-#: src/gui/dialogs/preferences_dialog.cpp:105
+#: src/gui/dialogs/preferences_dialog.cpp:145
 #, fuzzy
 #| msgid "whiteboard^Planning Mode"
 msgid "Planning Mode"
 msgstr "Режим планирования"
 
-#: src/gui/dialogs/preferences_dialog.cpp:106
+#: src/gui/dialogs/preferences_dialog.cpp:146
 #, fuzzy
 #| msgid "Scenario start"
 msgid "Scenario Editor"
 msgstr "Начало сценария"
 
-#: src/gui/dialogs/preferences_dialog.cpp:107
+#: src/gui/dialogs/preferences_dialog.cpp:147
 msgid "Editor Palettes"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:108
+#: src/gui/dialogs/preferences_dialog.cpp:148
 #, fuzzy
 #| msgid "Unit Tool"
 msgid "Editor Tools"
 msgstr "Инструмент «боец»"
 
-#: src/gui/dialogs/preferences_dialog.cpp:109
+#: src/gui/dialogs/preferences_dialog.cpp:149
 msgid "Editor Clipboard"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:110
+#: src/gui/dialogs/preferences_dialog.cpp:150
 #, fuzzy
 #| msgid "Custom Command"
 msgid "Debug Commands"
 msgstr "Пользовательская команда"
 
-#: src/gui/dialogs/preferences_dialog.cpp:111
+#: src/gui/dialogs/preferences_dialog.cpp:151
 #, fuzzy
 #| msgid "Custom Command"
 msgid "Custom WML Commands"
 msgstr "Пользовательская команда"
 
-#: src/gui/dialogs/preferences_dialog.cpp:150
+#: src/gui/dialogs/preferences_dialog.cpp:190
 msgid "friend"
 msgstr "друг"
 
-#: src/gui/dialogs/preferences_dialog.cpp:155
+#: src/gui/dialogs/preferences_dialog.cpp:195
 msgid "ignored"
 msgstr "в игноре"
 
-#: src/gui/dialogs/preferences_dialog.cpp:209
-#: src/gui/dialogs/preferences_dialog.cpp:269
+#: src/gui/dialogs/preferences_dialog.cpp:249
+#: src/gui/dialogs/preferences_dialog.cpp:309
 msgid "No username specified"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:227
+#: src/gui/dialogs/preferences_dialog.cpp:267
 msgid "Invalid username"
 msgstr "Неверное имя пользователя"
 
-#: src/gui/dialogs/preferences_dialog.cpp:274
+#: src/gui/dialogs/preferences_dialog.cpp:314
 msgid "Not on friends or ignore lists"
 msgstr "Не в друзьях или игнор листе"
 
-#: src/gui/dialogs/preferences_dialog.cpp:772
+#: src/gui/dialogs/preferences_dialog.cpp:814
 msgid "&#9679;"
 msgstr "&#9679;"
 
-#: src/gui/dialogs/preferences_dialog.cpp:832
+#: src/gui/dialogs/preferences_dialog.cpp:874
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -6718,95 +6693,91 @@ msgstr ""
 "“<b>$hotkey_sequence|</b>” испрользуется “<b>$old_hotkey_action|</b>”.\n"
 "Вы хотите переназначить его с “<b>$new_hotkey_action|</b>”?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:838
+#: src/gui/dialogs/preferences_dialog.cpp:880
 msgid "Reassign Hotkey"
 msgstr "Переназначить горячую клавишу"
 
-#: src/gui/dialogs/preferences_dialog.cpp:855
+#: src/gui/dialogs/preferences_dialog.cpp:897
 msgid "All hotkeys have been reset to their default values."
 msgstr "Все горячие клавиши изменены на свои значения по умолчанию."
 
-#: src/gui/dialogs/preferences_dialog.cpp:855
+#: src/gui/dialogs/preferences_dialog.cpp:897
 msgid "Hotkeys Reset"
 msgstr "Сбросить горячие клавиши"
 
-#: src/gui/dialogs/preferences_dialog.cpp:970
+#: src/gui/dialogs/preferences_dialog.cpp:1005
 msgid "∞"
 msgstr ""
 
-#: src/gui/dialogs/screenshot_notification.cpp:76
-msgid "file_size^Unknown"
-msgstr "file_size^Неизвестно"
-
-#: src/gui/dialogs/statistics_dialog.cpp:186
+#: src/gui/dialogs/statistics_dialog.cpp:185
 #, fuzzy
 #| msgid "Recruit"
 msgid "Recruits"
 msgstr "Вербовать"
 
-#: src/gui/dialogs/statistics_dialog.cpp:187
+#: src/gui/dialogs/statistics_dialog.cpp:186
 #, fuzzy
 #| msgid "Recall"
 msgid "Recalls"
 msgstr "Призвать"
 
-#: src/gui/dialogs/statistics_dialog.cpp:188
+#: src/gui/dialogs/statistics_dialog.cpp:187
 #, fuzzy
 #| msgid "Advanced Settings"
 msgid "Advancements"
 msgstr "Продвинутые настройки"
 
-#: src/gui/dialogs/statistics_dialog.cpp:189
+#: src/gui/dialogs/statistics_dialog.cpp:188
 msgid "Losses"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:190
+#: src/gui/dialogs/statistics_dialog.cpp:189
 #, fuzzy
 #| msgid "Hills"
 msgid "Kills"
 msgstr "Холмы"
 
-#: src/gui/dialogs/statistics_dialog.cpp:204
+#: src/gui/dialogs/statistics_dialog.cpp:203
 msgid "Inflicted"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:212
+#: src/gui/dialogs/statistics_dialog.cpp:211
 msgid "Taken"
 msgstr ""
 
-#: src/gui/dialogs/title_screen.cpp:472
+#: src/gui/dialogs/title_screen.cpp:468
 #, fuzzy
 #| msgid "Choose Theme"
 msgid "Choose Test"
 msgstr "Выберите тему"
 
-#: src/gui/dialogs/unit_recall.cpp:266
+#: src/gui/dialogs/unit_recall.cpp:265
 msgid "This unit is loyal and requires no upkeep."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:267 src/gui/dialogs/unit_recall.cpp:272
-#: src/gui/dialogs/unit_recall.cpp:277
+#: src/gui/dialogs/unit_recall.cpp:266 src/gui/dialogs/unit_recall.cpp:271
+#: src/gui/dialogs/unit_recall.cpp:276
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you really want to dismiss him?"
 msgstr "Вы действительно хотите удалить сохранение?"
 
-#: src/gui/dialogs/unit_recall.cpp:268 src/gui/dialogs/unit_recall.cpp:273
-#: src/gui/dialogs/unit_recall.cpp:278
+#: src/gui/dialogs/unit_recall.cpp:267 src/gui/dialogs/unit_recall.cpp:272
+#: src/gui/dialogs/unit_recall.cpp:277
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you really want to dismiss her?"
 msgstr "Вы действительно хотите удалить сохранение?"
 
-#: src/gui/dialogs/unit_recall.cpp:271
+#: src/gui/dialogs/unit_recall.cpp:270
 msgid "This unit is an experienced one, having advanced levels."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:276
+#: src/gui/dialogs/unit_recall.cpp:275
 msgid "This unit is close to advancing a level."
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:282
+#: src/gui/dialogs/unit_recall.cpp:281
 msgid "Dismiss Unit"
 msgstr ""
 
@@ -6834,11 +6805,11 @@ msgstr "Опубликован, на сервере устарел"
 msgid "Delete add-on from server"
 msgstr ""
 
-#: src/gui/widgets/chatbox.cpp:260
+#: src/gui/widgets/chatbox.cpp:263
 msgid "whisper to $receiver"
 msgstr "приватное сообщение пользователю $receiver"
 
-#: src/gui/widgets/chatbox.cpp:393
+#: src/gui/widgets/chatbox.cpp:396
 #, fuzzy
 #| msgid ""
 #| "Whisper session with $name started. If you do not want to receive "
@@ -6850,21 +6821,21 @@ msgstr ""
 "Открылся приватный чат с $name. Если Вы не хотите получать сообщения от "
 "этого пользователя, наберите /ignore $name\n"
 
-#: src/gui/widgets/chatbox.cpp:397
+#: src/gui/widgets/chatbox.cpp:400
 #, fuzzy
 #| msgid "<i>Room $name joined</i>"
 msgid "Room <i>“$name”</i> joined"
 msgstr "<i>Зашли в комнату $name</i>"
 
-#: src/gui/widgets/chatbox.cpp:594
+#: src/gui/widgets/chatbox.cpp:597
 msgid "$player has entered the room"
 msgstr "$player вошёл в комнату"
 
-#: src/gui/widgets/chatbox.cpp:636
+#: src/gui/widgets/chatbox.cpp:639
 msgid "$player has left the room"
 msgstr "$player покинул комнату"
 
-#: src/gui/widgets/helper.cpp:97
+#: src/gui/widgets/helper.cpp:96
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Обязательный виджет '$id' не определён."
 
@@ -6881,20 +6852,20 @@ msgstr "Вы действительно хотите открыть эту сс�
 msgid "Copied link!"
 msgstr "Ссылка скопирована!"
 
-#: src/gui/widgets/listbox.cpp:914 src/gui/widgets/multi_page.cpp:282
+#: src/gui/widgets/listbox.cpp:929 src/gui/widgets/multi_page.cpp:282
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "'list_data' должен содержать столько же столбцов, сколько и "
 "'list_definition'."
 
-#: src/gui/widgets/listbox.cpp:958 src/gui/widgets/listbox.cpp:1075
-#: src/gui/widgets/listbox.cpp:1192 src/gui/widgets/scrollbar_panel.cpp:147
+#: src/gui/widgets/listbox.cpp:973 src/gui/widgets/listbox.cpp:1090
+#: src/gui/widgets/listbox.cpp:1207 src/gui/widgets/scrollbar_panel.cpp:147
 msgid "No list defined."
 msgstr "Список не определён."
 
-#: src/gui/widgets/listbox.cpp:963 src/gui/widgets/listbox.cpp:1080
-#: src/gui/widgets/listbox.cpp:1197
+#: src/gui/widgets/listbox.cpp:978 src/gui/widgets/listbox.cpp:1095
+#: src/gui/widgets/listbox.cpp:1212
 msgid "A 'list_definition' should contain one row."
 msgstr "В 'list_definition' должна быть одна строка."
 
@@ -6964,65 +6935,65 @@ msgstr "Узлы не определены."
 msgid "Unknown builder id for tree view node."
 msgstr "Неизвестное название конструктора для узла в древовидной структуре."
 
-#: src/gui/widgets/unit_preview_pane.cpp:145
+#: src/gui/widgets/unit_preview_pane.cpp:133
 msgid "Resistances: "
 msgstr ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:147
+#: src/gui/widgets/unit_preview_pane.cpp:135
 msgid "(Att / Def)"
 msgstr ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:160
+#: src/gui/widgets/unit_preview_pane.cpp:148
 msgid "Movement Costs:"
 msgstr ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:223
+#: src/gui/widgets/unit_preview_pane.cpp:211
 msgid "Attacks"
 msgstr "Атаки"
 
-#: src/gui/widgets/unit_preview_pane.cpp:276
-#: src/gui/widgets/unit_preview_pane.cpp:306
-#: src/gui/widgets/unit_preview_pane.cpp:425
-#: src/gui/widgets/unit_preview_pane.cpp:456
+#: src/gui/widgets/unit_preview_pane.cpp:264
+#: src/gui/widgets/unit_preview_pane.cpp:294
+#: src/gui/widgets/unit_preview_pane.cpp:415
+#: src/gui/widgets/unit_preview_pane.cpp:446
 msgid "Lvl $lvl"
 msgstr "ур $lvl"
 
-#: src/gui/widgets/unit_preview_pane.cpp:313
-#: src/gui/widgets/unit_preview_pane.cpp:326
-#: src/gui/widgets/unit_preview_pane.cpp:464
-#: src/gui/widgets/unit_preview_pane.cpp:477
+#: src/gui/widgets/unit_preview_pane.cpp:301
+#: src/gui/widgets/unit_preview_pane.cpp:314
+#: src/gui/widgets/unit_preview_pane.cpp:454
+#: src/gui/widgets/unit_preview_pane.cpp:467
 msgid "HP: "
 msgstr "ЗД: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:315
-#: src/gui/widgets/unit_preview_pane.cpp:331
-#: src/gui/widgets/unit_preview_pane.cpp:467
-#: src/gui/widgets/unit_preview_pane.cpp:482
+#: src/gui/widgets/unit_preview_pane.cpp:303
+#: src/gui/widgets/unit_preview_pane.cpp:319
+#: src/gui/widgets/unit_preview_pane.cpp:457
+#: src/gui/widgets/unit_preview_pane.cpp:472
 msgid "XP: "
 msgstr "ОП: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:333
-#: src/gui/widgets/unit_preview_pane.cpp:484
+#: src/gui/widgets/unit_preview_pane.cpp:321
+#: src/gui/widgets/unit_preview_pane.cpp:474
 #, fuzzy
 #| msgid "Experience modifier"
 msgid "Experience Modifier: "
 msgstr "Модификатор опыта"
 
-#: src/gui/widgets/unit_preview_pane.cpp:336
-#: src/gui/widgets/unit_preview_pane.cpp:487
+#: src/gui/widgets/unit_preview_pane.cpp:324
+#: src/gui/widgets/unit_preview_pane.cpp:477
 msgid "MP: "
 msgstr "ЧХ: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:374
-#: src/gui/widgets/unit_preview_pane.cpp:515
+#: src/gui/widgets/unit_preview_pane.cpp:362
+#: src/gui/widgets/unit_preview_pane.cpp:505
 msgid "Abilities"
 msgstr "Способности"
 
-#: src/gui/widgets/window.cpp:921
+#: src/gui/widgets/window.cpp:939
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Закрытие по клику требует кнопки «click_dismiss» или «ok»."
 
-#: src/gui/widgets/window.cpp:946 src/gui/widgets/window.cpp:983
+#: src/gui/widgets/window.cpp:964 src/gui/widgets/window.cpp:1001
 #: src/tests/gui/test_gui2.cpp:569
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Не могу показать диалог, он не помещается на экране."
@@ -7838,34 +7809,34 @@ msgstr "Непонятная команда"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:497
+#: src/image.cpp:532
 msgid "language code for localized resources^en_US"
 msgstr "language code for localized resources^ru,ua"
 
-#: src/preferences/display.cpp:110
+#: src/preferences/display.cpp:124
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Неизвестная тема. Попробуйте поменять в существующей игре."
 
-#: src/preferences/display.cpp:152
+#: src/preferences/display.cpp:166
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
 "normally be found in the same folder as the game executable."
 msgstr ""
 
-#: src/preferences/display.cpp:156
+#: src/preferences/display.cpp:170
 msgid "Find Server Application"
 msgstr ""
 
-#: src/preferences/game.cpp:374
+#: src/preferences/game.cpp:379
 msgid "No server has been defined."
 msgstr "Сервер не определён."
 
-#: src/preferences/game.cpp:897
+#: src/preferences/game.cpp:902
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/game.cpp:900
+#: src/preferences/game.cpp:905
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -7913,6 +7884,24 @@ msgid ""
 msgstr ""
 "Клавиша '$deprecated_key' переименована в '$key'. Она будет удалена в версии "
 "$removal_version."
+
+#~ msgid "Rooms"
+#~ msgstr "Комнаты"
+
+#~ msgid "Screenshot Saved"
+#~ msgstr "Скриншот сохранен"
+
+#~ msgid "Screenshots..."
+#~ msgstr "Скриншоты..."
+
+#~ msgid "Browse the screenshots folder using a file manager"
+#~ msgstr "Открыть каталог скриншотов в файловом менеджере"
+
+#~ msgid "Choose weapon:"
+#~ msgstr "Выберите оружие:"
+
+#~ msgid "file_size^Unknown"
+#~ msgstr "file_size^Неизвестно"
 
 #, fuzzy
 #~| msgid "Add-ons"

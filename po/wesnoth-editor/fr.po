@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Editor-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-12 20:01+0300\n"
+"POT-Creation-Date: 2018-03-17 21:29+0300\n"
 "PO-Revision-Date: 2014-03-13 10:55+0100\n"
 "Last-Translator: Émile Enguehard <zerbugug@gmail.com>\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
@@ -281,15 +281,15 @@ msgstr "Coût : "
 msgid "Recruit: "
 msgstr "Peut recruter : "
 
-#: src/editor/controller/editor_controller.cpp:175
+#: src/editor/controller/editor_controller.cpp:177
 msgid "Fatal error"
 msgstr "Erreur fatale"
 
-#: src/editor/controller/editor_controller.cpp:204
+#: src/editor/controller/editor_controller.cpp:207
 msgid "Do you really want to quit?"
 msgstr "Voulez-vous vraiment quitter ?"
 
-#: src/editor/controller/editor_controller.cpp:206
+#: src/editor/controller/editor_controller.cpp:209
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -301,7 +301,7 @@ msgstr ""
 "Voulez-vous vraiment quitter ? Les modifications effectuées sur la carte "
 "depuis la dernière sauvegarde seront perdues."
 
-#: src/editor/controller/editor_controller.cpp:208
+#: src/editor/controller/editor_controller.cpp:211
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -310,23 +310,23 @@ msgstr ""
 "toutes les modifications effectuées depuis la dernière sauvegarde seront "
 "perdues :"
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:220
 msgid "No editor time-of-day found."
 msgstr "Aucune période du jour définie dans l'éditeur."
 
-#: src/editor/controller/editor_controller.cpp:1139
+#: src/editor/controller/editor_controller.cpp:1142
 msgid "Change Unit ID"
 msgstr "Changer l'ID de l'unité"
 
-#: src/editor/controller/editor_controller.cpp:1140
+#: src/editor/controller/editor_controller.cpp:1143
 msgid "ID:"
 msgstr "ID : "
 
-#: src/editor/controller/editor_controller.cpp:1156
+#: src/editor/controller/editor_controller.cpp:1159
 msgid "Rename Unit"
 msgstr "Renommer l'unité"
 
-#: src/editor/controller/editor_controller.cpp:1157
+#: src/editor/controller/editor_controller.cpp:1160
 msgid "Name:"
 msgstr "Nom : "
 
@@ -334,13 +334,13 @@ msgstr "Nom : "
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:259 src/editor/map/map_context.cpp:833
+#: src/editor/map/context_manager.cpp:259 src/editor/map/map_context.cpp:831
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Nouvelle carte)"
 
-#: src/editor/map/context_manager.cpp:272 src/editor/map/map_context.cpp:833
+#: src/editor/map/context_manager.cpp:272 src/editor/map/map_context.cpp:831
 #, fuzzy
 #| msgid "(New Scenario)"
 msgid "New Scenario"
@@ -456,28 +456,28 @@ msgstr ""
 "Fichier de carte référencée chargé :\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:149
+#: src/editor/map/editor_map.cpp:148
 #: src/editor/palette/location_palette.cpp:111
 #, fuzzy
 #| msgid "Player $player_number"
 msgid "Player $side_num"
 msgstr "Joueur $player_number"
 
-#: src/editor/map/editor_map.cpp:264
+#: src/editor/map/editor_map.cpp:283
 msgid "The size of the target map is different from the current map"
 msgstr ""
 "La taille de la carte de destination est différente de celle de la carte "
 "actuelle"
 
-#: src/editor/map/map_context.cpp:146
+#: src/editor/map/map_context.cpp:145
 msgid "File not found"
 msgstr "Fichier non trouvé"
 
-#: src/editor/map/map_context.cpp:153
+#: src/editor/map/map_context.cpp:152
 msgid "Empty file"
 msgstr "Fichier vide"
 
-#: src/editor/map/map_context.cpp:209
+#: src/editor/map/map_context.cpp:208
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -485,15 +485,15 @@ msgstr ""
 "Ce fichier ressemble à un scénario, mais la valeur de map_data n'indique pas "
 "un nom de fichier existant."
 
-#: src/editor/map/map_context.cpp:602
+#: src/editor/map/map_context.cpp:600
 msgid "Could not save the scenario: $msg"
 msgstr "Impossible de sauvegarder le scénario : $msg"
 
-#: src/editor/map/map_context.cpp:634
+#: src/editor/map/map_context.cpp:632
 msgid "Could not save into scenario"
 msgstr "Impossible de sauvegarder dans le scénario"
 
-#: src/editor/map/map_context.cpp:644
+#: src/editor/map/map_context.cpp:642
 msgid "Could not save the map: $msg"
 msgstr "Impossible de sauvegarder la carte : $msg"
 
@@ -533,15 +533,15 @@ msgstr "PP : "
 msgid "BG: "
 msgstr "AP : "
 
-#: src/gui/dialogs/editor/custom_tod.cpp:139
+#: src/gui/dialogs/editor/custom_tod.cpp:137
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:203
+#: src/gui/dialogs/editor/custom_tod.cpp:201
 msgid "Choose File"
 msgstr "Sélectionner un fichier"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:204
+#: src/gui/dialogs/editor/custom_tod.cpp:202
 msgid "Select"
 msgstr ""
 

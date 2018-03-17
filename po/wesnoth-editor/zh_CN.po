@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.14\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-12 20:01+0300\n"
+"POT-Creation-Date: 2018-03-17 21:29+0300\n"
 "PO-Revision-Date: 2017-05-23 22:26+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -274,43 +274,43 @@ msgstr "花费："
 msgid "Recruit: "
 msgstr "征募："
 
-#: src/editor/controller/editor_controller.cpp:175
+#: src/editor/controller/editor_controller.cpp:177
 msgid "Fatal error"
 msgstr "严重错误"
 
-#: src/editor/controller/editor_controller.cpp:204
+#: src/editor/controller/editor_controller.cpp:207
 msgid "Do you really want to quit?"
 msgstr "你真的要退出吗？"
 
-#: src/editor/controller/editor_controller.cpp:206
+#: src/editor/controller/editor_controller.cpp:209
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr "你真的要退出吗？上次保存之后对此地图所作的修改将会全部丢失。"
 
-#: src/editor/controller/editor_controller.cpp:208
+#: src/editor/controller/editor_controller.cpp:211
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr "你真的要退出吗？下列地图已被修改，上次保存之后所作的修改将会全部丢失："
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:220
 msgid "No editor time-of-day found."
 msgstr "未找到编辑器的时段设置。"
 
-#: src/editor/controller/editor_controller.cpp:1139
+#: src/editor/controller/editor_controller.cpp:1142
 msgid "Change Unit ID"
 msgstr "变更单位ID"
 
-#: src/editor/controller/editor_controller.cpp:1140
+#: src/editor/controller/editor_controller.cpp:1143
 msgid "ID:"
 msgstr "ID："
 
-#: src/editor/controller/editor_controller.cpp:1156
+#: src/editor/controller/editor_controller.cpp:1159
 msgid "Rename Unit"
 msgstr "单位重命名"
 
-#: src/editor/controller/editor_controller.cpp:1157
+#: src/editor/controller/editor_controller.cpp:1160
 msgid "Name:"
 msgstr "名字："
 
@@ -318,11 +318,11 @@ msgstr "名字："
 msgid "Load Map"
 msgstr "载入地图"
 
-#: src/editor/map/context_manager.cpp:259 src/editor/map/map_context.cpp:833
+#: src/editor/map/context_manager.cpp:259 src/editor/map/map_context.cpp:831
 msgid "New Map"
 msgstr "新建地图"
 
-#: src/editor/map/context_manager.cpp:272 src/editor/map/map_context.cpp:833
+#: src/editor/map/context_manager.cpp:272 src/editor/map/map_context.cpp:831
 msgid "New Scenario"
 msgstr "新建场景"
 
@@ -422,38 +422,38 @@ msgstr ""
 "已载入被引用的地图文件：\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:149
+#: src/editor/map/editor_map.cpp:148
 #: src/editor/palette/location_palette.cpp:111
 msgid "Player $side_num"
 msgstr "玩家$side_num"
 
-#: src/editor/map/editor_map.cpp:264
+#: src/editor/map/editor_map.cpp:283
 msgid "The size of the target map is different from the current map"
 msgstr "目标地图的尺寸与当前地图不同"
 
-#: src/editor/map/map_context.cpp:146
+#: src/editor/map/map_context.cpp:145
 msgid "File not found"
 msgstr "未找到文件"
 
-#: src/editor/map/map_context.cpp:153
+#: src/editor/map/map_context.cpp:152
 msgid "Empty file"
 msgstr "空文件"
 
-#: src/editor/map/map_context.cpp:209
+#: src/editor/map/map_context.cpp:208
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr "此地图文件看起来像是一个场景，但是map_data的值指向了一个不存在的文件"
 
-#: src/editor/map/map_context.cpp:602
+#: src/editor/map/map_context.cpp:600
 msgid "Could not save the scenario: $msg"
 msgstr "无法保存场景：$msg"
 
-#: src/editor/map/map_context.cpp:634
+#: src/editor/map/map_context.cpp:632
 msgid "Could not save into scenario"
 msgstr "无法保存到场景"
 
-#: src/editor/map/map_context.cpp:644
+#: src/editor/map/map_context.cpp:642
 msgid "Could not save the map: $msg"
 msgstr "无法保存地图：$msg"
 
@@ -495,15 +495,15 @@ msgstr "前景："
 msgid "BG: "
 msgstr "背景："
 
-#: src/gui/dialogs/editor/custom_tod.cpp:139
+#: src/gui/dialogs/editor/custom_tod.cpp:137
 msgid "Clipboard support not found, contact your packager"
 msgstr "未找到剪贴板支持，请联系你的打包者"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:203
+#: src/gui/dialogs/editor/custom_tod.cpp:201
 msgid "Choose File"
 msgstr "选择文件"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:204
+#: src/gui/dialogs/editor/custom_tod.cpp:202
 msgid "Select"
 msgstr "选择"
 

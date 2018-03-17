@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2018-02-12 20:01+0300\n"
+"POT-Creation-Date: 2018-03-17 21:29+0300\n"
 "PO-Revision-Date: 2014-06-05 21:43+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -270,15 +270,15 @@ msgstr "Chi phí: "
 msgid "Recruit: "
 msgstr "Tuyển quân: "
 
-#: src/editor/controller/editor_controller.cpp:175
+#: src/editor/controller/editor_controller.cpp:177
 msgid "Fatal error"
 msgstr "Lỗi nghiêm trọng"
 
-#: src/editor/controller/editor_controller.cpp:204
+#: src/editor/controller/editor_controller.cpp:207
 msgid "Do you really want to quit?"
 msgstr "Bạn có thực sự muốn thoát không?"
 
-#: src/editor/controller/editor_controller.cpp:206
+#: src/editor/controller/editor_controller.cpp:209
 #, fuzzy
 #| msgid ""
 #| "Do you really want to quit? Changes in the map since the last save will "
@@ -290,7 +290,7 @@ msgstr ""
 "Bạn có thực sự muốn thoát không? Các thay đổi trong bản đồ kể từ lần lưu "
 "cuối cùng sẽ bị mất."
 
-#: src/editor/controller/editor_controller.cpp:208
+#: src/editor/controller/editor_controller.cpp:211
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -298,23 +298,23 @@ msgstr ""
 "Bạn có thực sự muốn thoát không? Các bản đồ sau đã bị sửa đổi và mọi thay "
 "đổi kể từ lần lưu cuối cùng sẽ bị mất:"
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:220
 msgid "No editor time-of-day found."
 msgstr "Không tìm thấy thời điểm trong ngày của trình hiệu chỉnh."
 
-#: src/editor/controller/editor_controller.cpp:1139
+#: src/editor/controller/editor_controller.cpp:1142
 msgid "Change Unit ID"
 msgstr "Thay đổi định danh đơn vị"
 
-#: src/editor/controller/editor_controller.cpp:1140
+#: src/editor/controller/editor_controller.cpp:1143
 msgid "ID:"
 msgstr "Định danh:"
 
-#: src/editor/controller/editor_controller.cpp:1156
+#: src/editor/controller/editor_controller.cpp:1159
 msgid "Rename Unit"
 msgstr "Đổi tên đơn vị"
 
-#: src/editor/controller/editor_controller.cpp:1157
+#: src/editor/controller/editor_controller.cpp:1160
 msgid "Name:"
 msgstr "Tên:"
 
@@ -322,13 +322,13 @@ msgstr "Tên:"
 msgid "Load Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:259 src/editor/map/map_context.cpp:833
+#: src/editor/map/context_manager.cpp:259 src/editor/map/map_context.cpp:831
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Bản đồ mới)"
 
-#: src/editor/map/context_manager.cpp:272 src/editor/map/map_context.cpp:833
+#: src/editor/map/context_manager.cpp:272 src/editor/map/map_context.cpp:831
 #, fuzzy
 #| msgid "(New Scenario)"
 msgid "New Scenario"
@@ -444,26 +444,26 @@ msgstr ""
 "Tập tin bản đồ tham chiếu đã tải:\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:149
+#: src/editor/map/editor_map.cpp:148
 #: src/editor/palette/location_palette.cpp:111
 #, fuzzy
 #| msgid "Player $player_number"
 msgid "Player $side_num"
 msgstr "Người chơi $player_number"
 
-#: src/editor/map/editor_map.cpp:264
+#: src/editor/map/editor_map.cpp:283
 msgid "The size of the target map is different from the current map"
 msgstr "Kích thước của bản đồ đích khác với bản đồ hiện thời"
 
-#: src/editor/map/map_context.cpp:146
+#: src/editor/map/map_context.cpp:145
 msgid "File not found"
 msgstr "Không tìm thấy tập tin"
 
-#: src/editor/map/map_context.cpp:153
+#: src/editor/map/map_context.cpp:152
 msgid "Empty file"
 msgstr "Tập tin rỗng"
 
-#: src/editor/map/map_context.cpp:209
+#: src/editor/map/map_context.cpp:208
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -471,15 +471,15 @@ msgstr ""
 "Tập tin bản đồ trông giống như một màn chơi, nhưng giá trị map_data không "
 "chỉ đến một tập tin tồn tại"
 
-#: src/editor/map/map_context.cpp:602
+#: src/editor/map/map_context.cpp:600
 msgid "Could not save the scenario: $msg"
 msgstr "Không thể lưu màn chơi: $msg"
 
-#: src/editor/map/map_context.cpp:634
+#: src/editor/map/map_context.cpp:632
 msgid "Could not save into scenario"
 msgstr "Không thể lưu vào màn chơi"
 
-#: src/editor/map/map_context.cpp:644
+#: src/editor/map/map_context.cpp:642
 msgid "Could not save the map: $msg"
 msgstr "Không thể lưu bản đồ: $msg"
 
@@ -519,15 +519,15 @@ msgstr "TC: "
 msgid "BG: "
 msgstr "HC: "
 
-#: src/gui/dialogs/editor/custom_tod.cpp:139
+#: src/gui/dialogs/editor/custom_tod.cpp:137
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 
-#: src/gui/dialogs/editor/custom_tod.cpp:203
+#: src/gui/dialogs/editor/custom_tod.cpp:201
 msgid "Choose File"
 msgstr "Chọn tập tin"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:204
+#: src/gui/dialogs/editor/custom_tod.cpp:202
 msgid "Select"
 msgstr ""
 
