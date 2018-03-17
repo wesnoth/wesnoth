@@ -208,7 +208,7 @@ void faction_select::update_leader_image(window& window)
 
 	if(const unit_type* ut = unit_types.find(flg_manager_.current_leader())) {
 		const unit_type& utg = ut->get_gender_unit_type(flg_manager_.current_gender());
-		leader_image = formatter() << utg.image() << "~RC(" << utg.flag_rgb() << ">" << tc_color_ << ")" << "~SCALE_INTO_SHARP(144,144)";
+		leader_image = formatter() << utg.image() << "~RC(" << utg.flag_rgb() << ">" << tc_color_ << ")" << "~XBRZ(2)~SCALE(144,144)";
 	}
 
 	find_widget<image>(&window, "leader_image", false).set_label(leader_image);

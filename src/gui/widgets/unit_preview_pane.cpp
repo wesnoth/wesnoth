@@ -250,7 +250,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 				 + ")";
 		}
 
-		mods += "~SCALE_INTO_SHARP(144,144)" + image_mods_;
+		mods += "~XBRZ(2)~SCALE(144,144)" + image_mods_;
 
 		icon_type_->set_label((type.icon().empty() ? type.image() : type.icon()) + mods);
 	}
@@ -394,7 +394,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 			mods += "~BLIT(" + overlay + ")";
 		}
 
-		mods += "~SCALE_INTO_SHARP(144,144)" + image_mods_;
+		mods += "~XBRZ(2)~SCALE(144,144)" + image_mods_;
 
 		icon_type_->set_label(u.absolute_image() + mods);
 	}
