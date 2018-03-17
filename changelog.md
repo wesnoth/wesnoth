@@ -1,4 +1,7 @@
 ## Version 1.13.11+dev
+ ### Security fixes
+   * Disallowed access to blacklisted file paths such as hidden files and
+     directories.
  ### Add-ons client
    * Addon upload progress bar now works also on Windows (bug #1439).
    * Fixed inability to cancel addon upload (bug #2591).

@@ -3,6 +3,9 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
 
 ## Version 1.13.11+dev
+ ### Security fixes
+   * Disallowed access to blacklisted file paths such as hidden files and
+     directories.
  ### Campaigns
    * Northern Rebirth:
      * Fixed S06a Rakshas displaying incorrect portrait (issue #2569)
