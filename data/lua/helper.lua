@@ -342,7 +342,7 @@ helper.literal = wesnoth.deprecate_api('helper.literal', 'wml.literal', 1, nil, 
 helper.parsed = wesnoth.deprecate_api('helper.parsed', 'wml.parsed', 1, nil, wml.parsed)
 helper.shallow_literal = wesnoth.deprecate_api('helper.shallow_literal', 'wml.shallow_literal', 1, nil, wml.shallow_literal)
 helper.shallow_parsed = wesnoth.deprecate_api('helper.shallow_parsed', 'wml.shallow_parsed', 1, nil, wml.shallow_parsed)
-helper.set_wml_var_metatable = wesnoth.deprecate_api('helper.set_wml_var_metatable', 'wml.variable.proxy', 1, nil, helper.set_wml_var_metatable)
-helper.set_wml_tag_metatable = wesnoth.deprecate_api('helper.set_wml_tag_metatable', 'wml.tag', 1, nil, helper.set_wml_tag_metatable)
+helper.set_wml_var_metatable = wesnoth.deprecate_api('helper.set_wml_var_metatable', 'wml.variable.proxy', 2, nil, helper.set_wml_var_metatable)
+helper.set_wml_tag_metatable = wesnoth.deprecate_api('helper.set_wml_tag_metatable', 'wml.tag', 2, nil, helper.set_wml_tag_metatable)
 
 return helper
