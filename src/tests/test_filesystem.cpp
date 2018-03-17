@@ -177,7 +177,6 @@ BOOST_AUTO_TEST_CASE( test_fs_wml_path )
 	BOOST_CHECK_EQUAL( get_wml_location("core/_main.cfg"), gamedata + "/data/core/_main.cfg" );
 	BOOST_CHECK_EQUAL( get_wml_location("."), gamedata + "/data/." );
 
-	BOOST_CHECK_EQUAL( get_wml_location("~"), userdata + "/data" );
 	BOOST_CHECK_EQUAL( get_wml_location("~/"), userdata + "/data/" );
 
 	// Inexistent paths are resolved empty.

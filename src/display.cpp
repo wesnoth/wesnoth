@@ -460,6 +460,10 @@ void display::adjust_color_overlay(int r, int g, int b)
 
 void display::fill_images_list(const std::string& prefix, std::vector<std::string>& images)
 {
+	if(prefix == ""){
+		return;
+	}
+
 	// search prefix.png, prefix1.png, prefix2.png ...
 	for(int i=0; ; ++i){
 		std::ostringstream s;

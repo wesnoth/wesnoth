@@ -112,10 +112,6 @@ void screenshot_notification::pre_show(window& window)
 
 	button& save_b = find_widget<button>(&window, "save", false);
 	connect_signal_mouse_left_click(save_b, std::bind(&screenshot_notification::save_screenshot, this));
-
-	if(screenshot_.null()) {
-		window.close();
-	}
 }
 
 void screenshot_notification::save_screenshot()
