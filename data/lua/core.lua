@@ -394,6 +394,46 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 			wml.array_access.set(key, value)
 		end
 	})
+
+	wesnoth.persistent_tags = setmetatable({}, {
+		-- This just makes assignment of the read/write funtions more convenient
+		__index = function(t,k)
+			rawset(t,k,{})
+			return t[k]
+		end
+	})
+	
+	-- Note: We don't save the old on_load and on_save here.
+	-- It's not necessary because we know this will be the first one registered.
+	function wesnoth.game_events.on_load(cfg)
+		local warned_tags = {}
+		for i = 1, #cfg do
+			local name = cfg[i][1]
+			local tag = wesnoth.persistent_tags[name]
+			if type(tag) == 'table' and type(tag.read) == 'function' then
+				tag.read(cfg[i][2])
+			elseif tag ~= nil and not warned_tags[name] then
+				error(string.format("Invalid persistent tag [%s], should be a table containing read and write functions.", name))
+				warned_tags[name] = true
+			else
+				error(string.format("[%s] not supported at scenario toplevel", name))
+				warned_tags[name] = true
+			end
+		end
+	end
+
+	function wesnoth.game_events.on_save()
+		local data_to_save = {}
+		for name, tag in pairs(wesnoth.persistent_tags) do
+			if type(tag) == 'table' and type(tag.write) == 'function' then
+				local function add(data)
+					table.insert(data_to_save, wml.tag[name](data))
+				end
+				tag.write(add)
+			end
+		end
+		return data_to_save
+	end
 end
 
 -- Some C++ functions are deprecated; apply the messages here.

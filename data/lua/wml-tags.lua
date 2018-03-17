@@ -4,17 +4,6 @@ local utils = wesnoth.require "wml-utils"
 local wml_actions = wesnoth.wml_actions
 local T = wml.tag
 
-function wesnoth.game_events.on_load(cfg)
-	if #cfg == 0 then return end
-	local t = {}
-	for i = 1,#cfg do t[i] = string.format("[%s]", cfg[i][1]) end
-	helper.wml_error(string.format("%s not supported at scenario toplevel", table.concat(t, ', ')))
-end
-
-function wesnoth.game_events.on_save()
-	return {}
-end
-
 wesnoth.require "wml-conditionals"
 wesnoth.require "wml-flow"
 wesnoth.require "wml"
