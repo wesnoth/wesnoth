@@ -3948,7 +3948,7 @@ int game_lua_kernel::intf_toggle_fog(lua_State *L, const bool clear)
 }
 
 // Invokes a synced command
-int intf_invoke_synced_command(lua_State* L)
+static int intf_invoke_synced_command(lua_State* L)
 {
 	const std::string name = luaL_checkstring(L, 1);
 	auto it = synced_command::registry().find(name);
