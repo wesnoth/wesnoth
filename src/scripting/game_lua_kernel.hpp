@@ -200,7 +200,7 @@ public:
 	void save_game(config & level);
 	void load_game(const config& level);
 	bool run_event(const game_events::queued_event&);
-	void custom_command(const config&);
+	void custom_command(const std::string&, const config&);
 	void push_builtin_effect();
 	void set_wml_action(const std::string&, game_events::wml_action::handler);
 	void set_wml_condition(const std::string&, bool(*)(const vconfig&));

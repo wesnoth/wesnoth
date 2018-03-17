@@ -80,6 +80,7 @@
 #include "scripting/lua_team.hpp"
 #include "scripting/lua_unit_type.hpp"
 #include "scripting/push_check.hpp"
+#include "synced_commands.hpp"
 #include "color.hpp"                // for surface
 #include "sdl/surface.hpp"                // for surface
 #include "side_filter.hpp"              // for side_filter
@@ -3946,6 +3947,33 @@ int game_lua_kernel::intf_toggle_fog(lua_State *L, const bool clear)
 	return 0;
 }
 
+// Invokes a synced command
+int intf_invoke_synced_command(lua_State* L)
+{
+	const std::string name = luaL_checkstring(L, 1);
+	auto it = synced_command::registry().find(name);
+	config cmd;
+	if(it == synced_command::registry().end()) {
+		// Custom command
+		if(!luaW_getglobal(L, "wesnoth", "custom_synced_commands", name)) {
+			return luaL_argerror(L, 1, "Unknown synced command");
+		}
+		config& cmd_tag = cmd.child_or_add("custom_command");
+		cmd_tag["name"] = name;
+		if(!lua_isnoneornil(L, 2)) {
+			cmd_tag.add_child("data", luaW_checkconfig(L, 2));
+		}
+	} else {
+		// Built-in command
+		cmd.add_child(name, luaW_checkconfig(L, 2));
+	}
+	// Now just forward to the WML action.
+	luaW_getglobal(L, "wesnoth", "wml_actions", "do_command");
+	luaW_pushconfig(L, cmd);
+	luaW_pcall(L, 1, 0);
+	return 0;
+}
+
 // END CALLBACK IMPLEMENTATION
 
 game_board & game_lua_kernel::board() {
@@ -4007,6 +4035,7 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "get_era",                  &intf_get_era                  },
 		{ "get_traits",               &intf_get_traits               },
 		{ "get_viewing_side",         &intf_get_viewing_side         },
+		{ "invoke_synced_command",    &intf_invoke_synced_command    },
 		{ "modify_ai",                &intf_modify_ai_old            },
 		{ "remove_modifications",     &intf_remove_modifications     },
 		{ "set_music",                &intf_set_music                },
@@ -4207,6 +4236,14 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_setfield(L, -2, "effects");
 	lua_pop(L, 1);
 
+	// Create the custom_synced_commands table.
+	cmd_log_ << "Adding custom_synced_commands table...\n";
+
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	lua_setfield(L, -2, "custom_synced_commands");
+	lua_pop(L, 1);
+
 	// Create the game_events table.
 	cmd_log_ << "Adding game_events table...\n";
 
@@ -4395,11 +4432,11 @@ bool game_lua_kernel::run_event(const game_events::queued_event& ev)
 	return true;
 }
 
-void game_lua_kernel::custom_command(const config& cfg)
+void game_lua_kernel::custom_command(const std::string& name, const config& cfg)
 {
 	lua_State *L = mState;
 
-	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_synced_command")) {
+	if (!luaW_getglobal(L, "wesnoth", "custom_synced_commands", name)) {
 		return;
 	}
 	luaW_pushconfig(L, cfg);

@@ -347,7 +347,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  use_undo, /*show*/, /*error_
 SYNCED_COMMAND_HANDLER_FUNCTION(custom_command, child,  /*use_undo*/, /*show*/, /*error_handler*/)
 {
 	assert(resources::lua_kernel);
-	resources::lua_kernel->custom_command(child);
+	resources::lua_kernel->custom_command(child["name"], child.child_or_empty("data"));
 	return true;
 }
 
