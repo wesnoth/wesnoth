@@ -1,6 +1,5 @@
 local helper = wesnoth.require "helper"
 local wml_actions = wesnoth.wml_actions
-local game_events = wesnoth.game_events
 
 local scenario_items = {}
 local next_item_name = 0
@@ -40,35 +39,24 @@ local function remove_overlay(x, y, name)
 	end
 end
 
-local old_on_save = game_events.on_save
-function game_events.on_save()
-	local custom_cfg = old_on_save()
+function wesnoth.persistent_tags.item.write(add)
 	for i,v in pairs(scenario_items) do
 		for j,w in ipairs(v) do
-			table.insert(custom_cfg, { "item", w })
+			add(w)
 		end
 	end
-	table.insert(custom_cfg, { "next_item_name", { next_item_name = next_item_name } })
-	return custom_cfg
 end
 
-local old_on_load = game_events.on_load
-function game_events.on_load(cfg)
-	local i = 1
-	while i <= #cfg do
-		local v = cfg[i]
-		if v[1] == "item" then
-			local v2 = v[2]
-			add_overlay(v2.x, v2.y, v2)
-			table.remove(cfg, i)
-		elseif v[1] == "next_item_name" then
-			next_item_name = v[2].next_item_name or next_item_name
-			table.remove(cfg, i)
-		else
-			i = i + 1
-		end
-	end
-	old_on_load(cfg)
+function wesnoth.persistent_tags.next_item_name.write(add)
+	add{next_item_name = next_item_name}
+end
+
+function wesnoth.persistent_tags.item.read(cfg)
+	add_overlay(cfg.x, cfg.y, cfg)
+end
+
+function wesnoth.persistent_tags.next_item_name.read(cfg)
+	next_item_name = cfg.next_item_name or next_item_name
 end
 
 function wml_actions.item(cfg)

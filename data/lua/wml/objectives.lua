@@ -1,5 +1,4 @@
 local wml_actions = wesnoth.wml_actions
-local game_events = wesnoth.game_events
 
 local function color_prefix(r, g, b)
 	return string.format('<span foreground="#%02x%02x%02x">', r, g, b)
@@ -11,27 +10,15 @@ end
 
 local scenario_objectives = {}
 
-local old_on_save = game_events.on_save
-function game_events.on_save()
-	local custom_cfg = old_on_save()
+function wesnoth.persistent_tags.objectives.write(add)
 	for i,v in pairs(scenario_objectives) do
 		v.side = i
-		table.insert(custom_cfg, { "objectives", v })
+		add(v)
 	end
-	return custom_cfg
 end
 
-local old_on_load = game_events.on_load
-function game_events.on_load(cfg)
-	for i = #cfg,1,-1 do
-		local v = cfg[i]
-		if v[1] == "objectives" then
-			local v2 = v[2]
-			scenario_objectives[v2.side or 0] = v2
-			table.remove(cfg, i)
-		end
-	end
-	old_on_load(cfg)
+function wesnoth.persistent_tags.objectives.read(cfg)
+	scenario_objectives[cfg.side or 0] = cfg
 end
 
 local function generate_objectives(cfg)

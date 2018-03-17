@@ -71,25 +71,12 @@ function wml_actions.object(cfg)
 	end
 end
 
-local old_on_load = wesnoth.game_events.on_load
-function wesnoth.game_events.on_load(cfg)
-	for i = 1,#cfg do
-		if cfg[i][1] == "used_items" then
-			-- Not quite sure if this will work
-			-- Might need to loop through and copy each ID separately
-			used_items = cfg[i][2]
-			table.remove(cfg, i)
-			break
-		end
-	end
-	old_on_load(cfg)
+function wesnoth.persistent_tags.used_items.read(cfg)
+	used_items = cfg
 end
 
-local old_on_save = wesnoth.game_events.on_save
-function wesnoth.game_events.on_save()
-	local cfg = old_on_save()
-	table.insert(cfg, T.used_items(used_items) )
-	return cfg
+function wesnoth.persistent_tags.used_items.write(add)
+	add(used_items)
 end
 
 function wml_actions.remove_object(cfg)
