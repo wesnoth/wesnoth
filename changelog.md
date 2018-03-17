@@ -71,8 +71,6 @@
    * Fixed regression in 1.13.11 where completed events could fire again when
      reloading a save.
    * Fixed PNG images with an embedded palette displaying incorrectly.
-   * Screenshots are now saved as JPG files by default. If the game has not
-     been built with the appropriate libraries, it will fall back to a PNG file.
    * Fixed no leader having no effect
    * Fixed units randomly beeing unable to move over merged terrains.
  ### Music and sound effects
