@@ -85,6 +85,29 @@ end
 local rabbit_registry_counter = 0;
 local save_rabbit_spawn, save_rabbit_despawn
 
+local function register_rabbit_commands()
+	function wesnoth.custom_synced_commands.rabbit_despawn(cfg)
+		--TODO: maybe we only want to allow erasing of unit of certain types/sides/locations?
+		wesnoth.erase_unit(cfg.x, cfg.y)
+	end
+
+	function wesnoth.custom_synced_commands.rabbit_spawn(cfg)
+		--TODO: maybe we only want to allow creation of unit of certain types/sides/locations?
+		wesnoth.put_unit({ side = wesnoth.current.side, type = cfg.rabbit_type}, cfg.x, cfg.y)
+	end
+end
+
+function wesnoth.persistent_tags.micro_ai_rabbits.read(cfg)
+	rabbit_registry_counter = cfg.counter or 0
+	register_rabbit_commands()
+end
+
+function wesnoth.persistent_tags.micro_ai_rabbits.write(add)
+	if rabbit_registry_counter > 0 then
+		add{counter = rabbit_registry_counter}
+	end
+end
+
 function wesnoth.micro_ais.forest_animals(cfg)
 	local optional_keys = { "rabbit_type", "rabbit_number", "rabbit_enemy_distance", "rabbit_hole_img",
 		"tusker_type", "tusklet_type", "deer_type", "[filter_location]"
@@ -113,15 +136,7 @@ function wesnoth.micro_ais.forest_animals(cfg)
 
 		rabbit_registry_counter = rabbit_registry_counter + 1
 
-		function wesnoth.custom_synced_commands.rabbit_despawn(cfg)
-			--TODO: maybe we only want to allow erasing of unit of certain types/sides/locations?
-			wesnoth.erase_unit(cfg.x, cfg.y)
-		end
-
-		function wesnoth.custom_synced_commands.rabbit_spawn(cfg)
-			--TODO: maybe we only want to allow creation of unit of certain types/sides/locations?
-			wesnoth.put_unit({ side = wesnoth.current.side, type = cfg.rabbit_type}, cfg.x, cfg.y)
-		end
+		register_rabbit_commands()
 	end
 
     return {}, optional_keys, CA_parms
