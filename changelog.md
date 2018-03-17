@@ -28,9 +28,18 @@
    * Translations with less than 80% completion are now hidden from the
      language selection menu by default.
  ### Lua API
-   * Add side_name to unit proxy
-   * Removed ai.synced_command().
+   * Add side_name to side proxy
+   * Added wesnoth.custom_synced_commands table where you can register
+     custom synced commands.
+   * Add wesnoth.invoke_synced_command
+   * Removed ai.synced_command() - replaced with the above two
    * wesnoth.end_turn() now allows to specify the next side
+   * The new wml module is now considered mostly final.
+     It has new remove_child and remove_children functions.
+   * New wesnoth.persistent_tags table for more convenient custom
+     save data (intended to replace game_events.on_load/save)
+ ### Multiplayer
+   * Balance tweaks to the Dunefolk faction and fix RIPLIB violation
  ### User Interface
    * Improved outro screen.
    * Fixed a few cases of data not displaying in the MP Join Game screen.
