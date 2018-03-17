@@ -232,12 +232,12 @@ void unit_drawer::redraw_unit (const unit & u) const
 		int yoff;
 		if(cfg_offset_x.empty() && cfg_offset_y.empty()) {
 			const surface unit_img = image::get_image(u.default_anim_image(), image::SCALED_TO_ZOOM);
-			xoff = unit_img.null() ? hex_size_by_2 : (hex_size - unit_img->w)/2;
-			yoff = unit_img.null() ? hex_size_by_2 : (hex_size - unit_img->h)/2;
+			xoff = unit_img.null() ? 0 : (hex_size - unit_img->w)/2;
+			yoff = unit_img.null() ? 0 : (hex_size - unit_img->h)/2;
 		}
 		else {
-			xoff = hex_size_by_2 + cfg_offset_x.to_int();
-			yoff = hex_size_by_2 + cfg_offset_y.to_int();
+			xoff = cfg_offset_x.to_int();
+			yoff = cfg_offset_y.to_int();
 		}
 
 		/*static*/ const image::locator partmoved_orb(game_config::images::orb + "~RC(magenta>" +
