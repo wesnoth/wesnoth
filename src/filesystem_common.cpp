@@ -29,6 +29,16 @@ static lg::log_domain log_filesystem("filesystem");
 namespace filesystem
 {
 
+void blacklist_pattern_list::remove_blacklisted_files_and_dirs(std::vector<std::string>& files, std::vector<std::string>& directories) const
+{
+	files.erase(
+		std::remove_if(files.begin(), files.end(), [this](const std::string& name) { return match_file(name); }),
+		files.end());
+	directories.erase(
+		std::remove_if(directories.begin(), directories.end(), [this](const std::string& name) { return match_dir(name); }),
+		directories.end());
+}
+
 std::string get_prefs_file()
 {
 	return get_user_config_dir() + "/preferences";

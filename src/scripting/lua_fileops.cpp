@@ -21,6 +21,7 @@
 #include "scripting/lua_common.hpp"	// for chat_message, luaW_pcall
 #include "scripting/push_check.hpp"
 
+#include <algorithm>
 #include <exception>
 #include <string>
 
@@ -149,6 +150,7 @@ int intf_read_file(lua_State *L)
 	if(filesystem::is_directory(p)) {
 		std::vector<std::string> files, dirs;
 		filesystem::get_files_in_dir(p, &files, &dirs);
+		filesystem::default_blacklist.remove_blacklisted_files_and_dirs(files, dirs);
 		size_t ndirs = dirs.size();
 		std::copy(files.begin(), files.end(), std::back_inserter(dirs));
 		lua_push(L, dirs);

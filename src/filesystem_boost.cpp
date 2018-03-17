@@ -26,6 +26,7 @@
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
 #include <boost/algorithm/string.hpp>
+#include <algorithm>
 #include <set>
 
 #ifdef _WIN32
@@ -1135,27 +1136,34 @@ void clear_binary_paths_cache()
 	binary_paths_cache.clear();
 }
 
-static bool is_legal_file(const std::string &filename)
+static bool is_legal_file(const std::string &filename_str)
 {
-	DBG_FS << "Looking for '" << filename << "'.\n";
+	DBG_FS << "Looking for '" << filename_str << "'.\n";
 
-	if (filename.empty()) {
+	if(filename_str.empty()) {
 		LOG_FS << "  invalid filename\n";
 		return false;
 	}
 
-	if (filename.find("..") != std::string::npos) {
-		ERR_FS << "Illegal path '" << filename << "' (\"..\" not allowed).\n";
+	if(filename_str.find("..") != std::string::npos) {
+		ERR_FS << "Illegal path '" << filename_str << "' (\"..\" not allowed).\n";
 		return false;
 	}
 
-	if (filename.find('\\') != std::string::npos) {
-		ERR_FS << "Illegal path '" << filename << R"end(' ("\" not allowed, for compatibility with GNU/Linux and macOS).)end" << std::endl;
+	if(filename_str.find('\\') != std::string::npos) {
+		ERR_FS << "Illegal path '" << filename_str << R"end(' ("\" not allowed, for compatibility with GNU/Linux and macOS).)end" << std::endl;
 		return false;
 	}
 
-	if (looks_like_pbl(filename)) {
-		ERR_FS << "Illegal path '" << filename << "' (.pbl files are not allowed)." << std::endl;
+	path filepath(filename_str);
+
+	if(default_blacklist.match_file(filepath.filename().string())) {
+		ERR_FS << "Illegal path '" << filename_str << "' (blacklisted filename)." << std::endl;
+		return false;
+	}
+
+	if(std::any_of(filepath.begin(), filepath.end(), [](const path& dirname) { return default_blacklist.match_dir(dirname.string()); })) {
+		ERR_FS << "Illegal path '" << filename_str << "' (blacklisted directory name)." << std::endl;
 		return false;
 	}
 

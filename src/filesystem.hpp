@@ -89,6 +89,8 @@ public:
 		directory_patterns_.push_back(pattern);
 	}
 
+	void remove_blacklisted_files_and_dirs(std::vector<std::string>& files, std::vector<std::string>& directories) const;
+
 private:
 	std::vector<std::string> file_patterns_;
 	std::vector<std::string> directory_patterns_;
@@ -97,7 +99,7 @@ private:
 static const blacklist_pattern_list default_blacklist{
 	{
 		/* Blacklist dot-files/dirs, which are hidden files in UNIX platforms */
-		".*",
+		".+",
 		"#*#",
 		"*~",
 		"*-bak",
@@ -122,7 +124,7 @@ static const blacklist_pattern_list default_blacklist{
 		"*.project",
 	},
 	{
-		".*",
+		".+",
 		/* macOS metadata-like cruft (http://floatingsun.net/2007/02/07/whats-with-__macosx-in-zip-files/) */
 		"__MACOSX",
 	}

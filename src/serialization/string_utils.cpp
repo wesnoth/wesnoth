@@ -701,17 +701,23 @@ bool word_match(const std::string& message, const std::string& word) {
 }
 
 bool wildcard_string_match(const std::string& str, const std::string& match) {
-	const bool wild_matching = (!match.empty() && match[0] == '*');
-	const std::string::size_type solid_begin = match.find_first_not_of('*');
+	const bool wild_matching = (!match.empty() && (match[0] == '*' || match[0] == '+'));
+	const std::string::size_type solid_begin = match.find_first_not_of("*+");
 	const bool have_solids = (solid_begin != std::string::npos);
-	// Check the simple case first
-	if(str.empty() || !have_solids) {
-		return wild_matching || str == match;
+	// Check the simple cases first
+	if(!have_solids) {
+		const std::string::size_type plus_count = std::count(match.begin(), match.end(), '+');
+		return match.empty() ? str.empty() : str.length() >= plus_count;
+	} else if(str.empty()) {
+		return false;
 	}
-	const std::string::size_type solid_end = match.find_first_of('*', solid_begin);
+
+	const std::string::size_type solid_end = match.find_first_of("*+", solid_begin);
 	const std::string::size_type solid_len = (solid_end == std::string::npos)
 		? match.length() - solid_begin : solid_end - solid_begin;
-	std::string::size_type current = 0;
+	// Since + always consumes at least one character, increment current if the match
+	// begins with one
+	std::string::size_type current = match[0] == '+' ? 1 : 0;
 	bool matches;
 	do {
 		matches = true;

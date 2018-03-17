@@ -321,8 +321,8 @@ bool word_completion(std::string& text, std::vector<std::string>& wordlist);
 bool word_match(const std::string& message, const std::string& word);
 
 /**
- * Match using '*' as any number of characters (including none), and '?' as any
- * one character.
+ * Match using '*' as any number of characters (including none),
+ * '+' as one or more characters, and '?' as any one character.
  */
 bool wildcard_string_match(const std::string& str, const std::string& match);
 
