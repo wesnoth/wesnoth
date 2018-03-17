@@ -24,7 +24,7 @@
    * New Heavy Infantryman attack animation by Zoomo.
    * New Elvish Sylph baseframe by Jetrel.
  ### Language and i18n
-   * Updated translations: British English, Spanish
+   * Updated translations: British English, Czech, Spanish
    * Translations with less than 80% completion are now hidden from the
      language selection menu by default.
  ### Lua API

@@ -18,15 +18,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2018-02-12 20:01+0300\n"
-"PO-Revision-Date: 2016-11-14 23:41+0100\n"
-"Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
+"PO-Revision-Date: 2018-03-14 08:00+0100\n"
+"Last-Translator: Martin Hrubý (hrubymar10) <hrubymar10@gmail.com>\n"
 "Language-Team: Český <hrubymar10@gmail.com>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -2544,10 +2544,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/campaign_dialog.cfg:276
-#, fuzzy
-#| msgid "Modifications:"
 msgid "Modifications"
-msgstr "Rozšíření:"
+msgstr "Rozšíření"
 
 #. [toggle_button]: id=checkbox_deterministic
 #: data/gui/window/campaign_dialog.cfg:409
@@ -5495,10 +5493,8 @@ msgstr "Seznam jednotek"
 
 #. [label]: id=title
 #: data/gui/window/unit_recall.cfg:291
-#, fuzzy
-#| msgid "Rename Unit"
 msgid "Recall Unit"
-msgstr "Přejmenuj"
+msgstr "Přivolat"
 
 #. [button]: id=dismiss
 #: data/gui/window/unit_recall.cfg:384
@@ -5539,7 +5535,7 @@ msgstr "Podrobnosti:"
 
 #: src/build_info.cpp:277
 msgid "feature^Experimental OpenMP support"
-msgstr "Esperimentální podpora OpenMP"
+msgstr "Experimentální podpora OpenMP"
 
 #: src/build_info.cpp:282
 msgid "feature^PNG screenshots"
@@ -6527,10 +6523,8 @@ msgid "No era information found."
 msgstr "Informace o mapě"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:251
-#, fuzzy
-#| msgid "Choose Player"
 msgid "Computer Player"
-msgstr "Vyber hráče"
+msgstr "Počítačový hráč"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:253
 #, fuzzy
@@ -6690,32 +6684,24 @@ msgid "file_size^Unknown"
 msgstr "Neznámá"
 
 #: src/gui/dialogs/statistics_dialog.cpp:186
-#, fuzzy
-#| msgid "Recruit"
 msgid "Recruits"
-msgstr "Naverbuj"
+msgstr "Naverbováno"
 
 #: src/gui/dialogs/statistics_dialog.cpp:187
-#, fuzzy
-#| msgid "Recall"
 msgid "Recalls"
-msgstr "Přivolej"
+msgstr "Přivoláno"
 
 #: src/gui/dialogs/statistics_dialog.cpp:188
-#, fuzzy
-#| msgid "Advanced Settings"
 msgid "Advancements"
-msgstr "Pokročilá nastavení"
+msgstr "Povýšeno"
 
 #: src/gui/dialogs/statistics_dialog.cpp:189
 msgid "Losses"
 msgstr ""
 
 #: src/gui/dialogs/statistics_dialog.cpp:190
-#, fuzzy
-#| msgid "Hills"
 msgid "Kills"
-msgstr "Kopce"
+msgstr "Zabito"
 
 #: src/gui/dialogs/statistics_dialog.cpp:204
 msgid "Inflicted"
@@ -6726,10 +6712,8 @@ msgid "Taken"
 msgstr ""
 
 #: src/gui/dialogs/title_screen.cpp:472
-#, fuzzy
-#| msgid "Choose Theme"
 msgid "Choose Test"
-msgstr "Vyber téma"
+msgstr "Vybrat Test"
 
 #: src/gui/dialogs/unit_recall.cpp:266
 msgid "This unit is loyal and requires no upkeep."
