@@ -180,62 +180,17 @@ static std::string strip_cr(std::string str, bool strip)
 	return str;
 }
 
-namespace {
-	void append_default_ignore_patterns(std::pair<std::vector<std::string>, std::vector<std::string>>& patterns)
-	{
-		std::vector<std::string>& files = patterns.first;
-		std::vector<std::string>& dirs  = patterns.second;
-
-		static const std::vector<std::string> default_ignored_files {
-			/* Don't upload dot-files/dirs, which are hidden files in UNIX platforms */
-			".*",
-			"#*#",
-			"*~",
-			"*-bak",
-			"*.swp",
-			"*.pbl",
-			"*.ign",
-			"_info.cfg",
-			"*.exe",
-			"*.bat",
-			"*.cmd",
-			"*.com",
-			"*.scr",
-			"*.sh",
-			"*.js",
-			"*.vbs",
-			"*.o",
-			"*.ini",
-			/* Remove junk created by certain file manager ;) */
-			"Thumbs.db",
-			/* Eclipse plugin */
-			"*.wesnoth",
-			"*.project",
-		};
-
-		static const std::vector<std::string> default_ignored_dirs {
-			".*",
-			/* macOS metadata-like cruft (http://floatingsun.net/2007/02/07/whats-with-__macosx-in-zip-files/) */
-			"__MACOSX",
-		};
-
-		files.insert(files.end(), default_ignored_files.begin(), default_ignored_files.end());
-		dirs.insert(dirs.end(), default_ignored_dirs.begin(), default_ignored_dirs.end());
-    }
-}
-
-static std::pair<std::vector<std::string>, std::vector<std::string>> read_ignore_patterns(const std::string& addon_name)
+static filesystem::blacklist_pattern_list read_ignore_patterns(const std::string& addon_name)
 {
 	const std::string parentd = filesystem::get_addons_dir();
 	const std::string ign_file = parentd + "/" + addon_name + "/_server.ign";
 
-	std::pair<std::vector<std::string>, std::vector<std::string>> patterns;
+	filesystem::blacklist_pattern_list patterns;
 	LOG_CFG << "searching for .ign file for '" << addon_name << "'...\n";
 	if (!filesystem::file_exists(ign_file)) {
 		LOG_CFG << "no .ign file found for '" << addon_name << "'\n"
-		        << "inserting default ignore patterns...\n";
-		append_default_ignore_patterns(patterns);
-		return patterns; // just default patterns
+		        << "using default ignore patterns...\n";
+		return filesystem::default_blacklist;
 	}
 	LOG_CFG << "found .ign file: " << ign_file << '\n';
 	auto stream = filesystem::istream_file(ign_file);
@@ -246,9 +201,9 @@ static std::pair<std::vector<std::string>, std::vector<std::string>> read_ignore
 		// .gitignore & WML like comments
 		if (l == 0 || !line.compare(0,2,"# ")) continue;
 		if (line[l - 1] == '/') { // directory; we strip the last /
-			patterns.second.push_back(line.substr(0, l - 1));
+			patterns.add_directory_pattern(line.substr(0, l - 1));
 		} else { // file
-			patterns.first.push_back(line);
+			patterns.add_file_pattern(line);
 		}
 	}
 	return patterns;
@@ -261,36 +216,24 @@ static void archive_file(const std::string& path, const std::string& fname, conf
 	cfg["contents"] = encode_binary(strip_cr(filesystem::read_file(path + '/' + fname),is_cfg));
 }
 
-static void archive_dir(const std::string& path, const std::string& dirname, config& cfg, std::pair<std::vector<std::string>, std::vector<std::string>>& ignore_patterns)
+static void archive_dir(const std::string& path, const std::string& dirname, config& cfg, const filesystem::blacklist_pattern_list& ignore_patterns)
 {
 	cfg["name"] = dirname;
 	const std::string dir = path + '/' + dirname;
 
 	std::vector<std::string> files, dirs;
 	filesystem::get_files_in_dir(dir,&files,&dirs);
-	for(std::vector<std::string>::const_iterator i = files.begin(); i != files.end(); ++i) {
-		bool valid = !filesystem::looks_like_pbl(*i);
-		for(std::vector<std::string>::const_iterator p = ignore_patterns.first.begin(); p != ignore_patterns.first.end(); ++p) {
-			if (utils::wildcard_string_match(*i, *p)) {
-				valid = false;
-				break;
-			}
-		}
+	for(const std::string& name : files) {
+		bool valid = !filesystem::looks_like_pbl(name) && !ignore_patterns.match_file(name);
 		if (valid) {
-			archive_file(dir,*i,cfg.add_child("file"));
+			archive_file(dir,name,cfg.add_child("file"));
 		}
 	}
 
-	for(std::vector<std::string>::const_iterator j = dirs.begin(); j != dirs.end(); ++j) {
-		bool valid = true;
-		for(std::vector<std::string>::const_iterator p = ignore_patterns.second.begin(); p != ignore_patterns.second.end(); ++p) {
-			if (utils::wildcard_string_match(*j, *p)) {
-				valid = false;
-				break;
-			}
-		}
+	for(const std::string& name : dirs) {
+		bool valid = !ignore_patterns.match_dir(name);
 		if (valid) {
-			archive_dir(dir,*j,cfg.add_child("dir"),ignore_patterns);
+			archive_dir(dir,name,cfg.add_child("dir"),ignore_patterns);
 		}
 	}
 }
@@ -299,8 +242,7 @@ void archive_addon(const std::string& addon_name, config& cfg)
 {
 	const std::string parentd = filesystem::get_addons_dir();
 
-	std::pair<std::vector<std::string>, std::vector<std::string>> ignore_patterns;
-	ignore_patterns = read_ignore_patterns(addon_name);
+	filesystem::blacklist_pattern_list ignore_patterns(read_ignore_patterns(addon_name));
 	archive_dir(parentd, addon_name, cfg.add_child("dir"), ignore_patterns);
 }
 

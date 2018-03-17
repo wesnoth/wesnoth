@@ -19,14 +19,16 @@
 
 #pragma once
 
+#include <algorithm>
 #include <ctime>
-
+#include <functional>
 #include <iosfwd>
 #include <string>
 #include <vector>
 #include <memory>
 
 #include "exceptions.hpp"
+#include "serialization/string_utils.hpp"
 
 class config;
 
@@ -53,6 +55,78 @@ struct file_tree_checksum;
 enum file_name_option { ENTIRE_FILE_PATH, FILE_NAME_ONLY };
 enum file_filter_option { NO_FILTER, SKIP_MEDIA_DIR, SKIP_PBL_FILES };
 enum file_reorder_option { DONT_REORDER, DO_REORDER };
+
+// A list of file and directory blacklist patterns
+class blacklist_pattern_list
+{
+public:
+	blacklist_pattern_list()
+		: file_patterns_(), directory_patterns_()
+	{}
+	blacklist_pattern_list(const std::vector<std::string>& file_patterns, const std::vector<std::string>& directory_patterns)
+		: file_patterns_(file_patterns), directory_patterns_(directory_patterns)
+	{}
+
+	bool match_file(const std::string& name) const
+	{
+		return std::any_of(file_patterns_.begin(), file_patterns_.end(),
+			std::bind(&utils::wildcard_string_match, std::ref(name), std::placeholders::_1));
+	}
+
+	bool match_dir(const std::string& name) const
+	{
+		return std::any_of(directory_patterns_.begin(), directory_patterns_.end(),
+			std::bind(&utils::wildcard_string_match, std::ref(name), std::placeholders::_1));
+	}
+
+	void add_file_pattern(const std::string& pattern)
+	{
+		file_patterns_.push_back(pattern);
+	}
+
+	void add_directory_pattern(const std::string& pattern)
+	{
+		directory_patterns_.push_back(pattern);
+	}
+
+private:
+	std::vector<std::string> file_patterns_;
+	std::vector<std::string> directory_patterns_;
+};
+
+static const blacklist_pattern_list default_blacklist{
+	{
+		/* Blacklist dot-files/dirs, which are hidden files in UNIX platforms */
+		".*",
+		"#*#",
+		"*~",
+		"*-bak",
+		"*.swp",
+		"*.pbl",
+		"*.ign",
+		"_info.cfg",
+		"*.exe",
+		"*.bat",
+		"*.cmd",
+		"*.com",
+		"*.scr",
+		"*.sh",
+		"*.js",
+		"*.vbs",
+		"*.o",
+		"*.ini",
+		/* Remove junk created by certain file manager ;) */
+		"Thumbs.db",
+		/* Eclipse plugin */
+		"*.wesnoth",
+		"*.project",
+	},
+	{
+		".*",
+		/* macOS metadata-like cruft (http://floatingsun.net/2007/02/07/whats-with-__macosx-in-zip-files/) */
+		"__MACOSX",
+	}
+};
 
 /** Some tasks to run on startup. */
 void init();
