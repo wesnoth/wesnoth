@@ -20,6 +20,7 @@ local function on_event(eventname, arg1, arg2)
 	if string.match(eventname, ",") then
 		for elem in utils.split(eventname or "") do
 			on_event(elem, arg1, arg2)
+			return
 		end
 	end
 	local priority = 0
