@@ -215,13 +215,13 @@ void class_tag::add_link(const std::string& link)
 	links_.emplace(name_link, link);
 }
 
-const class_key* class_tag::find_key(const std::string& name, const config& match) const
+const class_key* class_tag::find_key(const std::string& name, const config& match, bool ignore_super) const
 {
 	// Check the conditions first, so that conditional definitions
 	// override base definitions in the event of duplicates.
 	for(auto& cond : conditions_) {
 		if(cond.matches(match)) {
-			if(auto key = cond.find_key(name, match)) {
+			if(auto key = cond.find_key(name, match, true)) {
 				return key;
 			}
 		}
@@ -241,6 +241,23 @@ const class_key* class_tag::find_key(const std::string& name, const config& matc
 	if(it_fuzzy != keys_.end()) {
 		return &(it_fuzzy->second);
 	}
+
+	if(!ignore_super) {
+		for(auto& cond : conditions_) {
+			if(cond.matches(match)) {
+				// This results in a little redundancy (checking things twice) but at least it still works.
+				if(auto key = cond.find_key(name, match, false)) {
+					return key;
+				}
+			}
+		}
+		for(auto& super_tag : super_refs_) {
+			if(const class_key* found_key = super_tag->find_key(name, match)) {
+				return found_key;
+			}
+		}
+	}
+
 	return nullptr;
 }
 
@@ -254,7 +271,7 @@ const std::string* class_tag::find_link(const std::string& name) const
 	return nullptr;
 }
 
-const class_tag* class_tag::find_tag(const std::string& fullpath, const class_tag& root, const config& match) const
+const class_tag* class_tag::find_tag(const std::string& fullpath, const class_tag& root, const config& match, bool ignore_super) const
 {
 	if(fullpath.empty()) {
 		return nullptr;
@@ -275,7 +292,7 @@ const class_tag* class_tag::find_tag(const std::string& fullpath, const class_ta
 	// override base definitions in the event of duplicates.
 	for(auto& cond : conditions_) {
 		if(cond.matches(match)) {
-			if(auto tag = cond.find_tag(fullpath, root, match)) {
+			if(auto tag = cond.find_tag(fullpath, root, match, true)) {
 				return tag;
 			}
 		}
@@ -306,6 +323,22 @@ const class_tag* class_tag::find_tag(const std::string& fullpath, const class_ta
 			return &(it_fuzzy->second);
 		} else {
 			return it_tags->second.find_tag(next_path, root, match);
+		}
+	}
+
+	if(!ignore_super) {
+		for(auto& cond : conditions_) {
+			if(cond.matches(match)) {
+				// This results in a little redundancy (checking things twice) but at least it still works.
+				if(auto tag = cond.find_tag(fullpath, root, match, false)) {
+					return tag;
+				}
+			}
+		}
+		for(auto& super_tag : super_refs_) {
+			if(const class_tag* found_tag = super_tag->find_tag(fullpath, root, match)) {
+				return found_tag;
+			}
 		}
 	}
 
@@ -448,37 +481,13 @@ void class_tag::add_tag(const std::string& path, const class_tag& tag, class_tag
 	it_tags->second.add_tag(next_path, tag, root);
 }
 
-void class_tag::append_super(const class_tag& tag, const std::string& path)
-{
-	// TODO: Ensure derived tag definitions override base tag definitions in the event of duplicates
-	add_keys(tag.keys_);
-	add_links(tag.links_);
-	add_conditions(tag.conditions_);
-	
-	for(const auto& t : tag.tags_) {
-		links_.erase(t.first);
-		if(t.second.is_fuzzy()) {
-			// Fuzzy tags won't work as links, so make a copy
-			// (Links just don't hold enough info for this to work.)
-			add_tag(t.second);
-		} else {
-			add_link(path + "/" + t.first);
-		}
-	}
-	if(tag.any_tag_) {
-		any_tag_ = true;
-	}
-}
-
 void class_tag::expand(class_tag& root)
 {
-	if(!super_.empty()) {
-		class_tag* super_tag = root.find_tag(super_, root, config());
+	for(auto& super : utils::split(super_)) {
+		class_tag* super_tag = root.find_tag(super, root, config());
 		if(super_tag) {
 			if(super_tag != this) {
-				super_tag->expand(root);
-				append_super(*super_tag, super_);
-				super_.clear();
+				super_refs_.push_back(super_tag);
 			} else {
 				// TODO: Detect super cycles too!
 				std::cerr << "the same" << super_tag->name_ << "\n";

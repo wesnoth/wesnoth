@@ -256,6 +256,7 @@ public:
 	using key_map  = std::map<std::string, class_key>;
 	using link_map = std::map<std::string, std::string>;
 	using condition_list = std::vector<class_condition>;
+	using super_list = std::vector<class_tag*>;
 private:
 	void push_new_tag_conditions(std::queue<const class_tag*> q, const class_tag& tag);
 	template<typename T, typename Map = std::map<std::string, T>>
@@ -478,7 +479,7 @@ public:
 	}
 
 	/** Returns pointer to child key. */
-	const class_key* find_key(const std::string& name, const config& match) const;
+	const class_key* find_key(const std::string& name, const config& match, bool ignore_super = false) const;
 
 	/** Returns pointer to child link. */
 	const std::string* find_link(const std::string& name) const;
@@ -487,7 +488,7 @@ public:
 	 * Returns pointer to tag using full path to it.
 	 * Also work with links
 	 */
-	const class_tag* find_tag(const std::string& fullpath, const class_tag& root, const config& match) const;
+	const class_tag* find_tag(const std::string& fullpath, const class_tag& root, const config& match, bool ignore_super = false) const;
 
 	/** Calls the expansion on each child. */
 	void expand_all(class_tag& root);
@@ -551,6 +552,9 @@ private:
 	/** conditional partial matches */
 	condition_list conditions_;
 
+	/** super-tag references */
+	super_list super_refs_;
+
 	/** whether this is a "fuzzy" tag. */
 	bool fuzzy_;
 
@@ -591,10 +595,7 @@ private:
 		conditions_.insert(conditions_.end(), list.begin(), list.end());
 	}
 
-	/** Copies tags, keys and links of tag to this. */
-	void append_super(const class_tag& tag, const std::string& super);
-
-	/** Expands all "super" copying their data to this. */
+	/** Expands all "super", storing direct references for easier access. */
 	void expand(class_tag& root);
 };
 
