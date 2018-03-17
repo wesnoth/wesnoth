@@ -99,6 +99,28 @@ function wml.child_array(cfg, tag)
 	return result
 end
 
+--! Removes the first matching child tag from @a cfg
+function wml.remove_child(cfg, tag)
+	ensure_config(cfg)
+	for i,v in ipairs(cfg) do
+		if v[1] == tag then
+			table.remove(cfg, i)
+			return
+		end
+	end
+end
+
+--! Removes all matching child tags from @a cfg
+function wml.remove_children(cfg, ...)
+	for i = #cfg, 1, -1 do
+		for _,v in ipairs(...) do
+			if cfg[i] == v then
+				table.remove(cfg, i)
+			end
+		end
+	end
+end
+
 --[========[WML Tag Creation Table]========]
 
 local create_tag_mt = {
