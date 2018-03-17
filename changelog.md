@@ -30,7 +30,7 @@
  ### Lua API
    * Add side_name to unit proxy
    * Removed ai.synced_command().
-   * wesnoth.end_turn() now allows to specifry the next side
+   * wesnoth.end_turn() now allows to specify the next side
  ### User Interface
    * Improved outro screen.
    * Fixed a few cases of data not displaying in the MP Join Game screen.
@@ -52,7 +52,7 @@
      the 1.13 development cycle.
    * [filter_wml] now accepts [and] and [or] in addition to [not].
    * Added bar_offset_x/y in [unit_type].
-   * the mp setzup code no longer generates [side]s if the scenario has at
+   * the mp setup code no longer generates [side]s if the scenario has at
      least one side defined.
  ### Miscellaneous and bug fixes
    * Fixed standing animation toggle not taking immediate effect (bug
@@ -74,7 +74,7 @@
    * Screenshots are now saved as JPG files by default. If the game has not
      been built with the appropriate libraries, it will fall back to a PNG file.
    * Fixed no leader having no effect
-   * Fixed unint randonyl beeing unable to move over merged terrains.
+   * Fixed units randomly beeing unable to move over merged terrains.
  ### Music and sound effects
    * Updated a few UI sounds.
 
