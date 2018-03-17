@@ -440,25 +440,23 @@ void text_box_base::handle_editing(bool& handled, const utf8::string& unicode, i
 			}
 			SDL_SetTextInputRect(&rect);
 		}
-		
-		std::string new_text;
+
 		// In SDL_TextEditingEvent, size of editing_text is limited
 		// If length of composition text is more than the limit, it is separated to multiple SDL_TextEditingEvent
 		// start is start position of the separated event in entire composition text
 		if(start == 0) {
-			ime_length_ = new_len;
-			new_text = text_cached_;
-		} else {
-			ime_length_ += new_len;
-			new_text = text_.text();
+			ime_length_ = 0;
+			text_.set_text(text_cached_, false);
 		}
-		utf8::insert(new_text, ime_start_point_ + start, unicode);
-		text_.set_text(new_text, false);
+		ime_length_ += new_len;
+		text_.insert_text(ime_start_point_ + start, unicode);
 
 		// Update status
 		set_cursor(ime_start_point_, false);
 		if(ime_length_ > 0) {
-			set_cursor(ime_start_point_ + ime_length_, true);
+			int maximum_length = text_.get_maximum_length();
+			int cursor_end = std::min(maximum_length, ime_start_point_ + ime_length_);
+			set_cursor(cursor_end, true);
 		}
 		update_canvas();
 		set_is_dirty(true);
