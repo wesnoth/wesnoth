@@ -315,29 +315,17 @@ function helper.find_attack(unit, filter)
 end
 
 -- Compatibility and deprecations
-
-helper.distance_between = wesnoth.map.distance_between
-helper.get_child = wml.get_child
-helper.get_nth_child = wml.get_nth_child
-helper.child_count = wml.child_count
-helper.child_range = wml.child_range
-helper.child_array = wml.child_array
-if wesnoth.kernel_type() == "Game Lua Kernel" then
-	helper.get_variable_array = wml.array_access.get
-	helper.set_variable_array = wml.array_access.set
-	helper.get_variable_proxy_array = wml.array_access.get_proxy
-end
-helper.literal = wml.literal
-helper.parsed = wml.parsed
-helper.shallow_literal = wml.shallow_literal
-helper.shallow_parsed = wml.shallow_parsed
-
-helper.distance_between = wesnoth.deprecate_api('helper.distance_between', 'wesnoth.map.distance_between', 1, nil, helper.distance_between)
+helper.distance_between = wesnoth.deprecate_api('helper.distance_between', 'wesnoth.map.distance_between', 1, nil, wesnoth.map.distance_between)
 helper.get_child = wesnoth.deprecate_api('helper.get_child', 'wml.get_child', 1, nil, wml.get_child)
 helper.get_nth_child = wesnoth.deprecate_api('helper.get_nth_child', 'wml.get_nth_child', 1, nil, wml.get_nth_child)
 helper.child_count = wesnoth.deprecate_api('helper.child_count', 'wml.child_count', 1, nil, wml.child_count)
 helper.child_range = wesnoth.deprecate_api('helper.child_range', 'wml.child_range', 1, nil, wml.child_range)
 helper.child_array = wesnoth.deprecate_api('helper.child_array', 'wml.child_array', 1, nil, wml.child_array)
+if wesnoth.kernel_type() == "Game Lua Kernel" then
+	helper.get_variable_array = wesnoth.deprecate_api('helper.get_variable_array', ' wml.array_access.get', 1, nil, wml.array_access.get)
+	helper.set_variable_array = wesnoth.deprecate_api('helper.set_variable_array', 'wml.array_access.set', 1, nil, wml.array_access.set)
+	helper.get_variable_proxy_array = wesnoth.deprecate_api('helper.get_variable_proxy_array', 'wml.array_access.get_proxy', 1, nil, wml.array_access.get_proxy)
+end
 helper.literal = wesnoth.deprecate_api('helper.literal', 'wml.literal', 1, nil, wml.literal)
 helper.parsed = wesnoth.deprecate_api('helper.parsed', 'wml.parsed', 1, nil, wml.parsed)
 helper.shallow_literal = wesnoth.deprecate_api('helper.shallow_literal', 'wml.shallow_literal', 1, nil, wml.shallow_literal)
