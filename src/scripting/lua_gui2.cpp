@@ -409,6 +409,8 @@ int show_menu(lua_State* L) {
 	} else if(lua_isnumber(L, 3)) {
 		initial = lua_tointeger(L, 3) - 1;
 		markup = luaW_toboolean(L, 2);
+	} else if(lua_isboolean(L, 2)) {
+		markup = luaW_toboolean(L, 2);
 	}
 
 	gui2::dialogs::drop_down_menu menu(pos, items, initial, markup, false);
