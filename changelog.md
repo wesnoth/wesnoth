@@ -70,8 +70,8 @@
    * Decreased Dune Piercer's XP to next level from 48 to 42
    * Increased Dune Riders's XP to next level from 39 to 42
    * Change mountain stats of Dune Marauder from impassable to 4 MP, 60% def
-   * Decreased blade resistance of Dune Marauder from 30% to 20%
    * Increased cold resistance of Dune Marauder from -20% to 0%
+   * Increased blade resistance of Dune Raider from 10% to 20%
    * Decreased hills defense of Dune Raider from 60% to 50%
  ### Miscellaneous and bug fixes
    * Fixed standing animation toggle not taking immediate effect (bug
