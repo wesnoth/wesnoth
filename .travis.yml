@@ -11,27 +11,24 @@ cache:
 
 matrix:
   include:
-    - compiler: clang
-      env: TOOL=scons CXXSTD=11 NLS=true
+    - compiler: gcc
+      env: TOOL=scons CXXSTD=14 NLS=true
 
     - compiler: gcc
-      env: TOOL=scons CXXSTD=14 NLS=false
+      env: TOOL=scons CXXSTD=14 NLS=false OPT=-O0
 
     - compiler: gcc
-      env: TOOL=scons CXXSTD=11 NLS=false OPT=-O0
-
-    - compiler: gcc
-      env: TOOL=cmake CXXSTD=11 NLS=false
+      env: TOOL=cmake CXXSTD=14 NLS=false
 
     - compiler: clang
-      env: TOOL=scons CXXSTD=11 NLS=false OPT=-O0
+      env: TOOL=scons CXXSTD=14 NLS=false OPT=-O0
 
     - compiler: clang
-      env: TOOL=cmake CXXSTD=11 NLS=false
+      env: TOOL=cmake CXXSTD=14 NLS=false
 
     - os: osx
       compiler: clang
-      env: TOOL=scons CXXSTD=11 NLS=false OPT=-O0
+      env: TOOL=scons CXXSTD=14 NLS=false OPT=-O0
 
     - os: osx
       compiler: clang
