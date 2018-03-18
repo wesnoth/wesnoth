@@ -1368,13 +1368,11 @@ canvas::canvas(canvas&& c)
 	, w_(c.w_)
 	, h_(c.h_)
 	, canvas_(std::move(c.canvas_))
-	, renderer_(c.renderer_)
+	, renderer_(std::exchange(c.renderer_, nullptr))
 	, variables_(c.variables_)
 	, functions_(c.functions_)
 	, is_dirty_(c.is_dirty_)
 {
-	// Needed to ensure the other object doesn't destroy our software renderer prematurely.
-	c.renderer_ = nullptr;
 }
 
 canvas::~canvas()
