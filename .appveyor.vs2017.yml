@@ -17,7 +17,7 @@ before_build:
   - cd wesnoth
   - set PATH=C:\projects\external\dll;%PATH%
 build_script:
-  - msbuild projectfiles\VC12\wesnoth.sln /property:PlatformToolset=v141 /m /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+  - msbuild projectfiles\VC14\wesnoth.sln /property:PlatformToolset=v141 /m /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 artifacts:
   - path: wesnoth.exe
