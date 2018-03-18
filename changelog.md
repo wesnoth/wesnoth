@@ -3,7 +3,7 @@
    * Disallowed access to blacklisted file paths such as hidden files and
      directories.
  ### Add-ons client
-   * Addon upload progress bar now works also on Windows (bug #1439).
+   * Addon upload progress bar now also works on Windows (bug #1439).
    * Fixed inability to cancel addon upload (bug #2591).
  ### Add-ons server
    * Added support for adding free-form comma-separated tags to add-ons in
@@ -59,12 +59,12 @@
      the 1.13 development cycle.
    * [filter_wml] now accepts [and] and [or] in addition to [not].
    * Added bar_offset_x/y in [unit_type].
-   * the mp setup code no longer generates [side]s if the scenario has at
+   * The MP setup code no longer generates [side]s if the scenario has at
      least one side defined.
  ### Unit changes and balancing
    * Decreased cold resistance of Dune Burner line from 0% to -20%
    * Decreased cold resistance of Dune Soldier line from 0% to -10%
-   * Add possibilty for 'fearless' trait in Dune Soldier line
+   * Add possibility for 'fearless' trait in Dune Soldier line
    * Increased pierce resistance of Dune Rover line from 0% to 10%
    * Increased impact resistance of Dune Piercer from 0% to 10%
    * Decreased Dune Piercer's XP to next level from 48 to 42
@@ -90,10 +90,10 @@
    * Fixed regression in 1.13.11 where completed events could fire again when
      reloading a save.
    * Fixed PNG images with an embedded palette displaying incorrectly.
-   * It's now possible to save screenshots as JPEG (by changing file extension
-     before saving).
-   * Fixed no leader having no effect
-   * Fixed units randomly beeing unable to move over merged terrains.
+   * It's now possible to save screenshots as JPEG (by changing the file
+     extension before saving).
+   * Fixed no_leader having no effect
+   * Fixed units randomly being unable to move over merged terrains.
  ### Music and sound effects
    * Updated a few UI sounds.
 
