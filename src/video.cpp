@@ -102,12 +102,6 @@ void CVideo::initSDL()
 
 CVideo::~CVideo()
 {
-	if(sdl_get_version() >= version_info(2, 0, 6)) {
-		// Because SDL will free the framebuffer,
-		// ensure that we won't attempt to free it.
-		frameBuffer.clear_without_free();
-	}
-
 	LOG_DP << "calling SDL_Quit()\n";
 	SDL_Quit();
 	assert(singleton_);
@@ -146,8 +140,6 @@ void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rec
 void CVideo::make_fake()
 {
 	fake_screen_ = true;
-
-	image::set_pixel_format(frameBuffer->format);
 }
 
 void CVideo::make_test_fake()
@@ -231,7 +223,7 @@ void CVideo::set_window_mode(const MODE_EVENT mode, const point& size)
 SDL_Rect CVideo::screen_area(bool as_pixels) const
 {
 	if(!window) {
-		return {0, 0, frameBuffer->w, frameBuffer->h};
+		return sdl::empty_rect;
 	}
 
 	// First, get the renderer size in pixels.
