@@ -30,7 +30,7 @@ namespace image
 {
 /// function to create the minimap for a given map
 /// the surface returned must be freed by the user
-DEPRECATED("") surface getMinimap(int w,
+surface getMinimap(int w,
 		int h,
 		const gamemap& map_,
 		const team* vm = nullptr,
