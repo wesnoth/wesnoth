@@ -1,4 +1,4 @@
-## Version 1.13.11+dev
+## Version 1.13.12
  ### Security fixes
    * Disallowed access to blacklisted file paths such as hidden files and
      directories.

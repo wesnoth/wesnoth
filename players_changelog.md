@@ -2,7 +2,7 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/master/changelog.md
 
-## Version 1.13.11+dev
+## Version 1.13.12
  ### Security fixes
    * Disallowed access to blacklisted file paths such as hidden files and
      directories.
