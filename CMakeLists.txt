@@ -62,7 +62,7 @@ option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
 if(NOT CMAKE_CROSSCOMPILING)
 	try_run(IEEE754_TEST_RETURN_CODE IEEE754_TEST_COMPILED ${CMAKE_BINARY_DIR} ${CMAKE_SOURCE_DIR}/src/compile_time_tests/ieee_754.cpp
-		CMAKE_FLAGS "-DCMAKE_CXX_STANDARD=11" COMPILE_OUTPUT_VARIABLE IEEE754_TEST_COMPILE_OUTPUT)
+		CMAKE_FLAGS "-DCMAKE_CXX_STANDARD=14" COMPILE_OUTPUT_VARIABLE IEEE754_TEST_COMPILE_OUTPUT)
 	if(NOT IEEE754_TEST_COMPILED)
 		message(WARNING "Failed to compile the IEEE 754 test. Skipping it.")
 		message(${IEEE754_TEST_COMPILE_OUTPUT})
@@ -199,7 +199,7 @@ if(NOT DEFINED CXX_FLAGS_USER)
 
 endif(NOT DEFINED CXX_FLAGS_USER)
 
-set(COMPILER_FLAGS "-std=c++11 -Wall -Wextra -Werror=non-virtual-dtor -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast")
+set(COMPILER_FLAGS "-std=c++14 -Wall -Wextra -Werror=non-virtual-dtor -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast")
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 	set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized")
