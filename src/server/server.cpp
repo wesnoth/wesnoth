@@ -34,6 +34,7 @@
 #include "server/game.hpp"
 #include "server/metrics.hpp"
 #include "server/player.hpp"
+#include "server/player_network.hpp"
 #include "server/simple_wml.hpp"
 #include "server/ban.hpp"
 
@@ -1105,6 +1106,25 @@ void server::handle_message(socket_ptr socket, simple_wml::node& message)
 {
 	simple_wml::document relay_message;
 	message.copy_into(relay_message.root().add_child("message"));
+
+	auto user = player_connections_.find(socket);
+	if(user->info().is_message_flooding()) {
+		send_server_message(socket,
+				"Warning: you are sending too many messages too fast. "
+				"Your message has not been relayed.");
+		return;
+	}
+
+	const simple_wml::string_span& msg = message["message"];
+	chat_message::truncate_message(msg, message);
+
+	if(msg.size() >= 3 && simple_wml::string_span(msg.begin(), 4) == "/me ") {
+		LOG_SERVER << client_address(socket) << "\t<" << user->name()
+				<< simple_wml::string_span(msg.begin() + 3, msg.size() - 3) << ">\n";
+	} else {
+		LOG_SERVER << client_address(socket) << "\t<" << user->name() << "> " << msg << "\n";
+	}
+
 	send_to_lobby(relay_message, socket);
 }
 
