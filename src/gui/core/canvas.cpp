@@ -93,8 +93,6 @@ namespace
  * @pre                   @p x2 >= @p x1
  * @pre                   The @p surface is locked.
  *
- * @param canvas          The canvas to draw upon, the caller should lock the
- *                        surface before calling.
  * @param color           The color of the line to draw.
  * @param x1              The start x coordinate of the line to draw.
  * @param y1              The start y coordinate of the line to draw.
@@ -135,8 +133,6 @@ static void draw_line(const int canvas_w,
  * @pre                   The circle must fit on the canvas.
  * @pre                   The @p surface is locked.
  *
- * @param canvas          The canvas to draw upon, the caller should lock the
- *                        surface before calling.
  * @param color           The border color of the circle to draw.
  * @param x_center        The x coordinate of the center of the circle to draw.
  * @param y_center        The y coordinate of the center of the circle to draw.
@@ -202,8 +198,6 @@ static void draw_circle(const int canvas_w,
  * @pre                   The circle must fit on the canvas.
  * @pre                   The @p surface is locked.
  *
- * @param canvas          The canvas to draw upon, the caller should lock the
- *                        surface before calling.
  * @param color           The fill color of the circle to draw.
  * @param x_center        The x coordinate of the center of the circle to draw.
  * @param y_center        The y coordinate of the center of the circle to draw.
