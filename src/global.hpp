@@ -47,8 +47,6 @@
 #if defined(_MSC_VER)
 // MSVC supports these starting in MSVC 2015
 #if _MSC_VER >= 1900
-#define HAVE_REF_QUALIFIERS 1
-#define HAVE_INHERITING_CTORS 1
 #define NORETURN [[noreturn]]
 #else
 #define NORETURN __declspec(noreturn)
@@ -71,9 +69,6 @@
 #if defined(__clang__)
 #include <ciso646> // To ensure standard library version macros are defined
 
-// Clang has convenient feature detection macros \o/
-#define HAVE_REF_QUALIFIERS __has_feature(cxx_reference_qualified_functions)
-#define HAVE_INHERITING_CTORS __has_feature(cxx_inheriting_constructors)
 // All supported versions of clang have these
 #define NORETURN [[noreturn]]
 #define FALLTHROUGH [[clang::fallthrough]]
@@ -85,8 +80,6 @@
 #if defined(__GNUC__) && !defined(__clang__)
 // GCC supports these from 4.8 up
 #define NORETURN [[noreturn]]
-#define HAVE_REF_QUALIFIERS 1
-#define HAVE_INHERITING_CTORS 1
 
 // Deprecated is supported from 4.9 up
 #if __GNUC__ >= 5 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 9)

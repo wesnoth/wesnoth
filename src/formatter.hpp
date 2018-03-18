@@ -38,38 +38,32 @@
 class formatter
 {
 public:
-	formatter() :
-		stream_()
+	formatter()
+		: stream_()
 	{
 	}
 
 	template<typename T>
-	formatter& operator<<(const T & o)
-#if HAVE_REF_QUALIFIERS
-		&
-#endif
+	formatter& operator<<(const T& o) &
 	{
 		stream_ << o;
 		return *this;
 	}
 
-#if HAVE_REF_QUALIFIERS
-	template <typename T>
-	formatter && operator<<(const T & o) && {
+	template<typename T>
+	formatter&& operator<<(const T& o) &&
+	{
 		stream_ << o;
 		return std::move(*this);
 	}
-#endif
 
-	std::string str() const {
+	std::string str() const
+	{
 		return stream_.str();
 	}
 
 	// Implicit x-value conversion to string
-	operator std::string() const
-#if HAVE_REF_QUALIFIERS
-		&&
-#endif
+	operator std::string() const &&
 	{
 		return stream_.str();
 	}
