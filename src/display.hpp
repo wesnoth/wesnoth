@@ -789,8 +789,8 @@ public:
 
 	void write(config& cfg) const;
 
-	virtual void handle_event(const SDL_Event&);
-	virtual void handle_window_event(const SDL_Event& event);
+	virtual void handle_event(const SDL_Event&) override;
+	virtual void handle_window_event(const SDL_Event& event) override;
 
 private:
 	void read(const config& cfg);
