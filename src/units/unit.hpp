@@ -18,8 +18,6 @@
 #include "units/ptr.hpp"
 #include "units/types.hpp"
 
-#include "utils/type_trait_aliases.hpp"
-
 #include <bitset>
 #include <boost/dynamic_bitset_fwd.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
@@ -1022,7 +1020,7 @@ public:
 	struct upkeep_type_visitor : public boost::static_visitor<std::string>
 	{
 		template<typename T>
-		utils::enable_if_t<!std::is_same<int, T>::value, std::string>
+		std::enable_if_t<!std::is_same<int, T>::value, std::string>
 		operator()(T&) const
 		{
 			// Any special upkeep type should have an associated @ref type getter in its helper struct.

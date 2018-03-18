@@ -20,7 +20,6 @@
 #include "gui/widgets/styled_widget.hpp"
 
 #include "utils/functional.hpp"
-#include "utils/type_trait_aliases.hpp"
 
 namespace gui2
 {
@@ -28,7 +27,7 @@ namespace gui2
  * Default value getter for selectable widgets (like toggle buttons)
  */
 template<typename T>
-static inline utils::enable_if_t<std::is_base_of<selectable_item, T>::value, std::string>
+static inline std::enable_if_t<std::is_base_of<selectable_item, T>::value, std::string>
 default_status_value_getter(T& w)
 {
 	return w.get_value_bool() ? _("yes") : _("no");
@@ -38,7 +37,7 @@ default_status_value_getter(T& w)
  * Default value getter for integer-based widgets (like sliders)
  */
 template<typename T>
-static inline utils::enable_if_t<std::is_base_of<integer_selector, T>::value, std::string>
+static inline std::enable_if_t<std::is_base_of<integer_selector, T>::value, std::string>
 default_status_value_getter(T& w)
 {
 	return w.get_value_label();

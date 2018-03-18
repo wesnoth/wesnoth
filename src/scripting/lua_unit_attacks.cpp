@@ -20,7 +20,6 @@
 #include "units/unit.hpp"
 #include "units/attack_type.hpp"
 #include "utils/const_clone.hpp"
-#include "utils/type_trait_aliases.hpp"
 
 #include "lua/lauxlib.h"
 #include "lua/lua.h"                    // for lua_State, lua_settop, etc
@@ -90,7 +89,7 @@ attack_type& luaW_checkweapon(lua_State* L, int idx)
 }
 
 template<typename T>
-using attack_ptr_in = std::shared_ptr<utils::const_clone_t<attack_type, utils::remove_pointer_t<T>>>;
+using attack_ptr_in = std::shared_ptr<utils::const_clone_t<attack_type, std::remove_pointer_t<T>>>;
 
 // Note that these two templates are designed on the assumption that T is either unit or unit_type
 template<typename T>
