@@ -92,11 +92,6 @@ namespace detail {
 
 template<typename F, typename... P>
 auto bind_void(F fcn, P... bindings)
-#ifndef HAVE_CXX14
--> decltype(
-	std::bind(detail::make_apply(std::function<typename detail::function_base<F>::type>(fcn)), bindings...)
-)
-#endif
 {
 	using T = typename detail::function_base<F>::type;
 	return std::bind(detail::make_apply(std::function<T>(fcn)), bindings...);
