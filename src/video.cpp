@@ -72,7 +72,6 @@ CVideo::CVideo(FAKE_TYPES type)
 	, help_string_(0)
 	, updated_locked_(0)
 	, flip_locked_(0)
-	, refresh_rate_(0)
 {
 	assert(!singleton_);
 	singleton_ = this;
@@ -147,7 +146,6 @@ void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rec
 void CVideo::make_fake()
 {
 	fake_screen_ = true;
-	refresh_rate_ = 1;
 
 	image::set_pixel_format(frameBuffer->format);
 }
@@ -155,9 +153,7 @@ void CVideo::make_fake()
 void CVideo::make_test_fake()
 {
 	fake_interactive = true;
-	refresh_rate_ = 1;
 }
-
 
 void CVideo::init_window()
 {
@@ -190,10 +186,6 @@ void CVideo::init_window()
 	std::cerr << "Setting mode to " << w << "x" << h << std::endl;
 
 	window->set_minimum_size(preferences::min_window_width, preferences::min_window_height);
-
-	SDL_DisplayMode currentDisplayMode;
-	SDL_GetCurrentDisplayMode(window->get_display_index(), &currentDisplayMode);
-	refresh_rate_ = currentDisplayMode.refresh_rate != 0 ? currentDisplayMode.refresh_rate : 60;
 
 #ifdef USE_GL_RENDERING
 	// Initialize an OpenGL context for the window.

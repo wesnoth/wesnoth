@@ -148,11 +148,6 @@ public:
 	 */
 	void set_window_icon(surface& icon);
 
-	int current_refresh_rate() const
-	{
-		return refresh_rate_;
-	}
-
 	/***** ***** ***** ***** Drawing functions ***** ***** ****** *****/
 
 	/**
@@ -281,7 +276,6 @@ private:
 
 	int updated_locked_;
 	int flip_locked_;
-	int refresh_rate_;
 };
 
 /** An object which will lock the display for the duration of its lifetime. */
