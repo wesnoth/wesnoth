@@ -128,7 +128,7 @@ static std::string format_help_text(const config& cfg)
 				throw help::parse_error(msg.str());
 			};
 			// TODO: Get the proper link shade from somewhere
-			ss << font::format_as_link(font::escape_text(item.cfg["text"]), "#ffff00");
+			ss << font::format_as_link(font::escape_text(item.cfg["text"]), color_t::from_hex_string("ffff00"));
 		} else if(item.key == "img") {
 			if(item.cfg["src"].empty()) {
 				throw help::parse_error("Img markup must have src attribute.");

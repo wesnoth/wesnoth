@@ -45,7 +45,6 @@
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
 #include "serialization/unicode.hpp"    // for iterator
 #include "color.hpp"
-#include "config_assign.hpp"
 
 #include <cassert>                     // for assert
 #include <algorithm>                    // for sort, find, transform, etc
@@ -1190,7 +1189,7 @@ config parse_text(const std::string &text)
 						ss << c;
 					}
 					else {
-						res.add_child("text", config_of("text", ss.str()));
+						res.add_child("text", config{ "text", ss.str() });
 						ss.str("");
 						state = ELEMENT_NAME;
 					}
@@ -1246,7 +1245,7 @@ config parse_text(const std::string &text)
 	}
 	if (!ss.str().empty()) {
 		// Add the last string.
-		res.add_child("text", config_of("text", ss.str()));
+		res.add_child("text", config{ "text", ss.str() });
 	}
 	return res;
 }
