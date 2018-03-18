@@ -15,14 +15,7 @@ before_build:
   - 7z x VC14.ZIP
   - ren external-VC14 external
   - cd wesnoth
-  - mkdir projectfiles\VC14
-  - xcopy /E /I /H /Y projectfiles\VC12 projectfiles\VC14
-  - cd projectfiles\VC14
-  - "\"c:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\devenv.exe\" wesnoth.sln /upgrade"
-  - cd ..\..
   - set PATH=C:\projects\external\dll;%PATH%
-build_script:
-  - msbuild projectfiles\VC14\wesnoth.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 notifications:
   - provider: Webhook
