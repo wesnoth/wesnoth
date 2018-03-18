@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include "utils/type_trait_aliases.hpp"
-
 #include <type_traits>
 
 namespace utils
@@ -39,22 +37,22 @@ struct const_clone
 {
 	static const bool is_source_const =
 		std::is_const<
-			utils::remove_pointer_t<
-				utils::remove_reference_t<S>
+			std::remove_pointer_t<
+				std::remove_reference_t<S>
 			>
 		>::value;
 
 	/** The destination type, possibly const qualified. */
 	using type =
-		utils::conditional_t<is_source_const, const D, D>;
+		std::conditional_t<is_source_const, const D, D>;
 
 	/** A reference to the destination type, possibly const qualified. */
 	using reference =
-		utils::conditional_t<is_source_const, const D&, D&>;
+		std::conditional_t<is_source_const, const D&, D&>;
 
 	/** A pointer to the destination type, possibly const qualified. */
 	using pointer =
-		utils::conditional_t<is_source_const, const D*, D*>;
+		std::conditional_t<is_source_const, const D*, D*>;
 };
 
 template<typename D, typename S>
