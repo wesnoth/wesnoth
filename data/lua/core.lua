@@ -240,7 +240,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 		__metatable = "WML module",
 		__index = function(self, key)
 			if key == 'all_variables' then
-				return wesnoth.get_all_variables()
+				return wesnoth.get_all_vars()
 			end
 			return rawget(self, key)
 		end,
