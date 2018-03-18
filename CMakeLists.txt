@@ -60,9 +60,14 @@ option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
 option(ENABLE_LIBPNG "Enable support for writing png files (screenshots, images)" ON)
 option(ENABLE_HISTORY "Enable using GNU history for history in lua console" ON)
 
+# set what std version to use
+if(NOT CXX_STD)
+	set(CXX_STD "14")
+endif()
+
 if(NOT CMAKE_CROSSCOMPILING)
 	try_run(IEEE754_TEST_RETURN_CODE IEEE754_TEST_COMPILED ${CMAKE_BINARY_DIR} ${CMAKE_SOURCE_DIR}/src/compile_time_tests/ieee_754.cpp
-		CMAKE_FLAGS "-DCMAKE_CXX_STANDARD=14" COMPILE_OUTPUT_VARIABLE IEEE754_TEST_COMPILE_OUTPUT)
+		CMAKE_FLAGS "-DCMAKE_CXX_STANDARD=${CXX_STD}" COMPILE_OUTPUT_VARIABLE IEEE754_TEST_COMPILE_OUTPUT)
 	if(NOT IEEE754_TEST_COMPILED)
 		message(WARNING "Failed to compile the IEEE 754 test. Skipping it.")
 		message(${IEEE754_TEST_COMPILE_OUTPUT})
@@ -199,7 +204,7 @@ if(NOT DEFINED CXX_FLAGS_USER)
 
 endif(NOT DEFINED CXX_FLAGS_USER)
 
-set(COMPILER_FLAGS "-std=c++14 -Wall -Wextra -Werror=non-virtual-dtor -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast")
+set(COMPILER_FLAGS "-std=c++${CXX_STD} -Wall -Wextra -Werror=non-virtual-dtor -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wold-style-cast")
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 	set(COMPILER_FLAGS "${COMPILER_FLAGS} -Qunused-arguments -Wno-unknown-warning-option -Wmismatched-tags -Wno-conditional-uninitialized")
