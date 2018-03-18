@@ -29,7 +29,6 @@
 #include "gui/widgets/scrollbar_container.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
-#include "utils/io.hpp"
 
 #include <fstream>
 #include <iostream>
@@ -86,7 +85,7 @@ std::string get_base_filename()
 	std::ostringstream ss;
 
 	time_t t = time(nullptr);
-	ss << utils::put_time(std::localtime(&t), "%Y%m%d_%H%M%S");
+	ss << std::put_time(std::localtime(&t), "%Y%m%d_%H%M%S");
 
 	static unsigned counter = 0;
 	++counter;

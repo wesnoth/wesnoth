@@ -60,7 +60,6 @@
 #include <iomanip>
 #include <sstream>
 #include <stdexcept>
-#include "utils/io.hpp"
 
 namespace gui2
 {
@@ -842,7 +841,7 @@ static std::string format_addon_time(time_t time)
 			? "%Y-%m-%d %I:%M %p"
 			: "%Y-%m-%d %H:%M";
 
-		ss << utils::put_time(std::localtime(&time), format);
+		ss << std::put_time(std::localtime(&time), format);
 
 		return ss.str();
 	}
