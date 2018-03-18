@@ -108,7 +108,7 @@ opts.AddVariables(
     BoolVariable('ccache', "Use ccache", False),
     ('ctool', 'Set c compiler command if not using standard compiler.'),
     ('cxxtool', 'Set c++ compiler command if not using standard compiler.'),
-    EnumVariable('cxx_std', 'Target c++ std version', '11', ['11', '1y', '14']),
+    EnumVariable('cxx_std', 'Target c++ std version', '14', ['14']),
     BoolVariable('openmp', 'Enable openmp use.', False),
     ('sanitize', 'Enable clang and GCC sanitizer functionality. A comma separated list of sanitize suboptions must be passed as value.', ''),
     BoolVariable("fast", "Make scons faster at cost of less precise dependency tracking.", False),
