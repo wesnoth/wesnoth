@@ -94,8 +94,6 @@ public:
 	/**
 	 * Shows the window.
 	 *
-	 * @param restore             Restore the screenarea the window was on
-	 *                            after closing it?
 	 * @param auto_close_timeout  The time in ms after which the window will
 	 *                            automatically close, if 0 it doesn't close.
 	 *                            @note the timeout is a minimum time and

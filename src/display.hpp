@@ -1070,9 +1070,6 @@ public:
 	/**
 	 * Add an item to the drawing buffer. You need to update screen on affected area
 	 *
-	 * @param layer              The layer to draw on.
-	 * @param loc                The hex the image belongs to, needed for the
-	 *                           drawing order.
 	 */
 
 	void drawing_queue_add(const drawing_queue::layer,
