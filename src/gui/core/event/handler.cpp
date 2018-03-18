@@ -127,10 +127,10 @@ public:
 	~sdl_event_handler();
 
 	/** Inherited from events::sdl_handler. */
-	void handle_event(const SDL_Event& event);
+	void handle_event(const SDL_Event& event) override;
 
 	/** Inherited from events::sdl_handler. */
-	void handle_window_event(const SDL_Event& event);
+	void handle_window_event(const SDL_Event& event) override;
 
 	/**
 	 * Connects a dispatcher.
