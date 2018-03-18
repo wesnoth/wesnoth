@@ -735,7 +735,7 @@ surface display::screenshot(bool map_screenshot)
 {
 	if (!map_screenshot) {
 		// Use make_neutral_surface() to copy surface content
-		return make_neutral_surface(screen_.getSurface());
+		return make_neutral_surface(video_.getSurface());
 	} else {
 		if (get_map().empty()) {
 			ERR_DP << "No map loaded, cannot create a map screenshot.\n";
