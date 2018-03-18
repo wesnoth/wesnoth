@@ -1,4 +1,6 @@
 ## Version 1.13.12+dev
+ ### Miscellaneous and bug fixes
+   * Fixed minimap buttons not doing anything (bug #2681)
 
 ## Version 1.13.12
  ### Security fixes
