@@ -18,7 +18,7 @@
 
 lua_jailbreak_exception *lua_jailbreak_exception::jailbreak_exception = nullptr;
 
-void lua_jailbreak_exception::store() const NOEXCEPT
+void lua_jailbreak_exception::store() const noexcept
 {
 	/*
 	 * It should not be  possible to call this function with an exception still
@@ -54,7 +54,7 @@ void lua_jailbreak_exception::rethrow()
 	assert(false);
 }
 
-void lua_jailbreak_exception::clear() NOEXCEPT
+void lua_jailbreak_exception::clear() noexcept
 {
 	delete jailbreak_exception;
 	jailbreak_exception = nullptr;

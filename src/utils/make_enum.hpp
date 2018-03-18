@@ -99,19 +99,19 @@ public:
 		, bad_val(str)
 	{}
 
-	virtual ~bad_enum_cast() NOEXCEPT {}
+	virtual ~bad_enum_cast() noexcept {}
 
-	const char * what() const NOEXCEPT
+	const char * what() const noexcept
 	{
 		return message.c_str();
 	}
 
-	const char * type() const NOEXCEPT
+	const char * type() const noexcept
 	{
 		return name.c_str();
 	}
 
-	const char * value() const NOEXCEPT
+	const char * value() const noexcept
 	{
 		return bad_val.c_str();
 	}

@@ -25,10 +25,10 @@
 class lua_jailbreak_exception
 {
 public:
-	virtual ~lua_jailbreak_exception() NOEXCEPT {}
+	virtual ~lua_jailbreak_exception() noexcept {}
 
 	/** Stores a copy the current exception to be rethrown. */
-	void store() const NOEXCEPT;
+	void store() const noexcept;
 
 	/**
 	 * Rethrows the stored exception.
@@ -45,7 +45,7 @@ protected:
 private:
 
 	/** Clears the current exception. */
-	static void clear() NOEXCEPT;
+	static void clear() noexcept;
 
 	/**
 	 * Creates a copy of the current exception.

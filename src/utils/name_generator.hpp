@@ -23,7 +23,7 @@
 class name_generator_invalid_exception : public std::exception {
 public:
 	name_generator_invalid_exception(const char* errMessage):errMessage_(errMessage) {}
-	const char* what() const NOEXCEPT { return errMessage_; }
+	const char* what() const noexcept { return errMessage_; }
 
 private:
 	const char* errMessage_;

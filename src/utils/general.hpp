@@ -28,7 +28,7 @@ using std::clamp;
 #else
 // NOTE: remove once we have C++17 support and can use std::clamp
 template<typename T>
-CONSTEXPR const T& clamp(const T& value, const T& min, const T& max)
+constexpr const T& clamp(const T& value, const T& min, const T& max)
 {
 	return std::max<T>(std::min<T>(value, max), min);
 }

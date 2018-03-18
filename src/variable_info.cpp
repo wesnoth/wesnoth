@@ -63,7 +63,7 @@ typename V::result_t apply_visitor(typename V::param_t state, T&&... args)
 using namespace variable_info_implementation;
 
 template<typename V>
-variable_info<V>::variable_info(const std::string& varname, maybe_const_t<config, V>& vars) NOEXCEPT
+variable_info<V>::variable_info(const std::string& varname, maybe_const_t<config, V>& vars) noexcept
 	: name_(varname)
 	, state_(vars)
 	, valid_(true)
