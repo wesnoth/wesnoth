@@ -80,7 +80,7 @@ public:
 	static bcrypt from_hash_string(const std::string& input);
 	static bcrypt hash_pw(const std::string& password, bcrypt& salt);
 
-	std::size_t iteration_count_delim_pos;
+	std::size_t iteration_count_delim_pos = 0;
 
 	static bool is_valid_prefix(const std::string& hash);
 	std::string get_salt() const;
