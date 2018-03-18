@@ -16,6 +16,8 @@ before_build:
   - ren external-VC14 external
   - cd wesnoth
   - set PATH=C:\projects\external\dll;%PATH%
+build_script:
+  - msbuild projectfiles\VC14\wesnoth.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
 notifications:
   - provider: Webhook
