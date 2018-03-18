@@ -69,4 +69,5 @@ When compiling Wesnoth for an official release, the following steps should be ta
  * Rename disk image to match new release version.
  * Unmount it and convert it back using `hdiutil convert /PATH/TO/IMAGE.dmg -format UDBZ -o /PATH/TO/NEW/IMAGE.dmg` command.
  * Create SHA-256 checksum using `shasum -a 256 /PATH/TO/NEW/IMAGE.dmg` command.
+ * Alternative to the last 2 steps, if you have Apple developer certificates for Wesnoth, Inc and want to sign the package: update version in wesnoth_codesign.sh and run it.
  * Done! You can release it now.
