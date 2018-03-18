@@ -25,8 +25,6 @@
    * New Elvish Sylph baseframe by Jetrel.
  ### Language and i18n
    * Updated translations: British English, Czech, Spanish
-   * Translations with less than 80% completion are now hidden from the
-     language selection menu by default.
  ### Lua API
    * Add side_name to side proxy
    * Added wesnoth.custom_synced_commands table where you can register
