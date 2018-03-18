@@ -344,14 +344,14 @@ private:
 		 * utilize a move constructor as long as a non-throwing one is provided.
 		 */
 #if defined(_MSC_VER) && _MSC_VER <= 1800 // MSVC 2013
-		child(child&& c) NOEXCEPT
+		child(child&& c) noexcept
 			: flags_(c.flags_)
 			, border_size_(c.border_size_)
 			, widget_(std::move(c.widget_))
 		{
 		}
 #else
-		child(child&&) NOEXCEPT = default;
+		child(child&&) noexcept = default;
 #endif
 
 		/** Returns the best size for the cell. */

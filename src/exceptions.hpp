@@ -32,9 +32,9 @@ struct error : std::exception
 
 	error() : message() {}
 	error(const std::string &msg) : message(msg) {}
-	~error() NOEXCEPT {}
+	~error() noexcept {}
 
-	const char *what() const NOEXCEPT
+	const char *what() const noexcept
 	{
 		return message.c_str();
 	}

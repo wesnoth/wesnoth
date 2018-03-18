@@ -25,7 +25,7 @@ public:
 	{
 	}
 
-	virtual ~libc_error() NOEXCEPT
+	virtual ~libc_error() noexcept
 	{
 	}
 
@@ -42,7 +42,7 @@ public:
 	}
 
 	/** Returns an explanatory string describing the exception. */
-	const char* what() const NOEXCEPT
+	const char* what() const noexcept
 	{
 		return msg_.c_str();
 	}

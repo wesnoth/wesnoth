@@ -116,7 +116,7 @@ inline To lexical_cast_default(From value, To fallback = To())
 /** Thrown when a lexical_cast fails. */
 struct bad_lexical_cast : std::exception
 {
-	const char* what() const NOEXCEPT
+	const char* what() const noexcept
 	{
 		return "bad_lexical_cast";
 	}

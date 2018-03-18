@@ -351,7 +351,7 @@ public:
 private:
 	template <typename r_iter>
 	size_type reverse_distance(r_iter first, r_iter last) const BOOST_NOEXCEPT {
-		// Portability note here: std::distance is not NOEXCEPT, but calling it with a string_view::reverse_iterator will not throw.
+		// Portability note here: std::distance is not noexcept, but calling it with a string_view::reverse_iterator will not throw.
 		return len_ - 1 - std::distance(first, last);
 	}
 

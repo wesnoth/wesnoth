@@ -19,7 +19,6 @@
  * Contains the SDL_Rect helper code.
  */
 
-#include "global.hpp"
 #include "utils.hpp"
 
 #include <SDL_rect.h>
@@ -29,7 +28,7 @@ struct point;
 namespace sdl
 {
 
-CONSTEXPR const SDL_Rect empty_rect { 0, 0, 0, 0 };
+constexpr const SDL_Rect empty_rect { 0, 0, 0, 0 };
 
 /**
  * Creates an SDL_Rect with the given dimensions.

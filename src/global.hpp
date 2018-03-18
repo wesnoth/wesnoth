@@ -50,12 +50,8 @@
 #if _MSC_VER >= 1900
 #define HAVE_REF_QUALIFIERS 1
 #define HAVE_INHERITING_CTORS 1
-#define CONSTEXPR constexpr
-#define NOEXCEPT noexcept
 #define NORETURN [[noreturn]]
 #else
-#define CONSTEXPR
-#define NOEXCEPT throw()
 #define NORETURN __declspec(noreturn)
 #endif
 // MSVC supports these starting in 2017?
@@ -92,25 +88,12 @@
 // Use GCC-style attribute because the __has_cpp_attribute feature-checking macro doesn't exist in clang 3.5
 #define DEPRECATED(reason) __attribute__((deprecated(reason)))
 
-#if __has_feature(cxx_constexpr)
-#define CONSTEXPR constexpr
-#else
-#define CONSTEXPR
-#endif
-
-#if __has_feature(cxx_noexcept)
-#define NOEXCEPT noexcept
-#else
-#define NOEXCEPT throw()
-#endif
 #endif
 
 #if defined(__GNUC__) && !defined(__clang__)
 // GCC 5 required for this
 #define HAVE_PUT_TIME (__GNUC__ >= 5)
 // GCC supports these from 4.8 up
-#define CONSTEXPR constexpr
-#define NOEXCEPT noexcept
 #define NORETURN [[noreturn]]
 #define HAVE_REF_QUALIFIERS 1
 #define HAVE_INHERITING_CTORS 1

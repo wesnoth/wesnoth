@@ -98,7 +98,7 @@ struct wml_exception
 	{
 	}
 
-	~wml_exception() NOEXCEPT {}
+	~wml_exception() noexcept {}
 
 	/**
 	 *  The message for the user explaining what went wrong. This message can

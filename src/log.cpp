@@ -197,7 +197,7 @@ std::string get_timespan(const time_t& t) {
 	return sout.str();
 }
 
-static void print_precise_timestamp(std::ostream & out) NOEXCEPT
+static void print_precise_timestamp(std::ostream & out) noexcept
 {
 	try {
 		facet.put(
@@ -238,7 +238,7 @@ std::ostream &logger::operator()(const log_domain& domain, bool show_names, bool
 	}
 }
 
-void scope_logger::do_log_entry(const log_domain& domain, const std::string& str) NOEXCEPT
+void scope_logger::do_log_entry(const log_domain& domain, const std::string& str) noexcept
 {
 	output_ = &debug()(domain, false, true);
 	str_ = str;
@@ -249,7 +249,7 @@ void scope_logger::do_log_entry(const log_domain& domain, const std::string& str
 	++indent;
 }
 
-void scope_logger::do_log_exit() NOEXCEPT
+void scope_logger::do_log_exit() noexcept
 {
 	long ticks = 0;
 	try {

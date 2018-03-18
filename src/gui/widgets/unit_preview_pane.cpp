@@ -120,10 +120,10 @@ static inline std::string get_hp_tooltip(const utils::string_map& res, const std
 		const int res_def = 100 - get(resist.first, false);
 
 		if(res_att == res_def) {
-			line << "<span color='" << unit_helper::resistance_color(res_def) << "'>" << utils::signed_percent(res_def) << "</span>";
+			line << "<span color='" << unit_helper::resistance_color(res_def) << "'>\t" << utils::signed_percent(res_def) << "</span>";
 		} else {
-			line << "<span color='" << unit_helper::resistance_color(res_att) << "'>" << utils::signed_percent(res_att) << "</span>" << "/"
-			     << "<span color='" << unit_helper::resistance_color(res_def) << "'>" << utils::signed_percent(res_def) << "</span>";
+			line << "<span color='" << unit_helper::resistance_color(res_att) << "'>\t" << utils::signed_percent(res_att) << "</span>" << "/"
+			     << "<span color='" << unit_helper::resistance_color(res_def) << "'>"   << utils::signed_percent(res_def) << "</span>";
 			att_def_diff = true;
 		}
 
@@ -178,7 +178,7 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 				color = "white";
 			}
 
-			tooltip << "<span color='" << color << "'>";
+			tooltip << "\t<span color='" << color << "'>";
 
 			// A 5 MP margin; if the movement costs go above the unit's max moves + 5, we replace it with dashes.
 			if(cannot_move && (moves > total_movement + 5)) {
@@ -250,7 +250,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 				 + ")";
 		}
 
-		mods += "~SCALE_INTO_SHARP(144,144)" + image_mods_;
+		mods += "~XBRZ(2)~SCALE_INTO_SHARP(144,144)" + image_mods_;
 
 		icon_type_->set_label((type.icon().empty() ? type.image() : type.icon()) + mods);
 	}
@@ -394,7 +394,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 			mods += "~BLIT(" + overlay + ")";
 		}
 
-		mods += "~SCALE_INTO_SHARP(144,144)" + image_mods_;
+		mods += "~XBRZ(2)~SCALE_INTO_SHARP(144,144)" + image_mods_;
 
 		icon_type_->set_label(u.absolute_image() + mods);
 	}

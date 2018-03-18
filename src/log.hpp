@@ -166,8 +166,8 @@ public:
 	}
 	void do_indent() const;
 private:
-	void do_log_entry(const log_domain& domain, const std::string& str) NOEXCEPT;
-	void do_log_exit() NOEXCEPT;
+	void do_log_entry(const log_domain& domain, const std::string& str) noexcept;
+	void do_log_exit() noexcept;
 };
 
 /**

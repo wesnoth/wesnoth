@@ -27,7 +27,7 @@ class invalid_variablename_exception : public std::exception
 public:
 	invalid_variablename_exception() : std::exception() {}
 
-	const char* what() const NOEXCEPT
+	const char* what() const noexcept
 	{
 		return "invalid_variablename_exception";
 	}
@@ -42,7 +42,7 @@ template<typename V>
 class variable_info
 {
 public:
-	variable_info(const std::string& varname, maybe_const_t<config, V>& vars) NOEXCEPT;
+	variable_info(const std::string& varname, maybe_const_t<config, V>& vars) noexcept;
 
 	std::string get_error_message() const;
 
