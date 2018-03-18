@@ -28,7 +28,6 @@
 #include <ctime>
 
 #include "global.hpp"
-#include "utils/io.hpp"
 
 namespace {
 
@@ -176,7 +175,7 @@ bool broke_strict() {
 std::string get_timestamp(const time_t& t, const std::string& format) {
 	std::ostringstream ss;
 
-	ss << utils::put_time(std::localtime(&t), format.c_str());
+	ss << std::put_time(std::localtime(&t), format.c_str());
 
 	return ss.str();
 }

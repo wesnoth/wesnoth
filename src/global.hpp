@@ -45,7 +45,6 @@
 
 // Some C++11 features are not available on all supported platforms
 #if defined(_MSC_VER)
-#define HAVE_PUT_TIME 1
 // MSVC supports these starting in MSVC 2015
 #if _MSC_VER >= 1900
 #define HAVE_REF_QUALIFIERS 1
@@ -71,13 +70,6 @@
 
 #if defined(__clang__)
 #include <ciso646> // To ensure standard library version macros are defined
-// If it's libc++, no problem. Otherwise, attempt to detect libstdc++ version (needs GCC 5.1 or higher)
-// by testing for the existence of a header added in that version.
-#if defined(_LIBCPP_VERSION) || __has_include(<experimental/any>) || __has_include(<any>)
-#define HAVE_PUT_TIME 1
-#else
-#define HAVE_PUT_TIME 0
-#endif
 
 // Clang has convenient feature detection macros \o/
 #define HAVE_REF_QUALIFIERS __has_feature(cxx_reference_qualified_functions)
@@ -91,8 +83,6 @@
 #endif
 
 #if defined(__GNUC__) && !defined(__clang__)
-// GCC 5 required for this
-#define HAVE_PUT_TIME (__GNUC__ >= 5)
 // GCC supports these from 4.8 up
 #define NORETURN [[noreturn]]
 #define HAVE_REF_QUALIFIERS 1
