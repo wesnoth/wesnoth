@@ -96,6 +96,10 @@
 		4649B8D52028923500827CFB /* variant_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC179B871E91475300B4178C /* variant_value.cpp */; };
 		4649B8D62028927A00827CFB /* function_gamestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468C1B951F09245E002DF652 /* function_gamestate.cpp */; };
 		4664B9441F462ED9009E4881 /* irdya_datetime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */; };
+		467D9DEE205EC39300FA2FC4 /* command_console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467D9DED205EC39300FA2FC4 /* command_console.cpp */; };
+		467D9DEF205EC39300FA2FC4 /* command_console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467D9DED205EC39300FA2FC4 /* command_console.cpp */; };
+		467D9DF3205EC3D300FA2FC4 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467D9DF1205EC3D200FA2FC4 /* texture.cpp */; };
+		467D9DF4205EC3D300FA2FC4 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467D9DF1205EC3D200FA2FC4 /* texture.cpp */; };
 		468C1B971F09245F002DF652 /* function_gamestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468C1B951F09245E002DF652 /* function_gamestate.cpp */; };
 		469BDB55205C357500DBF748 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		469BDB56205C357500DBF748 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
@@ -1432,6 +1436,12 @@
 		4638966F2034180800075E54 /* deprecation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = deprecation.hpp; sourceTree = "<group>"; };
 		463896702034180900075E54 /* deprecation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = deprecation.cpp; sourceTree = "<group>"; };
 		4649B879202886F000827CFB /* test_irdya_date.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_irdya_date.cpp; sourceTree = "<group>"; };
+		467D9DEC205EC39200FA2FC4 /* command_console.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = command_console.hpp; sourceTree = "<group>"; };
+		467D9DED205EC39300FA2FC4 /* command_console.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = command_console.cpp; sourceTree = "<group>"; };
+		467D9DF0205EC3D200FA2FC4 /* userevent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = userevent.hpp; sourceTree = "<group>"; };
+		467D9DF1205EC3D200FA2FC4 /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
+		467D9DF2205EC3D300FA2FC4 /* texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = texture.hpp; sourceTree = "<group>"; };
+		467D9DF5205EC3DA00FA2FC4 /* surface.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = surface.hpp; sourceTree = "<group>"; };
 		468C1B951F09245E002DF652 /* function_gamestate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = function_gamestate.cpp; sourceTree = "<group>"; };
 		468C1B961F09245E002DF652 /* function_gamestate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = function_gamestate.hpp; sourceTree = "<group>"; };
 		469BDB53205C357400DBF748 /* base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base64.cpp; sourceTree = "<group>"; };
@@ -3599,6 +3609,10 @@
 				ECFB9FAB193BFB6E00146ED0 /* rect.cpp */,
 				91B621F11B76BBC500B00E0F /* rect.hpp */,
 				EC669C251DFC95AF00172EED /* surface.cpp */,
+				467D9DF5205EC3DA00FA2FC4 /* surface.hpp */,
+				467D9DF1205EC3D200FA2FC4 /* texture.cpp */,
+				467D9DF2205EC3D300FA2FC4 /* texture.hpp */,
+				467D9DF0205EC3D200FA2FC4 /* userevent.hpp */,
 				EC28C58D19423426003B0F5E /* utils.cpp */,
 				EC28C58E19423426003B0F5E /* utils.hpp */,
 				911F2DAB1BA086A400E3102E /* window.cpp */,
@@ -4348,6 +4362,8 @@
 				B5F4D7160F5B3B25005E204A /* campaign_selection.hpp */,
 				F4D5DF37149CE9B500294046 /* chat_log.cpp */,
 				F4D5DF38149CE9B500294046 /* chat_log.hpp */,
+				467D9DED205EC39300FA2FC4 /* command_console.cpp */,
+				467D9DEC205EC39200FA2FC4 /* command_console.hpp */,
 				ECBBD73E1928F41500E434C6 /* core_selection.cpp */,
 				ECBBD73F1928F41500E434C6 /* core_selection.hpp */,
 				4944F40E1354FB970027E614 /* debug_clock.cpp */,
@@ -5057,6 +5073,7 @@
 				EC387E6D195AFB1F00FC0342 /* game_state.cpp in Sources */,
 				ECABDA351B6A9461001407C1 /* game_version.cpp in Sources */,
 				B5B4692C1071189700327599 /* gamestate_inspector.cpp in Sources */,
+				467D9DEE205EC39300FA2FC4 /* command_console.cpp in Sources */,
 				B55BE03A11234AC700154E6C /* gamestate_observer.cpp in Sources */,
 				B5795A6A0F05858100EB190E /* generator.cpp in Sources */,
 				B5599B640EC62181008DD061 /* generic_event.cpp in Sources */,
@@ -5207,6 +5224,7 @@
 				B5599B170EC62181008DD061 /* play_controller.cpp in Sources */,
 				EC2F601B1A048E220018C9D6 /* playcampaign.cpp in Sources */,
 				B5599B150EC62181008DD061 /* playmp_controller.cpp in Sources */,
+				467D9DF3205EC3D300FA2FC4 /* texture.cpp in Sources */,
 				B5599B140EC62181008DD061 /* playsingle_controller.cpp in Sources */,
 				EC51DB7818F8BFA4004621D9 /* playturn_network_adapter.cpp in Sources */,
 				B5599B130EC62181008DD061 /* playturn.cpp in Sources */,
@@ -5497,6 +5515,7 @@
 				91E3563C1CACC47F00774252 /* test_formula_function.cpp in Sources */,
 				91E3563D1CACC47F00774252 /* test_image_modifications.cpp in Sources */,
 				91E3563E1CACC47F00774252 /* test_lexical_cast.cpp in Sources */,
+				467D9DF4205EC3D300FA2FC4 /* texture.cpp in Sources */,
 				91E356401CACC47F00774252 /* test_make_enum.cpp in Sources */,
 				91E356411CACC47F00774252 /* test_map_location.cpp in Sources */,
 				91E356421CACC47F00774252 /* test_mp_connect.cpp in Sources */,
@@ -5866,6 +5885,7 @@
 				91A2159A1CAD887700927AEA /* recall.cpp in Sources */,
 				91A2159B1CAD887700927AEA /* recruit.cpp in Sources */,
 				91A2159C1CAD887700927AEA /* side_actions.cpp in Sources */,
+				467D9DEF205EC39300FA2FC4 /* command_console.cpp in Sources */,
 				91A2159D1CAD887700927AEA /* suppose_dead.cpp in Sources */,
 				91A2159E1CAD887700927AEA /* utility.cpp in Sources */,
 				91A215A31CAD915400927AEA /* gettext_boost.cpp in Sources */,
@@ -6309,7 +6329,7 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -6375,7 +6395,7 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
 				GCC_DYNAMIC_NO_PIC = YES;
