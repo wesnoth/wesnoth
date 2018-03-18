@@ -2,7 +2,7 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/1.14/changelog.md
 
-## Version 1.13.13+dev
+## Version 1.13.12+dev
  ### Miscellaneous and bug fixes
    * Fixed minimap buttons not doing anything (bug #2681)
 
