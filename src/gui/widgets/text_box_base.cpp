@@ -371,6 +371,12 @@ void text_box_base::handle_key_backspace(SDL_Keymod /*modifier*/, bool& handled)
 		delete_selection();
 	} else if(selection_start_) {
 		delete_char(true);
+		if(ime_in_progress_) {
+			if(utf8::size(text_.text()) <= utf8::size(text_cached_)) {
+				ime_in_progress_ = false;
+				ime_length_ = 0;
+			}
+		}
 	}
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
@@ -384,6 +390,12 @@ void text_box_base::handle_key_delete(SDL_Keymod /*modifier*/, bool& handled)
 		delete_selection();
 	} else if(selection_start_ < text_.get_length()) {
 		delete_char(false);
+		if(ime_in_progress_) {
+			if(utf8::size(text_.text()) <= utf8::size(text_cached_)) {
+				ime_in_progress_ = false;
+				ime_length_ = 0;
+			}
+		}
 	}
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
