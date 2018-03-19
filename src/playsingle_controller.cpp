@@ -28,7 +28,6 @@
 #include "game_events/pump.hpp"
 #include "preferences/game.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/game_ui.hpp"
 #include "gui/dialogs/story_viewer.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "hotkey/hotkey_handler_sp.hpp"
@@ -240,9 +239,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(const config& level)
 			gui2::dialogs::story_viewer::display(get_scenario_name(), cfg);
 		}
 	}
-
-	// FIXME
-	//gui2::dialogs::game_ui::display(gui_->video());
 
 	gui_->labels().read(level);
 

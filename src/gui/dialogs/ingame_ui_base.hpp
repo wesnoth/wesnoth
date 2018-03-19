@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2017-2018 by Charles Dang <exodia339@gmail.com>
+   Copyright (C) 2018 by Charles Dang <exodia339@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,23 +14,31 @@
 
 #pragma once
 
-#include "gui/dialogs/ingame_ui_base.hpp"
+#include "gui/dialogs/modeless_dialog.hpp"
+
+class config;
+class display;
 
 namespace gui2
 {
 namespace dialogs
 {
-class game_ui : public ingame_ui_base
+/**
+ * Base dialog class intended for in-game UIs for the main game and editor.
+ */
+class ingame_ui_base : public modeless_dialog
 {
 public:
-	game_ui();
+	ingame_ui_base();
 
-private:
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
-	virtual const std::string& window_id() const override;
+protected:
+	::display* disp_; // TODO: needed?
 
-	/** Inherited from modal_dialog. */
-	virtual void pre_show(window& window) override;
+	/** Reference to the entire master game config object. */
+	const config& game_config_;
+
+	/** Reference to the current scenario's config. */
+	const config& scenario_;
 };
 
 } // namespace dialogs

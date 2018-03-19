@@ -145,7 +145,9 @@ protected:
 	virtual void draw_hex_cursor(const map_location& loc) override;
 
 	virtual void draw_hex_overlays() override;
+
 public:
+	virtual void initialize_ui() override;
 
 	/** Set the attack direction indicator. */
 	void set_attack_indicator(const map_location& src, const map_location& dst);

@@ -598,7 +598,7 @@ void pump()
 			global_handler->handle_event(event);
 		}
 
-		if(event_contexts.empty() == false) {
+		if(event_contexts.size() > 1) {
 			for(auto handler : event_contexts.back().handlers) {
 				handler->handle_event(event);
 			}

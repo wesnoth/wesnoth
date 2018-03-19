@@ -289,6 +289,7 @@ void play_controller::init(const config& level)
 	});
 	//Do this after the loadingscreen, so that ita happens in the main thread.
 	gui_->join();
+	gui_->initialize_ui();
 }
 
 void play_controller::reset_gamestate(const config& level, int replay_pos)

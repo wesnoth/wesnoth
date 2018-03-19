@@ -30,6 +30,7 @@
 #include "language.hpp"
 #include "log.hpp"
 #include "font/marked-up_text.hpp"
+#include "gui/dialogs/ingame_ui_base.hpp"
 #include "map/map.hpp"
 #include "map/label.hpp"
 #include "minimap.hpp"
@@ -147,6 +148,7 @@ display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, repo
 	, wb_(wb)
 	, exclusive_unit_draw_requests_()
 	, video_(CVideo::get_singleton())
+	, ui_(nullptr)
 	, currentTeam_(0)
 	, dont_show_all_(false)
 	, xpos_(0)
@@ -2631,8 +2633,8 @@ void display::draw()
 	pre_draw();
 
 	// Draw theme background.
-	const SDL_Rect outside_area = map_outside_area();
-	draw_background(outside_area, theme_.border().background_image);
+	//const SDL_Rect outside_area = map_outside_area();
+	//draw_background(outside_area, theme_.border().background_image);
 
 	// Progress animations.
 	invalidate_animations();
