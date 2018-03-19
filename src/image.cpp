@@ -647,8 +647,8 @@ static surface load_image_sub_file(const image::locator& loc)
 			std::ostringstream ss;
 			ss << "\n";
 
-			for(const std::string& mod : utils::parenthetical_split(loc.get_modifications(), '~')) {
-				ss << "\t" << mod << "\n";
+			for(const std::string& mod2 : utils::parenthetical_split(loc.get_modifications(), '~')) {
+				ss << "\t" << mod2 << "\n";
 			}
 
 			ERR_CFG << "Failed to apply a modification to an image:\n"
@@ -1464,8 +1464,8 @@ static texture create_texture_from_sub_file(const image::locator& loc)
 			std::ostringstream ss;
 			ss << "\n";
 
-			for(const std::string& mod : utils::parenthetical_split(loc.get_modifications(), '~')) {
-				ss << "\t" << mod << "\n";
+			for(const std::string& mod2 : utils::parenthetical_split(loc.get_modifications(), '~')) {
+				ss << "\t" << mod2 << "\n";
 			}
 
 			ERR_CFG << "Failed to apply a modification to an image:\n"
