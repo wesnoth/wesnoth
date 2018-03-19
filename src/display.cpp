@@ -734,44 +734,46 @@ map_location display::minimap_location_on(int x, int y)
 
 surface display::screenshot(bool map_screenshot)
 {
-	if (!map_screenshot) {
+	if(!map_screenshot) {
 		// Use make_neutral_surface() to copy surface content
+		// TODO: convert to texture handling
 		return make_neutral_surface(video_.getSurface());
-	} else {
-		if (get_map().empty()) {
-			ERR_DP << "No map loaded, cannot create a map screenshot.\n";
-			return nullptr;
-		}
-
-		SDL_Rect area = max_map_area();
-		map_screenshot_surf_ = create_compatible_surface(video_.getSurface(), area.w, area.h);
-
-		if (map_screenshot_surf_ == nullptr) {
-			// Memory problem ?
-			ERR_DP << "Could not create screenshot surface, try zooming out.\n";
-			return nullptr;
-		}
-
-		// back up the current map view position and move to top-left
-		int old_xpos = xpos_;
-		int old_ypos = ypos_;
-		xpos_ = 0;
-		ypos_ = 0;
-
-		// we reroute render output to the screenshot surface and invalidate all
-		map_screenshot_= true;
-		DBG_DP << "draw() with map_screenshot\n";
-		//draw(true,true);
-
-		// restore normal rendering
-		map_screenshot_= false;
-		xpos_ = old_xpos;
-		ypos_ = old_ypos;
-
-		// Clear map_screenshot_surf_ and return a new surface that contains the same data
-		surface surf(std::move(map_screenshot_surf_));
-		return surf;
 	}
+
+	if(get_map().empty()) {
+		ERR_DP << "No map loaded, cannot create a map screenshot.\n";
+		return nullptr;
+	}
+
+	const SDL_Rect area = max_map_area();
+	surface res = create_neutral_surface(area.w, area.h);
+
+	// Memory problem?
+	if(res == nullptr) {
+		ERR_DP << "Could not create screenshot surface, try zooming out.\n";
+		return nullptr;
+	}
+
+	// Back up the current map viewport position and move to top-left.
+	const int old_xpos = xpos_;
+	const int old_ypos = ypos_;
+	xpos_ = 0;
+	ypos_ = 0;
+
+	// Reroute render output to a separate texture	.
+	texture output_texture(area.w, area.h, SDL_TEXTUREACCESS_TARGET);
+	const render_target_setter target_setter(output_texture);
+
+	DBG_DP << "draw() call for map screenshot\n";
+	draw();
+
+	// Restore map viewport position
+	xpos_ = old_xpos;
+	ypos_ = old_ypos;
+
+	// Copy the texture data to the output surface.
+	SDL_RenderReadPixels(video_.get_renderer(), &area, SDL_PIXELFORMAT_ARGB8888, res->pixels, res->pitch);
+	return res;
 }
 
 std::shared_ptr<gui::button> display::find_action_button(const std::string& id)
