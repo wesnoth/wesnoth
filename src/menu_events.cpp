@@ -252,7 +252,7 @@ bool menu_handler::has_friends() const
 		return !gui_->observers().empty();
 	}
 
-	for(size_t n = 0; n != teams().size(); ++n) {
+	for(std::size_t n = 0; n != teams().size(); ++n) {
 		if(n != gui_->viewing_team() && teams()[gui_->viewing_team()].team_name() == teams()[n].team_name()
 				&& teams()[n].is_network()) {
 			return true;
@@ -547,7 +547,7 @@ bool menu_handler::end_turn(int side_num)
 		return false;
 	}
 
-	size_t team_num = static_cast<size_t>(side_num - 1);
+	std::size_t team_num = static_cast<std::size_t>(side_num - 1);
 	if(team_num < teams().size() && teams()[team_num].no_turn_confirmation()) {
 		// Skip the confirmations that follow.
 	}
@@ -1685,7 +1685,7 @@ void console_handler::do_choose_level()
 		return;
 	}
 
-	if(size_t(choice) < options.size()) {
+	if(std::size_t(choice) < options.size()) {
 		synced_context::run_and_throw("debug_next_level", config {"next_level", options[choice]});
 	}
 }

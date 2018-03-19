@@ -75,7 +75,7 @@ public:
 	/**
 	 * Returns the total number of arguments, not including the command itself.
 	 */
-	size_t args_count() const
+	std::size_t args_count() const
 	{
 		return args_.size() - 1;
 	}
@@ -85,7 +85,7 @@ public:
 	 *
 	 * @throws std::out_of_range @a n exceeds args_count().
 	 */
-	const std::string& operator[](size_t n) const
+	const std::string& operator[](std::size_t n) const
 	{
 		return arg(n);
 	}
@@ -95,7 +95,7 @@ public:
 	 *
 	 * @throws std::out_of_range @a n exceeds args_count().
 	 */
-	const std::string& arg(size_t n) const
+	const std::string& arg(std::size_t n) const
 	{
 		if(n > args_count()) {
 			throw std::out_of_range("control line argument range exceeded");

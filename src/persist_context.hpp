@@ -45,7 +45,7 @@ public:
 					break;
 				}
 				std::string infix = namespace_.substr(namespace_.find_first_of("^"));
-				size_t end = infix.find_first_not_of("^");
+				std::size_t end = infix.find_first_not_of("^");
 				if (!((end >= infix.length()) || (infix[end] == '.'))) {
 					//TODO: Throw a WML error
 					namespace_ = "";

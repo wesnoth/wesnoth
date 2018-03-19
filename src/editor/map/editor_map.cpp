@@ -65,7 +65,7 @@ editor_map editor_map::from_string(const config& terrain_cfg, const std::string&
 	}
 }
 
-editor_map::editor_map(const config& terrain_cfg, size_t width, size_t height, const t_translation::terrain_code & filler)
+editor_map::editor_map(const config& terrain_cfg, std::size_t width, std::size_t height, const t_translation::terrain_code & filler)
 	: gamemap(std::make_shared<terrain_type_data>(terrain_cfg), t_translation::write_game_map(t_translation::ter_map(width + 2, height + 2, filler)))
 	, selection_()
 {

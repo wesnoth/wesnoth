@@ -34,7 +34,7 @@ public:
 	static config get_attack(const map_location& a, const map_location& b,
 		int att_weapon, int def_weapon, const std::string& attacker_type_id,
 		const std::string& defender_type_id, int attacker_lvl,
-		int defender_lvl, const size_t turn, const time_of_day &t);
+		int defender_lvl, const std::size_t turn, const time_of_day &t);
 
 	static config get_auto_shroud(bool turned_on);
 

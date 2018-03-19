@@ -177,7 +177,7 @@ ter_match::ter_match(const std::string& str, const ter_layer filler) :
 	mask.resize(terrain.size());
 	masked_terrain.resize(terrain.size());
 
-	for(size_t i = 0; i < terrain.size(); i++) {
+	for(std::size_t i = 0; i < terrain.size(); i++) {
 		mask[i] = t_translation::get_mask_(terrain[i]);
 		masked_terrain[i] = mask[i] & terrain[i];
 	}
@@ -193,7 +193,7 @@ ter_match::ter_match(const terrain_code& tcode):
 	mask.resize(terrain.size());
 	masked_terrain.resize(terrain.size());
 
-	for(size_t i = 0; i < terrain.size(); i++) {
+	for(std::size_t i = 0; i < terrain.size(); i++) {
 		mask[i] = t_translation::get_mask_(terrain[i]);
 		masked_terrain[i] = mask[i] & terrain[i];
 	}
@@ -218,12 +218,12 @@ ter_list read_list(const std::string& str, const ter_layer filler)
 		return result;
 	}
 
-	size_t offset = 0;
+	std::size_t offset = 0;
 	while(offset < str.length()) {
 
 		// Get a terrain chunk
 		const std::string separators = ",";
-		const size_t pos_separator = str.find_first_of(separators, offset);
+		const std::size_t pos_separator = str.find_first_of(separators, offset);
 		const std::string terrain = str.substr(offset, pos_separator - offset);
 
 		// Process the chunk
@@ -285,7 +285,7 @@ static std::pair<int, int> get_map_size(const char* begin, const char* end)
 
 ter_map read_game_map(const std::string& str, starting_positions& starting_positions, coordinate border_offset)
 {
-	size_t offset = 0;
+	std::size_t offset = 0;
 	int x = 0, y = 0, width = 0;
 
 	// Skip the leading newlines
@@ -305,7 +305,7 @@ ter_map read_game_map(const std::string& str, starting_positions& starting_posit
 
 		// Get a terrain chunk
 		const std::string separators = ",\n\r";
-		const size_t pos_separator = str.find_first_of(separators, offset);
+		const std::size_t pos_separator = str.find_first_of(separators, offset);
 		const std::string terrain = str.substr(offset, pos_separator - offset);
 
 		// Process the chunk
@@ -512,7 +512,7 @@ bool terrain_matches(const terrain_code& src, const ter_match& dest)
 	// The i holds the value for operator[].
 	// Since dest.mask and dest.masked_terrain need to be in sync,
 	// they are less often looked up, so no iterator for them.
-	size_t i = 0;
+	std::size_t i = 0;
 	ter_list::const_iterator end = dest.terrain.end();
 	for(ter_list::const_iterator terrain_itor = dest.terrain.begin();
 			terrain_itor != end;
@@ -595,7 +595,7 @@ ter_map read_builder_map(const std::string& str)
 {
 	boost::multi_array<int, sizeof(ter_map)> a;
 
-	size_t offset = 0;
+	std::size_t offset = 0;
 	// Skip the leading newlines
 	while(offset < str.length() && utils::isnewline(str[offset])) {
 		++offset;
@@ -613,7 +613,7 @@ ter_map read_builder_map(const std::string& str)
 
 		// Get a terrain chunk
 		const std::string separators = ",\n\r";
-		const size_t pos_separator = str.find_first_of(separators, offset);
+		const std::size_t pos_separator = str.find_first_of(separators, offset);
 		std::string terrain = "";
 		// Make sure we didn't hit an empty chunk
 		// which is allowed
@@ -700,7 +700,7 @@ static terrain_code get_mask_(const terrain_code& terrain)
 
 static ter_layer string_to_layer_(const char* begin, const char* end)
 {
-	size_t size = end - begin;
+	std::size_t size = end - begin;
 	if (begin == end) {
 		return NO_LAYER;
 	}
@@ -714,7 +714,7 @@ static ter_layer string_to_layer_(const char* begin, const char* end)
 	// in the highest part of the number.
 	// This will make the wildcard matching
 	// later on a bit easier.
-	for(size_t i = 0; i < 4; ++i) {
+	for(std::size_t i = 0; i < 4; ++i) {
 		const unsigned char c = (i < size) ? begin[i] : 0;
 
 		// Clearing the lower area is a nop on i == 0
@@ -740,14 +740,14 @@ static terrain_code string_to_number_(std::string str, std::string& start_positi
 
 	// Strip the spaces around us
 	const std::string& whitespace = " \t";
-	size_t begin = str.find_first_not_of(whitespace);
-	size_t end = str.find_last_not_of(whitespace) + 1;
+	std::size_t begin = str.find_first_not_of(whitespace);
+	std::size_t end = str.find_last_not_of(whitespace) + 1;
 	if(begin == std::string::npos) {
 		return result;
 	}
 
 	// Split if we have 1 space inside
-	size_t offset = str.find(' ', begin);
+	std::size_t offset = str.find(' ', begin);
 	if(offset < end) {
 		try {
 			start_position = str.substr(begin, offset - begin);

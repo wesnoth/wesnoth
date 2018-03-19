@@ -56,9 +56,9 @@ void modification_queue::pop()
 }
 
 /** Returns the number of elements in the queue. */
-size_t modification_queue::size() const
+std::size_t modification_queue::size() const
 {
-	size_t count = 0;
+	std::size_t count = 0;
 	for(const map_type::value_type& pair : priorities_) {
 		count += pair.second.size();
 	}
@@ -731,7 +731,7 @@ REGISTER_MOD_PARSER(PAL, args)
 		const std::vector<color_t>& old_palette = game_config::tc_info(remap_params[0]);
 		const std::vector<color_t>& new_palette =game_config::tc_info(remap_params[1]);
 
-		for(size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
+		for(std::size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
 			rc_map[old_palette[i]] = new_palette[i];
 		}
 
@@ -761,7 +761,7 @@ REGISTER_MOD_PARSER(FL, args)
 REGISTER_MOD_PARSER(ROTATE, args)
 {
 	const std::vector<std::string>& slice_params = utils::split(args, ',', utils::STRIP_SPACES);
-	const size_t s = slice_params.size();
+	const std::size_t s = slice_params.size();
 
 	switch(s) {
 		case 0:
@@ -918,7 +918,7 @@ REGISTER_MOD_PARSER(CHAN, args)
 REGISTER_MOD_PARSER(CS, args)
 {
 	std::vector<std::string> const factors = utils::split(args, ',');
-	const size_t s = factors.size();
+	const std::size_t s = factors.size();
 
 	if(s == 0) {
 		ERR_DP << "no arguments passed to the ~CS() function" << std::endl;
@@ -973,7 +973,7 @@ REGISTER_MOD_PARSER(BLEND, args)
 REGISTER_MOD_PARSER(CROP, args)
 {
 	const std::vector<std::string>& slice_params = utils::split(args, ',', utils::STRIP_SPACES);
-	const size_t s = slice_params.size();
+	const std::size_t s = slice_params.size();
 
 	if(s == 0 || (s == 1 && slice_params[0].empty())) {
 		ERR_DP << "no arguments passed to the ~CROP() function" << std::endl;
@@ -1009,7 +1009,7 @@ static bool check_image(const image::locator& img, std::stringstream & message)
 REGISTER_MOD_PARSER(BLIT, args)
 {
 	std::vector<std::string> param = utils::parenthetical_split(args, ',');
-	const size_t s = param.size();
+	const std::size_t s = param.size();
 
 	if(s == 0 || (s == 1 && param[0].empty())){
 		ERR_DP << "no arguments passed to the ~BLIT() function" << std::endl;
@@ -1042,7 +1042,7 @@ REGISTER_MOD_PARSER(BLIT, args)
 REGISTER_MOD_PARSER(MASK, args)
 {
 	std::vector<std::string> param = utils::parenthetical_split(args, ',');
-	const size_t s = param.size();
+	const std::size_t s = param.size();
 
 	if(s == 0 || (s == 1 && param[0].empty())){
 		ERR_DP << "no arguments passed to the ~MASK() function" << std::endl;
@@ -1088,7 +1088,7 @@ REGISTER_MOD_PARSER(L, args)
 REGISTER_MOD_PARSER(SCALE, args)
 {
 	const std::vector<std::string>& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
-	const size_t s = scale_params.size();
+	const std::size_t s = scale_params.size();
 
 	if(s == 0 || (s == 1 && scale_params[0].empty())) {
 		ERR_DP << "no arguments passed to the ~SCALE() function" << std::endl;
@@ -1109,7 +1109,7 @@ REGISTER_MOD_PARSER(SCALE, args)
 REGISTER_MOD_PARSER(SCALE_SHARP, args)
 {
 	const std::vector<std::string>& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
-	const size_t s = scale_params.size();
+	const std::size_t s = scale_params.size();
 
 	if(s == 0 || (s == 1 && scale_params[0].empty())) {
 		ERR_DP << "no arguments passed to the ~SCALE_SHARP() function" << std::endl;
@@ -1130,7 +1130,7 @@ REGISTER_MOD_PARSER(SCALE_SHARP, args)
 REGISTER_MOD_PARSER(SCALE_INTO, args)
 {
 	const std::vector<std::string>& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
-	const size_t s = scale_params.size();
+	const std::size_t s = scale_params.size();
 
 	if(s == 0 || (s == 1 && scale_params[0].empty())) {
 		ERR_DP << "no arguments passed to the ~SCALE_INTO() function" << std::endl;
@@ -1151,7 +1151,7 @@ REGISTER_MOD_PARSER(SCALE_INTO, args)
 REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 {
 	const std::vector<std::string>& scale_params = utils::split(args, ',', utils::STRIP_SPACES);
-	const size_t s = scale_params.size();
+	const std::size_t s = scale_params.size();
 
 	if(s == 0 || (s == 1 && scale_params[0].empty())) {
 		ERR_DP << "no arguments passed to the ~SCALE_INTO_SHARP() function" << std::endl;

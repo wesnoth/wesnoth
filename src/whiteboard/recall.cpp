@@ -57,7 +57,7 @@ std::ostream& recall::print(std::ostream &s) const
 	return s;
 }
 
-recall::recall(size_t team_index, bool hidden, const unit& u, const map_location& recall_hex):
+recall::recall(std::size_t team_index, bool hidden, const unit& u, const map_location& recall_hex):
 		action(team_index,hidden),
 		temp_unit_(u.clone()),
 		recall_hex_(recall_hex),
@@ -73,7 +73,7 @@ recall::recall(const config& cfg, bool hidden)
 	, fake_unit_()
 {
 	// Construct and validate temp_unit_
-	size_t underlying_id = cfg["temp_unit_"];
+	std::size_t underlying_id = cfg["temp_unit_"];
 	for(const unit_const_ptr & recall_unit : resources::gameboard->teams().at(team_index()).recall_list())
 	{
 		if(recall_unit->underlying_id()==underlying_id)
@@ -189,7 +189,7 @@ void recall::draw_hex(const map_location& hex)
 		else {
 			number_text << font::unicode_minus << cost;
 		}
-		size_t font_size = 16;
+		std::size_t font_size = 16;
 		color_t color {255, 0, 0}; //red
 		display::get_singleton()->draw_text_in_hex(hex, number_text.str(), font_size, color, 0, x_offset, y_offset);
 	}

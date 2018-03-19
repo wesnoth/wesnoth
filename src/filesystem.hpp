@@ -238,7 +238,7 @@ struct file_tree_checksum
 	void write(config& cfg) const;
 	void reset() {nfiles = 0;modified = 0;sum_size=0;}
 	// @todo make variables private!
-	size_t nfiles, sum_size;
+	std::size_t nfiles, sum_size;
 	time_t modified;
 	bool operator==(const file_tree_checksum &rhs) const;
 	bool operator!=(const file_tree_checksum &rhs) const

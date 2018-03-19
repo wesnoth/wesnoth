@@ -25,7 +25,7 @@
 
 #include <SDL_rect.h>
 
-struct _rect { size_t x1,y1,x2,y2; };
+struct _rect { std::size_t x1,y1,x2,y2; };
 
 struct theme_info
 {
@@ -105,12 +105,12 @@ public:
 
 		bool empty() const { return text_.empty() && icon_.empty(); }
 
-		size_t font_size() const { return font_; }
+		std::size_t font_size() const { return font_; }
 		color_t font_rgb() const { return font_rgb_; }
 		bool font_rgb_set() const { return font_rgb_set_; }
 	private:
 		std::string text_, icon_;
-		size_t font_;
+		std::size_t font_;
 		bool font_rgb_set_;
 		color_t font_rgb_;
 	};
@@ -129,14 +129,14 @@ public:
 		// If the item has a label associated with it, Show where the label is
 		const label* get_label() const { return label_.empty() ? nullptr : &label_; }
 
-		size_t font_size() const { return font_; }
+		std::size_t font_size() const { return font_; }
 		color_t font_rgb() const { return font_rgb_; }
 		bool font_rgb_set() const { return font_rgb_set_; }
 
 	private:
 		std::string prefix_, postfix_;
 		label label_;
-		size_t font_;
+		std::size_t font_;
 		bool font_rgb_set_;
 		color_t font_rgb_;
 	};
@@ -166,7 +166,7 @@ public:
 
 		const std::string& title() const { return title_; }
 
-		const std::string tooltip(size_t index) const;
+		const std::string tooltip(std::size_t index) const;
 
 		const std::string& type() const { return type_; }
 

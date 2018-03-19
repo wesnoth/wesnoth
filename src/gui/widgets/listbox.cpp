@@ -197,7 +197,7 @@ void listbox::set_row_shown(const boost::dynamic_bitset<>& shown)
 	{
 		window::invalidate_layout_blocker invalidate_layout_blocker(*window);
 
-		for(size_t i = 0; i < shown.size(); ++i) {
+		for(std::size_t i = 0; i < shown.size(); ++i) {
 			generator_->set_item_shown(i, shown[i]);
 		}
 
@@ -225,7 +225,7 @@ boost::dynamic_bitset<> listbox::get_rows_shown() const
 
 bool listbox::any_rows_shown() const
 {
-	for(size_t i = 0; i < get_item_count(); i++) {
+	for(std::size_t i = 0; i < get_item_count(); i++) {
 		if(generator_->get_item_shown(i)) {
 			return true;
 		}
@@ -282,7 +282,7 @@ void listbox::list_item_clicked(widget& caller)
 	/** @todo Hack to capture the keyboard focus. */
 	get_window()->keyboard_capture(this);
 
-	for(size_t i = 0; i < generator_->get_item_count(); ++i) {
+	for(std::size_t i = 0; i < generator_->get_item_count(); ++i) {
 		if(generator_->item(i).has_widget(caller)) {
 			toggle_button* checkbox = dynamic_cast<toggle_button*>(&caller);
 

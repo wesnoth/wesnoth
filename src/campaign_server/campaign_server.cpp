@@ -75,14 +75,14 @@ bool authenticate(config& campaign, const config::attribute_value& passphrase)
 	return utils::md5(passphrase, campaign["passsalt"]).base64_digest() == campaign["passhash"];
 }
 
-std::string generate_salt(size_t len)
+std::string generate_salt(std::size_t len)
 {
 	boost::mt19937 mt(time(0));
 	std::string salt = std::string(len, '0');
 	boost::uniform_int<> from_str(0, 63); // 64 possible values for base64
 	boost::variate_generator< boost::mt19937, boost::uniform_int<>> get_char(mt, from_str);
 
-	for(size_t i = 0; i < len; i++) {
+	for(std::size_t i = 0; i < len; i++) {
 		salt[i] = crypt64::encode(get_char());
 	}
 
@@ -893,7 +893,7 @@ void server::handle_delete(const server::request& req)
 	}
 
 	config::child_itors itors = campaigns().child_range("campaign");
-	for(size_t index = 0; !itors.empty(); ++index, itors.pop_front())
+	for(std::size_t index = 0; !itors.empty(); ++index, itors.pop_front())
 	{
 		if(&campaign == &itors.front()) {
 			campaigns().remove_child("campaign", index);

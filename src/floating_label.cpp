@@ -76,7 +76,7 @@ void floating_label::move(double xmove, double ymove)
 	ypos_ += ymove;
 }
 
-int floating_label::xpos(size_t width) const
+int floating_label::xpos(std::size_t width) const
 {
 	int xpos = static_cast<int>(xpos_);
 

@@ -191,7 +191,7 @@ surface stretch_surface_vertical(
 	return dst;
 }
 
-surface scale_surface_xbrz(const surface & surf, size_t z)
+surface scale_surface_xbrz(const surface & surf, std::size_t z)
 {
 	if(surf == nullptr)
 		return nullptr;
@@ -1754,10 +1754,10 @@ surface cut_surface(const surface &surf, const SDL_Rect& r)
 		return nullptr;
 	}
 
-	size_t sbpp = surf->format->BytesPerPixel;
-	size_t spitch = surf->pitch;
-	size_t rbpp = res->format->BytesPerPixel;
-	size_t rpitch = res->pitch;
+	std::size_t sbpp = surf->format->BytesPerPixel;
+	std::size_t spitch = surf->pitch;
+	std::size_t rbpp = res->format->BytesPerPixel;
+	std::size_t rpitch = res->pitch;
 
 	// compute the areas to copy
 	SDL_Rect src_rect = r;
@@ -1792,7 +1792,7 @@ surface cut_surface(const surface &surf, const SDL_Rect& r)
 	for(int y = 0; y < src_rect.h && (src_rect.y + y) < surf->h; ++y) {
 		const uint8_t* line_src  = src  + (src_rect.y + y) * spitch + src_rect.x * sbpp;
 		uint8_t* line_dest = dest + (dst_rect.y + y) * rpitch + dst_rect.x * rbpp;
-		size_t size = src_rect.w + src_rect.x <= surf->w ? src_rect.w : surf->w - src_rect.x;
+		std::size_t size = src_rect.w + src_rect.x <= surf->w ? src_rect.w : surf->w - src_rect.x;
 
 		assert(rpitch >= src_rect.w * rbpp);
 		memcpy(line_dest, line_src, size * rbpp);

@@ -141,7 +141,7 @@ void game_board::check_victory(bool & continue_level, bool & found_player, bool 
 	}
 
 	for (std::set<unsigned>::iterator n = not_defeated.begin(); n != not_defeated.end(); ++n) {
-		size_t side = *n - 1;
+		std::size_t side = *n - 1;
 
 		DBG_EE << "Side " << (side+1) << " is a not-defeated team" << std::endl;
 

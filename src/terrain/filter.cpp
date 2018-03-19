@@ -378,7 +378,7 @@ bool terrain_filter::match_impl(const map_location& loc, const unit* ref_unit) c
 	}
 
 	//handle radius
-	size_t radius = cfg_["radius"].to_size_t(0);
+	std::size_t radius = cfg_["radius"].to_size_t(0);
 	if(radius > max_loop_) {
 		ERR_NG << "terrain_filter: radius greater than " << max_loop_
 		<< ", restricting\n";
@@ -397,7 +397,7 @@ bool terrain_filter::match_impl(const map_location& loc, const unit* ref_unit) c
 		get_tiles_radius(fc_->get_disp_context().map(), loc_vec, radius, hexes);
 	}
 
-	size_t loop_count = 0;
+	std::size_t loop_count = 0;
 	std::set<map_location>::const_iterator i;
 	for(i = hexes.begin(); i != hexes.end(); ++i) {
 		bool matches = match_internal(*i, ref_unit, false);
@@ -641,7 +641,7 @@ void terrain_filter::get_locs_impl(std::set<map_location>& locs, const unit* ref
 	}
 
 	//handle radius
-	size_t radius = cfg_["radius"].to_size_t(0);
+	std::size_t radius = cfg_["radius"].to_size_t(0);
 	if(radius > max_loop_) {
 		ERR_NG << "terrain_filter: radius greater than " << max_loop_
 		<< ", restricting\n";

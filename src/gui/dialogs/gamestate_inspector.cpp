@@ -108,7 +108,7 @@ public:
 
 	std::string get_data_paged(int which_page)
 	{
-		if(size_t(which_page) >= pages.size()) {
+		if(std::size_t(which_page) >= pages.size()) {
 			return "";
 		}
 		return data.substr(pages[which_page].first, pages[which_page].second);
@@ -134,9 +134,9 @@ private:
 	void repaginate()
 	{
 		pages.clear();
-		size_t start = 0;
+		std::size_t start = 0;
 		while(start < data.size()) {
-			size_t end = data.find_last_of('\n', start + max_inspect_win_len);
+			std::size_t end = data.find_last_of('\n', start + max_inspect_win_len);
 			if(end == std::string::npos) {
 				end = data.size() - 1;
 			}
@@ -147,7 +147,7 @@ private:
 	}
 	static const unsigned int max_inspect_win_len = 20000;
 	std::string data;
-	std::vector<std::pair<size_t,int>> pages;
+	std::vector<std::pair<std::size_t,int>> pages;
 };
 
 class stuff_list_adder
@@ -529,7 +529,7 @@ void variable_mode_controller::show_list(tree_view_node& node)
 			&variable_mode_controller::show_var);
 	}
 
-	std::map<std::string, size_t> wml_array_sizes;
+	std::map<std::string, std::size_t> wml_array_sizes;
 
 	for(const auto& ch : vars().all_children_range())
 	{
@@ -559,8 +559,8 @@ void variable_mode_controller::show_array(tree_view_node& node)
 	widget* w = node.find("name", false);
 	if(label* lbl = dynamic_cast<label*>(w)) {
 		const std::string& var = lbl->get_label();
-		size_t n_start = var.find_last_of('[') + 1;
-		size_t n_len = var.size() - n_start - 1;
+		std::size_t n_start = var.find_last_of('[') + 1;
+		std::size_t n_len = var.size() - n_start - 1;
 		int n = std::stoi(var.substr(n_start, n_len));
 		model().set_data(config_to_string(vars().child(var.substr(1, n_start - 3), n)));
 	}

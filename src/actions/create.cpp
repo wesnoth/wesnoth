@@ -127,7 +127,7 @@ namespace { // Helpers for get_recalls()
 	 */
 	void add_leader_filtered_recalls(const unit_const_ptr leader,
 	                                 std::vector< unit_const_ptr > & result,
-	                                 std::set<size_t> * already_added = nullptr)
+	                                 std::set<std::size_t> * already_added = nullptr)
 	{
 		const team& leader_team = resources::gameboard->get_team(leader->side());
 		const std::string& save_id = leader_team.save_id();
@@ -138,7 +138,7 @@ namespace { // Helpers for get_recalls()
 		{
 			const unit & recall_unit = *recall_unit_ptr;
 			// Do not add a unit twice.
-			size_t underlying_id = recall_unit.underlying_id();
+			std::size_t underlying_id = recall_unit.underlying_id();
 			if ( !already_added  ||  already_added->count(underlying_id) == 0 )
 			{
 				// Only units that match the leader's recall filter are valid.
@@ -195,7 +195,7 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
 	{
 		unit_map::const_iterator u = resources::gameboard->units().begin(),
 				u_end = resources::gameboard->units().end();
-		std::set<size_t> valid_local_recalls;
+		std::set<std::size_t> valid_local_recalls;
 
 		for(; u != u_end; ++u) {
 			//We only consider leaders on our side.
@@ -213,7 +213,7 @@ std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_lo
 
 	if ( !leader_in_place )
 	{
-		std::set<size_t> valid_local_recalls;
+		std::set<std::size_t> valid_local_recalls;
 
 		for(auto u = resources::gameboard->units().begin(); u != resources::gameboard->units().end(); ++u) {
 			//We only consider leaders on our side.

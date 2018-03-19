@@ -218,7 +218,7 @@ TTF_Font* sdl_ttf::get_font(font_id id)
 
 	// There's no record, so we need to try to find a solution for this font
 	// and make a record of it. If the indices are out of bounds don't bother though.
-	if(id.subset < 0 || size_t(id.subset) >= font_names.size()) {
+	if(id.subset < 0 || std::size_t(id.subset) >= font_names.size()) {
 		return nullptr;
 	}
 
@@ -266,7 +266,7 @@ static surface render_text(const std::string& text, int fontsize, const color_t&
 	const std::vector<std::string> lines = utils::split(text, '\n', 0);
 	std::vector<std::vector<surface>> surfaces;
 	surfaces.reserve(lines.size());
-	size_t width = 0, height = 0;
+	std::size_t width = 0, height = 0;
 
 	for(std::vector< std::string >::const_iterator ln = lines.begin(), ln_end = lines.end(); ln != ln_end; ++ln) {
 
@@ -294,7 +294,7 @@ static surface render_text(const std::string& text, int fontsize, const color_t&
 
 		if (!res.empty()) {
 			surfaces.push_back(res);
-			width = std::max<size_t>(cached_surf.width(), width);
+			width = std::max<std::size_t>(cached_surf.width(), width);
 			height += cached_surf.height();
 		}
 	}
@@ -309,10 +309,10 @@ static surface render_text(const std::string& text, int fontsize, const color_t&
 		if (res.null())
 			return res;
 
-		size_t ypos = 0;
+		std::size_t ypos = 0;
 		for(std::vector< std::vector<surface>>::iterator i = surfaces.begin(),
 		    i_end = surfaces.end(); i != i_end; ++i) {
-			size_t xpos = 0;
+			std::size_t xpos = 0;
 			height = 0;
 
 			for(std::vector<surface>::iterator j = i->begin(),
@@ -320,7 +320,7 @@ static surface render_text(const std::string& text, int fontsize, const color_t&
 				SDL_Rect dstrect = sdl::create_rect(xpos, ypos, 0, 0);
 				blit_surface(*j, nullptr, res, &dstrect);
 				xpos += (*j)->w;
-				height = std::max<size_t>((*j)->h, height);
+				height = std::max<std::size_t>((*j)->h, height);
 			}
 			ypos += height;
 		}
@@ -545,7 +545,7 @@ void sdl_ttf::set_font_list(const std::vector<subset_descriptor>& fontlist)
 
 	DBG_FT << "Set the font list. The styled font families are:\n";
 
-	for (size_t i = 0; i < font_names.size(); ++i) {
+	for (std::size_t i = 0; i < font_names.size(); ++i) {
 		DBG_FT << "[" << i << "]:\t\tbase:\t'" << font_names[i] << "'\tbold:\t'" << bold_names[i] << "'\titalic:\t'" << italic_names[i] << "'\n";
 	}
 }

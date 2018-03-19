@@ -658,7 +658,7 @@ void get_villages_phase::find_villages(
 
 	const bool passive_leader = get_passive_leader();
 
-	size_t min_distance = 100000;
+	std::size_t min_distance = 100000;
 	const gamemap &map_ = resources::gameboard->map();
 	std::vector<team> &teams_ = resources::gameboard->teams();
 
@@ -676,7 +676,7 @@ void get_villages_phase::find_villages(
 				continue;
 			}
 
-			const size_t distance = distance_between(keep_loc_, current_loc);
+			const std::size_t distance = distance_between(keep_loc_, current_loc);
 			if(distance < min_distance) {
 				min_distance = distance;
 				best_leader_loc_ = current_loc;
@@ -693,7 +693,7 @@ void get_villages_phase::find_villages(
 		}
 
 		bool want_village = true, owned = false;
-		for(size_t n = 0; n != teams_.size(); ++n) {
+		for(std::size_t n = 0; n != teams_.size(); ++n) {
 			owned = teams_[n].owns_village(current_loc);
 			if(owned && !current_team().is_enemy(n+1)) {
 				want_village = false;
@@ -777,7 +777,7 @@ void get_villages_phase::dispatch(treachmap& reachmap, tmoves& moves)
 	//    village only one can capture it, so use the first in the list.)
 	// 2. Villages which can only be reached by one unit get that unit dispatched
 	//    to them.
-	size_t village_count = 0;
+	std::size_t village_count = 0;
 	bool dispatched = true;
 	while(dispatched) {
 		dispatched = false;
@@ -871,7 +871,7 @@ bool get_villages_phase::dispatch_unit_simple(treachmap& reachmap, tmoves& moves
 }
 
 bool get_villages_phase::dispatch_village_simple(
-	treachmap& reachmap, tmoves& moves, size_t& village_count)
+	treachmap& reachmap, tmoves& moves, std::size_t& village_count)
 {
 
 	bool result = false;
@@ -956,13 +956,13 @@ get_villages_phase::treachmap::iterator get_villages_phase::remove_unit(
 }
 
 void get_villages_phase::dispatch_complex(
-	treachmap& reachmap, tmoves& moves, const size_t village_count)
+	treachmap& reachmap, tmoves& moves, const std::size_t village_count)
 {
 	// ***** ***** Init and dispatch if every unit can reach every village.
 
-	const size_t unit_count = reachmap.size();
+	const std::size_t unit_count = reachmap.size();
 	// The maximum number of villages we can capture with the available units.
-	const size_t max_result = unit_count < village_count ? unit_count : village_count;
+	const std::size_t max_result = unit_count < village_count ? unit_count : village_count;
 
 	assert(unit_count >= 2 && village_count >= 2);
 
@@ -974,28 +974,28 @@ void get_villages_phase::dispatch_complex(
 	}
 
 	std::vector<map_location> units(unit_count);
-	std::vector<size_t> villages_per_unit(unit_count);
+	std::vector<std::size_t> villages_per_unit(unit_count);
 	std::vector<map_location> villages;
-	std::vector<size_t> units_per_village(village_count);
+	std::vector<std::size_t> units_per_village(village_count);
 
 	// We want to test the units, the ones who can reach the least
 	// villages first so this is our lookup map.
-	std::multimap<size_t /* villages_per_unit value*/,
-		size_t /*villages_per_unit index*/> unit_lookup;
+	std::multimap<std::size_t /* villages_per_unit value*/,
+		std::size_t /*villages_per_unit index*/> unit_lookup;
 
 	std::vector</*unit*/boost::dynamic_bitset</*village*/>> matrix(reachmap.size(), boost::dynamic_bitset<>(village_count));
 
 	treachmap::const_iterator itor = reachmap.begin();
-	for(size_t u = 0; u < unit_count; ++u, ++itor) {
+	for(std::size_t u = 0; u < unit_count; ++u, ++itor) {
 		units[u] = itor->first;
 		villages_per_unit[u] = itor->second.size();
 		unit_lookup.emplace(villages_per_unit[u], u);
 
 		assert(itor->second.size() >= 2);
 
-		for(size_t v = 0; v < itor->second.size(); ++v) {
+		for(std::size_t v = 0; v < itor->second.size(); ++v) {
 
-			size_t v_index;
+			std::size_t v_index;
 			// find the index of the v in the villages
 			std::vector<map_location>::const_iterator v_itor =
 				std::find(villages.begin(), villages.end(), itor->second[v]);
@@ -1011,7 +1011,7 @@ void get_villages_phase::dispatch_complex(
 			matrix[u][v_index] = true;
 		}
 	}
-	for(std::vector<size_t>::const_iterator upv_it = units_per_village.begin();
+	for(std::vector<std::size_t>::const_iterator upv_it = units_per_village.begin();
 			upv_it != units_per_village.end(); ++upv_it) {
 
 		assert(*upv_it >=2);
@@ -1020,7 +1020,7 @@ void get_villages_phase::dispatch_complex(
 	if(debug_) {
 		// Print header
 		std::cerr << "Reach matrix:\n\nvillage";
-		size_t u, v;
+		std::size_t u, v;
 		for(v = 0; v < village_count; ++v) {
 			std::cerr << '\t' << villages[v];
 		}
@@ -1046,7 +1046,7 @@ void get_villages_phase::dispatch_complex(
 
 	// Test the special case, everybody can reach all villages
 	const bool reach_all = ((village_count == unit_count)
-		&& (std::accumulate(villages_per_unit.begin(), villages_per_unit.end(), size_t())
+		&& (std::accumulate(villages_per_unit.begin(), villages_per_unit.end(), std::size_t())
 		== (village_count * unit_count)));
 
 	if(reach_all) {
@@ -1057,12 +1057,12 @@ void get_villages_phase::dispatch_complex(
 	}
 
 	// ***** ***** Find a square
-	std::multimap<size_t /* villages_per_unit value*/, size_t /*villages_per_unit index*/>
+	std::multimap<std::size_t /* villages_per_unit value*/, std::size_t /*villages_per_unit index*/>
 		::const_iterator src_itor =  unit_lookup.begin();
 
 	while(src_itor != unit_lookup.end() && src_itor->first == 2) {
 
-		for(std::multimap<size_t, size_t>::const_iterator
+		for(std::multimap<std::size_t, std::size_t>::const_iterator
 				dst_itor = unit_lookup.begin();
 				dst_itor != unit_lookup.end(); ++ dst_itor) {
 
@@ -1072,13 +1072,13 @@ void get_villages_phase::dispatch_complex(
 			}
 
 			boost::dynamic_bitset<> result = matrix[src_itor->second] & matrix[dst_itor->second];
-			size_t matched = result.count();
+			std::size_t matched = result.count();
 
 			// we found a  solution, dispatch
 			if(matched == 2) {
 				// Collect data
-				size_t first = result.find_first();
-				size_t second = result.find_next(first);
+				std::size_t first = result.find_first();
+				std::size_t second = result.find_next(first);
 
 				const map_location village1 = villages[first];
 				const map_location village2 = villages[second];
@@ -1139,22 +1139,22 @@ void get_villages_phase::dispatch_complex(
 	// picked. In general we shouldn't reach this point too often if we do
 	// there are a lot of villages which are unclaimed and a lot of units
 	// to claim them.
-	const size_t max_options = 8;
+	const std::size_t max_options = 8;
 	if(unit_count >= max_options && village_count >= max_options) {
 
 		DBG_AI_TESTING_AI_DEFAULT << "Too many units " << unit_count << " and villages "
 			<< village_count<<" found, evaluate only the first "
 			<< max_options << " options;\n";
 
-		std::vector<size_t> perm (max_options, 0);
-		for(size_t i =0; i < max_options; ++i) {
+		std::vector<std::size_t> perm (max_options, 0);
+		for(std::size_t i =0; i < max_options; ++i) {
 			perm[i] = i;
 		}
 		while(std::next_permutation(perm.begin(), perm.end())) {
 
 			// Get result for current permutation.
 			std::vector<std::pair<map_location,map_location>> result;
-			for(size_t u = 0; u < max_options; ++u) {
+			for(std::size_t u = 0; u < max_options; ++u) {
 				if(matrix[u][perm[u]]) {
 					result.emplace_back(villages[perm[u]], units[u]);
 
@@ -1185,14 +1185,14 @@ void get_villages_phase::dispatch_complex(
 
 		DBG_AI_TESTING_AI_DEFAULT << "Unit major\n";
 
-		std::vector<size_t> perm (unit_count, 0);
-		for(size_t i =0; i < unit_count; ++i) {
+		std::vector<std::size_t> perm (unit_count, 0);
+		for(std::size_t i =0; i < unit_count; ++i) {
 			perm[i] = i;
 		}
 		while(std::next_permutation(perm.begin(), perm.end())) {
 			// Get result for current permutation.
 			std::vector<std::pair<map_location,map_location>> result;
-			for(size_t u = 0; u < unit_count; ++u) {
+			for(std::size_t u = 0; u < unit_count; ++u) {
 				if(matrix[u][perm[u]]) {
 					result.emplace_back(villages[perm[u]], units[u]);
 
@@ -1227,14 +1227,14 @@ void get_villages_phase::dispatch_complex(
 
 		DBG_AI_TESTING_AI_DEFAULT << "Village major\n";
 
-		std::vector<size_t> perm (village_count, 0);
-		for(size_t i =0; i < village_count; ++i) {
+		std::vector<std::size_t> perm (village_count, 0);
+		for(std::size_t i =0; i < village_count; ++i) {
 			perm[i] = i;
 		}
 		while(std::next_permutation(perm.begin(), perm.end())) {
 			// Get result for current permutation.
 			std::vector<std::pair<map_location,map_location>> result;
-			for(size_t v = 0; v < village_count; ++v) {
+			for(std::size_t v = 0; v < village_count; ++v) {
 				if(matrix[perm[v]][v]) {
 					result.emplace_back(villages[v], units[perm[v]]);
 
@@ -1270,7 +1270,7 @@ void get_villages_phase::dispatch_complex(
 void get_villages_phase::full_dispatch(treachmap& reachmap, tmoves& moves)
 {
 	treachmap::const_iterator itor = reachmap.begin();
-	for(size_t i = 0; i < reachmap.size(); ++i, ++itor) {
+	for(std::size_t i = 0; i < reachmap.size(); ++i, ++itor) {
 		DBG_AI_TESTING_AI_DEFAULT << "Dispatched unit at " << itor->first
 				<< " to village " << itor->second[i] << '\n';
 		moves.emplace_back(itor->second[i], itor->first);

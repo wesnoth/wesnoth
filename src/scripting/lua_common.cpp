@@ -82,7 +82,7 @@ static int impl_gettext(lua_State *L)
  */
 int intf_textdomain(lua_State *L)
 {
-	size_t l;
+	std::size_t l;
 	char const *m = luaL_checklstring(L, 1, &l);
 
 	void *p = lua_newuserdata(L, l + 1);
@@ -466,7 +466,7 @@ std::string register_vconfig_metatable(lua_State *L)
 
 } // end namespace lua_common
 
-void* operator new(size_t sz, lua_State *L)
+void* operator new(std::size_t sz, lua_State *L)
 {
 	return lua_newuserdata(L, sz);
 }

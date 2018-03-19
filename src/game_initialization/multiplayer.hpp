@@ -24,7 +24,7 @@ class wesnothd_connection;
 namespace mp {
 
 // max. length of a player name
-const size_t max_login_size = 20;
+const std::size_t max_login_size = 20;
 
 /*
  * This is the main entry points of multiplayer mode.

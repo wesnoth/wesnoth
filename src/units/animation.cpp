@@ -648,7 +648,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		// Add cycles to all frames within a standing animation block
 		for(config::const_all_children_iterator ci : ab.children) {
 			std::string sub_frame_name = ci->key;
-			size_t pos = sub_frame_name.find("_frame");
+			std::size_t pos = sub_frame_name.find("_frame");
 			if(pos != std::string::npos) {
 				anim[sub_frame_name.substr(0, pos) + "_cycles"] = true;
 			}
@@ -673,7 +673,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 
 		for(config::const_all_children_iterator ci : ab.children) {
 			std::string sub_frame_name = ci->key;
-			size_t pos = sub_frame_name.find("_frame");
+			std::size_t pos = sub_frame_name.find("_frame");
 			if(pos != std::string::npos) {
 				anim[sub_frame_name.substr(0, pos) + "_cycles"] = true;
 			}
@@ -1164,7 +1164,7 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 		outstream << "[/filter_second_attack]\n";
 	}
 
-	for(size_t i = 0; i < u_animation.unit_anim_.get_frames_count(); i++) {
+	for(std::size_t i = 0; i < u_animation.unit_anim_.get_frames_count(); i++) {
 		outstream << "\t[frame]\n";
 		for(const std::string frame_string : u_animation.unit_anim_.get_frame(i).debug_strings()) {
 			outstream << "\t\t" << frame_string <<"\n";
@@ -1173,9 +1173,9 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 	}
 
 	for(std::pair<std::string, unit_animation::particle> p : u_animation.sub_anims_) {
-		for(size_t i = 0; i < p.second.get_frames_count(); i++) {
+		for(std::size_t i = 0; i < p.second.get_frames_count(); i++) {
 			std::string sub_frame_name = p.first;
-			size_t pos = sub_frame_name.find("_frame");
+			std::size_t pos = sub_frame_name.find("_frame");
 			if(pos != std::string::npos) sub_frame_name = sub_frame_name.substr(0, pos);
 
 			outstream << "\t" << sub_frame_name << "_start_time=" << p.second.get_begin_time() << '\n';

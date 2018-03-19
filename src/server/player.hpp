@@ -33,7 +33,7 @@ public:
 	};
 
 	player(const std::string& n, simple_wml::node& cfg, bool registered,
-	       const size_t max_messages=4, const size_t time_period=10,
+	       const std::size_t max_messages=4, const std::size_t time_period=10,
 	       const bool sp=false, const bool moderator=false);
 
 	void set_status(STATUS status);
@@ -78,7 +78,7 @@ private:
 
 	time_t flood_start_;
 	unsigned int messages_since_flood_start_;
-	const size_t MaxMessages;
+	const std::size_t MaxMessages;
 	const time_t TimePeriod;
 	STATUS status_;
 	bool moderator_;

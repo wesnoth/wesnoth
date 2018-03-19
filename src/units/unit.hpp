@@ -313,7 +313,7 @@ public:
 	}
 
 	/** This unit's unique internal ID. This should *not* be used for user-facing operations. */
-	size_t underlying_id() const
+	std::size_t underlying_id() const
 	{
 		return underlying_id_.value;
 	}
@@ -1298,7 +1298,7 @@ public:
 	 * @param id The ID of the modification to count
 	 * @return The total number of modifications of that type and ID.
 	 */
-	size_t modification_count(const std::string& type, const std::string& id) const;
+	std::size_t modification_count(const std::string& type, const std::string& id) const;
 
 	/**
 	 * Add a new modification to the unit.
@@ -1648,7 +1648,7 @@ private:
 
 	std::set<std::string> states_;
 
-	static const size_t num_bool_states = 7;
+	static const std::size_t num_bool_states = 7;
 
 	std::bitset<num_bool_states> known_boolean_states_;
 	static std::map<std::string, state_t> known_boolean_state_names_;

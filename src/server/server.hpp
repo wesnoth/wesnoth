@@ -33,7 +33,7 @@ namespace wesnothd
 class server : public server_base
 {
 public:
-	server(int port, bool keep_alive, const std::string& config_file, size_t, size_t);
+	server(int port, bool keep_alive, const std::string& config_file, std::size_t, std::size_t);
 
 private:
 	void handle_new_client(socket_ptr socket);
@@ -134,14 +134,14 @@ private:
 	std::vector<std::string> disallowed_names_;
 	std::string admin_passwd_;
 	std::string motd_;
-	size_t default_max_messages_;
-	size_t default_time_period_;
-	size_t concurrent_connections_;
+	std::size_t default_max_messages_;
+	std::size_t default_time_period_;
+	std::size_t concurrent_connections_;
 	bool graceful_restart;
 	time_t lan_server_;
 	time_t last_user_seen_time_;
 	std::string restart_command;
-	size_t max_ip_log_size_;
+	std::size_t max_ip_log_size_;
 	std::string uh_name_;
 	bool deny_unregistered_login_;
 	bool save_replays_;

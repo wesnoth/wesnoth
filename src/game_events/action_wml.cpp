@@ -109,7 +109,7 @@ namespace { // Support functions
 		std::string variation = cfg["variation"];
 		std::string img_mods = cfg["image_mods"];
 
-		size_t side_num = cfg["side"].to_int(1);
+		std::size_t side_num = cfg["side"].to_int(1);
 		if (!resources::gameboard->has_team(side_num)) {
 			side_num = 1;
 		}
@@ -144,7 +144,7 @@ namespace { // Support functions
 		std::vector<map_location> path;
 		map_location src;
 		map_location dst;
-		for(size_t i = 0; i != std::min(xvals.size(),yvals.size()); ++i) {
+		for(std::size_t i = 0; i != std::min(xvals.size(),yvals.size()); ++i) {
 			if(i==0){
 				try {
 					src.set_wml_x(std::stoi(xvals[i]));
@@ -402,7 +402,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 	LOG_NG << "Processing [move_units_fake]\n";
 
 	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
-	size_t num_units = unit_cfgs.size();
+	std::size_t num_units = unit_cfgs.size();
 	std::vector<fake_unit_ptr > units;
 	units.reserve(num_units);
 	std::vector<std::vector<map_location>> paths;
@@ -410,7 +410,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 
 	LOG_NG << "Moving " << num_units << " units\n";
 
-	size_t longest_path = 0;
+	std::size_t longest_path = 0;
 
 	for (const vconfig& config : unit_cfgs) {
 		const std::vector<std::string> xvals = utils::split(config["x"]);
@@ -432,9 +432,9 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 
 	std::vector<map_location> path_step(2);
 	path_step.resize(2);
-	for(size_t step = 1; step < longest_path; ++step) {
+	for(std::size_t step = 1; step < longest_path; ++step) {
 		DBG_NG << "Doing step " << step << "...\n";
-		for(size_t un = 0; un < num_units; ++un) {
+		for(std::size_t un = 0; un < num_units; ++un) {
 			if(step >= paths[un].size() || paths[un][step - 1] == paths[un][step])
 				continue;
 			DBG_NG << "Moving unit " << un << ", doing step " << step << '\n';

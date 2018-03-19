@@ -36,7 +36,7 @@ const entity_location entity_location::null_entity(map_location::null_location()
  * Can also be used if the event has a unit and the caller already has the
  * unit's location and underlying ID.
  */
-entity_location::entity_location(const map_location &loc, size_t id)
+entity_location::entity_location(const map_location &loc, std::size_t id)
 	: map_location(loc), id_(id), filter_loc_(loc)
 {}
 
@@ -44,7 +44,7 @@ entity_location::entity_location(const map_location &loc, size_t id)
  * Constructor for when an event has a unit that needs to be filtered as if
  * it was in a different location.
  */
-entity_location::entity_location(const map_location &loc, size_t id,
+entity_location::entity_location(const map_location &loc, std::size_t id,
                                  const map_location & filter_loc)
 	: map_location(loc), id_(id), filter_loc_(filter_loc)
 {}

@@ -136,7 +136,7 @@ private:
 
 	std::vector<lobby_chat_window> open_windows_;
 
-	size_t active_window_;
+	std::size_t active_window_;
 
 	std::function<void(void)> active_window_changed_callback_;
 
@@ -157,7 +157,7 @@ private:
 
 	void append_to_chatbox(const std::string& text, const bool force_scroll = false);
 
-	void append_to_chatbox(const std::string& text, size_t id, const bool force_scroll = false);
+	void append_to_chatbox(const std::string& text, std::size_t id, const bool force_scroll = false);
 
 	/** @returns true if the whisper window for "name" is the active window. */
 	bool whisper_window_active(const std::string& name);
@@ -192,7 +192,7 @@ private:
 		const std::string& message,
 		const bool force_scroll = false);
 
-	void close_window(size_t idx);
+	void close_window(std::size_t idx);
 
 public:
 	/** Inherited form @ref chat_handler */
@@ -204,7 +204,7 @@ public:
 	 */
 	void switch_to_window(lobby_chat_window* t);
 
-	void switch_to_window(size_t id);
+	void switch_to_window(std::size_t id);
 
 	void active_window_changed();
 

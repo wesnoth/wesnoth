@@ -152,7 +152,7 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 			const animated<image::locator>& anim = variant.images[rnd % variant.images.size()];
 
 			bool is_empty = true;
-			for(size_t i = 0; i < anim.get_frames_count(); ++i) {
+			for(std::size_t i = 0; i < anim.get_frames_count(); ++i) {
 				if(!image::is_empty_hex(anim.get_frame(i))) {
 					is_empty = false;
 					break;
@@ -452,7 +452,7 @@ bool terrain_builder::load_images(building_rule& rule)
 						const std::vector<std::string> items = utils::split(frame, ':');
 						const std::string& str = items.front();
 
-						const size_t tilde = str.find('~');
+						const std::size_t tilde = str.find('~');
 						bool has_tilde = tilde != std::string::npos;
 						const std::string filename = "terrain/" + (has_tilde ? str.substr(0, tilde) : str);
 
@@ -860,7 +860,7 @@ void terrain_builder::add_rotated_rules(building_ruleset& rules, building_rule& 
 	} else {
 		const std::vector<std::string>& rot = utils::split(rotations, ',');
 
-		for(size_t angle = 0; angle < rot.size(); ++angle) {
+		for(std::size_t angle = 0; angle < rot.size(); ++angle) {
 			/* Only 5% of the rules have valid images, so most of
 			   them will be discarded. If the ratio was higher,
 			   it would be more efficient to insert a copy of the
@@ -1155,7 +1155,7 @@ void terrain_builder::build_terrains()
 		// Find the constraint that contains the less terrain of all terrain rules.
 		// We will keep a track of the matching terrains of this constraint
 		// and later try to apply the rule only on them
-		size_t min_size = INT_MAX;
+		std::size_t min_size = INT_MAX;
 		t_translation::ter_list min_types = t_translation::ter_list(); // <-- This must be explicitly initialized, just
 																	   // as min_constraint is, at start of loop, or we
 																	   // get a null pointer dereference when we go
@@ -1165,13 +1165,13 @@ void terrain_builder::build_terrains()
 		for(const terrain_constraint& constraint : rule.constraints) {
 			const t_translation::ter_match& match = constraint.terrain_types_match;
 			t_translation::ter_list matching_types;
-			size_t constraint_size = 0;
+			std::size_t constraint_size = 0;
 
 			for(terrain_by_type_map::iterator type_it = terrain_by_type_.begin(); type_it != terrain_by_type_.end();
 					++type_it) {
 				const t_translation::terrain_code t = type_it->first;
 				if(terrain_matches(t, match)) {
-					const size_t match_size = type_it->second.size();
+					const std::size_t match_size = type_it->second.size();
 					constraint_size += match_size;
 					if(constraint_size >= min_size) {
 						break; // not a minimum, bail out

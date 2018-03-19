@@ -29,7 +29,7 @@ static lg::log_domain log_display("display");
 
 namespace gui {
 
-textbox::textbox(CVideo &video, int width, const std::string& text, bool editable, size_t max_size, int font_size, double alpha, double alpha_focus, const bool auto_join)
+textbox::textbox(CVideo &video, int width, const std::string& text, bool editable, std::size_t max_size, int font_size, double alpha, double alpha_focus, const bool auto_join)
 	   : scrollarea(video, auto_join), max_size_(max_size), font_size_(font_size), text_(unicode_cast<ucs4::string>(text)),
 	     cursor_(text_.size()), selstart_(-1), selend_(-1),
 	     grabmouse_(false), text_pos_(0), editable_(editable),
@@ -99,7 +99,7 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const color
 	const ucs4::string& wtext = unicode_cast<ucs4::string>(text);
 
 	surface new_text = add_text_line(wtext, color);
-	surface new_surface = create_compatible_surface(text_image_,std::max<size_t>(text_image_->w,new_text->w),text_image_->h+new_text->h);
+	surface new_surface = create_compatible_surface(text_image_,std::max<std::size_t>(text_image_->w,new_text->w),text_image_->h+new_text->h);
 
 	adjust_surface_alpha(new_text, SDL_ALPHA_TRANSPARENT);
 	adjust_surface_alpha(text_image_, SDL_ALPHA_TRANSPARENT);
@@ -143,8 +143,8 @@ void textbox::set_selection(const int selstart, const int selend)
 	if (!editable_) {
 		return;
 	}
-	if (selstart < 0 || selend < 0 || size_t(selstart) > text_.size() ||
-		size_t(selend) > text_.size()) {
+	if (selstart < 0 || selend < 0 || std::size_t(selstart) > text_.size() ||
+		std::size_t(selend) > text_.size()) {
 		WRN_DP << "out-of-boundary selection" << std::endl;
 		return;
 	}
@@ -158,7 +158,7 @@ void textbox::set_cursor_pos(const int cursor_pos)
 	if (!editable_) {
 		return;
 	}
-	if (cursor_pos < 0 || size_t(cursor_pos) > text_.size()) {
+	if (cursor_pos < 0 || std::size_t(cursor_pos) > text_.size()) {
 		WRN_DP << "out-of-boundary selection" << std::endl;
 		return;
 	}
@@ -203,8 +203,8 @@ void textbox::draw_contents()
 
 	if(text_image_ != nullptr) {
 		src.y = yscroll_;
-		src.w = std::min<size_t>(loc.w,text_image_->w);
-		src.h = std::min<size_t>(loc.h,text_image_->h);
+		src.w = std::min<std::size_t>(loc.w,text_image_->w);
+		src.h = std::min<std::size_t>(loc.h,text_image_->h);
 		src.x = text_pos_;
 		SDL_Rect dest = video().screen_area();
 		dest.x = loc.x;
@@ -220,8 +220,8 @@ void textbox::draw_contents()
 			const int endy = char_y_[end];
 
 			while(starty <= endy) {
-				const size_t right = starty == endy ? endx : text_image_->w;
-				if(right <= size_t(startx)) {
+				const std::size_t right = starty == endy ? endx : text_image_->w;
+				if(right <= std::size_t(startx)) {
 					break;
 				}
 
@@ -585,8 +585,8 @@ bool textbox::handle_key_down(const SDL_Event &event)
 			{
 				if(is_selection())
 				{
-					const size_t beg = std::min<size_t>(size_t(selstart_),size_t(selend_));
-					const size_t end = std::max<size_t>(size_t(selstart_),size_t(selend_));
+					const std::size_t beg = std::min<std::size_t>(std::size_t(selstart_),std::size_t(selend_));
+					const std::size_t end = std::max<std::size_t>(std::size_t(selstart_),std::size_t(selend_));
 
 					ucs4::string ws(text_.begin() + beg, text_.begin() + end);
 					std::string s = unicode_cast<utf8::string>(ws);
@@ -620,7 +620,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 
 	//Sanity check: verify that selection start and end are within text
 	//boundaries
-	if(is_selection() && !(size_t(selstart_) <= text_.size() && size_t(selend_) <= text_.size())) {
+	if(is_selection() && !(std::size_t(selstart_) <= text_.size() && std::size_t(selend_) <= text_.size())) {
 		WRN_DP << "out-of-boundary selection" << std::endl;
 		selstart_ = selend_ = -1;
 	}

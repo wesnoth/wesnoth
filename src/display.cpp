@@ -269,7 +269,7 @@ void display::init_flags() {
 	image::set_team_colors(&side_colors);
 }
 
-void display::reinit_flags_for_side(size_t side)
+void display::reinit_flags_for_side(std::size_t side)
 {
 	if (!dc_ || side >= dc_->teams().size()) {
 		ERR_DP << "Cannot rebuild flags for inexistent or unconfigured side " << side << '\n';
@@ -279,7 +279,7 @@ void display::reinit_flags_for_side(size_t side)
 	init_flags_for_side_internal(side, dc_->teams()[side].color());
 }
 
-void display::init_flags_for_side_internal(size_t n, const std::string& side_color)
+void display::init_flags_for_side_internal(std::size_t n, const std::string& side_color)
 {
 	assert(dc_ != nullptr);
 	assert(n < dc_->teams().size());
@@ -332,7 +332,7 @@ void display::init_flags_for_side_internal(size_t n, const std::string& side_col
 	}
 }
 
-void display::set_team(size_t teamindex, bool show_everything)
+void display::set_team(std::size_t teamindex, bool show_everything)
 {
 	assert(teamindex < dc_->teams().size());
 	currentTeam_ = teamindex;
@@ -351,7 +351,7 @@ void display::set_team(size_t teamindex, bool show_everything)
 		w->on_viewer_change(teamindex);
 }
 
-void display::set_playing_team(size_t teamindex)
+void display::set_playing_team(std::size_t teamindex)
 {
 	assert(teamindex < dc_->teams().size());
 	activeTeam_ = teamindex;
@@ -775,7 +775,7 @@ surface display::screenshot(bool map_screenshot)
 
 std::shared_ptr<gui::button> display::find_action_button(const std::string& id)
 {
-	for (size_t i = 0; i < action_buttons_.size(); ++i) {
+	for (std::size_t i = 0; i < action_buttons_.size(); ++i) {
 		if(action_buttons_[i]->id() == id) {
 			return action_buttons_[i];
 		}
@@ -785,7 +785,7 @@ std::shared_ptr<gui::button> display::find_action_button(const std::string& id)
 
 std::shared_ptr<gui::button> display::find_menu_button(const std::string& id)
 {
-	for (size_t i = 0; i < menu_buttons_.size(); ++i) {
+	for (std::size_t i = 0; i < menu_buttons_.size(); ++i) {
 		if(menu_buttons_[i]->id() == id) {
 			return menu_buttons_[i];
 		}
@@ -903,7 +903,7 @@ gui::button::TYPE display::string_to_button_type(std::string type)
 	return res;
 }
 
-static const std::string& get_direction(size_t n)
+static const std::string& get_direction(std::size_t n)
 {
 	static const std::array<std::string, 6> dirs {{ "-n", "-ne", "-se", "-s", "-sw", "-nw" }};
 	return dirs[n >= dirs.size() ? 0 : n];
@@ -1149,7 +1149,7 @@ static void draw_background(const SDL_Rect& area, const std::string& image)
 
 int display::draw_text_in_hex(const map_location& loc,
 		const std::string& text,
-		size_t font_size,
+		std::size_t font_size,
 		color_t color,
 		int fl_label_id,
 		double x_in_hex,
@@ -1159,7 +1159,7 @@ int display::draw_text_in_hex(const map_location& loc,
 		return fl_label_id;
 	}
 
-	const size_t font_sz = static_cast<size_t>(font_size * get_zoom_factor());
+	const std::size_t font_sz = static_cast<std::size_t>(font_size * get_zoom_factor());
 
 	const int x = get_location_x(loc) /*- text_surf->w / 2*/ + static_cast<int>(x_in_hex * hex_size());
 	const int y = get_location_y(loc) /*- text_surf->h / 2*/ + static_cast<int>(y_in_hex * hex_size());
@@ -1212,7 +1212,7 @@ const theme::action* display::action_pressed()
 {
 	for(auto i = action_buttons_.begin(); i != action_buttons_.end(); ++i) {
 		if((*i)->pressed()) {
-			const size_t index = std::distance(action_buttons_.begin(), i);
+			const std::size_t index = std::distance(action_buttons_.begin(), i);
 			if(index >= theme_.actions().size()) {
 				assert(false);
 				return nullptr;
@@ -1228,7 +1228,7 @@ const theme::menu* display::menu_pressed()
 {
 	for(auto i = menu_buttons_.begin(); i != menu_buttons_.end(); ++i) {
 		if((*i)->pressed()) {
-			const size_t index = std::distance(menu_buttons_.begin(), i);
+			const std::size_t index = std::distance(menu_buttons_.begin(), i);
 			if(index >= theme_.menus().size()) {
 				assert(false);
 				return nullptr;
@@ -1249,7 +1249,7 @@ void display::enable_menu(const std::string& item, bool enable)
 		);
 
 		if(hasitem != menu->items().end()) {
-			const size_t index = std::distance(theme_.menus().begin(), menu);
+			const std::size_t index = std::distance(theme_.menus().begin(), menu);
 			if(index >= menu_buttons_.size()) {
 				continue;
 			}
@@ -2119,7 +2119,7 @@ void display::invalidate_animations()
 		open_mp_list.push_back(u);
 	}
 
-	// openMP can't iterate over size_t
+	// openMP can't iterate over std::size_t
 	const int omp_iterations = open_mp_list.size();
 	// #pragma omp parallel for shared(open_mp_list)
 

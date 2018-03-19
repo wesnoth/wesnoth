@@ -39,7 +39,7 @@ palette_manager::palette_manager(editor_display& gui, const config& cfg
 	item_palette_->setup(cfg);
 }
 
-void palette_manager::set_group(size_t index)
+void palette_manager::set_group(std::size_t index)
 {
 	active_palette().set_group(index);
 	scroll_top();

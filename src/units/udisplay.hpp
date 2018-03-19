@@ -50,7 +50,7 @@ public:
 	~unit_mover();
 
 	void start(unit_ptr u);
-	void proceed_to(unit_ptr u, size_t path_index, bool update=false, bool wait=true);
+	void proceed_to(unit_ptr u, std::size_t path_index, bool update=false, bool wait=true);
 	void wait_for_anims();
 	void finish(unit_ptr u, map_location::DIRECTION dir = map_location::NDIRECTIONS);
 
@@ -67,7 +67,7 @@ private: // data
 	int wait_until_;	/// The animation potential to wait until. INT_MIN for no wait; INT_MAX to wait for end.
 	unit_ptr shown_unit_;	/// The unit to be (re-)shown after an animation finishes.
 	const std::vector<map_location>& path_;
-	size_t current_;
+	std::size_t current_;
 	fake_unit_ptr temp_unit_ptr_;
 	bool was_hidden_;
 	bool is_enemy_;

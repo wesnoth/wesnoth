@@ -111,7 +111,7 @@ void chatbox::switch_to_window(lobby_chat_window* t)
 	switch_to_window(t - &open_windows_[0]);
 }
 
-void chatbox::switch_to_window(size_t id)
+void chatbox::switch_to_window(std::size_t id)
 {
 	active_window_ = id;
 	assert(active_window_ < open_windows_.size());
@@ -195,7 +195,7 @@ void chatbox::append_to_chatbox(const std::string& text, const bool force_scroll
 	append_to_chatbox(text, active_window_, force_scroll);
 }
 
-void chatbox::append_to_chatbox(const std::string& text, size_t id, const bool force_scroll)
+void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const bool force_scroll)
 {
 	grid& grid = chat_log_container_->page_grid(id);
 
@@ -498,7 +498,7 @@ void chatbox::add_active_window_whisper(const std::string& sender,
 	append_to_chatbox(text, force_scroll);
 }
 
-void chatbox::close_window(size_t idx)
+void chatbox::close_window(std::size_t idx)
 {
 	const lobby_chat_window& t = open_windows_[idx];
 

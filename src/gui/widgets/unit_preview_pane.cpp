@@ -488,7 +488,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 			);
 
 			assert(u.trait_names().size() == u.trait_descriptions().size());
-			for (size_t i = 0; i < u.trait_names().size(); ++i) {
+			for (std::size_t i = 0; i < u.trait_names().size(); ++i) {
 				add_name_tree_node(
 					header_node,
 					"item",

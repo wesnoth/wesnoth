@@ -92,7 +92,7 @@ void action::show()
 	do_show();
 }
 
-action::action(size_t team_index, bool hidden)
+action::action(std::size_t team_index, bool hidden)
 	: team_index_(team_index)
 	, hidden_(hidden)
 {
@@ -114,7 +114,7 @@ action::~action()
 {
 }
 
-size_t action::get_unit_id() const
+std::size_t action::get_unit_id() const
 {
 	unit_ptr ret = get_unit();
 	return ret ? ret->underlying_id() : 0;

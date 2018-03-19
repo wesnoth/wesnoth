@@ -115,7 +115,7 @@ public:
 	}
 
 	/** The playing team is the team whose turn it is. */
-	size_t playing_team() const
+	std::size_t playing_team() const
 	{
 		return activeTeam_;
 	}
@@ -123,7 +123,7 @@ public:
 	bool team_valid() const;
 
 	/** The viewing team is the team currently viewing the game. */
-	size_t viewing_team() const
+	std::size_t viewing_team() const
 	{
 		return currentTeam_;
 	}
@@ -137,12 +137,12 @@ public:
 	 * Sets the team controlled by the player using the computer.
 	 * Data from this team will be displayed in the game status.
 	 */
-	void set_team(size_t team, bool observe = false);
+	void set_team(std::size_t team, bool observe = false);
 
 	/**
 	 * set_playing_team sets the team whose turn it currently is
 	 */
-	void set_playing_team(size_t team);
+	void set_playing_team(std::size_t team);
 
 	/**
 	 * Cancels all the exclusive draw requests.
@@ -800,7 +800,7 @@ public:
 	void init_flags();
 
 	/** Rebuild the flag list (not team colors) for a single side. */
-	void reinit_flags_for_side(size_t side);
+	void reinit_flags_for_side(std::size_t side);
 
 	void reset_reports(reports& reports_object)
 	{
@@ -808,7 +808,7 @@ public:
 	}
 
 private:
-	void init_flags_for_side_internal(size_t side, const std::string& side_color);
+	void init_flags_for_side_internal(std::size_t side, const std::string& side_color);
 
 	int blindfold_ctr_;
 
@@ -959,7 +959,7 @@ public:
 	 */
 	int draw_text_in_hex(const map_location& loc,
 			const std::string& text,
-			size_t font_size,
+			std::size_t font_size,
 			color_t color,
 			int fl_label_id = 0,
 			double x_in_hex = 0.5,
@@ -992,7 +992,7 @@ protected:
 	exclusive_unit_draw_requests_t exclusive_unit_draw_requests_;
 
 	CVideo& video_;
-	size_t currentTeam_;
+	std::size_t currentTeam_;
 	bool dont_show_all_; // const team *viewpoint_;
 	int xpos_, ypos_;
 	// camera_controller camera_controller_;
@@ -1057,7 +1057,7 @@ private:
 
 protected:
 	// TODO sort
-	size_t activeTeam_;
+	std::size_t activeTeam_;
 
 	drawing_queue drawing_queue_;
 

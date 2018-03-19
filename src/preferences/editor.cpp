@@ -58,9 +58,9 @@ namespace editor {
 	}
 
 	namespace {
-		size_t editor_mru_limit()
+		std::size_t editor_mru_limit()
 		{
-			return std::max(size_t(1), lexical_cast_default<size_t>(
+			return std::max(std::size_t(1), lexical_cast_default<std::size_t>(
 					preferences::get("editor_max_recent_files"), 10));
 		}
 

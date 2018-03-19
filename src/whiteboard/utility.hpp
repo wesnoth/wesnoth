@@ -31,7 +31,7 @@ class team;
 namespace wb {
 
 /// @return The current viewing team's index
-size_t viewer_team();
+std::size_t viewer_team();
 
 /// @return The current viewing side's number (i.e. team index + 1)
 int viewer_side();
@@ -52,7 +52,7 @@ unit_const_ptr find_backup_leader(const unit& leader);
  * @return a leader from the specified team who can recruit on the specified hex
  * @retval nullptr if no such leader has been found
  */
-unit* find_recruiter(size_t team_index, const map_location&);
+unit* find_recruiter(std::size_t team_index, const map_location&);
 
 /// Applies the future unit map and @return a pointer to the unit at hex
 /// @retval nullptr if none is visible to the specified viewer side

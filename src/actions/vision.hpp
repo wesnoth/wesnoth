@@ -39,7 +39,7 @@ namespace actions {
 /// (Used by the undo stack as that cannot rely on a unit sticking around, and
 /// we do not really need to copy the entire unit.)
 struct clearer_info {
-	size_t underlying_id;
+	std::size_t underlying_id;
 	int sight_range;
 	bool slowed;
 	movetype::terrain_costs costs;
@@ -76,18 +76,18 @@ public:
 	/// Clears shroud (and fog) around the provided location for @a view_team
 	/// based on @a sight_range, @a costs, and @a slowed.
 	bool clear_unit(const map_location &view_loc, team &view_team,
-	                size_t viewer_id, int sight_range, bool slowed,
+	                std::size_t viewer_id, int sight_range, bool slowed,
 	                const movetype::terrain_costs & costs,
 	                const map_location & real_loc,
 					const std::set<map_location>* known_units = nullptr,
-	                size_t * enemy_count = nullptr, size_t * friend_count = nullptr,
+	                std::size_t * enemy_count = nullptr, std::size_t * friend_count = nullptr,
 	                move_unit_spectator * spectator = nullptr, bool instant = true);
 	/// Clears shroud (and fog) around the provided location for @a view_team
 	/// as if @a viewer was standing there.
 	bool clear_unit(const map_location &view_loc,
 	                const unit &viewer, team &view_team,
 	                const std::set<map_location>* known_units = nullptr,
-	                size_t * enemy_count = nullptr, size_t * friend_count = nullptr,
+	                std::size_t * enemy_count = nullptr, std::size_t * friend_count = nullptr,
 	                move_unit_spectator * spectator = nullptr, bool instant = true);
 	/// Clears shroud (and fog) around the provided location for @a view_team
 	/// as if @a viewer was standing there. Setting @a instant to false
@@ -126,13 +126,13 @@ private:
 
 	/// Clears shroud from a single location.
 	bool clear_loc(team &tm, const map_location &loc, const map_location &view_loc,
-	               const map_location &event_non_loc, size_t viewer_id,
-	               bool check_units, size_t &enemy_count, size_t &friend_count,
+	               const map_location &event_non_loc, std::size_t viewer_id,
+	               bool check_units, std::size_t &enemy_count, std::size_t &friend_count,
 	               move_unit_spectator * spectator = nullptr);
 
 	/// Convenience wrapper for adding sighting data to the sightings_ vector.
 	inline void record_sighting(const unit & seen, const map_location & seen_loc,
-	                            size_t sighter_id, const map_location & sighter_loc);
+	                            std::size_t sighter_id, const map_location & sighter_loc);
 
 private: // data
 	std::map<map_location, int> jamming_;

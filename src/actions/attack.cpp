@@ -815,7 +815,7 @@ private:
 		const map_location loc_;
 		int weapon_;
 		unit_map& units_;
-		size_t id_; /**< unit.underlying_id() */
+		std::size_t id_; /**< unit.underlying_id() */
 		std::string weap_id_;
 		int orig_attacks_;
 		int n_attacks_; /**< Number of attacks left. */
@@ -1666,7 +1666,7 @@ bool backstab_check(const map_location& attacker_loc,
 	}
 
 	// If sides aren't valid teams, then they are enemies.
-	if(size_t(defender->side() - 1) >= teams.size() || size_t(opp->side() - 1) >= teams.size()) {
+	if(std::size_t(defender->side() - 1) >= teams.size() || std::size_t(opp->side() - 1) >= teams.size()) {
 		return true;
 	}
 

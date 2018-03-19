@@ -78,7 +78,7 @@ lua_unit* luaW_checkunit_ref(lua_State *L, int index);
  */
 class lua_unit
 {
-	size_t uid;
+	std::size_t uid;
 	unit_ptr ptr;
 	int side;
 	unit* c_ptr;
@@ -90,9 +90,9 @@ class lua_unit
 	friend lua_unit* luaW_pushlocalunit(lua_State *L, unit& u);
 	static void setmetatable(lua_State *L);
 public:
-	lua_unit(size_t u): uid(u), ptr(), side(0), c_ptr() {}
+	lua_unit(std::size_t u): uid(u), ptr(), side(0), c_ptr() {}
 	lua_unit(unit_ptr u): uid(0), ptr(u), side(0), c_ptr() {}
-	lua_unit(int s, size_t u): uid(u), ptr(), side(s), c_ptr() {}
+	lua_unit(int s, std::size_t u): uid(u), ptr(), side(s), c_ptr() {}
 	lua_unit(unit& u): uid(0), ptr(), side(0), c_ptr(&u) {}
 	~lua_unit();
 

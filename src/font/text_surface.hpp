@@ -37,8 +37,8 @@ public:
 	void set_text(const std::string& str);
 
 	void measure() const;
-	size_t width() const;
-	size_t height() const;
+	std::size_t width() const;
+	std::size_t height() const;
 #ifdef	HAVE_FRIBIDI
 	bool is_rtl() const { return is_rtl_; }	// Right-To-Left alignment
 #endif

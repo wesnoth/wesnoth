@@ -173,7 +173,7 @@ public:
 	 * @returns                   The maximum length of the text. The length of text
 	 *                            should not exceed this value.
 	 */
-	size_t get_maximum_length() const;
+	std::size_t get_maximum_length() const;
 
 	/**
 	 * Gets the largest collection of characters, including the token at position,
@@ -213,7 +213,7 @@ public:
 	 * The text set is UTF-8 so the length of the string might not be the length
 	 * of the text.
 	 */
-	size_t get_length() const { return length_; }
+	std::size_t get_length() const { return length_; }
 
 	/**
 	 * Sets the text to render.
@@ -251,7 +251,7 @@ public:
 
 	pango_text& set_alignment(const PangoAlignment alignment);
 
-	pango_text& set_maximum_length(const size_t maximum_length);
+	pango_text& set_maximum_length(const std::size_t maximum_length);
 
 	bool link_aware() const { return link_aware_; }
 
@@ -350,7 +350,7 @@ private:
 	PangoAlignment alignment_;
 
 	/** The maximum length of the text. */
-	size_t maximum_length_;
+	std::size_t maximum_length_;
 
 	/**
 	 * The text has two dirty states:
@@ -362,7 +362,7 @@ private:
 	mutable bool calculation_dirty_;
 
 	/** Length of the text. */
-	mutable size_t length_;
+	mutable std::size_t length_;
 
 	/**
 	 * Recalculates the text layout.
@@ -390,7 +390,7 @@ private:
 	void rerender(const bool force = false);
 
 	void render(PangoLayout& layout, const PangoRectangle& rect,
-		const size_t surface_buffer_offset, const unsigned stride);
+		const std::size_t surface_buffer_offset, const unsigned stride);
 
 	/**
 	 * Buffer to store the image on.
@@ -413,7 +413,7 @@ private:
 	 *
 	 * @param size                The required size of the buffer.
 	 */
-	void create_surface_buffer(const size_t size) const;
+	void create_surface_buffer(const std::size_t size) const;
 
 	/**
 	 * Sets the markup'ed text.
@@ -456,7 +456,7 @@ private:
 	void format_links(std::string& text, const std::vector<std::string>& links) const;
 
 	/** Hash for the current settings (text, size, etc) configuration. */
-	size_t hash_;
+	std::size_t hash_;
 
 	// Allow specialization of std::hash for pango_text
 	friend struct std::hash<pango_text>;
@@ -471,7 +471,7 @@ private:
  */
 pango_text& get_text_renderer();
 
-using pango_text_cache_t = std::map<size_t, texture>;
+using pango_text_cache_t = std::map<std::size_t, texture>;
 
 /**
  * The text texture cache.
@@ -493,7 +493,7 @@ namespace std
 template<>
 struct hash<font::pango_text>
 {
-	size_t operator()(const font::pango_text& t) const;
+	std::size_t operator()(const font::pango_text& t) const;
 };
 
 } // namespace std

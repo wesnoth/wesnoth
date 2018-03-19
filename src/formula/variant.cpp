@@ -186,7 +186,7 @@ variant& variant::operator=(const variant& v)
 	return *this;
 }
 
-variant variant::operator[](size_t n) const
+variant variant::operator[](std::size_t n) const
 {
 	if(is_callable()) {
 		return *this;
@@ -219,7 +219,7 @@ variant variant::operator[](const variant& v) const
 	} else if(is_list()) {
 		if(v.is_list()) {
 			std::vector<variant> slice;
-			for(size_t i = 0; i < v.num_elements(); ++i) {
+			for(std::size_t i = 0; i < v.num_elements(); ++i) {
 				slice.push_back((*this)[v[i]]);
 			}
 
@@ -273,7 +273,7 @@ bool variant::is_empty() const
 	return value_->is_empty();
 }
 
-size_t variant::num_elements() const
+std::size_t variant::num_elements() const
 {
 	if(!is_list() && !is_map()) {
 		throw type_error(was_expecting("a list or a map", *this));
@@ -572,11 +572,11 @@ variant variant::concatenate(const variant& v) const
 		std::vector<variant> res;
 		res.reserve(num_elements() + v.num_elements());
 
-		for(size_t i = 0; i < num_elements(); ++i) {
+		for(std::size_t i = 0; i < num_elements(); ++i) {
 			res.push_back((*this)[i]);
 		}
 
-		for(size_t i = 0; i < v.num_elements(); ++i) {
+		for(std::size_t i = 0; i < v.num_elements(); ++i) {
 			res.push_back(v[i]);
 		}
 
@@ -660,7 +660,7 @@ variant variant::execute_variant(const variant& var)
 {
 	std::stack<variant> vars;
 	if(var.is_list()) {
-		for(size_t n = 1; n <= var.num_elements(); ++n) {
+		for(std::size_t n = 1; n <= var.num_elements(); ++n) {
 			vars.push(var[var.num_elements() - n]);
 		}
 	} else {

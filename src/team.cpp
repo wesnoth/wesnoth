@@ -491,7 +491,7 @@ int team::minimum_recruit_price() const
 	return info_.minimum_recruit_price;
 }
 
-void team::calculate_enemies(size_t index) const
+void team::calculate_enemies(std::size_t index) const
 {
 	if(!resources::gameboard || index >= resources::gameboard->teams().size()) {
 		return;
@@ -502,7 +502,7 @@ void team::calculate_enemies(size_t index) const
 	}
 }
 
-bool team::calculate_is_enemy(size_t index) const
+bool team::calculate_is_enemy(std::size_t index) const
 {
 	// We're not enemies of ourselves
 	if(&resources::gameboard->teams()[index] == this) {
@@ -659,7 +659,7 @@ bool team::fogged(const map_location& loc) const
 const std::vector<const team::shroud_map*>& team::ally_shroud(const std::vector<team>& teams) const
 {
 	if(ally_shroud_.empty()) {
-		for(size_t i = 0; i < teams.size(); ++i) {
+		for(std::size_t i = 0; i < teams.size(); ++i) {
 			if(!is_enemy(i + 1) && (&(teams[i]) == this || teams[i].share_view() || teams[i].share_maps())) {
 				ally_shroud_.push_back(&(teams[i].shroud_));
 			}
@@ -672,7 +672,7 @@ const std::vector<const team::shroud_map*>& team::ally_shroud(const std::vector<
 const std::vector<const team::shroud_map*>& team::ally_fog(const std::vector<team>& teams) const
 {
 	if(ally_fog_.empty()) {
-		for(size_t i = 0; i < teams.size(); ++i) {
+		for(std::size_t i = 0; i < teams.size(); ++i) {
 			if(!is_enemy(i + 1) && (&(teams[i]) == this || teams[i].share_view())) {
 				ally_fog_.push_back(&(teams[i].fog_));
 			}
@@ -682,7 +682,7 @@ const std::vector<const team::shroud_map*>& team::ally_fog(const std::vector<tea
 	return ally_fog_;
 }
 
-bool team::knows_about_team(size_t index) const
+bool team::knows_about_team(std::size_t index) const
 {
 	const team& t = resources::gameboard->teams()[index];
 
@@ -875,7 +875,7 @@ void team::shroud_map::read(const std::string& str)
 void team::shroud_map::merge(const std::string& str)
 {
 	int x = 0, y = 0;
-	for(size_t i = 1; i < str.length(); ++i) {
+	for(std::size_t i = 1; i < str.length(); ++i) {
 		if(str[i] == '|') {
 			y = 0;
 			x++;
@@ -901,8 +901,8 @@ bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 		}
 
 		const std::vector<std::vector<bool>>& v = m->data_;
-		for(size_t x = 0; x != v.size(); ++x) {
-			for(size_t y = 0; y != v[x].size(); ++y) {
+		for(std::size_t x = 0; x != v.size(); ++x) {
+			for(std::size_t y = 0; y != v[x].size(); ++y) {
 				if(v[x][y]) {
 					cleared |= clear(x, y);
 				}

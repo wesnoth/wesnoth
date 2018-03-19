@@ -320,7 +320,7 @@ std::vector<optional_feature> optional_features_table()
 {
 	std::vector<optional_feature> res = versions.features;
 
-	for(size_t k = 0; k < res.size(); ++k) {
+	for(std::size_t k = 0; k < res.size(); ++k) {
 		res[k].name = _(res[k].name.c_str());
 	}
 	return res;
@@ -360,7 +360,7 @@ bool strlen_comparator(const std::string& a, const std::string& b)
 	return a.length() < b.length();
 }
 
-size_t max_strlen(const std::vector<std::string>& strs)
+std::size_t max_strlen(const std::vector<std::string>& strs)
 {
 	const std::vector<std::string>::const_iterator it =
 			std::max_element(strs.begin(), strs.end(), strlen_comparator);
@@ -374,8 +374,8 @@ std::string library_versions_report()
 {
 	std::ostringstream o;
 
-	const size_t col2_start = max_strlen(versions.names) + 2;
-	const size_t col3_start = max_strlen(versions.compiled) + 1;
+	const std::size_t col2_start = max_strlen(versions.names) + 2;
+	const std::size_t col3_start = max_strlen(versions.compiled) + 1;
 
 	for(unsigned n = 0; n < LIB_COUNT; ++n)
 	{
@@ -389,7 +389,7 @@ std::string library_versions_report()
 
 		o << name << ": ";
 
-		const size_t pos2 = name.length() + 2;
+		const std::size_t pos2 = name.length() + 2;
 		if(pos2 < col2_start) {
 			o << std::string(col2_start - pos2, ' ');
 		}
@@ -397,7 +397,7 @@ std::string library_versions_report()
 		o << compiled;
 
 		if(!linked.empty()) {
-			const size_t pos3 = compiled.length() + 1;
+			const std::size_t pos3 = compiled.length() + 1;
 			if(pos3 < col3_start) {
 				o << std::string(col3_start - pos3, ' ');
 			}
@@ -416,22 +416,22 @@ std::string optional_features_report()
 	// that the context prefixes are stripped.
 	const std::vector<optional_feature>& features = optional_features_table();
 
-	size_t col2_start = 0;
+	std::size_t col2_start = 0;
 
-	for(size_t k = 0; k < features.size(); ++k)
+	for(std::size_t k = 0; k < features.size(); ++k)
 	{
 		col2_start = std::max(col2_start, features[k].name.length() + 2);
 	}
 
 	std::ostringstream o;
 
-	for(size_t k = 0; k < features.size(); ++k)
+	for(std::size_t k = 0; k < features.size(); ++k)
 	{
 		const optional_feature& f = features[k];
 
 		o << f.name << ": ";
 
-		const size_t pos2 = f.name.length() + 2;
+		const std::size_t pos2 = f.name.length() + 2;
 		if(pos2 < col2_start) {
 			o << std::string(col2_start - pos2, ' ');
 		}

@@ -285,8 +285,8 @@ int show_message_dialog(lua_State* L)
 	gui2::dialogs::wml_message_options options;
 	if(!lua_isnoneornil(L, 2)) {
 		luaL_checktype(L, 2, LUA_TTABLE);
-		size_t n = lua_rawlen(L, 2);
-		for(size_t i = 1; i <= n; i++) {
+		std::size_t n = lua_rawlen(L, 2);
+		for(std::size_t i = 1; i <= n; i++) {
 			lua_rawgeti(L, 2, i);
 			t_string short_opt;
 			config opt;
@@ -317,7 +317,7 @@ int show_message_dialog(lua_State* L)
 		lua_getfield(L, 2, "default");
 		if(lua_isnumber(L, -1)) {
 			int i = lua_tointeger(L, -1);
-			if(i < 1 || size_t(i) > n) {
+			if(i < 1 || std::size_t(i) > n) {
 				std::ostringstream error;
 				error << "default= key in options list is not a valid option index (1-" << n << ")";
 				return luaL_argerror(L, 2, error.str().c_str());
@@ -629,7 +629,7 @@ int intf_get_dialog_value(lua_State* L)
 	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(w)) {
 		std::vector<int> path = tree_view->selected_item()->describe_path();
 		lua_createtable(L, path.size(), 0);
-		for(size_t i = 0; i < path.size(); ++i) {
+		for(std::size_t i = 0; i < path.size(); ++i) {
 			lua_pushinteger(L, path[i] + 1);
 			lua_rawseti(L, -2, i + 1);
 		}
@@ -664,7 +664,7 @@ int intf_get_dialog_value(lua_State* L)
 }
 namespace
 {
-	void remove_treeview_node(gui2::tree_view_node& node, size_t pos, int number)
+	void remove_treeview_node(gui2::tree_view_node& node, std::size_t pos, int number)
 	{
 		//Not tested yet.
 		gui2::tree_view& tv = node.get_tree_view();

@@ -64,7 +64,7 @@ namespace
 			previews.push_back(get_advanced_unit(u, advance));
 		}
 
-		size_t num_real_advances = previews.size();
+		std::size_t num_real_advances = previews.size();
 		bool always_display = false;
 
 		for (const config& advance : u.get_modification_advances()) {
@@ -90,7 +90,7 @@ namespace
 		return 0;
 	}
 
-	bool animate_unit_advancement(const map_location &loc, size_t choice, const bool &fire_event, const bool animate)
+	bool animate_unit_advancement(const map_location &loc, std::size_t choice, const bool &fire_event, const bool animate)
 	{
 		const events::command_disabler cmd_disabler;
 

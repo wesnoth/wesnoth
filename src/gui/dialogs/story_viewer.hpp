@@ -80,8 +80,8 @@ private:
 
 	storyscreen::controller::part_pointer_type current_part_;
 
-	size_t timer_id_;
-	size_t next_draw_;
+	std::size_t timer_id_;
+	std::size_t next_draw_;
 
 	int fade_step_;
 

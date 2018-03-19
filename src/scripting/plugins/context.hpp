@@ -59,14 +59,14 @@ public:
 
 	void set_callback(const std::string & name, callback_function);
 	void set_callback(const std::string & name, std::function<void(config)> function, bool preserves_context);
-	size_t erase_callback(const std::string & name);
-	size_t clear_callbacks();
+	std::size_t erase_callback(const std::string & name);
+	std::size_t clear_callbacks();
 
 	void set_accessor(const std::string & name, accessor_function);
 	void set_accessor_string(const std::string & name, std::function<std::string(config)>);	//helpers which create a config from a simple type
 	void set_accessor_int(const std::string & name, std::function<int(config)>);
-	size_t erase_accessor(const std::string & name);
-	size_t clear_accessors();
+	std::size_t erase_accessor(const std::string & name);
+	std::size_t clear_accessors();
 
 	friend class application_lua_kernel;
 

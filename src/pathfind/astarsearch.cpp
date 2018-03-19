@@ -128,11 +128,11 @@ public:
 };
 
 class indexer {
-	size_t w_;
+	std::size_t w_;
 
 public:
-	indexer(size_t w) : w_(w) { }
-	size_t operator()(const map_location& loc) const {
+	indexer(std::size_t w) : w_(w) { }
+	std::size_t operator()(const map_location& loc) const {
 		return loc.y * w_ + loc.x;
 	}
 };
@@ -141,7 +141,7 @@ public:
 
 plain_route a_star_search(const map_location& src, const map_location& dst,
                           double stop_at, const cost_calculator& calc,
-                          const size_t width, const size_t height,
+                          const std::size_t width, const std::size_t height,
                           const teleport_map *teleports, bool border) {
 	//----------------- PRE_CONDITIONS ------------------
 	assert(src.valid(width, height, border));

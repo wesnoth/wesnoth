@@ -470,7 +470,7 @@ void move_result::do_execute()
 	move_spectator.set_unit(resources::gameboard->units().find(from_));
 
 	if (from_ != to_) {
-		size_t num_steps = ::actions::move_unit_and_record(
+		std::size_t num_steps = ::actions::move_unit_and_record(
 			/*std::vector<map_location> steps*/ route_->steps,
 			/*::actions::undo_list* undo_stack*/ nullptr,
 			/*bool continue_move*/ true, ///@todo 1.9 set to false after implementing interrupt awareness

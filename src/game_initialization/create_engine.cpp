@@ -518,7 +518,7 @@ const create_engine::extras_metadata& create_engine::current_era() const
 	return *get_const_extras_by_type(ERA)[current_era_index_];
 }
 
-void create_engine::set_current_level(const size_t index)
+void create_engine::set_current_level(const std::size_t index)
 {
 	try {
 		current_level_index_ = type_map_.at(current_level_type_.v).games_filtered.at(index);
@@ -542,7 +542,7 @@ void create_engine::set_current_level(const size_t index)
 	}
 }
 
-void create_engine::set_current_era_index(const size_t index, bool force)
+void create_engine::set_current_era_index(const std::size_t index, bool force)
 {
 	current_era_index_ = index;
 
@@ -652,7 +652,7 @@ void create_engine::init_all_levels()
 
 		// User maps.
 		int dep_index_offset = 0;
-		for(size_t i = 0; i < user_map_names_.size(); i++)
+		for(std::size_t i = 0; i < user_map_names_.size(); i++)
 		{
 			config user_map_data = gen_mp_data;
 			user_map_data["map_data"] = filesystem::read_map(user_map_names_[i]);
@@ -686,7 +686,7 @@ void create_engine::init_all_levels()
 
 		// User made scenarios.
 		dep_index_offset = 0;
-		for(size_t i = 0; i < user_scenario_names_.size(); i++)
+		for(std::size_t i = 0; i < user_scenario_names_.size(); i++)
 		{
 			config data;
 			try {
@@ -810,14 +810,14 @@ std::vector<create_engine::level_ptr> create_engine::get_levels_by_type(level::T
     auto& g_list = type_map_.at(type.v);
 
 	std::vector<level_ptr> levels;
-	for(size_t level : g_list.games_filtered) {
+	for(std::size_t level : g_list.games_filtered) {
 		levels.push_back(g_list.games[level]);
 	}
 
 	return levels;
 }
 
-std::vector<size_t> create_engine::get_filtered_level_indices(level::TYPE type) const
+std::vector<std::size_t> create_engine::get_filtered_level_indices(level::TYPE type) const
 {
 	return type_map_.at(type.v).games_filtered;
 }

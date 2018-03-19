@@ -323,7 +323,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 		return true;
 
 	case hotkey::HOTKEY_SURRENDER: {
-		size_t humans_notme_cnt = 0;
+		std::size_t humans_notme_cnt = 0;
 		for(const auto& t : play_controller_.get_teams_const()) {
 			if(t.is_network_human()) {
 				++humans_notme_cnt;

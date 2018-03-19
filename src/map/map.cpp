@@ -178,7 +178,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid)
 int gamemap::read_header(const std::string& data)
 {
 	// Test whether there is a header section
-	size_t header_offset = data.find("\n\n");
+	std::size_t header_offset = data.find("\n\n");
 	if(header_offset == std::string::npos) {
 		// For some reason Windows will fail to load a file with \r\n
 		// lineending properly no problems on Linux with those files.
@@ -186,7 +186,7 @@ int gamemap::read_header(const std::string& data)
 		// the second \r\n to the map, but that's no problem.
 		header_offset = data.find("\r\n\r\n");
 	}
-	const size_t comma_offset = data.find(",");
+	const std::size_t comma_offset = data.find(",");
 	// The header shouldn't contain commas, so if the comma is found
 	// before the header, we hit a \n\n inside or after a map.
 	// This is no header, so don't parse it as it would be.
@@ -235,7 +235,7 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, map_location lo
 	int ypos = loc.y;
 	//const config::const_child_itors &rules = rules_cfg.child_range("rule");
 	std::vector<overlay_rule> rules(rules_cfg.child_count("rule"));
-	for(size_t i = 0; i <rules.size(); ++i)
+	for(std::size_t i = 0; i <rules.size(); ++i)
 	{
 		const config& cfg = rules_cfg.child("rule", i);
 		rules[i].old_ = t_translation::read_list(cfg["old"]);

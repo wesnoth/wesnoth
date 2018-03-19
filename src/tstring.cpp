@@ -47,9 +47,9 @@ std::vector<std::string> id_to_textdomain;
 std::map<std::string, unsigned int> textdomain_to_id;
 }
 
-size_t t_string_base::hash_value() const
+std::size_t t_string_base::hash_value() const
 {
-	size_t seed = 0;
+	std::size_t seed = 0;
 	boost::hash_combine(seed, value_);
 	boost::hash_combine(seed, translatable_);
 	boost::hash_combine(seed, last_untranslatable_);

@@ -274,7 +274,7 @@ std::string encode_binary(const std::string& str)
 {
 	std::string res;
 	res.resize(str.size());
-	size_t n = 0;
+	std::size_t n = 0;
 	for(std::string::const_iterator j = str.begin(); j != str.end(); ++j) {
 		if(needs_escaping(*j)) {
 			res.resize(res.size()+1);
@@ -292,7 +292,7 @@ std::string unencode_binary(const std::string& str)
 {
 	std::string res(str.size(), '\0');
 
-	size_t n = 0;
+	std::size_t n = 0;
 	for(std::string::const_iterator j = str.begin(); j != str.end(); ) {
 		char c = *j++;
 		if((c == escape_char) && (j != str.end())) {

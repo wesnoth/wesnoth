@@ -62,9 +62,9 @@ public:
 
 	/***** ***** ***** ***** expose some functions ***** ***** ***** *****/
 
-	void set_maximum_length(const size_t maximum_length);
+	void set_maximum_length(const std::size_t maximum_length);
 
-	size_t get_length() const
+	std::size_t get_length() const
 	{
 		return text_.get_length();
 	}
@@ -115,7 +115,7 @@ public:
 	 *                            direction as well; otherwise the selection and
 	 *                            cursor extend towards the end.
 	 */
-	void set_selection(size_t start, int length);
+	void set_selection(std::size_t start, int length);
 
 protected:
 	/**
@@ -172,7 +172,7 @@ protected:
 	 * @param select              Select the text from the original cursor
 	 *                            position till the new position?
 	 */
-	void set_cursor(const size_t offset, const bool select);
+	void set_cursor(const std::size_t offset, const bool select);
 
 	/**
 	 * Inserts a character at the cursor.
@@ -242,24 +242,24 @@ protected:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	size_t get_selection_start() const
+	std::size_t get_selection_start() const
 	{
 		return selection_start_;
 	}
-	void set_selection_start(const size_t selection_start);
+	void set_selection_start(const std::size_t selection_start);
 
-	size_t get_selection_length() const
+	std::size_t get_selection_length() const
 	{
 		return selection_length_;
 	}
 	void set_selection_length(const int selection_length);
 
-	size_t get_composition_start() const
+	std::size_t get_composition_start() const
 	{
 		return ime_start_point_;
 	}
 
-	size_t get_composition_length() const
+	std::size_t get_composition_length() const
 	{
 		return ime_length_;
 	}
@@ -305,7 +305,7 @@ private:
 	std::string text_cached_;
 
 	/** Start of the selected text. */
-	size_t selection_start_;
+	std::size_t selection_start_;
 
 	/**
 	 * Length of the selected text.
@@ -321,7 +321,7 @@ private:
 	int ime_start_point_;
 	int ime_length_;
 
-	size_t cursor_timer_;
+	std::size_t cursor_timer_;
 
 	unsigned short cursor_alpha_;
 	unsigned short cursor_blink_rate_ms_;

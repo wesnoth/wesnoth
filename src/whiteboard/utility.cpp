@@ -37,7 +37,7 @@
 
 namespace wb {
 
-size_t viewer_team()
+std::size_t viewer_team()
 {
 	return display::get_singleton()->viewing_team();
 }
@@ -76,7 +76,7 @@ unit_const_ptr find_backup_leader(const unit & leader)
 	return unit_const_ptr();
 }
 
-unit* find_recruiter(size_t team_index, const map_location& hex)
+unit* find_recruiter(std::size_t team_index, const map_location& hex)
 {
 	if ( !resources::gameboard->map().is_castle(hex) )
 		return nullptr;
@@ -167,7 +167,7 @@ bool team_has_visible_plan(team &t)
 void for_each_action(std::function<void(action*)> function, team_filter team_filter)
 {
 	bool end = false;
-	for(size_t turn=0; !end; ++turn) {
+	for(std::size_t turn=0; !end; ++turn) {
 		end = true;
 		for(team &side : resources::gameboard->teams()) {
 			side_actions &actions = *side.get_side_actions();
@@ -184,7 +184,7 @@ void for_each_action(std::function<void(action*)> function, team_filter team_fil
 action_ptr find_action_at(map_location hex, team_filter team_filter)
 {
 	action_ptr result;
-	size_t result_turn = std::numeric_limits<size_t>::max();
+	std::size_t result_turn = std::numeric_limits<std::size_t>::max();
 
 	for(team &side : resources::gameboard->teams()) {
 		side_actions &actions = *side.get_side_actions();
@@ -194,7 +194,7 @@ action_ptr find_action_at(map_location hex, team_filter team_filter)
 				continue;
 			}
 
-			size_t chall_turn = actions.get_turn(chall);
+			std::size_t chall_turn = actions.get_turn(chall);
 			if(chall_turn < result_turn) {
 				result = *chall;
 				result_turn = chall_turn;

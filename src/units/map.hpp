@@ -117,7 +117,7 @@ class unit_map
 	 * The map entry is removed iff the reference counter equals zero and there are no more
 	 * iterators pointing to this unit.
 	 */
-	typedef std::map<size_t, unit_pod> umap;
+	typedef std::map<std::size_t, unit_pod> umap;
 
 	/** Map of location to umap iterator. */
 	typedef std::unordered_map<map_location, umap::iterator> lmap;
@@ -371,7 +371,7 @@ public:
 	typedef unit_iterator iterator;
 	typedef const_unit_iterator const_iterator;
 
-	unit_iterator find(size_t id);
+	unit_iterator find(std::size_t id);
 	unit_iterator find(const map_location& loc);
 
 	const_unit_iterator find(const map_location& loc) const
@@ -379,7 +379,7 @@ public:
 		return const_cast<unit_map*>(this)->find(loc);
 	}
 
-	const_unit_iterator find(size_t id) const
+	const_unit_iterator find(std::size_t id) const
 	{
 		return const_cast<unit_map*>(this)->find(id);
 	}
@@ -397,7 +397,7 @@ public:
 
 	std::vector<const_unit_iterator> find_leaders(int side) const;
 
-	size_t count(const map_location& loc) const
+	std::size_t count(const map_location& loc) const
 	{
 		return lmap_.count(loc);
 	}
@@ -422,12 +422,12 @@ public:
 		return make_const_unit_iterator(umap_.end());
 	}
 
-	size_t size() const
+	std::size_t size() const
 	{
 		return lmap_.size();
 	}
 
-	size_t num_iters() const;
+	std::size_t num_iters() const;
 
 	bool empty() const
 	{
@@ -494,14 +494,14 @@ public:
 	 * Erases the unit at location @a l, if any.
 	 * @returns the number of erased units (0 or 1).
 	 */
-	size_t erase(const map_location& l);
+	std::size_t erase(const map_location& l);
 
 	/**
 	 * Erases a unit given by a pointer or an iterator.
 	 * @pre The unit is on the map.
 	 */
 	template<typename T>
-	size_t erase(const T& iter);
+	std::size_t erase(const T& iter);
 
 	/**
 	 * Extracts a unit from the map.
@@ -585,7 +585,7 @@ private:
 void swap(unit_map& lhs, unit_map& rhs);
 
 template<typename T>
-size_t unit_map::erase(const T& iter)
+std::size_t unit_map::erase(const T& iter)
 {
 	assert(iter.valid());
 

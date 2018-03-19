@@ -366,7 +366,7 @@ public:
 
 	bool from_indexed(param_t state) const
 	{
-		return state.child_->child_count(state.key_) > static_cast<size_t>(state.index_);
+		return state.child_->child_count(state.key_) > static_cast<std::size_t>(state.index_);
 	}
 
 	bool from_start(param_t) const
@@ -415,8 +415,8 @@ public:
 			++size_diff;
 		}
 
-		size_t index = 0;
-		for(index = 0; index < static_cast<size_t>(size_diff); ++index) {
+		std::size_t index = 0;
+		for(index = 0; index < static_cast<std::size_t>(size_diff); ++index) {
 			child.add_child_at(key, config(), startindex + index).swap(datasource_[index]);
 		}
 
@@ -484,7 +484,7 @@ public:
 		}
 
 		// move datasource_ -> datatemp
-		for(size_t index = 0; index < datasource_.size(); ++index) {
+		for(std::size_t index = 0; index < datasource_.size(); ++index) {
 			datatemp.add_child(key).swap(datasource_[index]);
 		}
 

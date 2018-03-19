@@ -154,8 +154,8 @@ void init_help() {
 	// needed to create the help topics
 	unit_types.build_all(unit_type::HELP_INDEXED);
 
-	if(preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
-		preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
+	if(preferences::encountered_units().size() != std::size_t(last_num_encountered_units) ||
+		preferences::encountered_terrains().size() != std::size_t(last_num_encountered_terrains) ||
 		last_debug_state != game_config::debug ||
 		last_num_encountered_units < 0) {
 		// More units or terrains encountered, update the contents.

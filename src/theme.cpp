@@ -34,15 +34,15 @@ namespace
 const int XDim = 1024;
 const int YDim = 768;
 
-const size_t DefaultFontSize = font::SIZE_NORMAL;
+const std::size_t DefaultFontSize = font::SIZE_NORMAL;
 const color_t DefaultFontRGB {200, 200, 200};
 
 _rect ref_rect {0, 0, 0, 0};
 }
 
-static size_t compute(std::string expr, size_t ref1, size_t ref2 = 0)
+static std::size_t compute(std::string expr, std::size_t ref1, std::size_t ref2 = 0)
 {
-	size_t ref = 0;
+	std::size_t ref = 0;
 	if(expr[0] == '=') {
 		ref = ref1;
 		expr = expr.substr(1);
@@ -323,10 +323,10 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 			break;
 		case TOP_ANCHORED:
 			relative_loc_.x = loc_.x;
-			relative_loc_.w = screen.w - std::min<size_t>(XDim - loc_.w, screen.w);
+			relative_loc_.w = screen.w - std::min<std::size_t>(XDim - loc_.w, screen.w);
 			break;
 		case BOTTOM_ANCHORED:
-			relative_loc_.x = screen.w - std::min<size_t>(XDim - loc_.x, screen.w);
+			relative_loc_.x = screen.w - std::min<std::size_t>(XDim - loc_.x, screen.w);
 			relative_loc_.w = loc_.w;
 			break;
 		case PROPORTIONAL:
@@ -344,10 +344,10 @@ SDL_Rect& theme::object::location(const SDL_Rect& screen) const
 			break;
 		case TOP_ANCHORED:
 			relative_loc_.y = loc_.y;
-			relative_loc_.h = screen.h - std::min<size_t>(YDim - loc_.h, screen.h);
+			relative_loc_.h = screen.h - std::min<std::size_t>(YDim - loc_.h, screen.h);
 			break;
 		case BOTTOM_ANCHORED:
-			relative_loc_.y = screen.h - std::min<size_t>(YDim - loc_.y, screen.h);
+			relative_loc_.y = screen.h - std::min<std::size_t>(YDim - loc_.y, screen.h);
 			relative_loc_.h = loc_.h;
 			break;
 		case PROPORTIONAL:
@@ -543,7 +543,7 @@ theme::action::action(const config& cfg)
 {
 }
 
-const std::string theme::action::tooltip(size_t index) const
+const std::string theme::action::tooltip(std::size_t index) const
 {
 	std::stringstream result;
 	if(auto_tooltip_ && tooltip_.empty() && items_.size() > index) {

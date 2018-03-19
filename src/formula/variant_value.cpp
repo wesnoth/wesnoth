@@ -301,7 +301,7 @@ variant variant_list::list_op(value_base_ptr second, std::function<variant(varia
 	std::vector<variant> res;
 	res.reserve(num_elements());
 
-	for(size_t i = 0; i < num_elements(); ++i) {
+	for(std::size_t i = 0; i < num_elements(); ++i) {
 		res.push_back(op_func(get_container()[i], other_list->get_container()[i]));
 	}
 
@@ -316,7 +316,7 @@ bool variant_list::equals(variant_value_base& other) const
 		return false;
 	}
 
-	for(size_t n = 0; n < num_elements(); ++n) {
+	for(std::size_t n = 0; n < num_elements(); ++n) {
 		if(get_container()[n] != other_container[n]) {
 			return false;
 		}
@@ -329,7 +329,7 @@ bool variant_list::less_than(variant_value_base& other) const
 {
 	const auto& other_container = value_ref_cast<variant_list>(other).get_container();
 
-	for(size_t n = 0; n != num_elements() && n != other.num_elements(); ++n) {
+	for(std::size_t n = 0; n != num_elements() && n != other.num_elements(); ++n) {
 		if(get_container()[n] < other_container[n]) {
 			return true;
 		} else if(get_container()[n] > other_container[n]) {

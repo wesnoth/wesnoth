@@ -51,8 +51,8 @@ private:
 	const gamemap & map;
 	const std::vector<team> & teams;
 	halo::manager & halo_man;
-	size_t viewing_team;
-	size_t playing_team;
+	std::size_t viewing_team;
+	std::size_t playing_team;
 	const team & viewing_team_ref;
 	const team & playing_team_ref;
 	bool is_blindfolded;
@@ -70,5 +70,5 @@ public:
 
 private:
 	/** draw a health/xp bar of a unit */
-	void draw_bar(int xpos, int ypos, size_t height, double filled, color_t col, fixed_t alpha) const;
+	void draw_bar(int xpos, int ypos, std::size_t height, double filled, color_t col, fixed_t alpha) const;
 };

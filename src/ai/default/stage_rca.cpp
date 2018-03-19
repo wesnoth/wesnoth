@@ -144,9 +144,9 @@ bool candidate_action_evaluation_loop::do_play_stage()
 
 void candidate_action_evaluation_loop::remove_completed_cas()
 {
-	std::vector<size_t> tbr; // indexes of elements to be removed
+	std::vector<std::size_t> tbr; // indexes of elements to be removed
 
-	for (size_t i = 0; i != candidate_actions_.size(); ++i)
+	for (std::size_t i = 0; i != candidate_actions_.size(); ++i)
 	{
 		if (candidate_actions_[i]->to_be_removed())
 		{
@@ -154,10 +154,10 @@ void candidate_action_evaluation_loop::remove_completed_cas()
 		}
 	}
 
-	for (size_t i = 0; i != tbr.size(); ++i)
+	for (std::size_t i = 0; i != tbr.size(); ++i)
 	{
 		// we should go downwards, so that index shifts don't affect us
-		size_t index = tbr.size() - i - 1; // downcounting for is not possible using unsigned counters, so we hack around
+		std::size_t index = tbr.size() - i - 1; // downcounting for is not possible using unsigned counters, so we hack around
 		std::string path = "stage[" + this->get_id() + "].candidate_action[" + candidate_actions_[tbr[index]]->get_name() + "]";
 
 		config cfg = config();

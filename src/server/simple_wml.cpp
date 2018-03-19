@@ -30,7 +30,7 @@ static lg::log_domain log_config("config");
 
 namespace simple_wml {
 
-size_t document::document_size_limit = 40000000;
+std::size_t document::document_size_limit = 40000000;
 
 namespace {
 
@@ -55,12 +55,12 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 		filter.push(stream);
 		state = 3;
 
-		const size_t chunk_size = input.size() * 10;
+		const std::size_t chunk_size = input.size() * 10;
 		nalloc = chunk_size;
 		std::vector<char> buf(chunk_size);
 		state = 4;
-		size_t len = 0;
-		size_t pos = 0;
+		std::size_t len = 0;
+		std::size_t pos = 0;
 		while(filter.good() && (len = filter.read(&buf[pos], chunk_size).gcount()) == chunk_size) {
 			if(pos + chunk_size > document::document_size_limit) {
 				throw error("WML document exceeded size limit during decompression");
@@ -442,7 +442,7 @@ node& node::set_attr_int(const char* key, int value)
 	return set_attr_dup(key, temp.c_str());
 }
 
-node& node::add_child_at(const char* name, size_t index)
+node& node::add_child_at(const char* name, std::size_t index)
 {
 	set_dirty();
 
@@ -474,7 +474,7 @@ node& node::add_child(const char* name)
 	return *list.back();
 }
 
-void node::remove_child(const string_span& name, size_t index)
+void node::remove_child(const string_span& name, std::size_t index)
 {
 	set_dirty();
 
@@ -598,7 +598,7 @@ void node::check_ordered_children() const
 #endif // CHECK_ORDERED_CHILDREN
 }
 
-void node::remove_child(const char* name, size_t index)
+void node::remove_child(const char* name, std::size_t index)
 {
 	remove_child(string_span(name), index);
 }
@@ -705,7 +705,7 @@ int node::output_size() const
 		res += i->first.size() + i->second.size() + 4;
 	}
 
-	size_t count_children = 0;
+	std::size_t count_children = 0;
 	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
 		for(child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
 			res += i->first.size()*2 + 7;
@@ -850,7 +850,7 @@ void node::apply_diff(const node& diff)
 
 	const child_list& child_changes = diff.children("change_child");
 	for(child_list::const_iterator i = child_changes.begin(); i != child_changes.end(); ++i) {
-		const size_t index = (**i)["index"].to_int();
+		const std::size_t index = (**i)["index"].to_int();
 		for(child_map::const_iterator j = (*i)->children_.begin(); j != (*i)->children_.end(); ++j) {
 			const string_span& name = j->first;
 			for(child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
@@ -866,7 +866,7 @@ void node::apply_diff(const node& diff)
 
 	const child_list& child_inserts = diff.children("insert_child");
 	for(child_list::const_iterator i = child_inserts.begin(); i != child_inserts.end(); ++i) {
-		const size_t index = (**i)["index"].to_int();
+		const std::size_t index = (**i)["index"].to_int();
 		for(child_map::const_iterator j = (*i)->children_.begin(); j != (*i)->children_.end(); ++j) {
 			const string_span& name = j->first;
 			for(child_list::const_iterator k = j->second.begin(); k != j->second.end(); ++k) {
@@ -879,7 +879,7 @@ void node::apply_diff(const node& diff)
 
 	const child_list& child_deletes = diff.children("delete_child");
 	for(child_list::const_iterator i = child_deletes.begin(); i != child_deletes.end(); ++i) {
-		const size_t index = (**i)["index"].to_int();
+		const std::size_t index = (**i)["index"].to_int();
 		for(child_map::const_iterator j = (*i)->children_.begin(); j != (*i)->children_.end(); ++j) {
 			if(j->second.empty()) {
 				continue;

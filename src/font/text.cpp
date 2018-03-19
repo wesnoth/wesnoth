@@ -176,13 +176,13 @@ point pango_text::get_cursor_position(
 			return point(0, 0);
 		}
 
-		for(size_t i = 0; i < line; ++i) {
+		for(std::size_t i = 0; i < line; ++i) {
 			pango_layout_iter_next_line(itor.get());
 		}
 	}
 
 	// Go the wanted column.
-	for(size_t i = 0; i < column; ++i) {
+	for(std::size_t i = 0; i < column; ++i) {
 		if(!pango_layout_iter_next_char(itor.get())) {
 			// It seems that the documentation is wrong and causes and off by
 			// one error... the result should be false if already at the end of
@@ -205,7 +205,7 @@ point pango_text::get_cursor_position(
 	return point(PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y));
 }
 
-size_t pango_text::get_maximum_length() const
+std::size_t pango_text::get_maximum_length() const
 {
 	return maximum_length_;
 }
@@ -225,16 +225,16 @@ std::string pango_text::get_token(const point & position, const char * delim) co
 
 	std::string d(delim);
 
-	if (index < 0 || (static_cast<size_t>(index) >= txt.size()) || d.find(txt.at(index)) != std::string::npos) {
+	if (index < 0 || (static_cast<std::size_t>(index) >= txt.size()) || d.find(txt.at(index)) != std::string::npos) {
 		return ""; // if the index is out of bounds, or the index character is a delimiter, return nothing
 	}
 
-	size_t l = index;
+	std::size_t l = index;
 	while (l > 0 && (d.find(txt.at(l-1)) == std::string::npos)) {
 		--l;
 	}
 
-	size_t r = index + 1;
+	std::size_t r = index + 1;
 	while (r < txt.size() && (d.find(txt.at(r)) == std::string::npos)) {
 		++r;
 	}
@@ -282,7 +282,7 @@ point pango_text::get_column_line(const point& position) const
 	 * text is available. Haven't found what the best thing to do would be.
 	 * Until that time leave it as is.
 	 */
-	for(size_t i = 0; ; ++i) {
+	for(std::size_t i = 0; ; ++i) {
 		const int pos = this->get_cursor_position(i, line).x;
 
 		if(pos == offset) {
@@ -444,7 +444,7 @@ pango_text &pango_text::set_alignment(const PangoAlignment alignment)
 	return *this;
 }
 
-pango_text& pango_text::set_maximum_length(const size_t maximum_length)
+pango_text& pango_text::set_maximum_length(const std::size_t maximum_length)
 {
 	if(maximum_length != maximum_length_) {
 		maximum_length_ = maximum_length;
@@ -626,7 +626,7 @@ static void from_cairo_format(uint32_t & c)
 	c = (static_cast<uint32_t>(a) << 24) | (static_cast<uint32_t>(r) << 16) | (static_cast<uint32_t>(g) << 8) | static_cast<uint32_t>(b);
 }
 
-void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const size_t surface_buffer_offset, const unsigned stride)
+void pango_text::render(PangoLayout& layout, const PangoRectangle& rect, const std::size_t surface_buffer_offset, const unsigned stride)
 {
 	int width = rect.x + rect.width;
 	int height = rect.y + rect.height;
@@ -758,7 +758,7 @@ void pango_text::rerender(const bool force)
 	}
 }
 
-void pango_text::create_surface_buffer(const size_t size) const
+void pango_text::create_surface_buffer(const std::size_t size) const
 {
 	// Clear surface.
 	surface_.assign(nullptr);
@@ -799,7 +799,7 @@ std::vector<std::string> pango_text::find_links(utils::string_view text) const {
 	std::vector<std::string> links;
 
 	int last_delim = -1;
-	for (size_t index = 0; index < text.size(); ++index) {
+	for (std::size_t index = 0; index < text.size(); ++index) {
 		if (delim.find(text[index]) != std::string::npos) {
 			// want to include chars from range since last token, don't want to include any delimiters
 			utils::string_view token = text.substr(last_delim + 1, index - last_delim - 1);
@@ -902,7 +902,7 @@ pango_text& get_text_renderer()
 
 namespace std
 {
-size_t hash<font::pango_text>::operator()(const font::pango_text& t) const
+std::size_t hash<font::pango_text>::operator()(const font::pango_text& t) const
 {
 	using boost::hash_value;
 	using boost::hash_combine;
@@ -912,7 +912,7 @@ size_t hash<font::pango_text>::operator()(const font::pango_text& t) const
 	// http://isthe.com/chongo/tech/comp/fnv/#FNV-1a
 	//
 
-	size_t hash = 2166136261;
+	std::size_t hash = 2166136261;
 	for(const char& c : t.text_) {
 		hash |= c;
 		hash *= 16777619;

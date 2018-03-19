@@ -146,7 +146,7 @@ public:
 	 * @throw std::out_of_range If the number of components is less than
 	 *                          <tt>index - 1</tt>.
 	 */
-	unsigned int get_component(size_t index) const
+	unsigned int get_component(std::size_t index) const
 	{
 		return nums_.at(index);
 	}
@@ -160,7 +160,7 @@ public:
 	 * @throw std::out_of_range If the number of components is less than
 	 *                          <tt>index - 1</tt>.
 	 */
-	void set_component(size_t index, unsigned int value)
+	void set_component(std::size_t index, unsigned int value)
 	{
 		nums_.at(index) = value;
 	}

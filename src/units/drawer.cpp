@@ -301,7 +301,7 @@ void unit_drawer::redraw_unit(const unit & u) const
 		const image::locator* orb_img = nullptr;
 
 
-		if(static_cast<size_t>(side) != viewing_team + 1) {
+		if(static_cast<std::size_t>(side) != viewing_team + 1) {
 			if(disp.team_valid() && viewing_team_ref.is_enemy(side)) {
 				if(preferences::show_enemy_orb() && !u.incapacitated()) {
 					orb_img = &enemy_orb;
@@ -391,7 +391,7 @@ void unit_drawer::redraw_unit(const unit & u) const
 	ac.refreshing_ = false;
 }
 
-void unit_drawer::draw_bar(int xpos, int ypos, size_t height, double filled, color_t col, fixed_t alpha) const
+void unit_drawer::draw_bar(int xpos, int ypos, std::size_t height, double filled, color_t col, fixed_t alpha) const
 {
 	// Magic width number
 	static unsigned int bar_width = 4;
@@ -414,7 +414,7 @@ void unit_drawer::draw_bar(int xpos, int ypos, size_t height, double filled, col
 	bar_rect.h = height     * zoom_factor;
 
 	filled = utils::clamp<double>(filled, 0.0, 1.0);
-	const size_t unfilled = static_cast<size_t>(bar_rect.h * (1.0 - filled));
+	const std::size_t unfilled = static_cast<std::size_t>(bar_rect.h * (1.0 - filled));
 
 	// Filled area dimensions.
 	SDL_Rect fill_rect;

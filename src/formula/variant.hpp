@@ -46,10 +46,10 @@ public:
 
 	variant& operator=(const variant& v);
 
-	variant operator[](size_t n) const;
+	variant operator[](std::size_t n) const;
 	variant operator[](const variant& v) const;
 
-	size_t num_elements() const;
+	std::size_t num_elements() const;
 	bool is_empty() const;
 
 	variant get_member(const std::string& name) const;

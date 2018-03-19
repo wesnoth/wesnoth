@@ -25,7 +25,7 @@ namespace gui {
 class textbox : public scrollarea
 {
 public:
-	textbox(CVideo &video, int width, const std::string& text="", bool editable=true, size_t max_size = 256, int font_size = font::SIZE_PLUS, double alpha = 0.4, double alpha_focus = 0.2, const bool auto_join = true);
+	textbox(CVideo &video, int width, const std::string& text="", bool editable=true, std::size_t max_size = 256, int font_size = font::SIZE_PLUS, double alpha = 0.4, double alpha_focus = 0.2, const bool auto_join = true);
 	virtual ~textbox();
 
 	const std::string text() const;
@@ -57,7 +57,7 @@ protected:
 private:
 	virtual void handle_text_changed(const ucs4::string&) {}
 
-	size_t max_size_;
+	std::size_t max_size_;
 
 	int font_size_;
 
@@ -85,7 +85,7 @@ private:
 
 	bool wrap_;
 
-	size_t line_height_, yscroll_;
+	std::size_t line_height_, yscroll_;
 
 	double alpha_;
 	double alpha_focus_;

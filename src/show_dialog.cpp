@@ -189,7 +189,7 @@ dialog_frame::dimension_measurements dialog_frame::layout(int x, int y, int w, i
 		dim_.button_row.w += ButtonHPadding;
 	}
 
-	size_t buttons_width = dim_.button_row.w;
+	std::size_t buttons_width = dim_.button_row.w;
 
 	if(help_button_ != nullptr) {
 		buttons_width += help_button_->width() + ButtonHPadding*2;

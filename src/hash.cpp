@@ -36,13 +36,13 @@ namespace {
 
 const std::string hash_prefix = "$H$";
 
-template<size_t len>
+template<std::size_t len>
 std::string encode_hash(const std::array<uint8_t, len>& bytes) {
 	utils::byte_string_view view{bytes.data(), len};
 	return crypt64::encode(view);
 }
 
-template<size_t len>
+template<std::size_t len>
 std::string hexencode_hash(const std::array<uint8_t, len>& input) {
 	std::ostringstream sout;
 	sout << std::hex;

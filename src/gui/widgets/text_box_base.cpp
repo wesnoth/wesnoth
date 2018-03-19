@@ -87,7 +87,7 @@ unsigned text_box_base::get_state() const
 	return state_;
 }
 
-void text_box_base::set_maximum_length(const size_t maximum_length)
+void text_box_base::set_maximum_length(const std::size_t maximum_length)
 {
 	if(maximum_length == 0) {
 		return;
@@ -120,7 +120,7 @@ void text_box_base::set_value(const std::string& text)
 	}
 }
 
-void text_box_base::set_cursor(const size_t offset, const bool select)
+void text_box_base::set_cursor(const std::size_t offset, const bool select)
 {
 	reset_cursor_state();
 
@@ -203,7 +203,7 @@ void text_box_base::paste_selection(const bool mouse)
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
-void text_box_base::set_selection_start(const size_t selection_start)
+void text_box_base::set_selection_start(const std::size_t selection_start)
 {
 	if(selection_start != selection_start_) {
 		selection_start_ = selection_start;
@@ -217,9 +217,9 @@ void text_box_base::set_selection_length(const int selection_length)
 	}
 }
 
-void text_box_base::set_selection(size_t start, int length)
+void text_box_base::set_selection(std::size_t start, int length)
 {
-	const size_t text_size = text_.get_length();
+	const std::size_t text_size = text_.get_length();
 
 	if(start >= text_size) {
 		start = text_size;
@@ -232,8 +232,8 @@ void text_box_base::set_selection(size_t start, int length)
 
 	// The text pos/size type differs in both signedness and size with the
 	// selection length. Such is life.
-	const int sel_start = std::min<size_t>(start, std::numeric_limits<int>::max());
-	const int sel_max_length = std::min<size_t>(text_size - start, std::numeric_limits<int>::max());
+	const int sel_start = std::min<std::size_t>(start, std::numeric_limits<int>::max());
+	const int sel_max_length = std::min<std::size_t>(text_size - start, std::numeric_limits<int>::max());
 
 	const bool backwards = length < 0;
 
@@ -332,7 +332,7 @@ void text_box_base::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
 	handled = true;
-	const size_t offset = selection_start_ + 1 + selection_length_;
+	const std::size_t offset = selection_start_ + 1 + selection_length_;
 	if(offset <= text_.get_length()) {
 		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
@@ -413,7 +413,7 @@ void text_box_base::handle_editing(bool& handled, const utf8::string& unicode, i
 {
 	if(unicode.size() > 1 || unicode[0] != 0) {
 		handled = true;
-		size_t new_len = utf8::size(unicode);
+		std::size_t new_len = utf8::size(unicode);
 		if(!ime_in_progress_) {
 			ime_in_progress_ = true;
 			delete_selection();

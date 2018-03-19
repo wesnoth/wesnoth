@@ -244,7 +244,7 @@ BOOST_AUTO_TEST_CASE(test_pal_modification_decoding)
 	const std::vector<color_t>& new_palette = game_config::tc_info("FFFFFF,FF00FF");
 	color_range_map expected;
 
-	for(size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
+	for(std::size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
 	environment_setup env_setup;
 
 		expected[old_palette[i]] = new_palette[i];

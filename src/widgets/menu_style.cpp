@@ -53,9 +53,9 @@ menu::imgsel_style::imgsel_style(const std::string &img_base, bool has_bg,
 menu::imgsel_style::~imgsel_style()
 {}
 
-size_t menu::style::get_font_size() const { return font_size_; }
-size_t menu::style::get_cell_padding() const { return cell_padding_; }
-size_t menu::style::get_thickness() const { return thickness_; }
+std::size_t menu::style::get_font_size() const { return font_size_; }
+std::size_t menu::style::get_cell_padding() const { return cell_padding_; }
+std::size_t menu::style::get_thickness() const { return thickness_; }
 
 void menu::style::scale_images(int max_width, int max_height)
 {
@@ -137,7 +137,7 @@ bool menu::imgsel_style::load_images()
 	return (!load_failed_);
 }
 
-void menu::imgsel_style::draw_row_bg(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
+void menu::imgsel_style::draw_row_bg(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 {
 	if(type == SELECTED_ROW && has_background_ && !load_failed_) {
 		if(bg_cache_.width != rect.w || bg_cache_.height != rect.h)
@@ -156,7 +156,7 @@ void menu::imgsel_style::draw_row_bg(menu& menu_ref, const size_t row_index, con
 	}
 }
 
-void menu::imgsel_style::draw_row(menu& menu_ref, const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
+void menu::imgsel_style::draw_row(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 {
 	if(!load_failed_) {
 		//draw item inside

@@ -51,7 +51,7 @@ std::string cave_map_generator::config_name() const
 	return "";
 }
 
-size_t cave_map_generator::cave_map_generator_job::translate_x(size_t x) const
+std::size_t cave_map_generator::cave_map_generator_job::translate_x(std::size_t x) const
 {
 	if(flipx_) {
 		x = params.width_ - x - 1;
@@ -60,7 +60,7 @@ size_t cave_map_generator::cave_map_generator_job::translate_x(size_t x) const
 	return x;
 }
 
-size_t cave_map_generator::cave_map_generator_job::translate_y(size_t y) const
+std::size_t cave_map_generator::cave_map_generator_job::translate_y(std::size_t y) const
 {
 	if(flipy_) {
 		y = params.height_ - y - 1;
@@ -125,7 +125,7 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 	res_["map_data"] = t_translation::write_game_map(map_, starting_positions_);
 }
 
-void cave_map_generator::cave_map_generator_job::build_chamber(map_location loc, std::set<map_location>& locs, size_t size, size_t jagged)
+void cave_map_generator::cave_map_generator_job::build_chamber(map_location loc, std::set<map_location>& locs, std::size_t size, std::size_t jagged)
 {
 	if(size == 0 || locs.count(loc) != 0 || !params.on_board(loc))
 		return;
@@ -134,7 +134,7 @@ void cave_map_generator::cave_map_generator_job::build_chamber(map_location loc,
 
 	adjacent_loc_array_t adj;
 	get_adjacent_tiles(loc,adj.data());
-	for(size_t n = 0; n < adj.size(); ++n) {
+	for(std::size_t n = 0; n < adj.size(); ++n) {
 		if(int(rng_() % 100) < (100l - static_cast<long>(jagged))) {
 			build_chamber(adj[n],locs,size-1,jagged);
 		}
@@ -153,7 +153,7 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 		const std::string &xpos = ch["x"];
 		const std::string &ypos = ch["y"];
 
-		size_t min_xpos = 0, min_ypos = 0, max_xpos = params.width_, max_ypos = params.height_;
+		std::size_t min_xpos = 0, min_ypos = 0, max_xpos = params.width_, max_ypos = params.height_;
 
 		if (!xpos.empty()) {
 			const std::vector<std::string>& items = utils::split(xpos, '-');
@@ -179,8 +179,8 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 				}
 			}
 		}
-		const size_t x = translate_x(min_xpos + (rng_()%(max_xpos-min_xpos)));
-		const size_t y = translate_y(min_ypos + (rng_()%(max_ypos-min_ypos)));
+		const std::size_t x = translate_x(min_xpos + (rng_()%(max_xpos-min_xpos)));
+		const std::size_t y = translate_y(min_ypos + (rng_()%(max_ypos-min_ypos)));
 
 		int chamber_size = ch["size"].to_int(3);
 		int jagged_edges = ch["jagged"];
@@ -204,7 +204,7 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 			const std::string &dst = p["destination"];
 
 			// Find the destination of this passage
-			const std::map<std::string,size_t>::const_iterator itor = chamber_ids_.find(dst);
+			const std::map<std::string,std::size_t>::const_iterator itor = chamber_ids_.find(dst);
 			if(itor == chamber_ids_.end())
 				continue;
 
@@ -223,7 +223,7 @@ void cave_map_generator::cave_map_generator_job::place_chamber(const chamber& c)
 
 	if (c.items == nullptr || c.locs.empty()) return;
 
-	size_t index = 0;
+	std::size_t index = 0;
 	for (const config::any_child &it : c.items->all_children_range())
 	{
 		config cfg = it.cfg;
@@ -279,7 +279,7 @@ struct passage_path_calculator : pathfind::cost_calculator
 {
 	passage_path_calculator(const t_translation::ter_map& mapdata,
 	                        const t_translation::terrain_code & wall,
-	                        double laziness, size_t windiness,
+	                        double laziness, std::size_t windiness,
 							std::mt19937& rng) :
 		map_(mapdata), wall_(wall), laziness_(laziness), windiness_(windiness), rng_(rng)
 	{}
@@ -289,7 +289,7 @@ private:
 	const t_translation::ter_map& map_;
 	t_translation::terrain_code wall_;
 	double laziness_;
-	size_t windiness_;
+	std::size_t windiness_;
 	std::mt19937& rng_;
 };
 
@@ -363,7 +363,7 @@ void cave_map_generator::cave_map_generator_job::place_castle(int starting_posit
 
 	adjacent_loc_array_t adj;
 	get_adjacent_tiles(loc,adj.data());
-	for(size_t n = 0; n < adj.size(); ++n) {
+	for(std::size_t n = 0; n < adj.size(); ++n) {
 		set_terrain(adj[n], params.castle_);
 	}
 }

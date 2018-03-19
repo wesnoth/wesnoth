@@ -24,25 +24,25 @@ irdya_date irdya_date::read_date(const std::string& date)
 	irdya_date date_result;
 
 	// Currently only supports a year and an epoch.
-	size_t year_start = date.find_first_not_of(' ');
+	std::size_t year_start = date.find_first_not_of(' ');
 	if(year_start == std::string::npos) {
 		// throw std::invalid_argument("Irdya date is missing year");
 		date_result.year = 0;
 		return date_result;
 	}
 
-	size_t year_end = date.find_first_of(' ', year_start);
+	std::size_t year_end = date.find_first_of(' ', year_start);
 	if(year_end == std::string::npos) {
 		year_end = date.size();
 	}
 
 	date_result.year = std::stoi(date.substr(year_start, year_end - year_start));
 
-	size_t epoch_start = date.find_first_not_of(' ', year_end);
+	std::size_t epoch_start = date.find_first_not_of(' ', year_end);
 	if(epoch_start == std::string::npos) {
 		date_result.epoch = EPOCH::WESNOTH;
 	} else {
-		size_t epoch_end = date.find_first_of(' ', epoch_start);
+		std::size_t epoch_end = date.find_first_of(' ', epoch_start);
 		date_result.epoch = EPOCH::string_to_enum(date.substr(epoch_start, epoch_end - epoch_start), EPOCH::WESNOTH);
 	}
 

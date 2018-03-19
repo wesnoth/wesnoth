@@ -2192,7 +2192,7 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 	}
 	team &t = board().get_team(side);
 	// Avoid duplicates in the recall list.
-	size_t uid = u->underlying_id();
+	std::size_t uid = u->underlying_id();
 	t.recall_list().erase_by_underlying_id(uid);
 	t.recall_list().add(u);
 	if (lu) {
@@ -2973,7 +2973,7 @@ int game_lua_kernel::intf_set_side_id(lua_State *L)
 	if(flag.empty() && color.empty()) {
 		return 0;
 	}
-	if(team_i < 0 || static_cast<size_t>(team_i) >= teams().size()) {
+	if(team_i < 0 || static_cast<std::size_t>(team_i) >= teams().size()) {
 		return luaL_error(L, "set_side_id: side number %d out of range", team_i);
 	}
 	team& side = teams()[team_i];
@@ -3002,8 +3002,8 @@ static int intf_modify_ai(lua_State *L, const char* action)
 		return 0;
 	}
 	config component = luaW_checkconfig(L, 3);
-	size_t len = std::string::npos, open_brak = path.find_last_of('[');
-	size_t dot = path.find_last_of('.');
+	std::size_t len = std::string::npos, open_brak = path.find_last_of('[');
+	std::size_t dot = path.find_last_of('.');
 	if(open_brak != len) {
 		len = open_brak - dot - 1;
 	}
@@ -3597,7 +3597,7 @@ int game_lua_kernel::intf_set_time_of_day(lua_State * L)
 		return 0;
 	}
 	std::string area_id;
-	size_t area_i = 0;
+	std::size_t area_i = 0;
 	if (lua_isstring(L, 2)) {
 		area_id = lua_tostring(L, 1);
 		std::vector<std::string> area_ids = tod_man().get_area_ids();
@@ -3854,7 +3854,7 @@ int game_lua_kernel::intf_get_fog_or_shroud(lua_State *L, bool fog)
 {
 	int side = luaL_checknumber(L, 1);
 	map_location loc = luaW_checklocation(L, 2);
-	if(side < 1 || static_cast<size_t>(side) > teams().size()) {
+	if(side < 1 || static_cast<std::size_t>(side) > teams().size()) {
 		std::string error = "side " + std::to_string(side) + " does not exist";
 		return luaL_argerror(L, 1, error.c_str());
 	}
@@ -3897,7 +3897,7 @@ int game_lua_kernel::intf_toggle_fog(lua_State *L, const bool clear)
 	std::set<map_location> locs(v_locs.begin(), v_locs.end());
 
 	for(const int &side_num : sides) {
-		if(side_num < 1 || static_cast<size_t>(side_num) > teams().size()) {
+		if(side_num < 1 || static_cast<std::size_t>(side_num) > teams().size()) {
 			continue;
 		}
 		team &t = board().get_team(side_num);

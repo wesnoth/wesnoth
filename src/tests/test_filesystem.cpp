@@ -40,7 +40,7 @@ BOOST_AUTO_TEST_CASE( test_fs_game_path_reverse_engineering )
 
 	std::string gamedata_rev = get_wml_location("_main.cfg");
 
-	const size_t strip_len = (maincfg + "/data/").length();
+	const std::size_t strip_len = (maincfg + "/data/").length();
 	BOOST_REQUIRE(gamedata_rev.length() > strip_len);
 	gamedata_rev.resize(gamedata_rev.length() - strip_len);
 

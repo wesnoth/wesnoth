@@ -114,17 +114,17 @@ public:
 		return started_;
 	}
 
-	size_t nplayers() const
+	std::size_t nplayers() const
 	{
 		return players_.size();
 	}
 
-	size_t nobservers() const
+	std::size_t nobservers() const
 	{
 		return observers_.size();
 	}
 
-	size_t current_turn() const
+	std::size_t current_turn() const
 	{
 		return current_turn_;
 	}
@@ -315,7 +315,7 @@ private:
 	game(const game&);
 	void operator=(const game&);
 
-	size_t current_side() const
+	std::size_t current_side() const
 	{
 		return nsides_ ? (current_side_index_ % nsides_) : 0;
 	}
@@ -355,7 +355,7 @@ private:
 	 * Send [change_controller] message to tell all clients the new controller's name
 	 * or controller type (human or ai).
 	 */
-	void change_controller(const size_t side_num,
+	void change_controller(const std::size_t side_num,
 			const socket_ptr& sock,
 			const std::string& player_name,
 			const bool player_left = true);

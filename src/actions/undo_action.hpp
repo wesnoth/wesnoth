@@ -26,7 +26,7 @@ namespace actions {
 	struct undo_event {
 		config commands, data;
 		map_location loc1, loc2, filter_loc1, filter_loc2;
-		size_t uid1, uid2;
+		std::size_t uid1, uid2;
 		std::string id1, id2;
 		undo_event(const config& cmds, const game_events::queued_event& ctx);
 		undo_event(const config& first, const config& second, const config& weapons, const config& cmds);

@@ -89,7 +89,7 @@ public:
 	void set_menu_items(const config& cfg);
 
 	/** Gets the number of menu items owned. */
-	size_t size() const
+	std::size_t size() const
 	{
 		return wml_menu_items_.size();
 	}

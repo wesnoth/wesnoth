@@ -53,7 +53,7 @@ struct login_info
 	login_info(const std::string& username, const std::string& server)
 		: username(username), server(server), key()
 	{}
-	size_t size() const
+	std::size_t size() const
 	{
 		return 3 + username.size() + server.size() + key.size();
 	}
@@ -198,8 +198,8 @@ namespace preferences
 			return;
 		}
 		for(const std::string& elem : utils::split(std::string(data.begin(), data.end()), CREDENTIAL_SEPARATOR, utils::REMOVE_EMPTY)) {
-			size_t at = elem.find_last_of('@');
-			size_t eq = elem.find_first_of('=', at + 1);
+			std::size_t at = elem.find_last_of('@');
+			std::size_t eq = elem.find_first_of('=', at + 1);
 			if(at != std::string::npos && eq != std::string::npos) {
 				secure_buffer key(elem.begin() + eq + 1, elem.end());
 				credentials.emplace_back(elem.substr(0, at), elem.substr(at + 1, eq - at - 1), unescape(key));
@@ -214,7 +214,7 @@ namespace preferences
 			return;
 		}
 		secure_buffer credentials_data(1, CREDENTIAL_SEPARATOR);
-		size_t offset = 1;
+		std::size_t offset = 1;
 		for(const auto& cred : credentials) {
 			credentials_data.resize(credentials_data.size() + cred.size(), CREDENTIAL_SEPARATOR);
 			std::copy(cred.username.begin(), cred.username.end(), credentials_data.begin() + offset);
@@ -243,7 +243,7 @@ namespace preferences
 secure_buffer build_key(const std::string& server, const std::string& login)
 {
 	std::string sysname = get_system_username();
-	secure_buffer result(std::max<size_t>(server.size() + login.size() + sysname.size(), 32));
+	secure_buffer result(std::max<std::size_t>(server.size() + login.size() + sysname.size(), 32));
 	unsigned char i = 0;
 	std::generate(result.begin(), result.end(), [&i]() {return 'x' ^ i++;});
 	std::copy(login.begin(), login.end(), result.begin());
@@ -256,15 +256,15 @@ static secure_buffer rc4_crypt(const secure_buffer& text, const secure_buffer& k
 {
 	RC4_KEY cipher_key;
 	RC4_set_key(&cipher_key, key.size(), key.data());
-	const size_t block_size = key.size();
-	const size_t blocks = text.size() / block_size;
-	const size_t extra = text.size() % block_size;
+	const std::size_t block_size = key.size();
+	const std::size_t blocks = text.size() / block_size;
+	const std::size_t extra = text.size() % block_size;
 	secure_buffer result(text.size(), '\0');
-	for(size_t i = 0; i < blocks * block_size; i += block_size) {
+	for(std::size_t i = 0; i < blocks * block_size; i += block_size) {
 		RC4(&cipher_key, block_size, text.data() + i, result.data() + i);
 	}
 	if(extra) {
-		size_t i = blocks * block_size;
+		std::size_t i = blocks * block_size;
 		RC4(&cipher_key, extra, text.data() + i, result.data() + i);
 	}
 	return result;

@@ -90,7 +90,7 @@ DBusHandlerResult filter_dbus_signal(DBusConnection *, DBusMessage *buf, void *)
 		DBUS_TYPE_UINT32, &id,
 		DBUS_TYPE_INVALID);
 
-	size_t num_erased = notifications.get<by_id>().erase(id);
+	std::size_t num_erased = notifications.get<by_id>().erase(id);
 	LOG_DU << "Erased " << num_erased << " notifications records matching id=" << id;
 
 	return DBUS_HANDLER_RESULT_HANDLED;
@@ -200,7 +200,7 @@ uint32_t send_dbus_notification(DBusConnection *connection, uint32_t replaces_id
 
 namespace dbus {
 
-const size_t MAX_MSG_LINES = 5;
+const std::size_t MAX_MSG_LINES = 5;
 
 void send_notification(const std::string & owner, const std::string & message, bool with_history)
 {
@@ -215,8 +215,8 @@ void send_notification(const std::string & owner, const std::string & message, b
 		if (with_history) {
 			i->message = message + "\n" + i->message;
 
-			size_t endl_pos = i->message.find('\n');
-			size_t ctr = 1;
+			std::size_t endl_pos = i->message.find('\n');
+			std::size_t ctr = 1;
 
 			while (ctr < MAX_MSG_LINES && endl_pos != std::string::npos) {
 				endl_pos = i->message.find('\n', endl_pos+1);

@@ -474,9 +474,9 @@ public:
 		} else if(key == "word" || key == "words") {
 			std::vector<variant> words;
 			const std::string& str = string_.as_string();
-			size_t next_space = 0;
+			std::size_t next_space = 0;
 			do {
-				size_t last_space = next_space;
+				std::size_t last_space = next_space;
 				next_space = str.find_first_of(" \t", next_space);
 				words.emplace_back(str.substr(last_space, next_space - last_space));
 				next_space = str.find_first_not_of(" \t", next_space);
@@ -1046,7 +1046,7 @@ private:
 		}
 
 		std::string res = str_.as_string();
-		for(size_t i = 0; i < subs_.size(); ++i) {
+		for(std::size_t i = 0; i < subs_.size(); ++i) {
 			const int j = subs_.size() - i - 1;
 			const substitution& sub = subs_[i];
 			add_debug_info(fdb, j, "[string subst]");

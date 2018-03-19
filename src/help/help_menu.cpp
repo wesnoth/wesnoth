@@ -162,7 +162,7 @@ int help_menu::process()
 	SDL_GetMouseState(&mousex,&mousey);
 
 	if (!visible_items_.empty() &&
-            static_cast<size_t>(res) < visible_items_.size()) {
+            static_cast<std::size_t>(res) < visible_items_.size()) {
 
 		selected_item_ = visible_items_[res];
 		const section* sec = selected_item_.sec;

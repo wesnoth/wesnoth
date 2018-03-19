@@ -81,9 +81,9 @@ namespace {
 			char_t_to*& to_next;
 			char_t_to* to_end;
 
-			bool can_push(size_t count) const
+			bool can_push(std::size_t count) const
 			{
-				return static_cast<size_t>(to_end - to_next) > count;
+				return static_cast<std::size_t>(to_end - to_next) > count;
 			}
 
 			void push(char_t_to val)
@@ -864,11 +864,11 @@ void write_file(const std::string& fname, const std::string& data)
 	scoped_ostream os = ostream_file(fname);
 	os->exceptions(std::ios_base::goodbit);
 
-	const size_t block_size = 4096;
+	const std::size_t block_size = 4096;
 	char buf[block_size];
 
-	for(size_t i = 0; i < data.size(); i += block_size) {
-		const size_t bytes = std::min<size_t>(block_size,data.size() - i);
+	for(std::size_t i = 0; i < data.size(); i += block_size) {
+		const std::size_t bytes = std::min<std::size_t>(block_size,data.size() - i);
 		std::copy(data.begin() + i, data.begin() + i + bytes,buf);
 
 		os->write(buf, bytes);

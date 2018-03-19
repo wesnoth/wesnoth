@@ -214,7 +214,7 @@ void wesnothd_connection::stop()
 }
 
 // worker thread
-std::size_t wesnothd_connection::is_write_complete(const boost::system::error_code& ec, size_t bytes_transferred)
+std::size_t wesnothd_connection::is_write_complete(const boost::system::error_code& ec, std::size_t bytes_transferred)
 {
 	MPTEST_LOG;
 	if(ec) {
@@ -334,7 +334,7 @@ void wesnothd_connection::send()
 	MPTEST_LOG;
 	auto& buf = *send_queue_.front();
 
-	size_t buf_size = buf.size();
+	std::size_t buf_size = buf.size();
 	bytes_to_write_ = buf_size + 4;
 	bytes_written_ = 0;
 	payload_size_ = htonl(buf_size);

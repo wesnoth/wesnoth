@@ -63,7 +63,7 @@ private:
 		};
 
 		void generate_chambers();
-		void build_chamber(map_location loc, std::set<map_location>& locs, size_t size, size_t jagged);
+		void build_chamber(map_location loc, std::set<map_location>& locs, std::size_t size, std::size_t jagged);
 
 		void place_chamber(const chamber& c);
 
@@ -72,8 +72,8 @@ private:
 		void set_terrain(map_location loc, const t_translation::terrain_code & t);
 		void place_castle(int starting_position, const map_location &loc);
 
-		size_t translate_x(size_t x) const;
-		size_t translate_y(size_t y) const;
+		std::size_t translate_x(std::size_t x) const;
+		std::size_t translate_y(std::size_t y) const;
 
 
 		const cave_map_generator& params;
@@ -81,7 +81,7 @@ private:
 
 		t_translation::ter_map map_;
 		t_translation::starting_positions starting_positions_;
-		std::map<std::string,size_t> chamber_ids_;
+		std::map<std::string,std::size_t> chamber_ids_;
 		std::vector<chamber> chambers_;
 		std::vector<passage> passages_;
 		config res_;

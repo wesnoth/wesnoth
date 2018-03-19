@@ -65,7 +65,7 @@ static int intf_describe_plugins(lua_State * L)
 {
 	std::cerr << "describe plugins (" << plugins_manager::get()->size() << "):\n";
 	lua_getglobal(L, "print");
-	for (size_t i = 0; i < plugins_manager::get()->size(); ++i) {
+	for (std::size_t i = 0; i < plugins_manager::get()->size(); ++i) {
 		lua_pushvalue(L,-1); //duplicate the print
 
 		std::stringstream line;
@@ -268,7 +268,7 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 
 	// First we have to create the event table, by concatenating the event queue into a table.
 	lua_newtable(T_); //this will be the event table
-	for (size_t i = 0; i < queue.size(); ++i) {
+	for (std::size_t i = 0; i < queue.size(); ++i) {
 		lua_newtable(T_);
 		lua_pushstring(T_, queue[i].name.c_str());
 		lua_rawseti(T_, -2, 1);

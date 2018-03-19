@@ -252,7 +252,7 @@ void preferences_dialog::add_friend_list_entry(const bool is_friend, text_box& t
 
 	std::string reason;
 
-	size_t pos = username.find_first_of(' ');
+	std::size_t pos = username.find_first_of(' ');
 	if(pos != std::string::npos) {
 		reason = username.substr(pos + 1);
 		username = username.substr(0, pos);
@@ -886,7 +886,7 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 	hotkey::add_hotkey(newhk);
 
 	// We need to recalculate all hotkey names in because we might have removed a hotkey from another command.
-	for(size_t i = 0; i < hotkeys.get_item_count(); ++i) {
+	for(std::size_t i = 0; i < hotkeys.get_item_count(); ++i) {
 		const hotkey::hotkey_command& hotkey_item_row = *visible_hotkeys_[i];
 		find_widget<label>(hotkeys.get_row_grid(i), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item_row.command));
 	}
@@ -922,10 +922,10 @@ void preferences_dialog::hotkey_type_filter_callback(window& window) const
 	boost::dynamic_bitset<> res(visible_hotkeys_.size());
 
 	if(!toggle_states.none()) {
-		for(size_t h = 0; h < visible_hotkeys_.size(); ++h) {
+		for(std::size_t h = 0; h < visible_hotkeys_.size(); ++h) {
 			int index = 0;
 
-			for(size_t i = 0; i < cat_names_.size(); ++i) {
+			for(std::size_t i = 0; i < cat_names_.size(); ++i) {
 				hotkey::HOTKEY_CATEGORY cat = hotkey::HOTKEY_CATEGORY(i);
 
 				if(visible_hotkeys_[h]->category == cat) {

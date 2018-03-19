@@ -32,7 +32,7 @@ namespace wb
 class recruit: public action
 {
 public:
-	recruit(size_t team_index, bool hidden, const std::string& unit_name, const map_location& recruit_hex);
+	recruit(std::size_t team_index, bool hidden, const std::string& unit_name, const map_location& recruit_hex);
 	recruit(const config&, bool hidden); // For deserialization
 	virtual ~recruit();
 

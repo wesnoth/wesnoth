@@ -24,7 +24,7 @@ namespace wesnothd {
 
 namespace chat_message {
 
-const size_t max_message_length = 256;
+const std::size_t max_message_length = 256;
 
 void truncate_message(const simple_wml::string_span& str, simple_wml::node& message)
 {

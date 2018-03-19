@@ -94,7 +94,7 @@ surface stretch_surface_vertical(
  *  @param z                 The scaling factor. Should be an integer 2-5 (1 is tolerated).
  *  @return		     The scaled surface
  */
-surface scale_surface_xbrz(const surface & surf, size_t z);
+surface scale_surface_xbrz(const surface & surf, std::size_t z);
 
 /** Scale a surface using the nearest neighbor algorithm (provided by xBRZ lib)
  *  @param surf		     The sources surface

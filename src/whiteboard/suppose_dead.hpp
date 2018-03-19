@@ -29,7 +29,7 @@ namespace wb {
 class suppose_dead: public action
 {
 public:
-	suppose_dead(size_t team_index, bool hidden, unit& curr_unit, const map_location& loc);
+	suppose_dead(std::size_t team_index, bool hidden, unit& curr_unit, const map_location& loc);
 	suppose_dead(const config&, bool hidden); // For deserialization
 	virtual ~suppose_dead();
 
@@ -74,7 +74,7 @@ protected:
 		return std::static_pointer_cast<suppose_dead>(action::shared_from_this());
 	}
 
-	size_t unit_underlying_id_;
+	std::size_t unit_underlying_id_;
 	std::string unit_id_;
 	map_location loc_;
 };

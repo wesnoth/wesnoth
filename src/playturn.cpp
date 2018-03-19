@@ -170,7 +170,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const int side = change["side"].to_int();
 		const bool is_local = change["is_local"].to_bool();
 		const std::string player = change["player"];
-		const size_t index = side - 1;
+		const std::size_t index = side - 1;
 		if(index >= resources::gameboard->teams().size()) {
 			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.debug() << std::endl;
 			return PROCESS_CONTINUE;
@@ -204,7 +204,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	else if (const config &side_drop_c = cfg.child("side_drop"))
 	{
 		const int  side_drop = side_drop_c["side_num"].to_int(0);
-		size_t index = side_drop -1;
+		std::size_t index = side_drop -1;
 
 		bool restart = side_drop == game_display::get_singleton()->playing_side();
 

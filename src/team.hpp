@@ -239,7 +239,7 @@ public:
 	bool objectives_changed() const { return info_.objectives_changed; }
 
 	bool is_enemy(int n) const {
-		const size_t index = size_t(n-1);
+		const std::size_t index = std::size_t(n-1);
 		if(index >= enemies_.size()) {
 			calculate_enemies(index);
 		}
@@ -325,7 +325,7 @@ public:
 	/** Merge a WML shroud map with the shroud data of this player. */
 	void merge_shroud_map_data(const std::string& shroud_data) { shroud_.merge(shroud_data); }
 
-	bool knows_about_team(size_t index) const;
+	bool knows_about_team(std::size_t index) const;
 	/// Records hexes that were cleared of fog via WML.
 	void add_fog_override(const std::set<map_location> &hexes) { fog_clearer_.insert(hexes.begin(), hexes.end()); }
 	/// Removes the record of hexes that were cleared of fog via WML.
@@ -429,8 +429,8 @@ private:
 	std::string last_recruit_;
 
 private:
-	void calculate_enemies(size_t index) const;
-	bool calculate_is_enemy(size_t index) const;
+	void calculate_enemies(std::size_t index) const;
+	bool calculate_is_enemy(std::size_t index) const;
 	mutable boost::dynamic_bitset<> enemies_;
 
 	mutable std::vector<const shroud_map*> ally_shroud_, ally_fog_;

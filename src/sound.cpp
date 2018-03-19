@@ -59,20 +59,20 @@ bool no_fading = false;
 bool unload_music = false;
 
 // number of allocated channels,
-const size_t n_of_channels = 32;
+const std::size_t n_of_channels = 32;
 
 // we need 2 channels, because we it for timer as well
-const size_t bell_channel = 0;
-const size_t timer_channel = 1;
+const std::size_t bell_channel = 0;
+const std::size_t timer_channel = 1;
 
 // number of channels reserved for sound sources
-const size_t source_channels = 8;
-const size_t source_channel_start = timer_channel + 1;
-const size_t source_channel_last = source_channel_start + source_channels - 1;
-const size_t UI_sound_channels = 2;
-const size_t UI_sound_channel_start = source_channel_last + 1;
-const size_t UI_sound_channel_last = UI_sound_channel_start + UI_sound_channels - 1;
-const size_t n_reserved_channels = UI_sound_channel_last + 1; // sources, bell, timer and UI
+const std::size_t source_channels = 8;
+const std::size_t source_channel_start = timer_channel + 1;
+const std::size_t source_channel_last = source_channel_start + source_channels - 1;
+const std::size_t UI_sound_channels = 2;
+const std::size_t UI_sound_channel_start = source_channel_last + 1;
+const std::size_t UI_sound_channel_last = UI_sound_channel_start + UI_sound_channels - 1;
+const std::size_t n_reserved_channels = UI_sound_channel_last + 1; // sources, bell, timer and UI
 
 // Max number of sound chunks that we want to cache
 // Keep this above number of available channels to avoid busy-looping
@@ -701,12 +701,12 @@ void play_music_config(const config& music_node, int i)
 	// in choose_track(), 2 tracks with the same name will always return the
 	// current track and track_ok() doesn't allow that.
 	if(iter == current_track_list.end()) {
-		if(i < 0 || static_cast<size_t>(i) >= current_track_list.size()) {
+		if(i < 0 || static_cast<std::size_t>(i) >= current_track_list.size()) {
 			current_track_list.emplace_back(new music_track(track));
 			iter = current_track_list.end() - 1;
 		} else {
 			iter = current_track_list.emplace(current_track_list.begin() + 1, new music_track(track));
-			if(current_track_index >= static_cast<size_t>(i)) {
+			if(current_track_index >= static_cast<std::size_t>(i)) {
 				current_track_index++;
 			}
 		}

@@ -219,7 +219,7 @@ void game_state::init(const config& level, play_controller & pc)
 		{
 			build_team_stage_two(tb_ptr);
 		}
-		for(size_t i = 0; i < board_.teams_.size(); i++) {
+		for(std::size_t i = 0; i < board_.teams_.size(); i++) {
 			// Labels from players in your ignore list default to hidden
 			if(preferences::is_ignored(board_.teams_[i].current_player())) {
 				std::string label_cat = "side:" + std::to_string(i + 1);

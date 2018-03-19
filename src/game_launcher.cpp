@@ -417,26 +417,26 @@ bool game_launcher::init_lua_script()
 
 			plugins_manager & pm = *plugins_manager::get();
 
-			size_t i = pm.add_plugin(filename, full_plugin);
+			std::size_t i = pm.add_plugin(filename, full_plugin);
 
-			for (size_t j = 0 ; j < pm.size(); ++j) {
+			for (std::size_t j = 0 ; j < pm.size(); ++j) {
 				std::cerr << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j) << std::endl;
 			}
 
 			std::cerr << "Starting a plugin...\n";
 			pm.start_plugin(i);
 
-			for (size_t j = 0 ; j < pm.size(); ++j) {
+			for (std::size_t j = 0 ; j < pm.size(); ++j) {
 				std::cerr << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j) << std::endl;
 			}
 
 			plugins_context pc("init");
 
-			for (size_t repeat = 0; repeat < 5; ++repeat) {
+			for (std::size_t repeat = 0; repeat < 5; ++repeat) {
 				std::cerr << "Playing a slice...\n";
 				pc.play_slice();
 
-				for (size_t j = 0 ; j < pm.size(); ++j) {
+				for (std::size_t j = 0 ; j < pm.size(); ++j) {
 					std::cerr << j << ": " << pm.get_name(j) << " -- " << pm.get_detailed_status(j) << std::endl;
 				}
 			}

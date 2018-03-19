@@ -75,7 +75,7 @@ static bool resolve_filename(std::string& filename, std::string currentdir, std:
 	}
 	//resolve /./
 	while(true) {
-		size_t pos = filename.find("/./");
+		std::size_t pos = filename.find("/./");
 		if(pos == std::string::npos) {
 			break;
 		}
@@ -83,7 +83,7 @@ static bool resolve_filename(std::string& filename, std::string currentdir, std:
 	}
 	//resolve //
 	while(true) {
-		size_t pos = filename.find("//");
+		std::size_t pos = filename.find("//");
 		if(pos == std::string::npos) {
 			break;
 		}
@@ -91,11 +91,11 @@ static bool resolve_filename(std::string& filename, std::string currentdir, std:
 	}
 	//resolve /../
 	while(true) {
-		size_t pos = filename.find("/..");
+		std::size_t pos = filename.find("/..");
 		if(pos == std::string::npos) {
 			break;
 		}
-		size_t pos2 = filename.find_last_of('/', pos - 1);
+		std::size_t pos2 = filename.find_last_of('/', pos - 1);
 		if(pos2 == std::string::npos || pos2 >= pos) {
 			return false;
 		}
@@ -151,7 +151,7 @@ int intf_read_file(lua_State *L)
 		std::vector<std::string> files, dirs;
 		filesystem::get_files_in_dir(p, &files, &dirs);
 		filesystem::default_blacklist.remove_blacklisted_files_and_dirs(files, dirs);
-		size_t ndirs = dirs.size();
+		std::size_t ndirs = dirs.size();
 		std::copy(files.begin(), files.end(), std::back_inserter(dirs));
 		lua_push(L, dirs);
 		lua_pushnumber(L, ndirs);
@@ -160,7 +160,7 @@ int intf_read_file(lua_State *L)
 	}
 	const std::unique_ptr<std::istream> fs(filesystem::istream_file(p));
 	fs->exceptions(std::ios_base::goodbit);
-	size_t size = 0;
+	std::size_t size = 0;
 	fs->seekg(0, std::ios::end);
 	if(!fs->good()) {
 		return luaL_error(L, "Error when reading file");
@@ -192,7 +192,7 @@ public:
 
 	}
 
-	static const char * lua_read_data(lua_State * /*L*/, void *data, size_t *size)
+	static const char * lua_read_data(lua_State * /*L*/, void *data, std::size_t *size)
 	{
 		lua_filestream* lfs = static_cast<lua_filestream*>(data);
 

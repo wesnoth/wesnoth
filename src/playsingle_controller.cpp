@@ -202,11 +202,11 @@ void playsingle_controller::play_scenario_main_loop()
 			boost::dynamic_bitset<> local_players;
 			local_players.resize(gamestate().board_.teams().size(), true);
 			//Preserve side controllers, because we won't get the side controoller updates again when replaying.
-			for(size_t i = 0; i < local_players.size(); ++i) {
+			for(std::size_t i = 0; i < local_players.size(); ++i) {
 				local_players[i] = gamestate().board_.teams()[i].is_local();
 			}
 			reset_gamestate(*ex.level, (*ex.level)["replay_pos"]);
-			for(size_t i = 0; i < local_players.size(); ++i) {
+			for(std::size_t i = 0; i < local_players.size(); ++i) {
 				resources::gameboard->teams()[i].set_local(local_players[i]);
 			}
 			play_scenario_init();

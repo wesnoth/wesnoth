@@ -40,14 +40,14 @@ joystick_manager::~joystick_manager() {
 
 static bool attached(
 		  const std::vector<SDL_Joystick*>& joysticks
-		, const size_t index)
+		, const std::size_t index)
 {
 	return SDL_JoystickGetAttached(joysticks[index]) == SDL_TRUE;
 }
 
 static const char* name(
 		  const std::vector<SDL_Joystick*>& joysticks
-		, const size_t index)
+		, const std::size_t index)
 {
 	return SDL_JoystickName(joysticks[index]);
 }

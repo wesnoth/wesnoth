@@ -67,7 +67,7 @@ void advanced_graphics_options::setup_scale_case(const std::string& case_id, win
 	const std::string pref_id = "scale_" + case_id;
 	group<SCALING_ALGORITHM>& group = groups_[case_id];
 
-	for(size_t x = 0; x < SCALING_ALGORITHM::count; ++x) {
+	for(std::size_t x = 0; x < SCALING_ALGORITHM::count; ++x) {
 		SCALING_ALGORITHM scale = SCALING_ALGORITHM::from_int(x);
 
 		// The widget ids in advanced_graphics_options.cfg must match the enum string values for this to work.

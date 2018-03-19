@@ -247,7 +247,7 @@ void helper_advance_unit(const map_location& loc){
 	std::vector<config> mod_options = advance_unit->get_modification_advances();
 	int options_num = unit_helper::number_of_possible_advances(*advance_unit);
 
-	size_t advance_choice = randomness::generator->get_random_int(0, options_num-1);
+	std::size_t advance_choice = randomness::generator->get_random_int(0, options_num-1);
 	unit_ptr advanced_unit = (*advance_unit).clone();
 
 	if(advance_choice < options.size()){

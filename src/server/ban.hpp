@@ -48,7 +48,7 @@ namespace wesnothd {
 	typedef std::set<banned_ptr,banned_compare_subnet > ban_set;
 	typedef std::list<banned_ptr> deleted_ban_list;
 	typedef std::priority_queue<banned_ptr,std::vector<banned_ptr>, banned_compare> ban_time_queue;
-	typedef std::map<std::string, size_t> default_ban_times;
+	typedef std::map<std::string, std::size_t> default_ban_times;
 	typedef std::pair<unsigned int, unsigned int> ip_mask;
 
 	ip_mask parse_ip(const std::string&);
@@ -131,7 +131,7 @@ namespace wesnothd {
 
 		bool is_digit(const char& c) const
 		{ return c >= '0' && c <= '9'; }
-		size_t to_digit(const char& c) const
+		std::size_t to_digit(const char& c) const
 		{ return c - '0'; }
 
 		void init_ban_help();

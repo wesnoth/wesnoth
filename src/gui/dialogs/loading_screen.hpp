@@ -83,7 +83,7 @@ public:
 	static void progress(loading_stage stage = loading_stage::none);
 
 private:
-	size_t timer_id_;
+	std::size_t timer_id_;
 	int animation_counter_;
 	std::function<void()> work_;
 	std::unique_ptr<boost::thread> worker_;

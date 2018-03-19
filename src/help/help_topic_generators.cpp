@@ -84,7 +84,7 @@ static std::string print_behavior_description(ter_iter start, ter_iter end, cons
 		if (!first_level) ss << "( ";
 		ss << names.at(0);
 
-		for (size_t i = 1; i < names.size(); i++) {
+		for (std::size_t i = 1; i < names.size(); i++) {
 			ss << ", " << names.at(i);
 		}
 
@@ -221,7 +221,7 @@ typedef std::pair<std::string, std::string> trait_data;
 //Helper function for printing a list of trait data
 static void print_trait_list(std::stringstream & ss, const std::vector<trait_data> & l)
 {
-	size_t i = 0;
+	std::size_t i = 0;
 	ss << make_link(l[i].first, l[i].second);
 
 	// This doesn't skip traits with empty names
@@ -539,8 +539,8 @@ std::string unit_topic_generator::operator()() const {
 			std::vector<std::pair<t_string, t_string>> specials = attack.special_tooltips();
 			if (!specials.empty()) {
 				std::string lang_special = "";
-				const size_t specials_size = specials.size();
-				for (size_t i = 0; i != specials_size; ++i) {
+				const std::size_t specials_size = specials.size();
+				for (std::size_t i = 0; i != specials_size; ++i) {
 					const std::string ref_id = std::string("weaponspecial_")
 						+ specials[i].first.base_str();
 					lang_special = (specials[i].first);
@@ -588,7 +588,7 @@ std::string unit_topic_generator::operator()() const {
 			resistance -= std::stoi(dam_it.second);
 		} catch(std::invalid_argument&) {}
 		std::string resist = std::to_string(resistance) + '%';
-		const size_t pos = resist.find('-');
+		const std::size_t pos = resist.find('-');
 		if (pos != std::string::npos) {
 			resist.replace(pos, 1, font::unicode_minus);
 		}

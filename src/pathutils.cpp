@@ -65,7 +65,7 @@ void get_tiles_in_radius(const map_location& center, const int radius,
  * of @a center (including @a center itself). @a result must be a std::set
  * of locations.
  */
-void get_tiles_radius(const map_location& center, size_t radius,
+void get_tiles_radius(const map_location& center, std::size_t radius,
                       std::set<map_location>& result)
 {
 	// Re-use some logic.
@@ -80,7 +80,7 @@ void get_tiles_radius(const map_location& center, size_t radius,
 namespace { // Helpers for get_tiles_radius() without a radius filter.
 
 	// Ranges of rows are stored as pairs of a row number and a number of rows.
-	typedef std::pair<int, size_t> row_range;
+	typedef std::pair<int, std::size_t> row_range;
 	// This is a map from column numbers to sets of ranges of rows.
 	typedef std::map<int, std::set<row_range>> column_ranges;
 
@@ -94,7 +94,7 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 	// probably a rare event).
 	void get_column_ranges(column_ranges & collected_tiles,
 	                       const std::vector<map_location>& locs,
-	                       const size_t radius,
+	                       const std::size_t radius,
 	                       const int col_begin, const int col_end)
 	{
 		// Shorter names for the directions we'll use.
@@ -109,7 +109,7 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 			if ( loc != map_location::null_location() )
 			{
 				// Calculate the circle of hexes around this one.
-				size_t height = radius;
+				std::size_t height = radius;
 				map_location top = loc.get_direction(NORTH_WEST, radius_i);
 				// Don't start off the map edge.
 				if ( top.x < col_begin ) {
@@ -195,7 +195,7 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 // Complexity: O(nr lg(nr) + nr^2), where n = locs.size(), r = radius.
 // The nr^2 term is bounded by the size of the board.
 void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
-                      size_t radius, std::set<map_location>& result,
+                      std::size_t radius, std::set<map_location>& result,
                       bool with_border)
 {
 	// Make sure the provided locations are included.
@@ -234,7 +234,7 @@ void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
  * @a result must be a std::set of locations.
  */
 void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
-                      size_t radius, std::set<map_location> &result,
+                      std::size_t radius, std::set<map_location> &result,
                       bool with_border, const xy_pred& pred)
 {
 	typedef std::set<map_location> location_set;
@@ -251,7 +251,7 @@ void get_tiles_radius(const gamemap& map, const std::vector<map_location>& locs,
 		for(; it != it_end; ++it) {
 			adjacent_loc_array_t adj;
 			get_adjacent_tiles(*it, adj.data());
-			for(size_t i = 0; i < adj.size(); ++i) {
+			for(std::size_t i = 0; i < adj.size(); ++i) {
 				const map_location& loc = adj[i];
 				if ( with_border ? map.on_board_with_border(loc) :
 				                   map.on_board(loc) ) {

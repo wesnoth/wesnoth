@@ -378,9 +378,9 @@ void game::update_game()
 
 bool game::send_taken_side(simple_wml::document& cfg, const simple_wml::node* side) const
 {
-	const size_t side_index = (*side)["side"].to_int() - 1;
+	const std::size_t side_index = (*side)["side"].to_int() - 1;
 
-	// Negative values are casted (int -> size_t) to very high values to this check will fail for them too.
+	// Negative values are casted (int -> std::size_t) to very high values to this check will fail for them too.
 	if(side_index >= sides_.size()) {
 		return false;
 	}
@@ -618,11 +618,11 @@ void game::transfer_side_control(const socket_ptr& sock, const simple_wml::node&
 }
 
 void game::change_controller(
-		const size_t side_index, const socket_ptr& sock, const std::string& player_name, const bool player_left)
+		const std::size_t side_index, const socket_ptr& sock, const std::string& player_name, const bool player_left)
 {
 	DBG_GAME << __func__ << "...\n";
 
-	const std::string& side = lexical_cast_default<std::string, size_t>(side_index + 1);
+	const std::string& side = lexical_cast_default<std::string, std::size_t>(side_index + 1);
 	sides_[side_index] = sock;
 
 	if(player_left && side_controllers_[side_index] == CONTROLLER::AI) {
@@ -934,7 +934,7 @@ bool game::is_legal_command(const simple_wml::node& command, const socket_ptr& u
 	const bool is_current = is_current_player(user);
 
 	if(command.has_attr("from_side")) {
-		const size_t from_side_index = command["from_side"].to_int() - 1;
+		const std::size_t from_side_index = command["from_side"].to_int() - 1;
 
 		// Someone pretends to be the server...
 		if(command["from_side"] == "server") {
@@ -967,7 +967,7 @@ bool game::is_legal_command(const simple_wml::node& command, const socket_ptr& u
 			return false;
 		}
 
-		size_t side_number = sn.to_int();
+		std::size_t side_number = sn.to_int();
 		if(side_number >= sides_.size() || sides_[side_number] != user) {
 			return false;
 		} else {
@@ -1042,7 +1042,7 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr& user)
 
 			// Also check the side for players.
 			if(is_player(user)) {
-				const size_t side_index = speak["side"].to_int() - 1;
+				const std::size_t side_index = speak["side"].to_int() - 1;
 
 				if(side_index >= sides_.size() || sides_[side_index] != user) {
 					if(user == current_player()) {
@@ -1054,7 +1054,7 @@ bool game::process_turn(simple_wml::document& data, const socket_ptr& user)
 				}
 			}
 		} else if (command->child("surrender")) {
-			size_t side_index = 0;
+			std::size_t side_index = 0;
 
 			for(auto s : sides_) {
 				if(s == user) {
@@ -1162,7 +1162,7 @@ void game::handle_random_choice(const simple_wml::node&)
 
 void game::handle_controller_choice(const simple_wml::node& req)
 {
-	const size_t side_index = req["side"].to_int() - 1;
+	const std::size_t side_index = req["side"].to_int() - 1;
 	CONTROLLER new_controller;
 	CONTROLLER old_controller;
 
@@ -1269,7 +1269,7 @@ void game::process_whiteboard(simple_wml::document& data, const socket_ptr& user
 
 	// Ensure "side" attribute match with user
 	const simple_wml::string_span& to_sides = wb_node["to_sides"];
-	size_t const side_index = wb_node["side"].to_int() - 1;
+	std::size_t const side_index = wb_node["side"].to_int() - 1;
 
 	if(side_index >= sides_.size() || sides_[side_index] != user) {
 		std::ostringstream msg;
@@ -1475,7 +1475,7 @@ bool game::remove_player(const socket_ptr& player, const bool disconnect, const 
 		<< ((game_ended && !(observer && destruct)) ? (started_ ? "\tended" : "\taborted") : "\thas left")
 		<< " game:\t\"" << name_ << "\" (" << id_ << ")"
 		<< (game_ended && started_ && !(observer && destruct)
-			? " at turn: " + lexical_cast_default<std::string, size_t>(current_turn())
+			? " at turn: " + lexical_cast_default<std::string, std::size_t>(current_turn())
 				+ " with reason: '" + termination_reason() + "'"
 			: "")
 		<< (observer ? " as an observer" : "") << (disconnect ? " and disconnected" : "") << ". (socket: " << user
@@ -1535,7 +1535,7 @@ bool game::remove_player(const socket_ptr& player, const bool disconnect, const 
 		}
 
 		// send the host a notification of removal of this side
-		const std::string side_drop = lexical_cast_default<std::string, size_t>(side_index + 1);
+		const std::string side_drop = lexical_cast_default<std::string, std::size_t>(side_index + 1);
 
 		simple_wml::document drop;
 		auto& node_side_drop = drop.root().add_child("side_drop");
@@ -1680,7 +1680,7 @@ void game::send_data_sides(simple_wml::document& data,
 bool game::controls_side(const std::vector<int>& sides, const socket_ptr& player) const
 {
 	for(int side : sides) {
-		size_t side_index = side - 1;
+		std::size_t side_index = side - 1;
 
 		if(side_index < sides_.size() && sides_[side_index] == player) {
 			return true;

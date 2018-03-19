@@ -406,7 +406,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		for (const attack_type& atk : type.attacks()) {
 
 			std::vector<std::pair<t_string, t_string>> specials = atk.special_tooltips();
-			for ( size_t i = 0; i != specials.size(); ++i )
+			for ( std::size_t i = 0; i != specials.size(); ++i )
 			{
 				special_description.emplace(specials[i].first, specials[i].second);
 
@@ -1172,7 +1172,7 @@ config parse_text(const std::string &text)
 	bool last_char_escape = false;
 	const char escape_char = '\\';
 	std::stringstream ss;
-	size_t pos;
+	std::size_t pos;
 	enum { ELEMENT_NAME, OTHER } state = OTHER;
 	for (pos = 0; pos < text.size(); ++pos) {
 		const char c = text[pos];
@@ -1207,7 +1207,7 @@ config parse_text(const std::string &text)
 					ss.str("");
 					s << "</" << element_name << ">";
 					const std::string end_element_name = s.str();
-					size_t end_pos = text.find(end_element_name, pos);
+					std::size_t end_pos = text.find(end_element_name, pos);
 					if (end_pos == std::string::npos) {
 						std::stringstream msg;
 						msg << "Unterminated element: " << element_name;
@@ -1258,7 +1258,7 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 	// No checks are made for the equal sign or something like that.
 	// Attributes are just separated by spaces or newlines.
 	// Attributes that contain spaces must be in single quotes.
-	for (size_t pos = 0; pos < contents.size(); ++pos) {
+	for (std::size_t pos = 0; pos < contents.size(); ++pos) {
 		const char c = contents[pos];
 		if (c == escape_char && !last_char_escape) {
 			last_char_escape = true;
@@ -1351,11 +1351,11 @@ std::string remove_first_space(const std::string& text)
 
 std::string get_first_word(const std::string &s)
 {
-	size_t first_word_start = s.find_first_not_of(' ');
+	std::size_t first_word_start = s.find_first_not_of(' ');
 	if (first_word_start == std::string::npos) {
 		return s;
 	}
-	size_t first_word_end = s.find_first_of(" \n", first_word_start);
+	std::size_t first_word_end = s.find_first_of(" \n", first_word_start);
 	if( first_word_end == first_word_start ) {
 		// This word is '\n'.
 		first_word_end = first_word_start+1;

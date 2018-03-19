@@ -134,7 +134,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	// if the .pbl file doesn't provide one already
 	if(passphrase.empty()) {
 		passphrase.resize(16);
-		for(size_t n = 0; n < passphrase.size(); ++n) {
+		for(std::size_t n = 0; n < passphrase.size(); ++n) {
 			passphrase[n] = randomness::generator->get_random_int('a', 'z');
 		}
 		cfg["passphrase"] = passphrase;
@@ -530,8 +530,8 @@ struct read_addon_connection_data : public network_transmission::connection_data
 {
 	read_addon_connection_data(network_asio::connection& conn, addons_client& client)
 		: conn_(conn), client_(client) {}
-	size_t total() override { return conn_.bytes_to_read(); }
-	virtual size_t current()  override { return conn_.bytes_read(); }
+	std::size_t total() override { return conn_.bytes_to_read(); }
+	virtual std::size_t current()  override { return conn_.bytes_read(); }
 	virtual bool finished() override { return conn_.done(); }
 	virtual void cancel() override { client_.connect(); }
 	virtual void poll() override { conn_.poll(); }
@@ -542,8 +542,8 @@ struct connect_connection_data : public network_transmission::connection_data
 {
 	connect_connection_data(network_asio::connection& conn, addons_client& client)
 		: conn_(conn), client_(client) {}
-	size_t total() override { return conn_.bytes_to_read(); }
-	size_t current() override { return conn_.bytes_read(); }
+	std::size_t total() override { return conn_.bytes_to_read(); }
+	std::size_t current() override { return conn_.bytes_read(); }
 	bool finished() override { return conn_.done(); }
 	void cancel() override { client_.disconnect(); }
 	void poll() override { conn_.poll(); }
@@ -554,8 +554,8 @@ struct write_addon_connection_data : public network_transmission::connection_dat
 {
 	write_addon_connection_data(network_asio::connection& conn, addons_client& client)
 		: conn_(conn), client_(client) {}
-	size_t total() override { return conn_.bytes_to_write(); }
-	virtual size_t current()  override { return conn_.bytes_written(); }
+	std::size_t total() override { return conn_.bytes_to_write(); }
+	virtual std::size_t current()  override { return conn_.bytes_written(); }
 	virtual bool finished() override { return conn_.done(); }
 	virtual void cancel() override { client_.connect(); }
 	virtual void poll() override { conn_.poll(); }

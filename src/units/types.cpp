@@ -455,7 +455,7 @@ const unit_type& unit_type::get_gender_unit_type(std::string gender) const
 
 const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
 {
-	const size_t i = gender;
+	const std::size_t i = gender;
 	if(i < gender_types_.size() && gender_types_[i] != nullptr) {
 		return *gender_types_[i];
 	}
@@ -1434,7 +1434,7 @@ void unit_type::check_id(std::string& id)
 
 	bool gave_warning = false;
 
-	for(size_t pos = 0; pos < id.size(); ++pos) {
+	for(std::size_t pos = 0; pos < id.size(); ++pos) {
 		const char c = id[pos];
 		const bool valid = std::isalnum(c, std::locale::classic()) || c == '_' || c == ' ';
 

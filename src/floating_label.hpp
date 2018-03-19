@@ -146,7 +146,7 @@ public:
 	texture create_texture();
 
 private:
-	int xpos(size_t width) const;
+	int xpos(std::size_t width) const;
 
 	texture texture_;
 

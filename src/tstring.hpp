@@ -108,7 +108,7 @@ public:
 	const std::string& value() const                 { return value_; }
 	std::string base_str() const;
 
-	size_t hash_value() const;
+	std::size_t hash_value() const;
 
 private:
 	std::string value_;
@@ -117,7 +117,7 @@ private:
 	bool translatable_, last_untranslatable_;
 };
 
-inline size_t hash_value(const t_string_base& str) { return str.hash_value(); }
+inline std::size_t hash_value(const t_string_base& str) { return str.hash_value(); }
 std::ostream& operator<<(std::ostream&, const t_string_base&);
 
 class t_string

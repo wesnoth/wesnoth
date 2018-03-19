@@ -210,7 +210,7 @@ std::string join_map(
  * @param bullet The leading bullet string.
  */
 template<typename T>
-std::string bullet_list(const T& v, size_t indent = 4, const std::string& bullet = font::unicode_bullet)
+std::string bullet_list(const T& v, std::size_t indent = 4, const std::string& bullet = font::unicode_bullet)
 {
 	std::ostringstream str;
 
@@ -235,7 +235,7 @@ std::string bullet_list(const T& v, size_t indent = 4, const std::string& bullet
  * @param string      Text to indent.
  * @param indent_size Number of indentation units to use.
  */
-std::string indent(const std::string& string, size_t indent_size = 4);
+std::string indent(const std::string& string, std::size_t indent_size = 4);
 
 std::pair<int, int> parse_range(const std::string& str);
 
@@ -344,6 +344,6 @@ bool isvalid_wildcard(const std::string& login);
 /**
  * Truncates a string to a given utf-8 character count and then appends an ellipsis.
  */
-void ellipsis_truncate(std::string& str, const size_t size);
+void ellipsis_truncate(std::string& str, const std::size_t size);
 
 } // end namespace utils

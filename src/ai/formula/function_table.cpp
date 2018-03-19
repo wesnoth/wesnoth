@@ -273,11 +273,11 @@ DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 	if( !units_input.is_list() )
 		return variant();
 
-	size_t number_of_teams = units_input.num_elements();
+	std::size_t number_of_teams = units_input.num_elements();
 
 	std::vector< std::vector<int>> scores( number_of_teams );
 
-	for( size_t i = 0; i< number_of_teams; ++i)
+	for( std::size_t i = 0; i< number_of_teams; ++i)
 		scores[i].resize(w*h);
 
 	/* // TODO: Do we need this?
@@ -288,20 +288,20 @@ DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 	}
 	*/
 
-	for(size_t side = 0 ; side < units_input.num_elements() ; ++side) {
+	for(std::size_t side = 0 ; side < units_input.num_elements() ; ++side) {
 		if( leaders_input[side].is_empty() )
 			continue;
 
 		const map_location loc = leaders_input[side][0].convert_to<location_callable>()->loc();
 		const variant units_of_side = units_input[side];
 
-		for(size_t unit_it = 0 ; unit_it < units_of_side.num_elements() ; ++unit_it) {
+		for(std::size_t unit_it = 0 ; unit_it < units_of_side.num_elements() ; ++unit_it) {
 			unit_adapter unit(units_of_side[unit_it]);
 			find_movemap( unit, loc, scores[side], true, ai_ );
 		}
 	}
 
-	size_t index = 0;
+	std::size_t index = 0;
 	for( std::vector< std::vector<int>>::iterator i = scores.begin() ; i != scores.end() ; ++i) {
 		for( std::vector<int>::iterator j = i->begin() ; j != i->end() ; ++j ) {
 			if(units_input[index].num_elements() != 0) {
@@ -316,12 +316,12 @@ DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 	//std::vector<variant> res;
 	std::map<variant, variant> res;
 
-	size_t current_side = ai_.get_side() - 1 ;
+	std::size_t current_side = ai_.get_side() - 1 ;
 
 	std::vector<int> enemies;
 	std::vector<int> allies;
 
-	for(size_t side = 0 ; side < units_input.num_elements() ; ++side) {
+	for(std::size_t side = 0 ; side < units_input.num_elements() ; ++side) {
 		if( side == current_side)
 			continue;
 
@@ -382,7 +382,7 @@ DEFINE_WFL_FUNCTION(nearest_loc, 2, 2)
 	int best = 1000000;
 	int best_i = -1;
 
-	for(size_t i = 0; i < items.num_elements(); ++i) {
+	for(std::size_t i = 0; i < items.num_elements(); ++i) {
 
 		const map_location move_loc = items[i].convert_to<location_callable>()->loc();
 		int distance = distance_between(loc, move_loc);
@@ -577,7 +577,7 @@ DEFINE_FAI_FUNCTION(close_enemies, 2, 2)
 		WRN_AI << "close_enemies_function: range is negative (" << range_s << ")" << std::endl;
 		range_s = 0;
 	}
-	size_t range = static_cast<size_t>(range_s);
+	std::size_t range = static_cast<std::size_t>(range_s);
 	unit_map::const_iterator un = resources::gameboard->units().begin();
 	unit_map::const_iterator end = resources::gameboard->units().end();
 	while (un != end) {

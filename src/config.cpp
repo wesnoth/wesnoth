@@ -432,7 +432,7 @@ config& config::child(config_key_type key, int n)
 
 	if(n < 0)
 		n = i->second.size() + n;
-	if(size_t(n) < i->second.size()) {
+	if(std::size_t(n) < i->second.size()) {
 		return *i->second[n];
 	} else {
 		DBG_CF << "The config object has only »" << i->second.size() << "« children named »" << key
@@ -966,8 +966,8 @@ void config::get_diff(const config& c, config& res) const
 		const child_list& a = itor_a != children_.end() ? itor_a->second : dummy;
 		const child_list& b = itor_b != c.children_.end() ? itor_b->second : dummy;
 
-		size_t ndeletes = 0;
-		size_t ai = 0, bi = 0;
+		std::size_t ndeletes = 0;
+		std::size_t ai = 0, bi = 0;
 		while(ai != a.size() || bi != b.size()) {
 			// If the two elements are the same, nothing needs to be done.
 			if(ai < a.size() && bi < b.size() && *a[ai] == *b[bi]) {
@@ -1038,7 +1038,7 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 	}
 
 	for(const config& i : diff.child_range("change_child")) {
-		const size_t index = lexical_cast<size_t>(i["index"].str());
+		const std::size_t index = lexical_cast<std::size_t>(i["index"].str());
 		for(const any_child& item : i.all_children_range()) {
 			if(item.key.empty()) {
 				continue;
@@ -1054,7 +1054,7 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 	}
 
 	for(const config& i : diff.child_range("insert_child")) {
-		const size_t index = lexical_cast<size_t>(i["index"].str());
+		const std::size_t index = lexical_cast<std::size_t>(i["index"].str());
 		for(const any_child& item : i.all_children_range()) {
 			config& inserted = add_child_at(item.key, item.cfg, index);
 			if(track) {
@@ -1064,7 +1064,7 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 	}
 
 	for(const config& i : diff.child_range("delete_child")) {
-		const size_t index = lexical_cast<size_t>(i["index"].str());
+		const std::size_t index = lexical_cast<std::size_t>(i["index"].str());
 		for(const any_child& item : i.all_children_range()) {
 			if(!track) {
 				remove_child(item.key, index);
@@ -1084,14 +1084,14 @@ void config::clear_diff_track(const config& diff)
 {
 	remove_attribute(diff_track_attribute);
 	for(const config& i : diff.child_range("delete_child")) {
-		const size_t index = lexical_cast<size_t>(i["index"].str());
+		const std::size_t index = lexical_cast<std::size_t>(i["index"].str());
 		for(const any_child& item : i.all_children_range()) {
 			remove_child(item.key, index);
 		}
 	}
 
 	for(const config& i : diff.child_range("change_child")) {
-		const size_t index = lexical_cast<size_t>(i["index"].str());
+		const std::size_t index = lexical_cast<std::size_t>(i["index"].str());
 		for(const any_child& item : i.all_children_range()) {
 			if(item.key.empty()) {
 				continue;

@@ -112,7 +112,7 @@ void wml_message_base::pre_show(window& window)
 		}
 
 		// Avoid negative and 0 since item 0 is already selected.
-		if(*chosen_option_ > 0 && static_cast<size_t>(*chosen_option_)
+		if(*chosen_option_ > 0 && static_cast<std::size_t>(*chosen_option_)
 								  < option_list_.size()) {
 
 			options.select_row(*chosen_option_);

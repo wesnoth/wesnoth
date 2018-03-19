@@ -68,7 +68,7 @@ utf8::string lowercase(const utf8::string& s)
 	return s;
 }
 
-size_t index(const utf8::string& str, const size_t index)
+std::size_t index(const utf8::string& str, const std::size_t index)
 {
 	// chr counts characters, i is the codepoint index
 	// remark: several functions rely on the fallback to str.length()
@@ -83,7 +83,7 @@ size_t index(const utf8::string& str, const size_t index)
 	return i;
 }
 
-size_t size(const utf8::string& str)
+std::size_t size(const utf8::string& str)
 {
 	unsigned int chr, i = 0, len = str.size();
 	try {
@@ -96,12 +96,12 @@ size_t size(const utf8::string& str)
 	return chr;
 }
 
-utf8::string& insert(utf8::string& str, const size_t pos, const utf8::string& insert)
+utf8::string& insert(utf8::string& str, const std::size_t pos, const utf8::string& insert)
 {
 	return str.insert(index(str, pos), insert);
 }
 
-utf8::string& erase(utf8::string& str, const size_t start, const size_t len)
+utf8::string& erase(utf8::string& str, const std::size_t start, const std::size_t len)
 {
 	if (start > size(str)) return str;
 	unsigned pos = index(str, start);
@@ -114,12 +114,12 @@ utf8::string& erase(utf8::string& str, const size_t start, const size_t len)
 	}
 }
 
-utf8::string& truncate(utf8::string& str, const size_t size)
+utf8::string& truncate(utf8::string& str, const std::size_t size)
 {
 	return erase(str, size);
 }
 
-void truncate_as_ucs4(utf8::string &str, const size_t size)
+void truncate_as_ucs4(utf8::string &str, const std::size_t size)
 {
 	ucs4::string u4_str = unicode_cast<ucs4::string>(str);
 	if(u4_str.size() > size) {

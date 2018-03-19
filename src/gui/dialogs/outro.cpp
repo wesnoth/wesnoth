@@ -81,7 +81,7 @@ void outro::draw_callback(window& window)
 	if(fading_in_ && fade_step_ > 10) {
 		// Schedule the fadeout after the provided delay.
 		if(timer_id_ == 0) {
-			timer_id_ = add_timer(duration_, [this](size_t) { fading_in_ = false; });
+			timer_id_ = add_timer(duration_, [this](std::size_t) { fading_in_ = false; });
 		}
 
 		return;

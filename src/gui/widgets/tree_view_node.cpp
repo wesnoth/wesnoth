@@ -134,7 +134,7 @@ tree_view_node& tree_view_node::add_child(
 {
 	auto itor = children_.end();
 
-	if(static_cast<size_t>(index) < children_.size()) {
+	if(static_cast<std::size_t>(index) < children_.size()) {
 		itor = children_.begin() + index;
 	}
 
@@ -653,7 +653,7 @@ const std::string& tree_view_node::get_control_type() const
 
 tree_view_node& tree_view_node::get_child_at(int index)
 {
-	assert(static_cast<size_t>(index) < children_.size());
+	assert(static_cast<std::size_t>(index) < children_.size());
 	return *children_[index];
 }
 
@@ -664,7 +664,7 @@ std::vector<int> tree_view_node::describe_path()
 	}
 
 	std::vector<int> res = parent_node_->describe_path();
-	for(size_t i = 0; i < parent_node_->count_children(); ++i) {
+	for(std::size_t i = 0; i < parent_node_->count_children(); ++i) {
 		if(parent_node_->children_[i].get() == this) {
 			res.push_back(i);
 			return res;
@@ -708,7 +708,7 @@ tree_view_node* tree_view_node::get_node_above()
 	assert(!is_root_node());
 
 	tree_view_node* cur = nullptr;
-	for(size_t i = 0; i < parent_node_->count_children(); ++i) {
+	for(std::size_t i = 0; i < parent_node_->count_children(); ++i) {
 		if(parent_node_->children_[i].get() == this) {
 			if(i == 0) {
 				return parent_node_->is_root_node() ? nullptr : parent_node_;
@@ -740,7 +740,7 @@ tree_view_node* tree_view_node::get_node_below()
 	while(cur->parent_node_ != nullptr) {
 		tree_view_node& parent = *cur->parent_node_;
 
-		for(size_t i = 0; i < parent.count_children(); ++i) {
+		for(std::size_t i = 0; i < parent.count_children(); ++i) {
 			if(parent.children_[i].get() == cur) {
 				if(i < parent.count_children() - 1) {
 					return parent.children_[i + 1].get();

@@ -59,8 +59,8 @@ private:
 
 	bool fading_in_;
 
-	size_t timer_id_;
-	size_t next_draw_;
+	std::size_t timer_id_;
+	std::size_t next_draw_;
 };
 
 } // namespace dialogs

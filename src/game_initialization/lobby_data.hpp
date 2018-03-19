@@ -158,7 +158,7 @@ struct game_info
 	std::string vision;
 	std::string status; // vacant slots or turn info
 	std::string time_limit;
-	size_t vacant_slots;
+	std::size_t vacant_slots;
 
 	unsigned int current_turn;
 	bool reloaded;

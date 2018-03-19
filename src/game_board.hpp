@@ -164,9 +164,9 @@ public:
 	// Global accessor from unit.hpp
 
 	unit_map::iterator find_visible_unit(const map_location &loc, const team& current_team, bool see_all = false);
-	unit_map::iterator find_visible_unit(const map_location & loc, size_t team, bool see_all = false) { return find_visible_unit(loc, teams_[team], see_all); }
+	unit_map::iterator find_visible_unit(const map_location & loc, std::size_t team, bool see_all = false) { return find_visible_unit(loc, teams_[team], see_all); }
 	bool has_visible_unit (const map_location & loc, const team & team, bool see_all = false) const;
-	bool has_visible_unit (const map_location & loc, size_t team, bool see_all = false) const { return has_visible_unit(loc, teams_[team], see_all); }
+	bool has_visible_unit (const map_location & loc, std::size_t team, bool see_all = false) const { return has_visible_unit(loc, teams_[team], see_all); }
 
 	unit* get_visible_unit(const map_location &loc, const team &current_team, bool see_all = false); //TODO: can this not return a pointer?
 

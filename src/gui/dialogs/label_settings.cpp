@@ -45,7 +45,7 @@ label_settings::label_settings(display_context& dc) : viewer(dc) {
 	const std::vector<std::string>& all_categories = display::get_singleton()->labels().all_categories();
 	const std::vector<std::string>& hidden_categories = viewer.hidden_label_categories();
 
-	for(size_t i = 0; i < all_categories.size(); i++) {
+	for(std::size_t i = 0; i < all_categories.size(); i++) {
 		all_labels[all_categories[i]] = true;
 		if(all_categories[i].substr(0,4) == "cat:")
 			labels_display[all_categories[i]] = all_categories[i].substr(4);
@@ -53,10 +53,10 @@ label_settings::label_settings(display_context& dc) : viewer(dc) {
 			labels_display[all_categories[i]] = _("Team Labels");
 		// TODO: Translatable names for categories?
 	}
-	for(size_t i = 0; i < hidden_categories.size(); i++) {
+	for(std::size_t i = 0; i < hidden_categories.size(); i++) {
 		all_labels[hidden_categories[i]] = false;
 	}
-	for(size_t i = 0; i < dc.teams().size(); i++) {
+	for(std::size_t i = 0; i < dc.teams().size(); i++) {
 		const team& team = dc.teams()[i];
 		const std::string label_cat_key = "side:" + std::to_string(i + 1);
 		if(team.hidden()) {

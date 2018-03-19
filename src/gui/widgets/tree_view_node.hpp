@@ -163,7 +163,7 @@ public:
 	/**
 	 * The number of children in this widget.
 	 */
-	size_t count_children() const
+	std::size_t count_children() const
 	{
 		return children_.size();
 	}

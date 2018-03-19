@@ -170,7 +170,7 @@ public:
 	 */
 	void check_victory();
 
-	size_t turn() const {return gamestate().tod_manager_.turn();}
+	std::size_t turn() const {return gamestate().tod_manager_.turn();}
 
 	/**
 	 * Returns the number of the side whose turn it is.

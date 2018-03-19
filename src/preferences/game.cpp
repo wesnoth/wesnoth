@@ -274,7 +274,7 @@ bool remove_acquaintance(const std::string& nick) {
 
 	//nick might include the notes, depending on how we're removing
 	if(i == acquaintances.end()) {
-		size_t pos = nick.find_first_of(' ');
+		std::size_t pos = nick.find_first_of(' ');
 
 		if(pos != std::string::npos) {
 			i = acquaintances.find(nick.substr(0, pos));

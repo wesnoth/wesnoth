@@ -42,7 +42,7 @@ void network_transmission::pump_monitor::process(events::pump_info&)
 	if(connection_->finished()) {
 		window_.get().set_retval(retval::OK);
 	} else {
-		size_t completed, total;
+		std::size_t completed, total;
 			completed = connection_->current();
 			total = connection_->total();
 		if(total) {

@@ -32,20 +32,20 @@ struct timer
 
 	SDL_TimerID sdl_id;
 	uint32_t interval;
-	std::function<void(size_t id)> callback;
+	std::function<void(std::size_t id)> callback;
 };
 
 /** Ids for the timers. */
-static size_t next_timer_id = 0;
+static std::size_t next_timer_id = 0;
 
 /** The active timers. */
-static std::map<size_t, timer>& get_timers()
+static std::map<std::size_t, timer>& get_timers()
 {
-	static std::map<size_t, timer>* ptimers = new std::map<size_t, timer>();
+	static std::map<std::size_t, timer>* ptimers = new std::map<std::size_t, timer>();
 	return *ptimers;
 }
 /** The id of the event being executed, 0 if none. */
-static size_t executing_id = 0;
+static std::size_t executing_id = 0;
 
 /** Did somebody try to remove the timer during its execution? */
 static bool executing_id_removed = false;
@@ -66,7 +66,7 @@ static bool executing_id_removed = false;
 class executor
 {
 public:
-	executor(size_t id)
+	executor(std::size_t id)
 	{
 		executing_id = id;
 		executing_id_removed = false;
@@ -74,7 +74,7 @@ public:
 
 	~executor()
 	{
-		const size_t id = executing_id;
+		const std::size_t id = executing_id;
 		executing_id = 0;
 		if(executing_id_removed) {
 			remove_timer(id);
@@ -88,8 +88,8 @@ static uint32_t timer_callback(uint32_t, void* id)
 {
 	DBG_GUI_E << "Pushing timer event in queue.\n";
 
-	std::map<size_t, timer>::iterator itor
-			= get_timers().find(reinterpret_cast<size_t>(id));
+	std::map<std::size_t, timer>::iterator itor
+			= get_timers().find(reinterpret_cast<std::size_t>(id));
 	if(itor == get_timers().end()) {
 		return 0;
 	}
@@ -108,11 +108,11 @@ static uint32_t timer_callback(uint32_t, void* id)
 
 } // extern "C"
 
-size_t add_timer(const uint32_t interval,
-				 const std::function<void(size_t id)>& callback,
+std::size_t add_timer(const uint32_t interval,
+				 const std::function<void(std::size_t id)>& callback,
 				 const bool repeat)
 {
-	static_assert(sizeof(size_t) == sizeof(void*), "Pointer and size_t are not the same size");
+	static_assert(sizeof(std::size_t) == sizeof(void*), "Pointer and std::size_t are not the same size");
 
 	DBG_GUI_E << "Adding timer.\n";
 
@@ -140,11 +140,11 @@ size_t add_timer(const uint32_t interval,
 	return next_timer_id;
 }
 
-bool remove_timer(const size_t id)
+bool remove_timer(const std::size_t id)
 {
 	DBG_GUI_E << "Removing timer " << id << ".\n";
 
-	std::map<size_t, timer>::iterator itor = get_timers().find(id);
+	std::map<std::size_t, timer>::iterator itor = get_timers().find(id);
 	if(itor == get_timers().end()) {
 		LOG_GUI_E << "Can't remove timer since it no longer exists.\n";
 		return false;
@@ -171,11 +171,11 @@ bool remove_timer(const size_t id)
 	return true;
 }
 
-bool execute_timer(const size_t id)
+bool execute_timer(const std::size_t id)
 {
 	DBG_GUI_E << "Executing timer " << id << ".\n";
 
-	std::map<size_t, timer>::iterator itor = get_timers().find(id);
+	std::map<std::size_t, timer>::iterator itor = get_timers().find(id);
 	if(itor == get_timers().end()) {
 		LOG_GUI_E << "Can't execute timer since it no longer exists.\n";
 		return false;

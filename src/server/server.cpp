@@ -208,8 +208,8 @@ const std::string help_msg = "Available commands are: adminmsg <msg>,"
 							 "Specific strings (those not in between <> like the command names)"
 							 " are case insensitive.";
 
-server::server(int port, bool keep_alive, const std::string& config_file, size_t /*min_threads*/,
-			   size_t /*max_threads*/) :
+server::server(int port, bool keep_alive, const std::string& config_file, std::size_t /*min_threads*/,
+			   std::size_t /*max_threads*/) :
 	server_base(port, keep_alive),
 	ban_manager_(),
 	ip_log_(),
@@ -488,7 +488,7 @@ void server::load_config() {
 bool server::ip_exceeds_connection_limit(const std::string& ip) const
 {
 	if (concurrent_connections_ == 0) return false;
-	size_t connections = 0;
+	std::size_t connections = 0;
 	for(const auto& player: player_connections_) {
 		if (client_address(player.socket()) == ip) {
 			++connections;
@@ -1191,7 +1191,7 @@ void server::cleanup_game(game* game_ptr)
 	const simple_wml::node::child_list::const_iterator g =
 			std::find(games.begin(), games.end(), game_ptr->description());
 	if (g != games.end()) {
-		const size_t index = std::distance(games.begin(), g);
+		const std::size_t index = std::distance(games.begin(), g);
 		gamelist->remove_child("game", index);
 	} else {
 		// Can happen when the game ends before the scenario was transferred.
@@ -1657,7 +1657,7 @@ void server::remove_player(socket_ptr socket)
 		g->remove_player(socket, true, false);
 
 	const simple_wml::node::child_list& users = games_and_users_list_.root().children("user");
-	const size_t index = std::distance(users.begin(), std::find(users.begin(), users.end(), iter->info().config_address()));
+	const std::size_t index = std::distance(users.begin(), std::find(users.begin(), users.end(), iter->info().config_address()));
 
 	// Notify other players in lobby
 	simple_wml::document diff;
@@ -1921,7 +1921,7 @@ void server::send_server_message_to_all(const std::string& message, socket_ptr e
 				continue;
 			}
 			const simple_wml::node::child_list& users = games_and_users_list_.root().children("user");
-			const size_t index = std::find(users.begin(), users.end(), pl_it->second.config_address()) - users.begin();
+			const std::size_t index = std::find(users.begin(), users.end(), pl_it->second.config_address()) - users.begin();
 			if (index < users.size()) {
 				simple_wml::document diff;
 				if(make_delete_diff(games_and_users_list_.root(), nullptr, "user",
@@ -2746,8 +2746,8 @@ void server::update_game_in_lobby(const wesnothd::game& g, const socket_ptr& exc
 int main(int argc, char** argv) {
 	int port = 15000;
 	bool keep_alive = false;
-	size_t min_threads = 5;
-	size_t max_threads = 0;
+	std::size_t min_threads = 5;
+	std::size_t max_threads = 0;
 
 	srand(static_cast<unsigned>(time(nullptr)));
 
@@ -2771,7 +2771,7 @@ int main(int argc, char** argv) {
 		} else if (val == "--verbose" || val == "-v") {
 			lg::set_log_domain_severity("all", lg::debug());
 		} else if (val.substr(0, 6) == "--log-") {
-			size_t p = val.find('=');
+			std::size_t p = val.find('=');
 			if (p == std::string::npos) {
 				std::cerr << "unknown option: " << val << '\n';
 				return 2;
@@ -2787,7 +2787,7 @@ int main(int argc, char** argv) {
 				return 2;
 			}
 			while (p != std::string::npos) {
-				size_t q = val.find(',', p + 1);
+				std::size_t q = val.find(',', p + 1);
 				s = val.substr(p + 1, q == std::string::npos ? q : q - (p + 1));
 				if (!lg::set_log_domain_severity(s, severity)) {
 					std::cerr << "unknown debug domain: " << s << '\n';

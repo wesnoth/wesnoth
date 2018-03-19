@@ -98,7 +98,7 @@ public:
 	const handler_ptr get_event_handler_by_id(const std::string& id);
 
 	/** The number of active event handlers. */
-	size_t size() const
+	std::size_t size() const
 	{
 		return active_.size();
 	}

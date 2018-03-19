@@ -169,7 +169,7 @@ void unit_create::post_show(window& window)
 	const int selected_row = list.get_selected_row();
 	if(selected_row < 0) {
 		return;
-	} else if(static_cast<size_t>(selected_row) >= units_.size()) {
+	} else if(static_cast<std::size_t>(selected_row) >= units_.size()) {
 		// FIXME: maybe assert?
 		ERR_GUI_G << "unit create dialog has more list items than known unit "
 					 "types; not good\n";

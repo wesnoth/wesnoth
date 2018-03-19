@@ -38,7 +38,7 @@ public:
 	palette_manager(editor_display &gui, const config& cfg
 	              , editor_toolkit &toolkit);
 
-	void set_group(size_t index);
+	void set_group(std::size_t index);
 
 	/** Scroll the editor-palette up one step if possible. */
 	void scroll_up();

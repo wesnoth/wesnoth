@@ -122,7 +122,7 @@ point horizontal_list::calculate_best_size() const
 	// The best size is the sum of the widths and the greatest height.
 	point result(0, 0);
 
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(!get_item_shown(i)) {
 			continue;
 		}
@@ -151,7 +151,7 @@ void horizontal_list::place(const point& origin, const point& size)
 
 	point current_origin = origin;
 
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(!get_item_shown(get_item_at_ordered(i))) {
 			continue;
 		}
@@ -178,7 +178,7 @@ void horizontal_list::place(const point& origin, const point& size)
 void horizontal_list::set_origin(const point& origin)
 {
 	point current_origin = origin;
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(!get_item_shown(get_item_at_ordered(i))) {
 			continue;
 		}
@@ -198,7 +198,7 @@ void horizontal_list::set_visible_rectangle(const SDL_Rect& rectangle)
 	 * function in the generator template class and call it from the wanted
 	 * placement functions.
 	 */
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		grid& grid = item_ordered(i);
 		grid.set_visible_rectangle(rectangle);
 	}
@@ -208,7 +208,7 @@ widget* horizontal_list::find_at(const point& coordinate, const bool must_be_act
 {
 	assert(get_window());
 
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(!get_item_shown(i)) {
 			continue;
 		}
@@ -227,7 +227,7 @@ const widget* horizontal_list::find_at(const point& coordinate, const bool must_
 {
 	assert(get_window());
 
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(!get_item_shown(i)) {
 			continue;
 		}
@@ -286,7 +286,7 @@ void horizontal_list::handle_key_right_arrow(SDL_Keymod /*modifier*/, bool& hand
 	}
 
 	if(get_selected_item_count() == 0) {
-		for(size_t i = get_ordered_index(0); i < get_item_count(); i++) {
+		for(std::size_t i = get_ordered_index(0); i < get_item_count(); i++) {
 			if(get_item_shown(get_item_at_ordered(i))) {
 				// TODO: Check if active?
 				handled = true;
@@ -300,7 +300,7 @@ void horizontal_list::handle_key_right_arrow(SDL_Keymod /*modifier*/, bool& hand
 	// NOTE maybe this should only work if we can select only one item...
 	handled = true;
 
-	for(size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
+	for(std::size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
 		if(!get_item_shown(get_item_at_ordered(i))) {
 			continue;
 		}
@@ -334,7 +334,7 @@ point vertical_list::calculate_best_size() const
 {
 	// The best size is the sum of the heights and the greatest width.
 	point result(0, 0);
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(!get_item_shown(i)) {
 			continue;
 		}
@@ -362,7 +362,7 @@ void vertical_list::place(const point& origin, const point& size)
 	 */
 
 	point current_origin = origin;
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(!get_item_shown(get_item_at_ordered(i))) {
 			continue;
 		}
@@ -389,7 +389,7 @@ void vertical_list::place(const point& origin, const point& size)
 void vertical_list::set_origin(const point& origin)
 {
 	point current_origin = origin;
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(!get_item_shown(get_item_at_ordered(i))) {
 			continue;
 		}
@@ -409,7 +409,7 @@ void vertical_list::set_visible_rectangle(const SDL_Rect& rectangle)
 	 * function in the generator template class and call it from the wanted
 	 * placement functions.
 	 */
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		grid& grid = item(i);
 		grid.set_visible_rectangle(rectangle);
 	}
@@ -419,7 +419,7 @@ widget* vertical_list::find_at(const point& coordinate, const bool must_be_activ
 {
 	assert(get_window());
 
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(!get_item_shown(i)) {
 			continue;
 		}
@@ -437,7 +437,7 @@ const widget* vertical_list::find_at(const point& coordinate, const bool must_be
 {
 	assert(get_window());
 
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(!get_item_shown(i)) {
 			continue;
 		}
@@ -494,7 +494,7 @@ void vertical_list::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled
 	}
 
 	if(get_selected_item_count() == 0) {
-		for(size_t i = get_ordered_index(0); i < get_item_count(); i++) {
+		for(std::size_t i = get_ordered_index(0); i < get_item_count(); i++) {
 			if(get_item_shown(get_item_at_ordered(i))) {
 				// TODO: Check if active?
 				handled = true;
@@ -508,7 +508,7 @@ void vertical_list::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled
 	// NOTE maybe this should only work if we can select only one item...
 	handled = true;
 
-	for(size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
+	for(std::size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
 		if(!get_item_shown(get_item_at_ordered(i))) {
 			continue;
 		}
@@ -551,11 +551,11 @@ point table::calculate_best_size() const
 	 * - vultraz, 2017-08-25
 	 */
 
-	size_t n_items = get_item_count();
-	size_t max_cols = sqrt(n_items) + 2;
+	std::size_t n_items = get_item_count();
+	std::size_t max_cols = sqrt(n_items) + 2;
 
 	std::vector<point> item_sizes;
-	for(size_t i = 0; i < n_items; i++) {
+	for(std::size_t i = 0; i < n_items; i++) {
 		if(get_item_shown(i)) {
 			item_sizes.push_back(item(i).get_best_size());
 		}
@@ -575,7 +575,7 @@ point table::calculate_best_size() const
 		[](point a, point b) { return a.x < b.x; }
 	)->x / 2;
 
-	for(size_t cells_in_1st_row = 2; cells_in_1st_row <= max_cols; cells_in_1st_row++) {
+	for(std::size_t cells_in_1st_row = 2; cells_in_1st_row <= max_cols; cells_in_1st_row++) {
 		int row_min_width = std::accumulate(item_sizes.begin(), item_sizes.begin() + cells_in_1st_row, 0,
 			[](int a, point b) { return a + b.x; }
 		);
@@ -585,7 +585,7 @@ point table::calculate_best_size() const
 
 		point row_size, total_size;
 
-		for(size_t n = 0; n < item_sizes.size(); n++) {
+		for(std::size_t n = 0; n < item_sizes.size(); n++) {
 			if(row_size.x + item_sizes[n].x > row_max_width) {
 				// Start new row
 				row++;
@@ -635,7 +635,7 @@ void table::place(const point& origin, const point& size)
 	// TODO: Make sure all cells in a row are the same height
 	point current_origin = origin;
 	int row_height = 0;
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(!get_item_shown(get_item_at_ordered(i))) {
 			continue;
 		}
@@ -671,8 +671,8 @@ void table::place(const point& origin, const point& size)
 void table::set_origin(const point& origin)
 {
 	point current_origin = origin;
-	size_t row_height = 0;
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	std::size_t row_height = 0;
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(!get_item_shown(get_item_at_ordered(i))) {
 			continue;
 		}
@@ -701,7 +701,7 @@ void table::set_visible_rectangle(const SDL_Rect& rectangle)
 	 * function in the generator template class and call it from the wanted
 	 * placement functions.
 	 */
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		grid& grid = item(i);
 		grid.set_visible_rectangle(rectangle);
 	}
@@ -711,7 +711,7 @@ widget* table::find_at(const point& coordinate, const bool must_be_active)
 {
 	assert(get_window());
 
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(!get_item_shown(i)) {
 			continue;
 		}
@@ -729,7 +729,7 @@ const widget* table::find_at(const point& coordinate, const bool must_be_active)
 {
 	assert(get_window());
 
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(!get_item_shown(i)) {
 			continue;
 		}
@@ -788,7 +788,7 @@ void table::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled)
 	}
 
 	if(get_selected_item_count() == 0) {
-		for(size_t i = get_ordered_index(0); i < get_item_count(); i++) {
+		for(std::size_t i = get_ordered_index(0); i < get_item_count(); i++) {
 			if(get_item_shown(get_item_at_ordered(i))) {
 				// TODO: Check if active?
 				handled = true;
@@ -803,7 +803,7 @@ void table::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled)
 	// NOTE maybe this should only work if we can select only one item...
 	handled = true;
 
-	for(size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
+	for(std::size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
 		if(!get_item_shown(get_item_at_ordered(i))) {
 			continue;
 		}
@@ -862,7 +862,7 @@ void table::handle_key_right_arrow(SDL_Keymod /*modifier*/, bool& handled)
 	}
 
 	if(get_selected_item_count() == 0) {
-		for(size_t i = get_ordered_index(0); i < get_item_count(); i++) {
+		for(std::size_t i = get_ordered_index(0); i < get_item_count(); i++) {
 			if(get_item_shown(get_item_at_ordered(i))) {
 				// TODO: Check if active?
 				handled = true;
@@ -877,7 +877,7 @@ void table::handle_key_right_arrow(SDL_Keymod /*modifier*/, bool& handled)
 	// NOTE maybe this should only work if we can select only one item...
 	handled = true;
 
-	for(size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
+	for(std::size_t i = get_ordered_index(get_selected_item()) + 1; i < get_item_count(); ++i) {
 		if(!get_item_shown(get_item_at_ordered(i))) {
 			continue;
 		}
@@ -894,7 +894,7 @@ void table::handle_key_right_arrow(SDL_Keymod /*modifier*/, bool& handled)
 
 void independent::request_reduce_width(const unsigned maximum_width)
 {
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		grid& grid = item(i);
 		grid.request_reduce_width(maximum_width);
 	}
@@ -902,7 +902,7 @@ void independent::request_reduce_width(const unsigned maximum_width)
 
 void independent::request_reduce_height(const unsigned maximum_height)
 {
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		grid& grid = item(i);
 		grid.request_reduce_height(maximum_height);
 	}
@@ -916,7 +916,7 @@ point independent::calculate_best_size() const
 	 */
 	point result(0, 0);
 
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		const grid& grid = item(i);
 
 		const point best_size = grid.get_best_size();
@@ -935,7 +935,7 @@ point independent::calculate_best_size() const
 
 void independent::place(const point& origin, const point& size)
 {
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		grid& grid = item(i);
 		grid.place(origin, size);
 	}
@@ -949,7 +949,7 @@ void independent::set_origin(const point& origin)
 	 * @todo evaluate whether setting it only for the visible item is better
 	 * and what the consequences are.
 	 */
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		grid& grid = item(i);
 		grid.set_origin(origin);
 	}
@@ -983,7 +983,7 @@ const widget* independent::find_at(const point& coordinate, const bool must_be_a
 
 widget* independent::find(const std::string& id, const bool must_be_active)
 {
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(is_selected(i)) {
 			if(widget* widget = item(i).find(id, must_be_active)) {
 				return widget;
@@ -996,7 +996,7 @@ widget* independent::find(const std::string& id, const bool must_be_active)
 
 const widget* independent::find(const std::string& id, const bool must_be_active) const
 {
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		if(is_selected(i)) {
 			if(const widget* widget = item(i).find(id, must_be_active)) {
 				return widget;
@@ -1015,7 +1015,7 @@ void independent::set_visible_rectangle(const SDL_Rect& rectangle)
 	 * @todo evaluate whether setting it only for the visible item is better
 	 * and what the consequences are.
 	 */
-	for(size_t i = 0; i < get_item_count(); ++i) {
+	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		grid& grid = item(i);
 		grid.set_visible_rectangle(rectangle);
 	}

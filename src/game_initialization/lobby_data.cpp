@@ -161,7 +161,7 @@ std::string make_short_name(const std::string& long_name)
 		return "";
 	}
 
-	size_t pos = 0;
+	std::size_t pos = 0;
 
 	std::stringstream ss;
 	ss << long_name[pos];

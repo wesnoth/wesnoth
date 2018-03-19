@@ -234,7 +234,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_ha
 	team &current_team = resources::gameboard->get_team(current_team_num);
 
 	const std::string& unit_id = child["value"];
-	size_t old_size = current_team.recall_list().size();
+	std::size_t old_size = current_team.recall_list().size();
 
 	// Find the unit in the recall list.
 	unit_ptr dismissed_unit = current_team.recall_list().find_if_matches_id(unit_id);

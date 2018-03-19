@@ -399,7 +399,7 @@ void play_controller::init_side_begin()
 		update_gui_to_player(current_side() - 1);
 	}
 
-	gui_->set_playing_team(size_t(current_side() - 1));
+	gui_->set_playing_team(std::size_t(current_side() - 1));
 
 	gamestate().gamedata_.last_selected = map_location::null_location();
 }

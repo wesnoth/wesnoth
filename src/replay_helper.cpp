@@ -86,7 +86,7 @@ config replay_helper::get_movement(const std::vector<map_location>& steps, bool 
 config replay_helper::get_attack(const map_location& a, const map_location& b,
 	int att_weapon, int def_weapon, const std::string& attacker_type_id,
 	const std::string& defender_type_id, int attacker_lvl,
-	int defender_lvl, const size_t turn, const time_of_day &t)
+	int defender_lvl, const std::size_t turn, const time_of_day &t)
 {
 
 	config move, src, dst;

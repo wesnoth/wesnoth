@@ -64,7 +64,7 @@ DEFINE_WFL_FUNCTION(locations_in_radius, 2, 2)
 	v.reserve(res.size() + 1);
 	v.emplace_back(std::make_shared<location_callable>(loc));
 
-	for(size_t n = 0; n != res.size(); ++n) {
+	for(std::size_t n = 0; n != res.size(); ++n) {
 		if(resources::gameboard->map().on_board(res[n])) {
 			v.emplace_back(std::make_shared<location_callable>(res[n]));
 		}

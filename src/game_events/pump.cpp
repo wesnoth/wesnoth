@@ -88,7 +88,7 @@ struct pump_impl
 	std::vector<queued_event> events_queue;
 
 	/// The value returned by wml_tracking();
-	size_t internal_wml_tracking;
+	std::size_t internal_wml_tracking;
 
 	std::stringstream wml_messages_stream;
 
@@ -145,7 +145,7 @@ private:
 	std::vector<queued_event> queue_;
 
 	/** Tracks how many events have been processed. */
-	size_t pumped_count_;
+	std::size_t pumped_count_;
 };
 } // end anonymous namespace (types)
 
@@ -547,7 +547,7 @@ pump_result_t wml_event_pump::operator()()
 		DBG_EH << "processing queued events: " << ss.str() << "\n";
 	}
 
-	const size_t old_wml_track = impl_->internal_wml_tracking;
+	const std::size_t old_wml_track = impl_->internal_wml_tracking;
 
 	// Ensure the whiteboard doesn't attempt to build its future unit map
 	// while events are being processed.
@@ -642,7 +642,7 @@ void wml_event_pump::flush_messages()
  * from caching some aspect of the game state and that cannot rely on
  * [allow_undo] not being used when that state changes.
  */
-size_t wml_event_pump::wml_tracking()
+std::size_t wml_event_pump::wml_tracking()
 {
 	return impl_->internal_wml_tracking;
 }
