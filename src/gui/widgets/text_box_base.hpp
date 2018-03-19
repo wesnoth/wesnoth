@@ -118,6 +118,9 @@ public:
 	void set_selection(std::size_t start, int length);
 
 protected:
+	/** Get length of composition text by IME **/
+	size_t get_composition_length() const;
+	
 	/**
 	 * Moves the cursor to the end of the line.
 	 *
@@ -259,11 +262,6 @@ protected:
 		return ime_start_point_;
 	}
 
-	std::size_t get_composition_length() const
-	{
-		return ime_length_;
-	}
-
 public:
 	bool is_composing() const
 	{
@@ -319,7 +317,6 @@ private:
 	// Values to support input method editors
 	bool ime_in_progress_;
 	int ime_start_point_;
-	int ime_length_;
 
 	std::size_t cursor_timer_;
 
