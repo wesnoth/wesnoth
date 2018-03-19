@@ -92,6 +92,9 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 
 	// handling of hotkeys which activate even on hold events
 	switch(cmd.id) {
+		case HOTKEY_REPEAT_RECRUIT:
+			repeat_recruit();
+			return true;
 		case HOTKEY_SCROLL_UP:
 			scroll_up(true);
 			return true;
@@ -176,9 +179,6 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 			break;
 		case HOTKEY_RECRUIT:
 			recruit();
-			break;
-		case hotkey::HOTKEY_REPEAT_RECRUIT:
-			repeat_recruit();
 			break;
 		case HOTKEY_SPEAK:
 			speak();
