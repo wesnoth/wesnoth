@@ -53,6 +53,7 @@ class manager;
 #include "animated.hpp"
 #include "display_context.hpp"
 #include "drawing_queue.hpp"
+#include "events.hpp"
 #include "font/standard_colors.hpp"
 #include "image.hpp" //only needed for enums (!)
 #include "key.hpp"
@@ -77,7 +78,7 @@ class manager;
 
 class gamemap;
 
-class display : public video2::draw_layering
+class display : public events::sdl_handler
 {
 public:
 	display(const display_context* dc,

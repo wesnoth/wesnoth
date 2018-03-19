@@ -45,24 +45,6 @@ surface frameBuffer = nullptr;
 bool fake_interactive = false;
 }
 
-namespace video2
-{
-std::list<events::sdl_handler*> draw_layers;
-
-draw_layering::draw_layering(const bool auto_join)
-	: sdl_handler(auto_join)
-{
-	draw_layers.push_back(this);
-}
-
-draw_layering::~draw_layering()
-{
-	draw_layers.remove(this);
-}
-
-
-} // video2
-
 CVideo::CVideo(FAKE_TYPES type)
 	: window()
 #ifdef USE_GL_RENDERING

@@ -40,7 +40,6 @@
 #include "joystick.hpp"
 #include "key.hpp"
 #include "quit_confirmation.hpp"
-#include "video.hpp"
 
 class display;
 class plugins_context;
@@ -60,7 +59,7 @@ namespace soundsource
 class manager;
 }
 
-class controller_base : public video2::draw_layering
+class controller_base : public events::sdl_handler
 {
 public:
 	controller_base(const config& game_config);

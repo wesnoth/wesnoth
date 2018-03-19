@@ -303,6 +303,7 @@ public:
 	widget* keyboard_focus() const;
 
 private:
+#if 0
 	class layer : public video2::draw_layering
 	{
 	public:
@@ -314,7 +315,6 @@ private:
 	// make sure the appropriate things happens when we close.
 	layer layer_;
 
-#if 0
 	bool hover_pending_;			   /**< Is there a hover event pending? */
 	unsigned hover_id_;                /**< Id of the pending hover event. */
 	SDL_Rect hover_box_;               /**< The area the mouse can move in,

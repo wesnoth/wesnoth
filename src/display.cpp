@@ -141,7 +141,7 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 }
 
 display::display(const display_context * dc, std::weak_ptr<wb::manager> wb, reports & reports_object, const config& theme_cfg, const config& level, bool auto_join)
-	: video2::draw_layering(auto_join)
+	: events::sdl_handler(auto_join)
 	, dc_(dc)
 	, halo_man_(new halo::manager())
 	, wb_(wb)
