@@ -115,9 +115,9 @@ help_manager::~help_manager()
  *
  * If show_topic is the empty string, the default topic will be shown.
  */
-void show_help(const std::string& show_topic, int xloc, int yloc)
+void show_help(const std::string& show_topic)
 {
-	show_help(default_toplevel, show_topic, xloc, yloc);
+	show_help(default_toplevel, show_topic);
 }
 
 /**
@@ -125,10 +125,10 @@ void show_help(const std::string& show_topic, int xloc, int yloc)
  *
  * If show_topic is the empty string, the default topic will be shown.
  */
-void show_unit_help(const std::string& show_topic, bool has_variations, bool hidden, int xloc, int yloc)
+void show_unit_help(const std::string& show_topic, bool has_variations, bool hidden)
 {
 	show_help(default_toplevel,
-			  hidden_symbol(hidden) + (has_variations ? ".." : "") + unit_prefix + show_topic, xloc, yloc);
+			  hidden_symbol(hidden) + (has_variations ? ".." : "") + unit_prefix + show_topic);
 }
 
 /**
@@ -136,17 +136,17 @@ void show_unit_help(const std::string& show_topic, bool has_variations, bool hid
  *
  * If show_topic is the empty string, the default topic will be shown.
  */
-void show_terrain_help(const std::string& show_topic, bool hidden, int xloc, int yloc)
+void show_terrain_help(const std::string& show_topic, bool hidden)
 {
-	show_help(default_toplevel, hidden_symbol(hidden) + terrain_prefix + show_topic, xloc, yloc);
+	show_help(default_toplevel, hidden_symbol(hidden) + terrain_prefix + show_topic);
 }
 
 /**
  * Open the help browser, show the variation of the unit matching.
  */
-void show_variation_help(const std::string& unit, const std::string &variation, bool hidden, int xloc, int yloc)
+void show_variation_help(const std::string& unit, const std::string &variation, bool hidden)
 {
-	show_help(default_toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation, xloc, yloc);
+	show_help(default_toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation);
 }
 
 void init_help() {
@@ -172,84 +172,9 @@ void init_help() {
  * This allows for complete customization of the contents, although not in a
  * very easy way.
  */
-void show_help(const section &toplevel_sec,
-			   const std::string& show_topic,
-			   int xloc, int yloc)
+void show_help(const section &toplevel_sec, const std::string& show_topic)
 {
-	CVideo& video = CVideo::get_singleton();
-
-	if(gui2::new_widgets) {
-		gui2::dialogs::help_browser::display(toplevel_sec, show_topic);
-		return;
-	}
-
-	const events::event_context dialog_events_context;
-	const gui::dialog_manager manager;
-
-	SDL_Rect screen_area = video.screen_area();
-
-	const int width  = std::min<int>(font::relative_size(1200), screen_area.w - font::relative_size(20));
-	const int height = std::min<int>(font::relative_size(850), screen_area.h - font::relative_size(150));
-	const int left_padding = font::relative_size(10);
-	const int right_padding = font::relative_size(10);
-	const int top_padding = font::relative_size(10);
-	const int bot_padding = font::relative_size(10);
-
-	// If not both locations were supplied, put the dialog in the middle
-	// of the screen.
-	if (yloc <= -1 || xloc <= -1) {
-		xloc = screen_area.w / 2 - width / 2;
-		yloc = screen_area.h / 2 - height / 2;
-	}
-	std::vector<gui::button*> buttons_ptr;
-	gui::button close_button_(video, _("Close"));
-	buttons_ptr.push_back(&close_button_);
-
-	gui::dialog_frame f(video, _("The Battle for Wesnoth Help"), gui::dialog_frame::default_style,
-					 true, &buttons_ptr);
-	f.layout(xloc, yloc, width, height);
-	f.draw();
-
-	init_help();
-	try {
-		help_browser hb(video, toplevel_sec);
-		hb.set_location(xloc + left_padding, yloc + top_padding);
-		hb.set_width(width - left_padding - right_padding);
-		hb.set_height(height - top_padding - bot_padding);
-		if (!show_topic.empty()) {
-			hb.show_topic(show_topic);
-		}
-		else {
-			hb.show_topic(default_show_topic);
-		}
-		hb.set_dirty(true);
-		events::raise_draw_event();
-		CKey key;
-		for (;;) {
-			events::pump();
-			events::raise_process_event();
-			f.draw();
-			events::raise_draw_event();
-			if (key[SDLK_ESCAPE]) {
-				// Escape quits from the dialog.
-				return;
-			}
-			for (std::vector<gui::button*>::iterator button_it = buttons_ptr.begin();
-				 button_it != buttons_ptr.end(); ++button_it) {
-				if ((*button_it)->pressed()) {
-					// There is only one button, close.
-					return;
-				}
-			}
-			video.render_screen();
-			CVideo::delay(10);
-		}
-	}
-	catch (parse_error& e) {
-		std::stringstream msg;
-		msg << _("Parse error when parsing help text: ") << "'" << e.message << "'";
-		gui2::show_transient_message("", msg.str());
-	}
+	gui2::dialogs::help_browser::display(toplevel_sec, show_topic);
 }
 
 } // End namespace help.
