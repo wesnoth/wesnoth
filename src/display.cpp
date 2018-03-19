@@ -774,6 +774,8 @@ surface display::screenshot(bool map_screenshot)
 
 std::shared_ptr<gui::button> display::find_action_button(const std::string& id)
 {
+	return nullptr;
+
 	for (std::size_t i = 0; i < action_buttons_.size(); ++i) {
 		if(action_buttons_[i]->id() == id) {
 			return action_buttons_[i];
@@ -784,6 +786,8 @@ std::shared_ptr<gui::button> display::find_action_button(const std::string& id)
 
 std::shared_ptr<gui::button> display::find_menu_button(const std::string& id)
 {
+	return nullptr;
+
 	for (std::size_t i = 0; i < menu_buttons_.size(); ++i) {
 		if(menu_buttons_[i]->id() == id) {
 			return menu_buttons_[i];
@@ -794,6 +798,8 @@ std::shared_ptr<gui::button> display::find_menu_button(const std::string& id)
 
 void display::layout_buttons()
 {
+	return;
+
 	DBG_DP << "positioning menu buttons...\n";
 	for(const auto& menu : theme_.menus()) {
 		std::shared_ptr<gui::button> b = find_menu_button(menu.get_id());
@@ -821,6 +827,8 @@ void display::layout_buttons()
 
 void display::create_buttons()
 {
+	return;
+
 	std::vector<std::shared_ptr<gui::button>> menu_work;
 	std::vector<std::shared_ptr<gui::button>> action_work;
 
@@ -880,6 +888,8 @@ void display::create_buttons()
 
 void display::render_buttons()
 {
+	return;
+
 	for (std::shared_ptr<gui::button> btn : menu_buttons_) {
 		btn->set_dirty(true);
 		btn->draw();
@@ -1877,6 +1887,8 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
  */
 void display::refresh_report(const std::string& report_name, const config * new_cfg)
 {
+	return;
+
 	const theme::status_item *item = theme_.get_status_item(report_name);
 	if (!item) {
 		reportSurfaces_[report_name].assign(nullptr);
@@ -2625,8 +2637,8 @@ void display::draw()
 	// Progress animations.
 	invalidate_animations();
 
-	draw_all_panels();
-	draw_minimap();
+	//draw_all_panels();
+	//draw_minimap();
 
 	// Draw the gamemap and its contents (units, etc)
 	{
