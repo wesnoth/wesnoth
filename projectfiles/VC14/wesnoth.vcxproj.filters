@@ -1553,6 +1553,15 @@
       <Filter>Gui\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\deprecation.cpp" />
+    <ClCompile Include="..\..\src\sdl\texture.cpp">
+      <Filter>SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\command_console.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\dialogs\game_ui.cpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\addon\client.hpp">
@@ -2461,9 +2470,6 @@
     <ClInclude Include="..\..\src\utils\general.hpp">
       <Filter>utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\utils\io.hpp">
-      <Filter>utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\utils\irdya_datetime.hpp">
       <Filter>utils</Filter>
     </ClInclude>
@@ -3014,6 +3020,18 @@
     <ClInclude Include="..\..\src\deprecation.hpp" />
     <ClInclude Include="..\..\src\gui\widgets\retval.hpp">
       <Filter>Gui\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sdl\render_utils.hpp">
+      <Filter>SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\sdl\texture.hpp">
+      <Filter>SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\command_console.hpp">
+      <Filter>Gui\Dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\gui\dialogs\game_ui.hpp">
+      <Filter>Gui\Dialogs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
