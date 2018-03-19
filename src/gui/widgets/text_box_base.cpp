@@ -39,7 +39,6 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	, selection_length_(0)
 	, ime_in_progress_(false)
 	, ime_start_point_(0)
-	, ime_length_(0)
 	, cursor_timer_(0)
 	, cursor_alpha_(0)
 	, cursor_blink_rate_ms_(750)
@@ -159,10 +158,24 @@ void text_box_base::insert_char(const utf8::string& unicode)
 	}
 }
 
+size_t text_box_base::get_composition_length() const
+{
+	if(!ime_in_progress_) {
+		return 0;
+	}
+	
+	size_t text_length = utf8::size(text_.text());
+	size_t text_cached_length = utf8::size(text_cached_);
+	if(text_length < text_cached_length) {
+		return 0;
+	}
+	
+	return utf8::size(text_.text()) - utf8::size(text_cached_);
+}
+
 void text_box_base::interrupt_composition()
 {
 	ime_in_progress_ = false;
-	ime_length_ = 0;
 	// We need to inform the IME that text input is no longer in progress.
 	SDL_StopTextInput();
 	SDL_StartTextInput();
@@ -372,9 +385,8 @@ void text_box_base::handle_key_backspace(SDL_Keymod /*modifier*/, bool& handled)
 	} else if(selection_start_) {
 		delete_char(true);
 		if(ime_in_progress_) {
-			if(utf8::size(text_.text()) <= utf8::size(text_cached_)) {
+			if(get_composition_length() == 0) {
 				ime_in_progress_ = false;
-				ime_length_ = 0;
 			}
 		}
 	}
@@ -391,9 +403,8 @@ void text_box_base::handle_key_delete(SDL_Keymod /*modifier*/, bool& handled)
 	} else if(selection_start_ < text_.get_length()) {
 		delete_char(false);
 		if(ime_in_progress_) {
-			if(utf8::size(text_.text()) <= utf8::size(text_cached_)) {
+			if(get_composition_length() == 0) {
 				ime_in_progress_ = false;
-				ime_length_ = 0;
 			}
 		}
 	}
@@ -407,9 +418,8 @@ void text_box_base::handle_commit(bool& handled, const utf8::string& unicode)
 	if(unicode.size() > 1 || unicode[0] != 0) {
 		handled = true;
 		if(ime_in_progress_) {
-			set_selection(ime_start_point_ + ime_length_, 0);
+			set_selection(ime_start_point_ + get_composition_length(), 0);
 			ime_in_progress_ = false;
-			ime_length_ = 0;
 		} else {
 			insert_char(unicode);
 		}
@@ -446,17 +456,16 @@ void text_box_base::handle_editing(bool& handled, const utf8::string& unicode, i
 		// If length of composition text is more than the limit, it is separated to multiple SDL_TextEditingEvent
 		// start is start position of the separated event in entire composition text
 		if(start == 0) {
-			ime_length_ = 0;
 			text_.set_text(text_cached_, false);
 		}
-		ime_length_ += new_len;
 		text_.insert_text(ime_start_point_ + start, unicode);
 
 		// Update status
 		set_cursor(ime_start_point_, false);
-		if(ime_length_ > 0) {
+		int ime_length = get_composition_length();
+		if(ime_length > 0) {
 			int maximum_length = text_.get_maximum_length();
-			int cursor_end = std::min(maximum_length, ime_start_point_ + ime_length_);
+			int cursor_end = std::min(maximum_length, ime_start_point_ + ime_length);
 			set_cursor(cursor_end, true);
 		}
 		update_canvas();
