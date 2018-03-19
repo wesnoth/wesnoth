@@ -764,8 +764,12 @@ surface display::screenshot(bool map_screenshot)
 	texture output_texture(area.w, area.h, SDL_TEXTUREACCESS_TARGET);
 	const render_target_setter target_setter(output_texture);
 
+	map_screenshot_ = true;
+
 	DBG_DP << "draw() call for map screenshot\n";
 	draw();
+
+	map_screenshot_ = false;
 
 	// Restore map viewport position
 	xpos_ = old_xpos;
