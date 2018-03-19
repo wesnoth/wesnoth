@@ -1146,6 +1146,7 @@ void display::draw_all_panels()
 	render_buttons();
 }
 
+#if 0
 static void draw_background(const SDL_Rect& area, const std::string& image)
 {
 	// No background image, just fill in black.
@@ -1163,6 +1164,7 @@ static void draw_background(const SDL_Rect& area, const std::string& image)
 	SDL_Rect a = area;
 	CVideo::get_singleton().render_copy(background, nullptr, &a);
 }
+#endif
 
 int display::draw_text_in_hex(const map_location& loc,
 		const std::string& text,
