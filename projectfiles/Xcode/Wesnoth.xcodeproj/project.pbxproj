@@ -100,6 +100,8 @@
 		467D9DEF205EC39300FA2FC4 /* command_console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467D9DED205EC39300FA2FC4 /* command_console.cpp */; };
 		467D9DF3205EC3D300FA2FC4 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467D9DF1205EC3D200FA2FC4 /* texture.cpp */; };
 		467D9DF4205EC3D300FA2FC4 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467D9DF1205EC3D200FA2FC4 /* texture.cpp */; };
+		467F3CF020605A3900CE0CE5 /* ingame_ui_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467F3CEF20605A3900CE0CE5 /* ingame_ui_base.cpp */; };
+		467F3CF120605A3F00CE0CE5 /* ingame_ui_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 467F3CEF20605A3900CE0CE5 /* ingame_ui_base.cpp */; };
 		468C1B971F09245F002DF652 /* function_gamestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468C1B951F09245E002DF652 /* function_gamestate.cpp */; };
 		469BDB55205C357500DBF748 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		469BDB56205C357500DBF748 /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
@@ -1449,6 +1451,8 @@
 		467D9DF1205EC3D200FA2FC4 /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
 		467D9DF2205EC3D300FA2FC4 /* texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = texture.hpp; sourceTree = "<group>"; };
 		467D9DF5205EC3DA00FA2FC4 /* surface.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = surface.hpp; sourceTree = "<group>"; };
+		467F3CEE20605A3800CE0CE5 /* ingame_ui_base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ingame_ui_base.hpp; sourceTree = "<group>"; };
+		467F3CEF20605A3900CE0CE5 /* ingame_ui_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ingame_ui_base.cpp; sourceTree = "<group>"; };
 		468C1B951F09245E002DF652 /* function_gamestate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = function_gamestate.cpp; sourceTree = "<group>"; };
 		468C1B961F09245E002DF652 /* function_gamestate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = function_gamestate.hpp; sourceTree = "<group>"; };
 		469BDB53205C357400DBF748 /* base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base64.cpp; sourceTree = "<group>"; };
@@ -2292,7 +2296,6 @@
 		B5A9BCB90ECA805A002BE442 /* resize_map.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = resize_map.hpp; sourceTree = "<group>"; };
 		B5A9BCBC0ECA805A002BE442 /* field-fwd.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = "field-fwd.hpp"; sourceTree = "<group>"; };
 		B5A9BCBD0ECA805A002BE442 /* field.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = field.hpp; sourceTree = "<group>"; };
-		B5A9BCBE0ECA805A002BE442 /* helper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = helper.hpp; sourceTree = "<group>"; };
 		B5A9BCBF0ECA805A002BE442 /* language_selection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = language_selection.cpp; sourceTree = "<group>"; };
 		B5A9BCC00ECA805A002BE442 /* language_selection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = language_selection.hpp; sourceTree = "<group>"; };
 		B5A9BCC10ECA805A002BE442 /* message.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = message.cpp; sourceTree = "<group>"; };
@@ -4430,11 +4433,12 @@
 				9184385C1D4C786F00C42277 /* game_version.hpp */,
 				B5B4692A1071189700327599 /* gamestate_inspector.cpp */,
 				B5B4692B1071189700327599 /* gamestate_inspector.hpp */,
-				B5A9BCBE0ECA805A002BE442 /* helper.hpp */,
 				EC3024DA1E8469050098D797 /* help_browser.cpp */,
 				EC3024DB1E8469050098D797 /* help_browser.hpp */,
 				ECA556311E7B5EB3006E907D /* hotkey_bind.cpp */,
 				ECA556321E7B5EB3006E907D /* hotkey_bind.hpp */,
+				467F3CEF20605A3900CE0CE5 /* ingame_ui_base.cpp */,
+				467F3CEE20605A3800CE0CE5 /* ingame_ui_base.hpp */,
 				91B6217A1B74E6D100B00E0F /* label_settings.cpp */,
 				91B6217B1B74E6D100B00E0F /* label_settings.hpp */,
 				B5A9BCBF0ECA805A002BE442 /* language_selection.cpp */,
@@ -5259,6 +5263,7 @@
 				B52EE91B12135AC300CFBDAB /* recall.cpp in Sources */,
 				B52EE91C12135AC300CFBDAB /* recruit.cpp in Sources */,
 				EC48D74D17F3148300DE80BF /* recruitment.cpp in Sources */,
+				467F3CF020605A3900CE0CE5 /* ingame_ui_base.cpp in Sources */,
 				ECFB9FAC193BFB6E00146ED0 /* rect.cpp in Sources */,
 				B54AC6A00FEA9E8F006F6FBD /* registry.cpp in Sources */,
 				B59271FB10E9577800A13911 /* repeating_button.cpp in Sources */,
@@ -5787,6 +5792,7 @@
 				4649B8C22028911C00827CFB /* mp_change_control.cpp in Sources */,
 				91A214EA1CAD666B00927AEA /* display_context.cpp in Sources */,
 				4649B8C52028911C00827CFB /* mp_host_game_prompt.cpp in Sources */,
+				467F3CF120605A3F00CE0CE5 /* ingame_ui_base.cpp in Sources */,
 				4649B8C82028911C00827CFB /* mp_login.cpp in Sources */,
 				91A214EB1CAD666B00927AEA /* events.cpp in Sources */,
 				91A214EC1CAD666B00927AEA /* floating_label.cpp in Sources */,
