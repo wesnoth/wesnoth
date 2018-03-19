@@ -505,9 +505,6 @@ public:
 	/** Capture a (map-)screenshot into a surface. */
 	surface screenshot(bool map_screenshot = false);
 
-	/** Invalidates entire screen, including all tiles and sidebar. Calls redraw observers. */
-	void redraw_everything();
-
 	/** Adds a redraw observer, a function object to be called when redraw_everything is used */
 	void add_redraw_observer(std::function<void(display&)> f)
 	{

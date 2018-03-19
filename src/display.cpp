@@ -2193,63 +2193,6 @@ void display::read(const config& cfg)
 	color_adjust_.b = cfg["color_adjust_blue"].to_int(0);
 }
 
-/* Debugging aid to slow things down a bit. Don't ever enable this in a release! */
-#ifdef SLOW_THINGS_DOWN
-#undef SLOW_THINGS_DOWN
-#endif
-
-// #define SLOW_THINGS_DOWN
-
-void display::redraw_everything()
-{
-	if(video_.update_locked()) {
-		return;
-	}
-
-	invalidateGameStatus_ = true;
-
-	reportRects_.clear();
-	reportSurfaces_.clear();
-	reports_.clear();
-
-	bounds_check_position();
-
-	tooltips::clear_tooltips();
-
-	theme_.set_resolution(video_.screen_area());
-
-	if(!menu_buttons_.empty() || !action_buttons_.empty()) {
-		create_buttons();
-	}
-
-	if(resources::controller) {
-		hotkey::command_executor* command_executor = resources::controller->get_hotkey_command_executor();
-		if(command_executor != nullptr)	{
-			// This function adds button overlays,
-			// it needs to be run after recreating the buttons.
-			command_executor->set_button_state();
-		}
-	}
-
-	if (!gui::in_dialog()) {
-		labels().recalculate_labels();
-	}
-
-	for(std::function<void(display&)> f : redraw_observers_) {
-		f(*this);
-	}
-
-	int ticks1 = SDL_GetTicks();
-	//invalidate_all();
-	int ticks2 = SDL_GetTicks();
-	//draw(true,true);
-	int ticks3 = SDL_GetTicks();
-	LOG_DP << "invalidate and draw: " << (ticks3 - ticks2) << " and " << (ticks2 - ticks1) << "\n";
-
-	complete_redraw_event_.notify_observers();
-}
-
-
 //
 // NEW RENDERING CODE =========================================================================
 //
