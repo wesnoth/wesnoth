@@ -109,6 +109,20 @@
 		46BED4D4205060EA00842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4D52050611600842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BED4DA2050711600842FA5 /* scenario-story.cfg in Copy Data Files */ = {isa = PBXBuildFile; fileRef = 46BED4D92050710800842FA5 /* scenario-story.cfg */; };
+		46F57084205FCE34007031BF /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
+		46F57085205FCE48007031BF /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
+		46F57086205FCE79007031BF /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
+		46F57087205FCF5D007031BF /* filesystem_sdl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD71CB6BC3F00470BFE /* filesystem_sdl.cpp */; };
+		46F57088205FCF7E007031BF /* config_attribute_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0341DF1ECF46FE000F2E2B /* config_attribute_value.cpp */; };
+		46F57098205FD0B4007031BF /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55998F70EC61EA5008DD061 /* SDL2.framework */; };
+		46F57099205FD0BF007031BF /* libcrypto.1.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90BC845A1EDBD7B600A6630D /* libcrypto.1.1.dylib */; };
+		46F5709A205FE48C007031BF /* string_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AF0EC62181008DD061 /* string_utils.cpp */; };
+		46F570A6205FF856007031BF /* addon_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F5709E205FF856007031BF /* addon_utils.cpp */; };
+		46F570A7205FF856007031BF /* blacklist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F570A2205FF856007031BF /* blacklist.cpp */; };
+		46F570A8205FF856007031BF /* campaign_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F570A3205FF856007031BF /* campaign_server.cpp */; };
+		46F570A9205FF856007031BF /* fs_commit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46F570A4205FF856007031BF /* fs_commit.cpp */; };
+		46F570AA205FF970007031BF /* simple_wml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B6D0F893E7500444FBF /* simple_wml.cpp */; };
+		46F570AB205FF978007031BF /* server_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C548D01D886AF000FE6A7B /* server_base.cpp */; };
 		4944F40D1354FB760027E614 /* drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40C1354FB760027E614 /* drawing.cpp */; };
 		4944F4121354FB970027E614 /* debug_clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40E1354FB970027E614 /* debug_clock.cpp */; };
 		4944F4131354FB970027E614 /* mp_login.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4944F40F1354FB970027E614 /* mp_login.cpp */; };
@@ -553,22 +567,15 @@
 		91B622241B76C0F400B00E0F /* libboost_thread-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5B13AD4E6D003C701D /* libboost_thread-mt.dylib */; };
 		91C548C31D8866ED00FE6A7B /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		91C548D21D886AF000FE6A7B /* server_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C548D01D886AF000FE6A7B /* server_base.cpp */; };
-		91C548DA1D886BD600FE6A7B /* addon_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C548D31D886BD500FE6A7B /* addon_utils.cpp */; };
-		91C548DB1D886BD600FE6A7B /* blacklist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C548D51D886BD500FE6A7B /* blacklist.cpp */; };
-		91C548DC1D886BD600FE6A7B /* campaign_server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C548D71D886BD500FE6A7B /* campaign_server.cpp */; };
-		91C548DD1D886BE300FE6A7B /* server_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91C548D01D886AF000FE6A7B /* server_base.cpp */; };
 		91C548DE1D886E0A00FE6A7B /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AA80EC62181008DD061 /* config.cpp */; };
 		91C548DF1D886E2100FE6A7B /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A020EC62181008DD061 /* log.cpp */; };
 		91C548E01D886E2C00FE6A7B /* tstring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999810EC62181008DD061 /* tstring.cpp */; };
-		91C548E11D886E7200FE6A7B /* string_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AF0EC62181008DD061 /* string_utils.cpp */; };
 		91C548E21D886E9000FE6A7B /* libboost_system-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D5413AD4E35003C701D /* libboost_system-mt.dylib */; };
 		91C548E31D886EBC00FE6A7B /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAA3FE518E0E4EF002E8998 /* unicode.cpp */; };
 		91C548E41D886ECA00FE6A7B /* gettext_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4DF45419FEA7A8000EC086 /* gettext_boost.cpp */; };
 		91C548E51D886EF300FE6A7B /* binary_or_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999A70EC62181008DD061 /* binary_or_text.cpp */; };
-		91C548E61D886F0700FE6A7B /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
 		91C548E81D886F1E00FE6A7B /* libboost_locale-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC4DF45919FEA838000EC086 /* libboost_locale-mt.dylib */; };
 		91C548EA1D886F7500FE6A7B /* game_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A800EC62181008DD061 /* game_config.cpp */; };
-		91C548EB1D886F8C00FE6A7B /* simple_wml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6B6D0F893E7500444FBF /* simple_wml.cpp */; };
 		91C548EC1D886FA800FE6A7B /* filesystem_boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF9D43C19F3FF9400E6C9D9 /* filesystem_boost.cpp */; };
 		91C548ED1D886FC500FE6A7B /* libboost_filesystem-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECF9D43F19F4026D00E6C9D9 /* libboost_filesystem-mt.dylib */; };
 		91C548EE1D886FCE00FE6A7B /* libboost_iostreams-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EF0D4B13AD4D53003C701D /* libboost_iostreams-mt.dylib */; };
@@ -1453,6 +1460,15 @@
 		46BED4D92050710800842FA5 /* scenario-story.cfg */ = {isa = PBXFileReference; lastKnownFileType = text; path = "scenario-story.cfg"; sourceTree = "<group>"; };
 		46DF5BCB1F46173700BE6D24 /* irdya_datetime.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = irdya_datetime.hpp; sourceTree = "<group>"; };
 		46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = irdya_datetime.cpp; sourceTree = "<group>"; };
+		46F5709D205FF856007031BF /* fs_commit.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fs_commit.hpp; sourceTree = "<group>"; };
+		46F5709E205FF856007031BF /* addon_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = addon_utils.cpp; sourceTree = "<group>"; };
+		46F5709F205FF856007031BF /* blacklist.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = blacklist.hpp; sourceTree = "<group>"; };
+		46F570A0205FF856007031BF /* control.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = control.hpp; sourceTree = "<group>"; };
+		46F570A1205FF856007031BF /* campaign_server.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = campaign_server.hpp; sourceTree = "<group>"; };
+		46F570A2205FF856007031BF /* blacklist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = blacklist.cpp; sourceTree = "<group>"; };
+		46F570A3205FF856007031BF /* campaign_server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = campaign_server.cpp; sourceTree = "<group>"; };
+		46F570A4205FF856007031BF /* fs_commit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fs_commit.cpp; sourceTree = "<group>"; };
+		46F570A5205FF856007031BF /* addon_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = addon_utils.hpp; sourceTree = "<group>"; };
 		4944F40C1354FB760027E614 /* drawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = drawing.cpp; sourceTree = "<group>"; };
 		4944F40E1354FB970027E614 /* debug_clock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = debug_clock.cpp; sourceTree = "<group>"; };
 		4944F40F1354FB970027E614 /* mp_login.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_login.cpp; sourceTree = "<group>"; };
@@ -1787,13 +1803,6 @@
 		91C548CF1D886AF000FE6A7B /* send_receive_wml_helpers.ipp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = send_receive_wml_helpers.ipp; sourceTree = "<group>"; };
 		91C548D01D886AF000FE6A7B /* server_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server_base.cpp; sourceTree = "<group>"; };
 		91C548D11D886AF000FE6A7B /* server_base.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = server_base.hpp; sourceTree = "<group>"; };
-		91C548D31D886BD500FE6A7B /* addon_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = addon_utils.cpp; path = ../campaign_server/addon_utils.cpp; sourceTree = "<group>"; };
-		91C548D41D886BD500FE6A7B /* addon_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = addon_utils.hpp; path = ../campaign_server/addon_utils.hpp; sourceTree = "<group>"; };
-		91C548D51D886BD500FE6A7B /* blacklist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = blacklist.cpp; path = ../campaign_server/blacklist.cpp; sourceTree = "<group>"; };
-		91C548D61D886BD500FE6A7B /* blacklist.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = blacklist.hpp; path = ../campaign_server/blacklist.hpp; sourceTree = "<group>"; };
-		91C548D71D886BD500FE6A7B /* campaign_server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = campaign_server.cpp; path = ../campaign_server/campaign_server.cpp; sourceTree = "<group>"; };
-		91C548D81D886BD500FE6A7B /* campaign_server.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = campaign_server.hpp; path = ../campaign_server/campaign_server.hpp; sourceTree = "<group>"; };
-		91C548D91D886BD600FE6A7B /* control.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = control.hpp; path = ../campaign_server/control.hpp; sourceTree = "<group>"; };
 		91C5545E1D73F997002DB0C8 /* faction_select.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = faction_select.cpp; sourceTree = "<group>"; };
 		91C5545F1D73F997002DB0C8 /* faction_select.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = faction_select.hpp; sourceTree = "<group>"; };
 		91C554661D77A545002DB0C8 /* libpcre.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcre.1.dylib; path = lib/libpcre.1.dylib; sourceTree = "<group>"; };
@@ -2816,7 +2825,9 @@
 			files = (
 				91C548C31D8866ED00FE6A7B /* CoreFoundation.framework in Frameworks */,
 				91C548E21D886E9000FE6A7B /* libboost_system-mt.dylib in Frameworks */,
+				46F57099205FD0BF007031BF /* libcrypto.1.1.dylib in Frameworks */,
 				91C548E81D886F1E00FE6A7B /* libboost_locale-mt.dylib in Frameworks */,
+				46F57098205FD0B4007031BF /* SDL2.framework in Frameworks */,
 				91C548ED1D886FC500FE6A7B /* libboost_filesystem-mt.dylib in Frameworks */,
 				91C548EE1D886FCE00FE6A7B /* libboost_iostreams-mt.dylib in Frameworks */,
 			);
@@ -2920,7 +2931,8 @@
 			children = (
 				080E96DDFE201D6D7F000001 /* Mac-specific */,
 				B597C49D0FACD3F900CE81F5 /* tests */,
-				B5BB6B560F893DE000444FBF /* server */,
+				46F5709C205FF855007031BF /* campaignd_server */,
+				B5BB6B560F893DE000444FBF /* wesnothd_server */,
 				29B97315FDCFA39411CA2CEA /* src */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				912DCA621CA6F5710019A6F9 /* Documentation */,
@@ -3267,6 +3279,23 @@
 				46BED4D1205060EA00842FA5 /* crypt_blowfish.c */,
 			);
 			path = crypt_blowfish;
+			sourceTree = "<group>";
+		};
+		46F5709C205FF855007031BF /* campaignd_server */ = {
+			isa = PBXGroup;
+			children = (
+				46F5709E205FF856007031BF /* addon_utils.cpp */,
+				46F570A5205FF856007031BF /* addon_utils.hpp */,
+				46F570A2205FF856007031BF /* blacklist.cpp */,
+				46F5709F205FF856007031BF /* blacklist.hpp */,
+				46F570A3205FF856007031BF /* campaign_server.cpp */,
+				46F570A1205FF856007031BF /* campaign_server.hpp */,
+				46F570A0205FF856007031BF /* control.hpp */,
+				46F570A4205FF856007031BF /* fs_commit.cpp */,
+				46F5709D205FF856007031BF /* fs_commit.hpp */,
+			);
+			name = campaignd_server;
+			path = ../../src/campaign_server;
 			sourceTree = "<group>";
 		};
 		49DA0CFB13550AC5000AFEBD /* addon */ = {
@@ -4597,18 +4626,11 @@
 			path = event;
 			sourceTree = "<group>";
 		};
-		B5BB6B560F893DE000444FBF /* server */ = {
+		B5BB6B560F893DE000444FBF /* wesnothd_server */ = {
 			isa = PBXGroup;
 			children = (
-				91C548D31D886BD500FE6A7B /* addon_utils.cpp */,
-				91C548D41D886BD500FE6A7B /* addon_utils.hpp */,
 				B5BB6B7C0F893E7500444FBF /* ban.cpp */,
 				B5BB6B7A0F893E7500444FBF /* ban.hpp */,
-				91C548D51D886BD500FE6A7B /* blacklist.cpp */,
-				91C548D61D886BD500FE6A7B /* blacklist.hpp */,
-				91C548D71D886BD500FE6A7B /* campaign_server.cpp */,
-				91C548D81D886BD500FE6A7B /* campaign_server.hpp */,
-				91C548D91D886BD600FE6A7B /* control.hpp */,
 				B5BB6B7B0F893E7500444FBF /* forum_user_handler.cpp */,
 				B5BB6B790F893E7500444FBF /* forum_user_handler.hpp */,
 				B5BB6B5A0F893E7500444FBF /* game.cpp */,
@@ -4633,7 +4655,7 @@
 				B5BB6B6E0F893E7500444FBF /* user_handler.cpp */,
 				B5BB6B6F0F893E7500444FBF /* user_handler.hpp */,
 			);
-			name = server;
+			name = wesnothd_server;
 			path = ../../src/server;
 			sourceTree = "<group>";
 		};
@@ -5471,29 +5493,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91C548DA1D886BD600FE6A7B /* addon_utils.cpp in Sources */,
 				91C548E51D886EF300FE6A7B /* binary_or_text.cpp in Sources */,
-				91C548DB1D886BD600FE6A7B /* blacklist.cpp in Sources */,
-				91C548DC1D886BD600FE6A7B /* campaign_server.cpp in Sources */,
+				46F57084205FCE34007031BF /* base64.cpp in Sources */,
 				91C548F11D88705C00FE6A7B /* color_range.cpp in Sources */,
 				91C548DE1D886E0A00FE6A7B /* config.cpp in Sources */,
 				91C548EC1D886FA800FE6A7B /* filesystem_boost.cpp in Sources */,
+				46F5709A205FE48C007031BF /* string_utils.cpp in Sources */,
+				46F57088205FCF7E007031BF /* config_attribute_value.cpp in Sources */,
 				91C548F21D88707D00FE6A7B /* filesystem_common.cpp in Sources */,
+				46F570AA205FF970007031BF /* simple_wml.cpp in Sources */,
+				46F570AB205FF978007031BF /* server_base.cpp in Sources */,
+				46F57087205FCF5D007031BF /* filesystem_sdl.cpp in Sources */,
 				91C548EA1D886F7500FE6A7B /* game_config.cpp in Sources */,
+				46F570A7205FF856007031BF /* blacklist.cpp in Sources */,
 				91C548E41D886ECA00FE6A7B /* gettext_boost.cpp in Sources */,
-				91C548E61D886F0700FE6A7B /* hash.cpp in Sources */,
+				46F570A8205FF856007031BF /* campaign_server.cpp in Sources */,
+				46F57086205FCE79007031BF /* hash.cpp in Sources */,
 				91C548DF1D886E2100FE6A7B /* log.cpp in Sources */,
 				91C548F31D8870BB00FE6A7B /* parser.cpp in Sources */,
 				91C548F61D8870F800FE6A7B /* preprocessor.cpp in Sources */,
-				91C548DD1D886BE300FE6A7B /* server_base.cpp in Sources */,
-				91C548EB1D886F8C00FE6A7B /* simple_wml.cpp in Sources */,
-				91C548E11D886E7200FE6A7B /* string_utils.cpp in Sources */,
+				46F570A9205FF856007031BF /* fs_commit.cpp in Sources */,
 				91C548F51D8870DE00FE6A7B /* tokenizer.cpp in Sources */,
 				91C548E01D886E2C00FE6A7B /* tstring.cpp in Sources */,
 				91C548E31D886EBC00FE6A7B /* unicode.cpp in Sources */,
 				91C548F01D88703300FE6A7B /* validation.cpp in Sources */,
+				46F57085205FCE48007031BF /* crypt_blowfish.c in Sources */,
 				91C548F41D8870C700FE6A7B /* version.cpp in Sources */,
 				915C68F11DF1F54D00594B07 /* constants.cpp in Sources */,
+				46F570A6205FF856007031BF /* addon_utils.cpp in Sources */,
 				915C68F21DF1F5C600594B07 /* color.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6297,7 +6324,6 @@
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
