@@ -163,9 +163,14 @@ public:
 	 */
 	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect = nullptr, SDL_Rect* clip_rect = nullptr);
 
-	/** Renders the screen. Should normally not be called directly! */
+private:
+	/** Renders the screen. */
 	void render_screen();
 
+	/** events::pump() is the only place that should call render_screen(). */
+	friend void events::pump();
+
+public:
 	void render_copy(const texture& txt,
 		SDL_Rect* src_rect = nullptr,
 		SDL_Rect* dst_rect = nullptr,
