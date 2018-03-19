@@ -552,24 +552,10 @@ int window::show(const unsigned auto_close_timeout)
 		 * doesn't hurt too much but keep this todo as a reminder.
 		 */
 		suspend_drawing_ = true;
-
-		// restore area
-	//	if(restore_) {
-	//		SDL_Rect rect = get_rectangle();
-	//		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-	//		font::undraw_floating_labels(video_.getSurface());
-	//	}
 		throw;
 	}
 
 	suspend_drawing_ = true;
-
-	// restore area
-	//if(restore_) {
-	//	SDL_Rect rect = get_rectangle();
-	//	sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-	//	font::undraw_floating_labels(video_.getSurface());
-	//}
 
 	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())) {
 		tb->interrupt_composition();
